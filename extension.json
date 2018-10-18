@@ -1,0 +1,21 @@
+{
+	"name": "GrowthExperiments",
+	"descriptionmsg": "copyvio-desc",
+	"license-name": "GPL-3.0-or-later",
+	"author": [
+		"WMF Growth Team"
+	],
+	"url": "https://www.mediawiki.org/wiki/Extension:GrowthExperiments",
+	"requires": {
+		"MediaWiki": ">= 1.32.0"
+	},
+	"AutoloadNamespaces": {
+		"GrowthExperiments\\": "includes/"
+	},
+	"MessagesDirs": {
+		"Copyvio": [
+			"i18n"
+		]
+	},
+	"manifest_version": 2
+}
