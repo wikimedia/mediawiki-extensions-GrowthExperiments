@@ -3,7 +3,7 @@
 	"descriptionmsg": "growthexperiments-desc",
 	"license-name": "GPL-3.0-or-later",
 	"author": [
-		"WMF Growth Team"
+		"Stephane Bisson"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:GrowthExperiments",
 	"requires": {
@@ -14,8 +14,73 @@
 	},
 	"MessagesDirs": {
 		"GrowthExperiments": [
-			"i18n"
+			"i18n/extension",
+			"i18n/welcomesurvey"
 		]
+	},
+	"ExtensionMessagesFiles": {
+		"GrowthExperimentsAlias": "GrowthExperiments.alias.php"
+	},
+	"Hooks": {
+		"SpecialPage_initList": "GrowthExperiments\\Hooks::onSpecialPageInitList",
+		"GetPreferences": "GrowthExperiments\\Hooks::onGetPreferences",
+		"BeforeWelcomeCreation": "GrowthExperiments\\Hooks::onBeforeWelcomeCreation"
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "modules",
+		"remoteExtPath": "GrowthExperiments/modules"
+	},
+	"ResourceModules": {
+		"ext.growthExperiments.welcomeSurvey.styles": {
+			"styles": [
+				"welcomesurvey/ext.growthExperiments.welcomeSurvey.less"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.growthExperiments.welcomeSurvey.scripts": {
+			"scripts": [
+				"welcomesurvey/ext.growthExperiments.welcomeSurvey.js"
+			],
+			"messages": [
+				"welcomesurvey-tagmultiselect-placeholder"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		}
+	},
+	"config": {
+		"WelcomeSurveyEnabled": {
+			"description": "Global ON/OFF switch for the Welcome survey feature.",
+			"value": false
+		},
+		"WelcomeSurveyPrivacyPolicyUrl": {
+			"description": "URL of the privacy policy to be used on the Welcome survey.",
+			"value": "https://meta.wikimedia.org/wiki/TODO"
+		},
+		"WelcomeSurveyExperiments": {
+			"description": "List of experiments. An experiment is a list of questions shown to a group of users.",
+			"value": {
+				"experiment1": {
+					"groups": "0-9",
+					"questions": [
+						"reason",
+						"reason-other",
+						"edited",
+						"topics",
+						"topics-other-nojs",
+						"topics-other-js",
+						"email",
+						"mentor-info",
+						"mentor"
+					]
+				}
+			}
+		}
 	},
 	"manifest_version": 2
 }

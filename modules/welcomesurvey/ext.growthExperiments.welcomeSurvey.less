@@ -1,0 +1,91 @@
+@import 'mediawiki.ui/variables';
+
+@form-width: 600px;
+@sidepanel-width: 300px;
+@breakpoint: 1150px;
+
+.mw-special-WelcomeSurvey {
+	.welcomesurvey-sidebar {
+		margin-top: 20px;
+
+		// Shown as a sidebar on the right on big screens
+		@media all and ( min-width: @breakpoint ) {
+			float: right;
+			width: @sidepanel-width;
+		}
+
+		&-section {
+			background-color: @colorGray15;
+			border: @colorGray12 solid 1px;
+			border-radius: 2px;
+			padding: 1.2em;
+			margin-bottom: 1em;
+
+			&-title {
+				font-weight: bold;
+			}
+		}
+	}
+
+	.welcomesurvey-subtitle {
+		font-size: 1.2em;
+	}
+
+	.mw-htmlform-ooui-wrapper {
+		@media all and ( min-width: @breakpoint ) {
+			display: inline-block;
+			max-width: @form-width;
+		}
+
+		// add spacing between questions with label
+		> form > .oo-ui-fieldLayout.oo-ui-labelElement:not( .welcomesurvey-mentor-check ) {
+			margin-top: 1.8em;
+		}
+
+		.welcomesurvey-mentor-info {
+			.oo-ui-fieldLayout-field {
+				height: 0;
+			}
+		}
+
+		.mw-htmlform-submit-buttons {
+			border-top: @colorGray12 solid 1px;
+			padding-top: 1em;
+			margin-top: 2em;
+
+			.welcomesurvey-skip-btn {
+				float: right;
+			}
+		}
+	}
+
+	.welcomesurvey-confirmation-editing-title {
+		font-weight: bold;
+	}
+
+	.welcomesurvey-confirmation {
+		@media all and ( min-width: @breakpoint ) {
+			max-width: @form-width;
+		}
+
+		&-buttons {
+			border-top: @colorGray12 solid 1px;
+			padding-top: 1em;
+			margin-top: 2em;
+		}
+	}
+}
+
+.js-only {
+	display: none;
+}
+
+.client-js {
+	.js-only {
+		display: block;
+	}
+
+	.nojs-only {
+		display: none;
+	}
+}
