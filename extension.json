@@ -1,6 +1,6 @@
 {
 	"name": "GrowthExperiments",
-	"descriptionmsg": "copyvio-desc",
+	"descriptionmsg": "growthexperiments-desc",
 	"license-name": "GPL-3.0-or-later",
 	"author": [
 		"WMF Growth Team"
@@ -13,7 +13,7 @@
 		"GrowthExperiments\\": "includes/"
 	},
 	"MessagesDirs": {
-		"Copyvio": [
+		"GrowthExperiments": [
 			"i18n"
 		]
 	},
