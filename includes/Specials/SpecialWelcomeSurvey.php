@@ -137,8 +137,21 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		return 'ooui';
 	}
 
-	private function getPrivacyPolicyUrl() {
-		return $this->getConfig()->get( 'WelcomeSurveyPrivacyPolicyUrl' );
+	private function buildPrivacyPolicyLink() {
+		$text = $this->msg( 'welcomesurvey-privacy-policy-link-text' )->text();
+		$url = $this->getConfig()->get( 'WelcomeSurveyPrivacyPolicyUrl' );
+		return Html::rawElement(
+			'span',
+			[ 'class' => 'mw-parser-output' ],
+			Html::linkButton(
+				$text,
+				[
+					'href' => $url,
+					'target' => '_blank',
+					'class' => 'external',
+				]
+			)
+		);
 	}
 
 	/**
@@ -329,10 +342,9 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 			Html::rawElement(
 				'div',
 				[ 'class' => 'welcomesurvey-confirmation' ],
-				$this->msg(
-					'welcomesurvey-save-confirmation-text',
-					$this->getPrivacyPolicyUrl()
-				)->parseAsBlock() .
+				$this->msg( 'welcomesurvey-save-confirmation-text' )
+					->rawParams( $this->buildPrivacyPolicyLink() )
+					->parseAsBlock() .
 				Html::element(
 					'div',
 					[ 'class' => 'welcomesurvey-confirmation-editing-title' ],
@@ -383,11 +395,9 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 				Html::rawElement(
 					'div',
 					[ 'class' => 'welcomesurvey-sidebar-section-text' ],
-					// todo: convert contained link to "new window" with target and icon
-					$this->msg(
-						'welcomesurvey-sidebar-privacy-text',
-						$this->getPrivacyPolicyUrl()
-					)->parseAsBlock()
+					$this->msg( 'welcomesurvey-sidebar-privacy-text' )
+						->rawParams( $this->buildPrivacyPolicyLink() )
+						->parseAsBlock()
 				)
 			) .
 			Html::rawElement(
