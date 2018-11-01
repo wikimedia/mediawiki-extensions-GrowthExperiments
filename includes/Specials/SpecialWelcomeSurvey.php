@@ -351,6 +351,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 					$this->msg( 'welcomesurvey-sidebar-editing-title' )->text()
 				) .
 				$this->msg( 'welcomesurvey-sidebar-editing-text' )->parseAsBlock() .
+				$this->buildGettingStartedLinks() .
 				Html::rawElement(
 					'div',
 					[ 'class' => 'welcomesurvey-confirmation-buttons' ],
@@ -378,6 +379,33 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 			$user->isAllowed( 'editmyprivateinfo' ) &&
 			AuthManager::singleton()->allowsPropertyChange( 'emailaddress' ) &&
 			( $newEmail ? Sanitizer::validateEmail( $newEmail ) : true );
+	}
+
+	private function buildGettingStartedLinks() {
+		$html = '<ul class="welcomesurvey-gettingstarted-links">';
+		for ( $i = 1; $i <= 4; $i++ ) {
+			$text = $this->msg( "welcomesurvey-sidebar-editing-link$i-text" );
+			$title = $this->msg( "welcomesurvey-sidebar-editing-link$i-title" );
+			if ( $text->isDisabled() || $title->isDisabled() ) {
+				continue;
+			}
+
+			$html .= Html::rawElement(
+				'li',
+				[ 'class' => 'mw-parser-output' ],
+				Html::element(
+					'a',
+					[
+						'href' => Title::newFromText( $title->text() )->getLinkURL(),
+						'target' => '_blank',
+						'class' => 'external',
+					],
+					$text->text()
+				)
+			);
+		}
+		$html .= '</ul>';
+		return $html;
 	}
 
 	private function buildSidebar() {
@@ -411,9 +439,9 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 				Html::rawElement(
 					'div',
 					[ 'class' => 'welcomesurvey-sidebar-section-text' ],
-					// todo: convert contained links to "new window" with target and icon
 					$this->msg( 'welcomesurvey-sidebar-editing-text' )->parseAsBlock()
-				)
+				) .
+				$this->buildGettingStartedLinks()
 			)
 		);
 	}
