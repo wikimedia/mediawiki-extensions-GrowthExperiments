@@ -143,13 +143,14 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		return Html::rawElement(
 			'span',
 			[ 'class' => 'mw-parser-output' ],
-			Html::linkButton(
-				$text,
+			Html::element(
+				'a',
 				[
 					'href' => $url,
 					'target' => '_blank',
 					'class' => 'external',
-				]
+				],
+				$text
 			)
 		);
 	}
