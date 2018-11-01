@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saederup92"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|Velkommen}}, $1!",
+	"welcomesurvey-close-btn": "Luk og gå tilbage til $1",
+	"welcomesurvey-dropdown-option-select-label": "Vælg venligst...",
+	"welcomesurvey-question-edited-label": "Har du nogensinde redigeret Wikipedia?",
+	"welcomesurvey-question-edited-option-yes-many-label": "Ja, mange gange",
+	"welcomesurvey-question-edited-option-yes-few-label": "Ja, en eller to gange",
+	"welcomesurvey-question-edited-option-dont-remember-label": "Jeg kan ikke huske det",
+	"welcomesurvey-question-topics-other-placeholder": "Tilføj flere emner...",
+	"welcomesurvey-question-topics-option-history": "Historie",
+	"welcomesurvey-question-topics-option-music": "Musik",
+	"welcomesurvey-question-topics-option-literature": "Litteratur",
+	"welcomesurvey-question-topics-option-food-drink": "Mad og drikke",
+	"welcomesurvey-question-topics-option-biography": "Biografy",
+	"welcomesurvey-question-topics-option-economics": "Økonomi",
+	"welcomesurvey-question-topics-option-technology": "Teknologi",
+	"welcomesurvey-question-topics-option-film": "Film",
+	"welcomesurvey-question-topics-option-philosophy": "Filosofi",
+	"welcomesurvey-question-topics-option-politics": "Politik",
+	"welcomesurvey-question-topics-option-games": "Spil",
+	"welcomesurvey-question-topics-option-health": "Sundhed",
+	"welcomesurvey-question-topics-option-education": "Uddannelse"
+}

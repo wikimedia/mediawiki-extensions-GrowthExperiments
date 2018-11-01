@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rul1902"
+		]
+	},
+	"welcomesurvey-save-btn": "ၯံင်ယုဂ်",
+	"welcomesurvey-close-btn": "ကာၜါ်ၯံင် ထါင်ၮါင်လ်ု $1",
+	"welcomesurvey-privacy-policy-link-text": "ဟ်ုဆ်ုမာဟ်ု ဆ်ုဖံင်ဖၠေဝ်",
+	"welcomesurvey-sidebar-editing-link1-text": "ၜးဆါင့်ၮဲအ်ုဍံင်ဆာႋ",
+	"welcomesurvey-sidebar-editing-link1-title": "ဝီးကေဝ်ပီဍီယာႋ:ၜးဆါင့်ၮဲအ်ုဍံင်ဆာႋ",
+	"welcomesurvey-sidebar-editing-link2-text": "ဆ်ုမာၜိုဝ်မာဆိုင်ကေဝ်လိက်ခုံႋ",
+	"welcomesurvey-question-edited-option-yes-many-label": "မွာဲလှ်။ အ်ုၜုဂ်အးကိုဝ်ယုဂ်",
+	"welcomesurvey-question-edited-option-yes-few-label": "မွာဲ။ လ်ုၜၠင်မွာဲၜး ၮီ့ၜၠင်",
+	"welcomesurvey-question-edited-option-dont-remember-label": "ယ်ုလ်ုၮင်းၜး",
+	"welcomesurvey-question-topics-option-arts": "အနုပညာ့လ်ုဖး",
+	"welcomesurvey-question-topics-option-science": "သိပ္ပံ",
+	"welcomesurvey-question-topics-option-geography": "ၯင်းခေါဟ်ၯာင်ႋ",
+	"welcomesurvey-question-topics-option-history": "မေင်ႋစိင်",
+	"welcomesurvey-question-topics-option-music": "ထါခေါဟ်",
+	"welcomesurvey-question-topics-option-sports": "ဆ်ုလောဟ်ကုဲလ်ုဖး",
+	"welcomesurvey-question-topics-option-literature": "လိက်",
+	"welcomesurvey-question-topics-option-food-drink": "ဆ်ုအင်းလ်ုဆ်ုအဝ်",
+	"welcomesurvey-question-topics-option-biography": "အ်ုကျးထါ်ၜံင်",
+	"welcomesurvey-question-topics-option-military": "သုဂ်",
+	"welcomesurvey-question-topics-option-technology": "သၞေါဝ့်ပညာ့",
+	"welcomesurvey-question-topics-option-business": "က်ုလုံ့ဆ်ုထင်းအုဲးထင်းဖး",
+	"welcomesurvey-question-topics-option-government": "ဆ်ုပိုင်ကြိုင်အ်ုသံင့်အ်ုချုဂ်",
+	"welcomesurvey-question-topics-option-games": "ဆ်ုလေါတ်ကိုဲ",
+	"welcomesurvey-question-topics-option-transportation": "ဆ်ုသုံ့ဆ်ုထါင်",
+	"welcomesurvey-question-topics-option-education": "ပညာ့"
+}

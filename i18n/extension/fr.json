@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Wladek92"
+			"Wladek92",
+			"Trizek (WMF)"
 		]
 	},
-	"growthexperiments-desc": "Cette extension contient des tentatives faites par l'équipe Growth."
+	"growthexperiments-desc": "Cette extension contient des expériences faites par l'équipe Growth."
 }
