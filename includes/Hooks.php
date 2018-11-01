@@ -48,14 +48,19 @@ class Hooks {
 		}
 
 		$context = RequestContext::getMain();
-		$request = $context->getRequest();
-		$newUserSurvey = SpecialPage::getTitleFor( 'WelcomeSurvey' );
-		$query = wfArrayToCgi( [
-			'returnto' => $request->getVal( 'returnto' ),
-			'returntoquery' => $request->getVal( 'returntoquery' ),
-		] );
-		$context->getOutput()->redirect( $newUserSurvey->getFullUrlForRedirect( $query ) );
-		$injected_html = '<!-- redirect to WelcomeSurvey -->';
+		$welcomeSurvey = new WelcomeSurvey( $context );
+		$experiment  = $welcomeSurvey->getGroup();
+		$welcomeSurvey->saveGroup( $experiment );
+		if ( $experiment ) {
+			$request = $context->getRequest();
+			$newUserSurvey = SpecialPage::getTitleFor( 'WelcomeSurvey' );
+			$query = wfArrayToCgi( [
+				'returnto' => $request->getVal( 'returnto' ),
+				'returntoquery' => $request->getVal( 'returntoquery' ),
+			] );
+			$context->getOutput()->redirect( $newUserSurvey->getFullUrlForRedirect( $query ) );
+			$injected_html = '<!-- redirect to WelcomeSurvey -->';
+		}
 	}
 
 	private static function isWelcomeSurveyEnabled() {

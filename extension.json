@@ -62,11 +62,11 @@
 			"description": "URL of the privacy policy to be used on the Welcome survey.",
 			"value": "https://meta.wikimedia.org/wiki/TODO"
 		},
-		"WelcomeSurveyExperiments": {
-			"description": "List of experiments. An experiment is a list of questions shown to a group of users.",
+		"WelcomeSurveyExperimentalGroups": {
+			"description": "List of experimental groups. An group is a list of questions shown to users randomly matching the selector.",
 			"value": {
-				"experiment1": {
-					"groups": "0-9",
+				"exp1_group1": {
+					"range": "0-4",
 					"questions": [
 						"reason",
 						"reason-other",
@@ -78,6 +78,10 @@
 						"mentor-info",
 						"mentor"
 					]
+				},
+				"exp1_group2": {
+					"range": "5-9",
+					"questions": []
 				}
 			}
 		}
