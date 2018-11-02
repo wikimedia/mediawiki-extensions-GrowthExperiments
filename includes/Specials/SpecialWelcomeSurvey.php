@@ -76,6 +76,8 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 				"welcomesurvey-question-topics-option-music" => "music",
 				"welcomesurvey-question-topics-option-sports" => "sports",
 				"welcomesurvey-question-topics-option-literature" => "literature",
+				"welcomesurvey-question-topics-option-religion" => "religion",
+				"welcomesurvey-question-topics-option-popular-culture" => "popular culture",
 			],
 		],
 		"topics-other-js" => [
