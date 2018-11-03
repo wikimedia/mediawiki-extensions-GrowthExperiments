@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nikosgranturismogt"
+		]
+	},
+	"welcomesurvey-privacy-policy-link-text": "Πολιτική ιδιωτικού απορρήτου",
+	"welcomesurvey-sidebar-editing-link1-text": "Σεμινάριο",
+	"welcomesurvey-sidebar-editing-link2-text": "Χώρος βοήθειας",
+	"welcomesurvey-question-reason-option-other-label": "Άλλα (παρακαλώ περιγράψτε)",
+	"welcomesurvey-question-edited-option-yes-many-label": "Ναι, πολλές φορές",
+	"welcomesurvey-question-edited-option-no-dunno-label": "Όχι, δεν ήξερα ότι μπορούσα να επεξεργαστώ τη Βικιπαίδεια",
+	"welcomesurvey-question-edited-option-dont-remember-label": "Δεν θυμάμαι",
+	"welcomesurvey-question-topics-other-placeholder": "Προσθέστε περισσότερα θέματα...",
+	"welcomesurvey-question-topics-option-science": "Επιστήμες",
+	"welcomesurvey-question-topics-option-sports": "Αθλητικά",
+	"welcomesurvey-question-topics-option-literature": "Λογοτεχνία",
+	"welcomesurvey-question-topics-option-biography": "Βιογραφία",
+	"welcomesurvey-question-topics-option-economics": "οικονομικά",
+	"welcomesurvey-question-topics-option-technology": "Τεχνολογία",
+	"welcomesurvey-question-topics-option-business": "Επιχείριση",
+	"welcomesurvey-question-topics-option-government": "Κυβέρνηση",
+	"welcomesurvey-question-topics-option-engineering": "Μηχανική",
+	"welcomesurvey-question-topics-option-health": "Υγεία",
+	"welcomesurvey-question-topics-option-social-science": "Κοινωνική επιστήμη"
+}
