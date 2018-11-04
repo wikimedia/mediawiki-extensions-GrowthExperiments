@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"আফতাবুজ্জামান"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|স্বাগতম}}, $1!",
+	"welcomesurvey-save-btn": "সম্পন্ন",
+	"welcomesurvey-skip-btn": "জরিপ এড়িয়ে যান",
+	"welcomesurvey-close-btn": "বন্ধ করুন ও $1-এ ফিরে যান",
+	"welcomesurvey-privacy-policy-link-text": "গোপনীয়তার বিবৃতি",
+	"welcomesurvey-sidebar-editing-link2-text": "সাহায্য কেন্দ্র",
+	"welcomesurvey-tagmultiselect-placeholder": "আরো প্রসঙ্গ যোগ করুন...",
+	"welcomesurvey-dropdown-option-select-label": "দয়া করে নির্বাচন করুন...",
+	"welcomesurvey-question-reason-option-read-label": "উইকিপিডিয়া পড়তে",
+	"welcomesurvey-question-topics-option-history": "ইতিহাস",
+	"welcomesurvey-question-topics-option-music": "সঙ্গীত",
+	"welcomesurvey-question-topics-option-film": "চলচ্চিত্র",
+	"welcomesurvey-question-topics-option-philosophy": "দর্শণ",
+	"welcomesurvey-question-topics-option-business": "ব্যবসায়",
+	"welcomesurvey-question-topics-option-politics": "রাজনীতি",
+	"welcomesurvey-question-topics-option-government": "সরকার",
+	"welcomesurvey-question-topics-option-engineering": "প্রকৌশল",
+	"welcomesurvey-question-topics-option-games": "খেলা",
+	"welcomesurvey-question-topics-option-health": "স্বাস্থ্য",
+	"welcomesurvey-question-topics-option-education": "শিক্ষা"
+}

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"ديفيد"
+			"ديفيد",
+			"Meno25"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|مرحبا}}، $1!",
@@ -13,7 +14,7 @@
 	"welcomesurvey-close-btn": "الإغلاق والعودة إلى $1",
 	"welcomesurvey-sidebar-privacy-title": "نحن نقيم خصوصيتك",
 	"welcomesurvey-sidebar-privacy-text": "لمعرفة المزيد حول كيفية استخدام هذه الإجابات الاختيارية; راجع الاستطلاع $1.",
-	"welcomesurvey-privacy-policy-link-text": "سياسة الخصوصية",
+	"welcomesurvey-privacy-policy-link-text": "بيان الخصوصية",
 	"welcomesurvey-sidebar-editing-title": "الشروع في التحرير",
 	"welcomesurvey-sidebar-editing-text": "يمكن لأي شخص تعديل كل صفحة تقريبا، ويتم إجراء مئات التغييرات كل ساعة لإضافة محتوى وتصحيح الأخطاء وتحسين إمكانية القراءة، يمكن أن تساعدك الصفحات التالية إذا كنت مهتما بالمساهمة.",
 	"welcomesurvey-sidebar-editing-link1-text": "الدورة التعليمية",
@@ -49,6 +50,8 @@
 	"welcomesurvey-question-topics-option-music": "موسيقى",
 	"welcomesurvey-question-topics-option-sports": "رياضة",
 	"welcomesurvey-question-topics-option-literature": "أدب",
+	"welcomesurvey-question-topics-option-religion": "الدين",
+	"welcomesurvey-question-topics-option-popular-culture": "الثقافة الشعبية",
 	"welcomesurvey-question-topics-option-entertainment": "ترفيه",
 	"welcomesurvey-question-topics-option-food-drink": "طعام وشراب",
 	"welcomesurvey-question-topics-option-biography": "سيرة شخصية",
