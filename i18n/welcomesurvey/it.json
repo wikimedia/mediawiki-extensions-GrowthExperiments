@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"welcomesurvey-sidebar-editing-link1-text": "Tutorial",
+	"welcomesurvey-question-topics-option-sports": "Sport",
+	"welcomesurvey-question-topics-option-literature": "Letteratura",
+	"welcomesurvey-question-topics-option-religion": "Religione",
+	"welcomesurvey-question-topics-option-popular-culture": "Cultura popolare",
+	"welcomesurvey-question-topics-option-biography": "Biografia",
+	"welcomesurvey-question-topics-option-technology": "Tecnologia",
+	"welcomesurvey-question-topics-option-health": "Salute"
+}
