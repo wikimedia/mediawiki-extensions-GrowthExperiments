@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Wladek92"
+			"Wladek92",
+			"Trizek (WMF)"
 		]
 	},
 	"welcomesurvey": "Bienvenue, {{GENDER:$1|}}$1 !",
@@ -11,13 +12,13 @@
 	"welcomesurvey-save-btn": "Terminer",
 	"welcomesurvey-skip-btn": "Sauter cette enquête",
 	"welcomesurvey-close-btn": "Fermer et retourner à $1",
-	"welcomesurvey-sidebar-privacy-title": "Nous protégeons votre confidentialité",
+	"welcomesurvey-sidebar-privacy-title": "Nous protégeons votre vie privée",
 	"welcomesurvey-sidebar-privacy-text": "Pour en apprendre davantage sur la manière dont ces réponses facultatives sont utilisées, voyez l'enquête $1 .",
 	"welcomesurvey-privacy-policy-link-text": "déclaration de confidentialité",
 	"welcomesurvey-sidebar-editing-title": "Commencer à modifier",
 	"welcomesurvey-sidebar-editing-text": "Presque toutes les pages peuvent être modifiées par chacun, et des centaines de modifications sont faites chaque heure pour ajouter du contenu, corriger des erreurs, ou améliorer la lisibilité. Les pages suivantes peuvent vous aider si vous êtes intéressé pour contribuer.",
 	"welcomesurvey-sidebar-editing-link1-text": "Tutoriel",
-	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:Tutoriel",
+	"welcomesurvey-sidebar-editing-link1-title": "Aide:Débuter",
 	"welcomesurvey-sidebar-editing-link2-text": "Service d’aide",
 	"welcomesurvey-sidebar-editing-link2-title": "Wikipedia:Help_desk",
 	"welcomesurvey-tagmultiselect-placeholder": "Ajouter plus de sujets...",

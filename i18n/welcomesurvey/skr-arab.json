@@ -4,12 +4,16 @@
 			"Saraiki"
 		]
 	},
-	"welcomesurvey-privacy-policy-link-text": "رازداری پالیسی",
+	"welcomesurvey-privacy-policy-link-text": "رازداری بیان",
+	"welcomesurvey-dropdown-option-select-label": "مہربانی کرتے چݨو۔۔۔",
 	"welcomesurvey-question-edited-option-yes-many-label": "جیا، ٻہوں واری",
+	"welcomesurvey-question-topics-option-arts": "آرٹس",
 	"welcomesurvey-question-topics-option-science": "سائنس",
 	"welcomesurvey-question-topics-option-geography": "جغرافیہ",
 	"welcomesurvey-question-topics-option-history": "تاریخ",
 	"welcomesurvey-question-topics-option-music": "موسیقی",
+	"welcomesurvey-question-topics-option-religion": "مذہب",
+	"welcomesurvey-question-topics-option-military": "فوج",
 	"welcomesurvey-question-topics-option-economics": "معاشیات",
 	"welcomesurvey-question-topics-option-technology": "ٹیکنالوجی",
 	"welcomesurvey-question-topics-option-business": "کاروبار",
