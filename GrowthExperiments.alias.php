@@ -13,4 +13,9 @@ $specialPageAliases['en'] = [
 	'WelcomeSurvey' => [ 'WelcomeSurvey' ],
 ];
 
-// todo: ko, cz
+/** 한국어  (Korean) */
+$specialPageAliases['ko'] = [
+	'WelcomeSurvey' => [ '환영설문조사' ],
+];
+
+// todo: cz
