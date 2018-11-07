@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Zizzerus"
+		]
+	},
+	"welcomesurvey-save-confirmation-title": "Köszönjük! A válaszokat elmentettük.",
+	"welcomesurvey-tagmultiselect-placeholder": "További témák hozzáadása...",
+	"welcomesurvey-question-mentor-label": "Igen, érdekel",
+	"welcomesurvey-question-edited-option-yes-many-label": "Igen,sokszor",
+	"welcomesurvey-question-edited-option-yes-few-label": "Igen, egyszer vagy kétszer",
+	"welcomesurvey-question-topics-option-arts": "Művészetek",
+	"welcomesurvey-question-topics-option-science": "Tudomány",
+	"welcomesurvey-question-topics-option-sports": "Sport",
+	"welcomesurvey-question-topics-option-religion": "Vallás",
+	"welcomesurvey-question-topics-option-popular-culture": "Tömegkultúra",
+	"welcomesurvey-question-topics-option-social-science": "Társadalomtudomány"
+}

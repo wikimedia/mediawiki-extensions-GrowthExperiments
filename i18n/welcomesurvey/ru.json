@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250"
+			"Vlad5250",
+			"Link2xt"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Добро пожаловать}}, $1!",
@@ -33,7 +34,7 @@
 	"welcomesurvey-question-edited-label": "Вы когда-нибудь редактировали Википедию?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Да, много раз",
 	"welcomesurvey-question-edited-option-yes-few-label": "Да, один или два раза",
-	"welcomesurvey-question-edited-option-no-dunno-label": "Нет, я не знаю, как я смогу редактировать",
+	"welcomesurvey-question-edited-option-no-dunno-label": "Нет, я не знал что я могу редактировать Википедию",
 	"welcomesurvey-question-edited-option-no-other-label": "Нет, по другим причинам",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Я не помню",
 	"welcomesurvey-question-email-label": "Адрес электронной почты (необязательно)",
@@ -66,5 +67,6 @@
 	"welcomesurvey-question-topics-option-games": "Игры",
 	"welcomesurvey-question-topics-option-health": "Здоровье",
 	"welcomesurvey-question-topics-option-social-science": "Социальные науки",
+	"welcomesurvey-question-topics-option-transportation": "Транспортировка",
 	"welcomesurvey-question-topics-option-education": "Образование"
 }

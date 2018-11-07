@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Revi"
+			"Revi",
+			"Robby"
 		]
 	},
 	"welcomesurvey": "Title which appears at the top of a welcome survey users are shown after account sign-up, and shown on all form steps. Should be friendly and welcoming but succinct. Parameters:\n* $1 - Name of the current user. Can be used with GENDER.",
@@ -65,7 +66,7 @@
 	"welcomesurvey-question-topics-option-philosophy": "This is a topic that may be shown as predictive results for selection when new users enter in topics they may wish to edit in a field asking what topics they may be interested in editing. The question is part of a short welcome survey that is shown to new users after they sign up for a Wikipedia account.",
 	"welcomesurvey-question-topics-option-business": "This is a topic that may be shown as predictive results for selection when new users enter in topics they may wish to edit in a field asking what topics they may be interested in editing. The question is part of a short welcome survey that is shown to new users after they sign up for a Wikipedia account.",
 	"welcomesurvey-question-topics-option-politics": "This is a topic that may be shown as predictive results for selection when new users enter in topics they may wish to edit in a field asking what topics they may be interested in editing. The question is part of a short welcome survey that is shown to new users after they sign up for a Wikipedia account.",
-	"welcomesurvey-question-topics-option-government": "This is a topic that may be shown as predictive results for selection when new users enter in topics they may wish to edit in a field asking what topics they may be interested in editing. The question is part of a short welcome survey that is shown to new users after they sign up for a Wikipedia account.",
+	"welcomesurvey-question-topics-option-government": "This is a topic that may be shown as predictive results for selection when new users enter in topics they may wish to edit in a field asking what topics they may be interested in editing. The question is part of a short welcome survey that is shown to new users after they sign up for a Wikipedia account.\n{{Identical|Government}}",
 	"welcomesurvey-question-topics-option-engineering": "This is a topic that may be shown as predictive results for selection when new users enter in topics they may wish to edit in a field asking what topics they may be interested in editing. The question is part of a short welcome survey that is shown to new users after they sign up for a Wikipedia account.",
 	"welcomesurvey-question-topics-option-crafts-hobbies": "This is a topic that may be shown as predictive results for selection when new users enter in topics they may wish to edit in a field asking what topics they may be interested in editing. The question is part of a short welcome survey that is shown to new users after they sign up for a Wikipedia account.",
 	"welcomesurvey-question-topics-option-games": "This is a topic that may be shown as predictive results for selection when new users enter in topics they may wish to edit in a field asking what topics they may be interested in editing. The question is part of a short welcome survey that is shown to new users after they sign up for a Wikipedia account.",
