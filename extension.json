@@ -60,7 +60,7 @@
 		},
 		"WelcomeSurveyPrivacyPolicyUrl": {
 			"description": "URL of the privacy policy to be used on the Welcome survey.",
-			"value": "https://meta.wikimedia.org/wiki/TODO"
+			"value": "https://foundation.wikimedia.org/wiki/New_User_Welcome_Survey_Privacy_Statement"
 		},
 		"WelcomeSurveyExperimentalGroups": {
 			"description": "List of experimental groups. An group is a list of questions shown to users randomly matching the selector.",
