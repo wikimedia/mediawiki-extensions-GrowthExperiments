@@ -186,8 +186,8 @@ class WelcomeSurvey {
 		}
 
 		$questionNames = $groups[ $group ][ 'questions' ];
-		if ( isset( $questionNames[ 'email' ] ) && !$this->canSetEmail() ) {
-			unset( $questionNames[ 'email' ] );
+		if ( in_array( 'email', $questionNames ) && !$this->canSetEmail() ) {
+			$questionNames = array_diff( $questionNames, [ 'email' ] );
 		}
 		$questions = [];
 		foreach ( $questionNames as $questionName ) {
