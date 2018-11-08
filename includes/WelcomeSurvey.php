@@ -153,7 +153,7 @@ class WelcomeSurvey {
 
 		// The group is specified in the URL
 		$request = $this->context->getRequest();
-		$groupParam = $request->getText( 'welcome-survey-experimental-group' );
+		$groupParam = $request->getText( 'group' );
 		if ( isset( $groups[ $groupParam ] ) ) {
 			return $groupParam;
 		}
