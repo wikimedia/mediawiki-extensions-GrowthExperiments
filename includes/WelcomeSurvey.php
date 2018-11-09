@@ -8,6 +8,8 @@ use MediaWiki\Auth\AuthManager;
 use MediaWiki\Logger\LoggerFactory;
 use MWTimestamp;
 use Sanitizer;
+use SpecialPage;
+use Title;
 
 class WelcomeSurvey {
 
@@ -30,14 +32,17 @@ class WelcomeSurvey {
 			"type" => "select",
 			"label-message" => "welcomesurvey-question-reason-label",
 			"options-messages" => [
-				"welcomesurvey-dropdown-option-select-label" => "select",
 				"welcomesurvey-question-reason-option-edit-typo-label" => "edit-typo",
 				"welcomesurvey-question-reason-option-edit-info-label" => "edit-info",
 				"welcomesurvey-question-reason-option-new-page-label" => "new-page",
 				"welcomesurvey-question-reason-option-read-label" => "read",
-				"welcomesurvey-question-reason-option-other-label" => "other",
 			],
+			"placeholder-message" => "welcomesurvey-dropdown-option-select-label",
+			"other-message" => "welcomesurvey-question-reason-option-other-label",
+			"other-placeholder-message" => "welcomesurvey-question-reason-other-placeholder",
+			"other-size" => 255,
 			"name" => "reason",
+			"group" => "reason",
 		],
 		"reason-other" => [
 			"type" => "text",
@@ -48,18 +53,20 @@ class WelcomeSurvey {
 				"reason",
 				"other",
 			],
+			"group" => "reason",
 		],
 		"edited" => [
 			"type" => "select",
 			"label-message" => "welcomesurvey-question-edited-label",
 			"options-messages" => [
-				"welcomesurvey-dropdown-option-select-label" => "select",
 				"welcomesurvey-question-edited-option-yes-many-label" => "yes-many",
 				"welcomesurvey-question-edited-option-yes-few-label" => "yes-few",
 				"welcomesurvey-question-edited-option-no-dunno-label" => "dunno",
 				"welcomesurvey-question-edited-option-no-other-label" => "no-other",
 				"welcomesurvey-question-edited-option-dont-remember-label" => "dont-remember",
 			],
+			"placeholder-message" => "welcomesurvey-dropdown-option-select-label",
+			"group" => "edited",
 		],
 		"topics" => [
 			"type" => "multiselect",
@@ -76,6 +83,7 @@ class WelcomeSurvey {
 				"welcomesurvey-question-topics-option-religion" => "religion",
 				"welcomesurvey-question-topics-option-popular-culture" => "popular culture",
 			],
+			"group" => "topics",
 		],
 		"topics-other-js" => [
 			"type" => "multiselect",
@@ -102,27 +110,32 @@ class WelcomeSurvey {
 				"welcomesurvey-question-topics-option-education" => "education",
 			],
 			"cssclass" => "custom-dropdown js-only",
+			"group" => "topics",
 		],
 		"topics-other-nojs" => [
 			"type" => "text",
 			"placeholder-message" => "welcomesurvey-question-topics-other-placeholder",
 			"cssclass" => "nojs-only",
+			"group" => "topics",
 		],
 		"mentor-info" => [
 			"type" => "info",
 			"label-message" => "welcomesurvey-question-mentor-info",
 			"cssclass" => "welcomesurvey-mentor-info",
+			"group" => "email",
 		],
 		"mentor" => [
 			"type" => "check",
 			"label-message" => "welcomesurvey-question-mentor-label",
 			"cssclass" => "welcomesurvey-mentor-check",
+			"group" => "email",
 		],
 		"email" => [
 			"type" => "email",
 			"label-message" => "welcomesurvey-question-email-label",
 			"placeholder-message" => "welcomesurvey-question-email-placeholder",
 			"help-message" => "welcomesurvey-question-email-help",
+			"group" => "email",
 		],
 	];
 
@@ -143,6 +156,13 @@ class WelcomeSurvey {
 	public function getGroup() {
 		$groups = $this->context->getConfig()->get( 'WelcomeSurveyExperimentalGroups' );
 
+		// The group is specified in the URL
+		$request = $this->context->getRequest();
+		$groupParam = $request->getText( 'group' );
+		if ( isset( $groups[ $groupParam ] ) ) {
+			return $groupParam;
+		}
+
 		// The user was already assigned a group
 		$groupFromProp = FormatJson::decode(
 			$this->context->getUser()->getOption( self::SURVEY_PROP, '' )
@@ -151,21 +171,18 @@ class WelcomeSurvey {
 			return $groupFromProp;
 		}
 
-		// The group is specified in the URL
-		$request = $this->context->getRequest();
-		$groupParam = $request->getText( 'group' );
-		if ( isset( $groups[ $groupParam ] ) ) {
-			return $groupParam;
-		}
-
 		// Randomly selecting a group
-		$rand = substr( rand( 0, 9 ), -1 );
+		$js = $this->context->getRequest()->getBool( 'client-runs-javascript' );
+		$rand = rand( 0, 9 );
 		foreach ( $groups as $name => $groupConfig ) {
 			$range = explode( '-', $groupConfig[ 'range' ] );
 			if (
 				( count( $range ) === 1 && $range[0] === $rand ) ||
 				( count( $range ) === 2 && $range[0] <= $rand && $range[1] >= $rand )
 			) {
+				if ( !$js && isset( $groupConfig[ 'nojs-fallback' ] ) ) {
+					return $groupConfig[ 'nojs-fallback' ];
+				}
 				return $name;
 			}
 		}
@@ -177,9 +194,11 @@ class WelcomeSurvey {
 	 * Get the questions' configuration for the specified group
 	 *
 	 * @param string $group
-	 * @return array Keys are the name of the questions and values are their HTMLForm configuration
+	 * @param bool $asKeyedArray True to use the question name as key, false to use a numerical index
+	 * @return array Questions configuration
+	 * @throws \ConfigException
 	 */
-	public function getQuestions( $group ) {
+	public function getQuestions( $group, $asKeyedArray = true ) {
 		$groups = $this->context->getConfig()->get( 'WelcomeSurveyExperimentalGroups' );
 		if ( !isset( $groups[ $group ] ) ) {
 			return [];
@@ -191,7 +210,11 @@ class WelcomeSurvey {
 		}
 		$questions = [];
 		foreach ( $questionNames as $questionName ) {
-			$questions[ $questionName ] = $this->questions[ $questionName ];
+			if ( $asKeyedArray ) {
+				$questions[ $questionName ] = $this->questions[ $questionName ];
+			} else {
+				$questions[] = [ 'name' => $questionName ] + $this->questions[ $questionName ];
+			}
 		}
 		return $questions;
 	}
@@ -202,9 +225,10 @@ class WelcomeSurvey {
 	 * @param array $data Responses of the survey questions, keyed by questions' names
 	 * @param bool $save True if the user selected to submit their responses,
 	 *  false if they chose to skip
+	 * @param string $group Name of the group this form is for
+	 * @param string $renderDate Timestamp in MW format of when the form was shown
 	 */
-	public function handleResponses( $data, $save ) {
-		$request = $this->context->getRequest();
+	public function handleResponses( $data, $save, $group, $renderDate ) {
 		$user = $this->context->getUser();
 		$submitDate = MWTimestamp::now();
 		$userUpdated = false;
@@ -232,8 +256,8 @@ class WelcomeSurvey {
 		$results = array_merge(
 			$results,
 			[
-				'_group' => $request->getVal( '_group' ),
-				'_render_date' => $request->getVal( '_render_date' ),
+				'_group' => $group,
+				'_render_date' => $renderDate,
 				'_submit_date' => $submitDate,
 				'_counter' => $counter,
 			]
@@ -281,6 +305,51 @@ class WelcomeSurvey {
 			$user->isAllowed( 'editmyprivateinfo' ) &&
 			AuthManager::singleton()->allowsPropertyChange( 'emailaddress' ) &&
 			( $newEmail ? Sanitizer::validateEmail( $newEmail ) : true );
+	}
+
+	private function getSurveyFormat( $group ) {
+		$groups = $this->context->getConfig()->get( 'WelcomeSurveyExperimentalGroups' );
+		return $groups[ $group ][ 'format' ] ?? null;
+	}
+
+	/**
+	 * Build the redirect URL for a group and its display format
+	 *
+	 * @param string $group
+	 * @return bool|string
+	 */
+	public function getRedirectUrl( $group ) {
+		$questions = $this->getQuestions( $group );
+		if ( !$questions ) {
+			return false;
+		}
+
+		$request = $this->context->getRequest();
+		$format = $this->getSurveyFormat( $group );
+		$returnTo = $request->getVal( 'returnto' );
+		$returnToQuery = $request->getVal( 'returntoquery' );
+
+		if ( $format === 'specialpage' ) {
+			$welcomeSurvey = SpecialPage::getTitleFor( 'WelcomeSurvey' );
+			$query = wfArrayToCgi( [
+				'returnto' => $returnTo,
+				'returntoquery' => $returnToQuery,
+				'group' => $group,
+			] );
+			return $welcomeSurvey->getFullUrlForRedirect( $query );
+		}
+
+		if ( $format === 'popup' ) {
+			$title = Title::newFromText( $returnTo ) ?: Title::newMainPage();
+			$query = wfArrayToCgi( array_merge(
+				wfCgiToArray( $returnToQuery ),
+				[
+					'showwelcomesurvey' => 1,
+					'group' => $group,
+				]
+			) );
+			return $title->getFullUrlForRedirect( $query );
+		}
 	}
 
 }
