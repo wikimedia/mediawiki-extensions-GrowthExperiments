@@ -49,14 +49,16 @@ class Hooks {
 
 		$context = RequestContext::getMain();
 		$welcomeSurvey = new WelcomeSurvey( $context );
-		$experiment  = $welcomeSurvey->getGroup();
-		$welcomeSurvey->saveGroup( $experiment );
-		if ( $experiment ) {
+		$group  = $welcomeSurvey->getGroup();
+		$welcomeSurvey->saveGroup( $group );
+		$questions = $welcomeSurvey->getQuestions( $group );
+		if ( $questions ) {
 			$request = $context->getRequest();
 			$newUserSurvey = SpecialPage::getTitleFor( 'WelcomeSurvey' );
 			$query = wfArrayToCgi( [
 				'returnto' => $request->getVal( 'returnto' ),
 				'returntoquery' => $request->getVal( 'returntoquery' ),
+				'group' => $group,
 			] );
 			$context->getOutput()->redirect( $newUserSurvey->getFullUrlForRedirect( $query ) );
 			$injected_html = '<!-- redirect to WelcomeSurvey -->';
