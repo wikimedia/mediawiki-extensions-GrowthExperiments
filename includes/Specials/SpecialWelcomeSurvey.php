@@ -180,7 +180,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 					$this->msg( 'welcomesurvey-sidebar-editing-title' )->text()
 				) .
 				$this->msg( 'welcomesurvey-sidebar-editing-text' )->parseAsBlock() .
-				$this->buildGettingStartedLinks() .
+				$this->buildGettingStartedLinks( 'confirmation' ) .
 				Html::rawElement(
 					'div',
 					[ 'class' => 'welcomesurvey-confirmation-buttons' ],
@@ -201,7 +201,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		$this->getOutput()->redirect( $title->getFullUrlForRedirect( $query ) );
 	}
 
-	private function buildGettingStartedLinks() {
+	private function buildGettingStartedLinks( $source ) {
 		$html = '<ul class="welcomesurvey-gettingstarted-links">';
 		for ( $i = 1; $i <= 4; $i++ ) {
 			$text = $this->msg( "welcomesurvey-sidebar-editing-link$i-text" );
@@ -210,13 +210,14 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 				continue;
 			}
 
+			$url = Title::newFromText( $title->text() )->getLinkURL( [ 'source' => $source ] );
 			$html .= Html::rawElement(
 				'li',
 				[ 'class' => 'mw-parser-output' ],
 				Html::element(
 					'a',
 					[
-						'href' => Title::newFromText( $title->text() )->getLinkURL(),
+						'href' => $url,
 						'target' => '_blank',
 						'class' => 'external',
 					],
@@ -261,7 +262,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 					[ 'class' => 'welcomesurvey-sidebar-section-text' ],
 					$this->msg( 'welcomesurvey-sidebar-editing-text' )->parseAsBlock()
 				) .
-				$this->buildGettingStartedLinks()
+				$this->buildGettingStartedLinks( 'survey' )
 			)
 		);
 	}
