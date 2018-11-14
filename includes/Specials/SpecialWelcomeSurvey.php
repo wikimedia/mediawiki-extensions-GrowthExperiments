@@ -59,18 +59,13 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 
 	/**
 	 * Overridden in order to inject the current user's name as message parameter
-	 * and to show a different title for the confirmation page.
 	 *
 	 * @return string
 	 */
 	public function getDescription() {
-		if ( $this->getRequest()->wasPosted() ) {
-			return $this->msg( 'welcomesurvey-save-confirmation-title' )->text();
-		} else {
-			return $this->msg( strtolower( $this->mName ) )
-				->params( $this->getUser()->getName() )
-				->text();
-		}
+		return $this->msg( strtolower( $this->mName ) )
+			->params( $this->getUser()->getName() )
+			->text();
 	}
 
 	/**
@@ -166,6 +161,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	}
 
 	private function showConfirmationPage( $to, $query ) {
+		$this->getOutput()->setPageTitle( $this->msg( 'welcomesurvey-save-confirmation-title' ) );
 		$title = Title::newFromText( $to ) ?: Title::newMainPage();
 		$this->getOutput()->addHTML(
 			Html::rawElement(
