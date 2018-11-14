@@ -54,6 +54,7 @@
 		// still thinks it's connected to the old widget.
 		checkboxesWidget.toggle( false );
 		checkboxesWidget.$element.after( menuTagWidget.$element );
+		fieldLayout.$element.show();
 	}
 
 	mw.hook( 'htmlform.enhance' ).add( function ( $root ) {
