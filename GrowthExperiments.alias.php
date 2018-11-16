@@ -13,9 +13,12 @@ $specialPageAliases['en'] = [
 	'WelcomeSurvey' => [ 'WelcomeSurvey' ],
 ];
 
+/** čeština (Czech) */
+$specialPageAliases['cs'] = [
+	'WelcomeSurvey' => [ 'Uvítací_dotazník', 'Uvitaci_dotaznik' ],
+];
+
 /** 한국어  (Korean) */
 $specialPageAliases['ko'] = [
 	'WelcomeSurvey' => [ '환영설문조사' ],
 ];
-
-// todo: cz
