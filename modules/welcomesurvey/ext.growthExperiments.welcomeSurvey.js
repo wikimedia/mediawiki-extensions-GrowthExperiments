@@ -29,6 +29,7 @@
 		// CheckboxMultiselectInputWidget up-to-date.
 		menuTagWidget.on( 'change', function () {
 			checkboxesWidget.setValue( menuTagWidget.getValue() );
+			menuTagWidget.toggleValid( true );
 		} );
 
 		menuTagWidget.on( 'add', function ( tagItemWidget ) {
@@ -58,26 +59,11 @@
 	}
 
 	mw.hook( 'htmlform.enhance' ).add( function ( $root ) {
-		var $dropdowns = $root.find( '.oo-ui-fieldLayout.custom-dropdown' );
-		if ( $dropdowns.length ) {
-			$dropdowns.each( function () {
-				var $el = $( this ),
-					data, modules, extraModules;
-				if ( $el.is( '[data-ooui]' ) ) {
-					// Load 'oojs-ui-widgets' for CapsuleMultiselectWidget
-					modules = [ 'mediawiki.htmlform.ooui', 'oojs-ui-widgets' ];
-					data = $el.data( 'mw-modules' );
-					if ( data ) {
-						// We can trust this value, 'data-mw-*' attributes are banned from user content in Sanitizer
-						extraModules = data.split( ',' );
-						modules.push.apply( modules, extraModules );
-					}
-					mw.loader.using( modules, function () {
-						convertCheckboxesWidgetToTags( OO.ui.FieldLayout.static.infuse( $el ) );
-					} );
-				}
-			} );
-		}
+		var $form = $root.find( 'form#welcome-survey-form' );
+
+		$form.find( '.oo-ui-fieldLayout.custom-dropdown' ).each( function () {
+			convertCheckboxesWidgetToTags( OO.ui.FieldLayout.static.infuse( $( this ) ) );
+		} );
 	} );
 
 } )( mw, jQuery );

@@ -47,6 +47,9 @@
 			"messages": [
 				"welcomesurvey-tagmultiselect-placeholder"
 			],
+			"dependencies": [
+				"oojs-ui-widgets"
+			],
 			"targets": [
 				"desktop",
 				"mobile"

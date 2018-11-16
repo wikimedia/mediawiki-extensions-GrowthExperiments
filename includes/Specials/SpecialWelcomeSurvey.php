@@ -106,6 +106,8 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	protected function alterForm( HTMLForm $form ) {
+		$form->setId( 'welcome-survey-form' );
+
 		// subtitle
 		$form->addHeaderText(
 			Html::rawElement(
@@ -126,6 +128,8 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		$form->addButton( [
 			'name' => 'skip',
 			'value' => 'skip',
+			'framed' => false,
+			'flags' => 'destructive',
 			'attribs' => [ 'class' => 'welcomesurvey-skip-btn' ],
 			'label-message' => 'welcomesurvey-skip-btn',
 		] );
