@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"growthexperiments-help-panel-tog-help-panel": "Enable the editor help panel",
+	"growthexperiments-help-panel-cta-button-text": "Get help with editing",
+	"growthexperiments-help-panel-question-button-text": "Ask a question",
+	"growthexperiments-help-panel-submit-question-button-text": "Submit my question",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "Basics of editing",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "View more articles on Help",
+	"growthexperiments-help-panel-question-widget-header": "Post your question to the Community Help Desk",
+	"growthexperiments-help-panel-question-placeholder": "I'd like some help with...",
+	"growthexperiments-help-panel-back-home": "Back",
+	"growthexperiments-help-panel-close": "Close",
+	"growthexperiments-help-panel-home-title": "Get help with editing",
+	"growthexperiments-help-panel-questionreview-title": "Ask a question",
+	"growthexperiments-help-panel-questionreview-header": "When you submit a question, it gets <strong>posted publicly</strong> under your username to the $1, where another volunteer editor will try to provide an answer within the next day or so.",
+	"growthexperiments-help-panel-questionreview-username": "Username",
+	"growthexperiments-help-panel-questionreview-email": "Email",
+	"growthexperiments-help-panel-questionreview-note": "NOTE: You’ll be notified via email when a response is posted, but your email address is <strong>always anonymous</strong>.",
+	"growthexperiments-help-panel-questionreview-label": "Your question",
+	"growthexperiments-help-panel-questionreview-include-article-title": "Include article title with my question",
+	"growthexperiments-help-panel-question-subject-template": "Editor help panel question from $1$2",
+	"growthexperiments-help-panel-question-post-error": "An error occurred when trying to post your question. You can try again or you can visit $1 in your browser and add your question manually.",
+	"growthexperiments-help-panel-questioncomplete-title": "Ask a question",
+	"growthexperiments-help-panel-questioncomplete-header": "Your question has been posted!",
+	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Your question is now on the Help desk for it to be answered by another volunteer editor.",
+	"growthexperiments-help-panel-questioncomplete-confirmation-email": "You will receive an email notification when a response is posted.",
+	"growthexperiments-help-panel-questioncomplete-view-link-text": "View your question on the Help Desk",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "More about this feature"
+}

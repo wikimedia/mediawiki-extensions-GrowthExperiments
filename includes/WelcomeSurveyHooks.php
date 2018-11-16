@@ -30,7 +30,7 @@ class WelcomeSurveyHooks {
 	 */
 	public static function onGetPreferences( $user, &$preferences ) {
 		if ( self::isWelcomeSurveyEnabled() ) {
-			$preferences[ 'welcomesurvey-responses' ] = [
+			$preferences['welcomesurvey-responses'] = [
 				'type' => 'api',
 			];
 		}

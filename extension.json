@@ -3,7 +3,9 @@
 	"descriptionmsg": "growthexperiments-desc",
 	"license-name": "GPL-3.0-or-later",
 	"author": [
-		"Stephane Bisson"
+		"Stephane Bisson",
+		"Kosta Harlan",
+		"Roan Kattouw"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:GrowthExperiments",
 	"requires": {
@@ -16,7 +18,8 @@
 		"GrowthExperiments": [
 			"i18n/extension",
 			"i18n/welcomesurvey",
-			"i18n/welcomesurvey/api"
+			"i18n/welcomesurvey/api",
+			"i18n/help"
 		]
 	},
 	"ExtensionMessagesFiles": {
@@ -29,14 +32,22 @@
 		"SpecialPage_initList": [
 			"GrowthExperiments\\WelcomeSurveyHooks::onSpecialPageInitList"
 		],
+		"UserGetDefaultOptions": [
+			"GrowthExperiments\\HelpPanelHooks::onUserGetDefaultOptions"
+		],
+		"LocalUserCreated": [
+			"GrowthExperiments\\HelpPanelHooks::onLocalUserCreated"
+		],
 		"GetPreferences": [
-			"GrowthExperiments\\WelcomeSurveyHooks::onGetPreferences"
+			"GrowthExperiments\\WelcomeSurveyHooks::onGetPreferences",
+			"GrowthExperiments\\HelpPanelHooks::onGetPreferences"
 		],
 		"BeforeWelcomeCreation": [
 			"GrowthExperiments\\WelcomeSurveyHooks::onBeforeWelcomeCreation"
 		],
 		"BeforePageDisplay": [
-			"GrowthExperiments\\WelcomeSurveyHooks::onBeforePageDisplay"
+			"GrowthExperiments\\WelcomeSurveyHooks::onBeforePageDisplay",
+			"GrowthExperiments\\HelpPanelHooks::onBeforePageDisplay"
 		]
 	},
 	"ResourceFileModulePaths": {
@@ -175,9 +186,88 @@
 				"desktop",
 				"mobile"
 			]
+		},
+		"ext.growthExperiments.HelpPanelCta.styles": {
+			"styles": [
+				"help/ext.growthExperiments.HelpPanelCta.less"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.growthExperiments.HelpPanel": {
+			"styles": [
+				"help/ext.growthExperiments.HelpPanel.less"
+			],
+			"scripts": [
+				"help/ext.growthExperiments.HelpPanel.cta.js",
+				"help/ext.growthExperiments.HelpPanelProcessDialog.js"
+			],
+			"dependencies": [
+				"oojs-ui-widgets",
+				"oojs-ui-windows",
+				"mediawiki.messagePoster",
+				"mediawiki.storage"
+			],
+			"messages": [
+				"growthexperiments-help-panel-cta-button-text",
+				"growthexperiments-help-panel-question-button-text",
+				"growthexperiments-help-panel-submit-question-button-text",
+				"growthexperiments-help-panel-editing-help-links-widget-header",
+				"growthexperiments-help-panel-editing-help-links-widget-view-more-link",
+				"growthexperiments-help-panel-question-widget-header",
+				"growthexperiments-help-panel-question-placeholder",
+				"growthexperiments-help-panel-back-home",
+				"growthexperiments-help-panel-close",
+				"growthexperiments-help-panel-home-title",
+				"growthexperiments-help-panel-questionreview-title",
+				"growthexperiments-help-panel-questionreview-header",
+				"growthexperiments-help-panel-questionreview-username",
+				"growthexperiments-help-panel-questionreview-email",
+				"growthexperiments-help-panel-questionreview-note",
+				"growthexperiments-help-panel-questionreview-label",
+				"growthexperiments-help-panel-questionreview-include-article-title",
+				"growthexperiments-help-panel-question-subject-template",
+				"growthexperiments-help-panel-question-post-error",
+				"growthexperiments-help-panel-questioncomplete-title",
+				"growthexperiments-help-panel-questioncomplete-header",
+				"growthexperiments-help-panel-questioncomplete-confirmation-text",
+				"growthexperiments-help-panel-questioncomplete-confirmation-email",
+				"growthexperiments-help-panel-questioncomplete-view-link-text",
+				"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
 		}
 	},
 	"config": {
+		"GEHelpPanelNamespaces": {
+			"description": "MediaWiki namespaces that the help panel can be displayed in.",
+			"value": [ 0 ]
+		},
+		"GEHelpPanelNewAccountEnableProportion": {
+			"description": "Proportion of new accounts to enable help panel for. 1 = 100%, 2 = 50%, 20 = 5%, etc.",
+			"value": 2
+		},
+		"GEHelpPanelHelpDeskTitle": {
+			"description": "Mediawiki title for help panel CTA when users have disabled JS.",
+			"value": "Main_Page"
+		},
+		"GEHelpPanelViewMoreTitle": {
+			"description": "MediaWiki title for view more articles on help link.",
+			"value": "Main_Page"
+		},
+		"GEHelpPanelEnabled": {
+			"description": "Global ON/OFF switch for the Help pane feature.",
+			"value": false
+		},
+		"GEHelpPanelLinks": {
+			"description": "List of links to display in the help panel.",
+			"value": []
+		},
 		"WelcomeSurveyEnabled": {
 			"description": "Global ON/OFF switch for the Welcome survey feature.",
 			"value": false
