@@ -69,6 +69,13 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function doesWrites() {
+		return true;
+	}
+
+	/**
 	 * Get an HTMLForm descriptor array
 	 * @return array
 	 */
