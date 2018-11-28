@@ -1,7 +1,7 @@
 // Most of the code in this file was copied from 'multiselect.js'
 // in order to support 'allowArbitrary' and 'placeholder'
 
-( function ( mw, $ ) {
+( function () {
 
 	function convertCheckboxesWidgetToTags( fieldLayout ) {
 		var checkboxesWidget, checkboxesOptions, menuTagOptions, menuTagWidget;
@@ -25,8 +25,8 @@
 		} );
 		menuTagWidget.setValue( checkboxesWidget.getValue() );
 
-		// Data from CapsuleMultiselectWidget will not be submitted with the form, so keep the original
-		// CheckboxMultiselectInputWidget up-to-date.
+		// Data from CapsuleMultiselectWidget will not be submitted with the form,
+		// so keep the original CheckboxMultiselectInputWidget up-to-date.
 		menuTagWidget.on( 'change', function () {
 			checkboxesWidget.setValue( menuTagWidget.getValue() );
 			menuTagWidget.toggleValid( true );
@@ -51,8 +51,8 @@
 			}
 		} );
 
-		// Hide original widget and add new one in its place. This is a bit hacky, since the FieldLayout
-		// still thinks it's connected to the old widget.
+		// Hide original widget and add new one in its place. This is a bit hacky,
+		// since the FieldLayout still thinks it's connected to the old widget.
 		checkboxesWidget.toggle( false );
 		checkboxesWidget.$element.after( menuTagWidget.$element );
 		fieldLayout.$element.show();
@@ -66,4 +66,4 @@
 		} );
 	} );
 
-} )( mw, jQuery );
+}() );
