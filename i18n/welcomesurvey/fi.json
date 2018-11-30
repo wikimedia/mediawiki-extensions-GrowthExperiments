@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pyscowicz"
+		]
+	},
+	"welcomesurvey-popup-close-btn": "Sulje",
+	"welcomesurvey-back-btn": "Takaisin",
+	"welcomesurvey-next-btn": "Seuraava"
+}
