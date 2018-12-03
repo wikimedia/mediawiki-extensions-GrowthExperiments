@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"apihelp-welcomesurveyhandleresponses-summary": "Handle Welcome Survey responses for the current user.",
+	"apihelp-welcomesurveyhandleresponses-param-surveyaction": "Action that was selected by the user on the Welcome Survey. Can be 'save' or 'skip'.",
+	"apihelp-welcomesurveyhandleresponses-param-group": "Experimental group associated with the Welcome Survey.",
+	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "Timestamp of when the survey was shown to the user.",
+	"apihelp-welcomesurveyhandleresponses-param-responses": "Object containing the question names as keys and responses as values. In JSON format."
+}

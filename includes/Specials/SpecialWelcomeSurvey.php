@@ -95,8 +95,8 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		}
 
 		// Transform questions
-		// The only transformation is multiselect with allowArbitrary
 		foreach ( $questions as &$question ) {
+			// Custom class for multiselect with allowArbitrary
 			if (
 				$question[ 'type' ] === 'multiselect' &&
 				isset( $question[ 'allowArbitrary' ] ) &&
@@ -104,6 +104,22 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 			) {
 				unset( $question[ 'type' ] );
 				$question[ 'class' ] = HTMLMultiSelectFieldAllowArbitrary::class;
+				continue;
+			}
+
+			// Add select options for 'placeholder' and 'other'
+			if ( $question[ 'type' ] === 'select' ) {
+				if ( isset( $question[ 'placeholder-message' ] ) ) {
+					// Add 'placeholder' as the first options
+					$question['options-messages'] = [ $question['placeholder-message'] => 'placeholder' ] +
+						$question['options-messages'];
+				}
+				if ( isset( $question[ 'other-message' ] ) ) {
+					// Add 'other' as the last options
+					$question['options-messages'] = $question['options-messages'] +
+						[ $question[ 'other-message' ] => 'other' ];
+				}
+				continue;
 			}
 		}
 		return $questions;
@@ -153,12 +169,19 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	public function onSubmit( array $data ) {
 		$request = $this->getRequest();
 		$save = $request->getVal( 'save' );
+		$group = $request->getVal( '_group' );
+		$renderDate = $request->getVal( '_render_date' );
 		$redirectParams = wfCgiToArray( $request->getVal( 'redirectparams', '' ) );
 		$returnTo = $redirectParams[ 'returnto' ] ?? '';
 		$returnToQuery = $redirectParams[ 'returntoquery' ] ?? '';
 
 		$welcomeSurvey = new WelcomeSurvey( $this->getContext() );
-		$welcomeSurvey->handleResponses( $data, $save );
+		$welcomeSurvey->handleResponses(
+			$data,
+			$save,
+			$group,
+			$renderDate
+		);
 
 		if ( $save ) {
 			// show confirmation page

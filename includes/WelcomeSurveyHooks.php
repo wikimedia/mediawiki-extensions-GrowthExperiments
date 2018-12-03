@@ -4,11 +4,12 @@ namespace GrowthExperiments;
 
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
 use MediaWiki\MediaWikiServices;
+use OutputPage;
 use RequestContext;
-use SpecialPage;
+use Skin;
 use User;
 
-class Hooks {
+class WelcomeSurveyHooks {
 
 	/**
 	 * Register WelcomeSurvey special page.
@@ -40,7 +41,6 @@ class Hooks {
 	 *
 	 * @param string &$welcome_creation_msg
 	 * @param string &$injected_html
-	 * @throws \MWException
 	 */
 	public static function onBeforeWelcomeCreation( &$welcome_creation_msg, &$injected_html ) {
 		if ( !self::isWelcomeSurveyEnabled() ) {
@@ -51,17 +51,38 @@ class Hooks {
 		$welcomeSurvey = new WelcomeSurvey( $context );
 		$group  = $welcomeSurvey->getGroup();
 		$welcomeSurvey->saveGroup( $group );
-		$questions = $welcomeSurvey->getQuestions( $group );
-		if ( $questions ) {
-			$request = $context->getRequest();
-			$newUserSurvey = SpecialPage::getTitleFor( 'WelcomeSurvey' );
-			$query = wfArrayToCgi( [
-				'returnto' => $request->getVal( 'returnto' ),
-				'returntoquery' => $request->getVal( 'returntoquery' ),
-				'group' => $group,
+		$url = $welcomeSurvey->getRedirectUrl( $group );
+		if ( $url ) {
+			$context->getOutput()->redirect( $url );
+		}
+	}
+
+	/**
+	 *
+	 * Add module for WelcomeSurveyPopup
+	 *
+	 * @param OutputPage $out
+	 * @param Skin $skin
+	 */
+	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
+		if ( !self::isWelcomeSurveyEnabled() ) {
+			return;
+		}
+
+		if ( $out->getTitle()->isSpecial( 'CreateAccount' ) ) {
+			$out->addModules( 'ext.growthExperiments.detectjs' );
+			return;
+		}
+
+		if ( $out->getRequest()->getBool( 'showwelcomesurvey' ) && $out->getUser()->isLoggedIn() ) {
+			$welcomeSurvey = new WelcomeSurvey( $out->getContext() );
+			$group = $welcomeSurvey->getGroup();
+			$out->addJsConfigVars( [
+				'wgWelcomeSurveyPrivacyPolicyUrl' => $out->getConfig()->get( 'WelcomeSurveyPrivacyPolicyUrl' ),
+				'wgWelcomeSurveyQuestions' => $welcomeSurvey->getQuestions( $group, false ),
+				'wgWelcomeSurveyExperimentalGroup' => $group,
 			] );
-			$context->getOutput()->redirect( $newUserSurvey->getFullUrlForRedirect( $query ) );
-			$injected_html = '<!-- redirect to WelcomeSurvey -->';
+			$out->addModules( 'ext.growthExperiments.welcomesurvey.popup' );
 		}
 	}
 

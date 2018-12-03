@@ -15,16 +15,29 @@
 	"MessagesDirs": {
 		"GrowthExperiments": [
 			"i18n/extension",
-			"i18n/welcomesurvey"
+			"i18n/welcomesurvey",
+			"i18n/welcomesurvey/api"
 		]
 	},
 	"ExtensionMessagesFiles": {
 		"GrowthExperimentsAlias": "GrowthExperiments.alias.php"
 	},
+	"APIModules": {
+		"welcomesurveyhandleresponses": "GrowthExperiments\\Api\\ApiWelcomeSurveyHandleResponses"
+	},
 	"Hooks": {
-		"SpecialPage_initList": "GrowthExperiments\\Hooks::onSpecialPageInitList",
-		"GetPreferences": "GrowthExperiments\\Hooks::onGetPreferences",
-		"BeforeWelcomeCreation": "GrowthExperiments\\Hooks::onBeforeWelcomeCreation"
+		"SpecialPage_initList": [
+			"GrowthExperiments\\WelcomeSurveyHooks::onSpecialPageInitList"
+		],
+		"GetPreferences": [
+			"GrowthExperiments\\WelcomeSurveyHooks::onGetPreferences"
+		],
+		"BeforeWelcomeCreation": [
+			"GrowthExperiments\\WelcomeSurveyHooks::onBeforeWelcomeCreation"
+		],
+		"BeforePageDisplay": [
+			"GrowthExperiments\\WelcomeSurveyHooks::onBeforePageDisplay"
+		]
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
@@ -54,6 +67,114 @@
 				"desktop",
 				"mobile"
 			]
+		},
+		"ext.growthExperiments.detectjs": {
+			"scripts": [
+				"detectjs/detectjs.js"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.growthExperiments.welcomesurvey.popup": {
+			"styles": [
+				"welcomesurvey/popup/styles/ext.growthExperiments.welcomeSurveyPopup.less"
+			],
+			"scripts": [
+				"welcomesurvey/popup/ui/ext.growthExperiments.GettingStartedLinksWidget.js",
+				"welcomesurvey/popup/ui/ext.growthExperiments.PrivacyNoticeWidget.js",
+				"welcomesurvey/popup/ui/ext.growthExperiments.RadioSelectWithInputWidget.js",
+				"welcomesurvey/popup/ui/ext.growthExperiments.StackNavigatorWidget.js",
+				"welcomesurvey/popup/ui/ext.growthExperiments.StackPositionIndicatorWidget.js",
+				"welcomesurvey/popup/ui/ext.growthExperiments.WelcomeSurveyConfirmationDialog.js",
+				"welcomesurvey/popup/ui/ext.growthExperiments.WelcomeSurveyDialog.js",
+				"welcomesurvey/popup/ext.growthExperiments.welcomeSurveyPopup.init.js"
+			],
+			"dependencies": [
+				"mediawiki.user",
+				"mediawiki.jqueryMsg",
+				"oojs-ui-widgets",
+				"oojs-ui-windows"
+			],
+			"messages": [
+				"welcomesurvey",
+				"welcomesurvey-save-confirmation-title",
+				"welcomesurvey-save-confirmation-text",
+				"welcomesurvey-subtitle",
+				"welcomesurvey-save-btn",
+				"welcomesurvey-skip-btn",
+				"welcomesurvey-close-btn",
+				"welcomesurvey-popup-close-btn",
+				"welcomesurvey-back-btn",
+				"welcomesurvey-next-btn",
+				"welcomesurvey-sidebar-privacy-title",
+				"welcomesurvey-sidebar-privacy-text",
+				"welcomesurvey-privacy-policy-link-text",
+				"welcomesurvey-sidebar-editing-title",
+				"welcomesurvey-sidebar-editing-text",
+				"welcomesurvey-sidebar-editing-link1-text",
+				"welcomesurvey-sidebar-editing-link1-title",
+				"welcomesurvey-sidebar-editing-link2-text",
+				"welcomesurvey-sidebar-editing-link2-title",
+				"welcomesurvey-sidebar-editing-link3-text",
+				"welcomesurvey-sidebar-editing-link3-title",
+				"welcomesurvey-sidebar-editing-link4-text",
+				"welcomesurvey-sidebar-editing-link4-title",
+				"welcomesurvey-tagmultiselect-placeholder",
+				"welcomesurvey-question-reason-label",
+				"welcomesurvey-dropdown-option-select-label",
+				"welcomesurvey-question-reason-option-edit-typo-label",
+				"welcomesurvey-question-reason-option-edit-info-label",
+				"welcomesurvey-question-reason-option-new-page-label",
+				"welcomesurvey-question-reason-option-read-label",
+				"welcomesurvey-question-reason-option-other-label",
+				"welcomesurvey-question-reason-other-placeholder",
+				"welcomesurvey-question-mentor-info",
+				"welcomesurvey-question-mentor-label",
+				"welcomesurvey-question-edited-label",
+				"welcomesurvey-question-edited-option-yes-many-label",
+				"welcomesurvey-question-edited-option-yes-few-label",
+				"welcomesurvey-question-edited-option-no-dunno-label",
+				"welcomesurvey-question-edited-option-no-other-label",
+				"welcomesurvey-question-edited-option-dont-remember-label",
+				"welcomesurvey-question-email-label",
+				"welcomesurvey-question-email-placeholder",
+				"welcomesurvey-question-email-help",
+				"welcomesurvey-question-topics-label",
+				"welcomesurvey-question-topics-other-placeholder",
+				"welcomesurvey-question-topics-option-arts",
+				"welcomesurvey-question-topics-option-science",
+				"welcomesurvey-question-topics-option-geography",
+				"welcomesurvey-question-topics-option-history",
+				"welcomesurvey-question-topics-option-music",
+				"welcomesurvey-question-topics-option-sports",
+				"welcomesurvey-question-topics-option-literature",
+				"welcomesurvey-question-topics-option-religion",
+				"welcomesurvey-question-topics-option-popular-culture",
+				"welcomesurvey-question-topics-option-entertainment",
+				"welcomesurvey-question-topics-option-food-drink",
+				"welcomesurvey-question-topics-option-biography",
+				"welcomesurvey-question-topics-option-military",
+				"welcomesurvey-question-topics-option-economics",
+				"welcomesurvey-question-topics-option-technology",
+				"welcomesurvey-question-topics-option-film",
+				"welcomesurvey-question-topics-option-philosophy",
+				"welcomesurvey-question-topics-option-business",
+				"welcomesurvey-question-topics-option-politics",
+				"welcomesurvey-question-topics-option-government",
+				"welcomesurvey-question-topics-option-engineering",
+				"welcomesurvey-question-topics-option-crafts-hobbies",
+				"welcomesurvey-question-topics-option-games",
+				"welcomesurvey-question-topics-option-health",
+				"welcomesurvey-question-topics-option-social-science",
+				"welcomesurvey-question-topics-option-transportation",
+				"welcomesurvey-question-topics-option-education"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
 		}
 	},
 	"config": {
@@ -66,10 +187,11 @@
 			"value": "https://foundation.wikimedia.org/wiki/New_User_Welcome_Survey_Privacy_Statement"
 		},
 		"WelcomeSurveyExperimentalGroups": {
-			"description": "List of experimental groups. An group is a list of questions shown to users randomly matching the selector.",
+			"description": "List of experimental groups. A group is defined with a range to randomly match users and the list of questions they will see on the survey.",
 			"value": {
 				"exp1_group1": {
 					"range": "0-4",
+					"format": "specialpage",
 					"questions": [
 						"reason",
 						"reason-other",
@@ -85,6 +207,39 @@
 				"exp1_group2": {
 					"range": "5-9",
 					"questions": []
+				},
+				"exp2_control": {
+					"range": "x",
+					"questions": []
+				},
+				"exp2_target_specialpage": {
+					"range": "x",
+					"format": "specialpage",
+					"questions": [
+						"reason",
+						"reason-other",
+						"edited",
+						"topics",
+						"topics-other-nojs",
+						"topics-other-js",
+						"email",
+						"mentor-info",
+						"mentor"
+					]
+				},
+				"exp2_target_popup": {
+					"range": "x",
+					"format": "popup",
+					"nojs-fallback": "exp2_target_specialpage",
+					"questions": [
+						"reason",
+						"edited",
+						"topics",
+						"topics-other-js",
+						"email",
+						"mentor-info",
+						"mentor"
+					]
 				}
 			}
 		}
