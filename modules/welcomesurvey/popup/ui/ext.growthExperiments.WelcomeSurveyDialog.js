@@ -298,6 +298,9 @@
 					};
 				} )
 			} );
+			multiselect.on( 'change', function () {
+				multiselect.toggleValid( true );
+			} );
 			this.registerResponse( config.name, function () {
 				return multiselect.getValue();
 			} );

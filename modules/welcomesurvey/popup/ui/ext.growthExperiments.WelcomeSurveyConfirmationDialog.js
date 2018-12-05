@@ -10,7 +10,10 @@
 	 */
 	function WelcomeSurveyConfirmationDialog( config ) {
 		WelcomeSurveyConfirmationDialog.parent.call( this, {
-			classes: [ 'welcome-survey-confirmation-dialog' ],
+			classes: [
+				'welcome-survey-confirmation-dialog',
+				OO.ui.isMobile() ? 'welcome-survey-confirmation-dialog-mobile' : null
+			],
 			size: 'large'
 		} );
 		this.privacyStatementUrl = config.privacyStatementUrl;
@@ -41,7 +44,9 @@
 			new mw.libs.ge.WelcomeSurvey.PrivacyNoticeWidget(
 				{ url: this.privacyStatementUrl }
 			).$element,
-			$( '<h4>' ).text( mw.msg( 'welcomesurvey-sidebar-editing-title' ) ),
+			$( '<h4>' )
+				.addClass( 'welcome-survey-confirmation-dialog-new-section-title' )
+				.text( mw.msg( 'welcomesurvey-sidebar-editing-title' ) ),
 			$( '<p>' ).text( mw.msg( 'welcomesurvey-sidebar-editing-text' ) ),
 			new mw.libs.ge.WelcomeSurvey.GettingStartedLinksWidget( 'confirmation-popup' ).$element
 		);
