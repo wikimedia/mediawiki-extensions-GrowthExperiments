@@ -235,7 +235,9 @@
 				"growthexperiments-help-panel-questioncomplete-confirmation-text",
 				"growthexperiments-help-panel-questioncomplete-confirmation-email",
 				"growthexperiments-help-panel-questioncomplete-view-link-text",
-				"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text"
+				"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text",
+				"growthexperiments-help-panel-tog-help-panel",
+				"growthexperiments-help-panel-settings-cog-tooltip"
 			],
 			"targets": [
 				"desktop",

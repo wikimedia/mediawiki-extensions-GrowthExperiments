@@ -27,5 +27,6 @@
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Your question is now on the Community Help Desk for it to be answered by another volunteer editor.",
 	"growthexperiments-help-panel-questioncomplete-confirmation-email": "You will receive an email notification when a response is posted, likely within a day or so.",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "View your question on the Help Desk",
-	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "More about this feature"
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "More about this feature",
+	"growthexperiments-help-panel-settings-cog-tooltip": "This button will take you to Special:Preferences, where you can toggle the setting for \"{{int:growthexperiments-help-panel-tog-help-panel}}\""
 }

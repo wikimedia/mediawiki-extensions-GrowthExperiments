@@ -27,5 +27,6 @@
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Confirmation text to the user that their question was posted successfully through the help panel.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questioncomplete-confirmation-email": "Confirmation to the user that they will receive an email notification when a response is posted.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Text to display with the link to the question the user posted through the help panel.\n\n{{doc-growthexperiments-help-panel}}",
-	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Text to display with the More about this feature link.\n\n{{doc-growthexperiments-help-panel}}"
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Text to display with the More about this feature link.\n\n{{doc-growthexperiments-help-panel}}",
+	"growthexperiments-help-panel-settings-cog-tooltip": "Text to show in the tooltip that redirects the user to uncheck {{int:growthexperiments-help-panel-tog-help-panel}} in Special:Preferences.\n\n{{doc-growthexperiments-help-panel}}"
 }
