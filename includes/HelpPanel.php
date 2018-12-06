@@ -52,8 +52,8 @@ class HelpPanel {
 		if ( !self::isHelpPanelEnabled() ) {
 			return false;
 		}
-		if ( !in_array( $out->getTitle()->getNamespace(),
-			$out->getConfig()->get( 'GEHelpPanelNamespaces' ) ) ) {
+		if ( in_array( $out->getTitle()->getNamespace(),
+			$out->getConfig()->get( 'GEHelpPanelExcludedNamespaces' ) ) ) {
 			return false;
 		}
 		// Ensure the help desk title is valid.
