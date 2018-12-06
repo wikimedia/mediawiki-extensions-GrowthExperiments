@@ -101,7 +101,7 @@
 			$( '<div>' )
 				.addClass( 'privacy-section' )
 				.append(
-					$( '<h4>' ).addClass( 'section-title' ).text( mw.msg( 'welcomesurvey-sidebar-privacy-title' ) ),
+					$( '<div>' ).addClass( 'section-title' ).text( mw.msg( 'welcomesurvey-sidebar-privacy-title' ) ),
 					new mw.libs.ge.WelcomeSurvey.PrivacyNoticeWidget( {
 						url: this.privacyStatementUrl,
 						classes: [ 'section-text' ]
@@ -110,7 +110,7 @@
 			$( '<div>' )
 				.addClass( 'editing-section' )
 				.append(
-					$( '<h4>' ).addClass( 'section-title' ).text( mw.msg( 'welcomesurvey-sidebar-editing-title' ) ),
+					$( '<div>' ).addClass( 'section-title' ).text( mw.msg( 'welcomesurvey-sidebar-editing-title' ) ),
 					$( '<p>' ).addClass( 'section-text' ).text( mw.msg( 'welcomesurvey-sidebar-editing-text' ) ),
 					new mw.libs.ge.WelcomeSurvey.GettingStartedLinksWidget( 'survey-popup' ).$element
 				)
