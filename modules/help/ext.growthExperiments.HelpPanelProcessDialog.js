@@ -113,6 +113,7 @@
 		this.questionTextInput = new OO.ui.MultilineTextInputWidget( {
 			placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' ).text(),
 			multiline: true,
+			maxLength: 2000,
 			maxRows: 3,
 			value: mw.storage.get( 'help-panel-question-text' ),
 			spellcheck: true,
@@ -122,6 +123,7 @@
 		this.questionReviewTextInput = new OO.ui.MultilineTextInputWidget( {
 			placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' ).text(),
 			multiline: true,
+			maxLength: 2000,
 			maxRows: 3,
 			spellcheck: true,
 			required: true,
