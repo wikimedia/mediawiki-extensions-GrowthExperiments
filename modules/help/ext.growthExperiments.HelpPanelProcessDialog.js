@@ -358,6 +358,17 @@
 							'growthexperiments-help-panel-question-post-error', mw.config.get( 'wgGEHelpPanelHelpDeskLink' )
 						).parse() ) ) ).promise();
 					}.bind( this ) ).then( function () {
+						// Avoid making extra API requests by using the wgUserEditCount. The
+						// count might not be 100% accurate since the user could make edits in
+						// a separate tab, or post a second question through the help panel, etc.
+						// @todo redo this along with T211370.
+						if ( mw.config.get( 'wgUserEditCount' ) === 0 ) {
+							this.questionCompleteContent.addItems( [
+								new OO.ui.LabelWidget( {
+									label: mw.message( 'growthexperiments-help-panel-questioncomplete-first-edit' ).text()
+								} )
+							] );
+						}
 						this.swapPanel( action );
 						this.questionTextInput.setValue( '' );
 					}.bind( this ) );
