@@ -43,6 +43,7 @@ class HelpPanelHooks {
 	 *
 	 * @param User $user
 	 * @param bool $autocreated
+	 * @throws \ConfigException
 	 */
 	public static function onLocalUserCreated( User $user, $autocreated ) {
 		// Enable the help panel for 50% of non-autocreated users.
@@ -75,7 +76,8 @@ class HelpPanelHooks {
 		// add the email config var anyway. We'll need it if the user loads an editor via JS.
 		if ( HelpPanel::shouldShowHelpPanel( $out, false ) ) {
 			$out->addJsConfigVars( [
-				'wgGEHelpPanelEmail' => $out->getUser()->getEmail(),
+				'wgGEHelpPanelUserEmail' => $out->getUser()->getEmail(),
+				'wgGEHelpPanelUserEmailConfirmed' => $out->getUser()->isEmailConfirmed()
 			] );
 		}
 	}

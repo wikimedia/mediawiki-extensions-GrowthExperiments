@@ -235,12 +235,18 @@
 				"growthexperiments-help-panel-questioncomplete-title",
 				"growthexperiments-help-panel-questioncomplete-header",
 				"growthexperiments-help-panel-questioncomplete-confirmation-text",
-				"growthexperiments-help-panel-questioncomplete-confirmation-email",
+				"growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed",
+				"growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed",
+				"growthexperiments-help-panel-questioncomplete-confirmation-email-none",
 				"growthexperiments-help-panel-questioncomplete-view-link-text",
 				"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text",
 				"growthexperiments-help-panel-tog-help-panel",
 				"growthexperiments-help-panel-settings-cog-tooltip",
-				"growthexperiments-help-panel-questioncomplete-first-edit"
+				"growthexperiments-help-panel-questioncomplete-first-edit",
+				"growthexperiments-help-panel-questionreview-unconfirmed-email-note",
+				"growthexperiments-help-panel-questionreview-add-email-placeholder",
+				"growthexperiments-help-panel-questionreview-email-optional",
+				"growthexperiments-help-panel-questionreview-no-email-note"
 			],
 			"targets": [
 				"desktop",

@@ -79,14 +79,41 @@
 	 * Connected to the questionReviewTextInput field.
 	 */
 	HelpPanelProcessDialog.prototype.onTextInputChange = function () {
-		var reviewTextInputValue = this.questionReviewTextInput.getValue();
-		// Enable the "Submit" button on the review step if there's text input.
-		this.questionReviewSubmitButton.setDisabled( !reviewTextInputValue );
+		var reviewTextInputValue = this.questionReviewTextInput.getValue(),
+			emailInputEmpty = !this.questionReviewAddEmail.getValue(),
+			emailInputIsValid = this.questionReviewAddEmail.getValue() &&
+				this.questionReviewAddEmailIsValid;
+		// Enable the "Submit" button on the review step if there's text input,
+		// and if the email input field is valid or empty.
+		if ( emailInputEmpty || emailInputIsValid ) {
+			this.questionReviewSubmitButton.setDisabled( !reviewTextInputValue );
+		}
 		// Copy the review text input back to the initial question field, in case the
 		// user clicks "back".
 		this.questionTextInput.setValue( reviewTextInputValue );
 		// Save the draft text in local storage in case the user reloads their page.
 		mw.storage.set( 'help-panel-question-text', reviewTextInputValue );
+	};
+
+	/**
+	 * Connected to the change event on this.questionReviewAddEmail.
+	 */
+	HelpPanelProcessDialog.prototype.onEmailInput = function () {
+		var reviewTextInputValue = this.questionReviewTextInput.getValue();
+		// If user has typed in the email field, disable the submit button until the
+		// email address is valid.
+		if ( this.questionReviewAddEmail.getValue() ) {
+			this.questionReviewAddEmail.getValidity()
+				.then( function () {
+					// Enable depending on whether the question text is input.
+					this.questionReviewSubmitButton.setDisabled( !reviewTextInputValue );
+					this.questionReviewAddEmailIsValid = true;
+				}.bind( this ), function () {
+					// Always disable if email is invalid.
+					this.questionReviewSubmitButton.setDisabled( true );
+					this.questionReviewAddEmailIsValid = false;
+				}.bind( this ) );
+		}
 	};
 
 	/**
@@ -96,7 +123,75 @@
 		this.questionReviewTextInput.setValue( this.questionTextInput.getValue() );
 	};
 
+	/**
+	 * Set relevant email fields.
+	 *
+	 * @param {string} email
+	 *   The user email, or empty string if not set.
+	 * @param {bool} isEmailConfirmed
+	 *   If the user's email is confirmed.
+	 * @param {string} panel
+	 *  One of 'questionreview' or 'questioncomplete'
+	 */
+	HelpPanelProcessDialog.prototype.setEmailFields = function ( email, isEmailConfirmed, panel ) {
+		// Default to no email.
+		var questionCompleteNotificationsLabelKey = 'growthexperiments-help-panel-questioncomplete-confirmation-email-none';
+		if ( panel === 'questionreview' ) {
+			// User doesn't have email or it isn't confirmed, provide an input and help.
+			if ( !email || !isEmailConfirmed ) {
+				this.questionReviewContent.addItems( [
+					new OO.ui.FieldLayout( this.questionReviewAddEmail, {
+						label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-email-optional' ).text() ),
+						align: 'top',
+						help: !email ?
+							new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-no-email-note' ).parse() ) :
+							new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-unconfirmed-email-note' ).parse() ),
+						helpInline: true
+					} )
+				] );
+			}
+			// Output the user's email and help about notifications.
+			if ( email && isEmailConfirmed ) {
+				this.questionReviewContent.addItems( [
+					new OO.ui.FieldLayout(
+						new OO.ui.Widget( {
+							content: [
+								new OO.ui.Element( {
+									$content: $( '<p>' ).text( email )
+								} )
+							]
+						} ),
+						{
+							label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-email' ).text() ),
+							align: 'top',
+							helpInline: true,
+							help: new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-note' ).parse() )
+						}
+					)
+				] );
+			}
+		}
+
+		if ( panel === 'questioncomplete' ) {
+			if ( email ) {
+				questionCompleteNotificationsLabelKey = 'growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed';
+				if ( isEmailConfirmed ) {
+					questionCompleteNotificationsLabelKey = 'growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed';
+				}
+			}
+			this.questionCompleteContent.addItems( [
+				new OO.ui.LabelWidget( {
+					label: new OO.ui.HtmlSnippet(
+						mw.message( questionCompleteNotificationsLabelKey ).parse()
+					)
+				} )
+			] );
+		}
+	};
+
 	HelpPanelProcessDialog.prototype.initialize = function () {
+		var userEmail = mw.config.get( 'wgGEHelpPanelUserEmail' ),
+			userEmailConfirmed = mw.config.get( 'wgGEHelpPanelUserEmailConfirmed' );
 		HelpPanelProcessDialog.super.prototype.initialize.call( this );
 
 		/**
@@ -149,6 +244,13 @@
 			value: 1,
 			selected: true
 		} );
+
+		this.questionReviewAddEmail = new OO.ui.TextInputWidget( {
+			placeholder: mw.message( 'growthexperiments-help-panel-questionreview-add-email-placeholder' ).text(),
+			value: userEmail,
+			type: 'email'
+		} ).connect( this, { change: 'onEmailInput' } );
+		this.questionReviewAddEmailIsValid = false;
 
 		// Build home content of help panel.
 		this.homeContent = new OO.ui.FieldsetLayout();
@@ -214,31 +316,15 @@
 					).parse() )
 			} )
 		] );
-		if ( mw.config.get( 'wgGEHelpPanelEmail' ) ) {
-			this.questionReviewContent.addItems( [
-				new OO.ui.Element( {
-					$content: $( '<p>' )
-						.append( $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-email' ).text() ) )
-						.append( $( '<p>' ).text( mw.config.get( 'wgGEHelpPanelEmail' ) ) )
-				} ),
-				new OO.ui.LabelWidget( {
-					label: $( '<small>' )
-						.html( mw.message( 'growthexperiments-help-panel-questionreview-note' ).parse() )
-				} )
-			] );
-		}
+
+		this.setEmailFields( userEmail, userEmailConfirmed, 'questionreview' );
+
 		this.questionReviewContent.addItems( [
 			new OO.ui.FieldLayout(
-				new OO.ui.Widget( {
-					content: [
-						this.questionReviewTextInput
-					]
-				} ),
-				{
+				this.questionReviewTextInput, {
 					label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-label' ).text() ),
 					align: 'top'
-				}
-			),
+				} ),
 			new OO.ui.FieldLayout(
 				this.questionIncludeTitleCheckbox, {
 					label: mw.message( 'growthexperiments-help-panel-questionreview-include-article-title' ).text(),
@@ -257,7 +343,8 @@
 		this.questionReviewFooterFieldset = new OO.ui.FieldsetLayout();
 		this.questionReviewSubmitButton = new OO.ui.ButtonWidget( {
 			label: mw.message( 'growthexperiments-help-panel-submit-question-button-text' ).text(),
-			disabled: true,
+			// Enable if there is text in local storage; disabled by default otherwise.
+			disabled: !mw.storage.get( 'help-panel-question-text' ),
 			// Inherit classes from primary action, to position the button on the right.
 			classes: [ 'oo-ui-processDialog-actions-primary' ],
 			flags: [ 'primary', 'progressive' ]
@@ -288,13 +375,8 @@
 					.text( mw.message( 'growthexperiments-help-panel-questioncomplete-confirmation-text' ).text() )
 			} )
 		] );
-		if ( mw.config.get( 'wgGEHelpPanelEmail' ) ) {
-			this.questionCompleteContent.addItems( [
-				new OO.ui.LabelWidget( {
-					label: $( '<p>' ).text( mw.message( 'growthexperiments-help-panel-questioncomplete-confirmation-email' ).text() )
-				} )
-			] );
-		}
+		this.setEmailFields( userEmail, userEmailConfirmed, 'questioncomplete' );
+
 		this.questionCompleteContent.addItems( [
 			// For now this links to the talk page, not the actual heading that was added by
 			// the user, since MessagePoster does not return that for us.
@@ -338,6 +420,9 @@
 				if ( action === 'questioncomplete' ) {
 					// Needed to disable the primary button.
 					this.questionReviewSubmitButton.setDisabled( true );
+					// @todo T211370 Save the user's email when API module is ready.
+					// @todo T211370 Send verification email for unverified emails when API
+					// module is ready.
 					messagePosterPromise = mw.messagePoster.factory.create(
 						mw.Title.newFromText( mw.config.get( 'wgGEHelpPanelHelpDeskTitle' ) )
 					);
