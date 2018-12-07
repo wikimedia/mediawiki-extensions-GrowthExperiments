@@ -64,13 +64,12 @@
 			$sidePanelContent,
 			sidePanel,
 			menuLayout,
-			questionPanels,
-			mainPanel;
+			questionPanels;
 
 		WelcomeSurveyDialog.parent.prototype.initialize.apply( this, arguments );
 
 		questionPanels = this.buildQuestionPanels( this.questionsConfig );
-		mainPanel = new OO.ui.PanelLayout( { padded: true, scrollable: true, classes: [ 'welcomesurvey-main' ] } );
+		this.mainPanel = new OO.ui.PanelLayout( { padded: true, scrollable: true, classes: [ 'welcomesurvey-main' ] } );
 		this.questionsLayout = new OO.ui.StackLayout( {
 			expanded: false,
 			scrollable: false,
@@ -91,7 +90,7 @@
 			.addClass( 'welcomesurvey-subtitle' )
 			.text( mw.msg( 'welcomesurvey-subtitle' ) );
 
-		mainPanel.$element.append(
+		this.mainPanel.$element.append(
 			this.$subtitle,
 			positionIndicator.$element,
 			this.questionsLayout.$element
@@ -117,13 +116,13 @@
 		);
 
 		if ( OO.ui.isMobile() ) {
-			mainPanel.$element.append( $sidePanelContent.addClass( 'welcomesurvey-sidebar-mobile' ) );
-			this.$body.append( mainPanel.$element );
+			this.mainPanel.$element.append( $sidePanelContent.addClass( 'welcomesurvey-sidebar-mobile' ) );
+			this.$body.append( this.mainPanel.$element );
 			this.$foot.find( '.oo-ui-processDialog-actions-other' ).prepend(
 				nav.$element.addClass( 'welcomesurvey-navigator-mobile' )
 			);
 		} else {
-			mainPanel.$element.append( nav.$element );
+			this.mainPanel.$element.append( nav.$element );
 			sidePanel = new OO.ui.PanelLayout( {
 				padded: true,
 				scrollable: true,
@@ -132,7 +131,7 @@
 			} );
 			menuLayout = new OO.ui.MenuLayout( {
 				menuPosition: 'after',
-				contentPanel: mainPanel,
+				contentPanel: this.mainPanel,
 				menuPanel: sidePanel
 			} );
 			this.$body.append( menuLayout.$element );
@@ -384,6 +383,8 @@
 
 		this.$subtitle.toggle( isFirst );
 		this.getActions().setMode( isLast ? 'last-question' : 'default' );
+
+		this.mainPanel.$element.scrollTop( 0 );
 	};
 
 	/**
