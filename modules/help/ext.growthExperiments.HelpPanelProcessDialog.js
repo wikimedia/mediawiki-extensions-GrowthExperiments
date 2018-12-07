@@ -123,7 +123,9 @@
 			placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' ).text(),
 			multiline: true,
 			maxLength: 2000,
+			minRows: 3,
 			maxRows: 3,
+			autosize: true,
 			value: mw.storage.get( 'help-panel-question-text' ),
 			spellcheck: true,
 			autofocus: true
@@ -133,7 +135,9 @@
 			placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' ).text(),
 			multiline: true,
 			maxLength: 2000,
+			minRows: 3,
 			maxRows: 3,
+			autosize: true,
 			spellcheck: true,
 			required: true,
 			autofocus: true
