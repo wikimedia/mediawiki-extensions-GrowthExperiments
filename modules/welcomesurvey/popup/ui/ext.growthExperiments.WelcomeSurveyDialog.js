@@ -34,17 +34,11 @@
 	WelcomeSurveyDialog.static.title = mw.msg( 'welcomesurvey', mw.user.getName() );
 	WelcomeSurveyDialog.static.actions = [
 		{
-			action: 'save',
-			label: mw.msg( 'welcomesurvey-save-btn' ),
-			flags: [ 'primary', 'progressive' ],
-			modes: 'last-question'
-		},
-		{
 			action: 'skip',
 			label: mw.msg( 'welcomesurvey-skip-btn' ),
 			classes: [ 'welcome-survey-skip-button' ],
 			flags: 'destructive',
-			modes: 'default'
+			modes: 'before-last-question'
 		}
 	];
 
@@ -61,6 +55,7 @@
 	WelcomeSurveyDialog.prototype.initialize = function () {
 		var positionIndicator,
 			nav,
+			toolbar,
 			$sidePanelContent,
 			sidePanel,
 			menuLayout,
@@ -81,10 +76,19 @@
 		positionIndicator = new mw.libs.ge.WelcomeSurvey.StackPositionIndicatorWidget(
 			this.questionsLayout
 		);
+
 		nav = new mw.libs.ge.WelcomeSurvey.StackNavigatorWidget(
-			this.questionsLayout,
-			{ classes: [ 'welcomesurvey-navigator' ] }
+			this.questionsLayout
 		);
+		this.publishButton = new OO.ui.ButtonWidget( {
+			label: mw.msg( 'welcomesurvey-save-btn' ),
+			flags: [ 'primary', 'progressive' ]
+		} ).connect( this, { click: [ 'executeAction', 'save' ] } );
+		this.publishButton.toggle( false );
+		toolbar = new OO.ui.HorizontalLayout( {
+			classes: [ 'welcomesurvey-toolbar' ],
+			items: [ nav, this.publishButton ]
+		} );
 
 		this.$subtitle = $( '<div>' )
 			.addClass( 'welcomesurvey-subtitle' )
@@ -119,10 +123,10 @@
 			this.mainPanel.$element.append( $sidePanelContent.addClass( 'welcomesurvey-sidebar-mobile' ) );
 			this.$body.append( this.mainPanel.$element );
 			this.$foot.find( '.oo-ui-processDialog-actions-other' ).prepend(
-				nav.$element.addClass( 'welcomesurvey-navigator-mobile' )
+				toolbar.$element.addClass( 'welcomesurvey-toolbar-mobile' )
 			);
 		} else {
-			this.mainPanel.$element.append( nav.$element );
+			this.mainPanel.$element.append( toolbar.$element );
 			sidePanel = new OO.ui.PanelLayout( {
 				padded: true,
 				scrollable: true,
@@ -371,7 +375,7 @@
 	 * Toggle the visible of the subtitle. It should only be shown for the
 	 * first question.
 	 *
-	 * Change the mode between 'default' and 'last-question' to toggle
+	 * Change the mode between 'default' and 'before-last-question' to toggle
 	 * the visibility of the dialog actions.
 	 */
 	WelcomeSurveyDialog.prototype.onQuestionChange = function () {
@@ -382,8 +386,8 @@
 			isLast = ( index + 1 ) === items.length;
 
 		this.$subtitle.toggle( isFirst );
-		this.getActions().setMode( isLast ? 'last-question' : 'default' );
-
+		this.publishButton.toggle( isLast );
+		this.getActions().setMode( isLast ? 'default' : 'before-last-question' );
 		this.mainPanel.$element.scrollTop( 0 );
 	};
 
@@ -393,7 +397,7 @@
 	WelcomeSurveyDialog.prototype.getSetupProcess = function ( data ) {
 		return WelcomeSurveyDialog.parent.prototype.getSetupProcess.call( this, data )
 			.next( function () {
-				this.actions.setMode( 'default' );
+				this.actions.setMode( 'before-last-question' );
 			}, this );
 	};
 

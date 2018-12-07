@@ -92,13 +92,18 @@
 				}
 			}
 
-			// The navigator is in the main section on desktop
-			.welcomesurvey-navigator {
+			// The toolbar is in the main section on desktop
+			.welcomesurvey-toolbar {
 				position: absolute;
 				bottom: 1.14285714em;
 				left: 1.14285714em;
-				.oo-ui-horizontalLayout > .oo-ui-widget {
+				.oo-ui-widget {
 					margin-bottom: 0;
+					margin-right: 0;
+
+					.oo-ui-buttonWidget {
+						margin-right: 0.5em;
+					}
 				}
 			}
 
@@ -149,10 +154,19 @@
 			}
 		}
 
-		// The navigator is in the footer on mobile
-		.welcomesurvey-navigator-mobile {
-			.oo-ui-horizontalLayout {
+		// The toolbar is in the footer on mobile
+		.welcomesurvey-toolbar-mobile {
+			&.oo-ui-horizontalLayout {
 				padding: 0.5em;
+
+				.oo-ui-widget {
+					margin-bottom: 0;
+					margin-right: 0;
+
+					.oo-ui-buttonWidget {
+						margin-right: 0.5em;
+					}
+				}
 			}
 		}
 	}

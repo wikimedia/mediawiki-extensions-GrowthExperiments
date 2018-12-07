@@ -51,17 +51,17 @@
 	};
 
 	/**
-	 * Toggle the previous and next buttons enabled or disabled
-	 *  based on whether it is currently possible to navigate
-	 *  back or forward.
+	 * Show/hide the previous and next buttons
+	 * based on whether it is currently possible to navigate
+	 * back or forward.
 	 */
 	StackNavigatorWidget.prototype.updateButtonsState = function () {
 		var items = this.stackLayout.getItems(),
 			current = this.stackLayout.getCurrentItem(),
 			lastIndex = items.length - 1,
 			index = items.indexOf( current );
-		this.previousButton.setDisabled( index === 0 );
-		this.nextButton.setDisabled( index === lastIndex );
+		this.previousButton.toggle( index !== 0 );
+		this.nextButton.toggle( index !== lastIndex );
 	};
 
 	OO.setProp(
