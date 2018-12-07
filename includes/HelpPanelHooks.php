@@ -82,4 +82,16 @@ class HelpPanelHooks {
 		}
 	}
 
+	/**
+	 * ListDefinedTags and ChangeTagsListActive hook handler
+	 *
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ListDefinedTags
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ChangeTagsListActive
+	 *
+	 * @param array &$tags The list of tags. Add your extension's tags to this array.
+	 */
+	public static function onListDefinedTags( &$tags ) {
+		$tags[] = 'help panel question';
+	}
+
 }

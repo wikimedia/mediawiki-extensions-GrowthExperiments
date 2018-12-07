@@ -35,5 +35,7 @@
 	"growthexperiments-help-panel-questionreview-unconfirmed-email-note": "Text to display to users if their email address is unconfirmed.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questionreview-no-email-note": "Text to display to users if they have not provided an email address.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questionreview-add-email-placeholder": "Placeholder text in the field for a user to enter their email address in the help panel.\n\n{{doc-growthexperiments-help-panel}}",
-	"growthexperiments-help-panel-questionreview-email-optional": "Label for a field allowing the user to optionally input an email address.\n\n{{doc-growthexperiments-help-panel}}"
+	"growthexperiments-help-panel-questionreview-email-optional": "Label for a field allowing the user to optionally input an email address.\n\n{{doc-growthexperiments-help-panel}}",
+	"tag-help_panel_question": "Short change tag name for edits made by the post a question feature in the help panel.\n\n{{doc-growthexperiments-help-panel}}",
+	"tag-help_panel_question-description": "Short change tag description for edits made by the post a question feature in the help panel.\n\n{{doc-growthexperiments-help-panel}}"
 }

@@ -48,6 +48,12 @@
 		"BeforePageDisplay": [
 			"GrowthExperiments\\WelcomeSurveyHooks::onBeforePageDisplay",
 			"GrowthExperiments\\HelpPanelHooks::onBeforePageDisplay"
+		],
+		"ListDefinedTags": [
+			"GrowthExperiments\\HelpPanelHooks::onListDefinedTags"
+		],
+		"ChangeTagsListActive": [
+			"GrowthExperiments\\HelpPanelHooks::onListDefinedTags"
 		]
 	},
 	"ResourceFileModulePaths": {
