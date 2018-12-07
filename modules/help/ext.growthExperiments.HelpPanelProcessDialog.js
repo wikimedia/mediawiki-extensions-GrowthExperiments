@@ -139,6 +139,7 @@
 			minRows: 3,
 			maxRows: 3,
 			autosize: true,
+			value: mw.storage.get( 'help-panel-question-text' ),
 			spellcheck: true,
 			required: true,
 			autofocus: true
@@ -206,12 +207,11 @@
 		this.questionReviewContent.addItems( [
 			new OO.ui.LabelWidget( {
 				label: $( '<p>' )
-					.append( mw.message( 'growthexperiments-help-panel-questionreview-header', $( linksConfig.helpDeskLink ) ).parse() )
-			} ),
-			new OO.ui.Element( {
-				$content: $( '<p>' )
-					.append( $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-username' ).text() ) )
-					.append( $( '<p>' ).text( mw.user.getName() ) )
+					.append( mw.message(
+						'growthexperiments-help-panel-questionreview-header',
+						$( linksConfig.helpDeskLink ),
+						mw.user.getName()
+					).parse() )
 			} )
 		] );
 		if ( mw.config.get( 'wgGEHelpPanelEmail' ) ) {
