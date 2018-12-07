@@ -10,10 +10,7 @@
 	 */
 	function WelcomeSurveyConfirmationDialog( config ) {
 		WelcomeSurveyConfirmationDialog.parent.call( this, {
-			classes: [
-				'welcome-survey-confirmation-dialog',
-				OO.ui.isMobile() ? 'welcome-survey-confirmation-dialog-mobile' : null
-			],
+			classes: [ 'welcome-survey-confirmation-dialog' ],
 			size: 'large'
 		} );
 		this.privacyStatementUrl = config.privacyStatementUrl;
@@ -21,7 +18,7 @@
 	OO.inheritClass( WelcomeSurveyConfirmationDialog, OO.ui.ProcessDialog );
 
 	WelcomeSurveyConfirmationDialog.static.name = 'WelcomeSurveyConfirmationDialog';
-	WelcomeSurveyConfirmationDialog.static.title = mw.msg( 'welcomesurvey-save-confirmation-title' );
+	WelcomeSurveyConfirmationDialog.static.title = mw.msg( 'welcomesurvey', mw.user.getName() );
 	WelcomeSurveyConfirmationDialog.static.actions = [
 		{
 			action: 'close',
@@ -40,15 +37,22 @@
 
 		mainPanel = new OO.ui.PanelLayout( { padded: true } );
 		mainPanel.$element.append(
-			new OO.ui.LabelWidget( { label: mw.msg( 'welcomesurvey-subtitle' ) } ).$element,
-			new mw.libs.ge.WelcomeSurvey.PrivacyNoticeWidget(
-				{ url: this.privacyStatementUrl }
-			).$element,
-			$( '<h4>' )
-				.addClass( 'welcome-survey-confirmation-dialog-new-section-title' )
-				.text( mw.msg( 'welcomesurvey-sidebar-editing-title' ) ),
-			$( '<p>' ).text( mw.msg( 'welcomesurvey-sidebar-editing-text' ) ),
-			new mw.libs.ge.WelcomeSurvey.GettingStartedLinksWidget( 'confirmation-popup' ).$element
+			$( '<div>' )
+				.addClass( 'confirmation-section' )
+				.append(
+					$( '<div>' ).addClass( 'section-title' ).text( mw.msg( 'welcomesurvey-save-confirmation-title' ) ),
+					new mw.libs.ge.WelcomeSurvey.PrivacyNoticeWidget( {
+						url: this.privacyStatementUrl,
+						classes: [ 'section-text' ]
+					} ).$element
+				),
+			$( '<div>' )
+				.addClass( 'editing-section' )
+				.append(
+					$( '<div>' ).addClass( 'section-title' ).text( mw.msg( 'welcomesurvey-sidebar-editing-title' ) ),
+					$( '<p>' ).addClass( 'section-text' ).text( mw.msg( 'welcomesurvey-sidebar-editing-text' ) ),
+					new mw.libs.ge.WelcomeSurvey.GettingStartedLinksWidget( 'survey-popup' ).$element
+				)
 		);
 		this.$body.append( mainPanel.$element );
 	};

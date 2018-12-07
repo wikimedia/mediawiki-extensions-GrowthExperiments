@@ -6,7 +6,7 @@
 		.welcomesurvey-main {
 
 			.welcomesurvey-subtitle {
-				font-size: 1.2em;
+				font-size: 1em;
 				font-weight: bold;
 				margin-bottom: 0.5em;
 			}
@@ -103,6 +103,7 @@
 			}
 
 			.stack-position-indicator {
+				padding: 0.5em 0 1em;
 				&-step {
 					display: inline-block;
 					width: 0.5em;
@@ -130,10 +131,6 @@
 			&-mobile {
 				margin-top: 2em;
 				padding: 1.14285714em;
-
-				.editing-section {
-					margin-top: 1em;
-				}
 			}
 		}
 	}
@@ -161,18 +158,24 @@
 	}
 }
 
-// Confirmation dialog
-.welcome-survey-confirmation-dialog {
-	&-mobile {
-		.welcome-survey-confirmation-dialog-new-section-title {
-			margin-top: 1em;
-		}
-	}
-}
-
 // Elements present on both dialogs
 .welcome-survey-dialog,
 .welcome-survey-confirmation-dialog {
+
+	.section-title {
+		font-size: 1em;
+		font-weight: bold;
+	}
+
+	.section-text {
+		line-height: 1.5;
+		color: @colorGray2;
+	}
+
+	.editing-section {
+		margin-top: 1em;
+	}
+
 	ul.welcomesurvey-gettingstarted-links {
 		list-style: none;
 		margin-left: 0;
