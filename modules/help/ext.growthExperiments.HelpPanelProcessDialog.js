@@ -19,6 +19,7 @@
 		{
 			icon: 'close',
 			flags: 'safe',
+			framed: false,
 			modes: [ 'home', 'questionreview', 'questioncomplete' ]
 		},
 		// The "Close" action button duplicates the action provided by the X
@@ -27,6 +28,14 @@
 			label: mw.message( 'growthexperiments-help-panel-close' ).text(),
 			modes: [ 'questioncomplete' ],
 			flags: 'safe'
+		},
+		{
+			framed: false,
+			icon: 'settings',
+			title: mw.message( 'growthexperiments-help-panel-settings-cog-tooltip' ).text(),
+			modes: [ 'home', 'questionreview', 'questioncomplete' ],
+			flags: [ 'primary', 'safe' ],
+			action: 'settings'
 		}
 	];
 
@@ -315,6 +324,9 @@
 		return HelpPanelProcessDialog.super.prototype.getActionProcess.call( this, action )
 			.next( function () {
 				var messagePosterPromise;
+				if ( action === 'settings' ) {
+					window.open( new mw.Title( 'Special:Preferences#mw-prefsection-editing' ).getUrl() );
+				}
 				if ( action === 'questionreview' || action === 'home' ) {
 					this.swapPanel( action );
 				}
