@@ -4,8 +4,9 @@ namespace GrowthExperiments;
 
 use MediaWiki\MediaWikiServices;
 use OOUI\ButtonWidget;
-use ContextSource;
+use Config;
 use Html;
+use MessageLocalizer;
 use OutputPage;
 use Title;
 use User;
@@ -31,11 +32,11 @@ class HelpPanel {
 	}
 
 	/**
-	 * @param ContextSource $context
+	 * @param MessageLocalizer $ml
+	 * @param Config $config
 	 * @return array Links that should appear in the help panel. Exported to JS as wgGEHelpPanelLinks.
 	 */
-	public static function getHelpPanelLinks( ContextSource $context ) {
-		$config = $context->getConfig();
+	public static function getHelpPanelLinks( MessageLocalizer $ml, Config $config ) {
 		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
 
 		$helpPanelLinks = Html::openElement( 'ul' );
@@ -57,7 +58,7 @@ class HelpPanel {
 		$viewMoreTitle = Title::newFromText( $config->get( 'GEHelpPanelViewMoreTitle' ) );
 		$viewMoreLink = $linkRenderer->makeLink(
 			$viewMoreTitle,
-			$context->msg( 'growthexperiments-help-panel-editing-help-links-widget-view-more-link' )->text(),
+			$ml->msg( 'growthexperiments-help-panel-editing-help-links-widget-view-more-link' )->text(),
 			[ 'target' => '_blank' ]
 		);
 

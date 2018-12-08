@@ -197,6 +197,7 @@
 			]
 		},
 		"ext.growthExperiments.HelpPanel": {
+			"class": "GrowthExperiments\\ResourceLoaderHelpPanelModule",
 			"styles": [
 				"help/ext.growthExperiments.HelpPanel.less"
 			],
