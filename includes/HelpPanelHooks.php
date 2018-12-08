@@ -2,12 +2,9 @@
 
 namespace GrowthExperiments;
 
-use Html;
-use MediaWiki\MediaWikiServices;
 use OutputPage;
 use RequestContext;
 use Skin;
-use Title;
 use User;
 
 class HelpPanelHooks {
@@ -71,29 +68,8 @@ class HelpPanelHooks {
 		}
 		$out->enableOOUI();
 		$out->addModuleStyles( 'ext.growthExperiments.HelpPanelCta.styles' );
-		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
-		$helpPanelLinks = Html::openElement( 'ul' );
-		foreach ( $out->getConfig()->get( 'GEHelpPanelLinks' ) as $link ) {
-			$title = Title::newFromText( $link['title'] );
-			$helpPanelLinks .= Html::openElement( 'li' );
-			$helpPanelLinks .= $linkRenderer->makeLink( $title, $link['text'], [ 'target' => '_blank' ] );
-			$helpPanelLinks .= Html::closeElement( 'li' );
-		}
-		$helpPanelLinks .= Html::closeElement( 'ul' );
-		$title = Title::newFromText( $out->getConfig()->get( 'GEHelpPanelHelpDeskTitle' ) );
-		$helpPanelHelpDeskLink = $linkRenderer->makeLink(
-			$title, null, [ 'target' => '_blank' ]
-		);
-		$title = Title::newFromText( $out->getConfig()->get( 'GEHelpPanelViewMoreTitle' ) );
-		$wgGEHelpPanelViewMore = $linkRenderer->makeLink( $title,
-			wfMessage( 'growthexperiments-help-panel-editing-help-links-widget-view-more-link' )
-				->text(),
-			[ 'target' => '_blank' ]
-		);
 		$out->addJsConfigVars( [
-			'wgGEHelpPanelLinks' => $helpPanelLinks,
-			'wgGEHelpPanelHelpDeskLink' => $helpPanelHelpDeskLink,
-			'wgGEHelpPanelViewMore' => $wgGEHelpPanelViewMore,
+			'wgGEHelpPanelLinks' => HelpPanel::getHelpPanelLinks( $out ),
 			'wgGEHelpPanelEmail' => $out->getUser()->getEmail(),
 			'wgGEHelpPanelHelpDeskTitle' => $out->getConfig()->get( 'GEHelpPanelHelpDeskTitle' )
 		] );

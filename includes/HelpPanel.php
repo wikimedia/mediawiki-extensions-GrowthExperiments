@@ -4,6 +4,8 @@ namespace GrowthExperiments;
 
 use MediaWiki\MediaWikiServices;
 use OOUI\ButtonWidget;
+use ContextSource;
+use Html;
 use OutputPage;
 use Title;
 use User;
@@ -19,14 +21,51 @@ class HelpPanel {
 			'classes' => [ 'mw-ge-help-panel-cta' ],
 			'id' => 'mw-ge-help-panel-cta',
 			'href' => Title::newFromText(
-				MediaWikiServices::getInstance()->getMainConfig()->get( 'GEHelpPanelHelpDeskTitle'
-				)
+				MediaWikiServices::getInstance()->getMainConfig()->get( 'GEHelpPanelHelpDeskTitle' )
 			)->getLinkURL(),
 			'label' => wfMessage( 'growthexperiments-help-panel-cta-button-text' )->text(),
 			'infusable' => true,
 			'icon' => 'helpNotice',
 			'flags' => [ 'primary', 'progressive' ],
 		] );
+	}
+
+	/**
+	 * @param ContextSource $context
+	 * @return array Links that should appear in the help panel. Exported to JS as wgGEHelpPanelLinks.
+	 */
+	public static function getHelpPanelLinks( ContextSource $context ) {
+		$config = $context->getConfig();
+		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
+
+		$helpPanelLinks = Html::openElement( 'ul' );
+		foreach ( $config->get( 'GEHelpPanelLinks' ) as $link ) {
+			$title = Title::newFromText( $link['title'] );
+			if ( $title ) {
+				$helpPanelLinks .= Html::rawElement(
+					'li',
+					[],
+					$linkRenderer->makeLink( $title, $link['text'], [ 'target' => '_blank' ] )
+				);
+			}
+		}
+		$helpPanelLinks .= Html::closeElement( 'ul' );
+
+		$helpDeskTitle = Title::newFromText( $config->get( 'GEHelpPanelHelpDeskTitle' ) );
+		$helpDeskLink = $linkRenderer->makeLink( $helpDeskTitle, null, [ 'target' => '_blank' ] );
+
+		$viewMoreTitle = Title::newFromText( $config->get( 'GEHelpPanelViewMoreTitle' ) );
+		$viewMoreLink = $linkRenderer->makeLink(
+			$viewMoreTitle,
+			$context->msg( 'growthexperiments-help-panel-editing-help-links-widget-view-more-link' )->text(),
+			[ 'target' => '_blank' ]
+		);
+
+		return [
+			'helpPanelLinks' => $helpPanelLinks,
+			'helpDeskLink' => $helpDeskLink,
+			'viewMoreLink' => $viewMoreLink
+		];
 	}
 
 	/**
