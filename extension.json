@@ -206,6 +206,7 @@
 				"help/ext.growthExperiments.HelpPanelProcessDialog.js"
 			],
 			"dependencies": [
+				"ext.growthExperiments.HelpPanelCta.styles",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
 				"mediawiki.messagePoster",
@@ -244,6 +245,13 @@
 			"targets": [
 				"desktop",
 				"mobile"
+			]
+		}
+	},
+	"attributes": {
+		"VisualEditor": {
+			"PluginModules": [
+				"ext.growthExperiments.HelpPanel"
 			]
 		}
 	},
