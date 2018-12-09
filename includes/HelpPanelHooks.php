@@ -87,8 +87,9 @@ class HelpPanelHooks {
 		$title = Title::newFromText( $out->getConfig()->get( 'GEHelpPanelViewMoreTitle' ) );
 		$wgGEHelpPanelViewMore = $linkRenderer->makeLink( $title,
 			wfMessage( 'growthexperiments-help-panel-editing-help-links-widget-view-more-link' )
-				->inContentLanguage()
-				->text() );
+				->text(),
+			[ 'target' => '_blank' ]
+		);
 		$out->addJsConfigVars( [
 			'wgGEHelpPanelLinks' => $helpPanelLinks,
 			'wgGEHelpPanelHelpDeskLink' => $helpPanelHelpDeskLink,
