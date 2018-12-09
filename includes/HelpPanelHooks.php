@@ -63,20 +63,21 @@ class HelpPanelHooks {
 	 * @throws \ConfigException
 	 */
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
-		if ( !HelpPanel::shouldShowHelpPanel( $out ) ) {
-			return;
+		if ( HelpPanel::shouldShowHelpPanel( $out ) ) {
+			$out->enableOOUI();
+			$out->addModuleStyles( 'ext.growthExperiments.HelpPanelCta.styles' );
+			$out->addModules( 'ext.growthExperiments.HelpPanel' );
+
+			$out->addHTML( HelpPanel::getHelpPanelCtaButton() );
 		}
-		$out->enableOOUI();
-		$out->addModuleStyles( 'ext.growthExperiments.HelpPanelCta.styles' );
-		$out->addJsConfigVars( [
-			'wgGEHelpPanelLinks' => HelpPanel::getHelpPanelLinks( $out ),
-			'wgGEHelpPanelEmail' => $out->getUser()->getEmail(),
-			'wgGEHelpPanelHelpDeskTitle' => $out->getConfig()->get( 'GEHelpPanelHelpDeskTitle' )
-		] );
-		$out->addModules( [
-			'ext.growthExperiments.HelpPanel'
-		] );
-		$out->addHTML( HelpPanel::getHelpPanelCtaButton() );
+
+		// If the help panel would be shown but for the value of the 'action' parameter,
+		// add the email config var anyway. We'll need it if the user loads an editor via JS.
+		if ( HelpPanel::shouldShowHelpPanel( $out, false ) ) {
+			$out->addJsConfigVars( [
+				'wgGEHelpPanelEmail' => $out->getUser()->getEmail(),
+			] );
+		}
 	}
 
 }
