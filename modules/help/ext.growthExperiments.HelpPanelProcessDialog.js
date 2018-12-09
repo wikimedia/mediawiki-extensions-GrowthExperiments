@@ -7,8 +7,9 @@
 	 * @constructor
 	 */
 	var HelpPanelProcessDialog = function helpPanelProcessDialog() {
-		HelpPanelProcessDialog.super.apply( this, arguments );
-	};
+			HelpPanelProcessDialog.super.apply( this, arguments );
+		},
+		linksConfig = mw.config.get( 'wgGEHelpPanelLinks' );
 
 	OO.inheritClass( HelpPanelProcessDialog, OO.ui.ProcessDialog );
 
@@ -155,11 +156,11 @@
 				new OO.ui.Widget( {
 					content: [
 						new OO.ui.Element( {
-							$content: mw.config.get( 'wgGEHelpPanelLinks' )
+							$content: linksConfig.helpPanelLinks
 						} ),
 						new OO.ui.Element( {
 							$content: $( '<p>' )
-								.append( $( '<strong>' ).html( mw.config.get( 'wgGEHelpPanelViewMore' ) ) )
+								.append( $( '<strong>' ).html( linksConfig.viewMoreLink ) )
 						} )
 					] } ),
 				{
@@ -205,7 +206,7 @@
 		this.questionReviewContent.addItems( [
 			new OO.ui.LabelWidget( {
 				label: $( '<p>' )
-					.append( mw.message( 'growthexperiments-help-panel-questionreview-header', $( mw.config.get( 'wgGEHelpPanelHelpDeskLink' ) ) ).parse() )
+					.append( mw.message( 'growthexperiments-help-panel-questionreview-header', $( linksConfig.helpDeskLink ) ).parse() )
 			} ),
 			new OO.ui.Element( {
 				$content: $( '<p>' )
@@ -298,7 +299,7 @@
 			// For now this links to the talk page, not the actual heading that was added by
 			// the user, since MessagePoster does not return that for us.
 			new OO.ui.Element( {
-				$content: $( '<p>' ).append( $( mw.config.get( 'wgGEHelpPanelHelpDeskLink' ) )
+				$content: $( '<p>' ).append( $( linksConfig.helpDeskLink )
 					.text( mw.message( 'growthexperiments-help-panel-questioncomplete-view-link-text' ).text() ) )
 			} )
 		] );
@@ -359,7 +360,7 @@
 						// Re-enable the submit button once the user is done with modal.
 						this.questionReviewSubmitButton.setDisabled( false );
 						return $.Deferred().reject( new OO.ui.Error( $( '<p>' ).append( mw.message(
-							'growthexperiments-help-panel-question-post-error', mw.config.get( 'wgGEHelpPanelHelpDeskLink' )
+							'growthexperiments-help-panel-question-post-error', linksConfig.helpDeskLink
 						).parse() ) ) ).promise();
 					}.bind( this ) ).then( function () {
 						// Avoid making extra API requests by using the wgUserEditCount. The
