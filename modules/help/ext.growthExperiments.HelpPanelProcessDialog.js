@@ -342,15 +342,17 @@
 						mw.Title.newFromText( mw.config.get( 'wgGEHelpPanelHelpDeskTitle' ) )
 					);
 					return messagePosterPromise.then( function ( messagePoster ) {
-						var templateArgs = [
-							'growthexperiments-help-panel-question-subject-template',
-							mw.user.getName()
-						];
+						var templateArgs = [];
 						if ( this.questionIncludeTitleCheckbox.isSelected() ) {
-							templateArgs.push( ': ' + this.relevantTitle );
+							templateArgs = [
+								'growthexperiments-help-panel-question-subject-template-with-title',
+								this.relevantTitle.getPrefixedDb()
+							];
+						} else {
+							templateArgs = [ 'growthexperiments-help-panel-question-subject-template' ];
 						}
 						return messagePoster.post(
-							mw.message.apply( this, templateArgs ).parse(),
+							mw.message.apply( this, templateArgs ).text(),
 							this.questionReviewTextInput.getValue()
 						);
 					}.bind( this ), function () {
