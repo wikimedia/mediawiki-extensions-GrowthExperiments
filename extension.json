@@ -19,14 +19,17 @@
 			"i18n/extension",
 			"i18n/welcomesurvey",
 			"i18n/welcomesurvey/api",
-			"i18n/help"
+			"i18n/help",
+			"i18n/help/api",
+			"i18n/help/questionposter"
 		]
 	},
 	"ExtensionMessagesFiles": {
 		"GrowthExperimentsAlias": "GrowthExperiments.alias.php"
 	},
 	"APIModules": {
-		"welcomesurveyhandleresponses": "GrowthExperiments\\Api\\ApiWelcomeSurveyHandleResponses"
+		"welcomesurveyhandleresponses": "GrowthExperiments\\Api\\ApiWelcomeSurveyHandleResponses",
+		"helppanelquestionposter": "GrowthExperiments\\Api\\ApiHelpPanelPostQuestion"
 	},
 	"Hooks": {
 		"SpecialPage_initList": [

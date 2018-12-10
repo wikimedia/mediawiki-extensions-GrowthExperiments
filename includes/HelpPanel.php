@@ -13,6 +13,8 @@ use User;
 
 class HelpPanel {
 
+	const HELP_PANEL_QUESTION_TAG = 'help panel question';
+
 	/**
 	 * @return ButtonWidget
 	 * @throws \ConfigException

@@ -4,10 +4,8 @@ namespace GrowthExperiments;
 
 use FormatJson;
 use IContextSource;
-use MediaWiki\Auth\AuthManager;
 use MediaWiki\Logger\LoggerFactory;
 use MWTimestamp;
-use Sanitizer;
 use SpecialPage;
 use Title;
 
@@ -205,7 +203,7 @@ class WelcomeSurvey {
 		}
 
 		$questionNames = $groups[ $group ][ 'questions' ];
-		if ( in_array( 'email', $questionNames ) && !$this->canSetEmail() ) {
+		if ( in_array( 'email', $questionNames ) && !Util::canSetEmail( $this->context->getUser() ) ) {
 			$questionNames = array_diff( $questionNames, [ 'email' ] );
 		}
 		$questions = [];
@@ -238,7 +236,7 @@ class WelcomeSurvey {
 			$newEmail = $data[ 'email' ] ?? false;
 			if ( $newEmail ) {
 				$data[ 'email' ] = '[redacted]';
-				if ( $this->canSetEmail( $newEmail ) ) {
+				if ( Util::canSetEmail( $user, $newEmail ) ) {
 					$user->setEmailWithConfirmation( $newEmail );
 					$userUpdated = true;
 				}
@@ -296,15 +294,6 @@ class WelcomeSurvey {
 			FormatJson::encode( $data )
 		);
 		$user->saveSettings();
-	}
-
-	private function canSetEmail( $newEmail = null ) {
-		$user = $this->context->getUser();
-		return !$user->getEmail() &&
-			$user->isAllowed( 'viewmyprivateinfo' ) &&
-			$user->isAllowed( 'editmyprivateinfo' ) &&
-			AuthManager::singleton()->allowsPropertyChange( 'emailaddress' ) &&
-			( $newEmail ? Sanitizer::validateEmail( $newEmail ) : true );
 	}
 
 	private function getSurveyFormat( $group ) {

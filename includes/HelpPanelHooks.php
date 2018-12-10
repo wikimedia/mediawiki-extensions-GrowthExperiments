@@ -91,7 +91,7 @@ class HelpPanelHooks {
 	 * @param array &$tags The list of tags. Add your extension's tags to this array.
 	 */
 	public static function onListDefinedTags( &$tags ) {
-		$tags[] = 'help panel question';
+		$tags[] = HelpPanel::HELP_PANEL_QUESTION_TAG;
 	}
 
 }
