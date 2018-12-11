@@ -258,6 +258,13 @@
 				"desktop",
 				"mobile"
 			]
+		},
+		"ext.growthExperiments.HelpPanel.init": {
+			"scripts": "help/ext.growthExperiments.HelpPanel.init.js",
+			"targets": [
+				"desktop",
+				"mobile"
+			]
 		}
 	},
 	"config": {

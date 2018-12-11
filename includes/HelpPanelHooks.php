@@ -64,7 +64,10 @@ class HelpPanelHooks {
 	 * @throws \ConfigException
 	 */
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
-		if ( HelpPanel::shouldShowHelpPanel( $out ) ) {
+		$definitelyShow = HelpPanel::shouldShowHelpPanel( $out );
+		$maybeShow = HelpPanel::shouldShowHelpPanel( $out, false );
+
+		if ( $definitelyShow ) {
 			$out->enableOOUI();
 			$out->addModuleStyles( 'ext.growthExperiments.HelpPanelCta.styles' );
 			$out->addModules( 'ext.growthExperiments.HelpPanel' );
@@ -74,11 +77,20 @@ class HelpPanelHooks {
 
 		// If the help panel would be shown but for the value of the 'action' parameter,
 		// add the email config var anyway. We'll need it if the user loads an editor via JS.
-		if ( HelpPanel::shouldShowHelpPanel( $out, false ) ) {
+		// Also set wgGEHelpPanelEnabled to let our JS modules know it's safe to display the help panel.
+		if ( $maybeShow ) {
 			$out->addJsConfigVars( [
+				// We know the help panel is enabled, otherwise we wouldn't get here
+				'wgGEHelpPanelEnabled' => true,
 				'wgGEHelpPanelUserEmail' => $out->getUser()->getEmail(),
 				'wgGEHelpPanelUserEmailConfirmed' => $out->getUser()->isEmailConfirmed()
 			] );
+
+			if ( !$definitelyShow ) {
+				// Add the init module to make sure that the main HelpPanel module is loaded
+				// if and when VisualEditor is loaded
+				$out->addModules( 'ext.growthExperiments.HelpPanel.init' );
+			}
 		}
 	}
 

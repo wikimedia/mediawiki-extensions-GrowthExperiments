@@ -1,4 +1,9 @@
 ( function () {
+	// This shouldn't happen, but just to be sure
+	if ( !mw.config.get( 'wgGEHelpPanelEnabled' ) ) {
+		return;
+	}
+
 	$( function () {
 		var $buttonToInfuse = $( '#mw-ge-help-panel-cta' ),
 			windowManager = new OO.ui.WindowManager( { modal: OO.ui.isMobile() } ),
