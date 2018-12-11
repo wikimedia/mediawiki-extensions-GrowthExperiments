@@ -79,15 +79,9 @@
 	 * Connected to the questionReviewTextInput field.
 	 */
 	HelpPanelProcessDialog.prototype.onTextInputChange = function () {
-		var reviewTextInputValue = this.questionReviewTextInput.getValue(),
-			emailInputEmpty = !this.questionReviewAddEmail.getValue(),
-			emailInputIsValid = this.questionReviewAddEmail.getValue() &&
-				this.questionReviewAddEmailIsValid;
-		// Enable the "Submit" button on the review step if there's text input,
-		// and if the email input field is valid or empty.
-		if ( emailInputEmpty || emailInputIsValid ) {
-			this.questionReviewSubmitButton.setDisabled( !reviewTextInputValue );
-		}
+		var reviewTextInputValue = this.questionReviewTextInput.getValue();
+		// Enable the "Submit" button on the review step if there's text input.
+		this.questionReviewSubmitButton.setDisabled( !reviewTextInputValue );
 		// Copy the review text input back to the initial question field, in case the
 		// user clicks "back".
 		this.questionTextInput.setValue( reviewTextInputValue );
@@ -113,6 +107,9 @@
 					this.questionReviewSubmitButton.setDisabled( true );
 					this.questionReviewAddEmailIsValid = false;
 				}.bind( this ) );
+		} else {
+			// If no email value, set submit button state based on review text input
+			this.questionReviewSubmitButton.setDisabled( !reviewTextInputValue );
 		}
 	};
 
@@ -121,6 +118,8 @@
 	 */
 	HelpPanelProcessDialog.prototype.populateReviewText = function () {
 		this.questionReviewTextInput.setValue( this.questionTextInput.getValue() );
+		// Disable "Continue" button if there is no text.
+		this.askQuestionContinueButton.setDisabled( !this.questionTextInput.getValue() );
 	};
 
 	/**
@@ -224,6 +223,7 @@
 			autosize: true,
 			value: mw.storage.get( 'help-panel-question-text' ),
 			spellcheck: true,
+			required: true,
 			autofocus: true
 		} ).connect( this, { change: 'populateReviewText' } );
 
@@ -250,7 +250,12 @@
 			value: userEmail,
 			type: 'email'
 		} ).connect( this, { change: 'onEmailInput' } );
-		this.questionReviewAddEmailIsValid = false;
+
+		this.askQuestionContinueButton = new OO.ui.ButtonWidget( {
+			flags: [ 'progressive', 'primary' ],
+			disabled: !mw.storage.get( 'help-panel-question-text' ),
+			label: mw.message( 'growthexperiments-help-panel-question-button-text' ).text()
+		} ).connect( this, { click: [ 'executeAction', 'questionreview' ] } );
 
 		// Build home content of help panel.
 		this.homeContent = new OO.ui.FieldsetLayout();
@@ -291,13 +296,7 @@
 					align: 'top'
 				}
 			),
-			new OO.ui.FieldLayout(
-				new OO.ui.ButtonWidget( {
-					flags: [ 'progressive', 'primary' ],
-					label: mw.message( 'growthexperiments-help-panel-question-button-text' ).text()
-				} )
-					.connect( this, { click: [ 'executeAction', 'questionreview' ] } )
-			)
+			new OO.ui.FieldLayout( this.askQuestionContinueButton )
 		] );
 		this.homeFooterPanel.$element.append( this.homeFooterFieldset.$element );
 
@@ -343,8 +342,6 @@
 		this.questionReviewFooterFieldset = new OO.ui.FieldsetLayout();
 		this.questionReviewSubmitButton = new OO.ui.ButtonWidget( {
 			label: mw.message( 'growthexperiments-help-panel-submit-question-button-text' ).text(),
-			// Enable if there is text in local storage; disabled by default otherwise.
-			disabled: !mw.storage.get( 'help-panel-question-text' ),
 			// Inherit classes from primary action, to position the button on the right.
 			classes: [ 'oo-ui-processDialog-actions-primary' ],
 			flags: [ 'primary', 'progressive' ]
