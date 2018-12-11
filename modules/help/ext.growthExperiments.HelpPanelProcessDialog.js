@@ -440,15 +440,6 @@
 							mw.message.apply( this, templateArgs ).text(),
 							this.questionReviewTextInput.getValue()
 						);
-					}.bind( this ), function () {
-						// Return a recoverable error. The user can either try again, or they
-						// can follow the instructions in the error message for how to post
-						// their message manually.
-						// Re-enable the submit button once the user is done with modal.
-						this.questionReviewSubmitButton.setDisabled( false );
-						return $.Deferred().reject( new OO.ui.Error( $( '<p>' ).append( mw.message(
-							'growthexperiments-help-panel-question-post-error', linksConfig.helpDeskLink
-						).parse() ) ) ).promise();
 					}.bind( this ) ).then( function () {
 						// Avoid making extra API requests by using the wgUserEditCount. The
 						// count might not be 100% accurate since the user could make edits in
@@ -463,6 +454,15 @@
 						}
 						this.swapPanel( action );
 						this.questionTextInput.setValue( '' );
+					}.bind( this ), function () {
+						// Return a recoverable error. The user can either try again, or they
+						// can follow the instructions in the error message for how to post
+						// their message manually.
+						// Re-enable the submit button once the user is done with modal.
+						this.questionReviewSubmitButton.setDisabled( false );
+						return $.Deferred().reject( new OO.ui.Error( $( '<p>' ).append( mw.message(
+							'growthexperiments-help-panel-question-post-error', linksConfig.helpDeskLink
+						).parse() ) ) ).promise();
 					}.bind( this ) );
 				}
 			}, this );
