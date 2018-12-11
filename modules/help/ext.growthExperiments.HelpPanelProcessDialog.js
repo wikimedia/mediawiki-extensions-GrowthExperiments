@@ -454,6 +454,8 @@
 						}
 						this.swapPanel( action );
 						this.questionTextInput.setValue( '' );
+						// Remove the stored draft text, now that the user has submitted it
+						mw.storage.remove( 'help-panel-question-text' );
 					}.bind( this ), function () {
 						// Return a recoverable error. The user can either try again, or they
 						// can follow the instructions in the error message for how to post
