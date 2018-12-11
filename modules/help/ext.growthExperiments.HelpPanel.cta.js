@@ -32,6 +32,11 @@
 			$overlay.append( helpCtaButton.$element );
 		} );
 
+		mw.hook( 've.deactivationComplete' ).add( function () {
+			// Hide helpCtaButton when the editor is closed
+			helpCtaButton.$element.detach();
+		} );
+
 		$overlay.append( windowManager.$element );
 		if ( !OO.ui.isMobile() ) {
 			$overlay.addClass( 'mw-ge-help-panel-popup' );
