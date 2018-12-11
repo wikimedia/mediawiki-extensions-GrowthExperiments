@@ -260,13 +260,6 @@
 			]
 		}
 	},
-	"attributes": {
-		"VisualEditor": {
-			"PluginModules": [
-				"ext.growthExperiments.HelpPanel"
-			]
-		}
-	},
 	"config": {
 		"GEHelpPanelExcludedNamespaces": {
 			"description": "MediaWiki namespaces that the help panel will be excluded from.",
