@@ -1,9 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alphama"
+			"Alphama",
+			"Leduyquang753"
 		]
 	},
+	"welcomesurvey-popup-close-btn": "Đóng",
+	"welcomesurvey-back-btn": "Quay lại",
+	"welcomesurvey-next-btn": "Tiếp theo",
 	"welcomesurvey-sidebar-editing-link2-text": "Bàn giúp đỡ",
 	"welcomesurvey-question-topics-option-science": "Khoa học",
 	"welcomesurvey-question-topics-option-religion": "Tôn giáo",
