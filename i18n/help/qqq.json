@@ -38,6 +38,7 @@
 	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "Error message if attempt is made to set email but user does not have permission.",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Error message if invalid title is included in request.",
 	"growthexperiments-help-panel-community-help-desk-text": "Text to display with the link to the wiki's help desk.\nSee {{msg-mw|growthexperiments-help-panel-question-post-error}} and {{msg-mw|growthexperiments-help-panel-questionreview-header}}.\n\n{{doc-growthexperiments-help-panel}}",
+	"growthexperiments-help-panel-search-label": "Label for a field allowing the user to search help content.\n\n{{doc-growthexperiments-help-panel}}",
 	"tag-help_panel_question": "Short change tag name for edits made by the post a question feature in the help panel.\n\n{{doc-growthexperiments-help-panel}}",
 	"tag-help_panel_question-description": "Short change tag description for edits made by the post a question feature in the help panel.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-notifications-link-text": "Text of the link to Special:Notifications. Used inside a sentence.\nSee {{msg-mw|growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed}} and {{msg-mw|growthexperiments-help-panel-questioncomplete-confirmation-email-none}}.\n\n{{doc-growthexperiments-help-panel}}",

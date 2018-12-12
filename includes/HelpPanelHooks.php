@@ -88,7 +88,10 @@ class HelpPanelHooks {
 				'wgGEHelpPanelEnabled' => true,
 				'wgGEHelpPanelLoggingEnabled' => $out->getConfig()->get( 'GEHelpPanelLoggingEnabled' ),
 				'wgGEHelpPanelUserEmail' => $out->getUser()->getEmail(),
-				'wgGEHelpPanelUserEmailConfirmed' => $out->getUser()->isEmailConfirmed()
+				'wgGEHelpPanelUserEmailConfirmed' => $out->getUser()->isEmailConfirmed(),
+				'wgGEHelpPanelSearchEnabled' => $out->getConfig()->get( 'GEHelpPanelSearchEnabled' ),
+				'wgGEHelpPanelSearchNamespaces' => $out->getConfig()->get( 'GEHelpPanelSearchNamespaces' ),
+				'wgGEHelpPanelSearchDevMode' => $out->getConfig()->get( 'GEHelpPanelSearchDevMode' ),
 			] );
 
 			if ( !$definitelyShow ) {
