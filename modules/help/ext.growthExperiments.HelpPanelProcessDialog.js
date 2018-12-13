@@ -101,11 +101,9 @@
 				.then( function () {
 					// Enable depending on whether the question text is input.
 					this.questionReviewSubmitButton.setDisabled( !reviewTextInputValue );
-					this.questionReviewAddEmailIsValid = true;
 				}.bind( this ), function () {
 					// Always disable if email is invalid.
 					this.questionReviewSubmitButton.setDisabled( true );
-					this.questionReviewAddEmailIsValid = false;
 				}.bind( this ) );
 		} else {
 			// If no email value, set submit button state based on review text input
@@ -373,15 +371,6 @@
 			} )
 		] );
 		this.setEmailFields( userEmail, userEmailConfirmed, 'questioncomplete' );
-
-		this.questionCompleteContent.addItems( [
-			// For now this links to the talk page, not the actual heading that was added by
-			// the user, since MessagePoster does not return that for us.
-			new OO.ui.Element( {
-				$content: $( '<p>' ).append( $( linksConfig.helpDeskLink )
-					.text( mw.message( 'growthexperiments-help-panel-questioncomplete-view-link-text' ).text() ) )
-			} )
-		] );
 		this.questioncompletePanel.$element.append( this.questionCompleteContent.$element );
 
 		// Add the footers
@@ -407,7 +396,6 @@
 	HelpPanelProcessDialog.prototype.getActionProcess = function ( action ) {
 		return HelpPanelProcessDialog.super.prototype.getActionProcess.call( this, action )
 			.next( function () {
-				var messagePosterPromise;
 				if ( action === 'settings' ) {
 					window.open( new mw.Title( 'Special:Preferences#mw-prefsection-editing' ).getUrl() );
 				}
@@ -415,56 +403,47 @@
 					this.swapPanel( action );
 				}
 				if ( action === 'questioncomplete' ) {
-					// Needed to disable the primary button.
+					// Disable the primary button while executing the API call.
 					this.questionReviewSubmitButton.setDisabled( true );
-					// @todo T211370 Save the user's email when API module is ready.
-					// @todo T211370 Send verification email for unverified emails when API
-					// module is ready.
-					messagePosterPromise = mw.messagePoster.factory.create(
-						mw.Title.newFromText( mw.config.get( 'wgGEHelpPanelHelpDeskTitle' ) )
-					);
-					return messagePosterPromise.then( function ( messagePoster ) {
-						var templateArgs = [];
-						if ( this.questionIncludeTitleCheckbox.isSelected() ) {
-							templateArgs = [
-								'growthexperiments-help-panel-question-subject-template-with-title',
-								this.relevantTitle.getPrefixedDb()
-							];
-						} else {
-							templateArgs = [ 'growthexperiments-help-panel-question-subject-template' ];
-						}
-						return messagePoster.post(
-							mw.message.apply( this, templateArgs ).text(),
-							this.questionReviewTextInput.getValue()
-						);
-					}.bind( this ) ).then( function () {
-						// Avoid making extra API requests by using the wgUserEditCount. The
-						// count might not be 100% accurate since the user could make edits in
-						// a separate tab, or post a second question through the help panel, etc.
-						// @todo redo this along with T211370.
-						if ( mw.config.get( 'wgUserEditCount' ) === 0 ) {
+					return new mw.Api().postWithToken( 'csrf', {
+						action: 'helppanelquestionposter',
+						email: this.email,
+						relevanttitle: this.questionIncludeTitleCheckbox.isSelected() ? this.relevantTitle.getPrefixedDb() : '',
+						body: this.questionReviewTextInput.getValue()
+					} )
+						.then( function ( data ) {
+							if ( data.helppanelquestionposter.isfirstedit ) {
+								this.questionCompleteContent.addItems( [
+									new OO.ui.LabelWidget( {
+										label: mw.message( 'growthexperiments-help-panel-questioncomplete-first-edit' ).text()
+									} )
+								] );
+							}
 							this.questionCompleteContent.addItems( [
-								new OO.ui.LabelWidget( {
-									label: mw.message( 'growthexperiments-help-panel-questioncomplete-first-edit' ).text()
+								new OO.ui.Element( {
+									$content: $( '<p>' ).append( $( '<a>', {
+										href: data.helppanelquestionposter.viewquestionurl,
+										target: '_blank',
+										text: mw.message( 'growthexperiments-help-panel-questioncomplete-view-link-text' ).text()
+									} ) )
 								} )
 							] );
-						}
-						this.swapPanel( action );
-						this.questionTextInput.setValue( '' );
-						// Remove the stored draft text, now that the user has submitted it
-						mw.storage.remove( 'help-panel-question-text' );
-					}.bind( this ), function () {
-						// Return a recoverable error. The user can either try again, or they
-						// can follow the instructions in the error message for how to post
-						// their message manually.
-						// Re-enable the submit button once the user is done with modal.
-						this.questionReviewSubmitButton.setDisabled( false );
-						return $.Deferred().reject( new OO.ui.Error( $( '<p>' ).append( mw.message(
-							'growthexperiments-help-panel-question-post-error', linksConfig.helpDeskLink
-						).parse() ) ) ).promise();
-					}.bind( this ) );
+							this.swapPanel( action );
+							// Reset the post a question text inputs.
+							this.questionTextInput.setValue( '' );
+							mw.storage.set( 'help-panel-question-text', '' );
+						}.bind( this ), function () {
+							// Return a recoverable error. The user can either try again, or they
+							// can follow the instructions in the error message for how to post
+							// their message manually.
+							// Re-enable the submit button once the user is done with modal.
+							this.questionReviewSubmitButton.setDisabled( false );
+							return $.Deferred().reject( new OO.ui.Error( $( '<p>' ).append( mw.message(
+								'growthexperiments-help-panel-question-post-error', linksConfig.helpDeskLink
+							).parse() ) ) ).promise();
+						}.bind( this ) );
 				}
-			}, this );
+			}.bind( this ) );
 	};
 
 	HelpPanelProcessDialog.prototype.getBodyHeight = function () {
