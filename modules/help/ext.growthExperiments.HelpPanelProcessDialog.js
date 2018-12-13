@@ -75,7 +75,6 @@
 		}
 		this.panels.setItem( panelObj );
 		this.actions.setMode( panel );
-		this.setSize( 'small' );
 	};
 
 	/**
@@ -210,9 +209,10 @@
 	};
 
 	HelpPanelProcessDialog.prototype.initialize = function () {
+		HelpPanelProcessDialog.super.prototype.initialize.call( this );
+
 		this.userEmail = mw.config.get( 'wgGEHelpPanelUserEmail' );
 		this.userEmailConfirmed = mw.config.get( 'wgGEHelpPanelUserEmailConfirmed' );
-		HelpPanelProcessDialog.super.prototype.initialize.call( this );
 
 		/**
 		 * @type {mw.Title}
@@ -459,7 +459,8 @@
 						had_email: !!mw.config.get( 'wgGEHelpPanelUserEmail' ),
 						had_email_confirmed: !!mw.config.get( 'wgGEHelpPanelUserEmailConfirmed' ),
 						email_form_has_content: !!this.questionReviewAddEmail.getValue(),
-						email_form_changed: this.questionReviewAddEmail.getValue() !== this.questionReviewAddEmail.defaultValue
+						email_form_changed: this.questionReviewAddEmail.getValue() !==
+							this.questionReviewAddEmail.defaultValue
 					};
 					/* eslint-enable camelcase */
 					this.logger.log( 'submit-attempt', submitAttemptData );
