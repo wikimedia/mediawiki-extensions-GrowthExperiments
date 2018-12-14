@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Martin Urbanec",
-			"Dvorapa"
+			"Dvorapa",
+			"Patriccck"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Vítejte}}, $1!",
@@ -12,6 +13,9 @@
 	"welcomesurvey-save-btn": "Dokončit",
 	"welcomesurvey-skip-btn": "Přeskočit tento dotazník",
 	"welcomesurvey-close-btn": "Zavřít a jít zpět na stránku $1",
+	"welcomesurvey-popup-close-btn": "Zavřít",
+	"welcomesurvey-back-btn": "Zpět",
+	"welcomesurvey-next-btn": "Další",
 	"welcomesurvey-sidebar-privacy-title": "Ctíme vaše soukromí",
 	"welcomesurvey-sidebar-privacy-text": "Abyste se dozvěděl(a) více o tom, jak jsou odpovědi používány, můžete se podívat na $1 dotazníku.",
 	"welcomesurvey-privacy-policy-link-text": "zásady pro ochranu osobních údajů",
