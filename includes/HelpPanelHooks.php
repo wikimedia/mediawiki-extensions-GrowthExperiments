@@ -82,6 +82,7 @@ class HelpPanelHooks {
 			$out->addJsConfigVars( [
 				// We know the help panel is enabled, otherwise we wouldn't get here
 				'wgGEHelpPanelEnabled' => true,
+				'wgGEHelpPanelLoggingEnabled' => $out->getConfig()->get( 'GEHelpPanelLoggingEnabled' ),
 				'wgGEHelpPanelUserEmail' => $out->getUser()->getEmail(),
 				'wgGEHelpPanelUserEmailConfirmed' => $out->getUser()->isEmailConfirmed()
 			] );

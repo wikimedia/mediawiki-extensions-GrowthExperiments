@@ -63,6 +63,13 @@
 		"localBasePath": "modules",
 		"remoteExtPath": "GrowthExperiments/modules"
 	},
+	"attributes": {
+		"EventLogging": {
+			"Schemas": {
+				"HelpPanel": 18721886
+			}
+		}
+	},
 	"ResourceModules": {
 		"ext.growthExperiments.welcomeSurvey.styles": {
 			"styles": [
@@ -212,6 +219,7 @@
 			],
 			"scripts": [
 				"help/ext.growthExperiments.HelpPanel.cta.js",
+				"help/ext.growthExperiments.HelpPanelLogger.js",
 				"help/ext.growthExperiments.HelpPanelProcessDialog.js"
 			],
 			"dependencies": [
@@ -289,6 +297,10 @@
 		},
 		"GEHelpPanelEnabled": {
 			"description": "Global ON/OFF switch for the Help pane feature.",
+			"value": false
+		},
+		"GEHelpPanelLoggingEnabled": {
+			"description": "ON/OFF switch for the Help pane event logging feature.",
 			"value": false
 		},
 		"GEHelpPanelLinks": {
