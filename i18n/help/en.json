@@ -33,7 +33,7 @@
 	"growthexperiments-help-panel-settings-cog-tooltip": "This button will take you to Special:Preferences, where you can toggle the setting for \"{{int:growthexperiments-help-panel-tog-help-panel}}\"",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "By the way, by posting this question, you've just made your first edit on {{SITENAME}}. Congratulations!",
 	"growthexperiments-help-panel-questionreview-unconfirmed-email-note": "You'll receive an email confirmation link so that you can be notified of responses. Your email address is <strong>not revealed</strong> when other users contact you.",
-	"growthexperiments-help-panel-questionreview-no-email-note": "If you enter an email address, you'll receive an email confirmation link so that you can be notified of responses. Your email address is <strong>not revealed</strong> when other users contact you.",
+	"growthexperiments-help-panel-questionreview-no-email-note": "If you add an email address to your account, you'll receive an email confirmation link so that you can be notified of responses. Your email address is <strong>not revealed</strong> when other users contact you.",
 	"growthexperiments-help-panel-questionreview-add-email-placeholder": "Enter your email address",
 	"growthexperiments-help-panel-questionreview-email-optional": "Email address (optional)",
 	"tag-help_panel_question": "Help panel question",
