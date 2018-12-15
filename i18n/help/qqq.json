@@ -30,7 +30,7 @@
 	"growthexperiments-help-panel-questioncomplete-confirmation-email-none": "Confirmation to the user that they will receive an on-wiki notification when a response is posted.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Text to display with the link to the question the user posted through the help panel.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Text to display with the More about this feature link.\n\n{{doc-growthexperiments-help-panel}}",
-	"growthexperiments-help-panel-settings-cog-tooltip": "Text to show in the tooltip that redirects the user to uncheck {{int:growthexperiments-help-panel-tog-help-panel}} in Special:Preferences.\n\n{{doc-growthexperiments-help-panel}}",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Text to display with the link to Special:Preferences, where the user can disable this tool.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "Additional confirmation message in the help panel shown only if the question posted to Help Desk is the user's first edit.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questionreview-unconfirmed-email-note": "Text to display to users if their email address is unconfirmed.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questionreview-no-email-note": "Text to display to users if they have not provided an email address.\n\n{{doc-growthexperiments-help-panel}}",

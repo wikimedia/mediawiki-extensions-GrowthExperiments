@@ -29,16 +29,14 @@
 			label: mw.message( 'growthexperiments-help-panel-close' ).text(),
 			modes: [ 'questioncomplete' ],
 			flags: 'safe'
-		},
-		{
-			framed: false,
-			icon: 'settings',
-			title: mw.message( 'growthexperiments-help-panel-settings-cog-tooltip' ).text(),
-			modes: [ 'home', 'questionreview', 'questioncomplete' ],
-			flags: [ 'primary', 'safe' ],
-			action: 'settings'
 		}
 	];
+
+	HelpPanelProcessDialog.prototype.attachActions = function () {
+		HelpPanelProcessDialog.super.prototype.attachActions.call( this );
+		// Hack to place the settings cog as a "primary" (top-right) action.
+		this.$primaryActions.append( this.settingsCog.$element );
+	};
 
 	/**
 	 * Swap the state of the help panel dialog.
@@ -186,6 +184,29 @@
 		}
 	};
 
+	HelpPanelProcessDialog.prototype.buildSettingsCog = function () {
+		this.settingsCog = new OO.ui.PopupButtonWidget( {
+			$overlay: $( '.mw-ge-help-panel-widget-overlay' ),
+			icon: 'settings',
+			// Hack for styling
+			classes: [ 'oo-ui-actionWidget' ],
+			framed: false,
+			popup: {
+				$content: $( '<p>' ).append( mw.html.element( 'a', {
+					href: new mw.Title( 'Special:Preferences#mw-prefsection-editing' ).getUrl(),
+					target: '_blank'
+				}, mw.message( 'growthexperiments-help-panel-settings-cog-preferences-link' ).text() ) ),
+				padded: true,
+				width: 260,
+				classes: [ 'mw-ge-help-panel-settings-cog-content' ],
+				// Hack, still leaves a gap between button and popup window.
+				containerPadding: 2,
+				anchor: false,
+				$container: $( '.oo-ui-window-body' )
+			}
+		} );
+	};
+
 	HelpPanelProcessDialog.prototype.initialize = function () {
 		var userEmail = mw.config.get( 'wgGEHelpPanelUserEmail' ),
 			userEmailConfirmed = mw.config.get( 'wgGEHelpPanelUserEmailConfirmed' );
@@ -212,6 +233,7 @@
 		} );
 
 		// Fields
+		this.buildSettingsCog();
 		this.questionTextInput = new OO.ui.MultilineTextInputWidget( {
 			placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' ).text(),
 			multiline: true,
