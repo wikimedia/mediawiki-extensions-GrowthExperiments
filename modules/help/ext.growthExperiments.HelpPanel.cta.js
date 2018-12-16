@@ -25,7 +25,7 @@
 				id: 'mw-ge-help-panel-cta',
 				href: mw.util.getUrl( mw.config.get( 'wgGEHelpPanelHelpDeskTitle' ) ),
 				label: mw.msg( 'growthexperiments-help-panel-cta-button-text' ),
-				icon: 'helpNotice',
+				icon: 'askQuestion',
 				flags: [ 'primary', 'progressive' ]
 			} );
 			$overlay.append( helpCtaButton.$element );

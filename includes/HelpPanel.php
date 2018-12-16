@@ -28,7 +28,7 @@ class HelpPanel {
 			)->getLinkURL(),
 			'label' => wfMessage( 'growthexperiments-help-panel-cta-button-text' )->text(),
 			'infusable' => true,
-			'icon' => 'helpNotice',
+			'icon' => 'askQuestion',
 			'flags' => [ 'primary', 'progressive' ],
 		] );
 	}
