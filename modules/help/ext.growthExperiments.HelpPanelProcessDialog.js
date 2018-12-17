@@ -121,24 +121,20 @@
 	/**
 	 * Set relevant email fields.
 	 *
-	 * @param {string} email
-	 *   The user email, or empty string if not set.
-	 * @param {bool} isEmailConfirmed
-	 *   If the user's email is confirmed.
 	 * @param {string} panel
 	 *  One of 'questionreview' or 'questioncomplete'
 	 */
-	HelpPanelProcessDialog.prototype.setEmailFields = function ( email, isEmailConfirmed, panel ) {
+	HelpPanelProcessDialog.prototype.setEmailFields = function ( panel ) {
 		// Default to no email.
 		var questionCompleteNotificationsLabelKey = 'growthexperiments-help-panel-questioncomplete-confirmation-email-none';
 		if ( panel === 'questionreview' ) {
 			// User doesn't have email or it isn't confirmed, provide an input and help.
-			if ( !email || !isEmailConfirmed ) {
+			if ( !this.userEmail || !this.userEmailConfirmed ) {
 				this.questionReviewContent.addItems( [
 					new OO.ui.FieldLayout( this.questionReviewAddEmail, {
 						label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-email-optional' ).text() ),
 						align: 'top',
-						help: !email ?
+						help: !this.userEmail ?
 							new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-no-email-note' ).parse() ) :
 							new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-unconfirmed-email-note' ).parse() ),
 						helpInline: true
@@ -146,13 +142,13 @@
 				] );
 			}
 			// Output the user's email and help about notifications.
-			if ( email && isEmailConfirmed ) {
+			if ( this.userEmail && this.userEmailConfirmed ) {
 				this.questionReviewContent.addItems( [
 					new OO.ui.FieldLayout(
 						new OO.ui.Widget( {
 							content: [
 								new OO.ui.Element( {
-									$content: $( '<p>' ).text( email )
+									$content: $( '<p>' ).text( this.userEmail )
 								} )
 							]
 						} ),
@@ -168,9 +164,9 @@
 		}
 
 		if ( panel === 'questioncomplete' ) {
-			if ( email ) {
+			if ( this.userEmail ) {
 				questionCompleteNotificationsLabelKey = 'growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed';
-				if ( isEmailConfirmed ) {
+				if ( this.userEmailConfirmed ) {
 					questionCompleteNotificationsLabelKey = 'growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed';
 				}
 			}
@@ -208,8 +204,8 @@
 	};
 
 	HelpPanelProcessDialog.prototype.initialize = function () {
-		var userEmail = mw.config.get( 'wgGEHelpPanelUserEmail' ),
-			userEmailConfirmed = mw.config.get( 'wgGEHelpPanelUserEmailConfirmed' );
+		this.userEmail = mw.config.get( 'wgGEHelpPanelUserEmail' );
+		this.userEmailConfirmed = mw.config.get( 'wgGEHelpPanelUserEmailConfirmed' );
 		HelpPanelProcessDialog.super.prototype.initialize.call( this );
 
 		/**
@@ -267,7 +263,7 @@
 
 		this.questionReviewAddEmail = new OO.ui.TextInputWidget( {
 			placeholder: mw.message( 'growthexperiments-help-panel-questionreview-add-email-placeholder' ).text(),
-			value: userEmail,
+			value: this.userEmail,
 			type: 'email'
 		} ).connect( this, { change: 'onEmailInput' } );
 
@@ -336,7 +332,7 @@
 			} )
 		] );
 
-		this.setEmailFields( userEmail, userEmailConfirmed, 'questionreview' );
+		this.setEmailFields( 'questionreview' );
 
 		this.questionReviewContent.addItems( [
 			new OO.ui.FieldLayout(
@@ -392,7 +388,7 @@
 					.text( mw.message( 'growthexperiments-help-panel-questioncomplete-confirmation-text' ).text() )
 			} )
 		] );
-		this.setEmailFields( userEmail, userEmailConfirmed, 'questioncomplete' );
+		this.setEmailFields( 'questioncomplete' );
 		this.questioncompletePanel.$element.append( this.questionCompleteContent.$element );
 
 		// Add the footers
@@ -429,7 +425,7 @@
 					this.questionReviewSubmitButton.setDisabled( true );
 					return new mw.Api().postWithToken( 'csrf', {
 						action: 'helppanelquestionposter',
-						email: this.email,
+						email: this.questionReviewAddEmail.getValue(),
 						relevanttitle: this.questionIncludeTitleCheckbox.isSelected() ? this.relevantTitle.getPrefixedDb() : '',
 						body: this.questionReviewTextInput.getValue()
 					} )
