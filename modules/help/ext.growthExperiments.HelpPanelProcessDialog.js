@@ -418,9 +418,6 @@
 	HelpPanelProcessDialog.prototype.getActionProcess = function ( action ) {
 		return HelpPanelProcessDialog.super.prototype.getActionProcess.call( this, action )
 			.next( function () {
-				if ( action === 'settings' ) {
-					window.open( new mw.Title( 'Special:Preferences#mw-prefsection-editing' ).getUrl() );
-				}
 				if ( action === 'questionreview' || action === 'home' ) {
 					this.swapPanel( action );
 				}
