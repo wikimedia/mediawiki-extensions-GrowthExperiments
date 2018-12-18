@@ -240,7 +240,7 @@
 			value: mw.storage.get( 'help-panel-question-text' ),
 			spellcheck: true,
 			required: true,
-			autofocus: true
+			autofocus: false
 		} ).connect( this, { change: 'populateReviewText' } );
 
 		this.questionReviewTextInput = new OO.ui.MultilineTextInputWidget( {
