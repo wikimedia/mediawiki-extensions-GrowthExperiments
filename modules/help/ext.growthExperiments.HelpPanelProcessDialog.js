@@ -4,10 +4,15 @@
 	 * @class
 	 * @extends OO.ui.ProcessDialog
 	 *
+	 * @param {Object} config
+	 * @cfg {jQuery} $overlay
+	 * @cfg {mw.libs.ge.HelpPanelLogger} logger
 	 * @constructor
 	 */
-	var HelpPanelProcessDialog = function helpPanelProcessDialog() {
-			HelpPanelProcessDialog.super.apply( this, arguments );
+	var HelpPanelProcessDialog = function helpPanelProcessDialog( config ) {
+			HelpPanelProcessDialog.super.call( this, config );
+			this.$overlay = config.$overlay;
+			this.logger = config.logger;
 		},
 		linksConfig = mw.config.get( 'wgGEHelpPanelLinks' );
 
@@ -116,6 +121,11 @@
 		this.questionReviewTextInput.setValue( this.questionTextInput.getValue() );
 		// Disable "Continue" button if there is no text.
 		this.askQuestionContinueButton.setDisabled( !this.questionTextInput.getValue() );
+
+		if ( !this.previousQuestionText && this.questionTextInput.getValue() ) {
+			this.logger.log( 'enter-question-text' );
+		}
+		this.previousQuestionText = this.questionTextInput.getValue();
 	};
 
 	/**
@@ -182,7 +192,7 @@
 
 	HelpPanelProcessDialog.prototype.buildSettingsCog = function () {
 		this.settingsCog = new OO.ui.PopupButtonWidget( {
-			$overlay: $( '.mw-ge-help-panel-widget-overlay' ),
+			$overlay: this.$overlay,
 			icon: 'settings',
 			// Hack for styling
 			classes: [ 'oo-ui-actionWidget' ],
@@ -190,7 +200,8 @@
 			popup: {
 				$content: $( '<p>' ).append( mw.html.element( 'a', {
 					href: new mw.Title( 'Special:Preferences#mw-prefsection-editing' ).getUrl(),
-					target: '_blank'
+					target: '_blank',
+					'data-link-id': 'special-preferences'
 				}, mw.message( 'growthexperiments-help-panel-settings-cog-preferences-link' ).text() ) ),
 				padded: true,
 				width: 260,
@@ -201,6 +212,11 @@
 				$container: $( '.oo-ui-window-body' )
 			}
 		} );
+		this.settingsCog.popup.connect( this, { toggle: 'onCogMenuToggle' } );
+	};
+
+	HelpPanelProcessDialog.prototype.onCogMenuToggle = function ( show ) {
+		this.logger.log( show ? 'cog-open' : 'cog-close' );
 	};
 
 	HelpPanelProcessDialog.prototype.initialize = function () {
@@ -230,6 +246,7 @@
 
 		// Fields
 		this.buildSettingsCog();
+		this.previousQuestionText = mw.storage.get( 'help-panel-question-text' );
 		this.questionTextInput = new OO.ui.MultilineTextInputWidget( {
 			placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' ).text(),
 			multiline: true,
@@ -401,6 +418,15 @@
 			this.questioncompletePanel
 		] );
 		this.$body.append( this.panels.$element );
+
+		this.$overlay.on( 'click', 'a[data-link-id]', this.logLinkClick.bind( this ) );
+	};
+
+	HelpPanelProcessDialog.prototype.logLinkClick = function ( e ) {
+		var linkId = $( e.target ).data( 'link-id' );
+		if ( linkId ) {
+			this.logger.log( 'link-click', linkId );
+		}
 	};
 
 	HelpPanelProcessDialog.prototype.getSetupProcess = function ( data ) {
@@ -414,10 +440,31 @@
 	HelpPanelProcessDialog.prototype.getActionProcess = function ( action ) {
 		return HelpPanelProcessDialog.super.prototype.getActionProcess.call( this, action )
 			.next( function () {
-				if ( action === 'questionreview' || action === 'home' ) {
+				var submitAttemptData;
+				if ( action === 'reset' ) {
+					this.swapPanel( 'home' );
+				}
+				if ( action === 'home' ) {
+					this.logger.log( 'back-home' );
+					this.swapPanel( action );
+				}
+				if ( action === 'questionreview' ) {
+					this.logger.log( 'review' );
 					this.swapPanel( action );
 				}
 				if ( action === 'questioncomplete' ) {
+					/* eslint-disable camelcase */
+					submitAttemptData = {
+						question_length: this.questionReviewTextInput.getValue().length,
+						include_title: this.questionIncludeTitleCheckbox.isSelected(),
+						had_email: !!mw.config.get( 'wgGEHelpPanelUserEmail' ),
+						had_email_confirmed: !!mw.config.get( 'wgGEHelpPanelUserEmailConfirmed' ),
+						email_form_has_content: !!this.questionReviewAddEmail.getValue(),
+						email_form_changed: this.questionReviewAddEmail.getValue() !== this.questionReviewAddEmail.defaultValue
+					};
+					/* eslint-enable camelcase */
+					this.logger.log( 'submit-attempt', submitAttemptData );
+
 					// Disable the primary button while executing the API call.
 					this.questionReviewSubmitButton.setDisabled( true );
 					return new mw.Api().postWithToken( 'csrf', {
@@ -427,6 +474,17 @@
 						body: this.questionReviewTextInput.getValue()
 					} )
 						.then( function ( data ) {
+							this.logger.incrementUserEditCount();
+							this.logger.log( 'submit-success', $.extend(
+								submitAttemptData,
+								/* eslint-disable camelcase */
+								{
+									revision_id: data.helppanelquestionposter.revision,
+									email_action_status: data.helppanelquestionposter.email
+								}
+								/* eslint-enable camelcase */
+							) );
+
 							if ( data.helppanelquestionposter.isfirstedit ) {
 								this.questionCompleteContent.addItems( [
 									new OO.ui.LabelWidget( {
@@ -439,6 +497,7 @@
 									$content: $( '<p>' ).append( $( '<a>', {
 										href: data.helppanelquestionposter.viewquestionurl,
 										target: '_blank',
+										'data-link-id': 'view-question',
 										text: mw.message( 'growthexperiments-help-panel-questioncomplete-view-link-text' ).text()
 									} ) )
 								} )
@@ -452,6 +511,7 @@
 							// can follow the instructions in the error message for how to post
 							// their message manually.
 							// Re-enable the submit button once the user is done with modal.
+							this.logger.log( 'submit-failure', submitAttemptData );
 							this.questionReviewSubmitButton.setDisabled( false );
 							return $.Deferred().reject( new OO.ui.Error( $( '<p>' ).append( mw.message(
 								'growthexperiments-help-panel-question-post-error', linksConfig.helpDeskLink

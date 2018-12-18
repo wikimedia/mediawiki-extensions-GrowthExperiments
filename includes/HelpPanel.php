@@ -48,20 +48,22 @@ class HelpPanel {
 				$helpPanelLinks .= Html::rawElement(
 					'li',
 					[],
-					$linkRenderer->makeLink( $title, $link['text'], [ 'target' => '_blank' ] )
+					$linkRenderer->makeLink( $title, $link['text'],
+						[ 'target' => '_blank', 'data-link-id' => $link['id'] ?? '' ] )
 				);
 			}
 		}
 		$helpPanelLinks .= Html::closeElement( 'ul' );
 
 		$helpDeskTitle = Title::newFromText( $config->get( 'GEHelpPanelHelpDeskTitle' ) );
-		$helpDeskLink = $linkRenderer->makeLink( $helpDeskTitle, null, [ 'target' => '_blank' ] );
+		$helpDeskLink = $linkRenderer->makeLink( $helpDeskTitle, null,
+			[ 'target' => '_blank', 'data-link-id' => 'help-desk' ] );
 
 		$viewMoreTitle = Title::newFromText( $config->get( 'GEHelpPanelViewMoreTitle' ) );
 		$viewMoreLink = $linkRenderer->makeLink(
 			$viewMoreTitle,
 			$ml->msg( 'growthexperiments-help-panel-editing-help-links-widget-view-more-link' )->text(),
-			[ 'target' => '_blank' ]
+			[ 'target' => '_blank', 'data-link-id' => 'view-more' ]
 		);
 
 		return [

@@ -8,11 +8,15 @@
 		var $buttonToInfuse = $( '#mw-ge-help-panel-cta' ),
 			windowManager = new OO.ui.WindowManager( { modal: OO.ui.isMobile() } ),
 			$overlay = $( '<div>' ).addClass( 'mw-ge-help-panel-widget-overlay' ),
+			loggingEnabled = mw.config.get( 'wgGEHelpPanelLoggingEnabled' ),
+			logger = new mw.libs.ge.HelpPanelLogger( loggingEnabled ),
 			/**
 			 * @type {OO.ui.Window}
 			 */
 			helpPanelProcessDialog = new mw.libs.ge.HelpPanelProcessDialog( {
-				size: OO.ui.isMobile() ? 'full' : 'small'
+				size: OO.ui.isMobile() ? 'full' : 'small',
+				$overlay: $overlay,
+				logger: logger
 			} ),
 			helpCtaButton,
 			lifecycle;
@@ -49,13 +53,16 @@
 		$( 'body' ).append( $overlay );
 		windowManager.addWindows( [ helpPanelProcessDialog ] );
 
+		logger.log( 'impression' );
 		helpCtaButton.on( 'click', function () {
 			lifecycle = windowManager.openWindow( helpPanelProcessDialog );
 			// Reset to home panel if user closed the widget.
-			helpPanelProcessDialog.executeAction( 'home' );
+			helpPanelProcessDialog.executeAction( 'reset' );
 			helpCtaButton.toggle( false );
+			logger.log( 'open' );
 			lifecycle.closing.done( function () {
 				helpCtaButton.toggle( true );
+				logger.log( 'close' );
 			} );
 		} );
 
