@@ -64,6 +64,16 @@
 		"remoteExtPath": "GrowthExperiments/modules"
 	},
 	"ResourceModules": {
+		"ext.growthExperiments.HelpPanel.icons": {
+			"class": "ResourceLoaderImageModule",
+			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",
+			"selectorWithoutVariant": ".oo-ui-icon-{name}",
+			"images": {
+				"askQuestion": {
+					"file": "../images/askQuestion.svg"
+				}
+			}
+		},
 		"ext.growthExperiments.welcomeSurvey.styles": {
 			"styles": [
 				"welcomesurvey/ext.growthExperiments.welcomeSurvey.less"
@@ -215,6 +225,7 @@
 				"help/ext.growthExperiments.HelpPanelProcessDialog.js"
 			],
 			"dependencies": [
+				"ext.growthExperiments.HelpPanel.icons",
 				"ext.growthExperiments.HelpPanelCta.styles",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
