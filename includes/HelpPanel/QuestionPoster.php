@@ -194,11 +194,11 @@ class QuestionPoster {
 		if ( !Util::canSetEmail( $user, $email, (bool)$userEmail ) ) {
 			return Status::newFatal( 'growthexperiments-help-panel-questionposter-user-cannot-set-email' );
 		}
-		// No email, set and send confirmation.
-		if ( !$userEmail ) {
+		// User email is null, or new email doesn't match existing email: set and send confirmation.
+		if ( $userEmail !== $email ) {
 			return $user->setEmailWithConfirmation( $email );
 		}
-		// Unconfirmed email, resend the confirmation link.
+		// Unconfirmed email: resend the confirmation link.
 		$sendConfirmStatus = $user->sendConfirmationMail( 'set' );
 		if ( $sendConfirmStatus->isGood() ) {
 			// Make the result readable in the API response; default value

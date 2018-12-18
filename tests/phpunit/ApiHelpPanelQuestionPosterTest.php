@@ -78,6 +78,29 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		);
 		$this->assertArraySubset( [
 				'result' => 'success',
+				'email' => 'eauth'
+			], $ret[0]['helppanelquestionposter'] );
+
+		$ret = $this->doApiRequestWithToken(
+			$this->getParams( 'blah', 'change@again.com' ),
+			null,
+			$this->mUser,
+			'csrf'
+		);
+		$this->assertArraySubset( [
+				'result' => 'success',
+				'email' => 'eauth'
+			], $ret[0]['helppanelquestionposter'] );
+
+		$this->mUser->setEmail( 'a@b.com' );
+		$ret = $this->doApiRequestWithToken(
+			$this->getParams( 'blah', 'a@b.com' ),
+			null,
+			$this->mUser,
+			'csrf'
+		);
+		$this->assertArraySubset( [
+				'result' => 'success',
 				'email' => 'send_confirm'
 			], $ret[0]['helppanelquestionposter'] );
 	}
