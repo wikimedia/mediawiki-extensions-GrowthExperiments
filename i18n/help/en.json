@@ -36,6 +36,9 @@
 	"growthexperiments-help-panel-questionreview-no-email-note": "If you add an email address to your account, you'll receive an email confirmation link so that you can be notified of responses. Your email address is <strong>not revealed</strong> when other users contact you.",
 	"growthexperiments-help-panel-questionreview-add-email-placeholder": "Enter your email address",
 	"growthexperiments-help-panel-questionreview-email-optional": "Email address (optional)",
+	"growthexperiments-help-panel-questionposter-email-already-confirmed": "Email address is already set and confirmed.",
+	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "Insufficient permissions to set email.",
+	"growthexperiments-help-panel-questionposter-invalid-title": "Invalid title.",
 	"tag-help_panel_question": "Help panel question",
 	"tag-help_panel_question-description": "Edit made from the help panel's post a question feature"
 }

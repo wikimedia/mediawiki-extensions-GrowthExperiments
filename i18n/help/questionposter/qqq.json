@@ -1,9 +1,0 @@
-{
-	"@metadata": {
-		"authors": []
-	},
-	"growthexperiments-help-panel-questionposter-email-already-confirmed": "Error message if attempt is made to change existing confirmed email.",
-	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "Error message if attempt is made to set email but user does not have permission.",
-	"growthexperiments-help-panel-questionposter-invalid-title": "Error message if invalid title is included in request."
-}
-
