@@ -181,31 +181,56 @@ class QuestionPoster {
 	}
 
 	/**
-	 * @param string $email
+	 * Process potential changes to user's email address.
+	 *
+	 * The client sends over the email address from the user, which can be one of:
+	 *   1. User's confirmed email address
+	 *   2. User's unconfirmed email address (unchanged)
+	 *   3. New email address supplied via the help panel
+	 *   4. Empty string, indicating user's email should be set to empty string.
+	 *
+	 * @param string $newEmail
 	 * @return Status
 	 */
-	public function handleEmail( $email ) {
+	public function handleEmail( $newEmail ) {
 		$user = $this->context->getUser();
-		$userEmail = $user->getEmail();
-		if ( $userEmail && $user->isEmailConfirmed() ) {
-			return Status::newFatal( 'growthexperiments-help-panel-questionposter-email-already-confirmed' );
+		$existingEmail = $user->getEmail();
+		// If existing email matches the new one, return early if user's email is already
+		// confirmed. If their email isn't confirmed, we need to resend the confirmation mail.
+		if ( $existingEmail === $newEmail ) {
+			if ( $user->isEmailConfirmed() ) {
+				return Status::newGood( 'already_confirmed' );
+			}
+			// Existing email is blank, and new email is blank.
+			if ( !$newEmail ) {
+				return Status::newGood( 'no_op' );
+			}
+			// Unconfirmed email: resend the confirmation link.
+			$sendConfirmStatus = $user->sendConfirmationMail( 'set' );
+			if ( $sendConfirmStatus->isGood() ) {
+				// Make the result readable in the API response; default value
+				// is null for success.
+				$sendConfirmStatus->setResult( true, 'send_confirm' );
+			}
+			return $sendConfirmStatus;
 		}
-		// Check permissions.
-		if ( !Util::canSetEmail( $user, $email, (bool)$userEmail ) ) {
+		// The emails don't match, check if user can change their email.
+		if ( !Util::canSetEmail( $user, $newEmail, (bool)$existingEmail ) ) {
 			return Status::newFatal( 'growthexperiments-help-panel-questionposter-user-cannot-set-email' );
 		}
-		// User email is null, or new email doesn't match existing email: set and send confirmation.
-		if ( $userEmail !== $email ) {
-			return $user->setEmailWithConfirmation( $email );
+		// User is blanking the email address, just unset it and don't attempt confirmation.
+		if ( !$newEmail ) {
+			$user->setEmail( '' );
+			$user->saveSettings();
+			return Status::newGood( 'unset_email' );
 		}
-		// Unconfirmed email: resend the confirmation link.
-		$sendConfirmStatus = $user->sendConfirmationMail( 'set' );
-		if ( $sendConfirmStatus->isGood() ) {
-			// Make the result readable in the API response; default value
-			// is null for success.
-			$sendConfirmStatus->setResult( true, 'send_confirm' );
+		// New email doesn't match existing email: set and send confirmation.
+		$status = $user->setEmailWithConfirmation( $newEmail );
+		if ( $status->isGood() ) {
+			$status = Status::newGood( 'set_email_with_confirmation' );
 		}
-		return $sendConfirmStatus;
+		$user->saveSettings();
+		return $status;
 	}
 
 	/**

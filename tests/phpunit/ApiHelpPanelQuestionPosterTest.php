@@ -63,9 +63,54 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		$this->mUser->setEmail( '' );
 		$ret = $this->doApiRequestWithToken( $params, null, $this->mUser, 'csrf' );
 		$this->assertArraySubset( [
+			'result' => 'success',
+			'email' => 'set_email_with_confirmation'
+		], $ret[0]['helppanelquestionposter'] );
+
+		// no email -> no email.
+		$params = [
+			'action' => 'helppanelquestionposter',
+			'body' => 'lorem ipsum',
+			'email' => ''
+		];
+
+		$this->mUser->setEmail( '' );
+		$ret = $this->doApiRequestWithToken( $params, null, $this->mUser, 'csrf' );
+		$this->assertArraySubset( [
+			'result' => 'success',
+			'email' => 'no_op'
+		], $ret[0]['helppanelquestionposter'] );
+	}
+
+	public function testInvalidEmail() {
+		$params = [
+			'action' => 'helppanelquestionposter',
+			'body' => 'lorem ipsum',
+			'email' => '123'
+		];
+		$this->mUser->setEmail( 'a@b.com' );
+		$ret = $this->doApiRequestWithToken( $params, null, $this->mUser, 'csrf' );
+		$this->assertArraySubset( [
+			'result' => 'success',
+			'email' => 'Insufficient permissions to set email.'
+		], $ret[0]['helppanelquestionposter'] );
+	}
+
+	public function testBlankEmailFromUnconfirmedEmail() {
+		$params = [
+			'action' => 'helppanelquestionposter',
+			'body' => 'lorem ipsum',
+			'email' => ''
+		];
+
+		$this->mUser->setEmail( 'a@b.com' );
+		$this->assertEquals( 'a@b.com', $this->mUser->getEmail() );
+		$ret = $this->doApiRequestWithToken( $params, null, $this->mUser, 'csrf' );
+		$this->assertArraySubset( [
 				'result' => 'success',
-				'email' => 'eauth'
-			], $ret[0]['helppanelquestionposter'] );
+				'email' => 'unset_email'
+		], $ret[0]['helppanelquestionposter'] );
+		$this->assertEquals( '', $this->mUser->getEmail() );
 	}
 
 	public function testHandleUnconfirmedEmail() {
@@ -78,7 +123,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		);
 		$this->assertArraySubset( [
 				'result' => 'success',
-				'email' => 'eauth'
+				'email' => 'set_email_with_confirmation'
 			], $ret[0]['helppanelquestionposter'] );
 
 		$ret = $this->doApiRequestWithToken(
@@ -89,7 +134,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		);
 		$this->assertArraySubset( [
 				'result' => 'success',
-				'email' => 'eauth'
+				'email' => 'set_email_with_confirmation'
 			], $ret[0]['helppanelquestionposter'] );
 
 		$this->mUser->setEmail( 'a@b.com' );
@@ -106,6 +151,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 	}
 
 	public function testHandleConfirmedEmail() {
+		// User attempts to change confirmed email.
 		$this->mUser->setEmailAuthenticationTimestamp( wfTimestamp() );
 		$ret = $this->doApiRequestWithToken(
 			$this->getParams( 'lorem', 'shouldthrow@error.com' ),
@@ -113,7 +159,38 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 			$this->mUser,
 			'csrf'
 		);
-		$this->assertNull( $ret[0]['helppanelquestionposter']['email'] );
+		$this->assertArraySubset(
+			[ 'email' => 'Insufficient permissions to set email.' ],
+			$ret[0]['helppanelquestionposter']
+		);
+		// No change with confirmed email.
+		// User attempts to change confirmed email.
+		$this->mUser->setEmail( 'a@b.com' );
+		$this->mUser->setEmailAuthenticationTimestamp( wfTimestamp() );
+		$ret = $this->doApiRequestWithToken(
+			$this->getParams( 'lorem', 'a@b.com' ),
+			null,
+			$this->mUser,
+			'csrf'
+		);
+		$this->assertArraySubset(
+			[ 'email' => 'already_confirmed' ],
+			$ret[0]['helppanelquestionposter']
+		);
+
+		// User attempts to blank confirmed email.
+		$this->mUser->setEmail( 'a@b.com' );
+		$this->mUser->setEmailAuthenticationTimestamp( wfTimestamp() );
+		$ret = $this->doApiRequestWithToken(
+			$this->getParams( 'lorem', '' ),
+			null,
+			$this->mUser,
+			'csrf'
+		);
+		$this->assertArraySubset(
+			[ 'email' => 'Insufficient permissions to set email.' ],
+			$ret[0]['helppanelquestionposter']
+		);
 	}
 
 	public function testValidRelevantTitle() {
