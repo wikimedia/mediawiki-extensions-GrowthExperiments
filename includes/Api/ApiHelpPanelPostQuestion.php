@@ -42,23 +42,22 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 		$result = [
 			'result' => 'success',
 			'revision' => $questionPoster->getRevisionId(),
-			'isfirstedit' => $questionPoster->isFirstEdit(),
+			'isfirstedit' => (int)$questionPoster->isFirstEdit(),
 			'viewquestionurl' => $questionPoster->getResultUrl(),
 			'email' => null
 		];
 
-		if ( $params[self::API_PARAM_EMAIL] ) {
-			$emailStatus = $questionPoster->handleEmail( $params[self::API_PARAM_EMAIL] );
-			// If email handling fails, log a message but don't cause the request
-			// to fail.
-			if ( !$emailStatus->isGood() ) {
-				LoggerFactory::getInstance( 'GrowthExperiments' )
-					->error( 'Email handling failed for {user}: {status}', [
-						'user' => $this->getUser()->getId(),
-						'status' => $emailStatus->getWikiText()
-					] );
-			}
-			$result['email'] = $emailStatus->getValue();
+		$emailStatus = $questionPoster->handleEmail( $params[self::API_PARAM_EMAIL] );
+		$result['email'] = $emailStatus->getValue();
+		// If email handling fails, log a message but don't cause the request
+		// to fail; overwrite status with error message.
+		if ( !$emailStatus->isGood() ) {
+			LoggerFactory::getInstance( 'GrowthExperiments' )
+				->error( 'Email handling failed for {user}: {status}', [
+					'user' => $this->getUser()->getId(),
+					'status' => $emailStatus->getWikiText()
+				] );
+			$result['email'] = $emailStatus->getWikiText();
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );

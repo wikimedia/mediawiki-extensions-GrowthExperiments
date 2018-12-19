@@ -128,64 +128,54 @@
 		this.previousQuestionText = this.questionTextInput.getValue();
 	};
 
-	/**
-	 * Set relevant email fields.
-	 *
-	 * @param {string} panel
-	 *  One of 'questionreview' or 'questioncomplete'
-	 */
-	HelpPanelProcessDialog.prototype.setEmailFields = function ( panel ) {
-		// Default to no email.
-		var questionCompleteNotificationsLabelKey = 'growthexperiments-help-panel-questioncomplete-confirmation-email-none';
-		if ( panel === 'questionreview' ) {
-			// User doesn't have email or it isn't confirmed, provide an input and help.
-			if ( !this.userEmail || !this.userEmailConfirmed ) {
-				this.questionReviewContent.addItems( [
-					new OO.ui.FieldLayout( this.questionReviewAddEmail, {
-						label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-email-optional' ).text() ),
-						align: 'top',
-						help: !this.userEmail ?
-							new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-no-email-note' ).parse() ) :
-							new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-unconfirmed-email-note' ).parse() ),
-						helpInline: true
-					} )
-				] );
-			}
-			// Output the user's email and help about notifications.
-			if ( this.userEmail && this.userEmailConfirmed ) {
-				this.questionReviewContent.addItems( [
-					new OO.ui.FieldLayout(
-						new OO.ui.Widget( {
-							content: [
-								new OO.ui.Element( {
-									$content: $( '<p>' ).text( this.userEmail )
-								} )
-							]
-						} ),
-						{
-							label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-email' ).text() ),
-							align: 'top',
-							helpInline: true,
-							help: new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-note' ).parse() )
-						}
-					)
-				] );
-			}
+	HelpPanelProcessDialog.prototype.setNotificationLabelText = function () {
+		var questionCompleteNotificationsLabelKey = this.questionReviewAddEmail.getValue() ?
+			'growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed' :
+			'growthexperiments-help-panel-questioncomplete-confirmation-email-none';
+		// Set notification text dependent on email status.
+		if ( this.userEmail && this.userEmailConfirmed ) {
+			questionCompleteNotificationsLabelKey = 'growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed';
 		}
+		this.questionCompleteNotificationsText.setLabel( new OO.ui.HtmlSnippet(
+			mw.message( questionCompleteNotificationsLabelKey ).parse()
+		) );
+	};
 
-		if ( panel === 'questioncomplete' ) {
-			if ( this.userEmail ) {
-				questionCompleteNotificationsLabelKey = 'growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed';
-				if ( this.userEmailConfirmed ) {
-					questionCompleteNotificationsLabelKey = 'growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed';
-				}
-			}
-			this.questionCompleteContent.addItems( [
-				new OO.ui.LabelWidget( {
-					label: new OO.ui.HtmlSnippet(
-						mw.message( questionCompleteNotificationsLabelKey ).parse()
-					)
+	/**
+	 * Set relevant email fields on question review step.
+	 */
+	HelpPanelProcessDialog.prototype.setEmailFields = function () {
+		// User doesn't have email or it isn't confirmed, provide an input and help.
+		if ( !this.userEmail || !this.userEmailConfirmed ) {
+			this.questionReviewContent.addItems( [
+				new OO.ui.FieldLayout( this.questionReviewAddEmail, {
+					label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-email-optional' ).text() ),
+					align: 'top',
+					help: !this.userEmail ?
+						new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-no-email-note' ).parse() ) :
+						new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-unconfirmed-email-note' ).parse() ),
+					helpInline: true
 				} )
+			] );
+		}
+		// Output the user's email and help about notifications.
+		if ( this.userEmail && this.userEmailConfirmed ) {
+			this.questionReviewContent.addItems( [
+				new OO.ui.FieldLayout(
+					new OO.ui.Widget( {
+						content: [
+							new OO.ui.Element( {
+								$content: $( '<p>' ).text( this.userEmail )
+							} )
+						]
+					} ),
+					{
+						label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-email' ).text() ),
+						align: 'top',
+						helpInline: true,
+						help: new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-note' ).parse() )
+					}
+				)
 			] );
 		}
 	};
@@ -349,7 +339,7 @@
 			} )
 		] );
 
-		this.setEmailFields( 'questionreview' );
+		this.setEmailFields();
 
 		this.questionReviewContent.addItems( [
 			new OO.ui.FieldLayout(
@@ -399,13 +389,22 @@
 			} ).$element
 		} );
 
+		this.questionCompleteConfirmationText = new OO.ui.LabelWidget( {
+			label: $( '<p>' )
+				.text( mw.message( 'growthexperiments-help-panel-questioncomplete-confirmation-text' ).text() )
+		} );
+		this.questionCompleteFirstEditText = new OO.ui.LabelWidget( {
+			label: mw.message( 'growthexperiments-help-panel-questioncomplete-first-edit' ).text()
+		} );
+		this.questionCompleteViewQuestionText = new OO.ui.LabelWidget();
+		this.questionCompleteNotificationsText = new OO.ui.LabelWidget();
 		this.questionCompleteContent.addItems( [
-			new OO.ui.LabelWidget( {
-				label: $( '<p>' )
-					.text( mw.message( 'growthexperiments-help-panel-questioncomplete-confirmation-text' ).text() )
-			} )
+			this.questionCompleteConfirmationText,
+			this.questionCompleteNotificationsText,
+			this.questionCompleteViewQuestionText,
+			this.questionCompleteFirstEditText
+
 		] );
-		this.setEmailFields( 'questioncomplete' );
 		this.questioncompletePanel.$element.append( this.questionCompleteContent.$element );
 
 		// Add the footers
@@ -467,6 +466,8 @@
 
 					// Disable the primary button while executing the API call.
 					this.questionReviewSubmitButton.setDisabled( true );
+					// Toggle the first edit text, will set depending on API response.
+					this.questionCompleteFirstEditText.toggle( false );
 					return new mw.Api().postWithToken( 'csrf', {
 						action: 'helppanelquestionposter',
 						email: this.questionReviewAddEmail.getValue(),
@@ -486,22 +487,15 @@
 							) );
 
 							if ( data.helppanelquestionposter.isfirstedit ) {
-								this.questionCompleteContent.addItems( [
-									new OO.ui.LabelWidget( {
-										label: mw.message( 'growthexperiments-help-panel-questioncomplete-first-edit' ).text()
-									} )
-								] );
+								this.questionCompleteFirstEditText.toggle( true );
 							}
-							this.questionCompleteContent.addItems( [
-								new OO.ui.Element( {
-									$content: $( '<p>' ).append( $( '<a>', {
-										href: data.helppanelquestionposter.viewquestionurl,
-										target: '_blank',
-										'data-link-id': 'view-question',
-										text: mw.message( 'growthexperiments-help-panel-questioncomplete-view-link-text' ).text()
-									} ) )
-								} )
-							] );
+							this.questionCompleteViewQuestionText.setLabel( $( '<p>' ).append( $( '<a>', {
+								href: data.helppanelquestionposter.viewquestionurl,
+								target: '_blank',
+								'data-link-id': 'view-question',
+								text: mw.message( 'growthexperiments-help-panel-questioncomplete-view-link-text' ).text()
+							} ) ) );
+							this.setNotificationLabelText();
 							this.swapPanel( action );
 							// Reset the post a question text inputs.
 							this.questionTextInput.setValue( '' );
