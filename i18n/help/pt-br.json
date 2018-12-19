@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo Addad de Oliveira"
+		]
+	},
+	"growthexperiments-help-panel-tog-help-panel": "Ativar o painel de ajuda do editor",
+	"growthexperiments-help-panel-cta-button-text": "Obtenha ajuda para editar",
+	"growthexperiments-help-panel-question-button-text": "Continuar",
+	"growthexperiments-help-panel-submit-question-button-text": "Postar minha pergunta",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "Principais páginas de ajuda sobre edição",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Ver mais artigos de ajuda",
+	"growthexperiments-help-panel-question-widget-header": "Publique sua pergunta na Central de Ajuda comunitária",
+	"growthexperiments-help-panel-question-placeholder": "Eu preciso de ajuda com a edição. Como posso...",
+	"growthexperiments-help-panel-back-home": "Voltar",
+	"growthexperiments-help-panel-close": "Concluído",
+	"growthexperiments-help-panel-home-title": "Obtenha ajuda para editar",
+	"growthexperiments-help-panel-questionreview-title": "Faça uma pergunta",
+	"growthexperiments-help-panel-questionreview-email": "E-mail",
+	"growthexperiments-help-panel-questionreview-label": "Sua pergunta",
+	"growthexperiments-help-panel-questionreview-include-article-title": "Incluir título da página com minha pergunta",
+	"growthexperiments-help-panel-question-subject-template": "Pergunta do painel de ajuda",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Pergunta do painel de ajuda no [[$1]]",
+	"growthexperiments-help-panel-question-post-error": "Ocorreu um erro ao tentar postar sua pergunta. Você pode tentar novamente ou pode visitar $1 em seu navegador e adicionar sua pergunta manualmente.",
+	"growthexperiments-help-panel-questioncomplete-title": "Faça uma pergunta",
+	"growthexperiments-help-panel-questioncomplete-header": "Sua pergunta foi postada!",
+	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Sua pergunta agora está na Central de Ajuda comunitária para que seja respondida por outro editor voluntário.",
+	"growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed": "Você receberá uma notificação por e-mail quando uma resposta for postada, provavelmente em um ou dois dias.",
+	"growthexperiments-help-panel-questioncomplete-view-link-text": "Veja sua pergunta na Central de Ajuda",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Mais sobre esse recurso",
+	"growthexperiments-help-panel-questioncomplete-first-edit": "A propósito, ao postar essa pergunta, você acabou de fazer sua primeira edição no {{SITENAME}}. Parabéns!",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Desativar esta ferramenta em Preferências",
+	"growthexperiments-help-panel-questionreview-no-email-note": "Se você adicionar um endereço de e-mail à sua conta, receberá um link de confirmação por e-mail para ser notificado sobre as respostas. Seu endereço de e-mail é <strong>não será revelado</strong> quando outros usuários entrarem em contato com você.",
+	"growthexperiments-help-panel-questionreview-add-email-placeholder": "Confirme seu endereço de e-mail",
+	"growthexperiments-help-panel-questionreview-email-optional": "Endereço de e-mail (opcional)",
+	"growthexperiments-help-panel-questionposter-email-already-confirmed": "O endereço de e-mail já está definido e confirmado.",
+	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "Permissões insuficientes para definir e-mail.",
+	"growthexperiments-help-panel-questionposter-invalid-title": "Título inválido.",
+	"tag-help_panel_question": "Pergunta no painel de ajuda",
+	"tag-help_panel_question-description": "Edição feita a partir de pós da postagem no painel um recurso de pergunta"
+}

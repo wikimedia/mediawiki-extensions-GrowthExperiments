@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"growthexperiments-help-panel-question-button-text": "Continua",
+	"growthexperiments-help-panel-back-home": "Indietro",
+	"growthexperiments-help-panel-close": "Fatto",
+	"growthexperiments-help-panel-questionreview-title": "Fai una domanda",
+	"growthexperiments-help-panel-questionreview-email": "Email",
+	"growthexperiments-help-panel-questionreview-label": "La tua domanda",
+	"growthexperiments-help-panel-questionreview-include-article-title": "Includi il titolo della pagina con la mia domanda",
+	"growthexperiments-help-panel-questioncomplete-title": "Fai una domanda",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Ulteriori informazioni su questa funzionalità",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Disabilita questo strumento nelle Preferenze",
+	"growthexperiments-help-panel-questionreview-add-email-placeholder": "Inserisci il tuo indirizzo email",
+	"growthexperiments-help-panel-questionreview-email-optional": "Indirizzo di posta elettronica (opzionale)",
+	"growthexperiments-help-panel-questionposter-email-already-confirmed": "L'indirizzo email è già impostato e confermato.",
+	"growthexperiments-help-panel-questionposter-invalid-title": "Titolo non valido."
+}

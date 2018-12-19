@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "經由目前使用者的協助面板，來處理發佈的問題。",
+	"apihelp-helppanelquestionposter-param-body": "由使用者所提供的問題文字。",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "關聯標題。若有選擇的話請包含問題。",
+	"apihelp-helppanelquestionposter-param-email": "選填的電子郵件地址。用於當使用者的電子郵件未被確認或是沒有電子郵件時，發送驗證電子郵件。"
+}

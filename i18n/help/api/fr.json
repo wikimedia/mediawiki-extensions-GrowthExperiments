@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wladek92"
+		]
+	},
+	"apihelp-helppanelquestionposter-param-body": "Le texte de la question posée par l'utilisateur."
+}

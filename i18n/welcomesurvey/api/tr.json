@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hedda"
+		]
+	},
+	"apihelp-welcomesurveyhandleresponses-summary": "Mevcut kullanıcı için Hoşgeldin Anketi yanıtlarını ele alın.",
+	"apihelp-welcomesurveyhandleresponses-param-surveyaction": "Hoş Geldiniz Anketi'nde kullanıcı tarafından seçilen işlem. 'Kaydet' veya 'atla' seçilebilir.",
+	"apihelp-welcomesurveyhandleresponses-param-group": "Hoş Geldiniz Anketi ile ilişkili deney grubu.",
+	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "Anketin kullanıcıya gösterilme zaman damgası.",
+	"apihelp-welcomesurveyhandleresponses-param-responses": "Soru isimlerini anahtar olarak ve değer olarak yanıt olarak içeren nesne. JSON formatında."
+}

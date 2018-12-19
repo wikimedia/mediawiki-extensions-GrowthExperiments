@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Djdakta",
+			"Wladek92"
+		]
+	},
+	"growthexperiments-help-panel-cta-button-text": "Obtenez de l'aide avec l'édition",
+	"growthexperiments-help-panel-question-button-text": "Continuer",
+	"growthexperiments-help-panel-submit-question-button-text": "Envoyer ma question",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "Meilleures pages d'aide à propos de l'édition",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Voir plus d'articles d'aide",
+	"growthexperiments-help-panel-question-widget-header": "Envoyer votre question au Help Desk de la Communauté",
+	"growthexperiments-help-panel-back-home": "Retour",
+	"growthexperiments-help-panel-close": "Fait",
+	"growthexperiments-help-panel-home-title": "Obtenir de l'aide sur l'édition",
+	"growthexperiments-help-panel-questionreview-title": "Poser une question",
+	"growthexperiments-help-panel-questionreview-email": "Courriel",
+	"growthexperiments-help-panel-questionreview-label": "Votre question",
+	"growthexperiments-help-panel-questionreview-include-article-title": "Inclure le titre de la page avec ma question",
+	"growthexperiments-help-panel-question-post-error": "Une erreur est apparue pendant l'envoi de votre question. Vous pouvez recommencer ou afficher $1 dans votre navigateur pour ajouter la question manuellement.",
+	"growthexperiments-help-panel-questioncomplete-header": "Votre question a été envoyée",
+	"growthexperiments-help-panel-questioncomplete-view-link-text": "Afficher votre question au bureau du support",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "En savoir plus sur cette fonctionnalité",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Désactiver cet utilitaire dans les Paramètres",
+	"growthexperiments-help-panel-questionreview-no-email-note": "Si vous ajoutez une adresse courriel à votre compte, vous recevrez un lien de confirmation du courriel pour pouvoir recevoir les réponses. Votre adresse courriel <strong>n'est pas affichée</strong> quand les autres utilisateurs vous contactent.",
+	"growthexperiments-help-panel-questionreview-add-email-placeholder": "Entrez votre adresse de courriel",
+	"growthexperiments-help-panel-questionreview-email-optional": "Adresse de courriel (facultative)",
+	"growthexperiments-help-panel-questionposter-email-already-confirmed": "Adresse email déjà réglée et confirmée",
+	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "Permissions insuffisantes pour définir l'emai",
+	"growthexperiments-help-panel-questionposter-invalid-title": "Titre non valide."
+}
