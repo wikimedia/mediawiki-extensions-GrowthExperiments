@@ -9,10 +9,33 @@
 }
 
 .mw-ge-help-panel-popup {
+	color: @colorGray2;
 	background-color: @background-color-base;
-	border: 1px solid @border-color-base;
+	border: 1px solid @colorGray12;
 	border-radius: 2px;
 	box-shadow: 0 2px 2px 0 rgba( 0, 0, 0, 0.25 );
+
+	.oo-ui-processDialog-navigation {
+		.oo-ui-processDialog-actions-primary {
+			right: 4px;
+		}
+
+		.oo-ui-processDialog-actions-safe {
+			left: 4px;
+		}
+	}
+
+	label > strong {
+		color: @colorGray5;
+	}
+
+	li {
+		padding-bottom: 0.5em;
+	}
+
+	p {
+		line-height: 1.5;
+	}
 }
 
 .mw-ge-help-panel-settings-cog-content {
