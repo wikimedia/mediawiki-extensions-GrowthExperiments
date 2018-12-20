@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Wladek92"
+			"Wladek92",
+			"Gomoko"
 		]
 	},
-	"apihelp-helppanelquestionposter-param-body": "Le texte de la question posée par l'utilisateur."
+	"apihelp-helppanelquestionposter-summary": "Gérer les questions posées via l’onglet d’aide pour l’utilisateur actuel.",
+	"apihelp-helppanelquestionposter-param-body": "Le texte de la question posée par l'utilisateur.",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Le titre concerné, si sélectionné, à inclure avec la question.",
+	"apihelp-helppanelquestionposter-param-email": "L’adresse de messagerie facultative, si l’utilisateur a un courriel non confirmé ou pas de courriel, à utiliser pour envoyer un courriel de vérification."
 }

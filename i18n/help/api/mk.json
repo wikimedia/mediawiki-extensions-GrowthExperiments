@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Работа со прашања поставени преку за тековниот корисник.",
+	"apihelp-helppanelquestionposter-param-body": "Текстот на прашањето напишано од корисникот.",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Релеватниот наслов, ако се одбере, за приложување кон прашањето.",
+	"apihelp-helppanelquestionposter-param-email": "Незадолжителната е-пошта за испраќање на потврдната порака ако корисникот има непотврдена е-пошта или ја нема укажано."
+}

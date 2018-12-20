@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko"
+		]
+	},
+	"apihelp-welcomesurveyhandleresponses-summary": "Gérer les réponses de l’enquête de bienvenue pour l’utilisateur actuel.",
+	"apihelp-welcomesurveyhandleresponses-param-surveyaction": "Action qui a été sélectionnée par l’utilisateur dans l’enquête de bienvenue. Peut être 'save' ou 'skip'.",
+	"apihelp-welcomesurveyhandleresponses-param-group": "Groupe expérimental associé avec l’enquête de bienvenue.",
+	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "Horodatage du moment où l’enquête a été montrée à l’utilisateur.",
+	"apihelp-welcomesurveyhandleresponses-param-responses": "Objet contenant les nom des questions comme clés et les réponses comme valeurs. Au format JSON."
+}

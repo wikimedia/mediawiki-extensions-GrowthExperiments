@@ -1,0 +1,34 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"growthexperiments-help-panel-tog-help-panel": "Aktivera redigerarens hjälppanel",
+	"growthexperiments-help-panel-question-button-text": "Fortsätt",
+	"growthexperiments-help-panel-submit-question-button-text": "Skicka min fråga",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "Populäraste hjälpsidorna om redigering",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Visa fler hjälpartiklar",
+	"growthexperiments-help-panel-question-widget-header": "Skicka din fråga till gemenskapens helpdesk",
+	"growthexperiments-help-panel-back-home": "Tillbaka",
+	"growthexperiments-help-panel-close": "Färdigt",
+	"growthexperiments-help-panel-home-title": "Få hjälp med att redigera",
+	"growthexperiments-help-panel-questionreview-title": "Ställ en fråga",
+	"growthexperiments-help-panel-questionreview-header": "När du skickar en fråga kommer den <strong>läggas upp offentligt</strong> under ditt användarnamn, \"$2\", på $1 där andra frivilliga redigerare kommer försöka att besvara inom nästa dag eller så.",
+	"growthexperiments-help-panel-questionreview-email": "E-post",
+	"growthexperiments-help-panel-questionreview-label": "Din fråga",
+	"growthexperiments-help-panel-questionreview-include-article-title": "Inkludera sidtiteln med min fråga",
+	"growthexperiments-help-panel-question-post-error": "Ett fel uppstod när din fråga skulle skickas. Du kan försöka igen eller besöka $1 i din webbläsare och lägga till din fråga manuellt.",
+	"growthexperiments-help-panel-questioncomplete-header": "Din fråga har lagts upp!",
+	"growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed": "Du kommer få en e-postavisering när ett svar läggs upp, förmodligen inom en dag eller så.",
+	"growthexperiments-help-panel-questioncomplete-confirmation-email-none": "Du kommer att få en avisering på {{SITENAME}} när ett svar läggs upp, förmodligen inom en dag eller så.",
+	"growthexperiments-help-panel-questioncomplete-view-link-text": "Visa din fråga på helpdesk",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Mer om denna funktion",
+	"growthexperiments-help-panel-questioncomplete-first-edit": "Förresten, när du skickade denna fråga gjorde du din första redigering på {{SITENAME}}. Grattis!",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Inaktivera detta verktyg i inställningarna",
+	"growthexperiments-help-panel-questionreview-no-email-note": "Om du lägger till en e-postadress till ditt konto kommer du få en bekräftelselänk via e-post så du kan meddelas när du får svar. Din e-postadress <strong>avslöjas inte</strong> när andra användare kontaktar dig.",
+	"growthexperiments-help-panel-questionreview-email-optional": "E-postadress (valfritt)",
+	"growthexperiments-help-panel-questionposter-email-already-confirmed": "E-postadressen är redan angiven och bekräftad.",
+	"growthexperiments-help-panel-questionposter-invalid-title": "Ogiltig titel.",
+	"tag-help_panel_question": "Fråga på hjälppanelen"
+}

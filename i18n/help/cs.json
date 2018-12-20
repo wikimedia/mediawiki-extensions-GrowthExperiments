@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"Martin Urbanec",
+			"Patriccck"
+		]
+	},
+	"growthexperiments-help-panel-tog-help-panel": "Povolit panel Potřebuji pomoc",
+	"growthexperiments-help-panel-cta-button-text": "Potřebuji pomoc",
+	"growthexperiments-help-panel-question-button-text": "Pokračovat",
+	"growthexperiments-help-panel-submit-question-button-text": "Vložit mou otázku",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "Nejdůležitější stránky s nápovědou",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Zobrazit více stránek s nápovědou",
+	"growthexperiments-help-panel-question-placeholder": "Jak se na Wikipedii...?",
+	"growthexperiments-help-panel-back-home": "Zpět",
+	"growthexperiments-help-panel-close": "Zavřít",
+	"growthexperiments-help-panel-home-title": "Potřebuji pomoc",
+	"growthexperiments-help-panel-questionreview-title": "Položit dotaz",
+	"growthexperiments-help-panel-questionreview-header": "Pokud zde vložíte svou otázku, bude <strong>veřejně dostupná</strong> včetně vašeho uživatelského jména „$2“ na stránku $1, což je stránka, kde vám mohou ostatní wikipedisté zodpovědět vaše otázky. Odpověď obvykle dostanete během jednoho dne.",
+	"growthexperiments-help-panel-questionreview-email": "E-mail",
+	"growthexperiments-help-panel-questionreview-note": "V okamžiku, kdy bude vaše otázka zodpovězena, budete na to upozorněn e-mailem. Vaše e-mailová adresa ale <strong>není k dispozici</strong> wikipedistovi, kteří zodpověděl váš dotaz.",
+	"growthexperiments-help-panel-questionreview-label": "Vaše otázka",
+	"growthexperiments-help-panel-questionreview-include-article-title": "Vložit název stránky, na které jsem, spolu s mou otázkou",
+	"growthexperiments-help-panel-question-subject-template": "Otázka vložená pomocí panelu Potřebuji pomoc",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Otázka vložená pomocí panelu Potřebuji pomoc: [[$1]]",
+	"growthexperiments-help-panel-question-post-error": "Během vkládání vaší otázky nastala chyba. Můžete ji zkusit vložit znovu nebo jít na $1 a vložit ji manuálně.",
+	"growthexperiments-help-panel-questioncomplete-title": "Položit dotaz",
+	"growthexperiments-help-panel-questioncomplete-header": "Váš dotaz byl úspěšně odeslán",
+	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Vaše otázka je nyní vložena na stránce Potřebuji pomoc, aby mohla být zodpovězena dalším wikipedistou.",
+	"growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed": "V okamžiku zodpovězení vaší otázky vám bude odeslána e-mailová notifikace. Pravděpodobně se tak stane během jednoho dne.",
+	"growthexperiments-help-panel-questioncomplete-view-link-text": "Zobrazit vaši otázku na stránce Potřebuji pomoc",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Více o této funkci",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Zakázat tento nástroj v nastaveních",
+	"tag-help_panel_question": "Panel Potřebuji pomoc"
+}

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Tratar as perguntas do utilizador atual publicadas através do painel de ajuda.",
+	"apihelp-helppanelquestionposter-param-body": "O texto da pergunta feita pelo utilizador.",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "O título relevante, se selecionado, a incluir na pergunta.",
+	"apihelp-helppanelquestionposter-param-email": "O endereço de correio eletrónico opcional, se o utilizador tem um correio eletrónico não confirmado ou não definiu nenhum correio eletrónico, a usar para enviar uma mensagem de verificação."
+}
