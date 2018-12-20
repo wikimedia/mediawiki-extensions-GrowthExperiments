@@ -4,5 +4,11 @@
 			"Johnny243"
 		]
 	},
-	"growthexperiments-help-panel-close": "Hecho"
+	"growthexperiments-help-panel-submit-question-button-text": "Publicar mi pregunta",
+	"growthexperiments-help-panel-back-home": "Regresar",
+	"growthexperiments-help-panel-close": "Hecho",
+	"growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed": "Recibirás una notificación por email cuándo una respuesta sea publicada, probablemente dentro de un día más o menos.",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Más información sobre esta característica",
+	"growthexperiments-help-panel-questionreview-email-optional": "Dirección de correo electrónico (opcional)",
+	"growthexperiments-help-panel-questionposter-invalid-title": "Título inválido."
 }

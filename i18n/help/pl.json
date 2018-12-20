@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"CiaPan"
+		]
+	},
+	"growthexperiments-help-panel-submit-question-button-text": "Opublikuj moje pytanie",
+	"growthexperiments-help-panel-back-home": "Wstecz",
+	"growthexperiments-help-panel-close": "Gotowe",
+	"growthexperiments-help-panel-home-title": "Pomoc w edytowaniu",
+	"growthexperiments-help-panel-question-post-error": "Wystąpił błąd podczas próby opublikowania Twojego pytania. Możesz spróbować ponownie lub przejść w przeglądarce do $1 i tam dodać pytanie ręcznie.",
+	"growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed": "Otrzymasz powiadomienie email jeśli pojawi się odpowiedź, być może w ciągu jednego dnia.",
+	"growthexperiments-help-panel-questioncomplete-view-link-text": "Zobacz swoje pytanie w Help Desk",
+	"growthexperiments-help-panel-questioncomplete-first-edit": "Przy okazji: publikując to pytanie, {{GENDER:|dokonałeś|dokonałaś}} swojej pierwszej edycji w {{SITENAME}}. Gratulacje!",
+	"growthexperiments-help-panel-questionreview-no-email-note": "Jeśli dodasz adres email do swojego konta, otrzymasz łącze potwierdzające email, dzięki czemu możesz otrzymywać powiadomienia o odpowiedziach. Twój adres <strong>nie będzie ujawniany</strong> innym użytkownikom, kontaktującym się z Tobą."
+}

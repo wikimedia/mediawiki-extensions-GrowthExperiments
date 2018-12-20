@@ -4,5 +4,6 @@
 			"Red Winged Duck"
 		]
 	},
-	"apihelp-helppanelquestionposter-summary": "Апрацоўка пытаньняў, разьмешчаных праз панэль дапамогі, для цяперашняга ўдзельніка."
+	"apihelp-helppanelquestionposter-summary": "Апрацоўка пытаньняў, разьмешчаных праз панэль дапамогі, для цяперашняга ўдзельніка.",
+	"apihelp-helppanelquestionposter-param-body": "Тэкст пытаньня, зададзенага ўдзельнікам."
 }
