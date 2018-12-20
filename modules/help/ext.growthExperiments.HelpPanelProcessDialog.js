@@ -185,7 +185,7 @@
 			$overlay: this.$overlay,
 			icon: 'settings',
 			// Hack for styling
-			classes: [ 'oo-ui-actionWidget' ],
+			classes: [ 'mw-ge-help-panel-settings-cog', 'oo-ui-actionWidget' ],
 			framed: false,
 			popup: {
 				$content: $( '<p>' ).append( mw.html.element( 'a', {
@@ -196,10 +196,8 @@
 				padded: true,
 				width: 260,
 				classes: [ 'mw-ge-help-panel-settings-cog-content' ],
-				// Hack, still leaves a gap between button and popup window.
-				containerPadding: 2,
 				anchor: false,
-				$container: $( '.oo-ui-window-body' )
+				$container: this.$element
 			}
 		} );
 		this.settingsCog.popup.connect( this, { toggle: 'onCogMenuToggle' } );
@@ -207,6 +205,7 @@
 
 	HelpPanelProcessDialog.prototype.onCogMenuToggle = function ( show ) {
 		this.logger.log( show ? 'cog-open' : 'cog-close' );
+		this.settingsCog.$element.toggleClass( 'active', show );
 	};
 
 	HelpPanelProcessDialog.prototype.initialize = function () {
