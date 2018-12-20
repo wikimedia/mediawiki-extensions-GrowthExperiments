@@ -10,4 +10,10 @@
 			mw.libs.ve.addPlugin( 'ext.growthExperiments.HelpPanel' );
 		} );
 	}
+
+	// MobileFrontend's editor doesn't have a similar plugin system, so instead load the HelpPanel
+	// module separately when the editor begins loading
+	mw.hook( 'mobileFrontend.editorOpening' ).add( function () {
+		mw.loader.load( 'ext.growthExperiments.HelpPanel' );
+	} );
 }() );
