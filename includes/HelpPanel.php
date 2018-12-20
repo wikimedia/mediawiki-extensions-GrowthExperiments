@@ -28,6 +28,7 @@ class HelpPanel {
 				'href' => Title::newFromText(
 					MediaWikiServices::getInstance()->getMainConfig()->get( 'GEHelpPanelHelpDeskTitle' )
 				)->getLinkURL(),
+				'target' => '_blank',
 				'label' => wfMessage( 'growthexperiments-help-panel-cta-button-text' )->text(),
 				'infusable' => true,
 				'icon' => 'askQuestion',
