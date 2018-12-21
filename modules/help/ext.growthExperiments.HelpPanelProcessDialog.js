@@ -127,14 +127,35 @@
 
 	HelpPanelProcessDialog.prototype.setNotificationLabelText = function () {
 		var questionCompleteNotificationsLabelKey = this.questionReviewAddEmail.getValue() ?
-			'growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed' :
-			'growthexperiments-help-panel-questioncomplete-confirmation-email-none';
+				'growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed' :
+				'growthexperiments-help-panel-questioncomplete-confirmation-email-none',
+			specialNotificationsLink = mw.html.element( 'a', {
+				href: new mw.Title( 'Special:Notifications' ).getUrl(),
+				target: '_blank',
+				'data-link-id': 'special-notifications'
+			}, mw.message( 'growthexperiments-help-panel-notifications-link-text' ).text() ),
+			specialConfirmEmailLink = mw.html.element( 'a', {
+				href: new mw.Title( 'Special:ConfirmEmail' ).getUrl(),
+				target: '_blank',
+				'data-link-id': 'special-confirm-email'
+			}, mw.message( 'growthexperiments-help-panel-confirm-email-link-text' ).text() ),
+			params = [];
 		// Set notification text dependent on email status.
 		if ( this.userEmail && this.userEmailConfirmed ) {
 			questionCompleteNotificationsLabelKey = 'growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed';
+		} else {
+			// User has no email or has an unconfirmed email. The confirmation message will include
+			// a link to Special:Notifications.
+			params.push( specialNotificationsLink );
+			if ( ( this.questionReviewAddEmail.getValue() || this.userEmail ) &&
+				!this.userEmailConfirmed ) {
+				// User doesn't have a confirmed email. Confirmation message will include a link to
+				// Special:ConfirmEmail.
+				params.push( specialConfirmEmailLink );
+			}
 		}
 		this.questionCompleteNotificationsText.setLabel( new OO.ui.HtmlSnippet( $( '<p>' ).append(
-			mw.message( questionCompleteNotificationsLabelKey ).parse()
+			mw.message( questionCompleteNotificationsLabelKey ).params( params ).parse()
 		) ) );
 	};
 

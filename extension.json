@@ -274,7 +274,9 @@
 				"growthexperiments-help-panel-questionreview-unconfirmed-email-note",
 				"growthexperiments-help-panel-questionreview-add-email-placeholder",
 				"growthexperiments-help-panel-questionreview-email-optional",
-				"growthexperiments-help-panel-questionreview-no-email-note"
+				"growthexperiments-help-panel-questionreview-no-email-note",
+				"growthexperiments-help-panel-notifications-link-text",
+				"growthexperiments-help-panel-confirm-email-link-text"
 			],
 			"targets": [
 				"desktop",
