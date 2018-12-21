@@ -5,13 +5,11 @@
 	 * @extends OO.ui.ProcessDialog
 	 *
 	 * @param {Object} config
-	 * @cfg {jQuery} $overlay
 	 * @cfg {mw.libs.ge.HelpPanelLogger} logger
 	 * @constructor
 	 */
 	var HelpPanelProcessDialog = function helpPanelProcessDialog( config ) {
 			HelpPanelProcessDialog.super.call( this, config );
-			this.$overlay = config.$overlay;
 			this.logger = config.logger;
 		},
 		linksConfig = mw.config.get( 'wgGEHelpPanelLinks' );
@@ -181,7 +179,7 @@
 
 	HelpPanelProcessDialog.prototype.buildSettingsCog = function () {
 		this.settingsCog = new OO.ui.PopupButtonWidget( {
-			$overlay: this.$overlay,
+			$overlay: this.$element,
 			icon: 'settings',
 			// Hack for styling
 			classes: [ 'mw-ge-help-panel-settings-cog', 'oo-ui-actionWidget' ],
@@ -417,7 +415,7 @@
 		] );
 		this.$body.append( this.panels.$element );
 
-		this.$overlay.on( 'click', 'a[data-link-id]', this.logLinkClick.bind( this ) );
+		this.$element.on( 'click', 'a[data-link-id]', this.logLinkClick.bind( this ) );
 	};
 
 	HelpPanelProcessDialog.prototype.logLinkClick = function ( e ) {

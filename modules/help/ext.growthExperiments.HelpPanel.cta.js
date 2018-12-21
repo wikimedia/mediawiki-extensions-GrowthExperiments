@@ -15,7 +15,6 @@
 			 */
 			helpPanelProcessDialog = new mw.libs.ge.HelpPanelProcessDialog( {
 				size: OO.ui.isMobile() ? 'full' : 'small',
-				$overlay: $overlay,
 				logger: logger
 			} ),
 			helpCtaButton,
