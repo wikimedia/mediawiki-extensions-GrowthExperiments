@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"growthexperiments-help-panel-tog-help-panel": "Включить редактор в панели помощи",
+	"growthexperiments-help-panel-question-button-text": "Продолжить",
+	"growthexperiments-help-panel-submit-question-button-text": "Задать вопрос",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Больше страниц помощи",
+	"growthexperiments-help-panel-question-placeholder": "Мне нужна помощь с редактированием. Как...",
+	"growthexperiments-help-panel-back-home": "Назад",
+	"growthexperiments-help-panel-close": "Готово",
+	"growthexperiments-help-panel-home-title": "Помощь по редактированию",
+	"growthexperiments-help-panel-questionreview-title": "Задайте вопрос",
+	"growthexperiments-help-panel-questionreview-email": "Эл. почта",
+	"growthexperiments-help-panel-questionreview-label": "Ваш вопрос",
+	"growthexperiments-help-panel-questionreview-email-optional": "Адрес электронной почты (необязательно)",
+	"growthexperiments-help-panel-questionposter-invalid-title": "Ошибочное название."
+}

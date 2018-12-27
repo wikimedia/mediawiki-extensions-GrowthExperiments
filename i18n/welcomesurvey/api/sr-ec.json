@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"BadDog"
+		]
+	},
+	"apihelp-welcomesurveyhandleresponses-summary": "Руковање одговорима на анкету добродошлице за тренутног корисника.",
+	"apihelp-welcomesurveyhandleresponses-param-surveyaction": "Радња коју је изабрао корисник на анкети добродошлице. Може да буде „сачувај” или „прескочи”.",
+	"apihelp-welcomesurveyhandleresponses-param-group": "Експериментална група повезана са анкетом добродошлице.",
+	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "Временска ознака када се анкета приказала кориснику.",
+	"apihelp-welcomesurveyhandleresponses-param-responses": "Објекат који садржи имена питања као кључеве и одговоре као вредности. У JSON формату."
+}

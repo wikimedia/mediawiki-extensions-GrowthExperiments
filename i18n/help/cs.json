@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Martin Urbanec",
-			"Patriccck"
+			"Patriccck",
+			"Matěj Suchánek"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Povolit panel Potřebuji pomoc",
@@ -11,17 +12,18 @@
 	"growthexperiments-help-panel-submit-question-button-text": "Vložit mou otázku",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Nejdůležitější stránky s nápovědou",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Zobrazit více stránek s nápovědou",
+	"growthexperiments-help-panel-question-widget-header": "Vložte svou otázku na stránku Wikipedie:Potřebuji pomoc",
 	"growthexperiments-help-panel-question-placeholder": "Jak se na Wikipedii...?",
 	"growthexperiments-help-panel-back-home": "Zpět",
 	"growthexperiments-help-panel-close": "Zavřít",
 	"growthexperiments-help-panel-home-title": "Potřebuji pomoc",
 	"growthexperiments-help-panel-questionreview-title": "Položit dotaz",
-	"growthexperiments-help-panel-questionreview-header": "Pokud zde vložíte svou otázku, bude <strong>veřejně dostupná</strong> včetně vašeho uživatelského jména „$2“ na stránku $1, což je stránka, kde vám mohou ostatní wikipedisté zodpovědět vaše otázky. Odpověď obvykle dostanete během jednoho dne.",
+	"growthexperiments-help-panel-questionreview-header": "Pokud zde vložíte svou otázku, bude <strong>veřejně dostupná</strong> pod vaším uživatelským jménem, „$2“, na stránce $1, což je stránka, kde vám mohou ostatní wikipedisté zodpovědět vaše otázky. Odpověď obvykle dostanete během jednoho dne.",
 	"growthexperiments-help-panel-questionreview-email": "E-mail",
 	"growthexperiments-help-panel-questionreview-note": "V okamžiku, kdy bude vaše otázka zodpovězena, budete na to upozorněn e-mailem. Vaše e-mailová adresa ale <strong>není k dispozici</strong> wikipedistovi, kteří zodpověděl váš dotaz.",
 	"growthexperiments-help-panel-questionreview-label": "Vaše otázka",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Vložit název stránky, na které jsem, spolu s mou otázkou",
-	"growthexperiments-help-panel-question-subject-template": "Otázka vložená pomocí panelu Potřebuji pomoc",
+	"growthexperiments-help-panel-question-subject-template": "Dotaz vložený pomocí panelu Potřebuji pomoc",
 	"growthexperiments-help-panel-question-subject-template-with-title": "Otázka vložená pomocí panelu Potřebuji pomoc: [[$1]]",
 	"growthexperiments-help-panel-question-post-error": "Během vkládání vaší otázky nastala chyba. Můžete ji zkusit vložit znovu nebo jít na $1 a vložit ji manuálně.",
 	"growthexperiments-help-panel-questioncomplete-title": "Položit dotaz",
@@ -31,5 +33,11 @@
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Zobrazit vaši otázku na stránce Potřebuji pomoc",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Více o této funkci",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Zakázat tento nástroj v nastaveních",
-	"tag-help_panel_question": "Panel Potřebuji pomoc"
+	"growthexperiments-help-panel-questionreview-add-email-placeholder": "Zadejte svou e-mailovou adresu",
+	"growthexperiments-help-panel-questionreview-email-optional": "E-mailová adresa (nepovinné)",
+	"growthexperiments-help-panel-questionposter-email-already-confirmed": "E-mailová adresa je již nastavená a potvrzená.",
+	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "Nedostatečná oprávnění k nastavení e-mailu",
+	"growthexperiments-help-panel-questionposter-invalid-title": "Neplatný název.",
+	"tag-help_panel_question": "Panel Potřebuji pomoc",
+	"tag-help_panel_question-description": "Otázka vložená prostřednictvím panelu Potřebuji pomoc"
 }

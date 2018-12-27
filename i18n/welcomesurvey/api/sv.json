@@ -4,5 +4,6 @@
 			"WikiPhoenix"
 		]
 	},
-	"apihelp-welcomesurveyhandleresponses-param-group": "Experimentell grupp som associeras med välkomstenkäten."
+	"apihelp-welcomesurveyhandleresponses-param-group": "Experimentell grupp som associeras med välkomstenkäten.",
+	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "Tidsstämpel för när enkäten visades för användaren."
 }

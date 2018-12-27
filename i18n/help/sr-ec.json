@@ -1,0 +1,35 @@
+{
+	"@metadata": {
+		"authors": [
+			"BadDog"
+		]
+	},
+	"growthexperiments-help-panel-tog-help-panel": "Омогући таблу помоћи уређивача",
+	"growthexperiments-help-panel-cta-button-text": "Пронађите помоћ око уређивања",
+	"growthexperiments-help-panel-question-button-text": "Настави",
+	"growthexperiments-help-panel-submit-question-button-text": "Постави питање",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "Најбоље странице помоћи око уређивања",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Још чланака помоћи",
+	"growthexperiments-help-panel-question-widget-header": "Поставите питање на техничкој подршци заједнице",
+	"growthexperiments-help-panel-question-placeholder": "Потребна ми је помоћ око уређивања. Како да…",
+	"growthexperiments-help-panel-back-home": "Назад",
+	"growthexperiments-help-panel-close": "Готово",
+	"growthexperiments-help-panel-home-title": "Проналажење помоћи око уређивања",
+	"growthexperiments-help-panel-questionreview-title": "Постављање питања",
+	"growthexperiments-help-panel-questionreview-email": "Е-пошта",
+	"growthexperiments-help-panel-questionreview-label": "Ваше питање",
+	"growthexperiments-help-panel-questionreview-include-article-title": "Укључи наслов странице са мојим питањем",
+	"growthexperiments-help-panel-question-subject-template": "Питање са табле помоћи",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Питање са табле помоћи на [[$1]]",
+	"growthexperiments-help-panel-questioncomplete-title": "Постављање питања",
+	"growthexperiments-help-panel-questioncomplete-header": "Ваше питање је постављено!",
+	"growthexperiments-help-panel-questioncomplete-view-link-text": "Прикажи питање на техничкој подршци",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Више о овој функцији",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Онемогући ову алатку у подешавањима",
+	"growthexperiments-help-panel-questionreview-add-email-placeholder": "Унесите адресу е-поште",
+	"growthexperiments-help-panel-questionreview-email-optional": "Адреса е-поште (опционално)",
+	"growthexperiments-help-panel-questionposter-email-already-confirmed": "Адреса е-поште је већ постављена и потврђена.",
+	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "Недовољно дозвола за постављање е-поште.",
+	"growthexperiments-help-panel-questionposter-invalid-title": "Неважећи наслов.",
+	"tag-help_panel_question": "питање са табле помоћи"
+}

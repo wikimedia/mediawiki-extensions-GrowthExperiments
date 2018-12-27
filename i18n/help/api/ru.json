@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Работа с вопросами, заданными через текущего участника.",
+	"apihelp-helppanelquestionposter-param-body": "Текст вопроса, написанного участником.",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Релевантное название, если выбрано, для включения в вопрос.",
+	"apihelp-helppanelquestionposter-param-email": "Необязательный адрес электронной почты для отправки подтверждения, если участник имеет неподтверждённую почту или не указал её."
+}
