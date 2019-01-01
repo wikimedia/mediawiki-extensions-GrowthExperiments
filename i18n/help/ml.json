@@ -1,12 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Path slopu"
+			"Path slopu",
+			"Adithyak1997"
 		]
 	},
 	"growthexperiments-help-panel-submit-question-button-text": "എന്റെ ചോദ്യം പോസ്റ്റുചെയ്യുക",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "കൂടുതൽ സഹായ ലേഖനങ്ങൾ കാണുക",
 	"growthexperiments-help-panel-back-home": "പിന്നോട്ട്",
 	"growthexperiments-help-panel-close": "ചെയ്തു",
+	"growthexperiments-help-panel-questionreview-email": "ഇമെയിൽ",
 	"growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed": "ഒരു പ്രതികരണം പോസ്റ്റു ചെയ്യുമ്പോൾ നിങ്ങൾക്ക് ഒരു ഇമെയിൽ അറിയിപ്പ് ലഭിക്കുന്നു, ഒരു ദിവസത്തിനകം ഉണ്ടാകാം.",
 	"growthexperiments-help-panel-questionreview-email-optional": "ഇമെയിൽ വിലാസം (നിർബന്ധമില്ല)",
 	"growthexperiments-help-panel-questionposter-invalid-title": "അസാധുവായ ശീർഷകം."

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Red Winged Duck"
+		]
+	},
+	"apihelp-welcomesurveyhandleresponses-summary": "Апрацоўвае адказы прывітальнага апытаньня для цяперашняга ўдзельніка.",
+	"apihelp-welcomesurveyhandleresponses-param-surveyaction": "Дзеяньне, якое было абранае ўдзельнікам у прывітальным апытаньні. Можа быць «save» ці «skip».",
+	"apihelp-welcomesurveyhandleresponses-param-group": "Экспэрымэнтальная група, злучаная з прывітальным апытаньнем.",
+	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "Адзнака часу, калі апытаньне было паказанае ўдзельніку.",
+	"apihelp-welcomesurveyhandleresponses-param-responses": "Аб’ект утрымлівае пытаньні як ключы, а адказы як значэньні. У JSON-фармаце."
+}

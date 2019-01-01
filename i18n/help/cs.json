@@ -33,6 +33,8 @@
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Zobrazit vaši otázku na stránce Potřebuji pomoc",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Více o této funkci",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Zakázat tento nástroj v nastaveních",
+	"growthexperiments-help-panel-questionreview-unconfirmed-email-note": "Poslali jsme vám e-mail pro ověření vaší e-mailové adresy, abyste mohl být upozorněn na odpovědi. Vaše e-mailová adresa <strong>nebude vyzrazena</strong>, pokud vás ostatní uživatelé kontaktují.",
+	"growthexperiments-help-panel-questionreview-no-email-note": "Pokud do svého účtu přidáte svou e-mailovou adresu, pošleme vám odkaz pro jejich ověření. Následně vás budeme informovat, jakmile někdo na váš dotaz odpoví. Vaše e-mailová adresa <strong>nebude vyzrazena>, pokud se vás ostatní uživatelé pokusí kontaktovat.",
 	"growthexperiments-help-panel-questionreview-add-email-placeholder": "Zadejte svou e-mailovou adresu",
 	"growthexperiments-help-panel-questionreview-email-optional": "E-mailová adresa (nepovinné)",
 	"growthexperiments-help-panel-questionposter-email-already-confirmed": "E-mailová adresa je již nastavená a potvrzená.",
