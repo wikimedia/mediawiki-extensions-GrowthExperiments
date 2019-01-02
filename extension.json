@@ -232,6 +232,7 @@
 				"help/ext.growthExperiments.HelpPanelProcessDialog.js"
 			],
 			"dependencies": [
+				"mediawiki.user",
 				"ext.growthExperiments.HelpPanel.icons",
 				"ext.growthExperiments.HelpPanelCta.styles",
 				"oojs-ui-widgets",
