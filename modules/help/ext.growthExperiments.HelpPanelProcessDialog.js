@@ -133,9 +133,9 @@
 		if ( this.userEmail && this.userEmailConfirmed ) {
 			questionCompleteNotificationsLabelKey = 'growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed';
 		}
-		this.questionCompleteNotificationsText.setLabel( new OO.ui.HtmlSnippet(
+		this.questionCompleteNotificationsText.setLabel( new OO.ui.HtmlSnippet( $( '<p>' ).append(
 			mw.message( questionCompleteNotificationsLabelKey ).parse()
-		) );
+		) ) );
 	};
 
 	/**
@@ -391,7 +391,8 @@
 				.text( mw.message( 'growthexperiments-help-panel-questioncomplete-confirmation-text' ).text() )
 		} );
 		this.questionCompleteFirstEditText = new OO.ui.LabelWidget( {
-			label: mw.message( 'growthexperiments-help-panel-questioncomplete-first-edit' ).text()
+			label: $( '<p>' )
+				.text( mw.message( 'growthexperiments-help-panel-questioncomplete-first-edit' ).text() )
 		} );
 		this.questionCompleteViewQuestionText = new OO.ui.LabelWidget();
 		this.questionCompleteNotificationsText = new OO.ui.LabelWidget();
