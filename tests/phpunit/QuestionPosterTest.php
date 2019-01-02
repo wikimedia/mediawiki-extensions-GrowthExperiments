@@ -40,6 +40,19 @@ class QuestionPosterTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @throws \ConfigException
+	 * @throws \MWException
+	 * @expectedExceptionMessage User must be logged-in.
+	 * @expectedException \MWException
+	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster::__construct
+	 */
+	public function testConstruct() {
+		$context = new DerivativeContext( RequestContext::getMain() );
+		$context->getUser()->logout();
+		( new QuestionPoster( $context ) );
+	}
+
+	/**
 	 * @throws \MWException
 	 * @throws \ConfigException
 	 * @group Database
@@ -47,6 +60,8 @@ class QuestionPosterTest extends MediaWikiTestCase {
 	 */
 	public function testSubmit() {
 		$context = new DerivativeContext( RequestContext::getMain() );
+		$user = \User::newFromId( 5 );
+		$context->setUser( $user );
 		$context->setConfig( $this->getConfigMock() );
 		$questionPoster = new QuestionPoster( $context );
 		$questionPoster->submit( 'a great question' );
@@ -66,7 +81,10 @@ class QuestionPosterTest extends MediaWikiTestCase {
 	 */
 	public function testValidateRelevantTitle() {
 		$this->insertPage( 'sample' );
-		$questionPoster = new QuestionPoster( RequestContext::getMain() );
+		$user = \User::newFromId( 2 );
+		$context = new DerivativeContext( RequestContext::getMain() );
+		$context->setUser( $user );
+		$questionPoster = new QuestionPoster( $context );
 		$this->assertEquals(
 			Status::newGood(),
 			$questionPoster->validateRelevantTitle( 'sample' )

@@ -74,11 +74,15 @@ class QuestionPoster {
 	 * QuestionPoster constructor.
 	 * @param IContextSource $context
 	 * @throws \ConfigException
+	 * @throws MWException
 	 */
 	public function __construct( IContextSource $context ) {
 		$this->context = $context;
-		$this->config = $context->getConfig();
-		$this->isFirstEdit = ( $context->getUser()->getEditCount() === 0 );
+		if ( $this->context->getUser()->isAnon() ) {
+			throw new MWException( 'User must be logged-in.' );
+		}
+		$this->config = $this->context->getConfig();
+		$this->isFirstEdit = ( $this->context->getUser()->getEditCount() === 0 );
 		$this->helpDeskTitle = Title::newFromText( $this->config->get( 'GEHelpPanelHelpDeskTitle' ) );
 		$page = new WikiPage( $this->helpDeskTitle );
 		$this->pageUpdater = $page->newPageUpdater( $this->context->getUser() );

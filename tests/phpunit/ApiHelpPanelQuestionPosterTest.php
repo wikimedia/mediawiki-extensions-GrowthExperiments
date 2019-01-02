@@ -39,6 +39,9 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		return $params;
 	}
 
+	/**
+	 * @covers \GrowthExperiments\Api\ApiHelpPanelPostQuestion::execute
+	 */
 	public function testExecute() {
 		$ret = $this->doApiRequestWithToken(
 			$this->getParams( 'lorem ipsum' ),

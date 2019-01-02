@@ -6,6 +6,7 @@ use ApiBase;
 use ApiUsageException;
 use GrowthExperiments\HelpPanel\QuestionPoster;
 use MediaWiki\Logger\LoggerFactory;
+use MWException;
 
 class ApiHelpPanelPostQuestion extends ApiBase {
 
@@ -17,13 +18,16 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 	 * Save help panel question post.
 	 *
 	 * @throws ApiUsageException
-	 * @throws \ConfigException
-	 * @throws \MWException
+	 * @throws MWException
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$emailStatus = null;
-		$questionPoster = new QuestionPoster( $this->getContext() );
+		try {
+			$questionPoster = new QuestionPoster( $this->getContext() );
+		} catch ( \Exception $exception ) {
+			$this->dieWithException( $exception );
+		}
 		if ( $params[self::API_PARAM_RELEVANT_TITLE] ) {
 			$status = $questionPoster->validateRelevantTitle( $params[self::API_PARAM_RELEVANT_TITLE] );
 			if ( !$status->isGood() ) {
