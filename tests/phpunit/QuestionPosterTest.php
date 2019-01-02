@@ -7,6 +7,7 @@ use DerivativeContext;
 use GrowthExperiments\HelpPanel\QuestionPoster;
 use MediaWikiTestCase;
 use RequestContext;
+use Status;
 use Title;
 
 /**
@@ -55,6 +56,24 @@ class QuestionPosterTest extends MediaWikiTestCase {
 		$this->assertEquals(
 			true,
 			strpos( $page->getContent()->getSection( 1 )->serialize(), 'a great question' ) !== false
+		);
+	}
+
+	/**
+	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster::validateRelevantTitle
+	 * @throws \ConfigException
+	 * @throws \MWException
+	 */
+	public function testValidateRelevantTitle() {
+		$this->insertPage( 'sample' );
+		$questionPoster = new QuestionPoster( RequestContext::getMain() );
+		$this->assertEquals(
+			Status::newGood(),
+			$questionPoster->validateRelevantTitle( 'sample' )
+		);
+		$this->assertEquals(
+			Status::newFatal( 'growthexperiments-help-panel-questionposter-invalid-title' ),
+			$questionPoster->validateRelevantTitle( '>123' )
 		);
 	}
 

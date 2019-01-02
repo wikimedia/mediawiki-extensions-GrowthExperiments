@@ -136,12 +136,13 @@ class QuestionPoster {
 	}
 
 	/**
-	 * @param string $title
+	 * @param string $name
 	 *   The wiki title that the user opted to include with their question.
 	 * @return Status
 	 */
-	public function validateRelevantTitle( $title ) {
-		return Title::newFromText( $title )->isValid() ?
+	public function validateRelevantTitle( $name ) {
+		$title = Title::newFromText( $name );
+		return $title && $title->isValid() ?
 			Status::newGood() :
 			Status::newFatal( 'growthexperiments-help-panel-questionposter-invalid-title' );
 	}
