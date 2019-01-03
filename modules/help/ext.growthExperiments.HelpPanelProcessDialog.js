@@ -487,12 +487,14 @@
 							if ( data.helppanelquestionposter.isfirstedit ) {
 								this.questionCompleteFirstEditText.toggle( true );
 							}
-							this.questionCompleteViewQuestionText.setLabel( $( '<p>' ).append( $( '<a>', {
-								href: data.helppanelquestionposter.viewquestionurl,
-								target: '_blank',
-								'data-link-id': 'view-question',
-								text: mw.message( 'growthexperiments-help-panel-questioncomplete-view-link-text' ).text()
-							} ) ) );
+							this.questionCompleteViewQuestionText.setLabel( $( '<p>' )
+								.append(
+									$( '<strong>' ).append( $( '<a>', {
+										href: data.helppanelquestionposter.viewquestionurl,
+										target: '_blank',
+										'data-link-id': 'view-question',
+										text: mw.message( 'growthexperiments-help-panel-questioncomplete-view-link-text' ).text()
+									} ) ) ) );
 							this.setNotificationLabelText();
 							this.swapPanel( action );
 							// Reset the post a question text inputs.
