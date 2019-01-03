@@ -39,6 +39,7 @@
 	"growthexperiments-help-panel-questionposter-email-already-confirmed": "Email address is already set and confirmed.",
 	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "Insufficient permissions to set email.",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Invalid title.",
+	"growthexperiments-help-panel-community-help-desk-text": "Community Help Desk",
 	"tag-help_panel_question": "Help panel question",
 	"tag-help_panel_question-description": "Edit made from the help panel's post a question feature"
 }
