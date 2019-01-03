@@ -257,7 +257,7 @@
 			value: mw.storage.get( 'help-panel-question-text' ),
 			spellcheck: true,
 			required: true,
-			autofocus: true
+			autofocus: !OO.ui.isMobile()
 		} ).connect( this, { change: 'onTextInputChange' } );
 
 		this.questionIncludeTitleCheckbox = new OO.ui.CheckboxInputWidget( {
