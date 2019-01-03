@@ -37,6 +37,7 @@ class HelpPanel {
 	 * @param MessageLocalizer $ml
 	 * @param Config $config
 	 * @return array Links that should appear in the help panel. Exported to JS as wgGEHelpPanelLinks.
+	 * @throws \ConfigException
 	 */
 	public static function getHelpPanelLinks( MessageLocalizer $ml, Config $config ) {
 		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
@@ -56,8 +57,11 @@ class HelpPanel {
 		$helpPanelLinks .= Html::closeElement( 'ul' );
 
 		$helpDeskTitle = Title::newFromText( $config->get( 'GEHelpPanelHelpDeskTitle' ) );
-		$helpDeskLink = $linkRenderer->makeLink( $helpDeskTitle, null,
-			[ 'target' => '_blank', 'data-link-id' => 'help-desk' ] );
+		$helpDeskLink = $linkRenderer->makeLink(
+			$helpDeskTitle,
+			$ml->msg( 'growthexperiments-help-panel-community-help-desk-text' )->text(),
+			[ 'target' => '_blank', 'data-link-id' => 'help-desk' ]
+		);
 
 		$viewMoreTitle = Title::newFromText( $config->get( 'GEHelpPanelViewMoreTitle' ) );
 		$viewMoreLink = $linkRenderer->makeLink(
