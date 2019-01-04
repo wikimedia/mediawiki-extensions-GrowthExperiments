@@ -31,7 +31,8 @@
 		{
 			label: mw.message( 'growthexperiments-help-panel-close' ).text(),
 			modes: [ 'questioncomplete' ],
-			flags: 'safe'
+			flags: 'safe',
+			framed: true
 		}
 	];
 
