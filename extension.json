@@ -296,9 +296,9 @@
 			"description": "MediaWiki namespaces that the help panel will be excluded from.",
 			"value": []
 		},
-		"GEHelpPanelNewAccountEnableProportion": {
-			"description": "Proportion of new accounts to enable help panel for. 1 = 100%, 2 = 50%, 20 = 5%, etc.",
-			"value": 2
+		"GEHelpPanelNewAccountEnablePercentage": {
+			"description": "Percentage of new accounts to enable help panel for. Must be a whole number.",
+			"value": 50
 		},
 		"GEHelpPanelHelpDeskTitle": {
 			"description": "Mediawiki title for help panel CTA when users have disabled JS.",
