@@ -5,7 +5,8 @@
 	}
 
 	$( function () {
-		var $buttonToInfuse = $( '#mw-ge-help-panel-cta' ),
+		var $buttonToInfuse = $( '#mw-ge-help-panel-cta-button' ),
+			$buttonWrapper = $buttonToInfuse.parent(),
 			windowManager = new OO.ui.WindowManager( { modal: OO.ui.isMobile() } ),
 			$overlay = $( '<div>' ).addClass( 'mw-ge-help-panel-widget-overlay' ),
 			loggingEnabled = mw.config.get( 'wgGEHelpPanelLoggingEnabled' ),
@@ -23,34 +24,43 @@
 		/**
 		 * Invoked from mobileFrontend.editorOpened and ve.activationComplete hooks.
 		 *
-		 * The CTA needs to be attached to the MobileFrontend or VisualEditor overlay.
+		 * The CTA needs to be (re-)attached to the overlay when VisualEditor or
+		 * the MobileFrontend editor is opened.
 		 */
 		function attachHelpButton() {
-			$overlay.append( helpCtaButton.$element );
+			// Don't reattach the button wrapper if it's already attached to the overlay, otherwise
+			// the animation happens twice
+			if ( $buttonWrapper.parent()[ 0 ] !== $overlay[ 0 ] ) {
+				$overlay.append( $buttonWrapper );
+			}
 		}
 
 		/**
 		 * Invoked from mobileFrontend.editorClosed and ve.deactivationComplete hooks.
 		 *
-		 * Hide the CTA when the MobileFrontend or VisualEditor overlay is closed.
+		 * Hide the CTA when VisualEditor or the MobileFrontend editor is closed.
 		 */
 		function detachHelpButton() {
-			helpCtaButton.$element.detach();
+			$buttonWrapper.detach();
 		}
 
 		if ( $buttonToInfuse.length ) {
 			helpCtaButton = OO.ui.ButtonWidget.static.infuse( $buttonToInfuse );
+			$overlay.append( $buttonWrapper );
 		} else {
 			helpCtaButton = new OO.ui.ButtonWidget( {
-				classes: [ 'mw-ge-help-panel-cta' ],
-				id: 'mw-ge-help-panel-cta',
+				id: 'mw-ge-help-panel-cta-button',
 				href: mw.util.getUrl( mw.config.get( 'wgGEHelpPanelHelpDeskTitle' ) ),
 				label: OO.ui.isMobile() ? '' : mw.msg( 'growthexperiments-help-panel-cta-button-text' ),
 				icon: 'askQuestion',
 				flags: [ 'primary', 'progressive' ]
 			} );
-			$overlay.append( helpCtaButton.$element );
+			$buttonWrapper = $( '<div>' )
+				.addClass( 'mw-ge-help-panel-cta' )
+				.append( helpCtaButton.$element );
+			$overlay.append( $buttonWrapper );
 		}
+		$buttonWrapper.addClass( 'mw-ge-help-panel-ready' );
 
 		$overlay.append( windowManager.$element );
 		if ( !OO.ui.isMobile() ) {
