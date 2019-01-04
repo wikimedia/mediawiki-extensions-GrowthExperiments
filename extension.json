@@ -309,11 +309,11 @@
 			"value": "Main_Page"
 		},
 		"GEHelpPanelEnabled": {
-			"description": "Global ON/OFF switch for the Help pane feature.",
+			"description": "Global ON/OFF switch for the help panel feature.",
 			"value": false
 		},
 		"GEHelpPanelLoggingEnabled": {
-			"description": "ON/OFF switch for the Help pane event logging feature.",
+			"description": "ON/OFF switch for the help panel event logging feature.",
 			"value": false
 		},
 		"GEHelpPanelLinks": {

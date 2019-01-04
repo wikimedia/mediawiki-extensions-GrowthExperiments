@@ -33,9 +33,11 @@ class HelpPanelHooks {
 	 * @param array &$wgDefaultUserOptions Reference to default options array
 	 */
 	public static function onUserGetDefaultOptions( &$wgDefaultUserOptions ) {
-		$wgDefaultUserOptions += [
-			self::HELP_PANEL_PREFERENCES_TOGGLE => false
-		];
+		if ( HelpPanel::isHelpPanelEnabled() ) {
+			$wgDefaultUserOptions += [
+				self::HELP_PANEL_PREFERENCES_TOGGLE => false
+			];
+		}
 	}
 
 	/**
@@ -46,6 +48,10 @@ class HelpPanelHooks {
 	 * @throws \ConfigException
 	 */
 	public static function onLocalUserCreated( User $user, $autocreated ) {
+		if ( !HelpPanel::isHelpPanelEnabled() ) {
+			return;
+		}
+
 		// Enable the help panel for 50% of non-autocreated users.
 		$config = RequestContext::getMain()->getConfig();
 		$enableProportion = $config->get( 'GEHelpPanelNewAccountEnableProportion' );
@@ -105,7 +111,9 @@ class HelpPanelHooks {
 	 * @param array &$tags The list of tags. Add your extension's tags to this array.
 	 */
 	public static function onListDefinedTags( &$tags ) {
-		$tags[] = HelpPanel::HELP_PANEL_QUESTION_TAG;
+		if ( HelpPanel::isHelpPanelEnabled() ) {
+			$tags[] = HelpPanel::HELP_PANEL_QUESTION_TAG;
+		}
 	}
 
 }
