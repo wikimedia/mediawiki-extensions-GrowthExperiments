@@ -70,6 +70,7 @@ class HelpPanelHooks {
 		if ( $definitelyShow ) {
 			$out->enableOOUI();
 			$out->addModuleStyles( 'ext.growthExperiments.HelpPanelCta.styles' );
+			$out->addModuleStyles( 'ext.growthExperiments.HelpPanel.icons' );
 			$out->addModules( 'ext.growthExperiments.HelpPanel' );
 
 			$out->addHTML( HelpPanel::getHelpPanelCtaButton() );
