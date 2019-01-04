@@ -8,6 +8,7 @@ use Config;
 use Html;
 use MessageLocalizer;
 use OutputPage;
+use OOUI\Tag;
 use Title;
 use User;
 
@@ -16,21 +17,22 @@ class HelpPanel {
 	const HELP_PANEL_QUESTION_TAG = 'help panel question';
 
 	/**
-	 * @return ButtonWidget
+	 * @return Tag
 	 * @throws \ConfigException
 	 */
 	public static function getHelpPanelCtaButton() {
-		return new ButtonWidget( [
-			'classes' => [ 'mw-ge-help-panel-cta' ],
-			'id' => 'mw-ge-help-panel-cta',
-			'href' => Title::newFromText(
-				MediaWikiServices::getInstance()->getMainConfig()->get( 'GEHelpPanelHelpDeskTitle' )
-			)->getLinkURL(),
-			'label' => wfMessage( 'growthexperiments-help-panel-cta-button-text' )->text(),
-			'infusable' => true,
-			'icon' => 'askQuestion',
-			'flags' => [ 'primary', 'progressive' ],
-		] );
+		return ( new Tag( 'div' ) )
+			->addClasses( [ 'mw-ge-help-panel-cta' ] )
+			->appendContent( new ButtonWidget( [
+				'id' => 'mw-ge-help-panel-cta-button',
+				'href' => Title::newFromText(
+					MediaWikiServices::getInstance()->getMainConfig()->get( 'GEHelpPanelHelpDeskTitle' )
+				)->getLinkURL(),
+				'label' => wfMessage( 'growthexperiments-help-panel-cta-button-text' )->text(),
+				'infusable' => true,
+				'icon' => 'askQuestion',
+				'flags' => [ 'primary', 'progressive' ],
+			] ) );
 	}
 
 	/**
