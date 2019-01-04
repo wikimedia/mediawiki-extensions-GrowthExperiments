@@ -492,7 +492,7 @@
 					return new mw.Api().postWithToken( 'csrf', {
 						action: 'helppanelquestionposter',
 						email: this.questionReviewAddEmail.getValue(),
-						relevanttitle: this.questionIncludeTitleCheckbox.isSelected() ? this.relevantTitle.getPrefixedDb() : '',
+						relevanttitle: this.questionIncludeTitleCheckbox.isSelected() ? this.relevantTitle.getPrefixedText() : '',
 						body: this.questionReviewTextInput.getValue()
 					} )
 						.then( function ( data ) {
