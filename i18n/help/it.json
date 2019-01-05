@@ -17,5 +17,7 @@
 	"growthexperiments-help-panel-questionreview-add-email-placeholder": "Inserisci il tuo indirizzo email",
 	"growthexperiments-help-panel-questionreview-email-optional": "Indirizzo di posta elettronica (opzionale)",
 	"growthexperiments-help-panel-questionposter-email-already-confirmed": "L'indirizzo email è già impostato e confermato.",
-	"growthexperiments-help-panel-questionposter-invalid-title": "Titolo non valido."
+	"growthexperiments-help-panel-questionposter-invalid-title": "Titolo non valido.",
+	"growthexperiments-help-panel-notifications-link-text": "notifica",
+	"growthexperiments-help-panel-confirm-email-link-text": "conferma la tua email"
 }

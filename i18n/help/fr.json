@@ -30,11 +30,11 @@
 	"growthexperiments-help-panel-questioncomplete-header": "Votre question a été envoyée",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Votre question est désormais sur le bureau d’aide de la communauté pour qu’un autre éditeur bénévole y réponde.",
 	"growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed": "Vous recevrez un courriel de notification quand une réponse sera publiée, sans doute sous un jour au plus.",
-	"growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed": "Vous recevrez une notification sur {{SITENAME}} quand une réponse sera publiée, sans doute sous un jour ou moins. Si vous [[Special:ConfirmEmail|confirmez votre courriel]], vous recevrez aussi un courriel de notification.",
-	"growthexperiments-help-panel-questioncomplete-confirmation-email-none": "Vous recevrez une notification sur {{SITENAME}} quand une réponse sera publiée, sans doute sous un jour ou moins.",
+	"growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed": "Vous recevrez un $1 sur ce site quand une réponse sera publiée, sans doute sous un jour ou moins. Si vous $2, vous recevrez aussi un courriel de notification.",
+	"growthexperiments-help-panel-questioncomplete-confirmation-email-none": "Vous recevrez un $1 sur ce site quand une réponse sera publiée, sans doute sous un jour ou moins.",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Afficher votre question au bureau du support",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "En savoir plus sur cette fonctionnalité",
-	"growthexperiments-help-panel-questioncomplete-first-edit": "Au fait, en posant cette question, vous venez juste de faire votre première modification sur {{SITENAME}}. Félicitations !",
+	"growthexperiments-help-panel-questioncomplete-first-edit": "Au fait, en posant cette question, vous venez juste de faire votre première modification d’une page. Félicitations !",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Désactiver cet utilitaire dans les Paramètres",
 	"growthexperiments-help-panel-questionreview-unconfirmed-email-note": "Vous recevrez un lien de confirmation par courriel, de manière à pouvoir être notifié des réponses. Votre adresse de messagerie n’est <strong>pas dévoilée</strong> quand les autres utilisateurs vous contactent.",
 	"growthexperiments-help-panel-questionreview-no-email-note": "Si vous ajoutez une adresse courriel à votre compte, vous recevrez un lien de confirmation du courriel pour pouvoir recevoir les réponses. Votre adresse courriel <strong>n'est pas affichée</strong> quand les autres utilisateurs vous contactent.",
@@ -43,6 +43,9 @@
 	"growthexperiments-help-panel-questionposter-email-already-confirmed": "Adresse email déjà enregistrée et confirmée.",
 	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "Permissions insuffisantes pour définir le courriel.",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Titre non valide.",
+	"growthexperiments-help-panel-community-help-desk-text": "Centre d’assistance de la communauté",
 	"tag-help_panel_question": "Question du panneau d'aide",
-	"tag-help_panel_question-description": "Modification faite par une fonctionnalité de question publiée dans l’onglet d’aide"
+	"tag-help_panel_question-description": "Modification faite par une fonctionnalité de question publiée dans l’onglet d’aide",
+	"growthexperiments-help-panel-notifications-link-text": "notification",
+	"growthexperiments-help-panel-confirm-email-link-text": "confirmer votre courriel"
 }
