@@ -1,14 +1,23 @@
 {
 	"@metadata": {
 		"authors": [
-			"Johnny243"
+			"Johnny243",
+			"Fitoschido"
 		]
 	},
 	"growthexperiments-help-panel-submit-question-button-text": "Publicar mi pregunta",
 	"growthexperiments-help-panel-back-home": "Regresar",
 	"growthexperiments-help-panel-close": "Hecho",
+	"growthexperiments-help-panel-questionreview-title": "Formular una pregunta",
+	"growthexperiments-help-panel-questionreview-header": "Cuando envías una pregunta, se <strong>comparte públicamente</strong> con tu nombre de usuario («$2») en $1, donde otro voluntario tratará de responderte en un plazo aproximado de un día.",
+	"growthexperiments-help-panel-questionreview-note": "Te notificaremos por correo cuando recibas una respuesta, pero <strong>no revelaremos</strong> tu dirección cuando otros usuarios se pongan en contacto contigo.",
+	"growthexperiments-help-panel-questioncomplete-header": "Se ha publicado la pregunta.",
 	"growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed": "Recibirás una notificación por email cuándo una respuesta sea publicada, probablemente dentro de un día más o menos.",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Más información sobre esta característica",
 	"growthexperiments-help-panel-questionreview-email-optional": "Dirección de correo electrónico (opcional)",
-	"growthexperiments-help-panel-questionposter-invalid-title": "Título inválido."
+	"growthexperiments-help-panel-questionposter-invalid-title": "Título inválido.",
+	"growthexperiments-help-panel-community-help-desk-text": "Asistencia comunitaria",
+	"tag-help_panel_question": "Pregunta del panel de ayuda",
+	"growthexperiments-help-panel-notifications-link-text": "notificación",
+	"growthexperiments-help-panel-confirm-email-link-text": "confirma tu correo"
 }
