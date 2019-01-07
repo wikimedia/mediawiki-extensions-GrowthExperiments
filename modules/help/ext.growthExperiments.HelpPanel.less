@@ -2,7 +2,6 @@
 @import 'mediawiki.mixins';
 
 .mw-ge-help-panel-widget-overlay {
-	font-size: 0.875em;
 	position: fixed;
 	right: 1em;
 	bottom: 1em;
@@ -23,6 +22,7 @@
 }
 
 .mw-ge-help-panel-popup .oo-ui-dialog {
+	font-size: 0.875em;
 	color: @colorGray2;
 	background-color: @background-color-base;
 	border: 1px solid @colorGray12;
@@ -36,6 +36,15 @@
 	&.oo-ui-window-setup {
 		bottom: 0;
 		opacity: 1;
+	}
+
+	.oo-ui-window-foot {
+		// Override .oo-ui-unselectable()
+		-webkit-touch-callout: default;
+		-webkit-user-select: auto;
+		-moz-user-select: auto;
+		-ms-user-select: auto;
+		user-select: auto;
 	}
 
 	.oo-ui-processDialog-navigation {
