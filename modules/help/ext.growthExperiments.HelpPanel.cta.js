@@ -11,11 +11,13 @@
 			$overlay = $( '<div>' ).addClass( 'mw-ge-help-panel-widget-overlay' ),
 			loggingEnabled = mw.config.get( 'wgGEHelpPanelLoggingEnabled' ),
 			logger = new mw.libs.ge.HelpPanelLogger( loggingEnabled ),
+			size = OO.ui.isMobile() ? 'full' : 'small',
 			/**
 			 * @type {OO.ui.Window}
 			 */
 			helpPanelProcessDialog = new mw.libs.ge.HelpPanelProcessDialog( {
-				size: OO.ui.isMobile() ? 'full' : 'small',
+				// Make help panel wider for larger screens.
+				size: Math.max( document.documentElement.clientWidth, window.innerWidth || 0 ) > 1366 ? 'medium' : size,
 				logger: logger
 			} ),
 			helpCtaButton,
