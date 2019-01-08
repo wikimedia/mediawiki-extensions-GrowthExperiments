@@ -62,7 +62,6 @@
 			page_ns: mw.config.get( 'wgNamespaceNumber' ),
 			user_can_edit: mw.config.get( 'wgIsProbablyEditable' ),
 			page_protection: this.getPageRestrictions(),
-			page_token: mw.user.getPageviewToken(),
 			session_token: mw.user.sessionId(),
 			help_panel_session_id: this.helpPanelSessionId
 		};
