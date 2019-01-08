@@ -3,7 +3,12 @@
 	function HelpPanelLogger( enabled ) {
 		this.enabled = enabled;
 		this.userEditCount = mw.config.get( 'wgUserEditCount' );
+		this.clearSessionId();
 	}
+
+	HelpPanelLogger.prototype.clearSessionId = function () {
+		this.helpPanelSessionId = mw.user.generateRandomSessionId();
+	};
 
 	HelpPanelLogger.prototype.log = function ( action, data ) {
 		if ( !this.enabled ) {
@@ -58,7 +63,8 @@
 			user_can_edit: mw.config.get( 'wgIsProbablyEditable' ),
 			page_protection: this.getPageRestrictions(),
 			page_token: mw.user.getPageviewToken(),
-			session_token: mw.user.sessionId()
+			session_token: mw.user.sessionId(),
+			help_panel_session_id: this.helpPanelSessionId
 		};
 		/* eslint-enable camelcase */
 	};
