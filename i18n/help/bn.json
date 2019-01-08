@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"আফতাবুজ্জামান"
+			"আফতাবুজ্জামান",
+			"Tahmid02016"
 		]
 	},
 	"growthexperiments-help-panel-question-button-text": "অব্যাহত",
-	"growthexperiments-help-panel-questionreview-title": "একটি প্রশ্ন জিজ্ঞাসা করুন",
+	"growthexperiments-help-panel-questionreview-title": "প্রশ্ন জিজ্ঞাসা করুন",
 	"growthexperiments-help-panel-questionreview-email": "ইমেইল",
 	"growthexperiments-help-panel-questionreview-label": "আপনার প্রশ্ন",
-	"growthexperiments-help-panel-questioncomplete-title": "একটি প্রশ্ন জিজ্ঞাসা করুন",
+	"growthexperiments-help-panel-questioncomplete-title": "প্রশ্ন জিজ্ঞাসা করুন",
 	"growthexperiments-help-panel-questionreview-add-email-placeholder": "আপনার ইমেইল ঠিকানা লিখুন"
 }

@@ -34,5 +34,7 @@
 	"growthexperiments-help-panel-questionreview-email-optional": "E-postadress (valfritt)",
 	"growthexperiments-help-panel-questionposter-email-already-confirmed": "E-postadressen är redan angiven och bekräftad.",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Ogiltig titel.",
-	"tag-help_panel_question": "Fråga på hjälppanelen"
+	"tag-help_panel_question": "Fråga på hjälppanelen",
+	"growthexperiments-help-panel-notifications-link-text": "avisering",
+	"growthexperiments-help-panel-confirm-email-link-text": "bekräfta din e-mail"
 }

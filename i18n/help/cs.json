@@ -13,7 +13,7 @@
 	"growthexperiments-help-panel-submit-question-button-text": "Vložit mou otázku",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Nejdůležitější stránky s nápovědou",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Zobrazit více stránek s nápovědou",
-	"growthexperiments-help-panel-question-widget-header": "Vložte svou otázku na stránku Wikipedie:Potřebuji pomoc",
+	"growthexperiments-help-panel-question-widget-header": "Vložte svou otázku na stránku Potřebuji pomoc",
 	"growthexperiments-help-panel-question-placeholder": "Jak se na Wikipedii...?",
 	"growthexperiments-help-panel-back-home": "Zpět",
 	"growthexperiments-help-panel-close": "Zavřít",
@@ -31,8 +31,11 @@
 	"growthexperiments-help-panel-questioncomplete-header": "Váš dotaz byl úspěšně odeslán",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Vaše otázka je nyní vložena na stránce Potřebuji pomoc, aby mohla být zodpovězena dalším wikipedistou.",
 	"growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed": "V okamžiku zodpovězení vaší otázky vám bude odeslána e-mailová notifikace. Pravděpodobně se tak stane během jednoho dne.",
+	"growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed": "Po vložení odpovědi obdržíte $1, pravděpodobně během jednoho dne. Pokud $2, obdržíte také e-mailovou notifikaci.",
+	"growthexperiments-help-panel-questioncomplete-confirmation-email-none": "Po vložení odpovědi obdržíte $1, pravděpodobně během jednoho dne.",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Zobrazit vaši otázku na stránce Potřebuji pomoc",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Více o této funkci",
+	"growthexperiments-help-panel-questioncomplete-first-edit": "Mimochodem, položením otázky jste udělali svou první editaci na této stránce! Gratulujeme!",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Zakázat tento nástroj v nastaveních",
 	"growthexperiments-help-panel-questionreview-unconfirmed-email-note": "Poslali jsme vám e-mail pro ověření vaší e-mailové adresy, abyste mohl být upozorněn na odpovědi. Vaše e-mailová adresa <strong>nebude vyzrazena</strong>, pokud vás ostatní uživatelé kontaktují.",
 	"growthexperiments-help-panel-questionreview-no-email-note": "Pokud do svého účtu přidáte svou e-mailovou adresu, pošleme vám odkaz pro jejich ověření. Následně vás budeme informovat, jakmile někdo na váš dotaz odpoví. Vaše e-mailová adresa <strong>nebude vyzrazena</strong>, pokud se vás ostatní uživatelé pokusí kontaktovat.",
@@ -41,6 +44,9 @@
 	"growthexperiments-help-panel-questionposter-email-already-confirmed": "E-mailová adresa je již nastavená a potvrzená.",
 	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "Nedostatečná oprávnění k nastavení e-mailu",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Neplatný název.",
+	"growthexperiments-help-panel-community-help-desk-text": "stránka Potřebuji pomoc",
 	"tag-help_panel_question": "Panel Potřebuji pomoc",
-	"tag-help_panel_question-description": "Otázka vložená prostřednictvím panelu Potřebuji pomoc"
+	"tag-help_panel_question-description": "Otázka vložená prostřednictvím panelu Potřebuji pomoc",
+	"growthexperiments-help-panel-notifications-link-text": "notifikaci",
+	"growthexperiments-help-panel-confirm-email-link-text": "si potvrdíte svůj e-mail"
 }
