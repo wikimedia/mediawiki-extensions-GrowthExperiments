@@ -17,19 +17,20 @@ class HelpPanel {
 	const HELP_PANEL_QUESTION_TAG = 'help panel question';
 
 	/**
+	 * @param bool $mobile
 	 * @return Tag
 	 * @throws \ConfigException
 	 */
-	public static function getHelpPanelCtaButton() {
+	public static function getHelpPanelCtaButton( $mobile ) {
 		return ( new Tag( 'div' ) )
-			->addClasses( [ 'mw-ge-help-panel-cta' ] )
+			->addClasses( [ 'mw-ge-help-panel-cta', $mobile ? 'mw-ge-help-panel-cta-mobile' : '' ] )
 			->appendContent( new ButtonWidget( [
 				'id' => 'mw-ge-help-panel-cta-button',
 				'href' => Title::newFromText(
 					MediaWikiServices::getInstance()->getMainConfig()->get( 'GEHelpPanelHelpDeskTitle' )
 				)->getLinkURL(),
 				'target' => '_blank',
-				'label' => wfMessage( 'growthexperiments-help-panel-cta-button-text' )->text(),
+				'label' => $mobile ? '' : wfMessage( 'growthexperiments-help-panel-cta-button-text' )->text(),
 				'infusable' => true,
 				'icon' => 'askQuestion',
 				'flags' => [ 'primary', 'progressive' ],
