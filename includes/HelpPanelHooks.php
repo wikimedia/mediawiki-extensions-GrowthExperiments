@@ -76,7 +76,7 @@ class HelpPanelHooks {
 			$out->addModuleStyles( 'ext.growthExperiments.HelpPanel.icons' );
 			$out->addModules( 'ext.growthExperiments.HelpPanel' );
 
-			$out->addHTML( HelpPanel::getHelpPanelCtaButton() );
+			$out->addHTML( HelpPanel::getHelpPanelCtaButton( $skin->getSkinName() === 'minerva' ) );
 		}
 
 		// If the help panel would be shown but for the value of the 'action' parameter,

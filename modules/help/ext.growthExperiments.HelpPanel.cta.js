@@ -68,6 +68,9 @@
 			$buttonWrapper = $( '<div>' )
 				.addClass( 'mw-ge-help-panel-cta' )
 				.append( helpCtaButton.$element );
+			if ( OO.ui.isMobile() ) {
+				$buttonWrapper.addClass( 'mw-ge-help-panel-cta-mobile' );
+			}
 		}
 		$buttonWrapper.addClass( 'mw-ge-help-panel-ready' );
 
