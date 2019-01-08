@@ -24,16 +24,25 @@
 			lifecycle;
 
 		/**
-		 * Invoked from mobileFrontend.editorOpened and ve.activationComplete hooks.
+		 * Invoked from mobileFrontend.editorOpened, ve.activationComplete
+		 * and wikipage.editform hooks.
 		 *
 		 * The CTA needs to be (re-)attached to the overlay when VisualEditor or
 		 * the MobileFrontend editor is opened.
+		 *
+		 * @param {string} editor Which editor is being opened
 		 */
-		function attachHelpButton() {
+		function attachHelpButton( editor ) {
+			var metadataOverride = {};
+			if ( logger.isValidEditor( editor ) ) {
+				/* eslint-disable-next-line camelcase */
+				metadataOverride.editor_interface = editor;
+			}
 			// Don't reattach the button wrapper if it's already attached to the overlay, otherwise
 			// the animation happens twice
 			if ( $buttonWrapper.parent()[ 0 ] !== $overlay[ 0 ] ) {
 				$overlay.append( $buttonWrapper );
+				logger.logOnce( 'impression', null, metadataOverride );
 			}
 		}
 
@@ -48,7 +57,6 @@
 
 		if ( $buttonToInfuse.length ) {
 			helpCtaButton = OO.ui.ButtonWidget.static.infuse( $buttonToInfuse );
-			$overlay.append( $buttonWrapper );
 		} else {
 			helpCtaButton = new OO.ui.ButtonWidget( {
 				id: 'mw-ge-help-panel-cta-button',
@@ -60,7 +68,6 @@
 			$buttonWrapper = $( '<div>' )
 				.addClass( 'mw-ge-help-panel-cta' )
 				.append( helpCtaButton.$element );
-			$overlay.append( $buttonWrapper );
 		}
 		$buttonWrapper.addClass( 'mw-ge-help-panel-ready' );
 
@@ -71,7 +78,6 @@
 		$( 'body' ).append( $overlay );
 		windowManager.addWindows( [ helpPanelProcessDialog ] );
 
-		logger.log( 'impression' );
 		helpCtaButton.on( 'click', function () {
 			lifecycle = windowManager.openWindow( helpPanelProcessDialog );
 			// Reset to home panel if user closed the widget.
@@ -93,6 +99,9 @@
 			// hooks are sufficient for attaching/detaching the help CTA.
 			mw.hook( 've.activationComplete' ).add( attachHelpButton );
 			mw.hook( 've.deactivationComplete' ).add( detachHelpButton );
+
+			// Older wikitext editor
+			mw.hook( 'wikipage.editform' ).add( attachHelpButton );
 		}
 	} );
 

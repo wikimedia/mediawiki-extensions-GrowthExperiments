@@ -4,13 +4,14 @@
 		this.enabled = enabled;
 		this.userEditCount = mw.config.get( 'wgUserEditCount' );
 		this.clearSessionId();
+		this.logged = {};
 	}
 
 	HelpPanelLogger.prototype.clearSessionId = function () {
 		this.helpPanelSessionId = mw.user.generateRandomSessionId();
 	};
 
-	HelpPanelLogger.prototype.log = function ( action, data ) {
+	HelpPanelLogger.prototype.log = function ( action, data, metadataOverride ) {
 		if ( !this.enabled ) {
 			return;
 		}
@@ -24,9 +25,20 @@
 					/* eslint-disable-next-line camelcase */
 					action_data: this.serializeActionData( data )
 				},
-				this.getMetaData()
+				this.getMetaData(),
+				metadataOverride
 			)
 		);
+
+		this.logged[ action ] = true;
+	};
+
+	HelpPanelLogger.prototype.logOnce = function ( action, data, metadataOverride ) {
+		if ( !this.enabled || this.logged[ action ] ) {
+			return;
+		}
+
+		this.log( action, data, metadataOverride );
 	};
 
 	HelpPanelLogger.prototype.serializeActionData = function ( data ) {
@@ -68,14 +80,25 @@
 		/* eslint-enable camelcase */
 	};
 
+	HelpPanelLogger.prototype.isValidEditor = function ( editor ) {
+		return [
+			'wikitext',
+			'wikitext-2017',
+			'visualeditor',
+			'other'
+		].indexOf( editor ) >= 0;
+	};
+
 	HelpPanelLogger.prototype.getEditor = function () {
 		var veTarget,
 			mode;
 
+		// Desktop: old wikitext editor
 		if ( $( '#wpTextbox1:visible' ).length ) {
 			return 'wikitext';
 		}
 
+		// Desktop: VE in visual or source mode
 		veTarget = OO.getProp( window, 've', 'init', 'target' );
 		if ( veTarget ) {
 			mode = veTarget.getSurface().getMode();
@@ -86,6 +109,16 @@
 			if ( mode === 'visual' ) {
 				return 'visualeditor';
 			}
+		}
+
+		// Mobile: wikitext
+		if ( $( 'textarea#wikitext-editor:visible' ).length ) {
+			return 'wikitext';
+		}
+
+		// Mobile: VE
+		if ( $( '.ve-init-mw-mobileArticleTarget:visible' ).length ) {
+			return 'visualeditor';
 		}
 
 		return 'other';
