@@ -84,6 +84,7 @@ class QuestionPosterTest extends MediaWikiTestCase {
 		$user = \User::newFromId( 2 );
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $user );
+		$context->setConfig( $this->getConfigMock() );
 		$questionPoster = new QuestionPoster( $context );
 		$this->assertEquals(
 			Status::newGood(),

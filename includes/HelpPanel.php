@@ -3,6 +3,7 @@
 namespace GrowthExperiments;
 
 use MediaWiki\MediaWikiServices;
+use MessageCache;
 use OOUI\ButtonWidget;
 use Config;
 use Html;
@@ -26,8 +27,8 @@ class HelpPanel {
 			->addClasses( [ 'mw-ge-help-panel-cta', $mobile ? 'mw-ge-help-panel-cta-mobile' : '' ] )
 			->appendContent( new ButtonWidget( [
 				'id' => 'mw-ge-help-panel-cta-button',
-				'href' => Title::newFromText(
-					MediaWikiServices::getInstance()->getMainConfig()->get( 'GEHelpPanelHelpDeskTitle' )
+				'href' => self::getHelpDeskTitle(
+					MediaWikiServices::getInstance()->getMainConfig()
 				)->getLinkURL(),
 				'target' => '_blank',
 				'label' => $mobile ? '' : wfMessage( 'growthexperiments-help-panel-cta-button-text' )->text(),
@@ -60,7 +61,7 @@ class HelpPanel {
 		}
 		$helpPanelLinks .= Html::closeElement( 'ul' );
 
-		$helpDeskTitle = Title::newFromText( $config->get( 'GEHelpPanelHelpDeskTitle' ) );
+		$helpDeskTitle = self::getHelpDeskTitle( $config );
 		$helpDeskLink = $linkRenderer->makeLink(
 			$helpDeskTitle,
 			$ml->msg( 'growthexperiments-help-panel-community-help-desk-text' )->text(),
@@ -109,7 +110,7 @@ class HelpPanel {
 			return false;
 		}
 		// Ensure the help desk title is valid.
-		$helpDeskTitle = Title::newFromText( $out->getConfig()->get( 'GEHelpPanelHelpDeskTitle' ) );
+		$helpDeskTitle = self::getHelpDeskTitle( $out->getConfig() );
 		if ( !$helpDeskTitle || !$helpDeskTitle->exists() ) {
 			return false;
 		}
@@ -124,5 +125,19 @@ class HelpPanel {
 
 	public static function isHelpPanelEnabled() {
 		return MediaWikiServices::getInstance()->getMainConfig()->get( 'GEHelpPanelEnabled' );
+	}
+
+	/**
+	 * Get the help desk title and expand the templates and magic words it may contain
+	 *
+	 * @param Config $config
+	 * @return null|Title
+	 */
+	public static function getHelpDeskTitle( $config ) {
+		return Title::newFromText(
+			MessageCache::singleton()->transform(
+				$config->get( 'GEHelpPanelHelpDeskTitle' )
+			)
+		);
 	}
 }

@@ -13,7 +13,7 @@ class ResourceLoaderHelpPanelModule extends ResourceLoaderFileModule {
 	public function getScript( ResourceLoaderContext $context ) {
 		return ResourceLoader::makeConfigSetScript( [
 				'wgGEHelpPanelLinks' => HelpPanel::getHelpPanelLinks( $context, $context->getConfig() ),
-				'wgGEHelpPanelHelpDeskTitle' => $context->getConfig()->get( 'GEHelpPanelHelpDeskTitle' )
+				'wgGEHelpPanelHelpDeskTitle' => HelpPanel::getHelpDeskTitle( $context->getConfig() )
 			] )
 			. "\n"
 			. parent::getScript( $context );

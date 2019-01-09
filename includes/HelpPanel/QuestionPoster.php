@@ -83,7 +83,7 @@ class QuestionPoster {
 		}
 		$this->config = $this->context->getConfig();
 		$this->isFirstEdit = ( $this->context->getUser()->getEditCount() === 0 );
-		$this->helpDeskTitle = Title::newFromText( $this->config->get( 'GEHelpPanelHelpDeskTitle' ) );
+		$this->helpDeskTitle = HelpPanel::getHelpDeskTitle( $this->config );
 		$page = new WikiPage( $this->helpDeskTitle );
 		$this->pageUpdater = $page->newPageUpdater( $this->context->getUser() );
 		$this->parser = MediaWikiServices::getInstance()->getParser();
