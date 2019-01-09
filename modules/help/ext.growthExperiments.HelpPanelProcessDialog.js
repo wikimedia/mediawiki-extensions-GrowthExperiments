@@ -207,11 +207,18 @@
 			classes: [ 'mw-ge-help-panel-settings-cog', 'oo-ui-actionWidget' ],
 			framed: false,
 			popup: {
-				$content: $( '<p>' ).append( mw.html.element( 'a', {
-					href: new mw.Title( 'Special:Preferences#mw-prefsection-editing' ).getUrl(),
-					target: '_blank',
-					'data-link-id': 'special-preferences'
-				}, mw.message( 'growthexperiments-help-panel-settings-cog-preferences-link' ).text() ) ),
+				$content: $( '<p>' ).append(
+					mw.html.element( 'a', {
+						href: new mw.Title( 'Special:Preferences#mw-prefsection-editing' ).getUrl(),
+						target: '_blank',
+						'data-link-id': 'special-preferences'
+					}, mw.message( 'growthexperiments-help-panel-settings-cog-preferences-link' ).text() ),
+					mw.html.element( 'a', {
+						href: 'https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Focus_on_help_desk/Help_panel',
+						target: '_blank',
+						'data-link-id': 'more-about-this-feature'
+					}, mw.message( 'growthexperiments-help-panel-questioncomplete-more-about-this-feature-text' ).text() )
+				),
 				padded: true,
 				width: 260,
 				classes: [ 'mw-ge-help-panel-settings-cog-content' ],
