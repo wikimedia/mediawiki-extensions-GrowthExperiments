@@ -33,11 +33,11 @@
 	border: 1px solid @colorGray12;
 	border-radius: 2px;
 	box-shadow: 0 2px 2px 0 rgba( 0, 0, 0, 0.25 );
-
 	.transition( ~'bottom 400ms, opacity 400ms' );
 	position: relative;
 	bottom: -2em;
 	opacity: 0;
+
 	&.oo-ui-window-setup {
 		bottom: 0;
 		opacity: 1;
@@ -52,32 +52,24 @@
 		user-select: auto;
 	}
 
-	.oo-ui-processDialog-navigation {
-		.oo-ui-processDialog-actions-primary {
-			.mw-ge-help-panel-settings-cog.active,
-			.mw-ge-help-panel-settings-cog.active:hover {
-				background-color: #eaf3ff;
-			}
+	.oo-ui-processDialog-navigation .oo-ui-processDialog-actions-primary {
+		.mw-ge-help-panel-settings-cog.active,
+		.mw-ge-help-panel-settings-cog.active:hover {
+			background-color: #eaf3ff;
 		}
-
 	}
-
 }
 
 .mw-ge-help-panel-settings-cog-content {
 	z-index: 3;
 	background-color: @background-color-base;
-
 	// Hack: remove 2px top gap
 	margin-top: -2px;
-
 	// Hack: remove 7px right gap
 	margin-left: 7px;
 
-	p {
-		a {
-			display: block;
-			width: 100%;
-		}
+	p a {
+		display: block;
+		width: 100%;
 	}
 }
