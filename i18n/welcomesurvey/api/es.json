@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "Fecha y hora del momento en que se mostró la encuesta al usuario."
+}
