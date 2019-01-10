@@ -411,7 +411,8 @@
 				items: [
 					new OO.ui.IconWidget( { icon: 'check', flags: [ 'progressive' ] } ),
 					new OO.ui.LabelWidget( { label: mw.message( 'growthexperiments-help-panel-questioncomplete-header' ).text() } )
-				]
+				],
+				classes: [ 'mw-ge-help-panel-question-complete' ]
 			} ).$element
 		} );
 
