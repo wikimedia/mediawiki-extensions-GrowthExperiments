@@ -330,9 +330,10 @@
 		},
 		"WelcomeSurveyExperimentalGroups": {
 			"description": "List of experimental groups. A group is defined with a range to randomly match users and the list of questions they will see on the survey.",
+			"merge_strategy": "array_plus_2d",
 			"value": {
 				"exp1_group1": {
-					"range": "0-4",
+					"range": "x",
 					"format": "specialpage",
 					"questions": [
 						"reason",
@@ -347,7 +348,7 @@
 					]
 				},
 				"exp1_group2": {
-					"range": "5-9",
+					"range": "x",
 					"questions": []
 				},
 				"exp2_control": {
