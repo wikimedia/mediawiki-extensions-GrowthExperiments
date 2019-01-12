@@ -7,6 +7,8 @@
 	$( function () {
 		var $buttonToInfuse = $( '#mw-ge-help-panel-cta-button' ),
 			$buttonWrapper = $buttonToInfuse.parent(),
+			$editorOverlay,
+			$body = $( 'body' ),
 			windowManager = new OO.ui.WindowManager( { modal: OO.ui.isMobile() } ),
 			$overlay = $( '<div>' ).addClass( 'mw-ge-help-panel-widget-overlay' ),
 			loggingEnabled = mw.config.get( 'wgGEHelpPanelLoggingEnabled' ),
@@ -21,7 +23,9 @@
 				logger: logger
 			} ),
 			helpCtaButton,
-			lifecycle;
+			lifecycle,
+			veTarget,
+			mobileFrontendArticleTarget;
 
 		/**
 		 * Invoked from mobileFrontend.editorOpened, ve.activationComplete
@@ -78,16 +82,45 @@
 		if ( !OO.ui.isMobile() ) {
 			$overlay.addClass( 'mw-ge-help-panel-popup' );
 		}
-		$( 'body' ).append( $overlay );
+		$body.append( $overlay );
 		windowManager.addWindows( [ helpPanelProcessDialog ] );
 
 		helpCtaButton.on( 'click', function () {
+			veTarget = OO.getProp( window, 've', 'init', 'target' );
+			mobileFrontendArticleTarget = OO.getProp( window, 've', 'init', 'mw', 'MobileFrontendArticleTarget' );
+			if ( veTarget && mobileFrontendArticleTarget &&
+				veTarget instanceof mobileFrontendArticleTarget &&
+				veTarget.onWindowScrollDebounced ) {
+				// HACK: Remove the scroll event handler from the VE target window on mobile.
+				// This is necessary because on iOS Safari, tapping into the text area in the
+				// help panel process dialog triggers a scroll event on the VE surface, and then
+				// the code in ve.init.mw.MobileFrontendArticleTarget#onWindowScroll
+				// scrolls our process dialog textarea out of view. See T212967.
+				$( veTarget.getElementWindow() ).off( 'scroll', veTarget.onWindowScrollDebounced );
+			}
+
+			if ( OO.ui.isMobile() ) {
+				// HACK: Detach the editor overlay on mobile for both VE and source edit modes.
+				// Per T212967, leaving them enabled results in a phantom text input that the
+				// user can only see the cursor input for.
+				$editorOverlay = $( '.editor-overlay' ).detach();
+			}
 			lifecycle = windowManager.openWindow( helpPanelProcessDialog );
 			// Reset to home panel if user closed the widget.
 			helpPanelProcessDialog.executeAction( 'reset' );
 			helpCtaButton.toggle( false );
 			logger.log( 'open' );
 			lifecycle.closing.done( function () {
+				if ( veTarget && mobileFrontendArticleTarget &&
+					veTarget instanceof mobileFrontendArticleTarget &&
+					veTarget.onWindowScrollDebounced ) {
+					// Re-attach the VE window scroll event handler when the help panel is closed.
+					$( veTarget.getElementWindow() ).on( 'scroll', veTarget.onWindowScrollDebounced );
+				}
+				// Re-attach the editor overlay on mobile.
+				if ( OO.ui.isMobile() ) {
+					$body.append( $editorOverlay );
+				}
 				helpCtaButton.toggle( true );
 				logger.log( 'close' );
 			} );
