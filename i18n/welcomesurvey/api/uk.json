@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Piramidion"
+		]
+	},
+	"apihelp-welcomesurveyhandleresponses-summary": "Працювати з відповідями поточного користувача на опитування Welcome Survey",
+	"apihelp-welcomesurveyhandleresponses-param-surveyaction": "Дія, вибрана користувачем в опитуванні Welcome Survey. Може бути 'save' або 'skip'.",
+	"apihelp-welcomesurveyhandleresponses-param-group": "Експериментальна група, пов'язана з опитуванням Welcome Survey.",
+	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "Мітка часу, коли опитування було показано користувачеві.",
+	"apihelp-welcomesurveyhandleresponses-param-responses": "Об'єкт, що містить назви запитань як ключі та відповіді як значення. У форматі JSON."
+}

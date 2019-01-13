@@ -28,11 +28,11 @@
 	"growthexperiments-help-panel-questioncomplete-header": "Sua pergunta foi postada!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Sua pergunta agora está na Central de Ajuda comunitária para que seja respondida por outro editor voluntário.",
 	"growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed": "Você receberá uma notificação por e-mail quando uma resposta for postada, provavelmente em um ou dois dias.",
-	"growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed": "Receberá uma notificação na wiki {{SITENAME}} quando for publicada uma resposta, provavelmente no prazo aproximado de um dia. Se [[Special:ConfirmEmail|confirmar o seu e-mail]], receberá também uma notificação por e-mail.",
-	"growthexperiments-help-panel-questioncomplete-confirmation-email-none": "Receberá uma notificação na wiki {{SITENAME}} quando for publicada uma resposta, provavelmente no prazo aproximado de um dia.",
+	"growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed": "Receberá $1 neste ''site'' quando for publicada uma resposta, provavelmente no prazo aproximado de um dia. Se $2, receberá também uma notificação por e-mail.",
+	"growthexperiments-help-panel-questioncomplete-confirmation-email-none": "Receberá $1 neste ''site'' quando for publicada uma resposta, provavelmente no prazo aproximado de um dia.",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Veja sua pergunta na Central de Ajuda",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Mais sobre esse recurso",
-	"growthexperiments-help-panel-questioncomplete-first-edit": "A propósito, ao postar essa pergunta, você acabou de fazer sua primeira edição no {{SITENAME}}. Parabéns!",
+	"growthexperiments-help-panel-questioncomplete-first-edit": "A propósito, ao publicar esta pergunta, acabou de fazer a sua primeira edição a uma página. Parabéns!",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Desativar esta ferramenta em Preferências",
 	"growthexperiments-help-panel-questionreview-unconfirmed-email-note": "Receberá uma link de confirmação do correio eletrónico, para poder receber notificações das respostas. O seu endereço de e-mail <strong>não é revelado</strong> quando outros usuários entrarem em contato com você.",
 	"growthexperiments-help-panel-questionreview-no-email-note": "Se você adicionar um endereço de e-mail à sua conta, receberá um link de confirmação por e-mail para ser notificado sobre as respostas. Seu endereço de e-mail é <strong>não será revelado</strong> quando outros usuários entrarem em contato com você.",
@@ -41,6 +41,9 @@
 	"growthexperiments-help-panel-questionposter-email-already-confirmed": "O endereço de e-mail já está definido e confirmado.",
 	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "Permissões insuficientes para definir e-mail.",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Título inválido.",
+	"growthexperiments-help-panel-community-help-desk-text": "Central de ajuda comunitária",
 	"tag-help_panel_question": "Pergunta no painel de ajuda",
-	"tag-help_panel_question-description": "Edição feita a partir de pós da postagem no painel um recurso de pergunta"
+	"tag-help_panel_question-description": "Edição feita a partir de pós da postagem no painel um recurso de pergunta",
+	"growthexperiments-help-panel-notifications-link-text": "notificação",
+	"growthexperiments-help-panel-confirm-email-link-text": "confirmar o seu e-mail"
 }

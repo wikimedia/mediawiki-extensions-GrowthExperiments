@@ -5,7 +5,7 @@
 			"Revi"
 		]
 	},
-	"growthexperiments-help-panel-tog-help-panel": "편집 도움 패널 활성화하기",
+	"growthexperiments-help-panel-tog-help-panel": "편집 도움말 패널 활성화하기",
 	"growthexperiments-help-panel-cta-button-text": "편집 도움 받기",
 	"growthexperiments-help-panel-question-button-text": "계속",
 	"growthexperiments-help-panel-submit-question-button-text": "내 질문 게시하기",
@@ -22,8 +22,8 @@
 	"growthexperiments-help-panel-questionreview-note": "응답이 게시되면 이메일로 연락을 받게 됩니다. 하지만 귀하의 이메일 주소는 다른 사용자에게 <strong>절대로 공개되지 않습니다</strong>.",
 	"growthexperiments-help-panel-questionreview-label": "질문",
 	"growthexperiments-help-panel-questionreview-include-article-title": "내 질문에 문서 제목을 포함",
-	"growthexperiments-help-panel-question-subject-template": "도움 패널 질문",
-	"growthexperiments-help-panel-question-subject-template-with-title": "[[$1]] 문서에 관한 도움 패널 질문",
+	"growthexperiments-help-panel-question-subject-template": "도움말 패널 질문",
+	"growthexperiments-help-panel-question-subject-template-with-title": "[[$1]] 문서에 관한 도움말 패널 질문",
 	"growthexperiments-help-panel-question-post-error": "질문 게시를 시도하던 중 오류가 발생했습니다. 다시 시도하거나 브라우저에서 $1을(를) 방문하여 질문을 수동으로 추가할 수 있습니다.",
 	"growthexperiments-help-panel-questioncomplete-title": "질문하기",
 	"growthexperiments-help-panel-questioncomplete-header": "질문이 게시되었습니다!",
