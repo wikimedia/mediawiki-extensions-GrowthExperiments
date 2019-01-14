@@ -203,7 +203,9 @@ class WelcomeSurvey {
 		}
 
 		$questionNames = $groups[ $group ][ 'questions' ];
-		if ( in_array( 'email', $questionNames ) && !Util::canSetEmail( $this->context->getUser() ) ) {
+		if ( in_array( 'email', $questionNames ) &&
+			!Util::canSetEmail( $this->context->getUser(), null, false )
+		) {
 			$questionNames = array_diff( $questionNames, [ 'email' ] );
 		}
 		$questions = [];
