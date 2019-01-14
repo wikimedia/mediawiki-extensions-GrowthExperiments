@@ -254,12 +254,12 @@ class QuestionPoster {
 	public function setSectionHeader( $relevantTitle ) {
 		$this->sectionHeader = $relevantTitle ?
 			$this->context->msg( 'growthexperiments-help-panel-question-subject-template-with-title',
-				$relevantTitle )->text() :
+				$relevantTitle )->inContentLanguage()->text() :
 			$this->context->msg( 'growthexperiments-help-panel-question-subject-template' )
-				->text();
+				->inContentLanguage()->text();
 		$lang = MediaWikiServices::getInstance()->getContentLanguage();
 		$timestamp = $lang->timeanddate( wfTimestampNow(), false, false );
 		$this->sectionHeaderUnique = $this->sectionHeader . ' ' . $this->context->msg( 'parentheses' )->
-			rawParams( $timestamp );
+			rawParams( $timestamp )->inContentLanguage()->text();
 	}
 }
