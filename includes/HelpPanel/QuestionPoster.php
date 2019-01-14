@@ -258,7 +258,16 @@ class QuestionPoster {
 			$this->context->msg( 'growthexperiments-help-panel-question-subject-template' )
 				->inContentLanguage()->text();
 		$lang = MediaWikiServices::getInstance()->getContentLanguage();
-		$timestamp = $lang->timeanddate( wfTimestampNow(), false, false );
+		$timestamp = $lang->timeanddate(
+			wfTimestampNow(),
+			// apply time zone adjustment
+			/* $adj = */ true,
+			// use site default format, not user's chosen format
+			/* $format = */ false,
+			// use site default time zone, not user's chosen time zone
+			// (oddly, empty string is the magic incantation to use the site default)
+			/* $timecorrection= */ ''
+		);
 		$this->sectionHeaderUnique = $this->sectionHeader . ' ' . $this->context->msg( 'parentheses' )->
 			rawParams( $timestamp )->inContentLanguage()->text();
 	}
