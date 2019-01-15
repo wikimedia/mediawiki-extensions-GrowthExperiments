@@ -24,7 +24,7 @@
 			icon: 'close',
 			flags: 'safe',
 			framed: false,
-			modes: [ 'home', 'questionreview', 'questioncomplete' ]
+			modes: [ 'home', 'questionreview', 'questioncomplete', 'search' ]
 		},
 		// The "Close" action button duplicates the action provided by the X
 		// at the top of the panel, this is part of the design of the panel.
@@ -32,6 +32,12 @@
 			label: mw.message( 'growthexperiments-help-panel-close' ).text(),
 			modes: [ 'questioncomplete' ],
 			flags: 'safe',
+			framed: true
+		},
+		{
+			label: mw.message( 'growthexperiments-help-panel-back-home' ).text(),
+			modes: [ 'search' ],
+			action: 'home',
 			framed: true
 		}
 	];
@@ -51,17 +57,23 @@
 	 * @throws {Error} Unknown panel.
 	 */
 	HelpPanelProcessDialog.prototype.swapPanel = function ( panel ) {
-		var panelObj = this[ panel + 'Panel' ];
-		this.title.setLabel(
-			mw.message( 'growthexperiments-help-panel-' + panel + '-title' ).text()
-		);
-		if ( ( [ 'home', 'questionreview', 'questioncomplete' ].indexOf( panel ) ) === -1 ) {
+		var panelObj = this[ panel + 'Panel' ],
+			titleMsg = mw.message( 'growthexperiments-help-panel-' + panel + '-title' );
+
+		if ( !titleMsg.exists() ) {
+			titleMsg = mw.message( 'growthexperiments-help-panel-home-title' );
+		}
+		this.title.setLabel( titleMsg.text() );
+
+		if ( ( [ 'home', 'search', 'questionreview', 'questioncomplete' ].indexOf( panel ) ) === -1 ) {
 			throw new Error( 'Unknown panel: ' + panel );
 		}
 		if ( panel === 'home' ) {
 			this.homeFooterPanel.toggle( true );
 			this.questionReviewFooterPanel.toggle( false );
-
+		}
+		if ( panel === 'search' ) {
+			this.homeFooterPanel.toggle( false );
 		}
 		if ( panel === 'questionreview' ) {
 			this.questionReviewFooterPanel.toggle( true );
@@ -73,7 +85,7 @@
 			this.questionReviewFooterPanel.toggle( false );
 		}
 		this.panels.setItem( panelObj );
-		this.actions.setMode( panel );
+		this.setMode( panel );
 	};
 
 	/**
@@ -251,6 +263,12 @@
 			padded: true,
 			expanded: false
 		} );
+		this.searchPanel = new mw.libs.ge.HelpPanelSearchPanel( {
+			padded: true,
+			expanded: false,
+			searchNamespaces: mw.config.get( 'wgGEHelpPanelSearchNamespaces' ),
+			devMode: mw.config.get( 'wgGEHelpPanelSearchDevMode' )
+		} ).connect( this, { clear: [ 'executeAction', 'home' ] } );
 		this.questionreviewPanel = new OO.ui.PanelLayout( {
 			padded: true,
 			expanded: false
@@ -263,6 +281,9 @@
 		// Fields
 		this.buildSettingsCog();
 		this.previousQuestionText = mw.storage.get( 'help-panel-question-text' );
+		this.searchInput = new OO.ui.SearchInputWidget();
+		this.searchInput.$input.on( 'focus', this.executeAction.bind( this, 'search' ) );
+
 		this.questionTextInput = new OO.ui.MultilineTextInputWidget( {
 			placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' ).text(),
 			multiline: true,
@@ -309,6 +330,14 @@
 		// Build home content of help panel.
 		this.homeContent = new OO.ui.FieldsetLayout();
 		this.homeContent.addItems( [
+			new OO.ui.FieldLayout(
+				this.searchInput,
+				{
+					align: 'top',
+					label: mw.message( 'growthexperiments-help-panel-search-label' ).text(),
+					classes: [ 'mw-ge-help-panel-popup-search', 'mw-ge-help-panel-popup-search-summary' ]
+				}
+			).toggle( mw.config.get( 'wgGEHelpPanelSearchEnabled' ) ),
 			new OO.ui.FieldLayout(
 				new OO.ui.Widget( {
 					content: [
@@ -441,6 +470,7 @@
 
 		this.panels.addItems( [
 			this.homePanel,
+			this.searchPanel,
 			this.questionreviewPanel,
 			this.questioncompletePanel
 		] );
@@ -460,7 +490,7 @@
 		return HelpPanelProcessDialog.super.prototype.getSetupProcess
 			.call( this, data )
 			.next( function () {
-				this.actions.setMode( 'home' );
+				this.setMode( 'home' );
 			}, this );
 	};
 
@@ -478,6 +508,10 @@
 				if ( action === 'questionreview' ) {
 					this.logger.log( 'review' );
 					this.swapPanel( action );
+				}
+				if ( action === 'search' ) {
+					this.swapPanel( action );
+					this.searchPanel.searchInput.focus();
 				}
 				if ( action === 'questioncomplete' ) {
 					/* eslint-disable camelcase */
@@ -546,7 +580,29 @@
 			}.bind( this ) );
 	};
 
+	/**
+	 * Set the mode both in local cache and in this.actions because the latter doesn't
+	 * have a getter and the current mode is needed in getBodyHeight below.
+	 *
+	 * @param {string} mode
+	 */
+	HelpPanelProcessDialog.prototype.setMode = function ( mode ) {
+		this.currentMode = mode;
+		this.actions.setMode( mode );
+	};
+
 	HelpPanelProcessDialog.prototype.getBodyHeight = function () {
+		if ( !this.homeHeight && this.currentMode === 'home' ) {
+			this.homeHeight = this.panels.getCurrentItem().$element.outerHeight( true ) +
+				this.$foot.outerHeight( true );
+		}
+
+		// home height for home and search panels
+		if ( this.currentMode === 'home' || this.currentMode === 'search' ) {
+			return this.homeHeight - this.$foot.outerHeight( true );
+		}
+
+		// height fit to content for other panels
 		return this.panels.getCurrentItem().$element.outerHeight( true );
 	};
 

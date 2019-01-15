@@ -229,6 +229,7 @@
 			"scripts": [
 				"help/ext.growthExperiments.HelpPanel.cta.js",
 				"help/ext.growthExperiments.HelpPanelLogger.js",
+				"help/ext.growthExperiments.HelpPanelSearchPanel.js",
 				"help/ext.growthExperiments.HelpPanelProcessDialog.js"
 			],
 			"dependencies": [
@@ -276,7 +277,8 @@
 				"growthexperiments-help-panel-questionreview-email-optional",
 				"growthexperiments-help-panel-questionreview-no-email-note",
 				"growthexperiments-help-panel-notifications-link-text",
-				"growthexperiments-help-panel-confirm-email-link-text"
+				"growthexperiments-help-panel-confirm-email-link-text",
+				"growthexperiments-help-panel-search-label"
 			],
 			"targets": [
 				"desktop",
@@ -319,6 +321,18 @@
 		"GEHelpPanelLinks": {
 			"description": "List of links to display in the help panel.",
 			"value": []
+		},
+		"GEHelpPanelSearchNamespaces": {
+			"description": "List of namespaces to include in the search for help content.",
+			"value": [ 4, 12 ]
+		},
+		"GEHelpPanelSearchDevMode": {
+			"description": "Search enwiki instead of the current wiki to get more/better results.",
+			"value": false
+		},
+		"GEHelpPanelSearchEnabled": {
+			"description": "Global ON/OFF switch for the Help panel search feature.",
+			"value": false
 		},
 		"WelcomeSurveyEnabled": {
 			"description": "Global ON/OFF switch for the Welcome survey feature.",
