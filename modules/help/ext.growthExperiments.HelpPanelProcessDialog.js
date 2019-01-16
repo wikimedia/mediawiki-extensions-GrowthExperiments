@@ -334,7 +334,7 @@
 				this.searchInput,
 				{
 					align: 'top',
-					label: mw.message( 'growthexperiments-help-panel-search-label' ).text(),
+					label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-search-label' ).text() ),
 					classes: [ 'mw-ge-help-panel-popup-search', 'mw-ge-help-panel-popup-search-summary' ]
 				}
 			).toggle( mw.config.get( 'wgGEHelpPanelSearchEnabled' ) ),
