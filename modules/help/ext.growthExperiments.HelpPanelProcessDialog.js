@@ -328,8 +328,8 @@
 		} ).connect( this, { click: [ 'executeAction', 'questionreview' ] } );
 
 		// Build home content of help panel.
-		this.homeContent = new OO.ui.FieldsetLayout();
-		this.homeContent.addItems( [
+		this.homeSearchFieldContent = new OO.ui.FieldsetLayout();
+		this.homeSearchFieldContent.addItems( [
 			new OO.ui.FieldLayout(
 				this.searchInput,
 				{
@@ -337,23 +337,7 @@
 					label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-search-label' ).text() ),
 					classes: [ 'mw-ge-help-panel-popup-search', 'mw-ge-help-panel-popup-search-summary' ]
 				}
-			).toggle( mw.config.get( 'wgGEHelpPanelSearchEnabled' ) ),
-			new OO.ui.FieldLayout(
-				new OO.ui.Widget( {
-					content: [
-						new OO.ui.Element( {
-							$content: linksConfig.helpPanelLinks
-						} ),
-						new OO.ui.Element( {
-							$content: $( '<p>' )
-								.append( $( '<strong>' ).html( linksConfig.viewMoreLink ) )
-						} )
-					] } ),
-				{
-					align: 'top',
-					label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-editing-help-links-widget-header' ).text() )
-				}
-			)
+			).toggle( mw.config.get( 'wgGEHelpPanelSearchEnabled' ) )
 		] );
 
 		// Place the input and button in the footer to mimic the style of other actions.
@@ -378,7 +362,22 @@
 		] );
 		this.homeFooterPanel.$element.append( this.homeFooterFieldset.$element );
 
-		this.homePanel.$element.append( this.homeContent.$element );
+		this.homePanel.$element.append( this.homeSearchFieldContent.$element );
+		// Add editing links after search.
+		this.homePanel.$element.append(
+			new OO.ui.Element( {
+				$content: $( '<h2>' )
+					.append( $( '<strong>' )
+						.text( mw.message( 'growthexperiments-help-panel-editing-help-links-widget-header' ).text() ) )
+			} ).$element,
+			new OO.ui.Element( {
+				$content: linksConfig.helpPanelLinks
+			} ).$element,
+			new OO.ui.Element( {
+				$content: $( '<p>' )
+					.append( $( '<strong>' ).html( linksConfig.viewMoreLink ) )
+			} ).$element
+		);
 
 		// Build step two of ask question process.
 		this.questionReviewContent = new OO.ui.FieldsetLayout();

@@ -20,6 +20,13 @@
 		margin: 0.4em 0 0.5em 0;
 	}
 
+	h2 {
+		font-size: 100%;
+		border: 0;
+		color: @colorGray5;
+		line-height: 1.42857143em;
+	}
+
 	ul {
 		list-style-type: disc;
 		margin: 0.3em 0 0 1.6em;
@@ -30,15 +37,6 @@
 			display: inline;
 		}
 	}
-}
-
-.mw-ge-help-panel-popup .oo-ui-dialog {
-	font-size: 0.875em;
-	color: @colorGray2;
-	background-color: @background-color-base;
-	border: 1px solid @colorGray12;
-	border-radius: 2px;
-	box-shadow: 0 2px 2px 0 rgba( 0, 0, 0, 0.25 );
 
 	.mw-ge-help-panel-popup-search {
 		&-summary {
@@ -53,10 +51,19 @@
 			div {
 				color: @colorGray5;
 				word-break: break-word;
+				font-size: 0.875em;
 			}
 		}
 	}
+}
 
+.mw-ge-help-panel-popup .oo-ui-dialog {
+	font-size: 0.875em;
+	color: @colorGray2;
+	background-color: @background-color-base;
+	border: 1px solid @colorGray12;
+	border-radius: 2px;
+	box-shadow: 0 2px 2px 0 rgba( 0, 0, 0, 0.25 );
 	.transition( ~'bottom 400ms, opacity 400ms' );
 	position: relative;
 	bottom: -2em;
