@@ -7,18 +7,15 @@
 	 * @constructor
 	 * @param {Object} config
 	 * @cfg {number[]} searchNamespaces Namespace IDs to include in the search
-	 * @cfg {boolean} devMode Search enwiki instead of the current wiki to get more/better results
+	 * @cfg {string} foreignApi api.php URL of a foreign wiki to search instead of the local wiki
 	 */
 	function HelpPanelSearchPanel( config ) {
 		HelpPanelSearchPanel.super.call( this, config );
 
 		this.searchNamespaces = config.searchNamespaces;
 
-		this.api = config.devMode ?
-			new mw.ForeignApi(
-				'https://en.wikipedia.org/w/api.php',
-				{ anonymous: true }
-			) :
+		this.api = config.foreignApi ?
+			new mw.ForeignApi( config.foreignApi, { anonymous: true } ) :
 			new mw.Api();
 
 		this.searchInput = new OO.ui.SearchInputWidget( {

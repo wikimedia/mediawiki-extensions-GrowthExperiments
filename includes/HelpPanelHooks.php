@@ -91,7 +91,7 @@ class HelpPanelHooks {
 				'wgGEHelpPanelUserEmailConfirmed' => $out->getUser()->isEmailConfirmed(),
 				'wgGEHelpPanelSearchEnabled' => $out->getConfig()->get( 'GEHelpPanelSearchEnabled' ),
 				'wgGEHelpPanelSearchNamespaces' => $out->getConfig()->get( 'GEHelpPanelSearchNamespaces' ),
-				'wgGEHelpPanelSearchDevMode' => $out->getConfig()->get( 'GEHelpPanelSearchDevMode' ),
+				'wgGEHelpPanelSearchForeignAPI' => $out->getConfig()->get( 'GEHelpPanelSearchForeignAPI' ),
 			] );
 
 			if ( !$definitelyShow ) {

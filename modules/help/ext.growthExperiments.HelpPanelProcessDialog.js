@@ -267,7 +267,7 @@
 			padded: true,
 			expanded: false,
 			searchNamespaces: mw.config.get( 'wgGEHelpPanelSearchNamespaces' ),
-			devMode: mw.config.get( 'wgGEHelpPanelSearchDevMode' )
+			foreignApi: mw.config.get( 'wgGEHelpPanelSearchForeignAPI' )
 		} ).connect( this, { clear: [ 'executeAction', 'home' ] } );
 		this.questionreviewPanel = new OO.ui.PanelLayout( {
 			padded: true,
