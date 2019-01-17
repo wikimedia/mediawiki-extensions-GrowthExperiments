@@ -32,6 +32,7 @@
 
 	WelcomeSurveyDialog.static.name = 'WelcomeSurveyDialog';
 	WelcomeSurveyDialog.static.title = mw.msg( 'welcomesurvey', mw.user.getName() );
+	WelcomeSurveyDialog.static.escapable = false;
 	WelcomeSurveyDialog.static.actions = [
 		{
 			action: 'skip',
