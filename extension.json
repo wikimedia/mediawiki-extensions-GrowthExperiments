@@ -327,8 +327,8 @@
 			"description": "List of namespaces to include in the search for help content.",
 			"value": [ 4, 12 ]
 		},
-		"GEHelpPanelSearchDevMode": {
-			"description": "Search enwiki instead of the current wiki to get more/better results.",
+		"GEHelpPanelSearchForeignAPI": {
+			"description": "api.php URL of a foreign wiki to search instead of the current wiki. Used for testing/development to get more/better results.",
 			"value": false
 		},
 		"GEHelpPanelSearchEnabled": {
