@@ -32,6 +32,10 @@
 			expanded: false
 		} );
 
+		this.noResultsMessage = $( '<p>' ).text(
+			mw.message( 'growthexperiments-help-panel-search-no-results' ).text()
+		);
+
 		this.searchInput.connect( this, { change: 'onSearchInputChange' } );
 
 		this.$element
@@ -89,24 +93,33 @@
 			srprop: 'snippet',
 			srsearch: query
 		} ).then( function ( response ) {
-			this.setLoading( false );
-			this.searchResultsPanel.$element
-				.empty()
-				.append( response.query.search.map( function ( result ) {
-					var title = mw.Title.newFromText( result.title ),
-						$link = $( '<a>' )
-							.text( result.title )
-							.attr( {
-								href: title.getUrl(),
-								target: '_blank'
-							} ),
-						$snippet = $( '<div>' ).append( result.snippet );
+			this.searchResultsPanel.$element.empty();
 
-					return $( '<div>' )
-						.addClass( 'mw-ge-help-panel-popup-search-search-result' )
-						.append( $link, $snippet );
-				} ) );
+			if ( response.query.search.length ) {
+				this.searchResultsPanel.$element.append(
+					response.query.search.map( this.buildSearchResult )
+				);
+			} else {
+				this.searchResultsPanel.$element.append( this.noResultsMessage );
+			}
+		}.bind( this ) ).always( function () {
+			this.setLoading( false );
 		}.bind( this ) );
+	};
+
+	HelpPanelSearchPanel.prototype.buildSearchResult = function ( result ) {
+		var title = mw.Title.newFromText( result.title ),
+			$link = $( '<a>' )
+				.text( result.title )
+				.attr( {
+					href: title.getUrl(),
+					target: '_blank'
+				} ),
+			$snippet = $( '<div>' ).append( result.snippet );
+
+		return $( '<div>' )
+			.addClass( 'mw-ge-help-panel-popup-search-search-result' )
+			.append( $link, $snippet );
 	};
 
 	OO.setProp( mw, 'libs', 'ge', 'HelpPanelSearchPanel', HelpPanelSearchPanel );
