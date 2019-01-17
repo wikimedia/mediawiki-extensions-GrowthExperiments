@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"ديفيد"
+			"ديفيد",
+			"Meno25"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "تمكين لوحة مساعدة المحرر",
@@ -42,6 +43,7 @@
 	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "صلاحيات غير كافية لتعيين البريد الإلكتروني",
 	"growthexperiments-help-panel-questionposter-invalid-title": "عنوان غير صالح.",
 	"growthexperiments-help-panel-community-help-desk-text": "مكتب مساعدة المجتمع",
+	"growthexperiments-help-panel-search-label": "البحث في الأسئلة المتكررة",
 	"tag-help_panel_question": "سؤال لوحة المساعدة",
 	"tag-help_panel_question-description": "تم التعديل من ميزة نشر سؤال في لوحة المساعدة",
 	"growthexperiments-help-panel-notifications-link-text": "إشعار",
