@@ -11,6 +11,10 @@ class ResourceLoaderHelpPanelModule extends ResourceLoaderFileModule {
 	 * @inheritDoc
 	 */
 	public function getScript( ResourceLoaderContext $context ) {
+		if ( !HelpPanel::isHelpPanelEnabled() ) {
+			return '';
+		}
+
 		return ResourceLoader::makeConfigSetScript( [
 				'wgGEHelpPanelLinks' => HelpPanel::getHelpPanelLinks( $context, $context->getConfig() ),
 				'wgGEHelpPanelHelpDeskTitle' => HelpPanel::getHelpDeskTitle( $context->getConfig() )

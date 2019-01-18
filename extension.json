@@ -305,11 +305,11 @@
 		},
 		"GEHelpPanelHelpDeskTitle": {
 			"description": "Mediawiki title for help panel CTA when users have disabled JS. Templates or magic words contained in this string will be expanded.",
-			"value": "Main_Page"
+			"value": ""
 		},
 		"GEHelpPanelViewMoreTitle": {
 			"description": "MediaWiki title for view more articles on help link.",
-			"value": "Main_Page"
+			"value": ""
 		},
 		"GEHelpPanelEnabled": {
 			"description": "Global ON/OFF switch for the help panel feature.",
