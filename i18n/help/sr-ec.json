@@ -31,6 +31,8 @@
 	"growthexperiments-help-panel-questionposter-email-already-confirmed": "Адреса е-поште је већ постављена и потврђена.",
 	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "Недовољно дозвола за постављање е-поште.",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Неважећи наслов.",
+	"growthexperiments-help-panel-search-label": "Претрага ЧПП-а",
+	"growthexperiments-help-panel-search-no-results": "Резултати нису пронађени.",
 	"tag-help_panel_question": "питање са табле помоћи",
 	"growthexperiments-help-panel-notifications-link-text": "обавештење"
 }
