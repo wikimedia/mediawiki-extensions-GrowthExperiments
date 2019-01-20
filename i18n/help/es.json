@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Johnny243",
-			"Fitoschido"
+			"Fitoschido",
+			"Tiberius1701"
 		]
 	},
 	"growthexperiments-help-panel-cta-button-text": "Obtener ayuda para editar",
@@ -13,7 +14,7 @@
 	"growthexperiments-help-panel-home-title": "Obtener ayuda para editar",
 	"growthexperiments-help-panel-questionreview-title": "Formular una pregunta",
 	"growthexperiments-help-panel-questionreview-header": "Cuando envías una pregunta, se <strong>comparte públicamente</strong> con tu nombre de usuario («$2») en $1, donde otro voluntario tratará de responderte en un plazo aproximado de un día.",
-	"growthexperiments-help-panel-questionreview-note": "Te notificaremos por correo cuando recibas una respuesta, pero <strong>no revelaremos</strong> tu dirección cuando otros usuarios se pongan en contacto contigo.",
+	"growthexperiments-help-panel-questionreview-note": "Te notificaremos por correo cuando se publique una respuesta, pero <strong>no revelaremos</strong> tu dirección cuando otros usuarios se pongan en contacto contigo.",
 	"growthexperiments-help-panel-questionreview-label": "Tu pregunta",
 	"growthexperiments-help-panel-question-post-error": "Se produjo un error al tratar de publicar tu pregunta. Puedes intentarlo de nuevo o visitar $1 en el navegador y añadir la pregunta manualmente.",
 	"growthexperiments-help-panel-questioncomplete-title": "Formular una pregunta",

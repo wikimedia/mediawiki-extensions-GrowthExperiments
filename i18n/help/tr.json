@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hedda"
+			"Hedda",
+			"Arbormedi"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Düzenleyici yardım panelini etkinleştir",
@@ -41,5 +42,6 @@
 	"growthexperiments-help-panel-questionposter-email-already-confirmed": "E-posta adresi önceden ayarlanmış ve onaylanmıştır.",
 	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "E-posta ayarlamak için yetersiz izin.",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Geçersiz başlık.",
+	"growthexperiments-help-panel-search-no-results": "Hiçbir sonuç bulunmamıştı.",
 	"tag-help_panel_question": "Yardım paneli sorusu"
 }
