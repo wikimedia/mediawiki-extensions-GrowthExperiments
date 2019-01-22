@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Lorelai87"
 		]
 	},
 	"growthexperiments-help-panel-question-button-text": "Continua",
@@ -18,6 +19,7 @@
 	"growthexperiments-help-panel-questionreview-email-optional": "Indirizzo di posta elettronica (opzionale)",
 	"growthexperiments-help-panel-questionposter-email-already-confirmed": "L'indirizzo email è già impostato e confermato.",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Titolo non valido.",
+	"growthexperiments-help-panel-search-label": "Cerca tra le FAQ",
 	"growthexperiments-help-panel-search-no-results": "Non sono stati trovati risultati.",
 	"growthexperiments-help-panel-notifications-link-text": "notifica",
 	"growthexperiments-help-panel-confirm-email-link-text": "conferma la tua email"

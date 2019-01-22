@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gopalindians"
+			"Gopalindians",
+			"Prong$31"
 		]
 	},
+	"growthexperiments-help-panel-search-label": "सामान्य पूछे गये प्रश्न खोजें",
 	"growthexperiments-help-panel-notifications-link-text": "अधिसूचना",
 	"growthexperiments-help-panel-confirm-email-link-text": "आपके ईमेल की पुष्टि करें"
 }
