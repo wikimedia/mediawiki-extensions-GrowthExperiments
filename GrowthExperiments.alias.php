@@ -22,3 +22,8 @@ $specialPageAliases['cs'] = [
 $specialPageAliases['ko'] = [
 	'WelcomeSurvey' => [ '환영설문조사' ],
 ];
+
+/** Vietnamese (Tiếng Việt) */
+$specialPageAliases['vi'] = [
+	'WelcomeSurvey' => [ 'Cuộc_khảo_sát_chào_đón_người_dùng_mới' ],
+];
