@@ -279,7 +279,8 @@
 				"growthexperiments-help-panel-notifications-link-text",
 				"growthexperiments-help-panel-confirm-email-link-text",
 				"growthexperiments-help-panel-search-label",
-				"growthexperiments-help-panel-search-no-results"
+				"growthexperiments-help-panel-search-no-results",
+				"ellipsis"
 			],
 			"targets": [
 				"desktop",

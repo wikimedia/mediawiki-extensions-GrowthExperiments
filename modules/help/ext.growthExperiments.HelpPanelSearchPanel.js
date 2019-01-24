@@ -112,7 +112,7 @@
 					href: title.getUrl(),
 					target: '_blank'
 				} ),
-			$snippet = $( '<div>' ).append( result.snippet );
+			$snippet = $( '<div>' ).append( result.snippet + mw.message( 'ellipsis' ).text() );
 
 		return $( '<div>' )
 			.addClass( 'mw-ge-help-panel-popup-search-search-result' )
