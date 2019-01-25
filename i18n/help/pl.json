@@ -2,24 +2,43 @@
 	"@metadata": {
 		"authors": [
 			"CiaPan",
-			"Chrumps"
+			"Chrumps",
+			"Woytecr"
 		]
 	},
+	"growthexperiments-help-panel-tog-help-panel": "Włącz panel pomocy podczas edycji",
+	"growthexperiments-help-panel-cta-button-text": "Uzyskaj pomoc w edycji",
 	"growthexperiments-help-panel-question-button-text": "Kontynuuj",
 	"growthexperiments-help-panel-submit-question-button-text": "Opublikuj moje pytanie",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "Najważniejsze strony pomocy o edytowaniu",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Zobacz więcej stron pomocy",
+	"growthexperiments-help-panel-question-widget-header": "Zadaj pytanie na forum pomocy",
+	"growthexperiments-help-panel-question-placeholder": "Potrzebuję pomocy przy edycji. Jak mogę...",
 	"growthexperiments-help-panel-back-home": "Wstecz",
 	"growthexperiments-help-panel-close": "Gotowe",
 	"growthexperiments-help-panel-home-title": "Pomoc w edytowaniu",
 	"growthexperiments-help-panel-questionreview-title": "Zadaj pytanie",
+	"growthexperiments-help-panel-questionreview-header": "Gdy wysyłasz zapytanie, zostanie ono <strong>umieszczone publicznie</strong>, pod Twoją nazwą użytkownika, \"$2\", na $1, gdzie inny wolontariusz spróbuje udzielić odpowiedzi.",
 	"growthexperiments-help-panel-questionreview-email": "E‐mail",
+	"growthexperiments-help-panel-questionreview-note": "Zostaniesz powiadomiony na e-mail o odpowiedzi. Twój adres e-mail <strong>nie będzie jednak ujawniany</strong>, gdy inni będą się z Tobą kontaktować.",
 	"growthexperiments-help-panel-questionreview-label": "Twoje pytanie",
+	"growthexperiments-help-panel-questionreview-include-article-title": "Dołącz tytuł tej strony do mojego zapytania",
+	"growthexperiments-help-panel-question-subject-template": "Pytanie wysłane z panelu pomocy",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Pytanie wysłane z panelu pomocy o [[$1]]",
 	"growthexperiments-help-panel-question-post-error": "Wystąpił błąd podczas próby opublikowania Twojego pytania. Możesz spróbować ponownie lub przejść w przeglądarce do $1 i tam dodać pytanie ręcznie.",
 	"growthexperiments-help-panel-questioncomplete-title": "Zadaj pytanie",
+	"growthexperiments-help-panel-questioncomplete-header": "Twoje zapytanie zostało wysłane!",
+	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Twoje zapytanie znajduje się już na forum pomocy i oczekuje na odpowiedź przez innego wolontariusza.",
 	"growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed": "Otrzymasz powiadomienie email jeśli pojawi się odpowiedź, być może w ciągu jednego dnia.",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Zobacz swoje pytanie w Help Desk",
-	"growthexperiments-help-panel-questioncomplete-first-edit": "Przy okazji: publikując to pytanie, {{GENDER:|dokonałeś|dokonałaś}} swojej pierwszej edycji w {{SITENAME}}. Gratulacje!",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Więcej o tej funkcji",
+	"growthexperiments-help-panel-questioncomplete-first-edit": "Przy okazji: publikując to pytanie, {{GENDER:|dokonałeś|dokonałaś}} swojej pierwszej edycji strony. Gratulacje!",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Wyłącz to narzędzie w preferencjach",
 	"growthexperiments-help-panel-questionreview-no-email-note": "Jeśli dodasz adres email do swojego konta, otrzymasz łącze potwierdzające email, dzięki czemu możesz otrzymywać powiadomienia o odpowiedziach. Twój adres <strong>nie będzie ujawniany</strong> innym użytkownikom, kontaktującym się z Tobą.",
 	"growthexperiments-help-panel-questionreview-add-email-placeholder": "Wpisz swój adres e-mail",
 	"growthexperiments-help-panel-questionreview-email-optional": "Adres e-mail (opcjonalnie)",
-	"growthexperiments-help-panel-questionposter-invalid-title": "Nieprawidłowy tytuł."
+	"growthexperiments-help-panel-questionposter-invalid-title": "Nieprawidłowy tytuł.",
+	"growthexperiments-help-panel-search-label": "Przeszukaj FAQ",
+	"tag-help_panel_question": "Pytanie z panelu pomocy",
+	"tag-help_panel_question-description": "Edycja wykonana z funkcji wysyłania zapytania w oknie pomocy edycyjnej"
 }
