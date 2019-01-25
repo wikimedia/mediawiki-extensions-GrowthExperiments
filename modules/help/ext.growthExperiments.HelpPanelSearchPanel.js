@@ -74,10 +74,7 @@
 		this.searchResultsPanel.$element.empty();
 
 		if ( query === '' ) {
-			// todo: this works for when the user clears the content by clicking
-			// on the indicator but has unintended consequences when the user
-			// uses backspace to remove the content
-			// this.emit( 'clear' );
+			this.emit( 'clear' );
 			return;
 		}
 

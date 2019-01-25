@@ -268,7 +268,7 @@
 			expanded: false,
 			searchNamespaces: mw.config.get( 'wgGEHelpPanelSearchNamespaces' ),
 			foreignApi: mw.config.get( 'wgGEHelpPanelSearchForeignAPI' )
-		} ).connect( this, { clear: [ 'executeAction', 'home' ] } );
+		} ).connect( this, { clear: [ 'executeAction', 'clearsearch' ] } );
 		this.questionreviewPanel = new OO.ui.PanelLayout( {
 			padded: true,
 			expanded: false
@@ -282,7 +282,7 @@
 		this.buildSettingsCog();
 		this.previousQuestionText = mw.storage.get( 'help-panel-question-text' );
 		this.searchInput = new OO.ui.SearchInputWidget();
-		this.searchInput.$input.on( 'focus', this.executeAction.bind( this, 'search' ) );
+		this.searchInput.$input.on( 'input', this.executeAction.bind( this, 'search' ) );
 
 		this.questionTextInput = new OO.ui.MultilineTextInputWidget( {
 			placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' ).text(),
@@ -503,14 +503,25 @@
 				if ( action === 'home' ) {
 					this.logger.log( 'back-home' );
 					this.swapPanel( action );
+					this.searchInput.setValue( '' );
 				}
 				if ( action === 'questionreview' ) {
 					this.logger.log( 'review' );
 					this.swapPanel( action );
 				}
 				if ( action === 'search' ) {
-					this.swapPanel( action );
-					this.searchPanel.searchInput.focus();
+					if ( this.searchInput.getValue() ) {
+						this.swapPanel( action );
+						this.searchPanel.searchInput
+							.setValue( this.searchInput.getValue() )
+							.focus();
+					}
+				}
+				if ( action === 'clearsearch' ) {
+					this.logger.log( 'back-home', { from: 'search' } );
+					this.swapPanel( 'home' );
+					this.searchInput.setValue( '' ).focus();
+
 				}
 				if ( action === 'questioncomplete' ) {
 					/* eslint-disable camelcase */
