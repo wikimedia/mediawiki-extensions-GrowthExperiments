@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"StanProg"
+			"StanProg",
+			"Spiritia"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Добре дошъл|Добре дошла}}, $1!",
@@ -34,7 +35,7 @@
 	"welcomesurvey-question-edited-option-no-other-label": "Не, по други причини",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Не си спомням",
 	"welcomesurvey-question-email-label": "Адрес за електронна поща (незадължително)",
-	"welcomesurvey-question-email-placeholder": "Въведете Вашият адрес за електронна поща...",
+	"welcomesurvey-question-email-placeholder": "Въведете Вашия адрес за електронна поща...",
 	"welcomesurvey-question-topics-other-placeholder": "Добавяне на повече теми...",
 	"welcomesurvey-question-topics-option-arts": "Изкуство",
 	"welcomesurvey-question-topics-option-science": "Наука",

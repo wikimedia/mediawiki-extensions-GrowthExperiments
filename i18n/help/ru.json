@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250"
+			"Vlad5250",
+			"Alexandr Efremov"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Включить редактор в панели помощи",
@@ -16,5 +17,6 @@
 	"growthexperiments-help-panel-questionreview-email": "Эл. почта",
 	"growthexperiments-help-panel-questionreview-label": "Ваш вопрос",
 	"growthexperiments-help-panel-questionreview-email-optional": "Адрес электронной почты (необязательно)",
-	"growthexperiments-help-panel-questionposter-invalid-title": "Ошибочное название."
+	"growthexperiments-help-panel-questionposter-invalid-title": "Ошибочное название.",
+	"growthexperiments-help-panel-search-label": "Поиск помощи"
 }
