@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Tks4Fish"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Ativar o painel de ajuda do editor",
@@ -42,7 +43,7 @@
 	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "Permissões insuficientes para definir e-mail.",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Título inválido.",
 	"growthexperiments-help-panel-community-help-desk-text": "Central de ajuda comunitária",
-	"growthexperiments-help-panel-search-label": "Pesquisar FAQs",
+	"growthexperiments-help-panel-search-label": "Procurar ajuda",
 	"growthexperiments-help-panel-search-no-results": "Não foram encontrados resultados.",
 	"tag-help_panel_question": "Pergunta no painel de ajuda",
 	"tag-help_panel_question-description": "Edição feita a partir de pós da postagem no painel um recurso de pergunta",
