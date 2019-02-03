@@ -3,7 +3,8 @@
 		"authors": [
 			"Johnny243",
 			"Fitoschido",
-			"Tiberius1701"
+			"Tiberius1701",
+			"Carlosmg.dg"
 		]
 	},
 	"growthexperiments-help-panel-cta-button-text": "Obtener ayuda para editar",
@@ -28,6 +29,7 @@
 	"growthexperiments-help-panel-questionposter-email-already-confirmed": "Ya se definió y confirmó la dirección de correo electrónico.",
 	"growthexperiments-help-panel-questionposter-invalid-title": "El título no es válido.",
 	"growthexperiments-help-panel-community-help-desk-text": "Asistencia comunitaria",
+	"growthexperiments-help-panel-search-label": "Busca ayuda",
 	"tag-help_panel_question": "Pregunta del panel de ayuda",
 	"growthexperiments-help-panel-notifications-link-text": "notificación",
 	"growthexperiments-help-panel-confirm-email-link-text": "confirma tu correo"
