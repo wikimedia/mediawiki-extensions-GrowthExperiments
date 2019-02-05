@@ -4,5 +4,6 @@
 			"Metalhead64"
 		]
 	},
-	"apihelp-helppanelquestionposter-param-body": "Der Text der Frage, die vom Benutzer angegeben wurde."
+	"apihelp-helppanelquestionposter-param-body": "Der Text der Frage, die vom Benutzer angegeben wurde.",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Der relevante Titel, falls ausgewählt, der in der Frage enthalten sein soll."
 }
