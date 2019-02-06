@@ -266,7 +266,6 @@
 		this.searchPanel = new mw.libs.ge.HelpPanelSearchPanel( {
 			padded: true,
 			expanded: false,
-			scrollable: true,
 			searchNamespaces: mw.config.get( 'wgGEHelpPanelSearchNamespaces' ),
 			foreignApi: mw.config.get( 'wgGEHelpPanelSearchForeignAPI' )
 		} ).connect( this, { clear: [ 'executeAction', 'clearsearch' ] } );
