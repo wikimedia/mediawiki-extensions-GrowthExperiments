@@ -7,7 +7,8 @@
 	$( function () {
 		var $buttonToInfuse = $( '#mw-ge-help-panel-cta-button' ),
 			$buttonWrapper = $buttonToInfuse.parent(),
-			$editorOverlay,
+			$mfOverlay,
+			$veUiOverlay,
 			$body = $( 'body' ),
 			windowManager = new OO.ui.WindowManager( { modal: OO.ui.isMobile() } ),
 			$overlay = $( '<div>' ).addClass( 'mw-ge-help-panel-widget-overlay' ),
@@ -100,10 +101,13 @@
 			}
 
 			if ( OO.ui.isMobile() ) {
-				// HACK: Detach the editor overlay on mobile for both VE and source edit modes.
+				// HACK: Detach the MobileFrontend overlay for both VE and source edit modes.
 				// Per T212967, leaving them enabled results in a phantom text input that the
 				// user can only see the cursor input for.
-				$editorOverlay = $( '.editor-overlay' ).detach();
+				$mfOverlay = $( '.overlay' ).detach();
+				// Detach the VE UI overlay, needed to prevent interference with scrolling in
+				// our dialog.
+				$veUiOverlay = $( '.ve-ui-overlay' ).detach();
 			}
 			lifecycle = windowManager.openWindow( helpPanelProcessDialog );
 			// Reset to home panel if user closed the widget.
@@ -117,9 +121,10 @@
 					// Re-attach the VE window scroll event handler when the help panel is closed.
 					$( veTarget.getElementWindow() ).on( 'scroll', veTarget.onWindowScrollDebounced );
 				}
-				// Re-attach the editor overlay on mobile.
+				// Re-attach the MobileFrontend and VE overlays on mobile.
 				if ( OO.ui.isMobile() ) {
-					$body.append( $editorOverlay );
+					$body.append( $mfOverlay );
+					$body.append( $veUiOverlay );
 				}
 				helpCtaButton.toggle( true );
 				logger.log( 'close' );
