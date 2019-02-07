@@ -5,13 +5,15 @@
 	 * @extends OO.ui.PanelLayout
 	 *
 	 * @constructor
+	 * @param {mw.libs.ge.HelpPanelLogger} logger
 	 * @param {Object} config
 	 * @cfg {number[]} searchNamespaces Namespace IDs to include in the search
 	 * @cfg {string} foreignApi api.php URL of a foreign wiki to search instead of the local wiki
 	 */
-	function HelpPanelSearchPanel( config ) {
+	function HelpPanelSearchPanel( logger, config ) {
 		HelpPanelSearchPanel.super.call( this, config );
 
+		this.logger = logger;
 		this.searchNamespaces = config.searchNamespaces;
 
 		this.api = config.foreignApi ?
@@ -87,8 +89,11 @@
 			srprop: 'snippet',
 			srsearch: query
 		} ).then( function ( response ) {
+			this.logger.log( 'search', {
+				queryLength: query.length,
+				resultCount: response.query.search.length
+			} );
 			this.searchResultsPanel.$element.empty();
-
 			if ( response.query.search.length ) {
 				this.searchResultsPanel.$element.append(
 					response.query.search.map( this.buildSearchResult )
@@ -101,13 +106,14 @@
 		}.bind( this ) );
 	};
 
-	HelpPanelSearchPanel.prototype.buildSearchResult = function ( result ) {
+	HelpPanelSearchPanel.prototype.buildSearchResult = function ( result, index ) {
 		var title = mw.Title.newFromText( result.title ),
 			$link = $( '<a>' )
 				.text( result.title )
 				.attr( {
 					href: title.getUrl(),
-					target: '_blank'
+					target: '_blank',
+					'data-link-id': 'search-result-' + ( index + 1 )
 				} ),
 			$snippet = $( '<div>' ).append( result.snippet + mw.message( 'ellipsis' ).text() );
 

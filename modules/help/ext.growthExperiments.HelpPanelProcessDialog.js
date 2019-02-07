@@ -249,6 +249,7 @@
 	HelpPanelProcessDialog.prototype.initialize = function () {
 		HelpPanelProcessDialog.super.prototype.initialize.call( this );
 
+		this.clearedSearch = false;
 		this.userEmail = mw.config.get( 'wgGEHelpPanelUserEmail' );
 		this.userEmailConfirmed = mw.config.get( 'wgGEHelpPanelUserEmailConfirmed' );
 
@@ -263,7 +264,7 @@
 			padded: true,
 			expanded: false
 		} );
-		this.searchPanel = new mw.libs.ge.HelpPanelSearchPanel( {
+		this.searchPanel = new mw.libs.ge.HelpPanelSearchPanel( this.logger, {
 			padded: true,
 			expanded: false,
 			searchNamespaces: mw.config.get( 'wgGEHelpPanelSearchNamespaces' ),
@@ -283,6 +284,19 @@
 		this.previousQuestionText = mw.storage.get( 'help-panel-question-text' );
 		this.searchInput = new OO.ui.SearchInputWidget();
 		this.searchInput.$input.on( 'input', this.executeAction.bind( this, 'search' ) );
+		this.searchInput.$input.on( 'focus', function () {
+			// Note: We have 2 search inputs: one one the home panel and one on the search panel.
+			// We move the focus between the 2 when the user enters and exits the search mode.
+			// We only want to fire this event when the user actually focuses the search, not if
+			// they arrived back at the home panel search input from the search panel interface.
+			if ( this.clearedSearch ) {
+				// Set to false, so that further interactions with this.searchInput on home after
+				// clearing search will fire a search-focus event.
+				this.clearedSearch = false;
+			} else {
+				this.logger.log( 'search-focus' );
+			}
+		}.bind( this ) );
 
 		this.questionTextInput = new OO.ui.MultilineTextInputWidget( {
 			placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' ).text(),
@@ -501,7 +515,7 @@
 					this.swapPanel( 'home' );
 				}
 				if ( action === 'home' ) {
-					this.logger.log( 'back-home' );
+					this.logger.log( 'back-home', { from: this.currentMode } );
 					this.swapPanel( action );
 					this.searchInput.setValue( '' );
 				}
@@ -518,7 +532,8 @@
 					}
 				}
 				if ( action === 'clearsearch' ) {
-					this.logger.log( 'back-home', { from: 'search' } );
+					this.logger.log( 'back-home', { from: 'blank-search-input' } );
+					this.clearedSearch = true;
 					this.swapPanel( 'home' );
 					this.searchInput.setValue( '' ).focus();
 
