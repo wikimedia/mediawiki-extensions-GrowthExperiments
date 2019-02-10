@@ -4,5 +4,6 @@
 			"Metalhead64"
 		]
 	},
-	"apihelp-welcomesurveyhandleresponses-summary": "Verwaltet Welcome-Survey-Antworten für den aktuellen Benutzer."
+	"apihelp-welcomesurveyhandleresponses-summary": "Verwaltet Welcome-Survey-Antworten für den aktuellen Benutzer.",
+	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "Stempel des Zeitpunktes, an dem die Umfrage dem Benutzer angezeigt wurde."
 }
