@@ -108,6 +108,13 @@
 				// Detach the VE UI overlay, needed to prevent interference with scrolling in
 				// our dialog.
 				$veUiOverlay = $( '.ve-ui-overlay' ).detach();
+				// More hacks. WindowManager#toggleGlobalEvents adds the modal-active class,
+				// which is styled with position:relative. This seems to interfere with search
+				// results scroll on iOS.
+				// Unlike the overlays which we detach above and re-append when the lifecycle
+				// is closing, we do not need to re-add the class to the body since WindowManager
+				// removes the class on closing.
+				$body.removeClass( 'oo-ui-windowManager-modal-active' );
 			}
 			lifecycle = windowManager.openWindow( helpPanelProcessDialog );
 			// Reset to home panel if user closed the widget.
