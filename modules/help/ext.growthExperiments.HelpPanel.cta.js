@@ -24,9 +24,7 @@
 				logger: logger
 			} ),
 			helpCtaButton,
-			lifecycle,
-			veTarget,
-			mobileFrontendArticleTarget;
+			lifecycle;
 
 		/**
 		 * Invoked from mobileFrontend.editorOpened, ve.activationComplete
@@ -87,19 +85,6 @@
 		windowManager.addWindows( [ helpPanelProcessDialog ] );
 
 		helpCtaButton.on( 'click', function () {
-			veTarget = OO.getProp( window, 've', 'init', 'target' );
-			mobileFrontendArticleTarget = OO.getProp( window, 've', 'init', 'mw', 'MobileFrontendArticleTarget' );
-			if ( veTarget && mobileFrontendArticleTarget &&
-				veTarget instanceof mobileFrontendArticleTarget &&
-				veTarget.onWindowScrollDebounced ) {
-				// HACK: Remove the scroll event handler from the VE target window on mobile.
-				// This is necessary because on iOS Safari, tapping into the text area in the
-				// help panel process dialog triggers a scroll event on the VE surface, and then
-				// the code in ve.init.mw.MobileFrontendArticleTarget#onWindowScroll
-				// scrolls our process dialog textarea out of view. See T212967.
-				$( veTarget.getElementWindow() ).off( 'scroll', veTarget.onWindowScrollDebounced );
-			}
-
 			if ( OO.ui.isMobile() ) {
 				// HACK: Detach the MobileFrontend overlay for both VE and source edit modes.
 				// Per T212967, leaving them enabled results in a phantom text input that the
@@ -122,12 +107,6 @@
 			helpCtaButton.toggle( false );
 			logger.log( 'open' );
 			lifecycle.closing.done( function () {
-				if ( veTarget && mobileFrontendArticleTarget &&
-					veTarget instanceof mobileFrontendArticleTarget &&
-					veTarget.onWindowScrollDebounced ) {
-					// Re-attach the VE window scroll event handler when the help panel is closed.
-					$( veTarget.getElementWindow() ).on( 'scroll', veTarget.onWindowScrollDebounced );
-				}
 				// Re-attach the MobileFrontend and VE overlays on mobile.
 				if ( OO.ui.isMobile() ) {
 					$body.append( $mfOverlay );
