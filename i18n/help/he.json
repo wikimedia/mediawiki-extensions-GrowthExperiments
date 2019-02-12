@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Strayblues"
+			"Strayblues",
+			"YaronSh"
 		]
 	},
-	"growthexperiments-help-panel-questioncomplete-title": "לשאול שאלה"
+	"growthexperiments-help-panel-questioncomplete-title": "לשאול שאלה",
+	"growthexperiments-help-panel-search-label": "חיפוש עזרה"
 }
