@@ -249,7 +249,9 @@
 	HelpPanelProcessDialog.prototype.initialize = function () {
 		HelpPanelProcessDialog.super.prototype.initialize.call( this );
 
+		// Currently unused due to T216131.
 		this.clearedSearch = false;
+
 		this.userEmail = mw.config.get( 'wgGEHelpPanelUserEmail' );
 		this.userEmailConfirmed = mw.config.get( 'wgGEHelpPanelUserEmailConfirmed' );
 
@@ -269,7 +271,7 @@
 			expanded: false,
 			searchNamespaces: mw.config.get( 'wgGEHelpPanelSearchNamespaces' ),
 			foreignApi: mw.config.get( 'wgGEHelpPanelSearchForeignAPI' )
-		} ).connect( this, { clear: [ 'executeAction', 'clearsearch' ] } );
+		} ).connect( this, { clear: [ 'executeAction', 'home' ] } );
 		this.questionreviewPanel = new OO.ui.PanelLayout( {
 			padded: true,
 			expanded: false
@@ -283,7 +285,6 @@
 		this.buildSettingsCog();
 		this.previousQuestionText = mw.storage.get( 'help-panel-question-text' );
 		this.searchInput = new OO.ui.SearchInputWidget();
-		this.searchInput.$input.on( 'input', this.executeAction.bind( this, 'search' ) );
 		this.searchInput.$input.on( 'focus', function () {
 			// Note: We have 2 search inputs: one one the home panel and one on the search panel.
 			// We move the focus between the 2 when the user enters and exits the search mode.
@@ -296,6 +297,7 @@
 			} else {
 				this.logger.log( 'search-focus' );
 			}
+			this.executeAction( 'search' );
 		}.bind( this ) );
 
 		this.questionTextInput = new OO.ui.MultilineTextInputWidget( {
@@ -517,20 +519,16 @@
 				if ( action === 'home' ) {
 					this.logger.log( 'back-home', { from: this.currentMode } );
 					this.swapPanel( action );
-					this.searchInput.setValue( '' );
 				}
 				if ( action === 'questionreview' ) {
 					this.logger.log( 'review' );
 					this.swapPanel( action );
 				}
 				if ( action === 'search' ) {
-					if ( this.searchInput.getValue() ) {
-						this.swapPanel( action );
-						this.searchPanel.searchInput
-							.setValue( this.searchInput.getValue() )
-							.focus();
-					}
+					this.swapPanel( action );
+					this.searchPanel.searchInput.focus();
 				}
+				// Currently unused due to T216131.
 				if ( action === 'clearsearch' ) {
 					this.logger.log( 'back-home', { from: 'blank-search-input' } );
 					this.clearedSearch = true;
