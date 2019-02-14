@@ -76,7 +76,12 @@
 		this.searchResultsPanel.$element.empty();
 
 		if ( query === '' ) {
-			this.emit( 'clear' );
+			// todo: this works for when the user clears the content by clicking
+			// on the indicator but has unintended consequences when the user
+			// uses backspace to remove the content
+
+			// Rolled-back as part of T216131.
+			// this.emit( 'clear' );
 			return;
 		}
 
