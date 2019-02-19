@@ -2,7 +2,7 @@
 
 	/**
 	 * @class
-	 * @extends OO.ui.PanelLayout
+	 * @extends OO.ui.Widget
 	 *
 	 * @constructor
 	 * @param {mw.libs.ge.HelpPanelLogger} logger
@@ -10,8 +10,8 @@
 	 * @cfg {number[]} searchNamespaces Namespace IDs to include in the search
 	 * @cfg {string} foreignApi api.php URL of a foreign wiki to search instead of the local wiki
 	 */
-	function HelpPanelSearchPanel( logger, config ) {
-		HelpPanelSearchPanel.super.call( this, config );
+	function HelpPanelSearchWidget( logger, config ) {
+		HelpPanelSearchWidget.super.call( this, config );
 
 		this.logger = logger;
 		this.searchNamespaces = config.searchNamespaces;
@@ -26,41 +26,19 @@
 			// Enabling spellcheck may help get better results by having fewer typos
 			spellcheck: true
 		} );
-		this.searchResultsPanel = new OO.ui.PanelLayout( {
-			padded: false,
-			expanded: false
-		} );
+
+		this.searchResultsPanel = new OO.ui.Widget();
 
 		this.noResultsMessage = $( '<p>' ).text(
 			mw.message( 'growthexperiments-help-panel-search-no-results' ).text()
 		);
 
 		this.searchInput.connect( this, { change: 'onSearchInputChange' } );
-
-		this.$element
-			.addClass( 'helppanel-searchpanel' )
-			.append(
-				new OO.ui.FieldsetLayout( {
-					items: [
-						new OO.ui.FieldLayout(
-							new OO.ui.Widget( {
-								content: [
-									this.searchInput,
-									this.searchResultsPanel
-								] } ),
-							{
-								align: 'top',
-								label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-search-label' ).text() ),
-								classes: [ 'mw-ge-help-panel-popup-search' ]
-							}
-						)
-					]
-				} ).$element
-			);
+		this.$element.append( this.searchInput.$element, this.searchResultsPanel.$element );
 	}
-	OO.inheritClass( HelpPanelSearchPanel, OO.ui.PanelLayout );
+	OO.inheritClass( HelpPanelSearchWidget, OO.ui.Widget );
 
-	HelpPanelSearchPanel.prototype.setLoading = function ( loading ) {
+	HelpPanelSearchWidget.prototype.setLoading = function ( loading ) {
 		if ( loading ) {
 			if ( !this.searchInput.isPending() ) {
 				this.searchInput.pushPending();
@@ -70,18 +48,13 @@
 		}
 	};
 
-	HelpPanelSearchPanel.prototype.onSearchInputChange = function () {
+	HelpPanelSearchWidget.prototype.onSearchInputChange = function () {
 		var query = this.searchInput.getValue();
 		this.api.abort();
 		this.searchResultsPanel.$element.empty();
 
 		if ( query === '' ) {
-			// todo: this works for when the user clears the content by clicking
-			// on the indicator but has unintended consequences when the user
-			// uses backspace to remove the content
-
-			// Rolled-back as part of T216131.
-			// this.emit( 'clear' );
+			this.emit( 'clear' );
 			return;
 		}
 
@@ -111,7 +84,7 @@
 		}.bind( this ) );
 	};
 
-	HelpPanelSearchPanel.prototype.buildSearchResult = function ( result, index ) {
+	HelpPanelSearchWidget.prototype.buildSearchResult = function ( result, index ) {
 		var title = mw.Title.newFromText( result.title ),
 			$link = $( '<a>' )
 				.text( result.title )
@@ -127,6 +100,6 @@
 			.append( $link, $snippet );
 	};
 
-	OO.setProp( mw, 'libs', 'ge', 'HelpPanelSearchPanel', HelpPanelSearchPanel );
+	OO.setProp( mw, 'libs', 'ge', 'HelpPanelSearchWidget', HelpPanelSearchWidget );
 
 }() );

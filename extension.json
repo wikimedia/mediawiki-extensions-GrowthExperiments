@@ -229,7 +229,7 @@
 			"scripts": [
 				"help/ext.growthExperiments.HelpPanel.cta.js",
 				"help/ext.growthExperiments.HelpPanelLogger.js",
-				"help/ext.growthExperiments.HelpPanelSearchPanel.js",
+				"help/ext.growthExperiments.HelpPanelSearchWidget.js",
 				"help/ext.growthExperiments.HelpPanelProcessDialog.js"
 			],
 			"dependencies": [
