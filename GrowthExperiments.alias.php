@@ -1,6 +1,8 @@
 <?php
 /**
- * Aliases for Special:WelcomeSurvey
+ * Aliases for
+ *   Special:WelcomeSurvey
+ *   Special:Homepage
  *
  * @file
  * @ingroup Extensions
@@ -11,6 +13,7 @@ $specialPageAliases = [];
 /** English (English) */
 $specialPageAliases['en'] = [
 	'WelcomeSurvey' => [ 'WelcomeSurvey' ],
+	'Homepage' => [ 'Homepage' ],
 ];
 
 /** čeština (Czech) */
