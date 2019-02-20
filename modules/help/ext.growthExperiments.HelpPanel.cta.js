@@ -130,6 +130,12 @@
 			// Older wikitext editor
 			mw.hook( 'wikipage.editform' ).add( attachHelpButton );
 		}
+		// If viewing an article, log the impression. Editing impressions are
+		// logged via attachHelpButton(), but we don't need to utilize that
+		// function on view.
+		if ( mw.config.get( 'wgAction' ) === 'view' ) {
+			logger.logOnce( 'impression' );
+		}
 	} );
 
 }() );

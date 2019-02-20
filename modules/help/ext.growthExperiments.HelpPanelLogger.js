@@ -2,6 +2,7 @@
 
 	function HelpPanelLogger( enabled ) {
 		this.enabled = enabled;
+		this.readingMode = mw.config.get( 'wgAction' ) === 'view';
 		this.userEditCount = mw.config.get( 'wgUserEditCount' );
 		this.clearSessionId();
 		this.logged = {};
@@ -69,8 +70,8 @@
 			user_editcount: this.userEditCount,
 			editor_interface: this.getEditor(),
 			is_mobile: OO.ui.isMobile(),
-			page_id: mw.config.get( 'wgArticleId' ),
-			page_title: mw.config.get( 'wgRelevantPageName' ),
+			page_id: this.readingMode ? 0 : mw.config.get( 'wgArticleId' ),
+			page_title: this.readingMode ? '' : mw.config.get( 'wgRelevantPageName' ),
 			page_ns: mw.config.get( 'wgNamespaceNumber' ),
 			user_can_edit: mw.config.get( 'wgIsProbablyEditable' ),
 			page_protection: this.getPageRestrictions(),
@@ -92,6 +93,10 @@
 	HelpPanelLogger.prototype.getEditor = function () {
 		var veTarget,
 			mode;
+
+		if ( this.readingMode ) {
+			return 'reading';
+		}
 
 		// Desktop: old wikitext editor
 		if ( $( '#wpTextbox1:visible' ).length ) {
