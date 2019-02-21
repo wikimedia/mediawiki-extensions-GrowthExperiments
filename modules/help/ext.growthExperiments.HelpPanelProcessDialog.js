@@ -65,15 +65,12 @@
 		}
 		this.title.setLabel( titleMsg.text() );
 
-		if ( ( [ 'home', 'search', 'questionreview', 'questioncomplete' ].indexOf( panel ) ) === -1 ) {
+		if ( ( [ 'home', 'questionreview', 'questioncomplete' ].indexOf( panel ) ) === -1 ) {
 			throw new Error( 'Unknown panel: ' + panel );
 		}
 		if ( panel === 'home' ) {
 			this.homeFooterPanel.toggle( true );
 			this.questionReviewFooterPanel.toggle( false );
-		}
-		if ( panel === 'search' ) {
-			this.homeFooterPanel.toggle( false );
 		}
 		if ( panel === 'questionreview' ) {
 			this.questionReviewFooterPanel.toggle( true );
@@ -249,9 +246,6 @@
 	HelpPanelProcessDialog.prototype.initialize = function () {
 		HelpPanelProcessDialog.super.prototype.initialize.call( this );
 
-		// Currently unused due to T216131.
-		this.clearedSearch = false;
-
 		this.userEmail = mw.config.get( 'wgGEHelpPanelUserEmail' );
 		this.userEmailConfirmed = mw.config.get( 'wgGEHelpPanelUserEmailConfirmed' );
 
@@ -266,12 +260,17 @@
 			padded: true,
 			expanded: false
 		} );
-		this.searchPanel = new mw.libs.ge.HelpPanelSearchPanel( this.logger, {
-			padded: true,
-			expanded: false,
+		this.searchWidget = new mw.libs.ge.HelpPanelSearchWidget( this.logger, {
 			searchNamespaces: mw.config.get( 'wgGEHelpPanelSearchNamespaces' ),
 			foreignApi: mw.config.get( 'wgGEHelpPanelSearchForeignAPI' )
-		} ).connect( this, { clear: [ 'executeAction', 'home' ] } );
+		} ).connect( this, { clear: [ 'executeAction', 'clearsearch' ] } );
+		this.searchWidget.searchInput.$input.on( 'input', this.executeAction.bind( this, 'search' ) );
+		this.searchWidget.searchInput.$input.on( 'focus', function ( event ) {
+			if ( event.isTrigger === undefined ) {
+				// isTrigger will be undefined if it's a user-initiated action (click).
+				this.logger.log( 'search-focus' );
+			}
+		}.bind( this ) );
 		this.questionreviewPanel = new OO.ui.PanelLayout( {
 			padded: true,
 			expanded: false
@@ -284,21 +283,6 @@
 		// Fields
 		this.buildSettingsCog();
 		this.previousQuestionText = mw.storage.get( 'help-panel-question-text' );
-		this.searchInput = new OO.ui.SearchInputWidget();
-		this.searchInput.$input.on( 'focus', function () {
-			// Note: We have 2 search inputs: one one the home panel and one on the search panel.
-			// We move the focus between the 2 when the user enters and exits the search mode.
-			// We only want to fire this event when the user actually focuses the search, not if
-			// they arrived back at the home panel search input from the search panel interface.
-			if ( this.clearedSearch ) {
-				// Set to false, so that further interactions with this.searchInput on home after
-				// clearing search will fire a search-focus event.
-				this.clearedSearch = false;
-			} else {
-				this.logger.log( 'search-focus' );
-			}
-			this.executeAction( 'search' );
-		}.bind( this ) );
 
 		this.questionTextInput = new OO.ui.MultilineTextInputWidget( {
 			placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' ).text(),
@@ -344,17 +328,13 @@
 		} ).connect( this, { click: [ 'executeAction', 'questionreview' ] } );
 
 		// Build home content of help panel.
-		this.homeSearchFieldContent = new OO.ui.FieldsetLayout();
-		this.homeSearchFieldContent.addItems( [
-			new OO.ui.FieldLayout(
-				this.searchInput,
-				{
-					align: 'top',
-					label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-search-label' ).text() ),
-					classes: [ 'mw-ge-help-panel-popup-search', 'mw-ge-help-panel-popup-search-summary' ]
-				}
-			).toggle( mw.config.get( 'wgGEHelpPanelSearchEnabled' ) )
-		] );
+		this.homeSearchFieldContent = new OO.ui.FieldLayout(
+			this.searchWidget, {
+				align: 'top',
+				label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-search-label' ).text() ),
+				classes: [ 'mw-ge-help-panel-popup-search' ]
+			}
+		).toggle( mw.config.get( 'wgGEHelpPanelSearchEnabled' ) );
 
 		// Place the input and button in the footer to mimic the style of other actions.
 		this.homeFooterPanel = new OO.ui.PanelLayout( {
@@ -380,19 +360,17 @@
 
 		this.homePanel.$element.append( this.homeSearchFieldContent.$element );
 		// Add editing links after search.
+		this.$homePanelEditingLinksHeader = $( '<h2>' )
+			.append( $( '<strong>' )
+				.text( mw.message( 'growthexperiments-help-panel-editing-help-links-widget-header' ).text() ) );
+
+		this.$homePanelEditingLinks = $( linksConfig.helpPanelLinks );
+		this.$homePanelEditingLinksViewMore = $( '<p>' )
+			.append( $( '<strong>' ).html( linksConfig.viewMoreLink ) );
 		this.homePanel.$element.append(
-			new OO.ui.Element( {
-				$content: $( '<h2>' )
-					.append( $( '<strong>' )
-						.text( mw.message( 'growthexperiments-help-panel-editing-help-links-widget-header' ).text() ) )
-			} ).$element,
-			new OO.ui.Element( {
-				$content: linksConfig.helpPanelLinks
-			} ).$element,
-			new OO.ui.Element( {
-				$content: $( '<p>' )
-					.append( $( '<strong>' ).html( linksConfig.viewMoreLink ) )
-			} ).$element
+			this.$homePanelEditingLinksHeader,
+			this.$homePanelEditingLinks,
+			this.$homePanelEditingLinksViewMore
 		);
 
 		// Build step two of ask question process.
@@ -485,7 +463,6 @@
 
 		this.panels.addItems( [
 			this.homePanel,
-			this.searchPanel,
 			this.questionreviewPanel,
 			this.questioncompletePanel
 		] );
@@ -509,6 +486,27 @@
 			}, this );
 	};
 
+	/**
+	 * Show/hide search results interface.
+	 *
+	 * The search results interface does not exist as a separate panel (unlike home, question
+	 * review, and question complete panels). Instead, we show or hide the search results
+	 * depending on whether a search is active. When a search is active, we need to also hide
+	 * the other home panel elements (links, header, view more, footer).
+	 *
+	 * @param {boolean} toggle
+	 */
+	HelpPanelProcessDialog.prototype.toggleSearchResults = function ( toggle ) {
+		// Hide/show editing links section and footer if search is active.
+		this.$homePanelEditingLinks.toggle( !toggle );
+		this.$homePanelEditingLinksHeader.toggle( !toggle );
+		this.$homePanelEditingLinksViewMore.toggle( !toggle );
+		this.homeFooterPanel.toggle( !toggle );
+		// Show/hide search results.
+		this.searchWidget.searchResultsPanel.toggle( toggle );
+
+	};
+
 	HelpPanelProcessDialog.prototype.getActionProcess = function ( action ) {
 		return HelpPanelProcessDialog.super.prototype.getActionProcess.call( this, action )
 			.next( function () {
@@ -518,6 +516,7 @@
 				}
 				if ( action === 'home' ) {
 					this.logger.log( 'back-home', { from: this.currentMode } );
+					this.toggleSearchResults( false );
 					this.swapPanel( action );
 				}
 				if ( action === 'questionreview' ) {
@@ -525,15 +524,15 @@
 					this.swapPanel( action );
 				}
 				if ( action === 'search' ) {
-					this.swapPanel( action );
-					this.searchPanel.searchInput.focus();
+					if ( this.searchWidget.searchInput.getValue() ) {
+						this.toggleSearchResults( true );
+						this.setMode( 'search' );
+					}
 				}
-				// Currently unused due to T216131.
 				if ( action === 'clearsearch' ) {
 					this.logger.log( 'back-home', { from: 'blank-search-input' } );
-					this.clearedSearch = true;
 					this.swapPanel( 'home' );
-					this.searchInput.setValue( '' ).focus();
+					this.toggleSearchResults( false );
 
 				}
 				if ( action === 'questioncomplete' ) {
