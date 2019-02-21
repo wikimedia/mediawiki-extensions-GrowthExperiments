@@ -1,5 +1,8 @@
 ( function () {
 
+	var PrivacyNoticeWidget = require( './ext.growthExperiments.PrivacyNoticeWidget.js' ),
+		GettingStartedLinksWidget = require( './ext.growthExperiments.GettingStartedLinksWidget.js' );
+
 	/**
 	 * Confirmation dialog shown after a user has successfully
 	 * submitted the Welcome Survey.
@@ -41,7 +44,7 @@
 				.addClass( 'confirmation-section' )
 				.append(
 					$( '<div>' ).addClass( 'section-title' ).text( mw.msg( 'welcomesurvey-save-confirmation-title' ) ),
-					new mw.libs.ge.WelcomeSurvey.PrivacyNoticeWidget( {
+					new PrivacyNoticeWidget( {
 						url: this.privacyStatementUrl,
 						classes: [ 'section-text' ]
 					} ).$element
@@ -51,7 +54,7 @@
 				.append(
 					$( '<div>' ).addClass( 'section-title' ).text( mw.msg( 'welcomesurvey-sidebar-editing-title' ) ),
 					$( '<p>' ).addClass( 'section-text' ).text( mw.msg( 'welcomesurvey-sidebar-editing-text' ) ),
-					new mw.libs.ge.WelcomeSurvey.GettingStartedLinksWidget( 'survey-popup' ).$element
+					new GettingStartedLinksWidget( 'survey-popup' ).$element
 				)
 		);
 		this.$body.append( mainPanel.$element );
@@ -79,9 +82,5 @@
 		);
 	};
 
-	OO.setProp(
-		mw, 'libs', 'ge', 'WelcomeSurvey', 'WelcomeSurveyConfirmationDialog',
-		WelcomeSurveyConfirmationDialog
-	);
-
+	module.exports = WelcomeSurveyConfirmationDialog;
 }() );

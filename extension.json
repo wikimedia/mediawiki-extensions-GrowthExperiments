@@ -117,15 +117,15 @@
 			"styles": [
 				"welcomesurvey/popup/styles/ext.growthExperiments.welcomeSurveyPopup.less"
 			],
-			"scripts": [
+			"packageFiles": [
+				"welcomesurvey/popup/ext.growthExperiments.welcomeSurveyPopup.init.js",
 				"welcomesurvey/popup/ui/ext.growthExperiments.GettingStartedLinksWidget.js",
 				"welcomesurvey/popup/ui/ext.growthExperiments.PrivacyNoticeWidget.js",
 				"welcomesurvey/popup/ui/ext.growthExperiments.RadioSelectWithInputWidget.js",
 				"welcomesurvey/popup/ui/ext.growthExperiments.StackNavigatorWidget.js",
 				"welcomesurvey/popup/ui/ext.growthExperiments.StackPositionIndicatorWidget.js",
 				"welcomesurvey/popup/ui/ext.growthExperiments.WelcomeSurveyConfirmationDialog.js",
-				"welcomesurvey/popup/ui/ext.growthExperiments.WelcomeSurveyDialog.js",
-				"welcomesurvey/popup/ext.growthExperiments.welcomeSurveyPopup.init.js"
+				"welcomesurvey/popup/ui/ext.growthExperiments.WelcomeSurveyDialog.js"
 			],
 			"dependencies": [
 				"mediawiki.user",

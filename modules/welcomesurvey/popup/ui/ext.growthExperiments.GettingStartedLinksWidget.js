@@ -35,9 +35,5 @@
 	OO.inheritClass( GettingStartedLinksWidget, OO.ui.Widget );
 	GettingStartedLinksWidget.static.tagName = 'ul';
 
-	OO.setProp(
-		mw, 'libs', 'ge', 'WelcomeSurvey', 'GettingStartedLinksWidget',
-		GettingStartedLinksWidget
-	);
-
+	module.exports = GettingStartedLinksWidget;
 }() );

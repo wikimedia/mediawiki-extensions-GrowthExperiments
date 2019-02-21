@@ -68,9 +68,5 @@
 			item.getData();
 	};
 
-	OO.setProp(
-		mw, 'libs', 'ge', 'WelcomeSurvey', 'RadioSelectWithInputWidget',
-		RadioSelectWithInputWidget
-	);
-
+	module.exports = RadioSelectWithInputWidget;
 }() );

@@ -1,13 +1,18 @@
 ( function () {
 
 	var util = {
-		groupBy: function ( xs, key ) {
-			return xs.reduce( function ( rv, x ) {
-				( rv[ x[ key ] ] = rv[ x[ key ] ] || [] ).push( x );
-				return rv;
-			}, {} );
-		}
-	};
+			groupBy: function ( xs, key ) {
+				return xs.reduce( function ( rv, x ) {
+					( rv[ x[ key ] ] = rv[ x[ key ] ] || [] ).push( x );
+					return rv;
+				}, {} );
+			}
+		},
+		StackPositionIndicatorWidget = require( './ext.growthExperiments.StackPositionIndicatorWidget.js' ),
+		StackNavigatorWidget = require( './ext.growthExperiments.StackNavigatorWidget.js' ),
+		PrivacyNoticeWidget = require( './ext.growthExperiments.PrivacyNoticeWidget.js' ),
+		GettingStartedLinksWidget = require( './ext.growthExperiments.GettingStartedLinksWidget.js' ),
+		RadioSelectWithInputWidget = require( './ext.growthExperiments.RadioSelectWithInputWidget.js' );
 
 	/**
 	 * Main survey dialog showing the questions one at a time.
@@ -74,11 +79,11 @@
 
 		this.questionsLayout.connect( this, { set: 'onQuestionChange' } );
 
-		positionIndicator = new mw.libs.ge.WelcomeSurvey.StackPositionIndicatorWidget(
+		positionIndicator = new StackPositionIndicatorWidget(
 			this.questionsLayout
 		);
 
-		nav = new mw.libs.ge.WelcomeSurvey.StackNavigatorWidget(
+		nav = new StackNavigatorWidget(
 			this.questionsLayout
 		);
 		this.publishButton = new OO.ui.ButtonWidget( {
@@ -106,7 +111,7 @@
 				.addClass( 'privacy-section' )
 				.append(
 					$( '<div>' ).addClass( 'section-title' ).text( mw.msg( 'welcomesurvey-sidebar-privacy-title' ) ),
-					new mw.libs.ge.WelcomeSurvey.PrivacyNoticeWidget( {
+					new PrivacyNoticeWidget( {
 						url: this.privacyStatementUrl,
 						classes: [ 'section-text' ]
 					} ).$element
@@ -116,7 +121,7 @@
 				.append(
 					$( '<div>' ).addClass( 'section-title' ).text( mw.msg( 'welcomesurvey-sidebar-editing-title' ) ),
 					$( '<p>' ).addClass( 'section-text' ).text( mw.msg( 'welcomesurvey-sidebar-editing-text' ) ),
-					new mw.libs.ge.WelcomeSurvey.GettingStartedLinksWidget( 'survey-popup' ).$element
+					new GettingStartedLinksWidget( 'survey-popup' ).$element
 				)
 		);
 
@@ -188,14 +193,14 @@
 	};
 
 	/**
-	 * Build a field with a mw.libs.ge.WelcomeSurvey.RadioSelectWithInputWidget
+	 * Build a field with a RadioSelectWithInputWidget
 	 * based on the question config.
 	 *
 	 * @param {Object} config
 	 * @return {OO.ui.FieldLayout}
 	 */
 	WelcomeSurveyDialog.prototype.buildSelectWithOtherWidget = function ( config ) {
-		var radioSelectWithInput = new mw.libs.ge.WelcomeSurvey.RadioSelectWithInputWidget( {
+		var radioSelectWithInput = new RadioSelectWithInputWidget( {
 			select: {
 				items: Object.keys( config[ 'options-messages' ] ).map( function ( msg ) {
 					return new OO.ui.RadioOptionWidget( {
@@ -479,9 +484,5 @@
 		this.responses[ questionName ] = responseFunction;
 	};
 
-	OO.setProp(
-		mw, 'libs', 'ge', 'WelcomeSurvey', 'WelcomeSurveyDialog',
-		WelcomeSurveyDialog
-	);
-
+	module.exports = WelcomeSurveyDialog;
 }() );
