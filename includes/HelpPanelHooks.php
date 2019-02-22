@@ -3,6 +3,7 @@
 namespace GrowthExperiments;
 
 use OutputPage;
+use ResourceLoaderContext;
 use RequestContext;
 use Skin;
 use User;
@@ -86,12 +87,8 @@ class HelpPanelHooks {
 			$out->addJsConfigVars( [
 				// We know the help panel is enabled, otherwise we wouldn't get here
 				'wgGEHelpPanelEnabled' => true,
-				'wgGEHelpPanelLoggingEnabled' => $out->getConfig()->get( 'GEHelpPanelLoggingEnabled' ),
 				'wgGEHelpPanelUserEmail' => $out->getUser()->getEmail(),
 				'wgGEHelpPanelUserEmailConfirmed' => $out->getUser()->isEmailConfirmed(),
-				'wgGEHelpPanelSearchEnabled' => $out->getConfig()->get( 'GEHelpPanelSearchEnabled' ),
-				'wgGEHelpPanelSearchNamespaces' => $out->getConfig()->get( 'GEHelpPanelSearchNamespaces' ),
-				'wgGEHelpPanelSearchForeignAPI' => $out->getConfig()->get( 'GEHelpPanelSearchForeignAPI' ),
 			] );
 
 			if ( !$definitelyShow ) {
@@ -100,6 +97,24 @@ class HelpPanelHooks {
 				$out->addModules( 'ext.growthExperiments.HelpPanel.init' );
 			}
 		}
+	}
+
+	/**
+	 * Build the contents of the data.json file in the ext.growthExperiments.HelpPanel module.
+	 * @param ResourceLoaderContext $context
+	 * @return array
+	 */
+	public static function getModuleData( ResourceLoaderContext $context ) {
+		$config = $context->getConfig();
+		$helpdeskTitle = HelpPanel::getHelpDeskTitle( $config );
+		return [
+			'GEHelpPanelLoggingEnabled' => $config->get( 'GEHelpPanelLoggingEnabled' ),
+			'GEHelpPanelSearchEnabled' => $config->get( 'GEHelpPanelSearchEnabled' ),
+			'GEHelpPanelSearchNamespaces' => $config->get( 'GEHelpPanelSearchNamespaces' ),
+			'GEHelpPanelSearchForeignAPI' => $config->get( 'GEHelpPanelSearchForeignAPI' ),
+			'GEHelpPanelLinks' => HelpPanel::getHelpPanelLinks( $context, $config ),
+			'GEHelpPanelHelpDeskTitle' => $helpdeskTitle ? $helpdeskTitle->getPrefixedText() : null
+		];
 	}
 
 	/**
