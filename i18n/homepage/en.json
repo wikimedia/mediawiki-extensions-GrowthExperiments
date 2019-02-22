@@ -6,5 +6,11 @@
 	"growthexperiments-homepage-tab": "Homepage",
 	"prefs-homepage": "Newcomer homepage",
 	"growthexperiments-homepage-enable": "Display newcomer homepage",
-	"growthexperiments-homepage-pt-link": "Default to newcomer homepage from username link in personal tools"
+	"growthexperiments-homepage-pt-link": "Default to newcomer homepage from username link in personal tools",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Your}} impact",
+	"growthexperiments-homepage-impact-subheader": "Number of views of articles since {{GENDER:$1|you}} edited (last 60 days)",
+	"growthexperiments-homepage-impact-contributions-link": "<strong>$1</strong> {{PLURAL:$1|edit|edits}} (see all)",
+	"growthexperiments-homepage-impact-subheader-no-edit": "{{GENDER:$1|You}} have not yet edited any articles. This area will show the impact of {{GENDER:$1|your}} edits.",
+	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> edits to articles",
+	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|edit|edits}} to other kinds of pages (see all)"
 }

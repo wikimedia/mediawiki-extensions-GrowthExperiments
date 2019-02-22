@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Specials;
 
 use GrowthExperiments\HomepageModule;
+use GrowthExperiments\HomepageModules\Impact;
 use SpecialPage;
 
 class SpecialHomepage extends SpecialPage {
@@ -17,6 +18,7 @@ class SpecialHomepage extends SpecialPage {
 	public function execute( $par ) {
 		$this->requireLogin();
 		parent::execute( $par );
+		$this->getContext()->getOutput()->enableOOUI();
 		foreach ( $this->getModules() as $module ) {
 			$module->render( $this->getContext() );
 		}
@@ -37,6 +39,8 @@ class SpecialHomepage extends SpecialPage {
 	 * @return HomepageModule[]
 	 */
 	private function getModules() {
-		return [];
+		return [
+			new Impact(),
+		];
 	}
 }
