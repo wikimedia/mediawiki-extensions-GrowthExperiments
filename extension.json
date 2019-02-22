@@ -251,7 +251,6 @@
 				"ext.growthExperiments.HelpPanelCta.styles",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
-				"mediawiki.messagePoster",
 				"mediawiki.storage"
 			],
 			"messages": [
