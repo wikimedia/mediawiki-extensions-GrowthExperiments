@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments;
 
+use ConfigException;
 use MediaWiki\MediaWikiServices;
 use MessageCache;
 use OOUI\ButtonWidget;
@@ -20,7 +21,7 @@ class HelpPanel {
 	/**
 	 * @param bool $mobile
 	 * @return Tag
-	 * @throws \ConfigException
+	 * @throws ConfigException
 	 */
 	public static function getHelpPanelCtaButton( $mobile ) {
 		return ( new Tag( 'div' ) )
@@ -42,7 +43,7 @@ class HelpPanel {
 	 * @param MessageLocalizer $ml
 	 * @param Config $config
 	 * @return array Links that should appear in the help panel. Exported to JS as wgGEHelpPanelLinks.
-	 * @throws \ConfigException
+	 * @throws ConfigException
 	 */
 	public static function getHelpPanelLinks( MessageLocalizer $ml, Config $config ) {
 		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
@@ -99,7 +100,7 @@ class HelpPanel {
 	 * @param OutputPage $out
 	 * @param bool $checkAction
 	 * @return bool
-	 * @throws \ConfigException
+	 * @throws ConfigException
 	 */
 	public static function shouldShowHelpPanel( OutputPage $out, $checkAction = true ) {
 		if ( !self::isHelpPanelEnabled() ) {
@@ -116,11 +117,34 @@ class HelpPanel {
 		}
 		if ( $checkAction ) {
 			$action = $out->getRequest()->getVal( 'action', 'view' );
-			if ( !in_array( $action, [ 'edit', 'submit' ] ) ) {
+			if ( !in_array( $action, [ 'edit', 'submit' ] ) &&
+				 !self::shouldShowForReadingMode( $out, $action ) ) {
 				return false;
 			}
 		}
 		return self::shouldShowHelpPanelToUser( $out->getUser() );
+	}
+
+	/**
+	 * If action=view, check if we are in allowed namespace.
+	 *
+	 * Note that views to talk titles will perform a look up for the subject title namespace,
+	 * so specifying 4 (NS_PROJECT) as a namespace for which to enable help panel reading mode
+	 * will also result in enabling 5 (NS_PROJECT_TALK) as an additional namespace.
+	 *
+	 * @param OutputPage $out
+	 * @param string $action
+	 * @return bool
+	 * @throws ConfigException
+	 */
+	public static function shouldShowForReadingMode( OutputPage $out, $action ) {
+		$title = $out->getTitle();
+		if ( !$title ) {
+			return false;
+		}
+		return $action === 'view' &&
+			   in_array( $title->getSubjectPage()->getNamespace(),
+				   $out->getConfig()->get( 'GEHelpPanelReadingModeNamespaces' ) );
 	}
 
 	public static function isHelpPanelEnabled() {
@@ -132,6 +156,7 @@ class HelpPanel {
 	 *
 	 * @param Config $config
 	 * @return null|Title
+	 * @throws ConfigException
 	 */
 	public static function getHelpDeskTitle( $config ) {
 		return Title::newFromText(
