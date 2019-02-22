@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|$1's homepage}}",
+	"growthexperiments-homepage-tab": "Homepage",
+	"prefs-homepage": "Newcomer homepage",
+	"growthexperiments-homepage-enable": "Display newcomer homepage",
+	"growthexperiments-homepage-pt-link": "Default to newcomer homepage from username link in personal tools"
+}

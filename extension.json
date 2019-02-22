@@ -20,7 +20,8 @@
 			"i18n/welcomesurvey",
 			"i18n/welcomesurvey/api",
 			"i18n/help",
-			"i18n/help/api"
+			"i18n/help/api",
+			"i18n/homepage"
 		]
 	},
 	"ExtensionMessagesFiles": {
@@ -32,17 +33,20 @@
 	},
 	"Hooks": {
 		"SpecialPage_initList": [
-			"GrowthExperiments\\WelcomeSurveyHooks::onSpecialPageInitList"
+			"GrowthExperiments\\WelcomeSurveyHooks::onSpecialPageInitList",
+			"GrowthExperiments\\HomepageHooks::onSpecialPageInitList"
 		],
 		"UserGetDefaultOptions": [
 			"GrowthExperiments\\HelpPanelHooks::onUserGetDefaultOptions"
 		],
 		"LocalUserCreated": [
-			"GrowthExperiments\\HelpPanelHooks::onLocalUserCreated"
+			"GrowthExperiments\\HelpPanelHooks::onLocalUserCreated",
+			"GrowthExperiments\\HomepageHooks::onLocalUserCreated"
 		],
 		"GetPreferences": [
 			"GrowthExperiments\\WelcomeSurveyHooks::onGetPreferences",
-			"GrowthExperiments\\HelpPanelHooks::onGetPreferences"
+			"GrowthExperiments\\HelpPanelHooks::onGetPreferences",
+			"GrowthExperiments\\HomepageHooks::onGetPreferences"
 		],
 		"BeforeWelcomeCreation": [
 			"GrowthExperiments\\WelcomeSurveyHooks::onBeforeWelcomeCreation"
@@ -56,6 +60,15 @@
 		],
 		"ChangeTagsListActive": [
 			"GrowthExperiments\\HelpPanelHooks::onListDefinedTags"
+		],
+		"SkinTemplateNavigation::Universal": [
+			"GrowthExperiments\\HomepageHooks::onSkinTemplateNavigationUniversal"
+		],
+		"PersonalUrls": [
+			"GrowthExperiments\\HomepageHooks::onPersonalUrls"
+		],
+		"MobileMenu": [
+			"GrowthExperiments\\HomepageHooks::onMobileMenu"
 		]
 	},
 	"ResourceFileModulePaths": {
@@ -343,6 +356,14 @@
 		"WelcomeSurveyPrivacyPolicyUrl": {
 			"description": "URL of the privacy policy to be used on the Welcome survey.",
 			"value": "https://foundation.wikimedia.org/wiki/New_User_Welcome_Survey_Privacy_Statement"
+		},
+		"GEHomepageEnabled": {
+			"description": "Global ON/OFF switch for the Homepage feature.",
+			"value": false
+		},
+		"GEHomepageNewAccountEnablePercentage": {
+			"description": "Percentage of new accounts to enable homepage for. Must be a whole number.",
+			"value": 50
 		},
 		"WelcomeSurveyExperimentalGroups": {
 			"description": "List of experimental groups. A group is defined with a range to randomly match users and the list of questions they will see on the survey.",

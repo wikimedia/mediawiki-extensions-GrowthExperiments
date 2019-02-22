@@ -1,0 +1,8 @@
+{
+	"@metadata": [],
+	"growthexperiments-homepage-specialpage-title": "Title for Special:Homepage. Parameters:\n* $1 - Name of the current user. Can be used with GENDER.",
+	"growthexperiments-homepage-tab": "Text of the homepage tab.",
+	"prefs-homepage": "Text of the section header for the \"Newcomer homepage\" preference section.",
+	"growthexperiments-homepage-enable": "Text of the preference to display the homepage tab along with user and talk.",
+	"growthexperiments-homepage-pt-link": "Text of the preference to make the username link in the personal tools go to the homepage instead of the userpage."
+}
