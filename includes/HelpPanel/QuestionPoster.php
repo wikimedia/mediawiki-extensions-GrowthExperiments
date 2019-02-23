@@ -269,6 +269,6 @@ class QuestionPoster {
 			/* $timecorrection= */ ''
 		);
 		$this->sectionHeaderUnique = $this->sectionHeader . ' ' . $this->context->msg( 'parentheses' )->
-			rawParams( $timestamp )->inContentLanguage()->text();
+				plaintextParams( $timestamp )->inContentLanguage()->text();
 	}
 }
