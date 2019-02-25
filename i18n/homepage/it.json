@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Beta16"
+		]
+	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Pagina principale di $1}}",
+	"growthexperiments-homepage-tab": "Pagina principale",
+	"prefs-homepage": "Pagina principale nuovi arrivati",
+	"growthexperiments-homepage-enable": "Mostra pagina principale nuovi arrivati"
+}

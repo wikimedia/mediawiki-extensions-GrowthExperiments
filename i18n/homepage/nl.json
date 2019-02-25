@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elroy"
+		]
+	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|de startpagina van $1}}",
+	"growthexperiments-homepage-tab": "Startpagina",
+	"prefs-homepage": "Startpagina voor nieuwelingen",
+	"growthexperiments-homepage-enable": "Startpagina voor nieuwelingen weergeven",
+	"growthexperiments-homepage-pt-link": "De gebruikersnaamkoppeling wordt gebruikt om een voor persoonlijke hulpmiddelen standaardstartpagina voor nieuwelingen te maken"
+}

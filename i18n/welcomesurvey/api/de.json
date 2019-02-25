@@ -5,5 +5,6 @@
 		]
 	},
 	"apihelp-welcomesurveyhandleresponses-summary": "Verwaltet Welcome-Survey-Antworten für den aktuellen Benutzer.",
+	"apihelp-welcomesurveyhandleresponses-param-group": "Mit der Willkommensumfrage verknüpfte experimentelle Gruppe.",
 	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "Stempel des Zeitpunktes, an dem die Umfrage dem Benutzer angezeigt wurde."
 }

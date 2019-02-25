@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"ديفيد"
+		]
+	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|الصفحة الرئيسية لـ$1}}",
+	"growthexperiments-homepage-tab": "الصفحة الرئيسية",
+	"prefs-homepage": "الصفحة الرئيسية للقادمين الجدد",
+	"growthexperiments-homepage-enable": "عرض الصفحة الرئيسية للقادمين الجدد",
+	"growthexperiments-homepage-pt-link": "افتراضي للصفحة الرئيسية للقادمين الجدد من رابط اسم المستخدم في الأدوات الشخصية"
+}

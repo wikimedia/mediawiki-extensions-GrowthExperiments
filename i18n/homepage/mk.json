@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Домашна страница на $1}}",
+	"growthexperiments-homepage-tab": "Домашна страница",
+	"prefs-homepage": "Домашна страница за новодојденци",
+	"growthexperiments-homepage-enable": "Прикажувај домашна страница за новодојденци",
+	"growthexperiments-homepage-pt-link": "По основно давај домашна страница за новодојденци од врската за корисничко име во личните алатки"
+}

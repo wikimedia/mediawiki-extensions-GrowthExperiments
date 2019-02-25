@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"A Chinese Wikipedian"
+			"A Chinese Wikipedian",
+			"Zazzzz"
 		]
 	},
 	"welcomesurvey-save-btn": "结束",
@@ -9,5 +10,6 @@
 	"welcomesurvey-close-btn": "关闭并返回$1",
 	"welcomesurvey-popup-close-btn": "关",
 	"welcomesurvey-back-btn": "上一步",
-	"welcomesurvey-next-btn": "下一项"
+	"welcomesurvey-next-btn": "下一项",
+	"welcomesurvey-question-email-label": "电子邮件地址（可选）"
 }

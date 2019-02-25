@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wladek92"
+		]
+	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Page d'accueil de $1}}",
+	"growthexperiments-homepage-tab": "Page d’accueil",
+	"prefs-homepage": "Page d'accueil du nouvel arrivant",
+	"growthexperiments-homepage-enable": "Afficher la page d'accueil du nouvel arrivant",
+	"growthexperiments-homepage-pt-link": "Lien par défaut vers la page d'accueil du nouvel arrivant, à partir du lien du nom d'utilisateur dans les outils personnels"
+}

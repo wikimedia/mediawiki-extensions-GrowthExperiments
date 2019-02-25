@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Metalhead64"
+		]
+	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Startseite von $1}}",
+	"growthexperiments-homepage-tab": "Startseite",
+	"prefs-homepage": "Neulings-Startseite",
+	"growthexperiments-homepage-enable": "Neulings-Startseite anzeigen",
+	"growthexperiments-homepage-pt-link": "Standard auf die Neulings-Startseite vom Benutzernamenslink in den persönlichen Werkzeugen"
+}

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo Addad de Oliveira"
+		]
+	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|$1's página inicial}}",
+	"growthexperiments-homepage-tab": "Página principal",
+	"prefs-homepage": "Página inicial do recém-chegado",
+	"growthexperiments-homepage-enable": "Exibir página inicial do recém-chegado",
+	"growthexperiments-homepage-pt-link": "Padrão para a página principal do recém-chegado do link de nome de usuário em ferramentas pessoais"
+}

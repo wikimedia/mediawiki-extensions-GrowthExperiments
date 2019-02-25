@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Домашна страница на $1}}",
+	"growthexperiments-homepage-tab": "Начална страница",
+	"prefs-homepage": "Домашна страница за новички",
+	"growthexperiments-homepage-enable": "Показване на домашна страница за новички",
+	"growthexperiments-homepage-pt-link": "По подразбиране давайте домашна страница за новички от връзката за потребителско име в личните инструменти"
+}
