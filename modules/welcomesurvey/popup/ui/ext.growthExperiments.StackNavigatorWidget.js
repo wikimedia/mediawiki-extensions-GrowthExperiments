@@ -64,9 +64,5 @@
 		this.nextButton.toggle( index !== lastIndex );
 	};
 
-	OO.setProp(
-		mw, 'libs', 'ge', 'WelcomeSurvey', 'StackNavigatorWidget',
-		StackNavigatorWidget
-	);
-
+	module.exports = StackNavigatorWidget;
 }() );

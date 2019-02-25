@@ -36,9 +36,5 @@
 		}
 	};
 
-	OO.setProp(
-		mw, 'libs', 'ge', 'WelcomeSurvey', 'StackPositionIndicatorWidget',
-		StackPositionIndicatorWidget
-	);
-
+	module.exports = StackPositionIndicatorWidget;
 }() );

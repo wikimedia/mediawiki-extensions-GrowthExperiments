@@ -1,12 +1,14 @@
 ( function () {
 
-	var windowManager = new OO.ui.WindowManager(),
-		survey = new mw.libs.ge.WelcomeSurvey.WelcomeSurveyDialog( {
+	var WelcomeSurveyDialog = require( './ui/ext.growthExperiments.WelcomeSurveyDialog.js' ),
+		WelcomeSurveyConfirmationDialog = require( './ui/ext.growthExperiments.WelcomeSurveyConfirmationDialog.js' ),
+		windowManager = new OO.ui.WindowManager(),
+		survey = new WelcomeSurveyDialog( {
 			group: mw.config.get( 'wgWelcomeSurveyExperimentalGroup' ),
 			questionsConfig: mw.config.get( 'wgWelcomeSurveyQuestions' ),
 			privacyStatementUrl: mw.config.get( 'wgWelcomeSurveyPrivacyPolicyUrl' )
 		} ),
-		confirmation = new mw.libs.ge.WelcomeSurvey.WelcomeSurveyConfirmationDialog( {
+		confirmation = new WelcomeSurveyConfirmationDialog( {
 			privacyStatementUrl: mw.config.get( 'wgWelcomeSurveyPrivacyPolicyUrl' )
 		} );
 

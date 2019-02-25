@@ -24,9 +24,5 @@
 	OO.inheritClass( PrivacyNoticeWidget, OO.ui.Widget );
 	PrivacyNoticeWidget.static.tagName = 'p';
 
-	OO.setProp(
-		mw, 'libs', 'ge', 'WelcomeSurvey', 'PrivacyNoticeWidget',
-		PrivacyNoticeWidget
-	);
-
+	module.exports = PrivacyNoticeWidget;
 }() );
