@@ -108,6 +108,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 			}
 
 			// Add select options for 'placeholder' and 'other'
+			/* @phan-suppress-next-line PhanTypeArraySuspicious */
 			if ( $question[ 'type' ] === 'select' ) {
 				if ( isset( $question[ 'placeholder-message' ] ) ) {
 					// Add 'placeholder' as the first options
