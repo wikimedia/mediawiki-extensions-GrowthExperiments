@@ -46,6 +46,10 @@ class HelpPanel {
 	 * @throws ConfigException
 	 */
 	public static function getHelpPanelLinks( MessageLocalizer $ml, Config $config ) {
+		if ( !self::isHelpPanelEnabled() ) {
+			return [];
+		}
+
 		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
 
 		$helpPanelLinks = Html::openElement( 'ul' );

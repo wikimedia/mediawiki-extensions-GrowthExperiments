@@ -1,5 +1,10 @@
 ( function () {
 
+	/**
+	 * @class mw.libs.ge.HelpPanelLogger
+	 * @constructor
+	 * @param {boolean} enabled
+	 */
 	function HelpPanelLogger( enabled ) {
 		this.enabled = enabled;
 		this.readingMode = mw.config.get( 'wgAction' ) === 'view';
@@ -152,6 +157,6 @@
 		this.userEditCount++;
 	};
 
-	OO.setProp( mw, 'libs', 'ge', 'HelpPanelLogger', HelpPanelLogger );
+	module.exports = HelpPanelLogger;
 
 }() );

@@ -235,15 +235,18 @@
 			]
 		},
 		"ext.growthExperiments.HelpPanel": {
-			"class": "GrowthExperiments\\ResourceLoaderHelpPanelModule",
 			"styles": [
 				"help/ext.growthExperiments.HelpPanel.less"
 			],
-			"scripts": [
+			"packageFiles": [
 				"help/ext.growthExperiments.HelpPanel.cta.js",
 				"help/ext.growthExperiments.HelpPanelLogger.js",
 				"help/ext.growthExperiments.HelpPanelSearchWidget.js",
-				"help/ext.growthExperiments.HelpPanelProcessDialog.js"
+				"help/ext.growthExperiments.HelpPanelProcessDialog.js",
+				{
+					"name": "help/data.json",
+					"callback": [ "GrowthExperiments\\HelpPanelHooks", "getModuleData" ]
+				}
 			],
 			"dependencies": [
 				"mediawiki.user",

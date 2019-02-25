@@ -1,7 +1,7 @@
 ( function () {
 
 	/**
-	 * @class
+	 * @class mw.libs.ge.HelpPanelProcessDialog
 	 * @extends OO.ui.ProcessDialog
 	 *
 	 * @param {Object} config
@@ -12,7 +12,9 @@
 			HelpPanelProcessDialog.super.call( this, config );
 			this.logger = config.logger;
 		},
-		linksConfig = mw.config.get( 'wgGEHelpPanelLinks' );
+		HelpPanelSearchWidget = require( './ext.growthExperiments.HelpPanelSearchWidget.js' ),
+		configData = require( './data.json' ),
+		linksConfig = configData.GEHelpPanelLinks;
 
 	OO.inheritClass( HelpPanelProcessDialog, OO.ui.ProcessDialog );
 
@@ -261,9 +263,9 @@
 			expanded: false
 		} );
 
-		this.searchWidget = new mw.libs.ge.HelpPanelSearchWidget( this.logger, {
-			searchNamespaces: mw.config.get( 'wgGEHelpPanelSearchNamespaces' ),
-			foreignApi: mw.config.get( 'wgGEHelpPanelSearchForeignAPI' )
+		this.searchWidget = new HelpPanelSearchWidget( this.logger, {
+			searchNamespaces: configData.GEHelpPanelSearchNamespaces,
+			foreignApi: configData.GEHelpPanelSearchForeignAPI
 		} ).connect( this, { clear: [ 'executeAction', 'clearsearch' ] } );
 		this.searchWidget.searchInput.$input.on( 'input', function () {
 			if ( this.searchWidget.searchInput.getValue() ) {
@@ -341,7 +343,7 @@
 				label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-search-label' ).text() ),
 				classes: [ 'mw-ge-help-panel-popup-search' ]
 			}
-		).toggle( mw.config.get( 'wgGEHelpPanelSearchEnabled' ) );
+		).toggle( configData.GEHelpPanelSearchEnabled );
 
 		// Place the input and button in the footer to mimic the style of other actions.
 		this.homeFooterPanel = new OO.ui.PanelLayout( {
@@ -628,6 +630,6 @@
 		return this.panels.getCurrentItem().$element.outerHeight( true );
 	};
 
-	OO.setProp( mw, 'libs', 'ge', 'HelpPanelProcessDialog', HelpPanelProcessDialog );
+	module.exports = HelpPanelProcessDialog;
 
 }() );

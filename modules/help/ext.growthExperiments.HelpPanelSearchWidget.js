@@ -1,7 +1,7 @@
 ( function () {
 
 	/**
-	 * @class
+	 * @class mw.libs.ge.HelpPanelSearchWidget
 	 * @extends OO.ui.Widget
 	 *
 	 * @constructor
@@ -100,6 +100,6 @@
 			.append( $link, $snippet );
 	};
 
-	OO.setProp( mw, 'libs', 'ge', 'HelpPanelSearchWidget', HelpPanelSearchWidget );
+	module.exports = HelpPanelSearchWidget;
 
 }() );

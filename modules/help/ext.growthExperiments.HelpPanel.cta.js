@@ -1,4 +1,8 @@
 ( function () {
+	var HelpPanelLogger = require( './ext.growthExperiments.HelpPanelLogger.js' ),
+		HelpPanelProcessDialog = require( './ext.growthExperiments.HelpPanelProcessDialog.js' ),
+		configData = require( './data.json' );
+
 	// This shouldn't happen, but just to be sure
 	if ( !mw.config.get( 'wgGEHelpPanelEnabled' ) ) {
 		return;
@@ -12,13 +16,12 @@
 			$body = $( 'body' ),
 			windowManager = new OO.ui.WindowManager( { modal: OO.ui.isMobile() } ),
 			$overlay = $( '<div>' ).addClass( 'mw-ge-help-panel-widget-overlay' ),
-			loggingEnabled = mw.config.get( 'wgGEHelpPanelLoggingEnabled' ),
-			logger = new mw.libs.ge.HelpPanelLogger( loggingEnabled ),
+			logger = new HelpPanelLogger( configData.GEHelpPanelLoggingEnabled ),
 			size = OO.ui.isMobile() ? 'full' : 'small',
 			/**
 			 * @type {OO.ui.Window}
 			 */
-			helpPanelProcessDialog = new mw.libs.ge.HelpPanelProcessDialog( {
+			helpPanelProcessDialog = new HelpPanelProcessDialog( {
 				// Make help panel wider for larger screens.
 				size: Math.max( document.documentElement.clientWidth, window.innerWidth || 0 ) > 1366 ? 'medium' : size,
 				logger: logger
@@ -63,7 +66,7 @@
 		} else {
 			helpCtaButton = new OO.ui.ButtonWidget( {
 				id: 'mw-ge-help-panel-cta-button',
-				href: mw.util.getUrl( mw.config.get( 'wgGEHelpPanelHelpDeskTitle' ) ),
+				href: mw.util.getUrl( configData.GEHelpPanelHelpDeskTitle ),
 				label: OO.ui.isMobile() ? '' : mw.msg( 'growthexperiments-help-panel-cta-button-text' ),
 				icon: 'askQuestion',
 				flags: [ 'primary', 'progressive' ]
