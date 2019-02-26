@@ -136,9 +136,16 @@
 		// If viewing an article, log the impression. Editing impressions are
 		// logged via attachHelpButton(), but we don't need to utilize that
 		// function on view.
-		if ( mw.config.get( 'wgAction' ) === 'view' ) {
+		if ( mw.config.get( 'wgAction' ) === 'view' &&
+			mw.config.get( 'wgCanonicalSpecialPageName' ) !== 'Homepage' ) {
 			logger.logOnce( 'impression' );
 		}
 	} );
+
+	module.exports = {
+		HelpPanelProcessDialog: HelpPanelProcessDialog,
+		HelpPanelLogger: HelpPanelLogger,
+		configData: configData
+	};
 
 }() );

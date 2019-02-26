@@ -115,6 +115,8 @@
 					this.questionReviewSubmitButton.setDisabled( !reviewTextInputValue );
 				}.bind( this ), function () {
 					// Always disable if email is invalid.
+					// TODO: If you enter an invalid email, then update the question entry text, the
+					// submit button is enabled again.
 					this.questionReviewSubmitButton.setDisabled( true );
 				}.bind( this ) );
 		} else {
@@ -398,20 +400,22 @@
 
 		this.setEmailFields();
 
+		this.questionIncludeFieldLayout = new OO.ui.FieldLayout(
+			this.questionIncludeTitleCheckbox, {
+				label: mw.message( 'growthexperiments-help-panel-questionreview-include-article-title' ).text(),
+				align: 'inline',
+				helpInline: true,
+				help: this.relevantTitle.getPrefixedText()
+			}
+		);
+
 		this.questionReviewContent.addItems( [
 			new OO.ui.FieldLayout(
 				this.questionReviewTextInput, {
 					label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-label' ).text() ),
 					align: 'top'
 				} ),
-			new OO.ui.FieldLayout(
-				this.questionIncludeTitleCheckbox, {
-					label: mw.message( 'growthexperiments-help-panel-questionreview-include-article-title' ).text(),
-					align: 'inline',
-					helpInline: true,
-					help: this.relevantTitle.getPrefixedText()
-				}
-			)
+			this.questionIncludeFieldLayout
 		] );
 		this.questionreviewPanel.$element.append( this.questionReviewContent.$element );
 

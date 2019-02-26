@@ -252,13 +252,24 @@ class QuestionPoster {
 	 * @param string $relevantTitle
 	 */
 	public function setSectionHeader( $relevantTitle ) {
-		$this->sectionHeader = $relevantTitle ?
-			// TODO: Remove the @suppress once T191666 is resolved.
-			/* @phan-suppress-next-line PhanParamTooMany */
-			$this->context->msg( 'growthexperiments-help-panel-question-subject-template-with-title',
-				$relevantTitle )->inContentLanguage()->text() :
-			$this->context->msg( 'growthexperiments-help-panel-question-subject-template' )
+		if ( $relevantTitle ) {
+			$title = Title::newFromText( $relevantTitle );
+			if ( $title && $title->isSpecial( 'Homepage' ) ) {
+				$this->sectionHeader = $this->context
+					->msg( 'growthexperiments-help-panel-question-subject-template-from-homepage' )
+					->inContentLanguage()->text();
+			} else {
+				$this->sectionHeader = $this->context
+					->msg( 'growthexperiments-help-panel-question-subject-template-with-title' )
+					->params( $relevantTitle )
+					->inContentLanguage()->text();
+			}
+		} else {
+			$this->sectionHeader = $this->context
+				->msg( 'growthexperiments-help-panel-question-subject-template' )
 				->inContentLanguage()->text();
+		}
+
 		$lang = MediaWikiServices::getInstance()->getContentLanguage();
 		$timestamp = $lang->timeanddate(
 			wfTimestampNow(),

@@ -8,6 +8,7 @@
 	function HelpPanelLogger( enabled ) {
 		this.enabled = enabled;
 		this.readingMode = mw.config.get( 'wgAction' ) === 'view';
+		this.isUserHomepage = this.readingMode && mw.config.get( 'wgCanonicalSpecialPageName' ) === 'Homepage';
 		this.userEditCount = mw.config.get( 'wgUserEditCount' );
 		this.clearSessionId();
 		this.logged = {};
@@ -98,6 +99,10 @@
 	HelpPanelLogger.prototype.getEditor = function () {
 		var veTarget,
 			mode;
+
+		if ( this.isUserHomepage ) {
+			return 'homepage';
+		}
 
 		if ( this.readingMode ) {
 			return 'reading';

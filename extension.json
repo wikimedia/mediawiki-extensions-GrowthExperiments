@@ -244,6 +244,22 @@
 				"mobile"
 			]
 		},
+		"ext.growthExperiments.Homepage.Help": {
+			"packageFiles": [
+				"homepage/ext.growthExperiments.Homepage.Help.js",
+				"homepage/ext.growthExperiments.HelpDeskDialog.js"
+			],
+			"messages": [
+				"growthexperiments-homepage-help-cancel"
+			],
+			"dependencies": [
+				"ext.growthExperiments.HelpPanel"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
 		"ext.growthExperiments.HelpPanel": {
 			"styles": [
 				"help/ext.growthExperiments.HelpPanel.less"
@@ -285,6 +301,7 @@
 				"growthexperiments-help-panel-questionreview-include-article-title",
 				"growthexperiments-help-panel-question-subject-template",
 				"growthexperiments-help-panel-question-subject-template-with-title",
+				"growthexperiments-help-panel-question-subject-template-from-homepage",
 				"growthexperiments-help-panel-question-post-error",
 				"growthexperiments-help-panel-questioncomplete-title",
 				"growthexperiments-help-panel-questioncomplete-header",

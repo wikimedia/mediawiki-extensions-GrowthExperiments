@@ -76,7 +76,8 @@ class HelpPanel {
 		$viewMoreTitle = Title::newFromText( $config->get( 'GEHelpPanelViewMoreTitle' ) );
 		$viewMoreLink = $linkRenderer->makeLink(
 			$viewMoreTitle,
-			$ml->msg( 'growthexperiments-help-panel-editing-help-links-widget-view-more-link' )->text(),
+			$ml->msg( 'growthexperiments-help-panel-editing-help-links-widget-view-more-link' )
+				->text(),
 			[ 'target' => '_blank', 'data-link-id' => 'view-more' ]
 		);
 

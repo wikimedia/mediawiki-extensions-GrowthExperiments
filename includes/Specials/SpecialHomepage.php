@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Specials;
 
 use GrowthExperiments\HomepageModule;
+use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
 use SpecialPage;
 
@@ -41,6 +42,7 @@ class SpecialHomepage extends SpecialPage {
 	private function getModules() {
 		return [
 			new Impact(),
+			new Help(),
 		];
 	}
 }

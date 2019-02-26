@@ -14,5 +14,8 @@
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> edits to articles",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|edit|edits}} to other kinds of pages (see all)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Go to article page",
-	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Pageviews analysis tool"
+	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Pageviews analysis tool",
+	"growthexperiments-homepage-help-ask-help-desk": "Ask help desk",
+	"growthexperiments-homepage-help-header": "Top help articles",
+	"growthexperiments-homepage-help-cancel": "Cancel"
 }
