@@ -21,7 +21,8 @@
 			"i18n/welcomesurvey/api",
 			"i18n/help",
 			"i18n/help/api",
-			"i18n/homepage"
+			"i18n/homepage",
+			"i18n/confirmemail"
 		]
 	},
 	"ExtensionMessagesFiles": {
@@ -69,6 +70,9 @@
 		],
 		"MobileMenu": [
 			"GrowthExperiments\\HomepageHooks::onMobileMenu"
+		],
+		"AuthChangeFormFields": [
+			"GrowthExperiments\\ConfirmEmailHooks::onAuthChangeFormFields"
 		]
 	},
 	"ResourceFileModulePaths": {
@@ -308,6 +312,13 @@
 				"desktop",
 				"mobile"
 			]
+		},
+		"ext.growthExperiments.confirmEmail.createAccount.styles": {
+			"styles": "confirmemail/ext.confirmEmail.createAccount.less",
+			"targets": [
+				"desktop",
+				"mobile"
+			]
 		}
 	},
 	"config": {
@@ -370,6 +381,10 @@
 		"GEHomepageNewAccountEnablePercentage": {
 			"description": "Percentage of new accounts to enable homepage for. Must be a whole number.",
 			"value": 50
+		},
+		"GEConfirmEmailEnabled": {
+			"description": "Global ON/OFF switch for the email confirmation changes.",
+			"value": false
 		},
 		"WelcomeSurveyExperimentalGroups": {
 			"description": "List of experimental groups. A group is defined with a range to randomly match users and the list of questions they will see on the survey.",
