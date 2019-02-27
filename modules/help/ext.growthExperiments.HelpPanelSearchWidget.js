@@ -16,9 +16,8 @@
 		this.logger = logger;
 		this.searchNamespaces = config.searchNamespaces;
 
-		this.api = config.foreignApi ?
-			new mw.ForeignApi( config.foreignApi, { anonymous: true } ) :
-			new mw.Api();
+		this.foreignApi = config.foreignApi;
+		this.apiPromise = null;
 
 		this.searchInput = new OO.ui.SearchInputWidget( {
 			autocomplete: false,
@@ -38,6 +37,21 @@
 	}
 	OO.inheritClass( HelpPanelSearchWidget, OO.ui.Widget );
 
+	HelpPanelSearchWidget.prototype.getApi = function () {
+		if ( !this.apiPromise ) {
+			if ( this.foreignApi ) {
+				this.apiPromise = mw.loader.using( 'mediawiki.ForeignApi' ).then( function () {
+					this.api = new mw.ForeignApi( this.foreignApi, { anonymous: true } );
+				}.bind( this ) );
+			} else {
+				this.api = new mw.Api();
+				this.apiPromise = $.Deferred().resolve();
+			}
+		}
+		return this.apiPromise;
+
+	};
+
 	HelpPanelSearchWidget.prototype.setLoading = function ( loading ) {
 		if ( loading ) {
 			if ( !this.searchInput.isPending() ) {
@@ -50,7 +64,9 @@
 
 	HelpPanelSearchWidget.prototype.onSearchInputChange = function () {
 		var query = this.searchInput.getValue();
-		this.api.abort();
+		if ( this.api ) {
+			this.api.abort();
+		}
 		this.searchResultsPanel.$element.empty();
 
 		if ( query === '' ) {
@@ -59,28 +75,30 @@
 		}
 
 		this.setLoading( true );
-		this.api.get( {
-			action: 'query',
-			list: 'search',
-			srnamespace: this.searchNamespaces.join( '|' ),
-			srwhat: 'text',
-			srprop: 'snippet',
-			srsearch: query
-		} ).then( function ( response ) {
-			this.logger.log( 'search', {
-				queryLength: query.length,
-				resultCount: response.query.search.length
-			} );
-			this.searchResultsPanel.$element.empty();
-			if ( response.query.search.length ) {
-				this.searchResultsPanel.$element.append(
-					response.query.search.map( this.buildSearchResult )
-				);
-			} else {
-				this.searchResultsPanel.$element.append( this.noResultsMessage );
-			}
-		}.bind( this ) ).always( function () {
-			this.setLoading( false );
+		this.getApi().then( function () {
+			this.api.get( {
+				action: 'query',
+				list: 'search',
+				srnamespace: this.searchNamespaces.join( '|' ),
+				srwhat: 'text',
+				srprop: 'snippet',
+				srsearch: query
+			} ).then( function ( response ) {
+				this.logger.log( 'search', {
+					queryLength: query.length,
+					resultCount: response.query.search.length
+				} );
+				this.searchResultsPanel.$element.empty();
+				if ( response.query.search.length ) {
+					this.searchResultsPanel.$element.append(
+						response.query.search.map( this.buildSearchResult )
+					);
+				} else {
+					this.searchResultsPanel.$element.append( this.noResultsMessage );
+				}
+			}.bind( this ) ).always( function () {
+				this.setLoading( false );
+			}.bind( this ) );
 		}.bind( this ) );
 	};
 
