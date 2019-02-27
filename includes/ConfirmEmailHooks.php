@@ -39,6 +39,9 @@ class ConfirmEmailHooks {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$context = RequestContext::getMain();
 
+		// Load JS that displays a message informing the user that a verification email is coming
+		$context->getOutput()->addModules( 'ext.growthExperiments.confirmEmail.createAccount' );
+
 		// Change email label from "(optional)" to "(recommended)", but only if email is optional
 		if ( !$config->get( 'EmailConfirmToEdit' ) ) {
 			$formDescriptor['email']['label-message'] = 'growthexperiments-confirmemail-emailrecommended';

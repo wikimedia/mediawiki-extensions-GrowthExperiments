@@ -340,6 +340,16 @@
 				"desktop",
 				"mobile"
 			]
+		},
+		"ext.growthExperiments.confirmEmail.createAccount": {
+			"scripts": "confirmemail/ext.confirmEmail.createAccount.js",
+			"messages": [
+				"growthexperiments-confirmemail-emailwarning"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
 		}
 	},
 	"config": {
