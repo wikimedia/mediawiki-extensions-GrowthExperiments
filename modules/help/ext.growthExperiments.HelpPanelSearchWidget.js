@@ -93,7 +93,7 @@
 					target: '_blank',
 					'data-link-id': 'search-result-' + ( index + 1 )
 				} ),
-			$snippet = $( '<div>' ).append( result.snippet + mw.message( 'ellipsis' ).text() );
+			$snippet = $( '<div>' ).append( result.snippet + mw.message( 'ellipsis' ).escaped() );
 
 		return $( '<div>' )
 			.addClass( 'mw-ge-help-panel-popup-search-search-result' )
