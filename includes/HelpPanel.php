@@ -142,12 +142,18 @@ class HelpPanel {
 	 * @throws ConfigException
 	 */
 	public static function shouldShowForReadingMode( OutputPage $out, $action ) {
+		if ( $action !== 'view' ) {
+			return false;
+		}
 		$title = $out->getTitle();
 		if ( !$title ) {
 			return false;
 		}
-		return $action === 'view' &&
-			   in_array( $title->getSubjectPage()->getNamespace(),
+		if ( $title->isMainPage() ) {
+			// kowiki uses a Wikipedia namespace page as its Main_Page.
+			return false;
+		}
+		return in_array( $title->getSubjectPage()->getNamespace(),
 				   $out->getConfig()->get( 'GEHelpPanelReadingModeNamespaces' ) );
 	}
 
