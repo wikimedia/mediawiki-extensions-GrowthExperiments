@@ -9,7 +9,10 @@
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:GrowthExperiments",
 	"requires": {
-		"MediaWiki": ">= 1.32.0"
+		"MediaWiki": ">= 1.32.0",
+		"extensions": {
+			"PageViewInfo": "*"
+		}
 	},
 	"AutoloadNamespaces": {
 		"GrowthExperiments\\": "includes/"
@@ -315,6 +318,24 @@
 		},
 		"ext.growthExperiments.confirmEmail.createAccount.styles": {
 			"styles": "confirmemail/ext.confirmEmail.createAccount.less",
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.growthExperiments.Homepage.BaseSidebarModule.styles": {
+			"styles": [
+				"homepage/ext.growthExperiments.BaseSidebarModule.less"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.growthExperiments.Homepage.Impact.styles": {
+			"styles": [
+				"homepage/ext.growthExperiments.ImpactModule.less"
+			],
 			"targets": [
 				"desktop",
 				"mobile"
