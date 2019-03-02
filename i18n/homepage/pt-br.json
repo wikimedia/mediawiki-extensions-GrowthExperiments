@@ -8,5 +8,8 @@
 	"growthexperiments-homepage-tab": "Página principal",
 	"prefs-homepage": "Página inicial do recém-chegado",
 	"growthexperiments-homepage-enable": "Exibir página inicial do recém-chegado",
-	"growthexperiments-homepage-pt-link": "Padrão para a página principal do recém-chegado do link de nome de usuário em ferramentas pessoais"
+	"growthexperiments-homepage-pt-link": "Padrão para a página principal do recém-chegado do link de nome de usuário em ferramentas pessoais",
+	"growthexperiments-homepage-impact-contributions-link": "<strong>$1</strong> {{PLURAL:$1|edição|edições}} (ver todas)",
+	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> edições em artigos",
+	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|edição|edições}} para outros tipos de páginas (ver todos)"
 }
