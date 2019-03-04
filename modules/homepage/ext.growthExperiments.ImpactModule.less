@@ -4,16 +4,21 @@
 .growthexperiments-homepage-module-impact {
 	display: table;
 
+	.growthexperiments-homepage-module-body {
+		margin: 1em -5px;
+	}
+
 	.impact-row {
 		display: table-row;
 
 		.article-image {
 			display: table-cell;
 			padding: 5px 0 5px 0;
+			border-radius: @borderRadius;
 
 			.oo-ui-iconWidget {
-				height: 50px;
-				width: 50px;
+				height: 40px;
+				width: 40px;
 			}
 		}
 
@@ -22,12 +27,27 @@
 			vertical-align: middle;
 			padding: 0 10px 0 10px;
 			width: 100%;
+			color: @colorGray2;
 		}
 
 		.pageviews {
 			display: table-cell;
 			text-align: right;
+			padding-right: 5px;
 			vertical-align: middle;
+			white-space: nowrap;
+		}
+	}
+
+	a.impact-row:hover {
+		background-color: #fff;
+
+		.article-title {
+			color: @colorGray2;
+		}
+
+		.pageviews {
+			font-weight: bold;
 		}
 	}
 }
