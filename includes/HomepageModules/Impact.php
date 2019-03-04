@@ -131,7 +131,9 @@ class Impact extends BaseSidebarModule {
 
 				// Sort by pageviews DESC
 				usort( $this->contribs, function ( $a, $b ) {
-					return $a[ 'views' ] < $b[ 'views' ];
+					$aViews = $a[ 'views' ] === null ? -1 : $a[ 'views' ];
+					$bViews = $b[ 'views' ] === null ? -1 : $b[ 'views' ];
+					return $aViews < $bViews;
 				} );
 
 				// Take top 5
