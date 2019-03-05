@@ -10,8 +10,8 @@
 	"growthexperiments-homepage-enable": "عرض الصفحة الرئيسية للقادمين الجدد",
 	"growthexperiments-homepage-pt-link": "افتراضي للصفحة الرئيسية للقادمين الجدد من رابط اسم المستخدم في الأدوات الشخصية",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|تأثيرك}}",
-	"growthexperiments-homepage-impact-subheader": "عدد مشاهدات المقالات منذ {{GENDER:$1|تعديلك}} (آخر 60 يوما)",
-	"growthexperiments-homepage-impact-contributions-link": "<strong>$1</strong> {{PLURAL:$1|تعديل|تعديلات}} (راجع الكل)",
+	"growthexperiments-homepage-impact-subheader": "يشاهد الأشخاص المقالات التي {{GENDER:$1|عدلتها}} ! المشاهدات منذ أن {{GENDER:$1|عدلتها}}(آخر 60 يوما):",
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|أنت قد}} أجريت <strong>$1</strong> {{PLURAL:$1|تعديلا|تعديلات}} (راجع الكل)",
 	"growthexperiments-homepage-impact-subheader-no-edit": "أنت لم {{GENDER:$1|تقم|تقومي}} بعد بتعديل أية مقالات، ستعرض هذه المنطقة تأثير تعديلات {{GENDER:$1|تعديلك}}.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> تعديلات للمقالات",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|تعديل|تعديلات}} لأنواع أخرى من الصفحات (راجع الكل)"

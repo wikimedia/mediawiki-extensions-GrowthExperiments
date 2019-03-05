@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"GoForceX"
+			"GoForceX",
+			"Zazzzz"
 		]
 	},
+	"growthexperiments-help-panel-question-button-text": "继续",
 	"growthexperiments-help-panel-search-label": "搜索来获取帮助"
 }

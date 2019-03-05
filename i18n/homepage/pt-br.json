@@ -10,8 +10,8 @@
 	"growthexperiments-homepage-enable": "Exibir página inicial do recém-chegado",
 	"growthexperiments-homepage-pt-link": "Padrão para a página principal do recém-chegado do link de nome de usuário em ferramentas pessoais",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Seu}} impacto",
-	"growthexperiments-homepage-impact-subheader": "Número de visualizações de artigos desde {{GENDER:$1|sua}} edição (últimos 60 dias)",
-	"growthexperiments-homepage-impact-contributions-link": "<strong>$1</strong> {{PLURAL:$1|edição|edições}} (ver todas)",
+	"growthexperiments-homepage-impact-subheader": "As pessoas estão vendo os artigos que {{GENDER:$1|você}} editou! Visualizações desde {{GENDER:$1|sua}} edição (últimos 60 dias):",
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Você tem}} feito <strong>$1</strong> {{PLURAL:$1|edição|edições}} (ver todas)",
 	"growthexperiments-homepage-impact-subheader-no-edit": "{{GENDER:$1|Você}} ainda não editei nenhum artigo. Esta área mostrará o impacto de {{GENDER:$1|suas}} edições.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> edições em artigos",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|edição|edições}} para outros tipos de páginas (ver todos)"

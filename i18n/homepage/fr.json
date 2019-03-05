@@ -11,8 +11,8 @@
 	"growthexperiments-homepage-enable": "Afficher la page d'accueil du nouvel arrivant",
 	"growthexperiments-homepage-pt-link": "Lien par défaut vers la page d'accueil du nouvel arrivant, à partir du lien du nom d'utilisateur dans les outils personnels",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Votre}} impact",
-	"growthexperiments-homepage-impact-subheader": "Nombre de vues d’articles depuis que {{GENDER:$1|vous}} avez modifié (sur les 60 derniers jours)",
-	"growthexperiments-homepage-impact-contributions-link": "<strong>$1</strong> {{PLURAL:$1|modification|modifications}} (voir tout)",
+	"growthexperiments-homepage-impact-subheader": "Des gens regardent les articles que {{GENDER:$1|vous}} avez modifié ! (depuis les 60 derniers jours) :",
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Vous}} avez fait <strong>$1</strong> {{PLURAL:$1|modification|modifications}} (voir tout)",
 	"growthexperiments-homepage-impact-subheader-no-edit": "{{GENDER:$1|Vous}} n’avez pas encore modifié d’article. Cette zone vous montrera l’impact de {{GENDER:$1|vos}} modifications.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> modification aux articles",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|modification|modifications}} sur d’autres sortes de page (voir tout)"
