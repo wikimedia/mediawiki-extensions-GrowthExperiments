@@ -76,6 +76,9 @@
 		],
 		"AuthChangeFormFields": [
 			"GrowthExperiments\\ConfirmEmailHooks::onAuthChangeFormFields"
+		],
+		"UserSendConfirmationMail": [
+			"GrowthExperiments\\ConfirmEmailHooks::onUserSendConfirmationMail"
 		]
 	},
 	"ResourceFileModulePaths": {

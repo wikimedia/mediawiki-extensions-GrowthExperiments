@@ -5,7 +5,9 @@ namespace GrowthExperiments;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\MediaWikiServices;
 use Html;
+use Message;
 use RequestContext;
+use User;
 
 class ConfirmEmailHooks {
 
@@ -71,5 +73,48 @@ class ConfirmEmailHooks {
 				'ext.growthExperiments.confirmEmail.createAccount.styles'
 			);
 		}
+	}
+
+	/**
+	 * Override confirmation email
+	 * @param User $user
+	 * @param array &$mail
+	 * @param array $info
+	 */
+	public static function onUserSendConfirmationMail( User $user, array &$mail, array $info ) {
+		if ( !self::isConfirmEmailEnabled() ) {
+			return;
+		}
+		$lang = RequestContext::getMain()->getLanguage();
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+
+		// TODO different messages for different $info['type'] values?
+		$textParams = [
+			$info['ip'],
+			$user->getName(),
+			$info['confirmURL'],
+			$lang->userTimeAndDate( $info['expiration'], $user ),
+			$info['invalidateURL']
+		];
+		$htmlParams = $textParams;
+		$htmlParams[2] = Message::rawParam( Html::element( 'a',
+			[
+				'href' => $info['confirmURL'],
+				'style' => 'background: #36C; color: white; padding: 0.45em 0.6em; font-weight: bold; ' .
+					'text-align: center; text-decoration: none;'
+			],
+			wfMessage( 'growthexperiments-confirmemail-confirm-button' )->text()
+		) );
+		$logoImage = Html::rawElement( 'p', [],
+			Html::element( 'img', [ 'src' => wfExpandUrl( $config->get( 'Logo' ), PROTO_CANONICAL ) ] )
+		);
+
+		$mail['subject'] = wfMessage( 'growthexperiments-confirmemail-confirm-subject' )->text();
+		$mail['body'] = [
+			'text' => wfMessage( 'growthexperiments-confirmemail-confirm-body-plaintext' )
+				->params( $textParams )->text(),
+			'html' => $logoImage . wfMessage( 'growthexperiments-confirmemail-confirm-body-html' )
+				->params( $htmlParams )->parse()
+		];
 	}
 }
