@@ -55,16 +55,47 @@ class Impact extends BaseSidebarModule {
 				function ( $contrib ) use ( $emptyImg ) {
 					$img = $contrib[ 'image_tag' ] ?? $emptyImg;
 					$titleText = $contrib[ 'title' ]->getPrefixedText();
+					$titleUrl = $contrib[ 'title' ]->getLinkUrl();
+					$articleLinkTooltip = $this->getContext()
+						->msg( 'growthexperiments-homepage-impact-article-link-tooltip' )
+						->text();
 					$views = $contrib[ 'views' ] ?? '--';
-					$pageViewsToolUrl = $this->getPageViewToolsUrl(
+					$pageviewsUrl = $this->getPageViewToolsUrl(
 						$contrib[ 'title' ], $contrib[ 'ts' ]
 					);
+					$pageviewsTooltip = $this->getContext()
+						->msg( 'growthexperiments-homepage-impact-pageviews-link-tooltip' )
+						->text();
 					return Html::rawElement(
-						'a',
-						[ 'href' => $pageViewsToolUrl, 'class' => 'impact-row' ],
-						Html::rawElement( 'div', [ 'class' => 'article-image' ], $img ) .
-						Html::element( 'span', [ 'class' => 'article-title' ], $titleText ) .
-						Html::element( 'span', [ 'class' => 'pageviews' ], $views )
+						'div',
+						[ 'class' => 'impact-row' ],
+						Html::rawElement(
+							'a',
+							[
+								'class' => 'article-image',
+								'href' => $titleUrl,
+								'title' => $articleLinkTooltip,
+							],
+							$img
+						) .
+						Html::element(
+							'a',
+							[
+								'class' => 'article-title',
+								'href' => $titleUrl,
+								'title' => $articleLinkTooltip,
+							],
+							$titleText
+						) .
+						Html::element(
+							'a',
+							[
+								'class' => 'pageviews',
+								'href' => $pageviewsUrl,
+								'title' => $pageviewsTooltip,
+							],
+							$views
+						)
 					);
 				},
 				$this->getArticleContributions()
