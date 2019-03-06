@@ -4,6 +4,7 @@
 	},
 	"apihelp-helppanelquestionposter-summary": "Handle questions posted via the help panel for the current user.",
 	"apihelp-helppanelquestionposter-param-body": "The text of the question provided by the user.",
+	"apihelp-helppanelquestionposter-param-source": "The component at the source of the question. Valid values are 'helppanel', 'homepage-help', and 'homepage-mentorship'",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "The relevant title, if selected, to include with the question.",
 	"apihelp-helppanelquestionposter-param-email": "The optional email address, if the user has an unconfirmed email or no email, to use for sending a verification email."
 }

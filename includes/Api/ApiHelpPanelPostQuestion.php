@@ -3,18 +3,16 @@
 namespace GrowthExperiments\Api;
 
 use ApiBase;
+use ApiMain;
 use ApiUsageException;
-use GrowthExperiments\HelpPanel\HelpModuleQuestionPoster;
-use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionPoster;
-use GrowthExperiments\HomepageHooks;
 use MediaWiki\Logger\LoggerFactory;
 use MWException;
-use Title;
 
 class ApiHelpPanelPostQuestion extends ApiBase {
 
 	const API_PARAM_BODY = 'body';
+	const API_PARAM_SOURCE = 'source';
 	const API_PARAM_EMAIL = 'email';
 	const API_PARAM_RELEVANT_TITLE = 'relevanttitle';
 
@@ -22,6 +20,27 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 	 * @var QuestionPoster
 	 */
 	private $questionPoster;
+
+	/**
+	 * @var array [ 'source' => ClassName::class ] of the registered question posters
+	 */
+	private $questionPosterClasses;
+
+	/**
+	 * @inheritDoc
+	 */
+	public function __construct( ApiMain $mainModule, $moduleName, $modulePrefix = '' ) {
+		parent::__construct( $mainModule, $moduleName, $modulePrefix );
+
+		$this->questionPosterClasses = [
+			'helppanel' =>
+				\GrowthExperiments\HelpPanel\HelpPanelQuestionPoster::class,
+			'homepage-help' =>
+				\GrowthExperiments\HelpPanel\HelpModuleQuestionPoster::class,
+			'homepage-mentorship' =>
+				\GrowthExperiments\HelpPanel\MentorshipModuleQuestionPoster::class,
+		];
+	}
 
 	/**
 	 * Save help panel question post.
@@ -32,7 +51,7 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$emailStatus = null;
-		$this->setQuestionPoster( $params[self::API_PARAM_RELEVANT_TITLE] );
+		$this->setQuestionPoster( $params[self::API_PARAM_SOURCE] );
 
 		if ( $params[self::API_PARAM_RELEVANT_TITLE] ) {
 			$status = $this->questionPoster->validateRelevantTitle(
@@ -75,24 +94,13 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 	}
 
 	/**
-	 * @param string $relevantTitle
+	 * @param string $source
 	 * @throws ApiUsageException
 	 */
-	private function setQuestionPoster( $relevantTitle = '' ) {
-		$title = Title::newFromText( $relevantTitle );
-		if ( HomepageHooks::isHomepageEnabled( $this->getUser() ) && $title &&
-			 $title->isSpecial( 'Homepage' )
-		) {
-			try {
-				$this->questionPoster = new HelpModuleQuestionPoster( $this->getContext() );
-				return;
-			} catch ( \Exception $exception ) {
-				$this->dieWithException( $exception );
-			}
-		}
-		// If not the homepage, assume it's a help panel question.
+	private function setQuestionPoster( $source ) {
 		try {
-			$this->questionPoster = new HelpPanelQuestionPoster( $this->getContext() );
+			$questionPosterClass = $this->questionPosterClasses[$source];
+			$this->questionPoster = new $questionPosterClass( $this->getContext() );
 		} catch ( \Exception $exception ) {
 			$this->dieWithException( $exception );
 		}
@@ -113,7 +121,12 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 			self::API_PARAM_BODY => [
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_MAX_CHARS => 2000
+				ApiBase::PARAM_MAX_CHARS => 2000,
+			],
+			self::API_PARAM_SOURCE => [
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_TYPE => array_keys( $this->questionPosterClasses ),
+				ApiBase::PARAM_DFLT => 'helppanel',
 			],
 			self::API_PARAM_RELEVANT_TITLE => [
 				ApiBase::PARAM_REQUIRED => false,
@@ -121,7 +134,7 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 			],
 			self::API_PARAM_EMAIL => [
 				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_TYPE => 'string'
+				ApiBase::PARAM_TYPE => 'string',
 			]
 		];
 	}

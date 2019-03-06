@@ -2,7 +2,9 @@
 
 namespace GrowthExperiments\HelpPanel;
 
+use ConfigException;
 use GrowthExperiments\HelpPanel;
+use Title;
 
 class HelpPanelQuestionPoster extends QuestionPoster {
 
@@ -27,5 +29,13 @@ class HelpPanelQuestionPoster extends QuestionPoster {
 				->msg( 'growthexperiments-help-panel-question-subject-template' )
 				->inContentLanguage()->text();
 		}
+	}
+
+	/**
+	 * @return Title
+	 * @throws ConfigException
+	 */
+	protected function getTargetTitle() {
+		return HelpPanel::getHelpDeskTitle( $this->context->getConfig() );
 	}
 }

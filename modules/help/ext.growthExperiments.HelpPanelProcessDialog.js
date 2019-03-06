@@ -7,21 +7,51 @@
 	 * @param {Object} config
 	 * @cfg {mw.libs.ge.HelpPanelLogger} logger
 	 * @cfg {bool} [showCogMenu=true] Whether the cog menu show be shown
+	 * @cfg {string} source Logical name of the source to use with the HelpPanelPostQuestion API
+	 * @cfg {string} storageKey Name of the key to use to persist question draft in storage
+	 * @cfg {object} panelTitleMessages Object like { panelName: title } to configure panel titles
+	 * @cfg {string} questionReviewHeader Header message on the question review panel
+	 * @cfg {string} questionCompleteConfirmationText Confirmation text for question complete panel
+	 * @cfg {string} viewQuestionText Text of the link to view the question that was just posted
+	 * @cfg {string} submitFailureMessage Text of the error message when failing to post a question
 	 * @constructor
 	 */
-	var HelpPanelProcessDialog = function helpPanelProcessDialog( config ) {
+	var configData = require( './data.json' ),
+		linksConfig = configData.GEHelpPanelLinks,
+		HelpPanelProcessDialog = function helpPanelProcessDialog( config ) {
 			HelpPanelProcessDialog.super.call( this, config );
 			this.logger = config.logger;
 			this.showCogMenu = config.showCogMenu !== undefined ? config.showCogMenu : true;
+			this.source = config.source || 'helppanel';
+			this.storageKey = config.storageKey || 'help-panel-question-text';
+			this.panelTitleMessages = $.extend( {
+				home: mw.message( 'growthexperiments-help-panel-home-title' ).text(),
+				questionreview: mw.message( 'growthexperiments-help-panel-questionreview-title' ).text(),
+				questioncomplete: mw.message( 'growthexperiments-help-panel-questioncomplete-title' ).text()
+			}, config.panelTitleMessages );
+			this.questionReviewHeader = config.questionReviewHeader ||
+				mw.message(
+					'growthexperiments-help-panel-questionreview-header',
+					$( linksConfig.helpDeskLink ),
+					mw.user.getName()
+				).parse();
+			this.questionCompleteConfirmationText = config.questionCompleteConfirmationText ||
+				mw.message(
+					'growthexperiments-help-panel-questioncomplete-confirmation-text'
+				).text();
+			this.viewQuestionText = config.viewQuestionText ||
+				mw.message(
+					'growthexperiments-help-panel-questioncomplete-view-link-text'
+				).text();
+			this.submitFailureMessage = config.submitFailureMessage || mw.message(
+				'growthexperiments-help-panel-question-post-error', linksConfig.helpDeskLink
+			).parse();
 		},
-		HelpPanelSearchWidget = require( './ext.growthExperiments.HelpPanelSearchWidget.js' ),
-		configData = require( './data.json' ),
-		linksConfig = configData.GEHelpPanelLinks;
+		HelpPanelSearchWidget = require( './ext.growthExperiments.HelpPanelSearchWidget.js' );
 
 	OO.inheritClass( HelpPanelProcessDialog, OO.ui.ProcessDialog );
 
 	HelpPanelProcessDialog.static.name = 'HelpPanel';
-	HelpPanelProcessDialog.static.title = mw.message( 'growthexperiments-help-panel-home-title' ).text();
 	HelpPanelProcessDialog.static.actions = [
 		// Allow user to close the panel at any stage.
 		{
@@ -66,12 +96,9 @@
 	 */
 	HelpPanelProcessDialog.prototype.swapPanel = function ( panel ) {
 		var panelObj = this[ panel + 'Panel' ],
-			titleMsg = mw.message( 'growthexperiments-help-panel-' + panel + '-title' );
+			titleMsg = this.panelTitleMessages[ panel ] || this.panelTitleMessages.home;
 
-		if ( !titleMsg.exists() ) {
-			titleMsg = mw.message( 'growthexperiments-help-panel-home-title' );
-		}
-		this.title.setLabel( titleMsg.text() );
+		this.title.setLabel( titleMsg );
 
 		if ( ( [ 'home', 'questionreview', 'questioncomplete' ].indexOf( panel ) ) === -1 ) {
 			throw new Error( 'Unknown panel: ' + panel );
@@ -105,7 +132,7 @@
 		// user clicks "back".
 		this.questionTextInput.setValue( reviewTextInputValue );
 		// Save the draft text in local storage in case the user reloads their page.
-		mw.storage.set( 'help-panel-question-text', reviewTextInputValue );
+		mw.storage.set( this.storageKey, reviewTextInputValue );
 	};
 
 	/**
@@ -291,7 +318,7 @@
 
 		// Fields
 		this.buildSettingsCog();
-		this.previousQuestionText = mw.storage.get( 'help-panel-question-text' );
+		this.previousQuestionText = mw.storage.get( this.storageKey );
 
 		this.questionTextInput = new OO.ui.MultilineTextInputWidget( {
 			placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' ).text(),
@@ -300,7 +327,7 @@
 			rows: 3,
 			maxRows: 3,
 			autosize: true,
-			value: mw.storage.get( 'help-panel-question-text' ),
+			value: mw.storage.get( this.storageKey ),
 			spellcheck: true,
 			required: true,
 			autofocus: false
@@ -313,7 +340,7 @@
 			rows: 3,
 			maxRows: 3,
 			autosize: true,
-			value: mw.storage.get( 'help-panel-question-text' ),
+			value: mw.storage.get( this.storageKey ),
 			spellcheck: true,
 			required: true,
 			autofocus: !OO.ui.isMobile()
@@ -332,7 +359,7 @@
 
 		this.askQuestionContinueButton = new OO.ui.ButtonWidget( {
 			flags: [ 'progressive', 'primary' ],
-			disabled: !mw.storage.get( 'help-panel-question-text' ),
+			disabled: !mw.storage.get( this.storageKey ),
 			label: mw.message( 'growthexperiments-help-panel-question-button-text' ).text()
 		} ).connect( this, { click: [ 'executeAction', 'questionreview' ] } );
 
@@ -387,12 +414,7 @@
 
 		this.questionReviewContent.addItems( [
 			new OO.ui.LabelWidget( {
-				label: $( '<p>' )
-					.append( mw.message(
-						'growthexperiments-help-panel-questionreview-header',
-						$( linksConfig.helpDeskLink ),
-						mw.user.getName()
-					).parse() )
+				label: $( '<p>' ).append( this.questionReviewHeader )
 			} )
 		] );
 
@@ -449,9 +471,8 @@
 			} ).$element
 		} );
 
-		this.questionCompleteConfirmationText = new OO.ui.LabelWidget( {
-			label: $( '<p>' )
-				.text( mw.message( 'growthexperiments-help-panel-questioncomplete-confirmation-text' ).text() )
+		this.questionCompleteConfirmationLabel = new OO.ui.LabelWidget( {
+			label: $( '<p>' ).text( this.questionCompleteConfirmationText )
 		} );
 		this.questionCompleteFirstEditText = new OO.ui.LabelWidget( {
 			label: $( '<p>' )
@@ -460,7 +481,7 @@
 		this.questionCompleteViewQuestionText = new OO.ui.LabelWidget();
 		this.questionCompleteNotificationsText = new OO.ui.LabelWidget();
 		this.questionCompleteContent.addItems( [
-			this.questionCompleteConfirmationText,
+			this.questionCompleteConfirmationLabel,
 			this.questionCompleteNotificationsText,
 			this.questionCompleteViewQuestionText,
 			this.questionCompleteFirstEditText
@@ -566,6 +587,7 @@
 					// Toggle the first edit text, will set depending on API response.
 					this.questionCompleteFirstEditText.toggle( false );
 					return new mw.Api().postWithToken( 'csrf', {
+						source: this.source,
 						action: 'helppanelquestionposter',
 						email: this.questionReviewAddEmail.getValue(),
 						relevanttitle: this.questionIncludeTitleCheckbox.isSelected() ? this.relevantTitle.getPrefixedText() : '',
@@ -592,13 +614,13 @@
 										href: data.helppanelquestionposter.viewquestionurl,
 										target: '_blank',
 										'data-link-id': 'view-question',
-										text: mw.message( 'growthexperiments-help-panel-questioncomplete-view-link-text' ).text()
+										text: this.viewQuestionText
 									} ) ) ) );
 							this.setNotificationLabelText();
 							this.swapPanel( action );
 							// Reset the post a question text inputs.
 							this.questionTextInput.setValue( '' );
-							mw.storage.set( 'help-panel-question-text', '' );
+							mw.storage.set( this.storageKey, '' );
 						}.bind( this ), function () {
 							// Return a recoverable error. The user can either try again, or they
 							// can follow the instructions in the error message for how to post
@@ -606,9 +628,9 @@
 							// Re-enable the submit button once the user is done with modal.
 							this.logger.log( 'submit-failure', submitAttemptData );
 							this.questionReviewSubmitButton.setDisabled( false );
-							return $.Deferred().reject( new OO.ui.Error( $( '<p>' ).append( mw.message(
-								'growthexperiments-help-panel-question-post-error', linksConfig.helpDeskLink
-							).parse() ) ) ).promise();
+							return $.Deferred().reject(
+								new OO.ui.Error( $( '<p>' ).append( this.submitFailureMessage ) )
+							).promise();
 						}.bind( this ) );
 				}
 			}.bind( this ) );

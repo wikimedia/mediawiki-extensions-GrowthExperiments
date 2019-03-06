@@ -4,6 +4,7 @@ namespace GrowthExperiments;
 
 use ConfigException;
 use GrowthExperiments\HomepageModules\Help;
+use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Specials\SpecialHomepage;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\MenuBuilder;
@@ -162,6 +163,10 @@ class HomepageHooks {
 			'label-message' => self::HOMEPAGE_PREF_PT_LINK,
 			'hide-if' => [ '!==', self::HOMEPAGE_PREF_ENABLE, '1' ],
 		];
+
+		$preferences[ Mentor::MENTOR_PREF ] = [
+			'type' => 'api',
+		];
 	}
 
 	/**
@@ -198,6 +203,7 @@ class HomepageHooks {
 	public static function onListDefinedTags( &$tags ) {
 		if ( self::isHomepageEnabled() ) {
 			$tags[] = Help::HELP_MODULE_QUESTION_TAG;
+			$tags[] = Mentorship::MENTORSHIP_MODULE_QUESTION_TAG;
 		}
 	}
 

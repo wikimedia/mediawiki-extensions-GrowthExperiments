@@ -246,16 +246,51 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.Homepage.Help": {
+		"ext.growthExperiments.Homepage.QuestionPoster": {
 			"packageFiles": [
-				"homepage/ext.growthExperiments.Homepage.Help.js",
-				"homepage/ext.growthExperiments.HelpDeskDialog.js"
+				"homepage/ext.growthExperiments.Homepage.QuestionPoster.js",
+				"homepage/ext.growthExperiments.QuestionPosterDialog.js"
 			],
 			"messages": [
 				"growthexperiments-homepage-help-cancel"
 			],
 			"dependencies": [
-				"ext.growthExperiments.Help"
+				"ext.growthExperiments.Help",
+				"mediawiki.jqueryMsg"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.growthExperiments.Homepage.Help": {
+			"packageFiles": [
+				"homepage/ext.growthExperiments.Homepage.Help.js"
+			],
+			"messages": [
+				"growthexperiments-homepage-help-cancel"
+			],
+			"dependencies": [
+				"ext.growthExperiments.Homepage.QuestionPoster"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.growthExperiments.Homepage.Mentorship": {
+			"packageFiles": [
+				"homepage/ext.growthExperiments.Homepage.Mentorship.js"
+			],
+			"messages": [
+				"growthexperiments-homepage-mentorship-dialog-title",
+				"growthexperiments-homepage-mentorship-questionreview-header",
+				"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text",
+				"growthexperiments-homepage-mentorship-confirmation-text",
+				"growthexperiments-homepage-mentorship-view-question-text"
+			],
+			"dependencies": [
+				"ext.growthExperiments.Homepage.QuestionPoster"
 			],
 			"targets": [
 				"desktop",
@@ -462,6 +497,10 @@
 		"GEHomepageNewAccountEnablePercentage": {
 			"description": "Percentage of new accounts to enable homepage for. Must be a whole number.",
 			"value": 50
+		},
+		"GEHomepageMentorsList": {
+			"description": "Title of the wiki page that contains the list of available mentors.",
+			"value": ""
 		},
 		"GEConfirmEmailEnabled": {
 			"description": "Global ON/OFF switch for the email confirmation changes.",

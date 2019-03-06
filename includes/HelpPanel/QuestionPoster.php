@@ -5,7 +5,6 @@ namespace GrowthExperiments\HelpPanel;
 use CommentStoreComment;
 use Config;
 use Content;
-use GrowthExperiments\HelpPanel;
 use GrowthExperiments\Util;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
@@ -38,7 +37,7 @@ abstract class QuestionPoster {
 	/**
 	 * @var Title
 	 */
-	private $helpDeskTitle;
+	private $targetTitle;
 
 	/**
 	 * @var string
@@ -73,7 +72,6 @@ abstract class QuestionPoster {
 	/**
 	 * QuestionPoster constructor.
 	 * @param IContextSource $context
-	 * @throws \ConfigException
 	 * @throws MWException
 	 */
 	public function __construct( IContextSource $context ) {
@@ -83,8 +81,8 @@ abstract class QuestionPoster {
 		}
 		$this->config = $this->context->getConfig();
 		$this->isFirstEdit = ( $this->context->getUser()->getEditCount() === 0 );
-		$this->helpDeskTitle = HelpPanel::getHelpDeskTitle( $this->config );
-		$page = new WikiPage( $this->helpDeskTitle );
+		$this->targetTitle = $this->getTargetTitle();
+		$page = new WikiPage( $this->targetTitle );
 		$this->pageUpdater = $page->newPageUpdater( $this->context->getUser() );
 		$this->parser = MediaWikiServices::getInstance()->getParser();
 	}
@@ -101,8 +99,7 @@ abstract class QuestionPoster {
 		$this->addTag();
 		$this->pageUpdater->setContent( SlotRecord::MAIN, $this->getContent( $body ) );
 		$newRev = $this->pageUpdater->saveRevision(
-			CommentStoreComment::newUnsavedComment( $this->getSectionHeader() ),
-			EDIT_UPDATE
+			CommentStoreComment::newUnsavedComment( $this->getSectionHeader() )
 		);
 		if ( !$this->pageUpdater->getStatus()->isGood() ) {
 			return $this->pageUpdater->getStatus();
@@ -125,12 +122,17 @@ abstract class QuestionPoster {
 	 */
 	public function getContent( $body ) {
 		$body = $this->addSignature( $body );
+		$content = new WikitextContent( $body );
+		$header = $this->getSectionHeader( true );
 		$parent = $this->pageUpdater->grabParentRevision();
-		return $parent->getContent( SlotRecord::MAIN )->replaceSection(
-			'new',
-			new WikitextContent( $body ),
-			$this->getSectionHeader( true )
-		);
+		if ( $parent ) {
+			return $parent->getContent( SlotRecord::MAIN )->replaceSection(
+				'new',
+				$content,
+				$header
+			);
+		}
+		return $content->addSectionHeader( $header );
 	}
 
 	/**
@@ -249,10 +251,10 @@ abstract class QuestionPoster {
 	 * Set the result URL with the fragment of the newly created question.
 	 */
 	public function setResultUrl() {
-		$this->helpDeskTitle->setFragment(
+		$this->targetTitle->setFragment(
 			$this->parser->guessSectionNameFromWikiText( $this->getSectionHeader( true ) )
 		);
-		$this->resultUrl = $this->helpDeskTitle->getFullURL();
+		$this->resultUrl = $this->targetTitle->getFullURL();
 	}
 
 	/**
@@ -275,7 +277,14 @@ abstract class QuestionPoster {
 			// (oddly, empty string is the magic incantation to use the site default)
 			/* $timecorrection= */ ''
 		);
-		$this->sectionHeaderUnique = $this->sectionHeader . ' ' . $this->context->msg( 'parentheses' )->
-			plaintextParams( $timestamp )->inContentLanguage()->text();
+		$this->sectionHeaderUnique = $this->sectionHeader . ' ' .
+			$this->context->msg( 'parentheses' )
+				->plaintextParams( $timestamp )
+				->inContentLanguage()->escaped();
 	}
+
+	/**
+	 * @return Title The page where the question should be posted.
+	 */
+	abstract protected function getTargetTitle();
 }

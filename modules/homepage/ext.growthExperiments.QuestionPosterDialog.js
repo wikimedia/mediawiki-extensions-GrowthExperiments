@@ -1,26 +1,26 @@
 ( function () {
 
 	/**
-	 * @class HelpDeskDialog
+	 * @class QuestionPosterDialog
 	 * @extends HelpPanelProcessDialog
 	 *
 	 * @param {Object} config
-	 * @cfg {mw.libs.ge.HelpPanelLogger} logger
+	 * @cfg {string} name Logical name for this dialog instance
 	 * @constructor
 	 */
-	var HelpDeskDialog = function helpDeskDialog( config ) {
-			HelpDeskDialog.super.call( this, $.extend( {}, config, {
-				showCogMenu: false
+	var QuestionPosterDialog = function QuestionPosterDialog( config ) {
+			QuestionPosterDialog.super.call( this, $.extend( {}, config, {
+				showCogMenu: false,
+				storageKey: 'homepage-questionposter-question-text-' + config.name,
+				source: 'homepage-' + config.name
 			} ) );
-			this.logger = config.logger;
 		},
 		HelpPanelProcessDialog = require( 'ext.growthExperiments.Help' ).HelpPanelProcessDialog;
 
-	OO.inheritClass( HelpDeskDialog, HelpPanelProcessDialog );
+	OO.inheritClass( QuestionPosterDialog, HelpPanelProcessDialog );
 
-	HelpDeskDialog.static.name = 'HomepageHelpDeskDialog';
-	HelpDeskDialog.static.title = mw.message( 'growthexperiments-help-panel-home-title' ).text();
-	HelpDeskDialog.static.actions = [
+	QuestionPosterDialog.static.name = 'HomepageQuestionPosterDialog';
+	QuestionPosterDialog.static.actions = [
 		{
 			label: OO.ui.deferMsg( 'growthexperiments-help-panel-submit-question-button-text' ),
 			modes: [ 'questionreview' ],
@@ -42,22 +42,22 @@
 		}
 	];
 
-	HelpDeskDialog.prototype.swapPanel = function ( panel ) {
-		HelpDeskDialog.super.prototype.swapPanel.call( this, panel );
+	QuestionPosterDialog.prototype.swapPanel = function ( panel ) {
+		QuestionPosterDialog.super.prototype.swapPanel.call( this, panel );
 
 		if ( panel === 'questionreview' ) {
 			this.questionReviewFooterPanel.toggle( false );
 			this.homeFooterPanel.toggle( false );
 			this.questionIncludeFieldLayout.toggle( false );
-			this.questionReviewTextInput.setValue( mw.storage.get( 'help-panel-question-text' ) );
+			this.questionReviewTextInput.setValue( mw.storage.get( this.storageKey ) );
 			this.getActions().setAbilities( {
 				questioncomplete: this.questionReviewTextInput.getValue()
 			} );
 		}
 	};
 
-	HelpDeskDialog.prototype.getSetupProcess = function ( data ) {
-		return HelpDeskDialog.super.prototype.getSetupProcess
+	QuestionPosterDialog.prototype.getSetupProcess = function ( data ) {
+		return QuestionPosterDialog.super.prototype.getSetupProcess
 			.call( this, data )
 			.next( function () {
 				this.setMode( 'questionreview' );
@@ -67,23 +67,23 @@
 	/**
 	 * Connected to the questionReviewTextInput field.
 	 */
-	HelpDeskDialog.prototype.onTextInputChange = function () {
+	QuestionPosterDialog.prototype.onTextInputChange = function () {
 		var reviewTextInputValue = this.questionReviewTextInput.getValue();
 		// Enable the "Submit" button on the review step if there's text input.
 		this.getActions().setAbilities( {
 			questioncomplete: this.questionReviewTextInput.getValue()
 		} );
-		if ( mw.storage.get( 'help-panel-question-text' ) === '' ) {
+		if ( mw.storage.get( this.storageKey ) === '' ) {
 			this.logger.log( 'enter-question-text' );
 		}
 		// Save the draft text in local storage in case the user reloads their page.
-		mw.storage.set( 'help-panel-question-text', reviewTextInputValue );
+		mw.storage.set( this.storageKey, reviewTextInputValue );
 	};
 
 	/**
 	 * Connected to the change event on this.questionReviewAddEmail.
 	 */
-	HelpDeskDialog.prototype.onEmailInput = function () {
+	QuestionPosterDialog.prototype.onEmailInput = function () {
 		var reviewTextInputValue = this.questionReviewTextInput.getValue();
 		// If user has typed in the email field, disable the submit button until the
 		// email address is valid.
@@ -104,5 +104,5 @@
 		}
 	};
 
-	module.exports = HelpDeskDialog;
+	module.exports = QuestionPosterDialog;
 }() );

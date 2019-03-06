@@ -38,10 +38,16 @@ abstract class BaseSidebarModule implements HomepageModule {
 	 */
 	public function render( IContextSource $ctx ) {
 		$this->ctx = $ctx;
+
+		if ( !$this->canRender() ) {
+			return;
+		}
+
 		$out = $ctx->getOutput();
 		$out->addModuleStyles( 'ext.growthExperiments.Homepage.BaseSidebarModule.styles' );
 		$out->addModuleStyles( $this->getModuleStyles() );
 		$out->addModules( $this->getModules() );
+		$out->addJsConfigVars( $this->getJsConfigVars() );
 		$out->addHTML( Html::rawElement(
 			'div',
 			[ 'class' => [ self::BASE_CSS_CLASS, self::BASE_CSS_CLASS . '-' . $this->name ] ],
@@ -112,6 +118,13 @@ abstract class BaseSidebarModule implements HomepageModule {
 	}
 
 	/**
+	 * @return bool Whether the module can be rendered or not.
+	 */
+	protected function canRender() {
+		return true;
+	}
+
+	/**
 	 * Build a module section
 	 *
 	 * @param string $name Name of the section, used to generate a class
@@ -130,6 +143,14 @@ abstract class BaseSidebarModule implements HomepageModule {
 			],
 			$content
 		) : '';
+	}
+
+	/**
+	 * Override this function to provide JS config vars needed by this module.
+	 * @return array
+	 */
+	protected function getJsConfigVars() {
+		return [];
 	}
 
 }
