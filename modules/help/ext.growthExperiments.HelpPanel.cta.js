@@ -48,16 +48,33 @@
 			// the animation happens twice
 			if ( $buttonWrapper.parent()[ 0 ] !== $overlay[ 0 ] ) {
 				$overlay.append( $buttonWrapper );
-				logger.logOnce( 'impression', null, metadataOverride );
 			}
+			logger.logOnce( 'impression', null, metadataOverride );
 		}
 
 		/**
 		 * Invoked from mobileFrontend.editorClosed and ve.deactivationComplete hooks.
 		 *
+		 * mobileFrontend.editorClosed is fired both during editor switching and
+		 * when closing an editor to go back to reading mode.
+		 *
 		 * Hide the CTA when VisualEditor or the MobileFrontend editor is closed.
 		 */
 		function detachHelpButton() {
+			windowManager.closeWindow( helpPanelProcessDialog );
+			// If the help panel should show for the namespace, then don't detach the button
+			// and also log an impression.
+			if ( configData.GEHelpPanelReadingModeNamespaces.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) !== -1 ) {
+				// When closing the wikitext editor, the url is only updated some time after
+				// so there is a chance that we need to log an impression event but we'll
+				// only know for sure a little later ;)
+				setTimeout( function () {
+					if ( logger.getEditor() === 'reading' ) {
+						logger.logOnce( 'impression' );
+					}
+				}, 250 );
+				return;
+			}
 			$buttonWrapper.detach();
 		}
 
@@ -133,11 +150,11 @@
 			// Older wikitext editor
 			mw.hook( 'wikipage.editform' ).add( attachHelpButton );
 		}
+
 		// If viewing an article, log the impression. Editing impressions are
 		// logged via attachHelpButton(), but we don't need to utilize that
 		// function on view.
-		if ( mw.config.get( 'wgAction' ) === 'view' &&
-			mw.config.get( 'wgCanonicalSpecialPageName' ) !== 'Homepage' ) {
+		if ( logger.getEditor() === 'reading' ) {
 			logger.logOnce( 'impression' );
 		}
 	} );

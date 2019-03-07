@@ -7,11 +7,11 @@
 	 */
 	function HelpPanelLogger( enabled ) {
 		this.enabled = enabled;
-		this.readingMode = mw.config.get( 'wgAction' ) === 'view';
-		this.isUserHomepage = this.readingMode && mw.config.get( 'wgCanonicalSpecialPageName' ) === 'Homepage';
 		this.userEditCount = mw.config.get( 'wgUserEditCount' );
+		this.isMobile = OO.ui.isMobile();
 		this.clearSessionId();
-		this.logged = {};
+		this.previousAction = '';
+		this.previousEditorInterface = '';
 	}
 
 	HelpPanelLogger.prototype.clearSessionId = function () {
@@ -19,29 +19,43 @@
 	};
 
 	HelpPanelLogger.prototype.log = function ( action, data, metadataOverride ) {
+		var eventData;
 		if ( !this.enabled ) {
 			return;
 		}
 
+		eventData = $.extend(
+			{
+				action: action,
+				/* eslint-disable-next-line camelcase */
+				action_data: this.serializeActionData( data )
+			},
+			this.getMetaData(),
+			metadataOverride
+		);
+
 		// Test/debug using: `mw.trackSubscribe( 'event.HelpPanel', console.log );`
 		mw.track(
 			'event.HelpPanel',
-			$.extend(
-				{
-					action: action,
-					/* eslint-disable-next-line camelcase */
-					action_data: this.serializeActionData( data )
-				},
-				this.getMetaData(),
-				metadataOverride
-			)
+			eventData
 		);
 
-		this.logged[ action ] = true;
+		this.previousAction = action;
+		this.previousEditorInterface = eventData.editor_interface;
 	};
 
 	HelpPanelLogger.prototype.logOnce = function ( action, data, metadataOverride ) {
-		if ( !this.enabled || this.logged[ action ] ) {
+		var currentEditorInterface;
+		if ( !this.enabled ) {
+			return;
+		}
+
+		currentEditorInterface = metadataOverride && metadataOverride.editor_interface ?
+			metadataOverride.editor_interface :
+			this.getEditor();
+
+		if ( this.previousAction === action &&
+			this.previousEditorInterface === currentEditorInterface ) {
 			return;
 		}
 
@@ -70,14 +84,16 @@
 	};
 
 	HelpPanelLogger.prototype.getMetaData = function () {
+		var editor = this.getEditor(),
+			readingMode = editor === 'reading';
 		/* eslint-disable camelcase */
 		return {
 			user_id: mw.user.getId(),
 			user_editcount: this.userEditCount,
-			editor_interface: this.getEditor(),
-			is_mobile: OO.ui.isMobile(),
-			page_id: this.readingMode ? 0 : mw.config.get( 'wgArticleId' ),
-			page_title: this.readingMode ? '' : mw.config.get( 'wgRelevantPageName' ),
+			editor_interface: editor,
+			is_mobile: this.isMobile,
+			page_id: readingMode ? 0 : mw.config.get( 'wgArticleId' ),
+			page_title: readingMode ? '' : mw.config.get( 'wgRelevantPageName' ),
 			page_ns: mw.config.get( 'wgNamespaceNumber' ),
 			user_can_edit: mw.config.get( 'wgIsProbablyEditable' ),
 			page_protection: this.getPageRestrictions(),
@@ -92,51 +108,64 @@
 			'wikitext',
 			'wikitext-2017',
 			'visualeditor',
+			'reading',
+			'homepage',
 			'other'
 		].indexOf( editor ) >= 0;
 	};
 
 	HelpPanelLogger.prototype.getEditor = function () {
 		var veTarget,
-			mode;
+			surface,
+			mode,
+			uri = new mw.Uri();
 
-		if ( this.isUserHomepage ) {
+		if ( mw.config.get( 'wgCanonicalSpecialPageName' ) === 'Homepage' ) {
 			return 'homepage';
 		}
 
-		if ( this.readingMode ) {
-			return 'reading';
-		}
-
-		// Desktop: old wikitext editor
-		if ( $( '#wpTextbox1:visible' ).length ) {
-			return 'wikitext';
-		}
-
-		// Desktop: VE in visual or source mode
-		veTarget = OO.getProp( window, 've', 'init', 'target' );
-		if ( veTarget ) {
-			mode = veTarget.getSurface().getMode();
-			if ( mode === 'source' ) {
-				return 'wikitext-2017';
+		if ( this.isMobile ) {
+			if ( !uri.fragment || !uri.fragment.match( /\/editor\/\d/ ) ) {
+				return 'reading';
 			}
 
-			if ( mode === 'visual' ) {
+			// Mobile: wikitext
+			if ( $( 'textarea#wikitext-editor:visible' ).length ) {
+				return 'wikitext';
+			}
+
+			// Mobile: VE
+			if ( $( '.ve-init-mw-mobileArticleTarget:visible' ).length ) {
 				return 'visualeditor';
 			}
-		}
 
-		// Mobile: wikitext
-		if ( $( 'textarea#wikitext-editor:visible' ).length ) {
-			return 'wikitext';
-		}
+			// If we haven't found a textarea or VE target and we're not in reading mode,
+			// then the current editor will be the same as the previous interface.
+			return this.previousEditorInterface;
+		} else {
+			// Desktop: VE in visual or source mode
+			veTarget = OO.getProp( window, 've', 'init', 'target' );
+			if ( veTarget ) {
+				surface = veTarget.getSurface();
+				if ( surface ) {
+					mode = surface.getMode();
+					if ( mode === 'source' ) {
+						return 'wikitext-2017';
+					}
 
-		// Mobile: VE
-		if ( $( '.ve-init-mw-mobileArticleTarget:visible' ).length ) {
-			return 'visualeditor';
-		}
+					if ( mode === 'visual' ) {
+						return 'visualeditor';
+					}
+				}
+			}
 
-		return 'other';
+			// Desktop: old wikitext editor
+			if ( $( '#wpTextbox1:visible' ).length ) {
+				return 'wikitext';
+			}
+
+			return 'reading';
+		}
 	};
 
 	HelpPanelLogger.prototype.getPageRestrictions = function () {
