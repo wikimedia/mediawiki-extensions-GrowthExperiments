@@ -111,6 +111,7 @@ class HelpPanelHooks {
 			'GEHelpPanelLoggingEnabled' => $config->get( 'GEHelpPanelLoggingEnabled' ),
 			'GEHelpPanelSearchEnabled' => $config->get( 'GEHelpPanelSearchEnabled' ),
 			'GEHelpPanelSearchNamespaces' => $config->get( 'GEHelpPanelSearchNamespaces' ),
+			'GEHelpPanelReadingModeNamespaces' => $config->get( 'GEHelpPanelReadingModeNamespaces' ),
 			'GEHelpPanelSearchForeignAPI' => $config->get( 'GEHelpPanelSearchForeignAPI' ),
 			'GEHelpPanelLinks' => HelpPanel::getHelpPanelLinks( $context, $config ),
 			'GEHelpPanelHelpDeskTitle' => $helpdeskTitle ? $helpdeskTitle->getPrefixedText() : null
