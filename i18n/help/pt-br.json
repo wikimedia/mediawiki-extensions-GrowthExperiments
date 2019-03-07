@@ -24,6 +24,7 @@
 	"growthexperiments-help-panel-questionreview-include-article-title": "Incluir título da página com minha pergunta",
 	"growthexperiments-help-panel-question-subject-template": "Pergunta do painel de ajuda",
 	"growthexperiments-help-panel-question-subject-template-with-title": "Pergunta do painel de ajuda no [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-from-homepage": "Pergunta do painel de ajuda da página inicial do usuário",
 	"growthexperiments-help-panel-question-post-error": "Ocorreu um erro ao tentar postar sua pergunta. Você pode tentar novamente ou pode visitar $1 em seu navegador e adicionar sua pergunta manualmente.",
 	"growthexperiments-help-panel-questioncomplete-title": "Faça uma pergunta",
 	"growthexperiments-help-panel-questioncomplete-header": "Sua pergunta foi postada!",

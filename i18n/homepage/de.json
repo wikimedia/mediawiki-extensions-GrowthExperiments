@@ -4,7 +4,7 @@
 			"Metalhead64"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Startseite von $1}}",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Deine}} Startseite",
 	"growthexperiments-homepage-tab": "Startseite",
 	"prefs-homepage": "Neulings-Startseite",
 	"growthexperiments-homepage-enable": "Neulings-Startseite anzeigen",
@@ -14,5 +14,10 @@
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Du}} hast {{PLURAL:$1|<strong>eine</strong> Bearbeitung|<strong>$1</strong> Bearbeitungen}} durchgeführt (alle ansehen)",
 	"growthexperiments-homepage-impact-subheader-no-edit": "{{GENDER:$1|Du}} hast noch keine Artikel bearbeitet. Dieser Bereich wird dir die Auswirkung {{GENDER:$1|deiner}} Bearbeitungen anzeigen.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>Keine</strong> Bearbeitungen an Artikeln",
-	"growthexperiments-homepage-impact-contributions-link-no-edit": "{{PLURAL:$1|<strong>Eine</strong> Bearbeitung|<strong>$1</strong> Bearbeitungen}} an anderen Arten von Seiten (alle ansehen)"
+	"growthexperiments-homepage-impact-contributions-link-no-edit": "{{PLURAL:$1|<strong>Eine</strong> Bearbeitung|<strong>$1</strong> Bearbeitungen}} an anderen Arten von Seiten (alle ansehen)",
+	"growthexperiments-homepage-impact-article-link-tooltip": "Zum Artikel gehen",
+	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Detaillierte Seitenaufrufe ansehen",
+	"growthexperiments-homepage-help-ask-help-desk": "Help Desk fragen",
+	"growthexperiments-homepage-help-header": "Top-Hilfeartikel",
+	"growthexperiments-homepage-help-cancel": "Abbrechen"
 }

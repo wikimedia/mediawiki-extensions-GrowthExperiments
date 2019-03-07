@@ -4,6 +4,6 @@
 			"Fitoschido"
 		]
 	},
-	"growthexperiments-homepage-impact-contributions-link": "<strong>$1</strong> {{PLURAL:$1|edición|ediciones}} (mostrar todo)",
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Has}} realizado <strong>$1</strong> {{PLURAL:$1|edición|ediciones}} (mostrar todo)",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|edición|ediciones}} a otros tipos de páginas (mostrar todo)"
 }
