@@ -2,7 +2,7 @@
 	"@metadata": {
 		"authors": []
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|$1's homepage}}",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Your}} homepage",
 	"growthexperiments-homepage-tab": "Homepage",
 	"prefs-homepage": "Newcomer homepage",
 	"growthexperiments-homepage-enable": "Display newcomer homepage",
