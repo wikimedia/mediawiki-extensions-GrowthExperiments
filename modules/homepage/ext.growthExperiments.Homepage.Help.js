@@ -1,9 +1,9 @@
 ( function () {
-	var HelpPanel = require( 'ext.growthExperiments.HelpPanel' ),
-		HelpPanelLogger = HelpPanel.HelpPanelLogger,
-		HelpDeskDialog = require( './ext.growthExperiments.HelpDeskDialog.js' ),
+	var HelpDeskDialog = require( './ext.growthExperiments.HelpDeskDialog.js' ),
+		Help = require( 'ext.growthExperiments.Help' ),
+		HelpPanelLogger = Help.HelpPanelLogger,
 		lifecycle,
-		logger = new HelpPanelLogger( HelpPanel.configData.GEHelpPanelLoggingEnabled ),
+		logger = new HelpPanelLogger( Help.configData.GEHelpPanelLoggingEnabled ),
 		windowManager = new OO.ui.WindowManager( { modal: true } ),
 		$helpModule = $( '.growthexperiments-homepage-module-help' ),
 		$buttonToInfuse = $( '#mw-ge-homepage-help-cta' ),

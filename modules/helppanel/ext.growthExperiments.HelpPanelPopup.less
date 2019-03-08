@@ -1,0 +1,27 @@
+@import 'mediawiki.ui/variables';
+@import 'mediawiki.mixins';
+
+.mw-ge-help-panel-widget-overlay {
+	position: fixed;
+	right: 1em;
+	bottom: 1em;
+	z-index: 2;
+}
+
+.mw-ge-help-panel-popup .oo-ui-dialog {
+	font-size: 0.875em;
+	color: @colorGray2;
+	background-color: @background-color-base;
+	border: 1px solid @colorGray12;
+	border-radius: 2px;
+	box-shadow: 0 2px 2px 0 rgba( 0, 0, 0, 0.25 );
+	.transition( ~'bottom 400ms, opacity 400ms' );
+	position: relative;
+	bottom: -2em;
+	opacity: 0;
+
+	&.oo-ui-window-setup {
+		bottom: 0;
+		opacity: 1;
+	}
+}

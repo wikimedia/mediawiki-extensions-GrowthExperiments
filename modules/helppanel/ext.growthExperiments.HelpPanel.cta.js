@@ -1,7 +1,8 @@
 ( function () {
-	var HelpPanelLogger = require( './ext.growthExperiments.HelpPanelLogger.js' ),
-		HelpPanelProcessDialog = require( './ext.growthExperiments.HelpPanelProcessDialog.js' ),
-		configData = require( './data.json' );
+	var Help = require( 'ext.growthExperiments.Help' ),
+		HelpPanelLogger = Help.HelpPanelLogger,
+		HelpPanelProcessDialog = Help.HelpPanelProcessDialog,
+		configData = Help.configData;
 
 	// This shouldn't happen, but just to be sure
 	if ( !mw.config.get( 'wgGEHelpPanelEnabled' ) ) {
@@ -158,11 +159,5 @@
 			logger.log( 'impression' );
 		}
 	} );
-
-	module.exports = {
-		HelpPanelProcessDialog: HelpPanelProcessDialog,
-		HelpPanelLogger: HelpPanelLogger,
-		configData: configData
-	};
 
 }() );

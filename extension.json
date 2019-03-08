@@ -239,7 +239,7 @@
 		},
 		"ext.growthExperiments.HelpPanelCta.styles": {
 			"styles": [
-				"help/ext.growthExperiments.HelpPanelCta.less"
+				"helppanel/ext.growthExperiments.HelpPanelCta.less"
 			],
 			"targets": [
 				"desktop",
@@ -255,19 +255,20 @@
 				"growthexperiments-homepage-help-cancel"
 			],
 			"dependencies": [
-				"ext.growthExperiments.HelpPanel"
+				"ext.growthExperiments.Help"
 			],
 			"targets": [
 				"desktop",
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.HelpPanel": {
+		"ext.growthExperiments.Help": {
 			"styles": [
-				"help/ext.growthExperiments.HelpPanel.less"
+				"help/ext.growthExperiments.HelpPanelProcessDialog.less",
+				"help/ext.growthExperiments.HelpPanelSearchWidget.less"
 			],
 			"packageFiles": [
-				"help/ext.growthExperiments.HelpPanel.cta.js",
+				"help/ext.growthExperiments.Help.js",
 				"help/ext.growthExperiments.HelpPanelLogger.js",
 				"help/ext.growthExperiments.HelpPanelSearchWidget.js",
 				"help/ext.growthExperiments.HelpPanelProcessDialog.js",
@@ -278,14 +279,11 @@
 			],
 			"dependencies": [
 				"mediawiki.user",
-				"ext.growthExperiments.HelpPanel.icons",
-				"ext.growthExperiments.HelpPanelCta.styles",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
 				"mediawiki.storage"
 			],
 			"messages": [
-				"growthexperiments-help-panel-cta-button-text",
 				"growthexperiments-help-panel-question-button-text",
 				"growthexperiments-help-panel-submit-question-button-text",
 				"growthexperiments-help-panel-editing-help-links-widget-header",
@@ -331,8 +329,28 @@
 				"mobile"
 			]
 		},
+		"ext.growthExperiments.HelpPanel": {
+			"styles": [
+				"helppanel/ext.growthExperiments.HelpPanelPopup.less"
+			],
+			"packageFiles": [
+				"helppanel/ext.growthExperiments.HelpPanel.cta.js"
+			],
+			"dependencies": [
+				"ext.growthExperiments.Help",
+				"ext.growthExperiments.HelpPanel.icons",
+				"ext.growthExperiments.HelpPanelCta.styles"
+			],
+			"messages": [
+				"growthexperiments-help-panel-cta-button-text"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
 		"ext.growthExperiments.HelpPanel.init": {
-			"scripts": "help/ext.growthExperiments.HelpPanel.init.js",
+			"scripts": "helppanel/ext.growthExperiments.HelpPanel.init.js",
 			"targets": [
 				"desktop",
 				"mobile"

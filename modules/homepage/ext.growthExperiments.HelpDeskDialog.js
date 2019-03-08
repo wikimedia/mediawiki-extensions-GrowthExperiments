@@ -9,10 +9,12 @@
 	 * @constructor
 	 */
 	var HelpDeskDialog = function helpDeskDialog( config ) {
-			HelpDeskDialog.super.call( this, config );
+			HelpDeskDialog.super.call( this, $.extend( {}, config, {
+				showCogMenu: false
+			} ) );
 			this.logger = config.logger;
 		},
-		HelpPanelProcessDialog = require( 'ext.growthExperiments.HelpPanel' ).HelpPanelProcessDialog;
+		HelpPanelProcessDialog = require( 'ext.growthExperiments.Help' ).HelpPanelProcessDialog;
 
 	OO.inheritClass( HelpDeskDialog, HelpPanelProcessDialog );
 
@@ -40,19 +42,9 @@
 		}
 	];
 
-	HelpDeskDialog.prototype.initialize = function () {
-		HelpDeskDialog.super.prototype.initialize.call( this );
-		this.settingsCog.toggle( false );
-	};
-
 	HelpDeskDialog.prototype.swapPanel = function ( panel ) {
-		var panelObj = this[ panel + 'Panel' ],
-			titleMsg = mw.message( 'growthexperiments-help-panel-' + panel + '-title' );
+		HelpDeskDialog.super.prototype.swapPanel.call( this, panel );
 
-		if ( !titleMsg.exists() ) {
-			titleMsg = mw.message( 'growthexperiments-help-panel-home-title' );
-		}
-		this.title.setLabel( titleMsg.text() );
 		if ( panel === 'questionreview' ) {
 			this.questionReviewFooterPanel.toggle( false );
 			this.homeFooterPanel.toggle( false );
@@ -62,8 +54,6 @@
 				questioncomplete: this.questionReviewTextInput.getValue()
 			} );
 		}
-		this.panels.setItem( panelObj );
-		this.setMode( panel );
 	};
 
 	HelpDeskDialog.prototype.getSetupProcess = function ( data ) {

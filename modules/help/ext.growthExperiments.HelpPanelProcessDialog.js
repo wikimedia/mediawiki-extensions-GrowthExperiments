@@ -6,11 +6,13 @@
 	 *
 	 * @param {Object} config
 	 * @cfg {mw.libs.ge.HelpPanelLogger} logger
+	 * @cfg {bool} [showCogMenu=true] Whether the cog menu show be shown
 	 * @constructor
 	 */
 	var HelpPanelProcessDialog = function helpPanelProcessDialog( config ) {
 			HelpPanelProcessDialog.super.call( this, config );
 			this.logger = config.logger;
+			this.showCogMenu = config.showCogMenu !== undefined ? config.showCogMenu : true;
 		},
 		HelpPanelSearchWidget = require( './ext.growthExperiments.HelpPanelSearchWidget.js' ),
 		configData = require( './data.json' ),
@@ -46,8 +48,10 @@
 
 	HelpPanelProcessDialog.prototype.attachActions = function () {
 		HelpPanelProcessDialog.super.prototype.attachActions.call( this );
-		// Hack to place the settings cog as a "primary" (top-right) action.
-		this.$primaryActions.append( this.settingsCog.$element );
+		if ( this.showCogMenu ) {
+			// Hack to place the settings cog as a "primary" (top-right) action.
+			this.$primaryActions.append( this.settingsCog.$element );
+		}
 	};
 
 	/**
@@ -479,7 +483,9 @@
 			this.questionreviewPanel,
 			this.questioncompletePanel
 		] );
-		this.$body.append( this.panels.$element );
+		this.$body
+			.addClass( 'mw-ge-help-panel-processdialog' )
+			.append( this.panels.$element );
 
 		this.$element.on( 'click', 'a[data-link-id]', this.logLinkClick.bind( this ) );
 	};
