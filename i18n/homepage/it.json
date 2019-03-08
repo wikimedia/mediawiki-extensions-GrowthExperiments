@@ -4,7 +4,7 @@
 			"Beta16"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Pagina principale di $1}}",
+	"growthexperiments-homepage-specialpage-title": "La {{GENDER:$1|tua}} pagina principale",
 	"growthexperiments-homepage-tab": "Pagina principale",
 	"prefs-homepage": "Pagina principale nuovi arrivati",
 	"growthexperiments-homepage-enable": "Mostra pagina principale nuovi arrivati",
@@ -12,6 +12,6 @@
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Hai}} fatto <strong>$1</strong> {{PLURAL:$1|modifica|modifiche}} (vedi tutte)",
 	"growthexperiments-homepage-impact-subheader-no-edit": "{{GENDER:$1|Non hai}} ancora effettuato modifiche ad alcuna voce. Quest'area mostrerà l'impatto delle {{GENDER:$1|tue}} modifiche.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> modifiche a voci",
-	"growthexperiments-homepage-impact-article-link-tooltip": "Vai alla pagina della voce",
+	"growthexperiments-homepage-impact-article-link-tooltip": "Vai alla voce",
 	"growthexperiments-homepage-help-cancel": "Annulla"
 }

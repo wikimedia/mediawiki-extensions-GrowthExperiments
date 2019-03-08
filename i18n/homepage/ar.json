@@ -5,7 +5,7 @@
 			"Meno25"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|الصفحة الرئيسية لـ$1}}",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|صفحتك}} الرئيسية",
 	"growthexperiments-homepage-tab": "الصفحة الرئيسية",
 	"prefs-homepage": "الصفحة الرئيسية للقادمين الجدد",
 	"growthexperiments-homepage-enable": "عرض الصفحة الرئيسية للقادمين الجدد",
@@ -16,8 +16,8 @@
 	"growthexperiments-homepage-impact-subheader-no-edit": "أنت لم {{GENDER:$1|تقم|تقومي}} بعد بتعديل أية مقالات، ستعرض هذه المنطقة تأثير تعديلات {{GENDER:$1|تعديلك}}.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> تعديلات للمقالات",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|تعديل|تعديلات}} لأنواع أخرى من الصفحات (راجع الكل)",
-	"growthexperiments-homepage-impact-article-link-tooltip": "الذهاب إلى صفحة المقالة",
-	"growthexperiments-homepage-impact-pageviews-link-tooltip": "أداة تحليل مشاهدات الصفحة",
+	"growthexperiments-homepage-impact-article-link-tooltip": "الذهاب إلى المقالة",
+	"growthexperiments-homepage-impact-pageviews-link-tooltip": "انظر مشاهدات الصفحة المفصلة",
 	"growthexperiments-homepage-help-ask-help-desk": "السؤال في مكتب المساعدة",
 	"growthexperiments-homepage-help-header": "مقالات المساعدة الأكثر قراءة",
 	"growthexperiments-homepage-help-cancel": "إلغاء"

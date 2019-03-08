@@ -4,7 +4,7 @@
 			"Eduardo Addad de Oliveira"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|$1's página inicial}}",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Sua}} página inicial",
 	"growthexperiments-homepage-tab": "Página principal",
 	"prefs-homepage": "Página inicial do recém-chegado",
 	"growthexperiments-homepage-enable": "Exibir página inicial do recém-chegado",
@@ -15,8 +15,8 @@
 	"growthexperiments-homepage-impact-subheader-no-edit": "{{GENDER:$1|Você}} ainda não editei nenhum artigo. Esta área mostrará o impacto de {{GENDER:$1|suas}} edições.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> edições em artigos",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|edição|edições}} para outros tipos de páginas (ver todos)",
-	"growthexperiments-homepage-impact-article-link-tooltip": "Vá para a página do artigo",
-	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Ferramenta de análise de visualizações de página",
+	"growthexperiments-homepage-impact-article-link-tooltip": "Vá para o artigo",
+	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Veja as visualizações detalhadas da página",
 	"growthexperiments-homepage-help-ask-help-desk": "Pergunte na central de ajuda",
 	"growthexperiments-homepage-help-header": "Principais artigos de ajuda",
 	"growthexperiments-homepage-help-cancel": "Cancelar"

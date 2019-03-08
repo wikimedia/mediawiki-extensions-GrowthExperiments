@@ -4,7 +4,7 @@
 			"Kly"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|$1的首頁}}",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您的}}首頁",
 	"growthexperiments-homepage-tab": "首頁",
 	"prefs-homepage": "新加入者首頁",
 	"growthexperiments-homepage-enable": "顯示新加入者首頁",
@@ -15,8 +15,8 @@
 	"growthexperiments-homepage-impact-subheader-no-edit": "{{GENDER:$1|您}}尚未編輯任何條目。此區域會顯示出{{GENDER:$1|您}}所做編輯的影響。",
 	"growthexperiments-homepage-impact-body-no-edit": "條目 <strong>0</strong> 次編輯",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "其它各種頁面的 <strong>$1</strong> {{PLURAL:$1|次編輯}}（查看全部）",
-	"growthexperiments-homepage-impact-article-link-tooltip": "前往條目頁面",
-	"growthexperiments-homepage-impact-pageviews-link-tooltip": "頁面檢視分析工具",
+	"growthexperiments-homepage-impact-article-link-tooltip": "前往條目",
+	"growthexperiments-homepage-impact-pageviews-link-tooltip": "查看詳細的頁面檢視",
 	"growthexperiments-homepage-help-ask-help-desk": "詢問服務",
 	"growthexperiments-homepage-help-header": "熱門協助條目",
 	"growthexperiments-homepage-help-cancel": "取消"

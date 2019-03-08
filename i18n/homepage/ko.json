@@ -7,5 +7,7 @@
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|$1의 홈페이지}}",
 	"growthexperiments-homepage-tab": "홈페이지",
 	"prefs-homepage": "신규 사용자의 홈페이지",
-	"growthexperiments-homepage-enable": "신규 사용자의 홈페이지 표시"
+	"growthexperiments-homepage-enable": "신규 사용자의 홈페이지 표시",
+	"growthexperiments-homepage-impact-article-link-tooltip": "문서로 이동",
+	"growthexperiments-homepage-help-cancel": "취소"
 }

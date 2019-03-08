@@ -5,7 +5,7 @@
 			"Gomoko"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Page d'accueil de $1}}",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Votre}} page d’accueil",
 	"growthexperiments-homepage-tab": "Page d’accueil",
 	"prefs-homepage": "Page d'accueil du nouvel arrivant",
 	"growthexperiments-homepage-enable": "Afficher la page d'accueil du nouvel arrivant",
@@ -16,8 +16,8 @@
 	"growthexperiments-homepage-impact-subheader-no-edit": "{{GENDER:$1|Vous}} n’avez pas encore modifié d’article. Cette zone vous montrera l’impact de {{GENDER:$1|vos}} modifications.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> modification aux articles",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|modification|modifications}} sur d’autres sortes de page (voir tout)",
-	"growthexperiments-homepage-impact-article-link-tooltip": "Aller à la page de l'article",
-	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Outil d'analyse Pageviews",
+	"growthexperiments-homepage-impact-article-link-tooltip": "Aller à l’article",
+	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Voir les nombres de pages vues détaillés",
 	"growthexperiments-homepage-help-ask-help-desk": "Demander le bureau d’aide",
 	"growthexperiments-homepage-help-header": "Meilleurs articles d’aide",
 	"growthexperiments-homepage-help-cancel": "Annuler"
