@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pebaryan"
+		]
+	},
+	"growthexperiments-homepage-specialpage-title": "Beranda {{GENDER:$1|Anda}}",
+	"growthexperiments-homepage-impact-article-link-tooltip": "Ke artikel",
+	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Lihat rincian penayangan halaman"
+}

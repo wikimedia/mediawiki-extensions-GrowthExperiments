@@ -4,5 +4,8 @@
 			"Kingu"
 		]
 	},
-	"growthexperiments-homepage-tab": "Hjemmeside"
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Din}} hjemmeside",
+	"growthexperiments-homepage-tab": "Hjemmeside",
+	"growthexperiments-homepage-impact-article-link-tooltip": "Gå til artikkel",
+	"growthexperiments-homepage-help-cancel": "Avbryt"
 }

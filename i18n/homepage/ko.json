@@ -4,7 +4,7 @@
 			"Ykhwong"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|$1의 홈페이지}}",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|내}} 홈페이지",
 	"growthexperiments-homepage-tab": "홈페이지",
 	"prefs-homepage": "신규 사용자의 홈페이지",
 	"growthexperiments-homepage-enable": "신규 사용자의 홈페이지 표시",
