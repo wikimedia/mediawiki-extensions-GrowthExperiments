@@ -18,12 +18,12 @@ use Title;
 use WikiPage;
 use WikitextContent;
 
-class QuestionPoster {
+abstract class QuestionPoster {
 
 	/**
 	 * @var IContextSource
 	 */
-	private $context;
+	protected $context;
 
 	/**
 	 * @var bool
@@ -48,7 +48,7 @@ class QuestionPoster {
 	/**
 	 * @var PageUpdater
 	 */
-	private $pageUpdater;
+	protected $pageUpdater;
 
 	/**
 	 * @var int
@@ -63,7 +63,7 @@ class QuestionPoster {
 	/**
 	 * @var string
 	 */
-	private $sectionHeader;
+	protected $sectionHeader;
 
 	/**
 	 * @var string
@@ -97,7 +97,8 @@ class QuestionPoster {
 	 */
 	public function submit( $body, $relevantTitle = '' ) {
 		$this->setSectionHeader( $relevantTitle );
-		$this->pageUpdater->addTag( HelpPanel::HELP_PANEL_QUESTION_TAG );
+		$this->setSectionHeaderUnique();
+		$this->addTag();
 		$this->pageUpdater->setContent( SlotRecord::MAIN, $this->getContent( $body ) );
 		$newRev = $this->pageUpdater->saveRevision(
 			CommentStoreComment::newUnsavedComment( $this->getSectionHeader() ),
@@ -109,6 +110,12 @@ class QuestionPoster {
 		$this->revisionId = $newRev->getId();
 		$this->setResultUrl();
 		return Status::newGood();
+	}
+
+	/**
+	 * Add tag for the edit via pageUpdater.
+	 */
+	public function addTag() {
 	}
 
 	/**
@@ -249,27 +256,14 @@ class QuestionPoster {
 	}
 
 	/**
+	 * Set the section header for the edit.
+	 *
 	 * @param string $relevantTitle
 	 */
 	public function setSectionHeader( $relevantTitle ) {
-		if ( $relevantTitle ) {
-			$title = Title::newFromText( $relevantTitle );
-			if ( $title && $title->isSpecial( 'Homepage' ) ) {
-				$this->sectionHeader = $this->context
-					->msg( 'growthexperiments-help-panel-question-subject-template-from-homepage' )
-					->inContentLanguage()->text();
-			} else {
-				$this->sectionHeader = $this->context
-					->msg( 'growthexperiments-help-panel-question-subject-template-with-title' )
-					->params( $relevantTitle )
-					->inContentLanguage()->text();
-			}
-		} else {
-			$this->sectionHeader = $this->context
-				->msg( 'growthexperiments-help-panel-question-subject-template' )
-				->inContentLanguage()->text();
-		}
+	}
 
+	public function setSectionHeaderUnique() {
 		$lang = MediaWikiServices::getInstance()->getContentLanguage();
 		$timestamp = $lang->timeanddate(
 			wfTimestampNow(),
@@ -282,6 +276,6 @@ class QuestionPoster {
 			/* $timecorrection= */ ''
 		);
 		$this->sectionHeaderUnique = $this->sectionHeader . ' ' . $this->context->msg( 'parentheses' )->
-				plaintextParams( $timestamp )->inContentLanguage()->text();
+			plaintextParams( $timestamp )->inContentLanguage()->text();
 	}
 }

@@ -60,10 +60,12 @@
 			"GrowthExperiments\\HelpPanelHooks::onBeforePageDisplay"
 		],
 		"ListDefinedTags": [
-			"GrowthExperiments\\HelpPanelHooks::onListDefinedTags"
+			"GrowthExperiments\\HelpPanelHooks::onListDefinedTags",
+			"GrowthExperiments\\HomepageHooks::onListDefinedTags"
 		],
 		"ChangeTagsListActive": [
-			"GrowthExperiments\\HelpPanelHooks::onListDefinedTags"
+			"GrowthExperiments\\HelpPanelHooks::onListDefinedTags",
+			"GrowthExperiments\\HomepageHooks::onListDefinedTags"
 		],
 		"SkinTemplateNavigation::Universal": [
 			"GrowthExperiments\\HomepageHooks::onSkinTemplateNavigationUniversal"
