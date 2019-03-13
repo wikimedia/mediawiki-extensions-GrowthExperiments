@@ -23,6 +23,13 @@ class Help extends BaseSidebarModule {
 	}
 
 	/**
+	 * @return string
+	 */
+	protected function getSubheader() {
+		return $this->getContext()->msg( 'growthexperiments-homepage-help-subheader' )->text();
+	}
+
+	/**
 	 * @return string|string[]
 	 */
 	protected function getModules() {

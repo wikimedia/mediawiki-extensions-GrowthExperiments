@@ -16,8 +16,9 @@
 	"growthexperiments-homepage-impact-article-link-tooltip": "Go to article",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "See detailed page views",
 	"growthexperiments-homepage-help-ask-help-desk": "Ask help desk",
-	"growthexperiments-homepage-help-header": "Top help articles",
-	"growthexperiments-homepage-help-cancel": "Cancel",
 	"tag-help_module_question": "Help module question",
-	"tag-help_module_question-description": "Edit made from the homepage help module's post a question feature"
+	"tag-help_module_question-description": "Edit made from the homepage help module's post a question feature",
+	"growthexperiments-homepage-help-header": "Find or ask for help",
+	"growthexperiments-homepage-help-subheader": "Top help articles",
+	"growthexperiments-homepage-help-cancel": "Cancel"
 }
