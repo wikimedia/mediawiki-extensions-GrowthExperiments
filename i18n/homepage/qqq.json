@@ -18,8 +18,9 @@
 	"growthexperiments-homepage-impact-article-link-tooltip": "Tooltip of the link to go to the article",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Tooltip of the link to go to the pageviews analysis tool",
 	"growthexperiments-homepage-help-ask-help-desk": "Text to show in button for asking a question to the help desk.",
-	"growthexperiments-homepage-help-header": "Text to show in the header of the help module",
-	"growthexperiments-homepage-help-cancel": "Text shown on a button to close the help panel.",
 	"tag-help_module_question": "Short change tag name for edits made by the post a question feature in the help module.",
-	"tag-help_module_question-description": "Short change tag description for edits made by the post a question feature in the help module."
+	"tag-help_module_question-description": "Short change tag description for edits made by the post a question feature in the help module.",
+	"growthexperiments-homepage-help-header": "Text to show in the subheader of the help module",
+	"growthexperiments-homepage-help-subheader": "Text to show in the subheader of the help module",
+	"growthexperiments-homepage-help-cancel": "Text shown on a button to close the help panel."
 }
