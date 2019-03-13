@@ -164,8 +164,12 @@
 				return 'wikitext';
 			}
 
-			return 'reading';
+			if ( ( !uri.query.action || uri.query.action === 'view' ) && !uri.query.veaction ) {
+				return 'reading';
+			}
 		}
+
+		return 'other';
 	};
 
 	HelpPanelLogger.prototype.getPageRestrictions = function () {
