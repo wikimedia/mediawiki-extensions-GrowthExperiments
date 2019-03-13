@@ -10,7 +10,6 @@
 		this.userEditCount = mw.config.get( 'wgUserEditCount' );
 		this.isMobile = OO.ui.isMobile();
 		this.clearSessionId();
-		this.previousAction = '';
 		this.previousEditorInterface = '';
 	}
 
@@ -40,26 +39,7 @@
 			eventData
 		);
 
-		this.previousAction = action;
 		this.previousEditorInterface = eventData.editor_interface;
-	};
-
-	HelpPanelLogger.prototype.logOnce = function ( action, data, metadataOverride ) {
-		var currentEditorInterface;
-		if ( !this.enabled ) {
-			return;
-		}
-
-		currentEditorInterface = metadataOverride && metadataOverride.editor_interface ?
-			metadataOverride.editor_interface :
-			this.getEditor();
-
-		if ( this.previousAction === action &&
-			this.previousEditorInterface === currentEditorInterface ) {
-			return;
-		}
-
-		this.log( action, data, metadataOverride );
 	};
 
 	HelpPanelLogger.prototype.serializeActionData = function ( data ) {
