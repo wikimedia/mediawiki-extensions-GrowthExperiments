@@ -49,7 +49,7 @@
 			if ( $buttonWrapper.parent()[ 0 ] !== $overlay[ 0 ] ) {
 				$overlay.append( $buttonWrapper );
 			}
-			logger.logOnce( 'impression', null, metadataOverride );
+			logger.log( 'impression', null, metadataOverride );
 		}
 
 		/**
@@ -70,7 +70,7 @@
 				// only know for sure a little later ;)
 				setTimeout( function () {
 					if ( logger.getEditor() === 'reading' ) {
-						logger.logOnce( 'impression' );
+						logger.log( 'impression' );
 					}
 				}, 250 );
 				return;
@@ -155,7 +155,7 @@
 		// logged via attachHelpButton(), but we don't need to utilize that
 		// function on view.
 		if ( logger.getEditor() === 'reading' ) {
-			logger.logOnce( 'impression' );
+			logger.log( 'impression' );
 		}
 	} );
 
