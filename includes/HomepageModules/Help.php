@@ -9,6 +9,8 @@ use OOUI\Tag;
 
 class Help extends BaseSidebarModule {
 
+	const HELP_MODULE_QUESTION_TAG = 'help module question';
+
 	public function __construct() {
 		parent::__construct( 'help' );
 	}

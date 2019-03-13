@@ -4,19 +4,19 @@ namespace GrowthExperiments\Tests;
 
 use Config;
 use DerivativeContext;
-use GrowthExperiments\HelpPanel\QuestionPoster;
+use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
 use MediaWikiTestCase;
 use RequestContext;
 use Status;
 use Title;
 
 /**
- * Class QuestionPosterTest
+ * Class HelpPanelQuestionPosterTest
  *
  * @group medium
  * @group Database
  */
-class QuestionPosterTest extends MediaWikiTestCase {
+class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
 
 	/**
 	 * @throws \MWException
@@ -49,7 +49,7 @@ class QuestionPosterTest extends MediaWikiTestCase {
 	public function testConstruct() {
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->getUser()->logout();
-		( new QuestionPoster( $context ) );
+		( new HelpPanelQuestionPoster( $context ) );
 	}
 
 	/**
@@ -63,7 +63,7 @@ class QuestionPosterTest extends MediaWikiTestCase {
 		$user = \User::newFromId( 5 );
 		$context->setUser( $user );
 		$context->setConfig( $this->getConfigMock() );
-		$questionPoster = new QuestionPoster( $context );
+		$questionPoster = new HelpPanelQuestionPoster( $context );
 		$questionPoster->submit( 'a great question' );
 		$revision = $questionPoster->getRevisionId();
 		$this->assertGreaterThan( 0, $revision );
@@ -85,7 +85,7 @@ class QuestionPosterTest extends MediaWikiTestCase {
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $user );
 		$context->setConfig( $this->getConfigMock() );
-		$questionPoster = new QuestionPoster( $context );
+		$questionPoster = new HelpPanelQuestionPoster( $context );
 		$this->assertEquals(
 			Status::newGood(),
 			$questionPoster->validateRelevantTitle( 'sample' )

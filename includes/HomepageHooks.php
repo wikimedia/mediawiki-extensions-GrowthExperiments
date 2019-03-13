@@ -2,6 +2,8 @@
 
 namespace GrowthExperiments;
 
+use ConfigException;
+use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\Specials\SpecialHomepage;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\MenuBuilder;
@@ -21,7 +23,7 @@ class HomepageHooks {
 	 * Register Homepage special page.
 	 *
 	 * @param array &$list
-	 * @throws \ConfigException
+	 * @throws ConfigException
 	 */
 	public static function onSpecialPageInitList( &$list ) {
 		if ( self::isHomepageEnabled() ) {
@@ -32,9 +34,9 @@ class HomepageHooks {
 	/**
 	 * @param User|null $user
 	 * @return bool
-	 * @throws \ConfigException
+	 * @throws ConfigException
 	 */
-	private static function isHomepageEnabled( User $user = null ) {
+	public static function isHomepageEnabled( User $user = null ) {
 		return (
 			MediaWikiServices::getInstance()->getMainConfig()->get( 'GEHomepageEnabled' ) &&
 			( $user === null || $user->getBoolOption( self::HOMEPAGE_PREF_ENABLE ) )
@@ -47,7 +49,7 @@ class HomepageHooks {
 	 * @param SkinTemplate &$skin
 	 * @param array &$links
 	 * @throws \MWException
-	 * @throws \ConfigException
+	 * @throws ConfigException
 	 */
 	public static function onSkinTemplateNavigationUniversal( SkinTemplate &$skin, array &$links ) {
 		$user = $skin->getUser();
@@ -96,7 +98,7 @@ class HomepageHooks {
 	 * @param Title &$title
 	 * @param SkinTemplate $sk
 	 * @throws \MWException
-	 * @throws \ConfigException
+	 * @throws ConfigException
 	 */
 	public static function onPersonalUrls( &$personal_urls, &$title, $sk ) {
 		$user = $sk->getUser();
@@ -115,7 +117,7 @@ class HomepageHooks {
 	 *
 	 * @param string $section
 	 * @param MenuBuilder &$menu
-	 * @throws \ConfigException
+	 * @throws ConfigException
 	 * @throws \MWException
 	 */
 	public static function onMobileMenu( $section, MenuBuilder &$menu ) {
@@ -141,7 +143,7 @@ class HomepageHooks {
 	 *
 	 * @param User $user
 	 * @param array &$preferences Preferences object
-	 * @throws \ConfigException
+	 * @throws ConfigException
 	 */
 	public static function onGetPreferences( $user, &$preferences ) {
 		if ( !self::isHomepageEnabled() ) {
@@ -167,7 +169,7 @@ class HomepageHooks {
 	 *
 	 * @param User $user
 	 * @param bool $autocreated
-	 * @throws \ConfigException
+	 * @throws ConfigException
 	 */
 	public static function onLocalUserCreated( User $user, $autocreated ) {
 		if ( !self::isHomepageEnabled() ) {
@@ -181,6 +183,21 @@ class HomepageHooks {
 			$user->setOption( self::HOMEPAGE_PREF_ENABLE, 1 );
 			$user->setOption( self::HOMEPAGE_PREF_PT_LINK, 1 );
 			$user->saveSettings();
+		}
+	}
+
+	/**
+	 * ListDefinedTags and ChangeTagsListActive hook handler
+	 *
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ListDefinedTags
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ChangeTagsListActive
+	 *
+	 * @param array &$tags The list of tags.
+	 * @throws ConfigException
+	 */
+	public static function onListDefinedTags( &$tags ) {
+		if ( self::isHomepageEnabled() ) {
+			$tags[] = Help::HELP_MODULE_QUESTION_TAG;
 		}
 	}
 

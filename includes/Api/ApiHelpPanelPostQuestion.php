@@ -4,15 +4,24 @@ namespace GrowthExperiments\Api;
 
 use ApiBase;
 use ApiUsageException;
+use GrowthExperiments\HelpPanel\HelpModuleQuestionPoster;
+use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionPoster;
+use GrowthExperiments\HomepageHooks;
 use MediaWiki\Logger\LoggerFactory;
 use MWException;
+use Title;
 
 class ApiHelpPanelPostQuestion extends ApiBase {
 
 	const API_PARAM_BODY = 'body';
 	const API_PARAM_EMAIL = 'email';
 	const API_PARAM_RELEVANT_TITLE = 'relevanttitle';
+
+	/**
+	 * @var QuestionPoster
+	 */
+	private $questionPoster;
 
 	/**
 	 * Save help panel question post.
@@ -23,19 +32,17 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$emailStatus = null;
-		try {
-			$questionPoster = new QuestionPoster( $this->getContext() );
-		} catch ( \Exception $exception ) {
-			$this->dieWithException( $exception );
-		}
+		$this->setQuestionPoster( $params[self::API_PARAM_RELEVANT_TITLE] );
+
 		if ( $params[self::API_PARAM_RELEVANT_TITLE] ) {
-			$status = $questionPoster->validateRelevantTitle( $params[self::API_PARAM_RELEVANT_TITLE] );
+			$status = $this->questionPoster->validateRelevantTitle(
+				$params[self::API_PARAM_RELEVANT_TITLE] );
 			if ( !$status->isGood() ) {
 				throw new ApiUsageException( null, $status );
 			}
 		}
 
-		$status = $questionPoster->submit(
+		$status = $this->questionPoster->submit(
 			$params[self::API_PARAM_BODY],
 			$params[self::API_PARAM_RELEVANT_TITLE]
 		);
@@ -45,13 +52,13 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 
 		$result = [
 			'result' => 'success',
-			'revision' => $questionPoster->getRevisionId(),
-			'isfirstedit' => (int)$questionPoster->isFirstEdit(),
-			'viewquestionurl' => $questionPoster->getResultUrl(),
+			'revision' => $this->questionPoster->getRevisionId(),
+			'isfirstedit' => (int)$this->questionPoster->isFirstEdit(),
+			'viewquestionurl' => $this->questionPoster->getResultUrl(),
 			'email' => null
 		];
 
-		$emailStatus = $questionPoster->handleEmail( $params[self::API_PARAM_EMAIL] );
+		$emailStatus = $this->questionPoster->handleEmail( $params[self::API_PARAM_EMAIL] );
 		$result['email'] = $emailStatus->getValue();
 		// If email handling fails, log a message but don't cause the request
 		// to fail; overwrite status with error message.
@@ -65,6 +72,30 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
+	}
+
+	/**
+	 * @param string $relevantTitle
+	 * @throws ApiUsageException
+	 */
+	private function setQuestionPoster( $relevantTitle = '' ) {
+		$title = Title::newFromText( $relevantTitle );
+		if ( HomepageHooks::isHomepageEnabled( $this->getUser() ) && $title &&
+			 $title->isSpecial( 'Homepage' )
+		) {
+			try {
+				$this->questionPoster = new HelpModuleQuestionPoster( $this->getContext() );
+				return;
+			} catch ( \Exception $exception ) {
+				$this->dieWithException( $exception );
+			}
+		}
+		// If not the homepage, assume it's a help panel question.
+		try {
+			$this->questionPoster = new HelpPanelQuestionPoster( $this->getContext() );
+		} catch ( \Exception $exception ) {
+			$this->dieWithException( $exception );
+		}
 	}
 
 	/**
