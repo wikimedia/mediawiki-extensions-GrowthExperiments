@@ -278,6 +278,7 @@
 				"mediawiki.user",
 				"ext.growthExperiments.HelpPanel.icons",
 				"ext.growthExperiments.HelpPanelCta.styles",
+				"mediawiki.Uri",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
 				"mediawiki.storage"
