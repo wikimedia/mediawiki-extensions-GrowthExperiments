@@ -134,7 +134,6 @@
 					$body.append( $veUiOverlay );
 				}
 				helpCtaButton.toggle( true );
-				logger.log( 'close' );
 			} );
 		} );
 
