@@ -26,6 +26,7 @@
 			icon: 'close',
 			flags: 'safe',
 			framed: false,
+			action: 'close',
 			modes: [ 'home', 'questionreview', 'questioncomplete', 'search' ]
 		},
 		// The "Close" action button duplicates the action provided by the X
@@ -34,6 +35,7 @@
 			label: mw.message( 'growthexperiments-help-panel-close' ).text(),
 			modes: [ 'questioncomplete' ],
 			flags: 'safe',
+			action: 'close',
 			framed: true
 		},
 		{
@@ -524,6 +526,11 @@
 		return HelpPanelProcessDialog.super.prototype.getActionProcess.call( this, action )
 			.next( function () {
 				var submitAttemptData;
+				if ( action === 'close' ) {
+					this.logger.log( 'close' );
+					this.close();
+				}
+
 				if ( action === 'reset' ) {
 					this.swapPanel( 'home' );
 				}
