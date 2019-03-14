@@ -279,6 +279,7 @@
 			],
 			"dependencies": [
 				"mediawiki.user",
+				"mediawiki.Uri",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
 				"mediawiki.storage"
