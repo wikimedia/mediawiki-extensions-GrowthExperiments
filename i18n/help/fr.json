@@ -25,7 +25,7 @@
 	"growthexperiments-help-panel-questionreview-include-article-title": "Inclure le titre de la page avec ma question",
 	"growthexperiments-help-panel-question-subject-template": "Question de l’onglet d’aide",
 	"growthexperiments-help-panel-question-subject-template-with-title": "Question de l’onglet d’aide sur [[$1]]",
-	"growthexperiments-help-panel-question-subject-template-from-homepage": "Question de l’onglet d’aide pour la page d’accueil utilisateur",
+	"growthexperiments-help-panel-question-subject-template-from-homepage": "Question du module d’aide pour la page d’accueil utilisateur",
 	"growthexperiments-help-panel-question-post-error": "Une erreur est apparue pendant l'envoi de votre question. Vous pouvez recommencer ou afficher $1 dans votre navigateur pour ajouter la question manuellement.",
 	"growthexperiments-help-panel-questioncomplete-title": "Poser une question",
 	"growthexperiments-help-panel-questioncomplete-header": "Votre question a été envoyée",

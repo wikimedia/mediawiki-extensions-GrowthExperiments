@@ -8,5 +8,5 @@
 	"apihelp-welcomesurveyhandleresponses-param-surveyaction": "按使用者在 Welcome Survey 上所選出的操作。可以是「保存」或「略過」。",
 	"apihelp-welcomesurveyhandleresponses-param-group": "與 Welcome Survey 關聯的實驗性群組。",
 	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "當調查顯示在使用者時的時間戳。",
-	"apihelp-welcomesurveyhandleresponses-param-responses": "以 JSON 格式，含有以問題名稱作為鍵；回應內容作為值的物件。"
+	"apihelp-welcomesurveyhandleresponses-param-responses": "以 JSON 格式，含有以問題名稱作為鍵、回應內容作為值的物件。"
 }

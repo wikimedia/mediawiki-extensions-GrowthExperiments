@@ -19,6 +19,9 @@
 	"growthexperiments-homepage-impact-article-link-tooltip": "Aller à l’article",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Voir le nombre détaillé des pages vues",
 	"growthexperiments-homepage-help-ask-help-desk": "Demander le bureau d’aide",
-	"growthexperiments-homepage-help-header": "Meilleurs articles d’aide",
+	"tag-help_module_question": "Question du module d’aide",
+	"tag-help_module_question-description": "Modification faite, à partir de la fonction poser une question, du service d'aide de la page d'accueil",
+	"growthexperiments-homepage-help-header": "Trouver ou demander de l’aide",
+	"growthexperiments-homepage-help-subheader": "Meilleurs articles d’aide",
 	"growthexperiments-homepage-help-cancel": "Annuler"
 }
