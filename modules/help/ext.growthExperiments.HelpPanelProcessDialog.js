@@ -79,6 +79,7 @@
 		if ( panel === 'home' ) {
 			this.homeFooterPanel.toggle( true );
 			this.questionReviewFooterPanel.toggle( false );
+			this.toggleSearchResults( false );
 		}
 		if ( panel === 'questionreview' ) {
 			this.questionReviewFooterPanel.toggle( true );
@@ -274,19 +275,10 @@
 		this.searchWidget = new HelpPanelSearchWidget( this.logger, {
 			searchNamespaces: configData.GEHelpPanelSearchNamespaces,
 			foreignApi: configData.GEHelpPanelSearchForeignAPI
-		} ).connect( this, { clear: [ 'executeAction', 'clearsearch' ] } );
-		this.searchWidget.searchInput.$input.on( 'input', function () {
-			if ( this.searchWidget.searchInput.getValue() ) {
-				this.toggleSearchResults( true );
-				this.setMode( 'search' );
-			}
-		}.bind( this ) );
-		this.searchWidget.searchInput.$input.on( 'focus', function ( event ) {
-			if ( event.isTrigger === undefined ) {
-				// isTrigger will be undefined if it's a user-initiated action (click).
-				this.logger.log( 'search-focus' );
-			}
-		}.bind( this ) );
+		} ).connect( this, {
+			enterSearch: [ 'executeAction', 'entersearch' ],
+			leaveSearch: [ 'executeAction', 'leavesearch' ]
+		} );
 
 		this.questionreviewPanel = new OO.ui.PanelLayout( {
 			padded: true,
@@ -524,7 +516,7 @@
 		this.$homePanelEditingLinksViewMore.toggle( !toggle );
 		this.homeFooterPanel.toggle( !toggle );
 		// Show/hide search results.
-		this.searchWidget.searchResultsPanel.toggle( toggle );
+		this.searchWidget.toggleSearchResults( toggle );
 
 	};
 
@@ -536,23 +528,24 @@
 					this.logger.log( 'close' );
 					this.close();
 				}
-
 				if ( action === 'reset' ) {
 					this.swapPanel( 'home' );
 				}
 				if ( action === 'home' ) {
 					this.logger.log( 'back-home', { from: this.currentMode } );
-					this.toggleSearchResults( false );
 					this.swapPanel( action );
 				}
 				if ( action === 'questionreview' ) {
 					this.logger.log( 'review' );
 					this.swapPanel( action );
 				}
-				if ( action === 'clearsearch' ) {
+				if ( action === 'entersearch' ) {
+					this.toggleSearchResults( true );
+					this.setMode( 'search' );
+				}
+				if ( action === 'leavesearch' ) {
 					this.logger.log( 'back-home', { from: 'blank-search-input' } );
 					this.swapPanel( 'home' );
-					this.toggleSearchResults( false );
 				}
 				if ( action === 'questioncomplete' ) {
 					/* eslint-disable camelcase */
