@@ -21,7 +21,7 @@
 
 		this.searchInput = new OO.ui.SearchInputWidget( {
 			autocomplete: false,
-			// MW Search doesn't have the "did you mean..?" feature.
+			// We are not using the query rewrite feature ("Did you mean...?").
 			// Enabling spellcheck may help get better results by having fewer typos
 			spellcheck: true
 		} );
@@ -32,10 +32,31 @@
 			mw.message( 'growthexperiments-help-panel-search-no-results' ).text()
 		);
 
+		this.searchInput.$input.on( 'focus', function ( event ) {
+			if ( event.isTrigger === undefined ) {
+				// isTrigger will be undefined if it's a user-initiated action (click).
+				this.logger.log( 'search-focus' );
+			}
+		}.bind( this ) );
+
 		this.searchInput.connect( this, { change: 'onSearchInputChange' } );
 		this.$element.append( this.searchInput.$element, this.searchResultsPanel.$element );
 	}
 	OO.inheritClass( HelpPanelSearchWidget, OO.ui.Widget );
+
+	/** events  */
+
+	/**
+	 * @event enterSearch
+	 *
+	 * Entering search mode
+	 */
+
+	/**
+	 * @event leaveSearch
+	 *
+	 * Leaving search mode
+	 */
 
 	HelpPanelSearchWidget.prototype.getApi = function () {
 		if ( !this.apiPromise ) {
@@ -70,10 +91,11 @@
 		this.searchResultsPanel.$element.empty();
 
 		if ( query === '' ) {
-			this.emit( 'clear' );
+			this.emit( 'leaveSearch' );
 			return;
 		}
 
+		this.emit( 'enterSearch' );
 		this.setLoading( true );
 		this.getApi().then( function () {
 			this.api.get( {
@@ -116,6 +138,19 @@
 		return $( '<div>' )
 			.addClass( 'mw-ge-help-panel-popup-search-search-result' )
 			.append( $link, $snippet );
+	};
+
+	/**
+	 * Toggle the search results panel and clear the input as needed
+	 *
+	 * @param {boolean} toggle
+	 */
+	HelpPanelSearchWidget.prototype.toggleSearchResults = function ( toggle ) {
+		this.searchResultsPanel.toggle( toggle );
+		if ( !toggle ) {
+			// Set value directly on the inner $input to avoid events
+			this.searchInput.$input.val( '' );
+		}
 	};
 
 	module.exports = HelpPanelSearchWidget;
