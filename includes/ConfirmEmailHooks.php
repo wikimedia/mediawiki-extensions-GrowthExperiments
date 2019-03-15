@@ -67,7 +67,8 @@ class ConfirmEmailHooks {
 					$context->msg( 'fancycaptcha-captcha' )->escaped() . ' ' .
 					$context->msg( 'growthexperiments-confirmemail-captcha-help' )->parse()
 			);
-			$formDescriptor['captchaWord']['cssclass'] = 'mw-ge-confirmemail-captcha';
+			$formDescriptor['captchaWord']['cssclass'] =
+				( $formDescriptor['capthaWord']['cssclass'] ?? '' ) . ' mw-ge-confirmemail-captcha';
 
 			$context->getOutput()->addModuleStyles(
 				'ext.growthExperiments.confirmEmail.createAccount.styles'
