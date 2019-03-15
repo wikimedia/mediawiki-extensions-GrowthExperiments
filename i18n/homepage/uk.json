@@ -6,5 +6,7 @@
 	},
 	"growthexperiments-homepage-tab": "Домашня сторінка",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> редагувань у статтях",
-	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|редагування|редагування|редагувань}} в інших типах сторінок (дивіться усі)"
+	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|редагування|редагування|редагувань}} в інших типах сторінок (дивіться усі)",
+	"growthexperiments-homepage-impact-article-link-tooltip": "Перейти на статтю",
+	"growthexperiments-homepage-help-cancel": "Скасувати"
 }

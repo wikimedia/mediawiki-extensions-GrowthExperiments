@@ -24,7 +24,7 @@
 	"growthexperiments-help-panel-questionreview-include-article-title": "내 질문에 문서 제목을 포함",
 	"growthexperiments-help-panel-question-subject-template": "도움말 패널 질문",
 	"growthexperiments-help-panel-question-subject-template-with-title": "[[$1]] 문서에 관한 도움말 패널 질문",
-	"growthexperiments-help-panel-question-subject-template-from-homepage": "사용자 홈페이지의 도움말 패널 질문",
+	"growthexperiments-help-panel-question-subject-template-from-homepage": "사용자 홈페이지의 도움말 모듈 질문",
 	"growthexperiments-help-panel-question-post-error": "질문 게시를 시도하던 중 오류가 발생했습니다. 다시 시도하거나 브라우저에서 $1을(를) 방문하여 질문을 수동으로 추가할 수 있습니다.",
 	"growthexperiments-help-panel-questioncomplete-title": "질문하기",
 	"growthexperiments-help-panel-questioncomplete-header": "질문이 게시되었습니다!",

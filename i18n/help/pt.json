@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"CaiusSPQR"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Ativar o painel de ajuda do editor",
@@ -42,7 +43,7 @@
 	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "Privilégios insuficientes para definir o correio eletrónico.",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Título inválido.",
 	"growthexperiments-help-panel-community-help-desk-text": "Central de Ajuda Comunitária",
-	"growthexperiments-help-panel-search-label": "Pesquisar nas perguntas frequentes",
+	"growthexperiments-help-panel-search-label": "Procurar ajuda",
 	"growthexperiments-help-panel-search-no-results": "Não foi encontrado nenhum resultado.",
 	"tag-help_panel_question": "Pergunta no painel de ajuda",
 	"tag-help_panel_question-description": "Edição feita usando a funcionalidade de perguntas do painel de ajuda",
