@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Janbery",
+			"Martin Urbanec"
+		]
+	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Vaše}} nástěnka",
+	"growthexperiments-homepage-tab": "Nástěnka",
+	"prefs-homepage": "Nástěnka nováčka",
+	"growthexperiments-homepage-enable": "Zobrazit nástěnku nováčka",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Vaše}} editace",
+	"growthexperiments-homepage-impact-subheader": "Lidé se dívají na články, které {{GENDER:$1|jste}} upravili. Zobrazení poté, co jste upravili (posledních 60 dní):",
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Uložil jste|Uložila jste|Uložili jste}} <strong>$1</strong> {{PLURAL:$1|editace|editace|editací}} (zobrazit vše)",
+	"growthexperiments-homepage-impact-subheader-no-edit": "Zatím jste žádné články {{GENDER:$1|needitoval|needitovala|needitovali}}. Tato část zobrazí dopad vašich editací.",
+	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> editací článků",
+	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|editace|editace|editací}} ostatních stránek (zobrazit vše)",
+	"growthexperiments-homepage-impact-article-link-tooltip": "Jít na článek",
+	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Zobrazit detailní statistiku návštěv",
+	"growthexperiments-homepage-help-ask-help-desk": "Položit otázku",
+	"tag-help_module_question": "Otázka z Nástěnky nováčka",
+	"tag-help_module_question-description": "Editace provedená skrze příslušný modul Nástěnky nováčka",
+	"growthexperiments-homepage-help-header": "Najít nebo požádat o pomoc",
+	"growthexperiments-homepage-help-subheader": "Nejlepší stránky s nápovědou",
+	"growthexperiments-homepage-help-cancel": "Storno"
+}

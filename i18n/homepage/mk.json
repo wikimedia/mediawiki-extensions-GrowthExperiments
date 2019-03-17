@@ -4,9 +4,23 @@
 			"Bjankuloski06"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Домашна страница на $1}}",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Вашата}} домашна страница",
 	"growthexperiments-homepage-tab": "Домашна страница",
 	"prefs-homepage": "Домашна страница за новодојденци",
 	"growthexperiments-homepage-enable": "Прикажувај домашна страница за новодојденци",
-	"growthexperiments-homepage-pt-link": "По основно давај домашна страница за новодојденци од врската за корисничко име во личните алатки"
+	"growthexperiments-homepage-pt-link": "По основно давај домашна страница за новодојденци од врската за корисничко име во личните алатки",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Вашето}} влијание",
+	"growthexperiments-homepage-impact-subheader": "Имате читатели на статиите што {{GENDER:$1|ги}} уредивте! Посети откако го {{GENDER:$1|направивте}} уредувањето (последниве 60 дена):",
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Направивте}} <strong>$1</strong> {{PLURAL:$1|уредување|уредувања}} (погл. сите)",
+	"growthexperiments-homepage-impact-subheader-no-edit": "Засега {{GENDER:$1|немате}} уредено ниедна статија. Во овој дел ќе се прикажуваат {{GENDER:$1|вашите}} уредувања.",
+	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> уредувања на статии",
+	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|уредување|уредувања}} на други видови статии (погл. сите)",
+	"growthexperiments-homepage-impact-article-link-tooltip": "Оди на статијата",
+	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Погл. подробно за посетите",
+	"growthexperiments-homepage-help-ask-help-desk": "Побарајте помош",
+	"tag-help_module_question": "Прашање на помошниот модул",
+	"tag-help_module_question-description": "Уредување направено од можноста за поставање прашања во помошниот модул на почетната страница",
+	"growthexperiments-homepage-help-header": "Најдете или побарајте помош",
+	"growthexperiments-homepage-help-subheader": "Најчитани помошни статии",
+	"growthexperiments-homepage-help-cancel": "Откажи"
 }

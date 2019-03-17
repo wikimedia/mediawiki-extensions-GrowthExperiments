@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Shirayuki"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|ようこそ}}、$1さん!",
+	"welcomesurvey-save-btn": "完了",
+	"welcomesurvey-popup-close-btn": "閉じる",
+	"welcomesurvey-sidebar-editing-link1-text": "チュートリアル",
+	"welcomesurvey-sidebar-editing-link2-text": "ヘルプ デスク",
+	"welcomesurvey-dropdown-option-select-label": "選択してください..."
+}
