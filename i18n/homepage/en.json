@@ -37,5 +37,8 @@
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2|your}} {{GENDER:$1|mentor's}} talk page",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Your}} question is now on your {{GENDER:$1|mentor's}} talk page, which is where they will answer it as soon as they can.",
 	"growthexperiments-homepage-mentorship-view-question-text": "View {{GENDER:$2|your}} question on your {{GENDER:$1|mentor's}} talk page.",
-	"growthexperiments-homepage-mentorship-question-subject": "Question from [[User:$1|$1]]"
+	"growthexperiments-homepage-mentorship-question-subject": "Question from [[User:$1|$1]]",
+	"growthexperiments-specialimpact-title": "Impact",
+	"growthexperiments-specialimpact-showing-for-other-user": "Showing impact data for $1",
+	"growthexperiments-specialimpact-invalid-username": "Missing or invalid username."
 }

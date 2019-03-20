@@ -14,6 +14,7 @@ $specialPageAliases = [];
 $specialPageAliases['en'] = [
 	'WelcomeSurvey' => [ 'WelcomeSurvey' ],
 	'Homepage' => [ 'Homepage' ],
+	'Impact' => [ 'Impact' ]
 ];
 
 /** čeština (Czech) */
