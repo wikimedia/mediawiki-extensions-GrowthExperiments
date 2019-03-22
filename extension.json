@@ -399,15 +399,6 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.Homepage.styles": {
-			"styles": [
-				"homepage/ext.growthExperiments.Homepage.less"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
 		"ext.growthExperiments.Homepage.BaseSidebarModule.styles": {
 			"styles": [
 				"homepage/ext.growthExperiments.BaseSidebarModule.less"

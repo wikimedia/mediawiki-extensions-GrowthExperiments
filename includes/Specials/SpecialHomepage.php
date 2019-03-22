@@ -6,7 +6,6 @@ use Exception;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
-use Html;
 use GrowthExperiments\HomepageModules\Mentorship;
 use MediaWiki\Logger\LoggerFactory;
 use SpecialPage;
@@ -24,8 +23,7 @@ class SpecialHomepage extends SpecialPage {
 		$out = $this->getContext()->getOutput();
 		$this->requireLogin();
 		parent::execute( $par );
-		$out->addModuleStyles( 'ext.growthExperiments.Homepage.styles' );
-		$out->addHTML( $this->getSubtitle() );
+		$out->setSubtitle( $this->getSubtitle() );
 		$out->enableOOUI();
 		foreach ( $this->getModules() as $module ) {
 			try {
@@ -66,12 +64,7 @@ class SpecialHomepage extends SpecialPage {
 	}
 
 	private function getSubtitle() {
-		return Html::element(
-			'div',
-			[ 'class' => 'growthexperiments-homepage-subtitle' ],
-			$this->msg( 'growthexperiments-homepage-specialpage-subtitle' )
-				->params( $this->getUser()->getName() )
-				->text()
-		);
+		return $this->msg( 'growthexperiments-homepage-specialpage-subtitle' )
+				->params( $this->getUser()->getName() );
 	}
 }
