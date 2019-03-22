@@ -32,7 +32,7 @@ class SpecialHomepage extends SpecialPage {
 				LoggerFactory::getInstance( 'GrowthExperiments' )->error(
 					"Homepage module '{class}' cannot be rendered.",
 					[
-						'class' => gettype( $module ),
+						'class' => get_class( $module ),
 						'msg' => $e->getMessage(),
 						'trace' => $e->getTraceAsString(),
 					]
