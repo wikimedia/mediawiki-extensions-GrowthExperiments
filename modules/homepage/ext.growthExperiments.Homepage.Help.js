@@ -1,9 +1,14 @@
 ( function () {
-	var attachButton = require( 'ext.growthExperiments.Homepage.QuestionPoster' );
+	var attachButton = require( 'ext.growthExperiments.Homepage.QuestionPoster' ),
+		dialogTitle = mw.message( 'growthexperiments-homepage-help-dialog-title' ).text();
 	attachButton( {
 		buttonSelector: '#mw-ge-homepage-help-cta',
 		dialog: {
-			name: 'help'
+			name: 'help',
+			panelTitleMessages: {
+				questionreview: dialogTitle,
+				questioncomplete: dialogTitle
+			}
 		}
 	} );
 }() );

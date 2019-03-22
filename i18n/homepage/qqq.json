@@ -23,6 +23,7 @@
 	"tag-help_module_question-description": "Short change tag description for edits made by the post a question feature in the help module.",
 	"tag-mentorship_module_question": "Short change tag name for edits made by the post a question feature in the mentorship module.",
 	"tag-mentorship_module_question-description": "Short change tag description for edits made by the post a question feature in the mentorship module.",
+	"growthexperiments-homepage-help-dialog-title": "Title of the dialog to ask a question to the help desk from the homepage.",
 	"growthexperiments-homepage-help-header": "Text to show in the subheader of the help module",
 	"growthexperiments-homepage-help-subheader": "Text to show in the subheader of the help module",
 	"growthexperiments-homepage-help-cancel": "Text shown on a button to close the help panel.",
