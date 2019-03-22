@@ -400,9 +400,9 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.Homepage.BaseSidebarModule.styles": {
+		"ext.growthExperiments.Homepage.BaseModule.styles": {
 			"styles": [
-				"homepage/ext.growthExperiments.BaseSidebarModule.less"
+				"homepage/ext.growthExperiments.BaseModule.less"
 			],
 			"targets": [
 				"desktop",
@@ -412,6 +412,15 @@
 		"ext.growthExperiments.Homepage.Impact.styles": {
 			"styles": [
 				"homepage/ext.growthExperiments.ImpactModule.less"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.growthExperiments.Homepage.Start.styles": {
+			"styles": [
+				"homepage/ext.growthExperiments.StartModule.less"
 			],
 			"targets": [
 				"desktop",

@@ -24,9 +24,7 @@ class MentorshipTest extends MediaWikiTestCase {
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$mentorshipModule = new Mentorship();
 
-		$mentorshipModule->render( $context );
-
-		$this->assertEmpty( $context->getOutput()->getHTML() );
+		$this->assertEmpty( $mentorshipModule->render( $context ) );
 	}
 
 	/**
@@ -40,9 +38,7 @@ class MentorshipTest extends MediaWikiTestCase {
 		$mentorshipModule = new Mentorship();
 		$context->getOutput()->enableOOUI();
 
-		$mentorshipModule->render( $context );
-
-		$this->assertNotEmpty( $context->getOutput()->getHTML() );
+		$this->assertNotEmpty( $mentorshipModule->render( $context ) );
 	}
 
 }

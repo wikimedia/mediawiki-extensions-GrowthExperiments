@@ -1,0 +1,31 @@
+@import 'mediawiki.ui/variables';
+
+.growthexperiments-homepage-module-start {
+	display: table;
+	width: 650px;
+
+	.growthexperiments-homepage-module-body {
+		display: table-row;
+
+		.growthexperiments-homepage-module {
+			display: table-cell;
+			text-align: center;
+			width: 25%;
+			font-size: 0.8em;
+			margin: 0;
+			vertical-align: top;
+			border-bottom: 0;
+			border-top: 0;
+			border-left: 0;
+			border-right: @border-color-base @border-width-base @border-style-base;
+
+			&:last-child {
+				border: 0;
+			}
+
+			.growthexperiments-homepage-module-body {
+				display: block;
+			}
+		}
+	}
+}

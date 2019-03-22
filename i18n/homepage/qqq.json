@@ -10,6 +10,7 @@
 	"prefs-homepage": "Text of the section header for the \"Newcomer homepage\" preference section.",
 	"growthexperiments-homepage-enable": "Text of the preference to display the homepage tab along with user and talk.",
 	"growthexperiments-homepage-pt-link": "Text of the preference to make the username link in the personal tools go to the homepage instead of the userpage.",
+	"growthexperiments-homepage-start-header": "Title of the newcomer homepage Start module.\n* $1 - Name of the current user. Can be used with GENDER.",
 	"growthexperiments-homepage-impact-header": "Title of the newcomer homepage Impact module.\n* $1 - Name of the current user. Can be used with GENDER.",
 	"growthexperiments-homepage-impact-subheader": "Subtitle of the newcomer homepage Impact module.\n* $1 - Name of the current user. Can be used with GENDER.",
 	"growthexperiments-homepage-impact-contributions-link": "Text of the link to Special::Contributions.\n* $1 - Edit count of the current user.\n* $2 - Name of the current user. Can be used with GENDER.",

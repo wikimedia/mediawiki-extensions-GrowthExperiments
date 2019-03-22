@@ -7,12 +7,12 @@ use Html;
 use IContextSource;
 
 /**
- * Class BaseSidebarModule is a base class for a small homepage module
+ * Class BaseModule is a base class for a small homepage module
  * typically displayed in the sidebar.
  *
  * @package GrowthExperiments\HomepageModules
  */
-abstract class BaseSidebarModule implements HomepageModule {
+abstract class BaseModule implements HomepageModule {
 
 	const BASE_CSS_CLASS = 'growthexperiments-homepage-module';
 
@@ -40,22 +40,25 @@ abstract class BaseSidebarModule implements HomepageModule {
 		$this->ctx = $ctx;
 
 		if ( !$this->canRender() ) {
-			return;
+			return '';
 		}
 
 		$out = $ctx->getOutput();
-		$out->addModuleStyles( 'ext.growthExperiments.Homepage.BaseSidebarModule.styles' );
+		$out->addModuleStyles( 'ext.growthExperiments.Homepage.BaseModule.styles' );
 		$out->addModuleStyles( $this->getModuleStyles() );
 		$out->addModules( $this->getModules() );
 		$out->addJsConfigVars( $this->getJsConfigVars() );
-		$out->addHTML( Html::rawElement(
+		return Html::rawElement(
 			'div',
-			[ 'class' => [ self::BASE_CSS_CLASS, self::BASE_CSS_CLASS . '-' . $this->name ] ],
+			[ 'class' => [
+				self::BASE_CSS_CLASS,
+				self::BASE_CSS_CLASS . '-' . $this->name,
+			] ],
 			$this->buildSection( 'header', $this->getHeader(), 'h2' ) .
 			$this->buildSection( 'subheader', $this->getSubheader(), 'h3' ) .
 			$this->buildSection( 'body', $this->getBody() ) .
 			$this->buildSection( 'footer', $this->getFooter() )
-		) );
+		);
 	}
 
 	/**

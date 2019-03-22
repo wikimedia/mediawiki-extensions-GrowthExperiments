@@ -65,6 +65,6 @@ class SpecialImpact extends SpecialPage {
 				->text() ) );
 		}
 		$context->setUser( $impactUser );
-		$impact->render( $context );
+		$out->addHTML( $impact->render( $context ) );
 	}
 }

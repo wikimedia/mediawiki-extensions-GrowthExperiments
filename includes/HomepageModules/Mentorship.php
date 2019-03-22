@@ -16,7 +16,7 @@ use User;
  *
  * @package GrowthExperiments\HomepageModules
  */
-class Mentorship extends BaseSidebarModule {
+class Mentorship extends BaseModule {
 
 	const MENTORSHIP_MODULE_QUESTION_TAG = 'mentorship module question';
 

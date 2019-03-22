@@ -7,7 +7,7 @@ use GrowthExperiments\HelpPanel;
 use OOUI\ButtonWidget;
 use OOUI\Tag;
 
-class Help extends BaseSidebarModule {
+class Help extends BaseModule {
 
 	const HELP_MODULE_QUESTION_TAG = 'help module question';
 

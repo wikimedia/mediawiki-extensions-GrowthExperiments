@@ -11,6 +11,7 @@ interface HomepageModule {
 	 * output provided in the context.
 	 *
 	 * @param IContextSource $ctx
+	 * @return string Html rendering of the module
 	 */
 	public function render( IContextSource $ctx );
 }

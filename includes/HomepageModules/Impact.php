@@ -22,7 +22,7 @@ use Title;
  *
  * @package GrowthExperiments\HomepageModules
  */
-class Impact extends BaseSidebarModule {
+class Impact extends BaseModule {
 
 	const THUMBNAIL_SIZE = 50;
 

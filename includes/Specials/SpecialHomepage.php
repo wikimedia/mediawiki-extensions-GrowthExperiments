@@ -8,6 +8,7 @@ use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\Mentorship;
 use MediaWiki\Logger\LoggerFactory;
+use GrowthExperiments\HomepageModules\Start;
 use SpecialPage;
 
 class SpecialHomepage extends SpecialPage {
@@ -27,7 +28,7 @@ class SpecialHomepage extends SpecialPage {
 		$out->enableOOUI();
 		foreach ( $this->getModules() as $module ) {
 			try {
-				$module->render( $this->getContext() );
+				$out->addHTML( $module->render( $this->getContext() ) );
 			} catch ( Exception $e ) {
 				LoggerFactory::getInstance( 'GrowthExperiments' )->error(
 					"Homepage module '{class}' cannot be rendered.",
@@ -57,6 +58,7 @@ class SpecialHomepage extends SpecialPage {
 	 */
 	private function getModules() {
 		return [
+			new Start(),
 			new Impact(),
 			new Help(),
 			new Mentorship(),
