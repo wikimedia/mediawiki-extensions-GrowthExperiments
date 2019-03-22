@@ -5,6 +5,7 @@ namespace GrowthExperiments\Specials;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
+use Html;
 use SpecialPage;
 
 class SpecialHomepage extends SpecialPage {
@@ -17,9 +18,12 @@ class SpecialHomepage extends SpecialPage {
 	 * @inheritDoc
 	 */
 	public function execute( $par ) {
+		$out = $this->getContext()->getOutput();
 		$this->requireLogin();
 		parent::execute( $par );
-		$this->getContext()->getOutput()->enableOOUI();
+		$out->addModuleStyles( 'ext.growthExperiments.Homepage.styles' );
+		$out->addHTML( $this->getSubtitle() );
+		$out->enableOOUI();
 		foreach ( $this->getModules() as $module ) {
 			$module->render( $this->getContext() );
 		}
@@ -44,5 +48,15 @@ class SpecialHomepage extends SpecialPage {
 			new Impact(),
 			new Help(),
 		];
+	}
+
+	private function getSubtitle() {
+		return Html::element(
+			'div',
+			[ 'class' => 'growthexperiments-homepage-subtitle' ],
+			$this->msg( 'growthexperiments-homepage-specialpage-subtitle' )
+				->params( $this->getUser()->getName() )
+				->text()
+		);
 	}
 }
