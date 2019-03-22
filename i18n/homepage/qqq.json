@@ -40,5 +40,8 @@
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "Text of the link to the mentor's talk page used as an argument to {{msg-mw|growthexperiments-homepage-mentorship-questionreview-header}}.\n* $1 - Name of the mentor. Can be used with GENDER.\n* $2 - Name of the current user. Can be used with GENDER.",
 	"growthexperiments-homepage-mentorship-confirmation-text": "Confirmation text after a user has posted a question on their mentor's talk page.\n* $1 - Name of the mentor. Can be used with GENDER.\n* $2 - Name of the current user. Can be used with GENDER.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Text of the link to view the question that was just posted on the mentor's talk page.\n* $1 - Name of the mentor. Can be used with GENDER.\n* $2 - Name of the current user. Can be used with GENDER.",
-	"growthexperiments-homepage-mentorship-question-subject": "New section title when a user posts a question on their mentor's talk page.\n* $1 - Name of the current user. Can be used with GENDER."
+	"growthexperiments-homepage-mentorship-question-subject": "New section title when a user posts a question on their mentor's talk page.\n* $1 - Name of the current user. Can be used with GENDER.",
+	"growthexperiments-specialimpact-title": "Title for Special:Impact.",
+	"growthexperiments-specialimpact-showing-for-other-user": "Text to show above the impact module if it the data shown is for a different user. Parameters:\n* $1 - Name of the user for which data is shown.",
+	"growthexperiments-specialimpact-invalid-username": "Error text to show if an invalid username is supplied as an argument to Special:Impact."
 }

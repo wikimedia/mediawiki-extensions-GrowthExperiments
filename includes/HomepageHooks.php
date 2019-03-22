@@ -6,6 +6,7 @@ use ConfigException;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Specials\SpecialHomepage;
+use GrowthExperiments\Specials\SpecialImpact;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\MenuBuilder;
 use MinervaUI;
@@ -21,7 +22,7 @@ class HomepageHooks {
 	const HOMEPAGE_PREF_PT_LINK = 'growthexperiments-homepage-pt-link';
 
 	/**
-	 * Register Homepage special page.
+	 * Register Homepage and Impact special pages.
 	 *
 	 * @param array &$list
 	 * @throws ConfigException
@@ -29,6 +30,7 @@ class HomepageHooks {
 	public static function onSpecialPageInitList( &$list ) {
 		if ( self::isHomepageEnabled() ) {
 			$list[ 'Homepage' ] = SpecialHomepage::class;
+			$list[ 'Impact' ] = SpecialImpact::class;
 		}
 	}
 
