@@ -4,7 +4,7 @@
 			"Ykhwong"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|내}} 홈페이지",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|안녕하세요}}, $1님!",
 	"growthexperiments-homepage-tab": "홈페이지",
 	"prefs-homepage": "신규 사용자의 홈페이지",
 	"growthexperiments-homepage-enable": "신규 사용자의 홈페이지 표시",
@@ -12,5 +12,6 @@
 	"tag-help_module_question": "도움말 모듈 질문",
 	"growthexperiments-homepage-help-header": "도움말 검색 또는 도움 요청하기",
 	"growthexperiments-homepage-help-subheader": "최상위 도움말 문서",
-	"growthexperiments-homepage-help-cancel": "취소"
+	"growthexperiments-homepage-help-cancel": "취소",
+	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]]님의 질문"
 }
