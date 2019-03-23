@@ -139,7 +139,7 @@ class Mentorship extends BaseSidebarModule {
 			$text = $this->getContext()
 				->msg( 'growthexperiments-homepage-mentorship-mentor-active-days-ago' )
 				->params( $this->getMentor()->getName() )
-				->numParams( (int)$timeDiff->format( '%d' ) )
+				->numParams( $timeDiff->days )
 				->text();
 		}
 
