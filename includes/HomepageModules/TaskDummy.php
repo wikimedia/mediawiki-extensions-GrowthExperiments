@@ -35,6 +35,13 @@ class TaskDummy extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
+	protected function getHeaderTag() {
+		return 'h3';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function getBody() {
 		if ( $this->completed ) {
 			return 'Thanks';

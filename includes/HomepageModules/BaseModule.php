@@ -54,8 +54,8 @@ abstract class BaseModule implements HomepageModule {
 				self::BASE_CSS_CLASS,
 				self::BASE_CSS_CLASS . '-' . $this->name,
 			] ],
-			$this->buildSection( 'header', $this->getHeader(), 'h2' ) .
-			$this->buildSection( 'subheader', $this->getSubheader(), 'h3' ) .
+			$this->buildSection( 'header', $this->getHeader(), $this->getHeaderTag() ) .
+			$this->buildSection( 'subheader', $this->getSubheader(), $this->getSubheaderTag() ) .
 			$this->buildSection( 'body', $this->getBody() ) .
 			$this->buildSection( 'footer', $this->getFooter() )
 		);
@@ -76,6 +76,15 @@ abstract class BaseModule implements HomepageModule {
 	abstract protected function getHeader();
 
 	/**
+	 * Override this function to change the default header tag.
+	 *
+	 * @return string Tag to use with the header, e.g. h2, h3, h4
+	 */
+	protected function getHeaderTag() {
+		return 'h2';
+	}
+
+	/**
 	 * Implement this function to provide the module body.
 	 *
 	 * @return string Text or HTML content of the body
@@ -89,6 +98,15 @@ abstract class BaseModule implements HomepageModule {
 	 */
 	protected function getSubheader() {
 		return '';
+	}
+
+	/**
+	 * Override this function to change the default subheader tag.
+	 *
+	 * @return string Tag to use with the subheader, e.g. h2, h3, h4
+	 */
+	protected function getSubheaderTag() {
+		return 'h3';
 	}
 
 	/**
