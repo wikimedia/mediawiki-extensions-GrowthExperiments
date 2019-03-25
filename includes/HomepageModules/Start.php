@@ -23,10 +23,10 @@ class Start extends BaseModule {
 		parent::__construct( 'start' );
 
 		$this->tasks = [
-			new TaskDummy( 'Account created', true ),
+			new Account(),
 			new TaskDummy( 'Add your email', false ),
 			new TaskDummy( 'Learn to edit', true ),
-			new TaskDummy( 'Create your user page', false ),
+			new Userpage(),
 		];
 	}
 

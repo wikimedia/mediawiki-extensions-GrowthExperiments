@@ -153,7 +153,7 @@ abstract class BaseModule implements HomepageModule {
 	 * @param string $tag HTML tag to use for the section
 	 * @return string
 	 */
-	private function buildSection( $name, $content, $tag = 'div' ) {
+	protected function buildSection( $name, $content, $tag = 'div' ) {
 		return $content ? Html::rawElement(
 			$tag,
 			[

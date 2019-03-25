@@ -1,0 +1,82 @@
+<?php
+
+namespace GrowthExperiments\HomepageModules;
+
+use OOUI\IconWidget;
+
+class Account extends BaseModule {
+
+	public function __construct() {
+		parent::__construct( 'account' );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getHeader() {
+		return new IconWidget( [ 'icon' => 'check' ] ) .
+			$this->getContext()->msg( 'growthexperiments-homepage-account-header' )->text();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getBody() {
+		return $this->getUsername() .
+			$this->getEditCount() .
+			$this->getAccountAge();
+	}
+
+	private function getUsername() {
+		return $this->buildSection( 'username', $this->getContext()->getUser()->getName() );
+	}
+
+	private function getEditCount() {
+		return $this->buildSection(
+			'editcount',
+			$this->getContext()->msg( 'growthexperiments-homepage-account-editcount' )
+				->params( $this->getContext()->getUser()->getEditCount() )
+				->text()
+		);
+	}
+
+	private function getAccountAge() {
+		$user = $this->getContext()->getUser();
+		$elapsedTime = (int)wfTimestamp() -
+			(int)wfTimestamp( TS_UNIX, $user->getRegistration() );
+		$relativeTime = $this->getContext()->getLanguage()->formatDuration(
+			$elapsedTime, $this->getIntervals( $elapsedTime )
+		);
+		return $this->buildSection(
+			'accountage',
+			$this->getContext()->msg( 'growthexperiments-homepage-account-age' )
+				->params( $relativeTime )
+				->text()
+		);
+	}
+
+	private function getIntervals( $time ) {
+		if ( $time < 60 ) {
+			// less than a minute: "30 seconds"
+			return [ 'seconds' ];
+		} elseif ( $time < 3600 ) {
+			// more than a minute, less than an hour: "15 minutes"
+			return [ 'minutes' ];
+		} elseif ( $time < 86400 ) {
+			// more than an hour, less than a day: "23 hours"
+			return [ 'hours' ];
+		} elseif ( $time < 604800 ) {
+			// more than a day, less than a week: "5 days"
+			return [ 'days' ];
+		} elseif ( $time < 2592000 ) {
+			// more than a week, less than a month: "1 week, 1 day"
+			return [ 'weeks', 'days' ];
+		} elseif ( $time < 2592000 ) {
+			// more than a month, less than a year: "7 months and 4 days"
+			return [ 'weeks', 'days' ];
+		} else {
+			// more than a year: "3 years, 12 weeks, and 24 days"
+			return [ 'years', 'weeks', 'days' ];
+		}
+	}
+}

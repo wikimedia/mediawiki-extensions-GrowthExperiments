@@ -1,0 +1,83 @@
+<?php
+
+namespace GrowthExperiments\HomepageModules;
+
+use Html;
+use OOUI\ButtonWidget;
+use OOUI\IconWidget;
+
+class Userpage extends BaseModule {
+
+	public function __construct() {
+		parent::__construct( 'userpage' );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getHeader() {
+		if ( $this->hasUserpage() ) {
+			$msg = 'growthexperiments-homepage-userpage-header-done';
+			$icon = 'check';
+		} else {
+			$msg = 'growthexperiments-homepage-userpage-header';
+			$icon = 'edit';
+		}
+		return new IconWidget( [ 'icon' => $icon ] ) .
+			$this->getContext()->msg( $msg )
+				->params( $this->getContext()->getUser()->getName() )
+				->text();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getBody() {
+		if ( $this->hasUserpage() ) {
+			$msg = 'growthexperiments-homepage-userpage-body-done';
+			$buttonMsg = 'growthexperiments-homepage-userpage-button-done';
+			$buttonFlags = [ 'progressive' ];
+		} else {
+			$msg = 'growthexperiments-homepage-userpage-body';
+			$buttonMsg = 'growthexperiments-homepage-userpage-button';
+			$buttonFlags = [ 'progressive', 'primary' ];
+		}
+		$messageSection = $this->buildSection(
+			'message',
+			$this->getContext()->msg( $msg )
+				->params( $this->getContext()->getUser()->getName() )
+				->text()
+		);
+		$button = new ButtonWidget( [
+			'label' => $this->getContext()->msg( $buttonMsg )->text(),
+			'flags' => $buttonFlags,
+			'href' => $this->getContext()->getUser()->getUserPage()->getEditURL(),
+		] );
+		return $messageSection . $button;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getFooter() {
+		$wikiId = wfWikiID();
+		return Html::element(
+			'a',
+			[
+				'href' => "https://www.wikidata.org/wiki/Special:GoToLinkedPage/$wikiId/Q4592334",
+			],
+			$this->getContext()->msg( 'growthexperiments-homepage-userpage-guidelines' )->text()
+		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getModuleStyles() {
+		return 'oojs-ui.styles.icons-editing-core';
+	}
+
+	private function hasUserpage() {
+		return $this->getContext()->getUser()->getUserPage()->exists();
+	}
+}
