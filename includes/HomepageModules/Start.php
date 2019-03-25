@@ -28,6 +28,7 @@ class Start extends BaseModule {
 
 		$this->tasks = [
 			new Account( $context ),
+			new Tutorial( $context ),
 			new Userpage( $context ),
 		];
 	}

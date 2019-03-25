@@ -50,6 +50,9 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Your}} question is now on your {{GENDER:$1|mentor's}} talk page, which is where they will answer it as soon as they can.",
 	"growthexperiments-homepage-mentorship-view-question-text": "View {{GENDER:$2|your}} question on your {{GENDER:$1|mentor's}} talk page.",
 	"growthexperiments-homepage-mentorship-question-subject": "Question from [[User:$1|$1]]",
+	"growthexperiments-homepage-tutorial-header": "Learn to edit",
+	"growthexperiments-homepage-tutorial-subheader": "Follow a quick tutorial to learn how to edit Wikipedia",
+	"growthexperiments-homepage-tutorial-cta-text": "Tutorial",
 	"growthexperiments-specialimpact-title": "Impact",
 	"growthexperiments-specialimpact-showing-for-other-user": "Showing impact data for $1",
 	"growthexperiments-specialimpact-invalid-username": "Missing or invalid username."
