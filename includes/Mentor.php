@@ -116,8 +116,11 @@ class Mentor {
 	private static function saveMentor( User $mentee, User $mentor ) {
 		$cache = MediaWikiServices::getInstance()->getMainObjectStash();
 		$cache->set( self::makeCacheKey( $cache, $mentee ), $mentor->getId(), $cache::TTL_DAY );
-		$job = new MentorSaveJob( $mentee->getId(), $mentor->getId() );
-		JobQueueGroup::singleton()->push( $job );
+		$job = new MentorSaveJob( [
+			'userId' => $mentee->getId(),
+			'mentorId' => $mentor->getId()
+		] );
+		JobQueueGroup::singleton()->lazyPush( $job );
 	}
 
 	private static function makeCacheKey( BagOStuff $cache, User $mentee ) {

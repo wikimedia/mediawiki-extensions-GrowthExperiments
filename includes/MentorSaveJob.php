@@ -9,19 +9,13 @@ use User;
 class MentorSaveJob extends Job {
 
 	/**
-	 * MentorSaveJob constructor.
-	 * @param int $userId
-	 * @param int $mentorId
-	 * @throws \MWException
+	 * @inheritDoc
 	 */
-	public function __construct( $userId, $mentorId ) {
+	public function __construct( $params ) {
 		parent::__construct(
 			'saveMentor',
 			SpecialPage::getTitleFor( 'Homepage' ),
-			[
-				'userId' => $userId,
-				'mentorId' => $mentorId,
-			]
+			$params
 		);
 	}
 

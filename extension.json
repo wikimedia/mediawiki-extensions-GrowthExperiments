@@ -17,6 +17,9 @@
 	"AutoloadNamespaces": {
 		"GrowthExperiments\\": "includes/"
 	},
+	"JobClasses": {
+		"saveMentor": "GrowthExperiments\\MentorSaveJob"
+	},
 	"MessagesDirs": {
 		"GrowthExperiments": [
 			"i18n/extension",
