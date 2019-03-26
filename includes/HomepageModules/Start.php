@@ -3,6 +3,7 @@
 namespace GrowthExperiments\HomepageModules;
 
 use GrowthExperiments\HomepageModule;
+use IContextSource;
 
 /**
  * Class Start
@@ -19,14 +20,15 @@ class Start extends BaseModule {
 	 */
 	private $tasks;
 
-	public function __construct() {
-		parent::__construct( 'start' );
+	/**
+	 * @inheritDoc
+	 */
+	public function __construct( IContextSource $context ) {
+		parent::__construct( 'start', $context );
 
 		$this->tasks = [
-			new Account(),
-			new TaskDummy( 'Add your email', false ),
-			new TaskDummy( 'Learn to edit', true ),
-			new Userpage(),
+			new Account( $context ),
+			new Userpage( $context ),
 		];
 	}
 
@@ -56,7 +58,7 @@ class Start extends BaseModule {
 	 */
 	protected function getBody() {
 		return implode( "\n", array_map( function ( HomepageModule $module ) {
-			return $module->render( $this->getContext() );
+			return $module->render();
 		}, $this->tasks ) );
 	}
 }

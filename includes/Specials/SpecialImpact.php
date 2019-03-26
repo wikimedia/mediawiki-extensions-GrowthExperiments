@@ -52,7 +52,6 @@ class SpecialImpact extends SpecialPage {
 			return;
 		}
 		$out->enableOOUI();
-		$impact = new Impact();
 		// Use a derivative context as we might be modifying the user.
 		$context = new DerivativeContext( $this->getContext() );
 		if ( !$impactUser->equals( $this->getUser() ) ) {
@@ -65,6 +64,7 @@ class SpecialImpact extends SpecialPage {
 				->text() ) );
 		}
 		$context->setUser( $impactUser );
-		$out->addHTML( $impact->render( $context ) );
+		$impact = new Impact( $context );
+		$out->addHTML( $impact->render() );
 	}
 }

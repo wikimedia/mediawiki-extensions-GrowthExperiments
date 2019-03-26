@@ -7,6 +7,7 @@ use DateTime;
 use ExtensionRegistry;
 use File;
 use Html;
+use IContextSource;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
 use MediaWiki\MediaWikiServices;
 use OOUI\IconWidget;
@@ -31,8 +32,11 @@ class Impact extends BaseModule {
 	 */
 	private $contribs = null;
 
-	public function __construct() {
-		parent::__construct( 'impact' );
+	/**
+	 * @inheritDoc
+	 */
+	public function __construct( IContextSource $context ) {
+		parent::__construct( 'impact', $context );
 	}
 
 	/**

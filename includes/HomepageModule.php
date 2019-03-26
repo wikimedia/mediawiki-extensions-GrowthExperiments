@@ -2,16 +2,12 @@
 
 namespace GrowthExperiments;
 
-use IContextSource;
-
 interface HomepageModule {
 
 	/**
-	 * Render this module using data from the given context as needed into the
-	 * output provided in the context.
+	 * Render this module as HTML.
 	 *
-	 * @param IContextSource $ctx
 	 * @return string Html rendering of the module
 	 */
-	public function render( IContextSource $ctx );
+	public function render();
 }

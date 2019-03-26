@@ -28,7 +28,7 @@ class SpecialHomepage extends SpecialPage {
 		$out->enableOOUI();
 		foreach ( $this->getModules() as $module ) {
 			try {
-				$out->addHTML( $module->render( $this->getContext() ) );
+				$out->addHTML( $module->render() );
 			} catch ( Exception $e ) {
 				LoggerFactory::getInstance( 'GrowthExperiments' )->error(
 					"Homepage module '{class}' cannot be rendered.",
@@ -58,10 +58,10 @@ class SpecialHomepage extends SpecialPage {
 	 */
 	private function getModules() {
 		return [
-			new Start(),
-			new Impact(),
-			new Help(),
-			new Mentorship(),
+			new Start( $this->getContext() ),
+			new Impact( $this->getContext() ),
+			new Help( $this->getContext() ),
+			new Mentorship( $this->getContext() ),
 		];
 	}
 

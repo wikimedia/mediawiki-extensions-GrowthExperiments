@@ -3,13 +3,17 @@
 namespace GrowthExperiments\HomepageModules;
 
 use Html;
+use IContextSource;
 use OOUI\ButtonWidget;
 use OOUI\IconWidget;
 
 class Userpage extends BaseModule {
 
-	public function __construct() {
-		parent::__construct( 'userpage' );
+	/**
+	 * @inheritDoc
+	 */
+	public function __construct( IContextSource $context ) {
+		parent::__construct( 'userpage', $context );
 	}
 
 	/**

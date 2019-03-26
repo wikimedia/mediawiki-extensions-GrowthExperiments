@@ -28,22 +28,22 @@ abstract class BaseModule implements HomepageModule {
 
 	/**
 	 * @param string $name Name of the module
+	 * @param IContextSource $ctx
 	 */
-	public function __construct( $name ) {
+	public function __construct( $name, IContextSource $ctx ) {
 		$this->name = $name;
+		$this->ctx = $ctx;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function render( IContextSource $ctx ) {
-		$this->ctx = $ctx;
-
+	public function render() {
 		if ( !$this->canRender() ) {
 			return '';
 		}
 
-		$out = $ctx->getOutput();
+		$out = $this->getContext()->getOutput();
 		$out->addModuleStyles( 'ext.growthExperiments.Homepage.BaseModule.styles' );
 		$out->addModuleStyles( $this->getModuleStyles() );
 		$out->addModules( $this->getModules() );

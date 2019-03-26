@@ -22,9 +22,9 @@ class MentorshipTest extends MediaWikiTestCase {
 		$this->insertPage( 'MentorsList', 'no user links here' );
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
 		$context = new DerivativeContext( RequestContext::getMain() );
-		$mentorshipModule = new Mentorship();
+		$mentorshipModule = new Mentorship( $context );
 
-		$this->assertEmpty( $mentorshipModule->render( $context ) );
+		$this->assertEmpty( $mentorshipModule->render() );
 	}
 
 	/**
@@ -35,10 +35,10 @@ class MentorshipTest extends MediaWikiTestCase {
 		$this->insertPage( 'MentorsList', '[[User:' . $mentor->getName() . ']]' );
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
 		$context = new DerivativeContext( RequestContext::getMain() );
-		$mentorshipModule = new Mentorship();
+		$mentorshipModule = new Mentorship( $context );
 		$context->getOutput()->enableOOUI();
 
-		$this->assertNotEmpty( $mentorshipModule->render( $context ) );
+		$this->assertNotEmpty( $mentorshipModule->render() );
 	}
 
 }

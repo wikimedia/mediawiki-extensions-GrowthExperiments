@@ -5,6 +5,7 @@ namespace GrowthExperiments\HomepageModules;
 use ConfigException;
 use GrowthExperiments\Mentor;
 use Html;
+use IContextSource;
 use MWTimestamp;
 use OOUI\ButtonWidget;
 use OOUI\IconWidget;
@@ -23,8 +24,11 @@ class Mentorship extends BaseModule {
 	/** @var User */
 	private $mentor;
 
-	public function __construct() {
-		parent::__construct( 'mentorship' );
+	/**
+	 * @inheritDoc
+	 */
+	public function __construct( IContextSource $context ) {
+		parent::__construct( 'mentorship', $context );
 	}
 
 	/**

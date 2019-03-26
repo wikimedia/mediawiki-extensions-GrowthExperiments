@@ -2,12 +2,16 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+use IContextSource;
 use OOUI\IconWidget;
 
 class Account extends BaseModule {
 
-	public function __construct() {
-		parent::__construct( 'account' );
+	/**
+	 * @inheritDoc
+	 */
+	public function __construct( IContextSource $context ) {
+		parent::__construct( 'account', $context );
 	}
 
 	/**
