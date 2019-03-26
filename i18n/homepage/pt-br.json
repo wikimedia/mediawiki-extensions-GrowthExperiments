@@ -22,11 +22,15 @@
 	"tag-help_module_question-description": "Editar feito a partir da postagem do módulo de ajuda da página inicial, um recurso de pergunta",
 	"tag-mentorship_module_question": "Pergunta do módulo de orientação",
 	"tag-mentorship_module_question-description": "Edição feita a partir da postagem do módulo de mentoria da página inicial, um recurso de pergunta",
-	"growthexperiments-homepage-help-header": "Encontre ou peça ajuda",
-	"growthexperiments-homepage-help-subheader": "Principais artigos de ajuda",
+	"growthexperiments-homepage-help-dialog-title": "Pergunte na central de ajuda",
+	"growthexperiments-homepage-help-header": "Obtenha ajuda para editar",
+	"growthexperiments-homepage-help-subheader": "Principais páginas de ajuda sobre edição",
 	"growthexperiments-homepage-help-cancel": "Cancelar",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Seu}} mentor",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|edição|edições}}",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|Ativo}} ontem",
-	"growthexperiments-homepage-mentorship-question-subject": "Pergunta de [[User:$1|$1]]"
+	"growthexperiments-homepage-mentorship-question-subject": "Pergunta de [[User:$1|$1]]",
+	"growthexperiments-specialimpact-title": "Impacto",
+	"growthexperiments-specialimpact-showing-for-other-user": "Mostrando dados de impacto por $1",
+	"growthexperiments-specialimpact-invalid-username": "Nome de usuário ausente ou inválido."
 }

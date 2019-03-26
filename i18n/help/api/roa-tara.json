@@ -6,6 +6,7 @@
 	},
 	"apihelp-helppanelquestionposter-summary": "Gestisce le domande mannate cu 'u pannelle de aijute pe l'utende de mò.",
 	"apihelp-helppanelquestionposter-param-body": "'U teste d'a domande date da l'utende.",
+	"apihelp-helppanelquestionposter-param-source": "'U combonende a 'a fonde de sta dumande. Valore valide sò 'helppanel', 'homepage-help', e 'homepage-mentorship'",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "'U titole rilevande, ce scacchiate, 'da 'ngludere cu 'a domande.",
 	"apihelp-helppanelquestionposter-param-email": "L'indirizze email facoltative, ce l'utende ave 'na mail non confermate o non g'ha tène probbie, da ausà pe mannà 'n'email de verifiche."
 }

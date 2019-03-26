@@ -4,7 +4,7 @@
 			"Beta16"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "La {{GENDER:$1|tua}} pagina principale",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ciao}}, $1!",
 	"growthexperiments-homepage-tab": "Pagina principale",
 	"prefs-homepage": "Pagina principale nuovi arrivati",
 	"growthexperiments-homepage-enable": "Mostra pagina principale nuovi arrivati",
@@ -13,5 +13,11 @@
 	"growthexperiments-homepage-impact-subheader-no-edit": "{{GENDER:$1|Non hai}} ancora effettuato modifiche ad alcuna voce. Quest'area mostrerà l'impatto delle {{GENDER:$1|tue}} modifiche.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> modifiche a voci",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Vai alla voce",
-	"growthexperiments-homepage-help-cancel": "Annulla"
+	"growthexperiments-homepage-help-cancel": "Annulla",
+	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|modifica|modifiche}}",
+	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Attivo|Attiva}} oggi",
+	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|Attivo|Attiva}} ieri",
+	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Attivo|Attiva}} $2 {{PLURAL:$2|giorno|giorni}} fa",
+	"growthexperiments-homepage-mentorship-question-subject": "Domanda da [[User:$1|$1]]",
+	"growthexperiments-specialimpact-title": "Impatto"
 }

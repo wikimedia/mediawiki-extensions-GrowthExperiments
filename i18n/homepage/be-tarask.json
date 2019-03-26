@@ -4,7 +4,7 @@
 			"Red Winged Duck"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Вашая}} хатняя старонка",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Вітаем}}, $1!",
 	"growthexperiments-homepage-tab": "Хатняя старонка",
 	"prefs-homepage": "Хатняя старонка навічка"
 }

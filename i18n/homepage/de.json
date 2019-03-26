@@ -10,6 +10,7 @@
 	"prefs-homepage": "Neulings-Startseite",
 	"growthexperiments-homepage-enable": "Neulings-Startseite anzeigen",
 	"growthexperiments-homepage-pt-link": "Standard auf die Neulings-Startseite vom Benutzernamenslink in den persönlichen Werkzeugen",
+	"growthexperiments-homepage-start-header": "Hier beginnen",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Deine}} Auswirkung",
 	"growthexperiments-homepage-impact-subheader": "Menschen betrachten die Artikel, die {{GENDER:$1|du}} bearbeitet hast! Aufrufe, seitdem {{GENDER:$1|du}} sie bearbeitet hast (letzte 60 Tage):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Du}} hast {{PLURAL:$1|<strong>eine</strong> Bearbeitung|<strong>$1</strong> Bearbeitungen}} durchgeführt (alle ansehen)",

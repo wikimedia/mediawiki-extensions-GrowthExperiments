@@ -11,6 +11,7 @@
 	"prefs-homepage": "الصفحة الرئيسية للقادمين الجدد",
 	"growthexperiments-homepage-enable": "عرض الصفحة الرئيسية للقادمين الجدد",
 	"growthexperiments-homepage-pt-link": "افتراضي للصفحة الرئيسية للقادمين الجدد من رابط اسم المستخدم في الأدوات الشخصية",
+	"growthexperiments-homepage-start-header": "بدأ هنا",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|تأثيرك}}",
 	"growthexperiments-homepage-impact-subheader": "يشاهد الأشخاص المقالات التي {{GENDER:$1|عدلتها}} ! المشاهدات منذ أن {{GENDER:$1|عدلتها}}(آخر 60 يوما):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|أنت قد}} أجريت <strong>$1</strong> {{PLURAL:$1|تعديلا|تعديلات}} (راجع الكل)",

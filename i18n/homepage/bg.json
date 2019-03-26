@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250"
+			"Vlad5250",
+			"Ted Masters"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Домашна страница на $1}}",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Добре дошъл|Добре дошла}}, $1!",
 	"growthexperiments-homepage-tab": "Начална страница",
 	"prefs-homepage": "Домашна страница за новички",
 	"growthexperiments-homepage-enable": "Показване на домашна страница за новички",
