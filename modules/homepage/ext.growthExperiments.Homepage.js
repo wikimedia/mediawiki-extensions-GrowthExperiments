@@ -34,9 +34,11 @@
 			logger.log( moduleName, 'impression', getModuleExtraData( moduleName ) );
 		};
 
+	/* eslint-disable no-jquery/no-event-shorthand */
 	$( moduleSelector )
 		.hover( handleHover( 'in' ), handleHover( 'out' ) )
 		.on( 'click', '[data-link-id]', handleClick )
 		.each( logImpression );
+	/* eslint-enable no-jquery/no-event-shorthand */
 
 }() );

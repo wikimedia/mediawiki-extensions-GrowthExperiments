@@ -1,5 +1,7 @@
 ( function () {
 
+	var Utils = require( '../utils/ext.growthExperiments.Utils.js' );
+
 	/**
 	 * @class mw.libs.ge.HelpPanelLogger
 	 * @constructor
@@ -28,7 +30,7 @@
 			{
 				action: action,
 				/* eslint-disable-next-line camelcase */
-				action_data: this.serializeActionData( data )
+				action_data: Utils.serializeActionData( data )
 			},
 			this.getMetaData(),
 			metadataOverride
@@ -41,27 +43,6 @@
 		);
 
 		this.previousEditorInterface = eventData.editor_interface;
-	};
-
-	HelpPanelLogger.prototype.serializeActionData = function ( data ) {
-		if ( !data ) {
-			return '';
-		}
-
-		if ( typeof data === 'object' ) {
-			return Object.keys( data )
-				.map( function ( key ) {
-					return key + '=' + data[ key ];
-				} )
-				.join( ';' );
-		}
-
-		if ( Array.isArray( data ) ) {
-			return data.join( ';' );
-		}
-
-		// assume it is string or number or bool
-		return data;
 	};
 
 	HelpPanelLogger.prototype.getMetaData = function () {
@@ -112,11 +93,13 @@
 			}
 
 			// Mobile: wikitext
+			// eslint-disable-next-line no-jquery/no-global-selector
 			if ( $( 'textarea#wikitext-editor:visible' ).length ) {
 				return 'wikitext';
 			}
 
 			// Mobile: VE
+			// eslint-disable-next-line no-jquery/no-global-selector
 			if ( $( '.ve-init-mw-mobileArticleTarget:visible' ).length ) {
 				return 'visualeditor';
 			}
@@ -142,6 +125,7 @@
 			}
 
 			// Desktop: old wikitext editor
+			// eslint-disable-next-line no-jquery/no-global-selector
 			if ( $( '#wpTextbox1:visible' ).length ) {
 				return 'wikitext';
 			}

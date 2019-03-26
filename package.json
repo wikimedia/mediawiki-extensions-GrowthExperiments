@@ -1,10 +1,18 @@
 {
 	"private": true,
 	"scripts": {
-		"test": "grunt test"
+		"test": "grunt test && npm run test:unit",
+		"test:unit": "NODE_PATH=modules nyc --reporter=lcovonly --reporter=lcov --reporter=text --reporter=text-summary qunit 'tests/node-qunit/**/*.test.js'"
 	},
 	"devDependencies": {
-		"eslint-config-wikimedia": "0.9.0",
+		"jquery": "3.3.1",
+		"jsdom": "14.0.0",
+		"oojs": "2.2.2",
+		"oojs-ui": "0.31.1",
+		"qunit": "2.9.2",
+		"sinon": "7.2.7",
+		"nyc": "13.1.0",
+		"eslint-config-wikimedia": "0.11.0",
 		"grunt": "1.0.3",
 		"grunt-eslint": "21.0.0",
 		"grunt-banana-checker": "0.6.0",
