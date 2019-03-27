@@ -4,5 +4,15 @@
 			"Joetaras"
 		]
 	},
-	"growthexperiments-homepage-userpage-body-done": "Condinue a fatià cu 'u profile pubbleche tune."
+	"growthexperiments-homepage-start-header": "Accuminze d'aqquà",
+	"growthexperiments-homepage-account-header": "Cunde ccrejate",
+	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|cangiamende|cangiaminde}}",
+	"growthexperiments-homepage-account-age": "E' aggiunde 'u cunde tune pe $1",
+	"growthexperiments-homepage-userpage-header": "Ccreje 'a pàgena utende toje",
+	"growthexperiments-homepage-userpage-header-done": "Cange 'a pàgena utende toje",
+	"growthexperiments-homepage-userpage-body": "Fà pratiche sus a le cangiaminde mendre ca ste face 'u profile pubbleche tune.",
+	"growthexperiments-homepage-userpage-body-done": "Condinue a fatià cu 'u profile pubbleche tune.",
+	"growthexperiments-homepage-userpage-button": "Ccreje 'na pàgena utende",
+	"growthexperiments-homepage-userpage-button-done": "Cange 'a pàgene utende",
+	"growthexperiments-homepage-userpage-guidelines": "Linèe guide pe le pàggene utinde"
 }

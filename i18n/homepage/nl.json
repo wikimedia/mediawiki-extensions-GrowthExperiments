@@ -1,12 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elroy"
+			"Elroy",
+			"Mainframe98"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|de startpagina van $1}}",
 	"growthexperiments-homepage-tab": "Startpagina",
 	"prefs-homepage": "Startpagina voor nieuwelingen",
 	"growthexperiments-homepage-enable": "Startpagina voor nieuwelingen weergeven",
-	"growthexperiments-homepage-pt-link": "De gebruikersnaamkoppeling wordt gebruikt om een voor persoonlijke hulpmiddelen standaardstartpagina voor nieuwelingen te maken"
+	"growthexperiments-homepage-pt-link": "De gebruikersnaamkoppeling wordt gebruikt om een voor persoonlijke hulpmiddelen standaardstartpagina voor nieuwelingen te maken",
+	"growthexperiments-homepage-start-header": "Begin hier",
+	"growthexperiments-homepage-account-header": "Account aangemaakt",
+	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|bewerking|bewerkingen}}",
+	"growthexperiments-homepage-userpage-header": "Uw gebruikerspagina aanmaken",
+	"growthexperiments-homepage-userpage-button": "Gebruikerspagina aanmaken"
 }

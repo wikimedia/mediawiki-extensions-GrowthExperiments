@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Janbery",
-			"Martin Urbanec"
+			"Martin Urbanec",
+			"Dvorapa"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Vaše}} nástěnka",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ahoj}} $1!",
 	"growthexperiments-homepage-tab": "Nástěnka",
 	"prefs-homepage": "Nástěnka nováčka",
 	"growthexperiments-homepage-enable": "Zobrazit nástěnku nováčka",
@@ -20,7 +21,7 @@
 	"growthexperiments-homepage-help-ask-help-desk": "Položit otázku",
 	"tag-help_module_question": "Otázka z Nástěnky nováčka",
 	"tag-help_module_question-description": "Editace provedená skrze příslušný modul Nástěnky nováčka",
-	"growthexperiments-homepage-help-header": "Najít nebo požádat o pomoc",
-	"growthexperiments-homepage-help-subheader": "Nejlepší stránky s nápovědou",
+	"growthexperiments-homepage-help-header": "Sežeňte pomoc s editací",
+	"growthexperiments-homepage-help-subheader": "Nejlepší stránky s nápovědou o editaci",
 	"growthexperiments-homepage-help-cancel": "Storno"
 }
