@@ -73,14 +73,14 @@ class Account extends BaseModule {
 			// more than a day, less than a week: "5 days"
 			return [ 'days' ];
 		} elseif ( $time < 2592000 ) {
-			// more than a week, less than a month: "1 week, 1 day"
-			return [ 'weeks', 'days' ];
+			// more than a week, less than a month: "3 weeks"
+			return [ 'weeks' ];
 		} elseif ( $time < 2592000 ) {
-			// more than a month, less than a year: "7 months and 4 days"
-			return [ 'weeks', 'days' ];
+			// more than a month, less than a year: "15 weeks"
+			return [ 'weeks' ];
 		} else {
-			// more than a year: "3 years, 12 weeks, and 24 days"
-			return [ 'years', 'weeks', 'days' ];
+			// more than a year: "3 years and 12 weeks"
+			return [ 'years', 'weeks' ];
 		}
 	}
 }
