@@ -34,7 +34,6 @@ class Mentor {
 	 * @throws \MWException
 	 */
 	public static function newFromMentee( User $mentee, $allowSelect = false ) {
-		// todo: split get / getOrSelect into 2 functions
 		$mentorUser = self::loadMentor( $mentee );
 		if ( $mentorUser ) {
 			return new static( $mentorUser );
