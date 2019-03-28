@@ -47,8 +47,7 @@ class Mentorship extends BaseModule {
 	protected function getBody() {
 		return implode( "\n", [
 			$this->getMentorUserLink(),
-			$this->getEditCount(),
-			$this->getLastActive(),
+			$this->getMentorInfo(),
 			$this->getIntroText(),
 			$this->getQuestionButton(),
 		] );
@@ -115,7 +114,7 @@ class Mentorship extends BaseModule {
 
 	private function getMentorUserLink() {
 		$icon = new IconWidget( [ 'icon' => 'userAvatar' ] );
-		return Html::rawElement(
+		$link = Html::rawElement(
 			'a',
 			[
 				'href' => $this->getMentor()->getUserPage()->getLinkURL(),
@@ -123,17 +122,29 @@ class Mentorship extends BaseModule {
 			],
 			$icon . $this->getMentor()->getName()
 		);
+		return Html::rawElement( 'div', [
+			'class' => 'growthexperiments-homepage-mentorship-userlink'
+		], $link );
+	}
+
+	private function getMentorInfo() {
+		return Html::rawElement(
+			'div',
+			[
+				'class' => 'growthexperiments-homepage-mentorship-mentorinfo'
+			],
+			$this->getEditCount() . ' &bull; ' . $this->getLastActive()
+		);
 	}
 
 	private function getEditCount() {
-		return Html::element(
-			'div',
-			[],
-			$this->getContext()
-				->msg( 'growthexperiments-homepage-mentorship-mentor-edits' )
-				->numParams( $this->getMentor()->getEditCount() )
-				->text()
-		);
+		$text = $this->getContext()
+			->msg( 'growthexperiments-homepage-mentorship-mentor-edits' )
+			->numParams( $this->getMentor()->getEditCount() )
+			->text();
+		return Html::element( 'span', [
+			'class' => 'growthexperiments-homepage-mentorship-editcount'
+		], $text );
 	}
 
 	private function getLastActive() {
@@ -162,13 +173,15 @@ class Mentorship extends BaseModule {
 				->text();
 		}
 
-		return Html::element( 'div', [], $text );
+		return Html::element( 'span', [
+			'class' => 'growthexperiments-homepage-mentorship-lastactive'
+		], $text );
 	}
 
 	private function getIntroText() {
 		return Html::element(
 			'div',
-			[],
+			[ 'class' => 'growthexperiments-homepage-mentorship-intro' ],
 			$this->getContext()
 				->msg( 'growthexperiments-homepage-mentorship-intro' )
 				->params( $this->getMentor()->getName() )

@@ -1,29 +1,35 @@
 @import 'mediawiki.ui/variables';
 @import 'mediawiki.mixins';
+@import 'ext.growthExperiments.variables.less';
 
 .growthexperiments-homepage-module {
 	border: @border-color-base @border-width-base @border-style-base;
 	border-radius: @borderRadius;
-	background-color: @colorGray15;
+	.box-shadow( 0 1px 1px 0 rgba( 0, 0, 0, 0.15 ) );
 	color: @colorGray2;
-	margin: 1em;
+	margin: @homepageModuleMargin;
 	padding: 1em;
-	width: 240px;
+	.box-sizing( border-box );
 
 	h2.growthexperiments-homepage-module-header {
-		font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+		font-family: @homepageHeaderFont;
 		font-size: 1.5em;
 		font-weight: bold;
 		color: @colorGray2;
-		margin: 0;
-		border-bottom: 0;
+		margin-top: 0;
+
+		.homepage-separator();
 	}
 
 	h3.growthexperiments-homepage-module-subheader {
-		font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
-		font-size: 0.8em;
+		font-family: @homepageHeaderFont;
+		font-size: 1em;
 		font-weight: normal;
-		margin: 0;
 		color: @colorGray5;
+		margin: 0;
+	}
+
+	&-footer {
+		margin-top: 0.5em;
 	}
 }

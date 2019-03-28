@@ -1,0 +1,26 @@
+@import 'mediawiki.ui/variables';
+@import 'mediawiki.mixins';
+@import 'ext.growthExperiments.variables.less';
+
+.growthexperiments-homepage-container {
+	display: flex;
+}
+
+.growthexperiments-homepage-group-main {
+	width: 75%;
+	display: flex;
+	.flex-wrap( wrap );
+}
+
+.growthexperiments-homepage-group-sidebar {
+	width: 25%;
+}
+
+.growthexperiments-homepage-module-start {
+	width: 100%;
+}
+
+.growthexperiments-homepage-module-impact,
+.growthexperiments-homepage-module-mentorship {
+	width: calc( 50% ~'-' 2 * @homepageModuleMargin );
+}

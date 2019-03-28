@@ -423,8 +423,11 @@
 		},
 		"ext.growthExperiments.Homepage.styles": {
 			"styles": [
+				"homepage/ext.growthExperiments.Homepage.less",
 				"homepage/ext.growthExperiments.BaseModule.less",
+				"homepage/ext.growthExperiments.HelpModule.less",
 				"homepage/ext.growthExperiments.ImpactModule.less",
+				"homepage/ext.growthExperiments.MentorshipModule.less",
 				"homepage/ext.growthExperiments.StartModule.less"
 			],
 			"targets": [

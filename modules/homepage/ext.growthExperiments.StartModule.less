@@ -1,35 +1,37 @@
 @import 'mediawiki.ui/variables';
+@import 'mediawiki.mixins';
 
 .growthexperiments-homepage-module-start {
-	display: table;
-	width: 650px;
+	.box-shadow( 0 5px 10px 0 rgba( 0, 0, 0, 0.15 ) );
 
 	.growthexperiments-homepage-module-body {
-		display: table-row;
+		display: flex;
 
 		.growthexperiments-homepage-module {
-			display: table-cell;
 			text-align: center;
 			width: 25%;
-			font-size: 0.8em;
 			margin: 0;
 			vertical-align: top;
 			border-bottom: 0;
 			border-top: 0;
 			border-left: 0;
 			border-right: @border-color-base @border-width-base @border-style-base;
+			.box-shadow( none );
 
 			&:last-child {
 				border: 0;
 			}
 
 			&-header {
+				border-bottom: 0;
+				padding-bottom: 0;
+
 				.oo-ui-iconElement {
-					width: 32px;
-					height: 32px;
-					border-radius: 16px;
+					width: 40px;
+					height: 40px;
+					border-radius: 50%;
 					background-color: #d5fdf4;
-					border: 1px solid #c8ccd1;
+					border: 1px solid @colorGray12;
 					background-size: unset;
 					margin-right: 10px;
 				}
