@@ -5,6 +5,9 @@ namespace GrowthExperiments\Api;
 use ApiBase;
 use ApiMain;
 use ApiUsageException;
+use GrowthExperiments\HelpPanel\HelpModuleQuestionPoster;
+use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
+use GrowthExperiments\HelpPanel\MentorshipModuleQuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionPoster;
 use MediaWiki\Logger\LoggerFactory;
 use MWException;
@@ -33,12 +36,9 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 		parent::__construct( $mainModule, $moduleName, $modulePrefix );
 
 		$this->questionPosterClasses = [
-			'helppanel' =>
-				\GrowthExperiments\HelpPanel\HelpPanelQuestionPoster::class,
-			'homepage-help' =>
-				\GrowthExperiments\HelpPanel\HelpModuleQuestionPoster::class,
-			'homepage-mentorship' =>
-				\GrowthExperiments\HelpPanel\MentorshipModuleQuestionPoster::class,
+			'helppanel' => HelpPanelQuestionPoster::class,
+			'homepage-help' => HelpModuleQuestionPoster::class,
+			'homepage-mentorship' => MentorshipModuleQuestionPoster::class,
 		];
 	}
 
@@ -51,20 +51,19 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 	public function execute() {
 		$params = $this->extractRequestParams();
 		$emailStatus = null;
-		$this->setQuestionPoster( $params[self::API_PARAM_SOURCE] );
+		$this->setQuestionPoster(
+			$params[self::API_PARAM_SOURCE],
+			$params[self::API_PARAM_RELEVANT_TITLE]
+		);
 
 		if ( $params[self::API_PARAM_RELEVANT_TITLE] ) {
-			$status = $this->questionPoster->validateRelevantTitle(
-				$params[self::API_PARAM_RELEVANT_TITLE] );
+			$status = $this->questionPoster->validateRelevantTitle();
 			if ( !$status->isGood() ) {
 				throw new ApiUsageException( null, $status );
 			}
 		}
 
-		$status = $this->questionPoster->submit(
-			$params[self::API_PARAM_BODY],
-			$params[self::API_PARAM_RELEVANT_TITLE]
-		);
+		$status = $this->questionPoster->submit( $params[self::API_PARAM_BODY] );
 		if ( !$status->isGood() ) {
 			throw new ApiUsageException( null, $status );
 		}
@@ -95,12 +94,13 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 
 	/**
 	 * @param string $source
+	 * @param string $relevantTitle
 	 * @throws ApiUsageException
 	 */
-	private function setQuestionPoster( $source ) {
+	private function setQuestionPoster( $source, $relevantTitle ) {
 		try {
 			$questionPosterClass = $this->questionPosterClasses[$source];
-			$this->questionPoster = new $questionPosterClass( $this->getContext() );
+			$this->questionPoster = new $questionPosterClass( $this->getContext(), $relevantTitle );
 		} catch ( \Exception $exception ) {
 			$this->dieWithException( $exception );
 		}

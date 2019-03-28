@@ -4,38 +4,35 @@ namespace GrowthExperiments\HelpPanel;
 
 use ConfigException;
 use GrowthExperiments\HelpPanel;
-use Title;
 
 class HelpPanelQuestionPoster extends QuestionPoster {
 
 	/**
-	 * {@inheritDoc}
+	 * @inheritDoc
 	 */
-	public function addTag() {
-		$this->pageUpdater->addTag( HelpPanel::HELP_PANEL_QUESTION_TAG );
+	protected function getTag() {
+		return HelpPanel::HELP_PANEL_QUESTION_TAG;
 	}
 
 	/**
-	 * @param string $relevantTitle
+	 * @inheritDoc
 	 */
-	public function setSectionHeader( $relevantTitle ) {
-		if ( $relevantTitle ) {
-			$this->sectionHeader = $this->context
+	protected function getSectionHeader() {
+		return $this->relevantTitle ?
+			$this->getContext()
 				->msg( 'growthexperiments-help-panel-question-subject-template-with-title' )
-				->params( $relevantTitle )
-				->inContentLanguage()->text();
-		} else {
-			$this->sectionHeader = $this->context
+				->params( $this->relevantTitle )
+				->inContentLanguage()->text() :
+			$this->getContext()
 				->msg( 'growthexperiments-help-panel-question-subject-template' )
 				->inContentLanguage()->text();
-		}
 	}
 
 	/**
-	 * @return Title
+	 * @inheritDoc
 	 * @throws ConfigException
 	 */
 	protected function getTargetTitle() {
-		return HelpPanel::getHelpDeskTitle( $this->context->getConfig() );
+		return HelpPanel::getHelpDeskTitle( $this->getContext()->getConfig() );
 	}
 }
