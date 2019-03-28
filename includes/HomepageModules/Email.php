@@ -55,16 +55,19 @@ class Email extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getBody() {
+	protected function getSubheader() {
 		// growthexperiments-homepage-email-text-noemail,
 		// growthexperiments-homepage-email-text-unconfirmed,
 		// growthexperiments-homepage-email-text-confirmed
-		$messageSection = $this->buildSection(
-			'message',
-			$this->getContext()->msg( "growthexperiments-homepage-email-text-{$this->emailState}" )
-				->params( $this->getContext()->getUser()->getName() )
-				->text()
-		);
+		return $this->getContext()->msg( "growthexperiments-homepage-email-text-{$this->emailState}" )
+			->params( $this->getContext()->getUser()->getName() )
+			->text();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getBody() {
 		// growthexperiments-homepage-email-button-noemail,
 		// growthexperiments-homepage-email-button-unconfirmed,
 		// growthexperiments-homepage-email-button-confirmed
@@ -89,7 +92,7 @@ class Email extends BaseTaskModule {
 			];
 		}
 
-		return $messageSection . new ButtonWidget( $buttonConfig );
+		return new ButtonWidget( $buttonConfig );
 	}
 
 	/**

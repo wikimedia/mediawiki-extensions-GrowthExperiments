@@ -36,28 +36,32 @@ class Userpage extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
+	protected function getSubheader() {
+		$msg = $this->isCompleted() ?
+			'growthexperiments-homepage-userpage-body-done' :
+			'growthexperiments-homepage-userpage-body';
+		return $this->getContext()->msg( $msg )
+			->params( $this->getContext()->getUser()->getName() )
+			->text();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function getBody() {
 		if ( $this->isCompleted() ) {
-			$msg = 'growthexperiments-homepage-userpage-body-done';
 			$buttonMsg = 'growthexperiments-homepage-userpage-button-done';
 			$buttonFlags = [ 'progressive' ];
 		} else {
-			$msg = 'growthexperiments-homepage-userpage-body';
 			$buttonMsg = 'growthexperiments-homepage-userpage-button';
 			$buttonFlags = [ 'progressive', 'primary' ];
 		}
-		$messageSection = $this->buildSection(
-			'message',
-			$this->getContext()->msg( $msg )
-				->params( $this->getContext()->getUser()->getName() )
-				->text()
-		);
 		$button = new ButtonWidget( [
 			'label' => $this->getContext()->msg( $buttonMsg )->text(),
 			'flags' => $buttonFlags,
 			'href' => $this->getContext()->getUser()->getUserPage()->getEditURL(),
 		] );
-		return $messageSection . $button;
+		return $button;
 	}
 
 	/**
