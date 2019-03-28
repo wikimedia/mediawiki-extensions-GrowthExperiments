@@ -31,6 +31,7 @@
 
 	attachButton( {
 		buttonSelector: '#mw-ge-homepage-mentorship-cta',
+		editorInterface: 'homepage_mentorship',
 		dialog: {
 			name: 'mentorship',
 			panelTitleMessages: {

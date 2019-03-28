@@ -4,18 +4,19 @@
 	 * @class mw.libs.ge.HelpPanelLogger
 	 * @constructor
 	 * @param {boolean} enabled
+	 * @param {Object} [config]
+	 * @cfg string [editorInterface] Allow overriding the editor_interface field for all events
+	 * @cfg string [sessionId] Allow overriding the help_panel_session_id field for all events
 	 */
-	function HelpPanelLogger( enabled ) {
+	function HelpPanelLogger( enabled, config ) {
+		config = config || {};
 		this.enabled = enabled;
 		this.userEditCount = mw.config.get( 'wgUserEditCount' );
 		this.isMobile = OO.ui.isMobile();
-		this.clearSessionId();
 		this.previousEditorInterface = '';
+		this.editorInterface = config.editorInterface;
+		this.helpPanelSessionId = config.sessionId || mw.user.generateRandomSessionId();
 	}
-
-	HelpPanelLogger.prototype.clearSessionId = function () {
-		this.helpPanelSessionId = mw.user.generateRandomSessionId();
-	};
 
 	HelpPanelLogger.prototype.log = function ( action, data, metadataOverride ) {
 		var eventData;
@@ -89,7 +90,8 @@
 			'wikitext-2017',
 			'visualeditor',
 			'reading',
-			'homepage',
+			'homepage_help',
+			'homepage_mentorship',
 			'other'
 		].indexOf( editor ) >= 0;
 	};
@@ -100,8 +102,8 @@
 			mode,
 			uri = new mw.Uri();
 
-		if ( mw.config.get( 'wgCanonicalSpecialPageName' ) === 'Homepage' ) {
-			return 'homepage';
+		if ( this.editorInterface ) {
+			return this.editorInterface;
 		}
 
 		if ( this.isMobile ) {

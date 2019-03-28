@@ -3,6 +3,7 @@
 		dialogTitle = mw.message( 'growthexperiments-homepage-help-dialog-title' ).text();
 	attachButton( {
 		buttonSelector: '#mw-ge-homepage-help-cta',
+		editorInterface: 'homepage_help',
 		dialog: {
 			name: 'help',
 			panelTitleMessages: {

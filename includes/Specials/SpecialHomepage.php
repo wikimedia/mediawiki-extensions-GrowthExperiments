@@ -9,12 +9,20 @@ use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\Mentorship;
 use MediaWiki\Logger\LoggerFactory;
 use GrowthExperiments\HomepageModules\Start;
+use MediaWiki\Session\SessionManager;
 use SpecialPage;
 
 class SpecialHomepage extends SpecialPage {
 
+	/**
+	 * @var string Unique identifier for this specific rendering of Special:Homepage.
+	 * Used by various EventLogging schemas to correlate events.
+	 */
+	private $pageviewToken;
+
 	public function __construct() {
 		parent::__construct( 'Homepage', '', false );
+		$this->pageviewToken = $this->generateUniqueToken();
 	}
 
 	/**
@@ -25,6 +33,7 @@ class SpecialHomepage extends SpecialPage {
 		$this->requireLogin();
 		parent::execute( $par );
 		$out->setSubtitle( $this->getSubtitle() );
+		$out->addJsConfigVars( 'wgHomepagePageviewToken', $this->pageviewToken );
 		$out->enableOOUI();
 		foreach ( $this->getModules() as $module ) {
 			try {
@@ -68,5 +77,16 @@ class SpecialHomepage extends SpecialPage {
 	private function getSubtitle() {
 		return $this->msg( 'growthexperiments-homepage-specialpage-subtitle' )
 				->params( $this->getUser()->getName() );
+	}
+
+	/**
+	 * @return string
+	 */
+	private function generateUniqueToken() {
+		// Can't use SessionManager::singleton() here because while it returns an
+		// instance of SessionManager, the code comment says it returns SessionManagerInterface
+		// and that doesn't have generateSessionId(). So the code works but phan rejects it.
+		$sessionManager = new SessionManager();
+		return $sessionManager->generateSessionId();
 	}
 }
