@@ -50,10 +50,10 @@ abstract class BaseModule implements HomepageModule {
 		$out->addJsConfigVars( $this->getJsConfigVars() );
 		return Html::rawElement(
 			'div',
-			[ 'class' => [
+			[ 'class' => array_merge( [
 				self::BASE_CSS_CLASS,
 				self::BASE_CSS_CLASS . '-' . $this->name,
-			] ],
+			], $this->getCssClasses() ) ],
 			$this->buildSection( 'header', $this->getHeader(), $this->getHeaderTag() ) .
 			$this->buildSection( 'subheader', $this->getSubheader(), $this->getSubheaderTag() ) .
 			$this->buildSection( 'body', $this->getBody() ) .
@@ -146,6 +146,16 @@ abstract class BaseModule implements HomepageModule {
 	}
 
 	/**
+	 * Override this function to add additional CSS classes to the top-level
+	 * <div> of this module.
+	 *
+	 * @return string[] Additional CSS classes
+	 */
+	protected function getCssClasses() {
+		return [];
+	}
+
+	/**
 	 * Build a module section
 	 *
 	 * @param string $name Name of the section, used to generate a class
@@ -160,7 +170,7 @@ abstract class BaseModule implements HomepageModule {
 				'class' => [
 					self::BASE_CSS_CLASS . '-section',
 					self::BASE_CSS_CLASS . '-' . $name,
-				]
+				],
 			],
 			$content
 		) : '';
@@ -168,10 +178,10 @@ abstract class BaseModule implements HomepageModule {
 
 	/**
 	 * Override this function to provide JS config vars needed by this module.
+	 *
 	 * @return array
 	 */
 	protected function getJsConfigVars() {
 		return [];
 	}
-
 }

@@ -5,7 +5,7 @@ namespace GrowthExperiments\HomepageModules;
 use IContextSource;
 use OOUI\IconWidget;
 
-class Account extends BaseModule {
+class Account extends BaseTaskModule {
 
 	/**
 	 * @inheritDoc
@@ -18,7 +18,8 @@ class Account extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getHeader() {
-		return new IconWidget( [ 'icon' => 'check' ] ) .
+		// todo: invert => true doesn't work here
+		return new IconWidget( [ 'icon' => 'check', 'invert' => true ] ) .
 			$this->getContext()->msg( 'growthexperiments-homepage-account-header' )->text();
 	}
 
@@ -82,5 +83,12 @@ class Account extends BaseModule {
 			// more than a year: "3 years and 12 weeks"
 			return [ 'years', 'weeks' ];
 		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function isCompleted() {
+		return true;
 	}
 }

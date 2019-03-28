@@ -7,7 +7,7 @@ use IContextSource;
 use OOUI\ButtonWidget;
 use OOUI\IconWidget;
 
-class Userpage extends BaseModule {
+class Userpage extends BaseTaskModule {
 
 	/**
 	 * @inheritDoc
@@ -20,7 +20,7 @@ class Userpage extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getHeader() {
-		if ( $this->hasUserpage() ) {
+		if ( $this->isCompleted() ) {
 			$msg = 'growthexperiments-homepage-userpage-header-done';
 			$icon = 'check';
 		} else {
@@ -37,7 +37,7 @@ class Userpage extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getBody() {
-		if ( $this->hasUserpage() ) {
+		if ( $this->isCompleted() ) {
 			$msg = 'growthexperiments-homepage-userpage-body-done';
 			$buttonMsg = 'growthexperiments-homepage-userpage-button-done';
 			$buttonFlags = [ 'progressive' ];
@@ -81,7 +81,10 @@ class Userpage extends BaseModule {
 		return 'oojs-ui.styles.icons-editing-core';
 	}
 
-	private function hasUserpage() {
+	/**
+	 * @inheritDoc
+	 */
+	public function isCompleted() {
 		return $this->getContext()->getUser()->getUserPage()->exists();
 	}
 }

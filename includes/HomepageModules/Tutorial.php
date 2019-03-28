@@ -8,7 +8,7 @@ use OOUI\IconWidget;
 use OOUI\Tag;
 use Title;
 
-class Tutorial extends BaseModule {
+class Tutorial extends BaseTaskModule {
 
 	const TUTORIAL_PREF = 'growthexperiments-homepage-tutorial-completed';
 	const TUTORIAL_TITLE_CONFIG = 'GEHomepageTutorialTitle';
@@ -20,7 +20,10 @@ class Tutorial extends BaseModule {
 		parent::__construct( 'tutorial', $context );
 	}
 
-	private function isCompleted() {
+	/**
+	 * @inheritDoc
+	 */
+	public function isCompleted() {
 		return $this->getContext()
 			->getUser()
 			->getBoolOption( self::TUTORIAL_PREF );

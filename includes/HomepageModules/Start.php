@@ -13,10 +13,10 @@ use IContextSource;
  *
  * @package GrowthExperiments\HomepageModules
  */
-class Start extends BaseModule {
+class Start extends BaseTaskModule {
 
 	/**
-	 * @var HomepageModule[]
+	 * @var BaseTaskModule[]
 	 */
 	private $tasks;
 
@@ -31,6 +31,18 @@ class Start extends BaseModule {
 			new Tutorial( $context ),
 			new Userpage( $context ),
 		];
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function isCompleted() {
+		foreach ( $this->tasks as $task ) {
+			if ( !$task->isCompleted() ) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	protected function canRender() {
