@@ -11,7 +11,7 @@ class Account extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	public function __construct( IContextSource $context ) {
-		parent::__construct( 'account', $context );
+		parent::__construct( 'start-account', $context );
 	}
 
 	/**

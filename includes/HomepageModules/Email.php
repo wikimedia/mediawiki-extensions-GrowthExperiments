@@ -15,7 +15,7 @@ class Email extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	public function __construct( IContextSource $context ) {
-		parent::__construct( 'email', $context );
+		parent::__construct( 'start-email', $context );
 
 		$user = $this->getContext()->getUser();
 		if ( $user->isEmailConfirmed() ) {
@@ -92,7 +92,9 @@ class Email extends BaseTaskModule {
 			];
 		}
 
-		return new ButtonWidget( $buttonConfig );
+		$button = new ButtonWidget( $buttonConfig );
+		$button->setAttributes( [ 'data-link-id' => 'email-' . $this->emailState ] );
+		return $button;
 	}
 
 	/**
@@ -100,5 +102,15 @@ class Email extends BaseTaskModule {
 	 */
 	protected function getModules() {
 		return 'ext.growthExperiments.Homepage.Email';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getState() {
+		return array_merge(
+			parent::getState(),
+			[ 'emailStatus' => $this->emailState ]
+		);
 	}
 }

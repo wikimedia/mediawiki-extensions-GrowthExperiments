@@ -48,12 +48,16 @@ abstract class BaseModule implements HomepageModule {
 		$out->addModuleStyles( $this->getModuleStyles() );
 		$out->addModules( $this->getModules() );
 		$out->addJsConfigVars( $this->getJsConfigVars() );
+		$out->addJsConfigVars( [ 'wgGEHomepageModuleState-' . $this->name => $this->getState() ] );
 		return Html::rawElement(
 			'div',
-			[ 'class' => array_merge( [
-				self::BASE_CSS_CLASS,
-				self::BASE_CSS_CLASS . '-' . $this->name,
-			], $this->getCssClasses() ) ],
+			[
+				'class' => array_merge( [
+					self::BASE_CSS_CLASS,
+					self::BASE_CSS_CLASS . '-' . $this->name,
+				], $this->getCssClasses() ),
+				'data-module-name' => $this->name,
+			],
 			$this->buildSection( 'header', $this->getHeader(), $this->getHeaderTag() ) .
 			$this->buildSection( 'subheader', $this->getSubheader(), $this->getSubheaderTag() ) .
 			$this->buildSection( 'body', $this->getBody() ) .
@@ -182,6 +186,16 @@ abstract class BaseModule implements HomepageModule {
 	 * @return array
 	 */
 	protected function getJsConfigVars() {
+		return [];
+	}
+
+	/**
+	 * Override this function to provide the state of this module. It will
+	 * be included in 'action_data' for all HomepageModule events.
+	 *
+	 * @return array
+	 */
+	protected function getState() {
 		return [];
 	}
 }

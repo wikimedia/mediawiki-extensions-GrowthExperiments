@@ -95,7 +95,8 @@
 	"attributes": {
 		"EventLogging": {
 			"Schemas": {
-				"HelpPanel": 18973214
+				"HelpPanel": 18973214,
+				"HomepageModule": 18976700
 			}
 		}
 	},
@@ -262,6 +263,19 @@
 			"dependencies": [
 				"ext.growthExperiments.Help",
 				"mediawiki.jqueryMsg"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.growthExperiments.Homepage": {
+			"packageFiles": [
+				"homepage/ext.growthExperiments.Homepage.js",
+				"homepage/ext.growthExperiments.Homepage.Logger.js"
+			],
+			"dependencies": [
+				"mediawiki.user"
 			],
 			"targets": [
 				"desktop",
@@ -507,6 +521,10 @@
 		"GEHomepageNewAccountEnablePercentage": {
 			"description": "Percentage of new accounts to enable homepage for. Must be a whole number.",
 			"value": 50
+		},
+		"GEHomepageLoggingEnabled": {
+			"description": "ON/OFF switch for the homepage event logging feature.",
+			"value": false
 		},
 		"GEHomepageMentorsList": {
 			"description": "Title of the wiki page that contains the list of available mentors.",

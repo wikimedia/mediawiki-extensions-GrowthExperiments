@@ -13,7 +13,7 @@ class Userpage extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	public function __construct( IContextSource $context ) {
-		parent::__construct( 'userpage', $context );
+		parent::__construct( 'start-userpage', $context );
 	}
 
 	/**
@@ -51,16 +51,19 @@ class Userpage extends BaseTaskModule {
 	protected function getBody() {
 		if ( $this->isCompleted() ) {
 			$buttonMsg = 'growthexperiments-homepage-userpage-button-done';
-			$buttonFlags = [ 'progressive' ];
+			$buttonFlags = [];
+			$linkId = 'userpage-edit';
 		} else {
 			$buttonMsg = 'growthexperiments-homepage-userpage-button';
 			$buttonFlags = [ 'progressive', 'primary' ];
+			$linkId = 'userpage-create';
 		}
 		$button = new ButtonWidget( [
 			'label' => $this->getContext()->msg( $buttonMsg )->text(),
 			'flags' => $buttonFlags,
 			'href' => $this->getContext()->getUser()->getUserPage()->getEditURL(),
 		] );
+		$button->setAttributes( [ 'data-link-id' => $linkId ] );
 		return $button;
 	}
 
@@ -73,6 +76,7 @@ class Userpage extends BaseTaskModule {
 			'a',
 			[
 				'href' => "https://www.wikidata.org/wiki/Special:GoToLinkedPage/$wikiId/Q4592334",
+				'data-link-id' => 'userpage-guidelines'
 			],
 			$this->getContext()->msg( 'growthexperiments-homepage-userpage-guidelines' )->text()
 		);

@@ -62,6 +62,7 @@ class Mentorship extends BaseModule {
 			'a',
 			[
 				'href' => $this->getMentor()->getTalkPage()->getLinkURL(),
+				'data-link-id' => 'mentor-usertalk',
 			],
 			$this->getContext()
 				->msg( 'growthexperiments-homepage-mentorship-mentor-conversations' )
@@ -95,6 +96,19 @@ class Mentorship extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
+	protected function getState() {
+		return array_merge(
+			parent::getState(),
+			[
+				'mentorEditCount' => $this->getMentor()->getEditCount(),
+				'mentorLastActive' => $this->getMentor()->getLatestEditTimestamp(),
+			]
+		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function canRender() {
 		return (bool)$this->getMentor();
 	}
@@ -105,6 +119,7 @@ class Mentorship extends BaseModule {
 			'a',
 			[
 				'href' => $this->getMentor()->getUserPage()->getLinkURL(),
+				'data-link-id' => 'mentor-userpage',
 			],
 			$icon . $this->getMentor()->getName()
 		);

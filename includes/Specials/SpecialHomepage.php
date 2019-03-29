@@ -33,7 +33,11 @@ class SpecialHomepage extends SpecialPage {
 		$this->requireLogin();
 		parent::execute( $par );
 		$out->setSubtitle( $this->getSubtitle() );
-		$out->addJsConfigVars( 'wgHomepagePageviewToken', $this->pageviewToken );
+		$out->addJsConfigVars( [
+			'wgGEHomepagePageviewToken' => $this->pageviewToken,
+			'wgGEHomepageLoggingEnabled' => $this->getConfig()->get( 'GEHomepageLoggingEnabled' ),
+		] );
+		$out->addModules( 'ext.growthExperiments.Homepage' );
 		$out->enableOOUI();
 		foreach ( $this->getModules() as $module ) {
 			try {

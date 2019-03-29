@@ -79,6 +79,7 @@ class Impact extends BaseModule {
 								'class' => 'article-image',
 								'href' => $titleUrl,
 								'title' => $articleLinkTooltip,
+								'data-link-id' => 'impact-article-image',
 							],
 							$img
 						) .
@@ -88,6 +89,7 @@ class Impact extends BaseModule {
 								'class' => 'article-title',
 								'href' => $titleUrl,
 								'title' => $articleLinkTooltip,
+								'data-link-id' => 'impact-article-title',
 							],
 							$titleText
 						) .
@@ -97,6 +99,7 @@ class Impact extends BaseModule {
 								'class' => 'pageviews',
 								'href' => $pageviewsUrl,
 								'title' => $pageviewsTooltip,
+								'data-link-id' => 'impact-pageviews',
 							],
 							$views
 						)
@@ -137,6 +140,7 @@ class Impact extends BaseModule {
 			'a',
 			[
 				'href' => SpecialPage::getTitleFor( 'Contributions', $user->getName() )->getLinkURL(),
+				'data-link-id' => 'impact-contributions',
 			],
 			$this->getContext()
 				->msg( $msgKey )
@@ -151,6 +155,16 @@ class Impact extends BaseModule {
 	 */
 	protected function getModuleStyles() {
 		return 'ext.growthExperiments.Homepage.Impact.styles';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getState() {
+		return array_merge(
+			parent::getState(),
+			[ 'activated' => (bool)$this->getArticleContributions() ]
+		);
 	}
 
 	/**

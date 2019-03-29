@@ -3,10 +3,10 @@
 		var QuestionPosterDialog = require( './ext.growthExperiments.QuestionPosterDialog.js' ),
 			Help = require( 'ext.growthExperiments.Help' ),
 			logger = new Help.HelpPanelLogger(
-				Help.configData.GEHelpPanelLoggingEnabled,
+				mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 				{
 					editorInterface: config.editorInterface,
-					sessionId: mw.config.get( 'wgHomepagePageviewToken' )
+					sessionId: mw.config.get( 'wgGEHomepagePageviewToken' )
 				}
 			),
 			windowManager = new OO.ui.WindowManager( { modal: true } ),

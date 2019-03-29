@@ -17,7 +17,7 @@ class Tutorial extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	public function __construct( IContextSource $context ) {
-		parent::__construct( 'tutorial', $context );
+		parent::__construct( 'start-tutorial', $context );
 	}
 
 	/**
@@ -73,15 +73,17 @@ class Tutorial extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function getBody() {
+		$button = new ButtonWidget( [
+			'id' => 'mw-ge-homepage-tutorial-cta',
+			'href' => $this->getHomepageTutorialTitle()->getLinkURL(),
+			'label' => $this->getContext()->msg(
+				'growthexperiments-homepage-tutorial-cta-text'
+			)->text(),
+			'flags' => $this->isCompleted() ? [] : [ 'progressive', 'primary' ],
+		] );
+		$button->setAttributes( [ 'data-link-id' => 'tutorial' ] );
 		return ( new Tag( 'div' ) )
 			->addClasses( [ 'mw-ge-homepage-tutorial-cta' ] )
-			->appendContent( new ButtonWidget( [
-				'id' => 'mw-ge-homepage-tutorial-cta',
-				'href' => $this->getHomepageTutorialTitle()->getLinkURL(),
-				'label' => $this->getContext()->msg(
-					'growthexperiments-homepage-tutorial-cta-text'
-				)->text(),
-				'flags' => $this->isCompleted() ? [] : [ 'progressive', 'primary' ]
-			] ) );
+			->appendContent( $button );
 	}
 }
