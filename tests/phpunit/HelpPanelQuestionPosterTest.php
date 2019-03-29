@@ -74,14 +74,15 @@ class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
 	 */
 	public function testValidateRelevantTitle() {
 		$this->insertPage( 'sample' );
-		$questionPoster = new HelpPanelQuestionPoster( $this->buildContext() );
+		$questionPoster = new HelpPanelQuestionPoster( $this->buildContext(), 'sample' );
 		$this->assertEquals(
 			Status::newGood(),
-			$questionPoster->validateRelevantTitle( 'sample' )
+			$questionPoster->validateRelevantTitle()
 		);
+		$questionPoster = new HelpPanelQuestionPoster( $this->buildContext(), '>123' );
 		$this->assertEquals(
 			Status::newFatal( 'growthexperiments-help-panel-questionposter-invalid-title' ),
-			$questionPoster->validateRelevantTitle( '>123' )
+			$questionPoster->validateRelevantTitle()
 		);
 	}
 

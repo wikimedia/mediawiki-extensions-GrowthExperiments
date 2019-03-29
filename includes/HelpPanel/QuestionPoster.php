@@ -22,7 +22,7 @@ abstract class QuestionPoster {
 	/**
 	 * @var IContextSource
 	 */
-	protected $context;
+	private $context;
 
 	/**
 	 * @var bool
@@ -62,41 +62,35 @@ abstract class QuestionPoster {
 	/**
 	 * @var string
 	 */
-	protected $sectionHeader;
-
-	/**
-	 * @var string
-	 */
-	private $sectionHeaderUnique;
+	protected $relevantTitle;
 
 	/**
 	 * QuestionPoster constructor.
 	 * @param IContextSource $context
+	 * @param string $relevantTitle
 	 * @throws MWException
 	 */
-	public function __construct( IContextSource $context ) {
+	public function __construct( IContextSource $context, $relevantTitle = '' ) {
 		$this->context = $context;
-		if ( $this->context->getUser()->isAnon() ) {
+		$this->relevantTitle = $relevantTitle;
+		if ( $this->getContext()->getUser()->isAnon() ) {
 			throw new MWException( 'User must be logged-in.' );
 		}
-		$this->config = $this->context->getConfig();
-		$this->isFirstEdit = ( $this->context->getUser()->getEditCount() === 0 );
+		$this->config = $this->getContext()->getConfig();
+		$this->isFirstEdit = ( $this->getContext()->getUser()->getEditCount() === 0 );
 		$this->targetTitle = $this->getTargetTitle();
 		$page = new WikiPage( $this->targetTitle );
-		$this->pageUpdater = $page->newPageUpdater( $this->context->getUser() );
+		$this->pageUpdater = $page->newPageUpdater( $this->getContext()->getUser() );
 		$this->parser = MediaWikiServices::getInstance()->getParser();
 	}
 
 	/**
 	 * @param string $body
-	 * @param string $relevantTitle
 	 * @return Status
 	 * @throws MWException
 	 */
-	public function submit( $body, $relevantTitle = '' ) {
-		$this->setSectionHeader( $relevantTitle );
-		$this->setSectionHeaderUnique();
-		$this->addTag();
+	public function submit( $body ) {
+		$this->pageUpdater->addTag( $this->getTag() );
 		$this->pageUpdater->setContent( SlotRecord::MAIN, $this->getContent( $body ) );
 		$newRev = $this->pageUpdater->saveRevision(
 			CommentStoreComment::newUnsavedComment( $this->getSectionHeader() )
@@ -110,10 +104,9 @@ abstract class QuestionPoster {
 	}
 
 	/**
-	 * Add tag for the edit via pageUpdater.
+	 * The tag to add to the edit via PageUpdater.
 	 */
-	public function addTag() {
-	}
+	abstract protected function getTag();
 
 	/**
 	 * @param string $body
@@ -123,7 +116,7 @@ abstract class QuestionPoster {
 	public function getContent( $body ) {
 		$body = $this->addSignature( $body );
 		$content = new WikitextContent( $body );
-		$header = $this->getSectionHeader( true );
+		$header = $this->getSectionHeaderWithTimestamp();
 		$parent = $this->pageUpdater->grabParentRevision();
 		if ( $parent ) {
 			return $parent->getContent( SlotRecord::MAIN )->replaceSection(
@@ -149,12 +142,10 @@ abstract class QuestionPoster {
 	}
 
 	/**
-	 * @param string $name
-	 *   The wiki title that the user opted to include with their question.
 	 * @return Status
 	 */
-	public function validateRelevantTitle( $name ) {
-		$title = Title::newFromText( $name );
+	public function validateRelevantTitle() {
+		$title = Title::newFromText( $this->relevantTitle );
 		return $title && $title->isValid() ?
 			Status::newGood() :
 			Status::newFatal( 'growthexperiments-help-panel-questionposter-invalid-title' );
@@ -187,12 +178,9 @@ abstract class QuestionPoster {
 	 * This method is used for generating the comment summary as well as the
 	 * section header in the edit.
 	 *
-	 * @param bool $withTimestamp
 	 * @return string
 	 */
-	public function getSectionHeader( $withTimestamp = false ) {
-		return $withTimestamp ? $this->sectionHeaderUnique : $this->sectionHeader;
-	}
+	abstract protected function getSectionHeader();
 
 	/**
 	 * Process potential changes to user's email address.
@@ -207,7 +195,7 @@ abstract class QuestionPoster {
 	 * @return Status
 	 */
 	public function handleEmail( $newEmail ) {
-		$user = $this->context->getUser();
+		$user = $this->getContext()->getUser();
 		$existingEmail = $user->getEmail();
 		// If existing email matches the new one, return early if user's email is already
 		// confirmed. If their email isn't confirmed, we need to resend the confirmation mail.
@@ -252,20 +240,17 @@ abstract class QuestionPoster {
 	 */
 	public function setResultUrl() {
 		$this->targetTitle->setFragment(
-			$this->parser->guessSectionNameFromWikiText( $this->getSectionHeader( true ) )
+			$this->parser->guessSectionNameFromWikiText( $this->getSectionHeaderWithTimestamp() )
 		);
 		$this->resultUrl = $this->targetTitle->getFullURL();
 	}
 
 	/**
-	 * Set the section header for the edit.
+	 * Get the section header with a timestamp appended.
 	 *
-	 * @param string $relevantTitle
+	 * @return string
 	 */
-	public function setSectionHeader( $relevantTitle ) {
-	}
-
-	public function setSectionHeaderUnique() {
+	protected function getSectionHeaderWithTimestamp() {
 		$lang = MediaWikiServices::getInstance()->getContentLanguage();
 		$timestamp = $lang->timeanddate(
 			wfTimestampNow(),
@@ -277,8 +262,8 @@ abstract class QuestionPoster {
 			// (oddly, empty string is the magic incantation to use the site default)
 			/* $timecorrection= */ ''
 		);
-		$this->sectionHeaderUnique = $this->sectionHeader . ' ' .
-			$this->context->msg( 'parentheses' )
+		return $this->getSectionHeader() . ' ' .
+			$this->getContext()->msg( 'parentheses' )
 				->plaintextParams( $timestamp )
 				->inContentLanguage()->escaped();
 	}
@@ -287,4 +272,11 @@ abstract class QuestionPoster {
 	 * @return Title The page where the question should be posted.
 	 */
 	abstract protected function getTargetTitle();
+
+	/**
+	 * @return IContextSource
+	 */
+	final protected function getContext() {
+		return $this->context;
+	}
 }
