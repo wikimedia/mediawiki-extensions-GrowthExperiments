@@ -4,12 +4,14 @@ namespace GrowthExperiments\HomepageModules;
 
 use ActorMigration;
 use DateTime;
+use Exception;
 use ExtensionRegistry;
 use File;
 use Html;
 use IContextSource;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
 use MediaWiki\MediaWikiServices;
+use MWException;
 use OOUI\IconWidget;
 use PageImages;
 use SpecialPage;
@@ -169,9 +171,10 @@ class Impact extends BaseModule {
 
 	/**
 	 * @return array Top 5 recently edited articles with pageviews and images
-	 * @throws \MWException
+	 * @throws MWException
+	 * @throws Exception
 	 */
-	private function getArticleContributions() {
+	public function getArticleContributions() {
 		if ( $this->contribs === null ) {
 			$this->contribs = $this->queryArticleEdits();
 			if ( count( $this->contribs ) ) {
@@ -199,7 +202,7 @@ class Impact extends BaseModule {
 	 * Query the last 10 edited pages and the timestamp of the first edit for those pages.
 	 *
 	 * @return array like [ 'title' => <Title object>, 'ts' => <DateTime object> ]
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	private function queryArticleEdits() {
 		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
@@ -294,7 +297,7 @@ class Impact extends BaseModule {
 	 * Depends on the PageImages extension.
 	 *
 	 * @param array &$contribs Recent contributions
-	 * @throws \MWException
+	 * @throws MWException
 	 */
 	private function addImages( &$contribs ) {
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'PageImages' ) ) {
@@ -322,7 +325,7 @@ class Impact extends BaseModule {
 	/**
 	 * @param DateTime $timestamp
 	 * @return int Number of days since, and including, the given timestamp
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	private function daysSince( DateTime $timestamp ) {
 		$now = new DateTime();
@@ -334,7 +337,7 @@ class Impact extends BaseModule {
 	 * @param Title $title
 	 * @param DateTime $start
 	 * @return string Full URL for the PageViews tool for the given title and start date
-	 * @throws \Exception
+	 * @throws Exception
 	 */
 	private function getPageViewToolsUrl( $title, $start ) {
 		$baseUrl = 'https://tools.wmflabs.org/pageviews/';

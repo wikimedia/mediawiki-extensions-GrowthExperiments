@@ -2,7 +2,11 @@
 
 namespace GrowthExperiments\Specials;
 
+use ConfigException;
+use DeferredUpdates;
 use Exception;
+use ExtensionRegistry;
+use GrowthExperiments\EventLogging\SpecialHomepageLogger;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
@@ -11,6 +15,7 @@ use MediaWiki\Logger\LoggerFactory;
 use GrowthExperiments\HomepageModules\Start;
 use MediaWiki\Session\SessionManager;
 use SpecialPage;
+use UserNotLoggedIn;
 
 class SpecialHomepage extends SpecialPage {
 
@@ -27,21 +32,27 @@ class SpecialHomepage extends SpecialPage {
 
 	/**
 	 * @inheritDoc
+	 * @throws ConfigException
+	 * @throws UserNotLoggedIn
 	 */
 	public function execute( $par ) {
 		$out = $this->getContext()->getOutput();
 		$this->requireLogin();
 		parent::execute( $par );
 		$out->setSubtitle( $this->getSubtitle() );
+		$loggingEnabled = $this->getConfig()->get( 'GEHomepageLoggingEnabled' );
 		$out->addJsConfigVars( [
 			'wgGEHomepagePageviewToken' => $this->pageviewToken,
-			'wgGEHomepageLoggingEnabled' => $this->getConfig()->get( 'GEHomepageLoggingEnabled' ),
+			'wgGEHomepageLoggingEnabled' => $loggingEnabled
 		] );
 		$out->addModules( 'ext.growthExperiments.Homepage' );
 		$out->enableOOUI();
-		foreach ( $this->getModules() as $module ) {
+		$renderedModules = [];
+
+		foreach ( $this->getModules() as $moduleName => $module ) {
 			try {
 				$out->addHTML( $module->render() );
+				$renderedModules[ $moduleName ] = $module;
 			} catch ( Exception $e ) {
 				LoggerFactory::getInstance( 'GrowthExperiments' )->error(
 					"Homepage module '{class}' cannot be rendered.",
@@ -52,6 +63,20 @@ class SpecialHomepage extends SpecialPage {
 					]
 				);
 			}
+		}
+		if ( $loggingEnabled &&
+			 ExtensionRegistry::getInstance()->isLoaded( 'EventLogging' ) &&
+			 count( $renderedModules ) ) {
+			$logger = new SpecialHomepageLogger(
+				$this->pageviewToken,
+				$this->getContext()->getUser(),
+				$this->getRequest(),
+				$out->getSkin()->getSkinName() === 'minerva',
+				$renderedModules
+			);
+			DeferredUpdates::addCallableUpdate( function () use ( $logger ) {
+				$logger->log();
+			} );
 		}
 	}
 
@@ -71,10 +96,10 @@ class SpecialHomepage extends SpecialPage {
 	 */
 	private function getModules() {
 		return [
-			new Start( $this->getContext() ),
-			new Impact( $this->getContext() ),
-			new Help( $this->getContext() ),
-			new Mentorship( $this->getContext() ),
+			'start' => new Start( $this->getContext() ),
+			'impact' => new Impact( $this->getContext() ),
+			'help' => new Help( $this->getContext() ),
+			'mentorship' => new Mentorship( $this->getContext() ),
 		];
 	}
 

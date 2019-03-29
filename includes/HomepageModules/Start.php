@@ -27,11 +27,18 @@ class Start extends BaseTaskModule {
 		parent::__construct( 'start', $context );
 
 		$this->tasks = [
-			new Account( $context ),
-			new Email( $context ),
-			new Tutorial( $context ),
-			new Userpage( $context ),
+			'account' => new Account( $context ),
+			'email' => new Email( $context ),
+			'tutorial' => new Tutorial( $context ),
+			'userpage' => new Userpage( $context ),
 		];
+	}
+
+	/**
+	 * @return array|BaseTaskModule[]
+	 */
+	public function getTasks() {
+		return $this->tasks;
 	}
 
 	/**

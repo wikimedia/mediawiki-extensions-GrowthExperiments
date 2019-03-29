@@ -87,11 +87,16 @@ class HomepageHooks {
 			$title->equals( $usertalk ) ||
 			$title->isSubpageOf( $usertalk )
 		) {
+			$source = 'userpagetab';
+			if ( $title->equals( $usertalk ) || $title->isSubpageOf( $usertalk ) ) {
+				$source = 'usertalkpagetab';
+			}
 			$links[ 'namespaces' ] = array_merge(
 				[ 'homepage' => $skin->tabAction(
 					SpecialPage::getTitleFor( 'Homepage' ),
 					'growthexperiments-homepage-tab',
-					false
+					false,
+					'source=' . $source . '&namespace=' . $title->getNamespace()
 				) ],
 				$links[ 'namespaces' ]
 			);
@@ -115,7 +120,9 @@ class HomepageHooks {
 
 		if ( $user->getBoolOption( self::HOMEPAGE_PREF_PT_LINK ) ) {
 			$homepage = SpecialPage::getTitleFor( 'Homepage' );
-			$personal_urls[ 'userpage' ][ 'href' ] = $homepage->getLinkURL();
+			$personal_urls[ 'userpage' ][ 'href' ] = $homepage->getLinkURL(
+				'source=personaltoolslink&namespace=' . $title->getNamespace()
+			);
 		}
 	}
 
