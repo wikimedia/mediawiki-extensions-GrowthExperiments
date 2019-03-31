@@ -7,10 +7,17 @@
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Salut}}, $1!",
 	"growthexperiments-homepage-tab": "Haaptsäit",
 	"growthexperiments-homepage-start-header": "Hei ufänken",
+	"growthexperiments-homepage-userpage-header-done": "Ännert Är Benotzersäit",
+	"growthexperiments-homepage-userpage-button-done": "Benotzersäit änneren",
+	"growthexperiments-homepage-userpage-guidelines": "Richtlinne fir Benotzersäiten",
+	"growthexperiments-homepage-email-button-unconfirmed": "Neie Link",
+	"growthexperiments-homepage-email-button-confirmed": "Astellungen",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Op den Artikel goen",
 	"growthexperiments-homepage-help-ask-help-desk": "Helpdesk froen",
 	"growthexperiments-homepage-help-cancel": "Ofbriechen",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|Ännerung|Ännerungen}}",
 	"growthexperiments-homepage-mentorship-question-subject": "Fro vum [[User:$1|$1]]",
+	"growthexperiments-homepage-tutorial-header": "Léiere wéi een ännert",
+	"growthexperiments-homepage-tutorial-cta-text": "Uleedung",
 	"growthexperiments-specialimpact-title": "Impakt"
 }

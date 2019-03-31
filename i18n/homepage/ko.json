@@ -15,10 +15,17 @@
 	"growthexperiments-homepage-userpage-button": "사용자 문서 만들기",
 	"growthexperiments-homepage-userpage-button-done": "사용자 문서 편집",
 	"growthexperiments-homepage-userpage-guidelines": "사용자 문서 지침",
+	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|내}} 이메일 추가",
+	"growthexperiments-homepage-email-header-unconfirmed": "{{GENDER:$1|내}} 이메일 확인",
+	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|내}} 이메일이 인증되었습니다. 환경 설정에서 이메일 설정을 변경할 수 있습니다.",
+	"growthexperiments-homepage-email-button-noemail": "이메일 추가",
+	"growthexperiments-homepage-email-button-unconfirmed": "새 링크",
+	"growthexperiments-homepage-email-button-confirmed": "환경 설정",
 	"growthexperiments-homepage-impact-article-link-tooltip": "문서로 이동",
 	"tag-help_module_question": "도움말 모듈 질문",
 	"growthexperiments-homepage-help-header": "도움말 검색 또는 도움 요청하기",
 	"growthexperiments-homepage-help-subheader": "최상위 도움말 문서",
 	"growthexperiments-homepage-help-cancel": "취소",
-	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]]님의 질문"
+	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]]님의 질문",
+	"growthexperiments-homepage-tutorial-cta-text": "강좌"
 }

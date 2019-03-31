@@ -1,12 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250"
+			"Vlad5250",
+			"Gzhegozh"
 		]
 	},
 	"growthexperiments-homepage-tab": "Домашня сторінка",
+	"growthexperiments-homepage-account-header": "Обліковий запис створено",
+	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|редагування|редагування|редагувань}}",
+	"growthexperiments-homepage-userpage-header": "Створити вашу сторінку користувача",
+	"growthexperiments-homepage-userpage-header-done": "Редагувати вашу сторінку користувача",
+	"growthexperiments-homepage-userpage-button": "Створити сторінку користувача",
+	"growthexperiments-homepage-userpage-button-done": "Редагувати сторінку користувача",
+	"growthexperiments-homepage-email-button-noemail": "Додати електронну пошту",
+	"growthexperiments-homepage-email-button-unconfirmed": "Нове посилання",
+	"growthexperiments-homepage-email-button-confirmed": "Налаштування",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> редагувань у статтях",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|редагування|редагування|редагувань}} в інших типах сторінок (дивіться усі)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Перейти на статтю",
-	"growthexperiments-homepage-help-cancel": "Скасувати"
+	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Див. деталі переглядів сторінки",
+	"growthexperiments-homepage-help-cancel": "Скасувати",
+	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|редагування|редагування|редагувань}}",
+	"growthexperiments-homepage-tutorial-header": "Навчіться редагувати",
+	"growthexperiments-homepage-tutorial-cta-text": "Посібник"
 }

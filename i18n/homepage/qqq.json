@@ -29,7 +29,7 @@
 	"growthexperiments-homepage-email-text-confirmed": "Body text of the email module on the newcomer homepage, if the user has a confirmed email address.\n* $1 - Name of the current user. Can be used with GENDER.",
 	"growthexperiments-homepage-email-button-noemail": "Text of the button that links to a form where the user can add an email address (Special:ChangeEmail), in the email module on the newcomer homepage.",
 	"growthexperiments-homepage-email-button-unconfirmed": "Text of the button that sends the user a new confirmation email, in the email module on the newcomer homepage.",
-	"growthexperiments-homepage-email-button-confirmed": "Text of the button that links to the user's preferences page, in the email module on the newcomer homepage.",
+	"growthexperiments-homepage-email-button-confirmed": "Text of the button that links to the user's preferences page, in the email module on the newcomer homepage.\n{{Identical|Preferences}}",
 	"growthexperiments-homepage-impact-header": "Title of the newcomer homepage Impact module.\n* $1 - Name of the current user. Can be used with GENDER.",
 	"growthexperiments-homepage-impact-subheader": "Subtitle of the newcomer homepage Impact module.\n* $1 - Name of the current user. Can be used with GENDER.",
 	"growthexperiments-homepage-impact-contributions-link": "Text of the link to Special::Contributions.\n* $1 - Edit count of the current user.\n* $2 - Name of the current user. Can be used with GENDER.",

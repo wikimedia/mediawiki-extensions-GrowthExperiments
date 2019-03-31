@@ -6,6 +6,7 @@
 	},
 	"apihelp-helppanelquestionposter-summary": "Lide com perguntas publicadas por meio do painel de ajuda do usuário atual.",
 	"apihelp-helppanelquestionposter-param-body": "O texto da pergunta fornecida pelo usuário.",
+	"apihelp-helppanelquestionposter-param-source": "O componente na origem da pergunta. Os valores válidos são 'helppanel', 'homepage-help' e 'homepage-mentorship'",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "O título relevante, se selecionado, para incluir na pergunta.",
 	"apihelp-helppanelquestionposter-param-email": "O endereço de email opcional, se o usuário tiver um email não confirmado ou nenhum email, para enviar um email de verificação."
 }

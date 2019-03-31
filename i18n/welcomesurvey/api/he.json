@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80"
+		]
+	},
+	"apihelp-welcomesurveyhandleresponses-summary": "טיפול בתשובות לסקר ברוך בואך עבור המשתמש הנוכחי.",
+	"apihelp-welcomesurveyhandleresponses-param-surveyaction": "פעולה שנבחרה על־ידי המשתמש בסקר ברוך בואך. יכול להיות \"save\" או \"skip\".",
+	"apihelp-welcomesurveyhandleresponses-param-group": "קבוצה ניסיונית משויכת לסקר ברוך בואך.",
+	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "חותם־הזמן שבו הסקר הוצג למשתמש.",
+	"apihelp-welcomesurveyhandleresponses-param-responses": "עצם שמכיל את שמות השאלות בתור מפתחות ותשובות בתור ערכים. בתסדיר JSON."
+}

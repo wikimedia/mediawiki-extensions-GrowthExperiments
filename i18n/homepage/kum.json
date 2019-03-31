@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"ArslanX"
+		]
+	},
+	"growthexperiments-homepage-start-header": "Мунда башла",
+	"growthexperiments-homepage-account-header": "Гьисап яратылгъан",
+	"growthexperiments-homepage-userpage-header": "Къоллавчу сагьифангны ясамакъ",
+	"growthexperiments-homepage-userpage-header-done": "Сени къоллавчу сагьифангны тюзлемек",
+	"growthexperiments-homepage-userpage-button": "Къоллавчу сагьифа ясамакъ",
+	"growthexperiments-homepage-userpage-button-done": "Къоллавчу сагьифаны тюзлемек",
+	"growthexperiments-homepage-email-header-confirmed": "Эмейл къошулгъан",
+	"growthexperiments-homepage-email-button-noemail": "Эмейл къошмакъ",
+	"growthexperiments-homepage-email-button-unconfirmed": "Янгы байланыв",
+	"growthexperiments-homepage-email-button-confirmed": "Кюйлемлер",
+	"growthexperiments-homepage-impact-article-link-tooltip": "Макъалагъа гечмек",
+	"growthexperiments-homepage-help-cancel": "Гери алмакъ",
+	"growthexperiments-homepage-tutorial-header": "Тюзлевге уьйренмек",
+	"growthexperiments-specialimpact-title": "Таъсир"
+}

@@ -4,6 +4,11 @@
 			"Saederup92"
 		]
 	},
+	"growthexperiments-homepage-start-header": "Start her",
+	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|redigering|redigeringer}}",
+	"growthexperiments-homepage-email-button-unconfirmed": "Nyt link",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Gå til artiklen",
-	"growthexperiments-homepage-help-cancel": "Annullér"
+	"growthexperiments-homepage-help-cancel": "Annullér",
+	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Din}} mentor",
+	"growthexperiments-homepage-tutorial-header": "Lær hvordan du redigerer"
 }

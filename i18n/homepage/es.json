@@ -5,8 +5,21 @@
 			"Jorge Ubilla"
 		]
 	},
+	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Bienvenido|Bienvenida}}, $1!",
+	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|edición|ediciones}}",
+	"growthexperiments-homepage-userpage-header-done": "Edita tu página de usuario",
+	"growthexperiments-homepage-userpage-button": "Crear página de usuario",
+	"growthexperiments-homepage-userpage-button-done": "Editar página de usuario",
+	"growthexperiments-homepage-email-text-noemail": "Se recomienda para recuperar la cuenta",
+	"growthexperiments-homepage-email-button-noemail": "Añadir correo electrónico",
+	"growthexperiments-homepage-email-button-unconfirmed": "Enlace nuevo",
+	"growthexperiments-homepage-email-button-confirmed": "Preferencias",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Has}} realizado <strong>$1</strong> {{PLURAL:$1|edición|ediciones}} (mostrar todo)",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|edición|ediciones}} a otros tipos de páginas (mostrar todo)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Ir al artículo",
-	"growthexperiments-homepage-help-header": "Encuentra o pide ayuda"
+	"growthexperiments-homepage-help-header": "Encuentra o pide ayuda",
+	"growthexperiments-homepage-mentorship-header": "Tu {{GENDER:$1|mentor|mentora}}",
+	"growthexperiments-homepage-mentorship-mentor-conversations": "Ver las conversaciones de {{GENDER:$2|tu}} {{GENDER:$1|mentor|mentora}} con otros usuarios",
+	"growthexperiments-homepage-tutorial-cta-text": "Tutorial",
+	"growthexperiments-specialimpact-title": "Impacto"
 }
