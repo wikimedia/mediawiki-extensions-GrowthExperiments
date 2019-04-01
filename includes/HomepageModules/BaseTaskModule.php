@@ -38,8 +38,13 @@ abstract class BaseTaskModule extends BaseModule {
 		} else {
 			$icon = new IconWidget( [
 				'icon' => $this->isCompleted() ? 'check' : $uncompletedIcon,
-				// FIXME: 'invert' => true doesn't work
-				'invert' => true
+				// HACK: IconWidget doesn't let us set 'invert' => true, and setting
+				// 'classes' => [ 'oo-ui-image-invert' ] doesn't work either, because
+				// Theme::getElementClasses() will unset it again. So instead, trick that code into
+				// thinking this is a checkbox icon, which will cause it to invert the icon
+				'classes' => $this->isCompleted() ?
+					[ 'oo-ui-image-invert', 'oo-ui-checkboxInputWidget-checkIcon' ] :
+					[]
 			] );
 		}
 		$span = Html::element( 'span', [], $this->getHeaderText() );
