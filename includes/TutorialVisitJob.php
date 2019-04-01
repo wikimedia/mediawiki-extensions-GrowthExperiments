@@ -4,18 +4,16 @@ namespace GrowthExperiments;
 
 use GrowthExperiments\HomepageModules\Tutorial;
 use Job;
-use Title;
 use User;
 
 class TutorialVisitJob extends Job {
 
 	/**
 	 * TutorialVisitJob constructor.
-	 * @param Title $title
 	 * @param array $params
 	 */
-	public function __construct( $title, $params ) {
-		parent::__construct( 'tutorialVisit', $title, $params );
+	public function __construct( $params ) {
+		parent::__construct( 'tutorialVisit', $params );
 	}
 
 	/**

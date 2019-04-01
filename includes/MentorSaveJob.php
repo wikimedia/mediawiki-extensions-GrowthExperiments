@@ -3,20 +3,18 @@
 namespace GrowthExperiments;
 
 use Job;
-use SpecialPage;
 use User;
 
 class MentorSaveJob extends Job {
 
 	/**
-	 * @inheritDoc
+	 * MentorSaveJob constructor.
+	 *
+	 * @param array $params
+	 * @throws \MWException
 	 */
 	public function __construct( $params ) {
-		parent::__construct(
-			'saveMentor',
-			SpecialPage::getTitleFor( 'Homepage' ),
-			$params
-		);
+		parent::__construct( 'saveMentor', $params );
 	}
 
 	/**

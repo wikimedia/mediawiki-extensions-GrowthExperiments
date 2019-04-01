@@ -237,7 +237,7 @@ class HomepageHooks {
 		}
 		if ( $tutorialTitle && $tutorialTitle->exists() &&
 			$tutorialTitle->equals( $out->getTitle() ) ) {
-			$job = new TutorialVisitJob( $tutorialTitle, [ 'userId' => $out->getUser()->getId() ] );
+			$job = new TutorialVisitJob( [ 'userId' => $out->getUser()->getId() ] );
 			JobQueueGroup::singleton()->lazyPush( $job );
 		}
 	}
