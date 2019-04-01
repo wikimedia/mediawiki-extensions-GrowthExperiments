@@ -25,6 +25,8 @@ $specialPageAliases['cs'] = [
 /** 한국어  (Korean) */
 $specialPageAliases['ko'] = [
 	'WelcomeSurvey' => [ '환영설문조사' ],
+	'Homepage' => [ '홈페이지' ],
+	'Impact' => [ '영향력', '임팩트' ],
 ];
 
 /** Vietnamese (Tiếng Việt) */
