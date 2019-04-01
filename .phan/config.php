@@ -7,6 +7,7 @@ $cfg['directory_list'] = array_merge(
 		'../../skins/MinervaNeue',
 		'../../extensions/PageImages',
 		'../../extensions/PageViewInfo',
+		'../../extensions/EventLogging',
 	]
 );
 
@@ -16,6 +17,7 @@ $cfg['exclude_analysis_directory_list'] = array_merge(
 		'../../skins/MinervaNeue',
 		'../../extensions/PageImages',
 		'../../extensions/PageViewInfo',
+		'../../extensions/EventLogging',
 	]
 );
 
