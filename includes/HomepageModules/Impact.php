@@ -183,9 +183,7 @@ class Impact extends BaseModule {
 
 				// Sort by pageviews DESC
 				usort( $this->contribs, function ( $a, $b ) {
-					$aViews = $a[ 'views' ] === null ? -1 : $a[ 'views' ];
-					$bViews = $b[ 'views' ] === null ? -1 : $b[ 'views' ];
-					return $aViews < $bViews;
+					return ( $b['views'] ?? -1 ) <=> ( $a['views'] ?? -1 );
 				} );
 
 				// Take top 5
