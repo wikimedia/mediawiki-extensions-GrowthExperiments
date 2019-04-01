@@ -4,7 +4,6 @@ namespace GrowthExperiments\HomepageModules;
 
 use IContextSource;
 use OOUI\ButtonWidget;
-use OOUI\IconWidget;
 use OOUI\Tag;
 use Title;
 
@@ -48,11 +47,15 @@ class Tutorial extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getHeader() {
-		return new IconWidget( [ 'icon' => $this->isCompleted() ? 'check' : 'book' ] ) .
-			$this->getContext()->msg(
-				'growthexperiments-homepage-tutorial-header'
-			)->text();
+	protected function getUncompletedIcon() {
+		return 'book';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getHeaderText() {
+		return $this->getContext()->msg( 'growthexperiments-homepage-tutorial-header' )->text();
 	}
 
 	/**

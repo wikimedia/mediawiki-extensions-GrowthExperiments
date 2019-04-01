@@ -60,7 +60,14 @@ class Start extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getHeader() {
+	protected function getUncompletedIcon() {
+		return false;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getHeaderText() {
 		return $this->getContext()
 			->msg( 'growthexperiments-homepage-start-header' )
 			->params( $this->getContext()->getUser()->getName() )

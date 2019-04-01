@@ -5,7 +5,6 @@ namespace GrowthExperiments\HomepageModules;
 use Html;
 use IContextSource;
 use OOUI\ButtonWidget;
-use OOUI\IconWidget;
 
 class Userpage extends BaseTaskModule {
 
@@ -19,18 +18,27 @@ class Userpage extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getHeader() {
-		if ( $this->isCompleted() ) {
-			$msg = 'growthexperiments-homepage-userpage-header-done';
-			$icon = 'check';
-		} else {
-			$msg = 'growthexperiments-homepage-userpage-header';
-			$icon = 'edit';
-		}
-		return new IconWidget( [ 'icon' => $icon ] ) .
-			$this->getContext()->msg( $msg )
-				->params( $this->getContext()->getUser()->getName() )
-				->text();
+	public function isCompleted() {
+		return $this->getContext()->getUser()->getUserPage()->exists();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getUncompletedIcon() {
+		return 'edit';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getHeaderText() {
+		$msgKey = $this->isCompleted() ?
+			'growthexperiments-homepage-userpage-header-done' :
+			'growthexperiments-homepage-userpage-header';
+		return $this->getContext()->msg( $msgKey )
+			->params( $this->getContext()->getUser()->getName() )
+			->text();
 	}
 
 	/**
@@ -87,12 +95,5 @@ class Userpage extends BaseTaskModule {
 	 */
 	protected function getModuleStyles() {
 		return 'oojs-ui.styles.icons-editing-core';
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function isCompleted() {
-		return $this->getContext()->getUser()->getUserPage()->exists();
 	}
 }

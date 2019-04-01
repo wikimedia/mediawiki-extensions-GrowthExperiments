@@ -2,9 +2,7 @@
 namespace GrowthExperiments\HomepageModules;
 
 use IContextSource;
-use Html;
 use OOUI\ButtonWidget;
-use OOUI\IconWidget;
 use SpecialPage;
 
 class Email extends BaseTaskModule {
@@ -38,18 +36,21 @@ class Email extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getHeader() {
+	protected function getUncompletedIcon() {
+		return 'message';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getHeaderText() {
 		// growthexperiments-homepage-email-header-noemail,
 		// growthexperiments-homepage-email-header-unconfirmed,
 		// growthexperiments-homepage-email-header-confirmed
 		$msgKey = "growthexperiments-homepage-email-header-{$this->emailState}";
-		$icon = $this->emailState === 'confirmed' ? 'check' : 'message';
-		return new IconWidget( [ 'icon' => $icon ] ) .
-			Html::element( 'span', [],
-				$this->getContext()->msg( $msgKey )
-					->params( $this->getContext()->getUser()->getName() )
-					->text()
-			);
+		return $this->getContext()->msg( $msgKey )
+			->params( $this->getContext()->getUser()->getName() )
+			->text();
 	}
 
 	/**

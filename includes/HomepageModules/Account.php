@@ -3,7 +3,6 @@
 namespace GrowthExperiments\HomepageModules;
 
 use IContextSource;
-use OOUI\IconWidget;
 
 class Account extends BaseTaskModule {
 
@@ -17,10 +16,22 @@ class Account extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getHeader() {
-		// todo: invert => true doesn't work here
-		return new IconWidget( [ 'icon' => 'check', 'invert' => true ] ) .
-			$this->getContext()->msg( 'growthexperiments-homepage-account-header' )->text();
+	public function isCompleted() {
+		return true;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getUncompletedIcon() {
+		return 'check';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getHeaderText() {
+		return $this->getContext()->msg( 'growthexperiments-homepage-account-header' )->text();
 	}
 
 	/**
@@ -83,12 +94,5 @@ class Account extends BaseTaskModule {
 			// more than a year: "3 years and 12 weeks"
 			return [ 'years', 'weeks' ];
 		}
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function isCompleted() {
-		return true;
 	}
 }
