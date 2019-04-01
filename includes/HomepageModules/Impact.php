@@ -327,7 +327,7 @@ class Impact extends BaseModule {
 	private function daysSince( DateTime $timestamp ) {
 		$now = new DateTime();
 		$diff = $now->diff( $timestamp );
-		return (int)$diff->format( '%d' );
+		return $diff->days;
 	}
 
 	/**
