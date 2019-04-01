@@ -4,5 +4,9 @@
 			"Joetaras"
 		]
 	},
-	"apihelp-welcomesurveyhandleresponses-summary": "Gestisce le resposte d'u Sodnagge de Bovègne pe l'utende de mò."
+	"apihelp-welcomesurveyhandleresponses-summary": "Gestisce le resposte d'u Sodnagge de Bovègne pe l'utende de mò.",
+	"apihelp-welcomesurveyhandleresponses-param-surveyaction": "Azione ca ha state scacchiate da l'utende sus a 'u Sondagge de Bovègne. Pò essere 'reggìstre' o 'zumbe'.",
+	"apihelp-welcomesurveyhandleresponses-param-group": "Gruppe sperimendale associate cu 'u Sondagge de Bovègne.",
+	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "Orarie de stambe de quanne 'u sondagge ha state fatte 'ndrucà a l'utende.",
+	"apihelp-welcomesurveyhandleresponses-param-responses": "Oggette ca tène le nome d'a dumande cumme chiave e le resposte cumme valore. Jndr'à 'u formate JSON."
 }
