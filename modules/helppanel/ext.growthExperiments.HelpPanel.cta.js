@@ -10,10 +10,12 @@
 	}
 
 	$( function () {
+		// eslint-disable-next-line no-jquery/no-global-selector
 		var $buttonToInfuse = $( '#mw-ge-help-panel-cta-button' ),
 			$buttonWrapper = $buttonToInfuse.parent(),
 			$mfOverlay,
 			$veUiOverlay,
+			// eslint-disable-next-line no-jquery/no-global-selector
 			$body = $( 'body' ),
 			windowManager = new OO.ui.WindowManager( { modal: OO.ui.isMobile() } ),
 			$overlay = $( '<div>' ).addClass( 'mw-ge-help-panel-widget-overlay' ),
@@ -110,9 +112,11 @@
 				// HACK: Detach the MobileFrontend overlay for both VE and source edit modes.
 				// Per T212967, leaving them enabled results in a phantom text input that the
 				// user can only see the cursor input for.
+				// eslint-disable-next-line no-jquery/no-global-selector
 				$mfOverlay = $( '.overlay' ).detach();
 				// Detach the VE UI overlay, needed to prevent interference with scrolling in
 				// our dialog.
+				// eslint-disable-next-line no-jquery/no-global-selector
 				$veUiOverlay = $( '.ve-ui-overlay' ).detach();
 				// More hacks. WindowManager#toggleGlobalEvents adds the modal-active class,
 				// which is styled with position:relative. This seems to interfere with search

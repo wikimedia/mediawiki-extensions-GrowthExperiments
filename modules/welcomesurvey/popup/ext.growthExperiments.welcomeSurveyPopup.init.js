@@ -12,6 +12,7 @@
 			privacyStatementUrl: mw.config.get( 'wgWelcomeSurveyPrivacyPolicyUrl' )
 		} );
 
+	// eslint-disable-next-line no-jquery/no-global-selector
 	$( 'body' ).append( windowManager.$element );
 	windowManager.addWindows( [ survey, confirmation ] );
 	windowManager.openWindow( survey );

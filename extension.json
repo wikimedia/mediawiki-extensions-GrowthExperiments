@@ -272,7 +272,8 @@
 		"ext.growthExperiments.Homepage": {
 			"packageFiles": [
 				"homepage/ext.growthExperiments.Homepage.js",
-				"homepage/ext.growthExperiments.Homepage.Logger.js"
+				"homepage/ext.growthExperiments.Homepage.Logger.js",
+				"utils/ext.growthExperiments.Utils.js"
 			],
 			"dependencies": [
 				"mediawiki.user"
@@ -325,6 +326,7 @@
 			"packageFiles": [
 				"help/ext.growthExperiments.Help.js",
 				"help/ext.growthExperiments.HelpPanelLogger.js",
+				"utils/ext.growthExperiments.Utils.js",
 				"help/ext.growthExperiments.HelpPanelSearchWidget.js",
 				"help/ext.growthExperiments.HelpPanelProcessDialog.js",
 				{

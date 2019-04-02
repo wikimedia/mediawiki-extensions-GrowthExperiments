@@ -1,5 +1,7 @@
 ( function () {
 
+	var Utils = require( '../utils/ext.growthExperiments.Utils.js' );
+
 	/**
 	 * @param {boolean} enabled
 	 * @param {string} homepagePageviewToken
@@ -28,7 +30,7 @@
 		mw.track( 'event.HomepageModule', {
 			/* eslint-disable camelcase */
 			action: action,
-			action_data: this.serializeActionData( data ),
+			action_data: Utils.serializeActionData( data ),
 			user_id: this.userId,
 			user_editcount: this.userEditCount,
 			module: module,
@@ -36,27 +38,6 @@
 			homepage_pageview_token: this.homepagePageviewToken
 			/* eslint-enable camelcase */
 		} );
-	};
-
-	HomepageModuleLogger.prototype.serializeActionData = function ( data ) {
-		if ( !data ) {
-			return '';
-		}
-
-		if ( typeof data === 'object' ) {
-			return Object.keys( data )
-				.map( function ( key ) {
-					return key + '=' + data[ key ];
-				} )
-				.join( ';' );
-		}
-
-		if ( Array.isArray( data ) ) {
-			return data.join( ';' );
-		}
-
-		// assume it is string or number or bool
-		return data;
 	};
 
 	module.exports = HomepageModuleLogger;

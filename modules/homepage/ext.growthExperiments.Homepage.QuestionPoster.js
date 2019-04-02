@@ -16,6 +16,7 @@
 				logger: logger
 			}, config.dialog ) );
 
+		// eslint-disable-next-line no-jquery/no-global-selector
 		$( 'body' ).append( windowManager.$element );
 		windowManager.addWindows( [ dialog ] );
 
