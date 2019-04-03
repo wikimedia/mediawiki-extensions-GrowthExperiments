@@ -155,13 +155,6 @@ class Impact extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getModuleStyles() {
-		return 'ext.growthExperiments.Homepage.Impact.styles';
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	protected function getState() {
 		return array_merge(
 			parent::getState(),

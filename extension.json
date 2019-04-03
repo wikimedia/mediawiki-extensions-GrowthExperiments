@@ -421,26 +421,10 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.Homepage.BaseModule.styles": {
+		"ext.growthExperiments.Homepage.styles": {
 			"styles": [
-				"homepage/ext.growthExperiments.BaseModule.less"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
-		"ext.growthExperiments.Homepage.Impact.styles": {
-			"styles": [
-				"homepage/ext.growthExperiments.ImpactModule.less"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
-		"ext.growthExperiments.Homepage.Start.styles": {
-			"styles": [
+				"homepage/ext.growthExperiments.BaseModule.less",
+				"homepage/ext.growthExperiments.ImpactModule.less",
 				"homepage/ext.growthExperiments.StartModule.less"
 			],
 			"targets": [

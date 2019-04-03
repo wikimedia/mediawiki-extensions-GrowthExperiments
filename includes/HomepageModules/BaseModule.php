@@ -44,7 +44,7 @@ abstract class BaseModule implements HomepageModule {
 		}
 
 		$out = $this->getContext()->getOutput();
-		$out->addModuleStyles( 'ext.growthExperiments.Homepage.BaseModule.styles' );
+		$out->addModuleStyles( 'ext.growthExperiments.Homepage.styles' );
 		$out->addModuleStyles( $this->getModuleStyles() );
 		$out->addModules( $this->getModules() );
 		$out->addJsConfigVars( $this->getJsConfigVars() );

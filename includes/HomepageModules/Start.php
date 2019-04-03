@@ -60,13 +60,6 @@ class Start extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getModuleStyles() {
-		return 'ext.growthExperiments.Homepage.Start.styles';
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	protected function getHeader() {
 		return $this->getContext()
 			->msg( 'growthexperiments-homepage-start-header' )
