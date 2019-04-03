@@ -36,7 +36,8 @@
 
 	/* eslint-disable no-jquery/no-event-shorthand */
 	$( moduleSelector )
-		.hover( handleHover( 'in' ), handleHover( 'out' ) )
+		.mouseenter( handleHover( 'in' ) )
+		.mouseleave( handleHover( 'out' ) )
 		.on( 'click', '[data-link-id]', handleClick )
 		.each( logImpression );
 	/* eslint-enable no-jquery/no-event-shorthand */
