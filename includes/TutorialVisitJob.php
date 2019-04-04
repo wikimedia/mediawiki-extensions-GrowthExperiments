@@ -4,6 +4,7 @@ namespace GrowthExperiments;
 
 use GrowthExperiments\HomepageModules\Tutorial;
 use Job;
+use Title;
 use User;
 
 class TutorialVisitJob extends Job {
@@ -13,7 +14,12 @@ class TutorialVisitJob extends Job {
 	 * @param array $params
 	 */
 	public function __construct( $params ) {
-		parent::__construct( 'tutorialVisit', $params );
+		parent::__construct(
+			'tutorialVisit',
+			// @phan-suppress-next-line PhanTypeMismatchArgument
+			Title::makeTitle( NS_SPECIAL, 'Blankpage' ),
+			$params
+		);
 	}
 
 	/**

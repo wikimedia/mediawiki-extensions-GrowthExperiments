@@ -3,6 +3,7 @@
 namespace GrowthExperiments;
 
 use Job;
+use Title;
 use User;
 
 class MentorSaveJob extends Job {
@@ -11,10 +12,14 @@ class MentorSaveJob extends Job {
 	 * MentorSaveJob constructor.
 	 *
 	 * @param array $params
-	 * @throws \MWException
 	 */
 	public function __construct( $params ) {
-		parent::__construct( 'saveMentor', $params );
+		parent::__construct(
+			'saveMentor',
+			// @phan-suppress-next-line PhanTypeMismatchArgument
+			Title::makeTitle( NS_SPECIAL, 'Blankpage' ),
+			$params
+		);
 	}
 
 	/**
