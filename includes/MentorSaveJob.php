@@ -2,23 +2,19 @@
 
 namespace GrowthExperiments;
 
+use GenericParameterJob;
 use Job;
-use Title;
 use User;
 
-class MentorSaveJob extends Job {
+class MentorSaveJob extends Job implements GenericParameterJob {
 
 	/**
 	 * MentorSaveJob constructor.
 	 *
 	 * @param array $params
 	 */
-	public function __construct( $params ) {
-		parent::__construct(
-			'saveMentor',
-			Title::makeTitle( NS_SPECIAL, 'Blankpage' ),
-			$params
-		);
+	public function __construct( array $params ) {
+		parent::__construct( 'saveMentor', $params );
 	}
 
 	/**

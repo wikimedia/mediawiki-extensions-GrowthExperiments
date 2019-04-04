@@ -2,23 +2,19 @@
 
 namespace GrowthExperiments;
 
+use GenericParameterJob;
 use GrowthExperiments\HomepageModules\Tutorial;
 use Job;
-use Title;
 use User;
 
-class TutorialVisitJob extends Job {
+class TutorialVisitJob extends Job implements GenericParameterJob {
 
 	/**
 	 * TutorialVisitJob constructor.
 	 * @param array $params
 	 */
-	public function __construct( $params ) {
-		parent::__construct(
-			'tutorialVisit',
-			Title::makeTitle( NS_SPECIAL, 'Blankpage' ),
-			$params
-		);
+	public function __construct( array $params ) {
+		parent::__construct( 'tutorialVisit', $params );
 	}
 
 	/**
