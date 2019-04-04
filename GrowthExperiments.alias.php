@@ -34,4 +34,5 @@ $specialPageAliases['ko'] = [
 /** Vietnamese (Tiếng Việt) */
 $specialPageAliases['vi'] = [
 	'WelcomeSurvey' => [ 'Bảng_câu_hỏi_chào_mừng' ],
+	'Homepage' => [ 'Trang_nhà' ],
 ];
