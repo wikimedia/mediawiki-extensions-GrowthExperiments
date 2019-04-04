@@ -21,6 +21,7 @@ $specialPageAliases['en'] = [
 $specialPageAliases['cs'] = [
 	'WelcomeSurvey' => [ 'Uvítací_dotazník', 'Uvitaci_dotaznik' ],
 	'Homepage' => [ 'Domovská_stránka' ],
+	'Impact' => [ 'Dosah_příspěvků' ],
 ];
 
 /** 한국어  (Korean) */
