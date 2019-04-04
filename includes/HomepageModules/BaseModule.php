@@ -173,6 +173,7 @@ abstract class BaseModule implements HomepageModule {
 			[
 				'class' => [
 					self::BASE_CSS_CLASS . '-section',
+					self::BASE_CSS_CLASS . '-section-' . $name,
 					self::BASE_CSS_CLASS . '-' . $name,
 				],
 			],

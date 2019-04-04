@@ -3,6 +3,8 @@
 namespace GrowthExperiments\HomepageModules;
 
 use IContextSource;
+use Html;
+use OOUI\IconWidget;
 
 class Account extends BaseTaskModule {
 
@@ -43,8 +45,24 @@ class Account extends BaseTaskModule {
 			$this->getAccountAge();
 	}
 
+	/**
+	 * @inheritDoc
+	 */
+	protected function getModuleStyles() {
+		return 'oojs-ui.styles.icons-user';
+	}
+
 	private function getUsername() {
-		return $this->buildSection( 'username', $this->getContext()->getUser()->getName() );
+		$icon = new IconWidget( [
+			'icon' => 'userAvatar',
+			// HACK: IconWidget doesn't let us set 'invert' => true, see BaseTaskModule.php for details
+			'classes' => [ 'oo-ui-image-invert', 'oo-ui-checkboxInputWidget-checkIcon' ]
+		] );
+		$name = Html::element( 'span', [], $this->getContext()->getUser()->getName() );
+		return $this->buildSection(
+			'username',
+			$icon . $name
+		);
 	}
 
 	private function getEditCount() {
