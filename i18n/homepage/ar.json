@@ -57,7 +57,7 @@
 	"growthexperiments-homepage-mentorship-question-button": "{{GENDER:$2|اسأل|اسألي}} {{GENDER:$1|مرشدك|مرشدتك}} سؤالا",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "عرض محادثات {{GENDER:$2|}} {{GENDER:$1|مرشدك|مرشدتك}} مع المستخدمين الآخرين",
 	"growthexperiments-homepage-mentorship-dialog-title": "اسأل {{GENDER:$2|}} {{GENDER:$1|مرشدك|مرشدتك}}",
-	"growthexperiments-homepage-mentorship-questionreview-header": "عندما تطرح سؤالا، <strong> يُنشَر علنا</strong> ضمن {{GENDER:$2|اسم المستخدم الخاص بك}} \"$2\"، إلى $3، وهو المكان الذي يمكنهم من خلاله العثور على سؤالك والرد عليه.",
+	"growthexperiments-homepage-mentorship-questionreview-header": "عندما تطرح سؤالا، <strong> يُنشَر علنا</strong> ضمن {{GENDER:$2|اسم المستخدم الخاص بك}} \"$2\"، إلى $3، وهو المكان الذي {{GENDER:$1|يمكنهم|يمكنهن}} من خلاله العثور على سؤالك والرد عليه.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "صفحة نقاش {{GENDER:$2|}} {{GENDER:$1|مرشدك|مرشدتك}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|سؤالك}} موجود الآن على صفحة نقاش {{GENDER:$1|مرشدك|مرشدتك}}، حيث سيجيبون عليها في أسرع وقت ممكن.",
 	"growthexperiments-homepage-mentorship-view-question-text": "عرض {{GENDER:$2|سؤالك}} على صفحةنقاش {{GENDER:$1|مرشدك|مرشدتك}}.",

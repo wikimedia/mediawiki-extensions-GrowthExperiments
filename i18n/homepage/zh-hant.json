@@ -56,7 +56,7 @@
 	"growthexperiments-homepage-mentorship-question-button": "詢問{{GENDER:$2|您的}}{{GENDER:$1|導師}}一個問題",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "檢視{{GENDER:$2|您的}}{{GENDER:$1|導師}}與其他使用者的交談",
 	"growthexperiments-homepage-mentorship-dialog-title": "詢問{{GENDER:$2|您的}}{{GENDER:$1|導師}}",
-	"growthexperiments-homepage-mentorship-questionreview-header": "當您詢問問題時，會基於{{GENDER:$2|您的}}使用者名稱「\"$2\"」來<strong>公開發佈</strong>到$3，在那裡您可以尋找並回覆您的問題。",
+	"growthexperiments-homepage-mentorship-questionreview-header": "當您詢問問題時，會基於{{GENDER:$2|您的}}使用者名稱「\"$2\"」來<strong>公開發佈</strong>到$3，在那裡的{{GENDER:$1|人們}}會看到並回覆您的問題。",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2|您}}{{GENDER:$1|導師}}的對話頁",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|您的}}問題目前在您{{GENDER:$1|導師}}的對話頁裡，他們會在那裡盡快回答。",
 	"growthexperiments-homepage-mentorship-view-question-text": "在您{{GENDER:$1|導師}}的對話頁檢視檢視{{GENDER:$2|您的}}問題。",

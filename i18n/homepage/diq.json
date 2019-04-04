@@ -5,7 +5,12 @@
 		]
 	},
 	"growthexperiments-homepage-tab": "Pela seri",
+	"growthexperiments-homepage-account-header": "Hesab vıraziya",
+	"growthexperiments-homepage-userpage-header-done": "Pela şımaya karberi bıvurne",
+	"growthexperiments-homepage-userpage-button": "Pela karberi vıraze",
+	"growthexperiments-homepage-userpage-button-done": "Pela karberi bıvurne",
 	"growthexperiments-homepage-email-button-unconfirmed": "Gıreyo newe",
+	"growthexperiments-homepage-email-button-confirmed": "Tercihi",
 	"growthexperiments-homepage-impact-header": "Tharba {{GENDER:$1|şıma}}",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Şo be meqale",
 	"growthexperiments-homepage-help-cancel": "Bıtexelne",

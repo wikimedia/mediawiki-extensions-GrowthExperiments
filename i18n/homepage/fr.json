@@ -57,7 +57,7 @@
 	"growthexperiments-homepage-mentorship-question-button": "Poser une question à {{GENDER:$2|votre}} {{GENDER:$1|mentor}}",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Afficher les conversations de {{GENDER:$2|votre}} {{GENDER:$1|mentor}} avec d’autres utilisateurs",
 	"growthexperiments-homepage-mentorship-dialog-title": "Demander à {{GENDER:$2|votre}} {{GENDER:$1|mentor}}",
-	"growthexperiments-homepage-mentorship-questionreview-header": "Quand vous posez une question, elle est <strong>publiée publiquement</strong> sous {{GENDER:$2|votre}} nom d’utilisateur, « $2 », sur $3, qui est l’endroit où l’on peut trouver et répondre à votre question.",
+	"growthexperiments-homepage-mentorship-questionreview-header": "Quand vous posez une question, elle est <strong>publiée publiquement</strong> sous {{GENDER:$2|votre}} nom d’utilisateur, « $2 », sur $3, qui est l’endroit où l’{{GENDER:$1|on}} peut trouver et répondre à votre question.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "page de discussion de {{GENDER:$2|votre}} {{GENDER:$1|mentor}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Votre}} question est maintenant sur la page de discussion de votre {{GENDER:$1|mentor}}, qui est l’endroit où il pourra y répondre aussi vite que posssible.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Afficher {{GENDER:$2|votre}} question sur la page de discussion de votre {{GENDER:$1|mentor}}.",
