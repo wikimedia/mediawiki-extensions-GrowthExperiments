@@ -8,7 +8,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Vítejte}}, $1!",
-	"growthexperiments-homepage-specialpage-subtitle": "Toto je {{GENDER:$1|vaše}} domovská stránka, kde můžete požádat ostatní o pomoc s editováním, získat nápady, co je třeba udělat, a zjistit dopad svých editací.",
+	"growthexperiments-homepage-specialpage-subtitle": "Toto je {{GENDER:$1|vaše}} domovská stránka, kde můžete požádat ostatní o pomoc s editováním, získat nápady, co je třeba udělat, a zjistit dosah svých příspěvků.",
 	"growthexperiments-homepage-tab": "Domovská stránka",
 	"prefs-homepage": "Domovská stránka nováčka",
 	"growthexperiments-homepage-enable": "Zobrazit domovskou stránku nováčka",
@@ -33,10 +33,10 @@
 	"growthexperiments-homepage-email-button-noemail": "Přidat e-mail",
 	"growthexperiments-homepage-email-button-unconfirmed": "Nový odkaz",
 	"growthexperiments-homepage-email-button-confirmed": "Nastavení",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Váš}} dopad",
+	"growthexperiments-homepage-impact-header": "Dosah {{GENDER:$1|vašich}} příspěvků",
 	"growthexperiments-homepage-impact-subheader": "Lidé si prohlížejí články, které {{GENDER:$1|jste}} upravili. Zobrazení poté, co jste je upravili (posledních 60 dní):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Uložil jste|Uložila jste|Uložili jste}} <strong>$1</strong> {{PLURAL:$1|editace|editace|editací}} (zobrazit vše)",
-	"growthexperiments-homepage-impact-subheader-no-edit": "Zatím jste žádné články {{GENDER:$1|needitoval|needitovala|needitovali}}. Tato část zobrazí dopad vašich editací.",
+	"growthexperiments-homepage-impact-subheader-no-edit": "Zatím jste žádné články {{GENDER:$1|needitoval|needitovala|needitovali}}. Tato část zobrazí dosah vašich příspěvků.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> editací článků",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|editace|editace|editací}} ostatních stránek (zobrazit vše)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Jít na článek",
@@ -67,7 +67,7 @@
 	"growthexperiments-homepage-tutorial-header": "Zjistěte, jak editovat",
 	"growthexperiments-homepage-tutorial-subheader": "Použijte rychlý tutoriál, který vás naučí, jak editovat Wikipedii",
 	"growthexperiments-homepage-tutorial-cta-text": "Tutoriál",
-	"growthexperiments-specialimpact-title": "Dopad",
-	"growthexperiments-specialimpact-showing-for-other-user": "Zobrazuji data o dopadu uživatele $1",
+	"growthexperiments-specialimpact-title": "Dosah vašich příspěvků",
+	"growthexperiments-specialimpact-showing-for-other-user": "Zobrazuji data o dosahu příspěvků uživatele $1",
 	"growthexperiments-specialimpact-invalid-username": "Chybějící nebo neplatné uživatelské jméno."
 }
