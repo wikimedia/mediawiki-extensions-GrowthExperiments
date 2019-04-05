@@ -77,7 +77,7 @@ class Account extends BaseTaskModule {
 			'editcount',
 			$this->getContext()->msg( 'growthexperiments-homepage-account-editcount' )
 				->params( $this->getContext()->getUser()->getEditCount() )
-				->text()
+				->escaped()
 		);
 	}
 
@@ -92,7 +92,7 @@ class Account extends BaseTaskModule {
 			'accountage',
 			$this->getContext()->msg( 'growthexperiments-homepage-account-age' )
 				->params( $relativeTime )
-				->text()
+				->escaped()
 		);
 	}
 

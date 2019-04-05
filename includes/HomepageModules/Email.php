@@ -62,7 +62,7 @@ class Email extends BaseTaskModule {
 		// growthexperiments-homepage-email-text-confirmed
 		return $this->getContext()->msg( "growthexperiments-homepage-email-text-{$this->emailState}" )
 			->params( $this->getContext()->getUser()->getName() )
-			->text();
+			->escaped();
 	}
 
 	/**

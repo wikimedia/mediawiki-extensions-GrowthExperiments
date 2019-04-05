@@ -38,7 +38,7 @@ class Mentorship extends BaseModule {
 		return $this->getContext()
 			->msg( 'growthexperiments-homepage-mentorship-header' )
 			->params( $this->getContext()->getUser()->getName() )
-			->text();
+			->escaped();
 	}
 
 	/**
@@ -120,7 +120,7 @@ class Mentorship extends BaseModule {
 				'href' => $this->getMentor()->getUserPage()->getLinkURL(),
 				'data-link-id' => 'mentor-userpage',
 			],
-			$icon . $this->getMentor()->getName()
+			$icon . Html::element( 'span', [], $this->getMentor()->getName() )
 		);
 		return Html::rawElement( 'div', [
 			'class' => 'growthexperiments-homepage-mentorship-userlink'
