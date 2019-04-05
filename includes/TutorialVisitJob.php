@@ -16,7 +16,6 @@ class TutorialVisitJob extends Job {
 	public function __construct( $params ) {
 		parent::__construct(
 			'tutorialVisit',
-			// @phan-suppress-next-line PhanTypeMismatchArgument
 			Title::makeTitle( NS_SPECIAL, 'Blankpage' ),
 			$params
 		);

@@ -16,7 +16,6 @@ class MentorSaveJob extends Job {
 	public function __construct( $params ) {
 		parent::__construct(
 			'saveMentor',
-			// @phan-suppress-next-line PhanTypeMismatchArgument
 			Title::makeTitle( NS_SPECIAL, 'Blankpage' ),
 			$params
 		);

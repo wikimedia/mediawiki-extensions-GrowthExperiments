@@ -8,6 +8,13 @@ use OOUI\IconWidget;
 
 class Account extends BaseTaskModule {
 
+	const MINUTE = 60;
+	const HOUR = 3600;
+	const DAY = 86400;
+	const WEEK = 604800;
+	const MONTH = 2592000;
+	const YEAR = 31536000;
+
 	/**
 	 * @inheritDoc
 	 */
@@ -89,27 +96,26 @@ class Account extends BaseTaskModule {
 		);
 	}
 
+	/**
+	 * Return the intervals passed as second arg to Language->formatDuration().
+	 * @param int $time
+	 *  Elapsed time since account creation in seconds.
+	 * @return array
+	 */
 	private function getIntervals( $time ) {
-		if ( $time < 60 ) {
-			// less than a minute: "30 seconds"
+		if ( $time < self::MINUTE ) {
 			return [ 'seconds' ];
-		} elseif ( $time < 3600 ) {
-			// more than a minute, less than an hour: "15 minutes"
+		} elseif ( $time < self::HOUR ) {
 			return [ 'minutes' ];
-		} elseif ( $time < 86400 ) {
-			// more than an hour, less than a day: "23 hours"
+		} elseif ( $time < self::DAY ) {
 			return [ 'hours' ];
-		} elseif ( $time < 604800 ) {
-			// more than a day, less than a week: "5 days"
+		} elseif ( $time < self::WEEK ) {
 			return [ 'days' ];
-		} elseif ( $time < 2592000 ) {
-			// more than a week, less than a month: "3 weeks"
+		} elseif ( $time < self::MONTH ) {
 			return [ 'weeks' ];
-		} elseif ( $time < 2592000 ) {
-			// more than a month, less than a year: "15 weeks"
+		} elseif ( $time < self::YEAR ) {
 			return [ 'weeks' ];
 		} else {
-			// more than a year: "3 years and 12 weeks"
 			return [ 'years', 'weeks' ];
 		}
 	}
