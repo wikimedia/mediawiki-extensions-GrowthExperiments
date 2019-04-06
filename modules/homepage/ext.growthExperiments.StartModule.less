@@ -5,7 +5,7 @@
 .growthexperiments-homepage-module-start {
 	.box-shadow( 0 5px 10px 0 rgba( 0, 0, 0, 0.15 ) );
 
-	.growthexperiments-homepage-module-body {
+	> .growthexperiments-homepage-module-body {
 		display: flex;
 
 		.growthexperiments-homepage-module {
@@ -24,37 +24,55 @@
 			}
 
 			&-header {
+				min-height: 25%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				border-bottom: 0;
 				padding-bottom: 0;
-				height: 33%;
+				color: @colorGray5;
+				font-size: 1em;
 
-				.oo-ui-iconElement {
-					width: 40px;
-					height: 40px;
-					border-radius: 50%;
+				&-icon {
+					width: 32px;
+					height: 32px;
 					background-color: #d5fdf4;
+					border-radius: 50%;
 					border: 1px solid @colorGray12;
-					background-size: unset;
 					margin-right: 10px;
+
+					.oo-ui-iconElement {
+						width: 32px;
+						height: 32px;
+						opacity: 0.65;
+						background-size: unset;
+					}
+				}
+
+				&-text {
+					text-align: left;
 				}
 			}
 
 			&-subheader {
-				height: 33%;
+				min-height: 40%;
+				color: @colorGray2;
+				font-size: 0.9em;
+			}
+
+			&-footer {
+				font-size: 0.9em;
 			}
 
 			&-completed {
-				.growthexperiments-homepage-module-header {
+				.growthexperiments-homepage-module-header-icon {
+					background-color: #00af89;
+					border-color: #00af89;
+
 					.oo-ui-iconElement {
-						background-color: #00af89;
-						border-color: #00af89;
+						opacity: 1;
 					}
 				}
-			}
-
-			&-body {
-				display: block;
-				height: 15%;
 			}
 		}
 
@@ -62,11 +80,13 @@
 			.growthexperiments-homepage-module-section-username {
 				span {
 					display: block;
-					font-size: 1.25em;
+					font-size: 1.3em;
+					font-family: 'Georgia', serif;
+					color: @colorGray1;
 
 					&.oo-ui-iconElement {
-						height: 40px;
-						width: 40px;
+						height: 42px;
+						width: 42px;
 						border-radius: 50%;
 						background-size: unset;
 						background-color: @colorGray5;
@@ -80,7 +100,8 @@
 			.growthexperiments-homepage-module-section-accountage {
 				font-family: @homepageHeaderFont;
 				font-size: 0.8em;
-				color: @colorGray5;
+				margin: 0.5em 0;
+				color: @colorGray7;
 			}
 		}
 	}
