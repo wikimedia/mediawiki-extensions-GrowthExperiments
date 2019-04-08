@@ -108,7 +108,7 @@ class Email extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getState() {
+	public function getState() {
 		return array_merge(
 			parent::getState(),
 			[ 'emailStatus' => $this->emailState ]

@@ -107,10 +107,10 @@ class SpecialHomepageLogger {
 		$event['start_userpage_completed'] = $userpageTask->isCompleted() ? "complete" : "incomplete";
 		/** @var Email $emailTask */
 		$emailTask = $startTasks['email'];
-		$event['start_email_state'] = $emailTask->isCompleted() ? "complete" : "incomplete";
+		$event['start_email_state'] = $emailTask->getState()['emailStatus'];
 		$event['homepage_pageview_token'] = $this->pageviewToken;
 
-		EventLogging::logEvent( 'HomepageVisit', 18984461, $event );
+		EventLogging::logEvent( 'HomepageVisit', 18999420, $event );
 	}
 
 }
