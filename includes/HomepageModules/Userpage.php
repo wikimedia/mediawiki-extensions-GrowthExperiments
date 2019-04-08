@@ -50,7 +50,7 @@ class Userpage extends BaseTaskModule {
 			'growthexperiments-homepage-userpage-body';
 		return $this->getContext()->msg( $msg )
 			->params( $this->getContext()->getUser()->getName() )
-			->text();
+			->escaped();
 	}
 
 	/**

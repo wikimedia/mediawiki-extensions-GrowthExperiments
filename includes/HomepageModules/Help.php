@@ -23,14 +23,14 @@ class Help extends BaseModule {
 	 * @return string
 	 */
 	protected function getHeader() {
-		return $this->getContext()->msg( 'growthexperiments-homepage-help-header' )->text();
+		return $this->getContext()->msg( 'growthexperiments-homepage-help-header' )->escaped();
 	}
 
 	/**
 	 * @return string
 	 */
 	protected function getSubheader() {
-		return $this->getContext()->msg( 'growthexperiments-homepage-help-subheader' )->text();
+		return $this->getContext()->msg( 'growthexperiments-homepage-help-subheader' )->escaped();
 	}
 
 	/**

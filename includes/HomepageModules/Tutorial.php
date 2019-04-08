@@ -69,7 +69,7 @@ class Tutorial extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function getSubheader() {
-		return $this->getContext()->msg( 'growthexperiments-homepage-tutorial-subheader' )->text();
+		return $this->getContext()->msg( 'growthexperiments-homepage-tutorial-subheader' )->escaped();
 	}
 
 	/**

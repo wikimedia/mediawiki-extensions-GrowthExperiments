@@ -48,7 +48,7 @@ class Impact extends BaseModule {
 		return $this->getContext()
 			->msg( 'growthexperiments-homepage-impact-header' )
 			->params( $this->getContext()->getUser()->getName() )
-			->text();
+			->escaped();
 	}
 
 	/**
@@ -113,7 +113,7 @@ class Impact extends BaseModule {
 			return $this->getContext()
 				->msg( 'growthexperiments-homepage-impact-body-no-edit' )
 				->params( $this->getContext()->getUser()->getName() )
-				->text();
+				->escaped();
 		}
 	}
 
@@ -127,7 +127,7 @@ class Impact extends BaseModule {
 		return $this->getContext()
 			->msg( $msgKey )
 			->params( $this->getContext()->getUser()->getName() )
-			->text();
+			->escaped();
 	}
 
 	/**

@@ -75,7 +75,7 @@ abstract class BaseModule implements HomepageModule {
 	/**
 	 * Implement this function to provide the module header.
 	 *
-	 * @return string Text or HTML content of the header
+	 * @return string HTML content of the header
 	 */
 	abstract protected function getHeader();
 
@@ -91,14 +91,14 @@ abstract class BaseModule implements HomepageModule {
 	/**
 	 * Implement this function to provide the module body.
 	 *
-	 * @return string Text or HTML content of the body
+	 * @return string HTML content of the body
 	 */
 	abstract protected function getBody();
 
 	/**
 	 * Override this function to provide an optional module subheader.
 	 *
-	 * @return string Text or HTML content of the subheader
+	 * @return string HTML content of the subheader
 	 */
 	protected function getSubheader() {
 		return '';
@@ -116,7 +116,7 @@ abstract class BaseModule implements HomepageModule {
 	/**
 	 * Override this function to provide an optional module footer.
 	 *
-	 * @return string Text or HTML content of the footer
+	 * @return string HTML content of the footer
 	 */
 	protected function getFooter() {
 		return '';
@@ -160,10 +160,12 @@ abstract class BaseModule implements HomepageModule {
 	}
 
 	/**
-	 * Build a module section
+	 * Build a module section.
+	 *
+	 * $content is HTML, do not pass plain text. Use ->escaped() or ->parse() for messages.
 	 *
 	 * @param string $name Name of the section, used to generate a class
-	 * @param string $content Text or HTML content of the section
+	 * @param string $content HTML content of the section
 	 * @param string $tag HTML tag to use for the section
 	 * @return string
 	 */
