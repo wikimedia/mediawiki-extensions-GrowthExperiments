@@ -7,6 +7,7 @@
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Salut}}, $1!",
 	"growthexperiments-homepage-tab": "Haaptsäit",
 	"growthexperiments-homepage-start-header": "Hei ufänken",
+	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|Ännerung|Ännerungen}}",
 	"growthexperiments-homepage-userpage-header": "Maacht Är Benotzersäit",
 	"growthexperiments-homepage-userpage-header-done": "Ännert Är Benotzersäit",
 	"growthexperiments-homepage-userpage-button-done": "Benotzersäit änneren",

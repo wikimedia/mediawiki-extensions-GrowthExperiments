@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kareyac"
+		]
+	},
+	"growthexperiments-homepage-email-header-unconfirmed": "Հաստատեք {{GENDER:$1|ձեր}} էլեկտրոնային հասցե",
+	"growthexperiments-homepage-email-button-unconfirmed": "Նոր հղում",
+	"growthexperiments-homepage-email-button-confirmed": "Նախընտրություններ",
+	"growthexperiments-homepage-tutorial-cta-text": "Ձեռնարկ"
+}

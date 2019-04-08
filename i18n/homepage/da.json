@@ -5,10 +5,18 @@
 		]
 	},
 	"growthexperiments-homepage-start-header": "Start her",
+	"growthexperiments-homepage-account-header": "Konto oprettet",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|redigering|redigeringer}}",
+	"growthexperiments-homepage-account-age": "Du har haft din konto for $1",
+	"growthexperiments-homepage-userpage-header": "Opret din brugerside",
+	"growthexperiments-homepage-userpage-header-done": "Rediger din brugerside",
+	"growthexperiments-homepage-userpage-button": "Opret brugerside",
+	"growthexperiments-homepage-userpage-button-done": "Rediger brugerside",
+	"growthexperiments-homepage-userpage-guidelines": "Retningslinjer for brugersider",
 	"growthexperiments-homepage-email-button-unconfirmed": "Nyt link",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Gå til artiklen",
 	"growthexperiments-homepage-help-cancel": "Annullér",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Din}} mentor",
+	"growthexperiments-homepage-mentorship-question-subject": "Spørgsmål fra [[User:$1|$1]]",
 	"growthexperiments-homepage-tutorial-header": "Lær hvordan du redigerer"
 }

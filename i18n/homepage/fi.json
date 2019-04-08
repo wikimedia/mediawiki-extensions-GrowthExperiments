@@ -4,5 +4,11 @@
 			"Pyscowicz"
 		]
 	},
-	"growthexperiments-homepage-email-button-unconfirmed": "Uusi linkki"
+	"growthexperiments-homepage-account-header": "Käyttäjätunnus luotu",
+	"growthexperiments-homepage-userpage-button": "Luo käyttäjäsivu",
+	"growthexperiments-homepage-email-header-noemail": "Lisää sähköpostiosoitteesi",
+	"growthexperiments-homepage-email-header-confirmed": "Sähköpostiosoite lisätty",
+	"growthexperiments-homepage-email-button-noemail": "Lisää sähköpostiosoite",
+	"growthexperiments-homepage-email-button-unconfirmed": "Uusi linkki",
+	"growthexperiments-homepage-tutorial-header": "Opi muokkaamaan"
 }

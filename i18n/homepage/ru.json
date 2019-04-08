@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kareyac"
+		]
+	},
+	"growthexperiments-homepage-email-header-confirmed": "Адрес электронной почты добавлен",
+	"growthexperiments-homepage-email-button-unconfirmed": "Новая ссылка",
+	"growthexperiments-homepage-email-button-confirmed": "Настройки",
+	"growthexperiments-homepage-tutorial-header": "Узнайте, как редактировать",
+	"growthexperiments-homepage-tutorial-cta-text": "Руководство"
+}
