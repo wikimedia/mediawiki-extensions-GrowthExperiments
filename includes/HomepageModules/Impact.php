@@ -55,7 +55,7 @@ class Impact extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getBody() {
-		if ( $this->getArticleContributions() ) {
+		if ( $this->isActivated() ) {
 			$emptyImg = new IconWidget( [ 'icon' => 'article' ] );
 			return implode( "\n", array_map(
 				function ( $contrib ) use ( $emptyImg ) {
@@ -121,11 +121,10 @@ class Impact extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getSubheader() {
-		$articleContributions = $this->getArticleContributions();
-		$textMsgKey = $articleContributions ?
+		$textMsgKey = $this->isActivated() ?
 			'growthexperiments-homepage-impact-subheader-text' :
 			'growthexperiments-homepage-impact-subheader-text-no-edit';
-		$subtextMsgKey = $articleContributions ?
+		$subtextMsgKey = $this->isActivated() ?
 			'growthexperiments-homepage-impact-subheader-subtext' :
 			'growthexperiments-homepage-impact-subheader-subtext-no-edit';
 
@@ -151,7 +150,7 @@ class Impact extends BaseModule {
 	 */
 	protected function getFooter() {
 		$user = $this->getContext()->getUser();
-		$msgKey = $this->getArticleContributions() ?
+		$msgKey = $this->isActivated() ?
 			'growthexperiments-homepage-impact-contributions-link' :
 			'growthexperiments-homepage-impact-contributions-link-no-edit';
 		return Html::rawElement(
@@ -174,7 +173,9 @@ class Impact extends BaseModule {
 	protected function getCssClasses() {
 		return array_merge(
 			parent::getCssClasses(),
-			$this->getArticleContributions() ? [ 'growthexperiments-homepage-impact-activated' ] : []
+			$this->isActivated() ?
+				[ 'growthexperiments-homepage-impact-activated' ] :
+				[]
 		);
 	}
 
@@ -182,10 +183,13 @@ class Impact extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getState() {
-		return array_merge(
-			parent::getState(),
-			[ 'activated' => (bool)$this->getArticleContributions() ]
-		);
+		return (bool)$this->getArticleContributions() ?
+			self::MODULE_STATE_ACTIVATED :
+			self::MODULE_STATE_UNACTIVATED;
+	}
+
+	private function isActivated() {
+		return $this->getState() === self::MODULE_STATE_ACTIVATED;
 	}
 
 	/**

@@ -17,12 +17,11 @@ class Email extends BaseTaskModule {
 
 		$user = $this->getContext()->getUser();
 		if ( $user->isEmailConfirmed() ) {
-			$this->emailState = 'confirmed';
+			$this->emailState = self::MODULE_STATE_CONFIRMED;
 		} elseif ( $user->getEmail() ) {
-			// TODO do we want to distinguish $user->isEmailConfirmationPending()?
-			$this->emailState = 'unconfirmed';
+			$this->emailState = self::MODULE_STATE_UNCONFIRMED;
 		} else {
-			$this->emailState = 'noemail';
+			$this->emailState = self::MODULE_STATE_NOEMAIL;
 		}
 	}
 
@@ -30,7 +29,7 @@ class Email extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	public function isCompleted() {
-		return $this->emailState === 'confirmed';
+		return $this->emailState === self::MODULE_STATE_CONFIRMED;
 	}
 
 	/**
@@ -74,12 +73,12 @@ class Email extends BaseTaskModule {
 		// growthexperiments-homepage-email-button-confirmed
 		$buttonMsg = "growthexperiments-homepage-email-button-{$this->emailState}";
 		$buttonConfig = [ 'label' => $this->getContext()->msg( $buttonMsg )->text() ];
-		if ( $this->emailState === 'confirmed' ) {
+		if ( $this->emailState === self::MODULE_STATE_CONFIRMED ) {
 			$buttonConfig += [
 				'href' => SpecialPage::getTitleFor( 'Preferences', false, 'mw-prefsection-personal-email' )
 					->getLinkURL()
 			];
-		} elseif ( $this->emailState === 'unconfirmed' ) {
+		} elseif ( $this->emailState === self::MODULE_STATE_UNCONFIRMED ) {
 			$buttonConfig += [
 				'href' => SpecialPage::getTitleFor( 'Confirmemail' )->getLinkURL(),
 				'flags' => [ 'primary', 'progressive' ]
@@ -109,9 +108,6 @@ class Email extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	public function getState() {
-		return array_merge(
-			parent::getState(),
-			[ 'emailStatus' => $this->emailState ]
-		);
+		return $this->emailState;
 	}
 }

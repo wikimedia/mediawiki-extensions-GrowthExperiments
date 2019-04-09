@@ -15,6 +15,13 @@ use IContextSource;
 abstract class BaseModule implements HomepageModule {
 
 	const BASE_CSS_CLASS = 'growthexperiments-homepage-module';
+	const MODULE_STATE_COMPLETE = 'complete';
+	const MODULE_STATE_INCOMPLETE = 'incomplete';
+	const MODULE_STATE_ACTIVATED = 'activated';
+	const MODULE_STATE_UNACTIVATED = 'unactivated';
+	const MODULE_STATE_NOEMAIL = 'noemail';
+	const MODULE_STATE_UNCONFIRMED = 'unconfirmed';
+	const MODULE_STATE_CONFIRMED = 'confirmed';
 
 	/**
 	 * @var IContextSource
@@ -47,8 +54,10 @@ abstract class BaseModule implements HomepageModule {
 		$out->addModuleStyles( 'ext.growthExperiments.Homepage.styles' );
 		$out->addModuleStyles( $this->getModuleStyles() );
 		$out->addModules( $this->getModules() );
-		$out->addJsConfigVars( $this->getJsConfigVars() );
-		$out->addJsConfigVars( [ 'wgGEHomepageModuleState-' . $this->name => $this->getState() ] );
+		$out->addJsConfigVars( array_merge( $this->getJsConfigVars(), [
+			'wgGEHomepageModuleState-' . $this->name => $this->getState(),
+			'wgGEHomepageModuleActionData-' . $this->name => $this->getActionData()
+		] ) );
 		return Html::rawElement(
 			'div',
 			[
@@ -194,11 +203,21 @@ abstract class BaseModule implements HomepageModule {
 
 	/**
 	 * Override this function to provide the state of this module. It will
-	 * be included in 'action_data' for all HomepageModule events.
+	 * be included in 'state' for all HomepageModule events.
+	 *
+	 * @return string
+	 */
+	protected function getState() {
+		return '';
+	}
+
+	/**
+	 * Override this function to provide the action data of this module. It will
+	 * be included in 'action_data' for HomepageModule events.
 	 *
 	 * @return array
 	 */
-	protected function getState() {
+	protected function getActionData() {
 		return [];
 	}
 }

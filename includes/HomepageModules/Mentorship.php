@@ -95,9 +95,9 @@ class Mentorship extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getState() {
+	protected function getActionData() {
 		return array_merge(
-			parent::getState(),
+			parent::getActionData(),
 			[
 				'mentorEditCount' => $this->getMentor()->getEditCount(),
 				'mentorLastActive' => $this->getMentor()->getLatestEditTimestamp(),
