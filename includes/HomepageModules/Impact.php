@@ -113,7 +113,7 @@ class Impact extends BaseModule {
 			return $this->getContext()
 				->msg( 'growthexperiments-homepage-impact-body-no-edit' )
 				->params( $this->getContext()->getUser()->getName() )
-				->escaped();
+				->parse();
 		}
 	}
 
@@ -149,6 +149,16 @@ class Impact extends BaseModule {
 				->numParams( $user->getEditCount() )
 				->params( $user->getName() )
 				->parse()
+		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getCssClasses() {
+		return array_merge(
+			parent::getCssClasses(),
+			$this->getArticleContributions() ? [ 'growthexperiments-homepage-impact-activated' ] : []
 		);
 	}
 
