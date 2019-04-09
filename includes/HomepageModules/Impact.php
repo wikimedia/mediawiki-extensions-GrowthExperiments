@@ -121,13 +121,29 @@ class Impact extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getSubheader() {
-		$msgKey = $this->getArticleContributions() ?
-			'growthexperiments-homepage-impact-subheader' :
-			'growthexperiments-homepage-impact-subheader-no-edit';
-		return $this->getContext()
-			->msg( $msgKey )
-			->params( $this->getContext()->getUser()->getName() )
-			->escaped();
+		$articleContributions = $this->getArticleContributions();
+		$textMsgKey = $articleContributions ?
+			'growthexperiments-homepage-impact-subheader-text' :
+			'growthexperiments-homepage-impact-subheader-text-no-edit';
+		$subtextMsgKey = $articleContributions ?
+			'growthexperiments-homepage-impact-subheader-subtext' :
+			'growthexperiments-homepage-impact-subheader-subtext-no-edit';
+
+		return Html::element(
+			'p',
+			[ 'class' => 'growthexperiments-homepage-impact-subheader-text' ],
+			$this->getContext()
+				->msg( $textMsgKey )
+				->params( $this->getContext()->getUser()->getName() )
+				->text()
+		) . Html::element(
+			'p',
+			[ 'class' => 'growthexperiments-homepage-impact-subheader-subtext' ],
+			$this->getContext()
+				->msg( $subtextMsgKey )
+				->params( $this->getContext()->getUser()->getName() )
+				->text()
+		);
 	}
 
 	/**
