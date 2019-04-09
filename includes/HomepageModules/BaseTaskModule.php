@@ -36,18 +36,26 @@ abstract class BaseTaskModule extends BaseModule {
 		if ( $uncompletedIcon === false ) {
 			$icon = '';
 		} else {
-			$icon = new IconWidget( [
-				'icon' => $this->isCompleted() ? 'check' : $uncompletedIcon,
-				// HACK: IconWidget doesn't let us set 'invert' => true, and setting
-				// 'classes' => [ 'oo-ui-image-invert' ] doesn't work either, because
-				// Theme::getElementClasses() will unset it again. So instead, trick that code into
-				// thinking this is a checkbox icon, which will cause it to invert the icon
-				'classes' => $this->isCompleted() ?
-					[ 'oo-ui-image-invert', 'oo-ui-checkboxInputWidget-checkIcon' ] :
-					[]
-			] );
+			$icon = Html::rawElement(
+				'div',
+				[ 'class' => self::BASE_CSS_CLASS . '-header-icon' ],
+				new IconWidget( [
+					'icon' => $this->isCompleted() ? 'check' : $uncompletedIcon,
+					// HACK: IconWidget doesn't let us set 'invert' => true, and setting
+					// 'classes' => [ 'oo-ui-image-invert' ] doesn't work either, because
+					// Theme::getElementClasses() will unset it again. So instead, trick that code into
+					// thinking this is a checkbox icon, which will cause it to invert the icon
+					'classes' => $this->isCompleted() ?
+						[ 'oo-ui-image-invert', 'oo-ui-checkboxInputWidget-checkIcon' ] :
+						[]
+				] )
+			);
 		}
-		$span = Html::element( 'span', [], $this->getHeaderText() );
+		$span = Html::element(
+			'span',
+			[ 'class' => self::BASE_CSS_CLASS . '-header-text' ],
+			$this->getHeaderText()
+		);
 		return $icon . $span;
 	}
 

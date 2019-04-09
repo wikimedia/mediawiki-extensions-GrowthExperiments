@@ -2,6 +2,11 @@
 @import 'mediawiki.mixins';
 
 .growthexperiments-homepage-module-impact {
+	.growthexperiments-homepage-module-subheader {
+		font-size: 0.8em;
+		color: @colorGray7;
+	}
+
 	.growthexperiments-homepage-module-body {
 		display: table;
 		margin: 1em -5px;
@@ -35,20 +40,14 @@
 			padding-right: 5px;
 			vertical-align: middle;
 			white-space: nowrap;
+
+			&:hover {
+				font-weight: bold;
+			}
 		}
 
 		&:nth-child( 2n-1 ) {
 			background-color: @colorGray15;
-		}
-
-		&:hover {
-			.article-title {
-				color: @colorGray2;
-			}
-
-			.pageviews {
-				font-weight: bold;
-			}
 		}
 	}
 }
