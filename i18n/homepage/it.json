@@ -20,7 +20,6 @@
 	"growthexperiments-homepage-email-button-confirmed": "Preferenze",
 	"growthexperiments-homepage-impact-header": "Il {{GENDER:$1|tuo}} impatto",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Hai}} fatto <strong>$1</strong> {{PLURAL:$1|modifica|modifiche}} (vedi tutte)",
-	"growthexperiments-homepage-impact-subheader-no-edit": "{{GENDER:$1|Non hai}} ancora effettuato modifiche ad alcuna voce. Quest'area mostrerà l'impatto delle {{GENDER:$1|tue}} modifiche.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> modifiche a voci",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Vai alla voce",
 	"growthexperiments-homepage-help-cancel": "Annulla",

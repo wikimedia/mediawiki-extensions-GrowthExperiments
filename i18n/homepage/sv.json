@@ -27,7 +27,6 @@
 	"growthexperiments-homepage-email-button-confirmed": "Inställningar",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Din}} påverkan",
 	"growthexperiments-homepage-impact-contributions-link": "<strong>$1</strong> {{PLURAL:$1|redigering|redigeringar}} (se alla)",
-	"growthexperiments-homepage-impact-subheader-no-edit": "{{GENDER:$1|Du}} har ännu inte redigerat några artiklar. Detta område visar dig hur {{GENDER:$1|dina}} redigeringar påverkar.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> redigeringar på artiklar",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Gå till artikeln",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Visa detaljerad sidvisningar",
