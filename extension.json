@@ -78,9 +78,6 @@
 		"PersonalUrls": [
 			"GrowthExperiments\\HomepageHooks::onPersonalUrls"
 		],
-		"MobileMenu": [
-			"GrowthExperiments\\HomepageHooks::onMobileMenu"
-		],
 		"AuthChangeFormFields": [
 			"GrowthExperiments\\ConfirmEmailHooks::onAuthChangeFormFields"
 		],

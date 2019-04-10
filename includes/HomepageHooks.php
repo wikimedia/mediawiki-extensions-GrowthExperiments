@@ -10,8 +10,6 @@ use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
 use JobQueueGroup;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Minerva\MenuBuilder;
-use MinervaUI;
 use OutputPage;
 use RequestContext;
 use Skin;
@@ -123,32 +121,6 @@ class HomepageHooks {
 			$personal_urls[ 'userpage' ][ 'href' ] = $homepage->getLinkURL(
 				'source=personaltoolslink&namespace=' . $title->getNamespace()
 			);
-		}
-	}
-
-	/**
-	 * Conditionally add a link to the homepage in the mobile menu
-	 *
-	 * @param string $section
-	 * @param MenuBuilder &$menu
-	 * @throws ConfigException
-	 * @throws \MWException
-	 */
-	public static function onMobileMenu( $section, MenuBuilder &$menu ) {
-		$user = RequestContext::getMain()->getUser();
-		if ( !self::isHomepageEnabled( $user ) ) {
-			return;
-		}
-
-		if ( $section === 'personal' ) {
-			$homepage = SpecialPage::getTitleFor( 'Homepage' );
-			$menu->insertAfter( 'auth', 'homepage' )
-				->addComponent(
-					wfMessage( 'growthexperiments-homepage-tab' )->text(),
-					$homepage->getLinkURL(),
-					MinervaUI::iconClass( 'profile-gray', 'before', 'truncated-text primary-action' ),
-					[ 'data-event-name' => 'homepage' ]
-				);
 		}
 	}
 
