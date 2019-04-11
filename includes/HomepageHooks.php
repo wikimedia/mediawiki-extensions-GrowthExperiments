@@ -3,12 +3,14 @@
 namespace GrowthExperiments;
 
 use ConfigException;
+use Exception;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
 use JobQueueGroup;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use OutputPage;
 use RequestContext;
@@ -185,6 +187,15 @@ class HomepageHooks {
 			$user->setOption( self::HOMEPAGE_PREF_ENABLE, 1 );
 			$user->setOption( self::HOMEPAGE_PREF_PT_LINK, 1 );
 			$user->saveSettings();
+			try {
+				Mentor::newFromMentee( $user, true );
+			}
+			catch ( Exception $exception ) {
+				LoggerFactory::getInstance( 'GrowthExperiments' )
+					->error( __METHOD__ . ' Failed to assign mentor for user.', [
+						'user' => $user->getId()
+					] );
+			}
 		}
 	}
 
