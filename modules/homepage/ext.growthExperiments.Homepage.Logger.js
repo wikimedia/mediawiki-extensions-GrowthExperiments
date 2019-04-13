@@ -25,6 +25,7 @@
 	 * @param {Object} [data] Additional data related to the action or the state of the module
 	 */
 	HomepageModuleLogger.prototype.log = function ( module, action, state, data ) {
+		var event;
 		if ( !this.enabled ) {
 			return;
 		}
@@ -33,18 +34,22 @@
 			return;
 		}
 
-		mw.track( 'event.HomepageModule', {
+		event = {
 			/* eslint-disable camelcase */
 			action: action,
 			action_data: Utils.serializeActionData( data ),
 			user_id: this.userId,
 			user_editcount: this.userEditCount,
 			module: module,
-			state: state,
 			is_mobile: this.isMobile,
 			homepage_pageview_token: this.homepagePageviewToken
 			/* eslint-enable camelcase */
-		} );
+		};
+		if ( state ) {
+			// Don't pass things like event.state = '', that causes validation errors
+			event.state = state;
+		}
+		mw.track( 'event.HomepageModule', event );
 	};
 
 	module.exports = HomepageModuleLogger;
