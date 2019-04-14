@@ -8,7 +8,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Vítejte}}, $1!",
-	"growthexperiments-homepage-specialpage-subtitle": "Toto je {{GENDER:$1|vaše}} domovská stránka, kde můžete požádat ostatní o pomoc s editováním, získat nápady, co je třeba udělat, a zjistit dosah svých příspěvků.",
+	"growthexperiments-homepage-specialpage-subtitle": "Toto je {{GENDER:$1|vaše}} domovská stránka, kde můžete požádat ostatní o pomoc s editováním, zjistit, čím byste mohli začít, a zjistit dosah svých příspěvků.",
 	"growthexperiments-homepage-tab": "Domovská stránka",
 	"prefs-homepage": "Domovská stránka nováčka",
 	"growthexperiments-homepage-enable": "Zobrazit domovskou stránku nováčka",
@@ -49,7 +49,7 @@
 	"tag-mentorship_module_question": "Otázka z domovské stránky",
 	"tag-mentorship_module_question-description": "Editace uložená prostřednictvím funkce pokládání otázek modulu \"Mentor\" domovské stránky.",
 	"growthexperiments-homepage-help-dialog-title": "Položit otázku",
-	"growthexperiments-homepage-help-header": "Sežeňte pomoc s editací",
+	"growthexperiments-homepage-help-header": "Získejte pomoc s editací",
 	"growthexperiments-homepage-help-subheader": "Nejlepší stránky s nápovědou o editaci",
 	"growthexperiments-homepage-help-cancel": "Storno",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Váš mentor|Vaše mentorka}}",

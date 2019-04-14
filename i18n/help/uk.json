@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Piramidion"
+			"Piramidion",
+			"Vlad5250"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Увімкнути панель підтримки редактора",
@@ -42,7 +43,7 @@
 	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "Недостатньо прав для встановлення електронної адреси.",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Недійсна назва.",
 	"growthexperiments-help-panel-community-help-desk-text": "Служба підтримки спільноти",
-	"growthexperiments-help-panel-search-label": "ЧаПи щодо пошуку",
+	"growthexperiments-help-panel-search-label": "Пошук допомоги",
 	"growthexperiments-help-panel-search-no-results": "Не знайдено жодних результатів.",
 	"tag-help_panel_question": "Запитання з панелі підтримки",
 	"tag-help_panel_question-description": "Редагування здійснене з функції для надсилання запитань з панелі підтримки редактора",
