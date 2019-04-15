@@ -3,6 +3,7 @@
 namespace GrowthExperiments\HomepageModules;
 
 use ConfigException;
+use DateInterval;
 use GrowthExperiments\Mentor;
 use Html;
 use IContextSource;
@@ -151,16 +152,21 @@ class Mentorship extends BaseModule {
 		$user = $this->getContext()->getUser();
 		$editTimestamp = new MWTimestamp( $this->getMentor()->getLatestEditTimestamp() );
 		$editTimestamp->offsetForUser( $user );
+		$editDate = $editTimestamp->format( 'Ymd' );
+
 		$now = new MWTimestamp();
 		$now->offsetForUser( $user );
 		$timeDiff = $now->diff( $editTimestamp );
 
-		if ( $timeDiff->days === 0 ) {
+		$today = $now->format( 'Ymd' );
+		$yesterday = $now->timestamp->sub( new DateInterval( 'P1D' ) )->format( 'Ymd' );
+
+		if ( $editDate === $today ) {
 			$text = $this->getContext()
 				->msg( 'growthexperiments-homepage-mentorship-mentor-active-today' )
 				->params( $this->getMentor()->getName() )
 				->text();
-		} elseif ( $timeDiff->days === 1 ) {
+		} elseif ( $editDate === $yesterday ) {
 			$text = $this->getContext()
 				->msg( 'growthexperiments-homepage-mentorship-mentor-active-yesterday' )
 				->params( $this->getMentor()->getName() )
