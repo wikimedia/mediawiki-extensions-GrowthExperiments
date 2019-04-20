@@ -5,7 +5,7 @@
 			"Revi"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|안녕하세요}}, $1님!",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|안녕하세요}}, {{bidi:$1}}님!",
 	"growthexperiments-homepage-specialpage-subtitle": "이곳은 {{$1|당신의}} 홈페이지입니다. 이곳에서 편집에 관련한 도움을 받거나, 다음 할 일에 대한 아이디어를 얻거나, 당신의 편집이 미친 영향을 볼 수 있습니다.",
 	"growthexperiments-homepage-tab": "홈페이지",
 	"prefs-homepage": "새 사용자를 위한 홈페이지",

@@ -4,7 +4,7 @@
 			"Eduardo Addad de Oliveira"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Olá}}, $1!",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Olá}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Página principal",
 	"prefs-homepage": "Página inicial do recém-chegado",
 	"growthexperiments-homepage-enable": "Exibir página inicial do recém-chegado",

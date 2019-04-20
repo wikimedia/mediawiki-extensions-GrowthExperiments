@@ -4,7 +4,7 @@
 			"Kly"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，$1！",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
 	"growthexperiments-homepage-specialpage-subtitle": "此為{{GENDER:$1|您的}}首頁，您可以在這尋找編輯上的協助、取得該如何做的看法、並查看您編輯帶來的影響。",
 	"growthexperiments-homepage-tab": "首頁",
 	"prefs-homepage": "新加入者首頁",

@@ -4,7 +4,7 @@
 			"Dr Lotus Black"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|မင်္ဂလာပါ}}၊ $1။",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|မင်္ဂလာပါ}}၊ {{bidi:$1}}။",
 	"growthexperiments-homepage-start-header": "ဤနေရာတွင် စတင်ပါ",
 	"growthexperiments-homepage-account-header": "အကောင့်ဖန်တီးပြီးပါပြီ",
 	"growthexperiments-homepage-userpage-header": "သင်၏ အသုံးပြုသူစာမျက်နှာကို ဖန်တီးပါ",

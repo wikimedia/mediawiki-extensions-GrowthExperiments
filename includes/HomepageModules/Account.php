@@ -65,7 +65,9 @@ class Account extends BaseTaskModule {
 			// HACK: IconWidget doesn't let us set 'invert' => true, see BaseTaskModule.php for details
 			'classes' => [ 'oo-ui-image-invert', 'oo-ui-checkboxInputWidget-checkIcon' ]
 		] );
-		$name = Html::element( 'span', [], $this->getContext()->getUser()->getName() );
+		$name = Html::element( 'span', [], $this->getContext()->getLanguage()->embedBidi(
+			$this->getContext()->getUser()->getName()
+		) );
 		return $this->buildSection(
 			'username',
 			$icon . $name

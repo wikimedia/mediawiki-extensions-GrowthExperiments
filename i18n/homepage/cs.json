@@ -7,7 +7,7 @@
 			"Matěj Suchánek"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Vítejte}}, $1!",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Vítejte}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-specialpage-subtitle": "Toto je {{GENDER:$1|vaše}} domovská stránka, kde můžete požádat ostatní o pomoc s editováním, zjistit, čím byste mohli začít, a zjistit dosah svých příspěvků.",
 	"growthexperiments-homepage-tab": "Domovská stránka",
 	"prefs-homepage": "Domovská stránka nováčka",

@@ -4,7 +4,7 @@
 			"Beta16"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ciao}}, $1!",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ciao}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Pagina principale",
 	"prefs-homepage": "Pagina principale nuovi arrivati",
 	"growthexperiments-homepage-enable": "Mostra pagina principale nuovi arrivati",

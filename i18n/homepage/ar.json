@@ -5,7 +5,7 @@
 			"Meno25"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|مرحبا}}، $1!",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|مرحبا}}، {{bidi:$1}}!",
 	"growthexperiments-homepage-specialpage-subtitle": "هذه هي الصفحة الرئيسية {{GENDER:$1|صفحتك}} الرئيسية، حيث يمكنك العثور على المساعدة في التحرير، والحصول على أفكار حول ما يجب العمل عليه، ومعرفة تأثير تعديلاتك.",
 	"growthexperiments-homepage-tab": "الصفحة الرئيسية",
 	"prefs-homepage": "الصفحة الرئيسية للقادمين الجدد",
