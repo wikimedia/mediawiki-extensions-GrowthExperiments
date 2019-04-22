@@ -11,8 +11,10 @@
 	"growthexperiments-homepage-userpage-header-done": "သင်၏ အသုံးပြုသူစာမျက်နှာကို ပြင်ဆင်ရန်",
 	"growthexperiments-homepage-userpage-button": "အသုံးပြုသူစာမျက်နှာ ဖန်တီးရန်",
 	"growthexperiments-homepage-userpage-button-done": "အသုံးပြုသူစာမျက်နှာကို ပြင်ဆင်ရန်",
-	"growthexperiments-homepage-email-button-unconfirmed": "လင့်ခ်အသစ်",
+	"growthexperiments-homepage-email-button-unconfirmed": "လင့်ခ်အသစ် ရယူရန်",
 	"growthexperiments-homepage-email-button-confirmed": "​ရွေး​ချယ်​စ​ရာ​များ​",
 	"growthexperiments-homepage-impact-article-link-tooltip": "ဆောင်းပါးသို့သွားရန်",
-	"growthexperiments-homepage-help-cancel": "မလုပ်တော့ပါ"
+	"growthexperiments-homepage-help-cancel": "မလုပ်တော့ပါ",
+	"growthexperiments-homepage-tutorial-header": "တည်းဖြတ်ရန် သင်ယူမည်",
+	"growthexperiments-homepage-tutorial-cta-text": "သင်ခန်းစာ"
 }
