@@ -67,4 +67,21 @@ QUnit.module( 'HomepageLogger', {
 		homepageModuleLogger.log( 'start', 'hover-in', 'complete', { foo: 'bar' } );
 		assert.strictEqual( global.mw.track.called, false );
 	} );
+
+	QUnit.test( 'do not include state in event if empty', function ( assert ) {
+		var homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
+		homepageModuleLogger.log( 'mentor', 'hover-out', '', { foo: 'bar' } );
+		assert.strictEqual( global.mw.track.getCall( 0 ).args[ 0 ], 'event.HomepageModule' );
+		assert.deepEqual( global.mw.track.getCall( 0 ).args[ 1 ], {
+			/* eslint-disable camelcase */
+			action: 'hover-out',
+			action_data: 'foo=bar',
+			user_id: 24,
+			user_editcount: 42,
+			module: 'mentor',
+			is_mobile: false,
+			homepage_pageview_token: 'blah'
+			/* eslint-enable camelcase */
+		} );
+	} );
 } );
