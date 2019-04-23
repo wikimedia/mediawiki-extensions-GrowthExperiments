@@ -14,5 +14,13 @@
 	"growthexperiments-homepage-account-header": "Account aangemaakt",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|bewerking|bewerkingen}}",
 	"growthexperiments-homepage-userpage-header": "Uw gebruikerspagina aanmaken",
-	"growthexperiments-homepage-userpage-button": "Gebruikerspagina aanmaken"
+	"growthexperiments-homepage-userpage-header-done": "Uw gebruikerspagina bewerken",
+	"growthexperiments-homepage-userpage-button": "Gebruikerspagina aanmaken",
+	"growthexperiments-homepage-userpage-button-done": "Gebruikerspagina bewerken",
+	"growthexperiments-homepage-email-header-noemail": "Voeg {{GENDER:$1|uw}} e-mailadres toe",
+	"growthexperiments-homepage-email-header-unconfirmed": "Bevestig {{GENDER:$1|uw}} e-mailadres",
+	"growthexperiments-homepage-email-header-confirmed": "E-mailadres toegevoegd",
+	"growthexperiments-homepage-email-button-confirmed": "Voorkeuren",
+	"growthexperiments-homepage-help-cancel": "Annuleren",
+	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|bewerking|bewerkingen}}"
 }
