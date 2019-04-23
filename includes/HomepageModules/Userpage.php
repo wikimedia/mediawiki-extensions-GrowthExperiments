@@ -59,16 +59,13 @@ class Userpage extends BaseTaskModule {
 	protected function getBody() {
 		if ( $this->isCompleted() ) {
 			$buttonMsg = 'growthexperiments-homepage-userpage-button-done';
-			$buttonFlags = [];
 			$linkId = 'userpage-edit';
 		} else {
 			$buttonMsg = 'growthexperiments-homepage-userpage-button';
-			$buttonFlags = [ 'progressive', 'primary' ];
 			$linkId = 'userpage-create';
 		}
 		$button = new ButtonWidget( [
 			'label' => $this->getContext()->msg( $buttonMsg )->text(),
-			'flags' => $buttonFlags,
 			'href' => $this->getContext()->getUser()->getUserPage()->getEditURL(),
 		] );
 		$button->setAttributes( [ 'data-link-id' => $linkId ] );
