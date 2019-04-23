@@ -5,7 +5,7 @@
 			"Gomoko"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Bonjour}}, $1 !",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Bonjour}}, {{bidi:$1}} !",
 	"growthexperiments-homepage-specialpage-subtitle": "Ceci est {{GENDER:$1|votre}} page d’accueil, où vous pouvez trouver de l’aide lors de l’édition, obtenir des idées sur quoi travailler, et voir l’impact de vos modifications.",
 	"growthexperiments-homepage-tab": "Page d’accueil",
 	"prefs-homepage": "Page d'accueil du nouvel arrivant",

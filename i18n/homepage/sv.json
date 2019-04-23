@@ -4,7 +4,7 @@
 			"WikiPhoenix"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hej}}, $1!",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hej}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Hemsida",
 	"growthexperiments-homepage-start-header": "Starta här",
 	"growthexperiments-homepage-account-header": "Konto har skapats",

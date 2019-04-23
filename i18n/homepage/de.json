@@ -4,7 +4,7 @@
 			"Metalhead64"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, $1!",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-specialpage-subtitle": "Dies ist {{GENDER:$1|deine}} Startseite, wo du Hilfe bei der Bearbeitung finden kannst, Ideen zum Arbeiten erhältst und die Auswirkung deiner Bearbeitungen sehen kannst.",
 	"growthexperiments-homepage-tab": "Startseite",
 	"prefs-homepage": "Neulings-Startseite",

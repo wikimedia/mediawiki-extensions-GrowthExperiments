@@ -4,7 +4,7 @@
 			"Robby"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Salut}}, $1!",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Salut}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Haaptsäit",
 	"growthexperiments-homepage-start-header": "Hei ufänken",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|Ännerung|Ännerungen}}",
