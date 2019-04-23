@@ -101,10 +101,10 @@ class SpecialHomepageLogger {
 		$startTasks = $this->modules['start']->getTasks();
 		/** @var Tutorial $tutorialTask */
 		$tutorialTask = $startTasks['tutorial'];
-		$event['start_tutorial_completed'] = $tutorialTask->isCompleted() ? "complete" : "incomplete";
+		$event['start_tutorial_state'] = $tutorialTask->getState();
 		/** @var Userpage $userpageTask */
 		$userpageTask = $startTasks['userpage'];
-		$event['start_userpage_completed'] = $userpageTask->isCompleted() ? "complete" : "incomplete";
+		$event['start_userpage_state'] = $userpageTask->getState();
 		/** @var Email $emailTask */
 		$emailTask = $startTasks['email'];
 		$event['start_email_state'] = $emailTask->getState();
