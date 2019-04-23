@@ -18,8 +18,7 @@
 		"GrowthExperiments\\": "includes/"
 	},
 	"JobClasses": {
-		"saveMentor": "GrowthExperiments\\MentorSaveJob",
-		"tutorialVisit": "GrowthExperiments\\TutorialVisitJob"
+		"saveMentor": "GrowthExperiments\\MentorSaveJob"
 	},
 	"MessagesDirs": {
 		"GrowthExperiments": [
@@ -61,8 +60,7 @@
 		],
 		"BeforePageDisplay": [
 			"GrowthExperiments\\WelcomeSurveyHooks::onBeforePageDisplay",
-			"GrowthExperiments\\HelpPanelHooks::onBeforePageDisplay",
-			"GrowthExperiments\\HomepageHooks::onBeforePageDisplay"
+			"GrowthExperiments\\HelpPanelHooks::onBeforePageDisplay"
 		],
 		"ListDefinedTags": [
 			"GrowthExperiments\\HelpPanelHooks::onListDefinedTags",

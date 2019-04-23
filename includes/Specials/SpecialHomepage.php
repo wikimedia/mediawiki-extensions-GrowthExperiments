@@ -11,11 +11,13 @@ use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\Mentorship;
+use GrowthExperiments\HomepageModules\Tutorial;
 use Html;
 use MediaWiki\Logger\LoggerFactory;
 use GrowthExperiments\HomepageModules\Start;
 use MediaWiki\Session\SessionManager;
 use SpecialPage;
+use Title;
 use UserNotLoggedIn;
 
 class SpecialHomepage extends SpecialPage {
@@ -31,15 +33,36 @@ class SpecialHomepage extends SpecialPage {
 		$this->pageviewToken = $this->generateUniqueToken();
 	}
 
+	private function handleTutorialVisit( $par ) {
+		$tutorialTitle = Title::newFromText(
+			$this->getConfig()->get( Tutorial::TUTORIAL_TITLE_CONFIG )
+		);
+		if ( $tutorialTitle->getPrefixedDBkey() !== $par ) {
+			return;
+		}
+		$user = $this->getUser();
+		if ( $this->getRequest()->wasPosted() &&
+			 $user->isLoggedIn() &&
+			 !$user->getBoolOption( Tutorial::TUTORIAL_PREF ) ) {
+			DeferredUpdates::addCallableUpdate( function () use ( $user ) {
+				$user->setOption( Tutorial::TUTORIAL_PREF, 1 );
+				$user->saveSettings();
+			} );
+		}
+		$this->getOutput()->redirect( $tutorialTitle->getLinkURL() );
+	}
+
 	/**
 	 * @inheritDoc
 	 * @throws ConfigException
 	 * @throws UserNotLoggedIn
 	 */
-	public function execute( $par ) {
+	public function execute( $par = '' ) {
 		$out = $this->getContext()->getOutput();
 		$this->requireLogin();
 		parent::execute( $par );
+		$this->handleTutorialVisit( $par );
+
 		$out->setSubtitle( $this->getSubtitle() );
 		$loggingEnabled = $this->getConfig()->get( 'GEHomepageLoggingEnabled' );
 		$out->addJsConfigVars( [
