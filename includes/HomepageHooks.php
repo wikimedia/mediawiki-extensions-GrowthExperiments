@@ -185,7 +185,8 @@ class HomepageHooks {
 			$user->setOption( self::HOMEPAGE_PREF_PT_LINK, 1 );
 			$user->saveSettings();
 			try {
-				Mentor::newFromMentee( $user, true );
+				$assignedMentor = Mentor::newFromMentee( $user, true );
+				Mentor::saveMentor( $user, $assignedMentor->getMentorUser() );
 			}
 			catch ( Exception $exception ) {
 				LoggerFactory::getInstance( 'GrowthExperiments' )
@@ -210,6 +211,32 @@ class HomepageHooks {
 			$tags[] = Help::HELP_MODULE_QUESTION_TAG;
 			$tags[] = Mentorship::MENTORSHIP_MODULE_QUESTION_TAG;
 		}
+	}
+
+	/**
+	 * Handler for UserSaveOptions hook.
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UserSaveOptions
+	 * @param User $user User whose options are being saved
+	 * @param array &$options Options can be modified
+	 * @return bool true in all cases
+	 */
+	public static function onUserSaveOptions( $user, &$options ) {
+		$oldUser = User::newFromId( $user->getId() );
+		$homepagePrefEnabled = $options[self::HOMEPAGE_PREF_ENABLE] ?? false;
+		$homepageAlreadyEnabled = $oldUser->getOption( self::HOMEPAGE_PREF_ENABLE );
+		$userHasMentor = $user->getIntOption( Mentor::MENTOR_PREF );
+		if ( $homepagePrefEnabled && !$homepageAlreadyEnabled && !$userHasMentor ) {
+			try {
+				$mentor = Mentor::newFromMentee( $user, true );
+				$options[Mentor::MENTOR_PREF] = $mentor->getMentorUser()->getId();
+			}
+			catch ( Exception $exception ) {
+				LoggerFactory::getInstance( 'GrowthExperiments' )
+					->error( 'Failed to assign mentor from Special:Preferences' );
+			}
+		}
+
+		return true;
 	}
 
 }

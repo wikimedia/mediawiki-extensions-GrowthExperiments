@@ -221,14 +221,12 @@ class Mentorship extends BaseModule {
 	}
 
 	/**
-	 * @return bool|User The current user's mentor (may be newly assigned)
-	 * or false if none are available
+	 * @return bool|User The current user's mentor or false if not set.
 	 * @throws ConfigException
-	 * @throws \MWException
 	 */
 	private function getMentor() {
 		if ( !$this->mentor ) {
-			$mentor = Mentor::newFromMentee( $this->getContext()->getUser(), true );
+			$mentor = Mentor::newFromMentee( $this->getContext()->getUser() );
 			if ( $mentor ) {
 				$this->mentor = $mentor->getMentorUser();
 			}

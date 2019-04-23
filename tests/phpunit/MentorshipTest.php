@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
 use GrowthExperiments\HomepageModules\Mentorship;
+use GrowthExperiments\Mentor;
 use MediaWikiTestCase;
 use RequestContext;
 
@@ -32,12 +33,16 @@ class MentorshipTest extends MediaWikiTestCase {
 	 */
 	public function testRenderSuccess() {
 		$mentor = $this->getTestUser( 'sysop' )->getUser();
+		$mentee = $this->getMutableTestUser()->getUser();
 		$this->insertPage( 'MentorsList', '[[User:' . $mentor->getName() . ']]' );
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
 		$context = new DerivativeContext( RequestContext::getMain() );
+		$context->setUser( $mentee );
 		$mentorshipModule = new Mentorship( $context );
 		$context->getOutput()->enableOOUI();
-
+		$this->assertEmpty( $mentorshipModule->render() );
+		$mentee->setOption( Mentor::MENTOR_PREF, $mentor->getId() );
+		$mentee->saveSettings();
 		$this->assertNotEmpty( $mentorshipModule->render() );
 	}
 

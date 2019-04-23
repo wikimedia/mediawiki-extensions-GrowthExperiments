@@ -2,10 +2,9 @@
 
 namespace GrowthExperiments;
 
-use BagOStuff;
 use ConfigException;
+use DeferredUpdates;
 use Exception;
-use JobQueueGroup;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use ParserOptions;
@@ -28,10 +27,9 @@ class Mentor {
 
 	/**
 	 * @param User $mentee
-	 * @param bool $allowSelect Enable selecting and saving a mentor for the user
+	 * @param bool $allowSelect Enable selecting a mentor for the user
 	 * @return bool|Mentor
 	 * @throws ConfigException
-	 * @throws \MWException
 	 */
 	public static function newFromMentee( User $mentee, $allowSelect = false ) {
 		$mentorUser = self::loadMentor( $mentee );
@@ -42,7 +40,6 @@ class Mentor {
 		if ( $allowSelect ) {
 			$mentorUser = self::selectMentor( $mentee );
 			if ( $mentorUser ) {
-				self::saveMentor( $mentee, $mentorUser );
 				return new static( $mentorUser );
 			}
 		}
@@ -96,10 +93,6 @@ class Mentor {
 	 */
 	private static function loadMentor( User $mentee ) {
 		$mentorId = $mentee->getIntOption( self::MENTOR_PREF );
-		if ( !$mentorId ) {
-			$cache = MediaWikiServices::getInstance()->getMainObjectStash();
-			$mentorId = $cache->get( self::makeCacheKey( $cache, $mentee ) );
-		}
 		return User::whoIs( $mentorId ) ?
 			User::newFromId( $mentorId ) :
 			false;
@@ -110,19 +103,13 @@ class Mentor {
 	 *
 	 * @param User $mentee
 	 * @param User $mentor
-	 * @throws \MWException
 	 */
-	private static function saveMentor( User $mentee, User $mentor ) {
-		$cache = MediaWikiServices::getInstance()->getMainObjectStash();
-		$cache->set( self::makeCacheKey( $cache, $mentee ), $mentor->getId(), $cache::TTL_DAY );
-		$job = new MentorSaveJob( [
-			'userId' => $mentee->getId(),
-			'mentorId' => $mentor->getId()
-		] );
-		JobQueueGroup::singleton()->lazyPush( $job );
+	public static function saveMentor( User $mentee, User $mentor ) {
+		DeferredUpdates::addCallableUpdate( function () use ( $mentee, $mentor ) {
+			$user = User::newFromId( $mentee->getId() );
+			$user->setOption( Mentor::MENTOR_PREF, $mentor->getId() );
+			$user->saveSettings();
+		} );
 	}
 
-	private static function makeCacheKey( BagOStuff $cache, User $mentee ) {
-		return $cache->makeKey( self::MENTOR_PREF, $mentee->getId() );
-	}
 }

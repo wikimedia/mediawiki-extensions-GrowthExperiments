@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\Mentor;
-use JobQueueGroup;
 use MediaWikiTestCase;
 
 /**
@@ -58,7 +57,6 @@ class MentorTest extends MediaWikiTestCase {
 
 		$mentor = Mentor::newFromMentee( $this->getTestUser()->getUser(), true );
 		$this->assertEquals( $sysop->getId(), $mentor->getMentorUser()->getId() );
-		JobQueueGroup::singleton()->get( 'saveMentor' )->delete();
 	}
 
 	/**
