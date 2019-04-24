@@ -74,7 +74,7 @@ abstract class BaseTaskModule extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getState() {
+	public function getState() {
 		return $this->isCompleted() ? self::MODULE_STATE_COMPLETE : self::MODULE_STATE_INCOMPLETE;
 	}
 }
