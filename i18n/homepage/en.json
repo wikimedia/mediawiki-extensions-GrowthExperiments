@@ -11,7 +11,7 @@
 	"growthexperiments-homepage-start-header": "Start here",
 	"growthexperiments-homepage-account-header": "Account created",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|edit|edits}}",
-	"growthexperiments-homepage-account-age": "You've had your account for $1",
+	"growthexperiments-homepage-account-age": "You've had an account for $1",
 	"growthexperiments-homepage-userpage-header": "Create your user page",
 	"growthexperiments-homepage-userpage-header-done": "Edit your user page",
 	"growthexperiments-homepage-userpage-body": "Practice editing while building your public profile.",

@@ -6,6 +6,7 @@
 	#contentSub {
 		font-size: 1em;
 		color: @colorGray7;
+		margin: 1.4em 0;
 	}
 }
 
@@ -17,6 +18,10 @@
 	width: 75%;
 	display: flex;
 	.flex-wrap( wrap );
+
+	.growthexperiments-homepage-module {
+		margin-left: 0;
+	}
 }
 
 .growthexperiments-homepage-group-sidebar {
@@ -29,5 +34,6 @@
 
 .growthexperiments-homepage-module-impact,
 .growthexperiments-homepage-module-mentorship {
-	width: calc( 50% ~'-' 2 * @homepageModuleMargin );
+	// 1.5* instead of 2* because the impact module doesn't have a left margin
+	width: calc( 50% ~'-' 1.5 * @homepageModuleMargin );
 }

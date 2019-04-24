@@ -81,14 +81,12 @@ class Email extends BaseTaskModule {
 		} elseif ( $this->emailState === self::MODULE_STATE_UNCONFIRMED ) {
 			$buttonConfig += [
 				'href' => SpecialPage::getTitleFor( 'Confirmemail' )->getLinkURL(),
-				'flags' => [ 'primary', 'progressive' ]
 			];
 		} else {
 			$buttonConfig += [
 				'href' => SpecialPage::getTitleFor( 'ChangeEmail' )->getLinkURL( [
 					'returnto' => $this->getContext()->getTitle()->getPrefixedText()
 				] ),
-				'flags' => [ 'primary', 'progressive' ],
 			];
 		}
 

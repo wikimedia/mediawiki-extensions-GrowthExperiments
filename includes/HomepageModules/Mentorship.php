@@ -121,9 +121,13 @@ class Mentorship extends BaseModule {
 				'href' => $this->getMentor()->getUserPage()->getLinkURL(),
 				'data-link-id' => 'mentor-userpage',
 			],
-			$icon . Html::element( 'span', [], $this->getContext()->getLanguage()->embedBidi(
-				$this->getMentor()->getName()
-			) )
+			$icon . Html::element(
+				'span',
+				[ 'class' => 'growthexperiments-homepage-mentorship-username' ],
+				$this->getContext()->getLanguage()->embedBidi(
+					$this->getMentor()->getName()
+				)
+			)
 		);
 		return Html::rawElement( 'div', [
 			'class' => 'growthexperiments-homepage-mentorship-userlink'
