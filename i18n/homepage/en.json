@@ -54,7 +54,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Active}} $2 {{PLURAL:$2|day|days}} ago",
 	"growthexperiments-homepage-mentorship-intro": "This {{GENDER:$1|experienced user}} knows you're new and can help {{GENDER:$2|you}} with editing.",
 	"growthexperiments-homepage-mentorship-question-button": "Ask {{GENDER:$2|your}} {{GENDER:$1|mentor}} a question",
-	"growthexperiments-homepage-mentorship-mentor-conversations": "View {{GENDER:$2|your}} {{GENDER:$1|mentor's}} conversations with other users",
+	"growthexperiments-homepage-mentorship-mentor-conversations": "View {{GENDER:$2|your}} {{GENDER:$1|mentor's}} conversations",
 	"growthexperiments-homepage-mentorship-dialog-title": "Ask {{GENDER:$2|your}} {{GENDER:$1|mentor}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "When you ask a question, it gets <strong>posted publicly</strong> under {{GENDER:$2|your}} username, \"$2\", to $3, which is where {{GENDER:$1|they}} can find and respond to your question.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2|your}} {{GENDER:$1|mentor's}} talk page",
