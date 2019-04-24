@@ -82,6 +82,7 @@ class Tutorial extends BaseTaskModule {
 			'label' => $this->getContext()->msg(
 				'growthexperiments-homepage-tutorial-cta-text'
 			)->text(),
+			'flags' => $this->isCompleted() ? [] : [ 'progressive' ]
 		] );
 		$button->setAttributes( [ 'data-link-id' => 'tutorial' ] );
 		return ( new Tag( 'div' ) )
