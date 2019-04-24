@@ -182,7 +182,7 @@ class Impact extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getState() {
+	public function getState() {
 		return (bool)$this->getArticleContributions() ?
 			self::MODULE_STATE_ACTIVATED :
 			self::MODULE_STATE_UNACTIVATED;
