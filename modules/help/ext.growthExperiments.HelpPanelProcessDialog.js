@@ -209,41 +209,48 @@
 
 	/**
 	 * Set relevant email fields on question review step.
+	 *
+	 * If the email field has already been built, this method will rebuild it.
 	 */
 	HelpPanelProcessDialog.prototype.setEmailFields = function () {
-		// User doesn't have email or it isn't confirmed, provide an input and help.
-		if ( !this.userEmail || !this.userEmailConfirmed ) {
-			this.questionReviewContent.addItems( [
-				new OO.ui.FieldLayout( this.questionReviewAddEmail, {
-					label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-email-optional' ).text() ),
+		var field, index;
+		if ( !this.userEmail ) {
+			// User doesn't have an email address set, provide an input and help.
+			field = new OO.ui.FieldLayout( this.questionReviewAddEmail, {
+				label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-email-optional' ).text() ),
+				align: 'top',
+				help: new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-no-email-note' ).parse() ),
+				helpInline: true
+			} );
+		} else {
+			// Output the user's email and help about notifications.
+			field = new OO.ui.FieldLayout(
+				new OO.ui.Widget( {
+					content: [
+						new OO.ui.Element( {
+							$content: $( '<p>' ).text( this.userEmail )
+						} )
+					]
+				} ),
+				{
+					label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-email' ).text() ),
 					align: 'top',
-					help: !this.userEmail ?
-						new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-no-email-note' ).parse() ) :
-						new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-unconfirmed-email-note' ).parse() ),
-					helpInline: true
-				} )
-			] );
+					helpInline: true,
+					help: !this.userEmailConfirmed ?
+						new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-unconfirmed-email-note' ).parse() ) :
+						new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-note' ).parse() )
+				}
+			);
 		}
-		// Output the user's email and help about notifications.
-		if ( this.userEmail && this.userEmailConfirmed ) {
-			this.questionReviewContent.addItems( [
-				new OO.ui.FieldLayout(
-					new OO.ui.Widget( {
-						content: [
-							new OO.ui.Element( {
-								$content: $( '<p>' ).text( this.userEmail )
-							} )
-						]
-					} ),
-					{
-						label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-email' ).text() ),
-						align: 'top',
-						helpInline: true,
-						help: new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-note' ).parse() )
-					}
-				)
-			] );
+		if ( this.emailField ) {
+			// Replace existing email field
+			index = this.questionReviewContent.getItemIndex( this.emailField );
+			this.questionReviewContent.addItems( [ field ], index );
+			this.questionReviewContent.removeItems( [ this.emailField ] );
+		} else {
+			this.questionReviewContent.addItems( [ field ] );
 		}
+		this.emailField = field;
 	};
 
 	HelpPanelProcessDialog.prototype.buildSettingsCog = function () {
@@ -503,6 +510,16 @@
 			.append( this.panels.$element );
 
 		this.$element.on( 'click', 'a[data-link-id]', this.logLinkClick.bind( this ) );
+
+		mw.hook( 'growthExperiments.helpPanelQuestionPosted' ).add( function () {
+			// Check if the user added an email address through a different HelpPanelProcessDialog,
+			// and update the UI accordingly
+			var newEmail = mw.config.get( 'wgGEHelpPanelUserEmail' );
+			if ( newEmail !== this.userEmail ) {
+				this.userEmail = newEmail;
+				this.setEmailFields();
+			}
+		}.bind( this ) );
 	};
 
 	HelpPanelProcessDialog.prototype.logLinkClick = function ( e ) {
@@ -544,7 +561,8 @@
 	HelpPanelProcessDialog.prototype.getActionProcess = function ( action ) {
 		return HelpPanelProcessDialog.super.prototype.getActionProcess.call( this, action )
 			.next( function () {
-				var submitAttemptData;
+				var submitAttemptData,
+					postData;
 				if ( action === 'close' ) {
 					this.logger.log( 'close' );
 					this.close();
@@ -573,8 +591,8 @@
 					submitAttemptData = {
 						question_length: this.questionReviewTextInput.getValue().length,
 						include_title: this.questionIncludeTitleCheckbox.isSelected(),
-						had_email: !!mw.config.get( 'wgGEHelpPanelUserEmail' ),
-						had_email_confirmed: !!mw.config.get( 'wgGEHelpPanelUserEmailConfirmed' ),
+						had_email: !!this.userEmail,
+						had_email_confirmed: !!this.userEmailConfirmed,
 						email_form_has_content: !!this.questionReviewAddEmail.getValue(),
 						email_form_changed: this.questionReviewAddEmail.getValue() !==
 							this.questionReviewAddEmail.defaultValue
@@ -586,24 +604,36 @@
 					this.questionReviewSubmitButton.setDisabled( true );
 					// Toggle the first edit text, will set depending on API response.
 					this.questionCompleteFirstEditText.toggle( false );
-					return new mw.Api().postWithToken( 'csrf', {
+					postData = {
 						source: this.source,
 						action: 'helppanelquestionposter',
-						email: this.questionReviewAddEmail.getValue(),
 						relevanttitle: this.questionIncludeTitleCheckbox.isSelected() ? this.relevantTitle.getPrefixedText() : '',
 						body: this.questionReviewTextInput.getValue()
-					} )
+					};
+					if ( !this.userEmail ) {
+						postData.email = this.questionReviewAddEmail.getValue();
+					} else if ( !this.userEmailConfirmed ) {
+						postData.resendconfirmation = true;
+					}
+					return new mw.Api().postWithToken( 'csrf', postData )
 						.then( function ( data ) {
+							var emailStatus = data.helppanelquestionposter.email;
 							this.logger.incrementUserEditCount();
 							this.logger.log( 'submit-success', $.extend(
 								submitAttemptData,
 								/* eslint-disable camelcase */
 								{
 									revision_id: data.helppanelquestionposter.revision,
-									email_action_status: data.helppanelquestionposter.email
+									email_action_status: emailStatus
 								}
 								/* eslint-enable camelcase */
 							) );
+
+							if ( emailStatus === 'set_email_with_confirmation' ) {
+								mw.config.set( 'wgGEHelpPanelUserEmail', postData.email );
+								this.userEmail = postData.email;
+								this.setEmailFields();
+							}
 
 							if ( data.helppanelquestionposter.isfirstedit ) {
 								this.questionCompleteFirstEditText.toggle( true );

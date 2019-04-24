@@ -6,5 +6,6 @@
 	"apihelp-helppanelquestionposter-param-body": "The text of the question provided by the user.",
 	"apihelp-helppanelquestionposter-param-source": "The component at the source of the question. Valid values are 'helppanel', 'homepage-help', and 'homepage-mentorship'",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "The relevant title, if selected, to include with the question.",
-	"apihelp-helppanelquestionposter-param-email": "The optional email address, if the user has an unconfirmed email or no email, to use for sending a verification email."
+	"apihelp-helppanelquestionposter-param-email": "Optional email address, if the user has no email set. The user's email will be set to this address, and a confirmation email sent.",
+	"apihelp-helppanelquestionposter-param-resendconfirmation": "Send another confirmation email to the user's existing email address."
 }
