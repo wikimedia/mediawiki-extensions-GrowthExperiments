@@ -207,7 +207,7 @@ abstract class BaseModule implements HomepageModule {
 	 *
 	 * @return string
 	 */
-	protected function getState() {
+	public function getState() {
 		return '';
 	}
 
