@@ -70,11 +70,10 @@ class SpecialHomepageLogger {
 			// page directly from their browser history/bookmark/etc.
 			$referer ? 'other' : 'direct'
 		);
-		// todo: If we want to know namespace by attempting to load the MediaWiki title from the
-		// referer (i.e. someone made a link to Special:Homepage on some arbitrary title, we can
-		// override the below.
-		$event['referer_namespace'] = $this->request->getVal( 'namespace' );
-		// Default.
+		$namespace = $this->request->getVal( 'namespace' );
+		if ( $namespace !== null ) {
+			$event['referer_namespace'] = (int)$namespace;
+		}
 		$event['referer_action'] = 'view';
 		if ( $referer ) {
 			$referer = wfParseUrl( $referer );
@@ -90,14 +89,14 @@ class SpecialHomepageLogger {
 		}
 		if ( !in_array( $event['referer_action' ], [ 'view', 'edit' ] ) ) {
 			// Some other action, like info, was specified. For analysis we don't care about the
-			// specific value.
+			// specific value, just that it's not one of "view" or "edit".
 			$event['referer_action'] = 'other';
 		}
 		$event['user_id'] = $this->user->getId();
 		$event['user_editcount'] = $this->user->getEditCount();
 		/** @var Impact $impactModule */
 		$impactModule = $this->modules['impact'];
-		$event['impact_module_activated'] = $impactModule->getArticleContributions() !== null;
+		$event['impact_module_state'] = $impactModule->getState();
 		$startTasks = $this->modules['start']->getTasks();
 		/** @var Tutorial $tutorialTask */
 		$tutorialTask = $startTasks['tutorial'];
@@ -110,7 +109,7 @@ class SpecialHomepageLogger {
 		$event['start_email_state'] = $emailTask->getState();
 		$event['homepage_pageview_token'] = $this->pageviewToken;
 
-		EventLogging::logEvent( 'HomepageVisit', 18999420, $event );
+		EventLogging::logEvent( 'HomepageVisit', 19041814, $event );
 	}
 
 }
