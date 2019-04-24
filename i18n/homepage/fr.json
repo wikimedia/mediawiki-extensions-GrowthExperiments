@@ -14,7 +14,7 @@
 	"growthexperiments-homepage-start-header": "Commencer ici",
 	"growthexperiments-homepage-account-header": "Compte créé",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|modification|modifications}}",
-	"growthexperiments-homepage-account-age": "Vous avez votre compte depuis $1",
+	"growthexperiments-homepage-account-age": "Vous avez un compte depuis $1",
 	"growthexperiments-homepage-userpage-header": "Créer votre page utilisateur",
 	"growthexperiments-homepage-userpage-header-done": "Modifier votre page utilisateur",
 	"growthexperiments-homepage-userpage-body": "S’entraîner à la modification en construisant votre profil public.",

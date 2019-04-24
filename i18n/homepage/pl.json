@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Chrumps",
-			"Woytecr"
+			"Woytecr",
+			"Railfail536"
 		]
 	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Witaj}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-start-header": "Zacznij tutaj",
 	"growthexperiments-homepage-account-header": "Konto utworzone",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|edycja|edycje|edycji}}",
