@@ -1,6 +1,7 @@
 <?php
 namespace GrowthExperiments\HomepageModules;
 
+use Html;
 use IContextSource;
 use OOUI\ButtonWidget;
 use SpecialPage;
@@ -95,6 +96,25 @@ class Email extends BaseTaskModule {
 		$button = new ButtonWidget( $buttonConfig );
 		$button->setAttributes( [ 'data-link-id' => 'email-' . $this->emailState ] );
 		return $button;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getFooter() {
+		if ( $this->emailState === self::MODULE_STATE_UNCONFIRMED ) {
+			return Html::element(
+				'a',
+				[
+					'href' => SpecialPage::getTitleFor( 'ChangeEmail' )->getLinkURL( [
+						'returnto' => $this->getContext()->getTitle()->getPrefixedText()
+					] ),
+					'data-link-id' => 'email-unconfirmed-change'
+				],
+				$this->getContext()->msg( 'growthexperiments-homepage-email-changelink' )->text()
+			);
+		}
+		return '';
 	}
 
 	/**
