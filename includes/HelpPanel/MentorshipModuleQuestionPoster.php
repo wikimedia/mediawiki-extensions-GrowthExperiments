@@ -37,4 +37,11 @@ class MentorshipModuleQuestionPoster extends QuestionPoster {
 		}
 		return $mentor->getMentorUser()->getTalkPage();
 	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getQuestionStoragePref() {
+		return Mentorship::QUESTION_PREF;
+	}
 }

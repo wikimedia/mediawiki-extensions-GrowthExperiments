@@ -2,18 +2,12 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+use GrowthExperiments\Util;
 use IContextSource;
 use Html;
 use OOUI\IconWidget;
 
 class Account extends BaseTaskModule {
-
-	const MINUTE = 60;
-	const HOUR = 3600;
-	const DAY = 86400;
-	const WEEK = 604800;
-	const MONTH = 2592000;
-	const YEAR = 31536000;
 
 	/**
 	 * @inheritDoc
@@ -87,9 +81,7 @@ class Account extends BaseTaskModule {
 		$user = $this->getContext()->getUser();
 		$elapsedTime = (int)wfTimestamp() -
 			(int)wfTimestamp( TS_UNIX, $user->getRegistration() );
-		$relativeTime = $this->getContext()->getLanguage()->formatDuration(
-			$elapsedTime, $this->getIntervals( $elapsedTime )
-		);
+		$relativeTime = Util::getRelativeTime( $this->getContext(), $elapsedTime );
 		return $this->buildSection(
 			'accountage',
 			$this->getContext()->msg( 'growthexperiments-homepage-account-age' )
@@ -98,27 +90,4 @@ class Account extends BaseTaskModule {
 		);
 	}
 
-	/**
-	 * Return the intervals passed as second arg to Language->formatDuration().
-	 * @param int $time
-	 *  Elapsed time since account creation in seconds.
-	 * @return array
-	 */
-	private function getIntervals( $time ) {
-		if ( $time < self::MINUTE ) {
-			return [ 'seconds' ];
-		} elseif ( $time < self::HOUR ) {
-			return [ 'minutes' ];
-		} elseif ( $time < self::DAY ) {
-			return [ 'hours' ];
-		} elseif ( $time < self::WEEK ) {
-			return [ 'days' ];
-		} elseif ( $time < self::MONTH ) {
-			return [ 'weeks' ];
-		} elseif ( $time < self::YEAR ) {
-			return [ 'weeks' ];
-		} else {
-			return [ 'years', 'weeks' ];
-		}
-	}
 }

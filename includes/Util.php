@@ -2,11 +2,19 @@
 
 namespace GrowthExperiments;
 
+use IContextSource;
 use MediaWiki\Auth\AuthManager;
 use Sanitizer;
 use User;
 
 class Util {
+
+	const MINUTE = 60;
+	const HOUR = 3600;
+	const DAY = 86400;
+	const WEEK = 604800;
+	const MONTH = 2592000;
+	const YEAR = 31536000;
 
 	/**
 	 * Helper method to check if a user can set their email.
@@ -31,5 +39,41 @@ class Util {
 			$user->isAllowed( 'editmyprivateinfo' ) &&
 			AuthManager::singleton()->allowsPropertyChange( 'emailaddress' ) &&
 			( $newEmail ? Sanitizer::validateEmail( $newEmail ) : true );
+	}
+
+	/**
+	 * @param IContextSource $contextSource
+	 * @param int $elapsedTime
+	 * @return string
+	 */
+	public static function getRelativeTime( IContextSource $contextSource, $elapsedTime ) {
+		return $contextSource->getLanguage()->formatDuration(
+			$elapsedTime,
+			self::getIntervals( $elapsedTime )
+		);
+	}
+
+	/**
+	 * Return the intervals passed as second arg to Language->formatDuration().
+	 * @param int $time
+	 *  Elapsed time since account creation in seconds.
+	 * @return array
+	 */
+	private static function getIntervals( $time ) {
+		if ( $time < self::MINUTE ) {
+			return [ 'seconds' ];
+		} elseif ( $time < self::HOUR ) {
+			return [ 'minutes' ];
+		} elseif ( $time < self::DAY ) {
+			return [ 'hours' ];
+		} elseif ( $time < self::WEEK ) {
+			return [ 'days' ];
+		} elseif ( $time < self::MONTH ) {
+			return [ 'weeks' ];
+		} elseif ( $time < self::YEAR ) {
+			return [ 'weeks' ];
+		} else {
+			return [ 'years', 'weeks' ];
+		}
 	}
 }

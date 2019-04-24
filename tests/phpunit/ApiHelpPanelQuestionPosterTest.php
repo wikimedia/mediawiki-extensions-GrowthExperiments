@@ -165,12 +165,13 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 
 	public function testHandleConfirmedEmail() {
 		// User attempts to change confirmed email.
-		$this->mUser->setEmailAuthenticationTimestamp( wfTimestamp() );
-		$this->mUser->saveSettings();
+		$updateUser = $this->mUser->getInstanceForUpdate();
+		$updateUser->setEmailAuthenticationTimestamp( wfTimestamp() );
+		$updateUser->saveSettings();
 		$ret = $this->doApiRequestWithToken(
 			$this->getParams( 'lorem', 'shouldthrow@error.com' ),
 			null,
-			$this->mUser,
+			$updateUser,
 			'csrf'
 		);
 		$this->assertArraySubset(
@@ -179,13 +180,14 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		);
 		// No change with confirmed email.
 		// User attempts to change confirmed email.
-		$this->mUser->setEmail( 'a@b.com' );
-		$this->mUser->setEmailAuthenticationTimestamp( wfTimestamp() );
-		$this->mUser->saveSettings();
+		$updateUser = $this->mUser->getInstanceForUpdate();
+		$updateUser->setEmail( 'a@b.com' );
+		$updateUser->setEmailAuthenticationTimestamp( wfTimestamp() );
+		$updateUser->saveSettings();
 		$ret = $this->doApiRequestWithToken(
 			$this->getParams( 'lorem', 'a@b.com' ),
 			null,
-			$this->mUser,
+			$updateUser,
 			'csrf'
 		);
 		$this->assertArraySubset(
@@ -194,13 +196,14 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		);
 
 		// User attempts to blank confirmed email.
-		$this->mUser->setEmail( 'a@b.com' );
-		$this->mUser->setEmailAuthenticationTimestamp( wfTimestamp() );
-		$this->mUser->saveSettings();
+		$updateUser = $this->mUser->getInstanceForUpdate();
+		$updateUser->setEmail( 'a@b.com' );
+		$updateUser->setEmailAuthenticationTimestamp( wfTimestamp() );
+		$updateUser->saveSettings();
 		$ret = $this->doApiRequestWithToken(
 			$this->getParams( 'lorem', '' ),
 			null,
-			$this->mUser,
+			$updateUser,
 			'csrf'
 		);
 		$this->assertArraySubset(

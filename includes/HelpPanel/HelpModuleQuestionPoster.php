@@ -31,4 +31,11 @@ class HelpModuleQuestionPoster extends QuestionPoster {
 	protected function getTargetTitle() {
 		return HelpPanel::getHelpDeskTitle( $this->getContext()->getConfig() );
 	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getQuestionStoragePref() {
+		return Help::QUESTION_PREF;
+	}
 }

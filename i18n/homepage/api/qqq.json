@@ -1,0 +1,8 @@
+{
+	"@metadata": [],
+	"apihelp-homepagequestionstore-summary": "{{doc-apihelp-summary|homepagequestionstore}}",
+	"apihelp-homepagequestionstore-param-questionformat": "{{doc-apihelp-param|homepagequestionstore|questionformat}}",
+	"apihelp-homepagequestionstore-param-storage": "{{doc-apihelp-param|homepagequestionstore|storage}}",
+	"apihelp-homepagequestionstore-param-userid": "{{doc-apihelp-param|homepagequestionstore|user_id}}",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Message to show in API response if no question are found for user."
+}
