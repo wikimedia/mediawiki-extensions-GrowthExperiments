@@ -9,12 +9,9 @@ use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
-use JobQueueGroup;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
-use OutputPage;
 use RequestContext;
-use Skin;
 use SkinTemplate;
 use SpecialPage;
 use Title;
@@ -212,31 +209,6 @@ class HomepageHooks {
 		if ( self::isHomepageEnabled() ) {
 			$tags[] = Help::HELP_MODULE_QUESTION_TAG;
 			$tags[] = Mentorship::MENTORSHIP_MODULE_QUESTION_TAG;
-		}
-	}
-
-	/**
-	 * @param OutputPage &$out
-	 * @param Skin &$skin
-	 * @throws ConfigException
-	 */
-	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
-		// Update user preference to show they've visited the configured tutorial page.
-		if ( !$out->getUser()->isLoggedIn() || !self::isHomepageEnabled( $out->getUser() ) ) {
-			return;
-		}
-		// User has already visited the tutorial, return.
-		if ( $out->getUser()->getBoolOption( Tutorial::TUTORIAL_PREF ) ) {
-			return;
-		}
-		$tutorialTitle = $out->getConfig()->get( Tutorial::TUTORIAL_TITLE_CONFIG );
-		if ( $tutorialTitle ) {
-			$tutorialTitle = Title::newFromText( $tutorialTitle );
-		}
-		if ( $tutorialTitle && $tutorialTitle->exists() &&
-			$tutorialTitle->equals( $out->getTitle() ) ) {
-			$job = new TutorialVisitJob( [ 'userId' => $out->getUser()->getId() ] );
-			JobQueueGroup::singleton()->lazyPush( $job );
 		}
 	}
 

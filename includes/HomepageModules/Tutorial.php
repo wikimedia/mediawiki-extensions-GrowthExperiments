@@ -3,8 +3,10 @@
 namespace GrowthExperiments\HomepageModules;
 
 use IContextSource;
-use OOUI\ButtonWidget;
+use OOUI\ButtonInputWidget;
+use OOUI\FormLayout;
 use OOUI\Tag;
+use SpecialPage;
 use Title;
 
 class Tutorial extends BaseTaskModule {
@@ -76,17 +78,26 @@ class Tutorial extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function getBody() {
-		$button = new ButtonWidget( [
+		$specialHomepageTitle = SpecialPage::getTitleFor(
+			'Homepage',
+			$this->getHomepageTutorialTitle()->getPrefixedDBkey()
+		);
+		$form = new FormLayout( [
+			'method' => 'post',
+			'action' => $specialHomepageTitle->getLinkURL()
+		] );
+		$button = new ButtonInputWidget( [
 			'id' => 'mw-ge-homepage-tutorial-cta',
-			'href' => $this->getHomepageTutorialTitle()->getLinkURL(),
+			'type' => 'submit',
 			'label' => $this->getContext()->msg(
 				'growthexperiments-homepage-tutorial-cta-text'
 			)->text(),
 			'flags' => $this->isCompleted() ? [] : [ 'progressive' ]
 		] );
+		$form->appendContent( $button );
 		$button->setAttributes( [ 'data-link-id' => 'tutorial' ] );
 		return ( new Tag( 'div' ) )
 			->addClasses( [ 'mw-ge-homepage-tutorial-cta' ] )
-			->appendContent( $button );
+			->appendContent( $form );
 	}
 }
