@@ -4,6 +4,7 @@ namespace GrowthExperiments\HomepageModules;
 
 use ConfigException;
 use DateInterval;
+use GrowthExperiments\HelpPanel;
 use GrowthExperiments\Mentor;
 use Html;
 use IContextSource;
@@ -90,7 +91,8 @@ class Mentorship extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getJsConfigVars() {
-		return [ 'GEHomepageMentorshipMentorName' => $this->getMentor()->getName() ];
+		return [ 'GEHomepageMentorshipMentorName' => $this->getMentor()->getName() ] +
+			HelpPanel::getUserEmailConfigVars( $this->getContext()->getUser() );
 	}
 
 	/**

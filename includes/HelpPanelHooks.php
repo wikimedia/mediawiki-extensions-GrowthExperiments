@@ -87,9 +87,7 @@ class HelpPanelHooks {
 			$out->addJsConfigVars( [
 				// We know the help panel is enabled, otherwise we wouldn't get here
 				'wgGEHelpPanelEnabled' => true,
-				'wgGEHelpPanelUserEmail' => $out->getUser()->getEmail(),
-				'wgGEHelpPanelUserEmailConfirmed' => $out->getUser()->isEmailConfirmed(),
-			] );
+			] + HelpPanel::getUserEmailConfigVars( $out->getUser() ) );
 
 			if ( !$definitelyShow ) {
 				// Add the init module to make sure that the main HelpPanel module is loaded

@@ -41,6 +41,13 @@ class Help extends BaseModule {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	protected function getJsConfigVars() {
+		return HelpPanel::getUserEmailConfigVars( $this->getContext()->getUser() );
+	}
+
+	/**
 	 * @return string
 	 * @throws ConfigException
 	 */

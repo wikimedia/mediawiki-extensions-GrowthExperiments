@@ -176,4 +176,19 @@ class HelpPanel {
 			)
 		);
 	}
+
+	/**
+	 * Get the config vars needed to properly display the user email status
+	 * in the question poster dialog used in the Help Panel as well as the
+	 * Help and Mentorship modules.
+	 *
+	 * @param User $user
+	 * @return array
+	 */
+	public static function getUserEmailConfigVars( User $user ) {
+		return [
+			'wgGEHelpPanelUserEmail' => $user->getEmail(),
+			'wgGEHelpPanelUserEmailConfirmed' => $user->isEmailConfirmed(),
+		];
+	}
 }
