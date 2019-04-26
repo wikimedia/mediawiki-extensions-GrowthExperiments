@@ -24,6 +24,17 @@ abstract class BaseTaskModule extends BaseModule {
 	abstract protected function getUncompletedIcon();
 
 	/**
+	 * Determine whether the icon should be inverted (white icon, for darker backgrounds).
+	 * By default, the icon is inverted when the module is in the completed state. Subclasses can
+	 * override this to change when inverted icons are used.
+	 *
+	 * @return bool Icon is inverted
+	 */
+	protected function shouldInvertIcon() {
+		return $this->isCompleted();
+	}
+
+	/**
 	 * @return string Text to use in the header next to the icon
 	 */
 	abstract protected function getHeaderText();
@@ -45,7 +56,7 @@ abstract class BaseTaskModule extends BaseModule {
 					// 'classes' => [ 'oo-ui-image-invert' ] doesn't work either, because
 					// Theme::getElementClasses() will unset it again. So instead, trick that code into
 					// thinking this is a checkbox icon, which will cause it to invert the icon
-					'classes' => $this->isCompleted() ?
+					'classes' => $this->shouldInvertIcon() ?
 						[ 'oo-ui-image-invert', 'oo-ui-checkboxInputWidget-checkIcon' ] :
 						[]
 				] )

@@ -45,8 +45,12 @@
 					.oo-ui-iconElement {
 						width: 32px;
 						height: 32px;
-						opacity: 0.65;
 						background-size: unset;
+						opacity: 0.65;
+
+						&.oo-ui-image-invert {
+							opacity: 1;
+						}
 					}
 				}
 
@@ -69,10 +73,6 @@
 				.growthexperiments-homepage-module-header-icon {
 					background-color: #00af89;
 					border-color: #00af89;
-
-					.oo-ui-iconElement {
-						opacity: 1;
-					}
 				}
 			}
 		}
@@ -104,6 +104,14 @@
 				letter-spacing: 0.02em;
 				margin: 0.5em 0;
 				color: @colorGray7;
+			}
+		}
+
+		.growthexperiments-homepage-module-start-email {
+			&.growthexperiments-homepage-email-unconfirmed {
+				.growthexperiments-homepage-module-header-icon {
+					background-color: @colorProgressive;
+				}
 			}
 		}
 	}

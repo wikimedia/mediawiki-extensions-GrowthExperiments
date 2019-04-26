@@ -40,6 +40,10 @@ class Email extends BaseTaskModule {
 		return 'message';
 	}
 
+	protected function shouldInvertIcon() {
+		return $this->isCompleted() || $this->emailState === self::MODULE_STATE_UNCONFIRMED;
+	}
+
 	/**
 	 * @inheritDoc
 	 */
@@ -129,5 +133,15 @@ class Email extends BaseTaskModule {
 	 */
 	public function getState() {
 		return $this->emailState;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getCssClasses() {
+		return array_merge(
+			parent::getCssClasses(),
+			[ 'growthexperiments-homepage-email-' . $this->getState() ]
+		);
 	}
 }
