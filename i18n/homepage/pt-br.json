@@ -53,7 +53,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Ativo}} hoje",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|Ativo}} ontem",
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Ativo}} $2 {{PLURAL:$2|dia|dias}} atrás",
-	"growthexperiments-homepage-mentorship-mentor-conversations": "Veja as conversas de {{GENDER:$2|seu|sua}} {{GENDER:$1|mentor|mentora}} com outros usuários",
+	"growthexperiments-homepage-mentorship-mentor-conversations": "Veja as conversas de {{GENDER:$2|seu|sua}} {{GENDER:$1|mentor|mentora}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "Responder {{GENDER:$2|seu|sua}} {{GENDER:$1|mentor|mentora}}",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2|sua}} página de discussão do(a) {{GENDER:$1|mentor|mentora}}",
 	"growthexperiments-homepage-mentorship-view-question-text": "Ver {{GENDER:$2|sua}} pergunta na página de discussão do(a) {{GENDER:$1|mentor|mentora}}.",

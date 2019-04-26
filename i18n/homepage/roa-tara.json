@@ -7,7 +7,7 @@
 	"growthexperiments-homepage-start-header": "Accuminze d'aqquà",
 	"growthexperiments-homepage-account-header": "Cunde ccrejate",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|cangiamende|cangiaminde}}",
-	"growthexperiments-homepage-account-age": "E' aggiunde 'u cunde tune pe $1",
+	"growthexperiments-homepage-account-age": "Tìne 'nu cunde pe $1",
 	"growthexperiments-homepage-userpage-header": "Ccreje 'a pàgena utende toje",
 	"growthexperiments-homepage-userpage-header-done": "Cange 'a pàgena utende toje",
 	"growthexperiments-homepage-userpage-body": "Fà pratiche sus a le cangiaminde mendre ca ste face 'u profile pubbleche tune.",
@@ -15,8 +15,12 @@
 	"growthexperiments-homepage-userpage-button": "Ccreje 'na pàgena utende",
 	"growthexperiments-homepage-userpage-button-done": "Cange 'a pàgene utende",
 	"growthexperiments-homepage-userpage-guidelines": "Linèe guide pe le pàggene utinde",
+	"growthexperiments-homepage-email-header-noemail": "Aggiunge 'a mail {{GENDER:$1|toje}}",
+	"growthexperiments-homepage-email-header-unconfirmed": "Conferme 'a mail {{GENDER:$1|toje}}",
+	"growthexperiments-homepage-email-header-confirmed": "Mail aggiunde",
 	"growthexperiments-homepage-email-button-unconfirmed": "Pigghie 'nu collegamende nuève",
 	"growthexperiments-homepage-tutorial-header": "'Mbare a cangià",
 	"growthexperiments-homepage-tutorial-subheader": "'Ndruche 'na guida veloce veloce pe 'mbarà a cangià Uicchipèdie",
-	"growthexperiments-homepage-tutorial-cta-text": "Guide"
+	"growthexperiments-homepage-tutorial-cta-text": "Guide",
+	"growthexperiments-specialimpact-title": "'Mbatte"
 }

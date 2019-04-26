@@ -5,7 +5,7 @@
 			"Mainframe98"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|de startpagina van {{bidi:$1}}}}",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Startpagina",
 	"prefs-homepage": "Startpagina voor nieuwelingen",
 	"growthexperiments-homepage-enable": "Startpagina voor nieuwelingen weergeven",
