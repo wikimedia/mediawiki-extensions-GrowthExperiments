@@ -44,6 +44,13 @@ class Impact extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
+	protected function getModuleStyles() {
+		return 'oojs-ui.styles.icons-media';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function getHeader() {
 		return $this->getContext()
 			->msg( 'growthexperiments-homepage-impact-header' )
@@ -56,7 +63,7 @@ class Impact extends BaseModule {
 	 */
 	protected function getBody() {
 		if ( $this->isActivated() ) {
-			$emptyImg = new IconWidget( [ 'icon' => 'article' ] );
+			$emptyImg = new IconWidget( [ 'icon' => 'image' ] );
 			return implode( "\n", array_map(
 				function ( $contrib ) use ( $emptyImg ) {
 					$img = $contrib[ 'image_tag' ] ?? $emptyImg;
@@ -85,15 +92,18 @@ class Impact extends BaseModule {
 							],
 							$img
 						) .
-						Html::element(
-							'a',
-							[
-								'class' => 'article-title',
-								'href' => $titleUrl,
-								'title' => $articleLinkTooltip,
-								'data-link-id' => 'impact-article-title',
-							],
-							$titleText
+						Html::rawElement(
+							'span',
+							[ 'class' => 'article-title' ],
+							Html::element(
+								'a',
+								[
+									'href' => $titleUrl,
+									'title' => $articleLinkTooltip,
+									'data-link-id' => 'impact-article-title',
+								],
+								$titleText
+							)
 						) .
 						Html::element(
 							'a',
