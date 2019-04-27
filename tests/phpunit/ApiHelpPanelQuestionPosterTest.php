@@ -64,12 +64,15 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		];
 
 		$this->mUser->setEmail( '' );
+		$this->mUser->saveSettings();
 		$ret = $this->doApiRequestWithToken( $params, null, $this->mUser, 'csrf' );
 		$this->assertArraySubset( [
 			'result' => 'success',
 			'email' => 'set_email_with_confirmation'
 		], $ret[0]['helppanelquestionposter'] );
+	}
 
+	public function testHandleNoEmailNoOp() {
 		// no email -> no email.
 		$params = [
 			'action' => 'helppanelquestionposter',
@@ -78,6 +81,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		];
 
 		$this->mUser->setEmail( '' );
+		$this->mUser->saveSettings();
 		$ret = $this->doApiRequestWithToken( $params, null, $this->mUser, 'csrf' );
 		$this->assertArraySubset( [
 			'result' => 'success',
@@ -92,6 +96,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 			'email' => '123'
 		];
 		$this->mUser->setEmail( 'a@b.com' );
+		$this->mUser->saveSettings();
 		$ret = $this->doApiRequestWithToken( $params, null, $this->mUser, 'csrf' );
 		$this->assertArraySubset( [
 			'result' => 'success',
@@ -107,17 +112,19 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		];
 
 		$this->mUser->setEmail( 'a@b.com' );
+		$this->mUser->saveSettings();
 		$this->assertEquals( 'a@b.com', $this->mUser->getEmail() );
 		$ret = $this->doApiRequestWithToken( $params, null, $this->mUser, 'csrf' );
 		$this->assertArraySubset( [
 				'result' => 'success',
 				'email' => 'unset_email'
 		], $ret[0]['helppanelquestionposter'] );
-		$this->assertEquals( '', $this->mUser->getEmail() );
+		$this->assertEquals( '', $this->mUser->getInstanceForUpdate()->getEmail() );
 	}
 
 	public function testHandleUnconfirmedEmail() {
 		$this->mUser->setEmail( 'a@b.com' );
+		$this->mUser->saveSettings();
 		$ret = $this->doApiRequestWithToken(
 			$this->getParams( 'lorem ipsum', 'blah@blah.com' ),
 			null,
@@ -139,8 +146,11 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 				'result' => 'success',
 				'email' => 'set_email_with_confirmation'
 			], $ret[0]['helppanelquestionposter'] );
+	}
 
+	public function testHandleUnconfirmedEmailSendConfirm() {
 		$this->mUser->setEmail( 'a@b.com' );
+		$this->mUser->saveSettings();
 		$ret = $this->doApiRequestWithToken(
 			$this->getParams( 'blah', 'a@b.com' ),
 			null,
@@ -156,6 +166,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 	public function testHandleConfirmedEmail() {
 		// User attempts to change confirmed email.
 		$this->mUser->setEmailAuthenticationTimestamp( wfTimestamp() );
+		$this->mUser->saveSettings();
 		$ret = $this->doApiRequestWithToken(
 			$this->getParams( 'lorem', 'shouldthrow@error.com' ),
 			null,
@@ -170,6 +181,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		// User attempts to change confirmed email.
 		$this->mUser->setEmail( 'a@b.com' );
 		$this->mUser->setEmailAuthenticationTimestamp( wfTimestamp() );
+		$this->mUser->saveSettings();
 		$ret = $this->doApiRequestWithToken(
 			$this->getParams( 'lorem', 'a@b.com' ),
 			null,
@@ -184,6 +196,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		// User attempts to blank confirmed email.
 		$this->mUser->setEmail( 'a@b.com' );
 		$this->mUser->setEmailAuthenticationTimestamp( wfTimestamp() );
+		$this->mUser->saveSettings();
 		$ret = $this->doApiRequestWithToken(
 			$this->getParams( 'lorem', '' ),
 			null,

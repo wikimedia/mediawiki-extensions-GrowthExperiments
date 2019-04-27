@@ -195,7 +195,7 @@ abstract class QuestionPoster {
 	 * @return Status
 	 */
 	public function handleEmail( $newEmail ) {
-		$user = $this->getContext()->getUser();
+		$user = $this->getContext()->getUser()->getInstanceForUpdate();
 		$existingEmail = $user->getEmail();
 		// If existing email matches the new one, return early if user's email is already
 		// confirmed. If their email isn't confirmed, we need to resend the confirmation mail.

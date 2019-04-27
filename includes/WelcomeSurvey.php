@@ -229,7 +229,7 @@ class WelcomeSurvey {
 	 * @param string $renderDate Timestamp in MW format of when the form was shown
 	 */
 	public function handleResponses( $data, $save, $group, $renderDate ) {
-		$user = $this->context->getUser();
+		$user = $this->context->getUser()->getInstanceForUpdate();
 		$submitDate = MWTimestamp::now();
 		$userUpdated = false;
 
