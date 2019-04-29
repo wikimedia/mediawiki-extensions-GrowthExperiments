@@ -618,6 +618,7 @@
 									} ) ) ) );
 							this.setNotificationLabelText();
 							this.swapPanel( action );
+							mw.hook( 'growthExperiments.helpPanelQuestionPosted' ).fire( data );
 							// Reset the post a question text inputs.
 							this.questionTextInput.setValue( '' );
 							mw.storage.set( this.storageKey, '' );

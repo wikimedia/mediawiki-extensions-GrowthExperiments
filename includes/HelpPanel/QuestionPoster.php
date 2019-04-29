@@ -63,6 +63,10 @@ abstract class QuestionPoster {
 	 * @var string
 	 */
 	protected $relevantTitle;
+	/**
+	 * @var string
+	 */
+	private $body;
 
 	/**
 	 * QuestionPoster constructor.
@@ -100,6 +104,17 @@ abstract class QuestionPoster {
 		}
 		$this->revisionId = $newRev->getId();
 		$this->setResultUrl();
+		$question = new QuestionRecord(
+			$body,
+			$this->getSectionHeaderWithTimestamp(),
+			$this->revisionId,
+			wfTimestamp(),
+			$this->getResultUrl()
+		);
+		QuestionStoreFactory::newFromUserAndStorage(
+			$this->getContext()->getUser(),
+			$this->getQuestionStoragePref()
+		)->add( $question );
 		return Status::newGood();
 	}
 
@@ -279,4 +294,12 @@ abstract class QuestionPoster {
 	final protected function getContext() {
 		return $this->context;
 	}
+
+	/**
+	 * The preference name where the posted question will be stored.
+	 *
+	 * @return string
+	 */
+	abstract protected function getQuestionStoragePref();
+
 }

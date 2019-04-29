@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"apihelp-homepagequestionstore-summary": "Obtain formatted questions posted via homepage modules",
+	"apihelp-homepagequestionstore-param-questionformat": "The format to return the questions in, e.g. HTML.",
+	"apihelp-homepagequestionstore-param-storage": "The storage location of the questions.",
+	"apihelp-homepagequestionstore-param-userid": "The user ID to obtain questions for.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "No questions found."
+}

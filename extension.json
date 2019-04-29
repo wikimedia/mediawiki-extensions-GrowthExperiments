@@ -25,6 +25,7 @@
 			"i18n/help",
 			"i18n/help/api",
 			"i18n/homepage",
+			"i18n/homepage/api",
 			"i18n/confirmemail"
 		]
 	},
@@ -33,7 +34,8 @@
 	},
 	"APIModules": {
 		"welcomesurveyhandleresponses": "GrowthExperiments\\Api\\ApiWelcomeSurveyHandleResponses",
-		"helppanelquestionposter": "GrowthExperiments\\Api\\ApiHelpPanelPostQuestion"
+		"helppanelquestionposter": "GrowthExperiments\\Api\\ApiHelpPanelPostQuestion",
+		"homepagequestionstore": "GrowthExperiments\\Api\\ApiQuestionStore"
 	},
 	"Hooks": {
 		"SpecialPage_initList": [
@@ -269,6 +271,9 @@
 				"homepage/ext.growthExperiments.Homepage.js",
 				"homepage/ext.growthExperiments.Homepage.Logger.js",
 				"utils/ext.growthExperiments.Utils.js"
+			],
+			"messages": [
+				"growthexperiments-homepage-recent-questions-header"
 			],
 			"dependencies": [
 				"mediawiki.user"

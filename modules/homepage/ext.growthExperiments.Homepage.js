@@ -44,4 +44,46 @@
 		.each( logImpression );
 	/* eslint-enable no-jquery/no-event-shorthand */
 
+	mw.hook( 'growthExperiments.helpPanelQuestionPosted' ).add( function ( data ) {
+		var sourceName = data.helppanelquestionposter.source === 'homepage-help' ? 'help' : 'mentor',
+			moduleName = data.helppanelquestionposter.source === 'homepage-help' ? 'help' : 'mentorship',
+			storage = 'growthexperiments-' + sourceName + '-questions',
+			$container = $( '.growthexperiments-homepage-module-' + moduleName ),
+			questionsClass = 'recent-questions-growthexperiments-' + sourceName + '-questions',
+			moduleActionData = mw.config.get( 'wgGEHomepageModuleActionData-' + moduleName ),
+			archivedCount = 0,
+			unarchivedCount = 0;
+
+		new mw.Api().get( {
+			action: 'homepagequestionstore',
+			storage: storage,
+			formatversion: 2
+		} )
+			.done( function ( data ) {
+				var $list = $container.find( '.' + questionsClass + '-list' );
+				if ( $list.length ) {
+					$list.replaceWith( data.homepagequestionstore.html );
+				} else {
+					$container.append(
+						$( '<div>' )
+							.addClass( questionsClass )
+							.append(
+								$( '<h3>' ).text( mw.msg( 'growthexperiments-homepage-recent-questions-header' ) ),
+								data.homepagequestionstore.html
+							)
+					);
+				}
+				data.homepagequestionstore.questions.forEach( function ( questionRecord ) {
+					if ( questionRecord.isArchived ) {
+						archivedCount++;
+					} else {
+						unarchivedCount++;
+					}
+				} );
+				moduleActionData.unarchivedQuestions = unarchivedCount;
+				moduleActionData.archivedQuestions = archivedCount;
+			} );
+
+	} );
+
 }() );

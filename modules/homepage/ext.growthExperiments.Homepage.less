@@ -44,3 +44,29 @@
 	// 1.5* instead of 2* because the impact module doesn't have a left margin
 	width: calc( 50% ~'-' 1.5 * @homepageModuleMargin );
 }
+
+.recent-questions-growthexperiments-help-questions,
+.recent-questions-growthexperiments-mentor-questions {
+	h3 {
+		font-family: @homepageHeaderFont;
+		font-size: 1em;
+		color: @colorGray5;
+		margin: 0;
+	}
+
+	.question-link-wrapper {
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.question-archived .question-text {
+		font-style: italic;
+		color: @colorGray5;
+	}
+
+	.question-posted-on {
+		font-size: 0.85em;
+		letter-spacing: 0.02em;
+		color: @colorGray7;
+	}
+}

@@ -5,6 +5,8 @@ namespace GrowthExperiments\HomepageModules;
 use ConfigException;
 use DateInterval;
 use GrowthExperiments\HelpPanel;
+use GrowthExperiments\HelpPanel\QuestionRecord;
+use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use GrowthExperiments\Mentor;
 use Html;
 use IContextSource;
@@ -22,9 +24,13 @@ use User;
 class Mentorship extends BaseModule {
 
 	const MENTORSHIP_MODULE_QUESTION_TAG = 'mentorship module question';
+	const QUESTION_PREF = 'growthexperiments-mentor-questions';
 
 	/** @var User */
 	private $mentor;
+
+	/** @var QuestionRecord[] */
+	private $recentQuestions = [];
 
 	/**
 	 * @inheritDoc
@@ -52,6 +58,7 @@ class Mentorship extends BaseModule {
 			$this->getMentorInfo(),
 			$this->getIntroText(),
 			$this->getQuestionButton(),
+			$this->getRecentQuestionsSection(),
 		] );
 	}
 
@@ -99,11 +106,22 @@ class Mentorship extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getActionData() {
+		$archivedQuestions = 0;
+		$unarchivedQuestions = 0;
+		foreach ( $this->getRecentQuestions() as $questionRecord ) {
+			if ( $questionRecord->isArchived() ) {
+				$archivedQuestions++;
+			} else {
+				$unarchivedQuestions++;
+			}
+		}
 		return array_merge(
 			parent::getActionData(),
 			[
 				'mentorEditCount' => $this->getMentor()->getEditCount(),
 				'mentorLastActive' => $this->getMentor()->getLatestEditTimestamp(),
+				'archivedQuestions' => $archivedQuestions,
+				'unarchivedQuestions' => $unarchivedQuestions
 			]
 		);
 	}
@@ -235,4 +253,25 @@ class Mentorship extends BaseModule {
 		}
 		return $this->mentor;
 	}
+
+	private function getRecentQuestionsSection() {
+		$recentQuestionFormatter = new RecentQuestionsFormatter(
+			$this->getContext(),
+			$this->getRecentQuestions(),
+			self::QUESTION_PREF
+		);
+		return $recentQuestionFormatter->format();
+	}
+
+	private function getRecentQuestions() {
+		if ( count( $this->recentQuestions ) ) {
+			return $this->recentQuestions;
+		}
+		$this->recentQuestions = QuestionStoreFactory::newFromUserAndStorage(
+			$this->getContext()->getUser(),
+			self::QUESTION_PREF
+		)->loadQuestionsAndUpdate();
+		return $this->recentQuestions;
+	}
+
 }

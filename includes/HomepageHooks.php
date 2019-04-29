@@ -163,6 +163,14 @@ class HomepageHooks {
 		$preferences[ Tutorial::TUTORIAL_PREF ] = [
 			'type' => 'api',
 		];
+
+		$preferences[ Mentorship::QUESTION_PREF ] = [
+			'type' => 'api',
+		];
+
+		$preferences[ Help::QUESTION_PREF ] = [
+			'type' => 'api',
+		];
 	}
 
 	/**

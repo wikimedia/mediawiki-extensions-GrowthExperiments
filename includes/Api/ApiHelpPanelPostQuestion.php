@@ -73,7 +73,8 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 			'revision' => $this->questionPoster->getRevisionId(),
 			'isfirstedit' => (int)$this->questionPoster->isFirstEdit(),
 			'viewquestionurl' => $this->questionPoster->getResultUrl(),
-			'email' => null
+			'email' => null,
+			'source' => $params[self::API_PARAM_SOURCE]
 		];
 
 		$emailStatus = $this->questionPoster->handleEmail( $params[self::API_PARAM_EMAIL] );
