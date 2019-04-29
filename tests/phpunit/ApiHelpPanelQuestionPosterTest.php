@@ -209,4 +209,41 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		], $ret[0]['helppanelquestionposter'] );
 	}
 
+	/**
+	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster::checkUserPermissions
+	 * @expectedException ApiUsageException
+	 * @expectedExceptionMessageRegExp /Your username or IP address has been blocked/
+	 */
+	public function testBlockedUserCantPostQuestion() {
+		$block = new Block();
+		$block->setTarget( $this->mUser );
+		$block->setBlocker( $this->getTestSysop()->getUser() );
+		$block->insert();
+		$this->doApiRequestWithToken(
+			$this->getParams( 'user is blocked' ),
+			null,
+			$this->mUser,
+			'csrf'
+		);
+	}
+
+	/**
+	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster::runEditFilterMergedContentHook
+	 * @expectedException ApiUsageException
+	 */
+	public function testEditFilterMergedContentHookReturnsFalse() {
+		$this->setTemporaryHook( 'EditFilterMergedContent',
+			function ( $unused1, $unused2, Status $status ) {
+				$status->setOK( false );
+				return false;
+			}
+		);
+		$this->doApiRequestWithToken(
+			$this->getParams( 'abuse filter denies edit' ),
+			null,
+			$this->mUser,
+			'csrf'
+		);
+	}
+
 }

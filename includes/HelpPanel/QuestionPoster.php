@@ -5,7 +5,10 @@ namespace GrowthExperiments\HelpPanel;
 use CommentStoreComment;
 use Config;
 use Content;
+use DerivativeContext;
+use FatalError;
 use GrowthExperiments\Util;
+use Hooks;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\SlotRecord;
@@ -88,10 +91,24 @@ abstract class QuestionPoster {
 	 * @param string $body
 	 * @return Status
 	 * @throws MWException
+	 * @throws \Exception
 	 */
 	public function submit( $body ) {
+		$userPermissionStatus = $this->checkUserPermissions();
+		if ( !$userPermissionStatus->isGood() ) {
+			return $userPermissionStatus;
+		}
+		$content = $this->getContent( $body );
+		$editFilterMergedContentHookStatus = $this->runEditFilterMergedContentHook(
+			$content,
+			$this->getSectionHeader()
+		);
+		if ( !$editFilterMergedContentHookStatus->isGood() ) {
+			return $editFilterMergedContentHookStatus;
+		}
+
 		$this->pageUpdater->addTag( $this->getTag() );
-		$this->pageUpdater->setContent( SlotRecord::MAIN, $this->getContent( $body ) );
+		$this->pageUpdater->setContent( SlotRecord::MAIN, $content );
 		$newRev = $this->pageUpdater->saveRevision(
 			CommentStoreComment::newUnsavedComment( $this->getSectionHeader() )
 		);
@@ -279,4 +296,55 @@ abstract class QuestionPoster {
 	final protected function getContext() {
 		return $this->context;
 	}
+
+	/**
+	 * @return Status
+	 * @throws \Exception
+	 */
+	private function checkUserPermissions() {
+		$permissionsManager = MediaWikiServices::getInstance()->getPermissionManager();
+		$errors = $permissionsManager->getPermissionErrors(
+			'edit',
+			$this->getContext()->getUser(),
+			$this->getTargetTitle()
+		);
+
+		if ( count( $errors ) ) {
+			$key = array_shift( $errors[0] );
+			$message = $this->getContext()->msg( $key )
+				->params( $errors[0] )
+				->parse();
+			return Status::newFatal( $message );
+		}
+		return Status::newGood();
+	}
+
+	/**
+	 * @param Content $content
+	 * @param string $summary
+	 * @return Status
+	 * @throws MWException
+	 * @throws FatalError
+	 */
+	private function runEditFilterMergedContentHook( Content $content, $summary ) {
+		$derivativeContext = new DerivativeContext( $this->getContext() );
+		$derivativeContext->setTitle( $this->getTargetTitle() );
+		$derivativeContext->setWikiPage( WikiPage::factory( $this->getTargetTitle() ) );
+		$status = new Status();
+		if ( !Hooks::run( 'EditFilterMergedContent', [
+			$derivativeContext,
+			$content,
+			$status,
+			$summary,
+			$derivativeContext->getUser(),
+			false
+		] ) ) {
+			if ( $status->isGood() ) {
+				$status->fatal( 'hookaborted' );
+			}
+			return $status;
+		};
+		return $status;
+	}
+
 }
