@@ -27,11 +27,21 @@
 		.article-image {
 			display: table-cell;
 			padding: 5px 0 5px 0;
-			border-radius: @borderRadius;
 
-			.oo-ui-iconWidget {
+			.placeholder-image,
+			.real-image {
 				height: 40px;
 				width: 40px;
+				border-radius: @borderRadius;
+			}
+
+			.real-image {
+				background-position: center;
+			}
+
+			.placeholder-image {
+				opacity: 0.38;
+				background-color: @colorGray14;
 				background-size: 20px;
 			}
 		}
