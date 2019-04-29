@@ -9,5 +9,6 @@
 	"growthexperiments-homepage-email-text-noemail": "অ্যাকাউন্ট পুনরুদ্ধারের জন্য সুপারিতকৃত",
 	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|আপনার}} ইমেল নিশ্চিত করা হয়েছে। আপনি পছন্দসমূহতে আপনার ইমেইল সেটিংস পরিবর্তন করতে পারেন।",
 	"growthexperiments-homepage-email-button-noemail": "ইমেইল যোগ করুন",
-	"growthexperiments-homepage-email-button-confirmed": "পছন্দসমূহ"
+	"growthexperiments-homepage-email-button-confirmed": "পছন্দসমূহ",
+	"growthexperiments-homepage-recent-questions-archived": "আর্কাইভকৃত"
 }

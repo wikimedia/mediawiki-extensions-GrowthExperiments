@@ -10,6 +10,7 @@
 	"growthexperiments-homepage-enable": "Mostra pagina principale nuovi arrivati",
 	"growthexperiments-homepage-account-header": "Utenza creata",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|modifica|modifiche}}",
+	"growthexperiments-homepage-account-age": "Hai un'utenza da $1",
 	"growthexperiments-homepage-userpage-header": "Crea la tua pagina utente",
 	"growthexperiments-homepage-userpage-header-done": "Modifica la tua pagina utente",
 	"growthexperiments-homepage-userpage-button": "Crea pagina utente",
@@ -28,6 +29,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Attivo|Attiva}} oggi",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|Attivo|Attiva}} ieri",
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Attivo|Attiva}} $2 {{PLURAL:$2|giorno|giorni}} fa",
+	"growthexperiments-homepage-mentorship-mentor-conversations": "Guarda le {{GENDER:$2|conversazioni}} {{GENDER:$1|del tuo|della tua}} tutor",
 	"growthexperiments-homepage-mentorship-question-subject": "Domanda da [[User:$1|$1]]",
 	"growthexperiments-specialimpact-title": "Impatto"
 }
