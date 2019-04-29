@@ -12,7 +12,7 @@
 
 .growthexperiments-homepage-container {
 	display: flex;
-	min-width: 860px;
+	min-width: 800px;
 	max-width: 1215px;
 }
 
@@ -68,5 +68,24 @@
 		font-size: 0.85em;
 		letter-spacing: 0.02em;
 		color: @colorGray7;
+	}
+}
+
+@media all and ( max-width: 1024px ) {
+	.growthexperiments-homepage-group-main {
+		width: 100%;
+	}
+
+	.growthexperiments-homepage-container {
+		flex-direction: column;
+	}
+
+	.growthexperiments-homepage-group-sidebar {
+		// Make it the same width as the Impact and Mentorship modules
+		width: calc( 50% ~'-' 1.5 * @homepageModuleMargin );
+
+		.growthexperiments-homepage-module {
+			margin-left: 0;
+		}
 	}
 }
