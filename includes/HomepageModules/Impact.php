@@ -27,7 +27,7 @@ use Title;
  */
 class Impact extends BaseModule {
 
-	const THUMBNAIL_SIZE = 50;
+	const THUMBNAIL_SIZE = 40;
 
 	/**
 	 * @var array
@@ -63,10 +63,13 @@ class Impact extends BaseModule {
 	 */
 	protected function getBody() {
 		if ( $this->isActivated() ) {
-			$emptyImg = new IconWidget( [ 'icon' => 'image' ] );
+			$emptyImage = new IconWidget( [
+				'icon' => 'image',
+				'classes' => [ 'placeholder-image' ],
+			] );
 			return implode( "\n", array_map(
-				function ( $contrib ) use ( $emptyImg ) {
-					$img = $contrib[ 'image_tag' ] ?? $emptyImg;
+				function ( $contrib ) use ( $emptyImage ) {
+					$image = $contrib[ 'image' ] ?? $emptyImage;
 					$titleText = $contrib[ 'title' ]->getPrefixedText();
 					$titleUrl = $contrib[ 'title' ]->getLinkUrl();
 					$articleLinkTooltip = $this->getContext()
@@ -90,7 +93,7 @@ class Impact extends BaseModule {
 								'title' => $articleLinkTooltip,
 								'data-link-id' => 'impact-article-image',
 							],
-							$img
+							$image
 						) .
 						Html::rawElement(
 							'span',
@@ -339,15 +342,23 @@ class Impact extends BaseModule {
 			$title = $contrib[ 'title' ];
 			$imageFile = PageImages::getPageImage( $title );
 			if ( $imageFile ) {
-				$thumb = $imageFile->transform( [
-					'width' => self::THUMBNAIL_SIZE,
-					'height' => self::THUMBNAIL_SIZE,
-				], File::RENDER_NOW );
+				$ratio = $imageFile->getWidth() / $imageFile->getHeight();
+				$options = [
+					'width' => $ratio > 1 ?
+						self::THUMBNAIL_SIZE / $imageFile->getHeight() * $imageFile->getWidth() :
+						self::THUMBNAIL_SIZE
+				];
+				$thumb = $imageFile->transform( $options, File::RENDER_NOW );
 				if ( $thumb ) {
-					$contrib['image_tag'] = $thumb->toHtml( [
-						'alt' => $title->getText(),
-						'title' => $title->getPrefixedText(),
-					] );
+					$contrib['image'] = Html::element(
+						'div',
+						[
+							'alt' => $title->getText(),
+							'title' => $title->getPrefixedText(),
+							'class' => [ 'real-image' ],
+							'style' => 'background-image: url(' . $thumb->getUrl() . ');',
+						]
+					);
 				}
 			}
 		}
