@@ -6,7 +6,6 @@ use ActorMigration;
 use DateTime;
 use Exception;
 use ExtensionRegistry;
-use File;
 use Html;
 use IContextSource;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
@@ -348,7 +347,7 @@ class Impact extends BaseModule {
 						self::THUMBNAIL_SIZE / $imageFile->getHeight() * $imageFile->getWidth() :
 						self::THUMBNAIL_SIZE
 				];
-				$thumb = $imageFile->transform( $options, File::RENDER_NOW );
+				$thumb = $imageFile->transform( $options );
 				if ( $thumb ) {
 					$contrib['image'] = Html::element(
 						'div',
