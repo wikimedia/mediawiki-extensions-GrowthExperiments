@@ -48,9 +48,11 @@ class Userpage extends BaseTaskModule {
 		$msg = $this->isCompleted() ?
 			'growthexperiments-homepage-userpage-body-done' :
 			'growthexperiments-homepage-userpage-body';
-		return $this->getContext()->msg( $msg )
+		$messageText = $this->getContext()->msg( $msg )
 			->params( $this->getContext()->getUser()->getName() )
 			->escaped();
+
+		return $messageText . $this->getGuidelinesLink();
 	}
 
 	/**
@@ -72,21 +74,26 @@ class Userpage extends BaseTaskModule {
 			'href' => $this->getContext()->getUser()->getUserPage()->getEditURL(),
 		] );
 		$button->setAttributes( [ 'data-link-id' => $linkId ] );
+
 		return $button;
 	}
 
 	/**
-	 * @inheritDoc
+	 * @return string HTML
 	 */
-	protected function getFooter() {
+	private function getGuidelinesLink() {
 		$wikiId = wfWikiID();
-		return Html::element(
-			'a',
-			[
-				'href' => "https://www.wikidata.org/wiki/Special:GoToLinkedPage/$wikiId/Q4592334",
-				'data-link-id' => 'userpage-guidelines'
-			],
-			$this->getContext()->msg( 'growthexperiments-homepage-userpage-guidelines' )->text()
+		return Html::rawElement(
+			'div',
+			[ 'class' => 'growthexperiments-homepage-userpage-guidelines' ],
+			Html::element(
+				'a',
+				[
+					'href' => "https://www.wikidata.org/wiki/Special:GoToLinkedPage/$wikiId/Q4592334",
+					'data-link-id' => 'userpage-guidelines'
+				],
+				$this->getContext()->msg( 'growthexperiments-homepage-userpage-guidelines' )->text()
+			)
 		);
 	}
 
