@@ -57,6 +57,7 @@
 	.question-link-wrapper {
 		overflow: hidden;
 		text-overflow: ellipsis;
+		display: inline;
 	}
 
 	.question-archived .question-text {
@@ -68,6 +69,23 @@
 		font-size: 0.85em;
 		letter-spacing: 0.02em;
 		color: @colorGray7;
+		display: block;
+	}
+}
+
+.growthexperiments-homepage-module-help,
+.growthexperiments-homepage-module-mentorship {
+	ul {
+		list-style-image: none;
+		list-style-type: none;
+		margin: 0.3em 0 0 0.6em;
+
+		li:before {
+			content: '\2022';
+			color: #0645ad;
+			margin-right: 0.3em;
+			margin-left: -0.6em;
+		}
 	}
 }
 
