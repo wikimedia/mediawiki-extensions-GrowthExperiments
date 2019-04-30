@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"94rain"
+			"94rain",
+			"A Chinese Wikipedian"
 		]
 	},
 	"growthexperiments-homepage-tab": "首页",
-	"prefs-homepage": "新用户主页"
+	"prefs-homepage": "新用户主页",
+	"growthexperiments-homepage-recent-questions-archived": "已存档"
 }

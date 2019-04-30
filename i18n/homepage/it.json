@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Ghebbro"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ciao}}, {{bidi:$1}}!",
@@ -25,6 +26,10 @@
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> modifiche a voci",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Vai alla voce",
 	"growthexperiments-homepage-help-cancel": "Annulla",
+	"growthexperiments-homepage-recent-questions-header": "{{GENERE:$1|Tuo}} domande recenti",
+	"growthexperiments-homepage-recent-questions-posted-on": "Pubblicato $1 fa",
+	"growthexperiments-homepage-recent-questions-archived": "archiviato",
+	"growthexperiments-homepage-recent-questions-archived-tooltip": "Questa domanda è stata archiviata, probabilmente perché era stata fatta molto tempo fa.",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|modifica|modifiche}}",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Attivo|Attiva}} oggi",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|Attivo|Attiva}} ieri",

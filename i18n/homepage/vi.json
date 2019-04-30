@@ -1,0 +1,41 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tuanminh01"
+		]
+	},
+	"growthexperiments-homepage-specialpage-title": "\n{{GENDER:$1|Xin chào}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-subtitle": "Đây là trang nhà của bạn, nơi bạn có thể tìm kiếm trợ giúp chỉnh sửa, lấy ý tưởng về những gì sẽ làm việc và xem tác động của các chỉnh sửa của bạn.",
+	"growthexperiments-homepage-tab": "Trang nhà",
+	"prefs-homepage": "Trang nhà cho người mới đến",
+	"growthexperiments-homepage-enable": "Hiển thị trang nhà của người mới đến",
+	"growthexperiments-homepage-pt-link": "Mặc định cho trang nhà của người mới từ liên kết tên người dùng trong các công cụ cá nhân",
+	"growthexperiments-homepage-start-header": "Bắt đầu tại đây",
+	"growthexperiments-homepage-account-header": "Đã mở tài khoản thành công.",
+	"growthexperiments-homepage-account-age": "Bạn đã có tài khoản được $1",
+	"growthexperiments-homepage-userpage-header": "Tạo trang cá nhân của bạn",
+	"growthexperiments-homepage-userpage-header-done": "Sửa trang cá nhân của bạn",
+	"growthexperiments-homepage-userpage-body": "Thực hành chỉnh sửa trong khi xây dựng hồ sơ công khai của bạn.",
+	"growthexperiments-homepage-userpage-body-done": "Tiếp tục làm việc trên hồ sơ công khai của bạn.",
+	"growthexperiments-homepage-userpage-button": "Tạo trang cá nhân",
+	"growthexperiments-homepage-userpage-button-done": "Sửa đổi trang cá nhân",
+	"growthexperiments-homepage-userpage-guidelines": "Nguyên tắc cho trang người dùng",
+	"growthexperiments-homepage-email-header-noemail": "Thêm email của bạn",
+	"growthexperiments-homepage-email-header-unconfirmed": "Xác nhận email của bạn.",
+	"growthexperiments-homepage-email-header-confirmed": "Đã thêm email",
+	"growthexperiments-homepage-email-text-noemail": "Giúp bạn phục hồi tài khoản",
+	"growthexperiments-homepage-email-text-unconfirmed": "Kiểm tra email của bạn xem link xác nhận có chưa, hoặc gửi link mới",
+	"growthexperiments-homepage-email-text-confirmed": "Email của bạn đã được xác nhận. Bạn có thể thay đổi nó ở trong mục Tùy chọn.",
+	"growthexperiments-homepage-email-button-noemail": "Thêm email",
+	"growthexperiments-homepage-email-button-unconfirmed": "Lấy link mới",
+	"growthexperiments-homepage-email-button-confirmed": "Tùy chọn",
+	"growthexperiments-homepage-impact-header": "Tác động của bạn",
+	"growthexperiments-homepage-impact-subheader-text": "Mọi người đang xem các bài viết bạn đã sửa đổi!",
+	"growthexperiments-homepage-impact-subheader-subtext": "Số lượng người xem trang mà bạn đã sửa đổi (60 ngày)",
+	"growthexperiments-homepage-impact-subheader-text-no-edit": "Bạn vẫn chưa sửa đổi một trang nào.",
+	"growthexperiments-homepage-impact-subheader-subtext-no-edit": "Khu vực này sẽ cho bạn thấy tác động những sửa đổi của bạn.",
+	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> sửa đổi bài viết",
+	"growthexperiments-homepage-impact-article-link-tooltip": "Đi tới bài viết",
+	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Xem số lượng xem trang chi tiết",
+	"growthexperiments-homepage-help-ask-help-desk": "Yêu cầu giúp đỡ ở bàn giúp đỡ"
+}
