@@ -71,6 +71,13 @@ abstract class BaseTaskModule extends BaseModule {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	protected function getHeaderTag() {
+		return 'h3';
+	}
+
+	/**
 	 * Add the -completed class so tasks can be styled differently when they are completed.
 	 *
 	 * @return string[]

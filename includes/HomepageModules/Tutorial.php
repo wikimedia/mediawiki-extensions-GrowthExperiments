@@ -70,14 +70,14 @@ class Tutorial extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getSubheader() {
+	protected function getBody() {
 		return $this->getContext()->msg( 'growthexperiments-homepage-tutorial-subheader' )->escaped();
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	protected function getBody() {
+	protected function getFooter() {
 		$specialHomepageTitle = SpecialPage::getTitleFor(
 			'Homepage',
 			$this->getHomepageTutorialTitle()->getPrefixedDBkey()

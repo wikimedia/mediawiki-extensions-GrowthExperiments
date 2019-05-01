@@ -181,6 +181,13 @@ class Impact extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
+	protected function getSubheaderTag() {
+		return 'div';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function getFooter() {
 		$user = $this->getContext()->getUser();
 		$msgKey = $this->isActivated() ?

@@ -44,7 +44,7 @@ class Userpage extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getSubheader() {
+	protected function getBody() {
 		$msg = $this->isCompleted() ?
 			'growthexperiments-homepage-userpage-body-done' :
 			'growthexperiments-homepage-userpage-body';
@@ -58,7 +58,7 @@ class Userpage extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getBody() {
+	protected function getFooter() {
 		if ( $this->isCompleted() ) {
 			$buttonMsg = 'growthexperiments-homepage-userpage-button-done';
 			$buttonFlags = [];

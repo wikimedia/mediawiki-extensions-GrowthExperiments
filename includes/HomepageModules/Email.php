@@ -59,7 +59,7 @@ class Email extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getSubheader() {
+	protected function getBody() {
 		// growthexperiments-homepage-email-text-noemail,
 		// growthexperiments-homepage-email-text-unconfirmed,
 		// growthexperiments-homepage-email-text-confirmed
@@ -71,7 +71,7 @@ class Email extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getBody() {
+	protected function getFooter() {
 		// growthexperiments-homepage-email-button-noemail,
 		// growthexperiments-homepage-email-button-unconfirmed,
 		// growthexperiments-homepage-email-button-confirmed

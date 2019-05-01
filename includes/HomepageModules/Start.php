@@ -77,6 +77,13 @@ class Start extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
+	protected function getHeaderTag() {
+		return 'h2';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function getBody() {
 		return implode( "\n", array_map( function ( HomepageModule $module ) {
 			return $module->render();
