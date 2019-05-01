@@ -147,6 +147,10 @@ class QuestionStore {
 			$this->loadBalancer->getConnection( DB_REPLICA ),
 			$questionRecord->getRevId()
 		);
+		if ( !$revision ) {
+			return false;
+		}
+
 		$latestPageRevision = $this->revisionStore->getRevisionByTitle(
 			$revision->getPageAsLinkTarget()
 		);
@@ -211,9 +215,8 @@ class QuestionStore {
 	}
 
 	private function isRevisionVisible( QuestionRecord $questionRecord ) {
-		return $this->revisionStore
-			->getRevisionById( $questionRecord->getRevId() )
-			->getVisibility() === 0;
+		$revision = $this->revisionStore->getRevisionById( $questionRecord->getRevId() );
+		return $revision && $revision->getVisibility() === 0;
 	}
 
 }
