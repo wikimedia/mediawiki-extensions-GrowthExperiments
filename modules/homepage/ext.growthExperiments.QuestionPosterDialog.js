@@ -73,7 +73,7 @@
 		this.getActions().setAbilities( {
 			questioncomplete: this.questionReviewTextInput.getValue()
 		} );
-		if ( mw.storage.get( this.storageKey ) === '' ) {
+		if ( reviewTextInputValue && mw.storage.get( this.storageKey ) === '' ) {
 			this.logger.log( 'enter-question-text' );
 		}
 		// Save the draft text in local storage in case the user reloads their page.
