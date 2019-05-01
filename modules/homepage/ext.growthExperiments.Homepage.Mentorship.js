@@ -9,7 +9,8 @@
 		mentorTalkLink = $( '<a>' )
 			.attr( {
 				href: mw.Title.newFromText( mentorName, 3 ).getUrl(),
-				target: '_blank'
+				target: '_blank',
+				'data-link-id': 'mentor-talk'
 			} )
 			.text( mentorTalkLinkText ),
 		dialogTitle = mw.message( 'growthexperiments-homepage-mentorship-dialog-title',
