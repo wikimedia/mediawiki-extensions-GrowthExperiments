@@ -69,7 +69,7 @@ abstract class QuestionPoster {
 	/**
 	 * @var string
 	 */
-	private $body;
+	private $postedOnTimestamp;
 
 	/**
 	 * QuestionPoster constructor.
@@ -102,6 +102,7 @@ abstract class QuestionPoster {
 		if ( !$userPermissionStatus->isGood() ) {
 			return $userPermissionStatus;
 		}
+		$this->setPostedOnTimestamp( wfTimestamp() );
 		$content = $this->getContent( $body );
 		$editFilterMergedContentHookStatus = $this->runEditFilterMergedContentHook(
 			$content,
@@ -125,7 +126,7 @@ abstract class QuestionPoster {
 			$body,
 			$this->getSectionHeaderWithTimestamp(),
 			$this->revisionId,
-			wfTimestamp(),
+			$this->getPostedOnTimestamp(),
 			$this->getResultUrl()
 		);
 		QuestionStoreFactory::newFromUserAndStorage(
@@ -283,21 +284,32 @@ abstract class QuestionPoster {
 	 * @return string
 	 */
 	protected function getSectionHeaderWithTimestamp() {
-		$lang = MediaWikiServices::getInstance()->getContentLanguage();
-		$timestamp = $lang->timeanddate(
-			wfTimestampNow(),
-			// apply time zone adjustment
-			/* $adj = */ true,
-			// use site default format, not user's chosen format
-			/* $format = */ false,
-			// use site default time zone, not user's chosen time zone
-			// (oddly, empty string is the magic incantation to use the site default)
-			/* $timecorrection= */ ''
-		);
 		return $this->getSectionHeader() . ' ' .
 			$this->getContext()->msg( 'parentheses' )
-				->plaintextParams( $timestamp )
+				->plaintextParams( $this->getFormattedPostedOnTimestamp() )
 				->inContentLanguage()->escaped();
+	}
+
+	/**
+	 * @param string $timestamp
+	 */
+	private function setPostedOnTimestamp( $timestamp ) {
+		$this->postedOnTimestamp = $timestamp;
+	}
+
+	/**
+	 * @return string
+	 */
+	private function getPostedOnTimestamp() {
+		return $this->postedOnTimestamp;
+	}
+
+	/*
+	 * Timezone adjustment, site default format, and site default time zone are used for formatting.
+	 */
+	private function getFormattedPostedOnTimestamp() {
+		return MediaWikiServices::getInstance()->getContentLanguage()
+			->timeanddate( $this->getPostedOnTimestamp(), true, false, '' );
 	}
 
 	/**
