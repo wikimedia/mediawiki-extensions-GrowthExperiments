@@ -53,7 +53,7 @@
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|Vos}} questions récentes",
 	"growthexperiments-homepage-recent-questions-posted-on": "Publié il y a $1",
 	"growthexperiments-homepage-recent-questions-archived": "archivé",
-	"growthexperiments-homepage-recent-questions-archived-tooltip": "Cette question a été archivée, sans doute parce qu’elle a été posée il y a un moment.",
+	"growthexperiments-homepage-recent-questions-archived-tooltip": "Cette question a été archivée, sans doute parce qu’elle a été posée il y a longtemps.",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Votre}} mentor",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|modification|modifications}}",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Actif|Active}} aujourd’hui",
