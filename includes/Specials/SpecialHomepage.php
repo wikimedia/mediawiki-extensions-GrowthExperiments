@@ -4,6 +4,7 @@ namespace GrowthExperiments\Specials;
 
 use ConfigException;
 use DeferredUpdates;
+use Error;
 use Exception;
 use ExtensionRegistry;
 use GrowthExperiments\EventLogging\SpecialHomepageLogger;
@@ -88,15 +89,10 @@ class SpecialHomepage extends SpecialPage {
 				try {
 					$out->addHTML( $module->render() );
 					$renderedModules[$moduleName] = $module;
-				} catch ( Exception $e ) {
-					LoggerFactory::getInstance( 'GrowthExperiments' )->error(
-						"Homepage module '{class}' cannot be rendered.",
-						[
-							'class' => get_class( $module ),
-							'msg' => $e->getMessage(),
-							'trace' => $e->getTraceAsString(),
-						]
-					);
+				} catch ( Exception $exception ) {
+					$this->logModuleRenderIssue( $module, $exception );
+				} catch ( Error $error ) {
+					$this->logModuleRenderIssue( $module, $error );
 				}
 			}
 			$out->addHTML( Html::closeElement( 'div' ) );
@@ -163,5 +159,34 @@ class SpecialHomepage extends SpecialPage {
 		// and that doesn't have generateSessionId(). So the code works but phan rejects it.
 		$sessionManager = new SessionManager();
 		return $sessionManager->generateSessionId();
+	}
+
+	/**
+	 * Log Exception or Error thrown when trying to render a module.
+	 *
+	 * Note: Some runtime errors like trying to call a function on null
+	 * are reported as Exception in HHVM but Error in PHP7.
+	 *
+	 * try {
+	 * 		$a = null;
+	 * 		$a->foo();
+	 * } catch ( Exception $t ) {
+	 * 		echo "Exception (hhvm)";
+	 * } catch ( Error $t ) {
+	 * 		echo "Error (php7)";
+	 * }
+	 *
+	 * @param HomepageModule $module
+	 * @param Exception|Error $issue
+	 */
+	private function logModuleRenderIssue( HomepageModule $module, $issue ) {
+		LoggerFactory::getInstance( 'GrowthExperiments' )->error(
+			"Homepage module '{class}' cannot be rendered.",
+			[
+				'class' => get_class( $module ),
+				'msg' => $issue->getMessage(),
+				'trace' => $issue->getTraceAsString(),
+			]
+		);
 	}
 }
