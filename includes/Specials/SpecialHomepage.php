@@ -15,6 +15,7 @@ use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\Tutorial;
+use GrowthExperiments\Util;
 use Html;
 use MediaWiki\Logger\LoggerFactory;
 use GrowthExperiments\HomepageModules\Start;
@@ -63,45 +64,38 @@ class SpecialHomepage extends SpecialPage {
 	 * @throws UserNotLoggedIn
 	 */
 	public function execute( $par = '' ) {
-		$out = $this->getContext()->getOutput();
 		$this->requireLogin();
 		parent::execute( $par );
 		$this->handleDisabledPreference();
 		$this->handleTutorialVisit( $par );
 
-		$out->setSubtitle( $this->getSubtitle() );
+		$out = $this->getContext()->getOutput();
+		$isMobile = Util::isMobile( $out->getSkin() );
 		$loggingEnabled = $this->getConfig()->get( 'GEHomepageLoggingEnabled' );
 		$out->addJsConfigVars( [
 			'wgGEHomepagePageviewToken' => $this->pageviewToken,
 			'wgGEHomepageLoggingEnabled' => $loggingEnabled
 		] );
-		$out->addModules( 'ext.growthExperiments.Homepage' );
+		$out->addModules( 'ext.growthExperiments.Homepage.Logging' );
 		$out->enableOOUI();
 		$out->addModuleStyles( 'ext.growthExperiments.Homepage.styles' );
 
 		$out->addHTML( Html::openElement( 'div', [
-			'class' => 'growthexperiments-homepage-container'
+			'class' => 'growthexperiments-homepage-container',
 		] ) );
 		$modules = $this->getModules();
-		$renderedModules = [];
-		foreach ( $this->getModuleGroups() as $group => $moduleNames ) {
-			$out->addHTML( Html::openElement( 'div', [
-				'class' => "growthexperiments-homepage-group-$group",
-			] ) );
-			foreach ( $moduleNames as $moduleName ) {
-				/** @var HomepageModule $module */
-				$module = $modules[$moduleName];
-				try {
-					$out->addHTML( $module->render() );
-					$renderedModules[$moduleName] = $module;
-				} catch ( Exception $exception ) {
-					$this->logModuleRenderIssue( $module, $exception );
-				} catch ( Error $error ) {
-					$this->logModuleRenderIssue( $module, $error );
-				}
+
+		if ( $isMobile ) {
+			$currentModule = $modules[$par] ?? false;
+			if ( $currentModule ) {
+				$renderedModules = $this->renderMobileDetails( $par, $currentModule );
+			} else {
+				$renderedModules = $this->renderMobileSummary();
 			}
-			$out->addHTML( Html::closeElement( 'div' ) );
+		} else {
+			$renderedModules = $this->renderDesktop();
 		}
+
 		$out->addHTML( Html::closeElement( 'div' ) );
 
 		if ( $loggingEnabled &&
@@ -111,7 +105,7 @@ class SpecialHomepage extends SpecialPage {
 				$this->pageviewToken,
 				$this->getContext()->getUser(),
 				$this->getRequest(),
-				$out->getSkin()->getSkinName() === 'minerva',
+				$isMobile,
 				$renderedModules
 			);
 			DeferredUpdates::addCallableUpdate( function () use ( $logger ) {
@@ -151,8 +145,8 @@ class SpecialHomepage extends SpecialPage {
 		return [
 			'start' => new Start( $this->getContext() ),
 			'impact' => new Impact( $this->getContext() ),
-			'help' => new Help( $this->getContext() ),
 			'mentorship' => new Mentorship( $this->getContext() ),
+			'help' => new Help( $this->getContext() ),
 		];
 	}
 
@@ -164,8 +158,13 @@ class SpecialHomepage extends SpecialPage {
 	}
 
 	private function getSubtitle() {
-		return $this->msg( 'growthexperiments-homepage-specialpage-subtitle' )
-				->params( $this->getUser()->getName() );
+		return Html::element(
+			'span',
+			[ 'class' => 'growthexperiments-homepage-subtitle' ],
+			$this->msg( 'growthexperiments-homepage-specialpage-subtitle' )
+				->params( $this->getUser()->getName() )
+				->text()
+		);
 	}
 
 	/**
@@ -199,12 +198,92 @@ class SpecialHomepage extends SpecialPage {
 	 */
 	private function logModuleRenderIssue( HomepageModule $module, $issue ) {
 		LoggerFactory::getInstance( 'GrowthExperiments' )->error(
-			"Homepage module '{class}' cannot be rendered.",
+			"Homepage module '{class}' cannot be rendered. {msg} {trace}",
 			[
 				'class' => get_class( $module ),
 				'msg' => $issue->getMessage(),
 				'trace' => $issue->getTraceAsString(),
 			]
 		);
+	}
+
+	/**
+	 * @return array
+	 */
+	private function renderDesktop() {
+		$out = $this->getContext()->getOutput();
+		$modules = $this->getModules();
+		$renderedModules = [];
+		$out->addModules( 'ext.growthExperiments.Homepage.RecentQuestions' );
+		$out->addBodyClasses( 'growthexperiments-homepage-desktop' );
+		$out->setSubtitle( $this->getSubtitle() );
+		foreach ( $this->getModuleGroups() as $group => $moduleNames ) {
+			$out->addHTML( Html::openElement( 'div', [
+				'class' => "growthexperiments-homepage-group-$group",
+			] ) );
+			foreach ( $moduleNames as $moduleName ) {
+				/** @var HomepageModule $module */
+				$module = $modules[$moduleName];
+				try {
+					$out->addHTML( $module->render( HomepageModule::RENDER_DESKTOP ) );
+					$renderedModules[$moduleName] = $module;
+				} catch ( Exception $exception ) {
+					$this->logModuleRenderIssue( $module, $exception );
+				} catch ( Error $error ) {
+					$this->logModuleRenderIssue( $module, $error );
+				}
+			}
+			$out->addHTML( Html::closeElement( 'div' ) );
+		}
+		return $renderedModules;
+	}
+
+	/**
+	 * @param $moduleName
+	 * @param HomepageModule $module
+	 * @return array
+	 */
+	private function renderMobileDetails( $moduleName, HomepageModule $module ) {
+		$out = $this->getContext()->getOutput();
+		$renderedModules = [];
+		$out->addModules( 'ext.growthExperiments.Homepage.RecentQuestions' );
+		$out->addBodyClasses( 'growthexperiments-homepage-mobile-details' );
+		try {
+			$out->addHTML( $module->render( HomepageModule::RENDER_MOBILE_DETAILS ) );
+			$renderedModules[ $moduleName ] = $module;
+		} catch ( Exception $exception ) {
+			$this->logModuleRenderIssue( $module, $exception );
+		} catch ( Error $error ) {
+			$this->logModuleRenderIssue( $module, $error );
+		}
+		return $renderedModules;
+	}
+
+	/**
+	 * @return array
+	 */
+	private function renderMobileSummary() {
+		$out = $this->getContext()->getOutput();
+		$modules = $this->getModules();
+		$renderedModules = [];
+		$out->addBodyClasses( 'growthexperiments-homepage-mobile-summary' );
+		$out->setSubtitle( $this->getSubtitle() );
+		foreach ( $modules as $moduleName => $module ) {
+			try {
+				$out->addHTML( Html::rawElement(
+					'a',
+					[
+						'href' => $this->getPageTitle( $moduleName )->getLinkURL(),
+					],
+					$module->render( HomepageModule::RENDER_MOBILE_SUMMARY )
+				) );
+				$renderedModules[$moduleName] = $module;
+			} catch ( Exception $exception ) {
+				$this->logModuleRenderIssue( $module, $exception );
+			} catch ( Error $error ) {
+				$this->logModuleRenderIssue( $module, $error );
+			}
+		}
+		return $renderedModules;
 	}
 }

@@ -94,19 +94,28 @@ class SpecialHomepageLogger {
 		}
 		$event['user_id'] = $this->user->getId();
 		$event['user_editcount'] = $this->user->getEditCount();
+
 		/** @var Impact $impactModule */
-		$impactModule = $this->modules['impact'];
-		$event['impact_module_state'] = $impactModule->getState();
-		$startTasks = $this->modules['start']->getTasks();
-		/** @var Tutorial $tutorialTask */
-		$tutorialTask = $startTasks['tutorial'];
-		$event['start_tutorial_state'] = $tutorialTask->getState();
-		/** @var Userpage $userpageTask */
-		$userpageTask = $startTasks['userpage'];
-		$event['start_userpage_state'] = $userpageTask->getState();
-		/** @var Email $emailTask */
-		$emailTask = $startTasks['email'];
-		$event['start_email_state'] = $emailTask->getState();
+		$impactModule = $this->modules['impact'] ?? false;
+		if ( $impactModule ) {
+			$event['impact_module_state'] = $impactModule->getState();
+		}
+
+		/** @var Start $startModule */
+		$startModule = $this->modules['start'] ?? false;
+		if ( $startModule ) {
+			$startTasks = $startModule->getTasks();
+			/** @var Tutorial $tutorialTask */
+			$tutorialTask = $startTasks['tutorial'];
+			$event['start_tutorial_state'] = $tutorialTask->getState();
+			/** @var Userpage $userpageTask */
+			$userpageTask = $startTasks['userpage'];
+			$event['start_userpage_state'] = $userpageTask->getState();
+			/** @var Email $emailTask */
+			$emailTask = $startTasks['email'];
+			$event['start_email_state'] = $emailTask->getState();
+		}
+
 		$event['homepage_pageview_token'] = $this->pageviewToken;
 
 		EventLogging::logEvent( 'HomepageVisit', 19041814, $event );

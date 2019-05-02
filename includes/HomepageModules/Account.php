@@ -26,7 +26,7 @@ class Account extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getUncompletedIcon() {
+	protected function getHeaderIconName() {
 		return 'check';
 	}
 
@@ -41,8 +41,7 @@ class Account extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function getBody() {
-		return $this->getUsername() .
-			$this->getEditCount() .
+		return $this->getUserInfo() .
 			$this->getAccountAge();
 	}
 
@@ -50,30 +49,33 @@ class Account extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function getModuleStyles() {
-		return 'oojs-ui.styles.icons-user';
+		return array_merge(
+			parent::getModuleStyles(),
+			[ 'oojs-ui.styles.icons-user' ]
+		);
 	}
 
-	private function getUsername() {
+	private function getUserInfo() {
 		$icon = new IconWidget( [
 			'icon' => 'userAvatar',
 			// HACK: IconWidget doesn't let us set 'invert' => true, see BaseTaskModule.php for details
 			'classes' => [ 'oo-ui-image-invert', 'oo-ui-checkboxInputWidget-checkIcon' ]
 		] );
-		$name = Html::element( 'span', [], $this->getContext()->getLanguage()->embedBidi(
+		$name = htmlspecialchars( $this->getContext()->getLanguage()->embedBidi(
 			$this->getContext()->getUser()->getName()
 		) );
-		return $this->buildSection(
-			'username',
-			$icon . $name
-		);
-	}
-
-	private function getEditCount() {
-		return $this->buildSection(
+		$nameSection = $this->buildSection( 'username', $name, 'span' );
+		$editsSection = $this->buildSection(
 			'editcount',
 			$this->getContext()->msg( 'growthexperiments-homepage-account-editcount' )
 				->params( $this->getContext()->getUser()->getEditCount() )
-				->escaped()
+				->escaped(),
+			'span'
+		);
+		$nameAndEdits = Html::rawElement( 'div', [], $nameSection . $editsSection );
+		return $this->buildSection(
+			'userinfo',
+			$icon . $nameAndEdits
 		);
 	}
 

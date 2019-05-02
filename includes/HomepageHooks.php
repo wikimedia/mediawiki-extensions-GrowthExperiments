@@ -57,7 +57,7 @@ class HomepageHooks {
 	 */
 	public static function onSkinTemplateNavigationUniversal( SkinTemplate &$skin, array &$links ) {
 		$user = $skin->getUser();
-		if ( !self::isHomepageEnabled( $user ) || self::isMobile( $skin ) ) {
+		if ( !self::isHomepageEnabled( $user ) ) {
 			return;
 		}
 
@@ -111,7 +111,7 @@ class HomepageHooks {
 	 */
 	public static function onPersonalUrls( &$personal_urls, &$title, $sk ) {
 		$user = $sk->getUser();
-		if ( !self::isHomepageEnabled( $user ) || self::isMobile( $sk ) ) {
+		if ( !self::isHomepageEnabled( $user ) || Util::isMobile( $sk ) ) {
 			return;
 		}
 
@@ -121,14 +121,6 @@ class HomepageHooks {
 				'source=personaltoolslink&namespace=' . $title->getNamespace()
 			);
 		}
-	}
-
-	/**
-	 * @param SkinTemplate $skin
-	 * @return bool Whether the given skin is considered "mobile"
-	 */
-	private static function isMobile( SkinTemplate $skin ) {
-		return $skin->getSkinName() === 'minerva';
 	}
 
 	/**

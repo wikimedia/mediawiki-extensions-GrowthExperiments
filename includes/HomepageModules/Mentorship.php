@@ -42,12 +42,19 @@ class Mentorship extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getHeader() {
+	protected function getHeaderText() {
 		return $this->getContext()
 			->msg( 'growthexperiments-homepage-mentorship-header' )
 			->params( $this->getContext()->getUser()->getName() )
 			->params( $this->getMentor()->getName() )
-			->escaped();
+			->text();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getHeaderIconName() {
+		return 'userTalk';
 	}
 
 	/**
@@ -55,11 +62,21 @@ class Mentorship extends BaseModule {
 	 */
 	protected function getBody() {
 		return implode( "\n", [
-			$this->getMentorUserLink(),
+			$this->getMentorUsernameElement( true ),
 			$this->getMentorInfo(),
 			$this->getIntroText(),
 			$this->getQuestionButton(),
 			$this->getRecentQuestionsSection(),
+		] );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getMobileSummaryBody() {
+		return implode( "\n", [
+			$this->getMentorUsernameElement( false ),
+			$this->getLastActive(),
 		] );
 	}
 
@@ -85,14 +102,19 @@ class Mentorship extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getModuleStyles() {
-		return 'oojs-ui.styles.icons-user';
+		return array_merge(
+			parent::getModuleStyles(),
+			[ 'oojs-ui.styles.icons-user' ]
+		);
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	protected function getModules() {
-		return 'ext.growthExperiments.Homepage.Mentorship';
+		return $this->getMode() === self::RENDER_MOBILE_SUMMARY ?
+			[] :
+			'ext.growthExperiments.Homepage.Mentorship';
 	}
 
 	/**
@@ -134,25 +156,34 @@ class Mentorship extends BaseModule {
 		return (bool)$this->getMentor();
 	}
 
-	private function getMentorUserLink() {
-		$icon = new IconWidget( [ 'icon' => 'userAvatar' ] );
-		$link = Html::rawElement(
-			'a',
-			[
-				'href' => $this->getMentor()->getUserPage()->getLinkURL(),
-				'data-link-id' => 'mentor-userpage',
-			],
-			$icon . Html::element(
-				'span',
-				[ 'class' => 'growthexperiments-homepage-mentorship-username' ],
-				$this->getContext()->getLanguage()->embedBidi(
-					$this->getMentor()->getName()
-				)
+	private function getMentorUsernameElement( $link ) {
+		$iconElement = new IconWidget( [ 'icon' => 'userAvatar' ] );
+		$usernameElement = Html::element(
+			'span',
+			[ 'class' => 'growthexperiments-homepage-mentorship-username' ],
+			$this->getContext()->getLanguage()->embedBidi(
+				$this->getMentor()->getName()
 			)
 		);
+		if ( $link ) {
+			$content = Html::rawElement(
+				'a',
+				[
+					'href' => $this->getMentor()->getUserPage()->getLinkURL(),
+					'data-link-id' => 'mentor-userpage',
+				],
+				$iconElement . $usernameElement
+			);
+		} else {
+			$content = Html::rawElement(
+				'span',
+				[],
+				$iconElement . $usernameElement
+			);
+		}
 		return Html::rawElement( 'div', [
 			'class' => 'growthexperiments-homepage-mentorship-userlink'
-		], $link );
+		], $content );
 	}
 
 	private function getMentorInfo() {

@@ -49,7 +49,7 @@ class Tutorial extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getUncompletedIcon() {
+	protected function getHeaderIconName() {
 		return 'book';
 	}
 
@@ -64,7 +64,10 @@ class Tutorial extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function getModuleStyles() {
-		return [ 'oojs-ui.styles.icons-editing-citation', 'oojs-ui.styles.icons-interactions' ];
+		return array_merge(
+			parent::getModuleStyles(),
+			[ 'oojs-ui.styles.icons-editing-citation', 'oojs-ui.styles.icons-interactions' ]
+		);
 	}
 
 	/**

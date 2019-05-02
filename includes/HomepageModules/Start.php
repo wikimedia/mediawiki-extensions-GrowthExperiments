@@ -51,15 +51,11 @@ class Start extends BaseTaskModule {
 		return true;
 	}
 
-	protected function canRender() {
-		return (bool)$this->tasks;
-	}
-
 	/**
 	 * @inheritDoc
 	 */
-	protected function getUncompletedIcon() {
-		return false;
+	protected function canRender() {
+		return (bool)$this->tasks;
 	}
 
 	/**
@@ -75,6 +71,33 @@ class Start extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
+	protected function getHeader() {
+		return $this->getHeaderTextElement();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getMobileSummaryHeader() {
+		$icon = $this->getHeaderIcon(
+			$this->getHeaderIconName(),
+			false
+		);
+		$text = $this->getHeaderTextElement();
+		$navIcon = $this->getNavIcon();
+		return $icon . $text . $navIcon;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getHeaderIconName() {
+		return 'check';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function getHeaderTag() {
 		return 'h2';
 	}
@@ -84,7 +107,16 @@ class Start extends BaseTaskModule {
 	 */
 	protected function getBody() {
 		return implode( "\n", array_map( function ( HomepageModule $module ) {
-			return $module->render();
+			return $module->render( HomepageModule::RENDER_DESKTOP );
+		}, $this->tasks ) );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getMobileSummaryBody() {
+		return implode( "\n", array_map( function ( BaseTaskModule $module ) {
+			return $module->render( HomepageModule::RENDER_MOBILE_SUMMARY );
 		}, $this->tasks ) );
 	}
 }
