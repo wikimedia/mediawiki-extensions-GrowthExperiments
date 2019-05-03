@@ -15,25 +15,26 @@
 		display: flex;
 
 		.growthexperiments-homepage-module {
-			text-align: center;
+			display: flex;
+			flex-direction: column;
 			width: 25%;
 			margin: 0;
-			vertical-align: top;
-			border-bottom: 0;
 			border-top: 0;
+			border-bottom: 0;
 			border-left: 0;
 			border-right: @colorGray12 @border-width-base @border-style-base;
 			border-radius: 0;
 			padding-top: 0;
 			padding-bottom: 0.5em;
 			.box-shadow( none );
+			text-align: center;
 
 			&:last-child {
 				border: 0;
 			}
 
 			&-header {
-				min-height: 25%;
+				overflow: visible;
 				display: flex;
 				justify-content: left;
 				align-items: center;
@@ -43,16 +44,16 @@
 				font-size: 1em;
 
 				&-icon {
-					width: 34px;
-					height: 34px;
+					width: @homepageStartIconSize;
+					height: @homepageStartIconSize;
 					background-color: #d5fdf4;
 					border-radius: 50%;
 					border: 1px solid @colorGray12;
 					margin-right: 10px;
 
 					.oo-ui-iconElement {
-						width: 34px;
-						height: 34px;
+						width: @homepageStartIconSize;
+						height: @homepageStartIconSize;
 						background-size: unset;
 						opacity: 0.65;
 
@@ -69,13 +70,10 @@
 			}
 
 			&-subheader {
-				min-height: 45%;
+				height: 100%;
+				margin-bottom: 1em;
 				color: @colorGray2;
 				font-size: 0.9em;
-			}
-
-			&-body {
-				padding-bottom: 1em;
 			}
 
 			&-footer {
@@ -91,6 +89,10 @@
 		}
 
 		.growthexperiments-homepage-module-start-account {
+			.growthexperiments-homepage-module-body {
+				height: 100%;
+			}
+
 			.growthexperiments-homepage-module-section-username {
 				span {
 					display: block;

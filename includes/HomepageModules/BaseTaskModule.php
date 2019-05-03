@@ -63,7 +63,7 @@ abstract class BaseTaskModule extends BaseModule {
 			);
 		}
 		$span = Html::element(
-			'span',
+			'div',
 			[ 'class' => self::BASE_CSS_CLASS . '-header-text' ],
 			$this->getHeaderText()
 		);
