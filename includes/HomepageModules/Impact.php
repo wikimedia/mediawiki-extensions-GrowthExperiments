@@ -62,61 +62,82 @@ class Impact extends BaseModule {
 	 */
 	protected function getBody() {
 		if ( $this->isActivated() ) {
+			$articleLinkTooltip = $this->getContext()
+				->msg( 'growthexperiments-homepage-impact-article-link-tooltip' )
+				->text();
+			$pageviewsTooltip = $this->getContext()
+				->msg( 'growthexperiments-homepage-impact-pageviews-link-tooltip' )
+				->text();
 			$emptyImage = new IconWidget( [
 				'icon' => 'image',
 				'classes' => [ 'placeholder-image' ],
 			] );
+			$emptyViewsElement = Html::element(
+				'span',
+				[ 'class' => 'pageviews' ],
+				'--'
+			);
 			return implode( "\n", array_map(
-				function ( $contrib ) use ( $emptyImage ) {
-					$image = $contrib[ 'image' ] ?? $emptyImage;
-					$titleText = $contrib[ 'title' ]->getPrefixedText();
-					$titleUrl = $contrib[ 'title' ]->getLinkUrl();
-					$articleLinkTooltip = $this->getContext()
-						->msg( 'growthexperiments-homepage-impact-article-link-tooltip' )
-						->text();
-					$views = $contrib[ 'views' ] ?? '--';
-					$pageviewsUrl = $this->getPageViewToolsUrl(
-						$contrib[ 'title' ], $contrib[ 'ts' ]
+				function ( $contrib ) use (
+					$articleLinkTooltip, $pageviewsTooltip, $emptyImage, $emptyViewsElement
+				) {
+					$titleText = $contrib['title']->getText();
+					$titlePrefixedText = $contrib['title']->getPrefixedText();
+					$titleUrl = $contrib['title']->getLinkUrl();
+
+					$image = isset( $contrib['image_url'] ) ?
+						Html::element(
+							'div',
+							[
+								'alt' => $titleText,
+								'title' => $titlePrefixedText,
+								'class' => [ 'real-image' ],
+								'style' => 'background-image: url(' . $contrib['image_url'] . ');',
+							]
+						) : $emptyImage;
+					$imageElement = Html::rawElement(
+						'a',
+						[
+							'class' => 'article-image',
+							'href' => $titleUrl,
+							'title' => $articleLinkTooltip,
+							'data-link-id' => 'impact-article-image',
+						],
+						$image
 					);
-					$pageviewsTooltip = $this->getContext()
-						->msg( 'growthexperiments-homepage-impact-pageviews-link-tooltip' )
-						->text();
-					return Html::rawElement(
-						'div',
-						[ 'class' => 'impact-row' ],
-						Html::rawElement(
+
+					$titleElement = Html::rawElement(
+						'span',
+						[ 'class' => 'article-title' ],
+						Html::element(
 							'a',
 							[
-								'class' => 'article-image',
 								'href' => $titleUrl,
 								'title' => $articleLinkTooltip,
-								'data-link-id' => 'impact-article-image',
+								'data-link-id' => 'impact-article-title',
 							],
-							$image
-						) .
-						Html::rawElement(
-							'span',
-							[ 'class' => 'article-title' ],
-							Html::element(
-								'a',
-								[
-									'href' => $titleUrl,
-									'title' => $articleLinkTooltip,
-									'data-link-id' => 'impact-article-title',
-								],
-								$titleText
-							)
-						) .
+							$titlePrefixedText
+						)
+					);
+
+					$viewsElement = isset( $contrib['views'] ) ?
 						Html::element(
 							'a',
 							[
 								'class' => 'pageviews',
-								'href' => $pageviewsUrl,
+								'href' => $this->getPageViewToolsUrl(
+									$contrib['title'], $contrib['ts']
+								),
 								'title' => $pageviewsTooltip,
 								'data-link-id' => 'impact-pageviews',
 							],
-							$views
-						)
+							$contrib['views']
+						) : $emptyViewsElement;
+
+					return Html::rawElement(
+						'div',
+						[ 'class' => 'impact-row' ],
+						$imageElement . $titleElement . $viewsElement
 					);
 				},
 				$this->getArticleContributions()
@@ -326,7 +347,7 @@ class Impact extends BaseModule {
 	}
 
 	/**
-	 * Add image tags to the array of recent contributions
+	 * Add image URLs to the array of recent contributions
 	 * Depends on the PageImages extension.
 	 *
 	 * @param array &$contribs Recent contributions
@@ -349,15 +370,7 @@ class Impact extends BaseModule {
 				];
 				$thumb = $imageFile->transform( $options );
 				if ( $thumb ) {
-					$contrib['image'] = Html::element(
-						'div',
-						[
-							'alt' => $title->getText(),
-							'title' => $title->getPrefixedText(),
-							'class' => [ 'real-image' ],
-							'style' => 'background-image: url(' . $thumb->getUrl() . ');',
-						]
-					);
+					$contrib['image_url'] = $thumb->getUrl();
 				}
 			}
 		}
