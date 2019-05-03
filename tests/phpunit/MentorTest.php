@@ -104,4 +104,15 @@ class MentorTest extends MediaWikiTestCase {
 		$mentor = Mentor::newFromMentee( $userMentee, true );
 		$this->assertEquals( $mentor->getMentorUser()->getName(), $userMentor->getName() );
 	}
+
+	/**
+	 * @covers \GrowthExperiments\Mentor::newFromMentee
+	 * @expectedException \Exception
+	 * @expectedExceptionMessageRegExp /Homepage Mentorship module: no mentor available for/
+	 */
+	public function testNoMentorAvailable() {
+		$this->insertPage( 'MentorsList', 'Mentors' );
+		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
+		Mentor::newFromMentee( $this->getMutableTestUser()->getUser(), true );
+	}
 }
