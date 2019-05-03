@@ -4,6 +4,7 @@ namespace GrowthExperiments\HelpPanel;
 
 use JsonSerializable;
 
+// @phan-suppress-next-line PhanRedefinedInheritedInterface
 class QuestionRecord implements JsonSerializable {
 	private $questionText;
 	private $sectionHeader;
