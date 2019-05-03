@@ -5,7 +5,6 @@ namespace GrowthExperiments;
 use ConfigException;
 use DeferredUpdates;
 use Exception;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use ParserOptions;
 use Title;
@@ -72,13 +71,20 @@ class Mentor {
 		$page = WikiPage::factory( $title );
 		$links = $page->getParserOutput( ParserOptions::newCanonical() )->getLinks();
 		if ( !isset( $links[ NS_USER ] ) ) {
-			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
-				'Homepage Mentorship module: no mentor available for user {user}',
-				[ 'user' => $mentee->getName() ]
+			throw new Exception(
+				'Homepage Mentorship module: no mentor available for user ' . $mentee->getName()
 			);
-			return false;
 		}
 		$possibleMentors = array_keys( $links[ NS_USER ] );
+		$possibleMentors = array_values( array_diff( $possibleMentors, [ $mentee->getTitleKey() ] ) );
+		if ( count( $possibleMentors ) === 0 ) {
+			throw new Exception(
+				'Homepage Mentorship module: no mentor available for ' .
+				$mentee->getName() .
+				' but themselves'
+			);
+		}
+
 		$selectedMentorName = $possibleMentors[ rand( 0, count( $possibleMentors ) - 1 ) ];
 		$selectedMentor = User::newFromName( $selectedMentorName );
 		if ( !$selectedMentor || !$selectedMentor->getId() ) {
