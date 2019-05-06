@@ -70,14 +70,19 @@ abstract class QuestionPoster {
 	 * @var string
 	 */
 	private $postedOnTimestamp;
+	/**
+	 * @var string
+	 */
+	private $body;
 
 	/**
 	 * QuestionPoster constructor.
 	 * @param IContextSource $context
+	 * @param string $body
 	 * @param string $relevantTitle
 	 * @throws MWException
 	 */
-	public function __construct( IContextSource $context, $relevantTitle = '' ) {
+	public function __construct( IContextSource $context, $body, $relevantTitle = '' ) {
 		$this->context = $context;
 		$this->relevantTitle = $relevantTitle;
 		if ( $this->getContext()->getUser()->isAnon() ) {
@@ -89,31 +94,26 @@ abstract class QuestionPoster {
 		$page = new WikiPage( $this->targetTitle );
 		$this->pageUpdater = $page->newPageUpdater( $this->getContext()->getUser() );
 		$this->parser = MediaWikiServices::getInstance()->getParser();
+		$this->postedOnTimestamp = wfTimestamp();
+		$this->body = $body;
 	}
 
 	/**
-	 * @param string $body
 	 * @return Status
 	 * @throws MWException
 	 * @throws \Exception
 	 */
-	public function submit( $body ) {
-		$userPermissionStatus = $this->checkUserPermissions();
-		if ( !$userPermissionStatus->isGood() ) {
-			return $userPermissionStatus;
+	public function submit() {
+		$permissionStatus = $this->checkPermissions();
+		if ( !$permissionStatus->isGood() ) {
+			return $permissionStatus;
 		}
-		$this->setPostedOnTimestamp( wfTimestamp() );
-		$content = $this->getContent( $body );
-		$editFilterMergedContentHookStatus = $this->runEditFilterMergedContentHook(
-			$content,
-			$this->getSectionHeader()
+		$questionStore = QuestionStoreFactory::newFromUserAndStorage(
+			$this->getContext()->getUser(),
+			$this->getQuestionStoragePref()
 		);
-		if ( !$editFilterMergedContentHookStatus->isGood() ) {
-			return $editFilterMergedContentHookStatus;
-		}
-
 		$this->pageUpdater->addTag( $this->getTag() );
-		$this->pageUpdater->setContent( SlotRecord::MAIN, $content );
+		$this->pageUpdater->setContent( SlotRecord::MAIN, $this->getContent() );
 		$newRev = $this->pageUpdater->saveRevision(
 			CommentStoreComment::newUnsavedComment( $this->getSectionHeader() )
 		);
@@ -122,17 +122,30 @@ abstract class QuestionPoster {
 		}
 		$this->revisionId = $newRev->getId();
 		$this->setResultUrl();
+
 		$question = new QuestionRecord(
-			$body,
+			$this->getBody(),
 			$this->getSectionHeaderWithTimestamp(),
 			$this->revisionId,
 			$this->getPostedOnTimestamp(),
 			$this->getResultUrl()
 		);
-		QuestionStoreFactory::newFromUserAndStorage(
-			$this->getContext()->getUser(),
-			$this->getQuestionStoragePref()
-		)->add( $question );
+		$questionStore->add( $question );
+		return Status::newGood();
+	}
+	private function checkPermissions() {
+		$userPermissionStatus = $this->checkUserPermissions();
+		if ( !$userPermissionStatus->isGood() ) {
+			return $userPermissionStatus;
+		}
+		$content = $this->getContent();
+		$editFilterMergedContentHookStatus = $this->runEditFilterMergedContentHook(
+			$content,
+			$this->getSectionHeader()
+		);
+		if ( !$editFilterMergedContentHookStatus->isGood() ) {
+			return $editFilterMergedContentHookStatus;
+		}
 		return Status::newGood();
 	}
 
@@ -142,13 +155,13 @@ abstract class QuestionPoster {
 	abstract protected function getTag();
 
 	/**
-	 * @param string $body
 	 * @return Content|string|null
 	 * @throws MWException
 	 */
-	public function getContent( $body ) {
-		$body = $this->addSignature( $body );
-		$content = new WikitextContent( $body );
+	public function getContent() {
+		$content = new WikitextContent(
+			$this->addSignature( $this->getBody() )
+		);
 		$header = $this->getSectionHeaderWithTimestamp();
 		$parent = $this->pageUpdater->grabParentRevision();
 		if ( $parent ) {
@@ -167,7 +180,7 @@ abstract class QuestionPoster {
 	 * @param string $body
 	 * @return string
 	 */
-	public function addSignature( $body ) {
+	private function addSignature( $body ) {
 		if ( strpos( $body, '~~~~' ) === false ) {
 			$body .= "\n\n~~~~";
 		}
@@ -379,6 +392,10 @@ abstract class QuestionPoster {
 			return $status;
 		};
 		return $status;
+	}
+
+	private function getBody() {
+		return $this->body;
 	}
 
 }

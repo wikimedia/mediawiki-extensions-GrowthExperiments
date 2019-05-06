@@ -53,6 +53,7 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 		$emailStatus = null;
 		$this->setQuestionPoster(
 			$params[self::API_PARAM_SOURCE],
+			$params[self::API_PARAM_BODY],
 			$params[self::API_PARAM_RELEVANT_TITLE]
 		);
 
@@ -63,7 +64,7 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 			}
 		}
 
-		$status = $this->questionPoster->submit( $params[self::API_PARAM_BODY] );
+		$status = $this->questionPoster->submit();
 		if ( !$status->isGood() ) {
 			throw new ApiUsageException( null, $status );
 		}
@@ -95,13 +96,18 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 
 	/**
 	 * @param string $source
+	 * @param $body
 	 * @param string $relevantTitle
 	 * @throws ApiUsageException
 	 */
-	private function setQuestionPoster( $source, $relevantTitle ) {
+	private function setQuestionPoster( $source, $body, $relevantTitle ) {
 		try {
 			$questionPosterClass = $this->questionPosterClasses[$source];
-			$this->questionPoster = new $questionPosterClass( $this->getContext(), $relevantTitle );
+			$this->questionPoster = new $questionPosterClass(
+				$this->getContext(),
+				$body,
+				$relevantTitle
+			);
 		} catch ( \Exception $exception ) {
 			$this->dieWithException( $exception );
 		}

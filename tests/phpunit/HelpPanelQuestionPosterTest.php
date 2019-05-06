@@ -27,7 +27,7 @@ class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
 	public function testConstruct() {
 		$context = $this->buildContext();
 		$context->getUser()->logout();
-		( new HelpPanelQuestionPoster( $context ) );
+		( new HelpPanelQuestionPoster( $context, 'foo' ) );
 	}
 
 	/**
@@ -37,8 +37,8 @@ class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
 	 */
 	public function testSubmitExistingTarget() {
 		$this->insertPage( 'HelpDeskTest', '' );
-		$questionPoster = new HelpPanelQuestionPoster( $this->buildContext() );
-		$questionPoster->submit( 'a great question' );
+		$questionPoster = new HelpPanelQuestionPoster( $this->buildContext(), 'a great question' );
+		$questionPoster->submit();
 		$revision = $questionPoster->getRevisionId();
 		$this->assertGreaterThan( 0, $revision );
 		$page = new \WikiPage( Title::newFromText( 'HelpDeskTest' ) );
@@ -56,9 +56,10 @@ class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
 	public function testSubmitNewTarget() {
 		$title = $this->getNonexistingTestPage()->getTitle();
 		$questionPoster = new HelpPanelQuestionPoster(
-			$this->buildContext( $title->getPrefixedDBkey() )
+			$this->buildContext( $title->getPrefixedDBkey() ),
+			'a great question'
 		);
-		$questionPoster->submit( 'a great question' );
+		$questionPoster->submit();
 		$revision = $questionPoster->getRevisionId();
 		$this->assertGreaterThan( 0, $revision );
 		$page = new \WikiPage( $title );
@@ -74,12 +75,12 @@ class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
 	 */
 	public function testValidateRelevantTitle() {
 		$this->insertPage( 'sample' );
-		$questionPoster = new HelpPanelQuestionPoster( $this->buildContext(), 'sample' );
+		$questionPoster = new HelpPanelQuestionPoster( $this->buildContext(), 'blah', 'sample' );
 		$this->assertEquals(
 			Status::newGood(),
 			$questionPoster->validateRelevantTitle()
 		);
-		$questionPoster = new HelpPanelQuestionPoster( $this->buildContext(), '>123' );
+		$questionPoster = new HelpPanelQuestionPoster( $this->buildContext(), 'blah', '>123' );
 		$this->assertEquals(
 			Status::newFatal( 'growthexperiments-help-panel-questionposter-invalid-title' ),
 			$questionPoster->validateRelevantTitle()

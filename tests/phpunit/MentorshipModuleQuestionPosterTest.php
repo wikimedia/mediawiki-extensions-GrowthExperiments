@@ -25,7 +25,7 @@ class MentorshipModuleQuestionPosterTest extends MediaWikiTestCase {
 		$mentor = $this->getTestSysop()->getUser();
 		$context = $this->buildContext( $mentor->getId() );
 
-		$module = new MentorshipModuleQuestionPoster( $context );
+		$module = new MentorshipModuleQuestionPoster( $context, 'foo' );
 		$spy = TestingAccessWrapper::newFromObject( $module );
 		$this->assertEquals( $mentor->getTalkPage(), $spy->targetTitle );
 	}
