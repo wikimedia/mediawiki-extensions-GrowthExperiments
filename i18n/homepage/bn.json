@@ -4,11 +4,26 @@
 			"আফতাবুজ্জামান"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|প্রিয়}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|স্বাগতম}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "প্রধান পাতা",
+	"growthexperiments-homepage-start-header": "এখানে শুরু করুন",
+	"growthexperiments-homepage-account-header": "অ্যাকাউন্ট তৈরি করা হয়েছে",
+	"growthexperiments-homepage-account-editcount": "$1টি {{PLURAL:$1|সম্পাদনা}}",
+	"growthexperiments-homepage-userpage-header": "আপনার ব্যবহারকারী পাতা তৈরি করুন",
+	"growthexperiments-homepage-userpage-header-done": "আপনার ব্যবহারকারী পাতা সম্পাদনা করুন",
+	"growthexperiments-homepage-userpage-button": "ব্যবহারকারী পাতা তৈরি করুন",
+	"growthexperiments-homepage-userpage-button-done": "ব্যবহারকারী পাতা সম্পাদনা করুন",
+	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|আপনার}} ইমেইল যোগ করুন",
+	"growthexperiments-homepage-email-header-confirmed": "ইমেইল যোগ করা হয়েছে",
 	"growthexperiments-homepage-email-text-noemail": "অ্যাকাউন্ট পুনরুদ্ধারের জন্য সুপারিতকৃত",
 	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|আপনার}} ইমেল নিশ্চিত করা হয়েছে। আপনি পছন্দসমূহতে আপনার ইমেইল সেটিংস পরিবর্তন করতে পারেন।",
 	"growthexperiments-homepage-email-button-noemail": "ইমেইল যোগ করুন",
 	"growthexperiments-homepage-email-button-confirmed": "পছন্দসমূহ",
-	"growthexperiments-homepage-recent-questions-archived": "আর্কাইভকৃত"
+	"growthexperiments-homepage-impact-article-link-tooltip": "নিবন্ধে চলুন",
+	"growthexperiments-homepage-help-cancel": "বাতিল",
+	"growthexperiments-homepage-recent-questions-archived": "আর্কাইভকৃত",
+	"growthexperiments-homepage-mentorship-mentor-edits": "$1টি {{PLURAL:$1|সম্পাদনা}}",
+	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]]-এর করা প্রশ্ন",
+	"growthexperiments-homepage-tutorial-header": "সম্পাদনা করা শিখুন",
+	"growthexperiments-specialimpact-title": "প্রভাব"
 }

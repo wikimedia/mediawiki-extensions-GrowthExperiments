@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Elroy",
-			"Mainframe98"
+			"Mainframe98",
+			"Rots61"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -24,6 +25,8 @@
 	"growthexperiments-homepage-email-button-confirmed": "Voorkeuren",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Uw}} impact",
 	"growthexperiments-homepage-help-cancel": "Annuleren",
+	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|Jouw}} recente vragen",
+	"growthexperiments-homepage-recent-questions-archived": "gearchiveerd",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|bewerking|bewerkingen}}",
 	"growthexperiments-homepage-tutorial-cta-text": "Zelfstudie"
 }
