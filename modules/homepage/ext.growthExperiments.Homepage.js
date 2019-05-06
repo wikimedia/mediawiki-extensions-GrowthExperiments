@@ -34,7 +34,10 @@
 			var $module = $( this ),
 				moduleName = $module.data( 'module-name' );
 			logger.log( moduleName, 'impression', getModuleState( moduleName ), getModuleActionData( moduleName ) );
-		};
+		},
+		helpStorageKey = 'homepage-help',
+		mentorStorageKey = 'homepage-mentor',
+		questionStorageKeys = [ helpStorageKey, mentorStorageKey ];
 
 	/* eslint-disable no-jquery/no-event-shorthand */
 	$( moduleSelector )
@@ -44,9 +47,9 @@
 		.each( logImpression );
 	/* eslint-enable no-jquery/no-event-shorthand */
 
-	mw.hook( 'growthExperiments.helpPanelQuestionPosted' ).add( function ( data ) {
-		var sourceName = data.helppanelquestionposter.source === 'homepage-help' ? 'help' : 'mentor',
-			moduleName = data.helppanelquestionposter.source === 'homepage-help' ? 'help' : 'mentorship',
+	function updateRecentQuestions( source ) {
+		var sourceName = source === helpStorageKey ? 'help' : 'mentor',
+			moduleName = source === helpStorageKey ? 'help' : 'mentorship',
 			storage = 'growthexperiments-' + sourceName + '-questions',
 			$container = $( '.growthexperiments-homepage-module-' + moduleName ),
 			questionsClass = 'recent-questions-growthexperiments-' + sourceName + '-questions',
@@ -61,9 +64,9 @@
 		} )
 			.done( function ( data ) {
 				var $list = $container.find( '.' + questionsClass + '-list' );
-				if ( $list.length ) {
+				if ( $list.length && data.homepagequestionstore.html.length ) {
 					$list.replaceWith( data.homepagequestionstore.html );
-				} else {
+				} else if ( data.homepagequestionstore.html.length ) {
 					$container.append(
 						$( '<div>' )
 							.addClass( questionsClass )
@@ -72,6 +75,8 @@
 								data.homepagequestionstore.html
 							)
 					);
+				} else {
+					$container.find( '.' + questionsClass ).remove();
 				}
 				data.homepagequestionstore.questions.forEach( function ( questionRecord ) {
 					if ( questionRecord.isArchived ) {
@@ -83,7 +88,14 @@
 				moduleActionData.unarchivedQuestions = unarchivedCount;
 				moduleActionData.archivedQuestions = archivedCount;
 			} );
+	}
 
+	mw.hook( 'growthExperiments.helpPanelQuestionPosted' ).add( function ( data ) {
+		updateRecentQuestions( data.helppanelquestionposter.source );
+	} );
+
+	questionStorageKeys.forEach( function ( storageKey ) {
+		updateRecentQuestions( storageKey );
 	} );
 
 }() );

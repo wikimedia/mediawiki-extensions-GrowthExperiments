@@ -3,13 +3,14 @@
 namespace GrowthExperiments\HomepageModules;
 
 use GrowthExperiments\HelpPanel\QuestionFormatter;
+use GrowthExperiments\HelpPanel\QuestionRecord;
 use Html;
 use IContextSource;
 
 class RecentQuestionsFormatter {
 
 	/**
-	 * @var array
+	 * @var QuestionRecord[]
 	 */
 	private $questionRecords;
 	/**

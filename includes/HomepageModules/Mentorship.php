@@ -267,10 +267,10 @@ class Mentorship extends BaseModule {
 		if ( count( $this->recentQuestions ) ) {
 			return $this->recentQuestions;
 		}
-		$this->recentQuestions = QuestionStoreFactory::newFromUserAndStorage(
-			$this->getContext()->getUser(),
+		$this->recentQuestions = QuestionStoreFactory::newFromContextAndStorage(
+			$this->getContext(),
 			self::QUESTION_PREF
-		)->loadQuestionsAndUpdate();
+		)->loadQuestions();
 		return $this->recentQuestions;
 	}
 

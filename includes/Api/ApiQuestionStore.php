@@ -16,14 +16,14 @@ class ApiQuestionStore extends ApiBase {
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
-		$questions = QuestionStoreFactory::newFromUserAndStorage(
-			$this->getUser(),
+		$questions = QuestionStoreFactory::newFromContextAndStorage(
+			$this->getContext(),
 			$params['storage']
-		)->loadQuestions();
+		)->loadQuestionsAndUpdate();
 		if ( !count( $questions ) ) {
-			$this->dieWithError(
-				$this->msg( 'growthexperiments-homepage-questionstore-noquestionsfound' )
-			);
+			$result = [ 'html' => '', 'questions' => '' ];
+			$this->getResult()->addValue( null, $this->getModuleName(), $result );
+			return;
 		}
 
 		$questionFormatter = new RecentQuestionsFormatter(
