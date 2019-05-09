@@ -2,23 +2,24 @@
 
 namespace GrowthExperiments\HelpPanel;
 
+use IContextSource;
 use MediaWiki\MediaWikiServices;
-use User;
 
 class QuestionStoreFactory {
 
 	/**
-	 * @param User $user
+	 * @param IContextSource $context
 	 * @param string $storage
 	 * @return QuestionStore
 	 */
-	public static function newFromUserAndStorage( User $user, $storage ) {
+	public static function newFromContextAndStorage( IContextSource $context, $storage ) {
 		return new QuestionStore(
-			$user,
+			$context->getUser(),
 			$storage,
 			MediaWikiServices::getInstance()->getRevisionStore(),
 			MediaWikiServices::getInstance()->getDBLoadBalancer(),
-			MediaWikiServices::getInstance()->getContentLanguage()
+			MediaWikiServices::getInstance()->getContentLanguage(),
+			$context->getRequest()->wasPosted()
 		);
 	}
 

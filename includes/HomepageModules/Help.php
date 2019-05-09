@@ -119,10 +119,10 @@ class Help extends BaseModule {
 		if ( $this->recentQuestions !== null ) {
 			return $this->recentQuestions;
 		}
-		$this->recentQuestions = QuestionStoreFactory::newFromUserAndStorage(
-			$this->getContext()->getUser(),
+		$this->recentQuestions = QuestionStoreFactory::newFromContextAndStorage(
+			$this->getContext(),
 			self::QUESTION_PREF
-		)->loadQuestionsAndUpdate();
+		)->loadQuestions();
 		return $this->recentQuestions;
 	}
 

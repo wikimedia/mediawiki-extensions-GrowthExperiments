@@ -2,11 +2,12 @@
 
 namespace GrowthExperiments\HelpPanel;
 
-use DeferredUpdates;
 use FormatJson;
+use JobQueueGroup;
 use Language;
 use MediaWiki\Logger\LoggerFactory;
 use TextContent;
+use UserOptionsUpdateJob;
 use Wikimedia\Rdbms\LoadBalancer;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
@@ -20,7 +21,7 @@ class QuestionStore {
 	const MAX_QUESTIONS = 3;
 
 	/**
-	 * @var User
+	 * @var int
 	 */
 	private $user;
 	/**
@@ -39,6 +40,10 @@ class QuestionStore {
 	 * @var Language
 	 */
 	private $language;
+	/**
+	 * @var bool
+	 */
+	private $wasPosted;
 
 	/**
 	 * @param User $user
@@ -46,19 +51,22 @@ class QuestionStore {
 	 * @param RevisionStore $revisionStore
 	 * @param LoadBalancer $loadBalancer
 	 * @param Language $language
+	 * @param bool $wasPosted
 	 */
 	public function __construct(
-		User $user,
+		$user,
 		$preference,
 		RevisionStore $revisionStore,
 		LoadBalancer $loadBalancer,
-		Language $language
+		Language $language,
+		$wasPosted
 	) {
 		$this->user = $user;
 		$this->preference = $preference;
 		$this->revisionStore = $revisionStore;
 		$this->loadBalancer = $loadBalancer;
 		$this->language = $language;
+		$this->wasPosted = $wasPosted;
 	}
 
 	/**
@@ -66,6 +74,7 @@ class QuestionStore {
 	 * @param QuestionRecord $question
 	 */
 	public function add( QuestionRecord $question ) {
+		$question = $this->assignArchiveUrl( $question );
 		$trimmedQuestion = $this->trimQuestion( $question );
 		$questions = $this->prependQuestion( $trimmedQuestion );
 		$this->write( $questions );
@@ -86,10 +95,8 @@ class QuestionStore {
 		$questions = array_filter( $questions );
 		$questionRecords = [];
 		foreach ( $questions as $question ) {
-			$questionRecord = QuestionRecord::newFromArray( $question );
-			if ( $this->isRevisionVisible( $questionRecord ) ) {
-				$questionRecords[] = $questionRecord;
-			}
+			$questionRecords[] = QuestionRecord::newFromArray( $question );
+
 		}
 		return $questionRecords;
 	}
@@ -105,36 +112,32 @@ class QuestionStore {
 		$checkedQuestionRecords = [];
 		$needsUpdate = false;
 		foreach ( $questionRecords as $questionRecord ) {
-			if ( !$questionRecord->isArchived() ) {
-				$questionRecord->setArchived(
-					!$this->questionExistsOnPage( $questionRecord )
-				);
-				if ( !$this->isRevisionVisible( $questionRecord ) ) {
-					$needsUpdate = true;
-					continue;
-				}
-				if ( $questionRecord->isArchived() ) {
-					$questionRecord = $this->setArchiveUrl( $questionRecord );
-					$needsUpdate = true;
-				}
+			$checkedRecord = clone $questionRecord;
+			$checkedRecord->setVisible( $this->isRevisionVisible( $checkedRecord ) );
+			$checkedRecord->setArchived( !$this->questionExistsOnPage( $checkedRecord ) );
+			// b/c, archiveUrl is now set when first added to the store.
+			// todo: Remove with wmf.5
+			if ( $checkedRecord->isArchived() && !$checkedRecord->getArchiveUrl() ) {
+				$checkedRecord = $this->assignArchiveUrl( $checkedRecord );
 			}
-			$checkedQuestionRecords[] = $questionRecord;
+			$checkedQuestionRecords[] = $checkedRecord;
+			if ( $questionRecord->jsonSerialize() !== $checkedRecord->jsonSerialize() ) {
+				$needsUpdate = true;
+			}
 		}
 		if ( $needsUpdate ) {
-			$this->updateStoredQuestions( $checkedQuestionRecords );
+			$this->write( $checkedQuestionRecords );
 		}
-		return $checkedQuestionRecords;
+		return $this->excludeHiddenQuestions( $checkedQuestionRecords );
 	}
 
 	/**
 	 * @param QuestionRecord[] $questionRecords
+	 * @return QuestionRecord[]
 	 */
-	private function updateStoredQuestions( $questionRecords ) {
-		// TODO: When https://gerrit.wikimedia.org/r/c/mediawiki/core/+/499985 lands, we can
-		// push a new UserOptionsUpdateJob to update the question. For now we'll use a deferred
-		// update even though transaction profiler will complain.
-		DeferredUpdates::addCallableUpdate( function () use ( $questionRecords ) {
-			$this->write( $questionRecords );
+	private function excludeHiddenQuestions( array $questionRecords ) {
+		return array_filter( $questionRecords, function ( QuestionRecord $questionRecord ) {
+			return $questionRecord->isVisible();
 		} );
 	}
 
@@ -164,21 +167,41 @@ class QuestionStore {
 	 * @param QuestionRecord[] $questionRecords
 	 */
 	private function write( array $questionRecords ) {
-		$formattedQuestions = FormatJson::encode( $questionRecords, false, FormatJson::ALL_OK );
-		if ( strlen( $formattedQuestions ) <= self::BLOB_SIZE ) {
-			$userLatest = $this->user->getInstanceForUpdate();
-			$userLatest->setOption( $this->preference, $formattedQuestions );
-			$userLatest->saveSettings();
-		} else {
-			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
-				'Unable to save question records for user {userId} because they are too big.',
-				[
-					'userId' => $this->user->getId() ,
-					'storage' => $this->preference,
-					'length' => strlen( $formattedQuestions )
-				]
-			);
+		$formattedQuestions = $this->encodeQuestionsToJson( $questionRecords );
+		$storage = $this->preference;
+		if ( strlen( $formattedQuestions ) >= self::BLOB_SIZE ) {
+			LoggerFactory::getInstance( 'GrowthExperiments' )
+				->warning( 'Unable to save question records for user {userId} because they are too big.',
+					[
+						'userId' => $this->user->getId(),
+						'storage' => $storage,
+						'length' => strlen( $formattedQuestions )
+					] );
+			return;
 		}
+		if ( $this->wasPosted ) {
+			$this->saveToUserSettings( $storage, $formattedQuestions );
+		} else {
+			$this->saveToUserSettingsWithJob( $storage, $formattedQuestions );
+		}
+	}
+
+	private function saveToUserSettings( $storage, $formattedQuestions ) {
+		$updateUser = $this->user->getInstanceForUpdate();
+		$updateUser->setOption( $storage, $formattedQuestions );
+		$updateUser->saveSettings();
+	}
+
+	private function saveToUserSettingsWithJob( $storage, $formattedQuestions ) {
+		$job = new UserOptionsUpdateJob( [
+			'userId' => $this->user->getId(),
+			'options' => [ $storage => $formattedQuestions ]
+		] );
+		JobQueueGroup::singleton()->lazyPush( $job );
+	}
+
+	private function encodeQuestionsToJson( array $questionRecords ) {
+		return FormatJson::encode( $questionRecords, false, FormatJson::ALL_OK );
 	}
 
 	private function prependQuestion( QuestionRecord $questionRecord ) {
@@ -187,11 +210,14 @@ class QuestionStore {
 		return array_slice( $questions, 0, self::MAX_QUESTIONS );
 	}
 
-	private function setArchiveUrl( QuestionRecord $questionRecord ) {
+	private function assignArchiveUrl( QuestionRecord $questionRecord ) {
 		$revision = $this->revisionStore->loadRevisionFromId(
-			$this->loadBalancer->getConnection( DB_REPLICA ),
+			$this->loadBalancer->getConnection( $this->wasPosted ? DB_MASTER : DB_REPLICA ),
 			$questionRecord->getRevId()
 		);
+		if ( !$revision ) {
+			return $questionRecord;
+		}
 		$title = Title::newFromLinkTarget( $revision->getPageAsLinkTarget() );
 		// Hack: Extract fragment from result URL, so we can use it for archive URL.
 		$fragment = substr(

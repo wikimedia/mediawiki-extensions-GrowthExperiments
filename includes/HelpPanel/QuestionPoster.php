@@ -108,10 +108,6 @@ abstract class QuestionPoster {
 		if ( !$permissionStatus->isGood() ) {
 			return $permissionStatus;
 		}
-		$questionStore = QuestionStoreFactory::newFromUserAndStorage(
-			$this->getContext()->getUser(),
-			$this->getQuestionStoragePref()
-		);
 		$this->pageUpdater->addTag( $this->getTag() );
 		$this->pageUpdater->setContent( SlotRecord::MAIN, $this->getContent() );
 		$newRev = $this->pageUpdater->saveRevision(
@@ -130,9 +126,13 @@ abstract class QuestionPoster {
 			$this->getPostedOnTimestamp(),
 			$this->getResultUrl()
 		);
-		$questionStore->add( $question );
+		QuestionStoreFactory::newFromContextAndStorage(
+			$this->getContext(),
+			$this->getQuestionStoragePref()
+		)->add( $question );
 		return Status::newGood();
 	}
+
 	private function checkPermissions() {
 		$userPermissionStatus = $this->checkUserPermissions();
 		if ( !$userPermissionStatus->isGood() ) {
