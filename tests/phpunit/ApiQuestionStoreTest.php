@@ -42,7 +42,7 @@ class ApiQuestionStoreTest extends ApiTestCase {
 				'action' => 'homepagequestionstore',
 				'storage' => $storage,
 			], null, $this->getMutableTestUser()->getUser() );
-			$this->assertArrayEquals( [ 'html' => '', 'questions' => '' ],
+			$this->assertArrayEquals( [ 'html' => '', 'questions' => [] ],
 				$response[0]['homepagequestionstore'] );
 		}
 	}

@@ -21,7 +21,7 @@ class ApiQuestionStore extends ApiBase {
 			$params['storage']
 		)->loadQuestionsAndUpdate();
 		if ( !count( $questions ) ) {
-			$result = [ 'html' => '', 'questions' => '' ];
+			$result = [ 'html' => '', 'questions' => [] ];
 			$this->getResult()->addValue( null, $this->getModuleName(), $result );
 			return;
 		}
