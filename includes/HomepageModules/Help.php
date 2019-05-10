@@ -5,6 +5,7 @@ namespace GrowthExperiments\HomepageModules;
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
+use Html;
 use IContextSource;
 use OOUI\ButtonWidget;
 use OOUI\Tag;
@@ -15,26 +16,47 @@ class Help extends BaseModule {
 	const QUESTION_PREF = 'growthexperiments-help-questions';
 	/** @var QuestionRecord[]|null */
 	private $recentQuestions = null;
+	/**
+	 * @var string
+	 */
+	private $helpDeskUrl;
 
 	/**
 	 * @inheritDoc
 	 */
 	public function __construct( IContextSource $context ) {
 		parent::__construct( 'help', $context );
+		$this->helpDeskUrl = HelpPanel::getHelpDeskTitle( $context->getConfig() )->getLinkURL();
 	}
 
 	/**
-	 * @return string
+	 * @inheritDoc
 	 */
 	protected function getHeader() {
 		return $this->getContext()->msg( 'growthexperiments-homepage-help-header' )->escaped();
 	}
 
 	/**
-	 * @return string
+	 * @inheritDoc
 	 */
 	protected function getSubheader() {
 		return $this->getContext()->msg( 'growthexperiments-homepage-help-subheader' )->escaped();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getFooter() {
+		return Html::element(
+			'a',
+			[
+				'href' => $this->helpDeskUrl,
+				'data-link-id' => 'help-desk-questions',
+			],
+			$this->getContext()
+				->msg( 'growthexperiments-homepage-help-desk-questions' )
+				->text()
+		);
 	}
 
 	/**
@@ -60,7 +82,7 @@ class Help extends BaseModule {
 	}
 
 	/**
-	 * @return string|string[]
+	 * @inheritDoc
 	 */
 	protected function getModules() {
 		return 'ext.growthExperiments.Homepage.Help';
@@ -93,9 +115,7 @@ class Help extends BaseModule {
 			->addClasses( [ 'mw-ge-homepage-help-cta' ] )
 			->appendContent( new ButtonWidget( [
 				'id' => 'mw-ge-homepage-help-cta',
-				'href' => HelpPanel::getHelpDeskTitle(
-					$this->getContext()->getConfig()
-				)->getLinkURL(),
+				'href' => $this->helpDeskUrl,
 				'label' => $this->getContext()->msg(
 					'growthexperiments-homepage-help-ask-help-desk'
 				)->text(),
