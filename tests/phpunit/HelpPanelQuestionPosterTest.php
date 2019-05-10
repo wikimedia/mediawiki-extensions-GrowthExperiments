@@ -3,12 +3,15 @@
 namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
+use FauxRequest;
 use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
 use HashConfig;
 use MediaWikiTestCase;
 use RequestContext;
 use Status;
 use Title;
+use User;
+use WikiPage;
 
 /**
  * Class HelpPanelQuestionPosterTest
@@ -19,10 +22,15 @@ use Title;
 class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
 
 	/**
+	 * @var User|null
+	 */
+	private $mutableTestUser = null;
+
+	/**
 	 * @throws \MWException
 	 * @expectedExceptionMessage User must be logged-in.
 	 * @expectedException \MWException
-	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster::__construct
+	 * @covers \GrowthExperiments\HelpPanel\HelpPanelQuestionPoster::__construct
 	 */
 	public function testConstruct() {
 		$context = $this->buildContext();
@@ -33,7 +41,7 @@ class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
 	/**
 	 * @throws \MWException
 	 * @group Database
-	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster::submit
+	 * @covers \GrowthExperiments\HelpPanel\HelpPanelQuestionPoster::submit
 	 */
 	public function testSubmitExistingTarget() {
 		$this->insertPage( 'HelpDeskTest', '' );
@@ -41,7 +49,7 @@ class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
 		$questionPoster->submit();
 		$revision = $questionPoster->getRevisionId();
 		$this->assertGreaterThan( 0, $revision );
-		$page = new \WikiPage( Title::newFromText( 'HelpDeskTest' ) );
+		$page = new WikiPage( Title::newFromText( 'HelpDeskTest' ) );
 		$this->assertRegExp(
 			'/a great question/',
 			$page->getContent()->getSection( 1 )->serialize()
@@ -51,7 +59,7 @@ class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
 	/**
 	 * @throws \MWException
 	 * @group Database
-	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster::submit
+	 * @covers \GrowthExperiments\HelpPanel\HelpPanelQuestionPoster::submit
 	 */
 	public function testSubmitNewTarget() {
 		$title = $this->getNonexistingTestPage()->getTitle();
@@ -62,7 +70,7 @@ class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
 		$questionPoster->submit();
 		$revision = $questionPoster->getRevisionId();
 		$this->assertGreaterThan( 0, $revision );
-		$page = new \WikiPage( $title );
+		$page = new WikiPage( $title );
 		$this->assertRegExp(
 			'/a great question/',
 			$page->getContent()->getSection( 1 )->serialize()
@@ -70,7 +78,7 @@ class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster::validateRelevantTitle
+	 * @covers \GrowthExperiments\HelpPanel\HelpPanelQuestionPoster::validateRelevantTitle
 	 * @throws \MWException
 	 */
 	public function testValidateRelevantTitle() {
@@ -88,8 +96,12 @@ class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
 	}
 
 	private function buildContext( $helpDeskTitle = 'HelpDeskTest' ) {
+		if ( $this->mutableTestUser === null ) {
+			$this->mutableTestUser = $this->getMutableTestUser()->getUser();
+		}
 		$context = new DerivativeContext( RequestContext::getMain() );
-		$context->setUser( $this->getTestUser()->getUser() );
+		$context->setRequest( new FauxRequest( [], true ) );
+		$context->setUser( $this->mutableTestUser->getInstanceForUpdate() );
 		$context->setConfig( new HashConfig( [
 			'GEHelpPanelHelpDeskTitle' => $helpDeskTitle,
 		] ) );

@@ -71,18 +71,29 @@ abstract class QuestionPoster {
 	 */
 	private $postedOnTimestamp;
 	/**
+	 * @var QuestionRecord[]
+	 */
+	private $existingQuestionsByUser;
+	/**
 	 * @var string
 	 */
 	private $body;
+	/**
+	 * @var string
+	 */
+	private $sectionHeaderWithTimestamp;
 
 	/**
 	 * QuestionPoster constructor.
 	 * @param IContextSource $context
 	 * @param string $body
 	 * @param string $relevantTitle
+	 * @param string $postedOnTimestamp
 	 * @throws MWException
 	 */
-	public function __construct( IContextSource $context, $body, $relevantTitle = '' ) {
+	public function __construct(
+		IContextSource $context, $body, $relevantTitle = '', $postedOnTimestamp = ''
+	) {
 		$this->context = $context;
 		$this->relevantTitle = $relevantTitle;
 		if ( $this->getContext()->getUser()->isAnon() ) {
@@ -94,7 +105,7 @@ abstract class QuestionPoster {
 		$page = new WikiPage( $this->targetTitle );
 		$this->pageUpdater = $page->newPageUpdater( $this->getContext()->getUser() );
 		$this->parser = MediaWikiServices::getInstance()->getParser();
-		$this->postedOnTimestamp = wfTimestamp();
+		$this->postedOnTimestamp = $postedOnTimestamp ?? wfTimestamp();
 		$this->body = $body;
 	}
 
@@ -108,6 +119,12 @@ abstract class QuestionPoster {
 		if ( !$permissionStatus->isGood() ) {
 			return $permissionStatus;
 		}
+		$questionStore = QuestionStoreFactory::newFromContextAndStorage(
+			$this->getContext(),
+			$this->getQuestionStoragePref()
+		);
+		$this->existingQuestionsByUser = $questionStore->loadQuestions();
+		$this->setSectionHeaderWithTimestamp();
 		$this->pageUpdater->addTag( $this->getTag() );
 		$this->pageUpdater->setContent( SlotRecord::MAIN, $this->getContent() );
 		$newRev = $this->pageUpdater->saveRevision(
@@ -131,6 +148,21 @@ abstract class QuestionPoster {
 			$this->getQuestionStoragePref()
 		)->add( $question );
 		return Status::newGood();
+	}
+
+	private function getNumberedSectionHeaderIfDuplicatesExist( $sectionHeader ) {
+		$sectionHeaders = array_map(
+			function ( QuestionRecord $questionRecord ) {
+				return $questionRecord->getSectionHeader();
+			},
+			$this->existingQuestionsByUser
+		);
+		$counter = 1;
+		while ( in_array( $counter === 1 ? $sectionHeader : "$sectionHeader ($counter)",
+			$sectionHeaders ) ) {
+			$counter++;
+		}
+		return $counter === 1 ? $sectionHeader : $sectionHeader . ' (' . $counter . ')';
 	}
 
 	private function checkPermissions() {
@@ -267,22 +299,26 @@ abstract class QuestionPoster {
 	}
 
 	/**
-	 * Get the section header with a timestamp appended.
+	 * Set the section header with a timestamp and number.
 	 *
-	 * @return string
+	 * THe number is appended only if duplicate headers exist, which can happen when questions
+	 * are posted within the same minute.
 	 */
-	protected function getSectionHeaderWithTimestamp() {
-		return $this->getSectionHeader() . ' ' .
+	private function setSectionHeaderWithTimestamp() {
+		$this->sectionHeaderWithTimestamp = $this->getSectionHeader() . ' ' .
 			$this->getContext()->msg( 'parentheses' )
 				->plaintextParams( $this->getFormattedPostedOnTimestamp() )
 				->inContentLanguage()->escaped();
+		$this->sectionHeaderWithTimestamp = $this->getNumberedSectionHeaderIfDuplicatesExist(
+			$this->sectionHeaderWithTimestamp
+		);
 	}
 
 	/**
-	 * @param string $timestamp
+	 * @return string
 	 */
-	private function setPostedOnTimestamp( $timestamp ) {
-		$this->postedOnTimestamp = $timestamp;
+	private function getSectionHeaderWithTimestamp() {
+		return $this->sectionHeaderWithTimestamp;
 	}
 
 	/**
