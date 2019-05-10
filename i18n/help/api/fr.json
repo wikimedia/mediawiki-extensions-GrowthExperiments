@@ -9,5 +9,6 @@
 	"apihelp-helppanelquestionposter-param-body": "Le texte de la question posée par l'utilisateur.",
 	"apihelp-helppanelquestionposter-param-source": "Le composant à la source de la question. Les valeurs valides sont 'helppanel', 'homepage-help' et 'homepage-mentorship'",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Le titre concerné, si sélectionné, à inclure avec la question.",
-	"apihelp-helppanelquestionposter-param-email": "L’adresse de messagerie facultative, si l’utilisateur a un courriel non confirmé ou pas de courriel, à utiliser pour envoyer un courriel de vérification."
+	"apihelp-helppanelquestionposter-param-email": "Adresse de messagerie facultative, si l’utilisateur n’a pas d’adresse définie. L’adresse de l’utilisateur sera positionnée à cette adresse, et un courriel de confirmation y sera envoyé.",
+	"apihelp-helppanelquestionposter-param-resendconfirmation": "Envoyer un autre courriel de confirmation à l’adresse de messagerie existante de l’utilisateur."
 }

@@ -7,5 +7,6 @@
 	"apihelp-helppanelquestionposter-summary": "Bearbeitet Fragen, die über das Hilfepanel des aktuellen Benutzers eingereicht wurden.",
 	"apihelp-helppanelquestionposter-param-body": "Der Text der Frage, die vom Benutzer angegeben wurde.",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Der relevante Titel, falls ausgewählt, der in der Frage enthalten sein soll.",
-	"apihelp-helppanelquestionposter-param-email": "Die optionale E-Mail-Adresse, falls der Benutzer eine unbestätigte oder keine E-Mail-Adresse hat, zu verwenden für den Versand einer Verifizierungs-E-Mail."
+	"apihelp-helppanelquestionposter-param-email": "Die optionale E-Mail-Adresse, falls der Benutzer eine unbestätigte oder keine E-Mail-Adresse hat, zu verwenden für den Versand einer Verifizierungs-E-Mail.",
+	"apihelp-helppanelquestionposter-param-resendconfirmation": "Eine weitere Bestätigungs-E-Mail an die vorhandene E-Mail-Adresse des Benutzers versenden."
 }
