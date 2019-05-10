@@ -362,6 +362,7 @@ abstract class QuestionPoster {
 	 */
 	private function runEditFilterMergedContentHook( Content $content, $summary ) {
 		$derivativeContext = new DerivativeContext( $this->getContext() );
+		$derivativeContext->setConfig( MediaWikiServices::getInstance()->getMainConfig() );
 		$derivativeContext->setTitle( $this->getTargetTitle() );
 		$derivativeContext->setWikiPage( WikiPage::factory( $this->getTargetTitle() ) );
 		$status = new Status();
