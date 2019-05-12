@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo Addad de Oliveira"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|o que é isso?]])",
+	"growthexperiments-confirmemail-emailhelp": "E-mail é necessário para recuperar sua conta se você perder sua senha.",
+	"growthexperiments-confirmemail-emailrecommended": "Endereço de e-mail (recomendado)",
+	"growthexperiments-confirmemail-emailwarning": "Por favor, procure um e-mail nosso para confirmar seu endereço.",
+	"growthexperiments-confirmemail-confirm-subject": "Bem-vindo ao {{SITENAME}}: por favor, confirme seu endereço de e-mail",
+	"growthexperiments-confirmemail-confirm-button": "Confirmar endereço de E-mail"
+}

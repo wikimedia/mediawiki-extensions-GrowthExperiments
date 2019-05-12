@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Metalhead64"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "Ruft formatierte Fragen ab, die über die Startseiten-Module gepostet wurden.",
+	"apihelp-homepagequestionstore-param-questionformat": "Das zurückzugebende Format der Fragen, z.&nbsp;B. HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Der Speicherort der Fragen.",
+	"apihelp-homepagequestionstore-param-userid": "Die Kennung des Benutzers, für den Fragen abgerufen werden sollen.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Keine Fragen gefunden."
+}

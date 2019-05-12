@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "Obtener questiones formatate inviate via modulos del pagina principal",
+	"apihelp-homepagequestionstore-param-questionformat": "Le formato in le qual retornar le questiones, p.ex. HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Le loco de immagazinage del questiones.",
+	"apihelp-homepagequestionstore-param-userid": "Le ID del usator pro le qual obtener questiones.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Nulle question trovate."
+}

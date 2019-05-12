@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|ce jè quiste?]])",
+	"growthexperiments-confirmemail-emailhelp": "Email jè richieste pe cuprì 'u cunde tune ce è perse 'a passuord.",
+	"growthexperiments-confirmemail-emailrecommended": "Indirizze email (conzigliate)",
+	"growthexperiments-confirmemail-emailwarning": "Pe piacere cirche 'n'email da nuje pe condrollà 'u 'ndirizze tune.",
+	"growthexperiments-confirmemail-confirm-subject": "Bovègne jndr'à {{SITENAME}}: Pe piacere conferme 'u 'ndirizze email tune",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Cià}} $2,\n\nGrazie pe avè aggiunde 'n'email a 'u cunde tune de {{SITENAME}}, reggistrate da l'indirizze IP $1.\n\nPe piacere cazze sus a 'u buttone aqquà sotte pe confermà quiste cumme indirizze email ca tu vuè pe collegarte a 'u cunde tune \"$2\":\n\n$3\n\n'Ndruche bbuène: stu codece de conferme <strong>scade 'u $4</strong>.\n\nGrazie,\n\n{{SITENAME}}\n\n----\n\nPe scangellà l'indirizze email confermate (purcé non g'è reggistrate 'u cunde o pe otre mutive), cazze sus a 'u collegamende de scangellazione:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "Conferme l'indirizze e-mail",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Cià}} $2,\n\nGrazie pe avè aggiunde 'n'email a 'u cunde tune de {{SITENAME}}, reggistrate da l'indirizze IP $1.\n\nPe piacere cazze sus a 'u buttone aqquà sotte pe confermà quiste cumme indirizze email ca tu vuè pe collegarte a 'u cunde tune \"$2\":\n\n$3\n\n'Ndruche bbuène: stu codece de conferme scade 'u $4.\n\nGrazie,\n\n{{SITENAME}}\n\n----\n\nPe scangellà l'indirizze email confermate (purcé non g'è reggistrate 'u cunde o pe otre mutive), cazze sus a 'u collegamende de scangellazione:\n\n$5"
+}

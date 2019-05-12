@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Epok"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|qu'est-ce que c'est ?]])",
+	"growthexperiments-confirmemail-emailhelp": "Un e-mail est nécessaire pour récupérer votre compte en cas de perte du mot de passe.",
+	"growthexperiments-confirmemail-emailrecommended": "Adresse e-mail (recommandée)",
+	"growthexperiments-confirmemail-emailwarning": "Vous devriez avoir reçu un e-mail de notre part vous permettant de vérifier votre adresse.",
+	"growthexperiments-confirmemail-confirm-subject": "Bienvenue sur {{SITENAME}} : merci de confirmer votre adresse e-mail",
+	"growthexperiments-confirmemail-confirm-button": "Confirmer l'adresse e-mail"
+}

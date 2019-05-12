@@ -8,5 +8,6 @@
 	"apihelp-helppanelquestionposter-param-body": "'U teste d'a domande date da l'utende.",
 	"apihelp-helppanelquestionposter-param-source": "'U combonende a 'a fonde de sta dumande. Valore valide sò 'helppanel', 'homepage-help', e 'homepage-mentorship'",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "'U titole rilevande, ce scacchiate, 'da 'ngludere cu 'a domande.",
-	"apihelp-helppanelquestionposter-param-email": "L'indirizze email facoltative, ce l'utende ave 'na mail non confermate o non g'ha tène probbie, da ausà pe mannà 'n'email de verifiche."
+	"apihelp-helppanelquestionposter-param-email": "L'indirizze email facoltative, ce l'utende non g'ave 'mbostate 'na mail. L'email de l'utende avène mise a stu indirizze e 'n'email de conferme avène mannate.",
+	"apihelp-helppanelquestionposter-param-resendconfirmation": "Manne 'n'otre email de conferme a l'indirizze email esistende de l'utende."
 }

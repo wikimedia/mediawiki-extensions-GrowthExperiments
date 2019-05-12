@@ -23,5 +23,6 @@
 	"growthexperiments-homepage-help-cancel": "Скасувати",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|редагування|редагування|редагувань}}",
 	"growthexperiments-homepage-tutorial-header": "Навчіться редагувати",
-	"growthexperiments-homepage-tutorial-cta-text": "Посібник"
+	"growthexperiments-homepage-tutorial-cta-text": "Посібник",
+	"growthexperiments-specialimpact-title": "Вплив"
 }

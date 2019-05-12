@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardo Addad de Oliveira"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "Obter perguntas formatadas postadas via módulos da página inicial",
+	"apihelp-homepagequestionstore-param-questionformat": "O formato para devolver as perguntas, por ex. HTML",
+	"apihelp-homepagequestionstore-param-storage": "O local de armazenamento das perguntas.",
+	"apihelp-homepagequestionstore-param-userid": "O ID do usuário para obter perguntas.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Nenhuma pergunta encontrada."
+}
