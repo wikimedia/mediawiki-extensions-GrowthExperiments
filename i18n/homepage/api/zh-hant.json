@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "取得透過首頁模組所發佈的格式化問題",
+	"apihelp-homepagequestionstore-param-questionformat": "回傳問題的格式，例如：HTML。",
+	"apihelp-homepagequestionstore-param-storage": "問題的存放位置。",
+	"apihelp-homepagequestionstore-param-userid": "用來取得問題的使用者 ID。",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "查無問題。"
+}

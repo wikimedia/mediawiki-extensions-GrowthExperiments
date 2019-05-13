@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ykhwong"
+		]
+	},
+	"apihelp-helppanelquestionposter-param-resendconfirmation": "사용자의 기존 이메일 주소로 다른 인증 이메일을 보냅니다."
+}

@@ -8,5 +8,6 @@
 	"apihelp-helppanelquestionposter-param-body": "由使用者所提供的問題文字。",
 	"apihelp-helppanelquestionposter-param-source": "問題來源的組成部分。有效的值是「helppanel」、「homepage-help」、和「homepage-mentorship」",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "關聯標題。若有選擇的話請包含問題。",
-	"apihelp-helppanelquestionposter-param-email": "選填的電子郵件地址。用於當使用者的電子郵件未被確認或是沒有電子郵件時，發送驗證電子郵件。"
+	"apihelp-helppanelquestionposter-param-email": "選填的電子郵件地址，若使用者尚未設定電子郵件。使用者的電子郵件將會設定成該地址，並會發送確認電子郵件。",
+	"apihelp-helppanelquestionposter-param-resendconfirmation": "發送其它確認電子郵件到使用者的現有電子郵件地址。"
 }

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "（[[Special:Captcha/help|這是什麼？]]）",
+	"growthexperiments-confirmemail-emailhelp": "若您遺失您的密碼，需要電子郵件來恢復您的帳號。",
+	"growthexperiments-confirmemail-emailrecommended": "電子郵件地址（建議）",
+	"growthexperiments-confirmemail-emailwarning": "請查看由我們發送的電子郵件來確認您的地址。",
+	"growthexperiments-confirmemail-confirm-subject": "歡迎來到{{SITENAME}}：請確認您的電子郵件地址",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|嗨}}$2：\n\n感謝添加電子郵件到您註冊自 IP 地址 $1 的{{SITENAME}}帳號。\n\n請點擊下方按鈕來確認您要將電子郵件連結至您的帳號「$2」：\n\n$3\n\n請注意：確認碼<strong>會在$4後失效</strong>。\n\n謝謝您\n\n{{SITENAME}}\n\n----\n\n要取消電子郵件地址確認（因為您尚未註冊帳號或是出於其它因素），點擊此取消連結：\n$5",
+	"growthexperiments-confirmemail-confirm-button": "確認電子郵件地址",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|嗨}}$2：\n\n感謝添加電子郵件到您註冊自 IP 地址 $1 的{{SITENAME}}帳號。\n\n請點擊下方按鈕來確認您要將電子郵件連結至您的帳號「$2」：\n\n$3\n\n請注意：確認碼會在$4後失效。\n\n謝謝您\n\n{{SITENAME}}\n\n----\n\n要取消電子郵件地址確認（因為您尚未註冊帳號或是出於其它因素），點擊此取消連結：\n$5"
+}
