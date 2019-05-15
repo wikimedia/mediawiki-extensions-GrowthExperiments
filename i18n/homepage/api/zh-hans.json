@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"科劳"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "获取通过主页模块发布，并且已格式化的问题",
+	"apihelp-homepagequestionstore-param-questionformat": "此属性为以上问题将被返回的格式；例如：html",
+	"apihelp-homepagequestionstore-param-storage": "问题的存储位置",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "找不到问题。"
+}
