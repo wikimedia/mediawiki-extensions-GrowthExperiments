@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tuanminh01"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "Lấy các câu hỏi được định dạng được đăng qua các mô-đun trang chủ",
+	"apihelp-homepagequestionstore-param-questionformat": "Định dạng để trả về các câu hỏi, ví dụ: HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Kho lưu trữ của các câu hỏi.",
+	"apihelp-homepagequestionstore-param-userid": "ID người dùng để lấy câu hỏi.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Không có câu hỏi nào."
+}

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hamilton Abreu"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|o que é isto?]])",
+	"growthexperiments-confirmemail-emailhelp": "O correio eletrónico é necessário para recuperar a sua conta se perder a palavra-passe.",
+	"growthexperiments-confirmemail-emailrecommended": "Correio eletrónico (recomendado)",
+	"growthexperiments-confirmemail-emailwarning": "Procure uma mensagem de correio nossa para verificar o seu endereço, por favor.",
+	"growthexperiments-confirmemail-confirm-subject": "Bem-vindo(a) à wiki {{SITENAME}}: confirme o seu endereço de correio eletrónico, por favor",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Olá}} $2,\n\nObrigado por ter adicionado um endereço à sua conta na wiki {{SITENAME}}, registada do endereço IP $1.\n\nClique o botão abaixo, por favor, para confirmar este endereço de correio eletrónico como aquele que gostaria de associar à sua conta \"$2\":\n\n$3\n\nNota: este código de confirmação <strong>expira em $4</strong>.\n\nObrigado,\n\n{{SITENAME}}\n\n----\n\nPara cancelar a confirmação do endereço de correio eletrónico (porque não registou a conta, ou por qualquer outra razão) clique esta hiperligação de cancelamento:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "Confirmar endereço de correio eletrónico",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Olá}} $2,\n\nObrigado por ter adicionado um endereço à sua conta na wiki {{SITENAME}}, registada do endereço IP $1.\n\nClique a hiperligação abaixo, por favor, para confirmar este endereço de correio eletrónico como aquele que gostaria de associar à sua conta \"$2\":\n\n$3\n\nNota: este código de confirmação expira em $4.\n\nObrigado,\n\n{{SITENAME}}\n\n----\n\nPara cancelar a confirmação do endereço de correio eletrónico (porque não registou a conta, ou por qualquer outra razão) clique esta hiperligação de cancelamento:\n\n$5"
+}
