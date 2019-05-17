@@ -38,7 +38,7 @@ class SpecialHomepage extends SpecialPage {
 		$tutorialTitle = Title::newFromText(
 			$this->getConfig()->get( Tutorial::TUTORIAL_TITLE_CONFIG )
 		);
-		if ( $tutorialTitle->getPrefixedDBkey() !== $par ) {
+		if ( !$tutorialTitle || $tutorialTitle->getPrefixedDBkey() !== $par ) {
 			return;
 		}
 		$user = $this->getUser();
