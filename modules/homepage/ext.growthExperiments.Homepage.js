@@ -53,7 +53,7 @@
 			storage = 'growthexperiments-' + sourceName + '-questions',
 			$container = $( '.growthexperiments-homepage-module-' + moduleName ),
 			questionsClass = 'recent-questions-growthexperiments-' + sourceName + '-questions',
-			moduleActionData = mw.config.get( 'wgGEHomepageModuleActionData-' + moduleName ),
+			moduleActionData = getModuleActionData( moduleName ),
 			archivedCount = 0,
 			unarchivedCount = 0;
 
