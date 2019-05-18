@@ -52,7 +52,8 @@
 		"GetPreferences": [
 			"GrowthExperiments\\WelcomeSurveyHooks::onGetPreferences",
 			"GrowthExperiments\\HelpPanelHooks::onGetPreferences",
-			"GrowthExperiments\\HomepageHooks::onGetPreferences"
+			"GrowthExperiments\\HomepageHooks::onGetPreferences",
+			"GrowthExperiments\\TourHooks::onGetPreferences"
 		],
 		"BeforeWelcomeCreation": [
 			"GrowthExperiments\\WelcomeSurveyHooks::onBeforeWelcomeCreation"
@@ -86,6 +87,9 @@
 		],
 		"UserSaveOptions": [
 			"GrowthExperiments\\HomepageHooks::onUserSaveOptions"
+		],
+		"ResourceLoaderRegisterModules": [
+			"GrowthExperiments\\TourHooks::onResourceLoaderRegisterModules"
 		]
 	},
 	"ResourceFileModulePaths": {
