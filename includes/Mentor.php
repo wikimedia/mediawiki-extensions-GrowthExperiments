@@ -5,6 +5,7 @@ namespace GrowthExperiments;
 use ConfigException;
 use DeferredUpdates;
 use Exception;
+use IContextSource;
 use MediaWiki\MediaWikiServices;
 use ParserOptions;
 use Title;
@@ -116,6 +117,67 @@ class Mentor {
 			$user->setOption( Mentor::MENTOR_PREF, $mentor->getId() );
 			$user->saveSettings();
 		} );
+	}
+
+	/**
+	 * Returns the custom introduction text for a mentor or falls back to a default text
+	 * @param IContextSource $context
+	 * @return mixed|string
+	 * @throws ConfigException
+	 * @throws \MWException
+	 */
+	public function getIntroText( IContextSource $context ) {
+		$introText = $this->getCustomMentorIntroText( $context );
+		if ( $introText === '' ) {
+			$introText = $this->getDefaultMentorIntroText( $context );
+		}
+		return $introText;
+	}
+
+	/**
+	 * @param IContextSource $context
+	 * @return mixed|string
+	 * @throws ConfigException
+	 * @throws \MWException
+	 */
+	private function getCustomMentorIntroText( IContextSource $context ) {
+		preg_match(
+			sprintf( '/:%s]]\s*\|\s*(.*)/', preg_quote( $this->getMentorUser()->getName(), '/' ) ),
+			$this->getMentorsPageContent( $context ),
+			$matches
+		);
+
+		return $matches[1] ?? '';
+	}
+
+	/**
+	 * @param IContextSource $context
+	 * @return string
+	 */
+	private function getDefaultMentorIntroText( IContextSource $context ) {
+		return $context
+			->msg( 'growthexperiments-homepage-mentorship-intro' )
+			->params( $this->getMentorUser()->getName() )
+			->params( $context->getUser()->getName() )
+			->text();
+	}
+
+	/**
+	 * @param IContextSource $context
+	 * @return string
+	 * @throws ConfigException
+	 * @throws \MWException
+	 */
+	private function getMentorsPageContent( IContextSource $context ) {
+		$config = $context->getConfig();
+		$mentorsPageName = $config->get( 'GEHomepageMentorsList' );
+		$title = Title::newFromText( $mentorsPageName );
+		$page = WikiPage::factory( $title );
+
+		/** @var $content \WikitextContent */
+		$content = $page->getContent();
+		// @phan-suppress-next-line PhanUndeclaredMethod
+		return $content->getText();
 	}
 
 }

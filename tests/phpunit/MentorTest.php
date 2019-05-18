@@ -2,8 +2,10 @@
 
 namespace GrowthExperiments\Tests;
 
+use DerivativeContext;
 use GrowthExperiments\Mentor;
 use MediaWikiTestCase;
+use RequestContext;
 
 /**
  * @group Database
@@ -114,5 +116,43 @@ class MentorTest extends MediaWikiTestCase {
 		$this->insertPage( 'MentorsList', 'Mentors' );
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
 		Mentor::newFromMentee( $this->getMutableTestUser()->getUser(), true );
+	}
+
+	/**
+	 * @covers \GrowthExperiments\Mentor::getIntroText
+	 */
+	public function testRenderCustomMentorText() {
+		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
+		$mentorUser = $this->getTestUser( 'sysop' )->getUser();
+		$mentee = $this->getMutableTestUser()->getUser();
+		$this->insertPage( 'MentorsList',
+			'[[User:' . $mentorUser->getName() . ']] | This is a sample text.' );
+		$mentee->setOption( Mentor::MENTOR_PREF, $mentorUser->getId() );
+		$mentee->saveSettings();
+
+		$mentor = Mentor::newFromMentee( $mentee );
+		$context = new DerivativeContext( RequestContext::getMain() );
+		$context->setUser( $mentee );
+		$this->assertContains( 'This is a sample text.', $mentor->getIntroText( $context ) );
+	}
+
+	/**
+	 * @covers \GrowthExperiments\Mentor::getIntroText
+	 */
+	public function testRenderFallbackMentorText() {
+		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
+		$mentorUser = $this->getTestUser( 'sysop' )->getUser();
+		$mentee = $this->getMutableTestUser()->getUser();
+		$this->insertPage( 'MentorsList', '[[User:' . $mentorUser->getName() . ']]' );
+		$mentee->setOption( Mentor::MENTOR_PREF, $mentorUser->getId() );
+		$mentee->saveSettings();
+
+		$mentor = Mentor::newFromMentee( $mentee );
+		$context = new DerivativeContext( RequestContext::getMain() );
+		$context->setUser( $mentee );
+		$this->assertContains(
+			'This experienced user knows you\'re new and can help you with editing.',
+			$mentor->getIntroText( $context )
+		);
 	}
 }
