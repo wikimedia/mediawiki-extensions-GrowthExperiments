@@ -2,13 +2,25 @@
 	"@metadata": {
 		"authors": [
 			"Kareyac",
-			"Movses"
+			"Movses",
+			"1233qwer1234qwer4",
+			"Urfiner"
 		]
 	},
+	"growthexperiments-homepage-tab": "Домашняя страница",
+	"prefs-homepage": "Домашняя страница нового участника",
+	"growthexperiments-homepage-account-header": "Учётная запись создана",
+	"growthexperiments-homepage-userpage-button": "Создать страницу пользователя",
+	"growthexperiments-homepage-email-header-unconfirmed": "Подтвердить {{GENDER:$1|ваш}} email",
 	"growthexperiments-homepage-email-header-confirmed": "Адрес электронной почты добавлен",
+	"growthexperiments-homepage-email-button-noemail": "Добавить адрес электронной почты",
 	"growthexperiments-homepage-email-button-unconfirmed": "Получить новую ссылку",
 	"growthexperiments-homepage-email-button-confirmed": "Настройки",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Ваше}} влияние",
+	"growthexperiments-homepage-impact-article-link-tooltip": "Перейти к статье",
+	"growthexperiments-homepage-help-cancel": "Отмена",
 	"growthexperiments-homepage-mentorship-question-subject": "Вопрос от [[User:$1|$1]]",
 	"growthexperiments-homepage-tutorial-header": "Узнайте, как редактировать",
-	"growthexperiments-homepage-tutorial-cta-text": "Руководство"
+	"growthexperiments-homepage-tutorial-cta-text": "Руководство",
+	"growthexperiments-specialimpact-title": "Влияние"
 }

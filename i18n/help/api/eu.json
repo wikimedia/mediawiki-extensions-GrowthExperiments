@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Theklan"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Oraingo erabiltzaileak laguntza paneletik egindako galderak kudeatu.",
+	"apihelp-helppanelquestionposter-param-body": "Erabiltzaileak bidalitako galderaren testua.",
+	"apihelp-helppanelquestionposter-param-source": "The component at the source of the question. Valid values are 'helppanel', 'homepage-help', and 'homepage-mentorship'",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Izenburu esangurtsua, aukeratu bada, galderan gehitzeko.",
+	"apihelp-helppanelquestionposter-param-email": "Erabiltzaileak e-postarik ezarri ez badu, aukerazko e-posta. Eraibltzaileari e-posta hau esleituko zaio, eta mezu bat bidali.",
+	"apihelp-helppanelquestionposter-param-resendconfirmation": "Bidali beste ziurtatze mezu bat erabiltzaileak esandako e-posta helbidera."
+}

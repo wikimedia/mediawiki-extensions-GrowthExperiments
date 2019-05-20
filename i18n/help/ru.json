@@ -2,7 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Vlad5250",
-			"Alexandr Efremov"
+			"Alexandr Efremov",
+			"1233qwer1234qwer4",
+			"Urfiner"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Включить редактор в панели помощи",
@@ -16,7 +18,10 @@
 	"growthexperiments-help-panel-questionreview-title": "Задайте вопрос",
 	"growthexperiments-help-panel-questionreview-email": "Эл. почта",
 	"growthexperiments-help-panel-questionreview-label": "Ваш вопрос",
+	"growthexperiments-help-panel-questioncomplete-title": "Задать вопрос",
 	"growthexperiments-help-panel-questionreview-email-optional": "Адрес электронной почты (необязательно)",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Ошибочное название.",
-	"growthexperiments-help-panel-search-label": "Поиск помощи"
+	"growthexperiments-help-panel-search-label": "Поиск помощи",
+	"growthexperiments-help-panel-notifications-link-text": "уведомление",
+	"growthexperiments-help-panel-confirm-email-link-text": "подтвердите ваш email"
 }

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Theklan"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "Hasiera orrialdeko moduluetatik bidalitako galdera formatudunak eskuratu",
+	"apihelp-homepagequestionstore-param-questionformat": "Jaso nahi den formatua, adb. HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Galderen biltegiaren lekua.",
+	"apihelp-homepagequestionstore-param-userid": "Galderak eskuratzeko erabiltzaile IDa.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Ez da galderarik aurkitu."
+}
