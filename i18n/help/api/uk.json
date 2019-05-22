@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Piramidion"
+			"Piramidion",
+			"Ата"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "Працювати із запитаннями поточного користувача, поставленими через панель підтримки.",
 	"apihelp-helppanelquestionposter-param-body": "Текст запитання, поставленого користувачем.",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Відповідна назва (якщо вибрано), яку слід включити разом із запитанням.",
-	"apihelp-helppanelquestionposter-param-email": "Необов'язкова електронна адреса для надсилання повідомлення для підтвердження цієї електронної адреси, якщо користувач має непідтверджену електронну адресу або взагалі її не не вказав."
+	"apihelp-helppanelquestionposter-param-email": "Необов'язкова електронна адреса, якщо в користувача не вказана електронна адреса. Ця адреса буде вказана як електронна адрес користувача, і буде надісланий лист-підтвердження.",
+	"apihelp-helppanelquestionposter-param-resendconfirmation": "Надіслати ще один лист-підтвердження на наявну електронну адресу користувача."
 }

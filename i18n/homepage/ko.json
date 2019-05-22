@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ykhwong",
-			"Revi"
+			"Revi",
+			"Bluemersen"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|안녕하세요}}, {{bidi:$1}}님!",
@@ -14,11 +15,11 @@
 	"growthexperiments-homepage-start-header": "여기에서 시작",
 	"growthexperiments-homepage-account-header": "계정이 만들어짐",
 	"growthexperiments-homepage-account-editcount": "{{PLURAL:$1|편집}} $1회",
-	"growthexperiments-homepage-account-age": "계정을 만든 지 $1 이(가) 지났습니다",
+	"growthexperiments-homepage-account-age": "계정을 만든 지 $1 지났습니다",
 	"growthexperiments-homepage-userpage-header": "내 사용자 문서 만들기",
 	"growthexperiments-homepage-userpage-header-done": "내 사용자 문서 편집",
 	"growthexperiments-homepage-userpage-body": "공개 프로필을 작성하면서 편집을 연습하세요.",
-	"growthexperiments-homepage-userpage-body-done": "공개 프로필을 작업하세요.",
+	"growthexperiments-homepage-userpage-body-done": "공개 프로필을 작성하세요.",
 	"growthexperiments-homepage-userpage-button": "사용자 문서 만들기",
 	"growthexperiments-homepage-userpage-button-done": "사용자 문서 편집",
 	"growthexperiments-homepage-userpage-guidelines": "사용자 문서 지침",
@@ -31,7 +32,7 @@
 	"growthexperiments-homepage-email-button-noemail": "이메일 추가",
 	"growthexperiments-homepage-email-button-unconfirmed": "새 링크 가져오기",
 	"growthexperiments-homepage-email-button-confirmed": "환경 설정",
-	"growthexperiments-homepage-impact-header": "{{GENDER:$1|사용자}}의 영향",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|당신}}의 영향",
 	"growthexperiments-homepage-impact-subheader-text": "편집하신 문서를 {{GENDER:$1|사람들이}} 읽고 있습니다!",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|당신의}} 편집 이후 최근 60일간의 문서 열람 횟수:",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|그동안}} <strong>$1</strong>회의 {{PLURAL:$1|기여}}를 하셨습니다 (모두 보기)",
@@ -42,6 +43,7 @@
 	"growthexperiments-homepage-impact-article-link-tooltip": "문서로 이동",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "열람 횟수 자세히 보기",
 	"growthexperiments-homepage-help-ask-help-desk": "질문방에 도움 요청하기",
+	"growthexperiments-homepage-help-desk-questions": "질문방에서 전체 질문 보기",
 	"tag-help_module_question": "도움말 모듈 질문",
 	"tag-help_module_question-description": "홈페이지 도움 모듈의 질문하기 기능을 통해 이루어진 편집",
 	"tag-mentorship_module_question": "멘토 모듈 질문",
@@ -68,8 +70,8 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "남기신 질문은 이제 {{GENDER:$1|멘토}}의 토론 문서에 게시되어 멘토가 확인하는 대로 답을 남길 것입니다.",
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$1|멘토}}의 토론 문서에서 {{GENDER:$2|남긴}} 질문을 확인하세요.",
 	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]]님의 질문",
-	"growthexperiments-homepage-tutorial-header": "편집하는 방법 알아보기",
-	"growthexperiments-homepage-tutorial-subheader": "위키백과를 편집하는 방법을 배우기 위한 빠른 튜토리얼을 따라가 보세요",
+	"growthexperiments-homepage-tutorial-header": "편집 방법 알아보기",
+	"growthexperiments-homepage-tutorial-subheader": "위키백과 편집 방법을 배우기 위한 빠른 튜토리얼을 따라가 보세요",
 	"growthexperiments-homepage-tutorial-cta-text": "튜토리얼",
 	"growthexperiments-specialimpact-title": "영향력",
 	"growthexperiments-specialimpact-showing-for-other-user": "$1 사용자의 영향력 데이터를 보고 있습니다",

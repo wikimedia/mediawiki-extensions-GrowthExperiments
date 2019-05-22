@@ -1,9 +1,36 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Aefgh39622"
 		]
 	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|こんにちは}}、{{bidi:$1}}！",
 	"growthexperiments-homepage-tab": "ホームページ",
-	"growthexperiments-homepage-help-cancel": "キャンセル"
+	"prefs-homepage": "新人ホームページ",
+	"growthexperiments-homepage-enable": "新人ホームページを表示",
+	"growthexperiments-homepage-start-header": "ここで始める",
+	"growthexperiments-homepage-account-header": "アカウントを作成しました",
+	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|回編集}}",
+	"growthexperiments-homepage-account-age": "あなたは$1間アカウントを持っています",
+	"growthexperiments-homepage-userpage-header": "自分のユーザーページの作成",
+	"growthexperiments-homepage-userpage-header-done": "自分のユーザーページの編集",
+	"growthexperiments-homepage-userpage-body": "公開プロフィールを作成しながら編集を練習してください。",
+	"growthexperiments-homepage-userpage-body-done": "一般公開プロフィールの作成を続けてください。",
+	"growthexperiments-homepage-userpage-button": "ユーザーページの作成",
+	"growthexperiments-homepage-userpage-button-done": "ユーザーページの編集",
+	"growthexperiments-homepage-userpage-guidelines": "ユーザーページのガイドライン",
+	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|自分}}のメールアドレスを追加",
+	"growthexperiments-homepage-email-header-unconfirmed": "{{GENDER:$1|自分}}のメールアドレスを確認",
+	"growthexperiments-homepage-email-header-confirmed": "メールアドレスが追加されました",
+	"growthexperiments-homepage-email-text-noemail": "アカウント復旧におすすめ",
+	"growthexperiments-homepage-email-button-noemail": "メールアドレスを追加",
+	"growthexperiments-homepage-email-button-unconfirmed": "新しいリンクを入手",
+	"growthexperiments-homepage-email-button-confirmed": "設定",
+	"growthexperiments-homepage-help-cancel": "キャンセル",
+	"growthexperiments-homepage-recent-questions-archived": "アーカイブ済み",
+	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|回編集}}",
+	"growthexperiments-homepage-tutorial-header": "編集方法を学ぶ",
+	"growthexperiments-homepage-tutorial-cta-text": "チュートリアル",
+	"growthexperiments-specialimpact-title": "影響"
 }
