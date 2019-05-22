@@ -20,7 +20,8 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		parent::setUp();
 		$this->mUser = $this->getMutableTestUser()->getUser();
 		$this->setMwGlobals( [
-			'wgGEHelpPanelHelpDeskTitle' => 'HelpDeskTest'
+			'wgEnableEmail' => true,
+			'wgGEHelpPanelHelpDeskTitle' => 'HelpDeskTest',
 		] );
 		$this->editPage( 'HelpDeskTest', 'Content' );
 	}
