@@ -9,8 +9,6 @@ use MediaWikiTestCase;
 use RequestContext;
 
 /**
- * Class MentorshipTest
- *
  * @group medium
  * @group Database
  */

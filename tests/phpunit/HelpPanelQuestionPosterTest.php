@@ -14,8 +14,6 @@ use User;
 use WikiPage;
 
 /**
- * Class HelpPanelQuestionPosterTest
- *
  * @group medium
  * @group Database
  */

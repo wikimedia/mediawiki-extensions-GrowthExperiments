@@ -8,8 +8,6 @@ use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
 
 /**
- * Class HelpPanelTest
- *
  * @group medium
  */
 class HelpPanelTest extends MediaWikiTestCase {

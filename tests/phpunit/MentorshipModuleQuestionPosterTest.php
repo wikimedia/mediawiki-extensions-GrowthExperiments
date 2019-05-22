@@ -10,8 +10,6 @@ use RequestContext;
 use Wikimedia\TestingAccessWrapper;
 
 /**
- * Class MentorshipModuleQuestionPosterTest
- *
  * @group medium
  * @group Database
  */

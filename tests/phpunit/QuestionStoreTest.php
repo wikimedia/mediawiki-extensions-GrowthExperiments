@@ -13,7 +13,6 @@ use MediaWikiTestCase;
 use RequestContext;
 
 /**
- * Class QuestionStoreTest
  * @group Database
  * @group medium
  */

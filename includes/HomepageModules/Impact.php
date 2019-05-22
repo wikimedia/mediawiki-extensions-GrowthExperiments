@@ -17,8 +17,6 @@ use SpecialPage;
 use Title;
 
 /**
- * Class Impact
- *
  * This is the "Impact" module. It shows the page views information
  * of recently edited pages.
  *

@@ -6,8 +6,6 @@ use GrowthExperiments\HomepageModule;
 use IContextSource;
 
 /**
- * Class Start
- *
  * This is the "Start" module. It shows specific tasks to help
  * new editors getting started.
  *
