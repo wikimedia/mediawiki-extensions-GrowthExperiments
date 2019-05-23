@@ -24,7 +24,7 @@
 	"growthexperiments-help-panel-questionreview-note": "V okamžiku, kdy bude vaše otázka zodpovězena, budete na to upozorněn e-mailem. Vaše e-mailová adresa ale <strong>není k dispozici</strong> wikipedistovi, kteří zodpověděl váš dotaz.",
 	"growthexperiments-help-panel-questionreview-label": "Vaše otázka",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Vložit název stránky, na které jsem, spolu s mou otázkou",
-	"growthexperiments-help-panel-question-subject-template": "Dotaz vložený pomocí panelu Potřebuji pomoc",
+	"growthexperiments-help-panel-question-subject-template": "Otázka vložená pomocí panelu Potřebuji pomoc",
 	"growthexperiments-help-panel-question-subject-template-with-title": "Otázka vložená pomocí panelu Potřebuji pomoc: [[$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Otázka z domovské stránky",
 	"growthexperiments-help-panel-question-post-error": "Během vkládání vaší otázky nastala chyba. Můžete ji zkusit vložit znovu nebo jít na stránku $1 a vložit ji manuálně.",
