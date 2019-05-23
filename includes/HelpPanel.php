@@ -4,13 +4,13 @@ namespace GrowthExperiments;
 
 use ConfigException;
 use MediaWiki\MediaWikiServices;
-use MessageCache;
 use OOUI\ButtonWidget;
 use Config;
 use Html;
 use MessageLocalizer;
 use OutputPage;
 use OOUI\Tag;
+use RawMessage;
 use Title;
 use User;
 
@@ -169,12 +169,9 @@ class HelpPanel {
 	 * @return null|Title
 	 * @throws ConfigException
 	 */
-	public static function getHelpDeskTitle( $config ) {
-		return Title::newFromText(
-			MessageCache::singleton()->transform(
-				$config->get( 'GEHelpPanelHelpDeskTitle' )
-			)
-		);
+	public static function getHelpDeskTitle( Config $config ) {
+		$msg = new RawMessage( $config->get( 'GEHelpPanelHelpDeskTitle' ) );
+		return Title::newFromText( $msg->inContentLanguage()->text() );
 	}
 
 	/**
