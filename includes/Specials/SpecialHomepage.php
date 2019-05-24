@@ -5,9 +5,11 @@ namespace GrowthExperiments\Specials;
 use ConfigException;
 use DeferredUpdates;
 use Error;
+use ErrorPageError;
 use Exception;
 use ExtensionRegistry;
 use GrowthExperiments\EventLogging\SpecialHomepageLogger;
+use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
@@ -55,13 +57,16 @@ class SpecialHomepage extends SpecialPage {
 
 	/**
 	 * @inheritDoc
+	 * @param string $par
 	 * @throws ConfigException
+	 * @throws ErrorPageError
 	 * @throws UserNotLoggedIn
 	 */
 	public function execute( $par = '' ) {
 		$out = $this->getContext()->getOutput();
 		$this->requireLogin();
 		parent::execute( $par );
+		$this->handleDisabledPreference();
 		$this->handleTutorialVisit( $par );
 
 		$out->setSubtitle( $this->getSubtitle() );
@@ -112,6 +117,19 @@ class SpecialHomepage extends SpecialPage {
 			DeferredUpdates::addCallableUpdate( function () use ( $logger ) {
 				$logger->log();
 			} );
+		}
+	}
+
+	/**
+	 * @throws ConfigException
+	 * @throws ErrorPageError
+	 */
+	private function handleDisabledPreference() {
+		if ( !HomepageHooks::isHomepageEnabled( $this->getUser() ) ) {
+			throw new ErrorPageError(
+				'growthexperiments-homepage-tab',
+				'growthexperiments-homepage-enable-preference'
+			);
 		}
 	}
 
