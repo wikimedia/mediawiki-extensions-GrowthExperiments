@@ -74,5 +74,6 @@
 	"growthexperiments-homepage-tutorial-cta-text": "البرنامج التعليمي",
 	"growthexperiments-specialimpact-title": "التأثير",
 	"growthexperiments-specialimpact-showing-for-other-user": "عرض بيانات تأثير $1",
-	"growthexperiments-specialimpact-invalid-username": "اسم المستخدم مفقود أو غير صالح."
+	"growthexperiments-specialimpact-invalid-username": "اسم المستخدم مفقود أو غير صالح.",
+	"growthexperiments-homepage-enable-preference": "لتمكين الصفحة الرئيسية للوافد الجديد؛ تفضل بزيارة إعدادات [[Special:Preferences#mw-prefsection-personal-homepage|الصفحة الرئيسية للوافد الجديد]]."
 }
