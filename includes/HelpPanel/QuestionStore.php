@@ -120,6 +120,11 @@ class QuestionStore {
 			if ( $checkedRecord->isArchived() && !$checkedRecord->getArchiveUrl() ) {
 				$checkedRecord = $this->assignArchiveUrl( $checkedRecord );
 			}
+			if ( !$checkedRecord->getTimestamp() ) {
+				// Some records did not have timestamps (T223338); backfill the
+				// timestamp if it's not set.
+				$checkedRecord->setTimestamp( wfTimestamp() );
+			}
 			$checkedQuestionRecords[] = $checkedRecord;
 			if ( $questionRecord->jsonSerialize() !== $checkedRecord->jsonSerialize() ) {
 				$needsUpdate = true;

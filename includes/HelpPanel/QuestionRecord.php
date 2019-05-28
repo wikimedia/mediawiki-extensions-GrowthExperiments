@@ -158,4 +158,11 @@ class QuestionRecord implements JsonSerializable {
 		$this->isVisible = $isVisible;
 	}
 
+	/**
+	 * @param int $timestamp
+	 */
+	public function setTimestamp( $timestamp ) {
+		$this->timestamp = $timestamp;
+	}
+
 }
