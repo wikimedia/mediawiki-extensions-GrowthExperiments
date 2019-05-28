@@ -88,11 +88,10 @@ abstract class QuestionPoster {
 	 * @param IContextSource $context
 	 * @param string $body
 	 * @param string $relevantTitle
-	 * @param string $postedOnTimestamp
 	 * @throws MWException
 	 */
 	public function __construct(
-		IContextSource $context, $body, $relevantTitle = '', $postedOnTimestamp = ''
+		IContextSource $context, $body, $relevantTitle = ''
 	) {
 		$this->context = $context;
 		$this->relevantTitle = $relevantTitle;
@@ -105,7 +104,6 @@ abstract class QuestionPoster {
 		$page = new WikiPage( $this->targetTitle );
 		$this->pageUpdater = $page->newPageUpdater( $this->getContext()->getUser() );
 		$this->parser = MediaWikiServices::getInstance()->getParser();
-		$this->postedOnTimestamp = $postedOnTimestamp ?? wfTimestamp();
 		$this->body = $body;
 	}
 
@@ -115,6 +113,7 @@ abstract class QuestionPoster {
 	 * @throws \Exception
 	 */
 	public function submit() {
+		$this->postedOnTimestamp = wfTimestamp();
 		$permissionStatus = $this->checkPermissions();
 		if ( !$permissionStatus->isGood() ) {
 			return $permissionStatus;
