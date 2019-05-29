@@ -652,11 +652,12 @@
 							// Reset the post a question text inputs.
 							this.questionTextInput.setValue( '' );
 							mw.storage.set( this.storageKey, '' );
-						}.bind( this ), function () {
+						}.bind( this ), function ( errorCode ) {
 							// Return a recoverable error. The user can either try again, or they
 							// can follow the instructions in the error message for how to post
 							// their message manually.
 							// Re-enable the submit button once the user is done with modal.
+							submitAttemptData.error = errorCode;
 							this.logger.log( 'submit-failure', submitAttemptData );
 							this.questionReviewSubmitButton.setDisabled( false );
 							return $.Deferred().reject(
