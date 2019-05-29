@@ -38,6 +38,9 @@
 		"homepagequestionstore": "GrowthExperiments\\Api\\ApiQuestionStore"
 	},
 	"Hooks": {
+		"MobileMenu": [
+			"GrowthExperiments\\HomepageHooks::onMobileMenu"
+		],
 		"SpecialPage_initList": [
 			"GrowthExperiments\\WelcomeSurveyHooks::onSpecialPageInitList",
 			"GrowthExperiments\\HomepageHooks::onSpecialPageInitList"

@@ -3,6 +3,7 @@
 namespace GrowthExperiments;
 
 use ConfigException;
+use DomainException;
 use Exception;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
@@ -11,6 +12,8 @@ use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Minerva\Menu\AuthMenuEntry;
+use MediaWiki\Minerva\Menu\Group;
 use MediaWiki\Minerva\SkinOptions;
 use RequestContext;
 use SkinTemplate;
@@ -149,9 +152,8 @@ class HomepageHooks {
 		}
 
 		if ( $user->getBoolOption( self::HOMEPAGE_PREF_PT_LINK ) ) {
-			$homepage = SpecialPage::getTitleFor( 'Homepage' );
-			$personal_urls[ 'userpage' ][ 'href' ] = $homepage->getLinkURL(
-				'source=personaltoolslink&namespace=' . $title->getNamespace()
+			$personal_urls['userpage' ]['href'] = self::getPersonalToolsHomepageLinkUrl(
+				$title->getNamespace()
 			);
 		}
 	}
@@ -270,6 +272,44 @@ class HomepageHooks {
 		}
 
 		return true;
+	}
+
+	/**
+	 * @param string $tool
+	 * @param Group &$group
+	 * @throws ConfigException
+	 * @throws \MWException
+	 */
+	public static function onMobileMenu( $tool, &$group ) {
+		if ( $tool === 'personal' ) {
+			$context = RequestContext::getMain();
+			$user = $context->getUser();
+			if ( self::isHomepageEnabled( $user ) &&
+				 $context->getConfig()->get( 'GEHomepageMobileEnabled' ) ) {
+				try {
+					/** @var AuthMenuEntry $authMenuEntry */
+					$authMenuEntry = $group->getEntryByName( 'auth' );
+					// @phan-suppress-next-line PhanUndeclaredMethod
+					$authMenuEntry->overrideProfileURL( self::getPersonalToolsHomepageLinkUrl(
+						$context->getTitle()->getNamespace()
+					), null, 'homepage' );
+				} catch ( DomainException $exception ) {
+					return;
+				}
+			}
+		}
+	}
+
+	/**
+	 * Get URL to Special:Homepage with query parameters appended for EventLogging.
+	 * @param int $namespace
+	 * @return string
+	 * @throws \MWException
+	 */
+	private static function getPersonalToolsHomepageLinkUrl( $namespace ) {
+		return SpecialPage::getTitleFor( 'Homepage' )->getLinkURL(
+			'source=personaltoolslink&namespace=' . $namespace
+		);
 	}
 
 }
