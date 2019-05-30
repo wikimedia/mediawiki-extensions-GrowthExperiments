@@ -40,22 +40,41 @@ class HelpModuleQuestionPosterTest extends MediaWikiTestCase {
 
 	/**
 	 * @throws \MWException
+	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster::submit
+	 */
+	public function testPostedOnTimestampSet() {
+		$this->insertPage( 'HelpDeskTest', '' );
+		$questionPoster = new HelpModuleQuestionPoster(
+			$this->buildContext(),
+			'a great question',
+			''
+		);
+		$questionPoster->submit();
+		$questionStore = QuestionStoreFactory::newFromContextAndStorage(
+			$this->buildContext(),
+			Help::QUESTION_PREF
+		);
+		$questions = $questionStore->loadQuestions();
+		$this->assertNotEmpty( $questions[0]->getTimestamp() );
+	}
+
+	/**
+	 * @throws \MWException
 	 * @covers \GrowthExperiments\HelpPanel\HelpPanelQuestionPoster::getNumberedSectionHeaderIfDuplicatesExist
 	 */
 	public function testUniqueNumbering() {
 		$this->insertPage( 'HelpDeskTest', '' );
-		$timestamp = wfTimestamp();
 		$questionPoster = new HelpPanelQuestionPoster( $this->buildContext(), 'a great question',
-			'', $timestamp );
+			'' );
 		$questionPoster->submit();
 		$firstQuestion = $questionPoster->getResultUrl();
 		$questionPoster = new HelpPanelQuestionPoster(
-			$this->buildContext(), 'I forgot to ask', '', $timestamp
+			$this->buildContext(), 'I forgot to ask', ''
 		);
 		$questionPoster->submit();
 		$secondQuestion = $questionPoster->getResultUrl();
 		$questionPoster = new HelpPanelQuestionPoster( $this->buildContext(), 'one more thing..
-		.', '', $timestamp );
+		.', '' );
 		$questionPoster->submit();
 		$thirdQuestion = $questionPoster->getResultUrl();
 		$this->assertNotEquals( $firstQuestion, $secondQuestion );
@@ -68,26 +87,22 @@ class HelpModuleQuestionPosterTest extends MediaWikiTestCase {
 	 */
 	public function testNumberingIfQuestionIsArchived() {
 		$this->insertPage( 'HelpDeskTest', '' );
-		$timestamp = wfTimestamp();
 		$questionPoster = new HelpModuleQuestionPoster(
 			$this->buildContext(),
 			'a great question',
-		'',
-			$timestamp
+			''
 		);
 		$questionPoster->submit();
 		$questionPoster = new HelpModuleQuestionPoster(
 			$this->buildContext(),
 			'I forgot to ask',
-			'',
-			$timestamp
+			''
 		);
 		$questionPoster->submit();
 		$questionPoster = new HelpModuleQuestionPoster(
 			$this->buildContext(),
 			'one more thing...',
-			'',
-			$timestamp
+			''
 		);
 		$questionPoster->submit();
 		$questionStore = QuestionStoreFactory::newFromContextAndStorage(
@@ -111,8 +126,7 @@ class HelpModuleQuestionPosterTest extends MediaWikiTestCase {
 		$questionPoster = new HelpModuleQuestionPoster(
 			$this->buildContext(),
 			'why was I reverted?',
-			'',
-			$timestamp
+			''
 		);
 		$questionPoster->submit();
 		$questionStore = QuestionStoreFactory::newFromContextAndStorage(
