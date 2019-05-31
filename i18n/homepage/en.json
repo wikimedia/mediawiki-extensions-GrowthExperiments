@@ -72,5 +72,5 @@
 	"growthexperiments-specialimpact-title": "Impact",
 	"growthexperiments-specialimpact-showing-for-other-user": "Showing impact data for $1",
 	"growthexperiments-specialimpact-invalid-username": "Missing or invalid username.",
-	"growthexperiments-homepage-enable-preference": "To enable the newcomer homepage, visit your [[Special:Preferences#mw-prefsection-personal-homepage|Newcomer homepage]] settings in Preferences."
+	"growthexperiments-homepage-enable-preference": "To enable the newcomer homepage, visit your \"Newcomer homepage\" settings in [[Special:Preferences#mw-prefsection-personal-homepage|Preferences]]."
 }
