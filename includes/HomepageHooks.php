@@ -11,6 +11,7 @@ use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Minerva\SkinOptions;
 use RequestContext;
 use SkinTemplate;
 use SpecialPage;
@@ -48,6 +49,33 @@ class HomepageHooks {
 	}
 
 	/**
+	 * @param SkinTemplate $skin
+	 * @param SkinOptions $skinOptions
+	 * @throws ConfigException
+	 */
+	public static function onSkinMinervaOptionsInit(
+		SkinTemplate $skin,
+		SkinOptions $skinOptions
+	) {
+		if ( !self::isHomepageEnabled( $skin->getUser() ) ) {
+			return;
+		}
+		if ( !$skin->getConfig()->get( 'GEHomepageMobileEnabled' ) ) {
+			return;
+		}
+		if ( $skin->getTitle()->isSpecial( 'Homepage' ) ||
+			 self::titleIsUserPageOrUserTalk( $skin->getTitle(), $skin->getUser() ) ) {
+			/** @var SkinOptions $skinOptions */
+			$skinOptions->setMultiple( [
+				// TODO: OPTION_AMC needed for correct styles to apply.
+				SkinOptions::OPTION_AMC => true,
+				SkinOptions::OPTIONS_TALK_AT_TOP => true,
+				SkinOptions::OPTION_TABS_ON_SPECIALS => true
+			] );
+		}
+	}
+
+	/**
 	 * Make sure user pages have "User", "talk" and "homepage" tabs.
 	 *
 	 * @param SkinTemplate &$skin
@@ -57,7 +85,7 @@ class HomepageHooks {
 	 */
 	public static function onSkinTemplateNavigationUniversal( SkinTemplate &$skin, array &$links ) {
 		$user = $skin->getUser();
-		if ( !self::isHomepageEnabled( $user ) || self::isMobile( $skin ) ) {
+		if ( !self::isHomepageEnabled( $user ) ) {
 			return;
 		}
 
@@ -79,11 +107,7 @@ class HomepageHooks {
 			return;
 		}
 
-		if ( $title->equals( $userpage ) ||
-			$title->isSubpageOf( $userpage ) ||
-			$title->equals( $usertalk ) ||
-			$title->isSubpageOf( $usertalk )
-		) {
+		if ( self::titleIsUserPageOrUserTalk( $title, $user ) ) {
 			$source = 'userpagetab';
 			if ( $title->equals( $usertalk ) || $title->isSubpageOf( $usertalk ) ) {
 				$source = 'usertalkpagetab';
@@ -98,6 +122,15 @@ class HomepageHooks {
 				$links[ 'namespaces' ]
 			);
 		}
+	}
+
+	private static function titleIsUserPageOrUserTalk( Title $title, User $user ) {
+		$userpage = $user->getUserPage();
+		$usertalk = $user->getTalkPage();
+		return $title->equals( $userpage ) ||
+			$title->isSubpageOf( $userpage ) ||
+			$title->equals( $usertalk ) ||
+			$title->isSubpageOf( $usertalk );
 	}
 
 	/**
