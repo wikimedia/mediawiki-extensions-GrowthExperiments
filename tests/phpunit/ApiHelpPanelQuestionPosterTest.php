@@ -1,6 +1,7 @@
 <?php
 
 use GrowthExperiments\Api\ApiHelpPanelPostQuestion;
+use MediaWiki\Block\DatabaseBlock;
 
 /**
  * @group API
@@ -235,7 +236,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 	 * @expectedExceptionMessageRegExp /Your username or IP address has been blocked/
 	 */
 	public function testBlockedUserCantPostQuestion() {
-		$block = new Block();
+		$block = new DatabaseBlock();
 		$block->setTarget( $this->mUser );
 		$block->setBlocker( $this->getTestSysop()->getUser() );
 		$block->insert();
