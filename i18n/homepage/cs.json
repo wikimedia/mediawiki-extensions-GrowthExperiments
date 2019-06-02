@@ -77,5 +77,6 @@
 	"growthexperiments-homepage-tutorial-cta-text": "Tutoriál",
 	"growthexperiments-specialimpact-title": "Dosah vašich příspěvků",
 	"growthexperiments-specialimpact-showing-for-other-user": "Zobrazuji data o dosahu příspěvků uživatele $1",
-	"growthexperiments-specialimpact-invalid-username": "Chybějící nebo neplatné uživatelské jméno."
+	"growthexperiments-specialimpact-invalid-username": "Chybějící nebo neplatné uživatelské jméno.",
+	"growthexperiments-homepage-enable-preference": "Abyste aktivovali domovskou stránku nováčka, podívejte se na nastavení \"Domovská stránka\" ve [[Special:Preferences#mw-prefsection-personal-homepage|svých nastaveních]]."
 }

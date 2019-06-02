@@ -3,7 +3,8 @@
 		"authors": [
 			"Ykhwong",
 			"Revi",
-			"Bluemersen"
+			"Bluemersen",
+			"Nuevo Paso"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|안녕하세요}}, {{bidi:$1}}님!",
@@ -61,13 +62,13 @@
 	"growthexperiments-homepage-mentorship-mentor-active-today": "오늘 {{GENDER:$1|활동함}}",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "어제 {{GENDER:$1|활동함}}",
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "$2 {{PLURAL:$2|일}} 전에 {{GENDER:$1|활동함}}",
-	"growthexperiments-homepage-mentorship-intro": "이 {{GENDER:$1|숙련된 편집자}}는 당신이 새 사용자라는 것을 알 수 있으며, 편집에 {{GENDER:$2|도움}}을 줄 수 있습니다.",
+	"growthexperiments-homepage-mentorship-intro": "이 {{GENDER:$1|숙련된 편집자}}는 당신이 새로 온 사용자라는 것을 알고 있으며, 편집에 관한 {{GENDER:$2|도움}}을 줄 수 있습니다.",
 	"growthexperiments-homepage-mentorship-question-button": "{{GENDER:$1|멘토}}에게 질문하세요{{GENDER:$2|}}",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "{{GENDER:$1|멘토}}가 다른 사람과 한 대화를 볼 수도 있습니다{{GENDER:$2|}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$1|멘토}}에게 질문하기{{GENDER:$2|}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "남기는 질문은 당신의 사용자 계정인 \"$2\" 을(를) 통해 $3 에 <strong>공개적으로 게시되어</strong> 연락을 받는 사람이 확인하고 답을 남길 수 있습니다.{{GENDER:$2|}}{{GENDER:$1|}}",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$1|멘토}}의 토론 문서{{GENDER:$2|}}",
-	"growthexperiments-homepage-mentorship-confirmation-text": "남기신 질문은 이제 {{GENDER:$1|멘토}}의 토론 문서에 게시되어 멘토가 확인하는 대로 답을 남길 것입니다.{{GENDER:$2|}}",
+	"growthexperiments-homepage-mentorship-confirmation-text": "남기신 질문은 {{GENDER:$1|멘토}}의 토론 문서에 방금 게시되었습니다. 멘토가 확인하는 대로 답을 남길 것입니다.{{GENDER:$2|}}",
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$1|멘토}}의 토론 문서에서 {{GENDER:$2|남긴}} 질문을 확인하세요.",
 	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]]님의 질문",
 	"growthexperiments-homepage-tutorial-header": "편집 방법 알아보기",

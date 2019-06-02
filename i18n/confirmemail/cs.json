@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Martin Urbanec"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|co to je?]])",
+	"growthexperiments-confirmemail-emailhelp": "E-mail potřebujeme k tomu, abychom vám mohli obnovit přístup k účtu, pokud přijdete o heslo.",
+	"growthexperiments-confirmemail-emailrecommended": "E-mailová adresa (doporučené)",
+	"growthexperiments-confirmemail-emailwarning": "Prosím, podívejte se do svého e-mailu a ověřte svou e-mailovou adresu.",
+	"growthexperiments-confirmemail-confirm-subject": "Vítejte na {{SITENAME}}: Prosím, potvrďte svou e-mailovou adresu",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Dobrý den}}, $2,\n\nděkujeme Vám za přidání e-mailu do účtu na {{SITENAME}}, který byl vytvořen z IP adresy $1. \n\nProsím, klikněte na tlačítko níže, abyste potvrdil e-mailovou adresu přiřazenou k účtu \"$2\":\n\n$3\n\nPoznámka: Tento odkaz je platný <strong>do $4</strong>.\n\nDěkujeme,\n\n{{SITENAME}}\n\n----\nAbyste zrušili potvrzení e-mailové adresy (třeba proto, že jste si tento účet neregistrovali), klikněte na následující odkaz:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "Potvrdit e-mailovou adresu",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Dobrý den}}, $2,\n\nděkujeme Vám za přidání e-mailu do účtu na {{SITENAME}}, který byl vytvořen z IP adresy $1. \n\nProsím, klikněte na tlačítko níže, abyste potvrdil e-mailovou adresu přiřazenou k účtu \"$2\":\n\n$3\n\nPoznámka: Tento odkaz je platný do $4.\n\nDěkujeme,\n\n{{SITENAME}}\n\n----\nAbyste zrušili potvrzení e-mailové adresy (třeba proto, že jste si tento účet neregistrovali), klikněte na následující odkaz:\n\n$5"
+}
