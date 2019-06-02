@@ -46,6 +46,7 @@ class Mentorship extends BaseModule {
 		return $this->getContext()
 			->msg( 'growthexperiments-homepage-mentorship-header' )
 			->params( $this->getContext()->getUser()->getName() )
+			->params( $this->getMentor()->getName() )
 			->escaped();
 	}
 
