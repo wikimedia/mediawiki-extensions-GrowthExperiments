@@ -74,5 +74,6 @@
 	"growthexperiments-homepage-tutorial-cta-text": "Tutoriel",
 	"growthexperiments-specialimpact-title": "Impact",
 	"growthexperiments-specialimpact-showing-for-other-user": "Affichage des données d’impact pour $1",
-	"growthexperiments-specialimpact-invalid-username": "Nom d’utilisateur manquant ou non valide."
+	"growthexperiments-specialimpact-invalid-username": "Nom d’utilisateur manquant ou non valide.",
+	"growthexperiments-homepage-enable-preference": "Pour activer la page d’accueil des débutants, aller sur vos paramètres « Page d’accueil de débutant » dans les [[Special:Preferences#mw-prefsection-personal-homepage|Préférences]]."
 }
