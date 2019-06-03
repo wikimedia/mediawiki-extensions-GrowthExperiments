@@ -104,13 +104,6 @@ class Email extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getModules() {
-		return 'ext.growthExperiments.Homepage.Email';
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	public function getState() {
 		return $this->emailState;
 	}
