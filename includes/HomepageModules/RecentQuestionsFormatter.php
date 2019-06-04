@@ -18,6 +18,7 @@ class RecentQuestionsFormatter {
 	 */
 	private $contextSource;
 	private $dataLinkIdKey;
+	private $recentQuestionsCssClass;
 
 	/**
 	 * @param IContextSource $contextSource
@@ -32,6 +33,7 @@ class RecentQuestionsFormatter {
 		$this->questionRecords = $questionRecords;
 		$this->contextSource = $contextSource;
 		$this->dataLinkIdKey = $dataLinkIdKey;
+		$this->recentQuestionsCssClass = 'recent-questions-' . $this->dataLinkIdKey;
 	}
 
 	public function formatHeader() {
@@ -45,7 +47,7 @@ class RecentQuestionsFormatter {
 	public function formatResponses() {
 		$html = Html::openElement(
 			'div',
-			[ 'class' => 'recent-questions-' . $this->dataLinkIdKey . '-list' ]
+			[ 'class' => $this->recentQuestionsCssClass . '-list' ]
 		);
 		$html .= Html::openElement( 'ul' );
 		$count = 1;
@@ -64,18 +66,15 @@ class RecentQuestionsFormatter {
 			$html .= Html::rawElement( 'li', [], $questionFormatter->format() );
 			$count++;
 		}
+		$html .= Html::closeElement( 'ul' );
 		$html .= Html::closeElement( 'div' );
 		return $html;
 	}
 
 	public function format() {
-		if ( !count( $this->questionRecords ) ) {
-			return '';
-		}
-		return Html::openElement(
-				'div',
-				[ 'class' => 'recent-questions-' . $this->dataLinkIdKey ]
-			) . $this->formatHeader() . $this->formatResponses() . Html::closeElement( 'div' );
+		return Html::rawElement( 'div', [ 'class' => $this->recentQuestionsCssClass ],
+			$this->questionRecords ? $this->formatHeader() . $this->formatResponses() : ''
+		);
 	}
 
 }

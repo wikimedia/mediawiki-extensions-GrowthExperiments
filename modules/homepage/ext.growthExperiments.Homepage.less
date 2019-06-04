@@ -7,6 +7,7 @@
 }
 
 .mw-body-content,
+.overlay-content,
 .content {
 	.growthexperiments-homepage-module-help,
 	.growthexperiments-homepage-module-mentorship {
@@ -156,35 +157,38 @@ body.mw-special-Homepage {
 
 			#bodyContent {
 				margin: 0;
-
-				.growthexperiments-homepage-container {
-					> .growthexperiments-homepage-module {
-						border: 0;
-						box-shadow: none;
-						margin: 0;
-						padding: 0 0 2em 0;
-						width: 100%;
-						background-color: unset;
-
-						.growthexperiments-homepage-module-section-header {
-							text-align: center;
-							font-weight: normal;
-							font-size: 1.2em;
-							margin-top: 0.5em;
-							margin-bottom: 0.5em;
-
-							.growthexperiments-homepage-module-header-text {
-								margin-right: 2em;
-							}
-						}
-
-						> .growthexperiments-homepage-module-section {
-							padding-left: 1em;
-							padding-right: 1em;
-						}
-					}
-				}
 			}
+		}
+	}
+
+	.overlay-content {
+		padding-top: 1em;
+	}
+
+	.overlay-content .growthexperiments-homepage-module-mobile-overlay,
+	.growthexperiments-homepage-container > .growthexperiments-homepage-module-mobile-details {
+		border: 0;
+		box-shadow: none;
+		margin: 0;
+		padding: 0 0 2em 0;
+		width: 100%;
+		background-color: unset;
+
+		.growthexperiments-homepage-module-section-header {
+			text-align: center;
+			font-weight: normal;
+			font-size: 1.2em;
+			margin-top: 0.5em;
+			margin-bottom: 0.5em;
+
+			.growthexperiments-homepage-module-header-text {
+				margin-right: 2em;
+			}
+		}
+
+		> .growthexperiments-homepage-module-section {
+			padding-left: 1em;
+			padding-right: 1em;
 		}
 	}
 }

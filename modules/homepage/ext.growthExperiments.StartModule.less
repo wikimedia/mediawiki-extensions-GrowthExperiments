@@ -142,10 +142,8 @@
 			}
 		}
 	}
-}
 
-.growthexperiments-homepage-mobile-summary {
-	.growthexperiments-homepage-module-start {
+	&.growthexperiments-homepage-module-mobile-summary {
 		& > .growthexperiments-homepage-module-section-header {
 			margin-bottom: 0.8em;
 		}
@@ -173,10 +171,9 @@
 			}
 		}
 	}
-}
 
-.growthexperiments-homepage-mobile-details {
-	.growthexperiments-homepage-module-start {
+	&.growthexperiments-homepage-module-mobile-details,
+	&.growthexperiments-homepage-module-mobile-overlay {
 		& > .growthexperiments-homepage-module-section-body {
 			flex-direction: column;
 
@@ -195,6 +192,12 @@
 				.growthexperiments-homepage-module-section-footer {
 					padding-left: 46px;
 					text-align: left;
+				}
+
+				button {
+					// ".overlay button" rule in MinervaNeue/skinStyles/mobile.startup/Overlay.less
+					// is causing the "tutorial" button to shrink. But not the other buttons(!?)
+					width: unset;
 				}
 			}
 

@@ -20,19 +20,13 @@ class ApiQuestionStore extends ApiBase {
 			$this->getContext(),
 			$params['storage']
 		)->loadQuestionsAndUpdate();
-		if ( !count( $questions ) ) {
-			$result = [ 'html' => '', 'questions' => [] ];
-			$this->getResult()->addValue( null, $this->getModuleName(), $result );
-			return;
-		}
-
 		$questionFormatter = new RecentQuestionsFormatter(
 			$this->getContext(),
 			$questions,
 			$params['storage']
 		);
 		$result = [
-			'html' => $questionFormatter->formatResponses(),
+			'html' => $questionFormatter->format(),
 			'questions' => array_map( function ( JsonSerializable $question ) {
 				return $question->jsonSerialize();
 			}, $questions )

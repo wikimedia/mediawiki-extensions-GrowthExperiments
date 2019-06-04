@@ -1,4 +1,4 @@
-( function () {
+( function ( $ ) {
 	var helpStorageKey = 'homepage-help',
 		mentorStorageKey = 'homepage-mentor',
 		questionStorageKeys = [ helpStorageKey, mentorStorageKey ];
@@ -11,12 +11,33 @@
 		mw.config.set( key, moduleActionData );
 	}
 
+	/**
+	 * @param {string} moduleName The name of the module (impact, help, mentorship, start)
+	 * @param {string} questionsSelector The selector to use for finding recent questions in the
+	 * module HTML.
+	 * @param {string} updatedHtml The updated HTML to store in the homepagemodules config var
+	 * for {moduleName}
+	 */
+	function updateHomepageModuleHtml( moduleName, questionsSelector, updatedHtml ) {
+		var moduleData = mw.config.get( 'homepagemodules' ),
+			$moduleHtml;
+		if ( !moduleData || !moduleData[ moduleName ] ) {
+			return;
+		}
+		$moduleHtml = $( moduleData[ moduleName ].html );
+		$moduleHtml.find( questionsSelector ).replaceWith( updatedHtml );
+		moduleData[ moduleName ].html = $moduleHtml.prop( 'outerHTML' );
+		mw.config.set( 'homepagemodules', moduleData );
+	}
+
 	function updateRecentQuestions( source ) {
 		var sourceName = source === helpStorageKey ? 'help' : 'mentor',
 			moduleName = source === helpStorageKey ? 'help' : 'mentorship',
 			storage = 'growthexperiments-' + sourceName + '-questions',
-			$container = $( '.growthexperiments-homepage-module-' + moduleName ),
-			questionsClass = 'recent-questions-growthexperiments-' + sourceName + '-questions',
+			// eslint-disable-next-line no-jquery/no-global-selector
+			$overlay = mw.loader.getState( 'ext.growthExperiments.Homepage.Mobile' ) === 'ready' ? $( '.homepage-module-overlay .overlay-content' ) : $( 'body' ),
+			questionsSelector = '.recent-questions-growthexperiments-' + sourceName + '-questions',
+			$container = $overlay.find( '.growthexperiments-homepage-module-' + moduleName ),
 			archivedCount = 0,
 			unarchivedCount = 0;
 
@@ -26,20 +47,12 @@
 			formatversion: 2
 		} )
 			.done( function ( data ) {
-				var $list = $container.find( '.' + questionsClass + '-list' );
-				if ( $list.length && data.homepagequestionstore.html.length ) {
-					$list.replaceWith( data.homepagequestionstore.html );
-				} else if ( data.homepagequestionstore.html.length ) {
-					$container.append(
-						$( '<div>' )
-							.addClass( questionsClass )
-							.append(
-								$( '<h3>' ).text( mw.msg( 'growthexperiments-homepage-recent-questions-header' ) ),
-								data.homepagequestionstore.html
-							)
-					);
+				var questionStoreHtml = data.homepagequestionstore.html;
+				if ( questionStoreHtml.length ) {
+					$container.find( questionsSelector )
+						.replaceWith( questionStoreHtml );
 				} else {
-					$container.find( '.' + questionsClass ).remove();
+					$container.find( questionsSelector ).remove();
 				}
 				data.homepagequestionstore.questions.forEach( function ( questionRecord ) {
 					if ( questionRecord.isArchived ) {
@@ -53,6 +66,7 @@
 					unarchivedCount,
 					archivedCount
 				);
+				updateHomepageModuleHtml( moduleName, questionsSelector, questionStoreHtml );
 			} );
 	}
 
@@ -63,4 +77,4 @@
 	questionStorageKeys.forEach( function ( storageKey ) {
 		updateRecentQuestions( storageKey );
 	} );
-}() );
+}( jQuery ) );

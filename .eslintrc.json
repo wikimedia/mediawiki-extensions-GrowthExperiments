@@ -9,6 +9,9 @@
 	},
 	"globals": {
 		"mw": false,
+		"mediaWiki":  false,
+		"require": false,
+		"jQuery": false,
 		"OO": false,
 		"module": false
 	}

@@ -5,6 +5,7 @@ namespace GrowthExperiments\HomepageModules;
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
+use GrowthExperiments\HomepageModule;
 use Html;
 use IContextSource;
 use OOUI\ButtonWidget;
@@ -85,9 +86,11 @@ class Help extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getModules() {
-		return $this->getMode() === self::RENDER_MOBILE_SUMMARY ?
-			[] :
-			'ext.growthExperiments.Homepage.Help';
+		return $this->getMode() !== HomepageModule::RENDER_MOBILE_SUMMARY ?
+			[
+				'ext.growthExperiments.Homepage.Help',
+				'ext.growthExperiments.Homepage.RecentQuestions'
+			] : [];
 	}
 
 	/**

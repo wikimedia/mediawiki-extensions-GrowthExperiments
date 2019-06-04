@@ -6,6 +6,7 @@ use ActorMigration;
 use DateTime;
 use Exception;
 use ExtensionRegistry;
+use GrowthExperiments\HomepageModule;
 use Html;
 use IContextSource;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
@@ -53,9 +54,8 @@ class Impact extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getModules() {
-		return $this->getMode() === self::RENDER_MOBILE_SUMMARY ?
-			[] :
-			'ext.growthExperiments.Homepage.Impact';
+		return $this->getMode() !== HomepageModule::RENDER_MOBILE_SUMMARY ?
+			[ 'ext.growthExperiments.Homepage.Impact' ] : [];
 	}
 
 	/**
