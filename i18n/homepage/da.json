@@ -20,7 +20,7 @@
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|Dine}} seneste spørgsmål",
 	"growthexperiments-homepage-recent-questions-posted-on": "Lagt op for $1 siden",
 	"growthexperiments-homepage-recent-questions-archived": "arkiveret",
-	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Din}} mentor",
+	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Din}} {{GENDER:$2|mentor}}",
 	"growthexperiments-homepage-mentorship-question-subject": "Spørgsmål fra [[User:$1|$1]]",
 	"growthexperiments-homepage-tutorial-header": "Lær hvordan du redigerer"
 }
