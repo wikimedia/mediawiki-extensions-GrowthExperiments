@@ -160,9 +160,7 @@ class Impact extends BaseModule {
 			$articleEditsElement = Html::rawElement(
 				'div',
 				[ 'class' => 'growthexperiments-homepage-impact-subheader-text' ],
-				$this->getContext()->msg( 'growthexperiments-homepage-impact-mobilebody-articleedits' )
-					->numParams( $this->getArticleEditCount() )
-					->parse()
+				$this->getArticleOrTotalEditCountText()
 			);
 			$pageViewsElement = Html::rawElement(
 				'div',
@@ -383,6 +381,20 @@ class Impact extends BaseModule {
 			[],
 			[ 'page' => [ 'JOIN', [ 'rev_page = page_id' ] ] ] + $actorQuery[ 'joins' ]
 		);
+	}
+
+	private function getArticleOrTotalEditCountText() {
+		$user = $this->getContext()->getUser();
+		if ( $user->getEditCount() < 1000 ) {
+			$msgKey = 'growthexperiments-homepage-impact-mobilebody-articleedits';
+			$count = $this->getArticleEditCount();
+		} else {
+			$msgKey = 'growthexperiments-homepage-impact-mobilebody-totaledits';
+			$count = $user->getEditCount();
+		}
+		return $this->getContext()->msg( $msgKey )
+			->numParams( $count )
+			->parse();
 	}
 
 	/**

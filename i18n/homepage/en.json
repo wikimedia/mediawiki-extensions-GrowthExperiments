@@ -39,6 +39,7 @@
 	"growthexperiments-homepage-impact-article-link-tooltip": "Go to article",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "See detailed page views",
 	"growthexperiments-homepage-impact-mobilebody-articleedits": "<strong>$1</strong> {{PLURAL:$1|edit|edits}} to articles",
+	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|edit|edits}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Views from recent edits (last 60 days):",
 	"growthexperiments-homepage-help-ask-help-desk": "Ask the help desk",
 	"growthexperiments-homepage-help-desk-questions": "View questions from other users",
