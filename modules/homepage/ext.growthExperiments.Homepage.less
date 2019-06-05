@@ -2,50 +2,28 @@
 @import 'mediawiki.mixins';
 @import 'ext.growthExperiments.variables.less';
 
-.page-Special_Homepage {
-	#contentSub {
-		font-size: 1em;
-		color: @colorGray7;
-		margin: 1.4em 0;
-	}
-}
-
 .growthexperiments-homepage-container {
 	display: flex;
-	min-width: 800px;
-	max-width: 1215px;
 }
 
-.growthexperiments-homepage-group-main {
-	width: 75%;
-	display: flex;
-	.flex-wrap( wrap );
-}
+.mw-body-content,
+.content {
+	.growthexperiments-homepage-module-help,
+	.growthexperiments-homepage-module-mentorship {
+		ul {
+			list-style-image: none;
+			list-style-type: none;
+			margin: 0.3em 0 0 1em;
 
-.growthexperiments-homepage-group-sidebar {
-	width: 25%;
-
-	.growthexperiments-homepage-module {
-		margin-right: 0;
+			li:before {
+				content: '\2022';
+				color: #0645ad;
+				margin-right: 0.3em;
+				margin-left: -0.6em;
+			}
+		}
 	}
-}
 
-.growthexperiments-homepage-module-start {
-	width: 100%;
-}
-
-.growthexperiments-homepage-module-start,
-.growthexperiments-homepage-module-impact {
-	margin-left: 0;
-}
-
-.growthexperiments-homepage-module-impact,
-.growthexperiments-homepage-module-mentorship {
-	// 1.5* instead of 2* because the impact module doesn't have a left margin
-	width: calc( 50% ~'-' 1.5 * @homepageModuleMargin );
-}
-
-.mw-body-content {
 	.recent-questions-growthexperiments-help-questions,
 	.recent-questions-growthexperiments-mentor-questions {
 		h3 {
@@ -80,37 +58,139 @@
 	}
 }
 
-.growthexperiments-homepage-module-help,
-.growthexperiments-homepage-module-mentorship {
-	ul {
-		list-style-image: none;
-		list-style-type: none;
-		margin: 0.3em 0 0 1em;
+body.mw-special-Homepage {
+	&.growthexperiments-homepage-mobile-summary {
+		// Homepage subtitle on mobile
+		.growthexperiments-homepage-subtitle {
+			font-size: 0.85em;
+			color: @colorGray7;
+			margin: 1.4em 0;
+		}
 
-		li:before {
-			content: '\2022';
-			color: #0645ad;
-			margin-right: 0.3em;
-			margin-left: -0.6em;
+		.growthexperiments-homepage-container {
+			flex-direction: column;
+
+			> a {
+				text-decoration: none;
+
+				> .growthexperiments-homepage-module {
+					margin: 1em 0 0 0;
+					padding: 0 0.6875em 0.6875em 0.6875em;
+
+					h2.growthexperiments-homepage-module-section-header {
+						padding-bottom: 0.5em;
+						margin-bottom: 0.5em;
+
+						.growthexperiments-homepage-module-header-text {
+							font-size: 0.875em;
+						}
+					}
+				}
+			}
 		}
 	}
-}
 
-@media all and ( max-width: 1024px ) {
-	.growthexperiments-homepage-group-main {
-		width: 100%;
+	&.growthexperiments-homepage-desktop {
+		// Homepage subtitle on desktop
+		#contentSub {
+			font-size: 1em;
+			color: @colorGray7;
+			margin: 1.4em 0;
+		}
+
+		.growthexperiments-homepage-container {
+			min-width: 800px;
+			max-width: 1215px;
+
+			.growthexperiments-homepage-group-main {
+				width: 75%;
+				display: flex;
+				.flex-wrap( wrap );
+
+				.growthexperiments-homepage-module-start {
+					width: 100%;
+				}
+
+				.growthexperiments-homepage-module-start,
+				.growthexperiments-homepage-module-impact {
+					margin-left: 0;
+				}
+
+				.growthexperiments-homepage-module-impact,
+				.growthexperiments-homepage-module-mentorship {
+					// 1.5* instead of 2* because the impact module doesn't have a left margin
+					width: calc( 50% ~'-' 1.5 * @homepageModuleMargin );
+				}
+			}
+
+			.growthexperiments-homepage-group-sidebar {
+				width: 25%;
+
+				.growthexperiments-homepage-module {
+					margin-right: 0;
+				}
+			}
+		}
+
+		@media all and ( max-width: 1024px ) {
+			.growthexperiments-homepage-container {
+				flex-direction: column;
+
+				.growthexperiments-homepage-group-main {
+					width: 100%;
+				}
+
+				.growthexperiments-homepage-group-sidebar {
+					// Make it the same width as the Impact and Mentorship modules
+					width: calc( 50% ~'-' 1.5 * @homepageModuleMargin );
+
+					.growthexperiments-homepage-module {
+						margin-left: 0;
+					}
+				}
+			}
+		}
 	}
 
-	.growthexperiments-homepage-container {
-		flex-direction: column;
-	}
+	&.growthexperiments-homepage-mobile-details {
+		.heading-holder {
+			display: none;
+		}
 
-	.growthexperiments-homepage-group-sidebar {
-		// Make it the same width as the Impact and Mentorship modules
-		width: calc( 50% ~'-' 1.5 * @homepageModuleMargin );
+		#content {
+			padding-bottom: 0;
 
-		.growthexperiments-homepage-module {
-			margin-left: 0;
+			#bodyContent {
+				margin: 0;
+
+				.growthexperiments-homepage-container {
+					> .growthexperiments-homepage-module {
+						border: 0;
+						box-shadow: none;
+						margin: 0;
+						padding: 0 0 2em 0;
+						width: 100%;
+						background-color: unset;
+
+						.growthexperiments-homepage-module-section-header {
+							text-align: center;
+							font-weight: normal;
+							font-size: 1.2em;
+							margin-top: 0.5em;
+							margin-bottom: 0.5em;
+
+							.growthexperiments-homepage-module-header-text {
+								margin-right: 2em;
+							}
+						}
+
+						> .growthexperiments-homepage-module-section {
+							padding-left: 1em;
+							padding-right: 1em;
+						}
+					}
+				}
+			}
 		}
 	}
 }

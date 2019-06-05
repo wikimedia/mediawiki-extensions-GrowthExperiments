@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Specials;
 
 use DerivativeContext;
+use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\Impact;
 use Html;
 use SpecialPage;
@@ -65,6 +66,6 @@ class SpecialImpact extends SpecialPage {
 		}
 		$context->setUser( $impactUser );
 		$impact = new Impact( $context );
-		$out->addHTML( $impact->render() );
+		$out->addHTML( $impact->render( HomepageModule::RENDER_DESKTOP ) );
 	}
 }

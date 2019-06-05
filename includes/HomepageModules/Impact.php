@@ -42,17 +42,20 @@ class Impact extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getModuleStyles() {
-		return 'oojs-ui.styles.icons-media';
+		return array_merge(
+			parent::getModuleStyles(),
+			[ 'oojs-ui.styles.icons-media' ]
+		);
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	protected function getHeader() {
+	protected function getHeaderText() {
 		return $this->getContext()
 			->msg( 'growthexperiments-homepage-impact-header' )
 			->params( $this->getContext()->getUser()->getName() )
-			->escaped();
+			->text();
 	}
 
 	/**
@@ -83,14 +86,15 @@ class Impact extends BaseModule {
 					$titlePrefixedText = $contrib['title']->getPrefixedText();
 					$titleUrl = $contrib['title']->getLinkUrl();
 
-					$image = isset( $contrib['image_url'] ) ?
+					$imageUrl = $this->getImage( $contrib['title'] );
+					$image = $imageUrl ?
 						Html::element(
 							'div',
 							[
 								'alt' => $titleText,
 								'title' => $titlePrefixedText,
 								'class' => [ 'real-image' ],
-								'style' => 'background-image: url(' . $contrib['image_url'] . ');',
+								'style' => 'background-image: url(' . $imageUrl . ');',
 							]
 						) : $emptyImage;
 					$imageElement = Html::rawElement(
@@ -138,7 +142,7 @@ class Impact extends BaseModule {
 						$imageElement . $titleElement . $viewsElement
 					);
 				},
-				$this->getArticleContributions()
+				array_slice( $this->getArticleContributions(), 0, 5 )
 			) );
 		} else {
 			return $this->getContext()
@@ -151,14 +155,44 @@ class Impact extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getSubheader() {
+	protected function getMobileSummaryBody() {
+		if ( $this->isActivated() ) {
+			$articleEditsElement = Html::rawElement(
+				'div',
+				[ 'class' => 'growthexperiments-homepage-impact-subheader-text' ],
+				$this->getContext()->msg( 'growthexperiments-homepage-impact-mobilebody-articleedits' )
+					->numParams( $this->getArticleEditCount() )
+					->parse()
+			);
+			$pageViewsElement = Html::rawElement(
+				'div',
+				[ 'class' => 'growthexperiments-homepage-impact-subheader-subtext' ],
+				Html::element(
+					'span',
+					[],
+					$this->getContext()->msg( 'growthexperiments-homepage-impact-mobilebody-pageviews' )
+						->numParams( $this->getTotalPageViews() )
+						->text()
+				) . $this->getTotalViewsElement()
+			);
+			return $articleEditsElement . $pageViewsElement;
+		} else {
+			return $this->getSubheader();
+		}
+	}
+
+	private function getTotalViewsElement() {
+		return Html::element(
+			'span',
+			[ 'class' => 'growthexperiments-homepage-impact-mobile-totalviews' ],
+			$this->getTotalPageViews()
+		);
+	}
+
+	private function getSubheaderText() {
 		$textMsgKey = $this->isActivated() ?
 			'growthexperiments-homepage-impact-subheader-text' :
 			'growthexperiments-homepage-impact-subheader-text-no-edit';
-		$subtextMsgKey = $this->isActivated() ?
-			'growthexperiments-homepage-impact-subheader-subtext' :
-			'growthexperiments-homepage-impact-subheader-subtext-no-edit';
-
 		return Html::element(
 			'p',
 			[ 'class' => 'growthexperiments-homepage-impact-subheader-text' ],
@@ -166,14 +200,28 @@ class Impact extends BaseModule {
 				->msg( $textMsgKey )
 				->params( $this->getContext()->getUser()->getName() )
 				->text()
-		) . Html::element(
+		);
+	}
+
+	private function getSubheaderSubtext() {
+		$textMsgKey = $this->isActivated() ?
+			'growthexperiments-homepage-impact-subheader-subtext' :
+			'growthexperiments-homepage-impact-subheader-subtext-no-edit';
+		return Html::element(
 			'p',
 			[ 'class' => 'growthexperiments-homepage-impact-subheader-subtext' ],
 			$this->getContext()
-				->msg( $subtextMsgKey )
+				->msg( $textMsgKey )
 				->params( $this->getContext()->getUser()->getName() )
 				->text()
 		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getSubheader() {
+		return $this->getSubheaderText() . $this->getSubheaderSubtext();
 	}
 
 	/**
@@ -231,7 +279,7 @@ class Impact extends BaseModule {
 	}
 
 	/**
-	 * @return array Top 5 recently edited articles with pageviews and images
+	 * @return array Top 10 recently edited articles with pageviews
 	 * @throws MWException
 	 * @throws Exception
 	 */
@@ -246,15 +294,22 @@ class Impact extends BaseModule {
 				usort( $this->contribs, function ( $a, $b ) {
 					return ( $b['views'] ?? -1 ) <=> ( $a['views'] ?? -1 );
 				} );
-
-				// Take top 5
-				$this->contribs = array_slice( $this->contribs, 0, 5 );
-
-				// Add lead images
-				$this->addImages( $this->contribs );
 			}
 		}
 		return $this->contribs;
+	}
+
+	private function getTotalPageViews() {
+		if ( !$this->isActivated() ) {
+			return 0;
+		}
+		return array_reduce(
+			$this->getArticleContributions(),
+			function ( $subTotal, $contrib ) {
+				return $subTotal + ( $contrib['views'] ?? 0 );
+			},
+			0
+		);
 	}
 
 	/**
@@ -307,6 +362,30 @@ class Impact extends BaseModule {
 	}
 
 	/**
+	 * Get the total number of article edits made by the current user.
+	 *
+	 * @return integer
+	 * @throws Exception
+	 */
+	private function getArticleEditCount() {
+		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
+		$actorMigration = ActorMigration::newMigration();
+		$actorQuery = $actorMigration->getWhere( $dbr, 'rev_user', $this->getContext()->getUser() );
+		return $dbr->selectRowCount(
+			array_merge( [ 'revision' ], $actorQuery[ 'tables' ], [ 'page' ] ),
+			'rev_id',
+			[
+				$actorQuery[ 'conds' ],
+				'rev_deleted' => 0,
+				'page_namespace' => 0,
+			],
+			__METHOD__,
+			[],
+			[ 'page' => [ 'JOIN', [ 'rev_page = page_id' ] ] ] + $actorQuery[ 'joins' ]
+		);
+	}
+
+	/**
 	 * Add pageviews information to the array of recent contributions.
 	 *
 	 * @param array &$contribs Recent contributions
@@ -352,33 +431,32 @@ class Impact extends BaseModule {
 	}
 
 	/**
-	 * Add image URLs to the array of recent contributions
+	 * Get image URL for a page
 	 * Depends on the PageImages extension.
 	 *
-	 * @param array &$contribs Recent contributions
-	 * @throws MWException
+	 * @param Title $title
+	 * @return bool|string
 	 */
-	private function addImages( &$contribs ) {
+	private function getImage( Title $title ) {
 		if ( !ExtensionRegistry::getInstance()->isLoaded( 'PageImages' ) ) {
-			return;
+			return false;
 		}
 
-		foreach ( $contribs as &$contrib ) {
-			$title = $contrib[ 'title' ];
-			$imageFile = PageImages::getPageImage( $title );
-			if ( $imageFile ) {
-				$ratio = $imageFile->getWidth() / $imageFile->getHeight();
-				$options = [
-					'width' => $ratio > 1 ?
-						self::THUMBNAIL_SIZE / $imageFile->getHeight() * $imageFile->getWidth() :
-						self::THUMBNAIL_SIZE
-				];
-				$thumb = $imageFile->transform( $options );
-				if ( $thumb ) {
-					$contrib['image_url'] = $thumb->getUrl();
-				}
+		$imageFile = PageImages::getPageImage( $title );
+		if ( $imageFile ) {
+			$ratio = $imageFile->getWidth() / $imageFile->getHeight();
+			$options = [
+				'width' => $ratio > 1 ?
+					self::THUMBNAIL_SIZE / $imageFile->getHeight() * $imageFile->getWidth() :
+					self::THUMBNAIL_SIZE
+			];
+			$thumb = $imageFile->transform( $options );
+			if ( $thumb ) {
+				return $thumb->getUrl();
 			}
 		}
+
+		return false;
 	}
 
 	/**
@@ -408,5 +486,12 @@ class Impact extends BaseModule {
 			'end' => $now->format( 'Y-m-d' ),
 			'pages' => $title->getPrefixedDBkey(),
 		] );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getHeaderIconName() {
+		return 'chart';
 	}
 }

@@ -25,7 +25,7 @@ class Userpage extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getUncompletedIcon() {
+	protected function getHeaderIconName() {
 		return 'edit';
 	}
 
@@ -101,6 +101,9 @@ class Userpage extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function getModuleStyles() {
-		return 'oojs-ui.styles.icons-editing-core';
+		return array_merge(
+			parent::getModuleStyles(),
+			[ 'oojs-ui.styles.icons-editing-core' ]
+		);
 	}
 }

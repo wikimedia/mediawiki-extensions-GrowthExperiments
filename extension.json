@@ -266,17 +266,30 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.Homepage": {
+		"ext.growthExperiments.Homepage.Logging": {
 			"packageFiles": [
-				"homepage/ext.growthExperiments.Homepage.js",
+				"homepage/ext.growthExperiments.Homepage.Logging.js",
 				"homepage/ext.growthExperiments.Homepage.Logger.js",
 				"utils/ext.growthExperiments.Utils.js"
+			],
+			"dependencies": [
+				"oojs-ui-core",
+				"mediawiki.user"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.growthExperiments.Homepage.RecentQuestions": {
+			"packageFiles": [
+				"homepage/ext.growthExperiments.Homepage.RecentQuestions.js"
 			],
 			"messages": [
 				"growthexperiments-homepage-recent-questions-header"
 			],
 			"dependencies": [
-				"mediawiki.user"
+				"mediawiki.api"
 			],
 			"targets": [
 				"desktop",

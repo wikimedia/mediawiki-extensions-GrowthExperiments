@@ -35,11 +35,14 @@ class Email extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getUncompletedIcon() {
+	protected function getHeaderIconName() {
 		return 'message';
 	}
 
-	protected function shouldInvertIcon() {
+	/**
+	 * @inheritDoc
+	 */
+	protected function shouldInvertHeaderIcon() {
 		return $this->isCompleted() || $this->emailState === self::MODULE_STATE_UNCONFIRMED;
 	}
 

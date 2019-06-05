@@ -5,6 +5,8 @@ namespace GrowthExperiments;
 use IContextSource;
 use MediaWiki\Auth\AuthManager;
 use Sanitizer;
+use Skin;
+use SkinMinerva;
 use User;
 
 class Util {
@@ -75,5 +77,13 @@ class Util {
 		} else {
 			return [ 'years', 'weeks' ];
 		}
+	}
+
+	/**
+	 * @param Skin $skin
+	 * @return bool Whether the given skin is considered "mobile".
+	 */
+	public static function isMobile( Skin $skin ) {
+		return $skin instanceof SkinMinerva;
 	}
 }

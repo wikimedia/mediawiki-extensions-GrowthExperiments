@@ -92,27 +92,33 @@
 				font-size: 1em;
 			}
 
-			.growthexperiments-homepage-module-section-username {
-				span {
+			.growthexperiments-homepage-module-section-userinfo {
+				.oo-ui-iconElement {
+					height: 42px;
+					width: 42px;
+					border-radius: 50%;
+					background-size: unset;
+					background-color: @colorGray5;
+					margin-left: auto;
+					margin-right: auto;
+				}
+
+				.growthexperiments-homepage-module-section-username {
 					display: block;
 					font-size: 1.3em;
 					font-family: 'Georgia', serif;
 					color: @colorGray1;
 
-					&.oo-ui-iconElement {
-						height: 42px;
-						width: 42px;
-						border-radius: 50%;
-						background-size: unset;
-						background-color: @colorGray5;
-						margin-left: auto;
-						margin-right: auto;
+					span {
+						overflow: hidden;
+						text-overflow: ellipsis;
 					}
 				}
 			}
 
 			.growthexperiments-homepage-module-section-editcount,
 			.growthexperiments-homepage-module-section-accountage {
+				display: block;
 				font-family: @homepageHeaderFont;
 				font-size: 0.85em;
 				letter-spacing: 0.02em;
@@ -133,6 +139,75 @@
 		.growthexperiments-homepage-module-start-userpage {
 			.growthexperiments-homepage-userpage-guidelines {
 				margin-top: 0.5em;
+			}
+		}
+	}
+}
+
+.growthexperiments-homepage-mobile-summary {
+	.growthexperiments-homepage-module-start {
+		& > .growthexperiments-homepage-module-section-header {
+			margin-bottom: 0.8em;
+		}
+
+		& > .growthexperiments-homepage-module-section-body {
+			.growthexperiments-homepage-module {
+				border: 0;
+				padding: 0;
+
+				& > h3 {
+					flex-direction: column;
+					font-weight: normal;
+					text-align: center;
+					font-size: 0.875em;
+
+					.growthexperiments-homepage-module-header-icon {
+						margin-right: 0;
+						margin-bottom: 0.5em;
+					}
+
+					.growthexperiments-homepage-module-header-text {
+						text-align: center;
+					}
+				}
+			}
+		}
+	}
+}
+
+.growthexperiments-homepage-mobile-details {
+	.growthexperiments-homepage-module-start {
+		& > .growthexperiments-homepage-module-section-body {
+			flex-direction: column;
+
+			.growthexperiments-homepage-module {
+				width: 100%;
+				border-right: 0;
+				border-bottom: @colorGray12 @border-width-base @border-style-base;
+				padding: 0.5em 0 1em 0;
+
+				&:last-child {
+					border: 0;
+					padding-bottom: 0;
+				}
+
+				.growthexperiments-homepage-module-section-body,
+				.growthexperiments-homepage-module-section-footer {
+					padding-left: 46px;
+					text-align: left;
+				}
+			}
+
+			.growthexperiments-homepage-module-start-account {
+				.growthexperiments-homepage-module-section-userinfo {
+					display: flex;
+					align-items: center;
+
+					.oo-ui-iconElement {
+						margin-left: unset;
+						margin-right: 1em;
+					}
+				}
 			}
 		}
 	}

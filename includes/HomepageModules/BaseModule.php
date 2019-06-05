@@ -2,13 +2,16 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+use Exception;
 use GrowthExperiments\HomepageModule;
 use Html;
 use IContextSource;
+use OOUI\IconWidget;
+use SpecialPage;
 
 /**
- * Class BaseModule is a base class for a small homepage module
- * typically displayed in the sidebar.
+ * BaseModule is a base class for homepage modules.
+ * It provides utilities and a default structure (header, subheader, body, footer).
  *
  * @package GrowthExperiments\HomepageModules
  */
@@ -34,6 +37,11 @@ abstract class BaseModule implements HomepageModule {
 	private $name;
 
 	/**
+	 * @var int Current rendering mode
+	 */
+	private $mode;
+
+	/**
 	 * @param string $name Name of the module
 	 * @param IContextSource $ctx
 	 */
@@ -45,31 +53,55 @@ abstract class BaseModule implements HomepageModule {
 	/**
 	 * @inheritDoc
 	 */
-	public function render() {
+	public function render( $mode ) {
+		$this->mode = $mode;
 		if ( !$this->canRender() ) {
 			return '';
 		}
 
-		$out = $this->getContext()->getOutput();
-		$out->addModuleStyles( 'ext.growthExperiments.Homepage.styles' );
-		$out->addModuleStyles( $this->getModuleStyles() );
-		$out->addModules( $this->getModules() );
-		$out->addJsConfigVars( array_merge( $this->getJsConfigVars(), [
-			'wgGEHomepageModuleState-' . $this->name => $this->getState(),
-			'wgGEHomepageModuleActionData-' . $this->name => $this->getActionData()
-		] ) );
-		return Html::rawElement(
-			'div',
-			[
-				'class' => array_merge( [
-					self::BASE_CSS_CLASS,
-					self::BASE_CSS_CLASS . '-' . $this->name,
-				], $this->getCssClasses() ),
-				'data-module-name' => $this->name,
-			],
-			$this->buildSection( 'header', $this->getHeader(), $this->getHeaderTag() ) .
-			$this->buildSection( 'subheader', $this->getSubheader(), $this->getSubheaderTag() ) .
-			$this->buildSection( 'body', $this->getBody() ) .
+		$this->outputDependencies();
+		if ( $mode === HomepageModule::RENDER_DESKTOP ) {
+			$html = $this->renderDesktop();
+		} elseif ( $mode === HomepageModule::RENDER_MOBILE_SUMMARY ) {
+			$html = $this->renderMobileSummary();
+		} elseif ( $mode === HomepageModule::RENDER_MOBILE_DETAILS ) {
+			$html = $this->renderMobileDetails();
+		} else {
+			throw new Exception( 'Invalid rendering mode: ' . $mode );
+		}
+		return $html;
+	}
+
+	/**
+	 * @return string HTML rendering for desktop.
+	 */
+	protected function renderDesktop() {
+		return $this->buildModuleWrapper(
+			$this->buildSection( 'header', $this->getHeader(), $this->getHeaderTag() ),
+			$this->buildSection( 'subheader', $this->getSubheader(), $this->getSubheaderTag() ),
+			$this->buildSection( 'body', $this->getBody() ),
+			$this->buildSection( 'footer', $this->getFooter() )
+		);
+	}
+
+	/**
+	 * @return string HTML rendering for mobile summary.
+	 */
+	protected function renderMobileSummary() {
+		return $this->buildModuleWrapper(
+			$this->buildSection( 'header', $this->getMobileSummaryHeader(), $this->getHeaderTag() ),
+			$this->buildSection( 'body', $this->getMobileSummaryBody() )
+		);
+	}
+
+	/**
+	 * @return string HTML rendering for mobile details.
+	 */
+	protected function renderMobileDetails() {
+		return $this->buildModuleWrapper(
+			$this->buildSection( 'header', $this->getMobileDetailsHeader(), $this->getHeaderTag() ),
+			$this->buildSection( 'subheader', $this->getSubheader(), $this->getSubheaderTag() ),
+			$this->buildSection( 'body', $this->getBody() ),
 			$this->buildSection( 'footer', $this->getFooter() )
 		);
 	}
@@ -82,11 +114,119 @@ abstract class BaseModule implements HomepageModule {
 	}
 
 	/**
+	 * @return int Current rendering mode
+	 */
+	final protected function getMode() {
+		return $this->mode;
+	}
+
+	/**
 	 * Implement this function to provide the module header.
 	 *
-	 * @return string HTML content of the header
+	 * @return string HTML content of the header. Will be wrapped in a section.
 	 */
-	abstract protected function getHeader();
+	protected function getHeader() {
+		return $this->getHeaderTextElement();
+	}
+
+	private function getBackIcon() {
+		return Html::rawElement(
+			'a',
+			[
+				'href' => SpecialPage::getTitleFor( 'Homepage' )->getLinkURL(),
+			],
+			new IconWidget( [
+				'icon' => 'arrowPrevious',
+				'classes' => [ self::BASE_CSS_CLASS . '-header-back-icon' ],
+			] )
+		);
+	}
+
+	/**
+	 * @return string HTML element containing the header text.
+	 */
+	protected function getHeaderTextElement() {
+		return Html::element(
+			'div',
+			[ 'class' => self::BASE_CSS_CLASS . '-header-text' ],
+			$this->getHeaderText()
+		);
+	}
+
+	/**
+	 * @return IconWidget The navigation icon.
+	 */
+	protected function getNavIcon() {
+		return new IconWidget( [
+			'icon' => 'next',
+			'classes' => [ self::BASE_CSS_CLASS . '-header-nav-icon' ],
+		] );
+	}
+
+	/**
+	 * @param string $name Name of the icon
+	 * @param bool $invert Whether the icon should be inverted
+	 * @return string HTML string of the icon.
+	 */
+	protected function getHeaderIcon( $name, $invert ) {
+		return Html::rawElement(
+			'div',
+			[ 'class' => self::BASE_CSS_CLASS . '-header-icon' ],
+			new IconWidget( [
+				'icon' => $name,
+				// HACK: IconWidget doesn't let us set 'invert' => true, and setting
+				// 'classes' => [ 'oo-ui-image-invert' ] doesn't work either, because
+				// Theme::getElementClasses() will unset it again. So instead, trick that code into
+				// thinking this is a checkbox icon, which will cause it to invert the icon
+				'classes' => $invert ?
+					[ 'oo-ui-image-invert', 'oo-ui-checkboxInputWidget-checkIcon' ] :
+					[]
+			] )
+		);
+	}
+
+	/**
+	 * @return string HTML string to be used as header of the mobile summary.
+	 */
+	protected function getMobileSummaryHeader() {
+		$icon = $this->getHeaderIcon(
+			$this->getHeaderIconName(),
+			$this->shouldInvertHeaderIcon()
+		);
+		$text = $this->getHeaderTextElement();
+		$navIcon = $this->getNavIcon();
+		return $icon . $text . $navIcon;
+	}
+
+	/**
+	 * @return string HTML string to be used as header of the mobile details.
+	 */
+	protected function getMobileDetailsHeader() {
+		$icon = $this->getBackIcon();
+		$text = $this->getHeaderTextElement();
+		return $icon . $text;
+	}
+
+	/**
+	 * Override this function to provide the header text.
+	 *
+	 * @return string
+	 */
+	abstract protected function getHeaderText();
+
+	/**
+	 * Override this function to provide the name of the header icon.
+	 *
+	 * @return string
+	 */
+	abstract protected function getHeaderIconName();
+
+	/**
+	 * @return bool Whether the header icon should be inverted.
+	 */
+	protected function shouldInvertHeaderIcon() {
+		return false;
+	}
 
 	/**
 	 * Override this function to change the default header tag.
@@ -103,6 +243,14 @@ abstract class BaseModule implements HomepageModule {
 	 * @return string HTML content of the body
 	 */
 	abstract protected function getBody();
+
+	/**
+	 * Implement this function to provide the module body
+	 * when rendered as a mobile summary.
+	 *
+	 * @return string HTML content of the body
+	 */
+	abstract protected function getMobileSummaryBody();
 
 	/**
 	 * Override this function to provide an optional module subheader.
@@ -135,10 +283,10 @@ abstract class BaseModule implements HomepageModule {
 	 * Override this function to provide module styles that need to be
 	 * loaded in the <head> for this module.
 	 *
-	 * @return string|string[] Name of the module(s) to load
+	 * @return string[] Name of the module(s) to load
 	 */
 	protected function getModuleStyles() {
-		return '';
+		return [ 'oojs-ui.styles.icons-movement' ];
 	}
 
 	/**
@@ -219,5 +367,30 @@ abstract class BaseModule implements HomepageModule {
 	 */
 	protected function getActionData() {
 		return [];
+	}
+
+	private function buildModuleWrapper( ...$sections ) {
+		return Html::rawElement(
+			'div',
+			[
+				'class' => array_merge( [
+					self::BASE_CSS_CLASS,
+					self::BASE_CSS_CLASS . '-' . $this->name,
+				], $this->getCssClasses() ),
+				'data-module-name' => $this->name,
+			],
+			implode( "\n", $sections )
+		);
+	}
+
+	private function outputDependencies() {
+		$out = $this->getContext()->getOutput();
+		$out->addModuleStyles( 'ext.growthExperiments.Homepage.styles' );
+		$out->addModuleStyles( $this->getModuleStyles() );
+		$out->addModules( $this->getModules() );
+		$out->addJsConfigVars( array_merge( $this->getJsConfigVars(), [
+			'wgGEHomepageModuleState-' . $this->name => $this->getState(),
+			'wgGEHomepageModuleActionData-' . $this->name => $this->getActionData(),
+		] ) );
 	}
 }

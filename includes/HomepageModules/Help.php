@@ -32,8 +32,8 @@ class Help extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getHeader() {
-		return $this->getContext()->msg( 'growthexperiments-homepage-help-header' )->escaped();
+	protected function getHeaderText() {
+		return $this->getContext()->msg( 'growthexperiments-homepage-help-header' )->text();
 	}
 
 	/**
@@ -85,7 +85,9 @@ class Help extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getModules() {
-		return 'ext.growthExperiments.Homepage.Help';
+		return $this->getMode() === self::RENDER_MOBILE_SUMMARY ?
+			[] :
+			'ext.growthExperiments.Homepage.Help';
 	}
 
 	/**
@@ -105,6 +107,17 @@ class Help extends BaseModule {
 		);
 		return $helpPanelLinkData['helpPanelLinks'] . $helpPanelLinkData['viewMoreLink'] .
 			$this->getCtaButton() . $this->getRecentQuestionsSection();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getMobileSummaryBody() {
+		return Html::element(
+			'div',
+			[],
+			$this->getContext()->msg( 'growthexperiments-homepage-help-mobilebody' )->text()
+		);
 	}
 
 	/**
@@ -146,4 +159,10 @@ class Help extends BaseModule {
 		return $this->recentQuestions;
 	}
 
+	/**
+	 * @inheritDoc
+	 */
+	protected function getHeaderIconName() {
+		return 'helpNotice';
+	}
 }

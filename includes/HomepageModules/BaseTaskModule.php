@@ -2,9 +2,6 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use Html;
-use OOUI\IconWidget;
-
 abstract class BaseTaskModule extends BaseModule {
 
 	/**
@@ -13,61 +10,34 @@ abstract class BaseTaskModule extends BaseModule {
 	abstract public function isCompleted();
 
 	/**
-	 * The header of a BaseTaskModule contains an icon and a message. The icon is an inverted check
-	 * mark when the task is completed, or the icon name returned by this method when the task
-	 * is not completed.
-	 *
-	 * If this method returns false, no icon will be displayed (even if the task is completed).
-	 *
-	 * @return string|bool Icon name to use when the task is not completed, or false to disable icons
-	 */
-	abstract protected function getUncompletedIcon();
-
-	/**
 	 * Determine whether the icon should be inverted (white icon, for darker backgrounds).
 	 * By default, the icon is inverted when the module is in the completed state. Subclasses can
 	 * override this to change when inverted icons are used.
 	 *
 	 * @return bool Icon is inverted
 	 */
-	protected function shouldInvertIcon() {
+	protected function shouldInvertHeaderIcon() {
 		return $this->isCompleted();
 	}
-
-	/**
-	 * @return string Text to use in the header next to the icon
-	 */
-	abstract protected function getHeaderText();
 
 	/**
 	 * @inheritDoc
 	 */
 	protected function getHeader() {
-		$uncompletedIcon = $this->getUncompletedIcon();
-		if ( $uncompletedIcon === false ) {
-			$icon = '';
-		} else {
-			$icon = Html::rawElement(
-				'div',
-				[ 'class' => self::BASE_CSS_CLASS . '-header-icon' ],
-				new IconWidget( [
-					'icon' => $this->isCompleted() ? 'check' : $uncompletedIcon,
-					// HACK: IconWidget doesn't let us set 'invert' => true, and setting
-					// 'classes' => [ 'oo-ui-image-invert' ] doesn't work either, because
-					// Theme::getElementClasses() will unset it again. So instead, trick that code into
-					// thinking this is a checkbox icon, which will cause it to invert the icon
-					'classes' => $this->shouldInvertIcon() ?
-						[ 'oo-ui-image-invert', 'oo-ui-checkboxInputWidget-checkIcon' ] :
-						[]
-				] )
-			);
-		}
-		$span = Html::element(
-			'div',
-			[ 'class' => self::BASE_CSS_CLASS . '-header-text' ],
-			$this->getHeaderText()
+		$iconName = $this->isCompleted() ? 'check' : $this->getHeaderIconName();
+		$icon = $this->getHeaderIcon(
+			$iconName,
+			$this->shouldInvertHeaderIcon()
 		);
-		return $icon . $span;
+		$text = $this->getHeaderTextElement();
+		return $icon . $text;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getMobileSummaryHeader() {
+		return $this->getHeader();
 	}
 
 	/**
@@ -94,5 +64,12 @@ abstract class BaseTaskModule extends BaseModule {
 	 */
 	public function getState() {
 		return $this->isCompleted() ? self::MODULE_STATE_COMPLETE : self::MODULE_STATE_INCOMPLETE;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getMobileSummaryBody() {
+		return '';
 	}
 }
