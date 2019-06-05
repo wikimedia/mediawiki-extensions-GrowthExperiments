@@ -21,11 +21,10 @@
 	 *
 	 * @param {string} module Name of the module
 	 * @param {string} action User action
-	 * @param {string} state State of the module the user is interacting with.
-	 * @param {Object} [data] Additional data related to the action or the state of the module
+	 * @param {Object} [extraData] Additional data related to the action or the state of the module
 	 */
-	HomepageModuleLogger.prototype.log = function ( module, action, state, data ) {
-		var event;
+	HomepageModuleLogger.prototype.log = function ( module, action, extraData ) {
+		var event, state, data;
 		if ( !this.enabled ) {
 			return;
 		}
@@ -33,6 +32,12 @@
 		if ( this.modulesExcludedFromLogging.indexOf( module ) !== -1 ) {
 			return;
 		}
+
+		data = $.extend(
+			{},
+			mw.config.get( 'wgGEHomepageModuleActionData-' + module ) || {},
+			extraData || {}
+		);
 
 		event = {
 			/* eslint-disable camelcase */
@@ -45,6 +50,7 @@
 			homepage_pageview_token: this.homepagePageviewToken
 			/* eslint-enable camelcase */
 		};
+		state = mw.config.get( 'wgGEHomepageModuleState-' + module );
 		if ( state ) {
 			// Don't pass things like event.state = '', that causes validation errors
 			event.state = state;

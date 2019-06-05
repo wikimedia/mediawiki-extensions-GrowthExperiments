@@ -11,6 +11,7 @@ use IContextSource;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
 use MediaWiki\MediaWikiServices;
 use MWException;
+use OOUI\ButtonWidget;
 use OOUI\IconWidget;
 use PageImages;
 use SpecialPage;
@@ -44,8 +45,17 @@ class Impact extends BaseModule {
 	protected function getModuleStyles() {
 		return array_merge(
 			parent::getModuleStyles(),
-			[ 'oojs-ui.styles.icons-media' ]
+			[ 'oojs-ui.styles.icons-media', 'oojs-ui.styles.icons-interactions' ]
 		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getModules() {
+		return $this->getMode() === self::RENDER_MOBILE_SUMMARY ?
+			[] :
+			'ext.growthExperiments.Homepage.Impact';
 	}
 
 	/**
@@ -73,14 +83,19 @@ class Impact extends BaseModule {
 				'icon' => 'image',
 				'classes' => [ 'placeholder-image' ],
 			] );
-			$emptyViewsElement = Html::element(
-				'span',
-				[ 'class' => 'pageviews' ],
-				'--'
-			);
+			$emptyViewsWidget = new ButtonWidget( [
+				'classes' => [ 'empty-pageviews' ],
+				'framed' => false,
+				'icon' => 'clock',
+				'title' => $this->getContext()
+					->msg( 'growthexperiments-homepage-impact-empty-pageviews-tooltip' )
+					->text(),
+				'infusable' => true,
+				'flags' => [ 'progressive' ],
+			] );
 			return implode( "\n", array_map(
 				function ( $contrib ) use (
-					$articleLinkTooltip, $pageviewsTooltip, $emptyImage, $emptyViewsElement
+					$articleLinkTooltip, $pageviewsTooltip, $emptyImage, $emptyViewsWidget
 				) {
 					$titleText = $contrib['title']->getText();
 					$titlePrefixedText = $contrib['title']->getPrefixedText();
@@ -134,7 +149,7 @@ class Impact extends BaseModule {
 								'data-link-id' => 'impact-pageviews',
 							],
 							$contrib['views']
-						) : $emptyViewsElement;
+						) : $emptyViewsWidget;
 
 					return Html::rawElement(
 						'div',
