@@ -61,6 +61,9 @@
 			"GrowthExperiments\\WelcomeSurveyHooks::onBeforePageDisplay",
 			"GrowthExperiments\\HelpPanelHooks::onBeforePageDisplay"
 		],
+		"SkinMinervaOptionsInit": [
+			"GrowthExperiments\\HomepageHooks::onSkinMinervaOptionsInit"
+		],
 		"ListDefinedTags": [
 			"GrowthExperiments\\HelpPanelHooks::onListDefinedTags",
 			"GrowthExperiments\\HomepageHooks::onListDefinedTags"
@@ -518,6 +521,10 @@
 		},
 		"GEHomepageEnabled": {
 			"description": "Global ON/OFF switch for the Homepage feature.",
+			"value": false
+		},
+		"GEHomepageMobileEnabled": {
+			"description": "Feature flag for code which drives traffic to mobile Homepage.",
 			"value": false
 		},
 		"GEHomepageNewAccountEnablePercentage": {
