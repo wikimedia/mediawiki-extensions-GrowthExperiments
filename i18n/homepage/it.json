@@ -25,6 +25,7 @@
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Non {{GENDER:$1|hai}} modificato alcuna voce ancora.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> modifiche a voci",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Vai alla voce",
+	"growthexperiments-homepage-impact-mobilebody-articleedits": "<strong>$1</strong> {{PLURAL:$1|modifica|modifiche}} alle voci",
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|modifica|modifiche}}",
 	"growthexperiments-homepage-help-cancel": "Annulla",
 	"growthexperiments-homepage-recent-questions-header": "Le {{GENERE:$1|tue}} domande recenti",
