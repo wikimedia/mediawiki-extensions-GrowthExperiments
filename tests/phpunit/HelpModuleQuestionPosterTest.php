@@ -84,6 +84,7 @@ class HelpModuleQuestionPosterTest extends MediaWikiTestCase {
 	/**
 	 * @throws \MWException
 	 * @covers \GrowthExperiments\HelpPanel\HelpPanelQuestionPoster::getNumberedSectionHeaderIfDuplicatesExist
+	 * @group Broken
 	 */
 	public function testNumberingIfQuestionIsArchived() {
 		$this->insertPage( 'HelpDeskTest', '' );
