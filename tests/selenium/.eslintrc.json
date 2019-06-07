@@ -1,0 +1,15 @@
+{
+	"root": true,
+	"extends": [
+		"wikimedia/server"
+	],
+	"env": {
+		"mocha": true
+	},
+	"globals": {
+		"browser": false
+	},
+	"rules": {
+		"no-console": 0
+	}
+}
