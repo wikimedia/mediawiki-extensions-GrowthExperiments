@@ -46,13 +46,13 @@ QUnit.module( 'HomepageLogger', {
 	} );
 	QUnit.test( 'log', function ( assert ) {
 		var homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
-		homepageModuleLogger.log( 'tutorial', 'hover-in', 'complete', { foo: 'bar' } );
+		homepageModuleLogger.log( 'tutorial', 'hover-in', { foo: 'bar' } );
 		assert.strictEqual( global.mw.track.getCall( 0 ).args[ 0 ], 'event.HomepageModule' );
 		assert.deepEqual( global.mw.track.getCall( 0 ).args[ 1 ], {
 			/* eslint-disable camelcase */
 			action: 'hover-in',
 			action_data: 'foo=bar',
-			state: 'complete',
+			state: 42,
 			user_id: 24,
 			user_editcount: 42,
 			module: 'tutorial',
@@ -64,18 +64,19 @@ QUnit.module( 'HomepageLogger', {
 
 	QUnit.test( 'exclude start', function ( assert ) {
 		var homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
-		homepageModuleLogger.log( 'start', 'hover-in', 'complete', { foo: 'bar' } );
+		homepageModuleLogger.log( 'start', 'hover-in' );
 		assert.strictEqual( global.mw.track.called, false );
 	} );
 
 	QUnit.test( 'do not include state in event if empty', function ( assert ) {
 		var homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
-		homepageModuleLogger.log( 'mentor', 'hover-out', '', { foo: 'bar' } );
+		global.mw.config.get = sinon.stub().returns( '' );
+		homepageModuleLogger.log( 'mentor', 'hover-out' );
 		assert.strictEqual( global.mw.track.getCall( 0 ).args[ 0 ], 'event.HomepageModule' );
 		assert.deepEqual( global.mw.track.getCall( 0 ).args[ 1 ], {
 			/* eslint-disable camelcase */
 			action: 'hover-out',
-			action_data: 'foo=bar',
+			action_data: '',
 			user_id: 24,
 			user_editcount: 42,
 			module: 'mentor',

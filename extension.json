@@ -99,7 +99,7 @@
 		"EventLogging": {
 			"Schemas": {
 				"HelpPanel": 18973214,
-				"HomepageModule": 19000731
+				"HomepageModule": 19139705
 			}
 		}
 	},
@@ -272,15 +272,26 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.Homepage.Logging": {
+		"ext.growthExperiments.Homepage.Logger": {
 			"packageFiles": [
-				"homepage/ext.growthExperiments.Homepage.Logging.js",
 				"homepage/ext.growthExperiments.Homepage.Logger.js",
 				"utils/ext.growthExperiments.Utils.js"
 			],
 			"dependencies": [
 				"oojs-ui-core",
 				"mediawiki.user"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.growthExperiments.Homepage.Logging": {
+			"packageFiles": [
+				"homepage/ext.growthExperiments.Homepage.Logging.js"
+			],
+			"dependencies": [
+				"ext.growthExperiments.Homepage.Logger"
 			],
 			"targets": [
 				"desktop",
@@ -312,6 +323,22 @@
 			],
 			"dependencies": [
 				"ext.growthExperiments.Homepage.QuestionPoster"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.growthExperiments.Homepage.Impact": {
+			"packageFiles": [
+				"homepage/ext.growthExperiments.Homepage.Impact.js"
+			],
+			"messages": [
+				"growthexperiments-homepage-impact-empty-pageviews-tooltip-button"
+			],
+			"dependencies": [
+				"ext.growthExperiments.Homepage.Logger",
+				"oojs-ui-windows"
 			],
 			"targets": [
 				"desktop",
