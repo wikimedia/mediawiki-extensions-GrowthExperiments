@@ -24,7 +24,7 @@
 	 * @param {Object} [extraData] Additional data related to the action or the state of the module
 	 */
 	HomepageModuleLogger.prototype.log = function ( module, action, extraData ) {
-		var event, state, data;
+		var event, state, data, mode;
 		if ( !this.enabled ) {
 			return;
 		}
@@ -35,9 +35,11 @@
 
 		data = $.extend(
 			{},
-			mw.config.get( 'wgGEHomepageModuleActionData-' + module ) || {},
+			mw.config.get( 'wgGEHomepageModuleActionData-' + module ),
 			extraData || {}
 		);
+		mode = data.mode;
+		delete data.mode;
 
 		event = {
 			/* eslint-disable camelcase */
@@ -47,6 +49,7 @@
 			user_editcount: this.userEditCount,
 			module: module,
 			is_mobile: this.isMobile,
+			mode: mode,
 			homepage_pageview_token: this.homepagePageviewToken
 			/* eslint-enable camelcase */
 		};

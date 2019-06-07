@@ -120,6 +120,14 @@ abstract class BaseModule implements HomepageModule {
 		return $this->mode;
 	}
 
+	private function getModeName() {
+		return [
+			self::RENDER_DESKTOP => 'desktop',
+			self::RENDER_MOBILE_SUMMARY => 'mobile-summary',
+			self::RENDER_MOBILE_DETAILS => 'mobile-details',
+		][ $this->getMode() ];
+	}
+
 	/**
 	 * Implement this function to provide the module header.
 	 *
@@ -366,7 +374,7 @@ abstract class BaseModule implements HomepageModule {
 	 * @return array
 	 */
 	protected function getActionData() {
-		return [];
+		return [ 'mode' => $this->getModeName() ];
 	}
 
 	private function buildModuleWrapper( ...$sections ) {
