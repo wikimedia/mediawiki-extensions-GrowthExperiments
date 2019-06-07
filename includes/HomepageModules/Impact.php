@@ -73,92 +73,7 @@ class Impact extends BaseModule {
 	 */
 	protected function getBody() {
 		if ( $this->isActivated() ) {
-			$articleLinkTooltip = $this->getContext()
-				->msg( 'growthexperiments-homepage-impact-article-link-tooltip' )
-				->text();
-			$pageviewsTooltip = $this->getContext()
-				->msg( 'growthexperiments-homepage-impact-pageviews-link-tooltip' )
-				->text();
-			$emptyImage = new IconWidget( [
-				'icon' => 'image',
-				'classes' => [ 'placeholder-image' ],
-			] );
-			$emptyViewsWidget = new ButtonWidget( [
-				'classes' => [ 'empty-pageviews' ],
-				'framed' => false,
-				'icon' => 'clock',
-				'title' => $this->getContext()
-					->msg( 'growthexperiments-homepage-impact-empty-pageviews-tooltip' )
-					->text(),
-				'infusable' => true,
-				'flags' => [ 'progressive' ],
-			] );
-			return implode( "\n", array_map(
-				function ( $contrib ) use (
-					$articleLinkTooltip, $pageviewsTooltip, $emptyImage, $emptyViewsWidget
-				) {
-					$titleText = $contrib['title']->getText();
-					$titlePrefixedText = $contrib['title']->getPrefixedText();
-					$titleUrl = $contrib['title']->getLinkUrl();
-
-					$imageUrl = $this->getImage( $contrib['title'] );
-					$image = $imageUrl ?
-						Html::element(
-							'div',
-							[
-								'alt' => $titleText,
-								'title' => $titlePrefixedText,
-								'class' => [ 'real-image' ],
-								'style' => 'background-image: url(' . $imageUrl . ');',
-							]
-						) : $emptyImage;
-					$imageElement = Html::rawElement(
-						'a',
-						[
-							'class' => 'article-image',
-							'href' => $titleUrl,
-							'title' => $articleLinkTooltip,
-							'data-link-id' => 'impact-article-image',
-						],
-						$image
-					);
-
-					$titleElement = Html::rawElement(
-						'span',
-						[ 'class' => 'article-title' ],
-						Html::element(
-							'a',
-							[
-								'href' => $titleUrl,
-								'title' => $articleLinkTooltip,
-								'data-link-id' => 'impact-article-title',
-							],
-							$titlePrefixedText
-						)
-					);
-
-					$viewsElement = isset( $contrib['views'] ) ?
-						Html::element(
-							'a',
-							[
-								'class' => 'pageviews',
-								'href' => $this->getPageViewToolsUrl(
-									$contrib['title'], $contrib['ts']
-								),
-								'title' => $pageviewsTooltip,
-								'data-link-id' => 'impact-pageviews',
-							],
-							$contrib['views']
-						) : $emptyViewsWidget;
-
-					return Html::rawElement(
-						'div',
-						[ 'class' => 'impact-row' ],
-						$imageElement . $titleElement . $viewsElement
-					);
-				},
-				array_slice( $this->getArticleContributions(), 0, 5 )
-			) );
+			return $this->getEditsTable();
 		} else {
 			return $this->getContext()
 				->msg( 'growthexperiments-homepage-impact-body-no-edit' )
@@ -182,7 +97,7 @@ class Impact extends BaseModule {
 				[ 'class' => 'growthexperiments-homepage-impact-subheader-subtext' ],
 				Html::element(
 					'span',
-					[],
+					[ 'class' => 'growthexperiments-homepage-module-text-light' ],
 					$this->getContext()->msg( 'growthexperiments-homepage-impact-mobilebody-pageviews' )
 						->numParams( $this->getTotalPageViews() )
 						->text()
@@ -190,8 +105,125 @@ class Impact extends BaseModule {
 			);
 			return $articleEditsElement . $pageViewsElement;
 		} else {
-			return $this->getSubheader();
+			$line1 = Html::element(
+				'div',
+				[ 'class' => 'growthexperiments-homepage-module-text-light' ],
+				$this->getContext()
+					->msg( 'growthexperiments-homepage-impact-mobilesummarybody-monitor' )
+					->text()
+			);
+			$line2 = Html::element(
+				'div',
+				[ 'class' => [
+					'growthexperiments-homepage-module-text-normal',
+					'growthexperiments-homepage-impact-subheader-text',
+				] ],
+				$this->getContext()
+					->msg( 'growthexperiments-homepage-impact-subheader-text-no-edit' )
+					->text()
+			);
+			$line3 = Html::rawElement(
+				'div',
+				[ 'class' => 'growthexperiments-homepage-impact-subheader-subtext' ],
+				Html::element(
+					'span',
+					[ 'class' => 'growthexperiments-homepage-module-text-light' ],
+					$this->getContext()->msg( 'growthexperiments-homepage-impact-mobilebody-pageviews' )
+						->numParams( $this->getTotalPageViews() )
+						->text()
+				) . $this->getTotalViewsElement()
+			);
+			return $line1 . $line2 . $line3;
 		}
+	}
+
+	private function getEditsTable() {
+		$articleLinkTooltip = $this->getContext()
+			->msg( 'growthexperiments-homepage-impact-article-link-tooltip' )
+			->text();
+		$pageviewsTooltip = $this->getContext()
+			->msg( 'growthexperiments-homepage-impact-pageviews-link-tooltip' )
+			->text();
+		$emptyImage = new IconWidget( [
+			'icon' => 'image',
+			'classes' => [ 'placeholder-image' ],
+		] );
+		$emptyViewsWidget = new ButtonWidget( [
+				'classes' => [ 'empty-pageviews' ],
+				'framed' => false,
+				'icon' => 'clock',
+				'title' => $this->getContext()
+					->msg( 'growthexperiments-homepage-impact-empty-pageviews-tooltip' )
+					->text(),
+				'infusable' => true,
+				'flags' => [ 'progressive' ],
+			] );
+		return implode( "\n", array_map(
+			function ( $contrib ) use (
+				$articleLinkTooltip, $pageviewsTooltip, $emptyImage, $emptyViewsWidget
+			) {
+				$titleText = $contrib['title']->getText();
+				$titlePrefixedText = $contrib['title']->getPrefixedText();
+				$titleUrl = $contrib['title']->getLinkUrl();
+
+				$imageUrl = $this->getImage( $contrib['title'] );
+				$image = $imageUrl ?
+					Html::element(
+						'div',
+						[
+							'alt' => $titleText,
+							'title' => $titlePrefixedText,
+							'class' => [ 'real-image' ],
+							'style' => 'background-image: url(' . $imageUrl . ');',
+						]
+					) : $emptyImage;
+				$imageElement = Html::rawElement(
+					'a',
+					[
+						'class' => 'article-image',
+						'href' => $titleUrl,
+						'title' => $articleLinkTooltip,
+						'data-link-id' => 'impact-article-image',
+					],
+					$image
+				);
+
+				$titleElement = Html::rawElement(
+					'span',
+					[ 'class' => 'article-title' ],
+					Html::element(
+						'a',
+						[
+							'href' => $titleUrl,
+							'title' => $articleLinkTooltip,
+							'data-link-id' => 'impact-article-title',
+						],
+						$titlePrefixedText
+					)
+				);
+
+				$viewsElement = isset( $contrib['views'] ) ?
+					Html::element(
+						'a',
+						[
+							'class' => 'pageviews',
+							'href' => $this->getPageViewToolsUrl(
+								$contrib['title'], $contrib['ts']
+							),
+							'title' => $pageviewsTooltip,
+							'data-link-id' => 'impact-pageviews',
+						],
+						$contrib['views']
+					) : $emptyViewsWidget;
+
+				return Html::rawElement(
+					'div',
+					[ 'class' => 'impact-row' ],
+					$imageElement . $titleElement . $viewsElement
+				);
+			},
+			array_slice( $this->getArticleContributions(), 0, 5 )
+		) );
 	}
 
 	private function getTotalViewsElement() {
@@ -203,12 +235,12 @@ class Impact extends BaseModule {
 	}
 
 	private function getSubheaderText() {
-		$textMsgKey = $this->isActivated() ?
+		$textMsgKey = $this->getTotalPageViews() ?
 			'growthexperiments-homepage-impact-subheader-text' :
-			'growthexperiments-homepage-impact-subheader-text-no-edit';
+			'growthexperiments-homepage-impact-subheader-text-no-pageviews';
 		return Html::element(
 			'p',
-			[ 'class' => 'growthexperiments-homepage-impact-subheader-text' ],
+			[ 'class' => 'growthexperiments-homepage-module-text-normal' ],
 			$this->getContext()
 				->msg( $textMsgKey )
 				->params( $this->getContext()->getUser()->getName() )
@@ -217,17 +249,17 @@ class Impact extends BaseModule {
 	}
 
 	private function getSubheaderSubtext() {
-		$textMsgKey = $this->isActivated() ?
-			'growthexperiments-homepage-impact-subheader-subtext' :
-			'growthexperiments-homepage-impact-subheader-subtext-no-edit';
-		return Html::element(
-			'p',
-			[ 'class' => 'growthexperiments-homepage-impact-subheader-subtext' ],
-			$this->getContext()
-				->msg( $textMsgKey )
-				->params( $this->getContext()->getUser()->getName() )
-				->text()
-		);
+		if ( $this->isActivated() ) {
+			return Html::element(
+				'p',
+				[ 'class' => 'growthexperiments-homepage-module-text-light' ],
+				$this->getContext()
+					->msg( 'growthexperiments-homepage-impact-subheader-subtext' )
+					->params( $this->getContext()->getUser()->getName() )
+					->text()
+			);
+		}
+		return '';
 	}
 
 	/**
