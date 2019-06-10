@@ -483,6 +483,7 @@
 		} );
 		this.questionCompleteFirstEditText = new OO.ui.LabelWidget( {
 			label: $( '<p>' )
+				.addClass( 'mw-ge-help-panel-questioncomplete-first-edit' )
 				.text( mw.message( 'growthexperiments-help-panel-questioncomplete-first-edit' ).text() )
 		} );
 		this.questionCompleteViewQuestionText = new OO.ui.LabelWidget();
