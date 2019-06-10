@@ -157,16 +157,6 @@ class SpecialHomepage extends SpecialPage {
 		];
 	}
 
-	private function getSubtitle() {
-		return Html::element(
-			'span',
-			[ 'class' => 'growthexperiments-homepage-subtitle' ],
-			$this->msg( 'growthexperiments-homepage-specialpage-subtitle' )
-				->params( $this->getUser()->getName() )
-				->text()
-		);
-	}
-
 	/**
 	 * @return string
 	 */
@@ -216,7 +206,6 @@ class SpecialHomepage extends SpecialPage {
 		$renderedModules = [];
 		$out->addModules( 'ext.growthExperiments.Homepage.RecentQuestions' );
 		$out->addBodyClasses( 'growthexperiments-homepage-desktop' );
-		$out->setSubtitle( $this->getSubtitle() );
 		foreach ( $this->getModuleGroups() as $group => $moduleNames ) {
 			$out->addHTML( Html::openElement( 'div', [
 				'class' => "growthexperiments-homepage-group-$group",
@@ -267,7 +256,6 @@ class SpecialHomepage extends SpecialPage {
 		$modules = $this->getModules();
 		$renderedModules = [];
 		$out->addBodyClasses( 'growthexperiments-homepage-mobile-summary' );
-		$out->setSubtitle( $this->getSubtitle() );
 		foreach ( $modules as $moduleName => $module ) {
 			try {
 				$out->addHTML( Html::rawElement(
