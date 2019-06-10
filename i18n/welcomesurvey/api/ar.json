@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"ديفيد"
+			"ديفيد",
+			"Dyolf77"
 		]
 	},
 	"apihelp-welcomesurveyhandleresponses-summary": "التعامل مع استجابات المسح الترحيبية للمستخدم الحالي.",
 	"apihelp-welcomesurveyhandleresponses-param-surveyaction": "الإجراء الذي تم اختياره بواسطة المستخدم في استبيان الترحيب. يمكن 'حفظه' أو 'تخطيه'.",
-	"apihelp-welcomesurveyhandleresponses-param-group": "جموعة تجريبية مرتبطة باستبيان الترحيب.",
-	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "الطابع الزمني عند عرض الاستبيان للمستخدم.",
-	"apihelp-welcomesurveyhandleresponses-param-responses": "كائن يحتوي على أسماء الأسئلة كمفاتيح والإجابات كقيم، بتنسيق JSON."
+	"apihelp-welcomesurveyhandleresponses-param-group": "مجموعة تجريبية مرتبطة باستبيان الترحيب.",
+	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "الطابع الزمني عند عرض الاستطلاع للمستخدم.",
+	"apihelp-welcomesurveyhandleresponses-param-responses": "مادة تحتوي على أسماء الأسئلة كمفاتيح وعلى الإجابات كقيم. بتنسيق JSON."
 }

@@ -33,6 +33,8 @@
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> redigeringar på artiklar",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Gå till artikeln",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Visa detaljerad sidvisningar",
+	"growthexperiments-homepage-impact-empty-pageviews-tooltip": "Eftersom du redigerade denna artikel först idag har sidvisningarna inte hunnit beräknats. Kom tillbaka imorgon!",
+	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Jag förstår",
 	"growthexperiments-homepage-help-header": "Få hjälp med att redigera",
 	"growthexperiments-homepage-help-cancel": "Avbryt",
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|Dina}} senaste frågor",

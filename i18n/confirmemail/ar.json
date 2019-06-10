@@ -1,15 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"ديفيد"
+			"ديفيد",
+			"Dyolf77"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|ما هذا؟]])",
 	"growthexperiments-confirmemail-emailhelp": "البريد الإلكتروني مطلوب لاستعادة حسابك إذا فقدت كلمة مرورك.",
-	"growthexperiments-confirmemail-emailrecommended": "عنوان البريد الإلكتروني (مستحسن)",
-	"growthexperiments-confirmemail-emailwarning": "يُرجَى البحث عن رسالة بريد إلكتروني منا للتحقق من عنوانك.",
+	"growthexperiments-confirmemail-emailrecommended": "عنوان البريد الإلكتروني (موصى به)",
+	"growthexperiments-confirmemail-emailwarning": "من فضلك، ابحث(ي) في بريدك الإلكتروني عن رسالة صادرة منا للتحقق من عنوانك.",
 	"growthexperiments-confirmemail-confirm-subject": "مرحبا بك في {{SITENAME}}: يُرجَى تأكيد عنوان بريدك الإلكتروني",
-	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|مرحبا}} $2،\n\nشكرا على إضافة بريد إلكتروني إلى حسابك في {{SITENAME}}، المسجل من عنوان الآيبي $1. \n\nيُرجَى النقر على الزر أدناه لتأكيده باعتباره عنوان البريد الإلكتروني الذي ترغب في ربطه بحسابك \"$2\": \n\n$3\n\nملاحظة: رمز التأكيد هذا <strong> ينتهي في $4</strong>.\n\nشكرا،\n\n{{SITENAME}}\n\n----\n\nلإلغاء تأكيد عنوان البريد الإلكتروني (لأنك لم تسجل الحساب أو لأي سبب آخر)؛ انقر فوق رابط الإلغاء هذا: \n\n$5",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|مرحبا}} $2،\n\nشكرا على إضافة بريد إلكتروني إلى حسابك في {{SITENAME}}، المسجل من عنوان الآيبي $1. \n\nيُرجَى النقر على الزر أدناه للتأكيد على أن هذا البريد الالكتروني هو الذي ترغب في ربطه بحسابك \"$2\": \n\n$3\n\nملاحظة: رمز التأكيد هذا <strong> ينتهي في $4</strong>.\n\nشكرا،\n\n{{SITENAME}}\n\n----\n\nلإلغاء تأكيد عنوان البريد الإلكتروني (لأنك لم تسجل الحساب أو لأي سبب آخر)؛ انقر فوق رابط الإلغاء هذا: \n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "تأكيد عنوان البريد الإلكتروني",
-	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|مرحبا}} $2،\n\nشكرا على إضافة بريد إلكتروني إلى حسابك في {{SITENAME}}، المسجل من عنوان الآيبي $1. \n\nيُرجَى النقر على الرابط أدناه لتأكيده باعتباره عنوان البريد الإلكتروني الذي ترغب في ربطه بحسابك \"$2\": \n\n$3 \n\nملاحظة: ينتهي رمز التأكيد هذا في $4.\n\nشكرا،\n\n{{SITENAME}} \n\n---- \n\nلإلغاء تأكيد عنوان البريد الإلكتروني (لأنك لم تسجل الحساب أو لأي سبب آخر)؛ انقر فوق رابط الإلغاء هذا: \n\n$5"
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|مرحبا}} $2،\n\nشكرا على إضافة بريد إلكتروني إلى حسابك في {{SITENAME}}، المسجل من عنوان الآيبي $1. \n\nيُرجَى النقر على الزر أدناه للتأكيد على أن هذا البريد الالكتروني هو الذي ترغب في ربطه بحسابك \"$2\": \n\n$3 \n\nملاحظة: ينتهي رمز التأكيد هذا في $4.\n\nشكرا،\n\n{{SITENAME}} \n\n---- \n\nلإلغاء تأكيد عنوان البريد الإلكتروني (لأنك لم تسجل الحساب أو لأي سبب آخر)؛ انقر فوق رابط الإلغاء هذا: \n\n$5"
 }

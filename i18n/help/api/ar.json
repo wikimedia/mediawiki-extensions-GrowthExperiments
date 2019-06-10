@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"ديفيد"
+			"ديفيد",
+			"Dyolf77"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "تعامل مع الأسئلة المنشورة عبر لوحة المساعدة للمستخدم الحالي.",
 	"apihelp-helppanelquestionposter-param-body": "نص السؤال المقدم من قبل المستخدم.",
-	"apihelp-helppanelquestionposter-param-source": "المكون في مصدر السؤال، القيم الصالحة هي 'helppanel' و'homepage-help' و'homepage-mentorship'",
+	"apihelp-helppanelquestionposter-param-source": "العنصر المكون في مصدر السؤال. القيم السليمة هي 'helppanel' و'homepage-help' و'homepage-mentorship'",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "العنوان ذو الصلة، إذا تم تحديده; للتضمين مع السؤال.",
-	"apihelp-helppanelquestionposter-param-email": "عنوان بريد إلكتروني اختياري، إذا كان المستخدم ليست لديه مجموعة بريد إلكتروني، سيتم تعيين البريد الإلكتروني للمستخدم على هذا العنوان، وسيتم إرسال رسالة تأكيد بالبريد الإلكتروني.",
-	"apihelp-helppanelquestionposter-param-resendconfirmation": "إرسال بريد تأكيد إلكتروني آخر إلى عنوان البريد الإلكتروني للمستخدم الحالي."
+	"apihelp-helppanelquestionposter-param-email": "عنوان بريد إلكتروني اختياري، إذا لم يحدد المستخدم بريده إلكتروني. سيتم تعيين البريد الإلكتروني للمستخدم على هذا العنوان، وسيتم إرسال رسالة تأكيد بالبريد الإلكتروني.",
+	"apihelp-helppanelquestionposter-param-resendconfirmation": "إرسال تأكيد آخر بالبريد الإلكتروني إلى عنوان البريد الإلكتروني للمستخدم الحالي."
 }
