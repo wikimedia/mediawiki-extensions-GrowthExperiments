@@ -151,7 +151,7 @@ class HomepageHooks {
 			return;
 		}
 
-		if ( $user->getBoolOption( self::HOMEPAGE_PREF_PT_LINK ) ) {
+		if ( self::userHasPersonalToolsPrefEnabled( $user ) ) {
 			$personal_urls['userpage' ]['href'] = self::getPersonalToolsHomepageLinkUrl(
 				$title->getNamespace()
 			);
@@ -285,7 +285,8 @@ class HomepageHooks {
 			$context = RequestContext::getMain();
 			$user = $context->getUser();
 			if ( self::isHomepageEnabled( $user ) &&
-				 $context->getConfig()->get( 'GEHomepageMobileEnabled' ) ) {
+				 $context->getConfig()->get( 'GEHomepageMobileEnabled' ) &&
+				 self::userHasPersonalToolsPrefEnabled( $user ) ) {
 				try {
 					/** @var AuthMenuEntry $authMenuEntry */
 					$authMenuEntry = $group->getEntryByName( 'auth' );
@@ -298,6 +299,14 @@ class HomepageHooks {
 				}
 			}
 		}
+	}
+
+	/**
+	 * @param User $user
+	 * @return bool
+	 */
+	private static function userHasPersonalToolsPrefEnabled( User $user ) {
+		return $user->getBoolOption( self::HOMEPAGE_PREF_PT_LINK );
 	}
 
 	/**
