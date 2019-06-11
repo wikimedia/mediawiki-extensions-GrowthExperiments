@@ -2,16 +2,6 @@
 @import 'mediawiki.mixins';
 
 .growthexperiments-homepage-module-impact {
-	.growthexperiments-homepage-impact-subheader-text {
-		color: @colorGray2;
-	}
-
-	.growthexperiments-homepage-impact-subheader-subtext {
-		font-size: 0.85em;
-		letter-spacing: 0.02em;
-		color: @colorGray7;
-	}
-
 	&-activated .growthexperiments-homepage-module-body {
 		display: table;
 		margin: 1em -5px;
@@ -74,9 +64,13 @@
 
 .growthexperiments-homepage-mobile-summary {
 	.growthexperiments-homepage-module-impact {
+		.growthexperiments-homepage-impact-subheader-text {
+			margin-right: 2em;
+		}
+
 		.growthexperiments-homepage-impact-subheader-subtext {
 			display: flex;
-			align-items: center;
+			align-items: baseline;
 
 			span:first-child {
 				flex-grow: 1;
@@ -84,6 +78,7 @@
 
 			span:last-child {
 				font-size: 2em;
+				line-height: 0; // weird, but it keeps this element and the one above tighter together
 				color: @colorProgressive;
 			}
 		}
