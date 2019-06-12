@@ -42,6 +42,13 @@ class Email extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
+	protected function getModuleStyles() {
+		return [ 'oojs-ui.styles.icons-alerts' ];
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function shouldInvertHeaderIcon() {
 		return $this->isCompleted() || $this->emailState === self::MODULE_STATE_UNCONFIRMED;
 	}
