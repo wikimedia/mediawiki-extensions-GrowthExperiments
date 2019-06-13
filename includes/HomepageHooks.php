@@ -93,37 +93,38 @@ class HomepageHooks {
 		}
 
 		$title = $skin->getTitle();
+		$homepageTitle = SpecialPage::getTitleFor( 'Homepage' );
 		$userpage = $user->getUserPage();
 		$usertalk = $user->getTalkPage();
 
-		if ( $title->isSpecial( 'Homepage' ) ) {
-			unset( $links[ 'namespaces' ][ 'special' ] );
-			$links[ 'namespaces' ][ 'homepage' ] = $skin->tabAction(
-				$title, 'growthexperiments-homepage-tab', true
-			);
-			$links[ 'namespaces' ][ 'user' ] = $skin->tabAction(
-				$userpage, 'nstab-user', false, '', true
-			);
-			$links[ 'namespaces' ][ 'talk' ] = $skin->tabAction(
-				$usertalk, 'talk', false, '', true
-			);
-			return;
-		}
+		$isHomepage = $title->equals( $homepageTitle );
+		$isUserSpace = $title->equals( $userpage ) || $title->isSubpageOf( $userpage );
+		$isUserTalkSpace = $title->equals( $usertalk ) || $title->isSubpageOf( $usertalk );
 
-		if ( self::titleIsUserPageOrUserTalk( $title, $user ) ) {
-			$source = 'userpagetab';
-			if ( $title->equals( $usertalk ) || $title->isSubpageOf( $usertalk ) ) {
-				$source = 'usertalkpagetab';
-			}
-			$links[ 'namespaces' ] = array_merge(
-				[ 'homepage' => $skin->tabAction(
-					SpecialPage::getTitleFor( 'Homepage' ),
-					'growthexperiments-homepage-tab',
-					false,
-					'source=' . $source . '&namespace=' . $title->getNamespace()
-				) ],
-				$links[ 'namespaces' ]
+		$isMobile = Util::isMobile( $skin );
+
+		if ( $isHomepage || $isUserSpace || $isUserTalkSpace ) {
+			unset( $links['namespaces']['special'] );
+			unset( $links['namespaces']['user'] );
+			unset( $links['namespaces']['user_talk'] );
+
+			$homepageUrlQuery = $isHomepage ? '' : wfArrayToCgi( [
+				'source' => $isUserSpace ? 'userpagetab' : 'usertalkpagetab',
+				'namespace' => $title->getNamespace(),
+			] );
+			$links['namespaces']['homepage'] = $skin->tabAction(
+				$homepageTitle, 'growthexperiments-homepage-tab', $isHomepage, $homepageUrlQuery
 			);
+
+			$links['namespaces']['user'] = $skin->tabAction(
+				$userpage, 'nstab-user', $isUserSpace, '', !$isMobile
+			);
+
+			$links['namespaces']['user_talk'] = $skin->tabAction(
+				$usertalk, 'talk', $isUserTalkSpace, '', !$isMobile
+			);
+			// To keep the mobile overlay until we decide what to do with T225659
+			$links['namespaces']['user_talk']['context'] = 'talk';
 		}
 	}
 
