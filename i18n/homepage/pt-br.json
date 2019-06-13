@@ -5,7 +5,6 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Olá}}, {{bidi:$1}}!",
-	"growthexperiments-homepage-specialpage-subtitle": "Está é a {{GENDER:$1|sua}} página principal, onde pode encontrar ajuda sobre a edição, obter ideias de coisas em que pode trabalhar, e ver o impacto das suas edições.",
 	"growthexperiments-homepage-tab": "Página principal",
 	"prefs-homepage": "Página inicial do recém-chegado",
 	"growthexperiments-homepage-enable": "Exibir página inicial do recém-chegado",
@@ -34,8 +33,8 @@
 	"growthexperiments-homepage-impact-subheader-text": "As pessoas estão vendo os artigos que {{GENDER:$1|você}} editou!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visualizações desde que {{GENDER:$1|você}} editou (últimos 60 dias):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Você tem}} feito <strong>$1</strong> {{PLURAL:$1|edição|edições}} (ver todas)",
-	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Você}} ainda não editei nenhum artigo.",
-	"growthexperiments-homepage-impact-subheader-subtext-no-edit": "Esta área mostrará o impacto de {{GENDER:$1|suas}} edições.",
+	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Você}} ainda não criou ou editou nenhum artigo.",
+	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Esta área mostrará quantas vezes as pessoas visualizaram os artigos {{GENDER:$1|você}} criaram ou editaram.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> edições em artigos",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|edição|edições}} para outros tipos de páginas (ver todos)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Vá para o artigo",
@@ -45,6 +44,7 @@
 	"growthexperiments-homepage-impact-mobilebody-articleedits": "<strong>$1</strong> {{PLURAL:$1|edção|edições}} para artigos",
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|edção|edições}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Visualizações de edições recentes (últimos 60 dias):",
+	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Monitore exibições de artigos que você editou",
 	"growthexperiments-homepage-help-ask-help-desk": "Pergunte na central de ajuda",
 	"growthexperiments-homepage-help-desk-questions": "Veja perguntas de outros usuários",
 	"tag-help_module_question": "Pergunta do módulo de ajuda",
@@ -79,5 +79,6 @@
 	"growthexperiments-homepage-tutorial-cta-text": "Tutorial",
 	"growthexperiments-specialimpact-title": "Impacto",
 	"growthexperiments-specialimpact-showing-for-other-user": "Mostrando dados de impacto por $1",
-	"growthexperiments-specialimpact-invalid-username": "Nome de usuário ausente ou inválido."
+	"growthexperiments-specialimpact-invalid-username": "Nome de usuário ausente ou inválido.",
+	"growthexperiments-homepage-enable-preference": "Para ativar a página inicial do recém-chegado, acesse as configurações da \"Página inicial do recém-chegado\" nas [[Special:Preferences#mw-prefsection-personal-homepage|Preferências]]."
 }

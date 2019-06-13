@@ -4,5 +4,6 @@
 			"Ykhwong"
 		]
 	},
+	"apihelp-homepagequestionstore-summary": "홈페이지 모듈을 통해 게시된 서식이 있는 질문을 가져옵니다",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "질문을 찾을 수 없습니다."
 }

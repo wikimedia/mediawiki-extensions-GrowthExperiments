@@ -7,7 +7,6 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Привіт}}, {{bidi:$1}}!",
-	"growthexperiments-homepage-specialpage-subtitle": "Це {{GENDER:$1|ваша}} домашня сторінка, де можна знайти допомогу щодо редагування, ідеї, над чим працювати, і бачити вплив ваших редагувань.",
 	"growthexperiments-homepage-tab": "Домашня сторінка",
 	"prefs-homepage": "Домашня сторінка нового користувача",
 	"growthexperiments-homepage-enable": "Показувати домашню сторінку для новачків",

@@ -5,7 +5,6 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Kaixo}}, {{bidi:$1}}!",
-	"growthexperiments-homepage-specialpage-subtitle": "Hau da {{GENDER:$1|zure}} hasiera orrialdea, editatzeari buruzko laguntza, lan egiteko gaiak edo zure aldaketek izandako inpaktua ikus dezakezu bertan.",
 	"growthexperiments-homepage-tab": "Hasiera orria",
 	"prefs-homepage": "Iritsi berrien hasiera orria",
 	"growthexperiments-homepage-enable": "Erakutsi iritsi berrien hasiera orria",
@@ -35,7 +34,6 @@
 	"growthexperiments-homepage-impact-subheader-subtext": "Azken 60 egunetan {{GENDER:$1|zuk}} aldatutakoek izandako ikustaldiak:",
 	"growthexperiments-homepage-impact-contributions-link": "{{PLURAL:$1|Aldaketa <strong>$1</strong> egin {{GENDER:$2|duzu}}|<strong>$1</strong> aldaketa egin {{GENDER:$2|dituzu}}}}",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Ez {{GENDER:$1|duzu}} oraindik artikulurik aldatu.",
-	"growthexperiments-homepage-impact-subheader-subtext-no-edit": "Hemen ikus dezakezu {{GENDER:$1|zure}} aldaketek izandako inpaktua.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> aldaketa artikuluetan",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "{{PLURAL:$1|Aldaketa <strong>$1</strong>|<strong>$1</strong> aldaketa}} bestelako orrialde motatan (guztia ikusi)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Artikulura joan",

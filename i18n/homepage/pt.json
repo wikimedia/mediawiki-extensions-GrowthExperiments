@@ -6,7 +6,6 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Olá}}, {{bidi:$1}}!",
-	"growthexperiments-homepage-specialpage-subtitle": "Está é a {{GENDER:$1|sua}} página principal, onde pode encontrar ajuda sobre a edição, obter ideias de coisas em que pode trabalhar, e ver o impacto das suas edições.",
 	"growthexperiments-homepage-tab": "Página principal",
 	"prefs-homepage": "Página principal de recém-chegado",
 	"growthexperiments-homepage-enable": "Apresentar página principal de recém-chegado",
@@ -36,7 +35,6 @@
 	"growthexperiments-homepage-impact-subheader-subtext": "Visitas desde que {{GENDER:$1|você}} editou (últimos 60 dias):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Fez}} <strong>$1</strong> {{PLURAL:$1|edição|edições}} (ver todas)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Ainda não {{GENDER:$1|editou}} nenhum artigo.",
-	"growthexperiments-homepage-impact-subheader-subtext-no-edit": "Esta área mostrará o impacto das {{GENDER:$1|suas}} edições.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> edições de artigos",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|edição|edições}} de outros tipos de páginas (ver todas)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Ir para o artigo",

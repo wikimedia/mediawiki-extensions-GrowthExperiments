@@ -6,7 +6,6 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "\n{{GENDER:$1|Xin chào}}, {{bidi:$1}}!",
-	"growthexperiments-homepage-specialpage-subtitle": "Đây là trang chủ của {{GENDER:$1|bạn}}, nơi bạn có thể tìm kiếm trợ giúp chỉnh sửa, lấy ý tưởng về những gì sẽ làm việc và xem ảnh hưởng của các chỉnh sửa của bạn.",
 	"growthexperiments-homepage-tab": "Trang nhà",
 	"prefs-homepage": "Trang nhà cho người mới đến",
 	"growthexperiments-homepage-enable": "Hiển thị trang nhà của người mới đến",
@@ -36,7 +35,6 @@
 	"growthexperiments-homepage-impact-subheader-subtext": "Số lượng người xem trang mà {{GENDER:$1|bạn}} đã sửa đổi (60 ngày)",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Bạn}} vừa thực hiện <strong>$1</strong> sửa đổi (xem tất cả)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Bạn}} vẫn chưa sửa đổi một trang nào.",
-	"growthexperiments-homepage-impact-subheader-subtext-no-edit": "Khu vực này sẽ cho bạn thấy ảnh hưởng của những sửa đổi của {{GENDER:$1|bạn}}.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> sửa đổi bài viết",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "\n<strong>$1</strong> {{PLURAL:$1|edit|lần soạn thảo}} cho các trang dạng khác (xem tất cả)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Đi tới bài viết",

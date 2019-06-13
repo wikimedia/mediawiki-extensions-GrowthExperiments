@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Mjälten"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hej}}, {{bidi:$1}}!",
@@ -35,6 +36,8 @@
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Visa detaljerad sidvisningar",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip": "Eftersom du redigerade denna artikel först idag har sidvisningarna inte hunnit beräknats. Kom tillbaka imorgon!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Jag förstår",
+	"growthexperiments-homepage-help-ask-help-desk": "Fråga hjälpcentralen",
+	"growthexperiments-homepage-help-dialog-title": "Fråga hjälpcentralen",
 	"growthexperiments-homepage-help-header": "Få hjälp med att redigera",
 	"growthexperiments-homepage-help-cancel": "Avbryt",
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|Dina}} senaste frågor",

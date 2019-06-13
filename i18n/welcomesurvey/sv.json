@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Mjälten"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Välkommen}}, $1!",
@@ -11,6 +12,8 @@
 	"welcomesurvey-save-btn": "Slutför",
 	"welcomesurvey-skip-btn": "Hoppa över denna enkät",
 	"welcomesurvey-close-btn": "Stäng och gå tillbaka till $1",
+	"welcomesurvey-back-btn": "Bakåt",
+	"welcomesurvey-next-btn": "Nästa",
 	"welcomesurvey-sidebar-privacy-title": "Vi värderar din integritet",
 	"welcomesurvey-sidebar-privacy-text": "För att läsa om hur dessa valfria frågor används, se enkäten $1.",
 	"welcomesurvey-privacy-policy-link-text": "integritetspolicy",

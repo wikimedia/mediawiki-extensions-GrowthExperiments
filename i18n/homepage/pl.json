@@ -29,7 +29,6 @@
 	"growthexperiments-homepage-impact-subheader-subtext": "Liczba odwiedzin po {{GENDER:$1|dokonaniu edycji}} na każdej z tych stron (z ostatnich 60 dni):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Dokonałeś|Dokonałaś}} <strong>$1</strong> {{PLURAL:$1|edycji|edycje|edycji}} (zobacz wszystkie)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Nie {{GENDER:$1|edytowałeś|edytowałaś}} jeszcze żadnych artykułów.",
-	"growthexperiments-homepage-impact-subheader-subtext-no-edit": "Ten obszar pokaże wpływ {{GENDER:$1|Twoich}} edycji.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> edycji artykułów",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|edycja|edycje|edycji}} innych typów stron (zobacz wszystkie)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Przejdź do artykułu",

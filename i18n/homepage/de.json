@@ -6,7 +6,6 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
-	"growthexperiments-homepage-specialpage-subtitle": "Dies ist {{GENDER:$1|deine}} Startseite, wo du Hilfe bei der Bearbeitung finden kannst, Ideen zum Arbeiten erhältst und die Auswirkung deiner Bearbeitungen sehen kannst.",
 	"growthexperiments-homepage-tab": "Startseite",
 	"prefs-homepage": "Neulings-Startseite",
 	"growthexperiments-homepage-enable": "Neulings-Startseite anzeigen",
@@ -36,7 +35,6 @@
 	"growthexperiments-homepage-impact-subheader-subtext": "Aufrufe seit {{GENDER:$1|deiner}} Bearbeitung (letzte 60 Tage):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Du}} hast {{PLURAL:$1|<strong>eine</strong> Bearbeitung|<strong>$1</strong> Bearbeitungen}} durchgeführt (alle ansehen)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Du}} hast noch keine Artikel bearbeitet.",
-	"growthexperiments-homepage-impact-subheader-subtext-no-edit": "Dieser Bereich zeigt dir die Auswirkung {{GENDER:$1|deiner}} Bearbeitungen an.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>Keine</strong> Bearbeitungen an Artikeln",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "{{PLURAL:$1|<strong>Eine</strong> Bearbeitung|<strong>$1</strong> Bearbeitungen}} an anderen Arten von Seiten (alle ansehen)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Zum Artikel gehen",
