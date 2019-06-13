@@ -52,7 +52,7 @@ class HelpPanel {
 
 		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
 
-		$helpPanelLinks = Html::openElement( 'ul' );
+		$helpPanelLinks = Html::openElement( 'ul', [ 'class' => 'mw-ge-help-panel-links' ] );
 		foreach ( $config->get( 'GEHelpPanelLinks' ) as $link ) {
 			$title = Title::newFromText( $link['title'] );
 			if ( $title ) {
