@@ -38,6 +38,7 @@
 	"growthexperiments-homepage-impact-article-link-tooltip": "Go to article",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "See detailed page views",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip": "Since you first edited this article today, pageviews have not yet been calculated. Check back tomorrow!",
+	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "Pageviews have not yet been calculated. Check back tomorrow!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Got it",
 	"growthexperiments-homepage-impact-mobilebody-articleedits": "<strong>$1</strong> {{PLURAL:$1|edit|edits}} to articles",
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|edit|edits}}",
