@@ -42,6 +42,7 @@
 	"growthexperiments-homepage-impact-article-link-tooltip": "التحول إلى المقالة",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "انظر مشاهدات الصفحة بالتفصيل",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip": "لأنك عدلت هذه المقالة لأول مرة اليوم؛ لم يتم حساب مشاهدات الصفحة بعد؛ تحقق مرة أخرى غدا!",
+	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "لم يتم حساب عدد مرات مشاهدة الصفحة؛ تحقق مرة أخرى غدا!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "عُلم",
 	"growthexperiments-homepage-impact-mobilebody-articleedits": "<strong>$1</strong> {{PLURAL:$1|تعديل|تعديلات}} للمقالات",
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|تعديل|تعديلات}}",

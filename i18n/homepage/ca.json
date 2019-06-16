@@ -10,5 +10,6 @@
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|El vostre}} impacte",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Heu}} {{PLURAL:$1|realitzada <strong>$1</strong> edició|realitzades <strong>$1</strong> edicions}} (mostra-ho tot)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Vés a l’article",
+	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Entesos",
 	"growthexperiments-specialimpact-title": "Impacte"
 }

@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fitoschido"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|què és açò?]])",
+	"growthexperiments-confirmemail-confirm-subject": "Us donem la benvinguda a {{SITENAME}}. Confirmeu la vostra adreça electrònica"
+}

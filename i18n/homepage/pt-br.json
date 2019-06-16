@@ -40,6 +40,7 @@
 	"growthexperiments-homepage-impact-article-link-tooltip": "Vá para o artigo",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Veja as visualizações detalhadas da página",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip": "Desde que você editou este artigo hoje, as visualizações de página ainda não foram calculadas. Volte amanhã!",
+	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "As visualizações de página ainda não foram calculadas. Volte amanhã!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Entendi",
 	"growthexperiments-homepage-impact-mobilebody-articleedits": "<strong>$1</strong> {{PLURAL:$1|edção|edições}} para artigos",
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|edção|edições}}",

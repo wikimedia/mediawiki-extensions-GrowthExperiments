@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Wizardeck"
+			"Wizardeck",
+			"Fitoschido"
 		]
 	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|¿qué es esto?]])",
 	"growthexperiments-confirmemail-emailrecommended": "Dirección de correo electrónico (recomendado)",
+	"growthexperiments-confirmemail-confirm-subject": "Te damos la bienvenida a {{SITENAME}}. Confirma tu dirección de correo electrónico",
 	"growthexperiments-confirmemail-confirm-button": "Confirmar dirección de correo electrónico"
 }
