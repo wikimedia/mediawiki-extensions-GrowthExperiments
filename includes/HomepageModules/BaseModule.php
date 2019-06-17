@@ -73,6 +73,18 @@ abstract class BaseModule implements HomepageModule {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function getDataForOverlay() {
+		$this->mode = HomepageModule::RENDER_MOBILE_DETAILS_OVERLAY;
+		return [
+			'html' => $this->renderMobileDetailsForOverlay(),
+			'rlModules' => $this->getModules(),
+			'heading' => $this->getHeaderText()
+		];
+	}
+
+	/**
 	 * @return string HTML rendering for desktop.
 	 */
 	protected function renderDesktop() {
@@ -107,6 +119,17 @@ abstract class BaseModule implements HomepageModule {
 	}
 
 	/**
+	 * @return string HTML rendering for overlay. Same as mobile details but without header.
+	 */
+	protected function renderMobileDetailsForOverlay() {
+		return $this->buildModuleWrapper(
+			$this->buildSection( 'subheader', $this->getSubheader(), $this->getSubheaderTag() ),
+			$this->buildSection( 'body', $this->getBody() ),
+			$this->buildSection( 'footer', $this->getFooter() )
+		);
+	}
+
+	/**
 	 * @return IContextSource Current context
 	 */
 	final protected function getContext() {
@@ -118,14 +141,6 @@ abstract class BaseModule implements HomepageModule {
 	 */
 	final protected function getMode() {
 		return $this->mode;
-	}
-
-	private function getModeName() {
-		return [
-			self::RENDER_DESKTOP => 'desktop',
-			self::RENDER_MOBILE_SUMMARY => 'mobile-summary',
-			self::RENDER_MOBILE_DETAILS => 'mobile-details',
-		][ $this->getMode() ];
 	}
 
 	/**
@@ -301,10 +316,10 @@ abstract class BaseModule implements HomepageModule {
 	 * Override this function to provide modules that need to be
 	 * loaded for this module.
 	 *
-	 * @return string|string[] Name of the module(s) to load
+	 * @return string[] Name of the module(s) to load
 	 */
 	protected function getModules() {
-		return '';
+		return [];
 	}
 
 	/**
@@ -341,7 +356,7 @@ abstract class BaseModule implements HomepageModule {
 				'class' => [
 					self::BASE_CSS_CLASS . '-section',
 					self::BASE_CSS_CLASS . '-section-' . $name,
-					self::BASE_CSS_CLASS . '-' . $name,
+					self::BASE_CSS_CLASS . '-' . $name
 				],
 			],
 			$content
@@ -374,7 +389,7 @@ abstract class BaseModule implements HomepageModule {
 	 * @return array
 	 */
 	protected function getActionData() {
-		return [ 'mode' => $this->getModeName() ];
+		return [ 'mode' => $this->getMode() ];
 	}
 
 	private function buildModuleWrapper( ...$sections ) {
@@ -384,8 +399,9 @@ abstract class BaseModule implements HomepageModule {
 				'class' => array_merge( [
 					self::BASE_CSS_CLASS,
 					self::BASE_CSS_CLASS . '-' . $this->name,
+					self::BASE_CSS_CLASS . '-' . $this->getMode()
 				], $this->getCssClasses() ),
-				'data-module-name' => $this->name,
+				'data-module-name' => $this->name
 			],
 			implode( "\n", $sections )
 		);
@@ -401,4 +417,5 @@ abstract class BaseModule implements HomepageModule {
 			'wgGEHomepageModuleActionData-' . $this->name => $this->getActionData(),
 		] ) );
 	}
+
 }

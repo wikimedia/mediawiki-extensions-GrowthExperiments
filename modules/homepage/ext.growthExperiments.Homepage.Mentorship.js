@@ -28,21 +28,25 @@
 		submitFailureMessage = mw.message(
 			'growthexperiments-help-panel-question-post-error',
 			mentorTalkLink
-		).parse();
-
-	attachButton( {
-		buttonSelector: '#mw-ge-homepage-mentorship-cta',
-		editorInterface: 'homepage_mentorship',
-		dialog: {
-			name: 'mentorship',
-			panelTitleMessages: {
-				questionreview: dialogTitle,
-				questioncomplete: dialogTitle
-			},
-			questionReviewHeader: reviewHeader,
-			questionCompleteConfirmationText: confirmationText,
-			viewQuestionText: viewQuestionText,
-			submitFailureMessage: submitFailureMessage
-		}
+		).parse(),
+		config = {
+			buttonSelector: '#mw-ge-homepage-mentorship-cta',
+			editorInterface: 'homepage_mentorship',
+			dialog: {
+				name: 'mentorship',
+				panelTitleMessages: {
+					questionreview: dialogTitle,
+					questioncomplete: dialogTitle
+				},
+				questionReviewHeader: reviewHeader,
+				questionCompleteConfirmationText: confirmationText,
+				viewQuestionText: viewQuestionText,
+				submitFailureMessage: submitFailureMessage
+			}
+		};
+	// See comment in homepage/ext.growthExperiments.Homepage.Help.js
+	attachButton( config );
+	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded.mentorship' ).add( function () {
+		attachButton( config );
 	} );
 }() );

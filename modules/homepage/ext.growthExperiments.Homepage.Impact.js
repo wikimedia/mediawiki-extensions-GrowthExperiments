@@ -46,15 +46,18 @@
 						}
 					}
 				) );
-
 			buttonPopupWidget.$button
 				.off( 'click' )
 				.on( 'mouseenter', togglePopup( buttonPopupWidget, true ) )
 				.on( 'mouseleave', togglePopup( buttonPopupWidget, false ) );
-
 			$( this ).replaceWith( buttonPopupWidget.$element );
 		},
 		handler = OO.ui.isMobile() ? mobileHandler : desktopHandler;
 
+	// See comments in homepage/ext.growthExperiments.Homepage.Help.js and
+	// homepage/ext.growthExperiments.Homepage.MobileOverlay.js
 	$( pageviewsIconSelector ).each( handler );
+	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded.impact' ).add( function () {
+		$( pageviewsIconSelector ).each( handler );
+	} );
 }() );

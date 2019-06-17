@@ -104,6 +104,18 @@
 		}
 	},
 	"ResourceModules": {
+		"ext.growthExperiments.Homepage.Mobile": {
+			"packageFiles": [
+				"homepage/ext.growthExperiments.Homepage.Mobile.js",
+				"homepage/ext.growthExperiments.Homepage.MobileOverlay.js"
+			],
+			"targets": [
+				"mobile"
+			],
+			"templates": {
+				"ModuleHeader.mustache": "homepage/ModuleHeader.mustache"
+			}
+		},
 		"ext.growthExperiments.HelpPanel.icons": {
 			"class": "ResourceLoaderImageModule",
 			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",

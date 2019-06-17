@@ -11,6 +11,7 @@ use ExtensionRegistry;
 use GrowthExperiments\EventLogging\SpecialHomepageLogger;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModule;
+use GrowthExperiments\HomepageModules\BaseModule;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\Mentorship;
@@ -97,6 +98,10 @@ class SpecialHomepage extends SpecialPage {
 		}
 
 		$out->addHTML( Html::closeElement( 'div' ) );
+
+		if ( $isMobile && !$par ) {
+			$this->outputDataForMobileOverlay();
+		}
 
 		if ( $loggingEnabled &&
 			 ExtensionRegistry::getInstance()->isLoaded( 'EventLogging' ) &&
@@ -235,8 +240,8 @@ class SpecialHomepage extends SpecialPage {
 	private function renderMobileDetails( $moduleName, HomepageModule $module ) {
 		$out = $this->getContext()->getOutput();
 		$renderedModules = [];
-		$out->addModules( 'ext.growthExperiments.Homepage.RecentQuestions' );
 		$out->addBodyClasses( 'growthexperiments-homepage-mobile-details' );
+
 		try {
 			$out->addHTML( $module->render( HomepageModule::RENDER_MOBILE_DETAILS ) );
 			$renderedModules[ $moduleName ] = $module;
@@ -272,6 +277,27 @@ class SpecialHomepage extends SpecialPage {
 				$this->logModuleRenderIssue( $module, $error );
 			}
 		}
+
 		return $renderedModules;
 	}
+
+	private function outputDataForMobileOverlay() {
+		$out = $this->getContext()->getOutput();
+		/** @var BaseModule[] $modules */
+		$modules = $this->getModules();
+
+		$data = [];
+		foreach ( $modules as $moduleName => $module ) {
+			try {
+				$data[$moduleName] = $module->getDataForOverlay();
+			} catch ( Exception $exception ) {
+				$this->logModuleRenderIssue( $module, $exception );
+			} catch ( Error $error ) {
+				$this->logModuleRenderIssue( $module, $error );
+			}
+		}
+		$out->addJsConfigVars( 'homepagemodules', $data );
+		$out->addModules( 'ext.growthExperiments.Homepage.Mobile' );
+	}
+
 }
