@@ -106,8 +106,11 @@ class Start extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function getBody() {
-		return implode( "\n", array_map( function ( HomepageModule $module ) {
-			return $module->render( HomepageModule::RENDER_DESKTOP );
+		return implode( "\n", array_map( function ( BaseTaskModule $module ) {
+			// Submodules inherit the mode from their parent, even when we force them
+			// to render "as desktop".
+			$module->setMode( $this->getMode() );
+			return $module->renderDesktop();
 		}, $this->tasks ) );
 	}
 

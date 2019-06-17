@@ -43,18 +43,19 @@
 					this.$el.find( '.overlay-content' ).append( html );
 				}.bind( this );
 			Overlay.prototype.postRender.apply( this );
-			if ( resourceLoaderModules.length === 0 ) {
-				appendHtml( moduleHtml );
-				return;
-			}
 			// Load the RL modules if they were not loaded before the user tapped on the
 			// module. Then add the HTML to the DOM, then fire a hook so that the JS in the RL
 			// modules can operate on the HTML in the overlay.
 			mw.loader.using( resourceLoaderModules ).then( function () {
 				appendHtml( moduleHtml );
-			} ).done( function () {
-				mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded.' + moduleName ).fire();
-			} );
+				// It's important to always call the hook from a promise so it executes
+				// after postRender() has finished. It ensures the module content is in
+				// the overlay and can be manipulated.
+				mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).fire(
+					moduleName,
+					this.$el.find( '.overlay-content' )
+				);
+			}.bind( this ) );
 		}
 
 	} );

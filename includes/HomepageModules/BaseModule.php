@@ -54,7 +54,7 @@ abstract class BaseModule implements HomepageModule {
 	 * @inheritDoc
 	 */
 	public function render( $mode ) {
-		$this->mode = $mode;
+		$this->setMode( $mode );
 		if ( !$this->canRender() ) {
 			return '';
 		}
@@ -76,7 +76,7 @@ abstract class BaseModule implements HomepageModule {
 	 * @inheritDoc
 	 */
 	public function getDataForOverlay() {
-		$this->mode = HomepageModule::RENDER_MOBILE_DETAILS_OVERLAY;
+		$this->setMode( HomepageModule::RENDER_MOBILE_DETAILS_OVERLAY );
 		return [
 			'html' => $this->renderMobileDetailsForOverlay(),
 			'rlModules' => $this->getModules(),
@@ -137,10 +137,17 @@ abstract class BaseModule implements HomepageModule {
 	}
 
 	/**
-	 * @return int Current rendering mode
+	 * @return string Current rendering mode
 	 */
 	final protected function getMode() {
 		return $this->mode;
+	}
+
+	/**
+	 * @param string $mode Rendering mode
+	 */
+	final protected function setMode( $mode ) {
+		$this->mode = $mode;
 	}
 
 	/**
@@ -389,7 +396,7 @@ abstract class BaseModule implements HomepageModule {
 	 * @return array
 	 */
 	protected function getActionData() {
-		return [ 'mode' => $this->getMode() ];
+		return [];
 	}
 
 	private function buildModuleWrapper( ...$sections ) {
@@ -401,7 +408,8 @@ abstract class BaseModule implements HomepageModule {
 					self::BASE_CSS_CLASS . '-' . $this->name,
 					self::BASE_CSS_CLASS . '-' . $this->getMode()
 				], $this->getCssClasses() ),
-				'data-module-name' => $this->name
+				'data-module-name' => $this->name,
+				'data-mode' => $this->getMode(),
 			],
 			implode( "\n", $sections )
 		);

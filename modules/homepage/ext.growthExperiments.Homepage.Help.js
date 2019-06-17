@@ -20,7 +20,9 @@
 	// more than once. When that happens, we need to (re)attach the button, as the HTML is newly
 	// added to the overlay each time it's opened.
 	attachButton( config );
-	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded.help' ).add( function () {
-		attachButton( config );
+	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName ) {
+		if ( moduleName === 'help' ) {
+			attachButton( config );
+		}
 	} );
 }() );

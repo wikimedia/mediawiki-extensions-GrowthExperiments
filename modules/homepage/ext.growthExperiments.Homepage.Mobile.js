@@ -28,8 +28,7 @@
 				return new MobileOverlay(
 					$.extend( { moduleName: moduleName }, getModuleData( moduleName ) )
 				).on( 'hide', function () {
-					// TODO: Implement logging in a single place, and double-check params.
-					logger.log( moduleName, 'back', { mode: 'overlay' } );
+					logger.log( moduleName, 'mobile-overlay', 'close' );
 				} );
 			} );
 
@@ -43,8 +42,6 @@
 				}, 250 );
 				$( module ).on( 'click', function ( e ) {
 					e.preventDefault();
-					// TODO: Implement logging in a single place, and double-check params.
-					logger.log( moduleName, 'click', { mode: 'overlay' } );
 					router.navigate( '#/homepage/' + moduleName );
 				} );
 			} );
