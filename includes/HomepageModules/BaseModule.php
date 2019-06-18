@@ -415,7 +415,7 @@ abstract class BaseModule implements HomepageModule {
 		);
 	}
 
-	private function outputDependencies() {
+	protected function outputDependencies() {
 		$out = $this->getContext()->getOutput();
 		$out->addModuleStyles( 'ext.growthExperiments.Homepage.styles' );
 		$out->addModuleStyles( $this->getModuleStyles() );

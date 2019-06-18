@@ -110,7 +110,10 @@ class Start extends BaseTaskModule {
 			// Submodules inherit the mode from their parent, even when we force them
 			// to render "as desktop".
 			$module->setMode( $this->getMode() );
-			return $module->renderDesktop();
+			if ( $module->canRender() ) {
+				$module->outputDependencies();
+				return $module->renderDesktop();
+			}
 		}, $this->tasks ) );
 	}
 
