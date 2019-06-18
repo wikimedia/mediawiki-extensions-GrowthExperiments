@@ -13,23 +13,26 @@
 		this.userEditCount = mw.config.get( 'wgUserEditCount' );
 		this.isMobile = OO.ui.isMobile();
 		this.homepagePageviewToken = homepagePageviewToken;
-		this.modulesExcludedFromLogging = [ 'start' ];
+		this.exclusions = {
+			start: [ 'impression', 'hover-in', 'hover-out' ]
+		};
 	}
 
 	/**
 	 * Log an event to the HomepageModule schema
 	 *
 	 * @param {string} module Name of the module
+	 * @param {string} mode Rendering mode See constants in HomepageModule.php
 	 * @param {string} action User action
 	 * @param {Object} [extraData] Additional data related to the action or the state of the module
 	 */
-	HomepageModuleLogger.prototype.log = function ( module, action, extraData ) {
-		var event, state, data, mode;
+	HomepageModuleLogger.prototype.log = function ( module, mode, action, extraData ) {
+		var event, state, data;
 		if ( !this.enabled ) {
 			return;
 		}
 
-		if ( this.modulesExcludedFromLogging.indexOf( module ) !== -1 ) {
+		if ( this.exclusions[ module ] && this.exclusions[ module ].indexOf( action ) !== -1 ) {
 			return;
 		}
 
@@ -38,8 +41,6 @@
 			mw.config.get( 'wgGEHomepageModuleActionData-' + module ),
 			extraData || {}
 		);
-		mode = data.mode;
-		delete data.mode;
 
 		event = {
 			/* eslint-disable camelcase */

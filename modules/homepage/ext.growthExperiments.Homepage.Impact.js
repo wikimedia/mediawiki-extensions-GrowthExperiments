@@ -5,16 +5,20 @@
 			mw.config.get( 'wgGEHomepagePageviewToken' )
 		),
 		pageviewsIconSelector = '.empty-pageviews',
-		logToggle = function ( toggle ) {
+		logToggle = function ( toggle, $sourceElement ) {
+			var mode = $sourceElement
+				.closest( '.growthexperiments-homepage-module' )
+				.data( 'mode' );
 			logger.log(
 				'impact',
+				mode,
 				toggle ? 'open-nopageviews-tooltip' : 'close-nopageviews-tooltip'
 			);
 		},
 		togglePopup = function ( buttonPopupWidget, toggle ) {
 			return function () {
 				buttonPopupWidget.getPopup().toggle( toggle );
-				logToggle( toggle );
+				logToggle( toggle, buttonPopupWidget.$element );
 			};
 		},
 		alertOptions = {
@@ -26,9 +30,9 @@
 		mobileHandler = function () {
 			var button = OO.ui.infuse( this );
 			button.on( 'click', function () {
-				logToggle( true );
+				logToggle( true, button.$element );
 				OO.ui.alert( button.title, alertOptions ).then( function () {
-					logToggle( false );
+					logToggle( false, button.$element );
 				} );
 			} );
 		},
@@ -57,7 +61,9 @@
 	// See comments in homepage/ext.growthExperiments.Homepage.Help.js and
 	// homepage/ext.growthExperiments.Homepage.MobileOverlay.js
 	$( pageviewsIconSelector ).each( handler );
-	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded.impact' ).add( function () {
-		$( pageviewsIconSelector ).each( handler );
+	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName ) {
+		if ( moduleName === 'impact' ) {
+			$( pageviewsIconSelector ).each( handler );
+		}
 	} );
 }() );

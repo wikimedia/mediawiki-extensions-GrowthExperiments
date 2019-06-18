@@ -46,7 +46,9 @@
 		};
 	// See comment in homepage/ext.growthExperiments.Homepage.Help.js
 	attachButton( config );
-	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded.mentorship' ).add( function () {
-		attachButton( config );
+	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName ) {
+		if ( moduleName === 'mentorship' ) {
+			attachButton( config );
+		}
 	} );
 }() );

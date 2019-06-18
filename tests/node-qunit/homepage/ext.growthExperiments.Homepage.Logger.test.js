@@ -23,7 +23,7 @@ QUnit.module( 'HomepageLogger', {
 		global.mw.config = {};
 		configGet = sinon.stub();
 		configGet.withArgs( 'wgUserEditCount' ).returns( 123 );
-		configGet.withArgs( 'wgGEHomepageModuleActionData-tutorial' ).returns( { mode: 'desktop', foo: 'bar' } );
+		configGet.withArgs( 'wgGEHomepageModuleActionData-tutorial' ).returns( { foo: 'bar' } );
 		configGet.withArgs( 'wgGEHomepageModuleState-tutorial' ).returns( 'done' );
 		global.mw.config.get = configGet;
 		global.mw.user = {};
@@ -51,7 +51,7 @@ QUnit.module( 'HomepageLogger', {
 	} );
 	QUnit.test( 'log', function ( assert ) {
 		var homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
-		homepageModuleLogger.log( 'tutorial', 'hover-in', { foo: 'bar' } );
+		homepageModuleLogger.log( 'tutorial', 'desktop', 'hover-in', { foo: 'bar' } );
 		assert.strictEqual( global.mw.track.getCall( 0 ).args[ 0 ], 'event.HomepageModule' );
 		assert.deepEqual( global.mw.track.getCall( 0 ).args[ 1 ], {
 			/* eslint-disable camelcase */
@@ -70,15 +70,14 @@ QUnit.module( 'HomepageLogger', {
 
 	QUnit.test( 'exclude start', function ( assert ) {
 		var homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
-		homepageModuleLogger.log( 'start', 'hover-in' );
+		homepageModuleLogger.log( 'start', 'mode', 'hover-in' );
 		assert.strictEqual( global.mw.track.called, false );
 	} );
 
 	QUnit.test( 'do not include state in event if empty', function ( assert ) {
 		var homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
 		global.mw.config.get.withArgs( 'wgGEHomepageModuleState-mentor' ).returns( '' );
-		global.mw.config.get.withArgs( 'wgGEHomepageModuleActionData-mentor' ).returns( { mode: 'desktop' } );
-		homepageModuleLogger.log( 'mentor', 'hover-out' );
+		homepageModuleLogger.log( 'mentor', 'desktop', 'hover-out' );
 		assert.strictEqual( global.mw.track.getCall( 0 ).args[ 0 ], 'event.HomepageModule' );
 		assert.deepEqual( global.mw.track.getCall( 0 ).args[ 1 ], {
 			/* eslint-disable camelcase */
