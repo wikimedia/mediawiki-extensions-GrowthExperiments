@@ -294,7 +294,7 @@ abstract class QuestionPoster {
 		$this->targetTitle->setFragment(
 			$this->parser->guessSectionNameFromWikiText( $this->getSectionHeaderWithTimestamp() )
 		);
-		$this->resultUrl = $this->targetTitle->getFullURL();
+		$this->resultUrl = $this->targetTitle->getLinkURL();
 	}
 
 	/**

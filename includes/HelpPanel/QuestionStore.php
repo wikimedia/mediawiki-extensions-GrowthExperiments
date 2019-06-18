@@ -231,7 +231,7 @@ class QuestionStore {
 		);
 		$questionRecord->setArchiveUrl(
 			$title->createFragmentTarget( $fragment )
-				->getFullURL( [ 'oldid' => $questionRecord->getRevId() ] )
+				->getLinkURL( [ 'oldid' => $questionRecord->getRevId() ] )
 		);
 		return $questionRecord;
 	}
