@@ -113,7 +113,8 @@
 				"mobile"
 			],
 			"templates": {
-				"ModuleHeader.mustache": "homepage/ModuleHeader.mustache"
+				"ModuleHeader.mustache": "homepage/ModuleHeader.mustache",
+				"ModuleContent.mustache": "homepage/ModuleContent.mustache"
 			}
 		},
 		"ext.growthExperiments.HelpPanel.icons": {

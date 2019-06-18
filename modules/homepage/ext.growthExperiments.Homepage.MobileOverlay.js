@@ -27,8 +27,19 @@
 		 * @instance
 		 */
 		templatePartials: util.extend( {}, Overlay.prototype.templatePartials, {
-			header: mw.template.get( 'ext.growthExperiments.Homepage.Mobile', 'ModuleHeader.mustache' )
+			header: mw.template.get( 'ext.growthExperiments.Homepage.Mobile', 'ModuleHeader.mustache' ),
+			content: mw.template.get( 'ext.growthExperiments.Homepage.Mobile', 'ModuleContent.mustache' )
 		} ),
+
+		/**
+		 * @inheritdoc
+		 * @memberof MobileOverlay
+		 * @instance
+		 */
+		preRender: function () {
+			this.$spinner = this.$el.find( '.spinner' );
+			this.showSpinner();
+		},
 
 		/**
 		 * @inheritdoc
@@ -55,6 +66,8 @@
 					moduleName,
 					this.$el.find( '.overlay-content' )
 				);
+			}.bind( this ) ).always( function () {
+				this.hideSpinner();
 			}.bind( this ) );
 		}
 
