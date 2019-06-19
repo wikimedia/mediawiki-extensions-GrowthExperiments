@@ -8,8 +8,11 @@
 			return function () {
 				var $module = $( this ),
 					moduleName = $module.data( 'module-name' ),
+					mobileModes = [ 'mobile-overlay', 'mobile-details', 'mobile-summary' ],
 					mode = $module.data( 'mode' );
-				logger.log( moduleName, mode, 'hover-' + action );
+				if ( mobileModes.indexOf( mode ) === -1 ) {
+					logger.log( moduleName, mode, 'hover-' + action );
+				}
 			};
 		},
 		moduleSelector = '.growthexperiments-homepage-module',
