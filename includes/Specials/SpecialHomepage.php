@@ -43,7 +43,7 @@ class SpecialHomepage extends SpecialPage {
 			$this->getConfig()->get( Tutorial::TUTORIAL_TITLE_CONFIG )
 		);
 		if ( !$tutorialTitle || $tutorialTitle->getPrefixedDBkey() !== $par ) {
-			return;
+			return false;
 		}
 		$user = $this->getUser();
 		if ( $this->getRequest()->wasPosted() &&
@@ -55,6 +55,7 @@ class SpecialHomepage extends SpecialPage {
 			} );
 		}
 		$this->getOutput()->redirect( $tutorialTitle->getLinkURL() );
+		return true;
 	}
 
 	/**
@@ -68,7 +69,9 @@ class SpecialHomepage extends SpecialPage {
 		$this->requireLogin();
 		parent::execute( $par );
 		$this->handleDisabledPreference();
-		$this->handleTutorialVisit( $par );
+		if ( $this->handleTutorialVisit( $par ) ) {
+			return;
+		}
 
 		$out = $this->getContext()->getOutput();
 		$isMobile = Util::isMobile( $out->getSkin() );
