@@ -175,7 +175,9 @@
 	&.growthexperiments-homepage-module-mobile-details,
 	&.growthexperiments-homepage-module-mobile-overlay {
 		& > .growthexperiments-homepage-module-section-body {
-			flex-direction: column;
+			// Switch from flex to block to make the submodules display
+			// vertically and avoid iOS Safari rendering issue (T225668)
+			display: block;
 
 			.growthexperiments-homepage-module {
 				width: 100%;
