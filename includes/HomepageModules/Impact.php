@@ -537,12 +537,12 @@ class Impact extends BaseModule {
 	 */
 	private function getPageViewToolsUrl( $title, $start ) {
 		$baseUrl = 'https://tools.wmflabs.org/pageviews/';
-		$now = new DateTime();
+		$format = 'Y-m-d';
 		return wfAppendQuery( $baseUrl, [
 			'project' => $this->getContext()->getConfig()->get( 'ServerName' ),
 			'userlang' => $this->getContext()->getLanguage()->getCode(),
-			'start' => $start->format( 'Y-m-d' ),
-			'end' => $now->format( 'Y-m-d' ),
+			'start' => $start->format( $format ),
+			'end' => date( $format, strtotime( '-1 days' ) ),
 			'pages' => $title->getPrefixedDBkey(),
 		] );
 	}
