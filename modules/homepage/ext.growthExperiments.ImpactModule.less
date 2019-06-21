@@ -44,16 +44,20 @@
 			color: @colorGray2;
 		}
 
-		.pageviews {
+		.pageviews,
+		.empty-pageviews {
 			display: table-cell;
 			text-align: right;
-			padding-right: 9px;
 			vertical-align: middle;
 			white-space: nowrap;
 		}
 
+		.pageviews {
+			padding-right: 9px;
+		}
+
 		.empty-pageviews {
-			margin-right: 0.2em;
+			padding-right: 3px;
 		}
 
 		a.pageviews:hover {
