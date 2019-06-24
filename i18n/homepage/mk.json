@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bjankuloski06"
+			"Bjankuloski06",
+			"Vlad5250"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Вашата}} домашна страница",
@@ -9,16 +10,29 @@
 	"prefs-homepage": "Домашна страница за новодојденци",
 	"growthexperiments-homepage-enable": "Прикажувај домашна страница за новодојденци",
 	"growthexperiments-homepage-pt-link": "По основно давај домашна страница за новодојденци од врската за корисничко име во личните алатки",
+	"growthexperiments-homepage-account-header": "Корисничката сметка е направена",
+	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|уредување|уредувања}}",
+	"growthexperiments-homepage-userpage-header": "Создајте своја корисничка страница",
+	"growthexperiments-homepage-userpage-header-done": "Уредете своја корисничка страница",
+	"growthexperiments-homepage-userpage-button": "Создај корисничка страница",
+	"growthexperiments-homepage-userpage-button-done": "Уреди корисничка страница",
+	"growthexperiments-homepage-email-button-noemail": "Додај е-пошта",
+	"growthexperiments-homepage-email-button-confirmed": "Нагодувања",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Вашето}} влијание",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Направивте}} <strong>$1</strong> {{PLURAL:$1|уредување|уредувања}} (погл. сите)",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> уредувања на статии",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|уредување|уредувања}} на други видови статии (погл. сите)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Оди на статијата",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Погл. подробно за посетите",
+	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Јасно",
 	"growthexperiments-homepage-help-ask-help-desk": "Побарајте помош",
 	"tag-help_module_question": "Прашање на помошниот модул",
 	"tag-help_module_question-description": "Уредување направено од можноста за поставање прашања во помошниот модул на почетната страница",
 	"growthexperiments-homepage-help-header": "Најдете или побарајте помош",
 	"growthexperiments-homepage-help-subheader": "Најчитани помошни статии",
-	"growthexperiments-homepage-help-cancel": "Откажи"
+	"growthexperiments-homepage-help-cancel": "Откажи",
+	"growthexperiments-homepage-recent-questions-archived": "архивирано",
+	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|уредување|уредувања}}",
+	"growthexperiments-homepage-tutorial-cta-text": "Упатства",
+	"growthexperiments-specialimpact-title": "Влијание"
 }

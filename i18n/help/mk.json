@@ -18,6 +18,10 @@
 	"growthexperiments-help-panel-home-title": "Помош со уредување",
 	"growthexperiments-help-panel-questionreview-title": "Поставете прашање",
 	"growthexperiments-help-panel-questionreview-email": "Е-пошта",
+	"growthexperiments-help-panel-questioncomplete-title": "Постави прашање",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Повеќе за оваа функција",
+	"growthexperiments-help-panel-questionreview-add-email-placeholder": "Внесете е-пошта",
 	"growthexperiments-help-panel-questionreview-email-optional": "Е-пошта (незадолжително)",
-	"growthexperiments-help-panel-questionposter-invalid-title": "Неважечки наслов."
+	"growthexperiments-help-panel-questionposter-invalid-title": "Неважечки наслов.",
+	"growthexperiments-help-panel-notifications-link-text": "известување"
 }

@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tacsipacsi"
+		]
+	},
+	"growthexperiments-help-panel-cta-button-text": "Szerkesztési segítség",
+	"growthexperiments-help-panel-question-button-text": "Tovább",
+	"growthexperiments-help-panel-submit-question-button-text": "Kérdésem elküldése",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Több súgócikk",
+	"growthexperiments-help-panel-question-placeholder": "Segítségre van szükségem a szerkesztésben. Hogyan tudok…",
+	"growthexperiments-help-panel-back-home": "Vissza",
+	"growthexperiments-help-panel-close": "Kész",
+	"growthexperiments-help-panel-home-title": "Szerkesztési segítség",
+	"growthexperiments-help-panel-questionreview-title": "Kérdés feltevése",
+	"growthexperiments-help-panel-questionreview-header": "Ha felteszel egy kérdést, azt <strong>nyilvánosan elküldöd</strong> a szerkesztőneveddel ($2) a(z) $1 oldalon, ahol egy önkéntes szerkesztő igyekszik megválaszolni azt nagyjából egy napon belül.",
+	"growthexperiments-help-panel-questionreview-email": "E-mail",
+	"growthexperiments-help-panel-questionreview-note": "E-mailben értesítünk, amikor megérkezik a válasz, de az e-mail-címedet <strong>nem tudják meg</strong> más szerkesztők, amikor kapcsolatba lépnek veled.",
+	"growthexperiments-help-panel-questionreview-label": "A kérdésed",
+	"growthexperiments-help-panel-questionreview-include-article-title": "A lapcím belefoglalása a kérdésembe",
+	"growthexperiments-help-panel-question-post-error": "Hiba történt a kérdésed elküldése közben. Megpróbálhatod újra, vagy meglátogathatod a(z) $1 oldalt a böngészőben, és felteheted a kérdésedet manuálisan.",
+	"growthexperiments-help-panel-questioncomplete-title": "Kérdés feltevése",
+	"growthexperiments-help-panel-questioncomplete-header": "A kérdésed elküldve!",
+	"growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed": "E-mailben értesítünk, amikor megérkezik válasz, valószínűleg nagyjából egy napon belül.",
+	"growthexperiments-help-panel-questioncomplete-first-edit": "Mellesleg ennek a kérdésnek a feltevésével először szerkesztettél egy oldalt. Gratulálunk!",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Az eszköz letiltása a Beállításokban",
+	"growthexperiments-help-panel-questionreview-unconfirmed-email-note": "Egy megerősítő linket fogsz kapni e-mailben, hogy majd értesíthessünk a válaszokról. Az e-mail-címedet <strong>nem tudják meg</strong> más szerkesztők, amikor kapcsolatba lépnek veled.",
+	"growthexperiments-help-panel-questionreview-no-email-note": "Ha hozzáadsz egy e-mail-címet a fiókodhoz, egy megerősítő linket fogsz kapni e-mailben, hogy majd értesíthessünk a válaszokról. Az e-mail-címedet <strong>nem tudják meg</strong> más szerkesztők, amikor kapcsolatba lépnek veled.",
+	"growthexperiments-help-panel-questionreview-add-email-placeholder": "Add meg az e-mail-címed",
+	"growthexperiments-help-panel-questionreview-email-optional": "E-mail-cím (opcionális)",
+	"growthexperiments-help-panel-questionposter-email-already-confirmed": "Az e-mail-cím már be van állítva és meg van erősítve.",
+	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "Nincsen jogod e-mail-cím beállításához.",
+	"growthexperiments-help-panel-questionposter-invalid-title": "Érvénytelen cím.",
+	"growthexperiments-help-panel-search-label": "Segítség keresése",
+	"growthexperiments-help-panel-search-no-results": "Nincs találat."
+}

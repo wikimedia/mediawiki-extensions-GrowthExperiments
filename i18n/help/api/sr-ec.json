@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"BadDog"
+			"BadDog",
+			"Zoranzoki21"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "Руковање питањима која су постављена помоћу табле помоћи за тренутног корисника.",
 	"apihelp-helppanelquestionposter-param-body": "Текст питања који је поставио корисник.",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Релевантан наслов, ако је изабрано, за укључивање са питањем.",
-	"apihelp-helppanelquestionposter-param-email": "Опционална адреса е-поште, ако је корисник има непотврђену или је нема, за слање е-поруке за верификацију"
+	"apihelp-helppanelquestionposter-param-email": "Опционална адреса е-поште, ако је корисник нема. Корисникова е-пошта ће бити постављена на ову адресу, и послата е-порука за верификацију."
 }

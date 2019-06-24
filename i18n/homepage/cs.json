@@ -44,6 +44,7 @@
 	"growthexperiments-homepage-impact-article-link-tooltip": "Jít na článek",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Zobrazit detailní statistiku návštěv",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip": "Protože jste tento článek poprvé editoval(a) teprve dnes, počet jeho zobrazení zatím nebyl vypočítán. Zkuste to zítra!",
+	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "Počty zobrazení stránek zatím nebyly spočítány. Zkuste to zítra!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Rozumím",
 	"growthexperiments-homepage-impact-mobilebody-articleedits": "<strong>$1</strong> {{PLURAL:$1|editace|editace|editací}} článků",
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|editace|editace|editací}}",

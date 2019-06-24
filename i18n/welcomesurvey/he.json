@@ -1,0 +1,36 @@
+{
+	"@metadata": {
+		"authors": [
+			"Steeve815"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|ברוך הבא|ברוכה הבאה}}, $1!",
+	"welcomesurvey-save-confirmation-title": "תודה! התגובות שלך נשמרו.",
+	"welcomesurvey-subtitle": "עזרו לנו להפוך את ויקיפדיה לטובה יותר עבור המשתמשים החדשים שלנו בדיוק כמוך, על ידי מענה על כמה שאלות אופציונליות.",
+	"welcomesurvey-save-btn": "סיום",
+	"welcomesurvey-skip-btn": "דילוג על סקר זה",
+	"welcomesurvey-close-btn": "סגירה וחזרה לדף $1",
+	"welcomesurvey-popup-close-btn": "סגירה",
+	"welcomesurvey-back-btn": "חזרה",
+	"welcomesurvey-next-btn": "הבא",
+	"welcomesurvey-sidebar-privacy-title": "אנו מעריכים את הפרטיות שלך",
+	"welcomesurvey-privacy-policy-link-text": "הצהרת פרטיות",
+	"welcomesurvey-sidebar-editing-link1-text": "הדרכה",
+	"welcomesurvey-sidebar-editing-link2-text": "דלפק ייעוץ",
+	"welcomesurvey-sidebar-editing-link2-title": "ויקיפדיה:דלפק_ייעוץ",
+	"welcomesurvey-question-reason-label": "למה יצרת את החשבון שלך היום?",
+	"welcomesurvey-dropdown-option-select-label": "נא לבחור...",
+	"welcomesurvey-question-reason-option-edit-typo-label": "בשביל לתקן תקלדה או שגיאה בערך בוויקיפדיה",
+	"welcomesurvey-question-reason-option-edit-info-label": "בשביל להוסיף מידע לערך בוויקיפדיה",
+	"welcomesurvey-question-reason-option-new-page-label": "בשביל ליצור ערך חדש בוויקיפדיה",
+	"welcomesurvey-question-reason-option-read-label": "בשביל לקרוא בוויקיפדיה",
+	"welcomesurvey-question-reason-other-placeholder": "יש לציין סיבה אחרת...",
+	"welcomesurvey-question-edited-label": "האם אי פעם ערכת בוויקיפדיה?",
+	"welcomesurvey-question-edited-option-yes-many-label": "כן, הרבה פעמים",
+	"welcomesurvey-question-edited-option-yes-few-label": "כן, פעם או פעמיים",
+	"welcomesurvey-question-edited-option-no-dunno-label": "לא, לא ידעתי שניתן לערוך בוויקיפדיה",
+	"welcomesurvey-question-edited-option-no-other-label": "לא, מסיבות אחרות",
+	"welcomesurvey-question-edited-option-dont-remember-label": "אני לא זוכר/ת",
+	"welcomesurvey-question-email-label": "כתובת דוא״ל (לא חובה)",
+	"welcomesurvey-question-email-placeholder": "נא להזין את כתובת הדוא\"ל שלך..."
+}
