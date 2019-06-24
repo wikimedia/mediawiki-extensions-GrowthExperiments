@@ -213,7 +213,7 @@ abstract class QuestionPoster {
 	 */
 	private function addSignature( $body ) {
 		if ( strpos( $body, '~~~~' ) === false ) {
-			$body .= "\n\n~~~~";
+			$body .= " --~~~~";
 		}
 		return $body;
 	}
