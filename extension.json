@@ -278,7 +278,8 @@
 			],
 			"dependencies": [
 				"ext.growthExperiments.Help",
-				"mediawiki.jqueryMsg"
+				"mediawiki.jqueryMsg",
+				"mediawiki.router"
 			],
 			"targets": [
 				"desktop",
