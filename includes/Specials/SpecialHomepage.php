@@ -36,6 +36,9 @@ class SpecialHomepage extends SpecialPage {
 	public function __construct() {
 		parent::__construct( 'Homepage', '', false );
 		$this->pageviewToken = $this->generateUniqueToken();
+		// Hack: Making the userpage the relevant title for the homepage
+		// allows using the talk overlay for the talk tab on mobile.
+		$this->getSkin()->setRelevantTitle( $this->getUser()->getUserPage() );
 	}
 
 	private function handleTutorialVisit( $par ) {

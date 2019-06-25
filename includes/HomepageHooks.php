@@ -123,8 +123,9 @@ class HomepageHooks {
 			$links['namespaces']['user_talk'] = $skin->tabAction(
 				$usertalk, 'talk', $isUserTalkSpace, '', !$isMobile
 			);
-			// To keep the mobile overlay until we decide what to do with T225659
+			// Enable talk overlay on talk page tab
 			$links['namespaces']['user_talk']['context'] = 'talk';
+			$skin->getOutput()->addModules( 'skins.minerva.talk' );
 		}
 	}
 
