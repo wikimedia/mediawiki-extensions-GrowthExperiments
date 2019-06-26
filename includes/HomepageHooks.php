@@ -35,7 +35,9 @@ class HomepageHooks {
 	public static function onSpecialPageInitList( &$list ) {
 		if ( self::isHomepageEnabled() ) {
 			$list[ 'Homepage' ] = SpecialHomepage::class;
-			$list[ 'Impact' ] = SpecialImpact::class;
+			if ( \ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' ) ) {
+				$list['Impact'] = SpecialImpact::class;
+			}
 		}
 	}
 
