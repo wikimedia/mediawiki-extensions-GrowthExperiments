@@ -84,6 +84,11 @@ abstract class QuestionPoster {
 	private $sectionHeaderWithTimestamp;
 
 	/**
+	 * @var Content|null|string
+	 */
+	private $content;
+
+	/**
 	 * QuestionPoster constructor.
 	 * @param IContextSource $context
 	 * @param string $body
@@ -108,29 +113,44 @@ abstract class QuestionPoster {
 	}
 
 	/**
+	 * Initialize variables for later use.
+	 *
+	 * @throws MWException
+	 */
+	protected function prepare() {
+		$questionStore = QuestionStoreFactory::newFromContextAndStorage(
+			$this->getContext(),
+			$this->getQuestionStoragePref()
+		);
+		$this->postedOnTimestamp = wfTimestamp();
+		$this->existingQuestionsByUser = $questionStore->loadQuestions();
+		$this->setSectionHeaderWithTimestamp();
+		$this->getPageUpdater()->addTag( $this->getTag() );
+		$this->setContent();
+		$this->getPageUpdater()->setContent( SlotRecord::MAIN, $this->getContent() );
+	}
+
+	/**
 	 * @return Status
 	 * @throws MWException
 	 * @throws \Exception
 	 */
 	public function submit() {
-		$this->postedOnTimestamp = wfTimestamp();
+		$this->prepare();
+
+		$contentStatus = $this->checkContent();
+		if ( !$contentStatus->isGood() ) {
+			return $contentStatus;
+		}
 		$permissionStatus = $this->checkPermissions();
 		if ( !$permissionStatus->isGood() ) {
 			return $permissionStatus;
 		}
-		$questionStore = QuestionStoreFactory::newFromContextAndStorage(
-			$this->getContext(),
-			$this->getQuestionStoragePref()
-		);
-		$this->existingQuestionsByUser = $questionStore->loadQuestions();
-		$this->setSectionHeaderWithTimestamp();
-		$this->pageUpdater->addTag( $this->getTag() );
-		$this->pageUpdater->setContent( SlotRecord::MAIN, $this->getContent() );
-		$newRev = $this->pageUpdater->saveRevision(
+		$newRev = $this->getPageUpdater()->saveRevision(
 			CommentStoreComment::newUnsavedComment( $this->getSectionHeader() )
 		);
-		if ( !$this->pageUpdater->getStatus()->isGood() ) {
-			return $this->pageUpdater->getStatus();
+		if ( !$this->getPageUpdater()->getStatus()->isGood() ) {
+			return $this->getPageUpdater()->getStatus();
 		}
 		$this->revisionId = $newRev->getId();
 		$this->setResultUrl();
@@ -164,14 +184,13 @@ abstract class QuestionPoster {
 		return $counter === 1 ? $sectionHeader : $sectionHeader . ' (' . $counter . ')';
 	}
 
-	private function checkPermissions() {
+	protected function checkPermissions() {
 		$userPermissionStatus = $this->checkUserPermissions();
 		if ( !$userPermissionStatus->isGood() ) {
 			return $userPermissionStatus;
 		}
-		$content = $this->getContent();
 		$editFilterMergedContentHookStatus = $this->runEditFilterMergedContentHook(
-			$content,
+			$this->getContent(),
 			$this->getSectionHeader()
 		);
 		if ( !$editFilterMergedContentHookStatus->isGood() ) {
@@ -186,23 +205,44 @@ abstract class QuestionPoster {
 	abstract protected function getTag();
 
 	/**
-	 * @return Content|string|null
+	 * Create a WikitextContent object with the header and question text provided by the user.
+	 *
 	 * @throws MWException
 	 */
-	public function getContent() {
-		$content = new WikitextContent(
+	public function setContent() {
+		$wikitextContent = new WikitextContent(
 			$this->addSignature( $this->getBody() )
 		);
 		$header = $this->getSectionHeaderWithTimestamp();
-		$parent = $this->pageUpdater->grabParentRevision();
-		if ( $parent ) {
-			return $parent->getContent( SlotRecord::MAIN )->replaceSection(
-				'new',
-				$content,
-				$header
-			);
+		$parent = $this->getPageUpdater()->grabParentRevision();
+		if ( !$parent ) {
+			$this->content = $wikitextContent->addSectionHeader( $header );
+			return;
 		}
-		return $content->addSectionHeader( $header );
+		$existingContent = $parent->getContent( SlotRecord::MAIN );
+		if ( !$existingContent ) {
+			$this->content = null;
+			return;
+		}
+		$this->content = $existingContent->replaceSection(
+			'new',
+			$wikitextContent,
+			$header
+		);
+	}
+
+	/**
+	 * @return Content|string|null
+	 */
+	protected function getContent() {
+		return $this->content;
+	}
+
+	/**
+	 * @return PageUpdater
+	 */
+	protected function getPageUpdater() {
+		return $this->pageUpdater;
 	}
 
 	/**
@@ -358,7 +398,7 @@ abstract class QuestionPoster {
 	 * @return Status
 	 * @throws \Exception
 	 */
-	private function checkUserPermissions() {
+	protected function checkUserPermissions() {
 		$permissionsManager = MediaWikiServices::getInstance()->getPermissionManager();
 		$errors = $permissionsManager->getPermissionErrors(
 			'edit',
@@ -383,7 +423,7 @@ abstract class QuestionPoster {
 	 * @throws MWException
 	 * @throws FatalError
 	 */
-	private function runEditFilterMergedContentHook( Content $content, $summary ) {
+	protected function runEditFilterMergedContentHook( Content $content, $summary ) {
 		$derivativeContext = new DerivativeContext( $this->getContext() );
 		$derivativeContext->setConfig( MediaWikiServices::getInstance()->getMainConfig() );
 		$derivativeContext->setTitle( $this->getTargetTitle() );
@@ -407,6 +447,19 @@ abstract class QuestionPoster {
 
 	private function getBody() {
 		return $this->body;
+	}
+
+	/**
+	 * @return Status
+	 * @throws MWException
+	 */
+	protected function checkContent() {
+		return $this->getContent() instanceof Content ?
+			Status::newGood() :
+			Status::newFatal(
+				'apierror-missingcontent-revid',
+				$this->getPageUpdater()->grabParentRevision()->getId()
+			);
 	}
 
 }
