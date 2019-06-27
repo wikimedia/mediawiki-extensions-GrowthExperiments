@@ -567,10 +567,6 @@
 			"description": "Global ON/OFF switch for the Homepage feature.",
 			"value": false
 		},
-		"GEHomepageMobileEnabled": {
-			"description": "Feature flag for code which drives traffic to mobile Homepage.",
-			"value": false
-		},
 		"GEHomepageNewAccountEnablePercentage": {
 			"description": "Percentage of new accounts to enable homepage for. Must be a whole number.",
 			"value": 50
