@@ -106,7 +106,7 @@ class SpecialHomepage extends SpecialPage {
 		$out->addHTML( Html::closeElement( 'div' ) );
 
 		if ( $isMobile && !$par ) {
-			$this->outputDataForMobileOverlay();
+			$this->outputDataForMobileOverlay( $renderedModules );
 		}
 
 		if ( $loggingEnabled &&
@@ -287,10 +287,11 @@ class SpecialHomepage extends SpecialPage {
 		return $renderedModules;
 	}
 
-	private function outputDataForMobileOverlay() {
+	/**
+	 * @param BaseModule[] $modules
+	 */
+	private function outputDataForMobileOverlay( array $modules ) {
 		$out = $this->getContext()->getOutput();
-		/** @var BaseModule[] $modules */
-		$modules = $this->getModules();
 
 		$data = [];
 		foreach ( $modules as $moduleName => $module ) {

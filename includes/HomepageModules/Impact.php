@@ -34,6 +34,21 @@ class Impact extends BaseModule {
 	private $contribs = null;
 
 	/**
+	 * @var string
+	 */
+	private $body = null;
+
+	/**
+	 * @var bool
+	 */
+	private $pageViewsDataExists = false;
+
+	/**
+	 * @var string|null
+	 */
+	private $editsTable = null;
+
+	/**
 	 * @inheritDoc
 	 */
 	public function __construct( IContextSource $context ) {
@@ -72,14 +87,18 @@ class Impact extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getBody() {
+		if ( $this->body !== null ) {
+			return $this->body;
+		}
 		if ( $this->isActivated() ) {
-			return $this->getEditsTable();
+			$this->body = $this->getEditsTable();
 		} else {
-			return $this->getContext()
+			$this->body = $this->getContext()
 				->msg( 'growthexperiments-homepage-impact-body-no-edit' )
 				->params( $this->getContext()->getUser()->getName() )
 				->parse();
 		}
+		return $this->body;
 	}
 
 	/**
@@ -101,7 +120,7 @@ class Impact extends BaseModule {
 					$this->getContext()->msg( 'growthexperiments-homepage-impact-mobilebody-pageviews' )
 						->numParams( $this->getTotalPageViews() )
 						->text()
-				) . $this->getTotalViewsElement()
+				) . $this->getTotalViewsElement( true )
 			);
 			return $articleEditsElement . $pageViewsElement;
 		} else {
@@ -137,7 +156,12 @@ class Impact extends BaseModule {
 		}
 	}
 
-	private function getEditsTable() {
+	/**
+	 * Generate the HTML for the edits table.
+	 *
+	 * @throws MWException
+	 */
+	private function generateEditsTable() {
 		$articleLinkTooltip = $this->getContext()
 			->msg( 'growthexperiments-homepage-impact-article-link-tooltip' )
 			->text();
@@ -158,7 +182,7 @@ class Impact extends BaseModule {
 				'infusable' => true,
 				'flags' => [ 'progressive' ],
 			] );
-		return implode( "\n", array_map(
+		$this->editsTable = implode( "\n", array_map(
 			function ( $contrib ) use (
 				$articleLinkTooltip, $pageviewsTooltip, $emptyImage, $emptyViewsWidget
 			) {
@@ -202,6 +226,14 @@ class Impact extends BaseModule {
 					)
 				);
 
+				// Set this flag to check if page views data exists for at least
+				// one article. This is used to determine if the mobile summary
+				// should show the clock icon if all article edits have no page view
+				// data yet. Once the flag is set to true, don't set it again.
+				if ( !$this->pageViewsDataExists ) {
+					// 'views' is null if no data exists.
+					$this->pageViewsDataExists = $contrib['views'] !== null;
+				}
 				$viewsElement = isset( $contrib['views'] ) ?
 					Html::element(
 						'a',
@@ -226,11 +258,11 @@ class Impact extends BaseModule {
 		) );
 	}
 
-	private function getTotalViewsElement() {
-		return Html::element(
+	private function getTotalViewsElement( $showPendingIcon = false ) {
+		return Html::rawElement(
 			'span',
 			[ 'class' => 'growthexperiments-homepage-impact-mobile-totalviews' ],
-			$this->getTotalPageViews()
+			$this->getTotalPageViews( $showPendingIcon )
 		);
 	}
 
@@ -339,22 +371,32 @@ class Impact extends BaseModule {
 				usort( $this->contribs, function ( $a, $b ) {
 					return ( $b['views'] ?? -1 ) <=> ( $a['views'] ?? -1 );
 				} );
+				// Generate the edits table for later use.
+				$this->generateEditsTable();
 			}
 		}
 		return $this->contribs;
 	}
 
-	private function getTotalPageViews() {
+	private function getTotalPageViews( $maybeShowPendingIcon = false ) {
 		if ( !$this->isActivated() ) {
 			return 0;
 		}
-		return array_reduce(
+		$views = array_reduce(
 			$this->getArticleContributions(),
 			function ( $subTotal, $contrib ) {
 				return $subTotal + ( $contrib['views'] ?? 0 );
 			},
 			0
 		);
+		return $views === 0 && !$this->pageViewsDataExists && $maybeShowPendingIcon ?
+			new IconWidget( [
+				'icon' => 'clock',
+				'flags' => [ 'progressive' ],
+				'framed' => false,
+				'classes' => [ 'empty-pageviews-summary' ]
+			] ) :
+			$views;
 	}
 
 	/**
@@ -552,5 +594,12 @@ class Impact extends BaseModule {
 	 */
 	protected function getHeaderIconName() {
 		return 'chart';
+	}
+
+	/**
+	 * @return string|null
+	 */
+	protected function getEditsTable() {
+		return $this->editsTable;
 	}
 }
