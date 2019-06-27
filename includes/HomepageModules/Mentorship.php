@@ -246,15 +246,10 @@ class Mentorship extends BaseModule {
 	}
 
 	private function getIntroText() {
-		return Html::element(
-			'div',
+		$mentor = Mentor::newFromMentee( $this->getContext()->getUser() );
+		return Html::rawElement( 'div',
 			[ 'class' => 'growthexperiments-homepage-mentorship-intro' ],
-			$this->getContext()
-				->msg( 'growthexperiments-homepage-mentorship-intro' )
-				->params( $this->getMentor()->getName() )
-				->params( $this->getContext()->getUser()->getName() )
-				->text()
-		);
+			$mentor->getIntroText( $this->getContext() ) );
 	}
 
 	private function getQuestionButton() {

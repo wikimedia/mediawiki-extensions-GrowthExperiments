@@ -44,5 +44,4 @@ class MentorshipTest extends MediaWikiTestCase {
 		$mentee->saveSettings();
 		$this->assertNotEmpty( $mentorshipModule->render( HomepageModule::RENDER_DESKTOP ) );
 	}
-
 }
