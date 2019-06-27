@@ -24,21 +24,18 @@
 		{
 			label: OO.ui.deferMsg( 'growthexperiments-help-panel-submit-question-button-text' ),
 			modes: [ 'questionreview' ],
-			framed: true,
 			flags: [ 'progressive', 'primary' ],
 			action: 'questioncomplete'
 		},
 		{
 			label: OO.ui.deferMsg( 'growthexperiments-homepage-help-cancel' ),
 			modes: [ 'questionreview' ],
-			framed: true,
-			flags: 'safe'
+			flags: [ 'safe', 'back' ]
 		},
 		{
 			label: mw.message( 'growthexperiments-help-panel-close' ).text(),
 			modes: [ 'questioncomplete' ],
-			framed: true,
-			flags: 'safe',
+			flags: [ 'primary' ],
 			action: 'helppanelclose'
 		}
 	];
