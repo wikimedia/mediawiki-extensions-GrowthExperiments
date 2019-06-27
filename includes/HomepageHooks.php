@@ -127,7 +127,9 @@ class HomepageHooks {
 			);
 			// Enable talk overlay on talk page tab
 			$links['namespaces']['user_talk']['context'] = 'talk';
-			$skin->getOutput()->addModules( 'skins.minerva.talk' );
+			if ( $isMobile ) {
+				$skin->getOutput()->addModules( 'skins.minerva.talk' );
+			}
 		}
 	}
 
