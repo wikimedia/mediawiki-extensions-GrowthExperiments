@@ -17,6 +17,13 @@ $specialPageAliases['en'] = [
 	'Impact' => [ 'Impact' ]
 ];
 
+/** Arabic */
+$specialPageAliases['ar'] = [
+	'WelcomeSurvey' => [ 'استطلاع_ترحيبي' ],
+	'Homepage' => [ 'صفحة_رئيسية' ],
+	'Impact' => [ 'تأثير' ],
+];
+
 /** čeština (Czech) */
 $specialPageAliases['cs'] = [
 	'WelcomeSurvey' => [ 'Uvítací_dotazník', 'Uvitaci_dotaznik' ],
