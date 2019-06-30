@@ -2,12 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"ديفيد",
-			"Dyolf77"
+			"Dyolf77",
+			"Dyolf77 (WMF)"
 		]
 	},
-	"apihelp-welcomesurveyhandleresponses-summary": "التعامل مع استجابات المسح الترحيبية للمستخدم الحالي.",
-	"apihelp-welcomesurveyhandleresponses-param-surveyaction": "الإجراء الذي تم اختياره بواسطة المستخدم في استبيان الترحيب. يمكن 'حفظه' أو 'تخطيه'.",
-	"apihelp-welcomesurveyhandleresponses-param-group": "مجموعة تجريبية مرتبطة باستبيان الترحيب.",
+	"apihelp-welcomesurveyhandleresponses-summary": "استعمل اجوبة المستخدم الحالي للاستطلاع الترحيبي.",
+	"apihelp-welcomesurveyhandleresponses-param-surveyaction": "الإجراء الذي تم اختياره بواسطة المستخدم في استطلاع الترحيب. يمكن 'حفظه' أو 'تخطيه'.",
+	"apihelp-welcomesurveyhandleresponses-param-group": "مجموعة تجريبية مرتبطة باستطلاع الترحيب.",
 	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "الطابع الزمني عند عرض الاستطلاع للمستخدم.",
 	"apihelp-welcomesurveyhandleresponses-param-responses": "مادة تحتوي على أسماء الأسئلة كمفاتيح وعلى الإجابات كقيم. بتنسيق JSON."
 }

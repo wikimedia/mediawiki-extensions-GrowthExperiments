@@ -1,19 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"Steeve815"
+			"Steeve815",
+			"Strayblues"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|ברוך הבא|ברוכה הבאה}}, $1!",
 	"welcomesurvey-save-confirmation-title": "תודה! התגובות שלך נשמרו.",
-	"welcomesurvey-subtitle": "עזרו לנו להפוך את ויקיפדיה לטובה יותר עבור המשתמשים החדשים שלנו בדיוק כמוך, על ידי מענה על כמה שאלות אופציונליות.",
+	"welcomesurvey-subtitle": "עזרו לנו להפוך את ויקיפדיה לטובה יותר עבור משתמשים חדשים כמוך, על ידי מענה על כמה שאלות אופציונליות.",
 	"welcomesurvey-save-btn": "סיום",
-	"welcomesurvey-skip-btn": "דילוג על סקר זה",
+	"welcomesurvey-skip-btn": "דילוג על הסקר",
 	"welcomesurvey-close-btn": "סגירה וחזרה לדף $1",
 	"welcomesurvey-popup-close-btn": "סגירה",
 	"welcomesurvey-back-btn": "חזרה",
 	"welcomesurvey-next-btn": "הבא",
-	"welcomesurvey-sidebar-privacy-title": "אנו מעריכים את הפרטיות שלך",
+	"welcomesurvey-sidebar-privacy-title": "אכפת לנו מהפרטיות שלך",
 	"welcomesurvey-privacy-policy-link-text": "הצהרת פרטיות",
 	"welcomesurvey-sidebar-editing-link1-text": "הדרכה",
 	"welcomesurvey-sidebar-editing-link2-text": "דלפק ייעוץ",

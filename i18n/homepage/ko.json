@@ -43,6 +43,7 @@
 	"growthexperiments-homepage-impact-article-link-tooltip": "문서로 이동",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "열람 횟수 자세히 보기",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip": "오늘 첫 편집을 하셔서 아직 페이지뷰가 집계되지 않았습니다. 내일 다시 확인해 보세요!",
+	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "아직 페이지뷰가 집계되지 않았습니다. 내일 다시 확인해 보세요!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "알겠습니다",
 	"growthexperiments-homepage-impact-mobilebody-articleedits": "문서 {{PLURAL:$1|편집}} <strong>$1</strong>회",
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "{{PLURAL:$1|편집}} <strong>$1</strong>회",

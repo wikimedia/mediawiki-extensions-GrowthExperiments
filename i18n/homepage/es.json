@@ -21,8 +21,8 @@
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Entendido",
 	"growthexperiments-homepage-help-desk-questions": "Ver preguntas de otros usuarios",
 	"growthexperiments-homepage-help-header": "Encuentra o pide ayuda",
-	"growthexperiments-homepage-mentorship-header": "Tu {{GENDER:$1|mentor|mentora}}",
-	"growthexperiments-homepage-mentorship-mentor-conversations": "Ver las conversaciones de {{GENDER:$2|tu}} {{GENDER:$1|mentor|mentora}} con otros usuarios",
+	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Tu}} {{GENDER:$2|mentor|mentora}}",
+	"growthexperiments-homepage-mentorship-mentor-conversations": "Ver las demás conversaciones de {{GENDER:$2|tu}} {{GENDER:$1|mentor|mentora}}",
 	"growthexperiments-homepage-tutorial-cta-text": "Tutorial",
 	"growthexperiments-specialimpact-title": "Impacto"
 }
