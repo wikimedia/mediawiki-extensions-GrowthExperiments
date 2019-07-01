@@ -9,7 +9,7 @@ use MediaWiki\Storage\RevisionRecord;
 /**
  * @coversDefaultClass \GrowthExperiments\HelpPanel\QuestionPoster
  */
-class QuestionPosterTest extends \MediaWikiTestCase {
+class QuestionPosterTest extends \MediaWikiUnitTestCase {
 
 	/**
 	 * @covers ::checkContent
