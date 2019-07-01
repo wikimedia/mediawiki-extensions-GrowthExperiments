@@ -4,6 +4,11 @@
 			"Fitoschido"
 		]
 	},
+	"growthexperiments-homepage-start-header": "Comience aquí",
 	"growthexperiments-homepage-userpage-header-done": "Edite su página de usuario",
-	"growthexperiments-homepage-help-header": "Encuentre o pida ayuda"
+	"growthexperiments-homepage-help-header": "Obtenga ayuda para editar",
+	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|Sus}} preguntas recientes",
+	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|Este usuario experto|Esta usuaria experta}} sabe que recién ha llegado y puede {{GENDER:$2|ayudarlo|ayudarla}} con la edición.",
+	"growthexperiments-homepage-tutorial-header": "Aprenda a editar",
+	"growthexperiments-homepage-tutorial-subheader": "Siga un tutorial rápido para aprender a editar Wikipedia"
 }
