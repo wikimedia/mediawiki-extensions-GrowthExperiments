@@ -616,6 +616,11 @@
 					} else if ( !this.userEmailConfirmed ) {
 						postData.resendconfirmation = true;
 					}
+					// Start pre-loading tour for help panel.
+					if ( this.source === 'helppanel' &&
+						!mw.user.options.get( 'growthexperiments-tour-help-panel' ) ) {
+						mw.loader.load( 'ext.guidedTour.tour.helpdesk' );
+					}
 					return new mw.Api().postWithToken( 'csrf', postData )
 						.then( function ( data ) {
 							var emailStatus = data.helppanelquestionposter.email;
@@ -649,6 +654,14 @@
 									} ) ) ) );
 							this.setNotificationLabelText();
 							this.swapPanel( action );
+
+							if ( this.source === 'helppanel' ) {
+								this.launchIntroTour(
+									'helpdesk',
+									'growthexperiments-tour-help-panel'
+								);
+							}
+
 							mw.hook( 'growthExperiments.helpPanelQuestionPosted' ).fire( data );
 							// Reset the post a question text inputs.
 							this.questionTextInput.setValue( '' );
@@ -666,7 +679,40 @@
 							).promise();
 						}.bind( this ) );
 				}
+				if ( action === 'helppanelclose' ) {
+					this.close();
+					// Show mentor or help desk tour depending on the homepage module that was used
+					if ( this.source === 'homepage-mentorship' ) {
+						this.launchIntroTour(
+							'mentor',
+							'growthexperiments-tour-homepage-mentorship'
+						);
+					} else {
+						this.launchIntroTour(
+							'helpdesk',
+							'growthexperiments-tour-homepage-help'
+						);
+					}
+				}
 			}.bind( this ) );
+	};
+
+	/**
+	 * Launches a tour if the tour has never been shown before and marks the tour as viewed
+	 * @param {string} tourName
+	 * @param {string} tourPreferenceKey
+	 */
+	HelpPanelProcessDialog.prototype.launchIntroTour = function ( tourName, tourPreferenceKey ) {
+		if ( !mw.user.options.get( tourPreferenceKey ) ) {
+			mw.loader.using( 'ext.guidedTour.tour.' + tourName, function () {
+				mw.guidedTour.launchTour( tourName );
+				mw.user.options.set( tourPreferenceKey, '1' );
+				new mw.Api().saveOption(
+					tourPreferenceKey,
+					'1'
+				);
+			} );
+		}
 	};
 
 	/**
