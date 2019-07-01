@@ -247,7 +247,7 @@ class Mentorship extends BaseModule {
 
 	private function getIntroText() {
 		$mentor = Mentor::newFromMentee( $this->getContext()->getUser() );
-		return Html::rawElement( 'div',
+		return Html::element( 'div',
 			[ 'class' => 'growthexperiments-homepage-mentorship-intro' ],
 			$mentor->getIntroText( $this->getContext() ) );
 	}
