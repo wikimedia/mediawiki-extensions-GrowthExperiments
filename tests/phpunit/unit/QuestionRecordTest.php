@@ -5,7 +5,7 @@ namespace GrowthExperiments\Tests;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use MediaWikiTestCase;
 
-class QuestionRecordTest extends MediaWikiTestCase {
+class QuestionRecordTest extends \MediaWikiUnitTestCase {
 
 	/**
 	 * @covers \GrowthExperiments\HelpPanel\QuestionRecord::__construct
@@ -30,11 +30,12 @@ class QuestionRecordTest extends MediaWikiTestCase {
 	 * @covers \GrowthExperiments\HelpPanel\QuestionRecord::newFromArray
 	 */
 	public function testNewFromEmptyArray() {
-		$questionRecord = QuestionRecord::newFromArray( [] );
+		// Timestamp added as a workaround for not stubbing out call to wfTimestamp()
+		$questionRecord = QuestionRecord::newFromArray( [ 'timestamp' => 123 ] );
 		$this->assertEquals( '', $questionRecord->getQuestionText() );
 		$this->assertEquals( '', $questionRecord->getSectionHeader() );
 		$this->assertEquals( 0, $questionRecord->getRevId() );
-		$this->assertNotEmpty( $questionRecord->getTimestamp() );
+		$this->assertEquals( 123, $questionRecord->getTimestamp() );
 		$this->assertEquals( '', $questionRecord->getResultUrl() );
 		$this->assertEquals( '', $questionRecord->getArchiveUrl() );
 		$this->assertEquals( false, $questionRecord->isArchived() );
