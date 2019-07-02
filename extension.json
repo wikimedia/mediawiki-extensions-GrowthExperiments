@@ -124,7 +124,10 @@
 			"selectorWithoutVariant": ".oo-ui-icon-{name}",
 			"images": {
 				"askQuestion": {
-					"file": "../images/askQuestion.svg"
+					"file": {
+						"ltr": "../images/askQuestion-ltr.svg",
+						"rtl": "../images/askQuestion-rtl.svg"
+					}
 				}
 			}
 		},
