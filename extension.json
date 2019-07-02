@@ -400,6 +400,7 @@
 				"mediawiki.Uri",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
+				"oojs-ui.styles.icons-interactions",
 				"mediawiki.storage"
 			],
 			"messages": [
