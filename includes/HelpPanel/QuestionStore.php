@@ -8,7 +8,7 @@ use Language;
 use MediaWiki\Logger\LoggerFactory;
 use TextContent;
 use UserOptionsUpdateJob;
-use Wikimedia\Rdbms\LoadBalancer;
+use Wikimedia\Rdbms\ILoadBalancer;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
 use Title;
@@ -33,7 +33,7 @@ class QuestionStore {
 	 */
 	private $revisionStore;
 	/**
-	 * @var LoadBalancer
+	 * @var ILoadBalancer
 	 */
 	private $loadBalancer;
 	/**
@@ -49,7 +49,7 @@ class QuestionStore {
 	 * @param User $user
 	 * @param string $preference
 	 * @param RevisionStore $revisionStore
-	 * @param LoadBalancer $loadBalancer
+	 * @param ILoadBalancer $loadBalancer
 	 * @param Language $language
 	 * @param bool $wasPosted
 	 */
@@ -57,7 +57,7 @@ class QuestionStore {
 		$user,
 		$preference,
 		RevisionStore $revisionStore,
-		LoadBalancer $loadBalancer,
+		ILoadBalancer $loadBalancer,
 		Language $language,
 		$wasPosted
 	) {
