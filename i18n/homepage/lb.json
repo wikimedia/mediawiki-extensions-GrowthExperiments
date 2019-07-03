@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Les Meloures"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Salut}}, {{bidi:$1}}!",
@@ -18,6 +19,7 @@
 	"growthexperiments-homepage-impact-article-link-tooltip": "Op den Artikel goen",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Verstan",
 	"growthexperiments-homepage-help-ask-help-desk": "Helpdesk froen",
+	"growthexperiments-tour-response-button-okay": "Verstanen",
 	"growthexperiments-homepage-help-cancel": "Ofbriechen",
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|Är}}  rezent Froen",
 	"growthexperiments-homepage-recent-questions-archived": "archivéiert",

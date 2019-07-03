@@ -28,6 +28,7 @@
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Capito",
 	"growthexperiments-homepage-impact-mobilebody-articleedits": "<strong>$1</strong> {{PLURAL:$1|modifica|modifiche}} alle voci",
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|modifica|modifiche}}",
+	"growthexperiments-tour-response-button-okay": "Capito",
 	"growthexperiments-homepage-help-cancel": "Annulla",
 	"growthexperiments-homepage-recent-questions-header": "Le {{GENERE:$1|tue}} domande recenti",
 	"growthexperiments-homepage-recent-questions-posted-on": "Pubblicato $1 fa",

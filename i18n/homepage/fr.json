@@ -4,7 +4,8 @@
 			"Wladek92",
 			"Gomoko",
 			"McDutchie",
-			"Fitoschido"
+			"Fitoschido",
+			"Derugon"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Bonjour}}, {{bidi:$1}} !",
@@ -51,6 +52,11 @@
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Surveiller les vues des articles que vous avez modifiés",
 	"growthexperiments-homepage-help-ask-help-desk": "Demander le bureau d’aide",
 	"growthexperiments-homepage-help-desk-questions": "Afficher les questions des autres utilisateurs",
+	"growthexperiments-tour-helpdesk-response-tip-title": "Alertes du centre d’assistance",
+	"growthexperiments-tour-response-tip-text": "Lorsqu’une réponse à {{GENDER:$1|votre}} question sera apportée, {{GENDER:$1|vous}} recevrez une nouvelle alerte ici.",
+	"growthexperiments-tour-mentor-response-tip-personal-title": "Alertes mentor",
+	"growthexperiments-tour-mentor-response-tip-personal-text": "Losque {{GENDER:$1|votre}} mentor répond, {{GENDER:$1|vous}} aurez une nouvelle alerte ici.",
+	"growthexperiments-tour-response-button-okay": "C’est bon",
 	"tag-help_module_question": "Question du module d’aide",
 	"tag-help_module_question-description": "Modification faite, à partir de la fonction poser une question, du service d'aide de la page d'accueil",
 	"tag-mentorship_module_question": "Question du module de mentorat",

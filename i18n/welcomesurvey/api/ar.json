@@ -6,7 +6,7 @@
 			"Dyolf77 (WMF)"
 		]
 	},
-	"apihelp-welcomesurveyhandleresponses-summary": "استعمل اجوبة المستخدم الحالي للاستطلاع الترحيبي.",
+	"apihelp-welcomesurveyhandleresponses-summary": "معالجة أجوبة المستخدم الحالي للاستطلاع الترحيبي.",
 	"apihelp-welcomesurveyhandleresponses-param-surveyaction": "الإجراء الذي تم اختياره بواسطة المستخدم في استطلاع الترحيب. يمكن 'حفظه' أو 'تخطيه'.",
 	"apihelp-welcomesurveyhandleresponses-param-group": "مجموعة تجريبية مرتبطة باستطلاع الترحيب.",
 	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "الطابع الزمني عند عرض الاستطلاع للمستخدم.",
