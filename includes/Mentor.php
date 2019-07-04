@@ -15,6 +15,7 @@ use WikiPage;
 class Mentor {
 
 	const MENTOR_PREF = 'growthexperiments-mentor-id';
+	const INTRO_TEXT_LENGTH = 240;
 
 	/**
 	 * @var User
@@ -136,7 +137,7 @@ class Mentor {
 
 	/**
 	 * @param IContextSource $context
-	 * @return mixed|string
+	 * @return string
 	 * @throws ConfigException
 	 * @throws \MWException
 	 */
@@ -146,8 +147,14 @@ class Mentor {
 			$this->getMentorsPageContent( $context ),
 			$matches
 		);
+		$introText = $matches[1] ?? '';
+		if ( $introText === '' ) {
+			return '';
+		}
 
-		return $matches[1] ?? '';
+		return $context->msg( 'quotation-marks' )
+			->rawParams( $context->getLanguage()->truncateForVisual( $introText, self::INTRO_TEXT_LENGTH ) )
+			->text();
 	}
 
 	/**

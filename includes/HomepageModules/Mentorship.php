@@ -255,6 +255,7 @@ class Mentorship extends BaseModule {
 	private function getQuestionButton() {
 		return new ButtonWidget( [
 			'id' => 'mw-ge-homepage-mentorship-cta',
+			'classes' => [ 'growthexperiments-homepage-mentorship-cta' ],
 			'active' => false,
 			'label' => $this->getContext()
 				->msg( 'growthexperiments-homepage-mentorship-question-button' )
