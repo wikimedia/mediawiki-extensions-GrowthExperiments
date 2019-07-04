@@ -80,9 +80,6 @@ class HomepageHooks {
 		if ( !self::isHomepageEnabled( $skin->getUser() ) ) {
 			return;
 		}
-		if ( !$skin->getConfig()->get( 'GEHomepageMobileEnabled' ) ) {
-			return;
-		}
 		if ( $skin->getTitle()->isSpecial( 'Homepage' ) ||
 			 self::titleIsUserPageOrUserTalk( $skin->getTitle(), $skin->getUser() ) ) {
 			/** @var SkinOptions $skinOptions */
@@ -306,7 +303,6 @@ class HomepageHooks {
 			$context = RequestContext::getMain();
 			$user = $context->getUser();
 			if ( self::isHomepageEnabled( $user ) &&
-				 $context->getConfig()->get( 'GEHomepageMobileEnabled' ) &&
 				 self::userHasPersonalToolsPrefEnabled( $user ) ) {
 				if ( $tool === 'personal' ) {
 					try {
