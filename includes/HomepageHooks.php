@@ -14,8 +14,11 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Menu\AuthMenuEntry;
 use MediaWiki\Minerva\Menu\Group;
+use MediaWiki\Minerva\Menu\HomeMenuEntry;
 use MediaWiki\Minerva\SkinOptions;
+use OutputPage;
 use RequestContext;
+use Skin;
 use SkinTemplate;
 use SpecialPage;
 use Title;
@@ -51,6 +54,18 @@ class HomepageHooks {
 			MediaWikiServices::getInstance()->getMainConfig()->get( 'GEHomepageEnabled' ) &&
 			( $user === null || $user->getBoolOption( self::HOMEPAGE_PREF_ENABLE ) )
 		);
+	}
+
+	/**
+	 * @param OutputPage &$out
+	 * @param Skin &$skin
+	 * @throws ConfigException
+	 */
+	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
+		if ( !self::isHomepageEnabled( $skin->getUser() ) || !Util::isMobile( $skin ) ) {
+			return;
+		}
+		$out->addModuleStyles( 'ext.growthExperiments.mobileMenu.icons' );
 	}
 
 	/**
@@ -287,21 +302,37 @@ class HomepageHooks {
 	 * @throws \MWException
 	 */
 	public static function onMobileMenu( $tool, &$group ) {
-		if ( $tool === 'personal' ) {
+		if ( in_array( $tool, [ 'personal', 'discovery' ] ) ) {
 			$context = RequestContext::getMain();
 			$user = $context->getUser();
 			if ( self::isHomepageEnabled( $user ) &&
 				 $context->getConfig()->get( 'GEHomepageMobileEnabled' ) &&
 				 self::userHasPersonalToolsPrefEnabled( $user ) ) {
-				try {
-					/** @var AuthMenuEntry $authMenuEntry */
-					$authMenuEntry = $group->getEntryByName( 'auth' );
-					// @phan-suppress-next-line PhanUndeclaredMethod
-					$authMenuEntry->overrideProfileURL( self::getPersonalToolsHomepageLinkUrl(
-						$context->getTitle()->getNamespace()
-					), null, 'homepage' );
-				} catch ( DomainException $exception ) {
-					return;
+				if ( $tool === 'personal' ) {
+					try {
+						/** @var AuthMenuEntry $authMenuEntry */
+						$authMenuEntry = $group->getEntryByName( 'auth' );
+						// @phan-suppress-next-line PhanUndeclaredMethod
+						$authMenuEntry->overrideProfileURL(
+							self::getPersonalToolsHomepageLinkUrl(
+								$context->getTitle()->getNamespace()
+							), null, 'homepage' );
+					}
+					catch ( DomainException $exception ) {
+						return;
+					}
+				}
+				if ( $tool === 'discovery' ) {
+					try {
+						/** @var HomeMenuEntry $homeMenuEntry */
+						$homeMenuEntry = $group->getEntryByName( 'home' );
+						// @phan-suppress-next-line PhanUndeclaredMethod
+						$homeMenuEntry->overrideText( $context->msg( 'mainpage-nstab' )->text() )
+							->overrideCssClass( \MinervaUI::iconClass( 'newspaper', 'before' ) );
+					}
+					catch ( DomainException $exception ) {
+						return;
+					}
 				}
 			}
 		}

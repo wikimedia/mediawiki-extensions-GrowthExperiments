@@ -60,7 +60,8 @@
 		],
 		"BeforePageDisplay": [
 			"GrowthExperiments\\WelcomeSurveyHooks::onBeforePageDisplay",
-			"GrowthExperiments\\HelpPanelHooks::onBeforePageDisplay"
+			"GrowthExperiments\\HelpPanelHooks::onBeforePageDisplay",
+			"GrowthExperiments\\HomepageHooks::onBeforePageDisplay"
 		],
 		"SkinMinervaOptionsInit": [
 			"GrowthExperiments\\HomepageHooks::onSkinMinervaOptionsInit"
@@ -105,6 +106,19 @@
 		}
 	},
 	"ResourceModules": {
+		"ext.growthExperiments.mobileMenu.icons": {
+			"class": "ResourceLoaderImageModule",
+			"selector": ".mw-ui-icon-minerva-{name}:before",
+			"defaultColor": "#4A4F53",
+			"images": {
+				"newspaper": {
+					"file": {
+						"ltr": "../images/newspaper-ltr.svg",
+						"rtl": "../images/newspaper-rtl.svg"
+					}
+				}
+			}
+		},
 		"ext.growthExperiments.Homepage.Mobile": {
 			"packageFiles": [
 				"homepage/ext.growthExperiments.Homepage.Mobile.js",
