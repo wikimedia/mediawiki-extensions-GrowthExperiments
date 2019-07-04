@@ -175,15 +175,14 @@
 	&.growthexperiments-homepage-module-mobile-details,
 	&.growthexperiments-homepage-module-mobile-overlay {
 		& > .growthexperiments-homepage-module-section-body {
-			// Switch from flex to block to make the submodules display
-			// vertically and avoid iOS Safari rendering issue (T225668)
-			display: block;
+			flex-direction: column;
 
 			.growthexperiments-homepage-module {
 				width: 100%;
 				border-right: 0;
 				border-bottom: @colorGray12 @border-width-base @border-style-base;
 				padding: 0.5em 0 1em 0;
+				display: block;
 
 				&:last-child {
 					border: 0;
