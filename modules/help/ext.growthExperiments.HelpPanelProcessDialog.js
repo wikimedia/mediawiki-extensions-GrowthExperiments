@@ -619,7 +619,7 @@
 					// Start pre-loading tour for help panel.
 					if ( this.source === 'helppanel' &&
 						!mw.user.options.get( 'growthexperiments-tour-help-panel' ) ) {
-						mw.loader.load( 'ext.guidedTour.tour.helpdesk' );
+						mw.loader.load( 'ext.guidedTour.tour.helppanel' );
 					}
 					return new mw.Api().postWithToken( 'csrf', postData )
 						.then( function ( data ) {
@@ -657,7 +657,7 @@
 
 							if ( this.source === 'helppanel' ) {
 								this.launchIntroTour(
-									'helpdesk',
+									'helppanel',
 									'growthexperiments-tour-help-panel'
 								);
 							}
@@ -684,12 +684,12 @@
 					// Show mentor or help desk tour depending on the homepage module that was used
 					if ( this.source === 'homepage-mentorship' ) {
 						this.launchIntroTour(
-							'mentor',
+							'homepage_mentor',
 							'growthexperiments-tour-homepage-mentorship'
 						);
 					} else {
 						this.launchIntroTour(
-							'helpdesk',
+							'homepage_help',
 							'growthexperiments-tour-homepage-help'
 						);
 					}
