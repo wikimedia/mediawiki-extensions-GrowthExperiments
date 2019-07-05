@@ -30,16 +30,24 @@ class TourHooks {
 			'targets' => [ 'desktop' ]
 		];
 		$modules = [
-			'ext.guidedTour.tour.helpdesk' => $moduleTemplate + [
-				'scripts' => 'help/ext.growthExperiments.helpdesk.js',
+			'ext.guidedTour.tour.helppanel' => $moduleTemplate + [
+				'scripts' => 'help/ext.growthExperiments.helppanel.tour.js',
 				'messages' => [
 					'growthexperiments-tour-helpdesk-response-tip-title',
 					'growthexperiments-tour-response-tip-text',
 					'growthexperiments-tour-response-button-okay'
 				],
 			],
-			'ext.guidedTour.tour.mentor' => $moduleTemplate + [
-				'scripts' => 'help/ext.growthExperiments.mentor.js',
+			'ext.guidedTour.tour.homepage_help' => $moduleTemplate + [
+				'scripts' => 'help/ext.growthExperiments.homepage.help.tour.js',
+				'messages' => [
+					'growthexperiments-tour-helpdesk-response-tip-title',
+					'growthexperiments-tour-response-tip-text',
+					'growthexperiments-tour-response-button-okay'
+				],
+			],
+			'ext.guidedTour.tour.homepage_mentor' => $moduleTemplate + [
+				'scripts' => 'help/ext.growthExperiments.homepage.mentor.tour.js',
 				'messages' => [
 					'growthexperiments-tour-mentor-response-tip-personal-title',
 					'growthexperiments-tour-mentor-response-tip-personal-text',

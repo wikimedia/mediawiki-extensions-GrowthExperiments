@@ -1,12 +1,13 @@
 ( function ( gt ) {
-	var dashboardTour = new gt.TourBuilder( {
-		name: 'helpdesk',
+	var mentorTour = new gt.TourBuilder( {
+		name: 'homepage_mentor',
+		isSinglePage: true,
 		shouldLog: true
 	} );
-	dashboardTour.firstStep( {
+	mentorTour.firstStep( {
 		name: 'incomingmessage',
-		titlemsg: 'growthexperiments-tour-helpdesk-response-tip-title',
-		descriptionmsg: 'growthexperiments-tour-response-tip-text',
+		titlemsg: 'growthexperiments-tour-mentor-response-tip-personal-title',
+		descriptionmsg: 'growthexperiments-tour-mentor-response-tip-personal-text',
 		attachTo: '#pt-notifications-alert',
 		position: 'bottom',
 		overlay: false,
