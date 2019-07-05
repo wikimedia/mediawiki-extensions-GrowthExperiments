@@ -12,6 +12,7 @@ use IContextSource;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
 use MediaWiki\MediaWikiServices;
 use MWException;
+use MWTimestamp;
 use OOUI\ButtonWidget;
 use OOUI\IconWidget;
 use PageImages;
@@ -21,6 +22,9 @@ use Title;
 /**
  * This is the "Impact" module. It shows the page views information
  * of recently edited pages.
+ *
+ * All timestamps in this file are in UTC. That's also what
+ * the pageviews tool expects.
  *
  * @package GrowthExperiments\HomepageModules
  */
@@ -566,8 +570,8 @@ class Impact extends BaseModule {
 	 * @throws Exception
 	 */
 	private function daysSince( DateTime $timestamp ) {
-		$now = new DateTime();
-		$diff = $now->diff( $timestamp );
+		$now = MWTimestamp::getInstance();
+		$diff = $now->timestamp->diff( $timestamp );
 		return $diff->days;
 	}
 
@@ -584,7 +588,7 @@ class Impact extends BaseModule {
 			'project' => $this->getContext()->getConfig()->get( 'ServerName' ),
 			'userlang' => $this->getContext()->getLanguage()->getCode(),
 			'start' => $start->format( $format ),
-			'end' => date( $format, strtotime( '-1 days' ) ),
+			'end' => 'latest',
 			'pages' => $title->getPrefixedDBkey(),
 		] );
 	}
