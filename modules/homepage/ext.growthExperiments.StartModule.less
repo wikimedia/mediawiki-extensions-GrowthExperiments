@@ -149,9 +149,15 @@
 		}
 
 		& > .growthexperiments-homepage-module-section-body {
+			flex-wrap: wrap;
+
 			.growthexperiments-homepage-module {
 				border: 0;
-				padding: 0;
+				padding: 0 0.5em;
+
+				@media only screen and ( max-width: 414px ) and ( orientation: portrait ) {
+					flex-basis: 50%;
+				}
 
 				& > h3 {
 					flex-direction: column;
