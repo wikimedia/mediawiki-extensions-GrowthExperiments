@@ -24,9 +24,16 @@
 	"growthexperiments-homepage-email-button-noemail": "E-mail toevoegen",
 	"growthexperiments-homepage-email-button-confirmed": "Voorkeuren",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Uw}} impact",
+	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Begrepen",
+	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|bewerking|bewerkingen}}",
+	"growthexperiments-tour-response-button-okay": "Begrepen",
 	"growthexperiments-homepage-help-cancel": "Annuleren",
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|Jouw}} recente vragen",
+	"growthexperiments-homepage-recent-questions-posted-on": "$1 geleden geplaatst",
 	"growthexperiments-homepage-recent-questions-archived": "gearchiveerd",
+	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Uw}} {{GENDER:$2|mentor}}",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|bewerking|bewerkingen}}",
+	"growthexperiments-homepage-mentorship-question-subject": "Vraag van [[User:$1|$1]]",
+	"growthexperiments-homepage-tutorial-header": "Leren hoe u kunt bewerken",
 	"growthexperiments-homepage-tutorial-cta-text": "Zelfstudie"
 }
