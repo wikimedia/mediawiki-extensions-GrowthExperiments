@@ -118,7 +118,7 @@ class SpecialHomepageLogger {
 
 		$event['homepage_pageview_token'] = $this->pageviewToken;
 
-		EventLogging::logEvent( 'HomepageVisit', 19041814, $event );
+		EventLogging::logEvent( 'HomepageVisit', 19188149, $event );
 	}
 
 }

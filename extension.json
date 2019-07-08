@@ -58,10 +58,16 @@
 		"BeforeWelcomeCreation": [
 			"GrowthExperiments\\WelcomeSurveyHooks::onBeforeWelcomeCreation"
 		],
+		"SiteNoticeAfter": [
+			"GrowthExperiments\\HomepageHooks::onSiteNoticeAfter"
+		],
 		"BeforePageDisplay": [
 			"GrowthExperiments\\WelcomeSurveyHooks::onBeforePageDisplay",
 			"GrowthExperiments\\HelpPanelHooks::onBeforePageDisplay",
 			"GrowthExperiments\\HomepageHooks::onBeforePageDisplay"
+		],
+		"ConfirmEmailComplete": [
+			"GrowthExperiments\\HomepageHooks::onConfirmEmailComplete"
 		],
 		"SkinMinervaOptionsInit": [
 			"GrowthExperiments\\HomepageHooks::onSkinMinervaOptionsInit"
@@ -118,6 +124,26 @@
 					}
 				}
 			}
+		},
+		"ext.growthExperiments.Homepage.ConfirmEmail": {
+			"packageFiles": [ "homepage/ext.growthExperiments.Homepage.ConfirmEmail.js" ],
+			"messages": [
+				"confirmemail_loggedin"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"dependencies": [
+				"mediawiki.notify"
+			]
+		},
+		"ext.growthExperiments.Homepage.ConfirmEmail.styles": {
+			"styles": "homepage/ext.growthExperiments.Homepage.ConfirmEmail.less",
+			"targets": [
+				"desktop",
+				"mobile"
+			]
 		},
 		"ext.growthExperiments.Homepage.Mobile": {
 			"packageFiles": [

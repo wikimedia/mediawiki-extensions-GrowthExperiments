@@ -1,0 +1,46 @@
+@import 'mediawiki.ui/variables';
+@import '../../lib/ooui/wikimedia-ui-base';
+
+.mw-ge-homepage-confirmemail-nojs {
+	text-align: left;
+	padding: 1em;
+
+	.mw-ge-homepage-confirmemail-nojs-message {
+		padding-left: 1em;
+	}
+}
+
+.client-js .mw-ge-homepage-confirmemail-nojs {
+	display: none;
+}
+
+.client-nojs .mw-ge-homepage-confirmemail-nojs {
+	background-color: @wmui-color-green90;
+	border: 1px solid @wmui-color-green50;
+	font-size: 1em;
+	font-weight: bold;
+	color: @colorGray2;
+
+	&-desktop {
+		margin: 1em 0;
+	}
+}
+
+// The following block does not apply to Minerva with JS
+body :not( .skin-minerva ) {
+	.mw-ge-homepage-confirmemail-nojs,
+	.mw-notification-area {
+		left: 40%;
+		// Need !important to override core style.
+		overflow: visible !important; // stylelint-disable-line declaration-no-important
+		.mw-notification-type-ge-homepage-confirmemail {
+			background-color: @wmui-color-green90;
+			border: 1px solid @wmui-color-green50;
+			font-size: 1em;
+			font-weight: bold;
+			color: @colorGray2;
+			-webkit-transform: translateY( -35px );
+			transform: translateY( -35px );
+		}
+	}
+}
