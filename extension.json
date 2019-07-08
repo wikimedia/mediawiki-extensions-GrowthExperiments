@@ -256,6 +256,7 @@
 				"welcomesurvey-question-reason-option-new-page-label",
 				"welcomesurvey-question-reason-option-read-label",
 				"welcomesurvey-question-reason-option-other-label",
+				"welcomesurvey-question-reason-option-other-no-freetext-label",
 				"welcomesurvey-question-reason-other-placeholder",
 				"welcomesurvey-question-mentor-info",
 				"welcomesurvey-question-mentor-label",
@@ -604,6 +605,10 @@
 			"description": "Global ON/OFF switch for the Welcome survey feature.",
 			"value": false
 		},
+		"WelcomeSurveyAllowFreetextResponses": {
+			"description": "If set to true, freetext responses with the welcome survey are allowed.",
+			"value": false
+		},
 		"WelcomeSurveyPrivacyPolicyUrl": {
 			"description": "URL of the privacy policy to be used on the Welcome survey.",
 			"value": "https://foundation.wikimedia.org/wiki/New_User_Welcome_Survey_Privacy_Statement"
@@ -637,10 +642,8 @@
 					"format": "specialpage",
 					"questions": [
 						"reason",
-						"reason-other",
 						"edited",
 						"topics",
-						"topics-other-nojs",
 						"topics-other-js",
 						"email",
 						"mentor-info",
@@ -660,10 +663,8 @@
 					"format": "specialpage",
 					"questions": [
 						"reason",
-						"reason-other",
 						"edited",
 						"topics",
-						"topics-other-nojs",
 						"topics-other-js",
 						"email",
 						"mentor-info",

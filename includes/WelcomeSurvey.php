@@ -21,123 +21,6 @@ class WelcomeSurvey {
 	private $context;
 
 	/**
-	 * Bank of questions that can be used on the Welcome survey.
-	 * Format is HTMLForm configuration.
-	 * @var array
-	 */
-	private $questions = [
-		"reason" => [
-			"type" => "select",
-			"label-message" => "welcomesurvey-question-reason-label",
-			"options-messages" => [
-				"welcomesurvey-question-reason-option-edit-typo-label" => "edit-typo",
-				"welcomesurvey-question-reason-option-edit-info-label" => "edit-info",
-				"welcomesurvey-question-reason-option-new-page-label" => "new-page",
-				"welcomesurvey-question-reason-option-read-label" => "read",
-			],
-			"placeholder-message" => "welcomesurvey-dropdown-option-select-label",
-			"other-message" => "welcomesurvey-question-reason-option-other-label",
-			"other-placeholder-message" => "welcomesurvey-question-reason-other-placeholder",
-			"other-size" => 255,
-			"name" => "reason",
-			"group" => "reason",
-		],
-		"reason-other" => [
-			"type" => "text",
-			"placeholder-message" => "welcomesurvey-question-reason-other-placeholder",
-			"size" => 255,
-			"hide-if" => [
-				"!==",
-				"reason",
-				"other",
-			],
-			"group" => "reason",
-		],
-		"edited" => [
-			"type" => "select",
-			"label-message" => "welcomesurvey-question-edited-label",
-			"options-messages" => [
-				"welcomesurvey-question-edited-option-yes-many-label" => "yes-many",
-				"welcomesurvey-question-edited-option-yes-few-label" => "yes-few",
-				"welcomesurvey-question-edited-option-no-dunno-label" => "dunno",
-				"welcomesurvey-question-edited-option-no-other-label" => "no-other",
-				"welcomesurvey-question-edited-option-dont-remember-label" => "dont-remember",
-			],
-			"placeholder-message" => "welcomesurvey-dropdown-option-select-label",
-			"group" => "edited",
-		],
-		"topics" => [
-			"type" => "multiselect",
-			"label-message" => "welcomesurvey-question-topics-label",
-			"flatlist" => true,
-			"options-messages" => [
-				"welcomesurvey-question-topics-option-arts" => "arts",
-				"welcomesurvey-question-topics-option-science" => "science",
-				"welcomesurvey-question-topics-option-geography" => "geography",
-				"welcomesurvey-question-topics-option-history" => "history",
-				"welcomesurvey-question-topics-option-music" => "music",
-				"welcomesurvey-question-topics-option-sports" => "sports",
-				"welcomesurvey-question-topics-option-literature" => "literature",
-				"welcomesurvey-question-topics-option-religion" => "religion",
-				"welcomesurvey-question-topics-option-popular-culture" => "popular culture",
-			],
-			"group" => "topics",
-		],
-		"topics-other-js" => [
-			"type" => "multiselect",
-			"allowArbitrary" => true,
-			"placeholder-message" => "welcomesurvey-question-topics-other-placeholder",
-			"options-messages" => [
-				"welcomesurvey-question-topics-option-entertainment" => "entertainment",
-				"welcomesurvey-question-topics-option-food-drink" => "food and drink",
-				"welcomesurvey-question-topics-option-biography" => "biography",
-				"welcomesurvey-question-topics-option-military" => "military",
-				"welcomesurvey-question-topics-option-economics" => "economics",
-				"welcomesurvey-question-topics-option-technology" => "technology",
-				"welcomesurvey-question-topics-option-film" => "film",
-				"welcomesurvey-question-topics-option-philosophy" => "philosophy",
-				"welcomesurvey-question-topics-option-business" => "business",
-				"welcomesurvey-question-topics-option-politics" => "politics",
-				"welcomesurvey-question-topics-option-government" => "government",
-				"welcomesurvey-question-topics-option-engineering" => "engineering",
-				"welcomesurvey-question-topics-option-crafts-hobbies" => "crafts and hobbies",
-				"welcomesurvey-question-topics-option-games" => "games",
-				"welcomesurvey-question-topics-option-health" => "health",
-				"welcomesurvey-question-topics-option-social-science" => "social science",
-				"welcomesurvey-question-topics-option-transportation" => "transportation",
-				"welcomesurvey-question-topics-option-education" => "education",
-			],
-			"cssclass" => "custom-dropdown js-only",
-			"group" => "topics",
-		],
-		"topics-other-nojs" => [
-			"type" => "text",
-			"placeholder-message" => "welcomesurvey-question-topics-other-placeholder",
-			"cssclass" => "nojs-only",
-			"group" => "topics",
-		],
-		"mentor-info" => [
-			"type" => "info",
-			"label-message" => "welcomesurvey-question-mentor-info",
-			"cssclass" => "welcomesurvey-mentor-info",
-			"group" => "email",
-		],
-		"mentor" => [
-			"type" => "check",
-			"label-message" => "welcomesurvey-question-mentor-label",
-			"cssclass" => "welcomesurvey-mentor-check",
-			"group" => "email",
-		],
-		"email" => [
-			"type" => "email",
-			"label-message" => "welcomesurvey-question-email-label",
-			"placeholder-message" => "welcomesurvey-question-email-placeholder",
-			"help-message" => "welcomesurvey-question-email-help",
-			"group" => "email",
-		],
-	];
-
-	/**
 	 * WelcomeSurvey constructor.
 	 * @param IContextSource $context
 	 */
@@ -208,15 +91,157 @@ class WelcomeSurvey {
 		) {
 			$questionNames = array_diff( $questionNames, [ 'email' ] );
 		}
+
+		$allowFreetext = $this->context->getConfig()->get( 'WelcomeSurveyAllowFreetextResponses' );
+		if ( $allowFreetext && $groups[ $group ][ 'format' ] !== 'popup' ) {
+			if ( in_array( 'reason', $questionNames ) ) {
+				// Insert reason-other after reason
+				array_splice( $questionNames, array_search( 'reason', $questionNames ) + 1, 0,
+					'reason-other' );
+			}
+			if ( in_array( 'topics-other-js', $questionNames ) ) {
+				// Insert topics-other-nojs before topics-other-js
+				array_splice( $questionNames, array_search( 'topics-other-js', $questionNames ), 0,
+					'topics-other-nojs' );
+			}
+		}
+
 		$questions = [];
+		$questionBank = $this->getQuestionBank();
 		foreach ( $questionNames as $questionName ) {
 			if ( $asKeyedArray ) {
-				$questions[ $questionName ] = $this->questions[ $questionName ];
+				$questions[ $questionName ] = $questionBank[ $questionName ];
 			} else {
-				$questions[] = [ 'name' => $questionName ] + $this->questions[ $questionName ];
+				$questions[] = [ 'name' => $questionName ] + $questionBank[ $questionName ];
 			}
 		}
 		return $questions;
+	}
+
+	/**
+	 * Bank of questions that can be used on the Welcome survey.
+	 * Format is HTMLForm configuration.
+	 * @return array
+	 */
+	protected function getQuestionBank() : array {
+		$allowFreetext = $this->context->getConfig()->get( 'WelcomeSurveyAllowFreetextResponses' );
+		// When free text is enabled, add other-* settings and the reason-other question
+		$reasonOtherSettings = $allowFreetext ? [
+			'other-message' => 'welcomesurvey-question-reason-option-other-label',
+			'other-placeholder-message' => 'welcomesurvey-question-reason-other-placeholder',
+			'other-size' => 255
+		] : [];
+		$reasonOtherQuestion = $allowFreetext ? [
+			'reason-other' => [
+				'type' => 'text',
+				'placeholder-message' => 'welcomesurvey-question-reason-other-placeholder',
+				'size' => 255,
+				'hide-if' => [ '!==', 'reason', 'other' ],
+				'group' => 'reason'
+			]
+		] : [];
+		// When free text is disabled, add an "Other" option to the reason question
+		$reasonOtherOption = $allowFreetext ? [] : [
+			"welcomesurvey-question-reason-option-other-no-freetext-label" => "other",
+		];
+		return [
+			"reason" => [
+				"type" => "select",
+				"label-message" => "welcomesurvey-question-reason-label",
+				"options-messages" => [
+					"welcomesurvey-question-reason-option-edit-typo-label" => "edit-typo",
+					"welcomesurvey-question-reason-option-edit-info-label" => "edit-info",
+					"welcomesurvey-question-reason-option-new-page-label" => "new-page",
+					"welcomesurvey-question-reason-option-read-label" => "read",
+				] + $reasonOtherOption,
+				"placeholder-message" => "welcomesurvey-dropdown-option-select-label",
+				"name" => "reason",
+				"group" => "reason",
+			] + $reasonOtherSettings
+		] + $reasonOtherQuestion + [
+			"edited" => [
+				"type" => "select",
+				"label-message" => "welcomesurvey-question-edited-label",
+				"options-messages" => [
+					"welcomesurvey-question-edited-option-yes-many-label" => "yes-many",
+					"welcomesurvey-question-edited-option-yes-few-label" => "yes-few",
+					"welcomesurvey-question-edited-option-no-dunno-label" => "dunno",
+					"welcomesurvey-question-edited-option-no-other-label" => "no-other",
+					"welcomesurvey-question-edited-option-dont-remember-label" => "dont-remember",
+				],
+				"placeholder-message" => "welcomesurvey-dropdown-option-select-label",
+				"group" => "edited",
+			],
+			"topics" => [
+				"type" => "multiselect",
+				"label-message" => "welcomesurvey-question-topics-label",
+				"flatlist" => true,
+				"options-messages" => [
+					"welcomesurvey-question-topics-option-arts" => "arts",
+					"welcomesurvey-question-topics-option-science" => "science",
+					"welcomesurvey-question-topics-option-geography" => "geography",
+					"welcomesurvey-question-topics-option-history" => "history",
+					"welcomesurvey-question-topics-option-music" => "music",
+					"welcomesurvey-question-topics-option-sports" => "sports",
+					"welcomesurvey-question-topics-option-literature" => "literature",
+					"welcomesurvey-question-topics-option-religion" => "religion",
+					"welcomesurvey-question-topics-option-popular-culture" => "popular culture",
+				],
+				"group" => "topics",
+			],
+			"topics-other-js" => [
+				"type" => "multiselect",
+				"allowArbitrary" => $allowFreetext,
+				"placeholder-message" => "welcomesurvey-question-topics-other-placeholder",
+				"options-messages" => [
+					"welcomesurvey-question-topics-option-entertainment" => "entertainment",
+					"welcomesurvey-question-topics-option-food-drink" => "food and drink",
+					"welcomesurvey-question-topics-option-biography" => "biography",
+					"welcomesurvey-question-topics-option-military" => "military",
+					"welcomesurvey-question-topics-option-economics" => "economics",
+					"welcomesurvey-question-topics-option-technology" => "technology",
+					"welcomesurvey-question-topics-option-film" => "film",
+					"welcomesurvey-question-topics-option-philosophy" => "philosophy",
+					"welcomesurvey-question-topics-option-business" => "business",
+					"welcomesurvey-question-topics-option-politics" => "politics",
+					"welcomesurvey-question-topics-option-government" => "government",
+					"welcomesurvey-question-topics-option-engineering" => "engineering",
+					"welcomesurvey-question-topics-option-crafts-hobbies" => "crafts and hobbies",
+					"welcomesurvey-question-topics-option-games" => "games",
+					"welcomesurvey-question-topics-option-health" => "health",
+					"welcomesurvey-question-topics-option-social-science" => "social science",
+					"welcomesurvey-question-topics-option-transportation" => "transportation",
+					"welcomesurvey-question-topics-option-education" => "education",
+				],
+				"cssclass" => "custom-dropdown js-only",
+				"group" => "topics",
+			],
+			"topics-other-nojs" => [
+				"type" => "text",
+				"placeholder-message" => "welcomesurvey-question-topics-other-placeholder",
+				"cssclass" => "nojs-only",
+				"group" => "topics",
+			],
+			"mentor-info" => [
+				"type" => "info",
+				"label-message" => "welcomesurvey-question-mentor-info",
+				"cssclass" => "welcomesurvey-mentor-info",
+				"group" => "email",
+			],
+			"mentor" => [
+				"type" => "check",
+				"label-message" => "welcomesurvey-question-mentor-label",
+				"cssclass" => "welcomesurvey-mentor-check",
+				"group" => "email",
+			],
+			"email" => [
+				"type" => "email",
+				"label-message" => "welcomesurvey-question-email-label",
+				"placeholder-message" => "welcomesurvey-question-email-placeholder",
+				"help-message" => "welcomesurvey-question-email-help",
+				"group" => "email",
+			]
+		];
 	}
 
 	/**

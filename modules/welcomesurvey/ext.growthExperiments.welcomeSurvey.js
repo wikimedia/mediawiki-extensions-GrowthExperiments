@@ -16,7 +16,7 @@
 		} );
 		menuTagWidget = new OO.ui.MenuTagMultiselectWidget( {
 			$overlay: true,
-			allowArbitrary: true,
+			allowArbitrary: checkboxesWidget.$element.hasClass( 'mw-htmlform-multiselect-allow-arbitrary' ),
 			// todo: This should be configured in the php widget and propagated here
 			placeholder: mw.message( 'welcomesurvey-tagmultiselect-placeholder' ).text(),
 			menu: {
