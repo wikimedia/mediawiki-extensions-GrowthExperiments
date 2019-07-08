@@ -61,6 +61,12 @@
 		"SiteNoticeAfter": [
 			"GrowthExperiments\\HomepageHooks::onSiteNoticeAfter"
 		],
+		"SpecialContributionsBeforeMainOutput": [
+			"GrowthExperiments\\HomepageHooks::onSpecialContributionsBeforeMainOutput"
+		],
+		"SpecialPageAfterExecute": [
+			"GrowthExperiments\\HomepageHooks::onSpecialPageAfterExecute"
+		],
 		"BeforePageDisplay": [
 			"GrowthExperiments\\WelcomeSurveyHooks::onBeforePageDisplay",
 			"GrowthExperiments\\HelpPanelHooks::onBeforePageDisplay",
@@ -418,6 +424,13 @@
 			"dependencies": [
 				"ext.growthExperiments.Homepage.QuestionPoster"
 			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.growthExperiments.Homepage.contribs.styles": {
+			"styles": "homepage/ext.growthExperiments.Homepage.contribs.less",
 			"targets": [
 				"desktop",
 				"mobile"

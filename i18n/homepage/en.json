@@ -84,5 +84,8 @@
 	"growthexperiments-specialimpact-title": "Impact",
 	"growthexperiments-specialimpact-showing-for-other-user": "Showing impact data for $1",
 	"growthexperiments-specialimpact-invalid-username": "Missing or invalid username.",
-	"growthexperiments-homepage-enable-preference": "To enable the newcomer homepage, visit your \"Newcomer homepage\" settings in [[Special:Preferences#mw-prefsection-personal-homepage|Preferences]]."
+	"growthexperiments-homepage-enable-preference": "To enable the newcomer homepage, visit your \"Newcomer homepage\" settings in [[Special:Preferences#mw-prefsection-personal-homepage|Preferences]].",
+	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|You}} have not yet made any contributions.",
+	"growthexperiments-homepage-contributions-zero-subtitle": "Visit {{GENDER:$1|your}} [$2 homepage] to get started with editing!",
+	"growthexperiments-homepage-contributions-zero-button": "Go to {{GENDER:$1|your}} homepage"
 }

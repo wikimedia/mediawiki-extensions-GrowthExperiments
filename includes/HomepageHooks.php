@@ -17,11 +17,13 @@ use MediaWiki\Minerva\Menu\AuthMenuEntry;
 use MediaWiki\Minerva\Menu\Group;
 use MediaWiki\Minerva\Menu\HomeMenuEntry;
 use MediaWiki\Minerva\SkinOptions;
+use OOUI\ButtonWidget;
 use OutputPage;
 use OOUI\IconWidget;
 use RequestContext;
 use Skin;
 use SkinTemplate;
+use SpecialContributions;
 use SpecialPage;
 use Title;
 use User;
@@ -334,6 +336,74 @@ class HomepageHooks {
 					}
 				}
 			}
+		}
+	}
+
+	private static function getZeroContributionsHtml( SpecialPage $sp, $wrapperClasses = '' ) {
+		$linkUrl = SpecialPage::getTitleFor( 'Homepage' )
+			->getFullUrl( [ 'source' => 'specialcontributions' ] );
+		return Html::rawElement( 'div', [ 'class' => 'mw-ge-contributions-zero ' . $wrapperClasses ],
+			Html::element( 'p', [ 'class' => 'mw-ge-contributions-zero-title' ],
+				$sp->msg( 'growthexperiments-homepage-contributions-zero-title' )
+					->params( $sp->getUser()->getName() )->text()
+			) .
+			Html::rawElement( 'p', [ 'class' => 'mw-ge-contributions-zero-subtitle' ],
+				$sp->msg( 'growthexperiments-homepage-contributions-zero-subtitle' )
+					->params( $sp->getUser()->getName(), $linkUrl )->parse()
+			) .
+			new ButtonWidget( [
+				'label' => $sp->msg( 'growthexperiments-homepage-contributions-zero-button' )
+					->params( $sp->getUser()->getName() )->text(),
+				'href' => $linkUrl,
+				'flags' => [ 'primary', 'progressive' ]
+			] )
+		);
+	}
+
+	/**
+	 * @param int $userId
+	 * @param User $user
+	 * @param SpecialContributions $sp
+	 */
+	public static function onSpecialContributionsBeforeMainOutput(
+		$userId, User $user, SpecialContributions $sp
+	) {
+		if (
+			$user->equals( $sp->getUser() ) &&
+			$user->getEditCount() === 0 &&
+			self::isHomepageEnabled( $user )
+		) {
+			$out = $sp->getOutput();
+			$out->enableOOUI();
+			$out->addModuleStyles( 'ext.growthExperiments.Homepage.contribs.styles' );
+			$out->addHTML( self::getZeroContributionsHtml( $sp ) );
+		}
+	}
+
+	/**
+	 * @param SpecialPage $sp
+	 * @param string $subPage
+	 */
+	public static function onSpecialPageAfterExecute( SpecialPage $sp, $subPage ) {
+		// Can't use $sp instanceof \SpecialMobileContributions because that fails if
+		// MobileFrontend is not installed
+		if ( get_class( $sp ) !== 'SpecialMobileContributions' ) {
+			return;
+		}
+		$user = User::newFromName( $subPage, false );
+		if (
+			$sp->getUser()->equals( $user ) &&
+			$sp->getUser()->getEditCount() === 0 &&
+			self::isHomepageEnabled( $sp->getUser() )
+		) {
+			$out = $sp->getOutput();
+			$out->enableOOUI();
+			$out->addModuleStyles( 'ext.growthExperiments.Homepage.contribs.styles' );
+			$out->addHTML(
+				Html::rawElement( 'div', [ 'class' => 'content-unstyled' ],
+					self::getZeroContributionsHtml( $sp, 'warningbox' )
+				)
+			);
 		}
 	}
 
