@@ -21,11 +21,19 @@ class WelcomeSurvey {
 	private $context;
 
 	/**
+	 * @var bool
+	 */
+	private $allowFreetext;
+
+	/**
 	 * WelcomeSurvey constructor.
 	 * @param IContextSource $context
+	 * @throws \ConfigException
 	 */
 	public function __construct( IContextSource $context ) {
 		$this->context = $context;
+		$this->allowFreetext =
+			$this->context->getConfig()->get( 'WelcomeSurveyAllowFreetextResponses' );
 	}
 
 	/**
@@ -33,6 +41,7 @@ class WelcomeSurvey {
 	 * false they are not part of any experiment.
 	 *
 	 * @return bool|string
+	 * @throws \ConfigException
 	 */
 	public function getGroup() {
 		$groups = $this->context->getConfig()->get( 'WelcomeSurveyExperimentalGroups' );
@@ -92,8 +101,7 @@ class WelcomeSurvey {
 			$questionNames = array_diff( $questionNames, [ 'email' ] );
 		}
 
-		$allowFreetext = $this->context->getConfig()->get( 'WelcomeSurveyAllowFreetextResponses' );
-		if ( $allowFreetext && $groups[ $group ][ 'format' ] !== 'popup' ) {
+		if ( $this->allowFreetext && $groups[ $group ][ 'format' ] !== 'popup' ) {
 			if ( in_array( 'reason', $questionNames ) ) {
 				// Insert reason-other after reason
 				array_splice( $questionNames, array_search( 'reason', $questionNames ) + 1, 0,
@@ -124,14 +132,13 @@ class WelcomeSurvey {
 	 * @return array
 	 */
 	protected function getQuestionBank() : array {
-		$allowFreetext = $this->context->getConfig()->get( 'WelcomeSurveyAllowFreetextResponses' );
 		// When free text is enabled, add other-* settings and the reason-other question
-		$reasonOtherSettings = $allowFreetext ? [
+		$reasonOtherSettings = $this->allowFreetext ? [
 			'other-message' => 'welcomesurvey-question-reason-option-other-label',
 			'other-placeholder-message' => 'welcomesurvey-question-reason-other-placeholder',
 			'other-size' => 255
 		] : [];
-		$reasonOtherQuestion = $allowFreetext ? [
+		$reasonOtherQuestion = $this->allowFreetext ? [
 			'reason-other' => [
 				'type' => 'text',
 				'placeholder-message' => 'welcomesurvey-question-reason-other-placeholder',
@@ -141,7 +148,7 @@ class WelcomeSurvey {
 			]
 		] : [];
 		// When free text is disabled, add an "Other" option to the reason question
-		$reasonOtherOption = $allowFreetext ? [] : [
+		$reasonOtherOption = $this->allowFreetext ? [] : [
 			"welcomesurvey-question-reason-option-other-no-freetext-label" => "other",
 		];
 		return [
@@ -191,7 +198,7 @@ class WelcomeSurvey {
 			],
 			"topics-other-js" => [
 				"type" => "multiselect",
-				"allowArbitrary" => $allowFreetext,
+				"allowArbitrary" => $this->allowFreetext,
 				"placeholder-message" => "welcomesurvey-question-topics-other-placeholder",
 				"options-messages" => [
 					"welcomesurvey-question-topics-option-entertainment" => "entertainment",
