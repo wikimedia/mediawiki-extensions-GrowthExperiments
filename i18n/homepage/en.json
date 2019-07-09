@@ -87,5 +87,10 @@
 	"growthexperiments-homepage-enable-preference": "To enable the newcomer homepage, visit your \"Newcomer homepage\" settings in [[Special:Preferences#mw-prefsection-personal-homepage|Preferences]].",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|You}} have not yet made any contributions.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "Visit {{GENDER:$1|your}} [$2 homepage] to get started with editing!",
-	"growthexperiments-homepage-contributions-zero-button": "Go to {{GENDER:$1|your}} homepage"
+	"growthexperiments-homepage-contributions-zero-button": "Go to {{GENDER:$1|your}} homepage",
+	"growthexperiments-tour-welcome-title": "Welcome to {{GENDER:$1|your}} homepage!",
+	"growthexperiments-tour-welcome-description": "{{GENDER:$1|You}} can always click on {{GENDER:$1|your}} username to return here.",
+	"growthexperiments-tour-discovery-title": "Get started here!",
+	"growthexperiments-tour-discovery-description": "Click on {{GENDER:$1|your}} username to visit {{GENDER:$1|your}} homepage.",
+	"growthexperiments-homepage-welcomesurvey-default-close": "Go to {{GENDER:$1|your}} homepage"
 }

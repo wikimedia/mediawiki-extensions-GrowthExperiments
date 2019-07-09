@@ -16,6 +16,7 @@ use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\Tutorial;
+use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use Html;
 use MediaWiki\Logger\LoggerFactory;
@@ -100,6 +101,11 @@ class SpecialHomepage extends SpecialPage {
 				$renderedModules = $this->renderMobileSummary();
 			}
 		} else {
+			Util::maybeAddGuidedTour(
+				$out,
+				TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME,
+				'ext.guidedTour.tour.homepage_welcome'
+			);
 			$renderedModules = $this->renderDesktop();
 		}
 

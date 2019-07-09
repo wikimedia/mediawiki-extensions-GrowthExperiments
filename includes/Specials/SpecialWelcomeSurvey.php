@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Specials;
 
 use \FormSpecialPage;
+use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Html\HTMLMultiSelectFieldAllowArbitrary;
 use GrowthExperiments\WelcomeSurvey;
 use Html;
@@ -197,7 +198,30 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 
 	private function showConfirmationPage( $to, $query ) {
 		$this->getOutput()->setPageTitle( $this->msg( 'welcomesurvey-save-confirmation-title' ) );
-		$title = Title::newFromText( $to ) ?: Title::newMainPage();
+		return HomepageHooks::isHomepageEnabled( $this->getUser() ) ?
+			$this->showHomepageAwareConfirmationPage( $to, $query ) :
+			$this->showDefaultConfirmationPage( $to, $query );
+	}
+
+	private function showHomepageAwareConfirmationPage( $to, $query ) {
+		$title = Title::newFromText( $to ) ?: \SpecialPage::getTitleFor( 'Homepage' );
+		if ( $title->isMainPage() ) {
+			$title = \SpecialPage::getTitleFor( 'Homepage' );
+		}
+
+		$this->getOutput()->addHTML(
+			Html::rawElement(
+				'div',
+				[ 'class' => 'welcomesurvey-confirmation' ],
+				$this->msg( 'welcomesurvey-save-confirmation-text' )
+					->rawParams( $this->buildPrivacyPolicyLink() )
+					->parseAsBlock() .
+				$this->getHomepageAwareActionButtons( $title, $query )
+			)
+		);
+	}
+
+	private function showDefaultConfirmationPage( $to, $query ) {
 		$this->getOutput()->addHTML(
 			Html::rawElement(
 				'div',
@@ -212,18 +236,61 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 				) .
 				$this->msg( 'welcomesurvey-sidebar-editing-text' )->parseAsBlock() .
 				$this->buildGettingStartedLinks( 'confirmation' ) .
-				Html::rawElement(
-					'div',
-					[ 'class' => 'welcomesurvey-confirmation-buttons' ],
-					Html::linkButton(
-						$this->msg( 'welcomesurvey-close-btn', $title->getPrefixedText() )->text(),
-						[
-							'href' => $title->getLinkURL( $query ),
-							'class' => 'mw-ui-button mw-ui-progressive'
-						]
-					)
-				)
+				$this->getCloseButtonHtml( Title::newFromText( $to ) ?: Title::newMainPage(), $query )
 			)
+		);
+	}
+
+	/**
+	 * @param Title $title
+	 * @param string $query
+	 * @return string
+	 * @throws \ConfigException
+	 */
+	private function getCloseButtonHtml( Title $title, $query ) {
+		return $this->getConfirmationButtonsWrapper(
+			Html::linkButton(
+				$this->msg( 'welcomesurvey-close-btn', $title->getPrefixedText() )->text(),
+				[
+					'href' => $title->getLinkURL( $query ),
+					'class' => 'mw-ui-button mw-ui-progressive'
+				]
+			)
+		);
+	}
+
+	private function getConfirmationButtonsWrapper( $rawHtml ) {
+		return Html::rawElement(
+			'div',
+			[ 'class' => 'welcomesurvey-confirmation-buttons' ],
+			$rawHtml
+		);
+	}
+
+	private function getHomepageAwareActionButtons( Title $title, $query ) {
+		if ( $title->isSpecial( 'Homepage' ) ) {
+			return $this->getConfirmationButtonsWrapper( $this->getHomepageButton() );
+		}
+		return $this->getConfirmationButtonsWrapper(
+			Html::linkButton( $this->msg( 'welcomesurvey-close-btn', $title )->text(), [
+				'href' => $title->getLinkURL( $query ),
+				'class' => 'mw-ui-button mw-ui-safe'
+			] ) .
+			$this->getHomepageButton()
+		);
+	}
+
+	private function getHomepageButton() {
+		return Html::linkButton(
+			$this->msg( 'growthexperiments-homepage-welcomesurvey-default-close',
+				$this->getUser()->getName()
+			)->text(),
+			[
+				'href' => \SpecialPage::getTitleFor( 'Homepage' )->getLinkURL(
+					[ 'source' => 'specialwelcomesurvey' ]
+				),
+				'class' => 'mw-ui-button mw-ui-progressive mw-ge-welcomesurvey-homepage-button'
+			]
 		);
 	}
 

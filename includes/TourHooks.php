@@ -12,6 +12,26 @@ class TourHooks {
 	const TOUR_COMPLETED_HELP_PANEL = 'growthexperiments-tour-help-panel';
 	const TOUR_COMPLETED_HOMEPAGE_MENTORSHIP = 'growthexperiments-tour-homepage-mentorship';
 	const TOUR_COMPLETED_HOMEPAGE_HELP = 'growthexperiments-tour-homepage-help';
+	const TOUR_COMPLETED_HOMEPAGE_WELCOME = 'growthexperiments-tour-homepage-welcome';
+	const TOUR_COMPLETED_HOMEPAGE_DISCOVERY = 'growthexperiments-tour-homepage-discovery';
+
+	/**
+	 * @param \OutputPage &$out
+	 * @param \Skin &$skin
+	 */
+	public static function onBeforePageDisplay( \OutputPage &$out, \Skin &$skin ) {
+		// Show the discovery tour if the user isn't on WelcomeSurvey or Homepage.
+		// If they have already seen the welcome tour, don't show the discovery one.
+		if ( !$out->getTitle()->isSpecial( 'WelcomeSurvey' ) &&
+			 !$out->getTitle()->isSpecial( 'Homepage' ) &&
+			 !$out->getUser()->getBoolOption( self::TOUR_COMPLETED_HOMEPAGE_WELCOME ) ) {
+			Util::maybeAddGuidedTour(
+				$out,
+				self::TOUR_COMPLETED_HOMEPAGE_DISCOVERY,
+				'ext.guidedTour.tour.homepage_discovery'
+			);
+		}
+	}
 
 	/**
 	 * Register ResourceLoader modules with dynamic dependencies.
@@ -53,7 +73,23 @@ class TourHooks {
 					'growthexperiments-tour-mentor-response-tip-personal-text',
 					'growthexperiments-tour-response-button-okay'
 				],
-			]
+			],
+			'ext.guidedTour.tour.homepage_welcome' => $moduleTemplate + [
+				'scripts' => [ 'homepage/ext.growthExperiments.homepage.welcome.tour.js' ],
+				'messages' => [
+					'growthexperiments-tour-welcome-title',
+					'growthexperiments-tour-welcome-description',
+					'growthexperiments-tour-response-button-okay'
+				],
+			],
+			'ext.guidedTour.tour.homepage_discovery' => $moduleTemplate + [
+				'scripts' => [ 'homepage/ext.growthExperiments.homepage.discovery.tour.js' ],
+				'messages' => [
+					'growthexperiments-tour-discovery-title',
+					'growthexperiments-tour-discovery-description',
+					'growthexperiments-tour-response-button-okay'
+				]
+			],
 		];
 		$resourceLoader->register( $modules );
 	}
@@ -61,7 +97,7 @@ class TourHooks {
 	/**
 	 * @return bool
 	 */
-	private static function growthTourDependenciesLoaded() {
+	public static function growthTourDependenciesLoaded() {
 		$extensionRegistry = \ExtensionRegistry::getInstance();
 		return $extensionRegistry->isLoaded( 'GuidedTour' ) &&
 			   $extensionRegistry->isLoaded( 'Echo' ) &&
@@ -91,6 +127,12 @@ class TourHooks {
 			$preferences[self::TOUR_COMPLETED_HOMEPAGE_HELP] = [
 				'type' => 'api',
 			];
+			$preferences[self::TOUR_COMPLETED_HOMEPAGE_WELCOME] = [
+				'type' => 'api',
+			];
+			$preferences[self::TOUR_COMPLETED_HOMEPAGE_DISCOVERY] = [
+				'type' => 'api',
+			];
 		}
 	}
 
@@ -112,7 +154,9 @@ class TourHooks {
 		if ( HomepageHooks::isHomepageEnabled() ) {
 			$wgDefaultUserOptions += [
 				self::TOUR_COMPLETED_HOMEPAGE_HELP => false,
-				self::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP => false
+				self::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP => false,
+				self::TOUR_COMPLETED_HOMEPAGE_WELCOME => false,
+				self::TOUR_COMPLETED_HOMEPAGE_DISCOVERY => false,
 			];
 		}
 	}

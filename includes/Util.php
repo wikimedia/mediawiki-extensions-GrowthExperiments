@@ -86,4 +86,20 @@ class Util {
 	public static function isMobile( Skin $skin ) {
 		return $skin instanceof SkinMinerva;
 	}
+
+	/**
+	 * Add the guided tour module if the user is logged-in, hasn't seen the tour already,
+	 * and the tour dependencies are loaded.
+	 *
+	 * @param \OutputPage $out
+	 * @param string $pref
+	 * @param string|string[] $modules
+	 */
+	public static function maybeAddGuidedTour( \OutputPage $out, $pref, $modules ) {
+		if ( $out->getUser()->isLoggedIn() &&
+			!$out->getUser()->getBoolOption( $pref ) &&
+			TourHooks::growthTourDependenciesLoaded() ) {
+			$out->addModules( $modules );
+		}
+	}
 }

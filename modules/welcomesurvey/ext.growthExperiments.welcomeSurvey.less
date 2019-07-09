@@ -72,6 +72,15 @@
 			border-top: @colorGray12 solid 1px;
 			padding-top: 1em;
 			margin-top: 2em;
+
+			// Target the "Go to homepage" button when two buttons are displayed.
+			a:nth-of-type( 2 ) {
+				float: right;
+			}
+		}
+
+		p:first-of-type {
+			font-weight: bold;
 		}
 	}
 
