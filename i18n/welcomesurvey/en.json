@@ -32,6 +32,7 @@
 	"welcomesurvey-question-reason-option-edit-info-label": "To add information to a Wikipedia article",
 	"welcomesurvey-question-reason-option-new-page-label": "To create a new Wikipedia article",
 	"welcomesurvey-question-reason-option-read-label": "To read Wikipedia",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Other",
 	"welcomesurvey-question-reason-option-other-label": "Other (please describe)",
 	"welcomesurvey-question-reason-other-placeholder": "Enter other reason...",
 	"welcomesurvey-question-mentor-info": "We are considering starting a program for more experienced editors to help newer users with editing. Are you interested in being contacted to get help with editing?",
