@@ -12,6 +12,7 @@ use GrowthExperiments\Mentor;
 use Html;
 use IContextSource;
 use MWTimestamp;
+use MediaWiki\MediaWikiServices;
 use OOUI\ButtonWidget;
 use OOUI\IconWidget;
 use User;
@@ -124,8 +125,12 @@ class Mentorship extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getJsConfigVars() {
-		return [ 'GEHomepageMentorshipMentorName' => $this->getMentor()->getName() ] +
-			HelpPanel::getUserEmailConfigVars( $this->getContext()->getUser() );
+		$mentor = $this->getMentor();
+		$genderCache = MediaWikiServices::getInstance()->getGenderCache();
+		return [
+			'GEHomepageMentorshipMentorName' => $mentor->getName(),
+			'GEHomepageMentorshipMentorGender' => $genderCache->getGenderOf( $mentor, __METHOD__ )
+		] + HelpPanel::getUserEmailConfigVars( $this->getContext()->getUser() );
 	}
 
 	/**

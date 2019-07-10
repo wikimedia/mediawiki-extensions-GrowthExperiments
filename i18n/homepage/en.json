@@ -49,7 +49,7 @@
 	"growthexperiments-tour-helpdesk-response-tip-title": "Help desk alerts",
 	"growthexperiments-tour-response-tip-text": "When {{GENDER:$1|your}} question is answered, {{GENDER:$1|you}} will have a new alert here.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Mentor alerts",
-	"growthexperiments-tour-mentor-response-tip-personal-text": "When {{GENDER:$1|your}} mentor responds, {{GENDER:$1|you}} will have a new alert here.",
+	"growthexperiments-tour-mentor-response-tip-personal-text": "When {{GENDER:$1|your}} {{GENDER:$2|mentor}} responds, {{GENDER:$1|you}} will have a new alert here.",
 	"growthexperiments-tour-response-button-okay": "Got it",
 	"tag-help_module_question": "Help module question",
 	"tag-help_module_question-description": "Edit made from the homepage help module's post a question feature",

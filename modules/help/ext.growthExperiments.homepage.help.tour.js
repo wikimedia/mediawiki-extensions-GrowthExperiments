@@ -7,7 +7,9 @@
 	dashboardTour.firstStep( {
 		name: 'incomingmessage',
 		titlemsg: 'growthexperiments-tour-helpdesk-response-tip-title',
-		descriptionmsg: 'growthexperiments-tour-response-tip-text',
+		description: mw.message( 'growthexperiments-tour-response-tip-text' )
+			.params( [ mw.user ] )
+			.parse(),
 		attachTo: '#pt-notifications-alert',
 		position: 'bottom',
 		overlay: false,

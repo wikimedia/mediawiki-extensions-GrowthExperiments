@@ -7,7 +7,9 @@
 	mentorTour.firstStep( {
 		name: 'incomingmessage',
 		titlemsg: 'growthexperiments-tour-mentor-response-tip-personal-title',
-		descriptionmsg: 'growthexperiments-tour-mentor-response-tip-personal-text',
+		description: mw.message( 'growthexperiments-tour-mentor-response-tip-personal-text' )
+			.params( [ mw.user, mw.config.get( 'GEHomepageMentorshipMentorGender' ) ] )
+			.parse(),
 		attachTo: '#pt-notifications-alert',
 		position: 'bottom',
 		overlay: false,
