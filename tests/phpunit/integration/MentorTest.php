@@ -120,20 +120,32 @@ class MentorTest extends MediaWikiTestCase {
 
 	/**
 	 * @covers \GrowthExperiments\Mentor::getIntroText
+	 * @dataProvider provideCustomMentorText
 	 */
-	public function testRenderCustomMentorText() {
+	public function testRenderMentorText( $mentorsList, $expected ) {
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
 		$mentorUser = $this->getTestUser( 'sysop' )->getUser();
 		$mentee = $this->getMutableTestUser()->getUser();
-		$this->insertPage( 'MentorsList',
-			'[[User:' . $mentorUser->getName() . ']] | This is a sample text.' );
+		$this->insertPage( 'MentorsList', str_replace( '$1', $mentorUser->getName(), $mentorsList ) );
 		$mentee->setOption( Mentor::MENTOR_PREF, $mentorUser->getId() );
 		$mentee->saveSettings();
 
 		$mentor = Mentor::newFromMentee( $mentee );
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $mentee );
-		$this->assertContains( 'This is a sample text.', $mentor->getIntroText( $context ) );
+		$this->assertEquals( $expected, $mentor->getIntroText( $context ) );
+	}
+
+	public function provideCustomMentorText() {
+		$fallback = 'This experienced user knows you\'re new and can help you with editing.';
+		return [
+			[ '[[User:$1]] | This is a sample text.', '"This is a sample text."' ],
+			[ '[[User:$1]]|This is a sample text.', '"This is a sample text."' ],
+			[ "[[User:$1]]|This is a sample text.\n[[User:Foobar]]|More text", '"This is a sample text."' ],
+			[ '[[User:$1]] This is a sample text', $fallback ],
+			[ '[[User:$1]]', $fallback ],
+			[ "[[User:\$1]]|\n[[User:Foobar]]|This is a sample text.", $fallback ]
+		];
 	}
 
 	/**

@@ -142,8 +142,9 @@ class Mentor {
 	 * @throws \MWException
 	 */
 	private function getCustomMentorIntroText( IContextSource $context ) {
+		// Use \h (horizontal whitespace) instead of \s (whitespace) to avoid matching newlines (T227535)
 		preg_match(
-			sprintf( '/:%s]]\s*\|\s*(.*)/', preg_quote( $this->getMentorUser()->getName(), '/' ) ),
+			sprintf( '/:%s]]\h*\|\h*(.*)/', preg_quote( $this->getMentorUser()->getName(), '/' ) ),
 			$this->getMentorsPageContent( $context ),
 			$matches
 		);
