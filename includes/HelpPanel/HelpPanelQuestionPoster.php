@@ -7,6 +7,8 @@ use GrowthExperiments\HelpPanel;
 
 class HelpPanelQuestionPoster extends QuestionPoster {
 
+	const QUESTION_PREF = 'growthexperiments-helppanel-questions';
+
 	/**
 	 * @inheritDoc
 	 */
@@ -40,6 +42,6 @@ class HelpPanelQuestionPoster extends QuestionPoster {
 	 * @inheritDoc
 	 */
 	protected function getQuestionStoragePref() {
-		return '';
+		return self::QUESTION_PREF;
 	}
 }

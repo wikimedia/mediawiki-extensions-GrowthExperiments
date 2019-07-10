@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments;
 
+use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
 use OutputPage;
 use ResourceLoaderContext;
 use RequestContext;
@@ -24,6 +25,9 @@ class HelpPanelHooks {
 				'type' => 'toggle',
 				'section' => 'editing/editor',
 				'label-message' => self::HELP_PANEL_PREFERENCES_TOGGLE
+			];
+			$preferences[HelpPanelQuestionPoster::QUESTION_PREF] = [
+				'type' => 'api',
 			];
 		}
 	}
