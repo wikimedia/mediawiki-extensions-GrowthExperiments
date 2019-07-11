@@ -18,11 +18,19 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 	public function testCheckContent() {
 		$questionPoster = $this->getMockBuilder( QuestionPoster::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'checkContent', 'prepare' ] )
+			->setMethods( [
+				'makeWikitextContent',
+				'checkContent',
+				'loadExistingQuestions',
+				'setSectionHeaderWithTimestamp',
+				'getTargetContentModel',
+			] )
 			->getMockForAbstractClass();
 		$questionPoster->method( 'checkContent' )
 			->willReturn( \StatusValue::newFatal( 'apierror-missingcontent-revid' ) );
-		$questionPoster->method( 'prepare' )->willReturn( null );
+		$questionPoster->method( 'makeWikitextContent' )->willReturn( null );
+		$questionPoster->method( 'setSectionHeaderWithTimestamp' )->willReturn( null );
+		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
 
 		/** @var \StatusValue $status */
 		$status = $questionPoster->submit();
@@ -40,10 +48,18 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 	public function testNullContent() {
 		$questionPoster = $this->getMockBuilder( QuestionPoster::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'getContent', 'prepare', 'getPageUpdater', 'grabParentRevision' ] )
+			->setMethods( [
+				'makeWikitextContent',
+				'setSectionHeaderWithTimestamp',
+				'loadExistingQuestions',
+				'getPageUpdater',
+				'grabParentRevision',
+				'getTargetContentModel',
+			] )
 			->getMockForAbstractClass();
-		$questionPoster->method( 'prepare' )->willReturn( null );
-		$questionPoster->method( 'getContent' )->willReturn( null );
+		$questionPoster->method( 'makeWikitextContent' )->willReturn( null );
+		$questionPoster->method( 'setSectionHeaderWithTimestamp' )->willReturn( null );
+		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
 		$pageUpdaterMock = $this->getMockBuilder( PageUpdater::class )
 			->disableOriginalConstructor()
 			->setMethods( [ 'grabParentRevision' ] )
@@ -70,7 +86,6 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 			'If content is null, submit short-circuits'
 		);
 
-		$questionPoster->method( 'getContent' )->willReturn( 'foo' );
 		/** @var \StatusValue $status */
 		$status = $questionPoster->submit();
 		$this->assertEquals(
@@ -87,9 +102,18 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 	public function testCheckUserPermissions() {
 		$questionPoster = $this->getMockBuilder( QuestionPoster::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'checkUserPermissions', 'checkContent', 'prepare' ] )
+			->setMethods( [
+				'makeWikitextContent',
+				'checkUserPermissions',
+				'loadExistingQuestions',
+				'checkContent',
+				'setSectionHeaderWithTimestamp',
+				'getTargetContentModel',
+			] )
 			->getMockForAbstractClass();
-		$questionPoster->method( 'prepare' )->willReturn( null );
+		$questionPoster->method( 'makeWikitextContent' )->willReturn( null );
+		$questionPoster->method( 'setSectionHeaderWithTimestamp' )->willReturn( null );
+		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
 		$questionPoster->method( 'checkUserPermissions' )->willReturn(
 			\StatusValue::newFatal( '' )
 		);
@@ -114,12 +138,15 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 			->setMethods( [
 				'checkUserPermissions',
 				'checkContent',
-				'getContent',
-				'prepare',
-				'runEditFilterMergedContentHook'
+				'loadExistingQuestions',
+				'makeWikitextContent',
+				'setSectionHeaderWithTimestamp',
+				'runEditFilterMergedContentHook',
+				'getTargetContentModel',
 			] )
 			->getMockForAbstractClass();
-		$questionPoster->method( 'prepare' )->willReturn( null );
+		$questionPoster->method( 'setSectionHeaderWithTimestamp' )->willReturn( null );
+		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
 		$questionPoster->method( 'checkUserPermissions' )->willReturn(
 			\StatusValue::newGood( '' )
 		);
@@ -129,7 +156,7 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 		$contentMock = $this->getMockBuilder( \WikitextContent::class )
 			->disableOriginalConstructor()
 			->getMock();
-		$questionPoster->method( 'getContent' )
+		$questionPoster->method( 'makeWikitextContent' )
 			->willReturn( $contentMock );
 		$questionPoster->expects( $this->once() )
 			->method( 'runEditFilterMergedContentHook' )

@@ -2,10 +2,12 @@
 
 namespace GrowthExperiments\HelpPanel;
 
+use Flow\Container;
 use FormatJson;
 use JobQueueGroup;
 use Language;
 use MediaWiki\Logger\LoggerFactory;
+use RequestContext;
 use TextContent;
 use UserOptionsUpdateJob;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -113,18 +115,39 @@ class QuestionStore {
 		$needsUpdate = false;
 		foreach ( $questionRecords as $questionRecord ) {
 			$checkedRecord = clone $questionRecord;
-			$checkedRecord->setVisible( $this->isRevisionVisible( $checkedRecord ) );
-			$checkedRecord->setArchived( !$this->questionExistsOnPage( $checkedRecord ) );
-			// b/c, archiveUrl is now set when first added to the store.
-			// todo: Remove with wmf.5
-			if ( $checkedRecord->isArchived() && !$checkedRecord->getArchiveUrl() ) {
-				$checkedRecord = $this->assignArchiveUrl( $checkedRecord );
+
+			if ( $questionRecord->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
+				$checkedRecord->setVisible( $this->isRevisionVisible( $checkedRecord ) );
+				$checkedRecord->setArchived( !$this->questionExistsOnPage( $checkedRecord ) );
+				// b/c, archiveUrl is now set when first added to the store.
+				// todo: Remove with wmf.5
+				if ( $checkedRecord->isArchived() && !$checkedRecord->getArchiveUrl() ) {
+					$checkedRecord = $this->assignArchiveUrl( $checkedRecord );
+				}
+				if ( !$checkedRecord->getTimestamp() ) {
+					// Some records did not have timestamps (T223338); backfill the
+					// timestamp if it's not set.
+					$checkedRecord->setTimestamp( wfTimestamp() );
+				}
+			} elseif ( \ExtensionRegistry::getInstance()->isLoaded( 'Flow' ) &&
+				$questionRecord->getContentModel() === CONTENT_MODEL_FLOW_BOARD ) {
+				$workflowLoaderFactory = Container::get( 'factory.loader.workflow' );
+				$topicTitle = Title::newFromText( $checkedRecord->getRevId(), NS_TOPIC );
+				$loader = $workflowLoaderFactory->createWorkflowLoader( $topicTitle );
+				$topicBlock = $loader->getBlocks()['topic'];
+				$topicBlock->init( RequestContext::getMain(), 'view-topic' );
+				$output = $topicBlock->renderApi( [] );
+				$deletedOrSuppressed = isset( $output['errors']['permissions'] );
+				$checkedRecord->setVisible( !$deletedOrSuppressed );
+				if ( !$deletedOrSuppressed ) {
+					$topicRoot = $output['roots'][0];
+					$topicRootRev = $output['posts'][$topicRoot][0];
+					$topic = $output['revisions'][$topicRootRev];
+					$checkedRecord->setArchived( ( $topic['moderateState'] ?? '' ) === 'hide' );
+					$checkedRecord->setArchiveUrl( $checkedRecord->getResultUrl() );
+				}
 			}
-			if ( !$checkedRecord->getTimestamp() ) {
-				// Some records did not have timestamps (T223338); backfill the
-				// timestamp if it's not set.
-				$checkedRecord->setTimestamp( wfTimestamp() );
-			}
+
 			$checkedQuestionRecords[] = $checkedRecord;
 			if ( $questionRecord->jsonSerialize() !== $checkedRecord->jsonSerialize() ) {
 				$needsUpdate = true;

@@ -13,13 +13,15 @@ class QuestionRecord implements JsonSerializable {
 	private $timestamp;
 	private $isArchived;
 	private $isVisible;
+	private $contentModel;
 
 	/**
 	 * @param string $questionText
 	 * @param string $sectionHeader
-	 * @param int $revId
+	 * @param mixed $revId
 	 * @param int $timestamp
 	 * @param string $resultUrl
+	 * @param string $contentModel
 	 * @param string $archiveUrl
 	 * @param bool $isArchived
 	 * @param bool $isVisible
@@ -30,6 +32,7 @@ class QuestionRecord implements JsonSerializable {
 		$revId,
 		$timestamp,
 		$resultUrl,
+		$contentModel,
 		$archiveUrl = '',
 		$isArchived = false,
 		$isVisible = true
@@ -38,6 +41,7 @@ class QuestionRecord implements JsonSerializable {
 		$this->sectionHeader = $sectionHeader;
 		$this->revId = $revId;
 		$this->resultUrl = $resultUrl;
+		$this->contentModel = $contentModel;
 		$this->timestamp = $timestamp;
 		$this->isArchived = $isArchived;
 		$this->isVisible = $isVisible;
@@ -73,7 +77,7 @@ class QuestionRecord implements JsonSerializable {
 	}
 
 	/**
-	 * @return int
+	 * @return mixed
 	 */
 	public function getRevId() {
 		return $this->revId;
@@ -99,6 +103,7 @@ class QuestionRecord implements JsonSerializable {
 			'sectionHeader' => $this->getSectionHeader(),
 			'revId' => $this->getRevId(),
 			'resultUrl' => $this->getResultUrl(),
+			'contentModel' => $this->getContentModel(),
 			'archiveUrl' => $this->getArchiveUrl(),
 			'timestamp' => $this->getTimestamp(),
 			'isArchived' => $this->isArchived(),
@@ -117,6 +122,7 @@ class QuestionRecord implements JsonSerializable {
 			$content['revId'] ?? 0,
 			$content['timestamp'] ?? wfTimestamp(),
 			$content['resultUrl'] ?? '',
+			$content['contentModel'] ?? CONTENT_MODEL_WIKITEXT,
 			$content['archiveUrl'] ?? '',
 			$content['isArchived'] ?? false,
 			$content['isVisible'] ?? true
@@ -163,6 +169,13 @@ class QuestionRecord implements JsonSerializable {
 	 */
 	public function setTimestamp( $timestamp ) {
 		$this->timestamp = $timestamp;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getContentModel() {
+		return $this->contentModel;
 	}
 
 }

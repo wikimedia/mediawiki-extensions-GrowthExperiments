@@ -53,7 +53,8 @@ class QuestionStoreTest extends MediaWikiTestCase {
 			'bar',
 			123,
 			$timestamp,
-			'https://mediawiki.org'
+			'https://mediawiki.org',
+			CONTENT_MODEL_WIKITEXT
 		);
 		$questionStore->add( $question );
 		$context->setUser( $user->getInstanceForUpdate() );
@@ -73,6 +74,7 @@ class QuestionStoreTest extends MediaWikiTestCase {
 				'timestamp' => $timestamp,
 				'isArchived' => false,
 				'isVisible' => true,
+				'contentModel' => CONTENT_MODEL_WIKITEXT,
 			],
 			$loadedQuestion->jsonSerialize()
 		);
