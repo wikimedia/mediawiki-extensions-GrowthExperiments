@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\HelpPanel\QuestionRecord;
-use MediaWikiTestCase;
 
 class QuestionRecordTest extends \MediaWikiUnitTestCase {
 
