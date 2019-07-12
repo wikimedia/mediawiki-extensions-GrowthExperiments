@@ -173,9 +173,30 @@ class HomepageHooks {
 		}
 
 		if ( self::userHasPersonalToolsPrefEnabled( $user ) ) {
-			$personal_urls['userpage' ]['href'] = self::getPersonalToolsHomepageLinkUrl(
+			$personal_urls['userpage']['href'] = self::getPersonalToolsHomepageLinkUrl(
 				$title->getNamespace()
 			);
+			// Make the link blue
+			unset( $personal_urls['userpage']['class'] );
+			// Remove the "this page doesn't exist" part of the tooltip
+			$personal_urls['userpage' ]['exists'] = true;
+		}
+	}
+
+	/**
+	 * Change the tooltip of the userpage link when it point to Special:Homepage
+	 *
+	 * @param string &$lcKey message key to check and possibly convert
+	 * @throws ConfigException
+	 */
+	public static function onMessageCacheGet( &$lcKey ) {
+		$user = RequestContext::getMain()->getUser();
+		if (
+			$lcKey === 'tooltip-pt-userpage' &&
+			self::isHomepageEnabled( $user ) &&
+			self::userHasPersonalToolsPrefEnabled( $user )
+		) {
+			$lcKey = 'tooltip-pt-homepage';
 		}
 	}
 
