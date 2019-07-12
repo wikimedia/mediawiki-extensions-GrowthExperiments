@@ -3,13 +3,14 @@
 		"authors": [
 			"Martin Urbanec",
 			"Dvorapa",
-			"Patriccck"
+			"Patriccck",
+			"Matěj Suchánek"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Vítejte}}, $1!",
 	"welcomesurvey-save-confirmation-title": "Děkujeme! Vaše odpovědi byly uloženy.",
 	"welcomesurvey-save-confirmation-text": "Vaše odpovědi budou použity pro vylepšení Wikipedie pro všechny nováčky. \n\nAbyste se dozvěděli více o tom, jak jsou odpovědi používány, můžete se podívat na $1 dotazníku.",
-	"welcomesurvey-subtitle": "Pomozte nám vylepšit Wikipedii pro lidi, jako jste vy, pomocí odpovědi na několik volitelných otázek",
+	"welcomesurvey-subtitle": "Pomozte nám vylepšit Wikipedii pro lidi, jako jste vy, pomocí odpovědi na několik volitelných otázek.",
 	"welcomesurvey-save-btn": "Dokončit",
 	"welcomesurvey-skip-btn": "Přeskočit tento dotazník",
 	"welcomesurvey-close-btn": "Zavřít a jít zpět na stránku $1",
@@ -32,6 +33,7 @@
 	"welcomesurvey-question-reason-option-edit-info-label": "Abych přidal(a) informace do článku na Wikipedii",
 	"welcomesurvey-question-reason-option-new-page-label": "Abych do Wikipedie přidal(a) další článek",
 	"welcomesurvey-question-reason-option-read-label": "Abych si mohl(a) Wikipedii číst",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Jiné",
 	"welcomesurvey-question-reason-option-other-label": "Jiné (prosím popište)",
 	"welcomesurvey-question-reason-other-placeholder": "Zadejte jiný důvod...",
 	"welcomesurvey-question-mentor-info": "Uvažujeme o spuštění projektu, který by umožnil propojit zkušené wikipedisty s nováčky. Chcete, aby vás v takovém případě zkušený wikipedista kontaktoval a pomohl vám s editováním?",

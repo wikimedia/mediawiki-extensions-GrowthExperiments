@@ -5,5 +5,6 @@
 		]
 	},
 	"welcomesurvey-popup-close-btn": "Aizvērt",
-	"welcomesurvey-back-btn": "Atpakaļ"
+	"welcomesurvey-back-btn": "Atpakaļ",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Cits"
 }

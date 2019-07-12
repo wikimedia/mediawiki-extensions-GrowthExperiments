@@ -5,7 +5,8 @@
 			"Gomoko",
 			"McDutchie",
 			"Fitoschido",
-			"Derugon"
+			"Derugon",
+			"Trizek (WMF)"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Bonjour}}, {{bidi:$1}} !",
@@ -55,7 +56,7 @@
 	"growthexperiments-tour-helpdesk-response-tip-title": "Alertes du centre d’assistance",
 	"growthexperiments-tour-response-tip-text": "Lorsqu’une réponse à {{GENDER:$1|votre}} question sera apportée, {{GENDER:$1|vous}} recevrez une nouvelle alerte ici.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Alertes mentor",
-	"growthexperiments-tour-mentor-response-tip-personal-text": "Losque {{GENDER:$1|votre}} mentor répond, {{GENDER:$1|vous}} aurez une nouvelle alerte ici.",
+	"growthexperiments-tour-mentor-response-tip-personal-text": "Lorsque {{GENDER:$1|votre}} {{GENDER:$2|tuteur|tutrice}} répond, {{GENDER:$1|vous}} aurez une nouvelle alerte ici.",
 	"growthexperiments-tour-response-button-okay": "C’est bon",
 	"tag-help_module_question": "Question du module d’aide",
 	"tag-help_module_question-description": "Modification faite, à partir de la fonction poser une question, du service d'aide de la page d'accueil",
@@ -75,7 +76,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Actif|Active}} aujourd’hui",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|Actif|Active}} hier",
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Actif|Active}} il y a $2 {{PLURAL:$2|jour|jours}}",
-	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|Cet utilisateur expérimenté|Cette utilisatrice expérimentée}} sait que vous êtes nouveau et peut {{GENDER:$2|vous}} aider dans l’édition.",
+	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|Cet utilisateur expérimenté|Cette utilisatrice expérimentée}} sait que vous êtes {{GENDER:$2|nouveau|nouvelle}} et peut vous aider dans l’édition.",
 	"growthexperiments-homepage-mentorship-question-button": "Poser une question à {{GENDER:$2|votre}} {{GENDER:$1|mentor}}",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Afficher les autres conversations de {{GENDER:$2|votre}} {{GENDER:$1|tuteur|tutrice}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "Demander à {{GENDER:$2|votre}} {{GENDER:$1|mentor}}",

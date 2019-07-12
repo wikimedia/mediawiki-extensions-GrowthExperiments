@@ -5,7 +5,8 @@
 			"Leduyquang753",
 			"Ioe2015",
 			"Tuyenduong97",
-			"Vinhtantran"
+			"Vinhtantran",
+			"Tuanminh01"
 		]
 	},
 	"welcomesurvey": "Hoan nghênh, $1!",
@@ -34,6 +35,7 @@
 	"welcomesurvey-question-reason-option-edit-info-label": "Để thêm thông tin vào một bài viết Wikipedia",
 	"welcomesurvey-question-reason-option-new-page-label": "Để tạo một bài viết Wikipedia mới",
 	"welcomesurvey-question-reason-option-read-label": "Để đọc Wikipedia",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Khác",
 	"welcomesurvey-question-reason-option-other-label": "Khác (vui lòng mô tả)",
 	"welcomesurvey-question-reason-other-placeholder": "Nhập lý do khác...",
 	"welcomesurvey-question-mentor-info": "Chúng tôi đang xem xét bắt đầu một chương trình để các biên tập viên có kinh nghiệm hơn sẽ giúp người dùng mới chỉnh sửa Wikipedia. Bạn có muốn được liên hệ để nhận trợ giúp chỉnh sửa không?",

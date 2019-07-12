@@ -55,7 +55,7 @@
 	"growthexperiments-tour-helpdesk-response-tip-title": "Upozornění",
 	"growthexperiments-tour-response-tip-text": "Jakmile bude {{GENDER:$1|vaše}} otázka zodpovězena, objeví se {{GENDER:$1|vám}} tady nové upozornění.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Upozornění",
-	"growthexperiments-tour-mentor-response-tip-personal-text": "Jakmile {{GENDER:$1|váš mentor}} odpoví, objeví se {{GENDER:$1|vám}} tady nové upozornění.",
+	"growthexperiments-tour-mentor-response-tip-personal-text": "Jakmile {{GENDER:$2|váš mentor|vaše mentorka}} odpoví, objeví se {{GENDER:$1|vám}} tady nové upozornění.",
 	"growthexperiments-tour-response-button-okay": "Rozumím",
 	"tag-help_module_question": "Otázka z modulu „Získejte pomoc s editací“ Domovské stránky",
 	"tag-help_module_question-description": "Editace provedená skrze příslušný modul Nástěnky nováčka",

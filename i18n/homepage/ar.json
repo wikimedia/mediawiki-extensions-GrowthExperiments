@@ -54,7 +54,7 @@
 	"growthexperiments-tour-helpdesk-response-tip-title": "تنبيهات مكتب المساعدة",
 	"growthexperiments-tour-response-tip-text": "عندما يتم الرد على {{GENDER:$1|سؤالك}}، سيكون لديك {{GENDER:$1|لديك}} تنبيه جديد هنا.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "تنبيهات المعلم",
-	"growthexperiments-tour-mentor-response-tip-personal-text": "عندما يرد {{GENDER:$1|معلمك}}، سيكون لديك {{GENDER:$1|لديك}} تنبيه جديد هنا.",
+	"growthexperiments-tour-mentor-response-tip-personal-text": "عندما {{GENDER:$1|يرد|ترد}} {{GENDER:$2|معلمك|معلمتك}}، سيكون لديك {{GENDER:$1|لديك}} تنبيه جديد هنا.",
 	"growthexperiments-tour-response-button-okay": "فهمت",
 	"tag-help_module_question": "سؤال وحدة المساعدة",
 	"tag-help_module_question-description": "أُجرِي التحرير، من خاصية، طرح السؤال من وحدة المساعدة على الصفحة الرئيسية",

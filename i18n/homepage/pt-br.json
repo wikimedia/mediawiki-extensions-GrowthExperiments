@@ -51,7 +51,7 @@
 	"growthexperiments-tour-helpdesk-response-tip-title": "Alertas do suporte técnico",
 	"growthexperiments-tour-response-tip-text": "Quando {{GENDER:$1|sua}} pergunta é respondida, {{GENDER:$1|você}} terá um novo alerta aqui.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Alertas do mentor",
-	"growthexperiments-tour-mentor-response-tip-personal-text": "Quando {{GENDER:$1|seu|sua}} {{GENDER:$1|mentor|mentora}} responde, {{GENDER:$1|você}} terá um novo alerta aqui.",
+	"growthexperiments-tour-mentor-response-tip-personal-text": "Quando {{GENDER:$1|seu|sua}} {{GENDER:$2|mentor|mentora}} responde, {{GENDER:$1|você}} terá um novo alerta aqui.",
 	"growthexperiments-tour-response-button-okay": "Entendi",
 	"tag-help_module_question": "Pergunta do módulo de ajuda",
 	"tag-help_module_question-description": "Editar feito a partir da postagem do módulo de ajuda da página inicial, um recurso de pergunta",

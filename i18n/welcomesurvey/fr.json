@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Wladek92",
-			"Trizek (WMF)"
+			"Trizek (WMF)",
+			"Gomoko"
 		]
 	},
 	"welcomesurvey": "Bienvenue, {{GENDER:$1|}}$1 !",
@@ -31,6 +32,7 @@
 	"welcomesurvey-question-reason-option-edit-info-label": "Pour ajouter une information à un article Wikipédia",
 	"welcomesurvey-question-reason-option-new-page-label": "Pour créer un nouvel article Wikipedia",
 	"welcomesurvey-question-reason-option-read-label": "Pour lire Wikipédia",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Autre",
 	"welcomesurvey-question-reason-option-other-label": "Autre (veuillez décrire)",
 	"welcomesurvey-question-reason-other-placeholder": "Entrez un autre motif...",
 	"welcomesurvey-question-mentor-info": "Nous envisageons de démarrer un programme pour les contributeurs plus expérimentés pour aider les utilisateurs les plus récents à modifier. Etes-vous intéressé pour être contacté afin d'obtenir de l'aide lorsque vous modifiez ?",

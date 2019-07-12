@@ -8,5 +8,5 @@
 	"apihelp-helppanelquestionposter-summary": "Руковање питањима која су постављена помоћу табле помоћи за тренутног корисника.",
 	"apihelp-helppanelquestionposter-param-body": "Текст питања који је поставио корисник.",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Релевантан наслов, ако је изабрано, за укључивање са питањем.",
-	"apihelp-helppanelquestionposter-param-email": "Опционална адреса е-поште, ако је корисник нема. Корисникова е-пошта ће бити постављена на ову адресу, и послата е-порука за верификацију."
+	"apihelp-helppanelquestionposter-param-email": "Опционална е-адреса, ако је корисник нема. Корисничка е-пошта биће постављена на ову адресу, те послата е-порука с потврдом."
 }

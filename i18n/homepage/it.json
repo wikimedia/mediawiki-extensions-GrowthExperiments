@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
-			"Ghebbro"
+			"Ghebbro",
+			"Annibale covini gerolamo"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ciao}}, {{bidi:$1}}!",
@@ -28,6 +29,7 @@
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Capito",
 	"growthexperiments-homepage-impact-mobilebody-articleedits": "<strong>$1</strong> {{PLURAL:$1|modifica|modifiche}} alle voci",
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|modifica|modifiche}}",
+	"growthexperiments-tour-mentor-response-tip-personal-text": "Quando {{GENDER:$1|tuo}} {{GENDER:$2|guida}} risponde, {{GENDER:$1|tu}} riceverai un segnale qui",
 	"growthexperiments-tour-response-button-okay": "Capito",
 	"growthexperiments-homepage-help-cancel": "Annulla",
 	"growthexperiments-homepage-recent-questions-header": "Le {{GENERE:$1|tue}} domande recenti",
