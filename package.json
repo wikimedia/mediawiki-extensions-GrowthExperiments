@@ -16,7 +16,7 @@
 		"jsdom": "14.0.0",
 		"nyc": "13.1.0",
 		"oojs": "2.2.2",
-		"oojs-ui": "0.32.1",
+		"oojs-ui": "0.33.2",
 		"qunit": "2.9.2",
 		"sinon": "7.2.7",
 		"stylelint-config-wikimedia": "0.6.0",
