@@ -6,7 +6,9 @@ use CommentStoreComment;
 use Config;
 use Content;
 use DerivativeContext;
+use ExtensionRegistry;
 use FatalError;
+use Flow\Container;
 use GrowthExperiments\Util;
 use Hooks;
 use IContextSource;
@@ -14,7 +16,6 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\PageUpdater;
 use MWException;
-use Parser;
 use Status;
 use Title;
 use WikiPage;
@@ -53,40 +54,34 @@ abstract class QuestionPoster {
 	protected $pageUpdater;
 
 	/**
-	 * @var int
+	 * @var mixed
 	 */
 	private $revisionId;
-
-	/**
-	 * @var Parser
-	 */
-	private $parser;
 
 	/**
 	 * @var string
 	 */
 	protected $relevantTitle;
+
 	/**
 	 * @var string
 	 */
 	private $postedOnTimestamp;
+
 	/**
 	 * @var QuestionRecord[]
 	 */
 	private $existingQuestionsByUser;
+
 	/**
 	 * @var string
 	 */
 	private $body;
+
 	/**
 	 * @var string
 	 */
 	private $sectionHeaderWithTimestamp;
-
-	/**
-	 * @var Content|null|string
-	 */
-	private $content;
 
 	/**
 	 * QuestionPoster constructor.
@@ -108,26 +103,18 @@ abstract class QuestionPoster {
 		$this->targetTitle = $this->getTargetTitle();
 		$page = new WikiPage( $this->targetTitle );
 		$this->pageUpdater = $page->newPageUpdater( $this->getContext()->getUser() );
-		$this->parser = MediaWikiServices::getInstance()->getParser();
 		$this->body = trim( $body );
 	}
 
 	/**
-	 * Initialize variables for later use.
-	 *
-	 * @throws MWException
+	 * Load the current user's existing questions.
 	 */
-	protected function prepare() {
+	protected function loadExistingQuestions() {
 		$questionStore = QuestionStoreFactory::newFromContextAndStorage(
 			$this->getContext(),
 			$this->getQuestionStoragePref()
 		);
-		$this->postedOnTimestamp = wfTimestamp();
 		$this->existingQuestionsByUser = $questionStore->loadQuestions();
-		$this->setSectionHeaderWithTimestamp();
-		$this->getPageUpdater()->addTag( $this->getTag() );
-		$this->setContent();
-		$this->getPageUpdater()->setContent( SlotRecord::MAIN, $this->getContent() );
 	}
 
 	/**
@@ -136,36 +123,112 @@ abstract class QuestionPoster {
 	 * @throws \Exception
 	 */
 	public function submit() {
-		$this->prepare();
+		$this->loadExistingQuestions();
 
-		$contentStatus = $this->checkContent();
+		$this->postedOnTimestamp = wfTimestamp();
+		$this->setSectionHeaderWithTimestamp();
+
+		$contentModel = $this->getTargetContentModel();
+		if ( $contentModel === CONTENT_MODEL_WIKITEXT ) {
+			$status = $this->submitWikitext();
+		} elseif (
+			ExtensionRegistry::getInstance()->isLoaded( 'Flow' ) &&
+			$contentModel === CONTENT_MODEL_FLOW_BOARD
+		) {
+			$status = $this->submitStructuredDiscussions();
+		} else {
+			throw new \Exception( "Content model $contentModel is not supported." );
+		}
+
+		if ( $status->isGood() ) {
+			$this->saveNewQuestion();
+		}
+
+		return $status;
+	}
+
+	/**
+	 * @return string Content model of the target page. One of the CONTENT_MODEL_* constants.
+	 */
+	protected function getTargetContentModel() {
+		return $this->getTargetTitle()->getContentModel();
+	}
+
+	/**
+	 * @return Status
+	 * @throws MWException
+	 * @throws \Exception
+	 */
+	private function submitWikitext() {
+		$content = $this->makeWikitextContent();
+
+		$contentStatus = $this->checkContent( $content );
 		if ( !$contentStatus->isGood() ) {
 			return $contentStatus;
 		}
-		$permissionStatus = $this->checkPermissions();
+		$permissionStatus = $this->checkPermissions( $content );
 		if ( !$permissionStatus->isGood() ) {
 			return $permissionStatus;
 		}
+
+		$this->getPageUpdater()->addTag( $this->getTag() );
+		$this->getPageUpdater()->setContent( SlotRecord::MAIN, $content );
 		$newRev = $this->getPageUpdater()->saveRevision(
 			CommentStoreComment::newUnsavedComment( $this->getSectionHeader() )
 		);
 		if ( !$this->getPageUpdater()->getStatus()->isGood() ) {
 			return $this->getPageUpdater()->getStatus();
 		}
-		$this->revisionId = $newRev->getId();
-		$this->setResultUrl();
 
-		$question = new QuestionRecord(
-			$this->getBody(),
-			$this->getSectionHeaderWithTimestamp(),
-			$this->revisionId,
-			$this->getPostedOnTimestamp(),
-			$this->getResultUrl()
+		$this->revisionId = $newRev->getId();
+		$this->targetTitle->setFragment(
+			MediaWikiServices::getInstance()
+				->getParser()
+				->guessSectionNameFromWikiText( $this->getSectionHeaderWithTimestamp() )
 		);
-		QuestionStoreFactory::newFromContextAndStorage(
+		$this->setResultUrl( $this->targetTitle->getLinkURL() );
+
+		return Status::newGood();
+	}
+
+	/**
+	 * @return Status
+	 * @throws MWException
+	 */
+	private function submitStructuredDiscussions() {
+		$workflowLoaderFactory = Container::get( 'factory.loader.workflow' );
+		$loader = $workflowLoaderFactory->createWorkflowLoader( $this->getTargetTitle() );
+		$blocks = $loader->handleSubmit(
 			$this->getContext(),
-			$this->getQuestionStoragePref()
-		)->add( $question );
+			'new-topic',
+			[
+				'topiclist' => [
+					'topic' => $this->getSectionHeaderWithTimestamp(),
+					'content' => $this->getBody(),
+					'format' => 'wikitext',
+				],
+			]
+		);
+
+		$status = Status::newGood();
+		foreach ( $blocks as $block ) {
+			if ( $block->hasErrors() ) {
+				$errors = $block->getErrors();
+				foreach ( $errors as $errorKey ) {
+					$status->fatal( $block->getErrorMessage( $errorKey ) );
+				}
+			}
+		}
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+
+		$commitMetadata = $loader->commit( $blocks );
+
+		$topicTitle = Title::newFromText( $commitMetadata['topiclist']['topic-page'] );
+		$this->setResultUrl( $topicTitle->getLinkURL() );
+		$this->revisionId = $commitMetadata['topiclist']['topic-id']->getAlphadecimal();
+
 		return Status::newGood();
 	}
 
@@ -184,13 +247,19 @@ abstract class QuestionPoster {
 		return $counter === 1 ? $sectionHeader : $sectionHeader . ' (' . $counter . ')';
 	}
 
-	protected function checkPermissions() {
+	/**
+	 * @param Content $content
+	 * @return Status
+	 * @throws FatalError
+	 * @throws MWException
+	 */
+	protected function checkPermissions( $content ) {
 		$userPermissionStatus = $this->checkUserPermissions();
 		if ( !$userPermissionStatus->isGood() ) {
 			return $userPermissionStatus;
 		}
 		$editFilterMergedContentHookStatus = $this->runEditFilterMergedContentHook(
-			$this->getContent(),
+			$content,
 			$this->getSectionHeader()
 		);
 		if ( !$editFilterMergedContentHookStatus->isGood() ) {
@@ -200,42 +269,34 @@ abstract class QuestionPoster {
 	}
 
 	/**
-	 * The tag to add to the edit via PageUpdater.
+	 * The tag to add to the edit.
 	 */
 	abstract protected function getTag();
 
 	/**
-	 * Create a WikitextContent object with the header and question text provided by the user.
+	 * Create a Content object with the header and question text provided by the user.
 	 *
+	 * @return Content
 	 * @throws MWException
 	 */
-	public function setContent() {
+	protected function makeWikitextContent() {
 		$wikitextContent = new WikitextContent(
 			$this->addSignature( $this->getBody() )
 		);
 		$header = $this->getSectionHeaderWithTimestamp();
 		$parent = $this->getPageUpdater()->grabParentRevision();
 		if ( !$parent ) {
-			$this->content = $wikitextContent->addSectionHeader( $header );
-			return;
+			return $wikitextContent->addSectionHeader( $header );
 		}
 		$existingContent = $parent->getContent( SlotRecord::MAIN );
 		if ( !$existingContent ) {
-			$this->content = null;
-			return;
+			return null;
 		}
-		$this->content = $existingContent->replaceSection(
+		return $existingContent->replaceSection(
 			'new',
 			$wikitextContent,
 			$header
 		);
-	}
-
-	/**
-	 * @return Content|string|null
-	 */
-	protected function getContent() {
-		return $this->content;
 	}
 
 	/**
@@ -328,13 +389,12 @@ abstract class QuestionPoster {
 	}
 
 	/**
-	 * Set the result URL with the fragment of the newly created question.
+	 * Set the result URL to go directly to the newly created question.
+	 *
+	 * @param string $resultUrl
 	 */
-	public function setResultUrl() {
-		$this->targetTitle->setFragment(
-			$this->parser->guessSectionNameFromWikiText( $this->getSectionHeaderWithTimestamp() )
-		);
-		$this->resultUrl = $this->targetTitle->getLinkURL();
+	private function setResultUrl( $resultUrl ) {
+		$this->resultUrl = $resultUrl;
 	}
 
 	/**
@@ -343,7 +403,7 @@ abstract class QuestionPoster {
 	 * THe number is appended only if duplicate headers exist, which can happen when questions
 	 * are posted within the same minute.
 	 */
-	private function setSectionHeaderWithTimestamp() {
+	protected function setSectionHeaderWithTimestamp() {
 		$this->sectionHeaderWithTimestamp = $this->getSectionHeader() . ' ' .
 			$this->getContext()->msg( 'parentheses' )
 				->plaintextParams( $this->getFormattedPostedOnTimestamp() )
@@ -450,16 +510,33 @@ abstract class QuestionPoster {
 	}
 
 	/**
+	 * Validate that $content is an instance of Content
+	 *
+	 * @param Content $content
 	 * @return Status
-	 * @throws MWException
 	 */
-	protected function checkContent() {
-		return $this->getContent() instanceof Content ?
+	protected function checkContent( $content ) {
+		return $content instanceof Content ?
 			Status::newGood() :
 			Status::newFatal(
 				'apierror-missingcontent-revid',
 				$this->getPageUpdater()->grabParentRevision()->getId()
 			);
+	}
+
+	private function saveNewQuestion() {
+		$question = new QuestionRecord(
+			$this->getBody(),
+			$this->getSectionHeaderWithTimestamp(),
+			$this->revisionId,
+			$this->getPostedOnTimestamp(),
+			$this->getResultUrl(),
+			$this->getTargetContentModel()
+		);
+		QuestionStoreFactory::newFromContextAndStorage(
+			$this->getContext(),
+			$this->getQuestionStoragePref()
+		)->add( $question );
 	}
 
 }

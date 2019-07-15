@@ -19,8 +19,9 @@ class QuestionRecordTest extends \MediaWikiUnitTestCase {
 	public function testJsonSerialize() {
 		$this->assertEquals(
 			'{"questionText":"foo","sectionHeader":"bar","revId":123,"resultUrl":' .
-			'"https:\/\/mediawiki.org\/foo","archiveUrl":"https:\/\/mediawiki.org\/bar",' .
-			'"timestamp":1235678,"isArchived":false,"isVisible":true}',
+			'"https:\/\/mediawiki.org\/foo","contentModel":"wikitext",' .
+			'"archiveUrl":"https:\/\/mediawiki.org\/bar","timestamp":1235678,' .
+			'"isArchived":false,"isVisible":true}',
 			json_encode( $this->getDefaultQuestionRecord() )
 		);
 	}
@@ -71,6 +72,7 @@ class QuestionRecordTest extends \MediaWikiUnitTestCase {
 		$this->assertEquals( 'https://mediawiki.org/archived', $questionRecord->getArchiveUrl() );
 		$this->assertEquals( true, $questionRecord->isArchived() );
 		$this->assertEquals( false, $questionRecord->isVisible() );
+		$this->assertEquals( CONTENT_MODEL_WIKITEXT, $questionRecord->getContentModel() );
 	}
 
 	/**
@@ -130,6 +132,7 @@ class QuestionRecordTest extends \MediaWikiUnitTestCase {
 			123,
 			1235678,
 			'https://mediawiki.org/foo',
+			CONTENT_MODEL_WIKITEXT,
 			'https://mediawiki.org/bar',
 			false,
 			true
