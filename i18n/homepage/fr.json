@@ -56,7 +56,7 @@
 	"growthexperiments-tour-helpdesk-response-tip-title": "Alertes du centre d’assistance",
 	"growthexperiments-tour-response-tip-text": "Lorsqu’une réponse à {{GENDER:$1|votre}} question sera apportée, {{GENDER:$1|vous}} recevrez une nouvelle alerte ici.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Alertes mentor",
-	"growthexperiments-tour-mentor-response-tip-personal-text": "Lorsque {{GENDER:$1|votre}} {{GENDER:$2|tuteur|tutrice}} répond, {{GENDER:$1|vous}} aurez une nouvelle alerte ici.",
+	"growthexperiments-tour-mentor-response-tip-personal-text": "Quand {{GENDER:$1|votre}} {{GENDER:$2|tuteur|tutrice}} aura répondu, {{GENDER:$1|vous}} aurez une nouvelle alerte ici.",
 	"growthexperiments-tour-response-button-okay": "C’est bon",
 	"tag-help_module_question": "Question du module d’aide",
 	"tag-help_module_question-description": "Modification faite, à partir de la fonction poser une question, du service d'aide de la page d'accueil",

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Piramidion"
+			"Piramidion",
+			"Vlad5250"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Ласкаво просимо}}, $1!",
@@ -30,6 +31,7 @@
 	"welcomesurvey-question-reason-option-edit-info-label": "Щоб додати інформацію до статті у Вікіпедії",
 	"welcomesurvey-question-reason-option-new-page-label": "Щоб створити нову статтю у Вікіпедії",
 	"welcomesurvey-question-reason-option-read-label": "Щоб читати Вікіпедію",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Інше",
 	"welcomesurvey-question-reason-option-other-label": "Інше (будь ласка, опишіть)",
 	"welcomesurvey-question-reason-other-placeholder": "Опишіть іншу причину...",
 	"welcomesurvey-question-mentor-info": "Ми розглядаємо можливість запуску програми, метою якої було б залучення досвідчених редакторів до надання новачкам допомоги з редагуванням. Чи зацікавлені Ви в тому, щоб хтось із Вами зв'язався й надавав підтримку з редагуванням?",

@@ -10,6 +10,7 @@
 	"prefs-homepage": "Домашна страница за новодојденци",
 	"growthexperiments-homepage-enable": "Прикажувај домашна страница за новодојденци",
 	"growthexperiments-homepage-pt-link": "По основно давај домашна страница за новодојденци од врската за корисничко име во личните алатки",
+	"growthexperiments-homepage-start-header": "Започнете тука",
 	"growthexperiments-homepage-account-header": "Корисничката сметка е направена",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|уредување|уредувања}}",
 	"growthexperiments-homepage-userpage-header": "Создајте своја корисничка страница",
@@ -26,6 +27,7 @@
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Погл. подробно за посетите",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Јасно",
 	"growthexperiments-homepage-help-ask-help-desk": "Побарајте помош",
+	"growthexperiments-tour-response-button-okay": "Јасно",
 	"tag-help_module_question": "Прашање на помошниот модул",
 	"tag-help_module_question-description": "Уредување направено од можноста за поставање прашања во помошниот модул на почетната страница",
 	"growthexperiments-homepage-help-header": "Најдете или побарајте помош",
@@ -34,5 +36,6 @@
 	"growthexperiments-homepage-recent-questions-archived": "архивирано",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|уредување|уредувања}}",
 	"growthexperiments-homepage-tutorial-cta-text": "Упатства",
-	"growthexperiments-specialimpact-title": "Влијание"
+	"growthexperiments-specialimpact-title": "Влијание",
+	"growthexperiments-specialimpact-showing-for-other-user": "Прикажување податоци за влијанието за $1"
 }

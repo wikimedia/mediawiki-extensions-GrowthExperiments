@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bjankuloski06"
+			"Bjankuloski06",
+			"Vlad5250"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Добре дојдовте}}, $1!",
@@ -30,6 +31,7 @@
 	"welcomesurvey-question-reason-option-edit-info-label": "За да додадам информации во статија на Википедија",
 	"welcomesurvey-question-reason-option-new-page-label": "За да направам нова статија на Википедија",
 	"welcomesurvey-question-reason-option-read-label": "За да читам на Википедија",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Друго",
 	"welcomesurvey-question-reason-option-other-label": "Друго (опишете)",
 	"welcomesurvey-question-reason-other-placeholder": "Внесете друга причина...",
 	"welcomesurvey-question-mentor-info": "Размислуваме да отпочнеме програма каде поискусните уредници би им помагале на новодојденците со уредувањето. Дали сте заинтересирани да ве контактираме за да помогнете со ова?",

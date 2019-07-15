@@ -8,5 +8,5 @@
 	"apihelp-helppanelquestionposter-param-body": "הטקסט של השאלות שסופקו על־ידי המשתמש.",
 	"apihelp-helppanelquestionposter-param-source": "הרכיב במקור השאלה. הערכים התקינים הם \"helppanel\"‏, \"homepage-help\" ו־\"homepage-mentorship\"",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "הכותרת המתאימה, אם נבחרה, שתיכלל עם השאלה.",
-	"apihelp-helppanelquestionposter-param-email": "כתובת דוא\"ל אופציונלית, אם למשתמש יש דוא\"ל בלתי־מאומת או אין דוא\"ל, שתשמש לשליחת דוא\"ל אימות."
+	"apihelp-helppanelquestionposter-param-email": "כתובת דוא\"ל אופציונלית, אם למשתמש לא מוגדר דוא\"ל. הדוא\"ל של המשתמש יוגדר לכתובת הזאת ותישלח הודאה לאימות."
 }
