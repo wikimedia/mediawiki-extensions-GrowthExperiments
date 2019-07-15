@@ -109,7 +109,7 @@ abstract class QuestionPoster {
 		$page = new WikiPage( $this->targetTitle );
 		$this->pageUpdater = $page->newPageUpdater( $this->getContext()->getUser() );
 		$this->parser = MediaWikiServices::getInstance()->getParser();
-		$this->body = $body;
+		$this->body = trim( $body );
 	}
 
 	/**
