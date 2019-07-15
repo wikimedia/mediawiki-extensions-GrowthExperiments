@@ -71,13 +71,6 @@ class Start extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getHeader() {
-		return $this->getHeaderTextElement();
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	protected function getMobileSummaryHeader() {
 		$icon = $this->getHeaderIcon(
 			$this->getHeaderIconName(),

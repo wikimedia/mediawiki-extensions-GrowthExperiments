@@ -156,7 +156,11 @@ abstract class BaseModule implements HomepageModule {
 	 * @return string HTML content of the header. Will be wrapped in a section.
 	 */
 	protected function getHeader() {
-		return $this->getHeaderTextElement();
+		$icon = $this->getHeaderIcon(
+			$this->getHeaderIconName(),
+			$this->shouldInvertHeaderIcon()
+		);
+		return $icon . $this->getHeaderTextElement();
 	}
 
 	private function getBackIcon() {
