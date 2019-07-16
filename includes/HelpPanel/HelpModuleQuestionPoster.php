@@ -18,7 +18,7 @@ class HelpModuleQuestionPoster extends QuestionPoster {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getSectionHeader() {
+	protected function getSectionHeaderTemplate() {
 		return $this->getContext()
 			->msg( 'growthexperiments-help-panel-question-subject-template-from-homepage' )
 			->inContentLanguage()->text();

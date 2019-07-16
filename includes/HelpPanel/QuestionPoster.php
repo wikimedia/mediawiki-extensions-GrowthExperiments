@@ -81,7 +81,7 @@ abstract class QuestionPoster {
 	/**
 	 * @var string
 	 */
-	private $sectionHeaderWithTimestamp;
+	private $sectionHeader;
 
 	/**
 	 * QuestionPoster constructor.
@@ -126,7 +126,7 @@ abstract class QuestionPoster {
 		$this->loadExistingQuestions();
 
 		$this->postedOnTimestamp = wfTimestamp();
-		$this->setSectionHeaderWithTimestamp();
+		$this->setSectionHeader();
 
 		$contentModel = $this->getTargetContentModel();
 		if ( $contentModel === CONTENT_MODEL_WIKITEXT ) {
@@ -174,7 +174,7 @@ abstract class QuestionPoster {
 		$this->getPageUpdater()->addTag( $this->getTag() );
 		$this->getPageUpdater()->setContent( SlotRecord::MAIN, $content );
 		$newRev = $this->getPageUpdater()->saveRevision(
-			CommentStoreComment::newUnsavedComment( $this->getSectionHeader() )
+			CommentStoreComment::newUnsavedComment( $this->getSectionHeaderTemplate() )
 		);
 		if ( !$this->getPageUpdater()->getStatus()->isGood() ) {
 			return $this->getPageUpdater()->getStatus();
@@ -184,7 +184,7 @@ abstract class QuestionPoster {
 		$this->targetTitle->setFragment(
 			MediaWikiServices::getInstance()
 				->getParser()
-				->guessSectionNameFromWikiText( $this->getSectionHeaderWithTimestamp() )
+				->guessSectionNameFromWikiText( $this->getSectionHeader() )
 		);
 		$this->setResultUrl( $this->targetTitle->getLinkURL() );
 
@@ -203,7 +203,7 @@ abstract class QuestionPoster {
 			'new-topic',
 			[
 				'topiclist' => [
-					'topic' => $this->getSectionHeaderWithTimestamp(),
+					'topic' => $this->getSectionHeader(),
 					'content' => $this->getBody(),
 					'format' => 'wikitext',
 				],
@@ -260,7 +260,7 @@ abstract class QuestionPoster {
 		}
 		$editFilterMergedContentHookStatus = $this->runEditFilterMergedContentHook(
 			$content,
-			$this->getSectionHeader()
+			$this->getSectionHeaderTemplate()
 		);
 		if ( !$editFilterMergedContentHookStatus->isGood() ) {
 			return $editFilterMergedContentHookStatus;
@@ -283,7 +283,7 @@ abstract class QuestionPoster {
 		$wikitextContent = new WikitextContent(
 			$this->addSignature( $this->getBody() )
 		);
-		$header = $this->getSectionHeaderWithTimestamp();
+		$header = $this->getSectionHeader();
 		$parent = $this->getPageUpdater()->grabParentRevision();
 		if ( !$parent ) {
 			return $wikitextContent->addSectionHeader( $header );
@@ -351,14 +351,14 @@ abstract class QuestionPoster {
 	}
 
 	/**
-	 * Get the section header for the question posted by the user.
+	 * Get the section header template for the question posted by the user.
 	 *
 	 * This method is used for generating the comment summary as well as the
 	 * section header in the edit.
 	 *
 	 * @return string
 	 */
-	abstract protected function getSectionHeader();
+	abstract protected function getSectionHeaderTemplate();
 
 	/**
 	 * Process potential changes to user's email address.
@@ -398,26 +398,32 @@ abstract class QuestionPoster {
 	}
 
 	/**
-	 * Set the section header with a timestamp and number.
+	 * Set the section header with a timestamp (wikitext only) and number.
 	 *
-	 * THe number is appended only if duplicate headers exist, which can happen when questions
+	 * THe number is appended for flow posts. For wikitext posts, a number is appended
+	 * only if duplicate headers exist, which can happen when questions
 	 * are posted within the same minute.
 	 */
-	protected function setSectionHeaderWithTimestamp() {
-		$this->sectionHeaderWithTimestamp = $this->getSectionHeader() . ' ' .
-			$this->getContext()->msg( 'parentheses' )
-				->plaintextParams( $this->getFormattedPostedOnTimestamp() )
-				->inContentLanguage()->escaped();
-		$this->sectionHeaderWithTimestamp = $this->getNumberedSectionHeaderIfDuplicatesExist(
-			$this->sectionHeaderWithTimestamp
+	protected function setSectionHeader() {
+		$this->sectionHeader = $this->getSectionHeaderTemplate();
+		// If wikitext, override the section header to include the timestamp.
+		if ( $this->getTargetContentModel() === CONTENT_MODEL_WIKITEXT ) {
+			$this->sectionHeader .= ' ' . $this->getContext()
+					->msg( 'parentheses' )
+					->plaintextParams( $this->getFormattedPostedOnTimestamp() )
+					->inContentLanguage()
+					->escaped();
+		}
+		$this->sectionHeader = $this->getNumberedSectionHeaderIfDuplicatesExist(
+			$this->sectionHeader
 		);
 	}
 
 	/**
 	 * @return string
 	 */
-	private function getSectionHeaderWithTimestamp() {
-		return $this->sectionHeaderWithTimestamp;
+	private function getSectionHeader() {
+		return $this->sectionHeader;
 	}
 
 	/**
@@ -527,7 +533,7 @@ abstract class QuestionPoster {
 	private function saveNewQuestion() {
 		$question = new QuestionRecord(
 			$this->getBody(),
-			$this->getSectionHeaderWithTimestamp(),
+			$this->getSectionHeader(),
 			$this->revisionId,
 			$this->getPostedOnTimestamp(),
 			$this->getResultUrl(),
