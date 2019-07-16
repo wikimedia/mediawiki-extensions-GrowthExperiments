@@ -19,7 +19,7 @@ class HelpPanelQuestionPoster extends QuestionPoster {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getSectionHeader() {
+	protected function getSectionHeaderTemplate() {
 		return $this->relevantTitle ?
 			$this->getContext()
 				->msg( 'growthexperiments-help-panel-question-subject-template-with-title' )

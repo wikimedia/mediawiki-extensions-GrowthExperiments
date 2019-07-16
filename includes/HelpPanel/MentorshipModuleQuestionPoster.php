@@ -18,7 +18,7 @@ class MentorshipModuleQuestionPoster extends QuestionPoster {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getSectionHeader() {
+	protected function getSectionHeaderTemplate() {
 		return $this->getContext()
 			->msg( 'growthexperiments-homepage-mentorship-question-subject' )
 			->plaintextParams( $this->getContext()->getUser()->getName() )

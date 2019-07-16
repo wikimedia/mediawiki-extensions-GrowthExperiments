@@ -22,14 +22,14 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 				'makeWikitextContent',
 				'checkContent',
 				'loadExistingQuestions',
-				'setSectionHeaderWithTimestamp',
+				'setSectionHeader',
 				'getTargetContentModel',
 			] )
 			->getMockForAbstractClass();
 		$questionPoster->method( 'checkContent' )
 			->willReturn( \StatusValue::newFatal( 'apierror-missingcontent-revid' ) );
 		$questionPoster->method( 'makeWikitextContent' )->willReturn( null );
-		$questionPoster->method( 'setSectionHeaderWithTimestamp' )->willReturn( null );
+		$questionPoster->method( 'setSectionHeader' )->willReturn( null );
 		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
 
 		/** @var \StatusValue $status */
@@ -50,7 +50,7 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 			->disableOriginalConstructor()
 			->setMethods( [
 				'makeWikitextContent',
-				'setSectionHeaderWithTimestamp',
+				'setSectionHeader',
 				'loadExistingQuestions',
 				'getPageUpdater',
 				'grabParentRevision',
@@ -58,7 +58,7 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 			] )
 			->getMockForAbstractClass();
 		$questionPoster->method( 'makeWikitextContent' )->willReturn( null );
-		$questionPoster->method( 'setSectionHeaderWithTimestamp' )->willReturn( null );
+		$questionPoster->method( 'setSectionHeader' )->willReturn( null );
 		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
 		$pageUpdaterMock = $this->getMockBuilder( PageUpdater::class )
 			->disableOriginalConstructor()
@@ -107,12 +107,12 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 				'checkUserPermissions',
 				'loadExistingQuestions',
 				'checkContent',
-				'setSectionHeaderWithTimestamp',
+				'setSectionHeader',
 				'getTargetContentModel',
 			] )
 			->getMockForAbstractClass();
 		$questionPoster->method( 'makeWikitextContent' )->willReturn( null );
-		$questionPoster->method( 'setSectionHeaderWithTimestamp' )->willReturn( null );
+		$questionPoster->method( 'setSectionHeader' )->willReturn( null );
 		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
 		$questionPoster->method( 'checkUserPermissions' )->willReturn(
 			\StatusValue::newFatal( '' )
@@ -140,12 +140,12 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 				'checkContent',
 				'loadExistingQuestions',
 				'makeWikitextContent',
-				'setSectionHeaderWithTimestamp',
+				'setSectionHeader',
 				'runEditFilterMergedContentHook',
 				'getTargetContentModel',
 			] )
 			->getMockForAbstractClass();
-		$questionPoster->method( 'setSectionHeaderWithTimestamp' )->willReturn( null );
+		$questionPoster->method( 'setSectionHeader' )->willReturn( null );
 		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
 		$questionPoster->method( 'checkUserPermissions' )->willReturn(
 			\StatusValue::newGood( '' )
