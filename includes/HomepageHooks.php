@@ -443,7 +443,7 @@ class HomepageHooks {
 				Util::isMobile( $skin ) ? $baseCssClassName . '-mobile' : $baseCssClassName . '-desktop'
 			];
 			$siteNotice = Html::rawElement( 'div', [ 'class' => $cssClasses ],
-				new IconWidget( [ 'icon' => 'check', 'flags' => 'progressive' ] ) . ' ' .
+				new IconWidget( [ 'icon' => 'check' ] ) . ' ' .
 				Html::element( 'span', [ 'class' => 'mw-ge-homepage-confirmemail-nojs-message' ],
 					$output->msg( 'confirmemail_loggedin' )->text() )
 			);
