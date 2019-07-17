@@ -93,6 +93,9 @@
 		"PersonalUrls": [
 			"GrowthExperiments\\HomepageHooks::onPersonalUrls"
 		],
+		"MessageCache::get": [
+			"GrowthExperiments\\HomepageHooks::onMessageCacheGet"
+		],
 		"AuthChangeFormFields": [
 			"GrowthExperiments\\ConfirmEmailHooks::onAuthChangeFormFields"
 		],

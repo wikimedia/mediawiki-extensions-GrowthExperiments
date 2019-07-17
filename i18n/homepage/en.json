@@ -4,6 +4,7 @@
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hello}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Homepage",
+	"tooltip-pt-homepage": "{{GENDER:|Your}} homepage",
 	"prefs-homepage": "Newcomer homepage",
 	"growthexperiments-homepage-enable": "Display newcomer homepage",
 	"growthexperiments-homepage-pt-link": "Default to newcomer homepage from username link in personal tools",

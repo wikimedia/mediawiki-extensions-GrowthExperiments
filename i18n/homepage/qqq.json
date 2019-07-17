@@ -6,6 +6,7 @@
 	},
 	"growthexperiments-homepage-specialpage-title": "Title for Special:Homepage, which is a place for users to access useful tools about contributing. Parameters:\n* $1 - Name of the current user. Can be used with GENDER.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-tab": "Label of the homepage tab.\n{{Identical|Homepage}}\n\n{{doc-growthexperiments-homepage}}",
+	"tooltip-pt-homepage": "Tooltip shown when hovering the mouse over the link to your own Homepage in the upper-side personal toolbox.\n\n{{doc-growthexperiments-homepage}}",
 	"prefs-homepage": "Text of the section header for the \"Newcomer homepage\" section in Special:Preferences.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-enable": "Text of the preference in Special:Preferences to enable the homepage tab to show when viewing one's User or User Talk page.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-pt-link": "Text of the preference in Special:Preferences to make the username link in the personal tools go to the homepage instead of the userpage.\n\n{{doc-growthexperiments-homepage}}",
