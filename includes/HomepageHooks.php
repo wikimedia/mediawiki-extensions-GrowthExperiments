@@ -368,9 +368,9 @@ class HomepageHooks {
 				$sp->msg( 'growthexperiments-homepage-contributions-zero-title' )
 					->params( $sp->getUser()->getName() )->text()
 			) .
-			Html::rawElement( 'p', [ 'class' => 'mw-ge-contributions-zero-subtitle' ],
+			Html::element( 'p', [ 'class' => 'mw-ge-contributions-zero-subtitle' ],
 				$sp->msg( 'growthexperiments-homepage-contributions-zero-subtitle' )
-					->params( $sp->getUser()->getName(), $linkUrl )->parse()
+					->params( $sp->getUser()->getName() )->text()
 			) .
 			new ButtonWidget( [
 				'label' => $sp->msg( 'growthexperiments-homepage-contributions-zero-button' )
