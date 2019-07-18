@@ -24,6 +24,7 @@ class TourHooks {
 		// If they have already seen the welcome tour, don't show the discovery one.
 		if ( !$out->getTitle()->isSpecial( 'WelcomeSurvey' ) &&
 			 !$out->getTitle()->isSpecial( 'Homepage' ) &&
+			 HomepageHooks::isHomepageEnabled( $out->getUser() ) &&
 			 !$out->getUser()->getBoolOption( self::TOUR_COMPLETED_HOMEPAGE_WELCOME ) ) {
 			Util::maybeAddGuidedTour(
 				$out,
