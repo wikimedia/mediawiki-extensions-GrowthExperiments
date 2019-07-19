@@ -3,6 +3,7 @@
 namespace GrowthExperiments;
 
 use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
+use Config;
 use OutputPage;
 use ResourceLoaderContext;
 use RequestContext;
@@ -104,10 +105,10 @@ class HelpPanelHooks {
 	/**
 	 * Build the contents of the data.json file in the ext.growthExperiments.HelpPanel module.
 	 * @param ResourceLoaderContext $context
+	 * @param Config $config
 	 * @return array
 	 */
-	public static function getModuleData( ResourceLoaderContext $context ) {
-		$config = $context->getConfig();
+	public static function getModuleData( ResourceLoaderContext $context, Config $config ) {
 		$helpdeskTitle = HelpPanel::getHelpDeskTitle( $config );
 		return [
 			'GEHelpPanelLoggingEnabled' => $config->get( 'GEHelpPanelLoggingEnabled' ),
