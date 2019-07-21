@@ -140,6 +140,9 @@ class TourHooks {
 	/**
 	 * Register default preferences for tours.
 	 *
+	 * Default is to set their visibility to true (seen), and in the LocalUserCreated
+	 * hook we'll set these preferences back to false (unseen).
+	 *
 	 * @param array &$wgDefaultUserOptions Reference to default options array
 	 * @throws ConfigException
 	 */
@@ -149,15 +152,15 @@ class TourHooks {
 		}
 		if ( HelpPanel::isHelpPanelEnabled() ) {
 			$wgDefaultUserOptions += [
-				self::TOUR_COMPLETED_HELP_PANEL => false
+				self::TOUR_COMPLETED_HELP_PANEL => true
 			];
 		}
 		if ( HomepageHooks::isHomepageEnabled() ) {
 			$wgDefaultUserOptions += [
-				self::TOUR_COMPLETED_HOMEPAGE_HELP => false,
-				self::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP => false,
-				self::TOUR_COMPLETED_HOMEPAGE_WELCOME => false,
-				self::TOUR_COMPLETED_HOMEPAGE_DISCOVERY => false,
+				self::TOUR_COMPLETED_HOMEPAGE_HELP => true,
+				self::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP => true,
+				self::TOUR_COMPLETED_HOMEPAGE_WELCOME => true,
+				self::TOUR_COMPLETED_HOMEPAGE_DISCOVERY => true,
 			];
 		}
 	}

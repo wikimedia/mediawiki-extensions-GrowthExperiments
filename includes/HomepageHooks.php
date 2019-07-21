@@ -262,6 +262,14 @@ class HomepageHooks {
 		if ( $user->isLoggedIn() && !$autocreated && rand( 0, 99 ) < $enablePercentage ) {
 			$user->setOption( self::HOMEPAGE_PREF_ENABLE, 1 );
 			$user->setOption( self::HOMEPAGE_PREF_PT_LINK, 1 );
+			// Default option is that the user has seen the tour (so we don't prompt
+			// existing users to view it). Setting to false will prompt new user accounts
+			// only to see the various tours.
+			$user->setOption( TourHooks::TOUR_COMPLETED_HELP_PANEL, 0 );
+			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_HELP, 0 );
+			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP, 0 );
+			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME, 0 );
+			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_DISCOVERY, 0 );
 			$user->saveSettings();
 			try {
 				$assignedMentor = Mentor::newFromMentee( $user, true );
