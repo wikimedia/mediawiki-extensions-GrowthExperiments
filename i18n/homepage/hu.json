@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tacsipacsi"
+			"Tacsipacsi",
+			"Misibacsi"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Üdvözlünk, {{bidi:$1}}!",
@@ -42,6 +43,7 @@
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Friss szerkesztések megtekintései (utóbbi 60 nap):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Kövesd az általad szerkesztett szócikkek megtekintéseit",
 	"growthexperiments-homepage-help-desk-questions": "Más szerkesztők kérdéseinek megtekintése",
+	"growthexperiments-tour-response-button-okay": "Értem",
 	"tag-help_module_question": "Súgómodul-kérdés",
 	"tag-mentorship_module_question": "Mentormodul-kérdés",
 	"growthexperiments-homepage-help-header": "Szerkesztési segítség",

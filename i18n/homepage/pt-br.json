@@ -6,6 +6,7 @@
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Olá}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Página principal",
+	"tooltip-pt-homepage": "{{GENDER:|Sua}} página inicial",
 	"prefs-homepage": "Página inicial do recém-chegado",
 	"growthexperiments-homepage-enable": "Exibir página inicial do recém-chegado",
 	"growthexperiments-homepage-pt-link": "Padrão para a página principal do recém-chegado do link de nome de usuário em ferramentas pessoais",
@@ -86,5 +87,13 @@
 	"growthexperiments-specialimpact-title": "Impacto",
 	"growthexperiments-specialimpact-showing-for-other-user": "Mostrando dados de impacto por $1",
 	"growthexperiments-specialimpact-invalid-username": "Nome de usuário ausente ou inválido.",
-	"growthexperiments-homepage-enable-preference": "Para ativar a página inicial do recém-chegado, acesse as configurações da \"Página inicial do recém-chegado\" nas [[Special:Preferences#mw-prefsection-personal-homepage|Preferências]]."
+	"growthexperiments-homepage-enable-preference": "Para ativar a página inicial do recém-chegado, acesse as configurações da \"Página inicial do recém-chegado\" nas [[Special:Preferences#mw-prefsection-personal-homepage|Preferências]].",
+	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|Você}} ainda não fiz contribuições.",
+	"growthexperiments-homepage-contributions-zero-subtitle": "Visite {{GENDER:$1|sua}} página inicial para começar a editar!",
+	"growthexperiments-homepage-contributions-zero-button": "Vá para {{GENDER:$1|sua}} página inicial",
+	"growthexperiments-tour-welcome-title": "Bem-vindo a {{GENDER:$1|sua}} página inicial!",
+	"growthexperiments-tour-welcome-description": "{{GENDER:$1|Você }} pode sempre clicar no{{GENDER:$1|seu}} nome de usuário para retornar aqui.",
+	"growthexperiments-tour-discovery-title": "Comece aqui!",
+	"growthexperiments-tour-discovery-description": "Clique no {{GENDER:$1|seu}} nome de usuário para visitar {{GENDER:$1|sua}} página inicial.",
+	"growthexperiments-homepage-welcomesurvey-default-close": "Vá para {{GENDER:$1|sua}} página inicial"
 }

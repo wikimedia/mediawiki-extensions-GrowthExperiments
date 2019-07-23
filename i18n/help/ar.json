@@ -32,7 +32,7 @@
 	"growthexperiments-help-panel-questioncomplete-header": "تم نشر سؤالك!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "سؤالك الآن معروض على فريق المساعدة ليتم الرد عليه من قبل محرر متطوع آخر.",
 	"growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed": "ستتلقى إشعارًا عبر البريد الإلكتروني عند نشر رد، من المحتمل خلال يوم أو يومين.",
-	"growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed": "ستحصل على $1 على هذا الموقع عند نشر رد، من المحتمل خلال يوم أو يومين، إذا حصلت على $2، فستتلقى إشعارا عبر البريد الإلكتروني أيضا.",
+	"growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed": "ستحصل على $1 على هذا الموقع عند نشر رد، من المحتمل خلال يوم أو يومين، إذا قمت بتفعيل \"$2\"، فستتلقى إشعارا عبر البريد الإلكتروني أيضا.",
 	"growthexperiments-help-panel-questioncomplete-confirmation-email-none": "ستحصل على $1 على هذا الموقع عند نشر رد، من المحتمل خلال يوم أو يومين.",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "اعرض سؤالك على ميدان المساعدة",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "المزيد عن هذه الميزة",

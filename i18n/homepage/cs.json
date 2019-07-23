@@ -8,7 +8,7 @@
 			"Patriccck"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Vítejte}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-specialpage-title": "Vítejte, {{GENDER:$1|uživateli|uživatelko}} {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Domovská stránka",
 	"prefs-homepage": "Domovská stránka nováčka",
 	"growthexperiments-homepage-enable": "Zobrazit Domovskou stránku nováčka",

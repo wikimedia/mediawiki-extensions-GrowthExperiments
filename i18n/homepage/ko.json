@@ -4,7 +4,8 @@
 			"Ykhwong",
 			"Revi",
 			"Bluemersen",
-			"Nuevo Paso"
+			"Nuevo Paso",
+			"Tkwiki"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|안녕하세요}}, {{bidi:$1}}님!",
@@ -54,7 +55,7 @@
 	"growthexperiments-tour-helpdesk-response-tip-title": "질문방 알림",
 	"growthexperiments-tour-response-tip-text": "{{GENDER:$1|질문에}} 답변이 등록되면 여기에 새 알림을 받게 됩니다.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "멘토 알림",
-	"growthexperiments-tour-mentor-response-tip-personal-text": "{{GENDER:$1|멘토}}가 답장을 보내게 되면 이곳에 새 알림이 표시됩니다.",
+	"growthexperiments-tour-mentor-response-tip-personal-text": "{{GENDER:$1|당신}}에게 {{GENDER:$2|멘토}}가 답장을 보내게 되면 이곳에 새 알림이 표시됩니다.",
 	"growthexperiments-tour-response-button-okay": "알겠습니다",
 	"tag-help_module_question": "도움말 모듈 질문",
 	"tag-help_module_question-description": "홈페이지 도움 모듈의 질문하기 기능을 통해 이루어진 편집",
@@ -89,5 +90,8 @@
 	"growthexperiments-specialimpact-title": "영향력",
 	"growthexperiments-specialimpact-showing-for-other-user": "$1 사용자의 영향력 데이터를 보고 있습니다",
 	"growthexperiments-specialimpact-invalid-username": "존재하지 않거나 유효하지 않은 사용자 이름입니다.",
-	"growthexperiments-homepage-enable-preference": "새 사용자 홈페이지를 활성화하려면, [[Special:Preferences#mw-prefsection-personal-homepage|환경 설정]]의 \"새 사용자 홈페이지\" 설정을 확인하십시오."
+	"growthexperiments-homepage-enable-preference": "새 사용자 홈페이지를 활성화하려면, [[Special:Preferences#mw-prefsection-personal-homepage|환경 설정]]의 \"새 사용자 홈페이지\" 설정을 확인하십시오.",
+	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|}}아직 기여가 없습니다.",
+	"growthexperiments-tour-welcome-title": "{{GENDER:$1|당신의}} 홈페이지에 오신 것을 환영합니다!",
+	"growthexperiments-tour-discovery-title": "여기서 시작하세요!"
 }

@@ -7,7 +7,7 @@
 			"Matěj Suchánek"
 		]
 	},
-	"welcomesurvey": "{{GENDER:$1|Vítejte}}, $1!",
+	"welcomesurvey": "Vítejte, {{GENDER:$1|uživateli|uživatelko}} $1!",
 	"welcomesurvey-save-confirmation-title": "Děkujeme! Vaše odpovědi byly uloženy.",
 	"welcomesurvey-save-confirmation-text": "Vaše odpovědi budou použity pro vylepšení Wikipedie pro všechny nováčky. \n\nAbyste se dozvěděli více o tom, jak jsou odpovědi používány, můžete se podívat na $1 dotazníku.",
 	"welcomesurvey-subtitle": "Pomozte nám vylepšit Wikipedii pro lidi, jako jste vy, pomocí odpovědi na několik volitelných otázek.",

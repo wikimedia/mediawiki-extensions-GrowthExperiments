@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tacsipacsi"
+			"Tacsipacsi",
+			"Misibacsi"
 		]
 	},
 	"growthexperiments-help-panel-cta-button-text": "Szerkesztési segítség",
@@ -32,5 +33,6 @@
 	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "Nincsen jogod e-mail-cím beállításához.",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Érvénytelen cím.",
 	"growthexperiments-help-panel-search-label": "Segítség keresése",
-	"growthexperiments-help-panel-search-no-results": "Nincs találat."
+	"growthexperiments-help-panel-search-no-results": "Nincs találat.",
+	"growthexperiments-help-panel-confirm-email-link-text": "email cím megismétlése"
 }

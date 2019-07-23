@@ -11,6 +11,7 @@
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Bonjour}}, {{bidi:$1}} !",
 	"growthexperiments-homepage-tab": "Page d’accueil",
+	"tooltip-pt-homepage": "{{GENDER:|Votre}} page d’accueil",
 	"prefs-homepage": "Page d'accueil du nouvel arrivant",
 	"growthexperiments-homepage-enable": "Afficher la page d'accueil du nouvel arrivant",
 	"growthexperiments-homepage-pt-link": "Lien par défaut vers la page d'accueil du nouvel arrivant, à partir du lien du nom d'utilisateur dans les outils personnels",
@@ -91,5 +92,13 @@
 	"growthexperiments-specialimpact-title": "Impact",
 	"growthexperiments-specialimpact-showing-for-other-user": "Affichage des données d’impact pour $1",
 	"growthexperiments-specialimpact-invalid-username": "Nom d’utilisateur manquant ou non valide.",
-	"growthexperiments-homepage-enable-preference": "Pour activer la page d’accueil des débutants, aller sur vos paramètres « Page d’accueil de débutant » dans les [[Special:Preferences#mw-prefsection-personal-homepage|Préférences]]."
+	"growthexperiments-homepage-enable-preference": "Pour activer la page d’accueil des débutants, aller sur vos paramètres « Page d’accueil de débutant » dans les [[Special:Preferences#mw-prefsection-personal-homepage|Préférences]].",
+	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|Vous}} n’avez pas encore fait de contribution.",
+	"growthexperiments-homepage-contributions-zero-subtitle": "Visiter {{GENDER:$1|votre}} page d’accueil pour commencer à modifier !",
+	"growthexperiments-homepage-contributions-zero-button": "Aller sur {{GENDER:$1|votre}} page d’accueil",
+	"growthexperiments-tour-welcome-title": "Bienvenue sur {{GENDER:$1|votre}} page d’accueil !",
+	"growthexperiments-tour-welcome-description": "{{GENDER:$1|Vous}} pouvez toujours cliquer sur {{GENDER:$1|votre}} nom d’utilisateur pour revenir ici.",
+	"growthexperiments-tour-discovery-title": "Commencer ici !",
+	"growthexperiments-tour-discovery-description": "Cliquer sur {{GENDER:$1|votre}} nom d’utilisateur pour visiter {{GENDER:$1|votre}} page d’accueil.",
+	"growthexperiments-homepage-welcomesurvey-default-close": "Aller sur {{GENDER:$1|votre}} page d’accueil"
 }

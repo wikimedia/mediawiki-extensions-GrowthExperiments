@@ -3,7 +3,8 @@
 		"authors": [
 			"Fitoschido",
 			"Jorge Ubilla",
-			"Wizardeck"
+			"Wizardeck",
+			"MarcoAurelio"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Bienvenido|Bienvenida}}, {{bidi:$1}}!",
@@ -41,5 +42,8 @@
 	"growthexperiments-homepage-tutorial-header": "Aprende a editar",
 	"growthexperiments-homepage-tutorial-subheader": "Sigue un tutorial rápido para aprender a editar Wikipedia",
 	"growthexperiments-homepage-tutorial-cta-text": "Tutorial",
-	"growthexperiments-specialimpact-title": "Impacto"
+	"growthexperiments-specialimpact-title": "Impacto",
+	"growthexperiments-homepage-contributions-zero-button": "Ir a {{GENDER:$1|tu}} página de inicio",
+	"growthexperiments-tour-welcome-description": "Siempre puedes volver a hacer clic en tu nombre de {{GENDER:$1|usuario|usuaria}} para volver aquí.",
+	"growthexperiments-tour-discovery-description": "Haz clic en tu nombre de {{GENDER:$1|usuario|usuaria}} para ver tu página de inicio."
 }
