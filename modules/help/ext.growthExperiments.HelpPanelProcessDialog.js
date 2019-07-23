@@ -277,6 +277,7 @@
 				width: 260,
 				classes: [ 'mw-ge-help-panel-settings-cog-content' ],
 				anchor: false,
+				align: 'backwards',
 				$container: this.$element
 			}
 		} );
