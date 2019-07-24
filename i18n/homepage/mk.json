@@ -7,6 +7,7 @@
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Вашата}} домашна страница",
 	"growthexperiments-homepage-tab": "Домашна страница",
+	"tooltip-pt-homepage": "{{GENDER:|Вашата}} домашна страница",
 	"prefs-homepage": "Домашна страница за новодојденци",
 	"growthexperiments-homepage-enable": "Прикажувај домашна страница за новодојденци",
 	"growthexperiments-homepage-pt-link": "По основно давај домашна страница за новодојденци од врската за корисничко име во личните алатки",
