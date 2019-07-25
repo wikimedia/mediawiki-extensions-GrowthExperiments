@@ -43,7 +43,8 @@
 			"GrowthExperiments\\HomepageHooks::onSpecialPageInitList"
 		],
 		"UserGetDefaultOptions": [
-			"GrowthExperiments\\HelpPanelHooks::onUserGetDefaultOptions"
+			"GrowthExperiments\\HelpPanelHooks::onUserGetDefaultOptions",
+			"GrowthExperiments\\TourHooks::onUserGetDefaultOptions"
 		],
 		"LocalUserCreated": [
 			"GrowthExperiments\\HelpPanelHooks::onLocalUserCreated",
