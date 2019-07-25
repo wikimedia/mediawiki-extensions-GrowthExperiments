@@ -89,8 +89,6 @@ class HomepageHooks {
 			 self::titleIsUserPageOrUserTalk( $skin->getTitle(), $skin->getUser() ) ) {
 			/** @var SkinOptions $skinOptions */
 			$skinOptions->setMultiple( [
-				// TODO: OPTION_AMC needed for correct styles to apply.
-				SkinOptions::OPTION_AMC => true,
 				SkinOptions::OPTIONS_TALK_AT_TOP => true,
 				SkinOptions::OPTION_TABS_ON_SPECIALS => true
 			] );
