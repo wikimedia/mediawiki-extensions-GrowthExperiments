@@ -13,9 +13,9 @@ use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Minerva\Menu\AuthMenuEntry;
+use MediaWiki\Minerva\Menu\Entries\IProfileMenuEntry;
+use MediaWiki\Minerva\Menu\Entries\HomeMenuEntry;
 use MediaWiki\Minerva\Menu\Group;
-use MediaWiki\Minerva\Menu\HomeMenuEntry;
 use MediaWiki\Minerva\SkinOptions;
 use OOUI\ButtonWidget;
 use OutputPage;
@@ -327,42 +327,67 @@ class HomepageHooks {
 	}
 
 	/**
+	 * Helper method to update the "Profile" menu entry in menus
+	 * @param Group $group
+	 * @param string $menuEntryName The Profile menu entry - most probably 'auth' or 'profile'
+	 * @throws \MWException
+	 */
+	private static function updateProfileMenuEntry( Group $group, $menuEntryName ) {
+		$context = RequestContext::getMain();
+		try {
+			/** @var IProfileMenuEntry $profileMenuEntry */
+			$profileMenuEntry = $group->getEntryByName( $menuEntryName );
+			// @phan-suppress-next-line PhanUndeclaredMethod
+			$profileMenuEntry->overrideProfileURL(
+				self::getPersonalToolsHomepageLinkUrl(
+					$context->getTitle()->getNamespace()
+				), null, 'homepage' );
+		}
+		catch ( DomainException $exception ) {
+			return;
+		}
+	}
+
+	/**
+	 * Helper method to update the "Home" menu entry in the Mobile Menu
+	 * @param Group $group
+	 */
+	private static function updateHomeMenuEntry( Group $group ) {
+		$context = RequestContext::getMain();
+		try {
+			/** @var HomeMenuEntry $homeMenuEntry */
+			$homeMenuEntry = $group->getEntryByName( 'home' );
+			// @phan-suppress-next-line PhanUndeclaredMethod
+			$homeMenuEntry->overrideText( $context->msg( 'mainpage-nstab' )->text() )
+				->overrideCssClass( \MinervaUI::iconClass( 'newspaper', 'before' ) );
+		}
+		catch ( DomainException $exception ) {
+			return;
+		}
+	}
+
+	/**
 	 * @param string $tool
 	 * @param Group &$group
 	 * @throws ConfigException
 	 * @throws \MWException
 	 */
 	public static function onMobileMenu( $tool, &$group ) {
-		if ( in_array( $tool, [ 'personal', 'discovery' ] ) ) {
+		if ( in_array( $tool, [ 'personal', 'discovery', 'user' ] ) ) {
 			$context = RequestContext::getMain();
 			$user = $context->getUser();
 			if ( self::isHomepageEnabled( $user ) &&
 				 self::userHasPersonalToolsPrefEnabled( $user ) ) {
-				if ( $tool === 'personal' ) {
-					try {
-						/** @var AuthMenuEntry $authMenuEntry */
-						$authMenuEntry = $group->getEntryByName( 'auth' );
-						// @phan-suppress-next-line PhanUndeclaredMethod
-						$authMenuEntry->overrideProfileURL(
-							self::getPersonalToolsHomepageLinkUrl(
-								$context->getTitle()->getNamespace()
-							), null, 'homepage' );
-					}
-					catch ( DomainException $exception ) {
-						return;
-					}
-				}
-				if ( $tool === 'discovery' ) {
-					try {
-						/** @var HomeMenuEntry $homeMenuEntry */
-						$homeMenuEntry = $group->getEntryByName( 'home' );
-						// @phan-suppress-next-line PhanUndeclaredMethod
-						$homeMenuEntry->overrideText( $context->msg( 'mainpage-nstab' )->text() )
-							->overrideCssClass( \MinervaUI::iconClass( 'newspaper', 'before' ) );
-					}
-					catch ( DomainException $exception ) {
-						return;
-					}
+				switch ( $tool ) {
+					case 'personal':
+						self::updateProfileMenuEntry( $group, 'auth' );
+						break;
+					case 'user':
+						self::updateProfileMenuEntry( $group, 'profile' );
+						break;
+					case 'discovery':
+						self::updateHomeMenuEntry( $group );
+						break;
 				}
 			}
 		}
