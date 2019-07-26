@@ -10,6 +10,7 @@
 	},
 	"growthexperiments-homepage-specialpage-title": "Vítejte, {{GENDER:$1|uživateli|uživatelko}} {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Domovská stránka",
+	"tooltip-pt-homepage": "{{GENDER:|Vaše}} Domovská stránka",
 	"prefs-homepage": "Domovská stránka nováčka",
 	"growthexperiments-homepage-enable": "Zobrazit Domovskou stránku nováčka",
 	"growthexperiments-homepage-pt-link": "Odkaz na uživatelské jméno vede na Domovskou stránku nováčka",
@@ -90,5 +91,13 @@
 	"growthexperiments-specialimpact-title": "Dosah vašich příspěvků",
 	"growthexperiments-specialimpact-showing-for-other-user": "Zobrazuji data o dosahu příspěvků uživatele $1",
 	"growthexperiments-specialimpact-invalid-username": "Chybějící nebo neplatné uživatelské jméno.",
-	"growthexperiments-homepage-enable-preference": "Abyste aktivovali domovskou stránku nováčka, podívejte se na nastavení „Domovská stránka nováčka“ ve [[Special:Preferences#mw-prefsection-personal-homepage|svých nastaveních]]."
+	"growthexperiments-homepage-enable-preference": "Abyste aktivovali domovskou stránku nováčka, podívejte se na nastavení „Domovská stránka nováčka“ ve [[Special:Preferences#mw-prefsection-personal-homepage|svých nastaveních]].",
+	"growthexperiments-homepage-contributions-zero-title": "{{GENDER|Uživateli|Uživatelko}} $1, zatím nemáte žádné příspěvky.",
+	"growthexperiments-homepage-contributions-zero-subtitle": "Navštivte {{GENDER:$1|vaši}} Domovskou stránku a naučte se základy editování!",
+	"growthexperiments-homepage-contributions-zero-button": "Přejděte na {{GENDER:$1|vaši}} Domovskou stránku",
+	"growthexperiments-tour-welcome-title": "Vítejte na {{GENDER:$1|vaší}} Domovské stránce!",
+	"growthexperiments-tour-welcome-description": "Vždy můžete kliknout na {{GENDER:$1|vaše}} uživatelské jméno, abyste se zde vrátili.",
+	"growthexperiments-tour-discovery-title": "Začněte zde!",
+	"growthexperiments-tour-discovery-description": "Kliknutím na {{GENDER:$1|vaší}} přezdívku navštívíte {{GENDER:$1|vaši}} Domovskou stránku.",
+	"growthexperiments-homepage-welcomesurvey-default-close": "Přejděte na {{GENDER:$1|vaši}} Domovskou stránku"
 }
