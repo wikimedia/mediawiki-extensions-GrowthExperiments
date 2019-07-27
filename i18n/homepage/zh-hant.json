@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kly"
+			"Kly",
+			"Winston Sung"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
 	"growthexperiments-homepage-tab": "首頁",
+	"tooltip-pt-homepage": "{{GENDER:|您的}}首頁",
 	"prefs-homepage": "新加入者首頁",
 	"growthexperiments-homepage-enable": "顯示新加入者首頁",
 	"growthexperiments-homepage-pt-link": "自個人工具裡的使用者名稱連結預設作為新加入者首頁",
