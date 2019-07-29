@@ -7,6 +7,7 @@
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Salut}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Haaptsäit",
+	"tooltip-pt-homepage": "{{GENDER:|Är}} Homepage",
 	"growthexperiments-homepage-start-header": "Hei ufänken",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|Ännerung|Ännerungen}}",
 	"growthexperiments-homepage-userpage-header": "Maacht Är Benotzersäit",
@@ -28,5 +29,6 @@
 	"growthexperiments-homepage-mentorship-question-subject": "Fro vum [[User:$1|$1]]",
 	"growthexperiments-homepage-tutorial-header": "Léiere wéi een ännert",
 	"growthexperiments-homepage-tutorial-cta-text": "Uleedung",
-	"growthexperiments-specialimpact-title": "Impakt"
+	"growthexperiments-specialimpact-title": "Impakt",
+	"growthexperiments-tour-discovery-title": "Fänkt hei un!"
 }
