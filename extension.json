@@ -156,6 +156,12 @@
 				"mobile"
 			]
 		},
+		"ext.growthExperiments.Homepage.Discovery.styles": {
+			"styles": "homepage/ext.growthExperiments.Homepage.Discovery.less",
+			"targets": [
+				"desktop"
+			]
+		},
 		"ext.growthExperiments.Homepage.Mobile": {
 			"packageFiles": [
 				"homepage/ext.growthExperiments.Homepage.Mobile.js",

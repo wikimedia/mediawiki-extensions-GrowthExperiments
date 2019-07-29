@@ -1,0 +1,51 @@
+@import 'mediawiki.ui/variables';
+@import '../../lib/ooui/wikimedia-ui-base';
+
+#siteNotice {
+	border: 3px solid @wmui-color-accent90;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	min-height: 140px;
+	// Align with homepage container.
+	min-width: 780px;
+	display: flex;
+	justify-content: center;
+	flex-direction: row;
+	// Needed to override core style.
+	margin: 10px 0 !important; // stylelint-disable-line declaration-no-important
+
+	.mw-ge-homepage-discovery-house {
+		display: flex;
+		width: calc( 30% ~'-' 1.5em );
+		margin-right: 30px;
+		height: 100px;
+		padding-top: 30px;
+		/* @embed */
+		background: url( ../../images/homepage-discovery-house.svg ) no-repeat right;
+	}
+
+	.mw-ge-homepage-discovery-text-content {
+		display: flex;
+		flex-direction: column;
+		text-align: left;
+		width: calc( 70% ~'-' 1.5em );
+
+		h2 {
+			font-family: @font-family-base;
+			border-bottom: unset;
+			color: @colorGray2;
+			font-size: 2.2em;
+		}
+
+		p {
+			color: @colorGray7;
+			font-size: 1.4em;
+			padding-right: 10px;
+		}
+	}
+}
+
+.client-js #siteNotice {
+	display: none;
+}

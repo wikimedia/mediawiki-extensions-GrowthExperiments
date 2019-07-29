@@ -190,6 +190,11 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 			$this->showConfirmationPage( $returnTo, $returnToQuery );
 		} else {
 			// redirect to pre-createaccount page with query
+			if ( HomepageHooks::isHomepageEnabled( $this->getUser() ) ) {
+				$returnToQueryArray = wfCgiToArray( $returnToQuery );
+				$returnToQueryArray['source'] = 'welcomesurvey-originalcontext';
+				$returnToQuery = wfArrayToCgi( $returnToQueryArray );
+			}
 			$this->redirect( $returnTo, $returnToQuery );
 		}
 
@@ -271,9 +276,11 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		if ( $title->isSpecial( 'Homepage' ) ) {
 			return $this->getConfirmationButtonsWrapper( $this->getHomepageButton() );
 		}
+		$queryArray = wfCgiToArray( $query );
+		$queryArray['source'] = 'welcomesurvey-originalcontext';
 		return $this->getConfirmationButtonsWrapper(
 			Html::linkButton( $this->msg( 'welcomesurvey-close-btn', $title )->text(), [
-				'href' => $title->getLinkURL( $query ),
+				'href' => $title->getLinkURL( wfArrayToCgi( $queryArray ) ),
 				'class' => 'mw-ui-button mw-ui-safe'
 			] ) .
 			$this->getHomepageButton()
