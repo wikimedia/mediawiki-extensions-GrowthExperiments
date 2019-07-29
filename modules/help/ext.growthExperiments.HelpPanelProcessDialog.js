@@ -53,28 +53,25 @@
 
 	HelpPanelProcessDialog.static.name = 'HelpPanel';
 	HelpPanelProcessDialog.static.actions = [
-		// Allow user to close the panel at any stage.
+		// Allow user to close the panel at any stage except questioncomplete (see below)
 		{
 			icon: 'close',
 			flags: 'safe',
-			framed: false,
 			action: 'close',
-			modes: [ 'home', 'questionreview', 'questioncomplete', 'search' ]
+			modes: [ 'home', 'questionreview', 'search' ]
 		},
-		// The "Close" action button duplicates the action provided by the X
-		// at the top of the panel, this is part of the design of the panel.
+		// Add a button to the bottom of the panel that replaces the close button in the
+		// questioncomplete stage (T225669)
 		{
 			label: mw.message( 'growthexperiments-help-panel-close' ).text(),
 			modes: [ 'questioncomplete' ],
-			flags: 'safe',
-			action: 'close',
-			framed: true
+			flags: 'primary',
+			action: 'close'
 		},
 		{
 			label: mw.message( 'growthexperiments-help-panel-back-home' ).text(),
 			modes: [ 'search' ],
-			action: 'home',
-			framed: true
+			action: 'home'
 		}
 	];
 
@@ -107,15 +104,19 @@
 			this.homeFooterPanel.toggle( true );
 			this.questionReviewFooterPanel.toggle( false );
 			this.toggleSearchResults( false );
+			this.settingsCog.toggle( true );
 		}
 		if ( panel === 'questionreview' ) {
 			this.questionReviewFooterPanel.toggle( true );
 			this.homeFooterPanel.toggle( false );
+			this.settingsCog.toggle( true );
 		}
 		if ( panel === 'questioncomplete' ) {
 			// Use the action defined in static.actions rather than a custom implementation
 			// for this panel.
 			this.questionReviewFooterPanel.toggle( false );
+			// Hide the cog, it interferes with the primary 'close' action
+			this.settingsCog.toggle( false );
 		}
 		this.panels.setItem( panelObj );
 		this.setMode( panel );
