@@ -1,5 +1,9 @@
 module.exports = function ( grunt ) {
-	var conf = grunt.file.readJSON( 'extension.json' );
+	var conf = grunt.file.readJSON( 'extension.json' ),
+		messageDirs = conf.MessagesDirs.GrowthExperiments,
+		messageDirsWithoutApi = messageDirs.filter( function ( dir ) {
+			return dir.indexOf( '/api' ) === -1;
+		} );
 
 	grunt.loadNpmTasks( 'grunt-eslint' );
 	grunt.loadNpmTasks( 'grunt-jsonlint' );
@@ -19,7 +23,26 @@ module.exports = function ( grunt ) {
 				'modules/**/*.less'
 			]
 		},
-		banana: conf.MessagesDirs,
+		banana: {
+			docs: {
+				files: {
+					src: messageDirs
+				}
+			},
+			translations: {
+				files: {
+					src: messageDirsWithoutApi
+				},
+				options: {
+					requireCompleteTranslationLanguages: [
+						'cs',
+						'ko',
+						'vi',
+						'ar'
+					]
+				}
+			}
+		},
 		jsonlint: {
 			all: [
 				'**/*.json',
@@ -29,6 +52,6 @@ module.exports = function ( grunt ) {
 		}
 	} );
 
-	grunt.registerTask( 'test', [ 'eslint', 'jsonlint', 'banana', 'stylelint' ] );
+	grunt.registerTask( 'test', [ 'eslint', 'jsonlint', 'banana:docs', 'stylelint' ] );
 	grunt.registerTask( 'default', 'test' );
 };
