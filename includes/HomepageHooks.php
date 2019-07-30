@@ -460,12 +460,13 @@ class HomepageHooks {
 	}
 
 	/**
-	 * @param User $user
 	 * @throws ConfigException
 	 * @throws \MWException
 	 */
-	public static function onConfirmEmailComplete( User $user ) {
-		if ( self::isHomepageEnabled( $user ) ) {
+	public static function onConfirmEmailComplete() {
+		// context user is used for cases when someone else than $user confirms the email,
+		// and that user doesn't have homepage enabled
+		if ( self::isHomepageEnabled( RequestContext::getMain()->getUser() ) ) {
 			RequestContext::getMain()->getOutput()
 				->redirect( SpecialPage::getTitleFor( 'Homepage' )
 					->getFullUrlForRedirect( [
