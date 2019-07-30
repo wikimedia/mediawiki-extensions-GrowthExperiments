@@ -39,7 +39,13 @@ class SpecialHomepage extends SpecialPage {
 		$this->pageviewToken = $this->generateUniqueToken();
 		// Hack: Making the userpage the relevant title for the homepage
 		// allows using the talk overlay for the talk tab on mobile.
-		$this->getSkin()->setRelevantTitle( $this->getUser()->getUserPage() );
+		// This is done only for the mobile skin, because on Vector setting relevant
+		// title results in {Create/Edit}/History/Watchlist etc tabs added to the page,
+		// since Vector assumes that we are dealing with an editable user page and outputs
+		// the relevant controls. See T229263.
+		if ( Util::isMobile( $this->getSkin() ) ) {
+			$this->getSkin()->setRelevantTitle( $this->getUser()->getUserPage() );
+		}
 	}
 
 	private function handleTutorialVisit( $par ) {
