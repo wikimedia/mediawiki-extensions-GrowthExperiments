@@ -3,8 +3,10 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\HelpPanel\QuestionPoster;
+use GrowthExperiments\HelpPanel\QuestionRecord;
 use MediaWiki\Storage\PageUpdater;
 use MediaWiki\Storage\RevisionRecord;
+use Wikimedia\TestingAccessWrapper;
 
 /**
  * @coversDefaultClass \GrowthExperiments\HelpPanel\QuestionPoster
@@ -167,6 +169,64 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 		$status = $questionPoster->submit();
 		$this->assertFalse(
 			$status->isGood(), 'Check edit filter merged content hook short-circuits checkPermissions call'
+		);
+	}
+
+		/**
+	 * @covers ::getNumberedSectionHeaderIfDuplicatesExist
+	 */
+	public function testGetNumberedSectionHeaderIfDuplicateExists() {
+		$questionRecord = QuestionRecord::newFromArray( [ 'sectionHeader' => 'Foo' ] );
+		$questionPosterMock = $this->getMockBuilder( QuestionPoster::class )
+			->disableOriginalConstructor()
+			->getMockForAbstractClass();
+		$questionPoster = TestingAccessWrapper::newFromObject( $questionPosterMock );
+		$questionPoster->existingQuestionsByUser = [ $questionRecord ];
+		$this->assertSame(
+			'Foo (2)',
+			$questionPoster->getNumberedSectionHeaderIfDuplicatesExist(
+				'Foo'
+			)
+		);
+	}
+
+	/**
+	 * @covers ::getNumberedSectionHeaderIfDuplicatesExist
+	 */
+	public function testGetNumberedSectionHeaderWithMoreThanOne() {
+		$questionPosterMock = $this->getMockBuilder( QuestionPoster::class )
+			->disableOriginalConstructor()
+			->getMockForAbstractClass();
+		$questionPoster = TestingAccessWrapper::newFromObject( $questionPosterMock );
+		$questionRecords = [
+			QuestionRecord::newFromArray( [ 'sectionHeader' => 'Foo' ] ),
+			QuestionRecord::newFromArray( [ 'sectionHeader' => 'Foo (2)' ] )
+		];
+		$questionPoster->existingQuestionsByUser = $questionRecords;
+		$this->assertSame(
+			'Foo (3)',
+			$questionPoster->getNumberedSectionHeaderIfDuplicatesExist(
+				'Foo'
+			)
+		);
+	}
+
+	/**
+	 * @covers ::getNumberedSectionHeaderIfDuplicatesExist
+	 */
+	public function testGetNumberedSectionHeaderWithUnordered() {
+		$questionPosterMock = $this->getMockBuilder( QuestionPoster::class )
+			->disableOriginalConstructor()
+			->getMockForAbstractClass();
+		$questionPoster = TestingAccessWrapper::newFromObject( $questionPosterMock );
+		$questionRecords = [
+			QuestionRecord::newFromArray( [ 'sectionHeader' => 'Foo' ] ),
+			QuestionRecord::newFromArray( [ 'sectionHeader' => 'Foo (3)' ] )
+		];
+		$questionPoster->existingQuestionsByUser = $questionRecords;
+		$this->assertSame(
+			'Foo (2)',
+			$questionPoster->getNumberedSectionHeaderIfDuplicatesExist( 'Foo' )
 		);
 	}
 

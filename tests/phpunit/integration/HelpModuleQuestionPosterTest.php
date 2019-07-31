@@ -5,7 +5,6 @@ namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
 use FauxRequest;
-use FormatJson;
 use GrowthExperiments\HelpPanel\HelpModuleQuestionPoster;
 use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
@@ -79,65 +78,6 @@ class HelpModuleQuestionPosterTest extends MediaWikiTestCase {
 		$thirdQuestion = $questionPoster->getResultUrl();
 		$this->assertNotEquals( $firstQuestion, $secondQuestion );
 		$this->assertNotEquals( $secondQuestion, $thirdQuestion );
-	}
-
-	/**
-	 * @throws \MWException
-	 * @covers \GrowthExperiments\HelpPanel\HelpPanelQuestionPoster::getNumberedSectionHeaderIfDuplicatesExist
-	 * @group Broken
-	 */
-	public function testNumberingIfQuestionIsArchived() {
-		$this->insertPage( 'HelpDeskTest', '' );
-		$questionPoster = new HelpModuleQuestionPoster(
-			$this->buildContext(),
-			'a great question',
-			''
-		);
-		$questionPoster->submit();
-		$questionPoster = new HelpModuleQuestionPoster(
-			$this->buildContext(),
-			'I forgot to ask',
-			''
-		);
-		$questionPoster->submit();
-		$questionPoster = new HelpModuleQuestionPoster(
-			$this->buildContext(),
-			'one more thing...',
-			''
-		);
-		$questionPoster->submit();
-		$questionStore = QuestionStoreFactory::newFromContextAndStorage(
-			$this->buildContext(),
-			Help::QUESTION_PREF
-		);
-		$questions = $questionStore->loadQuestions();
-		$this->assertEquals(
-			'(2)', substr( $questions[1]->getSectionHeader(), -3 )
-		);
-		$this->assertEquals(
-			'(3)', substr( $questions[0]->getSectionHeader(), -3 )
-		);
-		unset( $questions[1] );
-		$updateUser = $this->mutableTestUser->getInstanceForUpdate();
-		$updateUser->setOption(
-			Help::QUESTION_PREF,
-			FormatJson::encode( $questions )
-		);
-		$updateUser->saveSettings();
-		$questionPoster = new HelpModuleQuestionPoster(
-			$this->buildContext(),
-			'why was I reverted?',
-			''
-		);
-		$questionPoster->submit();
-		$questionStore = QuestionStoreFactory::newFromContextAndStorage(
-			$this->buildContext(),
-			Help::QUESTION_PREF
-		);
-		$questions = $questionStore->loadQuestions();
-		$this->assertEquals(
-			'(2)', substr( $questions[0]->getSectionHeader(), -3 )
-		);
 	}
 
 	private function buildContext( $helpDeskTitle = 'HelpDeskTest' ) {
