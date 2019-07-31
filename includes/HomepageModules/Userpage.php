@@ -2,8 +2,10 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+use GrowthExperiments\Util;
 use Html;
 use IContextSource;
+use MediaWiki\MediaWikiServices;
 use OOUI\ButtonWidget;
 
 class Userpage extends BaseTaskModule {
@@ -83,13 +85,21 @@ class Userpage extends BaseTaskModule {
 	 */
 	private function getGuidelinesLink() {
 		$wikiId = wfWikiID();
+		$url = "https://www.wikidata.org/wiki/Special:GoToLinkedPage/$wikiId/Q4592334";
+
+		if ( Util::isMobile( $this->getContext()->getSkin() ) ) {
+			/** @var \MobileContext $mobileCtx */
+			$mobileCtx = MediaWikiServices::getInstance()->getService( 'MobileFrontend.Context' );
+			$url = $mobileCtx->getMobileUrl( $url );
+		}
+
 		return Html::rawElement(
 			'div',
 			[ 'class' => 'growthexperiments-homepage-userpage-guidelines' ],
 			Html::element(
 				'a',
 				[
-					'href' => "https://www.wikidata.org/wiki/Special:GoToLinkedPage/$wikiId/Q4592334",
+					'href' => $url,
 					'data-link-id' => 'userpage-guidelines'
 				],
 				$this->getContext()->msg( 'growthexperiments-homepage-userpage-guidelines' )->text()
