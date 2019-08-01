@@ -75,7 +75,7 @@
 	"growthexperiments-homepage-mentorship-mentor-edits": "{{PLURAL:$1|لا تعديلات|تعديل واحد|تعديلان اثنان|$1 تعديلات|$1 تعديلا|$1 تعديل}}",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|نشط|نشطة}} اليوم",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|نشط|نشطة}} أمس",
-	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|نشط|نشطة}} قبل {{PLURAL:$2|$2لا يوم|يومين|$2 أيام|$2 يوما|$2 يوم}}",
+	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|نشط|نشطة}} قبل {{PLURAL:$2|$2 يوم|يوم واحد|يومين|$2 أيام|$2 يوما|$2 يوم}}",
 	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|يعرف هذا المستخدم الخبير|تعرف هذه المستخدمة الخبيرة}}  أنك {{GENDER:$2|جديد|جديدة}} ويمكن أن {{GENDER:$1|يساعدك|تساعدك}} في التحرير.",
 	"growthexperiments-homepage-mentorship-question-button": "{{GENDER:$2|اسأل|اسألي}} {{GENDER:$1|مرشدك|مرشدتك}} سؤالا",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "{{GENDER:$2|شاهد|شاهدي}} محادثات {{GENDER:$1|مرشدك|مرشدتك}} الأخرى",
