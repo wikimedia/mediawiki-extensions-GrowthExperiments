@@ -85,12 +85,17 @@ class HomepageHooks {
 		if ( !self::isHomepageEnabled( $skin->getUser() ) ) {
 			return;
 		}
-		if ( $skin->getTitle()->isSpecial( 'Homepage' ) ||
+		$isHomepage = $skin->getTitle()->isSpecial( 'Homepage' );
+		if ( $isHomepage ||
 			 self::titleIsUserPageOrUserTalk( $skin->getTitle(), $skin->getUser() ) ) {
 			/** @var SkinOptions $skinOptions */
 			$skinOptions->setMultiple( [
 				SkinOptions::OPTIONS_TALK_AT_TOP => true,
-				SkinOptions::OPTION_TABS_ON_SPECIALS => true
+				SkinOptions::OPTION_TABS_ON_SPECIALS => true,
+				// Another hack. When overflow submenu is true, the various tabs normally shown
+				// on editable page will be hidden, which is what we want on Special:Homepage.
+				// On User:Foo or User_talk:Foo, however, we want this set to false.
+				SkinOptions::OPTION_OVERFLOW_SUBMENU => $isHomepage
 			] );
 		}
 	}
