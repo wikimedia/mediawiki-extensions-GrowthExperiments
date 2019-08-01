@@ -54,6 +54,13 @@ class Start extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
+	protected function shouldInvertHeaderIcon() {
+		return false;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function canRender() {
 		return (bool)$this->tasks;
 	}
@@ -72,13 +79,8 @@ class Start extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function getMobileSummaryHeader() {
-		$icon = $this->getHeaderIcon(
-			$this->getHeaderIconName(),
-			false
-		);
-		$text = $this->getHeaderTextElement();
-		$navIcon = $this->getNavIcon();
-		return $icon . $text . $navIcon;
+		// Use grandparent implementation: parent implementation doesn't add $navIcon
+		return BaseModule::getMobileSummaryHeader();
 	}
 
 	/**
