@@ -70,30 +70,23 @@
 
 .growthexperiments-homepage-mobile-summary {
 	.growthexperiments-homepage-module-impact {
-		.growthexperiments-homepage-impact-subheader-text {
-			margin-right: 2em;
+		.growthexperiments-homepage-module-body {
+			display: flex;
+			align-items: flex-end;
 		}
 
-		.growthexperiments-homepage-impact-subheader-subtext {
-			display: flex;
-			align-items: baseline;
+		.growthexperiments-homepage-impact-column-text {
+			flex-grow: 1;
+		}
 
-			span:first-child {
-				flex-grow: 1;
-			}
+		.growthexperiments-homepage-impact-column-pageviews {
+			line-height: 1;
+			font-size: 2em;
+			color: @colorProgressive;
+			padding-left: 10px;
 
-			span:last-child {
-				font-size: 2em;
-				line-height: 0; // weird, but it keeps this element and the one above tighter together
-				color: @colorProgressive;
-			}
-
-			.growthexperiments-homepage-impact-mobile-totalviews {
-				padding-left: 10px;
-
-				.empty-pageviews-summary {
-					font-size: 0.5em;
-				}
+			.empty-pageviews-summary {
+				font-size: 0.5em;
 			}
 		}
 	}
