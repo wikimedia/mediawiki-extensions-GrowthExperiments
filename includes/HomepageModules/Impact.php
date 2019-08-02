@@ -110,32 +110,21 @@ class Impact extends BaseModule {
 	 */
 	protected function getMobileSummaryBody() {
 		if ( $this->isActivated() ) {
+			$purposeElement = '';
 			$articleEditsElement = Html::rawElement(
 				'div',
 				[ 'class' => 'growthexperiments-homepage-impact-subheader-text' ],
 				$this->getArticleOrTotalEditCountText()
 			);
-			$pageViewsElement = Html::rawElement(
-				'div',
-				[ 'class' => 'growthexperiments-homepage-impact-subheader-subtext' ],
-				Html::element(
-					'span',
-					[ 'class' => 'growthexperiments-homepage-module-text-light' ],
-					$this->getContext()->msg( 'growthexperiments-homepage-impact-mobilebody-pageviews' )
-						->numParams( $this->getTotalPageViews() )
-						->text()
-				) . $this->getTotalViewsElement( true )
-			);
-			return $articleEditsElement . $pageViewsElement;
 		} else {
-			$line1 = Html::element(
+			$purposeElement = Html::element(
 				'div',
 				[ 'class' => 'growthexperiments-homepage-module-text-light' ],
 				$this->getContext()
 					->msg( 'growthexperiments-homepage-impact-mobilesummarybody-monitor' )
 					->text()
 			);
-			$line2 = Html::element(
+			$articleEditsElement = Html::element(
 				'div',
 				[ 'class' => [
 					'growthexperiments-homepage-module-text-normal',
@@ -145,19 +134,22 @@ class Impact extends BaseModule {
 					->msg( 'growthexperiments-homepage-impact-subheader-text-no-edit' )
 					->text()
 			);
-			$line3 = Html::rawElement(
-				'div',
-				[ 'class' => 'growthexperiments-homepage-impact-subheader-subtext' ],
-				Html::element(
-					'span',
-					[ 'class' => 'growthexperiments-homepage-module-text-light' ],
-					$this->getContext()->msg( 'growthexperiments-homepage-impact-mobilebody-pageviews' )
-						->numParams( $this->getTotalPageViews() )
-						->text()
-				) . $this->getTotalViewsElement()
-			);
-			return $line1 . $line2 . $line3;
 		}
+
+		$totalViewsElement = $this->getTotalViewsElement( $this->isActivated() );
+		$pageViewsElement = Html::rawElement(
+			'div',
+			[ 'class' => 'growthexperiments-homepage-impact-subheader-subtext' ],
+			Html::element(
+				'span',
+				[ 'class' => 'growthexperiments-homepage-module-text-light' ],
+				$this->getContext()->msg( 'growthexperiments-homepage-impact-mobilebody-pageviews' )
+					->numParams( $this->getTotalPageViews() )
+					->text()
+			) . $totalViewsElement
+		);
+
+		return $purposeElement . $articleEditsElement . $pageViewsElement;
 	}
 
 	/**
