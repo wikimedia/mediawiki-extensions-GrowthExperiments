@@ -3,3 +3,4 @@
 /composer.lock
 /.nyc_output
 /coverage
+/.eslintcache
