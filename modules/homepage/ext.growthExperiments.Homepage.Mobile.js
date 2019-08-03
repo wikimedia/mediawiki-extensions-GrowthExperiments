@@ -15,7 +15,11 @@
 				),
 				router = require( 'mediawiki.router' ),
 				overlayManager = OverlayManager.getSingleton(),
-				lazyLoadModules = [];
+				lazyLoadModules = [],
+				overlays = {},
+				currentModule = null,
+				// Matches routes like /homepage/moduleName or /homepage/moduleName/action
+				routeRegex = /^\/homepage\/([^/]+)(?:\/([^/]+))?$/;
 
 			/**
 			 * Extract module detail HTML, heading and RL modules config var.
@@ -29,38 +33,63 @@
 				return data;
 			}
 
-			overlayManager.add( /^\/homepage\/(.*)$/, function ( moduleName ) {
-				return new MobileOverlay(
-					$.extend( { moduleName: moduleName }, getModuleData( moduleName ) )
-				).on( 'hide', function () {
-					// We don't want to log a close event for the overlay when the user has tapped
-					// on the question dialog, which hides the MobileOverlay. To enforce that we
-					// need to check:
-					// - moduleName is not set to e.g. help/question or mentorship/question
-					// - router path is not one of /homepage/help/question or
-					//   /homepage/mentorship/question
-					// Example:
-					// 1. when you click the "Ask the help desk CTA", moduleName is help and
-					//    router.getPath() is /homepage/help/question.
-					// 2. When you close the process dialog, moduleName is  help/question and
-					//    router.getPath() is /homepage/help.
-					// 3. When you close the overlay, moduleName is help and router.getPath()
-					//    is /homepage/help
-					// We can't only check the router path since /homepage/help is the router
-					// path for both  the event we want to log (closing the overlay) and the
-					// event we don't want to log (closing the process dialog).
-					// If we changed the regex in overlayManager.add( /^\/homepage\/(.*)$/ )
-					// so that it only activated on homepage/{moduleName} and not
-					// homepage/{moduleName}/question, the user would briefly see the overlay
-					// vanish and then the mobile summary view (which was behind the overlay)
-					// before the process dialog opened up, which is a poor user experience.
-					// So the convoluted logic and lengthy comment here is a tradeoff for
-					// better user experience.
-					if ( moduleName.indexOf( '/' ) === -1 && !router.getPath().match( /^\/homepage\/.*\/question$/ ) ) {
-						logger.log( moduleName, 'mobile-overlay', 'close' );
+			function getSubmodules( moduleName ) {
+				// HACK: extract submodule info from the module HTML
+				return $( getModuleData( moduleName ).html )
+					.find( '.growthexperiments-homepage-module' )
+					.toArray()
+					.map( function ( moduleElement ) {
+						return $( moduleElement ).data( 'module-name' );
+					} )
+					// With the current HTML structure, this shouldn't return the module itself,
+					// but filter it out just to be sure
+					.filter( function ( submodule ) {
+						return submodule !== moduleName;
+					} );
+			}
+
+			function handleRouteChange( path ) {
+				var matches = path.match( routeRegex ),
+					newModule = matches ? matches[ 1 ] : null;
+
+				// Log mobile-overlay open/close when navigating to / away from a module
+				// We can't do this in a show/hide event handler on the overlay itself, because it
+				// gets hidden then shown again when opening and closing the question dialog
+				// (due to navigation from #/homepage/moduleName to #homepage/moduleName/question)
+				if ( newModule !== currentModule ) {
+					if ( currentModule !== null ) {
+						// Navigating away from a module: log closing the overlay
+						logger.log( currentModule, 'mobile-overlay', 'close' );
 					}
-				} );
+					if ( newModule !== null ) {
+						// Navigating to a module: log impression
+						logger.log( newModule, 'mobile-overlay', 'impression' );
+
+						// Find submodules in the new module, and log impressions for them
+						getSubmodules( newModule ).forEach( function ( submodule ) {
+							logger.log( submodule, 'mobile-overlay', 'impression' );
+						} );
+					}
+				}
+
+				currentModule = newModule;
+			}
+
+			overlayManager.add( routeRegex, function ( moduleName ) {
+				if ( overlays[ moduleName ] === undefined ) {
+					overlays[ moduleName ] = new MobileOverlay(
+						$.extend( { moduleName: moduleName }, getModuleData( moduleName ) )
+					);
+				}
+				return overlays[ moduleName ];
 			} );
+
+			router.on( 'route', function ( ev ) {
+				handleRouteChange( ev.path );
+			} );
+
+			// Initialize state for handleRouteChange, and log initial impression if needed
+			handleRouteChange( router.getPath() );
 
 			$homepageSummaryModules.on( 'click', function ( e ) {
 				e.preventDefault();

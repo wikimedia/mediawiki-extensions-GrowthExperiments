@@ -323,7 +323,10 @@ class SpecialHomepage extends SpecialPage {
 				$this->logModuleRenderIssue( $module, $error );
 			}
 		}
-		$out->addJsConfigVars( 'homepagemodules', $data );
+		$out->addJsConfigVars( [
+			'homepagemobile' => true,
+			'homepagemodules' => $data,
+		] );
 		$out->addModules( 'ext.growthExperiments.Homepage.Mobile' );
 		$out->addHTML( Html::rawElement(
 			'div',
