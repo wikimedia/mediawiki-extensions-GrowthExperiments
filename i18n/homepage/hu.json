@@ -2,10 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Tacsipacsi",
-			"Misibacsi"
+			"Misibacsi",
+			"Teemeah"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Üdvözlünk, {{bidi:$1}}!",
+	"growthexperiments-homepage-tab": "Kezdőlap",
+	"tooltip-pt-homepage": "A te kezdőlapod",
+	"prefs-homepage": "Új szerkesztő kezdőlapja",
+	"growthexperiments-homepage-enable": "Új szerkesztő kezdőlapjának megjelenítése",
+	"growthexperiments-homepage-start-header": "Kezdj itt",
 	"growthexperiments-homepage-account-header": "Szerkesztői fiók létrehozva",
 	"growthexperiments-homepage-account-editcount": "$1 szerkesztés",
 	"growthexperiments-homepage-account-age": "$1 óta van fiókod",
@@ -42,6 +48,7 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> szerkesztés",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Friss szerkesztések megtekintései (utóbbi 60 nap):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Kövesd az általad szerkesztett szócikkek megtekintéseit",
+	"growthexperiments-homepage-help-ask-help-desk": "Kérdés feltevése",
 	"growthexperiments-homepage-help-desk-questions": "Más szerkesztők kérdéseinek megtekintése",
 	"growthexperiments-tour-response-tip-text": "Amikor megválaszolják a {{GENDER:$1|kérdésedet}}, itt fog megjelenni egy értesítés.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Mentorértesítések",
@@ -49,6 +56,7 @@
 	"growthexperiments-tour-response-button-okay": "Értem",
 	"tag-help_module_question": "Súgómodul-kérdés",
 	"tag-mentorship_module_question": "Mentormodul-kérdés",
+	"growthexperiments-homepage-help-dialog-title": "Kérdés feltevése",
 	"growthexperiments-homepage-help-header": "Szerkesztési segítség",
 	"growthexperiments-homepage-help-cancel": "Mégse",
 	"growthexperiments-homepage-recent-questions-header": "Friss {{GENDER:$1|kérdéseid}}",
