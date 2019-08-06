@@ -172,7 +172,7 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 		);
 	}
 
-		/**
+	/**
 	 * @covers ::getNumberedSectionHeaderIfDuplicatesExist
 	 */
 	public function testGetNumberedSectionHeaderIfDuplicateExists() {
