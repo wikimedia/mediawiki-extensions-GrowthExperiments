@@ -4,5 +4,8 @@
 			"Tacsipacsi"
 		]
 	},
+	"apihelp-homepagequestionstore-param-questionformat": "A kérdések visszaadásához használt formátum, pl. HTML.",
+	"apihelp-homepagequestionstore-param-storage": "A kérdések tárolási helye.",
+	"apihelp-homepagequestionstore-param-userid": "A lekérendő kérésekhez tartozó felhasználó azonosítója.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Nem található kérdés."
 }

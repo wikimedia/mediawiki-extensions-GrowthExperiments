@@ -59,6 +59,7 @@
 	"growthexperiments-homepage-help-dialog-title": "Kérdés feltevése",
 	"growthexperiments-homepage-help-header": "Szerkesztési segítség",
 	"growthexperiments-homepage-help-cancel": "Mégse",
+	"growthexperiments-homepage-help-mobilebody": "Tegyél fel kérdést, vagy böngéssz a súgóban.",
 	"growthexperiments-homepage-recent-questions-header": "Friss {{GENDER:$1|kérdéseid}}",
 	"growthexperiments-homepage-recent-questions-posted-on": "Feltéve ennyi ideje: $1",
 	"growthexperiments-homepage-recent-questions-archived": "archiválva",
@@ -80,5 +81,6 @@
 	"growthexperiments-homepage-tutorial-header": "Szerkesztés megtanulása",
 	"growthexperiments-homepage-tutorial-cta-text": "Az első lépések",
 	"growthexperiments-specialimpact-title": "Hatás",
-	"growthexperiments-specialimpact-invalid-username": "Hiányzó vagy érvénytelen szerkesztőnév."
+	"growthexperiments-specialimpact-invalid-username": "Hiányzó vagy érvénytelen szerkesztőnév.",
+	"growthexperiments-homepage-contributions-zero-button": "{{GENDER:$1|Kezdőlapod}} megtekintése."
 }
