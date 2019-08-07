@@ -68,7 +68,7 @@
 	"growthexperiments-homepage-recent-questions-posted-on": "Опубліковано $1 тому",
 	"growthexperiments-homepage-recent-questions-archived": "заархівовано",
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "Це запитання заархівоване, мабуть, через те, що було поставлене давно.",
-	"growthexperiments-homepage-mentorship-header": "{{GENDER:$2|Ваш|Ваша}} {{GENDER:$2|наставник|наставниця}}",
+	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Ваш|Ваша}} {{GENDER:$2|наставник|наставниця}}",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|редагування|редагування|редагувань}}",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Активний|Активна}} сьогодні",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|Активний|Активна}} учора",
