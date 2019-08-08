@@ -1,6 +1,7 @@
 <?php
 namespace GrowthExperiments\HomepageModules;
 
+use Html;
 use IContextSource;
 use OOUI\ButtonWidget;
 use SpecialPage;
@@ -73,9 +74,11 @@ class Email extends BaseTaskModule {
 		// growthexperiments-homepage-email-text-noemail,
 		// growthexperiments-homepage-email-text-unconfirmed,
 		// growthexperiments-homepage-email-text-confirmed
-		return $this->getContext()->msg( "growthexperiments-homepage-email-text-{$this->emailState}" )
+		$msgKey = "growthexperiments-homepage-email-text-{$this->emailState}";
+		$messageText = $this->getContext()->msg( $msgKey )
 			->params( $this->getContext()->getUser()->getName() )
 			->escaped();
+		return $messageText . $this->getEmailAndChangeLink();
 	}
 
 	/**
@@ -89,8 +92,7 @@ class Email extends BaseTaskModule {
 		$buttonConfig = [ 'label' => $this->getContext()->msg( $buttonMsg )->text() ];
 		if ( $this->emailState === self::MODULE_STATE_CONFIRMED ) {
 			$buttonConfig += [
-				'href' => SpecialPage::getTitleFor( 'Preferences', false, 'mw-prefsection-personal-email' )
-					->getLinkURL()
+				'href' => $this->getEmailPrefsURL(),
 			];
 		} elseif ( $this->emailState === self::MODULE_STATE_UNCONFIRMED ) {
 			$buttonConfig += [
@@ -109,6 +111,48 @@ class Email extends BaseTaskModule {
 		$button = new ButtonWidget( $buttonConfig );
 		$button->setAttributes( [ 'data-link-id' => 'email-' . $this->emailState ] );
 		return $button;
+	}
+
+	/**
+	 * Build the email address and "(change)" link.
+	 *
+	 * This only appears in the unconfirmed state. If we're in a different state, this method returns
+	 * an empty string.
+	 * @return string HTML
+	 */
+	protected function getEmailAndChangeLink() {
+		if ( $this->emailState !== self::MODULE_STATE_UNCONFIRMED ) {
+			return '';
+		}
+		$email = $this->getContext()->getUser()->getEmail();
+		return Html::rawElement(
+			'div',
+			[ 'class' => 'growthexperiments-homepage-email-change' ],
+			Html::element(
+				'span',
+				[
+					'class' => 'growthexperiments-homepage-email-change-address',
+					'title' => $email
+				],
+				$email
+			) . Html::element(
+				'a',
+				[
+					'class' => 'growthexperiments-homepage-email-change-link',
+					'href' => $this->getEmailPrefsURL(),
+				],
+				$this->getContext()->msg( 'growthexperiments-homepage-email-changelink' )->text()
+			)
+		);
+	}
+
+	/**
+	 * Get the URL for the "email" section on Special:Preferences
+	 * @return string URL
+	 */
+	protected function getEmailPrefsURL() {
+		return SpecialPage::getTitleFor( 'Preferences', false, 'mw-prefsection-personal-email' )
+			->getLinkURL();
 	}
 
 	/**
