@@ -3,7 +3,8 @@
 		"authors": [
 			"Vlad5250",
 			"Gzhegozh",
-			"Ата"
+			"Ата",
+			"Movses"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Привіт}}, {{bidi:$1}}!",
@@ -74,11 +75,11 @@
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|Активний|Активна}} учора",
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Активний|Активна}} $2 {{PLURAL:$2|день|дні|днів}} тому",
 	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|Цей досвідчений користувач|Ця досвідчена користувачка}} знає, що ви новачок, і може допомогти {{GENDER:$2|вам}} з редагуванням.",
-	"growthexperiments-homepage-mentorship-question-button": "Поставте запитання {{GENDER:$1|своєму наставнику|своїй наставниці}}",
-	"growthexperiments-homepage-mentorship-mentor-conversations": "Перегляньте інші розмови {{GENDER:$1|свого наставника|своєї наставниці}}",
-	"growthexperiments-homepage-mentorship-dialog-title": "Запитайте {{GENDER:$1|свого наставника|свою наставницю}}",
+	"growthexperiments-homepage-mentorship-question-button": "Поставте запитання {{GENDER:$2|ваш}}{{GENDER:$1|ому наставнику|ій наставниці}}",
+	"growthexperiments-homepage-mentorship-mentor-conversations": "Перегляньте {{GENDER:$2|ваші}} інші розмови з {{GENDER:$1|наставником|наставницею}}",
+	"growthexperiments-homepage-mentorship-dialog-title": "Поставте запитання {{GENDER:$2|ваш}}{{GENDER:$1|ому наставнику|ій наставниці}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Коли ви ставите запитання, воно <strong>публікується публічно</strong> під {{GENDER:$2|вашим}} іменем користувача, «$2», на сторінці $3, де {{GENDER:$1|він|вона}} може його знайти і вам відповісти.",
-	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "Сторінка обговорення {{GENDER:$1|вашого наставника|вашої наставниці}}",
+	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "Сторінка обговорення {{GENDER:$2|ваш}}{{GENDER:$1|ого наставника|ої наставниці}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Ваше}} запитання тепер на сторінці обговорення {{GENDER:$1|вашого наставника|вашої наставниці}}, де {{GENDER:$1|він|вона}} відповість, коли зможе.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Перегляньте {{GENDER:$2|своє}} запитання на сторінці обговорення {{GENDER:$1|вашого наставника|вашої наставниці}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Питання від [[User:$1|$1]]",
