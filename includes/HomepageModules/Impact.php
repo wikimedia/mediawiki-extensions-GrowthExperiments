@@ -97,10 +97,14 @@ class Impact extends BaseModule {
 		if ( $this->isActivated() ) {
 			$this->body = $this->getEditsTable();
 		} else {
-			$this->body = $this->getContext()
-				->msg( 'growthexperiments-homepage-impact-body-no-edit' )
-				->params( $this->getContext()->getUser()->getName() )
-				->parse();
+			$this->body = Html::rawElement(
+				'div',
+				[],
+				$this->getContext()
+					->msg( 'growthexperiments-homepage-impact-body-no-edit' )
+					->params( $this->getContext()->getUser()->getName() )
+					->parse()
+			);
 		}
 		return $this->body;
 	}
@@ -137,19 +141,26 @@ class Impact extends BaseModule {
 		}
 
 		$totalViewsElement = $this->getTotalViewsElement( $this->isActivated() );
-		$pageViewsElement = Html::rawElement(
+		$pageViewsElement = Html::element(
 			'div',
-			[ 'class' => 'growthexperiments-homepage-impact-subheader-subtext' ],
-			Html::element(
-				'span',
-				[ 'class' => 'growthexperiments-homepage-module-text-light' ],
-				$this->getContext()->msg( 'growthexperiments-homepage-impact-mobilebody-pageviews' )
-					->numParams( $this->getTotalPageViews() )
-					->text()
-			) . $totalViewsElement
+			[ 'class' => [
+				'growthexperiments-homepage-impact-subheader-subtext',
+				'growthexperiments-homepage-module-text-light'
+			] ],
+			$this->getContext()->msg( 'growthexperiments-homepage-impact-mobilebody-pageviews' )
+				->numParams( $this->getTotalPageViews() )
+				->text()
 		);
 
-		return $purposeElement . $articleEditsElement . $pageViewsElement;
+		return Html::rawElement(
+			'div',
+			[ 'class' => 'growthexperiments-homepage-impact-column-text' ],
+			$purposeElement . $articleEditsElement . $pageViewsElement
+		) . Html::rawElement(
+			'div',
+			[ 'class' => 'growthexperiments-homepage-impact-column-pageviews' ],
+			$totalViewsElement
+		);
 	}
 
 	/**
