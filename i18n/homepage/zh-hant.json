@@ -31,6 +31,7 @@
 	"growthexperiments-homepage-email-button-noemail": "新增電子郵件",
 	"growthexperiments-homepage-email-button-unconfirmed": "取得新連結",
 	"growthexperiments-homepage-email-button-confirmed": "偏好設定",
+	"growthexperiments-homepage-email-changelink": "更改{{GENDER:$1|您的}}電子郵件地址",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|您的}}影響",
 	"growthexperiments-homepage-impact-subheader-text": "人們正讀著{{GENDER:$1|您}}所編輯過的條目！",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|您}}做出編輯後的檢視數（過去 60 天）：",

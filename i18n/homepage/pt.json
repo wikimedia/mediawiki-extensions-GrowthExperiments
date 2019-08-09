@@ -31,6 +31,7 @@
 	"growthexperiments-homepage-email-button-noemail": "Adicionar correio eletrónico",
 	"growthexperiments-homepage-email-button-unconfirmed": "Obter uma hiperligação nova",
 	"growthexperiments-homepage-email-button-confirmed": "Preferências",
+	"growthexperiments-homepage-email-changelink": "Alterar o {{GENDER:$1|seu}} endereço de correio eletrónico",
 	"growthexperiments-homepage-impact-header": "O {{GENDER:$1|seu}} impacto",
 	"growthexperiments-homepage-impact-subheader-text": "As pessoas estão a ler os artigos que {{GENDER:$1|você}} editou!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visitas desde que {{GENDER:$1|você}} editou (últimos 60 dias):",

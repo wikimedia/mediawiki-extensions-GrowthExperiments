@@ -30,6 +30,7 @@
 	"growthexperiments-homepage-email-button-noemail": "Adicionar e-mail",
 	"growthexperiments-homepage-email-button-unconfirmed": "Obter um novo link",
 	"growthexperiments-homepage-email-button-confirmed": "Preferências",
+	"growthexperiments-homepage-email-changelink": "(alterar)",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Seu}} impacto",
 	"growthexperiments-homepage-impact-subheader-text": "As pessoas estão vendo os artigos que {{GENDER:$1|você}} editou!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visualizações desde que {{GENDER:$1|você}} editou (últimos 60 dias):",

@@ -3,7 +3,8 @@
 		"authors": [
 			"Tuanminh01",
 			"Ioe2015",
-			"Bluetpp"
+			"Bluetpp",
+			"Trizek (WMF)"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "\n{{GENDER:$1|Xin chào}}, {{bidi:$1}}!",
@@ -32,6 +33,7 @@
 	"growthexperiments-homepage-email-button-noemail": "Thêm email",
 	"growthexperiments-homepage-email-button-unconfirmed": "Lấy link mới",
 	"growthexperiments-homepage-email-button-confirmed": "Tùy chọn",
+	"growthexperiments-homepage-email-changelink": "(thay đổi)",
 	"growthexperiments-homepage-impact-header": "Ảnh hưởng của {{GENDER:$1|bạn}}",
 	"growthexperiments-homepage-impact-subheader-text": "Mọi người đang xem các bài viết {{GENDER:$1|bạn}} đã sửa đổi!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Số lượng người xem trang mà {{GENDER:$1|bạn}} đã sửa đổi (60 ngày)",

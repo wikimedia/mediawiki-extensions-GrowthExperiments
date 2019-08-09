@@ -34,6 +34,7 @@
 	"growthexperiments-homepage-email-button-noemail": "Přidat e-mail",
 	"growthexperiments-homepage-email-button-unconfirmed": "Zaslat nový odkaz",
 	"growthexperiments-homepage-email-button-confirmed": "Nastavení",
+	"growthexperiments-homepage-email-changelink": "(změnit)",
 	"growthexperiments-homepage-impact-header": "Dosah {{GENDER:$1|vašich}} příspěvků",
 	"growthexperiments-homepage-impact-subheader-text": "Lidé navštěvují články, které jste {{GENDER:$1|editoval|editovala|editovali}}!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Počty zobrazení od {{GENDER:$1|vaší}} první editace (posledních 60 dní):",

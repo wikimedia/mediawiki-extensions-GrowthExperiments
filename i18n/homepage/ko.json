@@ -34,6 +34,7 @@
 	"growthexperiments-homepage-email-button-noemail": "이메일 추가",
 	"growthexperiments-homepage-email-button-unconfirmed": "새 링크 가져오기",
 	"growthexperiments-homepage-email-button-confirmed": "환경 설정",
+	"growthexperiments-homepage-email-changelink": "(변경)",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|당신}}의 영향",
 	"growthexperiments-homepage-impact-subheader-text": "편집하신 문서를 {{GENDER:$1|사람들이}} 읽고 있습니다!",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|당신의}} 편집 이후 최근 60일간의 문서 열람 횟수:",

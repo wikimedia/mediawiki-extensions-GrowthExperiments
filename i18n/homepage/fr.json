@@ -35,6 +35,7 @@
 	"growthexperiments-homepage-email-button-noemail": "Ajouter une adresse de courriel",
 	"growthexperiments-homepage-email-button-unconfirmed": "Obtenir un nouveau lien",
 	"growthexperiments-homepage-email-button-confirmed": "Préférences",
+	"growthexperiments-homepage-email-changelink": "Modifier {{GENDER:$1|votre}} adresse de messagerie",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Votre}} impact",
 	"growthexperiments-homepage-impact-subheader-text": "Des gens regardent les articles que {{GENDER:$1|vous}} avez modifié s!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Vues depuis que {{GENDER:$1|vous}} avez modifié (60 derniers jours) :",

@@ -34,6 +34,7 @@
 	"growthexperiments-homepage-email-button-noemail": "إضافة البريد الإلكتروني",
 	"growthexperiments-homepage-email-button-unconfirmed": "الحصول على رابط جديد",
 	"growthexperiments-homepage-email-button-confirmed": "تفضيلات",
+	"growthexperiments-homepage-email-changelink": "(تغيير)",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|تأثيرك}}",
 	"growthexperiments-homepage-impact-subheader-text": "الناس يشاهدون المقالات التي {{GENDER:$1|حررتها}}!",
 	"growthexperiments-homepage-impact-subheader-subtext": "المشاهدات منذ {{GENDER:$1|قيامك}} بالتحرير (آخر 60 يوما):",

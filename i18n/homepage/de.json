@@ -30,6 +30,7 @@
 	"growthexperiments-homepage-email-button-noemail": "E-Mail-Adresse hinzufügen",
 	"growthexperiments-homepage-email-button-unconfirmed": "Einen neuen Link erhalten",
 	"growthexperiments-homepage-email-button-confirmed": "Einstellungen",
+	"growthexperiments-homepage-email-changelink": "{{GENDER:$1|Deine}} E-Mail-Adresse ändern",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Deine}} Auswirkung",
 	"growthexperiments-homepage-impact-subheader-text": "Menschen betrachten die Artikel, die {{GENDER:$1|du}} bearbeitet hast!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Aufrufe seit {{GENDER:$1|deiner}} Bearbeitung (letzte 60 Tage):",
