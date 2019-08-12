@@ -4,7 +4,8 @@
 			"Vlad5250",
 			"Gzhegozh",
 			"Ата",
-			"Movses"
+			"Movses",
+			"Base"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Привіт}}, {{bidi:$1}}!",
@@ -12,6 +13,7 @@
 	"tooltip-pt-homepage": "{{GENDER:|Ваша}} домашня сторінка",
 	"prefs-homepage": "Домашня сторінка нового користувача",
 	"growthexperiments-homepage-enable": "Показувати домашню сторінку для новачків",
+	"growthexperiments-homepage-pt-link": "За замовчуванням направити посилання з імені користувача в особистих інструментах на головну для новачків",
 	"growthexperiments-homepage-start-header": "Почніть тут",
 	"growthexperiments-homepage-account-header": "Обліковий запис створено",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|редагування|редагування|редагувань}}",
@@ -32,6 +34,7 @@
 	"growthexperiments-homepage-email-button-noemail": "Додати електронну пошту",
 	"growthexperiments-homepage-email-button-unconfirmed": "Отримати нове посилання",
 	"growthexperiments-homepage-email-button-confirmed": "Налаштування",
+	"growthexperiments-homepage-email-changelink": "(змінити)",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Ваш}} вплив",
 	"growthexperiments-homepage-impact-subheader-text": "Люди переглядають статті, які {{GENDER:$1|ви}} створили!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Перегляди з часу {{GENDER:$1|ваших}} редагувань (минулі 60 днів):",
