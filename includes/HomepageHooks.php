@@ -4,6 +4,7 @@ namespace GrowthExperiments;
 
 use ConfigException;
 use DomainException;
+use EchoEvent;
 use Exception;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageModules\Help;
@@ -12,6 +13,7 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Tracker\Tracker;
+use GrowthExperiments\Specials\SpecialClaimMentee;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
 use Html;
@@ -46,7 +48,7 @@ class HomepageHooks {
 	const CONFIRMEMAIL_QUERY_PARAM = 'specialconfirmemail';
 
 	/**
-	 * Register Homepage and Impact special pages.
+	 * Register Homepage, Impact and ClaimMentee special pages.
 	 *
 	 * @param array &$list
 	 * @throws ConfigException
@@ -73,6 +75,7 @@ class HomepageHooks {
 					);
 				};
 			}
+			$list[ 'ClaimMentee' ] = SpecialClaimMentee::class;
 		}
 	}
 
@@ -776,6 +779,47 @@ class HomepageHooks {
 		return SpecialPage::getTitleFor( 'Homepage' )->getLinkURL(
 			'source=personaltoolslink&namespace=' . $namespace
 		);
+	}
+
+	/**
+	 * Add GrowthExperiments events to Echo
+	 *
+	 * @param array &$notifications array of Echo notifications
+	 * @param array &$notificationCategories array of Echo notification categories
+	 * @param array &$icons array of icon details
+	 */
+	public static function onBeforeCreateEchoEvent(
+		&$notifications, &$notificationCategories, &$icons
+	) {
+		$notifications['mentor-changed'] = [
+			'category' => 'system',
+			'group' => 'positive',
+			'section' => 'alert',
+			'presentation-model' => 'GrowthExperiments\\EchoMentorChangePresentationModel',
+		];
+		$icons['growthexperiments-menteeclaimed'] = [
+			'path' => [
+				'ltr' => 'GrowthExperiments/images/mentor-ltr.svg',
+				'rtl' => 'GrowthExperiments/images/mentor-rtl.svg'
+			]
+		];
+	}
+
+	/**
+	 * Add user to be notified on echo event
+	 * @param EchoEvent $event The event.
+	 * @param User[] &$users The user list to add to.
+	 */
+	public static function onEchoGetDefaultNotifiedUsers( $event, &$users ) {
+		if ( $event->getType() === 'mentor-changed' ) {
+				$extra = $event->getExtra();
+				if ( !$extra || !isset( $extra['mentee'] ) ) {
+					return;
+				}
+				$recipientId = $extra['mentee'];
+				$recipient = User::newFromId( $recipientId );
+				$users[$recipientId] = $recipient;
+		}
 	}
 
 }

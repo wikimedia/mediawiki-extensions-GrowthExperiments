@@ -14,7 +14,8 @@ $specialPageAliases = [];
 $specialPageAliases['en'] = [
 	'WelcomeSurvey' => [ 'WelcomeSurvey' ],
 	'Homepage' => [ 'Homepage' ],
-	'Impact' => [ 'Impact' ]
+	'Impact' => [ 'Impact' ],
+	'ClaimMentee' => [ 'ClaimMentee' ],
 ];
 
 /** Arabic */

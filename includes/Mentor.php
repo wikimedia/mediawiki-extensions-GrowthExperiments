@@ -56,16 +56,11 @@ class Mentor {
 	}
 
 	/**
-	 * Randomly selects a mentor from a list on a wiki page.
+	 * Returns all mentors that can be assigned to users
 	 *
-	 * @param User $mentee
-	 * @param User[] $excluded
-	 * @return User The selected mentor
-	 * @throws ConfigException
-	 * @throws WikiConfigException
-	 * @throws MWException
+	 * @return string[] Mentors that can be assigned
 	 */
-	private static function selectMentor( User $mentee, array $excluded = [] ) {
+	public static function getMentors() {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$mentorsPageName = $config->get( 'GEHomepageMentorsList' );
 		$title = Title::newFromText( $mentorsPageName );
@@ -75,11 +70,27 @@ class Mentor {
 		$page = WikiPage::factory( $title );
 		$links = $page->getParserOutput( ParserOptions::newCanonical() )->getLinks();
 		if ( !isset( $links[ NS_USER ] ) ) {
-			throw new WikiConfigException(
+			return [];
+		}
+		return array_keys( $links[ NS_USER ] );
+	}
+
+	/**
+	 * Randomly selects a mentor from a list on a wiki page.
+	 *
+	 * @param User $mentee
+	 * @param User[] $excluded
+	 * @return User The selected mentor
+	 * @throws ConfigException
+	 * @throws MWException
+	 */
+	private static function selectMentor( User $mentee, array $excluded = [] ) {
+		$possibleMentors = self::getMentors();
+		if ( count( $possibleMentors ) === 0 ) {
+			throw new MWException(
 				'Homepage Mentorship module: no mentor available for user ' . $mentee->getName()
 			);
 		}
-		$possibleMentors = array_keys( $links[ NS_USER ] );
 		$possibleMentors = array_values( array_diff( $possibleMentors, [ $mentee->getTitleKey() ] ) );
 		if ( count( $possibleMentors ) === 0 ) {
 			throw new WikiConfigException(

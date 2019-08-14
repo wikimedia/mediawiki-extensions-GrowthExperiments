@@ -125,6 +125,12 @@
 		],
 		"WikimediaEventsShouldSchemaEditAttemptStepOversample": [
 			"GrowthExperiments\\HomepageHooks::onWikimediaEventsShouldSchemaEditAttemptStepOversample"
+		],
+		"BeforeCreateEchoEvent": [
+			"GrowthExperiments\\HomepageHooks::onBeforeCreateEchoEvent"
+		],
+		"EchoGetDefaultNotifiedUsers": [
+			"GrowthExperiments\\HomepageHooks::onEchoGetDefaultNotifiedUsers"
 		]
 	},
 	"ResourceFileModulePaths": {
@@ -879,6 +885,18 @@
 				}
 			}
 		}
+	},
+	"LogTypes": [
+		"growthexperiments"
+	],
+	"LogNames": {
+		"growthexperiments": "growthexperiments-log-name"
+	},
+	"LogHeaders": {
+		"growthexperiments": "growthexperiments-log-header"
+	},
+	"LogActionsHandlers": {
+		"growthexperiments/*": "LogFormatter"
 	},
 	"manifest_version": 2
 }
