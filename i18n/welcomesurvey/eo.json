@@ -1,10 +1,51 @@
 {
 	"@metadata": {
 		"authors": [
-			"YvesNevelsteen"
+			"YvesNevelsteen",
+			"Mirin"
 		]
 	},
+	"welcomesurvey-save-btn": "Fini",
 	"welcomesurvey-popup-close-btn": "Fermi",
 	"welcomesurvey-back-btn": "Reen",
-	"welcomesurvey-next-btn": "Sekva"
+	"welcomesurvey-next-btn": "Sekva",
+	"welcomesurvey-sidebar-editing-link1-text": "Lernilo",
+	"welcomesurvey-sidebar-editing-link1-title": "Vikipedio:Lernilo",
+	"welcomesurvey-sidebar-editing-link2-text": "Helpejo",
+	"welcomesurvey-sidebar-editing-link2-title": "Vikipedio:Helpejo",
+	"welcomesurvey-dropdown-option-select-label": "Bonvolul elekti...",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Alia",
+	"welcomesurvey-question-reason-option-other-label": "Alia (bonvolu priskribi)",
+	"welcomesurvey-question-mentor-label": "Jes, mi estas interesata",
+	"welcomesurvey-question-edited-option-yes-many-label": "Jes, plurfoje",
+	"welcomesurvey-question-edited-option-yes-few-label": "Jes, unufoje aŭ dufoje",
+	"welcomesurvey-question-edited-option-no-dunno-label": "Ne, mi ne sciis ke mi povus redakti Vikipedion",
+	"welcomesurvey-question-edited-option-no-other-label": "Ne, alikiale",
+	"welcomesurvey-question-edited-option-dont-remember-label": "Mi ne rememoras",
+	"welcomesurvey-question-email-label": "Retpoŝta adreso (nedeviga)",
+	"welcomesurvey-question-topics-option-arts": "Arto",
+	"welcomesurvey-question-topics-option-science": "Scienco",
+	"welcomesurvey-question-topics-option-geography": "Geografio",
+	"welcomesurvey-question-topics-option-history": "Historio",
+	"welcomesurvey-question-topics-option-music": "Muziko",
+	"welcomesurvey-question-topics-option-sports": "Sporto",
+	"welcomesurvey-question-topics-option-literature": "Literaturo",
+	"welcomesurvey-question-topics-option-religion": "Religio",
+	"welcomesurvey-question-topics-option-popular-culture": "Populara kulturo",
+	"welcomesurvey-question-topics-option-entertainment": "Distro",
+	"welcomesurvey-question-topics-option-food-drink": "Manĝaĵoj kaj trinkaĵoj",
+	"welcomesurvey-question-topics-option-biography": "Biografio",
+	"welcomesurvey-question-topics-option-military": "Milito",
+	"welcomesurvey-question-topics-option-economics": "Ekonomiko",
+	"welcomesurvey-question-topics-option-technology": "Teknologio",
+	"welcomesurvey-question-topics-option-film": "Kino",
+	"welcomesurvey-question-topics-option-philosophy": "Filozofio",
+	"welcomesurvey-question-topics-option-business": "Negoco",
+	"welcomesurvey-question-topics-option-politics": "Politiko",
+	"welcomesurvey-question-topics-option-government": "Registaro",
+	"welcomesurvey-question-topics-option-engineering": "Inĝenierio",
+	"welcomesurvey-question-topics-option-games": "Ludoj",
+	"welcomesurvey-question-topics-option-health": "Sano",
+	"welcomesurvey-question-topics-option-social-science": "Socia scienco",
+	"welcomesurvey-question-topics-option-education": "Eduko"
 }
