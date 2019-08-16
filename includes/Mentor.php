@@ -59,7 +59,7 @@ class Mentor {
 	 * Randomly selects a mentor from a list on a wiki page.
 	 *
 	 * @param User $mentee
-	 * @return bool|User The selected mentor or false if none are available
+	 * @return User The selected mentor
 	 * @throws ConfigException
 	 * @throws Exception
 	 */
