@@ -118,7 +118,7 @@ class Help extends BaseModule {
 	protected function getMobileSummaryBody() {
 		return Html::element(
 			'div',
-			[],
+			[ 'class' => 'growthexperiments-homepage-module-text-light' ],
 			$this->getContext()->msg( 'growthexperiments-homepage-help-mobilebody' )->text()
 		);
 	}
