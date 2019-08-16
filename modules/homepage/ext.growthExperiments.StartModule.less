@@ -226,13 +226,24 @@
 			}
 
 			.growthexperiments-homepage-module-start-account {
-				.growthexperiments-homepage-module-section-userinfo {
-					display: flex;
-					align-items: center;
+				.growthexperiments-homepage-module-section {
+					&-userinfo {
+						display: flex;
+						margin-bottom: 1em;
 
-					.oo-ui-iconElement {
-						margin-left: unset;
-						margin-right: 1em;
+						.growthexperiments-homepage-module-section-username {
+							line-height: 1em;
+						}
+
+						.oo-ui-iconElement {
+							margin-left: unset;
+							margin-right: 1em;
+						}
+					}
+
+					&-accountage {
+						font-size: 1em;
+						letter-spacing: 0;
 					}
 				}
 			}
