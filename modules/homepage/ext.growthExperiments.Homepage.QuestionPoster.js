@@ -1,4 +1,5 @@
-( function () {
+( function ( M ) {
+	'use strict';
 	var attachButton = function ( config ) {
 		var appendWindowManagerToBody = function ( windowManager, dialog ) {
 				// eslint-disable-next-line no-jquery/no-global-selector
@@ -87,5 +88,39 @@
 			routerInstance.navigate( '#' + questionRoute );
 		} );
 	};
+	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function () {
+		var mobile = M.require( 'mobile.startup' ),
+			time = mobile.time;
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$( '.question-posted-on' ).each( function ( index, value ) {
+			var $postedOn = $( value ),
+				timestamp = $postedOn.data( 'timestamp' ),
+				keys = {
+					// These keys come from Language->formatDuration() which we use
+					// on the server-side.
+					seconds: 'duration-seconds',
+					minutes: 'duration-minutes',
+					hours: 'duration-hours',
+					days: 'duration-days',
+					weeks: 'duration-weeks',
+					years: 'duration-years'
+				},
+				delta;
+
+			if ( !timestamp ) {
+				return;
+			}
+			delta = time.getTimeAgoDelta( parseInt( timestamp, 10 ) );
+			$postedOn.text(
+				mw.message(
+					'growthexperiments-homepage-recent-questions-posted-on',
+					mw.message.apply(
+						this,
+						[ keys[ delta.unit ], mw.language.convertNumber( delta.value ) ]
+					).text()
+				).parse()
+			);
+		} );
+	} );
 	module.exports = attachButton;
-}() );
+}( mw.mobileFrontend ) );

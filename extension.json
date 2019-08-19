@@ -330,7 +330,14 @@
 				"homepage/ext.growthExperiments.QuestionPosterDialog.js"
 			],
 			"messages": [
-				"growthexperiments-homepage-help-cancel"
+				"growthexperiments-homepage-help-cancel",
+				"duration-seconds",
+				"duration-minutes",
+				"duration-hours",
+				"duration-days",
+				"duration-weeks",
+				"duration-years",
+				"growthexperiments-homepage-recent-questions-posted-on"
 			],
 			"dependencies": [
 				"ext.growthExperiments.Help",
