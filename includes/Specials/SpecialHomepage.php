@@ -215,11 +215,12 @@ class SpecialHomepage extends SpecialPage {
 	 */
 	private function logModuleRenderIssue( HomepageModule $module, $issue ) {
 		LoggerFactory::getInstance( 'GrowthExperiments' )->error(
-			"Homepage module '{class}' cannot be rendered. {msg} {trace}",
+			"Homepage module '{class}' cannot be rendered for user {user_id}. {msg} {trace}",
 			[
 				'class' => get_class( $module ),
 				'msg' => $issue->getMessage(),
 				'trace' => $issue->getTraceAsString(),
+				'user_id' => $this->getUser()->getId(),
 			]
 		);
 	}
