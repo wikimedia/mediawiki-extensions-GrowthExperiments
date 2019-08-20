@@ -3,13 +3,14 @@
 		"authors": [
 			"Djdakta",
 			"Wladek92",
-			"Gomoko"
+			"Gomoko",
+			"Djiboun"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Activer l’onglet d’aide de l’éditeur",
 	"growthexperiments-help-panel-cta-button-text": "Obtenez de l'aide avec l'édition",
 	"growthexperiments-help-panel-question-button-text": "Continuer",
-	"growthexperiments-help-panel-submit-question-button-text": "Envoyer ma question",
+	"growthexperiments-help-panel-submit-question-button-text": "Publier",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Meilleures pages d'aide à propos de l'édition",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Voir plus d'articles d'aide",
 	"growthexperiments-help-panel-question-widget-header": "Envoyer votre question au Help Desk de la Communauté",

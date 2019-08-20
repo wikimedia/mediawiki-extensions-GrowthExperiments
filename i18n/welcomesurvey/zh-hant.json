@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kly"
+			"Kly",
+			"Hello903hello"
 		]
 	},
-	"welcomesurvey": "{{GENDER:$1|歡迎您}，$1！",
+	"welcomesurvey": "{{GENDER:$1|歡迎您}}，$1！",
 	"welcomesurvey-save-confirmation-title": "感謝！已保存您的回覆。",
 	"welcomesurvey-save-confirmation-text": "您的答覆，會用來協助我們讓所有新使用者在使用維基百科上可以更好。\n\n要了解更多關於這些選填回覆會如何拿來使用，請參閱調查$1。",
 	"welcomesurvey-subtitle": "透過回答一些選填的問題，來協助我們讓如同像您一般的新使用者，在使用維基百科上可以更好。",
