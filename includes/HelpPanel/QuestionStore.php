@@ -119,11 +119,6 @@ class QuestionStore {
 			if ( $questionRecord->getContentModel() === CONTENT_MODEL_WIKITEXT ) {
 				$checkedRecord->setVisible( $this->isRevisionVisible( $checkedRecord ) );
 				$checkedRecord->setArchived( !$this->questionExistsOnPage( $checkedRecord ) );
-				// b/c, archiveUrl is now set when first added to the store.
-				// todo: Remove with wmf.5
-				if ( $checkedRecord->isArchived() && !$checkedRecord->getArchiveUrl() ) {
-					$checkedRecord = $this->assignArchiveUrl( $checkedRecord );
-				}
 				if ( !$checkedRecord->getTimestamp() ) {
 					// Some records did not have timestamps (T223338); backfill the
 					// timestamp if it's not set.
