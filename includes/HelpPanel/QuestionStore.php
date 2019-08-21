@@ -165,6 +165,9 @@ class QuestionStore {
 	}
 
 	/**
+	 * Does the question exists on the page specified by $questionRecord->resultUrl?
+	 * Note this is not always the same as asking whether it exists on the page that contains
+	 * $questionRecord->revId.
 	 * @param QuestionRecord $questionRecord
 	 * @return bool
 	 */
@@ -174,6 +177,12 @@ class QuestionStore {
 			$questionRecord->getRevId()
 		);
 		if ( !$revision ) {
+			return false;
+		}
+
+		$oldUrl = explode( '#', $questionRecord->getResultUrl() )[0];
+		$newUrl = Title::newFromLinkTarget( $revision->getPageAsLinkTarget() )->getLinkURL();
+		if ( $oldUrl !== $newUrl ) {
 			return false;
 		}
 
