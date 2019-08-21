@@ -273,10 +273,13 @@ class HomepageHooks {
 			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP, 0 );
 			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME, 0 );
 			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_DISCOVERY, 0 );
-			$user->saveSettings();
 			try {
-				$assignedMentor = Mentor::newFromMentee( $user, true );
-				Mentor::saveMentor( $user, $assignedMentor->getMentorUser() );
+				$user->setOption(
+					Mentor::MENTOR_PREF,
+					Mentor::newFromMentee( $user, true )
+						->getMentorUser()
+						->getId()
+				);
 			}
 			catch ( Exception $exception ) {
 				LoggerFactory::getInstance( 'GrowthExperiments' )
