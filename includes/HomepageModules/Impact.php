@@ -252,7 +252,7 @@ class Impact extends BaseModule {
 							'title' => $pageviewsTooltip,
 							'data-link-id' => 'impact-pageviews',
 						],
-						$contrib['views']
+						$this->getContext()->getLanguage()->formatNum( $contrib['views'] )
 					) : $emptyViewsWidget;
 
 				return Html::rawElement(
@@ -403,7 +403,7 @@ class Impact extends BaseModule {
 				'framed' => false,
 				'classes' => [ 'empty-pageviews-summary' ]
 			] ) :
-			$views;
+			$this->getContext()->getLanguage()->formatNum( $views );
 	}
 
 	/**
