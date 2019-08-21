@@ -180,10 +180,10 @@ class QuestionStore {
 		$latestPageRevision = $this->revisionStore->getRevisionByTitle(
 			$revision->getPageAsLinkTarget()
 		);
-		/** @var TextContent $content */
+		/** @var TextContent|null $content */
 		$content = $latestPageRevision->getContent( SlotRecord::MAIN );
-		// @phan-suppress-next-line PhanUndeclaredMethod
-		return strpos( $content->getText(), $questionRecord->getSectionHeader() ) !== false;
+		return $content instanceof TextContent
+			&& strpos( $content->getText(), $questionRecord->getSectionHeader() ) !== false;
 	}
 
 	/**
