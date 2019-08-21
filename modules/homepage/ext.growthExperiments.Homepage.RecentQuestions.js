@@ -44,6 +44,7 @@
 		new mw.Api().get( {
 			action: 'homepagequestionstore',
 			storage: storage,
+			uselang: mw.config.get( 'wgUserLanguage' ),
 			formatversion: 2
 		} )
 			.done( function ( data ) {
