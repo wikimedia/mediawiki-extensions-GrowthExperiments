@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hello903hello"
+		]
+	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|你好}}，{{bidi:$1}}！",
+	"growthexperiments-homepage-tab": "頭版",
+	"tooltip-pt-homepage": "{{GENDER:|你}}嘅頭版",
+	"growthexperiments-homepage-account-editcount": "$1次{{PLURAL:$1|編輯}}",
+	"growthexperiments-homepage-email-header-unconfirmed": "確認{{GENDER:$1|你嘅}}電郵地址",
+	"growthexperiments-homepage-email-header-confirmed": "加咗電郵地址",
+	"growthexperiments-homepage-help-cancel": "取消",
+	"growthexperiments-homepage-tutorial-cta-text": "教學",
+	"growthexperiments-homepage-welcomesurvey-default-close": "去{{GENDER:$1|你嘅}}頭版"
+}
