@@ -4,6 +4,8 @@
 		mw.loader.using( 'mobile.init' ).done( function () {
 			// eslint-disable-next-line no-jquery/no-global-selector
 			var $homepageSummaryModules = $( '.growthexperiments-homepage-container > a > .growthexperiments-homepage-module' ),
+				// eslint-disable-next-line no-jquery/no-global-selector
+				$overlayModules = $( '.growthexperiments-homepage-overlay-container' ),
 				MobileOverlay = require( './ext.growthExperiments.Homepage.MobileOverlay.js' ),
 				OverlayManager = mw.mobileFrontend.require( 'mobile.startup' ).OverlayManager,
 				Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
@@ -21,7 +23,9 @@
 			 * @return {Object}
 			 */
 			function getModuleData( moduleName ) {
-				return mw.config.get( 'homepagemodules' )[ moduleName ];
+				var data = mw.config.get( 'homepagemodules' )[ moduleName ];
+				data.html = $overlayModules.find( '[data-module-name="' + moduleName + '"]' ).clone();
+				return data;
 			}
 
 			overlayManager.add( /^\/homepage\/(.*)$/, function ( moduleName ) {
