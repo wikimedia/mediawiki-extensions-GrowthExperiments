@@ -239,7 +239,7 @@ class Impact extends BaseModule {
 				// data yet. Once the flag is set to true, don't set it again.
 				if ( !$this->pageViewsDataExists ) {
 					// 'views' is null if no data exists.
-					$this->pageViewsDataExists = $contrib['views'] !== null;
+					$this->pageViewsDataExists = isset( $contrib['views'] );
 				}
 				$viewsElement = isset( $contrib['views'] ) ?
 					Html::element(
