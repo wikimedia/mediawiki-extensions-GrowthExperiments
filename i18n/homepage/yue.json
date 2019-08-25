@@ -11,6 +11,12 @@
 	"growthexperiments-homepage-email-header-unconfirmed": "確認{{GENDER:$1|你嘅}}電郵地址",
 	"growthexperiments-homepage-email-header-confirmed": "加咗電郵地址",
 	"growthexperiments-homepage-help-cancel": "取消",
+	"growthexperiments-homepage-mentorship-question-subject": "來自[[User:$1|$1]]嘅問題",
 	"growthexperiments-homepage-tutorial-cta-text": "教學",
+	"growthexperiments-specialimpact-title": "影響",
+	"growthexperiments-specialimpact-showing-for-other-user": "顯示緊$1嘅影響數據",
+	"growthexperiments-homepage-contributions-zero-button": "去{{GENDER:$1|你嘅}}頭版",
+	"growthexperiments-tour-welcome-title": "歡迎來到{{GENDER:$1|你嘅}}頭版！",
+	"growthexperiments-tour-welcome-description": "{{GENDER:$1|你}}可以隨時撳{{GENDER:$1|你}}個用戶名返來呢度。",
 	"growthexperiments-homepage-welcomesurvey-default-close": "去{{GENDER:$1|你嘅}}頭版"
 }
