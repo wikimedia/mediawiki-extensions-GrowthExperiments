@@ -26,6 +26,7 @@
 	"growthexperiments-homepage-email-button-noemail": "Lägg till e-postadress",
 	"growthexperiments-homepage-email-button-unconfirmed": "Hämta ny länk",
 	"growthexperiments-homepage-email-button-confirmed": "Inställningar",
+	"growthexperiments-homepage-email-changelink": "(ändra)",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Din}} påverkan",
 	"growthexperiments-homepage-impact-subheader-text": "Folk läser artiklar som {{GENDER:$1|du}} har redigerat!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visningar sedan {{GENDER:$1|du}} redigerade (senaste 60 dygnen):",
