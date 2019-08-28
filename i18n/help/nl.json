@@ -3,11 +3,12 @@
 		"authors": [
 			"Elroy",
 			"Mainframe98",
-			"RadioAzureus"
+			"RadioAzureus",
+			"Siebrand"
 		]
 	},
 	"growthexperiments-help-panel-question-button-text": "Doorgaan",
-	"growthexperiments-help-panel-submit-question-button-text": "plaats",
+	"growthexperiments-help-panel-submit-question-button-text": "Opslaan",
 	"growthexperiments-help-panel-back-home": "Terug",
 	"growthexperiments-help-panel-close": "Afgerond",
 	"growthexperiments-help-panel-questionreview-title": "Stel een vraag",
