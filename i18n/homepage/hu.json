@@ -58,6 +58,7 @@
 	"tag-mentorship_module_question": "Mentormodul-kérdés",
 	"growthexperiments-homepage-help-dialog-title": "Kérdés feltevése",
 	"growthexperiments-homepage-help-header": "Szerkesztési segítség",
+	"growthexperiments-homepage-help-subheader": "A legfontosabb súgóoldalak a szerkesztésről",
 	"growthexperiments-homepage-help-cancel": "Mégse",
 	"growthexperiments-homepage-help-mobilebody": "Tegyél fel kérdést, vagy böngéssz a súgóban.",
 	"growthexperiments-homepage-recent-questions-header": "Friss {{GENDER:$1|kérdéseid}}",
@@ -79,8 +80,10 @@
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$2|Kérdésed}} megtekintése a {{GENDER:$1|mentorod}} vitalapján.",
 	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]] kérdése",
 	"growthexperiments-homepage-tutorial-header": "Szerkesztés megtanulása",
+	"growthexperiments-homepage-tutorial-subheader": "Egy gyors bevezető a Wikipédia szerkesztéséről",
 	"growthexperiments-homepage-tutorial-cta-text": "Az első lépések",
 	"growthexperiments-specialimpact-title": "Hatás",
 	"growthexperiments-specialimpact-invalid-username": "Hiányzó vagy érvénytelen szerkesztőnév.",
-	"growthexperiments-homepage-contributions-zero-button": "{{GENDER:$1|Kezdőlapod}} megtekintése."
+	"growthexperiments-homepage-contributions-zero-button": "{{GENDER:$1|Kezdőlapod}} megtekintése.",
+	"growthexperiments-tour-discovery-title": "Kezdd itt!"
 }
