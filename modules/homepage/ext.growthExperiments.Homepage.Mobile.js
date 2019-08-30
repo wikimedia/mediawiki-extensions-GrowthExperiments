@@ -14,7 +14,8 @@
 					mw.config.get( 'wgGEHomepagePageviewToken' )
 				),
 				router = require( 'mediawiki.router' ),
-				overlayManager = OverlayManager.getSingleton();
+				overlayManager = OverlayManager.getSingleton(),
+				lazyLoadModules = [];
 
 			/**
 			 * Extract module detail HTML, heading and RL modules config var.
@@ -61,19 +62,24 @@
 				} );
 			} );
 
-			$homepageSummaryModules.each( function ( index, module ) {
-				var moduleName = $( module ).data( 'module-name' );
-				// Start loading the ResourceLoader modules so that tapping on one will load
-				// instantly. We don't load these with page delivery so as to speed up the
-				// initial page load.
-				setTimeout( function () {
-					mw.loader.load( getModuleData( moduleName ).rlModules || [] );
-				}, 250 );
-				$( module ).on( 'click', function ( e ) {
-					e.preventDefault();
-					router.navigate( '#/homepage/' + moduleName );
-				} );
+			$homepageSummaryModules.on( 'click', function ( e ) {
+				e.preventDefault();
+				router.navigate( '#/homepage/' + $( this ).data( 'module-name' ) );
 			} );
+
+			// Start loading the ResourceLoader modules so that tapping on one will load
+			// instantly. We don't load these with page delivery so as to speed up the
+			// initial page load.
+			$homepageSummaryModules.each( function () {
+				var moduleName = $( this ).data( 'module-name' ),
+					rlModules = getModuleData( moduleName ).rlModules;
+				if ( rlModules ) {
+					lazyLoadModules = lazyLoadModules.concat( rlModules );
+				}
+			} );
+			setTimeout( function () {
+				mw.loader.load( lazyLoadModules );
+			}, 250 );
 
 		} );
 	}
