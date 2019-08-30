@@ -311,9 +311,12 @@ class SpecialHomepage extends SpecialPage {
 		$out = $this->getContext()->getOutput();
 
 		$data = [];
+		$html = '';
 		foreach ( $modules as $moduleName => $module ) {
 			try {
 				$data[$moduleName] = $module->getDataForOverlay();
+				$html .= $data[$moduleName]['html'];
+				unset( $data[$moduleName]['html'] );
 			} catch ( Exception $exception ) {
 				$this->logModuleRenderIssue( $module, $exception );
 			} catch ( Error $error ) {
@@ -322,6 +325,11 @@ class SpecialHomepage extends SpecialPage {
 		}
 		$out->addJsConfigVars( 'homepagemodules', $data );
 		$out->addModules( 'ext.growthExperiments.Homepage.Mobile' );
+		$out->addHTML( Html::rawElement(
+			'div',
+			[ 'class' => 'growthexperiments-homepage-overlay-container' ],
+			$html
+		) );
 	}
 
 }
