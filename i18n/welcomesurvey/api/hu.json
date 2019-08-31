@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tgr"
+		]
+	},
+	"apihelp-welcomesurveyhandleresponses-summary": "Az új szerkesztők kérdőívére adott válasz elmentése az aktuális felhasználó nevében.",
+	"apihelp-welcomesurveyhandleresponses-param-surveyaction": "Az opció, amit a felhasználó az új szerkesztők kérdőívén választott ('save' vagy 'skip').",
+	"apihelp-welcomesurveyhandleresponses-param-group": "Az új szerkesztők kérdőívéhez tartozó kísérleti csoport",
+	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "A kérdőív megmutatásának időbélyege.",
+	"apihelp-welcomesurveyhandleresponses-param-responses": "A válaszokat tartalmazó JSON objektum (a kérdések neve a kulcs, a válasz az érték)."
+}

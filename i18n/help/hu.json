@@ -2,13 +2,17 @@
 	"@metadata": {
 		"authors": [
 			"Tacsipacsi",
-			"Misibacsi"
+			"Misibacsi",
+			"Tgr"
 		]
 	},
+	"growthexperiments-help-panel-tog-help-panel": "Szerkesztési segítség panel engedélyezése",
 	"growthexperiments-help-panel-cta-button-text": "Szerkesztési segítség",
 	"growthexperiments-help-panel-question-button-text": "Tovább",
-	"growthexperiments-help-panel-submit-question-button-text": "Kérdésem elküldése",
+	"growthexperiments-help-panel-submit-question-button-text": "Elküldés",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "A legfontosabb, szerkesztéssel kapcsolatos segítség-oldalak",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Több súgócikk",
+	"growthexperiments-help-panel-question-widget-header": "Írd meg a kérdésed a közösségi tanácsadó lapra",
 	"growthexperiments-help-panel-question-placeholder": "Segítségre van szükségem a szerkesztésben. Hogyan tudok…",
 	"growthexperiments-help-panel-back-home": "Vissza",
 	"growthexperiments-help-panel-close": "Kész",
@@ -19,6 +23,9 @@
 	"growthexperiments-help-panel-questionreview-note": "E-mailben értesítünk, amikor megérkezik a válasz, de az e-mail-címedet <strong>nem tudják meg</strong> más szerkesztők, amikor kapcsolatba lépnek veled.",
 	"growthexperiments-help-panel-questionreview-label": "A kérdésed",
 	"growthexperiments-help-panel-questionreview-include-article-title": "A lapcím belefoglalása a kérdésembe",
+	"growthexperiments-help-panel-question-subject-template": "Kérdés a segítség panelből",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Kérdés a segítség panelből a(z) lapról [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-from-homepage": "Kérdés a segítség modulból a felhasználói honlapról",
 	"growthexperiments-help-panel-question-post-error": "Hiba történt a kérdésed elküldése közben. Megpróbálhatod újra, vagy meglátogathatod a(z) $1 oldalt a böngészőben, és felteheted a kérdésedet manuálisan.",
 	"growthexperiments-help-panel-questioncomplete-title": "Kérdés feltevése",
 	"growthexperiments-help-panel-questioncomplete-header": "A kérdésed elküldve!",
