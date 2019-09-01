@@ -35,21 +35,27 @@
 				mode = $module.data( 'mode' );
 			logger.log( moduleName, mode, 'impression' );
 		},
-		uri = new mw.Uri();
+		uri = new mw.Uri(),
+		// Matches routes like /homepage/moduleName or /homepage/moduleName/action
+		routeMatches = /^\/homepage\/([^/]+)(?:\/([^/]+))?$/.exec( uri.fragment ),
+		routeMatchesModule = routeMatches && $modules.filter( function () {
+			return $( this ).data( 'module-name' ) === routeMatches[ 1 ];
+		} ).length > 0;
 
 	$modules
 		.on( 'mouseenter', handleHover( 'in' ) )
 		.on( 'mouseleave', handleHover( 'out' ) )
 		.on( 'click', '[data-link-id]', handleClick );
 
-	// Log the initial impressions only if the initial URI doesn't specify a module in overlay
-	if ( !uri.fragment || !uri.fragment.match( /^\/homepage\/.*$/ ) ) {
+	// If we're on mobile and the initial URI specifies a module to navigate to, let
+	// ext.growthExperiments.Homepage.Mobile.js log the intiial impression for only that module.
+	// Otherwise, log impressions for all modules.
+	if ( !mw.config.get( 'homepagemobile' ) || !routeMatchesModule ) {
 		$modules.each( logImpression );
 	}
 
 	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
 		$content.find( moduleSelector )
-			.on( 'click', '[data-link-id]', handleClick )
-			.each( logImpression );
+			.on( 'click', '[data-link-id]', handleClick );
 	} );
 }() );

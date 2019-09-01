@@ -16,12 +16,13 @@
 	// attachButton will look to see if the CTA button we want to bind to is in the DOM. For the
 	// desktop homepage and the server-side rendered version of individual modules (e.g
 	// Special:Homepage/help) that will be the case. But this module is loaded on Special:Homepage
-	// for mobile overlays, and the user may open and close the help/mentorship module overlays
-	// more than once. When that happens, we need to (re)attach the button, as the HTML is newly
-	// added to the overlay each time it's opened.
+	// for mobile overlays, where the DOM is only populated when the user opens the overlay for the
+	// first time, so we can only attach the button once that has happened.
 	attachButton( config );
 	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName ) {
 		if ( moduleName === 'help' ) {
+			// FIXME: This is why loading #homepage/help/question from the URL doesn't work:
+			// attachButton() registers the route but that happens too late
 			attachButton( config );
 		}
 	} );
