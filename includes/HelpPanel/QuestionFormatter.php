@@ -95,10 +95,7 @@ class QuestionFormatter {
 	private function getPostedOnHtml() {
 		return Html::element(
 				'span',
-				[
-					'class' => 'question-posted-on',
-					'data-timestamp' => $this->questionRecord->getTimestamp()
-				],
+				[ 'class' => 'question-posted-on' ],
 				$this->contextSource
 					->msg( $this->postedOnMsgKey )
 					->params( $this->getRelativeTime() )
