@@ -3,7 +3,8 @@
 		"authors": [
 			"Tacsipacsi",
 			"Misibacsi",
-			"Teemeah"
+			"Teemeah",
+			"Tgr"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Üdvözlünk, {{bidi:$1}}!",
@@ -31,6 +32,7 @@
 	"growthexperiments-homepage-email-button-noemail": "E-mail megadása",
 	"growthexperiments-homepage-email-button-unconfirmed": "Új link",
 	"growthexperiments-homepage-email-button-confirmed": "Beállítások",
+	"growthexperiments-homepage-email-changelink": "(módosítás)",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Hatásod}}",
 	"growthexperiments-homepage-impact-subheader-text": "Az emberek olvassák az {{GENDER:$1|általad}} szerkesztett szócikkeket!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Megtekintések a {{GENDER:$1|szerkesztésed}} óta (utóbbi 60 nap):",
@@ -50,6 +52,7 @@
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Kövesd az általad szerkesztett szócikkek megtekintéseit",
 	"growthexperiments-homepage-help-ask-help-desk": "Kérdés feltevése",
 	"growthexperiments-homepage-help-desk-questions": "Más szerkesztők kérdéseinek megtekintése",
+	"growthexperiments-tour-helpdesk-response-tip-title": "Tanácsadás értesítések",
 	"growthexperiments-tour-response-tip-text": "Amikor megválaszolják a {{GENDER:$1|kérdésedet}}, itt fog megjelenni egy értesítés.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Mentorértesítések",
 	"growthexperiments-tour-mentor-response-tip-personal-text": "Amikor a {{GENDER:$1|mentorod}} {{GENDER:$2|válaszol}}, itt fog megjelenni egy értesítés.",
@@ -84,6 +87,8 @@
 	"growthexperiments-homepage-tutorial-cta-text": "Az első lépések",
 	"growthexperiments-specialimpact-title": "Hatás",
 	"growthexperiments-specialimpact-invalid-username": "Hiányzó vagy érvénytelen szerkesztőnév.",
+	"growthexperiments-homepage-contributions-zero-title": "Még nincs szerkesztésed.",
 	"growthexperiments-homepage-contributions-zero-button": "{{GENDER:$1|Kezdőlapod}} megtekintése.",
+	"growthexperiments-tour-welcome-description": "Bármikor visszatérhetsz ide a felhasználónevedre kattintva.",
 	"growthexperiments-tour-discovery-title": "Kezdd itt!"
 }

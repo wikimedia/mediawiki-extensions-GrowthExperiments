@@ -1,5 +1,9 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": [
+			"Tgr"
+		]
+	},
 	"growthexperiments-help-panel-tog-help-panel": "[[Special:Preferences]], tab 'Edit'. Allows user to enable and disable experimental Help Panel.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-cta-button-text": "Text to display in a button which loads the help panel.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-question-button-text": "Text to display in the button for asking a question in the help panel.\n\n{{doc-growthexperiments-help-panel}}",
@@ -25,7 +29,7 @@
 	"growthexperiments-help-panel-questioncomplete-header": "Header shown at the top of help panel after submitting a question.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Confirmation text to the user that their question was posted successfully through the help panel.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed": "Confirmation to the user that they will receive an email notification when a response is posted.\n\n{{doc-growthexperiments-help-panel}}",
-	"growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed": "Confirmation to the user that they will receive an on-wiki notification when a response is posted. Also inform the user that they will receive an email notification if they confirm their email. Parameters:\n* $1 - Link to Special:Notifications (\"{{int:growthexperiments-help-panel-notifications-link-text}}\")\n* $2 - Link to Special:ConfirmEmail (\"{{int:growthexperiments-help-panel-confirm-email-link-text}}\").\n\n{{doc-growthexperiments-help-panel}}",
+	"growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed": "Confirmation to the user that they will receive an on-wiki notification when a response is posted. Also inform the user that they will receive an email notification if they confirm their email. Parameters:\n* $1 - Link to Special:Notifications ({{msg-mw|growthexperiments-help-panel-notifications-link-text}})\n* $2 - Link to Special:ConfirmEmail ({{msg-mw|growthexperiments-help-panel-confirm-email-link-text}}).\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questioncomplete-confirmation-email-none": "Confirmation to the user that they will receive an on-wiki notification when a response is posted. Parameters:\n* $1 - Link to Special:Notifications (\"{{int:growthexperiments-help-panel-notifications-link-text}}\")\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Text to display with the link to the question the user posted through the help panel.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Text to display with the More about this feature link.\n\n{{doc-growthexperiments-help-panel}}",

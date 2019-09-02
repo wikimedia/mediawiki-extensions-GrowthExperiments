@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Tgr"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Title for Special:Homepage, which is a place for users to access useful tools about contributing. Parameters:\n* $1 - Name of the current user. Can be used with GENDER.\n\n{{doc-growthexperiments-homepage}}",
@@ -30,7 +31,7 @@
 	"growthexperiments-homepage-email-button-noemail": "Text of the button that links to a form where the user can add an email address (Special:ChangeEmail), in the email module on the newcomer homepage.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-email-button-unconfirmed": "Text of the button that links to a page where the user can send a new confirmation email (Special:ConfirmEmail), in the email module on the newcomer homepage.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-email-button-confirmed": "Text of the button that links to the user's preferences page, in the email module on the newcomer homepage.\n{{Identical|Preferences}}\n\n{{doc-growthexperiments-homepage}}",
-	"growthexperiments-homepage-email-changelink": "Text of the link that lets the user change their email address, in the email module on the newcomer homepage. The link takes the user to the email section on the preferences page. This link is only displayed if theuser has set an email address, but has not yet confirmed it.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-email-changelink": "Text of the link that lets the user change their email address, in the email module on the newcomer homepage. The link takes the user to the email section on the preferences page. This link is only displayed if the user has set an email address, but has not yet confirmed it.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-impact-header": "Title of the newcomer homepage Impact module, which shows newcomers the number of pageviews on articles they have edited.  The idea is that they will see what impact they have had on others through their edits.\n* $1 - Name of the current user. Can be used with GENDER.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-impact-subheader-text": "Subtitle of the newcomer homepage Impact module.\n* $1 - Name of the current user. Can be used with GENDER.",
 	"growthexperiments-homepage-impact-subheader-subtext": "Sub-subtitle of the newcomer homepage Impact module, explaining that the module displays the pageviews of articles the user edited.\n* $1 - Name of the current user. Can be used with GENDER.",

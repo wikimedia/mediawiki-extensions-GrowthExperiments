@@ -30,6 +30,8 @@
 	"growthexperiments-help-panel-questioncomplete-title": "Kérdés feltevése",
 	"growthexperiments-help-panel-questioncomplete-header": "A kérdésed elküldve!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed": "E-mailben értesítünk, amikor megérkezik válasz, valószínűleg nagyjából egy napon belül.",
+	"growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed": "$1 fogsz kapni, amikor válaszolnak a kérdésedre, általában egy napon belül. Ha $2, emailben is kapsz értesítést.",
+	"growthexperiments-help-panel-questioncomplete-confirmation-email-none": "$1 fogsz kapni, amikor válaszolnak a kérdésedre, általában egy napon belül.",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "Mellesleg ennek a kérdésnek a feltevésével először szerkesztettél egy oldalt. Gratulálunk!",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Az eszköz letiltása a Beállításokban",
 	"growthexperiments-help-panel-questionreview-unconfirmed-email-note": "Egy megerősítő linket fogsz kapni e-mailben, hogy majd értesíthessünk a válaszokról. Az e-mail-címedet <strong>nem tudják meg</strong> más szerkesztők, amikor kapcsolatba lépnek veled.",
@@ -41,5 +43,6 @@
 	"growthexperiments-help-panel-questionposter-invalid-title": "Érvénytelen cím.",
 	"growthexperiments-help-panel-search-label": "Segítség keresése",
 	"growthexperiments-help-panel-search-no-results": "Nincs találat.",
-	"growthexperiments-help-panel-confirm-email-link-text": "email cím megismétlése"
+	"growthexperiments-help-panel-notifications-link-text": "Értesítést",
+	"growthexperiments-help-panel-confirm-email-link-text": "megerősíted az email-címedet"
 }
