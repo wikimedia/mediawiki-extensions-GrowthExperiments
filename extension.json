@@ -612,6 +612,7 @@
 		},
 		"GEHelpPanelLinks": {
 			"description": "List of links to display in the help panel.",
+			"merge_strategy": "array_plus",
 			"value": [ {
 				"title": "Project:Help",
 				"text": "Site help",
