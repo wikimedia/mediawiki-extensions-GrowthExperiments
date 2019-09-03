@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"GoForceX",
-			"Zazzzz"
+			"Zazzzz",
+			"A Chinese Wikipedian"
 		]
 	},
 	"growthexperiments-help-panel-question-button-text": "继续",
+	"growthexperiments-help-panel-submit-question-button-text": "成本",
 	"growthexperiments-help-panel-search-label": "搜索来获取帮助"
 }
