@@ -45,10 +45,11 @@
 			}
 		};
 	// See comment in homepage/ext.growthExperiments.Homepage.Help.js
-	attachButton( config );
-	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName ) {
+	// eslint-disable-next-line no-jquery/no-global-selector
+	attachButton( config, $( '.growthexperiments-homepage-container' ) );
+	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
 		if ( moduleName === 'mentorship' ) {
-			attachButton( config );
+			attachButton( config, $content );
 		}
 	} );
 }() );

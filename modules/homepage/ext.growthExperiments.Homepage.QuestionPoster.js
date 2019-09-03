@@ -1,5 +1,5 @@
 ( function () {
-	var attachButton = function ( config ) {
+	var attachButton = function ( config, $container ) {
 		var appendWindowManagerToBody = function ( windowManager, dialog ) {
 				// eslint-disable-next-line no-jquery/no-global-selector
 				$( 'body' ).append( windowManager.$element );
@@ -48,7 +48,7 @@
 		// no-op if the CTA button isn't found. This happens if the RL module is loaded
 		// before the corresponding HTML is set in the DOM, as currently occurs with
 		// the mobile homepage modules.
-		if ( !$( config.buttonSelector ).length ) {
+		if ( !$container.find( config.buttonSelector ).length ) {
 			return;
 		}
 
@@ -67,7 +67,7 @@
 			size: 'medium',
 			logger: loggerInstance
 		}, config.dialog ) );
-		ctaButton = OO.ui.ButtonWidget.static.infuse( $( config.buttonSelector ) );
+		ctaButton = OO.ui.ButtonWidget.static.infuse( $container.find( config.buttonSelector ) );
 
 		appendWindowManagerToBody( windowManagerInstance, dialogInstance );
 		registerDialogRoute(
