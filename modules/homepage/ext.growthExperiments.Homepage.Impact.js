@@ -61,9 +61,9 @@
 	// See comments in homepage/ext.growthExperiments.Homepage.Help.js and
 	// homepage/ext.growthExperiments.Homepage.MobileOverlay.js
 	$( pageviewsIconSelector ).each( handler );
-	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName ) {
+	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
 		if ( moduleName === 'impact' ) {
-			$( pageviewsIconSelector ).each( handler );
+			$content.find( pageviewsIconSelector ).each( handler );
 		}
 	} );
 }() );
