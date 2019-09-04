@@ -16,7 +16,7 @@
 	"growthexperiments-homepage-userpage-button-done": "Editar página de usuario",
 	"growthexperiments-homepage-email-text-noemail": "Se recomienda para recuperar la cuenta",
 	"growthexperiments-homepage-email-button-noemail": "Añadir correo electrónico",
-	"growthexperiments-homepage-email-button-unconfirmed": "Enlace nuevo",
+	"growthexperiments-homepage-email-button-unconfirmed": "Obtener un enlace nuevo",
 	"growthexperiments-homepage-email-button-confirmed": "Preferencias",
 	"growthexperiments-homepage-email-changelink": "(cambiar)",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Has}} realizado <strong>$1</strong> {{PLURAL:$1|edición|ediciones}} (mostrar todo)",
