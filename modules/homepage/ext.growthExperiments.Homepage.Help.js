@@ -18,12 +18,14 @@
 	// Special:Homepage/help) that will be the case. But this module is loaded on Special:Homepage
 	// for mobile overlays, where the DOM is only populated when the user opens the overlay for the
 	// first time, so we can only attach the button once that has happened.
-	attachButton( config );
-	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName ) {
+
+	// eslint-disable-next-line no-jquery/no-global-selector
+	attachButton( config, $( '.growthexperiments-homepage-container' ) );
+	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
 		if ( moduleName === 'help' ) {
 			// FIXME: This is why loading #homepage/help/question from the URL doesn't work:
 			// attachButton() registers the route but that happens too late
-			attachButton( config );
+			attachButton( config, $content );
 		}
 	} );
 }() );
