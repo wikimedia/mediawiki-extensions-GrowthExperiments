@@ -399,7 +399,12 @@
 					align: 'top'
 				}
 			),
-			new OO.ui.FieldLayout( this.askQuestionContinueButton )
+			new OO.ui.FieldLayout(
+				this.askQuestionContinueButton,
+				{
+					classes: [ 'mw-ge-help-panel-question-continue-button' ]
+				}
+			)
 		] );
 		this.homeFooterPanel.$element.append( this.homeFooterFieldset.$element );
 
@@ -509,8 +514,10 @@
 			this.questioncompletePanel
 		] );
 		this.$body
-			.addClass( 'mw-ge-help-panel-processdialog' )
 			.append( this.panels.$element );
+
+		this.$content
+			.addClass( 'mw-ge-help-panel-processdialog' );
 
 		this.$element.on( 'click', 'a[data-link-id]', this.logLinkClick.bind( this ) );
 
