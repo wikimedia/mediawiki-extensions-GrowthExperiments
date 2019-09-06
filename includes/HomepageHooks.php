@@ -282,7 +282,7 @@ class HomepageHooks {
 				);
 			}
 			catch ( Exception $exception ) {
-				LoggerFactory::getInstance( 'GrowthExperiments' )
+				LoggerFactory::getInstance( 'exception' )
 					->error( __METHOD__ . ' Failed to assign mentor for user.', [
 						'user' => $user->getId()
 					] );
@@ -324,7 +324,7 @@ class HomepageHooks {
 				$options[Mentor::MENTOR_PREF] = $mentor->getMentorUser()->getId();
 			}
 			catch ( Exception $exception ) {
-				LoggerFactory::getInstance( 'GrowthExperiments' )
+				LoggerFactory::getInstance( 'exception' )
 					->error( 'Failed to assign mentor from Special:Preferences' );
 			}
 		}
