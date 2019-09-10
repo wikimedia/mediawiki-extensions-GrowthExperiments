@@ -5,6 +5,7 @@ namespace GrowthExperiments;
 use ConfigException;
 use DomainException;
 use Exception;
+use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use Html;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
@@ -19,7 +20,6 @@ use MediaWiki\Minerva\Menu\Group;
 use MediaWiki\Minerva\SkinOptions;
 use OOUI\ButtonWidget;
 use OutputPage;
-use OOUI\IconWidget;
 use RequestContext;
 use Skin;
 use SkinTemplate;
@@ -492,23 +492,13 @@ class HomepageHooks {
 	 */
 	public static function onSiteNoticeAfter( &$siteNotice, Skin $skin ) {
 		global $wgMinervaEnableSiteNotice;
-		$output = $skin->getOutput();
-		if ( self::isHomepageEnabled( $skin->getUser() ) &&
-			 $output->getTitle()->isSpecial( 'Homepage' ) &&
-			 $skin->getRequest()->getVal( 'source' ) === self::CONFIRMEMAIL_QUERY_PARAM ) {
-			$output->addModules( 'ext.growthExperiments.Homepage.ConfirmEmail' );
-			$output->addModuleStyles( 'ext.growthExperiments.Homepage.ConfirmEmail.styles' );
-			$baseCssClassName = 'mw-ge-homepage-confirmemail-nojs';
-			$cssClasses = [
-				$baseCssClassName,
-				Util::isMobile( $skin ) ? $baseCssClassName . '-mobile' : $baseCssClassName . '-desktop'
-			];
-			$siteNotice = Html::rawElement( 'div', [ 'class' => $cssClasses ],
-				new IconWidget( [ 'icon' => 'check', 'flags' => 'success' ] ) . ' ' .
-				Html::element( 'span', [ 'class' => 'mw-ge-homepage-confirmemail-nojs-message' ],
-					$output->msg( 'confirmemail_loggedin' )->text() )
+		if ( self::isHomepageEnabled( $skin->getUser() ) ) {
+			SiteNoticeGenerator::setNotice(
+				$skin->getRequest()->getVal( 'source' ),
+				$siteNotice,
+				$skin,
+				$wgMinervaEnableSiteNotice
 			);
-			$wgMinervaEnableSiteNotice = true;
 		}
 	}
 
