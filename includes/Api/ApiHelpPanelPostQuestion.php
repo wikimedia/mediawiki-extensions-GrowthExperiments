@@ -5,7 +5,6 @@ namespace GrowthExperiments\Api;
 use ApiBase;
 use ApiMain;
 use ApiUsageException;
-use GrowthExperiments\HelpPanel\HelpModuleQuestionPoster;
 use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
 use GrowthExperiments\HelpPanel\MentorshipModuleQuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionPoster;
@@ -39,7 +38,6 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 
 		$this->questionPosterClasses = [
 			'helppanel' => HelpPanelQuestionPoster::class,
-			'homepage-help' => HelpModuleQuestionPoster::class,
 			'homepage-mentorship' => MentorshipModuleQuestionPoster::class,
 		];
 	}

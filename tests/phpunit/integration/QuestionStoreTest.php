@@ -4,10 +4,10 @@ namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
 use FauxRequest;
+use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStore;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
-use GrowthExperiments\HomepageModules\Help;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
 use RequestContext;
@@ -45,7 +45,7 @@ class QuestionStoreTest extends MediaWikiTestCase {
 		$context->setUser( $user );
 		$questionStore = QuestionStoreFactory::newFromContextAndStorage(
 			$context,
-			Help::QUESTION_PREF
+			HelpPanelQuestionPoster::QUESTION_PREF
 		);
 		$timestamp = wfTimestamp();
 		$question = new QuestionRecord(
@@ -60,7 +60,7 @@ class QuestionStoreTest extends MediaWikiTestCase {
 		$context->setUser( $user->getInstanceForUpdate() );
 		$questionStore = QuestionStoreFactory::newFromContextAndStorage(
 			$context,
-			Help::QUESTION_PREF
+			HelpPanelQuestionPoster::QUESTION_PREF
 		);
 		$loadedQuestions = $questionStore->loadQuestions();
 		$loadedQuestion = current( $loadedQuestions );

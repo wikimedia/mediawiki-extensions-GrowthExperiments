@@ -241,10 +241,6 @@ class HomepageHooks {
 		$preferences[ Mentorship::QUESTION_PREF ] = [
 			'type' => 'api',
 		];
-
-		$preferences[ Help::QUESTION_PREF ] = [
-			'type' => 'api',
-		];
 	}
 
 	/**
@@ -269,7 +265,6 @@ class HomepageHooks {
 			// existing users to view it). Setting to false will prompt new user accounts
 			// only to see the various tours.
 			$user->setOption( TourHooks::TOUR_COMPLETED_HELP_PANEL, 0 );
-			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_HELP, 0 );
 			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP, 0 );
 			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME, 0 );
 			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_DISCOVERY, 0 );
@@ -291,10 +286,9 @@ class HomepageHooks {
 	}
 
 	/**
-	 * ListDefinedTags and ChangeTagsListActive hook handler
+	 * ListDefinedTags hook handler
 	 *
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ListDefinedTags
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ChangeTagsListActive
 	 *
 	 * @param array &$tags The list of tags.
 	 * @throws ConfigException
@@ -302,6 +296,21 @@ class HomepageHooks {
 	public static function onListDefinedTags( &$tags ) {
 		if ( self::isHomepageEnabled() ) {
 			$tags[] = Help::HELP_MODULE_QUESTION_TAG;
+			$tags[] = Mentorship::MENTORSHIP_MODULE_QUESTION_TAG;
+		}
+	}
+
+	/**
+	 * ChangeTagsListActive hook handler
+	 *
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ChangeTagsListActive
+	 *
+	 * @param array &$tags The list of tags.
+	 * @throws ConfigException
+	 */
+	public static function onChangeTagsListActive( &$tags ) {
+		if ( self::isHomepageEnabled() ) {
+			// Help::HELP_MODULE_QUESTION_TAG is no longer active (T232548)
 			$tags[] = Mentorship::MENTORSHIP_MODULE_QUESTION_TAG;
 		}
 	}

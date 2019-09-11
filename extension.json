@@ -86,7 +86,7 @@
 		],
 		"ChangeTagsListActive": [
 			"GrowthExperiments\\HelpPanelHooks::onListDefinedTags",
-			"GrowthExperiments\\HomepageHooks::onListDefinedTags"
+			"GrowthExperiments\\HomepageHooks::onChangeTagsListActive"
 		],
 		"SkinTemplateNavigation::Universal": [
 			"GrowthExperiments\\HomepageHooks::onSkinTemplateNavigationUniversal"
@@ -383,22 +383,6 @@
 			],
 			"dependencies": [
 				"mediawiki.api"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
-		"ext.growthExperiments.Homepage.Help": {
-			"packageFiles": [
-				"homepage/ext.growthExperiments.Homepage.Help.js"
-			],
-			"messages": [
-				"growthexperiments-homepage-help-dialog-title",
-				"growthexperiments-homepage-help-cancel"
-			],
-			"dependencies": [
-				"ext.growthExperiments.Homepage.QuestionPoster"
 			],
 			"targets": [
 				"desktop",

@@ -11,7 +11,6 @@ class TourHooks {
 
 	const TOUR_COMPLETED_HELP_PANEL = 'growthexperiments-tour-help-panel';
 	const TOUR_COMPLETED_HOMEPAGE_MENTORSHIP = 'growthexperiments-tour-homepage-mentorship';
-	const TOUR_COMPLETED_HOMEPAGE_HELP = 'growthexperiments-tour-homepage-help';
 	const TOUR_COMPLETED_HOMEPAGE_WELCOME = 'growthexperiments-tour-homepage-welcome';
 	const TOUR_COMPLETED_HOMEPAGE_DISCOVERY = 'growthexperiments-tour-homepage-discovery';
 
@@ -53,14 +52,6 @@ class TourHooks {
 		$modules = [
 			'ext.guidedTour.tour.helppanel' => $moduleTemplate + [
 				'scripts' => 'help/ext.growthExperiments.helppanel.tour.js',
-				'messages' => [
-					'growthexperiments-tour-helpdesk-response-tip-title',
-					'growthexperiments-tour-response-tip-text',
-					'growthexperiments-tour-response-button-okay'
-				],
-			],
-			'ext.guidedTour.tour.homepage_help' => $moduleTemplate + [
-				'scripts' => 'help/ext.growthExperiments.homepage.help.tour.js',
 				'messages' => [
 					'growthexperiments-tour-helpdesk-response-tip-title',
 					'growthexperiments-tour-response-tip-text',
@@ -125,9 +116,6 @@ class TourHooks {
 			$preferences[self::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP] = [
 				'type' => 'api',
 			];
-			$preferences[self::TOUR_COMPLETED_HOMEPAGE_HELP] = [
-				'type' => 'api',
-			];
 			$preferences[self::TOUR_COMPLETED_HOMEPAGE_WELCOME] = [
 				'type' => 'api',
 			];
@@ -157,7 +145,6 @@ class TourHooks {
 		}
 		if ( HomepageHooks::isHomepageEnabled() ) {
 			$wgDefaultUserOptions += [
-				self::TOUR_COMPLETED_HOMEPAGE_HELP => true,
 				self::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP => true,
 				self::TOUR_COMPLETED_HOMEPAGE_WELCOME => true,
 				self::TOUR_COMPLETED_HOMEPAGE_DISCOVERY => true,

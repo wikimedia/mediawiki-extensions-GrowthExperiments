@@ -4,7 +4,6 @@ namespace GrowthExperiments\Api;
 
 use ApiBase;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
-use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\RecentQuestionsFormatter;
 use JsonSerializable;
@@ -46,7 +45,7 @@ class ApiQuestionStore extends ApiBase {
 		return [
 			'storage' => [
 				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_TYPE => [ Mentorship::QUESTION_PREF, Help::QUESTION_PREF ]
+				ApiBase::PARAM_TYPE => [ Mentorship::QUESTION_PREF ]
 			],
 		];
 	}

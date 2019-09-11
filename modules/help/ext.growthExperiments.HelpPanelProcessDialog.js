@@ -690,16 +690,11 @@
 				}
 				if ( action === 'helppanelclose' ) {
 					this.close();
-					// Show mentor or help desk tour depending on the homepage module that was used
+					// Show mentorship tour if that was the homepage module that was used
 					if ( this.source === 'homepage-mentorship' ) {
 						this.launchIntroTour(
 							'homepage_mentor',
 							'growthexperiments-tour-homepage-mentorship'
-						);
-					} else {
-						this.launchIntroTour(
-							'homepage_help',
-							'growthexperiments-tour-homepage-help'
 						);
 					}
 				}
