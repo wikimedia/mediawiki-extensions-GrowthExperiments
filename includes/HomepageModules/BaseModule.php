@@ -2,10 +2,10 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use Exception;
 use GrowthExperiments\HomepageModule;
 use Html;
 use IContextSource;
+use InvalidArgumentException;
 use OOUI\IconWidget;
 use SpecialPage;
 
@@ -67,7 +67,7 @@ abstract class BaseModule implements HomepageModule {
 		} elseif ( $mode === HomepageModule::RENDER_MOBILE_DETAILS ) {
 			$html = $this->renderMobileDetails();
 		} else {
-			throw new Exception( 'Invalid rendering mode: ' . $mode );
+			throw new InvalidArgumentException( 'Invalid rendering mode: ' . $mode );
 		}
 		return $html;
 	}

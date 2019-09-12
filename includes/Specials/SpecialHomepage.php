@@ -4,7 +4,6 @@ namespace GrowthExperiments\Specials;
 
 use ConfigException;
 use DeferredUpdates;
-use Error;
 use ErrorPageError;
 use Exception;
 use ExtensionRegistry;
@@ -19,10 +18,10 @@ use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use Html;
-use MediaWiki\Logger\LoggerFactory;
 use GrowthExperiments\HomepageModules\Start;
 use MediaWiki\Session\SessionManager;
 use SpecialPage;
+use Throwable;
 use Title;
 use UserNotLoggedIn;
 
@@ -196,36 +195,6 @@ class SpecialHomepage extends SpecialPage {
 	}
 
 	/**
-	 * Log Exception or Error thrown when trying to render a module.
-	 *
-	 * Note: Some runtime errors like trying to call a function on null
-	 * are reported as Exception in HHVM but Error in PHP7.
-	 *
-	 * try {
-	 * 		$a = null;
-	 * 		$a->foo();
-	 * } catch ( Exception $t ) {
-	 * 		echo "Exception (hhvm)";
-	 * } catch ( Error $t ) {
-	 * 		echo "Error (php7)";
-	 * }
-	 *
-	 * @param HomepageModule $module
-	 * @param Exception|Error $issue
-	 */
-	private function logModuleRenderIssue( HomepageModule $module, $issue ) {
-		LoggerFactory::getInstance( 'exception' )->error(
-			"Homepage module '{class}' cannot be rendered for user {user_id}. {msg} {trace}",
-			[
-				'class' => get_class( $module ),
-				'msg' => $issue->getMessage(),
-				'trace' => $issue->getTraceAsString(),
-				'user_id' => $this->getUser()->getId(),
-			]
-		);
-	}
-
-	/**
 	 * @return array
 	 */
 	private function renderDesktop() {
@@ -245,9 +214,9 @@ class SpecialHomepage extends SpecialPage {
 					$out->addHTML( $module->render( HomepageModule::RENDER_DESKTOP ) );
 					$renderedModules[$moduleName] = $module;
 				} catch ( Exception $exception ) {
-					$this->logModuleRenderIssue( $module, $exception );
-				} catch ( Error $error ) {
-					$this->logModuleRenderIssue( $module, $error );
+					Util::logError( $exception, [ 'origin' => __METHOD__ ] );
+				} catch ( Throwable $throwable ) {
+					Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
 				}
 			}
 			$out->addHTML( Html::closeElement( 'div' ) );
@@ -269,9 +238,9 @@ class SpecialHomepage extends SpecialPage {
 			$out->addHTML( $module->render( HomepageModule::RENDER_MOBILE_DETAILS ) );
 			$renderedModules[ $moduleName ] = $module;
 		} catch ( Exception $exception ) {
-			$this->logModuleRenderIssue( $module, $exception );
-		} catch ( Error $error ) {
-			$this->logModuleRenderIssue( $module, $error );
+			Util::logError( $exception, [ 'origin' => __METHOD__ ] );
+		} catch ( Throwable $throwable ) {
+			Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
 		}
 		return $renderedModules;
 	}
@@ -295,9 +264,9 @@ class SpecialHomepage extends SpecialPage {
 				) );
 				$renderedModules[$moduleName] = $module;
 			} catch ( Exception $exception ) {
-				$this->logModuleRenderIssue( $module, $exception );
-			} catch ( Error $error ) {
-				$this->logModuleRenderIssue( $module, $error );
+				Util::logError( $exception, [ 'origin' => __METHOD__ ] );
+			} catch ( Throwable $throwable ) {
+				Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
 			}
 		}
 
@@ -318,9 +287,9 @@ class SpecialHomepage extends SpecialPage {
 				$html .= $data[$moduleName]['html'];
 				unset( $data[$moduleName]['html'] );
 			} catch ( Exception $exception ) {
-				$this->logModuleRenderIssue( $module, $exception );
-			} catch ( Error $error ) {
-				$this->logModuleRenderIssue( $module, $error );
+				Util::logError( $exception, [ 'origin' => __METHOD__ ] );
+			} catch ( Throwable $throwable ) {
+				Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
 			}
 		}
 		$out->addJsConfigVars( [
