@@ -96,5 +96,9 @@
 	"growthexperiments-tour-welcome-description": "{{GENDER:$1|Você }} pode sempre clicar no{{GENDER:$1|seu}} nome de usuário para retornar aqui.",
 	"growthexperiments-tour-discovery-title": "Comece aqui!",
 	"growthexperiments-tour-discovery-description": "Clique no {{GENDER:$1|seu}} nome de usuário para visitar {{GENDER:$1|sua}} página inicial.",
-	"growthexperiments-homepage-welcomesurvey-default-close": "Vá para {{GENDER:$1|sua}} página inicial"
+	"growthexperiments-homepage-welcomesurvey-default-close": "Vá para {{GENDER:$1|sua}} página inicial",
+	"growthexperiments-homepage-discovery-banner-header": "Bem-vindo a {{GENDER:$1|sua}} página inicial!",
+	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|Você}} sempre é possível clicar em $2 na parte superior da página para retornar aqui.",
+	"growthexperiments-homepage-discovery-thanks-header": "Obrigado por criar {{GENDER:$1|sua}} conta!",
+	"growthexperiments-homepage-discovery-thanks-text": "Clique em $2 na parte superior da página para visitar {{GENDER:$1|sua}} página inicial e começar."
 }

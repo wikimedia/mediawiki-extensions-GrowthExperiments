@@ -4,7 +4,8 @@
 			"Djdakta",
 			"Wladek92",
 			"Gomoko",
-			"Djiboun"
+			"Djiboun",
+			"Thibaut120094"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Activer l’onglet d’aide de l’éditeur",
@@ -19,7 +20,7 @@
 	"growthexperiments-help-panel-close": "Fait",
 	"growthexperiments-help-panel-home-title": "Obtenir de l'aide sur l'édition",
 	"growthexperiments-help-panel-questionreview-title": "Poser une question",
-	"growthexperiments-help-panel-questionreview-header": "Quand vous soumettez une question, elle est <strong>publiée de façon publique</strong> sous votre nom d’utilisateur, « $2 », sur le $1, où un autre éditeur bénévole essayera de fournir une réponse sous un jour au plus.",
+	"growthexperiments-help-panel-questionreview-header": "Quand vous soumettez une question, elle est <strong>publiée de façon publique</strong> sous votre nom d’utilisateur, « $2 », sur le $1, où un autre éditeur bénévole essayera de fournir une réponse sous un jour au plus.",
 	"growthexperiments-help-panel-questionreview-email": "Courriel",
 	"growthexperiments-help-panel-questionreview-note": "Vous serez notifié par courriel quand une réponse est publiée, mais votre adresse de messagerie n’est <strong>pas dévoilée</strong> quand les autres utilisateurs vous contactent.",
 	"growthexperiments-help-panel-questionreview-label": "Votre question",

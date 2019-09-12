@@ -6,7 +6,9 @@
 			"McDutchie",
 			"Fitoschido",
 			"Derugon",
-			"Trizek (WMF)"
+			"Trizek (WMF)",
+			"Thibaut120094",
+			"Trizek"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Bonjour}}, {{bidi:$1}} !",
@@ -37,8 +39,8 @@
 	"growthexperiments-homepage-email-button-confirmed": "Préférences",
 	"growthexperiments-homepage-email-changelink": "(modifier)",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Votre}} impact",
-	"growthexperiments-homepage-impact-subheader-text": "Des gens regardent les articles que {{GENDER:$1|vous}} avez modifié s!",
-	"growthexperiments-homepage-impact-subheader-subtext": "Vues depuis que {{GENDER:$1|vous}} avez modifié (60 derniers jours) :",
+	"growthexperiments-homepage-impact-subheader-text": "Des gens regardent les articles que {{GENDER:$1|vous}} avez modifiés&nbsp;!",
+	"growthexperiments-homepage-impact-subheader-subtext": "Nombre de vues depuis que {{GENDER:$1|vous}} avez modifié (60 derniers jours) :",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Vous}} avez fait <strong>$1</strong> {{PLURAL:$1|modification|modifications}} (voir tout)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Vous}} n’avez pas encore créé ou modifié d’articles.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Cette zone montrera combien de fois les gens ont regardé les articles que {{GENDER:$1|vous}} avez créés ou modifiés.",
@@ -82,7 +84,7 @@
 	"growthexperiments-homepage-mentorship-question-button": "Poser une question à {{GENDER:$2|votre}} {{GENDER:$1|mentor}}",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Afficher les autres conversations de {{GENDER:$2|votre}} {{GENDER:$1|tuteur|tutrice}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "Demander à {{GENDER:$2|votre}} {{GENDER:$1|mentor}}",
-	"growthexperiments-homepage-mentorship-questionreview-header": "Quand vous posez une question, elle est <strong>publiée publiquement</strong> sous {{GENDER:$2|votre}} nom d’utilisateur, « $2 », sur $3, qui est l’endroit où l’{{GENDER:$1|on}} peut trouver et répondre à votre question.",
+	"growthexperiments-homepage-mentorship-questionreview-header": "Quand vous posez une question, elle est <strong>publiée publiquement</strong> sous {{GENDER:$2|votre}} nom d’utilisateur, « $2 », sur $3, qui est l’endroit où l’{{GENDER:$1|on}} peut trouver et répondre à votre question.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "page de discussion de {{GENDER:$2|votre}} {{GENDER:$1|mentor}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Votre}} question est maintenant sur la page de discussion de votre {{GENDER:$1|mentor}}, qui est l’endroit où il pourra y répondre aussi vite que posssible.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Afficher {{GENDER:$2|votre}} question sur la page de discussion de votre {{GENDER:$1|mentor}}.",
@@ -93,7 +95,7 @@
 	"growthexperiments-specialimpact-title": "Impact",
 	"growthexperiments-specialimpact-showing-for-other-user": "Affichage des données d’impact pour $1",
 	"growthexperiments-specialimpact-invalid-username": "Nom d’utilisateur manquant ou non valide.",
-	"growthexperiments-homepage-enable-preference": "Pour activer la page d’accueil des débutants, aller sur vos paramètres « Page d’accueil de débutant » dans les [[Special:Preferences#mw-prefsection-personal-homepage|Préférences]].",
+	"growthexperiments-homepage-enable-preference": "Pour activer la page d’accueil des débutants, aller sur vos paramètres « Page d’accueil de débutant » dans les [[Special:Preferences#mw-prefsection-personal-homepage|Préférences]].",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|Vous}} n’avez pas encore fait de contribution.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "Visiter {{GENDER:$1|votre}} page d’accueil pour commencer à modifier !",
 	"growthexperiments-homepage-contributions-zero-button": "Aller sur {{GENDER:$1|votre}} page d’accueil",
@@ -101,5 +103,9 @@
 	"growthexperiments-tour-welcome-description": "{{GENDER:$1|Vous}} pouvez toujours cliquer sur {{GENDER:$1|votre}} nom d’utilisateur pour revenir ici.",
 	"growthexperiments-tour-discovery-title": "Commencer ici !",
 	"growthexperiments-tour-discovery-description": "Cliquer sur {{GENDER:$1|votre}} nom d’utilisateur pour visiter {{GENDER:$1|votre}} page d’accueil.",
-	"growthexperiments-homepage-welcomesurvey-default-close": "Aller sur {{GENDER:$1|votre}} page d’accueil"
+	"growthexperiments-homepage-welcomesurvey-default-close": "Aller sur {{GENDER:$1|votre}} page d’accueil",
+	"growthexperiments-homepage-discovery-banner-header": "Bienvenue sur {{GENDER:$1|votre}} page d’accueil !",
+	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|Vous}} pouvez toujours cliquer sur $2 en haut de la page pour revenir ici.",
+	"growthexperiments-homepage-discovery-thanks-header": "Merci d’avoir créé {{GENDER:$1|votre}} compte !",
+	"growthexperiments-homepage-discovery-thanks-text": "Cliquer sur $2 en haut de la page pour visiter {{GENDER:$1|votre}} page d’accueil et commencer."
 }

@@ -8,8 +8,8 @@
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Добре дошъл|Добре дошла}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Начална страница",
-	"prefs-homepage": "Домашна страница за новички",
-	"growthexperiments-homepage-enable": "Показване на домашна страница за новички",
-	"growthexperiments-homepage-pt-link": "По подразбиране давайте домашна страница за новички от връзката за потребителско име в личните инструменти",
+	"prefs-homepage": "Начална страница за новобранци",
+	"growthexperiments-homepage-enable": "Показване на началната страница за новобранци",
+	"growthexperiments-homepage-pt-link": "По подразбиране към началната страница за новобранци от връзката за потребителско име в личните инструменти",
 	"growthexperiments-homepage-help-cancel": "Отказ"
 }

@@ -25,7 +25,7 @@
 	"growthexperiments-homepage-email-header-confirmed": "برقٽپال وڌو ويو",
 	"growthexperiments-homepage-email-text-noemail": "کاتي جي بحاليءَ لاءِ بھتر آھي",
 	"growthexperiments-homepage-email-text-unconfirmed": "پڪ ڪندڙ ڳنڍڻي، يا نئين ڳنڍڻي موڪلڻ لاءِ {{GENDER:$1|پنھنجو}} برقٽپال چڪاسيو.",
-	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|توھان جي}} برقٽپال پڪ ڪئي وئي آھي. توھان ترجيحن ۾ پنھنجون برقٽپال ترتيبون تبديل ڪري سگھو ٿا.",
+	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|توھان جي}} برقٽپال پڪ ڪئي وئي آھي. توھان ترجيحن ۾ پنھنجون برقٽپال ترتيبون بدلائي سگھو ٿا.",
 	"growthexperiments-homepage-email-button-noemail": "برقٽپال وجھو",
 	"growthexperiments-homepage-email-button-unconfirmed": "نئون ڳنڍڻو وٺو",
 	"growthexperiments-homepage-email-button-confirmed": "ترجيحون",
