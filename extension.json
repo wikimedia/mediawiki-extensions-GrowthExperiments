@@ -197,21 +197,6 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.welcomeSurvey.scripts": {
-			"scripts": [
-				"welcomesurvey/ext.growthExperiments.welcomeSurvey.js"
-			],
-			"messages": [
-				"welcomesurvey-tagmultiselect-placeholder"
-			],
-			"dependencies": [
-				"oojs-ui-widgets"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
 		"ext.growthExperiments.detectjs": {
 			"scripts": [
 				"detectjs/detectjs.js"
@@ -265,7 +250,6 @@
 				"welcomesurvey-sidebar-editing-link3-title",
 				"welcomesurvey-sidebar-editing-link4-text",
 				"welcomesurvey-sidebar-editing-link4-title",
-				"welcomesurvey-tagmultiselect-placeholder",
 				"welcomesurvey-question-reason-label",
 				"welcomesurvey-dropdown-option-select-label",
 				"welcomesurvey-question-reason-option-edit-typo-label",

@@ -4,7 +4,6 @@ namespace GrowthExperiments\Specials;
 
 use \FormSpecialPage;
 use GrowthExperiments\HomepageHooks;
-use GrowthExperiments\Html\HTMLMultiSelectFieldAllowArbitrary;
 use GrowthExperiments\WelcomeSurvey;
 use Html;
 use HTMLForm;
@@ -54,7 +53,6 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	public function execute( $par ) {
 		$this->requireLogin();
 		$this->getOutput()->addModuleStyles( 'ext.growthExperiments.welcomeSurvey.styles' );
-		$this->getOutput()->addModules( 'ext.growthExperiments.welcomeSurvey.scripts' );
 		parent::execute( $par );
 	}
 
@@ -97,19 +95,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 
 		// Transform questions
 		foreach ( $questions as &$question ) {
-			// Custom class for multiselect with allowArbitrary
-			if (
-				$question[ 'type' ] === 'multiselect' &&
-				isset( $question[ 'allowArbitrary' ] ) &&
-				$question[ 'allowArbitrary' ] === true
-			) {
-				unset( $question[ 'type' ] );
-				$question[ 'class' ] = HTMLMultiSelectFieldAllowArbitrary::class;
-				continue;
-			}
-
 			// Add select options for 'placeholder' and 'other'
-			/* @phan-suppress-next-line PhanTypeArraySuspicious */
 			if ( $question[ 'type' ] === 'select' ) {
 				if ( isset( $question[ 'placeholder-message' ] ) ) {
 					// Add 'placeholder' as the first options
@@ -121,7 +107,6 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 					$question['options-messages'] = $question['options-messages'] +
 						[ $question[ 'other-message' ] => 'other' ];
 				}
-				continue;
 			}
 		}
 		return $questions;
