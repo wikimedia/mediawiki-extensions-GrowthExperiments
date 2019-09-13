@@ -61,5 +61,6 @@
 	"growthexperiments-homepage-tutorial-subheader": "Przejdź szybki tutorial uczący jak edytować Wikipedię",
 	"growthexperiments-specialimpact-title": "Wpływ",
 	"growthexperiments-specialimpact-showing-for-other-user": "Pokazywanie danych o wpływie działalności $1",
-	"growthexperiments-specialimpact-invalid-username": "Nie podana lub nieprawidłowa nazwa użytkownika."
+	"growthexperiments-specialimpact-invalid-username": "Nie podana lub nieprawidłowa nazwa użytkownika.",
+	"growthexperiments-homepage-discovery-thanks-header": "Dziękujemy {{GENDER:$1|ci}} za utworzenie konta!"
 }

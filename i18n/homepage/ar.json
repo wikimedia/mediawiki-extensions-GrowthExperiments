@@ -101,8 +101,8 @@
 	"growthexperiments-tour-discovery-title": "انطلق من هنا!",
 	"growthexperiments-tour-discovery-description": "{{GENDER:$1|انقر|انقري}} على  اسم المستخدم الخاص {{GENDER:$1|بكَ|بكِ}} لزيارة {{GENDER:$1|صفحتكَ|صفحتكِ}} الرئيسية.",
 	"growthexperiments-homepage-welcomesurvey-default-close": "{{GENDER:$1|انتقل|انتقلي}} إلى {{GENDER:$1|صفحتكَ|صفحتكِ}} الرئيسية",
-	"growthexperiments-homepage-discovery-banner-header": "مرحبا بـ{{GENDER:$1|كَ|كِ}} في صفحتك الرئيسية!",
-	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|أنت}} يمكنك دائما النقر فوق $2 في أعلى الصفحة للعودة هنا.",
-	"growthexperiments-homepage-discovery-thanks-header": "شكرا على إنشاء {{GENDER:$1|حسابك}}!",
-	"growthexperiments-homepage-discovery-thanks-text": "انقر $2 في أعلى الصفحة لزيارة  {{GENDER:$1|صفحتك}} الرئيسية والبدء."
+	"growthexperiments-homepage-discovery-banner-header": "مرحبا بـ{{GENDER:$1|كَ|كِ}} في صفحت{{GENDER:$1|كَ|كِ}} الرئيسية!",
+	"growthexperiments-homepage-discovery-banner-text": "يمكن{{GENDER:$1|كَ|كِ}} دائما النقر فوق $2 في أعلى الصفحة للعودة إلى هنا.",
+	"growthexperiments-homepage-discovery-thanks-header": "شكرا على إنشاء {{GENDER:$1|حسابكَ|حسابكِ}}!",
+	"growthexperiments-homepage-discovery-thanks-text": "{{GENDER:$1|انقر|انقري}} $2 في أعلى الصفحة لزيارة {{GENDER:$1|صفحتكَ|صفحتكِ}} الرئيسية والبدء."
 }
