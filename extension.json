@@ -287,36 +287,7 @@
 				"welcomesurvey-question-edited-option-dont-remember-label",
 				"welcomesurvey-question-email-label",
 				"welcomesurvey-question-email-placeholder",
-				"welcomesurvey-question-email-help",
-				"welcomesurvey-question-topics-label",
-				"welcomesurvey-question-topics-other-placeholder",
-				"welcomesurvey-question-topics-option-arts",
-				"welcomesurvey-question-topics-option-science",
-				"welcomesurvey-question-topics-option-geography",
-				"welcomesurvey-question-topics-option-history",
-				"welcomesurvey-question-topics-option-music",
-				"welcomesurvey-question-topics-option-sports",
-				"welcomesurvey-question-topics-option-literature",
-				"welcomesurvey-question-topics-option-religion",
-				"welcomesurvey-question-topics-option-popular-culture",
-				"welcomesurvey-question-topics-option-entertainment",
-				"welcomesurvey-question-topics-option-food-drink",
-				"welcomesurvey-question-topics-option-biography",
-				"welcomesurvey-question-topics-option-military",
-				"welcomesurvey-question-topics-option-economics",
-				"welcomesurvey-question-topics-option-technology",
-				"welcomesurvey-question-topics-option-film",
-				"welcomesurvey-question-topics-option-philosophy",
-				"welcomesurvey-question-topics-option-business",
-				"welcomesurvey-question-topics-option-politics",
-				"welcomesurvey-question-topics-option-government",
-				"welcomesurvey-question-topics-option-engineering",
-				"welcomesurvey-question-topics-option-crafts-hobbies",
-				"welcomesurvey-question-topics-option-games",
-				"welcomesurvey-question-topics-option-health",
-				"welcomesurvey-question-topics-option-social-science",
-				"welcomesurvey-question-topics-option-transportation",
-				"welcomesurvey-question-topics-option-education"
+				"welcomesurvey-question-email-help"
 			],
 			"targets": [
 				"desktop",
@@ -658,8 +629,6 @@
 					"questions": [
 						"reason",
 						"edited",
-						"topics",
-						"topics-other-js",
 						"email",
 						"mentor-info",
 						"mentor"
@@ -679,8 +648,6 @@
 					"questions": [
 						"reason",
 						"edited",
-						"topics",
-						"topics-other-js",
 						"email",
 						"mentor-info",
 						"mentor"
@@ -693,8 +660,6 @@
 					"questions": [
 						"reason",
 						"edited",
-						"topics",
-						"topics-other-js",
 						"email",
 						"mentor-info",
 						"mentor"
