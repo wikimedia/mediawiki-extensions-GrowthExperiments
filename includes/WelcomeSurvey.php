@@ -157,8 +157,10 @@ class WelcomeSurvey {
 				"label-message" => "welcomesurvey-question-reason-label",
 				"options-messages" => [
 					"welcomesurvey-question-reason-option-edit-typo-label" => "edit-typo",
-					"welcomesurvey-question-reason-option-edit-info-label" => "edit-info",
+					"welcomesurvey-question-reason-option-edit-info-add-change-label" => "edit-info-add-change",
+					"welcomesurvey-question-reason-option-add-image-label" => "add-image",
 					"welcomesurvey-question-reason-option-new-page-label" => "new-page",
+					"welcomesurvey-question-reason-option-program-participant-label" => "program-participant",
 					"welcomesurvey-question-reason-option-read-label" => "read",
 				] + $reasonOtherOption,
 				"placeholder-message" => "welcomesurvey-dropdown-option-select-label",
