@@ -108,9 +108,16 @@ class SpecialHomepageLogger {
 			/** @var Tutorial $tutorialTask */
 			$tutorialTask = $startTasks['tutorial'];
 			$event['start_tutorial_state'] = $tutorialTask->getState();
-			/** @var Userpage $userpageTask */
-			$userpageTask = $startTasks['userpage'];
-			$event['start_userpage_state'] = $userpageTask->getState();
+			if ( isset( $startTasks['userpage'] ) ) {
+				/** @var Userpage $userpageTask */
+				$userpageTask = $startTasks['userpage'];
+				$event['start_userpage_state'] = $userpageTask->getState();
+			}
+			if ( isset( $startTasks['startediting'] ) ) {
+				/** @var StartEditing $startEditingTask */
+				$startEditingTask = $startTasks['startediting'];
+				$event['start_startediting_state'] = $startEditingTask->getState();
+			}
 			/** @var Email $emailTask */
 			$emailTask = $startTasks['email'];
 			$event['start_email_state'] = $emailTask->getState();
@@ -118,7 +125,7 @@ class SpecialHomepageLogger {
 
 		$event['homepage_pageview_token'] = $this->pageviewToken;
 
-		EventLogging::logEvent( 'HomepageVisit', 19194220, $event );
+		EventLogging::logEvent( 'HomepageVisit', 19386218, $event );
 	}
 
 }
