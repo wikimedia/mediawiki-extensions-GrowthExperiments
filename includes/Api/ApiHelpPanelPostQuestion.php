@@ -63,13 +63,13 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 		if ( $params[self::API_PARAM_RELEVANT_TITLE] ) {
 			$status = $this->questionPoster->validateRelevantTitle();
 			if ( !$status->isGood() ) {
-				throw new ApiUsageException( null, $status );
+				$this->dieStatus( $status );
 			}
 		}
 
 		$status = $this->questionPoster->submit();
 		if ( !$status->isGood() ) {
-			throw new ApiUsageException( null, $status );
+			$this->dieStatus( $status );
 		}
 
 		$result = [
@@ -118,19 +118,15 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 	 * @param string $source
 	 * @param $body
 	 * @param string $relevantTitle
-	 * @throws ApiUsageException
+	 * @throws MWException
 	 */
 	private function setQuestionPoster( $source, $body, $relevantTitle ) {
-		try {
-			$questionPosterClass = $this->questionPosterClasses[$source];
-			$this->questionPoster = new $questionPosterClass(
-				$this->getContext(),
-				$body,
-				$relevantTitle
-			);
-		} catch ( \Exception $exception ) {
-			$this->dieWithException( $exception );
-		}
+		$questionPosterClass = $this->questionPosterClasses[$source];
+		$this->questionPoster = new $questionPosterClass(
+			$this->getContext(),
+			$body,
+			$relevantTitle
+		);
 	}
 
 	/**

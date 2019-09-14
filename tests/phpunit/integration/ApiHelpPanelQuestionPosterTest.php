@@ -232,7 +232,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 
 	/**
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster::checkUserPermissions
-	 * @expectedException ApiUsageException
+	 * @expectedException MWException
 	 * @expectedExceptionMessageRegExp /Your username or IP address has been blocked/
 	 */
 	public function testBlockedUserCantPostQuestion() {

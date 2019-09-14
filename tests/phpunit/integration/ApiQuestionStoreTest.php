@@ -22,7 +22,6 @@ class ApiQuestionStoreTest extends ApiTestCase {
 	/**
 	 * @expectedException ApiUsageException
 	 * @expectedExceptionMessage The "storage" parameter must be set.
-	 * @throws ApiUsageException
 	 * @covers \GrowthExperiments\Api\ApiQuestionStore::getAllowedParams
 	 */
 	public function testRequiredParams() {
