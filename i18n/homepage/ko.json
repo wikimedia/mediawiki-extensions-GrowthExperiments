@@ -100,5 +100,9 @@
 	"growthexperiments-tour-welcome-description": "{{GENDER:$1|언제든지}} 사용자 이름을 클릭해서 홈페이지로 돌아올 수 있습니다.",
 	"growthexperiments-tour-discovery-title": "여기서 시작하세요!",
 	"growthexperiments-tour-discovery-description": "{{GENDER:$1|사용자 이름}}을 클릭하면 홈페이지로 갈 수 있습니다.",
-	"growthexperiments-homepage-welcomesurvey-default-close": "{{GENDER:$1|홈페이지}}로 이동하기"
+	"growthexperiments-homepage-welcomesurvey-default-close": "{{GENDER:$1|홈페이지}}로 이동하기",
+	"growthexperiments-homepage-discovery-banner-header": "{{GENDER:$1|나만의}} 홈페이지에 오신 것을 환영합니다!",
+	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|언제든지}} 상단의 $2 아이콘을 눌러 이곳으로 돌아올 수 있습니다.",
+	"growthexperiments-homepage-discovery-thanks-header": "{{GENDER:$1|계정을}} 만들어 주셔서 감사합니다!",
+	"growthexperiments-homepage-discovery-thanks-text": "문서 맨 위의 $2 아이콘을 눌러 {{GENDER:$1|나만의}} 홈페이지를 확인해 보고, 편집을 시작하세요."
 }

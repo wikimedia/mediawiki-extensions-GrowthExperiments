@@ -62,5 +62,8 @@
 	"growthexperiments-specialimpact-title": "Wpływ",
 	"growthexperiments-specialimpact-showing-for-other-user": "Pokazywanie danych o wpływie działalności $1",
 	"growthexperiments-specialimpact-invalid-username": "Nie podana lub nieprawidłowa nazwa użytkownika.",
-	"growthexperiments-homepage-discovery-thanks-header": "Dziękujemy {{GENDER:$1|ci}} za utworzenie konta!"
+	"growthexperiments-homepage-discovery-banner-header": "Witaj na {{GENDER:$1|swojej}} stronie!",
+	"growthexperiments-homepage-discovery-banner-text": "Zawsze możesz {{GENDER:$1|kliknąć}} $2 na górze strony aby wrócić tutaj.",
+	"growthexperiments-homepage-discovery-thanks-header": "Dziękujemy {{GENDER:$1|ci}} za utworzenie konta!",
+	"growthexperiments-homepage-discovery-thanks-text": "Kliknij $2 na górze strony aby odwiedzić {{GENDER:$1|swoją}} stronę i rozpocząć przygodę."
 }
