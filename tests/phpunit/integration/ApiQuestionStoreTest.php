@@ -6,10 +6,9 @@ use ApiTestCase;
 use ApiUsageException;
 use DerivativeContext;
 use FauxRequest;
-use GrowthExperiments\HelpPanel\HelpModuleQuestionPoster;
-use GrowthExperiments\HomepageModules\Help;
+use GrowthExperiments\Mentor;
+use GrowthExperiments\HelpPanel\MentorshipModuleQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
-use Title;
 
 /**
  * @group API
@@ -36,7 +35,7 @@ class ApiQuestionStoreTest extends ApiTestCase {
 	 * @covers \GrowthExperiments\Api\ApiQuestionStore::execute
 	 */
 	public function testNoQuestionsResponse() {
-		foreach ( [ Mentorship::QUESTION_PREF, Help::QUESTION_PREF ] as $storage ) {
+		foreach ( [ Mentorship::QUESTION_PREF ] as $storage ) {
 			$response = $this->doApiRequest( [
 				'action' => 'homepagequestionstore',
 				'storage' => $storage,
@@ -49,20 +48,20 @@ class ApiQuestionStoreTest extends ApiTestCase {
 	}
 
 	public function testApiResponseHtmlJson() {
-		$this->setMwGlobals( [
-			'wgGEHelpPanelHelpDeskTitle' => Title::newMainPage()->getDBkey()
-		] );
 		$user = $this->getMutableTestUser()->getUser();
+		$mentor = $this->getTestSysop()->getUser();
+		$user->setOption( Mentor::MENTOR_PREF, $mentor->getId() );
+		$user->saveSettings();
 		$request = new FauxRequest( [], true );
 		$context = new DerivativeContext( $this->apiContext );
 		$context->setRequest( $request );
 		$context->setUser( $user );
-		$questionPoster = new HelpModuleQuestionPoster( $context, 'foo' );
+		$questionPoster = new MentorshipModuleQuestionPoster( $context, 'foo' );
 		$questionPoster->submit();
 		$response = $this->doApiRequest(
 			[
 				'action' => 'homepagequestionstore',
-				'storage' => Help::QUESTION_PREF
+				'storage' => Mentorship::QUESTION_PREF
 			],
 			null,
 			null,
