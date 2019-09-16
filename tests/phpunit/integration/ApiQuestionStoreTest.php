@@ -7,6 +7,7 @@ use ApiUsageException;
 use DerivativeContext;
 use FauxRequest;
 use GrowthExperiments\Mentor;
+use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
 use GrowthExperiments\HelpPanel\MentorshipModuleQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
 
@@ -35,7 +36,7 @@ class ApiQuestionStoreTest extends ApiTestCase {
 	 * @covers \GrowthExperiments\Api\ApiQuestionStore::execute
 	 */
 	public function testNoQuestionsResponse() {
-		foreach ( [ Mentorship::QUESTION_PREF ] as $storage ) {
+		foreach ( [ Mentorship::QUESTION_PREF, HelpPanelQuestionPoster::QUESTION_PREF ] as $storage ) {
 			$response = $this->doApiRequest( [
 				'action' => 'homepagequestionstore',
 				'storage' => $storage,

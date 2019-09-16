@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Api;
 
 use ApiBase;
+use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\RecentQuestionsFormatter;
@@ -45,7 +46,7 @@ class ApiQuestionStore extends ApiBase {
 		return [
 			'storage' => [
 				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_TYPE => [ Mentorship::QUESTION_PREF ]
+				ApiBase::PARAM_TYPE => [ Mentorship::QUESTION_PREF, HelpPanelQuestionPoster::QUESTION_PREF ]
 			],
 		];
 	}
