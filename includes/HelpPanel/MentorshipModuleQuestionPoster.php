@@ -4,7 +4,7 @@ namespace GrowthExperiments\HelpPanel;
 
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentor;
-use MWException;
+use GrowthExperiments\WikiConfigException;
 
 class MentorshipModuleQuestionPoster extends QuestionPoster {
 
@@ -27,13 +27,12 @@ class MentorshipModuleQuestionPoster extends QuestionPoster {
 
 	/**
 	 * @inheritDoc
-	 * @throws MWException If there's anything wrong with the current user's mentor
-	 * @throws \ConfigException
+	 * @throws WikiConfigException If there's anything wrong with the current user's mentor
 	 */
 	protected function getTargetTitle() {
 		$mentor = Mentor::newFromMentee( $this->getContext()->getUser() );
 		if ( !$mentor ) {
-			throw new MWException( "Mentor not found" );
+			throw new WikiConfigException( "Mentor not found" );
 		}
 		return $mentor->getMentorUser()->getTalkPage();
 	}

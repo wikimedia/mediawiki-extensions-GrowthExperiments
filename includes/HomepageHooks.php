@@ -12,7 +12,6 @@ use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Menu\Entries\IProfileMenuEntry;
 use MediaWiki\Minerva\Menu\Entries\HomeMenuEntry;
@@ -25,6 +24,7 @@ use Skin;
 use SkinTemplate;
 use SpecialContributions;
 use SpecialPage;
+use Throwable;
 use Title;
 use User;
 
@@ -275,12 +275,18 @@ class HomepageHooks {
 						->getMentorUser()
 						->getId()
 				);
-			}
-			catch ( Exception $exception ) {
-				LoggerFactory::getInstance( 'exception' )
-					->error( __METHOD__ . ' Failed to assign mentor for user.', [
-						'user' => $user->getId()
-					] );
+			} catch ( Exception $exception ) {
+				Util::logError( $exception, [
+					'user' => $user->getId(),
+					'impact' => 'Failed to assign mentor for user',
+					'origin' => __METHOD__,
+				] );
+			} catch ( Throwable $throwable ) {
+				Util::logError( $throwable, [
+					'user' => $user->getId(),
+					'impact' => 'Failed to assign mentor for user',
+					'origin' => __METHOD__,
+				] );
 			}
 		}
 	}
@@ -331,10 +337,18 @@ class HomepageHooks {
 			try {
 				$mentor = Mentor::newFromMentee( $user, true );
 				$options[Mentor::MENTOR_PREF] = $mentor->getMentorUser()->getId();
-			}
-			catch ( Exception $exception ) {
-				LoggerFactory::getInstance( 'exception' )
-					->error( 'Failed to assign mentor from Special:Preferences' );
+			} catch ( Exception $exception ) {
+				Util::logError( $exception, [
+					'user' => $user->getId(),
+					'impact' => 'Failed to assign mentor from Special:Preferences',
+					'origin' => __METHOD__,
+				] );
+			} catch ( Throwable $throwable ) {
+				Util::logError( $throwable, [
+					'user' => $user->getId(),
+					'impact' => 'Failed to assign mentor from Special:Preferences',
+					'origin' => __METHOD__,
+				] );
 			}
 		}
 

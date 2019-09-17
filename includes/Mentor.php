@@ -4,9 +4,9 @@ namespace GrowthExperiments;
 
 use ConfigException;
 use DeferredUpdates;
-use Exception;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
+use MWException;
 use ParserOptions;
 use Title;
 use User;
@@ -61,26 +61,27 @@ class Mentor {
 	 * @param User $mentee
 	 * @return User The selected mentor
 	 * @throws ConfigException
-	 * @throws Exception
+	 * @throws WikiConfigException
+	 * @throws MWException
 	 */
 	private static function selectMentor( User $mentee ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$mentorsPageName = $config->get( 'GEHomepageMentorsList' );
 		$title = Title::newFromText( $mentorsPageName );
 		if ( !$title || !$title->exists() ) {
-			throw new Exception( 'wgGEHomepageMentorsList is invalid: ' . $mentorsPageName );
+			throw new WikiConfigException( 'wgGEHomepageMentorsList is invalid: ' . $mentorsPageName );
 		}
 		$page = WikiPage::factory( $title );
 		$links = $page->getParserOutput( ParserOptions::newCanonical() )->getLinks();
 		if ( !isset( $links[ NS_USER ] ) ) {
-			throw new Exception(
+			throw new WikiConfigException(
 				'Homepage Mentorship module: no mentor available for user ' . $mentee->getName()
 			);
 		}
 		$possibleMentors = array_keys( $links[ NS_USER ] );
 		$possibleMentors = array_values( array_diff( $possibleMentors, [ $mentee->getTitleKey() ] ) );
 		if ( count( $possibleMentors ) === 0 ) {
-			throw new Exception(
+			throw new WikiConfigException(
 				'Homepage Mentorship module: no mentor available for ' .
 				$mentee->getName() .
 				' but themselves'
@@ -90,7 +91,7 @@ class Mentor {
 		$selectedMentorName = $possibleMentors[ rand( 0, count( $possibleMentors ) - 1 ) ];
 		$selectedMentor = User::newFromName( $selectedMentorName );
 		if ( !$selectedMentor || !$selectedMentor->getId() ) {
-			throw new Exception( 'Invalid mentor: ' . $selectedMentorName );
+			throw new WikiConfigException( 'Invalid mentor: ' . $selectedMentorName );
 		}
 		return $selectedMentor;
 	}
@@ -125,7 +126,7 @@ class Mentor {
 	 * @param IContextSource $context
 	 * @return mixed|string
 	 * @throws ConfigException
-	 * @throws \MWException
+	 * @throws MWException
 	 */
 	public function getIntroText( IContextSource $context ) {
 		$introText = $this->getCustomMentorIntroText( $context );
@@ -139,7 +140,7 @@ class Mentor {
 	 * @param IContextSource $context
 	 * @return string
 	 * @throws ConfigException
-	 * @throws \MWException
+	 * @throws MWException
 	 */
 	private function getCustomMentorIntroText( IContextSource $context ) {
 		// Use \h (horizontal whitespace) instead of \s (whitespace) to avoid matching newlines (T227535)
@@ -174,7 +175,7 @@ class Mentor {
 	 * @param IContextSource $context
 	 * @return string
 	 * @throws ConfigException
-	 * @throws \MWException
+	 * @throws MWException
 	 */
 	private function getMentorsPageContent( IContextSource $context ) {
 		$config = $context->getConfig();
