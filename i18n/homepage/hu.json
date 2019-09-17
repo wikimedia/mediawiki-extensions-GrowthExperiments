@@ -51,8 +51,6 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> szerkesztés",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Friss szerkesztések megtekintései (utóbbi 60 nap):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Kövesd az általad szerkesztett szócikkek megtekintéseit",
-	"growthexperiments-homepage-help-ask-help-desk": "Kérdés feltevése",
-	"growthexperiments-homepage-help-desk-questions": "Más szerkesztők kérdéseinek megtekintése",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Tanácsadás értesítések",
 	"growthexperiments-tour-response-tip-text": "Amikor megválaszolják a {{GENDER:$1|kérdésedet}}, itt fog megjelenni egy értesítés.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Mentorértesítések",

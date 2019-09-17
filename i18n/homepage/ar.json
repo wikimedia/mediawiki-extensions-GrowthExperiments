@@ -52,8 +52,6 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "{{PLURAL:$1|لا تعديلات|تعديل واحد|تعديلان اثنان|<strong>$1</strong> تعديلات|<strong>$1</strong> تعديلا|<strong>$1</strong> تعديل}} للمقالات",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "مرات المشاهدة من أحدث التعديلات (آخر 60 يوما):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "مراقبة مشاهدات المقالات التي قمت بتحريرها",
-	"growthexperiments-homepage-help-ask-help-desk": "طرح السؤال على فريق المساعدة",
-	"growthexperiments-homepage-help-desk-questions": "عرض الأسئلة من المستخدمين الآخرين",
 	"growthexperiments-tour-helpdesk-response-tip-title": "تنبيهات مكتب المساعدة",
 	"growthexperiments-tour-response-tip-text": "عندما يتم الرد على {{GENDER:$1|سؤالك}}، سيكون {{GENDER:$1|لديك}} تنبيه جديد هنا.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "تنبيهات المرشد",

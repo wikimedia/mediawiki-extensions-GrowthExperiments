@@ -52,8 +52,6 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|редагування|редагування|редагувань}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Перегляди від недавніх редагувань (минулі 60 днів):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Слідкуйте за переглядами статей, які ви редагували",
-	"growthexperiments-homepage-help-ask-help-desk": "Поставте запитання",
-	"growthexperiments-homepage-help-desk-questions": "Перегляньте запитання від інших користувачів",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Сповіщення із запитів на допомогу",
 	"growthexperiments-tour-response-tip-text": "Коли з'явиться відповідь на {{GENDER:$1|ваше}} запитання, {{GENDER:$1|ви}} отримаєте тут нове сповіщення.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Сповіщення від наставника",

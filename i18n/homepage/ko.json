@@ -52,8 +52,6 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "{{PLURAL:$1|편집}} <strong>$1</strong>회",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "최근의 편집 보기 (최근 60일):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "편집한 문서의 방문 횟수 보기",
-	"growthexperiments-homepage-help-ask-help-desk": "질문방에 도움 요청하기",
-	"growthexperiments-homepage-help-desk-questions": "다른 사용자의 질문 보기",
 	"growthexperiments-tour-helpdesk-response-tip-title": "질문방 알림",
 	"growthexperiments-tour-response-tip-text": "{{GENDER:$1|질문에}} 답변이 등록되면 여기에 새 알림을 받게 됩니다.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "멘토 알림",

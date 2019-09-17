@@ -48,8 +48,6 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "{{PLURAL:$1|Aldaketa <strong>$1</strong>|<strong>$1</strong> aldaketa}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Zure azken aldaketen ikustaldiak (azken 60 egunak):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Behatu zuk aldatu dituzun artikuluen ikustaldiak",
-	"growthexperiments-homepage-help-ask-help-desk": "Laguntza gunean galdetu",
-	"growthexperiments-homepage-help-desk-questions": "Ikusi beste erabiltzaile batzuen galderak",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Laguntza guneko alertak",
 	"growthexperiments-tour-response-tip-text": "{{GENDER:$1|Zure}} galdera erantzuten dutenean, alerta berri bat sor {{GENDER:$1|dezakezu}} hemen.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Mentoreen alertak",

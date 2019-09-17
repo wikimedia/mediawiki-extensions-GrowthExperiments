@@ -49,8 +49,6 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|edição|edições}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Visualizações de edições recentes (últimos 60 dias):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Monitorizar as visualizações de artigos editados por si",
-	"growthexperiments-homepage-help-ask-help-desk": "Pergunte na central de ajuda",
-	"growthexperiments-homepage-help-desk-questions": "Ver perguntas dos outros utilizadores",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Alertas da central de ajuda",
 	"growthexperiments-tour-response-tip-text": "Quando {{GENDER:$1|a sua}} pergunta for respondida, {{GENDER:$1|receberá}} aqui um novo alerta.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Alertas de mentores",

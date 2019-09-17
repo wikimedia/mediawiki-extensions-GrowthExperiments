@@ -20,7 +20,6 @@
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Dir}} hutt nach keng Artikele geännert.",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Op den Artikel goen",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Verstan",
-	"growthexperiments-homepage-help-ask-help-desk": "Helpdesk froen",
 	"growthexperiments-tour-response-button-okay": "Verstanen",
 	"growthexperiments-homepage-help-cancel": "Ofbriechen",
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|Är}}  rezent Froen",
@@ -31,5 +30,6 @@
 	"growthexperiments-homepage-tutorial-header": "Léiere wéi een ännert",
 	"growthexperiments-homepage-tutorial-cta-text": "Uleedung",
 	"growthexperiments-specialimpact-title": "Impakt",
-	"growthexperiments-tour-discovery-title": "Fänkt hei un!"
+	"growthexperiments-tour-discovery-title": "Fänkt hei un!",
+	"growthexperiments-homepage-discovery-banner-header": "Wëllkomm op  {{GENDER:$1|Ärer}} Homepage!"
 }
