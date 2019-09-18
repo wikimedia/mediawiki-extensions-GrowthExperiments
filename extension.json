@@ -300,15 +300,63 @@
 		},
 		"ext.growthExperiments.Homepage.StartEditing": {
 			"packageFiles": [
-				"homepage/ext.growthExperiments.Homepage.StartEditing.js"
+				"homepage/ext.growthExperiments.Homepage.StartEditing.js",
+				"homepage/ext.growthExperiments.Homepage.StartEditingDialog.js"
+			],
+			"styles": [
+				"homepage/ext.growthExperiments.Homepage.StartEditingDialog.less"
+			],
+			"messages": [
+				"growthexperiments-homepage-startediting-dialog-topic-back",
+				"growthexperiments-homepage-startediting-dialog-topic-forward",
+				"growthexperiments-homepage-startediting-dialog-difficulty-back",
+				"growthexperiments-homepage-startediting-dialog-difficulty-forward",
+				"growthexperiments-homepage-startediting-dialog-difficulty-header",
+				"growthexperiments-homepage-startediting-dialog-difficulty-subheader",
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label",
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label",
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label",
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header",
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header",
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header",
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body",
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body",
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body"
 			],
 			"dependencies": [
-				"mediawiki.api"
+				"mediawiki.api",
+				"oojs-ui-widgets",
+				"oojs-ui-windows"
 			],
 			"targets": [
 				"desktop",
 				"mobile"
 			]
+		},
+		"ext.growthExperiments.Homepage.icons": {
+			"class": "ResourceLoaderImageModule",
+			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",
+			"selectorWithoutVariant": ".oo-ui-icon-{name}",
+			"images": {
+				"difficulty-easy": {
+					"file": {
+						"ltr": "../images/difficulty-easy-ltr.svg",
+						"rtl": "../images/difficulty-easy-rtl.svg"
+					}
+				},
+				"difficulty-medium": {
+					"file": {
+						"ltr": "../images/difficulty-medium-ltr.svg",
+						"rtl": "../images/difficulty-medium-rtl.svg"
+					}
+				},
+				"difficulty-hard": {
+					"file": {
+						"ltr": "../images/difficulty-hard-ltr.svg",
+						"rtl": "../images/difficulty-hard-rtl.svg"
+					}
+				}
+			}
 		},
 		"ext.growthExperiments.Homepage.contribs.styles": {
 			"styles": "homepage/ext.growthExperiments.Homepage.contribs.less",
