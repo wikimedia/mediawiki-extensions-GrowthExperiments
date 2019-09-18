@@ -47,7 +47,9 @@ class WelcomeSurvey {
 
 		// The group is specified in the URL
 		$request = $this->context->getRequest();
-		$groupParam = $request->getText( 'group' );
+		// The parameter name ('_group') must match the name of the hidden form field in
+		// SpecialWelcomeSurvey::alterForm()
+		$groupParam = $request->getText( '_group' );
 		if ( isset( $groups[ $groupParam ] ) ) {
 			return $groupParam;
 		}
