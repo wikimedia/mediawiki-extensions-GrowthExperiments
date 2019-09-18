@@ -39,7 +39,6 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 		$welcomeSurvey = $this->getWelcomeSurveyForFreetextTest( true );
 		$questions = $welcomeSurvey->getQuestions( 'exp2_target_specialpage' );
 		$this->assertArrayHasKey( 'reason-other', $questions );
-		$this->assertArrayHasKey( 'topics-other-nojs', $questions );
 	}
 
 	/**
@@ -50,7 +49,6 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 		$welcomeSurvey = $this->getWelcomeSurveyForFreetextTest( false );
 		$questions = $welcomeSurvey->getQuestions( 'exp2_target_specialpage' );
 		$this->assertArrayNotHasKey( 'reason-other', $questions );
-		$this->assertArrayNotHasKey( 'topics-other-nojs', $questions );
 	}
 
 	private function getWelcomeSurveyForFreetextTest( $allowFreetext ) {
@@ -62,8 +60,6 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 				"questions" => [
 					"reason",
 					"edited",
-					"topics",
-					"topics-other-js",
 					"email",
 					"mentor-info",
 					"mentor"

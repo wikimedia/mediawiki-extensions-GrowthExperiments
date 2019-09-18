@@ -107,11 +107,6 @@ class WelcomeSurvey {
 				array_splice( $questionNames, array_search( 'reason', $questionNames ) + 1, 0,
 					'reason-other' );
 			}
-			if ( in_array( 'topics-other-js', $questionNames ) ) {
-				// Insert topics-other-nojs before topics-other-js
-				array_splice( $questionNames, array_search( 'topics-other-js', $questionNames ), 0,
-					'topics-other-nojs' );
-			}
 		}
 
 		$questions = [];
@@ -180,56 +175,6 @@ class WelcomeSurvey {
 				],
 				"placeholder-message" => "welcomesurvey-dropdown-option-select-label",
 				"group" => "edited",
-			],
-			"topics" => [
-				"type" => "multiselect",
-				"label-message" => "welcomesurvey-question-topics-label",
-				"flatlist" => true,
-				"options-messages" => [
-					"welcomesurvey-question-topics-option-arts" => "arts",
-					"welcomesurvey-question-topics-option-science" => "science",
-					"welcomesurvey-question-topics-option-geography" => "geography",
-					"welcomesurvey-question-topics-option-history" => "history",
-					"welcomesurvey-question-topics-option-music" => "music",
-					"welcomesurvey-question-topics-option-sports" => "sports",
-					"welcomesurvey-question-topics-option-literature" => "literature",
-					"welcomesurvey-question-topics-option-religion" => "religion",
-					"welcomesurvey-question-topics-option-popular-culture" => "popular culture",
-				],
-				"group" => "topics",
-			],
-			"topics-other-js" => [
-				"type" => "multiselect",
-				"allowArbitrary" => $this->allowFreetext,
-				"placeholder-message" => "welcomesurvey-question-topics-other-placeholder",
-				"options-messages" => [
-					"welcomesurvey-question-topics-option-entertainment" => "entertainment",
-					"welcomesurvey-question-topics-option-food-drink" => "food and drink",
-					"welcomesurvey-question-topics-option-biography" => "biography",
-					"welcomesurvey-question-topics-option-military" => "military",
-					"welcomesurvey-question-topics-option-economics" => "economics",
-					"welcomesurvey-question-topics-option-technology" => "technology",
-					"welcomesurvey-question-topics-option-film" => "film",
-					"welcomesurvey-question-topics-option-philosophy" => "philosophy",
-					"welcomesurvey-question-topics-option-business" => "business",
-					"welcomesurvey-question-topics-option-politics" => "politics",
-					"welcomesurvey-question-topics-option-government" => "government",
-					"welcomesurvey-question-topics-option-engineering" => "engineering",
-					"welcomesurvey-question-topics-option-crafts-hobbies" => "crafts and hobbies",
-					"welcomesurvey-question-topics-option-games" => "games",
-					"welcomesurvey-question-topics-option-health" => "health",
-					"welcomesurvey-question-topics-option-social-science" => "social science",
-					"welcomesurvey-question-topics-option-transportation" => "transportation",
-					"welcomesurvey-question-topics-option-education" => "education",
-				],
-				"cssclass" => "custom-dropdown js-only",
-				"group" => "topics",
-			],
-			"topics-other-nojs" => [
-				"type" => "text",
-				"placeholder-message" => "welcomesurvey-question-topics-other-placeholder",
-				"cssclass" => "nojs-only",
-				"group" => "topics",
 			],
 			"mentor-info" => [
 				"type" => "info",
