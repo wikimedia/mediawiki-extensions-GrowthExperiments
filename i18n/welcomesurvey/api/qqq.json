@@ -1,8 +1,0 @@
-{
-	"@metadata": [],
-	"apihelp-welcomesurveyhandleresponses-summary": "{{doc-apihelp-summary|welcomesurveyhandleresponses}}",
-	"apihelp-welcomesurveyhandleresponses-param-surveyaction": "{{doc-apihelp-param|welcomesurveyhandleresponses|surveyaction}}",
-	"apihelp-welcomesurveyhandleresponses-param-group": "{{doc-apihelp-param|welcomesurveyhandleresponses|group}}",
-	"apihelp-welcomesurveyhandleresponses-param-rendertimestamp": "{{doc-apihelp-param|welcomesurveyhandleresponses|rendertimestamp}}",
-	"apihelp-welcomesurveyhandleresponses-param-responses": "{{doc-apihelp-param|welcomesurveyhandleresponses|responses}}"
-}

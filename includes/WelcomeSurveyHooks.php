@@ -4,9 +4,7 @@ namespace GrowthExperiments;
 
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
 use MediaWiki\MediaWikiServices;
-use OutputPage;
 use RequestContext;
-use Skin;
 use User;
 
 class WelcomeSurveyHooks {
@@ -54,35 +52,6 @@ class WelcomeSurveyHooks {
 		$url = $welcomeSurvey->getRedirectUrl( $group );
 		if ( $url ) {
 			$context->getOutput()->redirect( $url );
-		}
-	}
-
-	/**
-	 *
-	 * Add module for WelcomeSurveyPopup
-	 *
-	 * @param OutputPage $out
-	 * @param Skin $skin
-	 */
-	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
-		if ( !self::isWelcomeSurveyEnabled() ) {
-			return;
-		}
-
-		if ( $out->getTitle()->isSpecial( 'CreateAccount' ) ) {
-			$out->addModules( 'ext.growthExperiments.detectjs' );
-			return;
-		}
-
-		if ( $out->getRequest()->getBool( 'showwelcomesurvey' ) && $out->getUser()->isLoggedIn() ) {
-			$welcomeSurvey = new WelcomeSurvey( $out->getContext() );
-			$group = $welcomeSurvey->getGroup();
-			$out->addJsConfigVars( [
-				'wgWelcomeSurveyPrivacyPolicyUrl' => $out->getConfig()->get( 'WelcomeSurveyPrivacyPolicyUrl' ),
-				'wgWelcomeSurveyQuestions' => $welcomeSurvey->getQuestions( $group, false ),
-				'wgWelcomeSurveyExperimentalGroup' => $group,
-			] );
-			$out->addModules( 'ext.growthExperiments.welcomesurvey.popup' );
 		}
 	}
 
