@@ -101,12 +101,12 @@ class WelcomeSurvey {
 			$questionNames = array_diff( $questionNames, [ 'email' ] );
 		}
 
-		if ( $this->allowFreetext && $groups[ $group ][ 'format' ] !== 'popup' ) {
-			if ( in_array( 'reason', $questionNames ) ) {
-				// Insert reason-other after reason
-				array_splice( $questionNames, array_search( 'reason', $questionNames ) + 1, 0,
-					'reason-other' );
-			}
+		if ( $this->allowFreetext &&
+			 $groups[ $group ][ 'format' ] !== 'popup' &&
+			 in_array( 'reason', $questionNames ) ) {
+			// Insert reason-other after reason
+			array_splice( $questionNames, array_search( 'reason', $questionNames ) + 1, 0,
+				'reason-other' );
 		}
 
 		$questions = [];
