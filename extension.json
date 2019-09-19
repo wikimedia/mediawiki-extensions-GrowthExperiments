@@ -484,10 +484,6 @@
 			"description": "api.php URL of a foreign wiki to search instead of the current wiki. Used for testing/development to get more/better results.",
 			"value": false
 		},
-		"GEHelpPanelSearchEnabled": {
-			"description": "Global ON/OFF switch for the Help panel search feature.",
-			"value": true
-		},
 		"WelcomeSurveyEnabled": {
 			"description": "Global ON/OFF switch for the Welcome survey feature.",
 			"value": true
