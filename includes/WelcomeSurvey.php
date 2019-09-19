@@ -7,7 +7,6 @@ use IContextSource;
 use MediaWiki\Logger\LoggerFactory;
 use MWTimestamp;
 use SpecialPage;
-use Title;
 
 class WelcomeSurvey {
 
@@ -101,9 +100,7 @@ class WelcomeSurvey {
 			$questionNames = array_diff( $questionNames, [ 'email' ] );
 		}
 
-		if ( $this->allowFreetext &&
-			 $groups[ $group ][ 'format' ] !== 'popup' &&
-			 in_array( 'reason', $questionNames ) ) {
+		if ( $this->allowFreetext && in_array( 'reason', $questionNames ) ) {
 			// Insert reason-other after reason
 			array_splice( $questionNames, array_search( 'reason', $questionNames ) + 1, 0,
 				'reason-other' );
@@ -277,11 +274,6 @@ class WelcomeSurvey {
 		$user->saveSettings();
 	}
 
-	private function getSurveyFormat( $group ) {
-		$groups = $this->context->getConfig()->get( 'WelcomeSurveyExperimentalGroups' );
-		return $groups[ $group ][ 'format' ] ?? null;
-	}
-
 	/**
 	 * Build the redirect URL for a group and its display format
 	 *
@@ -295,31 +287,16 @@ class WelcomeSurvey {
 		}
 
 		$request = $this->context->getRequest();
-		$format = $this->getSurveyFormat( $group );
 		$returnTo = $request->getVal( 'returnto' );
 		$returnToQuery = $request->getVal( 'returntoquery' );
 
-		if ( $format === 'specialpage' ) {
-			$welcomeSurvey = SpecialPage::getTitleFor( 'WelcomeSurvey' );
-			$query = wfArrayToCgi( [
-				'returnto' => $returnTo,
-				'returntoquery' => $returnToQuery,
-				'group' => $group,
-			] );
-			return $welcomeSurvey->getFullUrlForRedirect( $query );
-		}
-
-		if ( $format === 'popup' ) {
-			$title = Title::newFromText( $returnTo ) ?: Title::newMainPage();
-			$query = wfArrayToCgi( array_merge(
-				wfCgiToArray( $returnToQuery ),
-				[
-					'showwelcomesurvey' => 1,
-					'group' => $group,
-				]
-			) );
-			return $title->getFullUrlForRedirect( $query );
-		}
+		$welcomeSurvey = SpecialPage::getTitleFor( 'WelcomeSurvey' );
+		$query = wfArrayToCgi( [
+			'returnto' => $returnTo,
+			'returntoquery' => $returnToQuery,
+			'group' => $group,
+		] );
+		return $welcomeSurvey->getFullUrlForRedirect( $query );
 	}
 
 }

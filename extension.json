@@ -30,7 +30,6 @@
 		"GrowthExperimentsAlias": "GrowthExperiments.alias.php"
 	},
 	"APIModules": {
-		"welcomesurveyhandleresponses": "GrowthExperiments\\Api\\ApiWelcomeSurveyHandleResponses",
 		"helppanelquestionposter": "GrowthExperiments\\Api\\ApiHelpPanelPostQuestion",
 		"homepagequestionstore": "GrowthExperiments\\Api\\ApiQuestionStore"
 	},
@@ -69,7 +68,6 @@
 			"GrowthExperiments\\HomepageHooks::onSpecialPageAfterExecute"
 		],
 		"BeforePageDisplay": [
-			"GrowthExperiments\\WelcomeSurveyHooks::onBeforePageDisplay",
 			"GrowthExperiments\\HelpPanelHooks::onBeforePageDisplay",
 			"GrowthExperiments\\HomepageHooks::onBeforePageDisplay",
 			"GrowthExperiments\\TourHooks::onBeforePageDisplay"
@@ -191,87 +189,6 @@
 		"ext.growthExperiments.welcomeSurvey.styles": {
 			"styles": [
 				"welcomesurvey/ext.growthExperiments.welcomeSurvey.less"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
-		"ext.growthExperiments.detectjs": {
-			"scripts": [
-				"detectjs/detectjs.js"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
-		"ext.growthExperiments.welcomesurvey.popup": {
-			"styles": [
-				"welcomesurvey/popup/styles/ext.growthExperiments.welcomeSurveyPopup.less"
-			],
-			"packageFiles": [
-				"welcomesurvey/popup/ext.growthExperiments.welcomeSurveyPopup.init.js",
-				"welcomesurvey/popup/ui/ext.growthExperiments.GettingStartedLinksWidget.js",
-				"welcomesurvey/popup/ui/ext.growthExperiments.PrivacyNoticeWidget.js",
-				"welcomesurvey/popup/ui/ext.growthExperiments.RadioSelectWithInputWidget.js",
-				"welcomesurvey/popup/ui/ext.growthExperiments.StackNavigatorWidget.js",
-				"welcomesurvey/popup/ui/ext.growthExperiments.StackPositionIndicatorWidget.js",
-				"welcomesurvey/popup/ui/ext.growthExperiments.WelcomeSurveyConfirmationDialog.js",
-				"welcomesurvey/popup/ui/ext.growthExperiments.WelcomeSurveyDialog.js"
-			],
-			"dependencies": [
-				"mediawiki.user",
-				"mediawiki.jqueryMsg",
-				"oojs-ui-widgets",
-				"oojs-ui-windows"
-			],
-			"messages": [
-				"welcomesurvey",
-				"welcomesurvey-save-confirmation-title",
-				"welcomesurvey-save-confirmation-text",
-				"welcomesurvey-subtitle",
-				"welcomesurvey-save-btn",
-				"welcomesurvey-skip-btn",
-				"welcomesurvey-close-btn",
-				"welcomesurvey-popup-close-btn",
-				"welcomesurvey-back-btn",
-				"welcomesurvey-next-btn",
-				"welcomesurvey-sidebar-privacy-title",
-				"welcomesurvey-sidebar-privacy-text",
-				"welcomesurvey-privacy-policy-link-text",
-				"welcomesurvey-sidebar-editing-title",
-				"welcomesurvey-sidebar-editing-text",
-				"welcomesurvey-sidebar-editing-link1-text",
-				"welcomesurvey-sidebar-editing-link1-title",
-				"welcomesurvey-sidebar-editing-link2-text",
-				"welcomesurvey-sidebar-editing-link2-title",
-				"welcomesurvey-sidebar-editing-link3-text",
-				"welcomesurvey-sidebar-editing-link3-title",
-				"welcomesurvey-sidebar-editing-link4-text",
-				"welcomesurvey-sidebar-editing-link4-title",
-				"welcomesurvey-question-reason-label",
-				"welcomesurvey-dropdown-option-select-label",
-				"welcomesurvey-question-reason-option-edit-typo-label",
-				"welcomesurvey-question-reason-option-edit-info-add-change-label",
-				"welcomesurvey-question-reason-option-add-image-label",
-				"welcomesurvey-question-reason-option-new-page-label",
-				"welcomesurvey-question-reason-option-program-participant-label",
-				"welcomesurvey-question-reason-option-read-label",
-				"welcomesurvey-question-reason-option-other-label",
-				"welcomesurvey-question-reason-option-other-no-freetext-label",
-				"welcomesurvey-question-reason-other-placeholder",
-				"welcomesurvey-question-mentor-info",
-				"welcomesurvey-question-mentor-label",
-				"welcomesurvey-question-edited-label",
-				"welcomesurvey-question-edited-option-yes-many-label",
-				"welcomesurvey-question-edited-option-yes-few-label",
-				"welcomesurvey-question-edited-option-no-dunno-label",
-				"welcomesurvey-question-edited-option-no-other-label",
-				"welcomesurvey-question-edited-option-dont-remember-label",
-				"welcomesurvey-question-email-label",
-				"welcomesurvey-question-email-placeholder",
-				"welcomesurvey-question-email-help"
 			],
 			"targets": [
 				"desktop",
@@ -629,18 +546,6 @@
 				"exp2_target_specialpage": {
 					"range": "x",
 					"format": "specialpage",
-					"questions": [
-						"reason",
-						"edited",
-						"email",
-						"mentor-info",
-						"mentor"
-					]
-				},
-				"exp2_target_popup": {
-					"range": "x",
-					"format": "popup",
-					"nojs-fallback": "exp2_target_specialpage",
 					"questions": [
 						"reason",
 						"edited",
