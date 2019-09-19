@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Fúlvio",
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"Mansil alfalb"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Olá}}, {{bidi:$1}}!",
@@ -31,7 +32,7 @@
 	"growthexperiments-homepage-email-button-noemail": "Adicionar correio eletrónico",
 	"growthexperiments-homepage-email-button-unconfirmed": "Obter uma hiperligação nova",
 	"growthexperiments-homepage-email-button-confirmed": "Preferências",
-	"growthexperiments-homepage-email-changelink": "Alterar o {{GENDER:$1|seu}} endereço de correio eletrónico",
+	"growthexperiments-homepage-email-changelink": "(alterar)",
 	"growthexperiments-homepage-impact-header": "O {{GENDER:$1|seu}} impacto",
 	"growthexperiments-homepage-impact-subheader-text": "As pessoas estão a ler os artigos que {{GENDER:$1|você}} editou!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visitas desde que {{GENDER:$1|você}} editou (últimos 60 dias):",
@@ -89,11 +90,12 @@
 	"growthexperiments-specialimpact-invalid-username": "Nome de utilizador em falta ou inválido.",
 	"growthexperiments-homepage-enable-preference": "Para ativar a página principal de recém-chegado, visite as suas configurações da \"Página principal de recém-chegado\" nas [[Special:Preferences#mw-prefsection-personal-homepage|Preferências]].",
 	"growthexperiments-homepage-contributions-zero-title": "Ainda não {{GENDER:$1|fez}} nenhuma contribuição.",
-	"growthexperiments-homepage-contributions-zero-subtitle": "Visite {{GENDER:$1|a sua}} [$2 página principal] para começar a editar!",
+	"growthexperiments-homepage-contributions-zero-subtitle": "Visite a {{GENDER:$1|sua}} página principal para começar a editar!",
 	"growthexperiments-homepage-contributions-zero-button": "Ir para {{GENDER:$1|a sua}} página principal",
 	"growthexperiments-tour-welcome-title": "{{GENDER:$1|Bem-vindo|Bem-vinda}} à sua página principal!",
 	"growthexperiments-tour-welcome-description": "{{GENDER:$1|Pode}} sempre clicar o {{GENDER:$1|seu}} nome de utilizador para voltar aqui.",
 	"growthexperiments-tour-discovery-title": "Começar aqui!",
 	"growthexperiments-tour-discovery-description": "Clique {{GENDER:$1|o seu}} nome de utilizador para visitar {{GENDER:$1|a sua}} página principal.",
-	"growthexperiments-homepage-welcomesurvey-default-close": "Ir para {{GENDER:$1|a sua}} página principal"
+	"growthexperiments-homepage-welcomesurvey-default-close": "Ir para {{GENDER:$1|a sua}} página principal",
+	"growthexperiments-homepage-discovery-thanks-text": "Clique em $2 no topo da página para visitar a {{GENDER:$1|sua}} página inicial e começar."
 }

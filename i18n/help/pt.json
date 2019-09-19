@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Hamilton Abreu",
-			"CaiusSPQR"
+			"CaiusSPQR",
+			"Mansil alfalb"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Ativar o painel de ajuda do editor",
 	"growthexperiments-help-panel-cta-button-text": "Obter ajuda sobre edição",
 	"growthexperiments-help-panel-question-button-text": "Continuar",
-	"growthexperiments-help-panel-submit-question-button-text": "Publicar a minha pergunta",
+	"growthexperiments-help-panel-submit-question-button-text": "Publicar",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Principais páginas de ajuda sobre edição",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Ver mais artigos de ajuda",
 	"growthexperiments-help-panel-question-widget-header": "Coloque a sua pergunta na Central de Ajuda Comunitária",

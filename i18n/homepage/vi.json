@@ -97,5 +97,9 @@
 	"growthexperiments-tour-welcome-description": "{{GENDER:$1|Bạn}} luôn có thể nhấn vào tên người dùng của  {{GENDER:$1|mình}} để quay lại đây.",
 	"growthexperiments-tour-discovery-title": "Hãy bắt đầu ở đây!",
 	"growthexperiments-tour-discovery-description": "Hãy nhấn vào tên người dùng {{GENDER:$1|của bạn}} để ghé thăm trang nhà {{GENDER:$1|của bạn}}.",
-	"growthexperiments-homepage-welcomesurvey-default-close": "Đi tới trang nhà {{GENDER:$1|của bạn}}"
+	"growthexperiments-homepage-welcomesurvey-default-close": "Đi tới trang nhà {{GENDER:$1|của bạn}}",
+	"growthexperiments-homepage-discovery-banner-header": "Chào mừng tới với trang nhà {{GENDER:$1|của bạn}}!",
+	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|Bạn}} luôn có thể click vào $2 ở trên cùng của trang để quay trở lại đây.",
+	"growthexperiments-homepage-discovery-thanks-header": "Cảm ơn vì đã tạo tài khoản {{GENDER:$1|của bạn}}!",
+	"growthexperiments-homepage-discovery-thanks-text": "Hãy click vào $2 ở trên cùng của trang để ghé thăm trang nhà {{GENDER:$1|của bạn}} và bắt đầu làm quen."
 }

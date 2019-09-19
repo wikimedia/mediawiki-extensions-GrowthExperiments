@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mainframe98"
+			"Mainframe98",
+			"Elroy"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Welkom}}, $1!",
@@ -16,12 +17,13 @@
 	"welcomesurvey-sidebar-editing-title": "Beginnen met bewerken",
 	"welcomesurvey-sidebar-editing-link1-text": "Zelfstudie",
 	"welcomesurvey-sidebar-editing-link2-text": "Helpdesk",
-	"welcomesurvey-tagmultiselect-placeholder": "Meer onderwerpen toevoegen...",
 	"welcomesurvey-question-reason-label": "Waarom hebt u vandaag een account aangemaakt?",
 	"welcomesurvey-dropdown-option-select-label": "Maak een keuze",
 	"welcomesurvey-question-reason-option-edit-typo-label": "Om een (schrijf)fout in een Wikipedia artikel te verbeteren",
-	"welcomesurvey-question-reason-option-edit-info-label": "Om informatie aan een Wikipedia artikel toe te voegen",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Om gegevens aan een pagina op Wikipedia toe te voegen of te wijzigen",
+	"welcomesurvey-question-reason-option-add-image-label": "Om een foto of afbeelding aan een pagina op Wikipedia bij te voegen",
 	"welcomesurvey-question-reason-option-new-page-label": "Om een nieuw Wikipedia artikel toe te voegen",
+	"welcomesurvey-question-reason-option-program-participant-label": "Ik neem deel aan een programma, les of gebeurtenis",
 	"welcomesurvey-question-reason-option-read-label": "Om Wikipedia te lezen",
 	"welcomesurvey-question-reason-other-placeholder": "Voer een reden in...",
 	"welcomesurvey-question-mentor-label": "Ja, ik ben geïnteresseerd",
@@ -32,31 +34,5 @@
 	"welcomesurvey-question-edited-option-no-other-label": "Nee, vanwege andere redenen",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Ik kan het me niet herinneren",
 	"welcomesurvey-question-email-label": "E-mailadres (optioneel)",
-	"welcomesurvey-question-email-placeholder": "Voer uw e-mailadres in...",
-	"welcomesurvey-question-topics-other-placeholder": "Meer onderwerpen toevoegen...",
-	"welcomesurvey-question-topics-option-arts": "Kunst",
-	"welcomesurvey-question-topics-option-science": "Wetenschap",
-	"welcomesurvey-question-topics-option-geography": "Aardrijkskunde",
-	"welcomesurvey-question-topics-option-history": "Geschiedenis",
-	"welcomesurvey-question-topics-option-music": "Muziek",
-	"welcomesurvey-question-topics-option-sports": "Sport",
-	"welcomesurvey-question-topics-option-literature": "Literatuur",
-	"welcomesurvey-question-topics-option-religion": "Religie",
-	"welcomesurvey-question-topics-option-entertainment": "Vermaak",
-	"welcomesurvey-question-topics-option-food-drink": "Eten en drinken",
-	"welcomesurvey-question-topics-option-biography": "Biografieën",
-	"welcomesurvey-question-topics-option-economics": "Economie",
-	"welcomesurvey-question-topics-option-technology": "Technologie",
-	"welcomesurvey-question-topics-option-film": "Films",
-	"welcomesurvey-question-topics-option-philosophy": "Filosofie",
-	"welcomesurvey-question-topics-option-business": "Ondernemen",
-	"welcomesurvey-question-topics-option-politics": "Politiek",
-	"welcomesurvey-question-topics-option-government": "Overheid",
-	"welcomesurvey-question-topics-option-engineering": "Techniek",
-	"welcomesurvey-question-topics-option-crafts-hobbies": "Hobby's en ambachten",
-	"welcomesurvey-question-topics-option-games": "Spellen",
-	"welcomesurvey-question-topics-option-health": "Gezondheid",
-	"welcomesurvey-question-topics-option-social-science": "Sociale wetenschappen",
-	"welcomesurvey-question-topics-option-transportation": "Transport",
-	"welcomesurvey-question-topics-option-education": "Onderwijs"
+	"welcomesurvey-question-email-placeholder": "Voer uw e-mailadres in..."
 }
