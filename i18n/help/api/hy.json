@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mari Avetisyan"
+		]
+	},
+	"apihelp-helppanelquestionposter-param-body": "Օգտվողի կողմից ներկայացված հարցի տեսքտը։",
+	"apihelp-helppanelquestionposter-param-source": "Հարցի աղբյուրի բաղադրիչը։ Վավեր արժեքներն են «օգնությանվահանակ», «հիմնական էջ-օգնություն» և «հիմնական էջ-մենթորություն»",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Համապատասխան վերնագիրը, եթե ընտրված է, հարցի մեջ ներառելու համար:",
+	"apihelp-helppanelquestionposter-param-email": "Ոչ պարտադիր էլ փոստի հասցե, եթե օգտվողը չի նշել էլ փոստ։ Օգտագործողի էլ փոստը կկցվի այս հասցեին և հաստատման հղում կուղարկվի։",
+	"apihelp-helppanelquestionposter-param-resendconfirmation": "Հաստատման մեկ այլ նամակ ուղարկել օգտագործողի առկա էլփոստի հասցեին:"
+}

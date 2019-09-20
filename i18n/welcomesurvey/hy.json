@@ -1,8 +1,46 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kareyac"
+			"Kareyac",
+			"Mari Avetisyan"
 		]
 	},
-	"welcomesurvey-question-topics-option-literature": "Գրականություն"
+	"welcomesurvey": "{{GENDER:$1|Բարի գալուստ}}, $1",
+	"welcomesurvey-save-confirmation-title": "Շնորհակալություն։ Ձեր պատասխանները պահպանվել են։",
+	"welcomesurvey-save-confirmation-text": "Ձեր պատասխանները կօգնեն նորեկների համար Վիքիպեդիան դարձնել ավելի լավը։ \nԵթե ցանկանում եք տեղեկանալ, թե այս պատասխանները ինչպես են օգտագործվում, տեսե՛ք այս հարցումը $1։",
+	"welcomesurvey-subtitle": "Պատասխանելով մի քանի հարցերի՝ Դուք կօգնեք Ձեր նման նորեկների համար Վիքիպեդիան դարձնել ավելի լավը։",
+	"welcomesurvey-save-btn": "Վերջ",
+	"welcomesurvey-skip-btn": "Հարցումը բաց թողնել",
+	"welcomesurvey-close-btn": "Փակել և հետ գնալ $1",
+	"welcomesurvey-sidebar-privacy-title": "Մենք գնահատում ենք Ձեր գաղտնիությունը",
+	"welcomesurvey-sidebar-privacy-text": "Եթե ցանկանում եք տեղեկանալ, թե այս պատասխանները ինչպես են օգտագործվում, տեսե՛ք այս հարցումը $1։",
+	"welcomesurvey-privacy-policy-link-text": "Գաղտնիության քաղաքականություն",
+	"welcomesurvey-sidebar-editing-title": "Սկսել խմբագրումը",
+	"welcomesurvey-sidebar-editing-text": "Գրեթե բոլոր էջերը կարող են խմբագրվել յուրաքանչյուրի կողմից։ Ամեն ժամ հարյուրավոր փոփոխություններ են կատարվում բովանդակություն ավելացնելու, սխալներ ուղղելու և ընթեռնելիությունը բարելավելու ուղղությամբ։ Եթե ցանկանում եք ներդրում ունենալ, ապա հետևյալ էջերը կարող են Ձեզ համար օգտակար լինել։",
+	"welcomesurvey-sidebar-editing-link1-text": "Ուղեցույց",
+	"welcomesurvey-sidebar-editing-link1-title": "Վիքիպեդիա։Ուղեցույց",
+	"welcomesurvey-sidebar-editing-link2-text": "Օգնության էջ",
+	"welcomesurvey-sidebar-editing-link2-title": "Վիքիպեդիա։Օգնության_էջ",
+	"welcomesurvey-question-reason-label": "Ինչու՞ եք Ձեր հաշիվը ստեղծել այսօր։",
+	"welcomesurvey-dropdown-option-select-label": "Խնդրում ենք ընտրել",
+	"welcomesurvey-question-reason-option-edit-typo-label": "Վիքիպեդիայի հոդվածում սխալներ ուղղելու համար",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Վիքիպեդիայի հոդվածում տեղեկություն ավելացնելու կամ փոփոխելու համար",
+	"welcomesurvey-question-reason-option-add-image-label": "Վիքիպեդիայի հոդվածում պատկեր ավելացնելու համար",
+	"welcomesurvey-question-reason-option-new-page-label": "Վիքիպեդիայի նոր հոդված ստեղծելու համար",
+	"welcomesurvey-question-reason-option-program-participant-label": "Մասնակցում եմ ծրագրի, դասընթացի կամ միջոցառման",
+	"welcomesurvey-question-reason-option-read-label": "Վիքիպեդիա կարդալու համար",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Այլ",
+	"welcomesurvey-question-reason-option-other-label": "Այլ (ներկայացնել)",
+	"welcomesurvey-question-reason-other-placeholder": "Ավելացնել այլ պատճառ",
+	"welcomesurvey-question-mentor-info": "Մեր նպատակն է ստեղծել ծրագիր, որպեսզի ավելի փորձառու խմբագիրները օգնեն նորեկներին խմբագրել։ Դուք ցանկանու՞մ եք օգնություն ստանալ։",
+	"welcomesurvey-question-mentor-label": "Այո, ցանկանում եմ",
+	"welcomesurvey-question-edited-label": "Երբևէ Վիքիպեդիա խմբագրել եք",
+	"welcomesurvey-question-edited-option-yes-many-label": "Այո, շատ անգամներ",
+	"welcomesurvey-question-edited-option-yes-few-label": "Այո, մեկ կամ երկու անգամ",
+	"welcomesurvey-question-edited-option-no-dunno-label": "Ոչ, ես չգիտեի, որ կարող եմ խմբագրել Վիքիպեդիան",
+	"welcomesurvey-question-edited-option-no-other-label": "Ոչ, այլ նպատակներով",
+	"welcomesurvey-question-edited-option-dont-remember-label": "Չեմ հիշում",
+	"welcomesurvey-question-email-label": "Էլ–փոստի հասցե (ոչ պարտադիր)",
+	"welcomesurvey-question-email-placeholder": "Մուտքագրեք ձեր էլ–փոստի հասցեն",
+	"welcomesurvey-question-email-help": "Մենք նկատել ենք, որ մասնակցային հաշիվը ստեղծելիս Դուք չեք ավելացրել Ձեր էլ-փոստի հասցեն։ <strong>Խորհուրդ է տրվում</strong> ավելացնել էլ-փոստի հասցեն, քանի որ գաղտնաբառը մոռանալու դեպքում այն կարող է օգտագործվել հաշիվը վերականգնելու համար։"
 }

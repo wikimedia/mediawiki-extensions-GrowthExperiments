@@ -94,5 +94,9 @@
 	"growthexperiments-tour-welcome-description": "Beti {{GENDER:$1|duzu}} aukera {{GENDER:$1|zure}} erabiltzaile izenean klik egiteko hona itzuli ahal izateko.",
 	"growthexperiments-tour-discovery-title": "Hasi hemendik!",
 	"growthexperiments-tour-discovery-description": "Egin klik {{GENDER:$1|zure}} erabiltzaile izenean {{GENDER:$1|zure}} hasiera orrialdea bisitatzeko.",
-	"growthexperiments-homepage-welcomesurvey-default-close": "Joan {{GENDER:$1|zure}} hasiera orrialdera"
+	"growthexperiments-homepage-welcomesurvey-default-close": "Joan {{GENDER:$1|zure}} hasiera orrialdera",
+	"growthexperiments-homepage-discovery-banner-header": "Ongi etorria {{GENDER:$1|zure}} hasiera orrialdera!",
+	"growthexperiments-homepage-discovery-banner-text": "Beti izango {{GENDER:$1|duzu}} aukera $2 gainen klik egiteko orrialde honen goiko aldean eta hona itzultzeko.",
+	"growthexperiments-homepage-discovery-thanks-header": "Eskerrik asko {{GENDER:$1|zure}} kontua sortzeagatik!",
+	"growthexperiments-homepage-discovery-thanks-text": "Egin klik $2 gainean orrialdearen goiko aldean {{GENDER:$1|zure}} hasiera orria ikusi eta hasteko."
 }

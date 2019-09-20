@@ -1,10 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kareyac"
+			"Kareyac",
+			"Mari Avetisyan"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ողջու՛յն}}, $1:",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ողջույն}}, $1:",
+	"growthexperiments-homepage-tab": "Հիմնական էջ",
+	"tooltip-pt-homepage": "{{GENDER:|Ձեր}} հիմնական էջը",
+	"prefs-homepage": "Նորեկի հիմնական էջ",
+	"growthexperiments-homepage-enable": "Ցուցադրել նորեկի հիմնական էջը",
 	"growthexperiments-homepage-account-editcount": " \n$1 {{PLURAL:$1|խմբագրում|խմբագրումներ}}",
 	"growthexperiments-homepage-email-header-unconfirmed": "Հաստատեք {{GENDER:$1|ձեր}} էլեկտրոնային հասցե",
 	"growthexperiments-homepage-email-button-unconfirmed": "Նոր հղում",
