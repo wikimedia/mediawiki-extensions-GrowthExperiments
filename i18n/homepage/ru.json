@@ -4,7 +4,8 @@
 			"Kareyac",
 			"Movses",
 			"1233qwer1234qwer4",
-			"Urfiner"
+			"Urfiner",
+			"Katunchik"
 		]
 	},
 	"growthexperiments-homepage-tab": "Домашняя страница",
@@ -22,5 +23,9 @@
 	"growthexperiments-homepage-mentorship-question-subject": "Вопрос от [[User:$1|$1]]",
 	"growthexperiments-homepage-tutorial-header": "Узнайте, как редактировать",
 	"growthexperiments-homepage-tutorial-cta-text": "Руководство",
-	"growthexperiments-specialimpact-title": "Влияние"
+	"growthexperiments-specialimpact-title": "Влияние",
+	"growthexperiments-homepage-discovery-banner-header": "Добро пожаловать на {{GENDER:$1|вашу}} домашнюю страницу!",
+	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|Вы}} всегда можете нажать на $2 в верхней части страницы, чтобы вернуться сюда.",
+	"growthexperiments-homepage-discovery-thanks-header": "Спасибо за создание {{GENDER:$1|вашего}} аккаунта!",
+	"growthexperiments-homepage-discovery-thanks-text": "Нажмите $2 в верхней части страницы, чтобы посетить {{GENDER:$1|вашу}} домашнюю страницу и начать работу."
 }

@@ -4,7 +4,7 @@
 			"McDutchie"
 		]
 	},
-	"welcomesurvey-popup-close-btn": "Clauder",
-	"welcomesurvey-back-btn": "Retornar",
-	"welcomesurvey-next-btn": "Sequente"
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Pro adder o modificar information a un articulo de Wikipedia",
+	"welcomesurvey-question-reason-option-add-image-label": "Pro adder un photo o imagine a un articulo de Wikipedia",
+	"welcomesurvey-question-reason-option-program-participant-label": "Io participa a un programma, lection o evento"
 }

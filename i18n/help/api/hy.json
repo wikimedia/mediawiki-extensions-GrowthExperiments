@@ -4,6 +4,7 @@
 			"Mari Avetisyan"
 		]
 	},
+	"apihelp-helppanelquestionposter-summary": "Աշխատանք հարցերի հետ, որոնք հրապարակվել են օգնության վահանակի միջոցով։",
 	"apihelp-helppanelquestionposter-param-body": "Օգտվողի կողմից ներկայացված հարցի տեսքտը։",
 	"apihelp-helppanelquestionposter-param-source": "Հարցի աղբյուրի բաղադրիչը։ Վավեր արժեքներն են «օգնությանվահանակ», «հիմնական էջ-օգնություն» և «հիմնական էջ-մենթորություն»",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Համապատասխան վերնագիրը, եթե ընտրված է, հարցի մեջ ներառելու համար:",

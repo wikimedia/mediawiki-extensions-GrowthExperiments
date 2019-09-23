@@ -3,7 +3,8 @@
 		"authors": [
 			"Vlad5250",
 			"Link2xt",
-			"Stjn"
+			"Stjn",
+			"Katunchik"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Добро пожаловать}}, $1!",
@@ -25,7 +26,10 @@
 	"welcomesurvey-question-reason-label": "Почему вы создали учётную запись сегодня?",
 	"welcomesurvey-dropdown-option-select-label": "Пожалуйста, выберите...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "Исправить ошибки в статье Википедии",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Добавить или изменить информацию в статье Википедии",
+	"welcomesurvey-question-reason-option-add-image-label": "Добавить или изменить фото или изображение в статье Википедии",
 	"welcomesurvey-question-reason-option-new-page-label": "Создать новую статью в Википедии",
+	"welcomesurvey-question-reason-option-program-participant-label": "Я участвую в программе, классе или мероприятии",
 	"welcomesurvey-question-reason-option-read-label": "Читать Википедию",
 	"welcomesurvey-question-reason-option-other-label": "Другое (опишите)",
 	"welcomesurvey-question-reason-other-placeholder": "Введите другую причину...",
