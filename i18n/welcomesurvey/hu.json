@@ -4,7 +4,8 @@
 			"Zizzerus",
 			"Tacsipacsi",
 			"Misibacsi",
-			"Tgr"
+			"Tgr",
+			"Samat"
 		]
 	},
 	"welcomesurvey": "Üdvözlünk, $1!",
@@ -26,7 +27,10 @@
 	"welcomesurvey-question-reason-label": "Miért regisztráltál ma?",
 	"welcomesurvey-dropdown-option-select-label": "Kérjük, válassz…",
 	"welcomesurvey-question-reason-option-edit-typo-label": "Javítani egy elgépelést vagy hibát egy Wikipédia-szócikkben",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Információ hozzáadása vagy kijavítása egy Wikipédia-cikkben",
+	"welcomesurvey-question-reason-option-add-image-label": "Fénykép vagy kép hozzáadása egy Wikipédia-cikkhez",
 	"welcomesurvey-question-reason-option-new-page-label": "Új Wikipédia-szócikket készíteni",
+	"welcomesurvey-question-reason-option-program-participant-label": "Egy szervezett programban, iskolai vagy más eseményen veszek részt",
 	"welcomesurvey-question-reason-option-read-label": "A Wikipédia olvasásához",
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Egyéb",
 	"welcomesurvey-question-reason-option-other-label": "Egyéb (kérjük, fejtsd ki)",
