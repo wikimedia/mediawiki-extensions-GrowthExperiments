@@ -379,7 +379,7 @@
 				label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-search-label' ).text() ),
 				classes: [ 'mw-ge-help-panel-popup-search' ]
 			}
-		).toggle( configData.GEHelpPanelSearchEnabled );
+		);
 
 		// Place the input and button in the footer to mimic the style of other actions.
 		this.homeFooterPanel = new OO.ui.PanelLayout( {

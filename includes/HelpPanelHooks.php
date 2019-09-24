@@ -112,7 +112,6 @@ class HelpPanelHooks {
 		$helpdeskTitle = HelpPanel::getHelpDeskTitle( $config );
 		return [
 			'GEHelpPanelLoggingEnabled' => $config->get( 'GEHelpPanelLoggingEnabled' ),
-			'GEHelpPanelSearchEnabled' => $config->get( 'GEHelpPanelSearchEnabled' ),
 			'GEHelpPanelSearchNamespaces' => $config->get( 'GEHelpPanelSearchNamespaces' ),
 			'GEHelpPanelReadingModeNamespaces' => $config->get( 'GEHelpPanelReadingModeNamespaces' ),
 			'GEHelpPanelSearchForeignAPI' => $config->get( 'GEHelpPanelSearchForeignAPI' ),
