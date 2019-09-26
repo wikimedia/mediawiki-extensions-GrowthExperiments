@@ -3,12 +3,13 @@
 		"authors": [
 			"Wladek92",
 			"Trizek (WMF)",
-			"Gomoko"
+			"Gomoko",
+			"Urhixidur"
 		]
 	},
 	"welcomesurvey": "Bienvenue, {{GENDER:$1|}}$1 !",
 	"welcomesurvey-save-confirmation-title": "Merci ! Vos réponses ont été enregistrées.",
-	"welcomesurvey-save-confirmation-text": "Vos réponses seront utilisées pour nous aider à essayer d'améliorer Wikipédia pour tous nos nouveaux utilisateurs.\n\nPour en lire davantage sur la manière dont ces questions facultatives seront utilisées, voir l'enquête $1 .",
+	"welcomesurvey-save-confirmation-text": "Vos réponses nous aideront à vous offrir des moyens utiles pour bien démarrer sur Wikipédia.",
 	"welcomesurvey-subtitle": "Aidez-nous à améliorer Wikipédia pour nos nouveaux utilisateurs comme vous, en répondant à quelques questions facultatives.",
 	"welcomesurvey-save-btn": "Terminer",
 	"welcomesurvey-skip-btn": "Sauter cette enquête",
