@@ -7,6 +7,7 @@ use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Util;
 use Html;
 use OOUI\IconWidget;
+use OutputPage;
 
 class SiteNoticeGenerator {
 
@@ -147,12 +148,11 @@ class SiteNoticeGenerator {
 			Html::rawElement( 'span', [ 'class' => 'mw-ge-homepage-discovery-text-content' ],
 				Html::element( 'h2', [ 'class' => 'mw-ge-homepage-discovery-nojs-message' ],
 					$output->msg( $msgHeaderKey )->params( $username )->text() ) .
-				Html::rawElement( 'p', [ 'class' => 'mw-ge-homepage-discovery-nojs-banner-text' ],
-					$output->msg( $msgBodyKey )
-						->params( $username )
-						->rawParams( Html::rawElement( 'span', [], new IconWidget( [ 'icon' => 'userAvatar' ] ) ) .
-							Html::element( 'span', [], $username )
-						)->parse()
+				self::getDiscoveryTextWithAvatarIcon(
+					$output,
+					$msgBodyKey,
+					$username,
+					'mw-ge-homepage-discovery-nojs-banner-text'
 				)
 			)
 		);
@@ -185,20 +185,27 @@ class SiteNoticeGenerator {
 			Html::rawElement( 'div', [ 'class' => 'mw-ge-homepage-discovery-message' ],
 				Html::element( 'h2', [],
 					$output->msg( $msgHeaderKey )->params( $username )->text() ) .
-				Html::rawElement( 'p', [],
-					$output->msg( $msgBodyKey )
-						->params( $username )
-						->rawParams( new IconWidget( [ 'icon' => 'userAvatar' ] ) .
-							// add a word joiner to make the icon stick to the name
-							\UtfNormal\Utils::codepointToUtf8( 0x2060 ) .
-							Html::element( 'span', [], $username )
-						)->parse()
-				)
+				self::getDiscoveryTextWithAvatarIcon( $output, $msgBodyKey, $username )
 			) . new IconWidget( [ 'icon' => 'close',
 				'classes' => [ 'mw-ge-homepage-discovery-banner-close' ] ] )
 		);
 
 		$minervaEnableSiteNotice = true;
+	}
+
+	private static function getDiscoveryTextWithAvatarIcon(
+		OutputPage $output, $msgBodyKey, $username, $class = ''
+	) {
+		return Html::rawElement( 'p', [ 'class' => $class ],
+			$output->msg( $msgBodyKey )
+				->params( $username )
+				->rawParams(
+					new IconWidget( [ 'icon' => 'userAvatar' ] ) .
+					// add a word joiner to make the icon stick to the name
+					\UtfNormal\Utils::codepointToUtf8( 0x2060 ) .
+					Html::element( 'span', [], $username )
+				)->parse()
+		);
 	}
 
 }
