@@ -9,6 +9,7 @@ use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use Html;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
+use GrowthExperiments\HomepageModules\StartEditing;
 use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
@@ -239,6 +240,10 @@ class HomepageHooks {
 		];
 
 		$preferences[ Mentorship::QUESTION_PREF ] = [
+			'type' => 'api',
+		];
+
+		$preferences[ StartEditing::ACTIVATED_PREF ] = [
 			'type' => 'api',
 		];
 	}

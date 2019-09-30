@@ -19,6 +19,11 @@ class Start extends BaseTaskModule {
 	private $tasks;
 
 	/**
+	 * @var BaseTaskModule[]
+	 */
+	private $visibleTasks;
+
+	/**
 	 * @inheritDoc
 	 */
 	public function __construct( IContextSource $context ) {
@@ -27,9 +32,17 @@ class Start extends BaseTaskModule {
 		$this->tasks = [
 			'account' => new Account( $context ),
 			'email' => new Email( $context ),
-			'tutorial' => new Tutorial( $context ),
-			'userpage' => new Userpage( $context ),
+			'tutorial' => new Tutorial( $context )
 		];
+		if ( $context->getConfig()->get( 'GEHomepageSuggestedEditsEnabled' ) ) {
+			$this->tasks['startediting'] = new StartEditing( $context );
+		} else {
+			$this->tasks['userpage'] = new Userpage( $context );
+		}
+
+		$this->visibleTasks = array_filter( $this->tasks, function ( BaseTaskModule $module ) {
+			return $module->isVisible();
+		} );
 	}
 
 	/**
@@ -43,7 +56,7 @@ class Start extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	public function isCompleted() {
-		foreach ( $this->tasks as $task ) {
+		foreach ( $this->visibleTasks as $task ) {
 			if ( !$task->isCompleted() ) {
 				return false;
 			}
@@ -62,7 +75,20 @@ class Start extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function canRender() {
-		return (bool)$this->tasks;
+		return (bool)$this->visibleTasks;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getCssClasses() {
+		$startEditingTask = $this->tasks['startediting'] ?? null;
+		return array_merge(
+			parent::getCssClasses(),
+			$startEditingTask && $startEditingTask->isCompleted() ?
+				[ self::BASE_CSS_CLASS . '-start-startediting-completed' ] :
+				[]
+		);
 	}
 
 	/**
@@ -109,7 +135,7 @@ class Start extends BaseTaskModule {
 				$module->outputDependencies();
 				return $module->renderDesktop();
 			}
-		}, $this->tasks ) );
+		}, $this->visibleTasks ) );
 	}
 
 	/**
@@ -118,6 +144,6 @@ class Start extends BaseTaskModule {
 	protected function getMobileSummaryBody() {
 		return implode( "\n", array_map( function ( BaseTaskModule $module ) {
 			return $module->render( HomepageModule::RENDER_MOBILE_SUMMARY );
-		}, $this->tasks ) );
+		}, $this->visibleTasks ) );
 	}
 }

@@ -10,6 +10,13 @@ abstract class BaseTaskModule extends BaseModule {
 	abstract public function isCompleted();
 
 	/**
+	 * @return bool Whether this task should be visible. Return false to hide the task.
+	 */
+	public function isVisible() {
+		return true;
+	}
+
+	/**
 	 * Determine whether the icon should be inverted (white icon, for darker backgrounds).
 	 * By default, the icon is inverted when the module is in the completed state. Subclasses can
 	 * override this to change when inverted icons are used.

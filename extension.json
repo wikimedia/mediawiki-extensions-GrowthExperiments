@@ -116,7 +116,7 @@
 		"EventLogging": {
 			"Schemas": {
 				"HelpPanel": 18973214,
-				"HomepageModule": 19160826
+				"HomepageModule": 19375909
 			}
 		}
 	},
@@ -292,6 +292,18 @@
 			],
 			"dependencies": [
 				"ext.growthExperiments.Homepage.QuestionPoster"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.growthExperiments.Homepage.StartEditing": {
+			"packageFiles": [
+				"homepage/ext.growthExperiments.Homepage.StartEditing.js"
+			],
+			"dependencies": [
+				"mediawiki.api"
 			],
 			"targets": [
 				"desktop",
@@ -511,6 +523,10 @@
 		"GEHomepageMentorsList": {
 			"description": "Title of the wiki page that contains the list of available mentors.",
 			"value": "Main_Page"
+		},
+		"GEHomepageSuggestedEditsEnabled": {
+			"description": "Global ON/OFF switch for the suggested edits feature on the homepage.",
+			"value": false
 		},
 		"GEConfirmEmailEnabled": {
 			"description": "Global ON/OFF switch for the email confirmation changes.",
