@@ -1,0 +1,117 @@
+@import 'mediawiki.ui/variables';
+
+@easyColor: #14866d;
+@mediumColor: #ac6600;
+@hardColor: #b32424;
+
+.mw-ge-startediting-dialog {
+	&-actions {
+		float: right;
+		padding: 1em;
+	}
+
+	&-difficulty {
+		&-banner {
+			background-image: linear-gradient(
+				to right,
+				fade( @easyColor, 10% ),
+				fade( @mediumColor, 10% ) 50%,
+				fade( @hardColor, 10% )
+			);
+			text-align: center;
+			font-size: 1.2em;
+			height: 250px;
+			padding-top: 155px;
+			box-sizing: border-box;
+			position: relative;
+
+			&:before {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				/* @embed */
+				background: url( ../../images/task-types-ltr.svg ) no-repeat center 65px;
+			}
+
+			&:after {
+				content: '';
+				display: block;
+				position: absolute;
+				bottom: 0;
+				width: 100%;
+				height: 4px;
+				background-image: linear-gradient(
+					to right,
+					@easyColor,
+					@mediumColor 45%,
+					@mediumColor 55%,
+					@hardColor
+				);
+			}
+		}
+
+		&-header {
+			font-weight: bold;
+
+			strong {
+				color: @easyColor;
+			}
+		}
+
+		&-subheader {
+			color: @colorGray5;
+		}
+
+		&-legend {
+			display: table;
+			margin: 1em 3em;
+
+			&-row {
+				display: table-row;
+			}
+
+			&-cell {
+				display: table-cell;
+				vertical-align: top;
+			}
+
+			&-label {
+				width: 20%;
+				font-size: 1.3em;
+				font-weight: bold;
+
+				.oo-ui-iconElement {
+					margin-right: 0.5em;
+					width: 24px;
+					height: 24px;
+				}
+			}
+
+			&-easy &-label {
+				color: @easyColor;
+			}
+
+			&-medium &-label {
+				color: @mediumColor;
+			}
+
+			&-hard &-label {
+				color: @hardColor;
+			}
+
+			&-description {
+				p {
+					margin: 0;
+				}
+				padding-bottom: 0.5em;
+			}
+
+			&-description-header {
+				font-weight: bold;
+			}
+		}
+	}
+}
