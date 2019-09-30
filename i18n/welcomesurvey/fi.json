@@ -1,10 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pyscowicz"
+			"Pyscowicz",
+			"Silvonen"
 		]
 	},
-	"welcomesurvey-popup-close-btn": "Sulje",
-	"welcomesurvey-back-btn": "Takaisin",
-	"welcomesurvey-next-btn": "Seuraava"
+	"welcomesurvey-skip-btn": "Ohita tämä kysely"
 }

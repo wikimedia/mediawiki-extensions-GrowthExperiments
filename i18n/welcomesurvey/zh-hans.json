@@ -2,9 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"A Chinese Wikipedian",
-			"Zazzzz"
+			"Zazzzz",
+			"Josephine W."
 		]
 	},
+	"welcomesurvey-subtitle": "从解答一些并非必须解答的问题，帮助我们提高您的维基百科经验。",
 	"welcomesurvey-save-btn": "结束",
 	"welcomesurvey-skip-btn": "跳过该调查",
 	"welcomesurvey-close-btn": "关闭并返回$1",

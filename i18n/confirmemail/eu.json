@@ -1,14 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Theklan"
+			"Theklan",
+			"Ammarpad"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|zer da hau?]])",
 	"growthexperiments-confirmemail-emailhelp": "E-posta beharrezkoa da zure kontua berreskuratzeko pasahitza galduz gero.",
 	"growthexperiments-confirmemail-emailrecommended": "E-posta helbidea (gomendatua)",
 	"growthexperiments-confirmemail-emailwarning": "Mesedez, begiratu zure e-posta zure helbidea ziurtatzeko.",
-	"growthexperiments-confirmemail-confirm-subject": "Ongi etorria {{SITEMANE}}ra: mesedez, ziurtatu zure e-posta helbidea",
+	"growthexperiments-confirmemail-confirm-subject": "Ongi etorria {{SITENAME}}ra: mesedez, ziurtatu zure e-posta helbidea",
 	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Kaixo}} $2,\n\nEskerrik asko zure e-posta gehitzeagatik {{SITENAME}}ko kontura, $1 IP helbidetik erregistratua. \n\nMesedez, egin ezazu klik azpiko loturan ziurtatzeko e-posta helbide hori dela zure \"$2\" kontura lotu nahi duzuna:\n\n$3\n\nOharra: ziurtatzeko kode hau <strong>$4 iraungitzen da</strong>.\n\nEskerrik asko,\n\n{{SITENAME}}\n\n----\n\nZure e-posta helbidearen ziurtatzea ezeztatzeko (ez zenuelako kontua sortu nahi edo bestelako arrazoiak direla eta), egin klik ezeztatze lotura honetan:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "E-posta helbidea egiaztatu",
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Kaixo}} $2,\n\nEskerrik asko zure e-posta gehitzeagatik {{SITENAME}}ko kontura, $1 IP helbidetik erregistratua. \n\nMesedez, egin ezazu klik azpiko loturan ziurtatzeko e-posta helbide hori dela zure \"$2\" kontura lotu nahi duzuna:\n\n$3\n\nOharra: ziurtatzeko kode hau <strong>$4 iraungitzen da</strong>.\n\nEskerrik asko,\n\n{{SITENAME}}\n\n----\n\nZure e-posta helbidearen ziurtatzea ezeztatzeko (ez zenuelako kontua sortu nahi edo bestelako arrazoiak direla eta), egin klik ezeztatze lotura honetan:\n\n$5"
