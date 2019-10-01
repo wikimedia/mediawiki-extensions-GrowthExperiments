@@ -6,13 +6,13 @@ use ConfigException;
 use DomainException;
 use Exception;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
-use Html;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
-use GrowthExperiments\HomepageModules\StartEditing;
+use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
+use Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Menu\Entries\IProfileMenuEntry;
 use MediaWiki\Minerva\Menu\Entries\HomeMenuEntry;
@@ -243,7 +243,7 @@ class HomepageHooks {
 			'type' => 'api',
 		];
 
-		$preferences[ StartEditing::ACTIVATED_PREF ] = [
+		$preferences[ SuggestedEdits::ACTIVATED_PREF ] = [
 			'type' => 'api',
 		];
 	}

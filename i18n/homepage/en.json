@@ -51,6 +51,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Copy editing (read and review articles), categorizing, and other short tasks to get used to writing in an encyclopedic style.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Find missing references to help make articles more reliable. Add relevant photos or images to improve existing articles.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Expand short articles. Create new articles.",
+	"growthexperiments-homepage-suggested-edits-header": "Suggested edits",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Your}} impact",
 	"growthexperiments-homepage-impact-subheader-text": "People are viewing the articles {{GENDER:$1|you}} edited!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Views since {{GENDER:$1|you}} edited (last 60 days):",

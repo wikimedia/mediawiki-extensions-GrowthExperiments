@@ -14,6 +14,7 @@ use GrowthExperiments\HomepageModules\BaseModule;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\Mentorship;
+use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
@@ -168,19 +169,33 @@ class SpecialHomepage extends SpecialPage {
 	 * @return HomepageModule[]
 	 */
 	private function getModules() {
-		return [
+		$modules = [
 			'start' => new Start( $this->getContext() ),
+			'suggested-edits' => null,
 			'impact' => new Impact( $this->getContext() ),
 			'mentorship' => new Mentorship( $this->getContext() ),
 			'help' => new Help( $this->getContext() ),
 		];
+		if ( $this->getConfig()->get( 'GEHomepageSuggestedEditsEnabled' ) ) {
+			$modules['suggested-edits'] = new SuggestedEdits( $this->getContext() );
+		}
+		return array_filter( $modules );
 	}
 
 	private function getModuleGroups() {
-		return [
-			'main' => [ 'start', 'impact', 'mentorship' ],
-			'sidebar' => [ 'help' ]
-		];
+		if ( $this->getConfig()->get( 'GEHomepageSuggestedEditsEnabled' )
+			&& SuggestedEdits::isActivated( $this->getContext() )
+		) {
+			return [
+				'main' => [ 'start', 'suggested-edits', 'impact' ],
+				'sidebar' => [ 'mentorship', 'help' ],
+			];
+		} else {
+			return [
+				'main' => [ 'start', 'impact', 'mentorship' ],
+				'sidebar' => [ 'help' ],
+			];
+		}
 	}
 
 	/**
