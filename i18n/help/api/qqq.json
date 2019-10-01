@@ -3,5 +3,7 @@
 	"apihelp-helppanelquestionposter-summary": "{{doc-apihelp-summary|helppanelquestionposter}}",
 	"apihelp-helppanelquestionposter-param-body": "{{doc-apihelp-param|helppanelquestionposter|body}}",
 	"apihelp-helppanelquestionposter-param-source": "{{doc-apihelp-param|helppanelquestionposter|source}}",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "{{doc-apihelp-param|helppanelquestionposter|relevanttitle}}"
+	"apihelp-helppanelquestionposter-param-relevanttitle": "{{doc-apihelp-param|helppanelquestionposter|relevanttitle}}",
+	"apihelp-helppanelquestionposter-param-email": "{{doc-apihelp-param|helppanelquestionposter|email}}",
+	"apihelp-helppanelquestionposter-param-resendconfirmation": "{{doc-apihelp-param|helppanelquestionposter|resendconfirmation}}"
 }

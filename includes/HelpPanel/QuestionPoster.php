@@ -9,6 +9,7 @@ use DerivativeContext;
 use ExtensionRegistry;
 use FatalError;
 use Flow\Container;
+use GrowthExperiments\Util;
 use Hooks;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
@@ -358,6 +359,34 @@ abstract class QuestionPoster {
 	 * @return string
 	 */
 	abstract protected function getSectionHeaderTemplate();
+
+	/**
+	 * Process potential changes to user's email address.
+	 *
+	 * The client sends over the email address from the user, which can be one of:
+	 *   1. User's confirmed email address
+	 *   2. User's unconfirmed email address (unchanged)
+	 *   3. New email address supplied via the help panel
+	 *   4. Empty string, indicating user's email should be set to empty string.
+	 *
+	 * @param string $newEmail
+	 * @return Status
+	 */
+	public function handleEmail( $newEmail ) {
+		$user = $this->getContext()->getUser()->getInstanceForUpdate();
+		$existingEmail = $user->getEmail();
+		// Check if user can change their email; don't allow changing email when it's already set
+		if ( $existingEmail !== '' || !Util::canSetEmail( $user, $newEmail, (bool)$existingEmail ) ) {
+			return Status::newFatal( 'growthexperiments-help-panel-questionposter-user-cannot-set-email' );
+		}
+		// Set new email and send confirmation.
+		$status = $user->setEmailWithConfirmation( $newEmail );
+		if ( $status->isGood() ) {
+			$status = Status::newGood( 'set_email_with_confirmation' );
+		}
+		$user->saveSettings();
+		return $status;
+	}
 
 	/**
 	 * Set the result URL to go directly to the newly created question.

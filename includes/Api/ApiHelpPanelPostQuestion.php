@@ -8,12 +8,16 @@ use ApiUsageException;
 use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
 use GrowthExperiments\HelpPanel\MentorshipModuleQuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionPoster;
+use MediaWiki\Logger\LoggerFactory;
 use MWException;
+use Status;
 
 class ApiHelpPanelPostQuestion extends ApiBase {
 
 	const API_PARAM_BODY = 'body';
 	const API_PARAM_SOURCE = 'source';
+	const API_PARAM_EMAIL = 'email';
+	const API_PARAM_RESEND_CONFIRMATION = 'resendconfirmation';
 	const API_PARAM_RELEVANT_TITLE = 'relevanttitle';
 
 	/**
@@ -46,6 +50,8 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
+		$user = $this->getUser();
+		$emailStatus = null;
 		$this->setQuestionPoster(
 			$params[self::API_PARAM_SOURCE],
 			$params[self::API_PARAM_BODY],
@@ -69,8 +75,39 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 			'revision' => $this->questionPoster->getRevisionId(),
 			'isfirstedit' => (int)$this->questionPoster->isFirstEdit(),
 			'viewquestionurl' => $this->questionPoster->getResultUrl(),
+			'email' => null,
 			'source' => $params[self::API_PARAM_SOURCE]
 		];
+
+		if ( $params[self::API_PARAM_EMAIL] ?? false ) {
+			$emailStatus = $this->questionPoster->handleEmail( $params[self::API_PARAM_EMAIL] );
+		} elseif ( $params[self::API_PARAM_RESEND_CONFIRMATION] ) {
+			$userLatest = $user->getInstanceForUpdate();
+			if ( $userLatest->isEmailConfirmed() ) {
+				$emailStatus = Status::newGood( 'already_confirmed' );
+			} else {
+				$emailStatus = $userLatest->sendConfirmationMail();
+				if ( $emailStatus->isGood() ) {
+					// Make the result readable in the API response; default value
+					// is null for success.
+					$emailStatus->setResult( true, 'send_confirm' );
+				}
+			}
+		} else {
+			$emailStatus = Status::newGood( 'no_op' );
+		}
+		$result['email'] = $emailStatus->getValue();
+
+		// If email handling fails, log a message but don't cause the request
+		// to fail; overwrite status with error message.
+		if ( !$emailStatus->isGood() ) {
+			LoggerFactory::getInstance( 'GrowthExperiments' )
+				->error( 'Email handling failed for user ID {user}: {status}', [
+					'user' => $user->getId(),
+					'status' => $emailStatus->getWikiText()
+				] );
+			$result['email'] = $emailStatus->getWikiText();
+		}
 
 		$this->getResult()->addValue( null, $this->getModuleName(), $result );
 	}
@@ -97,12 +134,6 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 		return 'csrf';
 	}
 
-	/** @inheritDoc */
-	public function isInternal() {
-		// For use by the question poster dialog only. All functionality available via core APIs.
-		return true;
-	}
-
 	/**
 	 * @inheritDoc
 	 */
@@ -122,6 +153,11 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_TYPE => 'string',
 			],
+			self::API_PARAM_EMAIL => [
+				ApiBase::PARAM_REQUIRED => false,
+				ApiBase::PARAM_TYPE => 'string',
+			],
+			self::API_PARAM_RESEND_CONFIRMATION => false,
 		];
 	}
 

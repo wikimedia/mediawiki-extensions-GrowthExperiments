@@ -137,6 +137,30 @@
 	};
 
 	/**
+	 * Connected to the change event on this.questionReviewAddEmail.
+	 */
+	HelpPanelProcessDialog.prototype.onEmailInput = function () {
+		var reviewTextInputValue = this.questionReviewTextInput.getValue();
+		// If user has typed in the email field, disable the submit button until the
+		// email address is valid.
+		if ( this.questionReviewAddEmail.getValue() ) {
+			this.questionReviewAddEmail.getValidity()
+				.then( function () {
+					// Enable depending on whether the question text is input.
+					this.questionReviewSubmitButton.setDisabled( !reviewTextInputValue );
+				}.bind( this ), function () {
+					// Always disable if email is invalid.
+					// TODO: If you enter an invalid email, then update the question entry text, the
+					// submit button is enabled again.
+					this.questionReviewSubmitButton.setDisabled( true );
+				}.bind( this ) );
+		} else {
+			// If no email value, set submit button state based on review text input
+			this.questionReviewSubmitButton.setDisabled( !reviewTextInputValue );
+		}
+	};
+
+	/**
 	 * Set the value of the text area on the review step.
 	 */
 	HelpPanelProcessDialog.prototype.populateReviewText = function () {
@@ -151,62 +175,83 @@
 	};
 
 	HelpPanelProcessDialog.prototype.setNotificationLabelText = function () {
-		var $messageList,
-			$link,
-			emailMessage,
-			button,
-			prefix = 'growthexperiments-help-panel-questioncomplete-notifications';
-
-		$messageList = $( '<dl>' ).addClass( 'mw-ge-help-panel-notifications' );
-
-		if ( this.userEmail ) {
-			if ( this.userEmailConfirmed ) {
-				$link = $( '<a>' )
-					.attr( {
-						href: mw.util.getUrl( 'Special:ChangeEmail' ),
-						target: '_blank',
-						'data-link-id': 'special-change-email'
-					} )
-					.text( mw.message( prefix + '-email-change' ).text() );
-				emailMessage = mw.message( prefix + '-email' )
-					.params( [ this.userEmail, $link ] )
-					.parse();
-			} else {
-				emailMessage = mw.message( prefix + '-email-unconfirmed' ).params( [ this.userEmail ] ).escaped();
-				button = new OO.ui.ButtonWidget( {
-					label: mw.message( prefix + '-email-unconfirmed-confirm' ).text(),
-					href: mw.util.getUrl( 'Special:ConfirmEmail' ),
-					target: '_blank'
-				} );
-				button.$button.attr( 'data-link-id', 'special-confirm-email' );
-			}
+		var questionCompleteNotificationsLabelKey = this.questionReviewAddEmail.getValue() ?
+				'growthexperiments-help-panel-questioncomplete-confirmation-email-unconfirmed' :
+				'growthexperiments-help-panel-questioncomplete-confirmation-email-none',
+			specialNotificationsLink = mw.html.element( 'a', {
+				href: new mw.Title( 'Special:Notifications' ).getUrl(),
+				target: '_blank',
+				'data-link-id': 'special-notifications'
+			}, mw.message( 'growthexperiments-help-panel-notifications-link-text' ).text() ),
+			specialConfirmEmailLink = mw.html.element( 'a', {
+				href: new mw.Title( 'Special:ConfirmEmail' ).getUrl(),
+				target: '_blank',
+				'data-link-id': 'special-confirm-email'
+			}, mw.message( 'growthexperiments-help-panel-confirm-email-link-text' ).text() ),
+			params = [];
+		// Set notification text dependent on email status.
+		if ( this.userEmail && this.userEmailConfirmed ) {
+			questionCompleteNotificationsLabelKey = 'growthexperiments-help-panel-questioncomplete-confirmation-email-confirmed';
 		} else {
-			emailMessage = mw.message( prefix + '-email-missing' ).escaped();
-			button = new OO.ui.ButtonWidget( {
-				label: mw.message( prefix + '-email-missing-add' ).text(),
-				href: mw.util.getUrl( 'Special:ChangeEmail' ),
-				target: '_blank'
+			// User has no email or has an unconfirmed email. The confirmation message will include
+			// a link to Special:Notifications.
+			params.push( specialNotificationsLink );
+			if ( ( this.questionReviewAddEmail.getValue() || this.userEmail ) &&
+				!this.userEmailConfirmed ) {
+				// User doesn't have a confirmed email. Confirmation message will include a link to
+				// Special:ConfirmEmail.
+				params.push( specialConfirmEmailLink );
+			}
+		}
+		this.questionCompleteNotificationsText.setLabel( new OO.ui.HtmlSnippet( $( '<p>' ).append(
+			mw.message( questionCompleteNotificationsLabelKey ).params( params ).parse()
+		) ) );
+	};
+
+	/**
+	 * Set relevant email fields on question review step.
+	 *
+	 * If the email field has already been built, this method will rebuild it.
+	 */
+	HelpPanelProcessDialog.prototype.setEmailFields = function () {
+		var field, index;
+		if ( !this.userEmail ) {
+			// User doesn't have an email address set, provide an input and help.
+			field = new OO.ui.FieldLayout( this.questionReviewAddEmail, {
+				label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-email-optional' ).text() ),
+				align: 'top',
+				help: new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-no-email-note' ).parse() ),
+				helpInline: true
 			} );
-			button.$button.attr( 'data-link-id', 'special-change-email' );
+		} else {
+			// Output the user's email and help about notifications.
+			field = new OO.ui.FieldLayout(
+				new OO.ui.Widget( {
+					content: [
+						new OO.ui.Element( {
+							$content: $( '<p>' ).text( this.userEmail )
+						} )
+					]
+				} ),
+				{
+					label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-email' ).text() ),
+					align: 'top',
+					helpInline: true,
+					help: !this.userEmailConfirmed ?
+						new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-unconfirmed-email-note' ).parse() ) :
+						new OO.ui.HtmlSnippet( mw.message( 'growthexperiments-help-panel-questionreview-note' ).parse() )
+				}
+			);
 		}
-
-		$messageList.append( $( '<dt>' ).append( new OO.ui.IconWidget( { icon: 'bell' } ).$element ) );
-		$messageList.append( $( '<dd>' ).text( mw.message( prefix + '-wiki' ).text() ) );
-		$messageList.append( $( '<dt>' ).append( new OO.ui.IconWidget( { icon: 'message' } ).$element ) );
-		$messageList.append( $( '<dd>' ).html( emailMessage ) );
-		if ( button ) {
-			$messageList.append( $( '<dd>' ).append( button.$element ) );
+		if ( this.emailField ) {
+			// Replace existing email field
+			index = this.questionReviewContent.getItemIndex( this.emailField );
+			this.questionReviewContent.addItems( [ field ], index );
+			this.questionReviewContent.removeItems( [ this.emailField ] );
+		} else {
+			this.questionReviewContent.addItems( [ field ] );
 		}
-
-		this.questionCompleteNotificationsText.setLabel( new OO.ui.HtmlSnippet(
-			$( '<p>' )
-				.append(
-					$( '<h2>' )
-						.addClass( 'mw-ge-help-panel-questioncomplete-notifications-section' )
-						.text( mw.message( prefix + '-section-header' ).text() ),
-					$messageList
-				)
-		) );
+		this.emailField = field;
 	};
 
 	HelpPanelProcessDialog.prototype.buildSettingsCog = function () {
@@ -315,6 +360,12 @@
 			selected: true
 		} );
 
+		this.questionReviewAddEmail = new OO.ui.TextInputWidget( {
+			placeholder: mw.message( 'growthexperiments-help-panel-questionreview-add-email-placeholder' ).text(),
+			value: this.userEmail,
+			type: 'email'
+		} ).connect( this, { change: 'onEmailInput' } );
+
 		this.askQuestionContinueButton = new OO.ui.ButtonWidget( {
 			flags: [ 'progressive', 'primary' ],
 			disabled: !mw.storage.get( this.storageKey ),
@@ -381,6 +432,8 @@
 			} )
 		] );
 
+		this.setEmailFields();
+
 		this.questionIncludeFieldLayout = new OO.ui.FieldLayout(
 			this.questionIncludeTitleCheckbox, {
 				label: mw.message( 'growthexperiments-help-panel-questionreview-include-article-title' ).text(),
@@ -444,8 +497,8 @@
 		this.questionCompleteNotificationsText = new OO.ui.LabelWidget();
 		this.questionCompleteContent.addItems( [
 			this.questionCompleteConfirmationLabel,
-			this.questionCompleteViewQuestionText,
 			this.questionCompleteNotificationsText,
+			this.questionCompleteViewQuestionText,
 			this.questionCompleteFirstEditText
 
 		] );
@@ -467,6 +520,16 @@
 			.addClass( 'mw-ge-help-panel-processdialog' );
 
 		this.$element.on( 'click', 'a[data-link-id]', this.logLinkClick.bind( this ) );
+
+		mw.hook( 'growthExperiments.helpPanelQuestionPosted' ).add( function () {
+			// Check if the user added an email address through a different HelpPanelProcessDialog,
+			// and update the UI accordingly
+			var newEmail = mw.config.get( 'wgGEHelpPanelUserEmail' );
+			if ( newEmail !== this.userEmail ) {
+				this.userEmail = newEmail;
+				this.setEmailFields();
+			}
+		}.bind( this ) );
 	};
 
 	HelpPanelProcessDialog.prototype.logLinkClick = function ( e ) {
@@ -539,7 +602,10 @@
 						question_length: this.questionReviewTextInput.getValue().length,
 						include_title: this.questionIncludeTitleCheckbox.isSelected(),
 						had_email: !!this.userEmail,
-						had_email_confirmed: !!this.userEmailConfirmed
+						had_email_confirmed: !!this.userEmailConfirmed,
+						email_form_has_content: !!this.questionReviewAddEmail.getValue(),
+						email_form_changed: this.questionReviewAddEmail.getValue() !==
+							this.questionReviewAddEmail.defaultValue
 					};
 					/* eslint-enable camelcase */
 					this.logger.log( 'submit-attempt', submitAttemptData );
@@ -554,6 +620,11 @@
 						relevanttitle: this.questionIncludeTitleCheckbox.isSelected() ? this.relevantTitle.getPrefixedText() : '',
 						body: this.questionReviewTextInput.getValue()
 					};
+					if ( !this.userEmail ) {
+						postData.email = this.questionReviewAddEmail.getValue();
+					} else if ( !this.userEmailConfirmed ) {
+						postData.resendconfirmation = true;
+					}
 					// Start pre-loading tour for help panel.
 					if ( this.source === 'helppanel' &&
 						!mw.user.options.get( 'growthexperiments-tour-help-panel' ) ) {
@@ -561,15 +632,23 @@
 					}
 					return new mw.Api().postWithToken( 'csrf', postData )
 						.then( function ( data ) {
+							var emailStatus = data.helppanelquestionposter.email;
 							this.logger.incrementUserEditCount();
 							this.logger.log( 'submit-success', $.extend(
 								submitAttemptData,
 								/* eslint-disable camelcase */
 								{
-									revision_id: data.helppanelquestionposter.revision
+									revision_id: data.helppanelquestionposter.revision,
+									email_action_status: emailStatus
 								}
 								/* eslint-enable camelcase */
 							) );
+
+							if ( emailStatus === 'set_email_with_confirmation' ) {
+								mw.config.set( 'wgGEHelpPanelUserEmail', postData.email );
+								this.userEmail = postData.email;
+								this.setEmailFields();
+							}
 
 							if ( data.helppanelquestionposter.isfirstedit ) {
 								this.questionCompleteFirstEditText.toggle( true );
