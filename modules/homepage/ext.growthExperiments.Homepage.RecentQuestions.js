@@ -1,7 +1,4 @@
 ( function ( $ ) {
-	var helpStorageKey = 'homepage-help',
-		mentorStorageKey = 'homepage-mentor',
-		questionStorageKeys = [ helpStorageKey, mentorStorageKey ];
 
 	function updateQuestionsCountInModuleActionData( moduleName, unarchivedCount, archivedCount ) {
 		var key = 'wgGEHomepageModuleActionData-' + moduleName,
@@ -30,9 +27,9 @@
 		mw.config.set( 'homepagemodules', moduleData );
 	}
 
-	function updateRecentQuestions( source ) {
-		var sourceName = source === helpStorageKey ? 'help' : 'mentor',
-			moduleName = source === helpStorageKey ? 'help' : 'mentorship',
+	function updateRecentQuestions() {
+		var sourceName = 'mentor',
+			moduleName = 'mentorship',
 			storage = 'growthexperiments-' + sourceName + '-questions',
 			// eslint-disable-next-line no-jquery/no-global-selector
 			$overlay = mw.loader.getState( 'ext.growthExperiments.Homepage.Mobile' ) === 'ready' ? $( '.homepage-module-overlay .overlay-content' ) : $( 'body' ),
@@ -71,11 +68,9 @@
 			} );
 	}
 
-	mw.hook( 'growthExperiments.helpPanelQuestionPosted' ).add( function ( data ) {
-		updateRecentQuestions( data.helppanelquestionposter.source );
+	mw.hook( 'growthExperiments.helpPanelQuestionPosted' ).add( function () {
+		updateRecentQuestions();
 	} );
 
-	questionStorageKeys.forEach( function ( storageKey ) {
-		updateRecentQuestions( storageKey );
-	} );
+	updateRecentQuestions();
 }( jQuery ) );
