@@ -1,0 +1,85 @@
+@import 'mediawiki.ui/variables';
+
+// The header holding the hamburger icon has max-width: @contentMaxWidthTablet and width: 90%
+// so it stops growing at @contentMaxWidthTablet / 0.9 pixels.
+@hamburger-header-maxwidth: ( @width-breakpoint-desktop - 6.7em ) / 0.9;
+
+.mw-ge-homepage-discovery-banner-mobile {
+	display: flex;
+	flex-direction: row;
+	// positioning parent for the close button
+	position: relative;
+	// padding-left is 14px (see below) for .header-container left padding + 0.615em
+	// for half of hamburger icon width - 11px for arrow left edge / tip distance)
+	padding: 14px 46px 14px calc( 3px ~'+' 0.625em );
+	box-shadow: 0 2px 3px 0 rgba( 0, 0, 0, 0.15 );
+
+	// this is tailored to Minerva's hamburger menu so don't show it on other skins
+	.skin-minerva & .mw-ge-homepage-discovery-arrow {
+		flex-shrink: 0;
+		width: 64px;
+		height: 54px;
+		margin-right: 25px;
+		/* @embed */
+		background: url( ../../images/homepage-discovery-arrow-up.svg ) no-repeat left;
+
+		@media all and ( min-width: @width-breakpoint-tablet ) {
+			width: 103px;
+			height: 42px;
+			/* @embed */
+			background: url( ../../images/homepage-discovery-arrow-up-longer.svg ) no-repeat left;
+		}
+
+		@media all and ( min-width: @hamburger-header-maxwidth ) {
+			// Normally on wide screens the main body has width: 90%, the header has a 16px padding
+			// and then width: 90% within that, so it ends up being ~14px narrower. They both have
+			// the same max-width though, so once they hit that they will have the same width, at
+			// which point we need to adjust for that 14px change in the hamburger position.
+			margin-left: -14px;
+		}
+	}
+
+	.mw-ge-homepage-discovery-message {
+		flex-grow: 1;
+
+		@media all and ( min-width: @width-breakpoint-tablet ) {
+			text-align: center;
+			// awkward way to compensate for the arrow
+			padding-right: 103px;
+		}
+
+		h2 {
+			font-size: 1em;
+			font-weight: bold;
+			color: @colorGray2;
+		}
+
+		p {
+			font-size: 0.875em;
+			line-height: 1.29;
+			color: @colorGray7;
+
+			// match the icon size to the font size
+			.oo-ui-iconElement-icon {
+				width: 1em;
+				min-width: 1em;
+				min-height: 1em;
+				vertical-align: bottom;
+				// 1 - 0x77 / 0xff; #777 is very close to @colorGray7
+				opacity: 0.5222;
+			}
+		}
+	}
+
+	.mw-ge-homepage-discovery-banner-close {
+		position: absolute;
+		top: 14px;
+		right: 14px;
+		cursor: pointer;
+		opacity: 0.5222;
+
+		.client-nojs & {
+			display: none;
+		}
+	}
+}

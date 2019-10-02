@@ -516,12 +516,13 @@ class HomepageHooks {
 	/**
 	 * @param string &$siteNotice
 	 * @param Skin $skin
+	 * @return bool|void
 	 * @throws ConfigException
 	 */
 	public static function onSiteNoticeAfter( &$siteNotice, Skin $skin ) {
 		global $wgMinervaEnableSiteNotice;
 		if ( self::isHomepageEnabled( $skin->getUser() ) ) {
-			SiteNoticeGenerator::setNotice(
+			return SiteNoticeGenerator::setNotice(
 				$skin->getRequest()->getVal( 'source' ),
 				$siteNotice,
 				$skin,

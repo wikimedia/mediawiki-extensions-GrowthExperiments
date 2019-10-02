@@ -155,9 +155,21 @@
 			]
 		},
 		"ext.growthExperiments.Homepage.Discovery.styles": {
-			"styles": "homepage/ext.growthExperiments.Homepage.Discovery.less",
+			"styles": [
+				"homepage/ext.growthExperiments.Homepage.Discovery.less",
+				"homepage/ext.growthExperiments.Homepage.Discovery.Mobile.less"
+			],
 			"targets": [
-				"desktop"
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.growthExperiments.Homepage.Discovery.scripts": {
+			"scripts": [
+				"homepage/ext.growthExperiments.Homepage.Discovery.Mobile.js"
+			],
+			"targets": [
+				"mobile"
 			]
 		},
 		"ext.growthExperiments.Homepage.Mobile": {
