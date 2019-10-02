@@ -122,20 +122,20 @@ class WelcomeSurvey {
 
 	/**
 	 * Bank of questions that can be used on the Welcome survey.
-	 * Format is HTMLForm configuration.
+	 * Format is HTMLForm configuration, with two special keys 'placeholder-message'
+	 * and 'other-message' for type=select (see SpecialWelcomeSurvey::getFormFields()).
 	 * @return array
 	 */
 	protected function getQuestionBank() : array {
 		// When free text is enabled, add other-* settings and the reason-other question
 		$reasonOtherSettings = $this->allowFreetext ? [
 			'other-message' => 'welcomesurvey-question-reason-option-other-label',
-			'other-placeholder-message' => 'welcomesurvey-question-reason-other-placeholder',
-			'other-size' => 255
 		] : [];
 		$reasonOtherQuestion = $this->allowFreetext ? [
 			'reason-other' => [
 				'type' => 'text',
-				'placeholder-message' => 'welcomesurvey-question-reason-other-placeholder',
+				'placeholder-message' => [ 'welcomesurvey-question-reason-other-placeholder',
+					$this->context->getUser()->getName() ],
 				'size' => 255,
 				'hide-if' => [ '!==', 'reason', 'other' ],
 				'group' => 'reason'
@@ -177,13 +177,15 @@ class WelcomeSurvey {
 			],
 			"mentor-info" => [
 				"type" => "info",
-				"label-message" => "welcomesurvey-question-mentor-info",
+				"label-message" => [ "welcomesurvey-question-mentor-info",
+					$this->context->getUser()->getName() ],
 				"cssclass" => "welcomesurvey-mentor-info",
 				"group" => "email",
 			],
 			"mentor" => [
 				"type" => "check",
-				"label-message" => "welcomesurvey-question-mentor-label",
+				"label-message" => [ "welcomesurvey-question-mentor-label",
+					$this->context->getUser()->getName() ],
 				"cssclass" => "welcomesurvey-mentor-check",
 				"group" => "email",
 			],

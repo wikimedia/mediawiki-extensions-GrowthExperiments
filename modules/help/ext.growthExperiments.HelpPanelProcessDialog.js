@@ -172,7 +172,9 @@
 					.params( [ this.userEmail, $link ] )
 					.parse();
 			} else {
-				emailMessage = mw.message( prefix + '-email-unconfirmed' ).params( [ this.userEmail ] ).escaped();
+				emailMessage = mw.message( prefix + '-email-unconfirmed' )
+					.params( [ this.userEmail, mw.user ] )
+					.escaped();
 				button = new OO.ui.ButtonWidget( {
 					label: mw.message( prefix + '-email-unconfirmed-confirm' ).text(),
 					href: mw.util.getUrl( 'Special:ConfirmEmail' ),
@@ -181,7 +183,9 @@
 				button.$button.attr( 'data-link-id', 'special-confirm-email' );
 			}
 		} else {
-			emailMessage = mw.message( prefix + '-email-missing' ).escaped();
+			emailMessage = mw.message( prefix + '-email-missing' )
+				.params( [ mw.user ] )
+				.escaped();
 			button = new OO.ui.ButtonWidget( {
 				label: mw.message( prefix + '-email-missing-add' ).text(),
 				href: mw.util.getUrl( 'Special:ChangeEmail' ),

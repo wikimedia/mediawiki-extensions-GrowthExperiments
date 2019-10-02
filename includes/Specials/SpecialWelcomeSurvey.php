@@ -141,7 +141,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 			'framed' => false,
 			'flags' => 'destructive',
 			'attribs' => [ 'class' => 'welcomesurvey-skip-btn' ],
-			'label-message' => 'welcomesurvey-skip-btn',
+			'label-message' => [ 'welcomesurvey-skip-btn', $this->getUser()->getName() ],
 		] );
 
 		// sidebar
@@ -224,7 +224,9 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 					[ 'class' => 'welcomesurvey-confirmation-editing-title' ],
 					$this->msg( 'welcomesurvey-sidebar-editing-title' )->text()
 				) .
-				$this->msg( 'welcomesurvey-sidebar-editing-text' )->parseAsBlock() .
+				$this->msg( 'welcomesurvey-sidebar-editing-text' )
+					->params( $this->getUser()->getName() )
+					->parseAsBlock() .
 				$this->buildGettingStartedLinks( 'confirmation' ) .
 				$this->getCloseButtonHtml( Title::newFromText( $to ) ?: Title::newMainPage(), $query )
 			)
@@ -336,6 +338,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 					[ 'class' => 'welcomesurvey-sidebar-section-text' ],
 					$this->msg( 'welcomesurvey-sidebar-privacy-text' )
 						->rawParams( $this->buildPrivacyPolicyLink() )
+						->params( $this->getUser()->getName() )
 						->parseAsBlock()
 				)
 			) .
@@ -350,7 +353,9 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 				Html::rawElement(
 					'div',
 					[ 'class' => 'welcomesurvey-sidebar-section-text' ],
-					$this->msg( 'welcomesurvey-sidebar-editing-text' )->parseAsBlock()
+					$this->msg( 'welcomesurvey-sidebar-editing-text' )
+						->params( $this->getUser()->getName() )
+						->parseAsBlock()
 				) .
 				$this->buildGettingStartedLinks( 'survey' )
 			)

@@ -74,7 +74,7 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 		$userMock = $this->getMockBuilder( User::class )
 			->disableOriginalConstructor()
 			->getMock();
-		$contextMock->expects( $this->once() )
+		$contextMock->expects( $this->atLeastOnce() )
 			->method( 'getUser' )
 			->willReturn( $userMock );
 		return new WelcomeSurvey( $contextMock );
