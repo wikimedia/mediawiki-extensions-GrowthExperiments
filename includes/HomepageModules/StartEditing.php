@@ -9,9 +9,6 @@ use OOUI\ButtonWidget;
 
 class StartEditing extends BaseTaskModule {
 
-	// TODO move this to the main suggested edits module once it exists
-	const ACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-activated';
-
 	/**
 	 * @inheritDoc
 	 */
@@ -24,7 +21,7 @@ class StartEditing extends BaseTaskModule {
 	 */
 	public function isCompleted() {
 		// TODO: hide module when in completed state
-		return $this->getContext()->getUser()->getBoolOption( self::ACTIVATED_PREF );
+		return $this->getContext()->getUser()->getBoolOption( SuggestedEdits::ACTIVATED_PREF );
 	}
 
 	/**
