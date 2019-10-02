@@ -7,6 +7,5 @@
 	},
 	"apihelp-helppanelquestionposter-summary": "Работа с вопросами, заданными через текущего участника.",
 	"apihelp-helppanelquestionposter-param-body": "Текст вопроса, написанного участником.",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "Релевантное название, если выбрано, для включения в вопрос.",
-	"apihelp-helppanelquestionposter-param-email": "Опциональная электронная почта, если участник её не указал. Туда будет отослано подтверждающее письмо."
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Релевантное название, если выбрано, для включения в вопрос."
 }

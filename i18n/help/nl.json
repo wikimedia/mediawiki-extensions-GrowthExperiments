@@ -12,13 +12,9 @@
 	"growthexperiments-help-panel-back-home": "Terug",
 	"growthexperiments-help-panel-close": "Afgerond",
 	"growthexperiments-help-panel-questionreview-title": "Stel een vraag",
-	"growthexperiments-help-panel-questionreview-email": "E-mail",
 	"growthexperiments-help-panel-questionreview-label": "Uw vraag",
 	"growthexperiments-help-panel-questioncomplete-title": "Stel een vraag",
-	"growthexperiments-help-panel-questionreview-add-email-placeholder": "Geef uw e-mailadres op",
-	"growthexperiments-help-panel-questionreview-email-optional": "E-mailadres (optioneel)",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "bevestig uw e-mail",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Ongeldige paginanaam.",
-	"growthexperiments-help-panel-search-label": "Naar hulp zoeken",
-	"growthexperiments-help-panel-notifications-link-text": "melding",
-	"growthexperiments-help-panel-confirm-email-link-text": "bevestig uw e-mail"
+	"growthexperiments-help-panel-search-label": "Naar hulp zoeken"
 }

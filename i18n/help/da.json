@@ -15,16 +15,13 @@
 	"growthexperiments-help-panel-close": "Færdig",
 	"growthexperiments-help-panel-home-title": "Få hjælp til at redigere",
 	"growthexperiments-help-panel-questionreview-title": "Stil et spørgsmål",
-	"growthexperiments-help-panel-questionreview-email": "E-mail",
 	"growthexperiments-help-panel-questionreview-label": "Dit spørgsmål",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Inkluder sidetitel med mit spørgsmål",
 	"growthexperiments-help-panel-questioncomplete-title": "Stil et spørgsmål",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "bekræft din e-mail",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Mere om denne funktion",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Deaktiver dette værktøj i indstiller",
-	"growthexperiments-help-panel-questionreview-add-email-placeholder": "Indtast din e-mailadresse",
-	"growthexperiments-help-panel-questionreview-email-optional": "E-mailadresse (valgfri)",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Ugyldig titel.",
 	"growthexperiments-help-panel-search-label": "Søg efter hjælp",
-	"growthexperiments-help-panel-search-no-results": "Der blev ikke fundet nogen resultater.",
-	"growthexperiments-help-panel-confirm-email-link-text": "bekræft din e-mail"
+	"growthexperiments-help-panel-search-no-results": "Der blev ikke fundet nogen resultater."
 }

@@ -7,7 +7,5 @@
 	"apihelp-helppanelquestionposter-summary": "Работа со прашања поставени преку за тековниот корисник.",
 	"apihelp-helppanelquestionposter-param-body": "Текстот на прашањето напишано од корисникот.",
 	"apihelp-helppanelquestionposter-param-source": "Составницата во изворот на прашањето. Важечки вредности се „helppanel“, „homepage-help“ и „homepage-mentorship“",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "Релеватниот наслов, ако се одбере, за приложување кон прашањето.",
-	"apihelp-helppanelquestionposter-param-email": "Незадолжителната е-пошта ако корисникот самиот нема укажано е-пошта. Неговата е-пошта ќе биде оваа адреса и таму ќе се испрати потврдната порака.",
-	"apihelp-helppanelquestionposter-param-resendconfirmation": "Испрати уште една потврдна порака на постоечката е-пошта на корисникот."
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Релеватниот наслов, ако се одбере, за приложување кон прашањето."
 }

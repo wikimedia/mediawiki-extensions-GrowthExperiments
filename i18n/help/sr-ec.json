@@ -17,7 +17,6 @@
 	"growthexperiments-help-panel-close": "Готово",
 	"growthexperiments-help-panel-home-title": "Проналажење помоћи око уређивања",
 	"growthexperiments-help-panel-questionreview-title": "Постављање питања",
-	"growthexperiments-help-panel-questionreview-email": "Е-пошта",
 	"growthexperiments-help-panel-questionreview-label": "Ваше питање",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Укључи наслов странице са мојим питањем",
 	"growthexperiments-help-panel-question-subject-template": "Питање са табле помоћи",
@@ -27,13 +26,8 @@
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Прикажи питање на техничкој подршци",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Више о овој функцији",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Онемогући ову алатку у подешавањима",
-	"growthexperiments-help-panel-questionreview-add-email-placeholder": "Унесите адресу е-поште",
-	"growthexperiments-help-panel-questionreview-email-optional": "Адреса е-поште (опционално)",
-	"growthexperiments-help-panel-questionposter-email-already-confirmed": "Адреса е-поште је већ постављена и потврђена.",
-	"growthexperiments-help-panel-questionposter-user-cannot-set-email": "Недовољно дозвола за постављање е-поште.",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Неважећи наслов.",
 	"growthexperiments-help-panel-search-label": "Тражење помоћи",
 	"growthexperiments-help-panel-search-no-results": "Резултати нису пронађени.",
-	"tag-help_panel_question": "питање са табле помоћи",
-	"growthexperiments-help-panel-notifications-link-text": "обавештење"
+	"tag-help_panel_question": "питање са табле помоћи"
 }

@@ -8,11 +8,9 @@
 	"growthexperiments-help-panel-back-home": "Zréck",
 	"growthexperiments-help-panel-close": "Fäerdeg",
 	"growthexperiments-help-panel-questionreview-title": "Eng Fro stellen",
-	"growthexperiments-help-panel-questionreview-email": "E-Mail",
 	"growthexperiments-help-panel-questionreview-label": "Är Fro",
 	"growthexperiments-help-panel-questioncomplete-title": "Eng Fro stellen",
-	"growthexperiments-help-panel-questionreview-add-email-placeholder": "Gitt Är E-Mail-Adress an",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "confirméiert Är E-Mail-Adress",
 	"growthexperiments-help-panel-search-label": "No Hëllef sichen",
-	"growthexperiments-help-panel-search-no-results": "Et goufe keng Resultater fonnt.",
-	"growthexperiments-help-panel-confirm-email-link-text": "confirméiert Är E-Mail-Adress"
+	"growthexperiments-help-panel-search-no-results": "Et goufe keng Resultater fonnt."
 }

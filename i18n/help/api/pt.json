@@ -7,7 +7,5 @@
 	"apihelp-helppanelquestionposter-summary": "Tratar as perguntas do utilizador atual publicadas através do painel de ajuda.",
 	"apihelp-helppanelquestionposter-param-body": "O texto da pergunta feita pelo utilizador.",
 	"apihelp-helppanelquestionposter-param-source": "O componente que motivou a pergunta. Os valores válidos são 'helppanel', 'homepage-help' e 'homepage-mentorship'",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "O título relevante, se selecionado, a incluir na pergunta.",
-	"apihelp-helppanelquestionposter-param-email": "O endereço de correio eletrónico opcional, se o utilizador não definiu um correio eletrónico. O correio eletrónico do utilizador será definido como este endereço, e será enviada para ele uma mensagem de verificação.",
-	"apihelp-helppanelquestionposter-param-resendconfirmation": "Envie outra mensagem de confirmação para o endereço de correio eletrónico existente do utilizador."
+	"apihelp-helppanelquestionposter-param-relevanttitle": "O título relevante, se selecionado, a incluir na pergunta."
 }

@@ -6,6 +6,5 @@
 	},
 	"apihelp-helppanelquestionposter-summary": "Geçerli kullanıcı için yardım panelinden gönderilen soruları ele alın.",
 	"apihelp-helppanelquestionposter-param-body": "Kullanıcı tarafından gönderilen soru metni.",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "Seçiliyse, soruya dahil etmek için ilgili başlık.",
-	"apihelp-helppanelquestionposter-param-email": "Bir doğrulama e-postası göndermek için kullanıcının onaylanmamış bir e-postası veya e-postası yoksa isteğe bağlı e-posta adresi."
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Seçiliyse, soruya dahil etmek için ilgili başlık."
 }

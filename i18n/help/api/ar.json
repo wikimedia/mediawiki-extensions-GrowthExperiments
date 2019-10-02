@@ -9,7 +9,5 @@
 	"apihelp-helppanelquestionposter-summary": "تعامل مع الأسئلة المنشورة عبر لوحة المساعدة للمستخدم الحالي.",
 	"apihelp-helppanelquestionposter-param-body": "نص السؤال مقدم من قبل المستخدم.",
 	"apihelp-helppanelquestionposter-param-source": "العنصر المكون في مصدر السؤال. القيم السليمة هي 'helppanel' و'homepage-help' و'homepage-mentorship'",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "العنوان ذو الصلة، إذا تم تحديده؛ للتضمين مع السؤال.",
-	"apihelp-helppanelquestionposter-param-email": "عنوان بريد إلكتروني اختياري، إذا لم يحدد المستخدم بريده إلكتروني. سيتم تعيين البريد الإلكتروني للمستخدم على هذا العنوان، وسيتم إرسال رسالة تأكيد بالبريد الإلكتروني.",
-	"apihelp-helppanelquestionposter-param-resendconfirmation": "إرسال تأكيد آخر بالبريد الإلكتروني إلى عنوان البريد الإلكتروني للمستخدم الحالي."
+	"apihelp-helppanelquestionposter-param-relevanttitle": "العنوان ذو الصلة، إذا تم تحديده؛ للتضمين مع السؤال."
 }
