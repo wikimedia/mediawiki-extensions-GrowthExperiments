@@ -114,13 +114,14 @@ body.mw-special-Homepage {
 				}
 
 				.growthexperiments-homepage-module-start,
-				.growthexperiments-homepage-module-impact {
+				> .growthexperiments-homepage-module:nth-child( 2 ) {
 					margin-left: 0;
 				}
 
 				.growthexperiments-homepage-module-impact,
-				.growthexperiments-homepage-module-mentorship {
-					// 1.5* instead of 2* because the impact module doesn't have a left margin
+				.growthexperiments-homepage-module-mentorship,
+				.growthexperiments-homepage-module-suggested-edits {
+					// 1.5* instead of 2* because the leftmost module doesn't have a left margin
 					width: calc( 50% ~'-' 1.5 * @homepageModuleMargin );
 				}
 			}
@@ -143,11 +144,18 @@ body.mw-special-Homepage {
 				}
 
 				.growthexperiments-homepage-group-sidebar {
-					// Make it the same width as the Impact and Mentorship modules
-					width: calc( 50% ~'-' 1.5 * @homepageModuleMargin );
+					width: 100%;
+					display: flex;
 
 					.growthexperiments-homepage-module {
-						margin-left: 0;
+						// Same width as the other non-start modules
+						width: calc( 50% ~'-' 1.5 * @homepageModuleMargin );
+						margin-left: @homepageModuleMargin;
+						margin-right: @homepageModuleMargin;
+
+						&:first-child {
+							margin-left: 0;
+						}
 					}
 				}
 			}
