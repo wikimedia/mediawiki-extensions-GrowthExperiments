@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"apihelp-query+growthtasks-summary": "{{doc-apihelp-summary|query+growthtasks}}",
+	"apihelp-query+growthtasks-extended-description": "{doc-apihelp-extended-description|query+growthtasks}}",
+	"apihelp-query+growthtasks-param-tasktypes": "{{doc-apihelp-param|query+growthtasks|tasktypes}}",
+	"apihelp-query+growthtasks-param-topics": "{{doc-apihelp-param|query+growthtasks|topics}}",
+	"apihelp-query+growthtasks-param-limit": "{{doc-apihelp-param|query+growthtasks|limit}}",
+	"apihelp-query+growthtasks-example-1": "{{doc-apihelp-example|query+growthtasks}}",
+	"apihelp-query+growthtasks-example-2": "{{doc-apihelp-example|query+growthtasks}}"
+}
