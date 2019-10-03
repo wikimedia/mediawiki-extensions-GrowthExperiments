@@ -60,6 +60,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Modification de copie (lire et relire des articles), catégoriser, et autres tâches courtes pour s’’habituer à écrire dans un style encyclopédique.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Trouver les références manquantes pour aider à rendre les articles plus fiables. Ajouter des photos ou des images pertinentes pour améliorer les articles existants.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Développer des articles courts. Créer de nouveaux articles.",
+	"growthexperiments-homepage-suggested-edits-header": "Modifications suggérées",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Votre}} impact",
 	"growthexperiments-homepage-impact-subheader-text": "Des gens regardent les articles que {{GENDER:$1|vous}} avez modifiés&nbsp;!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Nombre de vues depuis que {{GENDER:$1|vous}} avez modifié (60 derniers jours) :",
@@ -127,5 +128,9 @@
 	"growthexperiments-homepage-discovery-banner-header": "Bienvenue sur {{GENDER:$1|votre}} page d’accueil !",
 	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|Vous}} pouvez toujours cliquer sur $2 en haut de la page pour revenir ici.",
 	"growthexperiments-homepage-discovery-thanks-header": "Merci d’avoir créé {{GENDER:$1|votre}} compte !",
-	"growthexperiments-homepage-discovery-thanks-text": "Cliquer sur $2 en haut de la page pour visiter {{GENDER:$1|votre}} page d’accueil et commencer."
+	"growthexperiments-homepage-discovery-thanks-text": "Cliquer sur $2 en haut de la page pour visiter {{GENDER:$1|votre}} page d’accueil et commencer.",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Bienvenue sur {{GENDER:$1|votre}} page d’accueil !",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|Vous}} pouvez toujours ouvrir le menu latéral et taper $2 pour revenir ici.",
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Commencer ici !",
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Ouvrez le menu latéral et tapez $2 pour visiter {{GENDER:$1|votre}} page d'accueil."
 }

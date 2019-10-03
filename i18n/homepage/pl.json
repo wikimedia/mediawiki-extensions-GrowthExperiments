@@ -50,6 +50,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Czytanie i przeglądanie artykułów, kategoryzowanie i inne krótkie zadania pomagające przyzwyczaić się do stylu encyklopedycznego.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Znajdź brakujące przypisy aby pomóc uczynić artykuł bardziej wiarygodnym. Dodaj powiązane fotografie lub obrazy aby ulepszyć istniejące artykuły.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Rozwijanie krótkich artykułów i tworzenie nowych.",
+	"growthexperiments-homepage-suggested-edits-header": "Sugerowane edycje",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Twój}} wpływ",
 	"growthexperiments-homepage-impact-subheader-text": "Ludzie oglądają artykuły, które {{GENDER:$1|edytowałeś|edytowałaś}}!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Liczba odwiedzin po {{GENDER:$1|dokonaniu edycji}} na każdej z tych stron (z ostatnich 60 dni):",
@@ -86,5 +87,7 @@
 	"growthexperiments-homepage-discovery-banner-header": "Witaj na {{GENDER:$1|swojej}} stronie!",
 	"growthexperiments-homepage-discovery-banner-text": "Zawsze możesz {{GENDER:$1|kliknąć}} $2 na górze strony aby wrócić tutaj.",
 	"growthexperiments-homepage-discovery-thanks-header": "Dziękujemy {{GENDER:$1|ci}} za utworzenie konta!",
-	"growthexperiments-homepage-discovery-thanks-text": "Kliknij $2 na górze strony aby odwiedzić {{GENDER:$1|swoją}} stronę i rozpocząć przygodę."
+	"growthexperiments-homepage-discovery-thanks-text": "Kliknij $2 na górze strony aby odwiedzić {{GENDER:$1|swoją}} stronę i rozpocząć przygodę.",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Witaj na {{GENDER:$1|swojej}} stronie!",
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Rozpocznij tutaj!"
 }

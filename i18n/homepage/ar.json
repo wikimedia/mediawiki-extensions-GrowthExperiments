@@ -57,6 +57,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "نسخ التحرير (قراءة ومراجعة المقالات)، والتصنيف، وغيرها من المهام القصيرة لتعتاد على الكتابة بأسلوب موسوعي.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "ابحث عن المراجع المفقودة للمساعدة في جعل المقالات أكثر موثوقية، أضف الصور أو الصور ذات الصلة لتحسين المقالات الحالية.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "توسيع مقالات قصيرة، إنشاء مقالات جديدة.",
+	"growthexperiments-homepage-suggested-edits-header": "التعديلات المقترحة",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|تأثيرك}}",
 	"growthexperiments-homepage-impact-subheader-text": "الناس يشاهدون المقالات التي {{GENDER:$1|حررتها}}!",
 	"growthexperiments-homepage-impact-subheader-subtext": "المشاهدات منذ {{GENDER:$1|قيامك}} بالتحرير (آخر 60 يوما):",
@@ -124,5 +125,9 @@
 	"growthexperiments-homepage-discovery-banner-header": "مرحبا بـ{{GENDER:$1|كَ|كِ}} في صفحت{{GENDER:$1|كَ|كِ}} الرئيسية!",
 	"growthexperiments-homepage-discovery-banner-text": "يمكن{{GENDER:$1|كَ|كِ}} دائما النقر فوق $2 في أعلى الصفحة للعودة إلى هنا.",
 	"growthexperiments-homepage-discovery-thanks-header": "شكرا على إنشاء {{GENDER:$1|حسابكَ|حسابكِ}}!",
-	"growthexperiments-homepage-discovery-thanks-text": "{{GENDER:$1|انقر|انقري}} $2 في أعلى الصفحة لزيارة {{GENDER:$1|صفحتكَ|صفحتكِ}} الرئيسية والبدء."
+	"growthexperiments-homepage-discovery-thanks-text": "{{GENDER:$1|انقر|انقري}} $2 في أعلى الصفحة لزيارة {{GENDER:$1|صفحتكَ|صفحتكِ}} الرئيسية والبدء.",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "مرحبا ب{{GENDER:$1|كَ|كِ}} في صفحتك الرئيسية!",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|يمكنكَ|يمكنكِ}} دائما فتح القائمة الجانبية والنقر فوق $2 للعودة هنا.",
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "ابدأ هنا!",
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "{{GENDER:$1|افتح|افتحي}} القائمة الجانبية و{{GENDER:$1|انقر|انقري}} فوق $2 لزيارة {{GENDER:$1|صفحتكَ|صفحتكِ}} الرئيسية."
 }

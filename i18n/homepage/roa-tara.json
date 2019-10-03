@@ -30,11 +30,14 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Medie",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Tuéste",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Raccomandate pe le prime passe tune cumme cangiatore.",
+	"growthexperiments-homepage-suggested-edits-header": "Cangiaminde suggerite",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Pigghiale",
 	"growthexperiments-homepage-recent-questions-archived": "archiviate",
 	"growthexperiments-homepage-tutorial-header": "'Mbare a cangià",
 	"growthexperiments-homepage-tutorial-subheader": "'Ndruche 'na guida veloce veloce pe 'mbarà a cangià Uicchipèdie",
 	"growthexperiments-homepage-tutorial-cta-text": "Guide",
 	"growthexperiments-specialimpact-title": "'Mbatte",
-	"growthexperiments-homepage-discovery-thanks-header": "Grazie ca ste ccreje 'u cunde utende {{GENDER:$1|tune}}!"
+	"growthexperiments-homepage-discovery-thanks-header": "Grazie ca ste ccreje 'u cunde utende {{GENDER:$1|tune}}!",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Bovègne jndr'à pàgena prengepàle {{GENDER:$1|toje}}!",
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Accuminze da quà!"
 }

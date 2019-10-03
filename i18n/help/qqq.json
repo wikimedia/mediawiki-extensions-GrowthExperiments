@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tgr"
+			"Tgr",
+			"Robby"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "[[Special:Preferences]], tab 'Edit'. Allows user to enable and disable experimental Help Panel.\n\n{{doc-growthexperiments-help-panel}}",
@@ -30,7 +31,7 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "Text of the section header for notification-related information, shown after successfully posting a question.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Information about on-wiki notification, shown after successfully posting a question.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questioncomplete-notifications-email": "Information about email notification, shown after successfully posting a question. Parameters:\n* $1 - User's email address\n* $2 - Link to Special:ChangeEmail ({{msg-mw|growthexperiments-help-panel-questioncomplete-notifications-email-change}})\n\n{{doc-growthexperiments-help-panel}}",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "Link for changing the user's email address (goes to Special:ChangeEmail), shown after successfully posting a question. Used in {{msg-mw|growthexperiments-help-panel-questioncomplete-notifications-email}}.\n\n{{doc-growthexperiments-help-panel}}",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "Link for changing the user's email address (goes to Special:ChangeEmail), shown after successfully posting a question. Used in {{msg-mw|growthexperiments-help-panel-questioncomplete-notifications-email}}.\n\n{{doc-growthexperiments-help-panel}}\n\n{{Identical|Change}}",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Information about email notification when the user's email address is not confirmed, shown after successfully posting a question. Parameters:\n* $1 - User's email address\n* $2 - User object (for use with GENDER).\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Button for confirming email address (goes to Special:ConfirmEmail), shown after successfully posting a question.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Information about email notification when the user has not set any email address, shown after successfully posting a question. Parameters:\n* $1 - User object (for use with GENDER).\n\n{{doc-growthexperiments-help-panel}}",
