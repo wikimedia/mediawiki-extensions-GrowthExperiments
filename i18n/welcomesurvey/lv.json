@@ -5,6 +5,8 @@
 		]
 	},
 	"welcomesurvey-save-btn": "Pabeigt",
-	"welcomesurvey-skip-btn": "Izlaist aptauju",
-	"welcomesurvey-question-reason-option-other-no-freetext-label": "Cits"
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Izlaist}} šo aptauju",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Cits",
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Ievadi}} citu iemeslu...",
+	"welcomesurvey-question-mentor-label": "Jā, {{GENDER:$1|mani tas interesē}}"
 }

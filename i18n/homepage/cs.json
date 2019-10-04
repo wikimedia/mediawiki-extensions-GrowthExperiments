@@ -126,5 +126,8 @@
 	"growthexperiments-homepage-discovery-banner-text": "Vždy {{GENDER:$1|můžete}} kliknout na $2 nahoře na stránce, abyste se sem {{GENDER:$1|vrátil|vrátila}}.",
 	"growthexperiments-homepage-discovery-thanks-header": "Děkujeme za vytvoření {{GENDER:$1|vašeho}} účtu!",
 	"growthexperiments-homepage-discovery-thanks-text": "Klikněte na $2 nahoře na stránce, abyste otevřeli {{GENDER:$1|svou}} Domovskou stránku, a zorientovali se na Wikipedii.",
-	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Vítejte na {{GENDER:$1|své}} domovské stránce!"
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Vítejte na {{GENDER:$1|své}} domovské stránce!",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "Vždycky se sem {{GENDER:$1|můžete}} vrátit skrz tlačítko $2 v menu.",
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Začněte zde!",
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Otevřete menu a klikněte na $2, abyste {{GENDER:$1|navštívil|navštívila|navštívil(a)}} svou domovskou stránku."
 }

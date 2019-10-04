@@ -3,10 +3,14 @@
 		"authors": [
 			"GoForceX",
 			"Zazzzz",
-			"A Chinese Wikipedian"
+			"A Chinese Wikipedian",
+			"Josephine W."
 		]
 	},
 	"growthexperiments-help-panel-question-button-text": "继续",
 	"growthexperiments-help-panel-submit-question-button-text": "成本",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "更换",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "确认您的邮箱",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "添加邮箱",
 	"growthexperiments-help-panel-search-label": "搜索来获取帮助"
 }

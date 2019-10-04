@@ -4,6 +4,11 @@
 			"Joetaras"
 		]
 	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Cià}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-tab": "Pàgena prengepàle",
+	"tooltip-pt-homepage": "'A pàgena prengepàle {{GENDER:|toje}}",
+	"prefs-homepage": "'A pàgena prengepàle de le curciule",
+	"growthexperiments-homepage-enable": "Fà 'ndrucà 'a pàgena prengepàle de le curciule",
 	"growthexperiments-homepage-start-header": "Accuminze d'aqquà",
 	"growthexperiments-homepage-account-header": "Cunde ccrejate",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|cangiamende|cangiaminde}}",

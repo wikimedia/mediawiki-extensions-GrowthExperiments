@@ -23,7 +23,7 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Как только появится ответ, вы получите уведомление здесь на {{SITENAME}}.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email": "Вы также получите электронное письмо на адрес $1 ($2)",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "изменить",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Если вы также хотите получать уведомления по электронной почте, подтвердите свой адрес электронной почты сейчас: $1",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Если {{GENDER:$2|вы}} также хотели бы получать уведомления по электронной почте, подтвердите свой адрес электронной почты сейчас: $1",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "подтвердите ваш email",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Если вы также хотите получать уведомления по электронной почте, добавьте адрес электронной почты сейчас.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Добавить электронную почту",

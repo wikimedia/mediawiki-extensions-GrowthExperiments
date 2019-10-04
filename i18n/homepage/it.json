@@ -31,6 +31,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Facile",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Medio",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Difficile",
+	"growthexperiments-homepage-suggested-edits-header": "Modifiche suggerite",
 	"growthexperiments-homepage-impact-header": "Il {{GENDER:$1|tuo}} impatto",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Hai}} fatto <strong>$1</strong> {{PLURAL:$1|modifica|modifiche}} (vedi tutte)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Non {{GENDER:$1|hai}} creato o modificato alcuna voce ancora.",
@@ -60,5 +61,6 @@
 	"growthexperiments-tour-discovery-description": "Clicca sul {{GENDER:$1|tuo}} nome utente per visitare la {{GENDER:$1|tua}} pagina principale.",
 	"growthexperiments-homepage-welcomesurvey-default-close": "Vai alla {{GENDER:$1|tua}} pagina principale",
 	"growthexperiments-homepage-discovery-banner-header": "{{GENDER:$1|Benvenuto|Benvenuta|Benvenuto/a}} sulla tua pagina principale!",
-	"growthexperiments-homepage-discovery-thanks-header": "Grazie per aver creato la {{GENDER:$1|tua}} utenza!"
+	"growthexperiments-homepage-discovery-thanks-header": "Grazie per aver creato la {{GENDER:$1|tua}} utenza!",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "{{GENDER:$1|Benvenuto|Benvenuta|Benvenuto/a}} sulla tua pagina principale!"
 }

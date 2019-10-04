@@ -31,6 +31,7 @@
 	"growthexperiments-homepage-email-button-unconfirmed": "Obter um novo link",
 	"growthexperiments-homepage-email-button-confirmed": "Preferências",
 	"growthexperiments-homepage-email-changelink": "(alterar)",
+	"growthexperiments-homepage-suggested-edits-header": "Edições sugeridas",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Seu}} impacto",
 	"growthexperiments-homepage-impact-subheader-text": "As pessoas estão vendo os artigos que {{GENDER:$1|você}} editou!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visualizações desde que {{GENDER:$1|você}} editou (últimos 60 dias):",
@@ -98,5 +99,9 @@
 	"growthexperiments-homepage-discovery-banner-header": "Bem-vindo a {{GENDER:$1|sua}} página inicial!",
 	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|Você}} sempre é possível clicar em $2 na parte superior da página para retornar aqui.",
 	"growthexperiments-homepage-discovery-thanks-header": "Obrigado por criar {{GENDER:$1|sua}} conta!",
-	"growthexperiments-homepage-discovery-thanks-text": "Clique em $2 na parte superior da página para visitar {{GENDER:$1|sua}} página inicial e começar."
+	"growthexperiments-homepage-discovery-thanks-text": "Clique em $2 na parte superior da página para visitar {{GENDER:$1|sua}} página inicial e começar.",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Bem-vindo a {{GENDER:$1|sua}} página inicial!",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|Você}} sempre pode abrir o menu lateral e tocar em $2 para retornar aqui.",
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Comece aqui!",
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Abra o menu lateral e toque em $2 para visitar a {{GENDER:$1|sua}} página inicial."
 }
