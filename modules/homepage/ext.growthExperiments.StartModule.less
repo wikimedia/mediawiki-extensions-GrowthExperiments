@@ -205,10 +205,12 @@
 	&.growthexperiments-homepage-module-mobile-details,
 	&.growthexperiments-homepage-module-mobile-overlay {
 		& > .growthexperiments-homepage-module-section-body {
-			flex-direction: column;
+			// Don't use flexbox for mobile modules. We could use flex-direction: column; here,
+			// but instead we disable flexbox completely to avoid rendering bugs in iOS Safari (T234380)
+			display: block;
 
 			.growthexperiments-homepage-module {
-				width: 100%;
+				display: block;
 				border-right: 0;
 				border-bottom: @colorGray12 @border-width-base @border-style-base;
 				padding: 1em 0 1.85em 0;
