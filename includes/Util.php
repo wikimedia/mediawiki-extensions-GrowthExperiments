@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments;
 
-use Exception;
 use IContextSource;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Logger\LoggerFactory;
@@ -110,11 +109,10 @@ class Util {
 	/**
 	 * Log an error. Configuration errors are logged to the GrowthExperiments channel,
 	 * internal errors are logged to the exception channel.
-	 * @param Exception|Throwable $error Error object from the catch block (Exception
-	 *   in PHP5/HHVM, Throwable in PHP7)
+	 * @param Throwable $error Error object from the catch block
 	 * @param array $extraData
 	 */
-	public static function logError( $error, array $extraData = [] ) {
+	public static function logError( Throwable $error, array $extraData = [] ) {
 		if ( $error instanceof WikiConfigException ) {
 			LoggerFactory::getInstance( 'GrowthExperiments' )->error(
 				$error->getMessage(), $extraData + [ 'exception' => $error ] );
