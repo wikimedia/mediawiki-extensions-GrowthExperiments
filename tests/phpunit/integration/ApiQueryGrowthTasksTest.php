@@ -32,7 +32,7 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 			new Task( $taskType3, new TitleValue( NS_MAIN, 'Update-2' ) ),
 			new Task( $taskType1, new TitleValue( NS_MAIN, 'Copyedit-3' ) ),
 		] );
-		$this->setService( 'GrowthExperimentsEditSuggester', $suggester );
+		$this->setService( 'GrowthExperimentsTaskSuggester', $suggester );
 
 		$baseParams = [
 			'action' => 'query',
@@ -67,7 +67,7 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Task-1' ) ),
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Task-2' ) ),
 		] );
-		$this->setService( 'GrowthExperimentsEditSuggester', $suggester );
+		$this->setService( 'GrowthExperimentsTaskSuggester', $suggester );
 
 		$baseParams = [
 			'action' => 'query',
@@ -82,7 +82,7 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 	public function testError() {
 		$suggester = new ErrorForwardingTaskSuggester(
 			StatusValue::newFatal( new ApiRawMessage( 'foo' ) ) );
-		$this->setService( 'GrowthExperimentsEditSuggester', $suggester );
+		$this->setService( 'GrowthExperimentsTaskSuggester', $suggester );
 
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage( 'foo' );
@@ -92,7 +92,7 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 
 	public function testMustBeLoggedIn() {
 		$suggester = new StaticTaskSuggester( [] );
-		$this->setService( 'GrowthExperimentsEditSuggester', $suggester );
+		$this->setService( 'GrowthExperimentsTaskSuggester', $suggester );
 
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage( 'You must be logged in.' );

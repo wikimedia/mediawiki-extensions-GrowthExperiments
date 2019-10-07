@@ -13,5 +13,8 @@
 	"growthexperiments-newcomertasks-tasktype-name-expand": "Expand",
 	"growthexperiments-newcomertasks-tasktype-description-expand": "Expand articles",
 	"growthexperiments-newcomertasks-tasktype-name-links": "Links",
-	"growthexperiments-newcomertasks-tasktype-description-links": "Add links to articles"
+	"growthexperiments-newcomertasks-tasktype-description-links": "Add links to articles",
+	"growthexperiments-newcomertasks-config-missingfield": "Invalid suggested edits configuration: missing field $1 for task type $2",
+	"growthexperiments-newcomertasks-config-invalidgroup": "Invalid suggested edits configuration: invalid group $1 for task type $2",
+	"growthexperiments-newcomertasks-config-missingmessage": "Invalid suggested edits configuration: missing message $1 for task type $2"
 }
