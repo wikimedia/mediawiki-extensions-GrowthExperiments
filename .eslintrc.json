@@ -8,11 +8,9 @@
 		"commonjs": true
 	},
 	"globals": {
-		"mw": false,
-		"mediaWiki":  false,
-		"require": false,
-		"jQuery": false,
-		"OO": false,
-		"module": false
+		"mw": "readonly",
+		"require": "readonly",
+		"OO": "readonly",
+		"module": "readonly"
 	}
 }

@@ -1,4 +1,4 @@
-( function ( $, mw ) {
+( function () {
 	'use strict';
 	if ( mw.loader.getState( 'mobile.init' ) ) {
 		mw.loader.using( 'mobile.init' ).done( function () {
@@ -112,4 +112,4 @@
 
 		} );
 	}
-}( jQuery, mediaWiki ) );
+}() );

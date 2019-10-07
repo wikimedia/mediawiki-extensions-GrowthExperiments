@@ -7,12 +7,12 @@
 		"test:unit": "NODE_PATH=modules nyc --reporter=lcovonly --reporter=lcov --reporter=text --reporter=text-summary qunit 'tests/node-qunit/**/*.test.js'"
 	},
 	"devDependencies": {
-		"eslint-config-wikimedia": "0.11.0",
+		"eslint-config-wikimedia": "0.14.3",
 		"grunt": "1.0.4",
 		"grunt-banana-checker": "0.8.1",
-		"grunt-eslint": "21.0.0",
-		"grunt-jsonlint": "1.1.0",
-		"grunt-stylelint": "0.10.1",
+		"grunt-eslint": "22.0.0",
+		"grunt-jsonlint": "2.0.0",
+		"grunt-stylelint": "0.11.1",
 		"jquery": "3.4.1",
 		"jsdom": "14.0.0",
 		"nyc": "13.1.0",

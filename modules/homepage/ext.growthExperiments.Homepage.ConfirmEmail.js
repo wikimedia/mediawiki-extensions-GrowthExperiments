@@ -1,4 +1,4 @@
-( function ( mw ) {
+( function () {
 	mw.notify(
 		mw.msg( 'confirmemail_loggedin' ),
 		{
@@ -6,4 +6,4 @@
 			type: 'ge-homepage-confirmemail'
 		}
 	);
-}( mediaWiki ) );
+}() );

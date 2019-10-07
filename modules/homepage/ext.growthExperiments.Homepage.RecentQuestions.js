@@ -1,4 +1,4 @@
-( function ( $ ) {
+( function () {
 
 	function updateQuestionsCountInModuleActionData( moduleName, unarchivedCount, archivedCount ) {
 		var key = 'wgGEHomepageModuleActionData-' + moduleName,
@@ -73,4 +73,4 @@
 	} );
 
 	updateRecentQuestions();
-}( jQuery ) );
+}() );

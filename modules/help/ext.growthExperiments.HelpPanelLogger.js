@@ -93,13 +93,13 @@
 			}
 
 			// Mobile: wikitext
-			// eslint-disable-next-line no-jquery/no-global-selector
+			// eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle
 			if ( $( 'textarea#wikitext-editor:visible' ).length ) {
 				return 'wikitext';
 			}
 
 			// Mobile: VE
-			// eslint-disable-next-line no-jquery/no-global-selector
+			// eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle
 			if ( $( '.ve-init-mw-mobileArticleTarget:visible' ).length ) {
 				return 'visualeditor';
 			}
@@ -125,7 +125,7 @@
 			}
 
 			// Desktop: old wikitext editor
-			// eslint-disable-next-line no-jquery/no-global-selector
+			// eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle
 			if ( $( '#wpTextbox1:visible' ).length ) {
 				return 'wikitext';
 			}

@@ -578,14 +578,17 @@
 							if ( data.helppanelquestionposter.isfirstedit ) {
 								this.questionCompleteFirstEditText.toggle( true );
 							}
-							this.questionCompleteViewQuestionText.setLabel( $( '<p>' )
-								.append(
-									$( '<strong>' ).append( $( '<a>', {
-										href: data.helppanelquestionposter.viewquestionurl,
-										target: '_blank',
-										'data-link-id': 'view-question',
-										text: this.viewQuestionText
-									} ) ) ) );
+							this.questionCompleteViewQuestionText.setLabel(
+								$( '<p>' ).append(
+									$( '<strong>' ).append(
+										$( '<a>' ).attr( {
+											href: data.helppanelquestionposter.viewquestionurl,
+											target: '_blank',
+											'data-link-id': 'view-question'
+										} ).text( this.viewQuestionText )
+									)
+								)
+							);
 							this.setNotificationLabelText();
 							this.swapPanel( action );
 
