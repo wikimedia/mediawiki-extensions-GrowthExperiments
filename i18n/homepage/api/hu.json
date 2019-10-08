@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tacsipacsi"
+			"Tacsipacsi",
+			"Samat"
 		]
 	},
+	"apihelp-homepagequestionstore-summary": "A kezdőlapi modulon keresztül közzétett formázott kérdések elérése.",
 	"apihelp-homepagequestionstore-param-questionformat": "A kérdések visszaadásához használt formátum, pl. HTML.",
 	"apihelp-homepagequestionstore-param-storage": "A kérdések tárolási helye.",
 	"apihelp-homepagequestionstore-param-userid": "A lekérendő kérésekhez tartozó felhasználó azonosítója.",

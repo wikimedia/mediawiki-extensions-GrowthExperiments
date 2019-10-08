@@ -4,7 +4,8 @@
 			"Chrumps",
 			"Woytecr",
 			"Railfail536",
-			"Rail"
+			"Rail",
+			"FunPL"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Witaj}}, {{bidi:$1}}!",
@@ -28,7 +29,7 @@
 	"growthexperiments-homepage-email-button-unconfirmed": "Odbierz nowy link",
 	"growthexperiments-homepage-email-button-confirmed": "Preferencje",
 	"growthexperiments-homepage-email-changelink": "(zmień)",
-	"growthexperiments-homepage-startediting-header": "Rozpocznij edycję",
+	"growthexperiments-homepage-startediting-header": "Rozpocznij edytowanie",
 	"growthexperiments-homepage-startediting-subheader-edit-info-add-change": "Najpierw naucz się edytować artykuły na prostych edycjach!",
 	"growthexperiments-homepage-startediting-subheader-edit-typo": "Znajdź artykuły wymagające małych poprawek!",
 	"growthexperiments-homepage-startediting-subheader-add-image": "Spróbuj opanować łatwiejsze edycje, zanim zaczniesz dodawać obraz!",
@@ -37,10 +38,10 @@
 	"growthexperiments-homepage-startediting-button": "Zobacz sugerowane edycje",
 	"growthexperiments-homepage-startediting-dialog-topic-back": "Anuluj",
 	"growthexperiments-homepage-startediting-dialog-topic-forward": "Kontynuuj",
-	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Cofnij",
+	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Wstecz",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Pokaż sugestie",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Spróbuj najpierw wykonać sugerowane <strong>łatwe</strong> edycje.",
-	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "Inni użytkownicy poprosili o pomoc z tymi zadaniami; uporządkowano według stopnia trudności.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "Inni użytkownicy poprosili o pomoc z tymi zadaniami, uporządkowane według stopnia trudności.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Łatwy",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Średni",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Trudny",
@@ -48,7 +49,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Po ukończeniu prostych edycji.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Gdy jesteś zaznajomiony z pisaniem na Wikipedii.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Czytanie i przeglądanie artykułów, kategoryzowanie i inne krótkie zadania pomagające przyzwyczaić się do stylu encyklopedycznego.",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Znajdź brakujące przypisy aby pomóc uczynić artykuł bardziej wiarygodnym. Dodaj powiązane fotografie lub obrazy aby ulepszyć istniejące artykuły.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Znajdź brakujące przypisy, aby pomóc uczynić artykuł bardziej wiarygodnym. Dodaj powiązane fotografie lub obrazy, aby ulepszyć istniejące artykuły.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Rozwijanie krótkich artykułów i tworzenie nowych.",
 	"growthexperiments-homepage-suggested-edits-header": "Sugerowane edycje",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Twój}} wpływ",
@@ -88,6 +89,6 @@
 	"growthexperiments-homepage-discovery-banner-text": "Zawsze możesz {{GENDER:$1|kliknąć}} $2 na górze strony aby wrócić tutaj.",
 	"growthexperiments-homepage-discovery-thanks-header": "Dziękujemy {{GENDER:$1|ci}} za utworzenie konta!",
 	"growthexperiments-homepage-discovery-thanks-text": "Kliknij $2 na górze strony aby odwiedzić {{GENDER:$1|swoją}} stronę i rozpocząć przygodę.",
-	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Witaj na {{GENDER:$1|swojej}} stronie!",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Witaj na {{GENDER:$1|swojej}} stronie domowej!",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Rozpocznij tutaj!"
 }

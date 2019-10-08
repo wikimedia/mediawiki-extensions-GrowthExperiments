@@ -27,6 +27,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Fácil",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Medio",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Difícil",
+	"growthexperiments-homepage-suggested-edits-header": "Ediciones sugeridas",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Has}} realizado <strong>$1</strong> {{PLURAL:$1|edición|ediciones}} (mostrar todo)",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "<strong>$1</strong> {{PLURAL:$1|edición|ediciones}} a otros tipos de páginas (mostrar todo)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Ir al artículo",

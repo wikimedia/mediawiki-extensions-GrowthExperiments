@@ -5,5 +5,31 @@
 			"Eitvys200"
 		]
 	},
-	"growthexperiments-homepage-email-changelink": "(keisti)"
+	"growthexperiments-homepage-email-changelink": "(keisti)",
+	"growthexperiments-homepage-startediting-header": "Pradėti redagavimą",
+	"growthexperiments-homepage-startediting-subheader-edit-info-add-change": "Pirmiausia išmokite redaguoti straipsnius su lengvais pakeitimais!",
+	"growthexperiments-homepage-startediting-subheader-edit-typo": "Raskite straipsnius, kuriems reikia mažų pataisymų!",
+	"growthexperiments-homepage-startediting-subheader-add-image": "Prieš pridedant paveikslėlį, pabandykite pasimokyti su lengvesniais pakeitimais!",
+	"growthexperiments-homepage-startediting-subheader-new-page": "Prieš kuriant naują straipsnį, pabandykite pasimokyti su lengvesniais pakeitimais!",
+	"growthexperiments-homepage-startediting-subheader-other": "Vikipedija kuriama žmonių kaip jūs. Net ir maži pakeitimai svarbūs.",
+	"growthexperiments-homepage-startediting-button": "Rodyti siūlomus keitimus",
+	"growthexperiments-homepage-startediting-dialog-topic-back": "Atšaukti",
+	"growthexperiments-homepage-startediting-dialog-topic-forward": "Tęsti",
+	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Atgal",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Gauti pasiūlymus",
+	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Pirmiausia pabandykite <strong>Lengvus</strong> pakeitimus",
+	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "Kiti naudotojai paprašė pagalbos su šiomis užduotimis, išrikiuotomis pagal sunkumą.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Lengvas",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Vidutinis",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Sunkus",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Rekomenduojama pirmiesiems jūsų žingsniams kaip redaguotojui.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Kai baigsite kelis lengvus pakeitimus.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Kai žinote pakankamai apie rašymą Vikipedijoje.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Raskite trūkstamus šaltinius, kad straipsniai būtų patikimesni. Pridėkite naudingas nuotraukas ar paveikslėlius, kad patobulintumėte egzistuojančius straipsnius.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Praplėskite trumpus straipsnius. Kurkite naujus straipsnius.",
+	"growthexperiments-homepage-suggested-edits-header": "Siūlomi keitimai",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Sveiki atvykę į {{GENDER:$1|savo}} pagrindinį puslapį!",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|Jūs}} visada galite atidaryti šoninį meniu ir paspausti ant $2, kad čia sugrįžtumėte.",
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Pradėkite čia!",
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Atidarykite šoninį menių ir pasirinkite $2, kad aplankytumėte {{GENDER:$1|savo}} pagrindinį puslapį."
 }

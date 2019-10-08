@@ -4,7 +4,8 @@
 			"CiaPan",
 			"Chrumps",
 			"Woytecr",
-			"Rail"
+			"Rail",
+			"FunPL"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Włącz panel pomocy podczas edycji",
@@ -30,8 +31,8 @@
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Twoje zapytanie znajduje się już na forum pomocy i oczekuje na odpowiedź przez innego wolontariusza.",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Zobacz swoje pytanie w Help Desk",
 	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "Powiadomienia dla twojego pytania:",
-	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Otrzymasz powiadomienie na {{GRAMMAR:MS.lp|{{SITENAME}}}} gdy przyjdzie odpowiedź.",
-	"growthexperiments-help-panel-questioncomplete-notifications-email": "Otrzymasz także e-mail na $1 ($2)",
+	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Otrzymasz powiadomienie tutaj na {{GRAMMAR:MS.lp|{{SITENAME}}}} gdy przyjdzie odpowiedź.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email": "Otrzymasz także e-maila na $1 ($2)",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "zmień",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Jeżeli chcesz otrzymywać powiadomienia także poprzez e-mail, potwierdź teraz swój adres: $1",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Potwierdź swój e-mail",

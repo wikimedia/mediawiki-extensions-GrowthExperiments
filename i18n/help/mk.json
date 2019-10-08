@@ -18,6 +18,12 @@
 	"growthexperiments-help-panel-home-title": "Помош со уредување",
 	"growthexperiments-help-panel-questionreview-title": "Поставете прашање",
 	"growthexperiments-help-panel-questioncomplete-title": "Постави прашање",
+	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Ќе добиете известување тука на {{SITENAME}} откако ќе се појави одговор.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "промени",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Ако {{GENDER:$2|сакате}} исто така да добивате известувања по е-пошта, потврдете ја вашата е-пошта сега: $1",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Потврдете ја вашата е-пошта",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Ако {{GENDER:$1|сакате}} исто така да добивате известувања по е-пошта, додајте е-поштенска адреса сега.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Додај е-пошта",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Повеќе за оваа функција",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Неважечки наслов.",
 	"growthexperiments-help-panel-search-label": "Пребарајте помош"

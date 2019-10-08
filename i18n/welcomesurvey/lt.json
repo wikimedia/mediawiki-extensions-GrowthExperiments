@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eitvys200"
+		]
+	},
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Praleisti}} šią apklausą",
+	"welcomesurvey-sidebar-privacy-text": "Tam, kad sužinotumėte daugiau apie šiuos neprivalomus atsakymus, {{GENDER:$2|peržiūrėkite}} $1 apklausą.",
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Įveskite}} kitą priežastį...",
+	"welcomesurvey-question-mentor-label": "Taip, {{GENDER:$1|man įdomu}}"
+}

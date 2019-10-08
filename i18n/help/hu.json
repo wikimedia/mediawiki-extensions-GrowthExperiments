@@ -30,7 +30,14 @@
 	"growthexperiments-help-panel-questioncomplete-header": "A kérdésed elküldve!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "A kérdésed megjelent a Közösségi portálon annak érdekében, hogy egy másik önkéntes szerkesztő megválaszolhassa azt.",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Nézd meg a kérdésedet a közösségi portálon!",
+	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "A kérdéseddel kapcsolatos értesítések",
+	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Itt fogsz értesítést kapni a {{SITENAME}} oldallal kapcsolatban, amint érkezik válasz.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email": "A $1 címre ($2) is kapsz majd egy levelet.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "változás",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Ha e-mailben is {{GENDER:$2|you'd}}szeretnél értesítést kapni, erősítsd meg az e-mail-címedet itt: $1.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "megerősíted az email-címedet",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Ha e-mailben is {{GENDER:$1|szeretnél}} értesítést kapni, add meg az e-mail-címedet!",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "E-mail hozzáadása",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Szeretnék többet megtudni erről a funkcióról.",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "Mellesleg ennek a kérdésnek a feltevésével először szerkesztettél egy oldalt. Gratulálunk!",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Az eszköz letiltása a Beállításokban",
@@ -38,5 +45,6 @@
 	"growthexperiments-help-panel-community-help-desk-text": "Közösségi portál",
 	"growthexperiments-help-panel-search-label": "Segítség keresése",
 	"growthexperiments-help-panel-search-no-results": "Nincs találat.",
-	"tag-help_panel_question": "Súgómodul-kérdés"
+	"tag-help_panel_question": "Súgómodul-kérdés",
+	"tag-help_panel_question-description": "A súgópanelben végzett szerkesztések létrehoznak egy kérelmet a kérdéssel."
 }

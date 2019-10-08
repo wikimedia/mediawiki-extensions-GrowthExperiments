@@ -5,7 +5,8 @@
 			"Wladek92",
 			"Gomoko",
 			"Djiboun",
-			"Thibaut120094"
+			"Thibaut120094",
+			"Verdy p"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Activer l’onglet d’aide de l’éditeur",
@@ -31,14 +32,14 @@
 	"growthexperiments-help-panel-questioncomplete-header": "Votre question a été envoyée",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Votre question est désormais sur le bureau d’aide de la communauté pour qu’un autre éditeur bénévole y réponde.",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Afficher votre question au bureau du support",
-	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "Notifications pour votre question :",
+	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "Notifications pour votre question :",
 	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Vous allez recevoir une notification ici sur {{SITENAME}}, une fois qu’il y aura une réponse.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email": "Vous recevrez aussi un courriel à $1 ($2)",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "modifier",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Si vous aimeriez aussi être {{GENDER:$2|notifié|notifiée}} par courriel, confirmez votre adresse de messagerie maintenant : $1",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Si vous aimeriez aussi être notifié{{GENDER:$2||e}} par courriel, confirmez votre adresse de messagerie maintenant : $1",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Confirmez votre courriel",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Si vous aimeriez aussi être {{GENDER:$1|notifié|notifiée}} par courriel, veuillez ajouter maintenant une adresse de messagerie.",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Ajoutez un courriel",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Si vous aimeriez aussi être notifié{{GENDER:$1||e}} par courriel, veuillez ajouter maintenant une adresse de messagerie.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Ajouter une adresse de courriel",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "En savoir plus sur cette fonctionnalité",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "Au fait, en posant cette question, vous venez juste de faire votre première modification d’une page. Félicitations !",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Désactiver cet utilitaire dans les Paramètres",

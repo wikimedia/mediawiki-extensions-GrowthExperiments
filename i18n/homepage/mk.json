@@ -21,6 +21,16 @@
 	"growthexperiments-homepage-email-button-noemail": "Додај е-пошта",
 	"growthexperiments-homepage-email-button-confirmed": "Нагодувања",
 	"growthexperiments-homepage-email-changelink": "(промени)",
+	"growthexperiments-homepage-startediting-header": "Почнете со уредување",
+	"growthexperiments-homepage-startediting-button": "Погледај предложени уредувања",
+	"growthexperiments-homepage-startediting-dialog-topic-back": "Откажи",
+	"growthexperiments-homepage-startediting-dialog-topic-forward": "Продолжи",
+	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Назад",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Лесно",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Средно",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Тешко",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Проширувајте ги кратките статии и создавајте нови.",
+	"growthexperiments-homepage-suggested-edits-header": "Предложени уредувања",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Вашето}} влијание",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Направивте}} <strong>$1</strong> {{PLURAL:$1|уредување|уредувања}} (погл. сите)",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> уредувања на статии",
@@ -38,5 +48,6 @@
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|уредување|уредувања}}",
 	"growthexperiments-homepage-tutorial-cta-text": "Упатства",
 	"growthexperiments-specialimpact-title": "Влијание",
-	"growthexperiments-specialimpact-showing-for-other-user": "Прикажување податоци за влијанието за $1"
+	"growthexperiments-specialimpact-showing-for-other-user": "Прикажување податоци за влијанието за $1",
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Започнете тука!"
 }
