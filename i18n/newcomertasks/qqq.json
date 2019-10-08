@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"growthexperiments-newcomertasks-tasktype-name-copyedit": "{{doc-growthexperiments-newcomertasks-name}}",
+	"growthexperiments-newcomertasks-tasktype-description-copyedit": "{{doc-growthexperiments-newcomertasks-description}}",
+	"growthexperiments-newcomertasks-tasktype-name-references": "{{doc-growthexperiments-newcomertasks-name}}",
+	"growthexperiments-newcomertasks-tasktype-description-references": "{{doc-growthexperiments-newcomertasks-description}}",
+	"growthexperiments-newcomertasks-tasktype-name-info": "{{doc-growthexperiments-newcomertasks-name}}",
+	"growthexperiments-newcomertasks-tasktype-description-info": "{{doc-growthexperiments-newcomertasks-description}}",
+	"growthexperiments-newcomertasks-tasktype-name-update": "{{doc-growthexperiments-newcomertasks-name}}",
+	"growthexperiments-newcomertasks-tasktype-description-update": "{{doc-growthexperiments-newcomertasks-description}}",
+	"growthexperiments-newcomertasks-tasktype-name-expand": "{{doc-growthexperiments-newcomertasks-name}}",
+	"growthexperiments-newcomertasks-tasktype-description-expand": "{{doc-growthexperiments-newcomertasks-description}}",
+	"growthexperiments-newcomertasks-tasktype-name-links": "{{doc-growthexperiments-newcomertasks-name}}",
+	"growthexperiments-newcomertasks-tasktype-description-links": "{{doc-growthexperiments-newcomertasks-description}}"
+}

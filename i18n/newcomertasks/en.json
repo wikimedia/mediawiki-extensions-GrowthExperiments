@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"growthexperiments-newcomertasks-tasktype-name-copyedit": "Copyedit",
+	"growthexperiments-newcomertasks-tasktype-description-copyedit": "Copyedit articles",
+	"growthexperiments-newcomertasks-tasktype-name-references": "References",
+	"growthexperiments-newcomertasks-tasktype-description-references": "Add references",
+	"growthexperiments-newcomertasks-tasktype-name-info": "Info",
+	"growthexperiments-newcomertasks-tasktype-description-info": "Improve information",
+	"growthexperiments-newcomertasks-tasktype-name-update": "Update",
+	"growthexperiments-newcomertasks-tasktype-description-update": "Update articles",
+	"growthexperiments-newcomertasks-tasktype-name-expand": "Expand",
+	"growthexperiments-newcomertasks-tasktype-description-expand": "Expand articles",
+	"growthexperiments-newcomertasks-tasktype-name-links": "Links",
+	"growthexperiments-newcomertasks-tasktype-description-links": "Add links to articles"
+}

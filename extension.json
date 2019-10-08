@@ -23,15 +23,29 @@
 			"i18n/help/api",
 			"i18n/homepage",
 			"i18n/homepage/api",
-			"i18n/confirmemail"
+			"i18n/confirmemail",
+			"i18n/newcomertasks",
+			"i18n/newcomertasks/api"
 		]
 	},
 	"ExtensionMessagesFiles": {
 		"GrowthExperimentsAlias": "GrowthExperiments.alias.php"
 	},
+	"ServiceWiringFiles": [
+		"ServiceWiring.php"
+	],
+	"ConfigRegistry": {
+		"GrowthExperiments": "GlobalVarConfig::newInstance"
+	},
 	"APIModules": {
 		"helppanelquestionposter": "GrowthExperiments\\Api\\ApiHelpPanelPostQuestion",
 		"homepagequestionstore": "GrowthExperiments\\Api\\ApiQuestionStore"
+	},
+	"APIListModules": {
+		"growthtasks": {
+			"class": "GrowthExperiments\\Api\\ApiQueryGrowthTasks",
+			"services": [ "GrowthExperimentsEditSuggester" ]
+		}
 	},
 	"Hooks": {
 		"MobileMenu": [

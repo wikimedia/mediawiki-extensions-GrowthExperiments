@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"apihelp-query+growthtasks-summary": "Get task recommendations suitable for newcomers.",
+	"apihelp-query+growthtasks-extended-description": "Suggests a set of articles which have some outstanding issues easy enough for a new editor to tackle.",
+	"apihelp-query+growthtasks-param-tasktypes": "Task types to limit results to. Leave empty to receive all suggestions.",
+	"apihelp-query+growthtasks-param-topics": "Article topics to prefer in task suggestions.",
+	"apihelp-query+growthtasks-param-limit": "Maximum number of task suggestions to return",
+	"apihelp-query+growthtasks-example-1": "Get task recommendations for copyediting-type tasks for the current user.",
+	"apihelp-query+growthtasks-example-2": "Get task recommendations for the current user, with extended information about the pages."
+}
