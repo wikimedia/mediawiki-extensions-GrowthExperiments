@@ -324,6 +324,34 @@
 				"mobile"
 			]
 		},
+		"ext.growthExperiments.Homepage.SuggestedEdits": {
+			"packageFiles": [
+				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.js",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditCardWidget.js",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditPagerWidget.js",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditsPreviousNextWidget.js"
+			],
+			"styles": [
+				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.less"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"dependencies": [
+				"mediawiki.api",
+				"mediawiki.language",
+				"oojs-ui-widgets",
+				"oojs-ui.styles.icons-media",
+				"oojs-ui-windows"
+			],
+			"messages": [
+				"growthexperiments-homepage-suggestededits-pager",
+				"growthexperiments-homepage-suggestededits-pageviews",
+				"growthexperiments-homepage-suggestededits-previous-card",
+				"growthexperiments-homepage-suggestededits-next-card"
+			]
+		},
 		"ext.growthExperiments.Homepage.StartEditing": {
 			"packageFiles": [
 				"homepage/ext.growthExperiments.Homepage.StartEditing.js",

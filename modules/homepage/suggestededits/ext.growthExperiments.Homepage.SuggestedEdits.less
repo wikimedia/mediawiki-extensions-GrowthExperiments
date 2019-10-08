@@ -1,0 +1,69 @@
+@import 'mediawiki.ui/variables';
+@import 'mediawiki.mixins';
+
+.suggested-edits-module-wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	.suggested-edits-pager {
+		font-size: 0.875em;
+		color: @colorGray2;
+	}
+
+	.suggested-edits-card-wrapper {
+		padding-top: 5px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: row;
+
+		.suggested-edits-previous,
+		.suggested-edits-next {
+			padding: 0 20px;
+		}
+
+		.suggested-edits-card {
+			.box-shadow(0 5px 10px 0 rgba(0, 0, 0, 0.15));
+			width: 260px;
+			height: 300px;
+			cursor: pointer;
+
+			a {
+				text-decoration: none;
+				color: unset;
+			}
+
+			.se-card-text {
+				padding: 0 10px 10px 10px;
+				color: @colorGray2;
+
+				.se-card-extract {
+					font-size: 0.875em;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+					overflow: hidden;
+					line-height: 0.875em;
+					height: 4em;
+				}
+
+				.se-card-pageviews {
+					font-size: 0.875em;
+					padding-top: 10px;
+					color: @colorGray5;
+
+					.oo-ui-iconWidget {
+						margin-right: 5px;
+					}
+				}
+			}
+
+			.se-card-image {
+				height: 150px;
+				width: 260px;
+				background-color: @colorGray1;
+			}
+		}
+	}
+}
