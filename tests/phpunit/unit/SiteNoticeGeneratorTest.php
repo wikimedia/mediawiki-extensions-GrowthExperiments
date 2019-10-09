@@ -13,7 +13,7 @@ use OOUI\Theme;
  */
 class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 
-	protected function setUp() {
+	protected function setUp() : void {
 		parent::setUp();
 		Theme::setSingleton( new BlankTheme() );
 	}

@@ -17,7 +17,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 	 */
 	protected $mUser = null;
 
-	public function setUp() {
+	public function setUp() : void {
 		parent::setUp();
 		$this->mUser = $this->getMutableTestUser()->getUser();
 		$this->setMwGlobals( [
@@ -70,14 +70,16 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 
 	/**
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster::checkUserPermissions
-	 * @expectedException MWException
-	 * @expectedExceptionMessageRegExp /Your username or IP address has been blocked/
 	 */
 	public function testBlockedUserCantPostQuestion() {
 		$block = new DatabaseBlock();
 		$block->setTarget( $this->mUser );
 		$block->setBlocker( $this->getTestSysop()->getUser() );
 		$block->insert();
+
+		$this->expectException( MWException::class );
+		$this->expectExceptionMessage( 'Your username or IP address has been blocked' );
+
 		$this->doApiRequestWithToken(
 			$this->getParams( 'user is blocked' ),
 			null,
@@ -88,7 +90,6 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 
 	/**
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster::runEditFilterMergedContentHook
-	 * @expectedException ApiUsageException
 	 */
 	public function testEditFilterMergedContentHookReturnsFalse() {
 		$this->setTemporaryHook( 'EditFilterMergedContent',
@@ -97,6 +98,9 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 				return false;
 			}
 		);
+
+		$this->expectException( ApiUsageException::class );
+
 		$this->doApiRequestWithToken(
 			$this->getParams( 'abuse filter denies edit' ),
 			null,

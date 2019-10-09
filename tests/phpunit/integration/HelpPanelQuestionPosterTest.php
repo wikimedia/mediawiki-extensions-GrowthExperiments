@@ -26,13 +26,15 @@ class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
 
 	/**
 	 * @throws \MWException
-	 * @expectedExceptionMessage User must be logged-in.
-	 * @expectedException \MWException
 	 * @covers \GrowthExperiments\HelpPanel\HelpPanelQuestionPoster::__construct
 	 */
 	public function testConstruct() {
 		$context = $this->buildContext();
 		$context->getUser()->logout();
+
+		$this->expectException( \MWException::class );
+		$this->expectExceptionMessage( 'User must be logged-in.' );
+
 		( new HelpPanelQuestionPoster( $context, 'foo' ) );
 	}
 

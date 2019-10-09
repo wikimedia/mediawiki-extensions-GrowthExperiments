@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
+use Exception;
 use GrowthExperiments\Mentor;
 use MediaWikiTestCase;
 use RequestContext;
@@ -16,11 +17,12 @@ class MentorTest extends MediaWikiTestCase {
 	 * @covers \GrowthExperiments\Mentor::newFromMentee
 	 * @dataProvider provideInvalidMentorsList
 	 * @param string $mentorsListConfig
-	 * @expectedException \Exception
-	 * @expectedExceptionMessageRegExp /wgGEHomepageMentorsList is invalid/
 	 */
 	public function testNewFromMenteeInvalidMentorList( $mentorsListConfig ) {
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', $mentorsListConfig );
+
+		$this->expectException( Exception::class );
+		$this->expectExceptionMessage( 'wgGEHomepageMentorsList is invalid' );
 
 		Mentor::newFromMentee( $this->getTestUser()->getUser(), true );
 	}
@@ -37,12 +39,13 @@ class MentorTest extends MediaWikiTestCase {
 
 	/**
 	 * @covers \GrowthExperiments\Mentor::newFromMentee
-	 * @expectedException \Exception
-	 * @expectedExceptionMessageRegExp /Invalid mentor/
 	 */
 	public function testRenderInvalidMentor() {
 		$this->insertPage( 'MentorsList', '[[User:InvalidUser]]' );
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
+
+		$this->expectException( Exception::class );
+		$this->expectExceptionMessage( 'Invalid mentor' );
 
 		Mentor::newFromMentee( $this->getTestUser()->getUser(), true );
 	}
@@ -77,13 +80,15 @@ class MentorTest extends MediaWikiTestCase {
 
 	/**
 	 * @covers \GrowthExperiments\Mentor::newFromMentee
-	 * @expectedException \Exception
-	 * @expectedExceptionMessageRegExp /Homepage Mentorship module: no mentor available for/
 	 */
 	public function testMentorCannotBeMentee() {
 		$user = $this->getMutableTestUser()->getUser();
 		$this->insertPage( 'MentorsList', '[[User:' . $user->getName() . ']]' );
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
+
+		$this->expectException( Exception::class );
+		$this->expectExceptionMessage( 'Homepage Mentorship module: no mentor available for' );
+
 		Mentor::newFromMentee( $user, true );
 	}
 
@@ -109,12 +114,14 @@ class MentorTest extends MediaWikiTestCase {
 
 	/**
 	 * @covers \GrowthExperiments\Mentor::newFromMentee
-	 * @expectedException \Exception
-	 * @expectedExceptionMessageRegExp /Homepage Mentorship module: no mentor available for/
 	 */
 	public function testNoMentorAvailable() {
 		$this->insertPage( 'MentorsList', 'Mentors' );
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
+
+		$this->expectException( Exception::class );
+		$this->expectExceptionMessage( 'Homepage Mentorship module: no mentor available for' );
+
 		Mentor::newFromMentee( $this->getMutableTestUser()->getUser(), true );
 	}
 
