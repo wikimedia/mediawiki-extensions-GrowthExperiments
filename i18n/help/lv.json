@@ -9,8 +9,12 @@
 	"growthexperiments-help-panel-close": "Pabeigts",
 	"growthexperiments-help-panel-questionreview-title": "Uzdot jautājumu",
 	"growthexperiments-help-panel-questionreview-label": "Tavs jautājums",
+	"growthexperiments-help-panel-questioncomplete-title": "Uzdot jautājumu",
+	"growthexperiments-help-panel-questioncomplete-header": "Tavs jautājums ir iesniegts!",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "mainīt",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Apstiprināt e-pastu",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Pievienot e-pastu",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Vairāk par šo iespēju",
+	"growthexperiments-help-panel-questionposter-invalid-title": "Nekorekts nosaukums.",
 	"growthexperiments-help-panel-search-label": "Meklēt palīdzību"
 }

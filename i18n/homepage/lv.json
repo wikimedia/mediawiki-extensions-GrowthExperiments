@@ -4,7 +4,18 @@
 			"Papuass"
 		]
 	},
+	"growthexperiments-homepage-tab": "Sākumlapa",
+	"tooltip-pt-homepage": "{{GENDER:|Tava}} sākumlapa",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|labojumi|labojums|labojumi}}",
+	"growthexperiments-homepage-userpage-button": "Izveidot dalībnieka lapu",
+	"growthexperiments-homepage-userpage-button-done": "Labot dalībnieka lapu",
+	"growthexperiments-homepage-userpage-guidelines": "Dalībnieka lapu vadlīnijas",
+	"growthexperiments-homepage-email-header-noemail": "Pievieno {{GENDER:$1|savu}} e-pastu",
+	"growthexperiments-homepage-email-header-unconfirmed": "Apstiprini {{GENDER:$1|savu}} e-pastu",
+	"growthexperiments-homepage-email-header-confirmed": "E-pasts pievienots",
+	"growthexperiments-homepage-email-button-confirmed": "Izvēles",
+	"growthexperiments-homepage-email-changelink": "(mainīt)",
+	"growthexperiments-homepage-startediting-header": "Sākt labošanu",
 	"growthexperiments-homepage-startediting-subheader-other": "Vikipēdiju raksta tādi paši cilvēki kā tu. Pat mazi labojumi dod ieguldījumu.",
 	"growthexperiments-homepage-startediting-button": "Skatīt ieteiktos labojumus",
 	"growthexperiments-homepage-startediting-dialog-topic-back": "Atcelt",
@@ -13,5 +24,6 @@
 	"growthexperiments-homepage-suggested-edits-header": "Ieteiktie labojumi",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Sapratu",
 	"growthexperiments-tour-response-button-okay": "Sapratu",
-	"growthexperiments-homepage-help-cancel": "Atcelt"
+	"growthexperiments-homepage-help-cancel": "Atcelt",
+	"growthexperiments-tour-discovery-title": "Sāc šeit!"
 }

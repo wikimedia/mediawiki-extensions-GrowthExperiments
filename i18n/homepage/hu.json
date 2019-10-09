@@ -125,7 +125,7 @@
 	"growthexperiments-homepage-welcomesurvey-default-close": "Ugrás a személyes {{GENDER:$1|kezdőlapodra}}",
 	"growthexperiments-homepage-discovery-banner-header": "{{GENDER:$1|Üdvözlünk}} a kezdőlapodon!",
 	"growthexperiments-homepage-discovery-banner-text": "Bármikor {{GENDER:$1|visszatérhetsz}} ide a lap tetején található $2-ra kattintva.",
-	"growthexperiments-homepage-discovery-thanks-header": "Köszönjük, hogy {{GENDER:$1|létrehoztál}} egy szerkesztői fiókot!",
+	"growthexperiments-homepage-discovery-thanks-header": "Köszönjük, hogy {{GENDER:$1|létrehoztad}} egy szerkesztői fiókodat!",
 	"growthexperiments-homepage-discovery-thanks-text": "Kattints a $2-ra a lap tetején a személyes {{GENDER:$1|honlapod}} meglátogatásához, és a tanulás megkezdéséhez.",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "{{GENDER:$1|Üdvözlünk}} a kezdőlapodon!",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "Bármikor {{GENDER:$1|visszatérhetsz}} ide a bal oldali menü megnyitásával, és ott a $2 kiválasztásával.",
