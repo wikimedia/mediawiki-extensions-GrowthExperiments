@@ -50,7 +50,6 @@ class StartEditing extends BaseTaskModule {
 	 */
 	protected function getBody() {
 		// Decide which message to use based on the user's WelcomeSurvey response. Messages:
-		// growthexperiments-homepage-startediting-subheader-edit-info-add-change
 		// growthexperiments-homepage-startediting-subheader-edit-typo
 		// growthexperiments-homepage-startediting-subheader-add-image
 		// growthexperiments-homepage-startediting-subheader-new-page
