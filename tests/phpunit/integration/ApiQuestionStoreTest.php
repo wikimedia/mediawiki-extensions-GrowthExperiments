@@ -20,11 +20,12 @@ use GrowthExperiments\HomepageModules\Mentorship;
 class ApiQuestionStoreTest extends ApiTestCase {
 
 	/**
-	 * @expectedException ApiUsageException
-	 * @expectedExceptionMessage The "storage" parameter must be set.
 	 * @covers \GrowthExperiments\Api\ApiQuestionStore::getAllowedParams
 	 */
 	public function testRequiredParams() {
+		$this->expectException( ApiUsageException::class );
+		$this->expectExceptionMessage( 'The "storage" parameter must be set.' );
+
 		$this->doApiRequest(
 			[ 'action' => 'homepagequestionstore' ],
 			null,

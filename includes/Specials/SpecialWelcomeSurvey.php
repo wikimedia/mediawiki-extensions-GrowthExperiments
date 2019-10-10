@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Specials;
 
-use \FormSpecialPage;
+use FormSpecialPage;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\WelcomeSurvey;
 use Html;

@@ -79,24 +79,24 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 			'difficulty' => TaskType::DIFFICULTY_EASY ], reset( $data['query']['pages'] ) );
 	}
 
-	/**
-	 * @expectedException ApiUsageException
-	 * @expectedExceptionMessage foo
-	 */
 	public function testError() {
 		$suggester = new ErrorForwardingTaskSuggester(
 			StatusValue::newFatal( new ApiRawMessage( 'foo' ) ) );
 		$this->setService( 'GrowthExperimentsEditSuggester', $suggester );
+
+		$this->expectException( ApiUsageException::class );
+		$this->expectExceptionMessage( 'foo' );
+
 		$this->doApiRequest( [ 'action' => 'query', 'list' => 'growthtasks' ] );
 	}
 
-	/**
-	 * @expectedException ApiUsageException
-	 * @expectedExceptionMessage You must be logged in.
-	 */
 	public function testMustBeLoggedIn() {
 		$suggester = new StaticTaskSuggester( [] );
 		$this->setService( 'GrowthExperimentsEditSuggester', $suggester );
+
+		$this->expectException( ApiUsageException::class );
+		$this->expectExceptionMessage( 'You must be logged in.' );
+
 		$this->doApiRequest( [ 'action' => 'query', 'list' => 'growthtasks' ],
 			null, null, new User() );
 	}

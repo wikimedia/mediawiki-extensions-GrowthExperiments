@@ -21,12 +21,14 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	}
 
 	/**
-	 * @expectedException \ErrorPageError
-	 * @expectedExceptionMessage To enable the newcomer homepage, visit your
 	 * @covers \GrowthExperiments\Specials\SpecialHomepage::handleDisabledPreference
 	 */
 	public function testHomepageDoesNotRenderWhenPreferenceIsDisabled() {
 		$user = $this->getTestUser()->getUser();
+
+		$this->expectException( \ErrorPageError::class );
+		$this->expectExceptionMessage( 'To enable the newcomer homepage, visit your' );
+
 		$this->executeSpecialPage( '', null, null, $user );
 	}
 

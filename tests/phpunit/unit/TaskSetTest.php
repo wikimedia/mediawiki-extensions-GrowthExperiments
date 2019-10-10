@@ -29,12 +29,10 @@ class TaskSetTest extends MediaWikiUnitTestCase {
 		$this->assertSame( 1, $taskSet->getOffset() );
 	}
 
-	/**
-	 * @expectedException InvalidArgumentException
-	 */
 	public function testInvalidParameter() {
-		$taskType = new TaskType( 'foo', TaskType::DIFFICULTY_EASY );
-		$taskSet = new TaskSet( [ new TitleValue( NS_MAIN, 'Foo' ) ], 1, 0 );
+		$this->expectException( InvalidArgumentException::class );
+
+		new TaskSet( [ new TitleValue( NS_MAIN, 'Foo' ) ], 1, 0 );
 	}
 
 }
