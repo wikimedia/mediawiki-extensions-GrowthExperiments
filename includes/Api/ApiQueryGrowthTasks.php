@@ -130,8 +130,8 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 			],
 			'limit' => [
 				ApiBase::PARAM_TYPE => 'limit',
-				ApiBase::PARAM_MAX => 100,
-				ApiBase::PARAM_MAX2 => 100,
+				ApiBase::PARAM_MAX => 200,
+				ApiBase::PARAM_MAX2 => 200,
 			],
 			'offset' => [
 				ApiBase::PARAM_TYPE => 'integer',
