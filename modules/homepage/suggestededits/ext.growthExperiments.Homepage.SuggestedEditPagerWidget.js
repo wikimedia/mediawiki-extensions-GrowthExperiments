@@ -1,4 +1,5 @@
 ( function () {
+	'use strict';
 
 	function SuggestedEditPagerWidget( config ) {
 		SuggestedEditPagerWidget.super.call( this, config );
@@ -9,7 +10,7 @@
 	SuggestedEditPagerWidget.prototype.setMessage = function ( currentPosition, totalCount ) {
 		this.$element.html( mw.message(
 			'growthexperiments-homepage-suggestededits-pager',
-			mw.language.convertNumber( currentPosition ),
+			currentPosition <= totalCount ? mw.language.convertNumber( currentPosition ) : mw.message( 'growthexperiments-homepage-suggestededits-pager-end' ).parse(),
 			mw.language.convertNumber( totalCount )
 		).parse() );
 	};

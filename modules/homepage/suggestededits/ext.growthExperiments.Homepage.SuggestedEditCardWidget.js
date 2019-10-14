@@ -1,4 +1,6 @@
 ( function () {
+	'use strict';
+
 	/**
 	 * @param {Object} data
 	 * @param {string} [data.thumbnailSource] The URL to use for the task image.

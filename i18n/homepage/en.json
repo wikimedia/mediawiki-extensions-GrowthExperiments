@@ -125,7 +125,11 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Get started here!",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Open the side menu and tap $2 to visit {{GENDER:$1|your}} homepage.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> of <strong>$2</strong> {{PLURAL:$2|suggestion|suggestions}}",
+	"growthexperiments-homepage-suggestededits-pager-end": "End",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 views by readers (last 60 days)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Previous suggested edit",
-	"growthexperiments-homepage-suggestededits-next-card": "Next suggested edit"
+	"growthexperiments-homepage-suggestededits-next-card": "Next suggested edit",
+	"growthexperiments-homepage-suggestededits-no-more-results": "No more suggestions",
+	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Select other difficulty levels to find suggested edits.",
+	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Select other interests or difficulty levels to find suggested edits."
 }
