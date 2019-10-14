@@ -329,6 +329,7 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditCardWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.EndOfQueueWidget.js",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.NoResultsWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditPagerWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditsPreviousNextWidget.js"
 			],
@@ -352,6 +353,7 @@
 				"growthexperiments-homepage-suggestededits-pageviews",
 				"growthexperiments-homepage-suggestededits-previous-card",
 				"growthexperiments-homepage-suggestededits-next-card",
+				"growthexperiments-homepage-suggestededits-no-results",
 				"growthexperiments-homepage-suggestededits-no-more-results",
 				"growthexperiments-homepage-suggestededits-select-other-difficulty",
 				"growthexperiments-homepage-suggestededits-select-other-topics-difficulty"

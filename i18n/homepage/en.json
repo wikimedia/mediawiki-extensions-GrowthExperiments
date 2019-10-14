@@ -130,6 +130,7 @@
 	"growthexperiments-homepage-suggestededits-previous-card": "Previous suggested edit",
 	"growthexperiments-homepage-suggestededits-next-card": "Next suggested edit",
 	"growthexperiments-homepage-suggestededits-no-more-results": "No more suggestions",
+	"growthexperiments-homepage-suggestededits-no-results": "No suggestions found",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Select other difficulty levels to find suggested edits.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Select other interests or difficulty levels to find suggested edits."
 }
