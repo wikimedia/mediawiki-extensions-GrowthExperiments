@@ -73,7 +73,8 @@ class SuggestedEdits extends BaseModule {
 			Html::rawElement( 'div', [ 'class' => 'suggested-edits-card-wrapper' ],
 				Html::element( 'div', [ 'class' => 'suggested-edits-previous' ] ) .
 				Html::element( 'div', [ 'class' => 'suggested-edits-card' ] ) .
-				Html::element( 'div', [ 'class' => 'suggested-edits-next' ] ) )
+				Html::element( 'div', [ 'class' => 'suggested-edits-next' ] ) ) .
+			Html::element( 'div', [ 'class' => 'suggested-edits-task-explanation' ] )
 		);
 	}
 

@@ -1,5 +1,9 @@
 @import 'mediawiki.ui/variables';
 @import 'mediawiki.mixins';
+@import '../ext.growthExperiments.variables.less';
+
+@cardWrapperWidth: 260px;
+@cardContainerWrapperHeight: 300px;
 
 .growthexperiments-homepage-module-suggested-edits {
 	&.growthexperiments-homepage-module-desktop {
@@ -19,6 +23,8 @@
 
 		.se-card-no-results,
 		.se-card-end-of-queue {
+			width: @cardWrapperWidth;
+
 			.se-card-title,
 			.se-card-text {
 				text-align: center;
@@ -43,12 +49,127 @@
 			}
 		}
 
+		.suggested-edits-task-explanation-wrapper {
+			padding: 10px 0;
+			width: @cardWrapperWidth;
+
+			.suggested-edits-title-and-info {
+				display: flex;
+				justify-content: center;
+				align-content: center;
+
+				h4 {
+					margin-top: unset;
+					margin-bottom: unset;
+					padding-top: unset;
+				}
+
+				.oo-ui-iconElement {
+					text-align: left;
+					margin-top: -5px;
+				}
+
+				p {
+					color: @colorGray2;
+				}
+
+				.suggested-edits-difficulty-indicator {
+					margin-left: auto;
+					margin-top: 2px;
+					text-transform: uppercase;
+					font-size: 12px;
+					height: 14px;
+					line-height: 1.4em;
+					position: relative;
+					padding: 2px 4px;
+				}
+
+				.suggested-edits-popup-detail {
+					.suggested-edits-difficulty-time-estimate {
+						display: flex;
+
+						.suggested-edits-difficulty-indicator {
+							margin-left: 0;
+						}
+
+						.suggested-edits-difficulty-level {
+							font-size: 12px;
+							margin-top: 2px;
+							padding-left: 10px;
+						}
+
+						.suggested-edits-difficulty-level-easy {
+							color: @easyColor;
+						}
+
+						.suggested-edits-difficulty-level-medium {
+							color: @mediumColor;
+						}
+
+						.suggested-edits-difficulty-level-hard {
+							color: @hardColor;
+						}
+					}
+				}
+
+				.suggested-edits-difficulty-indicator-easy {
+					background-color: fade( @easyColor, 20% );
+					color: @easyColor;
+				}
+
+				.suggested-edits-difficulty-indicator-after-mixin() {
+					content: '';
+					position: absolute;
+					right: -4px;
+					bottom: 0;
+					width: 0;
+					height: 0;
+					border-right: 4px solid transparent;
+				}
+
+				.suggested-edits-difficulty-indicator-easy:after {
+					.suggested-edits-difficulty-indicator-after-mixin();
+					border-top: 9px solid fade( @easyColor, 20% );
+					border-bottom: 9px solid fade( @easyColor, 20% );
+				}
+
+				.suggested-edits-difficulty-indicator-medium {
+					background-color: fade( @mediumColor, 20% );
+					color: @mediumColor;
+				}
+
+				.suggested-edits-difficulty-indicator-medium:after {
+					.suggested-edits-difficulty-indicator-after-mixin();
+					border-top: 9px solid fade( @mediumColor, 20% );
+					border-bottom: 9px solid fade( @mediumColor, 20% );
+				}
+
+				.suggested-edits-difficulty-indicator-hard {
+					background-color: fade( @hardColor, 20% );
+					color: @hardColor;
+				}
+
+				.suggested-edits-difficulty-indicator-hard:after {
+					.suggested-edits-difficulty-indicator-after-mixin();
+					border-top: 9px solid fade( @hardColor, 20% );
+					border-bottom: 9px solid fade( @hardColor, 20% );
+				}
+			}
+
+			.suggested-edits-short-description {
+				height: 20px;
+				color: @colorGray5;
+				font-size: 0.9em;
+			}
+		}
+
 		.suggested-edits-card-wrapper {
 			padding-top: 5px;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 			flex-direction: row;
+			height: @cardContainerWrapperHeight;
 
 			.suggested-edits-previous,
 			.suggested-edits-next {
@@ -57,8 +178,7 @@
 
 			.suggested-edits-task-card-wrapper {
 				.box-shadow(0 5px 10px 0 rgba(0, 0, 0, 0.15));
-				width: 260px;
-				height: 300px;
+				width: @cardWrapperWidth;
 				background-color: @background-color-base;
 
 				a {

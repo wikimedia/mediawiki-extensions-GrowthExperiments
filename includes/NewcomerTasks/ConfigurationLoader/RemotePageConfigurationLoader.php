@@ -121,12 +121,12 @@ class RemotePageConfigurationLoader implements ConfigurationLoader {
 			$requiredFields = [ 'group', 'templates' ];
 			foreach ( $requiredFields as $field ) {
 				if ( !isset( $taskTypeData[$field] ) ) {
-					return StatusValue::newFatal( 'growthexperiments-newcomertasks-config-missingfield',
+					return StatusValue::newFatal( 'growthexperiments-homepage-suggestededits-config-missingfield',
 						$field, $taskTypeId );
 				}
 			}
 			if ( !in_array( $taskTypeData['group'], TaskType::$difficultyClasses, true ) ) {
-				return StatusValue::newFatal( 'growthexperiments-newcomertasks-config-wronggroup',
+				return StatusValue::newFatal( 'growthexperiments-homepage-suggestededits-config-wronggroup',
 					$taskTypeData['group'], $taskTypeId );
 			}
 			$templates = array_map( function ( $template ) {
@@ -136,11 +136,15 @@ class RemotePageConfigurationLoader implements ConfigurationLoader {
 			foreach ( [
 				$taskType->getName( $this->context ),
 				$taskType->getDescription( $this->context ),
+				$taskType->getShortDescription( $this->context ),
+				$taskType->getTimeEstimate( $this->context )
 			] as $msg ) {
 				/** @var $msg Message */
 				if ( !$msg->exists() ) {
-					return StatusValue::newFatal( 'growthexperiments-newcomertasks-config-missingmessage',
-						$msg->getKey(), $taskTypeId );
+					return StatusValue::newFatal(
+						'growthexperiments-homepage-suggestededits-config-missingmessage',
+						$msg->getKey(), $taskTypeId
+					);
 				}
 			}
 			$taskTypes[] = $taskType;

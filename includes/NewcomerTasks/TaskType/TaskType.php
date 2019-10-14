@@ -10,9 +10,9 @@ use Message;
  */
 class TaskType {
 
-	const DIFFICULTY_EASY = 'easy';
-	const DIFFICULTY_MEDIUM = 'medium';
-	const DIFFICULTY_HARD = 'hard';
+	public const DIFFICULTY_EASY = 'easy';
+	public const DIFFICULTY_MEDIUM = 'medium';
+	public const DIFFICULTY_HARD = 'hard';
 
 	public static $difficultyClasses = [
 		self::DIFFICULTY_EASY,
@@ -55,7 +55,8 @@ class TaskType {
 	 * @return Message
 	 */
 	public function getName( IContextSource $context ): Message {
-		return $context->msg( 'growthexperiments-newcomertasks-tasktype-name-' . $this->getId() );
+		return $context->msg( 'growthexperiments-homepage-suggestededits-tasktype-name-'
+			. $this->getId() );
 	}
 
 	/**
@@ -64,8 +65,28 @@ class TaskType {
 	 * @return Message
 	 */
 	public function getDescription( IContextSource $context ): Message {
-		return $context->msg( 'growthexperiments-newcomertasks-tasktype-description-'
+		return $context->msg( 'growthexperiments-homepage-suggestededits-tasktype-description-'
 			. $this->getId() );
+	}
+
+	/**
+	 * Short description of the task type.
+	 * @param IContextSource $context
+	 * @return Message
+	 */
+	public function getShortDescription( IContextSource $context ): Message {
+		return $context->msg( 'growthexperiments-homepage-suggestededits-tasktype-shortdescription-'
+		  . $this->getId() );
+	}
+
+	/**
+	 * Time estimate for the task type.
+	 * @param IContextSource $context
+	 * @return Message
+	 */
+	public function getTimeEstimate( IContextSource $context ): Message {
+		return $context->msg( 'growthexperiments-homepage-suggestededits-tasktype-time-'
+		  . $this->getId() );
 	}
 
 }

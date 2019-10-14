@@ -77,7 +77,7 @@ class RemotePageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$msg = $this->createMock( Message::class );
 		$msg->method( 'exists' )->willReturn( false );
 		$context = $this->getMockContext( [
-			'growthexperiments-newcomertasks-tasktype-name-foo' => $msg,
+			'growthexperiments-homepage-suggestededits-tasktype-name-foo' => $msg,
 		] );
 		$configurationLoader = new RemotePageConfigurationLoader( $requestFactory, $titleFactory,
 			$context, $title );
@@ -86,7 +86,9 @@ class RemotePageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		if ( $error === 'json' ) {
 			$this->assertTrue( $status->hasMessage( 'json-error-syntax' ) );
 		} else {
-			$this->assertTrue( $status->hasMessage( 'growthexperiments-newcomertasks-config-' . $error ) );
+			$this->assertTrue( $status->hasMessage(
+				'growthexperiments-homepage-suggestededits-config-' . $error
+			) );
 		}
 	}
 
