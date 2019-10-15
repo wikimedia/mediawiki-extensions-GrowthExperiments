@@ -122,5 +122,9 @@
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Welcome to {{GENDER:$1|your}} homepage!",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|You}} can always open the side menu and tap $2 to return here.",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Get started here!",
-	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Open the side menu and tap $2 to visit {{GENDER:$1|your}} homepage."
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Open the side menu and tap $2 to visit {{GENDER:$1|your}} homepage.",
+	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> of <strong>$2</strong> {{PLURAL:$2|suggestion|suggestions}}",
+	"growthexperiments-homepage-suggestededits-pageviews": "$1 views by readers (last 60 days)",
+	"growthexperiments-homepage-suggestededits-previous-card": "Previous suggested edit",
+	"growthexperiments-homepage-suggestededits-next-card": "Next suggested edit"
 }

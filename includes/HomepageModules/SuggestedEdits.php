@@ -3,6 +3,8 @@
 namespace GrowthExperiments\HomepageModules;
 
 use IContextSource;
+use Html;
+use ExtensionRegistry;
 
 class SuggestedEdits extends BaseModule {
 
@@ -33,7 +35,11 @@ class SuggestedEdits extends BaseModule {
 
 	/** @inheritDoc */
 	protected function canRender() {
-		return self::isActivated( $this->getContext() );
+		$extensionRegistry = ExtensionRegistry::getInstance();
+		return self::isActivated( $this->getContext() ) &&
+			   $extensionRegistry->isLoaded( 'TextExtracts' ) &&
+			   $extensionRegistry->isLoaded( 'PageViewInfo' ) &&
+			   $extensionRegistry->isLoaded( 'PageImages' );
 	}
 
 	/** @inheritDoc */
@@ -50,11 +56,26 @@ class SuggestedEdits extends BaseModule {
 
 	/** @inheritDoc */
 	protected function getBody() {
-		return '';
+		return Html::rawElement(
+			'div', [ 'class' => 'suggested-edits-module-wrapper' ],
+			Html::element( 'div', [ 'class' => 'suggested-edits-pager' ] ) .
+			Html::rawElement( 'div', [ 'class' => 'suggested-edits-card-wrapper' ],
+				Html::element( 'div', [ 'class' => 'suggested-edits-previous' ] ) .
+				Html::element( 'div', [ 'class' => 'suggested-edits-card' ] ) .
+				Html::element( 'div', [ 'class' => 'suggested-edits-next' ] ) )
+		);
 	}
 
 	/** @inheritDoc */
 	protected function getMobileSummaryBody() {
 		return '';
+	}
+
+	/** @inheritDoc */
+	protected function getModules() {
+		return array_merge(
+			parent::getModules(),
+			[ 'ext.growthExperiments.Homepage.SuggestedEdits' ]
+		);
 	}
 }
