@@ -1,5 +1,6 @@
 ( function () {
 	var EditCardWidget = require( './ext.growthExperiments.Homepage.SuggestedEditCardWidget.js' ),
+		EndOfQueueWidget = require( './ext.growthExperiments.Homepage.SuggestedEdits.EndOfQueueWidget.js' ),
 		PagerWidget = require( './ext.growthExperiments.Homepage.SuggestedEditPagerWidget.js' ),
 		PreviousNextWidget = require( './ext.growthExperiments.Homepage.SuggestedEditsPreviousNextWidget.js' ),
 		suggestedEditsModule,
@@ -51,9 +52,11 @@
 			function filterOutMissingAndProtectedArticles( result ) {
 				return !result.missing && result.protection.length === 0;
 			}
-			this.taskQueue = data.query.pages
-				.filter( filterOutMissingAndProtectedArticles )
-				.map( cleanUpData );
+			if ( data.growthtasks.totalCount > 0 ) {
+				this.taskQueue = data.query.pages
+					.filter( filterOutMissingAndProtectedArticles )
+					.map( cleanUpData );
+			}
 			this.showCard();
 		}.bind( this ) );
 	};
@@ -64,7 +67,7 @@
 
 	SuggestedEditsModule.prototype.onUpdatePreviousNextButtons = function () {
 		var hasPrevious = this.queuePosition > 0,
-			hasNext = this.queuePosition < this.taskQueue.length - 1;
+			hasNext = this.queuePosition < this.taskQueue.length;
 		this.previousWidget.setDisabled( !hasPrevious );
 		this.nextWidget.setDisabled( !hasNext );
 	};
@@ -84,7 +87,12 @@
 			cardSelector = '.suggested-edits-card',
 			$cardElement = $( cardSelector );
 
-		this.currentCard = new EditCardWidget( suggestedEditData );
+		if ( !suggestedEditData ) {
+			this.currentCard = new EndOfQueueWidget( { topicMatching: false } );
+		} else {
+			this.currentCard = new EditCardWidget( suggestedEditData );
+		}
+
 		$cardElement.html( this.currentCard.$element );
 		this.emit( 'updatePager' );
 		this.emit( 'updatePreviousNextButtons' );

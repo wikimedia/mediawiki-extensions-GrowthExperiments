@@ -28,41 +28,57 @@
 			.box-shadow(0 5px 10px 0 rgba(0, 0, 0, 0.15));
 			width: 260px;
 			height: 300px;
-			cursor: pointer;
 
 			a {
 				text-decoration: none;
 				color: unset;
 			}
 
-			.se-card-text {
-				padding: 0 10px 10px 10px;
-				color: @colorGray2;
+			.se-card-content {
+				.se-card-text {
+					padding: 0 10px 10px 10px;
+					color: @colorGray2;
 
-				.se-card-extract {
-					font-size: 0.875em;
-					white-space: nowrap;
-					text-overflow: ellipsis;
-					overflow: hidden;
-					line-height: 0.875em;
-					height: 4em;
+					.se-card-extract {
+						font-size: 0.875em;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+						overflow: hidden;
+						line-height: 0.875em;
+						height: 4em;
+					}
+
+					.se-card-pageviews {
+						font-size: 0.875em;
+						padding-top: 10px;
+						color: @colorGray5;
+
+						.oo-ui-iconWidget {
+							margin-right: 5px;
+						}
+					}
 				}
 
-				.se-card-pageviews {
-					font-size: 0.875em;
-					padding-top: 10px;
-					color: @colorGray5;
-
-					.oo-ui-iconWidget {
-						margin-right: 5px;
-					}
+				.se-card-image {
+					height: 150px;
+					width: 260px;
+					background-color: @colorGray1;
 				}
 			}
 
-			.se-card-image {
-				height: 150px;
-				width: 260px;
-				background-color: @colorGray1;
+			.se-card-end-of-queue {
+				.se-card-title,
+				.se-card-text {
+					text-align: center;
+					color: @colorGray2;
+					padding: 20px 10px 0 10px;
+				}
+
+				.se-card-image {
+					/* @embed */
+					background: url( ../../../images/end-of-queue.svg ) no-repeat center center;
+					height: 144px;
+				}
 			}
 		}
 	}
