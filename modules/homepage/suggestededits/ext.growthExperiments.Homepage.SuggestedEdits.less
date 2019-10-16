@@ -66,6 +66,7 @@
 				}
 			}
 
+			.se-card-no-results,
 			.se-card-end-of-queue {
 				.se-card-title,
 				.se-card-text {
@@ -73,10 +74,20 @@
 					color: @colorGray2;
 					padding: 20px 10px 0 10px;
 				}
+			}
 
+			.se-card-end-of-queue {
 				.se-card-image {
 					/* @embed */
 					background: url( ../../../images/end-of-queue.svg ) no-repeat center center;
+					height: 144px;
+				}
+			}
+
+			.se-card-no-results {
+				.se-card-image {
+					/* @embed */
+					background: url( ../../../images/no-results.svg ) no-repeat center center;
 					height: 144px;
 				}
 			}
