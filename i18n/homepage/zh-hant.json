@@ -125,5 +125,9 @@
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "歡迎來到{{GENDER:$1|您的}}首頁！",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|您}}可以隨時開啟側邊選單並輕點$2來回到這裡。",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "在此開始！",
-	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "開啟側邊選單並輕點$2來參訪{{GENDER:$1|您的}}首頁。"
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "開啟側邊選單並輕點$2來參訪{{GENDER:$1|您的}}首頁。",
+	"growthexperiments-homepage-suggestededits-pager": "<strong>$2</strong> 個{{PLURAL:$2|建議}}裡的第 <strong>$1</strong> 個",
+	"growthexperiments-homepage-suggestededits-pageviews": "讀者觀看的檢視數（最近 60 天）：$1",
+	"growthexperiments-homepage-suggestededits-previous-card": "前一個建議編輯",
+	"growthexperiments-homepage-suggestededits-next-card": "下一個建議編輯"
 }
