@@ -1,94 +1,99 @@
 @import 'mediawiki.ui/variables';
 @import 'mediawiki.mixins';
 
-.suggested-edits-module-wrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+.growthexperiments-homepage-module-suggested-edits {
+	background-color: rgba( 234, 243, 255, 0.5 );
 
-	.suggested-edits-pager {
-		font-size: 0.875em;
-		color: @colorGray2;
-	}
-
-	.suggested-edits-card-wrapper {
-		padding-top: 5px;
+	.suggested-edits-module-wrapper {
 		display: flex;
+		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		flex-direction: row;
 
-		.suggested-edits-previous,
-		.suggested-edits-next {
-			padding: 0 20px;
+		.suggested-edits-pager {
+			font-size: 0.875em;
+			color: @colorGray2;
 		}
 
-		.suggested-edits-card {
-			.box-shadow(0 5px 10px 0 rgba(0, 0, 0, 0.15));
-			width: 260px;
-			height: 300px;
+		.se-card-no-results,
+		.se-card-end-of-queue {
+			.se-card-title,
+			.se-card-text {
+				text-align: center;
+				color: @colorGray2;
+				padding: 20px 10px 0 10px;
+			}
+		}
 
-			a {
-				text-decoration: none;
-				color: unset;
+		.se-card-end-of-queue {
+			.se-card-image {
+				/* @embed */
+				background: url( ../../../images/end-of-queue.svg ) no-repeat center center;
+				height: 144px;
+			}
+		}
+
+		.se-card-no-results {
+			.se-card-image {
+				/* @embed */
+				background: url( ../../../images/no-results.svg ) no-repeat center center;
+				height: 144px;
+			}
+		}
+
+		.suggested-edits-card-wrapper {
+			padding-top: 5px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: row;
+
+			.suggested-edits-previous,
+			.suggested-edits-next {
+				padding: 0 20px;
 			}
 
-			.se-card-content {
-				.se-card-text {
-					padding: 0 10px 10px 10px;
-					color: @colorGray2;
+			.suggested-edits-task-card-wrapper {
+				.box-shadow(0 5px 10px 0 rgba(0, 0, 0, 0.15));
+				width: 260px;
+				height: 300px;
+				background-color: @background-color-base;
 
-					.se-card-extract {
-						font-size: 0.875em;
-						white-space: nowrap;
-						text-overflow: ellipsis;
-						overflow: hidden;
-						line-height: 0.875em;
-						height: 4em;
-					}
+				a {
+					text-decoration: none;
+					color: unset;
+				}
 
-					.se-card-pageviews {
-						font-size: 0.875em;
-						padding-top: 10px;
-						color: @colorGray5;
+				.se-card-content {
+					.se-card-text {
+						padding: 0 10px 10px 10px;
+						color: @colorGray2;
 
-						.oo-ui-iconWidget {
-							margin-right: 5px;
+						.se-card-extract {
+							font-size: 0.875em;
+							white-space: nowrap;
+							text-overflow: ellipsis;
+							overflow: hidden;
+							line-height: 0.875em;
+							height: 4em;
+						}
+
+						.se-card-pageviews {
+							font-size: 0.875em;
+							padding-top: 10px;
+							color: @colorGray5;
+
+							.oo-ui-iconWidget {
+								margin-right: 5px;
+							}
 						}
 					}
-				}
 
-				.se-card-image {
-					height: 150px;
-					width: 260px;
-					background-color: @colorGray1;
-				}
-			}
-
-			.se-card-no-results,
-			.se-card-end-of-queue {
-				.se-card-title,
-				.se-card-text {
-					text-align: center;
-					color: @colorGray2;
-					padding: 20px 10px 0 10px;
-				}
-			}
-
-			.se-card-end-of-queue {
-				.se-card-image {
-					/* @embed */
-					background: url( ../../../images/end-of-queue.svg ) no-repeat center center;
-					height: 144px;
-				}
-			}
-
-			.se-card-no-results {
-				.se-card-image {
-					/* @embed */
-					background: url( ../../../images/no-results.svg ) no-repeat center center;
-					height: 144px;
+					.se-card-image {
+						height: 150px;
+						width: 260px;
+						background-color: @colorGray1;
+					}
 				}
 			}
 		}

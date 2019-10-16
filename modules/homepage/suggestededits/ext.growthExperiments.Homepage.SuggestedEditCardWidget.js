@@ -14,12 +14,15 @@
 		this.data = data;
 
 		this.$element.append(
-			$( '<a>' )
-				.attr( 'href', data.url )
-				.addClass( 'se-card-content' )
+			$( '<div>' ).addClass( 'suggested-edits-task-card-wrapper' )
 				.append(
-					this.getImageContent(),
-					this.getTextContent()
+					$( '<a>' )
+						.attr( 'href', data.url )
+						.addClass( 'se-card-content' )
+						.append(
+							this.getImageContent(),
+							this.getTextContent()
+						)
 				)
 		);
 	}
