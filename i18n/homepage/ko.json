@@ -54,6 +54,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "쉬운 편집 여러 개를 해 본 사람을 위한 편집.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "위키백과 편집에 익숙한 사람을 위한 편집.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "교열 (문서를 읽고 검토하기), 분류, 그 외 문서를 백과사전적인 문체로 변환하는 작은 작업들.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "출처를 찾아서 문서의 신뢰성을 높여 주세요. 이미 있는 문서에 관련 있는 사진을 추가해 보세요.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "짧은 글을 더 키워 봅시다. 새 문서를 만들어 봅시다.",
 	"growthexperiments-homepage-suggested-edits-header": "편집 제안",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|당신}}의 영향",
 	"growthexperiments-homepage-impact-subheader-text": "편집하신 문서를 {{GENDER:$1|사람들이}} 읽고 있습니다!",
