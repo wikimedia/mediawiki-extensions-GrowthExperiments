@@ -37,9 +37,15 @@
 	}
 
 	.oo-ui-processDialog-navigation .oo-ui-processDialog-actions-primary {
-		.mw-ge-help-panel-settings-cog.active,
-		.mw-ge-help-panel-settings-cog.active:hover {
-			background-color: #eaf3ff;
+		.mw-ge-help-panel-settings-cog.oo-ui-widget-enabled {
+			&.active,
+			&.active:hover {
+				background-color: #eaf3ff;
+			}
+
+			> .oo-ui-buttonElement-button {
+				background-color: transparent;
+			}
 		}
 	}
 
