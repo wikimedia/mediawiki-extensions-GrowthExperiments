@@ -219,7 +219,6 @@
 			icon: 'settings',
 			// Hack for styling
 			classes: [ 'mw-ge-help-panel-settings-cog', 'oo-ui-actionWidget' ],
-			framed: false,
 			popup: {
 				$content: $( '<p>' ).append(
 					mw.html.element( 'a', {
