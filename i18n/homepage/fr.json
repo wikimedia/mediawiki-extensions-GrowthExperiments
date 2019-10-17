@@ -134,7 +134,12 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Commencer ici !",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Ouvrez le menu latéral et tapez $2 pour visiter votre{{GENDER:$1|}} page d’accueil.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> sur <strong>$2</strong> {{PLURAL:$2|suggestion|suggestions}}",
+	"growthexperiments-homepage-suggestededits-pager-end": "Fin",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 vues par les lecteurs (sur les derniers 60 jours)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Modification suggérée précédente",
-	"growthexperiments-homepage-suggestededits-next-card": "Modification suggérée suivante"
+	"growthexperiments-homepage-suggestededits-next-card": "Modification suggérée suivante",
+	"growthexperiments-homepage-suggestededits-no-more-results": "Plus de suggestions",
+	"growthexperiments-homepage-suggestededits-no-results": "Aucune suggestion trouvée",
+	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Sélectionner d’autres niveaux de difficulté pour trouver des modifications suggérées.",
+	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Sélectionner d’autres intérêts ou niveaux de difficulté pour trouver des modifications suggérées."
 }

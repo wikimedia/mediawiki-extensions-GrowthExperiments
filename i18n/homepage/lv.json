@@ -6,7 +6,11 @@
 	},
 	"growthexperiments-homepage-tab": "Sākumlapa",
 	"tooltip-pt-homepage": "{{GENDER:|Tava}} sākumlapa",
+	"prefs-homepage": "Jaunpienācēju sākumlapa",
+	"growthexperiments-homepage-enable": "Rādīt jaunpienācēju sākumlapu",
+	"growthexperiments-homepage-account-header": "Konts izveidots",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|labojumi|labojums|labojumi}}",
+	"growthexperiments-homepage-userpage-header": "Izveidot savu dalībnieka lapu",
 	"growthexperiments-homepage-userpage-button": "Izveidot dalībnieka lapu",
 	"growthexperiments-homepage-userpage-button-done": "Labot dalībnieka lapu",
 	"growthexperiments-homepage-userpage-guidelines": "Dalībnieka lapu vadlīnijas",
@@ -25,5 +29,6 @@
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Sapratu",
 	"growthexperiments-tour-response-button-okay": "Sapratu",
 	"growthexperiments-homepage-help-cancel": "Atcelt",
-	"growthexperiments-tour-discovery-title": "Sāc šeit!"
+	"growthexperiments-tour-discovery-title": "Sāc šeit!",
+	"growthexperiments-homepage-suggestededits-next-card": "Nākamais ieteiktais labojums"
 }

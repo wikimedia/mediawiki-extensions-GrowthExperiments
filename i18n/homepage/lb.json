@@ -33,5 +33,9 @@
 	"growthexperiments-homepage-tutorial-cta-text": "Uleedung",
 	"growthexperiments-specialimpact-title": "Impakt",
 	"growthexperiments-tour-discovery-title": "Fänkt hei un!",
-	"growthexperiments-homepage-discovery-banner-header": "Wëllkomm op  {{GENDER:$1|Ärer}} Homepage!"
+	"growthexperiments-homepage-discovery-banner-header": "Wëllkomm op  {{GENDER:$1|Ärer}} Homepage!",
+	"growthexperiments-homepage-suggestededits-pager-end": "Schluss",
+	"growthexperiments-homepage-suggestededits-pageviews": "$1 mol gekuckt vu Lieser (lescht 60 Deeg)",
+	"growthexperiments-homepage-suggestededits-no-more-results": "Keng aner Virschléi",
+	"growthexperiments-homepage-suggestededits-no-results": "Keng Virschléi fonnt"
 }

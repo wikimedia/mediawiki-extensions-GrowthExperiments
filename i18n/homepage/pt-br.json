@@ -124,5 +124,14 @@
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Bem-vindo a {{GENDER:$1|sua}} página inicial!",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|Você}} sempre pode abrir o menu lateral e tocar em $2 para retornar aqui.",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Comece aqui!",
-	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Abra o menu lateral e toque em $2 para visitar a {{GENDER:$1|sua}} página inicial."
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Abra o menu lateral e toque em $2 para visitar a {{GENDER:$1|sua}} página inicial.",
+	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> de <strong>$2</strong> {{PLURAL:$2|sugestão|sugestões}}",
+	"growthexperiments-homepage-suggestededits-pager-end": "Terminar",
+	"growthexperiments-homepage-suggestededits-pageviews": "$1 visualizações pelos leitores (últimos 60 dias)",
+	"growthexperiments-homepage-suggestededits-previous-card": "Edição sugerida anterior",
+	"growthexperiments-homepage-suggestededits-next-card": "Próxima edição sugerida",
+	"growthexperiments-homepage-suggestededits-no-more-results": "Não há mais sugestões",
+	"growthexperiments-homepage-suggestededits-no-results": "Nenhuma sugestão encontrada",
+	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Selecione outros níveis de dificuldade para encontrar as edições sugeridas.",
+	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Selecione outros interesses ou níveis de dificuldade para encontrar as edições sugeridas."
 }
