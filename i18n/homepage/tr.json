@@ -1,8 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mirzali"
+			"Mirzali",
+			"Grkn gll"
 		]
 	},
-	"growthexperiments-homepage-enable-preference": "Yeni gelen ana sayfayı etkinleştirmek için, tercihlerdeki [[Special:Preferences#mw-prefsection-personal-homepage|Yeni gelenler ana sayfası]] ayarlarınızı ziyaret edin."
+	"growthexperiments-homepage-enable-preference": "Yeni gelen ana sayfayı etkinleştirmek için, tercihlerdeki [[Special:Preferences#mw-prefsection-personal-homepage|Yeni gelenler ana sayfası]] ayarlarınızı ziyaret edin.",
+	"growthexperiments-homepage-suggestededits-pager-end": "Son",
+	"growthexperiments-homepage-suggestededits-previous-card": "Önceki önerilen düzenleme",
+	"growthexperiments-homepage-suggestededits-next-card": "Sonraki önerilen düzenleme",
+	"growthexperiments-homepage-suggestededits-no-more-results": "Başka öneri yok",
+	"growthexperiments-homepage-suggestededits-no-results": "Öneri bulunamadı",
+	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Önerilen düzenlemeleri bulmak için diğer zorluk seviyelerini seçin."
 }

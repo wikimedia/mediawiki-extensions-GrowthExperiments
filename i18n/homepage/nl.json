@@ -3,7 +3,8 @@
 		"authors": [
 			"Elroy",
 			"Mainframe98",
-			"Rots61"
+			"Rots61",
+			"LongJohn nl"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -35,5 +36,8 @@
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|bewerking|bewerkingen}}",
 	"growthexperiments-homepage-mentorship-question-subject": "Vraag van [[User:$1|$1]]",
 	"growthexperiments-homepage-tutorial-header": "Leren hoe u kunt bewerken",
-	"growthexperiments-homepage-tutorial-cta-text": "Zelfstudie"
+	"growthexperiments-homepage-tutorial-cta-text": "Zelfstudie",
+	"growthexperiments-homepage-suggestededits-pager-end": "Einde",
+	"growthexperiments-homepage-suggestededits-no-more-results": "Geen suggesties meer",
+	"growthexperiments-homepage-suggestededits-no-results": "Geen suggesties gevonden"
 }

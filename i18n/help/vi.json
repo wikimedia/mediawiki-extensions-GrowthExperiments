@@ -3,7 +3,8 @@
 		"authors": [
 			"Trizek (WMF)",
 			"Vinhtantran",
-			"Tuanminh01"
+			"Tuanminh01",
+			"Bluetpp"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Bật cửa sổ trợ giúp sửa đổi",
@@ -29,7 +30,14 @@
 	"growthexperiments-help-panel-questioncomplete-header": "Câu hỏi của bạn đã được gửi!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Câu hỏi của bạn đã được đăng tại Bàn giúp đỡ và nó sẽ được một biên tập khác tình nguyện trả lời.",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Xem câu hỏi của bạn tại Bàn giúp đỡ",
+	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "Các thông báo cho câu hỏi của bạn:",
+	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Bạn sẽ nhận được một thông báo tại đây trên {{SITENAME}} ngay khi có hồi đáp.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email": "Bạn cũng sẽ nhận được một email gửi tới $1 ($2)",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "thay đổi",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Nếu {{GENDER:$2|bạn}} cũng muốn được thông báo bằng email, hãy xác nhận địa chỉ email của bạn: $1",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "xác nhận thư điện tử",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Nếu {{GENDER:$1|bạn}} cũng muốn được thông báo qua email, hãy thêm địa chỉ email của bạn.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Thêm email",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Tìm hiểu thêm về tính năng này",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "Bạn có biết bạn đã vừa thực hiện sửa đổi đầu tiên của mình với việc đăng câu hỏi này không? Chúc mừng bạn!",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Tắt công cụ này tại Tùy chọn",
