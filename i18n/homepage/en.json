@@ -131,5 +131,7 @@
 	"growthexperiments-homepage-suggestededits-no-more-results": "No more suggestions",
 	"growthexperiments-homepage-suggestededits-no-results": "No suggestions found",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Select other difficulty levels to find suggested edits.",
-	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Select other interests or difficulty levels to find suggested edits."
+	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Select other interests or difficulty levels to find suggested edits.",
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "edits in the last day",
+	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Volunteers like you have contributed to improving {{SITENAME}} today. Join in!"
 }
