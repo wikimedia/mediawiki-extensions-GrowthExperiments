@@ -44,7 +44,7 @@
 	"APIListModules": {
 		"growthtasks": {
 			"class": "GrowthExperiments\\Api\\ApiQueryGrowthTasks",
-			"services": [ "GrowthExperimentsEditSuggester" ]
+			"services": [ "GrowthExperimentsTaskSuggester" ]
 		}
 	},
 	"Hooks": {
@@ -640,6 +640,14 @@
 		"GEConfirmEmailEnabled": {
 			"description": "Global ON/OFF switch for the email confirmation changes.",
 			"value": true
+		},
+		"GENewcomerTasksRemoteConfigTitle": {
+			"description": "Title of a remote MediaWiki page (with interwiki prefix) which contains suggested edits configuration. Should have JSON content type and contain a map of task type -> task configuration where task configuration consists of the following fields: group - 'easy', 'medium' or 'hard'; templates - an array of template names (without namespace) for the maintenance templates used to tag this task type (redirects do not need to be declared manually). The system messages growthexperiments-newcomertasks-tasktype-name-<tasktype> and growthexperiments-newcomertasks-tasktype-description-<tasktype> will be used for task name and description; both must exist.",
+			"value": null
+		},
+		"GENewcomerTasksRemoteApiUrl": {
+			"description": "URL of a remote API (ending with 'api.php') to use for identifying suggested edits. This is meant for developer setups.",
+			"value": null
 		},
 		"WelcomeSurveyExperimentalGroups": {
 			"description": "List of experimental groups. A group is defined with a range to randomly match users and the list of questions they will see on the survey.",

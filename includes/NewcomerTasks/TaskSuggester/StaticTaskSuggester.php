@@ -14,7 +14,7 @@ use Wikimedia\Assert\Assert;
  * hook along the lines of
  *
  *     $wgHooks['MediaWikiServices'][] = function ( MediaWikiServices $services ) {
- *         $services->redefineService( 'GrowthExperimentsEditSuggester', function () {
+ *         $services->redefineService( 'GrowthExperimentsTaskSuggester', function () {
  *             $taskType = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
  *             return new StaticTaskSuggester( [
  *                 new Task( $taskType, new TitleValue( NS_MAIN, 'Foo' ) ),

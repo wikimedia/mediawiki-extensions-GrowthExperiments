@@ -1,0 +1,201 @@
+<?php
+
+namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
+
+use BagOStuff;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
+use GrowthExperiments\Util;
+use HashBagOStuff;
+use IContextSource;
+use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Linker\LinkTarget;
+// phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
+use Message;
+use StatusValue;
+use TitleFactory;
+use TitleValue;
+
+/**
+ * Load configuration from a remote .json wiki page.
+ * For syntax see
+ * https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Newcomer_tasks/Prototype/templates/cs.json
+ */
+class RemotePageConfigurationLoader implements ConfigurationLoader {
+
+	/** @var HttpRequestFactory */
+	private $requestFactory;
+
+	/** @var TitleFactory */
+	private $titleFactory;
+
+	/** @var BagOStuff */
+	private $cache;
+
+	/** @var IContextSource */
+	private $context;
+
+	/** @var int Cache expiry (0 for unlimited). */
+	private $cacheTtl = 0;
+
+	/** @var LinkTarget Title of the config page. Can be an interwiki title. */
+	private $pageTitle;
+
+	/** @var TaskType[]|StatusValue|null Cached task type set (or an error). */
+	private $taskTypes;
+
+	/** @var LinkTarget[]|StatusValue|null Cached template blacklist (or an error).  */
+	private $templateBlacklist;
+
+	/**
+	 * @param HttpRequestFactory $requestFactory
+	 * @param TitleFactory $titleFactory
+	 * @param IContextSource $context
+	 * @param LinkTarget $pageTitle Wiki page to load configuration from. Can be an interwiki title.
+	 */
+	public function __construct(
+		HttpRequestFactory $requestFactory,
+		TitleFactory $titleFactory,
+		IContextSource $context,
+		LinkTarget $pageTitle
+	) {
+		$this->requestFactory = $requestFactory;
+		$this->titleFactory = $titleFactory;
+		$this->context = $context;
+		$this->pageTitle = $pageTitle;
+		$this->cache = new HashBagOStuff();
+	}
+
+	/**
+	 * Use a different cache. (Default is in-process caching only.)
+	 * @param BagOStuff $cache
+	 * @param int $ttl Cache expiry (0 for unlimited).
+	 */
+	public function setCache( BagOStuff $cache, $ttl ) {
+		$this->cache = $cache;
+		$this->cacheTtl = $ttl;
+	}
+
+	/** @inheritDoc */
+	public function loadTaskTypes() {
+		if ( $this->taskTypes !== null ) {
+			return $this->taskTypes;
+		}
+
+		$config = $this->loadConfig();
+		if ( $config instanceof StatusValue ) {
+			$taskTypes = $config;
+		} else {
+			$taskTypes = $this->parseTaskTypesFromConfig( $config );
+		}
+
+		$this->taskTypes = $taskTypes;
+		return $taskTypes;
+	}
+
+	/** @inheritDoc */
+	public function loadTemplateBlacklist() {
+		if ( $this->templateBlacklist !== null ) {
+			return $this->templateBlacklist;
+		}
+
+		$config = $this->loadConfig();
+		if ( $config instanceof StatusValue ) {
+			$templateBlacklist = $config;
+		} else {
+			$templateBlacklist = $this->parseTemplateBlacklistFromConfig( $config );
+		}
+
+		$this->templateBlacklist = $templateBlacklist;
+		return $templateBlacklist;
+	}
+
+	/**
+	 * Like loadTaskTypes() but without caching.
+	 * @param array $config
+	 * @return TaskType[]|StatusValue
+	 */
+	private function parseTaskTypesFromConfig( array $config ) {
+		$taskTypes = [];
+		foreach ( $config as $taskTypeId => $taskTypeData ) {
+			$requiredFields = [ 'group', 'templates' ];
+			foreach ( $requiredFields as $field ) {
+				if ( !isset( $taskTypeData[$field] ) ) {
+					return StatusValue::newFatal( 'growthexperiments-newcomertasks-config-missingfield',
+						$field, $taskTypeId );
+				}
+			}
+			if ( !in_array( $taskTypeData['group'], TaskType::$difficultyClasses, true ) ) {
+				return StatusValue::newFatal( 'growthexperiments-newcomertasks-config-wronggroup',
+					$taskTypeData['group'], $taskTypeId );
+			}
+			$templates = array_map( function ( $template ) {
+				return new TitleValue( NS_TEMPLATE, $template );
+			}, $taskTypeData['templates'] );
+			$taskType = new TemplateBasedTaskType( $taskTypeId, $taskTypeData['group'], $templates );
+			foreach ( [
+				$taskType->getName( $this->context ),
+				$taskType->getDescription( $this->context ),
+			] as $msg ) {
+				/** @var $msg Message */
+				if ( !$msg->exists() ) {
+					return StatusValue::newFatal( 'growthexperiments-newcomertasks-config-missingmessage',
+						$msg->getKey(), $taskTypeId );
+				}
+			}
+			$taskTypes[] = $taskType;
+		}
+		return $taskTypes;
+	}
+
+	/**
+	 * Like loadTemplateBlacklist() but without caching.
+	 * @param array $config
+	 * @return LinkTarget[]|StatusValue
+	 */
+	private function parseTemplateBlacklistFromConfig( array $config ) {
+		// TODO: add templates to the wiki page and implement parsing them here.
+		return [];
+	}
+
+	/**
+	 * Load the configuration page.
+	 * @return array|StatusValue
+	 */
+	protected function loadConfig() {
+		$cacheKey = $this->cache->makeKey( 'GrowthExperiments', 'NewcomerTasks',
+			'config', $this->pageTitle );
+		$config = $this->cache->get( $cacheKey );
+		if ( $config !== false ) {
+			return $config;
+		}
+
+		$url = $this->getRawUrl( $this->pageTitle );
+		$status = Util::getJsonUrl( $this->requestFactory, $url );
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+		$config = $status->getValue();
+
+		$this->cache->set( $cacheKey, $config, $this->cacheTtl );
+		return $config;
+	}
+
+	/**
+	 * Get the action=raw URL for a (probably remote) title.
+	 * Normal title methods would return nice URLs, which are usually disallowed for action=raw.
+	 * We assume both wikis use the same URL structure.
+	 * @param LinkTarget $title
+	 * @return string
+	 */
+	protected function getRawUrl( LinkTarget $title ) {
+		// Use getFullURL to get the interwiki domain.
+		$url = $this->titleFactory->newFromLinkTarget( $title )->getFullURL();
+		$parts = wfParseUrl( $url );
+		$baseUrl = $parts['scheme'] . $parts['delimiter'] . $parts['host'];
+
+		$localPageTitle = $this->titleFactory->makeTitle( $title->getNamespace(), $title->getDBkey() );
+		return $baseUrl . $localPageTitle->getLocalURL( [ 'action' => 'raw' ] );
+	}
+
+}

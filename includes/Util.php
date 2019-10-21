@@ -2,14 +2,23 @@
 
 namespace GrowthExperiments;
 
+use Exception;
+use FormatJson;
 use IContextSource;
+use Iterator;
 use MediaWiki\Auth\AuthManager;
+use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Logger\LoggerFactory;
 use MWExceptionHandler;
+use RawMessage;
+use RequestContext;
 use Sanitizer;
 use Skin;
 use SkinMinerva;
+use Status;
+use StatusValue;
 use Throwable;
+use Traversable;
 use User;
 
 class Util {
@@ -120,4 +129,103 @@ class Util {
 			MWExceptionHandler::logException( $error, MWExceptionHandler::CAUGHT_BY_OTHER, $extraData );
 		}
 	}
+
+	/**
+	 * Fetch JSON data from a remote URL, parse it and return the results.
+	 * @param HttpRequestFactory $requestFactory
+	 * @param string $url
+	 * @param bool $isSameFarm Is the URL on the same wiki farm we are making the request from?
+	 * @return StatusValue A status object with the parsed JSON value, or any errors.
+	 *   (Warnings coming from the HTTP library will be logged and not included here.)
+	 */
+	public static function getJsonUrl(
+		HttpRequestFactory $requestFactory, $url, $isSameFarm = false
+	) {
+		$options = [
+			'method' => 'GET',
+			'userAgent' => $requestFactory->getUserAgent() . ' GrowthExperiments',
+		];
+		if ( $isSameFarm ) {
+			$options['originalRequest'] = RequestContext::getMain()->getRequest();
+		}
+		$request = $requestFactory->create( $url, $options, __METHOD__ );
+		$status = $request->execute();
+		if ( $status->isOK() ) {
+			$status->merge( FormatJson::parse( $request->getContent(), FormatJson::FORCE_ASSOC ), true );
+		}
+		// Log warnings here. The caller is expected to handle errors so do not double-log them.
+		list( $errorStatus, $warningStatus ) = $status->splitByErrorType();
+		if ( !$warningStatus->isGood() ) {
+			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
+				$warningStatus->getWikiText( null, null, 'en' ),
+				[ 'exception' => new Exception( __FUNCTION__ ) ]
+			);
+		}
+		return $errorStatus;
+	}
+
+	/**
+	 * Fetch data from a remote MediaWiki, parse it and return the results.
+	 * Much like getJsonUrl but also handles API errors. GET requests only.
+	 * @param HttpRequestFactory $requestFactory
+	 * @param string $apiUrl URL of the remote API (should end with 'api.php')
+	 * @param string[] $parameters API parameters. Response formatting parameters will be added.
+	 * @param bool $isSameFarm Is the URL on the same wiki farm we are making the request from?
+	 * @return StatusValue A status object with the parsed JSON response, or any errors.
+	 *   (Warnings will be logged and not included here.)
+	 */
+	public static function getApiUrl(
+		HttpRequestFactory $requestFactory,
+		$apiUrl,
+		$parameters,
+		$isSameFarm = false
+	) {
+		$parameters = [
+			'format' => 'json',
+			'formatversion' => 2,
+			'errorformat' => 'wikitext',
+		] + $parameters;
+		$status = self::getJsonUrl( $requestFactory, $apiUrl . '?' . wfArrayToCgi( $parameters ),
+			$isSameFarm );
+		if ( $status->isOK() ) {
+			$errorStatus = StatusValue::newGood();
+			$warningStatus = StatusValue::newGood();
+			$data = $status->getValue();
+			if ( isset( $data['errors'] ) ) {
+				foreach ( $data['errors'] as $error ) {
+					$errorStatus->fatal( new RawMessage( $error['text'] ) );
+				}
+			}
+			if ( isset( $data['warnings'] ) ) {
+				foreach ( $data['warnings'] as $warning ) {
+					$warningStatus->warning( new RawMessage( $warning['module'] . ': ' . $warning['text'] ) );
+				}
+			}
+			$status->merge( $errorStatus );
+			// Log warnings here. The caller is expected to handle errors so do not double-log them.
+			if ( !$warningStatus->isGood() ) {
+				LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
+					Status::wrap( $warningStatus )->getWikiText( null, null, 'en' ),
+					[ 'exception' => new Exception( 'getApiUrl' ) ]
+				);
+			}
+		}
+		return $status;
+	}
+
+	/**
+	 * Convert any traversable to an iterator.
+	 * This mainly exists to make Phan happy.
+	 * @param Traversable $t
+	 * @return Iterator
+	 */
+	public static function getIteratorFromTraversable( Traversable $t ) {
+		while ( !( $t instanceof Iterator ) ) {
+			// There are only two traversables, Iterator and IteratorAggregate
+			/** @var \IteratorAggregate $t */'@phan-var \IteratorAggregate $t';
+			$t = $t->getIterator();
+		}
+		return $t;
+	}
+
 }

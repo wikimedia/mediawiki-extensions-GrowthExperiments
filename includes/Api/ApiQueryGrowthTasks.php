@@ -19,20 +19,20 @@ use Title;
 class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 
 	/** @var TaskSuggester */
-	private $editSuggester;
+	private $taskSuggester;
 
 	/**
 	 * @param ApiQuery $queryModule
 	 * @param string $moduleName
-	 * @param TaskSuggester $editSuggester
+	 * @param TaskSuggester $taskSuggester
 	 */
 	public function __construct(
 		ApiQuery $queryModule,
 		$moduleName,
-		TaskSuggester $editSuggester
+		TaskSuggester $taskSuggester
 	) {
 		parent::__construct( $queryModule, $moduleName, 'gt' );
-		$this->editSuggester = $editSuggester;
+		$this->taskSuggester = $taskSuggester;
 	}
 
 	/** @inheritDoc */
@@ -60,7 +60,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		$offset = $params['offset'];
 
 		/** @var TaskSet $tasks */
-		$tasks = $this->editSuggester->suggest( $user, $taskTypes, $topics, $limit, $offset );
+		$tasks = $this->taskSuggester->suggest( $user, $taskTypes, $topics, $limit, $offset );
 		if ( $tasks instanceof StatusValue ) {
 			$this->dieStatus( $tasks );
 		}
