@@ -127,5 +127,14 @@
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Chào mừng đã tới với trang nhà {{GENDER:$1|của bạn}}!",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|Bạn}} luôn có thể mở menu thanh bên và nhấn vào $2 để trở lại đây.",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Hãy bắt đầu ở đây!",
-	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Mở menu thanh bên và nhấn vào $2 để đi đến trang nhà {{GENDER:$1|của bạn}}."
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Mở menu thanh bên và nhấn vào $2 để đi đến trang nhà {{GENDER:$1|của bạn}}.",
+	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> trong số <strong>$2</strong> gợi ý",
+	"growthexperiments-homepage-suggestededits-pager-end": "Kết thúc",
+	"growthexperiments-homepage-suggestededits-pageviews": "$1 lượt xem bởi người đọc (60 ngày qua)",
+	"growthexperiments-homepage-suggestededits-previous-card": "Sửa đổi gợi ý trước đó",
+	"growthexperiments-homepage-suggestededits-next-card": "Sửa đổi gợi ý tiếp theo",
+	"growthexperiments-homepage-suggestededits-no-more-results": "Không còn gợi ý",
+	"growthexperiments-homepage-suggestededits-no-results": "Hiện không có gợi ý nào",
+	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Hãy lựa chọn mức độ khó khác để tìm các sửa đổi gợi ý.",
+	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Hãy lựa chọn mối quan tâm hoặc mức độ khó khác để tìm sửa đổi gợi ý."
 }

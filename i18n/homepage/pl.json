@@ -89,5 +89,8 @@
 	"growthexperiments-homepage-discovery-thanks-header": "Dziękujemy {{GENDER:$1|ci}} za utworzenie konta!",
 	"growthexperiments-homepage-discovery-thanks-text": "Kliknij $2 na górze strony aby odwiedzić {{GENDER:$1|swoją}} stronę i rozpocząć przygodę.",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Witaj na {{GENDER:$1|swojej}} stronie domowej!",
-	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Rozpocznij tutaj!"
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Rozpocznij tutaj!",
+	"growthexperiments-homepage-suggestededits-pager-end": "Koniec",
+	"growthexperiments-homepage-suggestededits-no-more-results": "Brak dalszych sugestii",
+	"growthexperiments-homepage-suggestededits-no-results": "Nie odnaleziono sugestii"
 }

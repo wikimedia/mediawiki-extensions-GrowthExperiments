@@ -128,5 +128,14 @@
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Вітаємо на {{GENDER:$1|вашій}} домашній сторінці!",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|Ви}} завжди можете відкрити бічне меню і натиснути на $2, щоб повернутися сюди.",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Розпочніть тут!",
-	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Відкрийте бокове меню і натисніть $2, щоб перейти на {{GENDER:$1|свою}} домашню сторінку."
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Відкрийте бокове меню і натисніть $2, щоб перейти на {{GENDER:$1|свою}} домашню сторінку.",
+	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> з <strong>$2</strong> {{PLURAL:$2|пропозиції|пропозицій}}",
+	"growthexperiments-homepage-suggestededits-pager-end": "Кінець",
+	"growthexperiments-homepage-suggestededits-pageviews": "$1 {{PLURAL:$1|перегляд|перегляди|переглядів}} читачами (останні 60 днів)",
+	"growthexperiments-homepage-suggestededits-previous-card": "Попереднє пропоноване редагування",
+	"growthexperiments-homepage-suggestededits-next-card": "Наступне пропоноване редагування",
+	"growthexperiments-homepage-suggestededits-no-more-results": "Більше немає пропозицій",
+	"growthexperiments-homepage-suggestededits-no-results": "Пропозицій не знайдено",
+	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Оберіть інші рівні складності, щоб отримати пропоновані редагування.",
+	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Оберіть інші галузі інтересів чи рівні складності, щоб отримати пропоновані редагування."
 }

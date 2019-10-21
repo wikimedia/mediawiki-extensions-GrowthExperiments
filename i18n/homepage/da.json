@@ -26,5 +26,6 @@
 	"growthexperiments-homepage-recent-questions-archived": "arkiveret",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Din}} {{GENDER:$2|mentor}}",
 	"growthexperiments-homepage-mentorship-question-subject": "Spørgsmål fra [[User:$1|$1]]",
-	"growthexperiments-homepage-tutorial-header": "Lær hvordan du redigerer"
+	"growthexperiments-homepage-tutorial-header": "Lær hvordan du redigerer",
+	"growthexperiments-homepage-suggestededits-no-more-results": "Ikke flere forslag"
 }
