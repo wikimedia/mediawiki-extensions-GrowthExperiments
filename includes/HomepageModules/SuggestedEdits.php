@@ -69,6 +69,7 @@ class SuggestedEdits extends BaseModule {
 	protected function getBody() {
 		return Html::rawElement(
 			'div', [ 'class' => 'suggested-edits-module-wrapper' ],
+			Html::element( 'div', [ 'class' => 'suggested-edits-filters' ] ) .
 			Html::element( 'div', [ 'class' => 'suggested-edits-pager' ] ) .
 			Html::rawElement( 'div', [ 'class' => 'suggested-edits-card-wrapper' ],
 				Html::element( 'div', [ 'class' => 'suggested-edits-previous' ] ) .

@@ -5,11 +5,16 @@
 		TaskExplanationWidget = require( './ext.growthExperiments.Homepage.SuggestedEdits.TaskExplanationWidget.js' ),
 		PagerWidget = require( './ext.growthExperiments.Homepage.SuggestedEditPagerWidget.js' ),
 		PreviousNextWidget = require( './ext.growthExperiments.Homepage.SuggestedEditsPreviousNextWidget.js' ),
+		FiltersButtonGroupWidget = require( './ext.growthExperiments.Homepage.SuggestedEdits.FiltersWidget.js' ),
 		SuggestedEditsModule = function ( config ) {
-			var $pager, $previous, $next;
+			var $pager, $previous, $next, $filters;
 			SuggestedEditsModule.super.call( this, config );
 
 			this.currentCard = null;
+
+			this.filters = new FiltersButtonGroupWidget()
+				.connect( this, { search: 'fetchTasks' } )
+				.toggle( false );
 			this.pager = new PagerWidget().toggle( false );
 			this.previousWidget = new PreviousNextWidget( { direction: 'Previous' } )
 				.connect( this, { click: 'onPreviousCard' } )
@@ -17,8 +22,6 @@
 			this.nextWidget = new PreviousNextWidget( { direction: 'Next' } )
 				.connect( this, { click: 'onNextCard' } )
 				.toggle( false );
-			this.taskQueue = [];
-			this.queuePosition = 0;
 
 			$pager = this.$element.find( '.suggested-edits-pager' );
 			if ( !$pager.length ) {
@@ -33,16 +36,21 @@
 				$next = $( '<div>' ).addClass( 'suggested-edits-next' ).appendTo( this.$element );
 			}
 
+			$filters = this.$element.find( '.suggested-edits-filters' );
+			if ( !$filters.length ) {
+				$filters = $( '<div>' ).addClass( 'suggested-edits-filters' ).appendTo( this.$element );
+			}
+
 			$pager.append( this.pager.$element );
 			$previous.append( this.previousWidget.$element );
 			$next.append( this.nextWidget.$element );
+			$filters.append( this.filters.$element );
 		};
 
 	OO.inheritClass( SuggestedEditsModule, OO.ui.Widget );
 
-	SuggestedEditsModule.prototype.fetchTasks = function () {
-		this.taskQueue = [];
-		new mw.Api().get( {
+	SuggestedEditsModule.prototype.fetchTasks = function ( taskTypes ) {
+		var apiParams = {
 			action: 'query',
 			prop: 'info|pageviews|extracts|pageimages',
 			inprop: 'protection|url',
@@ -51,9 +59,15 @@
 			exintro: 1,
 			pithumbsize: 260,
 			generator: 'growthtasks',
+			ggttasktypes: taskTypes.join( '|' ),
 			formatversion: 2,
 			uselang: mw.config.get( 'wgUserLang' )
-		} ).done( function ( data ) {
+		};
+		this.currentCard = null;
+		this.taskQueue = [];
+		this.queuePosition = 0;
+		this.filters.updateButtonLabel( taskTypes );
+		return new mw.Api().get( apiParams ).done( function ( data ) {
 			function cleanUpData( item ) {
 				return {
 					thumbnailSource: item.thumbnail && item.thumbnail.source || null,
@@ -74,6 +88,7 @@
 					.filter( filterOutProtectedArticles )
 					.map( cleanUpData );
 			}
+			this.filters.updateMatchCount( this.taskQueue.length );
 			this.showCard();
 		}.bind( this ) );
 	};
@@ -133,6 +148,7 @@
 		}
 
 		$cardElement.html( this.currentCard.$element );
+		this.filters.toggle( true );
 		this.updatePager();
 		this.updatePreviousNextButtons();
 		this.updateTaskExplanationWidget();
@@ -145,7 +161,7 @@
 			return;
 		}
 		suggestedEditsModule = new SuggestedEditsModule( { $element: $wrapper } );
-		suggestedEditsModule.fetchTasks();
+		suggestedEditsModule.fetchTasks( [ 'copyedit', 'links' ] );
 	}
 
 	// Try setup for desktop mode and server-side-rendered mobile mode

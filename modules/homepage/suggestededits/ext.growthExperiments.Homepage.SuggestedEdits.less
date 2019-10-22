@@ -17,6 +17,7 @@
 		justify-content: center;
 
 		.suggested-edits-pager {
+			padding-top: 10px;
 			font-size: 0.875em;
 			color: @colorGray2;
 		}
@@ -30,6 +31,11 @@
 				text-align: center;
 				color: @colorGray2;
 				padding: 20px 10px 0 10px;
+			}
+
+			.se-card-text {
+				// With padding, becomes same height as image.
+				height: 130px;
 			}
 		}
 
@@ -254,6 +260,41 @@
 			background-color: @colorGray15;
 			color: @colorGray5;
 			font-size: 0.8em;
+		}
+	}
+}
+
+.suggested-edits-difficulty-filters {
+	h4.suggested-edits-difficulty-level-label {
+		display: inline-block;
+		// Align with icon.
+		margin-bottom: -0.5em;
+		padding-left: 5px;
+	}
+
+	.oo-ui-checkboxMultiselectWidget {
+		padding-top: 5px;
+	}
+
+	p.suggested-edits-difficulty-level-desc {
+		color: @colorGray2;
+		padding-top: 5px;
+	}
+
+	.suggested-edits-article-count {
+		padding-left: 5px;
+		color: @colorGray5;
+	}
+
+	.suggested-edits-create-article.oo-ui-widget {
+		.oo-ui-labelElement-label {
+			display: block;
+		}
+
+		.suggested-edits-create-article-additional-msg {
+			display: block;
+			padding-left: 6px;
+			font-size: 12px;
 		}
 	}
 }

@@ -330,7 +330,9 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.NoResultsWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.TaskExplanationWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditPagerWidget.js",
-				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditsPreviousNextWidget.js"
+				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditsPreviousNextWidget.js",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.FiltersWidget.js",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.DifficultyFiltersDialog.js"
 			],
 			"targets": [
 				"desktop",
@@ -344,6 +346,13 @@
 				"oojs-ui-windows"
 			],
 			"messages": [
+				"comma-separator",
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label",
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label",
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label",
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header",
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header",
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header",
 				"growthexperiments-homepage-suggestededits-pager",
 				"growthexperiments-homepage-suggestededits-pager-end",
 				"growthexperiments-homepage-suggestededits-pageviews",
@@ -369,14 +378,27 @@
 				"growthexperiments-homepage-suggestededits-tasktype-shortdescription-update",
 				"growthexperiments-homepage-suggestededits-tasktype-shortdescription-expand",
 				"growthexperiments-homepage-suggestededits-tasktype-shortdescription-links",
+				"growthexperiments-homepage-suggestededits-tasktype-label-copyedit",
+				"growthexperiments-homepage-suggestededits-tasktype-label-references",
+				"growthexperiments-homepage-suggestededits-tasktype-label-update",
+				"growthexperiments-homepage-suggestededits-tasktype-label-expand",
+				"growthexperiments-homepage-suggestededits-tasktype-label-links",
+				"growthexperiments-homepage-suggestededits-tasktype-label-create",
+				"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy",
+				"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium",
+				"growthexperiments-homepage-suggestededits-difficulty-filter-label-hard",
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy",
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium",
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard",
+				"growthexperiments-homepage-suggestededits-difficulty-filters-title",
+				"growthexperiments-homepage-suggestededits-difficulty-filters-close",
+				"growthexperiments-homepage-suggestededits-difficulty-filters-article-count",
 				"growthexperiments-homepage-suggestededits-tasktype-time-links",
 				"growthexperiments-homepage-suggestededits-tasktype-time-copyedit",
 				"growthexperiments-homepage-suggestededits-tasktype-time-references",
 				"growthexperiments-homepage-suggestededits-tasktype-time-update",
-				"growthexperiments-homepage-suggestededits-tasktype-time-expand"
+				"growthexperiments-homepage-suggestededits-tasktype-time-expand",
+				"growthexperiments-homepage-suggestededits-create-article-additional-message"
 			]
 		},
 		"ext.growthExperiments.Homepage.StartEditing": {
@@ -419,6 +441,12 @@
 			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",
 			"selectorWithoutVariant": ".oo-ui-icon-{name}",
 			"images": {
+				"difficulty-outline": {
+					"file": {
+						"ltr": "../images/levels-outline-ltr.svg",
+						"rtl": "../images/levels-outline-rtl.svg"
+					}
+				},
 				"difficulty-easy": {
 					"file": {
 						"ltr": "../images/difficulty-easy-ltr.svg",
@@ -436,7 +464,8 @@
 						"ltr": "../images/difficulty-hard-ltr.svg",
 						"rtl": "../images/difficulty-hard-rtl.svg"
 					}
-				}
+				},
+				"live-broadcast": "../images/live-broadcast.svg"
 			}
 		},
 		"ext.growthExperiments.Homepage.contribs.styles": {
