@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Wladek92",
-			"Gomoko"
+			"Gomoko",
+			"Verdy p"
 		]
 	},
-	"apihelp-helppanelquestionposter-summary": "Gérer les questions posées via l’onglet d’aide pour l’utilisateur actuel.",
-	"apihelp-helppanelquestionposter-param-body": "Le texte de la question posée par l'utilisateur.",
-	"apihelp-helppanelquestionposter-param-source": "Le composant à la source de la question. Les valeurs valides sont 'helppanel', 'homepage-help' et 'homepage-mentorship'",
+	"apihelp-helppanelquestionposter-summary": "Gérer les questions posées via le panneau d’aide pour l’utilisateur actuel.",
+	"apihelp-helppanelquestionposter-param-body": "Le texte de la question posée par l’utilisateur.",
+	"apihelp-helppanelquestionposter-param-source": "Le composant à la source de la question. Les valeurs valides sont « helppanel », « homepage-help » et « homepage-mentorship »",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Le titre concerné, si sélectionné, à inclure avec la question."
 }

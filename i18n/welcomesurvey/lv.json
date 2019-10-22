@@ -10,9 +10,18 @@
 	"welcomesurvey-save-btn": "Pabeigt",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Izlaist}} šo aptauju",
 	"welcomesurvey-sidebar-privacy-title": "Mēs cienām tavu privātumu",
+	"welcomesurvey-sidebar-editing-link1-text": "Apmācība",
+	"welcomesurvey-sidebar-editing-link2-text": "Palīdzības dienests",
 	"welcomesurvey-dropdown-option-select-label": "Lūdzu izvēlies...",
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Cits",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Ievadi}} citu iemeslu...",
 	"welcomesurvey-question-mentor-label": "Jā, {{GENDER:$1|mani tas interesē}}",
-	"welcomesurvey-question-edited-label": "Vai esi kādreiz labojis Vikipēdiju?"
+	"welcomesurvey-question-edited-label": "Vai esi kādreiz labojis Vikipēdiju?",
+	"welcomesurvey-question-edited-option-yes-many-label": "Jā, daudzas reizes",
+	"welcomesurvey-question-edited-option-yes-few-label": "Jā, vienu vai divas reizes",
+	"welcomesurvey-question-edited-option-no-dunno-label": "Nē, es nezināju, ka varu labot Vikipēdiju",
+	"welcomesurvey-question-edited-option-no-other-label": "Nē, citu iemeslu dēļ",
+	"welcomesurvey-question-edited-option-dont-remember-label": "Es neatceros",
+	"welcomesurvey-question-email-label": "E-pasta adrese (nav obligāta)",
+	"welcomesurvey-question-email-placeholder": "Ievadi savu e-pasta adresi..."
 }

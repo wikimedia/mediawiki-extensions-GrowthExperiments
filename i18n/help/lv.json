@@ -5,6 +5,7 @@
 		]
 	},
 	"growthexperiments-help-panel-question-button-text": "Turpināt",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Skatīt vairāk palīdzības rasktu",
 	"growthexperiments-help-panel-back-home": "Atpakaļ",
 	"growthexperiments-help-panel-close": "Pabeigts",
 	"growthexperiments-help-panel-questionreview-title": "Uzdot jautājumu",
@@ -16,5 +17,6 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Pievienot e-pastu",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Vairāk par šo iespēju",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Nekorekts nosaukums.",
+	"growthexperiments-help-panel-community-help-desk-text": "Kopienas palīdzības dienests",
 	"growthexperiments-help-panel-search-label": "Meklēt palīdzību"
 }
