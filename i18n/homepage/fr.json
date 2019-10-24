@@ -9,7 +9,8 @@
 			"Trizek (WMF)",
 			"Thibaut120094",
 			"Trizek",
-			"Verdy p"
+			"Verdy p",
+			"Vega"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|}}Bonjour, {{bidi:$1}} !",
@@ -133,7 +134,7 @@
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "Vous{{GENDER:$1|}} pouvez toujours ouvrir le menu latéral et taper $2 pour revenir ici.",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Commencer ici !",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Ouvrez le menu latéral et tapez $2 pour visiter votre{{GENDER:$1|}} page d’accueil.",
-	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> sur <strong>$2</strong> {{PLURAL:$2|suggestion|suggestions}}",
+	"growthexperiments-homepage-suggestededits-pager": "Suggestion <strong>$1</strong> sur <strong>$2</strong>",
 	"growthexperiments-homepage-suggestededits-pager-end": "Fin",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 vues par les lecteurs (sur les derniers 60 jours)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Modification suggérée précédente",
