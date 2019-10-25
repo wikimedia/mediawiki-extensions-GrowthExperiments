@@ -1,5 +1,7 @@
 <?php
 
+use GrowthExperiments\AqsEditInfoService;
+use GrowthExperiments\EditInfoService;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\RemotePageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
@@ -55,6 +57,13 @@ return [
 				'or $wgGENewcomerTasksRemoteApiUrl.', 'tasksuggester-not-configured'
 			) ) );
 		}
+	},
+
+	'GrowthExperimentsEditInfoService' => function ( MediaWikiServices $services ): EditInfoService {
+		$editInfoService = new AqsEditInfoService( $services->getHttpRequestFactory(),
+			$services->getMainConfig()->get( 'ServerName' ) );
+		$editInfoService->setCache( ObjectCache::getLocalClusterInstance() );
+		return $editInfoService;
 	},
 
 ];

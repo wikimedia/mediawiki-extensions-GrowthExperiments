@@ -2,7 +2,9 @@
 @import 'mediawiki.mixins';
 
 .growthexperiments-homepage-module-suggested-edits {
-	background-color: rgba( 234, 243, 255, 0.5 );
+	&.growthexperiments-homepage-module-desktop {
+		background-color: rgba( 234, 243, 255, 0.5 );
+	}
 
 	.suggested-edits-module-wrapper {
 		display: flex;
@@ -96,6 +98,40 @@
 					}
 				}
 			}
+		}
+	}
+
+	&.growthexperiments-homepage-module-mobile-summary {
+		.suggested-edits-main {
+			display: flex;
+
+			.suggested-edits-icon {
+				width: 64px;
+				// Image URLs are relative to the current CSS
+				.background-image-svg( '../../../images/suggestededits/Topic-general-64w.svg',
+				'../../../images/suggestededits/Topic-general-64w@4x.png' );
+				background-repeat: no-repeat;
+				padding-right: 16px;
+			}
+
+			.suggested-edits-metric-number {
+				font-size: 1.2em;
+				font-weight: bold;
+			}
+
+			.suggested-edits-metric-subtitle {
+				font-size: 0.8em;
+			}
+		}
+
+		.suggested-edits-footer {
+			// negate the margin on .growthexperiments-homepage-module in ext.growthExperiments.Homepage.less
+			// margin values are *1.25 due to the font-size rule below
+			margin: 16px -0.859375em -0.859375em;
+			padding: 12px 16px 14.4px;
+			background-color: @colorGray15;
+			color: @colorGray5;
+			font-size: 0.8em;
 		}
 	}
 }

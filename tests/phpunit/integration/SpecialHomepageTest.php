@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests;
 
+use GrowthExperiments\EditInfoService;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Specials\SpecialHomepage;
 use SpecialPageTestBase;
@@ -17,7 +18,11 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	 * @inheritDoc
 	 */
 	protected function newSpecialPage() {
-		return new SpecialHomepage();
+		return new SpecialHomepage( new class extends EditInfoService {
+			public function getEditsPerDay() {
+				return 0;
+			}
+		} );
 	}
 
 	/**

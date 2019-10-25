@@ -2,17 +2,28 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+use GrowthExperiments\EditInfoService;
 use IContextSource;
 use Html;
 use ExtensionRegistry;
+use MediaWiki\Logger\LoggerFactory;
+use Status;
+use StatusValue;
 
 class SuggestedEdits extends BaseModule {
 
 	const ACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-activated';
 
-	/** @inheritDoc */
-	public function __construct( IContextSource $context ) {
+	/** @var EditInfoService */
+	private $editInfoService;
+
+	/**
+	 * @param IContextSource $context
+	 * @param EditInfoService $editInfoService
+	 */
+	public function __construct( IContextSource $context, EditInfoService $editInfoService ) {
 		parent::__construct( 'suggested-edits', $context );
+		$this->editInfoService = $editInfoService;
 	}
 
 	/**
@@ -66,9 +77,38 @@ class SuggestedEdits extends BaseModule {
 		);
 	}
 
-	/** @inheritDoc */
+	/**
+	 * @inheritDoc
+	 * @suppress SecurityCheck-DoubleEscaped
+	 */
 	protected function getMobileSummaryBody() {
-		return '';
+		// For some reason phan thinks $siteEditsPerDay and/or $metricNumber get double-escaped,
+		// but they are escaped just the right amount.
+		$siteEditsPerDay = $this->editInfoService->getEditsPerDay();
+		if ( $siteEditsPerDay instanceof StatusValue ) {
+			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
+				'Failed to load site edits per day stat: {status}',
+				[ 'status' => Status::wrap( $siteEditsPerDay )->getWikiText( null, null, 'en' ) ]
+			);
+			// TODO probably have some kind of fallback message?
+			$siteEditsPerDay = 0;
+		}
+		$metricNumber = $this->getContext()->getLanguage()->formatNum( $siteEditsPerDay );
+		$metricSubtitle = $this->getContext()
+			->msg( 'growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle' )
+			->text();
+		$footerText = $this->getContext()
+			->msg( 'growthexperiments-homepage-suggestededits-mobilesummary-footer' )
+			->text();
+		return Html::rawElement( 'div', [ 'class' => 'suggested-edits-main' ],
+				Html::rawElement( 'div', [ 'class' => 'suggested-edits-icon' ] ) .
+				Html::rawElement( 'div', [ 'class' => 'suggested-edits-metric' ],
+					Html::element( 'div', [ 'class' => 'suggested-edits-metric-number' ], $metricNumber ) .
+					Html::element( 'div', [ 'class' => 'suggested-edits-metric-subtitle' ], $metricSubtitle )
+				)
+			) . Html::element( 'div', [
+				'class' => 'suggested-edits-footer'
+			], $footerText );
 	}
 
 	/** @inheritDoc */
@@ -78,4 +118,5 @@ class SuggestedEdits extends BaseModule {
 			[ 'ext.growthExperiments.Homepage.SuggestedEdits' ]
 		);
 	}
+
 }

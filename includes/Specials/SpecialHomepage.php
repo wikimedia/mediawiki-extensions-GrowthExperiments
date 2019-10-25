@@ -7,6 +7,7 @@ use DeferredUpdates;
 use ErrorPageError;
 use Exception;
 use ExtensionRegistry;
+use GrowthExperiments\EditInfoService;
 use GrowthExperiments\EventLogging\SpecialHomepageLogger;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModule;
@@ -28,14 +29,21 @@ use UserNotLoggedIn;
 
 class SpecialHomepage extends SpecialPage {
 
+	/** @var EditInfoService */
+	private $editInfoService;
+
 	/**
 	 * @var string Unique identifier for this specific rendering of Special:Homepage.
 	 * Used by various EventLogging schemas to correlate events.
 	 */
 	private $pageviewToken;
 
-	public function __construct() {
+	/**
+	 * @param EditInfoService $editInfoService
+	 */
+	public function __construct( EditInfoService $editInfoService ) {
 		parent::__construct( 'Homepage', '', false );
+		$this->editInfoService = $editInfoService;
 		$this->pageviewToken = $this->generateUniqueToken();
 		// Hack: Making the userpage the relevant title for the homepage
 		// allows using the talk overlay for the talk tab on mobile.
@@ -177,7 +185,8 @@ class SpecialHomepage extends SpecialPage {
 			'help' => new Help( $this->getContext() ),
 		];
 		if ( $this->getConfig()->get( 'GEHomepageSuggestedEditsEnabled' ) ) {
-			$modules['suggested-edits'] = new SuggestedEdits( $this->getContext() );
+			$modules['suggested-edits'] = new SuggestedEdits( $this->getContext(),
+				$this->editInfoService );
 		}
 		return array_filter( $modules );
 	}

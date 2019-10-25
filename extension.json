@@ -333,9 +333,6 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditPagerWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditsPreviousNextWidget.js"
 			],
-			"styles": [
-				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.less"
-			],
 			"targets": [
 				"desktop",
 				"mobile"
@@ -536,6 +533,7 @@
 				"homepage/ext.growthExperiments.HelpModule.less",
 				"homepage/ext.growthExperiments.ImpactModule.less",
 				"homepage/ext.growthExperiments.MentorshipModule.less",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.less",
 				"homepage/ext.growthExperiments.StartModule.less",
 				"homepage/ext.growthExperiments.Homepage.less"
 			],
