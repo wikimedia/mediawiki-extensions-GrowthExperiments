@@ -2,8 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Pyscowicz",
-			"Silvonen"
+			"Silvonen",
+			"Cxz"
 		]
 	},
-	"welcomesurvey-skip-btn": "Ohita tämä kysely"
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Ohita}} tämä kysely"
 }
