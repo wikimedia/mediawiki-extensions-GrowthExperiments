@@ -18,7 +18,6 @@
 		"GrowthExperiments": [
 			"i18n/extension",
 			"i18n/welcomesurvey",
-			"i18n/welcomesurvey/api",
 			"i18n/help",
 			"i18n/help/api",
 			"i18n/homepage",
