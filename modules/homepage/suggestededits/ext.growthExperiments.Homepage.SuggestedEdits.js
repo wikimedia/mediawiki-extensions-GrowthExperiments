@@ -1,6 +1,7 @@
 ( function () {
 	var EditCardWidget = require( './ext.growthExperiments.Homepage.SuggestedEditCardWidget.js' ),
 		EndOfQueueWidget = require( './ext.growthExperiments.Homepage.SuggestedEdits.EndOfQueueWidget.js' ),
+		ErrorCardWidget = require( './ext.growthExperiments.Homepage.SuggestedEdits.ErrorCardWidget.js' ),
 		NoResultsWidget = require( './ext.growthExperiments.Homepage.SuggestedEdits.NoResultsWidget.js' ),
 		TaskExplanationWidget = require( './ext.growthExperiments.Homepage.SuggestedEdits.TaskExplanationWidget.js' ),
 		PagerWidget = require( './ext.growthExperiments.Homepage.SuggestedEditPagerWidget.js' ),
@@ -102,6 +103,8 @@
 			if ( !initContext ) {
 				this.savePreferences( taskTypes );
 			}
+		}.bind( this ) ).catch( function () {
+			this.showCard( new ErrorCardWidget() );
 		}.bind( this ) );
 	};
 
@@ -150,12 +153,14 @@
 		}
 	};
 
-	SuggestedEditsModule.prototype.showCard = function () {
+	SuggestedEditsModule.prototype.showCard = function ( card ) {
 		var suggestedEditData = this.taskQueue[ this.queuePosition ],
 			cardSelector = '.suggested-edits-card',
 			$cardElement = $( cardSelector );
 
-		if ( !this.taskQueue.length ) {
+		if ( card ) {
+			this.currentCard = card;
+		} else if ( !this.taskQueue.length ) {
 			this.currentCard = new NoResultsWidget( { topicMatching: false } );
 		} else if ( !suggestedEditData ) {
 			this.currentCard = new EndOfQueueWidget( { topicMatching: false } );
