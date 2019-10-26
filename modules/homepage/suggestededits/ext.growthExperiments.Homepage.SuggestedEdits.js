@@ -5,12 +5,10 @@
 		TaskExplanationWidget = require( './ext.growthExperiments.Homepage.SuggestedEdits.TaskExplanationWidget.js' ),
 		PagerWidget = require( './ext.growthExperiments.Homepage.SuggestedEditPagerWidget.js' ),
 		PreviousNextWidget = require( './ext.growthExperiments.Homepage.SuggestedEditsPreviousNextWidget.js' ),
-		suggestedEditsModule,
 		SuggestedEditsModule = function ( config ) {
-			var pagerSelector = '.suggested-edits-pager',
-				previousSelector = '.suggested-edits-previous',
-				nextSelector = '.suggested-edits-next';
+			var $pager, $previous, $next;
 			SuggestedEditsModule.super.call( this, config );
+
 			this.currentCard = null;
 			this.pager = new PagerWidget().toggle( false );
 			this.previousWidget = new PreviousNextWidget( { direction: 'Previous' } )
@@ -21,9 +19,23 @@
 				.toggle( false );
 			this.taskQueue = [];
 			this.queuePosition = 0;
-			$( pagerSelector ).append( this.pager.$element );
-			$( previousSelector ).append( this.previousWidget.$element );
-			$( nextSelector ).append( this.nextWidget.$element );
+
+			$pager = this.$element.find( '.suggested-edits-pager' );
+			if ( !$pager.length ) {
+				$pager = $( '<div>' ).addClass( 'suggested-edits-pager' ).appendTo( this.$element );
+			}
+			$previous = this.$element.find( '.suggested-edits-previous' );
+			if ( !$previous.length ) {
+				$previous = $( '<div>' ).addClass( 'suggested-edits-previous' ).appendTo( this.$element );
+			}
+			$next = this.$element.find( '.suggested-edits-next' );
+			if ( !$next.length ) {
+				$next = $( '<div>' ).addClass( 'suggested-edits-next' ).appendTo( this.$element );
+			}
+
+			$pager.append( this.pager.$element );
+			$previous.append( this.previousWidget.$element );
+			$next.append( this.nextWidget.$element );
 		};
 
 	OO.inheritClass( SuggestedEditsModule, OO.ui.Widget );
@@ -126,7 +138,25 @@
 		this.updateTaskExplanationWidget();
 	};
 
-	suggestedEditsModule = new SuggestedEditsModule();
-	suggestedEditsModule.fetchTasks();
+	function initSuggestedTasks( $container ) {
+		var suggestedEditsModule,
+			$wrapper = $container.find( '.suggested-edits-module-wrapper' );
+		if ( !$wrapper.length ) {
+			return;
+		}
+		suggestedEditsModule = new SuggestedEditsModule( { $element: $wrapper } );
+		suggestedEditsModule.fetchTasks();
+	}
 
+	// Try setup for desktop mode and server-side-rendered mobile mode
+	// See also the comment in ext.growthExperiments.Homepage.Mentorship.js
+	// eslint-disable-next-line no-jquery/no-global-selector
+	initSuggestedTasks( $( '.growthexperiments-homepage-container' ) );
+
+	// Try setup for mobile overlay mode
+	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
+		if ( moduleName === 'suggested-edits' ) {
+			initSuggestedTasks( $content );
+		}
+	} );
 }() );
