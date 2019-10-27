@@ -29,7 +29,7 @@
 			 */
 			function getModuleData( moduleName ) {
 				var data = mw.config.get( 'homepagemodules' )[ moduleName ];
-				data.html = $overlayModules.find( '[data-module-name="' + moduleName + '"]' ).clone();
+				data.html = $overlayModules.find( '[data-module-name="' + moduleName + '"]' );
 				return data;
 			}
 
