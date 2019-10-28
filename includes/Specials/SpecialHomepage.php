@@ -21,6 +21,7 @@ use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use Html;
 use GrowthExperiments\HomepageModules\Start;
+use MediaWiki\Extensions\PageViewInfo\PageViewService;
 use MediaWiki\Session\SessionManager;
 use SpecialPage;
 use Throwable;
@@ -32,6 +33,9 @@ class SpecialHomepage extends SpecialPage {
 	/** @var EditInfoService */
 	private $editInfoService;
 
+	/** @var PageViewService|null */
+	private $pageViewService;
+
 	/**
 	 * @var string Unique identifier for this specific rendering of Special:Homepage.
 	 * Used by various EventLogging schemas to correlate events.
@@ -40,10 +44,15 @@ class SpecialHomepage extends SpecialPage {
 
 	/**
 	 * @param EditInfoService $editInfoService
+	 * @param PageViewService|null $pageViewService
 	 */
-	public function __construct( EditInfoService $editInfoService ) {
+	public function __construct(
+		EditInfoService $editInfoService,
+		PageViewService $pageViewService = null
+	) {
 		parent::__construct( 'Homepage', '', false );
 		$this->editInfoService = $editInfoService;
+		$this->pageViewService = $pageViewService;
 		$this->pageviewToken = $this->generateUniqueToken();
 		// Hack: Making the userpage the relevant title for the homepage
 		// allows using the talk overlay for the talk tab on mobile.
@@ -185,8 +194,9 @@ class SpecialHomepage extends SpecialPage {
 			'help' => new Help( $this->getContext() ),
 		];
 		if ( $this->getConfig()->get( 'GEHomepageSuggestedEditsEnabled' ) ) {
+			// TODO use some kind of registry instead of passing things through here
 			$modules['suggested-edits'] = new SuggestedEdits( $this->getContext(),
-				$this->editInfoService );
+				$this->editInfoService, $this->pageViewService );
 		}
 		return array_filter( $modules );
 	}
