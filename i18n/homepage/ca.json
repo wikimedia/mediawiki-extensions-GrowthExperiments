@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Jlrb+"
 		]
 	},
 	"growthexperiments-homepage-email-text-noemail": "Recomanat per a la recuperació del compte",
@@ -12,5 +13,7 @@
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Heu}} {{PLURAL:$1|realitzada <strong>$1</strong> edició|realitzades <strong>$1</strong> edicions}} (mostra-ho tot)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Vés a l’article",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Entesos",
-	"growthexperiments-specialimpact-title": "Impacte"
+	"growthexperiments-specialimpact-title": "Impacte",
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "edicions el darrer dia",
+	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Voluntaris com tu han contribuït a millorar {{SITENAME}} avui. Uneix-t'hi!"
 }

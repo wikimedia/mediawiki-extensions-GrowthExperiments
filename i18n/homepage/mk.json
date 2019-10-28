@@ -55,5 +55,6 @@
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 прегледи од читателите (последните 60 дена)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Претходно предложено уредување",
 	"growthexperiments-homepage-suggestededits-next-card": "Следно предложено уредување",
-	"growthexperiments-homepage-suggestededits-no-results": "Не се пронајдени предлози"
+	"growthexperiments-homepage-suggestededits-no-results": "Не се пронајдени предлози",
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "уредувања во последниот ден"
 }

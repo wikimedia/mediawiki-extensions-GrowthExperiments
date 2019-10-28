@@ -1,15 +1,48 @@
 {
 	"@metadata": {
 		"authors": [
-			"Orf3us"
+			"Orf3us",
+			"Jon Harald Søby"
 		]
 	},
+	"growthexperiments-help-panel-tog-help-panel": "Slå på hjelpepanelet for bidragsytere",
+	"growthexperiments-help-panel-cta-button-text": "Få hjelp med redigering",
 	"growthexperiments-help-panel-question-button-text": "Fortsett",
-	"growthexperiments-help-panel-submit-question-button-text": "Innsend mitt spørsmål",
+	"growthexperiments-help-panel-submit-question-button-text": "Post",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "Mest populære hjelpesider om redigering",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Vis flere hjelpesider",
+	"growthexperiments-help-panel-question-widget-header": "Post spørsmålet ditt på nybegynnerforumet",
+	"growthexperiments-help-panel-question-placeholder": "Jeg trenger hjelp med redigering. Hvordan kan jeg …",
+	"growthexperiments-help-panel-back-home": "Tilbake",
+	"growthexperiments-help-panel-close": "Gjort",
 	"growthexperiments-help-panel-home-title": "Få hjelp til å redigere",
 	"growthexperiments-help-panel-questionreview-title": "Still et spørsmål",
-	"growthexperiments-help-panel-questionreview-label": "Ditt spørsmål",
+	"growthexperiments-help-panel-questionreview-header": "Når du sender et spørsmål blir det <strong>postet offentlig</strong> under ditt brukernavn («$2») til $1, hvor en annen bidragsyter vil prøve å gi deg svar så fort de kan.",
+	"growthexperiments-help-panel-questionreview-label": "Spørsmålet ditt",
+	"growthexperiments-help-panel-questionreview-include-article-title": "Legg ved sidetittelen i spørsmålet mitt",
+	"growthexperiments-help-panel-question-subject-template": "Hjelpesentralspørsmål",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Hjelpesentralspørsmål på [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-from-homepage": "Hjelpemodulspørsmål fra brukerens hjemmeside",
+	"growthexperiments-help-panel-question-post-error": "En feil oppsto når spørsmålet ditt skulle sendes. Du kan prøve igjen eller besøke $1 i nettleseren din og legge til spørsmålet manuelt.",
 	"growthexperiments-help-panel-questioncomplete-title": "Still et spørsmål",
+	"growthexperiments-help-panel-questioncomplete-header": "Spørsmålet ditt har blitt postet!",
+	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Spørsmålet ditt ligger nå på nybegynnerforumet så du kan få svar fra en annen bidragsyter.",
+	"growthexperiments-help-panel-questioncomplete-view-link-text": "Vis spørsmålet ditt på nybegynnerforumet",
+	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "Varsler for spørsmålet ditt:",
+	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Du vil få et varsel her på {{SITENAME}} når noen har svart.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email": "Du vil også få tilsendt en epost på $1 ($2)",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "endre",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Hvis {{GENDER:$2|du}} også ønsker å få varsel på epost må du bekrefte epostadressa di nå: $1",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Bekreft epostadresse",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Hvis {{GENDER:$1|du}} også ønsker å bli varslet via epost må du legge til en epostadresse nå.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Legg til epost",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Mer om denne funksjonen",
+	"growthexperiments-help-panel-questioncomplete-first-edit": "Du gjorde forresten din første redigering ved å legge til dette spørsmålet. Gratulerer!",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Slå av dette verktøyet i innstillingene",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Ugyldig tittel.",
-	"growthexperiments-help-panel-search-label": "Søk i FAQ"
+	"growthexperiments-help-panel-community-help-desk-text": "Nybegynnerforum",
+	"growthexperiments-help-panel-search-label": "Søk etter hjelp",
+	"growthexperiments-help-panel-search-no-results": "Ingen resultater funnet.",
+	"tag-help_panel_question": "Hjelpepanelspørsmål",
+	"tag-help_panel_question-description": "Redigering gjort via hjelpepanelets funksjon for å poste et spørsmål"
 }

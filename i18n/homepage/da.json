@@ -27,5 +27,10 @@
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Din}} {{GENDER:$2|mentor}}",
 	"growthexperiments-homepage-mentorship-question-subject": "Spørgsmål fra [[User:$1|$1]]",
 	"growthexperiments-homepage-tutorial-header": "Lær hvordan du redigerer",
-	"growthexperiments-homepage-suggestededits-no-more-results": "Ikke flere forslag"
+	"growthexperiments-homepage-suggestededits-no-more-results": "Ikke flere forslag",
+	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Lær mere",
+	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3 - 5 minutter",
+	"growthexperiments-homepage-suggestededits-tasktype-time-update": "20 - 30 minutter",
+	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Opdater",
+	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Udvid"
 }

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Håndtere spørsmål som er postet via hjelpepanelet for den gjeldende brukeren.",
+	"apihelp-helppanelquestionposter-param-body": "Teksten i spørsmålet som ble stilt av brukeren.",
+	"apihelp-helppanelquestionposter-param-source": "Komponenten ved kilden til spørsmålet. Gyldige verdier er «helppanel», «homepage-help» og «homepage-mentorship»",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Den relevante tittelen, om valgt, som skal inkluderes med spørsmålet."
+}

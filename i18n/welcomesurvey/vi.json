@@ -42,10 +42,10 @@
 	"welcomesurvey-question-edited-label": "Bạn đã từng chỉnh sửa Wikipedia chưa?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Có, nhiều lần",
 	"welcomesurvey-question-edited-option-yes-few-label": "Có, một hoặc hai lần",
-	"welcomesurvey-question-edited-option-no-dunno-label": "Không, tôi không biết tôi có thể chỉnh sửa Wikipedia",
+	"welcomesurvey-question-edited-option-no-dunno-label": "Không, tôi không biết là tôi có thể chỉnh sửa Wikipedia",
 	"welcomesurvey-question-edited-option-no-other-label": "Không, vì những lý do khác",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Tôi không nhớ",
 	"welcomesurvey-question-email-label": "Địa chỉ email (tùy chọn)",
 	"welcomesurvey-question-email-placeholder": "Nhập địa chỉ email của bạn...",
-	"welcomesurvey-question-email-help": "Chúng tôi nhận thấy bạn đã không nhập một email khi tạo tài khoản này. Email <strong>rất cần thiết</strong>, vì bạn sẽ cần một email để khôi phục tài khoản nếu bạn mất mật khẩu. LƯU Ý: Địa chỉ email của bạn không được tiết lộ khi người dùng khác liên lạc với bạn."
+	"welcomesurvey-question-email-help": "Chúng tôi nhận thấy bạn đã không nhập một email khi tạo tài khoản này. Email <strong>rất cần thiết</strong>, vì bạn sẽ cần một email để khôi phục tài khoản nếu bạn mất mật khẩu. LƯU Ý: Địa chỉ email của bạn sẽ không được tiết lộ khi người dùng khác liên lạc với bạn."
 }

@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tuanminh01"
+			"Tuanminh01",
+			"Bluetpp"
 		]
 	},
-	"apihelp-helppanelquestionposter-summary": "Xử lý các câu hỏi được đăng qua bảng trợ giúp cho người dùng hiện tại.",
+	"apihelp-helppanelquestionposter-summary": "Xử lý các câu hỏi được đăng qua cửa sổ trợ giúp cho người dùng hiện tại.",
 	"apihelp-helppanelquestionposter-param-body": "Nội dung của câu hỏi được người dùng cung cấp.",
-	"apihelp-helppanelquestionposter-param-source": "Các thành phần tại nguồn của câu hỏi. Các giá trị hợp lệ là 'helppanel', 'trợ giúp trang nhà' và 'cố vấn trang nhà'",
+	"apihelp-helppanelquestionposter-param-source": "Các thành phần tại nguồn của câu hỏi. Các giá trị hợp lệ là 'cửasổtrợgiúp', 'trợgiúptrangnhà' và 'cốvấn-trangnhà'",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Tiêu đề có liên quan, nếu được chọn, để đi kèm với câu hỏi."
 }
