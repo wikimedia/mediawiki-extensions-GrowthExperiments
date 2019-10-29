@@ -229,6 +229,16 @@
 		}
 	}
 
+	.suggested-edits-footer {
+		// negate the margin on .growthexperiments-homepage-module in ext.growthExperiments.Homepage.less
+		// margin values are *1.11 due to the font-size rule
+		margin: 16px -( @homepageModuleMargin / 0.9 ) -( @homepageModuleMargin / 0.9 );
+		padding: 12px 24px 16px;
+		background-color: @colorBaseInverted;
+		color: @colorGray5;
+		font-size: 0.9em;
+	}
+
 	&.growthexperiments-homepage-module-mobile-summary {
 		.suggested-edits-main {
 			display: flex;
@@ -253,12 +263,12 @@
 		}
 
 		.suggested-edits-footer {
-			// negate the margin on .growthexperiments-homepage-module in ext.growthExperiments.Homepage.less
-			// margin values are *1.25 due to the font-size rule below
+			// negate the margin on .growthexperiments-homepage-mobile-summary
+			// .growthexperiments-homepage-module in ext.growthExperiments.Homepage.less
+			// margin values are *1.25 due to the font-size rule
 			margin: 16px -0.859375em -0.859375em;
 			padding: 12px 16px 14.4px;
 			background-color: @colorGray15;
-			color: @colorGray5;
 			font-size: 0.8em;
 		}
 	}

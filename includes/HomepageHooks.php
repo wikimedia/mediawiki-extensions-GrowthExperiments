@@ -49,6 +49,7 @@ class HomepageHooks {
 			];
 			if ( \ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' ) ) {
 				$list['Impact'] = SpecialImpact::class;
+				$list['Homepage']['services'][] = 'PageViewService';
 			}
 		}
 	}
