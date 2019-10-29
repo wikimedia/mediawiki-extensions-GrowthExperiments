@@ -1,21 +1,22 @@
 {
 	"@metadata": {
 		"authors": [
-			"BadDog"
+			"BadDog",
+			"Zoranzoki21"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Добро дошли}}, $1!",
 	"welcomesurvey-save-confirmation-title": "Хвала! Ваши одговори су сачувани.",
-	"welcomesurvey-save-confirmation-text": "Ваши одговори користиће се да нам помогну да покушамо да учинимо Википедију бољом за све нове кориснике.\n\nДа бисте сазнали више о томе како се користе ови опционални одговори, погледајте $1.",
-	"welcomesurvey-subtitle": "Помозите нам да учинимо Википедију бољом за нове кориснике попут вас одговарањем на неколико опционалних питања.",
+	"welcomesurvey-save-confirmation-text": "Ваши одговори користиће се да Вам дамо корисне начине за почетак на Википедији.",
+	"welcomesurvey-subtitle": "Помозите нам да побољшамо ваше искуство на Википедији одговарањем на неколико опционалних питања.",
 	"welcomesurvey-save-btn": "Заврши",
-	"welcomesurvey-skip-btn": "Прескочи ову анкету",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Прескочи}} ову анкету",
 	"welcomesurvey-close-btn": "Затвори и врати се на страницу $1",
 	"welcomesurvey-sidebar-privacy-title": "Ценимо вашу приватност",
-	"welcomesurvey-sidebar-privacy-text": "Да бисте сазнали више о томе како се користе ови опционални одговори, погледајте $1.",
+	"welcomesurvey-sidebar-privacy-text": "Да бисте сазнали више о томе како се користе ови опционални одговори, {{GENDER:$2|погледајте}} анкету $1.",
 	"welcomesurvey-privacy-policy-link-text": "изјаву о приватности",
 	"welcomesurvey-sidebar-editing-title": "Почните са уређивањем",
-	"welcomesurvey-sidebar-editing-text": "Свако може уређивати скоро сваку страницу, а стотине промена се праве сваког сата за додавање садржаја, исправке грешака и побољшавања читљивости. Следеће странице могу помоћи ако сте заинтересовани за доприношење.",
+	"welcomesurvey-sidebar-editing-text": "Свако може уређивати скоро сваку страницу, а стотине промена се праве сваког сата за додавање садржаја, исправке грешака и побољшавања читљивости. Следеће странице могу помоћи {{GENDER:$1|ако сте заинтересовани}} за доприношење.",
 	"welcomesurvey-sidebar-editing-link1-text": "Упутство",
 	"welcomesurvey-sidebar-editing-link1-title": "Википедија:Упутство",
 	"welcomesurvey-sidebar-editing-link2-text": "Техничка подршка",
@@ -26,9 +27,9 @@
 	"welcomesurvey-question-reason-option-new-page-label": "Да бих направио/ла нови чланак на Википедији",
 	"welcomesurvey-question-reason-option-read-label": "Да бих читао/ла Википедију",
 	"welcomesurvey-question-reason-option-other-label": "Друго (опишите)",
-	"welcomesurvey-question-reason-other-placeholder": "Унесите други разлог…",
-	"welcomesurvey-question-mentor-info": "Разматрамо започињање програма за искусније уреднике за помоћ новијим уредницима око уређивања. Јесте ли заинтересовани да будете контактирани за проналажење помоћи око уређивања?",
-	"welcomesurvey-question-mentor-label": "Да, заинтересован/а сам",
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Унесите}} други разлог…",
+	"welcomesurvey-question-mentor-info": "Разматрамо започињање програма за искусније уреднике за помоћ новијим уредницима око уређивања. {{GENDER:$1|Да ли сте заинтересовани}} да будете контактирани за проналажење помоћи око уређивања?",
+	"welcomesurvey-question-mentor-label": "Да, {{GENDER:$1|заинтересован сам|заинтересована сам}}",
 	"welcomesurvey-question-edited-label": "Јесте ли икада уређивали Википедију?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Да, много пута",
 	"welcomesurvey-question-edited-option-yes-few-label": "Да, једном или двапут",

@@ -37,5 +37,17 @@
 	"growthexperiments-homepage-suggestededits-pager-end": "Schluss",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 mol gekuckt vu Lieser (lescht 60 Deeg)",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Keng aner Virschléi",
-	"growthexperiments-homepage-suggestededits-no-results": "Keng Virschléi fonnt"
+	"growthexperiments-homepage-suggestededits-no-results": "Keng Virschléi fonnt",
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "Ännerungen de leschten Dag",
+	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Fir méi ze wëssen",
+	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3 - 5 Minutten",
+	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5 - 10 Minutten",
+	"growthexperiments-homepage-suggestededits-tasktype-time-references": "15 - 20 Minutten",
+	"growthexperiments-homepage-suggestededits-tasktype-time-expand": "20 - 30 Minutten",
+	"growthexperiments-homepage-suggestededits-tasktype-time-update": "20 - 30 Minutten",
+	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy": "Einfach",
+	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Mëttel",
+	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Referenzen",
+	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Aktualiséieren",
+	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Linken"
 }

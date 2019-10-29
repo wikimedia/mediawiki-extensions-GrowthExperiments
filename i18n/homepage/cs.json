@@ -138,5 +138,21 @@
 	"growthexperiments-homepage-suggestededits-no-results": "Žádné tipy nenalezeny",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Vyberte jiné úrovně obtížnosti, abyste našli nějaké tipy.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Zvolte jiné oblasti zájmů nebo úrovně obtížnosti, abyste našli nějaké tipy.",
-	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "editací za poslední den"
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "editací za poslední den",
+	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Dobrovolníci, jako jste vy, dnes přispěli do Wikipedie. Připojte se!",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Oprava pravopisu, gramatiky a stylu článku",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "Nalezení zdrojů k ověření článků na Wikipedii",
+	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Zjistit více",
+	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3-5 minut",
+	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5 - 10 minut",
+	"growthexperiments-homepage-suggestededits-tasktype-time-references": "15 - 20 minut",
+	"growthexperiments-homepage-suggestededits-tasktype-time-expand": "20 - 30 minut",
+	"growthexperiments-homepage-suggestededits-tasktype-time-update": "20 - 30 minut",
+	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy": "Jednoduché",
+	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Střední",
+	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Těžké",
+	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Reference",
+	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Aktualizace",
+	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Rozšíření",
+	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Odkazy"
 }
