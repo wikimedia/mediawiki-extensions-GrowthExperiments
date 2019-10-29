@@ -49,7 +49,16 @@
 
 	OO.inheritClass( SuggestedEditsModule, OO.ui.Widget );
 
-	SuggestedEditsModule.prototype.fetchTasks = function ( taskTypes ) {
+	/**
+	 * Fetch suggested edits from ApiQueryGrowthTasks.
+	 *
+	 * If initContext is true, then don't save the task types to the user's preferences.
+	 *
+	 * @param {string[]} taskTypes
+	 * @param {bool} initContext
+	 * @return {jQuery.Promise}
+	 */
+	SuggestedEditsModule.prototype.fetchTasks = function ( taskTypes, initContext ) {
 		var apiParams = {
 			action: 'query',
 			prop: 'info|pageviews|extracts|pageimages',
@@ -90,7 +99,14 @@
 			}
 			this.filters.updateMatchCount( this.taskQueue.length );
 			this.showCard();
+			if ( !initContext ) {
+				this.savePreferences( taskTypes );
+			}
 		}.bind( this ) );
+	};
+
+	SuggestedEditsModule.prototype.savePreferences = function ( taskTypes ) {
+		return new mw.Api().saveOption( 'growthexperiments-homepage-se-filters', JSON.stringify( taskTypes ) );
 	};
 
 	SuggestedEditsModule.prototype.updatePager = function () {
@@ -156,12 +172,14 @@
 
 	function initSuggestedTasks( $container ) {
 		var suggestedEditsModule,
+			savedTaskTypeFilters = mw.user.options.get( 'growthexperiments-homepage-se-filters' ),
+			taskTypes = savedTaskTypeFilters ? JSON.parse( savedTaskTypeFilters ) : [ 'copyedit', 'links' ],
 			$wrapper = $container.find( '.suggested-edits-module-wrapper' );
 		if ( !$wrapper.length ) {
 			return;
 		}
 		suggestedEditsModule = new SuggestedEditsModule( { $element: $wrapper } );
-		suggestedEditsModule.fetchTasks( [ 'copyedit', 'links' ] );
+		suggestedEditsModule.fetchTasks( taskTypes, true );
 	}
 
 	// Try setup for desktop mode and server-side-rendered mobile mode
