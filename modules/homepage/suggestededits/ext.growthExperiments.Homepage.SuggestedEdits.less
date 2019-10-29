@@ -23,6 +23,7 @@
 		}
 
 		.se-card-no-results,
+		.se-card-error,
 		.se-card-end-of-queue {
 			width: @cardWrapperWidth;
 
@@ -51,6 +52,13 @@
 			.se-card-image {
 				/* @embed */
 				background: url( ../../../images/no-results.svg ) no-repeat center center;
+				height: 144px;
+			}
+		}
+
+		.se-card-error {
+			.se-card-image {
+				background: url( ../../../images/suggestededits/error-message.svg ) no-repeat center center;
 				height: 144px;
 			}
 		}
