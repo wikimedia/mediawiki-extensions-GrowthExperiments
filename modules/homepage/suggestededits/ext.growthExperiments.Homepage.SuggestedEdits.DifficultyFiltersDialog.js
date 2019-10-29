@@ -94,7 +94,7 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 		$( '<p>' )
 			.addClass( 'suggested-edits-difficulty-level-desc' )
 			.text( mw.message( 'growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header' )
-				.params( mw.user )
+				.params( [ mw.user ] )
 				.text() )
 	);
 	this.content.$element.append( this.easyFilters.$element );
@@ -107,7 +107,7 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 		$( '<p>' )
 			.addClass( 'suggested-edits-difficulty-level-desc' )
 			.text( mw.message( 'growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header' )
-				.params( mw.user )
+				.params( [ mw.user ] )
 				.text() )
 	);
 	this.content.$element.append( this.mediumFilters.$element );
@@ -120,7 +120,7 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 		$( '<p>' )
 			.addClass( 'suggested-edits-difficulty-level-desc' )
 			.text( mw.message( 'growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header' )
-				.params( mw.user )
+				.params( [ mw.user ] )
 				.text() )
 	);
 	this.content.$element.append( this.hardFilters.$element );
