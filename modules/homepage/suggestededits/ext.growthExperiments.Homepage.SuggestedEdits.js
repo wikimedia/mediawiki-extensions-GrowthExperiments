@@ -13,7 +13,7 @@
 
 			this.currentCard = null;
 
-			this.filters = new FiltersButtonGroupWidget()
+			this.filters = new FiltersButtonGroupWidget( { presets: config.taskTypePresets } )
 				.connect( this, { search: 'fetchTasks' } )
 				.toggle( false );
 			this.pager = new PagerWidget().toggle( false );
@@ -183,7 +183,9 @@
 		if ( !$wrapper.length ) {
 			return;
 		}
-		suggestedEditsModule = new SuggestedEditsModule( { $element: $wrapper } );
+		suggestedEditsModule = new SuggestedEditsModule( { $element: $wrapper,
+			taskTypePresets: taskTypes
+		} );
 		suggestedEditsModule.fetchTasks( taskTypes, true );
 	}
 

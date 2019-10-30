@@ -2,6 +2,7 @@
 
 var DifficultyFiltersDialog = function DifficultyFiltersDialog( config ) {
 	DifficultyFiltersDialog.super.call( this, config );
+	this.config = config;
 	this.articleCountNumber = 0;
 };
 
@@ -42,12 +43,12 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 			new OO.ui.CheckboxMultioptionWidget( {
 				data: 'copyedit',
 				label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-label-copyedit' ),
-				selected: true
+				selected: this.config.presets.indexOf( 'copyedit' ) >= 0
 			} ),
 			new OO.ui.CheckboxMultioptionWidget( {
 				data: 'links',
 				label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-label-links' ),
-				selected: true
+				selected: this.config.presets.indexOf( 'links' ) >= 0
 			} )
 		]
 	} ).connect( this, { select: 'onSelect' } );
@@ -56,11 +57,13 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 		items: [
 			new OO.ui.CheckboxMultioptionWidget( {
 				data: 'references',
-				label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-label-references' )
+				label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-label-references' ),
+				selected: this.config.presets.indexOf( 'references' ) >= 0
 			} ),
 			new OO.ui.CheckboxMultioptionWidget( {
 				data: 'update',
-				label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-label-update' )
+				label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-label-update' ),
+				selected: this.config.presets.indexOf( 'update' ) >= 0
 			} )
 		]
 	} ).connect( this, { select: 'onSelect' } );
@@ -80,7 +83,8 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 		items: [
 			new OO.ui.CheckboxMultioptionWidget( {
 				data: 'expand',
-				label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-label-expand' )
+				label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-label-expand' ),
+				selected: this.config.presets.indexOf( 'expand' ) >= 0
 			} ),
 			this.createFilter
 		]
