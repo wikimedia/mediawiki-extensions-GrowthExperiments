@@ -40,40 +40,19 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 
 	this.easyFilters = new OO.ui.CheckboxMultiselectWidget( {
 		items: [
-			new OO.ui.CheckboxMultioptionWidget( {
-				data: 'copyedit',
-				label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-label-copyedit' ),
-				selected: this.config.presets.indexOf( 'copyedit' ) >= 0
-			} ),
-			new OO.ui.CheckboxMultioptionWidget( {
-				data: 'links',
-				label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-label-links' ),
-				selected: this.config.presets.indexOf( 'links' ) >= 0
-			} )
+			new OO.ui.CheckboxMultioptionWidget( this.makeCheckboxConfig( 'copyedit' ) ),
+			new OO.ui.CheckboxMultioptionWidget( this.makeCheckboxConfig( 'links' ) )
 		]
 	} ).connect( this, { select: 'onSelect' } );
 
 	this.mediumFilters = new OO.ui.CheckboxMultiselectWidget( {
 		items: [
-			new OO.ui.CheckboxMultioptionWidget( {
-				data: 'references',
-				label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-label-references' ),
-				selected: this.config.presets.indexOf( 'references' ) >= 0
-			} ),
-			new OO.ui.CheckboxMultioptionWidget( {
-				data: 'update',
-				label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-label-update' ),
-				selected: this.config.presets.indexOf( 'update' ) >= 0
-			} )
+			new OO.ui.CheckboxMultioptionWidget( this.makeCheckboxConfig( 'references' ) ),
+			new OO.ui.CheckboxMultioptionWidget( this.makeCheckboxConfig( 'update' ) )
 		]
 	} ).connect( this, { select: 'onSelect' } );
 
-	this.createFilter = new OO.ui.CheckboxMultioptionWidget( {
-		data: 'create',
-		classes: [ 'suggested-edits-create-article' ],
-		label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-label-create' ),
-		disabled: true
-	} );
+	this.createFilter = new OO.ui.CheckboxMultioptionWidget( this.makeCheckboxConfig( 'create', true ) );
 	this.createFilter.$element.append( $( '<div>' )
 		.addClass( 'suggested-edits-create-article-additional-msg' )
 		.text( mw.message( 'growthexperiments-homepage-suggestededits-create-article-additional-message' ).text() )
@@ -81,11 +60,7 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 
 	this.hardFilters = new OO.ui.CheckboxMultiselectWidget( {
 		items: [
-			new OO.ui.CheckboxMultioptionWidget( {
-				data: 'expand',
-				label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-label-expand' ),
-				selected: this.config.presets.indexOf( 'expand' ) >= 0
-			} ),
+			new OO.ui.CheckboxMultioptionWidget( this.makeCheckboxConfig( 'expand' ) ),
 			this.createFilter
 		]
 	} ).connect( this, { select: 'onSelect' } );
@@ -151,6 +126,16 @@ DifficultyFiltersDialog.prototype.onSelect = function () {
 	} else {
 		this.actions.get()[ 0 ].setDisabled( true );
 	}
+};
+
+DifficultyFiltersDialog.prototype.makeCheckboxConfig = function ( name, disabled ) {
+	return {
+		data: name,
+		label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-label-' + name ),
+		selected: this.config.presets.indexOf( name ) >= 0,
+		disabled: !!disabled,
+		classes: [ 'suggested-edits-checkbox-' + name ]
+	};
 };
 
 DifficultyFiltersDialog.prototype.updateMatchCount = function ( count ) {
