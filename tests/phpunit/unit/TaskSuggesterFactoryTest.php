@@ -83,8 +83,8 @@ class TaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 	private function getConfigurationLoader( $taskTypes, $templateBlacklist ) {
 		$configurationLoader = $this->getMockBuilder( ConfigurationLoader::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'loadTaskTypes', 'loadTemplateBlacklist' ] )
-			->getMock();
+			->setMethods( [ 'loadTaskTypes', 'loadTemplateBlacklist', 'setMessageLocalizer' ] )
+			->getMockForAbstractClass();
 		$configurationLoader->method( 'loadTaskTypes' )->willReturn( $taskTypes );
 		$configurationLoader->method( 'loadTemplateBlacklist' )->willReturn( $templateBlacklist );
 		return $configurationLoader;

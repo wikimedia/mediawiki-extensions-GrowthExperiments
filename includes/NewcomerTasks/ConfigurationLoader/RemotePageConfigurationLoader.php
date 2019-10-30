@@ -7,11 +7,11 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\Util;
 use HashBagOStuff;
-use IContextSource;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
 // phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
 use Message;
+use MessageLocalizer;
 use StatusValue;
 use TitleFactory;
 use TitleValue;
@@ -32,8 +32,8 @@ class RemotePageConfigurationLoader implements ConfigurationLoader {
 	/** @var BagOStuff */
 	private $cache;
 
-	/** @var IContextSource */
-	private $context;
+	/** @var MessageLocalizer */
+	private $messageLocalizer;
 
 	/** @var int Cache expiry (0 for unlimited). */
 	private $cacheTtl = 0;
@@ -50,20 +50,25 @@ class RemotePageConfigurationLoader implements ConfigurationLoader {
 	/**
 	 * @param HttpRequestFactory $requestFactory
 	 * @param TitleFactory $titleFactory
-	 * @param IContextSource $context
+	 * @param MessageLocalizer $messageLocalizer
 	 * @param LinkTarget $pageTitle Wiki page to load configuration from. Can be an interwiki title.
 	 */
 	public function __construct(
 		HttpRequestFactory $requestFactory,
 		TitleFactory $titleFactory,
-		IContextSource $context,
+		MessageLocalizer $messageLocalizer,
 		LinkTarget $pageTitle
 	) {
 		$this->requestFactory = $requestFactory;
 		$this->titleFactory = $titleFactory;
-		$this->context = $context;
+		$this->messageLocalizer = $messageLocalizer;
 		$this->pageTitle = $pageTitle;
 		$this->cache = new HashBagOStuff();
+	}
+
+	/** @inheritDoc */
+	public function setMessageLocalizer( MessageLocalizer $messageLocalizer ): void {
+		$this->messageLocalizer = $messageLocalizer;
 	}
 
 	/**
@@ -114,42 +119,38 @@ class RemotePageConfigurationLoader implements ConfigurationLoader {
 	 * Like loadTaskTypes() but without caching.
 	 * @param array $config
 	 * @return TaskType[]|StatusValue
+	 * @suppress PhanTypeArraySuspicious
+	 *   Suppress the "Suspicious array access to ?mixed" errors for $taskTypeData;
+	 *   no idea what that is about.
 	 */
 	private function parseTaskTypesFromConfig( array $config ) {
+		$status = StatusValue::newGood();
 		$taskTypes = [];
 		foreach ( $config as $taskTypeId => $taskTypeData ) {
 			$requiredFields = [ 'group', 'templates' ];
 			foreach ( $requiredFields as $field ) {
 				if ( !isset( $taskTypeData[$field] ) ) {
-					return StatusValue::newFatal( 'growthexperiments-homepage-suggestededits-config-missingfield',
+					$status->fatal( 'growthexperiments-homepage-suggestededits-config-missingfield',
 						$field, $taskTypeId );
 				}
 			}
-			if ( !in_array( $taskTypeData['group'], TaskType::$difficultyClasses, true ) ) {
-				return StatusValue::newFatal( 'growthexperiments-homepage-suggestededits-config-wronggroup',
+			if ( isset( $taskTypeData['group'] ) &&
+				!in_array( $taskTypeData['group'], TaskType::$difficultyClasses, true )
+			) {
+				$status->fatal( 'growthexperiments-homepage-suggestededits-config-wronggroup',
 					$taskTypeData['group'], $taskTypeId );
 			}
-			$templates = array_map( function ( $template ) {
-				return new TitleValue( NS_TEMPLATE, $template );
-			}, $taskTypeData['templates'] );
-			$taskType = new TemplateBasedTaskType( $taskTypeId, $taskTypeData['group'], $templates );
-			foreach ( [
-				$taskType->getName( $this->context ),
-				$taskType->getDescription( $this->context ),
-				$taskType->getShortDescription( $this->context ),
-				$taskType->getTimeEstimate( $this->context )
-			] as $msg ) {
-				/** @var $msg Message */
-				if ( !$msg->exists() ) {
-					return StatusValue::newFatal(
-						'growthexperiments-homepage-suggestededits-config-missingmessage',
-						$msg->getKey(), $taskTypeId
-					);
-				}
+
+			if ( $status->isGood() ) {
+				$templates = array_map( function ( $template ) {
+					return new TitleValue( NS_TEMPLATE, $template );
+				}, $taskTypeData['templates'] );
+				$taskType = new TemplateBasedTaskType( $taskTypeId, $taskTypeData['group'], $templates );
+				$status->merge( $this->validateMessages( $taskType ) );
+				$taskTypes[] = $taskType;
 			}
-			$taskTypes[] = $taskType;
 		}
-		return $taskTypes;
+		return $status->isGood() ? $taskTypes : $status;
 	}
 
 	/**
@@ -166,7 +167,7 @@ class RemotePageConfigurationLoader implements ConfigurationLoader {
 	 * Load the configuration page.
 	 * @return array|StatusValue
 	 */
-	protected function loadConfig() {
+	private function loadConfig() {
 		$cacheKey = $this->cache->makeKey( 'GrowthExperiments', 'NewcomerTasks',
 			'config', $this->pageTitle );
 		$config = $this->cache->get( $cacheKey );
@@ -192,7 +193,7 @@ class RemotePageConfigurationLoader implements ConfigurationLoader {
 	 * @param LinkTarget $title
 	 * @return string
 	 */
-	protected function getRawUrl( LinkTarget $title ) {
+	private function getRawUrl( LinkTarget $title ) {
 		// Use getFullURL to get the interwiki domain.
 		$url = $this->titleFactory->newFromLinkTarget( $title )->getFullURL();
 		$parts = wfParseUrl( $url );
@@ -200,6 +201,30 @@ class RemotePageConfigurationLoader implements ConfigurationLoader {
 
 		$localPageTitle = $this->titleFactory->makeTitle( $title->getNamespace(), $title->getDBkey() );
 		return $baseUrl . $localPageTitle->getLocalURL( [ 'action' => 'raw' ] );
+	}
+
+	/**
+	 * Ensure that all messages used by the task type exist.
+	 * @param TemplateBasedTaskType $taskType
+	 * @return StatusValue
+	 */
+	private function validateMessages( TemplateBasedTaskType $taskType ) {
+		$status = StatusValue::newGood();
+		foreach ( [
+			$taskType->getName( $this->messageLocalizer ),
+			$taskType->getDescription( $this->messageLocalizer ),
+			$taskType->getShortDescription( $this->messageLocalizer ),
+			$taskType->getTimeEstimate( $this->messageLocalizer )
+		] as $msg ) {
+			/** @var $msg Message */
+			if ( !$msg->exists() ) {
+				$status->fatal(
+					'growthexperiments-homepage-suggestededits-config-missingmessage',
+					$msg->getKey(), $taskType->getId()
+				);
+			}
+		}
+		return $status;
 	}
 
 }
