@@ -8,7 +8,7 @@
 		this.difficultyFilterButtonWidget = new OO.ui.ButtonWidget( {
 			icon: 'difficulty-outline'
 		} );
-		this.dialog = new DifficultyFiltersDialog()
+		this.dialog = new DifficultyFiltersDialog( config )
 			.on( 'search', function ( search ) {
 				this.emit( 'search', search );
 				this.updateButtonLabel( search );
