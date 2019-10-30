@@ -205,7 +205,7 @@ DifficultyFiltersDialog.prototype.getActionProcess = function ( action ) {
 			if ( action === 'close' ) {
 				this.savePreferences();
 				this.config.presets = this.getEnabledFilters();
-				this.close();
+				this.close( { action: 'done' } );
 			}
 			if ( action === 'cancel' ) {
 				if ( !this.getEnabledFilters().length ) {
@@ -220,7 +220,7 @@ DifficultyFiltersDialog.prototype.getActionProcess = function ( action ) {
 					// so perform a search with their original settings.
 					this.emit( 'search', this.config.presets );
 				}
-				this.close();
+				this.close( { action: 'cancel' } );
 			}
 		}, this );
 };

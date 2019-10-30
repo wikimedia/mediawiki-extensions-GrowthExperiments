@@ -5,17 +5,21 @@
 
 	/**
 	 * @param {Object} config
-	 * @param {string} [config.tasktype] The task type (e.g. "copyedit").
+	 * @param {string} [config.taskType] The task type (e.g. "copyedit").
+	 * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
+	 * @param {HomepageModuleLogger} logger
 	 * @constructor
 	 */
-	function TaskExplanationWidget( config ) {
+	function TaskExplanationWidget( config, logger ) {
 		TaskExplanationWidget.super.call( this, config );
 
-		this.taskType = config.tasktype;
+		this.taskType = config.taskType;
 		this.taskTypeData = taskTypes[ this.taskType ];
 		if ( !this.taskTypeData ) {
 			throw new Error( 'Unknown task type ' + this.taskType );
 		}
+		this.logger = logger;
+		this.mode = config.mode;
 
 		this.$element.append(
 			$( '<div>' ).addClass( 'suggested-edits-task-explanation-wrapper' )
@@ -61,6 +65,12 @@
 			};
 		popupButtonWidget.$button
 			.on( 'mouseenter', togglePopup( popupButtonWidget, true ) );
+		popupButtonWidget.getPopup().connect( this, {
+			toggle: function ( show ) {
+				this.logger.log( 'suggested-edits', this.mode, 'se-task-explanation-' +
+					( show ? 'open' : 'close' ), { taskType: this.taskType } );
+			}
+		} );
 		return popupButtonWidget;
 	};
 
@@ -90,6 +100,10 @@
 			.append( $( '<a>' )
 				.text( mw.message( 'growthexperiments-homepage-suggestededits-tasktype-learn-more' ).text() )
 				.attr( 'href', mw.util.getUrl( this.taskTypeData.learnMoreLink ) )
+				.on( 'click', function () {
+					this.logger.log( 'suggested-edits', this.mode, 'se-explanation-link-click',
+						{ taskType: this.taskType } );
+				}.bind( this ) )
 			);
 	};
 
