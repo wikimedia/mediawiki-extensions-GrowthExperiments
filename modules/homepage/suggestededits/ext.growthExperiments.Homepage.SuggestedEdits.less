@@ -22,6 +22,24 @@
 			color: @colorGray2;
 		}
 
+		.suggested-edits-filters {
+			// Make the button full width (T236841); this is harder than it should be
+			width: 100%;
+
+			.oo-ui-buttonGroupWidget {
+				width: 100%;
+
+				.oo-ui-buttonElement {
+					width: 100%;
+
+					.oo-ui-buttonElement-button {
+						width: 100%;
+						text-align: left;
+					}
+				}
+			}
+		}
+
 		.se-card-no-results,
 		.se-card-error,
 		.se-card-end-of-queue {
