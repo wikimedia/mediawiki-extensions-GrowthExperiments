@@ -57,7 +57,11 @@
 				groups = addMessage( groups, 'hard' );
 			}
 		} );
-		this.difficultyFilterButtonWidget.setLabel( groups.join( mw.msg( 'comma-separator' ) ) );
+		this.difficultyFilterButtonWidget.setLabel(
+			mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-label' )
+				.params( [ groups.join( mw.msg( 'comma-separator' ) ) ] )
+				.text()
+		);
 	};
 
 	module.exports = SuggestedEditsFiltersWidget;
