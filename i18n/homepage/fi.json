@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Pyscowicz"
+			"Pyscowicz",
+			"Nike"
 		]
 	},
 	"growthexperiments-homepage-account-header": "Käyttäjätunnus luotu",
@@ -10,5 +11,6 @@
 	"growthexperiments-homepage-email-header-confirmed": "Sähköpostiosoite lisätty",
 	"growthexperiments-homepage-email-button-noemail": "Lisää sähköpostiosoite",
 	"growthexperiments-homepage-email-button-unconfirmed": "Uusi linkki",
-	"growthexperiments-homepage-tutorial-header": "Opi muokkaamaan"
+	"growthexperiments-homepage-tutorial-header": "Opi muokkaamaan",
+	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Luo uusi artikkeli"
 }

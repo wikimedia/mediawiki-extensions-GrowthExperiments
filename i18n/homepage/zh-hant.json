@@ -135,11 +135,14 @@
 	"growthexperiments-homepage-suggestededits-no-results": "找不到建議",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "選擇其它難度級別來找尋建議編輯。",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "選擇其它興趣或難度級別來找尋建議編輯。",
+	"growthexperiments-homepage-suggestededits-tasktype-label-create": "創建一個新條目",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "了解更多",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy": "簡單",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "一般",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "困難",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "完成",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "更新",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "展開",
-	"growthexperiments-homepage-suggestededits-tasktype-name-links": "連結"
+	"growthexperiments-homepage-suggestededits-tasktype-name-links": "連結",
+	"growthexperiments-homepage-suggestededits-error-description": "請稍後重試。"
 }

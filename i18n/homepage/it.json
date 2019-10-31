@@ -32,7 +32,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Facile",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Medio",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Difficile",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Per quando hai familiarità con la scrittura su Wikipedia.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Quando {{GENDER:$1|hai}} imparato le migliori pratiche su Wikipedia.",
 	"growthexperiments-homepage-suggested-edits-header": "Modifiche suggerite",
 	"growthexperiments-homepage-impact-header": "Il {{GENDER:$1|tuo}} impatto",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Hai}} fatto <strong>$1</strong> {{PLURAL:$1|modifica|modifiche}} (vedi tutte)",
@@ -65,5 +65,10 @@
 	"growthexperiments-homepage-discovery-banner-header": "{{GENDER:$1|Benvenuto|Benvenuta|Benvenuto/a}} sulla tua pagina principale!",
 	"growthexperiments-homepage-discovery-thanks-header": "Grazie per aver creato la {{GENDER:$1|tua}} utenza!",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "{{GENDER:$1|Benvenuto|Benvenuta|Benvenuto/a}} sulla tua pagina principale!",
-	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Inizia qui!"
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Inizia qui!",
+	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Crea una nuova voce",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "Facile",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "Medio",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-hard": "Difficile",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Fatto"
 }

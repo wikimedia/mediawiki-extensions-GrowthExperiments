@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Steeve815"
+			"Steeve815",
+			"דגש חזק"
 		]
 	},
 	"growthexperiments-homepage-tab": "דף הבית",
@@ -41,5 +42,6 @@
 	"growthexperiments-specialimpact-invalid-username": "שם משתמש חסר או בלתי־תקין.",
 	"growthexperiments-tour-discovery-title": "התחילו כאן!",
 	"growthexperiments-tour-discovery-description": "אפשר להקליק על {{GENDER:$1|שם המשתמש שלך|שם המשתמשת שלך}} כדי לבקר בדף הבית {{GENDER:$1|שלך}}",
-	"growthexperiments-homepage-welcomesurvey-default-close": "מעבר לדף הבית {{GENDER:$1|שלך}}"
+	"growthexperiments-homepage-welcomesurvey-default-close": "מעבר לדף הבית {{GENDER:$1|שלך}}",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "בינוני"
 }

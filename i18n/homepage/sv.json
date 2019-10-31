@@ -103,5 +103,9 @@
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Välkommen till {{GENDER:$1|din}} hemsida!",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|Du}} kan alltid öppna sidomenyn och trycka på $2 för att återvända hit.",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Kom igång här!",
-	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Öppna sidomenyn och tryck på $2 för att besöka {{GENDER:$1|din}} hemsida."
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Öppna sidomenyn och tryck på $2 för att besöka {{GENDER:$1|din}} hemsida.",
+	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Skapa en ny artikel",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "Lätt",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-hard": "Svår",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Klar"
 }
