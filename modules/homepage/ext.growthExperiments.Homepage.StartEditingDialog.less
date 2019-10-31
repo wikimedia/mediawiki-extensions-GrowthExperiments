@@ -76,7 +76,10 @@
 			}
 
 			&-label {
+				// Because this is a table, width behaves more like min-width
 				width: 20%;
+				// nowrap might make the label column wider than 20%
+				white-space: nowrap;
 				font-size: 1.3em;
 				font-weight: bold;
 
@@ -103,6 +106,8 @@
 				p {
 					margin: 0;
 				}
+				line-height: 1.3;
+				padding-left: 0.5em;
 				padding-bottom: 0.5em;
 			}
 
