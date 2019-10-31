@@ -1,10 +1,11 @@
 'use strict';
 
-var DifficultyFiltersDialog = function DifficultyFiltersDialog( config ) {
-	DifficultyFiltersDialog.super.call( this, config );
-	this.config = config;
-	this.articleCountNumber = 0;
-};
+var taskTypes = require( './TaskTypes.json' ),
+	DifficultyFiltersDialog = function DifficultyFiltersDialog( config ) {
+		DifficultyFiltersDialog.super.call( this, config );
+		this.config = config;
+		this.articleCountNumber = 0;
+	};
 
 OO.inheritClass( DifficultyFiltersDialog, OO.ui.ProcessDialog );
 
@@ -39,30 +40,29 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 	} );
 
 	this.easyFilters = new OO.ui.CheckboxMultiselectWidget( {
-		items: [
-			new OO.ui.CheckboxMultioptionWidget( this.makeCheckboxConfig( 'copyedit' ) ),
-			new OO.ui.CheckboxMultioptionWidget( this.makeCheckboxConfig( 'links' ) )
-		]
+		items: this.makeCheckboxesForDifficulty( 'easy' )
 	} ).connect( this, { select: 'onSelect' } );
 
 	this.mediumFilters = new OO.ui.CheckboxMultiselectWidget( {
-		items: [
-			new OO.ui.CheckboxMultioptionWidget( this.makeCheckboxConfig( 'references' ) ),
-			new OO.ui.CheckboxMultioptionWidget( this.makeCheckboxConfig( 'update' ) )
-		]
+		items: this.makeCheckboxesForDifficulty( 'medium' )
 	} ).connect( this, { select: 'onSelect' } );
 
-	this.createFilter = new OO.ui.CheckboxMultioptionWidget( this.makeCheckboxConfig( 'create', true ) );
+	this.createFilter = this.makeCheckbox( {
+		id: 'create',
+		difficulty: 'hard',
+		messages: {
+			label: mw.message( 'growthexperiments-homepage-suggestededits-tasktype-label-create' ).text()
+		},
+		disabled: true
+	} );
 	this.createFilter.$element.append( $( '<div>' )
 		.addClass( 'suggested-edits-create-article-additional-msg' )
 		.text( mw.message( 'growthexperiments-homepage-suggestededits-create-article-additional-message' ).text() )
 	);
 
 	this.hardFilters = new OO.ui.CheckboxMultiselectWidget( {
-		items: [
-			new OO.ui.CheckboxMultioptionWidget( this.makeCheckboxConfig( 'expand' ) ),
-			this.createFilter
-		]
+		items: this.makeCheckboxesForDifficulty( 'hard' )
+			.concat( [ this.createFilter ] )
 	} ).connect( this, { select: 'onSelect' } );
 
 	this.content.$element.append(
@@ -128,14 +128,33 @@ DifficultyFiltersDialog.prototype.onSelect = function () {
 	}
 };
 
-DifficultyFiltersDialog.prototype.makeCheckboxConfig = function ( name, disabled ) {
-	return {
-		data: name,
-		label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-label-' + name ),
-		selected: this.config.presets.indexOf( name ) >= 0,
-		disabled: !!disabled,
-		classes: [ 'suggested-edits-checkbox-' + name ]
-	};
+/**
+ * @param {string} difficulty 'easy', 'medium' or 'hard'
+ * @return {OO.ui.CheckboxMultioptionWidget[]}
+ */
+DifficultyFiltersDialog.prototype.makeCheckboxesForDifficulty = function ( difficulty ) {
+	var taskType,
+		checkboxes = [];
+	for ( taskType in taskTypes ) {
+		if ( taskTypes[ taskType ].difficulty === difficulty ) {
+			checkboxes.push( this.makeCheckbox( taskTypes[ taskType ] ) );
+		}
+	}
+	return checkboxes;
+};
+
+/**
+ * @param {Object} taskTypeData
+ * @return {OO.ui.CheckboxMultioptionWidget}
+ */
+DifficultyFiltersDialog.prototype.makeCheckbox = function ( taskTypeData ) {
+	return new OO.ui.CheckboxMultioptionWidget( {
+		data: taskTypeData.id,
+		label: taskTypeData.messages.label,
+		selected: this.config.presets.indexOf( taskTypeData.id ) >= 0,
+		disabled: !!taskTypeData.disabled,
+		classes: [ 'suggested-edits-checkbox-' + taskTypeData.id ]
+	} );
 };
 
 DifficultyFiltersDialog.prototype.updateMatchCount = function ( count ) {

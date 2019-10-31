@@ -1,15 +1,22 @@
 ( function () {
 	'use strict';
 
+	var taskTypes = require( './TaskTypes.json' );
+
 	/**
 	 * @param {Object} config
 	 * @param {string} [config.tasktype] The task type (e.g. "copyedit").
-	 * @param {string} [config.difficulty] The difficulty level of the task (e.g. "easy").
 	 * @constructor
 	 */
 	function TaskExplanationWidget( config ) {
 		TaskExplanationWidget.super.call( this, config );
-		this.config = config;
+
+		this.taskType = config.tasktype;
+		this.taskTypeData = taskTypes[ this.taskType ];
+		if ( !this.taskTypeData ) {
+			throw new Error( 'Unknown task type ' + this.taskType );
+		}
+
 		this.$element.append(
 			$( '<div>' ).addClass( 'suggested-edits-task-explanation-wrapper' )
 				.append( this.getInfoRow(), this.getDescriptionRow() )
@@ -31,21 +38,14 @@
 
 	TaskExplanationWidget.prototype.getDescriptionRow = function () {
 		return $( '<p>' ).addClass( 'suggested-edits-short-description' )
-			.text(
-				// growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit
-				// growthexperiments-homepage-suggestededits-tasktype-shortdescription-references
-				// growthexperiments-homepage-suggestededits-tasktype-shortdescription-update
-				// growthexperiments-homepage-suggestededits-tasktype-shortdescription-links
-				// growthexperiments-homepage-suggestededits-tasktype-shortdescription-expand
-				mw.message( 'growthexperiments-homepage-suggestededits-tasktype-shortdescription-' + this.config.tasktype ).text()
-			);
+			.text( this.taskTypeData.messages.shortdescription );
 	};
 
 	TaskExplanationWidget.prototype.getInfo = function () {
 		var popupButtonWidget = new OO.ui.PopupButtonWidget( {
 				icon: 'info',
 				framed: false,
-				label: this.getPopupLabel(),
+				label: this.taskTypeData.messages.shortdescription,
 				invisibleLabel: true,
 				popup: {
 					head: true,
@@ -64,24 +64,10 @@
 		return popupButtonWidget;
 	};
 
-	TaskExplanationWidget.prototype.getPopupLabel = function () {
-		// growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit
-		// growthexperiments-homepage-suggestededits-tasktype-shortdescription-references
-		// growthexperiments-homepage-suggestededits-tasktype-shortdescription-update
-		// growthexperiments-homepage-suggestededits-tasktype-shortdescription-links
-		// growthexperiments-homepage-suggestededits-tasktype-shortdescription-expand
-		return mw.message( 'growthexperiments-homepage-suggestededits-tasktype-shortdescription-' + this.config.tasktype ).text();
-	};
-
 	TaskExplanationWidget.prototype.getTimeEstimate = function () {
-		// growthexperiments-homepage-suggestededits-tasktype-time-copyedit
-		// growthexperiments-homepage-suggestededits-tasktype-time-references
-		// growthexperiments-homepage-suggestededits-tasktype-time-update
-		// growthexperiments-homepage-suggestededits-tasktype-time-links
-		// growthexperiments-homepage-suggestededits-tasktype-time-expand
 		return $( '<div>' )
-			.addClass( 'suggested-edits-difficulty-level suggested-edits-difficulty-level-' + this.config.difficulty )
-			.text( mw.message( 'growthexperiments-homepage-suggestededits-tasktype-time-' + this.config.tasktype ).text() );
+			.addClass( 'suggested-edits-difficulty-level suggested-edits-difficulty-level-' + this.taskTypeData.difficulty )
+			.text( this.taskTypeData.messages.timeestimate );
 	};
 
 	TaskExplanationWidget.prototype.getDescription = function () {
@@ -91,34 +77,20 @@
 					this.getDifficultyIndicator(),
 					this.getTimeEstimate()
 				),
-				$( '<p>' ).text(
-					// growthexperiments-homepage-suggestededits-tasktype-description-copyedit
-					// growthexperiments-homepage-suggestededits-tasktype-description-references
-					// growthexperiments-homepage-suggestededits-tasktype-description-update
-					// growthexperiments-homepage-suggestededits-tasktype-description-links
-					// growthexperiments-homepage-suggestededits-tasktype-description-expand
-					mw.message( 'growthexperiments-homepage-suggestededits-tasktype-description-' + this.config.tasktype ).text()
-				)
+				$( '<p>' ).text( this.taskTypeData.messages.description )
 				// TODO: Add a link with text set from the message of
-				// growthexperiments-homepage-suggestededits-tasktype-learn-more-{this.config.tasktype}
+				// growthexperiments-homepage-suggestededits-tasktype-learn-more-{taskType}
 			);
 	};
 
 	TaskExplanationWidget.prototype.getDifficultyIndicator = function () {
 		return $( '<div>' ).addClass( 'suggested-edits-difficulty-indicator' )
-			.addClass( 'suggested-edits-difficulty-indicator-' + this.config.difficulty )
-			.text( mw.message( 'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' + this.config.difficulty ) );
+			.addClass( 'suggested-edits-difficulty-indicator-' + this.taskTypeData.difficulty )
+			.text( mw.message( 'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' + this.taskTypeData.difficulty ) );
 	};
 
 	TaskExplanationWidget.prototype.getName = function () {
-		// growthexperiments-homepage-suggestededits-tasktype-name-copyedit
-		// growthexperiments-homepage-suggestededits-tasktype-name-references
-		// growthexperiments-homepage-suggestededits-tasktype-name-update
-		// growthexperiments-homepage-suggestededits-tasktype-name-links
-		// growthexperiments-homepage-suggestededits-tasktype-name-expand
-		return $( '<h4>' ).text(
-			mw.message( 'growthexperiments-homepage-suggestededits-tasktype-name-' + this.config.tasktype ).text()
-		);
+		return $( '<h4>' ).text( this.taskTypeData.messages.name );
 	};
 
 	module.exports = TaskExplanationWidget;

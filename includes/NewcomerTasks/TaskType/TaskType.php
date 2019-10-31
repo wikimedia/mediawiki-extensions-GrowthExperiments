@@ -80,6 +80,17 @@ class TaskType {
 	}
 
 	/**
+	 * Label for the task type; typically either the name, or a combination of the name and
+	 * the short description.
+	 * @param MessageLocalizer $messageLocalizer
+	 * @return Message
+	 */
+	public function getLabel( MessageLocalizer $messageLocalizer ): Message {
+		return $messageLocalizer->msg(
+			'growthexperiments-homepage-suggestededits-tasktype-label-' . $this->getId() );
+	}
+
+	/**
 	 * Time estimate for the task type.
 	 * @param MessageLocalizer $messageLocalizer
 	 * @return Message
@@ -102,6 +113,7 @@ class TaskType {
 				'name' => $this->getName( $messageLocalizer )->text(),
 				'description' => $this->getDescription( $messageLocalizer )->text(),
 				'shortdescription' => $this->getShortDescription( $messageLocalizer )->text(),
+				'label' => $this->getLabel( $messageLocalizer )->text(),
 				'timeestimate' => $this->getTimeEstimate( $messageLocalizer )->text(),
 			],
 		];
