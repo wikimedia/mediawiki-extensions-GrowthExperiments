@@ -3,6 +3,7 @@
 use GrowthExperiments\AqsEditInfoService;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\RemotePageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
@@ -25,20 +26,10 @@ return [
 			$configurationLoader->setCache( $cache, 60 );
 			return $configurationLoader;
 		} else {
-			return new class implements ConfigurationLoader {
-				/** @inheritDoc */
-				public function loadTaskTypes() {
-					return StatusValue::newFatal( new ApiRawMessage(
-						'The ConfigurationLoader has not been configured!',
-						'configurationloader-not-configured'
-					) );
-				}
-
-				/** @inheritDoc */
-				public function loadTemplateBlacklist() {
-					return [];
-				}
-			};
+			return new ErrorForwardingConfigurationLoader( StatusValue::newFatal( new ApiRawMessage(
+				'The ConfigurationLoader has not been configured!',
+				'configurationloader-not-configured'
+			) ) );
 		}
 	},
 

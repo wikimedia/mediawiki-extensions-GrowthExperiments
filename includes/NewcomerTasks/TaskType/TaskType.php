@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
-use IContextSource;
 use Message;
+use MessageLocalizer;
 
 /**
  * Describes a type of suggested edit.
@@ -51,42 +51,60 @@ class TaskType {
 
 	/**
 	 * Human-readable name of the task type.
-	 * @param IContextSource $context
+	 * @param MessageLocalizer $messageLocalizer
 	 * @return Message
 	 */
-	public function getName( IContextSource $context ): Message {
-		return $context->msg( 'growthexperiments-homepage-suggestededits-tasktype-name-'
+	public function getName( MessageLocalizer $messageLocalizer ): Message {
+		return $messageLocalizer->msg( 'growthexperiments-homepage-suggestededits-tasktype-name-'
 			. $this->getId() );
 	}
 
 	/**
 	 * Description of the task type.
-	 * @param IContextSource $context
+	 * @param MessageLocalizer $messageLocalizer
 	 * @return Message
 	 */
-	public function getDescription( IContextSource $context ): Message {
-		return $context->msg( 'growthexperiments-homepage-suggestededits-tasktype-description-'
+	public function getDescription( MessageLocalizer $messageLocalizer ): Message {
+		return $messageLocalizer->msg( 'growthexperiments-homepage-suggestededits-tasktype-description-'
 			. $this->getId() );
 	}
 
 	/**
 	 * Short description of the task type.
-	 * @param IContextSource $context
+	 * @param MessageLocalizer $messageLocalizer
 	 * @return Message
 	 */
-	public function getShortDescription( IContextSource $context ): Message {
-		return $context->msg( 'growthexperiments-homepage-suggestededits-tasktype-shortdescription-'
-		  . $this->getId() );
+	public function getShortDescription( MessageLocalizer $messageLocalizer ): Message {
+		return $messageLocalizer->msg(
+			'growthexperiments-homepage-suggestededits-tasktype-shortdescription-' . $this->getId() );
 	}
 
 	/**
 	 * Time estimate for the task type.
-	 * @param IContextSource $context
+	 * @param MessageLocalizer $messageLocalizer
 	 * @return Message
 	 */
-	public function getTimeEstimate( IContextSource $context ): Message {
-		return $context->msg( 'growthexperiments-homepage-suggestededits-tasktype-time-'
-		  . $this->getId() );
+	public function getTimeEstimate( MessageLocalizer $messageLocalizer ): Message {
+		return $messageLocalizer->msg( 'growthexperiments-homepage-suggestededits-tasktype-time-'
+			. $this->getId() );
+	}
+
+	/**
+	 * Return an array (JSON-ish) representation of the task type.
+	 * @param MessageLocalizer $messageLocalizer
+	 * @return array
+	 */
+	public function toArray( MessageLocalizer $messageLocalizer ) {
+		return [
+			'id' => $this->getId(),
+			'difficulty' => $this->getDifficulty(),
+			'messages' => [
+				'name' => $this->getName( $messageLocalizer )->text(),
+				'description' => $this->getDescription( $messageLocalizer )->text(),
+				'shortdescription' => $this->getShortDescription( $messageLocalizer )->text(),
+				'timeestimate' => $this->getTimeEstimate( $messageLocalizer )->text(),
+			],
+		];
 	}
 
 }

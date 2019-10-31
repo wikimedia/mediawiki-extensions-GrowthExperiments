@@ -10,6 +10,7 @@ use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
 use Html;
@@ -21,10 +22,13 @@ use MediaWiki\Minerva\SkinOptions;
 use OOUI\ButtonWidget;
 use OutputPage;
 use RequestContext;
+use ResourceLoaderContext;
 use Skin;
 use SkinTemplate;
 use SpecialContributions;
 use SpecialPage;
+use Status;
+use StatusValue;
 use Throwable;
 use Title;
 use User;
@@ -537,6 +541,36 @@ class HomepageHooks {
 				$skin,
 				$wgMinervaEnableSiteNotice
 			);
+		}
+	}
+
+	/**
+	 * ResourceLoader JSON package callback for getting the task types defined on the wiki.
+	 * @param ResourceLoaderContext $context
+	 * @return array
+	 *   - on success: [ task type id => task data, ... ]; see TaskType::toArray for data format.
+	 *     Note that the messages in the task data are plaintext and it is the caller's
+	 *     responsibility to escape them.
+	 *   - on error: [ '_error' => error message in wikitext format ]
+	 */
+	public static function getTaskTypesJson( ResourceLoaderContext $context ) {
+		/** @var ConfigurationLoader $configurationLoader */
+		$configurationLoader = MediaWikiServices::getInstance()
+			->get( 'GrowthExperimentsConfigurationLoader' );
+		$configurationLoader->setMessageLocalizer( $context );
+		$taskTypes = $configurationLoader->loadTaskTypes();
+		if ( $taskTypes instanceof StatusValue ) {
+			$status = Status::wrap( $taskTypes );
+			$status->setMessageLocalizer( $context );
+			return [
+				'_error' => $status->getWikiText(),
+			];
+		} else {
+			$taskTypesData = [];
+			foreach ( $taskTypes as $taskType ) {
+				$taskTypesData[$taskType->getId()] = $taskType->toArray( $context );
+			}
+			return $taskTypesData;
 		}
 	}
 
