@@ -45,7 +45,7 @@ StartEditingDialog.static.actions = [
 StartEditingDialog.prototype.initialize = function () {
 	StartEditingDialog.super.prototype.initialize.call( this );
 
-	this.topicPanel = new OO.ui.PanelLayout( { padded: true, expanded: false } );
+	this.topicPanel = new OO.ui.PanelLayout( { padded: false, expanded: false } );
 	// TODO implement the topic panel
 	this.topicPanel.$element.append( $( '<p>' ).text( 'Topic panel' ) );
 	this.difficultyPanel = this.buildDifficultyPanel();
@@ -122,7 +122,7 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 };
 
 StartEditingDialog.prototype.buildDifficultyPanel = function () {
-	var difficultyPanel = new OO.ui.PanelLayout( { padded: true, expanded: false } ),
+	var difficultyPanel = new OO.ui.PanelLayout( { padded: false, expanded: false } ),
 		levels = [ 'easy', 'medium', 'hard' ],
 		legendRows = levels.map( function ( level ) {
 			var classPrefix = 'mw-ge-startediting-dialog-difficulty-',
