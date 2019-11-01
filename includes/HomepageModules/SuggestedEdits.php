@@ -18,6 +18,7 @@ use StatusValue;
  */
 class SuggestedEdits extends BaseModule {
 
+	const ENABLED_PREF = 'growthexperiments-homepage-suggestededits';
 	const ACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-activated';
 
 	/** @var EditInfoService */
@@ -39,6 +40,18 @@ class SuggestedEdits extends BaseModule {
 		parent::__construct( 'suggested-edits', $context );
 		$this->editInfoService = $editInfoService;
 		$this->pageViewService = $pageViewService;
+	}
+
+	/**
+	 * Check whether the suggested edits feature is enabled.
+	 * @param IContextSource $context
+	 * @return bool
+	 */
+	public static function isEnabled( IContextSource $context ) {
+		return $context->getConfig()->get( 'GEHomepageSuggestedEditsEnabled' ) && (
+			!$context->getConfig()->get( 'GEHomepageSuggestedEditsRequiresOptIn' ) ||
+			$context->getUser()->getBoolOption( self::ENABLED_PREF )
+		);
 	}
 
 	/**

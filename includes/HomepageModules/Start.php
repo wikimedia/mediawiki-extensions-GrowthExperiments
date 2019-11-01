@@ -34,7 +34,7 @@ class Start extends BaseTaskModule {
 			'email' => new Email( $context ),
 			'tutorial' => new Tutorial( $context )
 		];
-		if ( $context->getConfig()->get( 'GEHomepageSuggestedEditsEnabled' ) ) {
+		if ( SuggestedEdits::isEnabled( $context ) ) {
 			$this->tasks['startediting'] = new StartEditing( $context );
 		} else {
 			$this->tasks['userpage'] = new Userpage( $context );
