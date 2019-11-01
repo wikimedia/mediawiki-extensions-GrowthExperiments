@@ -7,6 +7,78 @@
 		padding: 1em;
 	}
 
+	&-progress {
+		padding: 1em 1.5em;
+		background-color: @colorGray15;
+
+		&-label {
+			color: @colorGray5;
+			font-size: 0.9em;
+		}
+
+		&-indicator {
+			display: inline-block;
+			width: 8px;
+			height: 8px;
+			margin-right: 8px;
+			border-radius: 50%;
+			background-color: @colorGray12;
+
+			&-completed {
+				background-color: @colorGray2;
+			}
+		}
+	}
+
+	&-intro {
+		&-general {
+			background-color: @colorGray15;
+			padding: 1.5em;
+
+			&:after {
+				content: '';
+				display: block;
+				clear: both;
+			}
+
+			&-title,
+			&-header {
+				font-weight: bold;
+				color: @colorGray2;
+				font-size: 1.2em;
+			}
+
+			&-subheader {
+				color: @colorGray5;
+				font-size: 1.2em;
+			}
+
+			&-image {
+				width: 256px;
+
+				.mw-ge-startediting-dialog-intro-withresponse & {
+					float: right;
+					margin-left: 1em;
+				}
+			}
+		}
+
+		&-response {
+			padding: 1.5em;
+
+			&-image {
+				float: left;
+				width: 96px;
+				margin-right: 1em;
+			}
+
+			&-label {
+				color: @colorGray5;
+				font-size: 1.2em;
+			}
+		}
+	}
+
 	&-difficulty {
 		&-banner {
 			font-size: 1.2em;

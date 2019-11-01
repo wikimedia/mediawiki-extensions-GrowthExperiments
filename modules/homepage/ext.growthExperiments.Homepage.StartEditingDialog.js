@@ -7,31 +7,25 @@ OO.inheritClass( StartEditingDialog, OO.ui.Dialog );
 StartEditingDialog.static.name = 'startediting';
 StartEditingDialog.static.size = 'large';
 
-// HACK: Since the topic panel is not implemented yet, the difficulty panel currently shows the
-// topic-back and difficulty-forward buttons. Once the topic panel has been implemented, we'll
-// make the changes spelled out in the comments below, so that the topic panel shows the
-// topic-* buttons and the difficulty panel the difficulty-* ones.
 StartEditingDialog.static.actions = [
 	{
-		label: mw.msg( 'growthexperiments-homepage-startediting-dialog-topic-back' ),
+		label: mw.msg( 'growthexperiments-homepage-startediting-dialog-intro-back' ),
 		action: 'close',
 		framed: true,
-		// Once the topic panel is implemented, change this to modes: [ 'topic' ]
-		modes: [ 'difficulty' ]
+		modes: [ 'intro' ]
 	},
 	{
 		label: mw.msg( 'growthexperiments-homepage-startediting-dialog-difficulty-back' ),
 		action: 'back',
 		framed: true,
-		// Once the topic panel is implemented, change this to modes: [ 'difficulty' ]
-		modes: []
+		modes: [ 'difficulty' ]
 	},
 	{
-		label: mw.msg( 'growthexperiments-homepage-startediting-dialog-topic-forward' ),
+		label: mw.msg( 'growthexperiments-homepage-startediting-dialog-intro-forward' ),
 		action: 'difficulty',
 		flags: [ 'progressive', 'primary' ],
 		framed: true,
-		modes: [ 'topic' ]
+		modes: [ 'intro' ]
 	},
 	{
 		label: mw.msg( 'growthexperiments-homepage-startediting-dialog-difficulty-forward' ),
@@ -45,13 +39,11 @@ StartEditingDialog.static.actions = [
 StartEditingDialog.prototype.initialize = function () {
 	StartEditingDialog.super.prototype.initialize.call( this );
 
-	this.topicPanel = new OO.ui.PanelLayout( { padded: false, expanded: false } );
-	// TODO implement the topic panel
-	this.topicPanel.$element.append( $( '<p>' ).text( 'Topic panel' ) );
+	this.introPanel = this.buildIntroPanel();
 	this.difficultyPanel = this.buildDifficultyPanel();
 
 	this.panels = new OO.ui.StackLayout();
-	this.panels.addItems( [ this.topicPanel, this.difficultyPanel ] );
+	this.panels.addItems( [ this.introPanel, this.difficultyPanel ] );
 	this.$body.append( this.panels.$element );
 
 	this.$actions = $( '<div>' ).addClass( 'mw-ge-startediting-dialog-actions' );
@@ -61,7 +53,7 @@ StartEditingDialog.prototype.initialize = function () {
 };
 
 StartEditingDialog.prototype.swapPanel = function ( panel ) {
-	if ( ( [ 'topic', 'difficulty' ].indexOf( panel ) ) === -1 ) {
+	if ( ( [ 'intro', 'difficulty' ].indexOf( panel ) ) === -1 ) {
 		throw new Error( 'Unknown panel: ' + panel );
 	}
 
@@ -89,8 +81,7 @@ StartEditingDialog.prototype.getSetupProcess = function ( data ) {
 	return StartEditingDialog.super.prototype.getSetupProcess
 		.call( this, data )
 		.next( function () {
-			// Once the topic panel is implemented, change this to 'topic'
-			this.swapPanel( 'difficulty' );
+			this.swapPanel( 'intro' );
 		}, this );
 };
 
@@ -105,7 +96,7 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 				this.swapPanel( 'difficulty' );
 			}
 			if ( action === 'back' ) {
-				this.swapPanel( 'topic' );
+				this.swapPanel( 'intro' );
 			}
 			if ( action === 'activate' ) {
 				// HACK: by default, the pending element is the head, but our head has height 0.
@@ -119,6 +110,94 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 					} );
 			}
 		}, this );
+};
+
+StartEditingDialog.prototype.buildIntroPanel = function () {
+	var $generalIntro, $responseIntro, surveyData, responseData, imageUrl,
+		imagePath = mw.config.get( 'wgExtensionAssetsPath' ) + '/GrowthExperiments/images',
+		introLinks = require( './config.json' ).GEHomepageSuggestedEditsIntroLinks,
+		responseMap = {
+			'add-image': {
+				image: 'intro-add-image.svg',
+				labelHtml: mw.message( 'growthexperiments-homepage-startediting-dialog-intro-response-add-image' )
+					.params( [ mw.util.getUrl( introLinks.image ) ] )
+					.parse()
+			},
+			'edit-typo': {
+				image: {
+					ltr: 'intro-typo-ltr.svg',
+					rtl: 'intro-typo-rtl.svg'
+				},
+				labelHtml: mw.message( 'growthexperiments-homepage-startediting-dialog-intro-response-edit-typo' )
+					.parse()
+			},
+			'new-page': {
+				image: {
+					ltr: 'intro-new-page-ltr.svg',
+					rtl: 'intro-new-page-rtl.svg'
+				},
+				labelHtml: mw.message( 'growthexperiments-homepage-startediting-dialog-intro-response-new-page' )
+					.params( [ mw.util.getUrl( introLinks.create ) ] )
+					.parse()
+			},
+			'edit-info-add-change': {
+				image: {
+					ltr: 'intro-add-info-ltr.svg',
+					rtl: 'intro-add-info-rtl.svg'
+				},
+				labelHtml: mw.message( 'growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change' )
+					.parse()
+			}
+		},
+		introPanel = new OO.ui.PanelLayout( { padded: false, expanded: false } );
+
+	$generalIntro = $( '<div>' )
+		.addClass( 'mw-ge-startediting-dialog-intro-general' )
+		.append(
+			$( '<img>' )
+				.addClass( 'mw-ge-startediting-dialog-intro-general-image' )
+				.attr( { src: imagePath + '/intro-heart-article.svg' } ),
+			$( '<p>' )
+				.addClass( 'mw-ge-startediting-dialog-intro-general-title' )
+				.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-title' ).text() ),
+			$( '<p>' )
+				.addClass( 'mw-ge-startediting-dialog-intro-general-header' )
+				.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-header' ).text() ),
+			$( '<p>' )
+				.addClass( 'mw-ge-startediting-dialog-intro-general-subheader' )
+				.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-subheader' ).text() )
+		);
+
+	try {
+		surveyData = JSON.parse( mw.user.options.get( 'welcomesurvey-responses' ) );
+	} catch ( e ) {
+		surveyData = {};
+	}
+	responseData = responseMap[ surveyData.reason ];
+
+	if ( responseData ) {
+		imageUrl = typeof responseData.image === 'string' ? responseData.image : responseData.image[ this.getDir() ];
+		$responseIntro = $( '<div>' )
+			.addClass( 'mw-ge-startediting-dialog-intro-response' )
+			.append(
+				$( '<img>' )
+					.addClass( 'mw-ge-startediting-dialog-intro-response-image' )
+					.attr( { src: imagePath + '/' + imageUrl } ),
+				$( '<p>' )
+					.addClass( 'mw-ge-startediting-dialog-intro-response-label' )
+					.html( responseData.labelHtml )
+			);
+		introPanel.$element.addClass( 'mw-ge-startediting-dialog-intro-withresponse' );
+	} else {
+		$responseIntro = $( [] );
+	}
+
+	introPanel.$element.append(
+		this.buildProgressIndicator( 1, 2 ),
+		$generalIntro,
+		$responseIntro
+	);
+	return introPanel;
 };
 
 StartEditingDialog.prototype.buildDifficultyPanel = function () {
@@ -164,6 +243,7 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 		} );
 
 	difficultyPanel.$element.append(
+		this.buildProgressIndicator( 2, 2 ),
 		$( '<div>' )
 			.addClass( 'mw-ge-startediting-dialog-difficulty-banner' )
 			.append(
@@ -179,6 +259,27 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 			.append( legendRows )
 	);
 	return difficultyPanel;
+};
+
+StartEditingDialog.prototype.buildProgressIndicator = function ( currentPage, totalPages ) {
+	var i,
+		$indicator = $( '<div>' ).addClass( 'mw-ge-startediting-dialog-progress' );
+	for ( i = 0; i < totalPages; i++ ) {
+		$indicator.append( $( '<span>' )
+			.addClass( 'mw-ge-startediting-dialog-progress-indicator' +
+				( i < currentPage ? ' mw-ge-startediting-dialog-progress-indicator-completed' : '' )
+			)
+		);
+	}
+	$indicator.append( $( '<span>' )
+		.addClass( 'mw-ge-startediting-dialog-progress-label' )
+		.text( mw.message( 'growthexperiments-homepage-startediting-dialog-progress' ).params( [
+			mw.language.convertNumber( currentPage ),
+			mw.language.convertNumber( totalPages )
+		] ) )
+	);
+
+	return $indicator;
 };
 
 module.exports = StartEditingDialog;

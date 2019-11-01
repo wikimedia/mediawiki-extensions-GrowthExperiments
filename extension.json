@@ -412,14 +412,26 @@
 		"ext.growthExperiments.Homepage.StartEditing": {
 			"packageFiles": [
 				"homepage/ext.growthExperiments.Homepage.StartEditing.js",
-				"homepage/ext.growthExperiments.Homepage.StartEditingDialog.js"
+				"homepage/ext.growthExperiments.Homepage.StartEditingDialog.js",
+				{
+					"name": "homepage/config.json",
+					"config": [ "GEHomepageSuggestedEditsIntroLinks" ]
+				}
 			],
 			"styles": [
 				"homepage/ext.growthExperiments.Homepage.StartEditingDialog.less"
 			],
 			"messages": [
-				"growthexperiments-homepage-startediting-dialog-topic-back",
-				"growthexperiments-homepage-startediting-dialog-topic-forward",
+				"growthexperiments-homepage-startediting-dialog-progress",
+				"growthexperiments-homepage-startediting-dialog-intro-back",
+				"growthexperiments-homepage-startediting-dialog-intro-forward",
+				"growthexperiments-homepage-startediting-dialog-intro-title",
+				"growthexperiments-homepage-startediting-dialog-intro-header",
+				"growthexperiments-homepage-startediting-dialog-intro-subheader",
+				"growthexperiments-homepage-startediting-dialog-intro-response-add-image",
+				"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change",
+				"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo",
+				"growthexperiments-homepage-startediting-dialog-intro-response-new-page",
 				"growthexperiments-homepage-startediting-dialog-difficulty-back",
 				"growthexperiments-homepage-startediting-dialog-difficulty-forward",
 				"growthexperiments-homepage-startediting-dialog-difficulty-header",
@@ -698,6 +710,13 @@
 		"GEHomepageSuggestedEditsRequiresOptIn": {
 			"description": "If true, the suggested edits feature will only be displayed to users who have the (hidden) preference for it enabled. If false (default), it will be displayed to everyone.",
 			"value": false
+		},
+		"GEHomepageSuggestedEditsIntroLinks": {
+			"description": "Titles of local help pages linked from the suggested edits intro dialog.",
+			"value": {
+				"create": "Help:Creating pages",
+				"image": "Help:Images"
+			}
 		},
 		"GEConfirmEmailEnabled": {
 			"description": "Global ON/OFF switch for the email confirmation changes.",
