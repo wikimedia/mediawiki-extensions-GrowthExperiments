@@ -193,7 +193,7 @@ class SpecialHomepage extends SpecialPage {
 			'mentorship' => new Mentorship( $this->getContext() ),
 			'help' => new Help( $this->getContext() ),
 		];
-		if ( $this->getConfig()->get( 'GEHomepageSuggestedEditsEnabled' ) ) {
+		if ( SuggestedEdits::isEnabled( $this->getContext() ) ) {
 			// TODO use some kind of registry instead of passing things through here
 			$modules['suggested-edits'] = new SuggestedEdits( $this->getContext(),
 				$this->editInfoService, $this->pageViewService );
@@ -202,7 +202,7 @@ class SpecialHomepage extends SpecialPage {
 	}
 
 	private function getModuleGroups() {
-		if ( $this->getConfig()->get( 'GEHomepageSuggestedEditsEnabled' )
+		if ( SuggestedEdits::isEnabled( $this->getContext() )
 			&& SuggestedEdits::isActivated( $this->getContext() )
 		) {
 			return [

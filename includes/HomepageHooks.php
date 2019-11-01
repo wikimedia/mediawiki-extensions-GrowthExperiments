@@ -259,6 +259,14 @@ class HomepageHooks {
 		$preferences[ SuggestedEdits::ACTIVATED_PREF ] = [
 			'type' => 'api',
 		];
+
+		if ( MediaWikiServices::getInstance()->getMainConfig()->get(
+				'GEHomepageSuggestedEditsRequiresOptIn'
+		) ) {
+			$preferences[ SuggestedEdits::ENABLED_PREF ] = [
+				'type' => 'api'
+			];
+		}
 	}
 
 	/**
