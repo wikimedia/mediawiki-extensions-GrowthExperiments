@@ -337,6 +337,10 @@
 				{
 					"name": "homepage/suggestededits/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
+				},
+				{
+					"name": "homepage/suggestededits/config.json",
+					"config": [ "GEHomepageSuggestedEditsIntroLinks" ]
 				}
 			],
 			"targets": [

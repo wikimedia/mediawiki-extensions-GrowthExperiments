@@ -27,6 +27,7 @@ DifficultyFiltersDialog.static.actions = [
 ];
 
 DifficultyFiltersDialog.prototype.initialize = function () {
+	var introLinks = require( './config.json' ).GEHomepageSuggestedEditsIntroLinks;
 	DifficultyFiltersDialog.super.prototype.initialize.call( this );
 
 	this.enabledFilters = {};
@@ -57,7 +58,11 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 	} );
 	this.createFilter.$element.append( $( '<div>' )
 		.addClass( 'suggested-edits-create-article-additional-msg' )
-		.text( mw.message( 'growthexperiments-homepage-suggestededits-create-article-additional-message' ).text() )
+		.html(
+			mw.message( 'growthexperiments-homepage-suggestededits-create-article-additional-message' )
+				.params( [ mw.user, mw.util.getUrl( introLinks.create ) ] )
+				.parse()
+		)
 	);
 
 	this.hardFilters = new OO.ui.CheckboxMultiselectWidget( {
