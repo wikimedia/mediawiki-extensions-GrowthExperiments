@@ -22,15 +22,14 @@ DifficultyFiltersDialog.static.actions = [
 	},
 	{
 		icon: 'close',
+		action: 'cancel',
 		flags: [ 'safe' ]
 	}
 ];
 
 DifficultyFiltersDialog.prototype.initialize = function () {
-	var introLinks = require( './config.json' ).GEHomepageSuggestedEditsIntroLinks;
 	DifficultyFiltersDialog.super.prototype.initialize.call( this );
 
-	this.enabledFilters = {};
 	this.content = new OO.ui.PanelLayout( {
 		padded: true,
 		expanded: false
@@ -39,14 +38,29 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 		padded: true,
 		expanded: false
 	} );
+	this.buildCheckboxFilters();
+	this.articleCountLabel = new OO.ui.LabelWidget( { classes: [ 'suggested-edits-article-count' ] } );
+	this.footerPanelLayout
+		.toggle( false )
+		.$element.append(
+			new OO.ui.IconWidget( { icon: 'live-broadcast' } ).$element,
+			this.articleCountLabel.$element
+		);
 
+	this.$body.append( this.content.$element );
+	this.$foot.append( this.footerPanelLayout.$element );
+};
+
+DifficultyFiltersDialog.prototype.buildCheckboxFilters = function () {
+	var introLinks = require( './config.json' ).GEHomepageSuggestedEditsIntroLinks;
+	this.content.$element.empty();
 	this.easyFilters = new OO.ui.CheckboxMultiselectWidget( {
 		items: this.makeCheckboxesForDifficulty( 'easy' )
-	} ).connect( this, { select: 'onSelect' } );
+	} ).connect( this, { select: 'performSearchUpdateActions' } );
 
 	this.mediumFilters = new OO.ui.CheckboxMultiselectWidget( {
 		items: this.makeCheckboxesForDifficulty( 'medium' )
-	} ).connect( this, { select: 'onSelect' } );
+	} ).connect( this, { select: 'performSearchUpdateActions' } );
 
 	this.createFilter = this.makeCheckbox( {
 		id: 'create',
@@ -68,7 +82,7 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 	this.hardFilters = new OO.ui.CheckboxMultiselectWidget( {
 		items: this.makeCheckboxesForDifficulty( 'hard' )
 			.concat( [ this.createFilter ] )
-	} ).connect( this, { select: 'onSelect' } );
+	} ).connect( this, { select: 'performSearchUpdateActions' } );
 
 	this.content.$element.append(
 		new OO.ui.IconWidget( { icon: 'difficulty-easy' } ).$element,
@@ -108,25 +122,24 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 				.text() )
 	);
 	this.content.$element.append( this.hardFilters.$element );
-
-	this.articleCountLabel = new OO.ui.LabelWidget( { classes: [ 'suggested-edits-article-count' ] } );
-	this.footerPanelLayout
-		.toggle( false )
-		.$element.append(
-			new OO.ui.IconWidget( { icon: 'live-broadcast' } ).$element,
-			this.articleCountLabel.$element
-		);
-
-	this.$body.append( this.content.$element );
-	this.$foot.append( this.footerPanelLayout.$element );
 };
 
-DifficultyFiltersDialog.prototype.onSelect = function () {
-	this.enabledFilters = this.easyFilters.findSelectedItemsData()
+/**
+ * Return an array of enabled task types to use for searching.
+ * @return {Object[]}
+ */
+DifficultyFiltersDialog.prototype.getEnabledFilters = function () {
+	return this.easyFilters.findSelectedItemsData()
 		.concat( this.mediumFilters.findSelectedItemsData() )
 		.concat( this.hardFilters.findSelectedItemsData() );
-	if ( this.enabledFilters.length ) {
-		this.emit( 'search', this.enabledFilters );
+};
+
+/**
+ * Perform a search if enabled filters exist, otherwise disable Done action.
+ */
+DifficultyFiltersDialog.prototype.performSearchUpdateActions = function () {
+	if ( this.getEnabledFilters().length ) {
+		this.emit( 'search', this.getEnabledFilters() );
 		this.actions.get()[ 0 ].setDisabled( false );
 	} else {
 		this.actions.get()[ 0 ].setDisabled( true );
@@ -174,7 +187,7 @@ DifficultyFiltersDialog.prototype.updateMatchCount = function ( count ) {
 };
 
 DifficultyFiltersDialog.prototype.savePreferences = function () {
-	return new mw.Api().saveOption( 'growthexperiments-homepage-se-filters', JSON.stringify( this.enabledFilters ) );
+	return new mw.Api().saveOption( 'growthexperiments-homepage-se-filters', JSON.stringify( this.getEnabledFilters() ) );
 };
 
 DifficultyFiltersDialog.prototype.getActionProcess = function ( action ) {
@@ -182,6 +195,11 @@ DifficultyFiltersDialog.prototype.getActionProcess = function ( action ) {
 		.next( function () {
 			if ( action === 'close' ) {
 				this.savePreferences();
+				this.config.presets = this.getEnabledFilters();
+				this.close();
+			}
+			if ( action === 'cancel' ) {
+				this.emit( 'search', this.config.presets );
 				this.close();
 			}
 		}, this );
@@ -190,7 +208,8 @@ DifficultyFiltersDialog.prototype.getActionProcess = function ( action ) {
 DifficultyFiltersDialog.prototype.getSetupProcess = function ( data ) {
 	return DifficultyFiltersDialog.super.prototype.getSetupProcess.call( this, data )
 		.next( function () {
-			this.onSelect();
+			this.buildCheckboxFilters();
+			this.performSearchUpdateActions();
 		}, this );
 };
 
