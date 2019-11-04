@@ -53,24 +53,20 @@
 	/**
 	 * Fetch suggested edits from ApiQueryGrowthTasks.
 	 *
-	 * If initContext is true, then don't save the task types to the user's preferences.
-	 *
 	 * @param {string[]} taskTypes
 	 * @return {jQuery.Promise}
 	 */
 	SuggestedEditsModule.prototype.fetchTasks = function ( taskTypes ) {
 		var apiParams = {
 			action: 'query',
-			prop: 'info|pageviews|extracts|pageimages',
+			prop: 'info|pageviews|pageimages',
 			inprop: 'protection|url',
 			pvipdays: 1,
-			explaintext: 1,
-			exintro: 1,
 			pithumbsize: 260,
 			generator: 'growthtasks',
 			ggttasktypes: taskTypes.join( '|' ),
 			formatversion: 2,
-			uselang: mw.config.get( 'wgUserLang' )
+			uselang: mw.config.get( 'wgUserLanguage' )
 		};
 		this.currentCard = null;
 		this.taskQueue = [];
@@ -81,7 +77,6 @@
 				return {
 					thumbnailSource: item.thumbnail && item.thumbnail.source || null,
 					title: item.title,
-					extract: item.extract,
 					url: item.canonicalurl,
 					pageviews: item.pageviews &&
 						item.pageviews[ Object.keys( item.pageviews )[ 0 ] ] || null,
@@ -98,7 +93,11 @@
 					.map( cleanUpData );
 			}
 			this.filters.updateMatchCount( this.taskQueue.length );
-			this.showCard();
+			this.getExtractAndUpdateQueue( this.queuePosition ).done( function () {
+				this.showCard();
+				// Preload the next card's data.
+				this.getExtractAndUpdateQueue( this.queuePosition + 1 );
+			}.bind( this ) );
 		}.bind( this ) ).catch( function () {
 			this.showCard( new ErrorCardWidget() );
 		}.bind( this ) );
@@ -125,6 +124,11 @@
 	SuggestedEditsModule.prototype.onNextCard = function () {
 		this.queuePosition = this.queuePosition + 1;
 		this.showCard();
+		// Preload the next card's data.
+		if ( this.taskQueue[ this.queuePosition + 1 ] &&
+			!this.taskQueue[ this.queuePosition + 1 ].extract ) {
+			this.getExtractAndUpdateQueue( this.queuePosition + 1 );
+		}
 	};
 
 	SuggestedEditsModule.prototype.onPreviousCard = function () {
@@ -146,20 +150,45 @@
 	};
 
 	SuggestedEditsModule.prototype.showCard = function ( card ) {
-		var suggestedEditData = this.taskQueue[ this.queuePosition ],
-			cardSelector = '.suggested-edits-card',
-			$cardElement = $( cardSelector );
-
+		var suggestedEditData = this.taskQueue[ this.queuePosition ];
+		this.currentCard = null;
 		if ( card ) {
 			this.currentCard = card;
 		} else if ( !this.taskQueue.length ) {
 			this.currentCard = new NoResultsWidget( { topicMatching: false } );
 		} else if ( !suggestedEditData ) {
 			this.currentCard = new EndOfQueueWidget( { topicMatching: false } );
-		} else {
-			this.currentCard = new EditCardWidget( suggestedEditData );
 		}
+		if ( this.currentCard ) {
+			this.updateCardAndControlsPresentation();
+			return;
+		}
+		this.getExtractAndUpdateQueue( this.queuePosition ).done( function () {
+			this.currentCard = new EditCardWidget( this.taskQueue[ this.queuePosition ] );
+			this.updateCardAndControlsPresentation();
+		}.bind( this ) );
+	};
 
+	SuggestedEditsModule.prototype.getExtractAndUpdateQueue = function ( taskQueuePosition ) {
+		var suggestedEditData = this.taskQueue[ taskQueuePosition ];
+		if ( suggestedEditData && suggestedEditData.extract ) {
+			return $.Deferred().resolve().promise();
+		}
+		return $.get( mw.config.get( 'wgServer' ) + '/api/rest_v1/page/summary/' + encodeURI( suggestedEditData.title ) ).done( function ( data ) {
+			suggestedEditData.extract = data.extract;
+			if ( !suggestedEditData.thumbnailSource && data.thumbnail ) {
+				// This will only apply for some beta wiki configurations and local setups.
+				suggestedEditData.thumbnailSource = data.thumbnail.source;
+			}
+			// Update the suggested edit data so we don't need to fetch it again
+			// if the user views the card more than once.
+			this.taskQueue[ taskQueuePosition ] = suggestedEditData;
+		}.bind( this ) );
+	};
+
+	SuggestedEditsModule.prototype.updateCardAndControlsPresentation = function () {
+		var cardSelector = '.suggested-edits-card',
+			$cardElement = $( cardSelector );
 		$cardElement.html( this.currentCard.$element );
 		this.filters.toggle( true );
 		this.updatePager();

@@ -76,7 +76,6 @@ class SuggestedEdits extends BaseModule {
 	protected function canRender() {
 		$extensionRegistry = ExtensionRegistry::getInstance();
 		return self::isActivated( $this->getContext() ) &&
-			   $extensionRegistry->isLoaded( 'TextExtracts' ) &&
 			   $extensionRegistry->isLoaded( 'PageViewInfo' ) &&
 			   $extensionRegistry->isLoaded( 'PageImages' );
 	}
