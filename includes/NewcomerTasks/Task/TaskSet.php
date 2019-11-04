@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\NewcomerTasks;
+namespace GrowthExperiments\NewcomerTasks\Task;
 
 use ArrayIterator;
 use Countable;

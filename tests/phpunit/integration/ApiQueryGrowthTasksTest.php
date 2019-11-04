@@ -5,7 +5,7 @@ namespace GrowthExperiments\Tests;
 use ApiRawMessage;
 use ApiTestCase;
 use ApiUsageException;
-use GrowthExperiments\NewcomerTasks\Task;
+use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;

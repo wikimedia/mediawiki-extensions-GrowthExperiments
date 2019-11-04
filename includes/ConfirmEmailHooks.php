@@ -52,7 +52,6 @@ class ConfirmEmailHooks {
 			$formDescriptor['email']['helpInline'] = true;
 		}
 
-		// @phan-suppress-next-line PhanTypeInvalidDimOffset
 		if ( ( $formDescriptor['captchaWord']['class'] ?? null ) === 'HTMLFancyCaptchaField' ) {
 			// Remove long-winded CAPTCHA explanation message
 			unset( $formDescriptor['captchaWord']['label-message'] );

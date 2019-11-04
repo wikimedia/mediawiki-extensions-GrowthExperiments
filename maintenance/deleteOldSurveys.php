@@ -80,7 +80,9 @@ class DeleteOldSurveys extends Maintenance {
 					}
 					$break = true;
 					break;
-				} elseif ( ( $welcomeSurveyData['_submit_date'] ?? null ) > $cutoffDate ) {
+				} elseif ( isset( $welcomeSurveyData['_submit_date'] ) &&
+					$welcomeSurveyData['_submit_date'] > $cutoffDate
+				) {
 					// The submit date is not monotonic by user id; we can skip this record but need to
 					// check later ones.
 					if ( $verbose ) {

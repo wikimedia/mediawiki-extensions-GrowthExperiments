@@ -6,6 +6,9 @@
 			"BaRaN6161 TURK"
 		]
 	},
+	"growthexperiments-homepage-startediting-dialog-intro-header": "Vikipedi, birlikte çalışan {{GENDER:|sizin}} gibi insanlar tarafından oluşturulmuştur.",
+	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>Hesabınızı oluştururken, mevcut bir makaleye bilgi eklemek veya değiştirmek istediğinizi söylediniz.</strong> Başlamak için küçük düzenlemelerin önerilerini bulabilirsiniz. Doğrudan belirli bir makaleyi değiştirmeyi tercih ediyorsanız, \"{{int:growthexperiments-homepage-startediting-dialog-intro-back}}\" tıklayabilir, makaleyi arayabilir ve \"{{int:vector-view-edit}}\" tıklayabilirsiniz.",
+	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>Hesabınızı oluştururken, yeni bir makale oluşturmak istediğinizi söylediniz.</strong> Bu önemli ama zorlu bir düzenleme türüdür. Bu nedenle, önce mevcut makalelerdeki bazı küçük düzenlemeleri denemenizi öneririz. Doğrudan yeni bir makale oluşturmayı tercih ediyorsanız, [$1 nasıl olduğunu öğrenebilirsiniz].",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "{{GENDER:$1|Siz}} ilk kez düzenlemeyi öğrendiğinde tavsiye edilir.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "{{GENDER:$1|Siz}} bazı kolay düzenlemeleri tamamladıktan sonra.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "{{GENDER:$1|Siz}}, Vikipedi'nin en iyi uygulamalarını öğrendiğinizde.",

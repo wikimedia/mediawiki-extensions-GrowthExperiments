@@ -38,6 +38,12 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 		padded: true,
 		expanded: false
 	} );
+	this.errorMessage = new OO.ui.MessageWidget( {
+		type: 'error',
+		inline: true,
+		classes: [ 'suggested-edits-filters-error' ],
+		label: mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-error' ).text()
+	} ).toggle( false );
 	this.buildCheckboxFilters();
 	this.articleCountLabel = new OO.ui.LabelWidget( { classes: [ 'suggested-edits-article-count' ] } );
 	this.footerPanelLayout
@@ -54,6 +60,7 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 DifficultyFiltersDialog.prototype.buildCheckboxFilters = function () {
 	var introLinks = require( './config.json' ).GEHomepageSuggestedEditsIntroLinks;
 	this.content.$element.empty();
+	this.content.$element.append( this.errorMessage.$element );
 	this.easyFilters = new OO.ui.CheckboxMultiselectWidget( {
 		items: this.makeCheckboxesForDifficulty( 'easy' )
 	} ).connect( this, { select: 'performSearchUpdateActions' } );
@@ -138,10 +145,12 @@ DifficultyFiltersDialog.prototype.getEnabledFilters = function () {
  * Perform a search if enabled filters exist, otherwise disable Done action.
  */
 DifficultyFiltersDialog.prototype.performSearchUpdateActions = function () {
+	this.emit( 'search', this.getEnabledFilters() );
 	if ( this.getEnabledFilters().length ) {
-		this.emit( 'search', this.getEnabledFilters() );
 		this.actions.get()[ 0 ].setDisabled( false );
+		this.errorMessage.toggle( false );
 	} else {
+		this.errorMessage.toggle( true );
 		this.actions.get()[ 0 ].setDisabled( true );
 	}
 };
@@ -196,11 +205,22 @@ DifficultyFiltersDialog.prototype.getActionProcess = function ( action ) {
 			if ( action === 'close' ) {
 				this.savePreferences();
 				this.config.presets = this.getEnabledFilters();
-				this.close();
+				this.close( { action: 'done' } );
 			}
 			if ( action === 'cancel' ) {
-				this.emit( 'search', this.config.presets );
-				this.close();
+				if ( !this.getEnabledFilters().length ) {
+					// User has deselected all filters, so ensure they're deselected when dialog
+					// re-opens.
+					this.config.presets = [];
+				}
+				if ( JSON.stringify( this.getEnabledFilters() ) !==
+					JSON.stringify( this.config.presets ) ) {
+					// User has canceled and the filters they interacted with
+					// differ from what they had selected when the dialog opened,
+					// so perform a search with their original settings.
+					this.emit( 'search', this.config.presets );
+				}
+				this.close( { action: 'cancel' } );
 			}
 		}, this );
 };
@@ -209,7 +229,6 @@ DifficultyFiltersDialog.prototype.getSetupProcess = function ( data ) {
 	return DifficultyFiltersDialog.super.prototype.getSetupProcess.call( this, data )
 		.next( function () {
 			this.buildCheckboxFilters();
-			this.performSearchUpdateActions();
 		}, this );
 };
 

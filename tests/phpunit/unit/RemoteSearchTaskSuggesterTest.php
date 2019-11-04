@@ -2,11 +2,12 @@
 
 namespace GrowthExperiments\Tests;
 
-use GrowthExperiments\NewcomerTasks\Task;
-use GrowthExperiments\NewcomerTasks\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\Task;
+use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
+use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\Util;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\User\UserIdentityValue;
@@ -42,6 +43,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	public function testSuggest( $httpResult1, $httpResult2, $taskFilter, $limit, $expectedTaskSet ) {
 		$user = new UserIdentityValue( 1, 'Foo', 1 );
 
+		$templateProvider = $this->getTemplateProvider( $expectedTaskSet instanceof TaskSet );
 		$requestFactory = $this->getMockRequestFactory(
 			$httpResult1 instanceof StatusValue ? $httpResult1 : json_encode( $httpResult1 ),
 			$httpResult2 ? json_encode( $httpResult2 ) : null );
@@ -50,7 +52,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			[ new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY, [], [] ) ],
 			$httpResult2 ? [ new TemplateBasedTaskType( 'link', TaskType::DIFFICULTY_EASY, [], [] ) ] : []
 		);
-		$suggester = new RemoteSearchTaskSuggester( $requestFactory, $titleFactory,
+		$suggester = new RemoteSearchTaskSuggester( $templateProvider, $requestFactory, $titleFactory,
 			'https://example.com', $taskTypes, [] );
 		$taskSet = $suggester->suggest( $user, $taskFilter, null, $limit );
 		if ( $expectedTaskSet instanceof StatusValue ) {
@@ -209,6 +211,20 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'expectedTaskSet' => StatusValue::newFatal( new RawMessage( 'foo' ) ),
 			],
 		];
+	}
+
+	/**
+	 * @param bool $expectsToBeCalled
+	 * @return TemplateProvider|MockObject
+	 */
+	private function getTemplateProvider( bool $expectsToBeCalled ) {
+		$templateProvider = $this->getMockBuilder( TemplateProvider::class )
+			->disableOriginalConstructor()
+			->setMethods( [ 'fill' ] )
+			->getMock();
+		$templateProvider->expects( $expectsToBeCalled ? $this->once() : $this->never() )
+			->method( 'fill' );
+		return $templateProvider;
 	}
 
 	/**

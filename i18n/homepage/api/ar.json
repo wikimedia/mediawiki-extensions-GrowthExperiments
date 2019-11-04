@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"ديفيد"
+			"ديفيد",
+			"Dyolf77 (WMF)"
 		]
 	},
-	"apihelp-homepagequestionstore-summary": "الحصول على الأسئلة المنسقة المنشورة عبر وحدات الصفحة الرئيسية",
-	"apihelp-homepagequestionstore-param-questionformat": "التنسيق لإرجاع الأسئلة به، مثل HTML.",
+	"apihelp-homepagequestionstore-summary": "{{GENDER:|احصل|احصلي}} على أسئلة منسقة منشورة عبر وحدات الصفحة الرئيسية",
+	"apihelp-homepagequestionstore-param-questionformat": "التنسيق لإرجاع الأسئلة، مثل HTML.",
 	"apihelp-homepagequestionstore-param-storage": "موقع تخزين الأسئلة.",
-	"apihelp-homepagequestionstore-param-userid": "معرف المستخدم للحصول على أسئلة له.",
+	"apihelp-homepagequestionstore-param-userid": "معرف المستخدم للحصول على أسئلة من أجله.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "لا توجد أسئلة."
 }

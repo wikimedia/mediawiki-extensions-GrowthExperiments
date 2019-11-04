@@ -1,7 +1,14 @@
 ( function () {
 	'use strict';
 
-	function SuggestedEditsFiltersWidget( config ) {
+	/**
+	 * @param {Object} config Configuration options
+	 * @param {Array<string>} config.taskTypePresets List of IDs of enabled task types
+	 * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
+	 * @param {HomepageModuleLogger} logger
+	 * @constructor
+	 */
+	function SuggestedEditsFiltersWidget( config, logger ) {
 		var DifficultyFiltersDialog = require( './ext.growthExperiments.Homepage.SuggestedEdits.DifficultyFiltersDialog.js' ),
 			windowManager = new OO.ui.WindowManager( { modal: true } );
 
@@ -14,12 +21,26 @@
 				this.updateButtonLabelAndIcon( search );
 			}.bind( this ) );
 
-		this.dialog.$element.addClass( 'suggested-edits-difficulty-filters' );
+		this.dialog.$element.addClass( 'suggested-edits-difficulty-filters' )
+			.on( 'click', '.suggested-edits-create-article-additional-msg a', function () {
+				logger.log( 'suggested-edits', config.mode, 'link-click',
+					{ linkId: 'se-create-info' } );
+			} );
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( 'body' ).append( windowManager.$element );
 		windowManager.addWindows( [ this.dialog ] );
 		this.difficultyFilterButtonWidget.on( 'click', function () {
-			windowManager.openWindow( this.dialog );
+			var lifecycle = windowManager.openWindow( this.dialog );
+			logger.log( 'suggested-edits', config.mode, 'se-taskfilter-open' );
+			lifecycle.closing.done( function ( data ) {
+				if ( data && data.action === 'done' ) {
+					logger.log( 'suggested-edits', config.mode, 'se-taskfilter-done',
+						{ taskTypes: this.dialog.getEnabledFilters() } );
+				} else {
+					logger.log( 'suggested-edits', config.mode, 'se-taskfilter-cancel',
+						{ taskTypes: this.dialog.getEnabledFilters() } );
+				}
+			}.bind( this ) );
 		}.bind( this ) );
 
 		SuggestedEditsFiltersWidget.super.call( this, $.extend( {}, config, {
@@ -40,6 +61,14 @@
 	 */
 	SuggestedEditsFiltersWidget.prototype.updateButtonLabelAndIcon = function ( search ) {
 		var groups = [];
+		if ( !search.length ) {
+			// User has deselected all filters, set generic outline and message in button label.
+			this.difficultyFilterButtonWidget.setLabel(
+				mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filters-title' ).text()
+			);
+			this.difficultyFilterButtonWidget.setIcon( 'difficulty-outline' );
+			return;
+		}
 		search.forEach( function ( taskType ) {
 			function addMessage( messages, difficultyLevel ) {
 				// growthexperiments-homepage-suggestededits-difficulty-filter-label-easy

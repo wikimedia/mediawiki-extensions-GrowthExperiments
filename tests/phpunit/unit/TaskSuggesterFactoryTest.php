@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
+use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentityValue;
@@ -31,11 +32,13 @@ class TaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 	 */
 	public function testCreateRemote( $taskTypes, $templateBlacklist, $expectedError ) {
 		$configurationLoader = $this->getConfigurationLoader( $taskTypes, $templateBlacklist );
+		$templateProvider = $this->getTemplateProvider();
 		$requestFactory = $this->getRequestFactory();
 		$titleFactory = $this->getTitleFactory();
 		$apiUrl = 'https://example.com';
 		$taskSuggesterFactory = new TaskSuggesterFactory( $configurationLoader );
-		$taskSuggester = $taskSuggesterFactory->createRemote( $requestFactory, $titleFactory, $apiUrl );
+		$taskSuggester = $taskSuggesterFactory->createRemote( $templateProvider, $requestFactory,
+			$titleFactory, $apiUrl );
 		if ( $expectedError ) {
 			$this->assertInstanceOf( ErrorForwardingTaskSuggester::class, $taskSuggester );
 			$error = $taskSuggester->suggest( new UserIdentityValue( 1, 'Foo', 1 ) );
@@ -88,6 +91,17 @@ class TaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 		$configurationLoader->method( 'loadTaskTypes' )->willReturn( $taskTypes );
 		$configurationLoader->method( 'loadTemplateBlacklist' )->willReturn( $templateBlacklist );
 		return $configurationLoader;
+	}
+
+	/**
+	 * @return TemplateProvider|MockObject
+	 */
+	private function getTemplateProvider() {
+		$templateProvider = $this->getMockBuilder( TemplateProvider::class )
+			->disableOriginalConstructor()
+			->setMethods( [ 'fill' ] )
+			->getMock();
+		return $templateProvider;
 	}
 
 	/**

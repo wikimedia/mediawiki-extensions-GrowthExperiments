@@ -7,6 +7,10 @@
 
 // This block is separate from the rest as it is targeting the process dialog contents.
 .suggested-edits-difficulty-filters {
+	.suggested-edits-filters-error {
+		margin-bottom: 10px;
+	}
+
 	h4.suggested-edits-difficulty-level-label {
 		display: inline-block;
 		// Align with icon.
@@ -92,6 +96,7 @@
 		.se-card-error,
 		.se-card-end-of-queue {
 			width: @cardWrapperWidth;
+			height: @cardContainerWrapperHeight;
 
 			.se-card-title,
 			.se-card-text {
@@ -142,6 +147,8 @@
 					margin-top: unset;
 					margin-bottom: unset;
 					padding-top: unset;
+					// Override line-height: 1.3; in Minerva
+					line-height: 1.6;
 				}
 
 				.oo-ui-iconElement {
@@ -162,6 +169,8 @@
 					line-height: 1.4em;
 					position: relative;
 					padding: 2px 4px;
+					// Counter the global border-box rule on mobile
+					box-sizing: content-box;
 				}
 
 				.suggested-edits-popup-detail {
@@ -274,11 +283,9 @@
 
 						.se-card-extract {
 							font-size: 0.875em;
-							white-space: nowrap;
-							text-overflow: ellipsis;
 							overflow: hidden;
-							line-height: 0.875em;
-							height: 4em;
+							line-height: 1.5em;
+							height: 6em;
 						}
 
 						.se-card-pageviews {

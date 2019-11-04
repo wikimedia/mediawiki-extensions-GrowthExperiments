@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
-use GrowthExperiments\NewcomerTasks\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use MediaWiki\User\UserIdentity;
 use StatusValue;
 

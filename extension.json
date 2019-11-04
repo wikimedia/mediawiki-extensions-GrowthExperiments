@@ -128,7 +128,7 @@
 		"EventLogging": {
 			"Schemas": {
 				"HelpPanel": 18973214,
-				"HomepageModule": 19375909
+				"HomepageModule": 19528052
 			}
 		}
 	},
@@ -410,7 +410,8 @@
 				"growthexperiments-homepage-suggestededits-tasktype-time-references",
 				"growthexperiments-homepage-suggestededits-tasktype-time-update",
 				"growthexperiments-homepage-suggestededits-tasktype-time-expand",
-				"growthexperiments-homepage-suggestededits-create-article-additional-message"
+				"growthexperiments-homepage-suggestededits-create-article-additional-message",
+				"growthexperiments-homepage-suggestededits-difficulty-filter-error"
 			]
 		},
 		"ext.growthExperiments.Homepage.StartEditing": {
@@ -452,6 +453,8 @@
 			],
 			"dependencies": [
 				"mediawiki.api",
+				"mediawiki.Title",
+				"mediawiki.util",
 				"oojs-ui-widgets",
 				"oojs-ui-windows"
 			],

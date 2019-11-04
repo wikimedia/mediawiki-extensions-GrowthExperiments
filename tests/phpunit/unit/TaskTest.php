@@ -2,13 +2,13 @@
 
 namespace GrowthExperiments\Tests;
 
-use GrowthExperiments\NewcomerTasks\Task;
+use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWikiUnitTestCase;
 use TitleValue;
 
 /**
- * @covers \GrowthExperiments\NewcomerTasks\Task
+ * @covers \GrowthExperiments\NewcomerTasks\Task\Task
  */
 class TaskTest extends MediaWikiUnitTestCase {
 

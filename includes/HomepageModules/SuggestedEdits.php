@@ -190,4 +190,18 @@ class SuggestedEdits extends BaseModule {
 			'growthexperiments-homepage-suggestededits-footer-$1suffix' );
 	}
 
+	/** @inheritDoc */
+	protected function getActionData() {
+		return array_merge(
+			parent::getActionData(),
+			[
+				// these will be updated on the client side as needed
+				'taskTypes' => json_decode( $this->getContext()->getUser()->getOption(
+					'growthexperiments-homepage-se-filters'
+				) ),
+				'taskCount' => null,
+			]
+		);
+	}
+
 }
