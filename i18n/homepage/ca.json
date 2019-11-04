@@ -15,5 +15,7 @@
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Entesos",
 	"growthexperiments-specialimpact-title": "Impacte",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "edicions el darrer dia",
-	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Voluntaris com tu han contribuït a millorar {{SITENAME}} avui. Uneix-t'hi!"
+	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Voluntaris com tu han contribuït a millorar {{SITENAME}} avui. Uneix-t'hi!",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Fet",
+	"growthexperiments-homepage-suggestededits-error-description": "Torneu-ho a provar més tard."
 }

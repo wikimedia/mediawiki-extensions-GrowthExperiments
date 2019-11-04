@@ -43,5 +43,10 @@
 	"growthexperiments-tour-discovery-title": "התחילו כאן!",
 	"growthexperiments-tour-discovery-description": "אפשר להקליק על {{GENDER:$1|שם המשתמש שלך|שם המשתמשת שלך}} כדי לבקר בדף הבית {{GENDER:$1|שלך}}",
 	"growthexperiments-homepage-welcomesurvey-default-close": "מעבר לדף הבית {{GENDER:$1|שלך}}",
-	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "בינוני"
+	"growthexperiments-homepage-suggestededits-tasktype-label-references": "מצא הפניות (מקורות למאמרים קיימים)",
+	"growthexperiments-homepage-suggestededits-tasktype-label-create": "צור נושא חדש",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "בינוני",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "בחר את סוג העריכה",
+	"growthexperiments-homepage-suggestededits-error-title": "אין עריכות זמינות בשלב זה.",
+	"growthexperiments-homepage-suggestededits-error-description": "אנא נסה שנית מאוחר יותר."
 }

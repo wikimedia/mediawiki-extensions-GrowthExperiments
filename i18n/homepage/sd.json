@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mehtab ahmed"
+			"Mehtab ahmed",
+			"KaleemBhatti"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|سلام}}، {{bidi:$1}}!",
@@ -67,5 +68,6 @@
 	"growthexperiments-homepage-contributions-zero-button": "{{GENDER:$1|پنھنجي}} گھرصفحي ڏانھن وڃو",
 	"growthexperiments-tour-welcome-title": "{{GENDER:$1|اوھان جي}} گھرصفحي ۾ ڀليڪار!",
 	"growthexperiments-tour-discovery-title": "ھتان شروع ڪريو!",
-	"growthexperiments-homepage-welcomesurvey-default-close": "{{GENDER:$1|پنھنجي}} گھرصفحي ڏانھن وڃو"
+	"growthexperiments-homepage-welcomesurvey-default-close": "{{GENDER:$1|پنھنجي}} گھرصفحي ڏانھن وڃو",
+	"growthexperiments-homepage-suggestededits-error-description": "مهرباني ڪري وري ڪوشش ڪريو."
 }

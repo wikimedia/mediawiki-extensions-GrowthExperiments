@@ -100,5 +100,6 @@
 	"growthexperiments-homepage-discovery-thanks-header": "Շնորհակալություն {{GENDER:$1|Ձեր}} հաշիվը ստեղծելու համար։",
 	"growthexperiments-homepage-discovery-thanks-text": "Սեղմե՛ք էջի վերին մասում $2 վրա {{GENDER:$1|Ձեր}} հիմնական էջ այցելելու և սկսելու համար։",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "Միջին",
-	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Արված է"
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Արված է",
+	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Թարմացնել"
 }

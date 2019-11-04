@@ -67,8 +67,12 @@
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "{{GENDER:$1|Benvenuto|Benvenuta|Benvenuto/a}} sulla tua pagina principale!",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Inizia qui!",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Crea una nuova voce",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "Difficoltà $1",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "Facile",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "Medio",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-hard": "Difficile",
-	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Fatto"
+	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Seleziona tipi di modifiche",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Fatto",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> {{PLURAL:$1|voce trovata|voci trovate}}",
+	"growthexperiments-homepage-suggestededits-error-description": "Per favore, riprova più tardi."
 }

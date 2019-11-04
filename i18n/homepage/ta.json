@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"ElangoRamanujam"
+		]
+	},
+	"growthexperiments-homepage-suggestededits-pager-end": "முடிவு",
+	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3 - 5 நிமிடங்கள்",
+	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5 - 10 நிமிடங்கள்",
+	"growthexperiments-homepage-suggestededits-tasktype-time-references": "10 - 20 நிமிடங்கள்",
+	"growthexperiments-homepage-suggestededits-tasktype-time-expand": "20 - 30 நிமிடங்கள்",
+	"growthexperiments-homepage-suggestededits-tasktype-time-update": "20 - 30 நிமிடங்கள்",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "எளிதான",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "ஊடகம்",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-hard": "கடினம்",
+	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy": "எளிதான",
+	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "ஊடகம்",
+	"growthexperiments-homepage-suggestededits-tasktype-name-references": "மேற்கோள்கள்",
+	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "விரிவாக்குக",
+	"growthexperiments-homepage-suggestededits-tasktype-name-links": "இணைப்புகள்"
+}

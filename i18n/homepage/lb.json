@@ -45,8 +45,11 @@
 	"growthexperiments-homepage-suggestededits-tasktype-time-references": "15 - 20 Minutten",
 	"growthexperiments-homepage-suggestededits-tasktype-time-expand": "20 - 30 Minutten",
 	"growthexperiments-homepage-suggestededits-tasktype-time-update": "20 - 30 Minutten",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "Einfach",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-hard": "Schwéier",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy": "Einfach",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Mëttel",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Fäerdeg",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Referenzen",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Aktualiséieren",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Linken"

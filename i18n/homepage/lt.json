@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Naktis",
-			"Eitvys200"
+			"Eitvys200",
+			"Tomasdd"
 		]
 	},
 	"growthexperiments-homepage-email-changelink": "(keisti)",
@@ -30,5 +31,9 @@
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Sveiki atvykę į {{GENDER:$1|savo}} pagrindinį puslapį!",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|Jūs}} visada galite atidaryti šoninį meniu ir paspausti ant $2, kad čia sugrįžtumėte.",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Pradėkite čia!",
-	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Atidarykite šoninį menių ir pasirinkite $2, kad aplankytumėte {{GENDER:$1|savo}} pagrindinį puslapį."
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Atidarykite šoninį menių ir pasirinkite $2, kad aplankytumėte {{GENDER:$1|savo}} pagrindinį puslapį.",
+	"growthexperiments-homepage-suggestededits-pager-end": "Pabaiga",
+	"growthexperiments-homepage-suggestededits-no-results": "Pasiūlymų nerasta",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Atlikta",
+	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Nuorodos"
 }

@@ -77,11 +77,14 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Añadir enlaces entre artículos",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Crear un artículo nuevo",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Aprende más",
-	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3 - 5 minutos",
-	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5 - 10 minutos",
-	"growthexperiments-homepage-suggestededits-tasktype-time-references": "15 - 20 minutos",
-	"growthexperiments-homepage-suggestededits-tasktype-time-expand": "20 - 30 minutos",
+	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3-5 minutos",
+	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5-10 minutos",
+	"growthexperiments-homepage-suggestededits-tasktype-time-references": "15-20 minutos",
+	"growthexperiments-homepage-suggestededits-tasktype-time-expand": "20-30 minutos",
 	"growthexperiments-homepage-suggestededits-tasktype-time-update": "20 - 30 minutos",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "Dificultad: $1",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "Fácil",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-hard": "Difícil",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy": "Fácil",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Medio",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Difícil",
@@ -94,5 +97,5 @@
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Configuración de ediciones sugeridas no válida: le falta campo $1 para el tipo de tarea $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Configuración de ediciones sugeridas inválida: grupo inválido $1 para tipo de tarea $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Configuración de ediciones sugeridas inválida: mensaje faltante $1 para el tipo de tarea $2",
-	"growthexperiments-homepage-suggestededits-error-description": "Por favor, inténtalo de nuevo más tarde."
+	"growthexperiments-homepage-suggestededits-error-description": "Inténtalo de nuevo más tarde."
 }

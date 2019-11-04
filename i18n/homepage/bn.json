@@ -25,5 +25,6 @@
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1টি {{PLURAL:$1|সম্পাদনা}}",
 	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]]-এর করা প্রশ্ন",
 	"growthexperiments-homepage-tutorial-header": "সম্পাদনা করা শিখুন",
-	"growthexperiments-specialimpact-title": "প্রভাব"
+	"growthexperiments-specialimpact-title": "প্রভাব",
+	"growthexperiments-homepage-suggestededits-tasktype-label-create": "একটি নতুন নিবন্ধ তৈরি করুন"
 }

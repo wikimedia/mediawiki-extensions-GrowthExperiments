@@ -44,7 +44,9 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Lätt",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Medel",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Svår",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Utvidga korta artiklar. Skapa nya artiklar.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Efter {{GENDER:$1|du}} har genomfört några enkla redigeringar.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "När {{GENDER:$1|du}} har lärt dig om Wikipedias praxisar.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Skapa nya artiklar och utvidga korta artiklar.",
 	"growthexperiments-homepage-suggested-edits-header": "Förslag på redigeringar",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Din}} påverkan",
 	"growthexperiments-homepage-impact-subheader-text": "Folk läser artiklar som {{GENDER:$1|du}} har redigerat!",
@@ -104,8 +106,15 @@
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|Du}} kan alltid öppna sidomenyn och trycka på $2 för att återvända hit.",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Kom igång här!",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Öppna sidomenyn och tryck på $2 för att besöka {{GENDER:$1|din}} hemsida.",
+	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "Utvidga korta artiklar",
+	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Lägg till länkar mellan artiklar",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Skapa en ny artikel",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "Svårighetsgrad \"$1\"",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "Lätt",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "Medel",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-hard": "Svår",
-	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Klar"
+	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Välj redigeringstyper",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Klar",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> {{PLURAL:$1|artikel|artiklar}} hittades",
+	"growthexperiments-homepage-suggestededits-error-description": "Försök igen senare."
 }

@@ -38,5 +38,8 @@
 	"growthexperiments-tour-response-button-okay": "Sapratu",
 	"growthexperiments-homepage-help-cancel": "Atcelt",
 	"growthexperiments-tour-discovery-title": "Sāc šeit!",
-	"growthexperiments-homepage-suggestededits-next-card": "Nākamais ieteiktais labojums"
+	"growthexperiments-homepage-suggestededits-next-card": "Nākamais ieteiktais labojums",
+	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Pievienot saites starp rakstiem",
+	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Izveidot jaunu rakstu",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Gatavs"
 }
