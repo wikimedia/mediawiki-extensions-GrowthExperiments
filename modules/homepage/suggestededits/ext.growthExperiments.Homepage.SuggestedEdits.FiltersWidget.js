@@ -11,7 +11,7 @@
 		this.dialog = new DifficultyFiltersDialog( config )
 			.on( 'search', function ( search ) {
 				this.emit( 'search', search );
-				this.updateButtonLabel( search );
+				this.updateButtonLabelAndIcon( search );
 			}.bind( this ) );
 
 		this.dialog.$element.addClass( 'suggested-edits-difficulty-filters' );
@@ -34,7 +34,11 @@
 		this.dialog.updateMatchCount( count );
 	};
 
-	SuggestedEditsFiltersWidget.prototype.updateButtonLabel = function ( search ) {
+	/**
+	 * Update the button label and icon depending on task types selected.
+	 * @param {string[]} search
+	 */
+	SuggestedEditsFiltersWidget.prototype.updateButtonLabelAndIcon = function ( search ) {
 		var groups = [];
 		search.forEach( function ( taskType ) {
 			function addMessage( messages, difficultyLevel ) {
@@ -49,14 +53,22 @@
 			}
 			if ( [ 'links', 'copyedit' ].indexOf( taskType ) > -1 ) {
 				groups = addMessage( groups, 'easy' );
+				this.difficultyFilterButtonWidget.setIcon( 'difficulty-easy' );
 			}
 			if ( [ 'references', 'update' ].indexOf( taskType ) > -1 ) {
 				groups = addMessage( groups, 'medium' );
+				this.difficultyFilterButtonWidget.setIcon( 'difficulty-medium' );
 			}
 			if ( [ 'expand' ].indexOf( taskType ) > -1 ) {
 				groups = addMessage( groups, 'hard' );
+				this.difficultyFilterButtonWidget.setIcon( 'difficulty-hard' );
 			}
-		} );
+		}.bind( this ) );
+
+		if ( groups.length > 1 ) {
+			this.difficultyFilterButtonWidget.setIcon( 'difficulty-outline' );
+		}
+
 		this.difficultyFilterButtonWidget.setLabel(
 			mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-label' )
 				.params( [ groups.join( mw.msg( 'comma-separator' ) ) ] )

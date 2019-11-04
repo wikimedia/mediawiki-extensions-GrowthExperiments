@@ -75,7 +75,7 @@
 		this.currentCard = null;
 		this.taskQueue = [];
 		this.queuePosition = 0;
-		this.filters.updateButtonLabel( taskTypes );
+		this.filters.updateButtonLabelAndIcon( taskTypes );
 		return new mw.Api().get( apiParams ).done( function ( data ) {
 			function cleanUpData( item ) {
 				return {
