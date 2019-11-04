@@ -56,10 +56,9 @@
 	 * If initContext is true, then don't save the task types to the user's preferences.
 	 *
 	 * @param {string[]} taskTypes
-	 * @param {bool} initContext
 	 * @return {jQuery.Promise}
 	 */
-	SuggestedEditsModule.prototype.fetchTasks = function ( taskTypes, initContext ) {
+	SuggestedEditsModule.prototype.fetchTasks = function ( taskTypes ) {
 		var apiParams = {
 			action: 'query',
 			prop: 'info|pageviews|extracts|pageimages',
@@ -100,16 +99,9 @@
 			}
 			this.filters.updateMatchCount( this.taskQueue.length );
 			this.showCard();
-			if ( !initContext ) {
-				this.savePreferences( taskTypes );
-			}
 		}.bind( this ) ).catch( function () {
 			this.showCard( new ErrorCardWidget() );
 		}.bind( this ) );
-	};
-
-	SuggestedEditsModule.prototype.savePreferences = function ( taskTypes ) {
-		return new mw.Api().saveOption( 'growthexperiments-homepage-se-filters', JSON.stringify( taskTypes ) );
 	};
 
 	SuggestedEditsModule.prototype.updatePager = function () {

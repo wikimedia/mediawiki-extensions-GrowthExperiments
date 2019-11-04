@@ -173,10 +173,15 @@ DifficultyFiltersDialog.prototype.updateMatchCount = function ( count ) {
 	this.footerPanelLayout.toggle( true );
 };
 
+DifficultyFiltersDialog.prototype.savePreferences = function () {
+	return new mw.Api().saveOption( 'growthexperiments-homepage-se-filters', JSON.stringify( this.enabledFilters ) );
+};
+
 DifficultyFiltersDialog.prototype.getActionProcess = function ( action ) {
 	return DifficultyFiltersDialog.super.prototype.getActionProcess.call( this, action )
 		.next( function () {
 			if ( action === 'close' ) {
+				this.savePreferences();
 				this.close();
 			}
 		}, this );
