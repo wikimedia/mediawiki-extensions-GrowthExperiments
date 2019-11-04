@@ -182,4 +182,11 @@ DifficultyFiltersDialog.prototype.getActionProcess = function ( action ) {
 		}, this );
 };
 
+DifficultyFiltersDialog.prototype.getSetupProcess = function ( data ) {
+	return DifficultyFiltersDialog.super.prototype.getSetupProcess.call( this, data )
+		.next( function () {
+			this.onSelect();
+		}, this );
+};
+
 module.exports = DifficultyFiltersDialog;
