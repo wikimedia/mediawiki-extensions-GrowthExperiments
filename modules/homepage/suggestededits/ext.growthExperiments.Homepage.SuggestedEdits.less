@@ -142,6 +142,8 @@
 					margin-top: unset;
 					margin-bottom: unset;
 					padding-top: unset;
+					// Override line-height: 1.3; in Minerva
+					line-height: 1.6;
 				}
 
 				.oo-ui-iconElement {
@@ -162,6 +164,8 @@
 					line-height: 1.4em;
 					position: relative;
 					padding: 2px 4px;
+					// Counter the global border-box rule on mobile
+					box-sizing: content-box;
 				}
 
 				.suggested-edits-popup-detail {
