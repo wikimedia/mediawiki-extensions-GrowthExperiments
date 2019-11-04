@@ -409,7 +409,7 @@ class Impact extends BaseModule {
 	/**
 	 * Query the last 10 edited pages and the timestamp of the first edit for those pages.
 	 *
-	 * @return array like [ 'title' => <Title object>, 'ts' => <DateTime object> ]
+	 * @return array[] like [ 'title' => <Title object>, 'ts' => <DateTime object> ]
 	 * @throws Exception
 	 */
 	private function queryArticleEdits() {
@@ -496,7 +496,7 @@ class Impact extends BaseModule {
 	/**
 	 * Add pageviews information to the array of recent contributions.
 	 *
-	 * @param array &$contribs Recent contributions
+	 * @param array[] &$contribs Recent contributions
 	 */
 	private function addPageViews( &$contribs ) {
 		/** @var PageViewService $pageViewService */

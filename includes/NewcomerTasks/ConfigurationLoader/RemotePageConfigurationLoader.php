@@ -119,9 +119,6 @@ class RemotePageConfigurationLoader implements ConfigurationLoader {
 	 * Like loadTaskTypes() but without caching.
 	 * @param array $config
 	 * @return TaskType[]|StatusValue
-	 * @suppress PhanTypeArraySuspicious
-	 *   Suppress the "Suspicious array access to ?mixed" errors for $taskTypeData;
-	 *   no idea what that is about.
 	 */
 	private function parseTaskTypesFromConfig( array $config ) {
 		$status = StatusValue::newGood();
@@ -142,6 +139,7 @@ class RemotePageConfigurationLoader implements ConfigurationLoader {
 			}
 
 			if ( $status->isGood() ) {
+				'@phan-var array{group:string,templates:string[]} $taskTypeData';
 				$templates = array_map( function ( $template ) {
 					return new TitleValue( NS_TEMPLATE, $template );
 				}, $taskTypeData['templates'] );
