@@ -195,5 +195,6 @@
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Error message when the required system messages do not exist for one of the configured task types. Parameters:\n* $1 - Name of missing field\n* $2 - Task type which has the error.",
 	"growthexperiments-homepage-suggestededits-create-article-additional-message": "Text to display next to the disabled \"Create new article\" checkbox in suggested edits module. Parameters:\n* $1 - Name of the current user. Can be used with GENDER.\n* $2 - URL with more information about creating new articles; used as a link target\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-error-title": "Text to use in the title of a card shown to the user when an error occurs in loading data for the suggested edits module.\n\n{{doc-growthexperiments-homepage}}",
-	"growthexperiments-homepage-suggestededits-error-description": "Text to use in the description of a card shown to the user when an error occurs in loading data for the suggested edits module.\n\n{{doc-growthexperiments-homepage}}"
+	"growthexperiments-homepage-suggestededits-error-description": "Text to use in the description of a card shown to the user when an error occurs in loading data for the suggested edits module.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Error message for when newcomer tries to exit filter without making a selection of a type of edit task (e.g. copyedit, adding links, etc.).\n\n{{doc-growthexperiments-homepage}}"
 }
