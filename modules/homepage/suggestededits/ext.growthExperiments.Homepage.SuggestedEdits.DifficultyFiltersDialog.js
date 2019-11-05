@@ -38,6 +38,12 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 		padded: true,
 		expanded: false
 	} );
+	this.errorMessage = new OO.ui.MessageWidget( {
+		type: 'error',
+		inline: true,
+		classes: [ 'suggested-edits-filters-error' ],
+		label: mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-error' ).text()
+	} ).toggle( false );
 	this.buildCheckboxFilters();
 	this.articleCountLabel = new OO.ui.LabelWidget( { classes: [ 'suggested-edits-article-count' ] } );
 	this.footerPanelLayout
@@ -54,6 +60,7 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 DifficultyFiltersDialog.prototype.buildCheckboxFilters = function () {
 	var introLinks = require( './config.json' ).GEHomepageSuggestedEditsIntroLinks;
 	this.content.$element.empty();
+	this.content.$element.append( this.errorMessage.$element );
 	this.easyFilters = new OO.ui.CheckboxMultiselectWidget( {
 		items: this.makeCheckboxesForDifficulty( 'easy' )
 	} ).connect( this, { select: 'performSearchUpdateActions' } );
@@ -141,7 +148,9 @@ DifficultyFiltersDialog.prototype.performSearchUpdateActions = function () {
 	if ( this.getEnabledFilters().length ) {
 		this.emit( 'search', this.getEnabledFilters() );
 		this.actions.get()[ 0 ].setDisabled( false );
+		this.errorMessage.toggle( false );
 	} else {
+		this.errorMessage.toggle( true );
 		this.actions.get()[ 0 ].setDisabled( true );
 	}
 };
