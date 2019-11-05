@@ -169,7 +169,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 		);
 
 	try {
-		surveyData = JSON.parse( mw.user.options.get( 'welcomesurvey-responses' ) );
+		surveyData = JSON.parse( mw.user.options.get( 'welcomesurvey-responses' ) ) || {};
 	} catch ( e ) {
 		surveyData = {};
 	}
