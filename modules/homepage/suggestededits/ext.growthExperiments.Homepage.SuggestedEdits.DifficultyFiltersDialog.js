@@ -209,7 +209,6 @@ DifficultyFiltersDialog.prototype.getSetupProcess = function ( data ) {
 	return DifficultyFiltersDialog.super.prototype.getSetupProcess.call( this, data )
 		.next( function () {
 			this.buildCheckboxFilters();
-			this.performSearchUpdateActions();
 		}, this );
 };
 
