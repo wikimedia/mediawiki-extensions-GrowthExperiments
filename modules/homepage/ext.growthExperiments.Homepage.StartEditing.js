@@ -2,8 +2,9 @@
 	var StartEditingDialog = require( './ext.growthExperiments.Homepage.StartEditingDialog.js' );
 
 	function setupCta( $container ) {
-		var $buttonElement, ctaButton, dialog, windowManager;
-		$buttonElement = $container.find( '#mw-ge-homepage-startediting-cta' );
+		var ctaButton, dialog, windowManager,
+			$buttonElement = $container.find( '#mw-ge-homepage-startediting-cta' ),
+			mode = $buttonElement.closest( '.growthexperiments-homepage-module' ).data( 'mode' );
 		if ( $buttonElement.length === 0 ) {
 			return;
 		}
@@ -21,7 +22,14 @@
 			lifecycle.closing.done( function ( data ) {
 				if ( data && data.action === 'activate' ) {
 					ctaButton.setDisabled( true );
-					window.location.reload();
+					if ( mode === 'mobile-overlay' ) {
+						window.history.pushState( null, null, '#/homepage/suggested-edits' );
+						window.location.reload();
+					} else if ( mode === 'mobile-details' ) {
+						window.location.href = mw.util.getUrl( new mw.Title( 'Special:Homepage/suggested-edits' ).toString() );
+					} else {
+						window.location.reload();
+					}
 				}
 			} );
 			// TODO maybe restructure the page without refreshing?
