@@ -55,7 +55,7 @@ class TaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 		return [
 			'success' => [
 				'taskTypes' => [
-					new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY, [] ),
+					new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY, [], [] ),
 				],
 				'templateBlacklist' => [],
 				'expectedError' => null,
@@ -67,7 +67,7 @@ class TaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 			],
 			'template blacklist error' => [
 				'taskTypes' => [
-					new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY, [] ),
+					new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY, [], [] ),
 				],
 				'templateBlacklist' => $error,
 				'expectedError' => $error,

@@ -26,13 +26,19 @@ class TaskType {
 	/** @var string Task type difficulty class, one of the DIFFICULTY_* constants. */
 	protected $difficulty;
 
+	/** @var string|null Page name to point the "learn more" link to. */
+	protected $learnMoreLink;
+
 	/**
 	 * @param string $id Task type ID, e.g. 'copyedit'.
 	 * @param string $difficulty One of the DIFFICULTY_* constants.
+	 * @param array $extraData Optional pieces of information
+	 *   - 'learnMoreLink' (string): Page title for the "learn more" link for this task type
 	 */
-	public function __construct( $id, $difficulty ) {
+	public function __construct( $id, $difficulty, array $extraData = [] ) {
 		$this->id = $id;
 		$this->difficulty = $difficulty;
+		$this->learnMoreLink = $extraData['learnMoreLink'] ?? null;
 	}
 
 	/**
@@ -47,6 +53,13 @@ class TaskType {
 	 */
 	public function getDifficulty() {
 		return $this->difficulty;
+	}
+
+	/**
+	 * @return string|null
+	 */
+	public function getLearnMoreLink() {
+		return $this->learnMoreLink;
 	}
 
 	/**
@@ -116,6 +129,7 @@ class TaskType {
 				'label' => $this->getLabel( $messageLocalizer )->text(),
 				'timeestimate' => $this->getTimeEstimate( $messageLocalizer )->text(),
 			],
+			'learnMoreLink' => $this->getLearnMoreLink(),
 		];
 	}
 
