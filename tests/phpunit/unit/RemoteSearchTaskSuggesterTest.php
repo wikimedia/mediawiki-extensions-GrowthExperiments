@@ -47,8 +47,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			$httpResult2 ? json_encode( $httpResult2 ) : null );
 		$titleFactory = $this->getMockTitleFactory();
 		$taskTypes = array_merge(
-			[ new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY, [] ) ],
-			$httpResult2 ? [ new TemplateBasedTaskType( 'link', TaskType::DIFFICULTY_EASY, [] ) ] : []
+			[ new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY, [], [] ) ],
+			$httpResult2 ? [ new TemplateBasedTaskType( 'link', TaskType::DIFFICULTY_EASY, [], [] ) ] : []
 		);
 		$suggester = new RemoteSearchTaskSuggester( $requestFactory, $titleFactory,
 			'https://example.com', $taskTypes, [] );

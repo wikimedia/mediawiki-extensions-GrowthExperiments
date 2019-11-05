@@ -145,7 +145,12 @@ class RemotePageConfigurationLoader implements ConfigurationLoader {
 				$templates = array_map( function ( $template ) {
 					return new TitleValue( NS_TEMPLATE, $template );
 				}, $taskTypeData['templates'] );
-				$taskType = new TemplateBasedTaskType( $taskTypeId, $taskTypeData['group'], $templates );
+				$taskType = new TemplateBasedTaskType(
+					$taskTypeId,
+					$taskTypeData['group'],
+					[ 'learnMoreLink' => $taskTypeData['learnmore'] ?? null ],
+					$templates
+				);
 				$status->merge( $this->validateMessages( $taskType ) );
 				$taskTypes[] = $taskType;
 			}

@@ -77,9 +77,19 @@
 					this.getDifficultyIndicator(),
 					this.getTimeEstimate()
 				),
-				$( '<p>' ).text( this.taskTypeData.messages.description )
-				// TODO: Add a link with text set from the message of
-				// growthexperiments-homepage-suggestededits-tasktype-learn-more-{taskType}
+				$( '<p>' ).text( this.taskTypeData.messages.description ),
+				this.getLearnMoreLink()
+			);
+	};
+
+	TaskExplanationWidget.prototype.getLearnMoreLink = function () {
+		if ( !this.taskTypeData.learnMoreLink ) {
+			return $( [] );
+		}
+		return $( '<p>' )
+			.append( $( '<a>' )
+				.text( mw.message( 'growthexperiments-homepage-suggestededits-tasktype-learn-more' ).text() )
+				.attr( 'href', mw.util.getUrl( this.taskTypeData.learnMoreLink ) )
 			);
 	};
 
