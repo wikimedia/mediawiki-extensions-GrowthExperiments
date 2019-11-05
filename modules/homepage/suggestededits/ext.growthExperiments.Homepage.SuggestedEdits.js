@@ -72,7 +72,7 @@
 		this.taskQueue = [];
 		this.queuePosition = 0;
 		this.filters.updateButtonLabelAndIcon( taskTypes );
-		return new mw.Api().get( apiParams ).done( function ( data ) {
+		return new mw.Api().get( apiParams ).then( function ( data ) {
 			function cleanUpData( item ) {
 				return {
 					thumbnailSource: item.thumbnail && item.thumbnail.source || null,
@@ -93,8 +93,8 @@
 					.map( cleanUpData );
 			}
 			this.filters.updateMatchCount( this.taskQueue.length );
-			this.getExtractAndUpdateQueue( this.queuePosition ).done( function () {
-				this.showCard();
+			// use done instead of then so failed preloads will be retried when the user navigates
+			return this.showCard().done( function () {
 				// Preload the next card's data.
 				this.getExtractAndUpdateQueue( this.queuePosition + 1 );
 			}.bind( this ) );
@@ -150,7 +150,8 @@
 	};
 
 	SuggestedEditsModule.prototype.showCard = function ( card ) {
-		var suggestedEditData = this.taskQueue[ this.queuePosition ];
+		var queuePosition = this.queuePosition,
+			suggestedEditData = this.taskQueue[ queuePosition ];
 		this.currentCard = null;
 		if ( card ) {
 			this.currentCard = card;
@@ -163,18 +164,24 @@
 			this.updateCardAndControlsPresentation();
 			return;
 		}
-		this.getExtractAndUpdateQueue( this.queuePosition ).done( function () {
-			this.currentCard = new EditCardWidget( this.taskQueue[ this.queuePosition ] );
+
+		return this.getExtractAndUpdateQueue( queuePosition ).done( function () {
+			if ( queuePosition !== this.queuePosition ) {
+				return;
+			}
+			this.currentCard = new EditCardWidget( this.taskQueue[ queuePosition ] );
 			this.updateCardAndControlsPresentation();
 		}.bind( this ) );
 	};
 
 	SuggestedEditsModule.prototype.getExtractAndUpdateQueue = function ( taskQueuePosition ) {
-		var suggestedEditData = this.taskQueue[ taskQueuePosition ];
+		var apiUrl = mw.config.get( 'wgGERestbaseUrl' ) + '/page/summary/',
+			suggestedEditData = this.taskQueue[ taskQueuePosition ];
 		if ( suggestedEditData && suggestedEditData.extract ) {
 			return $.Deferred().resolve().promise();
 		}
-		return $.get( mw.config.get( 'wgServer' ) + '/api/rest_v1/page/summary/' + encodeURI( suggestedEditData.title ) ).done( function ( data ) {
+
+		return $.get( apiUrl + encodeURI( suggestedEditData.title ) ).done( function ( data ) {
 			suggestedEditData.extract = data.extract;
 			if ( !suggestedEditData.thumbnailSource && data.thumbnail ) {
 				// This will only apply for some beta wiki configurations and local setups.

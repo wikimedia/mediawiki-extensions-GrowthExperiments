@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments;
 
+use Config;
 use Exception;
 use FormatJson;
 use IContextSource;
@@ -226,6 +227,20 @@ class Util {
 			$t = $t->getIterator();
 		}
 		return $t;
+	}
+
+	/**
+	 * Get the URL of the RESTBase (PCS) summary endpoint (without trailing slash).
+	 * See https://www.mediawiki.org/wiki/Page_Content_Service#/page/summary
+	 * @param Config $config
+	 * @return string
+	 */
+	public static function getRestbaseUrl( Config $config ) {
+		$url = $config->get( 'GERestbaseUrl' );
+		if ( $url === false ) {
+			$url = $config->get( 'Server' ) . '/api/rest_v1';
+		}
+		return $url;
 	}
 
 }

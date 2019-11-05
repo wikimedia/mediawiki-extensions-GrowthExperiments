@@ -105,7 +105,8 @@ class SpecialHomepage extends SpecialPage {
 		$loggingEnabled = $this->getConfig()->get( 'GEHomepageLoggingEnabled' );
 		$out->addJsConfigVars( [
 			'wgGEHomepagePageviewToken' => $this->pageviewToken,
-			'wgGEHomepageLoggingEnabled' => $loggingEnabled
+			'wgGEHomepageLoggingEnabled' => $loggingEnabled,
+			'wgGERestbaseUrl' => Util::getRestbaseUrl( $this->getConfig() ),
 		] );
 		$out->addModules( 'ext.growthExperiments.Homepage.Logging' );
 		$out->enableOOUI();
