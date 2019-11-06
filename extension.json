@@ -452,6 +452,8 @@
 			],
 			"dependencies": [
 				"mediawiki.api",
+				"mediawiki.Title",
+				"mediawiki.util",
 				"oojs-ui-widgets",
 				"oojs-ui-windows"
 			],
