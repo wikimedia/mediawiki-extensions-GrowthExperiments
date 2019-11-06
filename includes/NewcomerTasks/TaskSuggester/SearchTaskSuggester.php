@@ -2,10 +2,11 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
-use GrowthExperiments\NewcomerTasks\Task;
-use GrowthExperiments\NewcomerTasks\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TemplateBasedTask;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
+use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\Util;
 use ISearchResultSet;
 use MediaWiki\Linker\LinkTarget;
@@ -23,6 +24,9 @@ abstract class SearchTaskSuggester implements TaskSuggester {
 
 	const DEFAULT_LIMIT = 200;
 
+	/** @var TemplateProvider */
+	private $templateProvider;
+
 	/** @var TaskType[] id => TaskType */
 	protected $taskTypes = [];
 
@@ -30,13 +34,16 @@ abstract class SearchTaskSuggester implements TaskSuggester {
 	protected $templateBlacklist;
 
 	/**
+	 * @param TemplateProvider $templateProvider
 	 * @param TaskType[] $taskTypes
 	 * @param LinkTarget[] $templateBlacklist
 	 */
 	public function __construct(
+		TemplateProvider $templateProvider,
 		array $taskTypes,
 		array $templateBlacklist
 	) {
+		$this->templateProvider = $templateProvider;
 		foreach ( $taskTypes as $taskType ) {
 			$this->taskTypes[$taskType->getId()] = $taskType;
 		}
@@ -89,13 +96,14 @@ abstract class SearchTaskSuggester implements TaskSuggester {
 				// TODO: Filter out pages that are protected.
 				/** @var $match SearchResult */
 				$taskType = $this->taskTypes[$type];
-				$suggestions[] = new Task( $taskType, $match->getTitle() );
+				$suggestions[] = new TemplateBasedTask( $taskType, $match->getTitle() );
 				$taskCount++;
 				if ( $taskCount >= $limit ) {
 					break 2;
 				}
 			}
 		}
+		$this->templateProvider->fill( $suggestions );
 		return new TaskSet( $suggestions, $totalCount, $offset );
 	}
 

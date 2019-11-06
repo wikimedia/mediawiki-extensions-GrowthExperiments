@@ -2,15 +2,15 @@
 
 namespace GrowthExperiments\Tests;
 
-use GrowthExperiments\NewcomerTasks\Task;
-use GrowthExperiments\NewcomerTasks\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\Task;
+use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use InvalidArgumentException;
 use MediaWikiUnitTestCase;
 use TitleValue;
 
 /**
- * @covers \GrowthExperiments\NewcomerTasks\TaskSet
+ * @covers \GrowthExperiments\NewcomerTasks\Task\TaskSet
  */
 class TaskSetTest extends MediaWikiUnitTestCase {
 

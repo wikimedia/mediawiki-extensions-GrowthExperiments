@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
-use GrowthExperiments\NewcomerTasks\Task;
-use GrowthExperiments\NewcomerTasks\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\Task;
+use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\Assert\Assert;
 

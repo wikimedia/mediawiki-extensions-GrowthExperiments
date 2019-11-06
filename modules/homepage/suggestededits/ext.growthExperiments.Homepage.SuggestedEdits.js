@@ -119,7 +119,8 @@
 					pageviews: ( item.pageviews && Object.keys( item.pageviews ).length ) ?
 						item.pageviews[ Object.keys( item.pageviews )[ 0 ] ] : null,
 					tasktype: item.tasktype,
-					difficulty: item.difficulty
+					difficulty: item.difficulty,
+					maintenanceTemplates: item.maintenancetemplates || null
 				};
 			}
 			function filterOutProtectedArticles( result ) {
@@ -219,7 +220,7 @@
 		var suggestedEditData = this.taskQueue[ cardPosition ];
 		return {
 			taskType: suggestedEditData.tasktype,
-			maintenanceTemplates: null, // TODO: need to generate this on the server side
+			maintenanceTemplates: suggestedEditData.maintenanceTemplates,
 			hasImage: !!suggestedEditData.thumbnailSource,
 			ordinalPosition: cardPosition,
 			pageviews: suggestedEditData.pageviews,

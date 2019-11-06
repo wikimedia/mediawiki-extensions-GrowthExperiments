@@ -26,7 +26,7 @@ class TemplateBasedTaskType extends TaskType {
 	/**
 	 * @return LinkTarget[]
 	 */
-	public function getTemplates(): array {
+	public function getTemplates() : array {
 		return $this->templates;
 	}
 

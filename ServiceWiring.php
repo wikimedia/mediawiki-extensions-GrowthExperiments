@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\RemotePageConfigurationL
 use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use MediaWiki\MediaWikiServices;
 
 return [
@@ -40,8 +41,11 @@ return [
 		$taskSuggesterFactory = new TaskSuggesterFactory( $configLoader );
 
 		if ( $config->get( 'GENewcomerTasksRemoteApiUrl' ) ) {
-			return $taskSuggesterFactory->createRemote( $services->getHttpRequestFactory(),
-				$services->getTitleFactory(), $config->get( 'GENewcomerTasksRemoteApiUrl' ) );
+			$dbr = $services->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA );
+			$templateProvider = new TemplateProvider( $services->getTitleFactory(), $dbr );
+			return $taskSuggesterFactory->createRemote( $templateProvider,
+				$services->getHttpRequestFactory(), $services->getTitleFactory(),
+				$config->get( 'GENewcomerTasksRemoteApiUrl' ) );
 		} else {
 			return new ErrorForwardingTaskSuggester( StatusValue::newFatal( new ApiRawMessage(
 				'The TaskSuggester has not been configured! See StaticTaskSuggester ' .

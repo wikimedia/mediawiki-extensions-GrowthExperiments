@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\NewcomerTasks;
+namespace GrowthExperiments\NewcomerTasks\Task;
 
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Linker\LinkTarget;

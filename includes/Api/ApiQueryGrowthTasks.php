@@ -6,9 +6,11 @@ use ApiBase;
 use ApiPageSet;
 use ApiQuery;
 use ApiQueryGeneratorBase;
-use GrowthExperiments\NewcomerTasks\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\Task;
+use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TemplateBasedTask;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
-use GrowthExperiments\NewcomerTasks\Task;
+use MediaWiki\Linker\LinkTarget;
 use StatusValue;
 use Title;
 
@@ -69,6 +71,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		$basePath = [ 'query', $this->getModuleName() ];
 		$titles = [];
 		$fits = true;
+		$i = 0;
 		// TODO: Consider grouping the data by "type" so on the client-side one could
 		// access result.data.copyedit rather an iterating over everything.
 		'@phan-var TaskSet $tasks';
@@ -79,6 +82,11 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				'tasktype' => $task->getTaskType()->getId(),
 				'difficulty' => $task->getTaskType()->getDifficulty(),
 			];
+			if ( $task instanceof TemplateBasedTask && $task->getTemplates() ) {
+				$extraData['maintenancetemplates'] = array_map( function ( LinkTarget $template ) {
+					return $template->getText();
+				}, $task->getTemplates() );
+			}
 
 			if ( $resultPageSet ) {
 				$titles[] = $title;
