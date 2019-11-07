@@ -79,6 +79,12 @@
 		this.currentCard = null;
 		this.taskQueue = [];
 		this.queuePosition = 0;
+		if ( !taskTypes.length ) {
+			// User has deselected all checkboxes; update the count and show
+			// no results.
+			this.filters.updateMatchCount( this.taskQueue.length );
+			return this.showCard( new NoResultsWidget( { topicMatching: false } ) );
+		}
 		this.filters.updateButtonLabelAndIcon( taskTypes );
 		this.apiPromise = new mw.Api().get( apiParams );
 		return this.apiPromise.then( function ( data ) {

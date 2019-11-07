@@ -40,6 +40,14 @@
 	 */
 	SuggestedEditsFiltersWidget.prototype.updateButtonLabelAndIcon = function ( search ) {
 		var groups = [];
+		if ( !search.length ) {
+			// User has deselected all filters, set generic outline and message in button label.
+			this.difficultyFilterButtonWidget.setLabel(
+				mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filters-title' ).text()
+			);
+			this.difficultyFilterButtonWidget.setIcon( 'difficulty-outline' );
+			return;
+		}
 		search.forEach( function ( taskType ) {
 			function addMessage( messages, difficultyLevel ) {
 				// growthexperiments-homepage-suggestededits-difficulty-filter-label-easy

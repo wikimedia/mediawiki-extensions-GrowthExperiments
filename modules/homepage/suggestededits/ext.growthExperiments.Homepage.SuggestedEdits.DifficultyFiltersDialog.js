@@ -138,8 +138,8 @@ DifficultyFiltersDialog.prototype.getEnabledFilters = function () {
  * Perform a search if enabled filters exist, otherwise disable Done action.
  */
 DifficultyFiltersDialog.prototype.performSearchUpdateActions = function () {
+	this.emit( 'search', this.getEnabledFilters() );
 	if ( this.getEnabledFilters().length ) {
-		this.emit( 'search', this.getEnabledFilters() );
 		this.actions.get()[ 0 ].setDisabled( false );
 	} else {
 		this.actions.get()[ 0 ].setDisabled( true );
@@ -199,7 +199,18 @@ DifficultyFiltersDialog.prototype.getActionProcess = function ( action ) {
 				this.close();
 			}
 			if ( action === 'cancel' ) {
-				this.emit( 'search', this.config.presets );
+				if ( !this.getEnabledFilters().length ) {
+					// User has deselected all filters, so ensure they're deselected when dialog
+					// re-opens.
+					this.config.presets = [];
+				}
+				if ( JSON.stringify( this.getEnabledFilters() ) !==
+					JSON.stringify( this.config.presets ) ) {
+					// User has canceled and the filters they interacted with
+					// differ from what they had selected when the dialog opened,
+					// so perform a search with their original settings.
+					this.emit( 'search', this.config.presets );
+				}
 				this.close();
 			}
 		}, this );
