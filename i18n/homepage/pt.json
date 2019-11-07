@@ -33,6 +33,7 @@
 	"growthexperiments-homepage-email-button-unconfirmed": "Obter uma hiperligação nova",
 	"growthexperiments-homepage-email-button-confirmed": "Preferências",
 	"growthexperiments-homepage-email-changelink": "(alterar)",
+	"growthexperiments-homepage-startediting-dialog-progress": "$1 de $2",
 	"growthexperiments-homepage-impact-header": "O {{GENDER:$1|seu}} impacto",
 	"growthexperiments-homepage-impact-subheader-text": "As pessoas estão a ler os artigos que {{GENDER:$1|você}} editou!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Visitas desde que {{GENDER:$1|você}} editou (últimos 60 dias):",
@@ -97,5 +98,8 @@
 	"growthexperiments-tour-discovery-title": "Começar aqui!",
 	"growthexperiments-tour-discovery-description": "Clique {{GENDER:$1|o seu}} nome de utilizador para visitar {{GENDER:$1|a sua}} página principal.",
 	"growthexperiments-homepage-welcomesurvey-default-close": "Ir para {{GENDER:$1|a sua}} página principal",
-	"growthexperiments-homepage-discovery-thanks-text": "Clique em $2 no topo da página para visitar a {{GENDER:$1|sua}} página inicial e começar."
+	"growthexperiments-homepage-discovery-thanks-text": "Clique em $2 no topo da página para visitar a {{GENDER:$1|sua}} página inicial e começar.",
+	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Criar um novo artigo",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "$1 edições",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "Fácil"
 }
