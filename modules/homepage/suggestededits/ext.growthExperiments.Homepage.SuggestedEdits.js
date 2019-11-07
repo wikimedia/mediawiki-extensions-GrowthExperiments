@@ -64,6 +64,10 @@
 			pvipdays: 1,
 			pithumbsize: 260,
 			generator: 'growthtasks',
+			// Fetch more in case protected articles are in the result set, so that after
+			// filtering we can have 200.
+			// TODO: Filter out protected articles on the server side.
+			ggtlimit: 250,
 			ggttasktypes: taskTypes.join( '|' ),
 			formatversion: 2,
 			uselang: mw.config.get( 'wgUserLanguage' )
@@ -90,7 +94,9 @@
 			if ( data.growthtasks.totalCount > 0 ) {
 				this.taskQueue = data.query.pages
 					.filter( filterOutProtectedArticles )
-					.map( cleanUpData );
+					.map( cleanUpData )
+					// Maximum number of tasks in the queue is always 200.
+					.slice( 0, 200 );
 			}
 			this.filters.updateMatchCount( this.taskQueue.length );
 			// use done instead of then so failed preloads will be retried when the user navigates
