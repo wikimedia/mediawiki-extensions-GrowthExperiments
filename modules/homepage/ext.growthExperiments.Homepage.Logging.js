@@ -15,7 +15,7 @@
 				}
 			};
 		},
-		moduleSelector = '.growthexperiments-homepage-module',
+		moduleSelector = '.growthexperiments-homepage-container .growthexperiments-homepage-module',
 		$modules = $( moduleSelector ),
 		handleClick = function ( e ) {
 			var $link = $( this ),
