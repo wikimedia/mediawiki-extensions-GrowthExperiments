@@ -12,6 +12,7 @@
 			SuggestedEditsModule.super.call( this, config );
 
 			this.currentCard = null;
+			this.apiPromise = null;
 
 			this.filters = new FiltersButtonGroupWidget( { presets: config.taskTypePresets } )
 				.connect( this, { search: 'fetchTasks' } )
@@ -72,11 +73,15 @@
 			formatversion: 2,
 			uselang: mw.config.get( 'wgUserLanguage' )
 		};
+		if ( this.apiPromise ) {
+			this.apiPromise.abort();
+		}
 		this.currentCard = null;
 		this.taskQueue = [];
 		this.queuePosition = 0;
 		this.filters.updateButtonLabelAndIcon( taskTypes );
-		return new mw.Api().get( apiParams ).then( function ( data ) {
+		this.apiPromise = new mw.Api().get( apiParams );
+		return this.apiPromise.then( function ( data ) {
 			function cleanUpData( item ) {
 				return {
 					thumbnailSource: item.thumbnail && item.thumbnail.source || null,
@@ -99,12 +104,17 @@
 					.slice( 0, 200 );
 			}
 			this.filters.updateMatchCount( this.taskQueue.length );
-			// use done instead of then so failed preloads will be retried when the user navigates
+			// use done instead of then so failed preloads will be retried when the
+			// user navigates
 			return this.showCard().done( function () {
 				// Preload the next card's data.
 				this.getExtractAndUpdateQueue( this.queuePosition + 1 );
 			}.bind( this ) );
-		}.bind( this ) ).catch( function () {
+		}.bind( this ) ).catch( function ( error, details ) {
+			if ( error === 'http' && details && details.textStatus === 'abort' ) {
+				// Don't show error card for XHR abort.
+				return;
+			}
 			this.showCard( new ErrorCardWidget() );
 		}.bind( this ) );
 	};
@@ -220,7 +230,7 @@
 		suggestedEditsModule = new SuggestedEditsModule( { $element: $wrapper,
 			taskTypePresets: taskTypes
 		} );
-		suggestedEditsModule.fetchTasks( taskTypes, true );
+		suggestedEditsModule.fetchTasks( taskTypes );
 	}
 
 	// Try setup for desktop mode and server-side-rendered mobile mode
