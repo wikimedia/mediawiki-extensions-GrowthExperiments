@@ -141,8 +141,8 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "一般",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "困難",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "完成",
-	"growthexperiments-homepage-suggestededits-tasktype-name-update": "更新",
-	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "展開",
-	"growthexperiments-homepage-suggestededits-tasktype-name-links": "連結",
+	"growthexperiments-homepage-suggestededits-tasktype-name-update": "更新條目",
+	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "展開簡短條目",
+	"growthexperiments-homepage-suggestededits-tasktype-name-links": "添加條目之間的連結",
 	"growthexperiments-homepage-suggestededits-error-description": "請稍後重試。"
 }

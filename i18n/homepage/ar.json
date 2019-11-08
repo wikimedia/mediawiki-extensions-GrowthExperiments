@@ -45,8 +45,8 @@
 	"growthexperiments-homepage-startediting-dialog-intro-back": "إلغاء",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "استمرار",
 	"growthexperiments-homepage-startediting-dialog-intro-title": "التعديلات المقترحة للبدء",
-	"growthexperiments-homepage-startediting-dialog-intro-header": "أُنشِئت ويكيبيديا من قبل أشخاص {{GENDER:|مثلك}} يعملون سويا.",
-	"growthexperiments-homepage-startediting-dialog-intro-subheader": "تساعد {{GENDER:|تعديلاتك}} في تحسين ويكيبيديا وعلى نطاق أشمل في نشر المعرفة الحرة ومشاركتها مع العالم، واصل بالبدء في التعديلات الصغيرة المقترحة.",
+	"growthexperiments-homepage-startediting-dialog-intro-header": "أُنشِئت ويكيبيديا من قبل أشخاص {{GENDER:|مثلكَ| مثلكِ}} يعملون سويا.",
+	"growthexperiments-homepage-startediting-dialog-intro-subheader": "تساعد {{GENDER:|تعديلاتكَ| تعديلاتكِ}} في تحسين ويكيبيديا وعلى نطاق أشمل في نشر المعرفة الحرة ومشاركتها مع العالم. {{GENDER:|استمر|استمري}} بالبدء في التعديلات الصغيرة المقترحة.",
 	"growthexperiments-homepage-startediting-dialog-intro-response-add-image": "<strong>عند إنشاء حسابك، أخبرتنا أنك تريد إضافة صورة أو رسم.</strong> هذا أمر هام لكن القيام به فيه نوع ما من الصعوبة، لذلك فإننا نقترح عليك أولا، أن تجرّب بعض التعديلات السهلة. لكن إن أردت رغم ذلك المضيّ مباشرة إلى إضافة صورة أو رسم، يمكنك [$1 تعلم كيفية القيام بذلك هنا].",
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo": "<strong>عند إنشاء حسابك، أخبرتنا أنك تريد إصلاح رسم إملائي أو خطأ.</strong> هنا يمكنك العثور على اقتراحات لتعديلات صغيرة لتبدأ بها.  لو أردت عوض ذلك المضي مباشرة إلى إصلاح مقالة بعينها، يمكنك النقر على \"{{int:growthexperiments-homepage-startediting-dialog-intro-back}}\"، ثم البحث عن المقالة، ثم النقر على \"{{int:vector-view-edit}}\".",
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>عند إنشاء حسابك، أخبرتنا أنك تريد إضافة أو تغيير معلومات في مقالة موجودة.</strong> هنا يمكنك العثور على اقتراحات لمهمات صغيرة لتبدأ بها. لو أردت عوض ذلك المضي مباشرة إلى تغيير مقالة بعينها، يمكنك النقر على \"{{int:growthexperiments-homepage-startediting-dialog-intro-back}}\"، ثم البحث عن المقالة، ثم النقر على \"{{int:vector-view-edit}}\".",
@@ -193,5 +193,5 @@
 	"growthexperiments-homepage-suggestededits-create-article-additional-message": "لإنشاء مقالة جديدة، {{GENDER:$1|ستحتاج|ستحتاجين}} إلى استخدام العديد من المهارات التي يمكنك تعلمها من خلال إكمال بعض المهام الأسهل، لمعرفة المزيد حول كيفية إنشاء مقالة جديدة، [$2 {{GENDER:$1| انقر|انقري}} هنا].",
 	"growthexperiments-homepage-suggestededits-error-title": "لا تتوفر تعديلات مقترحة في الوقت الحالي.",
 	"growthexperiments-homepage-suggestededits-error-description": "الرجاء معاودة المحاولة في وقت لاحق.",
-	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "حدد نوعا واحدا على الأقل من التعديلات"
+	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "حدّد على الأقل نوعا واحدا من التعديلات"
 }
