@@ -199,7 +199,7 @@
 	SuggestedEditsModule.prototype.getExtractAndUpdateQueue = function ( taskQueuePosition ) {
 		var apiUrl = mw.config.get( 'wgGERestbaseUrl' ) + '/page/summary/',
 			suggestedEditData = this.taskQueue[ taskQueuePosition ];
-		if ( suggestedEditData && suggestedEditData.extract ) {
+		if ( !suggestedEditData || suggestedEditData.extract ) {
 			return $.Deferred().resolve().promise();
 		}
 
