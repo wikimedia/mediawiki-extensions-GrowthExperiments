@@ -118,6 +118,9 @@
 		],
 		"ResourceLoaderRegisterModules": [
 			"GrowthExperiments\\TourHooks::onResourceLoaderRegisterModules"
+		],
+		"WikimediaEventsShouldSchemaEditAttemptStepOversample": [
+			"GrowthExperiments\\HomepageHooks::onWikimediaEventsShouldSchemaEditAttemptStepOversample"
 		]
 	},
 	"ResourceFileModulePaths": {
@@ -145,6 +148,19 @@
 					}
 				}
 			}
+		},
+		"ext.growthExperiments.ClickId": {
+			"scripts": [
+				"homepage/suggestededits/ext.growthExperiments.ClickId.js"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"dependencies": [
+				"mediawiki.Uri",
+				"mediawiki.util"
+			]
 		},
 		"ext.growthExperiments.Homepage.ConfirmEmail": {
 			"packageFiles": [ "homepage/ext.growthExperiments.Homepage.ConfirmEmail.js" ],

@@ -306,14 +306,21 @@
 	};
 
 	/**
-	 * Log click events on the task card (ie. the user visiting the task page).
+	 * Log click events on the task card (ie. the user visiting the task page) and pass
+	 * tracking data so events on the task page can be connected.
 	 * this.currentCard is expected to contain a valid EditCardWidget.
 	 */
 	SuggestedEditsModule.prototype.setupClickLogging = function () {
-		this.currentCard.$element.find( '.se-card-content' ).on( 'click', function () {
-			this.logger.log( 'suggested-edits', this.mode, 'se-task-click',
-				this.getCardLogData( this.queuePosition ) );
-		}.bind( this ) );
+		var $link = this.currentCard.$element.find( '.se-card-content' ),
+			clickId = mw.config.get( 'wgGEHomepagePageviewToken' ),
+			newUrl = new mw.Uri( $link.attr( 'href' ) ).extend( { geclickid: clickId } ).toString();
+
+		$link
+			.attr( 'href', newUrl )
+			.on( 'click', function () {
+				this.logger.log( 'suggested-edits', this.mode, 'se-task-click',
+					this.getCardLogData( this.queuePosition ) );
+			}.bind( this ) );
 	};
 
 	function initSuggestedTasks( $container ) {
