@@ -10,34 +10,51 @@ var StartEditingDialog = function StartEditingDialog( config, logger ) {
 	this.mode = config.mode;
 };
 
-OO.inheritClass( StartEditingDialog, OO.ui.Dialog );
+OO.inheritClass( StartEditingDialog, OO.ui.ProcessDialog );
 
 StartEditingDialog.static.name = 'startediting';
 StartEditingDialog.static.size = 'large';
+StartEditingDialog.static.title = mw.msg( 'growthexperiments-homepage-startediting-dialog-header' );
 
 StartEditingDialog.static.actions = [
 	{
-		label: mw.msg( 'growthexperiments-homepage-startediting-dialog-intro-back' ),
 		action: 'close',
+		// Use a label without an icon on desktop; an icon without a label on mobile
+		label: OO.ui.isMobile() ?
+			undefined :
+			mw.msg( 'growthexperiments-homepage-startediting-dialog-intro-back' ),
+		icon: OO.ui.isMobile() ?
+			'close' :
+			undefined,
+		flags: [ 'safe' ],
 		framed: true,
 		modes: [ 'intro' ]
 	},
 	{
-		label: mw.msg( 'growthexperiments-homepage-startediting-dialog-difficulty-back' ),
 		action: 'back',
+		// Use a label without an icon on desktop; an icon without a label on mobile
+		label: OO.ui.isMobile() ?
+			undefined :
+			mw.msg( 'growthexperiments-homepage-startediting-dialog-difficulty-back' ),
+		icon: OO.ui.isMobile() ?
+			'previous' :
+			undefined,
+		flags: [ 'safe' ],
 		framed: true,
 		modes: [ 'difficulty' ]
 	},
 	{
-		label: mw.msg( 'growthexperiments-homepage-startediting-dialog-intro-forward' ),
 		action: 'difficulty',
+		label: mw.msg( 'growthexperiments-homepage-startediting-dialog-intro-forward' ),
 		flags: [ 'progressive', 'primary' ],
 		framed: true,
 		modes: [ 'intro' ]
 	},
 	{
-		label: mw.msg( 'growthexperiments-homepage-startediting-dialog-difficulty-forward' ),
 		action: 'activate',
+		label: OO.ui.isMobile() ?
+			mw.msg( 'growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile' ) :
+			mw.msg( 'growthexperiments-homepage-startediting-dialog-difficulty-forward' ),
 		flags: [ 'progressive', 'primary' ],
 		framed: true,
 		modes: [ 'difficulty' ]
@@ -54,8 +71,10 @@ StartEditingDialog.prototype.initialize = function () {
 	this.panels.addItems( [ this.introPanel, this.difficultyPanel ] );
 	this.$body.append( this.panels.$element );
 
-	this.$actions = $( '<div>' ).addClass( 'mw-ge-startediting-dialog-actions' );
-	this.$foot.append( this.$actions );
+	this.$desktopActions = $( '<div>' ).addClass( 'mw-ge-startediting-dialog-desktopActions' );
+	if ( !OO.ui.isMobile() ) {
+		this.$foot.append( this.$desktopActions );
+	}
 
 	this.$element.addClass( 'mw-ge-startediting-dialog' );
 };
@@ -75,8 +94,20 @@ StartEditingDialog.prototype.attachActions = function () {
 	// Parent method
 	StartEditingDialog.super.prototype.attachActions.call( this );
 
+	// On desktop, move all actions to the footer
+	if ( !OO.ui.isMobile() ) {
+		this.$desktopActions.append(
+			this.$safeActions.children(),
+			this.$primaryActions.children()
+		);
+		// HACK: OOUI has really aggressive styling for buttons inside ActionWidgets inside
+		// ProgressDialogs that's pretty much impossible to override. Because we don't want our
+		// buttons to look ugly (with left/right borders but no top/bottom borders), remove
+		// the oo-ui-actionWidget class from our ActionWidgets so these OOUI styles don't apply.
+		this.$desktopActions.find( '.oo-ui-actionWidget' ).removeClass( 'oo-ui-actionWidget' );
+	}
+
 	for ( i = 0, len = actionWidgets.length; i < len; i++ ) {
-		this.$actions.append( actionWidgets[ i ].$element );
 		// Find the 'activate' button so that we can make it the pending element later
 		// (see getActionProcess)
 		if ( actionWidgets[ i ].action === 'activate' ) {

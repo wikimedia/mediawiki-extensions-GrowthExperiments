@@ -2,14 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Steeve815",
-			"Strayblues"
+			"Strayblues",
+			"Amire80"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|ברוך הבא|ברוכה הבאה}}, $1!",
 	"welcomesurvey-save-confirmation-title": "תודה! התגובות שלך נשמרו.",
-	"welcomesurvey-subtitle": "עזרו לנו להפוך את ויקיפדיה לטובה יותר עבור משתמשים חדשים כמוך, על ידי מענה על כמה שאלות אופציונליות.",
+	"welcomesurvey-subtitle": "עזרו לנו לשפר את חוויית הוויקיפדיה על־ידי מענה על כמה שאלות אופציונליות.",
 	"welcomesurvey-save-btn": "סיום",
-	"welcomesurvey-skip-btn": "דילוג על הסקר",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|לדלג}} על הסקר",
 	"welcomesurvey-close-btn": "סגירה וחזרה לדף $1",
 	"welcomesurvey-sidebar-privacy-title": "אכפת לנו מהפרטיות שלך",
 	"welcomesurvey-privacy-policy-link-text": "הצהרת פרטיות",
@@ -24,7 +25,7 @@
 	"welcomesurvey-question-reason-option-read-label": "בשביל לקרוא בוויקיפדיה",
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "אחר",
 	"welcomesurvey-question-reason-option-other-label": "אחר (נא לתאר)",
-	"welcomesurvey-question-reason-other-placeholder": "יש לציין סיבה אחרת...",
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|לציין}} סיבה אחרת...",
 	"welcomesurvey-question-edited-label": "האם אי פעם ערכת בוויקיפדיה?",
 	"welcomesurvey-question-edited-option-yes-many-label": "כן, הרבה פעמים",
 	"welcomesurvey-question-edited-option-yes-few-label": "כן, פעם או פעמיים",

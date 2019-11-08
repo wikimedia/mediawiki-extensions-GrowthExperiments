@@ -67,7 +67,7 @@
 			.on( 'mouseenter', togglePopup( popupButtonWidget, true ) );
 		popupButtonWidget.getPopup().connect( this, {
 			toggle: function ( show ) {
-				this.logger.log( 'suggested-edits', this.mode, 'se-task-explanation-' +
+				this.logger.log( 'suggested-edits', this.mode, 'se-explanation-' +
 					( show ? 'open' : 'close' ), { taskType: this.taskType } );
 			}
 		} );

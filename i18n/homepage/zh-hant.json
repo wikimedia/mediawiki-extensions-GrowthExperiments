@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Kly",
-			"Winston Sung"
+			"Winston Sung",
+			"Go1002opn"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
@@ -40,6 +41,7 @@
 	"growthexperiments-homepage-startediting-button": "查看建議編輯",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "取消",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "繼續",
+	"growthexperiments-homepage-startediting-dialog-intro-title": "開始建議的編輯",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "上一步驟",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "取得建議",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "首先嘗試一些<strong>簡易</strong>建議編輯",
@@ -47,8 +49,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "簡易",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "一般",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "困難",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "推薦給您作為編者的初步階段。",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "在您完成一些簡易的編輯時。",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "推薦當{{GENDER:$1|您}}在首次學習編輯時。",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "{{GENDER:$1|您}}完成一些簡易的編輯之後。",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "在您孰悉在維基百科上編寫時。",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "複製編輯（閱讀並檢閱條目）、分類，與其它簡短任務來習慣以百科全書風格來編寫。",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "找尋缺少參考文獻的條目，來讓內容更可靠。添加相關照片或圖片來改善現有條目。",
@@ -135,14 +137,30 @@
 	"growthexperiments-homepage-suggestededits-no-results": "找不到建議",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "選擇其它難度級別來找尋建議編輯。",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "選擇其它興趣或難度級別來找尋建議編輯。",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "修復拼寫，語法和聲調。",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "增加證實維基百科文章的資源。",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-update": "更新現有文章。",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-links": "使文中的詞超鏈接到另一篇文章。",
+	"growthexperiments-homepage-suggestededits-tasktype-label-links": "添加條目之間的連結",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "創建一個新條目",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "了解更多",
-	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy": "簡單",
+	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3 到 5 分鐘",
+	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5 到 10 分鐘",
+	"growthexperiments-homepage-suggestededits-tasktype-time-references": "15 到 20 分鐘",
+	"growthexperiments-homepage-suggestededits-tasktype-time-expand": "20 到 30 分鐘",
+	"growthexperiments-homepage-suggestededits-tasktype-time-update": "20 到 30 分鐘",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "簡易",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "一般",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-hard": "困難",
+	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy": "簡易",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "一般",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "困難",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "選擇編輯類型",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "完成",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "找到 <strong>$1</strong> 個{{PLURAL:$1|條目}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "更新條目",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "展開簡短條目",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "添加條目之間的連結",
-	"growthexperiments-homepage-suggestededits-error-description": "請稍後重試。"
+	"growthexperiments-homepage-suggestededits-error-description": "請稍後重試。",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "選擇至少一種編輯類型。"
 }

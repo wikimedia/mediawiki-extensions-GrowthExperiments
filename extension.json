@@ -427,6 +427,7 @@
 				"homepage/ext.growthExperiments.Homepage.StartEditingDialog.less"
 			],
 			"messages": [
+				"growthexperiments-homepage-startediting-dialog-header",
 				"growthexperiments-homepage-startediting-dialog-progress",
 				"growthexperiments-homepage-startediting-dialog-intro-back",
 				"growthexperiments-homepage-startediting-dialog-intro-forward",
@@ -439,6 +440,7 @@
 				"growthexperiments-homepage-startediting-dialog-intro-response-new-page",
 				"growthexperiments-homepage-startediting-dialog-difficulty-back",
 				"growthexperiments-homepage-startediting-dialog-difficulty-forward",
+				"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile",
 				"growthexperiments-homepage-startediting-dialog-difficulty-header",
 				"growthexperiments-homepage-startediting-dialog-difficulty-subheader",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label",
@@ -449,7 +451,8 @@
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body",
-				"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body"
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body",
+				"vector-view-edit"
 			],
 			"dependencies": [
 				"mediawiki.api",

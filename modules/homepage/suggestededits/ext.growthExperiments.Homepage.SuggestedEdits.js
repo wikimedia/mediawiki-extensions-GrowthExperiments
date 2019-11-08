@@ -7,7 +7,11 @@
 		PagerWidget = require( './ext.growthExperiments.Homepage.SuggestedEditPagerWidget.js' ),
 		PreviousNextWidget = require( './ext.growthExperiments.Homepage.SuggestedEditsPreviousNextWidget.js' ),
 		FiltersButtonGroupWidget = require( './ext.growthExperiments.Homepage.SuggestedEdits.FiltersWidget.js' ),
-		Logger = require( 'ext.growthExperiments.Homepage.Logger' );
+		Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
+		taskTypes = require( './TaskTypes.json' ),
+		initialTaskTypes = [ 'copyedit', 'links' ].filter( function ( taskType ) {
+			return taskType in taskTypes;
+		} );
 
 	/**
 	 * @param {Object} config Configuration options
@@ -267,7 +271,7 @@
 	SuggestedEditsModule.prototype.getExtractAndUpdateQueue = function ( taskQueuePosition ) {
 		var apiUrl = mw.config.get( 'wgGERestbaseUrl' ) + '/page/summary/',
 			suggestedEditData = this.taskQueue[ taskQueuePosition ];
-		if ( suggestedEditData && suggestedEditData.extract ) {
+		if ( !suggestedEditData || suggestedEditData.extract ) {
 			return $.Deferred().resolve().promise();
 		}
 
@@ -307,7 +311,7 @@
 	function initSuggestedTasks( $container ) {
 		var suggestedEditsModule,
 			savedTaskTypeFilters = mw.user.options.get( 'growthexperiments-homepage-se-filters' ),
-			taskTypes = savedTaskTypeFilters ? JSON.parse( savedTaskTypeFilters ) : [ 'copyedit', 'links' ],
+			taskTypes = savedTaskTypeFilters ? JSON.parse( savedTaskTypeFilters ) : initialTaskTypes,
 			$wrapper = $container.find( '.suggested-edits-module-wrapper' ),
 			mode = $wrapper.closest( '.growthexperiments-homepage-module' ).data( 'mode' );
 		if ( !$wrapper.length ) {
