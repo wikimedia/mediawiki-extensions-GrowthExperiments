@@ -19,7 +19,9 @@
 			$body = $( 'body' ),
 			windowManager = new OO.ui.WindowManager( { modal: OO.ui.isMobile() } ),
 			$overlay = $( '<div>' ).addClass( 'mw-ge-help-panel-widget-overlay' ),
-			logger = new HelpPanelLogger( configData.GEHelpPanelLoggingEnabled ),
+			logger = new HelpPanelLogger( configData.GEHelpPanelLoggingEnabled, {
+				sessionId: mw.config.get( 'wgGEHomepagePageviewToken' )
+			} ),
 			size = OO.ui.isMobile() ? 'full' : 'small',
 			/**
 			 * @type {OO.ui.Window}

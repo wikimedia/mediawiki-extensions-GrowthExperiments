@@ -14,6 +14,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
 use Html;
+use IContextSource;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Menu\Entries\IProfileMenuEntry;
 use MediaWiki\Minerva\Menu\Entries\HomeMenuEntry;
@@ -71,12 +72,44 @@ class HomepageHooks {
 		);
 	}
 
+	private static function getClickId( IContextSource $context ) {
+		if ( SuggestedEdits::isEnabled( $context ) ) {
+			$clickId = $context->getRequest()->getVal( 'geclickid' );
+			if ( $clickId && SpecialHomepage::verifyPageviewToken( $clickId, $context ) ) {
+				return $clickId;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * @param IContextSource $context
+	 * @param bool &$shouldOversample
+	 */
+	public static function onWikimediaEventsShouldSchemaEditAttemptStepOversample(
+		IContextSource $context, &$shouldOversample
+	) {
+		if ( self::getClickId( $context ) ) {
+			// Force WikimediaEvents to log EditAttemptStep on every request
+			$shouldOversample = true;
+		}
+	}
+
 	/**
 	 * @param OutputPage &$out
 	 * @param Skin &$skin
 	 * @throws ConfigException
 	 */
 	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
+		$context = $out->getContext();
+		$clickId = self::getClickId( $context );
+		if ( $clickId ) {
+			$out->addModules( 'ext.growthExperiments.ClickId' );
+			// Override the edit session ID
+			$out->addJsConfigVars( [
+				'wgWMESchemaEditAttemptStepSessionId' => $clickId,
+			] );
+		}
 		if ( !self::isHomepageEnabled( $skin->getUser() ) || !Util::isMobile( $skin ) ) {
 			return;
 		}
