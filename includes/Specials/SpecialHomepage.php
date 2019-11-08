@@ -21,8 +21,10 @@ use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use Html;
 use GrowthExperiments\HomepageModules\Start;
+use IContextSource;
+use LogicException;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
-use MediaWiki\Session\SessionManager;
+use MWCryptHash;
 use SpecialPage;
 use Throwable;
 use Title;
@@ -53,7 +55,7 @@ class SpecialHomepage extends SpecialPage {
 		parent::__construct( 'Homepage', '', false );
 		$this->editInfoService = $editInfoService;
 		$this->pageViewService = $pageViewService;
-		$this->pageviewToken = $this->generateUniqueToken();
+		$this->pageviewToken = $this->generatePageviewToken();
 		// Hack: Making the userpage the relevant title for the homepage
 		// allows using the talk overlay for the talk tab on mobile.
 		// This is done only for the mobile skin, because on Vector setting relevant
@@ -219,14 +221,45 @@ class SpecialHomepage extends SpecialPage {
 	}
 
 	/**
+	 * Returns 32-character string that consists of 24 cryptographically random characters
+	 * (120 bits, ie. suitable for differentiating about 10^15 events) and a 8-character
+	 * signature tied to the current user.
+	 * The signature is useful for preventing accidental reuse of the token when it is put
+	 * in the URL and gets shared.
+	 * The token is used for client-side logging and can be retrieved via the
+	 * wgGEHomepagePageviewToken JS variable.
 	 * @return string
+	 * @see SpecialHomepage::verifyPageviewToken()
 	 */
-	private function generateUniqueToken() {
-		// Can't use SessionManager::singleton() here because while it returns an
-		// instance of SessionManager, the code comment says it returns SessionManagerInterface
-		// and that doesn't have generateSessionId(). So the code works but phan rejects it.
-		$sessionManager = new SessionManager();
-		return $sessionManager->generateSessionId();
+	private function generatePageviewToken() {
+		if ( !$this->getContext()->getUser()->isSafeToLoad() ) {
+			throw new LogicException( __METHOD__ . ' called before user initialized' );
+		}
+		$userId = $this->getContext()->getUser()->getId();
+		$secretKey = $this->getContext()->getConfig()->get( 'SecretKey' );
+
+		$randomPart = \Wikimedia\base_convert( \MWCryptRand::generateHex( 30 ), 16, 32, 24 );
+		$hmac = MWCryptHash::hmac( "$randomPart:$userId", $secretKey, false );
+		return $randomPart . substr( $hmac, 0, 8 );
+	}
+
+	/**
+	 * Verifies that the pageview token belongs to the context user.
+	 * @param string $pageviewToken
+	 * @param IContextSource $context
+	 * @return bool
+	 * @see SpecialHomepage::generatePageviewToken()
+	 */
+	public static function verifyPageviewToken( string $pageviewToken, IContextSource $context ) {
+		if ( !$context->getUser()->isSafeToLoad() ) {
+			throw new LogicException( __METHOD__ . ' called before user initialized' );
+		}
+		$userId = $context->getUser()->getId();
+		$secretKey = $context->getConfig()->get( 'SecretKey' );
+		$randomPart = substr( $pageviewToken, 0, 24 );
+		$hmac = substr( $pageviewToken, 24, 8 );
+		$expectedHmac = substr( MWCryptHash::hmac( "$randomPart:$userId", $secretKey, false ), 0, 8 );
+		return ( $hmac === $expectedHmac );
 	}
 
 	/**
