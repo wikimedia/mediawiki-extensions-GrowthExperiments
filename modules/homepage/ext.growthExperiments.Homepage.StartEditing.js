@@ -1,5 +1,10 @@
 ( function () {
-	var StartEditingDialog = require( './ext.growthExperiments.Homepage.StartEditingDialog.js' );
+	var StartEditingDialog = require( './ext.growthExperiments.Homepage.StartEditingDialog.js' ),
+		Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
+		logger = new Logger(
+			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
+			mw.config.get( 'wgGEHomepagePageviewToken' )
+		);
 
 	function setupCta( $container ) {
 		var ctaButton, dialog, windowManager,
@@ -10,7 +15,7 @@
 		}
 
 		ctaButton = OO.ui.ButtonWidget.static.infuse( $buttonElement );
-		dialog = new StartEditingDialog();
+		dialog = new StartEditingDialog( { mode: mode }, logger );
 		windowManager = new OO.ui.WindowManager( { modal: true } );
 
 		// eslint-disable-next-line no-jquery/no-global-selector
@@ -19,8 +24,10 @@
 
 		ctaButton.on( 'click', function () {
 			var lifecycle = windowManager.openWindow( dialog );
+			logger.log( 'start-startediting', mode, 'se-cta-click' );
 			lifecycle.closing.done( function ( data ) {
 				if ( data && data.action === 'activate' ) {
+					logger.log( 'start-startediting', mode, 'se-activate' );
 					ctaButton.setDisabled( true );
 					if ( mode === 'mobile-overlay' ) {
 						window.history.pushState( null, null, '#/homepage/suggested-edits' );
@@ -30,6 +37,8 @@
 					} else {
 						window.location.reload();
 					}
+				} else {
+					logger.log( 'start-startediting', mode, 'se-cancel-activation' );
 				}
 			} );
 			// TODO maybe restructure the page without refreshing?

@@ -1,5 +1,13 @@
-var StartEditingDialog = function StartEditingDialog( config ) {
+/**
+ * @param {Object} config
+ * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
+ * @param {HomepageModuleLogger} logger
+ * @constructor
+ */
+var StartEditingDialog = function StartEditingDialog( config, logger ) {
 	StartEditingDialog.super.call( this, config );
+	this.logger = logger;
+	this.mode = config.mode;
 };
 
 OO.inheritClass( StartEditingDialog, OO.ui.Dialog );
@@ -93,9 +101,11 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 				this.close();
 			}
 			if ( action === 'difficulty' ) {
+				this.logger.log( 'start-startediting', this.mode, 'se-cta-difficulty' );
 				this.swapPanel( 'difficulty' );
 			}
 			if ( action === 'back' ) {
+				this.logger.log( 'start-startediting', this.mode, 'se-cta-back' );
 				this.swapPanel( 'intro' );
 			}
 			if ( action === 'activate' ) {
