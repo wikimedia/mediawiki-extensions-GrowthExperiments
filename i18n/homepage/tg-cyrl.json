@@ -5,5 +5,12 @@
 		]
 	},
 	"tooltip-pt-homepage": "Саҳифаи аввали {{GENDER:|шумо}}",
-	"growthexperiments-homepage-email-changelink": "(тағйир)"
+	"growthexperiments-homepage-email-changelink": "(тағйир)",
+	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Пайвандҳоро миёни мақолаҳо илова намудан",
+	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Эҷоди мақолаи нав",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "Осон",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "Миёна",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-hard": "Сахт",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Иҷро шуд",
+	"growthexperiments-homepage-suggestededits-error-description": "Лутфан, баъдтар бори дигар кӯшиш намоед."
 }

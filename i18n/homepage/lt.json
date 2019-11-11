@@ -26,7 +26,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Kai baigsite kelis lengvus pakeitimus.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Kai žinote pakankamai apie rašymą Vikipedijoje.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Raskite trūkstamus šaltinius, kad straipsniai būtų patikimesni. Pridėkite naudingas nuotraukas ar paveikslėlius, kad patobulintumėte egzistuojančius straipsnius.",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Praplėskite trumpus straipsnius. Kurkite naujus straipsnius.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Kurkite naujus straipsnius ir išplėskite trumpus straipsnius.",
 	"growthexperiments-homepage-suggested-edits-header": "Siūlomi keitimai",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Sveiki atvykę į {{GENDER:$1|savo}} pagrindinį puslapį!",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|Jūs}} visada galite atidaryti šoninį meniu ir paspausti ant $2, kad čia sugrįžtumėte.",
@@ -34,6 +34,15 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Atidarykite šoninį menių ir pasirinkite $2, kad aplankytumėte {{GENDER:$1|savo}} pagrindinį puslapį.",
 	"growthexperiments-homepage-suggestededits-pager-end": "Pabaiga",
 	"growthexperiments-homepage-suggestededits-no-results": "Pasiūlymų nerasta",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-update": "Esamus straipsnius atnaujinkite",
+	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Sužinokite daugiau",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "$1 keitimai",
+	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy": "Lengvas",
+	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Vidutinis",
+	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Sunkus",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Atlikta",
-	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Nuorodos"
+	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Atnaujinti straipsnius",
+	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Išplėsti trumpus straipsnius",
+	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Straipsniams reikalingos nuorodos",
+	"growthexperiments-homepage-suggestededits-error-description": "Prašom pabandyti vėliau."
 }

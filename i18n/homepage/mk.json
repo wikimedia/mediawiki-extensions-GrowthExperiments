@@ -61,7 +61,9 @@
 	"growthexperiments-homepage-suggestededits-next-card": "Следно предложено уредување",
 	"growthexperiments-homepage-suggestededits-no-results": "Не се пронајдени предлози",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "уредувања во последниот ден",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "Додавајте извори за потврдување на статиите на Википедија",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-links": "Додајте врски во другите статии.",
+	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "Проширете ги кратките статии",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Создај нова статија",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Дознајте повеќе",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3 - 5 минути",
@@ -79,7 +81,9 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Готово",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "{{PLURAL:$1|Пронајдена е|Пронајдени се}} <strong>$1</strong> {{PLURAL:$1|статија|статии}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Наводи",
-	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Прикажи",
-	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Врски",
-	"growthexperiments-homepage-suggestededits-error-description": "Обидете се подоцна."
+	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Проширете ги кратките статии",
+	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Додавајте врски помеѓу статиите",
+	"growthexperiments-homepage-suggestededits-error-title": "Во моментов не се достапни предложени уредувања.",
+	"growthexperiments-homepage-suggestededits-error-description": "Обидете се подоцна.",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Изберете барем еден вид уредување"
 }

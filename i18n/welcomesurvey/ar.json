@@ -10,10 +10,10 @@
 	"welcomesurvey": "{{GENDER:$1|مرحبا}}، $1!",
 	"welcomesurvey-save-confirmation-title": "شكر! تم حفظ ردودك.",
 	"welcomesurvey-save-confirmation-text": "ستساعدنا إجاباتك في تمكينك من مناهج مفيدة للبدء في ويكيبيديا.",
-	"welcomesurvey-subtitle": "ساعدنا في تحسين تجربتك لويكيبيديا من خلال الإجابة على بعض الأسئلة الاختيارية.",
-	"welcomesurvey-save-btn": "إنهاء",
+	"welcomesurvey-subtitle": "{{GENDER:|ساعدنا|ساعدينا}} في تحسين تجربتك لويكيبيديا من خلال الإجابة على بعض الأسئلة الاختيارية.",
+	"welcomesurvey-save-btn": "{{GENDER:|أنه|أنهي}}",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|تخطَّ|تخطي}} هذا الاستطلاع",
-	"welcomesurvey-close-btn": "الإغلاق والعودة إلى $1",
+	"welcomesurvey-close-btn": "{{GENDER:|أغلق|أغلقي}} و{{GENDER:|عد|عودي}} إلى $1",
 	"welcomesurvey-sidebar-privacy-title": "نحن نقدر خصوصيتك",
 	"welcomesurvey-sidebar-privacy-text": "لمعرفة المزيد حول كيفية استخدام هذه الإجابات الاختيارية؛ {{GENDER:$2|راجع|راجعي}} $1 الخاص بالاستطلاع.",
 	"welcomesurvey-privacy-policy-link-text": "بيان الخصوصية",
@@ -43,6 +43,6 @@
 	"welcomesurvey-question-edited-option-no-other-label": "لا، لأسباب أخرى",
 	"welcomesurvey-question-edited-option-dont-remember-label": "لا أتذكر",
 	"welcomesurvey-question-email-label": "عنوان البريد الإلكتروني (اختياري)",
-	"welcomesurvey-question-email-placeholder": "أدخل عنوان بريدك الإلكتروني...",
-	"welcomesurvey-question-email-help": "لاحظنا أنك لم تدخل بريدا إلكترونيا عند إنشاء هذا الحساب، إنه <strong>موصى به بشدة</strong>; لأن هناك حاجة إلى بريد إلكتروني لاسترداد الحساب إذا فقدت كلمة مرورك، ملاحظة: لا يتم كشف عنوان بريدك الإلكتروني عندما يتصل بك مستخدمون آخرون."
+	"welcomesurvey-question-email-placeholder": "{{GENDER:|أدخل|أدخلي}} عنوان بريدك الإلكتروني...",
+	"welcomesurvey-question-email-help": "لاحظنا أنك لم {{GENDER:|تدخل|تدخلي}} بريدا إلكترونيا عند إنشاء هذا الحساب، إنه <strong>موصى به بشدة</strong>; لأن هناك حاجة إلى بريد إلكتروني لاسترداد الحساب إذا فقدت كلمة مرورك، ملاحظة: لا يتم كشف عنوان بريدك الإلكتروني عندما يتصل بك مستخدمون آخرون."
 }
