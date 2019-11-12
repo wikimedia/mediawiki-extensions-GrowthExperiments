@@ -8,6 +8,7 @@ use Html;
 use ExtensionRegistry;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
 use MediaWiki\Logger\LoggerFactory;
+use Message;
 use Status;
 use StatusValue;
 
@@ -184,8 +185,14 @@ class SuggestedEdits extends BaseModule {
 	protected function formatSiteViews( int $siteViewsCount ) {
 		// We only get here when $siteViewsCount is not 0 so log is safe.
 		$siteViewsCount = (int)round( $siteViewsCount, -floor( log10( $siteViewsCount ) ) );
-		// abuse Language::formatComputingNumbers into displaying large numbers in a human-readable way
 		$language = $this->getContext()->getLanguage();
+		if ( $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-footer-suffix' )
+			->isDisabled()
+		) {
+			// This language does not use suffixes, just output the rounded number
+			return Message::numParam( $siteViewsCount );
+		}
+		// Abuse Language::formatComputingNumbers into displaying large numbers in a human-readable way
 		return $language->formatComputingNumbers( $siteViewsCount, 1000,
 			'growthexperiments-homepage-suggestededits-footer-$1suffix' );
 	}
