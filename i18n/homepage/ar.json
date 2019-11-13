@@ -146,7 +146,7 @@
 	"growthexperiments-homepage-suggestededits-no-results": "لم يتم العثور على اقتراحات",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "{{GENDER:|حدد|حددي}} مستويات صعوبة أخرى للعثور على التعديلات المقترحة.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "{{GENDER:|حدد|حددي}} اهتمامات أو مستويات صعوبة أخرى للعثور على التعديلات المقترحة.",
-	"growthexperiments-homepage-suggestededits-footer": "لاحظ مستخدمون آخرون أن هذه المقالات تحتاج إلى تدخّل، {{GENDER:|ساهم| ساهمي}} في أن تكون '''{{SITENAME}}''' أحسن '''لقرّائها الـ$1''' الشهريين.",
+	"growthexperiments-homepage-suggestededits-footer": "لاحظ مستخدمون آخرون أن هذه المقالات تحتاج إلى تدخّل، {{GENDER:|ساهم| ساهمي}} في أن تكون '''{{SITENAME}}''' أحسن '''لقرّائها الـ$1''' كل شهر.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "لاحظ مستخدمون آخرون أن هذه المقالات تحتاج إلى تدخّل، {{GENDER:|ساهم| ساهمي}} في تحسين '''{{SITENAME}}'''.",
 	"growthexperiments-homepage-suggestededits-footer-kilosuffix": "$1 ألف",
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 مليون",
@@ -168,7 +168,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-references": "{{GENDER:|ابحث|ابحثي}} عن مراجع (مصادر للمقالات الموجودة)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-update": "{{GENDER:|قم|قومي}} بتحديث المقالات ({{GENDER:|اجعل|اجعلي}} المقالات الحالية محيّنة)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "{{GENDER:|وسع|وسعي}} مقالات قصيرة",
-	"growthexperiments-homepage-suggestededits-tasktype-label-links": "{{GENDER:|أضف|أضيفي}} روابط بين المقالات",
+	"growthexperiments-homepage-suggestededits-tasktype-label-links": "{{GENDER:|أضف|أضيفي}} وصلات بين المقالات",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "{{GENDER:|أنشئ|أنشئي}} مقالة جديدة",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "{{GENDER:|تعلّم|تعلّمي}} المزيد",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3 - 5 دقائق",
@@ -197,5 +197,5 @@
 	"growthexperiments-homepage-suggestededits-create-article-additional-message": "لإنشاء مقالة جديدة، {{GENDER:$1|ستحتاج|ستحتاجين}} إلى استخدام العديد من المهارات التي يمكنك تعلمها من خلال إكمال بعض المهام الأسهل، لمعرفة المزيد حول كيفية إنشاء مقالة جديدة، [$2 {{GENDER:$1|أنقر|أنقري}} هنا].",
 	"growthexperiments-homepage-suggestededits-error-title": "لا تتوفر تعديلات مقترحة في الوقت الحالي.",
 	"growthexperiments-homepage-suggestededits-error-description": "من فضلك {{GENDER:|عاود|عاودي}} المحاولة في وقت لاحق.",
-	"growthexperiments-homepage-suggestededits-difficulty-filter-error": " {{GENDER:|حدّد|حدّدي}} على الأقل مستوى واحدا من التعديلات"
+	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "{{GENDER:|حدّد|حدّدي}} على الأقل مستوى واحدا من التعديلات"
 }
