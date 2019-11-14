@@ -282,10 +282,34 @@
 						color: @colorGray2;
 
 						.se-card-extract {
-							font-size: 0.875em;
+							position: relative;
 							overflow: hidden;
+							font-size: 0.875em;
 							line-height: 1.5em;
 							height: 6em;
+
+							&:after {
+								content: '';
+								position: absolute;
+								bottom: 0;
+								width: 25%;
+								height: 1.5em;
+								pointer-events: none;
+							}
+						}
+
+						&[ dir='ltr' ] .se-card-extract:after {
+							/* @noflip */
+							right: 0;
+							/* @noflip */
+							background: linear-gradient( to right, rgba( 255, 255, 255, 0 ), #fff 50% );
+						}
+
+						&[ dir='rtl' ] .se-card-extract:after {
+							/* @noflip */
+							left: 0;
+							/* @noflip */
+							background: linear-gradient( to left, rgba( 255, 255, 255, 0 ), #fff 50% );
 						}
 
 						.se-card-pageviews {
