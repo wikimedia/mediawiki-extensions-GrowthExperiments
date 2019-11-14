@@ -38,12 +38,15 @@
 	};
 
 	SuggestedEditCardWidget.prototype.getTextContent = function () {
-		var $textContent = $( '<div>' )
-			.addClass( 'se-card-text' )
-			.append(
-				$( '<h3>' ).addClass( 'se-card-title' ).text( this.data.title ),
-				$( '<div>' ).addClass( 'se-card-extract' ).html( this.data.extract || '' )
-			);
+		// eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-class-state
+		var siteDir = $( 'body' ).hasClass( 'sitedir-rtl' ) ? 'rtl' : 'ltr',
+			$textContent = $( '<div>' )
+				.addClass( 'se-card-text' )
+				.attr( 'dir', siteDir )
+				.append(
+					$( '<h3>' ).addClass( 'se-card-title' ).text( this.data.title ),
+					$( '<div>' ).addClass( 'se-card-extract' ).html( this.data.extract || '' )
+				);
 		if ( this.data.pageviews ) {
 			$textContent.append(
 				$( '<div>' ).addClass( 'se-card-pageviews' ).append(
