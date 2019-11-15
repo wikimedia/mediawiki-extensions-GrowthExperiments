@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Steeve815",
-			"דגש חזק"
+			"דגש חזק",
+			"Amire80"
 		]
 	},
 	"growthexperiments-homepage-tab": "דף הבית",
@@ -43,10 +44,24 @@
 	"growthexperiments-tour-discovery-title": "התחילו כאן!",
 	"growthexperiments-tour-discovery-description": "אפשר להקליק על {{GENDER:$1|שם המשתמש שלך|שם המשתמשת שלך}} כדי לבקר בדף הבית {{GENDER:$1|שלך}}",
 	"growthexperiments-homepage-welcomesurvey-default-close": "מעבר לדף הבית {{GENDER:$1|שלך}}",
+	"growthexperiments-homepage-suggestededits-pager-end": "סיום",
 	"growthexperiments-homepage-suggestededits-tasktype-label-references": "מצא הפניות (מקורות למאמרים קיימים)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "צור נושא חדש",
-	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "בינוני",
+	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "מידע נוסף",
+	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3–5 דקות",
+	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5–10 דקות",
+	"growthexperiments-homepage-suggestededits-tasktype-time-references": "15–20 דקות",
+	"growthexperiments-homepage-suggestededits-tasktype-time-expand": "20–30 דקות",
+	"growthexperiments-homepage-suggestededits-tasktype-time-update": "20–30 דקות",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "עריכות $1",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "קלות",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "בינוניות",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-hard": "קשות",
+	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy": "קלות",
+	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "בינוניות",
+	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "קשות",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "בחר את סוג העריכה",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "בוצע",
 	"growthexperiments-homepage-suggestededits-error-title": "אין עריכות זמינות בשלב זה.",
 	"growthexperiments-homepage-suggestededits-error-description": "אנא נסה שנית מאוחר יותר."
 }

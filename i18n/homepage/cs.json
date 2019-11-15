@@ -139,7 +139,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Otevřete menu a klikněte na $2, abyste {{GENDER:$1|navštívil|navštívila|navštívil(a)}} svou domovskou stránku.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> z <strong>$2</strong> {{PLURAL:$2|tipu|tipů}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Konec",
-	"growthexperiments-homepage-suggestededits-pageviews": "$1 návštěv čtenáři (posledních 60 dní)",
+	"growthexperiments-homepage-suggestededits-pageviews": "$1 návštěv čtenáři (za posledních 60 dní)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Předchozí tip",
 	"growthexperiments-homepage-suggestededits-next-card": "Následující tip",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Žádné další tipy",
