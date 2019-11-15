@@ -3,7 +3,8 @@
 @import '../ext.growthExperiments.variables.less';
 
 @cardWrapperWidth: 260px;
-@cardContainerWrapperHeight: 300px;
+@cardContainerWrapperHeight: 256px;
+@imageHeight: 128px;
 
 // This block is separate from the rest as it is targeting the process dialog contents.
 .suggested-edits-difficulty-filters {
@@ -57,7 +58,7 @@
 		justify-content: center;
 
 		.suggested-edits-pager {
-			padding-top: 10px;
+			margin-top: 24px;
 			font-size: 0.875em;
 			color: @colorGray2;
 		}
@@ -105,9 +106,8 @@
 				padding: 20px 10px 0 10px;
 			}
 
-			.se-card-text {
-				// With padding, becomes same height as image.
-				height: 130px;
+			.se-card-image {
+				height: @imageHeight;
 			}
 		}
 
@@ -115,7 +115,6 @@
 			.se-card-image {
 				/* @embed */
 				background: url( ../../../images/end-of-queue.svg ) no-repeat center center;
-				height: 144px;
 			}
 		}
 
@@ -123,19 +122,17 @@
 			.se-card-image {
 				/* @embed */
 				background: url( ../../../images/no-results.svg ) no-repeat center center;
-				height: 144px;
 			}
 		}
 
 		.se-card-error {
 			.se-card-image {
 				background: url( ../../../images/suggestededits/error-message.svg ) no-repeat center center;
-				height: 144px;
 			}
 		}
 
 		.suggested-edits-task-explanation-wrapper {
-			padding: 10px 0;
+			padding: 24px 0;
 			width: @cardWrapperWidth;
 
 			.suggested-edits-title-and-info {
@@ -277,11 +274,12 @@
 
 				.se-card-content {
 					.se-card-text {
-						height: 140px;
+						height: 128px;
 						padding: 0 10px;
 						color: @colorGray2;
 
-						.se-card-title {
+						h3.se-card-title {
+							margin: 0;
 							white-space: nowrap;
 							overflow: hidden;
 							text-overflow: ellipsis;
@@ -292,7 +290,7 @@
 							overflow: hidden;
 							font-size: 0.875em;
 							line-height: 1.5em;
-							height: 6em;
+							height: 4.5em;
 
 							&:after {
 								content: '';
@@ -330,8 +328,8 @@
 					}
 
 					.se-card-image {
-						height: 150px;
-						width: 260px;
+						height: @imageHeight;
+						width: @cardWrapperWidth;
 						background-color: @colorGray1;
 						background-image: url( ../../../images/suggestededits/placeholder-image.svg );
 					}
@@ -343,7 +341,7 @@
 	.suggested-edits-footer {
 		// negate the margin on .growthexperiments-homepage-module in ext.growthExperiments.Homepage.less
 		// margin values are *1.11 due to the font-size rule
-		margin: 16px -( @homepageModuleMargin / 0.9 ) -( @homepageModuleMargin / 0.9 );
+		margin: 0 -( @homepageModuleMargin / 0.9 ) -( @homepageModuleMargin / 0.9 );
 		padding: 12px 24px 16px;
 		background-color: @colorBaseInverted;
 		color: @colorGray5;
