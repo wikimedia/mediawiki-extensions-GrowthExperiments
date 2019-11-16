@@ -2,7 +2,21 @@
 @import 'ext.growthExperiments.variables.less';
 
 .mw-ge-startediting-dialog {
-	&-actions {
+	.growthexperiments-homepage-desktop & {
+		.oo-ui-window-head {
+			display: none;
+		}
+
+		.oo-ui-window-foot {
+			outline: 0;
+		}
+
+		.oo-ui-window-body {
+			top: 0;
+		}
+	}
+
+	&-desktopActions {
 		float: right;
 		padding: 1em;
 	}
