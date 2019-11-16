@@ -70,7 +70,7 @@
 			&-image {
 				width: 256px;
 
-				.mw-ge-startediting-dialog-intro-withresponse & {
+				.growthexperiments-homepage-desktop .mw-ge-startediting-dialog-intro-withresponse & {
 					float: right;
 					margin-left: 1em;
 				}
@@ -91,23 +91,57 @@
 				font-size: 1.2em;
 			}
 		}
+
+		&-general-header,
+		&-response-label {
+			.growthexperiments-homepage-mobile-summary &,
+			.growthexperiments-homepage-mobile-details & {
+				strong {
+					display: block;
+
+					&:after {
+						content: '';
+						display: block;
+						clear: both;
+					}
+				}
+			}
+		}
 	}
 
 	&-difficulty {
 		&-banner {
 			font-size: 1.2em;
 			background-color: @colorGray15;
-			padding: 4em 1em 3em 8.5em;
-			background-image: url( ../../images/difficulty-square-ltr.svg );
-			background-size: 128px;
 			background-repeat: no-repeat;
-			background-position: left center;
-			border-left: 1.5em @colorGray15 solid;
+			// We can't use e.g. background-position-x: 1.5em; because that's not flippable for RTL
+			// Instead, use a border with the same color as the background
+			background-position-x: left;
+			border-left-color: @colorGray15;
+			border-left-style: solid;
+
+			.growthexperiments-homepage-desktop & {
+				background-image: url( ../../images/difficulty-square-ltr.svg );
+				background-size: 128px;
+				background-position-y: center;
+				padding: 4em 1em 3em 8.5em;
+				border-left-width: 1.5em;
+			}
+
+			.growthexperiments-homepage-mobile-summary &,
+			.growthexperiments-homepage-mobile-details & {
+				background-image: url( ../../images/difficulty-landscape-ltr.svg );
+				background-size: 216px 64px;
+				background-position-y: top;
+				padding: 5em 1em 1.5em 0;
+				border-left-width: 1em;
+			}
 		}
 
 		&-header {
 			font-weight: bold;
 
+			// stylelint-disable-next-line no-descending-specificity
 			strong {
 				color: @easyColor;
 				text-transform: lowercase;
@@ -119,23 +153,24 @@
 		}
 
 		&-legend {
-			display: table;
-			margin: 1em 2em;
+			margin: 1em;
 
-			&-row {
+			.growthexperiments-homepage-desktop & {
+				display: table;
+				margin-left: 2em;
+				margin-right: 2em;
+			}
+
+			.growthexperiments-homepage-desktop &-row {
 				display: table-row;
 			}
 
-			&-cell {
+			.growthexperiments-homepage-desktop &-cell {
 				display: table-cell;
 				vertical-align: top;
 			}
 
 			&-label {
-				// Because this is a table, width behaves more like min-width
-				width: 25%;
-				// nowrap might make the label column wider than 20%
-				white-space: nowrap;
 				font-size: 1.3em;
 				font-weight: bold;
 
@@ -143,6 +178,13 @@
 					margin-right: 0.5em;
 					width: 24px;
 					height: 24px;
+				}
+
+				.growthexperiments-homepage-desktop & {
+					// Because this is a table, width behaves more like min-width
+					width: 25%;
+					// nowrap might make the label column wider than 25%
+					white-space: nowrap;
 				}
 			}
 
@@ -159,12 +201,25 @@
 			}
 
 			&-description {
-				p {
-					margin: 0;
-				}
 				line-height: 1.5;
-				padding-left: 0.5em;
 				padding-bottom: 1.5em;
+
+				.growthexperiments-homepage-desktop & {
+					padding-left: 0.5em;
+
+					p {
+						margin: 0;
+					}
+				}
+
+				.growthexperiments-homepage-mobile-summary &,
+				.growthexperiments-homepage-mobile-details & {
+					padding-top: 0.5em;
+
+					p {
+						margin: 0.25em 0;
+					}
+				}
 			}
 
 			&-description-header {
