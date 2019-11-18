@@ -2,6 +2,9 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+/**
+ * Homepage module base class for submodules (subtasks) of the Start module.
+ */
 abstract class BaseTaskModule extends BaseModule {
 
 	/**

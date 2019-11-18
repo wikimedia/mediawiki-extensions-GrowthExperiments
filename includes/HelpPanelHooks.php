@@ -68,11 +68,11 @@ class HelpPanelHooks {
 	}
 
 	/**
-	 * @param OutputPage &$out
-	 * @param Skin &$skin
+	 * @param OutputPage $out
+	 * @param Skin $skin
 	 * @throws \ConfigException
 	 */
-	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
+	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
 		$definitelyShow = HelpPanel::shouldShowHelpPanel( $out );
 		$maybeShow = HelpPanel::shouldShowHelpPanel( $out, false );
 

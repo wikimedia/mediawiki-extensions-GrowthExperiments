@@ -81,6 +81,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 			$extraData = [
 				'tasktype' => $task->getTaskType()->getId(),
 				'difficulty' => $task->getTaskType()->getDifficulty(),
+				'order' => $i,
 			];
 			if ( $task instanceof TemplateBasedTask && $task->getTemplates() ) {
 				$extraData['maintenancetemplates'] = array_map( function ( LinkTarget $template ) {

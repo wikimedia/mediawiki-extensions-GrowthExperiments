@@ -16,6 +16,11 @@
 		}
 	}
 
+	.growthexperiments-homepage-mobile-summary &,
+	.growthexperiments-homepage-mobile-details & {
+		font-size: 0.875em;
+	}
+
 	&-desktopActions {
 		float: right;
 		padding: 1em;
@@ -27,7 +32,7 @@
 
 		&-label {
 			color: @colorGray5;
-			font-size: 0.9em;
+			font-size: 0.85em;
 		}
 
 		&-indicator {
@@ -72,7 +77,14 @@
 
 				.growthexperiments-homepage-desktop .mw-ge-startediting-dialog-intro-withresponse & {
 					float: right;
+					margin-top: -3em;
 					margin-left: 1em;
+				}
+			}
+
+			&-title {
+				.growthexperiments-homepage-desktop .mw-ge-startediting-dialog-intro-withresponse & {
+					margin-bottom: 1.5em;
 				}
 			}
 		}
@@ -98,6 +110,7 @@
 			.growthexperiments-homepage-mobile-details & {
 				strong {
 					display: block;
+					padding-bottom: 1em;
 
 					&:after {
 						content: '';
@@ -150,6 +163,11 @@
 
 		&-subheader {
 			color: @colorGray5;
+
+			.growthexperiments-homepage-mobile-summary &,
+			.growthexperiments-homepage-mobile-details & {
+				font-size: 0.9em;
+			}
 		}
 
 		&-legend {
@@ -224,6 +242,11 @@
 
 			&-description-header {
 				font-weight: bold;
+
+				.growthexperiments-homepage-mobile-summary &,
+				.growthexperiments-homepage-mobile-details & {
+					font-size: 1.2em;
+				}
 			}
 		}
 	}

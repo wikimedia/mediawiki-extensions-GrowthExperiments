@@ -133,6 +133,9 @@
 			if ( data.growthtasks.totalCount > 0 ) {
 				this.taskQueue = data.query.pages
 					.filter( filterOutProtectedArticles )
+					.sort( function ( l, r ) {
+						return l.order - r.order;
+					} )
 					.map( cleanUpData )
 					// Maximum number of tasks in the queue is always 200.
 					.slice( 0, 200 );
@@ -269,8 +272,13 @@
 	};
 
 	SuggestedEditsModule.prototype.getExtractAndUpdateQueue = function ( taskQueuePosition ) {
-		var apiUrl = mw.config.get( 'wgGERestbaseUrl' ) + '/page/summary/',
+		var apiUrlBase = mw.config.get( 'wgGERestbaseUrl' ),
+			apiUrl = apiUrlBase + '/page/summary/',
 			suggestedEditData = this.taskQueue[ taskQueuePosition ];
+		if ( !apiUrlBase ) {
+			// Don't fail worse then we have to when RESTBase is not installed.
+			suggestedEditData.extract = ' ';
+		}
 		if ( !suggestedEditData || suggestedEditData.extract ) {
 			return $.Deferred().resolve().promise();
 		}

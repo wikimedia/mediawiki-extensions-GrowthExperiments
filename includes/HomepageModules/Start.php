@@ -19,11 +19,6 @@ class Start extends BaseTaskModule {
 	private $tasks;
 
 	/**
-	 * @var BaseTaskModule[]
-	 */
-	private $visibleTasks;
-
-	/**
 	 * @inheritDoc
 	 */
 	public function __construct( IContextSource $context ) {
@@ -39,10 +34,6 @@ class Start extends BaseTaskModule {
 		} else {
 			$this->tasks['userpage'] = new Userpage( $context );
 		}
-
-		$this->visibleTasks = array_filter( $this->tasks, function ( BaseTaskModule $module ) {
-			return $module->isVisible();
-		} );
 	}
 
 	/**
@@ -56,12 +47,20 @@ class Start extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	public function isCompleted() {
-		foreach ( $this->visibleTasks as $task ) {
+		foreach ( $this->getVisibleTasks() as $task ) {
 			if ( !$task->isCompleted() ) {
 				return false;
 			}
 		}
 		return true;
+	}
+
+	/** @inheritDoc */
+	protected function setMode( $mode ) {
+		parent::setMode( $mode );
+		foreach ( $this->tasks as $task ) {
+			$task->setMode( $mode );
+		}
 	}
 
 	/**
@@ -75,7 +74,7 @@ class Start extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function canRender() {
-		return (bool)$this->visibleTasks;
+		return (bool)$this->getVisibleTasks();
 	}
 
 	/**
@@ -135,7 +134,7 @@ class Start extends BaseTaskModule {
 				$module->outputDependencies();
 				return $module->renderDesktop();
 			}
-		}, $this->visibleTasks ) );
+		}, $this->getVisibleTasks() ) );
 	}
 
 	/**
@@ -144,6 +143,12 @@ class Start extends BaseTaskModule {
 	protected function getMobileSummaryBody() {
 		return implode( "\n", array_map( function ( BaseTaskModule $module ) {
 			return $module->render( HomepageModule::RENDER_MOBILE_SUMMARY );
-		}, $this->visibleTasks ) );
+		}, $this->getVisibleTasks() ) );
+	}
+
+	private function getVisibleTasks() {
+		return array_filter( $this->tasks, function ( BaseTaskModule $module ) {
+			return $module->isVisible();
+		} );
 	}
 }

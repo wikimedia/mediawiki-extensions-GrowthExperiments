@@ -96,11 +96,11 @@ class HomepageHooks {
 	}
 
 	/**
-	 * @param OutputPage &$out
-	 * @param Skin &$skin
+	 * @param OutputPage $out
+	 * @param Skin $skin
 	 * @throws ConfigException
 	 */
-	public static function onBeforePageDisplay( OutputPage &$out, Skin &$skin ) {
+	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
 		$context = $out->getContext();
 		$clickId = self::getClickId( $context );
 		if ( $clickId ) {
@@ -146,12 +146,12 @@ class HomepageHooks {
 	/**
 	 * Make sure user pages have "User", "talk" and "homepage" tabs.
 	 *
-	 * @param SkinTemplate &$skin
+	 * @param SkinTemplate $skin
 	 * @param array &$links
 	 * @throws \MWException
 	 * @throws ConfigException
 	 */
-	public static function onSkinTemplateNavigationUniversal( SkinTemplate &$skin, array &$links ) {
+	public static function onSkinTemplateNavigationUniversal( SkinTemplate $skin, array &$links ) {
 		$user = $skin->getUser();
 		if ( !self::isHomepageEnabled( $user ) ) {
 			return;
@@ -209,12 +209,12 @@ class HomepageHooks {
 	 * Conditionally make the userpage link go to the homepage.
 	 *
 	 * @param array &$personal_urls
-	 * @param Title &$title
+	 * @param Title $title
 	 * @param SkinTemplate $sk
 	 * @throws \MWException
 	 * @throws ConfigException
 	 */
-	public static function onPersonalUrls( &$personal_urls, &$title, $sk ) {
+	public static function onPersonalUrls( &$personal_urls, Title $title, $sk ) {
 		$user = $sk->getUser();
 		if ( !self::isHomepageEnabled( $user ) || Util::isMobile( $sk ) ) {
 			return;
@@ -456,11 +456,11 @@ class HomepageHooks {
 
 	/**
 	 * @param string $tool
-	 * @param Group &$group
+	 * @param Group $group
 	 * @throws ConfigException
 	 * @throws \MWException
 	 */
-	public static function onMobileMenu( $tool, &$group ) {
+	public static function onMobileMenu( $tool, Group $group ) {
 		if ( in_array( $tool, [ 'personal', 'discovery', 'user' ] ) ) {
 			$context = RequestContext::getMain();
 			$user = $context->getUser();
