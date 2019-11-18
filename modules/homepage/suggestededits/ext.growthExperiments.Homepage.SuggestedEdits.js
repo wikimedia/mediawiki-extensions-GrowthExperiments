@@ -133,6 +133,9 @@
 			if ( data.growthtasks.totalCount > 0 ) {
 				this.taskQueue = data.query.pages
 					.filter( filterOutProtectedArticles )
+					.sort( function ( l, r ) {
+						return l.order - r.order;
+					} )
 					.map( cleanUpData )
 					// Maximum number of tasks in the queue is always 200.
 					.slice( 0, 200 );
