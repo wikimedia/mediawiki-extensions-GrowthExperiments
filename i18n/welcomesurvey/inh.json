@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Adam-Yourist"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|Моаршал да хьога}}, $1!"
+}
