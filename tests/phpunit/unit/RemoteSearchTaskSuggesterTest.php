@@ -111,6 +111,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 						'search' => [
 							[ 'ns' => 0, 'title' => 'Foo' ],
 							[ 'ns' => 0, 'title' => 'Bar' ],
+							[ 'ns' => 0, 'title' => 'Baz' ],
+							[ 'ns' => 0, 'title' => 'Boom' ],
 						],
 						'searchinfo' => [
 							'totalhits' => 100,
@@ -120,7 +122,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'httpResult2' => [
 					'query' => [
 						'search' => [
-							[ 'ns' => 0, 'title' => 'Baz' ],
+							[ 'ns' => 0, 'title' => 'Bang' ],
 						],
 						'searchinfo' => [
 							'totalhits' => 50,
@@ -131,8 +133,10 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'limit' => null,
 				'expectedTaskSet' => new TaskSet( [
 					new Task( $copyedit, new TitleValue( 0, 'Foo' ) ),
-					new Task( $link, new TitleValue( 0, 'Baz' ) ),
+					new Task( $link, new TitleValue( 0, 'Bang' ) ),
 					new Task( $copyedit, new TitleValue( 0, 'Bar' ) ),
+					new Task( $copyedit, new TitleValue( 0, 'Baz' ) ),
+					new Task( $copyedit, new TitleValue( 0, 'Boom' ) ),
 				], 150, 0 ),
 			],
 			'limit' => [
