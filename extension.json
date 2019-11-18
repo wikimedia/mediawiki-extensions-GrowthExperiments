@@ -451,7 +451,8 @@
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body",
-				"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body"
+				"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body",
+				"vector-view-edit"
 			],
 			"dependencies": [
 				"mediawiki.api",
