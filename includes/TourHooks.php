@@ -15,10 +15,10 @@ class TourHooks {
 	const TOUR_COMPLETED_HOMEPAGE_DISCOVERY = 'growthexperiments-tour-homepage-discovery';
 
 	/**
-	 * @param \OutputPage &$out
-	 * @param \Skin &$skin
+	 * @param \OutputPage $out
+	 * @param \Skin $skin
 	 */
-	public static function onBeforePageDisplay( \OutputPage &$out, \Skin &$skin ) {
+	public static function onBeforePageDisplay( \OutputPage $out, \Skin $skin ) {
 		// Show the discovery tour if the user isn't on WelcomeSurvey or Homepage.
 		// If they have already seen the welcome tour, don't show the discovery one.
 		if ( !$out->getTitle()->isSpecial( 'WelcomeSurvey' ) &&
