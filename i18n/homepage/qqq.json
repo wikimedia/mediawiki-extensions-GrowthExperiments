@@ -5,7 +5,8 @@
 			"Tgr",
 			"Matěj Suchánek",
 			"Jon Harald Søby",
-			"Amire80"
+			"Amire80",
+			"Zoranzoki21"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Title for Special:Homepage, which is a place for users to access useful tools about contributing. Parameters:\n* $1 - Name of the current user. Can be used with GENDER.\n\n{{doc-growthexperiments-homepage}}",
@@ -42,7 +43,7 @@
 	"growthexperiments-homepage-startediting-subheader-other": "Body text of the start editing module on the newcomer homepage if the user said on Special:WelcomeSurvey that they created an account for another reason (that there isn't a specific message for).\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-startediting-button": "Text of the button in the start editing module on the newcomer homepage that starts the suggested edits process.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-startediting-dialog-header": "Text in the header bar at the top of the suggested edits dialog. Only shown on mobile.\n\nSame as {{msg-mw|growthexperiments-homepage-suggested-edits-header}}.\n\n{{doc-growthexperiments-homepage}}",
-	"growthexperiments-homepage-startediting-dialog-progress": "Progress indicator shown at the top of the suggested edits dialog. Parameters:\n*$1 - Sequence number of the page the user is currently on.\n* $2 - Total number of pages\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-startediting-dialog-progress": "Progress indicator shown at the top of the suggested edits dialog. Parameters:\n*$1 - Sequence number of the page the user is currently on.\n* $2 - Total number of pages\n\n{{doc-growthexperiments-homepage}}\n{{optional}}",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "Text of the button in the intro panel (first stage) of the suggested edits dialog that exits the dialog.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "Text of the button in the intro panel (first stage) of the suggested edits dialog that navigates to the difficulty panel (second stage).\n\n{{doc-growthexperiments-homepage}}\n\n{{Identical|Continue}}",
 	"growthexperiments-homepage-startediting-dialog-intro-title": "Text of the header at the top of the intro panel (first stage) of the suggested edits dialog.\n\n{{doc-growthexperiments-homepage}}",

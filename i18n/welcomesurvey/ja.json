@@ -1,12 +1,45 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Omotecho"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|ようこそ}}、$1さん!",
+	"welcomesurvey-save-confirmation-title": "投稿を保存しました。ありがとうございます。",
+	"welcomesurvey-save-confirmation-text": "皆さんの回答を活用し、ウィキペディアで活動を始める皆さんに役立つ方法の提供に役立てます。",
+	"welcomesurvey-subtitle": "皆さんのウィキペディア経験を改善するため、あといくつか質問に回答していただけないでしょうか。",
 	"welcomesurvey-save-btn": "完了",
+	"welcomesurvey-skip-btn": "このアンケートを{{GENDER:$1|中止}}",
+	"welcomesurvey-close-btn": "閉じて$1に戻る",
+	"welcomesurvey-sidebar-privacy-title": "皆さんのプライバシーを尊重します",
+	"welcomesurvey-sidebar-privacy-text": "オプションの設問の回答を何に活用するか、$1アンケートを{{GENDER:$2|ご参照ください}}。",
+	"welcomesurvey-privacy-policy-link-text": "個人情報について",
+	"welcomesurvey-sidebar-editing-title": "編集入門",
+	"welcomesurvey-sidebar-editing-text": "ほとんどすべてのページは、だれでも編集できる決まりで、1時間単位に数百件、コンテンツの追加からミスの修正、読みやすさの改善などの編集が実行されています。もし貢献に{{GENDER:$1|皆さんも興味がある}}場合は、以下のそれぞれのページがお役に立つはずです。",
 	"welcomesurvey-sidebar-editing-link1-text": "チュートリアル",
+	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:チュートリアル",
 	"welcomesurvey-sidebar-editing-link2-text": "ヘルプ デスク",
-	"welcomesurvey-dropdown-option-select-label": "選択してください..."
+	"welcomesurvey-question-reason-label": "本日、アカウント登録をした理由は何ですか？",
+	"welcomesurvey-dropdown-option-select-label": "選択してください...",
+	"welcomesurvey-question-reason-option-edit-typo-label": "ウィキペディアの記事の誤字や間違いを修正するため",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "ウィキペディアの情報を追加もしくは変更するため",
+	"welcomesurvey-question-reason-option-add-image-label": "ウィキペディアの記事に写真や画像を追加するため",
+	"welcomesurvey-question-reason-option-new-page-label": "ウィキペディアに新しい記事を作るため",
+	"welcomesurvey-question-reason-option-program-participant-label": "プログラムや授業、イベントで参加したから",
+	"welcomesurvey-question-reason-option-read-label": "ウィキペディアを読むため",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "その他",
+	"welcomesurvey-question-reason-option-other-label": "その他 (詳しく書いてください)",
+	"welcomesurvey-question-reason-other-placeholder": "その他の理由を{{GENDER:$1|記入してください}}…",
+	"welcomesurvey-question-mentor-info": "履歴が長い編集者から新規編集者に、編集についてアドバイスをするプログラムを始めようと計画中です。編集について教えたもらえるとしたら{{GENDER:$1|関心はありますか}}？",
+	"welcomesurvey-question-mentor-label": "はい、{{GENDER:$1|関心があります}}",
+	"welcomesurvey-question-edited-label": "これまでにウィキペディアの編集をしたことがありますか？",
+	"welcomesurvey-question-edited-option-yes-many-label": "はい、何回も編集しています。",
+	"welcomesurvey-question-edited-option-yes-few-label": "はい、1、2回、編集したことがあります",
+	"welcomesurvey-question-edited-option-no-dunno-label": "いいえ。ウィキペディアが編集できると初めて知りました",
+	"welcomesurvey-question-edited-option-no-other-label": "いいえ。別の理由から編集したことがありません",
+	"welcomesurvey-question-edited-option-dont-remember-label": "覚えていません",
+	"welcomesurvey-question-email-label": "メールアドレス (省略可能)",
+	"welcomesurvey-question-email-placeholder": "メールアドレスを入力…",
+	"welcomesurvey-question-email-help": "このアカウントを登録したとき、メールアドレスを入力されなかったようです。ぜひ入力するよう<strong>強くお勧めしており</strong>、パスワードを忘れてしまったときにメールアドレスがないと、アカウントの再利用の手続きができなくなります。注記：他の利用者から連絡を受ける場合、相手にメールアドレスを知らせることはありません。"
 }
