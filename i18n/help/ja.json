@@ -1,9 +1,48 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Omotecho"
 		]
 	},
-	"growthexperiments-help-panel-question-button-text": "続行",
-	"growthexperiments-help-panel-close": "完了"
+	"growthexperiments-help-panel-tog-help-panel": "編集者ヘルプパネルを有効にする",
+	"growthexperiments-help-panel-cta-button-text": "編集について教えてもらう",
+	"growthexperiments-help-panel-question-button-text": "次へ",
+	"growthexperiments-help-panel-submit-question-button-text": "投稿",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "編集に関するヘルプページのトップ",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "ヘルプに関する記事をもっと表示する",
+	"growthexperiments-help-panel-question-widget-header": "コミュニティのヘルプデスクに質問を投稿する",
+	"growthexperiments-help-panel-question-placeholder": "編集について教えてほしいことがあります。こういうことをしたいのですが…",
+	"growthexperiments-help-panel-back-home": "戻る",
+	"growthexperiments-help-panel-close": "完了",
+	"growthexperiments-help-panel-home-title": "編集について教えてもらう",
+	"growthexperiments-help-panel-questionreview-title": "質問をしてみる",
+	"growthexperiments-help-panel-questionreview-header": "投稿した質問は利用者名とともに$1に「$2」として<strong>公表され</strong>、翌日か数日のうちに他の編集者がボランティアで回答しようと努めてくれるはずです。",
+	"growthexperiments-help-panel-questionreview-label": "質問をどうぞ",
+	"growthexperiments-help-panel-questionreview-include-article-title": "質問に関わるページの題名を書き加える",
+	"growthexperiments-help-panel-question-subject-template": "ヘルプパネルに関する質問",
+	"growthexperiments-help-panel-question-subject-template-with-title": "[[$1]]についてヘルプパネルで質問",
+	"growthexperiments-help-panel-question-subject-template-from-homepage": "利用者ホームページから質問を投稿するヘルプ モジュール",
+	"growthexperiments-help-panel-question-post-error": "質問を投稿する過程でエラーが発生しました。もう一度やり直すか、ご利用のブラウザの$1を開き、手動で質問を投稿してください。",
+	"growthexperiments-help-panel-questioncomplete-title": "質問をしてみる",
+	"growthexperiments-help-panel-questioncomplete-header": "質問の投稿が完了しました。",
+	"growthexperiments-help-panel-questioncomplete-confirmation-text": "投稿した質問はコミュニティのヘルプデスクに表示され、他の編集者がボランティアで寄せる回答待ちです。",
+	"growthexperiments-help-panel-questioncomplete-view-link-text": "ヘルプデスクで自分の質問を表示する",
+	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "投稿した質問に関する通知：",
+	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "返信があると、ここ{{SITENAME}}で通知されます。",
+	"growthexperiments-help-panel-questioncomplete-notifications-email": "メールも$1 ($2) 宛てに届きます",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "変更",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "合わせてメールでの連絡も{{GENDER:$2|希望する}}場合は、メールアドレスの確認をお願いします。$1",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "メールアドレスを確認",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "合わせてメールでの連絡も{{GENDER:$1|希望する}}場合は、この機会にメールアドレスを登録してください。",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "メールアドレスを登録",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "この機能の詳細を学ぶ",
+	"growthexperiments-help-panel-questioncomplete-first-edit": "ところで、この質問を投稿した皆さんは初めてページの編集作業を経験したことになります。おめでとうございます！",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "個人設定でこのツールを無効にする",
+	"growthexperiments-help-panel-questionposter-invalid-title": "無効なページ名です。",
+	"growthexperiments-help-panel-community-help-desk-text": "コミュニティのヘルプデスク",
+	"growthexperiments-help-panel-search-label": "ヘルプを検索",
+	"growthexperiments-help-panel-search-no-results": "検索結果がありませんでした。",
+	"tag-help_panel_question": "ヘルプパネルに関する質問",
+	"tag-help_panel_question-description": "ヘルプパネルの投稿機能から編集した質問"
 }
