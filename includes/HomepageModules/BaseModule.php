@@ -137,7 +137,7 @@ abstract class BaseModule implements HomepageModule {
 	}
 
 	/**
-	 * @return string Current rendering mode
+	 * @return string Current rendering mode (one of the HomepageModule::RENDER_* constants).
 	 */
 	final protected function getMode() {
 		return $this->mode;
@@ -146,7 +146,7 @@ abstract class BaseModule implements HomepageModule {
 	/**
 	 * @param string $mode Rendering mode
 	 */
-	final protected function setMode( $mode ) {
+	protected function setMode( $mode ) {
 		$this->mode = $mode;
 	}
 
