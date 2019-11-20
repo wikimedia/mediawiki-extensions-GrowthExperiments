@@ -195,12 +195,12 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 	$generalIntro = $( '<div>' )
 		.addClass( 'mw-ge-startediting-dialog-intro-general' )
 		.append(
-			$( '<img>' )
-				.addClass( 'mw-ge-startediting-dialog-intro-general-image' )
-				.attr( { src: imagePath + '/intro-heart-article.svg' } ),
 			$( '<p>' )
 				.addClass( 'mw-ge-startediting-dialog-intro-general-title' )
 				.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-title' ).text() ),
+			$( '<img>' )
+				.addClass( 'mw-ge-startediting-dialog-intro-general-image' )
+				.attr( { src: imagePath + '/intro-heart-article.svg' } ),
 			$( '<p>' )
 				.addClass( 'mw-ge-startediting-dialog-intro-general-header' )
 				.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-header' ).text() ),

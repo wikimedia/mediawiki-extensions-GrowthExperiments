@@ -87,6 +87,11 @@
 							display: inline-block;
 							// Needed due to the inline-block override.
 							margin-bottom: -5px;
+
+							.growthexperiments-homepage-mobile-summary &,
+							.growthexperiments-homepage-mobile-details & {
+								font-size: 1.15em;
+							}
 						}
 					}
 				}
@@ -109,8 +114,16 @@
 			.se-card-image {
 				height: @imageHeight;
 			}
+
+			.growthexperiments-homepage-mobile-summary &,
+			.growthexperiments-homepage-mobile-details & {
+				h3.se-card-title {
+					font-size: 1em;
+				}
+			}
 		}
 
+		// stylelint-disable-next-line no-descending-specificity
 		.se-card-end-of-queue {
 			.se-card-image {
 				/* @embed */
@@ -118,6 +131,7 @@
 			}
 		}
 
+		// stylelint-disable-next-line no-descending-specificity
 		.se-card-no-results {
 			.se-card-image {
 				/* @embed */
@@ -125,6 +139,7 @@
 			}
 		}
 
+		// stylelint-disable-next-line no-descending-specificity
 		.se-card-error {
 			.se-card-image {
 				background: url( ../../../images/suggestededits/error-message.svg ) no-repeat center center;
