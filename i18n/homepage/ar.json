@@ -40,6 +40,7 @@
 	"growthexperiments-homepage-startediting-subheader-add-image": "قبل إضافة صورة، {{GENDER:|حاول|حاولي}} التعلم باستخدام بعض التعديلات الأسهل!",
 	"growthexperiments-homepage-startediting-subheader-new-page": "قبل إنشاء مقالة جديدة، {{GENDER:|حاول|حاولي}} التعلم عبر التعديلات الأسهل!",
 	"growthexperiments-homepage-startediting-subheader-other": "ويكيبيديا كتبها أشخاص مثلك، حتى التعديلات الصغيرة تحدث فرقا.",
+	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "{{GENDER:|شاهد|شاهدي}} التعديلات المقترحة",
 	"growthexperiments-homepage-startediting-button": "{{GENDER:|شاهد|شاهدي}} التعديلات المقترحة",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1 من $2",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "{{GENDER:|ألغ|ألغي}}",

@@ -3,11 +3,15 @@
 namespace GrowthExperiments\HomepageModules;
 
 use FormatJson;
+use GrowthExperiments\HomepageModule;
 use GrowthExperiments\WelcomeSurvey;
 use IContextSource;
 use OOUI\ButtonWidget;
 
 class StartEditing extends BaseTaskModule {
+
+	/** @var bool In-process cache for isCompleted()  */
+	private $isCompleted;
 
 	/**
 	 * @inheritDoc
@@ -20,15 +24,18 @@ class StartEditing extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	public function isCompleted() {
-		// TODO: hide module when in completed state
-		return $this->getContext()->getUser()->getBoolOption( SuggestedEdits::ACTIVATED_PREF );
+		if ( $this->isCompleted === null ) {
+			$this->isCompleted =
+				$this->getContext()->getUser()->getBoolOption( SuggestedEdits::ACTIVATED_PREF );
+		}
+		return $this->isCompleted;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function isVisible() {
-		return !$this->isCompleted();
+		return ( $this->getMode() !== HomepageModule::RENDER_DESKTOP ) || !$this->isCompleted();
 	}
 
 	/**
@@ -42,7 +49,13 @@ class StartEditing extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function getHeaderText() {
-		return $this->getContext()->msg( 'growthexperiments-homepage-startediting-header' )->text();
+		if ( $this->isCompleted() &&
+			$this->getMode() === HomepageModule::RENDER_MOBILE_SUMMARY
+		) {
+			return $this->getContext()->msg( 'growthexperiments-homepage-startediting-button' )->text();
+		} else {
+			return $this->getContext()->msg( 'growthexperiments-homepage-startediting-header' )->text();
+		}
 	}
 
 	/**
