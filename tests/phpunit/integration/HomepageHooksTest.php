@@ -10,6 +10,7 @@ use RawMessage;
 use RequestContext;
 use ResourceLoaderContext;
 use StatusValue;
+use stdClass;
 
 /**
  * @coversDefaultClass \GrowthExperiments\HomepageHooks
@@ -49,6 +50,15 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 			RequestContext::getMain()->getRequest() );
 		$configData = HomepageHooks::getTaskTypesJson( $context );
 		$this->assertSame( [ '_error' => 'foo' ], $configData );
+	}
+
+	/**
+	 * @covers ::getAQSConfigJson
+	 */
+	public function testGetAQSConfigJson() {
+		$config = HomepageHooks::getAQSConfigJson();
+		$this->assertInstanceOf( stdClass::class, $config );
+		$this->assertObjectHasAttribute( 'project', $config );
 	}
 
 }
