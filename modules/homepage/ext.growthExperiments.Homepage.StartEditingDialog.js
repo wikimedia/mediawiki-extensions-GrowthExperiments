@@ -147,6 +147,7 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 				this.setPendingElement( this.$activateButton );
 				return new mw.Api().saveOption( 'growthexperiments-homepage-suggestededits-activated', 1 )
 					.then( function () {
+						mw.user.options.set( 'growthexperiments-homepage-suggestededits-activated', 1 );
 						dialog.close( { action: 'activate' } );
 					} );
 			}
