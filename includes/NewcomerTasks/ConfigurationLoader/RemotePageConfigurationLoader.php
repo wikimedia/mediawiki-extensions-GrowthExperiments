@@ -199,7 +199,7 @@ class RemotePageConfigurationLoader implements ConfigurationLoader {
 	private function getRawUrl( LinkTarget $title ) {
 		// Use getFullURL to get the interwiki domain.
 		$url = $this->titleFactory->newFromLinkTarget( $title )->getFullURL();
-		$parts = wfParseUrl( $url );
+		$parts = wfParseUrl( wfExpandUrl( $url, PROTO_CANONICAL ) );
 		$baseUrl = $parts['scheme'] . $parts['delimiter'] . $parts['host'];
 
 		$localPageTitle = $this->titleFactory->makeTitle( $title->getNamespace(), $title->getDBkey() );
