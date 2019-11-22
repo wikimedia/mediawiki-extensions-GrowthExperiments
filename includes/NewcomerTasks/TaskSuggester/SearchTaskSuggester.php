@@ -141,7 +141,7 @@ abstract class SearchTaskSuggester implements TaskSuggester {
 	 */
 	private function getHasTemplateTerm( array $templates ) {
 		return 'hastemplate:"' . implode( '|', array_map( function ( LinkTarget $template ) {
-			return $template->getDBkey();
+			return str_replace( [ '"', '?' ], [ '\"', '\?' ], $template->getDBkey() );
 		}, $templates ) ) . '"';
 	}
 
