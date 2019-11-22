@@ -6,6 +6,7 @@
 			"Amire80"
 		]
 	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|שלום}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "דף הבית",
 	"tooltip-pt-homepage": "דף הבית {{GENDER:|שלך}}",
 	"prefs-homepage": "דף בית למשתמשים חדשים",
