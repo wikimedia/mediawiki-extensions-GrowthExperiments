@@ -47,24 +47,25 @@
 
 	TaskExplanationWidget.prototype.getInfo = function () {
 		var popupButtonWidget = new OO.ui.PopupButtonWidget( {
-				icon: 'info',
-				framed: false,
-				label: this.taskTypeData.messages.shortdescription,
-				invisibleLabel: true,
-				popup: {
-					head: true,
-					label: this.getName(),
-					$content: this.getDescription(),
-					padded: true
-				}
-			} ),
-			togglePopup = function ( buttonPopupWidget, toggle ) {
-				return function () {
-					buttonPopupWidget.getPopup().toggle( toggle );
-				};
-			};
-		popupButtonWidget.$button
-			.on( 'mouseenter', togglePopup( popupButtonWidget, true ) );
+			icon: 'info',
+			framed: false,
+			label: this.taskTypeData.messages.shortdescription,
+			invisibleLabel: true,
+			popup: {
+				head: true,
+				label: this.getName(),
+				$content: this.getDescription(),
+				padded: true
+			}
+		} );
+		popupButtonWidget.$button.on( 'mouseenter', function () {
+			if ( 'ontouchstart' in document.documentElement ) {
+				// On touch devices mouseenter might fire on a click, just before the
+				// click handler, which would then re-close the popup.
+				return;
+			}
+			popupButtonWidget.getPopup().toggle( true );
+		} );
 		popupButtonWidget.getPopup().connect( this, {
 			toggle: function ( show ) {
 				this.logger.log( 'suggested-edits', this.mode, 'se-explanation-' +
