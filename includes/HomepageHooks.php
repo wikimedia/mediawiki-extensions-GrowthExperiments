@@ -30,6 +30,7 @@ use SpecialContributions;
 use SpecialPage;
 use Status;
 use StatusValue;
+use stdClass;
 use Throwable;
 use Title;
 use User;
@@ -613,6 +614,14 @@ class HomepageHooks {
 			}
 			return $taskTypesData;
 		}
+	}
+
+	/**
+	 * ResourceLoader JSON package callback for getting the AQS domain to use.
+	 * @return stdClass
+	 */
+	public static function getAQSConfigJson() {
+		return MediaWikiServices::getInstance()->getService( '_GrowthExperimentsAQSConfig' );
 	}
 
 	/**

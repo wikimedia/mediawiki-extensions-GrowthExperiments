@@ -9,6 +9,7 @@
 		FiltersButtonGroupWidget = require( './ext.growthExperiments.Homepage.SuggestedEdits.FiltersWidget.js' ),
 		Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
 		taskTypes = require( './TaskTypes.json' ),
+		aqsConfig = require( './AQSConfig.json' ),
 		initialTaskTypes = [ 'copyedit', 'links' ].filter( function ( taskType ) {
 			return taskType in taskTypes;
 		} );
@@ -79,10 +80,9 @@
 	SuggestedEditsModule.prototype.fetchTasks = function ( taskTypes ) {
 		var apiParams = {
 			action: 'query',
-			prop: 'info|revisions|pageviews|pageimages',
+			prop: 'info|revisions|pageimages',
 			inprop: 'protection|url',
 			rvprop: 'ids',
-			pvipdays: 1,
 			pithumbsize: 260,
 			generator: 'growthtasks',
 			// Fetch more in case protected articles are in the result set, so that after
@@ -120,8 +120,6 @@
 					revisionId: item.revisions ? item.revisions[ 0 ].revid : null,
 					url: item.canonicalurl,
 					thumbnailSource: item.thumbnail && item.thumbnail.source || null,
-					pageviews: ( item.pageviews && Object.keys( item.pageviews ).length ) ?
-						item.pageviews[ Object.keys( item.pageviews )[ 0 ] ] : null,
 					tasktype: item.tasktype,
 					difficulty: item.difficulty,
 					maintenanceTemplates: item.maintenancetemplates || null
@@ -272,7 +270,8 @@
 	};
 
 	SuggestedEditsModule.prototype.getExtractAndUpdateQueue = function ( taskQueuePosition ) {
-		var apiUrlBase = mw.config.get( 'wgGERestbaseUrl' ),
+		var encodedTitle, pageviewsApiUrl, day, firstPageviewDay, lastPageviewDay,
+			apiUrlBase = mw.config.get( 'wgGERestbaseUrl' ),
 			apiUrl = apiUrlBase + '/page/summary/',
 			suggestedEditData = this.taskQueue[ taskQueuePosition ];
 		if ( !apiUrlBase ) {
@@ -283,11 +282,29 @@
 			return $.Deferred().resolve().promise();
 		}
 
-		return $.get( apiUrl + encodeURI( suggestedEditData.title ) ).done( function ( data ) {
-			suggestedEditData.extract = data.extract;
-			if ( !suggestedEditData.thumbnailSource && data.thumbnail ) {
+		encodedTitle = encodeURIComponent( suggestedEditData.title.replace( / /g, '_' ) );
+		// Get YYYYMMDD timestamps of 2 days ago (typically the last day that has full
+		// data in AQS) and 60+2 days ago, using Javascript's somewhat cumbersome date API
+		day = new Date();
+		day.setDate( day.getDate() - 2 );
+		lastPageviewDay = day.toISOString().replace( /-/g, '' ).split( 'T' )[ 0 ];
+		day.setDate( day.getDate() - 60 );
+		firstPageviewDay = day.toISOString().replace( /-/g, '' ).split( 'T' )[ 0 ];
+		pageviewsApiUrl = 'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/' +
+			aqsConfig.project + '/all-access/user/' + encodedTitle + '/monthly/' +
+			firstPageviewDay + '/' + lastPageviewDay;
+		return $.when(
+			$.get( apiUrl + encodedTitle ),
+			$.get( pageviewsApiUrl )
+		).done( function ( data, pvData ) {
+			// in $.when callbacks each argument is a triplet of data, status, jqXHR
+			suggestedEditData.extract = data[ 0 ].extract;
+			if ( !suggestedEditData.thumbnailSource && data[ 0 ].thumbnail ) {
 				// This will only apply for some beta wiki configurations and local setups.
-				suggestedEditData.thumbnailSource = data.thumbnail.source;
+				suggestedEditData.thumbnailSource = data[ 0 ].thumbnail.source;
+			}
+			if ( pvData[ 0 ].items ) {
+				suggestedEditData.pageviews = pvData[ 0 ].items[ 0 ].views;
 			}
 			// Update the suggested edit data so we don't need to fetch it again
 			// if the user views the card more than once.

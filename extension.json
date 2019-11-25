@@ -355,6 +355,10 @@
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
 				},
 				{
+					"name": "homepage/suggestededits/AQSConfig.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getAQSConfigJson" ]
+				},
+				{
 					"name": "homepage/suggestededits/config.json",
 					"config": [ "GEHomepageSuggestedEditsIntroLinks" ]
 				}
