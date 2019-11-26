@@ -95,6 +95,7 @@ class SuggestedEdits extends BaseModule {
 
 	/** @inheritDoc */
 	protected function getBody() {
+		$isDesktop = $this->getMode() === self::RENDER_DESKTOP;
 		$siteViewsCount = $this->getSiteViews();
 		$siteViewsMessage = $siteViewsCount ?
 			$this->getContext()->msg( 'growthexperiments-homepage-suggestededits-footer' )
@@ -102,7 +103,7 @@ class SuggestedEdits extends BaseModule {
 			$this->getContext()->msg( 'growthexperiments-homepage-suggestededits-footer-noviews' );
 		return Html::rawElement(
 			'div', [ 'class' => 'suggested-edits-module-wrapper' ],
-			Html::element( 'div', [ 'class' => 'suggested-edits-filters' ] ) .
+			( $isDesktop ? Html::element( 'div', [ 'class' => 'suggested-edits-filters' ] ) : '' ) .
 			Html::element( 'div', [ 'class' => 'suggested-edits-pager' ] ) .
 			Html::rawElement( 'div', [ 'class' => 'suggested-edits-card-wrapper' ],
 				Html::element( 'div', [ 'class' => 'suggested-edits-previous' ] ) .
@@ -145,6 +146,21 @@ class SuggestedEdits extends BaseModule {
 			) . Html::element( 'div', [
 				'class' => 'suggested-edits-footer'
 			], $footerText );
+	}
+
+	/** @inheritDoc */
+	protected function getSubheader() {
+		// Ugly hack to get the filters positioned outside of the module wrapper on mobile.
+		$mobileDetails = [ self::RENDER_MOBILE_DETAILS, self::RENDER_MOBILE_DETAILS_OVERLAY ];
+		if ( !in_array( $this->getMode(), $mobileDetails, true ) ) {
+			return null;
+		}
+		return Html::rawElement( 'div', [ 'class' => 'suggested-edits-filters' ] );
+	}
+
+	/** @inheritDoc */
+	protected function getSubheaderTag() {
+		return 'div';
 	}
 
 	/** @inheritDoc */

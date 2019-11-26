@@ -22,7 +22,7 @@
 	 * @constructor
 	 */
 	function SuggestedEditsModule( config, logger ) {
-		var $pager, $previous, $next, $filters;
+		var $pager, $previous, $next, $filters, $filtersContainer;
 		SuggestedEditsModule.super.call( this, config );
 
 		this.logger = logger;
@@ -57,9 +57,15 @@
 			$next = $( '<div>' ).addClass( 'suggested-edits-next' ).appendTo( this.$element );
 		}
 
-		$filters = this.$element.find( '.suggested-edits-filters' );
+		if ( this.mode === 'mobile-overlay' || this.mode === 'mobile-details' ) {
+			$filtersContainer = this.$element.closest( '.growthexperiments-homepage-module' )
+				.find( '.growthexperiments-homepage-module-section-subheader' );
+		} else {
+			$filtersContainer = this.$element;
+		}
+		$filters = $filtersContainer.find( '.suggested-edits-filters' );
 		if ( !$filters.length ) {
-			$filters = $( '<div>' ).addClass( 'suggested-edits-filters' ).appendTo( this.$element );
+			$filters = $( '<div>' ).addClass( 'suggested-edits-filters' ).appendTo( $filtersContainer );
 		}
 
 		$pager.append( this.pager.$element );

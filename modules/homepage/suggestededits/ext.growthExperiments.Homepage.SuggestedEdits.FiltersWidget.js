@@ -13,8 +13,10 @@
 		var DifficultyFiltersDialog = require( './ext.growthExperiments.Homepage.SuggestedEdits.DifficultyFiltersDialog.js' ),
 			windowManager = new OO.ui.WindowManager( { modal: true } );
 
+		this.mode = config.mode;
 		this.difficultyFilterButtonWidget = new OO.ui.ButtonWidget( {
-			icon: 'difficulty-outline'
+			icon: 'difficulty-outline',
+			indicator: config.mode === 'desktop' ? null : 'down'
 		} );
 		this.dialog = new DifficultyFiltersDialog( config )
 			.on( 'search', function ( search ) {
@@ -95,7 +97,10 @@
 		}
 
 		this.difficultyFilterButtonWidget.setLabel(
-			mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-label' )
+			mw.message( this.mode === 'desktop' ?
+				'growthexperiments-homepage-suggestededits-difficulty-filter-label' :
+				'growthexperiments-homepage-suggestededits-difficulty-filter-label-mobile'
+			)
 				.params( [ messages.join( mw.msg( 'comma-separator' ) ) ] )
 				.text()
 		);
