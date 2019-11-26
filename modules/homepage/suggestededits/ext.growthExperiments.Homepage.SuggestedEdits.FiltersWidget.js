@@ -1,5 +1,6 @@
 ( function () {
 	'use strict';
+	var taskTypes = require( './TaskTypes.json' );
 
 	/**
 	 * @param {Object} config Configuration options
@@ -60,7 +61,9 @@
 	 * @param {string[]} search
 	 */
 	SuggestedEditsFiltersWidget.prototype.updateButtonLabelAndIcon = function ( search ) {
-		var groups = [];
+		var levels = {},
+			messages = [];
+
 		if ( !search.length ) {
 			// User has deselected all filters, set generic outline and message in button label.
 			this.difficultyFilterButtonWidget.setLabel(
@@ -69,38 +72,31 @@
 			this.difficultyFilterButtonWidget.setIcon( 'difficulty-outline' );
 			return;
 		}
-		search.forEach( function ( taskType ) {
-			function addMessage( messages, difficultyLevel ) {
-				// growthexperiments-homepage-suggestededits-difficulty-filter-label-easy
-				// growthexperiments-homepage-suggestededits-difficulty-filter-label-medium
-				// growthexperiments-homepage-suggestededits-difficulty-filter-label-hard
-				var label = mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-label-' + difficultyLevel ).text();
-				if ( messages.indexOf( label ) === -1 ) {
-					messages.push( label );
-				}
-				return messages;
-			}
-			if ( [ 'links', 'copyedit' ].indexOf( taskType ) > -1 ) {
-				groups = addMessage( groups, 'easy' );
-				this.difficultyFilterButtonWidget.setIcon( 'difficulty-easy' );
-			}
-			if ( [ 'references', 'update' ].indexOf( taskType ) > -1 ) {
-				groups = addMessage( groups, 'medium' );
-				this.difficultyFilterButtonWidget.setIcon( 'difficulty-medium' );
-			}
-			if ( [ 'expand' ].indexOf( taskType ) > -1 ) {
-				groups = addMessage( groups, 'hard' );
-				this.difficultyFilterButtonWidget.setIcon( 'difficulty-hard' );
-			}
-		}.bind( this ) );
 
-		if ( groups.length > 1 ) {
+		search.forEach( function ( taskType ) {
+			levels[ taskTypes[ taskType ].difficulty ] = true;
+		} );
+		[ 'easy', 'medium', 'hard' ].forEach( function ( level ) {
+			var label;
+			if ( !levels[ level ] ) {
+				return;
+			}
+			// growthexperiments-homepage-suggestededits-difficulty-filter-label-easy
+			// growthexperiments-homepage-suggestededits-difficulty-filter-label-medium
+			// growthexperiments-homepage-suggestededits-difficulty-filter-label-hard
+			label = mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-label-' +
+				level ).text();
+			messages.push( label );
+			// Icons: difficulty-easy, difficulty-medium, difficulty-hard
+			this.difficultyFilterButtonWidget.setIcon( 'difficulty-' + level );
+		}.bind( this ) );
+		if ( messages.length > 1 ) {
 			this.difficultyFilterButtonWidget.setIcon( 'difficulty-outline' );
 		}
 
 		this.difficultyFilterButtonWidget.setLabel(
 			mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-label' )
-				.params( [ groups.join( mw.msg( 'comma-separator' ) ) ] )
+				.params( [ messages.join( mw.msg( 'comma-separator' ) ) ] )
 				.text()
 		);
 	};
