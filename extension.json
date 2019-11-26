@@ -369,6 +369,7 @@
 			],
 			"dependencies": [
 				"mediawiki.api",
+				"mediawiki.jqueryMsg",
 				"mediawiki.language",
 				"oojs-ui-widgets",
 				"oojs-ui.styles.icons-media",
