@@ -92,10 +92,11 @@
 	};
 
 	/**
-	 * Fetch suggested edits from ApiQueryGrowthTasks.
+	 * Fetch suggested edits from ApiQueryGrowthTasks and update the view.
 	 *
 	 * @param {string[]} taskTypes
-	 * @return {jQuery.Promise}
+	 * @return {jQuery.Promise} Status promise. It never fails; errors are handled internally
+	 *   by rendering an error card.
 	 */
 	SuggestedEditsModule.prototype.fetchTasks = function ( taskTypes ) {
 		var apiParams = {
@@ -129,6 +130,11 @@
 		return this.apiPromise.then( function ( data ) {
 			// HomepageModuleLogger adds this to the log data automatically
 			var extraData = mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' );
+			if ( !extraData ) {
+				// when initializing the module on the client side, this is not set
+				extraData = {};
+				mw.config.set( 'wgGEHomepageModuleActionData-suggested-edits', extraData );
+			}
 			function cleanUpData( item ) {
 				return {
 					title: item.title,
@@ -173,7 +179,7 @@
 			// TODO log more information about the error
 			this.logger.log( 'suggested-edits', this.mode, 'se-task-pseudo-impression',
 				{ type: 'error' } );
-			this.showCard( new ErrorCardWidget() );
+			return this.showCard( new ErrorCardWidget() );
 		}.bind( this ) );
 	};
 
@@ -195,11 +201,15 @@
 		this.nextWidget.toggle( this.taskQueue.length );
 	};
 
+	/**
+	 * Preload extra (non-action-API) data for the next card. Does not change the view.
+	 * @return {jQuery.Promise} Loading status.
+	 */
 	SuggestedEditsModule.prototype.preloadNextCard = function () {
 		if ( this.taskQueue[ this.queuePosition + 1 ] &&
 			!this.taskQueue[ this.queuePosition + 1 ].extract
 		) {
-			this.getExtraDataAndUpdateQueue( this.queuePosition + 1 );
+			return this.getExtraDataAndUpdateQueue( this.queuePosition + 1 );
 		}
 	};
 
@@ -253,6 +263,17 @@
 		};
 	};
 
+	/**
+	 * Display the given card, or the current card.
+	 * Sets this.currentCard.
+	 * @param {SuggestedEditCardWidget|ErrorCardWidget|NoResultsWidget|EndOfQueueWidget|null} card
+	 *   The card to show. Only used for special cards, for normal cards typically null is passed,
+	 *   in which case a new SuggestedEditCardWidget will be created from the data in
+	 *   this.taskQueue[this.queuePosition]. This might involve fetching supplemental data via
+	 *   the API (which is why the method returns a promise).
+	 * @return {jQuery.Promise} Status promise. Might fail if fully loading the card depends
+	 *   on external data and fetching that fails.
+	 */
 	SuggestedEditsModule.prototype.showCard = function ( card ) {
 		var queuePosition = this.queuePosition;
 		this.currentCard = null;
@@ -274,7 +295,7 @@
 			return $.Deferred().resolve();
 		}
 
-		return this.getExtraDataAndUpdateQueue( queuePosition ).done( function () {
+		return this.getExtraDataAndUpdateQueue( queuePosition ).then( function () {
 			if ( queuePosition !== this.queuePosition ) {
 				return;
 			}
@@ -295,7 +316,9 @@
 	 * local; setting it to null will disable text extracts), the AQS endpoint via
 	 * $wgPageViewInfoWikimediaDomain (by default will use the Wikimedia instance).
 	 * @param {int} taskQueuePosition
-	 * @return {Promise} Promise reflecting the status of the PCS request (AQS errors are ignored).
+	 * @return {jQuery.Promise} Promise reflecting the status of the PCS request
+	 *   (AQS errors are ignored). Does not return any value; instead,
+	 *   SuggestedEditsModule.taskQueue will be updated.
 	 */
 	SuggestedEditsModule.prototype.getExtraDataAndUpdateQueue = function ( taskQueuePosition ) {
 		var pcsPromise, aqsPromise,
@@ -310,7 +333,7 @@
 		aqsPromise = ( 'pageviews' in suggestedEditData ) ?
 			$.Deferred().resolve( {} ).promise() :
 			this.getExtraDataFromAqs( suggestedEditData.title );
-		return $.when( pcsPromise, aqsPromise ).done( function ( pcsData, aqsData ) {
+		return $.when( pcsPromise, aqsPromise ).then( function ( pcsData, aqsData ) {
 			// If the data is already loaded, xxxData will be an empty {}, so
 			// we need to be careful never to override real fields with missing ones.
 			if ( pcsData && pcsData.extract ) {
@@ -341,7 +364,7 @@
 	/**
 	 * Get extracts and page images from PCS.
 	 * @param {string} title
-	 * @return {Promise<Object>}
+	 * @return {jQuery.Promise<Object>}
 	 * @see ::getExtraDataAndUpdateQueue
 	 */
 	SuggestedEditsModule.prototype.getExtraDataFromPcs = function ( title ) {
@@ -366,7 +389,7 @@
 	/**
 	 * Get pageview data from AQS.
 	 * @param {string} title
-	 * @return {Promise<int|null>}
+	 * @return {jQuery.Promise<int|null>}
 	 * @see ::getExtraDataAndUpdateQueue
 	 */
 	SuggestedEditsModule.prototype.getExtraDataFromAqs = function ( title ) {
@@ -427,6 +450,12 @@
 			}.bind( this ) );
 	};
 
+	/**
+	 * Set up the suggested edits module within the given container, fetch the tasks
+	 * and display the first.
+	 * @param {jQuery} $container
+	 * @return {jQuery.Promise} Status promise.
+	 */
 	function initSuggestedTasks( $container ) {
 		var suggestedEditsModule,
 			savedTaskTypeFilters = mw.user.options.get( 'growthexperiments-homepage-se-filters' ),
@@ -449,17 +478,24 @@
 				mw.config.get( 'wgGEHomepagePageviewToken' )
 			) );
 		return suggestedEditsModule.fetchTasks( taskTypes )
-			.done( function () {
+			.then( function () {
 				suggestedEditsModule.filters.toggle( true );
-				suggestedEditsModule.preloadNextCard();
 				return suggestedEditsModule.showCard();
+			} ).done( function () {
+				// Use done instead of then because 1) we don't want to make the caller
+				// wait for the preload; 2) failed preloads should not result in an
+				// error card, as they don't affect the current card. The load will be
+				// retried when the user navigates.
+				suggestedEditsModule.preloadNextCard();
 			} );
 	}
 
-	// Try setup for desktop mode and server-side-rendered mobile mode
-	// See also the comment in ext.growthExperiments.Homepage.Mentorship.js
+	// Try setup for desktop mode and server-side-rendered mobile mode.
+	// See also the comment in ext.growthExperiments.Homepage.Mentorship.js.
+	// Export setup state so the caller can wait for it when setting up the module
+	// on the client side.
 	// eslint-disable-next-line no-jquery/no-global-selector
-	initSuggestedTasks( $( '.growthexperiments-homepage-container' ) );
+	module.exports = initSuggestedTasks( $( '.growthexperiments-homepage-container' ) );
 
 	// Try setup for mobile overlay mode
 	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {

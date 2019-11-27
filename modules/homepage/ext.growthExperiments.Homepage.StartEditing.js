@@ -41,22 +41,13 @@
 			logger.log( 'start-startediting', mode, 'se-cta-click' );
 			lifecycle.closing.done( function ( data ) {
 				if ( data && data.action === 'activate' ) {
-					logger.log( 'start-startediting', mode, 'se-activate' );
-					ctaButton.setDisabled( true );
-					if ( mode === 'mobile-overlay' ) {
-						window.history.pushState( null, null, '#/homepage/suggested-edits' );
-						window.location.reload();
-					} else if ( mode === 'mobile-details' ) {
-						window.location.href = mw.util.getUrl( new mw.Title( 'Special:Homepage/suggested-edits' ).toString() );
-					} else {
-						window.location.reload();
-					}
+					// No-op; logging and everything else is done within the dialog,
+					// as it is kept open during setup of the suggested edits module
+					// to make the UI change less disruptive.
 				} else {
 					logger.log( 'start-startediting', mode, 'se-cancel-activation' );
 				}
 			} );
-			// TODO maybe restructure the page without refreshing?
-			// Would require AJAX for the new module's contents
 		} );
 	}
 
