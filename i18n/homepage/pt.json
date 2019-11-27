@@ -3,7 +3,8 @@
 		"authors": [
 			"Fúlvio",
 			"Hamilton Abreu",
-			"Mansil alfalb"
+			"Mansil alfalb",
+			"Mansil"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Olá}}, {{bidi:$1}}!",
@@ -16,9 +17,9 @@
 	"growthexperiments-homepage-account-header": "Conta criada",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|edição|edições}}",
 	"growthexperiments-homepage-account-age": "Tem uma conta há $1",
-	"growthexperiments-homepage-userpage-header": "Crie a sua página de utilizador",
-	"growthexperiments-homepage-userpage-header-done": "Edite a sua página de utilizador",
-	"growthexperiments-homepage-userpage-body": "Pratique a edição enquanto cria o seu perfil público.",
+	"growthexperiments-homepage-userpage-header": "Crie a {{GENDER:$1|sua}} página de utilizador",
+	"growthexperiments-homepage-userpage-header-done": "Edite a {{GENDER:$1|sua}} página de utilizador",
+	"growthexperiments-homepage-userpage-body": "Pratique a edição enquanto cria o {{GENDER:$1|seu}} perfil público.",
 	"growthexperiments-homepage-userpage-body-done": "Continue a trabalhar no {{GENDER:$1|seu}} perfil público.",
 	"growthexperiments-homepage-userpage-button": "Criar página de utilizador",
 	"growthexperiments-homepage-userpage-button-done": "Editar página de utilizador",
@@ -112,7 +113,14 @@
 	"growthexperiments-tour-discovery-description": "Clique {{GENDER:$1|o seu}} nome de utilizador para visitar {{GENDER:$1|a sua}} página principal.",
 	"growthexperiments-homepage-welcomesurvey-default-close": "Ir para {{GENDER:$1|a sua}} página principal",
 	"growthexperiments-homepage-discovery-banner-header": "{{GENDER:$1|Bem-vindo|Bem-vinda}} à sua página inicial!",
+	"growthexperiments-homepage-discovery-thanks-header": "Obrigado por criar a {{GENDER:$1|sua}} conta!",
 	"growthexperiments-homepage-discovery-thanks-text": "Clique em $2 no topo da página para visitar a {{GENDER:$1|sua}} página inicial e começar.",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Bem-vindo à {{GENDER:$1|sua}} página inicial!",
+	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Comece aqui!",
+	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> de <strong>$2</strong> {{PLURAL:$2|sugestão|sugestões}}",
+	"growthexperiments-homepage-suggestededits-pager-end": "Fim",
+	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "Expandir artigos curtos",
+	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Adicionar hiperligações entre artigos",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Criar um novo artigo",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Saiba mais",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3 - 5 minutos",
@@ -127,6 +135,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Difícil",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Selecionar os tipos de edições",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Concluído",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> {{PLURAL:$1|artigo|artigos}} encontrado(s)",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Encontrar referências",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Atualizar artigos",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Expandir artigos curtos"
