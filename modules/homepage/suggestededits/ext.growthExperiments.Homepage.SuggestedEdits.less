@@ -114,13 +114,6 @@
 			.se-card-image {
 				height: @imageHeight;
 			}
-
-			.growthexperiments-homepage-mobile-summary &,
-			.growthexperiments-homepage-mobile-details & {
-				h3.se-card-title {
-					font-size: 1em;
-				}
-			}
 		}
 
 		// stylelint-disable-next-line no-descending-specificity
@@ -416,6 +409,19 @@
 		.suggested-edits-pager {
 			font-size: 0.8em;
 			margin: 32px 0 24px 0;
+		}
+
+		.suggested-edits-card-wrapper {
+			.suggested-edits-task-card-wrapper {
+				.se-card-content {
+					.se-card-text {
+						h3.se-card-title {
+							font-size: 1em;
+							padding-top: 8px;
+						}
+					}
+				}
+			}
 		}
 	}
 }
