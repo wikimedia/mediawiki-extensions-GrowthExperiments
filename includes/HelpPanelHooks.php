@@ -60,10 +60,17 @@ class HelpPanelHooks {
 
 		// Enable the help panel for a percentage of non-autocreated users.
 		$config = RequestContext::getMain()->getConfig();
+		if (
+			$config->get( 'GEHelpPanelNewAccountEnableWithHomepage' ) &&
+			HomepageHooks::isHomepageEnabled()
+		) {
+			// HomepageHooks::onLocalUserCreated() will enable the help panel if needed
+			return;
+		}
+
 		$enablePercentage = $config->get( 'GEHelpPanelNewAccountEnablePercentage' );
 		if ( $user->isLoggedIn() && !$autocreated && rand( 0, 99 ) < $enablePercentage ) {
 			$user->setOption( self::HELP_PANEL_PREFERENCES_TOGGLE, 1 );
-			$user->saveSettings();
 		}
 	}
 

@@ -669,8 +669,12 @@
 			"description": "MediaWiki namespaces that the help panel will be excluded from.",
 			"value": []
 		},
+		"GEHelpPanelNewAccountEnableWithHomepage": {
+			"description": "By default, the help panel is enabled for new accounts in lockstep with the homepage, controlled by GEHomepageNewAccountEnablePercentage. To disable this behavior and use GEHelpPanelNewAccountEnablePercentage instead, set this to false.",
+			"value": true
+		},
 		"GEHelpPanelNewAccountEnablePercentage": {
-			"description": "Percentage of new accounts to enable help panel for. Must be a whole number.",
+			"description": "Percentage of new accounts to enable help panel for. Must be a whole number. Ignored by default, only used if GEHelpPanelNewAccountEnableWithHomepage is false.",
 			"value": 100
 		},
 		"GEHelpPanelHelpDeskTitle": {
