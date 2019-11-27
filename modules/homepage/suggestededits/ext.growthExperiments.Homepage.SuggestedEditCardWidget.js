@@ -32,7 +32,7 @@
 	SuggestedEditCardWidget.prototype.getImageContent = function () {
 		var $imageContent = $( '<div>' ).addClass( 'se-card-image' );
 		if ( this.data.thumbnailSource ) {
-			$imageContent.css( 'background', 'url(' + this.data.thumbnailSource + ') no-repeat center center' );
+			$imageContent.css( 'background', 'url(' + this.data.thumbnailSource + ') top center' );
 		}
 		return $imageContent;
 	};
