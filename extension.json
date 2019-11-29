@@ -478,6 +478,7 @@
 			"dependencies": [
 				"mediawiki.api",
 				"mediawiki.Title",
+				"mediawiki.jqueryMsg",
 				"mediawiki.util",
 				"oojs-ui-widgets",
 				"oojs-ui-windows"
