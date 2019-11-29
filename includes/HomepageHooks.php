@@ -348,6 +348,13 @@ class HomepageHooks {
 					'origin' => __METHOD__,
 				] );
 			}
+
+			if (
+				$config->get( 'GEHelpPanelNewAccountEnableWithHomepage' ) &&
+				HelpPanel::isHelpPanelEnabled()
+			) {
+				$user->setOption( HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE, 1 );
+			}
 		}
 	}
 
