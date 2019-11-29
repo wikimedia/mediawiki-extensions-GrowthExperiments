@@ -355,6 +355,10 @@ class HomepageHooks {
 			) {
 				$user->setOption( HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE, 1 );
 			}
+
+			if ( rand( 0, 99 ) < $config->get( 'GEHomepageSuggestedEditsNewAccountInitiatedPercentage' ) ) {
+				$user->setOption( SuggestedEdits::ACTIVATED_PREF, 1 );
+			}
 		}
 	}
 
