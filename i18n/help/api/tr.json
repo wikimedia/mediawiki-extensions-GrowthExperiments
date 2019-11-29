@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hedda"
+			"Hedda",
+			"BaRaN6161 TURK"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "Geçerli kullanıcı için yardım panelinden gönderilen soruları ele alın.",
 	"apihelp-helppanelquestionposter-param-body": "Kullanıcı tarafından gönderilen soru metni.",
+	"apihelp-helppanelquestionposter-param-source": "Sorunun kaynağındaki bileşen. Geçerli değerler 'helppanel', 'homepage-help' ve 'homepage-mentorluk'",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Seçiliyse, soruya dahil etmek için ilgili başlık."
 }
