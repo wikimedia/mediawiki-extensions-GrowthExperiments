@@ -201,6 +201,9 @@ class RemotePageConfigurationLoader implements ConfigurationLoader {
 		$url = $this->titleFactory->newFromLinkTarget( $title )->getFullURL();
 		$parts = wfParseUrl( wfExpandUrl( $url, PROTO_CANONICAL ) );
 		$baseUrl = $parts['scheme'] . $parts['delimiter'] . $parts['host'];
+		if ( isset( $parts['port'] ) && $parts['port'] ) {
+			$baseUrl .= ':' . $parts['port'];
+		}
 
 		$localPageTitle = $this->titleFactory->makeTitle( $title->getNamespace(), $title->getDBkey() );
 		return $baseUrl . $localPageTitle->getLocalURL( [ 'action' => 'raw' ] );
