@@ -33,4 +33,20 @@ describe( 'Homepage', function () {
 
 	} );
 
+	it( 'can be disabled and re-enabled for new user', function () {
+
+		PreferencesPage.open();
+		PreferencesPage.clickHomepageCheckBox();
+
+		HomepagePage.open();
+		assert( !HomepagePage.homepage.isExisting() );
+
+		PreferencesPage.open();
+		PreferencesPage.clickHomepageCheckBox();
+
+		HomepagePage.open();
+		assert( HomepagePage.homepage.isExisting() );
+
+	} );
+
 } );
