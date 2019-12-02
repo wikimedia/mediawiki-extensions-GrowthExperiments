@@ -51,6 +51,54 @@
 		background-color: rgba( 234, 243, 255, 0.5 );
 	}
 
+	.suggested-edits-filters {
+		// Make the button full width (T236841); this is harder than it should be
+		width: 100%;
+
+		.oo-ui-buttonGroupWidget {
+			width: 100%;
+
+			.oo-ui-buttonElement {
+				width: 100%;
+
+				.oo-ui-buttonElement-button {
+					width: 100%;
+					text-align: left;
+
+					.oo-ui-labelElement-label {
+						text-overflow: ellipsis;
+						white-space: nowrap;
+						overflow: hidden;
+						// Needed for ellipses to work.
+						width: 100%;
+						// Needed for width to take effect.
+						display: inline-block;
+						// Needed due to the inline-block override.
+						margin-bottom: -5px;
+
+						.growthexperiments-homepage-mobile-summary &,
+						.growthexperiments-homepage-mobile-details & {
+							font-size: 1.15em;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.growthexperiments-homepage-module-section-subheader {
+		// Snap to the header
+		padding: 0 !important; // stylelint-disable-line declaration-no-important
+		margin-top: -1em;
+
+		.suggested-edits-filters a.oo-ui-buttonElement-button {
+			border-width: 0 0 1px 0;
+			border-radius: 0;
+			border-color: #c8ccd1;
+			font-weight: normal;
+		}
+	}
+
 	.suggested-edits-module-wrapper {
 		display: flex;
 		flex-direction: column;
@@ -61,41 +109,6 @@
 			margin-top: 24px;
 			font-size: 0.875em;
 			color: @colorGray2;
-		}
-
-		.suggested-edits-filters {
-			// Make the button full width (T236841); this is harder than it should be
-			width: 100%;
-
-			.oo-ui-buttonGroupWidget {
-				width: 100%;
-
-				.oo-ui-buttonElement {
-					width: 100%;
-
-					.oo-ui-buttonElement-button {
-						width: 100%;
-						text-align: left;
-
-						.oo-ui-labelElement-label {
-							text-overflow: ellipsis;
-							white-space: nowrap;
-							overflow: hidden;
-							// Needed for ellipses to work.
-							width: 100%;
-							// Needed for width to take effect.
-							display: inline-block;
-							// Needed due to the inline-block override.
-							margin-bottom: -5px;
-
-							.growthexperiments-homepage-mobile-summary &,
-							.growthexperiments-homepage-mobile-details & {
-								font-size: 1.15em;
-							}
-						}
-					}
-				}
-			}
 		}
 
 		.se-card-no-results,
