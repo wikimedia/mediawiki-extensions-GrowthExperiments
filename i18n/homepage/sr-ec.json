@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Zoranzoki21"
+			"Zoranzoki21",
+			"BadDog"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Здраво}}, {{bidi:$1}}!",
@@ -10,14 +11,14 @@
 	"prefs-homepage": "Почетна страница новајлија",
 	"growthexperiments-homepage-enable": "Прикажи почетну страницу новајлија",
 	"growthexperiments-homepage-pt-link": "Подразумевано за почетну страницу новајлија са вези ка корисничком имену у личним алатима",
-	"growthexperiments-homepage-start-header": "Почните овде",
+	"growthexperiments-homepage-start-header": "{{GENDER:$1|Почните}} овде",
 	"growthexperiments-homepage-account-header": "Налог креиран",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|измена|измене|измена}}",
 	"growthexperiments-homepage-account-age": "Имате налог за $1",
-	"growthexperiments-homepage-userpage-header": "Направите корисничку страницу",
-	"growthexperiments-homepage-userpage-header-done": "Измените вашу корисничку страницу",
-	"growthexperiments-homepage-userpage-body": "Вежбајте уређивање док градите свој јавни профил.",
-	"growthexperiments-homepage-userpage-body-done": "Наставите са радом на вашем јавном профилу.",
+	"growthexperiments-homepage-userpage-header": "Направите {{GENDER:$1|своју}} корисничку страницу",
+	"growthexperiments-homepage-userpage-header-done": "Уредите {{GENDER:$1|своју}} корисничку страницу",
+	"growthexperiments-homepage-userpage-body": "Вежбајте уређивање док градите {{GENDER:$1|свој}} јавни профил.",
+	"growthexperiments-homepage-userpage-body-done": "Наставите са радом на {{GENDER:$1|свом}} јавном профилу.",
 	"growthexperiments-homepage-userpage-button": "Направите корисничку страницу",
 	"growthexperiments-homepage-userpage-button-done": "Измените корисничку страницу",
 	"growthexperiments-homepage-userpage-guidelines": "Правила за корисничке странице",
