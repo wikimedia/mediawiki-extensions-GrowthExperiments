@@ -5,7 +5,6 @@ use GrowthExperiments\EditInfoService;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
@@ -52,17 +51,17 @@ return [
 		$configLoader = $services->getService( 'GrowthExperimentsConfigurationLoader' );
 		$taskSuggesterFactory = new TaskSuggesterFactory( $configLoader );
 
+		$dbr = $services->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA );
+		$templateProvider = new TemplateProvider( $services->getTitleFactory(), $dbr );
 		if ( $config->get( 'GENewcomerTasksRemoteApiUrl' ) ) {
-			$dbr = $services->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA );
-			$templateProvider = new TemplateProvider( $services->getTitleFactory(), $dbr );
 			return $taskSuggesterFactory->createRemote( $templateProvider,
 				$services->getHttpRequestFactory(), $services->getTitleFactory(),
 				$config->get( 'GENewcomerTasksRemoteApiUrl' ) );
 		} else {
-			return new ErrorForwardingTaskSuggester( StatusValue::newFatal( new ApiRawMessage(
-				'The TaskSuggester has not been configured! See StaticTaskSuggester ' .
-				'or $wgGENewcomerTasksRemoteApiUrl.', 'tasksuggester-not-configured'
-			) ) );
+			return $taskSuggesterFactory->createLocal(
+				$services->getSearchEngineFactory(),
+				$templateProvider
+			);
 		}
 	},
 
