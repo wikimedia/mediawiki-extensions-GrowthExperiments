@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
+use ApiRawMessage;
 use BagOStuff;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
@@ -9,19 +10,21 @@ use GrowthExperiments\Util;
 use HashBagOStuff;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Storage\RevisionRecord;
 // phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
 use Message;
 use MessageLocalizer;
 use StatusValue;
 use TitleFactory;
 use TitleValue;
+use WikiPage;
 
 /**
- * Load configuration from a remote .json wiki page.
+ * Load configuration from a local or remote .json wiki page.
  * For syntax see
  * https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Newcomer_tasks/Prototype/templates/cs.json
  */
-class RemotePageConfigurationLoader implements ConfigurationLoader {
+class PageConfigurationLoader implements ConfigurationLoader {
 
 	/** @var HttpRequestFactory */
 	private $requestFactory;
@@ -46,6 +49,9 @@ class RemotePageConfigurationLoader implements ConfigurationLoader {
 
 	/** @var LinkTarget[]|StatusValue|null Cached template blacklist (or an error).  */
 	private $templateBlacklist;
+
+	/** @var WikiPage */
+	private $wikiPage;
 
 	/**
 	 * @param HttpRequestFactory $requestFactory
@@ -178,12 +184,38 @@ class RemotePageConfigurationLoader implements ConfigurationLoader {
 			return $config;
 		}
 
-		$url = $this->getRawUrl( $this->pageTitle );
-		$status = Util::getJsonUrl( $this->requestFactory, $url );
-		if ( !$status->isOK() ) {
-			return $status;
+		if ( $this->pageTitle->isExternal() ) {
+			$url = $this->getRawUrl( $this->pageTitle );
+			$status = Util::getJsonUrl( $this->requestFactory, $url );
+			if ( !$status->isOK() ) {
+				return $status;
+			}
+			$config = $status->getValue();
+		} else {
+			if ( !$this->wikiPage->getTitle()->exists() ) {
+				return StatusValue::newFatal( new ApiRawMessage(
+					'The configuration title does not exist.',
+					'newcomer-tasks-configuration-loader-title-not-found'
+				) );
+			}
+			/** @var \JsonContent $content */
+			$content = $this->wikiPage->getContent( RevisionRecord::FOR_PUBLIC );
+			if ( !$content || !$content instanceof \JsonContent ) {
+				return StatusValue::newFatal( new ApiRawMessage(
+					'The configuration title has no content or is not JSON content.',
+					'newcomer-tasks-configuration-loader-content-error'
+				) );
+			}
+			/** @var StatusValue $status */
+			$status = $content->getData();
+			if ( !$status->isOK() ) {
+				return $status;
+			}
+			// JsonContent's getData() parses JSON without casting objects to arrays.
+			// Re-encode and then decode the JSON to convert those objects to associative
+			// arrays which is what loadConfig is meant to return.
+			$config = \FormatJson::decode( \FormatJson::encode( $status->getValue() ), true );
 		}
-		$config = $status->getValue();
 
 		$this->cache->set( $cacheKey, $config, $this->cacheTtl );
 		return $config;
@@ -231,6 +263,15 @@ class RemotePageConfigurationLoader implements ConfigurationLoader {
 			}
 		}
 		return $status;
+	}
+
+	/**
+	 * Set WikiPage for local titles.
+	 *
+	 * @param WikiPage $wikiPage
+	 */
+	public function setWikiPage( WikiPage $wikiPage ): void {
+		$this->wikiPage = $wikiPage;
 	}
 
 }

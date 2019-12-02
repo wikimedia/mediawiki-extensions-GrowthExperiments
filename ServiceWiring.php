@@ -4,7 +4,7 @@ use GrowthExperiments\AqsEditInfoService;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\RemotePageConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
@@ -18,10 +18,22 @@ return [
 	): ConfigurationLoader {
 		$config = $services->getConfigFactory()->makeConfig( 'GrowthExperiments' );
 		$cache = ObjectCache::getLocalClusterInstance();
-		if ( $config->get( 'GENewcomerTasksRemoteConfigTitle' ) ) {
-			$title = Title::newFromText( $config->get( 'GENewcomerTasksRemoteConfigTitle' ) );
-			$configurationLoader = new RemotePageConfigurationLoader( $services->getHttpRequestFactory(),
-				$services->getTitleFactory(), RequestContext::getMain(), $title );
+		$configTitle = Title::newFromText(
+			$config->get( 'GENewcomerTasksConfigTitle' )
+			?: $config->get( 'GENewcomerTasksRemoteConfigTitle' )
+		);
+		if ( $configTitle ) {
+			$configurationLoader = new PageConfigurationLoader(
+				$services->getHttpRequestFactory(),
+				$services->getTitleFactory(),
+				RequestContext::getMain(),
+				$configTitle
+			);
+			if ( !$configTitle->isExternal() ) {
+				$configurationLoader->setWikiPage(
+					WikiPage::factory( $services->getTitleFactory()->newFromLinkTarget( $configTitle ) )
+				);
+			}
 			// Cache config for a minute, as a trade-off between avoiding the performance hit of
 			// constant querying and making it not too hard to test changes to the config page.
 			$configurationLoader->setCache( $cache, 60 );

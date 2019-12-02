@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Tests;
 
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\RemotePageConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use IContextSource;
 use MediaWiki\Http\HttpRequestFactory;
@@ -16,10 +16,10 @@ use Title;
 use TitleFactory;
 
 /**
- * @covers \GrowthExperiments\NewcomerTasks\ConfigurationLoader\RemotePageConfigurationLoader
+ * @covers \GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader
  * @covers \GrowthExperiments\Util::getJsonUrl
  */
-class RemotePageConfigurationLoaderTest extends MediaWikiUnitTestCase {
+class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 
 	private $oldWgUrlProtocols;
 
@@ -46,7 +46,7 @@ class RemotePageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			$this->getConfig() );
 		$titleFactory = $this->getMockTitleFactory( $url . '/Foo?action=raw', $expectedLocalUrl );
 		$context = $this->getMockContext();
-		$configurationLoader = new RemotePageConfigurationLoader( $requestFactory, $titleFactory,
+		$configurationLoader = new PageConfigurationLoader( $requestFactory, $titleFactory,
 			$context, $title );
 		// Run twice to test caching. If caching is broken, the 'once' expectation
 		// for HTTP calls in the $requestFactory mock will fail.
@@ -79,7 +79,7 @@ class RemotePageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$context = $this->getMockContext( [
 			'growthexperiments-homepage-suggestededits-tasktype-name-foo' => $msg,
 		] );
-		$configurationLoader = new RemotePageConfigurationLoader( $requestFactory, $titleFactory,
+		$configurationLoader = new PageConfigurationLoader( $requestFactory, $titleFactory,
 			$context, $title );
 		$status = $configurationLoader->loadTaskTypes();
 		$this->assertInstanceOf( StatusValue::class, $status );
@@ -100,7 +100,7 @@ class RemotePageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$requestFactory = $this->getMockRequestFactory( $url . $expectedLocalUrl, $httpStatus );
 		$titleFactory = $this->getMockTitleFactory( $url . '/Foo?action=raw', $expectedLocalUrl );
 		$context = $this->getMockContext();
-		$configurationLoader = new RemotePageConfigurationLoader( $requestFactory, $titleFactory,
+		$configurationLoader = new PageConfigurationLoader( $requestFactory, $titleFactory,
 			$context, $title );
 		$status = $configurationLoader->loadTaskTypes();
 		$this->assertInstanceOf( StatusValue::class, $status );
@@ -113,6 +113,49 @@ class RemotePageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 
 	public function testLoadTemplateBlacklist() {
 		$this->markTestSkipped( 'Not implemented yet' );
+	}
+
+	public function testLoadLocalTitle() {
+		$url = 'https://bar';
+		$title = $this->getMockTitle( $url, 'Foo', false );
+		$expectedLocalUrl = '/w/index.php?title=Foo&action=raw';
+		$httpStatus = Status::newGood( 'ok' );
+		$requestFactory = $this->getMockRequestFactory(
+			$url . $expectedLocalUrl,
+			$httpStatus,
+			false
+		);
+		$titleFactory = $this->getMockTitleFactory( $url . '/Foo?action=raw', $expectedLocalUrl );
+		$context = $this->getMockContext();
+		$configurationLoader = new PageConfigurationLoader( $requestFactory, $titleFactory,
+			$context, $title );
+		/** @var \WikiPage|MockObject $wikiPageMock */
+		$wikiPageMock = $this->getMockBuilder( \WikiPage::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$jsonContentMock = $this->getMockBuilder( \JsonContent::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$jsonStatusValue = new StatusValue();
+		$jsonStatusValue->setResult( true, json_decode( $this->getConfig() ) );
+		$jsonContentMock->method( 'getData' )->willReturn( $jsonStatusValue );
+		$titleMock = $this->getMockBuilder( Title::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$titleMock->method( 'exists' )->willReturn( true );
+		$wikiPageMock->method( 'getContent' )->willReturn( $jsonContentMock );
+		$wikiPageMock->method( 'getTitle' )->willReturn( $titleMock );
+		$configurationLoader->setWikiPage( $wikiPageMock );
+		$taskTypes = $configurationLoader->loadTaskTypes();
+		$this->assertInternalType( 'array', $taskTypes );
+		$this->assertNotEmpty( $taskTypes );
+		$this->assertInstanceOf( TaskType::class, $taskTypes[0] );
+		$this->assertSame( [ 'copyedit', 'references' ], array_map( function ( TaskType $tt ) {
+			return $tt->getId();
+		}, $taskTypes ) );
+		$this->assertSame( [ 'easy', 'medium' ], array_map( function ( TaskType $tt ) {
+			return $tt->getDifficulty();
+		}, $taskTypes ) );
 	}
 
 	/**
@@ -148,13 +191,15 @@ class RemotePageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param string $url Should look like a real URL (have scheme, domain, path)
 	 * @param string $titleText
+	 * @param bool $isExternal
 	 * @return Title|MockObject
 	 */
-	protected function getMockTitle( $url, $titleText ) {
+	protected function getMockTitle( $url, $titleText, $isExternal = true ) {
 		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'getFullURL', 'getNamespace', 'getDBKey' ] )
+			->setMethods( [ 'getFullURL', 'getNamespace', 'getDBKey', 'isExternal' ] )
 			->getMock();
+		$title->method( 'isExternal' )->willReturn( $isExternal );
 		$title->method( 'getFullURL' )->willReturn( $url );
 		$title->method( 'getNamespace' )->willReturn( 0 );
 		$title->method( 'getDBKey' )->willReturn( $titleText );
@@ -164,9 +209,10 @@ class RemotePageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param string $expectedUrl
 	 * @param string|Status $result A content string or an error status.
+	 * @param bool $isUsed Set to true to assert that the factory is invoked once.
 	 * @return HttpRequestFactory|MockObject
 	 */
-	protected function getMockRequestFactory( $expectedUrl, $result ) {
+	protected function getMockRequestFactory( $expectedUrl, $result, $isUsed = true ) {
 		$content = null;
 		if ( !( $result instanceof Status ) ) {
 			$content = $result;
@@ -185,7 +231,7 @@ class RemotePageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			->setMethods( [ 'create', 'getUserAgent' ] )
 			->getMock();
 		$requestFactory->method( 'getUserAgent' )->willReturn( 'Foo' );
-		$requestFactory->expects( $this->once() )
+		$requestFactory->expects( $isUsed ? $this->once() : $this->never() )
 			->method( 'create' )
 			->with( $expectedUrl, $this->anything(), $this->anything() )
 			->willReturn( $request );
