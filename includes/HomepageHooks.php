@@ -58,6 +58,7 @@ class HomepageHooks {
 				$list['Impact'] = SpecialImpact::class;
 				$list['Homepage']['services'][] = 'PageViewService';
 			}
+			$list['Homepage']['services'][] = 'GrowthExperimentsConfigurationLoader';
 		}
 	}
 

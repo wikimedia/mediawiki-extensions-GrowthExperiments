@@ -4,6 +4,7 @@ namespace GrowthExperiments\HomepageModules;
 
 use Config;
 use GrowthExperiments\EditInfoService;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use IContextSource;
 use Html;
 use ExtensionRegistry;
@@ -29,20 +30,27 @@ class SuggestedEdits extends BaseModule {
 
 	/** @var PageViewService|null */
 	private $pageViewService;
+	/**
+	 * @var ConfigurationLoader|null
+	 */
+	private $configurationLoader;
 
 	/**
 	 * @param IContextSource $context
 	 * @param EditInfoService $editInfoService
 	 * @param PageViewService|null $pageViewService
+	 * @param ConfigurationLoader|null $configurationLoader
 	 */
 	public function __construct(
 		IContextSource $context,
 		EditInfoService $editInfoService,
-		?PageViewService $pageViewService
+		?PageViewService $pageViewService,
+		?ConfigurationLoader $configurationLoader
 	) {
 		parent::__construct( 'suggested-edits', $context );
 		$this->editInfoService = $editInfoService;
 		$this->pageViewService = $pageViewService;
+		$this->configurationLoader = $configurationLoader;
 	}
 
 	/**
@@ -89,6 +97,7 @@ class SuggestedEdits extends BaseModule {
 	protected function canRender() {
 		$extensionRegistry = ExtensionRegistry::getInstance();
 		return self::isActivated( $this->getContext() ) &&
+			   !$this->configurationLoader->loadTaskTypes() instanceof StatusValue &&
 			   $extensionRegistry->isLoaded( 'PageViewInfo' ) &&
 			   $extensionRegistry->isLoaded( 'PageImages' );
 	}

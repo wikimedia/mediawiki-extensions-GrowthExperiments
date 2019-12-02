@@ -17,6 +17,7 @@ use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use Html;
@@ -44,17 +45,23 @@ class SpecialHomepage extends SpecialPage {
 	 */
 	private $pageviewToken;
 
+	/** @var ConfigurationLoader|null */
+	private $configurationLoader;
+
 	/**
 	 * @param EditInfoService $editInfoService
 	 * @param PageViewService|null $pageViewService
+	 * @param ConfigurationLoader|null $configurationLoader
 	 */
 	public function __construct(
 		EditInfoService $editInfoService,
-		PageViewService $pageViewService = null
+		PageViewService $pageViewService = null,
+		ConfigurationLoader $configurationLoader = null
 	) {
 		parent::__construct( 'Homepage', '', false );
 		$this->editInfoService = $editInfoService;
 		$this->pageViewService = $pageViewService;
+		$this->configurationLoader = $configurationLoader;
 		$this->pageviewToken = $this->generatePageviewToken();
 		// Hack: Making the userpage the relevant title for the homepage
 		// allows using the talk overlay for the talk tab on mobile.
@@ -198,8 +205,12 @@ class SpecialHomepage extends SpecialPage {
 		];
 		if ( SuggestedEdits::isEnabled( $this->getContext() ) ) {
 			// TODO use some kind of registry instead of passing things through here
-			$modules['suggested-edits'] = new SuggestedEdits( $this->getContext(),
-				$this->editInfoService, $this->pageViewService );
+			$modules['suggested-edits'] = new SuggestedEdits(
+				$this->getContext(),
+				$this->editInfoService,
+				$this->pageViewService,
+				$this->configurationLoader
+			);
 		}
 		return array_filter( $modules );
 	}
