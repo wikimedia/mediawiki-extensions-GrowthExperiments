@@ -8,6 +8,8 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
+use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 
 return [
@@ -87,6 +89,16 @@ return [
 		$editInfoService = new AqsEditInfoService( $services->getHttpRequestFactory(), $project );
 		$editInfoService->setCache( ObjectCache::getLocalClusterInstance() );
 		return $editInfoService;
+	},
+
+	'GrowthExperimentsNewcomerTaskTrackerFactory' => function (
+		MediaWikiServices $services
+	): TrackerFactory {
+		return new TrackerFactory(
+			$services->getMainObjectStash(),
+			$services->getTitleFactory(),
+			LoggerFactory::getInstance( 'GrowthExperiments' )
+		);
 	},
 
 ];

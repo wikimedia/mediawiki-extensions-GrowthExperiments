@@ -17,7 +17,7 @@
 			$( '<div>' ).addClass( 'suggested-edits-task-card-wrapper' )
 				.append(
 					$( '<a>' )
-						.attr( 'href', data.url )
+						.attr( 'href', mw.util.getUrl( new mw.Title( 'Special:Homepage/newcomertask/' + data.pageId ).toString() ) )
 						.addClass( 'se-card-content' )
 						.append(
 							this.getImageContent(),

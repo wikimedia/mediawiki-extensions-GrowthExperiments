@@ -11,6 +11,7 @@ use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\Tracker\Tracker;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
 use Html;
@@ -22,6 +23,7 @@ use MediaWiki\Minerva\Menu\Group;
 use MediaWiki\Minerva\SkinOptions;
 use OOUI\ButtonWidget;
 use OutputPage;
+use RecentChange;
 use RequestContext;
 use ResourceLoaderContext;
 use Skin;
@@ -59,6 +61,9 @@ class HomepageHooks {
 				$list['Homepage']['services'][] = 'PageViewService';
 			}
 			$list['Homepage']['services'][] = 'GrowthExperimentsConfigurationLoader';
+			if ( SuggestedEdits::isEnabled( RequestContext::getMain() ) ) {
+				$list['Homepage']['services'][] = 'GrowthExperimentsNewcomerTaskTrackerFactory';
+			}
 		}
 	}
 
@@ -398,6 +403,28 @@ class HomepageHooks {
 		}
 		if ( SuggestedEdits::isEnabledForAnyone( $config ) ) {
 			$tags[] = SuggestedEdits::SUGGESTED_EDIT_TAG;
+		}
+	}
+
+	/**
+	 * RecentChange_save hook handler
+	 *
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/RecentChange_save
+	 *
+	 * @param RecentChange &$rc
+	 */
+	public static function onRecentChangeSave( RecentChange &$rc ) {
+		$context = RequestContext::getMain();
+		if ( SuggestedEdits::isEnabled( $context ) &&
+			 SuggestedEdits::isActivated( $context )
+		) {
+			/** @var Tracker $tracker */
+			$tracker = MediaWikiServices::getInstance()->get(
+				'GrowthExperimentsNewcomerTaskTrackerFactory'
+			)->getTracker( $rc->getPerformer() );
+			if ( $tracker && in_array( $rc->getTitle()->getArticleID(), $tracker->getTrackedPageIds() ) ) {
+				$rc->addTags( SuggestedEdits::SUGGESTED_EDIT_TAG );
+			}
 		}
 	}
 
