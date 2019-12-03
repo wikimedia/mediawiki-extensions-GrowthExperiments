@@ -371,9 +371,13 @@ class HomepageHooks {
 	 * @throws ConfigException
 	 */
 	public static function onListDefinedTags( &$tags ) {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
 		if ( self::isHomepageEnabled() ) {
 			$tags[] = Help::HELP_MODULE_QUESTION_TAG;
 			$tags[] = Mentorship::MENTORSHIP_MODULE_QUESTION_TAG;
+		}
+		if ( SuggestedEdits::isEnabledForAnyone( $config ) ) {
+			$tags[] = SuggestedEdits::SUGGESTED_EDIT_TAG;
 		}
 	}
 
@@ -386,9 +390,13 @@ class HomepageHooks {
 	 * @throws ConfigException
 	 */
 	public static function onChangeTagsListActive( &$tags ) {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
 		if ( self::isHomepageEnabled() ) {
 			// Help::HELP_MODULE_QUESTION_TAG is no longer active (T232548)
 			$tags[] = Mentorship::MENTORSHIP_MODULE_QUESTION_TAG;
+		}
+		if ( SuggestedEdits::isEnabledForAnyone( $config ) ) {
+			$tags[] = SuggestedEdits::SUGGESTED_EDIT_TAG;
 		}
 	}
 

@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+use Config;
 use GrowthExperiments\EditInfoService;
 use IContextSource;
 use Html;
@@ -21,6 +22,7 @@ class SuggestedEdits extends BaseModule {
 
 	const ENABLED_PREF = 'growthexperiments-homepage-suggestededits';
 	const ACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-activated';
+	const SUGGESTED_EDIT_TAG = 'newcomer task';
 
 	/** @var EditInfoService */
 	private $editInfoService;
@@ -44,19 +46,29 @@ class SuggestedEdits extends BaseModule {
 	}
 
 	/**
-	 * Check whether the suggested edits feature is enabled.
+	 * Check whether the suggested edits feature is (or could be) enabled for anyone
+	 * on the wiki.
+	 * @param Config $config
+	 * @return bool
+	 */
+	public static function isEnabledForAnyone( Config $config ) {
+		return $config->get( 'GEHomepageSuggestedEditsEnabled' );
+	}
+
+	/**
+	 * Check whether the suggested edits feature is enabled for the context user.
 	 * @param IContextSource $context
 	 * @return bool
 	 */
 	public static function isEnabled( IContextSource $context ) {
-		return $context->getConfig()->get( 'GEHomepageSuggestedEditsEnabled' ) && (
+		return self::isEnabledForAnyone( $context->getConfig() ) && (
 			!$context->getConfig()->get( 'GEHomepageSuggestedEditsRequiresOptIn' ) ||
 			$context->getUser()->getBoolOption( self::ENABLED_PREF )
 		);
 	}
 
 	/**
-	 * Check whether suggested edits have been activated.
+	 * Check whether suggested edits have been activated for the context user.
 	 * Before activation, suggested edits are exposed via the StartEditing module;
 	 * after activation (which happens by interacting with that module) via this one.
 	 * @param IContextSource $context
