@@ -1,7 +1,9 @@
 ( function () {
 	'use strict';
 
-	var taskTypes = require( './TaskTypes.json' );
+	var taskTypes = require( './TaskTypes.json' ),
+		mobileFrontend = mw.mobileFrontend,
+		Drawer = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Drawer : undefined;
 
 	/**
 	 * @param {Object} config
@@ -31,7 +33,7 @@
 	OO.inheritClass( TaskExplanationWidget, OO.ui.Widget );
 
 	TaskExplanationWidget.prototype.getInfoRow = function () {
-		var $infoRow = $( '<div>' ).addClass( 'suggested-edits-title-and-info' );
+		var $infoRow = $( '<div>' ).addClass( 'suggestededits-taskexplanation-additional-info' );
 		$infoRow.append(
 			this.getName(),
 			this.getInfo().$element,
@@ -46,18 +48,20 @@
 	};
 
 	TaskExplanationWidget.prototype.getInfo = function () {
-		var popupButtonWidget = new OO.ui.PopupButtonWidget( {
-			icon: 'info',
-			framed: false,
-			label: this.taskTypeData.messages.shortdescription,
-			invisibleLabel: true,
-			popup: {
-				head: true,
-				label: this.getName(),
-				$content: this.getDescription(),
-				padded: true
-			}
-		} );
+		var name = this.getName(),
+			description = this.getDescription(),
+			popupButtonWidget = new OO.ui.PopupButtonWidget( {
+				icon: 'info',
+				framed: false,
+				label: this.taskTypeData.messages.shortdescription,
+				invisibleLabel: true,
+				popup: {
+					head: true,
+					label: name,
+					$content: description,
+					padded: true
+				}
+			} );
 		popupButtonWidget.$button.on( 'mouseenter', function () {
 			if ( 'ontouchstart' in document.documentElement ) {
 				// On touch devices mouseenter might fire on a click, just before the
@@ -68,6 +72,19 @@
 		} );
 		popupButtonWidget.getPopup().connect( this, {
 			toggle: function ( show ) {
+				if ( show && OO.ui.isMobile() ) {
+					new Drawer( {
+						children: [
+							name,
+							$( '<div>' ).addClass( 'suggestededits-taskexplanation-additional-info' ).html( description )
+						],
+						className: 'suggestededits-taskexplanation-drawer'
+					} ).show();
+					// Override default link for mask so that clicking outside the drawer leaves
+					// suggested edits open.
+					// eslint-disable-next-line no-jquery/no-global-selector
+					$( 'a.mw-mf-page-center__mask' ).attr( 'href', '#/homepage/suggested-edits' );
+				}
 				this.logger.log( 'suggested-edits', this.mode, 'se-explanation-' +
 					( show ? 'open' : 'close' ), { taskType: this.taskType } );
 			}
