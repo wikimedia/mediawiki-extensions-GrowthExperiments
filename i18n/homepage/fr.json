@@ -100,6 +100,8 @@
 	"tag-help_module_question-description": "Modification faite (depuis la fonction Poser une question) du module d’aide de la page d’accueil",
 	"tag-mentorship_module_question": "Question du module de mentorat",
 	"tag-mentorship_module_question-description": "Modification faite depuis la fonctionnalité Poser une question du module de mentorat de la page d’accueil",
+	"tag-newcomer_task": "Tâche de débutant",
+	"tag-newcomer_task-description": "Modification suggérée par le module de modifications suggérées de la page d’accueil des débutants",
 	"growthexperiments-homepage-help-dialog-title": "Demander au bureau d’aide",
 	"growthexperiments-homepage-help-header": "Obtenir de l’aide pour l’édition",
 	"growthexperiments-homepage-help-subheader": "Meilleures pages d’aide pour l’édition",
