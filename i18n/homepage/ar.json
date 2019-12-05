@@ -94,6 +94,8 @@
 	"tag-help_module_question-description": "أُجرِي التحرير من ميزة طرح السؤال من وحدة المساعدة على الصفحة الرئيسية",
 	"tag-mentorship_module_question": "سؤال من وحدة الإرشاد",
 	"tag-mentorship_module_question-description": "أُجرِي التحرير من ميزة طرح السؤال في وحدة الإرشاد على الصفحة الرئيسية",
+	"tag-newcomer_task": "مهمة الوافد الجديد",
+	"tag-newcomer_task-description": "تعديل مقترح من وحدة التعديلات المقترحة من الصفحة الرئيسية للوافد الجديد",
 	"growthexperiments-homepage-help-dialog-title": "طرح السؤال على فريق المساعدة",
 	"growthexperiments-homepage-help-header": "{{GENDER:|أحصل|أحصلي}} على المساعدة في التحرير",
 	"growthexperiments-homepage-help-subheader": "صفحات المساعدة الأكثر قراءة حول التحرير",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Zoranzoki21",
-			"BadDog"
+			"BadDog",
+			"Вукан Ц"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Здраво}}, {{bidi:$1}}!",
@@ -39,12 +40,14 @@
 	"growthexperiments-homepage-startediting-subheader-other": "Википедија је писана од људи попут вас. Чак и мале измене чине разлику.",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Види предложене измене",
 	"growthexperiments-homepage-startediting-button": "Види предложене измене",
+	"growthexperiments-homepage-startediting-dialog-header": "Предложене измене",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1 од $2",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "Откажи",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "Настави",
 	"growthexperiments-homepage-startediting-dialog-intro-title": "Предложене измене за почетак",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Назад",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Добијајте предлоге",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Урађено",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Покушајте прво са неким <strong>лакшим</strong> изменама",
 	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "Постоји много начина да допринесете како би учинили {{SITENAME}} бољим. Заједница уредника је направила списак чланака којима треба нека врста помоћи.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Лако",
