@@ -1,5 +1,5 @@
-@import 'mediawiki.ui/variables';
-@import 'mediawiki.mixins';
+@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.mixins.less';
 @import '../ext.growthExperiments.variables.less';
 
 @cardWrapperWidth: 260px;
@@ -43,6 +43,155 @@
 			padding-left: 6px;
 			font-size: 12px;
 		}
+	}
+}
+
+.suggestededits-taskexplanation-additional-info {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+
+	// Align the icon with the h4.
+	.oo-ui-iconElement {
+		text-align: left;
+		margin-top: -5px;
+	}
+
+	p {
+		color: @colorGray2;
+	}
+
+	.suggested-edits-difficulty-indicator {
+		margin-left: auto;
+		margin-top: 2px;
+		margin-right: 4px;
+		text-transform: uppercase;
+		font-size: 0.75em;
+		height: 14px;
+		line-height: 1.4;
+		position: relative;
+		padding: 2px 4px;
+		// Counter the global border-box rule on mobile
+		.box-sizing( content-box );
+	}
+
+	.suggested-edits-popup-detail {
+		.suggested-edits-difficulty-time-estimate {
+			display: flex;
+
+			.suggested-edits-difficulty-indicator {
+				margin-left: 0;
+			}
+
+			.suggested-edits-difficulty-level {
+				font-size: 12px;
+				margin-top: 2px;
+				padding-left: 10px;
+			}
+
+			.suggested-edits-difficulty-level-easy {
+				color: @easyColor;
+			}
+
+			.suggested-edits-difficulty-level-medium {
+				color: @mediumColor;
+			}
+
+			.suggested-edits-difficulty-level-hard {
+				color: @hardColor;
+			}
+		}
+	}
+
+	.suggested-edits-difficulty-indicator-after-mixin( @color ) {
+		content: '';
+		position: absolute;
+		right: -4px;
+		bottom: 0;
+		width: 0;
+		height: 0;
+		border-right: 4px solid transparent;
+		border-top: 9px solid fade( @color, 20% );
+		border-bottom: 9px solid fade( @color, 20% );
+	}
+
+	.suggested-edits-difficulty-indicator-easy {
+		background-color: fade( @easyColor, 20% );
+		color: @easyColor;
+
+		&:after {
+			.suggested-edits-difficulty-indicator-after-mixin( @easyColor );
+		}
+	}
+
+	.suggested-edits-difficulty-indicator-medium {
+		background-color: fade( @mediumColor, 20% );
+		color: @mediumColor;
+
+		&:after {
+			.suggested-edits-difficulty-indicator-after-mixin( @mediumColor );
+		}
+	}
+
+	.suggested-edits-difficulty-indicator-hard {
+		background-color: fade( @hardColor, 20% );
+		color: @hardColor;
+
+		&:after {
+			.suggested-edits-difficulty-indicator-after-mixin( @hardColor );
+		}
+	}
+}
+
+.suggested-edits-task-explanation-wrapper {
+	padding: 24px 0;
+	width: @cardWrapperWidth;
+
+	.suggested-edits-taskexplanation-additional-info {
+		h4 {
+			margin-top: unset;
+			margin-bottom: unset;
+			padding-top: unset;
+			// Override line-height: 1.3; in Minerva
+			line-height: 1.6;
+		}
+	}
+
+	.suggested-edits-short-description {
+		height: 20px;
+		color: @colorGray5;
+		font-size: 0.9em;
+	}
+}
+
+.mw-mf-page-center__mask {
+	// Set value to be higher than Minerva's overlay content (@z-indexOverlay: 3).
+	z-index: 4 !important; // stylelint-disable-line declaration-no-important
+}
+
+.drawer.suggestededits-taskexplanation-drawer {
+	h4 {
+		text-align: left;
+		padding-bottom: 10px;
+	}
+
+	p {
+		text-align: left;
+	}
+}
+
+.overlay-enabled {
+	.drawer.suggestededits-taskexplanation-drawer {
+		// Override MobileFrontend, which wants to hide the drawer
+		// on an overlay.
+		display: block !important; // stylelint-disable-line declaration-no-important
+		// Display over Minerva's overlay content (@z-indexOverOverlay: 4).
+		z-index: 5;
+	}
+	// Hide the popup from the button widget,
+	// since the Drawer gets drawn on top of it.
+	.oo-ui-popupButtonWidget-popup {
+		display: none;
 	}
 }
 
@@ -149,125 +298,6 @@
 		.se-card-error {
 			.se-card-image {
 				background: url( ../../../images/suggestededits/error-message.svg ) no-repeat center center;
-			}
-		}
-
-		.suggested-edits-task-explanation-wrapper {
-			padding: 24px 0;
-			width: @cardWrapperWidth;
-
-			.suggested-edits-title-and-info {
-				display: flex;
-				justify-content: center;
-				align-content: center;
-
-				h4 {
-					margin-top: unset;
-					margin-bottom: unset;
-					padding-top: unset;
-					// Override line-height: 1.3; in Minerva
-					line-height: 1.6;
-				}
-
-				.oo-ui-iconElement {
-					text-align: left;
-					margin-top: -5px;
-				}
-
-				p {
-					color: @colorGray2;
-				}
-
-				.suggested-edits-difficulty-indicator {
-					margin-left: auto;
-					margin-top: 2px;
-					margin-right: 4px;
-					text-transform: uppercase;
-					font-size: 12px;
-					height: 14px;
-					line-height: 1.4em;
-					position: relative;
-					padding: 2px 4px;
-					// Counter the global border-box rule on mobile
-					box-sizing: content-box;
-				}
-
-				.suggested-edits-popup-detail {
-					.suggested-edits-difficulty-time-estimate {
-						display: flex;
-
-						.suggested-edits-difficulty-indicator {
-							margin-left: 0;
-						}
-
-						.suggested-edits-difficulty-level {
-							font-size: 12px;
-							margin-top: 2px;
-							padding-left: 10px;
-						}
-
-						.suggested-edits-difficulty-level-easy {
-							color: @easyColor;
-						}
-
-						.suggested-edits-difficulty-level-medium {
-							color: @mediumColor;
-						}
-
-						.suggested-edits-difficulty-level-hard {
-							color: @hardColor;
-						}
-					}
-				}
-
-				.suggested-edits-difficulty-indicator-easy {
-					background-color: fade( @easyColor, 20% );
-					color: @easyColor;
-				}
-
-				.suggested-edits-difficulty-indicator-after-mixin() {
-					content: '';
-					position: absolute;
-					right: -4px;
-					bottom: 0;
-					width: 0;
-					height: 0;
-					border-right: 4px solid transparent;
-				}
-
-				.suggested-edits-difficulty-indicator-easy:after {
-					.suggested-edits-difficulty-indicator-after-mixin();
-					border-top: 9px solid fade( @easyColor, 20% );
-					border-bottom: 9px solid fade( @easyColor, 20% );
-				}
-
-				.suggested-edits-difficulty-indicator-medium {
-					background-color: fade( @mediumColor, 20% );
-					color: @mediumColor;
-				}
-
-				.suggested-edits-difficulty-indicator-medium:after {
-					.suggested-edits-difficulty-indicator-after-mixin();
-					border-top: 9px solid fade( @mediumColor, 20% );
-					border-bottom: 9px solid fade( @mediumColor, 20% );
-				}
-
-				.suggested-edits-difficulty-indicator-hard {
-					background-color: fade( @hardColor, 20% );
-					color: @hardColor;
-				}
-
-				.suggested-edits-difficulty-indicator-hard:after {
-					.suggested-edits-difficulty-indicator-after-mixin();
-					border-top: 9px solid fade( @hardColor, 20% );
-					border-bottom: 9px solid fade( @hardColor, 20% );
-				}
-			}
-
-			.suggested-edits-short-description {
-				height: 20px;
-				color: @colorGray5;
-				font-size: 0.9em;
 			}
 		}
 
@@ -411,7 +441,7 @@
 	&.growthexperiments-homepage-module-mobile-overlay,
 	&.growthexperiments-homepage-module-mobile-details {
 		// stylelint-disable-next-line no-descending-specificity
-		.suggested-edits-title-and-info {
+		.suggested-edits-taskexplanation-additional-info {
 			.oo-ui-iconElement .oo-ui-iconElement-icon {
 				// Make the icon bigger, but keep the button the same size, and keep the icon centered
 				// in the button
