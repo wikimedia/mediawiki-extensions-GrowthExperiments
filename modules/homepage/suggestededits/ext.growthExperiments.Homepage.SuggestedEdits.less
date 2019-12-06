@@ -5,6 +5,7 @@
 @cardWrapperWidth: 260px;
 @cardContainerWrapperHeight: 256px;
 @imageHeight: 128px;
+@suggestedEditsBackgroundColor: rgba( 234, 243, 255, 0.5 );
 
 // This block is separate from the rest as it is targeting the process dialog contents.
 .suggested-edits-difficulty-filters {
@@ -180,6 +181,13 @@
 	}
 }
 
+body.mw-special-Homepage {
+	.overlay-content .growthexperiments-homepage-module-mobile-overlay.growthexperiments-homepage-module-suggested-edits {
+		padding: 0;
+		background-color: @suggestedEditsBackgroundColor;
+	}
+}
+
 .overlay-enabled {
 	.drawer.suggestededits-taskexplanation-drawer {
 		// Override MobileFrontend, which wants to hide the drawer
@@ -197,7 +205,7 @@
 
 .growthexperiments-homepage-module-suggested-edits {
 	&.growthexperiments-homepage-module-desktop {
-		background-color: rgba( 234, 243, 255, 0.5 );
+		background-color: @suggestedEditsBackgroundColor;
 	}
 
 	.suggested-edits-filters {
