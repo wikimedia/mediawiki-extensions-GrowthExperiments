@@ -414,7 +414,9 @@
 	function initSuggestedTasks( $container ) {
 		var suggestedEditsModule,
 			savedTaskTypeFilters = mw.user.options.get( 'growthexperiments-homepage-se-filters' ),
-			taskTypes = savedTaskTypeFilters ? JSON.parse( savedTaskTypeFilters ) : initialTaskTypes,
+			taskTypes = savedTaskTypeFilters ?
+				JSON.parse( savedTaskTypeFilters ) :
+				initialTaskTypes,
 			$wrapper = $container.find( '.suggested-edits-module-wrapper' ),
 			mode = $wrapper.closest( '.growthexperiments-homepage-module' ).data( 'mode' );
 		if ( !$wrapper.length ) {

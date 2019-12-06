@@ -27,7 +27,8 @@
 			if ( mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' ) ) {
 				// already set up, just open suggested edits
 				if ( mode === 'mobile-overlay' ) {
-					// we don't want users to return to the start overlay when they close suggested edits
+					// we don't want users to return to the start overlay when they close
+					// suggested edits
 					window.history.replaceState( null, null, '#/homepage/suggested-edits' );
 					window.dispatchEvent( new HashChangeEvent( 'hashchange' ) );
 				} else if ( mode === 'mobile-details' ) {
