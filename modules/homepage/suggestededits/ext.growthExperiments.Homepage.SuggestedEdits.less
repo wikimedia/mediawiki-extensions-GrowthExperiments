@@ -311,7 +311,7 @@
 
 			.suggested-edits-previous,
 			.suggested-edits-next {
-				padding: 0 20px;
+				padding: 0 16px;
 			}
 
 			.suggested-edits-task-card-wrapper {
@@ -440,7 +440,6 @@
 
 	&.growthexperiments-homepage-module-mobile-overlay,
 	&.growthexperiments-homepage-module-mobile-details {
-		// stylelint-disable-next-line no-descending-specificity
 		.suggested-edits-taskexplanation-additional-info {
 			.oo-ui-iconElement .oo-ui-iconElement-icon {
 				// Make the icon bigger, but keep the button the same size, and keep the icon centered
@@ -456,6 +455,13 @@
 		}
 
 		.suggested-edits-card-wrapper {
+			.suggested-edits-previous,
+			.suggested-edits-next {
+				.oo-ui-iconElement .oo-ui-iconElement-icon {
+					width: 20px;
+				}
+			}
+
 			.suggested-edits-task-card-wrapper {
 				.se-card-content {
 					.se-card-text {
