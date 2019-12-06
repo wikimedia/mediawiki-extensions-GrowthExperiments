@@ -13,7 +13,7 @@
 		],
 		"test": [
 			"parallel-lint . --exclude vendor --exclude node_modules",
-			"phpcs -s -p",
+			"phpcs -s -p --cache",
 			"minus-x check ."
 		]
 	},
