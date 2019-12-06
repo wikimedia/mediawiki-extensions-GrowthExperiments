@@ -72,18 +72,24 @@
 		} );
 		popupButtonWidget.getPopup().connect( this, {
 			toggle: function ( show ) {
+				var maskSelector = 'a.mw-mf-page-center__mask';
 				if ( show && OO.ui.isMobile() ) {
 					new Drawer( {
 						children: [
 							name,
 							$( '<div>' ).addClass( 'suggestededits-taskexplanation-additional-info' ).html( description )
 						],
-						className: 'suggestededits-taskexplanation-drawer'
-					} ).show();
-					// Override default link for mask so that clicking outside the drawer leaves
-					// suggested edits open.
-					// eslint-disable-next-line no-jquery/no-global-selector
-					$( 'a.mw-mf-page-center__mask' ).attr( 'href', '#/homepage/suggested-edits' );
+						className: 'suggestededits-taskexplanation-drawer',
+						onBeforeHide: function () {
+							$( maskSelector ).removeClass( 'suggested-edits' );
+						}
+					} ).show()
+						.done( function () {
+							// Override default link for mask so that clicking outside
+							// the drawer leaves suggested edits open.
+							$( maskSelector ).attr( 'href', '#/homepage/suggested-edits' )
+								.addClass( 'suggested-edits' );
+						} );
 				}
 				this.logger.log( 'suggested-edits', this.mode, 'se-explanation-' +
 					( show ? 'open' : 'close' ), { taskType: this.taskType } );
