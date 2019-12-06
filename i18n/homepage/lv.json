@@ -8,7 +8,7 @@
 	"tooltip-pt-homepage": "{{GENDER:|Tava}} sākumlapa",
 	"prefs-homepage": "Jaunpienācēju sākumlapa",
 	"growthexperiments-homepage-enable": "Rādīt jaunpienācēju sākumlapu",
-	"growthexperiments-homepage-start-header": "Sāc šeit",
+	"growthexperiments-homepage-start-header": "{GENDER:$1|Sāc}} šeit",
 	"growthexperiments-homepage-account-header": "Konts izveidots",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|labojumi|labojums|labojumi}}",
 	"growthexperiments-homepage-userpage-header": "Izveidot savu dalībnieka lapu",
