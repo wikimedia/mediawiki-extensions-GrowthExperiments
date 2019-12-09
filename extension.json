@@ -371,6 +371,7 @@
 				"mediawiki.api",
 				"mediawiki.jqueryMsg",
 				"mediawiki.language",
+				"mediawiki.Uri",
 				"oojs-ui-widgets",
 				"oojs-ui.styles.icons-media",
 				"oojs-ui-windows"
