@@ -138,7 +138,9 @@
 	};
 
 	TaskExplanationWidget.prototype.getName = function () {
-		return $( '<h4>' ).text( this.taskTypeData.messages.name );
+		return $( '<h4>' )
+			.addClass( 'suggested-edits-task-explanation-heading' )
+			.text( this.taskTypeData.messages.name );
 	};
 
 	module.exports = TaskExplanationWidget;
