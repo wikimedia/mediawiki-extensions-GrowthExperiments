@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Luky001"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|čo to je?]])",
+	"growthexperiments-confirmemail-emailhelp": "E-mail potrebujeme nato, aby sme vám mohli obnoviť prístup k účtu, pokiaľ prídete o heslo.",
+	"growthexperiments-confirmemail-emailrecommended": "E-mailová adresa (odporúčané)",
+	"growthexperiments-confirmemail-emailwarning": "Prosím, pozrite sa do svojho e-mailu a overte svoju e-mailovú adresu.",
+	"growthexperiments-confirmemail-confirm-subject": "Vitajte na {{GRAMMAR:lokál|{{SITENAME}}}}: Prosím, potvrďte svoju e-mailovú adresu",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Dobrý deň}}, $2,\n\nďakujeme Vám za pridanie e-mailu do účtu na {{GRAMMAR:lokál|{{SITENAME}}}}, ktorý bol vytvorený z IP adresy $1.\n\nProsím, kliknite na tlačidlo nižšie, aby ste potvrdili e-mailovú adresu priradenú k účtu „$2“:\n\n$3\n\nPoznámka: Tento odkaz je <strong>platný do $4</strong>.\n\nĎakujeme,\n\n{{SITENAME}}\n\n----\nAby ste zrušili potvrdenie e-mailovej adresy (napríklad preto, že ste si tento účet neregistrovali), kliknite na nasledujúci odkaz:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "Potvrdiť e-mailovú adresu",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Dobrý deň}}, $2,\n\nďakujeme Vám za pridanie e-mailu do účtu na {{GRAMMAR:lokál|{{SITENAME}}}}, ktorý bol vytvorený z IP adresy $1.\n\nProsím, kliknite na tlačidlo nižšie, aby ste potvrdili e-mailovú adresu priradenú k účtu „$2“:\n\n$3\n\nPoznámka: Tento odkaz je platný do $4.\n\nĎakujeme,\n\n{{SITENAME}}\n\n----\nAby ste zrušili potvrdenie e-mailovej adresy (napríklad preto, že ste si tento účet neregistrovali), kliknite na nasledujúci odkaz:\n\n$5"
+}

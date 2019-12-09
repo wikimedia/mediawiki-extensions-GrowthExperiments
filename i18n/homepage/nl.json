@@ -24,6 +24,9 @@
 	"growthexperiments-homepage-email-header-confirmed": "E-mailadres toegevoegd",
 	"growthexperiments-homepage-email-button-noemail": "E-mail toevoegen",
 	"growthexperiments-homepage-email-button-confirmed": "Voorkeuren",
+	"growthexperiments-homepage-startediting-dialog-intro-back": "Annuleren",
+	"growthexperiments-homepage-startediting-dialog-intro-forward": "Doorgaan",
+	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Terug",
 	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "U kunt {{SITENAME}} op vele manieren verbeteren. De bijdraaggemeenschap heeft uiteenlopende hulp bij pagina's nodig.",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Uw}} impact",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Begrepen",
@@ -42,6 +45,8 @@
 	"growthexperiments-homepage-suggestededits-no-more-results": "Geen suggesties meer",
 	"growthexperiments-homepage-suggestededits-no-results": "Geen suggesties gevonden",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Nieuwe pagina maken",
+	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Meer leren",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "$1 bewerkingen",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "Eenvoudig",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "Standaard",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-hard": "Moeilijk"
