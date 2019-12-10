@@ -98,6 +98,9 @@
 			"GrowthExperiments\\HelpPanelHooks::onListDefinedTags",
 			"GrowthExperiments\\HomepageHooks::onChangeTagsListActive"
 		],
+		"RecentChange_save": [
+			"GrowthExperiments\\HomepageHooks::onRecentChangeSave"
+		],
 		"SkinTemplateNavigation::Universal": [
 			"GrowthExperiments\\HomepageHooks::onSkinTemplateNavigationUniversal"
 		],

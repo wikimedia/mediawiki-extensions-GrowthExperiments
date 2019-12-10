@@ -18,6 +18,8 @@ use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\Tracker\Tracker;
+use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use Html;
@@ -26,6 +28,7 @@ use IContextSource;
 use LogicException;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
 use MWCryptHash;
+use StatusValue;
 use SpecialPage;
 use Throwable;
 use Title;
@@ -48,15 +51,20 @@ class SpecialHomepage extends SpecialPage {
 	/** @var ConfigurationLoader|null */
 	private $configurationLoader;
 
+	/** @var Tracker|null */
+	private $tracker;
+
 	/**
 	 * @param EditInfoService $editInfoService
 	 * @param PageViewService|null $pageViewService
 	 * @param ConfigurationLoader|null $configurationLoader
+	 * @param TrackerFactory|null $trackerFactory
 	 */
 	public function __construct(
 		EditInfoService $editInfoService,
 		PageViewService $pageViewService = null,
-		ConfigurationLoader $configurationLoader = null
+		ConfigurationLoader $configurationLoader = null,
+		TrackerFactory $trackerFactory = null
 	) {
 		parent::__construct( 'Homepage', '', false );
 		$this->editInfoService = $editInfoService;
@@ -71,6 +79,9 @@ class SpecialHomepage extends SpecialPage {
 		// the relevant controls. See T229263.
 		if ( Util::isMobile( $this->getSkin() ) ) {
 			$this->getSkin()->setRelevantTitle( $this->getUser()->getUserPage() );
+		}
+		if ( $trackerFactory ) {
+			$this->tracker = $trackerFactory->getTracker( $this->getUser() );
 		}
 	}
 
@@ -106,6 +117,11 @@ class SpecialHomepage extends SpecialPage {
 		parent::execute( $par );
 		$this->handleDisabledPreference();
 		if ( $this->handleTutorialVisit( $par ) ) {
+			return;
+		}
+		// Redirect the user to the newcomer task if the page ID in $par can be used
+		// to construct a Title object.
+		if ( $this->handleNewcomerTask( $par ) ) {
 			return;
 		}
 
@@ -381,6 +397,25 @@ class SpecialHomepage extends SpecialPage {
 			[ 'class' => 'growthexperiments-homepage-overlay-container' ],
 			$html
 		) );
+	}
+
+	private function handleNewcomerTask( string $par = null ) {
+		if ( strpos( $par, 'newcomertask/' ) !== 0 ||
+			 !$this->getUser()->isLoggedIn() ||
+			 // Service is injected if SuggestedEdits is enabled for this user.
+			 $this->tracker === null ) {
+			return false;
+		}
+		$titleId = (int)explode( '/', $par )[1];
+		$clickId = $this->getRequest()->getVal( 'geclickid' );
+		if ( $this->tracker->track( $titleId, $clickId ) instanceof StatusValue ) {
+			// If a StatusValue is returned from ->track(), it's because constructing the title
+			// from page ID failed, so don't attempt to redirect the user. If track returns false
+			// (storing the value in cache failed) then we are not going to prevent redirection.
+			return false;
+		}
+		$this->getOutput()->redirect( $this->tracker->getTitleUrl() );
+		return true;
 	}
 
 }
