@@ -300,6 +300,10 @@ class HomepageHooks {
 			'type' => 'api',
 		];
 
+		$preferences[ SuggestedEdits::PREACTIVATED_PREF ] = [
+			'type' => 'api',
+		];
+
 		if ( MediaWikiServices::getInstance()->getMainConfig()->get(
 				'GEHomepageSuggestedEditsRequiresOptIn'
 		) ) {
@@ -364,6 +368,10 @@ class HomepageHooks {
 
 			if ( rand( 0, 99 ) < $config->get( 'GEHomepageSuggestedEditsNewAccountInitiatedPercentage' ) ) {
 				$user->setOption( SuggestedEdits::ACTIVATED_PREF, 1 );
+				// Record that the user has suggested edits pre-activated. This preference isn't
+				// used for anything in software, it's only used in data analysis to distinguish
+				// users who manually activated suggested edits from those for whom it was pre-activated.
+				$user->setOption( SuggestedEdits::PREACTIVATED_PREF, 1 );
 			}
 		}
 	}
