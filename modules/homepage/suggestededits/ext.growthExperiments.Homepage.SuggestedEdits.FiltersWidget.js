@@ -19,9 +19,11 @@
 			indicator: config.mode === 'desktop' ? null : 'down'
 		} );
 		this.dialog = new DifficultyFiltersDialog( config )
+			.on( 'done', function () {
+				this.emit( 'done' );
+			}.bind( this ) )
 			.on( 'search', function ( search ) {
 				this.emit( 'search', search );
-				this.updateButtonLabelAndIcon( search );
 			}.bind( this ) );
 
 		this.dialog.$element.addClass( 'suggested-edits-difficulty-filters' )

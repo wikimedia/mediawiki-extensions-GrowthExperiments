@@ -205,6 +205,7 @@ DifficultyFiltersDialog.prototype.getActionProcess = function ( action ) {
 			if ( action === 'close' ) {
 				this.savePreferences();
 				this.config.presets = this.getEnabledFilters();
+				this.emit( 'done', this.config.presets );
 				this.close( { action: 'done' } );
 			}
 			if ( action === 'cancel' ) {
