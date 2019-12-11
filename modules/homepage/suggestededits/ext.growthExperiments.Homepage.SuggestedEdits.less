@@ -239,27 +239,38 @@ body.mw-special-Homepage {
 						display: inline-block;
 						// Needed due to the inline-block override.
 						margin-bottom: -5px;
-
-						.growthexperiments-homepage-mobile-summary &,
-						.growthexperiments-homepage-mobile-details & {
-							font-size: 1.15em;
-						}
 					}
 				}
 			}
 		}
 	}
 
+	// Styles for mobile filter. Desktop does not have a subheader.
 	.growthexperiments-homepage-module-section-subheader {
 		// Snap to the header
 		padding: 0 !important; // stylelint-disable-line declaration-no-important
 		margin-top: -1em;
 
 		.suggested-edits-filters a.oo-ui-buttonElement-button {
+			height: 3em; // 48 px
+			// The layout of the OOUI element is not friendly to vertical centering.
+			// Get rid if the padding, make the line full-height, and hope for the best.
+			padding-top: 0;
+			padding-bottom: 0;
 			border-width: 0 0 1px 0;
 			border-radius: 0;
 			border-color: #c8ccd1;
+			box-shadow: 0 0 1px 1px rgba( 0, 0, 0, 0.1 );
 			font-weight: normal;
+
+			// stylelint-disable-next-line no-descending-specificity
+			.oo-ui-labelElement-label {
+				line-height: 3em;
+			}
+
+			.oo-ui-indicatorElement-indicator {
+				right: 0.95238094em;
+			}
 		}
 	}
 
