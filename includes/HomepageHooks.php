@@ -61,6 +61,7 @@ class HomepageHooks {
 					null;
 				return new SpecialHomepage(
 					$mwServices->get( 'GrowthExperimentsEditInfoService' ),
+					$mwServices->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA ),
 					$pageViewsService,
 					$mwServices->get( 'GrowthExperimentsConfigurationLoader' ),
 					$trackerFactory
@@ -69,6 +70,7 @@ class HomepageHooks {
 			if ( $pageViewInfoEnabled ) {
 				$list['Impact'] = function () use ( $pageViewInfoEnabled, $mwServices ) {
 					return new SpecialImpact(
+						$mwServices->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA ),
 						$pageViewInfoEnabled ? $mwServices->get( 'PageViewService' ) : null
 					);
 				};

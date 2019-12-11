@@ -33,11 +33,15 @@ use SpecialPage;
 use Throwable;
 use Title;
 use UserNotLoggedIn;
+use Wikimedia\Rdbms\IDatabase;
 
 class SpecialHomepage extends SpecialPage {
 
 	/** @var EditInfoService */
 	private $editInfoService;
+
+	/** @var IDatabase */
+	private $dbr;
 
 	/** @var PageViewService|null */
 	private $pageViewService;
@@ -56,18 +60,21 @@ class SpecialHomepage extends SpecialPage {
 
 	/**
 	 * @param EditInfoService $editInfoService
+	 * @param IDatabase $dbr
 	 * @param PageViewService|null $pageViewService
 	 * @param ConfigurationLoader|null $configurationLoader
 	 * @param TrackerFactory|null $trackerFactory
 	 */
 	public function __construct(
 		EditInfoService $editInfoService,
+		IDatabase $dbr,
 		PageViewService $pageViewService = null,
 		ConfigurationLoader $configurationLoader = null,
 		TrackerFactory $trackerFactory = null
 	) {
 		parent::__construct( 'Homepage', '', false );
 		$this->editInfoService = $editInfoService;
+		$this->dbr = $dbr;
 		$this->pageViewService = $pageViewService;
 		$this->configurationLoader = $configurationLoader;
 		$this->pageviewToken = $this->generatePageviewToken();
@@ -215,7 +222,7 @@ class SpecialHomepage extends SpecialPage {
 		$modules = [
 			'start' => new Start( $this->getContext() ),
 			'suggested-edits' => null,
-			'impact' => new Impact( $this->getContext(), $this->pageViewService ),
+			'impact' => new Impact( $this->getContext(), $this->dbr, $this->pageViewService ),
 			'mentorship' => new Mentorship( $this->getContext() ),
 			'help' => new Help( $this->getContext() ),
 		];
