@@ -302,25 +302,29 @@
 		return $.when( pcsPromise, aqsPromise ).done( function ( pcsData, aqsData ) {
 			// If the data is already loaded, xxxData will be an empty {}, so
 			// we need to be careful never to override real fields with missing ones.
-			if ( pcsData.extract ) {
+			if ( pcsData && pcsData.extract ) {
 				suggestedEditData.extract = pcsData.extract;
 			}
 			// Normally we use the thumbnail source from the action API, this is only a fallback.
 			// It is used for some beta wiki configurations and local setups, and also when the
 			// action API data is missing due to query+pageimages having a smaller max limit than
 			// query+growthtasks.
-			if ( !suggestedEditData.thumbnailSource && pcsData.thumbnailSource ) {
+			if ( !suggestedEditData.thumbnailSource && pcsData && pcsData.thumbnailSource ) {
 				suggestedEditData.thumbnailSource = pcsData.thumbnailSource;
 			}
 			// AQS never returns data with a pageview total of 0, it just errors out if there are no
 			// views. Even if it did, it would probably be better not to show 0 to the user.
-			if ( aqsData.pageviews ) {
+			if ( aqsData && aqsData.pageviews ) {
 				suggestedEditData.pageviews = aqsData.pageviews;
 			}
 			// Update the suggested edit data so we don't need to fetch it again
 			// if the user views the card more than once.
 			this.taskQueue[ taskQueuePosition ] = suggestedEditData;
-		}.bind( this ) );
+		}.bind( this ) ).catch( function () {
+			// We don't need to do anything here since the page views and RESTBase
+			// calls are for supplemental data; we just need to catch any exception
+			// so that the card can render with the data we have from ApiQueryGrowthTasks.
+		} );
 	};
 
 	/**
