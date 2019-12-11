@@ -99,7 +99,6 @@ class SuggestedEdits extends BaseModule {
 		$extensionRegistry = ExtensionRegistry::getInstance();
 		return self::isActivated( $this->getContext() ) &&
 			   !$this->configurationLoader->loadTaskTypes() instanceof StatusValue &&
-			   $extensionRegistry->isLoaded( 'PageViewInfo' ) &&
 			   $extensionRegistry->isLoaded( 'PageImages' );
 	}
 

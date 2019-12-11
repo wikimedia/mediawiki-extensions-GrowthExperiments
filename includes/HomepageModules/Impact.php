@@ -59,6 +59,11 @@ class Impact extends BaseModule {
 		parent::__construct( 'impact', $context );
 	}
 
+	/** @inheritDoc */
+	public function canRender() {
+		return ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
+	}
+
 	/**
 	 * @inheritDoc
 	 */
