@@ -53,8 +53,8 @@ class HomepageHooks {
 	public static function onSpecialPageInitList( &$list ) {
 		if ( self::isHomepageEnabled() ) {
 			$pageViewInfoEnabled = \ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
-			$list['Homepage'] = function () use ( $pageViewInfoEnabled ) {
-				$mwServices = MediaWikiServices::getInstance();
+			$mwServices = MediaWikiServices::getInstance();
+			$list['Homepage'] = function () use ( $pageViewInfoEnabled, $mwServices ) {
 				$pageViewsService = $pageViewInfoEnabled ? $mwServices->get( 'PageViewService' ) : null;
 				$trackerFactory = SuggestedEdits::isEnabled( RequestContext::getMain() ) ?
 					$mwServices->get( 'GrowthExperimentsNewcomerTaskTrackerFactory' ) :
@@ -67,7 +67,11 @@ class HomepageHooks {
 				);
 			};
 			if ( $pageViewInfoEnabled ) {
-				$list['Impact'] = SpecialImpact::class;
+				$list['Impact'] = function () use ( $pageViewInfoEnabled, $mwServices ) {
+					return new SpecialImpact(
+						$pageViewInfoEnabled ? $mwServices->get( 'PageViewService' ) : null
+					);
+				};
 			}
 		}
 	}

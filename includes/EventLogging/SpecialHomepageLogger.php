@@ -97,7 +97,7 @@ class SpecialHomepageLogger {
 
 		/** @var Impact $impactModule */
 		$impactModule = $this->modules['impact'] ?? false;
-		if ( $impactModule ) {
+		if ( $impactModule && $impactModule->canRender() ) {
 			$event['impact_module_state'] = $impactModule->getState();
 		}
 

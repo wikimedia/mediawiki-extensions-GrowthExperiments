@@ -6,13 +6,24 @@ use DerivativeContext;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\Impact;
 use Html;
+use MediaWiki\Extensions\PageViewInfo\PageViewService;
 use SpecialPage;
 use User;
 
 class SpecialImpact extends SpecialPage {
 
-	public function __construct() {
+	/**
+	 * @var PageViewService|null
+	 */
+	private $pageViewService;
+
+	/**
+	 * SpecialImpact constructor.
+	 * @param PageViewService|null $pageViewService
+	 */
+	public function __construct( ?PageViewService $pageViewService = null ) {
 		parent::__construct( 'Impact' );
+		$this->pageViewService = $pageViewService;
 	}
 
 	/**
@@ -65,7 +76,7 @@ class SpecialImpact extends SpecialPage {
 				->text() ) );
 		}
 		$context->setUser( $impactUser );
-		$impact = new Impact( $context );
+		$impact = new Impact( $context, $this->pageViewService );
 		$out->addHTML( $impact->render( HomepageModule::RENDER_DESKTOP ) );
 	}
 }

@@ -215,7 +215,7 @@ class SpecialHomepage extends SpecialPage {
 		$modules = [
 			'start' => new Start( $this->getContext() ),
 			'suggested-edits' => null,
-			'impact' => new Impact( $this->getContext() ),
+			'impact' => new Impact( $this->getContext(), $this->pageViewService ),
 			'mentorship' => new Mentorship( $this->getContext() ),
 			'help' => new Help( $this->getContext() ),
 		];
