@@ -74,6 +74,8 @@
 			toggle: function ( show ) {
 				var maskSelector = 'a.mw-mf-page-center__mask';
 				if ( show && OO.ui.isMobile() ) {
+					// eslint-disable-next-line no-jquery/no-global-selector
+					$( '.suggestededits-taskexplanation-drawer' ).remove();
 					new Drawer( {
 						children: [
 							name,
