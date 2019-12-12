@@ -52,17 +52,22 @@ class HomepageHooks {
 	 */
 	public static function onSpecialPageInitList( &$list ) {
 		if ( self::isHomepageEnabled() ) {
-			$list[ 'Homepage' ] = [
-				'class' => SpecialHomepage::class,
-				'services' => [ 'GrowthExperimentsEditInfoService' ],
-			];
-			if ( \ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' ) ) {
+			$pageViewInfoEnabled = \ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
+			$list['Homepage'] = function () use ( $pageViewInfoEnabled ) {
+				$mwServices = MediaWikiServices::getInstance();
+				$pageViewsService = $pageViewInfoEnabled ? $mwServices->get( 'PageViewService' ) : null;
+				$trackerFactory = SuggestedEdits::isEnabled( RequestContext::getMain() ) ?
+					$mwServices->get( 'GrowthExperimentsNewcomerTaskTrackerFactory' ) :
+					null;
+				return new SpecialHomepage(
+					$mwServices->get( 'GrowthExperimentsEditInfoService' ),
+					$pageViewsService,
+					$mwServices->get( 'GrowthExperimentsConfigurationLoader' ),
+					$trackerFactory
+				);
+			};
+			if ( $pageViewInfoEnabled ) {
 				$list['Impact'] = SpecialImpact::class;
-				$list['Homepage']['services'][] = 'PageViewService';
-			}
-			$list['Homepage']['services'][] = 'GrowthExperimentsConfigurationLoader';
-			if ( SuggestedEdits::isEnabled( RequestContext::getMain() ) ) {
-				$list['Homepage']['services'][] = 'GrowthExperimentsNewcomerTaskTrackerFactory';
 			}
 		}
 	}
