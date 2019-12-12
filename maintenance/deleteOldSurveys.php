@@ -34,9 +34,13 @@ class DeleteOldSurveys extends Maintenance {
 
 	/** @inheritDoc */
 	public function execute() {
-		$cutoffDays = $this->getOption( 'cutoff' );
+		$cutoffDays = (int)$this->getOption( 'cutoff' );
 		$dryRun = $this->hasOption( 'dry-run' );
 		$verbose = $this->hasOption( 'verbose' );
+
+		if ( !$cutoffDays ) {
+			$this->fatalError( 'Invalid cutoff period: ' . $this->getOption( 'cutoff' ) );
+		}
 
 		// This seems to be the least ugly way of using a relative date specifier while
 		// keeping MWTimestamp::setFakeTime working.
