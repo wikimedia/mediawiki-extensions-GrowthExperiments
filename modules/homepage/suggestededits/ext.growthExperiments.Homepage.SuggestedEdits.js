@@ -30,12 +30,16 @@
 		this.mode = config.mode;
 		this.currentCard = null;
 		this.apiPromise = null;
+		this.taskTypesQuery = [];
 
 		this.filters = new FiltersButtonGroupWidget( {
 			presets: config.taskTypePresets,
 			mode: this.mode
 		}, logger )
-			.connect( this, { search: 'fetchTasks' } )
+			.connect( this, {
+				search: 'fetchTasks',
+				done: 'filterSelection'
+			} )
 			.toggle( false );
 		this.pager = new PagerWidget().toggle( false );
 		this.previousWidget = new PreviousNextWidget( { direction: 'Previous' } )
@@ -78,6 +82,16 @@
 	OO.inheritClass( SuggestedEditsModule, OO.ui.Widget );
 
 	/**
+	 * User has clicked "Done" in the dialog after selecting filters.
+	 */
+	SuggestedEditsModule.prototype.filterSelection = function () {
+		this.apiPromise.then( function () {
+			this.showCard();
+			this.preloadNextCard();
+		}.bind( this ) );
+	};
+
+	/**
 	 * Fetch suggested edits from ApiQueryGrowthTasks.
 	 *
 	 * @param {string[]} taskTypes
@@ -99,6 +113,7 @@
 			formatversion: 2,
 			uselang: mw.config.get( 'wgUserLanguage' )
 		};
+		this.taskTypesQuery = taskTypes;
 		if ( this.apiPromise ) {
 			this.apiPromise.abort();
 		}
@@ -106,12 +121,10 @@
 		this.taskQueue = [];
 		this.queuePosition = 0;
 		if ( !taskTypes.length ) {
-			// User has deselected all checkboxes; update the count and show
-			// no results.
+			// User has deselected all checkboxes; update the count.
 			this.filters.updateMatchCount( this.taskQueue.length );
-			return this.showCard( new NoResultsWidget( { topicMatching: false } ) );
+			return $.Deferred().resolve().promise();
 		}
-		this.filters.updateButtonLabelAndIcon( taskTypes );
 		this.apiPromise = new mw.Api().get( apiParams );
 		return this.apiPromise.then( function ( data ) {
 			// HomepageModuleLogger adds this to the log data automatically
@@ -149,11 +162,9 @@
 			// FIXME should this be capped to 200 or show the total server-side result count?
 			extraData.taskCount = this.taskQueue.length;
 			this.logger.log( 'suggested-edits', this.mode, 'se-fetch-tasks' );
-			// use done instead of then so failed preloads will be retried when the
-			// user navigates
-			return this.showCard().done( function () {
-				this.preloadNextCard();
-			}.bind( this ) );
+			// TODO: Eventually this will become the skeleton card widget
+			this.currentCard = new NoResultsWidget( { topicMatching: false } );
+			return $.Deferred().resolve().promise();
 		}.bind( this ) ).catch( function ( error, details ) {
 			if ( error === 'http' && details && details.textStatus === 'abort' ) {
 				// Don't show error card for XHR abort.
@@ -392,6 +403,7 @@
 			$cardElement = $( cardSelector );
 		$cardElement.html( this.currentCard.$element );
 		this.filters.toggle( true );
+		this.filters.updateButtonLabelAndIcon( this.taskTypesQuery );
 		this.updatePager();
 		this.updatePreviousNextButtons();
 		this.updateTaskExplanationWidget();
@@ -436,7 +448,12 @@
 				mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 				mw.config.get( 'wgGEHomepagePageviewToken' )
 			) );
-		suggestedEditsModule.fetchTasks( taskTypes );
+		return suggestedEditsModule.fetchTasks( taskTypes )
+			.done( function () {
+				suggestedEditsModule.filters.toggle( true );
+				suggestedEditsModule.preloadNextCard();
+				return suggestedEditsModule.showCard();
+			} );
 	}
 
 	// Try setup for desktop mode and server-side-rendered mobile mode
