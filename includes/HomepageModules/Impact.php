@@ -51,17 +51,24 @@ class Impact extends BaseModule {
 	 * @var string|null
 	 */
 	private $editsTable = null;
+	/**
+	 * @var PageViewService|null
+	 */
+	private $pageViewService;
 
 	/**
 	 * @inheritDoc
 	 */
-	public function __construct( IContextSource $context ) {
+	public function __construct(
+		IContextSource $context, PageViewService $pageViewService = null
+	) {
 		parent::__construct( 'impact', $context );
+		$this->pageViewService = $pageViewService;
 	}
 
 	/** @inheritDoc */
 	public function canRender() {
-		return ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
+		return $this->pageViewService;
 	}
 
 	/**
@@ -504,13 +511,11 @@ class Impact extends BaseModule {
 	 * @param array[] &$contribs Recent contributions
 	 */
 	private function addPageViews( &$contribs ) {
-		/** @var PageViewService $pageViewService */
-		$pageViewService = MediaWikiServices::getInstance()->getService( 'PageViewService' );
 		$titles = array_map( function ( $contrib ) {
 			return $contrib[ 'title' ];
 		}, $contribs );
 		$days = min( 60, $this->daysSince( end( $contribs )[ 'ts' ] ) );
-		$data = $pageViewService->getPageData( $titles, $days );
+		$data = $this->pageViewService->getPageData( $titles, $days );
 		if ( $data->isGood() ) {
 			foreach ( $contribs as &$contrib ) {
 				$viewsByDay = $data->getValue()[ $contrib[ 'title' ]->getPrefixedDBkey() ] ?? [];
