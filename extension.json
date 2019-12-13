@@ -5,7 +5,8 @@
 	"author": [
 		"Stephane Bisson",
 		"Kosta Harlan",
-		"Roan Kattouw"
+		"Roan Kattouw",
+		"Gergő Tisza"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:GrowthExperiments",
 	"requires": {
