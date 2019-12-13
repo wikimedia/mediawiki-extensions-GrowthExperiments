@@ -479,10 +479,9 @@ body.mw-special-Homepage {
 
 		.suggested-edits-taskexplanation-additional-info {
 			.oo-ui-iconElement .oo-ui-iconElement-icon {
-				// Make the icon bigger, but keep the button the same size, and keep the icon centered
-				// in the button
-				width: 24/14em;
-				left: 3/14em;
+				// Use an unpadded version of the info icon on mobile (T236854)
+				/* @embed */
+				background-image: url( ../../../images/info-unpadded.svg );
 			}
 		}
 
