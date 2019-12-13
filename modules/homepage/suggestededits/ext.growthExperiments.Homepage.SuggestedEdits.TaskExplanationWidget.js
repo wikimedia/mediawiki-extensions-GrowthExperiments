@@ -33,7 +33,7 @@
 	OO.inheritClass( TaskExplanationWidget, OO.ui.Widget );
 
 	TaskExplanationWidget.prototype.getInfoRow = function () {
-		var $infoRow = $( '<div>' ).addClass( 'suggestededits-taskexplanation-additional-info' );
+		var $infoRow = $( '<div>' ).addClass( 'suggested-edits-taskexplanation-additional-info' );
 		$infoRow.append(
 			this.getName(),
 			this.getInfo().$element,
@@ -75,13 +75,13 @@
 				var maskSelector = 'a.mw-mf-page-center__mask';
 				if ( show && OO.ui.isMobile() ) {
 					// eslint-disable-next-line no-jquery/no-global-selector
-					$( '.suggestededits-taskexplanation-drawer' ).remove();
+					$( '.suggested-edits-taskexplanation-drawer' ).remove();
 					new Drawer( {
 						children: [
 							name,
-							$( '<div>' ).addClass( 'suggestededits-taskexplanation-additional-info' ).html( description )
+							$( '<div>' ).addClass( 'suggested-edits-taskexplanation-additional-info' ).html( description )
 						],
-						className: 'suggestededits-taskexplanation-drawer',
+						className: 'suggested-edits-taskexplanation-drawer',
 						onBeforeHide: function () {
 							$( maskSelector ).removeClass( 'suggested-edits' );
 						}
