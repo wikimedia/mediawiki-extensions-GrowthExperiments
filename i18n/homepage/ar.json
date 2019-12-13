@@ -144,7 +144,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "{{GENDER:$1|افتح|افتحي}} القائمة الجانبية و{{GENDER:$1|انقر|انقري}} فوق $2 لزيارة {{GENDER:$1|صفحتكَ|صفحتكِ}} الرئيسية.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> من <strong>\n{{PLURAL:$2|$2 اقتراحات|اقتراح واحد|اقتراحين اثنين|$2 اقتراحات|$2 اقتراحا|$2 اقتراح}}</strong>",
 	"growthexperiments-homepage-suggestededits-pager-end": "النهاية",
-	"growthexperiments-homepage-suggestededits-pageviews": "$1 هو عدد المشاهدات للقراء (آخر 60 يوما)",
+	"growthexperiments-homepage-suggestededits-pageviews": "$1 تصفح (آخر 60 يوما)",
 	"growthexperiments-homepage-suggestededits-previous-card": "التعديل المقترح السابق",
 	"growthexperiments-homepage-suggestededits-next-card": "التعديل المقترح الموالي",
 	"growthexperiments-homepage-suggestededits-no-more-results": "لا يوجد المزيد من الاقتراحات",

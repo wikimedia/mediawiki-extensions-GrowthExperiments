@@ -140,7 +140,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Otvorte menu a kliknite na $2, aby ste {{GENDER:$1|navštívili}} svoju domovskú stránku.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> z <strong>$2</strong> {{PLURAL:$2|návrhu|návrhov}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Koniec",
-	"growthexperiments-homepage-suggestededits-pageviews": "$1 návštev čitateľmi (za posledných 60 dní)",
+	"growthexperiments-homepage-suggestededits-pageviews": "$1 návštev (za posledných 60 dní)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Predchádzajúci návrh",
 	"growthexperiments-homepage-suggestededits-next-card": "Nasledujúci návrh",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Žiadne ďalšie návrhy",

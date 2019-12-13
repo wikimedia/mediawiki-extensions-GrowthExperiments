@@ -143,7 +143,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "開啟側邊選單並輕點$2來參訪{{GENDER:$1|您的}}首頁。",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$2</strong> 個{{PLURAL:$2|建議}}裡的第 <strong>$1</strong> 個",
 	"growthexperiments-homepage-suggestededits-pager-end": "末端",
-	"growthexperiments-homepage-suggestededits-pageviews": "讀者觀看的檢視數（最近 60 天）：$1",
+	"growthexperiments-homepage-suggestededits-pageviews": "觀看過 $1 次（過去 60 天）",
 	"growthexperiments-homepage-suggestededits-previous-card": "前一個建議編輯",
 	"growthexperiments-homepage-suggestededits-next-card": "下一個建議編輯",
 	"growthexperiments-homepage-suggestededits-no-more-results": "沒有更多建議",
