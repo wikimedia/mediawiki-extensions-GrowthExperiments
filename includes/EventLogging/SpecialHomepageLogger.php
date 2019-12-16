@@ -18,7 +18,8 @@ class SpecialHomepageLogger {
 	 */
 	private $pageviewToken;
 	/**
-	 * @var array
+	 * @var array Associative array of modules used on the homepage. Keys are module names,
+	 *   values are arbitrary.
 	 */
 	private $modules;
 	/**
@@ -40,7 +41,8 @@ class SpecialHomepageLogger {
 	 * @param User $user
 	 * @param WebRequest $request
 	 * @param bool $isMobile
-	 * @param array $modules
+	 * @param array $modules Associative array of modules used on the homepage. Keys are module names,
+	 *   values are arbitrary.
 	 */
 	public function __construct(
 		$pageviewToken,

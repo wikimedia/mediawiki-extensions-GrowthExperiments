@@ -60,28 +60,43 @@ abstract class BaseModule implements HomepageModule {
 		}
 
 		$this->outputDependencies();
-		if ( $mode === HomepageModule::RENDER_DESKTOP ) {
-			$html = $this->renderDesktop();
-		} elseif ( $mode === HomepageModule::RENDER_MOBILE_SUMMARY ) {
-			$html = $this->renderMobileSummary();
-		} elseif ( $mode === HomepageModule::RENDER_MOBILE_DETAILS ) {
-			$html = $this->renderMobileDetails();
-		} else {
-			throw new InvalidArgumentException( 'Invalid rendering mode: ' . $mode );
-		}
+		$html = $this->getHtml();
 		return $html;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function getDataForOverlay() {
-		$this->setMode( HomepageModule::RENDER_MOBILE_DETAILS_OVERLAY );
-		return [
-			'html' => $this->renderMobileDetailsForOverlay(),
-			'rlModules' => $this->getModules(),
-			'heading' => $this->getHeaderText()
-		];
+	public function getJsData( $mode ) {
+		$data = [];
+		if ( $mode == HomepageModule::RENDER_MOBILE_SUMMARY ) {
+			$this->setMode( HomepageModule::RENDER_MOBILE_DETAILS_OVERLAY );
+			$data = [
+				'overlay' => $this->renderMobileDetailsForOverlay(),
+				'rlModules' => $this->getModules(),
+				'heading' => $this->getHeaderText(),
+			];
+		}
+		$this->setMode( $mode );
+		return $data;
+	}
+
+	/**
+	 * Get the module HTML in the given mode.
+	 *
+	 * @return string Html rendering of the module
+	 */
+	protected function getHtml() {
+		if ( $this->mode === HomepageModule::RENDER_DESKTOP ) {
+			$html = $this->renderDesktop();
+		} elseif ( $this->mode === HomepageModule::RENDER_MOBILE_SUMMARY ) {
+			$html = $this->renderMobileSummary();
+		} elseif ( $this->mode === HomepageModule::RENDER_MOBILE_DETAILS ) {
+			$html = $this->renderMobileDetails();
+		} else {
+			throw new InvalidArgumentException( 'Invalid rendering mode: ' . $this->mode );
+		}
+		return $html;
 	}
 
 	/**

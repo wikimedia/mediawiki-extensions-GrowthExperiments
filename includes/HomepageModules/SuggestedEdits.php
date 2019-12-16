@@ -4,6 +4,7 @@ namespace GrowthExperiments\HomepageModules;
 
 use Config;
 use GrowthExperiments\EditInfoService;
+use GrowthExperiments\HomepageModule;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use IContextSource;
 use Html;
@@ -35,6 +36,9 @@ class SuggestedEdits extends BaseModule {
 	 * @var ConfigurationLoader|null
 	 */
 	private $configurationLoader;
+
+	/** @var string[] cache key => HTML */
+	private $htmlCache = [];
 
 	/**
 	 * @param IContextSource $context
@@ -74,6 +78,36 @@ class SuggestedEdits extends BaseModule {
 			!$context->getConfig()->get( 'GEHomepageSuggestedEditsRequiresOptIn' ) ||
 			$context->getUser()->getBoolOption( self::ENABLED_PREF )
 		);
+	}
+
+	/** @inheritDoc */
+	public function getHtml() {
+		// This method will be called both directly by the homepage and by getJsData() in
+		// some cases, so use some lightweight caching.
+		$key = $this->getMode() . ':' . $this->getContext()->getLanguage()->getCode();
+		if ( !array_key_exists( $key, $this->htmlCache ) ) {
+			$this->htmlCache[$key] = parent::getHtml();
+		}
+		return $this->htmlCache[$key];
+	}
+
+	/** @inheritDoc */
+	public function getJsData( $mode ) {
+		$data = parent::getJsData( $mode );
+
+		// When the module is not activated yet, but can be, include module HTML in the
+		// data, for dynamic loading on activation.
+		if ( self::isEnabled( $this->getContext() ) &&
+			!self::isActivated( $this->getContext() ) &&
+			$this->getMode() !== HomepageModule::RENDER_MOBILE_DETAILS
+		) {
+			$data += [
+				'html' => $this->getHtml(),
+				'rlModules' => $this->getModules(),
+			];
+		}
+
+		return $data;
 	}
 
 	/**

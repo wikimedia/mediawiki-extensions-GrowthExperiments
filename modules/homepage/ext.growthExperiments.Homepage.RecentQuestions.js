@@ -21,9 +21,9 @@
 		if ( !moduleData || !moduleData[ moduleName ] ) {
 			return;
 		}
-		$moduleHtml = $( moduleData[ moduleName ].html );
+		$moduleHtml = $( moduleData[ moduleName ].overlay );
 		$moduleHtml.find( questionsSelector ).replaceWith( updatedHtml );
-		moduleData[ moduleName ].html = $moduleHtml.prop( 'outerHTML' );
+		moduleData[ moduleName ].overlay = $moduleHtml.prop( 'outerHTML' );
 		mw.config.set( 'homepagemodules', moduleData );
 	}
 
