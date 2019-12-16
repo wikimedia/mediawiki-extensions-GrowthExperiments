@@ -6,10 +6,11 @@ var assert = require( 'assert' ),
 	Util = require( 'wdio-mediawiki/Util' );
 
 describe( 'Homepage', function () {
+	var username, password;
 
 	beforeEach( function () {
-		var username = Util.getTestString( 'NewUser-' );
-		var password = Util.getTestString();
+		username = Util.getTestString( 'NewUser-' );
+		password = Util.getTestString();
 		browser.call( function () {
 			return Api.createAccount( username, password );
 		} );
@@ -47,6 +48,12 @@ describe( 'Homepage', function () {
 		HomepagePage.open();
 		assert( HomepagePage.homepage.isExisting() );
 
+	} );
+
+	it( 'Heading shows the logged-in user\'s name', function () {
+
+		HomepagePage.open();
+		assert( HomepagePage.firstheading.getText(), `Hello, ${username}!` );
 	} );
 
 } );
