@@ -10,7 +10,6 @@ use GrowthExperiments\HomepageModule;
 use Html;
 use IContextSource;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
-use MediaWiki\MediaWikiServices;
 use MWException;
 use MWTimestamp;
 use OOUI\ButtonWidget;
@@ -18,6 +17,7 @@ use OOUI\IconWidget;
 use PageImages;
 use SpecialPage;
 use Title;
+use Wikimedia\Rdbms\IDatabase;
 
 /**
  * This is the "Impact" module. It shows the page views information
@@ -51,6 +51,10 @@ class Impact extends BaseModule {
 	 * @var string|null
 	 */
 	private $editsTable = null;
+
+	/** @var IDatabase */
+	private $dbr;
+
 	/**
 	 * @var PageViewService|null
 	 */
@@ -60,9 +64,12 @@ class Impact extends BaseModule {
 	 * @inheritDoc
 	 */
 	public function __construct(
-		IContextSource $context, PageViewService $pageViewService = null
+		IContextSource $context,
+		IDatabase $dbr,
+		PageViewService $pageViewService = null
 	) {
 		parent::__construct( 'impact', $context );
+		$this->dbr = $dbr;
 		$this->pageViewService = $pageViewService;
 	}
 
@@ -425,10 +432,9 @@ class Impact extends BaseModule {
 	 * @throws Exception
 	 */
 	private function queryArticleEdits() {
-		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$actorMigration = ActorMigration::newMigration();
-		$actorQuery = $actorMigration->getWhere( $dbr, 'rev_user', $this->getContext()->getUser() );
-		$subquery = $dbr->buildSelectSubquery(
+		$actorQuery = $actorMigration->getWhere( $this->dbr, 'rev_user', $this->getContext()->getUser() );
+		$subquery = $this->dbr->buildSelectSubquery(
 			array_merge( [ 'revision' ], $actorQuery[ 'tables' ], [ 'page' ] ),
 			[ 'rev_page', 'page_title', 'page_namespace', 'rev_timestamp' ],
 			[
@@ -440,7 +446,7 @@ class Impact extends BaseModule {
 			[ 'ORDER BY' => 'rev_timestamp DESC', 'limit' => 1000 ],
 			[ 'page' => [ 'JOIN', [ 'rev_page = page_id' ] ] ] + $actorQuery[ 'joins' ]
 		);
-		$result = $dbr->select(
+		$result = $this->dbr->select(
 			[ 'latest_edits' => $subquery ],
 			[
 				'rev_page',
@@ -474,10 +480,9 @@ class Impact extends BaseModule {
 	 * @throws Exception
 	 */
 	private function getArticleEditCount() {
-		$dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA );
 		$actorMigration = ActorMigration::newMigration();
-		$actorQuery = $actorMigration->getWhere( $dbr, 'rev_user', $this->getContext()->getUser() );
-		return $dbr->selectRowCount(
+		$actorQuery = $actorMigration->getWhere( $this->dbr, 'rev_user', $this->getContext()->getUser() );
+		return $this->dbr->selectRowCount(
 			array_merge( [ 'revision' ], $actorQuery[ 'tables' ], [ 'page' ] ),
 			'rev_id',
 			[

@@ -9,8 +9,14 @@ use Html;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
 use SpecialPage;
 use User;
+use Wikimedia\Rdbms\IDatabase;
 
 class SpecialImpact extends SpecialPage {
+
+	/**
+	 * @var IDatabase
+	 */
+	private $dbr;
 
 	/**
 	 * @var PageViewService|null
@@ -19,10 +25,12 @@ class SpecialImpact extends SpecialPage {
 
 	/**
 	 * SpecialImpact constructor.
+	 * @param IDatabase $dbr
 	 * @param PageViewService|null $pageViewService
 	 */
-	public function __construct( ?PageViewService $pageViewService = null ) {
+	public function __construct( IDatabase $dbr, PageViewService $pageViewService = null ) {
 		parent::__construct( 'Impact' );
+		$this->dbr = $dbr;
 		$this->pageViewService = $pageViewService;
 	}
 
@@ -76,7 +84,7 @@ class SpecialImpact extends SpecialPage {
 				->text() ) );
 		}
 		$context->setUser( $impactUser );
-		$impact = new Impact( $context, $this->pageViewService );
+		$impact = new Impact( $context, $this->dbr, $this->pageViewService );
 		$out->addHTML( $impact->render( HomepageModule::RENDER_DESKTOP ) );
 	}
 }

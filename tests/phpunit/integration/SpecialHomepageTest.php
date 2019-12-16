@@ -8,6 +8,7 @@ use GrowthExperiments\Specials\SpecialHomepage;
 use HashConfig;
 use IContextSource;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
+use MediaWiki\MediaWikiServices;
 use PHPUnit\Framework\MockObject\MockObject;
 use RequestContext;
 use SpecialPageTestBase;
@@ -24,11 +25,14 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	 * @inheritDoc
 	 */
 	protected function newSpecialPage() {
-		return new SpecialHomepage( new class extends EditInfoService {
-			public function getEditsPerDay() {
-				return 0;
-			}
-		} );
+		return new SpecialHomepage(
+			new class extends EditInfoService {
+				public function getEditsPerDay() {
+					return 0;
+				}
+			},
+			$this->db
+		);
 	}
 
 	/**
@@ -120,7 +124,11 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			->setMethodsExcept()
 			->getMock();
 		$pageViewService->expects( $this->never() )->method( $this->anything() );
-		$homepage = new SpecialHomepage( $editInfoService, $pageViewService );
+		$homepage = new SpecialHomepage(
+			$editInfoService,
+			MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA ),
+			$pageViewService
+		);
 		$wrappedHomepage = TestingAccessWrapper::newFromObject( $homepage );
 
 		$context1 = $this->getContextForUserId( 1 );
