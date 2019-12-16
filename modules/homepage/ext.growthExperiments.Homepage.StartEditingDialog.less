@@ -1,6 +1,8 @@
 @import 'mediawiki.ui/variables';
 @import 'ext.growthExperiments.variables.less';
 
+@side-padding: 24px;
+
 .mw-ge-startediting-dialog {
 	.growthexperiments-homepage-desktop & {
 		.oo-ui-window-head {
@@ -23,11 +25,11 @@
 
 	&-desktopActions {
 		float: right;
-		padding: 1em;
+		padding: @side-padding;
 	}
 
 	&-progress {
-		padding: 1em 1.5em;
+		padding: 1em @side-padding;
 		background-color: @colorGray15;
 
 		&-label {
@@ -52,7 +54,7 @@
 	&-intro {
 		&-general {
 			background-color: @colorGray15;
-			padding: 1.5em;
+			padding: 1.5em @side-padding;
 
 			&:after {
 				content: '';
@@ -64,12 +66,14 @@
 			&-header {
 				font-weight: bold;
 				color: @colorGray2;
-				font-size: 1.2em;
+				font-size: 1.15em;
+				line-height: 1.375;
 			}
 
 			&-subheader {
 				color: @colorGray5;
-				font-size: 1.2em;
+				font-size: 1.15em;
+				line-height: 1.375;
 			}
 
 			&-image {
@@ -90,7 +94,7 @@
 		}
 
 		&-response {
-			padding: 1.5em;
+			padding: 1.5em @side-padding;
 
 			&-image {
 				float: left;
@@ -100,7 +104,8 @@
 
 			&-label {
 				color: @colorGray5;
-				font-size: 1.2em;
+				font-size: 1.15em;
+				line-height: 1.375;
 			}
 		}
 
@@ -124,10 +129,11 @@
 
 	&-difficulty {
 		&-banner {
-			font-size: 1.2em;
+			font-size: 1.15em;
+			line-height: 1.375;
 			background-color: @colorGray15;
 			background-repeat: no-repeat;
-			// We can't use e.g. background-position-x: 1.5em; because that's not flippable for RTL
+			// We can't use e.g. background-position-x: @side-padding; because that's not flippable for RTL
 			// Instead, use a border with the same color as the background
 			background-position-x: left;
 			border-left-color: @colorGray15;
@@ -137,8 +143,8 @@
 				background-image: url( ../../images/difficulty-square-ltr.svg );
 				background-size: 128px;
 				background-position-y: center;
-				padding: 4em 1em 3em 8.5em;
-				border-left-width: 1.5em;
+				padding: 2.5em 1.5em 2.5em 9.5em;
+				border-left-width: @side-padding;
 			}
 
 			.growthexperiments-homepage-mobile-summary &,
@@ -152,6 +158,7 @@
 		}
 
 		&-header {
+			color: @colorGray2;
 			font-weight: bold;
 
 			// stylelint-disable-next-line no-descending-specificity
@@ -219,6 +226,7 @@
 			}
 
 			&-description {
+				color: @colorGray2;
 				line-height: 1.5;
 				padding-bottom: 1.5em;
 
@@ -241,6 +249,7 @@
 			}
 
 			&-description-header {
+				color: @colorGray2;
 				font-weight: bold;
 
 				.growthexperiments-homepage-mobile-summary &,
