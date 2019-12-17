@@ -29,13 +29,13 @@
 			 */
 			function getModuleData( moduleName ) {
 				var data = mw.config.get( 'homepagemodules' )[ moduleName ];
-				data.html = $overlayModules.find( '[data-module-name="' + moduleName + '"]' );
+				data.overlay = $overlayModules.find( '[data-module-name="' + moduleName + '"]' );
 				return data;
 			}
 
 			function getSubmodules( moduleName ) {
 				// HACK: extract submodule info from the module HTML
-				return $( getModuleData( moduleName ).html )
+				return $( getModuleData( moduleName ).overlay )
 					.find( '.growthexperiments-homepage-module' )
 					.toArray()
 					.map( function ( moduleElement ) {
@@ -76,10 +76,15 @@
 			}
 
 			overlayManager.add( routeRegex, function ( moduleName ) {
+				var moduleData;
 				if ( overlays[ moduleName ] === undefined ) {
-					overlays[ moduleName ] = new MobileOverlay(
-						$.extend( { moduleName: moduleName }, getModuleData( moduleName ) )
-					);
+					moduleData = getModuleData( moduleName );
+					overlays[ moduleName ] = new MobileOverlay( {
+						moduleName: moduleName,
+						html: moduleData.overlay,
+						rlModules: moduleData.rlModules,
+						heading: moduleData.heading
+					} );
 				}
 				return overlays[ moduleName ];
 			} );

@@ -46,17 +46,17 @@ class SpecialHomepage extends SpecialPage {
 	/** @var PageViewService|null */
 	private $pageViewService;
 
-	/**
-	 * @var string Unique identifier for this specific rendering of Special:Homepage.
-	 * Used by various EventLogging schemas to correlate events.
-	 */
-	private $pageviewToken;
-
 	/** @var ConfigurationLoader|null */
 	private $configurationLoader;
 
 	/** @var Tracker|null */
 	private $tracker;
+
+	/**
+	 * @var string Unique identifier for this specific rendering of Special:Homepage.
+	 * Used by various EventLogging schemas to correlate events.
+	 */
+	private $pageviewToken;
 
 	/**
 	 * @param EditInfoService $editInfoService
@@ -150,13 +150,15 @@ class SpecialHomepage extends SpecialPage {
 		$modules = $this->getModules();
 
 		if ( $isMobile ) {
-			$currentModule = $modules[$par] ?? false;
-			if ( $currentModule ) {
-				$renderedModules = $this->renderMobileDetails( $par, $currentModule );
+			if ( array_key_exists( $par, $modules ) ) {
+				$mode = HomepageModule::RENDER_MOBILE_DETAILS;
+				$this->renderMobileDetails( $par, $modules[$par] );
 			} else {
-				$renderedModules = $this->renderMobileSummary();
+				$mode = HomepageModule::RENDER_MOBILE_SUMMARY;
+				$this->renderMobileSummary();
 			}
 		} else {
+			$mode = HomepageModule::RENDER_DESKTOP;
 			// Display the homepage_welcome tour, but only if the user hasn't already seen the
 			// homepage_discovery tour (T229044)
 			if ( !$this->getUser()->getBoolOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_DISCOVERY ) ) {
@@ -166,24 +168,21 @@ class SpecialHomepage extends SpecialPage {
 					'ext.guidedTour.tour.homepage_welcome'
 				);
 			}
-			$renderedModules = $this->renderDesktop();
+			$this->renderDesktop();
 		}
 
 		$out->addHTML( Html::closeElement( 'div' ) );
-
-		if ( $isMobile && !$par ) {
-			$this->outputDataForMobileOverlay( $renderedModules );
-		}
+		$this->outputJsData( $mode, $modules );
 
 		if ( $loggingEnabled &&
 			 ExtensionRegistry::getInstance()->isLoaded( 'EventLogging' ) &&
-			 count( $renderedModules ) ) {
+			 count( $modules ) ) {
 			$logger = new SpecialHomepageLogger(
 				$this->pageviewToken,
 				$this->getContext()->getUser(),
 				$this->getRequest(),
 				$isMobile,
-				$renderedModules
+				$modules
 			);
 			DeferredUpdates::addCallableUpdate( function () use ( $logger ) {
 				$logger->log();
@@ -216,7 +215,7 @@ class SpecialHomepage extends SpecialPage {
 	}
 
 	/**
-	 * @return HomepageModule[]
+	 * @return BaseModule[]
 	 */
 	private function getModules() {
 		$modules = [
@@ -248,7 +247,7 @@ class SpecialHomepage extends SpecialPage {
 			];
 		} else {
 			return [
-				'main' => [ 'start', 'impact', 'mentorship' ],
+				'main' => [ 'start', 'suggested-edits', 'impact', 'mentorship' ],
 				'sidebar' => [ 'help' ],
 			];
 		}
@@ -296,13 +295,9 @@ class SpecialHomepage extends SpecialPage {
 		return ( $hmac === $expectedHmac );
 	}
 
-	/**
-	 * @return array
-	 */
 	private function renderDesktop() {
 		$out = $this->getContext()->getOutput();
 		$modules = $this->getModules();
-		$renderedModules = [];
 		$out->addModules( 'ext.growthExperiments.Homepage.RecentQuestions' );
 		$out->addBodyClasses( 'growthexperiments-homepage-desktop' );
 		foreach ( $this->getModuleGroups() as $group => $moduleNames ) {
@@ -311,10 +306,12 @@ class SpecialHomepage extends SpecialPage {
 			] ) );
 			foreach ( $moduleNames as $moduleName ) {
 				/** @var HomepageModule $module */
-				$module = $modules[$moduleName];
+				$module = $modules[$moduleName] ?? null;
+				if ( !$module ) {
+					continue;
+				}
 				try {
 					$out->addHTML( $module->render( HomepageModule::RENDER_DESKTOP ) );
-					$renderedModules[$moduleName] = $module;
 				} catch ( Exception $exception ) {
 					Util::logError( $exception, [ 'origin' => __METHOD__ ] );
 				} catch ( Throwable $throwable ) {
@@ -323,87 +320,89 @@ class SpecialHomepage extends SpecialPage {
 			}
 			$out->addHTML( Html::closeElement( 'div' ) );
 		}
-		return $renderedModules;
 	}
 
 	/**
 	 * @param $moduleName
 	 * @param HomepageModule $module
-	 * @return array
 	 */
 	private function renderMobileDetails( $moduleName, HomepageModule $module ) {
 		$out = $this->getContext()->getOutput();
-		$renderedModules = [];
 		$out->addBodyClasses( 'growthexperiments-homepage-mobile-details' );
 
 		try {
 			$out->addHTML( $module->render( HomepageModule::RENDER_MOBILE_DETAILS ) );
-			$renderedModules[ $moduleName ] = $module;
 		} catch ( Exception $exception ) {
 			Util::logError( $exception, [ 'origin' => __METHOD__ ] );
 		} catch ( Throwable $throwable ) {
 			Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
 		}
-		return $renderedModules;
 	}
 
-	/**
-	 * @return array
-	 */
+	private function wrapMobileSummaryWithLink( $moduleName, $moduleHtml ) {
+		if ( $moduleHtml ) {
+			$moduleHtml = Html::rawElement( 'a', [
+				'href' => $this->getPageTitle( $moduleName )->getLinkURL(),
+			], $moduleHtml );
+		}
+		return $moduleHtml;
+	}
+
 	private function renderMobileSummary() {
 		$out = $this->getContext()->getOutput();
 		$modules = $this->getModules();
-		$renderedModules = [];
 		$out->addBodyClasses( 'growthexperiments-homepage-mobile-summary' );
 		foreach ( $modules as $moduleName => $module ) {
 			try {
-				$out->addHTML( Html::rawElement(
-					'a',
-					[
-						'href' => $this->getPageTitle( $moduleName )->getLinkURL(),
-					],
-					$module->render( HomepageModule::RENDER_MOBILE_SUMMARY )
-				) );
-				$renderedModules[$moduleName] = $module;
+				$out->addHTML( $this->wrapMobileSummaryWithLink( $moduleName,
+					$module->render( HomepageModule::RENDER_MOBILE_SUMMARY ) ) );
 			} catch ( Exception $exception ) {
 				Util::logError( $exception, [ 'origin' => __METHOD__ ] );
 			} catch ( Throwable $throwable ) {
 				Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
 			}
 		}
-
-		return $renderedModules;
 	}
 
 	/**
-	 * @param BaseModule[] $modules
+	 * @param string $mode One of RENDER_DESKTOP, RENDER_MOBILE_SUMMARY, RENDER_MOBILE_DETAILS
+	 * @param HomepageModule[] $modules
 	 */
-	private function outputDataForMobileOverlay( array $modules ) {
+	private function outputJsData( $mode, array $modules ) {
 		$out = $this->getContext()->getOutput();
 
 		$data = [];
 		$html = '';
 		foreach ( $modules as $moduleName => $module ) {
 			try {
-				$data[$moduleName] = $module->getDataForOverlay();
-				$html .= $data[$moduleName]['html'];
-				unset( $data[$moduleName]['html'] );
+				$data[$moduleName] = $module->getJsData( $mode );
+				if ( isset( $data[$moduleName]['html'] ) && $mode === HomepageModule::RENDER_MOBILE_SUMMARY ) {
+					// This is slightly ugly, but making modules generate special-page-based
+					// links to themselves would be uglier.
+					$data[$moduleName]['html'] = $this->wrapMobileSummaryWithLink( $moduleName,
+						$data[$moduleName]['html'] );
+				}
+				if ( isset( $data[$moduleName]['overlay'] ) ) {
+					$html .= $data[$moduleName]['overlay'];
+					unset( $data[$moduleName]['overlay'] );
+				}
 			} catch ( Exception $exception ) {
 				Util::logError( $exception, [ 'origin' => __METHOD__ ] );
 			} catch ( Throwable $throwable ) {
 				Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
 			}
 		}
-		$out->addJsConfigVars( [
-			'homepagemobile' => true,
-			'homepagemodules' => $data,
-		] );
-		$out->addModules( 'ext.growthExperiments.Homepage.Mobile' );
-		$out->addHTML( Html::rawElement(
-			'div',
-			[ 'class' => 'growthexperiments-homepage-overlay-container' ],
-			$html
-		) );
+		$out->addJsConfigVars( 'homepagemodules', $data );
+
+		if ( $mode === HomepageModule::RENDER_MOBILE_SUMMARY ) {
+			$out->addJsConfigVars( 'homepagemobile', true );
+			$out->addModules( 'ext.growthExperiments.Homepage.Mobile' );
+			$out->addHTML( Html::rawElement(
+				'div',
+				[ 'class' => 'growthexperiments-homepage-overlay-container' ],
+				$html
+			) );
+		}
 	}
 
 	private function handleNewcomerTask( string $par = null ) {
