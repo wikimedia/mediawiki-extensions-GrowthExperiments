@@ -291,19 +291,28 @@
 			this.currentCard = new EndOfQueueWidget( { topicMatching: false } );
 		}
 		if ( this.currentCard ) {
-			this.updateCardAndControlsPresentation();
+			this.updateCardElement();
+			this.updateControls();
 			return $.Deferred().resolve();
 		}
 
+		this.currentCard = new EditCardWidget( this.taskQueue[ queuePosition ] );
+		this.logger.log(
+			'suggested-edits',
+			this.mode,
+			'se-task-impression',
+			this.getCardLogData( queuePosition )
+		);
+		this.updateCardElement();
+		this.updateControls();
 		return this.getExtraDataAndUpdateQueue( queuePosition ).then( function () {
 			if ( queuePosition !== this.queuePosition ) {
 				return;
 			}
-			this.logger.log( 'suggested-edits', this.mode, 'se-task-impression',
-				this.getCardLogData( queuePosition ) );
-			this.currentCard = new EditCardWidget( this.taskQueue[ queuePosition ] );
-			this.updateCardAndControlsPresentation();
-			this.setupClickLogging();
+			this.currentCard = new EditCardWidget(
+				$.extend( { extraDataLoaded: true }, this.taskQueue[ queuePosition ] )
+			);
+			this.updateCardElement();
 		}.bind( this ) );
 	};
 
@@ -421,10 +430,20 @@
 		} );
 	};
 
-	SuggestedEditsModule.prototype.updateCardAndControlsPresentation = function () {
+	/**
+	 * Update the HTML for the card with whatever is in this.currentCard.
+	 */
+	SuggestedEditsModule.prototype.updateCardElement = function () {
 		var cardSelector = '.suggested-edits-card',
 			$cardElement = $( cardSelector );
 		$cardElement.html( this.currentCard.$element );
+		this.setupClickLogging();
+	};
+
+	/**
+	 * Update the control chrome around the card depending on the state of the queue and query.
+	 */
+	SuggestedEditsModule.prototype.updateControls = function () {
 		this.filters.toggle( true );
 		this.filters.updateButtonLabelAndIcon( this.taskTypesQuery );
 		this.updatePager();
