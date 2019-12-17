@@ -148,6 +148,9 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 				return new mw.Api().saveOption( 'growthexperiments-homepage-suggestededits-activated', 1 )
 					.then( function () {
 						mw.user.options.set( 'growthexperiments-homepage-suggestededits-activated', 1 );
+						this.logger.log( 'start-startediting', this.mode, 'se-activate' );
+						return this.setupSuggestedEditsModule();
+					}.bind( this ) ).then( function () {
 						dialog.close( { action: 'activate' } );
 					} );
 			}
@@ -322,6 +325,66 @@ StartEditingDialog.prototype.buildProgressIndicator = function ( currentPage, to
 	);
 
 	return $indicator;
+};
+
+/**
+ * Rearranges the homepage and loads the suggested edits module.
+ * In mobile-details mode, this method won't return and will send the browser to the suggested edits
+ * page instead.
+ * @return {Promise}
+ */
+StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
+	var $homepage, $homepageOverlay, moduleHtml, moduleDependencies;
+	if ( this.mode === 'mobile-details' ) {
+		window.location.href = mw.util.getUrl( new mw.Title( 'Special:Homepage/suggested-edits' ).toString() );
+		// Keep the dialog open while the page is reloading.
+		return $.Deferred();
+	}
+
+	// eslint-disable-next-line no-jquery/no-global-selector
+	$homepage = $( '.growthexperiments-homepage-container:not(.homepage-module-overlay)' );
+	// eslint-disable-next-line no-jquery/no-global-selector
+	$homepageOverlay = $( '.growthexperiments-homepage-container.homepage-module-overlay' );
+	moduleHtml = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ].html;
+	moduleDependencies = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ].rlModules;
+
+	// Rearrange the homepage.
+	// FIXME needs to be kept in sync with the PHP code. Maybe the homepage layout
+	//   (module containers) should be templated and made available via an API or JSON config.
+	if ( this.mode === 'desktop' ) {
+		// Remove StartEditing submodule from Start module (and update CSS classes for Start).
+		$homepage.find( '.growthexperiments-homepage-module-start-startediting' ).remove();
+		// Add SuggestedEdits module.
+		$homepage.find( '.growthexperiments-homepage-module-start' )
+			.addClass( 'growthexperiments-homepage-module-start-startediting-completed' )
+			.after( moduleHtml );
+		// Move Mentorship module to the sidebar.
+		$homepage.find( '.growthexperiments-homepage-module-mentorship' )
+			.prependTo( '.growthexperiments-homepage-group-sidebar' );
+	} else { // mobile-overlay
+		// Update StartEditing module icon.
+		$homepage.add( $homepageOverlay )
+			.find( '.growthexperiments-homepage-module-start-startediting' )
+			.addClass( 'growthexperiments-homepage-module-completed' )
+			.find( '.growthexperiments-homepage-module-header-icon' )
+			.html( new OO.ui.IconWidget( {
+				icon: 'check',
+				// see BaseModule::getHeaderIcon
+				classes: [ 'oo-ui-image-invert', 'oo-ui-checkboxInputWidget-checkIcon' ]
+			} ).$element );
+		// Add SuggestedEdits module summary.
+		$homepage.find( '.growthexperiments-homepage-module-start' ).parent().after( moduleHtml );
+	}
+
+	return mw.loader.using( moduleDependencies ).then( function ( require ) {
+		if ( this.mode === 'mobile-overlay' ) {
+			window.history.replaceState( null, null, '#/homepage/suggested-edits' );
+			window.dispatchEvent( new HashChangeEvent( 'hashchange' ) );
+		}
+
+		// Wait for the module to initialize.
+		return require( 'ext.growthExperiments.Homepage.SuggestedEdits' );
+	}.bind( this ) );
 };
 
 module.exports = StartEditingDialog;

@@ -3,7 +3,9 @@
 	if ( mw.loader.getState( 'mobile.init' ) ) {
 		mw.loader.using( 'mobile.init' ).done( function () {
 			// eslint-disable-next-line no-jquery/no-global-selector
-			var $homepageSummaryModules = $( '.growthexperiments-homepage-container > a > .growthexperiments-homepage-module' ),
+			var $summaryModulesContainer = $( '.growthexperiments-homepage-container' ),
+				summaryModulesSelector = '> a > .growthexperiments-homepage-module',
+				$summaryModules = $summaryModulesContainer.find( summaryModulesSelector ),
 				// eslint-disable-next-line no-jquery/no-global-selector
 				$overlayModules = $( '.growthexperiments-homepage-overlay-container' ),
 				MobileOverlay = require( './ext.growthExperiments.Homepage.MobileOverlay.js' ),
@@ -96,7 +98,7 @@
 			// Initialize state for handleRouteChange, and log initial impression if needed
 			handleRouteChange( router.getPath() );
 
-			$homepageSummaryModules.on( 'click', function ( e ) {
+			$summaryModulesContainer.on( 'click', summaryModulesSelector, function ( e ) {
 				e.preventDefault();
 				router.navigate( '#/homepage/' + $( this ).data( 'module-name' ) );
 			} );
@@ -104,7 +106,7 @@
 			// Start loading the ResourceLoader modules so that tapping on one will load
 			// instantly. We don't load these with page delivery so as to speed up the
 			// initial page load.
-			$homepageSummaryModules.each( function () {
+			$summaryModules.each( function () {
 				var moduleName = $( this ).data( 'module-name' ),
 					rlModules = getModuleData( moduleName ).rlModules;
 				if ( rlModules ) {
@@ -114,7 +116,6 @@
 			setTimeout( function () {
 				mw.loader.load( lazyLoadModules );
 			}, 250 );
-
 		} );
 	}
 }() );
