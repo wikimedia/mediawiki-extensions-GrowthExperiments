@@ -5,7 +5,7 @@
 			"Dyolf77 (WMF)"
 		]
 	},
-	"apihelp-homepagequestionstore-summary": "{{GENDER:|احصل|احصلي}} على أسئلة منسقة منشورة عبر وحدات الصفحة الرئيسية",
+	"apihelp-homepagequestionstore-summary": "{{GENDER:|احصل|احصلي}} على أسئلة منسقة منشورة عبر وحدات الصفحة الرئيسية للمستخدم",
 	"apihelp-homepagequestionstore-param-questionformat": "التنسيق لإرجاع الأسئلة، مثل HTML.",
 	"apihelp-homepagequestionstore-param-storage": "موقع تخزين الأسئلة.",
 	"apihelp-homepagequestionstore-param-userid": "معرف المستخدم للحصول على أسئلة من أجله.",

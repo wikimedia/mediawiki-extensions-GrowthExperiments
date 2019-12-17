@@ -21,8 +21,10 @@
 	"growthexperiments-help-panel-questionreview-include-article-title": "Укључи наслов странице са мојим питањем",
 	"growthexperiments-help-panel-question-subject-template": "Питање са табле помоћи",
 	"growthexperiments-help-panel-question-subject-template-with-title": "Питање са табле помоћи на [[$1]]",
+	"growthexperiments-help-panel-question-post-error": "Дошло је до грешке приликом покушаја постављања питања. Покушајте поново или посетите $1 у веб-прегледачу да бисте ручно поставили питање.",
 	"growthexperiments-help-panel-questioncomplete-title": "Постављање питања",
 	"growthexperiments-help-panel-questioncomplete-header": "Ваше питање је постављено!",
+	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Ваше питање се сада налази на техничкој подршци заједнице, а на њега ће одговорити други уредник-добровољац.",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Прикажи питање на техничкој подршци",
 	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "Обавештења о вашем питању:",
 	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Добићете обавештење овде на викију када се појави одговор.",
@@ -36,6 +38,7 @@
 	"growthexperiments-help-panel-questioncomplete-first-edit": "У сваком случају, објављивањем питања, направили сте вашу прву измену на страници. Честитамо!",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Онемогући ову алатку у подешавањима",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Неважећи наслов.",
+	"growthexperiments-help-panel-community-help-desk-text": "Техничка подршка заједнице",
 	"growthexperiments-help-panel-search-label": "Тражење помоћи",
 	"growthexperiments-help-panel-search-no-results": "Резултати нису пронађени.",
 	"tag-help_panel_question": "питање са табле помоћи"
