@@ -48,17 +48,14 @@
 	};
 
 	TaskExplanationWidget.prototype.getInfo = function () {
-		var name = this.getName(),
-			description = this.getDescription(),
+		var $name = this.getName(),
 			popupButtonWidget = new OO.ui.PopupButtonWidget( {
 				icon: 'info',
 				framed: false,
 				label: this.taskTypeData.messages.shortdescription,
 				invisibleLabel: true,
 				popup: {
-					head: true,
-					label: name,
-					$content: description,
+					$content: $name.add( this.getDescription() ),
 					padded: true
 				}
 			} );
@@ -70,6 +67,9 @@
 			}
 			popupButtonWidget.getPopup().toggle( true );
 		} );
+		popupButtonWidget.getPopup().$element.on( 'mouseleave', function () {
+			popupButtonWidget.getPopup().toggle( false );
+		} );
 		popupButtonWidget.getPopup().connect( this, {
 			toggle: function ( show ) {
 				var maskSelector = 'a.mw-mf-page-center__mask';
@@ -79,7 +79,7 @@
 					new Drawer( {
 						children: [
 							name,
-							$( '<div>' ).addClass( 'suggested-edits-taskexplanation-additional-info' ).html( description )
+							$( '<div>' ).addClass( 'suggested-edits-taskexplanation-additional-info' ).html( this.getDescription() )
 						],
 						className: 'suggested-edits-taskexplanation-drawer',
 						onBeforeHide: function () {
@@ -95,7 +95,7 @@
 				}
 				this.logger.log( 'suggested-edits', this.mode, 'se-explanation-' +
 					( show ? 'open' : 'close' ), { taskType: this.taskType } );
-			}
+			}.bind( this )
 		} );
 		return popupButtonWidget;
 	};
