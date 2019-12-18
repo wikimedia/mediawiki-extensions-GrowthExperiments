@@ -26,6 +26,7 @@
 		var $pager, $previous, $next, $filters, $filtersContainer;
 		SuggestedEditsModule.super.call( this, config );
 
+		this.config = config;
 		this.logger = logger;
 		this.mode = config.mode;
 		this.currentCard = null;
@@ -37,7 +38,7 @@
 			mode: this.mode
 		}, logger )
 			.connect( this, {
-				search: 'fetchTasks',
+				search: 'fetchTasksAndUpdateView',
 				done: 'filterSelection'
 			} )
 			.toggle( false );
@@ -92,14 +93,30 @@
 	};
 
 	/**
-	 * Fetch suggested edits from ApiQueryGrowthTasks and update the view.
+	 * Fetch suggested edits from ApiQueryGrowthTasks.
+	 * Has no side effects.
 	 *
-	 * @param {string[]} taskTypes
-	 * @return {jQuery.Promise} Status promise. It never fails; errors are handled internally
-	 *   by rendering an error card.
+	 * @param {string[]} taskTypes Task types to search
+	 * @return {jQuery.Promise<Object>} An abortable promise with two fields:
+	 *   - count: the number of tasks available. Note this is the full count, not the
+	 *     task list length (which is capped to 200).
+	 *     FIXME protection status is ignored by the count.
+	 *   - tasks: a list of task data objects
 	 */
 	SuggestedEditsModule.prototype.fetchTasks = function ( taskTypes ) {
-		var apiParams = {
+		var apiParams, actionApiPromise, finalPromise;
+
+		if ( !taskTypes.length ) {
+			// No point in doing the query if no task types are allowed.
+			return $.Deferred().resolve( {
+				count: 0,
+				tasks: []
+			} ).promise( {
+				abort: function () {}
+			} );
+		}
+
+		apiParams = {
 			action: 'query',
 			prop: 'info|revisions|pageimages',
 			inprop: 'protection|url',
@@ -114,27 +131,10 @@
 			formatversion: 2,
 			uselang: mw.config.get( 'wgUserLanguage' )
 		};
-		this.taskTypesQuery = taskTypes;
-		if ( this.apiPromise ) {
-			this.apiPromise.abort();
-		}
-		this.currentCard = null;
-		this.taskQueue = [];
-		this.queuePosition = 0;
-		if ( !taskTypes.length ) {
-			// User has deselected all checkboxes; update the count.
-			this.filters.updateMatchCount( this.taskQueue.length );
-			return $.Deferred().resolve().promise();
-		}
-		this.apiPromise = new mw.Api().get( apiParams );
-		return this.apiPromise.then( function ( data ) {
-			// HomepageModuleLogger adds this to the log data automatically
-			var extraData = mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' );
-			if ( !extraData ) {
-				// when initializing the module on the client side, this is not set
-				extraData = {};
-				mw.config.set( 'wgGEHomepageModuleActionData-suggested-edits', extraData );
-			}
+		actionApiPromise = new mw.Api().get( apiParams );
+		finalPromise = actionApiPromise.then( function ( data ) {
+			var tasks = [];
+
 			function cleanUpData( item ) {
 				return {
 					title: item.title,
@@ -154,7 +154,7 @@
 				return result.protection.length === 0;
 			}
 			if ( data.growthtasks.totalCount > 0 ) {
-				this.taskQueue = data.query.pages
+				tasks = data.query.pages
 					.filter( filterOutProtectedArticles )
 					.sort( function ( l, r ) {
 						return l.order - r.order;
@@ -163,6 +163,48 @@
 					// Maximum number of tasks in the queue is always 200.
 					.slice( 0, 200 );
 			}
+			return {
+				count: data.growthtasks.totalCount,
+				tasks: tasks
+			};
+		} );
+
+		return finalPromise.promise( {
+			abort: actionApiPromise.abort.bind( actionApiPromise )
+		} );
+	};
+
+	/**
+	 * Fetch suggested edits from ApiQueryGrowthTasks and update the view and internal state.
+	 *
+	 * @param {string[]} taskTypes Task types to search
+	 * @return {jQuery.Promise} Status promise. It never fails; errors are handled internally
+	 *   by rendering an error card.
+	 */
+	SuggestedEditsModule.prototype.fetchTasksAndUpdateView = function ( taskTypes ) {
+		this.taskTypesQuery = taskTypes;
+		if ( this.apiPromise ) {
+			this.apiPromise.abort();
+		}
+		this.currentCard = null;
+		this.taskQueue = [];
+		this.queuePosition = 0;
+		if ( !taskTypes.length ) {
+			// User has deselected all checkboxes; update the count.
+			this.filters.updateMatchCount( this.taskQueue.length );
+			return $.Deferred().resolve().promise();
+		}
+		this.apiPromise = this.fetchTasks( taskTypes );
+		return this.apiPromise.then( function ( data ) {
+			// HomepageModuleLogger adds this to the log data automatically
+			var extraData = mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' );
+			if ( !extraData ) {
+				// when initializing the module on the client side, this is not set
+				extraData = {};
+				mw.config.set( 'wgGEHomepageModuleActionData-suggested-edits', extraData );
+			}
+
+			this.taskQueue = data.tasks;
 			this.filters.updateMatchCount( this.taskQueue.length );
 			extraData.taskTypes = taskTypes;
 			// FIXME should this be capped to 200 or show the total server-side result count?
@@ -477,7 +519,7 @@
 				mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 				mw.config.get( 'wgGEHomepagePageviewToken' )
 			) );
-		return suggestedEditsModule.fetchTasks( taskTypes )
+		return suggestedEditsModule.fetchTasksAndUpdateView( taskTypes )
 			.then( function () {
 				suggestedEditsModule.filters.toggle( true );
 				return suggestedEditsModule.showCard();
