@@ -31,7 +31,9 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 					return 0;
 				}
 			},
-			$this->db
+			$this->db,
+			MediaWikiServices::getInstance()->get( 'GrowthExperimentsConfigurationLoader' ),
+			MediaWikiServices::getInstance()->get( 'GrowthExperimentsNewcomerTaskTrackerFactory' )
 		);
 	}
 
@@ -127,6 +129,8 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$homepage = new SpecialHomepage(
 			$editInfoService,
 			MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA ),
+			MediaWikiServices::getInstance()->get( 'GrowthExperimentsConfigurationLoader' ),
+			MediaWikiServices::getInstance()->get( 'GrowthExperimentsNewcomerTaskTrackerFactory' ),
 			$pageViewService
 		);
 		$wrappedHomepage = TestingAccessWrapper::newFromObject( $homepage );
