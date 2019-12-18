@@ -6,5 +6,6 @@
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|шта је ово?]])",
 	"growthexperiments-confirmemail-emailrecommended": "Е-адреса (препоручује се)",
-	"growthexperiments-confirmemail-confirm-subject": "Добро дошли на пројекат {{SITENAME}}: потврдите е-адресу"
+	"growthexperiments-confirmemail-confirm-subject": "Добро дошли на пројекат {{SITENAME}}: потврдите е-адресу",
+	"growthexperiments-confirmemail-confirm-button": "Потврди е-адресу"
 }
