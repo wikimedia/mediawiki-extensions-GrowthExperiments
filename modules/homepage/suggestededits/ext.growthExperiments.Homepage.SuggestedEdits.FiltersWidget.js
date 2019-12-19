@@ -18,13 +18,16 @@
 			icon: 'difficulty-outline',
 			indicator: config.mode === 'desktop' ? null : 'down'
 		} );
-		this.dialog = new DifficultyFiltersDialog( config )
-			.on( 'done', function () {
+		this.dialog = new DifficultyFiltersDialog( {
+			presets: config.taskTypePresets
+		} ).connect( this, {
+			done: function () {
 				this.emit( 'done' );
-			}.bind( this ) )
-			.on( 'search', function ( search ) {
+			},
+			search: function ( search ) {
 				this.emit( 'search', search );
-			}.bind( this ) );
+			}
+		} );
 
 		this.dialog.$element.addClass( 'suggested-edits-difficulty-filters' )
 			.on( 'click', '.suggested-edits-create-article-additional-msg a', function () {

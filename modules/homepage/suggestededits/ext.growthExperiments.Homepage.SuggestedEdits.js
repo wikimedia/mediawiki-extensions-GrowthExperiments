@@ -33,7 +33,7 @@
 		this.taskTypesQuery = [];
 
 		this.filters = new FiltersButtonGroupWidget( {
-			presets: config.taskTypePresets,
+			taskTypePresets: config.taskTypePresets,
 			mode: this.mode
 		}, logger )
 			.connect( this, {
