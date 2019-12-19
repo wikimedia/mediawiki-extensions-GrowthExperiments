@@ -13,7 +13,7 @@
 	"tooltip-pt-homepage": "لوحة {{GENDER:|المستخدم|المستخدمة}} الخاصة بك",
 	"prefs-homepage": "الصفحة الرئيسية للوافد الجديد",
 	"growthexperiments-homepage-enable": "عرض لوحة {{GENDER:|المستخدم|المستخدمة}} {{GENDER:|للوافد الجديد|للوافدة الجديدة}}",
-	"growthexperiments-homepage-pt-link": "اختيار تلقائي للصفحة الرئيسية للوافد الجديد من وصلة اسم المستخدم في الأدوات الشخصية",
+	"growthexperiments-homepage-pt-link": "اختيار تلقائي للوحة المستخدم للوافد الجديد من وصلة اسم حساب المستخدم في الأدوات الشخصية",
 	"growthexperiments-homepage-start-header": "{{GENDER:$1|ابدأ|ابدئي}} من هنا",
 	"growthexperiments-homepage-account-header": "تم إنشاء الحساب",
 	"growthexperiments-homepage-account-editcount": "{{PLURAL:$1|لا تعديلات|تعديل واحد|تعديلان اثنان|$1 تعديلات|$1 تعديلا|$1 تعديل}}",
