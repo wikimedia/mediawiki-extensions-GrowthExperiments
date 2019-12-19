@@ -44,8 +44,9 @@ class ConfirmEmailHooks {
 		// Load JS that displays a message informing the user that a verification email is coming
 		$context->getOutput()->addModules( 'ext.growthExperiments.confirmEmail.createAccount' );
 
-		// Change email label from "(optional)" to "(recommended)", but only if email is optional
-		if ( !$config->get( 'EmailConfirmToEdit' ) ) {
+		// If email field exists on the form, change email label from "(optional)" to "
+		// (recommended)", but only if email is optional
+		if ( isset( $formDescriptor['email'] ) && !$config->get( 'EmailConfirmToEdit' ) ) {
 			$formDescriptor['email']['label-message'] = 'growthexperiments-confirmemail-emailrecommended';
 			$formDescriptor['email']['help-message'] = 'growthexperiments-confirmemail-emailhelp';
 			// helpInline doesn't work because this form hasn't been converted to OOUI yet (T85853)
