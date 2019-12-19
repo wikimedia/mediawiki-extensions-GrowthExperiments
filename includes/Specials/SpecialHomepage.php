@@ -46,10 +46,10 @@ class SpecialHomepage extends SpecialPage {
 	/** @var PageViewService|null */
 	private $pageViewService;
 
-	/** @var ConfigurationLoader|null */
+	/** @var ConfigurationLoader */
 	private $configurationLoader;
 
-	/** @var Tracker|null */
+	/** @var Tracker */
 	private $tracker;
 
 	/**
@@ -61,16 +61,16 @@ class SpecialHomepage extends SpecialPage {
 	/**
 	 * @param EditInfoService $editInfoService
 	 * @param IDatabase $dbr
+	 * @param ConfigurationLoader $configurationLoader
+	 * @param TrackerFactory $trackerFactory
 	 * @param PageViewService|null $pageViewService
-	 * @param ConfigurationLoader|null $configurationLoader
-	 * @param TrackerFactory|null $trackerFactory
 	 */
 	public function __construct(
 		EditInfoService $editInfoService,
 		IDatabase $dbr,
-		PageViewService $pageViewService = null,
-		ConfigurationLoader $configurationLoader = null,
-		TrackerFactory $trackerFactory = null
+		ConfigurationLoader $configurationLoader,
+		TrackerFactory $trackerFactory,
+		PageViewService $pageViewService = null
 	) {
 		parent::__construct( 'Homepage', '', false );
 		$this->editInfoService = $editInfoService;
@@ -78,6 +78,8 @@ class SpecialHomepage extends SpecialPage {
 		$this->pageViewService = $pageViewService;
 		$this->configurationLoader = $configurationLoader;
 		$this->pageviewToken = $this->generatePageviewToken();
+		$this->tracker = $trackerFactory->getTracker( $this->getUser() );
+
 		// Hack: Making the userpage the relevant title for the homepage
 		// allows using the talk overlay for the talk tab on mobile.
 		// This is done only for the mobile skin, because on Vector setting relevant
@@ -86,9 +88,6 @@ class SpecialHomepage extends SpecialPage {
 		// the relevant controls. See T229263.
 		if ( Util::isMobile( $this->getSkin() ) ) {
 			$this->getSkin()->setRelevantTitle( $this->getUser()->getUserPage() );
-		}
-		if ( $trackerFactory ) {
-			$this->tracker = $trackerFactory->getTracker( $this->getUser() );
 		}
 	}
 
@@ -407,9 +406,7 @@ class SpecialHomepage extends SpecialPage {
 
 	private function handleNewcomerTask( string $par = null ) {
 		if ( strpos( $par, 'newcomertask/' ) !== 0 ||
-			 !$this->getUser()->isLoggedIn() ||
-			 // Service is injected if SuggestedEdits is enabled for this user.
-			 $this->tracker === null ) {
+			 !SuggestedEdits::isEnabled( $this->getContext() ) ) {
 			return false;
 		}
 		$titleId = (int)explode( '/', $par )[1];

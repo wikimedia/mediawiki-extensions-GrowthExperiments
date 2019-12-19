@@ -56,15 +56,12 @@ class HomepageHooks {
 			$mwServices = MediaWikiServices::getInstance();
 			$list['Homepage'] = function () use ( $pageViewInfoEnabled, $mwServices ) {
 				$pageViewsService = $pageViewInfoEnabled ? $mwServices->get( 'PageViewService' ) : null;
-				$trackerFactory = SuggestedEdits::isEnabled( RequestContext::getMain() ) ?
-					$mwServices->get( 'GrowthExperimentsNewcomerTaskTrackerFactory' ) :
-					null;
 				return new SpecialHomepage(
 					$mwServices->get( 'GrowthExperimentsEditInfoService' ),
 					$mwServices->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA ),
-					$pageViewsService,
 					$mwServices->get( 'GrowthExperimentsConfigurationLoader' ),
-					$trackerFactory
+					$mwServices->get( 'GrowthExperimentsNewcomerTaskTrackerFactory' ),
+					$pageViewsService
 				);
 			};
 			if ( $pageViewInfoEnabled ) {
