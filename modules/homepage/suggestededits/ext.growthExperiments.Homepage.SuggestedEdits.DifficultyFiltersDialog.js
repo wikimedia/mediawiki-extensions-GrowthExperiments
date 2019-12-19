@@ -1,12 +1,29 @@
 'use strict';
 
-var taskTypes = require( './TaskTypes.json' ),
-	DifficultyFiltersDialog = function DifficultyFiltersDialog( config ) {
-		DifficultyFiltersDialog.super.call( this, config );
-		this.config = config;
-		this.articleCountNumber = 0;
-	};
+var DifficultyFiltersDialog,
+	taskTypes = require( './TaskTypes.json' );
 
+/**
+ * Class for handling UI changes to difficulty filters.
+ *
+ * Emits the following OOJS events:
+ * - search: when the filter selection changes. First argument is the list of selected filters.
+ * - done: when the dialog is closed (saved). First argument is the list of selected filters.
+ * On canceling the dialog, it will emit a search event with the original (pre-opening) filter list
+ * if it differs from the filter list at closing, and the filter list at closing is not empty.
+ *
+ * Expects updateMatchCount() to be called back with the number of matches after emitting
+ * a search event.
+ *
+ * @class DifficultyFiltersDialog
+ * @param {Object} config
+ * @param {Array} config.presets List of enabled task types. Will be updated on close.
+ */
+DifficultyFiltersDialog = function ( config ) {
+	DifficultyFiltersDialog.super.call( this, config );
+	this.config = config;
+	this.articleCountNumber = 0;
+};
 OO.inheritClass( DifficultyFiltersDialog, OO.ui.ProcessDialog );
 
 DifficultyFiltersDialog.static.name = 'difficultyfilters';
