@@ -227,7 +227,7 @@ class SuggestedEdits extends BaseModule {
 	}
 
 	/**
-	 * Returns site views in the last 30 days.
+	 * Returns daily unique site views, averaged over the last 30 days.
 	 * @return int|null
 	 */
 	protected function getSiteViews() {
@@ -245,7 +245,7 @@ class SuggestedEdits extends BaseModule {
 		}
 		$data = $status->getValue();
 		ksort( $data );
-		return array_sum( array_slice( $data, 0, 30 ) );
+		return (int)( array_sum( array_slice( $data, 0, 30 ) ) / 30 );
 	}
 
 	/**
