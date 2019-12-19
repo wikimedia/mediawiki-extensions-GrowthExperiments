@@ -3,8 +3,9 @@
 @import '../ext.growthExperiments.variables.less';
 
 @cardWrapperWidth: 260px;
-@cardContainerWrapperHeight: 256px;
-@imageHeight: 128px;
+@cardContainerWrapperHeight: 18em;
+@imageHeight: 9em;
+@textHeight: 9em;
 @suggestedEditsBackgroundColor: rgba( 234, 243, 255, 0.5 );
 
 // This block is separate from the rest as it is targeting the process dialog contents.
@@ -351,7 +352,7 @@ body.mw-special-Homepage {
 
 				.se-card-content {
 					.se-card-text {
-						height: 128px;
+						height: @textHeight;
 						padding: 0 10px;
 						color: @colorGray2;
 
