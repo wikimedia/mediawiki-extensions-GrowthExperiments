@@ -5,6 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 use FauxSearchResultSet;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
+use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
@@ -32,6 +33,7 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 	 * @param TitleFactory $titleFactory
 	 * @param string $apiUrl Remote API URL including api.php
 	 * @param TaskType[] $taskTypes
+	 * @param Topic[] $topics
 	 * @param LinkTarget[] $templateBlacklist
 	 */
 	public function __construct(
@@ -40,9 +42,10 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 		TitleFactory $titleFactory,
 		$apiUrl,
 		array $taskTypes,
+		array $topics,
 		array $templateBlacklist
 	) {
-		parent::__construct( $templateProvider, $taskTypes, $templateBlacklist );
+		parent::__construct( $templateProvider, $taskTypes, $topics, $templateBlacklist );
 		$this->requestFactory = $requestFactory;
 		$this->titleFactory = $titleFactory;
 		$this->apiUrl = $apiUrl;

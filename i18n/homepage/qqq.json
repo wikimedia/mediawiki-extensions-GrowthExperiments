@@ -199,6 +199,8 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "{{doc-growthexperiments-homepage-suggestededits-name}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "{{doc-growthexperiments-homepage-suggestededits-name}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "{{doc-growthexperiments-homepage-suggestededits-name}}",
+	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Error message when the on-wiki topic configuration page has bad structure (something that should be an object isn't).",
+	"growthexperiments-homepage-suggestededits-config-invalidid": "Error message when the on-wiki topic configuration page has an invalid ID (top-level key). Parameters:\n* $1 - the ID.",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Error message when the on-wiki task configuration page has a missing field. Parameters:\n* $1 - Name of missing field\n* $2 - Task type which has the error.",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Error message when the on-wiki task configuration page has an invalid group (difficulty) specification. Parameters:\n* $1 - Name of missing field\n* $2 - Task type which has the error.",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Error message when the required system messages do not exist for one of the configured task types. Parameters:\n* $1 - Name of missing field\n* $2 - Task type which has the error.",

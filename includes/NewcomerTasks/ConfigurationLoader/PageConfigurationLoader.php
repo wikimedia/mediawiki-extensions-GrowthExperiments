@@ -2,89 +2,62 @@
 
 namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
-use ApiRawMessage;
-use BagOStuff;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
-use GrowthExperiments\Util;
-use HashBagOStuff;
-use MediaWiki\Http\HttpRequestFactory;
+use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
+use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Linker\LinkTarget;
-use MediaWiki\Storage\RevisionRecord;
 // phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
 use Message;
 use MessageLocalizer;
 use StatusValue;
-use TitleFactory;
 use TitleValue;
-use WikiPage;
 
 /**
  * Load configuration from a local or remote .json wiki page.
  * For syntax see
  * https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Newcomer_tasks/Prototype/templates/cs.json
+ * https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Newcomer_tasks/Prototype/topics/cs.json
  */
 class PageConfigurationLoader implements ConfigurationLoader {
-
-	/** @var HttpRequestFactory */
-	private $requestFactory;
-
-	/** @var TitleFactory */
-	private $titleFactory;
-
-	/** @var BagOStuff */
-	private $cache;
 
 	/** @var MessageLocalizer */
 	private $messageLocalizer;
 
-	/** @var int Cache expiry (0 for unlimited). */
-	private $cacheTtl = 0;
+	/** @var PageLoader */
+	private $taskPageLoader;
 
-	/** @var LinkTarget Title of the config page. Can be an interwiki title. */
-	private $pageTitle;
+	/** @var PageLoader|null */
+	private $topicPageLoader;
 
 	/** @var TaskType[]|StatusValue|null Cached task type set (or an error). */
 	private $taskTypes;
 
+	/** @var Topic[]|StatusValue|null Cached topic set (or an error). */
+	private $topics;
+
 	/** @var LinkTarget[]|StatusValue|null Cached template blacklist (or an error).  */
 	private $templateBlacklist;
 
-	/** @var WikiPage */
-	private $wikiPage;
-
 	/**
-	 * @param HttpRequestFactory $requestFactory
-	 * @param TitleFactory $titleFactory
 	 * @param MessageLocalizer $messageLocalizer
-	 * @param LinkTarget $pageTitle Wiki page to load configuration from. Can be an interwiki title.
+	 * @param PageLoader $taskPageLoader Loader for the task configuration page.
+	 * @param PageLoader|null $topicPageLoader Loader for the topic configuration page.
+	 *   Can be omitted, in which case topic matching will be disabled.
 	 */
 	public function __construct(
-		HttpRequestFactory $requestFactory,
-		TitleFactory $titleFactory,
 		MessageLocalizer $messageLocalizer,
-		LinkTarget $pageTitle
+		PageLoader $taskPageLoader,
+		?PageLoader $topicPageLoader
 	) {
-		$this->requestFactory = $requestFactory;
-		$this->titleFactory = $titleFactory;
 		$this->messageLocalizer = $messageLocalizer;
-		$this->pageTitle = $pageTitle;
-		$this->cache = new HashBagOStuff();
+		$this->taskPageLoader = $taskPageLoader;
+		$this->topicPageLoader = $topicPageLoader;
 	}
 
 	/** @inheritDoc */
 	public function setMessageLocalizer( MessageLocalizer $messageLocalizer ): void {
 		$this->messageLocalizer = $messageLocalizer;
-	}
-
-	/**
-	 * Use a different cache. (Default is in-process caching only.)
-	 * @param BagOStuff $cache
-	 * @param int $ttl Cache expiry (0 for unlimited).
-	 */
-	public function setCache( BagOStuff $cache, $ttl ) {
-		$this->cache = $cache;
-		$this->cacheTtl = $ttl;
 	}
 
 	/** @inheritDoc */
@@ -93,7 +66,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 			return $this->taskTypes;
 		}
 
-		$config = $this->loadConfig();
+		$config = $this->taskPageLoader->load();
 		if ( $config instanceof StatusValue ) {
 			$taskTypes = $config;
 		} else {
@@ -105,12 +78,31 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	}
 
 	/** @inheritDoc */
+	public function loadTopics() {
+		if ( !$this->topicPageLoader ) {
+			return [];
+		} elseif ( $this->topics !== null ) {
+			return $this->topics;
+		}
+
+		$config = $this->topicPageLoader->load();
+		if ( $config instanceof StatusValue ) {
+			$topics = $config;
+		} else {
+			$topics = $this->parseTopicsFromConfig( $config );
+		}
+
+		$this->topics = $topics;
+		return $topics;
+	}
+
+	/** @inheritDoc */
 	public function loadTemplateBlacklist() {
 		if ( $this->templateBlacklist !== null ) {
 			return $this->templateBlacklist;
 		}
 
-		$config = $this->loadConfig();
+		$config = $this->taskPageLoader->load();
 		if ( $config instanceof StatusValue ) {
 			$templateBlacklist = $config;
 		} else {
@@ -123,13 +115,18 @@ class PageConfigurationLoader implements ConfigurationLoader {
 
 	/**
 	 * Like loadTaskTypes() but without caching.
-	 * @param array $config
+	 * @param mixed $config A JSON value.
 	 * @return TaskType[]|StatusValue
 	 */
-	private function parseTaskTypesFromConfig( array $config ) {
+	private function parseTaskTypesFromConfig( $config ) {
 		$status = StatusValue::newGood();
 		$taskTypes = [];
+		if ( !is_array( $config ) || array_filter( $config, 'is_array' ) !== $config ) {
+			return StatusValue::newFatal(
+				'growthexperiments-homepage-suggestededits-config-wrongstructure' );
+		}
 		foreach ( $config as $taskTypeId => $taskTypeData ) {
+			$status->merge( $this->validateIdentifier( $taskTypeId ) );
 			$requiredFields = [ 'group', 'templates' ];
 			foreach ( $requiredFields as $field ) {
 				if ( !isset( $taskTypeData[$field] ) ) {
@@ -155,11 +152,48 @@ class PageConfigurationLoader implements ConfigurationLoader {
 					[ 'learnMoreLink' => $taskTypeData['learnmore'] ?? null ],
 					$templates
 				);
-				$status->merge( $this->validateMessages( $taskType ) );
+				$status->merge( $this->validateTaskMessages( $taskType ) );
 				$taskTypes[] = $taskType;
 			}
 		}
 		return $status->isGood() ? $taskTypes : $status;
+	}
+
+	/**
+	 * Like loadTopics() but without caching.
+	 * @param mixed $config A JSON value.
+	 * @return TaskType[]|StatusValue
+	 */
+	private function parseTopicsFromConfig( $config ) {
+		$status = StatusValue::newGood();
+		$topics = [];
+		if ( !is_array( $config ) || array_filter( $config, 'is_array' ) !== $config ) {
+			return StatusValue::newFatal(
+				'growthexperiments-homepage-suggestededits-config-wrongstructure' );
+		}
+		foreach ( $config as $topicId => $topicConfiguration ) {
+			$status->merge( $this->validateIdentifier( $topicId ) );
+			$requiredFields = [ 'label', 'titles' ];
+			foreach ( $requiredFields as $field ) {
+				if ( !isset( $topicConfiguration[$field] ) ) {
+					$status->fatal( 'growthexperiments-homepage-suggestededits-config-missingfield',
+						'titles', $topicId );
+				}
+			}
+
+			if ( $status->isGood() ) {
+				'@phan-var array{label:string,titles:string[]} $topicConfiguration';
+				$linkTargets = [];
+				foreach ( $topicConfiguration['titles'] as $title ) {
+					$linkTargets[] = new TitleValue( NS_MAIN, $title );
+				}
+				$topic = new MorelikeBasedTopic( $topicId, $linkTargets );
+				// FIXME temporary hack for lack of proper localization
+				$topic->setName( $topicConfiguration['label'] );
+				$topics[] = $topic;
+			}
+		}
+		return $status->isGood() ? $topics : $status;
 	}
 
 	/**
@@ -173,72 +207,14 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	}
 
 	/**
-	 * Load the configuration page.
-	 * @return array|StatusValue
+	 * Validate a task or topic ID
+	 * @param string $id
+	 * @return StatusValue
 	 */
-	private function loadConfig() {
-		$cacheKey = $this->cache->makeKey( 'GrowthExperiments', 'NewcomerTasks',
-			'config', $this->pageTitle );
-		$config = $this->cache->get( $cacheKey );
-		if ( $config !== false ) {
-			return $config;
-		}
-
-		if ( $this->pageTitle->isExternal() ) {
-			$url = $this->getRawUrl( $this->pageTitle );
-			$status = Util::getJsonUrl( $this->requestFactory, $url );
-			if ( !$status->isOK() ) {
-				return $status;
-			}
-			$config = $status->getValue();
-		} else {
-			if ( !$this->wikiPage->getTitle()->exists() ) {
-				return StatusValue::newFatal( new ApiRawMessage(
-					'The configuration title does not exist.',
-					'newcomer-tasks-configuration-loader-title-not-found'
-				) );
-			}
-			/** @var \JsonContent $content */
-			$content = $this->wikiPage->getContent( RevisionRecord::FOR_PUBLIC );
-			if ( !$content || !$content instanceof \JsonContent ) {
-				return StatusValue::newFatal( new ApiRawMessage(
-					'The configuration title has no content or is not JSON content.',
-					'newcomer-tasks-configuration-loader-content-error'
-				) );
-			}
-			/** @var StatusValue $status */
-			$status = $content->getData();
-			if ( !$status->isOK() ) {
-				return $status;
-			}
-			// JsonContent's getData() parses JSON without casting objects to arrays.
-			// Re-encode and then decode the JSON to convert those objects to associative
-			// arrays which is what loadConfig is meant to return.
-			$config = \FormatJson::decode( \FormatJson::encode( $status->getValue() ), true );
-		}
-
-		$this->cache->set( $cacheKey, $config, $this->cacheTtl );
-		return $config;
-	}
-
-	/**
-	 * Get the action=raw URL for a (probably remote) title.
-	 * Normal title methods would return nice URLs, which are usually disallowed for action=raw.
-	 * We assume both wikis use the same URL structure.
-	 * @param LinkTarget $title
-	 * @return string
-	 */
-	private function getRawUrl( LinkTarget $title ) {
-		// Use getFullURL to get the interwiki domain.
-		$url = $this->titleFactory->newFromLinkTarget( $title )->getFullURL();
-		$parts = wfParseUrl( wfExpandUrl( $url, PROTO_CANONICAL ) );
-		$baseUrl = $parts['scheme'] . $parts['delimiter'] . $parts['host'];
-		if ( isset( $parts['port'] ) && $parts['port'] ) {
-			$baseUrl .= ':' . $parts['port'];
-		}
-
-		$localPageTitle = $this->titleFactory->makeTitle( $title->getNamespace(), $title->getDBkey() );
-		return $baseUrl . $localPageTitle->getLocalURL( [ 'action' => 'raw' ] );
+	private function validateIdentifier( $id ) {
+		return preg_match( '/^[a-z\d\-]+$/', $id )
+			? StatusValue::newGood()
+			: StatusValue::newFatal( 'growthexperiments-homepage-suggestededits-config-invalidid', $id );
 	}
 
 	/**
@@ -246,7 +222,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	 * @param TemplateBasedTaskType $taskType
 	 * @return StatusValue
 	 */
-	private function validateMessages( TemplateBasedTaskType $taskType ) {
+	private function validateTaskMessages( TemplateBasedTaskType $taskType ) {
 		$status = StatusValue::newGood();
 		foreach ( [
 			$taskType->getName( $this->messageLocalizer ),
@@ -263,15 +239,6 @@ class PageConfigurationLoader implements ConfigurationLoader {
 			}
 		}
 		return $status;
-	}
-
-	/**
-	 * Set WikiPage for local titles.
-	 *
-	 * @param WikiPage $wikiPage
-	 */
-	public function setWikiPage( WikiPage $wikiPage ): void {
-		$this->wikiPage = $wikiPage;
 	}
 
 }

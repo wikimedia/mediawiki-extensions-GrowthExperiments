@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\Assert\Assert;
 
@@ -46,11 +47,26 @@ class StaticTaskSuggester implements TaskSuggester {
 	) {
 		$filteredTasks = array_filter( $this->tasks,
 			function ( Task $task ) use ( $taskTypeFilter, $topicFilter ) {
-				return $taskTypeFilter === null
-					|| in_array( $task->getTaskType()->getId(), $taskTypeFilter, true );
+				if ( $taskTypeFilter && !in_array( $task->getTaskType()->getId(), $taskTypeFilter, true ) ) {
+					return false;
+				} elseif ( $topicFilter && !array_intersect( $this->getTopicIds( $task ), $topicFilter ) ) {
+					return false;
+				}
+				return true;
 			}
 		);
 		return new TaskSet( array_slice( $filteredTasks, $offset, $limit ),
 			count( $filteredTasks ), $offset ?: 0 );
 	}
+
+	/**
+	 * @param Task $task
+	 * @return string[]
+	 */
+	private function getTopicIds( Task $task ) {
+		return array_map( function ( Topic $topic ) {
+			return $topic->getId();
+		}, $task->getTopics() );
+	}
+
 }

@@ -192,6 +192,8 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Update articles",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Expand short articles",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Add links between articles",
+	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Invalid suggested edits configuration: bad structure",
+	"growthexperiments-homepage-suggestededits-config-invalidid": "Invalid suggested edits configuration: invalid id \"$1\" - must contain a-z, 0-9, - (dash) only",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Invalid suggested edits configuration: missing field $1 for task type $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Invalid suggested edits configuration: invalid group $1 for task type $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Invalid suggested edits configuration: missing message $1 for task type $2",

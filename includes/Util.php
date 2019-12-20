@@ -9,6 +9,7 @@ use IContextSource;
 use Iterator;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
 use MWExceptionHandler;
 use RawMessage;
@@ -19,6 +20,7 @@ use SkinMinerva;
 use Status;
 use StatusValue;
 use Throwable;
+use TitleFactory;
 use Traversable;
 use User;
 
@@ -212,6 +214,27 @@ class Util {
 			}
 		}
 		return $status;
+	}
+
+	/**
+	 * Get the action=raw URL for a (probably remote) title.
+	 * Normal title methods would return nice URLs, which are usually disallowed for action=raw.
+	 * We assume both wikis use the same URL structure.
+	 * @param LinkTarget $title
+	 * @param TitleFactory $titleFactory
+	 * @return string
+	 */
+	public static function getRawUrl( LinkTarget $title, TitleFactory $titleFactory ) {
+		// Use getFullURL to get the interwiki domain.
+		$url = $titleFactory->newFromLinkTarget( $title )->getFullURL();
+		$parts = wfParseUrl( wfExpandUrl( $url, PROTO_CANONICAL ) );
+		$baseUrl = $parts['scheme'] . $parts['delimiter'] . $parts['host'];
+		if ( isset( $parts['port'] ) && $parts['port'] ) {
+			$baseUrl .= ':' . $parts['port'];
+		}
+
+		$localPageTitle = $titleFactory->makeTitle( $title->getNamespace(), $title->getDBkey() );
+		return $baseUrl . $localPageTitle->getLocalURL( [ 'action' => 'raw' ] );
 	}
 
 	/**
