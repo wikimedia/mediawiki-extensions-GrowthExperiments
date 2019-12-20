@@ -1,14 +1,16 @@
+var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.TopicSelectionWidget' );
+
 /**
  * @param {Object} config
  * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
  * @param {HomepageModuleLogger} logger
  * @constructor
  */
-var StartEditingDialog = function StartEditingDialog( config, logger ) {
+function StartEditingDialog( config, logger ) {
 	StartEditingDialog.super.call( this, config );
 	this.logger = logger;
 	this.mode = config.mode;
-};
+}
 
 OO.inheritClass( StartEditingDialog, OO.ui.ProcessDialog );
 
@@ -125,7 +127,7 @@ StartEditingDialog.prototype.getSetupProcess = function ( data ) {
 };
 
 StartEditingDialog.prototype.getActionProcess = function ( action ) {
-	var dialog = this;
+	var dialog = this, settings;
 	return StartEditingDialog.super.prototype.getActionProcess.call( this, action )
 		.next( function () {
 			if ( action === 'close' ) {
@@ -145,9 +147,15 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 				// initialization to avoid brief flashes of pending state when switching panels
 				// or closing the dialog.
 				this.setPendingElement( this.$activateButton );
-				return new mw.Api().saveOption( 'growthexperiments-homepage-suggestededits-activated', 1 )
+				settings = {
+					'growthexperiments-homepage-suggestededits-activated': 1,
+					'growthexperiments-homepage-se-topic-filters': this.topicSelector.getSelectedTopics().length > 0 ?
+						JSON.stringify( this.topicSelector.getSelectedTopics() ) :
+						null
+				};
+				return new mw.Api().saveOptions( settings )
 					.then( function () {
-						mw.user.options.set( 'growthexperiments-homepage-suggestededits-activated', 1 );
+						mw.user.options.set( settings );
 						this.logger.log( 'start-startediting', this.mode, 'se-activate' );
 						return this.setupSuggestedEditsModule();
 					}.bind( this ) ).then( function () {
@@ -158,28 +166,50 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 };
 
 StartEditingDialog.prototype.buildIntroPanel = function () {
-	var $generalIntro, $generalImage, $responseIntro, surveyData, responseData, imageUrl,
+	var $generalIntro, $generalImage, $responseIntro, surveyData, responseData, imageData, imageUrl,
+		$topicIntro, $topicMessage, $topicSelectorWrapper,
 		imagePath = mw.config.get( 'wgExtensionAssetsPath' ) + '/GrowthExperiments/images',
-		introLinks = require( './config.json' ).GEHomepageSuggestedEditsIntroLinks,
+		config = require( './config.json' ),
+		introLinks = config.GEHomepageSuggestedEditsIntroLinks,
+		enableTopics = config.GEHomepageSuggestedEditsEnableTopics,
+		generalImageUrl = enableTopics ? 'intro-topic-general.svg' : 'intro-heart-article.svg',
 		responseMap = {
 			'add-image': {
-				image: 'intro-add-image.svg',
+				image: {
+					withoutTopics: 'intro-add-image.svg',
+					withTopics: {
+						ltr: 'intro-topic-add-image-ltr.svg',
+						rtl: 'intro-topic-add-image-rtl.svg'
+					}
+				},
 				labelHtml: mw.message( 'growthexperiments-homepage-startediting-dialog-intro-response-add-image' )
 					.params( [ mw.util.getUrl( introLinks.image ) ] )
 					.parse()
 			},
 			'edit-typo': {
 				image: {
-					ltr: 'intro-typo-ltr.svg',
-					rtl: 'intro-typo-rtl.svg'
+					withoutTopics: {
+						ltr: 'intro-typo-ltr.svg',
+						rtl: 'intro-typo-rtl.svg'
+					},
+					withTopics: {
+						ltr: 'intro-topic-typo-ltr.svg',
+						rtl: 'intro-topic-typo-rtl.svg'
+					}
 				},
 				labelHtml: mw.message( 'growthexperiments-homepage-startediting-dialog-intro-response-edit-typo' )
 					.parse()
 			},
 			'new-page': {
 				image: {
-					ltr: 'intro-new-page-ltr.svg',
-					rtl: 'intro-new-page-rtl.svg'
+					withoutTopics: {
+						ltr: 'intro-new-page-ltr.svg',
+						rtl: 'intro-new-page-rtl.svg'
+					},
+					withTopics: {
+						ltr: 'intro-topic-new-page-ltr.svg',
+						rtl: 'intro-topic-new-page-rtl.svg'
+					}
 				},
 				labelHtml: mw.message( 'growthexperiments-homepage-startediting-dialog-intro-response-new-page' )
 					.params( [ mw.util.getUrl( introLinks.create ) ] )
@@ -187,8 +217,14 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 			},
 			'edit-info-add-change': {
 				image: {
-					ltr: 'intro-add-info-ltr.svg',
-					rtl: 'intro-add-info-rtl.svg'
+					withoutTopics: {
+						ltr: 'intro-add-info-ltr.svg',
+						rtl: 'intro-add-info-rtl.svg'
+					},
+					withTopics: {
+						ltr: 'intro-topic-add-info-ltr.svg',
+						rtl: 'intro-topic-add-info-rtl.svg'
+					}
 				},
 				labelHtml: mw.message( 'growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change' )
 					.parse()
@@ -202,55 +238,104 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 		surveyData = {};
 	}
 	responseData = responseMap[ surveyData.reason ];
-
-	$generalImage = $( '<img>' )
-		.addClass( 'mw-ge-startediting-dialog-intro-general-image' )
-		.attr( { src: imagePath + '/intro-heart-article.svg' } );
-
-	$generalIntro = $( '<div>' )
-		.addClass( 'mw-ge-startediting-dialog-intro-general' )
-		.append(
-			// Put the image after the first paragraph in general mode (when it isn't floated);
-			// otherwise, put it before the first paragraph (when it is floated)
-			responseData ?
-				$generalImage :
-				[],
-			$( '<p>' )
-				.addClass( 'mw-ge-startediting-dialog-intro-general-title' )
-				.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-title' ).text() ),
-			responseData ?
-				[] :
-				$generalImage,
-			$( '<p>' )
-				.addClass( 'mw-ge-startediting-dialog-intro-general-header' )
-				.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-header' ).text() ),
-			$( '<p>' )
-				.addClass( 'mw-ge-startediting-dialog-intro-general-subheader' )
-				.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-subheader' ).text() )
-		);
-
 	if ( responseData ) {
-		imageUrl = typeof responseData.image === 'string' ? responseData.image : responseData.image[ this.getDir() ];
-		$responseIntro = $( '<div>' )
-			.addClass( 'mw-ge-startediting-dialog-intro-response' )
-			.append(
-				$( '<img>' )
-					.addClass( 'mw-ge-startediting-dialog-intro-response-image' )
-					.attr( { src: imagePath + '/' + imageUrl } ),
-				$( '<p>' )
-					.addClass( 'mw-ge-startediting-dialog-intro-response-label' )
-					.html( responseData.labelHtml )
-			);
-		introPanel.$element.addClass( 'mw-ge-startediting-dialog-intro-withresponse' );
-	} else {
-		$responseIntro = $( [] );
+		imageData = responseData.image[ enableTopics ? 'withTopics' : 'withoutTopics' ];
+		imageUrl = typeof imageData === 'string' ? imageData : imageData[ this.getDir() ];
 	}
 
-	introPanel.$element.append(
-		this.buildProgressIndicator( 1, 2 ),
-		$generalIntro,
-		$responseIntro
-	);
+	if ( enableTopics ) {
+		$topicMessage = $( '<div>' )
+			.addClass( 'mw-ge-startediting-dialog-intro-topic-message' )
+			.append( responseData ?
+				responseData.labelHtml :
+				[
+					$( '<p>' )
+						.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-header' ).text() ),
+					$( '<p>' )
+						.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-subheader' ).text() )
+				]
+			);
+
+		$topicIntro = $( '<div>' )
+			.addClass( 'mw-ge-startediting-dialog-intro-topic' )
+			.append(
+				$( '<img>' )
+					.addClass( 'mw-ge-startediting-dialog-intro-topic-image' )
+					.attr( { src: imagePath + '/' + ( imageUrl || generalImageUrl ) } ),
+				$( '<p>' )
+					.addClass( 'mw-ge-startediting-dialog-intro-topic-title' )
+					.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-title' ).text() ),
+				$topicMessage
+			);
+
+		this.topicSelector = new TopicSelectionWidget();
+		this.topicSelector.connect( this, { expand: 'updateSize' } );
+		$topicSelectorWrapper = $( '<div>' )
+			.addClass( 'mw-ge-startediting-dialog-intro-topic-selector' )
+			.append(
+				$( '<p>' )
+					.addClass( 'mw-ge-startediting-dialog-intro-topic-selector-header' )
+					.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-topic-selector-header' ).text() ),
+				$( '<p>' )
+					.addClass( 'mw-ge-startediting-dialog-intro-topic-selector-subheader' )
+					.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader' ).text() ),
+				this.topicSelector.$element
+			);
+
+		introPanel.$element.append(
+			$topicIntro,
+			$topicSelectorWrapper
+		);
+	} else {
+		$generalImage = $( '<img>' )
+			.addClass( 'mw-ge-startediting-dialog-intro-general-image' )
+			.attr( { src: imagePath + '/' + generalImageUrl } );
+
+		$generalIntro = $( '<div>' )
+			.addClass( 'mw-ge-startediting-dialog-intro-general' )
+			.append(
+				// Put the image after the first paragraph in general mode (when it isn't floated);
+				// otherwise, put it before the first paragraph (when it is floated)
+				responseData ?
+					$generalImage :
+					[],
+				$( '<p>' )
+					.addClass( 'mw-ge-startediting-dialog-intro-general-title' )
+					.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-title' ).text() ),
+				responseData ?
+					[] :
+					$generalImage,
+				$( '<p>' )
+					.addClass( 'mw-ge-startediting-dialog-intro-general-header' )
+					.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-header' ).text() ),
+				$( '<p>' )
+					.addClass( 'mw-ge-startediting-dialog-intro-general-subheader' )
+					.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-subheader' ).text() )
+			);
+
+		if ( responseData ) {
+			$responseIntro = $( '<div>' )
+				.addClass( 'mw-ge-startediting-dialog-intro-response' )
+				.append(
+					$( '<img>' )
+						.addClass( 'mw-ge-startediting-dialog-intro-response-image' )
+						.attr( { src: imagePath + '/' + imageUrl } ),
+					$( '<p>' )
+						.addClass( 'mw-ge-startediting-dialog-intro-response-label' )
+						.html( responseData.labelHtml )
+				);
+			introPanel.$element.addClass( 'mw-ge-startediting-dialog-intro-withresponse' );
+		} else {
+			$responseIntro = $( [] );
+		}
+
+		introPanel.$element.append(
+			$generalIntro,
+			$responseIntro
+		);
+	}
+
+	introPanel.$element.prepend( this.buildProgressIndicator( 1, 2 ) );
 	return introPanel;
 };
 

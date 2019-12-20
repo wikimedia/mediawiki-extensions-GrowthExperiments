@@ -47,6 +47,8 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo": "<strong>When {{GENDER:|you}} created {{GENDER:|your}} account, {{GENDER:|you}} said {{GENDER:|you}} wanted to fix a typo or error.</strong> Here, {{GENDER:|you}} can find suggestions of small edits to get started. If {{GENDER:|you}} would rather go straight to fixing a specific article, {{GENDER:|you}} can click \"{{int:growthexperiments-homepage-startediting-dialog-intro-back}}\", search for the article, and click \"{{int:vector-view-edit}}\".",
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>When {{GENDER:|you}} created {{GENDER:|your}} account, {{GENDER:|you}} said {{GENDER:|you}} wanted to add or change information on an existing article.</strong> Here, {{GENDER:|you}} can find suggestions of small edits to get started. If {{GENDER:|you}} would rather go straight to changing a specific article, {{GENDER:|you}} can click \"{{int:growthexperiments-homepage-startediting-dialog-intro-back}}\", search for the article, and click \"{{int:vector-view-edit}}\".",
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>When {{GENDER:|you}} created {{GENDER:|your}} account, {{GENDER:|you}} said {{GENDER:|you}} wanted to create a new article.</strong> That's an important but challenging type of editing, so we recommend {{GENDER:|you}} try some small edits to existing articles first. If {{GENDER:|you}} would rather go straight to creating a new article, {{GENDER:|you}} can [$1 learn how here].",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Choose some topics {{GENDER:|you}} are interested in editing",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "We'll try to suggest articles that match {{GENDER:|your}} interests.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Back",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Get suggestions",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Done",
@@ -201,5 +203,6 @@
 	"growthexperiments-homepage-suggestededits-error-title": "No suggested edits are available at this time.",
 	"growthexperiments-homepage-suggestededits-error-description": "Please try again later.",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Select at least one type of edit",
-	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Select interests"
+	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Select interests",
+	"growthexperiments-homepage-suggestededits-topics-more": "show more"
 }

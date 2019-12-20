@@ -1,0 +1,105 @@
+@import 'mediawiki.mixins';
+@import 'mediawiki.ui/variables';
+
+// Copied from the MachineVision extension
+
+// Variable definitions from style-variables.less in the MachineVision extension
+@base0: @colorGray1;
+@base10: @colorGray2;
+@base50: @colorGray10;
+@base90: @colorGray15;
+@accent10: #2a4b8d;
+@accent90: #eaf3ff;
+@transition-duration-base: 100ms;
+@suggestion-border-width: 1px;
+
+.fade-in( @duration ) {
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
+		}
+	}
+	animation: fadeIn @duration;
+}
+
+.wbmad-suggestion-wrapper {
+	display: inline-block;
+	margin: 0 16px 16px 0;
+
+	label {
+		cursor: pointer;
+	}
+
+	.wbmad-suggestion {
+		.transition( color @transition-duration-base );
+		background-color: @base90;
+		border: @suggestion-border-width solid @base50;
+		color: @base10;
+		cursor: pointer;
+		padding: 2px 1.25em;
+		border-radius: 18px;
+		white-space: nowrap;
+
+		&:hover,
+		&:focus {
+			color: @base0;
+		}
+	}
+
+	.wbmad-suggestion--confirmed {
+		background-color: @accent90;
+		border-color: @accent10;
+		color: @base0;
+		position: relative;
+
+		/* stylelint-disable-next-line selector-class-pattern */
+		.oo-ui-labelWidget {
+			@keyframes slideLeft {
+				0% {
+					.transform( translateX( 0 ) );
+				}
+
+				100% {
+					.transform( translateX( -0.5em ) );
+				}
+			}
+			.transform( translateX( -0.5em ) );
+			animation: slideLeft 0.2s;
+		}
+
+		/* stylelint-disable-next-line selector-class-pattern */
+		.oo-ui-iconElement {
+			.fade-in( 0.2s );
+			min-height: 0;
+			min-width: 0;
+			position: absolute;
+			right: 0.5em;
+			width: 1em;
+		}
+	}
+
+	// Animate the process of moving a label back to center when unconfirmed.
+	.wbmad-suggestion--unconfirmed {
+		/* stylelint-disable-next-line selector-class-pattern */
+		.oo-ui-labelWidget {
+			@keyframes slideRight {
+				0% {
+					.transform( translateX( -0.5em ) );
+				}
+
+				100% {
+					.transform( translateX( 0 ) );
+				}
+			}
+			animation: slideRight 0.2s;
+		}
+	}
+}
+
+.wbmad-hide-outline .wbmad-suggestion-wrapper {
+	outline: 0;
+}

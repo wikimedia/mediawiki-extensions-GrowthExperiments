@@ -1,4 +1,5 @@
 @import 'mediawiki.ui/variables';
+@import 'mediawiki.mixins';
 @import 'ext.growthExperiments.variables.less';
 
 @side-padding: 24px;
@@ -105,6 +106,57 @@
 				color: @colorGray5;
 				font-size: 1.15em;
 				line-height: 1.375;
+			}
+		}
+
+		&-topic {
+			padding: 1.5em @side-padding 2.5em;
+			background-color: @colorGray15;
+
+			&-image {
+				float: left;
+				width: 128px;
+				margin-right: 1em;
+			}
+
+			&-title {
+				font-weight: bold;
+				font-size: 1.15em;
+				line-height: 1.375;
+			}
+
+			&-message {
+				font-size: 1.15em;
+				line-height: 1.375;
+			}
+		}
+
+		&-topic-selector {
+			padding: 1.5em @side-padding;
+
+			&-header {
+				font-weight: bold;
+				font-size: 1.2em;
+			}
+
+			&-subheader {
+				font-size: 0.9em;
+			}
+
+			.wbmad-suggestion {
+				line-height: 1.6;
+
+				.oo-ui-labelWidget {
+					// HACK use transition instead of animation for moving text left, so that the
+					// animation doesn't happen when suggestions are revealed with "show more"
+					.transition-transform( 200ms );
+					animation: none;
+				}
+			}
+
+			.wbmad-suggestion-wrapper {
+				margin-right: 0.25em;
+				margin-bottom: 0.5em;
 			}
 		}
 
