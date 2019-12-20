@@ -158,7 +158,7 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 };
 
 StartEditingDialog.prototype.buildIntroPanel = function () {
-	var $generalIntro, $responseIntro, surveyData, responseData, imageUrl,
+	var $generalIntro, $generalImage, $responseIntro, surveyData, responseData, imageUrl,
 		imagePath = mw.config.get( 'wgExtensionAssetsPath' ) + '/GrowthExperiments/images',
 		introLinks = require( './config.json' ).GEHomepageSuggestedEditsIntroLinks,
 		responseMap = {
@@ -196,15 +196,31 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 		},
 		introPanel = new OO.ui.PanelLayout( { padded: false, expanded: false } );
 
+	try {
+		surveyData = JSON.parse( mw.user.options.get( 'welcomesurvey-responses' ) ) || {};
+	} catch ( e ) {
+		surveyData = {};
+	}
+	responseData = responseMap[ surveyData.reason ];
+
+	$generalImage = $( '<img>' )
+		.addClass( 'mw-ge-startediting-dialog-intro-general-image' )
+		.attr( { src: imagePath + '/intro-heart-article.svg' } );
+
 	$generalIntro = $( '<div>' )
 		.addClass( 'mw-ge-startediting-dialog-intro-general' )
 		.append(
+			// Put the image after the first paragraph in general mode (when it isn't floated);
+			// otherwise, put it before the first paragraph (when it is floated)
+			responseData ?
+				$generalImage :
+				[],
 			$( '<p>' )
 				.addClass( 'mw-ge-startediting-dialog-intro-general-title' )
 				.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-title' ).text() ),
-			$( '<img>' )
-				.addClass( 'mw-ge-startediting-dialog-intro-general-image' )
-				.attr( { src: imagePath + '/intro-heart-article.svg' } ),
+			responseData ?
+				[] :
+				$generalImage,
 			$( '<p>' )
 				.addClass( 'mw-ge-startediting-dialog-intro-general-header' )
 				.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-header' ).text() ),
@@ -212,13 +228,6 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 				.addClass( 'mw-ge-startediting-dialog-intro-general-subheader' )
 				.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-subheader' ).text() )
 		);
-
-	try {
-		surveyData = JSON.parse( mw.user.options.get( 'welcomesurvey-responses' ) ) || {};
-	} catch ( e ) {
-		surveyData = {};
-	}
-	responseData = responseMap[ surveyData.reason ];
 
 	if ( responseData ) {
 		imageUrl = typeof responseData.image === 'string' ? responseData.image : responseData.image[ this.getDir() ];
