@@ -75,7 +75,7 @@ class Impact extends BaseModule {
 
 	/** @inheritDoc */
 	public function canRender() {
-		return $this->pageViewService;
+		return $this->pageViewService !== null;
 	}
 
 	/**

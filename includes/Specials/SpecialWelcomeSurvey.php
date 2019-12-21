@@ -155,7 +155,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	 */
 	public function onSubmit( array $data ) {
 		$request = $this->getRequest();
-		$save = $request->getVal( 'save' );
+		$save = $request->getBool( 'save' );
 		$group = $request->getVal( '_group' );
 		$renderDate = $request->getVal( '_render_date' );
 		$redirectParams = wfCgiToArray( $request->getVal( 'redirectparams', '' ) );

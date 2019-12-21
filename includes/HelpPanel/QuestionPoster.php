@@ -275,7 +275,7 @@ abstract class QuestionPoster {
 	/**
 	 * Create a Content object with the header and question text provided by the user.
 	 *
-	 * @return Content
+	 * @return Content|null
 	 * @throws MWException
 	 */
 	protected function makeWikitextContent() {
@@ -489,7 +489,7 @@ abstract class QuestionPoster {
 	/**
 	 * Validate that $content is an instance of Content
 	 *
-	 * @param Content $content
+	 * @param Content|null $content
 	 * @return Status
 	 */
 	protected function checkContent( $content ) {

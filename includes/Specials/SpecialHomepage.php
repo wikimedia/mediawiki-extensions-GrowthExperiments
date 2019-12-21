@@ -405,7 +405,7 @@ class SpecialHomepage extends SpecialPage {
 	}
 
 	private function handleNewcomerTask( string $par = null ) {
-		if ( strpos( $par, 'newcomertask/' ) !== 0 ||
+		if ( !$par || strpos( $par, 'newcomertask/' ) !== 0 ||
 			 !SuggestedEdits::isEnabled( $this->getContext() ) ) {
 			return false;
 		}

@@ -40,8 +40,6 @@ class TemplateProvider {
 	 * Fill the template information in the given tasks. Non-TemplateBasedTask tasks are
 	 * accepted but ignored.
 	 * @param Task[] $tasks
-	 * @suppress PhanAccessMethodInternal
-	 *   Phan unhelpfully limits calls to internal methods to the same namespace.
 	 */
 	public function fill( array $tasks ) : void {
 		/** @var TemplateBasedTask[] $tasks */'@phan-var TemplateBasedTask[] $tasks';
