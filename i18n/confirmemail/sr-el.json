@@ -1,0 +1,11 @@
+{
+	"@metadata": [],
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|šta je ovo?]])",
+	"growthexperiments-confirmemail-emailhelp": "E-pošta je potrebna za oporavak naloga ako kojim slučajem izgubite lozinku.",
+	"growthexperiments-confirmemail-emailrecommended": "E-adresa (preporučuje se)",
+	"growthexperiments-confirmemail-emailwarning": "Potražite našu e-poruku da biste verifikovali adresu.",
+	"growthexperiments-confirmemail-confirm-subject": "Dobro došli na projekat {{SITENAME}}: potvrdite e-adresu",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Zdravo}}, $2,\n\nHvala vam na dodavanju e-pošte nalogu „$2” na projektu {{SITENAME}}, registrovanom sa IP adrese $1.\n\nKliknite na dolenavedeno dugme da biste potvrdili da želite povezati e-adresu s nalogom:\n\n$3\n\nNapomena: Ovaj kod za potvrdu <strong>ističe u $4</strong>.\n\nHvala,\n\n{{SITENAME}}\n\n----\n\nDa biste otkazali povrdu e-adrese (jer niste otvorili nalog ili iz bilo kojeg drugog razloga), kliknite na ovu vezu za otkazivanje:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "Potvrdi e-adresu",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Zdravo}}, $2,\n\nHvala vam na dodavanju e-pošte nalogu „$2” na projektu {{SITENAME}}, registrovanom sa IP adrese $1.\n\nKliknite na dolenavedenu vezu da biste potvrdili da želite povezati e-adresu s nalogom:\n\n$3\n\nNapomena: Ovaj kod za potvrdu ističe u $4.\n\nHvala,\n\n{{SITENAME}}\n\n----\n\nDa biste otkazali povrdu e-adrese (jer niste otvorili nalog ili iz bilo kojeg drugog razloga), kliknite na ovu vezu za otkazivanje:\n\n$5"
+}

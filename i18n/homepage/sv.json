@@ -109,6 +109,7 @@
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|Du}} kan alltid öppna sidomenyn och trycka på $2 för att återvända hit.",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Kom igång här!",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Öppna sidomenyn och tryck på $2 för att besöka {{GENDER:$1|din}} hemsida.",
+	"growthexperiments-homepage-suggestededits-pageviews": "$1 besök (senaste 60 dagarna)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "Utvidga korta artiklar",
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Lägg till länkar mellan artiklar",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Skapa en ny artikel",

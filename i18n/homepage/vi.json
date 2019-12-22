@@ -152,6 +152,7 @@
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Hãy lựa chọn mối quan tâm hoặc mức độ khó khác để tìm sửa đổi gợi ý.",
 	"growthexperiments-homepage-suggestededits-footer": "Những người dùng khác đã đánh dấu rằng những bài viết này cần chỉnh sửa. Hãy giúp khiến '''{{SITENAME}}''' trở nên tốt hơn cho '''$1 người đọc''' mỗi tháng.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Những người dùng khác đã đánh dấu rằng những bài viết này cần chỉnh sửa. Hãy giúp khiến '''{{SITENAME}}''' trở nên tốt hơn.",
+	"growthexperiments-homepage-suggestededits-footer-suffix": "-",
 	"growthexperiments-homepage-suggestededits-footer-kilosuffix": "$1k",
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1tr",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 tỷ",
