@@ -339,12 +339,7 @@
 		}
 
 		this.currentCard = new EditCardWidget( this.taskQueue[ queuePosition ] );
-		this.logger.log(
-			'suggested-edits',
-			this.mode,
-			'se-task-impression',
-			this.getCardLogData( queuePosition )
-		);
+
 		this.updateCardElement();
 		this.updateControls();
 		return this.getExtraDataAndUpdateQueue( queuePosition ).then( function () {
@@ -355,6 +350,12 @@
 				$.extend( { extraDataLoaded: true }, this.taskQueue[ queuePosition ] )
 			);
 			this.updateCardElement();
+			this.logger.log(
+				'suggested-edits',
+				this.mode,
+				'se-task-impression',
+				this.getCardLogData( queuePosition )
+			);
 		}.bind( this ) );
 	};
 
