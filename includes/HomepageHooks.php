@@ -650,6 +650,18 @@ class HomepageHooks {
 	}
 
 	/**
+	 * ResourceLoader callback used by our custom ResourceLoaderFileModuleWithLessVars class.
+	 * @param ResourceLoaderContext $context
+	 * @return array An array of LESS variables
+	 */
+	public static function lessCallback( ResourceLoaderContext $context ) {
+		return [
+			// used in Homepage.SuggestedEdits.less, keep the comment there in sync
+			'cardContainerWrapperHeight' => ( $context->getSkin() === 'minerva' ) ? '16em' : '18em',
+		];
+	}
+
+	/**
 	 * ResourceLoader JSON package callback for getting the task types defined on the wiki.
 	 * @param ResourceLoaderContext $context
 	 * @return array

@@ -638,6 +638,7 @@
 			]
 		},
 		"ext.growthExperiments.Homepage.styles": {
+			"class": "GrowthExperiments\\ResourceLoaderFileModuleWithLessVars",
 			"styles": [
 				"homepage/ext.growthExperiments.BaseModule.less",
 				"homepage/ext.growthExperiments.HelpModule.less",
@@ -647,6 +648,7 @@
 				"homepage/ext.growthExperiments.StartModule.less",
 				"homepage/ext.growthExperiments.Homepage.less"
 			],
+			"lessCallback": [ "GrowthExperiments\\HomepageHooks", "lessCallback" ],
 			"targets": [
 				"desktop",
 				"mobile"

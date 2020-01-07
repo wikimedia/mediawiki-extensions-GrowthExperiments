@@ -3,9 +3,10 @@
 @import '../ext.growthExperiments.variables.less';
 
 @cardWrapperWidth: 260px;
-@cardContainerWrapperHeight: 18em;
-@imageHeight: 9em;
-@textHeight: 9em;
+// @cardContainerWrapperHeight is defined in HomepageHooks::lessCallback as it is split by skin.
+// It is 16em on mobile and and 18em on desktop.
+@imageHeight: @cardContainerWrapperHeight / 2;
+@textHeight: @cardContainerWrapperHeight / 2;
 @suggestedEditsBackgroundColor: rgba( 234, 243, 255, 0.5 );
 
 // This block is separate from the rest as it is targeting the process dialog contents.
@@ -596,6 +597,9 @@ body.mw-special-Homepage {
 						}
 
 						.se-card-extract {
+							// Minerva sets everything to border-box, which messes up
+							// the height calculations for @textHeight.
+							box-sizing: content-box;
 							padding-top: 4px;
 							font-size: 0.8em;
 							line-height: 1.5;
