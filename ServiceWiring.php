@@ -64,6 +64,7 @@ return [
 		/** @var ConfigurationLoader $configLoader */
 		$configLoader = $services->getService( 'GrowthExperimentsConfigurationLoader' );
 		$taskSuggesterFactory = new TaskSuggesterFactory( $configLoader );
+		$taskSuggesterFactory->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 
 		$dbr = $services->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA );
 		$templateProvider = new TemplateProvider( $services->getTitleFactory(), $dbr );

@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests;
 
+use ApiRawMessage;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester;
@@ -18,7 +19,6 @@ use MWHttpRequest;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\MockObject\Matcher\InvokedRecorder;
 use PHPUnit\Framework\MockObject\MockObject;
-use RawMessage;
 use Status;
 use StatusValue;
 use Title;
@@ -318,7 +318,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 						'params' => [],
 						'response' => [
 							'errors' => [
-								[ 'text' => 'foo' ],
+								[ 'text' => 'foo', 'code' => 'bar' ],
 							],
 						],
 					],
@@ -326,7 +326,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'taskFilter' => null,
 				'topicFilter' => null,
 				'limit' => null,
-				'expectedTaskSet' => StatusValue::newFatal( new RawMessage( 'foo' ) ),
+				'expectedTaskSet' => StatusValue::newFatal( new ApiRawMessage( 'foo', 'bar' ) ),
 			],
 		];
 	}

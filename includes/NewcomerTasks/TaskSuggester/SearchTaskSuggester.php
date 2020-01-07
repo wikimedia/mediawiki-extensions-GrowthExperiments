@@ -12,17 +12,23 @@ use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use ISearchResultSet;
 use MediaWiki\Linker\LinkTarget;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserIdentity;
 use MultipleIterator;
 // phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\NullLogger;
+// phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
 use SearchResult;
+use Status;
 use StatusValue;
 
 /**
  * Shared functionality for local and remote search.
  */
-abstract class SearchTaskSuggester implements TaskSuggester {
+abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterface {
+
+	use LoggerAwareTrait;
 
 	const DEFAULT_LIMIT = 200;
 
@@ -58,6 +64,7 @@ abstract class SearchTaskSuggester implements TaskSuggester {
 			$this->topics[$topic->getId()] = $topic;
 		}
 		$this->templateBlacklist = $templateBlacklist;
+		$this->logger = new NullLogger();
 	}
 
 	/** @inheritDoc */
@@ -90,14 +97,24 @@ abstract class SearchTaskSuggester implements TaskSuggester {
 				return StatusValue::newFatal( wfMessage( 'growthexperiments-newcomertasks-invalid-tasktype',
 					$taskTypeId ) );
 			} elseif ( !( $taskType instanceof TemplateBasedTaskType ) ) {
-				LoggerFactory::getInstance( 'GrowthExperiments' )->notice(
-					'Invalid task type: ' . get_class( $taskType ) );
+				$this->logger->notice( 'Invalid task type: {taskType}', [
+					'taskType' => get_class( $taskType ),
+				] );
 				continue;
 			}
 
 			$searchTerm = $this->getSearchTerm( $taskType, $topics );
 			$matches = $this->search( $searchTerm, $limit, $offset );
 			if ( $matches instanceof StatusValue ) {
+				// Only log when there's a logger; Status::getWikiText would break unit tests.
+				if ( !$this->logger instanceof NullLogger ) {
+					$this->logger->warning( 'Search error: {message}', [
+						'message' => Status::wrap( $matches )->getWikiText( false, false, 'en' ),
+						'searchTerm' => $searchTerm,
+						'limit' => $limit,
+						'offset' => $offset,
+					] );
+				}
 				return $matches;
 			}
 
