@@ -25,6 +25,9 @@ class Topic {
 	 */
 	public function __construct( $id ) {
 		$this->id = $id;
+		// FIXME while the raw name hack is in effect, if setName() is somehow not called,
+		//   this is better than the RawMessage constructor throwing an error
+		$this->name = $id;
 	}
 
 	/**
