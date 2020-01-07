@@ -43,7 +43,7 @@
 	"APIListModules": {
 		"growthtasks": {
 			"class": "GrowthExperiments\\Api\\ApiQueryGrowthTasks",
-			"services": [ "GrowthExperimentsTaskSuggester" ]
+			"services": [ "GrowthExperimentsTaskSuggester", "GrowthExperimentsConfigurationLoader" ]
 		}
 	},
 	"Hooks": {
