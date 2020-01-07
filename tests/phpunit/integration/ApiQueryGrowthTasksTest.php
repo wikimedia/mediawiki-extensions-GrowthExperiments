@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests;
 use ApiRawMessage;
 use ApiTestCase;
 use ApiUsageException;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
@@ -32,7 +33,9 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 			new Task( $taskType3, new TitleValue( NS_MAIN, 'Update-2' ) ),
 			new Task( $taskType1, new TitleValue( NS_MAIN, 'Copyedit-3' ) ),
 		] );
+		$configurationLoader = new StaticConfigurationLoader( [ $taskType1, $taskType2, $taskType3 ] );
 		$this->setService( 'GrowthExperimentsTaskSuggester', $suggester );
+		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
 
 		$baseParams = [
 			'action' => 'query',
@@ -67,12 +70,10 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Task-1' ) ),
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Task-2' ) ),
 		] );
+		$configurationLoader = new StaticConfigurationLoader( [ $taskType ] );
 		$this->setService( 'GrowthExperimentsTaskSuggester', $suggester );
+		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
 
-		$baseParams = [
-			'action' => 'query',
-			'generator' => 'growthtasks',
-		];
 		list( $data ) = $this->doApiRequest( [ 'action' => 'query', 'generator' => 'growthtasks' ] );
 		$this->assertSame( 2, $data['growthtasks']['totalCount'] );
 		$this->assertSame( [ 'ns' => 0, 'title' => 'Task-1', 'missing' => true, 'tasktype' => 'copyedit',
@@ -82,7 +83,9 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 	public function testError() {
 		$suggester = new ErrorForwardingTaskSuggester(
 			StatusValue::newFatal( new ApiRawMessage( 'foo' ) ) );
+		$configurationLoader = new StaticConfigurationLoader( [] );
 		$this->setService( 'GrowthExperimentsTaskSuggester', $suggester );
+		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
 
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage( 'foo' );
@@ -92,7 +95,9 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 
 	public function testMustBeLoggedIn() {
 		$suggester = new StaticTaskSuggester( [] );
+		$configurationLoader = new StaticConfigurationLoader( [] );
 		$this->setService( 'GrowthExperimentsTaskSuggester', $suggester );
+		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
 
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage( 'You must be logged in.' );
