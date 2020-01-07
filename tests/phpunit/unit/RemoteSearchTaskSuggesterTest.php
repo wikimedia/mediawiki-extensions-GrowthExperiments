@@ -9,11 +9,11 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
+use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
-use MultipleIterator;
 use MWHttpRequest;
 use PHPUnit\Framework\ExpectationFailedException;
 use PHPUnit\Framework\MockObject\Matcher\InvokedRecorder;
@@ -69,21 +69,10 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			$this->assertSame( $expectedTaskSet->getOffset(), $taskSet->getOffset() );
 			$this->assertSame( $expectedTaskSet->getTotalCount(), $taskSet->getTotalCount() );
 			$this->assertSame( count( $expectedTaskSet ), count( $taskSet ) );
-			$it = new MultipleIterator( MultipleIterator::MIT_NEED_ANY | MultipleIterator::MIT_KEYS_ASSOC );
-			$it->attachIterator( Util::getIteratorFromTraversable( $expectedTaskSet ), 'expected' );
-			$it->attachIterator( Util::getIteratorFromTraversable( $taskSet ), 'actual' );
-			foreach ( $it as $key => $value ) {
-				$this->assertSame( $key['expected'], $key['actual'] );
-				$expected = $value['expected'];
-				$actual = $value['actual'];
-				$this->assertInstanceOf( Task::class, $expected );
-				$this->assertInstanceOf( Task::class, $actual );
-				/** @var $expected Task */
-				/** @var $actual Task */
-				$this->assertSame( $expected->getTaskType()->getId(), $actual->getTaskType()->getId() );
-				$this->assertSame( $expected->getTitle()->getNamespace(), $actual->getTitle()->getNamespace() );
-				$this->assertSame( $expected->getTitle()->getDBkey(), $actual->getTitle()->getDBkey() );
-			}
+			// Responses are shuffled due to T242057 so we need order-insensitive comparison.
+			$expectedTaskData = $this->taskSetToArray( $expectedTaskSet );
+			$actualTaskData = $this->taskSetToArray( $taskSet );
+			$this->assertArrayEquals( $expectedTaskData, $actualTaskData, false, false );
 		}
 	}
 
@@ -484,6 +473,20 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				}
 			}
 		};
+	}
+
+	private function taskSetToArray( TaskSet $taskSet ) {
+		return array_map( function ( Task $task ) {
+			$taskData = [
+				'taskType' => $task->getTaskType()->getId(),
+				'titleNs' => $task->getTitle()->getNamespace(),
+				'titleDbkey' => $task->getTitle()->getDBkey(),
+				'topics' => array_map( function ( Topic $topic ) {
+					return $topic->getId();
+				}, $task->getTopics() ),
+			];
+			return $taskData;
+		}, iterator_to_array( Util::getIteratorFromTraversable( $taskSet ) ) );
 	}
 
 }
