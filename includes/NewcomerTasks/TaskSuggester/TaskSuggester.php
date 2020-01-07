@@ -14,10 +14,10 @@ interface TaskSuggester {
 
 	/**
 	 * @param UserIdentity $user
-	 * @param array|null $taskTypeFilter List of task types to limit the suggestions to.
-	 *   When omitted, will be taken from the users' preferences.
-	 * @param array|null $topicFilter List of topics to limit the suggestions to.
-	 *   When omitted, will be taken from the users' preferences.
+	 * @param string[]|null $taskTypeFilter List of task type IDs to limit the suggestions to.
+	 *   When omitted, will be taken from the users' preferences. An empty array means no filtering.
+	 * @param string[]|null $topicFilter List of topic IDs to limit the suggestions to.
+	 *   When omitted, will be taken from the users' preferences. An empty array means no filtering.
 	 * @param int|null $limit Number of suggestions to return.
 	 * @param int|null $offset Offset within full result set, for continuation.
 	 * @return TaskSet|StatusValue A set of suggestions or an error in the form of a

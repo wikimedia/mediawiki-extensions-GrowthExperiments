@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWikiUnitTestCase;
 use TitleValue;
 
@@ -18,6 +19,11 @@ class TaskTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $task->getTitle()->getNamespace() === NS_MAIN );
 		$this->assertTrue( $task->getTitle()->getText() === 'Foo' );
 		$this->assertSame( $taskType, $task->getTaskType() );
+		$this->assertEmpty( $task->getTopics() );
+
+		$topics = [ new Topic( 'a' ), new Topic( 'b' ) ];
+		$task->setTopics( $topics );
+		$this->assertSame( $topics, $task->getTopics() );
 	}
 
 }

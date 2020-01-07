@@ -7,6 +7,8 @@ use GrowthExperiments\NewcomerTasks\Task\TemplateBasedTask;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
+use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
+use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use ISearchResultSet;
 use MediaWiki\Linker\LinkTarget;
@@ -33,19 +35,27 @@ abstract class SearchTaskSuggester implements TaskSuggester {
 	/** @var LinkTarget[] List of templates which disqualify a page from being recommendable. */
 	protected $templateBlacklist;
 
+	/** @var Topic[] id => Topic */
+	protected $topics = [];
+
 	/**
 	 * @param TemplateProvider $templateProvider
 	 * @param TaskType[] $taskTypes
+	 * @param Topic[] $topics
 	 * @param LinkTarget[] $templateBlacklist
 	 */
 	public function __construct(
 		TemplateProvider $templateProvider,
 		array $taskTypes,
+		array $topics,
 		array $templateBlacklist
 	) {
 		$this->templateProvider = $templateProvider;
 		foreach ( $taskTypes as $taskType ) {
 			$this->taskTypes[$taskType->getId()] = $taskType;
+		}
+		foreach ( $topics as $topic ) {
+			$this->topics[$topic->getId()] = $topic;
 		}
 		$this->templateBlacklist = $templateBlacklist;
 	}
@@ -58,7 +68,13 @@ abstract class SearchTaskSuggester implements TaskSuggester {
 		$limit = null,
 		$offset = null
 	) {
+		// FIXME these should apply user settings.
 		$taskTypeFilter = $taskTypeFilter ?? array_keys( $this->taskTypes );
+		$topicFilter = $topicFilter ?? [];
+
+		// FIXME these and task types should have similar validation rules
+		$topics = array_values( array_intersect_key( $this->topics, array_flip( $topicFilter ) ) );
+
 		$limit = $limit ?? self::DEFAULT_LIMIT;
 		// FIXME we are completely ignoring offset for now because 1) doing offsets when we are
 		//   interleaving search results from multiple sources is hard, and 2) we are randomizing
@@ -79,7 +95,7 @@ abstract class SearchTaskSuggester implements TaskSuggester {
 				continue;
 			}
 
-			$searchTerm = $this->getSearchTerm( $user, $taskType, $topicFilter );
+			$searchTerm = $this->getSearchTerm( $taskType, $topics );
 			$matches = $this->search( $searchTerm, $limit, $offset );
 			if ( $matches instanceof StatusValue ) {
 				return $matches;
@@ -108,23 +124,21 @@ abstract class SearchTaskSuggester implements TaskSuggester {
 	}
 
 	/**
-	 * @param UserIdentity $user
 	 * @param TemplateBasedTaskType $taskType
-	 * @param string[]|null $topicFilter
+	 * @param Topic[] $topics
 	 * @return string
 	 */
 	protected function getSearchTerm(
-		UserIdentity $user,
 		TemplateBasedTaskType $taskType,
-		array $topicFilter = null
+		array $topics
 	) {
-		// TODO make use of $user and $topicFilter
 		$typeTerm = $this->getHasTemplateTerm( $taskType->getTemplates() );
+		$topicTerm = $this->getTopicTerm( $topics );
 		$deletionTerm = $this->templateBlacklist ?
 			'-' . $this->getHasTemplateTerm( $this->templateBlacklist ) :
 			'';
 
-		return "$typeTerm $deletionTerm";
+		return implode( ' ', array_filter( [ $typeTerm, $topicTerm, $deletionTerm ] ) );
 	}
 
 	/**
@@ -140,9 +154,34 @@ abstract class SearchTaskSuggester implements TaskSuggester {
 	 * @return string
 	 */
 	private function getHasTemplateTerm( array $templates ) {
-		return 'hastemplate:"' . implode( '|', array_map( function ( LinkTarget $template ) {
-			return str_replace( [ '"', '?' ], [ '\"', '\?' ], $template->getDBkey() );
-		}, $templates ) ) . '"';
+		return 'hastemplate:' . $this->escapeSearchTitleList( $templates );
+	}
+
+	/**
+	 * @param Topic[] $topics
+	 * @return string
+	 */
+	private function getTopicTerm( array $topics ) {
+		if ( !$topics ) {
+			return '';
+		}
+		return 'morelikethis:' . $this->escapeSearchTitleList(
+			array_reduce( $topics, function ( array $carry, Topic $topic ) {
+				if ( $topic instanceof MorelikeBasedTopic ) {
+					$carry = array_merge( $carry, $topic->getReferencePages() );
+				}
+				return $carry;
+			}, [] ) );
+	}
+
+	/**
+	 * @param LinkTarget[] $titles
+	 * @return string
+	 */
+	private function escapeSearchTitleList( array $titles ) {
+		return '"' . implode( '|', array_map( function ( LinkTarget $title ) {
+			return str_replace( [ '"', '?' ], [ '\"', '\?' ], $title->getDBkey() );
+		}, $titles ) ) . '"';
 	}
 
 }

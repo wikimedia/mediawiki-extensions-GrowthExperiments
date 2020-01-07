@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Linker\LinkTarget;
 use MessageLocalizer;
 use StatusValue;
@@ -17,6 +18,12 @@ interface ConfigurationLoader {
 	 * @return TaskType[]|StatusValue Set of configured task types, or an error status.
 	 */
 	public function loadTaskTypes();
+
+	/**
+	 * Load configured topics.
+	 * @return Topic[]|StatusValue
+	 */
+	public function loadTopics();
 
 	/**
 	 * Load the list of templates which prevent a page from ever becoming a task

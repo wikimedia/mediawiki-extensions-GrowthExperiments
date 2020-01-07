@@ -692,6 +692,37 @@ class HomepageHooks {
 	}
 
 	/**
+	 * ResourceLoader JSON package callback for getting the topics defined on the wiki.
+	 * Some UI elements will be disabled if this returns an empty array.
+	 * @param ResourceLoaderContext $context
+	 * @return array
+	 *   - on success: [ topic id => topic data, ... ]; see Topic::toArray for data format.
+	 *     Note that the messages in the task data are plaintext and it is the caller's
+	 *     responsibility to escape them.
+	 *   - on error: [ '_error' => error message in wikitext format ]
+	 */
+	public static function getTopicsJson( ResourceLoaderContext $context ) {
+		/** @var ConfigurationLoader $configurationLoader */
+		$configurationLoader = MediaWikiServices::getInstance()
+			->get( 'GrowthExperimentsConfigurationLoader' );
+		$configurationLoader->setMessageLocalizer( $context );
+		$topics = $configurationLoader->loadTopics();
+		if ( $topics instanceof StatusValue ) {
+			$status = Status::wrap( $topics );
+			$status->setMessageLocalizer( $context );
+			return [
+				'_error' => $status->getWikiText(),
+			];
+		} else {
+			$topicsData = [];
+			foreach ( $topics as $topic ) {
+				$topicsData[$topic->getId()] = $topic->toArray( $context );
+			}
+			return $topicsData;
+		}
+	}
+
+	/**
 	 * ResourceLoader JSON package callback for getting the AQS domain to use.
 	 * @return stdClass
 	 */

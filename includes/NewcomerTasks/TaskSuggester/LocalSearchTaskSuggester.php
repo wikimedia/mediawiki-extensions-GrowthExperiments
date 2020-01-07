@@ -2,7 +2,10 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
+use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use MediaWiki\Linker\LinkTarget;
 use SearchEngineFactory;
 
 class LocalSearchTaskSuggester extends SearchTaskSuggester {
@@ -16,16 +19,18 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	/**
 	 * @param SearchEngineFactory $searchEngineFactory
 	 * @param TemplateProvider $templateProvider
-	 * @param array $taskTypes
-	 * @param array $templateBlacklist
+	 * @param TaskType[] $taskTypes
+	 * @param Topic[] $topics
+	 * @param LinkTarget[] $templateBlacklist
 	 */
 	public function __construct(
 		SearchEngineFactory $searchEngineFactory,
 		TemplateProvider $templateProvider,
 		array $taskTypes,
+		array $topics,
 		array $templateBlacklist
 	) {
-		parent::__construct( $templateProvider, $taskTypes, $templateBlacklist );
+		parent::__construct( $templateProvider, $taskTypes, $topics, $templateBlacklist );
 		$this->searchEngineFactory = $searchEngineFactory;
 		$this->templateProvider = $templateProvider;
 	}

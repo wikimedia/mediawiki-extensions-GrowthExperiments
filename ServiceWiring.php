@@ -5,6 +5,7 @@ use GrowthExperiments\EditInfoService;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
@@ -18,33 +19,44 @@ return [
 		MediaWikiServices $services
 	): ConfigurationLoader {
 		$config = $services->getConfigFactory()->makeConfig( 'GrowthExperiments' );
-		$cache = ObjectCache::getLocalClusterInstance();
-		$configTitle = Title::newFromText(
+		$cache = new CachedBagOStuff( ObjectCache::getLocalClusterInstance() );
+		$taskConfigTitle = Title::newFromText(
 			$config->get( 'GENewcomerTasksConfigTitle' )
 			?: $config->get( 'GENewcomerTasksRemoteConfigTitle' )
 		);
-		if ( $configTitle ) {
-			$configurationLoader = new PageConfigurationLoader(
-				$services->getHttpRequestFactory(),
-				$services->getTitleFactory(),
-				RequestContext::getMain(),
-				$configTitle
-			);
-			if ( !$configTitle->isExternal() ) {
-				$configurationLoader->setWikiPage(
-					WikiPage::factory( $services->getTitleFactory()->newFromLinkTarget( $configTitle ) )
-				);
-			}
-			// Cache config for a minute, as a trade-off between avoiding the performance hit of
-			// constant querying and making it not too hard to test changes to the config page.
-			$configurationLoader->setCache( $cache, 60 );
-			return $configurationLoader;
-		} else {
+		$topicConfigTitle = Title::newFromText( $config->get( 'GENewcomerTasksTopicConfigTitle' ) );
+		if ( !$taskConfigTitle ) {
 			return new ErrorForwardingConfigurationLoader( StatusValue::newFatal( new ApiRawMessage(
 				'The ConfigurationLoader has not been configured!',
 				'configurationloader-not-configured'
 			) ) );
 		}
+
+		$pageLoaders = [];
+		foreach ( [ 'task' => $taskConfigTitle, 'topic' => $topicConfigTitle ] as $type => $title ) {
+			if ( !$title ) {
+				$pageLoaders[$type] = null;
+				continue;
+			}
+
+			$pageLoader = new PageLoader(
+				$services->getHttpRequestFactory(),
+				$services->getRevisionLookup(),
+				$services->getTitleFactory(),
+				$title
+			);
+			// Cache config for a minute, as a trade-off between avoiding the performance hit of
+			// constant querying and making it not too hard to test changes to the config page.
+			$pageLoader->setCache( $cache, 60 );
+			$pageLoaders[$type] = $pageLoader;
+		}
+
+		$configurationLoader = new PageConfigurationLoader(
+			RequestContext::getMain(),
+			$pageLoaders['task'],
+			$pageLoaders['topic']
+		);
+		return $configurationLoader;
 	},
 
 	'GrowthExperimentsTaskSuggester' => function ( MediaWikiServices $services ): TaskSuggester {

@@ -3,53 +3,30 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
+use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use IContextSource;
-use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Linker\LinkTarget;
 use MediaWikiUnitTestCase;
 use Message;
-use MWHttpRequest;
+use MessageLocalizer;
 use PHPUnit\Framework\MockObject\MockObject;
-use Status;
 use StatusValue;
-use Title;
-use TitleFactory;
 
 /**
- * @covers \GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader
- * @covers \GrowthExperiments\Util::getJsonUrl
+ * @coversDefaultClass  \GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader
  */
 class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 
-	private $oldWgUrlProtocols;
-
-	public function setUp(): void {
-		// work around wfParseUrl using a global
-		global $wgUrlProtocols;
-		parent::setUp();
-		$this->oldWgUrlProtocols = $wgUrlProtocols;
-		$wgUrlProtocols = [ 'http://', 'https://' ];
-	}
-
-	public function tearDown(): void {
-		global $wgUrlProtocols;
-		parent::tearDown();
-		$wgUrlProtocols = $this->oldWgUrlProtocols;
-	}
-
+	/**
+	 * @covers ::loadTaskTypes
+	 */
 	public function testLoadTaskTypes() {
-		$url = 'https://bar';
-		$expectedLocalUrl = '/w/index.php?title=Foo&action=raw';
-		$title = $this->getMockTitle( $url, 'Foo' );
-
-		$requestFactory = $this->getMockRequestFactory( $url . $expectedLocalUrl,
-			$this->getConfig() );
-		$titleFactory = $this->getMockTitleFactory( $url . '/Foo?action=raw', $expectedLocalUrl );
-		$context = $this->getMockContext();
-		$configurationLoader = new PageConfigurationLoader( $requestFactory, $titleFactory,
-			$context, $title );
-		// Run twice to test caching. If caching is broken, the 'once' expectation
-		// for HTTP calls in the $requestFactory mock will fail.
+		$configurationLoader = $this->getConfigurationLoader( $this->getTaskConfig(), [] );
+		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
+		// in getMockPageLoader() will fail.
 		foreach ( range( 1, 2 ) as $_ ) {
 			$taskTypes = $configurationLoader->loadTaskTypes();
 			$this->assertInternalType( 'array', $taskTypes );
@@ -62,108 +39,121 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 				return $tt->getDifficulty();
 			}, $taskTypes ) );
 		}
-	}
 
-	/**
-	 * @dataProvider provideLoadTaskTypes_error
-	 */
-	public function testLoadTaskTypes_error( $error ) {
-		$url = 'https://bar';
-		$expectedLocalUrl = '/w/index.php?title=Foo&action=raw';
-		$title = $this->getMockTitle( $url, 'Foo' );
-		$requestFactory = $this->getMockRequestFactory( $url . $expectedLocalUrl,
-			$this->getConfig( $error ) );
-		$titleFactory = $this->getMockTitleFactory( $url . '/Foo?action=raw', $expectedLocalUrl );
-		$msg = $this->createMock( Message::class );
-		$msg->method( 'exists' )->willReturn( false );
-		$context = $this->getMockContext( [
-			'growthexperiments-homepage-suggestededits-tasktype-name-foo' => $msg,
-		] );
-		$configurationLoader = new PageConfigurationLoader( $requestFactory, $titleFactory,
-			$context, $title );
-		$status = $configurationLoader->loadTaskTypes();
-		$this->assertInstanceOf( StatusValue::class, $status );
-		if ( $error === 'json' ) {
-			$this->assertTrue( $status->hasMessage( 'json-error-syntax' ) );
-		} else {
-			$this->assertTrue( $status->hasMessage(
-				'growthexperiments-homepage-suggestededits-config-' . $error
-			) );
+		$configurationLoader = $this->getConfigurationLoader( StatusValue::newFatal( 'foo' ), [] );
+		foreach ( range( 1, 2 ) as $_ ) {
+			$taskTypes = $configurationLoader->loadTaskTypes();
+			$this->assertInstanceOf( StatusValue::class, $taskTypes );
+			$this->assertTrue( $taskTypes->hasMessage( 'foo' ) );
 		}
 	}
 
-	public function testLoadTaskTypes_httpError() {
-		$url = 'https://bar';
-		$expectedLocalUrl = '/w/index.php?title=Foo&action=raw';
-		$title = $this->getMockTitle( $url, 'Foo' );
-		$httpStatus = Status::newFatal( 'http-error' );
-		$requestFactory = $this->getMockRequestFactory( $url . $expectedLocalUrl, $httpStatus );
-		$titleFactory = $this->getMockTitleFactory( $url . '/Foo?action=raw', $expectedLocalUrl );
-		$context = $this->getMockContext();
-		$configurationLoader = new PageConfigurationLoader( $requestFactory, $titleFactory,
-			$context, $title );
+	/**
+	 * @covers ::loadTaskTypes
+	 * @dataProvider provideLoadTaskTypes_error
+	 */
+	public function testLoadTaskTypes_error( $error ) {
+		$msg = $this->createMock( Message::class );
+		$msg->method( 'exists' )->willReturn( false );
+		$configurationLoader = $this->getConfigurationLoader( $this->getTaskConfig( $error ), [],
+			[ 'growthexperiments-homepage-suggestededits-tasktype-name-foo' => $msg ] );
 		$status = $configurationLoader->loadTaskTypes();
 		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertEquals( $httpStatus->getErrors(), $status->getErrors() );
+		$this->assertTrue( $status->hasMessage(
+			'growthexperiments-homepage-suggestededits-config-' . $error
+		) );
 	}
 
 	public function provideLoadTaskTypes_error() {
-		return [ [ 'json' ], [ 'missingfield' ], [ 'wronggroup' ], [ 'missingmessage' ] ];
+		return [
+			[ 'wrongstructure' ],
+			[ 'invalidid' ],
+			[ 'missingfield' ],
+			[ 'wronggroup' ],
+			[ 'missingmessage' ],
+		];
 	}
 
+	/**
+	 * @covers ::loadTopics
+	 */
+	public function testLoadTopics() {
+		$configurationLoader = $this->getConfigurationLoader( [], $this->getTopicConfig() );
+		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
+		// in getMockPageLoader() will fail.
+		foreach ( range( 1, 2 ) as $_ ) {
+			$topics = $configurationLoader->loadTopics();
+			$this->assertInternalType( 'array', $topics );
+			$this->assertNotEmpty( $topics );
+			$this->assertInstanceOf( Topic::class, $topics[0] );
+			$this->assertSame( [ 'art', 'science' ], array_map( function ( Topic $t ) {
+				return $t->getId();
+			}, $topics ) );
+			// FIXME can't test this while the RawMessage hack is used
+			// $this->assertSame( [ 'Art', 'Science' ], array_map( function ( Topic $t ) {
+			//	return $t->getName( $this->getMockMessageLocalizer() );
+			// }, $topics ) );
+			$this->assertSame( [ [ 'Music', 'Painting' ], [ 'Physics', 'Biology' ] ],
+				array_map( function ( MorelikeBasedTopic $t ) {
+					return array_map( function ( LinkTarget $lt ) {
+						return $lt->getText();
+					}, $t->getReferencePages() );
+				}, $topics ) );
+		}
+
+		$configurationLoader = $this->getConfigurationLoader( [], StatusValue::newFatal( 'foo' ) );
+		foreach ( range( 1, 2 ) as $_ ) {
+			$topics = $configurationLoader->loadTopics();
+			$this->assertInstanceOf( StatusValue::class, $topics );
+			$this->assertTrue( $topics->hasMessage( 'foo' ) );
+		}
+	}
+
+	/**
+	 * @covers ::loadTopics
+	 */
+	public function testLoadTopics_noLoader() {
+		$messageLocalizer = $this->getMockMessageLocalizer();
+		$taskPageLoader = $this->getMockPageLoader( [] );
+		$configurationLoader = new PageConfigurationLoader( $messageLocalizer, $taskPageLoader, null );
+		$topics = $configurationLoader->loadTopics();
+		$this->assertSame( [], $topics );
+	}
+
+	/**
+	 * @covers ::loadTopics
+	 * @dataProvider provideLoadTopics_error
+	 */
+	public function testLoadTopics_error( $error ) {
+		$configurationLoader = $this->getConfigurationLoader( [], $this->getTopicConfig( $error ) );
+		$status = $configurationLoader->loadTopics();
+		$this->assertInstanceOf( StatusValue::class, $status );
+		$this->assertTrue( $status->hasMessage(
+			'growthexperiments-homepage-suggestededits-config-' . $error
+		) );
+	}
+
+	public function provideLoadTopics_error() {
+		return [
+			[ 'wrongstructure' ],
+			[ 'invalidid' ],
+			[ 'missingfield' ],
+		];
+	}
+
+	/**
+	 * @covers ::loadTemplateBlacklist
+	 */
 	public function testLoadTemplateBlacklist() {
 		$this->markTestSkipped( 'Not implemented yet' );
-	}
-
-	public function testLoadLocalTitle() {
-		$url = 'https://bar';
-		$title = $this->getMockTitle( $url, 'Foo', false );
-		$expectedLocalUrl = '/w/index.php?title=Foo&action=raw';
-		$httpStatus = Status::newGood( 'ok' );
-		$requestFactory = $this->getMockRequestFactory(
-			$url . $expectedLocalUrl,
-			$httpStatus,
-			false
-		);
-		$titleFactory = $this->getMockTitleFactory( $url . '/Foo?action=raw', $expectedLocalUrl );
-		$context = $this->getMockContext();
-		$configurationLoader = new PageConfigurationLoader( $requestFactory, $titleFactory,
-			$context, $title );
-		/** @var \WikiPage|MockObject $wikiPageMock */
-		$wikiPageMock = $this->getMockBuilder( \WikiPage::class )
-			->disableOriginalConstructor()
-			->getMock();
-		$jsonContentMock = $this->getMockBuilder( \JsonContent::class )
-			->disableOriginalConstructor()
-			->getMock();
-		$jsonStatusValue = new StatusValue();
-		$jsonStatusValue->setResult( true, json_decode( $this->getConfig() ) );
-		$jsonContentMock->method( 'getData' )->willReturn( $jsonStatusValue );
-		$titleMock = $this->getMockBuilder( Title::class )
-			->disableOriginalConstructor()
-			->getMock();
-		$titleMock->method( 'exists' )->willReturn( true );
-		$wikiPageMock->method( 'getContent' )->willReturn( $jsonContentMock );
-		$wikiPageMock->method( 'getTitle' )->willReturn( $titleMock );
-		$configurationLoader->setWikiPage( $wikiPageMock );
-		$taskTypes = $configurationLoader->loadTaskTypes();
-		$this->assertInternalType( 'array', $taskTypes );
-		$this->assertNotEmpty( $taskTypes );
-		$this->assertInstanceOf( TaskType::class, $taskTypes[0] );
-		$this->assertSame( [ 'copyedit', 'references' ], array_map( function ( TaskType $tt ) {
-			return $tt->getId();
-		}, $taskTypes ) );
-		$this->assertSame( [ 'easy', 'medium' ], array_map( function ( TaskType $tt ) {
-			return $tt->getDifficulty();
-		}, $taskTypes ) );
 	}
 
 	/**
 	 * Test configuration
 	 * @param string $error
-	 * @return string
+	 * @return array|int
 	 */
-	protected function getConfig( $error = null ) {
+	protected function getTaskConfig( $error = null ) {
 		$config = [
 			'copyedit' => [
 				'icon' => 'articleCheck',
@@ -176,8 +166,10 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 				'templates' => [ 'R1', 'R2', 'R3' ],
 			],
 		];
-		if ( $error === 'json' ) {
-			return '@&#!*';
+		if ( $error === 'wrongstructure' ) {
+			return 0;
+		} elseif ( $error === 'invalidid' ) {
+			return [ '*' => [] ];
 		} elseif ( $error === 'missingfield' ) {
 			unset( $config['references']['group'] );
 		} elseif ( $error === 'wronggroup' ) {
@@ -185,87 +177,81 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		} elseif ( $error === 'missingmessage' ) {
 			$config['foo'] = [ 'icon' => 'foo', 'group' => 'hard', 'templates' => [ 'T' ] ];
 		}
-		return json_encode( $config );
+		return $config;
 	}
 
 	/**
-	 * @param string $url Should look like a real URL (have scheme, domain, path)
-	 * @param string $titleText
-	 * @param bool $isExternal
-	 * @return Title|MockObject
+	 * Test configuration
+	 * @param string $error
+	 * @return array|int
 	 */
-	protected function getMockTitle( $url, $titleText, $isExternal = true ) {
-		$title = $this->getMockBuilder( Title::class )
-			->disableOriginalConstructor()
-			->setMethods( [ 'getFullURL', 'getNamespace', 'getDBKey', 'isExternal' ] )
-			->getMock();
-		$title->method( 'isExternal' )->willReturn( $isExternal );
-		$title->method( 'getFullURL' )->willReturn( $url );
-		$title->method( 'getNamespace' )->willReturn( 0 );
-		$title->method( 'getDBKey' )->willReturn( $titleText );
-		return $title;
-	}
-
-	/**
-	 * @param string $expectedUrl
-	 * @param string|Status $result A content string or an error status.
-	 * @param bool $isUsed Set to true to assert that the factory is invoked once.
-	 * @return HttpRequestFactory|MockObject
-	 */
-	protected function getMockRequestFactory( $expectedUrl, $result, $isUsed = true ) {
-		$content = null;
-		if ( !( $result instanceof Status ) ) {
-			$content = $result;
-			$result = Status::newGood();
+	protected function getTopicConfig( $error = null ) {
+		$config = [
+			'art' => [
+				'label' => 'Art',
+				'titles' => [ 'Music', 'Painting' ],
+			],
+			'science' => [
+				'label' => 'Science',
+				'titles' => [ 'Physics', 'Biology' ],
+			],
+		];
+		if ( $error === 'wrongstructure' ) {
+			return 0;
+		} elseif ( $error === 'invalidid' ) {
+			return [ '*' => [] ];
+		} elseif ( $error === 'missingfield' ) {
+			unset( $config['science']['titles'] );
 		}
-
-		$request = $this->getMockBuilder( MWHttpRequest::class )
-			->disableOriginalConstructor()
-			->setMethods( [ 'execute', 'getContent' ] )
-			->getMock();
-		$request->method( 'execute' )->willReturn( $result );
-		$request->method( 'getContent' )->willReturn( $content );
-
-		$requestFactory = $this->getMockBuilder( HttpRequestFactory::class )
-			->disableOriginalConstructor()
-			->setMethods( [ 'create', 'getUserAgent' ] )
-			->getMock();
-		$requestFactory->method( 'getUserAgent' )->willReturn( 'Foo' );
-		$requestFactory->expects( $isUsed ? $this->once() : $this->never() )
-			->method( 'create' )
-			->with( $expectedUrl, $this->anything(), $this->anything() )
-			->willReturn( $request );
-		return $requestFactory;
+		return $config;
 	}
 
 	/**
-	 * Works around the URL handling ugliness in RemotePageConfigurationLoader::getRawUrl.
-	 * @param string $fullUrl
-	 * @param string $localUrl
-	 * @return TitleFactory|MockObject
+	 * @param array|StatusValue $taskConfig
+	 * @param array|StatusValue $topicConfig
+	 * @param Message[] $customMessages
+	 * @return PageConfigurationLoader
 	 */
-	protected function getMockTitleFactory( $fullUrl, $localUrl ) {
-		$titleFactory = $this->getMockBuilder( TitleFactory::class )
+	protected function getConfigurationLoader(
+		$taskConfig, $topicConfig, array $customMessages = []
+	) {
+		$messageLocalizer = $this->getMockMessageLocalizer( $customMessages );
+		$taskPageLoader = $this->getMockPageLoader( $taskConfig );
+		$topicPageLoader = $this->getMockPageLoader( $topicConfig );
+		return new PageConfigurationLoader( $messageLocalizer, $taskPageLoader, $topicPageLoader );
+	}
+
+	/**
+	 * @param Message[] $customMessages
+	 * @return MessageLocalizer|MockObject
+	 */
+	protected function getMockMessageLocalizer( array $customMessages = [] ) {
+		$localizer = $this->getMockBuilder( MessageLocalizer::class )
+			->setMethods( [ 'msg' ] )
+			->getMockForAbstractClass();
+		$localizer->method( 'msg' )
+			->willReturnCallback( function ( $key, ...$params ) use ( $customMessages ) {
+				if ( isset( $customMessages[$key] ) ) {
+					return $customMessages[$key];
+				}
+				return $this->getMockMessage( $key, ...$params );
+			} );
+		return $localizer;
+	}
+
+	/**
+	 * @param array|StatusValue $result
+	 * @return PageLoader|MockObject
+	 */
+	protected function getMockPageLoader( $result ) {
+		$loader = $this->getMockBuilder( PageLoader::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'newFromLinkTarget', 'makeTitle' ] )
+			->setMethods( [ 'load' ] )
 			->getMock();
-		$fullUrlTitle = $this->getMockBuilder( Title::class )
-			->disableOriginalConstructor()
-			->setMethods( [ 'getFullURL' ] )
-			->getMock();
-		$fullUrlTitle->method( 'getFullURL' )
-			->willReturn( $fullUrl );
-		$titleFactory->method( 'newFromLinkTarget' )
-			->willReturn( $fullUrlTitle );
-		$localUrlTitle = $this->getMockBuilder( Title::class )
-			->disableOriginalConstructor()
-			->setMethods( [ 'getLocalURL' ] )
-			->getMock();
-		$localUrlTitle->method( 'getLocalURL' )
-			->willReturn( $localUrl );
-		$titleFactory->method( 'makeTitle' )
-			->willReturn( $localUrlTitle );
-		return $titleFactory;
+		$loader->expects( $this->atMost( 1 ) )
+			->method( 'load' )
+			->willReturn( $result );
+		return $loader;
 	}
 
 	/**

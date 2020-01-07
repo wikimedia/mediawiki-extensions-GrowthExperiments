@@ -6,6 +6,7 @@ use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use TitleValue;
@@ -15,48 +16,168 @@ use TitleValue;
  */
 class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 
-	public function testSuggest() {
+	/**
+	 * @dataProvider provideSuggest
+	 */
+	public function testSuggest(
+		$taskTypeFilter, $topicFilter, $limit, $offset,
+		$expectedTitles, $expectedTotalCount, $expectedOffset
+	) {
 		$user = new UserIdentityValue( 1, 'Foo', 1 );
 		$taskType1 = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
 		$taskType2 = new TaskType( 'link', TaskType::DIFFICULTY_EASY );
-		$suggester = new StaticTaskSuggester( [
-			new Task( $taskType1, new TitleValue( NS_MAIN, 'Copyedit-1' ) ),
-			new Task( $taskType2, new TitleValue( NS_MAIN, 'Link-1' ) ),
-			new Task( $taskType2, new TitleValue( NS_MAIN, 'Link-2' ) ),
-			new Task( $taskType1, new TitleValue( NS_MAIN, 'Copyedit-2' ) ),
-			new Task( $taskType1, new TitleValue( NS_MAIN, 'Copyedit-3' ) ),
-			new Task( $taskType2, new TitleValue( NS_MAIN, 'Link-3' ) ),
-			new Task( $taskType1, new TitleValue( NS_MAIN, 'Copyedit-4' ) ),
-			new Task( $taskType1, new TitleValue( NS_MAIN, 'Copyedit-5' ) ),
-		] );
+		$taskType3 = new TaskType( 'create', TaskType::DIFFICULTY_HARD );
+		$topic1 = new Topic( 'topic1' );
+		$topic2 = new Topic( 'topic2' );
+		$topic3 = new Topic( 'topic3' );
+		$tasks = [
+			0 => new Task( $taskType1, new TitleValue( NS_MAIN, 'Copyedit-1' ) ),
+			1 => new Task( $taskType2, new TitleValue( NS_MAIN, 'Link-1' ) ),
+			2 => new Task( $taskType2, new TitleValue( NS_MAIN, 'Link-2' ) ),
+			3 => new Task( $taskType1, new TitleValue( NS_MAIN, 'Copyedit-2' ) ),
+			4 => new Task( $taskType1, new TitleValue( NS_MAIN, 'Copyedit-3' ) ),
+			5 => new Task( $taskType2, new TitleValue( NS_MAIN, 'Link-3' ) ),
+			6 => new Task( $taskType1, new TitleValue( NS_MAIN, 'Copyedit-4' ) ),
+			7 => new Task( $taskType1, new TitleValue( NS_MAIN, 'Copyedit-5' ) ),
+			8 => new Task( $taskType3, new TitleValue( NS_MAIN, 'Create-1' ) ),
+		];
+		$topics = [
+			2 => [ $topic1 ],
+			3 => [ $topic1 ],
+			4 => [ $topic2 ],
+			6 => [ $topic1, $topic2 ],
+			7 => [ $topic3 ],
 
-		$taskSet = $suggester->suggest( $user );
+		];
+		foreach ( $tasks as $i => $task ) {
+			/** @var Task $task */
+			if ( isset( $topics[$i] ) ) {
+				$task->setTopics( $topics[$i] );
+			}
+		}
+		$suggester = new StaticTaskSuggester( $tasks );
+
+		$taskSet = $suggester->suggest( $user, $taskTypeFilter, $topicFilter, $limit, $offset );
 		$this->assertInstanceOf( TaskSet::class, $taskSet );
-		$this->assertTaskSetEqualsTitles( [ 'Copyedit-1', 'Link-1', 'Link-2', 'Copyedit-2',
-			'Copyedit-3', 'Link-3', 'Copyedit-4', 'Copyedit-5' ], $taskSet );
-		$this->assertSame( 8, $taskSet->getTotalCount() );
-		$this->assertSame( 0, $taskSet->getOffset() );
+		$this->assertTaskSetEqualsTitles( $expectedTitles, $taskSet );
+		$this->assertSame( $expectedTotalCount, $taskSet->getTotalCount() );
+		$this->assertSame( $expectedOffset, $taskSet->getOffset() );
+	}
 
-		$taskSet = $suggester->suggest( $user, null, null, 3, 0 );
-		$this->assertTaskSetEqualsTitles( [ 'Copyedit-1', 'Link-1', 'Link-2' ], $taskSet );
-		$this->assertSame( 8, $taskSet->getTotalCount() );
-		$this->assertSame( 0, $taskSet->getOffset() );
-
-		$taskSet = $suggester->suggest( $user, null, null, 3, 6 );
-		$this->assertTaskSetEqualsTitles( [ 'Copyedit-4', 'Copyedit-5' ], $taskSet );
-		$this->assertSame( 8, $taskSet->getTotalCount() );
-		$this->assertSame( 6, $taskSet->getOffset() );
-
-		$taskSet = $suggester->suggest( $user, [ 'copyedit' ] );
-		$this->assertTaskSetEqualsTitles( [ 'Copyedit-1', 'Copyedit-2', 'Copyedit-3',
-			'Copyedit-4', 'Copyedit-5' ], $taskSet );
-		$this->assertSame( 5, $taskSet->getTotalCount() );
-		$this->assertSame( 0, $taskSet->getOffset() );
-
-		$taskSet = $suggester->suggest( $user, [ 'copyedit' ], null, 2, 2 );
-		$this->assertTaskSetEqualsTitles( [ 'Copyedit-3', 'Copyedit-4' ], $taskSet );
-		$this->assertSame( 5, $taskSet->getTotalCount() );
-		$this->assertSame( 2, $taskSet->getOffset() );
+	public function provideSuggest() {
+		return [
+			'basic' => [
+				'taskTypeFilter' => null,
+				'topicFilter' => null,
+				'limit' => null,
+				'offset' => null,
+				'expectedTitles' => [ 'Copyedit-1', 'Link-1', 'Link-2', 'Copyedit-2',
+					'Copyedit-3', 'Link-3', 'Copyedit-4', 'Copyedit-5', 'Create-1' ],
+				'expectedTotalCount' => 9,
+				'expectedOffset' => 0,
+			],
+			'empty filters' => [
+				'taskTypeFilter' => [],
+				'topicFilter' => [],
+				'limit' => null,
+				'offset' => null,
+				'expectedTitles' => [ 'Copyedit-1', 'Link-1', 'Link-2', 'Copyedit-2',
+					'Copyedit-3', 'Link-3', 'Copyedit-4', 'Copyedit-5', 'Create-1' ],
+				'expectedTotalCount' => 9,
+				'expectedOffset' => 0,
+			],
+			'limit' => [
+				'taskTypeFilter' => null,
+				'topicFilter' => null,
+				'limit' => 3,
+				'offset' => null,
+				'expectedTitles' => [ 'Copyedit-1', 'Link-1', 'Link-2' ],
+				'expectedTotalCount' => 9,
+				'expectedOffset' => 0,
+			],
+			'limit + offset' => [
+				'taskTypeFilter' => null,
+				'topicFilter' => null,
+				'limit' => 2,
+				'offset' => 6,
+				'expectedTitles' => [ 'Copyedit-4', 'Copyedit-5' ],
+				'expectedTotalCount' => 9,
+				'expectedOffset' => 6,
+			],
+			'taskfilter' => [
+				'taskTypeFilter' => [ 'copyedit' ],
+				'topicFilter' => null,
+				'limit' => null,
+				'offset' => null,
+				'expectedTitles' => [ 'Copyedit-1', 'Copyedit-2', 'Copyedit-3', 'Copyedit-4', 'Copyedit-5' ],
+				'expectedTotalCount' => 5,
+				'expectedOffset' => 0,
+			],
+			'taskfilter + limit' => [
+				'taskTypeFilter' => [ 'copyedit' ],
+				'topicFilter' => null,
+				'limit' => 4,
+				'offset' => 0,
+				'expectedTitles' => [ 'Copyedit-1', 'Copyedit-2', 'Copyedit-3', 'Copyedit-4' ],
+				'expectedTotalCount' => 5,
+				'expectedOffset' => 0,
+			],
+			'taskfilter + limit + offset' => [
+				'taskTypeFilter' => [ 'copyedit' ],
+				'topicFilter' => null,
+				'limit' => 2,
+				'offset' => 2,
+				'expectedTitles' => [ 'Copyedit-3', 'Copyedit-4' ],
+				'expectedTotalCount' => 5,
+				'expectedOffset' => 2,
+			],
+			'multiple taskfilters' => [
+				'taskTypeFilter' => [ 'copyedit', 'create' ],
+				'topicFilter' => null,
+				'limit' => null,
+				'offset' => null,
+				'expectedTitles' => [ 'Copyedit-1', 'Copyedit-2', 'Copyedit-3', 'Copyedit-4',
+					'Copyedit-5', 'Create-1' ],
+				'expectedTotalCount' => 6,
+				'expectedOffset' => 0,
+			],
+			'topicfilter' => [
+				'taskTypeFilter' => null,
+				'topicFilter' => [ 'topic1' ],
+				'limit' => null,
+				'offset' => null,
+				'expectedTitles' => [ 'Link-2', 'Copyedit-2', 'Copyedit-4' ],
+				'expectedTotalCount' => 3,
+				'expectedOffset' => 0,
+			],
+			'multiple topicfilters' => [
+				'taskTypeFilter' => null,
+				'topicFilter' => [ 'topic1', 'topic2' ],
+				'limit' => null,
+				'offset' => null,
+				'expectedTitles' => [ 'Link-2', 'Copyedit-2', 'Copyedit-3', 'Copyedit-4' ],
+				'expectedTotalCount' => 4,
+				'expectedOffset' => 0,
+			],
+			'taskfilter + topicfilter' => [
+				'taskTypeFilter' => [ 'copyedit' ],
+				'topicFilter' => [ 'topic1' ],
+				'limit' => null,
+				'offset' => null,
+				'expectedTitles' => [ 'Copyedit-2', 'Copyedit-4' ],
+				'expectedTotalCount' => 2,
+				'expectedOffset' => 0,
+			],
+			'taskfilter + topicfilter + limit/offset' => [
+				'taskTypeFilter' => [ 'copyedit' ],
+				'topicFilter' => [ 'topic1', 'topic2' ],
+				'limit' => 1,
+				'offset' => 1,
+				'expectedTitles' => [ 'Copyedit-3' ],
+				'expectedTotalCount' => 3,
+				'expectedOffset' => 1,
+			],
+		];
 	}
 
 	/**

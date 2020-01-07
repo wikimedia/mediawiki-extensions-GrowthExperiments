@@ -42,23 +42,23 @@ class TaskSuggesterFactory {
 		if ( $taskTypes instanceof StatusValue ) {
 			return $this->createError( $taskTypes );
 		}
+		$topics = $this->configurationLoader->loadTopics();
+		if ( $topics instanceof StatusValue ) {
+			return $this->createError( $topics );
+		}
 		$templateBlacklist = $this->configurationLoader->loadTemplateBlacklist();
 		if ( $templateBlacklist instanceof StatusValue ) {
 			return $this->createError( $templateBlacklist );
 		}
-		return new RemoteSearchTaskSuggester( $templateProvider, $requestFactory, $titleFactory,
-			$apiUrl, $taskTypes, $templateBlacklist );
-	}
-
-	/**
-	 * Create a TaskSuggester which just returns a given error.
-	 * @param StatusValue $status
-	 * @return ErrorForwardingTaskSuggester
-	 */
-	protected function createError( StatusValue $status ) {
-		$msg = Status::wrap( $status )->getWikiText( null, null, 'en' );
-		Util::logError( new WikiConfigException( $msg ) );
-		return new ErrorForwardingTaskSuggester( $status );
+		return new RemoteSearchTaskSuggester(
+			$templateProvider,
+			$requestFactory,
+			$titleFactory,
+			$apiUrl,
+			$taskTypes,
+			$topics,
+			$templateBlacklist
+		);
 	}
 
 	/**
@@ -76,6 +76,10 @@ class TaskSuggesterFactory {
 		if ( $taskTypes instanceof StatusValue ) {
 			return $this->createError( $taskTypes );
 		}
+		$topics = $this->configurationLoader->loadTopics();
+		if ( $topics instanceof StatusValue ) {
+			return $this->createError( $topics );
+		}
 		$templateBlacklist = $this->configurationLoader->loadTemplateBlacklist();
 		if ( $templateBlacklist instanceof StatusValue ) {
 			return $this->createError( $templateBlacklist );
@@ -84,8 +88,20 @@ class TaskSuggesterFactory {
 			$searchEngineFactory,
 			$templateProvider,
 			$taskTypes,
+			$topics,
 			$templateBlacklist
 		);
+	}
+
+	/**
+	 * Create a TaskSuggester which just returns a given error.
+	 * @param StatusValue $status
+	 * @return ErrorForwardingTaskSuggester
+	 */
+	protected function createError( StatusValue $status ) {
+		$msg = Status::wrap( $status )->getWikiText( null, null, 'en' );
+		Util::logError( new WikiConfigException( $msg ) );
+		return new ErrorForwardingTaskSuggester( $status );
 	}
 
 }

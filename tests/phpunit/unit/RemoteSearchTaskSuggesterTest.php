@@ -8,12 +8,15 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
+use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\Util;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use MultipleIterator;
 use MWHttpRequest;
+use PHPUnit\Framework\ExpectationFailedException;
+use PHPUnit\Framework\MockObject\Matcher\InvokedRecorder;
 use PHPUnit\Framework\MockObject\MockObject;
 use RawMessage;
 use Status;
@@ -32,29 +35,32 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @dataProvider provideSuggest
-	 * @param array|StatusValue $httpResult1 Result of the first HTTP query (after JSON decoding)
-	 *   or error status.
-	 * @param array|null $httpResult2 Result of the second HTTP query (after JSON decoding)
-	 *   or null if there was only one query.
+	 * @param string[] $taskTypeSpec All configured task types on the server. See getTaskTypes().
+	 * @param string[] $topicSpec All configured topics on the server. See getTopics().
+	 * @param array $requests [ [ 'params' => [...], 'response' => ... ], ... ] where params is
+	 *   a list of asserted query parameters (null means asserted to be not present), response is
+	 *   JSON data (in PHP form) or a StatusValue with errors
 	 * @param string[] $taskFilter
+	 * @param string[] $topicFilter
 	 * @param int|null $limit
 	 * @param TaskSet|StatusValue $expectedTaskSet
 	 */
-	public function testSuggest( $httpResult1, $httpResult2, $taskFilter, $limit, $expectedTaskSet ) {
-		$user = new UserIdentityValue( 1, 'Foo', 1 );
+	public function testSuggest(
+		$taskTypeSpec, $topicSpec, $requests, $taskFilter, $topicFilter, $limit, $expectedTaskSet
+	) {
+		// FIXME null task/topic filter values are not tested, but they are not implemented anyway
 
-		$templateProvider = $this->getTemplateProvider( $expectedTaskSet instanceof TaskSet );
-		$requestFactory = $this->getMockRequestFactory(
-			$httpResult1 instanceof StatusValue ? $httpResult1 : json_encode( $httpResult1 ),
-			$httpResult2 ? json_encode( $httpResult2 ) : null );
+		$templateProvider = $this->getMockTemplateProvider( $expectedTaskSet instanceof TaskSet );
+		$requestFactory = $this->getMockRequestFactory( $requests );
 		$titleFactory = $this->getMockTitleFactory();
-		$taskTypes = array_merge(
-			[ new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY, [], [] ) ],
-			$httpResult2 ? [ new TemplateBasedTaskType( 'link', TaskType::DIFFICULTY_EASY, [], [] ) ] : []
-		);
+
+		$user = new UserIdentityValue( 1, 'Foo', 1 );
+		$taskTypes = $this->getTaskTypes( $taskTypeSpec );
+		$topics = $this->getTopics( $topicSpec );
 		$suggester = new RemoteSearchTaskSuggester( $templateProvider, $requestFactory, $titleFactory,
-			'https://example.com', $taskTypes, [] );
-		$taskSet = $suggester->suggest( $user, $taskFilter, null, $limit );
+			'https://example.com', $taskTypes, $topics, [] );
+
+		$taskSet = $suggester->suggest( $user, $taskFilter, $topicFilter, $limit );
 		if ( $expectedTaskSet instanceof StatusValue ) {
 			$this->assertInstanceOf( StatusValue::class, $taskSet );
 			$this->assertEquals( $expectedTaskSet->getErrors(), $taskSet->getErrors() );
@@ -86,50 +92,84 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$link = new TaskType( 'link', TaskType::DIFFICULTY_EASY );
 		return [
 			'success' => [
-				'httpResult1' => [
-					'query' => [
-						'search' => [
-							[ 'ns' => 0, 'title' => 'Foo' ],
-							[ 'ns' => 0, 'title' => 'Bar' ],
+				// all configured task types on the server (see getTaskTypes() for format)
+				'taskTypes' => [ 'copyedit' => [ 'Copy-1', 'Copy-2' ] ],
+				// all configured topics on the server (see getTopics() for format)
+				'topics' => [ 'art' => [ 'Music', 'Painting' ], 'science' => [ 'Physics', 'Biology' ] ],
+				// expectations + response for each request the suggester should make
+				'requests' => [
+					[
+						// a list of asserted query parameters (null means asserted to be not present)
+						'params' => [
+							'action' => 'query',
+							'list' => 'search',
+							'srsearch' => 'hastemplate:"Copy-1|Copy-2"',
+							'srnamespace' => '0',
 						],
-						'searchinfo' => [
-							'totalhits' => 100,
+						// JSON data (in PHP form) or a StatusValue with errors
+						'response' => [
+							'query' => [
+								'search' => [
+									[ 'ns' => 0, 'title' => 'Foo' ],
+									[ 'ns' => 0, 'title' => 'Bar' ],
+								],
+								'searchinfo' => [
+									'totalhits' => 100,
+								],
+							],
 						],
 					],
 				],
-				'httpResult2' => null,
+				// parameters passed to the suggest() call
 				'taskFilter' => null,
+				'topicFilter' => null,
 				'limit' => null,
+				// expected return value from suggest()
 				'expectedTaskSet' => new TaskSet( [
 					new Task( $copyedit, new TitleValue( 0, 'Foo' ) ),
 					new Task( $copyedit, new TitleValue( 0, 'Bar' ) ),
 				], 100, 0 ),
 			],
 			'multiple queries' => [
-				'httpResult1' => [
-					'query' => [
-						'search' => [
-							[ 'ns' => 0, 'title' => 'Foo' ],
-							[ 'ns' => 0, 'title' => 'Bar' ],
-							[ 'ns' => 0, 'title' => 'Baz' ],
-							[ 'ns' => 0, 'title' => 'Boom' ],
+				'taskTypes' => [ 'copyedit' => [ 'Copy-1', 'Copy-2' ], 'link' => [ 'Link-1' ] ],
+				'topics' => [ 'art' => [ 'Music', 'Painting' ], 'science' => [ 'Physics', 'Biology' ] ],
+				'requests' => [
+					[
+						'params' => [
+							'srsearch' => 'hastemplate:"Copy-1|Copy-2"',
 						],
-						'searchinfo' => [
-							'totalhits' => 100,
+						'response' => [
+							'query' => [
+								'search' => [
+									[ 'ns' => 0, 'title' => 'Foo' ],
+									[ 'ns' => 0, 'title' => 'Bar' ],
+									[ 'ns' => 0, 'title' => 'Baz' ],
+									[ 'ns' => 0, 'title' => 'Boom' ],
+								],
+								'searchinfo' => [
+									'totalhits' => 100,
+								],
+							],
 						],
 					],
-				],
-				'httpResult2' => [
-					'query' => [
-						'search' => [
-							[ 'ns' => 0, 'title' => 'Bang' ],
+					[
+						'params' => [
+							'srsearch' => 'hastemplate:"Link-1"',
 						],
-						'searchinfo' => [
-							'totalhits' => 50,
+						'response' => [
+							'query' => [
+								'search' => [
+									[ 'ns' => 0, 'title' => 'Bang' ],
+								],
+								'searchinfo' => [
+									'totalhits' => 50,
+								],
+							],
 						],
 					],
 				],
 				'taskFilter' => null,
+				'topicFilter' => null,
 				'limit' => null,
 				'expectedTaskSet' => new TaskSet( [
 					new Task( $copyedit, new TitleValue( 0, 'Foo' ) ),
@@ -140,29 +180,44 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				], 150, 0 ),
 			],
 			'limit' => [
-				'httpResult1' => [
-					'query' => [
-						'search' => [
-							[ 'ns' => 0, 'title' => 'Foo' ],
-							[ 'ns' => 0, 'title' => 'Bar' ],
+				'taskTypes' => [ 'copyedit' => [ 'Copy-1', 'Copy-2' ], 'link' => [ 'Link-1' ] ],
+				'topics' => [ 'art' => [ 'Music', 'Painting' ], 'science' => [ 'Physics', 'Biology' ] ],
+				'requests' => [
+					[
+						'params' => [
+							'srlimit' => '2',
 						],
-						'searchinfo' => [
-							'totalhits' => 100,
+						'response' => [
+							'query' => [
+								'search' => [
+									[ 'ns' => 0, 'title' => 'Foo' ],
+									[ 'ns' => 0, 'title' => 'Bar' ],
+								],
+								'searchinfo' => [
+									'totalhits' => 100,
+								],
+							],
 						],
 					],
-				],
-				'httpResult2' => [
-					'query' => [
-						'search' => [
-							[ 'ns' => 0, 'title' => 'Baz' ],
-							[ 'ns' => 0, 'title' => 'Boom' ],
+					[
+						'params' => [
+							'srlimit' => '2',
 						],
-						'searchinfo' => [
-							'totalhits' => 50,
+						'response' => [
+							'query' => [
+								'search' => [
+									[ 'ns' => 0, 'title' => 'Baz' ],
+									[ 'ns' => 0, 'title' => 'Boom' ],
+								],
+								'searchinfo' => [
+									'totalhits' => 50,
+								],
+							],
 						],
 					],
 				],
 				'taskFilter' => null,
+				'topicFilter' => null,
 				'limit' => 2,
 				'expectedTaskSet' => new TaskSet( [
 					new Task( $copyedit, new TitleValue( 0, 'Foo' ) ),
@@ -170,47 +225,106 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				], 150, 0 ),
 			],
 			'task type filter' => [
-				'httpResult1' => [
-					'query' => [
-						'search' => [
-							[ 'ns' => 0, 'title' => 'Foo' ],
+				'taskTypes' => [ 'copyedit' => [ 'Copy-1', 'Copy-2' ], 'link' => [ 'Link-1' ] ],
+				'topics' => [ 'art' => [ 'Music', 'Painting' ], 'science' => [ 'Physics', 'Biology' ] ],
+				'requests' => [
+					[
+						'params' => [
+							'srsearch' => 'hastemplate:"Copy-1|Copy-2"',
 						],
-						'searchinfo' => [
-							'totalhits' => 100,
-						],
-					],
-				],
-				'httpResult2' => [
-					'query' => [
-						'search' => [
-							[ 'ns' => 0, 'title' => 'Bar' ],
-						],
-						'searchinfo' => [
-							'totalhits' => 50,
+						'response' => [
+							'query' => [
+								'search' => [
+									[ 'ns' => 0, 'title' => 'Foo' ],
+								],
+								'searchinfo' => [
+									'totalhits' => 100,
+								],
+							],
 						],
 					],
 				],
 				'taskFilter' => [ 'copyedit' ],
+				'topicFilter' => null,
 				'limit' => null,
 				'expectedTaskSet' => new TaskSet( [
 					new Task( $copyedit, new TitleValue( 0, 'Foo' ) ),
 				], 100, 0 ),
 			],
-			'http error' => [
-				'httpResult1' => StatusValue::newFatal( 'foo' ),
-				'httpResult2' => null,
+			'topic filter' => [
+				'taskTypes' => [ 'copyedit' => [ 'Copy-1', 'Copy-2' ], 'link' => [ 'Link-1' ] ],
+				'topics' => [ 'art' => [ 'Music', 'Painting' ], 'science' => [ 'Physics', 'Biology' ] ],
+				'requests' => [
+					[
+						'params' => [
+							'srsearch' => 'hastemplate:"Copy-1|Copy-2" morelikethis:"Music|Painting|Physics|Biology"',
+						],
+						'response' => [
+							'query' => [
+								'search' => [
+									[ 'ns' => 0, 'title' => 'Foo' ],
+								],
+								'searchinfo' => [
+									'totalhits' => 100,
+								],
+							],
+						],
+					],
+					[
+						'params' => [
+							'srsearch' => 'hastemplate:"Link-1" morelikethis:"Music|Painting|Physics|Biology"',
+						],
+						'response' => [
+							'query' => [
+								'search' => [
+									[ 'ns' => 0, 'title' => 'Baz' ],
+									[ 'ns' => 0, 'title' => 'Boom' ],
+								],
+								'searchinfo' => [
+									'totalhits' => 50,
+								],
+							],
+						],
+					],
+				],
 				'taskFilter' => null,
+				'topicFilter' => [ 'art', 'science' ],
+				'limit' => null,
+				'expectedTaskSet' => new TaskSet( [
+					new Task( $copyedit, new TitleValue( 0, 'Foo' ) ),
+					new Task( $link, new TitleValue( 0, 'Baz' ) ),
+					new Task( $link, new TitleValue( 0, 'Boom' ) ),
+				], 150, 0 ),
+			],
+			'http error' => [
+				'taskTypes' => [ 'copyedit' => [ 'Copy-1', 'Copy-2' ] ],
+				'topics' => [ 'art' => [ 'Music', 'Painting' ], 'science' => [ 'Physics', 'Biology' ] ],
+				'requests' => [
+					[
+						'params' => [],
+						'response' => StatusValue::newFatal( 'foo' ),
+					],
+				],
+				'taskFilter' => null,
+				'topicFilter' => null,
 				'limit' => null,
 				'expectedTaskSet' => StatusValue::newFatal( 'foo' ),
 			],
 			'api error' => [
-				'httpResult1' => [
-					'errors' => [
-						[ 'text' => 'foo' ],
+				'taskTypes' => [ 'copyedit' => [ 'Copy-1', 'Copy-2' ] ],
+				'topics' => [ 'art' => [ 'Music', 'Painting' ], 'science' => [ 'Physics', 'Biology' ] ],
+				'requests' => [
+					[
+						'params' => [],
+						'response' => [
+							'errors' => [
+								[ 'text' => 'foo' ],
+							],
+						],
 					],
 				],
-				'httpResult2' => null,
 				'taskFilter' => null,
+				'topicFilter' => null,
 				'limit' => null,
 				'expectedTaskSet' => StatusValue::newFatal( new RawMessage( 'foo' ) ),
 			],
@@ -221,7 +335,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * @param bool $expectsToBeCalled
 	 * @return TemplateProvider|MockObject
 	 */
-	private function getTemplateProvider( bool $expectsToBeCalled ) {
+	private function getMockTemplateProvider( bool $expectsToBeCalled ) {
 		$templateProvider = $this->getMockBuilder( TemplateProvider::class )
 			->disableOriginalConstructor()
 			->setMethods( [ 'fill' ] )
@@ -232,40 +346,58 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param string|Status $result1 A content string or an error status.
-	 * @param string|null $result2 Content string for second HTTP request, optional
+	 * @param array $requests [ [ 'params' => [...], 'response' => ... ], ... ] where params is
+	 *   a list of asserted query parameters (null means asserted to be not present), response is
+	 *   JSON data (in PHP form) or a StatusValue with errors
 	 * @return HttpRequestFactory|MockObject
 	 */
-	protected function getMockRequestFactory( $result1, $result2 = null ) {
-		if ( $result1 instanceof StatusValue ) {
-			$status = Status::wrap( $result1 );
-			$result1 = $result2 = null;
-		} else {
-			$status = Status::newGood();
-		}
-
-		$request1 = $this->getMockBuilder( MWHttpRequest::class )
-			->disableOriginalConstructor()
-			->setMethods( [ 'execute', 'getContent' ] )
-			->getMock();
-		$request1->method( 'execute' )->willReturn( $status );
-		$request1->method( 'getContent' )->willReturn( $result1 );
-
-		$request2 = $this->getMockBuilder( MWHttpRequest::class )
-			->disableOriginalConstructor()
-			->setMethods( [ 'execute', 'getContent' ] )
-			->getMock();
-		$request2->method( 'execute' )->willReturn( $status );
-		$request2->method( 'getContent' )->willReturn( $result2 );
-
+	protected function getMockRequestFactory( array $requests ) {
 		$requestFactory = $this->getMockBuilder( HttpRequestFactory::class )
 			->disableOriginalConstructor()
 			->setMethods( [ 'create', 'getUserAgent' ] )
 			->getMock();
 		$requestFactory->method( 'getUserAgent' )->willReturn( 'Foo' );
-		$requestFactory->expects( $this->atMost( $result2 && $status->isOK() ? 2 : 1 ) )
+
+		$numRequests = count( $requests );
+		$numErrors = count( array_filter( $requests, function ( $request ) {
+			return $request['response'] instanceof StatusValue;
+		} ) );
+		$expectation = $numErrors ? $this->exactlyBetween( 1, $numRequests - $numErrors + 1 )
+			: $this->exactly( $numRequests );
+		$requestFactory->expects( $expectation )
 			->method( 'create' )
-			->willReturnOnConsecutiveCalls( $request1, $request2 );
+			->willReturnCallback( function ( $url ) use ( &$requests ) {
+				$actualParams = wfCgiToArray( parse_url( $url )['query'] );
+				$request = array_shift( $requests );
+				foreach ( $request['params'] as $key => $expectedValue ) {
+					if ( $expectedValue === null ) {
+						$this->assertArrayNotHasKey( $key, $actualParams,
+							"found URL parameter that should not have been present: $key "
+							. "(with value >>$actualParams[$key]<<)" );
+					} else {
+						$this->assertArrayHasKey( $key, $actualParams, "expected URL parameter missing: $key" );
+						$this->assertSame( $expectedValue, $actualParams[$key],
+							"wrong URL parameter value for parameter $key: "
+							. "expected >>$expectedValue<<, found >>$actualParams[$key]<<" );
+					}
+				}
+
+				if ( $request['response'] instanceof StatusValue ) {
+					$status = Status::wrap( $request['response'] );
+					$response = '';
+				} else {
+					$status = StatusValue::newGood();
+					$response = json_encode( $request['response'] );
+				}
+
+				$request = $this->getMockBuilder( MWHttpRequest::class )
+					->disableOriginalConstructor()
+					->setMethods( [ 'execute', 'getContent' ] )
+					->getMock();
+				$request->method( 'execute' )->willReturn( $status );
+				$request->method( 'getContent' )->willReturn( $response );
+				return $request;
+			} );
 		return $requestFactory;
 	}
 
@@ -287,6 +419,71 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			return $title;
 		} );
 		return $titleFactory;
+	}
+
+	/**
+	 * @param string[] $spec [ task type id => [ title, ... ], ... ]
+	 * @return TemplateBasedTaskType[]
+	 */
+	private function getTaskTypes( array $spec ) {
+		$taskTypes = [];
+		foreach ( $spec as $topicId => $titleNames ) {
+			$titleValues = [];
+			foreach ( $titleNames as $titleName ) {
+				$titleValues[] = new TitleValue( NS_TEMPLATE, $titleName );
+			}
+			$taskTypes[] = new TemplateBasedTaskType( $topicId, TaskType::DIFFICULTY_EASY, [],
+				$titleValues );
+		}
+		return $taskTypes;
+	}
+
+	/**
+	 * @param string[] $spec [ topic id => [ title, ... ], ... ]
+	 * @return MorelikeBasedTopic[]
+	 */
+	private function getTopics( array $spec ) {
+		$topics = [];
+		foreach ( $spec as $topicId => $titleNames ) {
+			$titleValues = [];
+			foreach ( $titleNames as $titleName ) {
+				$titleValues[] = new TitleValue( NS_MAIN, $titleName );
+			}
+			$topics[] = new MorelikeBasedTopic( $topicId, $titleValues );
+		}
+		return $topics;
+	}
+
+	/**
+	 * Returns a PHPUnit invocation matcher which matches a range.
+	 * @param $min
+	 * @param $max
+	 * @return InvokedRecorder
+	 */
+	private function exactlyBetween( $min, $max ) {
+		return new class ( $min, $max ) extends InvokedRecorder {
+			private $min;
+			private $max;
+
+			public function __construct( $min, $max ) {
+				$this->min = $min;
+				$this->max = $max;
+			}
+
+			public function toString(): string {
+				return "invoked between $this->min and $this->max times";
+			}
+
+			public function verify() {
+				$count = $this->getInvocationCount();
+				if ( $count < $this->min || $count > $this->max ) {
+					throw new ExpectationFailedException(
+						"Expected to be invoked between $this->min and $this->max times,"
+						. " but it occurred $count time(s)."
+					);
+				}
+			}
+		};
 	}
 
 }

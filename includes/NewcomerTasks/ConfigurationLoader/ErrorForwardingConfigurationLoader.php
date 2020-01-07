@@ -29,6 +29,11 @@ class ErrorForwardingConfigurationLoader implements ConfigurationLoader {
 	}
 
 	/** @inheritDoc */
+	public function loadTopics() {
+		return [];
+	}
+
+	/** @inheritDoc */
 	public function loadTemplateBlacklist() {
 		return [];
 	}
