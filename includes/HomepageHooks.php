@@ -42,7 +42,6 @@ class HomepageHooks {
 	const HOMEPAGE_PREF_ENABLE = 'growthexperiments-homepage-enable';
 	const HOMEPAGE_PREF_PT_LINK = 'growthexperiments-homepage-pt-link';
 	const CONFIRMEMAIL_QUERY_PARAM = 'specialconfirmemail';
-	private const HOMEPAGE_SUGGESTED_EDITS_FILTERS = 'growthexperiments-homepage-se-filters';
 
 	/**
 	 * Register Homepage and Impact special pages.
@@ -288,10 +287,6 @@ class HomepageHooks {
 			'hide-if' => [ '!==', self::HOMEPAGE_PREF_ENABLE, '1' ],
 		];
 
-		$preferences[ self::HOMEPAGE_SUGGESTED_EDITS_FILTERS ] = [
-			'type' => 'api'
-		];
-
 		$preferences[ Mentor::MENTOR_PREF ] = [
 			'type' => 'api',
 		];
@@ -310,6 +305,14 @@ class HomepageHooks {
 
 		$preferences[ SuggestedEdits::PREACTIVATED_PREF ] = [
 			'type' => 'api',
+		];
+
+		$preferences[ SuggestedEdits::TOPICS_PREF ] = [
+			'type' => 'api'
+		];
+
+		$preferences[ SuggestedEdits::TASKTYPES_PREF ] = [
+			'type' => 'api'
 		];
 
 		if ( MediaWikiServices::getInstance()->getMainConfig()->get(

@@ -217,29 +217,35 @@ body.mw-special-Homepage {
 	}
 
 	.suggested-edits-filters {
+		display: flex;
 		// Make the button full width (T236841); this is harder than it should be
 		width: 100%;
 
 		.oo-ui-buttonGroupWidget {
+			flex-grow: 1;
+			display: flex;
 			width: 100%;
 
+			.oo-ui-buttonElement.topic-matching {
+				// Needed when two buttons are present.
+				max-width: 50%;
+			}
+
 			.oo-ui-buttonElement {
-				width: 100%;
+				flex-grow: 1;
+				display: flex;
 
 				.oo-ui-buttonElement-button {
-					width: 100%;
+					flex-grow: 1;
+					display: flex;
 					text-align: left;
+					max-width: 100%;
 
 					.oo-ui-labelElement-label {
 						text-overflow: ellipsis;
 						white-space: nowrap;
 						overflow: hidden;
-						// Needed for ellipses to work.
-						width: 100%;
-						// Needed for width to take effect.
-						display: inline-block;
-						// Needed due to the inline-block override.
-						margin-bottom: -5px;
+						flex-grow: 2;
 					}
 				}
 			}
