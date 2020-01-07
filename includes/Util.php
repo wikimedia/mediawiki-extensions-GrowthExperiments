@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments;
 
+use ApiRawMessage;
 use Config;
 use Exception;
 use FormatJson;
@@ -196,7 +197,7 @@ class Util {
 			$data = $status->getValue();
 			if ( isset( $data['errors'] ) ) {
 				foreach ( $data['errors'] as $error ) {
-					$errorStatus->fatal( new RawMessage( $error['text'] ) );
+					$errorStatus->fatal( new ApiRawMessage( $error['text'], $error['code'] ) );
 				}
 			}
 			if ( isset( $data['warnings'] ) ) {
