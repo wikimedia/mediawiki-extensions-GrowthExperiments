@@ -5,7 +5,8 @@
 			"Meno25",
 			"Dyolf77",
 			"Dyolf77 (WMF)",
-			"Mr. Ibrahem"
+			"Mr. Ibrahem",
+			"Sonic N800"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|مرحبا}}، {{bidi:$1}}!",
@@ -102,7 +103,7 @@
 	"growthexperiments-homepage-help-cancel": "إلغاء",
 	"growthexperiments-homepage-help-mobilebody": "{{GENDER:|اسأل|اسألي}} فريق المساعدة أو {{GENDER:|اقرأ|اقرئي}} صفحات المساعدة.",
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|أسئلتك}} الأخيرة",
-	"growthexperiments-homepage-recent-questions-posted-on": "تم النشر منذ $1",
+	"growthexperiments-homepage-recent-questions-posted-on": "نُشِرَتْ قبل $1",
 	"growthexperiments-homepage-recent-questions-archived": "مؤرشف",
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "تمت أرشفة هذا السؤال؛ على الأرجح لأنه مطروح منذ فترة طويلة.",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|هنا}} {{GENDER:$2|مرشدك|مرشدتك}}",

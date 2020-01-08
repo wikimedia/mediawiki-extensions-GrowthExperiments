@@ -191,6 +191,8 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "更新條目",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "擴充簡短條目",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "添加條目之間的連結",
+	"growthexperiments-homepage-suggestededits-config-wrongstructure": "無效建議編輯設置：不良結構",
+	"growthexperiments-homepage-suggestededits-config-invalidid": "無效建議編輯設置：無效的 ID「$1」- 僅能包含 a-z、0-9、-（破折號）",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "無效建議編輯設置：缺少用於任務類型$2的欄位$1",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "無效建議編輯設置：缺少用於任務類型$2的群組$1",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "無效建議編輯設置：缺少用於任務類型$2的訊息$1",

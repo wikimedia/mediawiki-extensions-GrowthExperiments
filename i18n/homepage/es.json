@@ -100,6 +100,8 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Actualizar artículos",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Ampliar artículos cortos",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Añadir enlaces entre artículos",
+	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configuración de ediciones sugeridas no válida: la estructura es incorrecta",
+	"growthexperiments-homepage-suggestededits-config-invalidid": "Configuración de ediciones sugeridas no válida: el identificador «$1» es incorrecto; debe contener solo caracteres entre a-z, 0-9 o guiones",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Configuración de ediciones sugeridas no válida: le falta campo $1 para el tipo de tarea $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Configuración de ediciones sugeridas inválida: grupo inválido $1 para tipo de tarea $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Configuración de ediciones sugeridas inválida: mensaje faltante $1 para el tipo de tarea $2",
