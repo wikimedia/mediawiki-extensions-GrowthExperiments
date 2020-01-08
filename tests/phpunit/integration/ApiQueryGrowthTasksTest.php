@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use StatusValue;
 use TitleValue;
 use User;
@@ -104,6 +105,42 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 
 		$this->doApiRequest( [ 'action' => 'query', 'list' => 'growthtasks' ],
 			null, null, new User() );
+	}
+
+	public function testGetAllowedParams() {
+		$taskType1 = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
+		$taskType2 = new TaskType( 'link', TaskType::DIFFICULTY_EASY );
+		$topic1 = new Topic( 'art' );
+		$topic2 = new Topic( 'science' );
+		$suggester = new StaticTaskSuggester( [] );
+		$configurationLoader = new StaticConfigurationLoader( [ $taskType1, $taskType2 ],
+			[ $topic1, $topic2 ] );
+		$this->setService( 'GrowthExperimentsTaskSuggester', $suggester );
+		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
+
+		list( $data ) = $this->doApiRequest( [ 'action' => 'paraminfo',
+			'modules' => 'query+growthtasks' ] );
+		$this->assertArrayHasKey( 'paraminfo', $data );
+		$this->assertArrayHasKey( 0, $data['paraminfo']['modules'] );
+		$this->assertSame( 'growthtasks', $data['paraminfo']['modules'][0]['name'] );
+		$this->assertArrayHasKey( 1, $data['paraminfo']['modules'][0]['parameters'] );
+		$this->assertSame( 'tasktypes', $data['paraminfo']['modules'][0]['parameters'][0]['name'] );
+		$this->assertSame( 'topics', $data['paraminfo']['modules'][0]['parameters'][1]['name'] );
+		$this->assertSame( [ 'copyedit', 'link' ],
+			$data['paraminfo']['modules'][0]['parameters'][0]['type'] );
+		$this->assertSame( [ 'art', 'science' ],
+			$data['paraminfo']['modules'][0]['parameters'][1]['type'] );
+		$this->assertArrayHasKey( 'paraminfo', $data );
+
+		// Make sure loading errors do not break parameter info
+		$suggester = new StaticTaskSuggester( [] );
+		$configurationLoader = new StaticConfigurationLoader( StatusValue::newFatal( 'foo' ),
+			StatusValue::newFatal( 'bar' ) );
+		$this->setService( 'GrowthExperimentsTaskSuggester', $suggester );
+		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
+		list( $data ) = $this->doApiRequest( [ 'action' => 'paraminfo',
+			'modules' => 'query+growthtasks' ] );
+		$this->assertArrayHasKey( 'paraminfo', $data );
 	}
 
 	/**
