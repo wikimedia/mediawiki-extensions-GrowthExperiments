@@ -6,10 +6,13 @@ use ApiBase;
 use ApiPageSet;
 use ApiQuery;
 use ApiQueryGeneratorBase;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TemplateBasedTask;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Linker\LinkTarget;
 use StatusValue;
 use Title;
@@ -23,18 +26,24 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 	/** @var TaskSuggester */
 	private $taskSuggester;
 
+	/** @var ConfigurationLoader */
+	private $configurationLoader;
+
 	/**
 	 * @param ApiQuery $queryModule
 	 * @param string $moduleName
 	 * @param TaskSuggester $taskSuggester
+	 * @param ConfigurationLoader $configurationLoader
 	 */
 	public function __construct(
 		ApiQuery $queryModule,
 		$moduleName,
-		TaskSuggester $taskSuggester
+		TaskSuggester $taskSuggester,
+		ConfigurationLoader $configurationLoader
 	) {
 		parent::__construct( $queryModule, $moduleName, 'gt' );
 		$this->taskSuggester = $taskSuggester;
+		$this->configurationLoader = $configurationLoader;
 	}
 
 	/** @inheritDoc */
@@ -128,14 +137,23 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 
 	/** @inheritDoc */
 	protected function getAllowedParams() {
+		$taskTypes = $this->getTaskTypes();
+		$topics = $this->getTopics();
+
 		return [
 			'tasktypes' => [
-				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_TYPE => array_keys( $taskTypes ),
 				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_HELP_MSG_PER_VALUE => array_map( function ( TaskType $taskType ) {
+					return $taskType->getName( $this->getContext() );
+				}, $taskTypes ),
 			],
 			'topics' => [
-				ApiBase::PARAM_TYPE => 'string',
+				ApiBase::PARAM_TYPE => array_keys( $topics ),
 				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_HELP_MSG_PER_VALUE => array_map( function ( Topic $topic ) {
+					return $topic->getName( $this->getContext() );
+				}, $topics ),
 			],
 			'limit' => [
 				ApiBase::PARAM_TYPE => 'limit',
@@ -149,6 +167,33 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_HELP_MSG => 'api-help-param-continue',
 			],
 		];
+	}
+
+	/**
+	 * @return TaskType[] Array of task type id => task type
+	 */
+	protected function getTaskTypes() {
+		$taskTypes = $this->configurationLoader->loadTaskTypes();
+		if ( $taskTypes instanceof StatusValue ) {
+			// Can't show errors here, we'll have to let the user call the API and get them that way.
+			return [];
+		}
+		return array_combine( array_map( function ( TaskType $taskType ) {
+			return $taskType->getId();
+		}, $taskTypes ), $taskTypes ) ?: [];
+	}
+
+	/**
+	 * @return Topic[] Array of topic id => topic
+	 */
+	protected function getTopics() {
+		$topics = $this->configurationLoader->loadTopics();
+		if ( $topics instanceof StatusValue ) {
+			return [];
+		}
+		return array_combine( array_map( function ( Topic $topic ) {
+			return $topic->getId();
+		}, $topics ), $topics ) ?: [];
 	}
 
 	/** @inheritDoc */
