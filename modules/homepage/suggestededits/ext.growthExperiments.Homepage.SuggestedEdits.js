@@ -16,6 +16,10 @@
 		} );
 
 	/**
+	 * @class
+	 * @extends OO.ui.Widget
+	 *
+	 * @constructor
 	 * @param {Object} config Configuration options
 	 * @param {jQuery} config.$element SuggestedEdits widget container
 	 * @param {Array<string>} config.taskTypePresets List of IDs of enabled task types
@@ -23,7 +27,6 @@
 	 * @param {bool} config.topicMatching If topic matching feature is enabled in the UI
 	 * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
 	 * @param {HomepageModuleLogger} logger
-	 * @constructor
 	 */
 	function SuggestedEditsModule( config, logger ) {
 		var $pager, $previous, $next, $filters, $filtersContainer;
@@ -219,7 +222,7 @@
 			extraData.taskCount = this.taskQueue.length;
 			this.logger.log( 'suggested-edits', this.mode, 'se-fetch-tasks' );
 			// TODO: Eventually this will become the skeleton card widget
-			this.currentCard = new NoResultsWidget( { topicMatching: false } );
+			this.currentCard = new NoResultsWidget( { topicMatching: this.config.topicMatching } );
 			return $.Deferred().resolve().promise();
 		}.bind( this ) ).catch( function ( error, details ) {
 			if ( error === 'http' && details && details.textStatus === 'abort' ) {
@@ -334,11 +337,11 @@
 		} else if ( !this.taskQueue.length ) {
 			this.logger.log( 'suggested-edits', this.mode, 'se-task-pseudo-impression',
 				{ type: 'empty' } );
-			this.currentCard = new NoResultsWidget( { topicMatching: false } );
+			this.currentCard = new NoResultsWidget( { topicMatching: this.config.topicMatching } );
 		} else if ( !this.taskQueue[ queuePosition ] ) {
 			this.logger.log( 'suggested-edits', this.mode, 'se-task-pseudo-impression',
 				{ type: 'end' } );
-			this.currentCard = new EndOfQueueWidget( { topicMatching: false } );
+			this.currentCard = new EndOfQueueWidget( { topicMatching: this.config.topicMatching } );
 		}
 		if ( this.currentCard ) {
 			this.updateCardElement();
