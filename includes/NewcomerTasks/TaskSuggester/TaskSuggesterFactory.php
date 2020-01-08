@@ -7,12 +7,17 @@ use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\Util;
 use GrowthExperiments\WikiConfigException;
 use MediaWiki\Http\HttpRequestFactory;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\NullLogger;
 use SearchEngineFactory;
 use Status;
 use StatusValue;
 use TitleFactory;
 
-class TaskSuggesterFactory {
+class TaskSuggesterFactory implements LoggerAwareInterface {
+
+	use LoggerAwareTrait;
 
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
@@ -22,6 +27,7 @@ class TaskSuggesterFactory {
 	 */
 	public function __construct( ConfigurationLoader $configurationLoader ) {
 		$this->configurationLoader = $configurationLoader;
+		$this->logger = new NullLogger();
 	}
 
 	/**
@@ -50,7 +56,7 @@ class TaskSuggesterFactory {
 		if ( $templateBlacklist instanceof StatusValue ) {
 			return $this->createError( $templateBlacklist );
 		}
-		return new RemoteSearchTaskSuggester(
+		$suggester = new RemoteSearchTaskSuggester(
 			$templateProvider,
 			$requestFactory,
 			$titleFactory,
@@ -59,6 +65,8 @@ class TaskSuggesterFactory {
 			$topics,
 			$templateBlacklist
 		);
+		$suggester->setLogger( $this->logger );
+		return $suggester;
 	}
 
 	/**
@@ -84,13 +92,15 @@ class TaskSuggesterFactory {
 		if ( $templateBlacklist instanceof StatusValue ) {
 			return $this->createError( $templateBlacklist );
 		}
-		return new LocalSearchTaskSuggester(
+		$suggester = new LocalSearchTaskSuggester(
 			$searchEngineFactory,
 			$templateProvider,
 			$taskTypes,
 			$topics,
 			$templateBlacklist
 		);
+		$suggester->setLogger( $this->logger );
+		return $suggester;
 	}
 
 	/**

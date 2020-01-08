@@ -64,6 +64,8 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 			'srinfo' => 'totalhits',
 			'srprop' => '',
 			'srsort' => 'random',
+			// Convenient for debugging. Production setups should use LocalSearchTaskSuggester anyway.
+			'errorlang' => 'en',
 		] );
 		if ( !$status->isOK() ) {
 			return $status;
