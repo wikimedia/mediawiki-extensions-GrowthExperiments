@@ -91,7 +91,7 @@
 		var levels = {},
 			messages = [];
 
-		if ( !topicSearch.length ) {
+		if ( !topicSearch.length && this.topicFilterButtonWidget ) {
 			this.topicFilterButtonWidget.setLabel(
 				mw.message( 'growthexperiments-homepage-suggestededits-topic-filter-select-interests' ).text()
 			);
