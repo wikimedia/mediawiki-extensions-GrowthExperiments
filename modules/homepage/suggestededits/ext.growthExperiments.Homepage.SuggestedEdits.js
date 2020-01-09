@@ -51,6 +51,15 @@
 				done: 'filterSelection'
 			} )
 			.toggle( false );
+
+		// Topic presets will be null or an empty string if the user never set them.
+		// It's possible that config.topicPresets is an empty array if the user set,
+		// saved, then unset the topics.
+		if ( !config.topicPresets ) {
+			this.filters.$element.find( '.topic-filter-button' )
+				.append( $( '<div>' ).addClass( 'mw-pulsating-dot' ) );
+		}
+
 		this.pager = new PagerWidget().toggle( false );
 		this.previousWidget = new PreviousNextWidget( { direction: 'Previous' } )
 			.connect( this, { click: 'onPreviousCard' } )
@@ -536,7 +545,7 @@
 			taskTypes = savedTaskTypeFilters ?
 				JSON.parse( savedTaskTypeFilters ) :
 				initialTaskTypes,
-			topicFilters = savedTopicFilters ? JSON.parse( savedTopicFilters ) : [],
+			topicFilters = savedTopicFilters ? JSON.parse( savedTopicFilters ) : '',
 			$wrapper = $container.find( '.suggested-edits-module-wrapper' ),
 			mode = $wrapper.closest( '.growthexperiments-homepage-module' ).data( 'mode' );
 		if ( !$wrapper.length ) {

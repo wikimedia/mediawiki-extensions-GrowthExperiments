@@ -18,11 +18,12 @@
 
 		this.mode = config.mode;
 		this.topicMatching = config.topicMatching;
+		this.topicPresets = config.topicPresets;
 
 		if ( this.topicMatching ) {
 			this.topicFilterButtonWidget = new OO.ui.ButtonWidget( {
 				icon: 'funnel',
-				classes: [ 'topic-matching' ],
+				classes: [ 'topic-matching', 'topic-filter-button' ],
 				indicator: config.mode === 'desktop' ? null : 'down'
 			} );
 			buttonWidgets.push( this.topicFilterButtonWidget );
@@ -95,7 +96,9 @@
 			this.topicFilterButtonWidget.setLabel(
 				mw.message( 'growthexperiments-homepage-suggestededits-topic-filter-select-interests' ).text()
 			);
-			this.topicFilterButtonWidget.setFlags( [ 'progressive' ] );
+			// topicPresets will be an empty array if the user had saved topics
+			// in the past.
+			this.topicFilterButtonWidget.setFlags( !this.topicPresets ? [ 'progressive' ] : [] );
 		}
 
 		if ( !taskTypeSearch.length ) {

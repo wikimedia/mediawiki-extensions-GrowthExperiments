@@ -212,10 +212,6 @@ body.mw-special-Homepage {
 }
 
 .growthexperiments-homepage-module-suggested-edits {
-	&.growthexperiments-homepage-module-desktop {
-		background-color: @suggestedEditsBackgroundColor;
-	}
-
 	.suggested-edits-filters {
 		display: flex;
 		// Make the button full width (T236841); this is harder than it should be
@@ -246,6 +242,25 @@ body.mw-special-Homepage {
 						white-space: nowrap;
 						overflow: hidden;
 						flex-grow: 2;
+					}
+				}
+			}
+		}
+	}
+
+	&.growthexperiments-homepage-module-desktop {
+		background-color: @suggestedEditsBackgroundColor;
+
+		.suggested-edits-filters {
+			.oo-ui-buttonGroupWidget {
+				.oo-ui-buttonElement {
+					.mw-pulsating-dot {
+						position: relative;
+						right: 10%;
+						top: 100%;
+						cursor: pointer;
+						// Ensure it appears above the button after clicked.
+						z-index: 2;
 					}
 				}
 			}
@@ -557,6 +572,21 @@ body.mw-special-Homepage {
 
 	&.growthexperiments-homepage-module-mobile-overlay,
 	&.growthexperiments-homepage-module-mobile-details {
+		.suggested-edits-filters {
+			.oo-ui-buttonGroupWidget {
+				.oo-ui-buttonElement {
+					.mw-pulsating-dot {
+						position: relative;
+						right: 50%;
+						top: 100%;
+						cursor: pointer;
+						// Ensure it appears above the button after clicked.
+						z-index: 2;
+					}
+				}
+			}
+		}
+
 		.suggested-edits-footer {
 			font-size: 0.8em;
 			line-height: 1.5;

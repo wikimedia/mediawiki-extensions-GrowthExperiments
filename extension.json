@@ -395,6 +395,7 @@
 			"dependencies": [
 				"mediawiki.api",
 				"mediawiki.jqueryMsg",
+				"mediawiki.pulsatingdot",
 				"mediawiki.language",
 				"mediawiki.Uri",
 				"oojs-ui-widgets",
