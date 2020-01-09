@@ -191,7 +191,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "הרחבת ערכים קצרים",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "הוספת קישורים בין ערכים",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "הגדרות בלתי־תקינות של עריכות מוצעות: מבנה גרוע.",
-	"growthexperiments-homepage-suggestededits-config-invalidid": "הגדרות בלתי־תקינות של עריכות מוצעות: מזהה בלתי־תקין \"$1\" - חייב להכיל אותיות a-z, ספרות 0-9, - (מקף) בלבד",
+	"growthexperiments-homepage-suggestededits-config-invalidid": "הגדרות בלתי־תקינות של עריכות מוצעות: מזהה בלתי־תקין \"$1\" - חייב להכיל אותיות a-z, ספרות 0-9, - (מינוס) בלבד",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "הגדרות בלתי־תקינות של עריכות מוצעות: חסר השדה $1 עבור סוג המשימה $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "הגדרות בלתי־תקינות של עריכות מוצעות: קבוצה בלתי־תקינה $1 לסוג משימה $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "הגדרות בלתי־תקינות של עריכות מוצעות: חסר ההודעה $1 לסוג משימה $2",

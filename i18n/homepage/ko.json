@@ -6,7 +6,8 @@
 			"Bluemersen",
 			"Nuevo Paso",
 			"Tkwiki",
-			"Gongsoonyee"
+			"Gongsoonyee",
+			"렌즈"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|안녕하세요}}, {{bidi:$1}}님!",
@@ -15,7 +16,7 @@
 	"prefs-homepage": "새 사용자를 위한 홈페이지",
 	"growthexperiments-homepage-enable": "새 사용자를 위한 홈페이지 표시",
 	"growthexperiments-homepage-pt-link": "개인 도구의 사용자 이름 링크를 새 사용자를 위한 홈페이지로 고정",
-	"growthexperiments-homepage-start-header": "{{GENDER:$1|여기에서}} 시작",
+	"growthexperiments-homepage-start-header": "여기부터 {{GENDER:$1|시작하세요}}",
 	"growthexperiments-homepage-account-header": "계정이 만들어짐",
 	"growthexperiments-homepage-account-editcount": "{{PLURAL:$1|편집}} $1회",
 	"growthexperiments-homepage-account-age": "계정을 만든 지 $1 지났습니다",

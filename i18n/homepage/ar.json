@@ -198,6 +198,8 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "{{GENDER:|حيّن|حيّني}} مقالات",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "{{GENDER:|وسّع|وسّعي}} مقالات صغيرة",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "{{GENDER:|أضف|أضيفي}} وصلات بين المقالات",
+	"growthexperiments-homepage-suggestededits-config-wrongstructure": "ترتيب غير سليم للتعديلات المقترحة: تركيبة سيئة",
+	"growthexperiments-homepage-suggestededits-config-invalidid": "ترتيب غير سليم للتعديلات المقترحة: هوية \"$1\" غير سليمة - يجب أن تحتوي فقط على أ-ي، 0-9، - (ناقص)",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "ضبط التعديلات المقترحة غير صالح: الحقل المفقود $1 لنوع المهمة $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "ضبط التعديلات المقترحة غير صالح: مجموعة غير صالحة $1 لنوع المهمة $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "ضبط التعديلات المقترحة غير صالح: الرسالة المفقودة $1 لنوع المهمة $2",

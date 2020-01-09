@@ -190,7 +190,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Expandir artigos curtos",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Adicionar links entre artigos",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configuração de edições sugeridas inválida: estrutura incorreta",
-	"growthexperiments-homepage-suggestededits-config-invalidid": "Configuração de edições sugeridas inválida: ID inválido \"$1\" - deve conter apenas a-z, 0-9, - (traço)",
+	"growthexperiments-homepage-suggestededits-config-invalidid": "Configuração de edições sugeridas inválida: ID inválido \"$1\" - deve conter apenas a-z, 0-9, - (menos)",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Configuração de edições sugeridas inválida: campo $1 ausente para o tipo de tarefa $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Configuração de edições sugeridas inválidas: grupo inválido $1 para o tipo de tarefa $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Configuração de edições sugeridas inválida: mensagem ausente $1 para o tipo de tarefa $2",
