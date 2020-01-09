@@ -368,7 +368,7 @@
 				},
 				{
 					"name": "homepage/suggestededits/config.json",
-					"config": [ "GEHomepageSuggestedEditsIntroLinks" ]
+					"config": [ "GEHomepageSuggestedEditsIntroLinks", "GEHomepageSuggestedEditsEnableTopics" ]
 				}
 			],
 			"targets": [
@@ -442,7 +442,8 @@
 				"growthexperiments-homepage-suggestededits-tasktype-time-update",
 				"growthexperiments-homepage-suggestededits-tasktype-time-expand",
 				"growthexperiments-homepage-suggestededits-create-article-additional-message",
-				"growthexperiments-homepage-suggestededits-difficulty-filter-error"
+				"growthexperiments-homepage-suggestededits-difficulty-filter-error",
+				"growthexperiments-homepage-suggestededits-topic-filter-select-interests"
 			]
 		},
 		"ext.growthExperiments.Homepage.StartEditing": {
@@ -769,6 +770,10 @@
 				"create": "Help:Creating pages",
 				"image": "Help:Images"
 			}
+		},
+		"GEHomepageSuggestedEditsEnableTopics": {
+			"description": "Enable topic filters for suggested edits",
+			"value": false
 		},
 		"GEConfirmEmailEnabled": {
 			"description": "Global ON/OFF switch for the email confirmation changes.",

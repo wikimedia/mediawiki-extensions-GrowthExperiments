@@ -25,6 +25,8 @@ class SuggestedEdits extends BaseModule {
 	const ENABLED_PREF = 'growthexperiments-homepage-suggestededits';
 	const ACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-activated';
 	const PREACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-preactivated';
+	public const TOPICS_PREF = 'growthexperiments-homepage-se-topic-filters';
+	public const TASKTYPES_PREF = 'growthexperiments-homepage-se-filters';
 	const SUGGESTED_EDIT_TAG = 'newcomer task';
 
 	/** @var EditInfoService */

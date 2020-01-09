@@ -5,19 +5,36 @@
 	/**
 	 * @param {Object} config Configuration options
 	 * @param {Array<string>} config.taskTypePresets List of IDs of enabled task types
+	 * @param {Array<string>} config.topicPresets List of IDs of enabled topic filters
+	 * @param {bool} config.topicMatching If the topic filters should be enabled in the UI.
 	 * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
 	 * @param {HomepageModuleLogger} logger
 	 * @constructor
 	 */
 	function SuggestedEditsFiltersWidget( config, logger ) {
 		var DifficultyFiltersDialog = require( './ext.growthExperiments.Homepage.SuggestedEdits.DifficultyFiltersDialog.js' ),
-			windowManager = new OO.ui.WindowManager( { modal: true } );
+			windowManager = new OO.ui.WindowManager( { modal: true } ),
+			buttonWidgets = [];
 
 		this.mode = config.mode;
+		this.topicMatching = config.topicMatching;
+
+		if ( this.topicMatching ) {
+			this.topicFilterButtonWidget = new OO.ui.ButtonWidget( {
+				icon: 'funnel',
+				classes: [ 'topic-matching' ],
+				indicator: config.mode === 'desktop' ? null : 'down'
+			} );
+			buttonWidgets.push( this.topicFilterButtonWidget );
+		}
+
 		this.difficultyFilterButtonWidget = new OO.ui.ButtonWidget( {
 			icon: 'difficulty-outline',
+			classes: [ this.topicMatching ? 'topic-matching' : '' ],
 			indicator: config.mode === 'desktop' ? null : 'down'
 		} );
+		buttonWidgets.push( this.difficultyFilterButtonWidget );
+
 		this.dialog = new DifficultyFiltersDialog( {
 			presets: config.taskTypePresets
 		} ).connect( this, {
@@ -52,7 +69,7 @@
 		}.bind( this ) );
 
 		SuggestedEditsFiltersWidget.super.call( this, $.extend( {}, config, {
-			items: [ this.difficultyFilterButtonWidget ]
+			items: buttonWidgets
 		} ) );
 
 	}
@@ -65,13 +82,23 @@
 
 	/**
 	 * Update the button label and icon depending on task types selected.
-	 * @param {string[]} search
+	 * @param {string[]} taskTypeSearch List of task types to search for
+	 * @param {string[]} topicSearch List of topics to search for
 	 */
-	SuggestedEditsFiltersWidget.prototype.updateButtonLabelAndIcon = function ( search ) {
+	SuggestedEditsFiltersWidget.prototype.updateButtonLabelAndIcon = function (
+		taskTypeSearch, topicSearch
+	) {
 		var levels = {},
 			messages = [];
 
-		if ( !search.length ) {
+		if ( !topicSearch.length ) {
+			this.topicFilterButtonWidget.setLabel(
+				mw.message( 'growthexperiments-homepage-suggestededits-topic-filter-select-interests' ).text()
+			);
+			this.topicFilterButtonWidget.setFlags( [ 'progressive' ] );
+		}
+
+		if ( !taskTypeSearch.length ) {
 			// User has deselected all filters, set generic outline and message in button label.
 			this.difficultyFilterButtonWidget.setLabel(
 				mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filters-title' ).text()
@@ -80,7 +107,7 @@
 			return;
 		}
 
-		search.forEach( function ( taskType ) {
+		taskTypeSearch.forEach( function ( taskType ) {
 			levels[ taskTypes[ taskType ].difficulty ] = true;
 		} );
 		[ 'easy', 'medium', 'hard' ].forEach( function ( level ) {

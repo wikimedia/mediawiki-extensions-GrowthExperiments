@@ -10,6 +10,7 @@
 		Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
 		taskTypes = require( './TaskTypes.json' ),
 		aqsConfig = require( './AQSConfig.json' ),
+		suggestedEditsConfig = require( './config.json' ),
 		initialTaskTypes = [ 'copyedit', 'links' ].filter( function ( taskType ) {
 			return taskType in taskTypes;
 		} );
@@ -18,6 +19,8 @@
 	 * @param {Object} config Configuration options
 	 * @param {jQuery} config.$element SuggestedEdits widget container
 	 * @param {Array<string>} config.taskTypePresets List of IDs of enabled task types
+	 * @param {Array<string>} config.topicPresets Lists of IDs of enabled topic filters.
+	 * @param {bool} config.topicMatching If topic matching feature is enabled in the UI
 	 * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
 	 * @param {HomepageModuleLogger} logger
 	 * @constructor
@@ -32,9 +35,12 @@
 		this.currentCard = null;
 		this.apiPromise = null;
 		this.taskTypesQuery = [];
+		this.topicsQuery = [];
 
 		this.filters = new FiltersButtonGroupWidget( {
 			taskTypePresets: config.taskTypePresets,
+			topicPresets: config.topicPresets,
+			topicMatching: config.topicMatching,
 			mode: this.mode
 		}, logger )
 			.connect( this, {
@@ -178,11 +184,13 @@
 	 * Fetch suggested edits from ApiQueryGrowthTasks and update the view and internal state.
 	 *
 	 * @param {string[]} taskTypes Task types to search
+	 * @param {string[]} topics Topics to search
 	 * @return {jQuery.Promise} Status promise. It never fails; errors are handled internally
 	 *   by rendering an error card.
 	 */
-	SuggestedEditsModule.prototype.fetchTasksAndUpdateView = function ( taskTypes ) {
+	SuggestedEditsModule.prototype.fetchTasksAndUpdateView = function ( taskTypes, topics ) {
 		this.taskTypesQuery = taskTypes;
+		this.topicsQuery = topics;
 		if ( this.apiPromise ) {
 			this.apiPromise.abort();
 		}
@@ -488,7 +496,7 @@
 	 */
 	SuggestedEditsModule.prototype.updateControls = function () {
 		this.filters.toggle( true );
-		this.filters.updateButtonLabelAndIcon( this.taskTypesQuery );
+		this.filters.updateButtonLabelAndIcon( this.taskTypesQuery, this.topicsQuery || [] );
 		this.updatePager();
 		this.updatePreviousNextButtons();
 		this.updateTaskExplanationWidget();
@@ -521,9 +529,11 @@
 	function initSuggestedTasks( $container ) {
 		var suggestedEditsModule,
 			savedTaskTypeFilters = mw.user.options.get( 'growthexperiments-homepage-se-filters' ),
+			savedTopicFilters = mw.user.options.get( 'growthexperiments-homepage-se-topic-filters' ),
 			taskTypes = savedTaskTypeFilters ?
 				JSON.parse( savedTaskTypeFilters ) :
 				initialTaskTypes,
+			topicFilters = savedTopicFilters ? JSON.parse( savedTopicFilters ) : [],
 			$wrapper = $container.find( '.suggested-edits-module-wrapper' ),
 			mode = $wrapper.closest( '.growthexperiments-homepage-module' ).data( 'mode' );
 		if ( !$wrapper.length ) {
@@ -533,13 +543,15 @@
 			{
 				$element: $wrapper,
 				taskTypePresets: taskTypes,
+				topicPresets: topicFilters,
+				topicMatching: suggestedEditsConfig.GEHomepageSuggestedEditsEnableTopics,
 				mode: mode
 			},
 			new Logger(
 				mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 				mw.config.get( 'wgGEHomepagePageviewToken' )
 			) );
-		return suggestedEditsModule.fetchTasksAndUpdateView( taskTypes )
+		return suggestedEditsModule.fetchTasksAndUpdateView( taskTypes, topicFilters )
 			.then( function () {
 				suggestedEditsModule.filters.toggle( true );
 				return suggestedEditsModule.showCard();
