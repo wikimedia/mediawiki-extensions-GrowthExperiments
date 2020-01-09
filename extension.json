@@ -380,6 +380,10 @@
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
 				},
 				{
+					"name": "homepage/suggestededits/Topics.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getTopicsJson" ]
+				},
+				{
 					"name": "homepage/suggestededits/AQSConfig.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getAQSConfigJson" ]
 				},
@@ -461,7 +465,8 @@
 				"growthexperiments-homepage-suggestededits-tasktype-time-expand",
 				"growthexperiments-homepage-suggestededits-create-article-additional-message",
 				"growthexperiments-homepage-suggestededits-difficulty-filter-error",
-				"growthexperiments-homepage-suggestededits-topic-filter-select-interests"
+				"growthexperiments-homepage-suggestededits-topic-filter-select-interests",
+				"growthexperiments-homepage-suggestededits-topics-button-topic-count"
 			]
 		},
 		"ext.growthExperiments.Homepage.StartEditing": {

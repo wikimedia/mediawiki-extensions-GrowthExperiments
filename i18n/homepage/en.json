@@ -204,5 +204,6 @@
 	"growthexperiments-homepage-suggestededits-error-description": "Please try again later.",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Select at least one type of edit",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Select interests",
-	"growthexperiments-homepage-suggestededits-topics-more": "show more"
+	"growthexperiments-homepage-suggestededits-topics-more": "show more",
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|topic|topics}}"
 }

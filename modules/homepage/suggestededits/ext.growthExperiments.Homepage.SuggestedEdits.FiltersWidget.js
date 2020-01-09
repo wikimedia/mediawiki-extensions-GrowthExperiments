@@ -1,6 +1,7 @@
 ( function () {
 	'use strict';
-	var taskTypes = require( './TaskTypes.json' );
+	var taskTypes = require( './TaskTypes.json' ),
+		topicData = require( './Topics.json' );
 
 	/**
 	 * @param {Object} config Configuration options
@@ -90,15 +91,36 @@
 		taskTypeSearch, topicSearch
 	) {
 		var levels = {},
+			topicMessages = [],
+			topicLabel = '',
 			messages = [];
 
-		if ( !topicSearch.length && this.topicFilterButtonWidget ) {
-			this.topicFilterButtonWidget.setLabel(
-				mw.message( 'growthexperiments-homepage-suggestededits-topic-filter-select-interests' ).text()
-			);
-			// topicPresets will be an empty array if the user had saved topics
-			// in the past.
-			this.topicFilterButtonWidget.setFlags( !this.topicPresets ? [ 'progressive' ] : [] );
+		if ( this.topicFilterButtonWidget ) {
+			if ( !topicSearch.length ) {
+				this.topicFilterButtonWidget.setLabel(
+					mw.message( 'growthexperiments-homepage-suggestededits-topic-filter-select-interests' ).text()
+				);
+				// topicPresets will be an empty array if the user had saved topics
+				// in the past.
+				this.topicFilterButtonWidget.setFlags( !this.topicPresets ? [ 'progressive' ] : [] );
+			} else {
+				topicSearch.forEach( function ( topic ) {
+					if ( topicData[ topic ] && topicData[ topic ].name ) {
+						topicMessages.push( topicData[ topic ].name );
+					}
+				} );
+			}
+			if ( topicMessages.length ) {
+				if ( topicMessages.length < 3 ) {
+					topicLabel = topicMessages.join( mw.msg( 'comma-separator' ) );
+				} else {
+					topicLabel = mw.message(
+						'growthexperiments-homepage-suggestededits-topics-button-topic-count'
+					).params( [ mw.language.convertNumber( topicMessages.length ) ] )
+						.text();
+				}
+				this.topicFilterButtonWidget.setLabel( topicLabel );
+			}
 		}
 
 		if ( !taskTypeSearch.length ) {

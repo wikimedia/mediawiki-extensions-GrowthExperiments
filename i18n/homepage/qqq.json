@@ -211,5 +211,6 @@
 	"growthexperiments-homepage-suggestededits-error-description": "Text to use in the description of a card shown to the user when an error occurs in loading data for the suggested edits module.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Error message for when newcomer tries to exit filter without making a selection of a type of edit task (e.g. copyedit, adding links, etc.).\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Text to show if the user has not yet selected interests in topic filter dialog.\n\n{{doc-growthexperiments-homepage}}",
-	"growthexperiments-homepage-suggestededits-topics-more": "Label for the button that shows more topics to choose, beyond the initial 12. Clicking the button adds about 15 more topics.\n\n{{doc-growthexperiments-homepage}}"
+	"growthexperiments-homepage-suggestededits-topics-more": "Label for the button that shows more topics to choose, beyond the initial 12. Clicking the button adds about 15 more topics.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "Label for the topic filter button when more than 2 topics are selected. Parameters:\n* $1: Number of topics that are selected.\n\n{{doc-growthexperiments-homepage}}"
 }
