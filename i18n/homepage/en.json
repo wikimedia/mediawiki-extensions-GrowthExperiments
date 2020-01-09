@@ -187,7 +187,9 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Medium",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Hard",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Select types of edits",
+	"growthexperiments-homepage-suggestededits-topic-filters-title": "Select interests",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Done",
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "Done",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> {{PLURAL:$1|article|articles}} found",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "Copyedit",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Find references",
@@ -205,5 +207,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Select at least one type of edit",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Select interests",
 	"growthexperiments-homepage-suggestededits-topics-more": "show more",
-	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|topic|topics}}"
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|topic|topics}}",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Choose some topics {{GENDER:$1|you}} are interested in editing",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "We'll try to suggest articles that match {{GENDER:$1|your}} interests."
 }

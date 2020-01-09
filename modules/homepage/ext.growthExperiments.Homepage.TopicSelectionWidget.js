@@ -25,8 +25,10 @@ function TopicSelectionWidget( config ) {
 			id: topic.id,
 			text: topic.name,
 			confirmed: config.selectedTopics.indexOf( topic.id ) !== -1
-		} } );
-	} );
+		} } ).on( 'toggleSuggestion', function () {
+			this.emit( 'toggleSelection' );
+		}.bind( this ) );
+	}.bind( this ) );
 
 	if ( config.initialLimit >= 0 && isFinite( config.initialLimit ) ) {
 		this.displayedSuggestions = this.suggestions.slice( 0, config.initialLimit );

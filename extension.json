@@ -375,6 +375,7 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditsPreviousNextWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.FiltersWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.DifficultyFiltersDialog.js",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.TopicFiltersDialog.js",
 				{
 					"name": "homepage/suggestededits/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
@@ -404,7 +405,8 @@
 				"mediawiki.Uri",
 				"oojs-ui-widgets",
 				"oojs-ui.styles.icons-media",
-				"oojs-ui-windows"
+				"oojs-ui-windows",
+				"ext.growthExperiments.Homepage.TopicSelectionWidget"
 			],
 			"messages": [
 				"comma-separator",
@@ -466,7 +468,13 @@
 				"growthexperiments-homepage-suggestededits-create-article-additional-message",
 				"growthexperiments-homepage-suggestededits-difficulty-filter-error",
 				"growthexperiments-homepage-suggestededits-topic-filter-select-interests",
-				"growthexperiments-homepage-suggestededits-topics-button-topic-count"
+				"growthexperiments-homepage-suggestededits-topics-button-topic-count",
+				"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header",
+				"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader",
+				"growthexperiments-homepage-suggestededits-topic-filters-title",
+				"growthexperiments-homepage-suggestededits-topic-filters-close",
+				"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header",
+				"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader"
 			]
 		},
 		"ext.growthExperiments.Homepage.StartEditing": {

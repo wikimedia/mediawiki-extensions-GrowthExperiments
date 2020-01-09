@@ -194,7 +194,9 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Text to use in the label for the medium difficulty indicator beneath a task in the suggested edits module. Same as {{msg-mw|growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label}}\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Text to use in the label for the hard difficulty indicator beneath a task in the suggested edits module. Same as {{msg-mw|growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label}}\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Title of the dialog where the user can can choose which types of tasks they want to see.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-suggestededits-topic-filters-title": "Title of the dialog where the user can can choose topics of tasks they want to see. Same as {{msg-mw|growthexperiments-homepage-suggestededits-topic-filter-select-interests}}.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Label of the button that closes the task filter dialog.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "Label of the button that closes the topic filter dialog.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "Text to display in the difficulty filter dialog for suggested edits module. Parameters:\n* $1 - Number of matching articles found, can be used with PLURAL.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "{{doc-growthexperiments-homepage-suggestededits-name}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "{{doc-growthexperiments-homepage-suggestededits-name}}",
@@ -212,5 +214,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Error message for when newcomer tries to exit filter without making a selection of a type of edit task (e.g. copyedit, adding links, etc.).\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Text to show if the user has not yet selected interests in topic filter dialog.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-topics-more": "Label for the button that shows more topics to choose, beyond the initial 12. Clicking the button adds about 15 more topics.\n\n{{doc-growthexperiments-homepage}}",
-	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "Label for the topic filter button when more than 2 topics are selected. Parameters:\n* $1: Number of topics that are selected.\n\n{{doc-growthexperiments-homepage}}"
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "Label for the topic filter button when more than 2 topics are selected. Parameters:\n* $1: Number of topics that are selected.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Header element shown at the top of the topic filter dialog. Same as {{msg-mw|growthexperiments-homepage-startediting-dialog-intro-topic-selector-header}}.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Second paragraph shown at the top of the topic filter dialog. Same as {{msg-mw|growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader}}.\n\n{{doc-growthexperiments-homepage}}"
 }

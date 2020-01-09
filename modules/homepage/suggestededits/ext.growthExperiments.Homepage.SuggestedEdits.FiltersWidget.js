@@ -14,7 +14,9 @@
 	 */
 	function SuggestedEditsFiltersWidget( config, logger ) {
 		var DifficultyFiltersDialog = require( './ext.growthExperiments.Homepage.SuggestedEdits.DifficultyFiltersDialog.js' ),
+			TopicFiltersDialog = require( './ext.growthExperiments.Homepage.SuggestedEdits.TopicFiltersDialog.js' ),
 			windowManager = new OO.ui.WindowManager( { modal: true } ),
+			windows = [],
 			buttonWidgets = [];
 
 		this.mode = config.mode;
@@ -28,6 +30,18 @@
 				indicator: config.mode === 'desktop' ? null : 'down'
 			} );
 			buttonWidgets.push( this.topicFilterButtonWidget );
+			this.topicFiltersDialog = new TopicFiltersDialog( {
+				presets: config.topicPresets
+			} ).connect( this, {
+				done: function () {
+					this.emit( 'done' );
+				},
+				search: function ( search ) {
+					this.emit( 'search', search );
+				}
+			} );
+			this.topicFiltersDialog.$element.addClass( 'suggested-edits-topic-filters' );
+			windows.push( this.topicFiltersDialog );
 		}
 
 		this.difficultyFilterButtonWidget = new OO.ui.ButtonWidget( {
@@ -37,7 +51,7 @@
 		} );
 		buttonWidgets.push( this.difficultyFilterButtonWidget );
 
-		this.dialog = new DifficultyFiltersDialog( {
+		this.taskTypeFiltersDialog = new DifficultyFiltersDialog( {
 			presets: config.taskTypePresets
 		} ).connect( this, {
 			done: function () {
@@ -47,28 +61,39 @@
 				this.emit( 'search', search );
 			}
 		} );
+		windows.push( this.taskTypeFiltersDialog );
 
-		this.dialog.$element.addClass( 'suggested-edits-difficulty-filters' )
+		this.taskTypeFiltersDialog.$element.addClass( 'suggested-edits-difficulty-filters' )
 			.on( 'click', '.suggested-edits-create-article-additional-msg a', function () {
 				logger.log( 'suggested-edits', config.mode, 'link-click',
 					{ linkId: 'se-create-info' } );
 			} );
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( 'body' ).append( windowManager.$element );
-		windowManager.addWindows( [ this.dialog ] );
+		windowManager.addWindows( windows );
 		this.difficultyFilterButtonWidget.on( 'click', function () {
-			var lifecycle = windowManager.openWindow( this.dialog );
+			var lifecycle = windowManager.openWindow( this.taskTypeFiltersDialog );
 			logger.log( 'suggested-edits', config.mode, 'se-taskfilter-open' );
 			lifecycle.closing.done( function ( data ) {
 				if ( data && data.action === 'done' ) {
 					logger.log( 'suggested-edits', config.mode, 'se-taskfilter-done',
-						{ taskTypes: this.dialog.getEnabledFilters() } );
+						{ taskTypes: this.taskTypeFiltersDialog.getEnabledFilters() } );
 				} else {
 					logger.log( 'suggested-edits', config.mode, 'se-taskfilter-cancel',
-						{ taskTypes: this.dialog.getEnabledFilters() } );
+						{ taskTypes: this.taskTypeFiltersDialog.getEnabledFilters() } );
 				}
 			}.bind( this ) );
 		}.bind( this ) );
+
+		if ( this.topicFilterButtonWidget ) {
+			this.topicFilterButtonWidget.on( 'click', function () {
+				var lifecycle = windowManager.openWindow( this.topicFiltersDialog );
+				// TODO: Add instrumentation.
+				lifecycle.closing.done( function () {
+					// TODO: Add instrumentation.
+				} );
+			}.bind( this ) );
+		}
 
 		SuggestedEditsFiltersWidget.super.call( this, $.extend( {}, config, {
 			items: buttonWidgets
@@ -79,7 +104,10 @@
 	OO.inheritClass( SuggestedEditsFiltersWidget, OO.ui.ButtonGroupWidget );
 
 	SuggestedEditsFiltersWidget.prototype.updateMatchCount = function ( count ) {
-		this.dialog.updateMatchCount( count );
+		this.taskTypeFiltersDialog.updateMatchCount( count );
+		if ( this.topicFiltersDialog ) {
+			this.topicFiltersDialog.updateMatchCount( count );
+		}
 	};
 
 	/**

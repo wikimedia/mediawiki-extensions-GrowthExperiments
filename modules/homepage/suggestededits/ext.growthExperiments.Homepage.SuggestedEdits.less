@@ -49,6 +49,31 @@
 	}
 }
 
+.suggested-edits-topic-filters {
+	.suggested-edits-article-count {
+		padding-left: 5px;
+		color: @colorGray5;
+	}
+
+	&-topic-selector {
+		.wbmad-suggestion {
+			line-height: 1.6;
+
+			.oo-ui-labelWidget {
+				// HACK use transition instead of animation for moving text left, so that the
+				// animation doesn't happen when suggestions are revealed with "show more"
+				.transition-transform( 200ms );
+				animation: none;
+			}
+		}
+
+		.wbmad-suggestion-wrapper {
+			margin-right: 0.25em;
+			margin-bottom: 0.5em;
+		}
+	}
+}
+
 .suggested-edits-taskexplanation-additional-info {
 	display: flex;
 	justify-content: center;
