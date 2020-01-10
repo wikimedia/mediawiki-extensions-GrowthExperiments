@@ -11,7 +11,8 @@
 			"Trizek",
 			"Verdy p",
 			"Vega",
-			"LeGuyanaisPure"
+			"LeGuyanaisPure",
+			"Eneelk"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|}}Bonjour, {{bidi:$1}} !",
@@ -59,6 +60,8 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo": "<strong>Lorsque {{GENDER:|}}vous avez créé votre compte, vous avez indiqué vouloir corriger des fautes ou erreurs.</strong> Ici, vous trouvez des suggestions de petites modifications pour démarrer. Si vous préférez passer directement à la correction d’un article particulier, vous pouvez cliquer « {{int:growthexperiments-homepage-startediting-dialog-intro-back}} », rechercher l’article et cliquer « {{int:vector-view-edit}} ».",
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>Lorsque {{GENDER:|}}vous avez créé votre compte, vous avez indiqué vouloir ajouter ou modifier des informations sur un article existant.</strong> Ici, vous trouvez des suggestions de petites modifications pour démarrer. Si vous préférez passer directement à la modification d’un article particulier, vous pouvez cliquer « {{int:growthexperiments-homepage-startediting-dialog-intro-back}} », rechercher l’article et cliquer « {{int:vector-view-edit}} ».",
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>Lorsque {{GENDER:|}}vous avez créé votre compte, vous avez indiqué vouloir créer un nouvel article.</strong> C’est une façon importante mais éprouvante de contribuer, aussi nous vous recommandons d’essayer d’abord par quelques modification simples des articles existants. Si vous préférez passer directement à la création d’un nouvel article, vous pouvez [$1 savoir ici comment procéder].",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Choisissez quelques sujets qui {{GENDER:|vous}} intéressent de modifier",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "Nous essayerons de suggérer des articles correspondant à {{GENDER:|vos}} intérêts.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Retour",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Obtenir les suggestions",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Fait",
@@ -206,5 +209,7 @@
 	"growthexperiments-homepage-suggestededits-create-article-additional-message": "Pour créer un nouvel article avec succès, {{GENDER:$1|}}vous aurez besoin d’utiliser diverses compétences que vous pouvez acquérir en complétant quelques tâches plus faciles. Pour en savoir plus sur la façon de créer un nouvel article, [$2 cliquez ici].",
 	"growthexperiments-homepage-suggestededits-error-title": "Aucune modification suggérée n’est disponible pour le moment.",
 	"growthexperiments-homepage-suggestededits-error-description": "Veuillez réessayer plus tard.",
-	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Sélectionnez au moins un type de modification"
+	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Sélectionnez au moins un type de modification",
+	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Sélectionner des intérêts",
+	"growthexperiments-homepage-suggestededits-topics-more": "afficher plus"
 }

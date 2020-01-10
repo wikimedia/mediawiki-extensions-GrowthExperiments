@@ -52,6 +52,8 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo": "<strong>當{{GENDER:|您}}建立完成{{GENDER:|您的}}帳號，且{{GENDER:|您}}認為{{GENDER:|您}}想要先修正錯字或錯誤內容。</strong>在這裡{{GENDER:|您}}可以找到一些小編輯的建議來開始。如果{{GENDER:|您}}比較想要先直接修正特定的條目，{{GENDER:|您}}可以點擊「{{int:growthexperiments-homepage-startediting-dialog-intro-back}}」後搜尋條目，並點擊「{{int:vector-view-edit}}」。",
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>當{{GENDER:|您}}建立完成{{GENDER:|您的}}帳號，且{{GENDER:|您}}認為{{GENDER:|您}}想要先添加或更改現有條目的資訊內容。</strong>在這裡{{GENDER:|您}}可以找到一些小編輯的建議來開始。如果{{GENDER:|您}}比較想要先直接更改特定的條目，可以點擊「{{int:growthexperiments-homepage-startediting-dialog-intro-back}}」後搜尋條目，並點擊「{{int:vector-view-edit}}」。",
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>當{{GENDER:|您}}建立完成{{GENDER:|您的}}帳號，且{{GENDER:|您}}認為{{GENDER:|您}}想要先建立一個新條目。</strong>這會是個重要但比較具挑戰性的編輯方式，因此我們建議{{GENDER:|您}}先嘗試一些簡單的編輯。如果{{GENDER:|您}}比較想要先直接建立一個新條目，{{GENDER:|您}}可以[$1 點擊這裡]來了解如何進行。",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "挑選一些{{GENDER:|您}}有興趣編輯的主題",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "我們會嘗試建議符合{{GENDER:|您的}}興趣的條目。",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "上一步驟",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "取得建議",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "完成",
@@ -199,5 +201,8 @@
 	"growthexperiments-homepage-suggestededits-create-article-additional-message": "要成功建立一個新條目，{{GENDER:$1|您會}}需要使用到許多您可以透過完成一些較簡易任務來學習到的技巧。要了解更多如何建立一個新條目，[$2 請按這裡]。",
 	"growthexperiments-homepage-suggestededits-error-title": "在此刻沒有可用的建議編輯。",
 	"growthexperiments-homepage-suggestededits-error-description": "請稍後重試。",
-	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "選擇至少一種編輯類型。"
+	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "選擇至少一種編輯類型。",
+	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "選擇興趣",
+	"growthexperiments-homepage-suggestededits-topics-more": "顯示更多",
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|個主題}}"
 }
