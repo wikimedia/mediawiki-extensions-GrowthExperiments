@@ -1,7 +1,7 @@
 'use strict';
 
 var TopicFiltersDialog,
-	TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.TopicSelectionWidget' );
+	TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).TopicSelectionWidget;
 
 /**
  * Class for handling UI changes to topic filters.

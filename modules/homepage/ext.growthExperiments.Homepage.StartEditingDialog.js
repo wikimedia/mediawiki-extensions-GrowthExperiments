@@ -1,4 +1,4 @@
-var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.TopicSelectionWidget' );
+var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).TopicSelectionWidget;
 
 /**
  * @param {Object} config

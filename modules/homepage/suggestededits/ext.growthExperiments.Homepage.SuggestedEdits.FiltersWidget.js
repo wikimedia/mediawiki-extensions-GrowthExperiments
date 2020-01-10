@@ -1,7 +1,7 @@
 ( function () {
 	'use strict';
 	var taskTypes = require( './TaskTypes.json' ),
-		topicData = require( './Topics.json' );
+		topicData = require( 'ext.growthExperiments.Homepage.Topics' ).topics;
 
 	/**
 	 * @param {Object} config Configuration options

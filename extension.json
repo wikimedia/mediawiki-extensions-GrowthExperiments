@@ -342,8 +342,9 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.Homepage.TopicSelectionWidget": {
+		"ext.growthExperiments.Homepage.Topics": {
 			"packageFiles": [
+				"homepage/ext.growthExperiments.Homepage.Topics.js",
 				"homepage/ext.growthExperiments.Homepage.TopicSelectionWidget.js",
 				"homepage/ext.growthExperiments.Homepage.SuggestionWidget.js",
 				"homepage/ext.growthExperiments.Homepage.SuggestionGroupWidget.js",
@@ -381,10 +382,6 @@
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
 				},
 				{
-					"name": "homepage/suggestededits/Topics.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getTopicsJson" ]
-				},
-				{
 					"name": "homepage/suggestededits/AQSConfig.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getAQSConfigJson" ]
 				},
@@ -406,7 +403,7 @@
 				"oojs-ui-widgets",
 				"oojs-ui.styles.icons-media",
 				"oojs-ui-windows",
-				"ext.growthExperiments.Homepage.TopicSelectionWidget"
+				"ext.growthExperiments.Homepage.Topics"
 			],
 			"messages": [
 				"comma-separator",
@@ -526,7 +523,7 @@
 				"mediawiki.util",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
-				"ext.growthExperiments.Homepage.TopicSelectionWidget"
+				"ext.growthExperiments.Homepage.Topics"
 			],
 			"targets": [
 				"desktop",
