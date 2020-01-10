@@ -148,11 +148,13 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 				// or closing the dialog.
 				this.setPendingElement( this.$activateButton );
 				settings = {
-					'growthexperiments-homepage-suggestededits-activated': 1,
-					'growthexperiments-homepage-se-topic-filters': this.topicSelector.getSelectedTopics().length > 0 ?
-						JSON.stringify( this.topicSelector.getSelectedTopics() ) :
-						null
+					'growthexperiments-homepage-suggestededits-activated': 1
 				};
+				if ( this.topicSelector ) {
+					settings[ 'growthexperiments-homepage-se-topic-filters' ] = this.topicSelector.getSelectedTopics().length > 0 ?
+						JSON.stringify( this.topicSelector.getSelectedTopics() ) :
+						null;
+				}
 				return new mw.Api().saveOptions( settings )
 					.then( function () {
 						mw.user.options.set( settings );
