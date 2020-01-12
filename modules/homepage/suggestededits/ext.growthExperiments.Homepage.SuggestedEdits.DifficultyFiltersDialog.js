@@ -226,11 +226,6 @@ DifficultyFiltersDialog.prototype.getActionProcess = function ( action ) {
 				this.close( { action: 'done' } );
 			}
 			if ( action === 'cancel' ) {
-				if ( !this.getEnabledFilters().length ) {
-					// User has deselected all filters, so ensure they're deselected when dialog
-					// re-opens.
-					this.config.presets = [];
-				}
 				if ( JSON.stringify( this.getEnabledFilters() ) !==
 					JSON.stringify( this.config.presets ) ) {
 					// User has canceled and the filters they interacted with
@@ -243,10 +238,16 @@ DifficultyFiltersDialog.prototype.getActionProcess = function ( action ) {
 		}, this );
 };
 
+DifficultyFiltersDialog.prototype.updateFiltersFromState = function () {
+	this.easyFilters.selectItemsByData( this.config.presets );
+	this.mediumFilters.selectItemsByData( this.config.presets );
+	this.hardFilters.selectItemsByData( this.config.presets );
+};
+
 DifficultyFiltersDialog.prototype.getSetupProcess = function ( data ) {
 	return DifficultyFiltersDialog.super.prototype.getSetupProcess.call( this, data )
 		.next( function () {
-			this.buildCheckboxFilters();
+			this.updateFiltersFromState();
 			this.actions.get()[ 0 ].setDisabled( !this.getEnabledFilters().length );
 		}, this );
 };

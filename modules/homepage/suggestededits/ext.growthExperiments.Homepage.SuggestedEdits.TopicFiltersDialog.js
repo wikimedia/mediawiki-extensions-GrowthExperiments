@@ -100,7 +100,7 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 	this.content.$element.append( $topicSelectorWrapper );
 };
 
-TopicFiltersDialog.prototype.updateTopicFiltersFromState = function () {
+TopicFiltersDialog.prototype.updateFiltersFromState = function () {
 	this.topicSelector.suggestions.forEach( function ( suggestion ) {
 		suggestion.confirmed = this.config.presets.indexOf( suggestion.suggestionData.id ) > -1;
 		suggestion.update();
@@ -167,7 +167,7 @@ TopicFiltersDialog.prototype.getActionProcess = function ( action ) {
 TopicFiltersDialog.prototype.getSetupProcess = function ( data ) {
 	return TopicFiltersDialog.super.prototype.getSetupProcess.call( this, data )
 		.next( function () {
-			this.updateTopicFiltersFromState();
+			this.updateFiltersFromState();
 		}, this );
 };
 
