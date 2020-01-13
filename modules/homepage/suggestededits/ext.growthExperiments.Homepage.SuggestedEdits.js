@@ -124,7 +124,8 @@
 	 *   - tasks: a list of task data objects
 	 */
 	SuggestedEditsModule.prototype.fetchTasks = function () {
-		var apiParams, actionApiPromise, finalPromise;
+		var apiParams, actionApiPromise, finalPromise,
+			url = new mw.Uri( window.location.href );
 
 		if ( !this.taskTypesQuery.length ) {
 			// No point in doing the query if no task types are allowed.
@@ -154,6 +155,10 @@
 		if ( this.topicsQuery && this.topicsQuery.length ) {
 			apiParams.ggttopics = this.topicsQuery.join( '|' );
 		}
+		if ( url.query.debug ) {
+			apiParams.debug = 1;
+		}
+
 		actionApiPromise = new mw.Api().get( apiParams );
 		finalPromise = actionApiPromise.then( function ( data ) {
 			var tasks = [];
