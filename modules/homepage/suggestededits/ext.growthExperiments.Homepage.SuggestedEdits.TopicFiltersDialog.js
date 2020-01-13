@@ -195,15 +195,8 @@ TopicFiltersDialog.prototype.getActionProcess = function ( action ) {
 				this.close( { action: 'done' } );
 			}
 			if ( action === 'cancel' ) {
-				// FIXME: Back up the task queue and pager and restore
-				// previous state if user cancels.
-				if ( JSON.stringify( this.getEnabledFilters() ) !==
-					JSON.stringify( this.config.presets ) ) {
-					// User has canceled and the filters they interacted with
-					// differ from what they had selected when the dialog opened,
-					// so perform a search with their original settings.
-					this.emit( 'search', null, this.config.presets );
-				}
+				this.updateFiltersFromState();
+				this.emit( 'cancel' );
 				this.close( { action: 'cancel' } );
 			}
 		}, this );

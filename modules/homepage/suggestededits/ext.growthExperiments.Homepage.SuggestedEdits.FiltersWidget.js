@@ -41,6 +41,9 @@
 				},
 				expand: function () {
 					logger.log( 'suggested-edits', config.mode, 'se-topicfilter-more-click' );
+				},
+				cancel: function () {
+					this.emit( 'cancel' );
 				}
 			} );
 			this.topicFiltersDialog.$element.addClass( 'suggested-edits-topic-filters' );
@@ -62,6 +65,9 @@
 			},
 			search: function ( search ) {
 				this.emit( 'search', search );
+			},
+			cancel: function () {
+				this.emit( 'cancel' );
 			}
 		} );
 		windows.push( this.taskTypeFiltersDialog );
@@ -77,6 +83,7 @@
 		this.difficultyFilterButtonWidget.on( 'click', function () {
 			var lifecycle = windowManager.openWindow( this.taskTypeFiltersDialog );
 			logger.log( 'suggested-edits', config.mode, 'se-taskfilter-open' );
+			this.emit( 'open' );
 			lifecycle.closing.done( function ( data ) {
 				if ( data && data.action === 'done' ) {
 					logger.log( 'suggested-edits', config.mode, 'se-taskfilter-done',
@@ -93,6 +100,7 @@
 				var lifecycle = windowManager.openWindow( this.topicFiltersDialog );
 				logger.log( 'suggested-edits', config.mode, 'se-topicfilter-open',
 					{ topics: this.topicFiltersDialog.getEnabledFilters() } );
+				this.emit( 'open' );
 				lifecycle.closing.done( function ( data ) {
 					if ( data && data.action === 'done' ) {
 						logger.log( 'suggested-edits', config.mode, 'se-topicfilter-done', {

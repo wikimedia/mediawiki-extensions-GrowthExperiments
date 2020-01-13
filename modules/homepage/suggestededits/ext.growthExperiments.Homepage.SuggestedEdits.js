@@ -41,6 +41,10 @@
 		this.taskTypesQuery = [];
 		this.topicsQuery = [];
 		this.api = api;
+		// Allow restoring on cancel.
+		this.backup = {};
+		this.backup.taskQueue = [];
+		this.backup.queuePosition = 0;
 
 		this.filters = new FiltersButtonGroupWidget( {
 			taskTypePresets: config.taskTypePresets,
@@ -50,7 +54,9 @@
 		}, logger )
 			.connect( this, {
 				search: 'fetchTasksAndUpdateView',
-				done: 'filterSelection'
+				done: 'filterSelection',
+				cancel: 'restoreState',
+				open: 'backupState'
 			} )
 			.toggle( false );
 
@@ -101,6 +107,17 @@
 	}
 
 	OO.inheritClass( SuggestedEditsModule, OO.ui.Widget );
+
+	SuggestedEditsModule.prototype.backupState = function () {
+		this.backup.taskQueue = this.taskQueue;
+		this.backup.queuePosition = this.queuePosition;
+	};
+
+	SuggestedEditsModule.prototype.restoreState = function () {
+		this.taskQueue = this.backup.taskQueue;
+		this.queuePosition = this.backup.queuePosition;
+		this.showCard();
+	};
 
 	/**
 	 * User has clicked "Done" in the dialog after selecting filters.
@@ -454,7 +471,7 @@
 	SuggestedEditsModule.prototype.updateControls = function () {
 		this.setFilterQueriesFromDialogState();
 		this.filters.toggle( true );
-		this.filters.updateButtonLabelAndIcon( this.taskTypesQuery, this.topicsQuery || [] );
+		this.filters.updateButtonLabelAndIcon( this.taskTypesQuery, this.topicsQuery );
 		this.updatePager();
 		this.updatePreviousNextButtons();
 		this.updateTaskExplanationWidget();
