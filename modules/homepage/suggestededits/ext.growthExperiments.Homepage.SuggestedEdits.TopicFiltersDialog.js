@@ -146,9 +146,25 @@ TopicFiltersDialog.prototype.updateMatchCount = function ( count ) {
 	this.footerPanelLayout.toggle( true );
 };
 
+/**
+ * Set and save topic filter preferences for the user.
+ *
+ * @return {jQuery.Promise}
+ */
 TopicFiltersDialog.prototype.savePreferences = function () {
-	return new mw.Api().saveOption( 'growthexperiments-homepage-se-topic-filters',
-		this.getEnabledFilters().length > 0 ? JSON.stringify( this.getEnabledFilters() ) : null );
+	// If existing preference is null, that means the user never saved a change
+	// to the topics, so we should continue to save null. Otherwise for empty filters
+	// save a JSON encoded empty array..
+	var prefName = 'growthexperiments-homepage-se-topic-filters',
+		prefValueHasBeenSetBefore = mw.user.options.get( prefName ),
+		prefValue;
+	if ( !this.getEnabledFilters().length ) {
+		prefValue = prefValueHasBeenSetBefore ? JSON.stringify( [] ) : null;
+	} else {
+		prefValue = JSON.stringify( this.getEnabledFilters() );
+	}
+	mw.user.options.set( prefName, prefValue );
+	return new mw.Api().saveOption( prefName, prefValue );
 };
 
 TopicFiltersDialog.prototype.getActionProcess = function ( action ) {
