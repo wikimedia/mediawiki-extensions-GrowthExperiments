@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Linker\LinkTarget;
+use SearchEngine;
 use SearchEngineFactory;
 use SpecialPage;
 use StatusValue;
@@ -50,6 +51,10 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 		$searchEngine->setLimitOffset( $limit, $offset );
 		$searchEngine->setNamespaces( [ NS_MAIN ] );
 		$searchEngine->setShowSuggestion( false );
+		$searchEngine->setFeatureData(
+			SearchEngine::FT_QUERY_INDEP_PROFILE_TYPE,
+			'classic_noboostlinks'
+		);
 		if ( in_array( 'random', $searchEngine->getValidSorts(), true ) ) {
 			$searchEngine->setSort( 'random' );
 		}
