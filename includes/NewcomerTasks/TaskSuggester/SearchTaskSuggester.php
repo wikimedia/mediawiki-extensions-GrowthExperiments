@@ -104,23 +104,29 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 				continue;
 			}
 
-			$searchTerm = $this->getSearchTerm( $taskType, $topics );
-			$matches = $this->search( $taskType, $searchTerm, $limit, $offset, $debug );
-			if ( $matches instanceof StatusValue ) {
-				// Only log when there's a logger; Status::getWikiText would break unit tests.
-				if ( !$this->logger instanceof NullLogger ) {
-					$this->logger->warning( 'Search error: {message}', [
-						'message' => Status::wrap( $matches )->getWikiText( false, false, 'en' ),
-						'searchTerm' => $searchTerm,
-						'limit' => $limit,
-						'offset' => $offset,
-					] );
+			// FIXME Ideally we should do a single search for all topics, but currently this
+			//   runs into query lenght limits (T242560)
+			foreach ( ( $topics ?: [ null ] ) as $topic ) {
+				/** @var Topic|null $topic */
+				$searchTerm = $this->getSearchTerm( $taskType, $topic ? [ $topic ] : [] );
+				$matches = $this->search( $taskType, $searchTerm, $limit, $offset, $debug );
+				if ( $matches instanceof StatusValue ) {
+					// Only log when there's a logger; Status::getWikiText would break unit tests.
+					if ( !$this->logger instanceof NullLogger ) {
+						$this->logger->warning( 'Search error: {message}', [
+							'message' => Status::wrap( $matches )->getWikiText( false, false, 'en' ),
+							'searchTerm' => $searchTerm,
+							'limit' => $limit,
+							'offset' => $offset,
+						] );
+					}
+					return $matches;
 				}
-				return $matches;
-			}
 
-			$totalCount += $matches->getTotalHits();
-			$matchIterator->attachIterator( Util::getIteratorFromTraversable( $matches ), $taskTypeId );
+				$totalCount += $matches->getTotalHits();
+				$matchIterator->attachIterator( Util::getIteratorFromTraversable( $matches ),
+					$taskTypeId . ':' . ( $topic ? $topic->getId() : '-' ) );
+			}
 		}
 
 		$taskCount = 0;
@@ -129,8 +135,14 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			foreach ( array_filter( $matchSlice ) as $type => $match ) {
 				// TODO: Filter out pages that are protected.
 				/** @var $match SearchResult */
-				$taskType = $this->taskTypes[$type];
-				$suggestions[] = new TemplateBasedTask( $taskType, $match->getTitle() );
+				list( $taskTypeId, $topicId ) = explode( ':', $type );
+				$taskType = $this->taskTypes[$taskTypeId];
+				$task = new TemplateBasedTask( $taskType, $match->getTitle() );
+				if ( $topicId !== '-' ) {
+					$topic = $this->topics[$topicId];
+					$task->setTopics( [ $topic ] );
+				}
+				$suggestions[] = $task;
 				$taskCount++;
 				if ( $taskCount >= $limit ) {
 					break 2;
