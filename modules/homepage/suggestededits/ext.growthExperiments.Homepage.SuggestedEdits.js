@@ -155,8 +155,8 @@
 		if ( this.topicsQuery && this.topicsQuery.length ) {
 			apiParams.ggttopics = this.topicsQuery.join( '|' );
 		}
-		if ( url.query.debug ) {
-			apiParams.debug = 1;
+		if ( 'debug' in url.query ) {
+			apiParams.ggtdebug = 1;
 		}
 
 		actionApiPromise = new mw.Api().get( apiParams );
@@ -190,6 +190,15 @@
 					.map( cleanUpData )
 					// Maximum number of tasks in the queue is always 200.
 					.slice( 0, 200 );
+			}
+			if ( data.growthtasks.debug && data.growthtasks.debug.searchDebugUrls ) {
+				Object.keys( data.growthtasks.debug.searchDebugUrls ).forEach( function ( type ) {
+					var url = data.growthtasks.debug.searchDebugUrls[ type ],
+						// eslint-disable-next-line no-console
+						consoleInfo = console && console.info && console.info.bind( console ) ||
+							mw.log;
+					consoleInfo( 'GrowthExperiments ' + type + ' query:', url );
+				} );
 			}
 			return {
 				count: data.growthtasks.totalCount,
