@@ -61,9 +61,6 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 	 */
 	protected function run( ApiPageSet $resultPageSet = null ) {
 		$user = $this->getUser();
-		if ( $user->isAnon() ) {
-			$this->dieWithError( [ 'apierror-mustbeloggedin-generic' ] );
-		}
 		$params = $this->extractRequestParams();
 		$taskTypes = $params['tasktypes'];
 		$topics = $params['topics'];

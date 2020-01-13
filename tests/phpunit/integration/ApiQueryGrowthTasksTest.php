@@ -13,7 +13,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use StatusValue;
 use TitleValue;
-use User;
 
 /**
  * @group API
@@ -92,19 +91,6 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$this->expectExceptionMessage( 'foo' );
 
 		$this->doApiRequest( [ 'action' => 'query', 'list' => 'growthtasks' ] );
-	}
-
-	public function testMustBeLoggedIn() {
-		$suggester = new StaticTaskSuggester( [] );
-		$configurationLoader = new StaticConfigurationLoader( [] );
-		$this->setService( 'GrowthExperimentsTaskSuggester', $suggester );
-		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
-
-		$this->expectException( ApiUsageException::class );
-		$this->expectExceptionMessage( 'You must be logged in.' );
-
-		$this->doApiRequest( [ 'action' => 'query', 'list' => 'growthtasks' ],
-			null, null, new User() );
 	}
 
 	public function testGetAllowedParams() {
