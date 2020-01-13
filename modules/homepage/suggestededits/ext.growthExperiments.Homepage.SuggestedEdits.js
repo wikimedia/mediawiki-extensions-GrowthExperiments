@@ -260,6 +260,7 @@
 				// Don't show error card for XHR abort.
 				return;
 			}
+			mw.log.error( 'Fetching task suggestions failed:', error, details );
 			// TODO log more information about the error
 			this.logger.log( 'suggested-edits', this.mode, 'se-task-pseudo-impression',
 				{ type: 'error' } );
