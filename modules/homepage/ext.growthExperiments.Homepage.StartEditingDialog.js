@@ -127,7 +127,7 @@ StartEditingDialog.prototype.getSetupProcess = function ( data ) {
 };
 
 StartEditingDialog.prototype.getActionProcess = function ( action ) {
-	var dialog = this, settings;
+	var dialog = this, settings, logData;
 	return StartEditingDialog.super.prototype.getActionProcess.call( this, action )
 		.next( function () {
 			if ( action === 'close' ) {
@@ -150,15 +150,18 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 				settings = {
 					'growthexperiments-homepage-suggestededits-activated': 1
 				};
+				logData = {};
 				if ( this.topicSelector ) {
 					settings[ 'growthexperiments-homepage-se-topic-filters' ] = this.topicSelector.getSelectedTopics().length > 0 ?
 						JSON.stringify( this.topicSelector.getSelectedTopics() ) :
 						null;
+					logData.topics = this.topicSelector.getSelectedTopics();
+					logData.topicsAboveFold = this.topicSelector.getAboveFoldSelectedTopics();
 				}
 				return new mw.Api().saveOptions( settings )
 					.then( function () {
 						mw.user.options.set( settings );
-						this.logger.log( 'start-startediting', this.mode, 'se-activate' );
+						this.logger.log( 'start-startediting', this.mode, 'se-activate', logData );
 						return this.setupSuggestedEditsModule();
 					}.bind( this ) ).then( function () {
 						dialog.close( { action: 'activate' } );
@@ -271,7 +274,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 			);
 
 		this.topicSelector = new TopicSelectionWidget();
-		this.topicSelector.connect( this, { expand: 'updateSize' } );
+		this.topicSelector.connect( this, { expand: 'onTopicSelectorExpand' } );
 		$topicSelectorWrapper = $( '<div>' )
 			.addClass( 'mw-ge-startediting-dialog-intro-topic-selector' )
 			.append(
@@ -421,6 +424,11 @@ StartEditingDialog.prototype.buildProgressIndicator = function ( currentPage, to
 	);
 
 	return $indicator;
+};
+
+StartEditingDialog.prototype.onTopicSelectorExpand = function () {
+	this.updateSize();
+	this.logger.log( 'start-startediting', this.mode, 'se-cta-more-click' );
 };
 
 /**

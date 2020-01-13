@@ -38,6 +38,9 @@
 				},
 				search: function ( search ) {
 					this.emit( 'search', search );
+				},
+				expand: function () {
+					logger.log( 'suggested-edits', config.mode, 'se-topicfilter-more-click' );
 				}
 			} );
 			this.topicFiltersDialog.$element.addClass( 'suggested-edits-topic-filters' );
@@ -88,10 +91,19 @@
 		if ( this.topicFilterButtonWidget ) {
 			this.topicFilterButtonWidget.on( 'click', function () {
 				var lifecycle = windowManager.openWindow( this.topicFiltersDialog );
-				// TODO: Add instrumentation.
-				lifecycle.closing.done( function () {
-					// TODO: Add instrumentation.
-				} );
+				logger.log( 'suggested-edits', config.mode, 'se-topicfilter-open',
+					{ topics: this.topicFiltersDialog.getEnabledFilters() } );
+				lifecycle.closing.done( function ( data ) {
+					if ( data && data.action === 'done' ) {
+						logger.log( 'suggested-edits', config.mode, 'se-topicfilter-done', {
+							topics: this.topicFiltersDialog.getEnabledFilters(),
+							topicsAboveFold: this.topicFiltersDialog.getAboveFoldEnabledFilters()
+						} );
+					} else {
+						logger.log( 'suggested-edits', config.mode, 'se-topicfilter-cancel',
+							{ topics: this.topicFiltersDialog.getEnabledFilters() } );
+					}
+				}.bind( this ) );
 			}.bind( this ) );
 		}
 
