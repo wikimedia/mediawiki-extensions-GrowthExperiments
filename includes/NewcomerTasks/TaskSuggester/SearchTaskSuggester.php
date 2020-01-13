@@ -73,7 +73,8 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		array $taskTypeFilter = null,
 		array $topicFilter = null,
 		$limit = null,
-		$offset = null
+		$offset = null,
+		$debug = false
 	) {
 		// FIXME these should apply user settings.
 		$taskTypeFilter = $taskTypeFilter ?? array_keys( $this->taskTypes );
@@ -104,7 +105,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			}
 
 			$searchTerm = $this->getSearchTerm( $taskType, $topics );
-			$matches = $this->search( $searchTerm, $limit, $offset );
+			$matches = $this->search( $taskType, $searchTerm, $limit, $offset, $debug );
 			if ( $matches instanceof StatusValue ) {
 				// Only log when there's a logger; Status::getWikiText would break unit tests.
 				if ( !$this->logger instanceof NullLogger ) {
@@ -148,7 +149,11 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			shuffle( $suggestions );
 		}
 
-		return new TaskSet( $suggestions, $totalCount, $offset );
+		$taskSet = new TaskSet( $suggestions, $totalCount, $offset );
+		if ( $debug ) {
+			$this->setDebugData( $taskSet );
+		}
+		return $taskSet;
 	}
 
 	/**
@@ -170,12 +175,21 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	}
 
 	/**
+	 * @param TaskType $taskType For debugging purposes only.
 	 * @param string $searchTerm
 	 * @param int $limit
 	 * @param int $offset
+	 * @param bool $debug Store debug data so it can be set in setDebugData()
 	 * @return ISearchResultSet|StatusValue Search results, or StatusValue on error.
 	 */
-	abstract protected function search( $searchTerm, $limit, $offset );
+	abstract protected function search( $taskType, $searchTerm, $limit, $offset, $debug );
+
+	/**
+	 * Set extra debug data. Only called in debug mode.
+	 * @param TaskSet $taskSet
+	 * @return void
+	 */
+	abstract protected function setDebugData( TaskSet $taskSet ) : void;
 
 	/**
 	 * @param LinkTarget[] $templates

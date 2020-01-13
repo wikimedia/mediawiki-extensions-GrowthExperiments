@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use FauxSearchResultSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
@@ -26,6 +27,9 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 
 	/** @var string Remote API URL including api.php */
 	private $apiUrl;
+
+	/** @var string[] URLs with further CirrusSearch debug data */
+	private $searchDebugUrls = [];
 
 	/**
 	 * @param TemplateProvider $templateProvider
@@ -52,10 +56,10 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 	}
 
 	/** @inheritDoc */
-	protected function search( $searchTerm, $limit, $offset ) {
+	protected function search( $taskType, $searchTerm, $limit, $offset, $debug ) {
 		// We randomize the results so offsets are meaningless.
 		// TODO use fixed random seed.
-		$status = Util::getApiUrl( $this->requestFactory, $this->apiUrl, [
+		$params = [
 			'action' => 'query',
 			'list' => 'search',
 			'srsearch' => $searchTerm,
@@ -66,7 +70,8 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 			'srsort' => 'random',
 			// Convenient for debugging. Production setups should use LocalSearchTaskSuggester anyway.
 			'errorlang' => 'en',
-		] );
+		];
+		$status = Util::getApiUrl( $this->requestFactory, $this->apiUrl, $params );
 		if ( !$status->isOK() ) {
 			return $status;
 		}
@@ -77,7 +82,21 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 			$results[] = $this->titleFactory->newFromText( $result['title'], $result['ns'] );
 		}
 		$resultSet = new FauxSearchResultSet( $results, (int)$data['query']['searchinfo']['totalhits'] );
+
+		if ( $debug ) {
+			// Add Cirrus debug dump URLs which show the details of how the scores were calculated.
+			$this->searchDebugUrls[$taskType->getId()] = $this->apiUrl . '?' . wfArrayToCgi( $params, [
+				'cirrusDumpResult' => 1,
+				'cirrusExplain' => 'pretty',
+			] );
+		}
+
 		return $resultSet;
+	}
+
+	/** @inheritDoc */
+	protected function setDebugData( TaskSet $taskSet ) : void {
+		$taskSet->setDebugData( [ 'searchDebugUrls' => $this->searchDebugUrls ] );
 	}
 
 }

@@ -3,11 +3,13 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use ApiRawMessage;
+use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Linker\LinkTarget;
 use SearchEngineFactory;
+use SpecialPage;
 use StatusValue;
 
 class LocalSearchTaskSuggester extends SearchTaskSuggester {
@@ -17,6 +19,9 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 
 	/** @var SearchEngineFactory */
 	private $searchEngineFactory;
+
+	/** @var string[] URLs with further CirrusSearch debug data */
+	private $searchDebugUrls = [];
 
 	/**
 	 * @param SearchEngineFactory $searchEngineFactory
@@ -40,7 +45,7 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	/**
 	 * @inheritDoc
 	 */
-	protected function search( $searchTerm, $limit, $offset ) {
+	protected function search( $taskType, $searchTerm, $limit, $offset, $debug ) {
 		$searchEngine = $this->searchEngineFactory->create();
 		$searchEngine->setLimitOffset( $limit, $offset );
 		$searchEngine->setNamespaces( [ NS_MAIN ] );
@@ -62,6 +67,21 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 				'grothexperiments-no-fulltext-search'
 			) );
 		}
+		if ( $debug ) {
+			$this->searchDebugUrls[$taskType->getId()] = SpecialPage::getTitleFor( 'Search' )->getFullURL( [
+				'search' => $searchTerm,
+				'fulltext' => 1,
+				'ns0' => 1,
+				'limit' => $limit,
+				'offset' => $offset,
+			], false, PROTO_CANONICAL );
+		}
 		return $matches;
 	}
+
+	/** @inheritDoc */
+	protected function setDebugData( TaskSet $taskSet ) : void {
+		$taskSet->setDebugData( [ 'searchDebugUrls' => $this->searchDebugUrls ] );
+	}
+
 }

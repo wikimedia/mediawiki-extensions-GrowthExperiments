@@ -69,9 +69,10 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		$topics = $params['topics'];
 		$limit = $params['limit'];
 		$offset = $params['offset'];
+		$debug = $params['debug'];
 
 		/** @var TaskSet $tasks */
-		$tasks = $this->taskSuggester->suggest( $user, $taskTypes, $topics, $limit, $offset );
+		$tasks = $this->taskSuggester->suggest( $user, $taskTypes, $topics, $limit, $offset, $debug );
 		if ( $tasks instanceof StatusValue ) {
 			$this->dieStatus( $tasks );
 		}
@@ -122,9 +123,15 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		if ( $resultPageSet ) {
 			$resultPageSet->populateFromTitles( $titles );
 			$result->addValue( $this->getModuleName(), 'totalCount', $tasks->getTotalCount() );
+			if ( $debug ) {
+				$result->addValue( $this->getModuleName(), 'debug', $tasks->getDebugData() );
+			}
 		} else {
 			$result->addValue( $basePath, 'totalCount', $tasks->getTotalCount() );
 			$result->addIndexedTagName( array_merge( $basePath, [ 'suggestions' ] ), 'suggestion' );
+			if ( $debug ) {
+				$result->addValue( $basePath, 'debug', $tasks->getDebugData() );
+			}
 		}
 
 		// TODO: EventLogging?
@@ -165,6 +172,9 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_MIN => 1,
 				ApiBase::PARAM_RANGE_ENFORCE => true,
 				ApiBase::PARAM_HELP_MSG => 'api-help-param-continue',
+			],
+			'debug' => [
+				ApiBase::PARAM_TYPE => 'boolean',
 			],
 		];
 	}

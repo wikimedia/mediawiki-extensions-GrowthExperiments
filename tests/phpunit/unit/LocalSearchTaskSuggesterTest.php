@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use ApiRawMessage;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use ISearchResultSet;
 use MediaWikiUnitTestCase;
@@ -36,7 +37,8 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$templateProvider = $this->getMockTemplateProvider();
 		$suggester = new LocalSearchTaskSuggester( $searchEngineFactory, $templateProvider, [], [], [] );
 		$wrappedSuggester = TestingAccessWrapper::newFromObject( $suggester );
-		$result = $wrappedSuggester->search( $searchTerm, $limit, $offset );
+		$taskType = new TaskType( 'fake; wont be used', TaskType::DIFFICULTY_EASY );
+		$result = $wrappedSuggester->search( $taskType, $searchTerm, $limit, $offset, false );
 		if ( $expectedResult instanceof ApiRawMessage ) {
 			$this->assertInstanceOf( StatusValue::class, $result );
 			/** @var StatusValue $result */
