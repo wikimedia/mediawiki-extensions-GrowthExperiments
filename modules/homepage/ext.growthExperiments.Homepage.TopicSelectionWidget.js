@@ -59,11 +59,21 @@ function TopicSelectionWidget( config ) {
 
 OO.inheritClass( TopicSelectionWidget, OO.ui.Widget );
 
-TopicSelectionWidget.prototype.onShowMoreButtonClick = function () {
+/**
+ * Show all suggestion items and detach the show more button.
+ */
+TopicSelectionWidget.prototype.showAllItems = function () {
 	this.suggestionGroup.addItems( this.hiddenSuggestions );
 	this.displayedSuggestions = this.suggestions;
 	this.hiddenSuggestions = [];
 	this.showMoreButton.$element.detach();
+};
+
+/**
+ * Callback when user clicks the "Show more" button.
+ */
+TopicSelectionWidget.prototype.onShowMoreButtonClick = function () {
+	this.showAllItems();
 	this.emit( 'expand' );
 };
 

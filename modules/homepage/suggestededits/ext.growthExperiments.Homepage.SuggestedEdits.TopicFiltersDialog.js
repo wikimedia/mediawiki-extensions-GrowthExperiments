@@ -100,10 +100,23 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 	this.content.$element.append( $topicSelectorWrapper );
 };
 
+/**
+ * Toggle the suggestion widget status (checkbox and color) and also
+ * expand the suggestion widget if enabled widgets exist below the fold.
+ */
 TopicFiltersDialog.prototype.updateFiltersFromState = function () {
 	this.topicSelector.suggestions.forEach( function ( suggestion ) {
 		suggestion.confirmed = this.config.presets.indexOf( suggestion.suggestionData.id ) > -1;
 		suggestion.update();
+	}.bind( this ) );
+	// Using Array.some allows us to break the loop once we've found an item
+	// that requires the suggestion group to show all items.
+	this.config.presets.some( function ( selectedTopic ) {
+		if ( this.getAboveFoldEnabledFilters().indexOf( selectedTopic ) === -1 ) {
+			this.topicSelector.showAllItems();
+			return true;
+		}
+		return false;
 	}.bind( this ) );
 };
 
