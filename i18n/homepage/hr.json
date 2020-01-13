@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bugoslav"
+			"Bugoslav",
+			"Neptune, the Mystic"
 		]
 	},
 	"tag-newcomer_task": "Zadatak za novopridošlice",
-	"tag-newcomer_task-description": "Izmjena predložena modulom za sugeriranje uređivanja na suradničkoj stranici novopridošlice"
+	"tag-newcomer_task-description": "Izmjena predložena modulom za sugeriranje uređivanja na suradničkoj stranici novopridošlice",
+	"growthexperiments-homepage-suggestededits-topics-more": "prikaži više"
 }

@@ -53,6 +53,8 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo": "<strong>Když jste si {{GENDER:|vytvářel|vytvářela|vytvářeli}} svůj uživatelský účet, {{GENDER:|řekl|řekl|řekli}} jste nám, že chcete na Wikipedii opravit překlep nebo chybu.</strong> Tady najdete tipy na malé editace, které můžete udělat. Pokud byste raději {{GENDER:|opravil|opravila|opravili}} chybu v konkrétním článku, můžete kliknout na tlačítko \"{{int:growthexperiments-homepage-startediting-dialog-intro-back}}\", příslušný článek najít, a poté kliknout na \"{{int:vector-view-edit}}\".",
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>Když jste si {{GENDER:|vytvářel|vytvářela|vytvářeli}} svůj uživatelský účet, {{GENDER:|řekl|řekl|řekli}} jste nám, že chcete na Wikipedii přidat či změnit informaci v některém z existujících článků.</strong> Tady najdete tipy na malé editace, které můžete udělat. Pokud byste raději rovnou {{GENDER:|změnil|změnila|změnili}} konkrétní článek, můžete kliknout na \"{{int:growthexperiments-homepage-startediting-dialog-intro-back}}\", najít příslušný článek a kliknout na \"{{int:vector-view-edit}}\".",
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>Když jste si {{GENDER:|vytvářel|vytvářela|vytvářeli}} svůj uživatelský účet, {{GENDER:|řekl|řekl|řekli}} jste nám, že chcete na Wikipedii přidat nový článek.</strong> To je důležitý typ editací, ale je velmi obtížný. Doporučujeme vám proto nejprve zkusit nějaké menší editace. Pokud byste raději rovnou {{GENDER:|vytvořil|vytvořila|vytvořili}} nový článek, můžete se [$1 dozvědět jak na to].",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Vyberte některá témata, které byste {{GENDER:|rád editoval|ráda editovala|rádi editovali}}",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "Pokusíme se doporučit články o tématech, které vás zajímají",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Zpět",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Zobrazit tipy",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Hotovo",
@@ -192,11 +194,16 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Aktualizace článků",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Rozšíření krátkých článků",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Přidání odkazů mezi články",
+	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Neplatná konfigurace editačních tipů: špatná struktura",
+	"growthexperiments-homepage-suggestededits-config-invalidid": "Neplatná konfigurace editačních tipů: neplatný identifikátor $1 - musí obsahovat pouze znaky a-z, 0-9 nebo - (spojovník)",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Neplatná konfigurace editačních tipů: chybějící pole $1 pro typ úkolu $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Neplatná konfigurace editačních tipů: neplatná skupina $1 pro typ úkolu $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Neplatná konfigurace editačních tipů: chybějící zpráva $1 pro typ úkolu $2",
 	"growthexperiments-homepage-suggestededits-create-article-additional-message": "Abyste {{GENDER:$1|mohl|mohla|mohli}} úspěšně vytvořit nový článek, budete se muset naučit mnoho dovedností prostřednictvím dokončení některých jednodušších úkolů. Abyste se {{GENDER:$1|dozvěděl|dozvěděla|dozvěděli}} více o tom, jak vytvořit nový článek, [$2 klikněte zde].",
 	"growthexperiments-homepage-suggestededits-error-title": "Nyní nebyly nalezeny žádné editační tipy.",
 	"growthexperiments-homepage-suggestededits-error-description": "Prosím, zkuste to později.",
-	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Vyberte alespoň jeden typ editací"
+	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Vyberte alespoň jeden typ editací",
+	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Vyberte své zájmy",
+	"growthexperiments-homepage-suggestededits-topics-more": "ukázat více",
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|téma|témata|témat}}"
 }

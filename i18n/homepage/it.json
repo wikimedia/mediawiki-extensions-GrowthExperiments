@@ -79,5 +79,6 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Seleziona tipi di modifiche",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Fatto",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> {{PLURAL:$1|voce trovata|voci trovate}}",
-	"growthexperiments-homepage-suggestededits-error-description": "Per favore, riprova più tardi."
+	"growthexperiments-homepage-suggestededits-error-description": "Per favore, riprova più tardi.",
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|argomento|argomenti}}"
 }
