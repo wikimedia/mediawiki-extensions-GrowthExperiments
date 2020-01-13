@@ -203,6 +203,17 @@
 	};
 
 	/**
+	 * Set the task types and topics query properties based on dialog state.
+	 */
+	SuggestedEditsModule.prototype.setFilterQueriesFromDialogState = function () {
+		this.taskTypesQuery = this.filters.taskTypeFiltersDialog.getEnabledFilters();
+		this.topicsQuery = this.config.topicMatching &&
+		this.filters.topicFiltersDialog.getEnabledFilters().length ?
+			this.filters.topicFiltersDialog.getEnabledFilters() :
+			[];
+	};
+
+	/**
 	 * Fetch suggested edits from ApiQueryGrowthTasks and update the view and internal state.
 	 *
 	 * @return {jQuery.Promise} Status promise. It never fails; errors are handled internally
@@ -217,14 +228,12 @@
 			// Module hasn't finished initializing, return.
 			return $.Deferred().resolve().promise();
 		}
-		this.taskTypesQuery = this.filters.taskTypeFiltersDialog.getEnabledFilters();
-		this.topicsQuery = this.config.topicMatching &&
-			this.filters.topicFiltersDialog.getEnabledFilters().length ?
-			this.filters.topicFiltersDialog.getEnabledFilters() :
-			[];
+
 		if ( this.apiPromise ) {
 			this.apiPromise.abort();
 		}
+
+		this.setFilterQueriesFromDialogState();
 
 		if ( !this.taskTypesQuery.length ) {
 			// User has deselected all checkboxes; update the count.
@@ -529,6 +538,7 @@
 	 * Update the control chrome around the card depending on the state of the queue and query.
 	 */
 	SuggestedEditsModule.prototype.updateControls = function () {
+		this.setFilterQueriesFromDialogState();
 		this.filters.toggle( true );
 		this.filters.updateButtonLabelAndIcon( this.taskTypesQuery, this.topicsQuery || [] );
 		this.updatePager();
