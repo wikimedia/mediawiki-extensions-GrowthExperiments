@@ -82,6 +82,18 @@ class SuggestedEdits extends BaseModule {
 		);
 	}
 
+	/**
+	 * Check whether topic matching has been enabled for the context user.
+	 * Note that even with topic matching disabled, all the relevant backend functionality
+	 * should still work (but logging and UI will be different).
+	 * @param IContextSource $context
+	 * @return bool
+	 */
+	public static function isTopicMatchingEnabled( IContextSource $context ) {
+		return self::isEnabled( $context ) &&
+			$context->getConfig()->get( 'GEHomepageSuggestedEditsEnableTopics' );
+	}
+
 	/** @inheritDoc */
 	public function getHtml() {
 		// This method will be called both directly by the homepage and by getJsData() in
@@ -272,16 +284,15 @@ class SuggestedEdits extends BaseModule {
 
 	/** @inheritDoc */
 	protected function getActionData() {
-		return array_merge(
-			parent::getActionData(),
-			[
-				// these will be updated on the client side as needed
-				'taskTypes' => json_decode( $this->getContext()->getUser()->getOption(
-					'growthexperiments-homepage-se-filters'
-				) ),
-				'taskCount' => null,
-			]
-		);
+		$data = [
+			// these will be updated on the client side as needed
+			'taskTypes' => json_decode( $this->getContext()->getUser()->getOption( self::TASKTYPES_PREF ) ),
+			'taskCount' => null,
+		];
+		if ( self::isTopicMatchingEnabled( $this->getContext() ) ) {
+			$data['topics'] = json_decode( $this->getContext()->getUser()->getOption( self::TOPICS_PREF ) );
+		}
+		return array_merge( parent::getActionData(), $data );
 	}
 
 }

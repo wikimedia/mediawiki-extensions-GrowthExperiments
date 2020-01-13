@@ -19,6 +19,7 @@ function TopicSelectionWidget( config ) {
 	// Parent constructor
 	TopicSelectionWidget.parent.call( this, config );
 
+	this.initialLimit = config.initialLimit;
 	this.suggestions = Object.keys( topicData ).map( function ( key ) {
 		var topic = topicData[ key ];
 		return new SuggestionWidget( { suggestionData: {
@@ -77,6 +78,20 @@ TopicSelectionWidget.prototype.getSelectedTopics = function () {
 		.filter( function ( suggestion ) {
 			return suggestion.confirmed;
 		} )
+		.map( function ( suggestion ) {
+			return suggestion.suggestionData.id;
+		} );
+};
+
+/**
+ * Get the IDs of all selected topics which were visible without clicking on the "show more" link.
+ * @return {string[]} IDs of selected topics
+ */
+TopicSelectionWidget.prototype.getAboveFoldSelectedTopics = function () {
+	return this.suggestions
+		.filter( function ( suggestion, i ) {
+			return suggestion.confirmed && i < this.initialLimit;
+		}.bind( this ) )
 		.map( function ( suggestion ) {
 			return suggestion.suggestionData.id;
 		} );

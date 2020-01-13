@@ -214,9 +214,9 @@
 		}
 		this.taskTypesQuery = this.filters.taskTypeFiltersDialog.getEnabledFilters();
 		this.topicsQuery = this.config.topicMatching &&
-		this.filters.topicFiltersDialog.getEnabledFilters().length ?
+			this.filters.topicFiltersDialog.getEnabledFilters().length ?
 			this.filters.topicFiltersDialog.getEnabledFilters() :
-			'';
+			[];
 		if ( this.apiPromise ) {
 			this.apiPromise.abort();
 		}
@@ -238,7 +238,12 @@
 
 			this.taskQueue = data.tasks;
 			this.filters.updateMatchCount( this.taskQueue.length );
-			extraData.taskTypes = taskTypes;
+			// FIXME these are the current values of the filters, not the ones we are just about
+			//   to display. Unlikely to cause much discrepancy though.
+			extraData.taskTypes = this.taskTypesQuery;
+			if ( this.config.topicMatching ) {
+				extraData.topics = this.topicsQuery;
+			}
 			// FIXME should this be capped to 200 or show the total server-side result count?
 			extraData.taskCount = this.taskQueue.length;
 			this.logger.log( 'suggested-edits', this.mode, 'se-fetch-tasks' );

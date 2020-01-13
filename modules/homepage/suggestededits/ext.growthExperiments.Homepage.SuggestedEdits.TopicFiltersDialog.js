@@ -83,7 +83,7 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 	this.content.$element.append( this.errorMessage.$element );
 	this.topicSelector = new TopicSelectionWidget( { selectedTopics: this.config.presets } );
 	this.topicSelector.connect( this, {
-		expand: 'updateSize',
+		expand: 'onTopicSelectorExpand',
 		toggleSelection: 'performSearchUpdateActions'
 	} );
 	$topicSelectorWrapper = $( '<div>' )
@@ -115,6 +115,17 @@ TopicFiltersDialog.prototype.getEnabledFilters = function () {
 	// Topic selection widget may not yet be initialized (when the module
 	// is loading initially) in which case use the presets.
 	return this.topicSelector ? this.topicSelector.getSelectedTopics() : this.config.presets;
+};
+
+/**
+ * Like getEnabledFilters(), but only show filters above the fold (or above the would-be
+ * fold, if the widget is already expanded).
+ * @return {Object[]}
+ */
+TopicFiltersDialog.prototype.getAboveFoldEnabledFilters = function () {
+	return this.topicSelector ?
+		this.topicSelector.getAboveFoldSelectedTopics() :
+		this.config.presets;
 };
 
 /**
@@ -169,6 +180,11 @@ TopicFiltersDialog.prototype.getSetupProcess = function ( data ) {
 		.next( function () {
 			this.updateFiltersFromState();
 		}, this );
+};
+
+TopicFiltersDialog.prototype.onTopicSelectorExpand = function () {
+	this.updateSize();
+	this.emit( 'expand' );
 };
 
 module.exports = TopicFiltersDialog;
