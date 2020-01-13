@@ -24,6 +24,9 @@ class TaskSet implements IteratorAggregate, Countable {
 	/** @var int Offset within the full result set. */
 	private $offset;
 
+	/** @var array Arbitrary non-task-specific debug data */
+	private $debugData = [];
+
 	/**
 	 * @param Task[] $tasks
 	 * @param int $totalCount Size of the full result set
@@ -37,7 +40,11 @@ class TaskSet implements IteratorAggregate, Countable {
 		$this->offset = $offset;
 	}
 
-	/** @inheritDoc */
+	/**
+	 * @inheritDoc
+	 * @phan-suppress-next-line PhanTypeMismatchDeclaredReturn
+	 * @return Traversable|Task[]
+	 */
 	public function getIterator(): Traversable {
 		return new ArrayIterator( $this->tasks );
 	}
@@ -64,6 +71,22 @@ class TaskSet implements IteratorAggregate, Countable {
 	 */
 	public function getOffset() {
 		return $this->offset;
+	}
+
+	/**
+	 * Get arbitrary non-task-specific debug data.
+	 * @return array
+	 */
+	public function getDebugData(): array {
+		return $this->debugData;
+	}
+
+	/**
+	 * Set arbitrary non-task-specific debug data.
+	 * @param array $debugData
+	 */
+	public function setDebugData( array $debugData ): void {
+		$this->debugData = $debugData;
 	}
 
 }
