@@ -139,5 +139,6 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> {{PLURAL:$1|artigo encontrado|artigos encontrados}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Encontrar referências",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Atualizar artigos",
-	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Expandir artigos curtos"
+	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Expandir artigos curtos",
+	"growthexperiments-homepage-suggestededits-topics-more": "mostrar mais"
 }

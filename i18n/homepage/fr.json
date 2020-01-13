@@ -211,5 +211,6 @@
 	"growthexperiments-homepage-suggestededits-error-description": "Veuillez réessayer plus tard.",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Sélectionnez au moins un type de modification",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Sélectionner des intérêts",
-	"growthexperiments-homepage-suggestededits-topics-more": "afficher plus"
+	"growthexperiments-homepage-suggestededits-topics-more": "afficher plus",
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|sujet|sujets}}"
 }

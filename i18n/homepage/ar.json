@@ -54,6 +54,8 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo": "<strong>عندما {{GENDER:|أنشئتَ|أنشئتِ}} حسابك، أخبرتنا أنك {{GENDER:|تريد|تريدين}} إصلاح رسم إملائي أو خطأ.</strong> يمكنك العثور هنا على اقتراحات لتعديلات صغيرة {{GENDER:|لتبدأ|لتبدئي}} بها. إن كنت {{GENDER:|تفضل|تفضلين}} المرور مباشرة إلى إصلاح مقالة بعينها، يمكنك النقر على \"{{int:growthexperiments-homepage-startediting-dialog-intro-back}}\"، ثم البحث عن المقالة، ثم النقر على \"{{int:vector-view-edit}}\".",
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>عندما {{GENDER:|أنشئتَ|أنشئتِ}} حسابك، أخبرتنا أنك {{GENDER:|تريد|تريدين}} إضافة أو تغيير معلومات في مقالة موجودة.</strong> هنا يمكنك العثور على اقتراحات لمهمات صغيرة {{GENDER:|لتبدأ|لتبدئي}} بها. إن كنت {{GENDER:|تفضل|تفضلين}} المرور مباشرة إلى تغيير مقالة بعينها، يمكنك النقر على \"{{int:growthexperiments-homepage-startediting-dialog-intro-back}}\"، ثم البحث عن المقالة، ثم النقر على \"{{int:vector-view-edit}}\".",
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>عندما {{GENDER:|أنشئتَ|أنشئتِ}} حسابك، أخبرتنا أنك {{GENDER:|تريد|تريدين}} إنشاء مقالة جديدة.</strong> هذا أمر هام لكن القيام به فيه نوع ما من الصعوبة، لذلك فإننا نقترح عليك أولا، أن {{GENDER:|تجرّب| تجرّبي}} بعض التعديلات السهلة على المقالات الموجودة. إن كنت {{GENDER:|تفضل|تفضلين}} المرور مباشرة إلى إنشاء مقالة جديدة، من الممكن أن [$1 {{GENDER:|تعلّم|تعلّمي}} كيفية القيام بذلك هنا].",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "{{GENDER:|اِختر|اِختاري}} بعض المواضيع التي {{GENDER:|تهتم|تهتمين}} بالكتابة عنها",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "سنحاول اقتراح مقالات تتماشى مع {{GENDER:|اهتماماتكَ|اهتماماتكِ}}.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "رجوع",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "{{GENDER:|احصل|احصلي}} على اقتراحات",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "تم",
@@ -103,7 +105,7 @@
 	"growthexperiments-homepage-help-cancel": "إلغاء",
 	"growthexperiments-homepage-help-mobilebody": "{{GENDER:|اسأل|اسألي}} فريق المساعدة أو {{GENDER:|اقرأ|اقرئي}} صفحات المساعدة.",
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|أسئلتك}} الأخيرة",
-	"growthexperiments-homepage-recent-questions-posted-on": "نُشِرَتْ قبل $1",
+	"growthexperiments-homepage-recent-questions-posted-on": "نُشِرَ قبل $1",
 	"growthexperiments-homepage-recent-questions-archived": "مؤرشف",
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "تمت أرشفة هذا السؤال؛ على الأرجح لأنه مطروح منذ فترة طويلة.",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|هنا}} {{GENDER:$2|مرشدك|مرشدتك}}",
@@ -206,5 +208,8 @@
 	"growthexperiments-homepage-suggestededits-create-article-additional-message": "لإنشاء مقالة جديدة، {{GENDER:$1|ستحتاج|ستحتاجين}} إلى استخدام العديد من المهارات التي يمكنك تعلمها من خلال إكمال بعض المهام الأسهل، لمعرفة المزيد حول كيفية إنشاء مقالة جديدة، [$2 {{GENDER:$1|أنقر|أنقري}} هنا].",
 	"growthexperiments-homepage-suggestededits-error-title": "لا تتوفر تعديلات مقترحة في الوقت الحالي.",
 	"growthexperiments-homepage-suggestededits-error-description": "من فضلك {{GENDER:|عاود|عاودي}} المحاولة في وقت لاحق.",
-	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "{{GENDER:|حدّد|حدّدي}} على الأقل مستوى واحدا من التعديلات"
+	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "{{GENDER:|حدّد|حدّدي}} على الأقل مستوى واحدا من التعديلات",
+	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "{{GENDER:|حدّد|حدّدي}} الاهتمامات",
+	"growthexperiments-homepage-suggestededits-topics-more": "{{GENDER:|أظهر|أظهري}} المزيد",
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "{{PLURAL:$1|لا مواضيع|موضوع واحد|موضوعان اثنان|$1 مواضيع|$1 موضوعا}}"
 }

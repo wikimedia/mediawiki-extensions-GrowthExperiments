@@ -50,6 +50,8 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo": "<strong>Quando você criou sua conta, disse que queria corrigir um erro de digitação ou erro.</strong> Aqui, você pode encontrar sugestões de pequenas edições para começar. Se você preferir ir diretamente à correção de um artigo específico, clique em \"{{int:growthexperiments-homepage-startediting-dialog-intro-back}}\", procure o artigo e clique em \"{{int:vector-view-edit}}\".",
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>Ao criar sua conta, você disse que queria adicionar ou alterar informações em um artigo existente.</strong> Aqui, você pode encontrar sugestões de pequenas edições para começar. Se preferir mudar diretamente um artigo específico, clique em \"{{int:growthexperiments-homepage-startediting-dialog-intro-back}}\", procure o artigo e clique em \"{{int:vector-view-edit}}\".",
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>Quando você criou sua conta, disse que queria criar um novo artigo.</strong> Esse é um tipo de edição importante, mas desafiador, por isso recomendamos que você tente primeiro fazer pequenas edições nos artigos existentes. Se você preferir ir direto à criação de um novo artigo, poderá [$1 aprender como aqui].",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Escolha alguns tópicos que {{GENDER:|você}} deseja editar",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "Tentaremos sugerir artigos que correspondam aos {{GENDER:|seus}} interesses.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Voltar",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Obter sugestões",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Feito",
@@ -197,5 +199,7 @@
 	"growthexperiments-homepage-suggestededits-create-article-additional-message": "Para criar com êxito um novo artigo, {{GENDER:$1|você vai}} precisa usar muitas das habilidades que pode aprender ao concluir algumas tarefas mais fáceis. Para saber mais sobre como criar um novo artigo, [$2 clique aqui].",
 	"growthexperiments-homepage-suggestededits-error-title": "Nenhuma edição sugerida está disponível no momento.",
 	"growthexperiments-homepage-suggestededits-error-description": "Por favor, tente novamente mais tarde.",
-	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Selecione pelo menos um tipo de edição"
+	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Selecione pelo menos um tipo de edição",
+	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Selecionar interesses",
+	"growthexperiments-homepage-suggestededits-topics-more": "mostrar mais"
 }

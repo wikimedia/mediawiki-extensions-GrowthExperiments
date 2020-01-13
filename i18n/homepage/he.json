@@ -51,6 +51,8 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo": "<strong>כשיצרת את החשבון שלך , אמרת {{GENDER:|שאתה|שאת}} רוצה לתקן שגיאת כתיב או טעות.</strong> כאן {{GENDER:|אתה יכול|את יכולה}} למצוא הצעות לעריכות קטנות שיעזרו לך להתחיל. אם {{GENDER:|אתה מעדיף|את מעדיפה}} ללכת ישר לתיקון ערך מסוים, {{GENDER:|אתה יכול|את יכולה}} ללחוץ על \"{{int:growthexperiments-homepage-startediting-dialog-intro-back}}\", לחפש את הערך, וללחוץ על \"{{int:vector-view-edit}}\".",
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>כשיצרת את החשבון שלך , אמרת {{GENDER:|שאתה|שאת}} רוצה להוסיף או לשנות מידע בערך קיםם.</strong> כאן {{GENDER:|אתה יכול|את יכולה}} למצוא הצעות לעריכות קטנות שיעזרו לך להתחיל. אם {{GENDER:|אתה מעדיף|את מעדיפה}} ללכת ישר לשינוי ערך מסוים, {{GENDER:|אתה יכול|את יכולה}} ללחוץ על \"{{int:growthexperiments-homepage-startediting-dialog-intro-back}}\", לחפש את הערך, וללחוץ על \"{{int:vector-view-edit}}\".",
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>כשיצרת את החשבון שלך , אמרת {{GENDER:|שאתה|שאת}} רוצה ליצור ערך חדש.</strong> זה סוג חשוב אבל מאתגר של עריכה, אז אנחנו ממליצים לך לנסות כמה עריכות לערכים קלים קודם. אם {{GENDER:|אתה מעדיף|את מעדיפה}} ללכת ישר ליצירת ערך חדש, {{GENDER:|אתה יכול|את יכולה}} [$1 ללמוד איך לעשות את זה כאן].",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "בחר|בחרי נושאים {{GENDER:|שאת|שאתה}} מעוניין לערוך עליהם",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "אנחנו ננסה להציע ערכים שמתאימים לתחומי העניין {{GENDER:|שלך}}.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "חזרה",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "קבלת הצעות",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "בוצע",
@@ -199,5 +201,7 @@
 	"growthexperiments-homepage-suggestededits-error-title": "אין עריכות מוצעות זמינות כרגע.",
 	"growthexperiments-homepage-suggestededits-error-description": "נא לנסות שוב מאוחר יותר.",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "נא לבחור לפחות סוג אחד של עריכה",
-	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "{{GENDER:|בחר|בחרי}} תחומי עניין"
+	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "{{GENDER:|בחר|בחרי}} תחומי עניין",
+	"growthexperiments-homepage-suggestededits-topics-more": "להציג עוד",
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "{{PLURAL:$1|נושא אחד|$1 נושאים}}"
 }

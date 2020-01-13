@@ -120,5 +120,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Välj redigeringstyper",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Klar",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> {{PLURAL:$1|artikel|artiklar}} hittades",
-	"growthexperiments-homepage-suggestededits-error-description": "Försök igen senare."
+	"growthexperiments-homepage-suggestededits-error-description": "Försök igen senare.",
+	"growthexperiments-homepage-suggestededits-topics-more": "visa mer",
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|ämne|ämnen}}"
 }
