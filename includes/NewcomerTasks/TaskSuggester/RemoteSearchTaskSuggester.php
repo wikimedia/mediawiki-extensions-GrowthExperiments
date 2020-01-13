@@ -68,6 +68,7 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 			'srinfo' => 'totalhits',
 			'srprop' => '',
 			'srsort' => 'random',
+			'srqiprofile' => 'classic_noboostlinks',
 			// Convenient for debugging. Production setups should use LocalSearchTaskSuggester anyway.
 			'errorlang' => 'en',
 		];
