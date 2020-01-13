@@ -362,6 +362,9 @@
 			"targets": [
 				"desktop",
 				"mobile"
+			],
+			"dependencies": [
+				"oojs-ui-widgets"
 			]
 		},
 		"ext.growthExperiments.Homepage.SuggestedEdits": {
@@ -403,7 +406,8 @@
 				"oojs-ui-widgets",
 				"oojs-ui.styles.icons-media",
 				"oojs-ui-windows",
-				"ext.growthExperiments.Homepage.Topics"
+				"ext.growthExperiments.Homepage.Topics",
+				"ext.growthExperiments.Homepage.Logger"
 			],
 			"messages": [
 				"comma-separator",
