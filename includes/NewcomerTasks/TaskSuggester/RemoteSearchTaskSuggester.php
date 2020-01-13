@@ -56,7 +56,15 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 	}
 
 	/** @inheritDoc */
-	protected function search( $taskType, $searchTerm, $limit, $offset, $debug ) {
+	protected function search(
+		string $searchTerm,
+		TaskType $taskType,
+		array $topics,
+		string $queryId,
+		int $limit,
+		int $offset,
+		bool $debug
+	) {
 		// We randomize the results so offsets are meaningless.
 		// TODO use fixed random seed.
 		$params = [
@@ -67,11 +75,14 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 			'srlimit' => $limit,
 			'srinfo' => 'totalhits',
 			'srprop' => '',
-			'srsort' => 'random',
 			'srqiprofile' => 'classic_noboostlinks',
 			// Convenient for debugging. Production setups should use LocalSearchTaskSuggester anyway.
 			'errorlang' => 'en',
 		];
+		// FIXME quick fix: don't randomize if we use morelike, seems to conflict
+		if ( !$topics ) {
+			$params['srsort'] = 'random';
+		}
 		$status = Util::getApiUrl( $this->requestFactory, $this->apiUrl, $params );
 		if ( !$status->isOK() ) {
 			return $status;
@@ -86,7 +97,7 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 
 		if ( $debug ) {
 			// Add Cirrus debug dump URLs which show the details of how the scores were calculated.
-			$this->searchDebugUrls[$taskType->getId()] = $this->apiUrl . '?' . wfArrayToCgi( $params, [
+			$this->searchDebugUrls[$queryId] = $this->apiUrl . '?' . wfArrayToCgi( $params, [
 				'cirrusDumpResult' => 1,
 				'cirrusExplain' => 'pretty',
 			] );

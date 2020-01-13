@@ -46,7 +46,15 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	/**
 	 * @inheritDoc
 	 */
-	protected function search( $taskType, $searchTerm, $limit, $offset, $debug ) {
+	protected function search(
+		string $searchTerm,
+		TaskType $taskType,
+		array $topics,
+		string $queryId,
+		int $limit,
+		int $offset,
+		bool $debug
+	) {
 		$searchEngine = $this->searchEngineFactory->create();
 		$searchEngine->setLimitOffset( $limit, $offset );
 		$searchEngine->setNamespaces( [ NS_MAIN ] );
@@ -55,7 +63,10 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 			SearchEngine::FT_QUERY_INDEP_PROFILE_TYPE,
 			'classic_noboostlinks'
 		);
-		if ( in_array( 'random', $searchEngine->getValidSorts(), true ) ) {
+		if ( in_array( 'random', $searchEngine->getValidSorts(), true )
+			// FIXME quick fix: don't randomize if we use morelike, seems to conflict
+			&& !$topics
+		) {
 			$searchEngine->setSort( 'random' );
 		}
 		$matches = $searchEngine->searchText( $searchTerm );
@@ -73,7 +84,7 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 			) );
 		}
 		if ( $debug ) {
-			$this->searchDebugUrls[$taskType->getId()] = SpecialPage::getTitleFor( 'Search' )->getFullURL( [
+			$this->searchDebugUrls[$queryId] = SpecialPage::getTitleFor( 'Search' )->getFullURL( [
 				'search' => $searchTerm,
 				'fulltext' => 1,
 				'ns0' => 1,

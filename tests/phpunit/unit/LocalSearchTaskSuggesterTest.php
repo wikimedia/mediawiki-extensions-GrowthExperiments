@@ -5,6 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 use ApiRawMessage;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
+use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use ISearchResultSet;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -26,19 +27,26 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * @covers ::__construct
 	 * @covers ::search
 	 * @param string $searchTerm
+	 * @param string[] $topics
 	 * @param int $limit
 	 * @param int $offset
 	 * @param ISearchResultSet|null|StatusValue $searchResults
 	 * @param ISearchResultSet|StatusValue $expectedResult
 	 */
-	public function testSearch( $searchTerm, $limit, $offset, $searchResults, $expectedResult ) {
+	public function testSearch(
+		$searchTerm, $topics, $limit, $offset, $searchResults, $expectedResult
+	) {
 		$searchEngineFactory = $this->getMockSearchEngineFactory( $searchResults, $searchTerm,
 			$limit, $offset );
 		$templateProvider = $this->getMockTemplateProvider();
 		$suggester = new LocalSearchTaskSuggester( $searchEngineFactory, $templateProvider, [], [], [] );
 		$wrappedSuggester = TestingAccessWrapper::newFromObject( $suggester );
 		$taskType = new TaskType( 'fake; wont be used', TaskType::DIFFICULTY_EASY );
-		$result = $wrappedSuggester->search( $taskType, $searchTerm, $limit, $offset, false );
+		$topics = array_map( function ( $topicId ) {
+			return new Topic( $topicId );
+		}, $topics );
+		$result = $wrappedSuggester->search( $searchTerm, $taskType, $topics, $this->getName(),
+			$limit, $offset, false );
 		if ( $expectedResult instanceof ApiRawMessage ) {
 			$this->assertInstanceOf( StatusValue::class, $result );
 			/** @var StatusValue $result */
@@ -58,6 +66,15 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		return [
 			'success' => [
 				'search term' => 'hastemplate:foo morelikethis:bar',
+				'topics' => [ 'bar' ],
+				'limit' => 10,
+				'offset' => 0,
+				'search results' => $searchResult,
+				'expected result' => $searchResult,
+			],
+			'success, no topics' => [
+				'search term' => 'hastemplate:foo',
+				'topics' => [],
 				'limit' => 10,
 				'offset' => 0,
 				'search results' => $searchResult,
@@ -65,6 +82,7 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			],
 			'success, wrapped' => [
 				'search term' => 'hastemplate:foo morelikethis:bar',
+				'topics' => [ 'bar' ],
 				'limit' => 10,
 				'offset' => 0,
 				'search results' => Status::newGood( $searchResult ),
@@ -72,6 +90,7 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			],
 			'error' => [
 				'search term' => 'hastemplate:foo morelikethis:bar',
+				'topics' => [ 'bar' ],
 				'limit' => 10,
 				'offset' => 0,
 				'search results' => $error,
@@ -79,6 +98,7 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			],
 			'disabled' => [
 				'search term' => 'hastemplate:foo morelikethis:bar',
+				'topics' => [ 'bar' ],
 				'limit' => 10,
 				'offset' => 0,
 				'search results' => null,
