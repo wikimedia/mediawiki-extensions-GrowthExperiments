@@ -10,7 +10,6 @@
 		Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
 		taskTypes = require( './TaskTypes.json' ),
 		aqsConfig = require( './AQSConfig.json' ),
-		suggestedEditsConfig = require( './config.json' ),
 		initialTaskTypes = [ 'copyedit', 'links' ].filter( function ( taskType ) {
 			return taskType in taskTypes;
 		} );
@@ -598,7 +597,7 @@
 				$element: $wrapper,
 				taskTypePresets: taskTypes,
 				topicPresets: topicFilters,
-				topicMatching: suggestedEditsConfig.GEHomepageSuggestedEditsEnableTopics,
+				topicMatching: mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' ),
 				mode: mode
 			},
 			new Logger(

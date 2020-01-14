@@ -176,7 +176,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 		imagePath = mw.config.get( 'wgExtensionAssetsPath' ) + '/GrowthExperiments/images',
 		config = require( './config.json' ),
 		introLinks = config.GEHomepageSuggestedEditsIntroLinks,
-		enableTopics = config.GEHomepageSuggestedEditsEnableTopics,
+		enableTopics = mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' ),
 		generalImageUrl = enableTopics ? 'intro-topic-general.svg' : 'intro-heart-article.svg',
 		responseMap = {
 			'add-image': {

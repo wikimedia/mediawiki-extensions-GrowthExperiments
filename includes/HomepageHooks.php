@@ -315,10 +315,15 @@ class HomepageHooks {
 			'type' => 'api'
 		];
 
-		if ( MediaWikiServices::getInstance()->getMainConfig()->get(
-				'GEHomepageSuggestedEditsRequiresOptIn'
-		) ) {
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		if ( $config->get( 'GEHomepageSuggestedEditsRequiresOptIn' ) ) {
 			$preferences[ SuggestedEdits::ENABLED_PREF ] = [
+				'type' => 'api'
+			];
+		}
+
+		if ( $config->get( 'GEHomepageSuggestedEditsTopicsRequiresOptIn' ) ) {
+			$preferences[ SuggestedEdits::TOPICS_ENABLED_PREF ] = [
 				'type' => 'api'
 			];
 		}

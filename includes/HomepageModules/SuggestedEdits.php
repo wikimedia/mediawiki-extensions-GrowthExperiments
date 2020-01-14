@@ -26,6 +26,7 @@ class SuggestedEdits extends BaseModule {
 	const ACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-activated';
 	const PREACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-preactivated';
 	public const TOPICS_PREF = 'growthexperiments-homepage-se-topic-filters';
+	public const TOPICS_ENABLED_PREF = 'growthexperiments-homepage-suggestededits-topics-enabled';
 	public const TASKTYPES_PREF = 'growthexperiments-homepage-se-filters';
 	const SUGGESTED_EDIT_TAG = 'newcomer task';
 
@@ -91,7 +92,10 @@ class SuggestedEdits extends BaseModule {
 	 */
 	public static function isTopicMatchingEnabled( IContextSource $context ) {
 		return self::isEnabled( $context ) &&
-			$context->getConfig()->get( 'GEHomepageSuggestedEditsEnableTopics' );
+			$context->getConfig()->get( 'GEHomepageSuggestedEditsEnableTopics' ) && (
+				!$context->getConfig()->get( 'GEHomepageSuggestedEditsTopicsRequiresOptIn' ) ||
+				$context->getUser()->getBoolOption( self::TOPICS_ENABLED_PREF )
+			);
 	}
 
 	/** @inheritDoc */
@@ -293,6 +297,15 @@ class SuggestedEdits extends BaseModule {
 			$data['topics'] = json_decode( $this->getContext()->getUser()->getOption( self::TOPICS_PREF ) );
 		}
 		return array_merge( parent::getActionData(), $data );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getJsConfigVars() {
+		return [
+			'GEHomepageSuggestedEditsEnableTopics' => self::isTopicMatchingEnabled( $this->getContext() )
+		];
 	}
 
 }
