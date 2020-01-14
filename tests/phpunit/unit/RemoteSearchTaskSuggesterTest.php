@@ -77,6 +77,14 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	}
 
 	public function provideSuggest() {
+		$makeTask = function ( TaskType $taskType, string $titleText, array $topicIds = [] ) {
+			$task = new Task( $taskType, new TitleValue( NS_MAIN, $titleText ) );
+			$task->setTopics( array_map( function ( string $topicId ) {
+				return new Topic( $topicId );
+			}, $topicIds ) );
+			return $task;
+		};
+
 		$copyedit = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
 		$link = new TaskType( 'link', TaskType::DIFFICULTY_EASY );
 		return [
@@ -115,8 +123,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'limit' => null,
 				// expected return value from suggest()
 				'expectedTaskSet' => new TaskSet( [
-					new Task( $copyedit, new TitleValue( 0, 'Foo' ) ),
-					new Task( $copyedit, new TitleValue( 0, 'Bar' ) ),
+					$makeTask( $copyedit, 'Foo' ),
+					$makeTask( $copyedit, 'Bar' ),
 				], 100, 0 ),
 			],
 			'multiple queries' => [
@@ -161,11 +169,11 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'topicFilter' => null,
 				'limit' => null,
 				'expectedTaskSet' => new TaskSet( [
-					new Task( $copyedit, new TitleValue( 0, 'Foo' ) ),
-					new Task( $link, new TitleValue( 0, 'Bang' ) ),
-					new Task( $copyedit, new TitleValue( 0, 'Bar' ) ),
-					new Task( $copyedit, new TitleValue( 0, 'Baz' ) ),
-					new Task( $copyedit, new TitleValue( 0, 'Boom' ) ),
+					$makeTask( $copyedit, 'Foo' ),
+					$makeTask( $link, 'Bang' ),
+					$makeTask( $copyedit, 'Bar' ),
+					$makeTask( $copyedit, 'Baz' ),
+					$makeTask( $copyedit, 'Boom' ),
 				], 150, 0 ),
 			],
 			'limit' => [
@@ -209,8 +217,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'topicFilter' => null,
 				'limit' => 2,
 				'expectedTaskSet' => new TaskSet( [
-					new Task( $copyedit, new TitleValue( 0, 'Foo' ) ),
-					new Task( $link, new TitleValue( 0, 'Baz' ) ),
+					$makeTask( $copyedit, 'Foo' ),
+					$makeTask( $link, 'Baz' ),
 				], 150, 0 ),
 			],
 			'task type filter' => [
@@ -237,7 +245,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'topicFilter' => null,
 				'limit' => null,
 				'expectedTaskSet' => new TaskSet( [
-					new Task( $copyedit, new TitleValue( 0, 'Foo' ) ),
+					$makeTask( $copyedit, 'Foo' ),
 				], 100, 0 ),
 			],
 			'topic filter' => [
@@ -246,7 +254,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'requests' => [
 					[
 						'params' => [
-							'srsearch' => 'hastemplate:"Copy-1|Copy-2" morelikethis:"Music|Painting|Physics|Biology"',
+							'srsearch' => 'hastemplate:"Copy-1|Copy-2" morelikethis:"Music|Painting"',
 						],
 						'response' => [
 							'query' => [
@@ -254,14 +262,29 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 									[ 'ns' => 0, 'title' => 'Foo' ],
 								],
 								'searchinfo' => [
-									'totalhits' => 100,
+									'totalhits' => 70,
 								],
 							],
 						],
 					],
 					[
 						'params' => [
-							'srsearch' => 'hastemplate:"Link-1" morelikethis:"Music|Painting|Physics|Biology"',
+							'srsearch' => 'hastemplate:"Copy-1|Copy-2" morelikethis:"Physics|Biology"',
+						],
+						'response' => [
+							'query' => [
+								'search' => [
+									[ 'ns' => 0, 'title' => 'Bar' ],
+								],
+								'searchinfo' => [
+									'totalhits' => 30,
+								],
+							],
+						],
+					],
+					[
+						'params' => [
+							'srsearch' => 'hastemplate:"Link-1" morelikethis:"Music|Painting"',
 						],
 						'response' => [
 							'query' => [
@@ -275,14 +298,28 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 							],
 						],
 					],
+					[
+						'params' => [
+							'srsearch' => 'hastemplate:"Link-1" morelikethis:"Physics|Biology"',
+						],
+						'response' => [
+							'query' => [
+								'search' => [],
+								'searchinfo' => [
+									'totalhits' => 0,
+								],
+							],
+						],
+					],
 				],
 				'taskFilter' => null,
 				'topicFilter' => [ 'art', 'science' ],
 				'limit' => null,
 				'expectedTaskSet' => new TaskSet( [
-					new Task( $copyedit, new TitleValue( 0, 'Foo' ) ),
-					new Task( $link, new TitleValue( 0, 'Baz' ) ),
-					new Task( $link, new TitleValue( 0, 'Boom' ) ),
+					$makeTask( $copyedit, 'Foo', [ 'art' ] ),
+					$makeTask( $copyedit, 'Bar', [ 'science' ] ),
+					$makeTask( $link, 'Baz', [ 'art' ] ),
+					$makeTask( $link, 'Boom', [ 'art' ] ),
 				], 150, 0 ),
 			],
 			'http error' => [
