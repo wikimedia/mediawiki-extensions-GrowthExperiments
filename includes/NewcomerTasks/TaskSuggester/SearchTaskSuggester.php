@@ -108,14 +108,18 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			//   runs into query lenght limits (T242560)
 			foreach ( ( $topics ?: [ null ] ) as $topic ) {
 				/** @var Topic|null $topic */
-				$searchTerm = $this->getSearchTerm( $taskType, $topic ? [ $topic ] : [] );
-				$matches = $this->search( $taskType, $searchTerm, $limit, $offset, $debug );
+				$queryId = $taskTypeId . ':' . ( $topic ? $topic->getId() : '-' );
+				$topicArray = $topic ? [ $topic ] : [];
+				$searchTerm = $this->getSearchTerm( $taskType, $topicArray );
+				$matches = $this->search( $searchTerm, $taskType, $topicArray, $queryId,
+					$limit, $offset, $debug );
 				if ( $matches instanceof StatusValue ) {
 					// Only log when there's a logger; Status::getWikiText would break unit tests.
 					if ( !$this->logger instanceof NullLogger ) {
 						$this->logger->warning( 'Search error: {message}', [
 							'message' => Status::wrap( $matches )->getWikiText( false, false, 'en' ),
 							'searchTerm' => $searchTerm,
+							'queryId' => $queryId,
 							'limit' => $limit,
 							'offset' => $offset,
 						] );
@@ -124,8 +128,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 				}
 
 				$totalCount += $matches->getTotalHits();
-				$matchIterator->attachIterator( Util::getIteratorFromTraversable( $matches ),
-					$taskTypeId . ':' . ( $topic ? $topic->getId() : '-' ) );
+				$matchIterator->attachIterator( Util::getIteratorFromTraversable( $matches ), $queryId );
 			}
 		}
 
@@ -187,14 +190,26 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	}
 
 	/**
-	 * @param TaskType $taskType For debugging purposes only.
 	 * @param string $searchTerm
+	 * @param TaskType $taskType Task type this search is for. (This is already included in
+	 *   $searchTerm, but provided separately for debugging or potential tweaks.)
+	 * @param Topic[] $topics Topics this search is for. (This is already included in
+	 *   $searchTerm, but provided separately for debugging or potential tweaks.)
+	 * @param string $queryId A human-readable identifier for this query, for debugging purposes.
 	 * @param int $limit
 	 * @param int $offset
 	 * @param bool $debug Store debug data so it can be set in setDebugData()
 	 * @return ISearchResultSet|StatusValue Search results, or StatusValue on error.
 	 */
-	abstract protected function search( $taskType, $searchTerm, $limit, $offset, $debug );
+	abstract protected function search(
+		string $searchTerm,
+		TaskType $taskType,
+		array $topics,
+		string $queryId,
+		int $limit,
+		int $offset,
+		bool $debug
+	);
 
 	/**
 	 * Set extra debug data. Only called in debug mode.
