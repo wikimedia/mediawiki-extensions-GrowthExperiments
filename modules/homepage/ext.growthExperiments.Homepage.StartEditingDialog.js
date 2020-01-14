@@ -4,12 +4,15 @@ var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).To
  * @param {Object} config
  * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
  * @param {HomepageModuleLogger} logger
+ * @param {GrowthTasksApi} api
  * @constructor
  */
-function StartEditingDialog( config, logger ) {
+function StartEditingDialog( config, logger, api ) {
 	StartEditingDialog.super.call( this, config );
 	this.logger = logger;
+	this.api = api;
 	this.mode = config.mode;
+	this.enableTopics = mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' );
 }
 
 OO.inheritClass( StartEditingDialog, OO.ui.ProcessDialog );
@@ -67,18 +70,45 @@ StartEditingDialog.prototype.initialize = function () {
 	StartEditingDialog.super.prototype.initialize.call( this );
 
 	this.introPanel = this.buildIntroPanel();
+	this.articleCountLabel = new OO.ui.LabelWidget( { classes: [ 'suggested-edits-article-count' ] } );
+	// Default to the maximum so there is not empty space when the footer is
+	// first rendered, before the HTTP request has finished.
+	this.updateArticleCountLabel( 200 );
+	this.articleCounterPanelLayout = new OO.ui.PanelLayout( {
+		padded: true,
+		expanded: false,
+		classes: [ 'suggested-edits-article-count-panel-layout-' + ( OO.ui.isMobile() ? 'mobile' : 'desktop' ) ]
+	} ).toggle( this.enableTopics );
+	this.articleCounterPanelLayout
+		.$element.append(
+			new OO.ui.IconWidget( { icon: 'live-broadcast' } ).$element,
+			this.articleCountLabel.$element
+		);
+
 	this.difficultyPanel = this.buildDifficultyPanel();
 
 	this.panels = new OO.ui.StackLayout();
 	this.panels.addItems( [ this.introPanel, this.difficultyPanel ] );
 	this.$body.append( this.panels.$element );
 
-	this.$desktopActions = $( '<div>' ).addClass( 'mw-ge-startediting-dialog-desktopActions' );
+	this.$desktopFooter = $( '<div>' ).addClass( 'mw-ge-startediting-dialog-desktopFooter' );
+	this.$desktopActions = $( '<div>' ).addClass( 'mw-ge-startediting-dialog-desktopFooter-desktopActions' );
 	if ( !OO.ui.isMobile() ) {
-		this.$foot.append( this.$desktopActions );
+		this.$foot.append( this.$desktopFooter );
+	} else {
+		this.$foot.append( this.articleCounterPanelLayout.$element );
 	}
 
 	this.$element.addClass( 'mw-ge-startediting-dialog' );
+};
+
+StartEditingDialog.prototype.updateArticleCountLabel = function ( count ) {
+	this.articleCountLabel
+		.setLabel( new OO.ui.HtmlSnippet(
+			mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filters-article-count' )
+				.params( [ mw.language.convertNumber( count ) ] )
+				.parse()
+		) );
 };
 
 StartEditingDialog.prototype.swapPanel = function ( panel ) {
@@ -98,10 +128,12 @@ StartEditingDialog.prototype.attachActions = function () {
 
 	// On desktop, move all actions to the footer
 	if ( !OO.ui.isMobile() ) {
+		this.$desktopFooter.append( this.articleCounterPanelLayout.$element );
 		this.$desktopActions.append(
 			this.$safeActions.children(),
 			this.$primaryActions.children()
 		);
+		this.$desktopFooter.append( this.$desktopActions );
 		// HACK: OOUI has really aggressive styling for buttons inside ActionWidgets inside
 		// ProgressDialogs that's pretty much impossible to override. Because we don't want our
 		// buttons to look ugly (with left/right borders but no top/bottom borders), remove
@@ -122,8 +154,19 @@ StartEditingDialog.prototype.getSetupProcess = function ( data ) {
 	return StartEditingDialog.super.prototype.getSetupProcess
 		.call( this, data )
 		.next( function () {
+			if ( this.enableTopics ) {
+				this.updateMatchCount();
+			}
 			this.swapPanel( 'intro' );
 		}, this );
+};
+
+StartEditingDialog.prototype.updateMatchCount = function () {
+	var topics = this.topicSelector ? this.topicSelector.getSelectedTopics() : [];
+	this.api.fetchTasks( [ 'copyedit', 'links' ], topics )
+		.then( function ( data ) {
+			this.updateArticleCountLabel( Number( data.count ) );
+		}.bind( this ) );
 };
 
 StartEditingDialog.prototype.getActionProcess = function ( action ) {
@@ -135,9 +178,11 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 			}
 			if ( action === 'difficulty' ) {
 				this.logger.log( 'start-startediting', this.mode, 'se-cta-difficulty' );
+				this.articleCounterPanelLayout.toggle( false );
 				this.swapPanel( 'difficulty' );
 			}
 			if ( action === 'back' ) {
+				this.articleCounterPanelLayout.toggle( this.enableTopics );
 				this.logger.log( 'start-startediting', this.mode, 'se-cta-back' );
 				this.swapPanel( 'intro' );
 			}
@@ -176,8 +221,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 		imagePath = mw.config.get( 'wgExtensionAssetsPath' ) + '/GrowthExperiments/images',
 		config = require( './config.json' ),
 		introLinks = config.GEHomepageSuggestedEditsIntroLinks,
-		enableTopics = mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' ),
-		generalImageUrl = enableTopics ? 'intro-topic-general.svg' : 'intro-heart-article.svg',
+		generalImageUrl = this.enableTopics ? 'intro-topic-general.svg' : 'intro-heart-article.svg',
 		responseMap = {
 			'add-image': {
 				image: {
@@ -244,11 +288,11 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 	}
 	responseData = responseMap[ surveyData.reason ];
 	if ( responseData ) {
-		imageData = responseData.image[ enableTopics ? 'withTopics' : 'withoutTopics' ];
+		imageData = responseData.image[ this.enableTopics ? 'withTopics' : 'withoutTopics' ];
 		imageUrl = typeof imageData === 'string' ? imageData : imageData[ this.getDir() ];
 	}
 
-	if ( enableTopics ) {
+	if ( this.enableTopics ) {
 		$topicMessage = $( '<div>' )
 			.addClass( 'mw-ge-startediting-dialog-intro-topic-message' )
 			.append( responseData ?
@@ -274,7 +318,10 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 			);
 
 		this.topicSelector = new TopicSelectionWidget();
-		this.topicSelector.connect( this, { expand: 'onTopicSelectorExpand' } );
+		this.topicSelector.connect( this, {
+			expand: 'onTopicSelectorExpand',
+			toggleSelection: 'updateMatchCount'
+		} );
 		$topicSelectorWrapper = $( '<div>' )
 			.addClass( 'mw-ge-startediting-dialog-intro-topic-selector' )
 			.append(
