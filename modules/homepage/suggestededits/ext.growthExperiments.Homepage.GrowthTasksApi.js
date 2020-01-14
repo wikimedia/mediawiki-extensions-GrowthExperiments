@@ -69,6 +69,9 @@
 					thumbnailSource: item.thumbnail && item.thumbnail.source || null,
 					tasktype: item.tasktype,
 					difficulty: item.difficulty,
+					// empty array when no topics are selected, null with topic matching disabled,
+					// otherwise an array of (topic ID, score) pairs
+					topics: item.topics || null,
 					maintenanceTemplates: item.maintenancetemplates || null
 				};
 			}
