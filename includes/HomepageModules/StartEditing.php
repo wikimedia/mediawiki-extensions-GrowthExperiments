@@ -110,4 +110,12 @@ class StartEditing extends BaseTaskModule {
 			[ 'oojs-ui.styles.icons-editing-core' ]
 		);
 	}
+
+	/** @inheritDoc */
+	protected function getJsConfigVars() {
+		return [
+			'GEHomepageSuggestedEditsEnableTopics' =>
+				SuggestedEdits::isTopicMatchingEnabled( $this->getContext() )
+		];
+	}
 }
