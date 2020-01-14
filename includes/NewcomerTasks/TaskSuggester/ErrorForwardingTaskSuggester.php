@@ -31,7 +31,8 @@ class ErrorForwardingTaskSuggester implements TaskSuggester {
 		array $taskTypeFilter = null,
 		array $topicFilter = null,
 		$limit = null,
-		$offset = null
+		$offset = null,
+		$debug = false
 	) {
 		return $this->status;
 	}
