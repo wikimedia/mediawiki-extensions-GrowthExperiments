@@ -194,7 +194,9 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Moyen",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Difficile",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Sélectionner les types de modification",
+	"growthexperiments-homepage-suggestededits-topic-filters-title": "Sélectionner ses centres d’intérêt",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Fait",
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "Fait",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> article{{PLURAL:$1||s}} trouvé{{PLURAL:$1||s}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "Réviser",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Trouver des références",
@@ -212,5 +214,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Sélectionnez au moins un type de modification",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Sélectionner des intérêts",
 	"growthexperiments-homepage-suggestededits-topics-more": "afficher plus",
-	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|sujet|sujets}}"
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|sujet|sujets}}",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Choisir certains sujets que {{GENDER:$1|vous}} êtes intéressés à modifier",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Nous essayerons de suggérer des articles qui correspondent à {{GENDER:$1|vos}} intérêts."
 }

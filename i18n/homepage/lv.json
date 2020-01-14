@@ -67,5 +67,8 @@
 	"growthexperiments-homepage-suggestededits-tasktype-time-expand": "20—30 minūtes",
 	"growthexperiments-homepage-suggestededits-tasktype-time-update": "20—30 minūtes",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "$1 labojumi",
-	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Gatavs"
+	"growthexperiments-homepage-suggestededits-topic-filters-title": "Izvēlies intereses",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Gatavs",
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "Pabeigts",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Izvēlies dažas tēmas labošanai, kas {{GENDER:$1|tev}} varētu interesēt"
 }

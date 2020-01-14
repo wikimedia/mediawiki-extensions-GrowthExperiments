@@ -186,7 +186,9 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "一般",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "困難",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "選擇編輯類型",
+	"growthexperiments-homepage-suggestededits-topic-filters-title": "選擇興趣",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "完成",
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "完成",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "找到 <strong>$1</strong> 個{{PLURAL:$1|條目}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "複製編輯",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "查找參考資料",
@@ -204,5 +206,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "選擇至少一種編輯類型。",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "選擇興趣",
 	"growthexperiments-homepage-suggestededits-topics-more": "顯示更多",
-	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|個主題}}"
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|個主題}}",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "挑選一些{{GENDER:$1|您}}有興趣編輯的主題",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "我們會嘗試建議符合{{GENDER:$1|您的}}興趣的條目。"
 }

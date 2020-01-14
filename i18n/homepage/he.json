@@ -3,7 +3,8 @@
 		"authors": [
 			"Steeve815",
 			"דגש חזק",
-			"Amire80"
+			"Amire80",
+			"Ghsuvr"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|שלום}}, {{bidi:$1}}!",
@@ -185,7 +186,9 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "בינוניות",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "קשות",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "בחר את סוג העריכה",
+	"growthexperiments-homepage-suggestededits-topic-filters-title": "{{GENDER:|בחר|בחרי}} תחומי עניין",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "בוצע",
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "בוצע",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "{{PLURAL:$1|נמצא ערך <strong>אחד</strong>|נמצאו <strong>$1</strong> ערכים}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "הגהה",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "מציאת ציטוטים",
@@ -203,5 +206,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "נא לבחור לפחות סוג אחד של עריכה",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "{{GENDER:|בחר|בחרי}} תחומי עניין",
 	"growthexperiments-homepage-suggestededits-topics-more": "להציג עוד",
-	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "{{PLURAL:$1|נושא אחד|$1 נושאים}}"
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "{{PLURAL:$1|נושא אחד|$1 נושאים}}",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "{{GENDER:$1|בחר|בחרי}} נושאים {{GENDER:$1|שאתה מעוניין|שאת מעוניינת}} לערוך",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "ננסה להציע ערכים שמתאימים לתחומי העניין {{GENDER:$1|שלך}}."
 }

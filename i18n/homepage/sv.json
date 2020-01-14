@@ -118,9 +118,13 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "Medel",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-hard": "Svår",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Välj redigeringstyper",
+	"growthexperiments-homepage-suggestededits-topic-filters-title": "Välj intressen",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Klar",
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "Klar",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> {{PLURAL:$1|artikel|artiklar}} hittades",
 	"growthexperiments-homepage-suggestededits-error-description": "Försök igen senare.",
 	"growthexperiments-homepage-suggestededits-topics-more": "visa mer",
-	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|ämne|ämnen}}"
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|ämne|ämnen}}",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Välj några ämnen som {{GENDER:$1|du}} är intresserad av att redigera",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Vi ska försöka föreslå artiklar som matchar {{GENDER:$1|dina}} intressen."
 }
