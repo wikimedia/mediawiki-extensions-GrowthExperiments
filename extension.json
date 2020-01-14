@@ -527,7 +527,8 @@
 				"mediawiki.util",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
-				"ext.growthExperiments.Homepage.Topics"
+				"ext.growthExperiments.Homepage.Topics",
+				"ext.growthExperiments.Homepage.Logger"
 			],
 			"targets": [
 				"desktop",
