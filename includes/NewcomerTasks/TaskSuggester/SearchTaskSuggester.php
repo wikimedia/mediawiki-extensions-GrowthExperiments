@@ -120,6 +120,17 @@ abstract class SearchTaskSuggester implements TaskSuggester {
 			}
 		}
 		$this->templateProvider->fill( $suggestions );
+
+		// search() implementations try to request random sorting; that breaks when a topic filter
+		// is used (the mechanism used for topic filtering is itself a kind of sorting, and it
+		// overrides random sorting). As a poor way of correcting for that, sort the result set.
+		// This means we'll return a deterministic subset of the full result set, the same for all
+		// requests which use identical task and topic filter settings, but at least the ordering
+		// of that subset will be random. In the future, we might look for a better solution.
+		if ( $topicFilter ) {
+			shuffle( $suggestions );
+		}
+
 		return new TaskSet( $suggestions, $totalCount, $offset );
 	}
 
