@@ -142,13 +142,16 @@
 				);
 				// topicPresets will be an empty array if the user had saved topics
 				// in the past.
-				this.topicFilterButtonWidget.setFlags( !this.topicPresets ? [ 'progressive' ] : [] );
+				this.topicFilterButtonWidget.setFlags( { progressive: !this.topicPresets } );
 			} else {
 				topicSearch.forEach( function ( topic ) {
 					if ( topicData[ topic ] && topicData[ topic ].name ) {
 						topicMessages.push( topicData[ topic ].name );
 					}
 				} );
+				// Unset the pulsating blue dot if it exists.
+				this.topicFilterButtonWidget.$element.find( '.mw-pulsating-dot' ).remove();
+				this.topicFilterButtonWidget.setFlags( { progressive: false } );
 			}
 			if ( topicMessages.length ) {
 				if ( topicMessages.length < 3 ) {
