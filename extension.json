@@ -380,6 +380,7 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.FiltersWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.DifficultyFiltersDialog.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.TopicFiltersDialog.js",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
 				{
 					"name": "homepage/suggestededits/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]

@@ -7,6 +7,7 @@
 		PagerWidget = require( './ext.growthExperiments.Homepage.SuggestedEditPagerWidget.js' ),
 		PreviousNextWidget = require( './ext.growthExperiments.Homepage.SuggestedEditsPreviousNextWidget.js' ),
 		FiltersButtonGroupWidget = require( './ext.growthExperiments.Homepage.SuggestedEdits.FiltersWidget.js' ),
+		GrowthTasksApi = require( './ext.growthExperiments.Homepage.GrowthTasksApi.js' ),
 		Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
 		taskTypes = require( './TaskTypes.json' ),
 		aqsConfig = require( './AQSConfig.json' ),
@@ -26,8 +27,9 @@
 	 * @param {bool} config.topicMatching If topic matching feature is enabled in the UI
 	 * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
 	 * @param {HomepageModuleLogger} logger
+	 * @param {GrowthTasksApi} api
 	 */
-	function SuggestedEditsModule( config, logger ) {
+	function SuggestedEditsModule( config, logger, api ) {
 		var $pager, $previous, $next, $filters, $filtersContainer;
 		SuggestedEditsModule.super.call( this, config );
 
@@ -38,6 +40,7 @@
 		this.apiPromise = null;
 		this.taskTypesQuery = [];
 		this.topicsQuery = [];
+		this.api = api;
 
 		this.filters = new FiltersButtonGroupWidget( {
 			taskTypePresets: config.taskTypePresets,
@@ -104,110 +107,12 @@
 	 */
 	SuggestedEditsModule.prototype.filterSelection = function () {
 		if ( !this.apiPromise ) {
-			this.apiPromise = this.fetchTasks();
+			this.apiPromise = this.api.fetchTasks( this.taskTypesQuery, this.topicsQuery );
 		}
 		this.apiPromise.then( function () {
 			this.showCard();
 			this.preloadNextCard();
 		}.bind( this ) );
-	};
-
-	/**
-	 * Fetch suggested edits from ApiQueryGrowthTasks.
-	 * Has no side effects.
-	 *
-	 * @return {jQuery.Promise<Object>} An abortable promise with two fields:
-	 *   - count: the number of tasks available. Note this is the full count, not the
-	 *     task list length (which is capped to 200).
-	 *     FIXME protection status is ignored by the count.
-	 *   - tasks: a list of task data objects
-	 */
-	SuggestedEditsModule.prototype.fetchTasks = function () {
-		var apiParams, actionApiPromise, finalPromise,
-			url = new mw.Uri( window.location.href );
-
-		if ( !this.taskTypesQuery.length ) {
-			// No point in doing the query if no task types are allowed.
-			return $.Deferred().resolve( {
-				count: 0,
-				tasks: []
-			} ).promise( {
-				abort: function () {}
-			} );
-		}
-
-		apiParams = {
-			action: 'query',
-			prop: 'info|revisions|pageimages',
-			inprop: 'protection|url',
-			rvprop: 'ids',
-			pithumbsize: 260,
-			generator: 'growthtasks',
-			// Fetch more in case protected articles are in the result set, so that after
-			// filtering we can have 200.
-			// TODO: Filter out protected articles on the server side.
-			ggtlimit: 250,
-			ggttasktypes: this.taskTypesQuery.join( '|' ),
-			formatversion: 2,
-			uselang: mw.config.get( 'wgUserLanguage' )
-		};
-		if ( this.topicsQuery && this.topicsQuery.length ) {
-			apiParams.ggttopics = this.topicsQuery.join( '|' );
-		}
-		if ( 'debug' in url.query ) {
-			apiParams.ggtdebug = 1;
-		}
-
-		actionApiPromise = new mw.Api().get( apiParams );
-		finalPromise = actionApiPromise.then( function ( data ) {
-			var tasks = [];
-
-			function cleanUpData( item ) {
-				return {
-					title: item.title,
-					// Page and revision ID can be missing on development setups where the
-					// returned titles are not local, and also in edge cases where the search
-					// index has not caught up with a page deletion yet.
-					pageId: item.pageid || null,
-					revisionId: item.revisions ? item.revisions[ 0 ].revid : null,
-					url: item.canonicalurl,
-					thumbnailSource: item.thumbnail && item.thumbnail.source || null,
-					tasktype: item.tasktype,
-					difficulty: item.difficulty,
-					maintenanceTemplates: item.maintenancetemplates || null
-				};
-			}
-			function filterOutProtectedArticles( result ) {
-				return result.protection.length === 0;
-			}
-			if ( data.growthtasks.totalCount > 0 ) {
-				tasks = data.query.pages
-					.filter( filterOutProtectedArticles )
-					.sort( function ( l, r ) {
-						return l.order - r.order;
-					} )
-					.map( cleanUpData )
-					// Maximum number of tasks in the queue is always 200.
-					.slice( 0, 200 );
-			}
-			if ( data.growthtasks.debug && data.growthtasks.debug.searchDebugUrls ) {
-				Object.keys( data.growthtasks.debug.searchDebugUrls ).forEach( function ( type ) {
-					var url = data.growthtasks.debug.searchDebugUrls[ type ],
-						// eslint-disable-next-line no-console
-						consoleInfo = console && console.info && console.info.bind( console ) ||
-							mw.log;
-					consoleInfo( 'GrowthExperiments ' + type + ' query:', url );
-				} );
-			}
-			return {
-				count: data.growthtasks.totalCount,
-				tasks: tasks
-			};
-		} );
-
-		return finalPromise.promise( {
-			abort: actionApiPromise.abort.bind( actionApiPromise )
-		} );
 	};
 
 	/**
@@ -248,7 +153,7 @@
 			this.filters.updateMatchCount( this.taskQueue.length );
 			return $.Deferred().resolve().promise();
 		}
-		this.apiPromise = this.fetchTasks();
+		this.apiPromise = this.api.fetchTasks( this.taskTypesQuery, this.topicsQuery );
 		return this.apiPromise.then( function ( data ) {
 			// HomepageModuleLogger adds this to the log data automatically
 			var extraData = mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' );
@@ -603,7 +508,8 @@
 			new Logger(
 				mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 				mw.config.get( 'wgGEHomepagePageviewToken' )
-			) );
+			),
+			new GrowthTasksApi() );
 		return suggestedEditsModule.fetchTasksAndUpdateView()
 			.then( function () {
 				suggestedEditsModule.filters.toggle( true );
