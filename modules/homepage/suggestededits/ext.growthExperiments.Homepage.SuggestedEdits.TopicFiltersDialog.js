@@ -105,6 +105,11 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
  * expand the suggestion widget if enabled widgets exist below the fold.
  */
 TopicFiltersDialog.prototype.updateFiltersFromState = function () {
+	if ( !this.config.presets.length ) {
+		// There are not preset topics (e.g. user just initiated the module (T238611#5800350)
+		// so there's nothing to do here.
+		return;
+	}
 	this.topicSelector.suggestions.forEach( function ( suggestion ) {
 		suggestion.confirmed = this.config.presets.indexOf( suggestion.suggestionData.id ) > -1;
 		suggestion.update();
