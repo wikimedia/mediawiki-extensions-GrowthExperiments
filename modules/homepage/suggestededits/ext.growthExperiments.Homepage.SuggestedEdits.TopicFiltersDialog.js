@@ -105,18 +105,15 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
  * expand the suggestion widget if enabled widgets exist below the fold.
  */
 TopicFiltersDialog.prototype.updateFiltersFromState = function () {
-	if ( !this.config.presets.length ) {
-		// There are not preset topics (e.g. user just initiated the module (T238611#5800350)
-		// so there's nothing to do here.
-		return;
-	}
+	// this.config.presets could be null ((e.g. user just initiated the module, see T238611#5800350)
+	var presets = this.config.presets || [];
 	this.topicSelector.suggestions.forEach( function ( suggestion ) {
-		suggestion.confirmed = this.config.presets.indexOf( suggestion.suggestionData.id ) > -1;
+		suggestion.confirmed = presets.indexOf( suggestion.suggestionData.id ) > -1;
 		suggestion.update();
-	}.bind( this ) );
+	} );
 	// Using Array.some allows us to break the loop once we've found an item
 	// that requires the suggestion group to show all items.
-	this.config.presets.some( function ( selectedTopic ) {
+	presets.some( function ( selectedTopic ) {
 		if ( this.getAboveFoldEnabledFilters().indexOf( selectedTopic ) === -1 ) {
 			this.topicSelector.showAllItems();
 			return true;
