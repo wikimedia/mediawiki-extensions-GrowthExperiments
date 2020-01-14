@@ -2,6 +2,8 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
+use CirrusSearch\Search\CirrusSearchResult;
+use GrowthExperiments\NewcomerTasks\FauxSearchResultWithScore;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TemplateBasedTask;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -142,8 +144,17 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 				$taskType = $this->taskTypes[$taskTypeId];
 				$task = new TemplateBasedTask( $taskType, $match->getTitle() );
 				if ( $topicId !== '-' ) {
+					// TODO only set those topics which match $topicFilter. Does not make any
+					//   difference with the current search implementation, it will with ORES.
 					$topic = $this->topics[$topicId];
-					$task->setTopics( [ $topic ] );
+					$score = 0;
+					// CirrusSearch is an optional dependency, prevent phan from complaining
+					// @phan-suppress-next-line PhanUndeclaredClassInstanceof
+					if ( $match instanceof CirrusSearchResult || $match instanceof FauxSearchResultWithScore ) {
+						// @phan-suppress-next-line PhanUndeclaredClassMethod
+						$score = $match->getScore();
+					}
+					$task->setTopics( [ $topic ], [ $topicId => $score ] );
 				}
 				$suggestions[] = $task;
 				$taskCount++;
