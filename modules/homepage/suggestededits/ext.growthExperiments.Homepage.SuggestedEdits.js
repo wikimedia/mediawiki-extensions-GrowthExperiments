@@ -116,6 +116,7 @@
 	SuggestedEditsModule.prototype.restoreState = function () {
 		this.taskQueue = this.backup.taskQueue;
 		this.queuePosition = this.backup.queuePosition;
+		this.filters.updateMatchCount( this.taskQueue.length );
 		this.showCard();
 	};
 
