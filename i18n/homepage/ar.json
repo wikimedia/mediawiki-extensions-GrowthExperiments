@@ -193,7 +193,9 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "متوسطة",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "صعبة",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "تحديد مستوى التعديلات",
+	"growthexperiments-homepage-suggestededits-topic-filters-title": "{{GENDER:|حدّد|حدّدي}} الاهتمامات",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "تم",
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "تم",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "تم العثور على <strong>{{PLURAL:$1|$1 من المقالات|مقالة واحدة|مقالتين اثنتين|$1 مقالات|$1 مقالة}}</strong>",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "تحرير النسخ",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "{{GENDER:|تحر|تحري}} عن مراجع",
@@ -211,5 +213,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "{{GENDER:|حدّد|حدّدي}} على الأقل مستوى واحدا من التعديلات",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "{{GENDER:|حدّد|حدّدي}} الاهتمامات",
 	"growthexperiments-homepage-suggestededits-topics-more": "{{GENDER:|أظهر|أظهري}} المزيد",
-	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "{{PLURAL:$1|لا مواضيع|موضوع واحد|موضوعان اثنان|$1 مواضيع|$1 موضوعا}}"
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "{{PLURAL:$1|لا مواضيع|موضوع واحد|موضوعان اثنان|$1 مواضيع|$1 موضوعا}}",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "{{GENDER:$1|اِختر|اِختاري}} بعض المواضيع التي {{GENDER:$1|تهتم|تهتمين}} بالكتابة عنها",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "سنحاول اقتراح مقالات تتماشى مع {{GENDER:$1|اهتماماتكَ|اهتماماتكِ}}."
 }

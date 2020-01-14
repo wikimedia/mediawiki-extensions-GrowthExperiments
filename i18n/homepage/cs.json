@@ -187,7 +187,9 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Středně obtížné",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Obtížné",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Vyberte typy editací",
+	"growthexperiments-homepage-suggestededits-topic-filters-title": "Vyberte své zájmy",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Hotovo",
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "Hotovo",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "{{PLURAL:$1|nalezen|nalezeny|nalezeno}} <strong>$1</strong> {{PLURAL:$1|článek|články|článků}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "Korektura",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Nalezení referencí",
@@ -205,5 +207,6 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Vyberte alespoň jeden typ editací",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Vyberte své zájmy",
 	"growthexperiments-homepage-suggestededits-topics-more": "ukázat více",
-	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|téma|témata|témat}}"
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|téma|témata|témat}}",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Vyberte témata, které byste {{GENDER:$1|rád editoval|ráda editovala|rádi editovali}}."
 }
