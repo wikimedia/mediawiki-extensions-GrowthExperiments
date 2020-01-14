@@ -2,11 +2,13 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
+use ApiRawMessage;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Linker\LinkTarget;
 use SearchEngineFactory;
+use StatusValue;
 
 class LocalSearchTaskSuggester extends SearchTaskSuggester {
 
@@ -47,6 +49,19 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 			$searchEngine->setSort( 'random' );
 		}
 		$matches = $searchEngine->searchText( $searchTerm );
-		return $matches->isOK() ? $matches->getValue() : $matches;
+		if ( $matches instanceof StatusValue ) {
+			if ( !$matches->isOK() ) {
+				return $matches;
+			} else {
+				$matches = $matches->getValue();
+			}
+		}
+		if ( !$matches ) {
+			return StatusValue::newFatal( new ApiRawMessage(
+				'Full text searches are unsupported or disabled',
+				'grothexperiments-no-fulltext-search'
+			) );
+		}
+		return $matches;
 	}
 }
