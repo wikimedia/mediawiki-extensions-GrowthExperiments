@@ -21,6 +21,9 @@ class Task {
 	/** @var Topic[] */
 	private $topics = [];
 
+	/** @var float[] Match scores associated to the topics in $topics, keyed by topic ID. */
+	private $topicScores = [];
+
 	/**
 	 * @param TaskType $taskType
 	 * @param LinkTarget $title The page this task is about.
@@ -54,10 +57,26 @@ class Task {
 	}
 
 	/**
-	 * @param Topic[] $topics
+	 * Get topic matching scores for each topic this task is in.
+	 * @return float[] Topic ID => score
 	 */
-	public function setTopics( array $topics ): void {
+	public function getTopicScores(): array {
+		// Make sure the set of returned items always matches getTopics().
+		$topicScores = [];
+		foreach ( $this->getTopics() as $topic ) {
+			$topicScores[$topic->getId()] = $this->topicScores[$topic->getId()] ?? 0;
+		}
+		return $topicScores;
+	}
+
+	/**
+	 * @param Topic[] $topics
+	 * @param float[] $topicScores Match scores associated to the topics in $topics,
+	 *   keyed by topic ID. Keys are a subset of those in $topics.
+	 */
+	public function setTopics( array $topics, array $topicScores = [] ): void {
 		$this->topics = $topics;
+		$this->topicScores = $topicScores;
 	}
 
 }

@@ -77,11 +77,11 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	}
 
 	public function provideSuggest() {
-		$makeTask = function ( TaskType $taskType, string $titleText, array $topicIds = [] ) {
+		$makeTask = function ( TaskType $taskType, string $titleText, array $topicScores = [] ) {
 			$task = new Task( $taskType, new TitleValue( NS_MAIN, $titleText ) );
 			$task->setTopics( array_map( function ( string $topicId ) {
 				return new Topic( $topicId );
-			}, $topicIds ) );
+			}, array_keys( $topicScores ) ), $topicScores );
 			return $task;
 		};
 
@@ -316,10 +316,11 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'topicFilter' => [ 'art', 'science' ],
 				'limit' => null,
 				'expectedTaskSet' => new TaskSet( [
-					$makeTask( $copyedit, 'Foo', [ 'art' ] ),
-					$makeTask( $copyedit, 'Bar', [ 'science' ] ),
-					$makeTask( $link, 'Baz', [ 'art' ] ),
-					$makeTask( $link, 'Boom', [ 'art' ] ),
+					// scores are faked for now, so they are just ( 100 / position in response )
+					$makeTask( $copyedit, 'Foo', [ 'art' => 100, ] ),
+					$makeTask( $copyedit, 'Bar', [ 'science' => 100, ] ),
+					$makeTask( $link, 'Baz', [ 'art' => 100 ] ),
+					$makeTask( $link, 'Boom', [ 'art' => 50 ] ),
 				], 150, 0 ),
 			],
 			'http error' => [
@@ -518,9 +519,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'taskType' => $task->getTaskType()->getId(),
 				'titleNs' => $task->getTitle()->getNamespace(),
 				'titleDbkey' => $task->getTitle()->getDBkey(),
-				'topics' => array_map( function ( Topic $topic ) {
-					return $topic->getId();
-				}, $task->getTopics() ),
+				'topics' => $task->getTopicScores(),
 			];
 			return $taskData;
 		}, iterator_to_array( Util::getIteratorFromTraversable( $taskSet ) ) );
