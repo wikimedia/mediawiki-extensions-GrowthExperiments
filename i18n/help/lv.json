@@ -4,12 +4,17 @@
 			"Papuass"
 		]
 	},
+	"growthexperiments-help-panel-cta-button-text": "Saņem palīdzību labošanā",
 	"growthexperiments-help-panel-question-button-text": "Turpināt",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Skatīt vairāk palīdzības rasktu",
 	"growthexperiments-help-panel-back-home": "Atpakaļ",
 	"growthexperiments-help-panel-close": "Pabeigts",
+	"growthexperiments-help-panel-home-title": "Saņem palīdzību labošanā",
 	"growthexperiments-help-panel-questionreview-title": "Uzdot jautājumu",
 	"growthexperiments-help-panel-questionreview-label": "Tavs jautājums",
+	"growthexperiments-help-panel-question-subject-template": "Palīdzības paneļa jautājums",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Palīdzības paneļa jautājums par [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-from-homepage": "Palīdzības moduļa jautājums no dalībnieka sākumlapas",
 	"growthexperiments-help-panel-questioncomplete-title": "Uzdot jautājumu",
 	"growthexperiments-help-panel-questioncomplete-header": "Tavs jautājums ir iesniegts!",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "mainīt",

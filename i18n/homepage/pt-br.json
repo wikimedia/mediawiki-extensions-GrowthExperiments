@@ -184,7 +184,9 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Médio",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Difícil",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Selecione os tipos de edições",
+	"growthexperiments-homepage-suggestededits-topic-filters-title": "Selecionar interesses",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Feito",
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "Feito",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> {{PLURAL:$1|artigo|artigos}} encontrados",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "Revisar",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Encontrar referências",
@@ -201,5 +203,8 @@
 	"growthexperiments-homepage-suggestededits-error-description": "Por favor, tente novamente mais tarde.",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Selecione pelo menos um tipo de edição",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Selecionar interesses",
-	"growthexperiments-homepage-suggestededits-topics-more": "mostrar mais"
+	"growthexperiments-homepage-suggestededits-topics-more": "mostrar mais",
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|trópico|trópicos}}",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Escolha alguns tópicos que {{GENDER:$1|você}} deseja editar",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Vamos tentar sugerir artigos que correspondam ao {{GENDER:$1|seu}} interesse."
 }
