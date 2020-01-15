@@ -478,7 +478,7 @@ abstract class QuestionPoster {
 				$status->fatal( 'hookaborted' );
 			}
 			return $status;
-		};
+		}
 		return $status;
 	}
 

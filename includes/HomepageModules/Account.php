@@ -3,8 +3,8 @@
 namespace GrowthExperiments\HomepageModules;
 
 use GrowthExperiments\Util;
-use IContextSource;
 use Html;
+use IContextSource;
 use OOUI\IconWidget;
 
 class Account extends BaseTaskModule {

@@ -32,14 +32,14 @@ class QuestionRecordTest extends \MediaWikiUnitTestCase {
 	public function testNewFromEmptyArray() {
 		// Timestamp added as a workaround for not stubbing out call to wfTimestamp()
 		$questionRecord = QuestionRecord::newFromArray( [ 'timestamp' => 123 ] );
-		$this->assertEquals( '', $questionRecord->getQuestionText() );
-		$this->assertEquals( '', $questionRecord->getSectionHeader() );
-		$this->assertEquals( 0, $questionRecord->getRevId() );
+		$this->assertSame( '', $questionRecord->getQuestionText() );
+		$this->assertSame( '', $questionRecord->getSectionHeader() );
+		$this->assertSame( 0, $questionRecord->getRevId() );
 		$this->assertEquals( 123, $questionRecord->getTimestamp() );
-		$this->assertEquals( '', $questionRecord->getResultUrl() );
-		$this->assertEquals( '', $questionRecord->getArchiveUrl() );
-		$this->assertEquals( false, $questionRecord->isArchived() );
-		$this->assertEquals( true, $questionRecord->isVisible() );
+		$this->assertSame( '', $questionRecord->getResultUrl() );
+		$this->assertSame( '', $questionRecord->getArchiveUrl() );
+		$this->assertFalse( $questionRecord->isArchived() );
+		$this->assertTrue( $questionRecord->isVisible() );
 	}
 
 	/**
@@ -70,8 +70,8 @@ class QuestionRecordTest extends \MediaWikiUnitTestCase {
 		$this->assertEquals( 456, $questionRecord->getTimestamp() );
 		$this->assertEquals( 'https://mediawiki.org', $questionRecord->getResultUrl() );
 		$this->assertEquals( 'https://mediawiki.org/archived', $questionRecord->getArchiveUrl() );
-		$this->assertEquals( true, $questionRecord->isArchived() );
-		$this->assertEquals( false, $questionRecord->isVisible() );
+		$this->assertTrue( $questionRecord->isArchived() );
+		$this->assertFalse( $questionRecord->isVisible() );
 		$this->assertEquals( CONTENT_MODEL_WIKITEXT, $questionRecord->getContentModel() );
 	}
 

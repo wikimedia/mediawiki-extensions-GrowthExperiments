@@ -12,5 +12,8 @@
 		"require": "readonly",
 		"OO": "readonly",
 		"module": "readonly"
+	},
+	"rules": {
+		"no-jquery/variable-pattern": "warn"
 	}
 }

@@ -32,7 +32,7 @@ class AqsEditInfoServiceTest extends MediaWikiUnitTestCase {
 		$editInfoService->setCache( $cache );
 		$actual = $editInfoService->getEditsPerDay();
 		if ( is_int( $expected ) ) {
-			$this->assertInternalType( 'int', $actual );
+			$this->assertIsInt( $actual );
 			$this->assertSame( $expected, $actual );
 		} else {
 			$this->assertInstanceOf( StatusValue::class, $actual );

@@ -3,10 +3,10 @@
 
 namespace GrowthExperiments\NewcomerTasks\Tracker;
 
+use Psr\Log\LoggerInterface;
 use Status;
 use Title;
 use TitleFactory;
-use Psr\Log\LoggerInterface;
 
 class Tracker {
 
@@ -22,7 +22,7 @@ class Tracker {
 	/** @var null|Title */
 	private $title;
 
-	/** @var string|null  */
+	/** @var string|null */
 	private $clickId;
 
 	/**
