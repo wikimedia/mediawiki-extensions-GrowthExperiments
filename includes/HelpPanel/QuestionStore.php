@@ -23,7 +23,7 @@ class QuestionStore {
 	const MAX_QUESTIONS = 3;
 
 	/**
-	 * @var int
+	 * @var User
 	 */
 	private $user;
 	/**

@@ -161,7 +161,7 @@ class Util {
 		list( $errorStatus, $warningStatus ) = $status->splitByErrorType();
 		if ( !$warningStatus->isGood() ) {
 			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
-				$warningStatus->getWikiText( null, null, 'en' ),
+				$warningStatus->getWikiText( false, false, 'en' ),
 				[ 'exception' => new Exception( __FUNCTION__ ) ]
 			);
 		}
@@ -209,7 +209,7 @@ class Util {
 			// Log warnings here. The caller is expected to handle errors so do not double-log them.
 			if ( !$warningStatus->isGood() ) {
 				LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
-					Status::wrap( $warningStatus )->getWikiText( null, null, 'en' ),
+					Status::wrap( $warningStatus )->getWikiText( false, false, 'en' ),
 					[ 'exception' => new Exception( 'getApiUrl' ) ]
 				);
 			}

@@ -198,7 +198,7 @@ class SuggestedEdits extends BaseModule {
 		if ( $siteEditsPerDay instanceof StatusValue ) {
 			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
 				'Failed to load site edits per day stat: {status}',
-				[ 'status' => Status::wrap( $siteEditsPerDay )->getWikiText( null, null, 'en' ) ]
+				[ 'status' => Status::wrap( $siteEditsPerDay )->getWikiText( false, false, 'en' ) ]
 			);
 			// TODO probably have some kind of fallback message?
 			$siteEditsPerDay = 0;
@@ -226,7 +226,7 @@ class SuggestedEdits extends BaseModule {
 		// Ugly hack to get the filters positioned outside of the module wrapper on mobile.
 		$mobileDetails = [ self::RENDER_MOBILE_DETAILS, self::RENDER_MOBILE_DETAILS_OVERLAY ];
 		if ( !in_array( $this->getMode(), $mobileDetails, true ) ) {
-			return null;
+			return '';
 		}
 		return Html::rawElement( 'div', [ 'class' => 'suggested-edits-filters' ] );
 	}
