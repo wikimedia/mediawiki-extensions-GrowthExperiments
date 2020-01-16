@@ -226,8 +226,12 @@ body.mw-special-Homepage {
 		// Override MobileFrontend, which wants to hide the drawer
 		// on an overlay.
 		display: block !important; // stylelint-disable-line declaration-no-important
+	}
+
+	.drawer-container {
 		// Display over Minerva's overlay content (@z-indexOverOverlay: 4).
 		z-index: 5;
+		position: relative;
 	}
 	// Hide the popup from the button widget,
 	// since the Drawer gets drawn on top of it.

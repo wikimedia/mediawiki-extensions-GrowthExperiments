@@ -72,26 +72,23 @@
 		} );
 		popupButtonWidget.getPopup().connect( this, {
 			toggle: function ( show ) {
-				var maskSelector = 'a.mw-mf-page-center__mask';
+				var drawer;
 				if ( show && OO.ui.isMobile() ) {
-					// eslint-disable-next-line no-jquery/no-global-selector
-					$( '.suggested-edits-taskexplanation-drawer' ).remove();
-					new Drawer( {
+					drawer = new Drawer( {
 						children: [
-							name,
+							this.getName(),
 							$( '<div>' ).addClass( 'suggested-edits-taskexplanation-additional-info' ).html( this.getDescription() )
 						],
 						className: 'suggested-edits-taskexplanation-drawer',
-						onBeforeHide: function () {
-							$( maskSelector ).removeClass( 'suggested-edits' );
+						onBeforeHide: function ( drawer ) {
+							// Wait for the CSS animation before removing.
+							setTimeout( function () {
+								drawer.$el.remove();
+							}, 250 );
 						}
-					} ).show()
-						.done( function () {
-							// Override default link for mask so that clicking outside
-							// the drawer leaves suggested edits open.
-							$( maskSelector ).attr( 'href', '#/homepage/suggested-edits' )
-								.addClass( 'suggested-edits' );
-						} );
+					} );
+					document.body.appendChild( drawer.$el[ 0 ] );
+					drawer.show();
 				}
 				this.logger.log( 'suggested-edits', this.mode, 'se-explanation-' +
 					( show ? 'open' : 'close' ), { taskType: this.taskType } );
