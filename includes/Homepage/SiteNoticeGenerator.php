@@ -8,6 +8,7 @@ use GrowthExperiments\Util;
 use Html;
 use OOUI\IconWidget;
 use OutputPage;
+use UserOptionsUpdateJob;
 
 class SiteNoticeGenerator {
 
@@ -50,11 +51,15 @@ class SiteNoticeGenerator {
 	private static function maybeShowIfUserAbandonedWelcomeSurvey(
 		&$siteNotice, \Skin $skin, &$minervaEnableSiteNotice
 	) {
-		if ( self::isWelcomeSurveyInReferer( $skin ) ) {
+		if ( self::isWelcomeSurveyInReferer( $skin )
+			|| Util::isMobile( $skin ) && !self::checkAndMarkMobileDiscoveryNoticeSeen( $skin )
+		) {
 			return self::setDiscoverySiteNotice(
 				$siteNotice,
 				$skin,
-				'welcomesurvey-originalcontext',
+				$skin->getTitle()->isSpecial( 'Homepage' )
+					? 'specialwelcomesurvey'
+					: 'welcomesurvey-originalcontext',
 				$minervaEnableSiteNotice
 			);
 		}
@@ -109,11 +114,41 @@ class SiteNoticeGenerator {
 	) {
 		if ( Util::isMobile( $skin ) ) {
 			self::setMobileDiscoverySiteNotice( $siteNotice, $skin, $contextName, $minervaEnableSiteNotice );
+			self::checkAndMarkMobileDiscoveryNoticeSeen( $skin );
 		} else {
 			self::setDesktopDiscoverySiteNotice( $siteNotice, $skin, $contextName );
 		}
 		// Only triggered for a specific source query parameter, which the user should see only
 		// once, so it's OK to suppress all other banners.
+		return false;
+	}
+
+	/**
+	 * Check and set seen flag for the mobile homapage discovery sitenotice.
+	 * (Desktop uses a different mechanism based on guided tours, which has its own seen logic.)
+	 * @param \Skin $skin
+	 * @return bool True if the user has seen the notice already.
+	 * @suppress PhanUndeclaredProperty
+	 */
+	private static function checkAndMarkMobileDiscoveryNoticeSeen( \Skin $skin ) {
+		// Make multiple calls to this method within the same request a no-op.
+		// Note this would be necessary even if we only called it once, because
+		// Minerva calls sitenotice hooks multiple times.
+		if ( isset( $skin->growthExperimentsHomepageDiscoveryNoticeSeen ) ) {
+			return $skin->growthExperimentsHomepageDiscoveryNoticeSeen;
+		}
+
+		$user = $skin->getUser();
+		if ( $user->getOption( HomepageHooks::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN ) ) {
+			$skin->growthExperimentsHomepageDiscoveryNoticeSeen = true;
+			return true;
+		}
+
+		\JobQueueGroup::singleton()->lazyPush( new UserOptionsUpdateJob( [
+			'userId' => $user->getId(),
+			'options' => [ HomepageHooks::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN => 1 ],
+		] ) );
+		$skin->growthExperimentsHomepageDiscoveryNoticeSeen = false;
 		return false;
 	}
 

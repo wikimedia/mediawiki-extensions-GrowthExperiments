@@ -7,6 +7,9 @@ use GrowthExperiments\HomepageHooks;
 use MediaWikiUnitTestCase;
 use OOUI\BlankTheme;
 use OOUI\Theme;
+use PHPUnit\Framework\MockObject\MockObject;
+use Skin;
+use SkinMinerva;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Homepage\SiteNoticeGenerator
@@ -121,7 +124,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	 * @covers ::setNotice
 	 */
 	public function testSetDiscoverySiteNoticeMobileSpecialWelcomeSurveySource() {
-		$skinMock = $this->getSkinMock( \SkinMinerva::class );
+		$skinMock = $this->getSkinMock( SkinMinerva::class );
 		$skinMock->getUser()->method( 'getName' )
 			->willReturn( 'Bar' );
 		$skinMock->getTitle()->expects( $this->exactly( 2 ) )
@@ -154,7 +157,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	 * @covers ::setNotice
 	 */
 	public function testSetDiscoverySiteMobileNoticeWelcomeSurveyOriginalContext() {
-		$skinMock = $this->getSkinMock( \SkinMinerva::class );
+		$skinMock = $this->getSkinMock( SkinMinerva::class );
 		$skinMock->getUser()->method( 'getName' )
 			->willReturn( 'Bar' );
 		$skinMock->getTitle()->method( 'isSpecial' )
@@ -202,8 +205,10 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$skinMock->method( 'getLanguage' )
 			->willReturn( $languageMock );
 		$skinMock->getTitle()->method( 'isSpecial' )
-			->with( 'WelcomeSurvey' )
-			->willReturn( false );
+			->willReturnMap( [
+				'WelcomeSurvey' => false,
+				'Homepage' => false,
+			] );
 		$siteNotice = '';
 		$minervaEnableNotice = false;
 		SiteNoticeGenerator::setNotice(
@@ -265,7 +270,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @return \PHPUnit\Framework\MockObject\MockObject
+	 * @return MockObject
 	 */
 	private function getDefaultMessageMock() {
 		$messageMock = $this->getMockBuilder( \Message::class )
@@ -279,17 +284,13 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @return \PHPUnit\Framework\MockObject\MockObject|\Skin
+	 * @param bool $isMobile
+	 * @return MockObject|Skin
 	 */
-	private function getSkinMock( $class = \Skin::class ) {
-		$skinMock = $this->getMockBuilder( $class )
-			->disableOriginalConstructor()
-			->getMock();
+	private function getSkinMock( $class = Skin::class ) {
 		$outputMock = $this->getMockBuilder( \OutputPage::class )
 			->disableOriginalConstructor()
 			->getMock();
-		$skinMock->method( 'getOutput' )
-			->willReturn( $outputMock );
 		$outputMock->method( 'msg' )
 			->willReturnCallback( function ( $key ) {
 				$messageMock = $this->getDefaultMessageMock();
@@ -299,14 +300,30 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 					->willReturn( $key );
 				return $messageMock;
 			} );
+
 		$userMock = $this->getMockBuilder( \User::class )
 			->disableOriginalConstructor()
+			->setMethods( [ 'getId', 'getName', 'getOption' ] )
 			->getMock();
-		$skinMock->method( 'getUser' )
-			->willReturn( $userMock );
+		// This will make user settings update job fail, but we don't care about that.
+		$userMock->method( 'getId' )
+			->willReturn( -1 );
+		$userMock->method( 'getOption' )
+			->with( HomepageHooks::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN )
+			// false branch cannot easily be tested as it would call to JobQueueGroup
+			->willReturn( true );
+
 		$titleMock = $this->getMockBuilder( \Title::class )
 			->disableOriginalConstructor()
 			->getMock();
+
+		$skinMock = $this->getMockBuilder( $class )
+			->disableOriginalConstructor()
+			->getMock();
+		$skinMock->method( 'getOutput' )
+			->willReturn( $outputMock );
+		$skinMock->method( 'getUser' )
+			->willReturn( $userMock );
 		$skinMock->method( 'getTitle' )
 			->willReturn( $titleMock );
 		return $skinMock;
