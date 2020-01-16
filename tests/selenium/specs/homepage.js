@@ -34,7 +34,7 @@ describe( 'Homepage', function () {
 
 	} );
 
-	it( 'can be disabled and re-enabled for new user', function () {
+	it.skip( 'can be disabled and re-enabled for new user', function () {
 
 		PreferencesPage.open();
 		PreferencesPage.clickHomepageCheckBox();
