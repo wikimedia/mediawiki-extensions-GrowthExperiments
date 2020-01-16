@@ -29,7 +29,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		// in getMockPageLoader() will fail.
 		foreach ( range( 1, 2 ) as $_ ) {
 			$taskTypes = $configurationLoader->loadTaskTypes();
-			$this->assertInternalType( 'array', $taskTypes );
+			$this->assertIsArray( $taskTypes );
 			$this->assertNotEmpty( $taskTypes );
 			$this->assertInstanceOf( TaskType::class, $taskTypes[0] );
 			$this->assertSame( [ 'copyedit', 'references' ], array_map( function ( TaskType $tt ) {
@@ -83,7 +83,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		// in getMockPageLoader() will fail.
 		foreach ( range( 1, 2 ) as $_ ) {
 			$topics = $configurationLoader->loadTopics();
-			$this->assertInternalType( 'array', $topics );
+			$this->assertIsArray( $topics );
 			$this->assertNotEmpty( $topics );
 			$this->assertInstanceOf( Topic::class, $topics[0] );
 			$this->assertSame( [ 'art', 'science' ], array_map( function ( Topic $t ) {

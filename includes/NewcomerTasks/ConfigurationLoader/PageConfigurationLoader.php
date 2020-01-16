@@ -36,7 +36,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	/** @var Topic[]|StatusValue|null Cached topic set (or an error). */
 	private $topics;
 
-	/** @var LinkTarget[]|StatusValue|null Cached template blacklist (or an error).  */
+	/** @var LinkTarget[]|StatusValue|null Cached template blacklist (or an error). */
 	private $templateBlacklist;
 
 	/**

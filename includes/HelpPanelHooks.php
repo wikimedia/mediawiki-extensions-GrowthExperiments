@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments;
 
-use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
 use Config;
+use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
 use OutputPage;
-use ResourceLoaderContext;
 use RequestContext;
+use ResourceLoaderContext;
 use Skin;
 use User;
 

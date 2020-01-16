@@ -2,14 +2,14 @@
 
 namespace GrowthExperiments;
 
-use ConfigException;
-use MediaWiki\MediaWikiServices;
-use OOUI\ButtonWidget;
 use Config;
+use ConfigException;
 use Html;
+use MediaWiki\MediaWikiServices;
 use MessageLocalizer;
-use OutputPage;
+use OOUI\ButtonWidget;
 use OOUI\Tag;
+use OutputPage;
 use RawMessage;
 use Title;
 use User;

@@ -10,7 +10,7 @@ use OOUI\ButtonWidget;
 
 class StartEditing extends BaseTaskModule {
 
-	/** @var bool In-process cache for isCompleted()  */
+	/** @var bool In-process cache for isCompleted() */
 	private $isCompleted;
 
 	/**

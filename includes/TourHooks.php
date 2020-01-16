@@ -2,10 +2,9 @@
 
 namespace GrowthExperiments;
 
+use ConfigException;
 use ResourceLoader;
 use User;
-
-use ConfigException;
 
 class TourHooks {
 

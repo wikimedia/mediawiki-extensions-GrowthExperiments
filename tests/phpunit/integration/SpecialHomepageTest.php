@@ -79,7 +79,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			new \FauxRequest( [], true ),
 			null,
 			$user );
-		$this->assertEquals(
+		$this->assertSame(
 			'',
 			$responseBody,
 			'Empty body since we are redirecting to tutorial title.'

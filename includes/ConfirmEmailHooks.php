@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments;
 
+use Html;
 use MediaWiki\Auth\AuthManager;
 use MediaWiki\MediaWikiServices;
-use Html;
 use Message;
 use RequestContext;
 use User;

@@ -7,14 +7,14 @@ use FormatJson;
 use JobQueueGroup;
 use Language;
 use MediaWiki\Logger\LoggerFactory;
-use RequestContext;
-use TextContent;
-use UserOptionsUpdateJob;
-use Wikimedia\Rdbms\ILoadBalancer;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
+use RequestContext;
+use TextContent;
 use Title;
 use User;
+use UserOptionsUpdateJob;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 class QuestionStore {
 

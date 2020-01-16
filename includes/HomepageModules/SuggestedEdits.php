@@ -3,12 +3,12 @@
 namespace GrowthExperiments\HomepageModules;
 
 use Config;
+use ExtensionRegistry;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use IContextSource;
 use Html;
-use ExtensionRegistry;
+use IContextSource;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
 use MediaWiki\Logger\LoggerFactory;
 use Message;

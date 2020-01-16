@@ -476,7 +476,7 @@ class Impact extends BaseModule {
 	/**
 	 * Get the total number of article edits made by the current user.
 	 *
-	 * @return integer
+	 * @return int
 	 * @throws Exception
 	 */
 	private function getArticleEditCount() {

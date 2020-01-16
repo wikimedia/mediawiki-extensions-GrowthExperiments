@@ -3,9 +3,9 @@
 namespace GrowthExperiments\NewcomerTasks\Tracker;
 
 use BagOStuff;
-use TitleFactory;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
+use TitleFactory;
 
 class TrackerFactory {
 
