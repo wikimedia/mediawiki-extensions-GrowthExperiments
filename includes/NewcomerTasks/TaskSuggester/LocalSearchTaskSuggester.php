@@ -90,6 +90,9 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 				'ns0' => 1,
 				'limit' => $limit,
 				'offset' => $offset,
+				'cirrusRescoreProfile' => 'classic_noboostlinks',
+				'cirrusDumpResult' => 1,
+				'cirrusExplain' => 'pretty',
 			], false, PROTO_CANONICAL );
 		}
 		return $matches;
