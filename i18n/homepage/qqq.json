@@ -227,6 +227,7 @@
 	"growthexperiments-log-name": "Title of Special:Log/growthexperiments\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-log-header": "Description of Special:Log/growthexperiments\n\n{{doc-growthexperiments-homepage}}",
 	"logentry-growthexperiments-claimmentee": "{{logentry|[[Special:Log/growthexperiments]]}}\n\n{{doc-growthexperiments-homepage}}",
+	"logentry-growthexperiments-claimmentee-no-previous-mentor": "{{logentry|[[Special:Log/growthexperiments]]}}\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-claimmentee-no-user": "Error message to show if a non-existent user was used in Special:ClaimMentee\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-claimmentee-already-mentor": "Error message to show if claiming user and current mentor is the same in Special:ClaimMentee\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Error message shown when you're trying to use an invalid username in Special:ClaimMentee\n\n{{doc-growthexperiments-homepage}}",
