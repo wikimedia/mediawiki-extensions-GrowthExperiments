@@ -483,6 +483,7 @@
 			"packageFiles": [
 				"homepage/ext.growthExperiments.Homepage.StartEditing.js",
 				"homepage/ext.growthExperiments.Homepage.StartEditingDialog.js",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
 				{
 					"name": "homepage/config.json",
 					"config": [ "GEHomepageSuggestedEditsIntroLinks" ]
@@ -519,6 +520,7 @@
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body",
+				"growthexperiments-homepage-suggestededits-difficulty-filters-article-count",
 				"vector-view-edit"
 			],
 			"dependencies": [

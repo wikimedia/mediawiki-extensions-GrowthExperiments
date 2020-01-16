@@ -4,7 +4,9 @@
 		logger = new Logger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
-		);
+		),
+		GrowthTasksApi = require( './suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js' ),
+		api = new GrowthTasksApi();
 
 	function setupCta( $container ) {
 		var ctaButton, dialog, windowManager,
@@ -15,7 +17,7 @@
 		}
 
 		ctaButton = OO.ui.ButtonWidget.static.infuse( $buttonElement );
-		dialog = new StartEditingDialog( { mode: mode }, logger );
+		dialog = new StartEditingDialog( { mode: mode }, logger, api );
 		windowManager = new OO.ui.WindowManager( { modal: true } );
 
 		// eslint-disable-next-line no-jquery/no-global-selector

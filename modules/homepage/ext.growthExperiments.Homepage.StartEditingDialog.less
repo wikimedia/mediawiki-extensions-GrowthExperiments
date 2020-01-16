@@ -24,9 +24,23 @@
 		font-size: 0.875em;
 	}
 
-	&-desktopActions {
-		float: right;
-		padding: @side-padding;
+	.suggested-edits-article-count-panel-layout-desktop {
+		// Align with the desktop actions buttons.
+		padding-top: 30px;
+	}
+
+	.suggested-edits-article-count {
+		padding-left: 5px;
+		color: @colorGray5;
+	}
+
+	&-desktopFooter {
+		display: flex;
+
+		&-desktopActions {
+			margin-left: auto;
+			padding: @side-padding;
+		}
 	}
 
 	&-progress {
