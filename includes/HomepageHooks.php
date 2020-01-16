@@ -75,7 +75,9 @@ class HomepageHooks {
 					);
 				};
 			}
-			$list[ 'ClaimMentee' ] = SpecialClaimMentee::class;
+			$list[ 'ClaimMentee' ] = function () use ( $mwServices ) {
+				return new SpecialClaimMentee( $mwServices->getMainConfig() );
+			};
 		}
 	}
 

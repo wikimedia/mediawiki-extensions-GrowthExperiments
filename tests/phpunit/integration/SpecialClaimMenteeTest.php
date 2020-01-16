@@ -15,7 +15,10 @@ class SpecialClaimMenteeTest extends SpecialPageTestBase {
 	 * @inheritDoc
 	 */
 	protected function newSpecialPage() {
-		return new SpecialClaimMentee();
+		return new SpecialClaimMentee( new \HashConfig( [
+				'GEHomepageMentorsList' => 'MentorsList'
+			] )
+		);
 	}
 
 	/**

@@ -2,9 +2,11 @@
 
 namespace GrowthExperiments\Specials;
 
+use Config;
 use FormSpecialPage;
 use GrowthExperiments\ChangeMentor;
 use GrowthExperiments\Mentor;
+use GrowthExperiments\WikiConfigException;
 use MediaWiki\Logger\LoggerFactory;
 use PermissionsError;
 use Status;
@@ -20,8 +22,22 @@ class SpecialClaimMentee extends FormSpecialPage {
 	 */
 	private $newMentor;
 
-	public function __construct() {
+	/**
+	 * @var string[]|null List of mentors that can be assigned.
+	 */
+	private $mentorsList;
+	/**
+	 * @var Config
+	 */
+	private $config;
+
+	/**
+	 * SpecialClaimMentee constructor.
+	 * @param Config $config
+	 */
+	public function __construct( Config $config ) {
 		parent::__construct( 'ClaimMentee' );
+		$this->config = $config;
 	}
 
 	public function doesWrites() {
@@ -53,19 +69,29 @@ class SpecialClaimMentee extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function userCanExecute( User $user ) {
-		return in_array( $user->getTitleKey(), Mentor::getMentors() );
+		try {
+			$this->mentorsList = Mentor::getMentors();
+		} catch ( WikiConfigException $wikiConfigException ) {
+			return false;
+		}
+		return in_array( $user->getTitleKey(), $this->mentorsList );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function displayRestrictionError() {
-		throw new PermissionsError( null, [
+		$error = !$this->mentorsList ?
 			[
-				'growthexperiments-homepage-claimmentee-must-be-mentor',
-				$this->getUser()
-				]
-		] );
+				'growthexperiments-homepage-mentors-list-missing-or-misconfigured',
+				$this->config->get( 'GEHomepageMentorsList' )
+			]
+			:
+			[ 'growthexperiments-homepage-claimmentee-must-be-mentor',
+			  $this->getUser(),
+			  $this->config->get( 'GEHomepageMentorsList' )
+			];
+		throw new PermissionsError( null, [ $error ] );
 	}
 
 	/**
