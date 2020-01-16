@@ -59,12 +59,13 @@ class Mentor {
 	 * Randomly selects a mentor from a list on a wiki page.
 	 *
 	 * @param User $mentee
+	 * @param User[] $excluded
 	 * @return User The selected mentor
 	 * @throws ConfigException
 	 * @throws WikiConfigException
 	 * @throws MWException
 	 */
-	private static function selectMentor( User $mentee ) {
+	private static function selectMentor( User $mentee, array $excluded = [] ) {
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$mentorsPageName = $config->get( 'GEHomepageMentorsList' );
 		$title = Title::newFromText( $mentorsPageName );
@@ -85,6 +86,18 @@ class Mentor {
 				'Homepage Mentorship module: no mentor available for ' .
 				$mentee->getName() .
 				' but themselves'
+			);
+		}
+		$titleKeys = [];
+		foreach ( $excluded as $user ) {
+			$titleKeys[] = $user->getTitleKey();
+		}
+		$possibleMentors = array_values( array_diff( $possibleMentors, $titleKeys ) );
+		if ( count( $possibleMentors ) === 0 ) {
+			throw new MWException(
+				'Homepage Mentorship module: no mentor available for ' .
+				$mentee->getName() .
+				' but excluded users'
 			);
 		}
 
