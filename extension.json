@@ -285,7 +285,8 @@
 				"homepage/ext.growthExperiments.Homepage.Logging.js"
 			],
 			"dependencies": [
-				"ext.growthExperiments.Homepage.Logger"
+				"ext.growthExperiments.Homepage.Logger",
+				"mediawiki.Uri"
 			],
 			"targets": [
 				"desktop",
