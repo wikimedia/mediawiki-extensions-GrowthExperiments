@@ -165,7 +165,7 @@ StartEditingDialog.prototype.updateMatchCount = function () {
 	var topics = this.topicSelector ? this.topicSelector.getSelectedTopics() : [];
 	this.api.fetchTasks( [ 'copyedit', 'links' ], topics )
 		.then( function ( data ) {
-			this.updateArticleCountLabel( Number( data.count ) );
+			this.updateArticleCountLabel( Number( data.tasks.length ) );
 		}.bind( this ) );
 };
 
