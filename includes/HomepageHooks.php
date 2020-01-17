@@ -41,6 +41,8 @@ class HomepageHooks {
 
 	const HOMEPAGE_PREF_ENABLE = 'growthexperiments-homepage-enable';
 	const HOMEPAGE_PREF_PT_LINK = 'growthexperiments-homepage-pt-link';
+	/** @var string User options key for storing whether the user has seen the notice. */
+	const HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN = 'homepage_mobile_discovery_notice_seen';
 	const CONFIRMEMAIL_QUERY_PARAM = 'specialconfirmemail';
 
 	/**
@@ -287,6 +289,10 @@ class HomepageHooks {
 			'hide-if' => [ '!==', self::HOMEPAGE_PREF_ENABLE, '1' ],
 		];
 
+		$preferences[ self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN ] = [
+			'type' => 'api',
+		];
+
 		$preferences[ Mentor::MENTOR_PREF ] = [
 			'type' => 'api',
 		];
@@ -330,6 +336,19 @@ class HomepageHooks {
 	}
 
 	/**
+	 * Register defaults for homepage-related preferences.
+	 *
+	 * @param array &$wgDefaultUserOptions Reference to default options array
+	 */
+	public function onUserGetDefaultOptions( &$wgDefaultUserOptions ) {
+		$wgDefaultUserOptions += [
+			// Set discovery notice seen flag to true; it will be changed for new users in the
+			// LocalUserCreated hook.
+			self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN => true,
+		];
+	}
+
+	/**
 	 * Enable the homepage for a percentage of new local accounts.
 	 *
 	 * @param User $user
@@ -347,13 +366,14 @@ class HomepageHooks {
 		if ( $user->isLoggedIn() && !$autocreated && rand( 0, 99 ) < $enablePercentage ) {
 			$user->setOption( self::HOMEPAGE_PREF_ENABLE, 1 );
 			$user->setOption( self::HOMEPAGE_PREF_PT_LINK, 1 );
-			// Default option is that the user has seen the tour (so we don't prompt
-			// existing users to view it). Setting to false will prompt new user accounts
-			// only to see the various tours.
+			// Default option is that the user has seen the tours/notices (so we don't prompt
+			// existing users to view them). We set the option to false on new user accounts
+			// so they see them once (and then the option gets reset for them).
 			$user->setOption( TourHooks::TOUR_COMPLETED_HELP_PANEL, 0 );
 			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP, 0 );
 			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME, 0 );
 			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_DISCOVERY, 0 );
+			$user->setOption( self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN, 0 );
 			try {
 				$user->setOption(
 					Mentor::MENTOR_PREF,
