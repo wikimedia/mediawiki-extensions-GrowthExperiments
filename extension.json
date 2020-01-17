@@ -828,11 +828,11 @@
 		},
 		"GENewcomerTasksConfigTitle": {
 			"description": "Title of a MediaWiki page which contains suggested edits configuration. If the title has an interwiki prefix, then its content will be loaded remotely via an HTTP request. Should have JSON content type and contain a map of task type -> task configuration where task configuration consists of the following fields: group - 'easy', 'medium' or 'hard'; templates - an array of template names (without namespace) for the maintenance templates used to tag this task type (redirects do not need to be declared manually). The system messages growthexperiments-homepage-suggestededits-tasktype-name-<tasktype> and growthexperiments-homepage-suggestededits-tasktype-description-<tasktype> will be used for task name and description; both must exist.",
-			"value": null
+			"value": "MediaWiki:NewcomerTasks.json"
 		},
 		"GENewcomerTasksTopicConfigTitle": {
 			"description": "Title of a MediaWiki page which contains topic configuration for suggested edits. If the title has an interwiki prefix, then its content will be loaded remotely via an HTTP request. Should have JSON content type and contain a map of topic id -> topic configuration, which is an object with a 'titles' property (list of mainspace page names of pages which are considered representative of the topic, to be used for text similarity comparision). The system message growthexperiments-homepage-suggestededits-topic-name-<id>  will be used for human-readable topic name and must exist.",
-			"value": null
+			"value": "MediaWiki:NewcomerTopics.json"
 		},
 		"GENewcomerTasksRemoteApiUrl": {
 			"description": "URL of a remote API (ending with 'api.php') to use for identifying suggested edits. This is meant for developer setups.",
