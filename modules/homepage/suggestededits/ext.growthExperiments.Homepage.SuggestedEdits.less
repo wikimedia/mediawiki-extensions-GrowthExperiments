@@ -389,6 +389,12 @@ body.mw-special-Homepage {
 			.suggested-edits-previous,
 			.suggested-edits-next {
 				padding: 0 16px;
+
+				// Override an OOUI style that moves the icons off the center of their containing
+				// blocks and makes symmetric positioning hard.
+				.oo-ui-buttonElement-frameless.oo-ui-iconElement:first-child {
+					margin-left: 0;
+				}
 			}
 
 			.suggested-edits-task-card-wrapper {
