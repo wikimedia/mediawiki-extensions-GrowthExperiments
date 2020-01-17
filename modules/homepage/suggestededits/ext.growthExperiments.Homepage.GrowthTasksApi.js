@@ -103,6 +103,14 @@
 			};
 		} );
 
+		actionApiPromise.fail( function ( error, details ) {
+			if ( error === 'http' && details && details.textStatus === 'abort' ) {
+				// XHR abort, not a real error
+				return;
+			}
+			mw.log.error( 'Fetching task suggestions failed:', error, details );
+		} );
+
 		return finalPromise.promise( {
 			abort: actionApiPromise.abort.bind( actionApiPromise )
 		} );
