@@ -31,6 +31,12 @@ $specialPageAliases['cs'] = [
 	'Impact' => [ 'Dosah_příspěvků' ],
 ];
 
+$specialPageAliases['hu'] = [
+	'WelcomeSurvey' => [ 'Új_szerkesztők_kérdőíve' ],
+	'Homepage' => [ 'Új_szerkesztők_honlapja' ],
+	'Impact' => [ 'Eredmény' ],
+];
+
 /** 한국어  (Korean) */
 $specialPageAliases['ko'] = [
 	'WelcomeSurvey' => [ '환영설문조사' ],
