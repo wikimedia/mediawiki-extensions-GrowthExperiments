@@ -196,14 +196,25 @@
 			this.currentCard = new NoResultsWidget( { topicMatching: this.config.topicMatching } );
 			return $.Deferred().resolve().promise();
 		}.bind( this ) ).catch( function ( error, details ) {
+			var message;
 			if ( error === 'http' && details && details.textStatus === 'abort' ) {
-				// Don't show error card for XHR abort.
+				// XHR abort, not a real error
 				return;
+			} else if ( error === 'http' ) {
+				// jQuery AJAX error; textStatus is AJAX status, exception is status code text from server
+				message = ( typeof details.exception === 'string' ) ? details.exception : details.textStatus;
+			} else if ( error === 'ok-but-empty' ) {
+				// maybe a PHP fatal; not much we can do
+				message = error;
+			} else if ( error instanceof Error ) {
+				// JS error in our own code
+				message = error.name + ': ' + error.message;
+			} else {
+				// API error code
+				message = error;
 			}
-			mw.log.error( 'Fetching task suggestions failed:', error, details );
-			// TODO log more information about the error
 			this.logger.log( 'suggested-edits', this.mode, 'se-task-pseudo-impression',
-				{ type: 'error' } );
+				{ type: 'error', errorMessage: message } );
 			return this.showCard( new ErrorCardWidget() );
 		}.bind( this ) );
 	};
