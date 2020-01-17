@@ -3,7 +3,6 @@
 namespace GrowthExperiments\HomepageModules;
 
 use Config;
-use ExtensionRegistry;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -148,10 +147,8 @@ class SuggestedEdits extends BaseModule {
 
 	/** @inheritDoc */
 	protected function canRender() {
-		$extensionRegistry = ExtensionRegistry::getInstance();
 		return self::isActivated( $this->getContext() ) &&
-			   !$this->configurationLoader->loadTaskTypes() instanceof StatusValue &&
-			   $extensionRegistry->isLoaded( 'PageImages' );
+			   !$this->configurationLoader->loadTaskTypes() instanceof StatusValue;
 	}
 
 	/** @inheritDoc */
