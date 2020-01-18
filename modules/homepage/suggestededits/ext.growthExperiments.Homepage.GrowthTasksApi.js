@@ -79,7 +79,7 @@
 				return result.protection.length === 0;
 			}
 			if ( data.growthtasks.totalCount > 0 ) {
-				tasks = data.query.pages
+				tasks = ( data.query && data.query.pages || [] )
 					.filter( filterOutProtectedArticles )
 					.sort( function ( l, r ) {
 						return l.order - r.order;
