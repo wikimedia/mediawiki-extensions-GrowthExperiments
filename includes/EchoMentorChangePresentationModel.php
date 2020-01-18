@@ -17,7 +17,8 @@ class EchoMentorChangePresentationModel extends EchoEventPresentationModel {
 	 * @inheritDoc
 	 */
 	public function getHeaderMessage() {
-		return $this->getMessageWithAgent( 'growthexperiments-notification-header-mentor-change' );
+		return $this->getMessageWithAgent( 'growthexperiments-notification-header-mentor-change' )
+			->params( $this->getUser()->getName() );
 	}
 
 	/**
@@ -44,7 +45,8 @@ class EchoMentorChangePresentationModel extends EchoEventPresentationModel {
 	 * @inheritDoc
 	 */
 	public function getSecondaryLinks() {
-		$sayHi = $this->getMessageWithAgent( 'growthexperiments-notification-say-hi-mentor-change' );
+		$sayHi = $this->getMessageWithAgent( 'growthexperiments-notification-say-hi-mentor-change' )
+			->params( $this->getUser()->getName() )->text();
 		return [
 			[
 				'url' => $this->event->getAgent()->getTalkPage()->getLocalURL(),

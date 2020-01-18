@@ -140,7 +140,8 @@ class ChangeMentor {
 			] );
 			$status->fatal(
 				'growthexperiments-homepage-claimmentee-already-mentor',
-				$this->mentee->getName()
+				$this->mentee->getName(),
+				$this->performer->getName()
 			);
 			return $status;
 		}
