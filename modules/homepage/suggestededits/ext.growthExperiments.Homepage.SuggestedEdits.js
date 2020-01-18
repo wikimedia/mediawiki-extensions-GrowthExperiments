@@ -548,6 +548,10 @@
 		return suggestedEditsModule.fetchTasksAndUpdateView()
 			.then( function () {
 				suggestedEditsModule.filters.toggle( true );
+				if ( suggestedEditsModule.currentCard instanceof ErrorCardWidget ) {
+					// currentCard was set by fetchTasksAndUpdateView, do not overwrite it
+					return $.Deferred().resolve();
+				}
 				return suggestedEditsModule.showCard();
 			} ).done( function () {
 				// Use done instead of then because 1) we don't want to make the caller
