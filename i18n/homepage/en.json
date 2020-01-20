@@ -224,7 +224,7 @@
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|claimed}} $3 as their mentee (previous {{GENDER:$4|mentor}} $4)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|claimed}} $3 as their mentee (no previous mentor)",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Provided mentee's username is invalid",
-	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|is}} {{GENDER:$2|your}} new mentor",
+	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|is your}} new mentor",
 	"growthexperiments-notification-body-mentor-change": "Reason: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "Say hi to {{GENDER:$2|your}} new mentor!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|You}} must be listed as a mentor on [[$2]] to be able to use Special:ClaimMentee",
