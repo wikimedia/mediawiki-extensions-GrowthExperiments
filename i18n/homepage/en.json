@@ -222,6 +222,7 @@
 	"growthexperiments-log-name": "GrowthExperiments log",
 	"growthexperiments-log-header": "These events track when GrowthExperiments-related events happen in the system.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|claimed}} $3 as their mentee (previous {{GENDER:$4|mentor}} $4)",
+	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|claimed}} $3 as their mentee (no previous mentor)",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Provided mentee's username is invalid",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|is}} your new mentor",
 	"growthexperiments-notification-body-mentor-change": "Reason: $1",

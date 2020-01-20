@@ -96,7 +96,12 @@ class ChangeMentor {
 				'newMentor' => $this->newMentor
 		] );
 
-		$logEntry = new ManualLogEntry( 'growthexperiments', 'claimmentee' );
+		$logEntry = new ManualLogEntry(
+			'growthexperiments',
+			$this->mentor ?
+				'claimmentee' :
+				'claimmentee-no-previous-mentor'
+		);
 		$logEntry->setPerformer( $this->performer );
 		$logEntry->setTarget( $this->mentee->getUserPage() );
 		$logEntry->setComment( $reason );
