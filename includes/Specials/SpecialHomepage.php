@@ -103,6 +103,7 @@ class SpecialHomepage extends SpecialPage {
 			 $user->isLoggedIn() &&
 			 !$user->getBoolOption( Tutorial::TUTORIAL_PREF ) ) {
 			DeferredUpdates::addCallableUpdate( function () use ( $user ) {
+				$user = $user->getInstanceForUpdate();
 				$user->setOption( Tutorial::TUTORIAL_PREF, 1 );
 				$user->saveSettings();
 			} );
