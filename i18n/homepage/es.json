@@ -8,7 +8,8 @@
 			"Canaan9801",
 			"Andru1013",
 			"DannyS712",
-			"Ihojose"
+			"Ihojose",
+			"Joanmp17"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Bienvenido|Bienvenida}}, {{bidi:$1}}!",
@@ -96,6 +97,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy": "Fácil",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Medio",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Difícil",
+	"growthexperiments-homepage-suggestededits-topic-filters-title": "Seleccionar intereses",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Hecho",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Hecho",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "Revisar",

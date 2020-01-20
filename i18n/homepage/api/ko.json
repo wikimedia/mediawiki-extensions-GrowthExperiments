@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ykhwong"
+			"Ykhwong",
+			"Revi"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "홈페이지 모듈을 통해 게시된 서식이 있는 질문을 가져옵니다",
+	"apihelp-homepagequestionstore-param-storage": "질문에 대한 저장소 위치.",
+	"apihelp-homepagequestionstore-param-userid": "질문을 할 사용자의 사용자 ID.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "질문을 찾을 수 없습니다."
 }

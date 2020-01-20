@@ -146,7 +146,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Otevřete menu a klikněte na $2, abyste {{GENDER:$1|navštívil|navštívila|navštívil(a)}} svou domovskou stránku.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> z <strong>$2</strong> {{PLURAL:$2|tipu|tipů}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Konec",
-	"growthexperiments-homepage-suggestededits-pageviews": "$1 návštěv čtenáři (za posledních 60 dní)",
+	"growthexperiments-homepage-suggestededits-pageviews": "$1 návštěv čtenáři (za posl. 60 dní)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Předchozí tip",
 	"growthexperiments-homepage-suggestededits-next-card": "Následující tip",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Žádné další tipy",
@@ -208,5 +208,6 @@
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Vyberte své zájmy",
 	"growthexperiments-homepage-suggestededits-topics-more": "ukázat více",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|téma|témata|témat}}",
-	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Vyberte témata, které byste {{GENDER:$1|rád editoval|ráda editovala|rádi editovali}}."
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Vyberte témata, které byste {{GENDER:$1|rád editoval|ráda editovala|rádi editovali}}.",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Pokusíme se doporučit články o tématech, které {{GENDER:$1|vás zajímají}}."
 }

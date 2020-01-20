@@ -7,5 +7,8 @@
 	},
 	"tag-newcomer_task": "Zadatak za novopridošlice",
 	"tag-newcomer_task-description": "Izmjena predložena modulom za sugeriranje uređivanja na suradničkoj stranici novopridošlice",
-	"growthexperiments-homepage-suggestededits-topics-more": "prikaži više"
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "Riješeno",
+	"growthexperiments-homepage-suggestededits-topics-more": "prikaži više",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Odaberite teme koje biste željeli uređivati",
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Pokušat ćemo Vam predložiti članke koji se podudaraju s {{GENDER:$1|Vašim}} interesima."
 }

@@ -3,7 +3,8 @@
 		"authors": [
 			"Shirayuki",
 			"Aefgh39622",
-			"Omotecho"
+			"Omotecho",
+			"Buntschann"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|こんにちは}}、{{bidi:$1}}！",
@@ -56,5 +57,6 @@
 	"growthexperiments-homepage-mentorship-questionreview-header": "投稿した質問は{{GENDER:$2|あなたの}}利用者名「$2」とともに$3に<strong>公開され</strong>、そこで{{GENDER:$1|皆さん}}が質問を見つけて回答を寄せます。",
 	"growthexperiments-homepage-tutorial-header": "編集方法を学ぶ",
 	"growthexperiments-homepage-tutorial-cta-text": "チュートリアル",
-	"growthexperiments-specialimpact-title": "影響"
+	"growthexperiments-specialimpact-title": "影響",
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "完了"
 }
