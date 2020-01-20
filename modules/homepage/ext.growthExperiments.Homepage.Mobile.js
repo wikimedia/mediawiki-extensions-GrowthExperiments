@@ -59,11 +59,13 @@
 				// gets hidden then shown again when opening and closing the question dialog
 				// (due to navigation from #/homepage/moduleName to #homepage/moduleName/question)
 				if ( newModule !== currentModule ) {
-					if ( currentModule !== null ) {
+					// Log null -> module as opening (impression) and module -> null as closing.
+					// Log module -> another module as opening but not closing, since there is
+					// no closing intent on the part of the user in that case.
+					if ( newModule === null ) {
 						// Navigating away from a module: log closing the overlay
 						logger.log( currentModule, 'mobile-overlay', 'close' );
-					}
-					if ( newModule !== null ) {
+					} else {
 						// Navigating to a module: log impression
 						logger.log( newModule, 'mobile-overlay', 'impression' );
 
