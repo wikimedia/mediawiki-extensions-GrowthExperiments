@@ -99,6 +99,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 	 * @return array
 	 */
 	protected function getFormFields() {
+		$req = $this->getRequest();
 		$fields = [
 			'mentee' => [
 				'label-message' => 'growthexperiments-homepage-claimmentee-mentee',
@@ -111,15 +112,15 @@ class SpecialClaimMentee extends FormSpecialPage {
 			],
 			'stage' => [ 'type' => 'hidden', 'default' => 2 ]
 		];
-		$req = $this->getRequest();
 		$stage = $req->getInt( 'wpstage', 1 );
-		if ( $stage >= 2 ) {
+		$this->setMentee( $req->getVal( 'wpmentee' ) );
+		if ( $stage >= 2 && $this->menteeIsValid() ) {
+			$fields['stage']['default'] = 3;
 			$fields['confirm'] = [
 				'label-message' => 'growthexperiments-claimmentee-confirm',
 				'type' => 'check',
 				'default' => false,
 			];
-			$fields['stage']['default'] = 3;
 		}
 		return $fields;
 	}
@@ -135,8 +136,8 @@ class SpecialClaimMentee extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function onSubmit( array $data ) {
-		$this->mentee = User::newFromName( $data['mentee'] );
-		if ( $this->mentee === false ) {
+		$this->setMentee( $data['mentee'] );
+		if ( !$this->menteeIsValid() ) {
 			return Status::newFatal( 'growthexperiments-homepage-claimmentee-invalid-username' );
 		}
 		$this->newMentor = $this->getUser();
@@ -164,5 +165,13 @@ class SpecialClaimMentee extends FormSpecialPage {
 			$this->mentee,
 			$this->newMentor
 		);
+	}
+
+	private function setMentee( $name = '' ) {
+		$this->mentee = User::newFromName( $name );
+	}
+
+	private function menteeIsValid() {
+		return $this->mentee instanceof User && $this->mentee->getId();
 	}
 }
