@@ -480,6 +480,9 @@
 		var cardSelector = '.suggested-edits-card',
 			$cardElement = $( cardSelector );
 		$cardElement.html( this.currentCard.$element );
+		$cardElement.closest( '.suggested-edits-card-wrapper' )
+			.toggleClass( 'pseudo-card', !( this.currentCard instanceof EditCardWidget ) )
+			.toggleClass( 'pseudo-card-eoq', this.currentCard instanceof EndOfQueueWidget );
 		this.setupClickLogging();
 	};
 

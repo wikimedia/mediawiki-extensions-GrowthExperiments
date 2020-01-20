@@ -344,15 +344,24 @@ body.mw-special-Homepage {
 			width: @cardWrapperWidth;
 			height: @cardContainerWrapperHeight;
 
-			.se-card-title,
-			.se-card-text {
-				text-align: center;
-				color: @colorGray2;
-				padding: 20px 10px 0 10px;
-			}
-
 			.se-card-image {
 				height: @imageHeight;
+			}
+
+			.se-card-title,
+			.se-card-text {
+				min-height: @textHeight / 2;
+				margin: 0;
+				text-align: center;
+				color: @colorGray2;
+			}
+
+			.se-card-title {
+				padding: 10px 0 0;
+			}
+
+			.se-card-text {
+				padding: 20px 0 0;
 			}
 		}
 
@@ -386,6 +395,17 @@ body.mw-special-Homepage {
 			justify-content: center;
 			flex-direction: row;
 			height: @cardContainerWrapperHeight;
+
+			// for pseudo-cards, make the top and bottom margin roughly match the pager and
+			// task type explanation size so the total height ends up similar to that of real cards
+			&.pseudo-card {
+				margin: 20px 0 108px;
+			}
+
+			// The EOQ card does have a pager, so adjust accordingly.
+			&.pseudo-card-eoq {
+				margin-top: 0;
+			}
 
 			.suggested-edits-previous,
 			.suggested-edits-next {
