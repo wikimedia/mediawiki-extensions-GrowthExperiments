@@ -68,6 +68,8 @@
 	"growthexperiments-homepage-mentorship-question-subject": "Jautājums no [[User:$1|$1]]",
 	"growthexperiments-homepage-tutorial-header": "Iemācies labot",
 	"growthexperiments-tour-discovery-title": "Sāc šeit!",
+	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> no <strong>$2</strong> {{PLURAL:$2|ieteikumiem|ieteikuma|ieteikumiem}}",
+	"growthexperiments-homepage-suggestededits-pager-end": "Beigas",
 	"growthexperiments-homepage-suggestededits-next-card": "Nākamais ieteiktais labojums",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Nav vairāk ieteikumu",
 	"growthexperiments-homepage-suggestededits-no-results": "Šobrīd nav ieteikumu",

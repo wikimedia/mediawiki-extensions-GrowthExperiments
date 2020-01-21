@@ -120,6 +120,13 @@
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> de <strong>$2</strong> {{PLURAL:$2|sugestão|sugestões}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Fim",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 visitas (últimos 60 dias)",
+	"growthexperiments-homepage-suggestededits-previous-card": "Edição sugerida anterior",
+	"growthexperiments-homepage-suggestededits-next-card": "Próxima edição sugerida",
+	"growthexperiments-homepage-suggestededits-no-more-results": "Sem mais sugestões",
+	"growthexperiments-homepage-suggestededits-no-results": "Não foram encontradas sugestões",
+	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "edição no último dia",
+	"growthexperiments-homepage-suggestededits-tasktype-label-references": "Encontrar referências (fontes para artigos existentes)",
+	"growthexperiments-homepage-suggestededits-tasktype-label-update": "Atualizar artigos (manter os artigos existentes atualizados)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "Expandir artigos curtos",
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Adicionar hiperligações entre artigos",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Criar um novo artigo",
@@ -140,5 +147,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Encontrar referências",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Atualizar artigos",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Expandir artigos curtos",
-	"growthexperiments-homepage-suggestededits-topics-more": "mostrar mais"
+	"growthexperiments-homepage-suggestededits-error-description": "Por favor, tente novamente mais tarde",
+	"growthexperiments-homepage-suggestededits-topics-more": "mostrar mais",
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|tópico|tópicos}}"
 }

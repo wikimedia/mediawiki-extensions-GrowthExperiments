@@ -63,9 +63,12 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy": "Einfach",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium": "Mëttel",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Fäerdeg",
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "Fäerdeg",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Referenze fannen",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Artikelen aktualiséieren",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Kuerz Artikelen erweideren",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Linken tëscht Artikelen derbäisetzen",
-	"growthexperiments-homepage-suggestededits-error-description": "Probéiert w.e.g. méi spéit nach eng Kéier."
+	"growthexperiments-homepage-suggestededits-error-description": "Probéiert w.e.g. méi spéit nach eng Kéier.",
+	"growthexperiments-homepage-suggestededits-topics-more": "méi weisen",
+	"growthexperiments-notification-body-mentor-change": "Grond: $1"
 }

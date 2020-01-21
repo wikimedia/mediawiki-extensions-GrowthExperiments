@@ -9,7 +9,8 @@
 			"予弦",
 			"Josephine W.",
 			"A Retired User",
-			"沈澄心"
+			"沈澄心",
+			"VulpesVulpes825"
 		]
 	},
 	"growthexperiments-homepage-tab": "首页",
@@ -24,5 +25,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "查找参考文献",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "更新条目",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "添加条目之间的链接",
-	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "选择兴趣"
+	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "选择兴趣",
+	"growthexperiments-notification-header-mentor-change": "$1{{GENDER:$2|是}}{{GENDER:$2|您的}}新导师"
 }

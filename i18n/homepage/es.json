@@ -110,5 +110,8 @@
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Configuración de ediciones sugeridas no válida: le falta campo $1 para el tipo de tarea $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Configuración de ediciones sugeridas inválida: grupo inválido $1 para tipo de tarea $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Configuración de ediciones sugeridas inválida: mensaje faltante $1 para el tipo de tarea $2",
-	"growthexperiments-homepage-suggestededits-error-description": "Inténtalo de nuevo más tarde."
+	"growthexperiments-homepage-suggestededits-error-description": "Inténtalo de nuevo más tarde.",
+	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Seleccionar intereses",
+	"growthexperiments-homepage-suggestededits-topics-more": "mostrar más",
+	"growthexperiments-notification-body-mentor-change": "Motivo: $1"
 }

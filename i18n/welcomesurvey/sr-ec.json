@@ -10,13 +10,13 @@
 	"welcomesurvey-save-confirmation-text": "Користићемо ваше одговоре како бисмо вам пружили корисне начине за почетак рада на Википедији.",
 	"welcomesurvey-subtitle": "Помозите нам да побољшамо ваше искуство на Википедији тако што ћете одговорити на неколико необавезних питања.",
 	"welcomesurvey-save-btn": "Заврши",
-	"welcomesurvey-skip-btn": "{{GENDER:$1|Прескочи}} ову анкету",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Прескочи}} анкету",
 	"welcomesurvey-close-btn": "Затвори и врати ме на страницу $1",
 	"welcomesurvey-sidebar-privacy-title": "Ценимо вашу приватност",
 	"welcomesurvey-sidebar-privacy-text": "{{GENDER:$2|Погледајте}} $1 да бисте пронашли више информација о томе како користимо ове необавезне одговоре.",
 	"welcomesurvey-privacy-policy-link-text": "изјаву о приватности",
 	"welcomesurvey-sidebar-editing-title": "Почните са уређивањем",
-	"welcomesurvey-sidebar-editing-text": "Свако може да уређује скоро сваку страницу, а сваког сата праве се стотине промена којима се додаје садржај, исправљају грешке и побољшава читљивост. Следеће странице могу вам бити од помоћи {{GENDER:$1|ако сте заинтересовани}} за доприношење.",
+	"welcomesurvey-sidebar-editing-text": "Свако може да уређује скоро сваку страницу, а сваког сата праве се стотине промена којима се додаје садржај, исправљају грешке и побољшава читљивост. Следеће странице могу вам бити од помоћи {{GENDER:$1|ако желите}} да доприносите.",
 	"welcomesurvey-sidebar-editing-link1-text": "Упутство",
 	"welcomesurvey-sidebar-editing-link1-title": "Википедија:Упутство",
 	"welcomesurvey-sidebar-editing-link2-text": "Техничка подршка",
@@ -40,7 +40,7 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Не, нисам знао/ла да могу уређивати Википедију",
 	"welcomesurvey-question-edited-option-no-other-label": "Не, из других разлога",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Не сећам се",
-	"welcomesurvey-question-email-label": "Е-адреса (опционално)",
-	"welcomesurvey-question-email-placeholder": "Унесите е-адресу…",
-	"welcomesurvey-question-email-help": "Приметили смо да нисте унели е-пошту када сте отварали овај налог. Она се <strong>препоручује</strong>, пошто је потребна за опоравак налога ако икада изгубите лозинку. НАПОМЕНА: Софтвер неће открити вашу е-адресу када други корисници контактирају с вама."
+	"welcomesurvey-question-email-label": "Имејл-адреса (необавезно)",
+	"welcomesurvey-question-email-placeholder": "Унесите имејл-адресу…",
+	"welcomesurvey-question-email-help": "Приметили смо да нисте унели имејл када сте отварали налог. Он се <strong>топло препоручује</strong>, јер је потребан за опоравак налога ако којим случајем изгубите лозинку. НАПОМЕНА: Софтвер неће открити вашу имејл-адресу када други корисници контактирају с вама."
 }
