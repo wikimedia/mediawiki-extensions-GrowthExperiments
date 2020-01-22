@@ -323,6 +323,90 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 					$makeTask( $link, 'Boom', [ 'art' => 50 ] ),
 				], 150, 0 ),
 			],
+			'dedupe' => [
+				'taskTypes' => [ 'copyedit' => [ 'Copy-1' ], 'link' => [ 'Link-1' ] ],
+				'topics' => [ 'art' => [ 'Music' ], 'science' => [ 'Physics' ] ],
+				'requests' => [
+					[
+						'params' => [
+							'srsearch' => 'hastemplate:"Copy-1" morelikethis:"Music"',
+						],
+						'response' => [
+							'query' => [
+								'search' => [
+									[ 'ns' => 0, 'title' => 'T1' ],
+									[ 'ns' => 0, 'title' => 'T2' ],
+									[ 'ns' => 0, 'title' => 'T3' ],
+								],
+								'searchinfo' => [
+									'totalhits' => 25,
+								],
+							],
+						],
+					],
+					[
+						'params' => [
+							'srsearch' => 'hastemplate:"Copy-1" morelikethis:"Physics"',
+						],
+						'response' => [
+							'query' => [
+								'search' => [
+									[ 'ns' => 0, 'title' => 'T1' ],
+									[ 'ns' => 0, 'title' => 'T4' ],
+								],
+								'searchinfo' => [
+									'totalhits' => 25,
+								],
+							],
+						],
+					],
+					[
+						'params' => [
+							'srsearch' => 'hastemplate:"Link-1" morelikethis:"Music"',
+						],
+						'response' => [
+							'query' => [
+								'search' => [
+									[ 'ns' => 0, 'title' => 'T2' ],
+									[ 'ns' => 0, 'title' => 'T4' ],
+									[ 'ns' => 0, 'title' => 'T5' ],
+								],
+								'searchinfo' => [
+									'totalhits' => 25,
+								],
+							],
+						],
+					],
+					[
+						'params' => [
+							'srsearch' => 'hastemplate:"Link-1" morelikethis:"Physics"',
+						],
+						'response' => [
+							'query' => [
+								'search' => [
+									[ 'ns' => 0, 'title' => 'T1' ],
+									[ 'ns' => 0, 'title' => 'T5' ],
+									[ 'ns' => 0, 'title' => 'T6' ],
+								],
+								'searchinfo' => [
+									'totalhits' => 25,
+								],
+							],
+						],
+					],
+				],
+				'taskFilter' => null,
+				'topicFilter' => [ 'art', 'science' ],
+				'limit' => null,
+				'expectedTaskSet' => new TaskSet( [
+					$makeTask( $copyedit, 'T1', [ 'art' => 100, ] ),
+					$makeTask( $copyedit, 'T2', [ 'art' => 100 / 2, ] ),
+					$makeTask( $copyedit, 'T3', [ 'art' => 100 / 3, ] ),
+					$makeTask( $copyedit, 'T4', [ 'science' => 100 / 2, ] ),
+					$makeTask( $link, 'T5', [ 'art' => 100 / 3 ] ),
+					$makeTask( $link, 'T6', [ 'science' => 100 / 3 ] ),
+				], 100, 0 ),
+			],
 			'http error' => [
 				'taskTypes' => [ 'copyedit' => [ 'Copy-1', 'Copy-2' ] ],
 				'topics' => [ 'art' => [ 'Music', 'Painting' ], 'science' => [ 'Physics', 'Biology' ] ],
