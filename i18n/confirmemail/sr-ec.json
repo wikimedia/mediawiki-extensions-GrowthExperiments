@@ -5,7 +5,7 @@
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|шта је ово?]])",
-	"growthexperiments-confirmemail-emailhelp": "Имејл је потребан за опоравак налога ако којим случајем изгубите лозинку.",
+	"growthexperiments-confirmemail-emailhelp": "Имејл је потребан за опоравак налога ако којим случајем заборавите лозинку.",
 	"growthexperiments-confirmemail-emailrecommended": "Имејл-адреса (препоручује се)",
 	"growthexperiments-confirmemail-emailwarning": "Потражите наш имејл да бисте потврдили адресу.",
 	"growthexperiments-confirmemail-confirm-subject": "Добро дошли на пројекат {{SITENAME}}: потврдите имејл-адресу",

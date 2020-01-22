@@ -214,7 +214,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Ова страница {{GENDER:$1|вам}} омогућава да преузмете новајлију. Препоручујемо да користите функцију код корисника које знате или код корисника којима сте ментор на курсу.",
 	"growthexperiments-homepage-claimmentee-mentee": "Корисничко име",
 	"growthexperiments-homepage-claimmentee-reason": "Разлог",
-	"growthexperiments-homepage-claimmentee-success": "Успешно {{GENDER:$2|сте}} {{GENDER:$2|променили}} ментора {{GENDER:$1|корисника|кориснице}} $1 на $2",
+	"growthexperiments-homepage-claimmentee-success": "Променили {{GENDER:$2|сте}} ментора {{GENDER:$1|корисника|кориснице}} $1 на $2",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Ментор {{GENDER:$1|корисника|кориснице}} $1 већ је промењен. {{GENDER:$2|Желите}} ли заиста поново да га промените?",
 	"growthexperiments-claimmentee-confirm": "Да, заиста желим да променим ментора",
 	"growthexperiments-log-name": "Дневник GrowthExperiments-а",

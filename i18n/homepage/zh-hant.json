@@ -215,7 +215,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "此頁面允許{{GENDER:$1|您}}把學生的導師更換成為{{GENDER:$1|您自己}}。建議對{{GENDER:$1|您}}認識的使用者們來利用此功能，或是{{GENDER:$1|您}}要在課程上指導的使用者們。",
 	"growthexperiments-homepage-claimmentee-mentee": "學生的使用者名稱",
 	"growthexperiments-homepage-claimmentee-reason": "帶領此學生的原因",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|您}}成功把{{GENDER:$1|$1的}}導師{{GENDER:$2|更換}}成$2",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|您已將}}{{GENDER:$1|$1的}}導師更換成$2",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1的}}導師已更換過。{{GENDER:$2|您}}確定{{GENDER:$2|您}}要再次更換嗎？",
 	"growthexperiments-claimmentee-confirm": "是的，我想要更換導師",
 	"growthexperiments-log-name": "GrowthExperiments 日誌",
