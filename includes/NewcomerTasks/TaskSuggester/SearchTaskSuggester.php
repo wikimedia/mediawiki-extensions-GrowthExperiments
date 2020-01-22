@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use CirrusSearch\Search\CirrusSearchResult;
 use GrowthExperiments\NewcomerTasks\FauxSearchResultWithScore;
+use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TemplateBasedTask;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -165,6 +166,8 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		}
 		$this->templateProvider->fill( $suggestions );
 
+		$suggestions = $this->deduplicateSuggestions( $suggestions );
+
 		// search() implementations try to request random sorting; that breaks when a topic filter
 		// is used (the mechanism used for topic filtering is itself a kind of sorting, and it
 		// overrides random sorting). As a poor way of correcting for that, sort the result set.
@@ -262,6 +265,45 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		return '"' . implode( '|', array_map( function ( LinkTarget $title ) {
 			return str_replace( [ '"', '?' ], [ '\"', '\?' ], $title->getDBkey() );
 		}, $titles ) ) . '"';
+	}
+
+	/**
+	 * Make sure there's only one task per article, even if an article is multiple task types / topics.
+	 * @param TemplateBasedTask[] $suggestions
+	 * @return TemplateBasedTask[]
+	 */
+	private function deduplicateSuggestions( array $suggestions ) {
+		/** @var TemplateBasedTask[] $deduped */
+		$deduped = [];
+		foreach ( $suggestions as $suggestion ) {
+			$key = $suggestion->getTitle()->getNamespace() . ':' . $suggestion->getTitle()->getDBkey();
+			if ( !isset( $deduped[$key] ) || $this->compareTasks( $suggestion, $deduped[$key] ) < 0 ) {
+				$deduped[$key] = $suggestion;
+			}
+		}
+		return array_values( $deduped );
+	}
+
+	/**
+	 * Compare two tasks for sorting. Return an integer, like strcmp & co.
+	 * Task types that come first in the configured task type list take precedence. Otherwise,
+	 * it's topics that come first.
+	 * @param Task $first
+	 * @param Task $second
+	 * @return int
+	 */
+	private function compareTasks( Task $first, Task $second ) : int {
+		$taskTypePosFirst = array_search( $first->getTaskType()->getId(),
+			array_keys( $this->taskTypes ), true );
+		$taskTypePosSecond = array_search( $second->getTaskType()->getId(),
+			array_keys( $this->taskTypes ), true );
+		// There should be at most one topic (otherwise we won't need the compare logic).
+		// No topic precedes any topic (although that comparison should never happen).
+		$topicPosFirst = $first->getTopics() ? array_search( $first->getTopics()[0]->getId(),
+			array_keys( $this->topics ), true ) : -9999;
+		$topicPosSecond = $second->getTopics() ? array_search( $second->getTopics()[0]->getId(),
+			array_keys( $this->topics ), true ) : -9999;
+		return ( $taskTypePosFirst - $taskTypePosSecond ) ?: ( $topicPosFirst - $topicPosSecond );
 	}
 
 }
