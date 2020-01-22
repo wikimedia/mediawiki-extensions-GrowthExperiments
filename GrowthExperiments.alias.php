@@ -50,6 +50,12 @@ $specialPageAliases['ko'] = [
 	'Impact' => [ '영향력', '임팩트' ],
 ];
 
+$specialPageAliases['uk'] = [
+	'WelcomeSurvey' => [ 'Вітальне_опитування' ],
+	'Homepage' => [ 'Домашня_сторінка' ],
+	'Impact' => [ 'Вплив' ],
+];
+
 /** Vietnamese (Tiếng Việt) */
 $specialPageAliases['vi'] = [
 	'WelcomeSurvey' => [ 'Bảng_câu_hỏi_chào_mừng' ],
