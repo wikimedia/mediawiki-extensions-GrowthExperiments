@@ -2,10 +2,8 @@
 
 namespace GrowthExperiments;
 
-use ConfigException;
 use EchoEvent;
 use IContextSource;
-use LogEventsList;
 use LogPager;
 use ManualLogEntry;
 use Psr\Log\LoggerInterface;
@@ -39,26 +37,33 @@ class ChangeMentor {
 	private $logger;
 
 	/**
+	 * @var LogPager
+	 */
+	private $logPager;
+
+	/**
 	 * @param User $mentee Mentee's user object
 	 * @param User $performer Performer's user object
 	 * @param IContextSource $context Context
 	 * @param LoggerInterface $logger Logger
-	 * @throws ConfigException
+	 * @param Mentor|bool $mentor
+	 * @param LogPager $logPager
 	 */
 	public function __construct(
 		User $mentee,
 		User $performer,
 		IContextSource $context,
-		LoggerInterface $logger
+		LoggerInterface $logger,
+		$mentor,
+		LogPager $logPager
 	) {
 		$this->logger = $logger;
 
 		$this->performer = $performer;
 		$this->context = $context;
 		$this->mentee = $mentee;
-
-		$mentor = Mentor::newFromMentee( $this->mentee );
-		if ( $mentor ) {
+		$this->logPager = $logPager;
+		if ( $mentor instanceof Mentor ) {
 			$this->mentor = $mentor->getMentorUser();
 		}
 	}
@@ -69,18 +74,8 @@ class ChangeMentor {
 	 * @return bool
 	 */
 	public function wasMentorChanged() {
-		$logeventslist = new LogEventsList( $this->context );
-		$logpager = new LogPager(
-			$logeventslist,
-			[ 'growthexperiments' ],
-			'',
-			$this->mentee->getUserPage()
-		);
-		$logpager->doQuery();
-		if ( $logpager->getResult()->fetchRow() ) {
-			return true;
-		}
-		return false;
+		$this->logPager->doQuery();
+		return $this->logPager->getResult()->fetchRow();
 	}
 
 	/**

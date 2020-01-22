@@ -7,6 +7,8 @@ use FormSpecialPage;
 use GrowthExperiments\ChangeMentor;
 use GrowthExperiments\Mentor;
 use GrowthExperiments\WikiConfigException;
+use LogEventsList;
+use LogPager;
 use MediaWiki\Logger\LoggerFactory;
 use PermissionsError;
 use Status;
@@ -142,8 +144,19 @@ class SpecialClaimMentee extends FormSpecialPage {
 		}
 		$this->newMentor = $this->getUser();
 
-		$logger = LoggerFactory::getInstance( 'GrowthExperiments' );
-		$changementor = new ChangeMentor( $this->mentee, $this->newMentor, $this->getContext(), $logger );
+		$changementor = new ChangeMentor(
+			$this->mentee,
+			$this->newMentor,
+			$this->getContext(),
+			LoggerFactory::getInstance( 'GrowthExperiments' ),
+			Mentor::newFromMentee( $this->mentee ),
+			new LogPager(
+				new LogEventsList( $this->getContext() ),
+				[ 'growthexperiments' ],
+				'',
+				$this->mentee->getUserPage()
+			)
+		);
 		if (
 			$data['confirm'] !== true
 			&& $data['stage'] !== 3
