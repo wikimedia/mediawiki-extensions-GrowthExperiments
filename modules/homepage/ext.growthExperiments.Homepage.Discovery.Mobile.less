@@ -11,7 +11,9 @@
 	position: relative;
 	// padding-left is 14px (see below) for .header-container left padding + 0.615em
 	// for half of hamburger icon width - 11px for arrow left edge / tip distance)
-	padding: 14px 46px 14px calc( 3px ~'+' 0.625em );
+	// need a separate -left rule to not break CSSJanus
+	padding: 14px 46px;
+	padding-left: calc( 3px ~'+' 0.625em );
 	box-shadow: 0 2px 3px 0 rgba( 0, 0, 0, 0.15 );
 
 	// this is tailored to Minerva's hamburger menu so don't show it on other skins
@@ -21,13 +23,13 @@
 		height: 54px;
 		margin-right: 25px;
 		/* @embed */
-		background: url( ../../images/homepage-discovery-arrow-up.svg ) no-repeat left;
+		background: url( ../../images/homepage-discovery-arrow-up-ltr.svg ) no-repeat left;
 
 		@media all and ( min-width: @width-breakpoint-tablet ) {
 			width: 103px;
 			height: 42px;
 			/* @embed */
-			background: url( ../../images/homepage-discovery-arrow-up-longer.svg ) no-repeat left;
+			background: url( ../../images/homepage-discovery-arrow-up-longer-ltr.svg ) no-repeat left;
 		}
 
 		@media all and ( min-width: @hamburger-header-maxwidth ) {
