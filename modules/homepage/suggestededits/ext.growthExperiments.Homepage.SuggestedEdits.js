@@ -174,6 +174,9 @@
 					thumbnailSource: item.thumbnail && item.thumbnail.source || null,
 					tasktype: item.tasktype,
 					difficulty: item.difficulty,
+					// empty array when no topics are selected, null with topic matching disabled,
+					// otherwise an array of (topic ID, score) pairs
+					topics: item.topics || null,
 					maintenanceTemplates: item.maintenancetemplates || null
 				};
 			}
@@ -351,8 +354,9 @@
 	 * @return {Object<string>}
 	 */
 	SuggestedEditsModule.prototype.getCardLogData = function ( cardPosition ) {
-		var suggestedEditData = this.taskQueue[ cardPosition ];
-		return {
+		var logData,
+			suggestedEditData = this.taskQueue[ cardPosition ];
+		logData = {
 			taskType: suggestedEditData.tasktype,
 			maintenanceTemplates: suggestedEditData.maintenanceTemplates,
 			hasImage: !!suggestedEditData.thumbnailSource,
@@ -363,6 +367,11 @@
 			revisionId: suggestedEditData.revisionId
 			// the page token is automatically added by the logger
 		};
+		if ( suggestedEditData.topics && suggestedEditData.topics.length ) {
+			logData.topic = suggestedEditData.topics[ 0 ][ 0 ];
+			logData.matchScore = suggestedEditData.topics[ 0 ][ 1 ];
+		}
+		return logData;
 	};
 
 	/**

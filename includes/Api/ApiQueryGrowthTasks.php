@@ -91,9 +91,11 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				'order' => $i,
 			];
 			if ( $task->getTopics() ) {
-				$extraData['topics'] = array_map( function ( Topic $topic ) {
-					return $topic->getId();
-				}, $task->getTopics() );
+				foreach ( $task->getTopicScores() as $id => $score ) {
+					// Handling associative arrays is annoying in JS; return the data as
+					// a list of (topic ID, score) pairs instead.
+					$extraData['topics'][] = [ $id, $score ];
+				}
 			}
 			if ( $task instanceof TemplateBasedTask && $task->getTemplates() ) {
 				$extraData['maintenancetemplates'] = array_map( function ( LinkTarget $template ) {
