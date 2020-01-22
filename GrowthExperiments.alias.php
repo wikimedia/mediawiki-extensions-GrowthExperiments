@@ -37,6 +37,12 @@ $specialPageAliases['hu'] = [
 	'Impact' => [ 'Eredmény' ],
 ];
 
+$specialPageAliases['hy'] = [
+	'WelcomeSurvey' => [ 'ՈղջույնիՀարցում' ],
+	'Homepage' => [ 'Հիմնական_էջ' ],
+	'Impact' => [ 'Ազդեցություն' ],
+];
+
 /** 한국어  (Korean) */
 $specialPageAliases['ko'] = [
 	'WelcomeSurvey' => [ '환영설문조사' ],
