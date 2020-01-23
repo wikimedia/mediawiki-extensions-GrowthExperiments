@@ -473,8 +473,10 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$numErrors = count( array_filter( $requests, function ( $request ) {
 			return $request['response'] instanceof StatusValue;
 		} ) );
-		$expectation = $numErrors ? $this->exactlyBetween( 1, $numRequests - $numErrors + 1 )
-			: $this->exactly( $numRequests );
+		// FIXME: exactlyBetween does not work since php-invoker is no longer available.
+		//	$expectation = $numErrors ? $this->exactlyBetween( 1, $numRequests - $numErrors + 1 )
+		//		: $this->exactly( $numRequests );
+		$expectation = $this->exactly( $numRequests );
 		$requestFactory->expects( $expectation )
 			->method( 'create' )
 			->willReturnCallback( function ( $url ) use ( &$requests ) {
