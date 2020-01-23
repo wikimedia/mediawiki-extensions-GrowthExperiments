@@ -114,7 +114,7 @@ class SuggestedEdits extends BaseModule {
 
 		// When the module is not activated yet, but can be, include module HTML in the
 		// data, for dynamic loading on activation.
-		if ( self::isEnabled( $this->getContext() ) &&
+		if ( $this->canRender() &&
 			!self::isActivated( $this->getContext() ) &&
 			$this->getMode() !== HomepageModule::RENDER_MOBILE_DETAILS
 		) {
@@ -147,8 +147,13 @@ class SuggestedEdits extends BaseModule {
 
 	/** @inheritDoc */
 	protected function canRender() {
-		return self::isActivated( $this->getContext() ) &&
-			   !$this->configurationLoader->loadTaskTypes() instanceof StatusValue;
+		return self::isEnabled( $this->getContext() )
+			&& !$this->configurationLoader->loadTaskTypes() instanceof StatusValue;
+	}
+
+	/** @inheritDoc */
+	protected function shouldRender() {
+		return $this->canRender() && self::isActivated( $this->getContext() );
 	}
 
 	/** @inheritDoc */

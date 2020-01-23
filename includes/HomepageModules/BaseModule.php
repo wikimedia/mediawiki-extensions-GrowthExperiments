@@ -55,7 +55,7 @@ abstract class BaseModule implements HomepageModule {
 	 */
 	public function render( $mode ) {
 		$this->setMode( $mode );
-		if ( !$this->canRender() ) {
+		if ( !$this->shouldRender() ) {
 			return '';
 		}
 
@@ -69,7 +69,9 @@ abstract class BaseModule implements HomepageModule {
 	 */
 	public function getJsData( $mode ) {
 		$data = [];
-		if ( $mode == HomepageModule::RENDER_MOBILE_SUMMARY ) {
+		if ( $this->canRender()
+			&& $mode == HomepageModule::RENDER_MOBILE_SUMMARY
+		) {
 			$this->setMode( HomepageModule::RENDER_MOBILE_DETAILS_OVERLAY );
 			$data = [
 				'overlay' => $this->renderMobileDetailsForOverlay(),
@@ -349,10 +351,23 @@ abstract class BaseModule implements HomepageModule {
 	}
 
 	/**
-	 * @return bool Whether the module can be rendered or not.
+	 * Whether the module can be rendered or not.
+	 * When this returns false, callers should never attempt to render the module.
+	 * @return bool
 	 */
 	protected function canRender() {
 		return true;
+	}
+
+	/**
+	 * Whether the module is supposed to be present on the homepage.
+	 * When canRender() is true but shouldRender() is false, the module should not be displayed,
+	 * but callers can choose to pre-render the module to display it dynamically without delay
+	 * when it becames enabled.
+	 * @return bool
+	 */
+	protected function shouldRender() {
+		return $this->canRender();
 	}
 
 	/**
