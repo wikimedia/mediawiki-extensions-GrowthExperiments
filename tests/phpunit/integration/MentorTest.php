@@ -169,7 +169,7 @@ class MentorTest extends MediaWikiTestCase {
 		$mentor = Mentor::newFromMentee( $mentee );
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $mentee );
-		$this->assertContains(
+		$this->assertStringContainsString(
 			'This experienced user knows you\'re new and can help you with editing.',
 			$mentor->getIntroText( $context )
 		);

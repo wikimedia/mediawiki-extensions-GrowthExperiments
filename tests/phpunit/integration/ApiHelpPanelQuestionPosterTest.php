@@ -48,10 +48,8 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 			$this->mUser,
 			'csrf'
 		);
-		$this->assertArraySubset( [
-			'result' => 'success',
-			'isfirstedit' => true
-		], $ret[0]['helppanelquestionposter'] );
+		$this->assertSame( 'success', $ret[0]['helppanelquestionposter']['result'] );
+		$this->assertSame( 1, $ret[0]['helppanelquestionposter']['isfirstedit'] );
 		$this->assertGreaterThan( 0, $ret[0]['helppanelquestionposter'] );
 	}
 
@@ -63,9 +61,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 			$this->mUser,
 			'csrf'
 		);
-		$this->assertArraySubset( [
-			'result' => 'success',
-		], $ret[0]['helppanelquestionposter'] );
+		$this->assertSame( 'success', $ret[0]['helppanelquestionposter']['result'] );
 	}
 
 	/**

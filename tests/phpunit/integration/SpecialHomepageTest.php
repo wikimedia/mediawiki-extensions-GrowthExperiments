@@ -64,7 +64,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 		$user->setOption( HomepageHooks::HOMEPAGE_PREF_PT_LINK, 1 );
 		$user->saveSettings();
 		$response = $this->executeSpecialPage( '', null, null, $user );
-		$this->assertContains( 'growthexperiments-homepage-container', $response[0] );
+		$this->assertStringContainsString( 'growthexperiments-homepage-container', $response[0] );
 	}
 
 	/**
@@ -84,7 +84,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			$responseBody,
 			'Empty body since we are redirecting to tutorial title.'
 		);
-		$this->assertContains(
+		$this->assertStringContainsString(
 			'Main_Page',
 			$webResponse->getHeader( 'location' ),
 			'Location contains faux Tutorial title name'
@@ -95,7 +95,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	 * @covers \GrowthExperiments\Specials\SpecialHomepage::handleTutorialVisit
 	 * @covers \GrowthExperiments\Specials\SpecialHomepage::execute
 	 */
-	public function testHompageNoTutorialTitle() {
+	public function testHomepageNoTutorialTitle() {
 		$user = $this->getMutableTestUser()->getUser()->getInstanceForUpdate();
 		$this->setupForTutorialVisitTests( $user );
 		$this->setMwGlobals( [ 'wgGEHomepageTutorialTitle' => 'Bogus_Title' ] );
@@ -104,7 +104,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			new \FauxRequest( [], true ),
 			null,
 			$user );
-		$this->assertContains(
+		$this->assertStringContainsString(
 			'growthexperiments-homepage-container',
 			$responseBody,
 			'Homepage content found'

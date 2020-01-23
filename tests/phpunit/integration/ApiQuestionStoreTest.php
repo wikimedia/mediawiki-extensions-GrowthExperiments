@@ -70,11 +70,9 @@ class ApiQuestionStoreTest extends ApiTestCase {
 			$user->getInstanceForUpdate()
 		);
 		$this->assertNotEquals( '', $response[0]['homepagequestionstore']['html'] );
-		$this->assertArraySubset( [
-			'questionText' => 'foo',
-			'isArchived' => false,
-			'isVisible' => true,
-		], $response[0]['homepagequestionstore']['questions'][0] );
-		$this->assertNotEquals( '', $response[0]['homepagequestionstore']['questions'] );
+		$question = $response[0]['homepagequestionstore']['questions'][0];
+		$this->assertStringContainsString( 'foo', $question['questionText' ] );
+		$this->assertFalse( $question['isArchived'] );
+		$this->assertTrue( $question['isVisible'] );
 	}
 }
