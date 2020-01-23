@@ -223,7 +223,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Cette page {{GENDER:$1|vous}} permet de changer le tuteur du tutoré en vous-même. Il est recommandé d’utiliser cette fonctionnalité pour des utilisateurs que vous connaissez, ou pour des utilisateurs que vous tutorez sur un cours.",
 	"growthexperiments-homepage-claimmentee-mentee": "Nom d’utilisateur du tutoré",
 	"growthexperiments-homepage-claimmentee-reason": "Motif pour demander ce tutoré",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|Vous}} avez bien modifié le tuteur de {{GENDER:$1|$1}} en $2",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|Vous}} avez modifié le tuteur de {{GENDER:$1|$1}} en $2",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Le tuteur de {{GENDER:$1|$1}} a déjà été modifié. Êtes-vous {{GENDER:$2|sûr|sûre}} de vouloir le modifier de nouveau ?",
 	"growthexperiments-claimmentee-confirm": "Oui, je veux vraiment changer le tuteur",
 	"growthexperiments-log-name": "journal GrowthExperiments",

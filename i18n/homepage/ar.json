@@ -219,7 +219,7 @@
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "{{GENDER:$1|اِختر|اِختاري}} بعض المواضيع التي {{GENDER:$1|تهتم|تهتمين}} بالكتابة عنها",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "سنحاول اقتراح مقالات تتماشى مع {{GENDER:$1|اهتماماتكَ|اهتماماتكِ}}.",
 	"growthexperiments-homepage-claimmentee-title": "طلب مرشَد أو مرشَدة",
-	"growthexperiments-homepage-claimmentee-pretext": "تمكِّن هذه الصفحة من تغيير مرشِد المستخدم المرشَد ونسبٍه إلى حسابك. يوصى باستخدام هذه الميزة مع المستخدمين الذين {{GENDER:$1|تعرفهم|تعرفينهم}}، أو مع مستخدمين {{GENDER:$1|تقوم|تقومين}} بإرشادهم في نطاق درس.",
+	"growthexperiments-homepage-claimmentee-pretext": "تمكِّن هذه الصفحة من تغيير المرشَد من قبل المرشِد ونسبه إلى حسابك. يوصى باستخدام هذه الميزة مع المستخدمين الذين {{GENDER:$1|تعرفهم|تعرفينهم}}، أو مع مستخدمين {{GENDER:$1|تقوم|تقومين}} بإرشادهم في نطاق درس.",
 	"growthexperiments-homepage-claimmentee-mentee": "اسم المستخدم للمُرشَد",
 	"growthexperiments-homepage-claimmentee-reason": "سبب طلب هذا(ه) المرشَد(ة)",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|نجحتَ|نجحتِ}} في تغيير {{GENDER:$2|مرشِد|مرشِدة}} {{GENDER:$1|المرشَد $1|المرشَدة $1}} إلى $2",
@@ -228,11 +228,11 @@
 	"growthexperiments-log-name": "سجلّ GrowthExperiments",
 	"growthexperiments-log-header": "هذه الأحداث تسجل حين أحداث تتعلق بـ GrowthExperiments تحدث في النظام.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|طلب|طلبت}} $3 {{GENDER:$3|كمرشَد|كمرشَدة}} (سابقا {{GENDER:$4|المرشِد|المرشِدة}} $4)",
-	"logentry-growthexperiments-claimmentee-no-previous-mentor": "{{GENDER:$2|طالب|طالبت}} $1 بـ $3 {{GENDER:$3|كمرشَد|كمرشَدة}} {{GENDER:$2|له|لها}} (لا وجود لمرشد(ة) سابق(ـة))",
+	"logentry-growthexperiments-claimmentee-no-previous-mentor": "{{GENDER:$2|طالب|طالبت}} $1 بـ $3 {{GENDER:$3|كمرشَد|كمرشَدة}} {{GENDER:$2|له|لها}} (لا وجود لمرشِد(ة) من قبل)",
 	"growthexperiments-homepage-claimmentee-invalid-username": "اسم المستخدم المقدم للمرشَد غير صالح",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|هو مرشدك الجديد|هي مرشدتك الجديدة}}",
 	"growthexperiments-notification-body-mentor-change": "السبب: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:|قل|قولي}} مرحبا {{GENDER:$2|لمرشدك الجديد|لمرشدتك الجديدة}}!",
-	"growthexperiments-homepage-claimmentee-must-be-mentor": "يجب أن {{GENDER:$1|تكون مسجلا كمرشد|تكوني مسجلة كمرشدة}} على [[$2]] من أجل استخدام Special:ClaimMentee",
+	"growthexperiments-homepage-claimmentee-must-be-mentor": "يجب أن {{GENDER:$1|تكون مسجلا كمرشد|تكوني مسجلة كمرشدة}} على [[$2]] من أجل استخدام خاص:ClaimMentee",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "قائمة المرشدين ([[$1]]) غير موجودة أو غير مضبوطة."
 }

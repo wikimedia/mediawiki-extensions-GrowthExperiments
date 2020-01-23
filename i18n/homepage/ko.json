@@ -129,6 +129,7 @@
 	"growthexperiments-specialimpact-title": "영향력",
 	"growthexperiments-specialimpact-showing-for-other-user": "$1 사용자의 영향력 데이터를 보고 있습니다",
 	"growthexperiments-specialimpact-invalid-username": "존재하지 않거나 유효하지 않은 사용자 이름입니다.",
+	"growthexperiments-homepage-claimmentee-no-user": "멘티가 존재하지 않습니다",
 	"growthexperiments-homepage-enable-preference": "새 사용자 홈페이지를 활성화하려면, [[Special:Preferences#mw-prefsection-personal-homepage|환경 설정]]의 \"새 사용자 홈페이지\" 설정을 확인하십시오.",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|}}아직 기여가 없습니다.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "{{GENDER:$1|홈페이지}}에 방문해서 편집을 시작하기 위한 도움을 받아 보세요!",
@@ -212,5 +213,9 @@
 	"growthexperiments-homepage-suggestededits-topics-more": "더 보기",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "{{PLURAL:$1|주제}} $1개",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "{{GENDER:$1|관심있는}} 주제 몇 개를 선택해 보세요",
-	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "{{GENDER:$1|선택한}} 주제와 관련 있는 문서를 추천해 드리겠습니다."
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "{{GENDER:$1|선택한}} 주제와 관련 있는 문서를 추천해 드리겠습니다.",
+	"growthexperiments-homepage-claimmentee-title": "멘티 데려오기",
+	"growthexperiments-homepage-claimmentee-pretext": "멘티의 멘토를 {{GENDER:$1|이 명령을 시행하는 사용자}}로 설정할 수 있습니다. 자신이 아는 사용자, 또는 행사 등에서 직접 멘토하는 사용자에게 사용할 것을 권합니다.",
+	"growthexperiments-homepage-claimmentee-mentee": "멘티의 사용자 이름",
+	"growthexperiments-homepage-claimmentee-reason": "멘티를 데려오는 이유"
 }

@@ -69,8 +69,10 @@
 	"growthexperiments-homepage-tutorial-header": "Iemācies labot",
 	"growthexperiments-homepage-claimmentee-already-mentor": "Tu jau esi $1 mentors",
 	"growthexperiments-tour-discovery-title": "Sāc šeit!",
+	"growthexperiments-homepage-discovery-thanks-header": "Paldies par {{GENDER:$1|tava}} konta izveidi!",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> no <strong>$2</strong> {{PLURAL:$2|ieteikumiem|ieteikuma|ieteikumiem}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "Beigas",
+	"growthexperiments-homepage-suggestededits-previous-card": "Iepriekšējais ieteiktais labojums",
 	"growthexperiments-homepage-suggestededits-next-card": "Nākamais ieteiktais labojums",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Nav vairāk ieteikumu",
 	"growthexperiments-homepage-suggestededits-no-results": "Šobrīd nav ieteikumu",
@@ -94,5 +96,6 @@
 	"growthexperiments-homepage-suggestededits-topics-more": "rādīt vairāk",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|temati|temats|temati}}",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Izvēlies dažas tēmas labošanai, kas {{GENDER:$1|tev}} varētu interesēt",
+	"growthexperiments-claimmentee-confirm": "Jā, es tiešām vēlos nomainīt mentoru",
 	"growthexperiments-notification-body-mentor-change": "Iemesls: $1"
 }
