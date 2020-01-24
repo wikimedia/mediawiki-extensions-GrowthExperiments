@@ -68,7 +68,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "بعد أن {{GENDER:$1|تكمل|تكملي}} بعض التعديلات السهلة.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "بعد أن {{GENDER:$1|تتعلّم|تتعلّمي}} أفضل العادات في ويكيبيديا.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "تحرير النسخ  وإضافة روابط لمقالات أخرى.",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "إضافة مصادر موثوقة وتحديث المقالات التي عفا عليها الزمن",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "إضافة مصادر موثوقة وتحديث المقالات القديمة.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "{{GENDER:|أنشئ|أنشئي}} مقالات جديدة و{{GENDER:|وسع|وسعي}} مقالات قصيرة.",
 	"growthexperiments-homepage-suggested-edits-header": "التعديلات المقترحة",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|تأثيرك}}",
