@@ -220,7 +220,7 @@
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1's}} mentor was already changed. Are {{GENDER:$2|you}} sure {{GENDER:$2|you}} want to change it again?",
 	"growthexperiments-claimmentee-confirm": "Yes, I really want to change the mentor",
 	"growthexperiments-log-name": "GrowthExperiments log",
-	"growthexperiments-log-header": "These events track when GrowthExperiments-related events happen in the system.",
+	"growthexperiments-log-header": "This is a log of actions made in GrowthExperiments extension.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|claimed}} $3 as their mentee (previous {{GENDER:$4|mentor}} $4)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|claimed}} $3 as their mentee (no previous mentor)",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Provided mentee's username is invalid",
