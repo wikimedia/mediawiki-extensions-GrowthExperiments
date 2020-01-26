@@ -17,8 +17,9 @@ use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use MWHttpRequest;
 use PHPUnit\Framework\ExpectationFailedException;
-use PHPUnit\Framework\MockObject\Matcher\InvokedRecorder;
+use PHPUnit\Framework\MockObject\Invocation;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\MockObject\Rule\InvocationOrder;
 use Status;
 use StatusValue;
 use Title;
@@ -473,10 +474,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$numErrors = count( array_filter( $requests, function ( $request ) {
 			return $request['response'] instanceof StatusValue;
 		} ) );
-		// FIXME: exactlyBetween does not work since php-invoker is no longer available.
-		//	$expectation = $numErrors ? $this->exactlyBetween( 1, $numRequests - $numErrors + 1 )
-		//		: $this->exactly( $numRequests );
-		$expectation = $this->exactly( $numRequests );
+		$expectation = $numErrors ? $this->exactlyBetween( 1, $numRequests - $numErrors + 1 )
+			: $this->exactly( $numRequests );
 		$requestFactory->expects( $expectation )
 			->method( 'create' )
 			->willReturnCallback( function ( $url ) use ( &$requests ) {
@@ -571,10 +570,10 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * Returns a PHPUnit invocation matcher which matches a range.
 	 * @param $min
 	 * @param $max
-	 * @return InvokedRecorder
+	 * @return InvocationOrder
 	 */
 	private function exactlyBetween( $min, $max ) {
-		return new class ( $min, $max ) extends InvokedRecorder {
+		return new class ( $min, $max ) extends InvocationOrder {
 			private $min;
 			private $max;
 
@@ -587,7 +586,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				return "invoked between $this->min and $this->max times";
 			}
 
-			public function verify() {
+			public function verify() : void {
 				$count = $this->getInvocationCount();
 				if ( $count < $this->min || $count > $this->max ) {
 					throw new ExpectationFailedException(
@@ -595,6 +594,13 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 						. " but it occurred $count time(s)."
 					);
 				}
+			}
+
+			public function matches( Invocation $invocation ) : bool {
+				return true;
+			}
+
+			protected function invokedDo( Invocation $invocation ) : void {
 			}
 		};
 	}
