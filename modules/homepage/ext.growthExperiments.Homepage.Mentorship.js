@@ -6,7 +6,7 @@
 			'growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text',
 			mentorName, userName
 		).text(),
-		mentorTalkLink = $( '<a>' )
+		$mentorTalkLink = $( '<a>' )
 			.attr( {
 				href: mw.Title.newFromText( mentorName, 3 ).getUrl(),
 				target: '_blank',
@@ -16,7 +16,7 @@
 		dialogTitle = mw.message( 'growthexperiments-homepage-mentorship-dialog-title',
 			mentorName, userName ).text(),
 		reviewHeader = mw.message( 'growthexperiments-homepage-mentorship-questionreview-header',
-			mentorName, userName, mentorTalkLink ).parse(),
+			mentorName, userName, $mentorTalkLink ).parse(),
 		confirmationText = mw.message(
 			'growthexperiments-homepage-mentorship-confirmation-text',
 			mentorName, userName
@@ -27,7 +27,7 @@
 		).text(),
 		submitFailureMessage = mw.message(
 			'growthexperiments-help-panel-question-post-error',
-			mentorTalkLink
+			$mentorTalkLink
 		).parse(),
 		config = {
 			buttonSelector: '#mw-ge-homepage-mentorship-cta',
