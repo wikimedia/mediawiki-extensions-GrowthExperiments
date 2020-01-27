@@ -173,7 +173,12 @@ abstract class QuestionPoster {
 		$this->getPageUpdater()->addTag( $this->getTag() );
 		$this->getPageUpdater()->setContent( SlotRecord::MAIN, $content );
 		$newRev = $this->getPageUpdater()->saveRevision(
-			CommentStoreComment::newUnsavedComment( $this->getSectionHeaderTemplate() )
+			CommentStoreComment::newUnsavedComment(
+				$this->getContext()
+				->msg( 'newsectionsummary' )
+				->params( $this->formatSectionHeader( true ) )
+				->text()
+			)
 		);
 		if ( !$this->getPageUpdater()->getStatus()->isGood() ) {
 			return $this->getPageUpdater()->getStatus();
@@ -355,9 +360,10 @@ abstract class QuestionPoster {
 	 * This method is used for generating the comment summary as well as the
 	 * section header in the edit.
 	 *
+	 * @param bool $plaintext Should the response be plaintext?
 	 * @return string
 	 */
-	abstract protected function getSectionHeaderTemplate();
+	abstract protected function getSectionHeaderTemplate( bool $plaintext = false );
 
 	/**
 	 * Set the result URL to go directly to the newly created question.
@@ -369,6 +375,31 @@ abstract class QuestionPoster {
 	}
 
 	/**
+	 * Helper method to format section header
+	 *
+	 * This is used in submitWikitext to add
+	 * plaintext section header to edit summary.
+	 *
+	 * @param bool $plaintext Should section header be plaintext?
+	 * @return string
+	 */
+	private function formatSectionHeader( bool $plaintext = false ) {
+		$sectionHeader = $this->getSectionHeaderTemplate( $plaintext );
+		// If wikitext, override the section header to include the timestamp.
+		if ( $this->getTargetContentModel() === CONTENT_MODEL_WIKITEXT ) {
+			$sectionHeader .= ' ' . $this->getContext()
+					->msg( 'parentheses' )
+					->plaintextParams( $this->getFormattedPostedOnTimestamp() )
+					->inContentLanguage()
+					->escaped();
+		}
+		$sectionHeader = $this->getNumberedSectionHeaderIfDuplicatesExist(
+			$sectionHeader
+		);
+		return $sectionHeader;
+	}
+
+	/**
 	 * Set the section header with a timestamp (wikitext only) and number.
 	 *
 	 * THe number is appended for flow posts. For wikitext posts, a number is appended
@@ -376,18 +407,7 @@ abstract class QuestionPoster {
 	 * are posted within the same minute.
 	 */
 	protected function setSectionHeader() {
-		$this->sectionHeader = $this->getSectionHeaderTemplate();
-		// If wikitext, override the section header to include the timestamp.
-		if ( $this->getTargetContentModel() === CONTENT_MODEL_WIKITEXT ) {
-			$this->sectionHeader .= ' ' . $this->getContext()
-					->msg( 'parentheses' )
-					->plaintextParams( $this->getFormattedPostedOnTimestamp() )
-					->inContentLanguage()
-					->escaped();
-		}
-		$this->sectionHeader = $this->getNumberedSectionHeaderIfDuplicatesExist(
-			$this->sectionHeader
-		);
+		$this->sectionHeader = $this->formatSectionHeader();
 	}
 
 	/**
