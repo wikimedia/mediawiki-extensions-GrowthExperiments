@@ -3,6 +3,8 @@
  * Aliases for
  *   Special:WelcomeSurvey
  *   Special:Homepage
+ *   Special:Impact
+ *   Special:ClaimMentee
  *
  * @file
  * @ingroup Extensions
