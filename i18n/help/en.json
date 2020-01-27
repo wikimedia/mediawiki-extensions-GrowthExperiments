@@ -9,7 +9,7 @@
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Top help pages about editing",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "View more help articles",
 	"growthexperiments-help-panel-question-widget-header": "Post your question to the Community Help Desk",
-	"growthexperiments-help-panel-question-placeholder": "I need some help with editing. How can I...",
+	"growthexperiments-help-panel-question-placeholder": "Say hello and ask {{GENDER:$1|your}} question.",
 	"growthexperiments-help-panel-back-home": "Back",
 	"growthexperiments-help-panel-close": "Done",
 	"growthexperiments-help-panel-home-title": "Get help with editing",
