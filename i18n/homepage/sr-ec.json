@@ -218,7 +218,7 @@
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Ментор {{GENDER:$1|корисника|кориснице}} $1 већ је промењен. {{GENDER:$2|Желите}} ли заиста поново да га промените?",
 	"growthexperiments-claimmentee-confirm": "Да, заиста желим да променим ментора",
 	"growthexperiments-log-name": "Дневник GrowthExperiments-а",
-	"growthexperiments-log-header": "Ова евиденција прати када се догађаји у вези са експериментима тима за развој догоде у систему",
+	"growthexperiments-log-header": "Ово је евиденција радњи које су извршене у додатку GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|преузео|преузела}} је новајлију $3 ({{GENDER:$4|претходни ментор|претходна менторка}}ː $4)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|преузео|преузела}} је новајлију $3 (без нема претходног ментора)",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Пружено кориснично име новајлије није важеће",

@@ -227,7 +227,7 @@
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Le tuteur de {{GENDER:$1|$1}} a déjà été modifié. Êtes-vous {{GENDER:$2|sûr|sûre}} de vouloir le modifier de nouveau ?",
 	"growthexperiments-claimmentee-confirm": "Oui, je veux vraiment changer le tuteur",
 	"growthexperiments-log-name": "journal GrowthExperiments",
-	"growthexperiments-log-header": "Ceci trace les événements liés à GrowthExperiments qui se produisent dans le système.",
+	"growthexperiments-log-header": "Ceci est un journal des actions faites dans l’extension GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|a demandé}} $3 comme leur tutoré ({{GENDER:$4|tuteur précédent|tutrice précédente}} $4)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|a demandé}} $3 comme tutoré (pas de tuteur précédent)",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Le nom d’utilisateur du tutoré fourni n’est pas valide",

@@ -36,6 +36,8 @@
 	"growthexperiments-homepage-tutorial-header": "Léiere wéi een ännert",
 	"growthexperiments-homepage-tutorial-cta-text": "Uleedung",
 	"growthexperiments-specialimpact-title": "Impakt",
+	"growthexperiments-homepage-claimmentee-no-user": "Dëse Benotzer huet keen Tuteur",
+	"growthexperiments-homepage-claimmentee-already-mentor": "Dir sidd schonn den Tuteur vum $1",
 	"growthexperiments-tour-discovery-title": "Fänkt hei un!",
 	"growthexperiments-homepage-discovery-banner-header": "Wëllkomm op  {{GENDER:$1|Ärer}} Homepage!",
 	"growthexperiments-homepage-suggestededits-pager-end": "Schluss",
@@ -70,5 +72,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Linken tëscht Artikelen derbäisetzen",
 	"growthexperiments-homepage-suggestededits-error-description": "Probéiert w.e.g. méi spéit nach eng Kéier.",
 	"growthexperiments-homepage-suggestededits-topics-more": "méi weisen",
+	"growthexperiments-claimmentee-confirm": "Jo, ech wëll Den Tuteur wierklech änneren",
 	"growthexperiments-notification-body-mentor-change": "Grond: $1"
 }

@@ -219,7 +219,7 @@
 	"growthexperiments-homepage-claimmentee-alreadychanged": "החונך של $1 כבר שוּנה. האם {{GENDER:$2|אתה בטוח שאתה|את בטוחה שאת}} רוצה לשנות אותו שוב?",
 	"growthexperiments-claimmentee-confirm": "כן, אני באמת רוצה לשנות את החונך",
 	"growthexperiments-log-name": "יומן GrowthExperiments",
-	"growthexperiments-log-header": "האירועים האלה עוקבים אחרי אירועי GrowthExperiments במערכת הזאת.",
+	"growthexperiments-log-header": "זהו יומן של פעולות שנעשו בהרחבה GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|לקח|לקחה}} את $3 בתור {{GENDER:$3|החניך|החניכה}} {{GENDER:$2|שלו|שלה}} ({{GENDER:$4|החונך הקודם|החונכת הקודמת}}: $4)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|לקח|לקחה}} את $3 בתור {{GENDER:$3|החניך|החניכה}} {{GENDER:$2|שלו|שלה}} (אין חונך קודם)",
 	"growthexperiments-homepage-claimmentee-invalid-username": "שם החניך שסופק אינו תקין",

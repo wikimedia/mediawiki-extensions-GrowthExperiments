@@ -49,5 +49,7 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "$1 bewerkingen",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "Eenvoudig",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "Standaard",
-	"growthexperiments-homepage-suggestededits-difficulty-filter-label-hard": "Moeilijk"
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-hard": "Moeilijk",
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "Gereed",
+	"growthexperiments-notification-body-mentor-change": "Vanwege: $1"
 }
