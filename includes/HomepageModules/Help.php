@@ -22,6 +22,19 @@ class Help extends BaseModule {
 		$this->helpDeskUrl = HelpPanel::getHelpDeskTitle( $context->getConfig() )->getLinkURL();
 	}
 
+	/** @inheritDoc */
+	public function getHeader() {
+		return $this->getHeaderIcon(
+			$this->getHeaderIconName(),
+			$this->shouldInvertHeaderIcon()
+		) . $this->getHeaderTextElement();
+	}
+
+	/** @inheritDoc */
+	protected function getMobileSummaryHeader() {
+		return $this->getHeaderTextElement();
+	}
+
 	/**
 	 * @inheritDoc
 	 */
@@ -69,6 +82,6 @@ class Help extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getHeaderIconName() {
-		return 'helpNotice';
+		return 'help';
 	}
 }

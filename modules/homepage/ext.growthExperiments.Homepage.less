@@ -29,6 +29,22 @@
 		}
 	}
 
+	.recent-questions-growthexperiments-mentor-questions {
+		background-color: @colorGray15;
+		margin: 16px -16px;
+		padding: 16px;
+
+		h3 {
+			margin-top: 0;
+		}
+	}
+
+	.recent-questions-growthexperiments-help-questions {
+		h3 {
+			margin-top: 1.4em;
+		}
+	}
+
 	.recent-questions-growthexperiments-help-questions,
 	.recent-questions-growthexperiments-mentor-questions {
 		h3 {
@@ -36,7 +52,6 @@
 			font-size: 1em;
 			color: @colorGray5;
 			padding-top: 0;
-			margin-top: 1.4em;
 		}
 
 		.question-link-wrapper {
@@ -60,10 +75,18 @@
 			line-height: 1.3em;
 		}
 	}
+
+	.recent-questions-growthexperiments-mentor-questions:empty,
+	.recent-questions-growthexperiments-help-questions:empty {
+		display: none;
+	}
 }
 
 body.mw-special-Homepage {
 	&.growthexperiments-homepage-mobile-summary {
+		// Enforce a minimum width to avoid breaking the connecting lines of the start modules.
+		min-width: 320px;
+
 		#content #section_0 {
 			// Need !important to override the other !important in
 			// skins/MinervaNeue/skinStyles/mobile.special.styles/minerva.less
@@ -84,14 +107,17 @@ body.mw-special-Homepage {
 
 				> .growthexperiments-homepage-module {
 					margin: 1em 0 0 0;
-					padding: 0 0.6875em 0.6875em 0.6875em;
+					padding: 0 1em 1em 1em;
+					.box-shadow( none );
 
 					h2.growthexperiments-homepage-module-section-header {
-						padding-bottom: 0.5em;
-						margin-bottom: 0.5em;
+						padding: 0;
+						margin: 0.625em 0;
 
 						.growthexperiments-homepage-module-header-text {
-							font-size: 0.875em;
+							font-size: 0.729em;
+							line-height: 1.429em;
+							padding: 0;
 						}
 					}
 				}
@@ -102,7 +128,7 @@ body.mw-special-Homepage {
 	&.growthexperiments-homepage-desktop {
 		.growthexperiments-homepage-container {
 			min-width: 800px;
-			max-width: 1215px;
+			max-width: 1600px;
 			align-items: start;
 
 			.growthexperiments-homepage-group-main {
@@ -150,7 +176,7 @@ body.mw-special-Homepage {
 
 					.growthexperiments-homepage-module {
 						// Same width as the other non-start modules
-						width: calc( 50% ~'-' 1.5 * @homepageModuleMargin );
+						width: calc( 50% ~'-' 1.5 * ( @homepageModuleMargin + 6px ) );
 						margin-left: @homepageModuleMargin;
 						margin-right: @homepageModuleMargin;
 
@@ -204,11 +230,17 @@ body.mw-special-Homepage {
 			text-align: center;
 			font-weight: normal;
 			font-size: 1.2em;
-			margin-top: 0.5em;
-			margin-bottom: 0.5em;
+			margin-top: 0;
+			margin-bottom: 0;
 
 			.growthexperiments-homepage-module-header-text {
 				margin-right: 2em;
+			}
+
+			.growthexperiments-homepage-module-header-icon {
+				.oo-ui-iconElement {
+					left: 0;
+				}
 			}
 		}
 

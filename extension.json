@@ -573,7 +573,13 @@
 						"rtl": "../images/difficulty-hard-rtl.svg"
 					}
 				},
-				"live-broadcast": "../images/live-broadcast.svg"
+				"live-broadcast": "../images/live-broadcast.svg",
+				"mentor": {
+					"file": {
+						"ltr": "../images/mentor-ltr.svg",
+						"rtl": "../images/mentor-rtl.svg"
+					}
+				}
 			}
 		},
 		"ext.growthExperiments.Homepage.contribs.styles": {

@@ -165,7 +165,7 @@ class Mentorship extends BaseModule {
 	}
 
 	private function getMentorUsernameElement( $link ) {
-		$iconElement = new IconWidget( [ 'icon' => 'userAvatar' ] );
+		$iconElement = new IconWidget( [ 'icon' => 'mentor' ] );
 		$usernameElement = Html::element(
 			'span',
 			[ 'class' => 'growthexperiments-homepage-mentorship-username' ],

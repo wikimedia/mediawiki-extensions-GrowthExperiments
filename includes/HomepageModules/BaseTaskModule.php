@@ -34,7 +34,10 @@ abstract class BaseTaskModule extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getHeader() {
-		$iconName = $this->isCompleted() ? 'check' : $this->getHeaderIconName();
+		$iconName = $this->isCompleted() && $this->getMode() !== self::RENDER_MOBILE_SUMMARY ?
+			'check' :
+			$this->getHeaderIconName();
+
 		$icon = $this->getHeaderIcon(
 			$iconName,
 			$this->shouldInvertHeaderIcon()

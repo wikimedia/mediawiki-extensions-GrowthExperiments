@@ -1,14 +1,156 @@
 @import 'mediawiki.ui/variables';
 @import 'mediawiki.mixins';
 @import 'ext.growthExperiments.variables.less';
+@import '../../lib/ooui/wikimedia-ui-base';
+
+@lighterAccent90: fade( @wmui-color-accent90, 50% );
 
 .growthexperiments-homepage-module-start {
 	&:not( .growthexperiments-homepage-module-completed ) {
-		.box-shadow( 0 5px 10px 0 rgba( 0, 0, 0, 0.15 ) );
+		border: solid 1px @colorProgressive;
+		background-color: @lighterAccent90;
+	}
+
+	&:not( .growthexperiments-homepage-module-completed ).growthexperiments-homepage-module-start-startediting-completed {
+		border: unset;
+	}
+
+	.growthexperiments-homepage-module-completed.growthexperiments-homepage-module {
+		h3 {
+			.growthexperiments-homepage-module-header-text {
+				color: @colorGray2;
+			}
+		}
 	}
 
 	> h2.growthexperiments-homepage-module-header {
-		margin-bottom: 1.4em;
+		margin-bottom: 0;
+		min-height: 1.1em;
+	}
+
+	&.growthexperiments-homepage-module-mobile-summary {
+		.growthexperiments-homepage-module {
+			border: 0;
+			padding: 0.5em 0.25em 1.5em;
+			margin-top: 0;
+
+			@media only screen and ( max-width: 414px ) and ( orientation: portrait ) {
+				flex-basis: 25%;
+			}
+
+			> h3 {
+				flex-direction: column;
+				font-weight: normal;
+				text-align: center;
+				font-size: 0.875em;
+				color: @colorGray2;
+
+				.growthexperiments-homepage-module-header-icon {
+					margin-right: 0;
+					margin-bottom: 0.5em;
+
+					.oo-ui-iconElement {
+						left: 0;
+						top: 4px;
+					}
+				}
+
+				.growthexperiments-homepage-module-header-text {
+					text-align: center;
+					font-size: 12px;
+					position: absolute;
+					white-space: nowrap;
+					overflow: hidden;
+					width: 50%;
+					background-color: transparent;
+					text-overflow: ellipsis;
+
+					&:before {
+						// Unicode BULLET character: •
+						content: '\2022';
+						margin-right: 10px;
+					}
+				}
+			}
+		}
+
+		.growthexperiments-homepage-module-completed.growthexperiments-homepage-module {
+			background-color: transparent;
+
+			> h3 {
+				.growthexperiments-homepage-module-header-text:before {
+					content: '\2713';
+					background-color: transparent;
+				}
+			}
+		}
+
+		> .growthexperiments-homepage-module-section-header {
+			margin-bottom: 0.8em;
+		}
+
+		> .growthexperiments-homepage-module-section-body {
+			flex-wrap: wrap;
+			padding-left: 0;
+			padding-right: 0;
+			position: relative;
+
+			.growthexperiments-homepage-module-start-account.growthexperiments-homepage-module {
+				.growthexperiments-homepage-module-header-text {
+					top: 48px;
+					left: 8px;
+				}
+			}
+
+			.growthexperiments-homepage-module-start-email.growthexperiments-homepage-module {
+				.growthexperiments-homepage-module-header-text {
+					top: 48px;
+					right: 8px;
+				}
+			}
+
+			.growthexperiments-homepage-module-start-tutorial.growthexperiments-homepage-module {
+				.growthexperiments-homepage-module-header-text {
+					top: 64px;
+					left: 8px;
+				}
+			}
+
+			.growthexperiments-homepage-module-start-startediting.growthexperiments-homepage-module {
+				.growthexperiments-homepage-module-header-text {
+					top: 64px;
+					right: 8px;
+				}
+			}
+
+			> :nth-child( 1 ) {
+				background-repeat: no-repeat;
+				background-image: linear-gradient( @colorGray5 100%, transparent 0 );
+				background-size: 44.5% 1px;
+				background-position: 100% 30px;
+			}
+
+			> :nth-child( 2 ),
+			> :nth-child( 3 ) {
+				background-repeat: no-repeat;
+				background-image: linear-gradient( @colorGray5 100%, transparent 0 ), linear-gradient( @colorGray5 100%, transparent 0 );
+				background-size: 44.5% 1px;
+				// Don't flip this background-position rule. Flipping it wouldn't do anything, because
+				// it would result in 100% 30px, 0 30px which would just swap the two (identical) backgrounds.
+				// CSSJanus also fails to flip this rule due to two separate bugs, and it'll break if one of
+				// these bugs is fixed but the other isn't.
+				/* @noflip */
+				background-position: 0 30px, 100% 30px;
+			}
+
+			> :nth-child( 4 ) {
+				background-repeat: no-repeat;
+				background-image: linear-gradient( @colorGray5 100%, transparent 0 );
+				background-size: 44.5% 1px;
+				// Work around CSSJanus bug where 0 isn't flipped, but 0% is
+				background-position: 0% 30px;
+			}
+		}
 	}
 
 	> .growthexperiments-homepage-module-body {
@@ -19,15 +161,10 @@
 			flex-direction: column;
 			flex: 1 0 0;
 			margin: 0;
-			border-top: 0;
-			border-bottom: 0;
-			border-left: 0;
-			border-right: @colorGray12 @border-width-base @border-style-base;
-			border-radius: 0;
-			padding-top: 0;
-			padding-bottom: 0.5em;
+			border: unset;
+			padding: 16px 16px 8px;
 			.box-shadow( none );
-			text-align: center;
+			text-align: left;
 
 			&:last-child {
 				border: 0;
@@ -46,23 +183,28 @@
 				margin-top: 0;
 				padding-bottom: 0;
 				border-bottom: 0;
-				margin-bottom: 1em;
+				margin-bottom: 0.572em;
 				color: @colorGray5;
 				font-size: 1em;
 
 				&-icon {
 					width: @homepageStartIconSize;
 					height: @homepageStartIconSize;
-					background-color: #d5fdf4;
+					background-color: @wmui-color-accent90;
 					border-radius: 50%;
-					border: 1px solid @colorGray12;
-					margin-right: 10px;
+					border: 1px solid @colorGray5;
+					min-width: 28px;
+					margin-right: 8px;
 
 					.oo-ui-iconElement {
-						width: @homepageStartIconSize;
-						height: @homepageStartIconSize;
-						background-size: unset;
+						width: 16px;
+						height: 16px;
+						background-size: contain;
 						opacity: 0.65;
+						min-width: 16px;
+						position: relative;
+						top: 4px;
+						left: 6px;
 
 						&.oo-ui-image-invert {
 							opacity: 1;
@@ -73,20 +215,24 @@
 				&-text {
 					text-align: left;
 					line-height: 1.2em;
+					font-size: 0.886em;
 				}
 			}
 
 			&-body {
 				flex-grow: 1;
-				padding-top: 0.5em;
+				padding-top: 0.571em;
 				color: @colorGray2;
 				font-size: 0.9em;
 			}
 
 			&-completed {
+				background-color: @wmui-color-accent90;
+				color: @colorGray2;
+
 				.growthexperiments-homepage-module-header-icon {
-					background-color: #00af89;
-					border-color: #00af89;
+					background-color: @wmui-color-green50;
+					border-color: @wmui-color-green50;
 				}
 			}
 		}
@@ -101,21 +247,26 @@
 			}
 
 			.growthexperiments-homepage-module-section-userinfo {
+				display: flex;
+
 				.oo-ui-iconElement {
-					height: 42px;
-					width: 42px;
-					border-radius: 50%;
-					background-size: unset;
-					background-color: @colorGray5;
-					margin-left: auto;
-					margin-right: auto;
+					height: 30px;
+					width: 30px;
+					border-radius: 0;
+					background-size: contain;
+					background-color: transparent;
+					opacity: 0.65;
+					margin: 0 8px 0 0;
 				}
 
 				.growthexperiments-homepage-module-section-username {
 					display: block;
-					font-size: 1.3em;
-					font-family: 'Georgia', serif;
-					color: @colorGray1;
+					font-size: 1em;
+					height: 24px;
+					margin-top: 6px;
+					font-family: @homepageHeaderFont;
+					font-weight: bold;
+					color: @colorGray2;
 
 					span {
 						overflow: hidden;
@@ -124,31 +275,23 @@
 				}
 			}
 
+			.growthexperiments-homepage-module-section-editcount {
+				margin: 8px 0 0 -38px;
+			}
+
 			.growthexperiments-homepage-module-section-editcount,
 			.growthexperiments-homepage-module-section-accountage {
 				display: block;
 				font-family: @homepageHeaderFont;
 				font-size: 0.85em;
-				margin: 0 0 0.5em 0;
-				color: @colorGray7;
+				color: @colorGray5;
+				padding-bottom: 4px;
 			}
 		}
 
 		.growthexperiments-homepage-module-start-email {
-			&.growthexperiments-homepage-email-unconfirmed {
-				.growthexperiments-homepage-module-header-icon {
-					background-color: @colorProgressive;
-					border-color: @colorProgressive;
-				}
-			}
-
 			.growthexperiments-homepage-email-change {
 				margin-top: 0.5em;
-
-				&-address,
-				&-link {
-					display: block;
-				}
 
 				&-address {
 					font-weight: bold;
@@ -165,89 +308,33 @@
 		}
 	}
 
-	&.growthexperiments-homepage-module-mobile-summary {
-		& > .growthexperiments-homepage-module-section-header {
-			margin-bottom: 0.8em;
-		}
-
-		& > .growthexperiments-homepage-module-section-body {
-			flex-wrap: wrap;
-
-			.growthexperiments-homepage-module {
-				border: 0;
-				padding: 0 0.5em;
-				margin-top: 0.5em;
-
-				@media only screen and ( max-width: 414px ) and ( orientation: portrait ) {
-					flex-basis: 50%;
-				}
-
-				& > h3 {
-					flex-direction: column;
-					font-weight: normal;
-					text-align: center;
-					font-size: 0.875em;
-					color: @colorGray2;
-
-					.growthexperiments-homepage-module-header-icon {
-						margin-right: 0;
-						margin-bottom: 0.5em;
-					}
-
-					.growthexperiments-homepage-module-header-text {
-						text-align: center;
-					}
-				}
-			}
-		}
+	&.growthexperiments-homepage-module-mobile-summary.growthexperiments-homepage-module-start-startediting-completed {
+		border: solid 1px @lighterAccent90;
 	}
 
 	&.growthexperiments-homepage-module-mobile-details,
 	&.growthexperiments-homepage-module-mobile-overlay {
 		& > .growthexperiments-homepage-module-section-body {
+			box-shadow: 0 0 0 3em @lighterAccent90;
+			background-color: @lighterAccent90;
 			// Don't use flexbox for mobile modules. We could use flex-direction: column; here,
 			// but instead we disable flexbox completely to avoid rendering bugs in iOS Safari (T234380)
 			display: block;
 
-			.growthexperiments-homepage-module {
-				display: block;
-				border-right: 0;
-				border-bottom: @colorGray12 @border-width-base @border-style-base;
-				padding: 1em 0 1.85em 0;
+			.growthexperiments-homepage-module-completed {
+				background-color: @wmui-color-accent90;
 
-				&:last-child {
-					border: 0;
-					padding-bottom: 0;
+				&:first-child {
+					box-shadow: 0 -24px 0 0 @wmui-color-accent90;
+					margin-top: 8px;
 				}
-
-				.growthexperiments-homepage-module-section-header {
-					font-size: 1.1em;
-					font-weight: bold;
-					padding-left: 0;
-				}
-
-				.growthexperiments-homepage-module-section-body,
-				.growthexperiments-homepage-module-section-footer {
-					padding-left: 46px;
-					text-align: left;
-				}
-
-				button {
-					// ".overlay button" rule in MinervaNeue/skinStyles/mobile.startup/Overlay.less
-					// is causing the "tutorial" button to shrink. But not the other buttons(!?)
-					width: unset;
-				}
-			}
-
-			.growthexperiments-homepage-module:first-child {
-				padding-top: 0;
 			}
 
 			.growthexperiments-homepage-module-start-account {
 				.growthexperiments-homepage-module-section {
 					&-userinfo {
 						display: flex;
-						margin-bottom: 1em;
+						margin-bottom: 0;
 
 						.growthexperiments-homepage-module-section-username {
 							line-height: 1em;
@@ -261,9 +348,66 @@
 					}
 
 					&-accountage {
-						font-size: 1em;
+						font-size: 0.85em;
 					}
 				}
+			}
+
+			.growthexperiments-homepage-module {
+				display: block;
+				border-right: 0;
+				border-bottom: @colorBaseInverted @border-width-base @border-style-base;
+				padding: 16px 16px 24px;
+				margin-top: 0;
+
+				&:last-child {
+					border: 0;
+					padding-bottom: 0;
+				}
+
+				.growthexperiments-homepage-module-section-header {
+					font-size: 1.1em;
+					font-weight: bold;
+					padding-left: 0;
+
+					.growthexperiments-homepage-module-header-text {
+						font-size: 1.034em;
+					}
+
+					.growthexperiments-homepage-module-header-icon {
+						width: 32px;
+						height: 32px;
+						margin-right: 16px;
+						min-width: 32px;
+
+						.oo-ui-iconElement {
+							width: 20px;
+							height: 20px;
+							left: 0;
+							top: 4px;
+						}
+					}
+				}
+
+				.growthexperiments-homepage-module-section-body,
+				.growthexperiments-homepage-module-section-footer {
+					padding-left: 48px;
+					text-align: left;
+				}
+
+				button {
+					// ".overlay button" rule in MinervaNeue/skinStyles/mobile.startup/Overlay.less
+					// is causing the "tutorial" button to shrink. But not the other buttons(!?)
+					width: unset;
+				}
+			}
+
+			.growthexperiments-homepage-module.growthexperiments-homepage-module-start-startediting {
+				padding-bottom: 32px;
+			}
+
+			.growthexperiments-homepage-module:first-child {
+				padding-top: 0;
 			}
 		}
 	}

@@ -27,7 +27,7 @@ class Account extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function getHeaderIconName() {
-		return 'check';
+		return 'userAvatar';
 	}
 
 	/**
@@ -58,8 +58,6 @@ class Account extends BaseTaskModule {
 	private function getUserInfo() {
 		$icon = new IconWidget( [
 			'icon' => 'userAvatar',
-			// HACK: IconWidget doesn't let us set 'invert' => true, see BaseTaskModule.php for details
-			'classes' => [ 'oo-ui-image-invert', 'oo-ui-checkboxInputWidget-checkIcon' ]
 		] );
 		$name = htmlspecialchars( $this->getContext()->getLanguage()->embedBidi(
 			$this->getContext()->getUser()->getName()
