@@ -64,4 +64,5 @@ $specialPageAliases['uk'] = [
 $specialPageAliases['vi'] = [
 	'WelcomeSurvey' => [ 'Bảng_câu_hỏi_chào_mừng' ],
 	'Homepage' => [ 'Trang_nhà' ],
+	'ClaimMentee' => [ 'Nhận_Người_được_cố_vấn' ],
 ];
