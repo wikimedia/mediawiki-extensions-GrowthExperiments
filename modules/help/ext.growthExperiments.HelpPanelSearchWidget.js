@@ -28,7 +28,7 @@
 
 		this.searchResultsPanel = new OO.ui.Widget();
 
-		this.noResultsMessage = $( '<p>' ).text(
+		this.$noResultsMessage = $( '<p>' ).text(
 			mw.message( 'growthexperiments-help-panel-search-no-results' ).text()
 		);
 
@@ -116,7 +116,7 @@
 						response.query.search.map( this.buildSearchResult )
 					);
 				} else {
-					this.searchResultsPanel.$element.append( this.noResultsMessage );
+					this.searchResultsPanel.$element.append( this.$noResultsMessage );
 				}
 			}.bind( this ) ).always( function () {
 				this.setLoading( false );

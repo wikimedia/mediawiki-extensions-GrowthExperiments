@@ -31,7 +31,7 @@
 			 */
 			function getModuleData( moduleName ) {
 				var data = mw.config.get( 'homepagemodules' )[ moduleName ];
-				data.overlay = $overlayModules.find( '[data-module-name="' + moduleName + '"]' );
+				data.$overlay = $overlayModules.find( '[data-module-name="' + moduleName + '"]' );
 				return data;
 			}
 
@@ -85,7 +85,7 @@
 					moduleData = getModuleData( moduleName );
 					overlays[ moduleName ] = new MobileOverlay( {
 						moduleName: moduleName,
-						html: moduleData.overlay,
+						html: moduleData.$overlay,
 						rlModules: moduleData.rlModules,
 						heading: moduleData.heading
 					} );

@@ -201,7 +201,8 @@
 				// XHR abort, not a real error
 				return;
 			} else if ( error === 'http' ) {
-				// jQuery AJAX error; textStatus is AJAX status, exception is status code text from server
+				// jQuery AJAX error; textStatus is AJAX status, exception is status code text
+				// from server
 				message = ( typeof details.exception === 'string' ) ? details.exception : details.textStatus;
 			} else if ( error === 'ok-but-empty' ) {
 				// maybe a PHP fatal; not much we can do
