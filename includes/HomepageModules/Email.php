@@ -100,7 +100,6 @@ class Email extends BaseTaskModule {
 				'flags' => [ 'progressive' ]
 			];
 		} else {
-			// @phan-suppress-next-line PhanUselessBinaryAddRight
 			$buttonConfig += [
 				'href' => SpecialPage::getTitleFor( 'ChangeEmail' )->getLinkURL( [
 					'returnto' => $this->getContext()->getTitle()->getPrefixedText()

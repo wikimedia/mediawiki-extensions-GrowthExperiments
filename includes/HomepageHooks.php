@@ -71,7 +71,7 @@ class HomepageHooks {
 				$list['Impact'] = function () use ( $pageViewInfoEnabled, $mwServices ) {
 					return new SpecialImpact(
 						$mwServices->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA ),
-						$pageViewInfoEnabled ? $mwServices->get( 'PageViewService' ) : null
+						$mwServices->get( 'PageViewService' )
 					);
 				};
 			}
