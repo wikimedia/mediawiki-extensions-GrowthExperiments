@@ -120,6 +120,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|您的}}問題目前在{{GENDER:$1|他|她|他們}}的對話頁裡，{{GENDER:$1|他|她|他們}}會在那兒盡快回答。",
 	"growthexperiments-homepage-mentorship-view-question-text": "在您{{GENDER:$1|導師}}的對話頁檢視檢視{{GENDER:$2|您的}}問題。",
 	"growthexperiments-homepage-mentorship-question-subject": "來自[[User:$1|$1]]的問題",
+	"growthexperiments-homepage-mentorship-question-subject-no-link": "來自$1的問題",
 	"growthexperiments-homepage-tutorial-header": "學習編輯",
 	"growthexperiments-homepage-tutorial-subheader": "依照如何編輯維基百科的快速敎程",
 	"growthexperiments-homepage-tutorial-cta-text": "教程",

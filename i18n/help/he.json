@@ -24,6 +24,7 @@
 	"growthexperiments-help-panel-questionreview-include-article-title": "לכלול את שם הדף עם השאלה שלי",
 	"growthexperiments-help-panel-question-subject-template": "שאלה מחלונית העזרה",
 	"growthexperiments-help-panel-question-subject-template-with-title": "שאלה מחלונית העזרה בדף [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title-no-link": "שאלה מחלונית העזרה בדף $1",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "שאלה מחלונית העזרה מדף הבית של המשתמש",
 	"growthexperiments-help-panel-question-post-error": "אירעה שגיאה בעת ניסיון לשלוח את השאלה שלך. {{GENDER:|אתה יכול|את יכולה}} לנסות שוב או לבקר בדף $1 בדפדפן שלך ולהוסיף את שאלתך ידנית.",
 	"growthexperiments-help-panel-questioncomplete-title": "לשאול שאלה",

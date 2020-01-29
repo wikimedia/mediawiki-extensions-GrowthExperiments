@@ -226,6 +226,7 @@
 	"growthexperiments-log-name": "Nhật ký GrowthExperiments",
 	"growthexperiments-log-header": "Những sự kiện dưới đây ghi dấu lại khi nào thì các sự kiện liên quan đến GrowthExperiments diễn ra trong hệ thống.",
 	"logentry-growthexperiments-claimmentee": "$1 đã nhận $3 làm người được cố vấn của họ (trước đó đã làm người cố vấn cho $4)",
+	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 đã nhận $3 làm người được cố vấn của họ (trước đó không có cố vấn nào)",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Tên người dùng của người được cố vấn được cung cấp không hợp lệ",
 	"growthexperiments-notification-header-mentor-change": "$1 là người cố vấn mới của bạn",
 	"growthexperiments-notification-body-mentor-change": "Lý do: $1",

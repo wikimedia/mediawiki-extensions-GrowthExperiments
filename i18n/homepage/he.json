@@ -120,6 +120,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "השאלה {{GENDER:$2|שלך}} נמצאת עכשיו בדף השיחה של {{GENDER:$1|החונך שלך, ושם הוא יענה עליה ברגע שיוכל|החונכת שלך, ושם היא תענה עליה ברגע שתוכל}}.",
 	"growthexperiments-homepage-mentorship-view-question-text": "הצגת השאלה {{GENDER:$2|שלך}} בדף השיחה של {{GENDER:$1|החונך|החונכת}} שלך.",
 	"growthexperiments-homepage-mentorship-question-subject": "שאלה של [[User:$1|$1]]",
+	"growthexperiments-homepage-mentorship-question-subject-no-link": "שאלה של $1",
 	"growthexperiments-homepage-tutorial-header": "{{GENDER:|למַד|לִמדי}} לערוך",
 	"growthexperiments-homepage-tutorial-subheader": "מדריך קצר על איך לערוך את ויקיפדיה",
 	"growthexperiments-homepage-tutorial-cta-text": "מדריך",

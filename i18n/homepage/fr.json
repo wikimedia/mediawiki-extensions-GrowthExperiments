@@ -128,6 +128,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|}}Votre question est maintenant sur la page de discussion de votre tut{{GENDER:$1|eur|rice}}, qui est l’endroit où {{GENDER:$1|il|elle}} pourra y répondre aussi vite que possible.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Afficher {{GENDER:$2|}}votre question sur la page de discussion de votre tut{{GENDER:$1|eur|rice}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Question de [[User:$1|$1]]",
+	"growthexperiments-homepage-mentorship-question-subject-no-link": "Question de $1",
 	"growthexperiments-homepage-tutorial-header": "Apprenez à modifier",
 	"growthexperiments-homepage-tutorial-subheader": "Suivre un tutoriel rapide pour apprendre comment modifier Wikipédia",
 	"growthexperiments-homepage-tutorial-cta-text": "Tutoriel",

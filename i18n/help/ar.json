@@ -24,6 +24,7 @@
 	"growthexperiments-help-panel-questionreview-include-article-title": "تضمين عنوان الصفحة مع سؤالي",
 	"growthexperiments-help-panel-question-subject-template": "سؤال من لوحة المساعدة",
 	"growthexperiments-help-panel-question-subject-template-with-title": "سؤال من لوحة المساعدة على [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title-no-link": "سؤال من لوحة المساعدة على $1",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "سؤال وحدة المساعدة من لوحة المستخدم",
 	"growthexperiments-help-panel-question-post-error": "حدث خطأ عند محاولة نشر سؤالك، يمكنك إعادة المحاولة أو يمكنك زيارة $1 في متصفحك وإضافة سؤالك يدويًا.",
 	"growthexperiments-help-panel-questioncomplete-title": "{{GENDER:|اطرح|اطرحي}} سؤالا",
