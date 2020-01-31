@@ -25,6 +25,7 @@ $specialPageAliases['ar'] = [
 	'WelcomeSurvey' => [ 'استطلاع_ترحيبي' ],
 	'Homepage' => [ 'صفحة_رئيسية' ],
 	'Impact' => [ 'تأثير' ],
+	'ClaimMentee' => [ 'مطالبة_مرشد' ],
 ];
 
 /** čeština (Czech) */
@@ -32,6 +33,7 @@ $specialPageAliases['cs'] = [
 	'WelcomeSurvey' => [ 'Uvítací_dotazník', 'Uvitaci_dotaznik' ],
 	'Homepage' => [ 'Domovská_stránka' ],
 	'Impact' => [ 'Dosah_příspěvků' ],
+	'ClaimMentee' => [ 'Převzít_nováčka' ],
 ];
 
 $specialPageAliases['hu'] = [
