@@ -88,6 +88,7 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Din}} fråga finns nu på din {{GENDER:$1|mentors}} diskussionssida, där de kan besvara den så fort de kan.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Visa {{GENDER:$2|din}} fråga på din {{GENDER:$1|mentors}} diskussionsida.",
 	"growthexperiments-homepage-mentorship-question-subject": "Frågor från [[User:$1|$1]]",
+	"growthexperiments-homepage-mentorship-question-subject-no-link": "Fråga från $1",
 	"growthexperiments-homepage-tutorial-header": "Lär dig att redigera",
 	"growthexperiments-homepage-tutorial-subheader": "Följ en snabb handledning för att lära dig hur man redigerar på Wikipedia",
 	"growthexperiments-homepage-tutorial-cta-text": "Handledning",

@@ -59,6 +59,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Attivo|Attiva}} $2 {{PLURAL:$2|giorno|giorni}} fa",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Guarda le altre {{GENDER:$2|conversazioni}} {{GENDER:$1|del tuo|della tua}} tutor",
 	"growthexperiments-homepage-mentorship-question-subject": "Domanda da [[User:$1|$1]]",
+	"growthexperiments-homepage-mentorship-question-subject-no-link": "Domanda da $1",
 	"growthexperiments-specialimpact-title": "Impatto",
 	"growthexperiments-homepage-contributions-zero-title": "Non {{GENDER:$1|hai}} ancora fatto alcun contributo.",
 	"growthexperiments-homepage-contributions-zero-button": "Vai alla {{GENDER:$1|tua}} pagina principale",
