@@ -54,6 +54,22 @@ $specialPageAliases['ko'] = [
 	'ClaimMentee' => [ '멘티데려오기' ],
 ];
 
+/** Serbian Cyrillic (српски (ћирилица)) */
+$specialPageAliases['sr-ec'] = [
+	'WelcomeSurvey' => [ 'Анкета_добродошлице' ],
+	'Homepage' => [ 'Почетна_страница' ],
+	'Impact' => [ 'Утицај' ],
+	'ClaimMentee' => [ 'Преузимање_новајлије' ],
+];
+
+/** Serbian Latin (srpski (latinica)) */
+$specialPageAliases['sr-el'] = [
+	'WelcomeSurvey' => [ 'Anketa_dobrodošlice' ],
+	'Homepage' => [ 'Početna_stranica' ],
+	'Impact' => [ 'Uticaj' ],
+	'ClaimMentee' => [ 'Preuzimanje_novajlije' ],
+];
+
 $specialPageAliases['uk'] = [
 	'WelcomeSurvey' => [ 'Вітальне_опитування' ],
 	'Homepage' => [ 'Домашня_сторінка' ],
