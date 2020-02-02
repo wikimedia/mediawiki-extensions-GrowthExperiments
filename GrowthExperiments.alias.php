@@ -36,12 +36,14 @@ $specialPageAliases['cs'] = [
 	'ClaimMentee' => [ 'Převzít_nováčka' ],
 ];
 
+/** Hungarian (magyar) */
 $specialPageAliases['hu'] = [
 	'WelcomeSurvey' => [ 'Új_szerkesztők_kérdőíve' ],
 	'Homepage' => [ 'Új_szerkesztők_honlapja' ],
 	'Impact' => [ 'Eredmény' ],
 ];
 
+/** Armenian (Հայերեն) */
 $specialPageAliases['hy'] = [
 	'WelcomeSurvey' => [ 'ՈղջույնիՀարցում' ],
 	'Homepage' => [ 'Հիմնական_էջ' ],
@@ -72,6 +74,7 @@ $specialPageAliases['sr-el'] = [
 	'ClaimMentee' => [ 'Preuzimanje_novajlije' ],
 ];
 
+/** Ukranian (українська) */
 $specialPageAliases['uk'] = [
 	'WelcomeSurvey' => [ 'Вітальне_опитування' ],
 	'Homepage' => [ 'Домашня_сторінка' ],
