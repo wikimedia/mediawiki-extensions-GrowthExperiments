@@ -118,17 +118,7 @@ class ChangeMentor {
 				'newMentor' => $this->newMentor
 		] );
 		$status = Status::newGood();
-		if ( $this->mentee === false ) {
-			$this->logger->info(
-				'Mentor change for {mentee} from {oldMentor} to {newMentor}'
-				. ' did not succeed, because the mentee\'s username is invalid', [
-					'mentee' => $this->mentee,
-					'oldMentor' => $this->mentor,
-					'newMentor' => $this->newMentor
-			] );
-			$status->fatal( 'growthexperiments-homepage-claimmentee-invalid-username' );
-			return $status;
-		}
+
 		if ( $this->mentee->getId() === 0 ) {
 			$this->logger->info(
 				'Mentor change for {mentee} from {oldMentor} to {newMentor}'
