@@ -16,6 +16,9 @@
 	"growthexperiments-homepage-impact-article-link-tooltip": "ဆောင်းပါးသို့သွားရန်",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "ရပြီဟေ့",
 	"growthexperiments-homepage-help-cancel": "မလုပ်တော့ပါ",
+	"growthexperiments-homepage-mentorship-question-subject-no-link": "$1 မှ မေးခွန်း",
 	"growthexperiments-homepage-tutorial-header": "တည်းဖြတ်ရန် သင်ယူမည်",
-	"growthexperiments-homepage-tutorial-cta-text": "သင်ခန်းစာ"
+	"growthexperiments-homepage-tutorial-cta-text": "သင်ခန်းစာ",
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "ပြီးပြီ",
+	"growthexperiments-notification-body-mentor-change": "အကြောင်းပြချက်: $1"
 }

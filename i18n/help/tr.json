@@ -23,6 +23,7 @@
 	"growthexperiments-help-panel-questionreview-include-article-title": "Sayfanın başlığına sorumu ekle",
 	"growthexperiments-help-panel-question-subject-template": "Yardım paneli sorusu",
 	"growthexperiments-help-panel-question-subject-template-with-title": "[[$1]] hakkında yardım paneli sorusu",
+	"growthexperiments-help-panel-question-subject-template-with-title-no-link": "$1 konusunda yardım paneli sorusu",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Kullanıcı ana sayfasından yardım modülü sorusu",
 	"growthexperiments-help-panel-question-post-error": "Sorunuzu göndermeye çalışırken bir hata oluştu. Tekrar deneyebilir veya tarayıcınızda $1 sayfasını ziyaret edebilir ve sorunuzu manuel olarak ekleyebilirsiniz.",
 	"growthexperiments-help-panel-questioncomplete-title": "Soru sor",
