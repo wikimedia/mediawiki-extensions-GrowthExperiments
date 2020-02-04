@@ -23,7 +23,7 @@ $specialPageAliases['en'] = [
 /** Arabic */
 $specialPageAliases['ar'] = [
 	'WelcomeSurvey' => [ 'استطلاع_ترحيبي' ],
-	'Homepage' => [ 'صفحة_رئيسية' ],
+	'Homepage' => [ 'صفحة_رئيسية', 'لوحة_مستخدم' ],
 	'Impact' => [ 'تأثير' ],
 	'ClaimMentee' => [ 'مطالبة_مرشد' ],
 ];
