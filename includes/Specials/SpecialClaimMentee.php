@@ -105,7 +105,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 		$fields = [
 			'mentee' => [
 				'label-message' => 'growthexperiments-homepage-claimmentee-mentee',
-				'type'          => 'text',
+				'type'          => 'user',
 				'required'      => true,
 			],
 			'reason' => [
