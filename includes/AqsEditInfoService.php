@@ -41,11 +41,12 @@ class AqsEditInfoService extends EditInfoService {
 
 	/** @inheritDoc */
 	public function getEditsPerDay() {
-		// AQS edit processing seems to be done monthly, so use the day one month age.
+		// AQS edit processing seems to be done monthly, but sometimes the processing lags,
+		// so use the day two months ago.
 		// The number shown above "edits in the last day" will be somewhat fake,
 		// but hopefully no one cares.
-		$day = new DateTime( '@' . ConvertibleTimestamp::time() . '-1 month -1 day' );
-		$dayAfter = new DateTime( '@' . ConvertibleTimestamp::time() . '-1 month' );
+		$day = new DateTime( '@' . ConvertibleTimestamp::time() . '-2 month -1 day' );
+		$dayAfter = new DateTime( '@' . ConvertibleTimestamp::time() . '-2 month' );
 		$cacheKey = $this->cache->makeKey( 'GrowthExperiments', 'AQS', 'edits',
 			$this->wiki, $day->format( 'Ymd' ) );
 		$edits = $this->cache->get( $cacheKey );
