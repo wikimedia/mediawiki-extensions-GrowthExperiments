@@ -20,9 +20,10 @@
 	"growthexperiments-help-panel-questionreview-header": "Када поставите питање, оно се <strong>јавно објављује</strong> под вашим корисничком именом ($2) на страници $1. Ту ће други уредници моћи да одговоре на њега, а одговор ћете највероватније добити сутрадан.",
 	"growthexperiments-help-panel-questionreview-label": "Питање",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Уврсти наслов странице уз моје питање",
-	"growthexperiments-help-panel-question-subject-template": "Питање са табле помоћи",
-	"growthexperiments-help-panel-question-subject-template-with-title": "Питање са табле помоћи на страници [[$1]]",
-	"growthexperiments-help-panel-question-subject-template-from-homepage": "Помоћни модул за питања са корисничке почетне странице",
+	"growthexperiments-help-panel-question-subject-template": "Питање с табле помоћи",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Питање с табле помоћи на страници [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title-no-link": "Питање с табле помоћи на страници $1",
+	"growthexperiments-help-panel-question-subject-template-from-homepage": "Помоћни модул за питања с корисничке почетне странице",
 	"growthexperiments-help-panel-question-post-error": "Дошло је до грешке приликом постављања питања. Покушајте поново или посетите $1 у прегледачу да бисте ручно поставили питање.",
 	"growthexperiments-help-panel-questioncomplete-title": "Постављање питања",
 	"growthexperiments-help-panel-questioncomplete-header": "Питање је постављено.",
@@ -43,6 +44,6 @@
 	"growthexperiments-help-panel-community-help-desk-text": "Трг",
 	"growthexperiments-help-panel-search-label": "Тражење помоћи",
 	"growthexperiments-help-panel-search-no-results": "Резултати нису пронађени.",
-	"tag-help_panel_question": "питање са табле помоћи",
+	"tag-help_panel_question": "питање с табле помоћи",
 	"tag-help_panel_question-description": "Измене направљене функцијом постављања питања из помоћне табле"
 }
