@@ -288,7 +288,9 @@
 		this.previousQuestionText = mw.storage.get( this.storageKey );
 
 		this.questionTextInput = new OO.ui.MultilineTextInputWidget( {
-			placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' ).text(),
+			placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' )
+				.params( [ mw.user ] )
+				.text(),
 			multiline: true,
 			maxLength: 2000,
 			rows: 3,
@@ -301,7 +303,9 @@
 		} ).connect( this, { change: 'populateReviewText' } );
 
 		this.questionReviewTextInput = new OO.ui.MultilineTextInputWidget( {
-			placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' ).text(),
+			placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' )
+				.params( [ mw.user ] )
+				.text(),
 			multiline: true,
 			maxLength: 2000,
 			rows: 3,
