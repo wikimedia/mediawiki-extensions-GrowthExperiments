@@ -345,7 +345,7 @@ class HomepageHooks {
 	 *
 	 * @param array &$wgDefaultUserOptions Reference to default options array
 	 */
-	public function onUserGetDefaultOptions( &$wgDefaultUserOptions ) {
+	public static function onUserGetDefaultOptions( &$wgDefaultUserOptions ) {
 		$wgDefaultUserOptions += [
 			// Set discovery notice seen flag to true; it will be changed for new users in the
 			// LocalUserCreated hook.
