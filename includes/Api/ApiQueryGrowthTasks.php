@@ -179,6 +179,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 			],
 			'debug' => [
 				ApiBase::PARAM_TYPE => 'boolean',
+				ApiBase::PARAM_DFLT => false,
 			],
 		];
 	}
