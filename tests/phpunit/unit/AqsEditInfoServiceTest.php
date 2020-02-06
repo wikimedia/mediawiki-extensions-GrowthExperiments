@@ -26,7 +26,7 @@ class AqsEditInfoServiceTest extends MediaWikiUnitTestCase {
 		$cache = new HashBagOStuff();
 		ConvertibleTimestamp::setFakeTime( '2000-02-10 12:00:00' );
 		$httpRequestFactory = $this->getMockRequestFactory( 'https://wikimedia.org/api/rest_v1/'
-			. 'metrics/edits/aggregate/en.wikipedia/user/content/daily/20000109/20000110',
+			. 'metrics/edits/aggregate/en.wikipedia/user/content/daily/19991210/19991211',
 			$httpResponse instanceof Status ? $httpResponse : json_encode( $httpResponse ) );
 		$editInfoService = new AqsEditInfoService( $httpRequestFactory, 'en.wikipedia' );
 		$editInfoService->setCache( $cache );
