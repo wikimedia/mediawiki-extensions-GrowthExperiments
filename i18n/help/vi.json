@@ -24,6 +24,7 @@
 	"growthexperiments-help-panel-questionreview-include-article-title": "Ghi kèm tên trang vào câu hỏi của tôi",
 	"growthexperiments-help-panel-question-subject-template": "Hỏi tại cửa sổ trợ giúp",
 	"growthexperiments-help-panel-question-subject-template-with-title": "Câu hỏi tại cửa sổ trợ giúp về [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title-no-link": "Câu hỏi bảng trợ giúp về $1",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Câu hỏi mô-đun trợ giúp từ trang nhà của người dùng",
 	"growthexperiments-help-panel-question-post-error": "Có lỗi xảy ra khi gửi câu hỏi của bạn. Bạn có thể thử lại hoặc vào trang $1 trong trình duyệt và tự đặt câu hỏi tại đấy.",
 	"growthexperiments-help-panel-questioncomplete-title": "Đặt câu hỏi",
