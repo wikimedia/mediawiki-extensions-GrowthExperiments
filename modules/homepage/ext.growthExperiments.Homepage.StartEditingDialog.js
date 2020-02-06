@@ -3,6 +3,7 @@ var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).To
 /**
  * @param {Object} config
  * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
+ * @param {string} config.windowClass Selector to use for getting the window body for scrolling.
  * @param {HomepageModuleLogger} logger
  * @param {GrowthTasksApi} api
  * @constructor
@@ -12,6 +13,7 @@ function StartEditingDialog( config, logger, api ) {
 	this.logger = logger;
 	this.api = api;
 	this.mode = config.mode;
+	this.windowClass = config.windowClass;
 	this.enableTopics = mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' );
 }
 
@@ -180,6 +182,8 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 				this.logger.log( 'start-startediting', this.mode, 'se-cta-difficulty' );
 				this.articleCounterPanelLayout.toggle( false );
 				this.swapPanel( 'difficulty' );
+				// Force scroll position to top.
+				$( this.windowClass ).scrollTop( 0 );
 			}
 			if ( action === 'back' ) {
 				this.articleCounterPanelLayout.toggle( this.enableTopics );
