@@ -121,6 +121,31 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * @covers ::execute
+	 * @covers ::validate
+	 */
+	public function testExecuteBadStatus(): void {
+		$mentorUser = User::newFromIdentity(
+			new UserIdentityValue( 1, 'Foo', 1 )
+		);
+		$newMentor = User::newFromIdentity(
+			new UserIdentityValue( 1, 'Foo', 1 )
+		);
+		$mentorMock = $this->getMentorMock();
+		$mentorMock->method( 'getMentorUser' )
+			->willReturn( $mentorUser );
+		$changeMentor = new ChangeMentor(
+			$this->getUserMock(),
+			$this->getUserMock(),
+			$this->getContextMock(),
+			new NullLogger(),
+			$mentorMock,
+			$this->getLogPagerMock()
+		);
+		$this->assertFalse( $changeMentor->execute( $newMentor, 'test' )->isGood() );
+	}
+
+	/**
 	 * @return \PHPUnit\Framework\MockObject\MockObject|User
 	 */
 	private function getUserMock() {
