@@ -12,7 +12,7 @@
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Principais páginas de ajuda sobre edição",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Ver mais artigos de ajuda",
 	"growthexperiments-help-panel-question-widget-header": "Publique sua pergunta na Central de Ajuda comunitária",
-	"growthexperiments-help-panel-question-placeholder": "Eu preciso de ajuda com a edição. Como posso...",
+	"growthexperiments-help-panel-question-placeholder": "Diga olá e faça a {{GENDER:$1|sua}} pergunta.",
 	"growthexperiments-help-panel-back-home": "Voltar",
 	"growthexperiments-help-panel-close": "Concluído",
 	"growthexperiments-help-panel-home-title": "Obtenha ajuda para editar",

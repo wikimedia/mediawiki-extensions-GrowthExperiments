@@ -14,7 +14,7 @@
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Nejdůležitější stránky s nápovědou",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Zobrazit více stránek s nápovědou",
 	"growthexperiments-help-panel-question-widget-header": "Vložte svou otázku na stránku Potřebuji pomoc",
-	"growthexperiments-help-panel-question-placeholder": "Jak se na Wikipedii...?",
+	"growthexperiments-help-panel-question-placeholder": "Pozdravte a {{GENDER:$1|položte}} svou otázku.",
 	"growthexperiments-help-panel-back-home": "Zpět",
 	"growthexperiments-help-panel-close": "Zavřít",
 	"growthexperiments-help-panel-home-title": "Potřebuji pomoc",

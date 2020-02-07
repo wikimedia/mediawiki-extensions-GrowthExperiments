@@ -12,7 +12,7 @@
 	"growthexperiments-help-panel-editing-help-links-widget-header": "有關編輯的熱門求助頁面",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "檢視更多求助條目",
 	"growthexperiments-help-panel-question-widget-header": "發佈您的問題至社群互助客棧/求助",
-	"growthexperiments-help-panel-question-placeholder": "我需要一些編輯上的協助。我如何…",
+	"growthexperiments-help-panel-question-placeholder": "打聲招呼並詢問{{GENDER:$1|您的}}問題",
 	"growthexperiments-help-panel-back-home": "返回",
 	"growthexperiments-help-panel-close": "完成",
 	"growthexperiments-help-panel-home-title": "取得編輯協助",

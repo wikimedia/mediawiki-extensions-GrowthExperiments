@@ -14,7 +14,7 @@
 	"growthexperiments-help-panel-editing-help-links-widget-header": "صفحات المساعدة الأكثر اطلاعًا حول التحرير",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "{{GENDER:|شاهد|شاهدي}} المزيد من صفحات المساعدة",
 	"growthexperiments-help-panel-question-widget-header": "{{GENDER:|انشر|انشري}} سؤالك على ميدان المساعدة",
-	"growthexperiments-help-panel-question-placeholder": "أحتاج إلى بعض المساعدة في التحرير. كيف يمكنني أن...",
+	"growthexperiments-help-panel-question-placeholder": "{{GENDER:$1|ألق|ألقي}} التحية و{{GENDER:$1|اطرح|اطرحي}} سؤالك.",
 	"growthexperiments-help-panel-back-home": "رجوع",
 	"growthexperiments-help-panel-close": "تم",
 	"growthexperiments-help-panel-home-title": "{{GENDER:|احصل|احصلي}} على المساعدة في التحرير",

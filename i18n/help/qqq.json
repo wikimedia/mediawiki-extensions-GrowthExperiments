@@ -3,7 +3,8 @@
 		"authors": [
 			"Tgr",
 			"Robby",
-			"Amire80"
+			"Amire80",
+			"Martin Urbanec"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "[[Special:Preferences]], tab 'Edit'. Allows user to enable and disable experimental Help Panel.\n\n{{doc-growthexperiments-help-panel}}",
@@ -13,7 +14,7 @@
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Header for a list of help links in the help panel.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Link in the help panel to view more help content.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-question-widget-header": "Header for feature that allows users to post questions to their wiki's help desk.\n\n{{doc-growthexperiments-help-panel}}",
-	"growthexperiments-help-panel-question-placeholder": "Placeholder text for the area to ask a question in the help panel. Parameters:\n - User object, for use with GENDER.\n\n{{doc-growthexperiments-help-panel}}",
+	"growthexperiments-help-panel-question-placeholder": "Placeholder text for the area to ask a question in the help panel. Parameters:\n* $1 - User object, for use with GENDER.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-back-home": "Text to show on button that takes user to home screen of help panel.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-close": "Text shown on a button to close the help panel.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-home-title": "Title shown at top of help panel.\n\n{{doc-growthexperiments-help-panel}}",
