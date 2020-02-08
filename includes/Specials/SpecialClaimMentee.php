@@ -10,6 +10,7 @@ use GrowthExperiments\WikiConfigException;
 use LogEventsList;
 use LogPager;
 use MediaWiki\Logger\LoggerFactory;
+use Message;
 use PermissionsError;
 use Status;
 use User;
@@ -175,8 +176,13 @@ class SpecialClaimMentee extends FormSpecialPage {
 	public function onSuccess() {
 		$this->getOutput()->addWikiMsg(
 			'growthexperiments-homepage-claimmentee-success',
-			$this->mentee,
-			$this->newMentor
+			$this->mentee->getName(),
+			$this->getUser()->getName(),
+			$this->newMentor->getName(),
+			Message::rawParam( $this->getLinkRenderer()->makeLink(
+				$this->mentee->getUserPage(), $this->mentee->getName() ) ),
+			Message::rawParam( $this->getLinkRenderer()->makeLink(
+				$this->newMentor->getUserPage(), $this->newMentor->getName() ) )
 		);
 	}
 
