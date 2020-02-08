@@ -87,12 +87,12 @@ class SpecialClaimMentee extends FormSpecialPage {
 		$error = !$this->mentorsList ?
 			[
 				'growthexperiments-homepage-mentors-list-missing-or-misconfigured',
-				$this->config->get( 'GEHomepageMentorsList' )
+				str_replace( '_', ' ', $this->config->get( 'GEHomepageMentorsList' ) )
 			]
 			:
 			[ 'growthexperiments-homepage-claimmentee-must-be-mentor',
 			  $this->getUser(),
-			  $this->config->get( 'GEHomepageMentorsList' )
+			  str_replace( '_', ' ', $this->config->get( 'GEHomepageMentorsList' ) )
 			];
 		throw new PermissionsError( null, [ $error ] );
 	}
