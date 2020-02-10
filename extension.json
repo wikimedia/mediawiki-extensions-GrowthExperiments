@@ -38,7 +38,8 @@
 	},
 	"APIModules": {
 		"helppanelquestionposter": "GrowthExperiments\\Api\\ApiHelpPanelPostQuestion",
-		"homepagequestionstore": "GrowthExperiments\\Api\\ApiQuestionStore"
+		"homepagequestionstore": "GrowthExperiments\\Api\\ApiQuestionStore",
+		"growthsetmentor": "GrowthExperiments\\Api\\ApiSetMentor"
 	},
 	"APIListModules": {
 		"growthtasks": {
@@ -898,6 +899,14 @@
 	},
 	"LogActionsHandlers": {
 		"growthexperiments/*": "LogFormatter"
+	},
+	"AvailableRights": [
+		"setmentor"
+	],
+	"GroupPermissions": {
+		"sysop": {
+			"setmentor": true
+		}
 	},
 	"manifest_version": 2
 }

@@ -85,27 +85,41 @@ class ChangeMentor {
 	 */
 	private function log( $reason ) {
 		$this->logger->debug(
-			'Logging mentor change for {mentee} from {oldMentor} to {newMentor}', [
+			'Logging mentor change for {mentee} from {oldMentor} to {newMentor} by {performer}', [
 				'mentee' => $this->mentee,
 				'oldMentor' => $this->mentor,
-				'newMentor' => $this->newMentor
+				'newMentor' => $this->newMentor,
+				'performer' => $this->performer,
 		] );
 
+		if ( $this->performer->getId() === $this->newMentor->getId() ) {
+			$primaryLogtype = 'claimmentee';
+		} else {
+			$primaryLogtype = 'setmentor';
+		}
+		// Uses the following i18n strings
+		// * logentry-growthexperiments-claimmentee
+		// * logentry-growthexperiments-claimmentee-no-previous-mentor
+		// * logentry-growthexperiments-setmentor
+		// * logentry-growthexperiments-setmentor-no-previous-mentor
 		$logEntry = new ManualLogEntry(
 			'growthexperiments',
 			$this->mentor ?
-				'claimmentee' :
-				'claimmentee-no-previous-mentor'
+				$primaryLogtype :
+				"$primaryLogtype-no-previous-mentor"
 		);
 		$logEntry->setPerformer( $this->performer );
 		$logEntry->setTarget( $this->mentee->getUserPage() );
 		$logEntry->setComment( $reason );
+		$parameters = [];
 		if ( $this->mentor ) {
 			// $this->mentor is null when no mentor existed previously
-			$logEntry->setParameters( [
-				'4::previous-mentor' => $this->mentor->getName()
-			] );
+			$parameters['4::previous-mentor'] = $this->mentor->getName();
 		}
+		if ( $this->performer->getId() !== $this->newMentor->getId() ) {
+			$parameters['5::new-mentor'] = $this->newMentor->getName();
+		}
+		$logEntry->setParameters( $parameters );
 		$logid = $logEntry->insert();
 		$logEntry->publish( $logid );
 	}

@@ -224,11 +224,15 @@
 	"growthexperiments-log-header": "This is a log of actions made in GrowthExperiments extension.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|claimed}} $3 as their mentee (previous {{GENDER:$4|mentor}} $4)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|claimed}} $3 as their mentee (no previous mentor)",
+	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|set}} $5 as mentor of $3 (previous {{GENDER:$4|mentor}} $4)",
+	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|set}} $5 as mentor of $3 (no previous mentor)",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Provided mentee's username is invalid",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|is}} {{GENDER:$3|your}} new mentor",
 	"growthexperiments-notification-body-mentor-change": "Reason: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Say}} hi to {{GENDER:$3|your}} new {{GENDER:$2|mentor}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|You}} must be listed as a mentor on [[$2]] to be able to use Special:ClaimMentee",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Mentors list ([[$1]]) does not exist or is misconfigured.",
-	"growthexperiments-notification-learn-more": "Learn more about {{GENDER:$1|your}} new {{GENDER:$2|mentor}}"
+	"growthexperiments-notification-learn-more": "Learn more about {{GENDER:$1|your}} new {{GENDER:$2|mentor}}",
+	"right-setmentor": "Set user's mentor",
+	"action-setmentor": "set user's mentor"
 }
