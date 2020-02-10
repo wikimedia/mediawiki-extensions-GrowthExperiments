@@ -65,6 +65,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 	 */
 	public function execute( $par ) {
 		$this->requireLogin();
+		$this->addHelpLink( 'Help:Growth/Tools/How to claim a mentee' );
 		parent::execute( $par );
 	}
 
