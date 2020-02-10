@@ -58,6 +58,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Activo|Activa}} hace $2 {{PLURAL:$2|día|días}}",
 	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|Este usuario experto|Esta usuaria experta}} sabe que recién has llegado y puede {{GENDER:$2|ayudarte}} con la edición.",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Ver las demás conversaciones de {{GENDER:$2|tu}} {{GENDER:$1|mentor|mentora}}",
+	"growthexperiments-homepage-mentorship-question-subject-no-link": "Pregunta de $1",
 	"growthexperiments-homepage-tutorial-header": "Aprende a editar",
 	"growthexperiments-homepage-tutorial-subheader": "Sigue un tutorial rápido para aprender a editar Wikipedia",
 	"growthexperiments-homepage-tutorial-cta-text": "Tutorial",

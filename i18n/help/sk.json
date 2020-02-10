@@ -12,7 +12,7 @@
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Najdôležitejšie stránky s nápovedou",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Zobraziť viac stránok s nápovedou",
 	"growthexperiments-help-panel-question-widget-header": "Vložte svoju otázku na stránku Potrebujem pomoc",
-	"growthexperiments-help-panel-question-placeholder": "Potrebujem nejakú pomoc s editáciou. Ako môžem...",
+	"growthexperiments-help-panel-question-placeholder": "Pozdravte a {{GENDER:$1|položte}} svoju otázku.",
 	"growthexperiments-help-panel-back-home": "Späť",
 	"growthexperiments-help-panel-close": "Hotovo",
 	"growthexperiments-help-panel-home-title": "Potrebujem pomoc",

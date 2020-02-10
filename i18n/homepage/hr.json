@@ -7,8 +7,15 @@
 	},
 	"tag-newcomer_task": "Zadatak za novopridošlice",
 	"tag-newcomer_task-description": "Izmjena predložena modulom za sugeriranje uređivanja na suradničkoj stranici novopridošlice",
+	"growthexperiments-homepage-claimmentee-already-mentor": "Već ste {{GENDER:$2|mentor|mentorica}} {{GENDER:$1|suradnika|suradnice}} $1",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Riješeno",
 	"growthexperiments-homepage-suggestededits-topics-more": "prikaži više",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Odaberite teme koje biste željeli uređivati",
-	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Pokušat ćemo Vam predložiti članke koji se podudaraju s {{GENDER:$1|Vašim}} interesima."
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Pokušat ćemo Vam predložiti članke koji se podudaraju s {{GENDER:$1|Vašim}} interesima.",
+	"growthexperiments-homepage-claimmentee-success": "Promijenili {{GENDER:$2|ste}} mentora {{GENDER:$1|suradnika|suradnice}} $4. {{GENDER:$3|Novi mentor|Nova mentorica}} је $5.",
+	"growthexperiments-claimmentee-confirm": "Da, zaista želim promijeniti mentora",
+	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$3|је}} {{GENDER:$2|Vaš novi mentor|Vaša nova mentorica}}",
+	"growthexperiments-notification-body-mentor-change": "Razlog: $1",
+	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Pozdravite}} {{GENDER:$2|svojeg novog mentora|svoju novu mentoricu}}!",
+	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Popis mentora ([[$1]]) ne postoji ili je pogrešno konfiguriran."
 }
