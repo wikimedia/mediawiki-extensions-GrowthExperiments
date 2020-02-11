@@ -229,5 +229,6 @@
 	"growthexperiments-notification-body-mentor-change": "Reason: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Say}} hi to {{GENDER:$3|your}} new {{GENDER:$2|mentor}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|You}} must be listed as a mentor on [[$2]] to be able to use Special:ClaimMentee",
-	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Mentors list ([[$1]]) does not exist or is misconfigured."
+	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Mentors list ([[$1]]) does not exist or is misconfigured.",
+	"growthexperiments-notification-learn-more": "Learn more about {{GENDER:$1|your}} new {{GENDER:$2|mentor}}"
 }

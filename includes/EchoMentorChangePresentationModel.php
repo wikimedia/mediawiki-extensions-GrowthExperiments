@@ -37,7 +37,10 @@ class EchoMentorChangePresentationModel extends EchoEventPresentationModel {
 	 */
 	public function getPrimaryLink() {
 		return [
-			'url' => $this->event->getTitle()->getLocalURL()
+			'url' => $this->event->getTitle()->getLocalURL(),
+			'label' => $this->msg( 'growthexperiments-notification-learn-more' )
+					->params( $this->getUser()->getName() )
+					->params( $this->event->getAgent()->getName() )
 		];
 	}
 
