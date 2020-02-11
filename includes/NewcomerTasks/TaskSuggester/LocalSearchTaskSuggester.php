@@ -3,7 +3,8 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use ApiRawMessage;
-use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
@@ -15,18 +16,13 @@ use StatusValue;
 
 class LocalSearchTaskSuggester extends SearchTaskSuggester {
 
-	/** @var TemplateProvider */
-	private $templateProvider;
-
 	/** @var SearchEngineFactory */
 	private $searchEngineFactory;
-
-	/** @var string[] URLs with further CirrusSearch debug data */
-	private $searchDebugUrls = [];
 
 	/**
 	 * @param SearchEngineFactory $searchEngineFactory
 	 * @param TemplateProvider $templateProvider
+	 * @param SearchStrategy $searchStrategy
 	 * @param TaskType[] $taskTypes
 	 * @param Topic[] $topics
 	 * @param LinkTarget[] $templateBlacklist
@@ -34,23 +30,21 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	public function __construct(
 		SearchEngineFactory $searchEngineFactory,
 		TemplateProvider $templateProvider,
+		SearchStrategy $searchStrategy,
 		array $taskTypes,
 		array $topics,
 		array $templateBlacklist
 	) {
-		parent::__construct( $templateProvider, $taskTypes, $topics, $templateBlacklist );
+		parent::__construct( $templateProvider, $searchStrategy, $taskTypes, $topics,
+			$templateBlacklist );
 		$this->searchEngineFactory = $searchEngineFactory;
-		$this->templateProvider = $templateProvider;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	protected function search(
-		string $searchTerm,
-		TaskType $taskType,
-		array $topics,
-		string $queryId,
+		SearchQuery $query,
 		int $limit,
 		int $offset,
 		bool $debug
@@ -63,13 +57,10 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 			SearchEngine::FT_QUERY_INDEP_PROFILE_TYPE,
 			'classic_noboostlinks'
 		);
-		if ( in_array( 'random', $searchEngine->getValidSorts(), true )
-			// FIXME quick fix: don't randomize if we use morelike, seems to conflict
-			&& !$topics
-		) {
-			$searchEngine->setSort( 'random' );
+		if ( $query->getSort() ) {
+			$searchEngine->setSort( $query->getSort() );
 		}
-		$matches = $searchEngine->searchText( $searchTerm );
+		$matches = $searchEngine->searchText( $query->getQueryString() );
 		if ( $matches instanceof StatusValue ) {
 			if ( !$matches->isOK() ) {
 				return $matches;
@@ -84,8 +75,8 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 			) );
 		}
 		if ( $debug ) {
-			$this->searchDebugUrls[$queryId] = SpecialPage::getTitleFor( 'Search' )->getFullURL( [
-				'search' => $searchTerm,
+			$params = [
+				'search' => $query->getQueryString(),
 				'fulltext' => 1,
 				'ns0' => 1,
 				'limit' => $limit,
@@ -93,14 +84,14 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 				'cirrusRescoreProfile' => 'classic_noboostlinks',
 				'cirrusDumpResult' => 1,
 				'cirrusExplain' => 'pretty',
-			], false, PROTO_CANONICAL );
+			];
+			if ( $query->getSort() ) {
+				$params['sort'] = $query->getSort();
+			}
+			$query->setDebugUrl( SpecialPage::getTitleFor( 'Search' )
+				->getFullURL( $params, false, PROTO_CANONICAL ) );
 		}
 		return $matches;
-	}
-
-	/** @inheritDoc */
-	protected function setDebugData( TaskSet $taskSet ) : void {
-		$taskSet->setDebugData( [ 'searchDebugUrls' => $this->searchDebugUrls ] );
 	}
 
 }

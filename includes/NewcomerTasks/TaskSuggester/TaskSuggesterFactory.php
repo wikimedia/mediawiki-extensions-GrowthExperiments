@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\Util;
 use GrowthExperiments\WikiConfigException;
@@ -22,11 +23,19 @@ class TaskSuggesterFactory implements LoggerAwareInterface {
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
 
+	/** @var SearchStrategy */
+	private $searchStrategy;
+
 	/**
 	 * @param ConfigurationLoader $configurationLoader
+	 * @param SearchStrategy $searchStrategy
 	 */
-	public function __construct( ConfigurationLoader $configurationLoader ) {
+	public function __construct(
+		ConfigurationLoader $configurationLoader,
+		SearchStrategy $searchStrategy
+	) {
 		$this->configurationLoader = $configurationLoader;
+		$this->searchStrategy = $searchStrategy;
 		$this->logger = new NullLogger();
 	}
 
@@ -58,6 +67,7 @@ class TaskSuggesterFactory implements LoggerAwareInterface {
 		}
 		$suggester = new RemoteSearchTaskSuggester(
 			$templateProvider,
+			$this->searchStrategy,
 			$requestFactory,
 			$titleFactory,
 			$apiUrl,
@@ -95,6 +105,7 @@ class TaskSuggesterFactory implements LoggerAwareInterface {
 		$suggester = new LocalSearchTaskSuggester(
 			$searchEngineFactory,
 			$templateProvider,
+			$this->searchStrategy,
 			$taskTypes,
 			$topics,
 			$templateBlacklist

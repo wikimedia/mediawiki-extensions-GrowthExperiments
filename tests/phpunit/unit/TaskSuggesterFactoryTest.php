@@ -6,6 +6,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
@@ -36,11 +37,12 @@ class TaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 	 */
 	public function testCreateRemote( $taskTypes, $topics, $templateBlacklist, $expectedError ) {
 		$configurationLoader = $this->getConfigurationLoader( $taskTypes, $topics, $templateBlacklist );
+		$searchStrategy = $this->getSearchStrategy();
 		$templateProvider = $this->getTemplateProvider();
 		$requestFactory = $this->getRequestFactory();
 		$titleFactory = $this->getTitleFactory();
 		$apiUrl = 'https://example.com';
-		$taskSuggesterFactory = new TaskSuggesterFactory( $configurationLoader );
+		$taskSuggesterFactory = new TaskSuggesterFactory( $configurationLoader, $searchStrategy );
 		$taskSuggester = $taskSuggesterFactory->createRemote( $templateProvider, $requestFactory,
 			$titleFactory, $apiUrl );
 		if ( $expectedError ) {
@@ -62,9 +64,10 @@ class TaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 	 */
 	public function testCreateLocal( $taskTypes, $topics, $templateBlacklist, $expectedError ) {
 		$configurationLoader = $this->getConfigurationLoader( $taskTypes, $topics, $templateBlacklist );
+		$searchStrategy = $this->getSearchStrategy();
 		$searchEngineFactory = $this->getSearchEngineFactory();
 		$templateProvider = $this->getTemplateProvider();
-		$taskSuggesterFactory = new TaskSuggesterFactory( $configurationLoader );
+		$taskSuggesterFactory = new TaskSuggesterFactory( $configurationLoader, $searchStrategy );
 		$taskSuggester = $taskSuggesterFactory->createLocal( $searchEngineFactory, $templateProvider );
 		if ( $expectedError ) {
 			$this->assertInstanceOf( ErrorForwardingTaskSuggester::class, $taskSuggester );
@@ -131,6 +134,13 @@ class TaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 		$configurationLoader->method( 'loadTopics' )->willReturn( $topics );
 		$configurationLoader->method( 'loadTemplateBlacklist' )->willReturn( $templateBlacklist );
 		return $configurationLoader;
+	}
+
+	/**
+	 * @return SearchStrategy|MockObject
+	 */
+	private function getSearchStrategy() {
+		return $this->createNoOpMock( SearchStrategy::class );
 	}
 
 	/**

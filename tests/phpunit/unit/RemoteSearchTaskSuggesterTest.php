@@ -6,6 +6,7 @@ use ApiRawMessage;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
@@ -29,6 +30,8 @@ use TitleValue;
 /**
  * @covers \GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester
  * @covers \GrowthExperiments\NewcomerTasks\TaskSuggester\SearchTaskSuggester
+ * @covers \GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery
+ * @covers \GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy
  * @covers \GrowthExperiments\Util::getApiUrl
  * @covers \GrowthExperiments\Util::getIteratorFromTraversable
  */
@@ -54,12 +57,13 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$templateProvider = $this->getMockTemplateProvider( $expectedTaskSet instanceof TaskSet );
 		$requestFactory = $this->getMockRequestFactory( $requests );
 		$titleFactory = $this->getMockTitleFactory();
+		$searchStrategy = new SearchStrategy();
 
 		$user = new UserIdentityValue( 1, 'Foo', 1 );
 		$taskTypes = $this->getTaskTypes( $taskTypeSpec );
 		$topics = $this->getTopics( $topicSpec );
-		$suggester = new RemoteSearchTaskSuggester( $templateProvider, $requestFactory, $titleFactory,
-			'https://example.com', $taskTypes, $topics, [] );
+		$suggester = new RemoteSearchTaskSuggester( $templateProvider, $searchStrategy, $requestFactory,
+			$titleFactory, 'https://example.com', $taskTypes, $topics, [] );
 
 		$taskSet = $suggester->suggest( $user, $taskFilter, $topicFilter, $limit );
 		if ( $expectedTaskSet instanceof StatusValue ) {

@@ -6,6 +6,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageLoader;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
@@ -63,7 +64,8 @@ return [
 		$config = $services->getConfigFactory()->makeConfig( 'GrowthExperiments' );
 		/** @var ConfigurationLoader $configLoader */
 		$configLoader = $services->getService( 'GrowthExperimentsConfigurationLoader' );
-		$taskSuggesterFactory = new TaskSuggesterFactory( $configLoader );
+		$searchStrategy = new SearchStrategy();
+		$taskSuggesterFactory = new TaskSuggesterFactory( $configLoader, $searchStrategy );
 		$taskSuggesterFactory->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 
 		$dbr = $services->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA );
