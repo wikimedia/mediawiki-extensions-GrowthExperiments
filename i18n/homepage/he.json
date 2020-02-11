@@ -4,7 +4,8 @@
 			"Steeve815",
 			"דגש חזק",
 			"Amire80",
-			"Ghsuvr"
+			"Ghsuvr",
+			"IKhitron"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|שלום}}, {{bidi:$1}}!",
@@ -226,7 +227,7 @@
 	"growthexperiments-homepage-claimmentee-invalid-username": "שם החניך שסופק אינו תקין",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|הוא החונך החדש|היא החונכת החדשה}} {{GENDER:$3|שלך}}",
 	"growthexperiments-notification-body-mentor-change": "סיבה: $1",
-	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$2|תגיד|תגידי}} שלום {{GENDER:$2|לחונך החדש|לחונכת החדשה}} {{GENDER:$3|שלך}}!",
+	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$2|אמור|אמרי}} שלום {{GENDER:$2|לחונך החדש|לחונכת החדשה}} {{GENDER:$3|שלך}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|אתה צריך להיות רשום בתור חונך|את צריכה להיות רשומה בתור חונכת}} בדף [[$2]] כדי להשתמש בדף Special:ClaimMentee",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "דף החונכים ([[$1]]) אינו קיים או שהוא מוגדר לא נכון."
 }

@@ -84,5 +84,5 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> {{PLURAL:$1|voce trovata|voci trovate}}",
 	"growthexperiments-homepage-suggestededits-error-description": "Per favore, riprova più tardi.",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|argomento|argomenti}}",
-	"growthexperiments-notification-header-mentor-change": "$1 è {{GENDER:$2|il tuo nuovo|la tua nuova}} mentore"
+	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$3|è}} {{GENDER:$2|il tuo nuovo|la tua nuova}} mentore"
 }

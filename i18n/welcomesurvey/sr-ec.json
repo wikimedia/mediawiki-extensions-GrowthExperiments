@@ -40,7 +40,7 @@
 	"welcomesurvey-question-edited-option-no-dunno-label": "Не, нисам знао/ла да могу уређивати Википедију",
 	"welcomesurvey-question-edited-option-no-other-label": "Не, из других разлога",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Не сећам се",
-	"welcomesurvey-question-email-label": "Имејл-адреса (необавезно)",
+	"welcomesurvey-question-email-label": "Имејл-адреса (пожељно)",
 	"welcomesurvey-question-email-placeholder": "Унесите имејл-адресу…",
 	"welcomesurvey-question-email-help": "Приметили смо да нисте унели имејл-адресу када сте отварали налог. <strong>Топло препоручујемо</strong> да то учините, јер је иста потребна за опоравак налога ако којим случајем заборавите лозинку. НАПОМЕНА: Софтвер неће открити вашу имејл-адресу када други корисници контактирају с вама."
 }
