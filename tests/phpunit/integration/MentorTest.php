@@ -45,7 +45,7 @@ class MentorTest extends MediaWikiTestCase {
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
 
 		$this->expectException( Exception::class );
-		$this->expectExceptionMessage( 'Invalid mentor' );
+		$this->expectExceptionMessage( 'no mentor available' );
 
 		Mentor::newFromMentee( $this->getTestUser()->getUser(), true );
 	}
@@ -173,5 +173,29 @@ class MentorTest extends MediaWikiTestCase {
 			'This experienced user knows you\'re new and can help you with editing.',
 			$mentor->getIntroText( $context )
 		);
+	}
+
+	/**
+	 * @covers \GrowthExperiments\Mentor::getMentors
+	 */
+	public function testGetMentorsNoInvalidUsers() {
+		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
+		$mentorUser = $this->getMutableTestUser()->getUser();
+		$secondMentor = $this->getMutableTestUser()->getUser();
+		$this->insertPage(
+			'MentorsList',
+			'[[User:' . $mentorUser->getName() . ']]
+			[[User:' . $secondMentor->getName() . ']]
+			[[User:This user does not exist]]'
+		);
+		$availableMentors = Mentor::getMentors();
+		$expected = [
+			$mentorUser->getTitleKey(),
+			$secondMentor->getTitleKey()
+		];
+		$this->assertArrayEquals( [
+			$mentorUser->getTitleKey(),
+			$secondMentor->getTitleKey(),
+		], $availableMentors );
 	}
 }
