@@ -4,7 +4,8 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use FauxSearchResultSet;
 use GrowthExperiments\NewcomerTasks\FauxSearchResultWithScore;
-use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
@@ -29,11 +30,9 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 	/** @var string Remote API URL including api.php */
 	private $apiUrl;
 
-	/** @var string[] URLs with further CirrusSearch debug data */
-	private $searchDebugUrls = [];
-
 	/**
 	 * @param TemplateProvider $templateProvider
+	 * @param SearchStrategy $searchStrategy
 	 * @param HttpRequestFactory $requestFactory
 	 * @param TitleFactory $titleFactory
 	 * @param string $apiUrl Remote API URL including api.php
@@ -43,6 +42,7 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 	 */
 	public function __construct(
 		TemplateProvider $templateProvider,
+		SearchStrategy $searchStrategy,
 		HttpRequestFactory $requestFactory,
 		TitleFactory $titleFactory,
 		$apiUrl,
@@ -50,7 +50,8 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 		array $topics,
 		array $templateBlacklist
 	) {
-		parent::__construct( $templateProvider, $taskTypes, $topics, $templateBlacklist );
+		parent::__construct( $templateProvider, $searchStrategy, $taskTypes, $topics,
+			$templateBlacklist );
 		$this->requestFactory = $requestFactory;
 		$this->titleFactory = $titleFactory;
 		$this->apiUrl = $apiUrl;
@@ -58,10 +59,7 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 
 	/** @inheritDoc */
 	protected function search(
-		string $searchTerm,
-		TaskType $taskType,
-		array $topics,
-		string $queryId,
+		SearchQuery $query,
 		int $limit,
 		int $offset,
 		bool $debug
@@ -71,7 +69,7 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 		$params = [
 			'action' => 'query',
 			'list' => 'search',
-			'srsearch' => $searchTerm,
+			'srsearch' => $query->getQueryString(),
 			'srnamespace' => 0,
 			'srlimit' => $limit,
 			'srinfo' => 'totalhits',
@@ -81,8 +79,8 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 			'errorlang' => 'en',
 		];
 		// FIXME quick fix: don't randomize if we use morelike, seems to conflict
-		if ( !$topics ) {
-			$params['srsort'] = 'random';
+		if ( $query->getSort() ) {
+			$params['srsort'] = $query->getSort();
 		}
 		$status = Util::getApiUrl( $this->requestFactory, $this->apiUrl, $params );
 		if ( !$status->isOK() ) {
@@ -100,18 +98,13 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 
 		if ( $debug ) {
 			// Add Cirrus debug dump URLs which show the details of how the scores were calculated.
-			$this->searchDebugUrls[$queryId] = $this->apiUrl . '?' . wfArrayToCgi( $params, [
+			$query->setDebugUrl( $this->apiUrl . '?' . wfArrayToCgi( $params, [
 				'cirrusDumpResult' => 1,
 				'cirrusExplain' => 'pretty',
-			] );
+			] ) );
 		}
 
 		return $resultSet;
-	}
-
-	/** @inheritDoc */
-	protected function setDebugData( TaskSet $taskSet ) : void {
-		$taskSet->setDebugData( [ 'searchDebugUrls' => $this->searchDebugUrls ] );
 	}
 
 }
