@@ -35,9 +35,6 @@ class PageLoader {
 	/** @var BagOStuff */
 	private $cache;
 
-	/** @var LinkTarget Title to load. Can be an interwiki title. */
-	private $title;
-
 	/** @var int Cache expiry (0 for unlimited). */
 	private $cacheTtl = 0;
 
@@ -45,18 +42,15 @@ class PageLoader {
 	 * @param HttpRequestFactory $requestFactory
 	 * @param RevisionLookup $revisionLookup
 	 * @param TitleFactory $titleFactory
-	 * @param LinkTarget $title Title to load. Can be an interwiki title.
 	 */
 	public function __construct(
 		HttpRequestFactory $requestFactory,
 		RevisionLookup $revisionLookup,
-		TitleFactory $titleFactory,
-		LinkTarget $title
+		TitleFactory $titleFactory
 	) {
 		$this->requestFactory = $requestFactory;
 		$this->revisionLookup = $revisionLookup;
 		$this->titleFactory = $titleFactory;
-		$this->title = $title;
 		$this->cache = new HashBagOStuff();
 	}
 
@@ -72,16 +66,17 @@ class PageLoader {
 
 	/**
 	 * Load the configured page, with caching.
+	 * @param LinkTarget $configPage The page to load from
 	 * @return array|StatusValue The content of the configuration page (as JSON
 	 *   data in PHP-native format), or a StatusValue on error.
 	 */
-	public function load() {
+	public function load( LinkTarget $configPage ) {
 		$cacheKey = $this->cache->makeKey( 'GrowthExperiments', 'NewcomerTasks',
-			'config', $this->title->getNamespace(), $this->title->getDBkey() );
+			'config', $configPage->getNamespace(), $configPage->getDBkey() );
 		$result = $this->cache->get( $cacheKey );
 
 		if ( $result === false ) {
-			$status = $this->fetchConfig( $this->title );
+			$status = $this->fetchConfig( $configPage );
 			if ( $status->isOK() ) {
 				$result = $status->getValue();
 				$cacheFlags = 0;

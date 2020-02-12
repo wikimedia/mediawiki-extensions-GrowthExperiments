@@ -56,12 +56,12 @@ class PageLoaderTest extends MediaWikiUnitTestCase {
 		$revisionLookup = $this->getMockRevisionLookup( $titleValue, $lookupResult,
 			$revisionLookupExpectedInvokeCount );
 		$titleFactory = $this->getMockTitleFactory( $fullUrl, $localUrl, $isExternal );
-		$loader = new PageLoader( $requestFactory, $revisionLookup, $titleFactory, $titleValue );
-		$data = $loader->load();
+		$loader = new PageLoader( $requestFactory, $revisionLookup, $titleFactory );
+		$data = $loader->load( $titleValue );
 		$this->assertResultSame( $expectedData, $data );
 
 		// call it again to check via the exactly(1) assertions that caching works
-		$data = $loader->load();
+		$data = $loader->load( $titleValue );
 		$this->assertResultSame( $expectedData, $data );
 	}
 
@@ -144,11 +144,10 @@ class PageLoaderTest extends MediaWikiUnitTestCase {
 		$loader = new PageLoader(
 			$this->getMockRequestFactory( '', '', 0 ),
 			$this->getMockRevisionLookup( $title, false, 0 ),
-			$this->getMockTitleFactory( '', '', false ),
-			$title
+			$this->getMockTitleFactory( '', '', false )
 		);
 		$loader->setCache( $cache, 0 );
-		$this->assertSame( [], $loader->load() );
+		$this->assertSame( [], $loader->load( $title ) );
 	}
 
 	/**

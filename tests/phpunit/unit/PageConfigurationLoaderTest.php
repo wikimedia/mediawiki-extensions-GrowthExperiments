@@ -14,6 +14,7 @@ use Message;
 use MessageLocalizer;
 use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
+use TitleValue;
 
 /**
  * @coversDefaultClass  \GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader
@@ -114,8 +115,10 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 */
 	public function testLoadTopics_noLoader() {
 		$messageLocalizer = $this->getMockMessageLocalizer();
-		$taskPageLoader = $this->getMockPageLoader( [] );
-		$configurationLoader = new PageConfigurationLoader( $messageLocalizer, $taskPageLoader, null );
+		$taskTitle = new TitleValue( NS_MAIN, 'TaskConfiguration' );
+		$pageLoader = $this->getMockPageLoader( [ '0:TaskConfiguration' => [] ] );
+		$configurationLoader = new PageConfigurationLoader( $messageLocalizer, $pageLoader,
+			$taskTitle, null );
 		$topics = $configurationLoader->loadTopics();
 		$this->assertSame( [], $topics );
 	}
@@ -215,10 +218,15 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	protected function getConfigurationLoader(
 		$taskConfig, $topicConfig, array $customMessages = []
 	) {
+		$taskConfigTitle = new TitleValue( NS_MAIN, 'TaskConfigPage' );
+		$topicConfigTitle = new TitleValue( NS_MAIN, 'TopicConfigPage' );
 		$messageLocalizer = $this->getMockMessageLocalizer( $customMessages );
-		$taskPageLoader = $this->getMockPageLoader( $taskConfig );
-		$topicPageLoader = $this->getMockPageLoader( $topicConfig );
-		return new PageConfigurationLoader( $messageLocalizer, $taskPageLoader, $topicPageLoader );
+		$pageLoader = $this->getMockPageLoader( [
+			'0:TaskConfigPage' => $taskConfig,
+			'0:TopicConfigPage' => $topicConfig,
+		] );
+		return new PageConfigurationLoader( $messageLocalizer, $pageLoader,
+			$taskConfigTitle, $topicConfigTitle );
 	}
 
 	/**
@@ -240,17 +248,22 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param array|StatusValue $result
+	 * @param array $map Map of title => JSON array or StatusValue, where title is in
+	 *   stringified TitleValue format.
 	 * @return PageLoader|MockObject
 	 */
-	protected function getMockPageLoader( $result ) {
+	protected function getMockPageLoader( $map ) {
 		$loader = $this->getMockBuilder( PageLoader::class )
 			->disableOriginalConstructor()
 			->setMethods( [ 'load' ] )
 			->getMock();
 		$loader->expects( $this->atMost( 1 ) )
 			->method( 'load' )
-			->willReturn( $result );
+			->willReturnCallback( function ( LinkTarget $configPage ) use ( $map ) {
+				$title = $configPage->getNamespace() . ':' . $configPage->getDBkey();
+				$this->assertArrayHasKey( $title, $map );
+				return $map[$title];
+			} );
 		return $loader;
 	}
 

@@ -33,29 +33,20 @@ return [
 			) ) );
 		}
 
-		$pageLoaders = [];
-		foreach ( [ 'task' => $taskConfigTitle, 'topic' => $topicConfigTitle ] as $type => $title ) {
-			if ( !$title ) {
-				$pageLoaders[$type] = null;
-				continue;
-			}
-
-			$pageLoader = new PageLoader(
-				$services->getHttpRequestFactory(),
-				$services->getRevisionLookup(),
-				$services->getTitleFactory(),
-				$title
-			);
-			// Cache config for a minute, as a trade-off between avoiding the performance hit of
-			// constant querying and making it not too hard to test changes to the config page.
-			$pageLoader->setCache( $cache, 60 );
-			$pageLoaders[$type] = $pageLoader;
-		}
+		$pageLoader = new PageLoader(
+			$services->getHttpRequestFactory(),
+			$services->getRevisionLookup(),
+			$services->getTitleFactory()
+		);
+		// Cache config for a minute, as a trade-off between avoiding the performance hit of
+		// constant querying and making it not too hard to test changes to the config page.
+		$pageLoader->setCache( $cache, 60 );
 
 		$configurationLoader = new PageConfigurationLoader(
 			RequestContext::getMain(),
-			$pageLoaders['task'],
-			$pageLoaders['topic']
+			$pageLoader,
+			$taskConfigTitle,
+			$topicConfigTitle
 		);
 		return $configurationLoader;
 	},

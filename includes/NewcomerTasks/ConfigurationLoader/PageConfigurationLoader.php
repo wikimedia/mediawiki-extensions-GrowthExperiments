@@ -25,10 +25,13 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	private $messageLocalizer;
 
 	/** @var PageLoader */
-	private $taskPageLoader;
+	private $pageLoader;
 
-	/** @var PageLoader|null */
-	private $topicPageLoader;
+	/** @var LinkTarget */
+	private $taskConfigurationPage;
+
+	/** @var LinkTarget|null */
+	private $topicConfigurationPage;
 
 	/** @var TaskType[]|StatusValue|null Cached task type set (or an error). */
 	private $taskTypes;
@@ -41,18 +44,22 @@ class PageConfigurationLoader implements ConfigurationLoader {
 
 	/**
 	 * @param MessageLocalizer $messageLocalizer
-	 * @param PageLoader $taskPageLoader Loader for the task configuration page.
-	 * @param PageLoader|null $topicPageLoader Loader for the topic configuration page.
-	 *   Can be omitted, in which case topic matching will be disabled.
+	 * @param PageLoader $pageLoader
+	 * @param LinkTarget $taskConfigurationPage Wiki page to load task configuration from
+	 *   (local or interwiki).
+	 * @param LinkTarget|null $topicConfigurationPage Wiki page to load task configuration from
+	 *   (local or interwiki). Can be omitted, in which case topic matching will be disabled.
 	 */
 	public function __construct(
 		MessageLocalizer $messageLocalizer,
-		PageLoader $taskPageLoader,
-		?PageLoader $topicPageLoader
+		PageLoader $pageLoader,
+		LinkTarget $taskConfigurationPage,
+		?LinkTarget $topicConfigurationPage
 	) {
 		$this->messageLocalizer = $messageLocalizer;
-		$this->taskPageLoader = $taskPageLoader;
-		$this->topicPageLoader = $topicPageLoader;
+		$this->pageLoader = $pageLoader;
+		$this->taskConfigurationPage = $taskConfigurationPage;
+		$this->topicConfigurationPage = $topicConfigurationPage;
 	}
 
 	/** @inheritDoc */
@@ -66,7 +73,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 			return $this->taskTypes;
 		}
 
-		$config = $this->taskPageLoader->load();
+		$config = $this->pageLoader->load( $this->taskConfigurationPage );
 		if ( $config instanceof StatusValue ) {
 			$taskTypes = $config;
 		} else {
@@ -79,13 +86,13 @@ class PageConfigurationLoader implements ConfigurationLoader {
 
 	/** @inheritDoc */
 	public function loadTopics() {
-		if ( !$this->topicPageLoader ) {
+		if ( !$this->topicConfigurationPage ) {
 			return [];
 		} elseif ( $this->topics !== null ) {
 			return $this->topics;
 		}
 
-		$config = $this->topicPageLoader->load();
+		$config = $this->pageLoader->load( $this->topicConfigurationPage );
 		if ( $config instanceof StatusValue ) {
 			$topics = $config;
 		} else {
@@ -102,7 +109,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 			return $this->templateBlacklist;
 		}
 
-		$config = $this->taskPageLoader->load();
+		$config = $this->pageLoader->load( $this->taskConfigurationPage );
 		if ( $config instanceof StatusValue ) {
 			$templateBlacklist = $config;
 		} else {
