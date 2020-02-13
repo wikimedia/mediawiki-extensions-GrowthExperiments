@@ -228,5 +228,6 @@
 	"growthexperiments-notification-body-mentor-change": "原因：$1",
 	"growthexperiments-notification-say-hi-mentor-change": "對{{GENDER:$3|您}}的新{{GENDER:$2|學生}}{{GENDER:$3|打聲}}招呼！",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|您}}必須在[[$2]]裡有被列為導師才能更使用 Special:ClaimMentee",
-	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "導師清單（[[$1]]）不存在或是設置錯誤。"
+	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "導師清單（[[$1]]）不存在或是設置錯誤。",
+	"growthexperiments-notification-learn-more": "了解更多關於{{GENDER:$1|您的}}新{{GENDER:$2|導師}}"
 }

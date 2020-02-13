@@ -126,7 +126,7 @@
 	"growthexperiments-specialimpact-showing-for-other-user": "Mostrando dados de impacto por $1",
 	"growthexperiments-specialimpact-invalid-username": "Nome de usuário ausente ou inválido.",
 	"growthexperiments-homepage-claimmentee-no-user": "Mentor não existe",
-	"growthexperiments-homepage-claimmentee-already-mentor": "Você já é mentor $1",
+	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Você}} já é {{GENDER:$2|mentor|mentora} {{GENDER:$1|$1}}",
 	"growthexperiments-homepage-enable-preference": "Para ativar a página inicial do recém-chegado, acesse as configurações da \"Página inicial do recém-chegado\" nas [[Special:Preferences#mw-prefsection-personal-homepage|Preferências]].",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|Você}} ainda não fiz contribuições.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "Visite {{GENDER:$1|sua}} página inicial para começar a editar!",
@@ -214,7 +214,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Esta página permite que {{GENDER:$1|você}} para mudar o mentor de aprendiz para {{GENDER:$1|você mesmo}}. É recomendável usar esse recurso para usuários conhecer {{GENDER:$1|você}} ou para {{GENDER:$1|você }} ser mentor usuário de um curso.",
 	"growthexperiments-homepage-claimmentee-mentee": "Nome de usuário de mentor",
 	"growthexperiments-homepage-claimmentee-reason": "Razão para reivindicar este aprendiz",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|Você mudou}} o mentor {{GENDER:$1|$1}} para $2",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|Você mudou}} o {{GENDER:$1|$4's}} mentor para {{GENDER:$3|$5}}",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Mentor {{GENDER:$1|}} já foi alterado. Estamos {{GENDER:$2|você}} tem certeza que {{GENDER:$2|você}} quer mudar isso de novo?",
 	"growthexperiments-claimmentee-confirm": "Sim, eu realmente quero mudar o mentor",
 	"growthexperiments-log-name": "Registros de GrowthExperiments",
@@ -222,9 +222,10 @@
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|reivindicou}} $3 como seu aprendiz ({{GENDER:$4|mentor|mentora}} $4 anterior )",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|reivindicou}} $3 como seu aprendiz (nenhum mentor anterior)",
 	"growthexperiments-homepage-claimmentee-invalid-username": "O nome de usuário do aprendiz não é válido",
-	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|é}} {{GENDER:$2|seu novo mentor|sua nova mentora}}",
+	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|é}} {{GENDER:$3|seu novo mentor|sua nova mentora}}",
 	"growthexperiments-notification-body-mentor-change": "Motivo: $1",
-	"growthexperiments-notification-say-hi-mentor-change": "Diga oi para {{GENDER:$2|seu}} novo mentor!",
+	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Diga}} oi para {{GENDER:$3|seu}} novo(a) {{GENDER:$2|mentor|mentora}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|Você}} deve ser listado como um mentor em [[$2]] para poder usar Special:ClaimMentee",
-	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Lista de mentores ([[$1]]) não existe ou está configurado incorretamente."
+	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Lista de mentores ([[$1]]) não existe ou está configurado incorretamente.",
+	"growthexperiments-notification-learn-more": "Aprender mais sobre {{GENDER:$1|seu|sua}} novo(a) {{GENDER:$2|mentor|mentora}}"
 }
