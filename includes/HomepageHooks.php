@@ -4,7 +4,8 @@ namespace GrowthExperiments;
 
 use ConfigException;
 use DomainException;
-use EchoEvent;
+use EchoAttributeManager;
+use EchoUserLocator;
 use Exception;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageModules\Help;
@@ -797,7 +798,13 @@ class HomepageHooks {
 			'category' => 'system',
 			'group' => 'positive',
 			'section' => 'alert',
-			'presentation-model' => 'GrowthExperiments\\EchoMentorChangePresentationModel',
+			'presentation-model' => EchoMentorChangePresentationModel::class,
+			EchoAttributeManager::ATTR_LOCATORS => [
+				[
+					EchoUserLocator::class . '::locateFromEventExtra',
+					[ 'mentee' ]
+				],
+			],
 		];
 		$icons['growthexperiments-menteeclaimed'] = [
 			'path' => [
@@ -805,23 +812,6 @@ class HomepageHooks {
 				'rtl' => 'GrowthExperiments/images/mentor-rtl.svg'
 			]
 		];
-	}
-
-	/**
-	 * Add user to be notified on echo event
-	 * @param EchoEvent $event The event.
-	 * @param User[] &$users The user list to add to.
-	 */
-	public static function onEchoGetDefaultNotifiedUsers( $event, &$users ) {
-		if ( $event->getType() === 'mentor-changed' ) {
-				$extra = $event->getExtra();
-				if ( !$extra || !isset( $extra['mentee'] ) ) {
-					return;
-				}
-				$recipientId = $extra['mentee'];
-				$recipient = User::newFromId( $recipientId );
-				$users[$recipientId] = $recipient;
-		}
 	}
 
 }

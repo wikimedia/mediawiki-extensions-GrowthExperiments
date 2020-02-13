@@ -129,9 +129,6 @@
 		],
 		"BeforeCreateEchoEvent": [
 			"GrowthExperiments\\HomepageHooks::onBeforeCreateEchoEvent"
-		],
-		"EchoGetDefaultNotifiedUsers": [
-			"GrowthExperiments\\HomepageHooks::onEchoGetDefaultNotifiedUsers"
 		]
 	},
 	"ResourceFileModulePaths": {
