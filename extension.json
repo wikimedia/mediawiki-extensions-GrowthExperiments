@@ -838,8 +838,16 @@
 			"description": "Title of a MediaWiki page which contains suggested edits configuration. If the title has an interwiki prefix, then its content will be loaded remotely via an HTTP request. Should have JSON content type and contain a map of task type -> task configuration where task configuration consists of the following fields: group - 'easy', 'medium' or 'hard'; templates - an array of template names (without namespace) for the maintenance templates used to tag this task type (redirects do not need to be declared manually). The system messages growthexperiments-homepage-suggestededits-tasktype-name-<tasktype> and growthexperiments-homepage-suggestededits-tasktype-description-<tasktype> will be used for task name and description; both must exist.",
 			"value": "MediaWiki:NewcomerTasks.json"
 		},
+		"GENewcomerTasksTopicType": {
+			"description": "How the topic of an article is identified. One of: morelike - use CirrusSearch morelikethis search with a predefined set of representetative articles for each topic; ores - use ORES articletopic predictions.",
+			"value": "morelike"
+		},
+		"GENewcomerTasksOresTopicConfigTitle": {
+			"description": "Title of a MediaWiki page which contains ORES topic configuration for suggested edits. If the title has an interwiki prefix, then its content will be loaded remotely via an HTTP request. Should have JSON content type and contain an object like { topics: <topics>, groups: <groups> }. <topics> is a map of topic id -> topic configuration, with each topic an object with the properties 'group' (for grouping topics visually; each section name corresponds with a growthexperiments-homepage-suggestededits-topic-group-name-<id> system message which must exist) and 'oresTopics' (list of ORES topic IDs to use for this topic, ie. the values to use with the articletopic: search keyword). The system message growthexperiments-homepage-suggestededits-topic-name-<id>  will be used for human-readable topic name and must exist. <groups> is a list of the group ids used in the topics section, to define the order of groups.",
+			"value": "MediaWiki:NewcomerTopicsOres.json"
+		},
 		"GENewcomerTasksTopicConfigTitle": {
-			"description": "Title of a MediaWiki page which contains topic configuration for suggested edits. If the title has an interwiki prefix, then its content will be loaded remotely via an HTTP request. Should have JSON content type and contain a map of topic id -> topic configuration, which is an object with a 'titles' property (list of mainspace page names of pages which are considered representative of the topic, to be used for text similarity comparision). The system message growthexperiments-homepage-suggestededits-topic-name-<id>  will be used for human-readable topic name and must exist.",
+			"description": "Title of a MediaWiki page which contains morelike topic configuration for suggested edits. If the title has an interwiki prefix, then its content will be loaded remotely via an HTTP request. Should have JSON content type and contain a map of topic id -> topic configuration, which is an object with the properties 'titles' (list of mainspace page names of pages which are considered representative of the topic, to be used for text similarity comparision) and 'label' (human-readable name).",
 			"value": "MediaWiki:NewcomerTopics.json"
 		},
 		"GENewcomerTasksRemoteApiUrl": {

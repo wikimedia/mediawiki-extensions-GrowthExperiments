@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy;
 
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
+use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Linker\LinkTarget;
 use Wikimedia\Assert\Assert;
@@ -33,7 +34,12 @@ class SearchStrategy {
 		foreach ( $taskTypes as $taskType ) {
 			foreach ( $topics as $topic ) {
 				$typeTerm = $this->getTemplateTerm( $taskType->getTemplates() );
-				$topicTerm = $this->getMorelikeBasedTopicTerm( $topic ? [ $topic ] : [] );
+				$topicTerm = null;
+				if ( $topic instanceof OresBasedTopic ) {
+					$topicTerm = $this->getOresBasedTopicTerm( [ $topic ] );
+				} elseif ( $topic instanceof MorelikeBasedTopic ) {
+					$topicTerm = $this->getMorelikeBasedTopicTerm( [ $topic ] );
+				}
 				$deletionTerm = $templateBlacklist ?
 					'-' . $this->getTemplateTerm( $templateBlacklist ) :
 					null;
@@ -57,7 +63,8 @@ class SearchStrategy {
 	 */
 	protected function validateParams( array $taskTypes, array $topics ) {
 		Assert::parameterElementType( TemplateBasedTaskType::class, $taskTypes, '$taskTypes' );
-		Assert::parameterElementType( MorelikeBasedTopic::class, $topics, '$topics' );
+		Assert::parameterElementType( OresBasedTopic::class . '|' . MorelikeBasedTopic::class,
+			$topics, '$topics' );
 	}
 
 	/**
@@ -69,15 +76,23 @@ class SearchStrategy {
 	}
 
 	/**
+	 * @param OresBasedTopic[] $topics
+	 * @return string
+	 */
+	protected function getOresBasedTopicTerm( array $topics ) {
+		return 'articletopic:' . implode( '|', array_reduce( $topics,
+			function ( array $carry, OresBasedTopic $topic ) {
+				return array_merge( $carry, $topic->getOresTopics() );
+			}, [] ) );
+	}
+
+	/**
 	 * @param MorelikeBasedTopic[] $topics
-	 * @return string|null
+	 * @return string
 	 * @see https://www.mediawiki.org/wiki/Help:CirrusSearch#Morelike
 	 * @see https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html
 	 */
 	protected function getMorelikeBasedTopicTerm( array $topics ) {
-		if ( !$topics ) {
-			return null;
-		}
 		return 'morelikethis:' . $this->escapeSearchTitleList(
 			array_reduce( $topics, function ( array $carry, MorelikeBasedTopic $topic ) {
 				return array_merge( $carry, $topic->getReferencePages() );
