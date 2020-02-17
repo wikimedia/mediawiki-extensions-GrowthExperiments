@@ -41,7 +41,7 @@
 	"growthexperiments-homepage-startediting-subheader-edit-typo": "쉬운 작업 추천을 통해 작은 문제부터 고쳐 나가 봅시다!",
 	"growthexperiments-homepage-startediting-subheader-add-image": "사진을 추가하기 전에, 좀 더 쉬운 편집을 시도해 봄으로써 편집 방법을 배워 보세요.",
 	"growthexperiments-homepage-startediting-subheader-new-page": "새 문서를 만들기 전에, 좀 더 쉬운 편집을 시도해 봄으로써 편집 방법을 배워 보세요.",
-	"growthexperiments-homepage-startediting-subheader-other": "위키백과 문서의 작은 문제를 고침으로써 지식을 더하는 데 기여해 주세요.",
+	"growthexperiments-homepage-startediting-subheader-other": "위키백과 문서를 손쉽게 고치고 세상의 지식을 더하는 데 기여해 주세요.",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "편집 제안 보기",
 	"growthexperiments-homepage-startediting-button": "편집 제안 보기",
 	"growthexperiments-homepage-startediting-dialog-header": "편집 추천",
@@ -61,7 +61,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "제안 가져오기",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "완료",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "<strong>쉬운</strong> 편집 먼저 해보기",
-	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "{{SITENAME}} 을(를) 개선하기 위한 여러 방법이 있습니다. 다른 사용자가 이런 문서들에 도움을 요청했습니다.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "{{SITENAME}} 개선을 돕는 여러 방법이 있습니다. 다른 사용자가 이런 문서들에 도움을 요청했습니다.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "쉬움",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "중간",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "어려움",
@@ -131,7 +131,7 @@
 	"growthexperiments-specialimpact-showing-for-other-user": "$1 사용자의 영향력 데이터를 보고 있습니다",
 	"growthexperiments-specialimpact-invalid-username": "존재하지 않거나 유효하지 않은 사용자 이름입니다.",
 	"growthexperiments-homepage-claimmentee-no-user": "멘티가 존재하지 않습니다",
-	"growthexperiments-homepage-claimmentee-already-mentor": "이미 $1 님의 멘토입니다",
+	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|당신은}} 이미 {{GENDER:$1|$1}}님의 멘토입니다",
 	"growthexperiments-homepage-enable-preference": "새 사용자 홈페이지를 활성화하려면, [[Special:Preferences#mw-prefsection-personal-homepage|환경 설정]]의 \"새 사용자 홈페이지\" 설정을 확인하십시오.",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|}}아직 기여가 없습니다.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "{{GENDER:$1|홈페이지}}에 방문해서 편집을 시작하기 위한 도움을 받아 보세요!",
@@ -219,5 +219,6 @@
 	"growthexperiments-homepage-claimmentee-title": "멘티 데려오기",
 	"growthexperiments-homepage-claimmentee-pretext": "멘티의 멘토를 {{GENDER:$1|이 명령을 시행하는 사용자}}로 설정할 수 있습니다. 자신이 아는 사용자, 또는 행사 등에서 직접 멘토하는 사용자에게 사용할 것을 권합니다.",
 	"growthexperiments-homepage-claimmentee-mentee": "멘티의 사용자 이름",
-	"growthexperiments-homepage-claimmentee-reason": "멘티를 데려오는 이유"
+	"growthexperiments-homepage-claimmentee-reason": "멘티를 데려오는 이유",
+	"growthexperiments-notification-learn-more": "{{GENDER:$1|내}} 새 {{GENDER:$2|멘토}}에 관해 더 알아보기"
 }

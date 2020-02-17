@@ -229,5 +229,6 @@
 	"growthexperiments-notification-body-mentor-change": "סיבה: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$2|אמור|אמרי}} שלום {{GENDER:$2|לחונך החדש|לחונכת החדשה}} {{GENDER:$3|שלך}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|אתה צריך להיות רשום בתור חונך|את צריכה להיות רשומה בתור חונכת}} בדף [[$2]] כדי להשתמש בדף Special:ClaimMentee",
-	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "דף החונכים ([[$1]]) אינו קיים או שהוא מוגדר לא נכון."
+	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "דף החונכים ([[$1]]) אינו קיים או שהוא מוגדר לא נכון.",
+	"growthexperiments-notification-learn-more": "מידע נוסף על {{GENDER:$2|החונך|החונכת}} {{GENDER:$1|שלך}}"
 }
