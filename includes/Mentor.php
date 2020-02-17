@@ -5,11 +5,13 @@ namespace GrowthExperiments;
 use ConfigException;
 use DeferredUpdates;
 use IContextSource;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MWException;
 use ParserOptions;
 use Title;
 use User;
+use UserArray;
 use WikiPage;
 
 class Mentor {
@@ -61,6 +63,7 @@ class Mentor {
 	 * @return string[] Mentors that can be assigned
 	 */
 	public static function getMentors() {
+		$logger = LoggerFactory::getInstance( 'GrowthExperiments' );
 		$config = MediaWikiServices::getInstance()->getMainConfig();
 		$mentorsPageName = $config->get( 'GEHomepageMentorsList' );
 		$title = Title::newFromText( $mentorsPageName );
@@ -70,9 +73,29 @@ class Mentor {
 		$page = WikiPage::factory( $title );
 		$links = $page->getParserOutput( ParserOptions::newCanonical() )->getLinks();
 		if ( !isset( $links[ NS_USER ] ) ) {
+			$logger->info( __METHOD__ . ' found zero mentors, no links at {mentorsList}', [
+				'mentorsList' => $mentorsPageName
+			] );
 			return [];
 		}
-		return array_keys( $links[ NS_USER ] );
+
+		$mentorsRaw = array_keys( $links[ NS_USER ] );
+		for ( $i = 0; $i < count( $mentorsRaw ); $i++ ) {
+			$canonical = User::getCanonicalName( $mentorsRaw[$i] );
+			if ( $canonical === false ) {
+				continue;
+			}
+			$mentorsRaw[$i] = $canonical;
+		}
+		$userArr = UserArray::newFromNames( $mentorsRaw );
+		$mentors = [];
+		foreach ( $userArr as $user ) {
+			if ( $user->getId() ) {
+				$mentors[] = $user->getTitleKey();
+			}
+		}
+
+		return $mentors;
 	}
 
 	/**
@@ -114,9 +137,6 @@ class Mentor {
 
 		$selectedMentorName = $possibleMentors[ rand( 0, count( $possibleMentors ) - 1 ) ];
 		$selectedMentor = User::newFromName( $selectedMentorName );
-		if ( !$selectedMentor || !$selectedMentor->getId() ) {
-			throw new WikiConfigException( 'Invalid mentor: ' . $selectedMentorName );
-		}
 		return $selectedMentor;
 	}
 
