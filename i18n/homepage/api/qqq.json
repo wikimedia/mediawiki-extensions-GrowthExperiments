@@ -8,5 +8,9 @@
 	"apihelp-homepagequestionstore-param-questionformat": "{{doc-apihelp-param|homepagequestionstore|questionformat}}",
 	"apihelp-homepagequestionstore-param-storage": "{{doc-apihelp-param|homepagequestionstore|storage}}",
 	"apihelp-homepagequestionstore-param-userid": "{{doc-apihelp-param|homepagequestionstore|userid}}",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Message to show in API response if no question are found for user."
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Message to show in API response if no question are found for user.",
+	"apihelp-growthsetmentor-summary": "{{doc-apihelp-summary|growthsetmentor}}",
+	"apihelp-growthsetmentor-param-mentee": "{{doc-apihelp-param|growthsetmentor|mentee}}",
+	"apihelp-growthsetmentor-param-mentor": "{{doc-apihelp-param|growthsetmentor|mentor}}",
+	"apihelp-growthsetmentor-param-reason": "{{doc-apihelp-param|growthsetmentor|reason}}"
 }
