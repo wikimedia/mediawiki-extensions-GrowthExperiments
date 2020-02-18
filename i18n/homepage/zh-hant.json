@@ -223,11 +223,15 @@
 	"growthexperiments-log-header": "這是在 GrowthExperiments 擴充所做出操作的日誌。",
 	"logentry-growthexperiments-claimmentee": "$1{{GENDER:$2|已帶領}}$3作為他們的學生（先前的{{GENDER:$4|導師}}$4）",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1{{GENDER:$2|已帶領}}$3作為他們的學生（先前沒有導師）",
+	"logentry-growthexperiments-setmentor": "$1{{GENDER:$2|已設定}}$5作為$3導師（先前的{{GENDER:$4|導師}}$4）",
+	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1{{GENDER:$2|已設定}}$5作為$3導師（沒有之前的導師）",
 	"growthexperiments-homepage-claimmentee-invalid-username": "提供的學生使用者名稱無效",
 	"growthexperiments-notification-header-mentor-change": "$1{{GENDER:$2|是}}{{GENDER:$3|您的}}新學生",
 	"growthexperiments-notification-body-mentor-change": "原因：$1",
 	"growthexperiments-notification-say-hi-mentor-change": "對{{GENDER:$3|您}}的新{{GENDER:$2|學生}}{{GENDER:$3|打聲}}招呼！",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|您}}必須在[[$2]]裡有被列為導師才能更使用 Special:ClaimMentee",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "導師清單（[[$1]]）不存在或是設置錯誤。",
-	"growthexperiments-notification-learn-more": "了解更多關於{{GENDER:$1|您的}}新{{GENDER:$2|導師}}"
+	"growthexperiments-notification-learn-more": "了解更多關於{{GENDER:$1|您的}}新{{GENDER:$2|導師}}",
+	"right-setmentor": "設定使用者的導師",
+	"action-setmentor": "設定使用者的導師"
 }

@@ -126,7 +126,7 @@
 	"growthexperiments-specialimpact-showing-for-other-user": "Mostrando dados de impacto por $1",
 	"growthexperiments-specialimpact-invalid-username": "Nome de usuário ausente ou inválido.",
 	"growthexperiments-homepage-claimmentee-no-user": "Mentor não existe",
-	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Você}} já é {{GENDER:$2|mentor|mentora} {{GENDER:$1|$1}}",
+	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Você}} já é {{GENDER:$2|mentor|mentora}} {{GENDER:$1|$1}}",
 	"growthexperiments-homepage-enable-preference": "Para ativar a página inicial do recém-chegado, acesse as configurações da \"Página inicial do recém-chegado\" nas [[Special:Preferences#mw-prefsection-personal-homepage|Preferências]].",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|Você}} ainda não fiz contribuições.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "Visite {{GENDER:$1|sua}} página inicial para começar a editar!",

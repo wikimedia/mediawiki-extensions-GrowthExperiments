@@ -2,12 +2,17 @@
 	"@metadata": {
 		"authors": [
 			"Epok",
-			"Thibaut120094"
+			"Thibaut120094",
+			"Gomoko"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Obtenir les questions formatées postées via la page d’accueil des modules",
 	"apihelp-homepagequestionstore-param-questionformat": "Le format dans lequel les questions doivent être renvoyées, par exemple HTML.",
 	"apihelp-homepagequestionstore-param-storage": "L’emplacement de stockage des questions.",
 	"apihelp-homepagequestionstore-param-userid": "L’identifiant utilisateur pour lequel les questions doivent être renvoyées.",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Aucune question trouvée."
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Aucune question trouvée.",
+	"apihelp-growthsetmentor-summary": "Définir le tuteur de l’utilisateur. La modification sera tracée publiquement.",
+	"apihelp-growthsetmentor-param-mentee": "Nom d’utilisateur du tutoré",
+	"apihelp-growthsetmentor-param-mentor": "Nom d’utilisateur du tuteur",
+	"apihelp-growthsetmentor-param-reason": "Motif du changement"
 }

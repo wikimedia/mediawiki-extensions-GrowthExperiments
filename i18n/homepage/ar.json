@@ -6,7 +6,8 @@
 			"Dyolf77",
 			"Dyolf77 (WMF)",
 			"Mr. Ibrahem",
-			"Sonic N800"
+			"Sonic N800",
+			"محمد أحمد عبد الفتاح"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|مرحبا}}، {{bidi:$1}}!",
@@ -236,5 +237,6 @@
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|رحب|رحبي}} {{GENDER:$2|بمرشدك الجديد|بمرشدتك الجديدة}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "يجب أن {{GENDER:$1|تكون مسجلا كمرشد|تكوني مسجلة كمرشدة}} على [[$2]] من أجل استخدام خاص:مطالبة_مرشد",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "قائمة المرشدين ([[$1]]) غير موجودة أو غير مضبوطة.",
-	"growthexperiments-notification-learn-more": "{{GENDER:$1|تعرف|تعرفي}} المزيد حول {{GENDER:$2|مرشدك الجديد|مرشدتك الجديدة}}"
+	"growthexperiments-notification-learn-more": "{{GENDER:$1|تعرف|تعرفي}} المزيد حول {{GENDER:$2|مرشدك الجديد|مرشدتك الجديدة}}",
+	"right-setmentor": "إضافة مرشد للمستخدمين"
 }
