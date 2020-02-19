@@ -8,5 +8,9 @@
 	"apihelp-homepagequestionstore-param-questionformat": "O formato para devolver as perguntas, por ex. HTML",
 	"apihelp-homepagequestionstore-param-storage": "O local de armazenamento das perguntas.",
 	"apihelp-homepagequestionstore-param-userid": "O ID do usuário para obter perguntas.",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Nenhuma pergunta encontrada."
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Nenhuma pergunta encontrada.",
+	"apihelp-growthsetmentor-summary": "Defina o mentor do usuário. A alteração será registrada publicamente.",
+	"apihelp-growthsetmentor-param-mentee": "Nome de usuário de mentor",
+	"apihelp-growthsetmentor-param-mentor": "Nome de usuário do mentor",
+	"apihelp-growthsetmentor-param-reason": "Motivo da mudança"
 }

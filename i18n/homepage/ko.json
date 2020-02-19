@@ -220,5 +220,12 @@
 	"growthexperiments-homepage-claimmentee-pretext": "멘티의 멘토를 {{GENDER:$1|이 명령을 시행하는 사용자}}로 설정할 수 있습니다. 자신이 아는 사용자, 또는 행사 등에서 직접 멘토하는 사용자에게 사용할 것을 권합니다.",
 	"growthexperiments-homepage-claimmentee-mentee": "멘티의 사용자 이름",
 	"growthexperiments-homepage-claimmentee-reason": "멘티를 데려오는 이유",
-	"growthexperiments-notification-learn-more": "{{GENDER:$1|내}} 새 {{GENDER:$2|멘토}}에 관해 더 알아보기"
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$1|$4님의}} 멘토를 {{GENDER:$3|$5님}}으로 {{GENDER:$2|바꾸었습니다}}",
+	"logentry-growthexperiments-setmentor": "$1님이 $5님을 $3님의 멘토(과거 {{GENDER:$4|멘토}}는 $4님)로 {{GENDER:$2|설정함}}",
+	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1님이 $5님을 $3님의 멘토(과거 멘토 없음)로 {{GENDER:$2|설정함}}",
+	"growthexperiments-notification-header-mentor-change": "$1님{{GENDER:$2|은}} {{GENDER:$3|내}} 새 멘토입니다",
+	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|나의}} 새 {{GENDER:$2|멘토}}에게 {{GENDER:$3|인사}}하세요!",
+	"growthexperiments-notification-learn-more": "{{GENDER:$1|내}} 새 {{GENDER:$2|멘토}}에 관해 더 알아보기",
+	"right-setmentor": "사용자 멘토 설정",
+	"action-setmentor": "사용자 멘토 설정"
 }

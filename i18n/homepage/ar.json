@@ -231,6 +231,8 @@
 	"growthexperiments-log-header": "هذا سجل للأحداث التي حصلت بامتداد GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|طالب|طالبت}} $3 {{GENDER:$3|كمرشَد|كمرشَدة}} (سابقا {{GENDER:$4|كان المرشِد|كانت المرشِدة}} $4)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "{{GENDER:$2|طالب|طالبت}} $1 بـ $3 {{GENDER:$3|كمرشَد|كمرشَدة}} {{GENDER:$2|له|لها}} (لا وجود لمرشِد(ة) من قبل)",
+	"logentry-growthexperiments-setmentor": "{{GENDER:$2|قام|قامت}} $1 بتعيين $5 في خطة إرشاد $3 (سابقا {{GENDER:$4|كان|كانت}} $4)",
+	"logentry-growthexperiments-setmentor-no-previous-mentor": "{{GENDER:$2|قام|قامت}} $1 بتعيين $5 في خطة إرشاد $3 (لا مرشد قبل هذا)",
 	"growthexperiments-homepage-claimmentee-invalid-username": "اسم المستخدم المقدم للمرشَد غير صالح",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|هو مرشدك الجديد|هي مرشدتك الجديدة}} {{GENDER:$3|}}",
 	"growthexperiments-notification-body-mentor-change": "السبب: $1",
@@ -238,5 +240,6 @@
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "يجب أن {{GENDER:$1|تكون مسجلا كمرشد|تكوني مسجلة كمرشدة}} على [[$2]] من أجل استخدام خاص:مطالبة_مرشد",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "قائمة المرشدين ([[$1]]) غير موجودة أو غير مضبوطة.",
 	"growthexperiments-notification-learn-more": "{{GENDER:$1|تعرف|تعرفي}} المزيد حول {{GENDER:$2|مرشدك الجديد|مرشدتك الجديدة}}",
-	"right-setmentor": "إضافة مرشد للمستخدمين"
+	"right-setmentor": "إضافة مرشد للمستخدمين",
+	"action-setmentor": "تعيين مرشدي المستخدمين"
 }

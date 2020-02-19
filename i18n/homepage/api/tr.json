@@ -8,5 +8,9 @@
 	"apihelp-homepagequestionstore-param-questionformat": "Soruları döndürme biçimi; HTML.",
 	"apihelp-homepagequestionstore-param-storage": "Soruların depo yeri.",
 	"apihelp-homepagequestionstore-param-userid": "Sorular için kullanıcı kimliği.",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Soru bulunamadı."
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Soru bulunamadı.",
+	"apihelp-growthsetmentor-summary": "Kullanıcının mentorunu ayarlayın. Değişiklik herkese açık olarak kaydedilecek.",
+	"apihelp-growthsetmentor-param-mentee": "Mentee kullanıcısının adı",
+	"apihelp-growthsetmentor-param-mentor": "Mentorun kullanıcı adı",
+	"apihelp-growthsetmentor-param-reason": "Değişimin sebebi"
 }

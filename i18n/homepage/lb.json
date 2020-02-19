@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Robby",
-			"Les Meloures"
+			"Les Meloures",
+			"Soued031"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Salut}}, {{bidi:$1}}!",
@@ -71,7 +72,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Artikelen aktualiséieren",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Kuerz Artikelen erweideren",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Linken tëscht Artikelen derbäisetzen",
-	"growthexperiments-homepage-suggestededits-error-description": "Probéiert w.e.g. méi spéit nach eng Kéier.",
+	"growthexperiments-homepage-suggestededits-error-description": "Probéiert wgl. méi spéit nach eng Kéier.",
 	"growthexperiments-homepage-suggestededits-topics-more": "méi weisen",
 	"growthexperiments-claimmentee-confirm": "Jo, ech wëll Den Tuteur wierklech änneren",
 	"growthexperiments-notification-body-mentor-change": "Grond: $1"

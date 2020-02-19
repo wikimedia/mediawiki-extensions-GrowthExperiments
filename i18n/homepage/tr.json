@@ -222,11 +222,15 @@
 	"growthexperiments-log-header": "Bu, GrowthExperiments uzantısında yapılan işlemlerin günlüğüdür.",
 	"logentry-growthexperiments-claimmentee": "$1, mentisi olarak $3 {{GENDER:$2|talep etti}} (önceki {{GENDER:$4|mentor}} 4 $)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1, mentisi olarak $3 {{GENDER:$2|talep etti}} (önceki mentor yok)",
+	"logentry-growthexperiments-setmentor": "$1, $3 mentor olarak $5 {{GENDER:$2|ayarlardı}} (önceki mentor $4)",
+	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1, $3 mentor olarak $5 {{GENDER:$2|ayarlardı}} (önceki mentor yok)",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Belirtilen mentinin kullanıcı adı geçersiz",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$3|senin}} {{GENDER:$2|yeni}} mentoru",
 	"growthexperiments-notification-body-mentor-change": "Sebep: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "Yeni {{GENDER:$2|mentor}} {{GENDER:$3|hocanıza}} merhaba {{GENDER:$3|de}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "Special:ClaimMentee hizmetini kullanabilmek için [[$2]] öğesinde mentor olarak listelenmiş {{GENDER:$1|olmanız}} gerekir",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Rehber listesi ([[$1]]) mevcut değil veya yanlış yapılandırılmış.",
-	"growthexperiments-notification-learn-more": "Yeni {{GENDER:$2|mentorunuz}} hakkında daha fazla bilgi {{GENDER:$1|edinin}}"
+	"growthexperiments-notification-learn-more": "Yeni {{GENDER:$2|mentorunuz}} hakkında daha fazla bilgi {{GENDER:$1|edinin}}",
+	"right-setmentor": "Kullanıcının mentorunu ayarla",
+	"action-setmentor": "kullanıcının mentorunu ayarla"
 }

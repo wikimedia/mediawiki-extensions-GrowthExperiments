@@ -221,11 +221,15 @@
 	"growthexperiments-log-header": "Este é um registro de ações realizadas na extensão GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|reivindicou}} $3 como seu aprendiz ({{GENDER:$4|mentor|mentora}} $4 anterior )",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|reivindicou}} $3 como seu aprendiz (nenhum mentor anterior)",
+	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|definiu}} $5 como mentor de $3 ({{GENDER:$4|mentor|mentora}} anterior $4)",
+	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|definiu}} $5 como mentor de $3 (nenhum mentor anterior)",
 	"growthexperiments-homepage-claimmentee-invalid-username": "O nome de usuário do aprendiz não é válido",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|é}} {{GENDER:$3|seu novo mentor|sua nova mentora}}",
 	"growthexperiments-notification-body-mentor-change": "Motivo: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Diga}} oi para {{GENDER:$3|seu}} novo(a) {{GENDER:$2|mentor|mentora}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|Você}} deve ser listado como um mentor em [[$2]] para poder usar Special:ClaimMentee",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Lista de mentores ([[$1]]) não existe ou está configurado incorretamente.",
-	"growthexperiments-notification-learn-more": "Aprender mais sobre {{GENDER:$1|seu|sua}} novo(a) {{GENDER:$2|mentor|mentora}}"
+	"growthexperiments-notification-learn-more": "Aprender mais sobre {{GENDER:$1|seu|sua}} novo(a) {{GENDER:$2|mentor|mentora}}",
+	"right-setmentor": "Definir mentor do usuário",
+	"action-setmentor": "definir mentor do usuário"
 }
