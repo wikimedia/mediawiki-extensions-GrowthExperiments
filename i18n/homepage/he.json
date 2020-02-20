@@ -224,6 +224,8 @@
 	"growthexperiments-log-header": "זהו יומן של פעולות שנעשו בהרחבה GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|לקח|לקחה}} את $3 בתור {{GENDER:$3|החניך|החניכה}} {{GENDER:$2|שלו|שלה}} ({{GENDER:$4|החונך הקודם|החונכת הקודמת}}: $4)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|לקח|לקחה}} את $3 בתור {{GENDER:$3|החניך|החניכה}} {{GENDER:$2|שלו|שלה}} (אין חונך קודם)",
+	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|הגדיר|הגדירה}} את $5 בתור {{GENDER:$5|החונך|החונכת}} של $3 ({{GENDER:$4|החונך הקודם|החונכת הקודמת}}: $4)",
+	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|הגדיר|הגדירה}} את $5 בתור {{GENDER:$5|החונך|החונכת}} של $3 (לא היה חונך קודם)",
 	"growthexperiments-homepage-claimmentee-invalid-username": "שם החניך שסופק אינו תקין",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|הוא החונך החדש|היא החונכת החדשה}} {{GENDER:$3|שלך}}",
 	"growthexperiments-notification-body-mentor-change": "סיבה: $1",

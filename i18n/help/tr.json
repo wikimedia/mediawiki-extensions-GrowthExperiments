@@ -13,7 +13,7 @@
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Düzenleme ile ilgili en yararlı yardım sayfaları",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Daha fazla yardım maddelerini görüntüle",
 	"growthexperiments-help-panel-question-widget-header": "Sorunuzu Topluluk Yardım Masası'na gönderin",
-	"growthexperiments-help-panel-question-placeholder": "Düzenleme konusunda yardıma ihtiyacım var. Şunu nasıl yapabilirim...",
+	"growthexperiments-help-panel-question-placeholder": "Selam söyle ve {{GENDER:$1|sorunuzu}} sorun.",
 	"growthexperiments-help-panel-back-home": "Geri",
 	"growthexperiments-help-panel-close": "Yapıldı",
 	"growthexperiments-help-panel-home-title": "Düzenleme ile ilgili yardım alın",
