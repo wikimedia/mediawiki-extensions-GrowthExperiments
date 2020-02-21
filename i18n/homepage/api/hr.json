@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Neptune, the Mystic"
+		]
+	},
+	"apihelp-growthsetmentor-summary": "Postavljanje mentorice/mentora suradniku. Izmjena će biti javno evidentirana.",
+	"apihelp-growthsetmentor-param-mentor": "Suradničko ime mentorice/mentora",
+	"apihelp-growthsetmentor-param-reason": "Razlog izmjene"
+}

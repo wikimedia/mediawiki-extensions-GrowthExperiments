@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kostajh"
+			"Kostajh",
+			"Geraki"
 		]
 	},
 	"growthexperiments-homepage-account-header": "Ο λογαριασμός δημιουργήθηκε",
@@ -11,5 +12,7 @@
 	"growthexperiments-homepage-help-cancel": "Ακύρωση",
 	"growthexperiments-homepage-recent-questions-posted-on": "Δημοσιεύθηκε $1 πριν",
 	"growthexperiments-homepage-recent-questions-archived": "Αρχειοθετημένο",
-	"growthexperiments-homepage-tutorial-cta-text": "Σεμινάριο"
+	"growthexperiments-homepage-tutorial-cta-text": "Σεμινάριο",
+	"right-setmentor": "Ορισμός συμβούλου χρήστη",
+	"action-setmentor": "ορίσετε σύμβουλο του χρήστη"
 }

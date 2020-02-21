@@ -222,7 +222,7 @@
 	"growthexperiments-log-header": "У овој евиденцији налазе се радње извршене у додатку GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|преузео|преузела}} је новајлију $3 ({{GENDER:$4|претходни ментор|претходна менторка}}: $4)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|преузео|преузела}} је новајлију $3 (без претходног ментора)",
-	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|поставио|поставила}} је {{GENDER:$5|корисника|корисницу}} $5 за {{GENDER:$5|ментора|менторку}} новајлије $3 ({{GENDER:$4|претходни ментор|претходна менторка}} $4)",
+	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|поставио|поставила}} је {{GENDER:$5|корисника|корисницу}} $5 за {{GENDER:$5|ментора|менторку}} новајлије $3 ({{GENDER:$4|претходни ментор|претходна менторка}}: $4)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|поставио|поставила}} је {{GENDER:$5|корисника|корисницу}} $5 за {{GENDER:$5|ментора|менторку}} новајлије $3 (без претходног ментора)",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Пружено кориснично име новајлије није важеће",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$3|је}} {{GENDER:$2|ваш нови ментор|ваша нова менторка}}",

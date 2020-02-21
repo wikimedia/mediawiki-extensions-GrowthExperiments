@@ -20,5 +20,7 @@
 	"growthexperiments-notification-body-mentor-change": "Razlog: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Pozdravite}} {{GENDER:$2|svojeg novog mentora|svoju novu mentoricu}}!",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Popis mentora ([[$1]]) ne postoji ili je pogrešno konfiguriran.",
-	"growthexperiments-notification-learn-more": "Saznajte više o {{GENDER:$1|svojem|svojoj}} {{GENDER:$2|novom mentoru|novoj mentorici}}"
+	"growthexperiments-notification-learn-more": "Saznajte više o {{GENDER:$1|svojem|svojoj}} {{GENDER:$2|novom mentoru|novoj mentorici}}",
+	"right-setmentor": "postavljanje mentorice/mentora suradniku",
+	"action-setmentor": "postavljanje mentorice/mentora suradniku"
 }
