@@ -108,6 +108,11 @@ class Start extends BaseTaskModule {
 		return BaseModule::getMobileSummaryHeader();
 	}
 
+	/** @inheritDoc */
+	protected function getHeader() {
+		return $this->getHeaderTextElement();
+	}
+
 	/**
 	 * @inheritDoc
 	 */

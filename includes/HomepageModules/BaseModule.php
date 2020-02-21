@@ -173,11 +173,7 @@ abstract class BaseModule implements HomepageModule {
 	 * @return string HTML content of the header. Will be wrapped in a section.
 	 */
 	protected function getHeader() {
-		$icon = $this->getHeaderIcon(
-			$this->getHeaderIconName(),
-			$this->shouldInvertHeaderIcon()
-		);
-		return $icon . $this->getHeaderTextElement();
+		return $this->getHeaderTextElement();
 	}
 
 	private function getBackIcon() {
@@ -209,7 +205,7 @@ abstract class BaseModule implements HomepageModule {
 	 */
 	protected function getNavIcon() {
 		return new IconWidget( [
-			'icon' => 'next',
+			'icon' => 'arrowNext',
 			'classes' => [ self::BASE_CSS_CLASS . '-header-nav-icon' ],
 		] );
 	}
@@ -240,13 +236,7 @@ abstract class BaseModule implements HomepageModule {
 	 * @return string HTML string to be used as header of the mobile summary.
 	 */
 	protected function getMobileSummaryHeader() {
-		$icon = $this->getHeaderIcon(
-			$this->getHeaderIconName(),
-			$this->shouldInvertHeaderIcon()
-		);
-		$text = $this->getHeaderTextElement();
-		$navIcon = $this->getNavIcon();
-		return $icon . $text . $navIcon;
+		return $this->getHeaderTextElement() . $this->getNavIcon();
 	}
 
 	/**

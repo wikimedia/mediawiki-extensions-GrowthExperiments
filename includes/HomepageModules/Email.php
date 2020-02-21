@@ -50,13 +50,6 @@ class Email extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function shouldInvertHeaderIcon() {
-		return $this->isCompleted() || $this->emailState === self::MODULE_STATE_UNCONFIRMED;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	protected function getHeaderText() {
 		// growthexperiments-homepage-email-header-noemail,
 		// growthexperiments-homepage-email-header-unconfirmed,
@@ -135,7 +128,7 @@ class Email extends BaseTaskModule {
 					'title' => $email
 				],
 				$email
-			) . Html::element(
+			) . $this->getContext()->msg( 'word-separator' )->text() . Html::element(
 				'a',
 				[
 					'class' => 'growthexperiments-homepage-email-change-link',

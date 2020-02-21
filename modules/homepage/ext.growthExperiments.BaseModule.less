@@ -5,22 +5,23 @@
 .growthexperiments-homepage-module {
 	border: @colorGray12 @border-width-base @border-style-base;
 	border-radius: @borderRadius;
-	.box-shadow( 0 1px 1px 0 rgba( 0, 0, 0, 0.15 ) );
+	.box-shadow( none );
 	color: @colorGray2;
 	margin: @homepageModuleMargin;
-	padding: 1em;
+	padding: 16px;
 	.box-sizing( border-box );
 
 	.growthexperiments-homepage-module-header,
 	h2.growthexperiments-homepage-module-header {
 		font-family: @homepageHeaderFont;
-		font-size: 1.3em;
+		font-size: 1.2em;
+		line-height: 1;
 		font-weight: bold;
 		color: @colorGray2;
 		margin-top: 0;
-		margin-bottom: 1 / 1.3em;
-		padding-bottom: 1 / 1.3em;
-		border-bottom: 1px solid @colorGray12;
+		margin-bottom: 0;
+		padding-bottom: 1 / 1.05em;
+		border-bottom: unset;
 		display: flex;
 		flex-direction: row;
 		align-items: center;
@@ -61,7 +62,7 @@
 	}
 
 	&-footer {
-		margin-top: 1.4em;
+		margin-top: 1.143em;
 	}
 
 	.oo-ui-buttonElement .oo-ui-buttonElement-button .oo-ui-labelElement-label {

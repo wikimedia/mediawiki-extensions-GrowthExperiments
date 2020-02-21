@@ -4,7 +4,7 @@
 
 @cardWrapperWidth: 260px;
 // @cardContainerWrapperHeight is defined in HomepageHooks::lessCallback as it is split by skin.
-// It is 16em on mobile and and 18em on desktop.
+// It is 16em on mobile and 18em on desktop.
 @imageHeight: @cardContainerWrapperHeight / 2;
 @textHeight: @cardContainerWrapperHeight / 2;
 @suggestedEditsBackgroundColor: rgba( 234, 243, 255, 0.5 );
@@ -583,7 +583,7 @@ body.mw-special-Homepage {
 	.suggested-edits-footer {
 		// negate the margin on .growthexperiments-homepage-module in ext.growthExperiments.Homepage.less
 		// margin values are *1.11 due to the font-size rule
-		margin: 0 -( @homepageModuleMargin / 0.9 ) -( @homepageModuleMargin / 0.9 );
+		margin: 16px -( @homepageModuleMargin / 0.9 ) -( @homepageModuleMargin / 0.9 ) -( @homepageModuleMargin / 0.9 );
 		padding: 12px 24px 16px;
 		background-color: @colorBaseInverted;
 		color: @colorGray5;
@@ -593,8 +593,7 @@ body.mw-special-Homepage {
 	&.growthexperiments-homepage-module-mobile-summary {
 		.suggested-edits-main {
 			display: flex;
-			// temporary, per T235810#5626040
-			padding: 4px 0 0 4px;
+			padding: 8px 16px 8px 0;
 
 			.suggested-edits-icon {
 				width: 64px;

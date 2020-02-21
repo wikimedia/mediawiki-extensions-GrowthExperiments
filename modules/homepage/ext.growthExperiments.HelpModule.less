@@ -4,6 +4,32 @@
 .growthexperiments-homepage-module-help {
 	background-color: @colorGray15;
 
+	&.growthexperiments-homepage-module-desktop {
+		background-color: transparent;
+		border: unset;
+	}
+
+	.growthexperiments-homepage-module-header-icon {
+		display: block;
+		align-self: start;
+
+		.oo-ui-iconElement {
+			width: 40px;
+			height: 40px;
+			opacity: 0.65;
+		}
+	}
+
+	.growthexperiments-homepage-module-section-header.growthexperiments-homepage-module-header {
+		display: flex;
+		flex-direction: column;
+
+		.growthexperiments-homepage-module-header-text {
+			align-self: start;
+			padding-top: 24px;
+		}
+	}
+
 	h3.growthexperiments-homepage-module-subheader {
 		font-weight: bold;
 		padding-top: 0;
@@ -24,6 +50,12 @@
 		// Make 'light' text darker against gray background
 		.growthexperiments-homepage-module-text-light {
 			color: @colorGray5;
+		}
+
+		.growthexperiments-homepage-module-section-header {
+			.growthexperiments-homepage-module-header {
+				flex-direction: row;
+			}
 		}
 	}
 }
