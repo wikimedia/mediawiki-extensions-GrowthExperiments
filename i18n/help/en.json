@@ -19,7 +19,6 @@
 	"growthexperiments-help-panel-questionreview-include-article-title": "Include page title with my question",
 	"growthexperiments-help-panel-question-subject-template": "Help panel question",
 	"growthexperiments-help-panel-question-subject-template-with-title": "Help panel question on [[$1]]",
-	"growthexperiments-help-panel-question-subject-template-with-title-no-link": "Help panel question on $1",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Help module question from user homepage",
 	"growthexperiments-help-panel-question-post-error": "An error occurred when trying to post your question. You can try again or you can visit $1 in your browser and add your question manually.",
 	"growthexperiments-help-panel-questioncomplete-title": "Ask a question",

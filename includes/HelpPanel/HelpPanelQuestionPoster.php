@@ -19,19 +19,13 @@ class HelpPanelQuestionPoster extends QuestionPoster {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getSectionHeaderTemplate( bool $plaintext = false ) {
-		if ( $this->relevantTitle ) {
-			return $this->getContext()
-				->msg(
-					$plaintext ?
-					'growthexperiments-help-panel-question-subject-template-with-title-no-link' :
-					'growthexperiments-help-panel-question-subject-template-with-title'
-				)
+	protected function getSectionHeaderTemplate() {
+		return $this->relevantTitle ?
+			$this->getContext()
+				->msg( 'growthexperiments-help-panel-question-subject-template-with-title' )
 				->params( $this->relevantTitle )
-				->inContentLanguage()
-				->text();
-		}
-		return $this->getContext()
+				->inContentLanguage()->text() :
+			$this->getContext()
 				->msg( 'growthexperiments-help-panel-question-subject-template' )
 				->inContentLanguage()->text();
 	}
