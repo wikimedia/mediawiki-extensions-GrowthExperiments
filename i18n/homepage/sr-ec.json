@@ -119,7 +119,6 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Ваше}} питање сада се налази на страници за разговор {{GENDER:$1|ментора|менторке}}, где ће {{GENDER:$1|он|она}} одговорити на њега чим буде {{GENDER:$1|могао|могла}}.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Погледајте {{GENDER:$2|ваше}} питање на страници за разговор {{GENDER:$1|ментора|менторке}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Питање корисника [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-no-link": "Питање корисника $1",
 	"growthexperiments-homepage-tutorial-header": "Научите како да уређујете",
 	"growthexperiments-homepage-tutorial-subheader": "Пратите кратко упутство да бисте сазнали како да уређујете Википедију",
 	"growthexperiments-homepage-tutorial-cta-text": "Упутство",

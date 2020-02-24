@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alexander Yukal"
+		]
+	},
+	"apihelp-growthsetmentor-summary": "Установить наставника пользователя. Изменения будут зафиксированы публично.",
+	"apihelp-growthsetmentor-param-mentee": "Имя пользователя подопечного",
+	"apihelp-growthsetmentor-param-mentor": "Имя наставника",
+	"apihelp-growthsetmentor-param-reason": "Причина изменения"
+}

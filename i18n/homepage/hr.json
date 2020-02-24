@@ -7,7 +7,6 @@
 	},
 	"tag-newcomer_task": "Zadatak za novopridošlice",
 	"tag-newcomer_task-description": "Izmjena predložena modulom za sugeriranje uređivanja na suradničkoj stranici novopridošlice",
-	"growthexperiments-homepage-mentorship-question-subject-no-link": "Pitanje suradnika/suradnice $1",
 	"growthexperiments-homepage-claimmentee-already-mentor": "Već ste {{GENDER:$2|mentor|mentorica}} {{GENDER:$1|suradnika|suradnice}} $1",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Riješeno",
 	"growthexperiments-homepage-suggestededits-topics-more": "prikaži više",

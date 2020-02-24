@@ -69,7 +69,6 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Deine}} Frage ist jetzt auf der Diskussionsseite deines {{GENDER:$1|Mentors}}, auf der dieser so bald wie möglich antworten wird.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Sieh dir {{GENDER:$2|deine}} Frage auf der Diskussionsseite deines {{GENDER:$1|Mentors}} an.",
 	"growthexperiments-homepage-mentorship-question-subject": "Frage von [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-no-link": "Frage von $1",
 	"growthexperiments-homepage-tutorial-header": "Das Bearbeiten lernen",
 	"growthexperiments-homepage-tutorial-subheader": "Folge einer schnellen Anleitung, um zu erfahren, wie man Wikipedia bearbeitet.",
 	"growthexperiments-homepage-tutorial-cta-text": "Anleitung",

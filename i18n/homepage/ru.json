@@ -6,7 +6,8 @@
 			"1233qwer1234qwer4",
 			"Urfiner",
 			"Katunchik",
-			"Okras"
+			"Okras",
+			"Alexander Yukal"
 		]
 	},
 	"growthexperiments-homepage-tab": "Домашняя страница",
@@ -57,5 +58,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Начните здесь!",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Откройте боковое меню и нажмите на $2, чтобы попасть на  {{GENDER:$1|вашу}} домашнюю страницу.",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3 - 5 минут",
-	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Готово"
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Готово",
+	"right-setmentor": "Установить наставника пользователя",
+	"action-setmentor": "установить наставника пользователя"
 }

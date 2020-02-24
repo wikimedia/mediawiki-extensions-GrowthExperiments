@@ -120,7 +120,6 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "Câu hỏi {{GENDER:$2|của bạn}} giờ đã xuất hiện trên trang thảo luận {{GENDER:$1|của cố vấn}}, và họ sẽ cố gắng trả lời câu hỏi trên sớm nhất có thể.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Xem câu hỏi của {{GENDER:$2|bạn}} trên trang thảo luận của {{GENDER:$1|người cố vấn}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Câu hỏi từ [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-no-link": "Câu hỏi từ $1",
 	"growthexperiments-homepage-tutorial-header": "Học cách sửa đổi",
 	"growthexperiments-homepage-tutorial-subheader": "Thực hiện theo hướng dẫn nhanh để tìm hiểu cách chỉnh sửa Wikipedia",
 	"growthexperiments-homepage-tutorial-cta-text": "Hướng dẫn",

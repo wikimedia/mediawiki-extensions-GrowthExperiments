@@ -22,7 +22,6 @@
 	"growthexperiments-help-panel-questionreview-include-article-title": "Legg ved sidetittelen i spørsmålet mitt",
 	"growthexperiments-help-panel-question-subject-template": "Hjelpesentralspørsmål",
 	"growthexperiments-help-panel-question-subject-template-with-title": "Hjelpesentralspørsmål på [[$1]]",
-	"growthexperiments-help-panel-question-subject-template-with-title-no-link": "Hjelpesentralspørsmål på $1",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Hjelpemodulspørsmål fra brukerens hjemmeside",
 	"growthexperiments-help-panel-question-post-error": "En feil oppsto når spørsmålet ditt skulle sendes. Du kan prøve igjen eller besøke $1 i nettleseren din og legge til spørsmålet manuelt.",
 	"growthexperiments-help-panel-questioncomplete-title": "Still et spørsmål",

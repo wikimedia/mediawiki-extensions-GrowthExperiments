@@ -118,7 +118,6 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "Spørsmålet {{GENDER:$2|ditt}} ligger nå på diskusjonssiden til {{GENDER:$1|mentoren}} din, der {{GENDER:$1|han|hun|vedkommende}} vil svare så fort {{GENDER:$1|han kan|hun kan|som mulig}}.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Vis spørsmålet {{GENDER:$2|ditt}} på diskusjonssiden til {{GENDER:$1|mentoren}} din.",
 	"growthexperiments-homepage-mentorship-question-subject": "Spørsmål fra [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-no-link": "Spørsmål fra $1",
 	"growthexperiments-homepage-tutorial-header": "Lær å redigere",
 	"growthexperiments-homepage-tutorial-subheader": "Følg en rask veiviser som viser hvordan man redigerer {{SITENAME}}",
 	"growthexperiments-homepage-tutorial-cta-text": "Veiviser",

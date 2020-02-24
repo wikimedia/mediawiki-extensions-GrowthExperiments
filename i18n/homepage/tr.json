@@ -119,7 +119,6 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Sorunuz}} şimdi mentorunuzun konuşma sayfasındadır. Bu soruya en kısa sürede cevap {{GENDER:$1|verecektir}}.",
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$2|Sorunuzu}} {{GENDER:$1|mentorunuzun}} tartışma sayfasında görüntüleyin.",
 	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]] üzerinden soru",
-	"growthexperiments-homepage-mentorship-question-subject-no-link": "$1 üzerinden sorun",
 	"growthexperiments-homepage-tutorial-header": "Düzenlemeyi öğrenin",
 	"growthexperiments-homepage-tutorial-subheader": "Vikipedi'yi nasıl düzenleyeceğinizi öğrenmek için hızlı bir eğiticiyi izleyin",
 	"growthexperiments-homepage-tutorial-cta-text": "Eğitim",

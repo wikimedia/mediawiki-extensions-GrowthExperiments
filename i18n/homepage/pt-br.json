@@ -118,7 +118,6 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "A {{GENDER:$2|sua}} pergunta está agora na página de discussão {{GENDER:$1|do seu mentor, onde ele|da sua mentora, onde ela}} irá responder-lhe logo que possa.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Ver {{GENDER:$2|sua}} pergunta na página de discussão do(a) {{GENDER:$1|mentor|mentora}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Pergunta de [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-no-link": "Pergunta de $1",
 	"growthexperiments-homepage-tutorial-header": "Aprenda a editar",
 	"growthexperiments-homepage-tutorial-subheader": "Siga um tutorial rápido para aprender a editar a Wikipédia",
 	"growthexperiments-homepage-tutorial-cta-text": "Tutorial",

@@ -22,7 +22,6 @@
 	"growthexperiments-help-panel-questionreview-include-article-title": "Уврсти наслов странице уз моје питање",
 	"growthexperiments-help-panel-question-subject-template": "Питање с табле помоћи",
 	"growthexperiments-help-panel-question-subject-template-with-title": "Питање с табле помоћи на страници [[$1]]",
-	"growthexperiments-help-panel-question-subject-template-with-title-no-link": "Питање с табле помоћи на страници $1",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Помоћни модул за питања с корисничке почетне странице",
 	"growthexperiments-help-panel-question-post-error": "Дошло је до грешке приликом постављања питања. Покушајте поново или посетите $1 у прегледачу да бисте ручно поставили питање.",
 	"growthexperiments-help-panel-questioncomplete-title": "Постављање питања",

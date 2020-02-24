@@ -22,7 +22,6 @@
 	"growthexperiments-help-panel-questionreview-include-article-title": "包含頁面標題與我的問題",
 	"growthexperiments-help-panel-question-subject-template": "協助面板問題",
 	"growthexperiments-help-panel-question-subject-template-with-title": "在[[$1]]的協助面板問題",
-	"growthexperiments-help-panel-question-subject-template-with-title-no-link": "在$1的協助面板問題",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "來自使用者首頁的協助模組問題",
 	"growthexperiments-help-panel-question-post-error": "當嘗試發佈您的問題時發生錯誤。您可以重試，或是在您的瀏覽器訪問$1來手動添加您的問題。",
 	"growthexperiments-help-panel-questioncomplete-title": "詢問一個問題",

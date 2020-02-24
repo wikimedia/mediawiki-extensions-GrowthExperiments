@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"Alexander Yukal"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Отримати форматовані запитання, опубліковані через модулі домашньої сторінки",
 	"apihelp-homepagequestionstore-param-questionformat": "Формат, у якому виводити запитання, наприклад, HTML.",
 	"apihelp-homepagequestionstore-param-storage": "Місце збереження запитань.",
 	"apihelp-homepagequestionstore-param-userid": "ID користувача, для якого отримати запитання.",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Запитань не знайдено."
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Запитань не знайдено.",
+	"apihelp-growthsetmentor-param-reason": "Причина зміни."
 }

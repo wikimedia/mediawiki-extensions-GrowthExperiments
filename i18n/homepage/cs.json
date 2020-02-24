@@ -121,7 +121,6 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Vaše}} otázka je nyní na diskusi {{GENDER:$1|vašeho mentora|vaší mentorky}}, kde ji zodpoví, hned jak bude moct.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Podívejte se na {{GENDER:$2|svoji}} otázku na diskusi {{GENDER:$1|vašeho mentora|vaší mentorky}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Otázka od wikipedisty [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-no-link": "Otázka od $1",
 	"growthexperiments-homepage-tutorial-header": "Zjistěte, jak editovat",
 	"growthexperiments-homepage-tutorial-subheader": "Použijte rychlého průvodce, který vás naučí, jak editovat Wikipedii",
 	"growthexperiments-homepage-tutorial-cta-text": "Průvodce",

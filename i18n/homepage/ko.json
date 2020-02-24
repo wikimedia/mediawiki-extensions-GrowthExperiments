@@ -123,7 +123,6 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "남기신 질문은 {{GENDER:$1|멘토}}의 토론 문서에 방금 게시되었습니다. 멘토가 확인하는 대로 답을 남길 것입니다.{{GENDER:$2|}}",
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$1|멘토}}의 토론 문서에서 {{GENDER:$2|남긴}} 질문을 확인하세요.",
 	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]]님의 질문",
-	"growthexperiments-homepage-mentorship-question-subject-no-link": "$1님의 질문",
 	"growthexperiments-homepage-tutorial-header": "편집 방법 알아보기",
 	"growthexperiments-homepage-tutorial-subheader": "위키백과 편집 방법을 배우기 위한 빠른 튜토리얼을 따라가 보세요",
 	"growthexperiments-homepage-tutorial-cta-text": "튜토리얼",

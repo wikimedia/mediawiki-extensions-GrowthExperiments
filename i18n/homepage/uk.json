@@ -6,7 +6,8 @@
 			"Ата",
 			"Movses",
 			"Base",
-			"Piramidion"
+			"Piramidion",
+			"Alexander Yukal"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Привіт}}, {{bidi:$1}}!",
@@ -122,7 +123,6 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Ваше}} запитання тепер на сторінці обговорення {{GENDER:$1|вашого наставника|вашої наставниці}}, де {{GENDER:$1|він|вона}} відповість, коли зможе.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Перегляньте {{GENDER:$2|своє}} запитання на сторінці обговорення {{GENDER:$1|вашого наставника|вашої наставниці}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Питання від [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-no-link": "Запитання від $1",
 	"growthexperiments-homepage-tutorial-header": "Навчіться редагувати",
 	"growthexperiments-homepage-tutorial-subheader": "Перегляньте швидкий посібник про те, як редагувати Вікіпедію",
 	"growthexperiments-homepage-tutorial-cta-text": "Посібник",
@@ -231,5 +231,6 @@
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Привітайтеся}} зі {{GENDER:$2|своїм новим наставником|своєю новою наставницею}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "Ви маєте бути вказані як {{GENDER:$1|наставник|наставниця}} на сторінці [[$2]], щоб могти користуватися Special:ClaimMentee",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Список наставників ([[$1]]) не існує або хибно налаштований.",
-	"growthexperiments-notification-learn-more": "{{GENDER:$1|Дізнайтесь}} більше про {{GENDER:$2|свого нового наставника|свою нову наставницю}}"
+	"growthexperiments-notification-learn-more": "{{GENDER:$1|Дізнайтесь}} більше про {{GENDER:$2|свого нового наставника|свою нову наставницю}}",
+	"action-setmentor": "Встановити наставника користувача"
 }

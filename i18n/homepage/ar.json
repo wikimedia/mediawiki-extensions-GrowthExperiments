@@ -123,7 +123,6 @@
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|سؤالك}} موجود الآن على صفحة نقاش {{GENDER:$1|مرشدك|مرشدتك}}، و{{GENDER:$1|سيجيب|ستجيب}} عليه في أسرع وقت ممكن.",
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$2|شاهد|شاهدي}} سؤالك على صفحة نقاش {{GENDER:$1|مرشدك|مرشدتك}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "سؤال من [[User:$1|$1]]",
-	"growthexperiments-homepage-mentorship-question-subject-no-link": "سؤال من $1",
 	"growthexperiments-homepage-tutorial-header": "{{GENDER:|تعلّم|تعلّمي}} التعديل",
 	"growthexperiments-homepage-tutorial-subheader": "{{GENDER:|اتبع|اتبعي}} درسا تعليميا سريعا لمعرفة كيفية التحرير في ويكيبيديا",
 	"growthexperiments-homepage-tutorial-cta-text": "الدرس التعليمي",
