@@ -22,10 +22,7 @@ return [
 		$config = $services->getConfigFactory()->makeConfig( 'GrowthExperiments' );
 		$cache = new CachedBagOStuff( ObjectCache::getLocalClusterInstance() );
 
-		$taskConfigTitle = Title::newFromText(
-			$config->get( 'GENewcomerTasksConfigTitle' )
-			?: $config->get( 'GENewcomerTasksRemoteConfigTitle' )
-		);
+		$taskConfigTitle = Title::newFromText( $config->get( 'GENewcomerTasksConfigTitle' ) );
 		if ( !$taskConfigTitle ) {
 			return new ErrorForwardingConfigurationLoader( StatusValue::newFatal( new ApiRawMessage(
 				'The ConfigurationLoader has not been configured!',
