@@ -22,4 +22,6 @@ class MorelikeBasedTopicTest extends MediaWikiUnitTestCase {
 		}, $topic->getReferencePages() ) );
 	}
 
+	// FIXME can't test get/setName because Message classes break unit tests
+
 }

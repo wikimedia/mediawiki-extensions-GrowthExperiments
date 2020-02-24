@@ -15,16 +15,33 @@ class TopicTest extends MediaWikiUnitTestCase {
 		$fakeContext = $this->getMockBuilder( MessageLocalizer::class )
 			->setMethods( [ 'msg' ] )
 			->getMockForAbstractClass();
-		$fakeContext->method( 'msg' )->willReturnArgument( 0 );
+		$fakeContext->method( 'msg' )->willReturnCallback( function ( $id ) {
+			return $this->getMockMessage( $id );
+		} );
 		/** @var MessageLocalizer $fakeContext */
 
 		$topic = new Topic( 'foo' );
-		$topic->setName( 'Some topic' );
 		$this->assertSame( 'foo', $topic->getId() );
-		// FIXME no way to mock while we are using the RawMessage hack so it would break the unit test
-		// $this->assertSame( 'Some topic', $topic->getName( $fakeContext )->text() );
-		// $this->assertSame( [ 'id' => 'foo', 'name' => 'Some topic' ],
-		//	$topic->toArray( $fakeContext ) );
+		$this->assertNull( $topic->getGroupId() );
+		$this->assertSame( 'growthexperiments-homepage-suggestededits-topic-name-foo',
+			$topic->getName( $fakeContext )->text() );
+		$this->assertSame( [
+			'id' => 'foo',
+			'name' => 'growthexperiments-homepage-suggestededits-topic-name-foo',
+			'groupId' => null,
+			'groupName' => null,
+		], $topic->toArray( $fakeContext ) );
+
+		$topic = new Topic( 'foo', 'bar' );
+		$this->assertSame( 'bar', $topic->getGroupId() );
+		$this->assertSame( 'growthexperiments-homepage-suggestededits-topic-group-name-bar',
+			$topic->getGroupName( $fakeContext )->text() );
+		$this->assertSame( [
+			'id' => 'foo',
+			'name' => 'growthexperiments-homepage-suggestededits-topic-name-foo',
+			'groupId' => 'bar',
+			'groupName' => 'growthexperiments-homepage-suggestededits-topic-group-name-bar',
+		], $topic->toArray( $fakeContext ) );
 	}
 
 }

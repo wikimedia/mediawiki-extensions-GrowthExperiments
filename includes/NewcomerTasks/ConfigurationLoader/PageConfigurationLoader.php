@@ -5,7 +5,10 @@ namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
+use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use InvalidArgumentException;
+use LogicException;
 use MediaWiki\Linker\LinkTarget;
 // phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
 use Message;
@@ -16,10 +19,14 @@ use TitleValue;
 /**
  * Load configuration from a local or remote .json wiki page.
  * For syntax see
- * https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Newcomer_tasks/Prototype/templates/cs.json
- * https://www.mediawiki.org/wiki/Growth/Personalized_first_day/Newcomer_tasks/Prototype/topics/cs.json
+ * https://cs.wikipedia.org/wiki/MediaWiki:NewcomerTasks.json
+ * https://cs.wikipedia.org/wiki/MediaWiki:NewcomerTopics.json
+ * https://www.mediawiki.org/wiki/MediaWiki:NewcomerTopicsOres.json
  */
 class PageConfigurationLoader implements ConfigurationLoader {
+
+	public const CONFIGURATION_TYPE_ORES = 'ores';
+	public const CONFIGURATION_TYPE_MORELIKE = 'morelike';
 
 	/** @var MessageLocalizer */
 	private $messageLocalizer;
@@ -43,23 +50,36 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	private $templateBlacklist;
 
 	/**
+	 * @var string One of the *Topic::CONFIGURATION_TYPE constants.
+	 */
+	private $topicType;
+
+	/**
 	 * @param MessageLocalizer $messageLocalizer
 	 * @param PageLoader $pageLoader
 	 * @param LinkTarget $taskConfigurationPage Wiki page to load task configuration from
 	 *   (local or interwiki).
 	 * @param LinkTarget|null $topicConfigurationPage Wiki page to load task configuration from
 	 *   (local or interwiki). Can be omitted, in which case topic matching will be disabled.
+	 * @param string $topicType One of the *Topic::CONFIGURATION_TYPE constants.
 	 */
 	public function __construct(
 		MessageLocalizer $messageLocalizer,
 		PageLoader $pageLoader,
 		LinkTarget $taskConfigurationPage,
-		?LinkTarget $topicConfigurationPage
+		?LinkTarget $topicConfigurationPage,
+		string $topicType
 	) {
 		$this->messageLocalizer = $messageLocalizer;
 		$this->pageLoader = $pageLoader;
 		$this->taskConfigurationPage = $taskConfigurationPage;
 		$this->topicConfigurationPage = $topicConfigurationPage;
+		$this->topicType = $topicType;
+
+		$validTopicTypes = [ self::CONFIGURATION_TYPE_ORES, self::CONFIGURATION_TYPE_MORELIKE ];
+		if ( !in_array( $this->topicType, $validTopicTypes, true ) ) {
+			throw new InvalidArgumentException( 'Invalid topic type ' . $this->topicType );
+		}
 	}
 
 	/** @inheritDoc */
@@ -178,9 +198,21 @@ class PageConfigurationLoader implements ConfigurationLoader {
 			return StatusValue::newFatal(
 				'growthexperiments-homepage-suggestededits-config-wrongstructure' );
 		}
+
+		if ( $this->topicType === self::CONFIGURATION_TYPE_ORES ) {
+			if ( !isset( $config['topics'] ) ) {
+				return StatusValue::newFatal(
+					'growthexperiments-homepage-suggestededits-config-wrongstructure' );
+			}
+			$config = $config['topics'];
+		}
+
 		foreach ( $config as $topicId => $topicConfiguration ) {
 			$status->merge( $this->validateIdentifier( $topicId ) );
-			$requiredFields = [ 'label', 'titles' ];
+			$requiredFields = [
+				self::CONFIGURATION_TYPE_ORES => [ 'group', 'oresTopics' ],
+				self::CONFIGURATION_TYPE_MORELIKE => [ 'label', 'titles' ],
+			][$this->topicType];
 			foreach ( $requiredFields as $field ) {
 				if ( !isset( $topicConfiguration[$field] ) ) {
 					$status->fatal( 'growthexperiments-homepage-suggestededits-config-missingfield',
@@ -188,17 +220,31 @@ class PageConfigurationLoader implements ConfigurationLoader {
 				}
 			}
 
-			if ( $status->isGood() ) {
+			if ( !$status->isGood() ) {
+				// don't try to load if the config data format was invalid
+				continue;
+			}
+
+			if ( $this->topicType === self::CONFIGURATION_TYPE_ORES ) {
+				'@phan-var array{group:string,oresTopics:string[]} $topicConfiguration';
+				$oresTopics = [];
+				foreach ( $topicConfiguration['oresTopics'] as $oresTopic ) {
+					$oresTopics[] = (string)$oresTopic;
+				}
+				$topic = new OresBasedTopic( $topicId, $topicConfiguration['group'], $oresTopics );
+				$status->merge( $this->validateTopicMessages( $topic ) );
+			} elseif ( $this->topicType === self::CONFIGURATION_TYPE_MORELIKE ) {
 				'@phan-var array{label:string,titles:string[]} $topicConfiguration';
 				$linkTargets = [];
 				foreach ( $topicConfiguration['titles'] as $title ) {
 					$linkTargets[] = new TitleValue( NS_MAIN, $title );
 				}
 				$topic = new MorelikeBasedTopic( $topicId, $linkTargets );
-				// FIXME temporary hack for lack of proper localization
 				$topic->setName( $topicConfiguration['label'] );
-				$topics[] = $topic;
+			} else {
+				throw new LogicException( 'Impossible but this makes phan happy.' );
 			}
+			$topics[] = $topic;
 		}
 		return $status->isGood() ? $topics : $status;
 	}
@@ -230,19 +276,39 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	 * @return StatusValue
 	 */
 	private function validateTaskMessages( TemplateBasedTaskType $taskType ) {
-		$status = StatusValue::newGood();
-		foreach ( [
+		return $this->validateMessages( [
 			$taskType->getName( $this->messageLocalizer ),
 			$taskType->getDescription( $this->messageLocalizer ),
 			$taskType->getShortDescription( $this->messageLocalizer ),
 			$taskType->getTimeEstimate( $this->messageLocalizer )
-		] as $msg ) {
+		], $taskType->getId() );
+	}
+
+	/**
+	 * Ensure that all messages used by the topic exist.
+	 * @param Topic $topic
+	 * @return StatusValue
+	 */
+	private function validateTopicMessages( Topic $topic ) {
+		$messages = [ $topic->getName( $this->messageLocalizer ) ];
+		if ( $topic->getGroupId() ) {
+			$messages[] = $topic->getGroupName( $this->messageLocalizer );
+		}
+		return $this->validateMessages( $messages, $topic->getId() );
+	}
+
+	/**
+	 * @param Message[] $messages
+	 * @param string $field Field name where the missing message was defined (e.g. ID of the task).
+	 * @return StatusValue
+	 */
+	private function validateMessages( array $messages, string $field ) {
+		$status = StatusValue::newGood();
+		foreach ( $messages as $msg ) {
 			/** @var $msg Message */
 			if ( !$msg->exists() ) {
-				$status->fatal(
-					'growthexperiments-homepage-suggestededits-config-missingmessage',
-					$msg->getKey(), $taskType->getId()
-				);
+				$status->fatal( 'growthexperiments-homepage-suggestededits-config-missingmessage',
+					$msg->getKey(), $field );
 			}
 		}
 		return $status;

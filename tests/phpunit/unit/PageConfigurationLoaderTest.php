@@ -6,6 +6,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
+use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use IContextSource;
 use MediaWiki\Linker\LinkTarget;
@@ -25,7 +26,8 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * @covers ::loadTaskTypes
 	 */
 	public function testLoadTaskTypes() {
-		$configurationLoader = $this->getConfigurationLoader( $this->getTaskConfig(), [] );
+		$configurationLoader = $this->getConfigurationLoader( $this->getTaskConfig(), [],
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
 		// in getMockPageLoader() will fail.
 		foreach ( range( 1, 2 ) as $_ ) {
@@ -41,7 +43,8 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			}, $taskTypes ) );
 		}
 
-		$configurationLoader = $this->getConfigurationLoader( StatusValue::newFatal( 'foo' ), [] );
+		$configurationLoader = $this->getConfigurationLoader( StatusValue::newFatal( 'foo' ),
+			[], PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		foreach ( range( 1, 2 ) as $_ ) {
 			$taskTypes = $configurationLoader->loadTaskTypes();
 			$this->assertInstanceOf( StatusValue::class, $taskTypes );
@@ -57,6 +60,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$msg = $this->createMock( Message::class );
 		$msg->method( 'exists' )->willReturn( false );
 		$configurationLoader = $this->getConfigurationLoader( $this->getTaskConfig( $error ), [],
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES,
 			[ 'growthexperiments-homepage-suggestededits-tasktype-name-foo' => $msg ] );
 		$status = $configurationLoader->loadTaskTypes();
 		$this->assertInstanceOf( StatusValue::class, $status );
@@ -78,8 +82,62 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	/**
 	 * @covers ::loadTopics
 	 */
-	public function testLoadTopics() {
-		$configurationLoader = $this->getConfigurationLoader( [], $this->getTopicConfig() );
+	public function testLoadOresTopics() {
+		$configurationLoader = $this->getConfigurationLoader( [], $this->getOresTopicConfig(),
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
+		// in getMockPageLoader() will fail.
+		foreach ( range( 1, 2 ) as $_ ) {
+			$topics = $configurationLoader->loadTopics();
+			$this->assertIsArray( $topics );
+			$this->assertNotEmpty( $topics );
+			$this->assertInstanceOf( Topic::class, $topics[0] );
+			$this->assertSame( [ 'art', 'science' ], array_map( function ( Topic $t ) {
+				return $t->getId();
+			}, $topics ) );
+			$this->assertSame( [ [ 'music', 'painting' ], [ 'physics', 'biology' ] ],
+				array_map( function ( OresBasedTopic $t ) {
+					return $t->getOresTopics();
+				}, $topics ) );
+		}
+
+		$configurationLoader = $this->getConfigurationLoader( [], StatusValue::newFatal( 'foo' ),
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		foreach ( range( 1, 2 ) as $_ ) {
+			$topics = $configurationLoader->loadTopics();
+			$this->assertInstanceOf( StatusValue::class, $topics );
+			$this->assertTrue( $topics->hasMessage( 'foo' ) );
+		}
+	}
+
+	/**
+	 * @covers ::loadTopics
+	 * @dataProvider provideLoadOresTopics_error
+	 */
+	public function testLoadOresTopics_error( $error ) {
+		$configurationLoader = $this->getConfigurationLoader( [], $this->getOresTopicConfig( $error ),
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		$status = $configurationLoader->loadTopics();
+		$this->assertInstanceOf( StatusValue::class, $status );
+		$this->assertTrue( $status->hasMessage(
+			'growthexperiments-homepage-suggestededits-config-' . $error
+		) );
+	}
+
+	public function provideLoadOresTopics_error() {
+		return [
+			[ 'wrongstructure' ],
+			[ 'invalidid' ],
+			[ 'missingfield' ],
+		];
+	}
+
+	/**
+	 * @covers ::loadTopics
+	 */
+	public function testLoadMorelikeTopics() {
+		$configurationLoader = $this->getConfigurationLoader( [], $this->getMorelikeTopicConfig(),
+			PageConfigurationLoader::CONFIGURATION_TYPE_MORELIKE );
 		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
 		// in getMockPageLoader() will fail.
 		foreach ( range( 1, 2 ) as $_ ) {
@@ -102,12 +160,35 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 				}, $topics ) );
 		}
 
-		$configurationLoader = $this->getConfigurationLoader( [], StatusValue::newFatal( 'foo' ) );
+		$configurationLoader = $this->getConfigurationLoader( [], StatusValue::newFatal( 'foo' ),
+			PageConfigurationLoader::CONFIGURATION_TYPE_MORELIKE );
 		foreach ( range( 1, 2 ) as $_ ) {
 			$topics = $configurationLoader->loadTopics();
 			$this->assertInstanceOf( StatusValue::class, $topics );
 			$this->assertTrue( $topics->hasMessage( 'foo' ) );
 		}
+	}
+
+	/**
+	 * @covers ::loadTopics
+	 * @dataProvider provideLoadMorelikeTopics_error
+	 */
+	public function testLoadMorelikeTopics_error( $error ) {
+		$configurationLoader = $this->getConfigurationLoader( [], $this->getMorelikeTopicConfig( $error ),
+			PageConfigurationLoader::CONFIGURATION_TYPE_MORELIKE );
+		$status = $configurationLoader->loadTopics();
+		$this->assertInstanceOf( StatusValue::class, $status );
+		$this->assertTrue( $status->hasMessage(
+			'growthexperiments-homepage-suggestededits-config-' . $error
+		) );
+	}
+
+	public function provideLoadMorelikeTopics_error() {
+		return [
+			[ 'wrongstructure' ],
+			[ 'invalidid' ],
+			[ 'missingfield' ],
+		];
 	}
 
 	/**
@@ -118,30 +199,9 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$taskTitle = new TitleValue( NS_MAIN, 'TaskConfiguration' );
 		$pageLoader = $this->getMockPageLoader( [ '0:TaskConfiguration' => [] ] );
 		$configurationLoader = new PageConfigurationLoader( $messageLocalizer, $pageLoader,
-			$taskTitle, null );
+			$taskTitle, null, PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$topics = $configurationLoader->loadTopics();
 		$this->assertSame( [], $topics );
-	}
-
-	/**
-	 * @covers ::loadTopics
-	 * @dataProvider provideLoadTopics_error
-	 */
-	public function testLoadTopics_error( $error ) {
-		$configurationLoader = $this->getConfigurationLoader( [], $this->getTopicConfig( $error ) );
-		$status = $configurationLoader->loadTopics();
-		$this->assertInstanceOf( StatusValue::class, $status );
-		$this->assertTrue( $status->hasMessage(
-			'growthexperiments-homepage-suggestededits-config-' . $error
-		) );
-	}
-
-	public function provideLoadTopics_error() {
-		return [
-			[ 'wrongstructure' ],
-			[ 'invalidid' ],
-			[ 'missingfield' ],
-		];
 	}
 
 	/**
@@ -188,7 +248,36 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * @param string $error
 	 * @return array|int
 	 */
-	protected function getTopicConfig( $error = null ) {
+	protected function getOresTopicConfig( $error = null ) {
+		$config = [
+			'topics' => [
+				'art' => [
+					'group' => 'culture',
+					'oresTopics' => [ 'music', 'painting' ],
+				],
+				'science' => [
+					'group' => 'stem',
+					'oresTopics' => [ 'physics', 'biology' ],
+				],
+			],
+			'groups' => [ 'culture', 'stem' ],
+		];
+		if ( $error === 'wrongstructure' ) {
+			return 0;
+		} elseif ( $error === 'invalidid' ) {
+			$config['topics']['*'] = [ 'group' => 'test', 'oresTopics' => [ 'test' ] ];
+		} elseif ( $error === 'missingfield' ) {
+			unset( $config['topics']['science']['group'] );
+		}
+		return $config;
+	}
+
+	/**
+	 * Test configuration
+	 * @param string $error
+	 * @return array|int
+	 */
+	protected function getMorelikeTopicConfig( $error = null ) {
 		$config = [
 			'art' => [
 				'label' => 'Art',
@@ -212,11 +301,12 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param array|StatusValue $taskConfig
 	 * @param array|StatusValue $topicConfig
+	 * @param string $topicType
 	 * @param Message[] $customMessages
 	 * @return PageConfigurationLoader
 	 */
 	protected function getConfigurationLoader(
-		$taskConfig, $topicConfig, array $customMessages = []
+		$taskConfig, $topicConfig, $topicType, array $customMessages = []
 	) {
 		$taskConfigTitle = new TitleValue( NS_MAIN, 'TaskConfigPage' );
 		$topicConfigTitle = new TitleValue( NS_MAIN, 'TopicConfigPage' );
@@ -226,7 +316,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			'0:TopicConfigPage' => $topicConfig,
 		] );
 		return new PageConfigurationLoader( $messageLocalizer, $pageLoader,
-			$taskConfigTitle, $topicConfigTitle );
+			$taskConfigTitle, $topicConfigTitle, $topicType );
 	}
 
 	/**
