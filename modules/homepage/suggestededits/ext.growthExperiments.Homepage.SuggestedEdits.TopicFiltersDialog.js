@@ -25,6 +25,9 @@ TopicFiltersDialog = function ( config ) {
 	TopicFiltersDialog.super.call( this, config );
 	this.config = config;
 	this.articleCountNumber = 0;
+	this.updating = false;
+	this.performSearchUpdateActionsDebounced =
+		OO.ui.debounce( this.performSearchUpdateActions.bind( this ) );
 };
 OO.inheritClass( TopicFiltersDialog, OO.ui.ProcessDialog );
 
@@ -84,7 +87,8 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 	this.topicSelector = new TopicSelectionWidget( { selectedTopics: this.config.presets } );
 	this.topicSelector.connect( this, {
 		expand: 'onTopicSelectorExpand',
-		toggleSelection: 'performSearchUpdateActions'
+		// The "select all" buttons fire many toggleSelection events at once, so debounce them
+		toggleSelection: 'performSearchUpdateActionsDebounced'
 	} );
 	$topicSelectorWrapper = $( '<div>' )
 		.addClass( 'suggested-edits-topic-filters-topic-selector' )
@@ -107,19 +111,12 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 TopicFiltersDialog.prototype.updateFiltersFromState = function () {
 	// this.config.presets could be null ((e.g. user just initiated the module, see T238611#5800350)
 	var presets = this.config.presets || [];
+	// Prevent 'search' events from being fired by performSearchUpdateActions()
+	this.updating = true;
 	this.topicSelector.suggestions.forEach( function ( suggestion ) {
-		suggestion.confirmed = presets.indexOf( suggestion.suggestionData.id ) > -1;
-		suggestion.update();
+		suggestion.toggleSuggestion( presets.indexOf( suggestion.suggestionData.id ) > -1 );
 	} );
-	// Using Array.some allows us to break the loop once we've found an item
-	// that requires the suggestion group to show all items.
-	presets.some( function ( selectedTopic ) {
-		if ( this.getAboveFoldEnabledFilters().indexOf( selectedTopic ) === -1 ) {
-			this.topicSelector.showAllItems();
-			return true;
-		}
-		return false;
-	}.bind( this ) );
+	this.updating = false;
 };
 
 /**
@@ -147,7 +144,10 @@ TopicFiltersDialog.prototype.getAboveFoldEnabledFilters = function () {
  * Perform a search with enabled filters, if any.
  */
 TopicFiltersDialog.prototype.performSearchUpdateActions = function () {
-	this.emit( 'search', null, this.getEnabledFilters() );
+	// Don't fire 'search' events for changes that we made ourselves in updateFiltersFromState()
+	if ( !this.updating ) {
+		this.emit( 'search', null, this.getEnabledFilters() );
+	}
 };
 
 TopicFiltersDialog.prototype.updateMatchCount = function ( count ) {

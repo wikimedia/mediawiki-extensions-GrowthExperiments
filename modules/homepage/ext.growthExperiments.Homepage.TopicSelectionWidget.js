@@ -1,16 +1,39 @@
 var SuggestionWidget = require( './ext.growthExperiments.Homepage.SuggestionWidget.js' ),
 	SuggestionGroupWidget = require( './ext.growthExperiments.Homepage.SuggestionGroupWidget.js' ),
-	topicData = require( './Topics.json' );
+	topicData = require( './Topics.json' ),
+	groupedTopics = ( function () {
+		var key, topic, grouped = {};
+		for ( key in topicData ) {
+			topic = topicData[ key ];
+			if ( grouped[ topic.groupId ] === undefined ) {
+				grouped[ topic.groupId ] = {
+					id: topic.groupId,
+					name: topic.groupName,
+					topics: []
+				};
+			}
+			grouped[ topic.groupId ].topics.push( topic );
+		}
+		return grouped;
+	}() );
 
 /**
  * Widget that lets the user select topics using SuggestionWidgets.
- * Displays a limited number of topics initially, with a "show more" button to display the rest.
+ *
+ * If there are no topic groups, this displays a limited number of topics initially,
+ * with a "show more" button to display the rest. This is controlled by config.initialLimit.
+ *
+ * If there are topic groups, separate SuggestionGroupWidgets are used for each groups, with headers
+ * and "select/unselect all" buttons for each group. No "show more" buttons are displayed in this
+ * case, and config.initialLimit is ignored.
  *
  * @param {Object} config
  * @cfg {number} [initialLimit=12] Number of topics to display initially; use Infinity to disable
  * @cfg {string[]} [selectedTopics=[]] IDs of initially selected topics
  */
 function TopicSelectionWidget( config ) {
+	var key, group, groupWidget, suggestionWidgets, displayedSuggestionWidgets,
+		hiddenSuggestionWidgets, anyHiddenSelected;
 	config = $.extend( {
 		initialLimit: 12,
 		selectedTopics: []
@@ -28,63 +51,60 @@ function TopicSelectionWidget( config ) {
 		return;
 	}
 
-	this.initialLimit = config.initialLimit;
-	this.suggestions = Object.keys( topicData ).map( function ( key ) {
-		var topic = topicData[ key ];
-		return new SuggestionWidget( { suggestionData: {
-			id: topic.id,
-			text: topic.name,
-			confirmed: config.selectedTopics.indexOf( topic.id ) !== -1
-		} } ).on( 'toggleSuggestion', function () {
-			this.emit( 'toggleSelection' );
-		}.bind( this ) );
-	}.bind( this ) );
+	this.suggestions = [];
+	this.suggestionGroupWidgets = [];
+	for ( key in groupedTopics ) {
+		group = groupedTopics[ key ];
+		suggestionWidgets = group.topics.map( function ( topic ) {
+			return new SuggestionWidget( { suggestionData: {
+				id: topic.id,
+				text: topic.name,
+				confirmed: config.selectedTopics.indexOf( topic.id ) !== -1
+			} } );
+		} );
+		displayedSuggestionWidgets = suggestionWidgets;
+		hiddenSuggestionWidgets = [];
 
-	if ( config.initialLimit >= 0 && isFinite( config.initialLimit ) ) {
-		this.displayedSuggestions = this.suggestions.slice( 0, config.initialLimit );
-		this.hiddenSuggestions = this.suggestions.slice( config.initialLimit );
-	} else {
-		this.displayedSuggestions = this.suggestions;
-		this.hiddenSuggestions = [];
+		// If there are no topic groups, all topics are in one group whose ID is null
+		if ( group.id === null ) {
+			if (
+				config.initialLimit >= 0 &&
+				isFinite( config.initialLimit )
+			) {
+				displayedSuggestionWidgets = suggestionWidgets.slice( 0, config.initialLimit );
+				hiddenSuggestionWidgets = suggestionWidgets.slice( config.initialLimit );
+			}
+			// If any of the suggestions we want to hide is selected, don't hide anything
+			anyHiddenSelected = hiddenSuggestionWidgets.some( function ( suggestion ) {
+				return suggestion.confirmed;
+			} );
+			if ( anyHiddenSelected ) {
+				displayedSuggestionWidgets = suggestionWidgets;
+				hiddenSuggestionWidgets = [];
+			}
+		}
+
+		groupWidget = new SuggestionGroupWidget( {
+			items: displayedSuggestionWidgets,
+			hiddenItems: hiddenSuggestionWidgets,
+			header: group.id === null ? undefined : group.name,
+			selectAll: group.id !== null
+		} );
+		groupWidget.connect( this, {
+			toggleSuggestion: [ 'emit', 'toggleSelection' ],
+			expand: [ 'emit', 'expand' ]
+		} );
+
+		this.suggestions = this.suggestions.concat( suggestionWidgets );
+		this.suggestionGroupWidgets.push( groupWidget );
+		this.$element.append( groupWidget.$element );
 	}
-
-	this.suggestionGroup = new SuggestionGroupWidget();
-	this.suggestionGroup.addItems( this.displayedSuggestions );
 
 	this.$element
-		.addClass( 'mw-ge-TopicSelectionWidget' )
-		.append( this.suggestionGroup.$element );
-
-	if ( this.hiddenSuggestions.length > 0 ) {
-		this.showMoreButton = new OO.ui.ButtonWidget( {
-			label: mw.msg( 'growthexperiments-homepage-suggestededits-topics-more' ),
-			flags: [ 'progressive' ],
-			framed: false
-		} );
-		this.showMoreButton.connect( this, { click: 'onShowMoreButtonClick' } );
-		this.suggestionGroup.$element.append( this.showMoreButton.$element );
-	}
+		.addClass( 'mw-ge-TopicSelectionWidget' );
 }
 
 OO.inheritClass( TopicSelectionWidget, OO.ui.Widget );
-
-/**
- * Show all suggestion items and detach the show more button.
- */
-TopicSelectionWidget.prototype.showAllItems = function () {
-	this.suggestionGroup.addItems( this.hiddenSuggestions );
-	this.displayedSuggestions = this.suggestions;
-	this.hiddenSuggestions = [];
-	this.showMoreButton.$element.detach();
-};
-
-/**
- * Callback when user clicks the "Show more" button.
- */
-TopicSelectionWidget.prototype.onShowMoreButtonClick = function () {
-	this.showAllItems();
-	this.emit( 'expand' );
-};
 
 /**
  * Get the IDs of all selected topics, both those that are visible and selected, and those that are
@@ -107,13 +127,13 @@ TopicSelectionWidget.prototype.getSelectedTopics = function () {
  * @return {string[]} IDs of selected topics
  */
 TopicSelectionWidget.prototype.getAboveFoldSelectedTopics = function () {
-	return this.suggestions
-		.filter( function ( suggestion, i ) {
-			return suggestion.confirmed && i < this.initialLimit;
-		}.bind( this ) )
-		.map( function ( suggestion ) {
-			return suggestion.suggestionData.id;
-		} );
+	return this.suggestionGroupWidgets
+		.map( function ( groupWidget ) {
+			return groupWidget.getSelectedSuggestions();
+		} )
+		.reduce( function ( accumulator, value ) {
+			return accumulator.concat( value );
+		}, [] );
 };
 
 /**

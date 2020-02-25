@@ -360,10 +360,13 @@
 				}
 			],
 			"styles": [
-				"homepage/ext.growthExperiments.Homepage.SuggestionWidget.less"
+				"homepage/ext.growthExperiments.Homepage.SuggestionWidget.less",
+				"homepage/ext.growthExperiments.Homepage.SuggestionGroupWidget.less"
 			],
 			"messages": [
-				"growthexperiments-homepage-suggestededits-topics-more"
+				"growthexperiments-homepage-suggestededits-topics-more",
+				"growthexperiments-homepage-suggestededits-topics-selectall",
+				"growthexperiments-homepage-suggestededits-topics-unselectall"
 			],
 			"targets": [
 				"desktop",
