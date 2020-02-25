@@ -5,7 +5,8 @@
 			"Mirzali",
 			"Tobi 406",
 			"1233qwer1234qwer4",
-			"Killarnee"
+			"Killarnee",
+			"Ferdinand0101"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -38,7 +39,7 @@
 	"growthexperiments-homepage-impact-subheader-text": "Menschen betrachten die Artikel, die {{GENDER:$1|du}} bearbeitet hast!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Aufrufe seit {{GENDER:$1|deiner}} Bearbeitung (letzte 60 Tage):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Du}} hast {{PLURAL:$1|<strong>eine</strong> Bearbeitung|<strong>$1</strong> Bearbeitungen}} durchgeführt (alle ansehen)",
-	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Du}} hast noch keine Artikel bearbeitet.",
+	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|Du}} hast noch keine Artikel erstellt oder bearbeitet.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>Keine</strong> Bearbeitungen an Artikeln",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "{{PLURAL:$1|<strong>Eine</strong> Bearbeitung|<strong>$1</strong> Bearbeitungen}} an anderen Arten von Seiten (alle ansehen)",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Zum Artikel gehen",
@@ -55,7 +56,7 @@
 	"growthexperiments-homepage-recent-questions-posted-on": "Vor $1 gestellt",
 	"growthexperiments-homepage-recent-questions-archived": "archiviert",
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "Diese Frage wurde archiviert, da sie vermutlich vor langer Zeit gestellt wurde.",
-	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Dein}} Mentor",
+	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Dein}} {{GENDER:$2|Mentor}}",
 	"growthexperiments-homepage-mentorship-mentor-edits": "{{PLURAL:$1|Eine Bearbeitung|$1 Bearbeitungen}}",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "Heute {{GENDER:$1|aktiv}}",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "Gestern {{GENDER:$1|aktiv}}",
