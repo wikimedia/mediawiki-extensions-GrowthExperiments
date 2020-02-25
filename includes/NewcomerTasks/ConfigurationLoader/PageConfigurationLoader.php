@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
+use Collation;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
@@ -34,6 +35,9 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	/** @var PageLoader */
 	private $pageLoader;
 
+	/** @var Collation */
+	private $collation;
+
 	/** @var LinkTarget */
 	private $taskConfigurationPage;
 
@@ -57,6 +61,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	/**
 	 * @param MessageLocalizer $messageLocalizer
 	 * @param PageLoader $pageLoader
+	 * @param Collation $collation
 	 * @param LinkTarget $taskConfigurationPage Wiki page to load task configuration from
 	 *   (local or interwiki).
 	 * @param LinkTarget|null $topicConfigurationPage Wiki page to load task configuration from
@@ -66,12 +71,14 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	public function __construct(
 		MessageLocalizer $messageLocalizer,
 		PageLoader $pageLoader,
+		Collation $collation,
 		LinkTarget $taskConfigurationPage,
 		?LinkTarget $topicConfigurationPage,
 		string $topicType
 	) {
 		$this->messageLocalizer = $messageLocalizer;
 		$this->pageLoader = $pageLoader;
+		$this->collation = $collation;
 		$this->taskConfigurationPage = $taskConfigurationPage;
 		$this->topicConfigurationPage = $topicConfigurationPage;
 		$this->topicType = $topicType;
@@ -199,11 +206,13 @@ class PageConfigurationLoader implements ConfigurationLoader {
 				'growthexperiments-homepage-suggestededits-config-wrongstructure' );
 		}
 
+		$groups = [];
 		if ( $this->topicType === self::CONFIGURATION_TYPE_ORES ) {
-			if ( !isset( $config['topics'] ) ) {
+			if ( !isset( $config['topics'] ) || !isset( $config['groups'] ) ) {
 				return StatusValue::newFatal(
 					'growthexperiments-homepage-suggestededits-config-wrongstructure' );
 			}
+			$groups = $config['groups'];
 			$config = $config['topics'];
 		}
 
@@ -246,6 +255,11 @@ class PageConfigurationLoader implements ConfigurationLoader {
 			}
 			$topics[] = $topic;
 		}
+
+		if ( $this->topicType === self::CONFIGURATION_TYPE_ORES && $status->isGood() ) {
+			$this->sortTopics( $topics, $groups );
+		}
+
 		return $status->isGood() ? $topics : $status;
 	}
 
@@ -312,6 +326,25 @@ class PageConfigurationLoader implements ConfigurationLoader {
 			}
 		}
 		return $status;
+	}
+
+	/**
+	 * Sorts topics in-place, based on the group configuration and alphabetically within that.
+	 * @param Topic[] &$topics
+	 * @param string[] $groups
+	 */
+	private function sortTopics( array &$topics, $groups ) {
+		usort( $topics, function ( Topic $left, Topic $right ) use ( $groups ) {
+			$leftGroup = $left->getGroupId();
+			$rightGroup = $right->getGroupId();
+			if ( $leftGroup !== $rightGroup ) {
+				return array_search( $leftGroup, $groups, true ) - array_search( $rightGroup, $groups, true );
+			}
+
+			$leftSortKey = $this->collation->getSortKey( $left->getName( $this->messageLocalizer ) );
+			$rightSortKey = $this->collation->getSortKey( $right->getName( $this->messageLocalizer ) );
+			return strcmp( $leftSortKey, $rightSortKey );
+		} );
 	}
 
 }

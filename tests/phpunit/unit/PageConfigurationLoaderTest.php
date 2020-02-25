@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests;
 
+use Collation;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -92,10 +93,10 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			$this->assertIsArray( $topics );
 			$this->assertNotEmpty( $topics );
 			$this->assertInstanceOf( Topic::class, $topics[0] );
-			$this->assertSame( [ 'art', 'science' ], array_map( function ( Topic $t ) {
+			$this->assertSame( [ 'art', 'food', 'science' ], array_map( function ( Topic $t ) {
 				return $t->getId();
 			}, $topics ) );
-			$this->assertSame( [ [ 'music', 'painting' ], [ 'physics', 'biology' ] ],
+			$this->assertSame( [ [ 'music', 'painting' ], [ 'food' ], [ 'physics', 'biology' ] ],
 				array_map( function ( OresBasedTopic $t ) {
 					return $t->getOresTopics();
 				}, $topics ) );
@@ -198,7 +199,8 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$messageLocalizer = $this->getMockMessageLocalizer();
 		$taskTitle = new TitleValue( NS_MAIN, 'TaskConfiguration' );
 		$pageLoader = $this->getMockPageLoader( [ '0:TaskConfiguration' => [] ] );
-		$configurationLoader = new PageConfigurationLoader( $messageLocalizer, $pageLoader,
+		$collation = $this->getMockCollation();
+		$configurationLoader = new PageConfigurationLoader( $messageLocalizer, $pageLoader, $collation,
 			$taskTitle, null, PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$topics = $configurationLoader->loadTopics();
 		$this->assertSame( [], $topics );
@@ -259,6 +261,10 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 					'group' => 'stem',
 					'oresTopics' => [ 'physics', 'biology' ],
 				],
+				'food' => [
+					'group' => 'culture',
+					'oresTopics' => [ 'food' ],
+				],
 			],
 			'groups' => [ 'culture', 'stem' ],
 		];
@@ -315,7 +321,8 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			'0:TaskConfigPage' => $taskConfig,
 			'0:TopicConfigPage' => $topicConfig,
 		] );
-		return new PageConfigurationLoader( $messageLocalizer, $pageLoader,
+		$collation = $this->getMockCollation();
+		return new PageConfigurationLoader( $messageLocalizer, $pageLoader, $collation,
 			$taskConfigTitle, $topicConfigTitle, $topicType );
 	}
 
@@ -372,6 +379,18 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			return $this->getMockMessage( $key );
 		} );
 		return $context;
+	}
+
+	/**
+	 * @return Collation|MockObject
+	 */
+	protected function getMockCollation() {
+		$collation = $this->getMockBuilder( Collation::class )
+			->disableOriginalConstructor()
+			->setMethods( [ 'getSortKey' ] )
+			->getMockForAbstractClass();
+		$collation->method( 'getSortKey' )->willReturnArgument( 0 );
+		return $collation;
 	}
 
 }

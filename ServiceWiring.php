@@ -50,6 +50,7 @@ return [
 		$configurationLoader = new PageConfigurationLoader(
 			RequestContext::getMain(),
 			$pageLoader,
+			Collation::singleton(),
 			$taskConfigTitle,
 			$topicConfigTitle,
 			$topicType
