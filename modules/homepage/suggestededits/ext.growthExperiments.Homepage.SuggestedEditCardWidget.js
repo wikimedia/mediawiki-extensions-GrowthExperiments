@@ -11,14 +11,21 @@
 	 * @constructor
 	 */
 	function SuggestedEditCardWidget( data ) {
+		var title;
 		SuggestedEditCardWidget.super.call( this, data );
 		this.data = data;
+
+		if ( data.pageId ) {
+			title = new mw.Title( 'Special:Homepage/newcomertask/' + data.pageId );
+		} else {
+			title = new mw.Title( data.title );
+		}
 
 		this.$element.append(
 			$( '<div>' ).addClass( 'suggested-edits-task-card-wrapper' )
 				.append(
 					$( '<a>' )
-						.attr( 'href', mw.util.getUrl( new mw.Title( 'Special:Homepage/newcomertask/' + data.pageId ).toString() ) )
+						.attr( 'href', mw.util.getUrl( title.toString() ) )
 						.addClass( 'se-card-content' )
 						.append(
 							this.getImageContent(),
