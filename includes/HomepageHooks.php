@@ -94,7 +94,13 @@ class HomepageHooks {
 		);
 	}
 
-	private static function getClickId( IContextSource $context ) {
+	/**
+	 * Get the click ID from the URL if set (from clicking a suggested edit card).
+	 *
+	 * @param IContextSource $context
+	 * @return string|null
+	 */
+	public static function getClickId( IContextSource $context ) {
 		if ( SuggestedEdits::isEnabled( $context ) ) {
 			$clickId = $context->getRequest()->getVal( 'geclickid' );
 			if ( $clickId && SpecialHomepage::verifyPageviewToken( $clickId, $context ) ) {
@@ -339,6 +345,10 @@ class HomepageHooks {
 				'type' => 'api'
 			];
 		}
+
+		$preferences[ SuggestedEdits::GUIDANCE_BLUE_DOT_PREF ] = [
+			'type' => 'api'
+		];
 	}
 
 	/**

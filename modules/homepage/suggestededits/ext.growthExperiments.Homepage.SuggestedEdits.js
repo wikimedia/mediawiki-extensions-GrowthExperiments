@@ -485,6 +485,7 @@
 			.toggleClass( 'pseudo-card', !( this.currentCard instanceof EditCardWidget ) )
 			.toggleClass( 'pseudo-card-eoq', this.currentCard instanceof EndOfQueueWidget );
 		this.setupClickLogging();
+		this.setupEditTypeTracking();
 	};
 
 	/**
@@ -515,6 +516,15 @@
 				this.logger.log( 'suggested-edits', this.mode, 'se-task-click',
 					this.getCardLogData( this.queuePosition ) );
 			}.bind( this ) );
+	};
+
+	/**
+	 * Rewrite the link to contain the task type ID, for later user in guidance.
+	 */
+	SuggestedEditsModule.prototype.setupEditTypeTracking = function () {
+		var $link = this.currentCard.$element.find( '.se-card-content' ),
+			newUrl = new mw.Uri( $link.attr( 'href' ) ).extend( { getasktype: this.currentCard.getTaskType() } ).toString();
+		$link.attr( 'href', newUrl );
 	};
 
 	/**

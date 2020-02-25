@@ -61,10 +61,13 @@ class Tracker {
 	}
 
 	/**
+	 * @param array $additionalQueryParams
 	 * @return string
 	 */
-	public function getTitleUrl() :string {
-		return $this->title->getLinkURL( [ 'geclickid' => $this->clickId ] );
+	public function getTitleUrl( $additionalQueryParams = [] ) :string {
+		return $this->title->getLinkURL(
+			array_merge( $additionalQueryParams, [ 'geclickid' => $this->clickId ] )
+		);
 	}
 
 	/**
