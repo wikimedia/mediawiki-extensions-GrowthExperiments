@@ -9,6 +9,7 @@
 	"welcomesurvey-save-confirmation-text": "Tavas atbildes mums palīdzēs atrast noderīgus veidus, kā tev sākt darbu Vikipēdijā.",
 	"welcomesurvey-save-btn": "Pabeigt",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Izlaist}} šo aptauju",
+	"welcomesurvey-close-btn": "Aizvērt un doties atpakaļ uz \"$1\" lapu",
 	"welcomesurvey-sidebar-privacy-title": "Mēs cienām tavu privātumu",
 	"welcomesurvey-sidebar-editing-link1-text": "Apmācība",
 	"welcomesurvey-sidebar-editing-link2-text": "Palīdzības dienests",
