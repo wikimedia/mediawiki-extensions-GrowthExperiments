@@ -16,7 +16,8 @@
 		"GrowthExperiments\\": "includes/"
 	},
 	"TestAutoloadClasses": {
-		"GrowthExperiments\\Tests\\InvokedBetween": "tests/phpunit/InvokedBetween.php"
+		"GrowthExperiments\\Tests\\InvokedBetween": "tests/phpunit/InvokedBetween.php",
+	 	"GrowthExperiments\\Tests\\SearchTaskSuggesterFactoryTest": "tests/phpunit/unit/SearchTaskSuggesterFactoryTest.php"
 	},
 	"MessagesDirs": {
 		"GrowthExperiments": [
@@ -47,7 +48,7 @@
 	"APIListModules": {
 		"growthtasks": {
 			"class": "GrowthExperiments\\Api\\ApiQueryGrowthTasks",
-			"services": [ "GrowthExperimentsTaskSuggester", "GrowthExperimentsConfigurationLoader" ]
+			"services": [ "GrowthExperimentsTaskSuggesterFactory", "GrowthExperimentsConfigurationLoader" ]
 		}
 	},
 	"Hooks": {

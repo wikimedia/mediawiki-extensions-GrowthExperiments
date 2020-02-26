@@ -26,8 +26,15 @@ use TitleValue;
  */
 class PageConfigurationLoader implements ConfigurationLoader {
 
+	/** @var string Use the configuration for OresBasedTopic topics. */
 	public const CONFIGURATION_TYPE_ORES = 'ores';
+	/** @var string Use the configuration for MorelikeBasedTopic topics. */
 	public const CONFIGURATION_TYPE_MORELIKE = 'morelike';
+
+	protected static $validTopicTypes = [
+		self::CONFIGURATION_TYPE_ORES,
+		self::CONFIGURATION_TYPE_MORELIKE,
+	];
 
 	/** @var MessageLocalizer */
 	private $messageLocalizer;
@@ -54,7 +61,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	private $templateBlacklist;
 
 	/**
-	 * @var string One of the *Topic::CONFIGURATION_TYPE constants.
+	 * @var string One of the PageConfigurationLoader::CONFIGURATION_TYPE constants.
 	 */
 	private $topicType;
 
@@ -66,7 +73,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	 *   (local or interwiki).
 	 * @param LinkTarget|null $topicConfigurationPage Wiki page to load task configuration from
 	 *   (local or interwiki). Can be omitted, in which case topic matching will be disabled.
-	 * @param string $topicType One of the *Topic::CONFIGURATION_TYPE constants.
+	 * @param string $topicType One of the PageConfigurationLoader::CONFIGURATION_TYPE constants.
 	 */
 	public function __construct(
 		MessageLocalizer $messageLocalizer,
@@ -83,8 +90,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 		$this->topicConfigurationPage = $topicConfigurationPage;
 		$this->topicType = $topicType;
 
-		$validTopicTypes = [ self::CONFIGURATION_TYPE_ORES, self::CONFIGURATION_TYPE_MORELIKE ];
-		if ( !in_array( $this->topicType, $validTopicTypes, true ) ) {
+		if ( !in_array( $this->topicType, self::$validTopicTypes, true ) ) {
 			throw new InvalidArgumentException( 'Invalid topic type ' . $this->topicType );
 		}
 	}

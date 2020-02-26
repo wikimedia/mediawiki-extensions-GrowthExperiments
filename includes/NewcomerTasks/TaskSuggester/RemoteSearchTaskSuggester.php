@@ -15,9 +15,9 @@ use MediaWiki\Linker\LinkTarget;
 use TitleFactory;
 
 /**
- * Suggest edits based on searching a wiki via the API. Mainly meant for testing and
- * development; it can in theory be used in production but is less efficient than
- * using the search service internally.
+ * Suggest edits based on searching a wiki (potentially a different one) via the API.
+ * Mainly meant for testing and development; it can in theory be used in production but
+ * it is less efficient than using SearchEngine internally.
  */
 class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 

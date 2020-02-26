@@ -8,7 +8,7 @@ use ApiUsageException;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
-use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use StatusValue;
@@ -25,7 +25,7 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$taskType1 = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
 		$taskType2 = new TaskType( 'link', TaskType::DIFFICULTY_EASY );
 		$taskType3 = new TaskType( 'update', TaskType::DIFFICULTY_MEDIUM );
-		$suggester = new StaticTaskSuggester( [
+		$suggesterFactory = new StaticTaskSuggesterFactory( [
 			new Task( $taskType1, new TitleValue( NS_MAIN, 'Copyedit-1' ) ),
 			new Task( $taskType2, new TitleValue( NS_MAIN, 'Link-1' ) ),
 			new Task( $taskType3, new TitleValue( NS_MAIN, 'Update-1' ) ),
@@ -34,7 +34,7 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 			new Task( $taskType1, new TitleValue( NS_MAIN, 'Copyedit-3' ) ),
 		] );
 		$configurationLoader = new StaticConfigurationLoader( [ $taskType1, $taskType2, $taskType3 ] );
-		$this->setService( 'GrowthExperimentsTaskSuggester', $suggester );
+		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
 		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
 
 		$baseParams = [
@@ -66,12 +66,12 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 
 	public function testExecuteGenerator() {
 		$taskType = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
-		$suggester = new StaticTaskSuggester( [
+		$suggesterFactory = new StaticTaskSuggesterFactory( [
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Task-1' ) ),
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Task-2' ) ),
 		] );
 		$configurationLoader = new StaticConfigurationLoader( [ $taskType ] );
-		$this->setService( 'GrowthExperimentsTaskSuggester', $suggester );
+		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
 		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
 
 		list( $data ) = $this->doApiRequest( [ 'action' => 'query', 'generator' => 'growthtasks' ] );
@@ -81,10 +81,10 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 	}
 
 	public function testError() {
-		$suggester = new ErrorForwardingTaskSuggester(
-			StatusValue::newFatal( new ApiRawMessage( 'foo' ) ) );
+		$suggesterFactory = new StaticTaskSuggesterFactory( new ErrorForwardingTaskSuggester(
+			StatusValue::newFatal( new ApiRawMessage( 'foo' ) ) ) );
 		$configurationLoader = new StaticConfigurationLoader( [] );
-		$this->setService( 'GrowthExperimentsTaskSuggester', $suggester );
+		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
 		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
 
 		$this->expectException( ApiUsageException::class );
@@ -98,10 +98,10 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$taskType2 = new TaskType( 'link', TaskType::DIFFICULTY_EASY );
 		$topic1 = new Topic( 'art' );
 		$topic2 = new Topic( 'science' );
-		$suggester = new StaticTaskSuggester( [] );
+		$suggesterFactory = new StaticTaskSuggesterFactory( [] );
 		$configurationLoader = new StaticConfigurationLoader( [ $taskType1, $taskType2 ],
 			[ $topic1, $topic2 ] );
-		$this->setService( 'GrowthExperimentsTaskSuggester', $suggester );
+		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
 		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
 
 		list( $data ) = $this->doApiRequest( [ 'action' => 'paraminfo',
@@ -119,10 +119,10 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$this->assertArrayHasKey( 'paraminfo', $data );
 
 		// Make sure loading errors do not break parameter info
-		$suggester = new StaticTaskSuggester( [] );
+		$suggesterFactory = new StaticTaskSuggesterFactory( [] );
 		$configurationLoader = new StaticConfigurationLoader( StatusValue::newFatal( 'foo' ),
 			StatusValue::newFatal( 'bar' ) );
-		$this->setService( 'GrowthExperimentsTaskSuggester', $suggester );
+		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
 		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
 		list( $data ) = $this->doApiRequest( [ 'action' => 'paraminfo',
 			'modules' => 'query+growthtasks' ] );
