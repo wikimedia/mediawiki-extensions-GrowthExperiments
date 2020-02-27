@@ -12,7 +12,7 @@
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Mest populære hjelpesider om redigering",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Vis flere hjelpesider",
 	"growthexperiments-help-panel-question-widget-header": "Post spørsmålet ditt på nybegynnerforumet",
-	"growthexperiments-help-panel-question-placeholder": "Jeg trenger hjelp med redigering. Hvordan kan jeg …",
+	"growthexperiments-help-panel-question-placeholder": "Si hei og still spørsmålet {{GENDER:$1|ditt}}.",
 	"growthexperiments-help-panel-back-home": "Tilbake",
 	"growthexperiments-help-panel-close": "Gjort",
 	"growthexperiments-help-panel-home-title": "Få hjelp til å redigere",
