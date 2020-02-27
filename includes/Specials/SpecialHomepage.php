@@ -411,14 +411,17 @@ class SpecialHomepage extends SpecialPage {
 			return false;
 		}
 		$titleId = (int)explode( '/', $par )[1];
-		$clickId = $this->getRequest()->getVal( 'geclickid' );
+		$request = $this->getRequest();
+		$clickId = $request->getVal( 'geclickid' );
 		if ( $this->tracker->track( $titleId, $clickId ) instanceof StatusValue ) {
 			// If a StatusValue is returned from ->track(), it's because constructing the title
 			// from page ID failed, so don't attempt to redirect the user. If track returns false
 			// (storing the value in cache failed) then we are not going to prevent redirection.
 			return false;
 		}
-		$this->getOutput()->redirect( $this->tracker->getTitleUrl() );
+		$this->getOutput()->redirect(
+			$this->tracker->getTitleUrl( [ 'getasktype' => $request->getVal( 'getasktype' ) ] )
+		);
 		return true;
 	}
 

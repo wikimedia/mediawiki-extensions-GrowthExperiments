@@ -27,6 +27,12 @@ class SuggestedEdits extends BaseModule {
 	public const TOPICS_PREF = 'growthexperiments-homepage-se-topic-filters';
 	public const TOPICS_ENABLED_PREF = 'growthexperiments-homepage-suggestededits-topics-enabled';
 	public const TASKTYPES_PREF = 'growthexperiments-homepage-se-filters';
+	/**
+	 * Used to keep track of the state of user interactions with suggested edits per type per skin.
+	 * See also HomepageHooks::onLocalUserCreated
+	 */
+	public const GUIDANCE_BLUE_DOT_PREF =
+		'growthexperiments-homepage-suggestededits-guidance-blue-dot';
 	const SUGGESTED_EDIT_TAG = 'newcomer task';
 
 	/** @var EditInfoService */
@@ -95,6 +101,16 @@ class SuggestedEdits extends BaseModule {
 				!$context->getConfig()->get( 'GEHomepageSuggestedEditsTopicsRequiresOptIn' ) ||
 				$context->getUser()->getBoolOption( self::TOPICS_ENABLED_PREF )
 			);
+	}
+
+	/**
+	 * Check if guidance feature is enabled for suggested edits.
+	 *
+	 * @param IContextSource $context
+	 * @return bool
+	 */
+	public static function isGuidanceEnabledForAnyone( IContextSource $context ) :bool {
+		return $context->getConfig()->get( 'GENewcomerTasksGuidanceEnabled' );
 	}
 
 	/** @inheritDoc */

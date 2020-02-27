@@ -4,6 +4,7 @@ namespace GrowthExperiments;
 
 use Config;
 use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
+use GrowthExperiments\HomepageModules\SuggestedEdits;
 use OutputPage;
 use RequestContext;
 use ResourceLoaderContext;
@@ -90,6 +91,10 @@ class HelpPanelHooks {
 			$out->addModules( 'ext.growthExperiments.HelpPanel' );
 
 			$out->addHTML( HelpPanel::getHelpPanelCtaButton( Util::isMobile( $skin ) ) );
+		}
+
+		if ( SuggestedEdits::isGuidanceEnabledForAnyone( $out->getContext() ) ) {
+			$out->addJsConfigVars( [ 'wgGENewcomerTasksGuidanceEnabled' => true ] );
 		}
 
 		// If the help panel would be shown but for the value of the 'action' parameter,

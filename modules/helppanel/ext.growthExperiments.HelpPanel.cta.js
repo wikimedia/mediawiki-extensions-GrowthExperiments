@@ -4,6 +4,10 @@
 		HelpPanelProcessDialog = Help.HelpPanelProcessDialog,
 		configData = Help.configData;
 
+	if ( mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ) ) {
+		require( './../homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.js' );
+	}
+
 	// This shouldn't happen, but just to be sure
 	if ( !mw.config.get( 'wgGEHelpPanelEnabled' ) ) {
 		return;

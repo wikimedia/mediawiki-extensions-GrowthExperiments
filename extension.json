@@ -159,8 +159,9 @@
 			}
 		},
 		"ext.growthExperiments.ClickId": {
-			"scripts": [
-				"homepage/suggestededits/ext.growthExperiments.ClickId.js"
+			"packageFiles": [
+				"homepage/suggestededits/ext.growthExperiments.ClickId.js",
+				"utils/ext.growthExperiments.Utils.js"
 			],
 			"targets": [
 				"desktop",
@@ -248,6 +249,10 @@
 			"styles": [
 				"helppanel/ext.growthExperiments.HelpPanelCta.less"
 			],
+			"skinStyles": {
+				"minerva": [ "homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.minerva.less" ],
+				"vector": [ "homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.vector.less" ]
+			},
 			"targets": [
 				"desktop",
 				"mobile"
@@ -664,12 +669,15 @@
 				"helppanel/ext.growthExperiments.HelpPanelPopup.less"
 			],
 			"packageFiles": [
-				"helppanel/ext.growthExperiments.HelpPanel.cta.js"
+				"helppanel/ext.growthExperiments.HelpPanel.cta.js",
+				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.js",
+				"utils/ext.growthExperiments.Utils.js"
 			],
 			"dependencies": [
 				"ext.growthExperiments.Help",
 				"ext.growthExperiments.HelpPanel.icons",
-				"ext.growthExperiments.HelpPanelCta.styles"
+				"ext.growthExperiments.HelpPanelCta.styles",
+				"mediawiki.pulsatingdot"
 			],
 			"messages": [
 				"growthexperiments-help-panel-cta-button-text"

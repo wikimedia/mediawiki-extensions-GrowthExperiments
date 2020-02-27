@@ -4,6 +4,7 @@ namespace GrowthExperiments;
 
 use Config;
 use ConfigException;
+use GrowthExperiments\HomepageModules\SuggestedEdits;
 use Html;
 use MediaWiki\MediaWikiServices;
 use MessageLocalizer;
@@ -153,6 +154,10 @@ class HelpPanel {
 		if ( $title->isMainPage() ) {
 			// kowiki uses a Wikipedia namespace page as its Main_Page.
 			return false;
+		}
+		if ( SuggestedEdits::isGuidanceEnabledForAnyone( $out->getContext() ) &&
+			HomepageHooks::getClickId( $out->getContext() ) ) {
+			return true;
 		}
 		return in_array( $title->getSubjectPage()->getNamespace(),
 				   $out->getConfig()->get( 'GEHelpPanelReadingModeNamespaces' ) );
