@@ -15,6 +15,9 @@
 	"AutoloadNamespaces": {
 		"GrowthExperiments\\": "includes/"
 	},
+	"TestAutoloadClasses": {
+		"GrowthExperiments\\Tests\\InvokedBetween": "tests/phpunit/InvokedBetween.php"
+	},
 	"MessagesDirs": {
 		"GrowthExperiments": [
 			"i18n/extension",
