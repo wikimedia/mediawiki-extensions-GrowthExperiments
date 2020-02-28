@@ -1,12 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tuanminh01"
+			"Tuanminh01",
+			"Bluetpp"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Lấy các câu hỏi được định dạng được đăng qua các mô-đun trang chủ",
 	"apihelp-homepagequestionstore-param-questionformat": "Định dạng để trả về các câu hỏi, ví dụ: HTML.",
 	"apihelp-homepagequestionstore-param-storage": "Kho lưu trữ của các câu hỏi.",
 	"apihelp-homepagequestionstore-param-userid": "ID người dùng để lấy câu hỏi.",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Không có câu hỏi nào."
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Không có câu hỏi nào.",
+	"apihelp-growthsetmentor-summary": "Đặt cố vấn của người dùng. Thay đổi sẽ được ghi lại một cách công khai.",
+	"apihelp-growthsetmentor-param-mentee": "Tên người dùng của người được cố vấn",
+	"apihelp-growthsetmentor-param-mentor": "Tên người dùng của cố vấn",
+	"apihelp-growthsetmentor-param-reason": "Lý do thay đổi"
 }
