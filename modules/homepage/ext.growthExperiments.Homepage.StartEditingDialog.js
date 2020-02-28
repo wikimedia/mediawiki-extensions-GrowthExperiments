@@ -80,7 +80,7 @@ StartEditingDialog.prototype.initialize = function () {
 		padded: true,
 		expanded: false,
 		classes: [ 'suggested-edits-article-count-panel-layout-' + ( OO.ui.isMobile() ? 'mobile' : 'desktop' ) ]
-	} ).toggle( this.enableTopics );
+	} ).toggle( this.topicsEnabledAndTopicsExist() );
 	this.articleCounterPanelLayout
 		.$element.append(
 			new OO.ui.IconWidget( { icon: 'live-broadcast' } ).$element,
@@ -111,6 +111,14 @@ StartEditingDialog.prototype.updateArticleCountLabel = function ( count ) {
 				.params( [ mw.language.convertNumber( count ) ] )
 				.parse()
 		) );
+};
+
+/**
+ * Convenience function to check if topic matching is enabled and if any topics exist.
+ * @return {boolean}
+ */
+StartEditingDialog.prototype.topicsEnabledAndTopicsExist = function () {
+	return this.enableTopics && this.topicSelector && this.topicSelector.getSuggestions().length;
 };
 
 StartEditingDialog.prototype.swapPanel = function ( panel ) {
@@ -156,7 +164,7 @@ StartEditingDialog.prototype.getSetupProcess = function ( data ) {
 	return StartEditingDialog.super.prototype.getSetupProcess
 		.call( this, data )
 		.next( function () {
-			if ( this.enableTopics ) {
+			if ( this.topicsEnabledAndTopicsExist() ) {
 				this.updateMatchCount();
 			}
 			this.swapPanel( 'intro' );
@@ -186,7 +194,7 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 				$( this.windowClass ).scrollTop( 0 );
 			}
 			if ( action === 'back' ) {
-				this.articleCounterPanelLayout.toggle( this.enableTopics );
+				this.articleCounterPanelLayout.toggle( this.topicsEnabledAndTopicsExist() );
 				this.logger.log( 'start-startediting', this.mode, 'se-cta-back' );
 				this.swapPanel( 'intro' );
 			}
@@ -220,12 +228,11 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 };
 
 StartEditingDialog.prototype.buildIntroPanel = function () {
-	var $generalIntro, $generalImage, $responseIntro, surveyData, responseData, imageData, imageUrl,
+	var $generalIntro, $generalImage, $responseIntro, surveyData, responseData, imageData, imageUrl, generalImageUrl,
 		$topicIntro, $topicMessage, $topicSelectorWrapper,
 		imagePath = mw.config.get( 'wgExtensionAssetsPath' ) + '/GrowthExperiments/images',
 		config = require( './config.json' ),
 		introLinks = config.GEHomepageSuggestedEditsIntroLinks,
-		generalImageUrl = this.enableTopics ? 'intro-topic-general.svg' : 'intro-heart-article.svg',
 		responseMap = {
 			'add-image': {
 				image: {
@@ -290,13 +297,18 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 	} catch ( e ) {
 		surveyData = {};
 	}
+
+	this.topicSelector = this.enableTopics ? new TopicSelectionWidget() : false;
+
+	generalImageUrl = this.topicsEnabledAndTopicsExist() ? 'intro-topic-general.svg' : 'intro-heart-article.svg';
+
 	responseData = responseMap[ surveyData.reason ];
 	if ( responseData ) {
-		imageData = responseData.image[ this.enableTopics ? 'withTopics' : 'withoutTopics' ];
+		imageData = responseData.image[ this.topicsEnabledAndTopicsExist() ? 'withTopics' : 'withoutTopics' ];
 		imageUrl = typeof imageData === 'string' ? imageData : imageData[ this.getDir() ];
 	}
 
-	if ( this.enableTopics ) {
+	if ( this.topicsEnabledAndTopicsExist() ) {
 		$topicMessage = $( '<div>' )
 			.addClass( 'mw-ge-startediting-dialog-intro-topic-message' )
 			.append( responseData ?
@@ -321,7 +333,6 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 				$topicMessage
 			);
 
-		this.topicSelector = new TopicSelectionWidget();
 		this.topicSelector.connect( this, {
 			expand: 'onTopicSelectorExpand',
 			toggleSelection: 'updateMatchCount'
