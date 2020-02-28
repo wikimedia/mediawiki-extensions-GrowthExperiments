@@ -1,16 +1,72 @@
 /**
  * GroupWidget that groups SuggestionWidgets
+ *
  * @param {Object} config
+ * @cfg {boolean} [selectAll] If true, add a "select all" link
+ * @cfg {string} [header] Header message to show above the group
+ * @cfg {SuggestionWidget[]} [items] Items to add initially
+ * @cfg {SuggestionWidget[]} [hiddenItems] Items initially hidden behind "show more"
  */
 function SuggestionGroupWidget( config ) {
+	config = config || {};
 	// Parent constructor
 	SuggestionGroupWidget.parent.call( this, config );
 	// Mixin constructor
-	OO.ui.mixin.GroupWidget.call( this, $.extend( { $group: this.$element }, config ) );
+	OO.ui.mixin.GroupWidget.call( this, config );
+
+	this.aggregate( { toggleSuggestion: 'toggleSuggestion' } );
+	this.connect( this, {
+		toggleSuggestion: 'updateSelectAllButtonLabel',
+		add: 'updateSelectAllButtonLabel',
+		clear: 'updateSelectAllButtonLabel',
+		remove: 'updateSelectAllButtonLabel'
+	} );
+	if ( config.items ) {
+		this.addItems( config.items );
+	}
+	this.hiddenItems = config.hiddenItems || [];
+
+	this.$header = $( [] );
+	if ( config.header ) {
+		this.$header = $( '<h4>' )
+			.append( $( '<span>' ).text( config.header ) );
+	}
+
+	this.selectAllButton = null;
+	if ( config.selectAll ) {
+		this.selectAllButton = new OO.ui.ButtonWidget( {
+			classes: [ 'mw-ge-suggestionGroupWidget-select-all' ],
+			label: '', // set by updateSelectAllButtonLabel()
+			flags: [ 'progressive' ],
+			framed: false
+		} );
+		this.updateSelectAllButtonLabel();
+		this.selectAllButton.connect( this, { click: 'onSelectAllButtonClick' } );
+		this.$header.append( this.selectAllButton.$element );
+	}
+
+	this.showMoreButton = null;
+	if ( this.hiddenItems.length > 0 ) {
+		this.showMoreButton = new OO.ui.ButtonWidget( {
+			label: mw.msg( 'growthexperiments-homepage-suggestededits-topics-more' ),
+			flags: [ 'progressive' ],
+			framed: false
+		} );
+		this.showMoreButton.connect( this, { click: 'onShowMoreButtonClick' } );
+	}
+
+	this.$group
+		.addClass( 'wbmad-hide-outline' )
+		.on( 'keydown', this.onKeydown.bind( this ) );
 
 	this.$element
-		.addClass( 'mw-ge-SuggestionGroupWidget wbmad-hide-outline' )
-		.on( 'keydown', this.onKeydown.bind( this ) );
+		.addClass( 'mw-ge-SuggestionGroupWidget' )
+		.append(
+			this.selectAllButton && this.selectAllButton.$element,
+			this.$header,
+			this.$group,
+			this.showMoreButton && this.showMoreButton.$element
+		);
 }
 
 OO.inheritClass( SuggestionGroupWidget, OO.ui.Widget );
@@ -26,8 +82,55 @@ SuggestionGroupWidget.prototype.onKeydown = function ( e ) {
 	}
 };
 
+/**
+ * Handle clicks on the select all / unselect all button
+ */
+SuggestionGroupWidget.prototype.onSelectAllButtonClick = function () {
+	var newState = !this.isEverythingSelected();
+	this.getItems().forEach( function ( suggestion ) {
+		suggestion.toggleSuggestion( newState );
+	} );
+};
+
+/**
+ * Handle clicks on the "show more" button. This removes the button.
+ */
+SuggestionGroupWidget.prototype.onShowMoreButtonClick = function () {
+	this.addItems( this.hiddenItems );
+	this.hiddenItems = [];
+	this.showMoreButton.$element.detach();
+	this.emit( 'expand' );
+};
+
+/**
+ * Update the label of the "select all" button to either "select all" or "remove all",
+ * depending on whether all suggestions are selected or not
+ */
+SuggestionGroupWidget.prototype.updateSelectAllButtonLabel = function () {
+	if ( this.selectAllButton ) {
+		this.selectAllButton.setLabel( this.isEverythingSelected() ?
+			mw.msg( 'growthexperiments-homepage-suggestededits-topics-unselectall' ) :
+			mw.msg( 'growthexperiments-homepage-suggestededits-topics-selectall' )
+		);
+	}
+};
+
+/**
+ * Check whether all suggestions are selected.
+ * @return {boolean} All suggestions are selected
+ */
+SuggestionGroupWidget.prototype.isEverythingSelected = function () {
+	return this.getItems().every( function ( suggestion ) {
+		return suggestion.confirmed;
+	} );
+};
+
+/**
+ * Get the data of the selected suggestions.
+ * @return {Object[]} Data object for each suggestion that is selected
+ */
 SuggestionGroupWidget.prototype.getSelectedSuggestions = function () {
-	this.getItems()
+	return this.getItems()
 		.filter( function ( suggestion ) {
 			return suggestion.confirmed;
 		} )

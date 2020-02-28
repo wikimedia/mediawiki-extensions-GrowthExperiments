@@ -31,7 +31,7 @@ function SuggestionWidget( config ) {
 		.addClass( 'wbmad-suggestion-wrapper' )
 		.append( this.$suggestion )
 		.on( {
-			click: this.toggleSuggestion.bind( this ),
+			click: this.onClick.bind( this ),
 			keydown: this.onKeydown.bind( this )
 		} )
 		// Ensure element is focusable
@@ -54,12 +54,21 @@ SuggestionWidget.prototype.update = function () {
  *
  * Store confirmed status in local "state", tell parent widget about this
  * change, then re-render the suggestion widget.
+ *
+ * If the newState parameter is omitted, the state is toggled (set to the opposite of the
+ * current state).
+ *
+ * @param {boolean} [newState] True to set the widget to selected, false to set to unselected
  */
-SuggestionWidget.prototype.toggleSuggestion = function () {
-	this.confirmed = !this.confirmed;
+SuggestionWidget.prototype.toggleSuggestion = function ( newState ) {
+	this.confirmed = newState === undefined ? !this.confirmed : !!newState;
 	this.emit( 'toggleSuggestion', this.confirmed );
 
 	this.update();
+};
+
+SuggestionWidget.prototype.onClick = function () {
+	this.toggleSuggestion();
 };
 
 /**

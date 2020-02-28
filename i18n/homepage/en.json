@@ -253,6 +253,8 @@
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Select interests",
 	"growthexperiments-homepage-suggestededits-topics-more": "show more",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|topic|topics}}",
+	"growthexperiments-homepage-suggestededits-topics-selectall": "Select all",
+	"growthexperiments-homepage-suggestededits-topics-unselectall": "Remove all",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Choose some topics {{GENDER:$1|you}} are interested in editing",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "We'll try to suggest articles that match {{GENDER:$1|your}} interests.",
 	"growthexperiments-homepage-claimmentee-title": "Claim mentee",
