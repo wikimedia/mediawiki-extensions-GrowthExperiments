@@ -1,12 +1,19 @@
 ( function () {
 	var Help = require( 'ext.growthExperiments.Help' ),
+		taskTypes = require( './TaskTypes.json' ),
 		HelpPanelLogger = Help.HelpPanelLogger,
 		HelpPanelProcessDialog = Help.HelpPanelProcessDialog,
-		configData = Help.configData;
+		mobileFrontend = mw.mobileFrontend,
+		Drawer = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Drawer : undefined,
+		Anchor = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Anchor : undefined,
+		configData = Help.configData,
+		taskTypeId,
+		mobilePeek;
 
 	if ( mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ) ) {
 		require( './../homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.js' );
 	}
+	taskTypeId = mw.config.get( 'wgGrowthExperimentsTaskTypeUrlParam' );
 
 	// This shouldn't happen, but just to be sure
 	if ( !mw.config.get( 'wgGEHelpPanelEnabled' ) ) {
@@ -113,7 +120,7 @@
 		$body.append( $overlay );
 		windowManager.addWindows( [ helpPanelProcessDialog ] );
 
-		helpCtaButton.on( 'click', function () {
+		function openHelpPanel() {
 			if ( OO.ui.isMobile() ) {
 				// HACK: Detach the MobileFrontend overlay for both VE and source edit modes.
 				// Per T212967, leaving them enabled results in a phantom text input that the
@@ -145,6 +152,63 @@
 				}
 				helpCtaButton.toggle( true );
 			} );
+		}
+
+		function addMobilePeek( taskTypeData ) {
+			mobilePeek = new Drawer( {
+				className: 'suggested-edits-mobile-peek',
+				showCollapseIcon: false,
+				children: [
+					$( '<div>' ).addClass( 'suggested-edits-mobile-peek-content' )
+						.append(
+							$( '<div>' ).addClass( 'suggested-edits-mobile-peek-text' )
+								.append(
+									$( '<h4>' )
+										.addClass( 'suggested-edits-task-explanation-heading' )
+										.text( taskTypeData.messages.name ),
+									$( '<div>' ).addClass( 'suggested-edits-taskexplanation-additional-info' ).html(
+										$( '<div>' ).addClass( 'suggested-edits-difficulty-time-estimate' ).append(
+											$( '<div>' ).addClass( 'suggested-edits-difficulty-indicator' )
+												.addClass( 'suggested-edits-difficulty-indicator-' + taskTypeData.difficulty )
+												.text( mw.message( 'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' + taskTypeData.difficulty ) ),
+											$( '<div>' )
+												.addClass( 'suggested-edits-difficulty-level suggested-edits-difficulty-level-' + taskTypeData.difficulty )
+												.text( taskTypeData.messages.timeestimate )
+										)
+									) )
+						).append( $( '<div>' ).addClass( 'suggested-edits-icon' ) ),
+					$( '<div>' ).addClass( 'suggested-edits-mobile-peek-footer' )
+						.append(
+							new Anchor( {
+								href: '#',
+								additionalClassNames: 'suggested-edits-mobile-peek-more-about-this-edit',
+								progressive: true,
+								label: mw.msg( 'growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit' )
+							} ).$el
+						)
+				],
+				onBeforeHide: function ( drawer ) {
+					setTimeout( function () {
+						helpCtaButton.toggle( true );
+						drawer.$el.remove();
+					}, 250 );
+				}
+			} );
+			mobilePeek.$el.find( '.suggested-edits-mobile-peek' ).on( 'click', function () {
+				mobilePeek.hide();
+				openHelpPanel();
+			} );
+			document.body.appendChild( mobilePeek.$el[ 0 ] );
+			helpCtaButton.toggle( false );
+			mobilePeek.show();
+		}
+
+		if ( OO.ui.isMobile() && taskTypeId && taskTypes[ taskTypeId ] ) {
+			addMobilePeek( taskTypes[ taskTypeId ] );
+		}
+
+		helpCtaButton.on( 'click', function () {
+			openHelpPanel();
 		} );
 
 		// Attach or detach the help panel CTA in response to hooks from MobileFrontend.

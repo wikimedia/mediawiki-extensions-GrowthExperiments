@@ -1,0 +1,145 @@
+@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.mixins.less';
+@import '../ext.growthExperiments.variables.less';
+
+.suggested-edits-taskexplanation-additional-info {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+	align-content: center;
+
+	// Align the icon with the h4.
+	.oo-ui-iconElement {
+		text-align: left;
+		margin-top: -5px;
+	}
+
+	p {
+		color: @colorGray2;
+	}
+
+	.suggested-edits-difficulty-indicator {
+		margin-left: auto;
+		margin-top: 2px;
+		margin-right: 4px;
+		text-transform: uppercase;
+		font-size: 0.75em;
+		height: 14px;
+		line-height: 1.4;
+		position: relative;
+		padding: 2px 4px;
+		// Counter the global border-box rule on mobile
+		.box-sizing( content-box );
+	}
+
+	.suggested-edits-difficulty-time-estimate {
+		display: flex;
+
+		.suggested-edits-difficulty-indicator {
+			margin-left: 0;
+		}
+
+		.suggested-edits-difficulty-level {
+			font-size: 12px;
+			margin-top: 2px;
+			padding-left: 10px;
+		}
+
+		.suggested-edits-difficulty-level-easy {
+			color: @easyColor;
+		}
+
+		.suggested-edits-difficulty-level-medium {
+			color: @mediumColor;
+		}
+
+		.suggested-edits-difficulty-level-hard {
+			color: @hardColor;
+		}
+	}
+
+	.suggested-edits-difficulty-indicator-after-mixin( @color ) {
+		content: '';
+		position: absolute;
+		right: -4px;
+		bottom: 0;
+		width: 0;
+		height: 0;
+		border-right: 4px solid transparent;
+		border-top: 9px solid fade( @color, 20% );
+		border-bottom: 9px solid fade( @color, 20% );
+	}
+
+	.suggested-edits-difficulty-indicator-easy {
+		background-color: fade( @easyColor, 20% );
+		color: @easyColor;
+
+		&:after {
+			.suggested-edits-difficulty-indicator-after-mixin( @easyColor );
+		}
+	}
+
+	.suggested-edits-difficulty-indicator-medium {
+		background-color: fade( @mediumColor, 20% );
+		color: @mediumColor;
+
+		&:after {
+			.suggested-edits-difficulty-indicator-after-mixin( @mediumColor );
+		}
+	}
+
+	.suggested-edits-difficulty-indicator-hard {
+		background-color: fade( @hardColor, 20% );
+		color: @hardColor;
+
+		&:after {
+			.suggested-edits-difficulty-indicator-after-mixin( @hardColor );
+		}
+	}
+}
+
+.drawer.suggested-edits-mobile-peek {
+	background-color: fade( @suggestedEditsBackgroundColor, 100 );
+	padding: unset;
+
+	.suggested-edits-mobile-peek-content {
+		display: flex;
+		justify-content: space-between;
+		// Restore Minerva's padding for the Drawer.
+		padding: 16px 16px 0 16px;
+		min-height: 96px;
+
+		.suggested-edits-mobile-peek-text {
+			h4 {
+				display: flex;
+				font-size: 1.144em;
+				text-align: left;
+				color: @colorGray2;
+			}
+
+			.suggested-edits-taskexplanation-additional-info {
+				// Align the suggested edits icon to the right.
+				align-items: center;
+			}
+		}
+
+		.suggested-edits-icon {
+			display: flex;
+			width: 64px;
+			height: 64px;
+			// Image URLs are relative to the current CSS
+			.background-image-svg('../../../images/suggestededits/Topic-general-64w.svg',
+			'../../../images/suggestededits/Topic-general-64w@4x.png');
+			background-repeat: no-repeat;
+			padding-right: 16px;
+		}
+	}
+
+	.suggested-edits-mobile-peek-footer {
+		background-color: @colorBaseInverted;
+		min-height: 48px;
+		text-align: center;
+		font-weight: bold;
+		padding: 16px 0;
+	}
+}
