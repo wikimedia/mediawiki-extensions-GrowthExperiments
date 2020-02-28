@@ -56,7 +56,7 @@ function SuggestionGroupWidget( config ) {
 	}
 
 	this.$group
-		.addClass( 'wbmad-hide-outline' )
+		.addClass( 'mw-ge-hide-outline' )
 		.on( 'keydown', this.onKeydown.bind( this ) );
 
 	this.$element
@@ -78,7 +78,7 @@ OO.mixinClass( SuggestionGroupWidget, OO.ui.mixin.GroupWidget );
  */
 SuggestionGroupWidget.prototype.onKeydown = function ( e ) {
 	if ( e.key === 'Tab' ) {
-		this.$element.removeClass( 'wbmad-hide-outline' );
+		this.$element.removeClass( 'mw-ge-hide-outline' );
 	}
 };
 

@@ -24,11 +24,11 @@ function SuggestionWidget( config ) {
 	} );
 
 	this.$suggestion = $( '<div>' )
-		.addClass( 'wbmad-suggestion' )
+		.addClass( 'mw-ge-suggestion' )
 		.append( this.suggestionLabel.$element, this.checkIcon.$element );
 
 	this.$element
-		.addClass( 'wbmad-suggestion-wrapper' )
+		.addClass( 'mw-ge-suggestion-wrapper' )
 		.append( this.$suggestion )
 		.on( {
 			click: this.onClick.bind( this ),
@@ -44,8 +44,8 @@ OO.inheritClass( SuggestionWidget, OO.ui.Widget );
 
 SuggestionWidget.prototype.update = function () {
 	this.$suggestion
-		.toggleClass( 'wbmad-suggestion--confirmed', this.confirmed )
-		.toggleClass( 'wbmad-suggestion--unconfirmed', !this.confirmed );
+		.toggleClass( 'mw-ge-suggestion--confirmed', this.confirmed )
+		.toggleClass( 'mw-ge-suggestion--unconfirmed', !this.confirmed );
 	this.checkIcon.toggle( this.confirmed );
 };
 
