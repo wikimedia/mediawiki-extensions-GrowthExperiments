@@ -485,7 +485,9 @@
 			.toggleClass( 'pseudo-card', !( this.currentCard instanceof EditCardWidget ) )
 			.toggleClass( 'pseudo-card-eoq', this.currentCard instanceof EndOfQueueWidget );
 		this.setupClickLogging();
-		this.setupEditTypeTracking();
+		if ( this.currentCard instanceof EditCardWidget ) {
+			this.setupEditTypeTracking();
+		}
 	};
 
 	/**
