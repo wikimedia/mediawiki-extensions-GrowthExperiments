@@ -323,7 +323,7 @@ class SpecialHomepage extends SpecialPage {
 	}
 
 	/**
-	 * @param $moduleName
+	 * @param string $moduleName
 	 * @param HomepageModule $module
 	 */
 	private function renderMobileDetails( $moduleName, HomepageModule $module ) {

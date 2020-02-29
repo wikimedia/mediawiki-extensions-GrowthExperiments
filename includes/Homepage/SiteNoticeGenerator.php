@@ -106,7 +106,7 @@ class SiteNoticeGenerator {
 	 * @param string &$siteNotice
 	 * @param \Skin $skin
 	 * @param string $contextName
-	 * @param bool $minervaEnableSiteNotice
+	 * @param bool &$minervaEnableSiteNotice
 	 * @return bool|void Hook return value (ie. false to prevent other notices from displaying)
 	 */
 	private static function setDiscoverySiteNotice(
@@ -197,7 +197,7 @@ class SiteNoticeGenerator {
 	 * @param string &$siteNotice
 	 * @param \Skin $skin
 	 * @param string $contextName
-	 * @param bool $minervaEnableSiteNotice
+	 * @param bool &$minervaEnableSiteNotice
 	 */
 	private static function setMobileDiscoverySiteNotice(
 		&$siteNotice, \Skin $skin, $contextName, &$minervaEnableSiteNotice

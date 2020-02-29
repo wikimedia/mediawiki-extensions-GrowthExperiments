@@ -414,8 +414,9 @@ abstract class QuestionPoster {
 		return $this->postedOnTimestamp;
 	}
 
-	/*
+	/**
 	 * Timezone adjustment, site default format, and site default time zone are used for formatting.
+	 * @return string
 	 */
 	private function getFormattedPostedOnTimestamp() {
 		return MediaWikiServices::getInstance()->getContentLanguage()

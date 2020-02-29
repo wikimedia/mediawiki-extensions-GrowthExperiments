@@ -77,7 +77,7 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 
 	/**
 	 * @param string $source
-	 * @param $body
+	 * @param string $body
 	 * @param string $relevantTitle
 	 * @throws MWException
 	 */
