@@ -6,6 +6,7 @@ use Config;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use Html;
 use IContextSource;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
@@ -25,6 +26,7 @@ class SuggestedEdits extends BaseModule {
 	const ACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-activated';
 	const PREACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-preactivated';
 	public const TOPICS_PREF = 'growthexperiments-homepage-se-topic-filters';
+	public const TOPICS_ORES_PREF = 'growthexperiments-homepage-se-ores-topic-filters';
 	public const TOPICS_ENABLED_PREF = 'growthexperiments-homepage-suggestededits-topics-enabled';
 	public const TASKTYPES_PREF = 'growthexperiments-homepage-se-filters';
 	/**
@@ -101,6 +103,19 @@ class SuggestedEdits extends BaseModule {
 				!$context->getConfig()->get( 'GEHomepageSuggestedEditsTopicsRequiresOptIn' ) ||
 				$context->getUser()->getBoolOption( self::TOPICS_ENABLED_PREF )
 			);
+	}
+
+	/**
+	 * Get the name of the preference to use for storing topic filters.
+	 * @param Config $config
+	 * @return string
+	 */
+	public static function getTopicFiltersPref( Config $config ) {
+		$topicType = $config->get( 'GENewcomerTasksTopicType' );
+		if ( $topicType === PageConfigurationLoader::CONFIGURATION_TYPE_ORES ) {
+			return self::TOPICS_ORES_PREF;
+		}
+		return self::TOPICS_PREF;
 	}
 
 	/**
@@ -312,7 +327,11 @@ class SuggestedEdits extends BaseModule {
 			'taskCount' => null,
 		];
 		if ( self::isTopicMatchingEnabled( $this->getContext() ) ) {
-			$data['topics'] = json_decode( $this->getContext()->getUser()->getOption( self::TOPICS_PREF ) );
+			$data['topics'] = json_decode(
+				$this->getContext()->getUser()->getOption(
+					self::getTopicFiltersPref( $this->getContext()->getConfig() )
+				)
+			);
 		}
 		return array_merge( parent::getActionData(), $data );
 	}

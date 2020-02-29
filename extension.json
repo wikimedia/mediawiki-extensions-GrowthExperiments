@@ -405,7 +405,7 @@
 				},
 				{
 					"name": "homepage/suggestededits/config.json",
-					"config": [ "GEHomepageSuggestedEditsIntroLinks" ]
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
 				}
 			],
 			"targets": [
@@ -500,7 +500,7 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
 				{
 					"name": "homepage/config.json",
-					"config": [ "GEHomepageSuggestedEditsIntroLinks" ]
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
 				}
 			],
 			"styles": [

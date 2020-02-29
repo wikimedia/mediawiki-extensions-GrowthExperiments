@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments;
 
+use Config;
 use ConfigException;
 use DomainException;
 use EchoAttributeManager;
@@ -288,6 +289,8 @@ class HomepageHooks {
 			return;
 		}
 
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+
 		$preferences[ self::HOMEPAGE_PREF_ENABLE ] = [
 			'type' => 'toggle',
 			'section' => 'personal/homepage',
@@ -325,7 +328,7 @@ class HomepageHooks {
 			'type' => 'api',
 		];
 
-		$preferences[ SuggestedEdits::TOPICS_PREF ] = [
+		$preferences[ SuggestedEdits::getTopicFiltersPref( $config ) ] = [
 			'type' => 'api'
 		];
 
@@ -772,6 +775,23 @@ class HomepageHooks {
 	 */
 	public static function getAQSConfigJson() {
 		return MediaWikiServices::getInstance()->getService( '_GrowthExperimentsAQSConfig' );
+	}
+
+	/**
+	 * ResourceLoader JSON package callback for getting config variables that are shared between
+	 * SuggestedEdits and StartEditingDialog
+	 *
+	 * @param ResourceLoaderContext $context
+	 * @param Config $config
+	 * @return array
+	 */
+	public static function getSuggestedEditsConfigJson(
+		ResourceLoaderContext $context, Config $config
+	) {
+		return [
+			'GEHomepageSuggestedEditsIntroLinks' => $config->get( 'GEHomepageSuggestedEditsIntroLinks' ),
+			'GENewcomerTasksTopicFiltersPref' => SuggestedEdits::getTopicFiltersPref( $config ),
+		];
 	}
 
 	/**
