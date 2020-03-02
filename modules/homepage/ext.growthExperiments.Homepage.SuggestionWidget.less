@@ -26,7 +26,7 @@
 	animation: fadeIn @duration;
 }
 
-.wbmad-suggestion-wrapper {
+.mw-ge-suggestion-wrapper {
 	display: inline-block;
 	margin: 0 16px 16px 0;
 
@@ -34,7 +34,7 @@
 		cursor: pointer;
 	}
 
-	.wbmad-suggestion {
+	.mw-ge-suggestion {
 		.transition( color @transition-duration-base );
 		background-color: @base90;
 		border: @suggestion-border-width solid @base50;
@@ -50,7 +50,7 @@
 		}
 	}
 
-	.wbmad-suggestion--confirmed {
+	.mw-ge-suggestion--confirmed {
 		background-color: @accent90;
 		border-color: @accent10;
 		color: @base0;
@@ -83,7 +83,7 @@
 	}
 
 	// Animate the process of moving a label back to center when unconfirmed.
-	.wbmad-suggestion--unconfirmed {
+	.mw-ge-suggestion--unconfirmed {
 		/* stylelint-disable-next-line selector-class-pattern */
 		.oo-ui-labelWidget {
 			@keyframes slideRight {
@@ -100,6 +100,6 @@
 	}
 }
 
-.wbmad-hide-outline .wbmad-suggestion-wrapper {
+.mw-ge-hide-outline .mw-ge-suggestion-wrapper {
 	outline: 0;
 }
