@@ -14,7 +14,11 @@
 			$( this ).attr( 'href', linkUrl.toString() );
 		} );
 
-		// Remove geclickid from the URL
 		Utils.removeQueryParam( url, 'geclickid' );
+	}
+
+	if ( url.query.getasktype ) {
+		mw.config.set( 'wgGrowthExperimentsTaskTypeUrlParam', url.query.getasktype );
+		Utils.removeQueryParam( url, 'getasktype' );
 	}
 }() );
