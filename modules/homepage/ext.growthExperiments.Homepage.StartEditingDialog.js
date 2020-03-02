@@ -491,7 +491,7 @@ StartEditingDialog.prototype.buildProgressIndicator = function ( currentPage, to
 };
 
 StartEditingDialog.prototype.onTopicSelectorExpand = function () {
-	this.updateSize();
+	// This used to call this.updateSize(), but T238610#5861323 asked for that to be removed
 	this.logger.log( 'start-startediting', this.mode, 'se-cta-more-click' );
 };
 

@@ -207,7 +207,7 @@ TopicFiltersDialog.prototype.getSetupProcess = function ( data ) {
 };
 
 TopicFiltersDialog.prototype.onTopicSelectorExpand = function () {
-	this.updateSize();
+	// This used to call this.updateSize(), but T238610#5861323 asked for that to be removed
 	this.emit( 'expand' );
 };
 
