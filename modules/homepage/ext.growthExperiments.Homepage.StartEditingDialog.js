@@ -181,7 +181,9 @@ StartEditingDialog.prototype.updateMatchCount = function () {
 };
 
 StartEditingDialog.prototype.getActionProcess = function ( action ) {
-	var dialog = this, settings, logData;
+	var settings, logData,
+		dialog = this,
+		config = require( './config.json' );
 	return StartEditingDialog.super.prototype.getActionProcess.call( this, action )
 		.next( function () {
 			if ( action === 'close' ) {
@@ -210,9 +212,10 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 				};
 				logData = {};
 				if ( this.topicSelector ) {
-					settings[ 'growthexperiments-homepage-se-topic-filters' ] = this.topicSelector.getSelectedTopics().length > 0 ?
-						JSON.stringify( this.topicSelector.getSelectedTopics() ) :
-						null;
+					settings[ config.GENewcomerTasksTopicFiltersPref ] =
+						this.topicSelector.getSelectedTopics().length > 0 ?
+							JSON.stringify( this.topicSelector.getSelectedTopics() ) :
+							null;
 					logData.topics = this.topicSelector.getSelectedTopics();
 					logData.topicsAboveFold = this.topicSelector.getAboveFoldSelectedTopics();
 				}

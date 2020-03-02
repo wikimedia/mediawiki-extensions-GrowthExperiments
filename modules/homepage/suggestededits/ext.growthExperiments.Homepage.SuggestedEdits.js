@@ -537,8 +537,9 @@
 	 */
 	function initSuggestedTasks( $container ) {
 		var suggestedEditsModule,
+			config = require( './config.json' ),
 			savedTaskTypeFilters = mw.user.options.get( 'growthexperiments-homepage-se-filters' ),
-			savedTopicFilters = mw.user.options.get( 'growthexperiments-homepage-se-topic-filters' ),
+			savedTopicFilters = mw.user.options.get( config.GENewcomerTasksTopicFiltersPref ),
 			taskTypes = savedTaskTypeFilters ?
 				JSON.parse( savedTaskTypeFilters ) :
 				initialTaskTypes,

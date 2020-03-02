@@ -170,7 +170,7 @@ TopicFiltersDialog.prototype.savePreferences = function () {
 	// If existing preference is null, that means the user never saved a change
 	// to the topics, so we should continue to save null. Otherwise for empty filters
 	// save a JSON encoded empty array..
-	var prefName = 'growthexperiments-homepage-se-topic-filters',
+	var prefName = require( './config.json' ).GENewcomerTasksTopicFiltersPref,
 		prefValueHasBeenSetBefore = mw.user.options.get( prefName ),
 		prefValue;
 	if ( !this.getEnabledFilters().length ) {
