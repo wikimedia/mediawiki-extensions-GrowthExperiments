@@ -15,6 +15,7 @@ function StartEditingDialog( config, logger, api ) {
 	this.mode = config.mode;
 	this.windowClass = config.windowClass;
 	this.enableTopics = mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' );
+	this.updateMatchCountDebounced = OO.ui.debounce( this.updateMatchCount.bind( this ) );
 }
 
 OO.inheritClass( StartEditingDialog, OO.ui.ProcessDialog );
@@ -335,7 +336,8 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 
 		this.topicSelector.connect( this, {
 			expand: 'onTopicSelectorExpand',
-			toggleSelection: 'updateMatchCount'
+			// The "select all" buttons fire many toggleSelection events at once, so debounce them
+			toggleSelection: 'updateMatchCountDebounced'
 		} );
 		$topicSelectorWrapper = $( '<div>' )
 			.addClass( 'mw-ge-startediting-dialog-intro-topic-selector' )
