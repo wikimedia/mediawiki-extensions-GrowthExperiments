@@ -255,11 +255,13 @@
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "ضبط التعديلات المقترحة غير صالح: الرسالة المفقودة $1 لنوع المهمة أو الموضوع $2",
 	"growthexperiments-homepage-suggestededits-create-article-additional-message": "لإنشاء مقالة جديدة، {{GENDER:$1|ستحتاج|ستحتاجين}} إلى استخدام العديد من المهارات التي يمكنك تعلمها من خلال إكمال بعض المهام الأسهل، لمعرفة المزيد حول كيفية إنشاء مقالة جديدة، [$2 {{GENDER:$1|أنقر|أنقري}} هنا].",
 	"growthexperiments-homepage-suggestededits-error-title": "لا تتوفر تعديلات مقترحة في الوقت الحالي.",
-	"growthexperiments-homepage-suggestededits-error-description": "من فضلك {{GENDER:|عاود|عاودي}} المحاولة في وقت لاحق.",
+	"growthexperiments-homepage-suggestededits-error-description": "من فضلك {{GENDER:|أعد|أعيدي}} المحاولة في وقت لاحق.",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "{{GENDER:|حدّد|حدّدي}} على الأقل مستوى واحدا من التعديلات",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "{{GENDER:|حدّد|حدّدي}} الاهتمامات",
 	"growthexperiments-homepage-suggestededits-topics-more": "{{GENDER:|أظهر|أظهري}} المزيد",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "{{PLURAL:$1|لا مواضيع|موضوع واحد|موضوعان اثنان|$1 مواضيع|$1 موضوعا}}",
+	"growthexperiments-homepage-suggestededits-topics-selectall": "{{GENDER:|اِختر|اِختاري}} الكل",
+	"growthexperiments-homepage-suggestededits-topics-unselectall": "{{GENDER:|احذف|احذفي}} الكل",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "{{GENDER:$1|اِختر|اِختاري}} بعض المواضيع التي {{GENDER:$1|تهتم|تهتمين}} بالكتابة عنها",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "سنحاول اقتراح مقالات تتماشى مع {{GENDER:$1|اهتماماتكَ|اهتماماتكِ}}.",
 	"growthexperiments-homepage-claimmentee-title": "مطالبة بمرشَد أو بمرشَدة",
@@ -281,7 +283,7 @@
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|رحب|رحبي}} {{GENDER:$2|بمرشدك الجديد|بمرشدتك الجديدة}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "يجب أن {{GENDER:$1|تكون مسجلا كمرشد|تكوني مسجلة كمرشدة}} على [[$2]] من أجل استخدام خاص:مطالبة_مرشد",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "قائمة المرشدين ([[$1]]) غير موجودة أو غير مضبوطة.",
-	"growthexperiments-notification-learn-more": "{{GENDER:$1|تعرف|تعرفي}} المزيد حول {{GENDER:$2|مرشدك الجديد|مرشدتك الجديدة}}",
+	"growthexperiments-notification-learn-more": "{{GENDER:$1|تعرف|تعرفي}} على المزيد حول {{GENDER:$2|مرشدك الجديد|مرشدتك الجديدة}}",
 	"right-setmentor": "إضافة مرشد للمستخدمين",
 	"action-setmentor": "تعيين مرشدي المستخدمين"
 }

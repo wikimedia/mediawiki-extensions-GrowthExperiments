@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ата",
-			"Alexander Yukal"
+			"Alexander Yukal",
+			"Piramidion"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Отримати форматовані запитання, опубліковані через модулі домашньої сторінки",
@@ -10,5 +11,8 @@
 	"apihelp-homepagequestionstore-param-storage": "Місце збереження запитань.",
 	"apihelp-homepagequestionstore-param-userid": "ID користувача, для якого отримати запитання.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Запитань не знайдено.",
-	"apihelp-growthsetmentor-param-reason": "Причина зміни."
+	"apihelp-growthsetmentor-summary": "Призначити наставника для користувача. Зміну буде записано в публічному журналі.",
+	"apihelp-growthsetmentor-param-mentee": "Ім'я користувача підопічного",
+	"apihelp-growthsetmentor-param-mentor": "Ім'я користувача наставника",
+	"apihelp-growthsetmentor-param-reason": "Причина зміни"
 }

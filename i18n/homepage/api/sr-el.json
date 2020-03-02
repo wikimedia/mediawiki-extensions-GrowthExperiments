@@ -4,5 +4,9 @@
 	"apihelp-homepagequestionstore-param-questionformat": "Format u kom će se vratiti pitanja, na primer HTML",
 	"apihelp-homepagequestionstore-param-storage": "Skladišna lokacija pitanja",
 	"apihelp-homepagequestionstore-param-userid": "Korisnički ID za koji će se pribaviti pitanja",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Nijedno pitanje nije pronađeno."
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Nijedno pitanje nije pronađeno.",
+	"apihelp-growthsetmentor-summary": "Postavljanje mentora korinicima; promena će biti javno evidentirana.",
+	"apihelp-growthsetmentor-param-mentee": "Korisničko ime novajlije",
+	"apihelp-growthsetmentor-param-mentor": "korisničko ime mentora",
+	"apihelp-growthsetmentor-param-reason": "razlog promene"
 }

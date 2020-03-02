@@ -13,7 +13,7 @@
 	"growthexperiments-help-panel-editing-help-links-widget-header": "편집에 관한 인기 도움말",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "더 많은 도움말 문서 보기",
 	"growthexperiments-help-panel-question-widget-header": "질문방에 질문 게시하기",
-	"growthexperiments-help-panel-question-placeholder": "편집에 도움이 필요합니다. 어떻게 하면 좋을까요...",
+	"growthexperiments-help-panel-question-placeholder": "인사와 {{GENDER:$1|질문}}을 해 보세요.",
 	"growthexperiments-help-panel-back-home": "뒤로",
 	"growthexperiments-help-panel-close": "완료",
 	"growthexperiments-help-panel-home-title": "편집 도움 받기",

@@ -9,5 +9,7 @@
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "Le visitas de paginas non ha ancora essite calculate. Reveni deman!",
 	"growthexperiments-homepage-suggestededits-footer": "Altere usatores ha remarcate que iste articulos debe esser meliorate. Adjuta a meliorar '''{{SITENAME}}''' pro su '''$1 lectores''' cata die.",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-update": "Actualisar le articulos existente",
-	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Difficile"
+	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Difficile",
+	"growthexperiments-homepage-suggestededits-topics-selectall": "Seliger toto",
+	"growthexperiments-homepage-suggestededits-topics-unselectall": "Remover toto"
 }

@@ -250,6 +250,8 @@
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Selecionar interesses",
 	"growthexperiments-homepage-suggestededits-topics-more": "mostrar mais",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|trópico|trópicos}}",
+	"growthexperiments-homepage-suggestededits-topics-selectall": "Selecionar tudo",
+	"growthexperiments-homepage-suggestededits-topics-unselectall": "Remover todos",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Escolha alguns tópicos que {{GENDER:$1|você}} deseja editar",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Vamos tentar sugerir artigos que correspondam ao {{GENDER:$1|seu}} interesse.",
 	"growthexperiments-homepage-claimmentee-title": "Reivindicar aprendiz",

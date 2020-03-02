@@ -254,6 +254,8 @@
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "{{GENDER:|בחר|בחרי}} תחומי עניין",
 	"growthexperiments-homepage-suggestededits-topics-more": "להציג עוד",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "{{PLURAL:$1|נושא אחד|$1 נושאים}}",
+	"growthexperiments-homepage-suggestededits-topics-selectall": "לבחור הכול",
+	"growthexperiments-homepage-suggestededits-topics-unselectall": "להסיר הכול",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "{{GENDER:$1|בחר|בחרי}} נושאים {{GENDER:$1|שאתה מעוניין|שאת מעוניינת}} לערוך",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "ננסה להציע ערכים שמתאימים לתחומי העניין {{GENDER:$1|שלך}}.",
 	"growthexperiments-homepage-claimmentee-title": "לקחת חניך",

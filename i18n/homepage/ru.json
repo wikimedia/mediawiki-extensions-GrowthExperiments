@@ -59,6 +59,8 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Откройте боковое меню и нажмите на $2, чтобы попасть на  {{GENDER:$1|вашу}} домашнюю страницу.",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3 - 5 минут",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Готово",
+	"growthexperiments-homepage-suggestededits-topics-selectall": "Выделить все",
+	"growthexperiments-homepage-suggestededits-topics-unselectall": "Удалить все",
 	"right-setmentor": "Установить наставника пользователя",
 	"action-setmentor": "установить наставника пользователя"
 }

@@ -251,6 +251,8 @@
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Изаберите интересовања",
 	"growthexperiments-homepage-suggestededits-topics-more": "прикажи више",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|тема|теме|тема}}",
+	"growthexperiments-homepage-suggestededits-topics-selectall": "Изабери све",
+	"growthexperiments-homepage-suggestededits-topics-unselectall": "Уклони све",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Одаберите теме које {{GENDER:$1|вас}} занимају",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Покушаћемо да предлажемо чланке који се подударају с {{GENDER:$1|вашим}} интересовањима.",
 	"growthexperiments-homepage-claimmentee-title": "Преузимање новајлије",

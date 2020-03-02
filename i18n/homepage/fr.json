@@ -262,6 +262,8 @@
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Sélectionner des intérêts",
 	"growthexperiments-homepage-suggestededits-topics-more": "afficher plus",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|sujet|sujets}}",
+	"growthexperiments-homepage-suggestededits-topics-selectall": "Tout sélectionner",
+	"growthexperiments-homepage-suggestededits-topics-unselectall": "Tout supprimer",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Choisir certains sujets que {{GENDER:$1|vous}} êtes intéressés à modifier",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Nous essayerons de suggérer des articles qui correspondent à {{GENDER:$1|vos}} intérêts.",
 	"growthexperiments-homepage-claimmentee-title": "Demander un tutoré",

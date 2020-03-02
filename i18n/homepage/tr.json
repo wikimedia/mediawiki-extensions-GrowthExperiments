@@ -251,6 +251,8 @@
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "İlgi alanlarını seçin",
 	"growthexperiments-homepage-suggestededits-topics-more": "daha fazla göster",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|konu|konu}}",
+	"growthexperiments-homepage-suggestededits-topics-selectall": "Hepsini seç",
+	"growthexperiments-homepage-suggestededits-topics-unselectall": "Hepsini kaldır",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Düzenlemek {{GENDER:$1|istediğiniz}} bazı konuları seçin",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "İlgi {{GENDER:$1|alanlarınıza}} uygun makaleler önermeye çalışacağız.",
 	"growthexperiments-homepage-claimmentee-title": "Talep sahibi",

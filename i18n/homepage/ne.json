@@ -5,8 +5,12 @@
 			"हिमाल सुबेदी"
 		]
 	},
+	"growthexperiments-homepage-account-header": "खाता खोलियो",
+	"growthexperiments-homepage-email-button-confirmed": "प्राथमिकताहरू",
 	"growthexperiments-homepage-startediting-header": "सम्पादन सुरु गर्नुहोस्",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "मैले बुझेँ",
 	"growthexperiments-tour-response-button-okay": "मैले बुझेँ",
-	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|सक्रिय}} आज"
+	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|सक्रिय}} आज",
+	"growthexperiments-homepage-suggestededits-topics-selectall": "सबै चयन गर्नुहोस्",
+	"growthexperiments-homepage-suggestededits-topics-unselectall": "सबै हटाउनुहोस्"
 }
