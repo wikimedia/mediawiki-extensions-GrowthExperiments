@@ -47,8 +47,10 @@ class SearchStrategy {
 
 				$queryId = $taskType->getId() . ':' . ( $topic ? $topic->getId() : '-' );
 				$query = new SearchQuery( $queryId, $queryString, $taskType, $topic );
-				// don't randomize if we use topic matching, which itself is a kind of sorting
-				if ( !$topic ) {
+				// don't randomize if we use topic matching with the morelike backend, which itself
+				// is a kind of sorting. Topic matching with the ORES backend already uses
+				// thresholds per topic so applying a random sort should be safe.
+				if ( !$topic || $topic instanceof OresBasedTopic ) {
 					$query->setSort( 'random' );
 				}
 				$queries[$queryId] = $query;
