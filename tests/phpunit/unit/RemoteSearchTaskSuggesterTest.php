@@ -17,10 +17,8 @@ use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use MWHttpRequest;
-use PHPUnit\Framework\ExpectationFailedException;
-use PHPUnit\Framework\MockObject\Invocation;
+use PHPUnit\Framework\MockObject\Matcher\Invocation as InvocationInterface;
 use PHPUnit\Framework\MockObject\MockObject;
-use PHPUnit\Framework\MockObject\Rule\InvocationOrder;
 use Status;
 use StatusValue;
 use Title;
@@ -574,39 +572,17 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * Returns a PHPUnit invocation matcher which matches a range.
 	 * @param $min
 	 * @param $max
-	 * @return InvocationOrder
+	 * @return InvokedBetween
 	 */
 	private function exactlyBetween( $min, $max ) {
-		return new class ( $min, $max ) extends InvocationOrder {
-			private $min;
-			private $max;
-
-			public function __construct( $min, $max ) {
-				$this->min = $min;
-				$this->max = $max;
-			}
-
-			public function toString(): string {
-				return "invoked between $this->min and $this->max times";
-			}
-
-			public function verify() : void {
-				$count = $this->getInvocationCount();
-				if ( $count < $this->min || $count > $this->max ) {
-					throw new ExpectationFailedException(
-						"Expected to be invoked between $this->min and $this->max times,"
-						. " but it occurred $count time(s)."
-					);
-				}
-			}
-
-			public function matches( Invocation $invocation ) : bool {
-				return true;
-			}
-
-			protected function invokedDo( Invocation $invocation ) : void {
-			}
-		};
+		// CI uses PHPUnit 8.5 which requires expects() parameters to implement InvocationInterface.
+		// The local package definition uses 7.5 where that interface does not exist. Yay.
+		if ( interface_exists( InvocationInterface::class ) ) {
+			return new class( $min, $max ) extends InvokedBetween implements InvocationInterface {
+			};
+		} else {
+			return new InvokedBetween( $min, $max );
+		}
 	}
 
 	private function taskSetToArray( TaskSet $taskSet ) {
