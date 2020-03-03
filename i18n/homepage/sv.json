@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"WikiPhoenix",
-			"Mjälten"
+			"Mjälten",
+			"Josefine Hellroth Larsson (WMSE)"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hej}}, {{bidi:$1}}!",
@@ -126,6 +127,7 @@
 	"growthexperiments-homepage-suggestededits-error-description": "Försök igen senare.",
 	"growthexperiments-homepage-suggestededits-topics-more": "visa mer",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|ämne|ämnen}}",
+	"growthexperiments-homepage-suggestededits-topics-selectall": "Välj alla",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Välj några ämnen som {{GENDER:$1|du}} är intresserad av att redigera",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Vi ska försöka föreslå artiklar som matchar {{GENDER:$1|dina}} intressen.",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|Du ändrade}} {{GENDER:$1|$1s}} mentor till $2",
