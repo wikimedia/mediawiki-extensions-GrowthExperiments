@@ -172,10 +172,7 @@ class QuestionStore {
 	 * @return bool
 	 */
 	private function questionExistsOnPage( QuestionRecord $questionRecord ) {
-		$revision = $this->revisionStore->loadRevisionFromId(
-			$this->loadBalancer->getConnection( DB_REPLICA ),
-			$questionRecord->getRevId()
-		);
+		$revision = $this->revisionStore->getRevisionById( $questionRecord->getRevId() );
 		if ( !$revision ) {
 			return false;
 		}
@@ -243,10 +240,8 @@ class QuestionStore {
 	}
 
 	private function assignArchiveUrl( QuestionRecord $questionRecord ) {
-		$revision = $this->revisionStore->loadRevisionFromId(
-			$this->loadBalancer->getConnection( $this->wasPosted ? DB_MASTER : DB_REPLICA ),
-			$questionRecord->getRevId()
-		);
+		$revision = $this->revisionStore->getRevisionById( $questionRecord->getRevId(),
+			$this->wasPosted ? RevisionStore::READ_LATEST : 0 );
 		if ( !$revision ) {
 			return $questionRecord;
 		}
