@@ -672,12 +672,17 @@
 		},
 		"ext.growthExperiments.HelpPanel": {
 			"styles": [
-				"helppanel/ext.growthExperiments.HelpPanelPopup.less"
+				"helppanel/ext.growthExperiments.HelpPanelPopup.less",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.TaskExplanation.less"
 			],
 			"packageFiles": [
 				"helppanel/ext.growthExperiments.HelpPanel.cta.js",
 				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.js",
-				"utils/ext.growthExperiments.Utils.js"
+				"utils/ext.growthExperiments.Utils.js",
+				{
+					"name": "helppanel/TaskTypes.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
+				}
 			],
 			"dependencies": [
 				"ext.growthExperiments.Help",
@@ -686,7 +691,11 @@
 				"mediawiki.pulsatingdot"
 			],
 			"messages": [
-				"growthexperiments-help-panel-cta-button-text"
+				"growthexperiments-help-panel-cta-button-text",
+				"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit",
+				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy",
+				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium",
+				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard"
 			],
 			"targets": [
 				"desktop",
@@ -715,6 +724,7 @@
 				"homepage/ext.growthExperiments.ImpactModule.less",
 				"homepage/ext.growthExperiments.MentorshipModule.less",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.less",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.TaskExplanation.less",
 				"homepage/ext.growthExperiments.StartModule.less",
 				"homepage/ext.growthExperiments.Homepage.less"
 			],
