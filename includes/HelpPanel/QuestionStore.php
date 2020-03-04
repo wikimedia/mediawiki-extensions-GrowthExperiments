@@ -241,7 +241,7 @@ class QuestionStore {
 
 	private function assignArchiveUrl( QuestionRecord $questionRecord ) {
 		$revision = $this->revisionStore->getRevisionById( $questionRecord->getRevId(),
-			$this->wasPosted ? RevisionStore::READ_LATEST : 0 );
+			$this->wasPosted ? RevisionStore::READ_LATEST : RevisionStore::READ_NORMAL );
 		if ( !$revision ) {
 			return $questionRecord;
 		}
