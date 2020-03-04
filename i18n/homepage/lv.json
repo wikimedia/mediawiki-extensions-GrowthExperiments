@@ -4,6 +4,7 @@
 			"Papuass"
 		]
 	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Sveicināts|Sveicināta}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Sākumlapa",
 	"tooltip-pt-homepage": "{{GENDER:|Tava}} sākumlapa",
 	"prefs-homepage": "Jaunpienācēju sākumlapa",
