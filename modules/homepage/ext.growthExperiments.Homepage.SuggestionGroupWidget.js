@@ -29,13 +29,14 @@ function SuggestionGroupWidget( config ) {
 	this.$header = $( [] );
 	if ( config.header ) {
 		this.$header = $( '<h4>' )
+			.addClass( 'mw-ge-suggestionGroupWidget-headerRow-header' )
 			.append( $( '<span>' ).text( config.header ) );
 	}
 
 	this.selectAllButton = null;
 	if ( config.selectAll ) {
 		this.selectAllButton = new OO.ui.ButtonWidget( {
-			classes: [ 'mw-ge-suggestionGroupWidget-select-all' ],
+			classes: [ 'mw-ge-suggestionGroupWidget-headerRow-select-all' ],
 			label: '', // set by updateSelectAllButtonLabel()
 			flags: [ 'progressive' ],
 			framed: false
@@ -62,8 +63,10 @@ function SuggestionGroupWidget( config ) {
 	this.$element
 		.addClass( 'mw-ge-SuggestionGroupWidget' )
 		.append(
-			this.selectAllButton && this.selectAllButton.$element,
-			this.$header,
+			$( '<div>' ).addClass( 'mw-ge-suggestionGroupWidget-headerRow' ).append(
+				this.$header,
+				this.selectAllButton && this.selectAllButton.$element
+			),
 			this.$group,
 			this.showMoreButton && this.showMoreButton.$element
 		);
