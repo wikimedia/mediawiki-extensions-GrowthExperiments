@@ -2,7 +2,24 @@
 @import 'mediawiki.ui/variables';
 
 .mw-ge-suggestionGroupWidget {
-	&-select-all {
-		float: right;
+	&-headerRow {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-content: center;
+		padding: 0.5em 0;
+
+		&-select-all {
+			display: flex;
+		}
+
+		&-header {
+			flex-direction: column;
+			text-align: center;
+			justify-content: center;
+			display: flex;
+			font-size: 1.1em;
+			color: @colorGray2;
+		}
 	}
 }
