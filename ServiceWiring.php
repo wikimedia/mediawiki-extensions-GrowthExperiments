@@ -6,6 +6,8 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageLoader;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
@@ -58,26 +60,42 @@ return [
 		return $configurationLoader;
 	},
 
-	'GrowthExperimentsTaskSuggester' => function ( MediaWikiServices $services ): TaskSuggester {
+	'GrowthExperimentsTaskSuggesterFactory' => function (
+		MediaWikiServices $services
+	): TaskSuggesterFactory {
 		$config = $services->getConfigFactory()->makeConfig( 'GrowthExperiments' );
+
 		/** @var ConfigurationLoader $configLoader */
 		$configLoader = $services->getService( 'GrowthExperimentsConfigurationLoader' );
 		$searchStrategy = new SearchStrategy();
-		$taskSuggesterFactory = new TaskSuggesterFactory( $configLoader, $searchStrategy );
-		$taskSuggesterFactory->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
-
 		$dbr = $services->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA );
 		$templateProvider = new TemplateProvider( $services->getTitleFactory(), $dbr );
 		if ( $config->get( 'GENewcomerTasksRemoteApiUrl' ) ) {
-			return $taskSuggesterFactory->createRemote( $templateProvider,
-				$services->getHttpRequestFactory(), $services->getTitleFactory(),
-				$config->get( 'GENewcomerTasksRemoteApiUrl' ) );
+			$taskSuggesterFactory = new RemoteSearchTaskSuggesterFactory(
+				$configLoader,
+				$searchStrategy,
+				$templateProvider,
+				$services->getHttpRequestFactory(),
+				$services->getTitleFactory(),
+				$config->get( 'GENewcomerTasksRemoteApiUrl' )
+			);
 		} else {
-			return $taskSuggesterFactory->createLocal(
-				$services->getSearchEngineFactory(),
-				$templateProvider
+			$taskSuggesterFactory = new LocalSearchTaskSuggesterFactory(
+				$configLoader,
+				$searchStrategy,
+				$templateProvider,
+				$services->getSearchEngineFactory()
 			);
 		}
+		$taskSuggesterFactory->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
+		return $taskSuggesterFactory;
+	},
+
+	// deprecated, use GrowthExperimentsTaskSuggesterFactory directly
+	'GrowthExperimentsTaskSuggester' => function ( MediaWikiServices $services ): TaskSuggester {
+		/** @var TaskSuggesterFactory $taskSuggesterFactory */
+		$taskSuggesterFactory = $services->get( 'GrowthExperimentsTaskSuggesterFactory' );
+		return $taskSuggesterFactory->create();
 	},
 
 	'_GrowthExperimentsAQSConfig' => function ( MediaWikiServices $services ): stdClass {

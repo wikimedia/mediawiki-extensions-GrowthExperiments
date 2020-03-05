@@ -14,6 +14,9 @@ use SearchEngineFactory;
 use SpecialPage;
 use StatusValue;
 
+/**
+ * Suggest edits based on searching the wiki via SearchEngine.
+ */
 class LocalSearchTaskSuggester extends SearchTaskSuggester {
 
 	/** @var SearchEngineFactory */

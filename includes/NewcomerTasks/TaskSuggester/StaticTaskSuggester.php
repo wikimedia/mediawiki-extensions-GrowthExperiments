@@ -10,19 +10,7 @@ use Wikimedia\Assert\Assert;
 
 /**
  * A TaskSuggester which always starts with the same preconfigured set of tasks, and applies
- * filter/limit/offset to them.
- * Intended for testing and local frontend development. To use it, register a MediaWikiServices
- * hook along the lines of
- *
- *     $wgHooks['MediaWikiServices'][] = function ( MediaWikiServices $services ) {
- *         $services->redefineService( 'GrowthExperimentsTaskSuggester', function () {
- *             $taskType = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
- *             return new StaticTaskSuggester( [
- *                 new Task( $taskType, new TitleValue( NS_MAIN, 'Foo' ) ),
- *                 new Task( $taskType, new TitleValue( NS_MAIN, 'Bar' ) ),
- *             ] );
- *         } );
- *     };
+ * filter/limit/offset to them. Intended for testing and local frontend development.
  */
 class StaticTaskSuggester implements TaskSuggester {
 

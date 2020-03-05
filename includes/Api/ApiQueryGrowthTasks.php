@@ -10,7 +10,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TemplateBasedTask;
-use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Linker\LinkTarget;
@@ -23,8 +23,8 @@ use Title;
  */
 class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 
-	/** @var TaskSuggester */
-	private $taskSuggester;
+	/** @var TaskSuggesterFactory */
+	private $taskSuggesterFactory;
 
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
@@ -32,17 +32,17 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 	/**
 	 * @param ApiQuery $queryModule
 	 * @param string $moduleName
-	 * @param TaskSuggester $taskSuggester
+	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param ConfigurationLoader $configurationLoader
 	 */
 	public function __construct(
 		ApiQuery $queryModule,
 		$moduleName,
-		TaskSuggester $taskSuggester,
+		TaskSuggesterFactory $taskSuggesterFactory,
 		ConfigurationLoader $configurationLoader
 	) {
 		parent::__construct( $queryModule, $moduleName, 'gt' );
-		$this->taskSuggester = $taskSuggester;
+		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->configurationLoader = $configurationLoader;
 	}
 
@@ -68,8 +68,10 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		$offset = $params['offset'];
 		$debug = $params['debug'];
 
+		$taskSuggester = $this->taskSuggesterFactory->create();
+
 		/** @var TaskSet $tasks */
-		$tasks = $this->taskSuggester->suggest( $user, $taskTypes, $topics, $limit, $offset, $debug );
+		$tasks = $taskSuggester->suggest( $user, $taskTypes, $topics, $limit, $offset, $debug );
 		if ( $tasks instanceof StatusValue ) {
 			$this->dieStatus( $tasks );
 		}
