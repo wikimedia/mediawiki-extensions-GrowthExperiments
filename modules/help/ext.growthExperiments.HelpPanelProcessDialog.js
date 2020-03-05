@@ -66,6 +66,8 @@
 			label: mw.message( 'growthexperiments-help-panel-close' ).text(),
 			modes: [ 'questioncomplete' ],
 			flags: 'primary',
+			framed: false,
+			classes: [ 'mw-ge-help-panel-done' ],
 			action: 'close'
 		},
 		{
@@ -216,7 +218,7 @@
 	HelpPanelProcessDialog.prototype.buildSettingsCog = function () {
 		this.settingsCog = new OO.ui.PopupButtonWidget( {
 			$overlay: this.$element,
-			icon: 'settings',
+			icon: 'ellipsis',
 			// Hack for styling
 			classes: [ 'mw-ge-help-panel-settings-cog', 'oo-ui-actionWidget' ],
 			popup: {

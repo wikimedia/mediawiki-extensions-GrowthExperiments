@@ -26,6 +26,15 @@
 		margin: 0.3em 0 0 1.6em;
 	}
 
+	.oo-ui-window-head {
+		outline: unset;
+
+		.oo-ui-processDialog-title {
+			font-size: 1em;
+			color: @colorGray2;
+		}
+	}
+
 	.oo-ui-window-foot {
 		// Override .oo-ui-unselectable()
 		-webkit-touch-callout: default;
@@ -35,14 +44,54 @@
 		user-select: auto;
 	}
 
-	.oo-ui-processDialog-navigation .oo-ui-processDialog-actions-primary {
-		.mw-ge-help-panel-settings-cog.oo-ui-widget-enabled {
-			&.active,
-			&.active:hover {
-				background-color: #eaf3ff;
+	.oo-ui-processDialog-navigation {
+		.oo-ui-processDialog-actions-primary .oo-ui-actionWidget > .oo-ui-buttonElement-button {
+			border-left-color: transparent;
+
+			&:hover {
+				border-left-color: transparent;
 			}
 
-			> .oo-ui-buttonElement-button {
+			&:focus {
+				border-left-color: unset;
+			}
+		}
+
+		.oo-ui-processDialog-actions-primary {
+			.mw-ge-help-panel-done.oo-ui-widget-enabled {
+				.oo-ui-buttonElement-button {
+					&:hover {
+						border-color: transparent;
+					}
+				}
+			}
+
+			.mw-ge-help-panel-settings-cog.oo-ui-widget-enabled {
+				//stylelint-disable-next-line no-descending-specificity
+				.oo-ui-buttonElement-button {
+					opacity: 0.5;
+					background-color: transparent;
+				}
+
+				&:not( .oo-ui-buttonElement-pressed ) {
+					border-left-color: transparent;
+				}
+
+				.oo-ui-processDialog-actions-primary .oo-ui-actionWidget > .oo-ui-buttonElement-button &.active:hover {
+					background-color: #eaf3ff;
+				}
+			}
+		}
+
+		// Close icon.
+		.oo-ui-processDialog-actions-safe .oo-ui-widget-enabled.oo-ui-iconElement:not( .oo-ui-labelElement ) {
+			// stylelint-disable-next-line no-descending-specificity
+			.oo-ui-buttonElement-button {
+				opacity: 0.5;
+			}
+
+			.oo-ui-buttonElement-button:not( .oo-ui-buttonElement-pressed ):hover {
+				border-color: transparent;
 				background-color: transparent;
 			}
 		}
