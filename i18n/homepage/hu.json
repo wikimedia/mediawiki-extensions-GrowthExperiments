@@ -6,7 +6,8 @@
 			"Teemeah",
 			"Tgr",
 			"Dj",
-			"Samat"
+			"Samat",
+			"Worrida"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Üdvözlünk, {{bidi:$1}}!",
@@ -211,6 +212,7 @@
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "Érdeklődési körök kiválasztása",
 	"growthexperiments-homepage-suggestededits-topics-more": "Mutass többet!",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|téma|téma}}",
+	"growthexperiments-homepage-suggestededits-topics-unselectall": "Összes eltávolítása",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Válassz ki néhány témakört, aminek a szerkesztése {{GENDER:$1|érdekelhet}}",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Ajánlani fogunk neked szócikkeket, melyek passzolnak az érdeklődési {{GENDER:$1|körödhöz}}.",
 	"growthexperiments-homepage-claimmentee-title": "Mentor jelentése",

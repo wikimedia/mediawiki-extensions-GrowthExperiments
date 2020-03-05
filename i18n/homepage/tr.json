@@ -276,5 +276,6 @@
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Rehber listesi ([[$1]]) mevcut değil veya yanlış yapılandırılmış.",
 	"growthexperiments-notification-learn-more": "Yeni {{GENDER:$2|mentorunuz}} hakkında daha fazla bilgi {{GENDER:$1|edinin}}",
 	"right-setmentor": "Kullanıcının mentorunu ayarla",
-	"action-setmentor": "kullanıcının mentorunu ayarla"
+	"action-setmentor": "kullanıcının mentorunu ayarla",
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Önerilen bu düzenleme hakkında daha fazla bilgi"
 }

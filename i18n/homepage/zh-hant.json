@@ -277,5 +277,6 @@
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "導師清單（[[$1]]）不存在或是設置錯誤。",
 	"growthexperiments-notification-learn-more": "了解更多關於{{GENDER:$1|您的}}新{{GENDER:$2|導師}}",
 	"right-setmentor": "設定使用者的導師",
-	"action-setmentor": "設定使用者的導師"
+	"action-setmentor": "設定使用者的導師",
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "更多關於此建議編輯"
 }
