@@ -35,7 +35,7 @@ class HelpPanel {
 				'target' => '_blank',
 				'label' => $mobile ? '' : wfMessage( 'growthexperiments-help-panel-cta-button-text' )->text(),
 				'infusable' => true,
-				'icon' => 'askQuestion',
+				'icon' => 'help',
 				'flags' => [ 'primary', 'progressive' ],
 			] ) );
 	}

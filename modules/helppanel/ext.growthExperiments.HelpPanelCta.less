@@ -1,5 +1,5 @@
 .mw-ge-help-panel-cta {
-	font-size: 16px;
+	font-size: 0.875em;
 	position: fixed;
 	bottom: 2em;
 	right: 1em;
@@ -10,15 +10,24 @@
 		display: none;
 	}
 
+	.oo-ui-buttonElement.oo-ui-labelElement {
+		.oo-ui-buttonElement-button {
+			.oo-ui-labelElement-label {
+				line-height: 2.6em;
+				padding-left: 0.5em;
+			}
+		}
+	}
+
 	a.oo-ui-buttonElement-button {
 		box-shadow: 0 1px 2px rgba( 0, 0, 0, 0.5 );
-		border-radius: 1.5em;
+		border-radius: 2em;
 	}
 
 	&-mobile {
 		a.oo-ui-buttonElement-button {
-			height: 3em;
-			width: 3em;
+			height: 4em;
+			width: 4em;
 		}
 	}
 }

@@ -101,7 +101,7 @@
 				id: 'mw-ge-help-panel-cta-button',
 				href: mw.util.getUrl( configData.GEHelpPanelHelpDeskTitle ),
 				label: OO.ui.isMobile() ? '' : mw.msg( 'growthexperiments-help-panel-cta-button-text' ),
-				icon: 'askQuestion',
+				icon: 'help',
 				flags: [ 'primary', 'progressive' ]
 			} );
 			$buttonWrapper = $( '<div>' )
