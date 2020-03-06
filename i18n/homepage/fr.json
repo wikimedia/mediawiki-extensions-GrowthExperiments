@@ -287,5 +287,6 @@
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "La liste des tuteurs ([[$1]]) n’existe pas ou est mal configurée.",
 	"growthexperiments-notification-learn-more": "En savoir plus sur {{GENDER:$1|votre}} nouveau {{GENDER:$2|tuteur}}",
 	"right-setmentor": "Définir le tuteur de l’utilisateur",
-	"action-setmentor": "définir le tuteur de l’utilisateur"
+	"action-setmentor": "définir le tuteur de l’utilisateur",
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "En savoir plus sur cette modification suggérée"
 }

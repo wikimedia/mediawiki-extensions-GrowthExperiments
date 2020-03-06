@@ -276,5 +276,6 @@
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Списак ментора ([[$1]]) не постоји или је погрешно конфигурисан.",
 	"growthexperiments-notification-learn-more": "Сазнајте више {{GENDER:$1|о}} {{GENDER:$2|новом ментору|новој менторки}}",
 	"right-setmentor": "постављање ментора корисницима",
-	"action-setmentor": "постављате ментора корисницима"
+	"action-setmentor": "постављате ментора корисницима",
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Сазнајте више о предложеној измени"
 }
