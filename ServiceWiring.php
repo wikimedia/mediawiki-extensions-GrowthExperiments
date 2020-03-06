@@ -93,6 +93,7 @@ return [
 
 	// deprecated, use GrowthExperimentsTaskSuggesterFactory directly
 	'GrowthExperimentsTaskSuggester' => function ( MediaWikiServices $services ): TaskSuggester {
+		wfDeprecated( 'GrowthExperimentsTaskSuggester service', '1.35', 'GrowthExperiments' );
 		/** @var TaskSuggesterFactory $taskSuggesterFactory */
 		$taskSuggesterFactory = $services->get( 'GrowthExperimentsTaskSuggesterFactory' );
 		return $taskSuggesterFactory->create();

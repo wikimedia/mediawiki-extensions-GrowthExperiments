@@ -10,10 +10,15 @@ use MediaWikiIntegrationTestCase;
  */
 class ServiceWiringTest extends MediaWikiIntegrationTestCase {
 
+	protected const DEPRECATED_SERVICES = [ 'GrowthExperimentsTaskSuggester' ];
+
 	/**
 	 * @dataProvider provideService
 	 */
 	public function testService( string $name ) {
+		if ( in_array( $name, self::DEPRECATED_SERVICES, true ) ) {
+			$this->hideDeprecated( "$name service" );
+		}
 		MediaWikiServices::getInstance()->get( $name );
 		$this->addToAssertionCount( 1 );
 	}
