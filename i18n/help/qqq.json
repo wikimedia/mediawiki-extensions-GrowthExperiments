@@ -46,5 +46,9 @@
 	"growthexperiments-help-panel-search-label": "Label for a field allowing the user to search help content.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-search-no-results": "Text to display when the entered search terms returned no results.",
 	"tag-help_panel_question": "Short change tag name for edits made by the post a question feature in the help panel.\n\n{{doc-growthexperiments-help-panel}}",
-	"tag-help_panel_question-description": "Short change tag description for edits made by the post a question feature in the help panel.\n\n{{doc-growthexperiments-help-panel}}"
+	"tag-help_panel_question-description": "Short change tag description for edits made by the post a question feature in the help panel.\n\n{{doc-growthexperiments-help-panel}}",
+	"growthexperiments-help-panel-button-header-ask-help": "Header to show for the Ask Help button in the root screen of the help panel.\n\n{{doc-growthexperiments-help-panel}}",
+	"growthexperiments-help-panel-button-header-general-help": "Header to show for the General Help button in the root screen of the help panel.\n\n{{doc-growthexperiments-help-panel}}",
+	"growthexperiments-help-panel-button-subheader-general-help": "Subheader to show for the General Help button in the root screen of the help panel.\n\n{{doc-growthexperiments-help-panel}}",
+	"growthexperiments-help-panel-button-subheader-ask-help": "Subheader to show for the Ask Help button in the root screen of the help panel.\n\n{{doc-growthexperiments-help-panel}}"
 }

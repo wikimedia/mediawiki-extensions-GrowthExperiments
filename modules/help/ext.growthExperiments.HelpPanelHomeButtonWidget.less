@@ -1,0 +1,51 @@
+@import 'mediawiki.ui/variables';
+@import '../../lib/ooui/wikimedia-ui-base';
+
+.mw-ge-help-panel-home-button {
+	min-height: 80px;
+	margin-top: 16px;
+	cursor: pointer;
+	padding: 16px;
+	background-color: @colorGray15;
+	border: solid 1px @colorGray15;
+	border-radius: 2px;
+	box-shadow: 0 1px 2px 0 rgba( 0, 0, 0, 0.25 );
+	justify-content: space-between;
+	display: flex;
+
+	&-text {
+		display: flex;
+		flex-direction: column;
+
+		&-subheader {
+			font-size: 0.928em;
+			color: @colorGray5;
+			line-height: 1.38;
+		}
+	}
+
+	&-image {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&-icon {
+			min-height: 40px;
+			min-width: 40px;
+			opacity: 0.65;
+		}
+	}
+}
+
+.mw-ge-help-panel-processdialog {
+	.mw-ge-help-panel-home-button {
+		h2 {
+			font-size: 1.307em;
+			font-family: @font-family-base;
+			font-weight: bold;
+			color: @colorGray2;
+			padding: unset;
+			margin: unset;
+		}
+	}
+}
