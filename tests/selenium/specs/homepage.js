@@ -6,13 +6,17 @@ var assert = require( 'assert' ),
 	Util = require( 'wdio-mediawiki/Util' );
 
 describe( 'Homepage', function () {
-	var username, password;
+	let password, username, bot;
+
+	before( async () => {
+		bot = await Api.bot();
+	} );
 
 	beforeEach( function () {
 		username = Util.getTestString( 'NewUser-' );
 		password = Util.getTestString();
-		browser.call( function () {
-			return Api.createAccount( username, password );
+		browser.call( async () => {
+			await Api.createAccount( bot, username, password );
 		} );
 		LoginPage.login( username, password );
 	} );
@@ -34,7 +38,7 @@ describe( 'Homepage', function () {
 
 	} );
 
-	it.skip( 'can be disabled and re-enabled for new user', function () {
+	it( 'can be disabled and re-enabled for new user', function () {
 
 		PreferencesPage.open();
 		PreferencesPage.clickHomepageCheckBox();

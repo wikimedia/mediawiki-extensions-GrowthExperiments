@@ -13,7 +13,7 @@ describe( 'Special:WelcomeSurvey', function () {
 	// T233263
 	it( 'stores responses for users with NONE group when survey is submitted', function () {
 		var responses;
-		UserLoginPage.login( browser.options.username, browser.options.password );
+		UserLoginPage.login( browser.config.mwUser, browser.config.mwPwd );
 		Util.waitForModuleState( 'mediawiki.api', 'ready', 5000 );
 		// Pretend the user was assigned to the control group.
 		browser.execute( function () {
@@ -24,13 +24,13 @@ describe( 'Special:WelcomeSurvey', function () {
 			} ) );
 		} );
 		SpecialWelcomeSurveyPage.open();
-		browser.waitForExist( SpecialWelcomeSurveyPage.finishButtonSelector );
+		SpecialWelcomeSurveyPage.finishButtonSelector.waitForExist();
 		SpecialWelcomeSurveyPage.finish.click();
 		responses = browser.execute( function () {
 			return JSON.parse( mw.user.options.get( 'welcomesurvey-responses' ) );
 		} );
-		assert.strictEqual( responses.value.reason, 'placeholder' );
+		assert.strictEqual( responses.reason, 'placeholder' );
 		// eslint-disable-next-line no-underscore-dangle
-		assert.strictEqual( responses.value._group, 'exp2_target_specialpage' );
+		assert.strictEqual( responses._group, 'exp2_target_specialpage' );
 	} );
 } );
