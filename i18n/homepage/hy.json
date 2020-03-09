@@ -102,5 +102,6 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "Միջին",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Արված է",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Թարմացնել",
-	"growthexperiments-homepage-suggestededits-topics-selectall": "Նշել ամբողջը"
+	"growthexperiments-homepage-suggestededits-topics-selectall": "Նշել ամբողջը",
+	"growthexperiments-homepage-suggestededits-topics-unselectall": "Հեռացնել բոլորը"
 }

@@ -281,5 +281,6 @@
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "멘토 리스트 ([[$1]])가 존재하지 않거나 잘못 설정되었습니다.",
 	"growthexperiments-notification-learn-more": "{{GENDER:$1|내}} 새 {{GENDER:$2|멘토}}에 관해 더 알아보기",
 	"right-setmentor": "사용자 멘토 설정",
-	"action-setmentor": "사용자 멘토 설정"
+	"action-setmentor": "사용자 멘토 설정",
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "이 편집 추천에 대해 더 알아보기"
 }
