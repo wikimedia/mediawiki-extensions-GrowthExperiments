@@ -21,5 +21,6 @@
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Popis mentora ([[$1]]) ne postoji ili je pogrešno konfiguriran.",
 	"growthexperiments-notification-learn-more": "Saznajte više o {{GENDER:$1|svojem|svojoj}} {{GENDER:$2|novom mentoru|novoj mentorici}}",
 	"right-setmentor": "postavljanje mentorice/mentora suradniku",
-	"action-setmentor": "postavljanje mentorice/mentora suradniku"
+	"action-setmentor": "postavljanje mentorice/mentora suradniku",
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Saznajte više o ovoj predloženoj izmjeni"
 }
