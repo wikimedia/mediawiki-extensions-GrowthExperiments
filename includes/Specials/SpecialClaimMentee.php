@@ -72,6 +72,13 @@ class SpecialClaimMentee extends FormSpecialPage {
 	/**
 	 * @inheritDoc
 	 */
+	public function isListed() {
+		return $this->userCanExecute( $this->getUser() );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	public function userCanExecute( User $user ) {
 		try {
 			$this->mentorsList = Mentor::getMentors();
