@@ -1,8 +1,16 @@
 body.skin-minerva {
 	.edit-page {
+		// Show dot in the corner of the pencil icon for editing. Do not flip, the pencil
+		// is not flipped either. When the page is wide enough that the edit button includes
+		// text, show it in the middle of the button instead.
 		.mw-pulsating-dot {
 			position: absolute;
-			left: 85%;
+			/* @noflip */
+			left: 70%;
+
+			@media ( min-width: 1000px ) {
+				left: 50%;
+			}
 		}
 	}
 }
