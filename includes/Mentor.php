@@ -71,7 +71,7 @@ class Mentor {
 			throw new WikiConfigException( 'wgGEHomepageMentorsList is invalid: ' . $mentorsPageName );
 		}
 		$page = WikiPage::factory( $title );
-		$links = $page->getParserOutput( ParserOptions::newCanonical() )->getLinks();
+		$links = $page->getParserOutput( ParserOptions::newCanonical( 'canonical' ) )->getLinks();
 		if ( !isset( $links[ NS_USER ] ) ) {
 			$logger->info( __METHOD__ . ' found zero mentors, no links at {mentorsList}', [
 				'mentorsList' => $mentorsPageName
