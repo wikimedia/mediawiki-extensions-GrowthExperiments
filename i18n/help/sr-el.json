@@ -1,11 +1,15 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": [
+			"Zoranzoki21"
+		]
+	},
 	"growthexperiments-help-panel-tog-help-panel": "Omogući tablu pomoći uređivača",
 	"growthexperiments-help-panel-cta-button-text": "Potražite pomoć",
 	"growthexperiments-help-panel-question-button-text": "Nastavi",
 	"growthexperiments-help-panel-submit-question-button-text": "Postavi",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Istaknute stranice pomoći",
-	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Još članaka pomoći",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Još stranica pomoći",
 	"growthexperiments-help-panel-question-widget-header": "Postavite pitanje na Trg",
 	"growthexperiments-help-panel-question-placeholder": "Pozdravite urednike i {{GENDER:$1|postavite}} pitanje.",
 	"growthexperiments-help-panel-back-home": "Nazad",
@@ -21,7 +25,7 @@
 	"growthexperiments-help-panel-question-post-error": "Došlo je do greške prilikom postavljanja pitanja. Pokušajte ponovo ili posetite $1 u pregledaču da biste ručno postavili pitanje.",
 	"growthexperiments-help-panel-questioncomplete-title": "Postavljanje pitanja",
 	"growthexperiments-help-panel-questioncomplete-header": "Pitanje je postavljeno.",
-	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Pitanje sada se nalazi na Trgu. Uskoro ćete dobiti odgovor.",
+	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Pitanje se sada nalazi na Trgu. Uskoro ćete dobiti odgovor.",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Prikaži pitanje na Trgu",
 	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "Obaveštenja o vašem pitanju:",
 	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Dobićete obaveštenje ovde na projektu kada se pojavi odgovor.",
@@ -31,8 +35,8 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Potvrdite imejl",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Dodajte imejl-adresu ako {{GENDER:$1|želite}} da budete obavešteni i imejlom.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Dodaj imejl",
-	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Više o funkciji",
-	"growthexperiments-help-panel-questioncomplete-first-edit": "Uzgred, objavljivanjem pitanja, napravili ste prvu izmenu. Čestitamo!",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Saznajte više o funkciji",
+	"growthexperiments-help-panel-questioncomplete-first-edit": "Uzgred, objavljivanjem pitanja, napravili ste svoju prvu izmenu. Čestitamo!",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Onemogućite alatku u podešavanjima",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Nevažeći naslov.",
 	"growthexperiments-help-panel-community-help-desk-text": "Trg",

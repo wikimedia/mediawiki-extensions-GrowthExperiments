@@ -1,5 +1,9 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": [
+			"Zoranzoki21"
+		]
+	},
 	"welcomesurvey": "{{GENDER:$1|Dobro došli}}, $1!",
 	"welcomesurvey-save-confirmation-title": "Hvala! Odgovori su sačuvani.",
 	"welcomesurvey-save-confirmation-text": "Koristićemo odgovore kako bismo vam pružili korisne načine za početak rada na Vikipediji.",
@@ -11,7 +15,7 @@
 	"welcomesurvey-sidebar-privacy-text": "{{GENDER:$2|Pogledajte}} $1 da biste saznali više o tome kako koristimo ove neobavezne odgovore.",
 	"welcomesurvey-privacy-policy-link-text": "izjavu o privatnosti",
 	"welcomesurvey-sidebar-editing-title": "Počnite sa uređivanjem",
-	"welcomesurvey-sidebar-editing-text": "Svako može da uređuje skoro svaku stranicu, a svakog sata napravi se nekoliko stotina izmena kojima se dodaje sadržaj, ispravljaju greške i poboljšava čitljivost. Sledeće stranice vam mogu biti od pomoći {{GENDER:$1|ako želite}} da doprinesete.",
+	"welcomesurvey-sidebar-editing-text": "Svako može da uređuje skoro svaku stranicu, a svakog sata objavi se nekoliko stotina izmena kojima se dodaje sadržaj, ispravljaju greške i poboljšava čitljivost. Sledeće stranice vam mogu biti od pomoći {{GENDER:$1|ako želite}} da doprinesete.",
 	"welcomesurvey-sidebar-editing-link1-text": "Uputstvo",
 	"welcomesurvey-sidebar-editing-link1-title": "Vikipedija:Uputstva",
 	"welcomesurvey-sidebar-editing-link2-text": "Trg",

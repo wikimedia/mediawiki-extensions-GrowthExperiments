@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Agusbou2015"
+			"Agusbou2015",
+			"Zoranzoki21"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Zdravo}}, {{bidi:$1}}!",
@@ -69,7 +70,7 @@
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Vaš}} uticaj",
 	"growthexperiments-homepage-impact-subheader-text": "Ljudi čitaju članke koje {{GENDER:$1|ste}} uredili!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Prikazi otkako {{GENDER:$1|ste}} uredili (u poslednjih 60 dana):",
-	"growthexperiments-homepage-impact-contributions-link": "Napravili {{GENDER:$2|ste}} <strong>$1</strong> {{PLURAL:$1|izmenu|izmene|izmena}} (prikaži sve)",
+	"growthexperiments-homepage-impact-contributions-link": "Objavili {{GENDER:$2|ste}} <strong>$1</strong> {{PLURAL:$1|izmenu|izmene|izmena}} (prikaži sve)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Još {{GENDER:$1|niste}} napravili niti uredili neki članak.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "U ovoj kartici biće prikazano koliko puta su ljudi pročitali članke koje {{GENDER:$1|ste}} napravili ili uredili.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> izmena članaka",
@@ -114,7 +115,7 @@
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$2|Postavljanje}} pitanja {{GENDER:$1|mentoru|mentorki}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Kada postavite pitanje, ono se <strong>javno objavljuje</strong> pod {{GENDER:$2|vašim}} korisničkim imenom ($2) na $3 gde će ga {{GENDER:$1|mentor|mentorka}} pronaći i odgovoriti na njega.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2|stranici}} za razgovor {{GENDER:$1|mentora|mentorke}}",
-	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Vaše}} pitanje sada se nalazi na stranici za razgovor {{GENDER:$1|mentora|mentorke}}, gde će {{GENDER:$1|on|ona}} odgovoriti na njega čim bude {{GENDER:$1|mogao|mogla}}.",
+	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Vaše}} pitanje se sada nalazi na stranici za razgovor {{GENDER:$1|mentora|mentorke}}, gde će {{GENDER:$1|on|ona}} odgovoriti na njega čim bude {{GENDER:$1|mogao|mogla}}.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Pogledajte {{GENDER:$2|vaše}} pitanje na stranici za razgovor {{GENDER:$1|mentora|mentorke}}.",
 	"growthexperiments-homepage-mentorship-question-subject": "Pitanje korisnika [[User:$1|$1]]",
 	"growthexperiments-homepage-tutorial-header": "Naučite kako da uređujete",
@@ -151,8 +152,13 @@
 	"growthexperiments-homepage-suggestededits-no-results": "Nije pronađen nijedan predlog",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Izaberite druge nivoe težine da biste pronašli predložene izmene.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Izaberite druga interesovanja ili nivoe težine da biste pronašli predložene izmene.",
-	"growthexperiments-homepage-suggestededits-footer": "Drugi korisnici primetili su da je potrebno raditi na ovim člancima. Poboljšajte projekat '''{{SITENAME}}''' njegovim '''$1 čitaocima''' svakog dana.",
-	"growthexperiments-homepage-suggestededits-footer-noviews": "Drugi korisnici primetili su da je potrebno raditi na ovim člancima. Pomozite u poboljšavanju projekta '''{{SITENAME}}'''.",
+	"growthexperiments-homepage-suggestededits-footer": "Drugi korisnici su primetili da je potrebno raditi na ovim člancima. Poboljšajte projekat '''{{SITENAME}}''' njegovim '''$1 čitaocima''' svakog dana.",
+	"growthexperiments-homepage-suggestededits-footer-noviews": "Drugi korisnici su primetili da je potrebno raditi na ovim člancima. Pomozite u poboljšavanju projekta '''{{SITENAME}}'''.",
+	"growthexperiments-homepage-suggestededits-footer-suffix": "$1",
+	"growthexperiments-homepage-suggestededits-footer-kilosuffix": "$1 hilj.",
+	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 mil.",
+	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 mlrd.",
+	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 bil.",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "izmene u proteklom danu",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Dobrovoljci poput vas danas su doprineli poboljšanju projekta {{SITENAME}}. Pridružite se.",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Ispravite pravopisne i gramatičke greške i ton",
@@ -274,5 +280,6 @@
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Spisak mentora ([[$1]]) ne postoji ili je pogrešno konfigurisan.",
 	"growthexperiments-notification-learn-more": "Saznajte više {{GENDER:$1|o}} {{GENDER:$2|novom mentoru|novoj mentorki}}",
 	"right-setmentor": "postavljanje mentora korisnicima",
-	"action-setmentor": "postavljate mentora korisnicima"
+	"action-setmentor": "postavljate mentora korisnicima",
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Saznajte više o predloženoj izmeni"
 }
