@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"ئارام بکر"
+			"ئارام بکر",
+			"Arya sarhan"
 		]
 	},
-	"growthexperiments-homepage-suggestededits-topic-filters-close": "کرا"
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "کرا",
+	"growthexperiments-homepage-suggestededits-topics-selectall": "ھەمووی ھەڵبژێرە",
+	"growthexperiments-homepage-suggestededits-topics-unselectall": "لابردنی ھەموو"
 }

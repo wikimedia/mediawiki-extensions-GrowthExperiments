@@ -8,5 +8,9 @@
 	"apihelp-homepagequestionstore-param-questionformat": "Jaso nahi den formatua, adb. HTML.",
 	"apihelp-homepagequestionstore-param-storage": "Galderen biltegiaren lekua.",
 	"apihelp-homepagequestionstore-param-userid": "Galderak eskuratzeko erabiltzaile IDa.",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Ez da galderarik aurkitu."
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Ez da galderarik aurkitu.",
+	"apihelp-growthsetmentor-summary": "Erabiltzailearen mentorea ezarri. Aldaketa publikoki erregistratuko da.",
+	"apihelp-growthsetmentor-param-mentee": "Mentoretza jasotzen duenaren erabiltzaile izena",
+	"apihelp-growthsetmentor-param-mentor": "Mentorearen erabiltzaile izena",
+	"apihelp-growthsetmentor-param-reason": "Aldaketarako arrazoia"
 }
