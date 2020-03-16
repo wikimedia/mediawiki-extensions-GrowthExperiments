@@ -87,8 +87,7 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 	this.topicSelector = new TopicSelectionWidget( { selectedTopics: this.config.presets } );
 	this.topicSelector.connect( this, {
 		expand: 'onTopicSelectorExpand',
-		// The "select all" buttons fire many toggleSelection events at once, so debounce them
-		toggleSelection: 'performSearchUpdateActionsDebounced'
+		toggleSelection: 'onTopicSelectorToggleSelection'
 	} );
 	$topicSelectorWrapper = $( '<div>' )
 		.addClass( 'suggested-edits-topic-filters-topic-selector' )
@@ -209,6 +208,14 @@ TopicFiltersDialog.prototype.getSetupProcess = function ( data ) {
 TopicFiltersDialog.prototype.onTopicSelectorExpand = function () {
 	// This used to call this.updateSize(), but T238610#5861323 asked for that to be removed
 	this.emit( 'expand' );
+};
+
+TopicFiltersDialog.prototype.onTopicSelectorToggleSelection = function () {
+	// Don't fire 'search' events for changes that we made ourselves in updateFiltersFromState()
+	if ( !this.updating ) {
+		// The "select all" buttons fire many toggleSelection events at once, so debounce them
+		this.performSearchUpdateActionsDebounced();
+	}
 };
 
 module.exports = TopicFiltersDialog;
