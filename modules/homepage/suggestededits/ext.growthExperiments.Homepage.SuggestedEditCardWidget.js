@@ -69,7 +69,8 @@
 					$( '<div>' )
 						.addClass( 'se-card-extract' + ( !this.data.extraDataLoaded ? ' skeleton' : '' ) )
 						.html( this.data.extract || '' )
-				);
+				),
+			pageViewsMessage;
 		if ( !this.data.extraDataLoaded ) {
 			$pageViews.addClass( 'skeleton' );
 		}
@@ -77,13 +78,14 @@
 			// No pageview data found for this item.
 			return $textContent;
 		}
+		pageViewsMessage = this.data.pageviews ? mw.message(
+			'growthexperiments-homepage-suggestededits-pageviews',
+			mw.language.convertNumber( this.data.pageviews )
+		).text() : '';
 		$textContent.append(
 			$pageViews.append(
 				new OO.ui.IconWidget( { icon: 'chart' } ).toggle( this.data.extraDataLoaded ).$element,
-				mw.message(
-					'growthexperiments-homepage-suggestededits-pageviews',
-					mw.language.convertNumber( this.data.pageviews )
-				).text() ) );
+				pageViewsMessage ) );
 		return $textContent;
 	};
 
