@@ -279,7 +279,7 @@
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "Ви маєте бути вказані як {{GENDER:$1|наставник|наставниця}} на сторінці [[$2]], щоб могти користуватися Special:ClaimMentee",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Список наставників ([[$1]]) не існує або хибно налаштований.",
 	"growthexperiments-notification-learn-more": "{{GENDER:$1|Дізнайтесь}} більше про {{GENDER:$2|свого нового наставника|свою нову наставницю}}",
-	"right-setmentor": "призначення наставників для користувачів",
+	"right-setmentor": "Призначення наставників для користувачів",
 	"action-setmentor": "Встановити наставника користувача",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Дізнайтесь більше про це пропоноване редагування"
 }
