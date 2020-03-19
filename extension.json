@@ -237,6 +237,9 @@
 						"ltr": "../images/askQuestion-ltr.svg",
 						"rtl": "../images/askQuestion-rtl.svg"
 					}
+				},
+				"suggestedEdits": {
+					"file": "../images/suggestededits/Topic-general-64w.svg"
 				}
 			}
 		},
@@ -668,10 +671,17 @@
 				"growthexperiments-help-panel-search-label",
 				"growthexperiments-help-panel-search-no-results",
 				"ellipsis",
+				"growthexperiments-homepage-suggestededits-tasktype-name-copyedit",
+				"growthexperiments-homepage-suggestededits-tasktype-name-references",
+				"growthexperiments-homepage-suggestededits-tasktype-name-update",
+				"growthexperiments-homepage-suggestededits-tasktype-name-links",
+				"growthexperiments-homepage-suggestededits-tasktype-name-expand",
+				"growthexperiments-help-panel-button-preheader-suggested-edits",
 				"growthexperiments-help-panel-button-header-ask-help",
 				"growthexperiments-help-panel-button-header-general-help",
 				"growthexperiments-help-panel-button-subheader-general-help",
-				"growthexperiments-help-panel-button-subheader-ask-help"
+				"growthexperiments-help-panel-button-subheader-ask-help",
+				"growthexperiments-help-panel-button-subheader-suggested-edits"
 			],
 			"targets": [
 				"desktop",
