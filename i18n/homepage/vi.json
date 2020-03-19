@@ -250,7 +250,7 @@
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Cấu hình sửa đổi gợi ý không hợp lệ: thiếu trường $1 cho dạng nhiệm vụ $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Cấu hình sửa đổi gợi ý không hợp lệ: nhóm $1 không hợp lệ cho dạng nhiệm vụ $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Cấu hình sửa đổi gợi ý không hợp lệ: thiếu thông điệp $1 cho dạng nhiệm vụ $2",
-	"growthexperiments-homepage-suggestededits-create-article-additional-message": "Để có thể thành công trong việc tạo một bài viết mới, {{GENDER:$1|bạn}} sẽ cần phải dùng nhiều kĩ năng mà bạn có thể học được thông qua việc hoàn thành một số nhiệm vụ dễ hơn. Để tìm hiểu thêm về cách tạo một bài viết mới, [$2 hãy nhấn vào đây].",
+	"growthexperiments-homepage-suggestededits-create-article-additional-message": "Để có thể tạo một bài viết mới thành công, {{GENDER:$1|bạn}} sẽ cần phải vận dụng nhiều kĩ năng có thể học được thông qua việc hoàn thành một số nhiệm vụ khác dễ hơn. Để tìm hiểu thêm về cách tạo một bài viết mới, [$2 hãy nhấn vào đây].",
 	"growthexperiments-homepage-suggestededits-error-title": "Hiện không có sửa đổi gợi ý nào.",
 	"growthexperiments-homepage-suggestededits-error-description": "Xin hãy thử lại sau.",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Hãy chọn ít nhất một loại sửa đổi",
