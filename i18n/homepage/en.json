@@ -240,7 +240,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "History and Society",
 	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Science, Technology, and Math",
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Culture",
-	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Geography",
+	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regions",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Invalid suggested edits configuration: bad structure",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Invalid suggested edits configuration: invalid id \"$1\" - must contain a-z, 0-9, - (minus) only",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Invalid suggested edits configuration: missing field $1 for task type or topic $2",
