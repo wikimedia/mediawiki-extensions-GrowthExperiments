@@ -17,7 +17,7 @@
 	},
 	"TestAutoloadClasses": {
 		"GrowthExperiments\\Tests\\InvokedBetween": "tests/phpunit/InvokedBetween.php",
-	 	"GrowthExperiments\\Tests\\SearchTaskSuggesterFactoryTest": "tests/phpunit/unit/SearchTaskSuggesterFactoryTest.php"
+		"GrowthExperiments\\Tests\\SearchTaskSuggesterFactoryTest": "tests/phpunit/unit/SearchTaskSuggesterFactoryTest.php"
 	},
 	"MessagesDirs": {
 		"GrowthExperiments": [
@@ -875,7 +875,7 @@
 			"value": "morelike"
 		},
 		"GENewcomerTasksOresTopicConfigTitle": {
-			"description": "Title of a MediaWiki page which contains ORES topic configuration for suggested edits. If the title has an interwiki prefix, then its content will be loaded remotely via an HTTP request. Should have JSON content type and contain an object like { topics: <topics>, groups: <groups> }. <topics> is a map of topic id -> topic configuration, with each topic an object with the properties 'group' (for grouping topics visually; each section name corresponds with a growthexperiments-homepage-suggestededits-topic-group-name-<id> system message which must exist) and 'oresTopics' (list of ORES topic IDs to use for this topic, ie. the values to use with the articletopic: search keyword). The system message growthexperiments-homepage-suggestededits-topic-name-<id>  will be used for human-readable topic name and must exist. <groups> is a list of the group ids used in the topics section, to define the order of groups.",
+			"description": "Title of a MediaWiki page which contains ORES topic configuration for suggested edits. If the title has an interwiki prefix, then its content will be loaded remotely via an HTTP request. Should have JSON content type and contain an object like { topics: <topics>, groups: <groups> }. <topics> is a map of topic id -> topic configuration, with each topic an object with the properties 'group' (for grouping topics visually; each section name corresponds with a growthexperiments-homepage-suggestededits-topic-group-name-<id> system message which must exist) and 'oresTopics' (list of ORES topic IDs to use for this topic, ie. the values to use with the articletopic: search keyword). The system message growthexperiments-homepage-suggestededits-topic-name-<id> will be used for human-readable topic name and must exist. <groups> is a list of the group ids used in the topics section, to define the order of groups.",
 			"value": "MediaWiki:NewcomerTopicsOres.json"
 		},
 		"GENewcomerTasksTopicConfigTitle": {
