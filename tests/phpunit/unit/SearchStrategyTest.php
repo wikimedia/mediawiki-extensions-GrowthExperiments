@@ -34,25 +34,61 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		$morelikeQueries = $searchStrategy->getQueries( [ $taskType ],
 			[ $morelikeTopic1, $morelikeTopic2 ], [] );
 		$this->assertCount( 2, $morelikeQueries );
-		list( $query1, $query2 ) = array_values( $morelikeQueries );
-		$this->assertSame( 'copyedit', $query1->getTaskType()->getId() );
-		$this->assertSame( 'art', $query1->getTopic()->getId() );
-		$this->assertSame( 'science', $query2->getTopic()->getId() );
-		$this->assertSame( 'hastemplate:"Copyedit" morelikethis:"Picasso|Watercolor"',
-			$query1->getQueryString() );
-		$this->assertSame( 'hastemplate:"Copyedit" morelikethis:"Einstein|Physics"',
-			$query2->getQueryString() );
+
+		$this->assertTopicsInQueries( $morelikeQueries, [ 'art', 'science' ] );
+		$this->assertTaskTypeInQueries( $morelikeQueries, [ 'copyedit' ] );
+
+		$this->assertTemplatesInQueries( $morelikeQueries, [
+			'hastemplate:"Copyedit" morelikethis:"Picasso|Watercolor"',
+			'hastemplate:"Copyedit" morelikethis:"Einstein|Physics"' ] );
 
 		$oresQueries = $searchStrategy->getQueries( [ $taskType ], [ $oresTopic1, $oresTopic2 ], [] );
 		$this->assertCount( 2, $oresQueries );
-		list( $query1, $query2 ) = array_values( $oresQueries );
-		$this->assertSame( 'copyedit', $query1->getTaskType()->getId() );
-		$this->assertSame( 'art', $query1->getTopic()->getId() );
-		$this->assertSame( 'science', $query2->getTopic()->getId() );
-		$this->assertSame( 'hastemplate:"Copyedit" articletopic:painting|drawing',
-			$query1->getQueryString() );
-		$this->assertSame( 'hastemplate:"Copyedit" articletopic:physics|biology',
-			$query2->getQueryString() );
+		$this->assertTaskTypeInQueries( $oresQueries, [ 'copyedit' ] );
+		$this->assertTopicsInQueries( $oresQueries, [ 'art', 'science' ] );
+		$this->assertTemplatesInQueries( $oresQueries, [
+			'hastemplate:"Copyedit" articletopic:painting|drawing',
+			'hastemplate:"Copyedit" articletopic:physics|biology'
+		] );
+	}
+
+	private function assertTopicsInQueries( $queries, $topicIds ) {
+		list( $query1, $query2 ) = array_values( $queries );
+		foreach ( $topicIds as $id ) {
+			if ( $query1->getTopic()->getId() === $id ) {
+				$this->assertSame( $query1->getTopic()->getId(), $id );
+			} elseif ( $query2->getTopic()->getId() === $id ) {
+				$this->assertSame( $query2->getTopic()->getId(), $id );
+			} else {
+				$this->assertTrue( false, "$id not found in query." );
+			}
+		}
+	}
+
+	private function assertTaskTypeInQueries( $queries, $taskTypes ) {
+		list( $query1, $query2 ) = array_values( $queries );
+		foreach ( $taskTypes as $id ) {
+			if ( $query1->getTaskType()->getId() === $id ) {
+				$this->assertSame( $query1->getTaskType()->getId(), $id );
+			} elseif ( $query2->getTaskType()->getId() === $id ) {
+				$this->assertSame( $query2->getTaskType()->getId(), $id );
+			} else {
+				$this->assertTrue( false, "$id not found in query." );
+			}
+		}
+	}
+
+	private function assertTemplatesInQueries( $queries, $templates ) {
+		list( $query1, $query2 ) = array_values( $queries );
+		foreach ( $templates as $template ) {
+			if ( $query1->getQueryString() === $template ) {
+				$this->assertSame( $query1->getQueryString(), $template );
+			} elseif ( $query2->getQueryString() === $template ) {
+				$this->assertSame( $query2->getQueryString(), $template );
+			} else {
+				$this->assertTrue( false, "$template not found in query." );
+			}
+		}
 	}
 
 }
