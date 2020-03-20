@@ -66,7 +66,7 @@ class SpecialImpact extends SpecialPage {
 		$out = $this->getContext()->getOutput();
 		// If we don't have a user (logged-in or from argument) then error out.
 		if ( !$impactUser || !$impactUser->getId() ) {
-			$out->addHTML( HTML::element( 'p', [ 'class' => 'error' ], $this->msg(
+			$out->addHTML( Html::element( 'p', [ 'class' => 'error' ], $this->msg(
 				'growthexperiments-specialimpact-invalid-username'
 			)->text() ) );
 			return;
@@ -77,7 +77,7 @@ class SpecialImpact extends SpecialPage {
 		if ( !$impactUser->equals( $this->getUser() ) ) {
 			// Add warning if viewing someone else's impact data.
 			$out->addHTML(
-				HTML::element( 'p', [ 'class' => 'warning' ],
+				Html::element( 'p', [ 'class' => 'warning' ],
 					$this->msg(
 					'growthexperiments-specialimpact-showing-for-other-user'
 					)->plaintextParams( $impactUser->getName() )
