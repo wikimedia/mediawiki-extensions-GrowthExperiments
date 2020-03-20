@@ -137,5 +137,6 @@
 	"growthexperiments-homepage-suggestededits-topics-more": "mostrar más",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Seleccionar todo",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Quitar todo",
-	"growthexperiments-notification-body-mentor-change": "Motivo: $1"
+	"growthexperiments-notification-body-mentor-change": "Motivo: $1",
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Más acerca de esta edición sugerida"
 }
