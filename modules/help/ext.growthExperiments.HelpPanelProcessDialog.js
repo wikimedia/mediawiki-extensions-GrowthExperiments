@@ -10,7 +10,7 @@
 	 * @cfg {string} source Logical name of the source to use with the HelpPanelPostQuestion API
 	 * @cfg {string} storageKey Name of the key to use to persist question draft in storage
 	 * @cfg {object} panelTitleMessages Object like { panelName: title } to configure panel titles
-	 * @cfg {string} questionReviewHeader Header message on the question review panel
+	 * @cfg {string} askhelpHeader Header message on the question review panel
 	 * @cfg {string} questionCompleteConfirmationText Confirmation text for question complete panel
 	 * @cfg {string} viewQuestionText Text of the link to view the question that was just posted
 	 * @cfg {string} submitFailureMessage Text of the error message when failing to post a question
@@ -26,10 +26,10 @@
 			this.storageKey = config.storageKey || 'help-panel-question-text';
 			this.panelTitleMessages = $.extend( {
 				home: mw.message( 'growthexperiments-help-panel-home-title' ).text(),
-				questionreview: mw.message( 'growthexperiments-help-panel-questionreview-title' ).text(),
+				askhelp: mw.message( 'growthexperiments-help-panel-questionreview-title' ).text(),
 				questioncomplete: mw.message( 'growthexperiments-help-panel-questioncomplete-title' ).text()
 			}, config.panelTitleMessages );
-			this.questionReviewHeader = config.questionReviewHeader ||
+			this.askhelpHeader = config.askhelpHeader ||
 				mw.message(
 					'growthexperiments-help-panel-questionreview-header',
 					$( linksConfig.helpDeskLink ),
@@ -47,7 +47,8 @@
 				'growthexperiments-help-panel-question-post-error', linksConfig.helpDeskLink
 			).parse();
 		},
-		HelpPanelSearchWidget = require( './ext.growthExperiments.HelpPanelSearchWidget.js' );
+		HelpPanelSearchWidget = require( './ext.growthExperiments.HelpPanelSearchWidget.js' ),
+		HelpPanelHomeButtonWidget = require( './ext.growthExperiments.HelpPanelHomeButtonWidget.js' );
 
 	OO.inheritClass( HelpPanelProcessDialog, OO.ui.ProcessDialog );
 
@@ -58,7 +59,7 @@
 			icon: 'close',
 			flags: 'safe',
 			action: 'close',
-			modes: [ 'home', 'questionreview', 'search' ]
+			modes: [ 'home', 'ask-help', 'general-help', 'search' ]
 		},
 		// Add a button to the bottom of the panel that replaces the close button in the
 		// questioncomplete stage (T225669)
@@ -72,7 +73,7 @@
 		},
 		{
 			label: mw.message( 'growthexperiments-help-panel-back-home' ).text(),
-			modes: [ 'search' ],
+			modes: [ 'search', 'general-help' ],
 			action: 'home'
 		}
 	];
@@ -90,33 +91,36 @@
 	 *
 	 * Modeled off of VisualEditor's swapPanel().
 	 *
-	 * @param {string} panel One of 'home', 'questionreview', or 'questioncomplete'
+	 * @param {string} panel One of 'home', 'ask-help', 'general-help' or 'questioncomplete'
 	 * @throws {Error} Unknown panel.
 	 */
 	HelpPanelProcessDialog.prototype.swapPanel = function ( panel ) {
-		var panelObj = this[ panel + 'Panel' ],
+		var panelObj = this[ panel.replace( '-', '' ) + 'Panel' ],
 			titleMsg = this.panelTitleMessages[ panel ] || this.panelTitleMessages.home;
 
 		this.title.setLabel( titleMsg );
 
-		if ( ( [ 'home', 'questionreview', 'questioncomplete' ].indexOf( panel ) ) === -1 ) {
+		if ( ( [ 'home', 'general-help', 'ask-help', 'questioncomplete' ].indexOf( panel ) ) === -1 ) {
 			throw new Error( 'Unknown panel: ' + panel );
 		}
 		if ( panel === 'home' ) {
-			this.homeFooterPanel.toggle( true );
-			this.questionReviewFooterPanel.toggle( false );
+			this.askhelpFooterPanel.toggle( false );
 			this.toggleSearchResults( false );
 			this.settingsCog.toggle( true );
 		}
-		if ( panel === 'questionreview' ) {
-			this.questionReviewFooterPanel.toggle( true );
-			this.homeFooterPanel.toggle( false );
+		if ( panel === 'general-help' ) {
+			this.askhelpFooterPanel.toggle( false );
+			this.toggleSearchResults( false );
+			this.settingsCog.toggle( true );
+		}
+		if ( panel === 'ask-help' ) {
+			this.askhelpFooterPanel.toggle( true );
 			this.settingsCog.toggle( true );
 		}
 		if ( panel === 'questioncomplete' ) {
 			// Use the action defined in static.actions rather than a custom implementation
 			// for this panel.
-			this.questionReviewFooterPanel.toggle( false );
+			this.askhelpFooterPanel.toggle( false );
 			// Hide the cog, it interferes with the primary 'close' action
 			this.settingsCog.toggle( false );
 		}
@@ -125,12 +129,12 @@
 	};
 
 	/**
-	 * Connected to the questionReviewTextInput field.
+	 * Connected to the askhelpTextInput field.
 	 */
 	HelpPanelProcessDialog.prototype.onTextInputChange = function () {
-		var reviewTextInputValue = this.questionReviewTextInput.getValue();
+		var reviewTextInputValue = this.askhelpTextInput.getValue();
 		// Enable the "Submit" button on the review step if there's text input.
-		this.questionReviewSubmitButton.setDisabled( !reviewTextInputValue );
+		this.askhelpSubmitButton.setDisabled( !reviewTextInputValue );
 		// Copy the review text input back to the initial question field, in case the
 		// user clicks "back".
 		this.questionTextInput.setValue( reviewTextInputValue );
@@ -142,9 +146,7 @@
 	 * Set the value of the text area on the review step.
 	 */
 	HelpPanelProcessDialog.prototype.populateReviewText = function () {
-		this.questionReviewTextInput.setValue( this.questionTextInput.getValue() );
-		// Disable "Continue" button if there is no text.
-		this.askQuestionContinueButton.setDisabled( !this.questionTextInput.getValue() );
+		this.askhelpTextInput.setValue( this.questionTextInput.getValue() );
 
 		if ( !this.previousQuestionText && this.questionTextInput.getValue() ) {
 			this.logger.log( 'enter-question-text' );
@@ -250,8 +252,31 @@
 		this.settingsCog.$element.toggleClass( 'active', show );
 	};
 
+	HelpPanelProcessDialog.prototype.buildHomePanelButtons = function () {
+		[ 'ask-help', 'general-help' ].forEach( function ( id ) {
+			this.homePanel.$element.append(
+				new HelpPanelHomeButtonWidget( { id: id } ).$element
+					.data( 'link-id', id )
+					.on( 'click', function ( event ) {
+						this.logLinkClick( event );
+						this.swapPanel( id );
+					}.bind( this ) )
+			);
+		}.bind( this ) );
+	};
+
 	HelpPanelProcessDialog.prototype.initialize = function () {
 		HelpPanelProcessDialog.super.prototype.initialize.call( this );
+
+		this.buildSettingsCog();
+		this.$content
+			.addClass( 'mw-ge-help-panel-processdialog' );
+
+		this.panels = new OO.ui.StackLayout();
+		this.homePanel = new OO.ui.PanelLayout( {
+			padded: true,
+			expanded: false
+		} );
 
 		this.userEmail = mw.config.get( 'wgGEHelpPanelUserEmail' );
 		this.userEmailConfirmed = mw.config.get( 'wgGEHelpPanelUserEmailConfirmed' );
@@ -261,13 +286,6 @@
 		 */
 		this.relevantTitle = mw.Title.newFromText( mw.config.get( 'wgRelevantPageName' ) );
 
-		this.panels = new OO.ui.StackLayout();
-
-		this.homePanel = new OO.ui.PanelLayout( {
-			padded: true,
-			expanded: false
-		} );
-
 		this.searchWidget = new HelpPanelSearchWidget( this.logger, {
 			searchNamespaces: configData.GEHelpPanelSearchNamespaces,
 			foreignApi: configData.GEHelpPanelSearchForeignAPI
@@ -276,17 +294,22 @@
 			leaveSearch: [ 'executeAction', 'leavesearch' ]
 		} );
 
-		this.questionreviewPanel = new OO.ui.PanelLayout( {
+		this.askhelpPanel = new OO.ui.PanelLayout( {
 			padded: true,
 			expanded: false
 		} );
+
+		this.generalhelpPanel = new OO.ui.PanelLayout( {
+			padded: true,
+			expanded: false
+		} );
+
 		this.questioncompletePanel = new OO.ui.PanelLayout( {
 			padded: true,
 			expanded: false
 		} );
 
 		// Fields
-		this.buildSettingsCog();
 		this.previousQuestionText = mw.storage.get( this.storageKey );
 
 		this.questionTextInput = new OO.ui.MultilineTextInputWidget( {
@@ -304,7 +327,7 @@
 			autofocus: false
 		} ).connect( this, { change: 'populateReviewText' } );
 
-		this.questionReviewTextInput = new OO.ui.MultilineTextInputWidget( {
+		this.askhelpTextInput = new OO.ui.MultilineTextInputWidget( {
 			placeholder: mw.message( 'growthexperiments-help-panel-question-placeholder' )
 				.params( [ mw.user ] )
 				.text(),
@@ -324,14 +347,8 @@
 			selected: true
 		} );
 
-		this.askQuestionContinueButton = new OO.ui.ButtonWidget( {
-			flags: [ 'progressive', 'primary' ],
-			disabled: !mw.storage.get( this.storageKey ),
-			label: mw.message( 'growthexperiments-help-panel-question-button-text' ).text()
-		} ).connect( this, { click: [ 'executeAction', 'questionreview' ] } );
-
 		// Build home content of help panel.
-		this.homeSearchFieldContent = new OO.ui.FieldLayout(
+		this.generalhelpSearchFieldContent = new OO.ui.FieldLayout(
 			this.searchWidget, {
 				align: 'top',
 				label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-search-label' ).text() ),
@@ -339,54 +356,29 @@
 			}
 		);
 
-		// Place the input and button in the footer to mimic the style of other actions.
-		this.homeFooterPanel = new OO.ui.PanelLayout( {
-			padded: true,
-			expanded: false
-		} );
-		this.homeFooterFieldset = new OO.ui.FieldsetLayout();
-		this.homeFooterFieldset.addItems( [
-			new OO.ui.FieldLayout(
-				new OO.ui.Widget( {
-					content: [
-						this.questionTextInput
-					]
-				} ),
-				{
-					label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-question-widget-header' ).text() ),
-					align: 'top'
-				}
-			),
-			new OO.ui.FieldLayout(
-				this.askQuestionContinueButton,
-				{
-					classes: [ 'mw-ge-help-panel-question-continue-button' ]
-				}
-			)
-		] );
-		this.homeFooterPanel.$element.append( this.homeFooterFieldset.$element );
-
-		this.homePanel.$element.append( this.homeSearchFieldContent.$element );
 		// Add editing links after search.
-		this.$homePanelEditingLinksHeader = $( '<h2>' )
+		this.$generalhelpPanelEditingLinksHeader = $( '<h2>' )
 			.append( $( '<strong>' )
 				.text( mw.message( 'growthexperiments-help-panel-editing-help-links-widget-header' ).text() ) );
 
-		this.$homePanelEditingLinks = $( linksConfig.helpPanelLinks );
-		this.$homePanelEditingLinksViewMore = $( '<p>' )
+		this.$generalhelpPanelEditingLinks = $( linksConfig.helpPanelLinks );
+		this.$generalhelpPanelEditingLinksViewMore = $( '<p>' )
 			.append( $( '<strong>' ).html( linksConfig.viewMoreLink ) );
-		this.homePanel.$element.append(
-			this.$homePanelEditingLinksHeader,
-			this.$homePanelEditingLinks,
-			this.$homePanelEditingLinksViewMore
+		this.generalhelpPanel.$element.append(
+			this.generalhelpSearchFieldContent.$element,
+			this.$generalhelpPanelEditingLinksHeader,
+			this.$generalhelpPanelEditingLinks,
+			this.$generalhelpPanelEditingLinksViewMore
 		);
 
-		// Build step two of ask question process.
-		this.questionReviewContent = new OO.ui.FieldsetLayout();
+		this.buildHomePanelButtons();
 
-		this.questionReviewContent.addItems( [
+		// Build step two of ask question process.
+		this.askhelpContent = new OO.ui.FieldsetLayout();
+
+		this.askhelpContent.addItems( [
 			new OO.ui.LabelWidget( {
-				label: $( '<p>' ).append( this.questionReviewHeader )
+				label: $( '<p>' ).append( this.askhelpHeader )
 			} )
 		] );
 
@@ -399,36 +391,37 @@
 			}
 		);
 
-		this.questionReviewContent.addItems( [
+		this.askhelpContent.addItems( [
 			new OO.ui.FieldLayout(
-				this.questionReviewTextInput, {
+				this.askhelpTextInput, {
 					label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-label' ).text() ),
 					align: 'top'
 				} ),
 			this.questionIncludeFieldLayout
 		] );
-		this.questionreviewPanel.$element.append( this.questionReviewContent.$element );
+		this.askhelpPanel.$element.append( this.askhelpContent.$element );
 
-		this.questionReviewFooterPanel = new OO.ui.PanelLayout( {
+		this.askhelpFooterPanel = new OO.ui.PanelLayout( {
 			expanded: false,
 			padded: true
 		} );
-		this.questionReviewFooterFieldset = new OO.ui.FieldsetLayout();
-		this.questionReviewSubmitButton = new OO.ui.ButtonWidget( {
+		this.askhelpFooterFieldset = new OO.ui.FieldsetLayout();
+		this.askhelpSubmitButton = new OO.ui.ButtonWidget( {
 			label: mw.message( 'growthexperiments-help-panel-submit-question-button-text' ).text(),
 			// Inherit classes from primary action, to position the button on the right.
 			classes: [ 'oo-ui-processDialog-actions-primary' ],
 			flags: [ 'primary', 'progressive' ]
-		} ).connect( this, { click: [ 'executeAction', 'questioncomplete' ] } );
+		} ).connect( this, { click: [ 'executeAction', 'questioncomplete' ] } )
+			.setDisabled( true );
 
-		this.questionReviewFooterFieldset.addItems( [
+		this.askhelpFooterFieldset.addItems( [
 			new OO.ui.ButtonWidget( {
 				label: mw.message( 'growthexperiments-help-panel-back-home' ).text()
 			} ).connect( this, { click: [ 'executeAction', 'home' ] } ),
-			this.questionReviewSubmitButton
+			this.askhelpSubmitButton
 		] );
-		this.questionReviewFooterPanel.$element.append(
-			this.questionReviewFooterFieldset.$element
+		this.askhelpFooterPanel.$element.append(
+			this.askhelpFooterFieldset.$element
 		);
 
 		this.questionCompleteContent = new OO.ui.FieldsetLayout( {
@@ -461,25 +454,24 @@
 		this.questioncompletePanel.$element.append( this.questionCompleteContent.$element );
 
 		// Add the footers
-		this.$foot.append( this.homeFooterPanel.$element );
-		this.$foot.append( this.questionReviewFooterPanel.$element );
+		this.$foot.append( this.askhelpFooterPanel.$element );
 
 		this.panels.addItems( [
 			this.homePanel,
-			this.questionreviewPanel,
+			this.askhelpPanel,
+			this.generalhelpPanel,
 			this.questioncompletePanel
 		] );
-		this.$body
-			.append( this.panels.$element );
 
-		this.$content
-			.addClass( 'mw-ge-help-panel-processdialog' );
-
+		this.$body.append( this.panels.$element );
 		this.$element.on( 'click', 'a[data-link-id]', this.logLinkClick.bind( this ) );
 	};
 
-	HelpPanelProcessDialog.prototype.logLinkClick = function ( e ) {
-		var linkId = $( e.target ).data( 'link-id' );
+	/**
+	 * @param {Object} event
+	 */
+	HelpPanelProcessDialog.prototype.logLinkClick = function ( event ) {
+		var linkId = $( event.currentTarget ).data( 'link-id' );
 		if ( linkId ) {
 			this.logger.log( 'link-click', linkId );
 		}
@@ -505,10 +497,9 @@
 	 */
 	HelpPanelProcessDialog.prototype.toggleSearchResults = function ( toggle ) {
 		// Hide/show editing links section and footer if search is active.
-		this.$homePanelEditingLinks.toggle( !toggle );
-		this.$homePanelEditingLinksHeader.toggle( !toggle );
-		this.$homePanelEditingLinksViewMore.toggle( !toggle );
-		this.homeFooterPanel.toggle( !toggle );
+		this.$generalhelpPanelEditingLinks.toggle( !toggle );
+		this.$generalhelpPanelEditingLinksHeader.toggle( !toggle );
+		this.$generalhelpPanelEditingLinksViewMore.toggle( !toggle );
 		// Show/hide search results.
 		this.searchWidget.toggleSearchResults( toggle );
 
@@ -527,10 +518,14 @@
 					this.swapPanel( 'home' );
 				}
 				if ( action === 'home' ) {
-					this.logger.log( 'back-home', { from: this.currentMode } );
+					if ( this.currentMode === 'search' ) {
+						action = 'general-help';
+					}
+					// One of: back-home, back-general-help
+					this.logger.log( 'back-' + action, { from: this.currentMode } );
 					this.swapPanel( action );
 				}
-				if ( action === 'questionreview' ) {
+				if ( action === 'ask-help' ) {
 					this.logger.log( 'review' );
 					this.swapPanel( action );
 				}
@@ -540,12 +535,12 @@
 				}
 				if ( action === 'leavesearch' ) {
 					this.logger.log( 'back-home', { from: 'blank-search-input' } );
-					this.swapPanel( 'home' );
+					this.swapPanel( 'general-help' );
 				}
 				if ( action === 'questioncomplete' ) {
 					/* eslint-disable camelcase */
 					submitAttemptData = {
-						question_length: this.questionReviewTextInput.getValue().length,
+						question_length: this.askhelpTextInput.getValue().length,
 						include_title: this.questionIncludeTitleCheckbox.isSelected(),
 						had_email: !!this.userEmail,
 						had_email_confirmed: !!this.userEmailConfirmed
@@ -554,14 +549,14 @@
 					this.logger.log( 'submit-attempt', submitAttemptData );
 
 					// Disable the primary button while executing the API call.
-					this.questionReviewSubmitButton.setDisabled( true );
+					this.askhelpSubmitButton.setDisabled( true );
 					// Toggle the first edit text, will set depending on API response.
 					this.questionCompleteFirstEditText.toggle( false );
 					postData = {
 						source: this.source,
 						action: 'helppanelquestionposter',
 						relevanttitle: this.questionIncludeTitleCheckbox.isSelected() ? this.relevantTitle.getPrefixedText() : '',
-						body: this.questionReviewTextInput.getValue()
+						body: this.askhelpTextInput.getValue()
 					};
 					// Start pre-loading tour for help panel.
 					if ( this.source === 'helppanel' &&
@@ -615,7 +610,7 @@
 							// Re-enable the submit button once the user is done with modal.
 							submitAttemptData.error = errorCode;
 							this.logger.log( 'submit-failure', submitAttemptData );
-							this.questionReviewSubmitButton.setDisabled( false );
+							this.askhelpSubmitButton.setDisabled( false );
 							return $.Deferred().reject(
 								new OO.ui.Error( $( '<p>' ).append( this.submitFailureMessage ) )
 							).promise();
@@ -663,19 +658,25 @@
 		this.actions.setMode( mode );
 	};
 
+	/**
+	 * Get a stable body height as panels are switched.
+	 *
+	 * The idea is that the height should remain uniform across panels. This is important
+	 * for the animation effects (not yet implemented).
+	 *
+	 * @return {number}
+	 */
 	HelpPanelProcessDialog.prototype.getBodyHeight = function () {
 		if ( !this.homeHeight && this.currentMode === 'home' ) {
-			this.homeHeight = this.panels.getCurrentItem().$element.outerHeight( true ) +
-				this.$foot.outerHeight( true );
+			// 60.0167 is the height of the footer contents on the "ask-help" screen which
+			// has back and post buttons. We need to set the number here since we want the
+			// home panel to have the same height as the ask-help panel, but don't yet
+			// know the height of this.$foot
+			this.homeHeight = this.panels.getCurrentItem().$element.outerHeight( true ) + 60.0167;
 		}
 
-		// home height for home and search panels
-		if ( this.currentMode === 'home' || this.currentMode === 'search' ) {
-			return this.homeHeight - this.$foot.outerHeight( true );
-		}
-
-		// height fit to content for other panels
-		return this.panels.getCurrentItem().$element.outerHeight( true );
+		// Use home height minus dynamically calculated footer (not all panels have a footer)
+		return this.homeHeight - this.$foot.outerHeight( true );
 	};
 
 	module.exports = HelpPanelProcessDialog;

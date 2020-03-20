@@ -143,7 +143,7 @@
 	"attributes": {
 		"EventLogging": {
 			"Schemas": {
-				"HelpPanel": 18973214,
+				"HelpPanel": 19883850,
 				"HomepageModule": 19713759
 			}
 		}
@@ -604,13 +604,15 @@
 		"ext.growthExperiments.Help": {
 			"styles": [
 				"help/ext.growthExperiments.HelpPanelProcessDialog.less",
-				"help/ext.growthExperiments.HelpPanelSearchWidget.less"
+				"help/ext.growthExperiments.HelpPanelSearchWidget.less",
+				"help/ext.growthExperiments.HelpPanelHomeButtonWidget.less"
 			],
 			"packageFiles": [
 				"help/ext.growthExperiments.Help.js",
 				"help/ext.growthExperiments.HelpPanelLogger.js",
 				"utils/ext.growthExperiments.Utils.js",
 				"help/ext.growthExperiments.HelpPanelSearchWidget.js",
+				"help/ext.growthExperiments.HelpPanelHomeButtonWidget.js",
 				"help/ext.growthExperiments.HelpPanelProcessDialog.js",
 				{
 					"name": "help/data.json",
@@ -625,6 +627,7 @@
 				"mediawiki.util",
 				"oojs-ui.styles.icons-alerts",
 				"oojs-ui.styles.icons-interactions",
+				"oojs-ui.styles.icons-user",
 				"oojs-ui-widgets",
 				"oojs-ui-windows"
 			],
@@ -664,7 +667,11 @@
 				"growthexperiments-help-panel-questioncomplete-first-edit",
 				"growthexperiments-help-panel-search-label",
 				"growthexperiments-help-panel-search-no-results",
-				"ellipsis"
+				"ellipsis",
+				"growthexperiments-help-panel-button-header-ask-help",
+				"growthexperiments-help-panel-button-header-general-help",
+				"growthexperiments-help-panel-button-subheader-general-help",
+				"growthexperiments-help-panel-button-subheader-ask-help"
 			],
 			"targets": [
 				"desktop",
