@@ -45,5 +45,9 @@
 	"growthexperiments-help-panel-search-label": "Yardım arayın",
 	"growthexperiments-help-panel-search-no-results": "Hiçbir sonuç bulunmamıştı.",
 	"tag-help_panel_question": "Yardım paneli sorusu",
-	"tag-help_panel_question-description": "Yardım panelinin soru gönderme özelliğinden yapılan düzenleme"
+	"tag-help_panel_question-description": "Yardım panelinin soru gönderme özelliğinden yapılan düzenleme",
+	"growthexperiments-help-panel-button-header-ask-help": "Yardım masasına sorun",
+	"growthexperiments-help-panel-button-header-general-help": "Genel düzenleme yardımı",
+	"growthexperiments-help-panel-button-subheader-general-help": "Yanıt arayın ve en çok okunan maddeleri okuyun",
+	"growthexperiments-help-panel-button-subheader-ask-help": "Diğer gönüllülerden yanıt alın"
 }

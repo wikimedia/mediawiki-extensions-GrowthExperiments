@@ -46,5 +46,9 @@
 	"growthexperiments-help-panel-search-label": "{{GENDER:|ابحث|ابحثي}} عن مساعدة",
 	"growthexperiments-help-panel-search-no-results": "لم يتم العثور على نتيجة.",
 	"tag-help_panel_question": "سؤال من لوحة المساعدة",
-	"tag-help_panel_question-description": "تم التعديل بواسطة خاصية نشر سؤال عن طريق لوحة المساعدة"
+	"tag-help_panel_question-description": "تم التعديل بواسطة خاصية نشر سؤال عن طريق لوحة المساعدة",
+	"growthexperiments-help-panel-button-header-ask-help": "{{GENDER:|اسأل|اسألي}} ميدان المساعدة",
+	"growthexperiments-help-panel-button-header-general-help": "مساعدة عامة في التحرير",
+	"growthexperiments-help-panel-button-subheader-general-help": "{{GENDER:|اِبحث|اِبحثي}} عن إجابات و{{GENDER:|اِقرأ|اِقرئي}} أعلى المقالات",
+	"growthexperiments-help-panel-button-subheader-ask-help": "{{GENDER:|احصل|احصلي}} على إجابات من مستخدمين آخرين"
 }

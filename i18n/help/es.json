@@ -27,5 +27,6 @@
 	"growthexperiments-help-panel-questionposter-invalid-title": "El título no es válido.",
 	"growthexperiments-help-panel-community-help-desk-text": "Asistencia comunitaria",
 	"growthexperiments-help-panel-search-label": "Busca ayuda",
-	"tag-help_panel_question": "Pregunta del panel de ayuda"
+	"tag-help_panel_question": "Pregunta del panel de ayuda",
+	"growthexperiments-help-panel-button-header-general-help": "Ayuda general sobre la edición"
 }

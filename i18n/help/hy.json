@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mari Avetisyan"
+			"Mari Avetisyan",
+			"Kareyac"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Գործարկել խմբագրի օգնության վահանակը",
@@ -36,5 +37,8 @@
 	"growthexperiments-help-panel-search-label": "Օգնության որոնում",
 	"growthexperiments-help-panel-search-no-results": "Արդյունքներ չեն գտնվել։",
 	"tag-help_panel_question": "Օգնության վահանակի հարց",
-	"tag-help_panel_question-description": "Խմբագրումը արվել է օգնության վահանակի գրառման մեջ հարց հրապարակել բաժնում"
+	"tag-help_panel_question-description": "Խմբագրումը արվել է օգնության վահանակի գրառման մեջ հարց հրապարակել բաժնում",
+	"growthexperiments-help-panel-button-header-ask-help": "Հարցնել օգնության էջին",
+	"growthexperiments-help-panel-button-header-general-help": "Ընդհանուր խմբագրման օգնություն",
+	"growthexperiments-help-panel-button-subheader-ask-help": "Ստացեք պատասխաններ այլ կամավորների կողմից"
 }

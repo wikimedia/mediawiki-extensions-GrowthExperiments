@@ -46,5 +46,9 @@
 	"growthexperiments-help-panel-search-label": "Prohledat nápovědu",
 	"growthexperiments-help-panel-search-no-results": "Nebyly nalezeny žádné výsledky.",
 	"tag-help_panel_question": "Panel Potřebuji pomoc",
-	"tag-help_panel_question-description": "Otázka vložená prostřednictvím panelu Potřebuji pomoc"
+	"tag-help_panel_question-description": "Otázka vložená prostřednictvím panelu Potřebuji pomoc",
+	"growthexperiments-help-panel-button-header-ask-help": "Zeptejte se komunity",
+	"growthexperiments-help-panel-button-header-general-help": "Nápověda k editaci",
+	"growthexperiments-help-panel-button-subheader-general-help": "Prohledávání nápovědy",
+	"growthexperiments-help-panel-button-subheader-ask-help": "Získejte radu od dalších dobrovolníků"
 }

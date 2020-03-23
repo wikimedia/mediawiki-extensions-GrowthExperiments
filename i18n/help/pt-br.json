@@ -44,5 +44,9 @@
 	"growthexperiments-help-panel-search-label": "Procurar ajuda",
 	"growthexperiments-help-panel-search-no-results": "Não foram encontrados resultados.",
 	"tag-help_panel_question": "Pergunta no painel de ajuda",
-	"tag-help_panel_question-description": "Edição feita a partir de pós da postagem no painel um recurso de pergunta"
+	"tag-help_panel_question-description": "Edição feita a partir de pós da postagem no painel um recurso de pergunta",
+	"growthexperiments-help-panel-button-header-ask-help": "Pergunte na central de ajuda",
+	"growthexperiments-help-panel-button-header-general-help": "Ajuda geral de edição",
+	"growthexperiments-help-panel-button-subheader-general-help": "Procure respostas e leia os principais artigos",
+	"growthexperiments-help-panel-button-subheader-ask-help": "Obtenha respostas de outros voluntários"
 }
