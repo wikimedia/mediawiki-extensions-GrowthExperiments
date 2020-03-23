@@ -54,12 +54,20 @@
 
 	HelpPanelProcessDialog.static.name = 'HelpPanel';
 	HelpPanelProcessDialog.static.actions = [
-		// Allow user to close the panel at any stage except questioncomplete (see below)
+		// On desktop, allow user to close the panel at any stage except
+		// questioncomplete.
 		{
 			icon: 'close',
 			flags: 'safe',
 			action: 'close',
-			modes: [ 'home', 'ask-help', 'general-help', 'search' ]
+			modes: OO.ui.isMobile() ? [ 'home' ] : [ 'home', 'ask-help', 'general-help', 'search' ]
+		},
+		// On mobile, use a back icon for all non-home panels.
+		{
+			icon: 'previous',
+			flags: 'safe',
+			action: 'home',
+			modes: OO.ui.isMobile() ? [ 'ask-help', 'general-help', 'search' ] : []
 		},
 		// Add a button to the bottom of the panel that replaces the close button in the
 		// questioncomplete stage (T225669)
