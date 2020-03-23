@@ -26,7 +26,7 @@
 			this.storageKey = config.storageKey || 'help-panel-question-text';
 			this.panelTitleMessages = $.extend( {
 				home: mw.message( 'growthexperiments-help-panel-home-title' ).text(),
-				askhelp: mw.message( 'growthexperiments-help-panel-questionreview-title' ).text(),
+				'ask-help': mw.message( 'growthexperiments-help-panel-questionreview-title' ).text(),
 				questioncomplete: mw.message( 'growthexperiments-help-panel-questioncomplete-title' ).text()
 			}, config.panelTitleMessages );
 			this.askhelpHeader = config.askhelpHeader ||
