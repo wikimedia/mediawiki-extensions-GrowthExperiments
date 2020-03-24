@@ -40,7 +40,9 @@
 			helpPanelProcessDialog = new HelpPanelProcessDialog( {
 				// Make help panel wider for larger screens.
 				size: Math.max( document.documentElement.clientWidth, window.innerWidth || 0 ) > 1366 ? 'medium' : size,
-				logger: logger
+				logger: logger,
+				guidanceEnabled: mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ),
+				taskTypeId: mw.config.get( 'wgGrowthExperimentsTaskTypeUrlParam' )
 			} ),
 			helpCtaButton,
 			lifecycle;

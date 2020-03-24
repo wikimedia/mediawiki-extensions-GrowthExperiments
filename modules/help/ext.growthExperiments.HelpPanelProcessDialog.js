@@ -14,6 +14,8 @@
 	 * @cfg {string} questionCompleteConfirmationText Confirmation text for question complete panel
 	 * @cfg {string} viewQuestionText Text of the link to view the question that was just posted
 	 * @cfg {string} submitFailureMessage Text of the error message when failing to post a question
+	 * @cfg {bool} guidanceEnabled Whether guidance feature is enabled.
+	 * @cfg {string} taskTypeId The ID of the suggested edit task type.
 	 * @constructor
 	 */
 	var configData = require( './data.json' ),
@@ -21,6 +23,8 @@
 		HelpPanelProcessDialog = function helpPanelProcessDialog( config ) {
 			HelpPanelProcessDialog.super.call( this, config );
 			this.logger = config.logger;
+			this.guidanceEnabled = config.guidanceEnabled;
+			this.taskTypeId = config.taskTypeId;
 			this.showCogMenu = config.showCogMenu !== undefined ? config.showCogMenu : true;
 			this.source = config.source || 'helppanel';
 			this.storageKey = config.storageKey || 'help-panel-question-text';
@@ -261,9 +265,16 @@
 	};
 
 	HelpPanelProcessDialog.prototype.buildHomePanelButtons = function () {
-		[ 'ask-help', 'general-help' ].forEach( function ( id ) {
+		var buttonIds = [ 'ask-help', 'general-help' ];
+		if ( this.guidanceEnabled && this.taskTypeId ) {
+			buttonIds.unshift( 'suggested-edits' );
+		}
+		buttonIds.forEach( function ( id ) {
 			this.homePanel.$element.append(
-				new HelpPanelHomeButtonWidget( { id: id } ).$element
+				new HelpPanelHomeButtonWidget( {
+					id: id,
+					taskTypeId: this.taskTypeId
+				} ).$element
 					.data( 'link-id', id )
 					.on( 'click', function ( event ) {
 						this.logLinkClick( event );
