@@ -33,18 +33,22 @@
 			this.topicFiltersDialog = new TopicFiltersDialog( {
 				presets: config.topicPresets
 			} ).connect( this, {
-				done: function () {
-					this.emit( 'done' );
+				done: [ 'emit', 'done' ],
+				// forwards one argument, the list of enabled filters
+				search: [ 'emit', 'search' ],
+				selectAll: function ( groupId ) {
+					logger.log( 'suggested-edits', config.mode, 'se-topicfilter-select-all', {
+						isCta: false,
+						topicGroup: groupId
+					} );
 				},
-				search: function ( search ) {
-					this.emit( 'search', search );
+				removeAll: function ( groupId ) {
+					logger.log( 'suggested-edits', config.mode, 'se-topicfilter-remove-all', {
+						isCta: false,
+						topicGroup: groupId
+					} );
 				},
-				expand: function () {
-					logger.log( 'suggested-edits', config.mode, 'se-topicfilter-more-click' );
-				},
-				cancel: function () {
-					this.emit( 'cancel' );
-				}
+				cancel: [ 'emit', 'cancel' ]
 			} );
 			this.topicFiltersDialog.$element.addClass( 'suggested-edits-topic-filters' );
 			windows.push( this.topicFiltersDialog );
@@ -104,8 +108,7 @@
 				lifecycle.closing.done( function ( data ) {
 					if ( data && data.action === 'done' ) {
 						logger.log( 'suggested-edits', config.mode, 'se-topicfilter-done', {
-							topics: this.topicFiltersDialog.getEnabledFilters(),
-							topicsAboveFold: this.topicFiltersDialog.getAboveFoldEnabledFilters()
+							topics: this.topicFiltersDialog.getEnabledFilters()
 						} );
 					} else {
 						logger.log( 'suggested-edits', config.mode, 'se-topicfilter-cancel',

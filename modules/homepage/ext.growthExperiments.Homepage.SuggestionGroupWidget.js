@@ -93,6 +93,7 @@ SuggestionGroupWidget.prototype.onSelectAllButtonClick = function () {
 	this.getItems().forEach( function ( suggestion ) {
 		suggestion.toggleSuggestion( newState );
 	} );
+	this.emit( newState ? 'selectAll' : 'removeAll' );
 };
 
 /**

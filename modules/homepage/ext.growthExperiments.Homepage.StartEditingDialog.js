@@ -217,7 +217,6 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 							JSON.stringify( this.topicSelector.getSelectedTopics() ) :
 							null;
 					logData.topics = this.topicSelector.getSelectedTopics();
-					logData.topicsAboveFold = this.topicSelector.getAboveFoldSelectedTopics();
 				}
 				return new mw.Api().saveOptions( settings )
 					.then( function () {
@@ -338,7 +337,18 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 			);
 
 		this.topicSelector.connect( this, {
-			expand: 'onTopicSelectorExpand',
+			selectAll: function ( groupId ) {
+				this.logger.log( 'suggested-edits', this.mode, 'se-topicfilter-select-all', {
+					isCta: true,
+					topicGroup: groupId
+				} );
+			},
+			removeAll: function ( groupId ) {
+				this.logger.log( 'suggested-edits', this.mode, 'se-topicfilter-remove-all', {
+					isCta: true,
+					topicGroup: groupId
+				} );
+			},
 			// The "select all" buttons fire many toggleSelection events at once, so debounce them
 			toggleSelection: 'updateMatchCountDebounced'
 		} );
@@ -491,11 +501,6 @@ StartEditingDialog.prototype.buildProgressIndicator = function ( currentPage, to
 	);
 
 	return $indicator;
-};
-
-StartEditingDialog.prototype.onTopicSelectorExpand = function () {
-	// This used to call this.updateSize(), but T238610#5861323 asked for that to be removed
-	this.logger.log( 'start-startediting', this.mode, 'se-cta-more-click' );
 };
 
 /**

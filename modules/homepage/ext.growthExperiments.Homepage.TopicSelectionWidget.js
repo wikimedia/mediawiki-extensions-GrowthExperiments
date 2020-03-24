@@ -92,6 +92,8 @@ function TopicSelectionWidget( config ) {
 		} );
 		groupWidget.connect( this, {
 			toggleSuggestion: [ 'emit', 'toggleSelection' ],
+			selectAll: [ 'emit', 'selectAll', group.id ],
+			removeAll: [ 'emit', 'removeAll', group.id ],
 			expand: [ 'emit', 'expand' ]
 		} );
 
@@ -120,20 +122,6 @@ TopicSelectionWidget.prototype.getSelectedTopics = function () {
 		.map( function ( suggestion ) {
 			return suggestion.suggestionData.id;
 		} );
-};
-
-/**
- * Get the IDs of all selected topics which were visible without clicking on the "show more" link.
- * @return {string[]} IDs of selected topics
- */
-TopicSelectionWidget.prototype.getAboveFoldSelectedTopics = function () {
-	return this.suggestionGroupWidgets
-		.map( function ( groupWidget ) {
-			return groupWidget.getSelectedSuggestions();
-		} )
-		.reduce( function ( accumulator, value ) {
-			return accumulator.concat( value );
-		}, [] );
 };
 
 /**

@@ -86,7 +86,10 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 	this.content.$element.append( this.errorMessage.$element );
 	this.topicSelector = new TopicSelectionWidget( { selectedTopics: this.config.presets } );
 	this.topicSelector.connect( this, {
-		expand: 'onTopicSelectorExpand',
+		// selectAll and removeAll forward a single topic group ID argument
+		selectAll: [ 'emit', 'selectAll' ],
+		removeAll: [ 'emit', 'removeAll' ],
+		expand: [ 'emit', 'expand' ],
 		toggleSelection: 'onTopicSelectorToggleSelection'
 	} );
 	$topicSelectorWrapper = $( '<div>' )
@@ -126,17 +129,6 @@ TopicFiltersDialog.prototype.getEnabledFilters = function () {
 	// Topic selection widget may not yet be initialized (when the module
 	// is loading initially) in which case use the presets.
 	return this.topicSelector ? this.topicSelector.getSelectedTopics() : this.config.presets;
-};
-
-/**
- * Like getEnabledFilters(), but only show filters above the fold (or above the would-be
- * fold, if the widget is already expanded).
- * @return {Object[]}
- */
-TopicFiltersDialog.prototype.getAboveFoldEnabledFilters = function () {
-	return this.topicSelector ?
-		this.topicSelector.getAboveFoldSelectedTopics() :
-		this.config.presets;
 };
 
 /**
@@ -203,11 +195,6 @@ TopicFiltersDialog.prototype.getSetupProcess = function ( data ) {
 		.next( function () {
 			this.updateFiltersFromState();
 		}, this );
-};
-
-TopicFiltersDialog.prototype.onTopicSelectorExpand = function () {
-	// This used to call this.updateSize(), but T238610#5861323 asked for that to be removed
-	this.emit( 'expand' );
 };
 
 TopicFiltersDialog.prototype.onTopicSelectorToggleSelection = function () {
