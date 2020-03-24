@@ -242,7 +242,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Історія і суспільство",
 	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Наука, технології та математика",
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Культура",
-	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Географія",
+	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Регіони",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Недійсна конфігурація пропонованих редагувань: погана структура",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Недійсна конфігурація пропонованих редагувань: недійсний ідентифікатор «$1» — має містити лише символи a-z, 0-9, - (мінус)",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Недійсна конфігурація пропонованих редагувань: відсутнє поле $1 для типу завдання чи теми $2",

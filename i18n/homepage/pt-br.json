@@ -237,7 +237,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "História e Sociedade",
 	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Ciência, Tecnologia e Matemática",
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Cultura",
-	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Geografia",
+	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regiões",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configuração de edições sugeridas inválida: estrutura incorreta",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Configuração de edições sugeridas inválida: ID inválido \"$1\" - deve conter apenas a-z, 0-9, - (menos)",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Configuração de edições sugeridas inválida: campo $1 ausente para o tipo de tarefa ou trópico $2",

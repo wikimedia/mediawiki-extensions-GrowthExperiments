@@ -239,7 +239,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "歷史與社會",
 	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "科學、技術、數學",
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "文化",
-	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "地理",
+	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "區域",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "無效建議編輯設置：不良結構",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "無效建議編輯設置：無效的 ID「$1」- 僅能包含 a-z、0-9、-（減號）",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "無效建議編輯設置：缺少用於任務類型或主題$2的欄位$1",
