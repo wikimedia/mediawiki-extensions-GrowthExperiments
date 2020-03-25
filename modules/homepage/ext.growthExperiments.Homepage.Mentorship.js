@@ -35,10 +35,10 @@
 			dialog: {
 				name: 'mentorship',
 				panelTitleMessages: {
-					questionreview: dialogTitle,
+					'ask-help': dialogTitle,
 					questioncomplete: dialogTitle
 				},
-				questionReviewHeader: reviewHeader,
+				askhelpHeader: reviewHeader,
 				questionCompleteConfirmationText: confirmationText,
 				viewQuestionText: viewQuestionText,
 				submitFailureMessage: submitFailureMessage

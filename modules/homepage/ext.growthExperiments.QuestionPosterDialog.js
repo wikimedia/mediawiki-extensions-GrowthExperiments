@@ -23,13 +23,13 @@
 	QuestionPosterDialog.static.actions = [
 		{
 			label: OO.ui.deferMsg( 'growthexperiments-help-panel-submit-question-button-text' ),
-			modes: [ 'questionreview' ],
+			modes: [ 'ask-help' ],
 			flags: [ 'progressive', 'primary' ],
 			action: 'questioncomplete'
 		},
 		{
 			label: OO.ui.deferMsg( 'growthexperiments-homepage-help-cancel' ),
-			modes: [ 'questionreview' ],
+			modes: [ 'ask-help' ],
 			flags: [ 'safe', 'back' ]
 		},
 		{
@@ -43,13 +43,14 @@
 	QuestionPosterDialog.prototype.swapPanel = function ( panel ) {
 		QuestionPosterDialog.super.prototype.swapPanel.call( this, panel );
 
-		if ( panel === 'questionreview' ) {
-			this.questionReviewFooterPanel.toggle( false );
-			this.homeFooterPanel.toggle( false );
+		if ( panel === 'ask-help' ) {
+			// N.B. this intentionally differs from the main help panel where
+			// the footer is enabled.
+			this.askhelpFooterPanel.toggle( false );
 			this.questionIncludeFieldLayout.toggle( false );
-			this.questionReviewTextInput.setValue( mw.storage.get( this.storageKey ) );
+			this.askhelpTextInput.setValue( mw.storage.get( this.storageKey ) );
 			this.getActions().setAbilities( {
-				questioncomplete: this.questionReviewTextInput.getValue()
+				questioncomplete: this.askhelpTextInput.getValue()
 			} );
 		}
 	};
@@ -58,18 +59,18 @@
 		return QuestionPosterDialog.super.prototype.getSetupProcess
 			.call( this, data )
 			.next( function () {
-				this.setMode( 'questionreview' );
+				this.setMode( 'ask-help' );
 			}, this );
 	};
 
 	/**
-	 * Connected to the questionReviewTextInput field.
+	 * Connected to the askhelpTextInput field.
 	 */
 	QuestionPosterDialog.prototype.onTextInputChange = function () {
-		var reviewTextInputValue = this.questionReviewTextInput.getValue();
+		var reviewTextInputValue = this.askhelpTextInput.getValue();
 		// Enable the "Submit" button on the review step if there's text input.
 		this.getActions().setAbilities( {
-			questioncomplete: this.questionReviewTextInput.getValue()
+			questioncomplete: this.askhelpTextInput.getValue()
 		} );
 		if ( reviewTextInputValue && mw.storage.get( this.storageKey ) === '' ) {
 			this.logger.log( 'enter-question-text' );
@@ -78,28 +79,8 @@
 		mw.storage.set( this.storageKey, reviewTextInputValue );
 	};
 
-	/**
-	 * Connected to the change event on this.questionReviewAddEmail.
-	 */
-	QuestionPosterDialog.prototype.onEmailInput = function () {
-		var reviewTextInputValue = this.questionReviewTextInput.getValue();
-		// If user has typed in the email field, disable the submit button until the
-		// email address is valid.
-		if ( this.questionReviewAddEmail.getValue() ) {
-			this.questionReviewAddEmail.getValidity()
-				.then( function () {
-					// Enable depending on whether the question text is input.
-					this.getActions().setAbilities( { questioncomplete: reviewTextInputValue } );
-				}.bind( this ), function () {
-					// Always disable if email is invalid.
-					// TODO: If you enter an invalid email, then update the question entry text, the
-					// submit button is enabled again.
-					this.getActions().setAbilities( { questioncomplete: false } );
-				}.bind( this ) );
-		} else {
-			// If no email value, set submit button state based on review text input
-			this.getActions().setAbilities( { questioncomplete: reviewTextInputValue } );
-		}
+	QuestionPosterDialog.prototype.getBodyHeight = function () {
+		return this.panels.getCurrentItem().$element.outerHeight( true );
 	};
 
 	module.exports = QuestionPosterDialog;
