@@ -16,7 +16,7 @@
 			registerDialogRoute = function ( router, route, windowManager, dialog, logger ) {
 				router.addRoute( route, function () {
 					var lifecycle = windowManager.openWindow( dialog );
-					dialog.executeAction( 'questionreview' );
+					dialog.executeAction( 'ask-help' );
 					lifecycle.closing.done( function () {
 						logger.log( 'close' );
 						if ( router.getPath() === route ) {
