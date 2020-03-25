@@ -55,7 +55,11 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$templateProvider = $this->getMockTemplateProvider( $expectedTaskSet instanceof TaskSet );
 		$requestFactory = $this->getMockRequestFactory( $requests );
 		$titleFactory = $this->getMockTitleFactory();
-		$searchStrategy = new SearchStrategy();
+		$searchStrategy = $this->getMockBuilder( SearchStrategy::class )
+			->onlyMethods( [ 'shuffleQueryOrder' ] )
+			->getMock();
+		$searchStrategy->method( 'shuffleQueryOrder' )
+			->willReturnArgument( 0 );
 
 		$user = new UserIdentityValue( 1, 'Foo', 1 );
 		$taskTypes = $this->getTaskTypes( $taskTypeSpec );
@@ -186,6 +190,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 					[
 						'params' => [
 							'srlimit' => '2',
+							'srsearch' => 'hastemplate:"Copy-1|Copy-2"',
 						],
 						'response' => [
 							'query' => [
@@ -202,6 +207,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 					[
 						'params' => [
 							'srlimit' => '2',
+							'srsearch' => 'hastemplate:"Link-1"',
 						],
 						'response' => [
 							'query' => [

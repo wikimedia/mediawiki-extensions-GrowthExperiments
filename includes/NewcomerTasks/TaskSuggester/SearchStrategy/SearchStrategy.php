@@ -56,7 +56,7 @@ class SearchStrategy {
 				$queries[$queryId] = $query;
 			}
 		}
-		return $queries;
+		return $this->shuffleQueryOrder( $queries );
 	}
 
 	/**
@@ -109,6 +109,24 @@ class SearchStrategy {
 		return '"' . implode( '|', array_map( function ( LinkTarget $title ) {
 			return str_replace( [ '"', '?' ], [ '\"', '\?' ], $title->getDBkey() );
 		}, $titles ) ) . '"';
+	}
+
+	/**
+	 * Shuffle the list of queries, preserving keys (T248106)
+	 *
+	 * PHP's shuffle() is insufficient as we need to preserve the keys.
+	 *
+	 * @param array $queries
+	 * @return array
+	 */
+	protected function shuffleQueryOrder( array $queries ) : array {
+		$keys = array_keys( $queries );
+		shuffle( $keys );
+		$shuffled = [];
+		foreach ( $keys as $key ) {
+			$shuffled[$key] = $queries[$key];
+		}
+		return $shuffled;
 	}
 
 }
