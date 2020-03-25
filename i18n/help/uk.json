@@ -46,8 +46,10 @@
 	"growthexperiments-help-panel-search-no-results": "Не знайдено жодних результатів.",
 	"tag-help_panel_question": "Запитання з довідкової панелі",
 	"tag-help_panel_question-description": "Редагування здійснене з функції для надсилання запитань з довідкової панелі редактора",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Пропоноване редагування",
 	"growthexperiments-help-panel-button-header-ask-help": "Поставте запитання в Кнайпі",
 	"growthexperiments-help-panel-button-header-general-help": "Загальна довідка щодо редагування",
 	"growthexperiments-help-panel-button-subheader-general-help": "Пошукайте відповідей та почитайте найпопулярніші статті",
-	"growthexperiments-help-panel-button-subheader-ask-help": "Отримайте відповіді від інших волонтерів"
+	"growthexperiments-help-panel-button-subheader-ask-help": "Отримайте відповіді від інших волонтерів",
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "Підказки для швидкого старту"
 }

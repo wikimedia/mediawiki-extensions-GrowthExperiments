@@ -14,7 +14,7 @@
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Những trang trợ giúp hàng đầu về cách sửa đổi",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Xem thêm các bài hướng dẫn khác",
 	"growthexperiments-help-panel-question-widget-header": "Gửi câu hỏi của bạn vào Bàn giúp đỡ",
-	"growthexperiments-help-panel-question-placeholder": "Hãy gửi lời chào và câu hỏi của bạn.",
+	"growthexperiments-help-panel-question-placeholder": "Hãy gửi lời chào và câu hỏi của {{GENDER:$1|bạn}}.",
 	"growthexperiments-help-panel-back-home": "Quay lại",
 	"growthexperiments-help-panel-close": "Xong",
 	"growthexperiments-help-panel-home-title": "Yêu cầu trợ giúp sửa đổi",

@@ -50,8 +50,10 @@
 	"growthexperiments-help-panel-search-no-results": "Aucun résultat n’a été trouvé.",
 	"tag-help_panel_question": "Question du panneau d’aide",
 	"tag-help_panel_question-description": "Modification faite par la fonctionnalité d’envoi de question dans le panneau d’aide",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Modification suggérée",
 	"growthexperiments-help-panel-button-header-ask-help": "Demander au centre d’assistance",
 	"growthexperiments-help-panel-button-header-general-help": "Aide générale d’édition",
 	"growthexperiments-help-panel-button-subheader-general-help": "Rechercher des réponses et lire les articles en tête",
-	"growthexperiments-help-panel-button-subheader-ask-help": "Obtenir les réponses d’autres bénévoles"
+	"growthexperiments-help-panel-button-subheader-ask-help": "Obtenir les réponses d’autres bénévoles",
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "Conseils de démarrage rapide"
 }
