@@ -213,6 +213,12 @@
 			} else {
 				// API error code
 				message = error;
+				// DEBUG T238945
+				if ( !error ) {
+					// log a snippet from the API response. Errors are at the front so
+					// hopefully this will show what's going on.
+					message = JSON.stringify( details ).substr( 0, 1000 );
+				}
 			}
 			this.logger.log( 'suggested-edits', this.mode, 'se-task-pseudo-impression',
 				{ type: 'error', errorMessage: message } );
