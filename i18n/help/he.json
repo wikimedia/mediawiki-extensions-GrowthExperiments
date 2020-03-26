@@ -47,8 +47,10 @@
 	"growthexperiments-help-panel-search-no-results": "לא נמצאו תוצאות.",
 	"tag-help_panel_question": "שאלה מחלונית עזרה",
 	"tag-help_panel_question-description": "עריכה שנעשתה באמצעות האפשרות לשלוח שאלות מחלונית העזרה",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "עריכה מוצעת",
 	"growthexperiments-help-panel-button-header-ask-help": "לשאול בדלפק העזרה",
 	"growthexperiments-help-panel-button-header-general-help": "עזרה כללית בעריכה",
 	"growthexperiments-help-panel-button-subheader-general-help": "חיפוש תשובות וקריאת ערכים מובילים",
-	"growthexperiments-help-panel-button-subheader-ask-help": "קבלת תשובות ממתנדבים אחרים"
+	"growthexperiments-help-panel-button-subheader-ask-help": "קבלת תשובות ממתנדבים אחרים",
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "עצות להתחלה מהירה"
 }

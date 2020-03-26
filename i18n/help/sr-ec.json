@@ -44,5 +44,11 @@
 	"growthexperiments-help-panel-search-label": "Тражење помоћи",
 	"growthexperiments-help-panel-search-no-results": "Резултати нису пронађени.",
 	"tag-help_panel_question": "питање с табле помоћи",
-	"tag-help_panel_question-description": "Измене направљене функцијом постављања питања из помоћне табле"
+	"tag-help_panel_question-description": "Измене направљене функцијом постављања питања из помоћне табле",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Предложене измене",
+	"growthexperiments-help-panel-button-header-ask-help": "Питај",
+	"growthexperiments-help-panel-button-header-general-help": "Општа помоћ",
+	"growthexperiments-help-panel-button-subheader-general-help": "Потражите одговоре и прочитајте горње чланке",
+	"growthexperiments-help-panel-button-subheader-ask-help": "Сазнајте одговоре од других добровољаца",
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "Савети за брзи почетак"
 }
