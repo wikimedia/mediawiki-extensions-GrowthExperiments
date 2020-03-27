@@ -2,19 +2,17 @@ const Page = require( 'wdio-mediawiki/Page' );
 
 class PreferencesPage extends Page {
 
-	get homepage() { return browser.element( '#mw-input-wpgrowthexperiments-homepage-enable' ); }
-	get save() { return browser.element( '#prefcontrol' ); }
-	get homepageBox() { return browser.element( '[name="wpgrowthexperiments-homepage-enable"]' ); }
-
-	scrollToHomepageCheckBox() { browser.execute( ( homepage ) => homepage.scrollIntoView(), browser.element( '[name="wpgrowthexperiments-homepage-enable"]' ).value ); }
+	get homepage() { return $( '#mw-input-wpgrowthexperiments-homepage-enable' ); }
+	get save() { return $( '#prefcontrol' ); }
+	get homepageBox() { return $( '[name="wpgrowthexperiments-homepage-enable"]' ); }
 
 	open() {
 		super.openTitle( 'Special:Preferences' );
 	}
 
 	clickHomepageCheckBox() {
-		this.scrollToHomepageCheckBox();
-		this.homepage.waitForVisible();
+		this.homepageBox.scrollIntoView();
+		this.homepage.waitForDisplayed();
 		this.homepage.click();
 		this.save.click();
 	}
