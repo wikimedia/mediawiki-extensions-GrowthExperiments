@@ -36,6 +36,13 @@ $specialPageAliases['cs'] = [
 	'ClaimMentee' => [ 'Převzít_nováčka' ],
 ];
 
+/** French (français) */
+$specialPageAliases['fr'] = [
+	'WelcomeSurvey' => [ 'Suivi_des_premiers_clics' ],
+	'Homepage' => [ 'Accueil_de_l’espace_personnel' ],
+	'Impact' => [ 'Impact' ],
+];
+
 /** Hungarian (magyar) */
 $specialPageAliases['hu'] = [
 	'WelcomeSurvey' => [ 'Új_szerkesztők_kérdőíve' ],
