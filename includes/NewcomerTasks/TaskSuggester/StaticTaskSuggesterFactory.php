@@ -2,9 +2,11 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
+use StatusValue;
+
 /**
  * Pseudo-factory for returning a pre-configured task suggester (not necessarily a
- * StaticTaskSuggester). Intended for testing and local frontend development.
+ * StaticTaskSuggester) or error. Intended for testing and local frontend development.
  *
  * To use it, register a MediaWikiServices hook along the lines of
  *
@@ -24,12 +26,15 @@ class StaticTaskSuggesterFactory extends TaskSuggesterFactory {
 	private $taskSuggester;
 
 	/**
-	 * @param TaskSuggester|array $taskSuggester A TaskSuggester, or an array of suggestions to create
-	 *   a StaticTaskSuggester with.
+	 * @param TaskSuggester|StatusValue|array $taskSuggester A TaskSuggester, an array of
+	 *   suggestions to create a StaticTaskSuggester with, or an error to create an
+	 *   ErrorForwardingTaskSuggester with.
 	 */
 	public function __construct( $taskSuggester ) {
 		if ( $taskSuggester instanceof TaskSuggester ) {
 			$this->taskSuggester = $taskSuggester;
+		} elseif ( $taskSuggester instanceof StatusValue ) {
+			$this->taskSuggester = $this->createError( $taskSuggester );
 		} else {
 			$this->taskSuggester = new StaticTaskSuggester( $taskSuggester );
 		}
