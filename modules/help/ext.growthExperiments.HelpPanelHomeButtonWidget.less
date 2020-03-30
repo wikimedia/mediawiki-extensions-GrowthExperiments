@@ -13,6 +13,11 @@
 	justify-content: space-between;
 	display: flex;
 
+	&-suggested-edits {
+		border: solid 1px @wmui-color-accent50;
+		background-color: fade( @wmui-color-accent90, 50% );
+	}
+
 	&-text {
 		display: flex;
 		flex-direction: column;
@@ -45,17 +50,20 @@
 
 	&-preheader {
 		padding-bottom: 10px;
+		align-items: center;
+		display: flex;
 
 		&-icon {
+			display: flex;
 			opacity: 50%;
 		}
 
 		&-text {
-			display: inline;
-			padding-left: 10px;
+			display: flex;
+			padding-left: 8px;
 			line-height: 1.38;
 			font-weight: bold;
-			font-size: 1.143em;
+			font-size: 1em;
 			color: @colorGray5;
 		}
 	}
