@@ -248,7 +248,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "Text shown in the topic filter dialog in the suggested edits module for the 'history-and-society' topic group.",
 	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "Text shown in the topic filter dialog in the suggested edits module for the 'science-technology-and-math' topic group.",
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Text shown in the topic filter dialog in the suggested edits module for the 'culture' topic group.",
-	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Text shown in the topic filter dialog in the suggested edits module for the 'geography' topic group.",
+	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Text shown in the topic filter dialog in the suggested edits module for the 'geography' topic group.\n{{identical|Region}}",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Error message when the on-wiki topic configuration page has bad structure (something that should be an object isn't).",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Error message when the on-wiki topic configuration page has an invalid ID (top-level key). Parameters:\n* $1 - the ID.",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Error message when the on-wiki task configuration page has a missing field. Parameters:\n* $1 - Name of missing field\n* $2 - Task type which has the error.",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"WikiPhoenix",
-			"Mjälten"
+			"Mjälten",
+			"Technic2"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Aktivera redigerarens hjälppanel",
@@ -12,7 +13,7 @@
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Populäraste hjälpsidorna om redigering",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Visa fler hjälpartiklar",
 	"growthexperiments-help-panel-question-widget-header": "Skicka din fråga till gemenskapens helpdesk",
-	"growthexperiments-help-panel-question-placeholder": "Jag behöver hjälp med att redigera. Hur gör jag för att...",
+	"growthexperiments-help-panel-question-placeholder": "Säg hej och fråga {{GENDER:$1|din}} fråga.",
 	"growthexperiments-help-panel-back-home": "Tillbaka",
 	"growthexperiments-help-panel-close": "Färdigt",
 	"growthexperiments-help-panel-home-title": "Få hjälp med att redigera",
@@ -33,7 +34,7 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Om {{GENDER:$2|du}} också vill aviseras via e-post, lägg till din e-postadress nu.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Lägg till e-post",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Mer om denna funktion",
-	"growthexperiments-help-panel-questioncomplete-first-edit": "Förresten, när du skickade denna fråga gjorde du din första redigering på {{SITENAME}}. Grattis!",
+	"growthexperiments-help-panel-questioncomplete-first-edit": "Förresten, när du skickade denna fråga gjorde du din första redigering till en sida. Grattis!",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Inaktivera detta verktyg i inställningarna",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Ogiltig titel.",
 	"growthexperiments-help-panel-search-label": "\nSök efter hjälp",

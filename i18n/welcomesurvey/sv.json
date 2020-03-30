@@ -2,13 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"WikiPhoenix",
-			"Mjälten"
+			"Mjälten",
+			"Technic2"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Välkommen}}, $1!",
 	"welcomesurvey-save-confirmation-title": "Tack! Din svar har sparats.",
-	"welcomesurvey-save-confirmation-text": "Dina svar kommer att användas för att hjälp oss att försöka göra Wikipedia bättre för alla nya användare.\n\nFör att läsa hur dessa valfria svar används, se enkäten $1.",
-	"welcomesurvey-subtitle": "Hjälp oss att göra Wikipedia bättre för alla nya användare som dig genom att besvara några valfria frågor.",
+	"welcomesurvey-save-confirmation-text": "Dina svar kommer att hjälpa oss ge dig användbara sätt att börja på Wikipedia.",
+	"welcomesurvey-subtitle": "Hjälp oss att göra din upplevelse av Wikipedia bättre genom att besvara några valfria frågor.",
 	"welcomesurvey-save-btn": "Slutför",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Hoppa över}} denna enkät",
 	"welcomesurvey-close-btn": "Stäng och gå tillbaka till $1",

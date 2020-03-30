@@ -243,7 +243,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "역사와 사회",
 	"growthexperiments-homepage-suggestededits-topic-group-name-science-technology-and-math": "과학, 기술, 수학",
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "문화",
-	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "지리학",
+	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "지역",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "추천 문서 설정의 구조가 잘못되었습니다",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "추천 문서 설정에 문제가 있습니다: \"$1\" id는 유효하지 않습니다 - a-z, 0-9, - (마이너스 표시)만을 포함해야 합니다",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "잘못된 편집 요청 설정: 작업 종류 또는 주제 $2 에 대한 값 $1 이(가) 없습니다",

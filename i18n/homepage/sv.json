@@ -3,7 +3,8 @@
 		"authors": [
 			"WikiPhoenix",
 			"Mjälten",
-			"Josefine Hellroth Larsson (WMSE)"
+			"Josefine Hellroth Larsson (WMSE)",
+			"Technic2"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hej}}, {{bidi:$1}}!",
@@ -11,7 +12,7 @@
 	"tooltip-pt-homepage": "{{GENDER:|Din}} hemsida",
 	"prefs-homepage": "Hemsida för nykomlingar",
 	"growthexperiments-homepage-enable": "Visa hemsida för nykomlingar",
-	"growthexperiments-homepage-start-header": "Starta här",
+	"growthexperiments-homepage-start-header": "Börja här",
 	"growthexperiments-homepage-account-header": "Konto har skapats",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|redigering|redigeringar}}",
 	"growthexperiments-homepage-account-age": "Du har haft ett konton i $1",
