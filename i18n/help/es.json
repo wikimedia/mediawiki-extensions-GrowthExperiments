@@ -28,5 +28,7 @@
 	"growthexperiments-help-panel-community-help-desk-text": "Asistencia comunitaria",
 	"growthexperiments-help-panel-search-label": "Busca ayuda",
 	"tag-help_panel_question": "Pregunta del panel de ayuda",
-	"growthexperiments-help-panel-button-header-general-help": "Ayuda general sobre la edición"
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Edición sugerida",
+	"growthexperiments-help-panel-button-header-general-help": "Ayuda general sobre la edición",
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "Consejos de inicio rápido"
 }
