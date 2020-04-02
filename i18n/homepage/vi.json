@@ -280,7 +280,7 @@
 	"growthexperiments-notification-say-hi-mentor-change": "Hãy {{GENDER:$3|gửi}} lời chào tới người {{GENDER:$2|cố vấn}} mới của {{GENDER:$3|bạn}}!",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|Bạn}} phải có tên trong danh sách cố vấn viên tại [[$2]] để có thể sử dụng Đặc biệt:NhậnNgườiđượccốvấn",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Danh sách cố vấn viên ([[$1]]) không tồn tại hoặc sai định dạng.",
-	"growthexperiments-notification-learn-more": "Tìm hiểu thêm về {{GENDER:$1|cố vấn}} mới của {{GENDER:$1|bạn}}",
+	"growthexperiments-notification-learn-more": "Tìm hiểu thêm về {{GENDER:$1|cố vấn}} mới của {{GENDER:$2|bạn}}",
 	"right-setmentor": "Đặt cố vấn của người dùng",
 	"action-setmentor": "Đặt cố vấn của người dùng",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Tìm hiểu thêm về sửa đổi gợi ý này"
