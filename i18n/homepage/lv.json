@@ -81,6 +81,7 @@
 	"growthexperiments-homepage-tutorial-header": "Iemācies labot",
 	"growthexperiments-specialimpact-title": "Ietekme",
 	"growthexperiments-specialimpact-showing-for-other-user": "Rāda $1 devuma datus",
+	"growthexperiments-specialimpact-invalid-username": "Trūkstošs vai nederīgs dalībieka vārds.",
 	"growthexperiments-homepage-claimmentee-already-mentor": "Tu jau esi {{GENDER:$1|$1}} {{GENDER:$2|mentors|mentore}}",
 	"growthexperiments-tour-welcome-title": "Laipni {{GENDER:$1|lūgts|lūgta}} savā sākumlapā!",
 	"growthexperiments-tour-discovery-title": "Sāc šeit!",
