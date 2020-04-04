@@ -8,10 +8,10 @@ use Exception;
 use FormatJson;
 use IContextSource;
 use Iterator;
-use MediaWiki\Auth\AuthManager;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
 use MWExceptionHandler;
 use RawMessage;
 use RequestContext;
@@ -55,7 +55,8 @@ class Util {
 				!$user->getEmail() ) &&
 			$user->isAllowed( 'viewmyprivateinfo' ) &&
 			$user->isAllowed( 'editmyprivateinfo' ) &&
-			AuthManager::singleton()->allowsPropertyChange( 'emailaddress' ) &&
+			MediaWikiServices::getInstance()->getAuthManager()
+				->allowsPropertyChange( 'emailaddress' ) &&
 			( $newEmail ? Sanitizer::validateEmail( $newEmail ) : true );
 	}
 
