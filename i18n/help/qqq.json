@@ -26,6 +26,8 @@
 	"growthexperiments-help-panel-question-subject-template-with-title": "Template to use for questions posted to community help desk via the help panel when the article title is included in the message. $1 is a page title.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Template to use for questions posted to community help desk from Special:Homepage.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-question-post-error": "Error to show to user if posting question fails. $1 is a link to the community help desk.\n\n{{doc-growthexperiments-help-panel}}",
+	"growthexperiments-help-panel-suggestededits-title": "Title shown at top of help panel when viewing the suggested edits panel.\n\n{{doc-growthexperiments-help-panel}}",
+	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Quick start tips header shown when viewing the suggested edits panel. Same as {{msg-mw|growthexperiments-help-panel-button-subheader-suggested-edit}}.\n\n{{doc-growthexperiments-help-panel}}\n\n{{Identical|Quick start tips}}",
 	"growthexperiments-help-panel-questioncomplete-title": "Title shown at top of help panel after submitting a question.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questioncomplete-header": "Header shown at the top of help panel after submitting a question.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Confirmation text to the user that their question was posted successfully through the help panel.\n\n{{doc-growthexperiments-help-panel}}",

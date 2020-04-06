@@ -98,42 +98,53 @@
 	}
 }
 
-.drawer.suggested-edits-mobile-peek {
-	background-color: fade( @suggestedEditsBackgroundColor, 100 );
-	padding: unset;
+.suggested-edits-mobile-peek-content,
+.suggested-edits-panel-header {
+	background-color: fade( @suggestedEditsBackgroundColor, 50 );
+	display: flex;
+	justify-content: space-between;
+	// Restore Minerva's padding for the Drawer
+	padding: 16px 16px 0 16px;
+	min-height: 96px;
 
-	.suggested-edits-mobile-peek-content {
-		display: flex;
-		justify-content: space-between;
-		// Restore Minerva's padding for the Drawer.
-		padding: 16px 16px 0 16px;
-		min-height: 96px;
+	.suggested-edits-header-text {
+		padding-right: 16px;
 
-		.suggested-edits-mobile-peek-text {
-			h4 {
-				display: flex;
-				font-size: 1.144em;
-				text-align: left;
-				color: @colorGray2;
-			}
-
-			.suggested-edits-taskexplanation-additional-info {
-				// Align the suggested edits icon to the right.
-				align-items: center;
-			}
+		h4 {
+			display: flex;
+			font-size: 1.144em;
+			text-align: left;
+			color: @colorGray2;
+			padding-bottom: 4px;
 		}
 
-		.suggested-edits-icon {
-			display: flex;
-			width: 64px;
-			height: 64px;
-			// Image URLs are relative to the current CSS
-			.background-image-svg('../../../images/suggestededits/Topic-general-64w.svg',
-			'../../../images/suggestededits/Topic-general-64w@4x.png');
-			background-repeat: no-repeat;
-			padding-right: 16px;
+		.suggested-edits-taskexplanation-additional-info {
+			// Align the suggested edits icon to the right.
+			align-items: center;
 		}
 	}
+
+	.suggested-edits-icon {
+		display: flex;
+		width: 64px;
+		height: 64px;
+		// Image URLs are relative to the current CSS
+		.background-image-svg('../../../images/suggestededits/Topic-general-64w.svg',
+		'../../../images/suggestededits/Topic-general-64w@4x.png');
+		background-repeat: no-repeat;
+		padding-right: 16px;
+	}
+}
+
+.suggested-edits-mobile-peek-content {
+	// on mobile, we want an extra 16px padding at the bottom. The desktop
+	// reuse of this component in the help panel suggested edits screen
+	// does not need it.
+	padding-bottom: 16px;
+}
+
+.drawer.suggested-edits-mobile-peek {
+	padding: unset;
 
 	.suggested-edits-mobile-peek-footer {
 		background-color: @colorBaseInverted;

@@ -19,6 +19,8 @@
 	 * @constructor
 	 */
 	var configData = require( './data.json' ),
+		SuggestedEditsPanel = require( './ext.growthExperiments.HelpPanelProcessDialog.SuggestedEditsPanel.js' ),
+		taskTypeData = require( './TaskTypes.json' ),
 		linksConfig = configData.GEHelpPanelLinks,
 		HelpPanelProcessDialog = function helpPanelProcessDialog( config ) {
 			HelpPanelProcessDialog.super.call( this, config );
@@ -31,7 +33,8 @@
 			this.panelTitleMessages = $.extend( {
 				home: mw.message( 'growthexperiments-help-panel-home-title' ).text(),
 				'ask-help': mw.message( 'growthexperiments-help-panel-questionreview-title' ).text(),
-				questioncomplete: mw.message( 'growthexperiments-help-panel-questioncomplete-title' ).text()
+				questioncomplete: mw.message( 'growthexperiments-help-panel-questioncomplete-title' ).text(),
+				'suggested-edits': mw.message( 'growthexperiments-help-panel-suggestededits-title' ).text()
 			}, config.panelTitleMessages );
 			this.askhelpHeader = config.askhelpHeader ||
 				mw.message(
@@ -64,14 +67,14 @@
 			icon: 'close',
 			flags: 'safe',
 			action: 'close',
-			modes: OO.ui.isMobile() ? [ 'home' ] : [ 'home', 'ask-help', 'general-help', 'search' ]
+			modes: OO.ui.isMobile() ? [ 'home' ] : [ 'home', 'ask-help', 'general-help', 'search', 'suggested-edits' ]
 		},
 		// On mobile, use a back icon for all non-home panels.
 		{
 			icon: 'previous',
 			flags: 'safe',
 			action: 'home',
-			modes: OO.ui.isMobile() ? [ 'ask-help', 'general-help', 'search' ] : []
+			modes: OO.ui.isMobile() ? [ 'ask-help', 'general-help', 'search', 'suggested-edits' ] : []
 		},
 		// Add a button to the bottom of the panel that replaces the close button in the
 		// questioncomplete stage (T225669)
@@ -83,9 +86,13 @@
 			classes: [ 'mw-ge-help-panel-done' ],
 			action: 'close'
 		},
+		// Show a back button on these panels. 'ask-help' is not included here
+		// because the original design had the primary actions set in the
+		// footer. When those are changed to use the standard top location,
+		// then 'ask-help' should be added to the modes below (T248065)
 		{
 			label: mw.message( 'growthexperiments-help-panel-back-home' ).text(),
-			modes: [ 'search', 'general-help' ],
+			modes: [ 'search', 'general-help', 'suggested-edits' ],
 			action: 'home'
 		}
 	];
@@ -103,7 +110,8 @@
 	 *
 	 * Modeled off of VisualEditor's swapPanel().
 	 *
-	 * @param {string} panel One of 'home', 'ask-help', 'general-help' or 'questioncomplete'
+	 * @param {string} panel One of 'home', 'ask-help', 'general-help',
+	 *   'questioncomplete' or 'suggested-edits'
 	 * @throws {Error} Unknown panel.
 	 */
 	HelpPanelProcessDialog.prototype.swapPanel = function ( panel ) {
@@ -112,9 +120,21 @@
 
 		this.title.setLabel( titleMsg );
 
-		if ( ( [ 'home', 'general-help', 'ask-help', 'questioncomplete' ].indexOf( panel ) ) === -1 ) {
+		if ( ( [
+			'home',
+			'suggested-edits',
+			'general-help',
+			'ask-help',
+			'questioncomplete'
+		].indexOf( panel ) ) === -1 ) {
 			throw new Error( 'Unknown panel: ' + panel );
 		}
+
+		this.$element.find( '.oo-ui-window-head' ).toggleClass(
+			'suggested-edits-panel-window-head',
+			panel === 'suggested-edits'
+		);
+
 		if ( panel === 'home' ) {
 			this.askhelpFooterPanel.toggle( false );
 			this.toggleSearchResults( false );
@@ -312,6 +332,15 @@
 			leaveSearch: [ 'executeAction', 'leavesearch' ]
 		} );
 
+		this.suggestededitsPanel = new SuggestedEditsPanel( {
+			// Unlike the other panels, we have no padding on this one
+			// because of the design that has the navigation and header
+			// content of the panel with a solid constant background color.
+			padded: false,
+			expanded: false,
+			taskTypeData: taskTypeData[ this.taskTypeId ]
+		} );
+
 		this.askhelpPanel = new OO.ui.PanelLayout( {
 			padded: true,
 			expanded: false
@@ -476,6 +505,7 @@
 
 		this.panels.addItems( [
 			this.homePanel,
+			this.suggestededitsPanel,
 			this.askhelpPanel,
 			this.generalhelpPanel,
 			this.questioncompletePanel

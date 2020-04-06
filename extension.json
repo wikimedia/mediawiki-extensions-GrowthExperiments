@@ -614,9 +614,15 @@
 				"help/ext.growthExperiments.HelpPanelSearchWidget.js",
 				"help/ext.growthExperiments.HelpPanelHomeButtonWidget.js",
 				"help/ext.growthExperiments.HelpPanelProcessDialog.js",
+				"help/ext.growthExperiments.HelpPanelProcessDialog.SuggestedEditsPanel.js",
+				"helppanel/ext.growthExperiments.SuggestedEditsPeek.js",
 				{
 					"name": "help/data.json",
 					"callback": [ "GrowthExperiments\\HelpPanelHooks", "getModuleData" ]
+				},
+				{
+					"name": "help/TaskTypes.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
 				}
 			],
 			"dependencies": [
@@ -649,6 +655,8 @@
 				"growthexperiments-help-panel-question-subject-template-with-title",
 				"growthexperiments-help-panel-question-subject-template-from-homepage",
 				"growthexperiments-help-panel-question-post-error",
+				"growthexperiments-help-panel-suggestededits-title",
+				"growthexperiments-help-panel-suggestededits-quick-start-tips",
 				"growthexperiments-help-panel-questioncomplete-title",
 				"growthexperiments-help-panel-questioncomplete-header",
 				"growthexperiments-help-panel-questioncomplete-confirmation-text",
@@ -692,6 +700,7 @@
 			],
 			"packageFiles": [
 				"helppanel/ext.growthExperiments.HelpPanel.cta.js",
+				"helppanel/ext.growthExperiments.SuggestedEditsPeek.js",
 				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.js",
 				"utils/ext.growthExperiments.Utils.js",
 				{

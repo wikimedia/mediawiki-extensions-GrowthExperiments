@@ -1,5 +1,6 @@
 @import 'mediawiki.ui/variables';
 @import 'mediawiki.mixins';
+@import '../homepage/ext.growthExperiments.variables.less';
 
 .mw-ge-help-panel-processdialog {
 	label > strong {
@@ -44,6 +45,10 @@
 		-moz-user-select: auto;
 		-ms-user-select: auto;
 		user-select: auto;
+	}
+
+	.oo-ui-window-head.suggested-edits-panel-window-head {
+		background-color: fade( @suggestedEditsBackgroundColor, 50% );
 	}
 
 	.oo-ui-processDialog-navigation {
@@ -129,6 +134,12 @@
 
 	.mw-ge-help-panel-question-continue-button {
 		float: right;
+	}
+
+	.suggested-edits-panel {
+		&-quick-start-tips {
+			padding: 16px;
+		}
 	}
 }
 

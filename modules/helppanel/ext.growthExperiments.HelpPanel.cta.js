@@ -7,6 +7,7 @@
 		Drawer = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Drawer : undefined,
 		Anchor = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Anchor : undefined,
 		configData = Help.configData,
+		suggestedEditsPeek = require( './../helppanel/ext.growthExperiments.SuggestedEditsPeek.js' ),
 		taskTypeId,
 		mobilePeek;
 
@@ -161,28 +162,11 @@
 				className: 'suggested-edits-mobile-peek',
 				showCollapseIcon: false,
 				children: [
-					$( '<div>' ).addClass( 'suggested-edits-mobile-peek-content' )
-						.append(
-							$( '<div>' ).addClass( 'suggested-edits-mobile-peek-text' )
-								.append(
-									$( '<h4>' )
-										.addClass( 'suggested-edits-task-explanation-heading' )
-										.text( taskTypeData.messages.name ),
-									$( '<div>' ).addClass( 'suggested-edits-taskexplanation-additional-info' ).html(
-										$( '<div>' ).addClass( 'suggested-edits-difficulty-time-estimate' ).append(
-											$( '<div>' ).addClass( 'suggested-edits-difficulty-indicator' )
-												.addClass( 'suggested-edits-difficulty-indicator-' + taskTypeData.difficulty )
-												// The following messages are used here:
-												// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy
-												// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium
-												// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard
-												.text( mw.message( 'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' + taskTypeData.difficulty ) ),
-											$( '<div>' )
-												.addClass( 'suggested-edits-difficulty-level suggested-edits-difficulty-level-' + taskTypeData.difficulty )
-												.text( taskTypeData.messages.timeestimate )
-										)
-									) )
-						).append( $( '<div>' ).addClass( 'suggested-edits-icon' ) ),
+					suggestedEditsPeek.getSuggestedEditsPeek(
+						'suggested-edits-mobile-peek-content',
+						taskTypeData.messages,
+						taskTypeData.difficulty
+					),
 					$( '<div>' ).addClass( 'suggested-edits-mobile-peek-footer' )
 						.append(
 							new Anchor( {
