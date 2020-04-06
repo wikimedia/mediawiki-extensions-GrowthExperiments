@@ -1,6 +1,9 @@
 @import 'mediawiki.ui/variables';
 @import '../../lib/ooui/wikimedia-ui-base';
 
+// Copy of the @font-size-fieldset-header rule from OOUI.
+@font-size-fieldset-header: 16 / 16 / 0.875 / 1em;
+
 .mw-ge-help-panel-home-button {
 	min-height: 80px;
 	margin-top: 16px;
@@ -21,9 +24,10 @@
 	&-text {
 		display: flex;
 		flex-direction: column;
+		padding-right: 16px;
 
 		&-subheader {
-			font-size: 0.886em;
+			font-size: 88.6%; // 12.4px on Vector and 14.183px on MinervaNeue
 			padding-top: 0.5em;
 			color: @colorGray5;
 			line-height: 1.38;
@@ -61,7 +65,6 @@
 		&-text {
 			display: flex;
 			padding-left: 8px;
-			line-height: 1.38;
 			font-weight: bold;
 			font-size: 1em;
 			color: @colorGray5;
@@ -72,7 +75,7 @@
 .mw-ge-help-panel-processdialog {
 	.mw-ge-help-panel-home-button {
 		h2 {
-			font-size: 1.143em;
+			font-size: @font-size-fieldset-header;
 			font-family: @font-family-base;
 			font-weight: bold;
 			color: @colorGray2;
