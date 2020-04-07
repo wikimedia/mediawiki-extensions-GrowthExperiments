@@ -1,20 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"Wladek92",
-			"Gomoko",
-			"McDutchie",
-			"Fitoschido",
+			"Aarrnn",
 			"Derugon",
-			"Trizek (WMF)",
+			"Eneelk",
+			"Fitoschido",
+			"Gomoko",
+			"LeGuyanaisPure",
+			"McDutchie",
+			"Pamputt",
 			"Thibaut120094",
 			"Trizek",
-			"Verdy p",
+			"Trizek (WMF)",
 			"Vega",
-			"LeGuyanaisPure",
-			"Eneelk",
-			"Aarrnn",
-			"Pamputt"
+			"Verdy p",
+			"Wladek92"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|}}Bonjour, {{bidi:$1}} !",

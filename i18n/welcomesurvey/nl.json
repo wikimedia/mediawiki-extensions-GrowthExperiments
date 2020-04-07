@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mainframe98",
-			"Elroy"
+			"Elroy",
+			"Mainframe98"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Welkom}}, $1!",

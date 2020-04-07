@@ -2,10 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Chrumps",
-			"Woytecr",
-			"Railfail536",
+			"FunPL",
 			"Rail",
-			"FunPL"
+			"Railfail536",
+			"Woytecr"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Witaj}}, {{bidi:$1}}!",

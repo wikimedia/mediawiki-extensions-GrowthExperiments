@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Cxz",
 			"Pyscowicz",
-			"Silvonen",
-			"Cxz"
+			"Silvonen"
 		]
 	},
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Ohita}} tämä kysely"

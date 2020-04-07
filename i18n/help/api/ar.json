@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"ديفيد",
 			"Dyolf77",
-			"Dyolf77 (WMF)"
+			"Dyolf77 (WMF)",
+			"ديفيد"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "تعامل مع الأسئلة المنشورة عبر لوحة المساعدة للمستخدم الحالي.",

@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Steeve815",
-			"Strayblues",
-			"Amire80"
+			"Strayblues"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|ברוך הבא|ברוכה הבאה|ברוך בואך}}, $1!",

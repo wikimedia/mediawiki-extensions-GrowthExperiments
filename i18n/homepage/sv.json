@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"WikiPhoenix",
-			"Mjälten",
 			"Josefine Hellroth Larsson (WMSE)",
-			"Technic2"
+			"Mjälten",
+			"Technic2",
+			"WikiPhoenix"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hej}}, {{bidi:$1}}!",

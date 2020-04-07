@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"ديفيد",
-			"Meno25",
 			"Dyolf77",
-			"Dyolf77 (WMF)"
+			"Dyolf77 (WMF)",
+			"Meno25",
+			"ديفيد"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|مرحبا}}، $1!",

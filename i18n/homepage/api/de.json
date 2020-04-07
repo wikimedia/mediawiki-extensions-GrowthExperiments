@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Metalhead64",
-			"Killarnee"
+			"Killarnee",
+			"Metalhead64"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Ruft formatierte Fragen ab, die über die Startseiten-Module gepostet wurden.",

@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250",
-			"Movses"
+			"Movses",
+			"Vlad5250"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "Работа с вопросами, заданными через текущего участника.",

@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"ديفيد",
 			"Dyolf77",
-			"Dyolf77 (WMF)"
+			"Dyolf77 (WMF)",
+			"ديفيد"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|ما هذا؟]])",

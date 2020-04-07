@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tacsipacsi",
-			"Samat"
+			"Samat",
+			"Tacsipacsi"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "A kezdőlapi modulon keresztül közzétett formázott kérdések elérése.",

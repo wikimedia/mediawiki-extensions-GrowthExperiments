@@ -1,12 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Wladek92",
-			"Trizek (WMF)",
 			"Gomoko",
+			"Thibaut120094",
+			"Trizek (WMF)",
 			"Urhixidur",
 			"Verdy p",
-			"Thibaut120094"
+			"Wladek92"
 		]
 	},
 	"welcomesurvey": "Bienvenue, {{GENDER:$1|}}$1 !",

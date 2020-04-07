@@ -1,5 +1,7 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": []
+	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|šta je ovo?]])",
 	"growthexperiments-confirmemail-emailhelp": "Imejl je potreban za oporavak naloga ako kojim slučajem zaboravite lozinku.",
 	"growthexperiments-confirmemail-emailrecommended": "Imejl-adresa (preporučuje se)",

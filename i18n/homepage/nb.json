@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kingu",
-			"Jon Harald Søby"
+			"Jon Harald Søby",
+			"Kingu"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",

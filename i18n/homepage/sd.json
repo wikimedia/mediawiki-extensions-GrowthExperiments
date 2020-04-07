@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mehtab ahmed",
-			"KaleemBhatti"
+			"KaleemBhatti",
+			"Mehtab ahmed"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|سلام}}، {{bidi:$1}}!",

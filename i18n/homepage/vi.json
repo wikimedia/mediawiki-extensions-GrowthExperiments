@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tuanminh01",
-			"Ioe2015",
 			"Bluetpp",
-			"Trizek (WMF)"
+			"Ioe2015",
+			"Trizek (WMF)",
+			"Tuanminh01"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "\n{{GENDER:$1|Xin chào}}, {{bidi:$1}}!",

@@ -1,5 +1,7 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": []
+	},
 	"apihelp-helppanelquestionposter-summary": "{{doc-apihelp-summary|helppanelquestionposter}}",
 	"apihelp-helppanelquestionposter-param-body": "{{doc-apihelp-param|helppanelquestionposter|body}}",
 	"apihelp-helppanelquestionposter-param-source": "{{doc-apihelp-param|helppanelquestionposter|source}}",

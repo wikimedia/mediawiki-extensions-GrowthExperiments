@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki",
-			"Omotecho"
+			"Omotecho",
+			"Shirayuki"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|ようこそ}}、$1さん!",

@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kly",
-			"Winston Sung",
 			"Go1002opn",
-			"HTan (WMF)"
+			"HTan (WMF)",
+			"Kly",
+			"Winston Sung"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",

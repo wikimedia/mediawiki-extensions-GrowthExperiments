@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"StanProg",
 			"Spiritia",
-			"Vlad5250",
-			"Ted Masters"
+			"StanProg",
+			"Ted Masters",
+			"Vlad5250"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Добре дошъл|Добре дошла}}, $1!",

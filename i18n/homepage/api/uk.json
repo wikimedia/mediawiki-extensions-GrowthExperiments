@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата",
 			"Alexander Yukal",
-			"Piramidion"
+			"Piramidion",
+			"Ата"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Отримати форматовані запитання, опубліковані через модулі домашньої сторінки",

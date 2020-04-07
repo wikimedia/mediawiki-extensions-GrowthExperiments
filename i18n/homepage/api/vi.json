@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tuanminh01",
-			"Bluetpp"
+			"Bluetpp",
+			"Tuanminh01"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Lấy các câu hỏi được định dạng được đăng qua các mô-đun trang chủ",

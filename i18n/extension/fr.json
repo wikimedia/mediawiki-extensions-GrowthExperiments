@@ -1,9 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Wladek92",
 			"Trizek (WMF)",
-			"Verdy p"
+			"Verdy p",
+			"Wladek92"
 		]
 	},
 	"growthexperiments-desc": "Cette extension contient des expériences faites par l’équipe Croissance (''Growth'')."

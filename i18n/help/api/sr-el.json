@@ -1,5 +1,7 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": []
+	},
 	"apihelp-helppanelquestionposter-summary": "Rukovanje pitanjima koja su postavljena pomoću table pomoći za trenutnog korisnika.",
 	"apihelp-helppanelquestionposter-param-body": "Tekst pitanja koje je postavio korisnik.",
 	"apihelp-helppanelquestionposter-param-source": "Komponenta na izvoru pitanja. Važeće vrednosti su: „helppanel”, „homepage-help” i „homepage-mentorship”",

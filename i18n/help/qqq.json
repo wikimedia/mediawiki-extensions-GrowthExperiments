@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tgr",
-			"Robby",
 			"Amire80",
-			"Martin Urbanec"
+			"Martin Urbanec",
+			"Robby",
+			"Tgr"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "[[Special:Preferences]], tab 'Edit'. Allows user to enable and disable experimental Help Panel.\n\n{{doc-growthexperiments-help-panel}}",

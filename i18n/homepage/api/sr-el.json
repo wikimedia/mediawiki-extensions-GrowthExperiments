@@ -1,5 +1,7 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": []
+	},
 	"apihelp-homepagequestionstore-summary": "Pribavljanje formatiranih pitanja postavljenih putem modulâ za početnu stranicu",
 	"apihelp-homepagequestionstore-param-questionformat": "Format u kom će se vratiti pitanja, na primer HTML",
 	"apihelp-homepagequestionstore-param-storage": "Skladišna lokacija pitanja",

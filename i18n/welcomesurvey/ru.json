@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250",
+			"Katunchik",
 			"Link2xt",
 			"Stjn",
-			"Katunchik"
+			"Vlad5250"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Добро пожаловать}}, $1!",

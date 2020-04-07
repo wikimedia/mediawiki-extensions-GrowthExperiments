@@ -1,13 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
+			"Jon Harald Søby",
+			"Martin Urbanec",
+			"Matěj Suchánek",
 			"Robby",
 			"Tgr",
-			"Matěj Suchánek",
-			"Jon Harald Søby",
-			"Amire80",
-			"Zoranzoki21",
-			"Martin Urbanec"
+			"Zoranzoki21"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Title for Special:Homepage, which is a place for users to access useful tools about contributing. Parameters:\n* $1 - Name of the current user. Can be used with GENDER.\n\n{{doc-growthexperiments-homepage}}",

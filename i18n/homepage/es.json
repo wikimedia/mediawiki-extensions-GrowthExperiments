@@ -1,16 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido",
-			"Jorge Ubilla",
-			"Wizardeck",
-			"MarcoAurelio",
-			"Canaan9801",
 			"Andru1013",
+			"Canaan9801",
 			"DannyS712",
+			"Fitoschido",
+			"Hasley",
 			"Ihojose",
 			"Joanmp17",
-			"Hasley"
+			"Jorge Ubilla",
+			"MarcoAurelio",
+			"Wizardeck"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Bienvenido|Bienvenida}}, {{bidi:$1}}!",

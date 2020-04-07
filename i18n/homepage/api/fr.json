@@ -2,8 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Epok",
-			"Thibaut120094",
-			"Gomoko"
+			"Gomoko",
+			"Thibaut120094"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Obtenir les questions formatées postées via la page d’accueil des modules",

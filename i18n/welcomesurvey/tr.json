@@ -1,8 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hedda",
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"Hedda"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Hoş geldin}}, $1!",

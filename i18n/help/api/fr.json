@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Wladek92",
 			"Gomoko",
+			"Thibaut120094",
 			"Verdy p",
-			"Thibaut120094"
+			"Wladek92"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "Gérer les questions posées via le panneau d’aide pour l’utilisateur actuel.",

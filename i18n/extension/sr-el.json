@@ -1,4 +1,6 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": []
+	},
 	"growthexperiments-desc": "Dodatak sadrži projekte koje je napravio tim za razvoj."
 }

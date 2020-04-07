@@ -1,10 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Martin Urbanec",
 			"Dvorapa",
-			"Patriccck",
-			"Matěj Suchánek"
+			"Martin Urbanec",
+			"Matěj Suchánek",
+			"Patriccck"
 		]
 	},
 	"welcomesurvey": "Vítejte, {{GENDER:$1|uživateli|uživatelko}} $1!",

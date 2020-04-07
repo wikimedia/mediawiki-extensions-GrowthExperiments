@@ -1,12 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Steeve815",
-			"דגש חזק",
 			"Amire80",
 			"Ghsuvr",
 			"IKhitron",
-			"YaronSh"
+			"Steeve815",
+			"YaronSh",
+			"דגש חזק"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|שלום}}, {{bidi:$1}}!",

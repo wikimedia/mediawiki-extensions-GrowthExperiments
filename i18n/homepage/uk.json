@@ -1,13 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250",
-			"Gzhegozh",
-			"Ата",
-			"Movses",
+			"Alexander Yukal",
 			"Base",
+			"Gzhegozh",
+			"Movses",
 			"Piramidion",
-			"Alexander Yukal"
+			"Vlad5250",
+			"Ата"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Привіт}}, {{bidi:$1}}!",

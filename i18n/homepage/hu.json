@@ -1,14 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tacsipacsi",
+			"Csega",
+			"Dj",
 			"Misibacsi",
+			"Samat",
+			"Tacsipacsi",
 			"Teemeah",
 			"Tgr",
-			"Dj",
-			"Samat",
-			"Worrida",
-			"Csega"
+			"Worrida"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Üdvözlünk, {{bidi:$1}}!",
