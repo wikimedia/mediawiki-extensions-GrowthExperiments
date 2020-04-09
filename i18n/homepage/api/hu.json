@@ -2,12 +2,17 @@
 	"@metadata": {
 		"authors": [
 			"Samat",
-			"Tacsipacsi"
+			"Tacsipacsi",
+			"Tgr"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "A kezdőlapi modulon keresztül közzétett formázott kérdések elérése.",
 	"apihelp-homepagequestionstore-param-questionformat": "A kérdések visszaadásához használt formátum, pl. HTML.",
 	"apihelp-homepagequestionstore-param-storage": "A kérdések tárolási helye.",
 	"apihelp-homepagequestionstore-param-userid": "A lekérendő kérésekhez tartozó felhasználó azonosítója.",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Nem található kérdés."
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Nem található kérdés.",
+	"apihelp-growthsetmentor-summary": "Egy felhasználó mentorának megváltoztatása. A változtatás nyilvánosan naplózva lesz.",
+	"apihelp-growthsetmentor-param-mentee": "Mentorált felhasználóneve",
+	"apihelp-growthsetmentor-param-mentor": "Mentor felhasználóneve",
+	"apihelp-growthsetmentor-param-reason": "Változtatás oka"
 }

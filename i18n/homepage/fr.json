@@ -123,7 +123,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "Acti{{GENDER:$1|f|ve}} il y a $2 jour{{PLURAL:$2||s}}",
 	"growthexperiments-homepage-mentorship-intro": "Cet{{GENDER:$1||te}} utilisat{{GENDER:$1|eur|rice}} expérimenté{{GENDER:$1||e}} sait que vous êtes nouve{{GENDER:$2|au|lle}} et peut vous aider dans l’édition.",
 	"growthexperiments-homepage-mentorship-question-button": "Poser une question à {{GENDER:$2|}}votre tut{{GENDER:$1|eur|rice}}",
-	"growthexperiments-homepage-mentorship-mentor-conversations": "Afficher les autres conversations de {{GENDER:$2|}}votre |tut{{GENDER:$1eur|rice}}",
+	"growthexperiments-homepage-mentorship-mentor-conversations": "Afficher les autres conversations de {{GENDER:$2|}}votre {{GENDER:$1|tuteur|tutrice}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "Demander à {{GENDER:$2|}}votre tut{{GENDER:$1|eur|rice}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Quand vous posez une question, elle est <strong>publiée publiquement</strong> sous {{GENDER:$2|}}votre nom d’utilisat{{GENDER:$2|eur|rice}} « $2 », sur $3 qui est l’endroit où {{GENDER:$1|il|elle|l’on}} peut trouver et répondre à votre question.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "page de discussion de {{GENDER:$2|}}votre tut{{GENDER:$1|eur|rice}}",
