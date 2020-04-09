@@ -44,9 +44,6 @@
 		QuestionPosterDialog.super.prototype.swapPanel.call( this, panel );
 
 		if ( panel === 'ask-help' ) {
-			// N.B. this intentionally differs from the main help panel where
-			// the footer is enabled.
-			this.askhelpFooterPanel.toggle( false );
 			this.questionIncludeFieldLayout.toggle( false );
 			this.askhelpTextInput.setValue( mw.storage.get( this.storageKey ) );
 			this.getActions().setAbilities( {

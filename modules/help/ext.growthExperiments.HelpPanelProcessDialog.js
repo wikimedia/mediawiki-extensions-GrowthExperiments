@@ -61,39 +61,34 @@
 
 	HelpPanelProcessDialog.static.name = 'HelpPanel';
 	HelpPanelProcessDialog.static.actions = [
-		// On desktop, allow user to close the panel at any stage except
-		// questioncomplete.
+		// The "Post" button on the ask help subpanel.
+		{
+			label: OO.ui.deferMsg( 'growthexperiments-help-panel-submit-question-button-text' ),
+			modes: [ 'ask-help' ],
+			classes: [ 'mw-ge-help-panel-post' ],
+			flags: [ 'progressive', 'primary' ],
+			action: 'questioncomplete'
+		},
+		{
+			label: mw.message( 'growthexperiments-help-panel-close' ).text(),
+			modes: [ 'questioncomplete' ],
+			flags: [ 'progressive', 'primary' ],
+			classes: [ 'mw-ge-help-panel-done' ],
+			action: 'close'
+		},
+		// Allow user to close the panel from home subpanel only.
 		{
 			icon: 'close',
 			flags: 'safe',
 			action: 'close',
-			modes: OO.ui.isMobile() ? [ 'home' ] : [ 'home', 'ask-help', 'general-help', 'search', 'suggested-edits' ]
+			modes: [ 'home' ]
 		},
-		// On mobile, use a back icon for all non-home panels.
+		// Use a back icon for all non-home panels.
 		{
 			icon: 'previous',
 			flags: 'safe',
 			action: 'home',
-			modes: OO.ui.isMobile() ? [ 'ask-help', 'general-help', 'search', 'suggested-edits' ] : []
-		},
-		// Add a button to the bottom of the panel that replaces the close button in the
-		// questioncomplete stage (T225669)
-		{
-			label: mw.message( 'growthexperiments-help-panel-close' ).text(),
-			modes: [ 'questioncomplete' ],
-			flags: 'primary',
-			framed: false,
-			classes: [ 'mw-ge-help-panel-done' ],
-			action: 'close'
-		},
-		// Show a back button on these panels. 'ask-help' is not included here
-		// because the original design had the primary actions set in the
-		// footer. When those are changed to use the standard top location,
-		// then 'ask-help' should be added to the modes below (T248065)
-		{
-			label: mw.message( 'growthexperiments-help-panel-back-home' ).text(),
-			modes: [ 'search', 'general-help', 'suggested-edits' ],
-			action: 'home'
+			modes: [ 'ask-help', 'general-help', 'questioncomplete', 'search', 'suggested-edits' ]
 		}
 	];
 
@@ -136,23 +131,21 @@
 		);
 
 		if ( panel === 'home' ) {
-			this.askhelpFooterPanel.toggle( false );
 			this.toggleSearchResults( false );
 			this.settingsCog.toggle( true );
 		}
 		if ( panel === 'general-help' ) {
-			this.askhelpFooterPanel.toggle( false );
 			this.toggleSearchResults( false );
 			this.settingsCog.toggle( true );
 		}
 		if ( panel === 'ask-help' ) {
-			this.askhelpFooterPanel.toggle( true );
-			this.settingsCog.toggle( true );
+			// Hide the cog, it interferes with the primary 'post' action
+			this.settingsCog.toggle( false );
+			this.getActions().setAbilities( {
+				questioncomplete: this.askhelpTextInput.getValue()
+			} );
 		}
 		if ( panel === 'questioncomplete' ) {
-			// Use the action defined in static.actions rather than a custom implementation
-			// for this panel.
-			this.askhelpFooterPanel.toggle( false );
 			// Hide the cog, it interferes with the primary 'close' action
 			this.settingsCog.toggle( false );
 		}
@@ -166,7 +159,9 @@
 	HelpPanelProcessDialog.prototype.onTextInputChange = function () {
 		var reviewTextInputValue = this.askhelpTextInput.getValue();
 		// Enable the "Submit" button on the review step if there's text input.
-		this.askhelpSubmitButton.setDisabled( !reviewTextInputValue );
+		this.getActions().setAbilities( {
+			questioncomplete: this.askhelpTextInput.getValue()
+		} );
 		// Copy the review text input back to the initial question field, in case the
 		// user clicks "back".
 		this.questionTextInput.setValue( reviewTextInputValue );
@@ -448,29 +443,6 @@
 		] );
 		this.askhelpPanel.$element.append( this.askhelpContent.$element );
 
-		this.askhelpFooterPanel = new OO.ui.PanelLayout( {
-			expanded: false,
-			padded: true
-		} );
-		this.askhelpFooterFieldset = new OO.ui.FieldsetLayout();
-		this.askhelpSubmitButton = new OO.ui.ButtonWidget( {
-			label: mw.message( 'growthexperiments-help-panel-submit-question-button-text' ).text(),
-			// Inherit classes from primary action, to position the button on the right.
-			classes: [ 'oo-ui-processDialog-actions-primary' ],
-			flags: [ 'primary', 'progressive' ]
-		} ).connect( this, { click: [ 'executeAction', 'questioncomplete' ] } )
-			.setDisabled( true );
-
-		this.askhelpFooterFieldset.addItems( [
-			new OO.ui.ButtonWidget( {
-				label: mw.message( 'growthexperiments-help-panel-back-home' ).text()
-			} ).connect( this, { click: [ 'executeAction', 'home' ] } ),
-			this.askhelpSubmitButton
-		] );
-		this.askhelpFooterPanel.$element.append(
-			this.askhelpFooterFieldset.$element
-		);
-
 		this.questionCompleteContent = new OO.ui.FieldsetLayout( {
 			label: new OO.ui.HorizontalLayout( {
 				items: [
@@ -499,9 +471,6 @@
 
 		] );
 		this.questioncompletePanel.$element.append( this.questionCompleteContent.$element );
-
-		// Add the footers
-		this.$foot.append( this.askhelpFooterPanel.$element );
 
 		this.panels.addItems( [
 			this.homePanel,
@@ -596,8 +565,6 @@
 					/* eslint-enable camelcase */
 					this.logger.log( 'submit-attempt', submitAttemptData );
 
-					// Disable the primary button while executing the API call.
-					this.askhelpSubmitButton.setDisabled( true );
 					// Toggle the first edit text, will set depending on API response.
 					this.questionCompleteFirstEditText.toggle( false );
 					postData = {
@@ -658,7 +625,6 @@
 							// Re-enable the submit button once the user is done with modal.
 							submitAttemptData.error = errorCode;
 							this.logger.log( 'submit-failure', submitAttemptData );
-							this.askhelpSubmitButton.setDisabled( false );
 							return $.Deferred().reject(
 								new OO.ui.Error( $( '<p>' ).append( this.submitFailureMessage ) )
 							).promise();
