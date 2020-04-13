@@ -132,7 +132,15 @@
 
 	TaskExplanationWidget.prototype.getDifficultyIndicator = function () {
 		return $( '<div>' ).addClass( 'suggested-edits-difficulty-indicator' )
+			// The following classes are used here:
+			// * suggested-edits-difficulty-indicator-label-easy
+			// * suggested-edits-difficulty-indicator-label-medium
+			// * suggested-edits-difficulty-indicator-label-hard
 			.addClass( 'suggested-edits-difficulty-indicator-' + this.taskTypeData.difficulty )
+			// The following messages are used here:
+			// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy
+			// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium
+			// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard
 			.text( mw.message( 'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' + this.taskTypeData.difficulty ) );
 	};
 

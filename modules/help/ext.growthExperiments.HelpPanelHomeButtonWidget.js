@@ -56,9 +56,10 @@
 					icon: 'lightbulb',
 					classes: [ 'mw-ge-help-panel-home-button-preheader-icon' ]
 				} ).$element,
-				// growthexperiments-help-panel-button-header-general-help
-				// growthexperiments-help-panel-button-header-ask-help
-				// growthexperiments-help-panel-button-header-suggested-edits
+				// The following messages are used here:
+				// * growthexperiments-help-panel-button-header-general-help
+				// * growthexperiments-help-panel-button-header-ask-help
+				// * growthexperiments-help-panel-button-header-suggested-edits
 				$( '<div>' ).addClass( 'mw-ge-help-panel-home-button-preheader-text' )
 					.text( mw.msg( 'growthexperiments-help-panel-button-preheader-' + this.config.id ) ) );
 
@@ -66,13 +67,14 @@
 
 	HelpPanelHomeButtonWidget.prototype.getHeader = function () {
 		return $( '<h2>' ).addClass( 'mw-ge-help-panel-home-button-text-header' )
-			// growthexperiments-help-panel-button-header-general-help
-			// growthexperiments-help-panel-button-header-ask-help
-			// growthexperiments-homepage-suggestededits-tasktype-name-copyedit
-			// growthexperiments-homepage-suggestededits-tasktype-name-references
-			// growthexperiments-homepage-suggestededits-tasktype-name-update
-			// growthexperiments-homepage-suggestededits-tasktype-name-links
-			// growthexperiments-homepage-suggestededits-tasktype-name-expand
+			// The following messages are used here:
+			// * growthexperiments-help-panel-button-header-general-help
+			// * growthexperiments-help-panel-button-header-ask-help
+			// * growthexperiments-homepage-suggestededits-tasktype-name-copyedit
+			// * growthexperiments-homepage-suggestededits-tasktype-name-references
+			// * growthexperiments-homepage-suggestededits-tasktype-name-update
+			// * growthexperiments-homepage-suggestededits-tasktype-name-links
+			// * growthexperiments-homepage-suggestededits-tasktype-name-expand
 			.text( this.config.id === 'suggested-edits' ?
 				mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-name-' + this.config.taskTypeId ) :
 				mw.msg( 'growthexperiments-help-panel-button-header-' + this.config.id ) );
@@ -80,9 +82,10 @@
 
 	HelpPanelHomeButtonWidget.prototype.getSubheader = function () {
 		return $( '<div>' ).addClass( 'mw-ge-help-panel-home-button-text-subheader' )
-			// growthexperiments-help-panel-button-subheader-general-help
-			// growthexperiments-help-panel-button-subheader-ask-help
-			// growthexperiments-help-panel-button-header-suggested-edits
+			// The following messages are used here:
+			// * growthexperiments-help-panel-button-subheader-general-help
+			// * growthexperiments-help-panel-button-subheader-ask-help
+			// * growthexperiments-help-panel-button-header-suggested-edits
 			.text( mw.msg( 'growthexperiments-help-panel-button-subheader-' + this.config.id ) );
 	};
 

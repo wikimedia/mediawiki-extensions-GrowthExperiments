@@ -7,8 +7,9 @@
 			disabled: true,
 			invisibleLabel: true,
 			label: mw.message(
-				// growthexperiments-homepage-suggestededits-previous-card
-				// growthexperiments-homepage-suggestededits-next-card
+				// The following messages are used here:
+				// * growthexperiments-homepage-suggestededits-previous-card
+				// * growthexperiments-homepage-suggestededits-next-card
 				'growthexperiments-homepage-suggestededits-' + config.direction.toLowerCase() + '-card'
 			).text()
 		} ) );

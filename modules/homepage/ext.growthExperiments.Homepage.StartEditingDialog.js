@@ -426,19 +426,10 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 		levels = [ 'easy', 'medium', 'hard' ],
 		legendRows = levels.map( function ( level ) {
 			var classPrefix = 'mw-ge-startediting-dialog-difficulty-',
-				// growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label
-				// growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label
-				// growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label
 				labelMsg = 'growthexperiments-homepage-startediting-dialog-difficulty-level-' +
 					level + '-label',
-				// growthexperiments-homepage-startediting-dialog-difficulty-level-easy-header
-				// growthexperiments-homepage-startediting-dialog-difficulty-level-medium-header
-				// growthexperiments-homepage-startediting-dialog-difficulty-level-hard-header
 				headerMsg = 'growthexperiments-homepage-startediting-dialog-difficulty-level-' +
 					level + '-description-header',
-				// growthexperiments-homepage-startediting-dialog-difficulty-level-easy-body
-				// growthexperiments-homepage-startediting-dialog-difficulty-level-medium-body
-				// growthexperiments-homepage-startediting-dialog-difficulty-level-hard-body
 				bodyMsg = 'growthexperiments-homepage-startediting-dialog-difficulty-level-' +
 					level + '-description-body';
 			return $( '<div>' )
@@ -448,6 +439,10 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 						.addClass( [ classPrefix + 'legend-cell', classPrefix + 'legend-label' ] )
 						.append(
 							new OO.ui.IconWidget( { icon: 'difficulty-' + level } ).$element,
+							// The following messages are used here:
+							// * growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label
+							// * growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label
+							// * growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label
 							$( '<span>' ).text( mw.msg( labelMsg ) )
 						),
 					$( '<div>' )
@@ -455,9 +450,17 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 						.append(
 							$( '<p>' )
 								.addClass( classPrefix + 'legend-description-header' )
+								// The following messages are used here:
+								// * growthexperiments-homepage-startediting-dialog-difficulty-level-easy-header
+								// * growthexperiments-homepage-startediting-dialog-difficulty-level-medium-header
+								// * growthexperiments-homepage-startediting-dialog-difficulty-level-hard-header
 								.text( mw.msg( headerMsg ) ),
 							$( '<p>' )
 								.addClass( classPrefix + 'legend-description-body' )
+								// The following messages are used here:
+								// * growthexperiments-homepage-startediting-dialog-difficulty-level-easy-body
+								// * growthexperiments-homepage-startediting-dialog-difficulty-level-medium-body
+								// * growthexperiments-homepage-startediting-dialog-difficulty-level-hard-body
 								.text( mw.msg( bodyMsg ) )
 						)
 				);
