@@ -170,8 +170,7 @@
 		var $messageList,
 			$link,
 			emailMessage,
-			button,
-			prefix = 'growthexperiments-help-panel-questioncomplete-notifications';
+			button;
 
 		$messageList = $( '<dl>' ).addClass( 'mw-ge-help-panel-notifications' );
 
@@ -183,27 +182,27 @@
 						target: '_blank',
 						'data-link-id': 'special-change-email'
 					} )
-					.text( mw.message( prefix + '-email-change' ).text() );
-				emailMessage = mw.message( prefix + '-email' )
+					.text( mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-email-change' ).text() );
+				emailMessage = mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-email' )
 					.params( [ this.userEmail, $link ] )
 					.parse();
 			} else {
-				emailMessage = mw.message( prefix + '-email-unconfirmed' )
+				emailMessage = mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed' )
 					.params( [ this.userEmail, mw.user ] )
 					.escaped();
 				button = new OO.ui.ButtonWidget( {
-					label: mw.message( prefix + '-email-unconfirmed-confirm' ).text(),
+					label: mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm' ).text(),
 					href: mw.util.getUrl( 'Special:ConfirmEmail' ),
 					target: '_blank'
 				} );
 				button.$button.attr( 'data-link-id', 'special-confirm-email' );
 			}
 		} else {
-			emailMessage = mw.message( prefix + '-email-missing' )
+			emailMessage = mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-email-missing' )
 				.params( [ mw.user ] )
 				.escaped();
 			button = new OO.ui.ButtonWidget( {
-				label: mw.message( prefix + '-email-missing-add' ).text(),
+				label: mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-email-missing-add' ).text(),
 				href: mw.util.getUrl( 'Special:ChangeEmail' ),
 				target: '_blank'
 			} );
@@ -211,7 +210,7 @@
 		}
 
 		$messageList.append( $( '<dt>' ).append( new OO.ui.IconWidget( { icon: 'bell' } ).$element ) );
-		$messageList.append( $( '<dd>' ).text( mw.message( prefix + '-wiki' ).text() ) );
+		$messageList.append( $( '<dd>' ).text( mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-wiki' ).text() ) );
 		$messageList.append( $( '<dt>' ).append( new OO.ui.IconWidget( { icon: 'message' } ).$element ) );
 		$messageList.append( $( '<dd>' ).html( emailMessage ) );
 		if ( button ) {
@@ -223,7 +222,7 @@
 				.append(
 					$( '<h2>' )
 						.addClass( 'mw-ge-help-panel-questioncomplete-notifications-section' )
-						.text( mw.message( prefix + '-section-header' ).text() ),
+						.text( mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-section-header' ).text() ),
 					$messageList
 				)
 		) );

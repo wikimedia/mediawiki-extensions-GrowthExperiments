@@ -2,18 +2,18 @@
 	"root": true,
 	"extends": [
 		"wikimedia/client",
-		"wikimedia/jquery"
+		"wikimedia/jquery",
+		"wikimedia/mediawiki"
 	],
 	"env": {
 		"commonjs": true
 	},
 	"globals": {
-		"mw": "readonly",
 		"require": "readonly",
 		"OO": "readonly",
 		"module": "readonly"
 	},
 	"rules": {
-		"no-jquery/variable-pattern": "warn"
+		"mediawiki/valid-package-file-require": "off"
 	}
 }

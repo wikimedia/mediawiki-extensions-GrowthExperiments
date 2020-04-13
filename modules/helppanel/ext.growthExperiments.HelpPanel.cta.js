@@ -172,6 +172,10 @@
 										$( '<div>' ).addClass( 'suggested-edits-difficulty-time-estimate' ).append(
 											$( '<div>' ).addClass( 'suggested-edits-difficulty-indicator' )
 												.addClass( 'suggested-edits-difficulty-indicator-' + taskTypeData.difficulty )
+												// The following messages are used here:
+												// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy
+												// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium
+												// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard
 												.text( mw.message( 'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' + taskTypeData.difficulty ) ),
 											$( '<div>' )
 												.addClass( 'suggested-edits-difficulty-level suggested-edits-difficulty-level-' + taskTypeData.difficulty )

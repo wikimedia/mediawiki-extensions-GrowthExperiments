@@ -194,9 +194,10 @@
 			if ( !levels[ level ] ) {
 				return;
 			}
-			// growthexperiments-homepage-suggestededits-difficulty-filter-label-easy
-			// growthexperiments-homepage-suggestededits-difficulty-filter-label-medium
-			// growthexperiments-homepage-suggestededits-difficulty-filter-label-hard
+			// The following messages are used here:
+			// * growthexperiments-homepage-suggestededits-difficulty-filter-label-easy
+			// * growthexperiments-homepage-suggestededits-difficulty-filter-label-medium
+			// * growthexperiments-homepage-suggestededits-difficulty-filter-label-hard
 			label = mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-label-' +
 				level ).text();
 			messages.push( label );
