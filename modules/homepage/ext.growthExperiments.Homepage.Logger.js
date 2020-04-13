@@ -14,7 +14,7 @@
 		this.isMobile = OO.ui.isMobile();
 		this.homepagePageviewToken = homepagePageviewToken;
 		this.exclusions = {
-			start: [ 'impression', 'hover-in', 'hover-out' ]
+			start: [ 'impression' ]
 		};
 	}
 

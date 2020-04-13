@@ -4,17 +4,6 @@
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
 		),
-		handleHover = function ( action ) {
-			return function () {
-				var $module = $( this ),
-					moduleName = $module.data( 'module-name' ),
-					mobileModes = [ 'mobile-overlay', 'mobile-details', 'mobile-summary' ],
-					mode = $module.data( 'mode' );
-				if ( mobileModes.indexOf( mode ) === -1 ) {
-					logger.log( moduleName, mode, 'hover-' + action );
-				}
-			};
-		},
 		moduleSelector = '.growthexperiments-homepage-container .growthexperiments-homepage-module',
 		$modules = $( moduleSelector ),
 		handleClick = function ( e ) {
@@ -43,8 +32,6 @@
 		} ).length > 0;
 
 	$modules
-		.on( 'mouseenter', handleHover( 'in' ) )
-		.on( 'mouseleave', handleHover( 'out' ) )
 		.on( 'click', '[data-link-id]', handleClick );
 
 	// If we're on mobile and the initial URI specifies a module to navigate to, let
