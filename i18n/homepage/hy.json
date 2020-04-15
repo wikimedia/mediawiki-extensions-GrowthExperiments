@@ -14,7 +14,7 @@
 	"growthexperiments-homepage-enable": "Ցուցադրել նորեկի հիմնական էջը",
 	"growthexperiments-homepage-start-header": "{{GENDER:$1|Սկսել}} այստեղից",
 	"growthexperiments-homepage-account-header": "Հաշիվը ստեղծված է",
-	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|խմբագրում}",
+	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|խմբագրում}}",
 	"growthexperiments-homepage-account-age": "Դուք $1 ինչ հաշիվ ունեք:",
 	"growthexperiments-homepage-userpage-header": "Ստեղծել {{GENDER:$1|Ձեր}} մասնակցային էջը",
 	"growthexperiments-homepage-userpage-header-done": "Խմբագրել {{GENDER:$1|Ձեր}} մասնակցային էջը",
