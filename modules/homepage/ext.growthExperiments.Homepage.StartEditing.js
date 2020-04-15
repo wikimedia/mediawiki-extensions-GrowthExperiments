@@ -6,7 +6,7 @@
 			mw.config.get( 'wgGEHomepagePageviewToken' )
 		),
 		GrowthTasksApi = require( './suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js' ),
-		api = new GrowthTasksApi();
+		api = new GrowthTasksApi( {} );
 
 	function setupCta( $container ) {
 		var ctaButton, dialog, windowManager,
