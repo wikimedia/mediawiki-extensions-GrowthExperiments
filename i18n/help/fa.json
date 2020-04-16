@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"FarsiNevis",
 			"Vahedi"
 		]
 	},
+	"growthexperiments-help-panel-suggestededits-title": "ویرایش‌های پیشنهادی",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "تایید دوباره ایمیل"
 }

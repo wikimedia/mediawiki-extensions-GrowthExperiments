@@ -29,6 +29,8 @@
 	"growthexperiments-help-panel-question-subject-template-with-title": "Question de l’onglet d’aide sur [[$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Question du module d’aide pour la page d’accueil utilisateur",
 	"growthexperiments-help-panel-question-post-error": "Une erreur est survenue pendant l’envoi de votre question. Vous pouvez recommencer ou visiter $1 dans votre navigateur et y ajouter votre question manuellement.",
+	"growthexperiments-help-panel-suggestededits-title": "Modifications suggérées",
+	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Conseils de démarrage rapide",
 	"growthexperiments-help-panel-questioncomplete-title": "Poser une question",
 	"growthexperiments-help-panel-questioncomplete-header": "Votre question a été envoyée !",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Votre question est désormais sur le Centre d’assistance de la communauté ou un autre éditeur bénévole pourra y répondre.",

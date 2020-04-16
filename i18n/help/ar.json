@@ -4,6 +4,7 @@
 			"Dyolf77",
 			"Dyolf77 (WMF)",
 			"Meno25",
+			"Tala Ali",
 			"ديفيد",
 			"محمد أحمد عبد الفتاح"
 		]
@@ -27,6 +28,8 @@
 	"growthexperiments-help-panel-question-subject-template-with-title": "سؤال من لوحة المساعدة على [[$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "سؤال وحدة المساعدة من لوحة المستخدم",
 	"growthexperiments-help-panel-question-post-error": "حدث خطأ عند محاولة نشر سؤالك، يمكنك إعادة المحاولة أو يمكنك زيارة $1 في متصفحك وإضافة سؤالك يدويًا.",
+	"growthexperiments-help-panel-suggestededits-title": "التعديلات المقترحة",
+	"growthexperiments-help-panel-suggestededits-quick-start-tips": "نصائح البدء السريع",
 	"growthexperiments-help-panel-questioncomplete-title": "{{GENDER:|اطرح|اطرحي}} سؤالا",
 	"growthexperiments-help-panel-questioncomplete-header": "تم نشر سؤالك!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "سؤالك الآن معروض على فريق المساعدة ليتم الرد عليه من قبل محرر متطوع آخر.",
