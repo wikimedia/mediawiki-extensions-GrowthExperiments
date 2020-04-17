@@ -130,6 +130,13 @@
 			panel === 'suggested-edits'
 		);
 
+		if ( panel === 'suggested-edits' ) {
+			// TODO: If we are in edit mode, the footer should not show up (T244541)
+			this.$foot.append( this.suggestededitsPanel.getFooter() );
+		} else {
+			this.$foot.find( '.suggested-edits-panel-footer' ).remove();
+		}
+
 		if ( panel === 'home' ) {
 			this.toggleSearchResults( false );
 			this.settingsCog.toggle( true );

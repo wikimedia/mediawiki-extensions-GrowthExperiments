@@ -23,6 +23,8 @@
 	"growthexperiments-help-panel-question-post-error": "An error occurred when trying to post your question. You can try again or you can visit $1 in your browser and add your question manually.",
 	"growthexperiments-help-panel-suggestededits-title": "Suggested edits",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Quick start tips",
+	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Ready?</strong> Click \"Edit\" to get started.",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Ready?</strong> Tap the edit pencil on the article to start.",
 	"growthexperiments-help-panel-questioncomplete-title": "Ask a question",
 	"growthexperiments-help-panel-questioncomplete-header": "Your question has been posted!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Your question is now on the Community Help Desk for it to be answered by another volunteer editor.",

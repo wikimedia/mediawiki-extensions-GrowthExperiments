@@ -58,6 +58,24 @@
 			.text( mw.message( 'growthexperiments-help-panel-suggestededits-quick-start-tips' ).text() );
 	};
 
+	/**
+	 * Get the footer content for the panel.
+	 *
+	 * Note, the content from this method is appended to the ProcessDialog's
+	 * $foot, and not to the suggested edits PanelLayout.
+	 *
+	 * @return {jQuery}
+	 */
+	SuggestedEditsPanel.prototype.getFooter = function () {
+		return $( '<footer>' ).addClass( 'suggested-edits-panel-footer' ).append(
+			$( '<div>' ).addClass( 'suggested-edits-panel-footer-text' )
+				// The following messages are used here:
+				// * growthexperiments-help-panel-suggestededits-footer-mobile
+				// * growthexperiments-help-panel-suggestededits-footer-desktop
+				.html( mw.message( 'growthexperiments-help-panel-suggestededits-footer-' +
+					( OO.ui.isMobile() ? 'mobile' : 'desktop' ) ).parse() ) );
+	};
+
 	module.exports = SuggestedEditsPanel;
 
 }() );
