@@ -18,6 +18,7 @@
 	"growthexperiments-help-panel-questionreview-header": "Cuando envías una pregunta, se <strong>comparte públicamente</strong> con tu nombre de usuario («$2») en $1, donde otro voluntario tratará de responderte en un plazo aproximado de un día.",
 	"growthexperiments-help-panel-questionreview-label": "Tu pregunta",
 	"growthexperiments-help-panel-question-post-error": "Se produjo un error al tratar de publicar tu pregunta. Puedes intentarlo de nuevo o visitar $1 en el navegador y añadir la pregunta manualmente.",
+	"growthexperiments-help-panel-suggestededits-title": "Ediciones sugeridas",
 	"growthexperiments-help-panel-questioncomplete-title": "Formular una pregunta",
 	"growthexperiments-help-panel-questioncomplete-header": "Se ha publicado la pregunta.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Para recibir notificaciones también por correo electrónico, confirma tu dirección ahora: $1",
