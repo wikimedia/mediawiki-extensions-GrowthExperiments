@@ -72,6 +72,8 @@
 	 * @param {string[]} taskTypes List of task IDs.
 	 * @param {string[]} [topics] List of topic IDs.
 	 * @param {Object} [config] Additional configuration.
+	 * @param {boolean} [config.getDescription] Include Wikidata description into the data.
+	 *   This probably won't work well with a large size setting.
 	 * @param {integer} [config.size] Number of tasks to fetch. The returned number might be smaller
 	 *   as protected pages will be filtered out.
 	 *
@@ -85,7 +87,10 @@
 		var apiParams, actionApiPromise, finalPromise,
 			url = new mw.Uri( window.location.href );
 
-		config = $.extend( { size: 250 }, config || {} );
+		config = $.extend( {
+			getDescription: false,
+			size: 250
+		}, config || {} );
 
 		if ( !taskTypes.length ) {
 			// No point in doing the query if no task types are allowed.
@@ -99,7 +104,7 @@
 
 		apiParams = {
 			action: 'query',
-			prop: 'info|revisions|pageimages',
+			prop: 'info|revisions|pageimages' + ( config.getDescription ? '|description' : '' ),
 			inprop: 'protection|url',
 			rvprop: 'ids',
 			pithumbsize: 260,
@@ -124,7 +129,7 @@
 			var tasks = [];
 
 			function cleanUpData( item ) {
-				return {
+				var task = {
 					title: item.title,
 					// Page and revision ID can be missing on development setups where the
 					// returned titles are not local, and also in edge cases where the search
@@ -140,6 +145,10 @@
 					topics: item.topics || null,
 					maintenanceTemplates: item.maintenancetemplates || null
 				};
+				if ( config.getDescription ) {
+					task.description = item.description || null;
+				}
+				return task;
 			}
 			function filterOutProtectedArticles( result ) {
 				return result.protection.length === 0;

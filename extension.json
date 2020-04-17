@@ -736,6 +736,46 @@
 				"mobile"
 			]
 		},
+		"ext.growthExperiments.PostEdit": {
+			"styles": [
+				"help/ext.growthExperiments.PostEdit.less"
+			],
+			"packageFiles": [
+				"help/ext.growthExperiments.PostEdit.js",
+				"help/ext.growthExperiments.PostEditPanel.js",
+				"help/ext.growthExperiments.PostEditDialog.js",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
+				{
+					"name": "homepage/suggestededits/TaskTypes.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
+				},
+				{
+					"name": "homepage/suggestededits/AQSConfig.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getAQSConfigJson" ]
+				},
+				{
+					"name": "homepage/suggestededits/config.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
+				}
+			],
+			"dependencies": [
+				"oojs-ui-windows",
+				"oojs-ui.styles.icons-media",
+				"ext.growthExperiments.Homepage.icons"
+			],
+			"messages": [
+				"growthexperiments-help-panel-postedit-success-message",
+				"growthexperiments-help-panel-postedit-header",
+				"growthexperiments-help-panel-postedit-subheader",
+				"growthexperiments-help-panel-postedit-footer",
+				"growthexperiments-help-panel-postedit-footer2",
+				"growthexperiments-homepage-suggestededits-pageviews"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
 		"ext.growthExperiments.confirmEmail.createAccount.styles": {
 			"styles": "confirmemail/ext.confirmEmail.createAccount.less",
 			"targets": [
