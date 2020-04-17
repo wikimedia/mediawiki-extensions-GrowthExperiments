@@ -158,7 +158,8 @@
 	 * Change the URL of edit links to propagate the editing session ID to certain log records.
 	 */
 	SuggestedEditSession.prototype.updateLinks = function () {
-		var self = this;
+		var self = this,
+			veState = mw.loader.getState( 'ext.visualEditor.desktopArticleTarget.init' );
 
 		$( function () {
 			// eslint-disable-next-line no-jquery/no-global-selector
@@ -170,6 +171,20 @@
 				} );
 				$( this ).attr( 'href', linkUrl.toString() );
 			} );
+		} );
+
+		// Suppress the VisualEditor welcome dialog and education popups
+		// Do this only if VE's init module was already going to be loaded; we don't want to trigger
+		// it if it wasn't going to be loaded otherwise
+		if ( veState === 'loading' || veState === 'loaded' || veState === 'ready' ) {
+			mw.loader.using( 'ext.visualEditor.desktopArticleTarget.init' ).done( function () {
+				mw.libs.ve.disableWelcomeDialog();
+			} );
+		}
+		// HACK: change the user preferences only for this request, don't save the change
+		// with an API request like we normally would
+		mw.user.options.set( {
+			'visualeditor-hideusered': 1
 		} );
 	};
 
