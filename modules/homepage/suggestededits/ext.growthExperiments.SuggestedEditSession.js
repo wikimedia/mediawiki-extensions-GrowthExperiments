@@ -2,12 +2,15 @@
 	var Utils = require( '../../utils/ext.growthExperiments.Utils.js' );
 
 	/**
-	 * Class for tracking suggested edit sessions.
+	 * Class for tracking suggested edit sessions and triggering actions related to them.
+	 *
 	 * A suggested edit session starts with a user clicking on a suggested edit task card,
 	 * and ends with leaving the page associated with the task. It is tied to a single browser tab
 	 * (but can be initiated by opening the task card in link in a new tab). During the session,
-	 * the help panel switches to guidance mode; this class identifies the session and stores
-	 * information needed for guidance.
+	 * the help panel switches to guidance mode; this class identifies the session, stores
+	 * information needed for guidance, provides information for logging (some of it via its
+	 * methods, some by adding tracking to URLs on setup), and triggers opening the post-edit
+	 * dialog.
 	 *
 	 * See also HomepageHooks::onBeforePageDisplay().
 	 *
@@ -22,7 +25,7 @@
 		 * @var {int|null} Suggested edit session ID. This will be used in
 		 *   EditAttemptStep.editing_session_id and HelpPanel.help_panel_session_id
 		 *   in events logged during the session. It is set via the geclickid URL parameter
-		 *   (which is how a suggested edit session starts).
+		 *   (which is how a suggested edit session starts) and reset during page save.
 		 */
 		this.clickId = null;
 		/** @var {mw.Title|null} The target page of the suggested editing task. */
@@ -31,6 +34,14 @@
 		this.taskType = null;
 		/** @var {string|null} The editor used last in the suggested edit session. */
 		this.editorInterface = null;
+		/**
+		 * @var {boolean} Show the post-edit dialog at the next opportunity. This is used to
+		 *   work around page reloads after saving the page, when the dialog cannot be displayed
+		 *   immediately when we detect the save.
+		 */
+		this.postEditDialogNeedsToBeShown = false;
+		/** @var {boolean} Whether the post-edit dialog was already shown in this session. */
+		this.postEditDialogShown = false;
 	}
 
 	/**
@@ -48,6 +59,7 @@
 
 		if ( this.active ) {
 			this.updateLinks();
+			this.maybeShowPostEditDialog();
 		}
 	};
 
@@ -71,7 +83,9 @@
 			clickId: this.clickId,
 			title: this.title.getPrefixedText(),
 			taskType: this.taskType,
-			editorInterface: this.editorInterface
+			editorInterface: this.editorInterface,
+			postEditDialogNeedsToBeShown: this.postEditDialogNeedsToBeShown,
+			postEditDialogShown: this.postEditDialogShown
 		} );
 		mw.config.set( 'ge-suggestededit-session', this );
 	};
@@ -104,6 +118,8 @@
 				this.title = savedTitle;
 				this.taskType = data.taskType;
 				this.editorInterface = data.editorInterface;
+				this.postEditDialogNeedsToBeShown = data.postEditDialogNeedsToBeShown;
+				this.postEditDialogShown = data.postEditDialogShown;
 			} else {
 				mw.storage.session.remove( 'ge-suggestededit-session' );
 			}
@@ -154,6 +170,77 @@
 				} );
 				$( this ).attr( 'href', linkUrl.toString() );
 			} );
+		} );
+	};
+
+	/**
+	 * Display the post-edit dialog, and deal with some editors reloading the page immediately
+	 * after save.
+	 * @param {Object} config
+	 * @param {boolean} [config.resetSession] Reset the session ID. This should be done when the
+	 *   dialog is displayed, but it should not be done twice if this method is called twice
+	 *   due to a reload.
+	 * @param {boolean} [config.nextRequest] Don't try to display the dialog, schedule it for the
+	 *   next request instead. This is less fragile when we know for sure the editor will reload.
+	 * @return {jQuery.Promise} A promise that resolves when the dialog is displayed.
+	 */
+	SuggestedEditSession.prototype.showPostEditDialog = function ( config ) {
+		var self = this;
+
+		if ( config.resetSession ) {
+			self.clickId = mw.user.generateRandomSessionId();
+			// Need to update the click ID in edit links as well.
+			self.updateLinks();
+		}
+		// The mobile editor and in some configurations the visual editor immediately reloads
+		// after saving and firing the post-edit event, so displaying the dialog would fail.
+		// Preventing that reload would be fragile, given that the post-edit dialog offers
+		// users an "edit again" option. Instead, use the session to display the dialog again
+		// after the reload if needed.
+		this.postEditDialogNeedsToBeShown = true;
+		this.save();
+
+		if ( !config.nextRequest && mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ) ) {
+			return mw.loader.using( 'ext.growthExperiments.PostEdit' ).then( function ( require ) {
+				var promise,
+					PostEdit = require( 'ext.growthExperiments.PostEdit' );
+
+				if ( self.postEditDialogShown ) {
+					// Wrap in a promise to keep symmetry with setupPanel()
+					promise = $.when( PostEdit.setupPanelWithoutTask() );
+				} else {
+					promise = PostEdit.setupPanel();
+				}
+				return promise.then( function ( result ) {
+					result.openPromise.done( function () {
+						self.postEditDialogNeedsToBeShown = false;
+						self.postEditDialogShown = true;
+						self.save();
+					} );
+					return result.openPromise;
+				} );
+			} );
+		}
+		return $.Deferred().resolve().promise();
+	};
+
+	/**
+	 * Display the post-edit dialog if we are in a suggested edit session, right after an edit.
+	 */
+	SuggestedEditSession.prototype.maybeShowPostEditDialog = function () {
+		var self = this;
+
+		if ( this.postEditDialogNeedsToBeShown ) {
+			this.showPostEditDialog( {} );
+		}
+
+		// Do this even if we have just shown the dialog above. This is important when the user
+		// edits again right after dismissing the dialog.
+		mw.hook( 'postEdit' ).add( function () {
+			self.showPostEditDialog( { resetSession: true } );
+		} );
+		mw.hook( 'postEditMobile' ).add( function () {
+			self.showPostEditDialog( { resetSession: true, nextRequest: true } );
 		} );
 	};
 

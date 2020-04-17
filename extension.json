@@ -175,6 +175,7 @@
 			"dependencies": [
 				"mediawiki.Title",
 				"mediawiki.Uri",
+				"mediawiki.user",
 				"mediawiki.util"
 			]
 		},
@@ -766,7 +767,8 @@
 			"dependencies": [
 				"oojs-ui-windows",
 				"oojs-ui.styles.icons-media",
-				"ext.growthExperiments.Homepage.icons"
+				"ext.growthExperiments.Homepage.icons",
+				"ext.growthExperiments.SuggestedEditSession"
 			],
 			"messages": [
 				"growthexperiments-help-panel-postedit-success-message",
