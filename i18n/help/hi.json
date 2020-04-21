@@ -2,9 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Gopalindians",
-			"Prong$31"
+			"Prong$31",
+			"गोपाल"
 		]
 	},
+	"growthexperiments-help-panel-suggestededits-title": "सुझाए गए संपादन",
+	"growthexperiments-help-panel-suggestededits-quick-start-tips": "त्वरित शुरुआत युक्तियाँ",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "आपके ईमेल की पुष्टि करें",
 	"growthexperiments-help-panel-search-label": "मदद के लिये खोजें"
 }

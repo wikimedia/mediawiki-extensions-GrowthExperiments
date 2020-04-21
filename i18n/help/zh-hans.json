@@ -44,5 +44,16 @@
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "详细了解此功能的有关信息",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "顺便说一句，通过发布该问题，你已经对页面进行了第一次编辑。恭喜！",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "在参数设置中禁用该工具",
-	"growthexperiments-help-panel-search-label": "搜索来获取帮助"
+	"growthexperiments-help-panel-questionposter-invalid-title": "无效标题。",
+	"growthexperiments-help-panel-community-help-desk-text": "社群帮助台",
+	"growthexperiments-help-panel-search-label": "搜索帮助",
+	"growthexperiments-help-panel-search-no-results": "找不到结果。",
+	"tag-help_panel_question": "帮助面板问题",
+	"tag-help_panel_question-description": "通过帮助面板发布问题功能的编辑模式",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "编辑建议",
+	"growthexperiments-help-panel-button-header-ask-help": "询问帮助台",
+	"growthexperiments-help-panel-button-header-general-help": "常用编辑帮助",
+	"growthexperiments-help-panel-button-subheader-general-help": "搜索答案并阅读热门文章",
+	"growthexperiments-help-panel-button-subheader-ask-help": "从其他志愿者那里得到答案",
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "快速入门提示"
 }
