@@ -14,7 +14,7 @@ use MWException;
 use MWTimestamp;
 use OOUI\ButtonWidget;
 use OOUI\IconWidget;
-use PageImages;
+use PageImages\PageImages;
 use SpecialPage;
 use Title;
 use Wikimedia\Rdbms\IDatabase;
