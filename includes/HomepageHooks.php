@@ -202,6 +202,22 @@ class HomepageHooks {
 			unset( $links['namespaces']['user'] );
 			unset( $links['namespaces']['user_talk'] );
 
+			// T250554: If user currently views a subpage, direct him to the subpage talk page
+			if ( !$isHomepage ) {
+				$subjectpage = MediaWikiServices::getInstance()->getNamespaceInfo()->getSubjectPage( $title );
+				$talkpage = MediaWikiServices::getInstance()->getNamespaceInfo()->getTalkPage( $title );
+
+				if ( $subjectpage instanceof \TitleValue ) {
+					$subjectpage = Title::newFromTitleValue( $subjectpage );
+				}
+				if ( $talkpage instanceof \TitleValue ) {
+					$talkpage = Title::newFromTitleValue( $talkpage );
+				}
+			} else {
+				$subjectpage = $userpage;
+				$talkpage = $usertalk;
+			}
+
 			$homepageUrlQuery = $isHomepage ? '' : wfArrayToCgi( [
 				'source' => $isUserSpace ? 'userpagetab' : 'usertalkpagetab',
 				'namespace' => $title->getNamespace(),
@@ -211,11 +227,11 @@ class HomepageHooks {
 			);
 
 			$links['namespaces']['user'] = $skin->tabAction(
-				$userpage, 'nstab-user', $isUserSpace, '', !$isMobile
+				$subjectpage, 'nstab-user', $isUserSpace, '', !$isMobile
 			);
 
 			$links['namespaces']['user_talk'] = $skin->tabAction(
-				$usertalk, 'talk', $isUserTalkSpace, '', !$isMobile
+				$talkpage, 'talk', $isUserTalkSpace, '', !$isMobile
 			);
 			// Enable talk overlay on talk page tab
 			$links['namespaces']['user_talk']['context'] = 'talk';
