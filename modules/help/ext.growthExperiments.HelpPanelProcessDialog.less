@@ -1,6 +1,7 @@
 @import 'mediawiki.ui/variables';
 @import 'mediawiki.mixins';
 @import '../homepage/ext.growthExperiments.variables.less';
+@import '../../lib/ooui/wikimedia-ui-base';
 
 .mw-ge-help-panel-processdialog {
 	label > strong {
@@ -45,6 +46,9 @@
 		-moz-user-select: auto;
 		-ms-user-select: auto;
 		user-select: auto;
+		// Unset the outline (currently footer is only used on the suggested
+		// edits panel).
+		outline: unset;
 	}
 
 	.oo-ui-window-head.suggested-edits-panel-window-head {
@@ -138,6 +142,19 @@
 	.suggested-edits-panel {
 		&-quick-start-tips {
 			padding: 16px;
+		}
+
+		&-footer {
+			background-color: @wmui-color-base90;
+			height: 40px;
+			width: 100%;
+
+			&-text {
+				padding: 16px;
+				font-size: 0.929em;
+				line-height: 0.65;
+				color: @colorGray2;
+			}
 		}
 	}
 }
