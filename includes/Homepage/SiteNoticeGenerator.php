@@ -1,6 +1,5 @@
 <?php
 
-
 namespace GrowthExperiments\Homepage;
 
 use GrowthExperiments\HomepageHooks;

@@ -14,6 +14,7 @@
 		"module": "readonly"
 	},
 	"rules": {
-		"mediawiki/valid-package-file-require": "off"
+		"mediawiki/valid-package-file-require": "off",
+		"mediawiki/class-doc": "warn"
 	}
 }

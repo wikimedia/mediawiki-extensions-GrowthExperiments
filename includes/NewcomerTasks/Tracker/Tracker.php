@@ -1,6 +1,5 @@
 <?php
 
-
 namespace GrowthExperiments\NewcomerTasks\Tracker;
 
 use Psr\Log\LoggerInterface;
