@@ -26,6 +26,8 @@
 	"growthexperiments-help-panel-question-post-error": "當嘗試發佈您的問題時發生錯誤。您可以重試，或是在您的瀏覽器訪問$1來手動添加您的問題。",
 	"growthexperiments-help-panel-suggestededits-title": "建議編輯",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "快速入門提示",
+	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>準備好了？</strong>請點擊「編輯」來開始。",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>準備好了？</strong>請輕觸在條目的編輯筆狀圖案來開始。",
 	"growthexperiments-help-panel-questioncomplete-title": "詢問一個問題",
 	"growthexperiments-help-panel-questioncomplete-header": "您的問題已發佈！",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "您的問題目前已在社群互助客棧/求助上，以便由其他熱心的編輯者回應。",

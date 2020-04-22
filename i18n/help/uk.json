@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Movses",
 			"Piramidion",
 			"Vlad5250",
 			"Ата"
@@ -25,6 +26,8 @@
 	"growthexperiments-help-panel-question-subject-template-with-title": "Запитання зі сторінки [[$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Запитання модуля допомоги з користувацької домашньої сторінки",
 	"growthexperiments-help-panel-question-post-error": "Виникла помилка при спробі опублікувати Ваше запитання. Ви можете спробувати ще раз або можете відвідати $1 у Вашому браузері й додати своє запитання вручну.",
+	"growthexperiments-help-panel-suggestededits-title": "Пропоновані редагування",
+	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Підказки для швидкого старту",
 	"growthexperiments-help-panel-questioncomplete-title": "Поставити запитання",
 	"growthexperiments-help-panel-questioncomplete-header": "Ваше запитання опубліковано!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Ваше запитання тепер очікує відповіді іншого редактора-волонтера на сторінці служби підтримки спільноти.",
