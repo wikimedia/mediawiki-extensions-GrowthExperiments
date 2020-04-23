@@ -28,6 +28,8 @@
 	"growthexperiments-help-panel-question-post-error": "אירעה שגיאה בעת ניסיון לשלוח את השאלה שלך. {{GENDER:|אתה יכול|את יכולה}} לנסות שוב או לבקר בדף $1 בדפדפן שלך ולהוסיף את שאלתך ידנית.",
 	"growthexperiments-help-panel-suggestededits-title": "עריכות מוצעות",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "עצות להתחלה מהירה",
+	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>{{GENDER:|מוכן|מוכנה}}?</strong> {{GENDER:|לחץ|לחצי}} על \"עריכה\" כדי להתחיל.",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>{{GENDER:|מוכן|מוכנה}}?</strong> {{GENDER:|לחץ|לחצי}} על העיפרון בערך כדי להתחיל.",
 	"growthexperiments-help-panel-questioncomplete-title": "לשאול שאלה",
 	"growthexperiments-help-panel-questioncomplete-header": "השאלה שלך התפרסמה!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "השאלה שלך עכשיו בדלפק הייעוץ לשם מענה מעורך מתנדב אחר.",

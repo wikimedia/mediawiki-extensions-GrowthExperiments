@@ -72,7 +72,7 @@
 	"growthexperiments-homepage-impact-subheader-text": "Kullanıcılar {{GENDER:$1|düzenlediğiniz}} makaleleri görüntülüyor!",
 	"growthexperiments-homepage-impact-subheader-subtext": "{{GENDER:$1|Düzenlediğinizden}} bu yana görüntülenen görüntüler (son 60 gün):",
 	"growthexperiments-homepage-impact-contributions-link": "<strong>$1</strong> {{PLURAL:$1|düzenleme|düzenleme}} {{GENDER:$2|yaptınız}} (tümünü gör)",
-	"growthexperiments-homepage-impact-subheader-text-no-edit": "Henüz herhangi bir makale oluşturmadınız veya {{GENDER:$1|düzenlemediniz}}.",
+	"growthexperiments-homepage-impact-subheader-text-no-edit": "Henüz herhangi bir madde oluşturmadınız veya {{GENDER:$1|düzenlemediniz}}.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "Bu alan, kişilerin oluşturduğunuz veya {{GENDER:$1|düzenlediğiniz}} makaleleri kaç kez görüntülediğini gösterir.",
 	"growthexperiments-homepage-impact-body-no-edit": "Makalelerde <strong>0</strong> düzenleme",
 	"growthexperiments-homepage-impact-contributions-link-no-edit": "Diğer sayfa türlerine <strong>$1</strong> {{PLURAL:$1|düzenleme|düzenleme}} (tümüne bakın)",
