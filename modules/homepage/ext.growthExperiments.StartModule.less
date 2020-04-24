@@ -59,11 +59,9 @@
 					text-align: center;
 					font-size: 12px;
 					position: absolute;
-					white-space: nowrap;
-					overflow: hidden;
 					width: 50%;
 					background-color: transparent;
-					text-overflow: ellipsis;
+					.text-overflow( @visible: false );
 
 					&:before {
 						// Unicode BULLET character: •
@@ -296,8 +294,7 @@
 
 				&-address {
 					font-weight: bold;
-					overflow: hidden;
-					text-overflow: ellipsis;
+					.text-overflow( @visible: false );
 				}
 			}
 		}

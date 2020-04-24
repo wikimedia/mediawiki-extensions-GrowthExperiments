@@ -178,10 +178,8 @@ body.mw-special-Homepage {
 					max-width: 100%;
 
 					.oo-ui-labelElement-label {
-						text-overflow: ellipsis;
-						white-space: nowrap;
-						overflow: hidden;
 						flex-grow: 2;
+						.text-overflow( @visible: false );
 					}
 				}
 			}
@@ -346,9 +344,7 @@ body.mw-special-Homepage {
 
 						h3.se-card-title {
 							margin: 0;
-							white-space: nowrap;
-							overflow: hidden;
-							text-overflow: ellipsis;
+							.text-overflow( @visible: false );
 						}
 
 						.se-card-extract {
@@ -386,9 +382,7 @@ body.mw-special-Homepage {
 							font-size: 0.875em;
 							padding-top: 10px;
 							color: @colorGray5;
-							text-overflow: ellipsis;
-							overflow: hidden;
-							white-space: nowrap;
+							.text-overflow( @visible: false );
 
 							.oo-ui-iconWidget {
 								margin-right: 5px;
