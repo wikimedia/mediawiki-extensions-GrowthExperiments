@@ -38,10 +38,16 @@ module.exports = function ( grunt ) {
 				},
 				options: {
 					requireCompleteTranslationLanguages: [
+						'ar',
 						'cs',
+						'eu',
+						'fr',
+						'hu',
+						'hy',
 						'ko',
-						'vi',
-						'ar'
+						'sr',
+						'uk',
+						'vi'
 					]
 				}
 			}
