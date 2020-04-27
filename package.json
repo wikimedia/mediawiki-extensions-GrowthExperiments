@@ -17,7 +17,6 @@
 		"grunt": "1.1.0",
 		"grunt-banana-checker": "0.9.0",
 		"grunt-eslint": "22.0.0",
-		"grunt-jsonlint": "2.1.2",
 		"grunt-stylelint": "0.15.0",
 		"jquery": "3.4.1",
 		"jsdom": "14.0.0",
