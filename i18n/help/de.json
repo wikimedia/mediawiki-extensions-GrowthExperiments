@@ -2,17 +2,18 @@
 	"@metadata": {
 		"authors": [
 			"1233qwer1234qwer4",
+			"Ameisenigel",
 			"Metalhead64"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Das Autoren-Hilfepanel aktivieren",
 	"growthexperiments-help-panel-cta-button-text": "Hilfe bei der Bearbeitung erhalten",
 	"growthexperiments-help-panel-question-button-text": "Fortfahren",
-	"growthexperiments-help-panel-submit-question-button-text": "Meine Frage speichern",
+	"growthexperiments-help-panel-submit-question-button-text": "Senden",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Top-Hilfeseiten über das Bearbeiten",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Weitere Hilfeartikel ansehen",
 	"growthexperiments-help-panel-question-widget-header": "Stelle deine Frage im Gemeinschafts-Help-Desk",
-	"growthexperiments-help-panel-question-placeholder": "Ich brauche Hilfe beim Bearbeiten. Wie kann ich …",
+	"growthexperiments-help-panel-question-placeholder": "Sag Hallo und stelle {{GENDER:$1|deine}} Frage.",
 	"growthexperiments-help-panel-back-home": "Zurück",
 	"growthexperiments-help-panel-close": "Fertig",
 	"growthexperiments-help-panel-home-title": "Hilfe bei der Bearbeitung erhalten",
@@ -24,11 +25,20 @@
 	"growthexperiments-help-panel-question-subject-template-with-title": "Hilfepanel-Frage auf [[$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Hilfemodul-Frage von der Benutzer-Startseite",
 	"growthexperiments-help-panel-question-post-error": "Beim Versuch, deine Frage zu speichern, ist ein Fehler aufgetreten. Du kannst es erneut versuchen oder $1 in deinem Browser besuchen und deine Frage manuell hinzufügen.",
+	"growthexperiments-help-panel-suggestededits-title": "Vorgeschlagene Bearbeitungen",
+	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Schnelltipps für den Start",
+	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Bereit?</strong> Klicke \"{{int:vector-view-edit}}\" um anzufangen.",
 	"growthexperiments-help-panel-questioncomplete-title": "Stelle eine Frage",
 	"growthexperiments-help-panel-questioncomplete-header": "Deine Frage wurde gespeichert!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Deine Frage ist jetzt im Gemeinschafts-Help-Desk zur Beantwortung durch einen anderen freiwilligen Autor.",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Deine Frage im Help Desk ansehen",
+	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Du erhältst eine Benachrichtigung hier auf {{SITENAME}}, wenn es eine Antwort gibt.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email": "Du erhältst außerdem eine E-Mail an $1 ($2)",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "ändern",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Wenn {{GENDER:$2|du}} außerdem über E-Mail benachrichtigt werden möchtest, bestätige jetzt deine E-Mail-Adresse: $1",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "deine E-Mail-Adresse bestätigst",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Wenn {{GENDER:$1|du}} außerdem über E-Mail benachrichtigt werden möchtest, gib jetzt eine E-Mail-Adresse an.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "E-Mail-Adresse hinzufügen",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Mehr über diese Funktion",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "Übrigens: Durch das Posten dieser Frage hast du soeben deine erste Bearbeitung auf einer Seite durchgeführt. Gratulation!",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Dieses Werkzeug in den Einstellungen deaktivieren",
@@ -37,5 +47,8 @@
 	"growthexperiments-help-panel-search-label": "Nach Hilfe suchen",
 	"growthexperiments-help-panel-search-no-results": "Es wurden keine Ergebnisse gefunden.",
 	"tag-help_panel_question": "Hilfepanel-Frage",
-	"tag-help_panel_question-description": "Bearbeitung durchgeführt vom Hilfepanel-Beitrag, einer Fragefunktion."
+	"tag-help_panel_question-description": "Bearbeitung durchgeführt vom Hilfepanel-Beitrag, einer Fragefunktion.",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Vorgeschlagene Bearbeitung",
+	"growthexperiments-help-panel-button-subheader-ask-help": "Antworten von anderen Freiwilligen bekommen",
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "Schnelltipps für den Start"
 }

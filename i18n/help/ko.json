@@ -27,6 +27,8 @@
 	"growthexperiments-help-panel-question-post-error": "질문 게시를 시도하던 중 오류가 발생했습니다. 다시 시도하거나 브라우저에서 $1을(를) 방문하여 질문을 수동으로 추가할 수 있습니다.",
 	"growthexperiments-help-panel-suggestededits-title": "편집 제안",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "빠른 시작을 위한 팁",
+	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>준비되었나요?</strong> \"{{int:vector-view-edit}}\"을 눌러 시작하세요.",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>준비되었나요?</strong> 문서의 연필 버튼을 눌러 시작하세요.",
 	"growthexperiments-help-panel-questioncomplete-title": "질문하기",
 	"growthexperiments-help-panel-questioncomplete-header": "질문이 게시되었습니다!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "질문이 질문방에 게시되었으며 다른 편집자가 당신의 질문에 대해 응답하려고 노력할 것입니다.",

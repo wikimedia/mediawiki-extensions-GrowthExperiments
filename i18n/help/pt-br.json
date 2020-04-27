@@ -26,7 +26,7 @@
 	"growthexperiments-help-panel-question-post-error": "Ocorreu um erro ao tentar postar sua pergunta. Você pode tentar novamente ou pode visitar $1 em seu navegador e adicionar sua pergunta manualmente.",
 	"growthexperiments-help-panel-suggestededits-title": "Edições sugeridas",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Dicas de início rápido",
-	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Pronto?</strong> Clique em \"Editar\" para começar.",
+	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Pronto?</strong> Clique em \"{{int:vector-view-edit}}\" para começar.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Pronto?</strong> Toque no lápis de edição no artigo para começar.",
 	"growthexperiments-help-panel-questioncomplete-title": "Faça uma pergunta",
 	"growthexperiments-help-panel-questioncomplete-header": "Sua pergunta foi postada!",

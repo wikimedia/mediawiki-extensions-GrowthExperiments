@@ -28,7 +28,7 @@
 	"growthexperiments-help-panel-question-post-error": "Có lỗi xảy ra khi gửi câu hỏi của bạn. Bạn có thể thử lại hoặc vào trang $1 trong trình duyệt và tự đặt câu hỏi tại đấy.",
 	"growthexperiments-help-panel-suggestededits-title": "Sửa đổi gợi ý",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Mẹo bắt đầu nhanh",
-	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Bạn đã sẵn sàng?</strong> Hãy click \"Sửa đổi\" để bắt đầu.",
+	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Bạn đã sẵn sàng?</strong> Hãy click \"{{int:vector-view-edit}}\" để bắt đầu.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Bạn đã sẵn sàng?</strong> Hãy nhấn vào bút chì sửa đổi trên bài viết để bắt đầu.",
 	"growthexperiments-help-panel-questioncomplete-title": "Đặt câu hỏi",
 	"growthexperiments-help-panel-questioncomplete-header": "Câu hỏi của bạn đã được gửi!",
