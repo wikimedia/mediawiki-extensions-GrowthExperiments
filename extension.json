@@ -51,6 +51,14 @@
 			"services": [ "GrowthExperimentsTaskSuggesterFactory", "GrowthExperimentsConfigurationLoader" ]
 		}
 	},
+	"RestRoutes": [
+		{
+			"path": "/growthexperiments/v0/quickstarttips/{skin}/{editor}/{tasktypeid}/{uselang}",
+			"method": "GET",
+			"class": "GrowthExperiments\\Rest\\Handler\\TipsHandler",
+			"services": [ "GrowthExperimentsTipsBuilder" ]
+		}
+	],
 	"Hooks": {
 		"MobileMenu": [
 			"GrowthExperiments\\HomepageHooks::onMobileMenu"
@@ -621,6 +629,8 @@
 				"help/ext.growthExperiments.HelpPanelProcessDialog.js",
 				"help/ext.growthExperiments.HelpPanelProcessDialog.SuggestedEditsPanel.js",
 				"helppanel/ext.growthExperiments.SuggestedEditsPeek.js",
+				"helppanel/ext.growthExperiments.SuggestedEdits.QuickStartTips.js",
+				"helppanel/ext.growthExperiments.SuggestedEdits.QuickStartTipsTabPanelLayout.js",
 				{
 					"name": "help/data.json",
 					"callback": [ "GrowthExperiments\\HelpPanelHooks", "getModuleData" ]
@@ -639,6 +649,9 @@
 				"oojs-ui.styles.icons-alerts",
 				"oojs-ui.styles.icons-interactions",
 				"oojs-ui.styles.icons-user",
+				"oojs-ui.styles.icons-editing-core",
+				"oojs-ui.styles.icons-editing-citation",
+				"oojs-ui.styles.icons-editing-advanced",
 				"oojs-ui-widgets",
 				"oojs-ui-windows"
 			],

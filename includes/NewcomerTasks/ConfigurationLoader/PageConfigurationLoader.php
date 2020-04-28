@@ -118,6 +118,17 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	}
 
 	/** @inheritDoc */
+	public function getTaskTypes(): array {
+		$taskTypes = $this->loadTaskTypes();
+		if ( $taskTypes instanceof StatusValue ) {
+			return [];
+		}
+		return array_combine( array_map( function ( TaskType $taskType ) {
+			return $taskType->getId();
+		}, $taskTypes ), $taskTypes ) ?: [];
+	}
+
+	/** @inheritDoc */
 	public function loadTopics() {
 		if ( !$this->topicConfigurationPage ) {
 			return [];
