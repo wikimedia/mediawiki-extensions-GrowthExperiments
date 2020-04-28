@@ -31,8 +31,6 @@
 	}
 
 	.oo-ui-window-head {
-		outline: unset;
-
 		.oo-ui-processDialog-title {
 			font-size: 1em;
 			// Vertically center due to changed font-size.
@@ -55,6 +53,11 @@
 
 	.oo-ui-window-head.suggested-edits-panel-window-head {
 		background-color: fade( @suggestedEditsBackgroundColor, 50% );
+		outline: unset;
+	}
+
+	.oo-ui-window-head.root-panel-window-head {
+		outline: unset;
 	}
 
 	.oo-ui-processDialog-navigation {
