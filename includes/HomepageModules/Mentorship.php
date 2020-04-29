@@ -285,6 +285,8 @@ class Mentorship extends BaseModule {
 			$mentor = Mentor::newFromMentee( $this->getContext()->getUser() );
 			if ( $mentor ) {
 				$this->mentor = $mentor->getMentorUser();
+			} else {
+				return false;
 			}
 		}
 		return $this->mentor;
