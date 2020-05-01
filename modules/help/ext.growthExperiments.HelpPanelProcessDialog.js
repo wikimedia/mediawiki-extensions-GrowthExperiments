@@ -130,6 +130,11 @@
 			panel === 'suggested-edits'
 		);
 
+		this.$element.find( '.oo-ui-window-head' ).toggleClass(
+			'root-panel-window-head',
+			panel === 'home'
+		);
+
 		if ( panel === 'suggested-edits' ) {
 			// TODO: If we are in edit mode, the footer should not show up (T244541)
 			this.$foot.append( this.suggestededitsPanel.getFooter() );
