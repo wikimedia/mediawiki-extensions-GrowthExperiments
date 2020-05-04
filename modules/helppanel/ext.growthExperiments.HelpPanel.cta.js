@@ -238,7 +238,7 @@
 		// If viewing an article, log the impression. Editing impressions are
 		// logged via attachHelpButton(), but we don't need to utilize that
 		// function on view.
-		if ( logger.getEditor() === 'reading' ) {
+		if ( logger.getContext() === 'reading' ) {
 			logger.log( 'impression' );
 		}
 	} );

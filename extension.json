@@ -143,8 +143,9 @@
 	"attributes": {
 		"EventLogging": {
 			"Schemas": {
-				"HelpPanel": 20033529,
-				"HomepageModule": 19983482
+				"HelpPanel": 20035454,
+				"HomepageModule": 20032959,
+				"NewcomerTask": 20032514
 			}
 		}
 	},
@@ -399,6 +400,7 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.DifficultyFiltersDialog.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.TopicFiltersDialog.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
+				"homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js",
 				{
 					"name": "homepage/suggestededits/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
@@ -610,6 +612,7 @@
 			"packageFiles": [
 				"help/ext.growthExperiments.Help.js",
 				"help/ext.growthExperiments.HelpPanelLogger.js",
+				"homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js",
 				"utils/ext.growthExperiments.Utils.js",
 				"help/ext.growthExperiments.HelpPanelSearchWidget.js",
 				"help/ext.growthExperiments.HelpPanelHomeButtonWidget.js",
