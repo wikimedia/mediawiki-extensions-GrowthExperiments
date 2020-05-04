@@ -8,10 +8,11 @@
 		Anchor = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Anchor : undefined,
 		configData = Help.configData,
 		suggestedEditsPeek = require( './../helppanel/ext.growthExperiments.SuggestedEditsPeek.js' ),
+		guidanceEnabled = mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ),
 		taskTypeId,
 		mobilePeek;
 
-	if ( mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ) ) {
+	if ( guidanceEnabled ) {
 		require( './../homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.js' );
 	}
 	taskTypeId = mw.config.get( 'wgGrowthExperimentsTaskTypeUrlParam' );
@@ -42,7 +43,7 @@
 				// Make help panel wider for larger screens.
 				size: Math.max( document.documentElement.clientWidth, window.innerWidth || 0 ) > 1366 ? 'medium' : size,
 				logger: logger,
-				guidanceEnabled: mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ),
+				guidanceEnabled: guidanceEnabled,
 				taskTypeId: mw.config.get( 'wgGrowthExperimentsTaskTypeUrlParam' )
 			} ),
 			helpCtaButton,
@@ -193,7 +194,7 @@
 			mobilePeek.show();
 		}
 
-		if ( OO.ui.isMobile() && taskTypeId && taskTypes[ taskTypeId ] ) {
+		if ( guidanceEnabled && OO.ui.isMobile() && taskTypeId && taskTypes[ taskTypeId ] ) {
 			addMobilePeek( taskTypes[ taskTypeId ] );
 		}
 
