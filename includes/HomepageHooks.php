@@ -805,6 +805,7 @@ class HomepageHooks {
 		ResourceLoaderContext $context, Config $config
 	) {
 		return [
+			'GERestbaseUrl' => Util::getRestbaseUrl( $config ),
 			'GEHomepageSuggestedEditsIntroLinks' => $config->get( 'GEHomepageSuggestedEditsIntroLinks' ),
 			'GENewcomerTasksTopicFiltersPref' => SuggestedEdits::getTopicFiltersPref( $config ),
 		];

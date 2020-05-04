@@ -9,11 +9,8 @@
 		FiltersButtonGroupWidget = require( './ext.growthExperiments.Homepage.SuggestedEdits.FiltersWidget.js' ),
 		GrowthTasksApi = require( './ext.growthExperiments.Homepage.GrowthTasksApi.js' ),
 		Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
-		taskTypes = require( './TaskTypes.json' ),
 		aqsConfig = require( './AQSConfig.json' ),
-		initialTaskTypes = [ 'copyedit', 'links' ].filter( function ( taskType ) {
-			return taskType in taskTypes;
-		} );
+		taskTypes = require( './TaskTypes.json' );
 
 	/**
 	 * @class
@@ -195,30 +192,10 @@
 			// TODO: Eventually this will become the skeleton card widget
 			this.currentCard = new NoResultsWidget( { topicMatching: this.config.topicMatching } );
 			return $.Deferred().resolve().promise();
-		}.bind( this ) ).catch( function ( error, details ) {
-			var message;
-			if ( error === 'http' && details && details.textStatus === 'abort' ) {
+		}.bind( this ) ).catch( function ( message ) {
+			if ( message === null ) {
 				// XHR abort, not a real error
 				return;
-			} else if ( error === 'http' ) {
-				// jQuery AJAX error; textStatus is AJAX status, exception is status code text
-				// from server
-				message = ( typeof details.exception === 'string' ) ? details.exception : details.textStatus;
-			} else if ( error === 'ok-but-empty' ) {
-				// maybe a PHP fatal; not much we can do
-				message = error;
-			} else if ( error instanceof Error ) {
-				// JS error in our own code
-				message = error.name + ': ' + error.message;
-			} else {
-				// API error code
-				message = error;
-				// DEBUG T238945
-				if ( !error ) {
-					// log a snippet from the API response. Errors are at the front so
-					// hopefully this will show what's going on.
-					message = JSON.stringify( details ).substr( 0, 1000 );
-				}
 			}
 			this.logger.log( 'suggested-edits', this.mode, 'se-task-pseudo-impression',
 				{ type: 'error', errorMessage: message } );
@@ -367,13 +344,9 @@
 	};
 
 	/**
-	 * Gets data which is not reliably available via the action API (we use a nondeterministic
+	 * Gets extra data which is not reliably available via the action API (we use a nondeterministic
 	 * generator so we cannot do query continuation, plus we reorder the results so performance
-	 * would be unpredictable). Specifically, lead section extracts from the Page Content Service
-	 * summary API and pageviews from the Analytics Query Service.
-	 * The PCS endpoint can be customized via $wgGERestbaseUrl (by default will be assumed to be
-	 * local; setting it to null will disable text extracts), the AQS endpoint via
-	 * $wgPageViewInfoWikimediaDomain (by default will use the Wikimedia instance).
+	 * would be unpredictable) from the PCS and AQS services.
 	 * @param {int} taskQueuePosition
 	 * @return {jQuery.Promise} Promise reflecting the status of the PCS request
 	 *   (AQS errors are ignored). Does not return any value; instead,
@@ -386,97 +359,16 @@
 			return $.Deferred().resolve().promise();
 		}
 
-		pcsPromise = ( 'extract' in suggestedEditData ) ?
-			$.Deferred().resolve( {} ).promise() :
-			this.getExtraDataFromPcs( suggestedEditData.title );
-		aqsPromise = ( 'pageviews' in suggestedEditData ) ?
-			$.Deferred().resolve( {} ).promise() :
-			this.getExtraDataFromAqs( suggestedEditData.title );
-		return $.when( pcsPromise, aqsPromise ).then( function ( pcsData, aqsData ) {
-			// If the data is already loaded, xxxData will be an empty {}, so
-			// we need to be careful never to override real fields with missing ones.
-			if ( pcsData && pcsData.extract ) {
-				suggestedEditData.extract = pcsData.extract;
-			}
-			// Normally we use the thumbnail source from the action API, this is only a fallback.
-			// It is used for some beta wiki configurations and local setups, and also when the
-			// action API data is missing due to query+pageimages having a smaller max limit than
-			// query+growthtasks.
-			if ( !suggestedEditData.thumbnailSource && pcsData && pcsData.thumbnailSource ) {
-				suggestedEditData.thumbnailSource = pcsData.thumbnailSource;
-			}
-			// AQS never returns data with a pageview total of 0, it just errors out if there are no
-			// views. Even if it did, it would probably be better not to show 0 to the user.
-			if ( aqsData && aqsData.pageviews ) {
-				suggestedEditData.pageviews = aqsData.pageviews;
-			}
-			// Update the suggested edit data so we don't need to fetch it again
-			// if the user views the card more than once.
+		pcsPromise = this.api.getExtraDataFromPcs( suggestedEditData );
+		aqsPromise = this.api.getExtraDataFromAqs( suggestedEditData );
+		return $.when( pcsPromise, aqsPromise ).then( function () {
+			// Data is updated in-place so this is probably not necessary, but just in case
+			// something replaced the object, re-replace it for good measure.
 			this.taskQueue[ taskQueuePosition ] = suggestedEditData;
 		}.bind( this ) ).catch( function () {
 			// We don't need to do anything here since the page views and RESTBase
 			// calls are for supplemental data; we just need to catch any exception
 			// so that the card can render with the data we have from ApiQueryGrowthTasks.
-		} );
-	};
-
-	/**
-	 * Get extracts and page images from PCS.
-	 * @param {string} title
-	 * @return {jQuery.Promise<Object>}
-	 * @see ::getExtraDataAndUpdateQueue
-	 */
-	SuggestedEditsModule.prototype.getExtraDataFromPcs = function ( title ) {
-		var encodedTitle,
-			apiUrlBase = mw.config.get( 'wgGERestbaseUrl' );
-
-		if ( !apiUrlBase ) {
-			// Don't fail worse then we have to when RESTBase is not installed.
-			return $.Deferred.resolve( '' ).promise();
-		}
-		encodedTitle = encodeURIComponent( title.replace( / /g, '_' ) );
-		return $.get( apiUrlBase + '/page/summary/' + encodedTitle ).then( function ( data ) {
-			var pcsData = {};
-			pcsData.extract = data.extract;
-			if ( data.thumbnail ) {
-				pcsData.thumbnailSource = data.thumbnail.source;
-			}
-			return pcsData;
-		} );
-	};
-
-	/**
-	 * Get pageview data from AQS.
-	 * @param {string} title
-	 * @return {jQuery.Promise<int|null>}
-	 * @see ::getExtraDataAndUpdateQueue
-	 */
-	SuggestedEditsModule.prototype.getExtraDataFromAqs = function ( title ) {
-		var encodedTitle, pageviewsApiUrl, day, firstPageviewDay, lastPageviewDay;
-
-		encodedTitle = encodeURIComponent( title.replace( / /g, '_' ) );
-		// Get YYYYMMDD timestamps of 2 days ago (typically the last day that has full
-		// data in AQS) and 60+2 days ago, using Javascript's somewhat cumbersome date API
-		day = new Date();
-		day.setDate( day.getDate() - 2 );
-		lastPageviewDay = day.toISOString().replace( /-/g, '' ).split( 'T' )[ 0 ];
-		day.setDate( day.getDate() - 60 );
-		firstPageviewDay = day.toISOString().replace( /-/g, '' ).split( 'T' )[ 0 ];
-		pageviewsApiUrl = 'https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/' +
-			aqsConfig.project + '/all-access/user/' + encodedTitle + '/daily/' +
-			firstPageviewDay + '/' + lastPageviewDay;
-
-		return $.get( pageviewsApiUrl ).then( function ( data ) {
-			var pageviews = 0;
-			( data.items || [] ).forEach( function ( item ) {
-				pageviews += item.views;
-			} );
-			return pageviews ? { pageviews: pageviews } : {};
-		}, function () {
-			// AQS returns a 404 when the page has 0 view. Even for real errors, it's
-			// not worth replacing the task card with an error message just because we
-			// could not put a pageview count on it.
-			return {};
 		} );
 	};
 
@@ -543,23 +435,24 @@
 	 */
 	function initSuggestedTasks( $container ) {
 		var suggestedEditsModule,
-			config = require( './config.json' ),
-			savedTaskTypeFilters = mw.user.options.get( 'growthexperiments-homepage-se-filters' ),
-			savedTopicFilters = mw.user.options.get( config.GENewcomerTasksTopicFiltersPref ),
-			taskTypes = savedTaskTypeFilters ?
-				JSON.parse( savedTaskTypeFilters ) :
-				initialTaskTypes,
-			topicFilters = savedTopicFilters ? JSON.parse( savedTopicFilters ) : '',
+			api = new GrowthTasksApi( {
+				taskTypes: taskTypes,
+				suggestedEditsConfig: require( './config.json' ),
+				aqsConfig: aqsConfig
+			} ),
+			preferences = api.getPreferences(),
 			$wrapper = $container.find( '.suggested-edits-module-wrapper' ),
 			mode = $wrapper.closest( '.growthexperiments-homepage-module' ).data( 'mode' );
+
 		if ( !$wrapper.length ) {
 			return;
 		}
+
 		suggestedEditsModule = new SuggestedEditsModule(
 			{
 				$element: $wrapper,
-				taskTypePresets: taskTypes,
-				topicPresets: topicFilters,
+				taskTypePresets: preferences.taskTypes,
+				topicPresets: preferences.topics,
 				topicMatching: mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' ),
 				mode: mode
 			},
@@ -567,7 +460,7 @@
 				mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 				mw.config.get( 'wgGEHomepagePageviewToken' )
 			),
-			new GrowthTasksApi() );
+			api );
 		return suggestedEditsModule.fetchTasksAndUpdateView()
 			.then( function () {
 				suggestedEditsModule.filters.toggle( true );
