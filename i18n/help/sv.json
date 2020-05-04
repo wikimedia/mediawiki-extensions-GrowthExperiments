@@ -22,6 +22,7 @@
 	"growthexperiments-help-panel-questionreview-label": "Din fråga",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Inkludera sidtiteln med min fråga",
 	"growthexperiments-help-panel-question-post-error": "Ett fel uppstod när din fråga skulle skickas. Du kan försöka igen eller besöka $1 i din webbläsare och lägga till din fråga manuellt.",
+	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Redo?</strong> Klicka på \"{{int:vector-view-edit}}\" för att komma igång.",
 	"growthexperiments-help-panel-questioncomplete-title": "Ställ en fråga",
 	"growthexperiments-help-panel-questioncomplete-header": "Din fråga har lagts upp!",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Visa din fråga på helpdesk",
