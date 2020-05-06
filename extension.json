@@ -163,9 +163,9 @@
 				}
 			}
 		},
-		"ext.growthExperiments.ClickId": {
+		"ext.growthExperiments.SuggestedEditSession": {
 			"packageFiles": [
-				"homepage/suggestededits/ext.growthExperiments.ClickId.js",
+				"homepage/suggestededits/ext.growthExperiments.SuggestedEditSession.js",
 				"utils/ext.growthExperiments.Utils.js"
 			],
 			"targets": [
@@ -173,6 +173,7 @@
 				"mobile"
 			],
 			"dependencies": [
+				"mediawiki.Title",
 				"mediawiki.Uri",
 				"mediawiki.util"
 			]
@@ -718,6 +719,7 @@
 				"ext.growthExperiments.Help",
 				"ext.growthExperiments.HelpPanel.icons",
 				"ext.growthExperiments.HelpPanelCta.styles",
+				"ext.growthExperiments.SuggestedEditSession",
 				"mediawiki.pulsatingdot"
 			],
 			"messages": [
