@@ -39,7 +39,13 @@
 			windowManager = new OO.ui.WindowManager( { modal: OO.ui.isMobile() } ),
 			$overlay = $( '<div>' ).addClass( 'mw-ge-help-panel-widget-overlay' ),
 			logger = new HelpPanelLogger( configData.GEHelpPanelLoggingEnabled, {
-				sessionId: mw.config.get( 'wgGEHomepagePageviewToken' )
+				// If the user is following a link in a suggested edit task card (which has a click ID,
+				// which causes wgGEHomepagePageviewToken to be set on the server side), inherit
+				// the session ID of the source page. Otherwise, preserve the suggested edit session's
+				// ID, if we are in one.
+				sessionId: mw.config.get( 'wgGEHomepagePageviewToken' ) ||
+					suggestedEditSession.active && suggestedEditSession.clickId,
+				isSuggestedTask: suggestedEditSession.active
 			} ),
 			size = OO.ui.isMobile() ? 'full' : 'small',
 			/**

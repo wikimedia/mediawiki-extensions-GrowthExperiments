@@ -10,12 +10,16 @@
 	 * @param {Object|null} config.nextTask Data for the next suggested edit, as returned by
 	 *   GrowthTasksApi, or null if there are no available tasks or fetching tasks failed.
 	 * @param {Object} config.taskTypes Task type data, as returned by
-	 *    HomepageHooks::getTaskTypesJson.
+	 *   HomepageHooks::getTaskTypesJson.
+	 * @param {mw.libs.ge.NewcomerTaskLogger} config.newcomerTaskLogger
+	 * @param {mw.libs.ge.HelpPanelLogger} config.helpPanelLogger
 	 */
 	function PostEditPanel( config ) {
 		OO.EventEmitter.call( this );
 		this.nextTask = config.nextTask;
 		this.taskTypes = config.taskTypes;
+		this.newcomerTaskLogger = config.newcomerTaskLogger;
+		this.helpPanelLogger = config.helpPanelLogger;
 	}
 	OO.initClass( PostEditPanel );
 	OO.mixinClass( PostEditPanel, OO.EventEmitter );
@@ -42,11 +46,13 @@
 
 		title = new mw.Title( 'Special:Homepage' );
 		footer = new OO.ui.ButtonWidget( {
-			href: title.getUrl() + ( OO.ui.isMobile() ? '#/homepage/suggested-edits' : '' ),
+			href: title.getUrl( { source: 'postedit-panel' } ) +
+				( OO.ui.isMobile() ? '#/homepage/suggested-edits' : '' ),
 			label: mw.message( 'growthexperiments-help-panel-postedit-footer' ).text(),
 			framed: false,
 			classes: [ 'mw-ge-help-panel-postedit-footer' ]
 		} );
+		footer.$element.on( 'click', this.logLinkClick.bind( this, 'homepage' ) );
 
 		footer2 = new OO.ui.ButtonWidget( {
 			href: '#',
@@ -55,6 +61,7 @@
 			classes: [ 'mw-ge-help-panel-postedit-footer' ]
 		} );
 		footer2.$element.on( 'click', function () {
+			self.logLinkClick( 'edit' );
 			// When the user clicks the edit link, close the panel. (Actually opening
 			// the editor would not be a great user experience as we can't predict whether
 			// the user wants to edit a section or the whole article.) Since it could be a
@@ -139,9 +146,79 @@
 			.append( $title, $description, $pageviews, $taskType );
 		$card = $( '<a>' )
 			.addClass( 'mw-ge-help-panel-postedit-card' )
-			.attr( 'href', title.getUrl() )
+			.attr( 'href', title.getUrl( {
+				geclickid: this.helpPanelLogger.helpPanelSessionId,
+				getasktype: this.nextTask.tasktype
+			} ) )
+			.on( 'click', this.logTaskClick.bind( this ) )
 			.append( $image, $cardTextContainer );
 		return $card;
+	};
+
+	/**
+	 * Log that the panel was displayed to the user.
+	 * Needs to be called by the code displaying the panel.
+	 * @param {Object} extraData
+	 * @param {string} extraData.savedTaskType Type of the task for which the edit was just saved.
+	 * @param {string} [extraData.errorMessage] Error message, only if there was a task loading error.
+	 * @param {Array<string>} [extraData.userTaskTypes] User's task type filter settings,
+	 *   only if the impression involved showing a task
+	 * @param {Array<string>} [extraData.userTopics] User's topic filter settings,
+	 *   only if the impression involved showing a task
+	 */
+	PostEditPanel.prototype.logImpression = function ( extraData ) {
+		var joinToken, data;
+
+		if ( this.nextTask ) {
+			joinToken = this.newcomerTaskLogger.log( 'postedit-impression', this.nextTask );
+			data = {
+				type: 'full',
+				savedTaskType: extraData.savedTaskType,
+				userTaskTypes: extraData.userTaskTypes,
+				newcomerTaskToken: joinToken
+			};
+			if ( extraData.userTopics.length ) {
+				data.userTopics = extraData.userTopics;
+			}
+			this.helpPanelLogger.log( 'postedit-impression', data );
+		} else if ( extraData.errorMessage ) {
+			this.helpPanelLogger.log( 'postedit-impression', {
+				type: 'error',
+				savedTaskType: extraData.savedTaskType,
+				error: extraData.errorMessage
+			} );
+		} else {
+			this.helpPanelLogger.log( 'postedit-impression', {
+				type: 'small',
+				savedTaskType: extraData.savedTaskType
+			} );
+		}
+	};
+
+	/**
+	 * Log that the panel was closed.
+	 * Needs to be set up by the (device-dependent) wrapper code that handles displaying the panel.
+	 */
+	PostEditPanel.prototype.logClose = function () {
+		this.helpPanelLogger.log( 'postedit-close', '' );
+	};
+
+	/**
+	 * Log that one of the footer buttons was clicked.
+	 * This is handled automatically by the class.
+	 * @param {string} linkName Symbolic link name ('homepage' or 'edit').
+	 */
+	PostEditPanel.prototype.logLinkClick = function ( linkName ) {
+		this.helpPanelLogger.log( 'postedit-link-click', linkName );
+	};
+
+	/**
+	 * Log that the task card was clicked.
+	 * This is handled automatically by the class.
+	 */
+	PostEditPanel.prototype.logTaskClick = function () {
+		var joinToken = this.newcomerTaskLogger.log( 'postedit-task-click', this.nextTask );
+		this.helpPanelLogger.log( 'postedit-task-click', { newcomerTaskToken: joinToken } );
 	};
 
 	module.exports = PostEditPanel;
