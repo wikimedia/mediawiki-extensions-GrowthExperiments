@@ -1,5 +1,6 @@
 ( function () {
 	var Help = require( 'ext.growthExperiments.Help' ),
+		Utils = require( '../utils/ext.growthExperiments.Utils.js' ),
 		taskTypes = require( './TaskTypes.json' ),
 		HelpPanelLogger = Help.HelpPanelLogger,
 		HelpPanelProcessDialog = Help.HelpPanelProcessDialog,
@@ -39,6 +40,7 @@
 			windowManager = new OO.ui.WindowManager( { modal: OO.ui.isMobile() } ),
 			$overlay = $( '<div>' ).addClass( 'mw-ge-help-panel-widget-overlay' ),
 			logger = new HelpPanelLogger( configData.GEHelpPanelLoggingEnabled, {
+				editorInterface: suggestedEditSession.editorInterface,
 				// If the user is following a link in a suggested edit task card (which has a click ID,
 				// which causes wgGEHomepagePageviewToken to be set on the server side), inherit
 				// the session ID of the source page. Otherwise, preserve the suggested edit session's
@@ -72,7 +74,7 @@
 		 */
 		function attachHelpButton( editor ) {
 			var metadataOverride = {};
-			if ( logger.isValidEditor( editor ) ) {
+			if ( Utils.isValidEditor( editor ) ) {
 				/* eslint-disable-next-line camelcase */
 				metadataOverride.editor_interface = editor;
 			}

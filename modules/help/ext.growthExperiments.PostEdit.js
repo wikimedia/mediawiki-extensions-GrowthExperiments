@@ -21,6 +21,7 @@
 		newcomerTaskLogger = new NewcomerTaskLogger(),
 		helpPanelLogger = new HelpPanelLogger( helpConfig.GEHelpPanelLoggingEnabled, {
 			context: 'postedit',
+			editorInterface: suggestedEditSession.editorInterface,
 			sessionId: suggestedEditSession.clickId,
 			isSuggestedTask: suggestedEditSession.active
 		} );

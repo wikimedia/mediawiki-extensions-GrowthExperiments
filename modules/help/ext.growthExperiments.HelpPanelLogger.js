@@ -82,15 +82,6 @@
 		/* eslint-enable camelcase */
 	};
 
-	HelpPanelLogger.prototype.isValidEditor = function ( editor ) {
-		return [
-			'wikitext',
-			'wikitext-2017',
-			'visualeditor',
-			'other'
-		].indexOf( editor ) >= 0;
-	};
-
 	/**
 	 * Check whether the user is editing right now.
 	 * @internal

@@ -53,9 +53,24 @@
 		}
 	}
 
+	/**
+	 * Checks whether an editor name is accepted by the EventLogging schemas used by the extension.
+	 * @param {string} editor
+	 * @return {boolean}
+	 */
+	function isValidEditor( editor ) {
+		return [
+			'wikitext',
+			'wikitext-2017',
+			'visualeditor',
+			'other'
+		].indexOf( editor ) >= 0;
+	}
+
 	module.exports = {
 		serializeActionData: serializeActionData,
-		removeQueryParam: removeQueryParam
+		removeQueryParam: removeQueryParam,
+		isValidEditor: isValidEditor
 	};
 
 }() );

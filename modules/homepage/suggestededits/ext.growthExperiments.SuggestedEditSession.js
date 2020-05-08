@@ -58,7 +58,8 @@
 		}
 
 		if ( this.active ) {
-			this.updateLinks();
+			this.updateEditorInterface();
+			this.updateEditingStatsConfig();
 			this.maybeShowPostEditDialog();
 		}
 	};
@@ -154,13 +155,45 @@
 		return this.active;
 	};
 
+	SuggestedEditSession.prototype.updateEditorInterface = function () {
+		var self = this,
+			saveEditorChanges = function ( suggestedEditSession, editorInterface ) {
+				if ( suggestedEditSession.active &&
+					suggestedEditSession.editorInterface !== editorInterface &&
+					Utils.isValidEditor( editorInterface )
+				) {
+					suggestedEditSession.editorInterface = editorInterface;
+					suggestedEditSession.save();
+				}
+			};
+
+		mw.trackSubscribe( 'event.EditAttemptStep', function ( _, data ) {
+			saveEditorChanges( self, data.editor_interface );
+		} );
+		// MobileFrontend has its own schema wrapper
+		mw.trackSubscribe( 'mf.schemaEditAttemptStep', function ( _, data ) {
+			saveEditorChanges( self, data.editor_interface );
+		} );
+		// WikiEditor doesn't use mw.track. But it doesn't load dynamically either so
+		// we can check it at page load time.
+		$( function () {
+			var uri = new mw.Uri();
+
+			// eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle
+			if ( uri.query.action === 'edit' && $( '#wpTextbox1:visible' ).length ) {
+				saveEditorChanges( self, 'wikitext' );
+			}
+		} );
+	};
+
 	/**
 	 * Change the URL of edit links to propagate the editing session ID to certain log records.
 	 */
-	SuggestedEditSession.prototype.updateLinks = function () {
+	SuggestedEditSession.prototype.updateEditingStatsConfig = function () {
 		var self = this,
 			veState = mw.loader.getState( 'ext.visualEditor.desktopArticleTarget.init' );
 
+		mw.config.set( 'wgWMESchemaEditAttemptStepSamplingRate', 1 );
 		$( function () {
 			// eslint-disable-next-line no-jquery/no-global-selector
 			$( '#ca-edit a, a#ca-edit, #ca-ve-edit a, a#ca-ve-edit, .mw-editsection a' ).each( function () {
@@ -201,7 +234,7 @@
 		if ( config.resetSession ) {
 			self.clickId = mw.user.generateRandomSessionId();
 			// Need to update the click ID in edit links as well.
-			self.updateLinks();
+			self.updateEditingStatsConfig();
 		}
 		// The mobile editor and in some configurations the visual editor immediately reloads
 		// after saving and firing the post-edit event, so displaying the dialog would fail.
