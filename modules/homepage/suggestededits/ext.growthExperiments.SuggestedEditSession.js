@@ -58,6 +58,7 @@
 		}
 
 		if ( this.active ) {
+			this.suppressNotices();
 			this.updateEditorInterface();
 			this.updateEditingStatsConfig();
 			this.maybeShowPostEditDialog();
@@ -155,6 +156,23 @@
 		return this.active;
 	};
 
+	SuggestedEditSession.prototype.suppressNotices = function () {
+		var veState = mw.loader.getState( 'ext.visualEditor.desktopArticleTarget.init' );
+
+		// Prevent the default post-edit notice. This would logically belong to the
+		// PostEdit module, but that would load too late.
+		mw.config.set( 'wgPostEditConfirmationDisabled', true );
+		// Suppress the VisualEditor welcome dialog and education popups
+		// Do this only if VE's init module was already going to be loaded; we don't want to trigger
+		// it if it wasn't going to be loaded otherwise
+		if ( veState === 'loading' || veState === 'loaded' || veState === 'ready' ) {
+			mw.loader.using( 'ext.visualEditor.desktopArticleTarget.init' ).done( function () {
+				mw.libs.ve.disableWelcomeDialog();
+				mw.libs.ve.disableEducationPopups();
+			} );
+		}
+	};
+
 	SuggestedEditSession.prototype.updateEditorInterface = function () {
 		var self = this,
 			saveEditorChanges = function ( suggestedEditSession, editorInterface ) {
@@ -190,8 +208,7 @@
 	 * Change the URL of edit links to propagate the editing session ID to certain log records.
 	 */
 	SuggestedEditSession.prototype.updateEditingStatsConfig = function () {
-		var self = this,
-			veState = mw.loader.getState( 'ext.visualEditor.desktopArticleTarget.init' );
+		var self = this;
 
 		mw.config.set( 'wgWMESchemaEditAttemptStepSamplingRate', 1 );
 		$( function () {
@@ -205,16 +222,6 @@
 				$( this ).attr( 'href', linkUrl.toString() );
 			} );
 		} );
-
-		// Suppress the VisualEditor welcome dialog and education popups
-		// Do this only if VE's init module was already going to be loaded; we don't want to trigger
-		// it if it wasn't going to be loaded otherwise
-		if ( veState === 'loading' || veState === 'loaded' || veState === 'ready' ) {
-			mw.loader.using( 'ext.visualEditor.desktopArticleTarget.init' ).done( function () {
-				mw.libs.ve.disableWelcomeDialog();
-				mw.libs.ve.disableEducationPopups();
-			} );
-		}
 	};
 
 	/**

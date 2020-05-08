@@ -105,6 +105,7 @@
 			} );
 			lifecycle.closing.done( function () {
 				postEditPanel.logClose();
+				mw.hook( 'postEdit.afterRemoval' ).fire();
 			} );
 			openPromise = lifecycle.opened;
 		}
