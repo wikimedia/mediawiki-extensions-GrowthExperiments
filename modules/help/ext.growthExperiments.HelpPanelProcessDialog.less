@@ -39,21 +39,88 @@
 		}
 	}
 
-	.oo-ui-window-foot {
-		// Override .oo-ui-unselectable()
-		-webkit-touch-callout: default;
-		-webkit-user-select: auto;
-		-moz-user-select: auto;
-		-ms-user-select: auto;
-		user-select: auto;
-		// Unset the outline (currently footer is only used on the suggested
-		// edits panel).
-		outline: unset;
+	.oo-ui-window-body {
+		// Prevent a horizontal scrollbar from appearing when the home panel is active
+		// (and the StackLayout with the other panels is positioned next to it)
+		overflow-x: hidden;
+
+		footer {
+			position: absolute;
+			bottom: 0;
+		}
 	}
 
-	.oo-ui-window-head.suggested-edits-panel-window-head {
-		background-color: fade( @suggestedEditsBackgroundColor, 50% );
-		outline: unset;
+	// If the home panel is active, position it in the normal place in the dialog, and position
+	// the subpanels outside the dialog to the right; if a subpanel is active, position the subpanels
+	// in the normal place and the home panel outside the dialog to the left. This creates a
+	// transition where the panels slide left/right when navigating (T247999).
+	&-homepanel {
+		left: -100%;
+		right: 100%;
+
+		.mw-ge-help-panel-processdialog-activepanel-home & {
+			left: 0;
+			right: auto;
+		}
+	}
+
+	&-subpanels {
+		left: 0;
+		width: 100%;
+
+		.mw-ge-help-panel-processdialog-activepanel-home & {
+			left: 100%;
+		}
+	}
+
+	// Also animate the header background when navigating to/from the suggested-edits panel
+	// Do this by creating a background that's as wide as the header but is positioned off-screen,
+	// then slides in (and back out) when needed. Because background positioning math is super weird,
+	// this requires using two backgrounds that each cover half the width, and doubling all the
+	// x position values.
+	@headBgColor: fade( @suggestedEditsBackgroundColor, 50% );
+
+	.oo-ui-window-head {
+		body.ltr & {
+			// stylelint-disable-next-line value-list-comma-newline-after
+			background: linear-gradient( @headBgColor, @headBgColor ) 200% ~'/' 50% no-repeat,
+				linear-gradient( @headBgColor, @headBgColor ) 300% ~'/' 50% no-repeat;
+		}
+
+		body.rtl & {
+			// stylelint-disable-next-line value-list-comma-newline-after
+			background: linear-gradient( @headBgColor, @headBgColor ) -200% ~'/' 50% no-repeat,
+				linear-gradient( @headBgColor, @headBgColor ) -100% ~'/' 50% no-repeat;
+		}
+	}
+
+	&-activepanel-suggested-edits {
+		// stylelint-disable-next-line no-descending-specificity
+		.oo-ui-window-head {
+			outline: unset;
+
+			// This rule is the same in LTR and RTL, but we need the extra selectors for specificity
+			body.ltr &,
+			body.rtl & {
+				// stylelint-disable-next-line value-list-comma-newline-after
+				background: linear-gradient( @headBgColor, @headBgColor ) 0 ~'/' 50% no-repeat,
+					linear-gradient( @headBgColor, @headBgColor ) 100% ~'/' 50% no-repeat;
+			}
+		}
+	}
+
+	// Set transitions only when the dialog is ready. This prevents transitions from happening
+	// while the dialog is opening.
+	@panelTransitionDuration: 500ms;
+
+	&.oo-ui-window-content-ready &-homepanel,
+	&.oo-ui-window-content-ready &-subpanels {
+		transition: left @panelTransitionDuration;
+	}
+
+	// stylelint-disable-next-line no-descending-specificity
+	&.oo-ui-window-content-ready .oo-ui-window-head {
+		transition: background @panelTransitionDuration;
 	}
 
 	.oo-ui-processDialog-navigation {
