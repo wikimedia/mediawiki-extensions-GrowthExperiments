@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"A2093064",
-			"Kly"
+			"Kly",
+			"Xiplus"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "啟用編輯者協助面板",
@@ -11,7 +12,7 @@
 	"growthexperiments-help-panel-submit-question-button-text": "發佈",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "有關編輯的熱門求助頁面",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "檢視更多求助條目",
-	"growthexperiments-help-panel-question-widget-header": "發佈您的問題至社群互助客棧/求助",
+	"growthexperiments-help-panel-question-widget-header": "發布您的問題至社群幫助頁",
 	"growthexperiments-help-panel-question-placeholder": "打聲招呼並詢問{{GENDER:$1|您的}}問題",
 	"growthexperiments-help-panel-back-home": "返回",
 	"growthexperiments-help-panel-close": "完成",
@@ -23,7 +24,7 @@
 	"growthexperiments-help-panel-question-subject-template": "協助面板問題",
 	"growthexperiments-help-panel-question-subject-template-with-title": "在[[$1]]的協助面板問題",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "來自使用者首頁的協助模組問題",
-	"growthexperiments-help-panel-question-post-error": "當嘗試發佈您的問題時發生錯誤。您可以重試，或是在您的瀏覽器訪問$1來手動添加您的問題。",
+	"growthexperiments-help-panel-question-post-error": "當嘗試發布您的問題時發生錯誤。您可以重試，或是在您的瀏覽器訪問$1來手動添加您的問題。",
 	"growthexperiments-help-panel-suggestededits-title": "建議編輯",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "快速入門提示",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>準備好了？</strong>請點擊「{{int:vector-view-edit}}」來開始。",
