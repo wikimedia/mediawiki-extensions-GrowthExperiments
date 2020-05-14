@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Physicsch",
+			"Reza1615"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|خوش آمدید}}، $1",
+	"welcomesurvey-save-confirmation-title": "تشکر! پاسخ شما ذخیره شده‌است.",
+	"welcomesurvey-save-btn": "پایان",
+	"welcomesurvey-sidebar-privacy-title": "به محرمانگی شما اهمیت می‌دهیم",
+	"welcomesurvey-sidebar-privacy-text": "",
+	"welcomesurvey-privacy-policy-link-text": "اعلامیهٔ حریم خصوصی",
+	"welcomesurvey-sidebar-editing-link1-text": "آموزش",
+	"welcomesurvey-sidebar-editing-link1-title": "ویکی‌پدیا:آموزش",
+	"welcomesurvey-sidebar-editing-link2-text": "میز کمک",
+	"welcomesurvey-dropdown-option-select-label": "لطفاً انتخاب کنید",
+	"welcomesurvey-question-reason-option-new-page-label": "برای ایجاد یک مقاله جدید در ویکی‌پدیا",
+	"welcomesurvey-question-reason-option-read-label": "برای مطالعهٔ ویکی‌پدیا",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "سایر",
+	"welcomesurvey-question-edited-label": "آیا تاکنون ویکی‌پدیا را ویرایش کرده‌اید؟",
+	"welcomesurvey-question-edited-option-yes-many-label": "بله، به دفعات زیاد",
+	"welcomesurvey-question-edited-option-yes-few-label": "بله، یک یا دوبار",
+	"welcomesurvey-question-edited-option-no-dunno-label": "نه، نمی‌دانستم که می‌توانم ویکی‌پدیا را ویرایش کنم",
+	"welcomesurvey-question-edited-option-no-other-label": "نه، به دلایل دیگر",
+	"welcomesurvey-question-edited-option-dont-remember-label": "به خاطر ندارم",
+	"welcomesurvey-question-email-label": "نشانی ایمیل (اختیاری)",
+	"welcomesurvey-question-email-placeholder": "نشانی ایمیل خود را وارد کنید..."
+}

@@ -2,9 +2,38 @@
 	"@metadata": {
 		"authors": [
 			"FarsiNevis",
+			"Reza1615",
 			"Vahedi"
 		]
 	},
+	"growthexperiments-help-panel-question-button-text": "ادامه",
+	"growthexperiments-help-panel-submit-question-button-text": "ارسال",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "کمک به صفحات در مورد ویرایش",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "بیسشتر دیدن مقالات کمک",
+	"growthexperiments-help-panel-question-widget-header": "اراسال سوال‌های شما به میز کمک",
+	"growthexperiments-help-panel-back-home": "بازگشت",
+	"growthexperiments-help-panel-close": "انجام شد",
+	"growthexperiments-help-panel-home-title": "گرفتن کمک برای ویرایش",
+	"growthexperiments-help-panel-questionreview-title": "پرسشی بپرسید",
+	"growthexperiments-help-panel-questionreview-header": "",
+	"growthexperiments-help-panel-questionreview-label": "سوال شما",
+	"growthexperiments-help-panel-questionreview-include-article-title": "شامل عنوان صفحه با سوال من",
+	"growthexperiments-help-panel-question-subject-template": "پانل کمک سوال",
 	"growthexperiments-help-panel-suggestededits-title": "ویرایش‌های پیشنهادی",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "تایید دوباره ایمیل"
+	"growthexperiments-help-panel-questioncomplete-title": "پرسشی بپرسید",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "تغییر",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "اگر {{GENDER:$2|شما}} دوست دارید که توسط ایمیل آگاه‌سازی شوید، الان آدرس ایمیلتان را تائید کنید: $1",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "تایید ایمیل",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "افزودن ایمیل",
+	"growthexperiments-help-panel-questionposter-invalid-title": "عنوان نامعتبر.",
+	"growthexperiments-help-panel-search-label": "جستجو برای راهنمایی",
+	"growthexperiments-help-panel-search-no-results": "نتیجه‌ای یافت نشد",
+	"tag-help_panel_question": "پانل کمک سوال",
+	"tag-help_panel_question-description": "ویرایش توسط پانل کمک سوال ارسال شد",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "ویرایش‌های پیشنهادی",
+	"growthexperiments-help-panel-button-header-ask-help": "پرسش از میز کمک",
+	"growthexperiments-help-panel-button-header-general-help": "کمک برای ویرایش عمومی",
+	"growthexperiments-help-panel-button-subheader-general-help": "جستجو برای سوال و خواندن برترین مقالات",
+	"growthexperiments-help-panel-button-subheader-ask-help": "گرفتن پاسخ از دیگر داوطلبان",
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "نکات شروع سریع"
 }
