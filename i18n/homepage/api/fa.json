@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Jeeputer",
 			"Reza1615"
 		]
 	},
+	"growthexperiments-homepage-questionstore-noquestionsfound": "پرسشی پیدا نشد.",
 	"apihelp-growthsetmentor-param-mentee": "نام کاربری کارآموز",
 	"apihelp-growthsetmentor-param-mentor": "نام کاربری مربی",
 	"apihelp-growthsetmentor-param-reason": "دلیل تغییر"

@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"AzorAhai",
+			"Jeeputer"
+		]
+	},
+	"growthexperiments-confirmemail-emailhelp": "ایمیل برای بازیابی حساب کاربری شما در صورت فراموشی رمز عبور ضروری است.",
+	"growthexperiments-confirmemail-emailrecommended": "نشانی ایمیل (توصیه‌شده)",
+	"growthexperiments-confirmemail-emailwarning": "لطفاً برای بازبینی نشانی خود، ایمیلی که از سوی ما برای شما ارسال شده را بیابید.",
+	"growthexperiments-confirmemail-confirm-subject": "به {{SITENAME}} خوش آمدید: لطفاً آدرس ایمیل خود را تأیید کنید",
+	"growthexperiments-confirmemail-confirm-button": "تأیید نشانی ایمیل"
+}

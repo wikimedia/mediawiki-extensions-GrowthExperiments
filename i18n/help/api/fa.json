@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Mardetanha",
 			"Reza1615"
 		]
 	},
-	"apihelp-helppanelquestionposter-summary": "مدیریت ارسال سوال‌های میز کمک برای کاربر کنونی."
+	"apihelp-helppanelquestionposter-summary": "مدیریت ارسال سوال‌های میز کمک برای کاربر کنونی.",
+	"apihelp-helppanelquestionposter-param-body": "متن پرسش که توسط کاربر ارایه شده‌است."
 }

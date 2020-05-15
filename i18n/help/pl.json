@@ -5,17 +5,18 @@
 			"CiaPan",
 			"FunPL",
 			"Rail",
+			"Tar Lócesilion",
 			"Woytecr"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Włącz panel pomocy podczas edycji",
 	"growthexperiments-help-panel-cta-button-text": "Uzyskaj pomoc w edycji",
 	"growthexperiments-help-panel-question-button-text": "Kontynuuj",
-	"growthexperiments-help-panel-submit-question-button-text": "Opublikuj moje pytanie",
+	"growthexperiments-help-panel-submit-question-button-text": "Opublikuj",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Najważniejsze strony pomocy o edytowaniu",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Zobacz więcej stron pomocy",
 	"growthexperiments-help-panel-question-widget-header": "Zadaj pytanie na forum pomocy",
-	"growthexperiments-help-panel-question-placeholder": "Potrzebuję pomocy przy edycji. Jak mogę...",
+	"growthexperiments-help-panel-question-placeholder": "Przywitaj się i zadaj pytanie.",
 	"growthexperiments-help-panel-back-home": "Wstecz",
 	"growthexperiments-help-panel-close": "Gotowe",
 	"growthexperiments-help-panel-home-title": "Pomoc w edytowaniu",
@@ -26,6 +27,10 @@
 	"growthexperiments-help-panel-question-subject-template": "Pytanie wysłane z panelu pomocy",
 	"growthexperiments-help-panel-question-subject-template-with-title": "Pytanie wysłane z panelu pomocy o [[$1]]",
 	"growthexperiments-help-panel-question-post-error": "Wystąpił błąd podczas próby opublikowania Twojego pytania. Możesz spróbować ponownie lub przejść w przeglądarce do $1 i tam dodać pytanie ręcznie.",
+	"growthexperiments-help-panel-suggestededits-title": "Sugerowane edycje",
+	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Porady na szybki start",
+	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Gotow{{GENDER:|y|a}}?</strong> Żeby zacząć, kliknij „{{int:vector-view-edit}}”.",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Gotow{{GENDER:|y|a}}?</strong> Kliknij na ikonę ołówka, aby rozpocząć.",
 	"growthexperiments-help-panel-questioncomplete-title": "Zadaj pytanie",
 	"growthexperiments-help-panel-questioncomplete-header": "Twoje zapytanie zostało wysłane!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Twoje zapytanie znajduje się już na forum pomocy i oczekuje na odpowiedź przez innego wolontariusza.",
@@ -43,6 +48,9 @@
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Wyłącz to narzędzie w preferencjach",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Nieprawidłowy tytuł.",
 	"growthexperiments-help-panel-search-label": "Przeszukaj pomoc",
+	"growthexperiments-help-panel-search-no-results": "Nie znaleziono żadnych wyników.",
 	"tag-help_panel_question": "Pytanie z panelu pomocy",
-	"tag-help_panel_question-description": "Edycja wykonana z funkcji wysyłania zapytania w oknie pomocy edycyjnej"
+	"tag-help_panel_question-description": "Edycja wykonana z funkcji wysyłania zapytania w oknie pomocy edycyjnej",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Sugerowane edycje",
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "Porady na szybki start"
 }
