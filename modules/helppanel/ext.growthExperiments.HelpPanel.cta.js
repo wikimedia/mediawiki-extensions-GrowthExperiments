@@ -13,8 +13,7 @@
 		guidanceEnabled = mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ),
 		pageMode = 'read',
 		guidanceAvailable,
-		taskTypeId,
-		mobilePeek;
+		taskTypeId, taskTypeLogData;
 
 	if ( guidanceEnabled && suggestedEditSession.active &&
 		!suggestedEditSession.postEditDialogNeedsToBeShown
@@ -22,6 +21,7 @@
 		require( './../homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.js' );
 	}
 	taskTypeId = suggestedEditSession.taskType;
+	taskTypeLogData = taskTypeId ? { taskType: taskTypeId } : null;
 	guidanceAvailable = guidanceEnabled && taskTypeId && taskTypes[ taskTypeId ];
 
 	// This shouldn't happen, but just to be sure
@@ -87,7 +87,7 @@
 			if ( helpPanelProcessDialog.isOpened() ) {
 				helpPanelProcessDialog.setEditMode();
 			}
-			logger.log( 'impression', null, metadataOverride );
+			logger.log( 'impression', taskTypeLogData, metadataOverride );
 		}
 
 		/**
@@ -108,7 +108,7 @@
 				// only know for sure a little later ;)
 				setTimeout( function () {
 					if ( logger.getEditor() === 'reading' ) {
-						logger.log( 'impression' );
+						logger.log( 'impression', taskTypeLogData );
 					}
 				}, 250 );
 				return;
@@ -180,6 +180,11 @@
 		}
 
 		function addMobilePeek( taskTypeData ) {
+			var mobilePeek,
+				// Drawer.onBeforeHide fires whether the drawer was dismissed or tapped on
+				// (and replaced with the full help panel). Use this flag to differentiate.
+				tapped = false;
+
 			mobilePeek = new Drawer( {
 				className: 'suggested-edits-mobile-peek',
 				showCollapseIcon: false,
@@ -200,6 +205,9 @@
 						)
 				],
 				onBeforeHide: function ( drawer ) {
+					if ( !tapped ) {
+						logger.log( 'peek-dismiss' );
+					}
 					setTimeout( function () {
 						helpCtaButton.toggle( true );
 						drawer.$el.remove();
@@ -207,11 +215,14 @@
 				}
 			} );
 			mobilePeek.$el.find( '.suggested-edits-mobile-peek' ).on( 'click', function () {
+				tapped = true;
+				logger.log( 'peek-tap' );
 				mobilePeek.hide();
 				openHelpPanel( 'suggested-edits' );
 			} );
 			document.body.appendChild( mobilePeek.$el[ 0 ] );
 			helpCtaButton.toggle( false );
+			logger.log( 'peek-impression', taskTypeLogData );
 			mobilePeek.show();
 		}
 
@@ -250,7 +261,7 @@
 		// logged via attachHelpButton(), but we don't need to utilize that
 		// function on view.
 		if ( logger.getContext() === 'reading' ) {
-			logger.log( 'impression' );
+			logger.log( 'impression', taskTypeLogData );
 		}
 	} );
 
