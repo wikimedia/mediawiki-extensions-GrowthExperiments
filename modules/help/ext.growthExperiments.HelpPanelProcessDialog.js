@@ -81,14 +81,14 @@
 			icon: 'close',
 			flags: 'safe',
 			action: 'close',
-			modes: [ 'home' ]
+			modes: [ 'home', 'suggested-edits-read' ]
 		},
 		// Use a back icon for all non-home panels.
 		{
 			icon: 'previous',
 			flags: 'safe',
 			action: 'home',
-			modes: [ 'ask-help', 'general-help', 'questioncomplete', 'search', 'suggested-edits' ]
+			modes: [ 'ask-help', 'general-help', 'questioncomplete', 'search', 'suggested-edits-edit' ]
 		}
 	];
 
@@ -111,7 +111,8 @@
 	 */
 	HelpPanelProcessDialog.prototype.swapPanel = function ( panel ) {
 		var panelObj = this[ panel.replace( '-', '' ) + 'Panel' ],
-			titleMsg = this.panelTitleMessages[ panel ] || this.panelTitleMessages.home;
+			titleMsg = this.panelTitleMessages[ panel ] || this.panelTitleMessages.home,
+			newMode;
 
 		this.title.setLabel( titleMsg );
 
@@ -135,8 +136,7 @@
 			.removeClass( 'mw-ge-help-panel-processdialog-activepanel-' + this.currentPanel )
 			.addClass( 'mw-ge-help-panel-processdialog-activepanel-' + panel );
 
-		if ( panel === 'suggested-edits' ) {
-			// TODO: If we are in edit mode, the footer should not show up (T244541)
+		if ( panel === 'suggested-edits' && this.pageMode === 'read' ) {
 			this.$body.append( this.$suggestededitsFooter );
 		} else {
 			this.$suggestededitsFooter.detach();
@@ -166,7 +166,13 @@
 		if ( panel !== 'home' ) {
 			this.panels.setItem( panelObj );
 		}
-		this.setMode( panel );
+
+		newMode = panel;
+		if ( panel === 'suggested-edits' ) {
+			// suggested-edits-read, suggested-edits-edit
+			newMode += this.pageMode === 'edit' ? '-edit' : '-read';
+		}
+		this.setMode( newMode );
 		this.currentPanel = panel;
 	};
 
@@ -526,7 +532,8 @@
 		return HelpPanelProcessDialog.super.prototype.getSetupProcess
 			.call( this, data )
 			.next( function () {
-				this.setMode( 'home' );
+				this.pageMode = data.pageMode || 'read';
+				this.swapPanel( data.panel || 'home' );
 			}, this );
 	};
 
@@ -559,15 +566,12 @@
 					this.logger.log( 'close' );
 					this.close();
 				}
-				if ( action === 'reset' ) {
-					this.swapPanel( 'home' );
-				}
 				if ( action === 'home' ) {
 					if ( this.currentMode === 'search' ) {
 						action = 'general-help';
 					}
 					// One of: back-home, back-general-help
-					this.logger.log( 'back-' + action, { from: this.currentMode } );
+					this.logger.log( 'back-' + action, { from: this.currentPanel } );
 					this.swapPanel( action );
 				}
 				if ( action === 'ask-help' ) {
