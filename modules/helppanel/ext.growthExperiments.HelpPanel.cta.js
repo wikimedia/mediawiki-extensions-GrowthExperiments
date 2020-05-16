@@ -73,6 +73,9 @@
 				$overlay.append( $buttonWrapper );
 			}
 			pageMode = 'edit';
+			if ( helpPanelProcessDialog.isOpened() ) {
+				helpPanelProcessDialog.setEditMode();
+			}
 			logger.log( 'impression', null, metadataOverride );
 		}
 
