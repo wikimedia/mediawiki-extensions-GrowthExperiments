@@ -1,10 +1,12 @@
 @import 'mediawiki.ui/variables';
 @import 'mediawiki.mixins';
 
+@help-panel-position-bottom: 1em;
+
 .mw-ge-help-panel-widget-overlay {
 	position: fixed;
 	right: 1em;
-	bottom: 1em;
+	bottom: @help-panel-position-bottom;
 	z-index: 2;
 	background-color: @background-color-base;
 	border-radius: 2px;
@@ -22,6 +24,28 @@
 
 	&.oo-ui-window-setup {
 		bottom: 0;
+		opacity: 1;
+	}
+}
+
+.mw-ge-help-panel-popup-guidance {
+	animation: slide-in-guidance 800ms;
+
+	.oo-ui-dialog {
+		.transition( none );
+	}
+}
+
+@keyframes slide-in-guidance {
+	0% {
+		// Start right below the bottom of the viewport, by moving down 100% of the height of
+		// the element, plus another 1em to account for the bottom: 1em; positioning rule
+		transform: translateY( calc( 100% ~'+' @help-panel-position-bottom ) );
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateY( 0 );
 		opacity: 1;
 	}
 }
