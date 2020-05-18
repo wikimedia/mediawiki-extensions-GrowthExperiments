@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"FarsiNevis",
 			"Jeeputer",
 			"Reza1615"
 		]
 	},
+	"apihelp-homepagequestionstore-param-storage": "محل ذخیرهٔ پرسش‌ها.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "پرسشی پیدا نشد.",
 	"apihelp-growthsetmentor-param-mentee": "نام کاربری کارآموز",
 	"apihelp-growthsetmentor-param-mentor": "نام کاربری مربی",

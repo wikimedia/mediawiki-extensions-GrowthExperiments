@@ -1,10 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Huji",
 			"Mardetanha",
 			"Reza1615"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "مدیریت ارسال سوال‌های میز کمک برای کاربر کنونی.",
-	"apihelp-helppanelquestionposter-param-body": "متن پرسش که توسط کاربر ارایه شده‌است."
+	"apihelp-helppanelquestionposter-param-body": "متن پرسش که توسط کاربر ارایه شده‌است.",
+	"apihelp-helppanelquestionposter-param-source": "اجزای اصلی سوال عبارتند از مقدارهای معتبر 'میز کمک'، 'صفحه اصلی کمک'، و 'صفحه اصلی استاد شاگردی'",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "عنوان مرتبطی که، چنانچه انتخاب شده باشد، باید همراه پرسش ذکر شود."
 }
