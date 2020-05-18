@@ -61,8 +61,8 @@
 	/**
 	 * Get the footer content for the panel.
 	 *
-	 * Note, the content from this method is appended to the ProcessDialog's
-	 * $foot, and not to the suggested edits PanelLayout.
+	 * Note, the content from this method is appended to the bottom of the ProcessDialog's
+	 * $body, and not to the suggested edits PanelLayout.
 	 *
 	 * @return {jQuery}
 	 */

@@ -125,21 +125,21 @@
 			throw new Error( 'Unknown panel: ' + panel );
 		}
 
-		this.$element.find( '.oo-ui-window-head' ).toggleClass(
-			'suggested-edits-panel-window-head',
-			panel === 'suggested-edits'
-		);
-
-		this.$element.find( '.oo-ui-window-head' ).toggleClass(
-			'root-panel-window-head',
-			panel === 'home'
-		);
+		this.$content
+			// Classes that can be used here:
+			// * mw-ge-help-panel-processdialog-activepanel-home
+			// * mw-ge-help-panel-processdialog-activepanel-suggested-edits
+			// * mw-ge-help-panel-processdialog-activepanel-general-help
+			// * mw-ge-help-panel-processdialog-activepanel-ask-help
+			// * mw-ge-help-panel-processdialog-activepanel-questioncomplete
+			.removeClass( 'mw-ge-help-panel-processdialog-activepanel-' + this.currentPanel )
+			.addClass( 'mw-ge-help-panel-processdialog-activepanel-' + panel );
 
 		if ( panel === 'suggested-edits' ) {
 			// TODO: If we are in edit mode, the footer should not show up (T244541)
-			this.$foot.append( this.suggestededitsPanel.getFooter() );
+			this.$body.append( this.$suggestededitsFooter );
 		} else {
-			this.$foot.find( '.suggested-edits-panel-footer' ).remove();
+			this.$suggestededitsFooter.detach();
 		}
 
 		if ( panel === 'home' ) {
@@ -161,8 +161,13 @@
 			// Hide the cog, it interferes with the primary 'close' action
 			this.settingsCog.toggle( false );
 		}
-		this.panels.setItem( panelObj );
+		// When navigating to the home panel, don't change which panel is visible in this.panels
+		// The current panel needs to remain visible while the sliding transition happens
+		if ( panel !== 'home' ) {
+			this.panels.setItem( panelObj );
+		}
 		this.setMode( panel );
+		this.currentPanel = panel;
 	};
 
 	/**
@@ -317,10 +322,13 @@
 		this.$content
 			.addClass( 'mw-ge-help-panel-processdialog' );
 
-		this.panels = new OO.ui.StackLayout();
+		this.panels = new OO.ui.StackLayout( {
+			classes: [ 'mw-ge-help-panel-processdialog-subpanels' ]
+		} );
 		this.homePanel = new OO.ui.PanelLayout( {
 			padded: true,
-			expanded: false
+			expanded: false,
+			classes: [ 'mw-ge-help-panel-processdialog-homepanel' ]
 		} );
 
 		this.userEmail = mw.config.get( 'wgGEHelpPanelUserEmail' );
@@ -347,6 +355,7 @@
 			expanded: false,
 			taskTypeData: taskTypeData[ this.taskTypeId ]
 		} );
+		this.$suggestededitsFooter = this.suggestededitsPanel.getFooter();
 
 		this.askhelpPanel = new OO.ui.PanelLayout( {
 			padded: true,
@@ -485,15 +494,22 @@
 		this.questioncompletePanel.$element.append( this.questionCompleteContent.$element );
 
 		this.panels.addItems( [
-			this.homePanel,
 			this.suggestededitsPanel,
 			this.askhelpPanel,
 			this.generalhelpPanel,
 			this.questioncompletePanel
 		] );
 
-		this.$body.append( this.panels.$element );
+		// The home panel is at the top level, outside of the StackLayout containing the other
+		// panels, which is positioned next to it outside the dialog. When navigating, both slide
+		// left or right
+		this.$body.append( this.homePanel.$element, this.panels.$element );
 		this.$element.on( 'click', 'a[data-link-id]', this.logLinkClick.bind( this ) );
+
+		// Disable pending effect in the header; it breaks the background transition when navigating
+		// back from the suggested-edits panel to the home panel
+		this.setPendingElement( $( [] ) );
+		this.swapPanel( 'home' );
 	};
 
 	/**
@@ -688,17 +704,16 @@
 	 * Get a stable body height as panels are switched.
 	 *
 	 * The idea is that the height should remain uniform across panels. This is important
-	 * for the animation effects (not yet implemented).
+	 * for the animation effects.
 	 *
 	 * @return {number}
 	 */
 	HelpPanelProcessDialog.prototype.getBodyHeight = function () {
-		if ( !this.homeHeight && this.currentMode === 'home' ) {
-			this.homeHeight = this.panels.getCurrentItem().$element.outerHeight( true );
+		if ( !this.homeHeight ) {
+			this.homeHeight = this.homePanel.$element.outerHeight( true );
 		}
 
-		// Use home height minus dynamically calculated footer (not all panels have a footer)
-		return this.homeHeight - this.$foot.outerHeight( true );
+		return this.homeHeight;
 	};
 
 	module.exports = HelpPanelProcessDialog;
