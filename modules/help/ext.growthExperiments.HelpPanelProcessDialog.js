@@ -694,11 +694,7 @@
 	 */
 	HelpPanelProcessDialog.prototype.getBodyHeight = function () {
 		if ( !this.homeHeight && this.currentMode === 'home' ) {
-			// 60.0167 is the height of the footer contents on the "ask-help" screen which
-			// has back and post buttons. We need to set the number here since we want the
-			// home panel to have the same height as the ask-help panel, but don't yet
-			// know the height of this.$foot
-			this.homeHeight = this.panels.getCurrentItem().$element.outerHeight( true ) + 60.0167;
+			this.homeHeight = this.panels.getCurrentItem().$element.outerHeight( true );
 		}
 
 		// Use home height minus dynamically calculated footer (not all panels have a footer)
