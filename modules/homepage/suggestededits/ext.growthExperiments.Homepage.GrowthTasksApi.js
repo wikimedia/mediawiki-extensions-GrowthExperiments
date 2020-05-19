@@ -129,7 +129,7 @@
 			var tasks = [];
 
 			function cleanUpData( item ) {
-				var task = {
+				return {
 					title: item.title,
 					// Page and revision ID can be missing on development setups where the
 					// returned titles are not local, and also in edge cases where the search
@@ -143,12 +143,10 @@
 					// empty array when no topics are selected, null with topic matching disabled,
 					// otherwise an array of (topic ID, score) pairs
 					topics: item.topics || null,
-					maintenanceTemplates: item.maintenancetemplates || null
+					maintenanceTemplates: item.maintenancetemplates || null,
+					// only present when config.getDescription is true
+					description: item.description || null
 				};
-				if ( config.getDescription ) {
-					task.description = item.description || null;
-				}
-				return task;
 			}
 			function filterOutProtectedArticles( result ) {
 				return result.protection.length === 0;
