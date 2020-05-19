@@ -41,6 +41,12 @@
 		background-color: @wmui-color-base100;
 		box-shadow: 0 1px 0 0 @wmui-color-base80;
 
+		&:hover {
+			// Browser default is to underline links on hover, which looks weird when the
+			// whole card is a link.
+			text-decoration: none;
+		}
+
 		&-image {
 			width: 88px;
 			height: 88px;
