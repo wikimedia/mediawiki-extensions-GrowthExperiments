@@ -1,11 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"VulpesVulpes825",
 			"科劳"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "获取通过主页模块发布，并且已格式化的问题",
-	"apihelp-homepagequestionstore-param-questionformat": "此属性为以上问题将被返回的格式；例如：html",
+	"apihelp-homepagequestionstore-param-questionformat": "此属性为以上问题将被返回的格式；例如：HTML。",
 	"apihelp-homepagequestionstore-param-storage": "问题的存储位置",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "找不到问题。"
+	"apihelp-homepagequestionstore-param-userid": "用于获取问题的用户ID。",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "找不到问题。",
+	"apihelp-growthsetmentor-summary": "设置用户的导师。该变更将被公开记录。",
+	"apihelp-growthsetmentor-param-mentee": "学员的用户名",
+	"apihelp-growthsetmentor-param-mentor": "导师的用户名",
+	"apihelp-growthsetmentor-param-reason": "变更原因"
 }
