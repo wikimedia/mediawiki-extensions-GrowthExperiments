@@ -312,9 +312,8 @@
 					id: id,
 					taskTypeId: this.taskTypeId
 				} ).$element
-					.data( 'link-id', id )
-					.on( 'click', function ( event ) {
-						this.logLinkClick( event );
+					.on( 'click', function () {
+						this.logger.log( id );
 						this.swapPanel( id );
 					}.bind( this ) )
 			);
@@ -582,7 +581,7 @@
 					this.swapPanel( action );
 				}
 				if ( action === 'ask-help' ) {
-					this.logger.log( 'review' );
+					this.logger.log( 'ask-help' );
 					this.swapPanel( action );
 				}
 				if ( action === 'entersearch' ) {
