@@ -41,6 +41,7 @@ $specialPageAliases['fr'] = [
 	'WelcomeSurvey' => [ 'Suivi_des_premiers_clics' ],
 	'Homepage' => [ 'Accueil_de_l’espace_personnel' ],
 	'Impact' => [ 'Impact' ],
+	'ClaimMentee' => [ 'Revendiquer un novice' ],
 ];
 
 /** Hungarian (magyar) */
