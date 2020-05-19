@@ -162,6 +162,7 @@
 				}
 				helpCtaButton.toggle( true );
 			} );
+			return lifecycle;
 		}
 
 		function addMobilePeek( taskTypeData ) {
@@ -204,7 +205,12 @@
 			if ( OO.ui.isMobile() ) {
 				addMobilePeek( taskTypes[ taskTypeId ] );
 			} else {
-				openHelpPanel( 'suggested-edits' );
+				// Open the help panel to the suggested-edits panel, animating it in from the bottom
+				// Perform this special animation only once, the first time the help panel opens
+				$overlay.addClass( 'mw-ge-help-panel-popup-guidance' );
+				openHelpPanel( 'suggested-edits' ).closing.done( function () {
+					$overlay.removeClass( 'mw-ge-help-panel-popup-guidance' );
+				} );
 			}
 		}
 
