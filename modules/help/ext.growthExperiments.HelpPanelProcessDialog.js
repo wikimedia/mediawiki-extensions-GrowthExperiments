@@ -537,6 +537,13 @@
 			}, this );
 	};
 
+	HelpPanelProcessDialog.prototype.setEditMode = function () {
+		this.pageMode = 'edit';
+		if ( this.currentMode === 'suggested-edits-read' ) {
+			this.swapPanel( 'home' );
+		}
+	};
+
 	/**
 	 * Show/hide search results interface.
 	 *
