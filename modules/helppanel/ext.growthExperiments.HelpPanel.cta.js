@@ -9,6 +9,8 @@
 		configData = Help.configData,
 		suggestedEditsPeek = require( './../helppanel/ext.growthExperiments.SuggestedEditsPeek.js' ),
 		guidanceEnabled = mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ),
+		pageMode = 'read',
+		guidanceAvailable,
 		taskTypeId,
 		mobilePeek;
 
@@ -16,6 +18,7 @@
 		require( './../homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.js' );
 	}
 	taskTypeId = mw.config.get( 'wgGrowthExperimentsTaskTypeUrlParam' );
+	guidanceAvailable = guidanceEnabled && taskTypeId && taskTypes[ taskTypeId ];
 
 	// This shouldn't happen, but just to be sure
 	if ( !mw.config.get( 'wgGEHelpPanelEnabled' ) ) {
@@ -44,7 +47,7 @@
 				size: Math.max( document.documentElement.clientWidth, window.innerWidth || 0 ) > 1366 ? 'medium' : size,
 				logger: logger,
 				guidanceEnabled: guidanceEnabled,
-				taskTypeId: mw.config.get( 'wgGrowthExperimentsTaskTypeUrlParam' )
+				taskTypeId: taskTypeId
 			} ),
 			helpCtaButton,
 			lifecycle;
@@ -69,6 +72,7 @@
 			if ( $buttonWrapper.parent()[ 0 ] !== $overlay[ 0 ] ) {
 				$overlay.append( $buttonWrapper );
 			}
+			pageMode = 'edit';
 			logger.log( 'impression', null, metadataOverride );
 		}
 
@@ -96,6 +100,7 @@
 				return;
 			}
 			$buttonWrapper.detach();
+			pageMode = 'read';
 		}
 
 		if ( $buttonToInfuse.length ) {
@@ -124,7 +129,7 @@
 		$body.append( $overlay );
 		windowManager.addWindows( [ helpPanelProcessDialog ] );
 
-		function openHelpPanel() {
+		function openHelpPanel( panel ) {
 			if ( OO.ui.isMobile() ) {
 				// HACK: Detach the MobileFrontend overlay for both VE and source edit modes.
 				// Per T212967, leaving them enabled results in a phantom text input that the
@@ -143,9 +148,10 @@
 				// removes the class on closing.
 				$body.removeClass( 'oo-ui-windowManager-modal-active' );
 			}
-			lifecycle = windowManager.openWindow( helpPanelProcessDialog );
-			// Reset to home panel if user closed the widget.
-			helpPanelProcessDialog.executeAction( 'reset' );
+			lifecycle = windowManager.openWindow( helpPanelProcessDialog, {
+				panel: panel,
+				pageMode: pageMode
+			} );
 			helpCtaButton.toggle( false );
 			logger.log( 'open' );
 			lifecycle.closing.done( function () {
@@ -187,19 +193,23 @@
 			} );
 			mobilePeek.$el.find( '.suggested-edits-mobile-peek' ).on( 'click', function () {
 				mobilePeek.hide();
-				openHelpPanel();
+				openHelpPanel( 'suggested-edits' );
 			} );
 			document.body.appendChild( mobilePeek.$el[ 0 ] );
 			helpCtaButton.toggle( false );
 			mobilePeek.show();
 		}
 
-		if ( guidanceEnabled && OO.ui.isMobile() && taskTypeId && taskTypes[ taskTypeId ] ) {
-			addMobilePeek( taskTypes[ taskTypeId ] );
+		if ( guidanceAvailable ) {
+			if ( OO.ui.isMobile() ) {
+				addMobilePeek( taskTypes[ taskTypeId ] );
+			} else {
+				openHelpPanel( 'suggested-edits' );
+			}
 		}
 
 		helpCtaButton.on( 'click', function () {
-			openHelpPanel();
+			openHelpPanel( guidanceAvailable && pageMode === 'read' ? 'suggested-edits' : 'home' );
 		} );
 
 		// Attach or detach the help panel CTA in response to hooks from MobileFrontend.
