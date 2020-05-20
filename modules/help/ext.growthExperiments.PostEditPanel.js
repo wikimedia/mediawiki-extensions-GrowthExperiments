@@ -111,9 +111,8 @@
 		} else {
 			title = new mw.Title( task.title );
 		}
-		$title = $( '<a>' )
+		$title = $( '<span>' )
 			.addClass( 'mw-ge-help-panel-postedit-card-title' )
-			.attr( 'href', title.getUrl() )
 			.text( task.title );
 
 		if ( task.pageviews ) {
@@ -139,8 +138,9 @@
 		$cardTextContainer = $( '<div>' )
 			.addClass( 'mw-ge-help-panel-postedit-card-text-container' )
 			.append( $title, $description, $pageviews, $taskType );
-		$card = $( '<div>' )
+		$card = $( '<a>' )
 			.addClass( 'mw-ge-help-panel-postedit-card' )
+			.attr( 'href', title.getUrl() )
 			.append( $image, $cardTextContainer );
 		return $card;
 	};
