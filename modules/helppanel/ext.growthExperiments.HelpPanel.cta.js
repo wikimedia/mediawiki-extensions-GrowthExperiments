@@ -7,6 +7,7 @@
 		Drawer = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Drawer : undefined,
 		Anchor = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Anchor : undefined,
 		configData = Help.configData,
+		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		suggestedEditsPeek = require( './../helppanel/ext.growthExperiments.SuggestedEditsPeek.js' ),
 		guidanceEnabled = mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ),
 		pageMode = 'read',
@@ -14,10 +15,10 @@
 		taskTypeId,
 		mobilePeek;
 
-	if ( guidanceEnabled ) {
+	if ( guidanceEnabled && suggestedEditSession.active ) {
 		require( './../homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.js' );
 	}
-	taskTypeId = mw.config.get( 'wgGrowthExperimentsTaskTypeUrlParam' );
+	taskTypeId = suggestedEditSession.taskType;
 	guidanceAvailable = guidanceEnabled && taskTypeId && taskTypes[ taskTypeId ];
 
 	// This shouldn't happen, but just to be sure

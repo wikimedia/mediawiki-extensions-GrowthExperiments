@@ -131,10 +131,20 @@ class HomepageHooks {
 	 */
 	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
 		$context = $out->getContext();
+		if ( SuggestedEdits::isEnabled( $context ) ) {
+			// Manage the suggesed edit session.
+			$out->addModules( 'ext.growthExperiments.SuggestedEditSession' );
+		}
+
 		$clickId = self::getClickId( $context );
 		if ( $clickId ) {
-			$out->addModules( 'ext.growthExperiments.ClickId' );
-			// Override the edit session ID
+			// Override the edit session ID.
+			// The suggested edit session is tracked on the client side, because it is
+			// specific to the browser tab, but some of the EditAttemptStep events it
+			// needs to be associated with happen early on page load so setting this
+			// on the JS side might be too late. So, we use JS to propagate the clickId
+			// to all edit links, and then use this code to set the JS variable for the
+			// pageview that's initiated by clicking on the edit link. This might be overkill.
 			$out->addJsConfigVars( [
 				'wgWMESchemaEditAttemptStepSessionId' => $clickId,
 			] );

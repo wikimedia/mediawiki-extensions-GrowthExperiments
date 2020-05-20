@@ -3,8 +3,8 @@
 	/* eslint-disable-next-line no-jquery/no-global-selector */
 	var $edit = $( 'li#ca-ve-edit, li#ca-edit, li#page-actions-edit' ).first().find( 'a' ),
 		skin = mw.config.get( 'skin' ),
-		// this is set in ext.growthExperiments.ClickId.js
-		taskTypeId = mw.config.get( 'wgGrowthExperimentsTaskTypeUrlParam' ),
+		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
+		taskTypeId = suggestedEditSession.taskType,
 		guidancePrefName = 'growthexperiments-homepage-suggestededits-guidance-blue-dot',
 		guidancePrefValue;
 
