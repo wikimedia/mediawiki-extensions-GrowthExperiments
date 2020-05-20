@@ -58,7 +58,7 @@
 		loggerInstance = new Help.HelpPanelLogger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			{
-				editorInterface: config.editorInterface,
+				context: config.context,
 				sessionId: mw.config.get( 'wgGEHomepagePageviewToken' )
 			}
 		);

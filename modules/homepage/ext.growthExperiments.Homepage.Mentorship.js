@@ -31,7 +31,7 @@
 		).parse(),
 		config = {
 			buttonSelector: '#mw-ge-homepage-mentorship-cta',
-			editorInterface: 'homepage_mentorship',
+			context: 'homepage_mentorship',
 			dialog: {
 				name: 'mentorship',
 				panelTitleMessages: {

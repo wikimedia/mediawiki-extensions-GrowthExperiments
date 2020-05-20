@@ -9,6 +9,7 @@
 		FiltersButtonGroupWidget = require( './ext.growthExperiments.Homepage.SuggestedEdits.FiltersWidget.js' ),
 		GrowthTasksApi = require( './ext.growthExperiments.Homepage.GrowthTasksApi.js' ),
 		Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
+		NewcomerTaskLogger = require( './ext.growthExperiments.NewcomerTaskLogger.js' ),
 		aqsConfig = require( './AQSConfig.json' ),
 		taskTypes = require( './TaskTypes.json' );
 
@@ -263,30 +264,18 @@
 	};
 
 	/**
-	 * Extract log data for use by HomepageModuleLogger.log in card impression and click events.
+	 * Log task data for a card impression or click event to the NewcomerTask EventLogging schema.
+	 * @param {string} context The value of the context schema field ('homepage-impression' when
+	 *   displaying the task, 'homepage-click' when clicking through the task).
 	 * @param {int} cardPosition Card position in the task queue. Assumes summary data has
 	 *   already been loaded for this position.
-	 * @return {Object<string>}
+	 * @return {string} Token to reference the log entry with.
 	 */
-	SuggestedEditsModule.prototype.getCardLogData = function ( cardPosition ) {
-		var logData,
-			suggestedEditData = this.taskQueue[ cardPosition ];
-		logData = {
-			taskType: suggestedEditData.tasktype,
-			maintenanceTemplates: suggestedEditData.maintenanceTemplates,
-			hasImage: !!suggestedEditData.thumbnailSource,
-			ordinalPosition: cardPosition,
-			pageviews: suggestedEditData.pageviews,
-			pageTitle: suggestedEditData.title,
-			pageId: suggestedEditData.pageId,
-			revisionId: suggestedEditData.revisionId
-			// the page token is automatically added by the logger
-		};
-		if ( suggestedEditData.topics && suggestedEditData.topics.length ) {
-			logData.topic = suggestedEditData.topics[ 0 ][ 0 ];
-			logData.matchScore = suggestedEditData.topics[ 0 ][ 1 ];
-		}
-		return logData;
+	SuggestedEditsModule.prototype.logCardData = function ( context, cardPosition ) {
+		var newcomerTaskLogger = new NewcomerTaskLogger(),
+			task = this.taskQueue[ cardPosition ];
+
+		return newcomerTaskLogger.log( context, task, cardPosition );
 	};
 
 	/**
@@ -338,7 +327,7 @@
 				'suggested-edits',
 				this.mode,
 				'se-task-impression',
-				this.getCardLogData( queuePosition )
+				{ newcomerTaskToken: this.logCardData( 'homepage-impression', queuePosition ) }
 			);
 		}.bind( this ) );
 	};
@@ -414,7 +403,7 @@
 			.attr( 'href', newUrl )
 			.on( 'click', function () {
 				this.logger.log( 'suggested-edits', this.mode, 'se-task-click',
-					this.getCardLogData( this.queuePosition ) );
+					{ newcomerTaskToken: this.logCardData( 'homepage-click', this.queuePosition ) } );
 			}.bind( this ) );
 	};
 

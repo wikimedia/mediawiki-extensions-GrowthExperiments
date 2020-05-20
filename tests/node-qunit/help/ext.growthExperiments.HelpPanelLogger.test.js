@@ -46,7 +46,8 @@ QUnit.module( 'HelpPanelLogger', {
 	} );
 	QUnit.test( 'log', function ( assert ) {
 		var helpPanelLogger = new HelpPanelLogger( true, {
-			editorInterface: 'reading',
+			context: 'reading',
+			editorInterface: 'visualeditor',
 			sessionId: 'foo'
 		} );
 		// eslint-disable-next-line camelcase
@@ -58,7 +59,9 @@ QUnit.module( 'HelpPanelLogger', {
 			action_data: 'blah',
 			user_id: 24,
 			user_editcount: 42,
+			context: 'reading',
 			editor_interface: 'wikitext',
+			is_suggested_task: false,
 			is_mobile: false,
 			page_id: 0,
 			page_title: '',
