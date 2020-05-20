@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bugoslav",
 			"Neptune, the Mystic"
 		]
 	},
-	"growthexperiments-help-panel-question-placeholder": "Pozdravite i postavite {{GENDER:$1|svoje}} pitanje."
+	"growthexperiments-help-panel-question-placeholder": "Pozdravite i postavite {{GENDER:$1|svoje}} pitanje.",
+	"growthexperiments-help-panel-postedit-success-message": "Spremili {{GENDER:|ste}} uređivanje. Hvala Vam i samo nastavite!"
 }
