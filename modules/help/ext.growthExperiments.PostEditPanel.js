@@ -41,9 +41,9 @@
 		var title, footer, footer2,
 			self = this;
 
-		title = new mw.Title( 'Special:Homepage' + ( OO.ui.isMobile() ? '#/homepage/suggested-edits' : '' ) );
+		title = new mw.Title( 'Special:Homepage' );
 		footer = new OO.ui.ButtonWidget( {
-			href: title.getUrl(),
+			href: title.getUrl() + ( OO.ui.isMobile() ? '#/homepage/suggested-edits' : '' ),
 			label: mw.message( 'growthexperiments-help-panel-postedit-footer' ).text(),
 			framed: false,
 			classes: [ 'mw-ge-help-panel-postedit-footer' ]
