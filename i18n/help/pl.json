@@ -20,6 +20,8 @@
 	"growthexperiments-help-panel-back-home": "Wstecz",
 	"growthexperiments-help-panel-close": "Gotowe",
 	"growthexperiments-help-panel-home-title": "Pomoc w edytowaniu",
+	"growthexperiments-help-panel-postedit-success-message": "{{GENDER:|Zapisałeś|Zapisałaś}} edycję. Dzięki za pomoc i tak trzymaj!",
+	"growthexperiments-help-panel-postedit-header": "Następne kroki",
 	"growthexperiments-help-panel-questionreview-title": "Zadaj pytanie",
 	"growthexperiments-help-panel-questionreview-header": "Gdy wysyłasz zapytanie, zostanie ono <strong>umieszczone publicznie</strong>, pod Twoją nazwą użytkownika, \"$2\", na $1, gdzie inny wolontariusz spróbuje udzielić odpowiedzi.",
 	"growthexperiments-help-panel-questionreview-label": "Twoje pytanie",

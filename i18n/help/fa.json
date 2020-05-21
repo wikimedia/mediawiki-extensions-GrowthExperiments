@@ -4,6 +4,7 @@
 			"FarsiNevis",
 			"Huji",
 			"Jeeputer",
+			"Ladsgroup",
 			"Mardetanha",
 			"Reza1615",
 			"Vahedi"
@@ -20,6 +21,8 @@
 	"growthexperiments-help-panel-back-home": "بازگشت",
 	"growthexperiments-help-panel-close": "انجام شد",
 	"growthexperiments-help-panel-home-title": "گرفتن کمک برای ویرایش",
+	"growthexperiments-help-panel-postedit-success-message": "{{GENDER:|شما}} یک ویرایش انجام دادید. ممنون و به کارتان ادامه دهید!",
+	"growthexperiments-help-panel-postedit-header": "گام‌های بعدی",
 	"growthexperiments-help-panel-questionreview-title": "سؤالی بپرسید",
 	"growthexperiments-help-panel-questionreview-header": "وقتی پرسش را ارسال می‌کنید، این سؤال <strong>به صورت عمومی</strong> و با نام کاربری خودتان، «$2» در $1 منتشر می‌شود تا دیگر ویرایشگران داوطلب بتوانند به شما ظرف یک تا چند روز آتی پاسخ دهند.",
 	"growthexperiments-help-panel-questionreview-label": "پرسش شما",

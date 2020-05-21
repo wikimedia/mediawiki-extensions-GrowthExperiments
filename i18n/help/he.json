@@ -18,6 +18,8 @@
 	"growthexperiments-help-panel-back-home": "חזרה",
 	"growthexperiments-help-panel-close": "סיום",
 	"growthexperiments-help-panel-home-title": "קבלת עזרה עם עריכה",
+	"growthexperiments-help-panel-postedit-success-message": "שמרת עריכה. תודה, {{GENDER:|תמשיך|תמשיכי}}!",
+	"growthexperiments-help-panel-postedit-header": "הצעדים הבאים",
 	"growthexperiments-help-panel-questionreview-title": "לשאול שאלה",
 	"growthexperiments-help-panel-questionreview-header": "{{GENDER:$2|כשאתה שולח|כשאת שולחת}} שאלה, היא <strong>נשלחת באופן ציבורי</strong> עם שם המשתמש שלך, \"$2\", אל $1, ושם מתנדב אחר ינסה לספק תשובה בתוך יום בערך.",
 	"growthexperiments-help-panel-questionreview-label": "השאלה שלך",
