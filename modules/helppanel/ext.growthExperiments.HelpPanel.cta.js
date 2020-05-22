@@ -15,7 +15,9 @@
 		taskTypeId,
 		mobilePeek;
 
-	if ( guidanceEnabled && suggestedEditSession.active ) {
+	if ( guidanceEnabled && suggestedEditSession.active &&
+		!suggestedEditSession.postEditDialogNeedsToBeShown
+	) {
 		require( './../homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.js' );
 	}
 	taskTypeId = suggestedEditSession.taskType;

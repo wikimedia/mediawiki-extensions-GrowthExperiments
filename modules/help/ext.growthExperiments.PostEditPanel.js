@@ -1,7 +1,6 @@
 'use strict';
 
 ( function () {
-
 	/**
 	 * @class
 	 * @mixins OO.EventEmitter
