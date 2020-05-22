@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mirin"
+			"Mirin",
+			"Robin van der Vliet"
 		]
 	},
 	"growthexperiments-help-panel-close": "Farite",
+	"growthexperiments-help-panel-postedit-header": "Sekvaj paŝoj",
 	"growthexperiments-help-panel-questionreview-label": "Via demando",
 	"growthexperiments-help-panel-questioncomplete-title": "Demandi",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Ne valida titolo."
