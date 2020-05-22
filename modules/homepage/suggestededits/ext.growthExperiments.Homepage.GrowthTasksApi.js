@@ -76,6 +76,8 @@
 	 *   This probably won't work well with a large size setting.
 	 * @param {integer} [config.size] Number of tasks to fetch. The returned number might be smaller
 	 *   as protected pages will be filtered out.
+	 * @param {integer} [config.thumbnailWidth] Ideal thumbnail width. The actual width might be
+	 *   smaller if the original image itself is smaller.
 	 *
 	 * @return {jQuery.Promise<Object>} An abortable promise with two fields:
 	 *   - count: the number of tasks available. Note this is the full count, not the
@@ -89,7 +91,8 @@
 
 		config = $.extend( {
 			getDescription: false,
-			size: 250
+			size: 250,
+			thumbnailWidth: 260
 		}, config || {} );
 
 		if ( !taskTypes.length ) {
@@ -107,7 +110,8 @@
 			prop: 'info|revisions|pageimages' + ( config.getDescription ? '|description' : '' ),
 			inprop: 'protection|url',
 			rvprop: 'ids',
-			pithumbsize: 260,
+			piprop: 'name|original|thumbnail',
+			pithumbsize: config.thumbnailWidth,
 			generator: 'growthtasks',
 			// Fetch more in case protected articles are in the result set, so that after
 			// filtering we can have 200.
@@ -129,7 +133,7 @@
 			var tasks = [];
 
 			function cleanUpData( item ) {
-				return {
+				return GrowthTasksApi.fixThumbnailWidth( {
 					title: item.title,
 					// Page and revision ID can be missing on development setups where the
 					// returned titles are not local, and also in edge cases where the search
@@ -138,6 +142,7 @@
 					revisionId: item.revisions ? item.revisions[ 0 ].revid : null,
 					url: item.canonicalurl,
 					thumbnailSource: item.thumbnail && item.thumbnail.source || null,
+					imageWidth: item.original && item.original.width || null,
 					tasktype: item.tasktype,
 					difficulty: item.difficulty,
 					// empty array when no topics are selected, null with topic matching disabled,
@@ -146,7 +151,7 @@
 					maintenanceTemplates: item.maintenancetemplates || null,
 					// only present when config.getDescription is true
 					description: item.description || null
-				};
+				}, config.thumbnailWidth );
 			}
 			function filterOutProtectedArticles( result ) {
 				return result.protection.length === 0;
@@ -196,14 +201,22 @@
 	 * @param {Object} task A task object returned by fetchTasks. It will be extended with new data:
 	 *   - extract: the page summary
 	 *   - thumbnailSource: URL to the thumbnail of the page image (if one exists)
+	 * @param {Object} [config] Additional configuration. The object passed to fetchTasks() can be
+	 *   reused here.
+	 * @param {integer} [config.thumbnailWidth] Ideal thumbnail width. The actual width might be
+	 *   smaller if the original image itself is smaller.
 	 * @return {jQuery.Promise<Object>} A promise with the task object.
 	 * @see https://www.mediawiki.org/wiki/Page_Content_Service#/page/summary
 	 * @see https://en.wikipedia.org/api/rest_v1/#/Page%20content/get_page_summary__title_
 	 */
-	GrowthTasksApi.prototype.getExtraDataFromPcs = function ( task ) {
+	GrowthTasksApi.prototype.getExtraDataFromPcs = function ( task, config ) {
 		var encodedTitle,
 			title = task.title,
 			apiUrlBase = this.suggestedEditsConfig.GERestbaseUrl;
+
+		config = $.extend( {
+			thumbnailWidth: 260
+		}, config || {} );
 
 		// Skip if the task already has PCS data; don't fail worse then we have to
 		// when RESTBase is not installed.
@@ -219,6 +232,8 @@
 			// query+growthtasks.
 			if ( !task.thumbnailSource && data.thumbnail ) {
 				task.thumbnailSource = data.thumbnail.source;
+				task.imageWidth = data.originalimage.width;
+				GrowthTasksApi.fixThumbnailWidth( task, config.thumbnailWidth );
 			}
 			return task;
 		} );
@@ -289,6 +304,24 @@
 			topics = savedTopics ? JSON.parse( savedTopics ) : [];
 
 		return { taskTypes: taskTypes, topics: topics };
+	};
+
+	/**
+	 * Change the thumbnail URL in the task data to be at least the given width (if possible).
+	 * @param {Object} task Task data, as returned by the other methods.
+	 * @param {number} newWidth Desired thumbnail width.
+	 * @return {Object} The task parameter (which is changed in-place).
+	 */
+	GrowthTasksApi.fixThumbnailWidth = function ( task, newWidth ) {
+		var data;
+
+		if ( task.thumbnailSource && task.imageWidth ) {
+			data = mw.util.parseImageUrl( task.thumbnailSource );
+			if ( data && data.urlTemplate && data.width < newWidth && task.imageWidth > newWidth ) {
+				task.thumbnailSource = data.urlTemplate.replace( '{width}', newWidth );
+			}
+		}
+		return task;
 	};
 
 	module.exports = GrowthTasksApi;
