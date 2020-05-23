@@ -12,9 +12,10 @@
 	 *    HomepageHooks::getTaskTypesJson. Can be omitted when the getPreferences method is not needed.
 	 * @param {Object} [config.suggestedEditsConfig] An object with the values of some PHP globals,
 	 *   as returned by HomepageHooks::getSuggestedEditsConfigJson. Can be omitted when the
-	 *   getPreferences method is not needed.
+	 *   getPreferences method and individual task data are not needed.
 	 * @param {string} config.suggestedEditsConfig.GERestbaseUrl
 	 * @param {Object} config.suggestedEditsConfig.GENewcomerTasksTopicFiltersPref
+	 * @param {string} [config.suggestedEditsConfig.GENewcomerTasksRemoteArticleOrigin]
 	 * @param {Object} config.aqsConfig Configuration for the AQS service, as returned by
 	 *   HomepageHooks::getAQSConfigJson. Used by the getExtraDataFromAqs method.
 	 * @param {string} config.aqsConfig.project Project domain name to get views for (might be
@@ -22,7 +23,7 @@
 	 */
 	function GrowthTasksApi( config ) {
 		this.taskTypes = config.taskTypes;
-		this.suggestedEditsConfig = config.suggestedEditsConfig;
+		this.suggestedEditsConfig = config.suggestedEditsConfig || {};
 		this.aqsConfig = config.aqsConfig;
 	}
 
@@ -87,6 +88,7 @@
 	 */
 	GrowthTasksApi.prototype.fetchTasks = function ( taskTypes, topics, config ) {
 		var apiParams, actionApiPromise, finalPromise,
+			self = this,
 			url = new mw.Uri( window.location.href );
 
 		config = $.extend( {
@@ -108,7 +110,7 @@
 		apiParams = {
 			action: 'query',
 			prop: 'info|revisions|pageimages' + ( config.getDescription ? '|description' : '' ),
-			inprop: 'protection|url',
+			inprop: 'protection',
 			rvprop: 'ids',
 			piprop: 'name|original|thumbnail',
 			pithumbsize: config.thumbnailWidth,
@@ -140,7 +142,9 @@
 					// index has not caught up with a page deletion yet.
 					pageId: item.pageid || null,
 					revisionId: item.revisions ? item.revisions[ 0 ].revid : null,
-					url: item.canonicalurl,
+					url: self.suggestedEditsConfig.GENewcomerTasksRemoteArticleOrigin ?
+						self.suggestedEditsConfig.GENewcomerTasksRemoteArticleOrigin + mw.util.getUrl( item.title ) :
+						null,
 					thumbnailSource: item.thumbnail && item.thumbnail.source || null,
 					imageWidth: item.original && item.original.width || null,
 					tasktype: item.tasktype,

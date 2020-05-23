@@ -959,6 +959,10 @@
 			"description": "URL of a remote API (ending with 'api.php') to use for identifying suggested edits. This is meant for developer setups.",
 			"value": null
 		},
+		"GENewcomerTasksRemoteArticleOrigin": {
+			"description": "Origin to append suggested article URLs to (e.g. 'https://en.wikipedia.org'). This is meant for developer setups.",
+			"value": null
+		},
 		"GENewcomerTasksGuidanceEnabled": {
 			"description": "Global ON/OFF switch for the newcomer tasks guidance feature.",
 			"value": true

@@ -816,6 +816,7 @@ class HomepageHooks {
 	) {
 		return [
 			'GERestbaseUrl' => Util::getRestbaseUrl( $config ),
+			'GENewcomerTasksRemoteArticleOrigin' => $config->get( 'GENewcomerTasksRemoteArticleOrigin' ),
 			'GEHomepageSuggestedEditsIntroLinks' => $config->get( 'GEHomepageSuggestedEditsIntroLinks' ),
 			'GENewcomerTasksTopicFiltersPref' => SuggestedEdits::getTopicFiltersPref( $config ),
 		];
