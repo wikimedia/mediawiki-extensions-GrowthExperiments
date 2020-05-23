@@ -347,8 +347,10 @@ class PageConfigurationLoader implements ConfigurationLoader {
 				return array_search( $leftGroup, $groups, true ) - array_search( $rightGroup, $groups, true );
 			}
 
-			$leftSortKey = $this->collation->getSortKey( $left->getName( $this->messageLocalizer ) );
-			$rightSortKey = $this->collation->getSortKey( $right->getName( $this->messageLocalizer ) );
+			$leftSortKey = $this->collation->getSortKey(
+				$left->getName( $this->messageLocalizer )->text() );
+			$rightSortKey = $this->collation->getSortKey(
+				$right->getName( $this->messageLocalizer )->text() );
 			return strcmp( $leftSortKey, $rightSortKey );
 		} );
 	}
