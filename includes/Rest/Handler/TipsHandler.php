@@ -4,23 +4,40 @@ namespace GrowthExperiments\Rest\Handler;
 
 use ApiBase;
 use DerivativeContext;
-use GrowthExperiments\HelpPanel\Tips\TipsBuilder;
+use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
+use MWException;
 use RequestContext;
 
+/**
+ * Handle incoming requests to obtain tips for a skin, editor, task type id,
+ * and language. Returns a JSON response that can be placed into the suggested
+ * edits guidance screen in the help panel.
+ */
 class TipsHandler extends SimpleHandler {
 
-	/**
-	 * @var TipsBuilder
-	 */
-	private $tipsBuilder;
+	private const MAX_CACHE_AGE_SECONDS = 3600;
 
 	/**
-	 * @param TipsBuilder $tipsBuilder
+	 * @var TipsAssembler
 	 */
-	public function __construct( TipsBuilder $tipsBuilder ) {
-		$this->tipsBuilder = $tipsBuilder;
+	private $tipsAssembler;
+	/**
+	 * @var ConfigurationLoader
+	 */
+	private $configurationLoader;
+
+	/**
+	 * @param TipsAssembler $tipsAssembler
+	 * @param ConfigurationLoader $configurationLoader
+	 */
+	public function __construct(
+		TipsAssembler $tipsAssembler, ConfigurationLoader $configurationLoader
+	) {
+		$this->tipsAssembler = $tipsAssembler;
+		$this->configurationLoader = $configurationLoader;
 	}
 
 	/**
@@ -29,7 +46,7 @@ class TipsHandler extends SimpleHandler {
 	 * @param string $tasktypeid
 	 * @param string $uselang
 	 * @return Response
-	 * @throws \MWException
+	 * @throws MWException
 	 */
 	public function run( string $skin, string $editor, string $tasktypeid, string $uselang
 	) {
@@ -37,12 +54,18 @@ class TipsHandler extends SimpleHandler {
 		if ( $uselang ) {
 			$context->setLanguage( $uselang );
 		}
-		$this->tipsBuilder->setMessageLocalizerAndInitParameterMapper( $context, $skin );
-		$this->tipsBuilder->getConfigurationLoader()
-			->setMessageLocalizer( $context );
-		return $this->getResponseFactory()->createJson(
-			$this->tipsBuilder->getTips( $skin, $editor, $tasktypeid, $context->getLanguage()->getDir() )
+		$this->tipsAssembler->setMessageLocalizer( $context );
+		$taskType = $this->configurationLoader->getTaskTypes()[$tasktypeid];
+		$response = $this->getResponseFactory()->createJson(
+			$this->tipsAssembler->getTips(
+				$skin,
+				$editor,
+				$taskType,
+				$context->getLanguage()->getDir()
+			)
 		);
+		$response->setHeader( 'Cache-Control', 'public, max-age=' . self::MAX_CACHE_AGE_SECONDS );
+		return $response;
 	}
 
 	public function needsWriteAccess() {
@@ -66,7 +89,7 @@ class TipsHandler extends SimpleHandler {
 				self::PARAM_SOURCE => 'path',
 				ApiBase::PARAM_REQUIRED => true,
 				ApiBase::PARAM_TYPE => array_keys(
-					$this->tipsBuilder->getConfigurationLoader()->getTaskTypes()
+					$this->configurationLoader->getTaskTypes()
 				)
 			],
 			'uselang' => [

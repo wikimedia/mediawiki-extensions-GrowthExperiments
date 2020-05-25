@@ -2,7 +2,8 @@
 
 use GrowthExperiments\AqsEditInfoService;
 use GrowthExperiments\EditInfoService;
-use GrowthExperiments\HelpPanel\Tips\TipsBuilder;
+use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
+use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
@@ -134,12 +135,20 @@ return [
 		);
 	},
 
-	'GrowthExperimentsTipsBuilder' => function (
+	'GrowthExperimentsTipsAssembler' => function (
 		MediaWikiServices $services
-	): TipsBuilder {
-		return new TipsBuilder(
-			$services->getMainConfig(),
-			$services->get( 'GrowthExperimentsConfigurationLoader' )
+	): TipsAssembler {
+		return new TipsAssembler(
+			$services->get( 'GrowthExperimentsConfigurationLoader' ),
+			$services->get( 'GrowthExperimentsTipNodeRenderer' )
+		);
+	},
+
+	'GrowthExperimentsTipNodeRenderer' => function (
+		MediaWikiServices $services
+	): TipNodeRenderer {
+		return new TipNodeRenderer(
+			$services->getMainConfig()->get( 'ExtensionAssetsPath' )
 		);
 	},
 
