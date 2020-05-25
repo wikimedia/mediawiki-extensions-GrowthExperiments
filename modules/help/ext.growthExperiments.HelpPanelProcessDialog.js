@@ -356,9 +356,10 @@
 			// Unlike the other panels, we have no padding on this one
 			// because of the design that has the navigation and header
 			// content of the panel with a solid constant background color.
-			padded: false,
-			expanded: false,
-			taskTypeData: taskTypeData[ this.taskTypeId ]
+			continuous: true,
+			taskTypeData: taskTypeData[ this.taskTypeId ],
+			guidanceEnabled: this.guidanceEnabled,
+			editorInterface: this.logger.getEditor()
 		} );
 		this.$suggestededitsFooter = this.suggestededitsPanel.getFooter();
 

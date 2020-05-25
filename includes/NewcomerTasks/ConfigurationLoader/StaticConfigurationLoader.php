@@ -39,6 +39,16 @@ class StaticConfigurationLoader implements ConfigurationLoader {
 	}
 
 	/** @inheritDoc */
+	public function getTaskTypes(): array {
+		if ( $this->taskTypes instanceof StatusValue ) {
+			return [];
+		}
+		return array_combine( array_map( function ( TaskType $taskType ) {
+			return $taskType->getId();
+		}, $this->taskTypes ), $this->taskTypes );
+	}
+
+	/** @inheritDoc */
 	public function loadTopics() {
 		return $this->topics;
 	}

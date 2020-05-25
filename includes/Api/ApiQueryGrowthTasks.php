@@ -150,7 +150,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 
 	/** @inheritDoc */
 	protected function getAllowedParams() {
-		$taskTypes = $this->getTaskTypes();
+		$taskTypes = $this->configurationLoader->getTaskTypes();
 		$topics = $this->getTopics();
 
 		return [
@@ -184,20 +184,6 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_DFLT => false,
 			],
 		];
-	}
-
-	/**
-	 * @return TaskType[] Array of task type id => task type
-	 */
-	protected function getTaskTypes() {
-		$taskTypes = $this->configurationLoader->loadTaskTypes();
-		if ( $taskTypes instanceof StatusValue ) {
-			// Can't show errors here, we'll have to let the user call the API and get them that way.
-			return [];
-		}
-		return array_combine( array_map( function ( TaskType $taskType ) {
-			return $taskType->getId();
-		}, $taskTypes ), $taskTypes ) ?: [];
 	}
 
 	/**

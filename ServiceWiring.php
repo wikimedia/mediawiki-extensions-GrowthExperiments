@@ -2,6 +2,7 @@
 
 use GrowthExperiments\AqsEditInfoService;
 use GrowthExperiments\EditInfoService;
+use GrowthExperiments\HelpPanel\Tips\TipsBuilder;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
@@ -130,6 +131,15 @@ return [
 			$services->getMainObjectStash(),
 			$services->getTitleFactory(),
 			LoggerFactory::getInstance( 'GrowthExperiments' )
+		);
+	},
+
+	'GrowthExperimentsTipsBuilder' => function (
+		MediaWikiServices $services
+	): TipsBuilder {
+		return new TipsBuilder(
+			$services->getMainConfig(),
+			$services->get( 'GrowthExperimentsConfigurationLoader' )
 		);
 	},
 

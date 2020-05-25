@@ -209,7 +209,57 @@
 
 	.suggested-edits-panel {
 		&-quick-start-tips {
-			padding: 16px;
+			&-content {
+				padding: 0 16px;
+				color: @colorGray2;
+
+				.growthexperiments-quickstart-tips-tip {
+					padding: 8px 0;
+
+					mark {
+						mix-blend-mode: multiply;
+						padding: 2px;
+					}
+
+					mark.positive {
+						background-color: @wmui-color-accent90;
+					}
+
+					mark.negative {
+						background-color: @wmui-color-red90;
+					}
+
+					&-main {
+						line-height: 1.6;
+						color: @wmui-color-base10;
+					}
+
+					&-example {
+						border-radius: 2px;
+						border: solid 1px @wmui-color-base80;
+						background-color: @wmui-color-base90;
+
+						&-text {
+							line-height: 1.43;
+							color: @wmui-color-base10;
+							padding: 12px;
+
+							sup {
+								color: #0645ad;
+							}
+						}
+					}
+
+					&-text {
+						color: @wmui-color-base20;
+						line-height: 1.43;
+					}
+
+					&-graphic {
+						max-width: 64px;
+					}
+				}
+			}
 		}
 
 		&-footer {
