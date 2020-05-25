@@ -32,8 +32,11 @@ describe( 'GET quickstarttips', () => {
 		editors.forEach( ( editor ) => {
 			taskTypeIds.forEach( ( taskTypeId ) => {
 				it( `should get tips for ${skin} / ${editor} / ${taskTypeId} without an HTTP error`, async () => {
-					const { status: sourceStatus } =
+					const { status: sourceStatus, body: sourceBody } =
 						await client.get( `/${skin}/${editor}/${taskTypeId}/en` );
+					if ( taskTypeId === 'references' ) {
+						assert.equal( 7, Object.keys( sourceBody ).length );
+					}
 					assert.equal( sourceStatus, 200 );
 				} );
 			} );
