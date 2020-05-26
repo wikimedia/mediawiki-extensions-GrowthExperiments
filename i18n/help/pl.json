@@ -6,7 +6,8 @@
 			"FunPL",
 			"Rail",
 			"Tar Lócesilion",
-			"Woytecr"
+			"Woytecr",
+			"Wpedzich"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Włącz panel pomocy podczas edycji",
@@ -22,6 +23,9 @@
 	"growthexperiments-help-panel-home-title": "Pomoc w edytowaniu",
 	"growthexperiments-help-panel-postedit-success-message": "{{GENDER:|Zapisałeś|Zapisałaś}} edycję. Dzięki za pomoc i tak trzymaj!",
 	"growthexperiments-help-panel-postedit-header": "Następne kroki",
+	"growthexperiments-help-panel-postedit-subheader": "Inna sugestia tematu:",
+	"growthexperiments-help-panel-postedit-footer": "Przejrzyj więcej sugerowanych edycji",
+	"growthexperiments-help-panel-postedit-footer2": "Zamknij i ponownie edytuj ten sam artykuł",
 	"growthexperiments-help-panel-questionreview-title": "Zadaj pytanie",
 	"growthexperiments-help-panel-questionreview-header": "Gdy wysyłasz zapytanie, zostanie ono <strong>umieszczone publicznie</strong>, pod Twoją nazwą użytkownika, \"$2\", na $1, gdzie inny wolontariusz spróbuje udzielić odpowiedzi.",
 	"growthexperiments-help-panel-questionreview-label": "Twoje pytanie",
@@ -49,10 +53,15 @@
 	"growthexperiments-help-panel-questioncomplete-first-edit": "Przy okazji: publikując to pytanie, {{GENDER:|dokonałeś|dokonałaś}} swojej pierwszej edycji strony. Gratulacje!",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Wyłącz to narzędzie w preferencjach",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Nieprawidłowy tytuł.",
+	"growthexperiments-help-panel-community-help-desk-text": "Centrum pomocy",
 	"growthexperiments-help-panel-search-label": "Przeszukaj pomoc",
 	"growthexperiments-help-panel-search-no-results": "Nie znaleziono żadnych wyników.",
 	"tag-help_panel_question": "Pytanie z panelu pomocy",
 	"tag-help_panel_question-description": "Edycja wykonana z funkcji wysyłania zapytania w oknie pomocy edycyjnej",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Sugerowane edycje",
+	"growthexperiments-help-panel-button-header-ask-help": "Poproś o pomoc",
+	"growthexperiments-help-panel-button-header-general-help": "Ogólne wskazówki dotyczące edytowania",
+	"growthexperiments-help-panel-button-subheader-general-help": "Poszukaj odpowiedzi lub przeczytaj najpopularniejsze artykuły",
+	"growthexperiments-help-panel-button-subheader-ask-help": "Zapytaj innych wolontariuszy",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Porady na szybki start"
 }
