@@ -35,7 +35,7 @@ class TipsBuilder {
 	// variant. For now, while messages can be varied by skin/editor, the number
 	// of tip steps is fixed across all variants.
 	private const TIP_SET_NAMES = [
-		'1', '2', '3', '4', '5', '6', '7', '8'
+		'value', 'calm', 'rules1', 'rules2', 'step1', 'step2', 'step3', 'publish'
 	];
 
 	private const DEFAULT_EDITOR = 'visualeditor';
@@ -92,9 +92,11 @@ class TipsBuilder {
 	): array {
 		OutputPage::setupOOUI( $skinName, $dir );
 		$result = [];
+		$i = 1;
 		/** @var TipSet $tipSet */
 		foreach ( $this->getTipSets( $skinName, $editor, $taskTypeId ) as $tipSet ) {
-			$result[$tipSet->getStep()] = $tipSet->render( $this->parameterMapper );
+			$result[$i] = $tipSet->render( $this->parameterMapper );
+			$i++;
 		}
 		return $result;
 	}

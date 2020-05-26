@@ -98,13 +98,13 @@ class ParameterMapper {
 	private function getMap() :array {
 		return [
 			'copyedit' => [
-				'2' => [
+				'calm' => [
 					'graphic' => [ $this->getImgSrcCallback( 'intro-typo', '.svg' ) ]
 				],
-				'5' => [
+				'step1' => [
 					'main' => [ $this->getViewEditMessageCallback() ]
 				],
-				'6' => [
+				'publish' => [
 					'main' => [ $this->getMessageCallback( 'publishchanges-start' ) ],
 					'text' => [
 						$this->getLearnMoreTitleCallback( false, true )
@@ -112,16 +112,16 @@ class ParameterMapper {
 				],
 			],
 			'links' => [
-				'4' => [
+				'step1' => [
 					'main' => [ $this->getViewEditMessageCallback() ],
 				],
-				'5' => [
+				'step2' => [
 					'main' => [
 						$this->getMessageCallback( 'visualeditor-annotationbutton-link-tooltip' ),
 						$this->getIconCallback( 'link' )
 					],
 				],
-				'6' => [
+				'publish' => [
 					'main' => [
 						$this->getMessageCallback( 'publishchanges-start' )
 					],
@@ -129,17 +129,17 @@ class ParameterMapper {
 				]
 			],
 			'update' => [
-				'4' => [
+				'step1' => [
 					'main' => [
 						$this->getViewEditMessageCallback()
 					],
 				],
-				'5' => [
+				'step2' => [
 					'main' => [
 						$this->getLearnMoreTitleCallback( true )
 					],
 				],
-				'6' => [
+				'publish' => [
 					'main' => [
 						$this->getMessageCallback( 'publishchanges-start' )
 					],
@@ -147,17 +147,17 @@ class ParameterMapper {
 				],
 			],
 			'expand' => [
-				'4' => [
+				'step1' => [
 					'main' => [
 						$this->getViewEditMessageCallback()
 					],
 				],
-				'5' => [
+				'step2' => [
 					'main' => [
 						$this->getLearnMoreTitleCallback( true )
 					],
 				],
-				'6' => [
+				'publish' => [
 					'main' => [
 						$this->getMessageCallback( 'publishchanges-start' )
 					],
@@ -165,12 +165,12 @@ class ParameterMapper {
 				],
 			],
 			'references' => [
-				'4' => [
+				'step1' => [
 					'main' => [
 						$this->getViewEditMessageCallback()
 					]
 				],
-				'5' => [
+				'step2' => [
 					'main' => [
 						$this->getIconCallback( 'browser' ),
 						$this->getIconCallback( 'book' ),
@@ -178,13 +178,13 @@ class ParameterMapper {
 						$this->getIconCallback( 'reference' ),
 					]
 				],
-				'6' => [
+				'step3' => [
 					'main' => [
 						$this->getMessageCallback( 'cite-ve-toolbar-group-label' ),
 						$this->getIconCallback( 'quotes', 'cite-ve-toolbar-group-label', true )
 					],
 				],
-				'7' => [
+				'publish' => [
 					'main' => [
 						$this->getMessageCallback( 'publishchanges-start' )
 					],
