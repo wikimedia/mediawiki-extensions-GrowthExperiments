@@ -365,7 +365,7 @@
 
 		this.askhelpPanel = new OO.ui.PanelLayout( {
 			padded: true,
-			expanded: false
+			expanded: true
 		} );
 
 		this.generalhelpPanel = new OO.ui.PanelLayout( {
@@ -375,7 +375,7 @@
 
 		this.questioncompletePanel = new OO.ui.PanelLayout( {
 			padded: true,
-			expanded: false
+			expanded: true
 		} );
 
 		// Fields

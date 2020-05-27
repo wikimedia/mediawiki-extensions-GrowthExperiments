@@ -56,7 +56,7 @@
 		return QuestionPosterDialog.super.prototype.getSetupProcess
 			.call( this, data )
 			.next( function () {
-				this.setMode( 'ask-help' );
+				this.swapPanel( 'ask-help' );
 			}, this );
 	};
 
