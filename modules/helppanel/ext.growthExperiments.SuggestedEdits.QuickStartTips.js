@@ -6,24 +6,25 @@
 	/**
 	 * @param {string} taskTypeID The task type ID
 	 * @param {string} editorInterface The editor interface
-	 * @return {jQuery}
+	 * @return {jQuery.Promise} Promise that resolves with an OO.ui.StackLayout
 	 */
 	function getTips( taskTypeID, editorInterface ) {
 		var indexLayout = new OO.ui.IndexLayout( {
 				framed: false,
-				expanded: true,
+				expanded: false,
 				classes: [ 'suggested-edits-panel-quick-start-tips-pager' ]
 			} ),
 			stackLayout = new OO.ui.StackLayout( {
 				classes: [ 'suggested-edits-panel-quick-start-tips-content' ],
 				continuous: true,
-				scrollable: false
+				scrollable: true,
+				expanded: false
 			} ),
 			tipPanels = [],
 			tipPanel,
 			contentPanel = new OO.ui.PanelLayout( {
 				padded: false,
-				expanded: true
+				expanded: false
 			} ),
 			// Assume VE if in reading mode, since clicking Edit won't trigger
 			// a page reload, and we currently don't vary messages by reading
@@ -54,13 +55,13 @@
 			stackLayout.addItems( [
 				new OO.ui.PanelLayout( {
 					padded: false,
-					expanded: true,
+					expanded: false,
 					$content: $( '<h4>' ).addClass( 'suggested-edits-panel-quick-start-tips' )
 						.text( mw.message( 'growthexperiments-help-panel-suggestededits-quick-start-tips' ).text() )
 				} ),
 				contentPanel
 			] );
-			return stackLayout.$element;
+			return stackLayout;
 		}, function ( err, details ) {
 			mw.log.error( 'Unable to load quick start tips', err, details );
 		} );

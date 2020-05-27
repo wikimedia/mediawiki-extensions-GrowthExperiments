@@ -4,16 +4,17 @@
 	function QuickStartTipsTabPanelLayout( name, config ) {
 		var key, panel;
 		QuickStartTipsTabPanelLayout.super.call( this, name,
-			$.extend( { scrollable: false }, config )
+			$.extend( { scrollable: false, expanded: false }, config )
 		);
 		this.stackLayout = new OO.ui.StackLayout( {
 			continuous: true,
+			expanded: false,
 			scrollable: false
 		} );
 		for ( key in config.data ) {
 			panel = new OO.ui.PanelLayout( {
 				padded: false,
-				expanded: true
+				expanded: false
 			} );
 			panel.$element.append( config.data[ key ] );
 			this.stackLayout.addItems( [ panel ] );

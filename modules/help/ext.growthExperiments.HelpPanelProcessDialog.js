@@ -136,12 +136,6 @@
 			.removeClass( 'mw-ge-help-panel-processdialog-activepanel-' + this.currentPanel )
 			.addClass( 'mw-ge-help-panel-processdialog-activepanel-' + panel );
 
-		if ( panel === 'suggested-edits' && this.pageMode === 'read' ) {
-			this.$body.append( this.$suggestededitsFooter );
-		} else {
-			this.$suggestededitsFooter.detach();
-		}
-
 		if ( panel === 'home' ) {
 			this.toggleSearchResults( false );
 			this.settingsCog.toggle( true );
@@ -356,12 +350,10 @@
 			// Unlike the other panels, we have no padding on this one
 			// because of the design that has the navigation and header
 			// content of the panel with a solid constant background color.
-			continuous: true,
 			taskTypeData: taskTypeData[ this.taskTypeId ],
 			guidanceEnabled: this.guidanceEnabled,
 			editorInterface: this.logger.getEditor()
 		} );
-		this.$suggestededitsFooter = this.suggestededitsPanel.getFooter();
 
 		this.askhelpPanel = new OO.ui.PanelLayout( {
 			padded: true,
@@ -539,6 +531,7 @@
 
 	HelpPanelProcessDialog.prototype.setEditMode = function () {
 		this.pageMode = 'edit';
+		this.suggestededitsPanel.hideFooter();
 		if ( this.currentMode === 'suggested-edits-read' ) {
 			this.swapPanel( 'home' );
 		}
