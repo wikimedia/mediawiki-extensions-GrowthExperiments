@@ -13,7 +13,11 @@
 	 * @constructor
 	 */
 	function SuggestedEditsPanel( config ) {
-		SuggestedEditsPanel.super.call( this, config );
+		SuggestedEditsPanel.super.call( this, $.extend( {
+			expanded: false,
+			scrollable: false,
+			continuous: true
+		}, config ) );
 		this.config = config;
 		if ( !config.taskTypeData || !config.guidanceEnabled ) {
 			return;
@@ -30,20 +34,25 @@
 	 */
 	SuggestedEditsPanel.prototype.build = function () {
 		this.$element.addClass( 'suggested-edits-panel' );
-		quickStartTips.getTips( this.taskTypeData.id, this.editorInterface ).then( function ( tips ) {
-			this.addItems( [
-				new OO.ui.PanelLayout( {
-					padded: false,
-					expanded: true,
-					$content: this.getHeader()
-				} ),
-				new OO.ui.PanelLayout( {
-					padded: true,
-					expanded: true,
-					$content: tips
-				} )
-			] );
+		quickStartTips.getTips( this.taskTypeData.id, this.editorInterface ).then( function ( tipsPanel ) {
+			this.headerPanel = new OO.ui.PanelLayout( {
+				padded: false,
+				expanded: false,
+				$content: this.getHeader()
+			} );
+			this.footerPanel = new OO.ui.PanelLayout( {
+				// Padding is set on the text itself in CSS
+				padded: false,
+				expanded: false,
+				classes: [ 'suggested-edits-panel-footer' ],
+				$content: this.getFooter()
+			} );
+			this.addItems( [ this.headerPanel, tipsPanel, this.footerPanel ] );
 		}.bind( this ) );
+	};
+
+	SuggestedEditsPanel.prototype.hideFooter = function () {
+		this.removeItems( [ this.footerPanel ] );
 	};
 
 	/**
@@ -68,13 +77,12 @@
 	 * @return {jQuery}
 	 */
 	SuggestedEditsPanel.prototype.getFooter = function () {
-		return $( '<footer>' ).addClass( 'suggested-edits-panel-footer' ).append(
-			$( '<div>' ).addClass( 'suggested-edits-panel-footer-text' )
-				// The following messages are used here:
-				// * growthexperiments-help-panel-suggestededits-footer-mobile
-				// * growthexperiments-help-panel-suggestededits-footer-desktop
-				.html( mw.message( 'growthexperiments-help-panel-suggestededits-footer-' +
-					( OO.ui.isMobile() ? 'mobile' : 'desktop' ) ).parse() ) );
+		return $( '<div>' ).addClass( 'suggested-edits-panel-footer-text' )
+			// The following messages are used here:
+			// * growthexperiments-help-panel-suggestededits-footer-mobile
+			// * growthexperiments-help-panel-suggestededits-footer-desktop
+			.html( mw.message( 'growthexperiments-help-panel-suggestededits-footer-' +
+				( OO.ui.isMobile() ? 'mobile' : 'desktop' ) ).parse() );
 	};
 
 	module.exports = SuggestedEditsPanel;
