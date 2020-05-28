@@ -522,12 +522,12 @@ class HomepageHooks {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UserSaveOptions
 	 * @param User $user User whose options are being saved
 	 * @param array &$options Options can be modified
+	 * @param array $originalOptions Original options being replaced
 	 * @return bool true in all cases
 	 */
-	public static function onUserSaveOptions( $user, &$options ) {
-		$oldUser = User::newFromId( $user->getId() );
+	public static function onUserSaveOptions( $user, &$options, $originalOptions ) {
 		$homepagePrefEnabled = $options[self::HOMEPAGE_PREF_ENABLE] ?? false;
-		$homepageAlreadyEnabled = $oldUser->getOption( self::HOMEPAGE_PREF_ENABLE );
+		$homepageAlreadyEnabled = $originalOptions[self::HOMEPAGE_PREF_ENABLE] ?? false;
 		$userHasMentor = $user->getIntOption( Mentor::MENTOR_PREF );
 		if ( $homepagePrefEnabled && !$homepageAlreadyEnabled && !$userHasMentor ) {
 			try {
