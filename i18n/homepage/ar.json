@@ -20,7 +20,7 @@
 	"growthexperiments-homepage-start-header": "{{GENDER:$1|ابدأ|ابدئي}} من هنا",
 	"growthexperiments-homepage-account-header": "تم إنشاء الحساب",
 	"growthexperiments-homepage-account-editcount": "{{PLURAL:$1|لا تعديلات|تعديل واحد|تعديلان اثنان|$1 تعديلات|$1 تعديلا|$1 تعديل}}",
-	"growthexperiments-homepage-account-age": "حسابك فعالٌ منذ $1",
+	"growthexperiments-homepage-account-age": "حسابك فعال منذ $1",
 	"growthexperiments-homepage-userpage-header": "{{GENDER:$1|أنشئ|أنشئي}} صفحة {{GENDER:$1|المستخدم|المستخدمة}} الخاصة بك",
 	"growthexperiments-homepage-userpage-header-done": "{{GENDER:$1|عدل|عدلي}} صفحة {{GENDER:$1|المستخدم|المستخدمة}} الخاصة بك",
 	"growthexperiments-homepage-userpage-body": "{{GENDER:$1|تدرب|تدربي}} على التعديل أثناء انشاء ملفك الشخصي العلني.",

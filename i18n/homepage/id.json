@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Diki Ananta",
 			"Pebaryan",
 			"Veracious"
 		]
 	},
-	"growthexperiments-homepage-specialpage-title": "Beranda {{GENDER:$1|Anda}}",
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Halo}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-email-header-confirmed": "Alamat surel ditambahkan",
 	"growthexperiments-homepage-impact-article-link-tooltip": "Ke artikel",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Lihat rincian penayangan halaman"
