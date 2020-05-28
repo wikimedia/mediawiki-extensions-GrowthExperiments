@@ -528,7 +528,9 @@ class HomepageHooks {
 	public static function onUserSaveOptions( $user, &$options, $originalOptions ) {
 		$homepagePrefEnabled = $options[self::HOMEPAGE_PREF_ENABLE] ?? false;
 		$homepageAlreadyEnabled = $originalOptions[self::HOMEPAGE_PREF_ENABLE] ?? false;
-		$userHasMentor = $user->getIntOption( Mentor::MENTOR_PREF );
+		$userHasMentor = MediaWikiServices::getInstance()
+			->getUserOptionsLookup()
+			->getIntOption( $user, Mentor::MENTOR_PREF );
 		if ( $homepagePrefEnabled && !$homepageAlreadyEnabled && !$userHasMentor ) {
 			try {
 				$mentor = Mentor::newFromMentee( $user, true );
