@@ -33,13 +33,20 @@
 	 * Appends the header, quickstart tips, and footer to the panel.
 	 */
 	SuggestedEditsPanel.prototype.build = function () {
-		this.$element.addClass( 'suggested-edits-panel' );
+		this.$element.addClass( 'suggested-edits-panel suggested-edits-panel-with-footer' );
 		quickStartTips.getTips( this.taskTypeData.id, this.editorInterface ).then( function ( tipsPanel ) {
-			this.headerPanel = new OO.ui.PanelLayout( {
-				padded: false,
-				expanded: false,
-				$content: this.getHeader()
-			} );
+			var headerPanel = new OO.ui.PanelLayout( {
+					padded: false,
+					expanded: false,
+					$content: this.getHeader()
+				} ),
+				headerAndTipsPanel = new OO.ui.StackLayout( {
+					padded: false,
+					expanded: false,
+					continuous: true,
+					scrollable: true,
+					classes: [ 'suggested-edits-panel-headerAndTips' ]
+				} );
 			this.footerPanel = new OO.ui.PanelLayout( {
 				// Padding is set on the text itself in CSS
 				padded: false,
@@ -47,12 +54,15 @@
 				classes: [ 'suggested-edits-panel-footer' ],
 				$content: this.getFooter()
 			} );
-			this.addItems( [ this.headerPanel, tipsPanel, this.footerPanel ] );
+
+			headerAndTipsPanel.addItems( [ headerPanel, tipsPanel ] );
+			this.addItems( [ headerAndTipsPanel, this.footerPanel ] );
 		}.bind( this ) );
 	};
 
 	SuggestedEditsPanel.prototype.hideFooter = function () {
 		this.removeItems( [ this.footerPanel ] );
+		this.$element.removeClass( 'suggested-edits-panel-with-footer' );
 	};
 
 	/**
