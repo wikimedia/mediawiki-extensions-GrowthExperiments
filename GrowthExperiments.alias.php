@@ -36,6 +36,14 @@ $specialPageAliases['cs'] = [
 	'ClaimMentee' => [ 'Převzít_nováčka' ],
 ];
 
+/** Persian (فارسی) */
+$specialPageAliases['fa'] = [
+	'WelcomeSurvey' => [ 'پرسشنامه_خوشامد' ],
+	'Homepage' => [ 'خانه' ],
+	'Impact' => [ 'تاثیر' ],
+	'ClaimMentee' => [ 'آموزش تازه‌کار' ],
+];
+
 /** French (français) */
 $specialPageAliases['fr'] = [
 	'WelcomeSurvey' => [ 'Suivi_des_premiers_clics' ],
