@@ -47,7 +47,7 @@ QUnit.module( 'HelpPanelLogger', {
 	QUnit.test( 'log', function ( assert ) {
 		var helpPanelLogger = new HelpPanelLogger( true, {
 			context: 'reading',
-			editorInterface: 'visualeditor',
+			previousEditorInterface: 'visualeditor',
 			sessionId: 'foo'
 		} );
 		// eslint-disable-next-line camelcase

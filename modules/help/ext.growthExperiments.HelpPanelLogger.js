@@ -9,7 +9,9 @@
 	 * @param {boolean} enabled
 	 * @param {Object} [config]
 	 * @cfg string [context] Allow overriding the context field for all events
-	 * @cfg string [editorInterface] Allow overriding the editor_interface field for all events
+	 * @cfg string [previousEditorInterface] Type of the last editor the user made an edit with,
+	 *   if known. Used for editor_interface if the type of editor cannot be determined on the fly
+	 *   (ie. we are not editing right now).
 	 * @cfg string [isSuggestedTask] Allow overriding the is_suggested_task field for all events.
 	 *   This must be set for suggested edits, the logger does not try to detect them.
 	 * @cfg string [sessionId] Allow overriding the help_panel_session_id field for all events
@@ -20,9 +22,8 @@
 		this.enabled = enabled;
 		this.userEditCount = mw.config.get( 'wgUserEditCount' );
 		this.isMobile = OO.ui.isMobile();
-		this.previousEditorInterface = '';
+		this.previousEditorInterface = config.previousEditorInterface || null;
 		this.context = config.context || null;
-		this.editorInterface = config.editorInterface || null;
 		this.isSuggestedTask = config.isSuggestedTask || false;
 		this.helpPanelSessionId = config.sessionId || mw.user.generateRandomSessionId();
 	}
@@ -117,11 +118,6 @@
 	 * @return {string}
 	 */
 	HelpPanelLogger.prototype.getEditor = function () {
-		// Manual override
-		if ( this.editorInterface ) {
-			return this.editorInterface;
-		}
-
 		if ( this.isEditing() ) {
 			return this.getCurrentEditor();
 		} else {
