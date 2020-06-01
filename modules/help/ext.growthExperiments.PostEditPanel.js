@@ -99,7 +99,7 @@
 	 * @return {jQuery} A jQuery object wrapping the card element.
 	 */
 	PostEditPanel.prototype.getCard = function ( task ) {
-		var $image, title, $title, $description, $pageviews, $taskType, $cardTextContainer, $card,
+		var $image, url, params, $title, $description, $pageviews, $taskType, $cardTextContainer, $card,
 			taskTypeData = this.taskTypes[ task.tasktype ];
 
 		if ( task.thumbnailSource ) {
@@ -112,10 +112,17 @@
 				.addClass( 'mw-ge-help-panel-postedit-card-image-placeholder' );
 		}
 
-		if ( task.pageId ) {
-			title = new mw.Title( 'Special:Homepage/newcomertask/' + task.pageId );
+		params = {
+			geclickid: this.helpPanelLogger.helpPanelSessionId,
+			getasktype: task.tasktype
+		};
+		if ( task.url ) {
+			// Override for developer setups
+			url = task.url;
+		} else if ( task.pageId ) {
+			url = new mw.Title( 'Special:Homepage/newcomertask/' + task.pageId ).getUrl( params );
 		} else {
-			title = new mw.Title( task.title );
+			url = new mw.Title( task.title ).getUrl( params );
 		}
 		$title = $( '<span>' )
 			.addClass( 'mw-ge-help-panel-postedit-card-title' )
@@ -146,10 +153,7 @@
 			.append( $title, $description, $pageviews, $taskType );
 		$card = $( '<a>' )
 			.addClass( 'mw-ge-help-panel-postedit-card' )
-			.attr( 'href', title.getUrl( {
-				geclickid: this.helpPanelLogger.helpPanelSessionId,
-				getasktype: this.nextTask.tasktype
-			} ) )
+			.attr( 'href', url )
 			.on( 'click', this.logTaskClick.bind( this ) )
 			.append( $image, $cardTextContainer );
 		return $card;

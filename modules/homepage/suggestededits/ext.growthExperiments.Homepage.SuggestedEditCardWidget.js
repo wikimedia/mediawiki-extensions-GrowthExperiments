@@ -12,21 +12,24 @@
 	 * @constructor
 	 */
 	function SuggestedEditCardWidget( data ) {
-		var title;
+		var url;
 		SuggestedEditCardWidget.super.call( this, data );
 		this.data = data;
 
-		if ( data.pageId ) {
-			title = new mw.Title( 'Special:Homepage/newcomertask/' + data.pageId );
+		if ( data.url ) {
+			// Override for developer setups
+			url = data.url;
+		} else if ( data.pageId ) {
+			url = new mw.Title( 'Special:Homepage/newcomertask/' + data.pageId ).getUrl();
 		} else {
-			title = new mw.Title( data.title );
+			url = new mw.Title( data.title ).getUrl();
 		}
 
 		this.$element.append(
 			$( '<div>' ).addClass( 'suggested-edits-task-card-wrapper' )
 				.append(
 					$( '<a>' )
-						.attr( 'href', mw.util.getUrl( title.toString() ) )
+						.attr( 'href', url )
 						.addClass( 'se-card-content' )
 						.append(
 							this.getImageContent(),
