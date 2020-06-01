@@ -342,7 +342,7 @@
 	 *   SuggestedEditsModule.taskQueue will be updated.
 	 */
 	SuggestedEditsModule.prototype.getExtraDataAndUpdateQueue = function ( taskQueuePosition ) {
-		var pcsPromise, aqsPromise,
+		var pcsPromise, aqsPromise, preloaded,
 			suggestedEditData = this.taskQueue[ taskQueuePosition ];
 		if ( !suggestedEditData ) {
 			return $.Deferred().resolve().promise();
@@ -350,6 +350,14 @@
 
 		pcsPromise = this.api.getExtraDataFromPcs( suggestedEditData );
 		aqsPromise = this.api.getExtraDataFromAqs( suggestedEditData );
+		// We might have the thumbnail URL already, or we might receive it later from PCS.
+		// Start preloading as soon as possible.
+		preloaded = this.preloadCardImage( suggestedEditData );
+		if ( !preloaded ) {
+			pcsPromise.done( function () {
+				this.preloadCardImage( suggestedEditData );
+			}.bind( this ) );
+		}
 		return $.when( pcsPromise, aqsPromise ).then( function () {
 			// Data is updated in-place so this is probably not necessary, but just in case
 			// something replaced the object, re-replace it for good measure.
@@ -359,6 +367,19 @@
 			// calls are for supplemental data; we just need to catch any exception
 			// so that the card can render with the data we have from ApiQueryGrowthTasks.
 		} );
+	};
+
+	/**
+	 * Preload the task card image.
+	 * @param {Object} task Task data, as returned by GrowthTasksApi.
+	 * @return {boolean} Whether preloading has been started.
+	 */
+	SuggestedEditsModule.prototype.preloadCardImage = function ( task ) {
+		if ( task.thumbnailSource ) {
+			$( '<img>' ).attr( 'src', task.thumbnailSource );
+			return true;
+		}
+		return false;
 	};
 
 	/**

@@ -317,8 +317,8 @@
 
 		if ( task.thumbnailSource && task.imageWidth ) {
 			data = mw.util.parseImageUrl( task.thumbnailSource );
-			if ( data && data.urlTemplate && data.width < newWidth && task.imageWidth > newWidth ) {
-				task.thumbnailSource = data.urlTemplate.replace( '{width}', newWidth );
+			if ( data && data.resizeUrl && data.width < newWidth && task.imageWidth > newWidth ) {
+				task.thumbnailSource = data.resizeUrl( newWidth );
 			}
 		}
 		return task;
