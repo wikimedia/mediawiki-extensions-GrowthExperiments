@@ -32,6 +32,15 @@ class HelpPanelHooks {
 				'type' => 'api',
 			];
 		}
+
+		$context = RequestContext::getMain();
+		if ( SuggestedEdits::isGuidanceEnabledForAnyone( $context )
+			&& $context->getConfig()->get( 'GENewcomerTasksGuidanceRequiresOptIn' )
+		) {
+			$preferences[SuggestedEdits::GUIDANCE_ENABLED_PREF] = [
+				'type' => 'api',
+			];
+		}
 	}
 
 	/**
@@ -93,7 +102,7 @@ class HelpPanelHooks {
 			$out->addHTML( HelpPanel::getHelpPanelCtaButton( Util::isMobile( $skin ) ) );
 		}
 
-		if ( SuggestedEdits::isGuidanceEnabledForAnyone( $out->getContext() ) ) {
+		if ( SuggestedEdits::isGuidanceEnabled( $out->getContext() ) ) {
 			$out->addJsConfigVars( [ 'wgGENewcomerTasksGuidanceEnabled' => true ] );
 		}
 

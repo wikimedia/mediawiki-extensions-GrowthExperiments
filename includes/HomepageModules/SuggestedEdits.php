@@ -11,6 +11,7 @@ use Html;
 use IContextSource;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\MediaWikiServices;
 use Message;
 use Status;
 use StatusValue;
@@ -29,6 +30,7 @@ class SuggestedEdits extends BaseModule {
 	public const TOPICS_ORES_PREF = 'growthexperiments-homepage-se-ores-topic-filters';
 	public const TOPICS_ENABLED_PREF = 'growthexperiments-homepage-suggestededits-topics-enabled';
 	public const TASKTYPES_PREF = 'growthexperiments-homepage-se-filters';
+	public const GUIDANCE_ENABLED_PREF = 'growthexperiments-guidance-enabled';
 	/**
 	 * Used to keep track of the state of user interactions with suggested edits per type per skin.
 	 * See also HomepageHooks::onLocalUserCreated
@@ -126,6 +128,19 @@ class SuggestedEdits extends BaseModule {
 	 */
 	public static function isGuidanceEnabledForAnyone( IContextSource $context ) :bool {
 		return $context->getConfig()->get( 'GENewcomerTasksGuidanceEnabled' );
+	}
+
+	/**
+	 * Check if guidance feature is enabled for suggested edits.
+	 *
+	 * @param IContextSource $context
+	 * @return bool
+	 */
+	public static function isGuidanceEnabled( IContextSource $context ) :bool {
+		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
+		return self::isGuidanceEnabledForAnyone( $context ) && (
+			!$context->getConfig()->get( 'GENewcomerTasksGuidanceRequiresOptIn' ) ||
+			$userOptionsLookup->getBoolOption( $context->getUser(), self::GUIDANCE_ENABLED_PREF ) );
 	}
 
 	/** @inheritDoc */
