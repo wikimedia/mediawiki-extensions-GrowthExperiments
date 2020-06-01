@@ -66,7 +66,7 @@ class Account extends BaseTaskModule {
 		$editsSection = $this->buildSection(
 			'editcount',
 			$this->getContext()->msg( 'growthexperiments-homepage-account-editcount' )
-				->params( $this->getContext()->getUser()->getEditCount() )
+				->numParams( $this->getContext()->getUser()->getEditCount() )
 				->escaped(),
 			'span'
 		);
