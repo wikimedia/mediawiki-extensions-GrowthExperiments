@@ -791,7 +791,8 @@
 				"ext.growthExperiments.SuggestedEditSession"
 			],
 			"messages": [
-				"growthexperiments-help-panel-postedit-success-message",
+				"growthexperiments-help-panel-postedit-success-message-published",
+				"growthexperiments-help-panel-postedit-success-message-saved",
 				"growthexperiments-help-panel-postedit-header",
 				"growthexperiments-help-panel-postedit-subheader",
 				"growthexperiments-help-panel-postedit-footer",

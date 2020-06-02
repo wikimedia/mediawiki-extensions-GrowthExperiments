@@ -29,10 +29,20 @@
 	 * @return {OO.ui.MessageWidget}
 	 */
 	PostEditPanel.prototype.getSuccessMessage = function () {
+		var type = mw.config.get( 'wgEditSubmitButtonLabelPublish' ) ? 'published' : 'saved';
+		if ( mw.config.get( 'wgStableRevisionId' ) &&
+			mw.config.get( 'wgStableRevisionId' ) !== mw.config.get( 'wgRevisionId' )
+		) {
+			// FlaggedRevs wiki, the current revision needs review
+			type = 'saved';
+		}
 		return new OO.ui.MessageWidget( {
 			type: 'success',
 			classes: [ 'mw-ge-help-panel-postedit-message' ],
-			label: mw.message( 'growthexperiments-help-panel-postedit-success-message' ).text()
+			// The following messages are used here:
+			// * growthexperiments-help-panel-postedit-success-message-published
+			// * growthexperiments-help-panel-postedit-success-message-saved
+			label: mw.message( 'growthexperiments-help-panel-postedit-success-message-' + type ).text()
 		} );
 	};
 
