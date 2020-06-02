@@ -179,13 +179,9 @@
 		if ( veState === 'loading' || veState === 'loaded' || veState === 'ready' ) {
 			mw.loader.using( 'ext.visualEditor.desktopArticleTarget.init' ).done( function () {
 				mw.libs.ve.disableWelcomeDialog();
+				mw.libs.ve.disableEducationPopups();
 			} );
 		}
-		// HACK: change the user preferences only for this request, don't save the change
-		// with an API request like we normally would
-		mw.user.options.set( {
-			'visualeditor-hideusered': 1
-		} );
 	};
 
 	/**
