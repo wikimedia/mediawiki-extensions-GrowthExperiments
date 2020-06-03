@@ -168,6 +168,8 @@
 		}
 		this.setMode( newMode );
 		this.currentPanel = panel;
+
+		this.rebuildSettingsCog();
 	};
 
 	/**
@@ -260,25 +262,42 @@
 		) );
 	};
 
-	HelpPanelProcessDialog.prototype.buildSettingsCog = function () {
+	/**
+	 * Empty primary actions, construct a new settings cog, and place it in
+	 * primary actions.
+	 *
+	 * This allows for varying the settings cog contents per help panel screen.
+	 */
+	HelpPanelProcessDialog.prototype.rebuildSettingsCog = function () {
+		var $content = $( '<p>' ).append(
+			mw.html.element( 'a', {
+				href: new mw.Title( 'Special:Preferences#mw-prefsection-editing' ).getUrl(),
+				target: '_blank',
+				'data-link-id': 'special-preferences'
+			}, mw.message( 'growthexperiments-help-panel-settings-cog-preferences-link' ).text() ),
+			mw.html.element( 'a', {
+				href: 'https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Focus_on_help_desk/Help_panel',
+				target: '_blank',
+				'data-link-id': 'more-about-this-feature'
+			}, mw.message( 'growthexperiments-help-panel-questioncomplete-more-about-this-feature-text' ).text() )
+		);
+		this.$primaryActions.empty();
+		if ( this.guidanceEnabled && this.currentPanel === 'suggested-edits' ) {
+			$content.append(
+				mw.html.element( 'a', {
+					href: 'https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Suggested_edits',
+					target: '_blank',
+					'data-link-id': 'suggested-edits-faq'
+				}, mw.message( 'growthexperiments-help-panel-suggested-edits-faq-link-text' ).text() )
+			);
+		}
 		this.settingsCog = new OO.ui.PopupButtonWidget( {
 			$overlay: this.$element,
 			icon: 'ellipsis',
 			// Hack for styling
 			classes: [ 'mw-ge-help-panel-settings-cog', 'oo-ui-actionWidget' ],
 			popup: {
-				$content: $( '<p>' ).append(
-					mw.html.element( 'a', {
-						href: new mw.Title( 'Special:Preferences#mw-prefsection-editing' ).getUrl(),
-						target: '_blank',
-						'data-link-id': 'special-preferences'
-					}, mw.message( 'growthexperiments-help-panel-settings-cog-preferences-link' ).text() ),
-					mw.html.element( 'a', {
-						href: 'https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Focus_on_help_desk/Help_panel',
-						target: '_blank',
-						'data-link-id': 'more-about-this-feature'
-					}, mw.message( 'growthexperiments-help-panel-questioncomplete-more-about-this-feature-text' ).text() )
-				),
+				$content: $content,
 				padded: true,
 				width: 260,
 				classes: [ 'mw-ge-help-panel-settings-cog-content' ],
@@ -288,6 +307,7 @@
 			}
 		} );
 		this.settingsCog.popup.connect( this, { toggle: 'onCogMenuToggle' } );
+		this.$primaryActions.append( this.settingsCog.$element );
 	};
 
 	HelpPanelProcessDialog.prototype.onCogMenuToggle = function ( show ) {
@@ -317,7 +337,7 @@
 	HelpPanelProcessDialog.prototype.initialize = function () {
 		HelpPanelProcessDialog.super.prototype.initialize.call( this );
 
-		this.buildSettingsCog();
+		this.rebuildSettingsCog();
 		this.$content
 			.addClass( 'mw-ge-help-panel-processdialog' );
 
