@@ -13,20 +13,7 @@ describe( 'GET quickstarttips', () => {
 			console.error( error.text, error.code );
 		}
 		assert.equal( 200, sourceStatus );
-		assert.equal( '<img class="growthexperiments-quickstart-tips-tip growthexperiments-quickstart-tips-tip-graphic" src="/extensions/GrowthExperiments/images/intro-typo-ltr.svg" alt=""/>',
-			sourceBody[ '1' ][ 1 ] );
 		assert.equal( true, sourceBody[ '4' ][ 0 ].includes( '"Edit"' ) );
-	} );
-
-	it( 'rtl image is loaded for rtl languages', async () => {
-		const { status: sourceStatus, body: sourceBody, error: error } = await client.get( '/vector/visualeditor/copyedit/ar' );
-		if ( error ) {
-			// eslint-disable-next-line no-console
-			console.error( error.text, error.code );
-		}
-		assert.equal( 200, sourceStatus );
-		assert.equal( '<img class="growthexperiments-quickstart-tips-tip growthexperiments-quickstart-tips-tip-graphic" src="/extensions/GrowthExperiments/images/intro-typo-rtl.svg" alt=""/>',
-			sourceBody[ '1' ][ 1 ] );
 	} );
 
 	it( 'loads different messages varying by skin', async () => {
