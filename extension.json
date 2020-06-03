@@ -151,7 +151,7 @@
 	"attributes": {
 		"EventLogging": {
 			"Schemas": {
-				"HelpPanel": 20088183,
+				"HelpPanel": 20139784,
 				"HomepageModule": 20032959,
 				"NewcomerTask": 20032514
 			}
@@ -707,7 +707,8 @@
 				"growthexperiments-help-panel-button-header-general-help",
 				"growthexperiments-help-panel-button-subheader-general-help",
 				"growthexperiments-help-panel-button-subheader-ask-help",
-				"growthexperiments-help-panel-button-subheader-suggested-edits"
+				"growthexperiments-help-panel-button-subheader-suggested-edits",
+				"growthexperiments-help-panel-suggested-edits-faq-link-text"
 			],
 			"targets": [
 				"desktop",
