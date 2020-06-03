@@ -751,6 +751,9 @@
 		},
 		"ext.growthExperiments.HelpPanel.init": {
 			"scripts": "helppanel/ext.growthExperiments.HelpPanel.init.js",
+			"dependencies": [
+				"ext.growthExperiments.SuggestedEditSession"
+			],
 			"targets": [
 				"desktop",
 				"mobile"
