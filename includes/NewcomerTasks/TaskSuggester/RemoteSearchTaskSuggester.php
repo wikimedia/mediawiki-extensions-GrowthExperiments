@@ -91,6 +91,9 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 		$results = [];
 		foreach ( $data['query']['search'] ?? [] as $i => $result ) {
 			$title = $this->titleFactory->newFromText( $result['title'], $result['ns'] );
+			if ( !$title ) {
+				continue;
+			}
 			// The search API does not expose scores :( Put in something fake, just to ease testing.
 			$results[] = new FauxSearchResultWithScore( $title, 100 / ( $i + 1 ) );
 		}

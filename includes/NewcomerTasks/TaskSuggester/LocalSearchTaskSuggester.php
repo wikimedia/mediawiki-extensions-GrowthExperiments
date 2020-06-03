@@ -60,8 +60,9 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 			SearchEngine::FT_QUERY_INDEP_PROFILE_TYPE,
 			'classic_noboostlinks'
 		);
-		if ( $query->getSort() ) {
-			$searchEngine->setSort( $query->getSort() );
+		$sort = $query->getSort();
+		if ( $sort ) {
+			$searchEngine->setSort( $sort );
 		}
 		$matches = $searchEngine->searchText( $query->getQueryString() );
 		if ( $matches instanceof StatusValue ) {

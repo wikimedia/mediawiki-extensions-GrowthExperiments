@@ -53,9 +53,11 @@ class QuestionFormatter {
 	}
 
 	private function formatUnarchived() {
+		// @phan-suppress-next-line SecurityCheck-DoubleEscaped
 		return Html::rawElement(
 			'div',
 			[ 'class' => 'question-link-wrapper' ],
+			// @phan-suppress-next-line SecurityCheck-DoubleEscaped
 			Html::element(
 				'a',
 				[
@@ -69,9 +71,11 @@ class QuestionFormatter {
 	}
 
 	private function formatArchived() {
+		// @phan-suppress-next-line SecurityCheck-DoubleEscaped
 		return Html::rawElement(
 				'div',
 				[ 'class' => 'question-link-wrapper question-archived' ],
+				// @phan-suppress-next-line SecurityCheck-DoubleEscaped
 				Html::element(
 						'span',
 						[ 'class' => 'question-text' ],
