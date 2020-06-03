@@ -8,18 +8,7 @@ class CopyeditTipTree extends TipTree {
 	public function getTree(): array {
 		$steps = [
 			'value' => [ 'main' => [], 'example' => [], ],
-			'calm' => [
-				'main' => [],
-				'graphic' => [
-					[
-						'type' => self::TIP_DATA_TYPE_IMAGE,
-						'data' => [
-							'filename' => 'intro-typo',
-							'suffix' => 'svg'
-						]
-					]
-				]
-			],
+			'calm' => [ 'main' => [], ],
 			'rules1' => [ 'main' => [], 'example' => [], ],
 			'rules2' => [ 'main' => [], 'example' => [], 'text' => [] ],
 			'step1' => [ 'main' => [ $this->getEditMessageTipConfigData() ] ],
