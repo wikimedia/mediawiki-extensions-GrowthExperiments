@@ -42,6 +42,19 @@
 		this.postEditDialogNeedsToBeShown = false;
 		/** @var {boolean} Whether the post-edit dialog was already shown in this session. */
 		this.postEditDialogShown = false;
+		/** @var {boolean} Whether the mobile peek was already shown in this session. */
+		this.mobilePeekShown = false;
+		/** @var {boolean} Whether the help panel should be locked to its current panel. */
+		this.helpPanelShouldBeLocked = false;
+		/** @var {string|null} The current panel shown in the help panel. */
+		this.helpPanelCurrentPanel = null;
+		/** @var {boolean} Whether the help panel should open on page load. */
+		this.helpPanelShouldOpen = true;
+		/** @var {string|null} The current help panel tip visible.*/
+		this.helpPanelCurrentTip = null;
+		/** @var {boolean} Whether the user interacted with the help panel in
+		 * the suggested edits screen by navigating or clicking tips. */
+		this.helpPanelSuggestedEditsInteractionHappened = false;
 	}
 
 	/**
@@ -87,7 +100,13 @@
 			taskType: this.taskType,
 			editorInterface: this.editorInterface,
 			postEditDialogNeedsToBeShown: this.postEditDialogNeedsToBeShown,
-			postEditDialogShown: this.postEditDialogShown
+			postEditDialogShown: this.postEditDialogShown,
+			mobilePeekShown: this.mobilePeekShown,
+			helpPanelShouldBeLocked: this.helpPanelShouldBeLocked,
+			helpPanelCurrentPanel: this.helpPanelCurrentPanel,
+			helpPanelShouldOpen: this.helpPanelShouldOpen,
+			helpPanelCurrentTip: this.helpPanelCurrentTip,
+			helpPanelSuggestedEditsInteractionHappened: this.helpPanelSuggestedEditsInteractionHappened
 		} );
 		mw.config.set( 'ge-suggestededit-session', this );
 	};
@@ -122,6 +141,12 @@
 				this.editorInterface = data.editorInterface;
 				this.postEditDialogNeedsToBeShown = data.postEditDialogNeedsToBeShown;
 				this.postEditDialogShown = data.postEditDialogShown;
+				this.mobilePeekShown = data.mobilePeekShown;
+				this.helpPanelShouldBeLocked = data.helpPanelShouldBeLocked;
+				this.helpPanelCurrentPanel = data.helpPanelCurrentPanel;
+				this.helpPanelShouldOpen = data.helpPanelShouldOpen;
+				this.helpPanelCurrentTip = data.helpPanelCurrentTip;
+				this.helpPanelSuggestedEditsInteractionHappened = data.helpPanelSuggestedEditsInteractionHappened;
 			} else {
 				mw.storage.session.remove( 'ge-suggestededit-session' );
 			}

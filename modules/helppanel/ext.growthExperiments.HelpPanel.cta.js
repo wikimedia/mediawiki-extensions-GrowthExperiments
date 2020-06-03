@@ -11,9 +11,9 @@
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		suggestedEditsPeek = require( './../helppanel/ext.growthExperiments.SuggestedEditsPeek.js' ),
 		guidanceEnabled = mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ),
-		pageMode = 'read',
 		guidanceAvailable,
-		taskTypeId, taskTypeLogData;
+		taskTypeId,
+		taskTypeLogData;
 
 	if ( guidanceEnabled && suggestedEditSession.active &&
 		!suggestedEditSession.postEditDialogNeedsToBeShown
@@ -58,7 +58,8 @@
 				size: Math.max( document.documentElement.clientWidth, window.innerWidth || 0 ) > 1366 ? 'medium' : size,
 				logger: logger,
 				guidanceEnabled: guidanceEnabled,
-				taskTypeId: taskTypeId
+				taskTypeId: taskTypeId,
+				suggestedEditSession: suggestedEditSession
 			} ),
 			helpCtaButton,
 			lifecycle;
@@ -70,22 +71,24 @@
 		 * The CTA needs to be (re-)attached to the overlay when VisualEditor or
 		 * the MobileFrontend editor is opened.
 		 *
-		 * @param {string} editor Which editor is being opened
+		 * @param {Object|string} editor Which editor is being opened
 		 */
 		function attachHelpButton( editor ) {
 			var metadataOverride = {};
+			helpPanelProcessDialog.updateEditMode();
+			// wikipage.editform gives us an object here, not a string.
+			if ( typeof editor === 'object' && editor !== null ) {
+				editor = 'wikitext';
+			}
 			if ( Utils.isValidEditor( editor ) ) {
 				/* eslint-disable-next-line camelcase */
 				metadataOverride.editor_interface = editor;
 			}
+
 			// Don't reattach the button wrapper if it's already attached to the overlay, otherwise
 			// the animation happens twice
 			if ( $buttonWrapper.parent()[ 0 ] !== $overlay[ 0 ] ) {
 				$overlay.append( $buttonWrapper );
-			}
-			pageMode = 'edit';
-			if ( helpPanelProcessDialog.isOpened() ) {
-				helpPanelProcessDialog.setEditMode();
 			}
 			logger.log( 'impression', taskTypeLogData, metadataOverride );
 		}
@@ -99,7 +102,12 @@
 		 * Hide the CTA when VisualEditor or the MobileFrontend editor is closed.
 		 */
 		function detachHelpButton() {
-			windowManager.closeWindow( helpPanelProcessDialog );
+			// If there's a suggested edit session, we don't want to close the
+			// panel if the user switches to Read mode.
+			if ( !suggestedEditSession.active ) {
+				windowManager.closeWindow( helpPanelProcessDialog );
+			}
+			helpPanelProcessDialog.updateEditMode();
 			// If the help panel should show for the namespace, then don't detach the button
 			// and also log an impression.
 			if ( configData.GEHelpPanelReadingModeNamespaces.indexOf( mw.config.get( 'wgNamespaceNumber' ) ) !== -1 ) {
@@ -113,8 +121,9 @@
 				}, 250 );
 				return;
 			}
-			$buttonWrapper.detach();
-			pageMode = 'read';
+			if ( !guidanceAvailable ) {
+				$buttonWrapper.detach();
+			}
 		}
 
 		if ( $buttonToInfuse.length ) {
@@ -163,27 +172,42 @@
 				$body.removeClass( 'oo-ui-windowManager-modal-active' );
 			}
 			lifecycle = windowManager.openWindow( helpPanelProcessDialog, {
-				panel: panel,
-				pageMode: pageMode
+				panel: panel
 			} );
-			helpCtaButton.toggle( false );
-			logger.log( 'open' );
+			lifecycle.opening.then( function () {
+				helpCtaButton.toggle( false );
+				logger.log( 'open' );
+				if ( suggestedEditSession.active ) {
+					suggestedEditSession.helpPanelShouldOpen = true;
+					suggestedEditSession.save();
+				}
+				helpPanelProcessDialog.updateEditMode();
+			} );
 			lifecycle.closing.done( function () {
-				// Re-attach the MobileFrontend and VE overlays on mobile.
 				if ( OO.ui.isMobile() ) {
 					$body.append( $mfOverlay );
 					$body.append( $veUiOverlay );
+				}
+				if ( guidanceAvailable ) {
+					attachHelpButton( logger.getEditor() );
 				}
 				helpCtaButton.toggle( true );
 			} );
 			return lifecycle;
 		}
 
-		function addMobilePeek( taskTypeData ) {
+		function maybeAddMobilePeek( taskTypeData ) {
 			var mobilePeek,
 				// Drawer.onBeforeHide fires whether the drawer was dismissed or tapped on
 				// (and replaced with the full help panel). Use this flag to differentiate.
 				tapped = false;
+
+			// If we've already shown the mobile peek once, don't show it again
+			// but do attach the help button
+			if ( suggestedEditSession.mobilePeekShown ) {
+				attachHelpButton( logger.getEditor() );
+				return;
+			}
 
 			mobilePeek = new Drawer( {
 				className: 'suggested-edits-mobile-peek',
@@ -207,6 +231,9 @@
 				onBeforeHide: function ( drawer ) {
 					if ( !tapped ) {
 						logger.log( 'peek-dismiss' );
+						// We still want to show the help button if the peek
+						// was dismissed.
+						attachHelpButton( logger.getEditor() );
 					}
 					setTimeout( function () {
 						helpCtaButton.toggle( true );
@@ -218,29 +245,36 @@
 				tapped = true;
 				logger.log( 'peek-tap' );
 				mobilePeek.hide();
-				openHelpPanel( 'suggested-edits' );
+				openHelpPanel( suggestedEditSession.helpPanelCurrentPanel || 'suggested-edits' );
 			} );
 			document.body.appendChild( mobilePeek.$el[ 0 ] );
 			helpCtaButton.toggle( false );
 			logger.log( 'peek-impression', taskTypeLogData );
 			mobilePeek.show();
+			suggestedEditSession.mobilePeekShown = true;
+			suggestedEditSession.save();
 		}
 
 		if ( guidanceAvailable ) {
 			if ( OO.ui.isMobile() ) {
-				addMobilePeek( taskTypes[ taskTypeId ] );
-			} else {
+				maybeAddMobilePeek( taskTypes[ taskTypeId ] );
+			} else if ( suggestedEditSession.helpPanelShouldOpen ) {
 				// Open the help panel to the suggested-edits panel, animating it in from the bottom
 				// Perform this special animation only once, the first time the help panel opens
 				$overlay.addClass( 'mw-ge-help-panel-popup-guidance' );
-				openHelpPanel( 'suggested-edits' ).closing.done( function () {
+				openHelpPanel( suggestedEditSession.helpPanelCurrentPanel || 'suggested-edits' ).closing.done( function () {
 					$overlay.removeClass( 'mw-ge-help-panel-popup-guidance' );
 				} );
+			} else {
+				// If guidance is available we want to attach the help button
+				// so the user can get back to it; this can happen if for example
+				// the user reloads the page they're on (in Read mode) .
+				attachHelpButton( logger.getEditor() );
 			}
 		}
 
 		helpCtaButton.on( 'click', function () {
-			openHelpPanel( guidanceAvailable && pageMode === 'read' ? 'suggested-edits' : 'home' );
+			openHelpPanel( guidanceAvailable ? ( suggestedEditSession.helpPanelCurrentPanel || 'suggested-edits' ) : 'home' );
 		} );
 
 		// Attach or detach the help panel CTA in response to hooks from MobileFrontend.

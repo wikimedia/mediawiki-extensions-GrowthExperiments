@@ -10,6 +10,7 @@
 	 * @param {Object} config.taskTypeData The data for a particular task.
 	 * @param {boolean} config.guidanceEnabled If guidance is available for this user and task type.
 	 * @param {string} config.editorInterface The editor interface in use
+	 * @param {string} config.currentTip The tip to preselect in the quick tips section.
 	 * @constructor
 	 */
 	function SuggestedEditsPanel( config ) {
@@ -24,6 +25,7 @@
 		}
 		this.editorInterface = config.editorInterface;
 		this.taskTypeData = config.taskTypeData;
+		this.currentTip = config.currentTip;
 		this.build();
 	}
 
@@ -33,39 +35,51 @@
 	 * Appends the header, quickstart tips, and footer to the panel.
 	 */
 	SuggestedEditsPanel.prototype.build = function () {
-		this.$element.addClass( 'suggested-edits-panel' );
-		quickStartTips.getTips( this.taskTypeData.id, this.editorInterface ).then( function ( tipsPanel ) {
-			var headerPanel = new OO.ui.PanelLayout( {
-					padded: false,
-					expanded: false,
-					$content: this.getHeader()
-				} ),
-				headerAndTipsPanel = new OO.ui.StackLayout( {
-					padded: false,
-					expanded: false,
-					continuous: true,
-					scrollable: true,
-					classes: [ 'suggested-edits-panel-headerAndTips' ]
-				} );
-			this.footerPanel = new OO.ui.PanelLayout( {
-				// Padding is set on the text itself in CSS
-				padded: false,
-				expanded: false,
-				classes: [ 'suggested-edits-panel-footer' ],
-				$content: this.getFooter()
-			} );
-
-			headerAndTipsPanel.addItems( [ headerPanel, tipsPanel ] );
-			this.addItems( [ headerAndTipsPanel, this.footerPanel ] );
-
+		this.$element.addClass( 'suggested-edits-panel suggested-edits-panel-with-footer' );
+		this.footerPanel = new OO.ui.PanelLayout( {
+			// Padding is set on the text itself in CSS
+			padded: false,
+			expanded: false,
+			classes: [ 'suggested-edits-panel-footer' ],
+			$content: this.getFooter()
+		} );
+		this.headerAndTipsPanel = new OO.ui.StackLayout( {
+			padded: false,
+			expanded: false,
+			continuous: true,
+			scrollable: true,
+			classes: [ 'suggested-edits-panel-headerAndTips' ]
+		} );
+		this.headerPanel = new OO.ui.PanelLayout( {
+			padded: false,
+			expanded: false,
+			$content: this.getHeader()
+		} );
+		quickStartTips.getTips( this.taskTypeData.id, this.editorInterface, this.currentTip ).then( function ( tipsPanel ) {
+			this.headerAndTipsPanel.addItems( [ this.headerPanel, tipsPanel ] );
+			this.addItems( [ this.headerAndTipsPanel, this.footerPanel ] );
 			tipsPanel.on( 'tab-selected', function ( data ) {
 				this.emit( 'tab-selected', data );
 			}, [], this );
 		}.bind( this ) );
 	};
 
-	SuggestedEditsPanel.prototype.hideFooter = function () {
-		this.removeItems( [ this.footerPanel ] );
+	/**
+	 * Add or remove the footer; this is called when toggling edit mode.
+	 *
+	 * @param {boolean} inEditMode
+	 */
+	SuggestedEditsPanel.prototype.toggleFooter = function ( inEditMode ) {
+		if ( !this.footerPanel ) {
+			return;
+		}
+		if ( inEditMode ) {
+			this.footerPanel.toggle( false );
+			this.$element.removeClass( 'suggested-edits-panel-with-footer' );
+		} else {
+			this.footerPanel.toggle( true );
+			this.$element.addClass( 'suggested-edits-panel-with-footer' );
+		}
 	};
 
 	/**

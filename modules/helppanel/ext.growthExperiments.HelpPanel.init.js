@@ -1,7 +1,16 @@
 ( function () {
-	var veState = mw.loader.getState( 'ext.visualEditor.desktopArticleTarget.init' );
+	var veState = mw.loader.getState( 'ext.visualEditor.desktopArticleTarget.init' ),
+		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
+
 	if ( !mw.config.get( 'wgGEHelpPanelEnabled' ) ) {
 		return;
+	}
+
+	// If there is an active suggested edit session, load the help panel
+	// module, which will result in either the call to action or
+	// the open help panel process dialog displaying.
+	if ( suggestedEditSession && suggestedEditSession.active ) {
+		mw.loader.load( 'ext.growthExperiments.HelpPanel' );
 	}
 
 	// If VisualEditor is available, add the HelpPanel module as a plugin

@@ -65,7 +65,8 @@
 		windowManagerInstance = new OO.ui.WindowManager( { modal: true } );
 		dialogInstance = new QuestionPosterDialog( $.extend( {
 			size: 'medium',
-			logger: loggerInstance
+			logger: loggerInstance,
+			suggestedEditSession: require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance()
 		}, config.dialog ) );
 		ctaButton = OO.ui.ButtonWidget.static.infuse( $container.find( config.buttonSelector ) );
 

@@ -6,9 +6,10 @@
 	/**
 	 * @param {string} taskTypeID The task type ID
 	 * @param {string} editorInterface The editor interface
+	 * @param {string|null} currentTabPanel The current tab panel to select, if any.
 	 * @return {jQuery.Promise} Promise that resolves with an OO.ui.StackLayout
 	 */
-	function getTips( taskTypeID, editorInterface ) {
+	function getTips( taskTypeID, editorInterface, currentTabPanel ) {
 		var indexLayout = new OO.ui.IndexLayout( {
 				framed: false,
 				expanded: false,
@@ -54,6 +55,9 @@
 				tipLabelNumber++;
 			}
 			indexLayout.addTabPanels( tipPanels );
+			if ( currentTabPanel ) {
+				indexLayout.setTabPanel( currentTabPanel );
+			}
 			contentPanel.$element.append( indexLayout.$element );
 			stackLayout.addItems( [
 				new OO.ui.PanelLayout( {
