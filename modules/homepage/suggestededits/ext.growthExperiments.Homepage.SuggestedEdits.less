@@ -394,13 +394,18 @@ body.mw-special-Homepage {
 					.se-card-image {
 						height: @imageHeight;
 						width: @cardWrapperWidth;
-						// These are overridden by SuggestedEditCardWidget's getImageContent()
-						// when a thumbnail image is available.
-						background-color: @colorGray14;
-						background-image: url( ../../../images/suggestededits/placeholder-image.svg );
-						background-repeat: no-repeat;
-						background-position: center center;
-						background-size: 40px 40px;
+						background-position: center 25%;
+						background-repeat: repeat-x;
+						// background-image will be set dynamically in SuggestedEditCardWidget.getImageContent
+
+						&.no-image {
+							// This is also used during loading, with .skeleton added to it.
+							background-color: @colorGray14;
+							background-image: url( ../../../images/suggestededits/placeholder-image.svg );
+							background-repeat: no-repeat;
+							background-position: center center;
+							background-size: 40px 40px;
+						}
 					}
 
 					.se-card-image.skeleton {

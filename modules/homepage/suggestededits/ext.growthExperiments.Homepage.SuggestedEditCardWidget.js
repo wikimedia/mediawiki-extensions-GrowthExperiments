@@ -43,17 +43,17 @@
 
 	SuggestedEditCardWidget.prototype.getImageContent = function () {
 		var $imageContent = $( '<div>' )
-				.addClass( 'se-card-image' ),
+				.addClass( 'se-card-image no-image' ),
 			$imageForCaching = $( '<img>' );
 		if ( this.data.thumbnailSource ) {
 			$imageContent.addClass( 'skeleton' );
 			// Download the image but don't add to the DOM.
 			$imageForCaching.attr( 'src', this.data.thumbnailSource ).on( 'load', function () {
 				$imageForCaching.remove();
-				// The image was already downloaded, so doing this does not make another request.
-				$imageContent.css( 'background', 'url(' + this.data.thumbnailSource + ') top center repeat-x' );
 				// Now that the image has downloaded, remove the loading animation.
-				$imageContent.removeClass( 'skeleton' );
+				$imageContent.removeClass( 'skeleton no-image' );
+				// The image was already downloaded, so doing this does not make another request.
+				$imageContent.css( 'background-image', 'url("' + this.data.thumbnailSource + '")' );
 			}.bind( this ) );
 		}
 
