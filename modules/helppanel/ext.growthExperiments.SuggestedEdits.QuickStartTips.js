@@ -40,15 +40,17 @@
 				taskTypeID,
 				mw.config.get( 'wgUserLanguage' )
 			].join( '/' ),
+			tipLabelNumber = 1,
 			key;
 
 		return $.get( apiPath ).then( function ( quickStartTipsData ) {
 			for ( key in quickStartTipsData ) {
-				tipPanel = new QuickStartTipsTabPanelLayout( 'tipset-' + String( key ), {
-					label: String( key ),
+				tipPanel = new QuickStartTipsTabPanelLayout( 'tipset-' + String( tipLabelNumber ), {
+					label: String( tipLabelNumber ),
 					data: quickStartTipsData[ key ]
 				} );
 				tipPanels.push( tipPanel );
+				tipLabelNumber++;
 			}
 			indexLayout.addTabPanels( tipPanels );
 			contentPanel.$element.append( indexLayout.$element );

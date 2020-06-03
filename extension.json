@@ -56,7 +56,7 @@
 			"path": "/growthexperiments/v0/quickstarttips/{skin}/{editor}/{tasktypeid}/{uselang}",
 			"method": "GET",
 			"class": "GrowthExperiments\\Rest\\Handler\\TipsHandler",
-			"services": [ "GrowthExperimentsTipsBuilder" ]
+			"services": [ "GrowthExperimentsTipsAssembler", "GrowthExperimentsConfigurationLoader" ]
 		}
 	],
 	"Hooks": {
