@@ -5,6 +5,7 @@
 			"GoForceX",
 			"Josephine W.",
 			"Shizhao",
+			"SomeyaMako",
 			"VulpesVulpes825",
 			"Zazzzz"
 		]
@@ -20,6 +21,10 @@
 	"growthexperiments-help-panel-back-home": "返回",
 	"growthexperiments-help-panel-close": "完成",
 	"growthexperiments-help-panel-home-title": "获取编辑帮助",
+	"growthexperiments-help-panel-postedit-success-message": "{{GENDER:|您已经}}完成了一次编辑。感谢您；请继续保持！",
+	"growthexperiments-help-panel-postedit-header": "后续步骤",
+	"growthexperiments-help-panel-postedit-footer": "查看更多建议的编辑",
+	"growthexperiments-help-panel-postedit-footer2": "关闭这个条目并重新编辑",
 	"growthexperiments-help-panel-questionreview-title": "提问",
 	"growthexperiments-help-panel-questionreview-header": "您的提问会以您的用户名“$2”<strong>公开发布</strong>在$1，其他的志愿编辑者会在接下来一天左右的时间里尝试回答您的问题。",
 	"growthexperiments-help-panel-questionreview-label": "您的问题",
