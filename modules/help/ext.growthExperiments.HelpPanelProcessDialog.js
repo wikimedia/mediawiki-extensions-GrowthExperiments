@@ -145,7 +145,6 @@
 			this.settingsCog.toggle( true );
 		}
 		if ( panel === 'ask-help' ) {
-			// Hide the cog, it interferes with the primary 'post' action
 			this.settingsCog.toggle( false );
 			this.getActions().setAbilities( {
 				questioncomplete: this.askhelpTextInput.getValue()
@@ -169,7 +168,16 @@
 		this.setMode( newMode );
 		this.currentPanel = panel;
 
-		this.rebuildSettingsCog();
+		// Don't rebuild settings cog on ask-help / questioncomplete, it
+		// interferes with the primary 'post' and done actions.
+		// TODO: Move the settings cog into a more appropriate place so we
+		// don't have to hack around primary actions.
+		if ( ( [
+			'ask-help',
+			'questioncomplete'
+		].indexOf( panel ) ) === -1 ) {
+			this.rebuildSettingsCog();
+		}
 	};
 
 	/**
