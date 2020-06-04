@@ -57,6 +57,10 @@
 
 			headerAndTipsPanel.addItems( [ headerPanel, tipsPanel ] );
 			this.addItems( [ headerAndTipsPanel, this.footerPanel ] );
+
+			tipsPanel.on( 'tab-selected', function ( data ) {
+				this.emit( 'tab-selected', data );
+			}, [], this );
 		}.bind( this ) );
 	};
 

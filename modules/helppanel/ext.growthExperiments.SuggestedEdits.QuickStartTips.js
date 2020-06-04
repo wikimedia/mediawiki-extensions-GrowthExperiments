@@ -46,6 +46,7 @@
 		return $.get( apiPath ).then( function ( quickStartTipsData ) {
 			for ( key in quickStartTipsData ) {
 				tipPanel = new QuickStartTipsTabPanelLayout( 'tipset-' + String( tipLabelNumber ), {
+					taskType: taskTypeID,
 					label: String( tipLabelNumber ),
 					data: quickStartTipsData[ key ]
 				} );
@@ -63,6 +64,12 @@
 				} ),
 				contentPanel
 			] );
+			indexLayout.on( 'set', function ( tabPanel ) {
+				stackLayout.emit( 'tab-selected', {
+					taskType: taskTypeID,
+					name: tabPanel.name
+				} );
+			} );
 			return stackLayout;
 		}, function ( err, details ) {
 			mw.log.error( 'Unable to load quick start tips', err, details );

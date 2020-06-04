@@ -524,6 +524,13 @@
 		this.$body.append( this.homePanel.$element, this.panels.$element );
 		this.$element.on( 'click', 'a[data-link-id]', this.logLinkClick.bind( this ) );
 
+		this.suggestededitsPanel.on( 'tab-selected', function ( data ) {
+			this.logger.log( 'guidance-tab-click', {
+				taskType: data.taskType,
+				tabName: data.name
+			} );
+		}, [], this );
+
 		// Disable pending effect in the header; it breaks the background transition when navigating
 		// back from the suggested-edits panel to the home panel
 		this.setPendingElement( $( [] ) );
