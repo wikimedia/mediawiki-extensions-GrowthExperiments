@@ -34,11 +34,14 @@
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "快速入門提示",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>準備好了？</strong>請點擊「{{int:vector-view-edit}}」來開始。",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>準備好了？</strong>請輕觸在條目的筆狀圖案來開始。",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "審稿是對條目的編寫方式對小幅度修正，例如像是拼寫、語法，或著是文字的清晰表達。審稿能有助於條目的內容更專業可信。",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "要從<mark class=\"negative\">地求</mark>抵達到水星帶出了重大的技術挑戰。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules1": "{{GENDER:|您}}可以修正拼寫與文法錯誤。這可能包括句子太長、重複單字、或是標點不正確。",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules1": "水星<mark class=\"negative\">有有</mark>兩個衛星。",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules1": "火星<mark class=\"negative\">有有</mark>兩個衛星。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules2": "{{GENDER:|您}}也可以重新編寫句子，讓句子不要有個人見解。{{SITENAME}}的內容應為中立、明瞭、廣博，但請留意不要將句子裡所反應出的實情給改錯。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules2": "木星是在太陽系裡最大<mark class=\"negative\">、最特別有趣</mark>的行星。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-rules2": "句子裡包含的個人見解都應移除。",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-publish": "[[$1|了解更多關於審稿。]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-value": "水星是<mark class=\"positive\">太陽系</mark>裡最小的<mark class=\"positive\">行星</mark>。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-calm": "{{GENDER:|您}}只需要添加一個或兩個連結來產生效果。{{GENDER:|您}}不必花時間在整個條目的編寫，{{GENDER:|您}}也不需要對主題有特別相關知識。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-step1": "一旦{{GENDER:|您}}看到要添加連結的地方，請點擊「$1」進行。然後凸顯出要做成連結的單字或詞組。",
@@ -70,5 +73,6 @@
 	"growthexperiments-help-panel-button-header-general-help": "一般編輯求助",
 	"growthexperiments-help-panel-button-subheader-general-help": "搜尋答案並閱讀熱門條目",
 	"growthexperiments-help-panel-button-subheader-ask-help": "取得來自其他熱心編輯者的答案",
-	"growthexperiments-help-panel-button-subheader-suggested-edits": "快速入門提示"
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "快速入門提示",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "建議編輯常見問題"
 }

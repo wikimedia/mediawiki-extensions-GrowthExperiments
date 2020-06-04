@@ -4,7 +4,8 @@
 			"Amire80",
 			"Martin Urbanec",
 			"Robby",
-			"Tgr"
+			"Tgr",
+			"Trizek (WMF)"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "[[Special:Preferences]], tab 'Edit'. Allows user to enable and disable experimental Help Panel.\n\n{{doc-growthexperiments-help-panel}}",
@@ -59,7 +60,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-step1": "The main tip in tipset 4 of 6 explaining how to add links. Parameters:\n* $2 - {{mw-msg|publishchanges-start}} message.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-step1": "The main tip in tipset 4 of 6 explaining how to add links.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-step2": "The main tip in tipset 5 of 6 explaining how to add links. Parameters:\n* $1 - {{mw-msg|visualeditor-annotationbutton-link-tooltip}}\n* $2 - The link icon from OOUI\n\n{{doc-growthexperiments-help-panel}}",
-	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-step2": "The main tip in tipset 5 of 6 explaining how to add links. Same as {{mw-msg|growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-5}}. Parameters:\n* $1 - {{mw-msg|visualeditor-annotationbutton-link-tooltip}}\n* $2 - The link icon from OOUI.\n\n{{doc-growthexperiments-help-panel}}",
+	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-step2": "The main tip in tipset 5 of 6 explaining how to add links. Same as {{Msg-mw|growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-5}}. Parameters:\n* $1 - {{msg-mw|visualeditor-annotationbutton-link-tooltip}}\n* $2 - The link icon from OOUI.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-publish": "The main tip in tipset 6 of 6 explaining how to add links. Parameters:\n* $1 - {{mw-msg|publishchanges-start}} message.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-publish": "The main tip in tipset 6 of 6 explaining how to add links.\n\n{{doc-growthexperiments-help-panel}}.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "The text tip in tipset 6 of 6 explaining how to add links. Parameters:\n* $1 - The title of an article for learning more about adding links.\n\n{{doc-growthexperiments-help-panel}}",
