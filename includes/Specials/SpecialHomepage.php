@@ -24,10 +24,7 @@ use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use Html;
-use IContextSource;
-use LogicException;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
-use MWCryptHash;
 use SpecialPage;
 use StatusValue;
 use Throwable;
@@ -253,45 +250,13 @@ class SpecialHomepage extends SpecialPage {
 	}
 
 	/**
-	 * Returns 32-character string that consists of 24 cryptographically random characters
-	 * (120 bits, ie. suitable for differentiating about 10^15 events) and a 8-character
-	 * signature tied to the current user.
-	 * The signature is useful for preventing accidental reuse of the token when it is put
-	 * in the URL and gets shared.
-	 * The token is used for client-side logging and can be retrieved via the
+	 * Returns 32-character random string.
+	 * The token is used for client-side logging and can be retrieved on Special:Homepage via the
 	 * wgGEHomepagePageviewToken JS variable.
 	 * @return string
-	 * @see SpecialHomepage::verifyPageviewToken()
 	 */
 	private function generatePageviewToken() {
-		if ( !$this->getContext()->getUser()->isSafeToLoad() ) {
-			throw new LogicException( __METHOD__ . ' called before user initialized' );
-		}
-		$userId = $this->getContext()->getUser()->getId();
-		$secretKey = $this->getContext()->getConfig()->get( 'SecretKey' );
-
-		$randomPart = \Wikimedia\base_convert( \MWCryptRand::generateHex( 30 ), 16, 32, 24 );
-		$hmac = MWCryptHash::hmac( "$randomPart:$userId", $secretKey, false );
-		return $randomPart . substr( $hmac, 0, 8 );
-	}
-
-	/**
-	 * Verifies that the pageview token belongs to the context user.
-	 * @param string $pageviewToken
-	 * @param IContextSource $context
-	 * @return bool
-	 * @see SpecialHomepage::generatePageviewToken()
-	 */
-	public static function verifyPageviewToken( string $pageviewToken, IContextSource $context ) {
-		if ( !$context->getUser()->isSafeToLoad() ) {
-			throw new LogicException( __METHOD__ . ' called before user initialized' );
-		}
-		$userId = $context->getUser()->getId();
-		$secretKey = $context->getConfig()->get( 'SecretKey' );
-		$randomPart = substr( $pageviewToken, 0, 24 );
-		$hmac = substr( $pageviewToken, 24, 8 );
-		$expectedHmac = substr( MWCryptHash::hmac( "$randomPart:$userId", $secretKey, false ), 0, 8 );
-		return ( $hmac === $expectedHmac );
+		return \Wikimedia\base_convert( \MWCryptRand::generateHex( 40 ), 16, 32, 32 );
 	}
 
 	private function renderDesktop() {

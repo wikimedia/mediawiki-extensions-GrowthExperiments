@@ -104,7 +104,7 @@ class HomepageHooks {
 	public static function getClickId( IContextSource $context ) {
 		if ( SuggestedEdits::isEnabled( $context ) ) {
 			$clickId = $context->getRequest()->getVal( 'geclickid' );
-			if ( $clickId && SpecialHomepage::verifyPageviewToken( $clickId, $context ) ) {
+			if ( $clickId ) {
 				return $clickId;
 			}
 		}

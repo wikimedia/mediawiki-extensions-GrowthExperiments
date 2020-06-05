@@ -7,13 +7,11 @@ use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Specials\SpecialHomepage;
 use HashConfig;
 use IContextSource;
-use MediaWiki\Extensions\PageViewInfo\PageViewService;
 use MediaWiki\MediaWikiServices;
 use PHPUnit\Framework\MockObject\MockObject;
 use RequestContext;
 use SpecialPageTestBase;
 use User;
-use Wikimedia\TestingAccessWrapper;
 
 /**
  * @group Database
@@ -109,45 +107,6 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			$responseBody,
 			'Homepage content found'
 		);
-	}
-
-	/**
-	 * @covers \GrowthExperiments\Specials\SpecialHomepage::generatePageviewToken
-	 * @covers \GrowthExperiments\Specials\SpecialHomepage::verifyPageviewToken
-	 */
-	public function testPageviewToken() {
-		$editInfoService = $this->getMockBuilder( EditInfoService::class )
-			->disableOriginalConstructor()
-			->setMethodsExcept()
-			->getMock();
-		$editInfoService->expects( $this->never() )->method( $this->anything() );
-		$pageViewService = $this->getMockBuilder( PageViewService::class )
-			->disableOriginalConstructor()
-			->setMethodsExcept()
-			->getMock();
-		$pageViewService->expects( $this->never() )->method( $this->anything() );
-		$homepage = new SpecialHomepage(
-			$editInfoService,
-			MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnection( DB_REPLICA ),
-			MediaWikiServices::getInstance()->get( 'GrowthExperimentsConfigurationLoader' ),
-			MediaWikiServices::getInstance()->get( 'GrowthExperimentsNewcomerTaskTrackerFactory' ),
-			$pageViewService
-		);
-		$wrappedHomepage = TestingAccessWrapper::newFromObject( $homepage );
-
-		$context1 = $this->getContextForUserId( 1 );
-		$context2 = $this->getContextForUserId( 2 );
-		$homepage->setContext( $context1 );
-		$pageviewContext1Token1 = $wrappedHomepage->generatePageviewToken();
-		$pageviewContext1Token2 = $wrappedHomepage->generatePageviewToken();
-		$homepage->setContext( $context2 );
-		$pageviewContext2Token = $wrappedHomepage->generatePageviewToken();
-
-		$this->assertNotSame( $pageviewContext1Token1, $pageviewContext1Token2 );
-		$this->assertTrue( SpecialHomepage::verifyPageviewToken( $pageviewContext1Token1, $context1 ) );
-		$this->assertTrue( SpecialHomepage::verifyPageviewToken( $pageviewContext2Token, $context2 ) );
-		$this->assertFalse( SpecialHomepage::verifyPageviewToken( $pageviewContext1Token1, $context2 ) );
-		$this->assertFalse( SpecialHomepage::verifyPageviewToken( $pageviewContext2Token, $context1 ) );
 	}
 
 	private function setupForTutorialVisitTests( User $user ) {
