@@ -16,7 +16,8 @@
 	"growthexperiments-help-panel-back-home": "Voltar",
 	"growthexperiments-help-panel-close": "Concluído",
 	"growthexperiments-help-panel-home-title": "Obtenha ajuda para editar",
-	"growthexperiments-help-panel-postedit-success-message": "{{GENDER:|Você}} salvou uma edição. Obrigado e continue!",
+	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|Você já}} publicou uma edição. Obrigado e continue!",
+	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|Você}} salvou uma edição. Obrigado e continue!",
 	"growthexperiments-help-panel-postedit-header": "Próximos passos",
 	"growthexperiments-help-panel-postedit-subheader": "Editar outra sugestão:",
 	"growthexperiments-help-panel-postedit-footer": "Ver mais edições sugeridas",
@@ -33,6 +34,7 @@
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Dicas de início rápido",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Pronto?</strong> Clique em \"{{int:vector-view-edit}}\" para começar.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Pronto?</strong> Toque no lápis de edição no artigo para começar.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules1": "Marte <mark class=\"negative\">tem tem</mark> duas pequenas luas.",
 	"growthexperiments-help-panel-questioncomplete-title": "Faça uma pergunta",
 	"growthexperiments-help-panel-questioncomplete-header": "Sua pergunta foi postada!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Sua pergunta agora está na Central de Ajuda comunitária para que seja respondida por outro editor voluntário.",
@@ -59,5 +61,6 @@
 	"growthexperiments-help-panel-button-header-general-help": "Ajuda geral de edição",
 	"growthexperiments-help-panel-button-subheader-general-help": "Procure respostas e leia os principais artigos",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Obtenha respostas de outros voluntários",
-	"growthexperiments-help-panel-button-subheader-suggested-edits": "Dicas de início rápido"
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "Dicas de início rápido",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Perguntas frequentes sobre edições sugeridas"
 }

@@ -21,7 +21,7 @@
 	"growthexperiments-help-panel-back-home": "بازگشت",
 	"growthexperiments-help-panel-close": "انجام شد",
 	"growthexperiments-help-panel-home-title": "گرفتن کمک برای ویرایش",
-	"growthexperiments-help-panel-postedit-success-message": "{{GENDER:|شما}} یک ویرایش انجام دادید. ممنون و به کارتان ادامه دهید!",
+	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|شما}} یک ویرایش انجام دادید. ممنون و به کارتان ادامه دهید!",
 	"growthexperiments-help-panel-postedit-header": "گام‌های بعدی",
 	"growthexperiments-help-panel-postedit-subheader": "ویرایش یک پیشنهاد دیگر:",
 	"growthexperiments-help-panel-postedit-footer": "نمایش ویرایش‌های پیشنهادی بیشتر",

@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Bugoslav",
+			"Ivi104",
 			"Neptune, the Mystic"
 		]
 	},
 	"growthexperiments-help-panel-question-placeholder": "Pozdravite i postavite {{GENDER:$1|svoje}} pitanje.",
-	"growthexperiments-help-panel-postedit-success-message": "Spremili {{GENDER:|ste}} uređivanje. Hvala Vam i samo nastavite!",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules1": "Mars <mark class=\"negative\">ima</mark> dva mala mjeseca (prirodnih satelita).",
+	"growthexperiments-help-panel-postedit-success-message-published": "Objavili {{GENDER:|ste}} uređivanje. Hvala Vam i samo nastavite!",
+	"growthexperiments-help-panel-postedit-success-message-saved": "Spremili {{GENDER:|ste}} uređivanje. Hvala Vam i samo nastavite!",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules1": "Mars <mark class=\"negative\">ima</mark> dva mala mjeseca (prirodna satelita).",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-value": "Merkur je najmanji <mark class=\"positive\">planet Sunčeva sustava</mark>."
 }

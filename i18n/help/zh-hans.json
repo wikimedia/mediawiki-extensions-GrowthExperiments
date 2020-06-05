@@ -21,7 +21,7 @@
 	"growthexperiments-help-panel-back-home": "返回",
 	"growthexperiments-help-panel-close": "完成",
 	"growthexperiments-help-panel-home-title": "获取编辑帮助",
-	"growthexperiments-help-panel-postedit-success-message": "{{GENDER:|您已经}}完成了一次编辑。感谢您；请继续保持！",
+	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|您已经}}完成了一次编辑。感谢您；请继续保持！",
 	"growthexperiments-help-panel-postedit-header": "后续步骤",
 	"growthexperiments-help-panel-postedit-footer": "查看更多建议的编辑",
 	"growthexperiments-help-panel-postedit-footer2": "关闭这个条目并重新编辑",

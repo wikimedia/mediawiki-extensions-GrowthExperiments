@@ -18,7 +18,7 @@
 	"growthexperiments-help-panel-back-home": "Назад",
 	"growthexperiments-help-panel-close": "Готово",
 	"growthexperiments-help-panel-home-title": "Отримати допомогу з редагуванням",
-	"growthexperiments-help-panel-postedit-success-message": "{{GENDER:|Ви}} зберегли редагування. Дякуємо, продовжуйте!",
+	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|Ви}} зберегли редагування. Дякуємо, продовжуйте!",
 	"growthexperiments-help-panel-postedit-header": "Подальші кроки",
 	"growthexperiments-help-panel-postedit-subheader": "Поредагуйте наступну пропозицію:",
 	"growthexperiments-help-panel-postedit-footer": "Переглянути більше пропонованих редагувань",

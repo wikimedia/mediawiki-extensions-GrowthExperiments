@@ -17,7 +17,7 @@
 	"growthexperiments-help-panel-back-home": "Zurück",
 	"growthexperiments-help-panel-close": "Fertig",
 	"growthexperiments-help-panel-home-title": "Hilfe bei der Bearbeitung erhalten",
-	"growthexperiments-help-panel-postedit-success-message": "{{GENDER:|Du}} hast eine Bearbeitung gespeichert. Danke und mache weiter so!",
+	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|Du}} hast eine Bearbeitung gespeichert. Danke und mache weiter so!",
 	"growthexperiments-help-panel-postedit-header": "Nächste Schritte",
 	"growthexperiments-help-panel-postedit-subheader": "Bearbeite einen weiteren Vorschlag:",
 	"growthexperiments-help-panel-postedit-footer": "Weitere vorgeschlagene Bearbeitungen anzeigen",

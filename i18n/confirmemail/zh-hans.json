@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"SomeyaMako",
 			"VulpesVulpes825",
 			"科劳"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|这是什么？]])",
-	"growthexperiments-confirmemail-emailhelp": "如果您丢失密码，需要通过电子邮件来恢复您的账户。",
+	"growthexperiments-confirmemail-emailhelp": "如果您丢失密码，您需要通过电子邮件来恢复您的账户。",
 	"growthexperiments-confirmemail-emailrecommended": "电子邮箱地址 (推荐)",
 	"growthexperiments-confirmemail-emailwarning": "我们向您发送了一封验证邮件，请查看您的邮箱。",
 	"growthexperiments-confirmemail-confirm-subject": "欢迎来到{{SITENAME}}；请确认您的邮箱地址。",

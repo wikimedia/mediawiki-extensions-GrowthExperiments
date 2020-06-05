@@ -21,7 +21,7 @@
 	"growthexperiments-help-panel-back-home": "Wstecz",
 	"growthexperiments-help-panel-close": "Gotowe",
 	"growthexperiments-help-panel-home-title": "Pomoc w edytowaniu",
-	"growthexperiments-help-panel-postedit-success-message": "{{GENDER:|Zapisałeś|Zapisałaś}} edycję. Dzięki za pomoc i tak trzymaj!",
+	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|Zapisałeś|Zapisałaś}} edycję. Dzięki za pomoc i tak trzymaj!",
 	"growthexperiments-help-panel-postedit-header": "Następne kroki",
 	"growthexperiments-help-panel-postedit-subheader": "Inna sugestia tematu:",
 	"growthexperiments-help-panel-postedit-footer": "Przejrzyj więcej sugerowanych edycji",

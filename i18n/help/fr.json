@@ -22,7 +22,7 @@
 	"growthexperiments-help-panel-back-home": "Retour",
 	"growthexperiments-help-panel-close": "Fait",
 	"growthexperiments-help-panel-home-title": "Obtenir de l’aide sur la modification",
-	"growthexperiments-help-panel-postedit-success-message": "{{GENDER:|Vous avez}} enregistré une modification. Merci, et continuez !",
+	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|Vous avez}} enregistré une modification. Merci, et continuez !",
 	"growthexperiments-help-panel-postedit-header": "Étapes suivantes",
 	"growthexperiments-help-panel-postedit-subheader": "Modifier une autre suggestion :",
 	"growthexperiments-help-panel-postedit-footer": "Voir plus de modifications suggérées",
