@@ -39,44 +39,59 @@ class TipLoader {
 	 *
 	 * @param string $skinName
 	 * @param string $editor
-	 * @param TaskType $taskType
+	 * @param TaskType[] $taskTypes
+	 * @param string $taskTypeId
 	 * @return array
 	 */
 	public function loadTipNodes(
-		string $skinName, string $editor, TaskType $taskType ): array {
-		$tipTree = $this->getTipTreeForTaskType( $taskType );
+		string $skinName, string $editor, array $taskTypes, string $taskTypeId ): array {
+		$tipTree = $this->getTipTreeForTaskType(
+			$taskTypeId,
+			$this->buildExtraData( $taskTypes )
+		);
 		return array_filter( array_map( function ( $stepName ) use (
-			$skinName, $editor, $tipTree, $taskType
+			$skinName, $editor, $tipTree, $taskTypeId
 		) {
 			return $this->getTipNodesForStep(
 				$stepName,
 				$skinName,
 				$editor,
-				$taskType->getId(),
+				$taskTypeId,
 				$tipTree
 			);
 		}, $tipTree->getStepNames() ) );
 	}
 
 	/**
-	 * @param TaskType $taskType
+	 * @param array $taskTypes
+	 * @return array
+	 */
+	private function buildExtraData( array $taskTypes ): array {
+		return array_map( function ( TaskType $taskType ) {
+			return [ 'learnMoreLink' => $taskType->getLearnMoreLink() ];
+		}, $taskTypes );
+	}
+
+	/**
+	 * @param string $taskTypeId
+	 * @param array $extraData
 	 * @throws LogicException
 	 * @return TipTree
 	 */
-	private function getTipTreeForTaskType( TaskType $taskType ): TipTree {
-		switch ( $taskType->getId() ) {
+	private function getTipTreeForTaskType( string $taskTypeId, array $extraData ): TipTree {
+		switch ( $taskTypeId ) {
 			case 'copyedit':
-				return new CopyeditTipTree( $taskType->getLearnMoreLink() );
+				return new CopyeditTipTree( $extraData );
 			case 'links':
-				return new LinkTipTree( $taskType->getLearnMoreLink() );
+				return new LinkTipTree( $extraData );
 			case 'update':
-				return new UpdateTipTree( $taskType->getLearnMoreLink() );
+				return new UpdateTipTree( $extraData );
 			case 'references':
-				return new ReferencesTipTree( $taskType->getLearnMoreLink() );
+				return new ReferencesTipTree( $extraData );
 			case 'expand':
-				return new ExpandTipTree( $taskType->getLearnMoreLink() );
+				return new ExpandTipTree( $extraData );
 			default:
-				throw new LogicException( $taskType->getId() . ' does not have tip steps defined.' );
+				throw new LogicException( $taskTypeId . ' does not have tip steps defined.' );
 		}
 	}
 

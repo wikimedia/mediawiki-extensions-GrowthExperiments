@@ -59,17 +59,18 @@ class TipsAssembler {
 	 *
 	 * @param string $skinName
 	 * @param string $editor
-	 * @param TaskType $taskType
+	 * @param TaskType[] $taskTypes
+	 * @param string $taskTypeId
 	 * @param string $dir
 	 * @return array
 	 */
 	public function getTips(
-		string $skinName, string $editor, TaskType $taskType, string $dir
+		string $skinName, string $editor, array $taskTypes, string $taskTypeId, string $dir
 	): array {
 		$tipLoader = new TipLoader( $this->configurationLoader, $this->messageLocalizer );
 		return array_values( array_map( function ( $tipNodes ) use ( $skinName, $dir ) {
 			return $this->tipNodeRenderer->render( $tipNodes, $skinName, $dir );
-		}, $tipLoader->loadTipNodes( $skinName, $editor, $taskType ) ) );
+		}, $tipLoader->loadTipNodes( $skinName, $editor, $taskTypes, $taskTypeId ) ) );
 	}
 
 }

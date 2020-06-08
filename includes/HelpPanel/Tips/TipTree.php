@@ -30,12 +30,17 @@ abstract class TipTree {
 	 * @var string|null
 	 */
 	protected $learnMoreLink;
+	/**
+	 * @var array
+	 */
+	protected $extraData;
 
 	/**
-	 * @param string|null $learnMoreLink
+	 * @param array $extraData
 	 */
-	public function __construct( string $learnMoreLink = null ) {
-		$this->learnMoreLink = $learnMoreLink;
+	public function __construct( array $extraData ) {
+		$this->learnMoreLink = $extraData[$this->getTaskTypeId()]['learnMoreLink'] ?? null;
+		$this->extraData = $extraData;
 	}
 
 	/**
@@ -54,10 +59,15 @@ abstract class TipTree {
 
 	/**
 	 * Get tip steps that will be used to build a node tree for a task type.
-	 *
 	 * @return array
 	 */
 	abstract public function getTree(): array;
+
+	/**
+	 * Get the task type ID that corresponds to this tip tree class.
+	 * @return string
+	 */
+	abstract protected function getTaskTypeId(): string;
 
 	/**
 	 * @return array|string[]
