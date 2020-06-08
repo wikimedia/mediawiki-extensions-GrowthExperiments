@@ -103,10 +103,7 @@ class HomepageHooks {
 	 */
 	public static function getClickId( IContextSource $context ) {
 		if ( SuggestedEdits::isEnabled( $context ) ) {
-			$clickId = $context->getRequest()->getVal( 'geclickid' );
-			if ( $clickId ) {
-				return $clickId;
-			}
+			return $context->getRequest()->getVal( 'geclickid' ) ?: null;
 		}
 		return null;
 	}
