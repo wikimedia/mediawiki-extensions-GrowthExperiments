@@ -35,6 +35,6 @@ class LinkTipTree extends TipTree {
 
 	/** @inheritDoc */
 	protected function getTaskTypeId(): string {
-		return 'link';
+		return 'links';
 	}
 }
