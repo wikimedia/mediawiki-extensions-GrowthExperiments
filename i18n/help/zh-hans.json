@@ -7,7 +7,8 @@
 			"Shizhao",
 			"SomeyaMako",
 			"VulpesVulpes825",
-			"Zazzzz"
+			"Zazzzz",
+			"列维劳德"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "启用编者帮助面板",
@@ -21,6 +22,7 @@
 	"growthexperiments-help-panel-back-home": "返回",
 	"growthexperiments-help-panel-close": "完成",
 	"growthexperiments-help-panel-home-title": "获取编辑帮助",
+	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|您已经}}完成了一次编辑。感谢您；请继续保持！",
 	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|您已经}}完成了一次编辑。感谢您；请继续保持！",
 	"growthexperiments-help-panel-postedit-header": "后续步骤",
 	"growthexperiments-help-panel-postedit-footer": "查看更多建议的编辑",

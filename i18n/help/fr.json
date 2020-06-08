@@ -22,6 +22,7 @@
 	"growthexperiments-help-panel-back-home": "Retour",
 	"growthexperiments-help-panel-close": "Fait",
 	"growthexperiments-help-panel-home-title": "Obtenir de l’aide sur la modification",
+	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|Vous}} avez publié une modification. Merci, continuez !",
 	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|Vous avez}} enregistré une modification. Merci, et continuez !",
 	"growthexperiments-help-panel-postedit-header": "Étapes suivantes",
 	"growthexperiments-help-panel-postedit-subheader": "Modifier une autre suggestion :",
@@ -126,5 +127,6 @@
 	"growthexperiments-help-panel-button-header-general-help": "Aide générale d’édition",
 	"growthexperiments-help-panel-button-subheader-general-help": "Rechercher des réponses et lire les articles en tête",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Obtenir les réponses d’autres bénévoles",
-	"growthexperiments-help-panel-button-subheader-suggested-edits": "Conseils de démarrage rapide"
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "Conseils de démarrage rapide",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "FAQ sur les modifications suggérées"
 }

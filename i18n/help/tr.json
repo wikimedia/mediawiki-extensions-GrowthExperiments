@@ -17,6 +17,7 @@
 	"growthexperiments-help-panel-back-home": "Geri",
 	"growthexperiments-help-panel-close": "Yapıldı",
 	"growthexperiments-help-panel-home-title": "Düzenleme ile ilgili yardım alın",
+	"growthexperiments-help-panel-postedit-success-message-published": "Bir düzenleme yayınladınız. Teşekkürler ve devam et!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "Bir düzenlemeyi kaydettiniz. Teşekkürler ve devam edin!",
 	"growthexperiments-help-panel-postedit-header": "Sonraki adımlar",
 	"growthexperiments-help-panel-postedit-subheader": "Başka bir öneri düzenle:",
@@ -38,7 +39,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "Merkür'e <mark class=\"negative\">Dünyayaa</mark> ulaşmak önemli teknik zorluklar doğurur.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "Fark yaratmak için sadece bir veya iki küçük düzeltme yapmanız gerekir. Maddenin tamamı üzerinde çalışmanıza gerek yoktur. Ayrıca konu hakkında özel bir bilgiye sahip olmanız da gerekmez.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules1": "Yazım ve dil bilgisi hatalarını düzeltebilirsiniz. Bu, çok uzun cümleler, tekrarlanan kelimeler veya yanlış noktalama işaretleri içerebilir.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules1": "Merkür 2 küçük ay uydusu <mark class=\"negative\">var var</mark>.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules1": "Mars 2 küçük ay uydusu <mark class=\"negative\">var var</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules2": "Cümleleri, görüş içermemeleri için yeniden yazabilirsiniz. {{SITENAME}} içeriği tarafsız, açık ve ansiklopedik olmalıdır. Ancak, cümledeki gerçekleri değiştirmemeye dikkat edin.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules2": "Jüpiter, Güneş Sistemi'ndeki en büyük <mark class=\"negative\">ve en ilginç</mark> gezegendir.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-rules2": "Bu cümle kaldırılması gereken bir görüş içermektedir.",
@@ -67,6 +68,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-calm": "Fark yaratmak için bu maddeyi yalnızca bir kaynak eklemeniz gerekir. Maddenin tamamı üzerinde çalışmanıza gerek yoktur.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-rules1": "Cümleler, sayılar, tarihler veya tarihsel olaylar gibi belirli gerçeklerden bahsederken kaynaklara ihtiyaç duyar.\n\nBir cümle insanların üzerinde anlaşmaya varamayacağı bilgiler veya çoğu kişi tarafından yaygın olarak bilinmeyen bilgiler içeriyorsa, büyük olasılıkla bir kaynağa ihtiyaç duyar.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-step1": "Kaynak gerektiren bir cümle bulduğunuzda başlamak için \"$1\" düğmesini tıklayın.\n\nBazı cümlelerde tam olarak bir referansın gerekli olduğu yerleri gösteren etiketler bile bulunur.",
+	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-references-main-step1": "Kaynak gerektiren bir cümle bulduğunuzda, başlamak için düzenleme kalemine dokunun.\n\nBazı cümlelerde tam olarak bir kaynağın gerekli olduğu yerleri gösteren etiketler bile bulunur.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-step2": "Ardından, arama motorları, haber siteleri veya kitaplığınız aracılığıyla kaynakları arayabilirsiniz.<br />$1&nbsp;&nbsp;$2&nbsp;&nbsp;$3&nbsp;&nbsp;$4<br />Kaynak eklerken bu yönergeleri izleyin:\n* Güvenilir kaynaklar kitap, haber kuruluşu ve dergi maddelerini içerir.\n* Sosyal medya veya bloglar genellikle güvenilir kaynaklar değildir.\n* Şirketin kendi web sitesi gibi konu tarafından yayınlanan bilgiler genellikle güvenilir değildir.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-step3": "Bir kaynak bulduğunuzda, cümlenin sonunu ve ardından \"$1\" düğmesini $2 tıklayın. Kaynak hakkında bildiğiniz kadar bilgi ekleyin ve alıntıyı ekleyin.",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-references-main-step3": "Bir kaynak bulduğunuzda, cümlenin sonundaki simgesine ve ardından \"$1\" düğmesine $2 dokunun. Kaynak hakkında bildiğiniz kadar bilgi ekleyin ve alıntıyı ekleyin.",
@@ -120,5 +122,6 @@
 	"growthexperiments-help-panel-button-header-general-help": "Genel düzenleme yardımı",
 	"growthexperiments-help-panel-button-subheader-general-help": "Yanıt arayın ve en çok okunan maddeleri okuyun",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Diğer gönüllülerden yanıt alın",
-	"growthexperiments-help-panel-button-subheader-suggested-edits": "Hızlı başlangıç ipuçları"
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "Hızlı başlangıç ipuçları",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Önerilen düzenlemeler SSS"
 }

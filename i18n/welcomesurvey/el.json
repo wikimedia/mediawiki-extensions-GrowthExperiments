@@ -2,14 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"KATRINE1993",
-			"Nikosgranturismogt"
+			"Nikosgranturismogt",
+			"Norhorn"
 		]
 	},
 	"welcomesurvey-save-btn": "Ολοκλήρωση",
 	"welcomesurvey-privacy-policy-link-text": "Δήλωση απορρήτου",
 	"welcomesurvey-sidebar-editing-link1-text": "Σεμινάριο",
 	"welcomesurvey-sidebar-editing-link2-text": "Χώρος βοήθειας",
-	"welcomesurvey-dropdown-option-select-label": "Παρακαλώ επιλέξτε...",
+	"welcomesurvey-dropdown-option-select-label": "Παρακαλούμε επιλέξτε...",
 	"welcomesurvey-question-reason-option-other-label": "Άλλα (παρακαλώ περιγράψτε)",
 	"welcomesurvey-question-reason-other-placeholder": "Εισαγάγετε άλλη αιτία...",
 	"welcomesurvey-question-edited-option-yes-many-label": "Ναι, πολλές φορές",

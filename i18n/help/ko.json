@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Bluemersen",
+			"Nuevo Paso",
 			"Revi",
 			"Ykhwong"
 		]
@@ -17,7 +18,7 @@
 	"growthexperiments-help-panel-back-home": "뒤로",
 	"growthexperiments-help-panel-close": "완료",
 	"growthexperiments-help-panel-home-title": "편집 도움 받기",
-	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|}}편집을 게시했습니다. 계속 해 봅시다!",
+	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|}}편집을 게시했습니다. 계속해 봅시다!",
 	"growthexperiments-help-panel-postedit-header": "다음 단계",
 	"growthexperiments-help-panel-postedit-subheader": "다른 추천 문서 편집하기:",
 	"growthexperiments-help-panel-postedit-footer": "더 많은 추천 편집 보기",

@@ -4,5 +4,10 @@
 			"Martin Urbanec"
 		]
 	},
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Žádné otázky nebyly nalezeny."
+	"apihelp-homepagequestionstore-param-storage": "Úložiště otázek",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Žádné otázky nebyly nalezeny.",
+	"apihelp-growthsetmentor-summary": "Nastavit mentora uživatele. Změna bude veřejně zaznamenána.",
+	"apihelp-growthsetmentor-param-mentee": "Uživatelské jméno mentorovaného",
+	"apihelp-growthsetmentor-param-mentor": "Uživatelské jméno mentora",
+	"apihelp-growthsetmentor-param-reason": "Důvod pro změnu"
 }

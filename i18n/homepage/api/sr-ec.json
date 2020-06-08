@@ -11,6 +11,6 @@
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Ниједно питање није пронађено.",
 	"apihelp-growthsetmentor-summary": "Постављање ментора кориницима; промена ће бити јавно евидентирана.",
 	"apihelp-growthsetmentor-param-mentee": "Корисничко име новајлије",
-	"apihelp-growthsetmentor-param-mentor": "корисничко име ментора",
-	"apihelp-growthsetmentor-param-reason": "разлог промене"
+	"apihelp-growthsetmentor-param-mentor": "Корисничко име ментора",
+	"apihelp-growthsetmentor-param-reason": "Разлог промене"
 }

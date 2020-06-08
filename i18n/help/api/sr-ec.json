@@ -6,7 +6,7 @@
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "Руковање питањима која су постављена помоћу табле помоћи за тренутног корисника.",
-	"apihelp-helppanelquestionposter-param-body": "Текст питања које је поставио корисник.",
+	"apihelp-helppanelquestionposter-param-body": "Текст питања које је поставио корисник",
 	"apihelp-helppanelquestionposter-param-source": "Компонента на извору питања. Важеће вредности су: „helppanel”, „homepage-help” и „homepage-mentorship”",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Релевантан наслов, ако је изабрано, за укључивање с питањем."
 }

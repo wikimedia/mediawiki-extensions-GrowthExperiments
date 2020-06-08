@@ -17,6 +17,7 @@
 	"growthexperiments-help-panel-back-home": "Назад",
 	"growthexperiments-help-panel-close": "Готово",
 	"growthexperiments-help-panel-home-title": "Проналажење помоћи",
+	"growthexperiments-help-panel-postedit-success-message-published": "Објавили {{GENDER:|сте}} измену. Хвала вам и само тако наставите!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "Објавили {{GENDER:|сте}} измену. Хвала вам и само тако наставите!",
 	"growthexperiments-help-panel-postedit-header": "Следећи кораци",
 	"growthexperiments-help-panel-postedit-subheader": "Уредите још један предлог:",
@@ -67,6 +68,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-calm": "Пробајте да {{GENDER:|додате}} бар једну референцу. Не морате радити на целом чланку ако не желите.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-rules1": "Додајте референцу када реченица износи конкретне чињенице, попут бројева, датума или историјских догађаја.\n\nДодајте референцу и када реченица може да буде предмет неслагања или није општепозната чињеница.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-step1": "Када {{GENDER:|уочите}} такву реченицу, кликните на „$1” како бисте почели да уређујете.\n\nНеке реченице чак имају и ознаке на местима где је потребна референца.",
+	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-references-main-step1": "Када {{GENDER:|уочите}} такву реченицу, кликните на иконицу оловке да бисте почели да уређујете.\n\nНеке реченице чак имају и ознаке на местима где је потребна референца.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-step2": "Изворе {{GENDER:|можете}} потражити на интернету (путем веб-претраживача) или у библиотеци.<br />$1&nbsp;&nbsp;$2&nbsp;&nbsp;$3&nbsp;&nbsp;$4<br />Смернице:\n* Поуздани извори су књиге, новинске организације и чланци из часописа.\n* Друштвени медији или блогови нису поуздани извори.\n* Званични веб-сајтови или други веб-сајтови у вези с темом обично нису поуздани.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-step3": "Када {{GENDER:|пронађете}} извор, уметните референцу на крај реченице кликом на дугме „$1” $2. Додајте што више података о извору.",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-references-main-step3": "Када {{GENDER:|пронађете}} извор, уметните референцу на крај реченице притиском на дугме „$1” $2. Додајте што више података о извору.",
@@ -86,7 +88,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-text-publish": "[[$1|Детаљније о ажурирању чланака]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-value": "Можете допунити готово све чланке додатним информацијама. Тиме помажете читаоцима да сазнају више о некој теми.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-calm": "Пробајте да {{GENDER:|додате}} бар једну нову чињеницу. Не морате додати цео пасус или одељак ако не желите.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-rules1": "Смернице:\n* Погледајте чланке о сличним темама да бисте сазнали који садржај недостаје.\n* Додајте само чињенице које се могу верификовати у поузданим изворима.\n* Пишите неутралним тоном; не {{GENDER:|наводите}} сопствена мишљења или ставове.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-rules1": "Смернице:\n* Погледајте чланке о сличним темама да бисте сазнали који садржај недостаје.\n* Додајте само чињенице које се могу потврдити у поузданим изворима.\n* Пишите неутралним тоном; не {{GENDER:|наводите}} сопствена мишљења или ставове.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-step1": "Када {{GENDER:|уочите}} одељак за допуну, кликните на „$1” како бисте почели да уређујете. Можете и да започнете нов одељак ако желите.",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-step1": "Када {{GENDER:|уочите}} одељак за допуну, додирните иконицу оловке како бисте почели да уређујете. Можете и да започнете нов одељак ако желите.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-step2": "Када {{GENDER:|додате}} нову информацију, обавезно [[$1|уметните и референцу]]. Тиме читаоци могу да провере одакле информација потиче.",
@@ -120,5 +122,6 @@
 	"growthexperiments-help-panel-button-header-general-help": "Општа помоћ",
 	"growthexperiments-help-panel-button-subheader-general-help": "Прочитајте странице помоћи и потражите одговоре",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Сазнајте одговоре од других добровољаца",
-	"growthexperiments-help-panel-button-subheader-suggested-edits": "Савети за брзи почетак"
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "Савети за брзи почетак",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Најчешћа питања"
 }
