@@ -16,7 +16,7 @@ class UpdateTipTree extends TipTree {
 					[
 						'type' => self::TIP_DATA_TYPE_TITLE,
 						'data' => [
-							'title' => $this->getLearnMoreLink(),
+							'title' => $this->extraData['references']['learnMoreLink'] ?? null,
 							'messageKeyVariant' => '-no-link'
 						]
 					]
