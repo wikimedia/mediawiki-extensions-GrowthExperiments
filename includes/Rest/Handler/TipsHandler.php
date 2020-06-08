@@ -55,12 +55,13 @@ class TipsHandler extends SimpleHandler {
 			$context->setLanguage( $uselang );
 		}
 		$this->tipsAssembler->setMessageLocalizer( $context );
-		$taskType = $this->configurationLoader->getTaskTypes()[$tasktypeid];
+		$taskTypes = $this->configurationLoader->getTaskTypes();
 		$response = $this->getResponseFactory()->createJson(
 			$this->tipsAssembler->getTips(
 				$skin,
 				$editor,
-				$taskType,
+				$taskTypes,
+				$tasktypeid,
 				$context->getLanguage()->getDir()
 			)
 		);

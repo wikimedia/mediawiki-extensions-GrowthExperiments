@@ -36,7 +36,8 @@ class TipsAssemblerTest extends MediaWikiIntegrationTestCase {
 		$tips = $tipsAssembler->getTips(
 			$config['skin'],
 			$config['editor'],
-			$config['tasktype'],
+			$configurationLoader->getTaskTypes(),
+			$config['tasktype']->getId(),
 			$config['dir']
 		);
 		$this->assertSame( $expected['tipCount'], count( $tips ) );

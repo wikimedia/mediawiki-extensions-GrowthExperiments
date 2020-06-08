@@ -26,4 +26,9 @@ class ExpandTipTree extends TipTree {
 		];
 		return $this->maybeAddLearnMoreLinkTipNode( $steps );
 	}
+
+	/** @inheritDoc */
+	protected function getTaskTypeId(): string {
+		return 'expand';
+	}
 }
