@@ -33,7 +33,7 @@
 	 * Appends the header, quickstart tips, and footer to the panel.
 	 */
 	SuggestedEditsPanel.prototype.build = function () {
-		this.$element.addClass( 'suggested-edits-panel suggested-edits-panel-with-footer' );
+		this.$element.addClass( 'suggested-edits-panel' );
 		quickStartTips.getTips( this.taskTypeData.id, this.editorInterface ).then( function ( tipsPanel ) {
 			var headerPanel = new OO.ui.PanelLayout( {
 					padded: false,
@@ -66,7 +66,6 @@
 
 	SuggestedEditsPanel.prototype.hideFooter = function () {
 		this.removeItems( [ this.footerPanel ] );
-		this.$element.removeClass( 'suggested-edits-panel-with-footer' );
 	};
 
 	/**

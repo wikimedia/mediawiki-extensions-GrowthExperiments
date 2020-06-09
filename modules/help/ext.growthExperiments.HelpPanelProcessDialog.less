@@ -3,8 +3,6 @@
 @import '../homepage/ext.growthExperiments.variables.less';
 @import '../../lib/ooui/wikimedia-ui-base';
 
-@footerHeight: 40px;
-
 .mw-ge-help-panel-processdialog {
 	label > strong {
 		color: @colorGray5;
@@ -214,6 +212,8 @@
 	}
 
 	.suggested-edits-panel {
+		display: flex;
+		flex-direction: column;
 		height: 100%;
 
 		&-quick-start-tips {
@@ -275,22 +275,17 @@
 		}
 
 		&-headerAndTips {
-			height: 100%;
-		}
-
-		&-with-footer .suggested-edits-panel-headerAndTips {
-			height: calc( 100% - ~'-' @footerHeight );
+			flex: 1;
 		}
 
 		&-footer {
 			background-color: @wmui-color-base90;
-			height: @footerHeight;
 			width: 100%;
 
 			&-text {
 				padding: 16px;
 				font-size: 0.929em;
-				line-height: 0.65;
+				line-height: 1.3;
 				color: @colorGray2;
 			}
 		}
