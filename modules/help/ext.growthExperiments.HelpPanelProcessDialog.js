@@ -123,6 +123,7 @@
 			// the current panel isn't the same as the one we're going to,
 			// then record that an interaction happened.
 			if ( this.currentPanel && this.currentPanel !== panel ) {
+				this.setGuidanceAutoAdvance( false );
 				this.suggestedEditSession.helpPanelSuggestedEditsInteractionHappened = true;
 				this.suggestedEditSession.save();
 			}
@@ -362,6 +363,8 @@
 	};
 
 	HelpPanelProcessDialog.prototype.initialize = function () {
+		var guidanceTipsPromise;
+
 		HelpPanelProcessDialog.super.prototype.initialize.call( this );
 
 		this.rebuildSettingsCog();
@@ -402,6 +405,7 @@
 			editorInterface: this.logger.getEditor(),
 			currentTip: this.suggestedEditSession.helpPanelCurrentTip
 		} );
+		guidanceTipsPromise = this.suggestededitsPanel.build();
 
 		this.askhelpPanel = new OO.ui.PanelLayout( {
 			padded: true,
@@ -552,14 +556,23 @@
 		this.$body.append( this.homePanel.$element, this.panels.$element );
 		this.$element.on( 'click', 'a[data-link-id]', this.logLinkClick.bind( this ) );
 
-		this.suggestededitsPanel.on( 'tab-selected', function ( data ) {
-			this.suggestedEditSession.helpPanelCurrentTip = data.name;
-			this.suggestedEditSession.helpPanelSuggestedEditsInteractionHappened = true;
-			this.suggestedEditSession.save();
-			this.logger.log( 'guidance-tab-click', {
-				taskType: data.taskType,
-				tabName: data.name
-			} );
+		guidanceTipsPromise.then( function ( helpPanelHasTips ) {
+			if ( !helpPanelHasTips ) {
+				return;
+			}
+			// IndexLayout does not provide any way to differentiate between human and programmatic
+			// tab selection so we must go deeper.
+			this.suggestededitsPanel.tipsPanel.tabIndexLayout.getTabs().on( 'choose', function ( item ) {
+				var tabName = item.data;
+				this.setGuidanceAutoAdvance( false );
+				this.suggestedEditSession.helpPanelCurrentTip = tabName;
+				this.suggestedEditSession.helpPanelSuggestedEditsInteractionHappened = true;
+				this.suggestedEditSession.save();
+				this.logger.log( 'guidance-tab-click', {
+					taskType: this.taskTypeId,
+					tabName: tabName
+				} );
+			}.bind( this ) );
 		}.bind( this ) );
 
 		// Disable pending effect in the header; it breaks the background transition when navigating
@@ -586,6 +599,9 @@
 		}
 
 		this.swapPanel( getPanelFromSession( this.suggestedEditSession, this.logger.isEditing() ) );
+		if ( !this.suggestedEditSession.helpPanelSuggestedEditsInteractionHappened ) {
+			this.setGuidanceAutoAdvance( true );
+		}
 	};
 
 	/**
@@ -658,6 +674,7 @@
 					postData;
 				if ( action === 'close' || !action ) {
 					this.logger.log( 'close' );
+					this.setGuidanceAutoAdvance( false );
 					this.close();
 				}
 				if ( action === 'home' ) {
@@ -666,6 +683,7 @@
 					}
 					// One of: back-home, back-general-help
 					this.logger.log( 'back-' + action, { from: this.currentPanel } );
+					this.setGuidanceAutoAdvance( false );
 					this.swapPanel( action );
 				}
 				if ( action === 'ask-help' ) {
@@ -830,6 +848,30 @@
 			dim.maxHeight = 'calc( 100vh - 180px )';
 		}
 		return dim;
+	};
+
+	/**
+	 * Enable / disable auto-advancing the guidance tabs.
+	 * @param {boolean} enable
+	 */
+	HelpPanelProcessDialog.prototype.setGuidanceAutoAdvance = function ( enable ) {
+		var self = this;
+		if ( enable && this.guidanceEnabled && !this.guidanceAutoAdvanceTimer ) {
+			this.guidanceAutoAdvanceTimer = window.setInterval( function () {
+				// Getting here implies that the suggested edits panel is active, as that's
+				// the default state, any manual state change disables auto-advance,
+				// and there's no way to re-enable it.
+
+				// This seems to be the least insane method of finding the next tab :/
+				var tabIndexLayout = self.suggestededitsPanel.tipsPanel.tabIndexLayout,
+					tabs = tabIndexLayout.getTabs(),
+					currentTab = tabs.findItemFromData( tabIndexLayout.getCurrentTabPanelName() ),
+					nextTab = tabs.getItems()[ ( tabs.getItemIndex( currentTab ) + 1 ) % tabs.getItemCount() ];
+				tabIndexLayout.setTabPanel( nextTab.data );
+			}, 5000 );
+		} else if ( !enable && this.guidanceAutoAdvanceTimer ) {
+			window.clearInterval( this.guidanceAutoAdvanceTimer );
+		}
 	};
 
 	module.exports = HelpPanelProcessDialog;

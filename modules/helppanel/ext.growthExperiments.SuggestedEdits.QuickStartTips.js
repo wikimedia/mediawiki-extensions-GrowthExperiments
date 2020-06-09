@@ -68,12 +68,8 @@
 				} ),
 				contentPanel
 			] );
-			indexLayout.on( 'set', function ( tabPanel ) {
-				stackLayout.emit( 'tab-selected', {
-					taskType: taskTypeID,
-					name: tabPanel.name
-				} );
-			} );
+			// Used by the auto-advance logic in HelpPanelProcessDialog
+			stackLayout.tabIndexLayout = indexLayout;
 			return stackLayout;
 		}, function ( err, details ) {
 			mw.log.error( 'Unable to load quick start tips', err, details );
