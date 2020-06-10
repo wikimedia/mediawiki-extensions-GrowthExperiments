@@ -18,6 +18,7 @@
 	"growthexperiments-help-panel-back-home": "Quay lại",
 	"growthexperiments-help-panel-close": "Xong",
 	"growthexperiments-help-panel-home-title": "Yêu cầu trợ giúp sửa đổi",
+	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|Bạn}} đã lưu một sửa đổi. Cảm ơn bạn, hãy tiếp tục nhé!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|Bạn}} đã lưu một sửa đổi. Cảm ơn bạn, hãy tiếp tục nhé!",
 	"growthexperiments-help-panel-postedit-header": "Bước tiếp theo",
 	"growthexperiments-help-panel-postedit-subheader": "Sửa đổi gợi ý khác:",
@@ -122,5 +123,6 @@
 	"growthexperiments-help-panel-button-header-general-help": "Trợ gúp sửa đổi chung",
 	"growthexperiments-help-panel-button-subheader-general-help": "Tìm kiếm câu trả lời và đọc các bài viết hàng đầu",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Tìm kiếm câu trả lời từ những tình nguyện viên khác",
-	"growthexperiments-help-panel-button-subheader-suggested-edits": "Mẹo bắt đầu nhanh"
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "Mẹo bắt đầu nhanh",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "FAQ sửa đổi gợi ý"
 }
