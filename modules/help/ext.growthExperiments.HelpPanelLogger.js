@@ -96,9 +96,9 @@
 			// might need special handling.
 			return false;
 		} else if ( this.isMobile ) {
-			return uri.fragment && uri.fragment.match( /\/editor\/(\d+|all)/ );
+			return uri.fragment && Boolean( uri.fragment.match( /\/editor\/(\d+|all)/ ) );
 		} else {
-			return uri.query.veaction || uri.query.action === 'edit' || uri.query.action === 'submit';
+			return Boolean( uri.query.veaction ) || uri.query.action === 'edit' || uri.query.action === 'submit';
 		}
 	};
 
