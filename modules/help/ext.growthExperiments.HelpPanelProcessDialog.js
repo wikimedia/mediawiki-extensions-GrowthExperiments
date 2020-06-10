@@ -15,6 +15,7 @@
 	 * @cfg {string} viewQuestionText Text of the link to view the question that was just posted
 	 * @cfg {string} submitFailureMessage Text of the error message when failing to post a question
 	 * @cfg {bool} guidanceEnabled Whether guidance feature is enabled.
+	 * @cfg {SuggestedEditSession} suggestedEditSession The suggested edit session
 	 * @cfg {string} taskTypeId The ID of the suggested edit task type.
 	 * @constructor
 	 */
@@ -24,6 +25,7 @@
 		linksConfig = configData.GEHelpPanelLinks,
 		HelpPanelProcessDialog = function helpPanelProcessDialog( config ) {
 			HelpPanelProcessDialog.super.call( this, config );
+			this.suggestedEditSession = config.suggestedEditSession;
 			this.logger = config.logger;
 			this.guidanceEnabled = config.guidanceEnabled;
 			this.taskTypeId = config.taskTypeId;
@@ -76,19 +78,20 @@
 			classes: [ 'mw-ge-help-panel-done' ],
 			action: 'close'
 		},
-		// Allow user to close the panel from home subpanel only.
+		// Allow user to close the panel directly when on home subpanel or when
+		// the help panel is opened in "locked" mode.
 		{
 			icon: 'close',
 			flags: 'safe',
 			action: 'close',
-			modes: [ 'home', 'suggested-edits-read' ]
+			modes: [ 'home', 'locked' ]
 		},
 		// Use a back icon for all non-home panels.
 		{
 			icon: 'previous',
 			flags: 'safe',
 			action: 'home',
-			modes: [ 'ask-help', 'general-help', 'questioncomplete', 'search', 'suggested-edits-edit' ]
+			modes: [ 'ask-help', 'general-help', 'questioncomplete', 'search', 'suggested-edits' ]
 		}
 	];
 
@@ -113,6 +116,19 @@
 		var panelObj = this[ panel.replace( '-', '' ) + 'Panel' ],
 			titleMsg = this.panelTitleMessages[ panel ] || this.panelTitleMessages.home,
 			newMode;
+
+		if ( this.suggestedEditSession.active ) {
+			newMode = this.suggestedEditSession.helpPanelShouldBeLocked ? 'locked' : panel;
+			// If current panel is not null (e.g. we've already navigated once) and
+			// the current panel isn't the same as the one we're going to,
+			// then record that an interaction happened.
+			if ( this.currentPanel && this.currentPanel !== panel ) {
+				this.suggestedEditSession.helpPanelSuggestedEditsInteractionHappened = true;
+				this.suggestedEditSession.save();
+			}
+		} else {
+			newMode = panel;
+		}
 
 		this.title.setLabel( titleMsg );
 
@@ -160,12 +176,11 @@
 			this.panels.setItem( panelObj );
 		}
 
-		newMode = panel;
-		if ( panel === 'suggested-edits' ) {
-			// suggested-edits-read, suggested-edits-edit
-			newMode += this.pageMode === 'edit' ? '-edit' : '-read';
-		}
 		this.setMode( newMode );
+		if ( this.suggestedEditSession.active ) {
+			this.suggestedEditSession.helpPanelCurrentPanel = panel;
+			this.suggestedEditSession.save();
+		}
 		this.currentPanel = panel;
 
 		// Don't rebuild settings cog on ask-help / questioncomplete, it
@@ -177,6 +192,10 @@
 			'questioncomplete'
 		].indexOf( panel ) ) === -1 ) {
 			this.rebuildSettingsCog();
+		}
+		// Lock the help panel on read mode, as a workaround for the UX on mobile.
+		if ( this.currentPanel === 'suggested-edits' && !this.logger.isEditing() ) {
+			this.setMode( 'locked' );
 		}
 	};
 
@@ -380,7 +399,8 @@
 			// content of the panel with a solid constant background color.
 			taskTypeData: taskTypeData[ this.taskTypeId ],
 			guidanceEnabled: this.guidanceEnabled,
-			editorInterface: this.logger.getEditor()
+			editorInterface: this.logger.getEditor(),
+			currentTip: this.suggestedEditSession.helpPanelCurrentTip
 		} );
 
 		this.askhelpPanel = new OO.ui.PanelLayout( {
@@ -533,16 +553,39 @@
 		this.$element.on( 'click', 'a[data-link-id]', this.logLinkClick.bind( this ) );
 
 		this.suggestededitsPanel.on( 'tab-selected', function ( data ) {
+			this.suggestedEditSession.helpPanelCurrentTip = data.name;
+			this.suggestedEditSession.helpPanelSuggestedEditsInteractionHappened = true;
+			this.suggestedEditSession.save();
 			this.logger.log( 'guidance-tab-click', {
 				taskType: data.taskType,
 				tabName: data.name
 			} );
-		}, [], this );
+		}.bind( this ) );
 
 		// Disable pending effect in the header; it breaks the background transition when navigating
 		// back from the suggested-edits panel to the home panel
 		this.setPendingElement( $( [] ) );
-		this.swapPanel( 'home' );
+
+		/**
+		 * Get the panel to switch to based on examining the active session.
+		 *
+		 * @param {SuggestedEditSession} suggestedEditSession
+		 * @param {boolean} isEditing
+		 * @return {string}
+		 */
+		function getPanelFromSession( suggestedEditSession, isEditing ) {
+			if ( !suggestedEditSession.active ) {
+				return 'home';
+			}
+			// If the user is editing, they are on the guidance screen, and they
+			// have not interacted with guidance, switch them over to the home panel.
+			if ( isEditing && !suggestedEditSession.helpPanelSuggestedEditsInteractionHappened ) {
+				return 'home';
+			}
+			return suggestedEditSession.helpPanelCurrentPanel === null ? 'suggested-edits' : suggestedEditSession.helpPanelCurrentPanel;
+		}
+
+		this.swapPanel( getPanelFromSession( this.suggestedEditSession, this.logger.isEditing() ) );
 	};
 
 	/**
@@ -559,15 +602,31 @@
 		return HelpPanelProcessDialog.super.prototype.getSetupProcess
 			.call( this, data )
 			.next( function () {
-				this.pageMode = data.pageMode || 'read';
 				this.swapPanel( data.panel || 'home' );
 			}, this );
 	};
 
-	HelpPanelProcessDialog.prototype.setEditMode = function () {
-		this.pageMode = 'edit';
-		this.suggestededitsPanel.hideFooter();
-		if ( this.currentMode === 'suggested-edits-read' ) {
+	HelpPanelProcessDialog.prototype.getTeardownProcess = function ( data ) {
+		return HelpPanelProcessDialog.super.prototype.getTeardownProcess
+			.call( this, data )
+			.next( function () {
+				if ( this.suggestedEditSession.active ) {
+					this.suggestedEditSession.helpPanelShouldOpen = false;
+					this.suggestedEditSession.save();
+				}
+			}, this );
+	};
+
+	/**
+	 * Set "edit mode" which removes the footer from the suggested edits panel
+	 * and potentially swaps the panel to home, depending on whether the user
+	 * has interacted with guidance.
+	 */
+	HelpPanelProcessDialog.prototype.updateEditMode = function () {
+		this.suggestededitsPanel.toggleFooter( this.logger.isEditing() );
+		// If the user is editing, they are on the guidance screen, and they
+		// have not interacted with guidance, switch them over to the home panel.
+		if ( this.logger.isEditing() && !this.suggestedEditSession.helpPanelSuggestedEditsInteractionHappened ) {
 			this.swapPanel( 'home' );
 		}
 	};
