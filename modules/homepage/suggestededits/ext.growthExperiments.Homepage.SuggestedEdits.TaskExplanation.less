@@ -24,8 +24,10 @@
 		margin-right: 4px;
 		text-transform: uppercase;
 		font-size: 0.75em;
+		// The text in the indicator and the level must line up. To ensure that,
+		// make their line height 100% of their padding-box height.
 		height: 14px;
-		line-height: 1.4;
+		line-height: 14px;
 		position: relative;
 		padding: 2px 4px;
 		// Counter the global border-box rule on mobile
@@ -40,6 +42,8 @@
 		}
 
 		.suggested-edits-difficulty-level {
+			// height is 18px
+			line-height: 1.5;
 			font-size: 12px;
 			margin-top: 2px;
 			padding-left: 10px;
@@ -105,13 +109,11 @@
 	justify-content: space-between;
 	// Restore Minerva's padding for the Drawer
 	padding: 16px 16px 0 16px;
-	min-height: 96px;
 
 	.suggested-edits-header-text {
 		padding-right: 16px;
 
 		h4 {
-			display: flex;
 			font-size: 1.144em;
 			text-align: left;
 			color: @colorGray2;
@@ -125,14 +127,15 @@
 	}
 
 	.suggested-edits-icon {
-		display: flex;
+		flex-shrink: 0;
+		align-self: flex-end;
 		width: 64px;
 		height: 64px;
 		// Image URLs are relative to the current CSS
 		.background-image-svg('../../../images/suggestededits/Topic-general-64w.svg',
 		'../../../images/suggestededits/Topic-general-64w@4x.png');
 		background-repeat: no-repeat;
-		padding-right: 16px;
+		margin-bottom: 16px;
 	}
 }
 
@@ -145,6 +148,10 @@
 
 .drawer.suggested-edits-mobile-peek {
 	padding: unset;
+
+	.suggested-edits-icon {
+		margin-bottom: 0;
+	}
 
 	.suggested-edits-mobile-peek-footer {
 		background-color: @colorBaseInverted;
