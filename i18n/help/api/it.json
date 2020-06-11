@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"ValeJappo"
 		]
 	},
+	"apihelp-helppanelquestionposter-summary": "Gestisci domande inviate tramite Pannello introduttivo dall'utente attuale.",
+	"apihelp-helppanelquestionposter-param-body": "Il testo della domanda posta dall'utente.",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Il titolo pertinente, se selezionato, da includere nella domanda."
 }

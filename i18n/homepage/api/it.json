@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"ValeJappo"
+		]
+	},
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Nessuna richiesta trovata",
+	"apihelp-growthsetmentor-summary": "Imposta tutor dell'utente. Le modifiche verranno registrate pubblicamente.",
+	"apihelp-growthsetmentor-param-mentor": "Nome del tutor",
+	"apihelp-growthsetmentor-param-reason": "Motivo della modifica"
+}

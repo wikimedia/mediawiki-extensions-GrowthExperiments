@@ -1,16 +1,29 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Sakretsu",
+			"ValeJappo"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Benvenuto|Benvenuta|Benvenuto/a}}, $1!",
 	"welcomesurvey-save-confirmation-title": "Grazie! Le tue risposte sono state salvate",
+	"welcomesurvey-save-confirmation-text": "Le tue risposte ci aiuteranno a fornirti metodi più comodi per iniziare su Wikipedia.",
 	"welcomesurvey-subtitle": "Aiutaci a migliorare la tua esperienza su Wikipedia rispondendo ad alcune domande facoltative.",
 	"welcomesurvey-save-btn": "Termina",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Salta}} questo sondaggio",
 	"welcomesurvey-close-btn": "Chiudi e torna a $1",
+	"welcomesurvey-sidebar-privacy-title": "Teniamo alla privacy",
+	"welcomesurvey-sidebar-privacy-text": "Per scoprire di più su come queste risposte facoltative siano usate, {{GENDER:$2|leggi}} l'$1 del sondaggio.",
+	"welcomesurvey-privacy-policy-link-text": "informativa sulla privacy",
+	"welcomesurvey-sidebar-editing-title": "Inizia a modificare",
+	"welcomesurvey-sidebar-editing-text": "Quasi ogni pagina può venire modificata da chiunque, e centinaia di modifiche sono effettuate ogni ora per aggiungere contenuti, correggere errori e migliorare la leggibilità delle voci. Le seguenti pagine potranno aiutarti se sei interessat{{GENDER:$1|o|a|o/a}} a contribuire.",
 	"welcomesurvey-sidebar-editing-link1-text": "Tutorial",
+	"welcomesurvey-sidebar-editing-link1-title": "Aiuto:Benvenuto",
+	"welcomesurvey-sidebar-editing-link2-text": "Sportello informazioni",
+	"welcomesurvey-sidebar-editing-link2-title": "Wikipedia:Sportello_informazioni",
+	"welcomesurvey-question-reason-label": "Perché oggi ti sei registrato?",
+	"welcomesurvey-dropdown-option-select-label": "Per favore, seleziona...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "Per correggere un errore in una voce di Wikipedia",
 	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Per aggiungere o modificare informazioni in una voce di Wikipedia",
 	"welcomesurvey-question-reason-option-add-image-label": "Per aggiungere una foto o immagine in una voce di Wikipedia",
@@ -18,11 +31,17 @@
 	"welcomesurvey-question-reason-option-program-participant-label": "Sto partecipando ad un programma, classe o evento",
 	"welcomesurvey-question-reason-option-read-label": "Per leggere Wikipedia",
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Altro",
+	"welcomesurvey-question-reason-option-other-label": "Altro (spiegalo per favore)",
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Inserisci}} altri motivi...",
+	"welcomesurvey-question-mentor-info": "Stiamo pensando di avviare un programma per permettere agli utenti più esperti di aiutare quelli nuovi. Sei interessat{{GENDER:$1|o|a|o/a}} a venire contattat{{GENDER:$1|o|a|o/a}} per dare aiuto?",
 	"welcomesurvey-question-mentor-label": "Sì, sono {{GENDER:$1|interessato|interessata|interessato/a}}",
 	"welcomesurvey-question-edited-label": "Hai mai modificato Wikipedia?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Sì, molte volte",
 	"welcomesurvey-question-edited-option-yes-few-label": "Sì, una o due volte",
 	"welcomesurvey-question-edited-option-no-dunno-label": "No, non sapevo di poter modificare Wikipedia",
+	"welcomesurvey-question-edited-option-no-other-label": "No, per altri motivi",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Non ricordo",
-	"welcomesurvey-question-email-label": "Indirizzo di posta elettronica (opzionale)"
+	"welcomesurvey-question-email-label": "Indirizzo di posta elettronica (opzionale)",
+	"welcomesurvey-question-email-placeholder": "Inserisci il tuo indirizzo email",
+	"welcomesurvey-question-email-help": "Abbiamo notato che non hai inserito un indirizzo email quando hai creato quest'utenza. È <strong>altamente raccomandato</strong> inserirne uno, dal momento che sarebbe necessario per recuperare il tuo account nel caso perdessi la password. NOTA: Il tuo indirizzo email non viene rivelato quando altri utenti ti contattano."
 }

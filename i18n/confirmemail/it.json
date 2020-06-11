@@ -1,8 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"ValeJappo"
 		]
 	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|cos'è questo?]])",
+	"growthexperiments-confirmemail-emailhelp": "Un indirizzo email è richiesto per poter recuperare la tua utenza se perdi la password.",
+	"growthexperiments-confirmemail-emailrecommended": "Indirizzo di posta elettronica (raccomandato)",
+	"growthexperiments-confirmemail-confirm-subject": "Benvenuto su {{SITENAME}}: sei pregato di confermare il tuo indirizzo email",
 	"growthexperiments-confirmemail-confirm-button": "Conferma indirizzo email"
 }
