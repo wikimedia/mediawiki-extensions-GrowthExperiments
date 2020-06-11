@@ -656,7 +656,7 @@
 			.next( function () {
 				var submitAttemptData,
 					postData;
-				if ( action === 'close' ) {
+				if ( action === 'close' || !action ) {
 					this.logger.log( 'close' );
 					this.close();
 				}
