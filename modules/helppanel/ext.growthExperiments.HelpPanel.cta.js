@@ -57,6 +57,7 @@
 				// Make help panel wider for larger screens.
 				size: Math.max( document.documentElement.clientWidth, window.innerWidth || 0 ) > 1366 ? 'medium' : size,
 				logger: logger,
+				questionPosterAllowIncludingTitle: true,
 				guidanceEnabled: guidanceEnabled,
 				taskTypeId: taskTypeId,
 				suggestedEditSession: suggestedEditSession

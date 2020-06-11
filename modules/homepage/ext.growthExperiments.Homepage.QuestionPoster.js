@@ -15,10 +15,9 @@
 			 */
 			registerDialogRoute = function ( router, route, windowManager, dialog, logger ) {
 				router.addRoute( route, function () {
-					var lifecycle = windowManager.openWindow( dialog );
-					dialog.executeAction( 'ask-help' );
+					var lifecycle = windowManager.openWindow( dialog, { panel: 'ask-help' } );
+					logger.log( 'ask-help' );
 					lifecycle.closing.done( function () {
-						logger.log( 'close' );
 						if ( router.getPath() === route ) {
 							// The user clicked the "close" button on the dialog, go back to
 							// previous route.
@@ -42,6 +41,7 @@
 				} );
 			},
 			questionRoute = '/homepage/' + config.dialog.name + '/question',
+			suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 			QuestionPosterDialog, Help, loggerInstance, windowManagerInstance, ctaButton,
 			dialogInstance, routerInstance;
 
@@ -53,8 +53,8 @@
 		}
 
 		routerInstance = require( 'mediawiki.router' );
-		QuestionPosterDialog = require( './ext.growthExperiments.QuestionPosterDialog.js' );
 		Help = require( 'ext.growthExperiments.Help' );
+		QuestionPosterDialog = Help.HelpPanelProcessDialog;
 		loggerInstance = new Help.HelpPanelLogger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			{
@@ -63,10 +63,15 @@
 			}
 		);
 		windowManagerInstance = new OO.ui.WindowManager( { modal: true } );
+		suggestedEditSession.helpPanelShouldBeLocked = true;
 		dialogInstance = new QuestionPosterDialog( $.extend( {
 			size: 'medium',
 			logger: loggerInstance,
-			suggestedEditSession: require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance()
+			questionPosterAllowIncludingTitle: false,
+			suggestedEditSession: suggestedEditSession,
+			showCogMenu: false,
+			storageKey: 'homepage-questionposter-question-text-' + config.dialog.name,
+			source: 'homepage-' + config.dialog.name
 		}, config.dialog ) );
 		ctaButton = OO.ui.ButtonWidget.static.infuse( $container.find( config.buttonSelector ) );
 

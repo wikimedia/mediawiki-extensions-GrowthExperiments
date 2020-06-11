@@ -1,5 +1,5 @@
 ( function () {
-	var attachButton = require( 'ext.growthExperiments.Homepage.QuestionPoster' ),
+	var attachButton = require( './ext.growthExperiments.Homepage.QuestionPoster.js' ),
 		userName = mw.user.getName(),
 		mentorName = mw.config.get( 'GEHomepageMentorshipMentorName' ),
 		mentorTalkLinkText = mw.message(

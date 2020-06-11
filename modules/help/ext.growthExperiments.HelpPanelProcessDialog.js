@@ -25,6 +25,7 @@
 		HelpPanelProcessDialog = function helpPanelProcessDialog( config ) {
 			HelpPanelProcessDialog.super.call( this, config );
 			this.suggestedEditSession = config.suggestedEditSession;
+			this.questionPosterAllowIncludingTitle = config.questionPosterAllowIncludingTitle;
 			this.logger = config.logger;
 			this.guidanceEnabled = config.guidanceEnabled;
 			this.taskTypeId = config.taskTypeId;
@@ -64,14 +65,14 @@
 		// The "Post" button on the ask help subpanel.
 		{
 			label: OO.ui.deferMsg( 'growthexperiments-help-panel-submit-question-button-text' ),
-			modes: [ 'ask-help' ],
+			modes: [ 'ask-help', 'ask-help-locked' ],
 			classes: [ 'mw-ge-help-panel-post' ],
 			flags: [ 'progressive', 'primary' ],
 			action: 'questioncomplete'
 		},
 		{
 			label: mw.message( 'growthexperiments-help-panel-close' ).text(),
-			modes: [ 'questioncomplete' ],
+			modes: [ 'questioncomplete', 'questioncomplete-locked' ],
 			flags: [ 'progressive', 'primary' ],
 			classes: [ 'mw-ge-help-panel-done' ],
 			action: 'close'
@@ -82,7 +83,7 @@
 			icon: 'close',
 			flags: 'safe',
 			action: 'close',
-			modes: [ 'home', 'locked' ]
+			modes: [ 'home', 'ask-help-locked', 'suggested-edits-locked' ]
 		},
 		{
 			flags: [ 'primary', 'close' ],
@@ -110,22 +111,7 @@
 	 */
 	HelpPanelProcessDialog.prototype.swapPanel = function ( panel ) {
 		var panelObj = this[ panel.replace( '-', '' ) + 'Panel' ],
-			titleMsg = this.panelTitleMessages[ panel ] || this.panelTitleMessages.home,
-			newMode;
-
-		if ( this.suggestedEditSession.active ) {
-			newMode = this.suggestedEditSession.helpPanelShouldBeLocked ? 'locked' : panel;
-			// If current panel is not null (e.g. we've already navigated once) and
-			// the current panel isn't the same as the one we're going to,
-			// then record that an interaction happened.
-			if ( this.currentPanel && this.currentPanel !== panel ) {
-				this.setGuidanceAutoAdvance( false );
-				this.suggestedEditSession.helpPanelSuggestedEditsInteractionHappened = true;
-				this.suggestedEditSession.save();
-			}
-		} else {
-			newMode = panel;
-		}
+			titleMsg = this.panelTitleMessages[ panel ] || this.panelTitleMessages.home;
 
 		this.title.setLabel( titleMsg );
 
@@ -159,6 +145,7 @@
 			this.getActions().setAbilities( {
 				questioncomplete: this.askhelpTextInput.getValue()
 			} );
+			this.questionIncludeFieldLayout.toggle( this.questionPosterAllowIncludingTitle );
 		}
 		// When navigating to the home panel, don't change which panel is visible in this.panels
 		// The current panel needs to remain visible while the sliding transition happens
@@ -166,17 +153,18 @@
 			this.panels.setItem( panelObj );
 		}
 
-		this.setMode( newMode );
 		if ( this.suggestedEditSession.active ) {
-			this.suggestedEditSession.helpPanelCurrentPanel = panel;
-			this.suggestedEditSession.save();
+			this.updateSuggestedEditSession( {
+				helpPanelCurrentPanel: panel
+			} );
+			if ( this.suggestedEditSession.helpPanelSuggestedEditsInteractionHappened ) {
+				this.setGuidanceAutoAdvance( false );
+			}
 		}
-		this.currentPanel = panel;
 
-		// Lock the help panel on read mode, as a workaround for the UX on mobile.
-		if ( this.currentPanel === 'suggested-edits' && !this.logger.isEditing() ) {
-			this.setMode( 'locked' );
-		}
+		this.currentPanel = panel;
+		this.updateMode();
+
 	};
 
 	/**
@@ -532,9 +520,10 @@
 			this.suggestededitsPanel.tipsPanel.tabIndexLayout.getTabs().on( 'choose', function ( item ) {
 				var tabName = item.data;
 				this.setGuidanceAutoAdvance( false );
-				this.suggestedEditSession.helpPanelCurrentTip = tabName;
-				this.suggestedEditSession.helpPanelSuggestedEditsInteractionHappened = true;
-				this.suggestedEditSession.save();
+				this.updateSuggestedEditSession( {
+					helpPanelCurrentTip: tabName,
+					helpPanelSuggestedEditsInteractionHappened: true
+				} );
 				this.logger.log( 'guidance-tab-click', {
 					taskType: this.taskTypeId,
 					tabName: tabName
@@ -594,10 +583,35 @@
 			.call( this, data )
 			.next( function () {
 				if ( this.suggestedEditSession.active ) {
-					this.suggestedEditSession.helpPanelShouldOpen = false;
-					this.suggestedEditSession.save();
+					this.updateSuggestedEditSession( {
+						helpPanelShouldOpen: false
+					} );
 				}
 			}, this );
+	};
+
+	/**
+	 * Set the process dialog mode based on the current panel, mode and the
+	 * status of the suggested edit session.
+	 */
+	HelpPanelProcessDialog.prototype.updateMode = function () {
+		this.setMode(
+			this.suggestedEditSession.helpPanelShouldBeLocked ?
+				this.currentPanel + '-locked' :
+				this.currentPanel
+		);
+	};
+
+	/**
+	 * Update the suggested edit session.
+	 *
+	 * @param {Object} update The updates to save to the session.
+	 */
+	HelpPanelProcessDialog.prototype.updateSuggestedEditSession = function ( update ) {
+		if ( this.suggestedEditSession.active ) {
+			this.suggestedEditSession = $.extend( this.suggestedEditSession, update );
+			this.suggestedEditSession.save();
+		}
 	};
 
 	/**
@@ -607,9 +621,16 @@
 	 */
 	HelpPanelProcessDialog.prototype.updateEditMode = function () {
 		this.suggestededitsPanel.toggleFooter( this.logger.isEditing() );
+		this.updateMode();
 		// If the user is editing, they are on the guidance screen, and they
 		// have not interacted with guidance, switch them over to the home panel.
 		if ( this.logger.isEditing() && !this.suggestedEditSession.helpPanelSuggestedEditsInteractionHappened ) {
+			// But now that they have seen the root screen, let's pretend
+			// an interaction happened so that the user doesn't get swapped
+			// over without asking again.
+			this.updateSuggestedEditSession( {
+				helpPanelSuggestedEditsInteractionHappened: true
+			} );
 			this.swapPanel( 'home' );
 		}
 	};
@@ -642,9 +663,23 @@
 				if ( action === 'close' || !action ) {
 					this.logger.log( 'close' );
 					this.setGuidanceAutoAdvance( false );
+					// Show mentorship tour if that was the homepage module that was used
+					if ( this.source === 'homepage-mentorship' ) {
+						this.launchIntroTour(
+							'homepage_mentor',
+							'growthexperiments-tour-homepage-mentorship'
+						);
+					}
 					this.close();
 				}
 				if ( action === 'home' ) {
+					// We count "back" as an interaction on the suggested edits
+					// screen.
+					if ( this.currentPanel === 'suggested-edits' ) {
+						this.updateSuggestedEditSession( {
+							helpPanelSuggestedEditsInteractionHappened: true
+						} );
+					}
 					if ( this.currentMode === 'search' ) {
 						action = 'general-help';
 					}
@@ -740,16 +775,6 @@
 								new OO.ui.Error( $( '<p>' ).append( this.submitFailureMessage ) )
 							).promise();
 						}.bind( this ) );
-				}
-				if ( action === 'helppanelclose' ) {
-					this.close();
-					// Show mentorship tour if that was the homepage module that was used
-					if ( this.source === 'homepage-mentorship' ) {
-						this.launchIntroTour(
-							'homepage_mentor',
-							'growthexperiments-tour-homepage-mentorship'
-						);
-					}
 				}
 			}.bind( this ) );
 	};

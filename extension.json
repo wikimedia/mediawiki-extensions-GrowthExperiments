@@ -273,24 +273,6 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.Homepage.QuestionPoster": {
-			"packageFiles": [
-				"homepage/ext.growthExperiments.Homepage.QuestionPoster.js",
-				"homepage/ext.growthExperiments.QuestionPosterDialog.js"
-			],
-			"messages": [
-				"growthexperiments-homepage-help-cancel"
-			],
-			"dependencies": [
-				"ext.growthExperiments.Help",
-				"mediawiki.jqueryMsg",
-				"mediawiki.router"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
 		"ext.growthExperiments.Homepage.Logger": {
 			"packageFiles": [
 				"homepage/ext.growthExperiments.Homepage.Logger.js",
@@ -351,7 +333,8 @@
 		},
 		"ext.growthExperiments.Homepage.Mentorship": {
 			"packageFiles": [
-				"homepage/ext.growthExperiments.Homepage.Mentorship.js"
+				"homepage/ext.growthExperiments.Homepage.Mentorship.js",
+				"homepage/ext.growthExperiments.Homepage.QuestionPoster.js"
 			],
 			"messages": [
 				"growthexperiments-homepage-mentorship-dialog-title",
@@ -360,12 +343,14 @@
 				"growthexperiments-homepage-mentorship-confirmation-text",
 				"growthexperiments-homepage-mentorship-view-question-text"
 			],
-			"dependencies": [
-				"ext.growthExperiments.Homepage.QuestionPoster"
-			],
 			"targets": [
 				"desktop",
 				"mobile"
+			],
+			"dependencies": [
+				"ext.growthExperiments.Help",
+				"mediawiki.jqueryMsg",
+				"mediawiki.router"
 			]
 		},
 		"ext.growthExperiments.Homepage.Topics": {
