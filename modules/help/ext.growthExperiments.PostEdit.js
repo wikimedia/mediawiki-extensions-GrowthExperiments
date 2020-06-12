@@ -39,6 +39,10 @@
 			{ getDescription: true, size: 10 }
 		).then( function ( data ) {
 			var task = data.tasks[ 0 ] || null;
+			if ( task && task.title === suggestedEditSession.title.getPrefixedText() ) {
+				// Don't offer the same task again.
+				task = data.tasks[ 1 ] || null;
+			}
 			if ( task && !OO.ui.isMobile() ) {
 				return $.when(
 					api.getExtraDataFromPcs( task ),
