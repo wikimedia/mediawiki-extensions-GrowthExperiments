@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Lemure Saltante",
 			"ValeJappo"
 		]
 	},
+	"apihelp-homepagequestionstore-param-questionformat": "Il formato in cui devono essere restituite le domande, es.: HTML",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Nessuna richiesta trovata",
 	"apihelp-growthsetmentor-summary": "Imposta tutor dell'utente. Le modifiche verranno registrate pubblicamente.",
+	"apihelp-growthsetmentor-param-mentee": "Nome utente dell'allievo",
 	"apihelp-growthsetmentor-param-mentor": "Nome del tutor",
 	"apihelp-growthsetmentor-param-reason": "Motivo della modifica"
 }
