@@ -9,7 +9,7 @@
 			"محمد أحمد عبد الفتاح"
 		]
 	},
-	"growthexperiments-help-panel-tog-help-panel": "{{GENDER:|فعّل|فعّلي}} لوحة مساعدة المحرر",
+	"growthexperiments-help-panel-tog-help-panel": "{{GENDER:|فعّل|فعّلي}} أداة لوحة مساعدة المحرر",
 	"growthexperiments-help-panel-cta-button-text": "{{GENDER:|احصل|احصلي}} على مساعدة في التحرير",
 	"growthexperiments-help-panel-question-button-text": "{{GENDER:|تابع|تابعي}}",
 	"growthexperiments-help-panel-submit-question-button-text": "{{GENDER:|انشر|انشري}}",
@@ -54,7 +54,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-value": "يتمكّن القرّاء من معرفة المزيد حول موضوع ما مذكور في مقالة من {{SITENAME}} عبر الضّغط على الوصلة في هذه المقالة. فهي تساعد المستخدمين على تصفّح مقالات أخرى من {{SITENAME}} بكلّ سهولة.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-value": "عطارد هو أصغر <mark class=\"positive\">كوكب</mark> في <mark class=\"positive\">نظام المجموعة الشمسية</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-calm": "لإحداث فرق بمساهمتك، كل ما يجب القيام به هو إضافة وصلة أو وصلتين. لا {{GENDER:|تحتاج|تحتاجين}} إلى العمل على كامل المقالة. كذلك، لست {{GENDER:|ملزما|ملزمة}} بمعرفة خاصة حول موضوع المقالة.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-rules1": "{{GENDER:|اتّبع|اتّبعي}} هذه التوصيات أثناء إضافة الوصلات:\n* {{GENDER:|اُربط|اُربطي}} المفاهيم التي يمكن أن تستهوي القرّاء لتعلّموا المزيد حولها.\n* {{GENDER:|اُربط|اُربطي}} العبارة أو الجملة التي تأتي أوّلا فقط عند قراءة المقالة.\n* {{GENDER:|لا تربط|لا تربطي}} العبارات الشائعة أو السنوات أو التواريخ.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-rules1": "{{GENDER:|اتّبع|اتّبعي}} هذه التوصيات أثناء إضافة الوصلات:\n* {{GENDER:|اُربط|اُربطي}} المفاهيم التي يمكن أن تستهوي القرّاء ليتعلّموا المزيد حولها.\n* {{GENDER:|اُربط|اُربطي}} العبارة أو الجملة التي تأتي أوّلا فقط عند قراءة المقالة.\n* {{GENDER:|لا تربط|لا تربطي}} العبارات الشائعة أو السنوات أو التواريخ.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-rules1": "يُعتَقَدُ أن القمر تشكّل قبل حوالي 4.51 مليار <mark class=\"negative\">سنة</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-rules1": "عبارة \"سنة\" لا يجب أن يتمّ ربطها، لأنها كلمة شائعة",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-step1": "عندما {{GENDER:|تجد|تجدين}} مكانا ما لإضافة وصلة، {{GENDER:|اِضغط|اِضغطي}} على \"$1\" للبدء. ثم {{GENDER:|أبرز|أبرزي}} العبارة أو الجملة التي {{GENDER:|تريد أن تحوّلها|تريدين أن تحوّلينها}} إلى وصلة.",
