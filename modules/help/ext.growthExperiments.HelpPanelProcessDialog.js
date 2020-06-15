@@ -814,6 +814,24 @@
 		return this.homeHeight;
 	};
 
+	/**
+	 * @inheritDoc
+	 * @return {Object} Size properties ([min|max|][width|height]).
+	 */
+	HelpPanelProcessDialog.prototype.getSizeProperties = function () {
+		var dim = HelpPanelProcessDialog.super.prototype.getSizeProperties.call( this );
+		// Override default size calculation of OO.ui.Window, so that the help panel's size
+		// doesn't change depending on the number of buttons / sub-panels in it, and it doesn't
+		// overlap the personal toolbar (which has a higher z-index, and that would be difficult
+		// to change without messing up the stacking order relationship with other things).
+		// But only on desktop, since on mobile we usually want to fill the screen.
+		if ( !OO.ui.isMobile() ) {
+			dim.height = '528px';
+			dim.maxHeight = 'calc( 100vh - 180px )';
+		}
+		return dim;
+	};
+
 	module.exports = HelpPanelProcessDialog;
 
 }() );
