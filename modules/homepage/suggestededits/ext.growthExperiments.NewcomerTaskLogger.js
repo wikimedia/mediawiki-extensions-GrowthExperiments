@@ -45,7 +45,7 @@
 			newcomer_task_token: task.token,
 			task_type: task.tasktype,
 			maintenance_templates: task.maintenanceTemplates,
-			revisionId: task.revisionId,
+			revision_id: task.revisionId,
 			page_id: task.pageId,
 			page_title: task.title,
 			has_image: !!task.thumbnailSource,
@@ -54,7 +54,7 @@
 		};
 		if ( task.topics && task.topics.length ) {
 			logData.topic = task.topics[ 0 ][ 0 ];
-			logData.matchScore = task.topics[ 0 ][ 1 ];
+			logData.match_score = task.topics[ 0 ][ 1 ];
 		}
 		return logData;
 		/* eslint-enable camelcase */
