@@ -222,12 +222,14 @@
 				color: @colorGray2;
 
 				.oo-ui-tabPanelLayout {
-					padding: 0;
+					padding: 16px 0 0 0;
+
+					.oo-ui-panelLayout {
+						padding-bottom: 16px;
+					}
 				}
 
 				.growthexperiments-quickstart-tips-tip {
-					padding: 8px 0;
-
 					mark {
 						mix-blend-mode: multiply;
 						padding: 2px;
@@ -244,17 +246,23 @@
 					&-main {
 						line-height: 1.6;
 						color: @wmui-color-base10;
+
+						.oo-ui-iconWidget {
+							padding: 0 8px;
+						}
 					}
 
 					&-example {
 						border-radius: 2px;
 						border: solid 1px @wmui-color-base80;
 						background-color: @wmui-color-base90;
+						padding: 0;
 
 						&-text {
 							line-height: 1.43;
 							color: @wmui-color-base10;
 							padding: 12px;
+							margin: 0;
 
 							sup {
 								color: #0645ad;
