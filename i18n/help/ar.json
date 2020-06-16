@@ -50,7 +50,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-copyedit-main-step1": "عندما {{GENDER:|تلاحظ|تلاحظين}} خطأً {{GENDER:|تريد|تريدين}} إصلاحه، {{GENDER:|اُنقر|اُنقري}} فوق القلم أعلى القسم للبدء ثم {{GENDER:|تابع وأصلح|تابعي وأصلحي}} الأخطاء عبر تغيير محتوى المقالة كلما احتاج الأمر إلى ذلك.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-publish": "{{GENDER:|اِبحث|اِبحثي}} عن تغييرات أخرى للقيام بها، أو {{GENDER:|أنه|أنهي}} المهمّة و{{GENDER:|اضغط|اضغطي}} على \"$1\" لحفظ تعديلك!",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-copyedit-main-publish": "{{GENDER:|اِبحث|اِبحثي}} عن تغييرات أخرى للقيام بها، أو {{GENDER:|أنه|أنهي}} المهمّة و{{GENDER:|انقر|انقري}} فوق زر السهم الأزرق لحفظ تعديلك!",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-publish": "[[$1|{{GENDER:|تعلّم|تعلّمي}} المزيد حول تحرير النسخ.]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-publish": "[[$1|{{GENDER:|تعلّم|تعلّمي}} المزيد حول تحرير النسخ]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-value": "يتمكّن القرّاء من معرفة المزيد حول موضوع ما مذكور في مقالة من {{SITENAME}} عبر الضّغط على الوصلة في هذه المقالة. فهي تساعد المستخدمين على تصفّح مقالات أخرى من {{SITENAME}} بكلّ سهولة.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-value": "عطارد هو أصغر <mark class=\"positive\">كوكب</mark> في <mark class=\"positive\">نظام المجموعة الشمسية</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-calm": "لإحداث فرق بمساهمتك، كل ما يجب القيام به هو إضافة وصلة أو وصلتين. لا {{GENDER:|تحتاج|تحتاجين}} إلى العمل على كامل المقالة. كذلك، لست {{GENDER:|ملزما|ملزمة}} بمعرفة خاصة حول موضوع المقالة.",
@@ -64,7 +64,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-step2": "{{GENDER:|اُنقر|اُنقري}} فوق زر \"$1\" $2 ثمّ {{GENDER:|اختر|اختاري}} من القائمة مقالة {{SITENAME}} المناسبة للربط.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-publish": "{{GENDER:|اِبحث|اِبحثي}} عن وصلات أخرى، أو {{GENDER:|أنه|أنهي}} المهمّة و{{GENDER:|اِضغط|اِضغطي}} على \"$1\" لحفظ تعديلك!",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-publish": "{{GENDER:|اِبحث|اِبحثي}} عن وصلات أخرى، أو {{GENDER:|أنه|أنهي}} المهمّة و{{GENDER:|انقر|انقري}} فوق زر السهم الأزرق لحفظ تعديلك!",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "[[$1|{{GENDER:|تعلّم|تعلّمي}} المزيد حول إضافة الوصلات.]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "[[$1|{{GENDER:|تعلّم|تعلّمي}} المزيد حول إضافة الوصلات]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-value": "مصادر كلّ المعلومات في {{SITENAME}} تتأتّى من مراجع موثوقة مثل الكتب المنشورة أو الجرائد. عندما يجد القرّاء مراجع لهذه المصادر، من شأن ذلك أن يعزّز الثقة في ما يقرؤونه.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-example-value": "يمكن أن يكون سبب شهرة زحل، نظام الحلقات الكوكبيّة التي تحيط به والتي تجعل منه ظاهرة فريدة.<sup>[3]</sup>",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-text-value": "هذه الجملة تحتوي على اقتباس في آخرها يُفضي إلى مرجعها.",
@@ -98,7 +98,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-step2-no-link": "حين {{GENDER:|تضيف|تضيفين}} معلومة جديدة، {{GENDER:|تأكّد|تأكّدي}} من إضافة المراجع، حينها سيرى الآخرون مصدر المعلومة.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-publish": "حين {{GENDER:|تنته|تنتهين}} من توسعة المقالة، {{GENDER:|تابع واضغط|تابعي واضغطي}} على \"$1\" لحفظ تعديلك!",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-publish": "حين {{GENDER:|تنته|تنتهين}} من توسعة المقالة، {{GENDER:|تابع وانقر|تابعي وانقري}} فوق السهم الأزرق لحفظ تعديلك!",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|{{GENDER:|تعلّم|تعلّمي}} المزيد حول توسيع المقالات.]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|{{GENDER:|تعلّم|تعلّمي}} المزيد حول توسيع المقالات]]",
 	"growthexperiments-help-panel-questioncomplete-title": "{{GENDER:|اِطرح|اِطرحي}} سؤالا",
 	"growthexperiments-help-panel-questioncomplete-header": "تم نشر سؤالك!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "سؤالك الآن معروض على فريق المساعدة ليتم الرد عليه من قبل محرر متطوع آخر.",
@@ -126,5 +126,5 @@
 	"growthexperiments-help-panel-button-subheader-general-help": "{{GENDER:|اِبحث|اِبحثي}} في الإجابات و{{GENDER:|اقرأ|ااقرئي}} أهمّ صفحات المساعدة",
 	"growthexperiments-help-panel-button-subheader-ask-help": "{{GENDER:|احصل|احصلي}} على إجابات من مستخدمين آخرين",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "نصائح سريعة للبدء",
-	"growthexperiments-help-panel-suggested-edits-faq-link-text": "أكثر الأسئلة حول التعديلات المقترحة"
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "أسئلة متكرّرة حول التعديلات المقترحة"
 }

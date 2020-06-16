@@ -1,8 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Erelon"
 		]
 	},
-	"growthexperiments-homepage-questionstore-noquestionsfound": "לא נמצאו שאלות."
+	"apihelp-homepagequestionstore-summary": "קבלת שאלות מעוצבות דרך מודולים של דף הבית",
+	"apihelp-homepagequestionstore-param-questionformat": "התסדיר להחזרת השאלות, למשל HTML",
+	"apihelp-homepagequestionstore-param-storage": "מקום האחסון של השאלות.",
+	"apihelp-homepagequestionstore-param-userid": "מזהה המשתמש שצריך לקבל שאלות עבורו.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "לא נמצאו שאלות.",
+	"apihelp-growthsetmentor-summary": "הגדרת החונך של המשתמש.",
+	"apihelp-growthsetmentor-param-mentee": "שם המשתמש של החניך",
+	"apihelp-growthsetmentor-param-mentor": "שם המשתמש של החונך",
+	"apihelp-growthsetmentor-param-reason": "סיבה לשינוי"
 }
