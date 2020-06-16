@@ -5,6 +5,8 @@
 		quickStartTips = require( '../helppanel/ext.growthExperiments.SuggestedEdits.QuickStartTips.js' );
 
 	/**
+	 * Create the suggested edit panel. The panel is initially empty; the code creating it
+	 * must call SuggestedEditsPanel.build() to populate it.
 	 * @param {Object} config The standard config to pass to OO.ui.PanelLayout,
 	 *  plus configuration specific to building the suggested edits panel.
 	 * @param {Object} config.taskTypeData The data for a particular task.
@@ -26,15 +28,23 @@
 		this.editorInterface = config.editorInterface;
 		this.taskTypeData = config.taskTypeData;
 		this.currentTip = config.currentTip;
-		this.build();
+		/** @var {OO.ui.StackLayout} */
+		this.tipsPanel = null;
 	}
 
 	OO.inheritClass( SuggestedEditsPanel, OO.ui.StackLayout );
 
 	/**
 	 * Appends the header, quickstart tips, and footer to the panel.
+	 * @return {jQuery.Promise<boolean>} A promise that resolves with true when the tips are loaded.
+	 *   The promise rejects when the tips failed to load. It resolves with false when the tips
+	 *   did not need to be loaded (ie. the help panel should not contain guidance).
 	 */
 	SuggestedEditsPanel.prototype.build = function () {
+		if ( !this.taskTypeData ) {
+			return $.Deferred().resolve().promise( false );
+		}
+
 		this.$element.addClass( 'suggested-edits-panel suggested-edits-panel-with-footer' );
 		this.footerPanel = new OO.ui.PanelLayout( {
 			// Padding is set on the text itself in CSS
@@ -55,12 +65,12 @@
 			expanded: false,
 			$content: this.getHeader()
 		} );
-		quickStartTips.getTips( this.taskTypeData.id, this.editorInterface, this.currentTip ).then( function ( tipsPanel ) {
+		return quickStartTips.getTips( this.taskTypeData.id, this.editorInterface, this.currentTip ).then( function ( tipsPanel ) {
 			this.headerAndTipsPanel.addItems( [ this.headerPanel, tipsPanel ] );
 			this.addItems( [ this.headerAndTipsPanel, this.footerPanel ] );
-			tipsPanel.on( 'tab-selected', function ( data ) {
-				this.emit( 'tab-selected', data );
-			}, [], this );
+			// Used by the auto-advance logic in HelpPanelProcessDialog
+			this.tipsPanel = tipsPanel;
+			return true;
 		}.bind( this ) );
 	};
 
