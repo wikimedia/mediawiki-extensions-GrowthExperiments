@@ -858,15 +858,16 @@
 		var self = this;
 		if ( enable && this.guidanceEnabled && !this.guidanceAutoAdvanceTimer ) {
 			this.guidanceAutoAdvanceTimer = window.setInterval( function () {
-				// Getting here implies that the suggested edits panel is active, as that's
-				// the default state, any manual state change disables auto-advance,
-				// and there's no way to re-enable it.
-
+				var tabIndexLayout, tabs, currentTab, nextTab;
+				// Skip if the panel is not active or not loaded yet.
+				if ( self.currentPanel !== 'suggested-edits' || !self.suggestededitsPanel.tipsPanel ) {
+					return;
+				}
 				// This seems to be the least insane method of finding the next tab :/
-				var tabIndexLayout = self.suggestededitsPanel.tipsPanel.tabIndexLayout,
-					tabs = tabIndexLayout.getTabs(),
-					currentTab = tabs.findItemFromData( tabIndexLayout.getCurrentTabPanelName() ),
-					nextTab = tabs.getItems()[ ( tabs.getItemIndex( currentTab ) + 1 ) % tabs.getItemCount() ];
+				tabIndexLayout = self.suggestededitsPanel.tipsPanel.tabIndexLayout;
+				tabs = tabIndexLayout.getTabs();
+				currentTab = tabs.findItemFromData( tabIndexLayout.getCurrentTabPanelName() );
+				nextTab = tabs.getItems()[ ( tabs.getItemIndex( currentTab ) + 1 ) % tabs.getItemCount() ];
 				tabIndexLayout.setTabPanel( nextTab.data );
 			}, 5000 );
 		} else if ( !enable && this.guidanceAutoAdvanceTimer ) {
