@@ -105,9 +105,9 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Confirm your email",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "If {{GENDER:$1|you'd}} also like to be notified by email, add an email address now.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Add email",
-	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "More about this feature",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "About the help panel",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "By the way, by posting this question, you've just made your first edit to a page. Congratulations!",
-	"growthexperiments-help-panel-settings-cog-preferences-link": "Disable this tool in Preferences",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Disable the help panel",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Invalid title.",
 	"growthexperiments-help-panel-community-help-desk-text": "Community Help Desk",
 	"growthexperiments-help-panel-search-label": "Search for help",
@@ -120,5 +120,5 @@
 	"growthexperiments-help-panel-button-subheader-general-help": "Search for answers and read top articles",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Get answers from other volunteers",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Quick start tips",
-	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Suggested edits FAQ"
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "About suggested edits"
 }
