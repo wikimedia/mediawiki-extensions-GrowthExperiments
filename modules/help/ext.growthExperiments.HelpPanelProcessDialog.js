@@ -309,7 +309,7 @@
 				'data-link-id': 'more-about-this-feature'
 			}, mw.message( 'growthexperiments-help-panel-questioncomplete-more-about-this-feature-text' ).text() )
 		);
-		this.$primaryActions.empty();
+		this.$primaryActions.find( '.mw-ge-help-panel-settings-cog' ).remove();
 		if ( this.guidanceEnabled && this.currentPanel === 'suggested-edits' ) {
 			$content.append(
 				mw.html.element( 'a', {
