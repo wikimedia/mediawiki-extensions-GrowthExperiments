@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "取得適合編輯新手的任務建議。",
+	"apihelp-query+growthtasks-extended-description": "建議一組內容有尚未解決的問題，並且能讓新手輕鬆處理的條目集。",
+	"apihelp-query+growthtasks-param-tasktypes": "用來限制結果的任務類型。若留空代表接收所有建議。",
+	"apihelp-query+growthtasks-param-topics": "在任務建議裡優先的條目主題。",
+	"apihelp-query+growthtasks-param-limit": "回傳任務建議的最大數量。",
+	"apihelp-query+growthtasks-param-debug": "添加調試資料到輸出裡。",
+	"apihelp-query+growthtasks-example-1": "取得目前使用者的複製編輯類型任務的任務推薦。",
+	"apihelp-query+growthtasks-example-2": "取得目前使用者的任務推薦，以及有關頁面的擴充資訊。"
+}

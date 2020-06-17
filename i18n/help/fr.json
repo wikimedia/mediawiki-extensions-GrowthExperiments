@@ -7,6 +7,7 @@
 			"Gomoko",
 			"Pamputt",
 			"Thibaut120094",
+			"Trizek (WMF)",
 			"Verdy p",
 			"Wladek92"
 		]
@@ -80,7 +81,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-publish": "Ajouter soit plus de références, ou poursuivre et cliquer sur « $1 » pour enregistrer {{GENDER:|votre}} modification !",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-references-main-publish": "Ajouter soit plus de références, ou poursuivre et taper sur le bouton flèche bleue pour enregistrer {{GENDER:|votre}} modification !",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-text-publish": "[[$1|En savoir plus sur les références]]",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-value": "Les articles deviennent obsolètes avec le temps, et de nouveaux événements se produisent. {{GENDER:|Vous}} pouvez mettre à jour la langue et ajouter les détails corrects afin que {{SITENAME}} contienne toujours la meilleure information.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-value": "Les articles deviennent obsolètes avec le temps, et de nouveaux événements se produisent. {{GENDER:|Vous}} pouvez mettre à jour le texte et ajouter les détails corrects afin que {{SITENAME}} contienne toujours la meilleure information.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-example-value": "La sonde <mark class=\"negative\">atterrira</mark> sur Mars <mark class=\"negative\">en 2018</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-calm": "Pour faire une différence, {{GENDER:|vous}} n’avez besoin que de faire une mise à jour dans l’article. {{GENDER:|Vous}} n’avez pas besoin de travailler sur tout l’article.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-rules1": "Suivre ces lignes directrices lors de la mise à jour de l’article :\n* Cherchez des phrases qui décrivent des événements passés comme se passant dans le futur.\n* Cherchez des nombres qui peuvent être devenus obsolètes, comme la population d’un pays. \n* Cherchez des situations qui ont changé du fait d’événements actuels, comme le maire d’une ville.",

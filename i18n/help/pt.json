@@ -3,6 +3,7 @@
 		"authors": [
 			"CaiusSPQR",
 			"Hamilton Abreu",
+			"He7d3r",
 			"Mansil alfalb"
 		]
 	},
@@ -17,6 +18,10 @@
 	"growthexperiments-help-panel-back-home": "Voltar",
 	"growthexperiments-help-panel-close": "Concluído",
 	"growthexperiments-help-panel-home-title": "Obter ajuda sobre edição",
+	"growthexperiments-help-panel-postedit-header": "Próximos passos",
+	"growthexperiments-help-panel-postedit-subheader": "Editar outra sugestão:",
+	"growthexperiments-help-panel-postedit-footer": "Ver mais edições sugeridas",
+	"growthexperiments-help-panel-postedit-footer2": "Fechar e editar este artigo novamente",
 	"growthexperiments-help-panel-questionreview-title": "Fazer uma pergunta",
 	"growthexperiments-help-panel-questionreview-header": "Quando faz uma pergunta, ela é <strong>divulgada publicamente</strong> com o seu nome de utilizador, \"$2\", na $1, onde outro editor voluntário tentará dar uma resposta no prazo aproximado de um dia.",
 	"growthexperiments-help-panel-questionreview-label": "A sua pergunta",
@@ -25,6 +30,8 @@
 	"growthexperiments-help-panel-question-subject-template-with-title": "Pergunta do painel de ajuda sobre [[$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Pergunta do módulo de ajuda a partir da página principal do utilizador",
 	"growthexperiments-help-panel-question-post-error": "Ocorreu um erro ao tentar publicar a sua pergunta. Pode tentar novamente ou visitar $1 no seu ''browser'' e acrescentar a sua pergunta manualmente.",
+	"growthexperiments-help-panel-suggestededits-title": "Edições sugeridas",
+	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Dicas de início rápido",
 	"growthexperiments-help-panel-questioncomplete-title": "Fazer uma pergunta",
 	"growthexperiments-help-panel-questioncomplete-header": "A sua pergunta foi publicada!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "A sua pergunta agora está na Central de Ajuda Comunitária para ser respondida por outro editor voluntário.",
