@@ -844,8 +844,11 @@
 		// to change without messing up the stacking order relationship with other things).
 		// But only on desktop, since on mobile we usually want to fill the screen.
 		if ( !OO.ui.isMobile() ) {
-			dim.height = '528px';
-			dim.maxHeight = 'calc( 100vh - 180px )';
+			// Do not change the object, it is shared by all OOUI windows
+			dim = $.extend( {}, dim, {
+				height: '528px',
+				maxHeight: 'calc( 100vh - 180px )'
+			} );
 		}
 		return dim;
 	};
