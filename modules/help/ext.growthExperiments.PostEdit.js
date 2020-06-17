@@ -179,16 +179,7 @@
 			}, function ( errorMessage ) {
 				return setup( null, errorMessage );
 			} );
-		},
-
-		/**
-		 * Create and show a reduced version of the panel, without any task suggestion.
-		 * @return {Object} An object with:
-		 *   - panel: the PostEditPanel object;
-		 *   - openPromise: a promise that resolves when the panel has been displayed.
-		 */
-		setupPanelWithoutTask: function () {
-			return setup( null, null );
 		}
+
 	};
 }() );

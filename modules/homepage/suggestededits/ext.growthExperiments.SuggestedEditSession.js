@@ -40,8 +40,6 @@
 		 *   immediately when we detect the save.
 		 */
 		this.postEditDialogNeedsToBeShown = false;
-		/** @var {boolean} Whether the post-edit dialog was already shown in this session. */
-		this.postEditDialogShown = false;
 		/** @var {boolean} Whether the mobile peek was already shown in this session. */
 		this.mobilePeekShown = false;
 		/** @var {boolean} Whether the help panel should be locked to its current panel. */
@@ -100,7 +98,6 @@
 			taskType: this.taskType,
 			editorInterface: this.editorInterface,
 			postEditDialogNeedsToBeShown: this.postEditDialogNeedsToBeShown,
-			postEditDialogShown: this.postEditDialogShown,
 			mobilePeekShown: this.mobilePeekShown,
 			helpPanelShouldBeLocked: this.helpPanelShouldBeLocked,
 			helpPanelCurrentPanel: this.helpPanelCurrentPanel,
@@ -140,7 +137,6 @@
 				this.taskType = data.taskType;
 				this.editorInterface = data.editorInterface;
 				this.postEditDialogNeedsToBeShown = data.postEditDialogNeedsToBeShown;
-				this.postEditDialogShown = data.postEditDialogShown;
 				this.mobilePeekShown = data.mobilePeekShown;
 				this.helpPanelShouldBeLocked = data.helpPanelShouldBeLocked;
 				this.helpPanelCurrentPanel = data.helpPanelCurrentPanel;
@@ -155,7 +151,7 @@
 	};
 
 	/**
-	 * See if the user has just started a suggested edit session (which is identiifed by a
+	 * See if the user has just started a suggested edit session (which is identified by a
 	 * URL parameter).
 	 * @return {boolean} Whether the session has been initiated.
 	 */
@@ -278,19 +274,9 @@
 
 		if ( !config.nextRequest && mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ) ) {
 			return mw.loader.using( 'ext.growthExperiments.PostEdit' ).then( function ( require ) {
-				var promise,
-					PostEdit = require( 'ext.growthExperiments.PostEdit' );
-
-				if ( self.postEditDialogShown ) {
-					// Wrap in a promise to keep symmetry with setupPanel()
-					promise = $.when( PostEdit.setupPanelWithoutTask() );
-				} else {
-					promise = PostEdit.setupPanel();
-				}
-				return promise.then( function ( result ) {
+				return require( 'ext.growthExperiments.PostEdit' ).setupPanel().then( function ( result ) {
 					result.openPromise.done( function () {
 						self.postEditDialogNeedsToBeShown = false;
-						self.postEditDialogShown = true;
 						self.save();
 					} );
 					return result.openPromise;
