@@ -148,16 +148,19 @@
 			}
 		}
 
-		// Close icon.
-		.oo-ui-processDialog-actions-safe .oo-ui-widget-enabled.oo-ui-iconElement:not( .oo-ui-labelElement ) {
-			// stylelint-disable-next-line no-descending-specificity
-			.oo-ui-buttonElement-button {
-				opacity: 0.5;
-			}
+		// Close and back icons.
+		.oo-ui-processDialog-actions-safe,
+		.oo-ui-processDialog-actions-primary {
+			.oo-ui-widget-enabled.oo-ui-iconElement:not( .oo-ui-labelElement ) {
+				// stylelint-disable-next-line no-descending-specificity
+				.oo-ui-buttonElement-button {
+					opacity: 0.5;
+				}
 
-			.oo-ui-buttonElement-button:not( .oo-ui-buttonElement-pressed ):hover {
-				border-color: transparent;
-				background-color: transparent;
+				.oo-ui-buttonElement-button:not( .oo-ui-buttonElement-pressed ):hover {
+					border-color: transparent;
+					background-color: transparent;
+				}
 			}
 		}
 	}
