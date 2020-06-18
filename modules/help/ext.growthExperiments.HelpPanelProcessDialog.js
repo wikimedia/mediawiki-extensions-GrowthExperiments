@@ -115,13 +115,13 @@
 	 *
 	 * Modeled off of VisualEditor's swapPanel().
 	 *
-	 * @param {string} panel One of 'home', 'ask-help', 'general-help',
+	 * @param {string} panelToSwitchTo One of 'home', 'ask-help', 'general-help',
 	 *   'questioncomplete' or 'suggested-edits'
 	 * @throws {Error} Unknown panel.
 	 */
-	HelpPanelProcessDialog.prototype.swapPanel = function ( panel ) {
-		var panelObj = this[ panel.replace( '-', '' ) + 'Panel' ],
-			titleMsg = this.panelTitleMessages[ panel ] || this.panelTitleMessages.home;
+	HelpPanelProcessDialog.prototype.swapPanel = function ( panelToSwitchTo ) {
+		var panelObj = this[ panelToSwitchTo.replace( '-', '' ) + 'Panel' ],
+			titleMsg = this.panelTitleMessages[ panelToSwitchTo ] || this.panelTitleMessages.home;
 
 		this.title.setLabel( titleMsg );
 
@@ -131,8 +131,8 @@
 			'general-help',
 			'ask-help',
 			'questioncomplete'
-		].indexOf( panel ) ) === -1 ) {
-			throw new Error( 'Unknown panel: ' + panel );
+		].indexOf( panelToSwitchTo ) ) === -1 ) {
+			throw new Error( 'Unknown panel: ' + panelToSwitchTo );
 		}
 
 		this.$content
@@ -143,15 +143,15 @@
 			// * mw-ge-help-panel-processdialog-activepanel-ask-help
 			// * mw-ge-help-panel-processdialog-activepanel-questioncomplete
 			.removeClass( 'mw-ge-help-panel-processdialog-activepanel-' + this.currentPanel )
-			.addClass( 'mw-ge-help-panel-processdialog-activepanel-' + panel );
+			.addClass( 'mw-ge-help-panel-processdialog-activepanel-' + panelToSwitchTo );
 
-		if ( panel === 'home' ) {
+		if ( panelToSwitchTo === 'home' ) {
 			this.toggleSearchResults( false );
 		}
-		if ( panel === 'general-help' ) {
+		if ( panelToSwitchTo === 'general-help' ) {
 			this.toggleSearchResults( false );
 		}
-		if ( panel === 'ask-help' ) {
+		if ( panelToSwitchTo === 'ask-help' ) {
 			this.getActions().setAbilities( {
 				questioncomplete: this.askhelpTextInput.getValue()
 			} );
@@ -159,17 +159,17 @@
 		}
 		// When navigating to the home panel, don't change which panel is visible in this.panels
 		// The current panel needs to remain visible while the sliding transition happens
-		if ( panel !== 'home' ) {
+		if ( panelToSwitchTo !== 'home' ) {
 			this.panels.setItem( panelObj );
 		}
 
 		if ( this.suggestedEditSession.active ) {
 			this.updateSuggestedEditSession( {
-				helpPanelCurrentPanel: panel
+				helpPanelCurrentPanel: panelToSwitchTo
 			} );
 		}
 
-		this.currentPanel = panel;
+		this.currentPanel = panelToSwitchTo;
 		this.updateMode();
 
 	};
