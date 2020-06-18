@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mari Avetisyan"
+			"Mari Avetisyan",
+			"Աշոտ1997"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Ձեռք բերել փոփոխված հարցերը, որոնք հրապարակվել են էջի մոդուլների միջոցով",
 	"apihelp-homepagequestionstore-param-questionformat": "Հարցերը վերադարձնելու ձևաչափը, օրինակ՝ HTML։",
 	"apihelp-homepagequestionstore-param-storage": "Հարցերի պահպանման վայրը։",
 	"apihelp-homepagequestionstore-param-userid": "Օգտագործողի ID-ն հարցեր ստանալու համար:",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Հարցեր չեն գտնվել։"
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Հարցեր չեն գտնվել։",
+	"apihelp-growthsetmentor-param-reason": "Փոփոխության պատճառը"
 }

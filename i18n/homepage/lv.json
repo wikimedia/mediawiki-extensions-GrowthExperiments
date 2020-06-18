@@ -62,6 +62,7 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|labojumi|labojums|labojumi}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Neseno labojumu skatījumi (pēdējās 60 dienas):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Seko līdzi savu laboto rakstu skatījumiem",
+	"growthexperiments-tour-response-tip-text": "Kad {{GENDER:$1|tavs}} jautājums tiks atbildēts, {{GENDER:$1|tu}} šeit saņemsi jaunu paziņojumu.",
 	"growthexperiments-tour-response-button-okay": "Sapratu",
 	"tag-help_module_question": "Palīdzības moduļa jautājums",
 	"tag-help_module_question-description": "Labojums veikts no sākumlapas palīdzības moduļa jautājuma uzdošanas iespējas",

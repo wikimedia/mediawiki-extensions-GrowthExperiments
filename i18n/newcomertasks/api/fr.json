@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gomoko",
+			"Wladek92"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Obtenir les recommandations de tâche adaptées aux débutants.",
+	"apihelp-query+growthtasks-extended-description": "Suggère un ensemble d’articles qui ont quelques problèmes en suspens assez faciles à traiter par un nouvel éditeur.",
+	"apihelp-query+growthtasks-param-tasktypes": "Types de tâche auxquels limiter les résultats. Laisser vide pour recevoir toutes les suggestions.",
+	"apihelp-query+growthtasks-param-topics": "Sujets d’article à préférer dans les suggestions de tâche.",
+	"apihelp-query+growthtasks-param-limit": "Nombre maximal de suggestions de tâches à renvoyer.",
+	"apihelp-query+growthtasks-param-debug": "Ajouter des données de débogage à la sortie.",
+	"apihelp-query+growthtasks-example-1": "Obtenir des recommandations de tâche pour des tâches de type copie-modification pour l’utilisateur actuel.",
+	"apihelp-query+growthtasks-example-2": "Obtenir des recommandations de tâche pour l’utilisateur actuel, avec des informations supplémentaires sur les pages."
+}
