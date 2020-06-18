@@ -6,7 +6,6 @@
 	 *
 	 * @param {Object} config
 	 * @cfg {mw.libs.ge.HelpPanelLogger} logger
-	 * @cfg {bool} [showCogMenu=true] Whether the cog menu show be shown
 	 * @cfg {string} source Logical name of the source to use with the HelpPanelPostQuestion API
 	 * @cfg {string} storageKey Name of the key to use to persist question draft in storage
 	 * @cfg {object} panelTitleMessages Object like { panelName: title } to configure panel titles
@@ -29,7 +28,6 @@
 			this.logger = config.logger;
 			this.guidanceEnabled = config.guidanceEnabled;
 			this.taskTypeId = config.taskTypeId;
-			this.showCogMenu = config.showCogMenu !== undefined ? config.showCogMenu : true;
 			this.source = config.source || 'helppanel';
 			this.storageKey = config.storageKey || 'help-panel-question-text';
 			this.panelTitleMessages = $.extend( {
@@ -78,30 +76,28 @@
 			classes: [ 'mw-ge-help-panel-done' ],
 			action: 'close'
 		},
-		// Allow user to close the panel directly when on home subpanel or when
-		// the help panel is opened in "locked" mode.
+		// Allow user to close the panel directly. The close icon is placed differently
+		// when on home subpanel or when the help panel is opened in "locked" mode.
 		{
 			icon: 'close',
 			flags: 'safe',
 			action: 'close',
 			modes: [ 'home', 'locked' ]
 		},
+		{
+			flags: [ 'primary', 'close' ],
+			action: 'close',
+			framed: false,
+			modes: [ 'general-help', 'search', 'suggested-edits' ]
+		},
 		// Use a back icon for all non-home panels.
 		{
-			icon: 'previous',
+			icon: 'arrowPrevious',
 			flags: 'safe',
 			action: 'home',
 			modes: [ 'ask-help', 'general-help', 'questioncomplete', 'search', 'suggested-edits' ]
 		}
 	];
-
-	HelpPanelProcessDialog.prototype.attachActions = function () {
-		HelpPanelProcessDialog.super.prototype.attachActions.call( this );
-		if ( this.showCogMenu ) {
-			// Hack to place the settings cog as a "primary" (top-right) action.
-			this.$primaryActions.append( this.settingsCog.$element );
-		}
-	};
 
 	/**
 	 * Swap the state of the help panel dialog.
@@ -155,21 +151,14 @@
 
 		if ( panel === 'home' ) {
 			this.toggleSearchResults( false );
-			this.settingsCog.toggle( true );
 		}
 		if ( panel === 'general-help' ) {
 			this.toggleSearchResults( false );
-			this.settingsCog.toggle( true );
 		}
 		if ( panel === 'ask-help' ) {
-			this.settingsCog.toggle( false );
 			this.getActions().setAbilities( {
 				questioncomplete: this.askhelpTextInput.getValue()
 			} );
-		}
-		if ( panel === 'questioncomplete' ) {
-			// Hide the cog, it interferes with the primary 'close' action
-			this.settingsCog.toggle( false );
 		}
 		// When navigating to the home panel, don't change which panel is visible in this.panels
 		// The current panel needs to remain visible while the sliding transition happens
@@ -184,16 +173,6 @@
 		}
 		this.currentPanel = panel;
 
-		// Don't rebuild settings cog on ask-help / questioncomplete, it
-		// interferes with the primary 'post' and done actions.
-		// TODO: Move the settings cog into a more appropriate place so we
-		// don't have to hack around primary actions.
-		if ( ( [
-			'ask-help',
-			'questioncomplete'
-		].indexOf( panel ) ) === -1 ) {
-			this.rebuildSettingsCog();
-		}
 		// Lock the help panel on read mode, as a workaround for the UX on mobile.
 		if ( this.currentPanel === 'suggested-edits' && !this.logger.isEditing() ) {
 			this.setMode( 'locked' );
@@ -291,56 +270,42 @@
 	};
 
 	/**
-	 * Empty primary actions, construct a new settings cog, and place it in
-	 * primary actions.
-	 *
-	 * This allows for varying the settings cog contents per help panel screen.
+	 * Return a list of links providing extra information about the help panel, as a jQuery
+	 * collection of <a> tags.
+	 * @return {jQuery}
 	 */
-	HelpPanelProcessDialog.prototype.rebuildSettingsCog = function () {
-		var $content = $( '<p>' ).append(
-			mw.html.element( 'a', {
+	HelpPanelProcessDialog.prototype.getInfoLinks = function () {
+		var links = [
+			new OO.ui.ButtonWidget( {
 				href: new mw.Title( 'Special:Preferences#mw-prefsection-editing' ).getUrl(),
-				target: '_blank',
-				'data-link-id': 'special-preferences'
-			}, mw.message( 'growthexperiments-help-panel-settings-cog-preferences-link' ).text() ),
-			mw.html.element( 'a', {
+				label: mw.message( 'growthexperiments-help-panel-settings-cog-preferences-link' ).text(),
+				icon: 'info',
+				data: 'special-preferences'
+			} ),
+			new OO.ui.ButtonWidget( {
 				href: 'https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Focus_on_help_desk/Help_panel',
-				target: '_blank',
-				'data-link-id': 'more-about-this-feature'
-			}, mw.message( 'growthexperiments-help-panel-questioncomplete-more-about-this-feature-text' ).text() )
-		);
-		this.$primaryActions.find( '.mw-ge-help-panel-settings-cog' ).remove();
-		if ( this.guidanceEnabled && this.currentPanel === 'suggested-edits' ) {
-			$content.append(
-				mw.html.element( 'a', {
+				label: mw.message( 'growthexperiments-help-panel-questioncomplete-more-about-this-feature-text' ).text(),
+				icon: 'lightbulb',
+				data: 'more-about-this-feature'
+			} )
+		];
+		if ( this.guidanceEnabled && this.taskTypeId ) {
+			links.push(
+				new OO.ui.ButtonWidget( {
 					href: 'https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Suggested_edits',
-					target: '_blank',
-					'data-link-id': 'suggested-edits-faq'
-				}, mw.message( 'growthexperiments-help-panel-suggested-edits-faq-link-text' ).text() )
+					label: mw.message( 'growthexperiments-help-panel-suggested-edits-faq-link-text' ).text(),
+					icon: 'settings',
+					data: 'suggested-edits-faq'
+				} )
 			);
 		}
-		this.settingsCog = new OO.ui.PopupButtonWidget( {
-			$overlay: this.$element,
-			icon: 'ellipsis',
-			// Hack for styling
-			classes: [ 'mw-ge-help-panel-settings-cog', 'oo-ui-actionWidget' ],
-			popup: {
-				$content: $content,
-				padded: true,
-				width: 260,
-				classes: [ 'mw-ge-help-panel-settings-cog-content' ],
-				anchor: false,
-				align: 'backwards',
-				$container: this.$element
-			}
-		} );
-		this.settingsCog.popup.connect( this, { toggle: 'onCogMenuToggle' } );
-		this.$primaryActions.append( this.settingsCog.$element );
-	};
-
-	HelpPanelProcessDialog.prototype.onCogMenuToggle = function ( show ) {
-		this.logger.log( show ? 'cog-open' : 'cog-close' );
-		this.settingsCog.$element.toggleClass( 'active', show );
+		return links.reduce( function ( $list, button ) {
+			// This is a bit of a hack as these buttons are in no way progressive,
+			// but the progressive button style matches the intended visual style well.
+			button.setTarget( '_blank' ).toggleFramed( false ).setFlags( 'progressive' );
+			button.$element.find( 'a' ).attr( 'data-link-id', button.getData() );
+			return $list.add( button.$element );
+		}, $() );
 	};
 
 	HelpPanelProcessDialog.prototype.buildHomePanelButtons = function () {
@@ -367,7 +332,6 @@
 
 		HelpPanelProcessDialog.super.prototype.initialize.call( this );
 
-		this.rebuildSettingsCog();
 		this.$content
 			.addClass( 'mw-ge-help-panel-processdialog' );
 
@@ -485,6 +449,9 @@
 		);
 
 		this.buildHomePanelButtons();
+		this.getInfoLinks().appendTo( this.homePanel.$element )
+			.wrapAll( $( '<ul>' ).addClass( 'mw-ge-help-panel-info-links' ) )
+			.wrap( '<li>' );
 
 		// Build step two of ask question process.
 		this.askhelpContent = new OO.ui.FieldsetLayout();

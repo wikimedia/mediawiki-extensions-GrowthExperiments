@@ -735,7 +735,8 @@
 				"ext.growthExperiments.HelpPanel.icons",
 				"ext.growthExperiments.HelpPanelCta.styles",
 				"ext.growthExperiments.SuggestedEditSession",
-				"mediawiki.pulsatingdot"
+				"mediawiki.pulsatingdot",
+				"oojs-ui.styles.icons-movement"
 			],
 			"messages": [
 				"growthexperiments-help-panel-cta-button-text",

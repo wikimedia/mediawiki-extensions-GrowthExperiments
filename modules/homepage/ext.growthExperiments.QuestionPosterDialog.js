@@ -10,7 +10,6 @@
 	 */
 	var QuestionPosterDialog = function QuestionPosterDialog( config ) {
 			QuestionPosterDialog.super.call( this, $.extend( {}, config, {
-				showCogMenu: false,
 				storageKey: 'homepage-questionposter-question-text-' + config.name,
 				source: 'homepage-' + config.name
 			} ) );

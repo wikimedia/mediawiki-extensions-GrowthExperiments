@@ -141,27 +141,10 @@
 		}
 
 		.oo-ui-processDialog-actions-primary {
-
 			// Have the "Post" / "Done" buttons flush against the right edge.
 			.mw-ge-help-panel-post,
 			.mw-ge-help-panel-done {
 				margin-right: unset;
-			}
-
-			.mw-ge-help-panel-settings-cog.oo-ui-widget-enabled {
-				//stylelint-disable-next-line no-descending-specificity
-				.oo-ui-buttonElement-button {
-					opacity: 0.5;
-					background-color: transparent;
-				}
-
-				&:not( .oo-ui-buttonElement-pressed ) {
-					border-left-color: transparent;
-				}
-
-				.oo-ui-processDialog-actions-primary .oo-ui-actionWidget > .oo-ui-buttonElement-button &.active:hover {
-					background-color: #eaf3ff;
-				}
 			}
 		}
 
@@ -290,19 +273,14 @@
 			}
 		}
 	}
-}
 
-.mw-ge-help-panel-settings-cog-content {
-	z-index: 3;
-	background-color: @background-color-base;
-	// Hack: remove 2px top gap
-	margin-top: -2px;
-	// Hack: align popup with dialog border
-	// Counteract 10px buffer from OOUI, plus 1px for the dialog border width
-	margin-right: -11px;
+	.mw-ge-help-panel-info-links {
+		margin: 16px 0 0;
+		list-style: none;
 
-	p a {
-		display: block;
-		width: 100%;
+		& > li {
+			margin: 0;
+			padding: 0;
+		}
 	}
 }
