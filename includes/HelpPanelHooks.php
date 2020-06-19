@@ -137,6 +137,8 @@ class HelpPanelHooks {
 			'GEHelpPanelReadingModeNamespaces' => $config->get( 'GEHelpPanelReadingModeNamespaces' ),
 			'GEHelpPanelSearchForeignAPI' => $config->get( 'GEHelpPanelSearchForeignAPI' ),
 			'GEHelpPanelLinks' => HelpPanel::getHelpPanelLinks( $context, $config ),
+			'GEHelpPanelSuggestedEditsPreferredEditor' =>
+				$config->get( 'GEHelpPanelSuggestedEditsPreferredEditor' ),
 			'GEHelpPanelHelpDeskTitle' => $helpdeskTitle ? $helpdeskTitle->getPrefixedText() : null
 		];
 	}
