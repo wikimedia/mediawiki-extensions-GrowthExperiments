@@ -3,6 +3,7 @@
 		"authors": [
 			"Katunchik",
 			"Link2xt",
+			"Okras",
 			"Stjn",
 			"Vlad5250"
 		]
@@ -31,6 +32,7 @@
 	"welcomesurvey-question-reason-option-new-page-label": "Создать новую статью в Википедии",
 	"welcomesurvey-question-reason-option-program-participant-label": "Я участвую в программе, классе или мероприятии",
 	"welcomesurvey-question-reason-option-read-label": "Читать Википедию",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Другое",
 	"welcomesurvey-question-reason-option-other-label": "Другое (опишите)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Введите}} другую причину...",
 	"welcomesurvey-question-mentor-info": "Мы решили начать программу для более опытных редакторов, чтобы помогать новичкам с редактированием. {{GENDER:$1|Заинтересованы ли вы}} контактировать, чтобы помочь с редактированием?",

@@ -111,9 +111,9 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "{{GENDER:|أكّد|أكّدي}} بريدك الإلكتروني",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "إذا كنت {{GENDER:$1|تريد|تريدين}} أيضا أن يتم إعلامك عن طريق البريد الإلكتروني، {{GENDER:$1|فأضف|فأضيفي}} عنوان البريد الإلكتروني الآن.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "{{GENDER:|أضف|أضيفي}} بريدا إلكترونيا",
-	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "المزيد عن هذه الميزة",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "معلومات حول لوحة المساعدة",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "بالمناسبة، بنشر هذا السؤال، لقد قمت للتو بتحريرك الأول لصفحة {{SITENAME}}، تهانينا!",
-	"growthexperiments-help-panel-settings-cog-preferences-link": "{{GENDER:|عطل|عطلي}} هذه الأداة في التفضيلات",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "{{GENDER:|عطل|عطلي}} لوحة المساعدة",
 	"growthexperiments-help-panel-questionposter-invalid-title": "عنوان غير صالح.",
 	"growthexperiments-help-panel-community-help-desk-text": "فريق ميدان المساعدة",
 	"growthexperiments-help-panel-search-label": "{{GENDER:|ابحث|ابحثي}} عن مساعدة",
@@ -126,5 +126,5 @@
 	"growthexperiments-help-panel-button-subheader-general-help": "{{GENDER:|اِبحث|اِبحثي}} في الإجابات و{{GENDER:|اقرأ|ااقرئي}} أهمّ صفحات المساعدة",
 	"growthexperiments-help-panel-button-subheader-ask-help": "{{GENDER:|احصل|احصلي}} على إجابات من مستخدمين آخرين",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "نصائح سريعة للبدء",
-	"growthexperiments-help-panel-suggested-edits-faq-link-text": "أسئلة متكرّرة حول التعديلات المقترحة"
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "معلومات حول التعديلات المقترحة"
 }
