@@ -1,3 +1,6 @@
+/**
+ * @external PostEditPanel
+ */
 'use strict';
 
 ( function () {
@@ -28,6 +31,7 @@
 
 	/**
 	 * Fetch the next task.
+	 *
 	 * @return {jQuery.Promise<Object|null>} A promise that will resolve to a task data object,
 	 *   or fail with an error message if fetching the task failed.
 	 */
@@ -61,6 +65,7 @@
 	/**
 	 * Display the given panel, using a mobile or desktop format as appropriate.
 	 * Also handles some of the logging.
+	 *
 	 * @param {PostEditPanel} postEditPanel
 	 * @return {jQuery.Promise} A promise that resolves when the dialog has been displayed.
 	 */
@@ -118,6 +123,7 @@
 
 	/**
 	 * Helper method to tie getNextTask() and displayPanel() together.
+	 *
 	 * @param {Object|null} task Task data, or null when the task card should not be shown.
 	 * @param {string|null} errorMessage Error message, or null when there was no error.
 	 * @return {Object} An object with:
@@ -166,6 +172,7 @@
 
 		/**
 		 * Create and show the panel (a dialog or a drawer, depending on the current device).
+		 *
 		 * @return {jQuery.Promise<Object>} A promise resolving to an object with:
 		 *   - task: task data as a plain Object (as returned by GrowthTasksApi), might be omitted
 		 *     when loading the task failed;

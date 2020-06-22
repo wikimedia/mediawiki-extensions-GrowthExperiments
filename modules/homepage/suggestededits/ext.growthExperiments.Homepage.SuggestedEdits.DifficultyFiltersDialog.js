@@ -150,6 +150,7 @@ DifficultyFiltersDialog.prototype.buildCheckboxFilters = function () {
 
 /**
  * Return an array of enabled task types to use for searching.
+ *
  * @return {Object[]}
  */
 DifficultyFiltersDialog.prototype.getEnabledFilters = function () {

@@ -73,6 +73,7 @@ SuggestionWidget.prototype.onClick = function () {
 
 /**
  * Toggle the suggestion on enter keypress.
+ *
  * @param {Object} e
  */
 SuggestionWidget.prototype.onKeydown = function ( e ) {

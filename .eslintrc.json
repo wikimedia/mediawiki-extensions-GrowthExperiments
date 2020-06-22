@@ -8,11 +8,6 @@
 	"env": {
 		"commonjs": true
 	},
-	"globals": {
-		"require": "readonly",
-		"OO": "readonly",
-		"module": "readonly"
-	},
 	"rules": {
 		"mediawiki/valid-package-file-require": "off",
 		"mediawiki/class-doc": "warn"

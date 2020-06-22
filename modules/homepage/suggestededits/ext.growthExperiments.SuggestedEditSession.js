@@ -16,41 +16,41 @@
 	 *
 	 * @class mw.libs.ge.SuggestedEditSession
 	 * @constructor
-	 * @internal UseSuggestedEditSession.getInstance()
+	 * @private UseSuggestedEditSession.getInstance()
 	 */
 	function SuggestedEditSession() {
-		/** @var {boolean} Whether we are in a suggested edit session currently. */
+		/** @member {boolean} Whether we are in a suggested edit session currently. */
 		this.active = false;
 		/**
-		 * @var {int|null} Suggested edit session ID. This will be used in
+		 * @member {number|null} Suggested edit session ID. This will be used in
 		 *   EditAttemptStep.editing_session_id and HelpPanel.help_panel_session_id
 		 *   in events logged during the session. It is set via the geclickid URL parameter
 		 *   (which is how a suggested edit session starts) and reset during page save.
 		 */
 		this.clickId = null;
-		/** @var {mw.Title|null} The target page of the suggested editing task. */
+		/** @member {mw.Title|null} The target page of the suggested editing task. */
 		this.title = null;
-		/** @var {string|null} Task type ID of the suggested editing task. */
+		/** @member {string|null} Task type ID of the suggested editing task. */
 		this.taskType = null;
-		/** @var {string|null} The editor used last in the suggested edit session. */
+		/** @member {string|null} The editor used last in the suggested edit session. */
 		this.editorInterface = null;
 		/**
-		 * @var {boolean} Show the post-edit dialog at the next opportunity. This is used to
+		 * @member {boolean} Show the post-edit dialog at the next opportunity. This is used to
 		 *   work around page reloads after saving the page, when the dialog cannot be displayed
 		 *   immediately when we detect the save.
 		 */
 		this.postEditDialogNeedsToBeShown = false;
-		/** @var {boolean} Whether the mobile peek was already shown in this session. */
+		/** @member {boolean} Whether the mobile peek was already shown in this session. */
 		this.mobilePeekShown = false;
-		/** @var {boolean} Whether the help panel should be locked to its current panel. */
+		/** @member {boolean} Whether the help panel should be locked to its current panel. */
 		this.helpPanelShouldBeLocked = false;
-		/** @var {string|null} The current panel shown in the help panel. */
+		/** @member {string|null} The current panel shown in the help panel. */
 		this.helpPanelCurrentPanel = null;
-		/** @var {boolean} Whether the help panel should open on page load. */
+		/** @member {boolean} Whether the help panel should open on page load. */
 		this.helpPanelShouldOpen = true;
-		/** @var {string|null} The current help panel tip visible.*/
+		/** @member {string|null} The current help panel tip visible. */
 		this.helpPanelCurrentTip = null;
-		/** @var {boolean} Whether the user interacted with the help panel in
+		/** @member {boolean} Whether the user interacted with the help panel in
 		 * the suggested edits screen by navigating or clicking tips. */
 		this.helpPanelSuggestedEditsInteractionHappened = false;
 	}
@@ -111,6 +111,7 @@
 	/**
 	 * Restore the stored suggested edit session into the current object. If it does not
 	 * match the current request, terminate the session.
+	 *
 	 * @return {boolean} Whether an active session was successfully restored.
 	 */
 	SuggestedEditSession.prototype.maybeRestore = function () {
@@ -153,6 +154,7 @@
 	/**
 	 * See if the user has just started a suggested edit session (which is identified by a
 	 * URL parameter).
+	 *
 	 * @return {boolean} Whether the session has been initiated.
 	 */
 	SuggestedEditSession.prototype.maybeStart = function () {
@@ -248,6 +250,7 @@
 	/**
 	 * Display the post-edit dialog, and deal with some editors reloading the page immediately
 	 * after save.
+	 *
 	 * @param {Object} config
 	 * @param {boolean} [config.resetSession] Reset the session ID. This should be done when the
 	 *   dialog is displayed, but it should not be done twice if this method is called twice
@@ -308,6 +311,7 @@
 
 	/**
 	 * Get a suggested edit session. This is the entry point for other code using this class.
+	 *
 	 * @return {mw.libs.ge.SuggestedEditSession}
 	 */
 	SuggestedEditSession.getInstance = function () {

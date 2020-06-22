@@ -1,3 +1,7 @@
+/**
+ * @external HomepageModuleLogger
+ * @external GrowthTasksApi
+ */
 var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).TopicSelectionWidget;
 
 /**
@@ -80,7 +84,10 @@ StartEditingDialog.prototype.initialize = function () {
 	this.articleCounterPanelLayout = new OO.ui.PanelLayout( {
 		padded: true,
 		expanded: false,
-		classes: [ 'suggested-edits-article-count-panel-layout-' + ( OO.ui.isMobile() ? 'mobile' : 'desktop' ) ]
+		classes: [ OO.ui.isMobile() ?
+			'suggested-edits-article-count-panel-layout-mobile' :
+			'suggested-edits-article-count-panel-layout-desktop'
+		]
 	} ).toggle( this.topicsEnabledAndTopicsExist() );
 	this.articleCounterPanelLayout
 		.$element.append(
@@ -116,6 +123,7 @@ StartEditingDialog.prototype.updateArticleCountLabel = function ( count ) {
 
 /**
  * Convenience function to check if topic matching is enabled and if any topics exist.
+ *
  * @return {boolean}
  */
 StartEditingDialog.prototype.topicsEnabledAndTopicsExist = function () {
@@ -490,9 +498,8 @@ StartEditingDialog.prototype.buildProgressIndicator = function ( currentPage, to
 		$indicator = $( '<div>' ).addClass( 'mw-ge-startediting-dialog-progress' );
 	for ( i = 0; i < totalPages; i++ ) {
 		$indicator.append( $( '<span>' )
-			.addClass( 'mw-ge-startediting-dialog-progress-indicator' +
-				( i < currentPage ? ' mw-ge-startediting-dialog-progress-indicator-completed' : '' )
-			)
+			.addClass( 'mw-ge-startediting-dialog-progress-indicator' )
+			.addClass( i < currentPage ? 'mw-ge-startediting-dialog-progress-indicator-completed' : '' )
 		);
 	}
 	$indicator.append( $( '<span>' )
@@ -510,7 +517,8 @@ StartEditingDialog.prototype.buildProgressIndicator = function ( currentPage, to
  * Rearranges the homepage and loads the suggested edits module.
  * In mobile-details mode, this method won't return and will send the browser to the suggested edits
  * page instead.
- * @return {Promise}
+ *
+ * @return {jQuery.Promise}
  */
 StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 	var $homepage, $homepageOverlay, moduleHtml, moduleDependencies;

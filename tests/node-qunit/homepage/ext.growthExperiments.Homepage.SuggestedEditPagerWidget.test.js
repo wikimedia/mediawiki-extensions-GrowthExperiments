@@ -1,9 +1,10 @@
-var pathToWidget = '../../../modules/homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditPagerWidget.js',
-	SuggestedEditPagerWidget;
+'use strict';
+
+const pathToWidget = '../../../modules/homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditPagerWidget.js';
 
 QUnit.module( 'SuggestedEditPagerWidget', function () {
 	QUnit.test( 'constructor', function ( assert ) {
-		SuggestedEditPagerWidget = require( pathToWidget );
+		const SuggestedEditPagerWidget = require( pathToWidget );
 		/* eslint-disable-next-line no-new */
 		new SuggestedEditPagerWidget();
 		assert.ok( true );

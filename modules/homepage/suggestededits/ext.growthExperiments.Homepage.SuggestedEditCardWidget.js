@@ -70,7 +70,8 @@
 				.append(
 					$( '<h3>' ).addClass( 'se-card-title' ).text( this.data.title ),
 					$( '<div>' )
-						.addClass( 'se-card-extract' + ( !this.data.extraDataLoaded ? ' skeleton' : '' ) )
+						.addClass( 'se-card-extract' )
+						.addClass( !this.data.extraDataLoaded ? 'skeleton' : '' )
 						.html( this.data.extract || '' )
 				),
 			pageViewsMessage;

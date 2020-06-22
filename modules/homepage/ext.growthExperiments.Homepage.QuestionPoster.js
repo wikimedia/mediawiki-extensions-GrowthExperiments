@@ -1,3 +1,7 @@
+/**
+ * @external QuestionPosterDialog
+ * @external Help
+ */
 ( function () {
 	var attachButton = function ( config, $container ) {
 		var appendWindowManagerToBody = function ( windowManager, dialog ) {
@@ -7,6 +11,7 @@
 			},
 			/**
 			 * Register the route for the question dialog.
+			 *
 			 * @param {OO.Router} router
 			 * @param {string} route
 			 * @param {OO.ui.WindowManager} windowManager
@@ -29,6 +34,7 @@
 			},
 			/**
 			 * Close the window manager when the path changes via the back button.
+			 *
 			 * @param {OO.Router} router
 			 * @param {string} route
 			 * @param {OO.ui.WindowManager} windowManager

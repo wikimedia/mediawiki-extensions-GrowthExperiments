@@ -7,6 +7,7 @@
 
 	/**
 	 * Displays homepage module in an overlay.
+	 *
 	 * @class MobileOverlay
 	 * @extends Overlay
 	 * @param {Object} params Configuration options

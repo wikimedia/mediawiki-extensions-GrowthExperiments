@@ -123,6 +123,7 @@ TopicFiltersDialog.prototype.updateFiltersFromState = function () {
 
 /**
  * Return an array of enabled topic types to use for searching.
+ *
  * @return {Object[]}
  */
 TopicFiltersDialog.prototype.getEnabledFilters = function () {

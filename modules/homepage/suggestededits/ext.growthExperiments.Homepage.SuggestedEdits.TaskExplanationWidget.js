@@ -1,3 +1,6 @@
+/**
+ * @external HomepageModuleLogger
+ */
 ( function () {
 	'use strict';
 
@@ -98,6 +101,10 @@
 	};
 
 	TaskExplanationWidget.prototype.getTimeEstimate = function () {
+		// The following classes are used here:
+		// * suggested-edits-difficulty-level-easy
+		// * suggested-edits-difficulty-level-medium
+		// * suggested-edits-difficulty-level-hard
 		return $( '<div>' )
 			.addClass( 'suggested-edits-difficulty-level suggested-edits-difficulty-level-' + this.taskTypeData.difficulty )
 			.text( this.taskTypeData.messages.timeestimate );

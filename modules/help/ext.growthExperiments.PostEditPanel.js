@@ -26,6 +26,7 @@
 
 	/**
 	 * Get the success message to be displayed on top of the panel.
+	 *
 	 * @return {OO.ui.MessageWidget}
 	 */
 	PostEditPanel.prototype.getSuccessMessage = function () {
@@ -48,6 +49,7 @@
 
 	/**
 	 * Get the links to display in the footer.
+	 *
 	 * @return {Array<jQuery>} A list of footer elements.
 	 */
 	PostEditPanel.prototype.getFooterButtons = function () {
@@ -85,6 +87,7 @@
 
 	/**
 	 * Get the main area of the panel (the card with a subheader).
+	 *
 	 * @return {jQuery|null} The main area, a jQuery object wrapping the card element.
 	 *   Null if the panel should not have a main area (as no task should be displayed).
 	 */
@@ -105,6 +108,7 @@
 
 	/**
 	 * Create the card element.
+	 *
 	 * @param {Object} task A task object, as returned by GrowthTasksApi
 	 * @return {jQuery} A jQuery object wrapping the card element.
 	 */
@@ -172,6 +176,7 @@
 	/**
 	 * Log that the panel was displayed to the user.
 	 * Needs to be called by the code displaying the panel.
+	 *
 	 * @param {Object} extraData
 	 * @param {string} extraData.savedTaskType Type of the task for which the edit was just saved.
 	 * @param {string} [extraData.errorMessage] Error message, only if there was a task loading error.
@@ -220,6 +225,7 @@
 	/**
 	 * Log that one of the footer buttons was clicked.
 	 * This is handled automatically by the class.
+	 *
 	 * @param {string} linkName Symbolic link name ('homepage' or 'edit').
 	 */
 	PostEditPanel.prototype.logLinkClick = function ( linkName ) {

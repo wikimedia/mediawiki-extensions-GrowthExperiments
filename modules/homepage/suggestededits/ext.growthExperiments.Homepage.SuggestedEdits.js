@@ -1,3 +1,11 @@
+/**
+ * @external HomepageModuleLogger
+ * @external GrowthTasksApi
+ * @external SuggestedEditCardWidget
+ * @external ErrorCardWidget
+ * @external NoResultsWidget
+ * @external EndOfQueueWidget
+ */
 ( function () {
 	var EditCardWidget = require( './ext.growthExperiments.Homepage.SuggestedEditCardWidget.js' ),
 		EndOfQueueWidget = require( './ext.growthExperiments.Homepage.SuggestedEdits.EndOfQueueWidget.js' ),
@@ -22,7 +30,7 @@
 	 * @param {jQuery} config.$element SuggestedEdits widget container
 	 * @param {Array<string>} config.taskTypePresets List of IDs of enabled task types
 	 * @param {Array<string>} config.topicPresets Lists of IDs of enabled topic filters.
-	 * @param {bool} config.topicMatching If topic matching feature is enabled in the UI
+	 * @param {boolean} config.topicMatching If topic matching feature is enabled in the UI
 	 * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
 	 * @param {HomepageModuleLogger} logger
 	 * @param {GrowthTasksApi} api
@@ -224,6 +232,7 @@
 
 	/**
 	 * Preload extra (non-action-API) data for the next card. Does not change the view.
+	 *
 	 * @return {jQuery.Promise} Loading status.
 	 */
 	SuggestedEditsModule.prototype.preloadNextCard = function () {
@@ -265,9 +274,10 @@
 
 	/**
 	 * Log task data for a card impression or click event to the NewcomerTask EventLogging schema.
+	 *
 	 * @param {string} context The value of the context schema field ('homepage-impression' when
 	 *   displaying the task, 'homepage-click' when clicking through the task).
-	 * @param {int} cardPosition Card position in the task queue. Assumes summary data has
+	 * @param {number} cardPosition Card position in the task queue. Assumes summary data has
 	 *   already been loaded for this position.
 	 * @return {string} Token to reference the log entry with.
 	 */
@@ -281,6 +291,7 @@
 	/**
 	 * Display the given card, or the current card.
 	 * Sets this.currentCard.
+	 *
 	 * @param {SuggestedEditCardWidget|ErrorCardWidget|NoResultsWidget|EndOfQueueWidget|null} card
 	 *   The card to show. Only used for special cards, for normal cards typically null is passed,
 	 *   in which case a new SuggestedEditCardWidget will be created from the data in
@@ -336,7 +347,8 @@
 	 * Gets extra data which is not reliably available via the action API (we use a nondeterministic
 	 * generator so we cannot do query continuation, plus we reorder the results so performance
 	 * would be unpredictable) from the PCS and AQS services.
-	 * @param {int} taskQueuePosition
+	 *
+	 * @param {number} taskQueuePosition
 	 * @return {jQuery.Promise} Promise reflecting the status of the PCS request
 	 *   (AQS errors are ignored). Does not return any value; instead,
 	 *   SuggestedEditsModule.taskQueue will be updated.
@@ -371,6 +383,7 @@
 
 	/**
 	 * Preload the task card image.
+	 *
 	 * @param {Object} task Task data, as returned by GrowthTasksApi.
 	 * @return {boolean} Whether preloading has been started.
 	 */
@@ -440,6 +453,7 @@
 	/**
 	 * Set up the suggested edits module within the given container, fetch the tasks
 	 * and display the first.
+	 *
 	 * @param {jQuery} $container
 	 * @return {jQuery.Promise} Status promise.
 	 */

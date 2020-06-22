@@ -77,6 +77,7 @@ OO.mixinClass( SuggestionGroupWidget, OO.ui.mixin.GroupWidget );
 
 /**
  * Remove class when tab key is pressed to ensure user sees focus outline.
+ *
  * @param {Object} e
  */
 SuggestionGroupWidget.prototype.onKeydown = function ( e ) {
@@ -121,6 +122,7 @@ SuggestionGroupWidget.prototype.updateSelectAllButtonLabel = function () {
 
 /**
  * Check whether all suggestions are selected.
+ *
  * @return {boolean} All suggestions are selected
  */
 SuggestionGroupWidget.prototype.isEverythingSelected = function () {
@@ -131,6 +133,7 @@ SuggestionGroupWidget.prototype.isEverythingSelected = function () {
 
 /**
  * Get the data of the selected suggestions.
+ *
  * @return {Object[]} Data object for each suggestion that is selected
  */
 SuggestionGroupWidget.prototype.getSelectedSuggestions = function () {
