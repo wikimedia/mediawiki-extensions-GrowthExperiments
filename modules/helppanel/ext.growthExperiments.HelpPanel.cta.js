@@ -196,6 +196,16 @@
 			return lifecycle;
 		}
 
+		/**
+		 * Set the preferred editor to VE if the user hasn't changed their
+		 * visualeditor-tabs preference.
+		 */
+		function defaultToVisualEditorIfPossible() {
+			if ( mw.user.options.get( 'visualeditor-tabs' ) === 'remember-last' ) {
+				mw.storage.set( 'preferredEditor', 'VisualEditor' );
+			}
+		}
+
 		function maybeAddMobilePeek( taskTypeData ) {
 			var mobilePeek,
 				// Drawer.onBeforeHide fires whether the drawer was dismissed or tapped on
@@ -257,6 +267,7 @@
 
 		if ( guidanceAvailable ) {
 			if ( OO.ui.isMobile() ) {
+				defaultToVisualEditorIfPossible();
 				maybeAddMobilePeek( taskTypes[ taskTypeId ] );
 			} else if ( suggestedEditSession.helpPanelShouldOpen ) {
 				// Open the help panel to the suggested-edits panel, animating it in from the bottom
