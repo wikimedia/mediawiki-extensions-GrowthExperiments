@@ -110,9 +110,9 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "conferma la tua email",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Se {{GENDER:$1|desideri}} venire informato anche per email, conferma il tuo indirizzo email ora.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Aggiungi email",
-	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Ulteriori informazioni su questa funzionalità",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Ulteriori informazioni sul pannello di aiuto",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "A proposito, pubblicando questa domanda, hai appena apportato la tua prima modifica a una pagina. Congratulazioni!",
-	"growthexperiments-help-panel-settings-cog-preferences-link": "Disabilita questo strumento nelle Preferenze",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Disabilita il pannello di aiuto",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Titolo non valido.",
 	"growthexperiments-help-panel-community-help-desk-text": "Sportello Informazioni",
 	"growthexperiments-help-panel-search-label": "Cerca aiuto",
@@ -125,5 +125,5 @@
 	"growthexperiments-help-panel-button-subheader-general-help": "Cerca risposte e leggi le migliori voci",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Ottieni risposte da altri volontari",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Rapidi consigli per iniziare",
-	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Domande frequenti sulle modifiche suggerite"
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Ulteriori informazioni sulle modifiche suggerite"
 }

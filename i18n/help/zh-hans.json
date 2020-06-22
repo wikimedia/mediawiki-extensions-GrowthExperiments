@@ -51,9 +51,9 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "确认您的邮箱",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "如果{{GENDER:$1|您}}还想收到邮件通知，请立即添加一个电子邮件地址。",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "添加电子邮箱地址",
-	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "详细了解此功能的有关信息",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "关于帮助面板",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "顺便说一下，通过发布这个问题，您刚刚对一个页面进行了第一次编辑。恭喜您！",
-	"growthexperiments-help-panel-settings-cog-preferences-link": "在参数设置中禁用该工具",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "禁用帮助面板",
 	"growthexperiments-help-panel-questionposter-invalid-title": "无效标题。",
 	"growthexperiments-help-panel-community-help-desk-text": "社群帮助台",
 	"growthexperiments-help-panel-search-label": "搜索帮助",
@@ -65,5 +65,6 @@
 	"growthexperiments-help-panel-button-header-general-help": "常用编辑帮助",
 	"growthexperiments-help-panel-button-subheader-general-help": "搜索答案并阅读热门文章",
 	"growthexperiments-help-panel-button-subheader-ask-help": "从其他志愿者那里得到答案",
-	"growthexperiments-help-panel-button-subheader-suggested-edits": "快速入门提示"
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "快速入门提示",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "关于编辑建议"
 }

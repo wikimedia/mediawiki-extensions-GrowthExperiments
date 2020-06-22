@@ -109,9 +109,9 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "אימות הדוא\"ל שלך",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "אם {{GENDER:$1|אתה|את}} רוצה גם לקבל התראה בדוא\"ל, נא להוסיף את כתובת הדוא\"ל שלך עכשיו.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "הוספת כתובת",
-	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "מידע נוסף על התכונה הזאת",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "אודות חלונית העזרה",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "אגב, בכך שהשאלה שזאת מתפרסמת, ביצעת הרגע את העריכה הראשונה שלך לדף. ברכות!",
-	"growthexperiments-help-panel-settings-cog-preferences-link": "כיבוי הכלי הזה בהעדפות",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "כיבוי חלונית העזרה",
 	"growthexperiments-help-panel-questionposter-invalid-title": "כותרת בלתי־תקינה.",
 	"growthexperiments-help-panel-community-help-desk-text": "דלפק ייעוץ",
 	"growthexperiments-help-panel-search-label": "חיפוש עזרה",
@@ -124,5 +124,5 @@
 	"growthexperiments-help-panel-button-subheader-general-help": "חיפוש תשובות וקריאת ערכים מובילים",
 	"growthexperiments-help-panel-button-subheader-ask-help": "קבלת תשובות ממתנדבים אחרים",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "עצות להתחלה מהירה",
-	"growthexperiments-help-panel-suggested-edits-faq-link-text": "שאלות ותשובות על עריכות מוצעות"
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "אודות עריכות מוצעות"
 }

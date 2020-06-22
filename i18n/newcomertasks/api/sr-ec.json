@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"BadDog"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Прибавља препоруке задатака за новајлије.",
+	"apihelp-query+growthtasks-extended-description": "Предлаже сет чланака који имају неке нерешене проблеме (довољно једноставне да се новајлије могу позабавити њима).",
+	"apihelp-query+growthtasks-param-tasktypes": "Типови задатака на које треба ограничити резултате. Оставите празно да бисте прибавили све предлоге.",
+	"apihelp-query+growthtasks-param-topics": "Жељене теме чланка у предлозима задатака",
+	"apihelp-query+growthtasks-param-limit": "Највећи број предлога задатака",
+	"apihelp-query+growthtasks-param-debug": "Додаје податке о отклањању грешке у испис.",
+	"apihelp-query+growthtasks-example-1": "Придобија препоруке чланака за лекторисање.",
+	"apihelp-query+growthtasks-example-2": "Придобија препоруке уз додатне информације о страницама."
+}
