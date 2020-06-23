@@ -164,9 +164,6 @@
 			this.updateSuggestedEditSession( {
 				helpPanelCurrentPanel: panel
 			} );
-			if ( this.suggestedEditSession.helpPanelSuggestedEditsInteractionHappened ) {
-				this.setGuidanceAutoAdvance( false );
-			}
 		}
 
 		this.currentPanel = panel;
@@ -531,7 +528,6 @@
 			// tab selection so we must go deeper.
 			this.suggestededitsPanel.tipsPanel.tabIndexLayout.getTabs().on( 'choose', function ( item ) {
 				var tabName = item.data;
-				this.setGuidanceAutoAdvance( false );
 				this.updateSuggestedEditSession( {
 					helpPanelCurrentTip: tabName,
 					helpPanelSuggestedEditsInteractionHappened: true
@@ -624,6 +620,9 @@
 			this.suggestedEditSession = $.extend( this.suggestedEditSession, update );
 			this.suggestedEditSession.save();
 		}
+		if ( update.helpPanelSuggestedEditsInteractionHappened ) {
+			this.setGuidanceAutoAdvance( false );
+		}
 	};
 
 	/**
@@ -674,7 +673,6 @@
 					postData;
 				if ( action === 'close' || !action ) {
 					this.logger.log( 'close' );
-					this.setGuidanceAutoAdvance( false );
 					// Show mentorship tour if that was the homepage module that was used
 					if ( this.source === 'homepage-mentorship' ) {
 						this.launchIntroTour(
@@ -697,7 +695,6 @@
 					}
 					// One of: back-home, back-general-help
 					this.logger.log( 'back-' + action, { from: this.currentPanel } );
-					this.setGuidanceAutoAdvance( false );
 					this.swapPanel( action );
 				}
 				if ( action === 'ask-help' ) {
