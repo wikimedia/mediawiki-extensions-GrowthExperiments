@@ -71,8 +71,15 @@
 			action: 'questioncomplete'
 		},
 		{
+			label: mw.message( 'growthexperiments-help-panel-return-home-button-text' ).text(),
+			modes: [ 'questioncomplete' ],
+			flags: [ 'progressive', 'primary' ],
+			classes: [ 'mw-ge-help-panel-done' ],
+			action: 'home'
+		},
+		{
 			label: mw.message( 'growthexperiments-help-panel-close' ).text(),
-			modes: [ 'questioncomplete', 'questioncomplete-locked' ],
+			modes: [ 'questioncomplete-locked' ],
 			flags: [ 'progressive', 'primary' ],
 			classes: [ 'mw-ge-help-panel-done' ],
 			action: 'close'
