@@ -127,6 +127,25 @@
 		transition: background @panelTransitionDuration;
 	}
 
+	.mw-ge-help-panel-info-links {
+		margin: 16px 0 0;
+		list-style: none;
+
+		& > li {
+			margin: 0;
+			padding: 0;
+
+			.oo-ui-buttonElement-button {
+				white-space: normal;
+				font-weight: normal;
+			}
+
+			.oo-ui-iconElement-icon {
+				background-size: 80% 80%;
+			}
+		}
+	}
+
 	.oo-ui-processDialog-navigation {
 		.oo-ui-processDialog-actions-primary .oo-ui-actionWidget > .oo-ui-buttonElement-button {
 			border-left-color: transparent;
@@ -282,16 +301,6 @@
 				line-height: 1.3;
 				color: @colorGray2;
 			}
-		}
-	}
-
-	.mw-ge-help-panel-info-links {
-		margin: 16px 0 0;
-		list-style: none;
-
-		& > li {
-			margin: 0;
-			padding: 0;
 		}
 	}
 }

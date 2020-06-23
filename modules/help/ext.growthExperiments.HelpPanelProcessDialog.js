@@ -270,30 +270,35 @@
 	 * @return {jQuery}
 	 */
 	HelpPanelProcessDialog.prototype.getInfoLinks = function () {
-		var links = [
-			new OO.ui.ButtonWidget( {
-				href: new mw.Title( 'Special:Preferences#mw-prefsection-editing' ).getUrl(),
-				label: mw.message( 'growthexperiments-help-panel-settings-cog-preferences-link' ).text(),
-				icon: 'info',
-				data: 'special-preferences'
-			} ),
+		var links = [];
+
+		links.push(
 			new OO.ui.ButtonWidget( {
 				href: 'https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Focus_on_help_desk/Help_panel',
 				label: mw.message( 'growthexperiments-help-panel-questioncomplete-more-about-this-feature-text' ).text(),
-				icon: 'lightbulb',
+				icon: 'infoFilled',
 				data: 'more-about-this-feature'
 			} )
-		];
+		);
 		if ( this.guidanceEnabled && this.taskTypeId ) {
 			links.push(
 				new OO.ui.ButtonWidget( {
 					href: 'https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/Suggested_edits',
 					label: mw.message( 'growthexperiments-help-panel-suggested-edits-faq-link-text' ).text(),
-					icon: 'settings',
+					icon: 'lightbulb',
 					data: 'suggested-edits-faq'
 				} )
 			);
 		}
+		links.push(
+			new OO.ui.ButtonWidget( {
+				href: new mw.Title( 'Special:Preferences#mw-prefsection-editing' ).getUrl(),
+				label: mw.message( 'growthexperiments-help-panel-settings-cog-preferences-link' ).text(),
+				icon: 'settings',
+				data: 'special-preferences'
+			} )
+		);
+
 		return links.reduce( function ( $list, button ) {
 			// This is a bit of a hack as these buttons are in no way progressive,
 			// but the progressive button style matches the intended visual style well.
