@@ -41,6 +41,7 @@
 				home: mw.message( 'growthexperiments-help-panel-home-title' ).text(),
 				'ask-help': mw.message( 'growthexperiments-help-panel-questionreview-title' ).text(),
 				questioncomplete: mw.message( 'growthexperiments-help-panel-questioncomplete-title' ).text(),
+				'general-help': mw.message( 'growthexperiments-help-panel-general-help-title' ).text(),
 				'suggested-edits': mw.message( 'growthexperiments-help-panel-suggestededits-title' ).text()
 			}, config.panelTitleMessages );
 			this.askhelpHeader = config.askhelpHeader ||
