@@ -1,4 +1,8 @@
+'use strict';
+
 const { assert, REST } = require( 'api-testing' );
+
+/* eslint-disable mocha/no-setup-in-describe */
 
 describe( 'GET quickstarttips', () => {
 	const client = new REST( 'rest.php/growthexperiments/v0/quickstarttips' );
@@ -9,7 +13,6 @@ describe( 'GET quickstarttips', () => {
 	it( 'the copyedit response has the correct shape and parameters substituted', async () => {
 		const { status: sourceStatus, body: sourceBody, error: error } = await client.get( '/vector/visualeditor/copyedit/en' );
 		if ( error ) {
-			// eslint-disable-next-line no-console
 			console.error( error.text, error.code );
 		}
 		assert.equal( 200, sourceStatus );
@@ -19,7 +22,6 @@ describe( 'GET quickstarttips', () => {
 	it( 'loads different messages varying by skin', async () => {
 		const { status: sourceStatus, body: sourceBody, error: error } = await client.get( '/minerva/visualeditor/copyedit/en' );
 		if ( error ) {
-			// eslint-disable-next-line no-console
 			console.error( error.text, error.code );
 		}
 		assert.equal( 200, sourceStatus );
@@ -39,7 +41,6 @@ describe( 'GET quickstarttips', () => {
 
 					assert.equal( expectedNumberOfTips( taskTypeId ), Object.keys( sourceBody ).length );
 					if ( error ) {
-						// eslint-disable-next-line no-console
 						console.error( error.text, error.code );
 					}
 					assert.equal( sourceStatus, 200 );

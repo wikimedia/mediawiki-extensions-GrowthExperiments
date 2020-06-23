@@ -1,3 +1,6 @@
+/**
+ * @external HomepageModuleLogger
+ */
 ( function () {
 	'use strict';
 	var taskTypes = require( './TaskTypes.json' ),
@@ -7,7 +10,7 @@
 	 * @param {Object} config Configuration options
 	 * @param {Array<string>} config.taskTypePresets List of IDs of enabled task types
 	 * @param {Array<string>} config.topicPresets List of IDs of enabled topic filters
-	 * @param {bool} config.topicMatching If the topic filters should be enabled in the UI.
+	 * @param {boolean} config.topicMatching If the topic filters should be enabled in the UI.
 	 * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
 	 * @param {HomepageModuleLogger} logger
 	 * @constructor
@@ -135,6 +138,7 @@
 
 	/**
 	 * Update the button label and icon depending on task types selected.
+	 *
 	 * @param {string[]} taskTypeSearch List of task types to search for
 	 * @param {string[]} topicSearch List of topics to search for
 	 */

@@ -4,6 +4,7 @@
 
 	/**
 	 * Logging helper for the HelpPanel EventLogging schema.
+	 *
 	 * @class mw.libs.ge.HelpPanelLogger
 	 * @constructor
 	 * @param {boolean} enabled
@@ -30,8 +31,9 @@
 
 	/**
 	 * Log a HelpPanel event.
+	 *
 	 * @param {string} action Value of the action field
-	 * @param {Object|Array<string>|string|number|bool} data Value of the action_data field
+	 * @param {Object|Array<string>|string|number|boolean} data Value of the action_data field
 	 * @param {Object} [metadataOverride] An object with the values of any other fields. Those
 	 *   fields are set to some default value if omitted.
 	 */
@@ -85,7 +87,8 @@
 
 	/**
 	 * Check whether the user is editing right now.
-	 * @internal
+	 *
+	 * @private
 	 * @return {boolean}
 	 */
 	HelpPanelLogger.prototype.isEditing = function () {
@@ -105,6 +108,7 @@
 	/**
 	 * Return what setting the help panel has been invoked in (editing a page or viewing a page;
 	 * there are others but those are set via the metadata override mechanism).
+	 *
 	 * @return {string} A value appropriate for the context field of the schema.
 	 */
 	HelpPanelLogger.prototype.getContext = function () {
@@ -115,6 +119,7 @@
 	 * Get a value appropriate for the editor_interface field of the schema
 	 * (the current editor, or the previously used editor, or a best guess what the editor
 	 * would be).
+	 *
 	 * @return {string}
 	 */
 	HelpPanelLogger.prototype.getEditor = function () {
@@ -128,7 +133,8 @@
 	/**
 	 * Returns the name of the current editor (in the format used by the editor_interface field
 	 * of the schema). Should only be called when that editor is open.
-	 * @internal
+	 *
+	 * @private
 	 * @return {string}
 	 */
 	HelpPanelLogger.prototype.getCurrentEditor = function () {
@@ -176,7 +182,8 @@
 	/**
 	 * Try to guess what editor the user will use in their next editing session (in the format used
 	 * by the editor_interface field of the schema).
-	 * @internal
+	 *
+	 * @private
 	 * @return {string}
 	 */
 	HelpPanelLogger.prototype.getPredictedEditor = function () {
@@ -197,6 +204,7 @@
 				if ( restrictions && restrictions.length ) {
 					return action + '=' + restrictions.join( ',' );
 				}
+				return null;
 			} )
 			.filter( function ( r ) {
 				return r;

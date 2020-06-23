@@ -3,7 +3,7 @@
 	/**
 	 * Serialize data for use with action_data event logging property.
 	 *
-	 * @param {Object|string|boolean|integer|Array} data
+	 * @param {Object|string|boolean|number|Array} data
 	 * @return {string|*}
 	 */
 	function serializeActionData( data ) {
@@ -55,6 +55,7 @@
 
 	/**
 	 * Checks whether an editor name is accepted by the EventLogging schemas used by the extension.
+	 *
 	 * @param {string} editor
 	 * @return {boolean}
 	 */

@@ -1,3 +1,5 @@
+'use strict';
+
 const fs = require( 'fs' );
 const path = require( 'path' );
 const logPath = process.env.LOG_DIR || path.join( __dirname, '/log' );
@@ -95,6 +97,7 @@ exports.config = {
 	// =====
 	/**
 	 * Executed before a Mocha test starts.
+	 *
 	 * @param {Object} test Mocha Test object
 	 */
 	beforeTest: function ( test ) {
@@ -139,6 +142,7 @@ exports.config = {
 	},
 	/**
 	 * Executed after a Mocha test ends.
+	 *
 	 * @param {Object} test Mocha Test object
 	 */
 	afterTest: function ( test ) {

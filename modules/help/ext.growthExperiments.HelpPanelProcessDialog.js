@@ -1,3 +1,6 @@
+/**
+ * @external SuggestedEditSession
+ */
 ( function () {
 
 	/**
@@ -264,6 +267,7 @@
 	/**
 	 * Return a list of links providing extra information about the help panel, as a jQuery
 	 * collection of <a> tags.
+	 *
 	 * @return {jQuery}
 	 */
 	HelpPanelProcessDialog.prototype.getInfoLinks = function () {
@@ -790,6 +794,7 @@
 
 	/**
 	 * Launches a tour if the tour has never been shown before and marks the tour as viewed
+	 *
 	 * @param {string} tourName
 	 * @param {string} tourPreferenceKey
 	 */
@@ -856,6 +861,7 @@
 
 	/**
 	 * Enable / disable auto-advancing the guidance tabs.
+	 *
 	 * @param {boolean} enable
 	 */
 	HelpPanelProcessDialog.prototype.setGuidanceAutoAdvance = function ( enable ) {

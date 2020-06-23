@@ -1,12 +1,13 @@
-var jsdom = require( 'jsdom' ),
+'use strict';
+
+const jsdom = require( 'jsdom' ),
 	sinon = require( 'sinon' ),
-	HomepageModuleLogger = require( '../../../modules/homepage/ext.growthExperiments.Homepage.Logger.js' ),
-	sandbox,
+	HomepageModuleLogger = require( '../../../modules/homepage/ext.growthExperiments.Homepage.Logger.js' );
+let sandbox,
 	dom;
 
 QUnit.module( 'HomepageLogger', {
 	beforeEach: function () {
-		var configGet;
 		sandbox = sinon.createSandbox();
 		dom = new jsdom.JSDOM( '<!doctype html><html><body></body></html>' );
 		global.window = dom.window;
@@ -21,7 +22,7 @@ QUnit.module( 'HomepageLogger', {
 
 		global.mw = {};
 		global.mw.config = {};
-		configGet = sinon.stub();
+		const configGet = sinon.stub();
 		configGet.withArgs( 'wgUserEditCount' ).returns( 123 );
 		configGet.withArgs( 'wgGEHomepageModuleActionData-tutorial' ).returns( { foo: 'bar' } );
 		configGet.withArgs( 'wgGEHomepageModuleState-tutorial' ).returns( 'done' );
@@ -42,7 +43,7 @@ QUnit.module( 'HomepageLogger', {
 	}
 }, function () {
 	QUnit.test( 'disabled/enabled', function ( assert ) {
-		var homepageModuleLogger = new HomepageModuleLogger( false, 'blah' );
+		let homepageModuleLogger = new HomepageModuleLogger( false, 'blah' );
 		homepageModuleLogger.log();
 		assert.strictEqual( global.mw.track.called, false );
 		homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
@@ -50,7 +51,7 @@ QUnit.module( 'HomepageLogger', {
 		assert.strictEqual( global.mw.track.called, true );
 	} );
 	QUnit.test( 'log', function ( assert ) {
-		var homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
+		const homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
 		homepageModuleLogger.log( 'tutorial', 'desktop', 'impression', { foo: 'bar' } );
 		assert.strictEqual( global.mw.track.getCall( 0 ).args[ 0 ], 'event.HomepageModule' );
 		assert.deepEqual( global.mw.track.getCall( 0 ).args[ 1 ], {
@@ -69,13 +70,13 @@ QUnit.module( 'HomepageLogger', {
 	} );
 
 	QUnit.test( 'exclude start', function ( assert ) {
-		var homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
+		const homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
 		homepageModuleLogger.log( 'start', 'mode', 'impression' );
 		assert.strictEqual( global.mw.track.called, false );
 	} );
 
 	QUnit.test( 'do not include state in event if empty', function ( assert ) {
-		var homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
+		const homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
 		global.mw.config.get.withArgs( 'wgGEHomepageModuleState-mentor' ).returns( '' );
 		homepageModuleLogger.log( 'mentor', 'desktop', 'impression' );
 		assert.strictEqual( global.mw.track.getCall( 0 ).args[ 0 ], 'event.HomepageModule' );

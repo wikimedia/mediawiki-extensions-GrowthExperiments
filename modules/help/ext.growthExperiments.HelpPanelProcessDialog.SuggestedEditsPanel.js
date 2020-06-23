@@ -7,6 +7,7 @@
 	/**
 	 * Create the suggested edit panel. The panel is initially empty; the code creating it
 	 * must call SuggestedEditsPanel.build() to populate it.
+	 *
 	 * @param {Object} config The standard config to pass to OO.ui.PanelLayout,
 	 *  plus configuration specific to building the suggested edits panel.
 	 * @param {Object} config.taskTypeData The data for a particular task.
@@ -28,7 +29,7 @@
 		this.editorInterface = config.editorInterface;
 		this.taskTypeData = config.taskTypeData;
 		this.currentTip = config.currentTip;
-		/** @var {OO.ui.StackLayout} */
+		/** @member {OO.ui.StackLayout} */
 		this.tipsPanel = null;
 	}
 
@@ -36,6 +37,7 @@
 
 	/**
 	 * Appends the header, quickstart tips, and footer to the panel.
+	 *
 	 * @return {jQuery.Promise<boolean>} A promise that resolves with true when the tips are loaded.
 	 *   The promise rejects when the tips failed to load. It resolves with false when the tips
 	 *   did not need to be loaded (ie. the help panel should not contain guidance).

@@ -1,4 +1,6 @@
-var assert = require( 'assert' ),
+'use strict';
+
+const assert = require( 'assert' ),
 	SpecialWelcomeSurveyPage = require( '../pageobjects/specialwelcomesurvey.page' ),
 	Util = require( 'wdio-mediawiki/Util' ),
 	UserLoginPage = require( 'wdio-mediawiki/LoginPage' );
@@ -12,7 +14,6 @@ describe( 'Special:WelcomeSurvey', function () {
 
 	// T233263
 	it( 'stores responses for users with NONE group when survey is submitted', function () {
-		var responses;
 		UserLoginPage.login( browser.config.mwUser, browser.config.mwPwd );
 		Util.waitForModuleState( 'mediawiki.api', 'ready', 5000 );
 		// Pretend the user was assigned to the control group.
@@ -26,7 +27,7 @@ describe( 'Special:WelcomeSurvey', function () {
 		SpecialWelcomeSurveyPage.open();
 		SpecialWelcomeSurveyPage.finishButtonSelector.waitForExist();
 		SpecialWelcomeSurveyPage.finish.click();
-		responses = browser.execute( function () {
+		const responses = browser.execute( function () {
 			return JSON.parse( mw.user.options.get( 'welcomesurvey-responses' ) );
 		} );
 		assert.strictEqual( responses.reason, 'placeholder' );

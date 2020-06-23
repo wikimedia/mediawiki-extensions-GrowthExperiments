@@ -1,7 +1,9 @@
-var jsdom = require( 'jsdom' ),
+'use strict';
+
+const jsdom = require( 'jsdom' ),
 	sinon = require( 'sinon' ),
-	HelpPanelLogger = require( '../../../modules/help/ext.growthExperiments.HelpPanelLogger.js' ),
-	sandbox,
+	HelpPanelLogger = require( '../../../modules/help/ext.growthExperiments.HelpPanelLogger.js' );
+let sandbox,
 	dom;
 
 QUnit.module( 'HelpPanelLogger', {
@@ -37,7 +39,7 @@ QUnit.module( 'HelpPanelLogger', {
 	}
 }, function () {
 	QUnit.test( 'disabled/enabled', function ( assert ) {
-		var helpPanelLogger = new HelpPanelLogger( false );
+		let helpPanelLogger = new HelpPanelLogger( false );
 		helpPanelLogger.log();
 		assert.strictEqual( global.mw.track.called, false );
 		helpPanelLogger = new HelpPanelLogger( true );
@@ -45,7 +47,7 @@ QUnit.module( 'HelpPanelLogger', {
 		assert.strictEqual( global.mw.track.called, true );
 	} );
 	QUnit.test( 'log', function ( assert ) {
-		var helpPanelLogger = new HelpPanelLogger( true, {
+		const helpPanelLogger = new HelpPanelLogger( true, {
 			context: 'reading',
 			previousEditorInterface: 'visualeditor',
 			sessionId: 'foo'

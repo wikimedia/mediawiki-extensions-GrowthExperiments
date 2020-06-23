@@ -1,4 +1,6 @@
-var assert = require( 'assert' ),
+'use strict';
+
+const assert = require( 'assert' ),
 	HomepagePage = require( '../pageobjects/homepage.page' ),
 	PreferencesPage = require( '../pageobjects/preferences.page' ),
 	LoginPage = require( 'wdio-mediawiki/LoginPage' ),

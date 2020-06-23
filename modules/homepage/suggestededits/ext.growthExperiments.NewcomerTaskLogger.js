@@ -3,6 +3,7 @@
 ( function () {
 	/**
 	 * Logger for the NewcomerTask EventLogging schema.
+	 *
 	 * @class mw.libs.ge.NewcomerTaskLogger
 	 * @constructor
 	 */
@@ -11,11 +12,12 @@
 
 	/**
 	 * Log a task returned by the task API.
+	 *
 	 * @param {string} context The context in which this task is logged (e.g. 'homepage-impression'
 	 *   means the task was displayed on the homepage; 'postedit-click' means the task was
 	 *   clicked in the post-edit dialog).
 	 * @param {Object} task A task object, as returned by GrowthTasksApi
-	 * @param {integer} [position] The position of the task in the task queue.
+	 * @param {number} [position] The position of the task in the task queue.
 	 * @return {string} A token stored under NewcomerTask.newcomer_task_token to identify this log
 	 *   event. Typically used to bind it to another log event such as a homepage module action.
 	 */
@@ -35,8 +37,9 @@
 
 	/**
 	 * Convert a task into log data.
+	 *
 	 * @param {Object} task A task object, as returned by GrowthTasksApi
-	 * @param {integer} [position] The position of the task in the task queue.
+	 * @param {number} [position] The position of the task in the task queue.
 	 * @return {Object} Log data
 	 */
 	NewcomerTaskLogger.prototype.getLogData = function ( task, position ) {

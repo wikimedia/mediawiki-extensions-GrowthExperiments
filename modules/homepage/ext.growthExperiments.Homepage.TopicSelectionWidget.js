@@ -111,6 +111,7 @@ OO.inheritClass( TopicSelectionWidget, OO.ui.Widget );
 /**
  * Get the IDs of all selected topics, both those that are visible and selected, and those that are
  * hidden and were preselected.
+ *
  * @return {string[]} IDs of selected topics
  */
 TopicSelectionWidget.prototype.getSelectedTopics = function () {

@@ -5,6 +5,7 @@
 	/**
 	 * Code for dealing with the query+growthtasks API, and some REST APIs to fetch extra data from.
 	 * This is a stateless class, like mw.Api.
+	 *
 	 * @class GrowthTasksApi
 	 * @constructor
 	 * @param {Object} config
@@ -30,6 +31,7 @@
 	/**
 	 * A rejection decorator which makes the error message for the rejection saner.
 	 * Intended to be used as a catch() handler.
+	 *
 	 * @param {string|Error} error Error code.
 	 * @param {string|Object} details Error details.
 	 * @return {jQuery.Promise} A rejected promise with a single error message string.
@@ -75,9 +77,9 @@
 	 * @param {Object} [config] Additional configuration.
 	 * @param {boolean} [config.getDescription] Include Wikidata description into the data.
 	 *   This probably won't work well with a large size setting.
-	 * @param {integer} [config.size] Number of tasks to fetch. The returned number might be smaller
+	 * @param {number} [config.size] Number of tasks to fetch. The returned number might be smaller
 	 *   as protected pages will be filtered out.
-	 * @param {integer} [config.thumbnailWidth] Ideal thumbnail width. The actual width might be
+	 * @param {number} [config.thumbnailWidth] Ideal thumbnail width. The actual width might be
 	 *   smaller if the original image itself is smaller.
 	 *
 	 * @return {jQuery.Promise<Object>} An abortable promise with two fields:
@@ -202,12 +204,13 @@
 	 * Get lead section extracts and page images from the Page Content Service summary API.
 	 * Can be customized via $wgGERestbaseUrl (by default will be assumed to be local;
 	 * setting it to null will disable querying PCS make this method a no-op).
+	 *
 	 * @param {Object} task A task object returned by fetchTasks. It will be extended with new data:
 	 *   - extract: the page summary
 	 *   - thumbnailSource: URL to the thumbnail of the page image (if one exists)
 	 * @param {Object} [config] Additional configuration. The object passed to fetchTasks() can be
 	 *   reused here.
-	 * @param {integer} [config.thumbnailWidth] Ideal thumbnail width. The actual width might be
+	 * @param {number} [config.thumbnailWidth] Ideal thumbnail width. The actual width might be
 	 *   smaller if the original image itself is smaller.
 	 * @return {jQuery.Promise<Object>} A promise with the task object.
 	 * @see https://www.mediawiki.org/wiki/Page_Content_Service#/page/summary
@@ -247,6 +250,7 @@
 	 * Get pageview data from the Analytics Query Service.
 	 * Can be customized via $wgPageViewInfoWikimediaDomain (by default will use
 	 * the Wikimedia instance).
+	 *
 	 * @param {Object} task A task object returned by fetchTasks. It will be extended with new data:
 	 *   - pageviews: number of views to the task's page in the last two months
 	 * @return {jQuery.Promise<Object>} A promise with extra data to extend the task object with.
@@ -296,6 +300,7 @@
 	// will need it.
 	/**
 	 * Get the task type preferences of the current user.
+	 *
 	 * @return {{taskTypes: Array<string>, topics: Array<string>}}
 	 */
 	GrowthTasksApi.prototype.getPreferences = function () {
@@ -312,6 +317,7 @@
 
 	/**
 	 * Change the thumbnail URL in the task data to be at least the given width (if possible).
+	 *
 	 * @param {Object} task Task data, as returned by the other methods.
 	 * @param {number} newWidth Desired thumbnail width.
 	 * @return {Object} The task parameter (which is changed in-place).
