@@ -181,6 +181,7 @@
 				"mobile"
 			],
 			"dependencies": [
+				"oojs",
 				"mediawiki.Title",
 				"mediawiki.Uri",
 				"mediawiki.user",

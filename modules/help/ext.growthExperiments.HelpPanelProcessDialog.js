@@ -28,6 +28,9 @@
 		HelpPanelProcessDialog = function helpPanelProcessDialog( config ) {
 			HelpPanelProcessDialog.super.call( this, config );
 			this.suggestedEditSession = config.suggestedEditSession;
+			this.suggestedEditSession.connect( this, {
+				save: 'onSuggestedEditSessionSave'
+			} );
 			this.questionPosterAllowIncludingTitle = config.questionPosterAllowIncludingTitle;
 			this.logger = config.logger;
 			this.guidanceEnabled = config.guidanceEnabled;
@@ -626,7 +629,14 @@
 			this.suggestedEditSession = $.extend( this.suggestedEditSession, update );
 			this.suggestedEditSession.save();
 		}
-		if ( update.helpPanelSuggestedEditsInteractionHappened ) {
+	};
+
+	/**
+	 * Respond to 'save' events from the SuggestedEditSession.
+	 * @param {Object} session The values saved to the suggested edit session storage
+	 */
+	HelpPanelProcessDialog.prototype.onSuggestedEditSessionSave = function ( session ) {
+		if ( session.helpPanelSuggestedEditsInteractionHappened ) {
 			this.setGuidanceAutoAdvance( false );
 		}
 	};
