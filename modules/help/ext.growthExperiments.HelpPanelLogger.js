@@ -99,7 +99,7 @@
 			// might need special handling.
 			return false;
 		} else if ( this.isMobile ) {
-			return uri.fragment && Boolean( uri.fragment.match( /\/editor\/(\d+|all)/ ) );
+			return Boolean( uri.fragment && uri.fragment.match( /\/editor\/(\d+|all)/ ) );
 		} else {
 			return Boolean( uri.query.veaction ) || uri.query.action === 'edit' || uri.query.action === 'submit';
 		}
