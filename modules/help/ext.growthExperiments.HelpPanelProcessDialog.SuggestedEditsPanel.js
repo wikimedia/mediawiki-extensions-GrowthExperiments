@@ -14,6 +14,7 @@
 	 * @param {boolean} config.guidanceEnabled If guidance is available for this user and task type.
 	 * @param {string} config.editorInterface The editor interface in use
 	 * @param {string} config.currentTip The tip to preselect in the quick tips section.
+	 * @param {jQuery} [config.parentWindow] OOUI window containing the panel.
 	 * @constructor
 	 */
 	function SuggestedEditsPanel( config ) {
@@ -29,6 +30,7 @@
 		this.editorInterface = config.editorInterface;
 		this.taskTypeData = config.taskTypeData;
 		this.currentTip = config.currentTip;
+		this.$scrollHeader = config.parentWindow.$head;
 		/** @member {OO.ui.StackLayout} */
 		this.tipsPanel = null;
 	}
@@ -62,6 +64,7 @@
 			scrollable: true,
 			classes: [ 'suggested-edits-panel-headerAndTips' ]
 		} );
+		this.headerAndTipsPanel.$element.on( 'scroll', this.setScrolledClasses.bind( this ) );
 		this.headerPanel = new OO.ui.PanelLayout( {
 			padded: false,
 			expanded: false,
@@ -72,6 +75,8 @@
 			this.addItems( [ this.headerAndTipsPanel, this.footerPanel ] );
 			// Used by the auto-advance logic in HelpPanelProcessDialog
 			this.tipsPanel = tipsPanel;
+			tipsPanel.tabIndexLayout.on( 'set', this.setScrolledClasses.bind( this ) );
+			this.setScrolledClasses();
 			return true;
 		}.bind( this ) );
 	};
@@ -122,6 +127,27 @@
 			// * growthexperiments-help-panel-suggestededits-footer-desktop
 			.html( mw.message( 'growthexperiments-help-panel-suggestededits-footer-' +
 				( OO.ui.isMobile() ? 'mobile' : 'desktop' ) ).parse() );
+	};
+
+	/**
+	 * Add an 'obscures-tips' class to the header and footer above / below the panel when the
+	 * tips are scrolled underneath them (ie, for the header, when there is a scrollbar on the
+	 * panel and it is not in the topmost position; for the footer, the same with the bottommost
+	 * position).
+	 */
+	SuggestedEditsPanel.prototype.setScrolledClasses = function () {
+		var panel = this.headerAndTipsPanel.$element.get( 0 ),
+			header = this.$scrollHeader.get( 0 ),
+			footer = this.footerPanel.$element.get( 0 ),
+			topObscured = ( panel.scrollTop !== 0 ),
+			bottomObscured = ( panel.scrollTop + panel.clientHeight !== panel.scrollHeight );
+
+		if ( header && topObscured !== header.classList.contains( 'obscures-tips' ) ) {
+			header.classList.toggle( 'obscures-tips' );
+		}
+		if ( footer && bottomObscured !== footer.classList.contains( 'obscures-tips' ) ) {
+			footer.classList.toggle( 'obscures-tips' );
+		}
 	};
 
 	module.exports = SuggestedEditsPanel;

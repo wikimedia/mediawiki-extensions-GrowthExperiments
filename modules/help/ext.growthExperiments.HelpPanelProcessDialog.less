@@ -31,12 +31,20 @@
 	}
 
 	.oo-ui-window-head {
+		&.obscures-tips {
+			box-shadow: 0 0 2px 0 rgba( 0, 0, 0, 0.25 );
+		}
+
 		.oo-ui-processDialog-title {
 			font-size: 1em;
 			// Vertically center due to changed font-size.
 			line-height: 2.857143em;
 			color: @colorGray2;
 		}
+	}
+
+	.suggested-edits-panel-footer.obscures-tips {
+		box-shadow: 0 0 2px 0 rgba( 0, 0, 0, 0.25 );
 	}
 
 	.oo-ui-window-body {
