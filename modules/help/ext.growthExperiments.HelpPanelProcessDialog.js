@@ -342,6 +342,7 @@
 		this.homePanel = new OO.ui.PanelLayout( {
 			padded: true,
 			expanded: false,
+			scrollable: true,
 			classes: [ 'mw-ge-help-panel-processdialog-homepanel' ]
 		} );
 
