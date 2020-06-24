@@ -104,7 +104,6 @@
 	"growthexperiments-homepage-help-dialog-title": "Kérdés feltevése",
 	"growthexperiments-homepage-help-header": "Szerkesztési segítség",
 	"growthexperiments-homepage-help-subheader": "A legfontosabb súgóoldalak a szerkesztésről",
-	"growthexperiments-homepage-help-cancel": "Mégse",
 	"growthexperiments-homepage-help-mobilebody": "Tegyél fel kérdést, vagy böngéssz a súgóban.",
 	"growthexperiments-homepage-recent-questions-header": "Friss {{GENDER:$1|kérdéseid}}",
 	"growthexperiments-homepage-recent-questions-posted-on": "Feltéve ennyi ideje: $1",

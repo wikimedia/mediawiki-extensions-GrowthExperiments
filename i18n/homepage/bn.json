@@ -43,7 +43,6 @@
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "বুঝেছি",
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1টি</strong> {{PLURAL:$1|সম্পাদনা}}",
 	"growthexperiments-homepage-help-header": "সম্পাদনা সম্পর্কে সহায়তা পান",
-	"growthexperiments-homepage-help-cancel": "বাতিল",
 	"growthexperiments-homepage-recent-questions-posted-on": "$1 আগে প্রকাশ",
 	"growthexperiments-homepage-recent-questions-archived": "আর্কাইভকৃত",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|আপনার}} {{GENDER:$2|পরামর্শদাতা}}",

@@ -103,7 +103,6 @@
 	"growthexperiments-homepage-help-dialog-title": "질문방에 도움 요청하기",
 	"growthexperiments-homepage-help-header": "편집에 도움 받기",
 	"growthexperiments-homepage-help-subheader": "편집에 관한 유용한 도움말 문서",
-	"growthexperiments-homepage-help-cancel": "취소",
 	"growthexperiments-homepage-help-mobilebody": "도움 데스크에 질문하거나 도움말 문서를 읽습니다.",
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|}}최근에 게시한 질문",
 	"growthexperiments-homepage-recent-questions-posted-on": "$1 전에 게시됨",

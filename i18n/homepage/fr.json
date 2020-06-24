@@ -111,7 +111,6 @@
 	"growthexperiments-homepage-help-dialog-title": "Demander au bureau d’aide",
 	"growthexperiments-homepage-help-header": "Obtenir de l’aide pour l’édition",
 	"growthexperiments-homepage-help-subheader": "Meilleures pages d’aide pour l’édition",
-	"growthexperiments-homepage-help-cancel": "Annuler",
 	"growthexperiments-homepage-help-mobilebody": "Demander le bureau d’aide ou lire les pages d’aide.",
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|}}Vos questions récentes",
 	"growthexperiments-homepage-recent-questions-posted-on": "Publié il y a $1",
