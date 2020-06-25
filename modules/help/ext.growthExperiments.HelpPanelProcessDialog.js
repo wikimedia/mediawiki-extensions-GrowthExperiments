@@ -853,6 +853,7 @@
 		if ( !OO.ui.isMobile() ) {
 			// Do not change the object, it is shared by all OOUI windows
 			dim = $.extend( {}, dim, {
+				width: '360px',
 				height: '528px',
 				maxHeight: 'calc( 100vh - 180px )'
 			} );
