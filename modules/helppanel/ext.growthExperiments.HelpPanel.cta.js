@@ -178,10 +178,9 @@
 			lifecycle.opening.then( function () {
 				helpCtaButton.toggle( false );
 				logger.log( 'open' );
-				if ( suggestedEditSession.active ) {
-					suggestedEditSession.helpPanelShouldOpen = true;
-					suggestedEditSession.save();
-				}
+				helpPanelProcessDialog.updateSuggestedEditSession( {
+					helpPanelShouldOpen: true
+				} );
 				helpPanelProcessDialog.updateEditMode();
 			} );
 			lifecycle.closing.done( function () {
