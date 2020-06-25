@@ -125,7 +125,7 @@
 	"growthexperiments-specialimpact-showing-for-other-user": "$1 için etki verileri gösteriliyor",
 	"growthexperiments-specialimpact-invalid-username": "Eksik veya geçersiz kullanıcı adı.",
 	"growthexperiments-homepage-claimmentee-no-user": "Mentee mevcut değil",
-	"growthexperiments-homepage-claimmentee-already-mentor": "{{CİNSİYET:$2|Siz}} zaten mentörsünüz {{GENDER:$1|$1}}",
+	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Siz}} zaten mentörsünüz {{GENDER:$1|$1}}",
 	"growthexperiments-homepage-enable-preference": "Yeni gelen ana sayfayı etkinleştirmek için, [[Special:Preferences#mw-prefsection-personal-homepage|Tercihler]]'deki \"Yeni gelen ana sayfa\" ayarlarınızı ziyaret edin.",
 	"growthexperiments-homepage-contributions-zero-title": "Henüz herhangi bir katkıda {{GENDER:$1|bulunmadınız}}.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "Düzenlemeye başlamak için ana {{GENDER:$1|sayfanızı}} ziyaret edin!",

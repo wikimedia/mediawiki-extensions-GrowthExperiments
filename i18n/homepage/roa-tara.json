@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"BaRaN6161 TURK",
 			"Joetaras"
 		]
 	},
@@ -96,7 +97,7 @@
 	"growthexperiments-homepage-help-header": "Cirche aijute pu cangiamende",
 	"growthexperiments-homepage-help-subheader": "Le megghie pàggene de aijute sus a le cangiaminde",
 	"growthexperiments-homepage-help-mobilebody": "Cirche a l'help desk o lìgge le pàggene de aijute.",
-	"growthexperiments-homepage-recent-questions-header": "Le urtme dumande {{GENERE:$1|tune}}",
+	"growthexperiments-homepage-recent-questions-header": "Le urtme dumande {{GENDER:$1|tune}}",
 	"growthexperiments-homepage-recent-questions-posted-on": "Pubblecate $1 fa",
 	"growthexperiments-homepage-recent-questions-archived": "archiviate",
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "Sta dumande ha state archivijate, pò essere purcé ave state fatte 'nu sbuènne de tiembe fa.",

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dr. Mohammed",
 			"Dyolf77",
 			"Dyolf77 (WMF)",
 			"Meno25",
@@ -13,6 +14,7 @@
 	"growthexperiments-help-panel-cta-button-text": "{{GENDER:|احصل|احصلي}} على مساعدة في التحرير",
 	"growthexperiments-help-panel-question-button-text": "{{GENDER:|تابع|تابعي}}",
 	"growthexperiments-help-panel-submit-question-button-text": "{{GENDER:|انشر|انشري}}",
+	"growthexperiments-help-panel-return-home-button-text": "تم",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "أكثر صفحات المساعدة المطّلع عليها حول التحرير",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "{{GENDER:|شاهد|شاهدي}} المزيد من صفحات المساعدة",
 	"growthexperiments-help-panel-question-widget-header": "{{GENDER:|انشر|انشري}} سؤالك على ميدان المساعدة",

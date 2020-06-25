@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
+			"BaRaN6161 TURK",
 			"Erelon"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|מה זה?]])",
-	"growthexperiments-confirmemail-emailhelp": "כתובת דואר אלקטרוני נדרשת אם {{GENER:תאבד|תאבדי}} את הסיסמה שלך.",
+	"growthexperiments-confirmemail-emailhelp": "כתובת דואר אלקטרוני נדרשת אם תאבדי את הסיסמה שלך.",
 	"growthexperiments-confirmemail-emailrecommended": "כתובת דוא\"ל (לא חובה)",
 	"growthexperiments-confirmemail-emailwarning": "נא לחפש דואר אלקטרוני מאיתנו כדי לאשר את הכתובת שלך.",
 	"growthexperiments-confirmemail-confirm-subject": "{{GENDER:|ברוך הבא|הברוכה הבאה|ברוך בואך}} לאתר {{SITENAME}}: נא לאשר את כתובת הדוא\"ל שלך",
