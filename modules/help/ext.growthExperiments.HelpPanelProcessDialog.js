@@ -87,21 +87,22 @@
 			classes: [ 'mw-ge-help-panel-done' ],
 			action: 'close'
 		},
-		// Allow user to close the panel directly. The close icon is placed differently
-		// when on home subpanel or when the help panel is opened in "locked" mode.
-		{
-			icon: 'close',
-			flags: 'safe',
-			action: 'close',
-			modes: [ 'home', 'ask-help-locked', 'suggested-edits-locked' ]
-		},
+		// Show a close icon in the primary position (so it doesn't interfere with the back
+		// icon), except in ask-help / questioncomplete which already have a primary action.
 		{
 			flags: [ 'primary', 'close' ],
 			action: 'close',
 			framed: false,
-			modes: [ 'general-help', 'search', 'suggested-edits' ]
+			modes: [ 'home', 'general-help', 'general-help-locked', 'suggested-edits',
+				'suggested-edits-locked', 'search' ]
 		},
-		// Use a back icon for all non-home panels.
+		{
+			icon: 'close',
+			flags: 'safe',
+			action: 'close',
+			modes: [ 'ask-help-locked' ]
+		},
+		// Use a back icon for all non-home panels if they are not locked.
 		{
 			icon: 'arrowPrevious',
 			flags: 'safe',
