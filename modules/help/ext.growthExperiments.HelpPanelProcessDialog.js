@@ -588,6 +588,9 @@
 		return HelpPanelProcessDialog.super.prototype.getSetupProcess
 			.call( this, data )
 			.next( function () {
+				if ( OO.ui.isMobile() ) {
+					this.updateEditMode();
+				}
 				this.swapPanel( data.panel || 'home' );
 			}, this );
 	};
