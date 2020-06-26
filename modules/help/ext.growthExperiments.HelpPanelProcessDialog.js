@@ -369,7 +369,8 @@
 			taskTypeData: taskTypeData[ this.taskTypeId ],
 			guidanceEnabled: this.guidanceEnabled,
 			editorInterface: this.logger.getEditor(),
-			currentTip: this.suggestedEditSession.helpPanelCurrentTip
+			currentTip: this.suggestedEditSession.helpPanelCurrentTip,
+			parentWindow: this
 		} );
 		guidanceTipsPromise = this.suggestededitsPanel.build();
 
