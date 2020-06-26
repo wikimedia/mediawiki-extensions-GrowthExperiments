@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dr Lotus Black"
+			"Dr Lotus Black",
+			"Teitei Para"
 		]
 	},
 	"growthexperiments-help-panel-question-button-text": "ဆက်လက်",
+	"growthexperiments-help-panel-return-home-button-text": "ပြီးပါပြီ",
 	"growthexperiments-help-panel-back-home": "နောက်သို့",
 	"growthexperiments-help-panel-close": "ပြီးပြီ",
 	"growthexperiments-help-panel-questionreview-label": "သင်၏ မေးခွန်း"
