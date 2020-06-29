@@ -895,7 +895,7 @@
 		},
 		"WelcomeSurveyPrivacyPolicyUrl": {
 			"description": "URL of the privacy policy to be used on the Welcome survey.",
-			"value": "https://foundation.wikimedia.org/wiki/New_User_Welcome_Survey_Privacy_Statement"
+			"value": "https://meta.wikimedia.org/wiki/Data_retention_guidelines#Exceptions_to_these_guidelines"
 		},
 		"GEHomepageEnabled": {
 			"description": "Global ON/OFF switch for the Homepage feature.",
