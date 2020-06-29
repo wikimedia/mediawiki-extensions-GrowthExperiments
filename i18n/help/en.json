@@ -31,7 +31,7 @@
 	"growthexperiments-help-panel-suggestededits-title": "Suggested edits",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Quick start tips",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Ready?</strong> Click \"{{int:vector-view-edit}}\" to get started.",
-	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Ready?</strong> Tap the edit pencil on the article to start.",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Ready?</strong> Open the section you want to edit and tap the pencil icon.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Copyediting is about making a small fix to the way an article is written, such as spelling, grammar, or the clarity of the text. Copyedits help articles to be more professional and trustworthy.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "Reaching Mercury from <mark class=\"negative\">Earthh</mark> poses significant technical challenges.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "To make a difference, {{GENDER:|you}} only need to make one or two small corrections. {{GENDER:|You}} do not need to work on the entire article. {{GENDER:|You}} also don't need to have any special knowledge about the topic.",
