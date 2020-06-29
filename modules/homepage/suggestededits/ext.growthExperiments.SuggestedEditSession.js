@@ -19,6 +19,7 @@
 	 * @private UseSuggestedEditSession.getInstance()
 	 */
 	function SuggestedEditSession() {
+		OO.EventEmitter.call( this );
 		/** @member {boolean} Whether we are in a suggested edit session currently. */
 		this.active = false;
 		/**
@@ -55,6 +56,8 @@
 		this.helpPanelSuggestedEditsInteractionHappened = false;
 	}
 
+	OO.mixinClass( SuggestedEditSession, OO.EventEmitter );
+
 	/**
 	 * Initialize the suggested edit session. This should be called on every page load.
 	 * Depending on the situation, it might start a new session, load an existing one,
@@ -89,10 +92,7 @@
 	 * browser tab) and also cache it in the current execution context.
 	 */
 	SuggestedEditSession.prototype.save = function () {
-		if ( !this.active ) {
-			throw new Error( 'Trying to save an inactive suggested edit session' );
-		}
-		mw.storage.session.setObject( 'ge-suggestededit-session', {
+		var session = {
 			clickId: this.clickId,
 			title: this.title.getPrefixedText(),
 			taskType: this.taskType,
@@ -104,8 +104,13 @@
 			helpPanelShouldOpen: this.helpPanelShouldOpen,
 			helpPanelCurrentTip: this.helpPanelCurrentTip,
 			helpPanelSuggestedEditsInteractionHappened: this.helpPanelSuggestedEditsInteractionHappened
-		} );
+		};
+		if ( !this.active ) {
+			throw new Error( 'Trying to save an inactive suggested edit session' );
+		}
+		mw.storage.session.setObject( 'ge-suggestededit-session', session );
 		mw.config.set( 'ge-suggestededit-session', this );
+		this.emit( 'save', this );
 	};
 
 	/**
