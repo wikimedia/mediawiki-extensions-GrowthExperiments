@@ -316,7 +316,7 @@
 		// If viewing an article, log the impression. Editing impressions are
 		// logged via attachHelpButton(), but we don't need to utilize that
 		// function on view.
-		if ( logger.getContext() === 'reading' ) {
+		if ( !guidanceAvailable && logger.getContext() === 'reading' ) {
 			helpPanelProcessDialog.logger.log( 'impression', taskTypeLogData );
 		}
 	} );
