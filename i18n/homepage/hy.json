@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"23artashes",
+			"Aram1985",
 			"Kareyac",
 			"Mari Avetisyan",
 			"Xelgen",
@@ -127,6 +128,8 @@
 	"growthexperiments-homepage-discovery-banner-text": "Այստեղ վերադառնալու համար {{GENDER:$1|Դուք}} կարող եք սեղմել էջի վերին հատվածում $2 վրա։",
 	"growthexperiments-homepage-discovery-thanks-header": "Շնորհակալություն {{GENDER:$1|Ձեր}} հաշիվը ստեղծելու համար։",
 	"growthexperiments-homepage-discovery-thanks-text": "Սեղմե՛ք էջի վերին մասում $2 վրա {{GENDER:$1|Ձեր}} հիմնական էջ այցելելու և սկսելու համար։",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "Բարի գալո՜ւստ {{GENDER:$1|Ձեր}} հիմնական էջ",
+	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|Դուք}} միշտ կարող եք բացել կողամենյուն և սեղմել՝ $2 այստեղ վերադառնալու համար:",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Սկսել այստեղ։",
 	"growthexperiments-homepage-suggestededits-pager-end": "Ավարտ",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 դիտում (անցած 60 օրերի ընթացքում)",

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aram1985",
 			"Kareyac",
 			"Mari Avetisyan",
 			"Աշոտ1997"
@@ -10,6 +11,7 @@
 	"growthexperiments-help-panel-cta-button-text": "Խմբագրելու համար օգնություն ստանալ",
 	"growthexperiments-help-panel-question-button-text": "Շարունակել",
 	"growthexperiments-help-panel-submit-question-button-text": "Գրառում",
+	"growthexperiments-help-panel-return-home-button-text": "Արված է",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Խմբագրելու հետ կապված օգնության էջեր",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Ավելի շատ օգնության էջեր",
 	"growthexperiments-help-panel-question-widget-header": "Հարց գրել Համայնքային օգնության էջին",
@@ -81,6 +83,7 @@
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Առաջարկվող խմբագրում",
 	"growthexperiments-help-panel-button-header-ask-help": "Հարցնել օգնության էջին",
 	"growthexperiments-help-panel-button-header-general-help": "Ընդհանուր խմբագրման օգնություն",
+	"growthexperiments-help-panel-button-subheader-general-help": "Փնտրել պատասխանների համար և կարդալ ամենակարդացվող հոդվածները",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Ստացեք պատասխաններ այլ կամավորների կողմից",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Կարճ խորհուրդներ մեկնարկի համար",
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Առաջարկվող խմբագրումների ՀՏՀ"
