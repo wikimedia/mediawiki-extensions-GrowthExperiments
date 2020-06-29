@@ -2,7 +2,8 @@
 	'use strict';
 
 	var suggestedEditsPeek = require( '../helppanel/ext.growthExperiments.SuggestedEditsPeek.js' ),
-		quickStartTips = require( '../helppanel/ext.growthExperiments.SuggestedEdits.QuickStartTips.js' );
+		quickStartTips = require( '../helppanel/ext.growthExperiments.SuggestedEdits.QuickStartTips.js' ),
+		SwitchEditorPanel = require( './ext.growthExperiments.HelpPanelProcessDialog.SwitchEditorPanel.js' );
 
 	/**
 	 * Create the suggested edit panel. The panel is initially empty; the code creating it
@@ -13,6 +14,8 @@
 	 * @param {Object} config.taskTypeData The data for a particular task.
 	 * @param {boolean} config.guidanceEnabled If guidance is available for this user and task type.
 	 * @param {string} config.editorInterface The editor interface in use
+	 * @param {string} config.preferredEditor The preferred editor interface for
+	 * suggested edits.
 	 * @param {string} config.currentTip The tip to preselect in the quick tips section.
 	 * @param {jQuery} [config.parentWindow] OOUI window containing the panel.
 	 * @constructor
@@ -28,6 +31,7 @@
 			return;
 		}
 		this.editorInterface = config.editorInterface;
+		this.preferredEditor = config.preferredEditor;
 		this.taskTypeData = config.taskTypeData;
 		this.currentTip = config.currentTip;
 		this.$scrollHeader = config.parentWindow.$head;
@@ -57,6 +61,11 @@
 			classes: [ 'suggested-edits-panel-footer' ],
 			$content: this.getFooter()
 		} );
+		this.switchEditorPanel = new SwitchEditorPanel( {
+			editor: this.editorInterface,
+			preferredEditor: this.preferredEditor,
+			padded: true
+		} );
 		this.headerAndTipsPanel = new OO.ui.StackLayout( {
 			padded: false,
 			expanded: false,
@@ -71,7 +80,7 @@
 			$content: this.getHeader()
 		} );
 		return quickStartTips.getTips( this.taskTypeData.id, this.editorInterface, this.currentTip ).then( function ( tipsPanel ) {
-			this.headerAndTipsPanel.addItems( [ this.headerPanel, tipsPanel ] );
+			this.headerAndTipsPanel.addItems( [ this.headerPanel, this.switchEditorPanel, tipsPanel ] );
 			this.addItems( [ this.headerAndTipsPanel, this.footerPanel ] );
 			// Used by the auto-advance logic in HelpPanelProcessDialog
 			this.tipsPanel = tipsPanel;
@@ -96,6 +105,18 @@
 		} else {
 			this.footerPanel.toggle( true );
 			this.$element.addClass( 'suggested-edits-panel-with-footer' );
+		}
+	};
+
+	/**
+	 * Show/hide the Switch Editor panel, called when toggling edit mode.
+	 *
+	 * @param {boolean} inEditMode
+	 * @param {string} currentEditor
+	 */
+	SuggestedEditsPanel.prototype.toggleSwitchEditorPanel = function ( inEditMode, currentEditor ) {
+		if ( this.switchEditorPanel ) {
+			this.switchEditorPanel.toggle( inEditMode, currentEditor );
 		}
 	};
 

@@ -613,6 +613,7 @@
 				"help/ext.growthExperiments.HelpPanelHomeButtonWidget.js",
 				"help/ext.growthExperiments.HelpPanelProcessDialog.js",
 				"help/ext.growthExperiments.HelpPanelProcessDialog.SuggestedEditsPanel.js",
+				"help/ext.growthExperiments.HelpPanelProcessDialog.SwitchEditorPanel.js",
 				"helppanel/ext.growthExperiments.SuggestedEditsPeek.js",
 				"helppanel/ext.growthExperiments.SuggestedEdits.QuickStartTips.js",
 				"helppanel/ext.growthExperiments.SuggestedEdits.QuickStartTipsTabPanelLayout.js",
@@ -694,7 +695,11 @@
 				"growthexperiments-help-panel-button-subheader-general-help",
 				"growthexperiments-help-panel-button-subheader-ask-help",
 				"growthexperiments-help-panel-button-subheader-suggested-edits",
-				"growthexperiments-help-panel-suggested-edits-faq-link-text"
+				"growthexperiments-help-panel-suggested-edits-faq-link-text",
+				"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor",
+				"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text",
+				"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext",
+				"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text"
 			],
 			"targets": [
 				"desktop",
@@ -884,6 +889,10 @@
 		"GEHelpPanelSearchForeignAPI": {
 			"description": "api.php URL of a foreign wiki to search instead of the current wiki. Used for testing/development to get more/better results.",
 			"value": false
+		},
+		"GEHelpPanelSuggestedEditsPreferredEditor": {
+			"description": "The preferred editor interface for suggested edits. Either 'visualeditor' or 'wikitext'.",
+			"value": "visualeditor"
 		},
 		"WelcomeSurveyEnabled": {
 			"description": "Global ON/OFF switch for the Welcome survey feature.",

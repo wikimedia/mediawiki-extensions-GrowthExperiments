@@ -370,7 +370,8 @@
 			guidanceEnabled: this.guidanceEnabled,
 			editorInterface: this.logger.getEditor(),
 			currentTip: this.suggestedEditSession.helpPanelCurrentTip,
-			parentWindow: this
+			parentWindow: this,
+			preferredEditor: configData.GEHelpPanelSuggestedEditsPreferredEditor
 		} );
 		guidanceTipsPromise = this.suggestededitsPanel.build();
 
@@ -642,6 +643,10 @@
 	HelpPanelProcessDialog.prototype.updateEditMode = function () {
 		this.suggestededitsPanel.toggleFooter( this.logger.isEditing() );
 		this.updateMode();
+		this.suggestededitsPanel.toggleSwitchEditorPanel(
+			this.logger.isEditing(),
+			this.logger.getEditor()
+		);
 		// If the user is editing, they are on the guidance screen, and they
 		// have not interacted with guidance, switch them over to the home panel.
 		if ( this.logger.isEditing() && !this.suggestedEditSession.helpPanelSuggestedEditsInteractionHappened ) {

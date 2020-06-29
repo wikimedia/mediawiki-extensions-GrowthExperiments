@@ -121,5 +121,9 @@
 	"growthexperiments-help-panel-button-subheader-general-help": "Search for answers and read top articles",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Get answers from other volunteers",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Quick start tips",
-	"growthexperiments-help-panel-suggested-edits-faq-link-text": "About suggested edits"
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "About suggested edits",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|You}} are using the source editor. These editing tips are most helpful with the visual editor.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Switch to the visual editor",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|You}} are using the visual editor. These editing tips are most helpful with the source editor.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Switch to the source editor"
 }

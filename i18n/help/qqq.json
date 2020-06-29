@@ -129,5 +129,9 @@
 	"growthexperiments-help-panel-button-subheader-general-help": "Subheader to show for the General Help button in the root screen of the help panel.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Subheader to show for the Ask Help button in the root screen of the help panel.\n\n{{doc-growthexperiments-help-panel}}",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Subheader to show for the Suggested Edits button in the root screen of the help panel.\n\n{{doc-growthexperiments-help-panel}}",
-	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Text to show for the link to the suggested edits feature help FAQ on MediaWiki.org. The link is shown in the settings menu when the help panel is open.\n\n{{doc-growthexperiments-help-panel}}"
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Text to show for the link to the suggested edits feature help FAQ on MediaWiki.org. The link is shown in the settings menu when the help panel is open.\n\n{{doc-growthexperiments-help-panel}}",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "Text to show in the prompt for the user to switch to VisualEditor in the suggested edits guidance screen. Parameters:\n* $1 - The OOUI 'alert' icon HTML.\n\n{{doc-growthexperiments-help-panel}}",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Text to show in the link in the prompt for the user to switch to VisualEditor in the suggested edits guidance screen.\n\n{{doc-growthexperiments-help-panel}}",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "Text to show in the prompt for the user to switch to the wikitext editor in the suggested edits guidance screen. Parameters:\n* $1 - The OOUI 'alert' icon HTML.\n\n{{doc-growthexperiments-help-panel}}",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Text to show in the link in the prompt for the user to switch to the wikitext editor in the suggested edits guidance screen.\n\n{{doc-growthexperiments-help-panel}}"
 }
