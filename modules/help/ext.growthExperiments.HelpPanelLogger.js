@@ -21,6 +21,9 @@
 	function HelpPanelLogger( enabled, config ) {
 		config = config || {};
 		this.enabled = enabled;
+		// This will be updated via the setEditor method in response to
+		// MobileFrontend's editorOpened/editorClosed hooks.
+		this.editor = null;
 		this.userEditCount = mw.config.get( 'wgUserEditCount' );
 		this.isMobile = OO.ui.isMobile();
 		this.previousEditorInterface = config.previousEditorInterface || null;
@@ -99,7 +102,7 @@
 			// might need special handling.
 			return false;
 		} else if ( this.isMobile ) {
-			return Boolean( uri.fragment && uri.fragment.match( /\/editor\/(\d+|all)/ ) );
+			return Boolean( this.editor );
 		} else {
 			return Boolean( uri.query.veaction ) || uri.query.action === 'edit' || uri.query.action === 'submit';
 		}
@@ -131,6 +134,16 @@
 	};
 
 	/**
+	 * MobileFrontend's editorOpened hook tells us which editor was opened.
+	 *
+	 * @param {string} editor
+	 */
+	HelpPanelLogger.prototype.setEditor = function ( editor ) {
+		this.editor = editor;
+		this.context = editor ? 'editing' : 'reading';
+	};
+
+	/**
 	 * Returns the name of the current editor (in the format used by the editor_interface field
 	 * of the schema). Should only be called when that editor is open.
 	 *
@@ -140,18 +153,12 @@
 	HelpPanelLogger.prototype.getCurrentEditor = function () {
 		var veTarget, surface, mode;
 
-		if ( this.isMobile ) {
-			// Mobile: wikitext
-			// eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle
-			if ( $( 'textarea#wikitext-editor:visible' ).length ) {
-				return 'wikitext';
-			}
-
-			// Mobile: VE
-			// eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle
-			if ( $( '.ve-init-mw-mobileArticleTarget:visible' ).length ) {
-				return 'visualeditor';
-			}
+		// If the editor has already been set in response to a hook from
+		// MobileFrontend, use that.
+		// FIXME: We could use a similar approach for VE and wikipage.editform
+		// hooks rather than making this an exception for mobile.
+		if ( this.isMobile && this.editor ) {
+			return this.editor;
 		} else {
 			// Desktop: VE in visual or source mode
 			veTarget = OO.getProp( window, 've', 'init', 'target' );

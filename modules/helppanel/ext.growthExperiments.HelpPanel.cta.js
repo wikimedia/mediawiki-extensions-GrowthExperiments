@@ -91,7 +91,7 @@
 			if ( $buttonWrapper.parent()[ 0 ] !== $overlay[ 0 ] ) {
 				$overlay.append( $buttonWrapper );
 			}
-			logger.log( 'impression', taskTypeLogData, metadataOverride );
+			helpPanelProcessDialog.logger.log( 'impression', taskTypeLogData, metadataOverride );
 		}
 
 		/**
@@ -116,8 +116,8 @@
 				// so there is a chance that we need to log an impression event but we'll
 				// only know for sure a little later ;)
 				setTimeout( function () {
-					if ( logger.getEditor() === 'reading' ) {
-						logger.log( 'impression', taskTypeLogData );
+					if ( helpPanelProcessDialog.logger.getEditor() === 'reading' ) {
+						helpPanelProcessDialog.logger.log( 'impression', taskTypeLogData );
 					}
 				}, 250 );
 				return;
@@ -189,7 +189,7 @@
 					$body.append( $veUiOverlay );
 				}
 				if ( guidanceAvailable ) {
-					attachHelpButton( logger.getEditor() );
+					attachHelpButton( helpPanelProcessDialog.logger.getEditor() );
 				}
 				helpCtaButton.toggle( true );
 			} );
@@ -215,7 +215,7 @@
 			// If we've already shown the mobile peek once, don't show it again
 			// but do attach the help button
 			if ( suggestedEditSession.mobilePeekShown ) {
-				attachHelpButton( logger.getEditor() );
+				attachHelpButton( helpPanelProcessDialog.logger.getEditor() );
 				return;
 			}
 
@@ -243,7 +243,7 @@
 						logger.log( 'peek-dismiss' );
 						// We still want to show the help button if the peek
 						// was dismissed.
-						attachHelpButton( logger.getEditor() );
+						attachHelpButton( helpPanelProcessDialog.logger.getEditor() );
 					}
 					setTimeout( function () {
 						helpCtaButton.toggle( true );
@@ -280,7 +280,7 @@
 				// If guidance is available we want to attach the help button
 				// so the user can get back to it; this can happen if for example
 				// the user reloads the page they're on (in Read mode) .
-				attachHelpButton( logger.getEditor() );
+				attachHelpButton( helpPanelProcessDialog.logger.getEditor() );
 			}
 		}
 
@@ -288,10 +288,21 @@
 			openHelpPanel( guidanceAvailable ? ( suggestedEditSession.helpPanelCurrentPanel || 'suggested-edits' ) : 'home' );
 		} );
 
-		// Attach or detach the help panel CTA in response to hooks from MobileFrontend.
+		// Attach or detach the help panel CTA in response to hooks from MobileFrontend,
+		// and set the logger's editor interface.
 		if ( OO.ui.isMobile() ) {
-			mw.hook( 'mobileFrontend.editorOpened' ).add( attachHelpButton );
-			mw.hook( 'mobileFrontend.editorClosed' ).add( detachHelpButton );
+			mw.hook( 'mobileFrontend.editorOpened' ).add(
+				function ( editor ) {
+					helpPanelProcessDialog.logger.setEditor( editor );
+					attachHelpButton( editor );
+				}
+			);
+			mw.hook( 'mobileFrontend.editorClosed' ).add(
+				function ( editor ) {
+					helpPanelProcessDialog.logger.setEditor( editor );
+					detachHelpButton();
+				}
+			);
 		} else {
 			// VisualEditor activation hooks are ignored in mobile context because MobileFrontend
 			// hooks are sufficient for attaching/detaching the help CTA.
@@ -306,7 +317,7 @@
 		// logged via attachHelpButton(), but we don't need to utilize that
 		// function on view.
 		if ( logger.getContext() === 'reading' ) {
-			logger.log( 'impression', taskTypeLogData );
+			helpPanelProcessDialog.logger.log( 'impression', taskTypeLogData );
 		}
 	} );
 
