@@ -133,7 +133,8 @@
 			helpCtaButton = new OO.ui.ButtonWidget( {
 				id: 'mw-ge-help-panel-cta-button',
 				href: mw.util.getUrl( configData.GEHelpPanelHelpDeskTitle ),
-				label: OO.ui.isMobile() ? '' : mw.msg( 'growthexperiments-help-panel-cta-button-text' ),
+				label: mw.msg( 'growthexperiments-help-panel-cta-button-text' ),
+				invisibleLabel: true,
 				icon: 'help',
 				flags: [ 'primary', 'progressive' ]
 			} );
@@ -172,11 +173,12 @@
 				// removes the class on closing.
 				$body.removeClass( 'oo-ui-windowManager-modal-active' );
 			}
+
+			helpCtaButton.setIcon( 'collapse' );
 			lifecycle = windowManager.openWindow( helpPanelProcessDialog, {
 				panel: panel
 			} );
 			lifecycle.opening.then( function () {
-				helpCtaButton.toggle( false );
 				logger.log( 'open' );
 				helpPanelProcessDialog.updateSuggestedEditSession( {
 					helpPanelShouldOpen: true
@@ -191,7 +193,7 @@
 				if ( guidanceAvailable ) {
 					attachHelpButton( helpPanelProcessDialog.logger.getEditor() );
 				}
-				helpCtaButton.toggle( true );
+				helpCtaButton.setIcon( 'help' );
 			} );
 			return lifecycle;
 		}
@@ -285,7 +287,15 @@
 		}
 
 		helpCtaButton.on( 'click', function () {
-			openHelpPanel( guidanceAvailable ? ( suggestedEditSession.helpPanelCurrentPanel || 'suggested-edits' ) : 'home' );
+			if ( lifecycle && !lifecycle.isClosed() ) {
+				helpPanelProcessDialog.executeAction( 'close' );
+			} else {
+				openHelpPanel(
+					guidanceAvailable ?
+						( suggestedEditSession.helpPanelCurrentPanel || 'suggested-edits' ) :
+						'home'
+				);
+			}
 		} );
 
 		// Attach or detach the help panel CTA in response to hooks from MobileFrontend,

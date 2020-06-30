@@ -33,7 +33,8 @@ class HelpPanel {
 					MediaWikiServices::getInstance()->getMainConfig()
 				)->getLinkURL(),
 				'target' => '_blank',
-				'label' => $mobile ? '' : wfMessage( 'growthexperiments-help-panel-cta-button-text' )->text(),
+				'label' => wfMessage( 'growthexperiments-help-panel-cta-button-text' )->text(),
+				'invisibleLabel' => true,
 				'infusable' => true,
 				'icon' => 'help',
 				'flags' => [ 'primary', 'progressive' ],
