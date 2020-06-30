@@ -34,7 +34,7 @@
 	"growthexperiments-help-panel-suggestededits-title": "Edições sugeridas",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Dicas de início rápido",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Pronto?</strong> Clique em \"{{int:vector-view-edit}}\" para começar.",
-	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Pronto?</strong> Toque no lápis de edição no artigo para começar.",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Pronto?</strong> Abra a seção que você deseja editar e toque no ícone de lápis.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "A cópia é sobre como corrigir um pouco a maneira como um artigo é escrito, como ortografia, gramática ou clareza do texto. As copias de artigos ajudam os artigos a serem mais profissionais e confiáveis.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "Alcançando Mercúrio a partir da <mark class=\"negative\">Terra</mark> apresenta desafios técnicos significativos.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "para fazer a diferença, {{GENDER:|você}} só precisa fazer uma ou duas pequenas correções. {{GENDER:|Você}} não precisa trabalhar no artigo inteiro. {{GENDER:|Você}} também não precisa ter nenhum conhecimento especial sobre o tópico.",
