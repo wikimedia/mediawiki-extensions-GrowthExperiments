@@ -62,7 +62,7 @@
 	"HookHandlers": {
 		"welcomeSurvey": {
 			"class": "GrowthExperiments\\WelcomeSurveyHooks",
-			"services": [ "MainConfig" ]
+			"services": [ "MainConfig", "LanguageNameUtils" ]
 		},
 		"homepage": {
 			"class": "GrowthExperiments\\HomepageHooks",
@@ -598,6 +598,24 @@
 				"mobile"
 			]
 		},
+		"ext.growthExperiments.welcomeSurveyLanguage": {
+			"packageFiles": [
+				"welcomesurvey/ext.growthExperiments.welcomeSurveyLanguage.js",
+				"welcomesurvey/ext.growthExperiments.ULSTagMultiselectWidget.js"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			],
+			"messages": [
+				"welcomesurvey-question-languages-label",
+				"welcomesurvey-question-languages-placeholder"
+			],
+			"dependencies": [
+				"oojs-ui-widgets",
+				"mediawiki.router"
+			]
+		},
 		"ext.growthExperiments.Help": {
 			"styles": [
 				"help/ext.growthExperiments.HelpPanelProcessDialog.less",
@@ -1028,6 +1046,7 @@
 						"reason",
 						"edited",
 						"email",
+						"languages",
 						"mentor-info",
 						"mentor"
 					]

@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests;
 use Config;
 use GrowthExperiments\WelcomeSurvey;
 use HashConfig;
+use MediaWiki\Languages\LanguageNameUtils;
 use MediaWikiUnitTestCase;
 use RequestContext;
 use User;
@@ -28,7 +29,13 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 		$contextMock->expects( $this->once() )
 			->method( 'getConfig' )
 			->willReturn( $configMock );
-		$this->assertInstanceOf( WelcomeSurvey::class, new WelcomeSurvey( $contextMock ) );
+		$this->assertInstanceOf(
+			WelcomeSurvey::class,
+			new WelcomeSurvey(
+				$contextMock,
+				$this->getLanguageNameUtilsMockObject()
+			)
+		);
 	}
 
 	/**
@@ -77,7 +84,19 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 		$contextMock->expects( $this->atLeastOnce() )
 			->method( 'getUser' )
 			->willReturn( $userMock );
-		return new WelcomeSurvey( $contextMock );
+		return new WelcomeSurvey( $contextMock, $this->getLanguageNameUtilsMockObject() );
+	}
+
+	/**
+	 * @return \PHPUnit\Framework\MockObject\MockObject|LanguageNameUtils
+	 */
+	private function getLanguageNameUtilsMockObject() {
+		$mock = $this->getMockBuilder( LanguageNameUtils::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$mock->method( 'getLanguageNames' )
+			->willReturn( [ 'es', 'el', 'en', 'ar' ] );
+		return $mock;
 	}
 
 }

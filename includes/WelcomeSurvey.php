@@ -2,8 +2,10 @@
 
 namespace GrowthExperiments;
 
+use ExtensionRegistry;
 use FormatJson;
 use IContextSource;
+use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Logger\LoggerFactory;
 use MWTimestamp;
 use SpecialPage;
@@ -23,16 +25,21 @@ class WelcomeSurvey {
 	 * @var bool
 	 */
 	private $allowFreetext;
+	/**
+	 * @var LanguageNameUtils
+	 */
+	private $languageNameUtils;
 
 	/**
 	 * WelcomeSurvey constructor.
 	 * @param IContextSource $context
-	 * @throws \ConfigException
+	 * @param LanguageNameUtils $languageNameUtils
 	 */
-	public function __construct( IContextSource $context ) {
+	public function __construct( IContextSource $context, LanguageNameUtils $languageNameUtils ) {
 		$this->context = $context;
 		$this->allowFreetext =
 			$this->context->getConfig()->get( 'WelcomeSurveyAllowFreetextResponses' );
+		$this->languageNameUtils = $languageNameUtils;
 	}
 
 	/**
@@ -111,6 +118,9 @@ class WelcomeSurvey {
 		$questions = [];
 		$questionBank = $this->getQuestionBank();
 		foreach ( $questionNames as $questionName ) {
+			if ( $questionBank[$questionName]['disabled'] ?? false ) {
+				continue;
+			}
 			if ( $asKeyedArray ) {
 				$questions[ $questionName ] = $questionBank[ $questionName ];
 			} else {
@@ -145,7 +155,7 @@ class WelcomeSurvey {
 		$reasonOtherOption = $this->allowFreetext ? [] : [
 			"welcomesurvey-question-reason-option-other-no-freetext-label" => "other",
 		];
-		return [
+		$questions = [
 			"reason" => [
 				"type" => "select",
 				"label-message" => "welcomesurvey-question-reason-label",
@@ -175,6 +185,19 @@ class WelcomeSurvey {
 				"placeholder-message" => "welcomesurvey-dropdown-option-select-label",
 				"group" => "edited",
 			],
+			"languages" => [
+				"type" => "multiselect",
+				"options" => array_flip( $this->languageNameUtils->getLanguageNames() ),
+				"cssclass" => "welcomesurvey-languages",
+				"label-message" => "welcomesurvey-question-languages-label",
+				"dependencies" => [
+					"modules" => [
+						"ext.growthExperiments.welcomeSurveyLanguage",
+						"ext.uls.mediawiki"
+					]
+				],
+				"disabled" => false
+			],
 			"mentor-info" => [
 				"type" => "info",
 				"label-message" => [ "welcomesurvey-question-mentor-info",
@@ -197,6 +220,11 @@ class WelcomeSurvey {
 				"group" => "email",
 			]
 		];
+		if ( !$this->context->getSkin() instanceof \SkinMinervaNeue &&
+			!ExtensionRegistry::getInstance()->isLoaded( 'UniversalLanguageSelector' ) ) {
+			$questions['languages']['disabled'] = true;
+		}
+		return $questions;
 	}
 
 	/**
