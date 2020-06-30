@@ -13,15 +13,12 @@
 	/**
 	 * Log a task returned by the task API.
 	 *
-	 * @param {string} context The context in which this task is logged (e.g. 'homepage-impression'
-	 *   means the task was displayed on the homepage; 'postedit-click' means the task was
-	 *   clicked in the post-edit dialog).
 	 * @param {Object} task A task object, as returned by GrowthTasksApi
 	 * @param {number} [position] The position of the task in the task queue.
 	 * @return {string} A token stored under NewcomerTask.newcomer_task_token to identify this log
 	 *   event. Typically used to bind it to another log event such as a homepage module action.
 	 */
-	NewcomerTaskLogger.prototype.log = function ( context, task, position ) {
+	NewcomerTaskLogger.prototype.log = function ( task, position ) {
 		var data;
 
 		if ( task.token ) {
@@ -30,7 +27,6 @@
 		}
 		task.token = mw.user.generateRandomSessionId();
 		data = this.getLogData( task, position );
-		data.context = context;
 		mw.track( 'event.NewcomerTask', data );
 		return task.token;
 	};
