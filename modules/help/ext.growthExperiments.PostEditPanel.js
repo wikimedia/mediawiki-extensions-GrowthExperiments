@@ -116,14 +116,12 @@
 		var $image, url, params, $title, $description, $pageviews, $taskType, $cardTextContainer, $card,
 			taskTypeData = this.taskTypes[ task.tasktype ];
 
+		$image = $( '<div>' )
+			.addClass( 'mw-ge-help-panel-postedit-card-image' );
 		if ( task.thumbnailSource ) {
-			$image = $( '<img>' )
-				.addClass( 'mw-ge-help-panel-postedit-card-image' )
-				.attr( 'src', task.thumbnailSource );
+			$image.css( 'background-image', 'url("' + task.thumbnailSource + '")' );
 		} else {
-			$image = $( '<div>' )
-				.addClass( 'mw-ge-help-panel-postedit-card-image' )
-				.addClass( 'mw-ge-help-panel-postedit-card-image-placeholder' );
+			$image.addClass( 'mw-ge-help-panel-postedit-card-image-placeholder' );
 		}
 
 		params = {
