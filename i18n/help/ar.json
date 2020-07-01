@@ -39,7 +39,7 @@
 	"growthexperiments-help-panel-suggestededits-title": "التعديلات المقترحة",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "نصائح سريعة للبدء",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>{{GENDER:|جاهز؟|جاهزة؟}}</strong> {{GENDER:|اِضغط|اِضغطي}} على \"{{int:vector-view-edit}}\" للبدء.",
-	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>{{GENDER:|جاهز؟|جاهزة؟}}</strong> {{GENDER:|اُنقر|اُنقري}} فوق قلم التعديل في المقالة للبدء.",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>{{GENDER:|جاهز؟|جاهزة؟}}</strong> {{GENDER:|اِفتح|اِفتحي}} القسم المراد تعديله ثم {{GENDER:|اُنقر|اُنقري}} فوق قلم التعديل.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "يتمثل تحرير النسخ في القيام بإصلاحات صغيرة على طريقة كتابة المقالات، مثل الرسم، أو النحو والصرف، أو توضيح النص. تحرير النسخ يساعد المقالات أن تكون أكثر احترافية وجديرة بالثقة.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "السفر من <mark class=\"negative\">الأرضض</mark> إلى كوكب عطارد، يفرض تحدّيات تقنية كبيرة.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "لإحداث فرق بمساهمتك، فقط {{GENDER:|تحتاج|تحتاجين}} إلى القيام بإصلاح أو بإصلاحين صغيرين. لا {{GENDER:|تحتاج|تحتاجين}} إلى العمل عل كامل المقالة. كذلك، لست {{GENDER:|ملزما|ملزمة}} بمعرفة خاصة حول موضوع المقالة.",
@@ -128,5 +128,9 @@
 	"growthexperiments-help-panel-button-subheader-general-help": "{{GENDER:|اِبحث|اِبحثي}} في الإجابات و{{GENDER:|اقرأ|ااقرئي}} أهمّ صفحات المساعدة",
 	"growthexperiments-help-panel-button-subheader-ask-help": "{{GENDER:|احصل|احصلي}} على إجابات من مستخدمين آخرين",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "نصائح سريعة للبدء",
-	"growthexperiments-help-panel-suggested-edits-faq-link-text": "معلومات حول التعديلات المقترحة"
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "معلومات حول التعديلات المقترحة",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|أنتَ تستخدم|أنتِ تستخدمين}} المحرر المصدري. هذه النصائح موجّه بالأساس مع استعمال المحرر المرئي.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "{{GENDER:|بدّل|بدّلي}} إلى المحرر المرئي",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|أنتَ تستخدم|أنتِ تستخدمين}} المحرر المرئي. هذه النصائح موجّه بالأساس مع استعمال المحرر المصدري.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "{{GENDER:|بدّل|بدّلي}} إلى المحرر المصدري"
 }

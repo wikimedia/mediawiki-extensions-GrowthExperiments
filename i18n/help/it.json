@@ -37,7 +37,7 @@
 	"growthexperiments-help-panel-suggestededits-title": "Modifiche suggerite",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Suggerimenti rapidi",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Pronto?</strong> Clicca \"{{int:vector-view-edit}}\" per iniziare.",
-	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Pronto?</strong> Premi la matita di modifica sulla voce per iniziare.",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Pronto?</strong> Apri la sezione che vuoi modificare e premi l'icona con la matita.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Puoi correggere piccole sviste o la maniera in cui le voci sono scritte, come correggere la grammatica o rendere il testo più chiaro. Correggere le voci, aiuta a renderle più professionali e veritiere.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "Raggiungere Mercurio dalla <mark class=\"negative\">Terrra</mark> comporterebbe sfide tecniche alquanto significative.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "Per dare il {{GENDER:|tuo}} contributo, basta fare poche correzioni. {{GENDER:|Non}} è necessario lavorare sull'intera voce. Non devi possedere nemmeno una particolare conoscenza sull'argomento trattato.",
@@ -126,5 +126,7 @@
 	"growthexperiments-help-panel-button-subheader-general-help": "Cerca risposte e leggi le migliori voci",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Ottieni risposte da altri volontari",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Rapidi consigli per iniziare",
-	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Ulteriori informazioni sulle modifiche suggerite"
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Ulteriori informazioni sulle modifiche suggerite",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Passa all'editor visuale",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Passa all'editor sorgente"
 }

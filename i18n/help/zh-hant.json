@@ -124,5 +124,9 @@
 	"growthexperiments-help-panel-button-subheader-general-help": "搜尋答案並閱讀熱門條目",
 	"growthexperiments-help-panel-button-subheader-ask-help": "取得來自其他熱心編輯者的答案",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "快速入門提示",
-	"growthexperiments-help-panel-suggested-edits-faq-link-text": "關於建議編輯"
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "關於建議編輯",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|您}}正在使用原始碼編輯器。這些編輯提示對視覺化編輯器很有用。",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "切換成視覺化編輯器",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|您}}正在使用視覺化編輯器。這些編輯提示對原始碼編輯器很有用。",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "切換成原始碼編輯器"
 }

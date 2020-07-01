@@ -35,7 +35,7 @@
 	"growthexperiments-help-panel-suggestededits-title": "Önerilen düzenlemeler",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Hızlı başlangıç ipuçları",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Hazır mısınız?</strong> Başlamak için \"{{int:vector-view-edit}}\"'yi tıklayın.",
-	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Hazır mısınız?</strong> Başlamak için maddedeki düzenleme kalemine dokunun.",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Hazır mısınız?</strong> Düzenlemek istediğiniz bölümü açın ve kurşun kalem simgesine dokunun.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Kopyalama, yazım, dilbilgisi veya metnin anlaşılırlığı gibi bir maddenin yazılma biçimine küçük bir düzeltme yapmakla ilgilidir. Copyedits makalelerin daha profesyonel ve güvenilir olmasına yardımcı olur.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "Merkür'e <mark class=\"negative\">Dünyayaa</mark> ulaşmak önemli teknik zorluklar doğurur.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "Fark yaratmak için sadece bir veya iki küçük düzeltme yapmanız gerekir. Maddenin tamamı üzerinde çalışmanıza gerek yoktur. Ayrıca konu hakkında özel bir bilgiye sahip olmanız da gerekmez.",
@@ -124,5 +124,9 @@
 	"growthexperiments-help-panel-button-subheader-general-help": "Yanıt arayın ve en çok okunan maddeleri okuyun",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Diğer gönüllülerden yanıt alın",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Hızlı başlangıç ipuçları",
-	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Önerilen düzenlemeler hakkında"
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Önerilen düzenlemeler hakkında",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;Kaynak düzenleyiciyi kullanıyorsunuz. Bu düzenleme ipuçları en çok görsel düzenleyici için faydalıdır.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Görsel düzenleyiciye geç",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;Görsel düzenleyiciyi kullanıyorsunuz. Bu düzenleme ipuçları en çok kaynak düzenleyicide faydalıdır.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Kaynak düzenleyiciye geç"
 }

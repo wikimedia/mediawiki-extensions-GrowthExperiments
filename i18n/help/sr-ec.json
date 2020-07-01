@@ -35,7 +35,7 @@
 	"growthexperiments-help-panel-suggestededits-title": "Предложене измене",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Кратки савети",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Спремни?</strong> Кликните на „{{int:vector-view-edit}}” да бисте почели.",
-	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Спремни?</strong> Додирните иконицу оловке на чланку како бисте почели.",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Спремни?</strong> Отворите одељак који желите да уређујете па додирните иконицу оловке.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Лектура је исправљање грешака у куцању у тексту чланка и побољшавање његове јасноће. Тиме помажете да чланци буду професионалнији и поузданији.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "Пут од <mark class=\"negative\">Земеељ</mark> до Меркура представља значајни технички изазов.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "Пробајте да {{GENDER:|направите}} бар једну или две мање исправке. Не морате радити на целом чланку ако не желите. Чак не морате ни да поседујете неко посебно знање о теми.",
@@ -124,5 +124,9 @@
 	"growthexperiments-help-panel-button-subheader-general-help": "Прочитајте странице помоћи и потражите одговоре",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Сазнајте одговоре од других добровољаца",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Кратки савети",
-	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Детаљније о предложеним изменама"
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Детаљније о предложеним изменама",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Користите}} уређивач извора. Ови савети највише помажу у визуелном уређивачу.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Пребаци ме на визуелни уређивач",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Користите}} визуелни уређивач. Ови савети највише помажу у уређивачу извора.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Пребаци ме на уређивач извора"
 }

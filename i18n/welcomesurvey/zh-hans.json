@@ -5,7 +5,8 @@
 			"Josephine W.",
 			"SomeyaMako",
 			"VulpesVulpes825",
-			"Zazzzz"
+			"Zazzzz",
+			"沈澄心"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|欢迎}}，$1！",
@@ -17,7 +18,7 @@
 	"welcomesurvey-close-btn": "关闭并返回至 $1",
 	"welcomesurvey-sidebar-privacy-title": "我们重视您的隐私",
 	"welcomesurvey-sidebar-privacy-text": "要了解更多关于这些可选答案的使用方法，请{{{GENDER:$2|见}}}问卷调查 $1。",
-	"welcomesurvey-privacy-policy-link-text": "隐私声明",
+	"welcomesurvey-privacy-policy-link-text": "了解更多",
 	"welcomesurvey-sidebar-editing-title": "开始进行编辑",
 	"welcomesurvey-sidebar-editing-text": "几乎每个页面都可以由任何人来编辑，每小时会有数百次修改，增加内容，纠正错误，提高可读性。如果{{GENDER:$1|您}}有兴趣作出贡献，下面的页面可以帮到{{GENDER:$1|您}}。",
 	"welcomesurvey-sidebar-editing-link1-text": "教程",

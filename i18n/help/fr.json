@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Actualisateur",
 			"Choodyam",
 			"Djdakta",
 			"Djiboun",
@@ -31,7 +32,7 @@
 	"growthexperiments-help-panel-postedit-subheader": "Modifier une autre suggestion :",
 	"growthexperiments-help-panel-postedit-footer": "Voir plus de modifications suggérées",
 	"growthexperiments-help-panel-postedit-footer2": "Fermer et modifier de nouveau cet article",
-	"growthexperiments-help-panel-questionreview-title": "Poser une question",
+	"growthexperiments-help-panel-questionreview-title": "Demander au centre d’assistance",
 	"growthexperiments-help-panel-questionreview-header": "Lorsque vous soumettez une question, elle est <strong>postée de façon publique</strong> sous votre nom d’utilisateur, « $2 », sur le $1, où un autre contributeur bénévole essayera de fournir une réponse, généralement dans la journée qui suit.",
 	"growthexperiments-help-panel-questionreview-label": "Votre question",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Inclure le titre de la page avec ma question",
@@ -42,7 +43,7 @@
 	"growthexperiments-help-panel-suggestededits-title": "Modifications suggérées",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Conseils de démarrage rapide",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>{{GENDER:|Prêt|Prête}} ?</strong> Cliquer sur « {{int:vector-view-edit}} » pour commencer.",
-	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Prêt ?</strong> Taper sur le crayon de modification de l’article pour démarrer.",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Prêt ?</strong> Ouvrez la section que vous voulez modifier et taper sur l’icône du crayon.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "La modification-copie est l’action d’effectuer une petite correction à la manière dont un article est écrit, comme une correction d’orthographe ou de grammaire, ou la clarté du texte. Les modifications-copies aident à rendre les articles plus professionnels et dignes de confiance.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "Atteindre Mercure depuis la <mark class=\"negative\">Terree</mark> pose d’importants défis techniques.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "Pour faire une différence, {{GENDER:|vous}} n’avez besoin que de faire une ou deux corrections. {{GENDER:|Vous}} n’avez pas besoin de travailler sur tout l’article. {{GENDER:|Vous}} n’avez pas non plus besoin d’avoir une connaissance particulière du sujet.",
@@ -125,11 +126,16 @@
 	"growthexperiments-help-panel-search-no-results": "Aucun résultat n’a été trouvé.",
 	"tag-help_panel_question": "Question du panneau d’aide",
 	"tag-help_panel_question-description": "Modification faite par la fonctionnalité d’envoi de question dans le panneau d’aide",
-	"growthexperiments-help-panel-button-preheader-suggested-edits": "Modification suggérée",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Modifications suggérées",
 	"growthexperiments-help-panel-button-header-ask-help": "Demander au centre d’assistance",
 	"growthexperiments-help-panel-button-header-general-help": "Aide générale d’édition",
 	"growthexperiments-help-panel-button-subheader-general-help": "Rechercher des réponses et lire les articles en tête",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Obtenir les réponses d’autres bénévoles",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Conseils de démarrage rapide",
-	"growthexperiments-help-panel-suggested-edits-faq-link-text": "À propos des modifications suggérées"
+	"growthexperiments-help-panel-general-help-title": "Aide générale d’édition",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "À propos des modifications suggérées",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Vous}} utilisez l’éditeur de source. Ces conseils d’édition sont plus utiles avec l’éditeur visuel.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Basculer vers l’éditeur visuel",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Vous}} utilisez l’éditeur visuel. Ces conseils d’édition sont plus utiles avec l’éditeur de source.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Basculer vers l’éditeur de source"
 }
