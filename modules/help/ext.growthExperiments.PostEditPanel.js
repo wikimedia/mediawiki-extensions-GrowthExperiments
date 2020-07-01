@@ -113,7 +113,8 @@
 	 * @return {jQuery} A jQuery object wrapping the card element.
 	 */
 	PostEditPanel.prototype.getCard = function ( task ) {
-		var $image, url, params, $title, $description, $pageviews, $taskType, $cardTextContainer, $card,
+		var $image, url, params, $title, $description, $pageviews, $taskType,
+			$cardTextContainer, $glue, $cardMetadataContainer, $card,
 			taskTypeData = this.taskTypes[ task.tasktype ];
 
 		$image = $( '<div>' )
@@ -140,6 +141,12 @@
 			.addClass( 'mw-ge-help-panel-postedit-card-title' )
 			.text( task.title );
 
+		if ( task.description ) {
+			$description = $( '<div>' )
+				.addClass( 'mw-ge-help-panel-postedit-card-description' )
+				.text( task.description );
+		}
+
 		if ( task.pageviews ) {
 			$pageviews = $( '<span>' )
 				.addClass( 'mw-ge-help-panel-postedit-card-pageviews' )
@@ -148,21 +155,20 @@
 				.prepend( new OO.ui.IconWidget( { icon: 'chart' } ).$element );
 		}
 
-		if ( task.description ) {
-			$description = $( '<span>' )
-				.addClass( 'mw-ge-help-panel-postedit-card-description' )
-				.text( task.description );
-		}
-
 		$taskType = $( '<span>' )
 			.addClass( 'mw-ge-help-panel-postedit-card-tasktype' )
 			.addClass( 'mw-ge-help-panel-postedit-card-tasktype-difficulty-' + taskTypeData.difficulty )
 			.text( taskTypeData.messages.name )
 			.prepend( new OO.ui.IconWidget( { icon: 'difficulty-' + taskTypeData.difficulty } ).$element );
 
+		$glue = $( '<div>' )
+			.addClass( 'mw-ge-help-panel-postedit-card-glue' );
+		$cardMetadataContainer = $( '<div>' )
+			.addClass( 'mw-ge-help-panel-postedit-card-metadata-container' )
+			.append( $pageviews, $taskType );
 		$cardTextContainer = $( '<div>' )
 			.addClass( 'mw-ge-help-panel-postedit-card-text-container' )
-			.append( $title, $description, $pageviews, $taskType );
+			.append( $title, $description, $glue, $cardMetadataContainer );
 		$card = $( '<a>' )
 			.addClass( 'mw-ge-help-panel-postedit-card' )
 			.attr( 'href', url )
