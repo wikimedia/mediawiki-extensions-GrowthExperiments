@@ -50,10 +50,16 @@
 		&-image {
 			width: 88px;
 			height: 88px;
+			flex-grow: 0;
+			flex-shrink: 0;
+			// background-image is set dynmically
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
 
 			&-placeholder {
 				/* @embed */
-				background: url( ../../images/suggestededits/placeholder-image.svg ) no-repeat center/100%;
+				background: url( ../../images/suggestededits/placeholder-image.svg ) no-repeat center/40px, @wmui-color-base80;
 			}
 		}
 
@@ -168,6 +174,11 @@
 
 	.mw-ge-help-panel-postedit-main {
 		text-align: left;
+
+		.mw-ge-help-panel-postedit-card-image {
+			width: 72px;
+			height: 72px;
+		}
 
 		.mw-ge-help-panel-postedit-card-title {
 			margin-bottom: 0;
