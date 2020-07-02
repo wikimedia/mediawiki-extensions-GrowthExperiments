@@ -131,7 +131,6 @@
 	// override OOUI button widget's right margin
 	margin: 0;
 	text-align: center;
-	font-size: 16/14 * 1em;
 	font-weight: bold;
 
 	.oo-ui-buttonElement-button {
@@ -151,6 +150,11 @@
 		// need win over OOUI-s four-class selector in specificity, but works out fine here
 		.oo-ui-buttonElement-button {
 			padding: 11px 20px 13px;
+
+			.oo-ui-labelElement-label {
+				line-height: 16/14 * 1em;
+				font-size: 14/14 * 1em;
+			}
 		}
 	}
 }
@@ -158,8 +162,7 @@
 // Mobile specific:
 .mw-ge-help-panel-postedit-drawer {
 	// The drawer padding would interfere with the full-width buttons and messagebox.
-	padding-left: 0;
-	padding-right: 0;
+	padding: 0;
 	background-color: @wmui-color-base100;
 
 	.mw-ge-help-panel-postedit-message {
@@ -187,6 +190,17 @@
 
 	// need win over OOUI-s four-class selector in specificity
 	.mw-ge-help-panel-postedit-footer .oo-ui-buttonElement-button.oo-ui-buttonElement-button {
+		border: 0;
 		padding: 16px 20px 16px;
+
+		.oo-ui-labelElement-label {
+			line-height: 16/16 * 1em;
+			font-size: 16/16 * 1em;
+			color: @colorProgressive;
+
+			&:active {
+				color: @colorProgressiveActive;
+			}
+		}
 	}
 }
