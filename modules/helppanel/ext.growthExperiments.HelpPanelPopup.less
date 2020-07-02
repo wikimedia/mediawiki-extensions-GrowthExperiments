@@ -1,5 +1,6 @@
 @import 'mediawiki.ui/variables';
 @import 'mediawiki.mixins';
+@import '../homepage/ext.growthExperiments.variables.less';
 
 @help-panel-position-bottom: 6em;
 
@@ -18,7 +19,7 @@
 	border-radius: 2px;
 	border: 1px solid @colorGray12;
 	box-shadow: 0 2px 2px 0 rgba( 0, 0, 0, 0.25 );
-	.transition( ~'bottom 400ms, opacity 400ms' );
+	.transition( bottom @help-panel-transition-duration ~',' opacity @help-panel-transition-duration );
 	position: relative;
 	bottom: -@help-panel-position-bottom - 1em;
 	opacity: 0;

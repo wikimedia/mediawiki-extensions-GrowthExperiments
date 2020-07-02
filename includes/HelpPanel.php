@@ -37,6 +37,7 @@ class HelpPanel {
 				'invisibleLabel' => true,
 				'infusable' => true,
 				'icon' => 'help',
+				'indicator' => 'up',
 				'flags' => [ 'primary', 'progressive' ],
 			] ) );
 	}
