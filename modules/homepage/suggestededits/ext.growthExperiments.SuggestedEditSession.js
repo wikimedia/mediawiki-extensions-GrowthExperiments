@@ -298,7 +298,15 @@
 	 * Display the post-edit dialog if we are in a suggested edit session, right after an edit.
 	 */
 	SuggestedEditSession.prototype.maybeShowPostEditDialog = function () {
-		var self = this;
+		var self = this,
+			currentTitle = this.getCurrentTitle();
+
+		// Only show the post-edit dialog on the task page, not e.g. on talk page edits.
+		if ( !currentTitle || !this.title ||
+			currentTitle.getPrefixedText() !== this.title.getPrefixedText()
+		) {
+			return;
+		}
 
 		if ( this.postEditDialogNeedsToBeShown ) {
 			this.showPostEditDialog( {} );
