@@ -1,3 +1,4 @@
+@import 'mediawiki.mixins';
 @import 'resources/lib/ooui/wikimedia-ui-base.less';
 @import '../homepage/ext.growthExperiments.variables.less';
 
@@ -31,12 +32,14 @@
 		margin-bottom: 8px;
 		color: @wmui-color-base10;
 		text-align: left;
-		font-size: 18.3/14 * 1em;
+		font-size: 1.144em; // match OOUI fieldset size
 		font-weight: bold;
 	}
 
 	.mw-ge-help-panel-postedit-card {
 		display: flex;
+		width: 100%;
+		.box-sizing( border-box );
 		padding: 8px;
 		background-color: @wmui-color-base100;
 		box-shadow: 0 1px 0 0 @wmui-color-base80;
@@ -65,30 +68,51 @@
 
 		&-text-container {
 			display: flex;
-			flex-wrap: wrap;
-			justify-content: space-between;
-			align-content: space-between;
+			flex-direction: column;
 			flex-grow: 1;
+			justify-items: flex-start;
 			overflow: hidden;
-			padding: 8px 6px 4px 16px;
+			padding: 8px 0 0 16px;
 		}
 
 		&-title {
-			flex-basis: 100%;
 			font-weight: bold;
+			margin-bottom: 4px;
+			color: @colorProgressive;
+
+			&:active {
+				color: @colorProgressiveActive;
+			}
 		}
 
 		&-description {
-			flex-basis: 100%;
-			color: @wmui-color-base20;
+			// These rules have -webkit prefixes, but they also work in Firefox
+			display: -webkit-box;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+			// IE 11 does not support line-clamp so limit height for the same effect, except
+			// for the ellipsis. Height is <# of lines> * <line height> * <font size>.
+			max-height: 2 * 1.4 * 13/14 * 1em;
+			font-size: 13/14 * 1em;
 			text-overflow: ellipsis;
 			overflow: hidden;
-			white-space: nowrap;
+			color: @wmui-color-base20;
+		}
+
+		&-glue {
+			flex-grow: 1;
+		}
+
+		&-metadata-container {
+			display: flex;
+			font-size: 12.4/14 * 1em;
 		}
 
 		&-pageviews {
-			margin-right: 20px;
-			font-size: 12.4/14 * 1em;
+			flex: 1 0 0;
+			box-sizing: border-box;
+			justify-self: flex-start;
+			padding-right: 5px;
 			color: @wmui-color-base20;
 			text-overflow: ellipsis;
 			overflow: hidden;
@@ -101,7 +125,9 @@
 		}
 
 		&-tasktype {
-			font-size: 12.4/14 * 1em;
+			flex: 1 0 0;
+			justify-self: flex-end;
+			text-align: right;
 			text-overflow: ellipsis;
 			overflow: hidden;
 			white-space: nowrap;
@@ -119,7 +145,7 @@
 			}
 
 			.oo-ui-iconWidget {
-				margin-right: 10px;
+				margin-right: 8px;
 			}
 		}
 	}
@@ -178,13 +204,24 @@
 	.mw-ge-help-panel-postedit-main {
 		text-align: left;
 
+		.mw-ge-help-panel-postedit-card-description {
+			// mobile does not have space for two lines
+			display: block;
+			white-space: nowrap;
+			font-size: 13/16 * 1em;
+		}
+
+		.mw-ge-help-panel-postedit-card-text-container {
+			padding-top: 0;
+		}
+
 		.mw-ge-help-panel-postedit-card-image {
 			width: 72px;
 			height: 72px;
 		}
 
-		.mw-ge-help-panel-postedit-card-title {
-			margin-bottom: 0;
+		.mw-ge-help-panel-postedit-card-tasktype {
+			font-size: 13/16 * 1em;
 		}
 	}
 
