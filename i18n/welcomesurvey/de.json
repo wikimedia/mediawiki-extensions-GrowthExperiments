@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ameisenigel",
+			"Bxalber",
 			"Metalhead64"
 		]
 	},
@@ -14,7 +15,7 @@
 	"welcomesurvey-close-btn": "Schließen und zurück zu $1",
 	"welcomesurvey-sidebar-privacy-title": "Wir wertschätzen deine Privatsphäre",
 	"welcomesurvey-sidebar-privacy-text": "Um mehr darüber zu erfahren, wie diese optionalen Antworten verwendet werden, {{GENDER:$2|siehe}} bitte unsere $1.",
-	"welcomesurvey-privacy-policy-link-text": "Stellungnahme zum Datenschutz",
+	"welcomesurvey-privacy-policy-link-text": "Mehr erfahren",
 	"welcomesurvey-sidebar-editing-title": "Mit dem Bearbeiten anfangen",
 	"welcomesurvey-sidebar-editing-text": "Fast jede Seite kann von jedem bearbeitet werden und jede Stunde werden Hunderte von Änderungen durchgeführt, um Inhalte hinzuzufügen, Fehler zu korrigieren oder die Lesbarkeit zu verbessern. Die folgenden Seiten können helfen, falls du an einer Mitwirkung {{GENDER:$1|interessiert bist}}.",
 	"welcomesurvey-sidebar-editing-link1-text": "Anleitung",

@@ -29,7 +29,7 @@
 	"growthexperiments-help-panel-postedit-header": "后续步骤",
 	"growthexperiments-help-panel-postedit-footer": "查看更多建议的编辑",
 	"growthexperiments-help-panel-postedit-footer2": "关闭这个条目并重新编辑",
-	"growthexperiments-help-panel-questionreview-title": "提问",
+	"growthexperiments-help-panel-questionreview-title": "询问帮助台",
 	"growthexperiments-help-panel-questionreview-header": "您的提问会以您的用户名“$2”<strong>公开发布</strong>在$1，其他的志愿编辑者会在接下来一天左右的时间里尝试回答您的问题。",
 	"growthexperiments-help-panel-questionreview-label": "您的问题",
 	"growthexperiments-help-panel-questionreview-include-article-title": "在我的问题中包括页面标题",
@@ -68,5 +68,6 @@
 	"growthexperiments-help-panel-button-subheader-general-help": "搜索答案并阅读热门文章",
 	"growthexperiments-help-panel-button-subheader-ask-help": "从其他志愿者那里得到答案",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "快速入门提示",
+	"growthexperiments-help-panel-general-help-title": "一般编辑帮助",
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "关于编辑建议"
 }

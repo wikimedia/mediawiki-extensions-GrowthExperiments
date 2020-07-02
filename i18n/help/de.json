@@ -3,6 +3,7 @@
 		"authors": [
 			"1233qwer1234qwer4",
 			"Ameisenigel",
+			"Bxalber",
 			"Metalhead64"
 		]
 	},
@@ -22,7 +23,7 @@
 	"growthexperiments-help-panel-postedit-subheader": "Bearbeite einen weiteren Vorschlag:",
 	"growthexperiments-help-panel-postedit-footer": "Weitere vorgeschlagene Bearbeitungen anzeigen",
 	"growthexperiments-help-panel-postedit-footer2": "Diesen Artikel schließen und erneut bearbeiten",
-	"growthexperiments-help-panel-questionreview-title": "Stelle eine Frage",
+	"growthexperiments-help-panel-questionreview-title": "Help Desk fragen",
 	"growthexperiments-help-panel-questionreview-header": "Wenn du eine Frage speicherst, wird sie unter deinem Benutzernamen „$2“ im $1 <strong>öffentlich gepostet</strong>, wo ein anderer freiwilliger Autor versucht, innerhalb des nächsten Tages oder so eine Antwort zu geben.",
 	"growthexperiments-help-panel-questionreview-label": "Deine Frage",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Seitentitel in meiner Frage einfügen",
@@ -60,5 +61,9 @@
 	"growthexperiments-help-panel-button-header-general-help": "Allgemeine Editierhilfe",
 	"growthexperiments-help-panel-button-subheader-general-help": "Nach Antworten suchen und Top-Artikel lesen",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Antworten von anderen Freiwilligen bekommen",
-	"growthexperiments-help-panel-button-subheader-suggested-edits": "Schnelltipps für den Start"
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "Schnelltipps für den Start",
+	"growthexperiments-help-panel-general-help-title": "Allgemeine Editierhilfe",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Zum visuellen Editor wechseln",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{{GESCHLECHT:|Sie}}}} verwenden den visuellen Editor. Diese Bearbeitungstipps sind mit dem Quelltexteditor am hilfreichsten.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Zum Quelltext-Editor"
 }

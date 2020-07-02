@@ -11,6 +11,7 @@
 	"growthexperiments-help-panel-cta-button-text": "Obtener ayuda para editar",
 	"growthexperiments-help-panel-question-button-text": "Continuar",
 	"growthexperiments-help-panel-submit-question-button-text": "Publicar",
+	"growthexperiments-help-panel-return-home-button-text": "Hecho",
 	"growthexperiments-help-panel-back-home": "Regresar",
 	"growthexperiments-help-panel-close": "Hecho",
 	"growthexperiments-help-panel-home-title": "Obtener ayuda para editar",
@@ -31,5 +32,6 @@
 	"tag-help_panel_question": "Pregunta del panel de ayuda",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Edición sugerida",
 	"growthexperiments-help-panel-button-header-general-help": "Ayuda general sobre la edición",
-	"growthexperiments-help-panel-button-subheader-suggested-edits": "Consejos de inicio rápido"
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "Consejos de inicio rápido",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Cambiar al editor de código"
 }
