@@ -6,5 +6,6 @@
 		]
 	},
 	"growthexperiments-help-panel-return-home-button-text": "Έγινε",
-	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Έτυμοι;</strong> Κάντε κλικ στο \"{{int:vector-view-edit}}\" για να ξεκινήσετε;"
+	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Έτυμοι;</strong> Κάντε κλικ στο \"{{int:vector-view-edit}}\" για να ξεκινήσετε;",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Εναλλαγή στον οπτικό επεξεργαστή"
 }
