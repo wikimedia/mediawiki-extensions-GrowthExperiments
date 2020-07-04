@@ -52,6 +52,14 @@ $specialPageAliases['fr'] = [
 	'ClaimMentee' => [ 'Revendiquer un novice' ],
 ];
 
+/** Hebrew (עברית) */
+$specialPageAliases['he'] = [
+	'WelcomeSurvey' => [ 'סקר_כניסה' ],
+	'Homepage' => [ 'דף_הבית' ],
+	'Impact' => [ 'השפעה' ],
+	'ClaimMentee' => [ 'קליטת_חניך' ],
+];
+
 /** Hungarian (magyar) */
 $specialPageAliases['hu'] = [
 	'WelcomeSurvey' => [ 'Új_szerkesztők_kérdőíve' ],
