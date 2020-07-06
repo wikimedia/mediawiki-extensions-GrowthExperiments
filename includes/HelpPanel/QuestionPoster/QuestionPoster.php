@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\HelpPanel;
+namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
 use CommentStoreComment;
 use Config;
@@ -9,6 +9,8 @@ use DerivativeContext;
 use ExtensionRegistry;
 use FatalError;
 use Flow\Container;
+use GrowthExperiments\HelpPanel\QuestionRecord;
+use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use Hooks;
 use IContextSource;
 use MediaWiki\MediaWikiServices;

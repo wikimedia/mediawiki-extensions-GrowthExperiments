@@ -65,7 +65,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 	}
 
 	/**
-	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster::checkUserPermissions
+	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster::checkUserPermissions
 	 */
 	public function testBlockedUserCantPostQuestion() {
 		$block = new DatabaseBlock();
@@ -85,7 +85,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 	}
 
 	/**
-	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster::runEditFilterMergedContentHook
+	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster::runEditFilterMergedContentHook
 	 */
 	public function testEditFilterMergedContentHookReturnsFalse() {
 		$this->setTemporaryHook( 'EditFilterMergedContent',

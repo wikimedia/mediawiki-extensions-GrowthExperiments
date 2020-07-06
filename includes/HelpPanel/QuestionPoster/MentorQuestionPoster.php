@@ -1,12 +1,12 @@
 <?php
 
-namespace GrowthExperiments\HelpPanel;
+namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentor;
 use GrowthExperiments\WikiConfigException;
 
-class MentorshipModuleQuestionPoster extends QuestionPoster {
+class MentorQuestionPoster extends QuestionPoster {
 
 	/**
 	 * @inheritDoc

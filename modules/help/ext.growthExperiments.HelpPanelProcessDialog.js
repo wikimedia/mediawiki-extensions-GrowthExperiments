@@ -35,7 +35,7 @@
 			this.logger = config.logger;
 			this.guidanceEnabled = config.guidanceEnabled;
 			this.taskTypeId = config.taskTypeId;
-			this.source = config.source || 'helppanel';
+			this.source = config.source || 'helpdesk';
 			this.storageKey = config.storageKey || 'help-panel-question-text';
 			this.panelTitleMessages = $.extend( {
 				home: mw.message( 'growthexperiments-help-panel-home-title' ).text(),
@@ -723,7 +723,7 @@
 				if ( action === 'close' || !action ) {
 					this.logger.log( 'close' );
 					// Show mentorship tour if that was the homepage module that was used
-					if ( this.source === 'homepage-mentorship' ) {
+					if ( this.source === 'mentor-homepage' ) {
 						this.launchIntroTour(
 							'homepage_mentor',
 							'growthexperiments-tour-homepage-mentorship'
@@ -780,7 +780,7 @@
 						body: this.askhelpTextInput.getValue()
 					};
 					// Start pre-loading tour for help panel.
-					if ( this.source === 'helppanel' &&
+					if ( this.source === 'helpdesk' &&
 						!mw.user.options.get( 'growthexperiments-tour-help-panel' ) ) {
 						mw.loader.load( 'ext.guidedTour.tour.helppanel' );
 					}
@@ -813,7 +813,7 @@
 							this.setNotificationLabelText();
 							this.swapPanel( action );
 
-							if ( this.source === 'helppanel' ) {
+							if ( this.source === 'helpdesk' ) {
 								this.launchIntroTour(
 									'helppanel',
 									'growthexperiments-tour-help-panel'
