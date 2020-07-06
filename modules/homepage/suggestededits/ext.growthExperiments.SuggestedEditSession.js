@@ -265,13 +265,15 @@
 	 * @return {jQuery.Promise} A promise that resolves when the dialog is displayed.
 	 */
 	SuggestedEditSession.prototype.showPostEditDialog = function ( config ) {
-		var self = this;
+		var self = this,
+			uri = new mw.Uri();
 
 		if ( config.resetSession ) {
 			self.clickId = mw.user.generateRandomSessionId();
 			// Need to update the click ID in edit links as well.
 			self.updateEditingStatsConfig();
 		}
+
 		// The mobile editor and in some configurations the visual editor immediately reloads
 		// after saving and firing the post-edit event, so displaying the dialog would fail.
 		// Preventing that reload would be fragile, given that the post-edit dialog offers
@@ -280,7 +282,11 @@
 		this.postEditDialogNeedsToBeShown = true;
 		this.save();
 
-		if ( !config.nextRequest && mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ) ) {
+		if ( !config.nextRequest && mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ) &&
+			// Never show the dialog on an edit screen, just defer it to the next request.
+			// This can happen when VisualEditor fires the postEdit hook before reloading the page.
+			!( uri.query.veaction || uri.query.action === 'edit' )
+		) {
 			return mw.loader.using( 'ext.growthExperiments.PostEdit' ).then( function ( require ) {
 				return require( 'ext.growthExperiments.PostEdit' ).setupPanel().then( function ( result ) {
 					result.openPromise.done( function () {
