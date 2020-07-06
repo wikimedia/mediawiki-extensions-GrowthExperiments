@@ -11,7 +11,7 @@
 	"welcomesurvey-close-btn": "Close and go back to $1",
 	"welcomesurvey-sidebar-privacy-title": "We value your privacy",
 	"welcomesurvey-sidebar-privacy-text": "The Wikimedia Foundation will use {{GENDER:$2|your}} answers to help you start editing {{SITENAME}}. $1.",
-	"welcomesurvey-privacy-policy-link-text": "Learn more",
+	"welcomesurvey-privacy-policy-link-text": "Learn more about data on new editors",
 	"welcomesurvey-sidebar-editing-title": "Getting started with editing",
 	"welcomesurvey-sidebar-editing-text": "Almost every page can be edited by anyone, and hundreds of changes are made every hour to add content, correct mistakes, and improve readability. The following pages can help if {{GENDER:$1|you’re interested}} in contributing.",
 	"welcomesurvey-sidebar-editing-link1-text": "Tutorial",
