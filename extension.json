@@ -1038,7 +1038,7 @@
 		"growthexperiments": "growthexperiments-log-header"
 	},
 	"LogActionsHandlers": {
-		"growthexperiments/*": "LogFormatter"
+		"growthexperiments/*": "GrowthExperiments\\MentorChangeLogFormatter"
 	},
 	"AvailableRights": [
 		"setmentor"

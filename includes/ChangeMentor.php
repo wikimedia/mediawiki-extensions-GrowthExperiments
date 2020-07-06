@@ -97,11 +97,6 @@ class ChangeMentor {
 		} else {
 			$primaryLogtype = 'setmentor';
 		}
-		// Uses the following i18n strings
-		// * logentry-growthexperiments-claimmentee
-		// * logentry-growthexperiments-claimmentee-no-previous-mentor
-		// * logentry-growthexperiments-setmentor
-		// * logentry-growthexperiments-setmentor-no-previous-mentor
 		$logEntry = new ManualLogEntry(
 			'growthexperiments',
 			$this->mentor ?
