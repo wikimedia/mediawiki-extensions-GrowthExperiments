@@ -86,14 +86,6 @@
 		}
 
 		&-description {
-			// These rules have -webkit prefixes, but they also work in Firefox
-			display: -webkit-box;
-			-webkit-box-orient: vertical;
-			-webkit-line-clamp: 2;
-			// IE 11 does not support line-clamp so limit height for the same effect, except
-			// for the ellipsis. Height is <# of lines> * <line height> * <font size>.
-			max-height: 2 * 1.4 * 13/14 * 1em;
-			font-size: 13/14 * 1em;
 			text-overflow: ellipsis;
 			overflow: hidden;
 			color: @wmui-color-base20;
@@ -105,7 +97,6 @@
 
 		&-metadata-container {
 			display: flex;
-			font-size: 12.4/14 * 1em;
 		}
 
 		&-pageviews {
@@ -119,7 +110,7 @@
 			white-space: nowrap;
 
 			.oo-ui-iconWidget {
-				margin-right: 10px;
+				margin-right: 8px;
 				opacity: 0.65;
 			}
 		}
@@ -169,6 +160,22 @@
 	// allow success message to be positioned outside the window
 	overflow: visible;
 
+	.mw-ge-help-panel-postedit-card-description {
+		// Show two lines of text, with an ellipsis.
+		// line-clamp has not been standardized, but most modern browsers understand the Webkit syntax.
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		// For IE 11 and various old browsers, limit height for the same effect, except
+		// for the ellipsis. Height is <# of lines> * <line height> * <font size>.
+		max-height: 2 * 1.4 * 13/14 * 1em;
+		font-size: 13/14 * 1em;
+	}
+
+	.mw-ge-help-panel-postedit-card-metadata-container {
+		font-size: 12.4/14 * 1em;
+	}
+
 	.mw-ge-help-panel-postedit-footer {
 		border-top: 1px solid @wmui-color-base70;
 		background-color: @wmui-color-base90;
@@ -206,7 +213,6 @@
 
 		.mw-ge-help-panel-postedit-card-description {
 			// mobile does not have space for two lines
-			display: block;
 			white-space: nowrap;
 			font-size: 13/16 * 1em;
 		}
