@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ainali",
 			"Mjälten",
 			"Technic2",
 			"WikiPhoenix"
@@ -10,6 +11,7 @@
 	"growthexperiments-help-panel-cta-button-text": "Få hjälp med redigering",
 	"growthexperiments-help-panel-question-button-text": "Fortsätt",
 	"growthexperiments-help-panel-submit-question-button-text": "Skicka",
+	"growthexperiments-help-panel-return-home-button-text": "Klar",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Populäraste hjälpsidorna om redigering",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Visa fler hjälpartiklar",
 	"growthexperiments-help-panel-question-widget-header": "Skicka din fråga till gemenskapens helpdesk",
@@ -17,11 +19,15 @@
 	"growthexperiments-help-panel-back-home": "Tillbaka",
 	"growthexperiments-help-panel-close": "Färdigt",
 	"growthexperiments-help-panel-home-title": "Få hjälp med att redigera",
+	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|Du}} har publicerat en redigering. Tack och fortsätt gärna!",
+	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|Du}} sparade en redigering. Tack och fortsätt gärna!",
+	"growthexperiments-help-panel-postedit-header": "Nästa steg",
 	"growthexperiments-help-panel-questionreview-title": "Ställ en fråga",
 	"growthexperiments-help-panel-questionreview-header": "När du skickar en fråga kommer den <strong>läggas upp offentligt</strong> under ditt användarnamn, \"$2\", på $1 där andra frivilliga redigerare kommer försöka att besvara inom nästa dag eller så.",
 	"growthexperiments-help-panel-questionreview-label": "Din fråga",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Inkludera sidtiteln med min fråga",
 	"growthexperiments-help-panel-question-post-error": "Ett fel uppstod när din fråga skulle skickas. Du kan försöka igen eller besöka $1 i din webbläsare och lägga till din fråga manuellt.",
+	"growthexperiments-help-panel-suggestededits-title": "Förslag på redigeringar",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Redo?</strong> Klicka på \"{{int:vector-view-edit}}\" för att komma igång.",
 	"growthexperiments-help-panel-questioncomplete-title": "Ställ en fråga",
 	"growthexperiments-help-panel-questioncomplete-header": "Din fråga har lagts upp!",
@@ -40,5 +46,6 @@
 	"growthexperiments-help-panel-questionposter-invalid-title": "Ogiltig titel.",
 	"growthexperiments-help-panel-search-label": "\nSök efter hjälp",
 	"growthexperiments-help-panel-search-no-results": "Inga resultat hittades.",
-	"tag-help_panel_question": "Fråga på hjälppanelen"
+	"tag-help_panel_question": "Fråga på hjälppanelen",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Förslag på redigeringar"
 }

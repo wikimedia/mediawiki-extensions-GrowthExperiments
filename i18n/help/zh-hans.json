@@ -5,6 +5,7 @@
 			"GoForceX",
 			"Josephine W.",
 			"Shizhao",
+			"Shuiwater",
 			"SomeyaMako",
 			"VulpesVulpes825",
 			"Zazzzz",
@@ -40,7 +41,7 @@
 	"growthexperiments-help-panel-suggestededits-title": "编辑提议",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "快速入门提示",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>准备好了吗？</strong>请点击“{{int:vector-view-edit}}”开始。",
-	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>准备好了吗？</strong>请点击文章上的编辑铅笔开始。",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>准备好了吗？</strong>请打开你想编辑的节点，点击铅笔图标。",
 	"growthexperiments-help-panel-questioncomplete-title": "提问",
 	"growthexperiments-help-panel-questioncomplete-header": "您的问题已发布！",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "您的问题现在已在社群帮助台，将由另一位志愿者编辑为您解答。",
@@ -69,5 +70,9 @@
 	"growthexperiments-help-panel-button-subheader-ask-help": "从其他志愿者那里得到答案",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "快速入门提示",
 	"growthexperiments-help-panel-general-help-title": "一般编辑帮助",
-	"growthexperiments-help-panel-suggested-edits-faq-link-text": "关于编辑建议"
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "关于编辑建议",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|You}} 使用源代码编辑器。这些编辑窍门对可视化编辑器非常有帮助。",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "切换到可视化编辑器",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|You}} 使用可视化编辑器。这些编辑窍门对源代码编辑器非常有帮助。",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "打开源代码编辑器"
 }

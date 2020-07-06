@@ -6,11 +6,14 @@
 		]
 	},
 	"growthexperiments-help-panel-question-button-text": "অব্যাহত",
+	"growthexperiments-help-panel-return-home-button-text": "সম্পন্ন",
 	"growthexperiments-help-panel-questionreview-title": "প্রশ্ন জিজ্ঞাসা করুন",
 	"growthexperiments-help-panel-questionreview-label": "আপনার প্রশ্ন",
 	"growthexperiments-help-panel-questioncomplete-title": "প্রশ্ন জিজ্ঞাসা করুন",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "পরিবর্তন করুন",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "আপনার ইমেইল নিশ্চিত করুন",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "ইমেইল যোগ করুন",
-	"growthexperiments-help-panel-search-label": "সাহায্যের জন্য অনুসন্ধান করুন"
+	"growthexperiments-help-panel-search-label": "সাহায্যের জন্য অনুসন্ধান করুন",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "দৃশ্যমান সম্পাদনায় যান",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "উৎস সম্পাদকে যান"
 }

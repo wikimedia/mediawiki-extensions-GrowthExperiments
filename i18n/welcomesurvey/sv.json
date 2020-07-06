@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ainali",
 			"Mjälten",
 			"Technic2",
 			"WikiPhoenix"
@@ -14,8 +15,8 @@
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Hoppa över}} denna enkät",
 	"welcomesurvey-close-btn": "Stäng och gå tillbaka till $1",
 	"welcomesurvey-sidebar-privacy-title": "Vi värderar din integritet",
-	"welcomesurvey-sidebar-privacy-text": "För att läsa om hur dessa valfria frågor används, {{GENDER:$2|se}} enkäten $1.",
-	"welcomesurvey-privacy-policy-link-text": "integritetspolicy",
+	"welcomesurvey-sidebar-privacy-text": "Wikimedia Foundation kommer att använda {{GENDER:$2|dina}} svar till att hjälpa dig komma igång med att redigera {{SITENAME}}. $1.",
+	"welcomesurvey-privacy-policy-link-text": "Läs mer",
 	"welcomesurvey-sidebar-editing-title": "Kom igång med att redigera",
 	"welcomesurvey-sidebar-editing-text": "Nästan alla sidor kan redigeras av vem som helst och hundratals ändringar görs varje timme för att lägga till innehåller, korrigera misstag och förbättra läsbarheten. Följande sidor kan hjälpa till om du {{GENDER:$1|är intresserad}} av att bidra.",
 	"welcomesurvey-sidebar-editing-link1-text": "Handledning",
@@ -25,7 +26,10 @@
 	"welcomesurvey-question-reason-label": "Varför skapade du ditt konto idag?",
 	"welcomesurvey-dropdown-option-select-label": "Välj...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "För att korrigera en felstavning eller fel i en Wikipedia-artikel",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "För att utöka eller ändra informationen i en Wikipediaartikel",
+	"welcomesurvey-question-reason-option-add-image-label": "För att lägga till en bild i en Wikipediaartikel",
 	"welcomesurvey-question-reason-option-new-page-label": "För att skapa en ny Wikipedia-artikel",
+	"welcomesurvey-question-reason-option-program-participant-label": "Jag deltar i ett program, en klass eller ett evenemang",
 	"welcomesurvey-question-reason-option-read-label": "För att läsa Wikipedia",
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Övrigt",
 	"welcomesurvey-question-reason-option-other-label": "Övrigt (beskriv)",

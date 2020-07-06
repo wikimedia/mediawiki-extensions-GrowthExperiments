@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Tar Lócesilion"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "Uzyskaj sformatowane pytania wyświetlane za pośrednictwem modułów strony głównej",
+	"apihelp-homepagequestionstore-param-questionformat": "Format pytań zwrotnych, np. HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Miejsce przechowywania pytań.",
+	"apihelp-homepagequestionstore-param-userid": "ID użytkownika, który ma otrzymać pytania.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Nie znaleziono pytań.",
+	"apihelp-growthsetmentor-summary": "Ustal przewodnika nowicjusza/-ki. Zmiana zostanie odnotowana w publicznym rejestrze.",
+	"apihelp-growthsetmentor-param-mentee": "Nazwa nowicjusza(-ki)",
+	"apihelp-growthsetmentor-param-mentor": "Nazwa przewodnika",
+	"apihelp-growthsetmentor-param-reason": "Powód zmiany"
+}

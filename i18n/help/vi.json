@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Bluetpp",
+			"Leducthn",
 			"Trizek (WMF)",
 			"Tuanminh01",
 			"Vinhtantran"
@@ -24,7 +25,7 @@
 	"growthexperiments-help-panel-postedit-subheader": "Sửa đổi gợi ý khác:",
 	"growthexperiments-help-panel-postedit-footer": "Xem thêm sửa đổi gợi ý",
 	"growthexperiments-help-panel-postedit-footer2": "Đóng và sửa đổi bài viết này lần nữa",
-	"growthexperiments-help-panel-questionreview-title": "Đặt câu hỏi",
+	"growthexperiments-help-panel-questionreview-title": "Hỏi tại bàn giúp đỡ",
 	"growthexperiments-help-panel-questionreview-header": "Khi bạn gửi câu hỏi, nó sẽ được <strong>đăng tải công khai</strong> dưới tên người dùng của bạn, \"$2\", vào $1. Tại đó, một biên tập viên khác sẽ tình nguyện trả lời bạn sớm.",
 	"growthexperiments-help-panel-questionreview-label": "Câu hỏi của bạn",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Ghi kèm tên trang vào câu hỏi của tôi",

@@ -1,8 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"CiaPan"
+			"CiaPan",
+			"Tar Lócesilion",
+			"Woytecr"
 		]
 	},
-	"apihelp-helppanelquestionposter-param-body": "Treść pytania wprowadzona przez użytkownika"
+	"apihelp-helppanelquestionposter-summary": "Zarządzaj pytaniami zadanymi za pomocą panelu pomocy dla bieżącego użytkownika.",
+	"apihelp-helppanelquestionposter-param-body": "Treść pytania wprowadzona przez użytkownika",
+	"apihelp-helppanelquestionposter-param-source": "Komponent u źródła pytania. Prawidłowymi wartościami są \"helppanel\", \"homepage-help\", and \"homepage-mentorship\"",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Powiązany tytuł strony, jeśli został wybrany, dołączany do pytania."
 }

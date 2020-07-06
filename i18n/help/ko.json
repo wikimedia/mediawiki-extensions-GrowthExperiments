@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Bluemersen",
+			"Ellif",
 			"Nuevo Paso",
 			"Revi",
 			"Ykhwong"
@@ -124,5 +125,8 @@
 	"growthexperiments-help-panel-button-subheader-general-help": "좋은 문서를 검색해 보고 좋은 문서도 읽어 보세요",
 	"growthexperiments-help-panel-button-subheader-ask-help": "다른 자원봉사자로부터 도움을 받으세요",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "빠른 시작을 위한 팁",
-	"growthexperiments-help-panel-suggested-edits-faq-link-text": "편집 제안 자주 묻는 질문"
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "편집 제안 자주 묻는 질문",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;현재 원본편집기를 사용하고 계십니다. 다음 편집 팁들은 시각편집기에서 가장 잘 작동합니다.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "시각편집기로 전환",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "원본 편집으로 전환하기"
 }
