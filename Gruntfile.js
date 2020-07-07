@@ -41,6 +41,7 @@ module.exports = function ( grunt ) {
 						'ar',
 						'cs',
 						'eu',
+						'fa',
 						'fr',
 						'hu',
 						'hy',
