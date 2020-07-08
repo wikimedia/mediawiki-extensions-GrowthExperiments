@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ainali"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Få uppgifter rekommenderade för nybörjare.",
+	"apihelp-query+growthtasks-param-topics": "Artikelämnen att föredra i uppgiftsförslag.",
+	"apihelp-query+growthtasks-param-limit": "Maximalt antal uppdragsförslag att returnera."
+}

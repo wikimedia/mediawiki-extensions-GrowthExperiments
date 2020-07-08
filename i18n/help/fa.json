@@ -14,6 +14,7 @@
 	"growthexperiments-help-panel-cta-button-text": "گرفتن کمک برای ویرایش",
 	"growthexperiments-help-panel-question-button-text": "ادامه",
 	"growthexperiments-help-panel-submit-question-button-text": "ارسال",
+	"growthexperiments-help-panel-return-home-button-text": "انجام شد",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "بهترین صفحه‌های کمک در مورد ویرایش",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "برترین صفحه‌های کمک دربارهٔ ویرایش",
 	"growthexperiments-help-panel-question-widget-header": "ارسال سؤال‌های شما به میز کمک",
@@ -26,7 +27,7 @@
 	"growthexperiments-help-panel-postedit-subheader": "ویرایش یک پیشنهاد دیگر:",
 	"growthexperiments-help-panel-postedit-footer": "نمایش ویرایش‌های پیشنهادی بیشتر",
 	"growthexperiments-help-panel-postedit-footer2": "بستن و ویرایش مجدد این مقاله",
-	"growthexperiments-help-panel-questionreview-title": "سؤالی بپرسید",
+	"growthexperiments-help-panel-questionreview-title": "پرسش از میز کمک",
 	"growthexperiments-help-panel-questionreview-header": "وقتی پرسش را ارسال می‌کنید، این سؤال <strong>به صورت عمومی</strong> و با نام کاربری خودتان، «$2» در $1 منتشر می‌شود تا دیگر ویرایشگران داوطلب بتوانند به شما ظرف یک تا چند روز آتی پاسخ دهند.",
 	"growthexperiments-help-panel-questionreview-label": "پرسش شما",
 	"growthexperiments-help-panel-questionreview-include-article-title": "شامل عنوان صفحه با سوال من",
@@ -64,5 +65,6 @@
 	"growthexperiments-help-panel-button-header-general-help": "کمک برای ویرایش عمومی",
 	"growthexperiments-help-panel-button-subheader-general-help": "جستجو برای سوال و خواندن برترین مقالات",
 	"growthexperiments-help-panel-button-subheader-ask-help": "گرفتن پاسخ از دیگر داوطلبان",
-	"growthexperiments-help-panel-button-subheader-suggested-edits": "نکات شروع سریع"
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "نکات شروع سریع",
+	"growthexperiments-help-panel-general-help-title": "کمک برای ویرایش عمومی"
 }

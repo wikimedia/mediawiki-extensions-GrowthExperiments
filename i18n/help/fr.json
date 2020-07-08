@@ -134,8 +134,8 @@
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Conseils de démarrage rapide",
 	"growthexperiments-help-panel-general-help-title": "Aide générale d’édition",
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "À propos des modifications suggérées",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Vous}} utilisez l’éditeur de source. Ces conseils d’édition sont plus utiles avec l’éditeur visuel.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Vous}} utilisez l’éditeur de source. Ces conseils d’édition sont plus utiles pour l’éditeur visuel.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Basculer vers l’éditeur visuel",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Vous}} utilisez l’éditeur visuel. Ces conseils d’édition sont plus utiles avec l’éditeur de source.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Vous}} utilisez l’éditeur visuel. Ces conseils d’édition sont plus utiles pour  l’éditeur de source.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Basculer vers l’éditeur de source"
 }

@@ -19,7 +19,7 @@
 	"welcomesurvey-close-btn": "Fermer et retourner sur $1",
 	"welcomesurvey-sidebar-privacy-title": "Nous protégeons votre vie privée",
 	"welcomesurvey-sidebar-privacy-text": "La fondation Wikimédia utilisera {{GENDER:$2|vos}} réponses pour vous apprendre à contribuer à {{SITENAME}}. $1.",
-	"welcomesurvey-privacy-policy-link-text": "En savoir plus",
+	"welcomesurvey-privacy-policy-link-text": "En savoir plus à propos des données concernant les nouveau contributeurs",
 	"welcomesurvey-sidebar-editing-title": "Contribuer pour la première fois",
 	"welcomesurvey-sidebar-editing-text": "Presque toutes les pages peuvent être modifiées par chacun, et des centaines de modifications sont faites chaque heure pour ajouter du contenu, corriger des erreurs, ou améliorer la lisibilité. Les pages suivantes peuvent vous aider si vous êtes intéressé{{GENDER:$1||e}} pour contribuer.",
 	"welcomesurvey-sidebar-editing-link1-text": "Tutoriel",
