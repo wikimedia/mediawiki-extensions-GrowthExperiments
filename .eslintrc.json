@@ -9,6 +9,7 @@
 		"commonjs": true
 	},
 	"rules": {
-		"mediawiki/class-doc": "warn"
+		"mediawiki/class-doc": "warn",
+		"max-len": [ "warn", 120 ]
 	}
 }
