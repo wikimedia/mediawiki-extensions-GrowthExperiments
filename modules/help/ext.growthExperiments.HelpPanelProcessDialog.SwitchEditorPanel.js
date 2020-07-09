@@ -32,6 +32,7 @@
 
 	/**
 	 * Build the switch editor panel.
+	 *
 	 * @internal
 	 */
 	SwitchEditorPanel.prototype.build = function () {
@@ -70,6 +71,7 @@
 
 	/**
 	 * Handle clicks to the "Switch editor" link.
+	 *
 	 * @internal
 	 */
 	SwitchEditorPanel.prototype.onClick = function () {

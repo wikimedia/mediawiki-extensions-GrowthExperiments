@@ -643,6 +643,7 @@
 
 	/**
 	 * Respond to 'save' events from the SuggestedEditSession.
+	 *
 	 * @param {Object} session The values saved to the suggested edit session storage
 	 */
 	HelpPanelProcessDialog.prototype.onSuggestedEditSessionSave = function ( session ) {
