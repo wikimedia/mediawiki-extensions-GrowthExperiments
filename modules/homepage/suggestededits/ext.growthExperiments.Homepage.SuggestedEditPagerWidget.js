@@ -10,7 +10,9 @@
 	SuggestedEditPagerWidget.prototype.setMessage = function ( currentPosition, totalCount ) {
 		this.$element.html( mw.message(
 			'growthexperiments-homepage-suggestededits-pager',
-			currentPosition <= totalCount ? mw.language.convertNumber( currentPosition ) : mw.message( 'growthexperiments-homepage-suggestededits-pager-end' ).parse(),
+			currentPosition <= totalCount ?
+				mw.language.convertNumber( currentPosition ) :
+				mw.message( 'growthexperiments-homepage-suggestededits-pager-end' ).parse(),
 			mw.language.convertNumber( totalCount )
 		).parse() );
 	};

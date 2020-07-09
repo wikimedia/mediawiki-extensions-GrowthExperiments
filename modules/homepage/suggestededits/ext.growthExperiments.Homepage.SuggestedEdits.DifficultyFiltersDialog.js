@@ -115,9 +115,10 @@ DifficultyFiltersDialog.prototype.buildCheckboxFilters = function () {
 			.text( mw.message( 'growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label' ).text() ),
 		$( '<p>' )
 			.addClass( 'suggested-edits-difficulty-level-desc' )
-			.text( mw.message( 'growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header' )
-				.params( [ mw.user ] )
-				.text() )
+			.text(
+				mw.message( 'growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header' )
+					.params( [ mw.user ] )
+					.text() )
 	);
 	this.content.$element.append( this.easyFilters.$element );
 
@@ -125,12 +126,17 @@ DifficultyFiltersDialog.prototype.buildCheckboxFilters = function () {
 		new OO.ui.IconWidget( { icon: 'difficulty-medium' } ).$element,
 		$( '<h4>' )
 			.addClass( 'suggested-edits-difficulty-level-label' )
-			.text( mw.message( 'growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label' ).text() ),
+			.text(
+				mw.message( 'growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label' ).text()
+			),
 		$( '<p>' )
 			.addClass( 'suggested-edits-difficulty-level-desc' )
-			.text( mw.message( 'growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header' )
-				.params( [ mw.user ] )
-				.text() )
+			.text(
+				mw.message(
+					'growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header'
+				)
+					.params( [ mw.user ] )
+					.text() )
 	);
 	this.content.$element.append( this.mediumFilters.$element );
 
@@ -141,9 +147,10 @@ DifficultyFiltersDialog.prototype.buildCheckboxFilters = function () {
 			.text( mw.message( 'growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label' ).text() ),
 		$( '<p>' )
 			.addClass( 'suggested-edits-difficulty-level-desc' )
-			.text( mw.message( 'growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header' )
-				.params( [ mw.user ] )
-				.text() )
+			.text(
+				mw.message( 'growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header' )
+					.params( [ mw.user ] )
+					.text() )
 	);
 	this.content.$element.append( this.hardFilters.$element );
 };
@@ -198,6 +205,12 @@ DifficultyFiltersDialog.prototype.makeCheckbox = function ( taskTypeData ) {
 		label: taskTypeData.messages.label,
 		selected: this.config.presets.indexOf( taskTypeData.id ) >= 0,
 		disabled: !!taskTypeData.disabled,
+		// The following classes are used here:
+		// * suggested-edits-checkbox-copyedit
+		// * suggested-edits-checkbox-create
+		// * suggested-edits-checkbox-expand
+		// * suggested-edits-checkbox-links
+		// * suggested-edits-checkbox-update
 		classes: [ 'suggested-edits-checkbox-' + taskTypeData.id ]
 	} );
 };
@@ -214,7 +227,10 @@ DifficultyFiltersDialog.prototype.updateMatchCount = function ( count ) {
 };
 
 DifficultyFiltersDialog.prototype.savePreferences = function () {
-	return new mw.Api().saveOption( 'growthexperiments-homepage-se-filters', JSON.stringify( this.getEnabledFilters() ) );
+	return new mw.Api().saveOption(
+		'growthexperiments-homepage-se-filters',
+		JSON.stringify( this.getEnabledFilters() )
+	);
 };
 
 DifficultyFiltersDialog.prototype.getActionProcess = function ( action ) {

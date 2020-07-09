@@ -34,9 +34,15 @@
 									// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy
 									// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium
 									// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard
-									.text( mw.message( 'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' + difficulty ) ),
+									.text( mw.message(
+										'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' +
+										difficulty
+									) ),
 								$( '<div>' )
-									.addClass( 'suggested-edits-difficulty-level suggested-edits-difficulty-level-' + difficulty )
+									.addClass(
+										'suggested-edits-difficulty-level suggested-edits-difficulty-level-' +
+										difficulty
+									)
 									.text( messages.timeestimate )
 							)
 						) )

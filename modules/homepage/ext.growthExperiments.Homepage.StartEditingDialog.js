@@ -297,8 +297,9 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 						rtl: 'intro-topic-add-info-rtl.svg'
 					}
 				},
-				labelHtml: mw.message( 'growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change' )
-					.parse()
+				labelHtml: mw.message(
+					'growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change'
+				).parse()
 			}
 		},
 		introPanel = new OO.ui.PanelLayout( { padded: false, expanded: false } );
@@ -365,10 +366,14 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 			.append(
 				$( '<p>' )
 					.addClass( 'mw-ge-startediting-dialog-intro-topic-selector-header' )
-					.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-topic-selector-header' ).text() ),
+					.text( mw.message(
+						'growthexperiments-homepage-startediting-dialog-intro-topic-selector-header'
+					).text() ),
 				$( '<p>' )
 					.addClass( 'mw-ge-startediting-dialog-intro-topic-selector-subheader' )
-					.text( mw.message( 'growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader' ).text() ),
+					.text( mw.message(
+						'growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader'
+					).text() ),
 				this.topicSelector.$element
 			);
 

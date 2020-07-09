@@ -31,8 +31,11 @@
 		var sourceName = 'mentor',
 			moduleName = 'mentorship',
 			storage = 'growthexperiments-' + sourceName + '-questions',
-			// eslint-disable-next-line no-jquery/no-global-selector
-			$overlay = mw.loader.getState( 'ext.growthExperiments.Homepage.Mobile' ) === 'ready' ? $( '.homepage-module-overlay .overlay-content' ) : $( 'body' ),
+			$overlay = mw.loader.getState( 'ext.growthExperiments.Homepage.Mobile' ) === 'ready' ?
+				// eslint-disable-next-line no-jquery/no-global-selector
+				$( '.homepage-module-overlay .overlay-content' ) :
+				// eslint-disable-next-line no-jquery/no-global-selector
+				$( 'body' ),
 			questionsSelector = '.recent-questions-growthexperiments-' + sourceName + '-questions',
 			$container = $overlay.find( '.growthexperiments-homepage-module-' + moduleName ),
 			archivedCount = 0,
