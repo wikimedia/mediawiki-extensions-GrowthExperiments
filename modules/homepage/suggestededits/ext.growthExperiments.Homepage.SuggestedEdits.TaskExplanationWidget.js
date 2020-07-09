@@ -80,7 +80,9 @@
 					drawer = new Drawer( {
 						children: [
 							this.getName(),
-							$( '<div>' ).addClass( 'suggested-edits-taskexplanation-additional-info' ).html( this.getDescription() )
+							$( '<div>' )
+								.addClass( 'suggested-edits-taskexplanation-additional-info' )
+								.html( this.getDescription() )
 						],
 						className: 'suggested-edits-taskexplanation-drawer',
 						onBeforeHide: function ( drawer ) {
@@ -106,7 +108,10 @@
 		// * suggested-edits-difficulty-level-medium
 		// * suggested-edits-difficulty-level-hard
 		return $( '<div>' )
-			.addClass( 'suggested-edits-difficulty-level suggested-edits-difficulty-level-' + this.taskTypeData.difficulty )
+			.addClass(
+				'suggested-edits-difficulty-level suggested-edits-difficulty-level-' +
+				this.taskTypeData.difficulty
+			)
 			.text( this.taskTypeData.messages.timeestimate );
 	};
 
@@ -148,7 +153,9 @@
 			// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy
 			// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium
 			// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard
-			.text( mw.message( 'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' + this.taskTypeData.difficulty ) );
+			.text( mw.message(
+				'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' + this.taskTypeData.difficulty
+			) );
 	};
 
 	TaskExplanationWidget.prototype.getName = function () {

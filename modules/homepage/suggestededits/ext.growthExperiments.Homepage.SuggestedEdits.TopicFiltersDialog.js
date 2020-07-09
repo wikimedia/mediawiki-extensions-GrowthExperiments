@@ -97,10 +97,14 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 		.append(
 			$( '<h4>' )
 				.addClass( 'mw-ge-topic-filters-dialog-intro-topic-selector-header' )
-				.text( mw.message( 'growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header' ).text() ),
+				.text(
+					mw.message( 'growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header' ).text()
+				),
 			$( '<p>' )
 				.addClass( 'mw-ge-topic-filters-dialog-intro-topic-selector-subheader' )
-				.text( mw.message( 'growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader' ).text() ),
+				.text( mw.message(
+					'growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader'
+				).text() ),
 			this.topicSelector.$element
 		);
 	this.content.$element.append( $topicSelectorWrapper );

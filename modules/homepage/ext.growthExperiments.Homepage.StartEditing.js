@@ -40,7 +40,9 @@
 					window.history.replaceState( null, null, '#/homepage/suggested-edits' );
 					window.dispatchEvent( new HashChangeEvent( 'hashchange' ) );
 				} else if ( mode === 'mobile-details' ) {
-					window.location.href = mw.util.getUrl( new mw.Title( 'Special:Homepage/suggested-edits' ).toString() );
+					window.location.href = mw.util.getUrl(
+						new mw.Title( 'Special:Homepage/suggested-edits' ).toString()
+					);
 				}
 				return;
 			}

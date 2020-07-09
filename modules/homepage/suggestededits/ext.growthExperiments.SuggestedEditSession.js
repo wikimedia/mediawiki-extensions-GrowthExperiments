@@ -103,7 +103,8 @@
 			helpPanelCurrentPanel: this.helpPanelCurrentPanel,
 			helpPanelShouldOpen: this.helpPanelShouldOpen,
 			helpPanelCurrentTip: this.helpPanelCurrentTip,
-			helpPanelSuggestedEditsInteractionHappened: this.helpPanelSuggestedEditsInteractionHappened
+			helpPanelSuggestedEditsInteractionHappened:
+				this.helpPanelSuggestedEditsInteractionHappened
 		};
 		if ( !this.active ) {
 			throw new Error( 'Trying to save an inactive suggested edit session' );
@@ -148,7 +149,8 @@
 				this.helpPanelCurrentPanel = data.helpPanelCurrentPanel;
 				this.helpPanelShouldOpen = data.helpPanelShouldOpen;
 				this.helpPanelCurrentTip = data.helpPanelCurrentTip;
-				this.helpPanelSuggestedEditsInteractionHappened = data.helpPanelSuggestedEditsInteractionHappened;
+				this.helpPanelSuggestedEditsInteractionHappened =
+					data.helpPanelSuggestedEditsInteractionHappened;
 			} else {
 				mw.storage.session.remove( 'ge-suggestededit-session' );
 			}

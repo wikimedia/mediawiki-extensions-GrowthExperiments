@@ -16,7 +16,8 @@
 	 * @constructor
 	 */
 	function SuggestedEditsFiltersWidget( config, logger ) {
-		var DifficultyFiltersDialog = require( './ext.growthExperiments.Homepage.SuggestedEdits.DifficultyFiltersDialog.js' ),
+		var DifficultyFiltersDialog =
+				require( './ext.growthExperiments.Homepage.SuggestedEdits.DifficultyFiltersDialog.js' ),
 			TopicFiltersDialog = require( './ext.growthExperiments.Homepage.SuggestedEdits.TopicFiltersDialog.js' ),
 			windowManager = new OO.ui.WindowManager( { modal: true } ),
 			windows = [],

@@ -10,7 +10,8 @@
 	 * @constructor
 	 * @param {Object} config
 	 * @param {Object} [config.taskTypes] The list of task types, as returned by
-	 *    HomepageHooks::getTaskTypesJson. Can be omitted when the getPreferences method is not needed.
+	 *    HomepageHooks::getTaskTypesJson. Can be omitted when the getPreferences
+	 *    method is not needed.
 	 * @param {Object} [config.suggestedEditsConfig] An object with the values of some PHP globals,
 	 *   as returned by HomepageHooks::getSuggestedEditsConfigJson. Can be omitted when the
 	 *   getPreferences method and individual task data are not needed.
@@ -145,7 +146,8 @@
 					pageId: item.pageid || null,
 					revisionId: item.revisions ? item.revisions[ 0 ].revid : null,
 					url: self.suggestedEditsConfig.GENewcomerTasksRemoteArticleOrigin ?
-						self.suggestedEditsConfig.GENewcomerTasksRemoteArticleOrigin + mw.util.getUrl( item.title ) :
+						self.suggestedEditsConfig.GENewcomerTasksRemoteArticleOrigin +
+							mw.util.getUrl( item.title ) :
 						null,
 					thumbnailSource: item.thumbnail && item.thumbnail.source || null,
 					imageWidth: item.original && item.original.width || null,
@@ -255,7 +257,7 @@
 	 *   - pageviews: number of views to the task's page in the last two months
 	 * @return {jQuery.Promise<Object>} A promise with extra data to extend the task object with.
 	 * @see https://wikitech.wikimedia.org/wiki/Analytics/AQS/Pageviews
-	 * @see https://wikimedia.org/api/rest_v1/#/Pageviews%20data/get_metrics_pageviews_per_article__project___access___agent___article___granularity___start___end_
+	 * @see https://w.wiki/J8K
 	 */
 	GrowthTasksApi.prototype.getExtraDataFromAqs = function ( task ) {
 		var encodedTitle, pageviewsApiUrl, day, firstPageviewDay, lastPageviewDay,
