@@ -135,8 +135,11 @@
 				href: mw.util.getUrl( configData.GEHelpPanelHelpDeskTitle ),
 				label: mw.msg( 'growthexperiments-help-panel-cta-button-text' ),
 				invisibleLabel: true,
+				flags: [ 'primary', 'progressive' ],
+				// Only one of these two is visible at a time, with a transition between them
+				// See ext.growthExperiments.HelpPanelCta.less
 				icon: 'help',
-				flags: [ 'primary', 'progressive' ]
+				indicator: 'up'
 			} );
 			$buttonWrapper = $( '<div>' )
 				.addClass( 'mw-ge-help-panel-cta' )
@@ -174,7 +177,7 @@
 				$body.removeClass( 'oo-ui-windowManager-modal-active' );
 			}
 
-			helpCtaButton.setIcon( 'collapse' );
+			$buttonWrapper.addClass( 'mw-ge-help-panel-opened' );
 			lifecycle = windowManager.openWindow( helpPanelProcessDialog, {
 				panel: panel
 			} );
@@ -193,7 +196,7 @@
 				if ( guidanceAvailable ) {
 					attachHelpButton( helpPanelProcessDialog.logger.getEditor() );
 				}
-				helpCtaButton.setIcon( 'help' );
+				$buttonWrapper.removeClass( 'mw-ge-help-panel-opened' );
 			} );
 			return lifecycle;
 		}
