@@ -59,7 +59,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Medel",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Svår",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Efter {{GENDER:$1|du}} har genomfört några enkla redigeringar.",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "När {{GENDER:$1|du}} har lärt dig om Wikipedias praxisar.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "När {{GENDER:$1|du}} har lärt dig om praxis på Wikipedia.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Korrekturläsning och lägga till länkar till andra artiklar.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Lägg till trovärdiga källor och uppdatera inaktuella artiklar",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Skapa nya artiklar och utvidga korta artiklar.",
