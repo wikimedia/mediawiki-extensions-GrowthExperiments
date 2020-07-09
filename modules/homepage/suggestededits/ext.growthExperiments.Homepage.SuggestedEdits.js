@@ -459,7 +459,8 @@
 	 * @return {jQuery.Promise} Status promise.
 	 */
 	function initSuggestedTasks( $container ) {
-		var suggestedEditsModule,
+		var initTime = mw.now(),
+			suggestedEditsModule,
 			api = new GrowthTasksApi( {
 				taskTypes: taskTypes,
 				suggestedEditsConfig: require( './config.json' ),
@@ -495,6 +496,11 @@
 				}
 				return suggestedEditsModule.showCard();
 			} ).done( function () {
+				mw.track(
+					'timing.growthExperiments.specialHomepage.modules.suggestedEditsLoadingComplete.' +
+						( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
+					mw.now() - initTime
+				);
 				// Use done instead of then because 1) we don't want to make the caller
 				// wait for the preload; 2) failed preloads should not result in an
 				// error card, as they don't affect the current card. The load will be
