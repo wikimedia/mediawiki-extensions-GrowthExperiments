@@ -39,7 +39,9 @@ describe( 'GET quickstarttips', () => {
 						return taskTypeId === 'references' ? 7 : 6;
 					}
 
-					assert.equal( expectedNumberOfTips( taskTypeId ), Object.keys( sourceBody ).length );
+					assert.equal(
+						expectedNumberOfTips( taskTypeId ), Object.keys( sourceBody ).length
+					);
 					if ( error ) {
 						console.error( error.text, error.code );
 					}

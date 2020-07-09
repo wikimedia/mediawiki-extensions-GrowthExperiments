@@ -103,12 +103,13 @@
 	};
 
 	TaskExplanationWidget.prototype.getTimeEstimate = function () {
-		// The following classes are used here:
-		// * suggested-edits-difficulty-level-easy
-		// * suggested-edits-difficulty-level-medium
-		// * suggested-edits-difficulty-level-hard
+
 		return $( '<div>' )
 			.addClass(
+				// The following classes are used here:
+				// * suggested-edits-difficulty-level-easy
+				// * suggested-edits-difficulty-level-medium
+				// * suggested-edits-difficulty-level-hard
 				'suggested-edits-difficulty-level suggested-edits-difficulty-level-' +
 				this.taskTypeData.difficulty
 			)
@@ -149,11 +150,11 @@
 			// * suggested-edits-difficulty-indicator-label-medium
 			// * suggested-edits-difficulty-indicator-label-hard
 			.addClass( 'suggested-edits-difficulty-indicator-' + this.taskTypeData.difficulty )
-			// The following messages are used here:
-			// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy
-			// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium
-			// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard
 			.text( mw.message(
+				// The following messages are used here:
+				// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy
+				// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium
+				// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard
 				'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' + this.taskTypeData.difficulty
 			) );
 	};

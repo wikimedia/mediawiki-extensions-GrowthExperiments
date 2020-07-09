@@ -446,9 +446,8 @@
 	 */
 	SuggestedEditsModule.prototype.setupEditTypeTracking = function () {
 		var $link = this.currentCard.$element.find( '.se-card-content' ),
-			newUrl = new mw.Uri( $link.attr( 'href' ) ).extend(
-				{ getasktype: this.currentCard.getTaskType() }
-			).toString();
+			newUrl = new mw.Uri( $link.attr( 'href' ) )
+				.extend( { getasktype: this.currentCard.getTaskType() } ).toString();
 		$link.attr( 'href', newUrl );
 	};
 

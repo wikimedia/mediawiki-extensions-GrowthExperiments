@@ -223,16 +223,20 @@
 						target: '_blank',
 						'data-link-id': 'special-change-email'
 					} )
-					.text( mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-email-change' ).text() );
+					.text( mw.message(
+						'growthexperiments-help-panel-questioncomplete-notifications-email-change'
+					).text() );
 				emailMessage = mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-email' )
 					.params( [ this.userEmail, $link ] )
 					.parse();
 			} else {
-				emailMessage = mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed' )
-					.params( [ this.userEmail, mw.user ] )
-					.escaped();
+				emailMessage = mw.message(
+					'growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed'
+				).params( [ this.userEmail, mw.user ] ).escaped();
 				button = new OO.ui.ButtonWidget( {
-					label: mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm' ).text(),
+					label: mw.message(
+						'growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm'
+					).text(),
 					href: mw.util.getUrl( 'Special:ConfirmEmail' ),
 					target: '_blank'
 				} );
@@ -243,7 +247,9 @@
 				.params( [ mw.user ] )
 				.escaped();
 			button = new OO.ui.ButtonWidget( {
-				label: mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-email-missing-add' ).text(),
+				label: mw.message(
+					'growthexperiments-help-panel-questioncomplete-notifications-email-missing-add'
+				).text(),
 				href: mw.util.getUrl( 'Special:ChangeEmail' ),
 				target: '_blank'
 			} );
@@ -251,7 +257,9 @@
 		}
 
 		$messageList.append( $( '<dt>' ).append( new OO.ui.IconWidget( { icon: 'bell' } ).$element ) );
-		$messageList.append( $( '<dd>' ).text( mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-wiki' ).text() ) );
+		$messageList.append( $( '<dd>' ).text(
+			mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-wiki' ).text()
+		) );
 		$messageList.append( $( '<dt>' ).append( new OO.ui.IconWidget( { icon: 'message' } ).$element ) );
 		$messageList.append( $( '<dd>' ).html( emailMessage ) );
 		if ( button ) {
@@ -263,7 +271,9 @@
 				.append(
 					$( '<h2>' )
 						.addClass( 'mw-ge-help-panel-questioncomplete-notifications-section' )
-						.text( mw.message( 'growthexperiments-help-panel-questioncomplete-notifications-section-header' ).text() ),
+						.text( mw.message(
+							'growthexperiments-help-panel-questioncomplete-notifications-section-header'
+						).text() ),
 					$messageList
 				)
 		) );
@@ -281,7 +291,9 @@
 		links.push(
 			new OO.ui.ButtonWidget( {
 				href: 'https://www.mediawiki.org/wiki/Special:MyLanguage/Growth/Focus_on_help_desk/Help_panel',
-				label: mw.message( 'growthexperiments-help-panel-questioncomplete-more-about-this-feature-text' ).text(),
+				label: mw.message(
+					'growthexperiments-help-panel-questioncomplete-more-about-this-feature-text'
+				).text(),
 				icon: 'infoFilled',
 				data: 'more-about-this-feature'
 			} )
@@ -483,7 +495,9 @@
 		this.askhelpContent.addItems( [
 			new OO.ui.FieldLayout(
 				this.askhelpTextInput, {
-					label: $( '<strong>' ).text( mw.message( 'growthexperiments-help-panel-questionreview-label' ).text() ),
+					label: $( '<strong>' ).text(
+						mw.message( 'growthexperiments-help-panel-questionreview-label' ).text()
+					),
 					align: 'top'
 				} ),
 			this.questionIncludeFieldLayout
@@ -494,7 +508,9 @@
 			label: new OO.ui.HorizontalLayout( {
 				items: [
 					new OO.ui.IconWidget( { icon: 'check', flags: [ 'progressive' ] } ),
-					new OO.ui.LabelWidget( { label: mw.message( 'growthexperiments-help-panel-questioncomplete-header' ).text() } )
+					new OO.ui.LabelWidget( {
+						label: mw.message( 'growthexperiments-help-panel-questioncomplete-header' ).text()
+					} )
 				],
 				classes: [ 'mw-ge-help-panel-question-complete' ]
 			} ).$element
@@ -571,7 +587,9 @@
 			if ( isEditing && !suggestedEditSession.helpPanelSuggestedEditsInteractionHappened ) {
 				return 'home';
 			}
-			return suggestedEditSession.helpPanelCurrentPanel === null ? 'suggested-edits' : suggestedEditSession.helpPanelCurrentPanel;
+			return suggestedEditSession.helpPanelCurrentPanel === null ?
+				'suggested-edits' :
+				suggestedEditSession.helpPanelCurrentPanel;
 		}
 
 		this.swapPanel( getPanelFromSession( this.suggestedEditSession, this.logger.isEditing() ) );
@@ -756,7 +774,9 @@
 					postData = {
 						source: this.source,
 						action: 'helppanelquestionposter',
-						relevanttitle: this.questionIncludeTitleCheckbox.isSelected() ? this.relevantTitle.getPrefixedText() : '',
+						relevanttitle: this.questionIncludeTitleCheckbox.isSelected() ?
+							this.relevantTitle.getPrefixedText() :
+							'',
 						body: this.askhelpTextInput.getValue()
 					};
 					// Start pre-loading tour for help panel.

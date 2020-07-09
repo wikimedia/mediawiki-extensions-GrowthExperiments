@@ -39,14 +39,15 @@
 		var $content = $( '<div>' )
 				.addClass( 'suggested-edits-panel-switch-editor-panel' )
 				.append(
-				// Messages that can be used here:
-				// * growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor
-				// * growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext
-					$( '<p>' ).html( mw.message( 'growthexperiments-help-panel-suggested-edits-switch-editor-to-' + this.preferredEditor, new OO.ui.IconWidget( {
-					// FIXME: Should be yellow.
-						icon: 'alert',
-						classes: [ 'oo-ui-image-warning' ]
-					} ).$element ).parse() )
+					$( '<p>' ).html( mw.message(
+						// Messages that can be used here:
+						// * growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor
+						// * growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext
+						'growthexperiments-help-panel-suggested-edits-switch-editor-to-' + this.preferredEditor,
+						new OO.ui.IconWidget( {
+							icon: 'alert',
+							classes: [ 'oo-ui-image-warning' ]
+						} ).$element ).parse() )
 				),
 			$switchLink = $( '<a>' ).attr( {
 				classes: [ 'suggested-edits-panel-switch-editor-panel-link' ],
@@ -62,7 +63,10 @@
 					// Messages that can be used here:
 					// * growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text
 					// * growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text
-					mw.message( 'growthexperiments-help-panel-suggested-edits-switch-editor-to-' + this.preferredEditor + '-link-text' ).text()
+					mw.message(
+						'growthexperiments-help-panel-suggested-edits-switch-editor-to-' +
+						this.preferredEditor + '-link-text'
+					).text()
 				) )
 			);
 		}
