@@ -24,6 +24,7 @@ use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use Html;
+use IBufferingStatsdDataFactory;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
 use SpecialPage;
 use StatusValue;
@@ -54,12 +55,17 @@ class SpecialHomepage extends SpecialPage {
 	 * Used by various EventLogging schemas to correlate events.
 	 */
 	private $pageviewToken;
+	/**
+	 * @var IBufferingStatsdDataFactory
+	 */
+	private $statsdDataFactory;
 
 	/**
 	 * @param EditInfoService $editInfoService
 	 * @param IDatabase $dbr
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param TrackerFactory $trackerFactory
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param PageViewService|null $pageViewService
 	 */
 	public function __construct(
@@ -67,15 +73,17 @@ class SpecialHomepage extends SpecialPage {
 		IDatabase $dbr,
 		ConfigurationLoader $configurationLoader,
 		TrackerFactory $trackerFactory,
+		IBufferingStatsdDataFactory $statsdDataFactory,
 		PageViewService $pageViewService = null
 	) {
 		parent::__construct( 'Homepage', '', false );
 		$this->editInfoService = $editInfoService;
 		$this->dbr = $dbr;
-		$this->pageViewService = $pageViewService;
 		$this->configurationLoader = $configurationLoader;
-		$this->pageviewToken = $this->generatePageviewToken();
 		$this->tracker = $trackerFactory->getTracker( $this->getUser() );
+		$this->statsdDataFactory = $statsdDataFactory;
+		$this->pageViewService = $pageViewService;
+		$this->pageviewToken = $this->generatePageviewToken();
 
 		// Hack: Making the userpage the relevant title for the homepage
 		// allows using the talk overlay for the talk tab on mobile.
@@ -117,6 +125,7 @@ class SpecialHomepage extends SpecialPage {
 	 * @throws UserNotLoggedIn
 	 */
 	public function execute( $par = '' ) {
+		$startTime = microtime( true );
 		$this->requireLogin();
 		parent::execute( $par );
 		$this->handleDisabledPreference();
@@ -169,6 +178,10 @@ class SpecialHomepage extends SpecialPage {
 
 		$out->addHTML( Html::closeElement( 'div' ) );
 		$this->outputJsData( $mode, $modules );
+		$this->statsdDataFactory->timing(
+			'timing.growthExperiments.specialHomepage.serverSideRender.' . ( $isMobile ? 'mobile' : 'desktop' ),
+			microtime( true ) - $startTime
+		);
 
 		if ( $loggingEnabled &&
 			 ExtensionRegistry::getInstance()->isLoaded( 'EventLogging' ) &&

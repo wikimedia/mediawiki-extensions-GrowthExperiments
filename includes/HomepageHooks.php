@@ -66,6 +66,7 @@ class HomepageHooks {
 					$mwServices->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA ),
 					$mwServices->get( 'GrowthExperimentsConfigurationLoader' ),
 					$mwServices->get( 'GrowthExperimentsNewcomerTaskTrackerFactory' ),
+					$mwServices->getStatsdDataFactory(),
 					$pageViewsService
 				);
 			};
