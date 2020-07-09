@@ -131,7 +131,10 @@
 	 */
 	SuggestedEditsModule.prototype.filterSelection = function () {
 		if ( !this.apiPromise ) {
-			this.apiPromise = this.api.fetchTasks( this.taskTypesQuery, this.topicsQuery );
+			this.apiPromise = this.api.fetchTasks( this.taskTypesQuery, this.topicsQuery, {
+				isMobile: OO.ui.isMobile(),
+				context: 'suggestedEditsModule.filterSelection'
+			} );
 		}
 		this.apiPromise.then( function () {
 			this.showCard();
@@ -177,7 +180,10 @@
 			this.filters.updateMatchCount( this.taskQueue.length );
 			return $.Deferred().resolve().promise();
 		}
-		this.apiPromise = this.api.fetchTasks( this.taskTypesQuery, this.topicsQuery );
+		this.apiPromise = this.api.fetchTasks( this.taskTypesQuery, this.topicsQuery, {
+			isMobile: OO.ui.isMobile(),
+			context: 'suggestedEditsModule.fetchTasksAndUpdateView'
+		} );
 		return this.apiPromise.then( function ( data ) {
 			// HomepageModuleLogger adds this to the log data automatically
 			var extraData = mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' );
@@ -355,13 +361,17 @@
 	 */
 	SuggestedEditsModule.prototype.getExtraDataAndUpdateQueue = function ( taskQueuePosition ) {
 		var pcsPromise, aqsPromise, preloaded,
+			apiConfig = {
+				isMobile: OO.ui.isMobile(),
+				context: 'suggestedEditsModule.getExtraDataAndUpdateQueue'
+			},
 			suggestedEditData = this.taskQueue[ taskQueuePosition ];
 		if ( !suggestedEditData ) {
 			return $.Deferred().resolve().promise();
 		}
 
-		pcsPromise = this.api.getExtraDataFromPcs( suggestedEditData );
-		aqsPromise = this.api.getExtraDataFromAqs( suggestedEditData );
+		pcsPromise = this.api.getExtraDataFromPcs( suggestedEditData, apiConfig );
+		aqsPromise = this.api.getExtraDataFromAqs( suggestedEditData, apiConfig );
 		// We might have the thumbnail URL already, or we might receive it later from PCS.
 		// Start preloading as soon as possible.
 		preloaded = this.preloadCardImage( suggestedEditData );

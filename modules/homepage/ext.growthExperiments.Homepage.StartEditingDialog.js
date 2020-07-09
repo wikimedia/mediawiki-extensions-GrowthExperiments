@@ -182,10 +182,12 @@ StartEditingDialog.prototype.getSetupProcess = function ( data ) {
 
 StartEditingDialog.prototype.updateMatchCount = function () {
 	var topics = this.topicSelector ? this.topicSelector.getSelectedTopics() : [];
-	this.api.fetchTasks( [ 'copyedit', 'links' ], topics )
-		.then( function ( data ) {
-			this.updateArticleCountLabel( Number( data.tasks.length ) );
-		}.bind( this ) );
+	this.api.fetchTasks( [ 'copyedit', 'links' ], topics, {
+		isMobile: OO.ui.isMobile(),
+		context: 'startEditingDialog'
+	} ).then( function ( data ) {
+		this.updateArticleCountLabel( Number( data.tasks.length ) );
+	}.bind( this ) );
 };
 
 StartEditingDialog.prototype.getActionProcess = function ( action ) {
