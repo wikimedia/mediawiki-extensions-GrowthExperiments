@@ -193,7 +193,7 @@
 		var joinToken, data;
 
 		if ( this.nextTask ) {
-			joinToken = this.newcomerTaskLogger.log( 'postedit-impression', this.nextTask );
+			joinToken = this.newcomerTaskLogger.log( this.nextTask );
 			data = {
 				type: 'full',
 				savedTaskType: extraData.savedTaskType,
@@ -241,7 +241,7 @@
 	 * This is handled automatically by the class.
 	 */
 	PostEditPanel.prototype.logTaskClick = function () {
-		var joinToken = this.newcomerTaskLogger.log( 'postedit-task-click', this.nextTask );
+		var joinToken = this.newcomerTaskLogger.log( this.nextTask );
 		this.helpPanelLogger.log( 'postedit-task-click', { newcomerTaskToken: joinToken } );
 	};
 

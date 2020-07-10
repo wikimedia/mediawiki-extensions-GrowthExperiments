@@ -275,17 +275,15 @@
 	/**
 	 * Log task data for a card impression or click event to the NewcomerTask EventLogging schema.
 	 *
-	 * @param {string} context The value of the context schema field ('homepage-impression' when
-	 *   displaying the task, 'homepage-click' when clicking through the task).
 	 * @param {number} cardPosition Card position in the task queue. Assumes summary data has
 	 *   already been loaded for this position.
 	 * @return {string} Token to reference the log entry with.
 	 */
-	SuggestedEditsModule.prototype.logCardData = function ( context, cardPosition ) {
+	SuggestedEditsModule.prototype.logCardData = function ( cardPosition ) {
 		var newcomerTaskLogger = new NewcomerTaskLogger(),
 			task = this.taskQueue[ cardPosition ];
 
-		return newcomerTaskLogger.log( context, task, cardPosition );
+		return newcomerTaskLogger.log( task, cardPosition );
 	};
 
 	/**
@@ -338,7 +336,7 @@
 				'suggested-edits',
 				this.mode,
 				'se-task-impression',
-				{ newcomerTaskToken: this.logCardData( 'homepage-impression', queuePosition ) }
+				{ newcomerTaskToken: this.logCardData( queuePosition ) }
 			);
 		}.bind( this ) );
 	};
@@ -437,7 +435,7 @@
 			.attr( 'href', newUrl )
 			.on( 'click', function () {
 				this.logger.log( 'suggested-edits', this.mode, 'se-task-click',
-					{ newcomerTaskToken: this.logCardData( 'homepage-click', this.queuePosition ) } );
+					{ newcomerTaskToken: this.logCardData( this.queuePosition ) } );
 			}.bind( this ) );
 	};
 
