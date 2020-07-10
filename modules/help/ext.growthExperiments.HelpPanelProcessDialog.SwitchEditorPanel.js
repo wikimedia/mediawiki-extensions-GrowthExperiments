@@ -33,7 +33,7 @@
 	/**
 	 * Build the switch editor panel.
 	 *
-	 * @internal
+	 * @private
 	 */
 	SwitchEditorPanel.prototype.build = function () {
 		var $content = $( '<div>' )
@@ -76,7 +76,7 @@
 	/**
 	 * Handle clicks to the "Switch editor" link.
 	 *
-	 * @internal
+	 * @private
 	 */
 	SwitchEditorPanel.prototype.onClick = function () {
 		if ( this.currentEditor === 'wikitext' ) {
