@@ -202,11 +202,11 @@
 		}
 
 		/**
-		 * Set the preferred editor to VE if the user hasn't changed their
-		 * visualeditor-tabs preference.
+		 * Set the editor to VE if the user hasn't selected prefer wikitext in
+		 * their editor preferences.
 		 */
 		function defaultToVisualEditorIfPossible() {
-			if ( mw.user.options.get( 'visualeditor-tabs' ) === 'remember-last' ) {
+			if ( mw.user.options.get( 'visualeditor-tabs' ) !== 'prefer-wt' ) {
 				mw.storage.set( 'preferredEditor', 'VisualEditor' );
 			}
 		}
