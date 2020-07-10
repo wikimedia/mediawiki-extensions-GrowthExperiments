@@ -17,7 +17,14 @@
 
 	HelpPanelHomeButtonWidget.prototype.build = function () {
 		var $button = $( '<div>' )
-			.addClass( [ 'mw-ge-help-panel-home-button', 'mw-ge-help-panel-home-button-' + this.config.id ] )
+			.addClass( [
+				'mw-ge-help-panel-home-button',
+				// The following classes are used here:
+				// * mw-ge-help-panel-home-button-ask-help
+				// * mw-ge-help-panel-home-button-general-help
+				// * mw-ge-help-panel-home-button-suggested-edits
+				'mw-ge-help-panel-home-button-' + this.config.id
+			] )
 			.append(
 				$( '<div>' ).addClass( 'mw-ge-help-panel-home-button-text' )
 					.append(
@@ -39,8 +46,14 @@
 			iconKey = iconKeyMap[ this.config.id ];
 		return new OO.ui.IconWidget( {
 			icon: iconKey,
+			// FIXME: Not sure we need to set custom classes here, they don't
+			// appear to be used.
 			classes: [
 				'mw-ge-help-panel-home-button-image-icon',
+				// The following classes are used here:
+				// * mw-ge-help-panel-home-button-image-icon-ask-help
+				// * mw-ge-help-panel-home-button-image-icon-general-help
+				// * mw-ge-help-panel-home-button-image-icon-suggested-edits
 				'mw-ge-help-panel-home-button-image-icon-' + this.config.id
 			]
 		} ).$element;

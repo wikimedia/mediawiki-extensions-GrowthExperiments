@@ -157,6 +157,10 @@
 
 		$taskType = $( '<span>' )
 			.addClass( 'mw-ge-help-panel-postedit-card-tasktype' )
+			// The following classes are used here:
+			// * mw-ge-help-panel-postedit-card-tasktype-difficulty-easy
+			// * mw-ge-help-panel-postedit-card-tasktype-difficulty-medium
+			// * mw-ge-help-panel-postedit-card-tasktype-difficulty-hard
 			.addClass( 'mw-ge-help-panel-postedit-card-tasktype-difficulty-' + taskTypeData.difficulty )
 			.text( taskTypeData.messages.name )
 			.prepend( new OO.ui.IconWidget( { icon: 'difficulty-' + taskTypeData.difficulty } ).$element );
