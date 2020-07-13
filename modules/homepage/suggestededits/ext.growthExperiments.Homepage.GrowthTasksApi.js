@@ -82,6 +82,10 @@
 	 *   as protected pages will be filtered out.
 	 * @param {number} [config.thumbnailWidth] Ideal thumbnail width. The actual width might be
 	 *   smaller if the original image itself is smaller.
+	 * @param {boolean} config.isMobile If the client is on a mobile device,
+	 *   used for performance instrumentation.
+	 * @param {string} config.context The context in which this function was
+	 *   called, used for performance instrumentation.
 	 *
 	 * @return {jQuery.Promise<Object>} An abortable promise with two fields:
 	 *   - count: the number of tasks available. Note this is the full count, not the
@@ -91,6 +95,7 @@
 	 */
 	GrowthTasksApi.prototype.fetchTasks = function ( taskTypes, topics, config ) {
 		var apiParams, actionApiPromise, finalPromise,
+			startTime = mw.now(),
 			self = this,
 			url = new mw.Uri( window.location.href );
 
@@ -183,6 +188,11 @@
 					consoleInfo( 'GrowthExperiments ' + type + ' query:', url );
 				} );
 			}
+			mw.track(
+				'timing.growthExperiments.specialHomepage.growthTasksApi.fetchTasks.' +
+				config.context + '.' + ( config.isMobile ? 'mobile' : 'desktop' ),
+				mw.now() - startTime
+			);
 			return {
 				count: data.growthtasks.totalCount,
 				tasks: tasks
@@ -214,6 +224,9 @@
 	 *   reused here.
 	 * @param {number} [config.thumbnailWidth] Ideal thumbnail width. The actual width might be
 	 *   smaller if the original image itself is smaller.
+	 * @param {boolean} config.isMobile If the client is on a mobile device, used for performance instrumentation.
+	 * @param {string} config.context The context in which this function was
+	 *   called, used for performance instrumentation.
 	 * @return {jQuery.Promise<Object>} A promise with the task object.
 	 * @see https://www.mediawiki.org/wiki/Page_Content_Service#/page/summary
 	 * @see https://en.wikipedia.org/api/rest_v1/#/Page%20content/get_page_summary__title_
@@ -221,6 +234,7 @@
 	GrowthTasksApi.prototype.getExtraDataFromPcs = function ( task, config ) {
 		var encodedTitle,
 			title = task.title,
+			startTime = mw.now(),
 			apiUrlBase = this.suggestedEditsConfig.GERestbaseUrl;
 
 		config = $.extend( {
@@ -244,6 +258,11 @@
 				task.imageWidth = data.originalimage.width;
 				GrowthTasksApi.fixThumbnailWidth( task, config.thumbnailWidth );
 			}
+			mw.track(
+				'timing.growthExperiments.specialHomepage.growthTasksApi.getExtraDataFromPcs.' +
+				config.context + '.' + ( config.isMobile ? 'mobile' : 'desktop' ),
+				mw.now() - startTime
+			);
 			return task;
 		} );
 	};
@@ -255,12 +274,18 @@
 	 *
 	 * @param {Object} task A task object returned by fetchTasks. It will be extended with new data:
 	 *   - pageviews: number of views to the task's page in the last two months
+	 * @param {Object} [config] Additional configuration. The object passed to fetchTasks() can be
+	 *   reused here.
+	 * @param {boolean} config.isMobile If the client is on a mobile device, used for performance instrumentation.
+	 * @param {string} config.context The context in which this function was
+	 *   called, used for performance instrumentation.
 	 * @return {jQuery.Promise<Object>} A promise with extra data to extend the task object with.
 	 * @see https://wikitech.wikimedia.org/wiki/Analytics/AQS/Pageviews
 	 * @see https://w.wiki/J8K
 	 */
-	GrowthTasksApi.prototype.getExtraDataFromAqs = function ( task ) {
+	GrowthTasksApi.prototype.getExtraDataFromAqs = function ( task, config ) {
 		var encodedTitle, pageviewsApiUrl, day, firstPageviewDay, lastPageviewDay,
+			startTime = mw.now(),
 			title = task.title;
 
 		if ( 'pageviews' in task ) {
@@ -289,6 +314,11 @@
 				// This will skip on 0 views. That's OK, we don't want to show that to the user.
 				task.pageviews = pageviews;
 			}
+			mw.track(
+				'timing.growthExperiments.specialHomepage.growthTasksApi.getExtraDataFromAqs.' +
+				config.context + '.' + ( config.isMobile ? 'mobile' : 'desktop' ),
+				mw.now() - startTime
+			);
 			return task;
 		}, function () {
 			// AQS returns a 404 when the page has 0 view. Even for real errors, it's

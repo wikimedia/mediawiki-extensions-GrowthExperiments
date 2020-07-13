@@ -36,11 +36,17 @@
 	 *   or fail with an error message if fetching the task failed.
 	 */
 	function getNextTask() {
+		var apiConfig = {
+			getDescription: true,
+			size: 10,
+			isMobile: OO.ui.isMobile(),
+			context: 'postEditDialog'
+		};
 		// 10 tasks are hopefully enough to find one that's not protected.
 		return api.fetchTasks(
 			preferences.taskTypes,
 			preferences.topics,
-			{ getDescription: true, size: 10 }
+			apiConfig
 		).then( function ( data ) {
 			var task = data.tasks[ 0 ] || null;
 			if ( task && task.title === suggestedEditSession.title.getPrefixedText() ) {
@@ -49,13 +55,13 @@
 			}
 			if ( task && !OO.ui.isMobile() ) {
 				return $.when(
-					api.getExtraDataFromPcs( task ),
-					api.getExtraDataFromAqs( task )
+					api.getExtraDataFromPcs( task, apiConfig ),
+					api.getExtraDataFromAqs( task, apiConfig )
 				).then( function () {
 					return task;
 				} );
 			} else if ( task ) {
-				return api.getExtraDataFromPcs( task );
+				return api.getExtraDataFromPcs( task, apiConfig );
 			} else {
 				return task;
 			}
