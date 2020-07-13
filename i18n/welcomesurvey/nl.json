@@ -1,7 +1,6 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dutchy45",
 			"Elroy",
 			"Mainframe98"
 		]
@@ -11,7 +10,7 @@
 	"welcomesurvey-save-btn": "Voltooien",
 	"welcomesurvey-skip-btn": "Deze enquete overslaan",
 	"welcomesurvey-close-btn": "Sluiten en teruggaan naar $1",
-	"welcomesurvey-privacy-policy-link-text": "Leer meer over data bij nieuwe editors",
+	"welcomesurvey-privacy-policy-link-text": "privacybeleid",
 	"welcomesurvey-sidebar-editing-title": "Beginnen met bewerken",
 	"welcomesurvey-sidebar-editing-link1-text": "Zelfstudie",
 	"welcomesurvey-sidebar-editing-link2-text": "Helpdesk",
