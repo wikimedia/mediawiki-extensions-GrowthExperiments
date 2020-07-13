@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ainali"
+			"Ainali",
+			"Sabelöga"
 		]
 	},
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Inga frågor funna.",
-	"apihelp-growthsetmentor-summary": "Sätt användares fadder. Ädndringen loggas publikt.",
+	"apihelp-growthsetmentor-summary": "Sätt användares fadder. Ändringen loggas offentligt.",
 	"apihelp-growthsetmentor-param-mentee": "Nybörjarens användarnamn",
 	"apihelp-growthsetmentor-param-mentor": "Fadderns användarnamn",
 	"apihelp-growthsetmentor-param-reason": "Orsak till förändringen"
