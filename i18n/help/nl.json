@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dutchy45",
 			"Elroy",
 			"Mainframe98",
 			"RadioAzureus",
@@ -9,6 +10,7 @@
 	},
 	"growthexperiments-help-panel-question-button-text": "Doorgaan",
 	"growthexperiments-help-panel-submit-question-button-text": "Opslaan",
+	"growthexperiments-help-panel-return-home-button-text": "Gedaan",
 	"growthexperiments-help-panel-back-home": "Terug",
 	"growthexperiments-help-panel-close": "Afgerond",
 	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|U}} hebt een bewerking gepubliceerd. Bedankt en ga zo door!",
