@@ -125,12 +125,11 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 	 * @covers ::validate
 	 */
 	public function testExecuteBadStatus(): void {
-		$mentorUser = User::newFromIdentity(
-			new UserIdentityValue( 1, 'Foo', 1 )
-		);
-		$newMentor = User::newFromIdentity(
-			new UserIdentityValue( 1, 'Foo', 1 )
-		);
+		$mentorUser = $this->getUserMock();
+		$newMentor = $this->getUserMock();
+		$mentorUser->method( 'equals' )->with( $newMentor )->willReturn( true );
+		$newMentor->method( 'equals' )->with( $mentorUser )->willReturn( true );
+
 		$mentorMock = $this->getMentorMock();
 		$mentorMock->method( 'getMentorUser' )
 			->willReturn( $mentorUser );
@@ -142,7 +141,10 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			$mentorMock,
 			$this->getLogPagerMock()
 		);
-		$this->assertFalse( $changeMentor->execute( $newMentor, 'test' )->isGood() );
+		$status = $changeMentor->execute( $newMentor, 'test' );
+		$this->assertFalse( $status->isOK() );
+		$this->assertTrue( $status->hasMessage(
+			'growthexperiments-homepage-claimmentee-already-mentor' ) );
 	}
 
 	/**
