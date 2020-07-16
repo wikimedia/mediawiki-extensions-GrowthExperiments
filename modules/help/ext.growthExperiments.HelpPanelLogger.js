@@ -178,7 +178,11 @@
 
 			// Desktop: old wikitext editor
 			// eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle
-			if ( $( '#wpTextbox1:visible' ).length ) {
+			if ( $( '#wpTextbox1:visible' ).length ||
+				// wikitext editor with syntax highlighting
+				// eslint-disable-next-line no-jquery/no-global-selector, no-jquery/no-sizzle
+				$( '.wikiEditor-ui .CodeMirror:visible' ).length
+			) {
 				return 'wikitext';
 			}
 		}
