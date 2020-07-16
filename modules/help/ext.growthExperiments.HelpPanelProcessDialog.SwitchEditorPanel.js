@@ -80,6 +80,8 @@
 	 */
 	SwitchEditorPanel.prototype.onClick = function () {
 		if ( this.currentEditor === 'wikitext' ) {
+			// eslint-disable-next-line no-jquery/no-global-selector
+			$( 'li#ca-ve-edit' ).first().find( 'a' ).find( '.mw-pulsating-dot' ).remove();
 			mw.libs.ve.activateVe( 'visual' );
 		} else if ( this.currentEditor === 'visualeditor' ) {
 			// FIXME: This does not preserve content modifications made in VE,
