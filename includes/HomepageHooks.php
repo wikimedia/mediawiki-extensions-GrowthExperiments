@@ -43,11 +43,22 @@ use User;
 
 class HomepageHooks {
 
-	const HOMEPAGE_PREF_ENABLE = 'growthexperiments-homepage-enable';
-	const HOMEPAGE_PREF_PT_LINK = 'growthexperiments-homepage-pt-link';
+	public const HOMEPAGE_PREF_ENABLE = 'growthexperiments-homepage-enable';
+	public const HOMEPAGE_PREF_PT_LINK = 'growthexperiments-homepage-pt-link';
+	public const HOMEPAGE_PREF_VARIANT = 'growthexperiments-homepage-variant';
 	/** @var string User options key for storing whether the user has seen the notice. */
-	const HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN = 'homepage_mobile_discovery_notice_seen';
-	const CONFIRMEMAIL_QUERY_PARAM = 'specialconfirmemail';
+	public const HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN = 'homepage_mobile_discovery_notice_seen';
+	public const CONFIRMEMAIL_QUERY_PARAM = 'specialconfirmemail';
+
+	public const VARIANTS = [
+		// not pre-initiated, impact module in main column, full size start module
+		'A',
+		// 'B' doesn't exist anymore; was a pre-initiated version of A
+		// pre-initiated, impact module in side column, smaller start module
+		'C',
+		// not pre-initiated, onboarding embedded in suggested edits module, otherwise like C
+		'D',
+	];
 
 	/**
 	 * Register Homepage, Impact and ClaimMentee special pages.
@@ -94,6 +105,20 @@ class HomepageHooks {
 			MediaWikiServices::getInstance()->getMainConfig()->get( 'GEHomepageEnabled' ) &&
 			( $user === null || $user->getBoolOption( self::HOMEPAGE_PREF_ENABLE ) )
 		);
+	}
+
+	/**
+	 * Get the variant to use for a given user.
+	 * @param User $user
+	 * @return string One of HomepageHooks::VARIANTS
+	 */
+	public static function getVariant( User $user ) {
+		$optionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
+		$variant = $optionsLookup->getOption( $user, self::HOMEPAGE_PREF_VARIANT );
+		if ( !in_array( $variant, self::VARIANTS ) ) {
+			$variant = MediaWikiServices::getInstance()->getMainConfig()->get( 'GEDefaultVariant' );
+		}
+		return $variant;
 	}
 
 	/**
@@ -328,6 +353,10 @@ class HomepageHooks {
 			'hide-if' => [ '!==', self::HOMEPAGE_PREF_ENABLE, '1' ],
 		];
 
+		$preferences[ self::HOMEPAGE_PREF_VARIANT ] = [
+			'type' => 'api',
+		];
+
 		$preferences[ self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN ] = [
 			'type' => 'api',
 		];
@@ -445,7 +474,24 @@ class HomepageHooks {
 				$user->setOption( HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE, 1 );
 			}
 
-			if ( rand( 0, 99 ) < $config->get( 'GEHomepageSuggestedEditsNewAccountInitiatedPercentage' ) ) {
+			// Variant assignment
+			$random = rand( 0, 99 );
+			$variant = null;
+			foreach ( $config->get( 'GEHomepageNewAccountVariants' ) as $candidateVariant => $percentage ) {
+				if ( $random < $percentage ) {
+					$variant = $candidateVariant;
+					$user->setOption( self::HOMEPAGE_PREF_VARIANT, $variant );
+					break;
+				}
+				$random -= $percentage;
+			}
+			if ( $variant === null ) {
+				// Use the default variant, but don't save it
+				$variant = $config->get( 'GEHomepageDefaultVariant' );
+			}
+
+			// Pre-initiate suggested edits for variant C
+			if ( $variant === 'C' ) {
 				$user->setOption( SuggestedEdits::ACTIVATED_PREF, 1 );
 				// Record that the user has suggested edits pre-activated. This preference isn't
 				// used for anything in software, it's only used in data analysis to distinguish

@@ -916,9 +916,17 @@
 			"description": "Percentage of new accounts to enable homepage for. Must be a whole number.",
 			"value": 100
 		},
-		"GEHomepageSuggestedEditsNewAccountInitiatedPercentage": {
-			"description": "Percentage of new accounts that get homepage to also pre-initiate suggested edits for. Must be a whole number.",
-			"value": 0
+		"GEHomepageNewAccountVariants": {
+			"description": "Which percentage of new accounts that get the homepage to assign which variant. Percentages must be whole numbers. If the percentages don't add up to 100, some new accounts will not be assigned a variant. Those accounts will fall back on GEHomepageDefaultVariant.",
+			"value": {
+				"A": 0,
+				"C": 0,
+				"D": 0
+			}
+		},
+		"GEHomepageDefaultVariant": {
+			"description": "Variant to use for users who weren't assigned a variant at account creation time. Must be one of A, C, D.",
+			"value": "A"
 		},
 		"GEHomepageLoggingEnabled": {
 			"description": "ON/OFF switch for the homepage event logging feature.",
