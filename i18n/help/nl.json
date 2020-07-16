@@ -19,5 +19,7 @@
 	"growthexperiments-help-panel-questioncomplete-title": "Stel een vraag",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "bevestig uw e-mail",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Ongeldige paginanaam.",
-	"growthexperiments-help-panel-search-label": "Naar hulp zoeken"
+	"growthexperiments-help-panel-search-label": "Naar hulp zoeken",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Voorgestelde bewerkingen",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Wissel naar brontekst bewerken"
 }

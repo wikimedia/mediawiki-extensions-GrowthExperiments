@@ -103,7 +103,7 @@
 	"growthexperiments-homepage-help-header": "לקבל עזרה עם עריכה",
 	"growthexperiments-homepage-help-subheader": "דפי העזרה העיקריים בנושא עריכה",
 	"growthexperiments-homepage-help-mobilebody": "לשאול בדלפק הייעוץ או לקרוא בדפי עזרה.",
-	"growthexperiments-homepage-recent-questions-header": "השאלה האחרונות {{GENDER:$1|שלך}}",
+	"growthexperiments-homepage-recent-questions-header": "השאלות האחרונות {{GENDER:$1|שלך}}",
 	"growthexperiments-homepage-recent-questions-posted-on": "נשלחה לפני $1",
 	"growthexperiments-homepage-recent-questions-archived": "בארכיון",
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "השאלה הזאת נשלחה לארכיון, כנראה כי היא נשאלה לפני זמן רב.",
