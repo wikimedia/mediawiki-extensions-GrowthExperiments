@@ -14,6 +14,14 @@ QUnit.module( 'SwitchEditorPanel', {
 		global.document = global.window.document;
 		global.jQuery = global.$ = window.jQuery = window.$ = require( 'jquery' );
 		global.OO = require( 'oojs' );
+		global.mw.user = {
+			options: {
+				get: sinon.stub()
+			}
+		};
+		global.mw.libs = {
+			ve: sinon.stub()
+		};
 		require( 'oojs-ui' );
 	},
 
@@ -29,6 +37,8 @@ QUnit.module( 'SwitchEditorPanel', {
 			text: sinon.stub().returns( 'Stub text' ),
 			parse: sinon.stub().returns( 'Stub parsed text' )
 		} );
+		global.mw.user.options.get.returns( 0 );
+
 		const switchEditorPanel = new SwitchEditorPanel( {
 			preferredEditor: 'visualeditor'
 		} );

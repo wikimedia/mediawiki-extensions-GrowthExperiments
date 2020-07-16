@@ -56,9 +56,8 @@
 				href: '#'
 			} );
 		$switchLink.on( 'click', this.onClick.bind( this ) );
-		// FIXME: Mobile needs to be handled differently, probably by firing
-		// a sequence of events after the help panel is closed.
-		if ( !OO.ui.isMobile() ) {
+
+		if ( this.shouldShowSwitchLink() ) {
 			$content.append(
 				$( '<p>' ).html( $switchLink.text(
 					// Messages that can be used here:
@@ -72,6 +71,24 @@
 			);
 		}
 		this.$element.append( $content );
+	};
+
+	/**
+	 * Determine if the switch editor link should be shown in the guidance panel.
+	 * @internal
+	 * @return {boolean}
+	 */
+	SwitchEditorPanel.prototype.shouldShowSwitchLink = function () {
+		// TODO: Mobile doesn't have an easy way to set a switch link, and
+		// since we already default the user to VE presumably they know how
+		// to switch back.
+		if ( OO.ui.isMobile() ) {
+			return false;
+		}
+		if ( mw.user.options.get( 'visualeditor-betatempdisable' ) ) {
+			return false;
+		}
+		return !!mw.libs.ve;
 	};
 
 	/**
