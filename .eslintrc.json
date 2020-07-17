@@ -9,7 +9,6 @@
 		"commonjs": true
 	},
 	"rules": {
-		"mediawiki/class-doc": "warn",
 		"max-len": [ "error", 120 ]
 	}
 }
