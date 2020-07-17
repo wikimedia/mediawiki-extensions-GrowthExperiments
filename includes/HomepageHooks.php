@@ -578,6 +578,9 @@ class HomepageHooks implements
 			$tags[] = Help::HELP_MODULE_QUESTION_TAG;
 			$tags[] = Mentorship::MENTORSHIP_MODULE_QUESTION_TAG;
 		}
+		if ( HelpPanel::isHelpPanelEnabled() ) {
+			$tags[] = Mentorship::MENTORSHIP_HELPPANEL_QUESTION_TAG;
+		}
 		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 			$tags[] = SuggestedEdits::SUGGESTED_EDIT_TAG;
 		}
@@ -595,6 +598,9 @@ class HomepageHooks implements
 		if ( self::isHomepageEnabled() ) {
 			// Help::HELP_MODULE_QUESTION_TAG is no longer active (T232548)
 			$tags[] = Mentorship::MENTORSHIP_MODULE_QUESTION_TAG;
+		}
+		if ( HelpPanel::isHelpPanelEnabled() ) {
+			$tags[] = Mentorship::MENTORSHIP_HELPPANEL_QUESTION_TAG;
 		}
 		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 			$tags[] = SuggestedEdits::SUGGESTED_EDIT_TAG;

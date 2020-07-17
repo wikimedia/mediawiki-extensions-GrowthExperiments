@@ -5,7 +5,8 @@ namespace GrowthExperiments\Api;
 use ApiBase;
 use ApiUsageException;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
-use GrowthExperiments\HelpPanel\QuestionPoster\MentorQuestionPoster;
+use GrowthExperiments\HelpPanel\QuestionPoster\HelppanelMentorQuestionPoster;
+use GrowthExperiments\HelpPanel\QuestionPoster\HomepageMentorQuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster;
 use MWException;
 
@@ -17,10 +18,11 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 
 	private const QUESTION_POSTER_CLASSES = [
 		'helpdesk' => HelpdeskQuestionPoster::class,
-		'mentor-homepage' => MentorQuestionPoster::class,
+		'mentor-homepage' => HomepageMentorQuestionPoster::class,
+		'mentor-helppanel' => HelppanelMentorQuestionPoster::class,
 		// old names (FIXME remove once not in use)
 		'helppanel' => HelpdeskQuestionPoster::class,
-		'homepage-mentorship' => MentorQuestionPoster::class,
+		'homepage-mentorship' => HomepageMentorQuestionPoster::class,
 	];
 
 	/**

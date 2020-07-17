@@ -5,6 +5,9 @@ namespace GrowthExperiments\HelpPanel\QuestionPoster;
 use ConfigException;
 use GrowthExperiments\HelpPanel;
 
+/**
+ * QuestionPoster variant for asking questions on the wiki's help desk.
+ */
 class HelpdeskQuestionPoster extends QuestionPoster {
 
 	const QUESTION_PREF = 'growthexperiments-helppanel-questions';

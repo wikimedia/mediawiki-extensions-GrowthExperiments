@@ -7,6 +7,7 @@
 	"apihelp-helppanelquestionposter-param-source": "{{doc-apihelp-param|helppanelquestionposter|source}}",
 	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|helpdesk}}",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|mentor-homepage}}",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|mentor-helppanel}}",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|helppanel}}",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|mentorship}}",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "{{doc-apihelp-param|helppanelquestionposter|relevanttitle}}"

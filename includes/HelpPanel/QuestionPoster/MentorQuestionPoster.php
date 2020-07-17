@@ -6,23 +6,25 @@ use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentor;
 use GrowthExperiments\WikiConfigException;
 
-class MentorQuestionPoster extends QuestionPoster {
-
-	/**
-	 * @inheritDoc
-	 */
-	protected function getTag() {
-		return Mentorship::MENTORSHIP_MODULE_QUESTION_TAG;
-	}
+/**
+ * QuestionPoster base class for asking a question from the assigned mentor.
+ */
+abstract class MentorQuestionPoster extends QuestionPoster {
 
 	/**
 	 * @inheritDoc
 	 */
 	protected function getSectionHeaderTemplate() {
-		return $this->getContext()
-			->msg( 'growthexperiments-homepage-mentorship-question-subject' )
-			->plaintextParams( $this->getContext()->getUser()->getName() )
-			->inContentLanguage()->text();
+		return $this->relevantTitle ?
+			$this->getContext()
+				->msg( 'growthexperiments-homepage-mentorship-question-subject-with-title' )
+				->plaintextParams( $this->getContext()->getUser()->getName() )
+				->params( $this->relevantTitle )
+				->inContentLanguage()->text() :
+			$this->getContext()
+				->msg( 'growthexperiments-homepage-mentorship-question-subject' )
+				->plaintextParams( $this->getContext()->getUser()->getName() )
+				->inContentLanguage()->text();
 	}
 
 	/**

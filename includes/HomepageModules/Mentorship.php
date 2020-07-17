@@ -26,6 +26,7 @@ use User;
 class Mentorship extends BaseModule {
 
 	const MENTORSHIP_MODULE_QUESTION_TAG = 'mentorship module question';
+	const MENTORSHIP_HELPPANEL_QUESTION_TAG = 'mentorship panel question';
 	const QUESTION_PREF = 'growthexperiments-mentor-questions';
 
 	/** @var User */

@@ -7,7 +7,7 @@ use ApiUsageException;
 use DerivativeContext;
 use FauxRequest;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
-use GrowthExperiments\HelpPanel\QuestionPoster\MentorQuestionPoster;
+use GrowthExperiments\HelpPanel\QuestionPoster\HomepageMentorQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentor;
 
@@ -58,7 +58,7 @@ class ApiQuestionStoreTest extends ApiTestCase {
 		$context = new DerivativeContext( $this->apiContext );
 		$context->setRequest( $request );
 		$context->setUser( $user );
-		$questionPoster = new MentorQuestionPoster( $context, 'foo' );
+		$questionPoster = new HomepageMentorQuestionPoster( $context, 'foo' );
 		$questionPoster->submit();
 		$response = $this->doApiRequest(
 			[

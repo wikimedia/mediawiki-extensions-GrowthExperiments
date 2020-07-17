@@ -22,6 +22,9 @@ use Title;
 use WikiPage;
 use WikitextContent;
 
+/**
+ * Base class for sending messages containing user questions to some target page.
+ */
 abstract class QuestionPoster {
 
 	/**
