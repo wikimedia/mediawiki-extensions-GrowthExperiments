@@ -1,21 +1,37 @@
 <?php
+// phpcs:disable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
 
 namespace GrowthExperiments;
 
+use Config;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
-use MediaWiki\MediaWikiServices;
 use RequestContext;
 use User;
 
-class WelcomeSurveyHooks {
+class WelcomeSurveyHooks implements
+	\MediaWiki\Hook\BeforeWelcomeCreationHook,
+	\MediaWiki\Preferences\Hook\GetPreferencesHook,
+	\MediaWiki\SpecialPage\Hook\SpecialPage_initListHook
+{
+
+	/** @var Config */
+	private $config;
+
+	/**
+	 * WelcomeSurveyHooks constructor.
+	 * @param Config $config
+	 */
+	public function __construct( Config $config ) {
+		$this->config = $config;
+	}
 
 	/**
 	 * Register WelcomeSurvey special page.
 	 *
 	 * @param array &$list
 	 */
-	public static function onSpecialPageInitList( &$list ) {
-		if ( self::isWelcomeSurveyEnabled() ) {
+	public function onSpecialPage_initList( &$list ) {
+		if ( $this->isWelcomeSurveyEnabled() ) {
 			$list[ 'WelcomeSurvey' ] = SpecialWelcomeSurvey::class;
 		}
 	}
@@ -26,8 +42,8 @@ class WelcomeSurveyHooks {
 	 * @param User $user
 	 * @param array &$preferences Preferences object
 	 */
-	public static function onGetPreferences( $user, &$preferences ) {
-		if ( self::isWelcomeSurveyEnabled() ) {
+	public function onGetPreferences( $user, &$preferences ) {
+		if ( $this->isWelcomeSurveyEnabled() ) {
 			$preferences['welcomesurvey-responses'] = [
 				'type' => 'api',
 			];
@@ -40,8 +56,8 @@ class WelcomeSurveyHooks {
 	 * @param string &$welcome_creation_msg
 	 * @param string &$injected_html
 	 */
-	public static function onBeforeWelcomeCreation( &$welcome_creation_msg, &$injected_html ) {
-		if ( !self::isWelcomeSurveyEnabled() ) {
+	public function onBeforeWelcomeCreation( &$welcome_creation_msg, &$injected_html ) {
+		if ( !$this->isWelcomeSurveyEnabled() ) {
 			return;
 		}
 
@@ -55,8 +71,8 @@ class WelcomeSurveyHooks {
 		}
 	}
 
-	private static function isWelcomeSurveyEnabled() {
-		return MediaWikiServices::getInstance()->getMainConfig()->get( 'WelcomeSurveyEnabled' );
+	private function isWelcomeSurveyEnabled() {
+		return $this->config->get( 'WelcomeSurveyEnabled' );
 	}
 
 }

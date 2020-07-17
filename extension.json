@@ -59,12 +59,18 @@
 			"services": [ "GrowthExperimentsTipsAssembler", "GrowthExperimentsConfigurationLoader" ]
 		}
 	],
+	"HookHandlers": {
+		"welcomeSurvey": {
+			"class": "GrowthExperiments\\WelcomeSurveyHooks",
+			"services": [ "MainConfig" ]
+		}
+	},
 	"Hooks": {
 		"MobileMenu": [
 			"GrowthExperiments\\HomepageHooks::onMobileMenu"
 		],
 		"SpecialPage_initList": [
-			"GrowthExperiments\\WelcomeSurveyHooks::onSpecialPageInitList",
+			"welcomeSurvey",
 			"GrowthExperiments\\HomepageHooks::onSpecialPageInitList"
 		],
 		"UserGetDefaultOptions": [
@@ -77,14 +83,12 @@
 			"GrowthExperiments\\HomepageHooks::onLocalUserCreated"
 		],
 		"GetPreferences": [
-			"GrowthExperiments\\WelcomeSurveyHooks::onGetPreferences",
+			"welcomeSurvey",
 			"GrowthExperiments\\HelpPanelHooks::onGetPreferences",
 			"GrowthExperiments\\HomepageHooks::onGetPreferences",
 			"GrowthExperiments\\TourHooks::onGetPreferences"
 		],
-		"BeforeWelcomeCreation": [
-			"GrowthExperiments\\WelcomeSurveyHooks::onBeforeWelcomeCreation"
-		],
+		"BeforeWelcomeCreation": "welcomeSurvey",
 		"SiteNoticeAfter": [
 			"GrowthExperiments\\HomepageHooks::onSiteNoticeAfter"
 		],
