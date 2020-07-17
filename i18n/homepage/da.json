@@ -70,6 +70,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Kultur",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Geografi",
 	"growthexperiments-homepage-suggestededits-topics-more": "vis mere",
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|emne|emner}}",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Vælg alle",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Fjern alle"
 }

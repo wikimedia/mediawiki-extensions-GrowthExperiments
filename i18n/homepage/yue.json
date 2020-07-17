@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hello903hello"
+			"Hello903hello",
+			"Moon0319"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|你好}}，{{bidi:$1}}！",
@@ -11,11 +12,16 @@
 	"growthexperiments-homepage-account-header": "開咗戶口",
 	"growthexperiments-homepage-account-editcount": "$1次{{PLURAL:$1|編輯}}",
 	"growthexperiments-homepage-account-age": "你個戶口已經開咗$1",
+	"growthexperiments-homepage-userpage-button": "開用戶版",
+	"growthexperiments-homepage-userpage-button-done": "改用戶版",
 	"growthexperiments-homepage-email-header-unconfirmed": "確認{{GENDER:$1|你嘅}}電郵地址",
 	"growthexperiments-homepage-email-header-confirmed": "加咗電郵地址",
 	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|你嘅}}電郵地址已經已經核實咗。你可以喺喜好設定度改你嘅電郵設定。",
 	"growthexperiments-homepage-email-button-noemail": "加電郵地址",
 	"growthexperiments-homepage-email-button-confirmed": "自訂喜好",
+	"growthexperiments-homepage-startediting-header": "開始改",
+	"growthexperiments-homepage-startediting-dialog-intro-header": "維基百科係由啲好似{{GENDER:|您}}噉嘅人貢獻出嚟嘅。",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "搞掂",
 	"growthexperiments-homepage-mentorship-question-subject": "來自[[User:$1|$1]]嘅問題",
 	"growthexperiments-homepage-tutorial-header": "學下點改嘢",
 	"growthexperiments-homepage-tutorial-cta-text": "教學",
@@ -24,5 +30,12 @@
 	"growthexperiments-homepage-contributions-zero-button": "去{{GENDER:$1|你嘅}}頭版",
 	"growthexperiments-tour-welcome-title": "歡迎來到{{GENDER:$1|你嘅}}頭版！",
 	"growthexperiments-tour-welcome-description": "{{GENDER:$1|你}}可以隨時撳{{GENDER:$1|你}}個用戶名返來呢度。",
-	"growthexperiments-homepage-welcomesurvey-default-close": "去{{GENDER:$1|你嘅}}頭版"
+	"growthexperiments-homepage-welcomesurvey-default-close": "去{{GENDER:$1|你嘅}}頭版",
+	"growthexperiments-homepage-suggestededits-topic-name-africa": "非洲",
+	"growthexperiments-homepage-suggestededits-topic-name-europe": "歐洲",
+	"growthexperiments-homepage-suggestededits-topic-name-oceania": "大洋洲",
+	"growthexperiments-homepage-suggestededits-topic-name-biology": "生物學",
+	"growthexperiments-homepage-suggestededits-topic-name-chemistry": "化學",
+	"growthexperiments-homepage-suggestededits-topic-group-name-history-and-society": "歷史同埋社會",
+	"growthexperiments-homepage-suggestededits-error-description": "唔該等陣再試。"
 }
