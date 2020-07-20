@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ainali",
 			"WikiPhoenix"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "Hantera frågor som läggs upp via hjälppanelen för nuvarande användare.",
-	"apihelp-helppanelquestionposter-param-body": "Frågans text som användaren angav."
+	"apihelp-helppanelquestionposter-param-body": "Frågans text som användaren angav.",
+	"apihelp-helppanelquestionposter-param-source": "Komponenten vid källan till frågan. Giltiga värden är «helppanel», «homepage-help» och «homepage-mentorship»",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Den relevanta titeln, om vald, som ska inkluderas med frågan."
 }

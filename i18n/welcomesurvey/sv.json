@@ -9,7 +9,7 @@
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Välkommen}}, $1!",
-	"welcomesurvey-save-confirmation-title": "Tack! Din svar har sparats.",
+	"welcomesurvey-save-confirmation-title": "Tack! Ditt svar har sparats.",
 	"welcomesurvey-save-confirmation-text": "Dina svar kommer att hjälpa oss ge dig användbara sätt att börja på Wikipedia.",
 	"welcomesurvey-subtitle": "Hjälp oss att göra din upplevelse av Wikipedia bättre genom att besvara några valfria frågor.",
 	"welcomesurvey-save-btn": "Slutför",

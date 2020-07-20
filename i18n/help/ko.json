@@ -6,7 +6,8 @@
 			"MemphisA5",
 			"Nuevo Paso",
 			"Revi",
-			"Ykhwong"
+			"Ykhwong",
+			"밝은소년"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "편집 도움말 패널 활성화하기",
@@ -38,7 +39,7 @@
 	"growthexperiments-help-panel-suggestededits-title": "편집 제안",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "빠른 시작을 위한 팁",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>준비되었나요?</strong> \"{{int:vector-view-edit}}\"을 눌러 시작하세요.",
-	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>준비되었나요?</strong> 문서의 연필 버튼을 눌러 시작하세요.",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>준비되었나요?</strong> 편집하고자 하는 문단을 여신 후 연필 아이콘을 눌러 주세요.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "교열은 문서의 철자, 문법 등을 검토하고 문서가 명확하게 쓰여 있는지 확인하는 절차입니다. 이러한 절차는 문서가 더 전문적이고 신뢰할 수 있게 쓰여지도록 도와줍니다.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "박종철 고문치사 사건은 6월 <mark class=\"negative\">황쟁</mark>의 직접적인 도화선이 되었다고 평가받는다.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "문서를 고치기 위해서 한 두개의 작은 편집만 해도 됩니다. 문서를 처음부터 끝까지 보지 않아도 됩니다. 주제에 대해 특별히 잘 알아야 하는 것도 아닙니다.",

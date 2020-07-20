@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Sibabrata Banerjee",
 			"আফতাবুজ্জামান"
 		]
 	},
@@ -9,7 +10,7 @@
 	"welcomesurvey-save-btn": "সম্পন্ন",
 	"welcomesurvey-skip-btn": "জরিপ {{GENDER:$1|এড়িয়ে যান}}",
 	"welcomesurvey-close-btn": "বন্ধ করুন ও $1-এ ফিরে যান",
-	"welcomesurvey-privacy-policy-link-text": "আরও জানুন",
+	"welcomesurvey-privacy-policy-link-text": "নতুন সম্পাদকদের ওপর তথ্য সম্বন্ধে আরও জানুন",
 	"welcomesurvey-sidebar-editing-link2-text": "সাহায্য কেন্দ্র",
 	"welcomesurvey-dropdown-option-select-label": "দয়া করে নির্বাচন করুন...",
 	"welcomesurvey-question-reason-option-read-label": "উইকিপিডিয়া পড়তে",

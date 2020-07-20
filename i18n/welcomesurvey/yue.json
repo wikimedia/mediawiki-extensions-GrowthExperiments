@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hello903hello"
+			"Hello903hello",
+			"Moon0319"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|歡迎}}，$1！",
@@ -9,7 +10,7 @@
 	"welcomesurvey-sidebar-privacy-title": "我哋重視你嘅私隱",
 	"welcomesurvey-question-edited-option-yes-few-label": "有，一兩次",
 	"welcomesurvey-question-edited-option-no-dunno-label": "無，我唔知道原來我可以改維基百科",
-	"welcomesurvey-question-edited-option-no-other-label": "無，出於其他原因",
+	"welcomesurvey-question-edited-option-no-other-label": "冇，出於第啲原因",
 	"welcomesurvey-question-edited-option-dont-remember-label": "我唔記得",
 	"welcomesurvey-question-email-label": "電郵地址（可以唔填）",
 	"welcomesurvey-question-email-placeholder": "入你嘅電郵地址⋯⋯"
