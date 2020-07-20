@@ -63,6 +63,19 @@
 		"welcomeSurvey": {
 			"class": "GrowthExperiments\\WelcomeSurveyHooks",
 			"services": [ "MainConfig" ]
+		},
+		"homepage": {
+			"class": "GrowthExperiments\\HomepageHooks",
+			"services": [
+				"MainConfig",
+				"DBLoadBalancer",
+				"UserOptionsLookup",
+				"NamespaceInfo",
+				"StatsdDataFactory",
+				"GrowthExperimentsEditInfoService",
+				"GrowthExperimentsConfigurationLoader",
+				"GrowthExperimentsNewcomerTaskTrackerFactory"
+			]
 		}
 	},
 	"Hooks": {
@@ -71,73 +84,55 @@
 		],
 		"SpecialPage_initList": [
 			"welcomeSurvey",
-			"GrowthExperiments\\HomepageHooks::onSpecialPageInitList"
+			"homepage"
 		],
 		"UserGetDefaultOptions": [
 			"GrowthExperiments\\HelpPanelHooks::onUserGetDefaultOptions",
-			"GrowthExperiments\\HomepageHooks::onUserGetDefaultOptions",
+			"homepage",
 			"GrowthExperiments\\TourHooks::onUserGetDefaultOptions"
 		],
 		"LocalUserCreated": [
 			"GrowthExperiments\\HelpPanelHooks::onLocalUserCreated",
-			"GrowthExperiments\\HomepageHooks::onLocalUserCreated"
+			"homepage"
 		],
 		"GetPreferences": [
 			"welcomeSurvey",
 			"GrowthExperiments\\HelpPanelHooks::onGetPreferences",
-			"GrowthExperiments\\HomepageHooks::onGetPreferences",
+			"homepage",
 			"GrowthExperiments\\TourHooks::onGetPreferences"
 		],
 		"BeforeWelcomeCreation": "welcomeSurvey",
-		"SiteNoticeAfter": [
-			"GrowthExperiments\\HomepageHooks::onSiteNoticeAfter"
-		],
-		"SpecialContributionsBeforeMainOutput": [
-			"GrowthExperiments\\HomepageHooks::onSpecialContributionsBeforeMainOutput"
-		],
-		"SpecialPageAfterExecute": [
-			"GrowthExperiments\\HomepageHooks::onSpecialPageAfterExecute"
-		],
+		"SiteNoticeAfter": "homepage",
+		"SpecialContributionsBeforeMainOutput": "homepage",
+		"SpecialPageAfterExecute": "homepage",
 		"BeforePageDisplay": [
 			"GrowthExperiments\\HelpPanelHooks::onBeforePageDisplay",
-			"GrowthExperiments\\HomepageHooks::onBeforePageDisplay",
+			"homepage",
 			"GrowthExperiments\\TourHooks::onBeforePageDisplay"
 		],
-		"ConfirmEmailComplete": [
-			"GrowthExperiments\\HomepageHooks::onConfirmEmailComplete"
-		],
+		"ConfirmEmailComplete": "homepage",
 		"SkinMinervaOptionsInit": [
 			"GrowthExperiments\\HomepageHooks::onSkinMinervaOptionsInit"
 		],
 		"ListDefinedTags": [
 			"GrowthExperiments\\HelpPanelHooks::onListDefinedTags",
-			"GrowthExperiments\\HomepageHooks::onListDefinedTags"
+			"homepage"
 		],
 		"ChangeTagsListActive": [
 			"GrowthExperiments\\HelpPanelHooks::onListDefinedTags",
-			"GrowthExperiments\\HomepageHooks::onChangeTagsListActive"
+			"homepage"
 		],
-		"RecentChange_save": [
-			"GrowthExperiments\\HomepageHooks::onRecentChangeSave"
-		],
-		"SkinTemplateNavigation::Universal": [
-			"GrowthExperiments\\HomepageHooks::onSkinTemplateNavigationUniversal"
-		],
-		"PersonalUrls": [
-			"GrowthExperiments\\HomepageHooks::onPersonalUrls"
-		],
-		"MessageCache::get": [
-			"GrowthExperiments\\HomepageHooks::onMessageCacheGet"
-		],
+		"RecentChange_save": "homepage",
+		"SkinTemplateNavigation::Universal": "homepage",
+		"PersonalUrls": "homepage",
+		"MessageCache::get": "homepage",
 		"AuthChangeFormFields": [
 			"GrowthExperiments\\ConfirmEmailHooks::onAuthChangeFormFields"
 		],
 		"UserSendConfirmationMail": [
 			"GrowthExperiments\\ConfirmEmailHooks::onUserSendConfirmationMail"
 		],
-		"UserSaveOptions": [
-			"GrowthExperiments\\HomepageHooks::onUserSaveOptions"
-		],
+		"UserSaveOptions": "homepage",
 		"ResourceLoaderRegisterModules": [
 			"GrowthExperiments\\TourHooks::onResourceLoaderRegisterModules"
 		],
