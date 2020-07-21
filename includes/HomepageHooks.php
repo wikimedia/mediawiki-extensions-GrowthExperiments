@@ -1,4 +1,5 @@
 <?php
+// phpcs:disable MediaWiki.NamingConventions.LowerCamelFunctionsName.FunctionName
 
 namespace GrowthExperiments;
 
@@ -15,16 +16,20 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Tracker\Tracker;
+use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use GrowthExperiments\Specials\SpecialClaimMentee;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
 use Html;
+use IBufferingStatsdDataFactory;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Menu\Entries\HomeMenuEntry;
 use MediaWiki\Minerva\Menu\Entries\IProfileMenuEntry;
 use MediaWiki\Minerva\Menu\Group;
 use MediaWiki\Minerva\SkinOptions;
+use MediaWiki\User\UserOptionsLookup;
+use NamespaceInfo;
 use OOUI\ButtonWidget;
 use OutputPage;
 use RecentChange;
@@ -40,8 +45,26 @@ use stdClass;
 use Throwable;
 use Title;
 use User;
+use Wikimedia\Rdbms\ILoadBalancer;
 
-class HomepageHooks {
+class HomepageHooks implements
+	\MediaWiki\SpecialPage\Hook\SpecialPage_initListHook,
+	\MediaWiki\Hook\BeforePageDisplayHook,
+	\MediaWiki\Hook\SkinTemplateNavigation__UniversalHook,
+	\MediaWiki\Hook\PersonalUrlsHook,
+	\MediaWiki\Cache\Hook\MessageCache__getHook,
+	\MediaWiki\Preferences\Hook\GetPreferencesHook,
+	\MediaWiki\User\Hook\UserGetDefaultOptionsHook,
+	\MediaWiki\Auth\Hook\LocalUserCreatedHook,
+	\MediaWiki\ChangeTags\Hook\ListDefinedTagsHook,
+	\MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook,
+	\MediaWiki\Hook\RecentChange_saveHook,
+	\MediaWiki\User\Hook\UserSaveOptionsHook,
+	\MediaWiki\Hook\SpecialContributionsBeforeMainOutputHook,
+	\MediaWiki\SpecialPage\Hook\SpecialPageAfterExecuteHook,
+	\MediaWiki\User\Hook\ConfirmEmailCompleteHook,
+	\MediaWiki\Hook\SiteNoticeAfterHook
+{
 
 	public const HOMEPAGE_PREF_ENABLE = 'growthexperiments-homepage-enable';
 	public const HOMEPAGE_PREF_PT_LINK = 'growthexperiments-homepage-pt-link';
@@ -60,38 +83,83 @@ class HomepageHooks {
 		'D',
 	];
 
+	/** @var Config */
+	private $config;
+	/** @var ILoadBalancer */
+	private $lb;
+	/** @var UserOptionsLookup */
+	private $userOptionsLookup;
+	/** @var NamespaceInfo */
+	private $namespaceInfo;
+	/** @var IBufferingStatsdDataFactory */
+	private $statsdDataFactory;
+	/** @var EditInfoService */
+	private $editInfoService;
+	/** @var ConfigurationLoader */
+	private $configurationLoader;
+	/** @var TrackerFactory */
+	private $trackerFactory;
+
+	/**
+	 * HomepageHooks constructor.
+	 * @param Config $config
+	 * @param ILoadBalancer $lb
+	 * @param UserOptionsLookup $userOptionsLookup
+	 * @param NamespaceInfo $namespaceInfo
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param EditInfoService $editInfoService
+	 * @param ConfigurationLoader $configurationLoader
+	 * @param TrackerFactory $trackerFactory
+	 */
+	public function __construct(
+		Config $config, ILoadBalancer $lb, UserOptionsLookup $userOptionsLookup,
+		NamespaceInfo $namespaceInfo, IBufferingStatsdDataFactory $statsdDataFactory,
+		EditInfoService $editInfoService, ConfigurationLoader $configurationLoader,
+		TrackerFactory $trackerFactory
+	) {
+		$this->config = $config;
+		$this->lb = $lb;
+		$this->userOptionsLookup = $userOptionsLookup;
+		$this->namespaceInfo = $namespaceInfo;
+		$this->statsdDataFactory = $statsdDataFactory;
+		$this->editInfoService = $editInfoService;
+		$this->configurationLoader = $configurationLoader;
+		$this->trackerFactory = $trackerFactory;
+	}
+
 	/**
 	 * Register Homepage, Impact and ClaimMentee special pages.
 	 *
 	 * @param array &$list
 	 * @throws ConfigException
 	 */
-	public static function onSpecialPageInitList( &$list ) {
+	public function onSpecialPage_initList( &$list ) {
 		if ( self::isHomepageEnabled() ) {
 			$pageViewInfoEnabled = \ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
 			$mwServices = MediaWikiServices::getInstance();
 			$list['Homepage'] = function () use ( $pageViewInfoEnabled, $mwServices ) {
 				$pageViewsService = $pageViewInfoEnabled ? $mwServices->get( 'PageViewService' ) : null;
 				return new SpecialHomepage(
-					$mwServices->get( 'GrowthExperimentsEditInfoService' ),
-					$mwServices->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA ),
-					$mwServices->get( 'GrowthExperimentsConfigurationLoader' ),
-					$mwServices->get( 'GrowthExperimentsNewcomerTaskTrackerFactory' ),
-					$mwServices->getStatsdDataFactory(),
+					$this->editInfoService,
+					$this->lb->getLazyConnectionRef( DB_REPLICA ),
+					$this->configurationLoader,
+					$this->trackerFactory,
+					$this->statsdDataFactory,
 					$pageViewsService
 				);
 			};
 			if ( $pageViewInfoEnabled ) {
-				$list['Impact'] = function () use ( $pageViewInfoEnabled, $mwServices ) {
+				$list['Impact'] = function () use ( $mwServices ) {
 					return new SpecialImpact(
-						$mwServices->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA ),
+						$this->lb->getLazyConnectionRef( DB_REPLICA ),
 						$mwServices->get( 'PageViewService' )
 					);
 				};
 			}
-			$list[ 'ClaimMentee' ] = function () use ( $mwServices ) {
-				return new SpecialClaimMentee( $mwServices->getMainConfig() );
-			};
+			$list[ 'ClaimMentee' ] = [
+				'class' => SpecialClaimMentee::class,
+				'services' => [ 'MainConfig' ]
+			];
 		}
 	}
 
@@ -152,10 +220,10 @@ class HomepageHooks {
 	 * @param Skin $skin
 	 * @throws ConfigException
 	 */
-	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
+	public function onBeforePageDisplay( $out, $skin ) : void {
 		$context = $out->getContext();
 		if ( SuggestedEdits::isEnabled( $context ) ) {
-			// Manage the suggesed edit session.
+			// Manage the suggested edit session.
 			$out->addModules( 'ext.growthExperiments.SuggestedEditSession' );
 		}
 
@@ -213,7 +281,7 @@ class HomepageHooks {
 	 * @throws \MWException
 	 * @throws ConfigException
 	 */
-	public static function onSkinTemplateNavigationUniversal( SkinTemplate $skin, array &$links ) {
+	public function onSkinTemplateNavigation__Universal( $skin, &$links ) : void {
 		$user = $skin->getUser();
 		if ( !self::isHomepageEnabled( $user ) ) {
 			return;
@@ -237,8 +305,8 @@ class HomepageHooks {
 
 			// T250554: If user currently views a subpage, direct him to the subpage talk page
 			if ( !$isHomepage ) {
-				$subjectpage = MediaWikiServices::getInstance()->getNamespaceInfo()->getSubjectPage( $title );
-				$talkpage = MediaWikiServices::getInstance()->getNamespaceInfo()->getTalkPage( $title );
+				$subjectpage = $this->namespaceInfo->getSubjectPage( $title );
+				$talkpage = $this->namespaceInfo->getTalkPage( $title );
 
 				if ( $subjectpage instanceof \TitleValue ) {
 					$subjectpage = Title::newFromTitleValue( $subjectpage );
@@ -287,12 +355,12 @@ class HomepageHooks {
 	 * Conditionally make the userpage link go to the homepage.
 	 *
 	 * @param array &$personal_urls
-	 * @param Title $title
+	 * @param Title &$title
 	 * @param SkinTemplate $sk
 	 * @throws \MWException
 	 * @throws ConfigException
 	 */
-	public static function onPersonalUrls( &$personal_urls, Title $title, $sk ) {
+	public function onPersonalUrls( &$personal_urls, &$title, $sk ) : void {
 		$user = $sk->getUser();
 		if ( !self::isHomepageEnabled( $user ) || Util::isMobile( $sk ) ) {
 			return;
@@ -315,7 +383,7 @@ class HomepageHooks {
 	 * @param string &$lcKey message key to check and possibly convert
 	 * @throws ConfigException
 	 */
-	public static function onMessageCacheGet( &$lcKey ) {
+	public function onMessageCache__get( &$lcKey ) {
 		$user = RequestContext::getMain()->getUser();
 		if (
 			$lcKey === 'tooltip-pt-userpage' &&
@@ -333,12 +401,10 @@ class HomepageHooks {
 	 * @param array &$preferences Preferences object
 	 * @throws ConfigException
 	 */
-	public static function onGetPreferences( $user, &$preferences ) {
+	public function onGetPreferences( $user, &$preferences ) {
 		if ( !self::isHomepageEnabled() ) {
 			return;
 		}
-
-		$config = MediaWikiServices::getInstance()->getMainConfig();
 
 		$preferences[ self::HOMEPAGE_PREF_ENABLE ] = [
 			'type' => 'toggle',
@@ -381,7 +447,7 @@ class HomepageHooks {
 			'type' => 'api',
 		];
 
-		$preferences[ SuggestedEdits::getTopicFiltersPref( $config ) ] = [
+		$preferences[ SuggestedEdits::getTopicFiltersPref( $this->config ) ] = [
 			'type' => 'api'
 		];
 
@@ -389,14 +455,13 @@ class HomepageHooks {
 			'type' => 'api'
 		];
 
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		if ( $config->get( 'GEHomepageSuggestedEditsRequiresOptIn' ) ) {
+		if ( $this->config->get( 'GEHomepageSuggestedEditsRequiresOptIn' ) ) {
 			$preferences[ SuggestedEdits::ENABLED_PREF ] = [
 				'type' => 'api'
 			];
 		}
 
-		if ( $config->get( 'GEHomepageSuggestedEditsTopicsRequiresOptIn' ) ) {
+		if ( $this->config->get( 'GEHomepageSuggestedEditsTopicsRequiresOptIn' ) ) {
 			$preferences[ SuggestedEdits::TOPICS_ENABLED_PREF ] = [
 				'type' => 'api'
 			];
@@ -412,7 +477,7 @@ class HomepageHooks {
 	 *
 	 * @param array &$wgDefaultUserOptions Reference to default options array
 	 */
-	public static function onUserGetDefaultOptions( &$wgDefaultUserOptions ) {
+	public function onUserGetDefaultOptions( &$wgDefaultUserOptions ) {
 		$wgDefaultUserOptions += [
 			// Set discovery notice seen flag to true; it will be changed for new users in the
 			// LocalUserCreated hook.
@@ -427,14 +492,13 @@ class HomepageHooks {
 	 * @param bool $autocreated
 	 * @throws ConfigException
 	 */
-	public static function onLocalUserCreated( User $user, $autocreated ) {
+	public function onLocalUserCreated( $user, $autocreated ) {
 		if ( !self::isHomepageEnabled() ) {
 			return;
 		}
 
 		// Enable the homepage for a percentage of non-autocreated users.
-		$config = RequestContext::getMain()->getConfig();
-		$enablePercentage = $config->get( 'GEHomepageNewAccountEnablePercentage' );
+		$enablePercentage = $this->config->get( 'GEHomepageNewAccountEnablePercentage' );
 		if ( $user->isLoggedIn() && !$autocreated && rand( 0, 99 ) < $enablePercentage ) {
 			$user->setOption( self::HOMEPAGE_PREF_ENABLE, 1 );
 			$user->setOption( self::HOMEPAGE_PREF_PT_LINK, 1 );
@@ -468,7 +532,7 @@ class HomepageHooks {
 			}
 
 			if (
-				$config->get( 'GEHelpPanelNewAccountEnableWithHomepage' ) &&
+				$this->config->get( 'GEHelpPanelNewAccountEnableWithHomepage' ) &&
 				HelpPanel::isHelpPanelEnabled()
 			) {
 				$user->setOption( HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE, 1 );
@@ -477,7 +541,7 @@ class HomepageHooks {
 			// Variant assignment
 			$random = rand( 0, 99 );
 			$variant = null;
-			foreach ( $config->get( 'GEHomepageNewAccountVariants' ) as $candidateVariant => $percentage ) {
+			foreach ( $this->config->get( 'GEHomepageNewAccountVariants' ) as $candidateVariant => $percentage ) {
 				if ( $random < $percentage ) {
 					$variant = $candidateVariant;
 					$user->setOption( self::HOMEPAGE_PREF_VARIANT, $variant );
@@ -487,7 +551,7 @@ class HomepageHooks {
 			}
 			if ( $variant === null ) {
 				// Use the default variant, but don't save it
-				$variant = $config->get( 'GEHomepageDefaultVariant' );
+				$variant = $this->config->get( 'GEHomepageDefaultVariant' );
 			}
 
 			// Pre-initiate suggested edits for variant C
@@ -509,13 +573,12 @@ class HomepageHooks {
 	 * @param array &$tags The list of tags.
 	 * @throws ConfigException
 	 */
-	public static function onListDefinedTags( &$tags ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
+	public function onListDefinedTags( &$tags ) {
 		if ( self::isHomepageEnabled() ) {
 			$tags[] = Help::HELP_MODULE_QUESTION_TAG;
 			$tags[] = Mentorship::MENTORSHIP_MODULE_QUESTION_TAG;
 		}
-		if ( SuggestedEdits::isEnabledForAnyone( $config ) ) {
+		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 			$tags[] = SuggestedEdits::SUGGESTED_EDIT_TAG;
 		}
 	}
@@ -528,13 +591,12 @@ class HomepageHooks {
 	 * @param array &$tags The list of tags.
 	 * @throws ConfigException
 	 */
-	public static function onChangeTagsListActive( &$tags ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
+	public function onChangeTagsListActive( &$tags ) {
 		if ( self::isHomepageEnabled() ) {
 			// Help::HELP_MODULE_QUESTION_TAG is no longer active (T232548)
 			$tags[] = Mentorship::MENTORSHIP_MODULE_QUESTION_TAG;
 		}
-		if ( SuggestedEdits::isEnabledForAnyone( $config ) ) {
+		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 			$tags[] = SuggestedEdits::SUGGESTED_EDIT_TAG;
 		}
 	}
@@ -544,18 +606,16 @@ class HomepageHooks {
 	 *
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/RecentChange_save
 	 *
-	 * @param RecentChange &$rc
+	 * @param RecentChange $rc
 	 */
-	public static function onRecentChangeSave( RecentChange &$rc ) {
+	public function onRecentChange_save( $rc ) {
 		$context = RequestContext::getMain();
 		if ( SuggestedEdits::isEnabled( $context ) &&
 			 SuggestedEdits::isActivated( $context )
 		) {
 			/** @var Tracker $tracker */
-			$tracker = MediaWikiServices::getInstance()->get(
-				'GrowthExperimentsNewcomerTaskTrackerFactory'
-			)->getTracker( $rc->getPerformer() );
-			if ( $tracker && in_array( $rc->getTitle()->getArticleID(), $tracker->getTrackedPageIds() ) ) {
+			$tracker = $this->trackerFactory->getTracker( $rc->getPerformer() );
+			if ( in_array( $rc->getTitle()->getArticleID(), $tracker->getTrackedPageIds() ) ) {
 				$rc->addTags( SuggestedEdits::SUGGESTED_EDIT_TAG );
 			}
 		}
@@ -569,12 +629,10 @@ class HomepageHooks {
 	 * @param array $originalOptions Original options being replaced
 	 * @return bool true in all cases
 	 */
-	public static function onUserSaveOptions( $user, &$options, $originalOptions ) {
+	public function onUserSaveOptions( $user, &$options, $originalOptions ) {
 		$homepagePrefEnabled = $options[self::HOMEPAGE_PREF_ENABLE] ?? false;
 		$homepageAlreadyEnabled = $originalOptions[self::HOMEPAGE_PREF_ENABLE] ?? false;
-		$userHasMentor = MediaWikiServices::getInstance()
-			->getUserOptionsLookup()
-			->getIntOption( $user, Mentor::MENTOR_PREF );
+		$userHasMentor = $this->userOptionsLookup->getIntOption( $user, Mentor::MENTOR_PREF );
 		if ( $homepagePrefEnabled && !$homepageAlreadyEnabled && !$userHasMentor ) {
 			try {
 				$mentor = Mentor::newFromMentee( $user, true );
@@ -690,9 +748,7 @@ class HomepageHooks {
 	 * @param User $user
 	 * @param SpecialContributions $sp
 	 */
-	public static function onSpecialContributionsBeforeMainOutput(
-		$userId, User $user, SpecialContributions $sp
-	) {
+	public function onSpecialContributionsBeforeMainOutput( $userId, $user, $sp ) {
 		if (
 			$user->equals( $sp->getUser() ) &&
 			$user->getEditCount() === 0 &&
@@ -709,7 +765,7 @@ class HomepageHooks {
 	 * @param SpecialPage $sp
 	 * @param string $subPage
 	 */
-	public static function onSpecialPageAfterExecute( SpecialPage $sp, $subPage ) {
+	public function onSpecialPageAfterExecute( $sp, $subPage ) {
 		// Can't use $sp instanceof \SpecialMobileContributions because that fails if
 		// MobileFrontend is not installed
 		if ( get_class( $sp ) !== 'SpecialMobileContributions' ) {
@@ -733,10 +789,11 @@ class HomepageHooks {
 	}
 
 	/**
+	 * @param User $user
 	 * @throws ConfigException
 	 * @throws \MWException
 	 */
-	public static function onConfirmEmailComplete() {
+	public function onConfirmEmailComplete( $user ) {
 		// context user is used for cases when someone else than $user confirms the email,
 		// and that user doesn't have homepage enabled
 		if ( self::isHomepageEnabled( RequestContext::getMain()->getUser() ) ) {
@@ -756,7 +813,7 @@ class HomepageHooks {
 	 * @return bool|void
 	 * @throws ConfigException
 	 */
-	public static function onSiteNoticeAfter( &$siteNotice, Skin $skin ) {
+	public function onSiteNoticeAfter( &$siteNotice, $skin ) {
 		global $wgMinervaEnableSiteNotice;
 		if ( self::isHomepageEnabled( $skin->getUser() ) ) {
 			return SiteNoticeGenerator::setNotice(
