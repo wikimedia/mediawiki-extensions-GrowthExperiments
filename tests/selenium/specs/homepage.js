@@ -30,7 +30,7 @@ describe( 'Homepage', function () {
 
 	} );
 
-	it( 'can be disabled for new user', function () {
+	it.skip( 'can be disabled for new user', function () {
 
 		PreferencesPage.open();
 		PreferencesPage.clickHomepageCheckBox();
