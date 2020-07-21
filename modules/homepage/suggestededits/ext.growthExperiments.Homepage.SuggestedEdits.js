@@ -47,6 +47,7 @@
 		this.taskTypesQuery = [];
 		this.topicsQuery = [];
 		this.api = api;
+		this.taskQueue = [];
 		// Allow restoring on cancel.
 		this.backup = {};
 		this.backup.taskQueue = [];
@@ -63,8 +64,7 @@
 				done: 'filterSelection',
 				cancel: 'restoreState',
 				open: 'backupState'
-			} )
-			.toggle( false );
+			} );
 
 		// Topic presets will be null or an empty string if the user never set them.
 		// It's possible that config.topicPresets is an empty array if the user set,
@@ -74,18 +74,20 @@
 				.append( $( '<div>' ).addClass( 'mw-pulsating-dot' ) );
 		}
 
-		this.pager = new PagerWidget().toggle( false );
+		this.pager = new PagerWidget();
+		// Fake message so that the pager takes up space that will be styled
+		// with the skeleton.
+		this.pager.setMessage( 0, 0 );
 		this.previousWidget = new PreviousNextWidget( { direction: 'Previous' } )
-			.connect( this, { click: 'onPreviousCard' } )
-			.toggle( false );
+			.connect( this, { click: 'onPreviousCard' } );
 		this.nextWidget = new PreviousNextWidget( { direction: 'Next' } )
-			.connect( this, { click: 'onNextCard' } )
-			.toggle( false );
+			.connect( this, { click: 'onNextCard' } );
 
 		$pager = this.$element.find( '.suggested-edits-pager' );
 		if ( !$pager.length ) {
 			$pager = $( '<div>' ).addClass( 'suggested-edits-pager' ).appendTo( this.$element );
 		}
+		$pager.addClass( 'skeleton' );
 		$previous = this.$element.find( '.suggested-edits-previous' );
 		if ( !$previous.length ) {
 			$previous = $( '<div>' ).addClass( 'suggested-edits-previous' ).appendTo( this.$element );
@@ -221,7 +223,7 @@
 			this.pager.setMessage( this.queuePosition + 1, this.taskQueue.length );
 			this.pager.toggle( true );
 		} else {
-			this.pager.toggle( false );
+			this.pager.toggle( this.currentCard instanceof EditCardWidget );
 		}
 	};
 
@@ -230,8 +232,8 @@
 			hasNext = this.queuePosition < this.taskQueue.length;
 		this.previousWidget.setDisabled( !hasPrevious );
 		this.nextWidget.setDisabled( !hasNext );
-		this.previousWidget.toggle( this.taskQueue.length );
-		this.nextWidget.toggle( this.taskQueue.length );
+		this.previousWidget.toggle( this.currentCard instanceof EditCardWidget || this.taskQueue.length );
+		this.nextWidget.toggle( this.currentCard instanceof EditCardWidget || this.taskQueue.length );
 	};
 
 	/**
@@ -436,13 +438,18 @@
 	SuggestedEditsModule.prototype.setupClickLogging = function () {
 		var $link = this.currentCard.$element.find( '.se-card-content' ),
 			clickId = mw.config.get( 'wgGEHomepagePageviewToken' ),
-			newUrl = new mw.Uri( $link.attr( 'href' ) ).extend( { geclickid: clickId } ).toString();
+			newUrl = $link.attr( 'href' ) ?
+				new mw.Uri( $link.attr( 'href' ) ).extend( { geclickid: clickId } ).toString() :
+				'';
 
 		$link
 			.attr( 'href', newUrl )
 			.on( 'click', function () {
-				this.logger.log( 'suggested-edits', this.mode, 'se-task-click',
-					{ newcomerTaskToken: this.logCardData( this.queuePosition ) } );
+				if ( newUrl ) {
+					// Only log if this is a task card, not the skeleton loading card
+					this.logger.log( 'suggested-edits', this.mode, 'se-task-click',
+						{ newcomerTaskToken: this.logCardData( this.queuePosition ) } );
+				}
 			}.bind( this ) );
 	};
 
@@ -451,8 +458,10 @@
 	 */
 	SuggestedEditsModule.prototype.setupEditTypeTracking = function () {
 		var $link = this.currentCard.$element.find( '.se-card-content' ),
-			newUrl = new mw.Uri( $link.attr( 'href' ) )
-				.extend( { getasktype: this.currentCard.getTaskType() } ).toString();
+			newUrl = $link.attr( 'href' ) ?
+				new mw.Uri( $link.attr( 'href' ) )
+					.extend( { getasktype: this.currentCard.getTaskType() } ).toString() :
+				'';
 		$link.attr( 'href', newUrl );
 	};
 
@@ -493,6 +502,9 @@
 				mw.config.get( 'wgGEHomepagePageviewToken' )
 			),
 			api );
+		// Show an empty skeleton card, which will be overwritten once tasks
+		// are fetched.
+		suggestedEditsModule.showCard( new EditCardWidget( {} ) );
 		return suggestedEditsModule.fetchTasksAndUpdateView()
 			.then( function () {
 				suggestedEditsModule.filters.toggle( true );

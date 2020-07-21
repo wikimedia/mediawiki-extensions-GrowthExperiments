@@ -16,7 +16,7 @@
 			url = data.url;
 		} else if ( data.pageId ) {
 			url = new mw.Title( 'Special:Homepage/newcomertask/' + data.pageId ).getUrl();
-		} else {
+		} else if ( data.title ) {
 			url = new mw.Title( data.title ).getUrl();
 		}
 
@@ -32,6 +32,14 @@
 						)
 				)
 		);
+
+		if ( !url ) {
+			// For the empty skeleton loading card on module load, don't allow
+			// clicks to go anywhere.
+			this.$element.on( 'click', function ( e ) {
+				e.preventDefault();
+			} );
+		}
 	}
 
 	OO.inheritClass( SuggestedEditCardWidget, OO.ui.Widget );
