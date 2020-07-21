@@ -2,14 +2,14 @@
 
 namespace GrowthExperiments\Tests;
 
-use GrowthExperiments\HelpPanel\QuestionPoster;
+use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use MediaWiki\Storage\PageUpdater;
 use MediaWiki\Storage\RevisionRecord;
 use Wikimedia\TestingAccessWrapper;
 
 /**
- * @coversDefaultClass \GrowthExperiments\HelpPanel\QuestionPoster
+ * @coversDefaultClass \GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster
  */
 class QuestionPosterTest extends \MediaWikiUnitTestCase {
 

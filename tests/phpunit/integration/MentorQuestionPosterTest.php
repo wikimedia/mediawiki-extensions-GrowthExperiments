@@ -3,7 +3,7 @@
 namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
-use GrowthExperiments\HelpPanel\MentorshipModuleQuestionPoster;
+use GrowthExperiments\HelpPanel\QuestionPoster\MentorQuestionPoster;
 use GrowthExperiments\Mentor;
 use MediaWikiTestCase;
 use RequestContext;
@@ -13,17 +13,17 @@ use Wikimedia\TestingAccessWrapper;
  * @group medium
  * @group Database
  */
-class MentorshipModuleQuestionPosterTest extends MediaWikiTestCase {
+class MentorQuestionPosterTest extends MediaWikiTestCase {
 
 	/**
 	 * @throws \MWException
-	 * @covers \GrowthExperiments\HelpPanel\MentorshipModuleQuestionPoster::__construct
+	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\MentorQuestionPoster::__construct
 	 */
 	public function testConstruct() {
 		$mentor = $this->getTestSysop()->getUser();
 		$context = $this->buildContext( $mentor->getId() );
 
-		$module = new MentorshipModuleQuestionPoster( $context, 'foo' );
+		$module = new MentorQuestionPoster( $context, 'foo' );
 		$spy = TestingAccessWrapper::newFromObject( $module );
 		$this->assertEquals( $mentor->getTalkPage(), $spy->targetTitle );
 	}

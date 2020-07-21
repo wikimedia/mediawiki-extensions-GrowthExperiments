@@ -1,11 +1,11 @@
 <?php
 
-namespace GrowthExperiments\HelpPanel;
+namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
 use ConfigException;
 use GrowthExperiments\HelpPanel;
 
-class HelpPanelQuestionPoster extends QuestionPoster {
+class HelpdeskQuestionPoster extends QuestionPoster {
 
 	const QUESTION_PREF = 'growthexperiments-helppanel-questions';
 
@@ -13,7 +13,7 @@ class HelpPanelQuestionPoster extends QuestionPoster {
 	 * @inheritDoc
 	 */
 	protected function getTag() {
-		return HelpPanel::HELP_PANEL_QUESTION_TAG;
+		return HelpPanel::HELPDESK_QUESTION_TAG;
 	}
 
 	/**

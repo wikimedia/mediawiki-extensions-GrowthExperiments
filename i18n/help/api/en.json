@@ -4,6 +4,10 @@
 	},
 	"apihelp-helppanelquestionposter-summary": "Handle questions posted via the help panel for the current user.",
 	"apihelp-helppanelquestionposter-param-body": "The text of the question provided by the user.",
-	"apihelp-helppanelquestionposter-param-source": "The component at the source of the question. Valid values are 'helppanel', 'homepage-help', and 'homepage-mentorship'",
+	"apihelp-helppanelquestionposter-param-source": "The method by which the question was posted.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "The \"Ask the help desk\" panel",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "The \"Ask your mentor\" panel on the newcomer homepage",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "The \"Ask the help desk\" panel (old name)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "The \"Ask your mentor\" panel on the newcomer homepage (old name)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "The relevant title, if selected, to include with the question."
 }

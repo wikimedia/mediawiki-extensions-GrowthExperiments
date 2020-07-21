@@ -77,7 +77,7 @@
 			suggestedEditSession: suggestedEditSession,
 			showCogMenu: false,
 			storageKey: 'homepage-questionposter-question-text-' + config.dialog.name,
-			source: 'homepage-' + config.dialog.name
+			source: 'mentor-homepage'
 		}, config.dialog ) );
 		ctaButton = OO.ui.ButtonWidget.static.infuse( $container.find( config.buttonSelector ) );
 

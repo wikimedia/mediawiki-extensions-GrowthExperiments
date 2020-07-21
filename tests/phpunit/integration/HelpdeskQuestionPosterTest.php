@@ -4,7 +4,7 @@ namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
 use FauxRequest;
-use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
+use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use HashConfig;
 use MediaWikiTestCase;
 use RequestContext;
@@ -17,7 +17,7 @@ use WikiPage;
  * @group medium
  * @group Database
  */
-class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
+class HelpdeskQuestionPosterTest extends MediaWikiTestCase {
 
 	/**
 	 * @var User|null
@@ -26,7 +26,7 @@ class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
 
 	/**
 	 * @throws \MWException
-	 * @covers \GrowthExperiments\HelpPanel\HelpPanelQuestionPoster::__construct
+	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster::__construct
 	 */
 	public function testConstruct() {
 		$context = $this->buildContext();
@@ -35,17 +35,17 @@ class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
 		$this->expectException( \MWException::class );
 		$this->expectExceptionMessage( 'User must be logged-in.' );
 
-		( new HelpPanelQuestionPoster( $context, 'foo' ) );
+		( new HelpdeskQuestionPoster( $context, 'foo' ) );
 	}
 
 	/**
 	 * @throws \MWException
 	 * @group Database
-	 * @covers \GrowthExperiments\HelpPanel\HelpPanelQuestionPoster::submit
+	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster::submit
 	 */
 	public function testSubmitExistingTarget() {
 		$this->insertPage( 'HelpDeskTest', '' );
-		$questionPoster = new HelpPanelQuestionPoster( $this->buildContext(), 'a great question' );
+		$questionPoster = new HelpdeskQuestionPoster( $this->buildContext(), 'a great question' );
 		$questionPoster->submit();
 		$revision = $questionPoster->getRevisionId();
 		$this->assertGreaterThan( 0, $revision );
@@ -59,11 +59,11 @@ class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
 	/**
 	 * @throws \MWException
 	 * @group Database
-	 * @covers \GrowthExperiments\HelpPanel\HelpPanelQuestionPoster::submit
+	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster::submit
 	 */
 	public function testSubmitNewTarget() {
 		$title = $this->getNonexistingTestPage()->getTitle();
-		$questionPoster = new HelpPanelQuestionPoster(
+		$questionPoster = new HelpdeskQuestionPoster(
 			$this->buildContext( $title->getPrefixedDBkey() ),
 			'a great question'
 		);
@@ -78,17 +78,17 @@ class HelpPanelQuestionPosterTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers \GrowthExperiments\HelpPanel\HelpPanelQuestionPoster::validateRelevantTitle
+	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster::validateRelevantTitle
 	 * @throws \MWException
 	 */
 	public function testValidateRelevantTitle() {
 		$this->insertPage( 'sample' );
-		$questionPoster = new HelpPanelQuestionPoster( $this->buildContext(), 'blah', 'sample' );
+		$questionPoster = new HelpdeskQuestionPoster( $this->buildContext(), 'blah', 'sample' );
 		$this->assertEquals(
 			Status::newGood(),
 			$questionPoster->validateRelevantTitle()
 		);
-		$questionPoster = new HelpPanelQuestionPoster( $this->buildContext(), 'blah', '>123' );
+		$questionPoster = new HelpdeskQuestionPoster( $this->buildContext(), 'blah', '>123' );
 		$this->assertEquals(
 			Status::newFatal( 'growthexperiments-help-panel-questionposter-invalid-title' ),
 			$questionPoster->validateRelevantTitle()

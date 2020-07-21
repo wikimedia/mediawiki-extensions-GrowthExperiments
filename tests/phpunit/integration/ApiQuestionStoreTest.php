@@ -6,8 +6,8 @@ use ApiTestCase;
 use ApiUsageException;
 use DerivativeContext;
 use FauxRequest;
-use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
-use GrowthExperiments\HelpPanel\MentorshipModuleQuestionPoster;
+use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
+use GrowthExperiments\HelpPanel\QuestionPoster\MentorQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentor;
 
@@ -37,7 +37,7 @@ class ApiQuestionStoreTest extends ApiTestCase {
 	 * @covers \GrowthExperiments\Api\ApiQuestionStore::execute
 	 */
 	public function testNoQuestionsResponse() {
-		foreach ( [ Mentorship::QUESTION_PREF, HelpPanelQuestionPoster::QUESTION_PREF ] as $storage ) {
+		foreach ( [ Mentorship::QUESTION_PREF, HelpdeskQuestionPoster::QUESTION_PREF ] as $storage ) {
 			$response = $this->doApiRequest( [
 				'action' => 'homepagequestionstore',
 				'storage' => $storage,
@@ -58,7 +58,7 @@ class ApiQuestionStoreTest extends ApiTestCase {
 		$context = new DerivativeContext( $this->apiContext );
 		$context->setRequest( $request );
 		$context->setUser( $user );
-		$questionPoster = new MentorshipModuleQuestionPoster( $context, 'foo' );
+		$questionPoster = new MentorQuestionPoster( $context, 'foo' );
 		$questionPoster->submit();
 		$response = $this->doApiRequest(
 			[

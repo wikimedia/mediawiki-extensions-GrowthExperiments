@@ -3,7 +3,7 @@
 namespace GrowthExperiments;
 
 use Config;
-use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
+use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use OutputPage;
 use RequestContext;
@@ -28,7 +28,7 @@ class HelpPanelHooks {
 				'section' => 'editing/editor',
 				'label-message' => self::HELP_PANEL_PREFERENCES_TOGGLE
 			];
-			$preferences[HelpPanelQuestionPoster::QUESTION_PREF] = [
+			$preferences[HelpdeskQuestionPoster::QUESTION_PREF] = [
 				'type' => 'api',
 			];
 		}
@@ -153,7 +153,7 @@ class HelpPanelHooks {
 	 */
 	public static function onListDefinedTags( &$tags ) {
 		if ( HelpPanel::isHelpPanelEnabled() ) {
-			$tags[] = HelpPanel::HELP_PANEL_QUESTION_TAG;
+			$tags[] = HelpPanel::HELPDESK_QUESTION_TAG;
 		}
 	}
 

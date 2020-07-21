@@ -3,11 +3,10 @@
 namespace GrowthExperiments\Api;
 
 use ApiBase;
-use ApiMain;
 use ApiUsageException;
-use GrowthExperiments\HelpPanel\HelpPanelQuestionPoster;
-use GrowthExperiments\HelpPanel\MentorshipModuleQuestionPoster;
-use GrowthExperiments\HelpPanel\QuestionPoster;
+use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
+use GrowthExperiments\HelpPanel\QuestionPoster\MentorQuestionPoster;
+use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster;
 use MWException;
 
 class ApiHelpPanelPostQuestion extends ApiBase {
@@ -16,27 +15,18 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 	const API_PARAM_SOURCE = 'source';
 	const API_PARAM_RELEVANT_TITLE = 'relevanttitle';
 
+	private const QUESTION_POSTER_CLASSES = [
+		'helpdesk' => HelpdeskQuestionPoster::class,
+		'mentor-homepage' => MentorQuestionPoster::class,
+		// old names (FIXME remove once not in use)
+		'helppanel' => HelpdeskQuestionPoster::class,
+		'homepage-mentorship' => MentorQuestionPoster::class,
+	];
+
 	/**
 	 * @var QuestionPoster
 	 */
 	private $questionPoster;
-
-	/**
-	 * @var array [ 'source' => ClassName::class ] of the registered question posters
-	 */
-	private $questionPosterClasses;
-
-	/**
-	 * @inheritDoc
-	 */
-	public function __construct( ApiMain $mainModule, $moduleName, $modulePrefix = '' ) {
-		parent::__construct( $mainModule, $moduleName, $modulePrefix );
-
-		$this->questionPosterClasses = [
-			'helppanel' => HelpPanelQuestionPoster::class,
-			'homepage-mentorship' => MentorshipModuleQuestionPoster::class,
-		];
-	}
 
 	/**
 	 * Save help panel question post.
@@ -82,7 +72,7 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 	 * @throws MWException
 	 */
 	private function setQuestionPoster( $source, $body, $relevantTitle ) {
-		$questionPosterClass = $this->questionPosterClasses[$source];
+		$questionPosterClass = self::QUESTION_POSTER_CLASSES[$source];
 		$this->questionPoster = new $questionPosterClass(
 			$this->getContext(),
 			$body,
@@ -115,8 +105,9 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 			],
 			self::API_PARAM_SOURCE => [
 				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_TYPE => array_keys( $this->questionPosterClasses ),
-				ApiBase::PARAM_DFLT => 'helppanel',
+				ApiBase::PARAM_TYPE => array_keys( self::QUESTION_POSTER_CLASSES ),
+				ApiBase::PARAM_DFLT => 'helpdesk',
+				ApiBase::PARAM_HELP_MSG_PER_VALUE => [],
 			],
 			self::API_PARAM_RELEVANT_TITLE => [
 				ApiBase::PARAM_REQUIRED => false,
