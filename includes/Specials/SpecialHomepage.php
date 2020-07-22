@@ -260,7 +260,21 @@ class SpecialHomepage extends SpecialPage {
 		return array_filter( $modules );
 	}
 
-	private function getModuleGroups() {
+	/**
+	 * @return string[][]
+	 */
+	private function getModuleGroups() : array {
+		if ( in_array(
+			$this->experimentUserManager->getVariant( $this->getUser() ),
+			[ 'C', 'D' ]
+		) ) {
+			return [
+				'main' => [ 'suggested-edits' ],
+				'sidebar' => [ 'impact', 'mentorship', 'help' ]
+			];
+		}
+
+		// else: variant A
 		if ( SuggestedEdits::isEnabled( $this->getContext() )
 			&& SuggestedEdits::isActivated( $this->getContext() )
 		) {
