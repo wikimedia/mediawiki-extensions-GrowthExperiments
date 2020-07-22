@@ -275,7 +275,6 @@ class SpecialHomepage extends SpecialPage {
 	private function renderDesktop() {
 		$out = $this->getContext()->getOutput();
 		$modules = $this->getModules();
-		$out->addModules( 'ext.growthExperiments.Homepage.RecentQuestions' );
 		$out->addBodyClasses( 'growthexperiments-homepage-desktop' );
 		foreach ( $this->getModuleGroups() as $group => $moduleNames ) {
 			$out->addHTML( Html::openElement( 'div', [
