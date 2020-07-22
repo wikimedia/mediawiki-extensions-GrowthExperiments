@@ -9,6 +9,7 @@ use Exception;
 use ExtensionRegistry;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\EventLogging\SpecialHomepageLogger;
+use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\BaseModule;
@@ -59,6 +60,10 @@ class SpecialHomepage extends SpecialPage {
 	 * @var IBufferingStatsdDataFactory
 	 */
 	private $statsdDataFactory;
+	/**
+	 * @var ExperimentUserManager
+	 */
+	private $experimentUserManager;
 
 	/**
 	 * @param EditInfoService $editInfoService
@@ -66,6 +71,7 @@ class SpecialHomepage extends SpecialPage {
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param TrackerFactory $trackerFactory
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param ExperimentUserManager $experimentUserManager
 	 * @param PageViewService|null $pageViewService
 	 */
 	public function __construct(
@@ -74,6 +80,7 @@ class SpecialHomepage extends SpecialPage {
 		ConfigurationLoader $configurationLoader,
 		TrackerFactory $trackerFactory,
 		IBufferingStatsdDataFactory $statsdDataFactory,
+		ExperimentUserManager $experimentUserManager,
 		PageViewService $pageViewService = null
 	) {
 		parent::__construct( 'Homepage', '', false );
@@ -94,6 +101,7 @@ class SpecialHomepage extends SpecialPage {
 		if ( Util::isMobile( $this->getSkin() ) ) {
 			$this->getSkin()->setRelevantTitle( $this->getUser()->getUserPage() );
 		}
+		$this->experimentUserManager = $experimentUserManager;
 	}
 
 	private function handleTutorialVisit( $par ) {
@@ -228,17 +236,23 @@ class SpecialHomepage extends SpecialPage {
 	 */
 	private function getModules() {
 		$modules = [
-			'start' => new Start( $this->getContext() ),
+			'start' => new Start( $this->getContext(), $this->experimentUserManager ),
 			'suggested-edits' => null,
-			'impact' => new Impact( $this->getContext(), $this->dbr, $this->pageViewService ),
-			'mentorship' => new Mentorship( $this->getContext() ),
-			'help' => new Help( $this->getContext() ),
+			'impact' => new Impact(
+				$this->getContext(),
+				$this->dbr,
+				$this->experimentUserManager,
+				$this->pageViewService
+			),
+			'mentorship' => new Mentorship( $this->getContext(), $this->experimentUserManager ),
+			'help' => new Help( $this->getContext(), $this->experimentUserManager ),
 		];
 		if ( SuggestedEdits::isEnabled( $this->getContext() ) ) {
 			// TODO use some kind of registry instead of passing things through here
 			$modules['suggested-edits'] = new SuggestedEdits(
 				$this->getContext(),
 				$this->editInfoService,
+				$this->experimentUserManager,
 				$this->pageViewService,
 				$this->configurationLoader
 			);

@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HelpPanel;
 use Html;
 use IContextSource;
@@ -17,8 +18,8 @@ class Help extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
-	public function __construct( IContextSource $context ) {
-		parent::__construct( 'help', $context );
+	public function __construct( IContextSource $context, ExperimentUserManager $experimentUserManager ) {
+		parent::__construct( 'help', $context, $experimentUserManager );
 		$this->helpDeskUrl = HelpPanel::getHelpDeskTitle( $context->getConfig() )->getLinkURL();
 	}
 

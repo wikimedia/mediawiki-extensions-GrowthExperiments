@@ -3,6 +3,7 @@
 namespace GrowthExperiments\HomepageModules;
 
 use FormatJson;
+use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\WelcomeSurvey;
 use IContextSource;
@@ -16,8 +17,8 @@ class StartEditing extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	public function __construct( IContextSource $context ) {
-		parent::__construct( 'start-startediting', $context );
+	public function __construct( IContextSource $context, ExperimentUserManager $experimentUserManager ) {
+		parent::__construct( 'start-startediting', $context, $experimentUserManager );
 	}
 
 	/**

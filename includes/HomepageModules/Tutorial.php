@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+use GrowthExperiments\ExperimentUserManager;
 use IContextSource;
 use OOUI\ButtonInputWidget;
 use OOUI\FormLayout;
@@ -17,8 +18,8 @@ class Tutorial extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	public function __construct( IContextSource $context ) {
-		parent::__construct( 'start-tutorial', $context );
+	public function __construct( IContextSource $context, ExperimentUserManager $experimentUserManager ) {
+		parent::__construct( 'start-tutorial', $context, $experimentUserManager );
 	}
 
 	/**
