@@ -2,6 +2,7 @@
 
 use GrowthExperiments\AqsEditInfoService;
 use GrowthExperiments\EditInfoService;
+use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -15,6 +16,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
+use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 
@@ -149,6 +151,16 @@ return [
 	): TipNodeRenderer {
 		return new TipNodeRenderer(
 			$services->getMainConfig()->get( 'ExtensionAssetsPath' )
+		);
+	},
+
+	'GrowthExperimentsExperimentUserManager' => function (
+		MediaWikiServices $services
+	) : ExperimentUserManager {
+		return new ExperimentUserManager(
+			new ServiceOptions( [ 'GEHomepageDefaultVariant' ], $services->getMainConfig() ),
+			$services->getUserOptionsManager(),
+			$services->getUserOptionsLookup()
 		);
 	},
 

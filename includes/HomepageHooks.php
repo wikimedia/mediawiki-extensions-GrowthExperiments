@@ -176,20 +176,6 @@ class HomepageHooks implements
 	}
 
 	/**
-	 * Get the variant to use for a given user.
-	 * @param User $user
-	 * @return string One of HomepageHooks::VARIANTS
-	 */
-	public static function getVariant( User $user ) {
-		$optionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
-		$variant = $optionsLookup->getOption( $user, self::HOMEPAGE_PREF_VARIANT );
-		if ( !in_array( $variant, self::VARIANTS ) ) {
-			$variant = MediaWikiServices::getInstance()->getMainConfig()->get( 'GEHomepageDefaultVariant' );
-		}
-		return $variant;
-	}
-
-	/**
 	 * Get the click ID from the URL if set (from clicking a suggested edit card).
 	 *
 	 * @param IContextSource $context
