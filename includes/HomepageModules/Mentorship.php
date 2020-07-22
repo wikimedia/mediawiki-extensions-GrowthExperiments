@@ -4,6 +4,7 @@ namespace GrowthExperiments\HomepageModules;
 
 use ConfigException;
 use DateInterval;
+use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
@@ -39,8 +40,8 @@ class Mentorship extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
-	public function __construct( IContextSource $context ) {
-		parent::__construct( 'mentorship', $context );
+	public function __construct( IContextSource $context, ExperimentUserManager $experimentUserManager ) {
+		parent::__construct( 'mentorship', $context, $experimentUserManager );
 	}
 
 	/**

@@ -1,6 +1,7 @@
 <?php
 namespace GrowthExperiments\HomepageModules;
 
+use GrowthExperiments\ExperimentUserManager;
 use Html;
 use IContextSource;
 use OOUI\ButtonWidget;
@@ -13,8 +14,10 @@ class Email extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	public function __construct( IContextSource $context ) {
-		parent::__construct( 'start-email', $context );
+	public function __construct(
+		IContextSource $context, ExperimentUserManager $experimentUserManager
+	) {
+		parent::__construct( 'start-email', $context, $experimentUserManager );
 
 		$user = $this->getContext()->getUser();
 		if ( $user->isEmailConfirmed() ) {

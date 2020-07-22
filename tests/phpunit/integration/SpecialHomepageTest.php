@@ -32,7 +32,8 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			$this->db,
 			MediaWikiServices::getInstance()->get( 'GrowthExperimentsConfigurationLoader' ),
 			MediaWikiServices::getInstance()->get( 'GrowthExperimentsNewcomerTaskTrackerFactory' ),
-			MediaWikiServices::getInstance()->getStatsdDataFactory()
+			MediaWikiServices::getInstance()->getStatsdDataFactory(),
+			MediaWikiServices::getInstance()->get( 'GrowthExperimentsExperimentUserManager' )
 		);
 	}
 

@@ -149,6 +149,7 @@ class HomepageHooks implements
 					$this->configurationLoader,
 					$this->trackerFactory,
 					$this->statsdDataFactory,
+					$this->experimentUserManager,
 					$pageViewsService
 				);
 			};
@@ -156,6 +157,7 @@ class HomepageHooks implements
 				$list['Impact'] = function () use ( $mwServices ) {
 					return new SpecialImpact(
 						$this->lb->getLazyConnectionRef( DB_REPLICA ),
+						$this->experimentUserManager,
 						$mwServices->get( 'PageViewService' )
 					);
 				};

@@ -6,6 +6,7 @@ use ActorMigration;
 use DateTime;
 use Exception;
 use ExtensionRegistry;
+use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModule;
 use Html;
 use IContextSource;
@@ -66,9 +67,10 @@ class Impact extends BaseModule {
 	public function __construct(
 		IContextSource $context,
 		IDatabase $dbr,
+		ExperimentUserManager $experimentUserManager,
 		PageViewService $pageViewService = null
 	) {
-		parent::__construct( 'impact', $context );
+		parent::__construct( 'impact', $context, $experimentUserManager );
 		$this->dbr = $dbr;
 		$this->pageViewService = $pageViewService;
 	}

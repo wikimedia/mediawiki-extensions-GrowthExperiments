@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\Util;
 use Html;
 use IContextSource;
@@ -12,8 +13,9 @@ class Account extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	public function __construct( IContextSource $context ) {
-		parent::__construct( 'start-account', $context );
+	public function __construct(
+		IContextSource $context, ExperimentUserManager $experimentUserManager ) {
+		parent::__construct( 'start-account', $context, $experimentUserManager );
 	}
 
 	/**

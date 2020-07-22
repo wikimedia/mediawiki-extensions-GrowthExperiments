@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Specials;
 
 use DerivativeContext;
+use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\Impact;
 use Html;
@@ -22,16 +23,26 @@ class SpecialImpact extends SpecialPage {
 	 * @var PageViewService|null
 	 */
 	private $pageViewService;
+	/**
+	 * @var ExperimentUserManager
+	 */
+	private $experimentUserManager;
 
 	/**
 	 * SpecialImpact constructor.
 	 * @param IDatabase $dbr
+	 * @param ExperimentUserManager $experimentUserManager
 	 * @param PageViewService|null $pageViewService
 	 */
-	public function __construct( IDatabase $dbr, PageViewService $pageViewService = null ) {
+	public function __construct(
+		IDatabase $dbr,
+		ExperimentUserManager $experimentUserManager,
+		PageViewService $pageViewService = null
+	) {
 		parent::__construct( 'Impact' );
 		$this->dbr = $dbr;
 		$this->pageViewService = $pageViewService;
+		$this->experimentUserManager = $experimentUserManager;
 	}
 
 	/**
@@ -84,7 +95,12 @@ class SpecialImpact extends SpecialPage {
 				->text() ) );
 		}
 		$context->setUser( $impactUser );
-		$impact = new Impact( $context, $this->dbr, $this->pageViewService );
+		$impact = new Impact(
+			$context,
+			$this->dbr,
+			$this->experimentUserManager,
+			$this->pageViewService
+		);
 		$out->addHTML( $impact->render( HomepageModule::RENDER_DESKTOP ) );
 	}
 }

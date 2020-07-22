@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModule;
 use Html;
 use IContextSource;
@@ -40,14 +41,20 @@ abstract class BaseModule implements HomepageModule {
 	 * @var int Current rendering mode
 	 */
 	private $mode;
+	/**
+	 * @var ExperimentUserManager
+	 */
+	private $experimentUserManager;
 
 	/**
 	 * @param string $name Name of the module
 	 * @param IContextSource $ctx
+	 * @param ExperimentUserManager $experimentUserManager
 	 */
-	public function __construct( $name, IContextSource $ctx ) {
+	public function __construct( $name, IContextSource $ctx, ExperimentUserManager $experimentUserManager ) {
 		$this->name = $name;
 		$this->ctx = $ctx;
+		$this->experimentUserManager = $experimentUserManager;
 	}
 
 	/**
@@ -60,8 +67,7 @@ abstract class BaseModule implements HomepageModule {
 		}
 
 		$this->outputDependencies();
-		$html = $this->getHtml();
-		return $html;
+		return $this->getHtml();
 	}
 
 	/**
@@ -430,7 +436,8 @@ abstract class BaseModule implements HomepageModule {
 				'class' => array_merge( [
 					self::BASE_CSS_CLASS,
 					self::BASE_CSS_CLASS . '-' . $this->name,
-					self::BASE_CSS_CLASS . '-' . $this->getMode()
+					self::BASE_CSS_CLASS . '-' . $this->getMode(),
+					self::BASE_CSS_CLASS . '-user-variant-' . $this->getUserVariant()
 				], $this->getCssClasses() ),
 				'data-module-name' => $this->name,
 				'data-mode' => $this->getMode(),
@@ -451,6 +458,13 @@ abstract class BaseModule implements HomepageModule {
 			'wgGEHomepageModuleState-' . $this->name => $this->getState(),
 			'wgGEHomepageModuleActionData-' . $this->name => $this->getActionData(),
 		] ) );
+	}
+
+	/**
+	 * @return string
+	 */
+	private function getUserVariant() : string {
+		return $this->experimentUserManager->getVariant( $this->getContext()->getUser() );
 	}
 
 }

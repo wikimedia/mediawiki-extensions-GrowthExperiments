@@ -4,6 +4,7 @@ namespace GrowthExperiments\HomepageModules;
 
 use Config;
 use GrowthExperiments\EditInfoService;
+use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
@@ -55,16 +56,18 @@ class SuggestedEdits extends BaseModule {
 	/**
 	 * @param IContextSource $context
 	 * @param EditInfoService $editInfoService
+	 * @param ExperimentUserManager $experimentUserManager
 	 * @param PageViewService|null $pageViewService
 	 * @param ConfigurationLoader|null $configurationLoader
 	 */
 	public function __construct(
 		IContextSource $context,
 		EditInfoService $editInfoService,
+		ExperimentUserManager $experimentUserManager,
 		?PageViewService $pageViewService,
 		?ConfigurationLoader $configurationLoader
 	) {
-		parent::__construct( 'suggested-edits', $context );
+		parent::__construct( 'suggested-edits', $context, $experimentUserManager );
 		$this->editInfoService = $editInfoService;
 		$this->pageViewService = $pageViewService;
 		$this->configurationLoader = $configurationLoader;
