@@ -184,7 +184,7 @@ class HomepageHooks implements
 		$optionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
 		$variant = $optionsLookup->getOption( $user, self::HOMEPAGE_PREF_VARIANT );
 		if ( !in_array( $variant, self::VARIANTS ) ) {
-			$variant = MediaWikiServices::getInstance()->getMainConfig()->get( 'GEDefaultVariant' );
+			$variant = MediaWikiServices::getInstance()->getMainConfig()->get( 'GEHomepageDefaultVariant' );
 		}
 		return $variant;
 	}
