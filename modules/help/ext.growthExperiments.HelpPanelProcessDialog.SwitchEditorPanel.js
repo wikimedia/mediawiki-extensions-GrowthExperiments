@@ -75,7 +75,8 @@
 
 	/**
 	 * Determine if the switch editor link should be shown in the guidance panel.
-	 * @internal
+	 *
+	 * @private
 	 * @return {boolean}
 	 */
 	SwitchEditorPanel.prototype.shouldShowSwitchLink = function () {
