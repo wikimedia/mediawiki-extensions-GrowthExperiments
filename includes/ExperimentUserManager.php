@@ -54,4 +54,18 @@ class ExperimentUserManager {
 		}
 		return $variant;
 	}
+
+	/**
+	 * Set (but does not save) the variant for a user.
+	 *
+	 * @param User $user
+	 * @param mixed $variant
+	 */
+	public function setVariant( User $user, $variant ) {
+		$this->userOptionsManager->setOption(
+			$user,
+			HomepageHooks::HOMEPAGE_PREF_VARIANT,
+			$variant
+		);
+	}
 }
