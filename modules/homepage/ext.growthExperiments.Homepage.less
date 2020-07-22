@@ -133,6 +133,11 @@ body.mw-special-Homepage {
 
 			.growthexperiments-homepage-group-main {
 				width: 75%;
+
+				&-user-variant-C,
+				&-user-variant-D {
+					width: 65%;
+				}
 				display: flex;
 				.flex-wrap( wrap );
 
@@ -151,10 +156,20 @@ body.mw-special-Homepage {
 					// 1.5* instead of 2* because the leftmost module doesn't have a left margin
 					width: calc( 50% ~'-' 1.5 * @homepageModuleMargin );
 				}
+
+				.growthexperiments-homepage-module-suggested-edits.growthexperiments-homepage-module-user-variant-C,
+				.growthexperiments-homepage-module-suggested-edits.growthexperiments-homepage-module-user-variant-D {
+					width: calc( 100% ~'-' 1.5 * @homepageModuleMargin );
+				}
 			}
 
 			.growthexperiments-homepage-group-sidebar {
 				width: 25%;
+
+				&-user-variant-C,
+				&-user-variant-D {
+					width: 35%;
+				}
 
 				.growthexperiments-homepage-module {
 					margin-right: 0;
@@ -162,7 +177,7 @@ body.mw-special-Homepage {
 			}
 		}
 
-		@media all and ( max-width: 1024px ) {
+		@media all and ( max-width: 800px ) {
 			.growthexperiments-homepage-container {
 				flex-direction: column;
 

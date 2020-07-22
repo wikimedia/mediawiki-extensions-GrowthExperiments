@@ -306,7 +306,9 @@ class SpecialHomepage extends SpecialPage {
 		$out->addBodyClasses( 'growthexperiments-homepage-desktop' );
 		foreach ( $this->getModuleGroups() as $group => $moduleNames ) {
 			$out->addHTML( Html::openElement( 'div', [
-				'class' => "growthexperiments-homepage-group-$group",
+				'class' => "growthexperiments-homepage-group-$group " .
+					"growthexperiments-homepage-group-$group-user-variant-" .
+					$this->experimentUserManager->getVariant( $this->getUser() ),
 			] ) );
 			foreach ( $moduleNames as $moduleName ) {
 				/** @var HomepageModule $module */
