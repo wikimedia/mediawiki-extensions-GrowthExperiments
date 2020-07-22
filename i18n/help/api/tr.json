@@ -7,6 +7,10 @@
 	},
 	"apihelp-helppanelquestionposter-summary": "Geçerli kullanıcı için yardım panelinden gönderilen soruları ele alın.",
 	"apihelp-helppanelquestionposter-param-body": "Kullanıcı tarafından gönderilen soru metni.",
-	"apihelp-helppanelquestionposter-param-source": "Sorunun kaynağındaki bileşen. Geçerli değerler 'helppanel', 'homepage-help' ve 'homepage-mentorluk'",
+	"apihelp-helppanelquestionposter-param-source": "Sorunun gönderilme yöntemi.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "\"Ask the help desk\" paneli",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Yeni gelen ana sayfada \"Ask your mentor\" paneli",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "\"Ask the help desk\" paneli (eski ad)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Yeni gelen ana sayfadaki \"Ask your mentor\" paneli (eski ad)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Seçiliyse, soruya dahil etmek için ilgili başlık."
 }
