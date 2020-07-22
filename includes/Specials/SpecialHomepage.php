@@ -157,7 +157,7 @@ class SpecialHomepage extends SpecialPage {
 		if ( $isMobile ) {
 			if ( array_key_exists( $par, $modules ) ) {
 				$mode = HomepageModule::RENDER_MOBILE_DETAILS;
-				$this->renderMobileDetails( $par, $modules[$par] );
+				$this->renderMobileDetails( $modules[$par] );
 			} else {
 				$mode = HomepageModule::RENDER_MOBILE_SUMMARY;
 				$this->renderMobileSummary();
@@ -299,10 +299,9 @@ class SpecialHomepage extends SpecialPage {
 	}
 
 	/**
-	 * @param string $moduleName
 	 * @param HomepageModule $module
 	 */
-	private function renderMobileDetails( $moduleName, HomepageModule $module ) {
+	private function renderMobileDetails( HomepageModule $module ) {
 		$out = $this->getContext()->getOutput();
 		$out->addBodyClasses( 'growthexperiments-homepage-mobile-details' );
 
