@@ -99,6 +99,8 @@ class HomepageHooks implements
 	private $configurationLoader;
 	/** @var TrackerFactory */
 	private $trackerFactory;
+	/** @var ExperimentUserManager */
+	private $experimentUserManager;
 
 	/**
 	 * HomepageHooks constructor.
@@ -110,12 +112,13 @@ class HomepageHooks implements
 	 * @param EditInfoService $editInfoService
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param TrackerFactory $trackerFactory
+	 * @param ExperimentUserManager $experimentUserManager
 	 */
 	public function __construct(
 		Config $config, ILoadBalancer $lb, UserOptionsLookup $userOptionsLookup,
 		NamespaceInfo $namespaceInfo, IBufferingStatsdDataFactory $statsdDataFactory,
 		EditInfoService $editInfoService, ConfigurationLoader $configurationLoader,
-		TrackerFactory $trackerFactory
+		TrackerFactory $trackerFactory, ExperimentUserManager $experimentUserManager
 	) {
 		$this->config = $config;
 		$this->lb = $lb;
@@ -125,6 +128,7 @@ class HomepageHooks implements
 		$this->editInfoService = $editInfoService;
 		$this->configurationLoader = $configurationLoader;
 		$this->trackerFactory = $trackerFactory;
+		$this->experimentUserManager = $experimentUserManager;
 	}
 
 	/**
@@ -530,14 +534,14 @@ class HomepageHooks implements
 			foreach ( $this->config->get( 'GEHomepageNewAccountVariants' ) as $candidateVariant => $percentage ) {
 				if ( $random < $percentage ) {
 					$variant = $candidateVariant;
-					$user->setOption( self::HOMEPAGE_PREF_VARIANT, $variant );
+					$this->experimentUserManager->setVariant( $user, $variant );
 					break;
 				}
 				$random -= $percentage;
 			}
 			if ( $variant === null ) {
-				// Use the default variant, but don't save it
-				$variant = $this->config->get( 'GEHomepageDefaultVariant' );
+				// Use the default, unsaved variant.
+				$variant = $this->experimentUserManager->getVariant( $user );
 			}
 
 			// Pre-initiate suggested edits for variant C

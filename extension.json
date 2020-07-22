@@ -74,7 +74,8 @@
 				"StatsdDataFactory",
 				"GrowthExperimentsEditInfoService",
 				"GrowthExperimentsConfigurationLoader",
-				"GrowthExperimentsNewcomerTaskTrackerFactory"
+				"GrowthExperimentsNewcomerTaskTrackerFactory",
+				"GrowthExperimentsExperimentUserManager"
 			]
 		}
 	},
