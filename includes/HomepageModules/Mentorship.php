@@ -12,6 +12,7 @@ use GrowthExperiments\Mentor;
 use Html;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
+use MessageLocalizer;
 use MWTimestamp;
 use OOUI\ButtonWidget;
 use OOUI\IconWidget;
@@ -40,6 +41,47 @@ class Mentorship extends BaseModule {
 	 */
 	public function __construct( IContextSource $context ) {
 		parent::__construct( 'mentorship', $context );
+	}
+
+	/**
+	 * Get the time a mentor was last active, as a human-readable relative time.
+	 * @param User $mentor The mentoring user.
+	 * @param User $mentee The mentored user (for time formatting).
+	 * @param MessageLocalizer $messageLocalizer
+	 * @return string
+	 */
+	public static function getMentorLastActive(
+		User $mentor, User $mentee, MessageLocalizer $messageLocalizer
+	) {
+		$editTimestamp = new MWTimestamp( $mentor->getLatestEditTimestamp() );
+		$editTimestamp->offsetForUser( $mentee );
+		$editDate = $editTimestamp->format( 'Ymd' );
+
+		$now = new MWTimestamp();
+		$now->offsetForUser( $mentee );
+		$timeDiff = $now->diff( $editTimestamp );
+
+		$today = $now->format( 'Ymd' );
+		$yesterday = $now->timestamp->sub( new DateInterval( 'P1D' ) )->format( 'Ymd' );
+
+		if ( $editDate === $today ) {
+			$text = $messageLocalizer
+				->msg( 'growthexperiments-homepage-mentorship-mentor-active-today' )
+				->params( $mentor->getName() )
+				->text();
+		} elseif ( $editDate === $yesterday ) {
+			$text = $messageLocalizer
+				->msg( 'growthexperiments-homepage-mentorship-mentor-active-yesterday' )
+				->params( $mentor->getName() )
+				->text();
+		} else {
+			$text = $messageLocalizer
+				->msg( 'growthexperiments-homepage-mentorship-mentor-active-days-ago' )
+				->params( $mentor->getName() )
+				->numParams( $timeDiff->days )
+				->text();
+		}
+		return $text;
 	}
 
 	/**
@@ -216,36 +258,8 @@ class Mentorship extends BaseModule {
 	}
 
 	private function getLastActive() {
-		$user = $this->getContext()->getUser();
-		$editTimestamp = new MWTimestamp( $this->getMentor()->getLatestEditTimestamp() );
-		$editTimestamp->offsetForUser( $user );
-		$editDate = $editTimestamp->format( 'Ymd' );
-
-		$now = new MWTimestamp();
-		$now->offsetForUser( $user );
-		$timeDiff = $now->diff( $editTimestamp );
-
-		$today = $now->format( 'Ymd' );
-		$yesterday = $now->timestamp->sub( new DateInterval( 'P1D' ) )->format( 'Ymd' );
-
-		if ( $editDate === $today ) {
-			$text = $this->getContext()
-				->msg( 'growthexperiments-homepage-mentorship-mentor-active-today' )
-				->params( $this->getMentor()->getName() )
-				->text();
-		} elseif ( $editDate === $yesterday ) {
-			$text = $this->getContext()
-				->msg( 'growthexperiments-homepage-mentorship-mentor-active-yesterday' )
-				->params( $this->getMentor()->getName() )
-				->text();
-		} else {
-			$text = $this->getContext()
-				->msg( 'growthexperiments-homepage-mentorship-mentor-active-days-ago' )
-				->params( $this->getMentor()->getName() )
-				->numParams( $timeDiff->days )
-				->text();
-		}
-
+		$text = self::getMentorLastActive( $this->getMentor(), $this->getContext()->getUser(),
+			$this->getContext() );
 		return Html::element( 'span', [
 			'class' => 'growthexperiments-homepage-mentorship-lastactive'
 		], $text );

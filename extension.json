@@ -639,7 +639,8 @@
 				"oojs-ui.styles.icons-editing-citation",
 				"oojs-ui.styles.icons-editing-advanced",
 				"oojs-ui-widgets",
-				"oojs-ui-windows"
+				"oojs-ui-windows",
+				"ext.growthExperiments.Homepage.icons"
 			],
 			"messages": [
 				"growthexperiments-help-panel-question-button-text",
@@ -653,6 +654,7 @@
 				"growthexperiments-help-panel-close",
 				"growthexperiments-help-panel-home-title",
 				"growthexperiments-help-panel-questionreview-title",
+				"growthexperiments-help-panel-questionreview-title-mentor",
 				"growthexperiments-help-panel-questionreview-header",
 				"growthexperiments-help-panel-questionreview-label",
 				"growthexperiments-help-panel-questionreview-include-article-title",
@@ -692,10 +694,12 @@
 				"growthexperiments-homepage-suggestededits-tasktype-name-expand",
 				"growthexperiments-help-panel-button-preheader-suggested-edits",
 				"growthexperiments-help-panel-button-header-ask-help",
+				"growthexperiments-help-panel-button-header-ask-help-mentor",
 				"growthexperiments-help-panel-button-header-general-help",
 				"growthexperiments-help-panel-button-subheader-general-help",
 				"growthexperiments-help-panel-button-subheader-ask-help",
 				"growthexperiments-help-panel-button-subheader-suggested-edits",
+				"growthexperiments-help-panel-button-subsubheader-ask-help-mentor",
 				"growthexperiments-help-panel-suggested-edits-faq-link-text",
 				"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor",
 				"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text",
@@ -894,6 +898,10 @@
 		"GEHelpPanelSuggestedEditsPreferredEditor": {
 			"description": "The preferred editor interface for suggested edits. Either 'visualeditor' or 'wikitext'.",
 			"value": "visualeditor"
+		},
+		"GEHelpPanelAskMentor": {
+			"description": "When using the help panel's question-asking functionality, post on the mentor's talk page instead of on the help desk page.",
+			"value": false
 		},
 		"WelcomeSurveyEnabled": {
 			"description": "Global ON/OFF switch for the Welcome survey feature.",

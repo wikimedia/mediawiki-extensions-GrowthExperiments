@@ -4,7 +4,9 @@ namespace GrowthExperiments;
 
 use Config;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
+use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use MessageLocalizer;
 use OutputPage;
 use RequestContext;
 use ResourceLoaderContext;
@@ -113,6 +115,8 @@ class HelpPanelHooks {
 			$out->addJsConfigVars( [
 				// We know the help panel is enabled, otherwise we wouldn't get here
 				'wgGEHelpPanelEnabled' => true,
+				'wgGEHelpPanelMentorData'
+					=> self::getMentorData( $out->getConfig(), $out->getUser(), $out->getContext() ),
 			] + HelpPanel::getUserEmailConfigVars( $out->getUser() ) );
 
 			if ( !$definitelyShow ) {
@@ -139,7 +143,8 @@ class HelpPanelHooks {
 			'GEHelpPanelLinks' => HelpPanel::getHelpPanelLinks( $context, $config ),
 			'GEHelpPanelSuggestedEditsPreferredEditor' =>
 				$config->get( 'GEHelpPanelSuggestedEditsPreferredEditor' ),
-			'GEHelpPanelHelpDeskTitle' => $helpdeskTitle ? $helpdeskTitle->getPrefixedText() : null
+			'GEHelpPanelHelpDeskTitle' => $helpdeskTitle ? $helpdeskTitle->getPrefixedText() : null,
+			'GEHelpPanelAskMentor' => $config->get( 'GEHelpPanelAskMentor' ),
 		];
 	}
 
@@ -155,6 +160,21 @@ class HelpPanelHooks {
 		if ( HelpPanel::isHelpPanelEnabled() ) {
 			$tags[] = HelpPanel::HELPDESK_QUESTION_TAG;
 		}
+	}
+
+	private static function getMentorData( Config $config, User $user, MessageLocalizer $localizer ) {
+		if ( !$config->get( 'GEHelpPanelAskMentor' ) ) {
+			return [];
+		}
+		$mentor = Mentor::newFromMentee( $user );
+		if ( !$mentor ) {
+			return [];
+		}
+		return [
+			'name' => $mentor->getMentorUser()->getName(),
+			'editCount' => $mentor->getMentorUser()->getEditCount(),
+			'lastActive' => Mentorship::getMentorLastActive( $mentor->getMentorUser(), $user, $localizer ),
+		];
 	}
 
 }

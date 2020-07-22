@@ -35,11 +35,14 @@
 			this.logger = config.logger;
 			this.guidanceEnabled = config.guidanceEnabled;
 			this.taskTypeId = config.taskTypeId;
-			this.source = config.source || 'helpdesk';
+			this.source = config.source ||
+				( configData.GEHelpPanelAskMentor ? 'mentor-helppanel' : 'helpdesk' );
 			this.storageKey = config.storageKey || 'help-panel-question-text';
 			this.panelTitleMessages = $.extend( {
 				home: mw.message( 'growthexperiments-help-panel-home-title' ).text(),
-				'ask-help': mw.message( 'growthexperiments-help-panel-questionreview-title' ).text(),
+				'ask-help': configData.GEHelpPanelAskMentor ?
+					mw.message( 'growthexperiments-help-panel-questionreview-title-mentor' ).text() :
+					mw.message( 'growthexperiments-help-panel-questionreview-title' ).text(),
 				questioncomplete: mw.message( 'growthexperiments-help-panel-questioncomplete-title' ).text(),
 				'general-help': mw.message( 'growthexperiments-help-panel-general-help-title' ).text(),
 				'suggested-edits': mw.message( 'growthexperiments-help-panel-suggestededits-title' ).text()
@@ -327,15 +330,27 @@
 	};
 
 	HelpPanelProcessDialog.prototype.buildHomePanelButtons = function () {
-		var buttonIds = [ 'ask-help', 'general-help' ];
+		var buttonId,
+			buttonIds = [ 'ask-help', 'general-help' ];
 		if ( this.guidanceEnabled && this.taskTypeId ) {
 			buttonIds.unshift( 'suggested-edits' );
 		}
 		buttonIds.forEach( function ( id ) {
+			var mentorData = mw.config.get( 'wgGEHelpPanelMentorData' );
+			// Asking the mentor needs a different button but the same panel / logging.
+			// FIXME find a nicer way to do this.
+			buttonId = id;
+			if ( id === 'ask-help' && configData.GEHelpPanelAskMentor ) {
+				buttonId = 'ask-help-mentor';
+			}
 			this.homePanel.$element.append(
 				new HelpPanelHomeButtonWidget( {
-					id: id,
-					taskTypeId: this.taskTypeId
+					id: buttonId,
+					taskTypeId: this.taskTypeId,
+					customSubheader: ( buttonId === 'ask-help-mentor' ) ? mentorData.name : null,
+					subsubheader: ( buttonId === 'ask-help-mentor' ) ?
+						mw.message( 'growthexperiments-help-panel-button-subsubheader-ask-help-mentor' )
+							.params( [ mentorData.editCount, mentorData.lastActive ] ).text() : null
 				} ).$element
 					.on( 'click', function () {
 						this.logger.log( id );
