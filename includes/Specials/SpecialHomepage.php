@@ -5,7 +5,6 @@ namespace GrowthExperiments\Specials;
 use ConfigException;
 use DeferredUpdates;
 use ErrorPageError;
-use Exception;
 use ExtensionRegistry;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\EventLogging\SpecialHomepageLogger;
@@ -318,8 +317,6 @@ class SpecialHomepage extends SpecialPage {
 				}
 				try {
 					$out->addHTML( $module->render( HomepageModule::RENDER_DESKTOP ) );
-				} catch ( Exception $exception ) {
-					Util::logError( $exception, [ 'origin' => __METHOD__ ] );
 				} catch ( Throwable $throwable ) {
 					Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
 				}
@@ -337,8 +334,6 @@ class SpecialHomepage extends SpecialPage {
 
 		try {
 			$out->addHTML( $module->render( HomepageModule::RENDER_MOBILE_DETAILS ) );
-		} catch ( Exception $exception ) {
-			Util::logError( $exception, [ 'origin' => __METHOD__ ] );
 		} catch ( Throwable $throwable ) {
 			Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
 		}
@@ -361,8 +356,6 @@ class SpecialHomepage extends SpecialPage {
 			try {
 				$out->addHTML( $this->wrapMobileSummaryWithLink( $moduleName,
 					$module->render( HomepageModule::RENDER_MOBILE_SUMMARY ) ) );
-			} catch ( Exception $exception ) {
-				Util::logError( $exception, [ 'origin' => __METHOD__ ] );
 			} catch ( Throwable $throwable ) {
 				Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
 			}
@@ -391,8 +384,6 @@ class SpecialHomepage extends SpecialPage {
 					$html .= $data[$moduleName]['overlay'];
 					unset( $data[$moduleName]['overlay'] );
 				}
-			} catch ( Exception $exception ) {
-				Util::logError( $exception, [ 'origin' => __METHOD__ ] );
 			} catch ( Throwable $throwable ) {
 				Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
 			}
