@@ -6,6 +6,6 @@
 	},
 	"apihelp-helppanelquestionposter-summary": "טיפול בשאלות שנשלחו דרך חלונית העזרה למשתמש הנוכחי.",
 	"apihelp-helppanelquestionposter-param-body": "הטקסט של השאלות שסופקו על־ידי המשתמש.",
-	"apihelp-helppanelquestionposter-param-source": "הרכיב במקור השאלה. הערכים התקינים הם \"helppanel\"‏, \"homepage-help\" ו־\"homepage-mentorship\"",
+	"apihelp-helppanelquestionposter-param-source": "השיטה שבה השאלה נשלחה.",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "הכותרת המתאימה, אם נבחרה, שתיכלל עם השאלה."
 }

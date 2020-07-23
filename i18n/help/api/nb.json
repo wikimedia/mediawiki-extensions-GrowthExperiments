@@ -6,6 +6,11 @@
 	},
 	"apihelp-helppanelquestionposter-summary": "Håndtere spørsmål som er postet via hjelpepanelet for den gjeldende brukeren.",
 	"apihelp-helppanelquestionposter-param-body": "Teksten i spørsmålet som ble stilt av brukeren.",
-	"apihelp-helppanelquestionposter-param-source": "Komponenten ved kilden til spørsmålet. Gyldige verdier er «helppanel», «homepage-help» og «homepage-mentorship»",
+	"apihelp-helppanelquestionposter-param-source": "Metoden spørsmålet ble postet med.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "«Spør nybegynnerforumet»-panelet",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "«Spør fadderen din»-panelet på nybegynnerhjemmesiden",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "«Spør fadderen din»-skjermen i hjelpepanelet",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "«Spør nybegynnerforumet»-panelet (gammelt navn)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "«Spør fadderen din»-panelet på nybegynnerhjemmesiden (gammelt navn)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Den relevante tittelen, om valgt, som skal inkluderes med spørsmålet."
 }

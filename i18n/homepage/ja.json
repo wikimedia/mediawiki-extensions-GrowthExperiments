@@ -5,7 +5,8 @@
 			"Buntschann",
 			"Omotecho",
 			"Shirayuki",
-			"Siglite3"
+			"Siglite3",
+			"Tmv"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|こんにちは}}、{{bidi:$1}}！",
@@ -51,10 +52,15 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-add-image": "<strong>{{GENDER:|あなたが}}{{GENDER:|ご自分の}}利用者アカウントを登録されたとき、写真や画像を{{GENDER:|自分で}}追加したいという{{GENDER:|ご自分}}の希望をうかがっています。</strong>重要なことですが難易度が少し高いため、最初は簡単な編集から始めるよう、{{GENDER:|皆さん}}にお勧めします。もし{{GENDER:|ご自分で}}すぐに写真や画像の追加を規模される場合は、{{GENDER:|皆さんに}}[$1 こちらで方法をお知らせしています]。",
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo": "<strong>{{GENDER:|あなたが}}{{GENDER:|ご自分の}}利用者アカウントを登録されたとき、誤字や間違いを{{GENDER:|自分で}}修正したいという{{GENDER:|ご自分}}の希望をうかがっています。</strong>こちらでは最初に取り組む細かな編集を{{GENDER:|皆さん}}にお勧めしています。もし{{GENDER:|ご自分で}}すぐに修正したい特定の記事がある場合は、{{GENDER:|皆さんで}}\"{{int:growthexperiments-homepage-startediting-dialog-intro-back}}\"をクリックして記事を検索、次に\"{{int:vector-view-edit}}\"を押します。",
 	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>{{GENDER:|あなたが}}{{GENDER:|ご自分の}}利用者アカウントを登録されたとき、既存の記事の加筆もしくは変更を{{GENDER:|自分で}}修正したいという{{GENDER:|ご自分}}の希望をうかがっています。</strong>こちらでは最初に取り組む細かな編集を{{GENDER:|皆さん}}にお勧めしています。もし{{GENDER:|ご自分で}}すぐに修正したい特定の記事がある場合は、{{GENDER:|皆さんで}}\"{{int:growthexperiments-homepage-startediting-dialog-intro-back}}\"をクリックして記事を検索、次に\"{{int:vector-view-edit}}\"を押してください。",
+	"tag-help_module_question-description": "ホームページのヘルプ・モジュールの「質問する」機能からなされた編集",
+	"tag-mentorship_module_question-description": "ホームページの助言モジュールの「先生に質問する」機能からなされた編集",
+	"tag-mentorship_panel_question": "助言パネルの質問",
+	"tag-mentorship_panel_question-description": "ヘルプパネルの「先生に質問する」機能からなされた編集",
 	"growthexperiments-homepage-help-header": "編集について教えてもらう",
 	"growthexperiments-homepage-recent-questions-archived": "アーカイブ済み",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|回編集}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "投稿した質問は{{GENDER:$2|あなたの}}利用者名「$2」とともに$3に<strong>公開され</strong>、そこで{{GENDER:$1|皆さん}}が質問を見つけて回答を寄せます。",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[$2]] についての [[User:$1|$1]] からの質問",
 	"growthexperiments-homepage-tutorial-header": "編集方法を学ぶ",
 	"growthexperiments-homepage-tutorial-cta-text": "チュートリアル",
 	"growthexperiments-specialimpact-title": "影響",

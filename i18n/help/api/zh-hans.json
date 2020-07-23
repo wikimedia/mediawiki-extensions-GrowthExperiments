@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"VulpesVulpes825"
+			"VulpesVulpes825",
+			"列维劳德"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "为当前用户处理通过帮助面板发布的问题。",
 	"apihelp-helppanelquestionposter-param-body": "由用户提供的问题文本。",
-	"apihelp-helppanelquestionposter-param-source": "问题来源组件。 有效值为“ helppanel”，“ homepage-help”和“ homepage-mentorship”",
+	"apihelp-helppanelquestionposter-param-source": "通过发帖提问的问题的方法",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "相关标题 (如果已选择) 将包含在问题中。"
 }
