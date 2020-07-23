@@ -1,8 +1,9 @@
 <?php
 
-namespace GrowthExperiments;
+namespace GrowthExperiments\Mentorship;
 
 use EchoEvent;
+use GrowthExperiments\Mentorship\Mentor;
 use IContextSource;
 use LogPager;
 use ManualLogEntry;

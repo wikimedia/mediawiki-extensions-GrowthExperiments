@@ -4,8 +4,8 @@ namespace GrowthExperiments\Specials;
 
 use Config;
 use FormSpecialPage;
-use GrowthExperiments\ChangeMentor;
-use GrowthExperiments\Mentor;
+use GrowthExperiments\Mentorship\ChangeMentor;
+use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\WikiConfigException;
 use LogEventsList;
 use LogPager;

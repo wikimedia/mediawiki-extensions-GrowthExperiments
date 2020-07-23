@@ -3,8 +3,8 @@
 namespace GrowthExperiments\Api;
 
 use ApiBase;
-use GrowthExperiments\ChangeMentor;
-use GrowthExperiments\Mentor;
+use GrowthExperiments\Mentorship\ChangeMentor;
+use GrowthExperiments\Mentorship\Mentor;
 use LogEventsList;
 use LogPager;
 use MediaWiki\Logger\LoggerFactory;

@@ -2,6 +2,8 @@
 
 namespace GrowthExperiments;
 
+use GrowthExperiments\Mentorship\ChangeMentor;
+use GrowthExperiments\Mentorship\Mentor;
 use IContextSource;
 use LogPager;
 use MediaWiki\User\UserIdentityValue;
@@ -13,7 +15,7 @@ use Wikimedia\Rdbms\IResultWrapper;
 use Wikimedia\TestingAccessWrapper;
 
 /**
- * @coversDefaultClass \GrowthExperiments\ChangeMentor
+ * @coversDefaultClass \GrowthExperiments\Mentorship\ChangeMentor
  */
 class ChangeMentorTest extends MediaWikiUnitTestCase {
 

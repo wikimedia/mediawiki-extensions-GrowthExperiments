@@ -6,6 +6,7 @@ use Config;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use GrowthExperiments\Mentorship\Mentor;
 use MessageLocalizer;
 use OutputPage;
 use RequestContext;

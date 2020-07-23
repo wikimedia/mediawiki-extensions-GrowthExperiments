@@ -9,7 +9,7 @@ use FauxRequest;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionPoster\HomepageMentorQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
-use GrowthExperiments\Mentor;
+use GrowthExperiments\Mentorship\Mentor;
 
 /**
  * @group API

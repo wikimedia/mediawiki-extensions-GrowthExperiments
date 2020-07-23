@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments;
+namespace GrowthExperiments\Mentorship;
 
 use EchoEventPresentationModel;
 

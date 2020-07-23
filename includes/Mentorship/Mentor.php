@@ -1,9 +1,10 @@
 <?php
 
-namespace GrowthExperiments;
+namespace GrowthExperiments\Mentorship;
 
 use ConfigException;
 use DeferredUpdates;
+use GrowthExperiments\WikiConfigException;
 use IContextSource;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
