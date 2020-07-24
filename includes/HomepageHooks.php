@@ -8,7 +8,6 @@ use ConfigException;
 use DomainException;
 use EchoAttributeManager;
 use EchoUserLocator;
-use Exception;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
@@ -509,12 +508,6 @@ class HomepageHooks implements
 						->getMentorUser()
 						->getId()
 				);
-			} catch ( Exception $exception ) {
-				Util::logError( $exception, [
-					'user' => $user->getId(),
-					'impact' => 'Failed to assign mentor for user',
-					'origin' => __METHOD__,
-				] );
 			} catch ( Throwable $throwable ) {
 				Util::logError( $throwable, [
 					'user' => $user->getId(),
@@ -635,12 +628,6 @@ class HomepageHooks implements
 			try {
 				$mentor = Mentor::newFromMentee( $user, true );
 				$options[Mentor::MENTOR_PREF] = $mentor->getMentorUser()->getId();
-			} catch ( Exception $exception ) {
-				Util::logError( $exception, [
-					'user' => $user->getId(),
-					'impact' => 'Failed to assign mentor from Special:Preferences',
-					'origin' => __METHOD__,
-				] );
 			} catch ( Throwable $throwable ) {
 				Util::logError( $throwable, [
 					'user' => $user->getId(),
