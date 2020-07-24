@@ -6,6 +6,11 @@
 	},
 	"apihelp-helppanelquestionposter-summary": "Lide com perguntas publicadas por meio do painel de ajuda do usuário atual.",
 	"apihelp-helppanelquestionposter-param-body": "O texto da pergunta fornecida pelo usuário.",
-	"apihelp-helppanelquestionposter-param-source": "O componente na origem da pergunta. Os valores válidos são 'helppanel', 'homepage-help' e 'homepage-mentorship'",
+	"apihelp-helppanelquestionposter-param-source": "O método pelo qual a pergunta foi colocada.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "O painel \"Perguntar na central de dúvidas\"",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "O painel \"Pergunte ao mentor\" na página inicial de um novo editor",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "A tela \"Pergunte ao seu mentor\" no painel de ajuda",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "O painel \"Pergunte a central de ajuda\" (nome antigo)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "O painel \"Pergunte ao mentor\" na página inicial de um novo editor (nome antigo)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "O título relevante, se selecionado, para incluir na pergunta."
 }

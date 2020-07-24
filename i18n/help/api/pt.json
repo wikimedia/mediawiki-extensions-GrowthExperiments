@@ -1,11 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"GoEThe",
 			"Hamilton Abreu"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "Tratar as perguntas do utilizador atual publicadas através do painel de ajuda.",
 	"apihelp-helppanelquestionposter-param-body": "O texto da pergunta feita pelo utilizador.",
-	"apihelp-helppanelquestionposter-param-source": "O componente que motivou a pergunta. Os valores válidos são 'helppanel', 'homepage-help' e 'homepage-mentorship'",
+	"apihelp-helppanelquestionposter-param-source": "O método pelo qual a pergunta foi colocada.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "O painel \"Perguntar na central de dúvidas\"",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "O painel \"Pergunte ao tutor\" na página inicial de um novo editor",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "O ecrã \"Pergunte ao tutor\" no painel de ajuda",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "O painel \"Pergunte a central de ajuda\" (nome antigo)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "O painel \"Pergunte ao tutor\" na página inicial de um novo editor (nome antigo)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "O título relevante, se selecionado, a incluir na pergunta."
 }
