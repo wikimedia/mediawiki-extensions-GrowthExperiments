@@ -5,7 +5,7 @@ namespace GrowthExperiments\Tests;
 use DerivativeContext;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\Mentorship;
-use GrowthExperiments\Mentor;
+use GrowthExperiments\Mentorship\Mentor;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
 use RequestContext;

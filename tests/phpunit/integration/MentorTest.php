@@ -4,7 +4,7 @@ namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
 use Exception;
-use GrowthExperiments\Mentor;
+use GrowthExperiments\Mentorship\Mentor;
 use MediaWikiTestCase;
 use RequestContext;
 
@@ -14,7 +14,7 @@ use RequestContext;
 class MentorTest extends MediaWikiTestCase {
 
 	/**
-	 * @covers \GrowthExperiments\Mentor::newFromMentee
+	 * @covers \GrowthExperiments\Mentorship\Mentor::newFromMentee
 	 * @dataProvider provideInvalidMentorsList
 	 * @param string $mentorsListConfig
 	 */
@@ -38,7 +38,7 @@ class MentorTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers \GrowthExperiments\Mentor::newFromMentee
+	 * @covers \GrowthExperiments\Mentorship\Mentor::newFromMentee
 	 */
 	public function testRenderInvalidMentor() {
 		$this->insertPage( 'MentorsList', '[[User:InvalidUser]]' );
@@ -51,7 +51,7 @@ class MentorTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers \GrowthExperiments\Mentor::getMentorUser
+	 * @covers \GrowthExperiments\Mentorship\Mentor::getMentorUser
 	 */
 	public function testGetMentorUserNew() {
 		$sysop = $this->getTestSysop()->getUser();
@@ -65,8 +65,8 @@ class MentorTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers \GrowthExperiments\Mentor::newFromMentee
-	 * @covers \GrowthExperiments\Mentor::getMentorUser
+	 * @covers \GrowthExperiments\Mentorship\Mentor::newFromMentee
+	 * @covers \GrowthExperiments\Mentorship\Mentor::getMentorUser
 	 */
 	public function testGetMentorUserExisting() {
 		$sysop = $this->getTestSysop()->getUser();
@@ -79,7 +79,7 @@ class MentorTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers \GrowthExperiments\Mentor::newFromMentee
+	 * @covers \GrowthExperiments\Mentorship\Mentor::newFromMentee
 	 */
 	public function testMentorCannotBeMentee() {
 		$user = $this->getMutableTestUser()->getUser();
@@ -93,7 +93,7 @@ class MentorTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers \GrowthExperiments\Mentor::newFromMentee
+	 * @covers \GrowthExperiments\Mentorship\Mentor::newFromMentee
 	 */
 	public function testMentorCannotBeMenteeMoreMentors() {
 		$userMentee = $this->getMutableTestUser()->getUser();
@@ -113,7 +113,7 @@ class MentorTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers \GrowthExperiments\Mentor::newFromMentee
+	 * @covers \GrowthExperiments\Mentorship\Mentor::newFromMentee
 	 */
 	public function testNoMentorAvailable() {
 		$this->insertPage( 'MentorsList', 'Mentors' );
@@ -126,7 +126,7 @@ class MentorTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers \GrowthExperiments\Mentor::getIntroText
+	 * @covers \GrowthExperiments\Mentorship\Mentor::getIntroText
 	 * @dataProvider provideCustomMentorText
 	 */
 	public function testRenderMentorText( $mentorsList, $expected ) {
@@ -156,7 +156,7 @@ class MentorTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers \GrowthExperiments\Mentor::getIntroText
+	 * @covers \GrowthExperiments\Mentorship\Mentor::getIntroText
 	 */
 	public function testRenderFallbackMentorText() {
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
@@ -176,7 +176,7 @@ class MentorTest extends MediaWikiTestCase {
 	}
 
 	/**
-	 * @covers \GrowthExperiments\Mentor::getMentors
+	 * @covers \GrowthExperiments\Mentorship\Mentor::getMentors
 	 */
 	public function testGetMentorsNoInvalidUsers() {
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );

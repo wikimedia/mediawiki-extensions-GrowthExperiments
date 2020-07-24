@@ -4,7 +4,7 @@ namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
 use GrowthExperiments\HelpPanel\QuestionPoster\MentorQuestionPoster;
-use GrowthExperiments\Mentor;
+use GrowthExperiments\Mentorship\Mentor;
 use MediaWikiTestCase;
 use RequestContext;
 use Wikimedia\TestingAccessWrapper;

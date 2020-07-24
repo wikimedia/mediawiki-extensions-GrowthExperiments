@@ -3,7 +3,7 @@
 namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
 use GrowthExperiments\HomepageModules\Mentorship;
-use GrowthExperiments\Mentor;
+use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\WikiConfigException;
 
 /**

@@ -9,7 +9,7 @@ use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use GrowthExperiments\HomepageModule;
-use GrowthExperiments\Mentor;
+use GrowthExperiments\Mentorship\Mentor;
 use Html;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
