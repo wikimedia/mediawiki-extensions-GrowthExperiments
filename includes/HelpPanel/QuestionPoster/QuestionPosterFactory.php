@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
+use GrowthExperiments\Mentorship\MentorManager;
 use IContextSource;
 use UserNotLoggedIn;
 use Wikimedia\Assert\Assert;
@@ -21,6 +22,16 @@ class QuestionPosterFactory {
 	public const TARGET_HELPDESK = 'helpdesk';
 	/** The question is sent to the talk page of the asking user's mentor. */
 	public const TARGET_MENTOR_TALK = 'mentor talk page';
+
+	/** @var MentorManager */
+	private $mentorManager;
+
+	/**
+	 * @param MentorManager $mentorManager
+	 */
+	public function __construct( MentorManager $mentorManager ) {
+		$this->mentorManager = $mentorManager;
+	}
 
 	/**
 	 * @param string $source One of the SOURCE_* constants.
@@ -48,9 +59,11 @@ class QuestionPosterFactory {
 		if ( $target === self::TARGET_HELPDESK ) {
 			return new HelpdeskQuestionPoster( $context, $body, $relevantTitle );
 		} elseif ( $source === self::SOURCE_HELP_PANEL ) {
-			return new HelppanelMentorQuestionPoster( $context, $body, $relevantTitle );
+			return new HelppanelMentorQuestionPoster( $this->mentorManager,
+				$context, $body, $relevantTitle );
 		} else {
-			return new HomepageMentorQuestionPoster( $context, $body, $relevantTitle );
+			return new HomepageMentorQuestionPoster( $this->mentorManager,
+				$context, $body, $relevantTitle );
 		}
 	}
 

@@ -6,7 +6,7 @@ use Config;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
-use GrowthExperiments\Mentorship\Mentor;
+use MediaWiki\MediaWikiServices;
 use MessageLocalizer;
 use OutputPage;
 use RequestContext;
@@ -167,7 +167,8 @@ class HelpPanelHooks {
 		if ( !$config->get( 'GEHelpPanelAskMentor' ) ) {
 			return [];
 		}
-		$mentor = Mentor::newFromMentee( $user );
+		$mentor = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
+			->getMentorManager()->getMentorForUserSafe( $user );
 		if ( !$mentor ) {
 			return [];
 		}

@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Mentorship;
 
 use EchoEvent;
-use GrowthExperiments\Mentorship\Mentor;
 use IContextSource;
 use LogPager;
 use ManualLogEntry;
@@ -41,22 +40,28 @@ class ChangeMentor {
 	 * @var LogPager
 	 */
 	private $logPager;
+	/**
+	 * @var MentorManager
+	 */
+	private $mentorManager;
 
 	/**
 	 * @param User $mentee Mentee's user object
 	 * @param User $performer Performer's user object
 	 * @param IContextSource $context Context
 	 * @param LoggerInterface $logger Logger
-	 * @param Mentor|bool $mentor
+	 * @param Mentor|null $mentor Old mentor
 	 * @param LogPager $logPager
+	 * @param MentorManager $mentorManager
 	 */
 	public function __construct(
 		User $mentee,
 		User $performer,
 		IContextSource $context,
 		LoggerInterface $logger,
-		$mentor,
-		LogPager $logPager
+		?Mentor $mentor,
+		LogPager $logPager,
+		MentorManager $mentorManager
 	) {
 		$this->logger = $logger;
 
@@ -64,9 +69,8 @@ class ChangeMentor {
 		$this->context = $context;
 		$this->mentee = $mentee;
 		$this->logPager = $logPager;
-		if ( $mentor instanceof Mentor ) {
-			$this->mentor = $mentor->getMentorUser();
-		}
+		$this->mentorManager = $mentorManager;
+		$this->mentor = $mentor ? $mentor->getMentorUser() : null;
 	}
 
 	/**
@@ -195,7 +199,7 @@ class ChangeMentor {
 			return $status;
 		}
 
-		Mentor::saveMentor( $this->mentee, $this->newMentor );
+		$this->mentorManager->setMentorForUser( $this->mentee, $this->newMentor );
 		$this->log( $reason );
 
 		// Notify mentee about the change

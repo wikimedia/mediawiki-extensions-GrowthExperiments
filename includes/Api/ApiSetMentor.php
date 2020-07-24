@@ -3,8 +3,10 @@
 namespace GrowthExperiments\Api;
 
 use ApiBase;
+use ApiMain;
 use GrowthExperiments\Mentorship\ChangeMentor;
 use GrowthExperiments\Mentorship\Mentor;
+use GrowthExperiments\Mentorship\MentorManager;
 use LogEventsList;
 use LogPager;
 use MediaWiki\Logger\LoggerFactory;
@@ -12,6 +14,23 @@ use MediaWiki\ParamValidator\TypeDef\UserDef;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiSetMentor extends ApiBase {
+	/** @var MentorManager */
+	private $mentorManager;
+
+	/**
+	 * @param ApiMain $mainModule
+	 * @param string $moduleName
+	 * @param MentorManager $mentorManager
+	 */
+	public function __construct(
+		ApiMain $mainModule,
+		$moduleName,
+		MentorManager $mentorManager
+	) {
+		parent::__construct( $mainModule, $moduleName );
+		$this->mentorManager = $mentorManager;
+	}
+
 	/**
 	 * @inheritDoc
 	 */
@@ -25,7 +44,7 @@ class ApiSetMentor extends ApiBase {
 			// you must have setmentor rights.
 			$this->checkUserRightsAny( 'setmentor' );
 		}
-		$mentorObj = Mentor::newFromMentee( $mentee );
+		$mentorObj = $this->mentorManager->getMentorForUserSafe( $mentee );
 
 		if ( $mentee->isAnon() || $mentor->isAnon() ) {
 			// User doesn't exist
@@ -44,7 +63,8 @@ class ApiSetMentor extends ApiBase {
 				[ 'growthexperiments' ],
 				'',
 				$mentee->getUserPage()
-			)
+			),
+			$this->mentorManager
 		);
 		$status = $changeMentor->execute( $mentor, $params['reason'] );
 		if ( !$status->isOK() ) {

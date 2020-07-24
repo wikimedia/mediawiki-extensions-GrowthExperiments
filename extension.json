@@ -46,7 +46,10 @@
 			"services": [ "GrowthExperimentsQuestionPosterFactory" ]
 		},
 		"homepagequestionstore": "GrowthExperiments\\Api\\ApiQuestionStore",
-		"growthsetmentor": "GrowthExperiments\\Api\\ApiSetMentor"
+		"growthsetmentor": {
+			"class": "GrowthExperiments\\Api\\ApiSetMentor",
+			"services": [ "GrowthExperimentsMentorManager" ]
+		}
 	},
 	"APIListModules": {
 		"growthtasks": {
@@ -80,6 +83,9 @@
 				"GrowthExperimentsNewcomerTaskTrackerFactory",
 				"GrowthExperimentsExperimentUserManager"
 			]
+		},
+		"mentor": {
+			"class": "GrowthExperiments\\Mentorship\\MentorHooks"
 		}
 	},
 	"Hooks": {
@@ -103,7 +109,8 @@
 			"welcomeSurvey",
 			"GrowthExperiments\\HelpPanelHooks::onGetPreferences",
 			"homepage",
-			"GrowthExperiments\\TourHooks::onGetPreferences"
+			"GrowthExperiments\\TourHooks::onGetPreferences",
+			"mentor"
 		],
 		"BeforeWelcomeCreation": "welcomeSurvey",
 		"SiteNoticeAfter": "homepage",
@@ -136,7 +143,6 @@
 		"UserSendConfirmationMail": [
 			"GrowthExperiments\\ConfirmEmailHooks::onUserSendConfirmationMail"
 		],
-		"UserSaveOptions": "homepage",
 		"ResourceLoaderRegisterModules": [
 			"GrowthExperiments\\TourHooks::onResourceLoaderRegisterModules"
 		],

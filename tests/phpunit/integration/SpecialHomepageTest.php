@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
+use GrowthExperiments\Mentorship\StaticMentorManager;
 use GrowthExperiments\Specials\SpecialHomepage;
 use HashConfig;
 use IContextSource;
@@ -36,7 +37,8 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			$growthExperimentsServices->getConfigurationLoader(),
 			$growthExperimentsServices->getNewcomerTaskTrackerFactory(),
 			MediaWikiServices::getInstance()->getStatsdDataFactory(),
-			$growthExperimentsServices->getExperimentUserManager()
+			$growthExperimentsServices->getExperimentUserManager(),
+			new StaticMentorManager( [] )
 		);
 	}
 

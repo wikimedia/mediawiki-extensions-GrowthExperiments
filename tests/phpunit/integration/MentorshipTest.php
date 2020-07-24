@@ -6,7 +6,6 @@ use DerivativeContext;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\Mentorship;
-use GrowthExperiments\Mentorship\Mentor;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
 use RequestContext;
@@ -24,9 +23,11 @@ class MentorshipTest extends MediaWikiTestCase {
 		$this->insertPage( 'MentorsList', 'no user links here' );
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
 		$context = new DerivativeContext( RequestContext::getMain() );
+		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		$mentorshipModule = new Mentorship(
 			$context,
-			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )->getExperimentUserManager()
+			$growthServices->getExperimentUserManager(),
+			$growthServices->getMentorManager()
 		);
 
 		$this->assertEmpty( $mentorshipModule->render( HomepageModule::RENDER_DESKTOP ) );
@@ -42,14 +43,13 @@ class MentorshipTest extends MediaWikiTestCase {
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $mentee );
+		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		$mentorshipModule = new Mentorship(
 			$context,
-			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )->getExperimentUserManager()
+			$growthServices->getExperimentUserManager(),
+			$growthServices->getMentorManager()
 		);
 		$context->getOutput()->enableOOUI();
-		$this->assertEmpty( $mentorshipModule->render( HomepageModule::RENDER_DESKTOP ) );
-		$mentee->setOption( Mentor::MENTOR_PREF, $mentor->getId() );
-		$mentee->saveSettings();
 		$this->assertNotEmpty( $mentorshipModule->render( HomepageModule::RENDER_DESKTOP ) );
 	}
 }

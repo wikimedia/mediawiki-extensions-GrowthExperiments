@@ -90,7 +90,7 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 	/**
 	 * @param string $source
 	 * @param string $body
-	 * @param string $relevantTitle
+	 * @param string|null $relevantTitle
 	 * @return QuestionPoster
 	 * @throws UserNotLoggedIn
 	 */
@@ -101,7 +101,7 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 			$questionPosterType[1],
 			$this->getContext(),
 			$body,
-			$relevantTitle
+			$relevantTitle ?? ''
 		);
 	}
 

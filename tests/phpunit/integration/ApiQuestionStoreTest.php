@@ -10,6 +10,8 @@ use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionPoster\HomepageMentorQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentorship\Mentor;
+use GrowthExperiments\Mentorship\MentorPageMentorManager;
+use GrowthExperiments\Mentorship\StaticMentorManager;
 
 /**
  * @group API
@@ -52,13 +54,16 @@ class ApiQuestionStoreTest extends ApiTestCase {
 	public function testApiResponseHtmlJson() {
 		$user = $this->getMutableTestUser()->getUser();
 		$mentor = $this->getTestSysop()->getUser();
-		$user->setOption( Mentor::MENTOR_PREF, $mentor->getId() );
+		$user->setOption( MentorPageMentorManager::MENTOR_PREF, $mentor->getId() );
 		$user->saveSettings();
 		$request = new FauxRequest( [], true );
 		$context = new DerivativeContext( $this->apiContext );
 		$context->setRequest( $request );
 		$context->setUser( $user );
-		$questionPoster = new HomepageMentorQuestionPoster( $context, 'foo' );
+		$questionPoster = new HomepageMentorQuestionPoster(
+			new StaticMentorManager( [
+				$user->getName() => new Mentor( $mentor, '' ),
+			] ), $context, 'foo' );
 		$questionPoster->submit();
 		$response = $this->doApiRequest(
 			[
@@ -75,4 +80,5 @@ class ApiQuestionStoreTest extends ApiTestCase {
 		$this->assertFalse( $question['isArchived'] );
 		$this->assertTrue( $question['isVisible'] );
 	}
+
 }

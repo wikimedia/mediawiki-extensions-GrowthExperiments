@@ -14,7 +14,6 @@ use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
-use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Tracker\Tracker;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
@@ -60,7 +59,6 @@ class HomepageHooks implements
 	\MediaWiki\ChangeTags\Hook\ListDefinedTagsHook,
 	\MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook,
 	\MediaWiki\Hook\RecentChange_saveHook,
-	\MediaWiki\User\Hook\UserSaveOptionsHook,
 	\MediaWiki\Hook\SpecialContributionsBeforeMainOutputHook,
 	\MediaWiki\SpecialPage\Hook\SpecialPageAfterExecuteHook,
 	\MediaWiki\User\Hook\ConfirmEmailCompleteHook,
@@ -151,6 +149,7 @@ class HomepageHooks implements
 					$this->trackerFactory,
 					$this->statsdDataFactory,
 					$this->experimentUserManager,
+					GrowthExperimentsServices::wrap( $mwServices )->getMentorManager(),
 					$pageViewsService
 				);
 			};
@@ -165,7 +164,7 @@ class HomepageHooks implements
 			}
 			$list[ 'ClaimMentee' ] = [
 				'class' => SpecialClaimMentee::class,
-				'services' => [ 'MainConfig' ]
+				'services' => [ 'MainConfig', 'GrowthExperimentsMentorManager' ]
 			];
 		}
 	}
@@ -420,10 +419,6 @@ class HomepageHooks implements
 			'type' => 'api',
 		];
 
-		$preferences[ Mentor::MENTOR_PREF ] = [
-			'type' => 'api',
-		];
-
 		$preferences[ Tutorial::TUTORIAL_PREF ] = [
 			'type' => 'api',
 		];
@@ -504,12 +499,10 @@ class HomepageHooks implements
 			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_DISCOVERY, 0 );
 			$user->setOption( self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN, 0 );
 			try {
-				$user->setOption(
-					Mentor::MENTOR_PREF,
-					Mentor::newFromMentee( $user, true )
-						->getMentorUser()
-						->getId()
-				);
+				// Select a mentor. FIXME Not really necessary, but avoids a change in functionality
+				//   after introducing MentorManager, making debugging easier.
+				GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
+					->getMentorManager()->getMentorForUser( $user );
 			} catch ( Throwable $throwable ) {
 				Util::logError( $throwable, [
 					'user' => $user->getId(),
@@ -612,34 +605,6 @@ class HomepageHooks implements
 				$rc->addTags( SuggestedEdits::SUGGESTED_EDIT_TAG );
 			}
 		}
-	}
-
-	/**
-	 * Handler for UserSaveOptions hook.
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/UserSaveOptions
-	 * @param User $user User whose options are being saved
-	 * @param array &$options Options can be modified
-	 * @param array $originalOptions Original options being replaced
-	 * @return bool true in all cases
-	 */
-	public function onUserSaveOptions( $user, &$options, $originalOptions ) {
-		$homepagePrefEnabled = $options[self::HOMEPAGE_PREF_ENABLE] ?? false;
-		$homepageAlreadyEnabled = $originalOptions[self::HOMEPAGE_PREF_ENABLE] ?? false;
-		$userHasMentor = $this->userOptionsLookup->getIntOption( $user, Mentor::MENTOR_PREF );
-		if ( $homepagePrefEnabled && !$homepageAlreadyEnabled && !$userHasMentor ) {
-			try {
-				$mentor = Mentor::newFromMentee( $user, true );
-				$options[Mentor::MENTOR_PREF] = $mentor->getMentorUser()->getId();
-			} catch ( Throwable $throwable ) {
-				Util::logError( $throwable, [
-					'user' => $user->getId(),
-					'impact' => 'Failed to assign mentor from Special:Preferences',
-					'origin' => __METHOD__,
-				] );
-			}
-		}
-
-		return true;
 	}
 
 	/**

@@ -30,7 +30,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiTestCase {
 	 */
 	public function testConstruct() {
 		$context = $this->buildContext();
-		$context->getUser()->logout();
+		$context->setUser( new User() );
 
 		$this->expectException( \MWException::class );
 		$this->expectExceptionMessage( 'User must be logged-in.' );

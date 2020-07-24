@@ -4,10 +4,11 @@ namespace GrowthExperiments;
 
 use GrowthExperiments\Mentorship\ChangeMentor;
 use GrowthExperiments\Mentorship\Mentor;
+use GrowthExperiments\Mentorship\MentorManager;
 use IContextSource;
 use LogPager;
-use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
+use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\NullLogger;
 use Status;
 use User;
@@ -25,12 +26,13 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 	public function testConstruct() {
 		$this->assertInstanceOf( ChangeMentor::class,
 			new ChangeMentor(
-				$this->getUserMock(),
-				$this->getUserMock(),
+				$this->getUserMock( 'Mentee', 1 ),
+				$this->getUserMock( 'Performer', 2 ),
 				$this->getContextMock(),
 				new NullLogger(),
-				$this->getMentorMock(),
-				$this->getLogPagerMock()
+				new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/' ),
+				$this->getLogPagerMock(),
+				$this->getMentorManagerMock()
 			)
 		);
 	}
@@ -45,12 +47,13 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 		$resultMock->method( 'fetchRow' )->willReturn( [ 'foo' ] );
 		$logPagerMock->method( 'getResult' )->willReturn( $resultMock );
 		$changeMentor = new ChangeMentor(
-			$this->getUserMock(),
-			$this->getUserMock(),
+			$this->getUserMock( 'Mentee', 1 ),
+			$this->getUserMock( 'Performer', 2 ),
 			$this->getContextMock(),
 			new NullLogger(),
-			$this->getMentorMock(),
-			$logPagerMock
+			new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/' ),
+			$logPagerMock,
+			$this->getMentorManagerMock()
 		);
 		$this->assertNotFalse( $changeMentor->wasMentorChanged() );
 	}
@@ -59,18 +62,17 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 	 * @covers ::validate
 	 */
 	public function testValidateMenteeIdZero(): void {
-		$mentee = $this->getUserMock();
-		$mentee->method( 'getId' )
-			->willReturn( 0 );
 		$changeMentor = new ChangeMentor(
-			$mentee,
-			$this->getUserMock(),
+			$this->getUserMock( 'Mentee', 0 ),
+			$this->getUserMock( 'Performer', 2 ),
 			$this->getContextMock(),
 			new NullLogger(),
-			$this->getMentorMock(),
-			$this->getLogPagerMock()
+			new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/' ),
+			$this->getLogPagerMock(),
+			$this->getMentorManagerMock()
 		);
 		$changeMentorWrapper = TestingAccessWrapper::newFromObject( $changeMentor );
+		$changeMentorWrapper->newMentor = $this->getUserMock( 'NewMentor', 4 );
 		/** @var Status $status */
 		$status = $changeMentorWrapper->validate();
 		$this->assertFalse( $status->isGood() );
@@ -85,14 +87,16 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 	 */
 	public function testValidateSuccess(): void {
 		$changeMentor = new ChangeMentor(
-			$this->getUserMock(),
-			$this->getUserMock(),
+			$this->getUserMock( 'Mentee', 1 ),
+			$this->getUserMock( 'Performer', 2 ),
 			$this->getContextMock(),
 			new NullLogger(),
-			$this->getMentorMock(),
-			$this->getLogPagerMock()
+			new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/' ),
+			$this->getLogPagerMock(),
+			$this->getMentorManagerMock()
 		);
 		$changeMentorWrapper = TestingAccessWrapper::newFromObject( $changeMentor );
+		$changeMentorWrapper->newMentor = $this->getUserMock( 'NewMentor', 4 );
 		/** @var Status $status */
 		$status = $changeMentorWrapper->validate();
 		$this->assertTrue( $status->isGood() );
@@ -102,21 +106,17 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 	 * @covers ::validate
 	 */
 	public function testValidateOldMentorNewMentorEquality(): void {
-		$mentorUser = new UserIdentityValue( 1, 'Foo', 1 );
-		$newMentor = new UserIdentityValue( 1, 'Foo', 1 );
-		$mentorMock = $this->getMentorMock();
-		$mentorMock->method( 'getMentorUser' )
-			->willReturn( $mentorUser );
 		$changeMentor = new ChangeMentor(
-			$this->getUserMock(),
-			$this->getUserMock(),
+			$this->getUserMock( 'Mentee', 1 ),
+			$this->getUserMock( 'Performer', 2 ),
 			$this->getContextMock(),
 			new NullLogger(),
-			$mentorMock,
-			$this->getLogPagerMock()
+			new Mentor( $this->getUserMock( 'SameMentor', 3 ), 'o/' ),
+			$this->getLogPagerMock(),
+			$this->getMentorManagerMock()
 		);
 		$changeMentorWrapper = TestingAccessWrapper::newFromObject( $changeMentor );
-		$changeMentorWrapper->newMentor = $newMentor;
+		$changeMentorWrapper->newMentor = $this->getUserMock( 'SameMentor', 3 );
 		/** @var Status $status */
 		$status = $changeMentorWrapper->validate();
 		$this->assertFalse( $status->isGood() );
@@ -127,39 +127,38 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 	 * @covers ::validate
 	 */
 	public function testExecuteBadStatus(): void {
-		$mentorUser = $this->getUserMock();
-		$newMentor = $this->getUserMock();
-		$mentorUser->method( 'equals' )->with( $newMentor )->willReturn( true );
-		$newMentor->method( 'equals' )->with( $mentorUser )->willReturn( true );
-
-		$mentorMock = $this->getMentorMock();
-		$mentorMock->method( 'getMentorUser' )
-			->willReturn( $mentorUser );
 		$changeMentor = new ChangeMentor(
-			$this->getUserMock(),
-			$this->getUserMock(),
+			$this->getUserMock( 'Mentee', 1 ),
+			$this->getUserMock( 'Performer', 2 ),
 			$this->getContextMock(),
 			new NullLogger(),
-			$mentorMock,
-			$this->getLogPagerMock()
+			new Mentor( $this->getUserMock( 'SameMentor', 3 ), 'o/' ),
+			$this->getLogPagerMock(),
+			$this->getMentorManagerMock()
 		);
-		$status = $changeMentor->execute( $newMentor, 'test' );
+		$status = $changeMentor->execute( $this->getUserMock( 'SameMentor', 3 ), 'test' );
 		$this->assertFalse( $status->isOK() );
 		$this->assertTrue( $status->hasMessage(
 			'growthexperiments-homepage-claimmentee-already-mentor' ) );
 	}
 
 	/**
-	 * @return \PHPUnit\Framework\MockObject\MockObject|User
+	 * @param string $name
+	 * @param int|null $id
+	 * @return MockObject|User
 	 */
-	private function getUserMock() {
-		return $this->getMockBuilder( User::class )
+	private function getUserMock( string $name, int $id ) {
+		$user = $this->getMockBuilder( User::class )
 			->disableOriginalConstructor()
+			->setMethods( [ 'getName', 'getId' ] )
 			->getMock();
+		$user->method( 'getName' )->willReturn( $name );
+		$user->method( 'getId' )->willReturn( $id );
+		return $user;
 	}
 
 	/**
-	 * @return \PHPUnit\Framework\MockObject\MockObject|IContextSource
+	 * @return MockObject|IContextSource
 	 */
 	private function getContextMock() {
 		return $this->getMockBuilder( IContextSource::class )
@@ -168,21 +167,20 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @return \PHPUnit\Framework\MockObject\MockObject|Mentor
-	 */
-	private function getMentorMock() {
-		return $this->getMockBuilder( Mentor::class )
-			->disableOriginalConstructor()
-			->getMock();
-	}
-
-	/**
-	 * @return \PHPUnit\Framework\MockObject\MockObject|LogPager
+	 * @return MockObject|LogPager
 	 */
 	private function getLogPagerMock() {
 		return $this->getMockBuilder( LogPager::class )
 			->disableOriginalConstructor()
 			->getMock();
+	}
+
+	/**
+	 * @return MockObject|MentorManager
+	 */
+	private function getMentorManagerMock() {
+		return $this->getMockBuilder( MentorManager::class )
+			->getMockForAbstractClass();
 	}
 
 }

@@ -7,6 +7,8 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
+use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
@@ -83,6 +85,24 @@ return [
 		);
 	},
 
+	'GrowthExperimentsMentorManager' => function (
+		MediaWikiServices $services
+	) : MentorManager {
+		$config = GrowthExperimentsServices::wrap( $services )->getConfig();
+		$manager = new MentorPageMentorManager(
+			$services->getTitleFactory(),
+			$services->getWikiPageFactory(),
+			$services->getUserFactory(),
+			$services->getUserOptionsManager(),
+			$services->getUserNameUtils(),
+			RequestContext::getMain(),
+			RequestContext::getMain()->getLanguage(),
+			$config->get( 'GEHomepageMentorsList' ) ?? ''
+		);
+		$manager->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
+		return $manager;
+	},
+
 	'GrowthExperimentsNewcomerTaskTrackerFactory' => function (
 		MediaWikiServices $services
 	): TrackerFactory {
@@ -96,7 +116,8 @@ return [
 	'GrowthExperimentsQuestionPosterFactory' => function (
 		MediaWikiServices $services
 	): QuestionPosterFactory {
-		return new QuestionPosterFactory();
+		$mentorManager = GrowthExperimentsServices::wrap( $services )->getMentorManager();
+		return new QuestionPosterFactory( $mentorManager );
 	},
 
 	// deprecated, use GrowthExperimentsTaskSuggesterFactory directly

@@ -18,6 +18,7 @@ use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\Start;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
+use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Tracker\Tracker;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
@@ -63,6 +64,10 @@ class SpecialHomepage extends SpecialPage {
 	 * @var ExperimentUserManager
 	 */
 	private $experimentUserManager;
+	/**
+	 * @var MentorManager
+	 */
+	private $mentorManager;
 
 	/**
 	 * @param EditInfoService $editInfoService
@@ -71,6 +76,7 @@ class SpecialHomepage extends SpecialPage {
 	 * @param TrackerFactory $trackerFactory
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param ExperimentUserManager $experimentUserManager
+	 * @param MentorManager $mentorManager
 	 * @param PageViewService|null $pageViewService
 	 */
 	public function __construct(
@@ -80,6 +86,7 @@ class SpecialHomepage extends SpecialPage {
 		TrackerFactory $trackerFactory,
 		IBufferingStatsdDataFactory $statsdDataFactory,
 		ExperimentUserManager $experimentUserManager,
+		MentorManager $mentorManager,
 		PageViewService $pageViewService = null
 	) {
 		parent::__construct( 'Homepage', '', false );
@@ -101,6 +108,7 @@ class SpecialHomepage extends SpecialPage {
 			$this->getSkin()->setRelevantTitle( $this->getUser()->getUserPage() );
 		}
 		$this->experimentUserManager = $experimentUserManager;
+		$this->mentorManager = $mentorManager;
 	}
 
 	private function handleTutorialVisit( $par ) {
@@ -243,7 +251,7 @@ class SpecialHomepage extends SpecialPage {
 				$this->experimentUserManager,
 				$this->pageViewService
 			),
-			'mentorship' => new Mentorship( $this->getContext(), $this->experimentUserManager ),
+			'mentorship' => new Mentorship( $this->getContext(), $this->experimentUserManager, $this->mentorManager ),
 			'help' => new Help( $this->getContext(), $this->experimentUserManager ),
 		];
 		if ( SuggestedEdits::isEnabled( $this->getContext() ) ) {

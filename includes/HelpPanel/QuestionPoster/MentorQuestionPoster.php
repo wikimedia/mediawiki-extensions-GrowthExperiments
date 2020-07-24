@@ -3,13 +3,35 @@
 namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
 use GrowthExperiments\HomepageModules\Mentorship;
-use GrowthExperiments\Mentorship\Mentor;
+use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\WikiConfigException;
+use IContextSource;
+use UserNotLoggedIn;
 
 /**
  * QuestionPoster base class for asking a question from the assigned mentor.
  */
 abstract class MentorQuestionPoster extends QuestionPoster {
+
+	/** @var MentorManager */
+	protected $mentorManager;
+
+	/**
+	 * @param MentorManager $mentorManager
+	 * @param IContextSource $context
+	 * @param string $body
+	 * @param string $relevantTitle
+	 * @throws UserNotLoggedIn
+	 */
+	public function __construct(
+		MentorManager $mentorManager,
+		IContextSource $context,
+		$body,
+		$relevantTitle = ''
+	) {
+		$this->mentorManager = $mentorManager;
+		parent::__construct( $context, $body, $relevantTitle );
+	}
 
 	/**
 	 * @inheritDoc
@@ -32,10 +54,7 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 	 * @throws WikiConfigException If there's anything wrong with the current user's mentor
 	 */
 	protected function getTargetTitle() {
-		$mentor = Mentor::newFromMentee( $this->getContext()->getUser() );
-		if ( !$mentor ) {
-			throw new WikiConfigException( "Mentor not found" );
-		}
+		$mentor = $this->mentorManager->getMentorForUser( $this->getContext()->getUser() );
 		return $mentor->getMentorUser()->getTalkPage();
 	}
 

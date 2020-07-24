@@ -5,7 +5,7 @@ namespace GrowthExperiments\Specials;
 use Config;
 use FormSpecialPage;
 use GrowthExperiments\Mentorship\ChangeMentor;
-use GrowthExperiments\Mentorship\Mentor;
+use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\WikiConfigException;
 use LogEventsList;
 use LogPager;
@@ -33,14 +33,19 @@ class SpecialClaimMentee extends FormSpecialPage {
 	 * @var Config
 	 */
 	private $config;
+	/**
+	 * @var MentorManager
+	 */
+	private $mentorManager;
 
 	/**
-	 * SpecialClaimMentee constructor.
 	 * @param Config $config
+	 * @param MentorManager $mentorManager
 	 */
-	public function __construct( Config $config ) {
+	public function __construct( Config $config, MentorManager $mentorManager ) {
 		parent::__construct( 'ClaimMentee' );
 		$this->config = $config;
+		$this->mentorManager = $mentorManager;
 	}
 
 	public function doesWrites() {
@@ -81,11 +86,11 @@ class SpecialClaimMentee extends FormSpecialPage {
 	 */
 	public function userCanExecute( User $user ) {
 		try {
-			$this->mentorsList = Mentor::getMentors();
+			$this->mentorsList = $this->mentorManager->getAvailableMentors();
 		} catch ( WikiConfigException $wikiConfigException ) {
 			return false;
 		}
-		return in_array( $user->getTitleKey(), $this->mentorsList );
+		return in_array( $user->getName(), $this->mentorsList );
 	}
 
 	/**
@@ -158,13 +163,14 @@ class SpecialClaimMentee extends FormSpecialPage {
 			$this->newMentor,
 			$this->getContext(),
 			LoggerFactory::getInstance( 'GrowthExperiments' ),
-			Mentor::newFromMentee( $this->mentee ),
+			$this->mentorManager->getMentorForUser( $this->mentee ),
 			new LogPager(
 				new LogEventsList( $this->getContext() ),
 				[ 'growthexperiments' ],
 				'',
 				$this->mentee->getUserPage()
-			)
+			),
+			$this->mentorManager
 		);
 		if (
 			$data['confirm'] !== true
