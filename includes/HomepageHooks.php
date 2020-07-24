@@ -834,9 +834,8 @@ class HomepageHooks implements
 	 *   - on error: [ '_error' => error message in wikitext format ]
 	 */
 	public static function getTaskTypesJson( ResourceLoaderContext $context ) {
-		/** @var ConfigurationLoader $configurationLoader */
-		$configurationLoader = MediaWikiServices::getInstance()
-			->get( 'GrowthExperimentsConfigurationLoader' );
+		$configurationLoader = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
+			->getConfigurationLoader();
 		$configurationLoader->setMessageLocalizer( $context );
 		$taskTypes = $configurationLoader->loadTaskTypes();
 		if ( $taskTypes instanceof StatusValue ) {
@@ -865,9 +864,8 @@ class HomepageHooks implements
 	 *   - on error: [ '_error' => error message in wikitext format ]
 	 */
 	public static function getTopicsJson( ResourceLoaderContext $context ) {
-		/** @var ConfigurationLoader $configurationLoader */
-		$configurationLoader = MediaWikiServices::getInstance()
-			->get( 'GrowthExperimentsConfigurationLoader' );
+		$configurationLoader = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
+			->getConfigurationLoader();
 		$configurationLoader->setMessageLocalizer( $context );
 		$topics = $configurationLoader->loadTopics();
 		if ( $topics instanceof StatusValue ) {

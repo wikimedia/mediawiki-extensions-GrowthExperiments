@@ -3,6 +3,7 @@
 use GrowthExperiments\AqsEditInfoService;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -25,7 +26,7 @@ return [
 	'GrowthExperimentsConfigurationLoader' => function (
 		MediaWikiServices $services
 	): ConfigurationLoader {
-		$config = $services->getConfigFactory()->makeConfig( 'GrowthExperiments' );
+		$config = GrowthExperimentsServices::wrap( $services )->getConfig();
 		$cache = new CachedBagOStuff( ObjectCache::getLocalClusterInstance() );
 
 		$taskConfigTitle = Title::newFromText( $config->get( 'GENewcomerTasksConfigTitle' ) );
@@ -67,10 +68,9 @@ return [
 	'GrowthExperimentsTaskSuggesterFactory' => function (
 		MediaWikiServices $services
 	): TaskSuggesterFactory {
-		$config = $services->getConfigFactory()->makeConfig( 'GrowthExperiments' );
+		$config = GrowthExperimentsServices::wrap( $services )->getConfig();
 
-		/** @var ConfigurationLoader $configLoader */
-		$configLoader = $services->getService( 'GrowthExperimentsConfigurationLoader' );
+		$configLoader = GrowthExperimentsServices::wrap( $services )->getConfigurationLoader();
 		$searchStrategy = new SearchStrategy();
 		$dbr = $services->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA );
 		$templateProvider = new TemplateProvider( $services->getTitleFactory(), $dbr );
@@ -98,8 +98,7 @@ return [
 	// deprecated, use GrowthExperimentsTaskSuggesterFactory directly
 	'GrowthExperimentsTaskSuggester' => function ( MediaWikiServices $services ): TaskSuggester {
 		wfDeprecated( 'GrowthExperimentsTaskSuggester service', '1.35', 'GrowthExperiments' );
-		/** @var TaskSuggesterFactory $taskSuggesterFactory */
-		$taskSuggesterFactory = $services->get( 'GrowthExperimentsTaskSuggesterFactory' );
+		$taskSuggesterFactory = GrowthExperimentsServices::wrap( $services )->getTaskSuggesterFactory();
 		return $taskSuggesterFactory->create();
 	},
 
@@ -140,9 +139,10 @@ return [
 	'GrowthExperimentsTipsAssembler' => function (
 		MediaWikiServices $services
 	): TipsAssembler {
+		$growthExperimentsServices = GrowthExperimentsServices::wrap( $services );
 		return new TipsAssembler(
-			$services->get( 'GrowthExperimentsConfigurationLoader' ),
-			$services->get( 'GrowthExperimentsTipNodeRenderer' )
+			$growthExperimentsServices->getConfigurationLoader(),
+			$growthExperimentsServices->getTipNodeRenderer()
 		);
 	},
 
