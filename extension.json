@@ -41,7 +41,10 @@
 		"GrowthExperiments": "GlobalVarConfig::newInstance"
 	},
 	"APIModules": {
-		"helppanelquestionposter": "GrowthExperiments\\Api\\ApiHelpPanelPostQuestion",
+		"helppanelquestionposter": {
+			"class": "GrowthExperiments\\Api\\ApiHelpPanelPostQuestion",
+			"services": [ "GrowthExperimentsQuestionPosterFactory" ]
+		},
 		"homepagequestionstore": "GrowthExperiments\\Api\\ApiQuestionStore",
 		"growthsetmentor": "GrowthExperiments\\Api\\ApiSetMentor"
 	},
