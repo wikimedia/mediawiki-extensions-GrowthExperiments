@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Eduardo Addad de Oliveira",
-			"Fitoschido"
+			"Fitoschido",
+			"Luk3"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Olá}}, {{bidi:$1}}!",
-	"growthexperiments-homepage-tab": "Página principal",
+	"growthexperiments-homepage-tab": "Página inicial",
 	"tooltip-pt-homepage": "{{GENDER:|Sua}} página inicial",
 	"prefs-homepage": "Página inicial do recém-chegado",
 	"growthexperiments-homepage-enable": "Exibir página inicial do recém-chegado",
@@ -20,7 +21,7 @@
 	"growthexperiments-homepage-userpage-body": "Pratique a edição ao criar {{GENDER:$1|seu}} perfil público.",
 	"growthexperiments-homepage-userpage-body-done": "Continue a trabalhar no {{GENDER:$1|seu}} perfil público.",
 	"growthexperiments-homepage-userpage-button": "Criar nova página de usuário",
-	"growthexperiments-homepage-userpage-button-done": "Editar página do usuário",
+	"growthexperiments-homepage-userpage-button-done": "Editar página de usuário",
 	"growthexperiments-homepage-userpage-guidelines": "Diretrizes para páginas de usuários",
 	"growthexperiments-homepage-email-header-noemail": "Adicionar {{GENDER:$1|seu}} e-mail",
 	"growthexperiments-homepage-email-header-unconfirmed": "Confirmar {{GENDER:$1|seu}} e-mail",

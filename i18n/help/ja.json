@@ -3,7 +3,8 @@
 		"authors": [
 			"Bonfire12",
 			"Omotecho",
-			"Shirayuki"
+			"Shirayuki",
+			"Tmv"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "編集者ヘルプパネルを有効にする",
@@ -18,6 +19,7 @@
 	"growthexperiments-help-panel-close": "完了",
 	"growthexperiments-help-panel-home-title": "編集について教えてもらう",
 	"growthexperiments-help-panel-questionreview-title": "ヘルプデスクに質問をする",
+	"growthexperiments-help-panel-questionreview-title-mentor": "先生に質問する",
 	"growthexperiments-help-panel-questionreview-header": "投稿した質問は利用者名とともに$1に「$2」として<strong>公表され</strong>、翌日か数日のうちに他の編集者がボランティアで回答しようと努めてくれるはずです。",
 	"growthexperiments-help-panel-questionreview-label": "質問をどうぞ",
 	"growthexperiments-help-panel-questionreview-include-article-title": "質問に関わるページの題名を書き加える",
@@ -46,5 +48,7 @@
 	"growthexperiments-help-panel-search-no-results": "検索結果がありませんでした。",
 	"tag-help_panel_question": "ヘルプパネルに関する質問",
 	"tag-help_panel_question-description": "ヘルプパネルの投稿機能から編集した質問",
-	"growthexperiments-help-panel-button-preheader-suggested-edits": "編集提案"
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "編集提案",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "あなたの先生に助けを求める",
+	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|編集|編集}} · $2"
 }

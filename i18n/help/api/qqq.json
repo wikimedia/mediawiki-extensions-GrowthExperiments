@@ -1,14 +1,17 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Amire80",
+			"Umherirrender"
+		]
 	},
 	"apihelp-helppanelquestionposter-summary": "{{doc-apihelp-summary|helppanelquestionposter}}",
 	"apihelp-helppanelquestionposter-param-body": "{{doc-apihelp-param|helppanelquestionposter|body}}",
 	"apihelp-helppanelquestionposter-param-source": "{{doc-apihelp-param|helppanelquestionposter|source}}",
-	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|helpdesk}}",
-	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|mentor-homepage}}",
-	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|mentor-helppanel}}",
-	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|helppanel}}",
-	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|mentorship}}",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|helpdesk}}\n\nSee also {{msg-mw|Growthexperiments-homepage-help-dialog-title}}",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|mentor-homepage}}\n\nSee also {{msg-mw|Growthexperiments-help-panel-questionreview-title-mentor}}",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|mentor-helppanel}}\n\nSee also {{msg-mw|Growthexperiments-help-panel-questionreview-title-mentor}}",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|helppanel}}\n\nSee also {{msg-mw|Growthexperiments-homepage-help-dialog-title}}",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|homepage-mentorship}}\n\nSee also {{msg-mw|Growthexperiments-help-panel-questionreview-title-mentor}}",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "{{doc-apihelp-param|helppanelquestionposter|relevanttitle}}"
 }

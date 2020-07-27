@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"GoEThe",
 			"Hamilton Abreu"
 		]
 	},
@@ -8,5 +9,9 @@
 	"apihelp-homepagequestionstore-param-questionformat": "O formato no qual devolver as perguntas, por exemplo HTML.",
 	"apihelp-homepagequestionstore-param-storage": "O local de armazenamento das perguntas.",
 	"apihelp-homepagequestionstore-param-userid": "O identificador do utilizador para o qual as perguntas serão obtidas.",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Não foi encontrada nenhuma pergunta."
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Não foi encontrada nenhuma pergunta.",
+	"apihelp-growthsetmentor-summary": "Defina o tutor do usuário. A alteração será registada publicamente.",
+	"apihelp-growthsetmentor-param-mentee": "Nome de usuário do tutorado",
+	"apihelp-growthsetmentor-param-mentor": "Nome de usuário do tutor",
+	"apihelp-growthsetmentor-param-reason": "Motivo da alteração"
 }

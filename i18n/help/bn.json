@@ -16,6 +16,7 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "ইমেইল যোগ করুন",
 	"growthexperiments-help-panel-search-label": "সাহায্যের জন্য অনুসন্ধান করুন",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "পরামর্শকৃত সম্পাদনা",
+	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1টি {{PLURAL:$1|সম্পাদনা}} · $2",
 	"growthexperiments-help-panel-general-help-title": "সাধারণ সম্পাদনা সহায়তা",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "দৃশ্যমান সম্পাদনায় যান",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "উৎস সম্পাদকে যান"

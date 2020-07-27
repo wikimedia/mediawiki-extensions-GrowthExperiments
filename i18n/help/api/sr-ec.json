@@ -7,6 +7,11 @@
 	},
 	"apihelp-helppanelquestionposter-summary": "Руковање питањима која су постављена помоћу табле помоћи за тренутног корисника.",
 	"apihelp-helppanelquestionposter-param-body": "Текст питања које је поставио корисник",
-	"apihelp-helppanelquestionposter-param-source": "Компонента на извору питања. Важеће вредности су: „helppanel”, „homepage-help” и „homepage-mentorship”",
+	"apihelp-helppanelquestionposter-param-source": "Начин постављања питања",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Табла „Постављање питања”",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Табла „Питање ментору” на почетној страници новајлије",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Екран „Питање ментору” на табли помоћи",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Табла „Постављање питања” (старо име)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Табла „Питање ментору” на почетној страници новајлије (старо име)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Релевантан наслов, ако је изабрано, за укључивање с питањем."
 }

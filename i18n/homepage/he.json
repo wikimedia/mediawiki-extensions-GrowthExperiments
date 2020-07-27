@@ -113,7 +113,7 @@
 	"growthexperiments-homepage-mentorship-mentor-edits": "{{PLURAL:$1|עריכה אחת|$1 עריכות}}",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|פעיל|פעילה}} היום",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|היה פעיל|הייתה פעילה}} אתמול",
-	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|היה פעיל|הייתה פעילה}} לפני {{PLURAL:$2|יום אחד|יומיים|$2 ימים}}",
+	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|היה פעיל|הייתה פעילה}} {{PLURAL:$2|שלשום|לפני יומיים|לפני $2 ימים}}",
 	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|המשתמש המנוסה הזה יודע|המשתמשת המנוסה הזאת יודעת}} {{GENDER:$2|שאתה חדש|שאת חדשה}} {{GENDER:$1|ויכול|ויכולה}} לעזור לך לערוך.",
 	"growthexperiments-homepage-mentorship-question-button": "{{GENDER:$2|תשאל|תשאלי}} את {{GENDER:$1|החונך|החונכת}} שלך",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "הצגת את השיחות האחרות של {{GENDER:$1|החונך|החונכת}} {{GENDER:$2|שלך}}.",

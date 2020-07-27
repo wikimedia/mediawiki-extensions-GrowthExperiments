@@ -7,5 +7,10 @@
 	"apihelp-helppanelquestionposter-summary": "טיפול בשאלות שנשלחו דרך חלונית העזרה למשתמש הנוכחי.",
 	"apihelp-helppanelquestionposter-param-body": "הטקסט של השאלות שסופקו על־ידי המשתמש.",
 	"apihelp-helppanelquestionposter-param-source": "השיטה שבה השאלה נשלחה.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "חלונית \"לשאול בדלפק ייעוץ\"",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "חלונית \"לשאול את החונך שלך\" בדף הבית למתחילים",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "חלונית \"לשאול את החונך שלך\" בחלנוית העזרה",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "חלונית \"לשאול בדלפק ייעוץ\" (שם ישן)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "חלונית \"לשאול את החונך שלך\" בדף הבית למתחילים (שם ישן)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "הכותרת המתאימה, אם נבחרה, שתיכלל עם השאלה."
 }
