@@ -457,7 +457,7 @@
 
 		this.questionIncludeTitleCheckbox = new OO.ui.CheckboxInputWidget( {
 			value: 1,
-			selected: true
+			selected: this.questionPosterAllowIncludingTitle
 		} );
 
 		// Build home content of help panel.
