@@ -65,6 +65,40 @@ return [
 		return $configurationLoader;
 	},
 
+	'GrowthExperimentsEditInfoService' => function ( MediaWikiServices $services ): EditInfoService {
+		$project = $services->get( '_GrowthExperimentsAQSConfig' )->project;
+		$editInfoService = new AqsEditInfoService( $services->getHttpRequestFactory(), $project );
+		$editInfoService->setCache( ObjectCache::getLocalClusterInstance() );
+		return $editInfoService;
+	},
+
+	'GrowthExperimentsExperimentUserManager' => function (
+		MediaWikiServices $services
+	) : ExperimentUserManager {
+		return new ExperimentUserManager(
+			new ServiceOptions( [ 'GEHomepageDefaultVariant' ], $services->getMainConfig() ),
+			$services->getUserOptionsManager(),
+			$services->getUserOptionsLookup()
+		);
+	},
+
+	'GrowthExperimentsNewcomerTaskTrackerFactory' => function (
+		MediaWikiServices $services
+	): TrackerFactory {
+		return new TrackerFactory(
+			$services->getMainObjectStash(),
+			$services->getTitleFactory(),
+			LoggerFactory::getInstance( 'GrowthExperiments' )
+		);
+	},
+
+	// deprecated, use GrowthExperimentsTaskSuggesterFactory directly
+	'GrowthExperimentsTaskSuggester' => function ( MediaWikiServices $services ): TaskSuggester {
+		wfDeprecated( 'GrowthExperimentsTaskSuggester service', '1.35', 'GrowthExperiments' );
+		$taskSuggesterFactory = GrowthExperimentsServices::wrap( $services )->getTaskSuggesterFactory();
+		return $taskSuggesterFactory->create();
+	},
+
 	'GrowthExperimentsTaskSuggesterFactory' => function (
 		MediaWikiServices $services
 	): TaskSuggesterFactory {
@@ -95,47 +129,6 @@ return [
 		return $taskSuggesterFactory;
 	},
 
-	// deprecated, use GrowthExperimentsTaskSuggesterFactory directly
-	'GrowthExperimentsTaskSuggester' => function ( MediaWikiServices $services ): TaskSuggester {
-		wfDeprecated( 'GrowthExperimentsTaskSuggester service', '1.35', 'GrowthExperiments' );
-		$taskSuggesterFactory = GrowthExperimentsServices::wrap( $services )->getTaskSuggesterFactory();
-		return $taskSuggesterFactory->create();
-	},
-
-	'_GrowthExperimentsAQSConfig' => function ( MediaWikiServices $services ): stdClass {
-		// This is not a service and doesn't quite belong here, but we need to share it with
-		// Javascript code as fetching this information in bulk is not feasible, and this seems
-		// the least awkward option (as opposed to creating a dedicated service just for fetching
-		// configuration, or passing through all the services involved here to the ResourceLoader
-		// callback). The nice long-term solution is probably to extend RL callback specification
-		// syntax to allow using something like the 'services' parameter of ObjectFactory.
-		$project = $services->getMainConfig()->get( 'ServerName' );
-		if ( ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' ) ) {
-			$project = $services->getConfigFactory()->makeConfig( 'PageViewInfo' )
-				->get( 'PageViewInfoWikimediaDomain' )
-				?: $project;
-		}
-		// MediaWikiServices insists on service factories returning an object, so wrap it into one
-		return (object)[ 'project' => $project ];
-	},
-
-	'GrowthExperimentsEditInfoService' => function ( MediaWikiServices $services ): EditInfoService {
-		$project = $services->get( '_GrowthExperimentsAQSConfig' )->project;
-		$editInfoService = new AqsEditInfoService( $services->getHttpRequestFactory(), $project );
-		$editInfoService->setCache( ObjectCache::getLocalClusterInstance() );
-		return $editInfoService;
-	},
-
-	'GrowthExperimentsNewcomerTaskTrackerFactory' => function (
-		MediaWikiServices $services
-	): TrackerFactory {
-		return new TrackerFactory(
-			$services->getMainObjectStash(),
-			$services->getTitleFactory(),
-			LoggerFactory::getInstance( 'GrowthExperiments' )
-		);
-	},
-
 	'GrowthExperimentsTipsAssembler' => function (
 		MediaWikiServices $services
 	): TipsAssembler {
@@ -154,14 +147,21 @@ return [
 		);
 	},
 
-	'GrowthExperimentsExperimentUserManager' => function (
-		MediaWikiServices $services
-	) : ExperimentUserManager {
-		return new ExperimentUserManager(
-			new ServiceOptions( [ 'GEHomepageDefaultVariant' ], $services->getMainConfig() ),
-			$services->getUserOptionsManager(),
-			$services->getUserOptionsLookup()
-		);
+	'_GrowthExperimentsAQSConfig' => function ( MediaWikiServices $services ): stdClass {
+		// This is not a service and doesn't quite belong here, but we need to share it with
+		// Javascript code as fetching this information in bulk is not feasible, and this seems
+		// the least awkward option (as opposed to creating a dedicated service just for fetching
+		// configuration, or passing through all the services involved here to the ResourceLoader
+		// callback). The nice long-term solution is probably to extend RL callback specification
+		// syntax to allow using something like the 'services' parameter of ObjectFactory.
+		$project = $services->getMainConfig()->get( 'ServerName' );
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' ) ) {
+			$project = $services->getConfigFactory()->makeConfig( 'PageViewInfo' )
+				->get( 'PageViewInfoWikimediaDomain' )
+				?: $project;
+		}
+		// MediaWikiServices insists on service factories returning an object, so wrap it into one
+		return (object)[ 'project' => $project ];
 	},
 
 ];

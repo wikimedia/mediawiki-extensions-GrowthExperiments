@@ -46,16 +46,20 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsConfigurationLoader' );
 	}
 
-	public function getTaskSuggesterFactory(): TaskSuggesterFactory {
-		return $this->coreServices->get( 'GrowthExperimentsTaskSuggesterFactory' );
-	}
-
 	public function getEditInfoService(): EditInfoService {
 		return $this->coreServices->get( 'GrowthExperimentsEditInfoService' );
 	}
 
+	public function getExperimentUserManager(): ExperimentUserManager {
+		return $this->coreServices->get( 'GrowthExperimentsExperimentUserManager' );
+	}
+
 	public function getNewcomerTaskTrackerFactory(): TrackerFactory {
 		return $this->coreServices->get( 'GrowthExperimentsNewcomerTaskTrackerFactory' );
+	}
+
+	public function getTaskSuggesterFactory(): TaskSuggesterFactory {
+		return $this->coreServices->get( 'GrowthExperimentsTaskSuggesterFactory' );
 	}
 
 	public function getTipsAssembler(): TipsAssembler {
@@ -64,10 +68,6 @@ class GrowthExperimentsServices {
 
 	public function getTipNodeRenderer(): TipNodeRenderer {
 		return $this->coreServices->get( 'GrowthExperimentsTipNodeRenderer' );
-	}
-
-	public function getExperimentUserManager(): ExperimentUserManager {
-		return $this->coreServices->get( 'GrowthExperimentsExperimentUserManager' );
 	}
 
 }
