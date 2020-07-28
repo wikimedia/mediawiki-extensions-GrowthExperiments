@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
+use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentorship\Mentor;
@@ -25,7 +26,7 @@ class MentorshipTest extends MediaWikiTestCase {
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$mentorshipModule = new Mentorship(
 			$context,
-			MediaWikiServices::getInstance()->get( 'GrowthExperimentsExperimentUserManager' )
+			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )->getExperimentUserManager()
 		);
 
 		$this->assertEmpty( $mentorshipModule->render( HomepageModule::RENDER_DESKTOP ) );
@@ -43,7 +44,7 @@ class MentorshipTest extends MediaWikiTestCase {
 		$context->setUser( $mentee );
 		$mentorshipModule = new Mentorship(
 			$context,
-			MediaWikiServices::getInstance()->get( 'GrowthExperimentsExperimentUserManager' )
+			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )->getExperimentUserManager()
 		);
 		$context->getOutput()->enableOOUI();
 		$this->assertEmpty( $mentorshipModule->render( HomepageModule::RENDER_DESKTOP ) );

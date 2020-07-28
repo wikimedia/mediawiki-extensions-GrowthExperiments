@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\EditInfoService;
+use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Specials\SpecialHomepage;
 use HashConfig;
@@ -23,6 +24,8 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	 * @inheritDoc
 	 */
 	protected function newSpecialPage() {
+		$growthExperimentsServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+
 		return new SpecialHomepage(
 			new class extends EditInfoService {
 				public function getEditsPerDay() {
@@ -30,10 +33,10 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 				}
 			},
 			$this->db,
-			MediaWikiServices::getInstance()->get( 'GrowthExperimentsConfigurationLoader' ),
-			MediaWikiServices::getInstance()->get( 'GrowthExperimentsNewcomerTaskTrackerFactory' ),
+			$growthExperimentsServices->getConfigurationLoader(),
+			$growthExperimentsServices->getNewcomerTaskTrackerFactory(),
 			MediaWikiServices::getInstance()->getStatsdDataFactory(),
-			MediaWikiServices::getInstance()->get( 'GrowthExperimentsExperimentUserManager' )
+			$growthExperimentsServices->getExperimentUserManager()
 		);
 	}
 
