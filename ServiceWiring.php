@@ -4,6 +4,7 @@ use GrowthExperiments\AqsEditInfoService;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -90,6 +91,12 @@ return [
 			$services->getTitleFactory(),
 			LoggerFactory::getInstance( 'GrowthExperiments' )
 		);
+	},
+
+	'GrowthExperimentsQuestionPosterFactory' => function (
+		MediaWikiServices $services
+	): QuestionPosterFactory {
+		return new QuestionPosterFactory();
 	},
 
 	// deprecated, use GrowthExperimentsTaskSuggesterFactory directly

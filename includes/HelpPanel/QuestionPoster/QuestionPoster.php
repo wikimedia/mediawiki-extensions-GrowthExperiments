@@ -19,6 +19,7 @@ use MediaWiki\Storage\PageUpdater;
 use MWException;
 use Status;
 use Title;
+use UserNotLoggedIn;
 use WikiPage;
 use WikitextContent;
 
@@ -88,11 +89,10 @@ abstract class QuestionPoster {
 	private $sectionHeader;
 
 	/**
-	 * QuestionPoster constructor.
 	 * @param IContextSource $context
 	 * @param string $body
 	 * @param string $relevantTitle
-	 * @throws MWException
+	 * @throws UserNotLoggedIn
 	 */
 	public function __construct(
 		IContextSource $context, $body, $relevantTitle = ''
@@ -100,7 +100,7 @@ abstract class QuestionPoster {
 		$this->context = $context;
 		$this->relevantTitle = $relevantTitle;
 		if ( $this->getContext()->getUser()->isAnon() ) {
-			throw new MWException( 'User must be logged-in.' );
+			throw new UserNotLoggedIn( 'User must be logged-in.' );
 		}
 		$this->config = $this->getContext()->getConfig();
 		$this->isFirstEdit = ( $this->getContext()->getUser()->getEditCount() === 0 );
