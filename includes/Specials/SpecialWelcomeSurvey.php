@@ -7,6 +7,7 @@ use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\WelcomeSurvey;
 use Html;
 use HTMLForm;
+use MediaWiki\Languages\LanguageNameUtils;
 use MWTimestamp;
 use Status;
 use Title;
@@ -17,9 +18,18 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	 * @var string
 	 */
 	private $groupName;
+	/**
+	 * @var LanguageNameUtils
+	 */
+	private $languageNameUtils;
 
-	public function __construct() {
+	/**
+	 * SpecialWelcomeSurvey constructor.
+	 * @param LanguageNameUtils $languageNameUtils
+	 */
+	public function __construct( LanguageNameUtils $languageNameUtils ) {
 		parent::__construct( 'WelcomeSurvey', '', false );
+		$this->languageNameUtils = $languageNameUtils;
 	}
 
 	/**
@@ -79,7 +89,10 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	 * @return array
 	 */
 	protected function getFormFields() {
-		$welcomeSurvey = new WelcomeSurvey( $this->getContext() );
+		$welcomeSurvey = new WelcomeSurvey(
+			$this->getContext(),
+			$this->languageNameUtils
+		);
 		$this->groupName = $welcomeSurvey->getGroup();
 		$questions = $welcomeSurvey->getQuestions( $this->groupName );
 
@@ -109,6 +122,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 				}
 			}
 		}
+		$this->loadDependencies( $questions );
 		return $questions;
 	}
 
@@ -162,7 +176,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		$returnTo = $redirectParams[ 'returnto' ] ?? '';
 		$returnToQuery = $redirectParams[ 'returntoquery' ] ?? '';
 
-		$welcomeSurvey = new WelcomeSurvey( $this->getContext() );
+		$welcomeSurvey = new WelcomeSurvey( $this->getContext(), $this->languageNameUtils );
 		$welcomeSurvey->handleResponses(
 			$data,
 			$save,
@@ -360,6 +374,16 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 				$this->buildGettingStartedLinks( 'survey' )
 			)
 		);
+	}
+
+	/**
+	 * Load ResourceLoader module dependencies defined by questions.
+	 * @param array $questions
+	 */
+	private function loadDependencies( array $questions ) {
+		array_walk( $questions, function ( $question ) {
+			$this->getOutput()->addModules( $question['dependencies']['modules'] ?? '' );
+		} );
 	}
 
 }

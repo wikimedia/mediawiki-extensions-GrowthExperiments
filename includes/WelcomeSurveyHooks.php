@@ -5,6 +5,7 @@ namespace GrowthExperiments;
 
 use Config;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
+use MediaWiki\Languages\LanguageNameUtils;
 use RequestContext;
 use User;
 
@@ -17,12 +18,17 @@ class WelcomeSurveyHooks implements
 	/** @var Config */
 	private $config;
 
+	/** @var LanguageNameUtils */
+	private $languageNameUtils;
+
 	/**
 	 * WelcomeSurveyHooks constructor.
 	 * @param Config $config
+	 * @param LanguageNameUtils $languageNameUtils
 	 */
-	public function __construct( Config $config ) {
+	public function __construct( Config $config, LanguageNameUtils $languageNameUtils ) {
 		$this->config = $config;
+		$this->languageNameUtils = $languageNameUtils;
 	}
 
 	/**
@@ -32,7 +38,10 @@ class WelcomeSurveyHooks implements
 	 */
 	public function onSpecialPage_initList( &$list ) {
 		if ( $this->isWelcomeSurveyEnabled() ) {
-			$list[ 'WelcomeSurvey' ] = SpecialWelcomeSurvey::class;
+			$list[ 'WelcomeSurvey' ] = [
+				'class' => SpecialWelcomeSurvey::class,
+				'services' => [ 'LanguageNameUtils' ]
+			];
 		}
 	}
 
@@ -62,7 +71,10 @@ class WelcomeSurveyHooks implements
 		}
 
 		$context = RequestContext::getMain();
-		$welcomeSurvey = new WelcomeSurvey( $context );
+		$welcomeSurvey = new WelcomeSurvey(
+			$context,
+			$this->languageNameUtils
+		);
 		$group  = $welcomeSurvey->getGroup();
 		$welcomeSurvey->saveGroup( $group );
 		$url = $welcomeSurvey->getRedirectUrl( $group );

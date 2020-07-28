@@ -47,5 +47,7 @@
 	"welcomesurvey-question-edited-option-dont-remember-label": "One response option to the question \"Have you ever edited Wikipedia?\" in a welcome survey to new accounts.",
 	"welcomesurvey-question-email-label": "Label for the email address field. It will be shown only if it was not completed by the user during account creation.",
 	"welcomesurvey-question-email-placeholder": "Placeholder text inside a field to enter an email address",
-	"welcomesurvey-question-email-help": "Assistive text shown after a text field asking the user to enter in an email address for their Wikipedia account. This field is shown in a form just after a new user created an account if they did not provide an email address during sign up."
+	"welcomesurvey-question-email-help": "Assistive text shown after a text field asking the user to enter in an email address for their Wikipedia account. This field is shown in a form just after a new user created an account if they did not provide an email address during sign up.",
+	"welcomesurvey-question-languages-label": "Label for the languages field, shown in a welcome survey to new accounts.",
+	"welcomesurvey-question-languages-placeholder": "Placeholder text inside a field to add a list of languages that the user knows how to read and write, shown in a welcome survey to new accounts."
 }
