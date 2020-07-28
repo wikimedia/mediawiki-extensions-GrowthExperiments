@@ -24,5 +24,6 @@
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Vairāk par šo iespēju",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Nekorekts nosaukums.",
 	"growthexperiments-help-panel-community-help-desk-text": "Kopienas palīdzības dienests",
-	"growthexperiments-help-panel-search-label": "Meklēt palīdzību"
+	"growthexperiments-help-panel-search-label": "Meklēt palīdzību",
+	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|labojumi|labojums|labojumi}} · $2"
 }
