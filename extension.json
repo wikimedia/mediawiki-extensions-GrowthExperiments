@@ -852,6 +852,7 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.less",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.TaskExplanation.less",
 				"homepage/ext.growthExperiments.StartModule.less",
+				"homepage/ext.growthExperiments.StartEmailModule.less",
 				"homepage/ext.growthExperiments.Homepage.less"
 			],
 			"lessCallback": [ "GrowthExperiments\\HomepageHooks", "lessCallback" ],

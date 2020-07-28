@@ -68,4 +68,13 @@ class ExperimentUserManager {
 			$variant
 		);
 	}
+
+	/**
+	 * @param User $user
+	 * @param string|string[] $variant
+	 * @return bool
+	 */
+	public function isUserInVariant( User $user, $variant ) : bool {
+		return in_array( $this->getVariant( $user ), (array)$variant );
+	}
 }
