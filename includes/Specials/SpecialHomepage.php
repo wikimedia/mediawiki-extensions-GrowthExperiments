@@ -130,7 +130,9 @@ class SpecialHomepage extends SpecialPage {
 		$out->addModuleStyles( 'ext.growthExperiments.Homepage.styles' );
 
 		$out->addHTML( Html::openElement( 'div', [
-			'class' => 'growthexperiments-homepage-container',
+			'class' => 'growthexperiments-homepage-container ' .
+				'growthexperiments-homepage-container-user-variant-' .
+				$this->experimentUserManager->getVariant( $this->getUser() )
 		] ) );
 		$modules = $this->getModules();
 
@@ -158,6 +160,10 @@ class SpecialHomepage extends SpecialPage {
 
 		$out->addHTML( Html::closeElement( 'div' ) );
 		$this->outputJsData( $mode, $modules );
+		$this->getOutput()->addBodyClasses(
+			'growthexperiments-homepage-user-variant-' .
+			$this->experimentUserManager->getVariant( $this->getUser() )
+		);
 		$this->statsdDataFactory->timing(
 			'timing.growthExperiments.specialHomepage.serverSideRender.' . ( $isMobile ? 'mobile' : 'desktop' ),
 			microtime( true ) - $startTime
@@ -222,7 +228,7 @@ class SpecialHomepage extends SpecialPage {
 	}
 
 	/**
-	 * @return string[][]
+	 * @return string[][][]
 	 */
 	private function getModuleGroups() : array {
 		if ( in_array(
@@ -230,8 +236,13 @@ class SpecialHomepage extends SpecialPage {
 			[ 'C', 'D' ]
 		) ) {
 			return [
-				'main' => [ 'suggested-edits' ],
-				'sidebar' => [ 'impact', 'mentorship', 'help' ]
+				'main' => [
+					'primary' => [ 'start', 'suggested-edits' ]
+				],
+				'sidebar' => [
+					'primary' => [ 'impact' ],
+					'secondary' => [ 'mentorship', 'help' ]
+				]
 			];
 		}
 
@@ -240,13 +251,20 @@ class SpecialHomepage extends SpecialPage {
 			&& SuggestedEdits::isActivated( $this->getContext() )
 		) {
 			return [
-				'main' => [ 'start', 'suggested-edits', 'impact' ],
-				'sidebar' => [ 'mentorship', 'help' ],
+				'main' => [
+					'primary' => [ 'start', 'suggested-edits', 'impact' ] ],
+				'sidebar' => [
+					'primary' => [ 'mentorship', 'help' ]
+				],
 			];
 		} else {
 			return [
-				'main' => [ 'start', 'suggested-edits', 'impact', 'mentorship' ],
-				'sidebar' => [ 'help' ],
+				'main' => [
+					'primary' => [ 'start', 'suggested-edits', 'impact', 'mentorship' ]
+				],
+				'sidebar' => [
+					'primary' => [ 'help' ]
+				],
 			];
 		}
 	}
@@ -265,23 +283,32 @@ class SpecialHomepage extends SpecialPage {
 		$out = $this->getContext()->getOutput();
 		$modules = $this->getModules();
 		$out->addBodyClasses( 'growthexperiments-homepage-desktop' );
-		foreach ( $this->getModuleGroups() as $group => $moduleNames ) {
+		foreach ( $this->getModuleGroups() as $group => $subGroups ) {
 			$out->addHTML( Html::openElement( 'div', [
 				'class' => "growthexperiments-homepage-group-$group " .
 					"growthexperiments-homepage-group-$group-user-variant-" .
 					$this->experimentUserManager->getVariant( $this->getUser() ),
 			] ) );
-			foreach ( $moduleNames as $moduleName ) {
-				/** @var HomepageModule $module */
-				$module = $modules[$moduleName] ?? null;
-				if ( !$module ) {
-					continue;
+			foreach ( $subGroups as $subGroup => $moduleNames ) {
+				$out->addHTML( Html::openElement( 'div', [
+					'class' => "growthexperiments-homepage-group-$group-subgroup-$subGroup " .
+						"growthexperiments-homepage-$group-subgroup-$subGroup-user-variant-" .
+						$this->experimentUserManager->getVariant( $this->getUser() )
+				] ) );
+				foreach ( $moduleNames as $moduleName ) {
+					/** @var HomepageModule $module */
+					$module = $modules[$moduleName] ?? null;
+					if ( !$module ) {
+						continue;
+					}
+					try {
+						$out->addHTML( $module->render( HomepageModule::RENDER_DESKTOP ) );
+					}
+					catch ( Throwable $throwable ) {
+						Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
+					}
 				}
-				try {
-					$out->addHTML( $module->render( HomepageModule::RENDER_DESKTOP ) );
-				} catch ( Throwable $throwable ) {
-					Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
-				}
+				$out->addHTML( Html::closeElement( 'div' ) );
 			}
 			$out->addHTML( Html::closeElement( 'div' ) );
 		}
