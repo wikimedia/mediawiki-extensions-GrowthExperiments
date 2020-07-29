@@ -6,6 +6,11 @@
 	},
 	"apihelp-helppanelquestionposter-summary": "經由目前使用者的協助面板，來處理發佈的問題。",
 	"apihelp-helppanelquestionposter-param-body": "由使用者所提供的問題文字。",
-	"apihelp-helppanelquestionposter-param-source": "問題來源的組成部分。有效的值是「helppanel」、「homepage-help」、和「homepage-mentorship」",
+	"apihelp-helppanelquestionposter-param-source": "問題發布的方法。",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "「詢問互助客棧/求助」面板",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "在新手首頁的「詢問您的導師」面板",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "在協助面板的「詢問您的導師」面板",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "「詢問互助客棧/求助」面板（舊名稱）",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "在新手首頁的「詢問您的導師」面板（舊名稱）",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "關聯標題。若有選擇的話請包含問題。"
 }
