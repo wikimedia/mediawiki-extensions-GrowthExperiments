@@ -111,7 +111,7 @@ class Mentor {
 	private static function selectMentor( User $mentee, array $excluded = [] ) {
 		$possibleMentors = self::getMentors();
 		if ( count( $possibleMentors ) === 0 ) {
-			throw new MWException(
+			throw new WikiConfigException(
 				'Homepage Mentorship module: no mentor available for user ' . $mentee->getName()
 			);
 		}
@@ -129,7 +129,7 @@ class Mentor {
 		}
 		$possibleMentors = array_values( array_diff( $possibleMentors, $titleKeys ) );
 		if ( count( $possibleMentors ) === 0 ) {
-			throw new MWException(
+			throw new WikiConfigException(
 				'Homepage Mentorship module: no mentor available for ' .
 				$mentee->getName() .
 				' but excluded users'
