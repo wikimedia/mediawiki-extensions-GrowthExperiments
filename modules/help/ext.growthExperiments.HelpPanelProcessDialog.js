@@ -9,13 +9,7 @@
 	 *
 	 * @param {Object} config
 	 * @cfg {mw.libs.ge.HelpPanelLogger} logger
-	 * @cfg {string} source Logical name of the source to use with the HelpPanelPostQuestion API
-	 * @cfg {string} storageKey Name of the key to use to persist question draft in storage
-	 * @cfg {object} panelTitleMessages Object like { panelName: title } to configure panel titles
-	 * @cfg {string} askhelpHeader Header message on the question review panel
-	 * @cfg {string} questionCompleteConfirmationText Confirmation text for question complete panel
-	 * @cfg {string} viewQuestionText Text of the link to view the question that was just posted
-	 * @cfg {string} submitFailureMessage Text of the error message when failing to post a question
+	 * @cfg {string} askSource Logical name of the source to use with the HelpPanelPostQuestion API
 	 * @cfg {bool} guidanceEnabled Whether guidance feature is enabled.
 	 * @cfg {SuggestedEditSession} suggestedEditSession The suggested edit session
 	 * @cfg {string} taskTypeId The ID of the suggested edit task type.
@@ -31,39 +25,16 @@
 			this.suggestedEditSession.connect( this, {
 				save: 'onSuggestedEditSessionSave'
 			} );
-			this.questionPosterAllowIncludingTitle = config.questionPosterAllowIncludingTitle;
 			this.logger = config.logger;
 			this.guidanceEnabled = config.guidanceEnabled;
 			this.taskTypeId = config.taskTypeId;
-			this.source = config.source ||
-				( configData.GEHelpPanelAskMentor ? 'mentor-helppanel' : 'helpdesk' );
-			this.storageKey = config.storageKey || 'help-panel-question-text';
-			this.panelTitleMessages = $.extend( {
+			this.panelTitleMessages = {
+				// ask-help and questioncomplete are added in configureAskScreen()
 				home: mw.message( 'growthexperiments-help-panel-home-title' ).text(),
-				'ask-help': configData.GEHelpPanelAskMentor ?
-					mw.message( 'growthexperiments-help-panel-questionreview-title-mentor' ).text() :
-					mw.message( 'growthexperiments-help-panel-questionreview-title' ).text(),
-				questioncomplete: mw.message( 'growthexperiments-help-panel-questioncomplete-title' ).text(),
 				'general-help': mw.message( 'growthexperiments-help-panel-general-help-title' ).text(),
 				'suggested-edits': mw.message( 'growthexperiments-help-panel-suggestededits-title' ).text()
-			}, config.panelTitleMessages );
-			this.askhelpHeader = config.askhelpHeader ||
-				mw.message(
-					'growthexperiments-help-panel-questionreview-header',
-					$( linksConfig.helpDeskLink ),
-					mw.user.getName()
-				).parse();
-			this.questionCompleteConfirmationText = config.questionCompleteConfirmationText ||
-				mw.message(
-					'growthexperiments-help-panel-questioncomplete-confirmation-text'
-				).text();
-			this.viewQuestionText = config.viewQuestionText ||
-				mw.message(
-					'growthexperiments-help-panel-questioncomplete-view-link-text'
-				).text();
-			this.submitFailureMessage = config.submitFailureMessage || mw.message(
-				'growthexperiments-help-panel-question-post-error', linksConfig.helpDeskLink
-			).parse();
+			};
+			this.configureAskScreen( config );
 		},
 		HelpPanelSearchWidget = require( './ext.growthExperiments.HelpPanelSearchWidget.js' ),
 		HelpPanelHomeButtonWidget = require( './ext.growthExperiments.HelpPanelHomeButtonWidget.js' );
@@ -117,6 +88,61 @@
 			modes: [ 'ask-help', 'general-help', 'questioncomplete', 'search', 'suggested-edits' ]
 		}
 	];
+
+	/**
+	 * Constructor helper for the ask screen.
+	 *
+	 * @param {Object} config Config object passed to the constructor
+	 */
+	HelpPanelProcessDialog.prototype.configureAskScreen = function ( config ) {
+		var askFromMentor, mentorName, mentorTalkLinkText, $mentorTalkLink,
+			userName = mw.user.getName();
+
+		// mentor-homepage, mentor-helppanel or helpdesk
+		this.askSource = config.askSource || ( configData.GEHelpPanelAskMentor ? 'mentor-helppanel' : 'helpdesk' );
+		askFromMentor = ( this.askSource !== 'helpdesk' );
+		this.storageKey = askFromMentor ? 'homepage-questionposter-question-text-mentorship' :
+			'help-panel-question-text';
+
+		if ( this.askSource === 'helpdesk' ) {
+			this.panelTitleMessages[ 'ask-help' ] =
+				mw.message( 'growthexperiments-help-panel-questionreview-title' ).text();
+			this.askhelpHeader = mw.message( 'growthexperiments-help-panel-questionreview-header',
+				$( linksConfig.helpDeskLink ), userName ).parse();
+			this.questionCompleteConfirmationText =
+				mw.message( 'growthexperiments-help-panel-questioncomplete-confirmation-text' ).text();
+			this.viewQuestionText =
+				mw.message( 'growthexperiments-help-panel-questioncomplete-view-link-text' ).text();
+			this.submitFailureMessage = mw.message(
+				'growthexperiments-help-panel-question-post-error', linksConfig.helpDeskLink ).parse();
+		} else {
+			mentorName = mw.config.get( 'wgGEHelpPanelMentorData' ).name;
+			mentorTalkLinkText = mw.message(
+				'growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text',
+				mentorName, userName ).text();
+			$mentorTalkLink = $( '<a>' )
+				.attr( {
+					href: mw.Title.newFromText( mentorName, 3 ).getUrl(),
+					target: '_blank',
+					'data-link-id': 'mentor-talk'
+				} )
+				.text( mentorTalkLinkText );
+
+			this.panelTitleMessages[ 'ask-help' ] =
+				mw.message( 'growthexperiments-homepage-mentorship-dialog-title', mentorName, userName ).text();
+			this.panelTitleMessages.questioncomplete =
+				mw.message( 'growthexperiments-help-panel-questioncomplete-title' ).text();
+			this.askhelpHeader = mw.message( 'growthexperiments-homepage-mentorship-questionreview-header',
+				mentorName, userName, $mentorTalkLink ).parse();
+			this.questionCompleteConfirmationText = mw.message(
+				'growthexperiments-homepage-mentorship-confirmation-text', mentorName, userName ).text();
+			this.viewQuestionText = mw.message(
+				'growthexperiments-homepage-mentorship-view-question-text', mentorName, userName ).text();
+			this.submitFailureMessage = mw.message( 'growthexperiments-help-panel-question-post-error',
+				$mentorTalkLink ).parse();
+		}
+		this.panelTitleMessages.questioncomplete = this.panelTitleMessages[ 'ask-help' ];
+	};
 
 	/**
 	 * Swap the state of the help panel dialog.
@@ -340,7 +366,10 @@
 			// Asking the mentor needs a different button but the same panel / logging.
 			// FIXME find a nicer way to do this.
 			buttonId = id;
-			if ( id === 'ask-help' && configData.GEHelpPanelAskMentor ) {
+			if ( id === 'ask-help' && configData.GEHelpPanelAskMentor &&
+				// Sanity - handle the lack of mentor data gracefully, although it shouldn't ever happen.
+				mentorData.name
+			) {
 				buttonId = 'ask-help-mentor';
 			}
 			this.homePanel.$element.append(
@@ -738,7 +767,7 @@
 				if ( action === 'close' || !action ) {
 					this.logger.log( 'close' );
 					// Show mentorship tour if that was the homepage module that was used
-					if ( this.source === 'mentor-homepage' ) {
+					if ( this.askSource === 'mentor-homepage' ) {
 						this.launchIntroTour(
 							'homepage_mentor',
 							'growthexperiments-tour-homepage-mentorship'
@@ -787,7 +816,7 @@
 					// Toggle the first edit text, will set depending on API response.
 					this.questionCompleteFirstEditText.toggle( false );
 					postData = {
-						source: this.source,
+						source: this.askSource,
 						action: 'helppanelquestionposter',
 						relevanttitle: this.questionIncludeTitleCheckbox.isSelected() ?
 							this.relevantTitle.getPrefixedText() :
@@ -795,7 +824,7 @@
 						body: this.askhelpTextInput.getValue()
 					};
 					// Start pre-loading tour for help panel.
-					if ( this.source === 'helpdesk' &&
+					if ( this.askSource === 'helpdesk' &&
 						!mw.user.options.get( 'growthexperiments-tour-help-panel' ) ) {
 						mw.loader.load( 'ext.guidedTour.tour.helppanel' );
 					}
@@ -828,7 +857,7 @@
 							this.setNotificationLabelText();
 							this.swapPanel( action );
 
-							if ( this.source === 'helpdesk' ) {
+							if ( this.askSource === 'helpdesk' ) {
 								this.launchIntroTour(
 									'helppanel',
 									'growthexperiments-tour-help-panel'

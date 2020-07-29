@@ -340,13 +340,6 @@
 				"homepage/ext.growthExperiments.Homepage.Mentorship.js",
 				"homepage/ext.growthExperiments.Homepage.QuestionPoster.js"
 			],
-			"messages": [
-				"growthexperiments-homepage-mentorship-dialog-title",
-				"growthexperiments-homepage-mentorship-questionreview-header",
-				"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text",
-				"growthexperiments-homepage-mentorship-confirmation-text",
-				"growthexperiments-homepage-mentorship-view-question-text"
-			],
 			"targets": [
 				"desktop",
 				"mobile"
@@ -726,7 +719,12 @@
 				"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor",
 				"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text",
 				"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext",
-				"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text"
+				"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text",
+				"growthexperiments-homepage-mentorship-dialog-title",
+				"growthexperiments-homepage-mentorship-questionreview-header",
+				"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text",
+				"growthexperiments-homepage-mentorship-confirmation-text",
+				"growthexperiments-homepage-mentorship-view-question-text"
 			],
 			"targets": [
 				"desktop",
