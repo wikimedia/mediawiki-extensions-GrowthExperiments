@@ -15,6 +15,7 @@ use MediaWiki\Linker\LinkTarget;
 use Message;
 use MessageLocalizer;
 use StatusValue;
+use Title;
 use TitleValue;
 
 /**
@@ -69,9 +70,9 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	 * @param MessageLocalizer $messageLocalizer
 	 * @param PageLoader $pageLoader
 	 * @param Collation $collation
-	 * @param LinkTarget $taskConfigurationPage Wiki page to load task configuration from
+	 * @param string|LinkTarget $taskConfigurationPage Wiki page to load task configuration from
 	 *   (local or interwiki).
-	 * @param LinkTarget|null $topicConfigurationPage Wiki page to load task configuration from
+	 * @param string|LinkTarget|null $topicConfigurationPage Wiki page to load task configuration from
 	 *   (local or interwiki). Can be omitted, in which case topic matching will be disabled.
 	 * @param string $topicType One of the PageConfigurationLoader::CONFIGURATION_TYPE constants.
 	 */
@@ -79,8 +80,8 @@ class PageConfigurationLoader implements ConfigurationLoader {
 		MessageLocalizer $messageLocalizer,
 		PageLoader $pageLoader,
 		Collation $collation,
-		LinkTarget $taskConfigurationPage,
-		?LinkTarget $topicConfigurationPage,
+		$taskConfigurationPage,
+		$topicConfigurationPage,
 		string $topicType
 	) {
 		$this->messageLocalizer = $messageLocalizer;
@@ -95,6 +96,17 @@ class PageConfigurationLoader implements ConfigurationLoader {
 		}
 	}
 
+	/**
+	 * @param string|LinkTarget|null $target
+	 * @return LinkTarget|null
+	 */
+	private function makeTitle( $target ) {
+		if ( is_string( $target ) ) {
+			$target = Title::newFromText( $target );
+		}
+		return $target;
+	}
+
 	/** @inheritDoc */
 	public function setMessageLocalizer( MessageLocalizer $messageLocalizer ): void {
 		$this->messageLocalizer = $messageLocalizer;
@@ -106,7 +118,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 			return $this->taskTypes;
 		}
 
-		$config = $this->pageLoader->load( $this->taskConfigurationPage );
+		$config = $this->pageLoader->load( $this->makeTitle( $this->taskConfigurationPage ) );
 		if ( $config instanceof StatusValue ) {
 			$taskTypes = $config;
 		} else {
@@ -136,7 +148,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 			return $this->topics;
 		}
 
-		$config = $this->pageLoader->load( $this->topicConfigurationPage );
+		$config = $this->pageLoader->load( $this->makeTitle( $this->topicConfigurationPage ) );
 		if ( $config instanceof StatusValue ) {
 			$topics = $config;
 		} else {
@@ -153,7 +165,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 			return $this->templateBlacklist;
 		}
 
-		$config = $this->pageLoader->load( $this->taskConfigurationPage );
+		$config = $this->pageLoader->load( $this->makeTitle( $this->taskConfigurationPage ) );
 		if ( $config instanceof StatusValue ) {
 			$templateBlacklist = $config;
 		} else {
