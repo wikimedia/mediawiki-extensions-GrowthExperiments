@@ -32,7 +32,7 @@ return [
 		$config = GrowthExperimentsServices::wrap( $services )->getConfig();
 		$cache = new CachedBagOStuff( ObjectCache::getLocalClusterInstance() );
 
-		$taskConfigTitle = Title::newFromText( $config->get( 'GENewcomerTasksConfigTitle' ) );
+		$taskConfigTitle = $config->get( 'GENewcomerTasksConfigTitle' );
 		if ( !$taskConfigTitle ) {
 			return new ErrorForwardingConfigurationLoader( StatusValue::newFatal( new ApiRawMessage(
 				'The ConfigurationLoader has not been configured!',
@@ -43,9 +43,9 @@ return [
 		$topicType = $config->get( 'GENewcomerTasksTopicType' );
 		$topicConfigTitle = null;
 		if ( $topicType === PageConfigurationLoader::CONFIGURATION_TYPE_ORES ) {
-			$topicConfigTitle = Title::newFromText( $config->get( 'GENewcomerTasksOresTopicConfigTitle' ) );
+			$topicConfigTitle = $config->get( 'GENewcomerTasksOresTopicConfigTitle' );
 		} elseif ( $topicType === PageConfigurationLoader::CONFIGURATION_TYPE_MORELIKE ) {
-			$topicConfigTitle = Title::newFromText( $config->get( 'GENewcomerTasksTopicConfigTitle' ) );
+			$topicConfigTitle = $config->get( 'GENewcomerTasksTopicConfigTitle' );
 		}
 
 		$pageLoader = new PageLoader(
