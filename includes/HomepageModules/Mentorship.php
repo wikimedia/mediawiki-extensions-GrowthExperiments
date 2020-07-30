@@ -9,7 +9,7 @@ use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use GrowthExperiments\HomepageModule;
-use GrowthExperiments\Mentorship\Mentor;
+use GrowthExperiments\Mentorship\MentorManager;
 use Html;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
@@ -37,11 +37,21 @@ class Mentorship extends BaseModule {
 	/** @var QuestionRecord[] */
 	private $recentQuestions = [];
 
+	/** @var MentorManager */
+	private $mentorManager;
+
 	/**
-	 * @inheritDoc
+	 * @param IContextSource $context
+	 * @param ExperimentUserManager $experimentUserManager
+	 * @param MentorManager $mentorManager
 	 */
-	public function __construct( IContextSource $context, ExperimentUserManager $experimentUserManager ) {
+	public function __construct(
+		IContextSource $context,
+		ExperimentUserManager $experimentUserManager,
+		MentorManager $mentorManager
+	) {
 		parent::__construct( 'mentorship', $context, $experimentUserManager );
+		$this->mentorManager = $mentorManager;
 	}
 
 	/**
@@ -267,10 +277,10 @@ class Mentorship extends BaseModule {
 	}
 
 	private function getIntroText() {
-		$mentor = Mentor::newFromMentee( $this->getContext()->getUser() );
+		$mentor = $this->mentorManager->getMentorForUser( $this->getContext()->getUser() );
 		return Html::element( 'div',
 			[ 'class' => 'growthexperiments-homepage-mentorship-intro' ],
-			$mentor->getIntroText( $this->getContext() ) );
+			$mentor->getIntroText() );
 	}
 
 	private function getQuestionButton() {
@@ -298,7 +308,7 @@ class Mentorship extends BaseModule {
 	 */
 	private function getMentor() {
 		if ( !$this->mentor ) {
-			$mentor = Mentor::newFromMentee( $this->getContext()->getUser() );
+			$mentor = $this->mentorManager->getMentorForUserSafe( $this->getContext()->getUser() );
 			if ( $mentor ) {
 				$this->mentor = $mentor->getMentorUser();
 			} else {
