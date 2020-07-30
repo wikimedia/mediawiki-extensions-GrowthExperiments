@@ -16,6 +16,8 @@ use Message;
 use MessageLocalizer;
 use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
+use Title;
+use TitleFactory;
 use TitleValue;
 
 /**
@@ -200,10 +202,36 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$taskTitle = new TitleValue( NS_MAIN, 'TaskConfiguration' );
 		$pageLoader = $this->getMockPageLoader( [ '0:TaskConfiguration' => [] ] );
 		$collation = $this->getMockCollation();
-		$configurationLoader = new PageConfigurationLoader( $messageLocalizer, $pageLoader, $collation,
-			$taskTitle, null, PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		$configurationLoader = new PageConfigurationLoader( $this->getMockTitleFactory( [] ),
+			$messageLocalizer, $pageLoader, $collation, $taskTitle, null,
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$topics = $configurationLoader->loadTopics();
 		$this->assertSame( [], $topics );
+	}
+
+	/**
+	 * @coversNothing
+	 */
+	public function testLinkTitleArguments() {
+		$configurationLoader = $this->getConfigurationLoader( $this->getTaskConfig(),
+			$this->getOresTopicConfig(), PageConfigurationLoader::CONFIGURATION_TYPE_ORES, [], true );
+		$taskTypes = $configurationLoader->loadTaskTypes();
+		$this->assertIsArray( $taskTypes );
+		$this->assertNotEmpty( $taskTypes );
+		$this->assertInstanceOf( TaskType::class, $taskTypes[0] );
+		$this->assertSame( [ 'copyedit', 'references' ], array_map( function ( TaskType $tt ) {
+			return $tt->getId();
+		}, $taskTypes ) );
+
+		$configurationLoader = $this->getConfigurationLoader( $this->getTaskConfig(),
+			$this->getOresTopicConfig(), PageConfigurationLoader::CONFIGURATION_TYPE_ORES, [], true );
+		$topics = $configurationLoader->loadTopics();
+		$this->assertIsArray( $topics );
+		$this->assertNotEmpty( $topics );
+		$this->assertInstanceOf( Topic::class, $topics[0] );
+		$this->assertSame( [ 'art', 'food', 'science' ], array_map( function ( Topic $t ) {
+			return $t->getId();
+		}, $topics ) );
 	}
 
 	/**
@@ -309,21 +337,61 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * @param array|StatusValue $topicConfig
 	 * @param string $topicType
 	 * @param Message[] $customMessages
+	 * @param bool $useTitleValues
 	 * @return PageConfigurationLoader
 	 */
 	protected function getConfigurationLoader(
-		$taskConfig, $topicConfig, $topicType, array $customMessages = []
+		$taskConfig, $topicConfig, $topicType, array $customMessages = [], $useTitleValues = false
 	) {
-		$taskConfigTitle = new TitleValue( NS_MAIN, 'TaskConfigPage' );
-		$topicConfigTitle = new TitleValue( NS_MAIN, 'TopicConfigPage' );
+		if ( $useTitleValues ) {
+			$taskConfigTitle = new TitleValue( NS_MAIN, 'TaskConfigPage' );
+			$topicConfigTitle = new TitleValue( NS_MAIN, 'TopicConfigPage' );
+			$titleFactory = $this->getMockTitleFactory( [] );
+		} else {
+			$taskConfigTitle = 'TaskConfigPage';
+			$topicConfigTitle = 'TopicConfigPage';
+			$titleFactory = $this->getMockTitleFactory( [
+				$taskConfigTitle => $this->getMockTitle( $taskConfigTitle ),
+				$topicConfigTitle => $this->getMockTitle( $topicConfigTitle ),
+			] );
+		}
 		$messageLocalizer = $this->getMockMessageLocalizer( $customMessages );
 		$pageLoader = $this->getMockPageLoader( [
 			'0:TaskConfigPage' => $taskConfig,
 			'0:TopicConfigPage' => $topicConfig,
 		] );
 		$collation = $this->getMockCollation();
-		return new PageConfigurationLoader( $messageLocalizer, $pageLoader, $collation,
-			$taskConfigTitle, $topicConfigTitle, $topicType );
+		return new PageConfigurationLoader( $titleFactory, $messageLocalizer, $pageLoader,
+			$collation, $taskConfigTitle, $topicConfigTitle, $topicType );
+	}
+
+	/**
+	 * @param Title[] $map Page name => title
+	 * @return TitleFactory|MockObject
+	 */
+	protected function getMockTitleFactory( array $map ) {
+		$titleFactory = $this->getMockBuilder( TitleFactory::class )
+			->disableOriginalConstructor()
+			->setMethods( [ 'newFromText' ] )
+			->getMock();
+		$titleFactory->method( 'newFromText' )->willReturnCallback( function ( $titleText ) use ( $map ) {
+			return $map[$titleText];
+		} );
+		return $titleFactory;
+	}
+
+	/**
+	 * @param string $title
+	 * @return Title|MockObject
+	 */
+	protected function getMockTitle( string $titleText ) {
+		$title = $this->getMockBuilder( Title::class )
+			->disableOriginalConstructor()
+			->setMethods( [ 'getNamespace', 'getDBkey' ] )
+			->getMock();
+		$title->method( 'getNamespace' )->willReturn( 0 );
+		$title->method( 'getDBkey' )->willReturn( $titleText );
+		return $title;
 	}
 
 	/**

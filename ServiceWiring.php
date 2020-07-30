@@ -58,6 +58,7 @@ return [
 		$pageLoader->setCache( $cache, 60 );
 
 		$configurationLoader = new PageConfigurationLoader(
+			$services->getTitleFactory(),
 			RequestContext::getMain(),
 			$pageLoader,
 			Collation::singleton(),

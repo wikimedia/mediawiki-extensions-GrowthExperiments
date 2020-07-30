@@ -15,7 +15,7 @@ use MediaWiki\Linker\LinkTarget;
 use Message;
 use MessageLocalizer;
 use StatusValue;
-use Title;
+use TitleFactory;
 use TitleValue;
 
 /**
@@ -36,6 +36,9 @@ class PageConfigurationLoader implements ConfigurationLoader {
 		self::CONFIGURATION_TYPE_ORES,
 		self::CONFIGURATION_TYPE_MORELIKE,
 	];
+
+	/** @var TitleFactory */
+	private $titleFactory;
 
 	/** @var MessageLocalizer */
 	private $messageLocalizer;
@@ -67,6 +70,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	private $topicType;
 
 	/**
+	 * @param TitleFactory $titleFactory
 	 * @param MessageLocalizer $messageLocalizer
 	 * @param PageLoader $pageLoader
 	 * @param Collation $collation
@@ -77,6 +81,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	 * @param string $topicType One of the PageConfigurationLoader::CONFIGURATION_TYPE constants.
 	 */
 	public function __construct(
+		TitleFactory $titleFactory,
 		MessageLocalizer $messageLocalizer,
 		PageLoader $pageLoader,
 		Collation $collation,
@@ -84,6 +89,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 		$topicConfigurationPage,
 		string $topicType
 	) {
+		$this->titleFactory = $titleFactory;
 		$this->messageLocalizer = $messageLocalizer;
 		$this->pageLoader = $pageLoader;
 		$this->collation = $collation;
@@ -94,17 +100,6 @@ class PageConfigurationLoader implements ConfigurationLoader {
 		if ( !in_array( $this->topicType, self::$validTopicTypes, true ) ) {
 			throw new InvalidArgumentException( 'Invalid topic type ' . $this->topicType );
 		}
-	}
-
-	/**
-	 * @param string|LinkTarget|null $target
-	 * @return LinkTarget|null
-	 */
-	private function makeTitle( $target ) {
-		if ( is_string( $target ) ) {
-			$target = Title::newFromText( $target );
-		}
-		return $target;
 	}
 
 	/** @inheritDoc */
@@ -174,6 +169,17 @@ class PageConfigurationLoader implements ConfigurationLoader {
 
 		$this->templateBlacklist = $templateBlacklist;
 		return $templateBlacklist;
+	}
+
+	/**
+	 * @param string|LinkTarget|null $target
+	 * @return LinkTarget|null
+	 */
+	private function makeTitle( $target ) {
+		if ( is_string( $target ) ) {
+			$target = $this->titleFactory->newFromText( $target );
+		}
+		return $target;
 	}
 
 	/**
