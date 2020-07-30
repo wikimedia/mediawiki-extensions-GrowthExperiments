@@ -44,5 +44,7 @@
 	"welcomesurvey-question-edited-option-dont-remember-label": "لا أتذكر",
 	"welcomesurvey-question-email-label": "عنوان البريد الإلكتروني (اختياري)",
 	"welcomesurvey-question-email-placeholder": "{{GENDER:|أدخل|أدخلي}} عنوان بريدك الإلكتروني...",
-	"welcomesurvey-question-email-help": "لاحظنا أنك لم {{GENDER:|تدخل|تدخلي}} بريدا إلكترونيا عند إنشاء هذا الحساب، إنه <strong>موصى به بشدة</strong>; لأن هناك حاجة إلى بريد إلكتروني لاسترداد الحساب إذا فقدت كلمة مرورك، ملاحظة: لا يتم كشف عنوان بريدك الإلكتروني عندما يتصل بك مستخدمون آخرون."
+	"welcomesurvey-question-email-help": "لاحظنا أنك لم {{GENDER:|تدخل|تدخلي}} بريدا إلكترونيا عند إنشاء هذا الحساب، إنه <strong>موصى به بشدة</strong>; لأن هناك حاجة إلى بريد إلكتروني لاسترداد الحساب إذا فقدت كلمة مرورك، ملاحظة: لا يتم كشف عنوان بريدك الإلكتروني عندما يتصل بك مستخدمون آخرون.",
+	"welcomesurvey-question-languages-label": "تتوفّر {{SITENAME}} في أكثر من 300 لغة. هل تقرؤون وتكتبون بلغات أخرى؟",
+	"welcomesurvey-question-languages-placeholder": "إضافة لغات إضافية..."
 }
