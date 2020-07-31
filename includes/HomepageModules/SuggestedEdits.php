@@ -45,9 +45,8 @@ class SuggestedEdits extends BaseModule {
 
 	/** @var PageViewService|null */
 	private $pageViewService;
-	/**
-	 * @var ConfigurationLoader|null
-	 */
+
+	/** @var ConfigurationLoader */
 	private $configurationLoader;
 
 	/** @var string[] cache key => HTML */
@@ -58,14 +57,14 @@ class SuggestedEdits extends BaseModule {
 	 * @param EditInfoService $editInfoService
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param PageViewService|null $pageViewService
-	 * @param ConfigurationLoader|null $configurationLoader
+	 * @param ConfigurationLoader $configurationLoader
 	 */
 	public function __construct(
 		IContextSource $context,
 		EditInfoService $editInfoService,
 		ExperimentUserManager $experimentUserManager,
 		?PageViewService $pageViewService,
-		?ConfigurationLoader $configurationLoader
+		ConfigurationLoader $configurationLoader
 	) {
 		parent::__construct( 'suggested-edits', $context, $experimentUserManager );
 		$this->editInfoService = $editInfoService;
