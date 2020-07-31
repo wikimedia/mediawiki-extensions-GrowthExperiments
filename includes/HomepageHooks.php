@@ -8,6 +8,7 @@ use ConfigException;
 use DomainException;
 use EchoAttributeManager;
 use EchoUserLocator;
+use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
@@ -92,14 +93,14 @@ class HomepageHooks implements
 	private $namespaceInfo;
 	/** @var IBufferingStatsdDataFactory */
 	private $statsdDataFactory;
-	/** @var EditInfoService */
-	private $editInfoService;
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
 	/** @var TrackerFactory */
 	private $trackerFactory;
 	/** @var ExperimentUserManager */
 	private $experimentUserManager;
+	/** @var HomepageModuleRegistry */
+	private $moduleRegistry;
 
 	/**
 	 * HomepageHooks constructor.
@@ -108,26 +109,31 @@ class HomepageHooks implements
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param NamespaceInfo $namespaceInfo
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
-	 * @param EditInfoService $editInfoService
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param TrackerFactory $trackerFactory
 	 * @param ExperimentUserManager $experimentUserManager
+	 * @param HomepageModuleRegistry $moduleRegistry
 	 */
 	public function __construct(
-		Config $config, ILoadBalancer $lb, UserOptionsLookup $userOptionsLookup,
-		NamespaceInfo $namespaceInfo, IBufferingStatsdDataFactory $statsdDataFactory,
-		EditInfoService $editInfoService, ConfigurationLoader $configurationLoader,
-		TrackerFactory $trackerFactory, ExperimentUserManager $experimentUserManager
+		Config $config,
+		ILoadBalancer $lb,
+		UserOptionsLookup $userOptionsLookup,
+		NamespaceInfo $namespaceInfo,
+		IBufferingStatsdDataFactory $statsdDataFactory,
+		ConfigurationLoader $configurationLoader,
+		TrackerFactory $trackerFactory,
+		ExperimentUserManager $experimentUserManager,
+		HomepageModuleRegistry $moduleRegistry
 	) {
 		$this->config = $config;
 		$this->lb = $lb;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->namespaceInfo = $namespaceInfo;
 		$this->statsdDataFactory = $statsdDataFactory;
-		$this->editInfoService = $editInfoService;
 		$this->configurationLoader = $configurationLoader;
 		$this->trackerFactory = $trackerFactory;
 		$this->experimentUserManager = $experimentUserManager;
+		$this->moduleRegistry = $moduleRegistry;
 	}
 
 	/**
@@ -141,16 +147,11 @@ class HomepageHooks implements
 			$pageViewInfoEnabled = \ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
 			$mwServices = MediaWikiServices::getInstance();
 			$list['Homepage'] = function () use ( $pageViewInfoEnabled, $mwServices ) {
-				$pageViewsService = $pageViewInfoEnabled ? $mwServices->get( 'PageViewService' ) : null;
 				return new SpecialHomepage(
-					$this->editInfoService,
-					$this->lb->getLazyConnectionRef( DB_REPLICA ),
-					$this->configurationLoader,
+					$this->moduleRegistry,
 					$this->trackerFactory,
 					$this->statsdDataFactory,
-					$this->experimentUserManager,
-					GrowthExperimentsServices::wrap( $mwServices )->getMentorManager(),
-					$pageViewsService
+					$this->experimentUserManager
 				);
 			};
 			if ( $pageViewInfoEnabled ) {

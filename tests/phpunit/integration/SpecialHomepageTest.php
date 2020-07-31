@@ -25,20 +25,19 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	 * @inheritDoc
 	 */
 	protected function newSpecialPage() {
-		$growthExperimentsServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$this->setService( 'GrowthExperimentsEditInfoService', new class extends EditInfoService {
+			public function getEditsPerDay() {
+				return 0;
+			}
+		} );
+		$this->setService( 'GrowthExperimentsMentorManager', new StaticMentorManager( [] ) );
 
+		$growthExperimentsServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		return new SpecialHomepage(
-			new class extends EditInfoService {
-				public function getEditsPerDay() {
-					return 0;
-				}
-			},
-			$this->db,
-			$growthExperimentsServices->getConfigurationLoader(),
+			$growthExperimentsServices->getHomepageModuleRegistry(),
 			$growthExperimentsServices->getNewcomerTaskTrackerFactory(),
 			MediaWikiServices::getInstance()->getStatsdDataFactory(),
-			$growthExperimentsServices->getExperimentUserManager(),
-			new StaticMentorManager( [] )
+			$growthExperimentsServices->getExperimentUserManager()
 		);
 	}
 

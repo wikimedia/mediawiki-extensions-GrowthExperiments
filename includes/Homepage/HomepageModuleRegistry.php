@@ -1,0 +1,126 @@
+<?php
+
+namespace GrowthExperiments\Homepage;
+
+use ExtensionRegistry;
+use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\HomepageModule;
+use GrowthExperiments\HomepageModules\Help;
+use GrowthExperiments\HomepageModules\Impact;
+use GrowthExperiments\HomepageModules\Mentorship;
+use GrowthExperiments\HomepageModules\Start;
+use GrowthExperiments\HomepageModules\SuggestedEdits;
+use IContextSource;
+use MediaWiki\MediaWikiServices;
+use OutOfBoundsException;
+
+/**
+ * Container class for handling dependency injection of homepage modules.
+ */
+class HomepageModuleRegistry {
+
+	/** @var MediaWikiServices */
+	private $services;
+
+	/** @var callable[] */
+	private $wiring;
+
+	/**
+	 * @param MediaWikiServices $services
+	 */
+	public function __construct( MediaWikiServices $services ) {
+		$this->services = $services;
+	}
+
+	/**
+	 * @param string $id
+	 * @param IContextSource $contextSource
+	 * @return HomepageModule
+	 */
+	public function create( string $id, IContextSource $contextSource ): HomepageModule {
+		if ( $this->wiring === null ) {
+			$this->wiring = self::getWiring();
+		}
+		if ( !array_key_exists( $id, $this->wiring ) ) {
+			throw new OutOfBoundsException( 'Module not found: ' . $id );
+		}
+		return $this->wiring[$id]( $this->services, $contextSource );
+	}
+
+	/**
+	 * @internal for testing only
+	 * @return string[]
+	 */
+	public static function getModuleIds(): array {
+		return array_keys( self::getWiring() );
+	}
+
+	/**
+	 * Returns wiring callbacks for each module.
+	 * The callback receives the service container and the request context,
+	 * and must return a homepage module.
+	 * @return callable[] module id => callback
+	 */
+	private static function getWiring() {
+		return [
+			'start' => function (
+				MediaWikiServices $services,
+				IContextSource $context
+			) {
+				$growthServices = GrowthExperimentsServices::wrap( $services );
+				return new Start( $context, $growthServices->getExperimentUserManager() );
+			},
+
+			'suggested-edits' => function (
+				MediaWikiServices $services,
+				IContextSource $context
+			) {
+				$growthServices = GrowthExperimentsServices::wrap( $services );
+				$pageViewInfoEnabled = ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
+				return new SuggestedEdits(
+					$context,
+					$growthServices->getEditInfoService(),
+					$growthServices->getExperimentUserManager(),
+					$pageViewInfoEnabled ? $services->get( 'PageViewService' ) : null,
+					$growthServices->getConfigurationLoader()
+				);
+			},
+
+			'impact' => function (
+				MediaWikiServices $services,
+				IContextSource $context
+			) {
+				$growthServices = GrowthExperimentsServices::wrap( $services );
+				$pageViewInfoEnabled = ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
+				return new Impact(
+					$context,
+					$services->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA ),
+					$growthServices->getExperimentUserManager(),
+					$pageViewInfoEnabled ? $services->get( 'PageViewService' ) : null
+				);
+			},
+
+			'mentorship' => function (
+				MediaWikiServices $services,
+				IContextSource $context
+			) {
+				$growthServices = GrowthExperimentsServices::wrap( $services );
+				return new Mentorship(
+					$context,
+					$growthServices->getExperimentUserManager(),
+					$growthServices->getMentorManager()
+				);
+			},
+
+			'help' => function (
+				MediaWikiServices $services,
+				IContextSource $context
+			) {
+				$growthServices = GrowthExperimentsServices::wrap( $services );
+				return new Help( $context, $growthServices->getExperimentUserManager() );
+			},
+
+		];
+	}
+
+}

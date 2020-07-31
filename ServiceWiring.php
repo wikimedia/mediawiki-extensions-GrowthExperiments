@@ -7,6 +7,7 @@ use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
+use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -83,6 +84,12 @@ return [
 			$services->getUserOptionsManager(),
 			$services->getUserOptionsLookup()
 		);
+	},
+
+	'GrowthExperimentsHomepageModuleRegistry' => function (
+		MediaWikiServices $services
+	) : HomepageModuleRegistry {
+		return new HomepageModuleRegistry( $services );
 	},
 
 	'GrowthExperimentsMentorManager' => function (

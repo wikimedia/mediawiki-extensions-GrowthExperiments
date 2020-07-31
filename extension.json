@@ -78,10 +78,10 @@
 				"UserOptionsLookup",
 				"NamespaceInfo",
 				"StatsdDataFactory",
-				"GrowthExperimentsEditInfoService",
 				"GrowthExperimentsConfigurationLoader",
 				"GrowthExperimentsNewcomerTaskTrackerFactory",
-				"GrowthExperimentsExperimentUserManager"
+				"GrowthExperimentsExperimentUserManager",
+				"GrowthExperimentsHomepageModuleRegistry"
 			]
 		},
 		"mentor": {
