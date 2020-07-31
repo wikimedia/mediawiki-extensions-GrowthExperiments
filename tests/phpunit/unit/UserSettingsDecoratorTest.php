@@ -24,11 +24,19 @@ class UserSettingsDecoratorTest extends TestCase {
 	public function testSuggest() {
 		$user1 = new UserIdentityValue( 1, 'User1', 1 );
 		$user2 = new UserIdentityValue( 2, 'User2', 2 );
-		$userOptionsLookup = new StaticUserOptionsLookup( [ 'User1' => [
-			SuggestedEdits::TASKTYPES_PREF => [ 'tasktypes' ],
-			SuggestedEdits::TOPICS_PREF => [ 'topics' ],
-			SuggestedEdits::TOPICS_ORES_PREF => [ 'ores' ],
-		] ] );
+		$user3 = new UserIdentityValue( 3, 'User3', 3 );
+		$userOptionsLookup = new StaticUserOptionsLookup( [
+			'User1' => [
+				SuggestedEdits::TASKTYPES_PREF => '[ "tasktypes" ]',
+				SuggestedEdits::TOPICS_PREF => '[ "topics" ]',
+				SuggestedEdits::TOPICS_ORES_PREF => '[ "ores" ]',
+			],
+			'User2' => [
+				SuggestedEdits::TASKTYPES_PREF => '123',
+				SuggestedEdits::TOPICS_PREF => '()%=',
+				SuggestedEdits::TOPICS_ORES_PREF => 'true',
+			],
+		] );
 		$config = new HashConfig( [
 			'GENewcomerTasksTopicType' => PageConfigurationLoader::CONFIGURATION_TYPE_ORES,
 		] );
@@ -74,6 +82,14 @@ class UserSettingsDecoratorTest extends TestCase {
 		$decorator = new UserSettingsDecorator( $suggester, $userOptionsLookup, $config );
 		$this->assertSame( $taskSet, $decorator->suggest(
 			$user2, null, null, 10, 5, true ) );
+
+		$suggester = $this->getMockTaskSuggester();
+		$suggester->expects( $this->once() )->method( 'suggest' )
+			->with( $user3, [], [], 10, 5, true )
+			->willReturn( $taskSet );
+		$decorator = new UserSettingsDecorator( $suggester, $userOptionsLookup, $config );
+		$this->assertSame( $taskSet, $decorator->suggest(
+			$user3, null, null, 10, 5, true ) );
 	}
 
 	/**

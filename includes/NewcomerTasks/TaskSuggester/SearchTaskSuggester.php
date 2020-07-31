@@ -85,7 +85,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		$offset = null,
 		$debug = false
 	) {
-		$taskTypeFilter = $taskTypeFilter ?? array_keys( $this->taskTypes );
+		$taskTypeFilter = $taskTypeFilter ?: array_keys( $this->taskTypes );
 		$topicFilter = $topicFilter ?? [];
 
 		// FIXME these and task types should have similar validation rules

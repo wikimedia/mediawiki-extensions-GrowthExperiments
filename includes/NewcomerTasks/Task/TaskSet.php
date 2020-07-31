@@ -2,9 +2,12 @@
 
 namespace GrowthExperiments\NewcomerTasks\Task;
 
+use ArrayAccess;
 use ArrayIterator;
+use BadMethodCallException;
 use Countable;
 use IteratorAggregate;
+use OutOfBoundsException;
 use Traversable;
 use Wikimedia\Assert\Assert;
 
@@ -13,7 +16,7 @@ use Wikimedia\Assert\Assert;
  * Used as a convenience class for queries with limit/offset to pass along some metadata
  * about the full result set (such as offset or total result count).
  */
-class TaskSet implements IteratorAggregate, Countable {
+class TaskSet implements IteratorAggregate, Countable, ArrayAccess {
 
 	/** @var Task[] */
 	private $tasks;
@@ -52,6 +55,40 @@ class TaskSet implements IteratorAggregate, Countable {
 	/** @inheritDoc */
 	public function count() {
 		return count( $this->tasks );
+	}
+
+	/** @inheritDoc */
+	public function offsetExists( $offset ) {
+		return array_key_exists( $offset, $this->tasks );
+	}
+
+	/**
+	 * @param int $offset
+	 * @return Task
+	 */
+	public function offsetGet( $offset ): Task {
+		if ( !array_key_exists( $offset, $this->tasks ) ) {
+			throw new OutOfBoundsException( "TaskSet does not have item $offset; max offset: "
+				. ( count( $this->tasks ) - 1 ) );
+		}
+		return $this->tasks[$offset];
+	}
+
+	/**
+	 * This method cannot be used.
+	 * @param mixed $offset
+	 * @param mixed $value
+	 */
+	public function offsetSet( $offset, $value ) {
+		throw new BadMethodCallException( 'TaskSet is read-only' );
+	}
+
+	/**
+	 * This method cannot be used.
+	 * @param mixed $offset
+	 */
+	public function offsetUnset( $offset ) {
+		throw new BadMethodCallException( 'TaskSet is read-only' );
 	}
 
 	/**

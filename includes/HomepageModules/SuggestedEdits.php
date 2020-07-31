@@ -8,6 +8,8 @@ use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ProtectionFilter;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use Html;
 use IContextSource;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
@@ -16,6 +18,7 @@ use MediaWiki\MediaWikiServices;
 use Message;
 use Status;
 use StatusValue;
+use TitleFactory;
 
 /**
  * Homepage module that displays a list of recommended tasks.
@@ -49,6 +52,15 @@ class SuggestedEdits extends BaseModule {
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
 
+	/** @var TaskSuggester */
+	private $taskSuggester;
+
+	/** @var TitleFactory */
+	private $titleFactory;
+
+	/** @var ProtectionFilter */
+	private $protectionFilter;
+
 	/** @var string[] cache key => HTML */
 	private $htmlCache = [];
 
@@ -58,18 +70,27 @@ class SuggestedEdits extends BaseModule {
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param PageViewService|null $pageViewService
 	 * @param ConfigurationLoader $configurationLoader
+	 * @param TaskSuggester $taskSuggester
+	 * @param TitleFactory $titleFactory
+	 * @param ProtectionFilter $protectionFilter
 	 */
 	public function __construct(
 		IContextSource $context,
 		EditInfoService $editInfoService,
 		ExperimentUserManager $experimentUserManager,
 		?PageViewService $pageViewService,
-		ConfigurationLoader $configurationLoader
+		ConfigurationLoader $configurationLoader,
+		TaskSuggester $taskSuggester,
+		TitleFactory $titleFactory,
+		ProtectionFilter $protectionFilter
 	) {
 		parent::__construct( 'suggested-edits', $context, $experimentUserManager );
 		$this->editInfoService = $editInfoService;
 		$this->pageViewService = $pageViewService;
 		$this->configurationLoader = $configurationLoader;
+		$this->taskSuggester = $taskSuggester;
+		$this->titleFactory = $titleFactory;
+		$this->protectionFilter = $protectionFilter;
 	}
 
 	/**
@@ -159,6 +180,24 @@ class SuggestedEdits extends BaseModule {
 	/** @inheritDoc */
 	public function getJsData( $mode ) {
 		$data = parent::getJsData( $mode );
+
+		// Preload one task card.
+		if ( $this->canRender() ) {
+			$tasks = $this->taskSuggester->suggest( $this->getContext()->getUser(), null, null, 10 );
+			$tasks = $this->protectionFilter->filter( $tasks );
+			if ( $tasks instanceof StatusValue ) {
+				$data['task-preview'] = [ 'error' => Status::wrap( $tasks )->getMessage()->parse() ];
+			} elseif ( $tasks->count() === 0 ) {
+				$data['task-preview'] = [];
+			} else {
+				$data['task-preview'] = [
+					'totalCount' => $tasks->getTotalCount(),
+					'taskType' => $tasks[0]->getTaskType()->getId(),
+					'title' => $this->titleFactory->newFromLinkTarget( $tasks[0]->getTitle() )->getPrefixedText(),
+					'topics' => $tasks[0]->getTopicScores(),
+				];
+			}
+		}
 
 		// When the module is not activated yet, but can be, include module HTML in the
 		// data, for dynamic loading on activation.

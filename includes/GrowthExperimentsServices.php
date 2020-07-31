@@ -3,11 +3,13 @@
 namespace GrowthExperiments;
 
 use Config;
+use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use MediaWiki\MediaWikiServices;
@@ -66,6 +68,14 @@ class GrowthExperimentsServices {
 
 	public function getNewcomerTaskTrackerFactory(): TrackerFactory {
 		return $this->coreServices->get( 'GrowthExperimentsNewcomerTaskTrackerFactory' );
+	}
+
+	public function getProtectionFilter(): ProtectionFilter {
+		return $this->coreServices->get( 'GrowthExperimentsProtectionFilter' );
+	}
+
+	public function getQuestionPosterFactory(): QuestionPosterFactory {
+		return $this->coreServices->get( 'GrowthExperimentsQuestionPosterFactory' );
 	}
 
 	public function getTaskSuggesterFactory(): TaskSuggesterFactory {

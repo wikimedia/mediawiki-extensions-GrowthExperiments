@@ -58,13 +58,19 @@ class UserSettingsDecorator implements TaskSuggester {
 	}
 
 	private function getTaskTypeFilter( UserIdentity $user ) {
-		$stored = $this->userOptionsLookup->getOption( $user, SuggestedEdits::TASKTYPES_PREF );
-		return is_array( $stored ) ? $stored : [];
+		return $this->getJsonOption( $user, SuggestedEdits::TASKTYPES_PREF );
 	}
 
 	private function getTopicFilter( UserIdentity $user ) {
-		$pref = SuggestedEdits::getTopicFiltersPref( $this->config );
+		return $this->getJsonOption( $user, SuggestedEdits::getTopicFiltersPref( $this->config ) );
+	}
+
+	private function getJsonOption( UserIdentity $user, string $pref ) {
 		$stored = $this->userOptionsLookup->getOption( $user, $pref );
+		if ( $stored ) {
+			$stored = json_decode( $stored, true );
+		}
+		// sanity check
 		return is_array( $stored ) ? $stored : [];
 	}
 

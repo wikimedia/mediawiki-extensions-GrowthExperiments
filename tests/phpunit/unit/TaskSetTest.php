@@ -25,6 +25,7 @@ class TaskSetTest extends MediaWikiUnitTestCase {
 			return $task->getTitle()->getText();
 		}, iterator_to_array( $taskSet ) );
 		$this->assertSame( [ 'Foo', 'Bar', 'Baz' ], $pages );
+		$this->assertSame( 'Foo', $taskSet[0]->getTitle()->getDBkey() );
 		$this->assertSame( 3, $taskSet->getTotalCount() );
 		$this->assertSame( 1, $taskSet->getOffset() );
 	}

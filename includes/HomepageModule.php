@@ -19,7 +19,7 @@ interface HomepageModule {
 
 	/**
 	 * Get an array of data needed by the Javascript code related to this module.
-	 * The data will be available in the 'moduledata' JS configuration field, keyed by module name.
+	 * The data will be available in the 'homepagemodules' JS configuration field, keyed by module name.
 	 * Keys currently in use:
 	 * - html: module HTML
 	 * - overlay: mobile overlay HTML
