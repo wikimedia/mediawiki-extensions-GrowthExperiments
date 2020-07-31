@@ -602,9 +602,15 @@
 			]
 		},
 		"ext.growthExperiments.welcomeSurveyLanguage": {
+			"localBasePath": "modules/welcomesurvey",
+			"remoteExtPath": "extensions/GrowthExperiments/modules/welcomesurvey",
 			"packageFiles": [
-				"welcomesurvey/ext.growthExperiments.welcomeSurveyLanguage.js",
-				"welcomesurvey/ext.growthExperiments.ULSTagMultiselectWidget.js"
+				"ext.growthExperiments.welcomeSurveyLanguage.js",
+				"ext.growthExperiments.ULSTagMultiselectWidget.js",
+				{
+					"name": "config.json",
+					"callback": [ "GrowthExperiments\\WelcomeSurvey", "getModuleData" ]
+				}
 			],
 			"targets": [
 				"desktop",
@@ -612,7 +618,9 @@
 			],
 			"messages": [
 				"welcomesurvey-question-languages-label",
-				"welcomesurvey-question-languages-placeholder"
+				"welcomesurvey-question-languages-help",
+				"welcomesurvey-question-languages-placeholder",
+				"welcomesurvey-question-languages-placeholder-maximum"
 			],
 			"dependencies": [
 				"oojs-ui-widgets",

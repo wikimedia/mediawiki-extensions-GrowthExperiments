@@ -1,6 +1,7 @@
 $( function () {
 	'use strict';
 	var ULSTagMultiselectWidget = require( './ext.growthExperiments.ULSTagMultiselectWidget.js' ),
+		config = require( './config.json' ),
 		shouldUseLanguageInfoOverlay = OO.ui.isMobile() &&
 			mw.mobileFrontend.require( 'mobile.startup' ).languageInfoOverlay,
 		allowedLanguageValuesPromise = new mw.Api().get( {
@@ -33,7 +34,7 @@ $( function () {
 		return new ULSTagMultiselectWidget( {
 			placeholder: mw.message( 'welcomesurvey-question-languages-placeholder' ).text(),
 			inputPosition: 'outline',
-			tagLimit: 10,
+			tagLimit: config.languageMax,
 			allowedValues: Object.keys( data.langCodeMap ),
 			allowArbitrary: false,
 			allowEditTags: false,
@@ -58,7 +59,11 @@ $( function () {
 		new OO.ui.FieldLayout( widgetInstance, {
 			align: 'top',
 			classes: [ 'welcomesurvey-languages-uls' ],
-			label: mw.message( 'welcomesurvey-question-languages-label' ).text()
+			label: mw.message( 'welcomesurvey-question-languages-label' ).text(),
+			help: mw.message( 'welcomesurvey-question-languages-help' )
+				.params( [ mw.language.convertNumber( config.languageMax ) ] )
+				.text(),
+			helpInline: true
 		} ).$element.insertBefore( '.welcomesurvey-mentor-info' );
 	} );
 
