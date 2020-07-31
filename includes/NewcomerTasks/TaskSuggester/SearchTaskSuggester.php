@@ -85,7 +85,6 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		$offset = null,
 		$debug = false
 	) {
-		// FIXME these should apply user settings.
 		$taskTypeFilter = $taskTypeFilter ?? array_keys( $this->taskTypes );
 		$topicFilter = $topicFilter ?? [];
 
