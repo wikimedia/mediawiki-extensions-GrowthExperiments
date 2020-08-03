@@ -3,7 +3,12 @@
 		"authors": []
 	},
 	"apihelp-helppanelquestionposter-summary": "Rukovanje pitanjima koja su postavljena pomoću table pomoći za trenutnog korisnika.",
-	"apihelp-helppanelquestionposter-param-body": "Tekst pitanja koje je postavio korisnik.",
-	"apihelp-helppanelquestionposter-param-source": "Komponenta na izvoru pitanja. Važeće vrednosti su: „helppanel”, „homepage-help” i „homepage-mentorship”",
+	"apihelp-helppanelquestionposter-param-body": "Tekst pitanja koje je postavio korisnik",
+	"apihelp-helppanelquestionposter-param-source": "Način postavljanja pitanja",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Tabla „Postavljanje pitanja”",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Tabla „Pitanje mentoru” na početnoj stranici novajlije",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Ekran „Pitanje mentoru” na tabli pomoći",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Tabla „Postavljanje pitanja” (staro ime)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Tabla „Pitanje mentoru” na početnoj stranici novajlije (staro ime)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Relevantan naslov, ako je izabrano, za uključivanje s pitanjem."
 }

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ailbeve",
 			"Movses",
 			"Okras",
 			"Vlad5250"
@@ -8,6 +9,11 @@
 	},
 	"apihelp-helppanelquestionposter-summary": "Работа с вопросами, заданными через текущего участника.",
 	"apihelp-helppanelquestionposter-param-body": "Текст вопроса, написанного участником.",
-	"apihelp-helppanelquestionposter-param-source": "Компонент у источника вопроса. Допустимые значения: 'helppanel', 'homepage-help' и 'homepage-mentorship'",
+	"apihelp-helppanelquestionposter-param-source": "Метод публикации вопроса.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Справочная панель «Спросить службу поддержки»",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Справочная панель «Спросить своего наставника» на Домашней странице новичка",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Скрин справочной панели «Спросить своего наставника»",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Справочная панель «Спросить службу поддержки» (старое название)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Справочная панель «Спросить своего наставника» на Домашней странице новичка (старое название)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Релевантное название, если выбрано, для включения в вопрос."
 }

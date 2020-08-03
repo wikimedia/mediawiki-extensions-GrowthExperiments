@@ -22,5 +22,6 @@
 	"welcomesurvey-question-edited-option-no-other-label": "Nej, af en anden årsag",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Jeg kan ikke huske det",
 	"welcomesurvey-question-email-label": "E-mailadresse (valgfri)",
-	"welcomesurvey-question-email-placeholder": "Indtast din e-mailadresse..."
+	"welcomesurvey-question-email-placeholder": "Indtast din e-mailadresse...",
+	"welcomesurvey-question-languages-placeholder": "Tilføj flere sprog..."
 }
