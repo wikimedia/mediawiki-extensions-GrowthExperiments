@@ -103,6 +103,8 @@
 		askFromMentor = ( this.askSource !== 'helpdesk' );
 		this.storageKey = askFromMentor ? 'homepage-questionposter-question-text-mentorship' :
 			'help-panel-question-text';
+		// Do not post article title when asking from the homepage.
+		this.questionPosterAllowIncludingTitle = ( this.askSource !== 'mentor-homepage' );
 
 		if ( this.askSource === 'helpdesk' ) {
 			this.panelTitleMessages[ 'ask-help' ] =
