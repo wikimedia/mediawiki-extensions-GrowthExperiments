@@ -116,7 +116,11 @@
 			this.submitFailureMessage = mw.message(
 				'growthexperiments-help-panel-question-post-error', linksConfig.helpDeskLink ).parse();
 		} else {
-			mentorName = mw.config.get( 'wgGEHelpPanelMentorData' ).name;
+			if ( this.askSource === 'mentor-homepage' ) {
+				mentorName = mw.config.get( 'GEHomepageMentorshipMentorName' );
+			} else { // mentor-helppanel
+				mentorName = mw.config.get( 'wgGEHelpPanelMentorData' ).name;
+			}
 			mentorTalkLinkText = mw.message(
 				'growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text',
 				mentorName, userName ).text();
@@ -367,8 +371,10 @@
 			// FIXME find a nicer way to do this.
 			buttonId = id;
 			if ( id === 'ask-help' && configData.GEHelpPanelAskMentor &&
-				// Sanity - handle the lack of mentor data gracefully, although it shouldn't ever happen.
-				mentorData.name
+				// Do not try to use mentor data when it is not present. This is the case on the
+				// homepage when the help panel is disabled. Home button widgets are not used
+				// on the homepage but the build method still needs to run without error.
+				mentorData && mentorData.name
 			) {
 				buttonId = 'ask-help-mentor';
 			}
