@@ -16,6 +16,8 @@ class WelcomeSurvey {
 
 	const SURVEY_PROP = 'welcomesurvey-responses';
 
+	const LANGUAGE_MAX = 10;
+
 	/**
 	 * @var IContextSource
 	 */
@@ -40,6 +42,16 @@ class WelcomeSurvey {
 		$this->allowFreetext =
 			$this->context->getConfig()->get( 'WelcomeSurveyAllowFreetextResponses' );
 		$this->languageNameUtils = $languageNameUtils;
+	}
+
+	/**
+	 * Callback for config.json in the ext.growthExperiments.welcomeSurveyLanguage module
+	 * @return array
+	 */
+	public static function getModuleData() {
+		return [
+			'languageMax' => self::LANGUAGE_MAX
+		];
 	}
 
 	/**
@@ -190,6 +202,7 @@ class WelcomeSurvey {
 				"options" => array_flip( $this->languageNameUtils->getLanguageNames() ),
 				"cssclass" => "welcomesurvey-languages",
 				"label-message" => "welcomesurvey-question-languages-label",
+				"help-message" => [ "welcomesurvey-question-languages-help", self::LANGUAGE_MAX ],
 				"dependencies" => [
 					"modules" => [
 						"ext.growthExperiments.welcomeSurveyLanguage",

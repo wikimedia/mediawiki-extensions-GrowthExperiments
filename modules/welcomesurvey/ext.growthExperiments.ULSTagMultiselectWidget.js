@@ -19,6 +19,12 @@
 			// Intercept clicks to the built-in input widget which we don't
 			// care about, and redirect them to ULS.
 			e.stopPropagation();
+
+			// Don't open ULS or the language overlay if we're at the tag limit
+			if ( !this.isUnderLimit() ) {
+				return;
+			}
+
 			if ( shouldUseLanguageOverlay ) {
 				this.emit( 'inputFocus' );
 			} else {
@@ -27,9 +33,9 @@
 			}
 		}.bind( this ) );
 		// This is done here rather than when instantiating the widget so that
-		// we can get the display name for the current language, rather than the
+		// we can get the display name for the content language, rather than the
 		// language code.
-		this.addLanguageByCode( mw.config.get( 'wgUserLanguage' ) );
+		this.addLanguageByCode( mw.config.get( 'wgContentLanguage' ), true );
 	};
 
 	OO.inheritClass( ULSTagMultiselectWidget, OO.ui.TagMultiselectWidget );
@@ -41,7 +47,8 @@
 	 * we can get meaningful information about the offset.
 	 */
 	ULSTagMultiselectWidget.prototype.initializeUls = function () {
-		var $inputWidget, offset;
+		var $inputWidget, offset,
+			widget = this;
 
 		if ( this.$uls ) {
 			return;
@@ -62,8 +69,9 @@
 				this.$menu.width( $inputWidget[ 0 ].clientWidth - 2 );
 			},
 			onSelect: function ( lang ) {
-				this.addLanguageByCode( lang );
-			}.bind( this )
+				widget.addLanguageByCode( lang );
+				this.$languageFilter.languagefilter( 'clear' );
+			}
 		} );
 	};
 
@@ -74,7 +82,10 @@
 	 */
 	ULSTagMultiselectWidget.prototype.onChangeTags = function ( items ) {
 		var selectedLangCodes;
+		// Parent method
 		ULSTagMultiselectWidget.super.prototype.onChangeTags.apply( this, arguments );
+
+		// Update the hidden checkboxes in the form
 		selectedLangCodes = items.map( function ( item ) {
 			return item.getData();
 		} );
@@ -82,6 +93,14 @@
 		$( 'input[name="wplanguages[]"]' ).each( function ( index, checkbox ) {
 			$( checkbox ).prop( 'checked', selectedLangCodes.indexOf( checkbox.value ) !== -1 );
 		} );
+
+		// Show a different placeholder if we're at the limit
+		if ( !this.isUnderLimit() ) {
+			this.input.$input.attr( 'placeholder',
+				mw.message( 'welcomesurvey-question-languages-placeholder-maximum' ).text()
+			);
+		}
+		// else: the parent method will restore the regular placeholder
 	};
 
 	/**
@@ -90,9 +109,13 @@
 	 * for its display in the widget.
 	 *
 	 * @param {string} langCode
+	 * @param {bool} [fixed] If true, the user won't be allowed to remove this language
 	 */
-	ULSTagMultiselectWidget.prototype.addLanguageByCode = function ( langCode ) {
+	ULSTagMultiselectWidget.prototype.addLanguageByCode = function ( langCode, fixed ) {
 		this.addTag( langCode, this.langCodeMap[ langCode ] );
+		if ( fixed ) {
+			this.findItemFromData( langCode ).setFixed( true );
+		}
 	};
 
 	module.exports = ULSTagMultiselectWidget;
