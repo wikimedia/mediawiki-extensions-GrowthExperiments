@@ -8,6 +8,11 @@
 	},
 	"apihelp-helppanelquestionposter-summary": "Zarządzaj pytaniami zadanymi za pomocą panelu pomocy dla bieżącego użytkownika.",
 	"apihelp-helppanelquestionposter-param-body": "Treść pytania wprowadzona przez użytkownika",
-	"apihelp-helppanelquestionposter-param-source": "Komponent u źródła pytania. Prawidłowymi wartościami są \"helppanel\", \"homepage-help\", and \"homepage-mentorship\"",
+	"apihelp-helppanelquestionposter-param-source": "Metoda jaką zadano pytanie.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Panel \"Zapytaj na forum pomocy\"",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Panel \"Zadaj pytanie swojemu przewodnikowi\" na stronie startowej dla nowicjuszy",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Sekcja \"Zadaj pytanie swojemu przewodnikowi\" w panelu pomocy",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Panel \"Zapytaj na forum pomocy\" (stara nazwa)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Panel \"Zadaj pytanie swojemu przewodnikowi\" na stronie startowej dla nowicjuszy (stara nazwa)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Powiązany tytuł strony, jeśli został wybrany, dołączany do pytania."
 }
