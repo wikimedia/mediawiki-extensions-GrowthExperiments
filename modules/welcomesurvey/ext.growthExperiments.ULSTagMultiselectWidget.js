@@ -109,7 +109,7 @@
 	 * for its display in the widget.
 	 *
 	 * @param {string} langCode
-	 * @param {bool} [fixed] If true, the user won't be allowed to remove this language
+	 * @param {boolean} [fixed] If true, the user won't be allowed to remove this language
 	 */
 	ULSTagMultiselectWidget.prototype.addLanguageByCode = function ( langCode, fixed ) {
 		this.addTag( langCode, this.langCodeMap[ langCode ] );
