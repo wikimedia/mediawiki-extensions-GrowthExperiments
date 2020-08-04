@@ -53,10 +53,9 @@
 		if ( this.$uls ) {
 			return;
 		}
-		// eslint-disable-next-line no-jquery/no-global-selector
-		this.$uls = $( '.welcomesurvey-languages-uls' );
+		this.$uls = this.$element.closest( '.oo-ui-fieldLayout' );
 
-		$inputWidget = this.$uls.find( '.oo-ui-tagMultiselectWidget-input' );
+		$inputWidget = this.input.$element;
 		offset = $inputWidget.offset();
 
 		this.$uls.uls( {

@@ -617,8 +617,6 @@
 				"mobile"
 			],
 			"messages": [
-				"welcomesurvey-question-languages-label",
-				"welcomesurvey-question-languages-help",
 				"welcomesurvey-question-languages-placeholder",
 				"welcomesurvey-question-languages-placeholder-maximum"
 			],
