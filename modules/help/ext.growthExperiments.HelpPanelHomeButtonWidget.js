@@ -32,8 +32,8 @@
 					.append(
 						this.getPreHeader(),
 						this.getHeader(),
-						this.getSubheader(),
-						this.getSubsubheader()
+						this.getSubsubheader(),
+						this.getSubheader()
 					),
 				$( '<div>' ).addClass( 'mw-ge-help-panel-home-button-image' ).append( this.getIcon() )
 			);
