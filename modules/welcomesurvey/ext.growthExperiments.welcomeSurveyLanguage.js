@@ -7,7 +7,7 @@ $( function () {
 		/** @type {OO.Router} */
 		router = require( 'mediawiki.router' ),
 		langCodeMap = $.uls.data.getAutonyms(),
-		widgetInstance, fieldLayout;
+		widgetInstance;
 
 	widgetInstance = new ULSTagMultiselectWidget( {
 		placeholder: mw.message( 'welcomesurvey-question-languages-placeholder' ).text(),
@@ -30,14 +30,8 @@ $( function () {
 		widgetInstance.addLanguageByCode( lang );
 	} );
 
-	fieldLayout = new OO.ui.FieldLayout( widgetInstance, {
-		align: 'top',
-		classes: [ 'welcomesurvey-languages-uls' ],
-		label: mw.message( 'welcomesurvey-question-languages-label' ).text(),
-		help: mw.message( 'welcomesurvey-question-languages-help' )
-			.params( [ mw.language.convertNumber( config.languageMax ) ] )
-			.text(),
-		helpInline: true
-	} );
-	fieldLayout.$element.insertBefore( '.welcomesurvey-mentor-info' );
+	// eslint-disable-next-line no-jquery/no-global-selector
+	$( '.welcomesurvey-languages .oo-ui-checkboxMultiselectInputWidget' )
+		.css( 'display', 'none' )
+		.after( widgetInstance.$element );
 }() );
