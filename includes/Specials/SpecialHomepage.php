@@ -6,96 +6,62 @@ use ConfigException;
 use DeferredUpdates;
 use ErrorPageError;
 use ExtensionRegistry;
-use GrowthExperiments\EditInfoService;
 use GrowthExperiments\EventLogging\SpecialHomepageLogger;
 use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\BaseModule;
-use GrowthExperiments\HomepageModules\Help;
-use GrowthExperiments\HomepageModules\Impact;
-use GrowthExperiments\HomepageModules\Mentorship;
-use GrowthExperiments\HomepageModules\Start;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
-use GrowthExperiments\Mentorship\MentorManager;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Tracker\Tracker;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use Html;
 use IBufferingStatsdDataFactory;
-use MediaWiki\Extensions\PageViewInfo\PageViewService;
 use SpecialPage;
 use StatusValue;
 use Throwable;
 use Title;
 use UserNotLoggedIn;
-use Wikimedia\Rdbms\IDatabase;
 
 class SpecialHomepage extends SpecialPage {
 
-	/** @var EditInfoService */
-	private $editInfoService;
-
-	/** @var IDatabase */
-	private $dbr;
-
-	/** @var PageViewService|null */
-	private $pageViewService;
-
-	/** @var ConfigurationLoader */
-	private $configurationLoader;
+	/** @var HomepageModuleRegistry */
+	private $moduleRegistry;
 
 	/** @var Tracker */
 	private $tracker;
+
+	/** @var IBufferingStatsdDataFactory */
+	private $statsdDataFactory;
+
+	/** @var ExperimentUserManager */
+	private $experimentUserManager;
 
 	/**
 	 * @var string Unique identifier for this specific rendering of Special:Homepage.
 	 * Used by various EventLogging schemas to correlate events.
 	 */
 	private $pageviewToken;
-	/**
-	 * @var IBufferingStatsdDataFactory
-	 */
-	private $statsdDataFactory;
-	/**
-	 * @var ExperimentUserManager
-	 */
-	private $experimentUserManager;
-	/**
-	 * @var MentorManager
-	 */
-	private $mentorManager;
 
 	/**
-	 * @param EditInfoService $editInfoService
-	 * @param IDatabase $dbr
-	 * @param ConfigurationLoader $configurationLoader
+	 * @param HomepageModuleRegistry $moduleRegistry
 	 * @param TrackerFactory $trackerFactory
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param ExperimentUserManager $experimentUserManager
-	 * @param MentorManager $mentorManager
-	 * @param PageViewService|null $pageViewService
 	 */
 	public function __construct(
-		EditInfoService $editInfoService,
-		IDatabase $dbr,
-		ConfigurationLoader $configurationLoader,
+		HomepageModuleRegistry $moduleRegistry,
 		TrackerFactory $trackerFactory,
 		IBufferingStatsdDataFactory $statsdDataFactory,
-		ExperimentUserManager $experimentUserManager,
-		MentorManager $mentorManager,
-		PageViewService $pageViewService = null
+		ExperimentUserManager $experimentUserManager
 	) {
 		parent::__construct( 'Homepage', '', false );
-		$this->editInfoService = $editInfoService;
-		$this->dbr = $dbr;
-		$this->configurationLoader = $configurationLoader;
+		$this->moduleRegistry = $moduleRegistry;
 		$this->tracker = $trackerFactory->getTracker( $this->getUser() );
 		$this->statsdDataFactory = $statsdDataFactory;
-		$this->pageViewService = $pageViewService;
 		$this->pageviewToken = $this->generatePageviewToken();
 
 		// Hack: Making the userpage the relevant title for the homepage
@@ -108,7 +74,6 @@ class SpecialHomepage extends SpecialPage {
 			$this->getSkin()->setRelevantTitle( $this->getUser()->getUserPage() );
 		}
 		$this->experimentUserManager = $experimentUserManager;
-		$this->mentorManager = $mentorManager;
 	}
 
 	private function handleTutorialVisit( $par ) {
@@ -242,29 +207,18 @@ class SpecialHomepage extends SpecialPage {
 	 * @return BaseModule[]
 	 */
 	private function getModules() {
-		$modules = [
-			'start' => new Start( $this->getContext(), $this->experimentUserManager ),
-			'suggested-edits' => null,
-			'impact' => new Impact(
-				$this->getContext(),
-				$this->dbr,
-				$this->experimentUserManager,
-				$this->pageViewService
-			),
-			'mentorship' => new Mentorship( $this->getContext(), $this->experimentUserManager, $this->mentorManager ),
-			'help' => new Help( $this->getContext(), $this->experimentUserManager ),
-		];
-		if ( SuggestedEdits::isEnabled( $this->getContext() ) ) {
-			// TODO use some kind of registry instead of passing things through here
-			$modules['suggested-edits'] = new SuggestedEdits(
-				$this->getContext(),
-				$this->editInfoService,
-				$this->experimentUserManager,
-				$this->pageViewService,
-				$this->configurationLoader
-			);
+		$moduleConfig = array_filter( [
+			'start' => true,
+			'suggested-edits' => SuggestedEdits::isEnabled( $this->getContext() ),
+			'impact' => true,
+			'mentorship' => true,
+			'help' => true,
+		] );
+		$modules = [];
+		foreach ( $moduleConfig as $moduleId => $_ ) {
+			$modules[$moduleId] = $this->moduleRegistry->create( $moduleId, $this->getContext() );
 		}
-		return array_filter( $modules );
+		return $modules;
 	}
 
 	/**

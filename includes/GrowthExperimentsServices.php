@@ -5,6 +5,7 @@ namespace GrowthExperiments;
 use Config;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
+use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
@@ -53,6 +54,10 @@ class GrowthExperimentsServices {
 
 	public function getExperimentUserManager(): ExperimentUserManager {
 		return $this->coreServices->get( 'GrowthExperimentsExperimentUserManager' );
+	}
+
+	public function getHomepageModuleRegistry(): HomepageModuleRegistry {
+		return $this->coreServices->get( 'GrowthExperimentsHomepageModuleRegistry' );
 	}
 
 	public function getMentorManager(): MentorManager {
