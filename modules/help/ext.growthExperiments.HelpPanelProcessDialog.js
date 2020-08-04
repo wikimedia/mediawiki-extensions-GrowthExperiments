@@ -384,10 +384,10 @@
 				new HelpPanelHomeButtonWidget( {
 					id: buttonId,
 					taskTypeId: this.taskTypeId,
-					customSubheader: ( buttonId === 'ask-help-mentor' ) ? mentorData.name : null,
-					subsubheader: ( buttonId === 'ask-help-mentor' ) ?
+					customSubheader: ( buttonId === 'ask-help-mentor' ) ?
 						mw.message( 'growthexperiments-help-panel-button-subsubheader-ask-help-mentor' )
-							.params( [ mentorData.editCount, mentorData.lastActive ] ).text() : null
+							.params( [ mentorData.editCount, mentorData.lastActive ] ).text() : null,
+					subsubheader: ( buttonId === 'ask-help-mentor' ) ? mentorData.name : null
 				} ).$element
 					.on( 'click', function () {
 						this.logger.log( id );
