@@ -137,7 +137,7 @@
 	"growthexperiments-homepage-enable-preference": "لتفعيل لوحة المستخدم للوافد الجديد؛ {{GENDER:|قم|قومي}} بزيارة إعدادات \"لوحة المستخدم للوافد الجديد\" في [[Special:Preferences#mw-prefsection-personal-homepage|التفضيلات]].",
 	"growthexperiments-homepage-contributions-zero-title": "لم {{GENDER:$1|تقم|تقومي}} بأية مساهمة بعد.",
 	"growthexperiments-homepage-contributions-zero-subtitle": "{{GENDER:$1|زر|زوري}} لوحة {{GENDER:$1|المستخدم|المستخدمة}} خاصتك للبدء في التعديل!",
-	"growthexperiments-homepage-contributions-zero-button": "{{GENDER:$1|انتقل|انتقلي}} إلى صفحتك الرئيسية",
+	"growthexperiments-homepage-contributions-zero-button": "{{GENDER:$1|انتقل|انتقلي}} إلى لوحة المستخدم الخاصة بك",
 	"growthexperiments-tour-welcome-title": "مرحبا بـ{{GENDER:$1|كَ|كِ}} في لوحة {{GENDER:$1|المستخدم|المستخدمة}} خاصتك!",
 	"growthexperiments-tour-welcome-description": "{{GENDER:$1|يمكنكَ|يمكنكِ}} دائما النقر على اسم المستخدم الخاص {{GENDER:$1|بكَ|بكِ}} للعودة إلى هنا.",
 	"growthexperiments-tour-discovery-title": "{{GENDER:|ابدأ|ابدئي}} هنا!",

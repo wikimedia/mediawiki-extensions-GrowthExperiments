@@ -34,7 +34,7 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "أخرى",
 	"welcomesurvey-question-reason-option-other-label": "غير ذلك (يُرجَى التوضيح)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|أدخل|أدخلي}} سببا آخر...",
-	"welcomesurvey-question-mentor-info": "نحن نفكر في بدء تشغيل برنامج للمحررين الأكثر خبرة لمساعدة المستخدمين الجدد في التحرير، هل أنت {{GENDER:$1|مهتم|مهتمة}} بالاتصال بك للحصول على مساعدة بشأن التعديل؟",
+	"welcomesurvey-question-mentor-info": "نفكّر في إطلاق برنامج خاص بالمحرّرين الأكثر خبرة لمساعدة المستخدمين الجدد في التحرير. هل {{GENDER:$1|مهتم|مهتمة}} بأن يتم الاتصال بك لمساعدتك في التحرير؟",
 	"welcomesurvey-question-mentor-label": "نعم، أنا {{GENDER:$1|مهتم|مهتمة}}",
 	"welcomesurvey-question-edited-label": "هل سبق لك تحرير ويكيبيديا؟",
 	"welcomesurvey-question-edited-option-yes-many-label": "نعم، عدة مرات",
@@ -46,5 +46,7 @@
 	"welcomesurvey-question-email-placeholder": "{{GENDER:|أدخل|أدخلي}} عنوان بريدك الإلكتروني...",
 	"welcomesurvey-question-email-help": "لاحظنا أنك لم {{GENDER:|تدخل|تدخلي}} بريدا إلكترونيا عند إنشاء هذا الحساب، إنه <strong>موصى به بشدة</strong>; لأن هناك حاجة إلى بريد إلكتروني لاسترداد الحساب إذا فقدت كلمة مرورك، ملاحظة: لا يتم كشف عنوان بريدك الإلكتروني عندما يتصل بك مستخدمون آخرون.",
 	"welcomesurvey-question-languages-label": "تتوفّر {{SITENAME}} في أكثر من 300 لغة. هل تقرؤون وتكتبون بلغات أخرى؟",
-	"welcomesurvey-question-languages-placeholder": "إضافة لغات إضافية..."
+	"welcomesurvey-question-languages-help": "أدخل {{PLURAL:$1|لا لغات|لغة واحدة|لغتين|$1 لغات|$1 لغة}} كحدّ أقصى.",
+	"welcomesurvey-question-languages-placeholder": "إضافة لغات إضافية...",
+	"welcomesurvey-question-languages-placeholder-maximum": "قمتم بإضافة العدد الأقصى من اللغات."
 }

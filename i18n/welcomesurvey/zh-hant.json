@@ -45,5 +45,7 @@
 	"welcomesurvey-question-email-placeholder": "輸入您的電子郵件地址…",
 	"welcomesurvey-question-email-help": "我們注意到當您建立此帳號時，並未輸入電子郵件。因當您遺失您的密碼時，可用電子郵件來做帳號恢復，所以我們<strong>強烈建議</strong>您輸入。註：當其他使用者與您聯繫時，不會洩露出您的電子郵件地址。",
 	"welcomesurvey-question-languages-label": "{{SITENAME}}有超過 300 種語言可用。您還有其它在閱讀與書寫時使用的語言嗎？",
-	"welcomesurvey-question-languages-placeholder": "添加更多語言…"
+	"welcomesurvey-question-languages-help": "輸入 {{PLURAL:$1|1 個語言|$1 個語言}}。",
+	"welcomesurvey-question-languages-placeholder": "添加更多語言…",
+	"welcomesurvey-question-languages-placeholder-maximum": "您已添加到語言數量的上限。"
 }
