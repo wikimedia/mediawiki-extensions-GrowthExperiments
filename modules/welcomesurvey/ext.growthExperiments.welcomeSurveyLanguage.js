@@ -41,4 +41,7 @@ $( function () {
 	$( '.welcomesurvey-languages .oo-ui-checkboxMultiselectInputWidget' )
 		.css( 'display', 'none' )
 		.after( widgetInstance.$element, $warning );
+
+	// eslint-disable-next-line no-jquery/no-global-selector
+	$( '.welcomesurvey-languages' ).addClass( 'welcomesurvey-languages-loaded' );
 }() );
