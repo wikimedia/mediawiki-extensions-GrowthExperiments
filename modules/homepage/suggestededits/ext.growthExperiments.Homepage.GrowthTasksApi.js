@@ -3,10 +3,47 @@
 ( function () {
 
 	/**
+	 * @typedef {Object} mw.libs.ge.TaskData
+	 * @property {string} title Article title
+	 * @property {string} tasktype Task type ID.
+	 * @property {string} difficulty Task difficulty ('easy', 'medium' or 'hard').
+	 * @property {[string, float][]|null} Topics the task is in. Empty array when the user is not
+	 *   filtering for any topics, null with topic matching disabled entirely, otherwise an array
+	 *   of (topic ID, score) pairs.
+	 * @property {string[]|null} maintenanceTemplates List of maintenance templates on the article
+	 *   (ie. the templates that were used to identify it as appropriate for the task), without the
+	 *   namespace name. Null when the article does not exist.
+	 * @property {int|null} pageId Article page ID (null when the article does not exist, which
+	 *   is common in some test/development setups where the returned titles are not local, and
+	 *   also in edge cases where the search index has not caught up with a page deletion yet).
+	 * @property {int|null} revisionId ID of last revision (null when the article does not exist).
+	 * @property {string|null} url Custom article URL. This is used in some development setups
+	 *   (see $wgGENewcomerTasksRemoteArticleOrigin).
+	 * @property {string|null} thumbnailSource Thumbnail URL for the page image, if there is one.
+	 *   The width of the thumbnail is unspecified, it is left to the rendering code to transform
+	 *   it if needed. Can also be null during some parts of the object's lifecycle (thumbnail data
+	 *   might or might not be lazy-loaded).
+	 * @property {int|null} imageWidth Width of the page image (the original, not the thumbnail).
+	 *   Null when thumbnailSource is null.
+	 * @property {string|null} description Short article description, e.g. from Wikidata.
+	 *   Null when the wiki or article is not connected to Wikidata or there is no description
+	 *   in the user's language, or the article does not exist, or when the GrowthTasksApi flag for
+	 *   including descriptions has not been set.
+	 * @property {string|null} extract Article summary (from the RESTBase summary endpoint).
+	 *   Null when the wiki does not provide article summary information or the article does not
+	 *   exist. Also null in other cases during some parts of the object's lifecycle (summary
+	 *   data is lazy-loaded).
+	 * @property {int|null} pageviews Number of page views in the last 60 days (approximately).
+	 *   Null when the wiki does not provide pageview information, the article does not exist,
+	 *   or when no views have been processed for that article yet. Also null in other cases
+	 *   during some parts of the object's lifecycle (pageview data is lazy-loaded).
+	 */
+
+	/**
 	 * Code for dealing with the query+growthtasks API, and some REST APIs to fetch extra data from.
 	 * This is a stateless class, like mw.Api.
 	 *
-	 * @class GrowthTasksApi
+	 * @class mw.libs.ge.GrowthTasksApi
 	 * @constructor
 	 * @param {Object} config
 	 * @param {Object} [config.taskTypes] The list of task types, as returned by
@@ -87,7 +124,8 @@
 	 * @param {string} config.context The context in which this function was
 	 *   called, used for performance instrumentation.
 	 *
-	 * @return {jQuery.Promise<Object>} An abortable promise with two fields:
+	 * @return {jQuery.Promise<{count: int, tasks: Array<mw.libs.ge.TaskData>}>} An abortable
+	 *   promise with two fields:
 	 *   - count: the number of tasks available. Note this is the full count, not the
 	 *     task list length (which is capped to 200).
 	 *     FIXME protection status is ignored by the count.
@@ -217,7 +255,7 @@
 	 * Can be customized via $wgGERestbaseUrl (by default will be assumed to be local;
 	 * setting it to null will disable querying PCS make this method a no-op).
 	 *
-	 * @param {Object} task A task object returned by fetchTasks. It will be extended with new data:
+	 * @param {mw.libs.ge.TaskData} task A task object returned by fetchTasks. It will be extended with new data:
 	 *   - extract: the page summary
 	 *   - thumbnailSource: URL to the thumbnail of the page image (if one exists)
 	 * @param {Object} [config] Additional configuration. The object passed to fetchTasks() can be
@@ -227,7 +265,7 @@
 	 * @param {boolean} config.isMobile If the client is on a mobile device, used for performance instrumentation.
 	 * @param {string} config.context The context in which this function was
 	 *   called, used for performance instrumentation.
-	 * @return {jQuery.Promise<Object>} A promise with the task object.
+	 * @return {jQuery.Promise<mw.libs.ge.TaskData>} A promise with the task object.
 	 * @see https://www.mediawiki.org/wiki/Page_Content_Service#/page/summary
 	 * @see https://en.wikipedia.org/api/rest_v1/#/Page%20content/get_page_summary__title_
 	 */
@@ -272,14 +310,14 @@
 	 * Can be customized via $wgPageViewInfoWikimediaDomain (by default will use
 	 * the Wikimedia instance).
 	 *
-	 * @param {Object} task A task object returned by fetchTasks. It will be extended with new data:
+	 * @param {mw.libs.ge.TaskData} task A task object returned by fetchTasks. It will be extended with new data:
 	 *   - pageviews: number of views to the task's page in the last two months
 	 * @param {Object} [config] Additional configuration. The object passed to fetchTasks() can be
 	 *   reused here.
 	 * @param {boolean} config.isMobile If the client is on a mobile device, used for performance instrumentation.
 	 * @param {string} config.context The context in which this function was
 	 *   called, used for performance instrumentation.
-	 * @return {jQuery.Promise<Object>} A promise with extra data to extend the task object with.
+	 * @return {jQuery.Promise<mw.libs.ge.TaskData>} A promise with extra data to extend the task object with.
 	 * @see https://wikitech.wikimedia.org/wiki/Analytics/AQS/Pageviews
 	 * @see https://w.wiki/J8K
 	 */
@@ -350,9 +388,9 @@
 	/**
 	 * Change the thumbnail URL in the task data to be at least the given width (if possible).
 	 *
-	 * @param {Object} task Task data, as returned by the other methods.
+	 * @param {mw.libs.ge.TaskData} task Task data, as returned by the other methods.
 	 * @param {number} newWidth Desired thumbnail width.
-	 * @return {Object} The task parameter (which is changed in-place).
+	 * @return {mw.libs.ge.TaskData} The task parameter (which is changed in-place).
 	 */
 	GrowthTasksApi.fixThumbnailWidth = function ( task, newWidth ) {
 		var data;

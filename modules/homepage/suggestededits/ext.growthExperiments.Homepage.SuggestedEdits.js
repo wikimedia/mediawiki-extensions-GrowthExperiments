@@ -1,6 +1,6 @@
 /**
  * @external HomepageModuleLogger
- * @external GrowthTasksApi
+ * @external mw.libs.ge.GrowthTasksApi
  * @external SuggestedEditCardWidget
  * @external ErrorCardWidget
  * @external NoResultsWidget
@@ -33,7 +33,7 @@
 	 * @param {boolean} config.topicMatching If topic matching feature is enabled in the UI
 	 * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
 	 * @param {HomepageModuleLogger} logger
-	 * @param {GrowthTasksApi} api
+	 * @param {mw.libs.ge.GrowthTasksApi} api
 	 */
 	function SuggestedEditsModule( config, logger, api ) {
 		var $pager, $previous, $next, $filters, $filtersContainer;

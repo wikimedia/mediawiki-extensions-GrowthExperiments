@@ -1,6 +1,6 @@
 /**
  * @external HomepageModuleLogger
- * @external GrowthTasksApi
+ * @external mw.libs.ge.GrowthTasksApi
  */
 var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).TopicSelectionWidget;
 
@@ -9,7 +9,7 @@ var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).To
  * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
  * @param {string} config.windowClass Selector to use for getting the window body for scrolling.
  * @param {HomepageModuleLogger} logger
- * @param {GrowthTasksApi} api
+ * @param {mw.libs.ge.GrowthTasksApi} api
  * @constructor
  */
 function StartEditingDialog( config, logger, api ) {

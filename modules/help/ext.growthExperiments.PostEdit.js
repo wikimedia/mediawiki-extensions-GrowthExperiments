@@ -32,7 +32,7 @@
 	/**
 	 * Fetch the next task.
 	 *
-	 * @return {jQuery.Promise<Object|null>} A promise that will resolve to a task data object,
+	 * @return {jQuery.Promise<mw.libs.ge.TaskData|null>} A promise that will resolve to a task data object,
 	 *   or fail with an error message if fetching the task failed.
 	 */
 	function getNextTask() {
@@ -130,7 +130,7 @@
 	/**
 	 * Helper method to tie getNextTask() and displayPanel() together.
 	 *
-	 * @param {Object|null} task Task data, or null when the task card should not be shown.
+	 * @param {mw.libs.ge.TaskData|null} task Task data, or null when the task card should not be shown.
 	 * @param {string|null} errorMessage Error message, or null when there was no error.
 	 * @return {Object} An object with:
 	 *   - task: task data as a plain Object (as returned by GrowthTasksApi), omitted
