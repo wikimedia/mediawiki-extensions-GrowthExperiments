@@ -50,6 +50,8 @@
 	"welcomesurvey-question-email-label": "Адрес электронной почты (необязательно)",
 	"welcomesurvey-question-email-placeholder": "Введите свой адрес электронной почты…",
 	"welcomesurvey-question-email-help": "Мы заметили, что вы не ввели электронный адрес при создании этой учётной записи. <strong>Рекомендуем</strong> его ввести, потому что он требуется для восстановления учётной записи, если вы забудете пароль. ПРИМЕЧАНИЕ: Ваш электронный адрес не показывается, если другие пользователи связываются с вами.",
-	"welcomesurvey-question-languages-label": "{{SITENAME}}  доступен на более чем 300-х языках. Может быть есть еще языки на которых вы можете читать и писать?",
-	"welcomesurvey-question-languages-placeholder": "Добавить больше языков..."
+	"welcomesurvey-question-languages-label": "{{SITENAME}} доступен на более чем 300-х языках. Есть ещё языки на которых вы можете читать и писать?",
+	"welcomesurvey-question-languages-help": "Введите не более {{PLURAL:$1|одного языка|$1 языков}}.",
+	"welcomesurvey-question-languages-placeholder": "Добавить больше языков...",
+	"welcomesurvey-question-languages-placeholder-maximum": "Вы добавили максимальное количество языков."
 }

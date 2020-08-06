@@ -6,5 +6,6 @@
 			"Silvonen"
 		]
 	},
-	"welcomesurvey-skip-btn": "{{GENDER:$1|Ohita}} tämä kysely"
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Ohita}} tämä kysely",
+	"welcomesurvey-question-languages-label": "{{SITENAME}} on saatavana lähes 300 kielellä. Onko muita kieliä, joita luet ja kirjoitat?"
 }

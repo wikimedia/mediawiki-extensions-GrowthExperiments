@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Laitei"
+			"Laitei",
+			"Teitei Para"
 		]
 	},
-	"welcomesurvey-question-languages-label": "{{SITENAME}} he reihchâ 300 hlâ hluh viapa ta â hmô. Nâma roh chih ta, na reipa reihchâ hropazy a y via khaoa?",
+	"welcomesurvey-question-languages-label": "{{SITENAME}} he reihchâ 300 tlu ta â hmô. Nâma roh chih ta, na reipa reihchâ hropazy a y via khaoa?",
 	"welcomesurvey-question-languages-placeholder": "Reihchâ hropazy khô..."
 }

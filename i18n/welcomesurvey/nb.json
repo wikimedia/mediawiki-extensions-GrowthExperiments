@@ -42,7 +42,7 @@
 	"welcomesurvey-question-email-label": "Epostadresse (valgfritt)",
 	"welcomesurvey-question-email-placeholder": "Skriv inn epostadressa di …",
 	"welcomesurvey-question-email-help": "Vi la merke til at du ikke skrev inn en epostadresse da du opprettet kontoen. Det <strong>anbefales sterkt</strong>, fordi en epost trengs om du skulle glemme passordet ditt. MERK: Epostadressa di vises ikke når andre brukere kontakter deg.",
-	"welcomesurvey-question-languages-label": "{{SITENAME}} er tilgjengelig på over 300 språk. Er det andre språk du kan lese og skrive på?",
+	"welcomesurvey-question-languages-label": "{{SITENAME}} er tilgjengelig på nesten 300 språk. Er det andre språk du kan lese og skrive på?",
 	"welcomesurvey-question-languages-help": "Skriv inn opptil {{PLURAL:$1|ett|$1}} språk.",
 	"welcomesurvey-question-languages-placeholder": "Legg til flere språk …",
 	"welcomesurvey-question-languages-placeholder-maximum": "Du har lagt til maksimalt antall språk."
