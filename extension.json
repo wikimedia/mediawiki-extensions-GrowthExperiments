@@ -790,12 +790,14 @@
 		},
 		"ext.growthExperiments.PostEdit": {
 			"styles": [
-				"help/ext.growthExperiments.PostEdit.less"
+				"help/ext.growthExperiments.PostEdit.less",
+				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.less"
 			],
 			"packageFiles": [
 				"help/ext.growthExperiments.PostEdit.js",
 				"help/ext.growthExperiments.PostEditPanel.js",
 				"help/ext.growthExperiments.PostEditDialog.js",
+				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.js",
 				"help/ext.growthExperiments.HelpPanelLogger.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
 				"homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js",
