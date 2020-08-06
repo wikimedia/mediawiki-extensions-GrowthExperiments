@@ -606,11 +606,7 @@
 			"remoteExtPath": "extensions/GrowthExperiments/modules/welcomesurvey",
 			"packageFiles": [
 				"ext.growthExperiments.welcomeSurveyLanguage.js",
-				"ext.growthExperiments.ULSTagMultiselectWidget.js",
-				{
-					"name": "config.json",
-					"callback": [ "GrowthExperiments\\WelcomeSurvey", "getModuleData" ]
-				}
+				"ext.growthExperiments.ULSTagMultiselectWidget.js"
 			],
 			"targets": [
 				"desktop",
@@ -618,7 +614,7 @@
 			],
 			"messages": [
 				"welcomesurvey-question-languages-placeholder",
-				"welcomesurvey-question-languages-placeholder-maximum"
+				"welcomesurvey-question-languages-maximum"
 			],
 			"dependencies": [
 				"oojs-ui-widgets",
