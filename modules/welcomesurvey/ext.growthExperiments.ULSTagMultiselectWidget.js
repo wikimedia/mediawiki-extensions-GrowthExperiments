@@ -93,13 +93,11 @@
 			$( checkbox ).prop( 'checked', selectedLangCodes.indexOf( checkbox.value ) !== -1 );
 		} );
 
-		// Show a different placeholder if we're at the limit
-		if ( !this.isUnderLimit() ) {
-			this.input.$input.attr( 'placeholder',
-				mw.message( 'welcomesurvey-question-languages-placeholder-maximum' ).text()
-			);
-		}
-		// else: the parent method will restore the regular placeholder
+		// Show or hide the error message about selecting too many languages
+		// TODO this and the above should use events instead
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$( '.welcomesurvey-languages .warning' ).toggle( !this.isUnderLimit() );
+
 	};
 
 	/**

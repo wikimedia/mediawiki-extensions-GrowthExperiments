@@ -1,18 +1,20 @@
 $( function () {
 	'use strict';
 	var ULSTagMultiselectWidget = require( './ext.growthExperiments.ULSTagMultiselectWidget.js' ),
-		config = require( './config.json' ),
 		shouldUseLanguageInfoOverlay = OO.ui.isMobile() &&
 			mw.mobileFrontend.require( 'mobile.startup' ).languageInfoOverlay,
 		/** @type {OO.Router} */
 		router = require( 'mediawiki.router' ),
 		langCodeMap = $.uls.data.getAutonyms(),
-		widgetInstance;
+		languageMax = 10,
+		widgetInstance, $warning;
 
 	widgetInstance = new ULSTagMultiselectWidget( {
-		placeholder: mw.message( 'welcomesurvey-question-languages-placeholder' ).text(),
+		placeholder: mw.message( 'welcomesurvey-question-languages-placeholder' )
+			.params( [ mw.language.convertNumber( languageMax ) ] )
+			.text(),
 		inputPosition: 'outline',
-		tagLimit: config.languageMax,
+		tagLimit: languageMax,
 		allowedValues: Object.keys( langCodeMap ),
 		allowArbitrary: false,
 		allowEditTags: false,
@@ -30,8 +32,13 @@ $( function () {
 		widgetInstance.addLanguageByCode( lang );
 	} );
 
+	$warning = $( '<div>' )
+		.addClass( 'warning' )
+		.text( mw.message( 'welcomesurvey-question-languages-maximum' ).text() )
+		.css( 'display', 'none' );
+
 	// eslint-disable-next-line no-jquery/no-global-selector
 	$( '.welcomesurvey-languages .oo-ui-checkboxMultiselectInputWidget' )
 		.css( 'display', 'none' )
-		.after( widgetInstance.$element );
+		.after( widgetInstance.$element, $warning );
 }() );
