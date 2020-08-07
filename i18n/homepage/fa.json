@@ -121,7 +121,7 @@
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "صفحهٔ بحث {{GENDER:$1|مربی}} {{GENDER:$2|شما}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "پرسش {{GENDER:$2|شما}} اکنون در صفحهٔ بحث مربی‌تان قرار دارد. این صفحه جایی است که {{GENDER:$1|او|او|آن‌ها}} در اولین فرصت پاسخ شما را در آن {{GENDER:$1|خواهد|خواهد|خواهند}} داد.",
 	"growthexperiments-homepage-mentorship-view-question-text": "پرسش {{GENDER:$2|خود}} در صفحهٔ بحث {{GENDER:$1|مربی‌تان}} را مشاهده کنید.",
-	"growthexperiments-homepage-mentorship-question-subject": "پرسش از [[User:$1|$1]]",
+	"growthexperiments-homepage-mentorship-question-subject": "پرسش [[User:$1|$1]]",
 	"growthexperiments-homepage-tutorial-header": "یادگیری ویرایش",
 	"growthexperiments-homepage-tutorial-subheader": "یک خودآموز سریع را دنبال کنید تا نحوهٔ ویرایش در ویکی‌پدیا را بیاموزید",
 	"growthexperiments-homepage-tutorial-cta-text": "خودآموز",
