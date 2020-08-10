@@ -1,6 +1,9 @@
 'use strict';
 
 ( function () {
+	var SmallTaskCard = require( '../homepage/suggestededits/' +
+		'ext.growthExperiments.SuggestedEdits.SmallTaskCard.js' );
+
 	/**
 	 * @class
 	 * @mixins OO.EventEmitter
@@ -113,17 +116,7 @@
 	 * @return {jQuery} A jQuery object wrapping the card element.
 	 */
 	PostEditPanel.prototype.getCard = function ( task ) {
-		var $image, url, params, $title, $description, $pageviews, $taskType,
-			$cardTextContainer, $glue, $cardMetadataContainer, $card,
-			taskTypeData = this.taskTypes[ task.tasktype ];
-
-		$image = $( '<div>' )
-			.addClass( 'mw-ge-help-panel-postedit-card-image' );
-		if ( task.thumbnailSource ) {
-			$image.css( 'background-image', 'url("' + task.thumbnailSource + '")' );
-		} else {
-			$image.addClass( 'mw-ge-help-panel-postedit-card-image-placeholder' );
-		}
+		var params, url, taskCard;
 
 		params = {
 			geclickid: this.helpPanelLogger.helpPanelSessionId,
@@ -137,48 +130,13 @@
 		} else {
 			url = new mw.Title( task.title ).getUrl( params );
 		}
-		$title = $( '<span>' )
-			.addClass( 'mw-ge-help-panel-postedit-card-title' )
-			.text( task.title );
-
-		if ( task.description ) {
-			$description = $( '<div>' )
-				.addClass( 'mw-ge-help-panel-postedit-card-description' )
-				.text( task.description );
-		}
-
-		if ( task.pageviews ) {
-			$pageviews = $( '<span>' )
-				.addClass( 'mw-ge-help-panel-postedit-card-pageviews' )
-				.text( mw.message( 'growthexperiments-homepage-suggestededits-pageviews',
-					mw.language.convertNumber( task.pageviews ) ).text() )
-				.prepend( new OO.ui.IconWidget( { icon: 'chart' } ).$element );
-		}
-
-		$taskType = $( '<span>' )
-			.addClass( 'mw-ge-help-panel-postedit-card-tasktype' )
-			// The following classes are used here:
-			// * mw-ge-help-panel-postedit-card-tasktype-difficulty-easy
-			// * mw-ge-help-panel-postedit-card-tasktype-difficulty-medium
-			// * mw-ge-help-panel-postedit-card-tasktype-difficulty-hard
-			.addClass( 'mw-ge-help-panel-postedit-card-tasktype-difficulty-' + taskTypeData.difficulty )
-			.text( taskTypeData.messages.name )
-			.prepend( new OO.ui.IconWidget( { icon: 'difficulty-' + taskTypeData.difficulty } ).$element );
-
-		$glue = $( '<div>' )
-			.addClass( 'mw-ge-help-panel-postedit-card-glue' );
-		$cardMetadataContainer = $( '<div>' )
-			.addClass( 'mw-ge-help-panel-postedit-card-metadata-container' )
-			.append( $pageviews, $taskType );
-		$cardTextContainer = $( '<div>' )
-			.addClass( 'mw-ge-help-panel-postedit-card-text-container' )
-			.append( $title, $description, $glue, $cardMetadataContainer );
-		$card = $( '<a>' )
-			.addClass( 'mw-ge-help-panel-postedit-card' )
-			.attr( 'href', url )
-			.on( 'click', this.logTaskClick.bind( this ) )
-			.append( $image, $cardTextContainer );
-		return $card;
+		taskCard = new SmallTaskCard( {
+			task: task,
+			taskTypes: this.taskTypes,
+			taskUrl: url
+		} );
+		taskCard.connect( this, { click: 'logTaskClick' } );
+		return taskCard.$element;
 	};
 
 	/**

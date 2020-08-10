@@ -35,111 +35,6 @@
 		font-size: 1.144em; // match OOUI fieldset size
 		font-weight: bold;
 	}
-
-	.mw-ge-help-panel-postedit-card {
-		display: flex;
-		width: 100%;
-		.box-sizing( border-box );
-		padding: 8px;
-		background-color: @wmui-color-base100;
-		box-shadow: 0 1px 0 0 @wmui-color-base80;
-
-		&:hover {
-			// Browser default is to underline links on hover, which looks weird when the
-			// whole card is a link.
-			text-decoration: none;
-		}
-
-		&-image {
-			width: 88px;
-			height: 88px;
-			flex-grow: 0;
-			flex-shrink: 0;
-			// background-image is set dynmically
-			background-repeat: no-repeat;
-			background-position: center;
-			background-size: cover;
-
-			&-placeholder {
-				/* @embed */
-				background: url( ../../images/suggestededits/placeholder-image.svg ) no-repeat center/40px, @wmui-color-base80;
-			}
-		}
-
-		&-text-container {
-			display: flex;
-			flex-direction: column;
-			flex-grow: 1;
-			justify-items: flex-start;
-			overflow: hidden;
-			padding: 8px 0 0 16px;
-		}
-
-		&-title {
-			font-weight: bold;
-			margin-bottom: 4px;
-			color: @colorProgressive;
-
-			&:active {
-				color: @colorProgressiveActive;
-			}
-		}
-
-		&-description {
-			text-overflow: ellipsis;
-			overflow: hidden;
-			color: @wmui-color-base20;
-		}
-
-		&-glue {
-			flex-grow: 1;
-		}
-
-		&-metadata-container {
-			display: flex;
-		}
-
-		&-pageviews {
-			flex: 1 0 0;
-			box-sizing: border-box;
-			justify-self: flex-start;
-			padding-right: 5px;
-			color: @wmui-color-base20;
-			text-overflow: ellipsis;
-			overflow: hidden;
-			white-space: nowrap;
-
-			.oo-ui-iconWidget {
-				margin-right: 8px;
-				opacity: 0.65;
-			}
-		}
-
-		&-tasktype {
-			flex: 1 0 0;
-			justify-self: flex-end;
-			text-align: right;
-			text-overflow: ellipsis;
-			overflow: hidden;
-			white-space: nowrap;
-
-			&-difficulty-easy {
-				color: @easyColor;
-			}
-
-			&-difficulty-medium {
-				color: @mediumColor;
-			}
-
-			&-difficulty-hard {
-				color: @hardColor;
-			}
-
-			.oo-ui-iconWidget {
-				margin-right: 8px;
-			}
-		}
-	}
 }
 
 .mw-ge-help-panel-postedit-footer {
@@ -159,22 +54,6 @@
 .mw-ge-help-panel-postedit-dialog .oo-ui-dialog-content {
 	// allow success message to be positioned outside the window
 	overflow: visible;
-
-	.mw-ge-help-panel-postedit-card-description {
-		// Show two lines of text, with an ellipsis.
-		// line-clamp has not been standardized, but most modern browsers understand the Webkit syntax.
-		display: -webkit-box;
-		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 2;
-		// For IE 11 and various old browsers, limit height for the same effect, except
-		// for the ellipsis. Height is <# of lines> * <line height> * <font size>.
-		max-height: 2 * 1.4 * 13/14 * 1em;
-		font-size: 13/14 * 1em;
-	}
-
-	.mw-ge-help-panel-postedit-card-metadata-container {
-		font-size: 12.4/14 * 1em;
-	}
 
 	.mw-ge-help-panel-postedit-footer {
 		border-top: 1px solid @wmui-color-base70;
@@ -210,25 +89,6 @@
 
 	.mw-ge-help-panel-postedit-main {
 		text-align: left;
-
-		.mw-ge-help-panel-postedit-card-description {
-			// mobile does not have space for two lines
-			white-space: nowrap;
-			font-size: 13/16 * 1em;
-		}
-
-		.mw-ge-help-panel-postedit-card-text-container {
-			padding-top: 0;
-		}
-
-		.mw-ge-help-panel-postedit-card-image {
-			width: 72px;
-			height: 72px;
-		}
-
-		.mw-ge-help-panel-postedit-card-tasktype {
-			font-size: 13/16 * 1em;
-		}
 	}
 
 	// need win over OOUI-s four-class selector in specificity
