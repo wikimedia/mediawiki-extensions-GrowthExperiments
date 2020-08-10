@@ -47,5 +47,8 @@
 	"welcomesurvey-question-edited-option-dont-remember-label": "Tôi không nhớ",
 	"welcomesurvey-question-email-label": "Địa chỉ email (tùy chọn)",
 	"welcomesurvey-question-email-placeholder": "Nhập địa chỉ email của bạn...",
-	"welcomesurvey-question-email-help": "Chúng tôi nhận thấy bạn đã không nhập một email khi tạo tài khoản này. Email <strong>rất cần thiết</strong>, vì bạn sẽ cần một email để khôi phục tài khoản nếu bạn mất mật khẩu. LƯU Ý: Địa chỉ email của bạn sẽ không được tiết lộ khi người dùng khác liên lạc với bạn."
+	"welcomesurvey-question-email-help": "Chúng tôi nhận thấy bạn đã không nhập một email khi tạo tài khoản này. Email <strong>rất cần thiết</strong>, vì bạn sẽ cần một email để khôi phục tài khoản nếu bạn mất mật khẩu. LƯU Ý: Địa chỉ email của bạn sẽ không được tiết lộ khi người dùng khác liên lạc với bạn.",
+	"welcomesurvey-question-languages-label": "{{SITENAME}} có sẵn tại hơn 300 ngôn ngữ. Có ngôn ngữ nào khác bạn có thể đọc và viết không?",
+	"welcomesurvey-question-languages-placeholder": "Tổng cộng {{PLURAL:$1|một ngôn ngữ|$1 ngôn ngữ}}...",
+	"welcomesurvey-question-languages-maximum": "Bạn đã thêm số lượng ngôn ngữ tối đa."
 }

@@ -46,7 +46,6 @@
 	"welcomesurvey-question-email-placeholder": "{{GENDER:|أدخل|أدخلي}} عنوان بريدك الإلكتروني...",
 	"welcomesurvey-question-email-help": "لاحظنا أنك لم {{GENDER:|تدخل|تدخلي}} بريدا إلكترونيا عند إنشاء هذا الحساب، إنه <strong>موصى به بشدة</strong>; لأن هناك حاجة إلى بريد إلكتروني لاسترداد الحساب إذا فقدت كلمة مرورك، ملاحظة: لا يتم كشف عنوان بريدك الإلكتروني عندما يتصل بك مستخدمون آخرون.",
 	"welcomesurvey-question-languages-label": "تتوفّر {{SITENAME}} في ما يقارب 300 لغة. هل يُمكنكم القراءة والكتابة بلغات أخرى؟",
-	"welcomesurvey-question-languages-help": "أدخل {{PLURAL:$1|لا لغات|لغة واحدة|لغتين|$1 لغات|$1 لغة}} كحدّ أقصى.",
-	"welcomesurvey-question-languages-placeholder": "إضافة لغات إضافية...",
-	"welcomesurvey-question-languages-placeholder-maximum": "قمتم بإضافة العدد الأقصى من اللغات."
+	"welcomesurvey-question-languages-placeholder": "أضف ما يصل إلى {{PLURAL:$1|لا لغات|لغة واحدة أخرى|لغتين أخرتين|$1 لغات أخرى|$1 لغة أخرى}}...",
+	"welcomesurvey-question-languages-maximum": "قمتم بإضافة العدد الأقصى من اللغات."
 }

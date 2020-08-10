@@ -9,5 +9,10 @@
 	"apihelp-helppanelquestionposter-summary": "Hantera frågor som läggs upp via hjälppanelen för nuvarande användare.",
 	"apihelp-helppanelquestionposter-param-body": "Frågans text som användaren angav.",
 	"apihelp-helppanelquestionposter-param-source": "Metoden som frågan ställdes med.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "\"Fråga fikarummet\"-panelen",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "\"Fråga din fadder\"-panelen på nybörjarhemsidan",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "\"Fråga din fadder\"-rutan i hjälppanelen",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "\"Fråga fikarummet\"-panelen (gammalt namn)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "\"Fråga din fadder\"-panelen på nybörjarhemsidan (gammalt namn)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Den relevanta titeln, om vald, som ska inkluderas med frågan."
 }

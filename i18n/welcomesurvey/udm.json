@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kotwys"
+		]
+	},
+	"welcomesurvey-question-languages-label": "{{SITENAME}} ог 300 кылын учкымон луэ. Лыдӟымон но гожъямон мукет кылъёсты вань-а?",
+	"welcomesurvey-question-languages-placeholder": "{{PLURAL:$1|Одӥг кылозь|$1 кылозь}} ватсалэ",
+	"welcomesurvey-question-languages-maximum": "Тӥ кылъёслэн вылӥзэ ярамон лыдзэс ватсады."
+}

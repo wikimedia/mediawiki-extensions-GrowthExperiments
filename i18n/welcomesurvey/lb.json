@@ -30,5 +30,7 @@
 	"welcomesurvey-question-edited-option-no-other-label": "Neen, aus anere Grënn",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Ech ka mech net erënneren",
 	"welcomesurvey-question-email-label": "E-Mail-Adress (fakultativ)",
-	"welcomesurvey-question-email-placeholder": "Gitt Är E-Mail-Adress an..."
+	"welcomesurvey-question-email-placeholder": "Gitt Är E-Mail-Adress an...",
+	"welcomesurvey-question-languages-placeholder": "Setzt bis zu {{PLURAL:$1|enger Sprooch|$1 Sproochen}} derbäi...",
+	"welcomesurvey-question-languages-maximum": "Dir hutt déi maximal Zuel vu Sproochen derbäigesat."
 }

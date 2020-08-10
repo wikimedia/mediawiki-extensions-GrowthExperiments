@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Akmaie Ajam"
+		]
+	},
+	"welcomesurvey-question-languages-label": "{{SITENAME}} tersedia dalam 300 bahasa. Apakah ada bahasa lain yang anda gunakan untuk membaca dan menulis?",
+	"welcomesurvey-question-languages-maximum": "Anda sudah menambahkan jumlah bahasa maksimum."
+}

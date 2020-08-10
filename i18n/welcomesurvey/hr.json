@@ -4,5 +4,7 @@
 			"Bugoslav"
 		]
 	},
-	"welcomesurvey-privacy-policy-link-text": "Saznaj više o podatcima o novim uređivačima"
+	"welcomesurvey-privacy-policy-link-text": "Saznaj više o podatcima o novim uređivačima",
+	"welcomesurvey-question-languages-placeholder": "Dodati do {{PLURAL:$1|1=jedan jezik|$1 jezika}}...",
+	"welcomesurvey-question-languages-maximum": "Dodali ste najveći mogući broj jezika."
 }

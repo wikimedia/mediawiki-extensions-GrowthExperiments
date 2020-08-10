@@ -13,5 +13,5 @@
 	"apihelp-growthsetmentor-summary": "Defina o tutor do usuário. A alteração será registada publicamente.",
 	"apihelp-growthsetmentor-param-mentee": "Nome de usuário do tutorado",
 	"apihelp-growthsetmentor-param-mentor": "Nome de usuário do tutor",
-	"apihelp-growthsetmentor-param-reason": "Motivo da alteração"
+	"apihelp-growthsetmentor-param-reason": "Motivo da mudança"
 }

@@ -50,7 +50,6 @@
 	"welcomesurvey-question-email-placeholder": "Wpisz swój adres e-mail...",
 	"welcomesurvey-question-email-help": "Zauważyliśmy, że podczas tworzenia konta nie podał{{GENDER:|e|a|e}}ś swojego adresu e-mail. Jest to <strong>zdecydowanie zalecane</strong>, ponieważ adres e-mail jest niezbędny do odzyskania konta w przypadku utraty hasła. UWAGA: Twój adres e-mail nie jest ujawniany, gdy inny użytkownik się z tobą kontaktuje.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} jest dostępna w prawie 300 językach. Czy są inne języki, w których piszesz i czytasz?",
-	"welcomesurvey-question-languages-help": "Wprowadź maksymalnie {{PLURAL:$1|jeden język|$1 języki|$1 języków}}",
-	"welcomesurvey-question-languages-placeholder": "Dodaj więcej języków…",
-	"welcomesurvey-question-languages-placeholder-maximum": "Podano maksymalną liczbę języków."
+	"welcomesurvey-question-languages-placeholder": "Dodaj maksymalnie {{PLURAL:$1|jeden język|$1 języki|$1 języków}}…",
+	"welcomesurvey-question-languages-maximum": "Dodano maksymalną liczbę języków."
 }
