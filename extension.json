@@ -1044,9 +1044,7 @@
 					"questions": [
 						"reason",
 						"edited",
-						"email",
-						"mentor-info",
-						"mentor"
+						"email"
 					]
 				},
 				"exp1_group2": {
@@ -1064,9 +1062,7 @@
 						"reason",
 						"edited",
 						"email",
-						"languages",
-						"mentor-info",
-						"mentor"
+						"languages"
 					]
 				}
 			}
