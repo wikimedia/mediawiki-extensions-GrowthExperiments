@@ -18,7 +18,7 @@
 	 *
 	 * @constructor
 	 * @param {Object} config
-	 * @param {Object} config.task Task data, as returned by GrowthTasksApi.
+	 * @param {mw.libs.ge.TaskData} config.task Task data, as returned by GrowthTasksApi.
 	 * @param {Object} config.taskTypes Task type data, as returned by
 	 *   HomepageHooks::getTaskTypesJson.
 	 * @param {string} [config.taskUrl] The URL the task links to. Will be generated from task

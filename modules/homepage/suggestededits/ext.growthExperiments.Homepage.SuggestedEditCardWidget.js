@@ -2,12 +2,7 @@
 	'use strict';
 
 	/**
-	 * @param {Object} data
-	 * @param {string} [data.thumbnailSource] The URL to use for the task image.
-	 * @param {number|null} [data.pageviews] The pageview count of the last 60 days.
-	 * @param {string} [data.tasktype] The suggested edit task type ID.
-	 * @param {string} [data.url] The URL to use for linking the card to an article.
-	 * @param {string} [data.extract] The Raw HTML extract to use in the teaser.
+	 * @param {mw.libs.ge.TaskData} data Task data.
 	 * @param {boolean} [data.extraDataLoaded] Extra data (page views, thumbnail, extract) exists.
 	 * @constructor
 	 */

@@ -10,7 +10,7 @@
 	 *
 	 * @constructor
 	 * @param {Object} config
-	 * @param {Object|null} config.nextTask Data for the next suggested edit, as returned by
+	 * @param {mw.libs.ge.TaskData|null} config.nextTask Data for the next suggested edit, as returned by
 	 *   GrowthTasksApi, or null if there are no available tasks or fetching tasks failed.
 	 * @param {Object} config.taskTypes Task type data, as returned by
 	 *   HomepageHooks::getTaskTypesJson.
@@ -112,7 +112,7 @@
 	/**
 	 * Create the card element.
 	 *
-	 * @param {Object} task A task object, as returned by GrowthTasksApi
+	 * @param {mw.libs.ge.TaskData} task A task object, as returned by GrowthTasksApi
 	 * @return {jQuery} A jQuery object wrapping the card element.
 	 */
 	PostEditPanel.prototype.getCard = function ( task ) {
