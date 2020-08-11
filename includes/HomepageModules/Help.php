@@ -24,6 +24,14 @@ class Help extends BaseModule {
 	}
 
 	/** @inheritDoc */
+	protected function getModuleStyles() {
+		return array_merge(
+			parent::getModuleStyles(),
+			[ 'oojs-ui.styles.icons-interactions' ]
+		);
+	}
+
+	/** @inheritDoc */
 	public function getHeader() {
 		return $this->getHeaderIcon(
 			$this->getHeaderIconName(),
