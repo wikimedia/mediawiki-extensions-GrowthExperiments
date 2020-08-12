@@ -46,5 +46,6 @@
 	"welcomesurvey-question-email-placeholder": "Zadejte svou e-mailovou adresu...",
 	"welcomesurvey-question-email-help": "Všimli jsme si, že jste při vytváření uživatelského účtu nezadali svou e-mailovou adresu. Zadat e-mailovou adresu je <strong>silně doporučováno</strong>, jelikož e-mailová adresa je nezbytná pro obnovení přístupu k účtu, pokud zapomenete svoje heslo. POZNÁMKA: Vaše e-mailová adresa není prozrazena ostatním, pokud se vás pokusí kontaktovat.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} je dostupná ve skoro 300 jazycích. Ovládáte i některé další jazyky?",
-	"welcomesurvey-question-languages-placeholder": "Přidejte další jazyky..."
+	"welcomesurvey-question-languages-placeholder": "Přidejte až {{PLURAL:$1|jeden jazyk|$1 jazyky|$1 jazyků}}...",
+	"welcomesurvey-question-languages-maximum": "Již jste přidali maximální množství jazyků."
 }

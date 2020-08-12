@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
-			"Hedda"
+			"Hedda",
+			"MuratTheTurkish"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Hoş geldin}}, $1!",
@@ -42,5 +43,8 @@
 	"welcomesurvey-question-edited-option-dont-remember-label": "Hatırlamıyorum",
 	"welcomesurvey-question-email-label": "E-posta adresi (isteğe bağlı)",
 	"welcomesurvey-question-email-placeholder": "E-posta adresinizi girin...",
-	"welcomesurvey-question-email-help": "Bu hesabı oluştururken bir e-posta girmediğinizi fark ettik. Parolanızı kaybederseniz hesap kurtarma için bir e-postaya ihtiyaç duyulduğu için <strong>önemle tavsiye edilir</strong>. NOT: Diğer kullanıcılar sizinle iletişim kurduğunda e-posta adresiniz açıklanmaz."
+	"welcomesurvey-question-email-help": "Bu hesabı oluştururken bir e-posta girmediğinizi fark ettik. Parolanızı kaybederseniz hesap kurtarma için bir e-postaya ihtiyaç duyulduğu için <strong>önemle tavsiye edilir</strong>. NOT: Diğer kullanıcılar sizinle iletişim kurduğunda e-posta adresiniz açıklanmaz.",
+	"welcomesurvey-question-languages-label": "{{SITENAME}}, yaklaşık 300 dilde mevcuttur.  Okuduğunuz ve yazdığınız başka diller var mı?",
+	"welcomesurvey-question-languages-placeholder": "En fazla {{PLURAL:$1|bir dil|$1 dil}} ekleyin...",
+	"welcomesurvey-question-languages-maximum": "Maksimum sayıda dil eklediniz."
 }
