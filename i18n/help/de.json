@@ -4,7 +4,8 @@
 			"1233qwer1234qwer4",
 			"Ameisenigel",
 			"Bxalber",
-			"Metalhead64"
+			"Metalhead64",
+			"Umherirrender"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Das Autoren-Hilfepanel aktivieren",
@@ -34,7 +35,7 @@
 	"growthexperiments-help-panel-suggestededits-title": "Vorgeschlagene Bearbeitungen",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Schnelltipps für den Start",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Bereit?</strong> Klicke \"{{int:vector-view-edit}}\" um anzufangen.",
-	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Bereit?<strong> Tippe mit dem Editierstift auf den Artikel, um zu beginnen.",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Bereit?<strong> Öffne den Abschnitt den du bearbeiten möchtest und tippe auf den Editierstift.",
 	"growthexperiments-help-panel-questioncomplete-title": "Stelle eine Frage",
 	"growthexperiments-help-panel-questioncomplete-header": "Deine Frage wurde gespeichert!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Deine Frage ist jetzt im Gemeinschafts-Help-Desk zur Beantwortung durch einen anderen freiwilligen Autor.",
@@ -64,6 +65,6 @@
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Schnelltipps für den Start",
 	"growthexperiments-help-panel-general-help-title": "Allgemeine Editierhilfe",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Zum visuellen Editor wechseln",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{{GESCHLECHT:|Sie}}}} verwenden den visuellen Editor. Diese Bearbeitungstipps sind mit dem Quelltexteditor am hilfreichsten.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Du}} verwendest den VisualEditor. Diese Bearbeitungstipps sind mit dem Quelltexteditor am hilfreichsten.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Zum Quelltext-Editor"
 }

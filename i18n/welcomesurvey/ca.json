@@ -4,5 +4,5 @@
 			"Mguix"
 		]
 	},
-	"welcomesurvey-question-languages-placeholder": "Afegeix més idiomes..."
+	"welcomesurvey-question-languages-placeholder": "Afegir fins a {{PLURAL:$1|un idioma|$1 idiomes}} ..."
 }
