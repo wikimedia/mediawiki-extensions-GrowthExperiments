@@ -25,7 +25,7 @@ $( function () {
 		widgetInstance.on( 'inputFocus', function () {
 			// FIXME: navigate is deprecated but navigateTo doesn't seem to trigger
 			// the language searcher overlay.
-			router.navigate( '/languages/all' );
+			router.navigate( '/languages/all/no-suggestions' );
 		} );
 	}
 	mw.hook( 'mobileFrontend.languageSearcher.linkClick' ).add( function ( lang ) {
