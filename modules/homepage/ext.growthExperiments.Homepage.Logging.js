@@ -4,11 +4,11 @@
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
 		),
-		moduleSelector = '.growthexperiments-homepage-container .growthexperiments-homepage-module',
-		$modules = $( moduleSelector ),
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$modules = $( '.growthexperiments-homepage-container .growthexperiments-homepage-module' ),
 		handleClick = function ( e ) {
 			var $link = $( this ),
-				$module = $link.closest( moduleSelector ),
+				$module = $link.closest( '.growthexperiments-homepage-module' ),
 				linkId = $link.data( 'link-id' ),
 				moduleName = $module.data( 'module-name' ),
 				mode = $module.data( 'mode' );
@@ -42,7 +42,7 @@
 	}
 
 	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
-		$content.find( moduleSelector )
+		$content.find( '.growthexperiments-homepage-module' )
 			.on( 'click', '[data-link-id]', handleClick );
 	} );
 }() );
