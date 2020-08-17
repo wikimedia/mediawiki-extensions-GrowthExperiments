@@ -9,6 +9,9 @@
 	 *
 	 * @param {Object} config
 	 * @cfg {mw.libs.ge.HelpPanelLogger} logger
+	 * @cfg {string} [layoutType] Dialog layout: 'helppanel' (Growth help panel look) or 'dialog'
+	 *   (standard OOUI process dialog look). Default is 'helppanel'. This only affects the few
+	 *   layout options which have to be handled dynamically in JS code.
 	 * @cfg {string} askSource Logical name of the source to use with the HelpPanelPostQuestion API
 	 * @cfg {bool} guidanceEnabled Whether guidance feature is enabled.
 	 * @cfg {SuggestedEditSession} suggestedEditSession The suggested edit session
@@ -21,6 +24,7 @@
 		linksConfig = configData.GEHelpPanelLinks,
 		HelpPanelProcessDialog = function helpPanelProcessDialog( config ) {
 			HelpPanelProcessDialog.super.call( this, config );
+			this.useHelpPanelLayout = ( config.layoutType !== 'dialog' );
 			this.suggestedEditSession = config.suggestedEditSession;
 			this.suggestedEditSession.connect( this, {
 				save: 'onSuggestedEditSessionSave'
@@ -483,9 +487,7 @@
 				.text(),
 			multiline: true,
 			maxLength: 2000,
-			rows: 3,
-			maxRows: 3,
-			autosize: true,
+			rows: 6,
 			value: mw.storage.get( this.storageKey ),
 			spellcheck: true,
 			required: true,
@@ -948,7 +950,7 @@
 		// overlap the personal toolbar (which has a higher z-index, and that would be difficult
 		// to change without messing up the stacking order relationship with other things).
 		// But only on desktop, since on mobile we usually want to fill the screen.
-		if ( !OO.ui.isMobile() ) {
+		if ( !OO.ui.isMobile() && this.useHelpPanelLayout ) {
 			// Do not change the object, it is shared by all OOUI windows
 			dim = $.extend( {}, dim, {
 				width: '360px',

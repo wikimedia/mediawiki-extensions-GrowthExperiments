@@ -73,6 +73,7 @@
 		dialogInstance = new QuestionPosterDialog( $.extend( {
 			size: 'medium',
 			logger: loggerInstance,
+			layoutType: 'dialog',
 			questionPosterAllowIncludingTitle: false,
 			suggestedEditSession: suggestedEditSession,
 			showCogMenu: false,
