@@ -1,9 +1,23 @@
 {
 	"@metadata": {
 		"authors": [
+			"Adhiwangsa",
 			"Akmaie Ajam"
 		]
 	},
+	"welcomesurvey": "{{GENDER:$1|Selamat datang}}, $1!",
+	"welcomesurvey-save-confirmation-title": "Terima kasih! Respons Anda telah tersimpan.",
+	"welcomesurvey-save-btn": "Selesai",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Lewati}} survey ini",
+	"welcomesurvey-close-btn": "Tutup dan kembali ke $1",
+	"welcomesurvey-sidebar-privacy-title": "Kami menghargai privasi Anda",
+	"welcomesurvey-sidebar-editing-link1-text": "Tutorial",
+	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:Tutorial",
+	"welcomesurvey-sidebar-editing-link2-text": "Bantuan",
+	"welcomesurvey-sidebar-editing-link2-title": "Wikipedia:Bantuan",
+	"welcomesurvey-dropdown-option-select-label": "Silahkan pilih...",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Untuk menambah atau mengubah informasi pada artikel Wikipedia",
+	"welcomesurvey-question-reason-option-add-image-label": "Untuk menambah foto atau gambar pada artikel Wikipedia",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} tersedia dalam 300 bahasa. Apakah ada bahasa lain yang anda gunakan untuk membaca dan menulis?",
 	"welcomesurvey-question-languages-maximum": "Anda sudah menambahkan jumlah bahasa maksimum."
 }
