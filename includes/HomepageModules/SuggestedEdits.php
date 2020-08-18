@@ -63,6 +63,10 @@ class SuggestedEdits extends BaseModule {
 
 	/** @var string[] cache key => HTML */
 	private $htmlCache = [];
+	/**
+	 * @var ExperimentUserManager
+	 */
+	private $experimentUserManager;
 
 	/**
 	 * @param IContextSource $context
@@ -91,6 +95,7 @@ class SuggestedEdits extends BaseModule {
 		$this->taskSuggester = $taskSuggester;
 		$this->titleFactory = $titleFactory;
 		$this->protectionFilter = $protectionFilter;
+		$this->experimentUserManager = $experimentUserManager;
 	}
 
 	/**
@@ -181,8 +186,13 @@ class SuggestedEdits extends BaseModule {
 	public function getJsData( $mode ) {
 		$data = parent::getJsData( $mode );
 
-		// Preload one task card.
-		if ( $this->canRender() ) {
+		// Preload one task card for users in variant C and D.
+		if (
+			in_array( $this->experimentUserManager->getVariant( $this->getContext()->getUser() ), [ 'C', 'D' ] ) &&
+			$this->canRender()
+		) {
+			// FIXME: This adds several hundred milliseconds to the server-side render time,
+			// depending on the filters in place.
 			$tasks = $this->taskSuggester->suggest( $this->getContext()->getUser(), null, null, 10 );
 			$tasks = $this->protectionFilter->filter( $tasks );
 			if ( $tasks instanceof StatusValue ) {
