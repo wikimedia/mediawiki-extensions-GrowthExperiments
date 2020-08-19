@@ -220,8 +220,7 @@ class WelcomeSurvey {
 				"group" => "email",
 			]
 		];
-		if ( !$this->context->getSkin() instanceof \SkinMinervaNeue &&
-			!ExtensionRegistry::getInstance()->isLoaded( 'UniversalLanguageSelector' ) ) {
+		if ( !ExtensionRegistry::getInstance()->isLoaded( 'UniversalLanguageSelector' ) ) {
 			$questions['languages']['disabled'] = true;
 		}
 		return $questions;
