@@ -131,14 +131,17 @@ class Email extends BaseTaskModule {
 					'title' => $email
 				],
 				$email
-			) . $this->getContext()->msg( 'word-separator' )->text() . Html::element(
-				'a',
-				[
-					'class' => 'growthexperiments-homepage-email-change-link',
-					'href' => $this->getEmailPrefsURL(),
-				],
-				$this->getContext()->msg( 'growthexperiments-homepage-email-changelink' )->text()
-			)
+			) . $this->getContext()->msg( 'word-separator' )->text()
+			. $this->getContext()->msg( 'parentheses' )->rawParams(
+				Html::element(
+					'a',
+					[
+						'class' => 'growthexperiments-homepage-email-change-link',
+						'href' => $this->getEmailPrefsURL(),
+					],
+					$this->getContext()->msg( 'growthexperiments-homepage-email-changelink' )->text()
+				)
+			)->escaped()
 		);
 	}
 

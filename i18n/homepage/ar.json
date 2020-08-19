@@ -37,7 +37,7 @@
 	"growthexperiments-homepage-email-button-noemail": "{{GENDER:|أضف|أضيفي}} بريدا إلكترونيا",
 	"growthexperiments-homepage-email-button-unconfirmed": "{{GENDER:|أحصل|أحصلي}} على رابط جديد",
 	"growthexperiments-homepage-email-button-confirmed": "تفضيلات",
-	"growthexperiments-homepage-email-changelink": "(تغيير)",
+	"growthexperiments-homepage-email-changelink": "تغيير",
 	"growthexperiments-homepage-startediting-header": "{{GENDER:|ابدء|ابدئي}} التعديل",
 	"growthexperiments-homepage-startediting-subheader-edit-typo": "{{GENDER:|ابدأ|ابدئي}} من الآن في إجراء إصلاحات صغيرة تبعا لهذه الاقتراحات السهلة!",
 	"growthexperiments-homepage-startediting-subheader-add-image": "قبل إضافة صورة، {{GENDER:|حاول|حاولي}} التعلم باستخدام بعض التعديلات الأسهل!",
