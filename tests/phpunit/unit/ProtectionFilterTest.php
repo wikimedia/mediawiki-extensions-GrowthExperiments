@@ -47,6 +47,19 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 		$this->assertSame( 10, $filteredTaskSet->getTotalCount() );
 		$this->assertSame( 5, $filteredTaskSet->getOffset() );
 		$this->assertSame( [ 'x' ], $filteredTaskSet->getDebugData() );
+
+		$filteredTaskSet = $filter->filter( $taskSet, 0 );
+		$this->assertArrayEquals( [], array_map( function ( Task $task ) {
+			return $task->getTitle()->getDBkey();
+		}, iterator_to_array( $filteredTaskSet ) ) );
+		$filteredTaskSet = $filter->filter( $taskSet, 2 );
+		$this->assertArrayEquals( [ 'Page1', 'Page2' ], array_map( function ( Task $task ) {
+			return $task->getTitle()->getDBkey();
+		}, iterator_to_array( $filteredTaskSet ) ) );
+		$filteredTaskSet = $filter->filter( $taskSet, 6 );
+		$this->assertArrayEquals( [ 'Page1', 'Page2', 'Page3', 'Page5' ], array_map( function ( Task $task ) {
+			return $task->getTitle()->getDBkey();
+		}, iterator_to_array( $filteredTaskSet ) ) );
 	}
 
 	/**
