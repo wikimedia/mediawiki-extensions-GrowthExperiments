@@ -32,4 +32,12 @@ interface HomepageModule {
 	 * @return array
 	 */
 	public function getJsData( $mode );
+
+	/**
+	 * Whether this module supports the given mode. If this returns false, render() and
+	 * getJsData() should not be called with this mode.
+	 * @param string $mode One of RENDER_DESKTOP, RENDER_MOBILE_SUMMARY, RENDER_MOBILE_DETAILS
+	 * @return bool
+	 */
+	public function supports( $mode );
 }

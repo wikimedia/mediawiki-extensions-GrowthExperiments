@@ -9,6 +9,14 @@ use OOUI\IconWidget;
 use SpecialPage;
 
 class StartEmail extends BaseModule {
+
+	/** @inheritDoc */
+	protected static $supportedModes = [
+		self::RENDER_DESKTOP,
+		self::RENDER_MOBILE_SUMMARY
+		// RENDER_MOBILE_DETAILS is not supported
+	];
+
 	/** @var string */
 	protected $emailState;
 
