@@ -83,6 +83,7 @@ class HomepageModuleRegistry {
 					$growthServices->getExperimentUserManager(),
 					$pageViewInfoEnabled ? $services->get( 'PageViewService' ) : null,
 					$growthServices->getConfigurationLoader(),
+					$growthServices->getNewcomerTasksUserOptionsLookup(),
 					$growthServices->getTaskSuggesterFactory()->create(),
 					$services->getTitleFactory(),
 					$growthServices->getProtectionFilter()

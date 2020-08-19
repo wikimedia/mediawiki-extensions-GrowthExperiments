@@ -8,6 +8,7 @@ use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use Html;
@@ -46,11 +47,17 @@ class SuggestedEdits extends BaseModule {
 	/** @var EditInfoService */
 	private $editInfoService;
 
+	/** @var ExperimentUserManager */
+	private $experimentUserManager;
+
 	/** @var PageViewService|null */
 	private $pageViewService;
 
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
+
+	/** @var NewcomerTasksUserOptionsLookup */
+	private $newcomerTasksUserOptionsLookup;
 
 	/** @var TaskSuggester */
 	private $taskSuggester;
@@ -63,10 +70,6 @@ class SuggestedEdits extends BaseModule {
 
 	/** @var string[] cache key => HTML */
 	private $htmlCache = [];
-	/**
-	 * @var ExperimentUserManager
-	 */
-	private $experimentUserManager;
 
 	/**
 	 * @param IContextSource $context
@@ -74,6 +77,7 @@ class SuggestedEdits extends BaseModule {
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param PageViewService|null $pageViewService
 	 * @param ConfigurationLoader $configurationLoader
+	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param TaskSuggester $taskSuggester
 	 * @param TitleFactory $titleFactory
 	 * @param ProtectionFilter $protectionFilter
@@ -84,18 +88,20 @@ class SuggestedEdits extends BaseModule {
 		ExperimentUserManager $experimentUserManager,
 		?PageViewService $pageViewService,
 		ConfigurationLoader $configurationLoader,
+		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		TaskSuggester $taskSuggester,
 		TitleFactory $titleFactory,
 		ProtectionFilter $protectionFilter
 	) {
 		parent::__construct( 'suggested-edits', $context, $experimentUserManager );
 		$this->editInfoService = $editInfoService;
+		$this->experimentUserManager = $experimentUserManager;
 		$this->pageViewService = $pageViewService;
 		$this->configurationLoader = $configurationLoader;
+		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->taskSuggester = $taskSuggester;
 		$this->titleFactory = $titleFactory;
 		$this->protectionFilter = $protectionFilter;
-		$this->experimentUserManager = $experimentUserManager;
 	}
 
 	/**
@@ -191,9 +197,16 @@ class SuggestedEdits extends BaseModule {
 			in_array( $this->experimentUserManager->getVariant( $this->getContext()->getUser() ), [ 'C', 'D' ] ) &&
 			$this->canRender()
 		) {
-			// FIXME: This adds several hundred milliseconds to the server-side render time,
-			// depending on the filters in place.
-			$tasks = $this->taskSuggester->suggest( $this->getContext()->getUser(), null, null, 10 );
+			$user = $this->getContext()->getUser();
+			// FIXME Get one task type and one topic selected by the user. We only need one task,
+			//   but SearchTaskSuggester is inefficient and will do multiple queries regardless of the
+			//   limit if there are multiple tasktype/topic combinations. This can be made less awkward
+			//   once we get rid of ProtectionFilter.
+			$taskTypes = array_slice( $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ) ??
+				$this->configurationLoader->getTaskTypes(), 0, 1 );
+			$topics = array_slice( $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user ) ?? [],
+				0, 1 );
+			$tasks = $this->taskSuggester->suggest( $user, $taskTypes, $topics, 10 );
 			$tasks = $this->protectionFilter->filter( $tasks );
 			if ( $tasks instanceof StatusValue ) {
 				$data['task-preview'] = [ 'error' => Status::wrap( $tasks )->getMessage()->parse() ];

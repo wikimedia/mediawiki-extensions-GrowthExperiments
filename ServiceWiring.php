@@ -14,14 +14,13 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageLoader;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
-use GrowthExperiments\NewcomerTasks\TaskSuggester\DecoratingTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
-use GrowthExperiments\NewcomerTasks\TaskSuggester\UserSettingsDecorator;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use MediaWiki\Config\ServiceOptions;
@@ -124,6 +123,15 @@ return [
 		);
 	},
 
+	'GrowthExperimentsNewcomerTasksUserOptionsLookup' => function (
+		MediaWikiServices $services
+	): NewcomerTasksUserOptionsLookup {
+		return new NewcomerTasksUserOptionsLookup(
+			$services->getUserOptionsLookup(),
+			$services->getMainConfig()
+		);
+	},
+
 	'GrowthExperimentsProtectionFilter' => function (
 		MediaWikiServices $services
 	): ProtectionFilter {
@@ -174,14 +182,6 @@ return [
 			);
 		}
 		$taskSuggesterFactory->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
-		$taskSuggesterFactory = new DecoratingTaskSuggesterFactory(
-			$taskSuggesterFactory,
-			$services->getObjectFactory(),
-			[ [
-				'class' => UserSettingsDecorator::class,
-				'services' => [ 'UserOptionsLookup', 'MainConfig' ],
-			] ]
-		);
 		return $taskSuggesterFactory;
 	},
 
