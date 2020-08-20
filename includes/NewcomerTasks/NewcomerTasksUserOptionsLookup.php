@@ -33,30 +33,44 @@ class NewcomerTasksUserOptionsLookup {
 	/**
 	 * Get the given user's task type preferences.
 	 * @param UserIdentity $user
-	 * @return string[]|null A list of task type IDs, or null when the user has no preference set.
+	 * @return string[] A list of task type IDs, or an empty array when the user has
+	 *   no preference set. (This is meant to be compatible with TaskSuggester which takes an
+	 *   empty array as "no filtering".)
 	 * @see \GrowthExperiments\NewcomerTasks\TaskType\TaskType::getId()
 	 */
-	public function getTaskTypeFilter( UserIdentity $user ) {
-		return $this->getJsonOption( $user, SuggestedEdits::TASKTYPES_PREF );
+	public function getTaskTypeFilter( UserIdentity $user ): array {
+		return $this->getJsonListOption( $user, SuggestedEdits::TASKTYPES_PREF ) ?? [];
 	}
 
 	/**
 	 * Get the given user's topic preferences.
 	 * @param UserIdentity $user
-	 * @return string[]|null A list of topic IDs, or null when the user has no preference set.
+	 * @return string[] A list of topic IDs, or an empty array when the user has
+	 *   no preference set. (This is meant to be compatible with TaskSuggester which takes an
+	 *   empty array as "no filtering".)
 	 * @see \GrowthExperiments\NewcomerTasks\Topic\Topic::getId()
 	 */
-	public function getTopicFilter( UserIdentity $user ) {
-		return $this->getJsonOption( $user, SuggestedEdits::getTopicFiltersPref( $this->config ) );
+	public function getTopicFilter( UserIdentity $user ): array {
+		return $this->getJsonListOption( $user, SuggestedEdits::getTopicFiltersPref( $this->config ) ) ?? [];
 	}
 
-	private function getJsonOption( UserIdentity $user, string $pref ) {
+	/**
+	 * Read a user preference that is a list of strings.
+	 * @param UserIdentity $user
+	 * @param string $pref
+	 * @return array|null User preferences as a list of strings, or null of the preference was
+	 *   missing or invalid.
+	 */
+	private function getJsonListOption( UserIdentity $user, string $pref ) {
 		$stored = $this->userOptionsLookup->getOption( $user, $pref );
 		if ( $stored ) {
 			$stored = json_decode( $stored, true );
 		}
 		// sanity check
-		return is_array( $stored ) ? $stored : null;
+		if ( !is_array( $stored ) || array_filter( $stored, 'is_string' ) !== $stored ) {
+			return null;
+		}
+		return $stored;
 	}
 
 }

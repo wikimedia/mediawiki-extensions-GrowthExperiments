@@ -125,8 +125,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 					],
 				],
 				// parameters passed to the suggest() call
-				'taskFilter' => null,
-				'topicFilter' => null,
+				'taskFilter' => [],
+				'topicFilter' => [],
 				'limit' => null,
 				// expected return value from suggest()
 				'expectedTaskSet' => new TaskSet( [
@@ -172,8 +172,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 						],
 					],
 				],
-				'taskFilter' => null,
-				'topicFilter' => null,
+				'taskFilter' => [],
+				'topicFilter' => [],
 				'limit' => null,
 				'expectedTaskSet' => new TaskSet( [
 					$makeTask( $copyedit, 'Foo' ),
@@ -222,8 +222,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 						],
 					],
 				],
-				'taskFilter' => null,
-				'topicFilter' => null,
+				'taskFilter' => [],
+				'topicFilter' => [],
 				'limit' => 2,
 				'expectedTaskSet' => new TaskSet( [
 					$makeTask( $copyedit, 'Foo' ),
@@ -251,7 +251,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 					],
 				],
 				'taskFilter' => [ 'copyedit' ],
-				'topicFilter' => null,
+				'topicFilter' => [],
 				'limit' => null,
 				'expectedTaskSet' => new TaskSet( [
 					$makeTask( $copyedit, 'Foo' ),
@@ -321,7 +321,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 						],
 					],
 				],
-				'taskFilter' => null,
+				'taskFilter' => [],
 				'topicFilter' => [ 'art', 'science' ],
 				'limit' => null,
 				'expectedTaskSet' => new TaskSet( [
@@ -404,7 +404,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 						],
 					],
 				],
-				'taskFilter' => null,
+				'taskFilter' => [],
 				'topicFilter' => [ 'art', 'science' ],
 				'limit' => null,
 				'expectedTaskSet' => new TaskSet( [
@@ -425,8 +425,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 						'response' => StatusValue::newFatal( 'foo' ),
 					],
 				],
-				'taskFilter' => null,
-				'topicFilter' => null,
+				'taskFilter' => [],
+				'topicFilter' => [],
 				'limit' => null,
 				'expectedTaskSet' => StatusValue::newFatal( 'foo' ),
 			],
@@ -443,8 +443,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 						],
 					],
 				],
-				'taskFilter' => null,
-				'topicFilter' => null,
+				'taskFilter' => [],
+				'topicFilter' => [],
 				'limit' => null,
 				'expectedTaskSet' => StatusValue::newFatal( new ApiRawMessage( 'foo', 'bar' ) ),
 			],

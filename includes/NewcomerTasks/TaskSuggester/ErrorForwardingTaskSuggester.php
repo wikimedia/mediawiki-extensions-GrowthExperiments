@@ -28,8 +28,8 @@ class ErrorForwardingTaskSuggester implements TaskSuggester {
 	/** @inheritDoc */
 	public function suggest(
 		UserIdentity $user,
-		array $taskTypeFilter = null,
-		array $topicFilter = null,
+		array $taskTypeFilter = [],
+		array $topicFilter = [],
 		$limit = null,
 		$offset = null,
 		$debug = false

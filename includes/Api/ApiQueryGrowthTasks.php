@@ -16,6 +16,7 @@ use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Linker\LinkTarget;
 use StatusValue;
 use Title;
+use Wikimedia\ParamValidator\ParamValidator;
 
 /**
  * API endpoint for Newcomer Tasks feature.
@@ -157,6 +158,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 			'tasktypes' => [
 				ApiBase::PARAM_TYPE => array_keys( $taskTypes ),
 				ApiBase::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_DEFAULT => [],
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => array_map( function ( TaskType $taskType ) {
 					return $taskType->getName( $this->getContext() );
 				}, $taskTypes ),
@@ -164,6 +166,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 			'topics' => [
 				ApiBase::PARAM_TYPE => array_keys( $topics ),
 				ApiBase::PARAM_ISMULTI => true,
+				ParamValidator::PARAM_DEFAULT => [],
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => array_map( function ( Topic $topic ) {
 					return $topic->getName( $this->getContext() );
 				}, $topics ),
