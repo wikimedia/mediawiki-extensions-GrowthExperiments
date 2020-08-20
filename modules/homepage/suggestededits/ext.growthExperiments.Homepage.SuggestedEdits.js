@@ -132,7 +132,6 @@
 	SuggestedEditsModule.prototype.filterSelection = function () {
 		if ( !this.apiPromise ) {
 			this.apiPromise = this.api.fetchTasks( this.taskTypesQuery, this.topicsQuery, {
-				isMobile: OO.ui.isMobile(),
 				context: 'suggestedEditsModule.filterSelection'
 			} );
 		}
@@ -181,7 +180,6 @@
 			return $.Deferred().resolve().promise();
 		}
 		this.apiPromise = this.api.fetchTasks( this.taskTypesQuery, this.topicsQuery, {
-			isMobile: OO.ui.isMobile(),
 			context: 'suggestedEditsModule.fetchTasksAndUpdateView'
 		} );
 		return this.apiPromise.then( function ( data ) {
@@ -360,7 +358,6 @@
 	SuggestedEditsModule.prototype.getExtraDataAndUpdateQueue = function ( taskQueuePosition ) {
 		var pcsPromise, aqsPromise, preloaded,
 			apiConfig = {
-				isMobile: OO.ui.isMobile(),
 				context: 'suggestedEditsModule.getExtraDataAndUpdateQueue'
 			},
 			suggestedEditData = this.taskQueue[ taskQueuePosition ];
@@ -472,7 +469,8 @@
 			api = new GrowthTasksApi( {
 				taskTypes: taskTypes,
 				suggestedEditsConfig: require( './config.json' ),
-				aqsConfig: aqsConfig
+				aqsConfig: aqsConfig,
+				isMobile: OO.ui.isMobile()
 			} ),
 			preferences = api.getPreferences(),
 			$wrapper = $container.find( '.suggested-edits-module-wrapper' ),

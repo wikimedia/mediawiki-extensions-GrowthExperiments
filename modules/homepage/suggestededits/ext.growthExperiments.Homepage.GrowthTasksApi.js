@@ -13,7 +13,7 @@
 	 * @property {string} title Article title
 	 * @property {string} tasktype Task type ID.
 	 * @property {string} difficulty Task difficulty ('easy', 'medium' or 'hard').
-	 * @property {((string|number)[])|null} Topics the task is in. Empty array when the user is not
+	 * @property {((string|number)[][])|null} Topics the task is in. Empty array when the user is not
 	 *   filtering for any topics, null with topic matching disabled entirely, otherwise an array
 	 *   of (topic ID, score) pairs.
 	 * @property {string[]|null} maintenanceTemplates List of maintenance templates on the article
@@ -66,51 +66,17 @@
 	 *   HomepageHooks::getAQSConfigJson. Used by the getExtraDataFromAqs method.
 	 * @param {string} config.aqsConfig.project Project domain name to get views for (might be
 	 *   different from the wiki's domain in local development setups).
+	 * @param {boolean} config.isMobile Whether the client is on a mobile device,
+	 *   used for performance instrumentation.
+	 * @param {string} config.logContext The context in which this GrowthTasksApi is used,
+	 *   used for performance instrumentation.
 	 */
 	function GrowthTasksApi( config ) {
 		this.taskTypes = config.taskTypes;
 		this.suggestedEditsConfig = config.suggestedEditsConfig || {};
 		this.aqsConfig = config.aqsConfig;
-	}
-
-	/**
-	 * A rejection decorator which makes the error message for the rejection saner.
-	 * Intended to be used as a catch() handler.
-	 *
-	 * @param {string|Error} error Error code.
-	 * @param {string|Object} details Error details.
-	 * @return {jQuery.Promise} A rejected promise with a single error message string.
-	 *   When the message is null, the rejection was intentional (something aborted the query)
-	 *   and should not be treated as an error.
-	 * @see mw.Api.ajax
-	 * @see jQuery.ajax
-	 */
-	function handleError( error, details ) {
-		var message;
-		if ( error === 'http' && details && details.textStatus === 'abort' ) {
-			// XHR abort, not a real error
-			message = null;
-		} else if ( error === 'http' ) {
-			// jQuery AJAX error; textStatus is AJAX status, exception is status code text
-			// from server
-			message = ( typeof details.exception === 'string' ) ? details.exception : details.textStatus;
-		} else if ( error === 'ok-but-empty' ) {
-			// maybe a PHP fatal; not much we can do
-			message = error;
-		} else if ( error instanceof Error ) {
-			// JS error in our own code
-			message = error.name + ': ' + error.message;
-		} else {
-			// API error code
-			message = error;
-			// DEBUG T238945
-			if ( !error ) {
-				// log a snippet from the API response. Errors are at the front so
-				// hopefully this will show what's going on.
-				message = JSON.stringify( details ).substr( 0, 1000 );
-			}
-		}
-		return $.Deferred().reject( message ).promise();
+		this.isMobile = config.isMobile;
+		this.logContext = config.logContext;
 	}
 
 	/**
@@ -126,10 +92,8 @@
 	 *   as protected pages will be filtered out.
 	 * @param {number} [config.thumbnailWidth] Ideal thumbnail width. The actual width might be
 	 *   smaller if the original image itself is smaller.
-	 * @param {boolean} config.isMobile If the client is on a mobile device,
-	 *   used for performance instrumentation.
-	 * @param {string} config.context The context in which this function was
-	 *   called, used for performance instrumentation.
+	 * @param {string} [config.context] The context in which this function was
+	 *   called, used for performance instrumentation. Overrides the context given in the constructor.
 	 *
 	 * @return {jQuery.Promise<{count: number, tasks: Array<mw.libs.ge.TaskData>}>} An abortable
 	 *   promise with two fields:
@@ -188,28 +152,24 @@
 			var tasks = [];
 
 			function cleanUpData( item ) {
-				return GrowthTasksApi.fixThumbnailWidth( {
+				var task;
+
+				task = {
 					title: item.title,
-					// Page and revision ID can be missing on development setups where the
-					// returned titles are not local, and also in edge cases where the search
-					// index has not caught up with a page deletion yet.
 					pageId: item.pageid || null,
 					revisionId: item.revisions ? item.revisions[ 0 ].revid : null,
-					url: self.suggestedEditsConfig.GENewcomerTasksRemoteArticleOrigin ?
-						self.suggestedEditsConfig.GENewcomerTasksRemoteArticleOrigin +
-							mw.util.getUrl( item.title ) :
-						null,
+					url: null,
 					thumbnailSource: item.thumbnail && item.thumbnail.source || null,
 					imageWidth: item.original && item.original.width || null,
 					tasktype: item.tasktype,
 					difficulty: item.difficulty,
-					// empty array when no topics are selected, null with topic matching disabled,
-					// otherwise an array of (topic ID, score) pairs
 					topics: item.topics || null,
 					maintenanceTemplates: item.maintenancetemplates || null,
-					// only present when config.getDescription is true
 					description: item.description || null
-				}, config.thumbnailWidth );
+				};
+				self.fixThumbnailWidth( task, config.thumbnailWidth );
+				self.setUrlOverride( task );
+				return task;
 			}
 			function filterOutProtectedArticles( result ) {
 				return result.protection.length === 0;
@@ -233,26 +193,14 @@
 					consoleInfo( 'GrowthExperiments ' + type + ' query:', url );
 				} );
 			}
-			mw.track(
-				'timing.growthExperiments.specialHomepage.growthTasksApi.fetchTasks.' +
-				config.context + '.' + ( config.isMobile ? 'mobile' : 'desktop' ),
-				mw.now() - startTime
-			);
+			self.logTiming( 'fetchTasks', startTime, config.context );
 			return {
 				count: data.growthtasks.totalCount,
 				tasks: tasks
 			};
 		} );
 
-		actionApiPromise.fail( function ( error, details ) {
-			if ( error === 'http' && details && details.textStatus === 'abort' ) {
-				// XHR abort, not a real error
-				return;
-			}
-			mw.log.error( 'Fetching task suggestions failed:', error, details );
-		} );
-
-		return finalPromise.catch( handleError.bind( this ) ).promise( {
+		return finalPromise.catch( this.handleError.bind( this ) ).promise( {
 			abort: actionApiPromise.abort.bind( actionApiPromise )
 		} );
 	};
@@ -269,15 +217,15 @@
 	 *   reused here.
 	 * @param {number} [config.thumbnailWidth] Ideal thumbnail width. The actual width might be
 	 *   smaller if the original image itself is smaller.
-	 * @param {boolean} config.isMobile If the client is on a mobile device, used for performance instrumentation.
-	 * @param {string} config.context The context in which this function was
-	 *   called, used for performance instrumentation.
+	 * @param {string} [config.context] The context in which this function was
+	 *   called, used for performance instrumentation. Overrides the context given in the constructor.
 	 * @return {jQuery.Promise<mw.libs.ge.TaskData>} A promise with the task object.
 	 * @see https://www.mediawiki.org/wiki/Page_Content_Service#/page/summary
 	 * @see https://en.wikipedia.org/api/rest_v1/#/Page%20content/get_page_summary__title_
 	 */
 	GrowthTasksApi.prototype.getExtraDataFromPcs = function ( task, config ) {
 		var encodedTitle,
+			self = this,
 			title = task.title,
 			startTime = mw.now(),
 			apiUrlBase = this.suggestedEditsConfig.GERestbaseUrl;
@@ -302,16 +250,12 @@
 				if ( data.thumbnail ) {
 					task.thumbnailSource = data.thumbnail.source;
 					task.imageWidth = data.originalimage.width;
-					GrowthTasksApi.fixThumbnailWidth( task, config.thumbnailWidth );
+					self.fixThumbnailWidth( task, config.thumbnailWidth );
 				} else {
 					task.thumbnailSource = task.imageWidth = null;
 				}
 			}
-			mw.track(
-				'timing.growthExperiments.specialHomepage.growthTasksApi.getExtraDataFromPcs.' +
-				config.context + '.' + ( config.isMobile ? 'mobile' : 'desktop' ),
-				mw.now() - startTime
-			);
+			self.logTiming( 'getExtraDataFromPcs', startTime, config.context );
 			return task;
 		} );
 	};
@@ -325,15 +269,15 @@
 	 *   - pageviews: number of views to the task's page in the last two months
 	 * @param {Object} [config] Additional configuration. The object passed to fetchTasks() can be
 	 *   reused here.
-	 * @param {boolean} config.isMobile If the client is on a mobile device, used for performance instrumentation.
-	 * @param {string} config.context The context in which this function was
-	 *   called, used for performance instrumentation.
+	 * @param {string} [config.context] The context in which this function was
+	 *   called, used for performance instrumentation. Overrides the context given in the constructor.
 	 * @return {jQuery.Promise<mw.libs.ge.TaskData>} A promise with extra data to extend the task object with.
 	 * @see https://wikitech.wikimedia.org/wiki/Analytics/AQS/Pageviews
 	 * @see https://w.wiki/J8K
 	 */
 	GrowthTasksApi.prototype.getExtraDataFromAqs = function ( task, config ) {
 		var encodedTitle, pageviewsApiUrl, day, firstPageviewDay, lastPageviewDay,
+			self = this,
 			startTime = mw.now(),
 			title = task.title;
 
@@ -361,17 +305,75 @@
 			} );
 			// This will skip on 0 views. That's OK, we don't want to show that to the user.
 			task.pageviews = pageviews || null;
-			mw.track(
-				'timing.growthExperiments.specialHomepage.growthTasksApi.getExtraDataFromAqs.' +
-				config.context + '.' + ( config.isMobile ? 'mobile' : 'desktop' ),
-				mw.now() - startTime
-			);
+			self.logTiming( 'getExtraDataFromAqs', startTime, config.context );
 			return task;
 		}, function () {
 			// AQS returns a 404 when the page has 0 view. Even for real errors, it's
 			// not worth replacing the task card with an error message just because we
 			// could not put a pageview count on it.
 			return task;
+		} );
+	};
+
+	/**
+	 * Get data about a single task from the Action API. This gets roughly the same information
+	 * as fetchTasks() does.
+	 *
+	 * @param {mw.libs.ge.TaskData} taskData Partial task data (the only required field is the article
+	 *   title). Will be expanded in-place with pageId, revisionId and description (if configured to).
+	 * @param {Object} config
+	 * @param {boolean} [config.getDescription] Include Wikidata description into the data.
+	 * @param {number} [config.thumbnailWidth] Ideal thumbnail width. The actual width might be
+	 *   smaller if the original image itself is smaller.
+	 * @param {string} [config.context] The context in which this function was
+	 *   called, used for performance instrumentation. Overrides the context given in the constructor.
+	 * @return {jQuery.Promise<mw.libs.ge.TaskData>} The expanded task data (same object as the
+	 *   input, it gets expanded in-place), wrapped in an abortable promise.
+	 */
+	GrowthTasksApi.prototype.getDataFromActionApi = function ( taskData, config ) {
+		var apiParams, actionApiPromise, finalPromise,
+			startTime = mw.now(),
+			self = this;
+
+		config = $.extend( {
+			getDescription: false,
+			thumbnailWidth: 260
+		}, config || {} );
+
+		apiParams = {
+			action: 'query',
+			prop: 'revisions' + ( config.getDescription ? '|description' : '' ),
+			rvprop: 'ids',
+			titles: taskData.title,
+			formatversion: 2,
+			uselang: mw.config.get( 'wgUserLanguage' )
+		};
+
+		actionApiPromise = new mw.Api().get( apiParams );
+		finalPromise = actionApiPromise.then( function ( data ) {
+			var item = data.query.pages[ Object.keys( data.query.pages )[ 0 ] ];
+
+			$.extend( taskData, {
+				pageId: item.pageid || null,
+				revisionId: item.revisions ? item.revisions[ 0 ].revid : null,
+				url: null,
+				description: item.description || null
+			} );
+			self.setUrlOverride( taskData );
+			self.logTiming( 'getDataFromActionApi', startTime, config.context );
+			return taskData;
+		} );
+
+		actionApiPromise.fail( function ( error, details ) {
+			if ( error === 'http' && details && details.textStatus === 'abort' ) {
+				// XHR abort, not a real error
+				return;
+			}
+			mw.log.error( 'Fetching task suggestions failed:', error, details );
+		} );
+
+		return finalPromise.catch( this.handleError.bind( this ) ).promise( {
+			abort: actionApiPromise.abort.bind( actionApiPromise )
 		} );
 	};
 
@@ -395,13 +397,91 @@
 	};
 
 	/**
+	 * A rejection decorator which makes the error message for the rejection saner.
+	 * Intended to be used as a catch() handler.
+	 *
+	 * @param {string|Error} error Error code.
+	 * @param {string|Object} details Error details.
+	 * @return {jQuery.Promise} A rejected promise with a single error message string.
+	 *   When the message is null, the rejection was intentional (something aborted the query)
+	 *   and should not be treated as an error.
+	 * @see mw.Api.ajax
+	 * @see jQuery.ajax
+	 * @private
+	 */
+	GrowthTasksApi.prototype.handleError = function ( error, details ) {
+		var message,
+			isRealError = true;
+
+		if ( error === 'http' && details && details.textStatus === 'abort' ) {
+			// XHR abort, not a real error
+			message = null;
+			isRealError = false;
+		} else if ( error === 'http' ) {
+			// jQuery AJAX error; textStatus is AJAX status, exception is status code text
+			// from server
+			message = ( typeof details.exception === 'string' ) ? details.exception : details.textStatus;
+		} else if ( error === 'ok-but-empty' ) {
+			// maybe a PHP fatal; not much we can do
+			message = error;
+		} else if ( error instanceof Error ) {
+			// JS error in our own code
+			message = error.name + ': ' + error.message;
+		} else {
+			// API error code
+			message = error;
+			// DEBUG T238945
+			if ( !error ) {
+				// log a snippet from the API response. Errors are at the front so
+				// hopefully this will show what's going on.
+				message = JSON.stringify( details ).substr( 0, 1000 );
+			}
+		}
+
+		if ( isRealError ) {
+			mw.log.error( 'Fetching task suggestions failed: ' + message, error, details );
+		}
+
+		return $.Deferred().reject( message ).promise();
+	};
+
+	/**
+	 * Set the url field on the passed task data, if article URL overrides are configured.
+	 *
+	 * @param {mw.libs.ge.TaskData} task
+	 * @private
+	 */
+	GrowthTasksApi.prototype.setUrlOverride = function ( task ) {
+		if ( this.suggestedEditsConfig.GENewcomerTasksRemoteArticleOrigin ) {
+			task.url = this.suggestedEditsConfig.GENewcomerTasksRemoteArticleOrigin +
+				mw.util.getUrl( task.title );
+		}
+	};
+
+	/**
+	 * Log time spent since startTime to Statsd.
+	 *
+	 * @param {string} name Name of the thing (e.g. method call) that's timed.
+	 * @param {number} startTime Start timestamp, e.g. from mw.now().
+	 * @param {string} [contextOverride] Overrides the context provided in the constructor.
+	 * @private
+	 */
+	GrowthTasksApi.prototype.logTiming = function ( name, startTime, contextOverride ) {
+		mw.track(
+			'timing.growthExperiments.specialHomepage.growthTasksApi.' + name + '.' +
+				( contextOverride || this.logContext ) + '.' + ( this.isMobile ? 'mobile' : 'desktop' ),
+			mw.now() - startTime
+		);
+	};
+
+	/**
 	 * Change the thumbnail URL in the task data to be at least the given width (if possible).
 	 *
 	 * @param {mw.libs.ge.TaskData} task Task data, as returned by the other methods.
 	 * @param {number} newWidth Desired thumbnail width.
-	 * @return {mw.libs.ge.TaskData} The task parameter (which is changed in-place).
+	 * @private
 	 */
-	GrowthTasksApi.fixThumbnailWidth = function ( task, newWidth ) {
+	GrowthTasksApi.prototype.fixThumbnailWidth = function ( task, newWidth ) {
 		var data;
 
 		if ( task.thumbnailSource && task.imageWidth ) {
@@ -410,7 +490,6 @@
 				task.thumbnailSource = data.resizeUrl( newWidth );
 			}
 		}
-		return task;
 	};
 
 	module.exports = GrowthTasksApi;

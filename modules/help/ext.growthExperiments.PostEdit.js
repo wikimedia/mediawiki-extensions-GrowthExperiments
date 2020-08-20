@@ -17,7 +17,9 @@
 		api = new GrowthTasksApi( {
 			taskTypes: taskTypes,
 			aqsConfig: aqsConfig,
-			suggestedEditsConfig: suggestedEditsConfig
+			suggestedEditsConfig: suggestedEditsConfig,
+			isMobile: OO.ui.isMobile(),
+			context: 'postEditDialog'
 		} ),
 		preferences = api.getPreferences(),
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
@@ -38,9 +40,7 @@
 	function getNextTask() {
 		var apiConfig = {
 			getDescription: true,
-			size: 10,
-			isMobile: OO.ui.isMobile(),
-			context: 'postEditDialog'
+			size: 10
 		};
 		// 10 tasks are hopefully enough to find one that's not protected.
 		return api.fetchTasks(

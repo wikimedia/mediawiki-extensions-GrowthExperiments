@@ -6,7 +6,10 @@
 			mw.config.get( 'wgGEHomepagePageviewToken' )
 		),
 		GrowthTasksApi = require( './suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js' ),
-		api = new GrowthTasksApi( {} );
+		api = new GrowthTasksApi( {
+			isMobile: OO.ui.isMobile(),
+			context: 'startEditingDialog'
+		} );
 
 	function setupCta( $container ) {
 		var ctaButton, dialog, windowManager,
