@@ -202,9 +202,9 @@ class SuggestedEdits extends BaseModule {
 			//   but SearchTaskSuggester is inefficient and will do multiple queries regardless of the
 			//   limit if there are multiple tasktype/topic combinations. This can be made less awkward
 			//   once we get rid of ProtectionFilter.
-			$taskTypes = array_slice( $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ) ??
-				$this->configurationLoader->getTaskTypes(), 0, 1 );
-			$topics = array_slice( $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user ) ?? [],
+			$taskTypes = array_slice( $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
+				0, 1 );
+			$topics = array_slice( $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user ),
 				0, 1 );
 			$tasks = $this->taskSuggester->suggest( $user, $taskTypes, $topics, 10 );
 			$tasks = $this->protectionFilter->filter( $tasks, 1 );
