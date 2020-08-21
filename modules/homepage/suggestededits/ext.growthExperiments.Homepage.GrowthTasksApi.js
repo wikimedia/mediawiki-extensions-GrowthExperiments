@@ -4,39 +4,46 @@
 
 	/**
 	 * @typedef {Object} mw.libs.ge.TaskData
+	 * A POJO describing a newcomer task. Usually created via fetchTasks(), but sometimes exported
+	 * from PHP. Task data is partially lazy-loaded, and many fields are only present for some
+	 * articles or in certain setups. We differentiate between not yet loaded fields and fields
+	 * which we attempted to load but were not applicable for the given task by consistent usage of
+	 * undefined vs. null.
+	 *
 	 * @property {string} title Article title
 	 * @property {string} tasktype Task type ID.
 	 * @property {string} difficulty Task difficulty ('easy', 'medium' or 'hard').
-	 * @property {[string, float][]|null} Topics the task is in. Empty array when the user is not
+	 * @property {((string|number)[])|null} Topics the task is in. Empty array when the user is not
 	 *   filtering for any topics, null with topic matching disabled entirely, otherwise an array
 	 *   of (topic ID, score) pairs.
 	 * @property {string[]|null} maintenanceTemplates List of maintenance templates on the article
 	 *   (ie. the templates that were used to identify it as appropriate for the task), without the
 	 *   namespace name. Null when the article does not exist.
-	 * @property {int|null} pageId Article page ID (null when the article does not exist, which
-	 *   is common in some test/development setups where the returned titles are not local, and
-	 *   also in edge cases where the search index has not caught up with a page deletion yet).
-	 * @property {int|null} revisionId ID of last revision (null when the article does not exist).
+	 * @property {number|null|undefined} pageId Article page ID. Null when the article does not exist,
+	 *   which is common in some test/development setups where the returned titles are not local,
+	 *   and also in edge cases where the search index has not caught up with a page deletion yet.
+	 *   Can be undefined due to lazy-loading.
+	 * @property {number|null|undefined} revisionId ID of last revision. Null when the article does
+	 *   not exist. Can be undefined due to lazy-loading.
 	 * @property {string|null} url Custom article URL. This is used in some development setups
 	 *   (see $wgGENewcomerTasksRemoteArticleOrigin).
-	 * @property {string|null} thumbnailSource Thumbnail URL for the page image, if there is one.
-	 *   The width of the thumbnail is unspecified, it is left to the rendering code to transform
-	 *   it if needed. Can also be null during some parts of the object's lifecycle (thumbnail data
-	 *   might or might not be lazy-loaded).
-	 * @property {int|null} imageWidth Width of the page image (the original, not the thumbnail).
-	 *   Null when thumbnailSource is null.
-	 * @property {string|null} description Short article description, e.g. from Wikidata.
+	 * @property {string|null|undefined} thumbnailSource Thumbnail URL for the page image. Null when
+	 *   the article has no page image. Can be undefined due to lazy-loading.
+	 *   The width of the thumbnail is unspecified, it is left to the rendering code to transform it
+	 *   if needed.
+	 * @property {number|null|undefined} imageWidth Width of the page image (the original, not the
+	 *   thumbnail). Null / undefined when thumbnailSource is.
+	 * @property {string|null|undefined} description Short article description, e.g. from Wikidata.
 	 *   Null when the wiki or article is not connected to Wikidata or there is no description
 	 *   in the user's language, or the article does not exist, or when the GrowthTasksApi flag for
-	 *   including descriptions has not been set.
-	 * @property {string|null} extract Article summary (from the RESTBase summary endpoint).
-	 *   Null when the wiki does not provide article summary information or the article does not
-	 *   exist. Also null in other cases during some parts of the object's lifecycle (summary
-	 *   data is lazy-loaded).
-	 * @property {int|null} pageviews Number of page views in the last 60 days (approximately).
-	 *   Null when the wiki does not provide pageview information, the article does not exist,
-	 *   or when no views have been processed for that article yet. Also null in other cases
-	 *   during some parts of the object's lifecycle (pageview data is lazy-loaded).
+	 *   including descriptions has not been set. Can be undefined due to lazy-loading.
+	 * @property {string|null|undefined} extract Article summary (from the RESTBase summary endpoint).
+	 *   Null when the article does not exist. Can be undefined due to lazy-loading, or when the
+	 *   wiki does not provide article summary information.
+	 * @property {number|null|undefined} pageviews Approximate number of page views in the last 60 days.
+	 *   Null when the article does not exist, or when no views have been processed for that article
+	 *   yet. Can be undefined due to lazy-loading, or when the wiki does not provide pageview
+	 *   information.
 	 */
 
 	/**
@@ -124,7 +131,7 @@
 	 * @param {string} config.context The context in which this function was
 	 *   called, used for performance instrumentation.
 	 *
-	 * @return {jQuery.Promise<{count: int, tasks: Array<mw.libs.ge.TaskData>}>} An abortable
+	 * @return {jQuery.Promise<{count: number, tasks: Array<mw.libs.ge.TaskData>}>} An abortable
 	 *   promise with two fields:
 	 *   - count: the number of tasks available. Note this is the full count, not the
 	 *     task list length (which is capped to 200).
@@ -281,20 +288,24 @@
 
 		// Skip if the task already has PCS data; don't fail worse then we have to
 		// when RESTBase is not installed.
-		if ( 'extract' in task || !apiUrlBase ) {
+		if ( task.extract !== undefined || !apiUrlBase ) {
 			return $.Deferred().resolve( task ).promise();
 		}
 		encodedTitle = encodeURIComponent( title.replace( / /g, '_' ) );
 		return $.get( apiUrlBase + '/page/summary/' + encodedTitle ).then( function ( data ) {
-			task.extract = data.extract;
+			task.extract = data.extract || null;
 			// Normally we use the thumbnail source from the action API, this is only a fallback.
 			// It is used for some beta wiki configurations and local setups, and also when the
 			// action API data is missing due to query+pageimages having a smaller max limit than
 			// query+growthtasks.
-			if ( !task.thumbnailSource && data.thumbnail ) {
-				task.thumbnailSource = data.thumbnail.source;
-				task.imageWidth = data.originalimage.width;
-				GrowthTasksApi.fixThumbnailWidth( task, config.thumbnailWidth );
+			if ( !task.thumbnailSource ) {
+				if ( data.thumbnail ) {
+					task.thumbnailSource = data.thumbnail.source;
+					task.imageWidth = data.originalimage.width;
+					GrowthTasksApi.fixThumbnailWidth( task, config.thumbnailWidth );
+				} else {
+					task.thumbnailSource = task.imageWidth = null;
+				}
 			}
 			mw.track(
 				'timing.growthExperiments.specialHomepage.growthTasksApi.getExtraDataFromPcs.' +
@@ -326,7 +337,7 @@
 			startTime = mw.now(),
 			title = task.title;
 
-		if ( 'pageviews' in task ) {
+		if ( task.pageviews !== undefined || !this.aqsConfig.project ) {
 			// The task already has AQS data, skip.
 			return $.Deferred().resolve( task ).promise();
 		}
@@ -348,10 +359,8 @@
 			( data.items || [] ).forEach( function ( item ) {
 				pageviews += item.views;
 			} );
-			if ( pageviews ) {
-				// This will skip on 0 views. That's OK, we don't want to show that to the user.
-				task.pageviews = pageviews;
-			}
+			// This will skip on 0 views. That's OK, we don't want to show that to the user.
+			task.pageviews = pageviews || null;
 			mw.track(
 				'timing.growthExperiments.specialHomepage.growthTasksApi.getExtraDataFromAqs.' +
 				config.context + '.' + ( config.isMobile ? 'mobile' : 'desktop' ),

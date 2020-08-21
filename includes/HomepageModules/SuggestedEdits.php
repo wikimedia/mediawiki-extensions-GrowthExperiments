@@ -10,10 +10,12 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
+use GrowthExperiments\NewcomerTasks\Task\TemplateBasedTask;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use Html;
 use IContextSource;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
+use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use Message;
@@ -213,11 +215,19 @@ class SuggestedEdits extends BaseModule {
 			} elseif ( $tasks->count() === 0 ) {
 				$data['task-preview'] = [];
 			} else {
+				$task = $tasks[0];
+				$templates = null;
+				if ( $task instanceof TemplateBasedTask ) {
+					$templates = array_map( function ( LinkTarget $template ) {
+						return $template->getText();
+					}, $task->getTemplates() );
+				}
 				$data['task-preview'] = [
-					'totalCount' => $tasks->getTotalCount(),
-					'taskType' => $tasks[0]->getTaskType()->getId(),
-					'title' => $this->titleFactory->newFromLinkTarget( $tasks[0]->getTitle() )->getPrefixedText(),
-					'topics' => $tasks[0]->getTopicScores(),
+					'tasktype' => $task->getTaskType()->getId(),
+					'difficulty' => $task->getTaskType()->getDifficulty(),
+					'title' => $this->titleFactory->newFromLinkTarget( $task->getTitle() )->getPrefixedText(),
+					'topics' => $task->getTopicScores(),
+					'maintenanceTemplates' => $templates,
 				];
 			}
 		}
