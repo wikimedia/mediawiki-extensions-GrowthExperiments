@@ -9,6 +9,7 @@ use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
@@ -68,6 +69,10 @@ class GrowthExperimentsServices {
 
 	public function getNewcomerTaskTrackerFactory(): TrackerFactory {
 		return $this->coreServices->get( 'GrowthExperimentsNewcomerTaskTrackerFactory' );
+	}
+
+	public function getNewcomerTasksUserOptionsLookup(): NewcomerTasksUserOptionsLookup {
+		return $this->coreServices->get( 'GrowthExperimentsNewcomerTasksUserOptionsLookup' );
 	}
 
 	public function getProtectionFilter(): ProtectionFilter {
