@@ -33,9 +33,11 @@ class ProtectionFilter {
 	 * Filter out protected tasks from the TaskSet. Order is preserved.
 	 * This is not particularly efficient; the taskset should not have more than a few tasks.
 	 * @param TaskSet $taskSet
+	 * @param int $maxLength Return at most this many tasks (used to avoid wasting time on
+	 *   checking tasks we won't need).
 	 * @return TaskSet
 	 */
-	public function filter( TaskSet $taskSet ) {
+	public function filter( TaskSet $taskSet, int $maxLength = PHP_INT_MAX ) {
 		// Warm title cache for fetching the IDs.
 		$linkBatch = $this->linkBatchFactory->newLinkBatch();
 		$linkBatch->setCaller( __METHOD__ );
@@ -46,6 +48,9 @@ class ProtectionFilter {
 
 		$tasks = [];
 		foreach ( $taskSet as $task ) {
+			if ( count( $tasks ) >= $maxLength ) {
+				break;
+			}
 			$title = $this->titleFactory->newFromLinkTarget( $task->getTitle() );
 			// isProtected is not covered by the LinkBatch. For now we only need filtering
 			// for single-task lookups so constructing our own efficient SQL query is not
