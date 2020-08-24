@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Samat"
+			"Samat",
+			"Tgr"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "A súgómodulon keresztül közzétett kérdés kezelése az aktuális szerkesztő számára.",
 	"apihelp-helppanelquestionposter-param-body": "A szerkesztő által feltett kérdés szövege.",
-	"apihelp-helppanelquestionposter-param-source": "A kérdés forrásának komponense. Érvényes értékek: 'helppanel', 'homepage-help', and 'homepage-mentorship'",
+	"apihelp-helppanelquestionposter-param-source": "A mód, ahogyan a kérdést feltették.",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Kiválasztása esetén a kérdéshez tartozó cím."
 }
