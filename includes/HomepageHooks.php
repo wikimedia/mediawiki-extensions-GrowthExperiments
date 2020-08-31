@@ -165,7 +165,7 @@ class HomepageHooks implements
 			}
 			$list[ 'ClaimMentee' ] = [
 				'class' => SpecialClaimMentee::class,
-				'services' => [ 'MainConfig', 'GrowthExperimentsMentorManager' ]
+				'services' => [ 'GrowthExperimentsMentorManager' ]
 			];
 		}
 	}

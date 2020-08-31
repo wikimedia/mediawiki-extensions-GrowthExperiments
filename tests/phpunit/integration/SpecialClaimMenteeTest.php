@@ -4,7 +4,6 @@ namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\Mentorship\StaticMentorManager;
 use GrowthExperiments\Specials\SpecialClaimMentee;
-use HashConfig;
 use PermissionsError;
 use SpecialPageTestBase;
 
@@ -17,8 +16,8 @@ class SpecialClaimMenteeTest extends SpecialPageTestBase {
 	 * @inheritDoc
 	 */
 	protected function newSpecialPage() {
+		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
 		return new SpecialClaimMentee(
-			new HashConfig( [ 'GEHomepageMentorsList' => 'MentorsList' ] ),
 			new StaticMentorManager( [] )
 		);
 	}

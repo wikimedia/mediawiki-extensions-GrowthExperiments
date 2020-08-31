@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Specials;
 
-use Config;
 use FormSpecialPage;
 use GrowthExperiments\Mentorship\ChangeMentor;
 use GrowthExperiments\Mentorship\MentorManager;
@@ -30,21 +29,15 @@ class SpecialClaimMentee extends FormSpecialPage {
 	 */
 	private $mentorsList;
 	/**
-	 * @var Config
-	 */
-	private $config;
-	/**
 	 * @var MentorManager
 	 */
 	private $mentorManager;
 
 	/**
-	 * @param Config $config
 	 * @param MentorManager $mentorManager
 	 */
-	public function __construct( Config $config, MentorManager $mentorManager ) {
+	public function __construct( MentorManager $mentorManager ) {
 		parent::__construct( 'ClaimMentee' );
-		$this->config = $config;
 		$this->mentorManager = $mentorManager;
 	}
 
@@ -100,12 +93,12 @@ class SpecialClaimMentee extends FormSpecialPage {
 		$error = !$this->mentorsList ?
 			[
 				'growthexperiments-homepage-mentors-list-missing-or-misconfigured',
-				str_replace( '_', ' ', $this->config->get( 'GEHomepageMentorsList' ) )
+				str_replace( '_', ' ', $this->getConfig()->get( 'GEHomepageMentorsList' ) )
 			]
 			:
 			[ 'growthexperiments-homepage-claimmentee-must-be-mentor',
 			  $this->getUser(),
-			  str_replace( '_', ' ', $this->config->get( 'GEHomepageMentorsList' ) )
+			  str_replace( '_', ' ', $this->getConfig()->get( 'GEHomepageMentorsList' ) )
 			];
 		throw new PermissionsError( null, [ $error ] );
 	}
