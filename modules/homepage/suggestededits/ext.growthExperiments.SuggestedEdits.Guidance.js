@@ -1,7 +1,14 @@
 ( function () {
 	'use strict';
-	/* eslint-disable-next-line no-jquery/no-global-selector */
-	var $edit = $( 'li#ca-ve-edit, li#ca-edit, li#page-actions-edit' ).first().find( 'a' ),
+	/* eslint-disable no-jquery/no-global-selector */
+	// We can't use $( 'li#ca-ve-edit, li#ca-edit, li#page-actions-edit' ).first() here,
+	// because that returns the one that appears first in the DOM. Instead, we want to use
+	// #ca-ve-edit if it exists, and only if that doesn't exist fall back to #ca-edit (T261001)
+	var editLinkWrapper = $( 'li#ca-ve-edit' )[ 0 ] ||
+			$( 'li#ca-edit' )[ 0 ] ||
+			$( 'li#page-actions-edit' )[ 0 ],
+		/* eslint-enable no-jquery/no-global-selector */
+		$editLink = $( editLinkWrapper ).find( 'a' ),
 		skin = mw.config.get( 'skin' ),
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		taskTypeId = suggestedEditSession.taskType,
@@ -24,10 +31,10 @@
 		return;
 	}
 
-	if ( $edit.length && taskTypeId ) {
-		$edit.append( $( '<div>' ).addClass( 'mw-pulsating-dot' ) );
+	if ( $editLink.length && taskTypeId ) {
+		$editLink.append( $( '<div>' ).addClass( 'mw-pulsating-dot' ) );
 		guidancePrefValue[ skin ][ taskTypeId ] = true;
-		$edit.on( 'click', function () {
+		$editLink.on( 'click', function () {
 			new mw.Api().saveOption( guidancePrefName, JSON.stringify( guidancePrefValue ) );
 			$( this ).find( '.mw-pulsating-dot' ).remove();
 		} );
