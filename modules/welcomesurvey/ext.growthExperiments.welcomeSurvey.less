@@ -143,6 +143,12 @@
 			.oo-ui-checkboxMultiselectInputWidget > .oo-ui-fieldLayout {
 				display: none;
 			}
+
+			.warning {
+				padding-top: 0.25em;
+				// Override font-size: larger; rule
+				font-size: inherit;
+			}
 		}
 
 		// Clean up placeholder/animation styles once the JS has loaded
@@ -152,6 +158,7 @@
 				text-align: unset;
 				padding-top: 0;
 				border: 0;
+				background-color: transparent;
 
 				&:before,
 				&:after,
