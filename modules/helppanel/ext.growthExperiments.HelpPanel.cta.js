@@ -127,8 +127,18 @@
 			}
 		}
 
+		$overlay.append( windowManager.$element );
+		if ( !OO.ui.isMobile() ) {
+			$overlay.addClass( 'mw-ge-help-panel-popup' );
+		}
+		$body.append( $overlay );
+		windowManager.addWindows( [ helpPanelProcessDialog ] );
+
 		if ( $buttonToInfuse.length ) {
 			helpCtaButton = OO.ui.ButtonWidget.static.infuse( $buttonToInfuse );
+			// The button is already on the page, but it won't be visible until we add the -ready
+			// class to $buttonWrapper. While it's not yet visible, relocate it into the overlay.
+			$overlay.append( $buttonWrapper );
 		} else {
 			helpCtaButton = new OO.ui.ButtonWidget( {
 				id: 'mw-ge-help-panel-cta-button',
@@ -148,14 +158,8 @@
 				$buttonWrapper.addClass( 'mw-ge-help-panel-cta-mobile' );
 			}
 		}
+		// Make the button visible (with slide up animation) if it's already on the page
 		$buttonWrapper.addClass( 'mw-ge-help-panel-ready' );
-
-		$overlay.append( windowManager.$element );
-		if ( !OO.ui.isMobile() ) {
-			$overlay.addClass( 'mw-ge-help-panel-popup' );
-		}
-		$body.append( $overlay );
-		windowManager.addWindows( [ helpPanelProcessDialog ] );
 
 		function openHelpPanel( panel ) {
 			if ( OO.ui.isMobile() ) {
