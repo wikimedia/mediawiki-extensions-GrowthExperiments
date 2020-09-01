@@ -769,7 +769,10 @@ class HomepageHooks implements
 	public function onSiteNoticeAfter( &$siteNotice, $skin ) {
 		global $wgMinervaEnableSiteNotice;
 		if ( self::isHomepageEnabled( $skin->getUser() ) ) {
-			return SiteNoticeGenerator::setNotice(
+			$siteNoticeGenerator = new SiteNoticeGenerator(
+				$this->experimentUserManager
+			);
+			return $siteNoticeGenerator->setNotice(
 				$skin->getRequest()->getVal( 'source' ),
 				$siteNotice,
 				$skin,
