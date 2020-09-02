@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks;
 
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
@@ -37,7 +38,7 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Page3' ) ),
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Page4' ) ),
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Page5' ) ),
-		], 10, 5 );
+		], 10, 5, new TaskSetFilters() );
 		$taskSet->setDebugData( [ 'x' ] );
 
 		$filteredTaskSet = $filter->filter( $taskSet );

@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\Assert\Assert;
@@ -45,7 +46,7 @@ class StaticTaskSuggester implements TaskSuggester {
 			}
 		);
 		return new TaskSet( array_slice( $filteredTasks, $offset, $limit ),
-			count( $filteredTasks ), $offset ?: 0 );
+			count( $filteredTasks ), $offset ?: 0, new TaskSetFilters() );
 	}
 
 	/**

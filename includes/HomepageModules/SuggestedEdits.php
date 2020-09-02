@@ -237,14 +237,13 @@ class SuggestedEdits extends BaseModule {
 			$this->canRender()
 		) {
 			$user = $this->getContext()->getUser();
-			// FIXME Get one task type and one topic selected by the user. We only need one task,
-			//   but SearchTaskSuggester is inefficient and will do multiple queries regardless of the
-			//   limit if there are multiple tasktype/topic combinations. This can be made less awkward
-			//   once we get rid of ProtectionFilter.
-			$taskTypes = array_slice( $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-				0, 1 );
-			$topics = array_slice( $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user ),
-				0, 1 );
+
+			// There will likely be a cached task set by this point. For scenarios where there
+			// aren't (e.g. user visits homepage, doesn't come back for 8 days, then goes to
+			// homepage again), we should fetch tasks using a single task type and topic to
+			// speed up the query.
+			$taskTypes = $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user );
+			$topics = $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user );
 			$tasks = $this->taskSuggester->suggest( $user, $taskTypes, $topics, 10 );
 			$tasks = $this->protectionFilter->filter( $tasks, 1 );
 			if ( $tasks instanceof StatusValue ) {

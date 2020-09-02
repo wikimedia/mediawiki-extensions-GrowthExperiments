@@ -60,7 +60,12 @@ class ProtectionFilter {
 				$tasks[] = $task;
 			}
 		}
-		$filteredTaskSet = new TaskSet( $tasks, $taskSet->getTotalCount(), $taskSet->getOffset() );
+		$filteredTaskSet = new TaskSet(
+			$tasks,
+			$taskSet->getTotalCount(),
+			$taskSet->getOffset(),
+			$taskSet->getFilters()
+		);
 		$filteredTaskSet->setDebugData( $taskSet->getDebugData() );
 		return $filteredTaskSet;
 	}

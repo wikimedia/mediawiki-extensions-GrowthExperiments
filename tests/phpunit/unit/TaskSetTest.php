@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use InvalidArgumentException;
 use MediaWikiUnitTestCase;
@@ -20,7 +21,7 @@ class TaskSetTest extends MediaWikiUnitTestCase {
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Foo' ) ),
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Bar' ) ),
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Baz' ) ),
-		], 3, 1 );
+		], 3, 1, new TaskSetFilters() );
 		$pages = array_map( function ( Task $task ) {
 			return $task->getTitle()->getText();
 		}, iterator_to_array( $taskSet ) );
@@ -33,7 +34,7 @@ class TaskSetTest extends MediaWikiUnitTestCase {
 	public function testInvalidParameter() {
 		$this->expectException( InvalidArgumentException::class );
 
-		new TaskSet( [ new TitleValue( NS_MAIN, 'Foo' ) ], 1, 0 );
+		new TaskSet( [ new TitleValue( NS_MAIN, 'Foo' ) ], 1, 0, new TaskSetFilters() );
 	}
 
 }
