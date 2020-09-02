@@ -280,19 +280,21 @@
 			if ( OO.ui.isMobile() ) {
 				defaultToVisualEditorIfPossible();
 				maybeAddMobilePeek( taskTypes[ taskTypeId ] );
-			} else if ( suggestedEditSession.helpPanelShouldOpen ) {
-				// Open the help panel to the suggested-edits panel, animating it in from the bottom
-				// Perform this special animation only once, the first time the help panel opens
-				$overlay.addClass( 'mw-ge-help-panel-popup-guidance' );
-				openHelpPanel( suggestedEditSession.helpPanelCurrentPanel || 'suggested-edits' ).closing
-					.done( function () {
-						$overlay.removeClass( 'mw-ge-help-panel-popup-guidance' );
-					} );
 			} else {
 				// If guidance is available we want to attach the help button
 				// so the user can get back to it; this can happen if for example
 				// the user reloads the page they're on (in Read mode) .
 				attachHelpButton( helpPanelProcessDialog.logger.getEditor() );
+
+				if ( suggestedEditSession.helpPanelShouldOpen ) {
+					// Open the help panel to the suggested-edits panel, animating it in from the bottom
+					// Perform this special animation only once, the first time the help panel opens
+					$overlay.addClass( 'mw-ge-help-panel-popup-guidance' );
+					openHelpPanel( suggestedEditSession.helpPanelCurrentPanel || 'suggested-edits' ).closing
+						.done( function () {
+							$overlay.removeClass( 'mw-ge-help-panel-popup-guidance' );
+						} );
+				}
 			}
 		}
 
