@@ -2,14 +2,26 @@
 
 namespace GrowthExperiments\Homepage;
 
+use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Util;
 use Html;
 use OOUI\IconWidget;
 use OutputPage;
+use User;
 use UserOptionsUpdateJob;
 
 class SiteNoticeGenerator {
+
+	/** @var ExperimentUserManager */
+	private $experimentUserManager;
+
+	/**
+	 * @param ExperimentUserManager $experimentUserManager
+	 */
+	public function __construct( ExperimentUserManager $experimentUserManager ) {
+		$this->experimentUserManager = $experimentUserManager;
+	}
 
 	/**
 	 * @param string $name
@@ -18,7 +30,7 @@ class SiteNoticeGenerator {
 	 * @param bool &$minervaEnableSiteNotice Reference to $wgMinervaEnableSiteNotice
 	 * @return bool|void Hook return value (ie. false to prevent other notices from displaying)
 	 */
-	public static function setNotice( $name, &$siteNotice, \Skin $skin, &$minervaEnableSiteNotice ) {
+	public function setNotice( $name, &$siteNotice, \Skin $skin, &$minervaEnableSiteNotice ) {
 		if ( $skin->getTitle()->isSpecial( 'WelcomeSurvey' ) ) {
 			// Don't show any notices on the welcome survey.
 			return;
@@ -26,34 +38,34 @@ class SiteNoticeGenerator {
 		switch ( $name ) {
 			case HomepageHooks::CONFIRMEMAIL_QUERY_PARAM:
 				if ( $skin->getTitle()->isSpecial( 'Homepage' ) ) {
-					return self::setConfirmEmailSiteNotice( $siteNotice, $skin, $minervaEnableSiteNotice );
+					return $this->setConfirmEmailSiteNotice( $siteNotice, $skin, $minervaEnableSiteNotice );
 				}
 				break;
 			case 'specialwelcomesurvey':
 				if ( $skin->getTitle()->isSpecial( 'Homepage' ) ) {
-					return self::setDiscoverySiteNotice( $siteNotice, $skin, $name, $minervaEnableSiteNotice );
+					return $this->setDiscoverySiteNotice( $siteNotice, $skin, $name, $minervaEnableSiteNotice );
 				}
 				break;
 			case 'welcomesurvey-originalcontext':
 				if ( !$skin->getTitle()->isSpecial( 'Homepage' ) ) {
-					return self::setDiscoverySiteNotice( $siteNotice, $skin, $name, $minervaEnableSiteNotice );
+					return $this->setDiscoverySiteNotice( $siteNotice, $skin, $name, $minervaEnableSiteNotice );
 				}
 				break;
 			default:
-				return self::maybeShowIfUserAbandonedWelcomeSurvey(
+				return $this->maybeShowIfUserAbandonedWelcomeSurvey(
 					$siteNotice,
 					$skin,
 					$minervaEnableSiteNotice );
 		}
 	}
 
-	private static function maybeShowIfUserAbandonedWelcomeSurvey(
+	private function maybeShowIfUserAbandonedWelcomeSurvey(
 		&$siteNotice, \Skin $skin, &$minervaEnableSiteNotice
 	) {
-		if ( self::isWelcomeSurveyInReferer( $skin )
-			|| Util::isMobile( $skin ) && !self::checkAndMarkMobileDiscoveryNoticeSeen( $skin )
+		if ( $this->isWelcomeSurveyInReferer( $skin )
+			|| Util::isMobile( $skin ) && !$this->checkAndMarkMobileDiscoveryNoticeSeen( $skin )
 		) {
-			return self::setDiscoverySiteNotice(
+			return $this->setDiscoverySiteNotice(
 				$siteNotice,
 				$skin,
 				$skin->getTitle()->isSpecial( 'Homepage' )
@@ -64,7 +76,7 @@ class SiteNoticeGenerator {
 		}
 	}
 
-	private static function isWelcomeSurveyInReferer( \Skin $skin ) {
+	private function isWelcomeSurveyInReferer( \Skin $skin ) {
 		foreach ( $skin->getLanguage()->getSpecialPageAliases()['WelcomeSurvey'] as $alias ) {
 			if ( strpos( $skin->getRequest()->getHeader( 'REFERER' ), $alias ) !== false ) {
 				return true;
@@ -79,7 +91,7 @@ class SiteNoticeGenerator {
 	 * @param bool &$minervaEnableSiteNotice
 	 * @return bool|void Hook return value (ie. false to prevent other notices from displaying)
 	 */
-	private static function setConfirmEmailSiteNotice(
+	private function setConfirmEmailSiteNotice(
 		&$siteNotice, \Skin $skin, &$minervaEnableSiteNotice
 	) {
 		$output = $skin->getOutput();
@@ -108,14 +120,15 @@ class SiteNoticeGenerator {
 	 * @param bool &$minervaEnableSiteNotice
 	 * @return bool|void Hook return value (ie. false to prevent other notices from displaying)
 	 */
-	private static function setDiscoverySiteNotice(
+	private function setDiscoverySiteNotice(
 		&$siteNotice, \Skin $skin, $contextName, &$minervaEnableSiteNotice
 	) {
 		if ( Util::isMobile( $skin ) ) {
-			self::setMobileDiscoverySiteNotice( $siteNotice, $skin, $contextName, $minervaEnableSiteNotice );
-			self::checkAndMarkMobileDiscoveryNoticeSeen( $skin );
+			$this->setMobileDiscoverySiteNotice( $siteNotice, $skin, $contextName,
+				$minervaEnableSiteNotice );
+			$this->checkAndMarkMobileDiscoveryNoticeSeen( $skin );
 		} else {
-			self::setDesktopDiscoverySiteNotice( $siteNotice, $skin, $contextName );
+			$this->setDesktopDiscoverySiteNotice( $siteNotice, $skin, $contextName );
 		}
 		// Only triggered for a specific source query parameter, which the user should see only
 		// once, so it's OK to suppress all other banners.
@@ -129,7 +142,7 @@ class SiteNoticeGenerator {
 	 * @return bool True if the user has seen the notice already.
 	 * @suppress PhanUndeclaredProperty
 	 */
-	private static function checkAndMarkMobileDiscoveryNoticeSeen( \Skin $skin ) {
+	private function checkAndMarkMobileDiscoveryNoticeSeen( \Skin $skin ) {
 		// Make multiple calls to this method within the same request a no-op.
 		// Note this would be necessary even if we only called it once, because
 		// Minerva calls sitenotice hooks multiple times.
@@ -156,7 +169,7 @@ class SiteNoticeGenerator {
 	 * @param \Skin $skin
 	 * @param string $contextName
 	 */
-	private static function setDesktopDiscoverySiteNotice(
+	private function setDesktopDiscoverySiteNotice(
 		&$siteNotice, \Skin $skin, $contextName
 	) {
 		// No-JS banner (hidden from CSS when there's JS support). The JS version is in
@@ -182,10 +195,10 @@ class SiteNoticeGenerator {
 			Html::rawElement( 'span', [ 'class' => 'mw-ge-homepage-discovery-text-content' ],
 				Html::element( 'h2', [ 'class' => 'mw-ge-homepage-discovery-nojs-message' ],
 					$output->msg( $msgHeaderKey )->params( $username )->text() ) .
-				self::getDiscoveryTextWithAvatarIcon(
+				$this->getDiscoveryTextWithAvatarIcon(
 					$output,
+					$skin->getUser(),
 					$msgBodyKey,
-					$username,
 					'mw-ge-homepage-discovery-nojs-banner-text'
 				)
 			)
@@ -198,7 +211,7 @@ class SiteNoticeGenerator {
 	 * @param string $contextName
 	 * @param bool &$minervaEnableSiteNotice
 	 */
-	private static function setMobileDiscoverySiteNotice(
+	private function setMobileDiscoverySiteNotice(
 		&$siteNotice, \Skin $skin, $contextName, &$minervaEnableSiteNotice
 	) {
 		$output = $skin->getOutput();
@@ -209,7 +222,7 @@ class SiteNoticeGenerator {
 		] );
 		$output->addModules( 'ext.growthExperiments.Homepage.Discovery.scripts' );
 
-		$username = $skin->getUser()->getName();
+		$user = $skin->getUser();
 		$location = ( $contextName === 'specialwelcomesurvey' ) ? 'homepage' : 'nonhomepage';
 		$msgHeaderKey = "growthexperiments-homepage-discovery-mobile-$location-banner-header";
 		$msgBodyKey = "growthexperiments-homepage-discovery-mobile-$location-banner-text";
@@ -217,9 +230,8 @@ class SiteNoticeGenerator {
 		$siteNotice = Html::rawElement( 'div', [ 'class' => 'mw-ge-homepage-discovery-banner-mobile' ],
 			Html::element( 'div', [ 'class' => 'mw-ge-homepage-discovery-arrow' ] ) .
 			Html::rawElement( 'div', [ 'class' => 'mw-ge-homepage-discovery-message' ],
-				Html::element( 'h2', [],
-					$output->msg( $msgHeaderKey )->params( $username )->text() ) .
-				self::getDiscoveryTextWithAvatarIcon( $output, $msgBodyKey, $username )
+				$this->getHeader( $output, $user, $msgHeaderKey, $location ) .
+				$this->getDiscoveryTextWithAvatarIcon( $output, $user, $msgBodyKey )
 			) . new IconWidget( [ 'icon' => 'close',
 				'classes' => [ 'mw-ge-homepage-discovery-banner-close' ] ] )
 		);
@@ -227,17 +239,48 @@ class SiteNoticeGenerator {
 		$minervaEnableSiteNotice = true;
 	}
 
-	private static function getDiscoveryTextWithAvatarIcon(
-		OutputPage $output, $msgBodyKey, $username, $class = ''
-	) {
+	/**
+	 * Get the header (H2) element for the site notice.
+	 *
+	 * If the user is in variant C/D, no header is shown.
+	 * @param OutputPage $output
+	 * @param User $user
+	 * @param string $msgHeaderKey
+	 * @param string $location
+	 * @return string
+	 */
+	private function getHeader(
+		OutputPage $output,
+		User $user,
+		string $msgHeaderKey,
+		string $location
+	) : string {
+		if ( $location === 'homepage' && $this->experimentUserManager->isUserInVariant( $user, [ 'C', 'D' ] ) ) {
+			return '';
+		}
+		return Html::element( 'h2', [],
+			$output->msg( $msgHeaderKey )->params( $user->getName() )->text()
+		);
+	}
+
+	/**
+	 * @param OutputPage $output
+	 * @param User $user
+	 * @param string $msgBodyKey
+	 * @param string $class
+	 * @return string
+	 */
+	private function getDiscoveryTextWithAvatarIcon(
+		OutputPage $output, User $user, string $msgBodyKey, $class = ''
+	) : string {
 		return Html::rawElement( 'p', [ 'class' => $class ],
 			$output->msg( $msgBodyKey )
-				->params( $username )
+				->params( $user->getName() )
 				->rawParams(
 					new IconWidget( [ 'icon' => 'userAvatar' ] ) .
 					// add a word joiner to make the icon stick to the name
 					\UtfNormal\Utils::codepointToUtf8( 0x2060 ) .
-					Html::element( 'span', [], $username )
+					Html::element( 'span', [], $user->getName() )
 				)->parse()
 		);
 	}
