@@ -23,7 +23,7 @@
 	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|আপনার}} ইমেল নিশ্চিত করা হয়েছে। আপনি পছন্দসমূহতে আপনার ইমেইল সেটিংস পরিবর্তন করতে পারেন।",
 	"growthexperiments-homepage-email-button-noemail": "ইমেইল যোগ করুন",
 	"growthexperiments-homepage-email-button-confirmed": "পছন্দসমূহ",
-	"growthexperiments-homepage-email-changelink": "(পরিবর্তন করুন)",
+	"growthexperiments-homepage-email-changelink": "পরিবর্তন করুন",
 	"growthexperiments-homepage-startediting-header": "সম্পাদনা শুরু করুন",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "পরামর্শকৃত সম্পাদনাগুলি দেখুন",
 	"growthexperiments-homepage-startediting-button": "পরামর্শকৃত সম্পাদনা দেখুন",
