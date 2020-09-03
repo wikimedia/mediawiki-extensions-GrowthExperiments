@@ -21,12 +21,10 @@
 
 		ctaButton = OO.ui.ButtonWidget.static.infuse( $buttonElement );
 		dialog = new StartEditingDialog( {
-			mode: mode,
-			windowClass: '.mw-ge-startediting-window .oo-ui-window-body'
+			mode: mode
 		}, logger, api );
 		windowManager = new OO.ui.WindowManager( {
-			modal: true,
-			classes: [ 'mw-ge-startediting-window' ]
+			modal: true
 		} );
 
 		// eslint-disable-next-line no-jquery/no-global-selector
