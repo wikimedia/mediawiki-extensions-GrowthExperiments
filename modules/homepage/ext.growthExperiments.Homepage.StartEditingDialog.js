@@ -550,6 +550,9 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 		// Move Mentorship module to the sidebar.
 		$homepage.find( '.growthexperiments-homepage-module-mentorship' )
 			.prependTo( '.growthexperiments-homepage-group-sidebar' );
+		// Mark suggested edits module as activated.
+		$homepage.find( '.growthexperiments-homepage-module-suggested-edits' )
+			.addClass( 'activated' );
 	} else { // mobile-overlay
 		// Update StartEditing module icon.
 		$homepage.add( $homepageOverlay )
@@ -563,6 +566,9 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 			} ).$element );
 		// Add SuggestedEdits module summary.
 		$homepage.find( '.growthexperiments-homepage-module-start' ).parent().after( moduleHtml );
+		// Mark suggested edits module as activated.
+		$homepage.find( '.growthexperiments-homepage-module-suggested-edits' )
+			.addClass( 'activated' );
 	}
 
 	return mw.loader.using( moduleDependencies ).then( function ( require ) {
