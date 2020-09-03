@@ -7,9 +7,17 @@
 	border-radius: @borderRadius;
 	.box-shadow( none );
 	color: @colorGray2;
-	margin: @homepageModuleMargin;
 	padding: 16px;
 	.box-sizing( border-box );
+
+	&-user-variant-A {
+		margin: @homepageModuleMargin;
+	}
+
+	&-user-variant-C,
+	&-user-variant-D {
+		margin: @homepageModuleMarginVariationCVariationD;
+	}
 
 	.growthexperiments-homepage-module-header,
 	h2.growthexperiments-homepage-module-header {
