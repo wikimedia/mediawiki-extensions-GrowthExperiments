@@ -1,6 +1,33 @@
 ( function () {
 
 	/**
+	 * @param {string} difficulty
+	 * @param {string} timeestimate
+	 * @return {jQuery}
+	 */
+	function getDifficultyAndTime( difficulty, timeestimate ) {
+		return $( '<div>' ).addClass( 'suggested-edits-taskexplanation-difficulty-and-time' ).html(
+			$( '<div>' ).addClass( 'suggested-edits-difficulty-time-estimate' ).append(
+				$( '<div>' ).addClass( 'suggested-edits-difficulty-indicator' )
+					.addClass( 'suggested-edits-difficulty-indicator-' + difficulty )
+					// The following messages are used here:
+					// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy
+					// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium
+					// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard
+					.text( mw.message(
+						'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' +
+						difficulty
+					) ),
+				$( '<div>' )
+					.addClass(
+						'suggested-edits-difficulty-level suggested-edits-difficulty-level-' +
+						difficulty
+					)
+					.text( timeestimate )
+			) );
+	}
+
+	/**
 	 * Provides a component that shows the suggested edit task type with a short
 	 * description, time estimate and the suggested edits icon. Currently used
 	 * in the "mobile peek" feature as well as the help panel's suggested edits
@@ -26,31 +53,14 @@
 						$( '<h4>' )
 							.addClass( 'suggested-edits-task-explanation-heading' )
 							.text( messages.name ),
-						$( '<div>' ).addClass( 'suggested-edits-taskexplanation-additional-info' ).html(
-							$( '<div>' ).addClass( 'suggested-edits-difficulty-time-estimate' ).append(
-								$( '<div>' ).addClass( 'suggested-edits-difficulty-indicator' )
-									.addClass( 'suggested-edits-difficulty-indicator-' + difficulty )
-									// The following messages are used here:
-									// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy
-									// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium
-									// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard
-									.text( mw.message(
-										'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' +
-										difficulty
-									) ),
-								$( '<div>' )
-									.addClass(
-										'suggested-edits-difficulty-level suggested-edits-difficulty-level-' +
-										difficulty
-									)
-									.text( messages.timeestimate )
-							)
-						) )
+						getDifficultyAndTime( difficulty, messages.timeestimate )
+					)
 			).append( $( '<div>' ).addClass( 'suggested-edits-icon' ) );
 	}
 
 	module.exports = {
-		getSuggestedEditsPeek: getSuggestedEditsPeek
+		getSuggestedEditsPeek: getSuggestedEditsPeek,
+		getDifficultyAndTime: getDifficultyAndTime
 	};
 
 }() );

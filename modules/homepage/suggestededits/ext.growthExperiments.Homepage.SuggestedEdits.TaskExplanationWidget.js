@@ -6,6 +6,7 @@
 
 	var taskTypes = require( './TaskTypes.json' ),
 		mobileFrontend = mw.mobileFrontend,
+		suggestedEditsPeek = require( '../../helppanel/ext.growthExperiments.SuggestedEditsPeek.js' ),
 		Drawer = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Drawer : undefined;
 
 	/**
@@ -28,7 +29,13 @@
 
 		this.$element.append(
 			$( '<div>' ).addClass( 'suggested-edits-task-explanation-wrapper' )
-				.append( this.getInfoRow(), this.getDescriptionRow() )
+				.append(
+					this.getInfoRow(),
+					suggestedEditsPeek.getDifficultyAndTime(
+						this.taskTypeData.difficulty, this.taskTypeData.messages.timeestimate
+					),
+					this.getDescriptionRow()
+				)
 		);
 
 	}
@@ -39,8 +46,7 @@
 		var $infoRow = $( '<div>' ).addClass( 'suggested-edits-taskexplanation-additional-info' );
 		$infoRow.append(
 			this.getName(),
-			this.getInfo().$element,
-			this.getDifficultyIndicator()
+			this.getInfo().$element
 		);
 		return $infoRow;
 	};

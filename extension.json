@@ -399,6 +399,7 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.TopicFiltersDialog.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
 				"homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js",
+				"helppanel/ext.growthExperiments.SuggestedEditsPeek.js",
 				{
 					"name": "homepage/suggestededits/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
