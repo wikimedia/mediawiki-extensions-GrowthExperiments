@@ -106,6 +106,27 @@ class SuggestedEdits extends BaseModule {
 		$this->protectionFilter = $protectionFilter;
 	}
 
+	/** @inheritDoc */
+	protected function getHeaderTextElement() {
+		if ( $this->getMode() === self::RENDER_DESKTOP &&
+			$this->experimentUserManager->isUserInVariant(
+				$this->getContext()->getUser(), [ 'C' ]
+			)
+		) {
+			return Html::element(
+					'div',
+					[ 'class' => self::BASE_CSS_CLASS . '-header-text' ],
+					$this->getHeaderText() ) .
+				Html::rawElement( 'a', [
+					'class' => self::BASE_CSS_CLASS . '-header-info',
+					'data-link-id' => 'se-header-info',
+					'href' => '#'
+				], $this->getHeaderIcon( 'info', false ) );
+		} else {
+			return parent::getHeaderTextElement();
+		}
+	}
+
 	/**
 	 * Check whether the suggested edits feature is (or could be) enabled for anyone
 	 * on the wiki.
