@@ -213,8 +213,10 @@ class SpecialHomepage extends SpecialPage {
 	 * @return BaseModule[]
 	 */
 	private function getModules() {
+		$variantCD = $this->experimentUserManager->isUserInVariant( $this->getUser(), [ 'C', 'D' ] );
 		$moduleConfig = array_filter( [
-			'start' => true,
+			'start' => !$variantCD,
+			'startemail' => $variantCD,
 			'suggested-edits' => SuggestedEdits::isEnabled( $this->getContext() ),
 			'impact' => true,
 			'mentorship' => true,
@@ -231,13 +233,11 @@ class SpecialHomepage extends SpecialPage {
 	 * @return string[][][]
 	 */
 	private function getModuleGroups() : array {
-		if ( in_array(
-			$this->experimentUserManager->getVariant( $this->getUser() ),
-			[ 'C', 'D' ]
-		) ) {
+		if ( $this->experimentUserManager->isUserInVariant( $this->getUser(), [ 'C', 'D' ] ) ) {
 			return [
 				'main' => [
-					'primary' => [ 'start', 'suggested-edits' ]
+					'primary' => [ 'startemail' ],
+					'secondary' => [ 'suggested-edits' ]
 				],
 				'sidebar' => [
 					'primary' => [ 'impact' ],
@@ -328,6 +328,11 @@ class SpecialHomepage extends SpecialPage {
 		}
 	}
 
+	/**
+	 * @param string $moduleName
+	 * @param string $moduleHtml
+	 * @return string
+	 */
 	private function wrapMobileSummaryWithLink( $moduleName, $moduleHtml ) {
 		if ( $moduleHtml ) {
 			$moduleHtml = Html::rawElement( 'a', [
@@ -343,8 +348,12 @@ class SpecialHomepage extends SpecialPage {
 		$out->addBodyClasses( 'growthexperiments-homepage-mobile-summary' );
 		foreach ( $modules as $moduleName => $module ) {
 			try {
-				$out->addHTML( $this->wrapMobileSummaryWithLink( $moduleName,
-					$module->render( HomepageModule::RENDER_MOBILE_SUMMARY ) ) );
+				$mobileSummary = $module->render( HomepageModule::RENDER_MOBILE_SUMMARY );
+				// FIXME: find a better way to exclude startemail from this wrapping logic
+				if ( $moduleName !== 'startemail' ) {
+					$mobileSummary = $this->wrapMobileSummaryWithLink( $moduleName, $mobileSummary );
+				}
+				$out->addHTML( $mobileSummary );
 			} catch ( Throwable $throwable ) {
 				Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
 			}
@@ -366,8 +375,11 @@ class SpecialHomepage extends SpecialPage {
 				if ( isset( $data[$moduleName]['html'] ) && $mode === HomepageModule::RENDER_MOBILE_SUMMARY ) {
 					// This is slightly ugly, but making modules generate special-page-based
 					// links to themselves would be uglier.
-					$data[$moduleName]['html'] = $this->wrapMobileSummaryWithLink( $moduleName,
-						$data[$moduleName]['html'] );
+					// FIXME: find a better way to exclude startemail from this wrapping logic
+					if ( $moduleName !== 'startemail' ) {
+						$data[$moduleName]['html'] = $this->wrapMobileSummaryWithLink( $moduleName,
+							$data[$moduleName]['html'] );
+					}
 				}
 				if ( isset( $data[$moduleName]['overlay'] ) ) {
 					$html .= $data[$moduleName]['overlay'];
