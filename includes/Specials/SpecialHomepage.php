@@ -137,7 +137,10 @@ class SpecialHomepage extends SpecialPage {
 		$modules = $this->getModules();
 
 		if ( $isMobile ) {
-			if ( array_key_exists( $par, $modules ) ) {
+			if (
+				array_key_exists( $par, $modules ) &&
+				$modules[$par]->supports( HomepageModule::RENDER_MOBILE_DETAILS )
+			) {
 				$mode = HomepageModule::RENDER_MOBILE_DETAILS;
 				$this->renderMobileDetails( $modules[$par] );
 			} else {
@@ -349,8 +352,7 @@ class SpecialHomepage extends SpecialPage {
 		foreach ( $modules as $moduleName => $module ) {
 			try {
 				$mobileSummary = $module->render( HomepageModule::RENDER_MOBILE_SUMMARY );
-				// FIXME: find a better way to exclude startemail from this wrapping logic
-				if ( $moduleName !== 'startemail' ) {
+				if ( $module->supports( HomepageModule::RENDER_MOBILE_DETAILS ) ) {
 					$mobileSummary = $this->wrapMobileSummaryWithLink( $moduleName, $mobileSummary );
 				}
 				$out->addHTML( $mobileSummary );
@@ -375,8 +377,7 @@ class SpecialHomepage extends SpecialPage {
 				if ( isset( $data[$moduleName]['html'] ) && $mode === HomepageModule::RENDER_MOBILE_SUMMARY ) {
 					// This is slightly ugly, but making modules generate special-page-based
 					// links to themselves would be uglier.
-					// FIXME: find a better way to exclude startemail from this wrapping logic
-					if ( $moduleName !== 'startemail' ) {
+					if ( $module->supports( HomepageModule::RENDER_MOBILE_DETAILS ) ) {
 						$data[$moduleName]['html'] = $this->wrapMobileSummaryWithLink( $moduleName,
 							$data[$moduleName]['html'] );
 					}

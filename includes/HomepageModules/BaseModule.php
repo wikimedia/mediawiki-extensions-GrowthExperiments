@@ -28,6 +28,18 @@ abstract class BaseModule implements HomepageModule {
 	const MODULE_STATE_CONFIRMED = 'confirmed';
 
 	/**
+	 * Modes that are supported by this module.Subclasses that don't support certain modes should
+	 * override this to list only the modes they support. For more granular control, override
+	 * supports() instead.
+	 * @var string[]
+	 */
+	protected static $supportedModes = [
+		HomepageModule::RENDER_DESKTOP,
+		HomepageModule::RENDER_MOBILE_SUMMARY,
+		HomepageModule::RENDER_MOBILE_DETAILS
+	];
+
+	/**
 	 * @var IContextSource
 	 */
 	private $ctx;
@@ -61,6 +73,9 @@ abstract class BaseModule implements HomepageModule {
 	 * @inheritDoc
 	 */
 	public function render( $mode ) {
+		if ( !$this->supports( $mode ) ) {
+			return '';
+		}
 		$this->setMode( $mode );
 		if ( !$this->shouldRender() ) {
 			return '';
@@ -74,6 +89,10 @@ abstract class BaseModule implements HomepageModule {
 	 * @inheritDoc
 	 */
 	public function getJsData( $mode ) {
+		if ( !$this->supports( $mode ) ) {
+			return [];
+		}
+
 		$data = [];
 		if ( $this->canRender()
 			&& $mode == HomepageModule::RENDER_MOBILE_SUMMARY
@@ -87,6 +106,13 @@ abstract class BaseModule implements HomepageModule {
 		}
 		$this->setMode( $mode );
 		return $data;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function supports( $mode ) {
+		return in_array( $mode, static::$supportedModes );
 	}
 
 	/**
