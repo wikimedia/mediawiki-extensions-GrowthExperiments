@@ -204,8 +204,6 @@
 			// FIXME should this be capped to 200 or show the total server-side result count?
 			extraData.taskCount = this.taskQueue.length;
 			this.logger.log( 'suggested-edits', this.mode, 'se-fetch-tasks' );
-			// TODO: Eventually this will become the skeleton card widget
-			this.currentCard = new NoResultsWidget( { topicMatching: this.config.topicMatching } );
 			return $.Deferred().resolve().promise();
 		}.bind( this ) ).catch( function ( message ) {
 			if ( message === null ) {
