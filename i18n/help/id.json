@@ -1,8 +1,29 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kenrick95"
+			"Kenrick95",
+			"Rachmat04"
 		]
 	},
-	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Tanya-jawab penyuntingan yang disarankan"
+	"growthexperiments-help-panel-tog-help-panel": "Aktifkan panel bantuan editor",
+	"growthexperiments-help-panel-cta-button-text": "Dapatkan bantuan dalam menyunting",
+	"growthexperiments-help-panel-question-button-text": "Lanjutkan",
+	"growthexperiments-help-panel-submit-question-button-text": "Kirimkan",
+	"growthexperiments-help-panel-return-home-button-text": "Selesai",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "Halaman bantuan teratas tentang menyunting",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Lihat artikel bantuan lain",
+	"growthexperiments-help-panel-question-widget-header": "Kirimkan pertanyaan Anda ke Meja Bantuan Komunitas",
+	"growthexperiments-help-panel-question-placeholder": "Berikan salam dan tanyakan pertanyaan {{GENDER:$1|Anda}}.",
+	"growthexperiments-help-panel-back-home": "Kembali",
+	"growthexperiments-help-panel-close": "Selesai",
+	"growthexperiments-help-panel-home-title": "Dapatkan bantuan dalam menyunting",
+	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|Anda telah}} menerbitkan sebuah suntingan. Terima kasih dan lanjutkan!",
+	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|Anda telah}} menyimpan sebuah suntingan. Terima kasih dan lanjutkan!",
+	"growthexperiments-help-panel-postedit-header": "Tahap berikutnya",
+	"growthexperiments-help-panel-postedit-subheader": "Suntingan saranan lain:",
+	"growthexperiments-help-panel-postedit-footer": "Lihat saranan suntingan lebih banyak",
+	"growthexperiments-help-panel-postedit-footer2": "Tutup dan sunting artikel ini lagi",
+	"growthexperiments-help-panel-questionreview-title": "Tanya di meja bantuan",
+	"growthexperiments-help-panel-questionreview-title-mentor": "Tanya mentor Anda",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Tentang saranan penyuntingan"
 }

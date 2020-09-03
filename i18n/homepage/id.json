@@ -3,12 +3,13 @@
 		"authors": [
 			"Diki Ananta",
 			"Pebaryan",
+			"Rachmat04",
 			"Sumbukompor",
 			"Veracious"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Halo}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-email-header-confirmed": "Alamat surel ditambahkan",
-	"growthexperiments-homepage-impact-article-link-tooltip": "Ke artikel",
+	"growthexperiments-homepage-impact-article-link-tooltip": "Tuju ke artikel",
 	"growthexperiments-homepage-impact-pageviews-link-tooltip": "Lihat rincian penayangan halaman"
 }
