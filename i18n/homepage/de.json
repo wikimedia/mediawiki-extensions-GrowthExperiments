@@ -3,6 +3,7 @@
 		"authors": [
 			"1233qwer1234qwer4",
 			"Ameisenigel",
+			"Elliot",
 			"Ferdinand0101",
 			"Killarnee",
 			"Metalhead64",
@@ -31,6 +32,7 @@
 	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|Deine}} E-Mail-Adresse hinzufügen",
 	"growthexperiments-homepage-email-header-unconfirmed": "Bestätige {{GENDER:$1|deine}} E-Mail-Adresse",
 	"growthexperiments-homepage-email-header-confirmed": "E-Mail-Adresse hinzugefügt",
+	"growthexperiments-homepage-email-header-startemail": "E-Mail: $1",
 	"growthexperiments-homepage-email-text-noemail": "Empfohlen zur Wiederherstellung des Benutzerkontos",
 	"growthexperiments-homepage-email-text-unconfirmed": "Überprüfe {{GENDER:$1|dein}} E-Mail-Postfach für einen Bestätigungslink oder lass dir einen neuen Link zusenden.",
 	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|Deine}} E-Mail-Adresse wurde bestätigt. Du kannst deine E-Mail-Einstellungen ändern.",
@@ -38,6 +40,7 @@
 	"growthexperiments-homepage-email-button-unconfirmed": "Einen neuen Link erhalten",
 	"growthexperiments-homepage-email-button-confirmed": "Einstellungen",
 	"growthexperiments-homepage-email-changelink": "ändern",
+	"growthexperiments-homepage-email-confirmlink": "bestätigen",
 	"growthexperiments-homepage-startediting-header": "Jetzt bearbeiten",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Vorgeschlagene Bearbeitungen ansehen",
 	"growthexperiments-homepage-startediting-button": "Vorgeschlagene Bearbeitungen ansehen",

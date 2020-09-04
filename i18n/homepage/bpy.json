@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Usingha"
+		]
+	},
+	"growthexperiments-homepage-email-header-startemail": "ইমেইল: $1",
+	"growthexperiments-homepage-email-changelink": "সিলকর",
+	"growthexperiments-homepage-email-confirmlink": "লেপকর"
+}
