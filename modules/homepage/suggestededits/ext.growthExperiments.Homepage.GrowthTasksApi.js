@@ -77,6 +77,7 @@
 		this.aqsConfig = config.aqsConfig;
 		this.isMobile = config.isMobile;
 		this.logContext = config.logContext;
+		this.thumbnailWidth = this.isMobile ? 260 : 368;
 	}
 
 	/**
@@ -111,7 +112,7 @@
 		config = $.extend( {
 			getDescription: false,
 			size: 250,
-			thumbnailWidth: 260
+			thumbnailWidth: this.thumbnailWidth
 		}, config || {} );
 
 		if ( !taskTypes.length ) {
@@ -231,7 +232,7 @@
 			apiUrlBase = this.suggestedEditsConfig.GERestbaseUrl;
 
 		config = $.extend( {
-			thumbnailWidth: 260
+			thumbnailWidth: this.thumbnailWidth
 		}, config || {} );
 
 		// Skip if the task already has PCS data; don't fail worse then we have to
@@ -337,7 +338,7 @@
 
 		config = $.extend( {
 			getDescription: false,
-			thumbnailWidth: 260
+			thumbnailWidth: this.thumbnailWidth
 		}, config || {} );
 
 		apiParams = {

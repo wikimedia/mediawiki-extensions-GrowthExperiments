@@ -2,11 +2,18 @@
 @import 'mediawiki.mixins.less';
 @import '../ext.growthExperiments.variables.less';
 
-@cardWrapperWidth: 260px;
-// @cardContainerWrapperHeight is defined in HomepageHooks::lessCallback as it is split by skin.
-// It is 16em on mobile and 20.5em on desktop.
-@imageHeight: @cardContainerWrapperHeight / 2;
-@textHeight: @cardContainerWrapperHeight / 2;
+// The following variables are defined in HomepageHooks::lessCallback, as their
+// values vary between Minerva and Vector.
+// - cardContainerWrapperHeight
+// - cardImageHeight
+// - cardWrapperWidth
+// - cardWrapperPadding
+// - cardWrapperBorderRadius
+// - cardContentTextPadding
+// - cardExtractHeight
+// - cardPageviewsTopPadding
+// - cardPageviewsIconMarginBottom
+@textHeight: 8em;
 
 // This block is separate from the rest as it is targeting the process dialog contents.
 .suggested-edits-difficulty-filters {
@@ -294,14 +301,15 @@ body.mw-special-Homepage {
 		.se-card-end-of-queue {
 			width: @cardWrapperWidth;
 			height: @cardContainerWrapperHeight;
+			padding: 0 8px;
 
 			.se-card-image {
-				height: @imageHeight;
+				height: @cardImageHeight;
 			}
 
 			.se-card-title,
 			.se-card-text {
-				min-height: @textHeight / 2;
+				min-height: @textHeight;
 				margin: 0;
 				text-align: center;
 				color: @colorGray2;
@@ -345,7 +353,6 @@ body.mw-special-Homepage {
 			align-items: center;
 			justify-content: center;
 			flex-direction: row;
-			height: @cardContainerWrapperHeight;
 
 			// for pseudo-cards, make the top and bottom margin roughly match the pager and
 			// task type explanation size so the total height ends up similar to that of real cards
@@ -370,8 +377,10 @@ body.mw-special-Homepage {
 
 			.suggested-edits-task-card-wrapper {
 				.box-shadow(0 5px 10px 0 rgba(0, 0, 0, 0.15));
-				width: @cardWrapperWidth;
 				background-color: @background-color-base;
+				width: @cardWrapperWidth;
+				padding: @cardWrapperPadding;
+				border-radius: @cardWrapperBorderRadius;
 
 				a {
 					text-decoration: none;
@@ -381,7 +390,7 @@ body.mw-special-Homepage {
 				.se-card-content {
 					.se-card-text {
 						height: @textHeight;
-						padding: 0 10px;
+						padding: @cardContentTextPadding;
 						color: @colorGray2;
 
 						h3.se-card-title {
@@ -394,7 +403,7 @@ body.mw-special-Homepage {
 							overflow: hidden;
 							font-size: 0.875em;
 							line-height: 1.5em;
-							height: 4.5em;
+							height: @cardExtractHeight;
 
 							&:after {
 								content: '';
@@ -422,19 +431,24 @@ body.mw-special-Homepage {
 
 						.se-card-pageviews {
 							font-size: 0.875em;
-							padding-top: 10px;
+							padding-top: @cardPageviewsTopPadding;
 							color: @colorGray5;
 							.text-overflow( @visible: false );
 
 							.oo-ui-iconWidget {
-								margin-right: 5px;
 								opacity: 0.65;
+								margin-right: 8px;
+								width: 16px;
+								min-width: 16px;
+								height: 16px;
+								min-height: 16px;
+								margin-bottom: @cardPageviewsIconMarginBottom;
 							}
 						}
 					}
 
 					.se-card-image {
-						height: @imageHeight;
+						height: @cardImageHeight;
 						width: @cardWrapperWidth;
 						background-position: center 25%;
 						background-repeat: repeat-x;
@@ -619,10 +633,10 @@ body.mw-special-Homepage {
 			}
 
 			.suggested-edits-task-card-wrapper {
+				width: @cardWrapperWidth;
+
 				.se-card-content {
 					.se-card-text {
-						padding: 0 16px;
-
 						h3.se-card-title {
 							font-size: 1em;
 							padding-top: 8px;
