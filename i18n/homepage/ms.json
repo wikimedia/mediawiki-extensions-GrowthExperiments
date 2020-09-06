@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"CyberTroopers"
+			"CyberTroopers",
+			"Tofeiku"
 		]
 	},
+	"growthexperiments-homepage-email-header-startemail": "E-mel: $1",
+	"growthexperiments-homepage-email-changelink": "ubah",
 	"growthexperiments-homepage-suggestededits-footer": "Pengguna lain telah menyatakan bahawa artikel ini memerlukan penyuntingan. Bantu menaiktaraf  '''{{SITENAME}}''' supaya lebih baik untuk '''$1 pembaca''' setiap hari."
 }

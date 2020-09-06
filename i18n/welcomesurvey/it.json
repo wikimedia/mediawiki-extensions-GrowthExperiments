@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
+			"Elitre (WMF)",
 			"Ferdi2005",
 			"Lemure Saltante",
 			"Sakretsu",
@@ -45,5 +46,8 @@
 	"welcomesurvey-question-edited-option-dont-remember-label": "Non ricordo",
 	"welcomesurvey-question-email-label": "Indirizzo email (opzionale)",
 	"welcomesurvey-question-email-placeholder": "Inserisci il tuo indirizzo email",
-	"welcomesurvey-question-email-help": "Abbiamo notato che non hai inserito un indirizzo email quando hai creato quest'utenza. È <strong>altamente raccomandato</strong> inserirne uno, dal momento che sarebbe necessario per recuperare il tuo account nel caso perdessi la password. NOTA: Il tuo indirizzo email non viene rivelato quando altri utenti ti contattano."
+	"welcomesurvey-question-email-help": "Abbiamo notato che non hai inserito un indirizzo email quando hai creato quest'utenza. È <strong>altamente raccomandato</strong> inserirne uno, dal momento che sarebbe necessario per recuperare il tuo account nel caso perdessi la password. NOTA: Il tuo indirizzo email non viene rivelato quando altri utenti ti contattano.",
+	"welcomesurvey-question-languages-label": "{{SITENAME}} è disponibile in circa 300 lingue. Leggi o scrivi in altre lingue?",
+	"welcomesurvey-question-languages-placeholder": "Aggiungi fino a {{PLURAL:$1|una lingua|$1 lingue}}...",
+	"welcomesurvey-question-languages-maximum": "Hai raggiunto il numero massimo di lingue."
 }

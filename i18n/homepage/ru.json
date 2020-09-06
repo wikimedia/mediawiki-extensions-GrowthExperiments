@@ -10,6 +10,7 @@
 			"Le Loi",
 			"Mike like0708",
 			"Movses",
+			"NBS",
 			"Okras",
 			"Putnik",
 			"Stjn",
@@ -292,7 +293,7 @@
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|Вы}} должны быть указаны в списке наставников на [[$2]], чтобы иметь возможность использовать Special:ClaimMentee",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Список наставников ([[$1]]) не существует или неправильно настроен.",
 	"growthexperiments-notification-learn-more": "Узнать больше о {{GENDER:$1|}}{{GENDER:$2|вашем новом наставнике|вашей новой наставнице}}",
-	"right-setmentor": "Установить наставника участника",
-	"action-setmentor": "установить наставника участника",
+	"right-setmentor": "Назначение наставника участника",
+	"action-setmentor": "назначить наставника участника",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Больше информации об этой предложенной правке"
 }

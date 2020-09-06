@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
+			"Elitre (WMF)",
 			"Lemure Saltante",
 			"Lorelai87",
 			"Sakretsu",
@@ -27,7 +28,7 @@
 	"growthexperiments-help-panel-postedit-footer": "Vedi altre modifiche suggerite",
 	"growthexperiments-help-panel-postedit-footer2": "Chiudi e modifica ancora questa voce",
 	"growthexperiments-help-panel-questionreview-title": "Chiedi allo sportello informazioni",
-	"growthexperiments-help-panel-questionreview-title-mentor": "Chiedi al tuo mentore",
+	"growthexperiments-help-panel-questionreview-title-mentor": "Chiedi al tuo tutor",
 	"growthexperiments-help-panel-questionreview-header": "Quando invii una domanda, viene <strong>resa pubblica</strong> con il tuo nome utente, \"$2\", allo $1, dove altri volontari cercheranno di darti una risposta nel tempo a seguire.",
 	"growthexperiments-help-panel-questionreview-label": "La tua domanda",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Includi il titolo della pagina con la mia domanda",
@@ -123,7 +124,7 @@
 	"tag-help_panel_question-description": "Modifica effettuata dalla funzionalità \"Fai una domanda\" di Pannello introduttivo",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Modifiche suggerite",
 	"growthexperiments-help-panel-button-header-ask-help": "Chiedi allo sportello informazioni",
-	"growthexperiments-help-panel-button-header-ask-help-mentor": "Chiedi aiuto al tuo mentore",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Chiedi aiuto al tuo tutor",
 	"growthexperiments-help-panel-button-header-general-help": "Aiuto generale nel modificare",
 	"growthexperiments-help-panel-button-subheader-general-help": "Cerca risposte e leggi le migliori voci",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Ottieni risposte da altri volontari",
@@ -131,6 +132,8 @@
 	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|modifica|modifiche}} · $2",
 	"growthexperiments-help-panel-general-help-title": "Aiuto generale nel modificare",
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Ulteriori informazioni sulle modifiche suggerite",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Tu}} stai usando l'editor di wikitesto. Questi consigli per la modifica sono più utili con l'editor visuale.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Passa all'editor visuale",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Tu}} stai usando l'editor visuale. Questi consigli di modifica sono più utili con l'editor di wikitesto.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Passa all'editor sorgente"
 }

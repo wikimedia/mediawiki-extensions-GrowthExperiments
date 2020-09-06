@@ -10,8 +10,8 @@
 	"apihelp-homepagequestionstore-param-storage": "O local de armazenamento das perguntas.",
 	"apihelp-homepagequestionstore-param-userid": "O identificador do utilizador para o qual as perguntas serão obtidas.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Não foi encontrada nenhuma pergunta.",
-	"apihelp-growthsetmentor-summary": "Defina o tutor do usuário. A alteração será registada publicamente.",
-	"apihelp-growthsetmentor-param-mentee": "Nome de usuário do tutorado",
-	"apihelp-growthsetmentor-param-mentor": "Nome de usuário do tutor",
+	"apihelp-growthsetmentor-summary": "Definir o mentor do utilizador. A alteração terá um registo público.",
+	"apihelp-growthsetmentor-param-mentee": "Nome de utilizador do mentorado",
+	"apihelp-growthsetmentor-param-mentor": "Nome de utilizador do mentor",
 	"apihelp-growthsetmentor-param-reason": "Motivo da mudança"
 }
