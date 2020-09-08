@@ -68,10 +68,22 @@
 		].indexOf( editor ) >= 0;
 	}
 
+	/**
+	 * @param {string|string[]} variants
+	 * @return {boolean}
+	 */
+	function isUserInVariant( variants ) {
+		if ( typeof variants === 'string' ) {
+			variants = [ variants ];
+		}
+		return variants.indexOf( mw.user.options.values[ 'growthexperiments-homepage-variant' ] ) !== -1;
+	}
+
 	module.exports = {
 		serializeActionData: serializeActionData,
 		removeQueryParam: removeQueryParam,
-		isValidEditor: isValidEditor
+		isValidEditor: isValidEditor,
+		isUserInVariant: isUserInVariant
 	};
 
 }() );
