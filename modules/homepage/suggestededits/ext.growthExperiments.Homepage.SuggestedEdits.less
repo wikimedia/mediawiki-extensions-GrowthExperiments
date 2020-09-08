@@ -581,6 +581,14 @@ body.mw-special-Homepage {
 
 	&.growthexperiments-homepage-module-mobile-overlay,
 	&.growthexperiments-homepage-module-mobile-details {
+		.suggested-edits-taskexplanation-additional-info {
+			.oo-ui-iconElement .oo-ui-iconElement-icon {
+				// Use an unpadded version of the info icon on mobile (T236854)
+				/* @embed */
+				background-image: url( ../../../images/info-unpadded.svg );
+			}
+		}
+
 		.suggested-edits-filters {
 			.oo-ui-buttonGroupWidget {
 				.oo-ui-buttonElement {
@@ -592,6 +600,10 @@ body.mw-special-Homepage {
 						// Ensure it appears above the button after clicked.
 						z-index: 2;
 					}
+
+					.oo-ui-iconElement-icon {
+						max-width: 20px;
+					}
 				}
 			}
 		}
@@ -599,14 +611,6 @@ body.mw-special-Homepage {
 		.suggested-edits-footer {
 			font-size: 0.8em;
 			line-height: 1.5;
-		}
-
-		.suggested-edits-taskexplanation-additional-info {
-			.oo-ui-iconElement .oo-ui-iconElement-icon {
-				// Use an unpadded version of the info icon on mobile (T236854)
-				/* @embed */
-				background-image: url( ../../../images/info-unpadded.svg );
-			}
 		}
 
 		.suggested-edits-pager {
