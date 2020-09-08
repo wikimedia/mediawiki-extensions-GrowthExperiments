@@ -82,6 +82,14 @@ $specialPageAliases['ko'] = [
 	'ClaimMentee' => [ '멘티데려오기' ],
 ];
 
+/** Polish (polski) */
+$specialPageAliases['pl'] = [
+	'WelcomeSurvey' => [ 'Ankieta_powitalna' ],
+	'Homepage' => [ 'Strona_domowa' ],
+	'Impact' => [ 'Wpływ' ],
+	'ClaimMentee' => [ 'Wybierz_nowicjusza' ],
+];
+
 /** Serbian Cyrillic (српски (ћирилица)) */
 $specialPageAliases['sr-ec'] = [
 	'WelcomeSurvey' => [ 'Анкета_добродошлице' ],
