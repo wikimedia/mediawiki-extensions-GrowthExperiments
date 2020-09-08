@@ -235,15 +235,15 @@
 		"ext.growthExperiments.Homepage.Mobile": {
 			"packageFiles": [
 				"homepage/ext.growthExperiments.Homepage.Mobile.js",
-				"homepage/ext.growthExperiments.Homepage.MobileOverlay.js"
+				"homepage/ext.growthExperiments.Homepage.MobileOverlay.js",
+				"utils/ext.growthExperiments.Utils.js"
+			],
+			"messages": [
+				"growthexperiments-homepage-suggestededits-more-info"
 			],
 			"targets": [
 				"mobile"
-			],
-			"templates": {
-				"ModuleHeader.mustache": "homepage/ModuleHeader.mustache",
-				"ModuleContent.mustache": "homepage/ModuleContent.mustache"
-			}
+			]
 		},
 		"ext.growthExperiments.HelpPanel.icons": {
 			"class": "ResourceLoaderImageModule",

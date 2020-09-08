@@ -293,5 +293,6 @@
 	"growthexperiments-notification-learn-more": "Label of Learn more button in the email notification sent after your mentor is changed\n\nParameters:\n* $1 - mentee's raw username for use with GENDER\n*$2 - new mentor's raw username, for use with GENDER",
 	"right-setmentor": "{{doc-right|setmentor}}",
 	"action-setmentor": "{{doc-action|setmentor}}",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Text to show for the link which opens the guidance screen for the help panel on mobile.\n\n{{doc-growthexperiments-homepage}}"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Text to show for the link which opens the guidance screen for the help panel on mobile.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-suggestededits-more-info": "Text to show in the label for the more information button which appears in the suggested edits module.\n\n{{doc-growthexperiments-homepage}}"
 }

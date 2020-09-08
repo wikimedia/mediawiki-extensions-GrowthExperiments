@@ -283,5 +283,6 @@
 	"growthexperiments-notification-learn-more": "Learn more about {{GENDER:$1|your}} new {{GENDER:$2|mentor}}",
 	"right-setmentor": "Set user's mentor",
 	"action-setmentor": "set user's mentor",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "More about this suggested edit"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "More about this suggested edit",
+	"growthexperiments-homepage-suggestededits-more-info": "More information about suggested edits"
 }

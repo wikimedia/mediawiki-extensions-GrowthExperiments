@@ -1,8 +1,13 @@
 ( function ( M ) {
 
 	var mobile = M.require( 'mobile.startup' ),
+		View = mobile.View,
+		icons = mobile.icons,
+		header = mobile.headers.header,
+		promisedView = mobile.promisedView,
 		Overlay = mobile.Overlay,
 		util = mobile.util,
+		Utils = require( '../utils/ext.growthExperiments.Utils.js' ),
 		mfExtend = mobile.mfExtend;
 
 	/**
@@ -27,19 +32,37 @@
 		 * @memberof MobileOverlay
 		 * @instance
 		 */
-		templatePartials: util.extend( {}, Overlay.prototype.templatePartials, {
-			header: mw.template.get( 'ext.growthExperiments.Homepage.Mobile', 'ModuleHeader.mustache' ),
-			content: mw.template.get( 'ext.growthExperiments.Homepage.Mobile', 'ModuleContent.mustache' )
-		} ),
-
-		/**
-		 * @inheritdoc
-		 * @memberof MobileOverlay
-		 * @instance
-		 */
 		preRender: function () {
-			this.$spinner = this.$el.find( '.spinner' );
-			this.showSpinner();
+			var options = this.options,
+				infoButton,
+				headerActions = [],
+				oouiPromise;
+			function shouldShowInfoButton( moduleName ) {
+				return Utils.isUserInVariant( [ 'C' ] ) && moduleName === 'suggested-edits';
+			}
+			if ( shouldShowInfoButton( options.moduleName ) ) {
+				oouiPromise = mw.loader.using( 'oojs-ui' ).then( function () {
+					infoButton = new OO.ui.ButtonWidget( {
+						icon: 'info',
+						framed: false,
+						title: mw.msg( 'growthexperiments-homepage-suggestededits-more-info' )
+					} );
+					return View.make(
+						{ class: 'homepage-module-overlay-info' },
+						[ infoButton.$element ]
+					);
+				} );
+				headerActions = [ promisedView( oouiPromise ) ];
+			}
+
+			this.options.headers = [
+				header(
+					options.heading,
+					headerActions,
+					icons.back(),
+					'initial-header homepage-module-overlay-header'
+				)
+			];
 		},
 
 		/**
@@ -67,8 +90,6 @@
 					moduleName,
 					this.$el.find( '.overlay-content' )
 				);
-			}.bind( this ) ).always( function () {
-				this.hideSpinner();
 			}.bind( this ) );
 		}
 
