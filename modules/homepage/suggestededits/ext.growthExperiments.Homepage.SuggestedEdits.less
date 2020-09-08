@@ -210,12 +210,11 @@ body.mw-special-Homepage {
 			border: transparent;
 		}
 
-		.growthexperiments-homepage-module-header-icon {
-			height: unset;
-
-			.oo-ui-iconWidget {
-				min-width: 30px;
-				min-height: 30px;
+		.growthexperiments-homepage-module-header {
+			.oo-ui-buttonWidget {
+				// The circle in the icon is 15x15px normally, we want it to be 20px.
+				// But the header already has a larger than usual font size (1.2em), correct for that
+				font-size: ( 20 / 15 ) / 1.2em;
 			}
 		}
 

@@ -13,7 +13,10 @@
 
 	function setupCta( $container ) {
 		var ctaButton, dialog, windowManager,
-			$buttonElement = $container.find( '#mw-ge-homepage-startediting-cta' ),
+			$startEditingCta = $container.find( '#mw-ge-homepage-startediting-cta' ),
+			$suggestedEditsInfo = $container.find( '#mw-ge-homepage-suggestededits-info' ),
+			$buttonElement = $startEditingCta.length ? $startEditingCta : $suggestedEditsInfo,
+			buttonType = $startEditingCta.length ? 'startediting' : 'suggestededits',
 			mode = $buttonElement.closest( '.growthexperiments-homepage-module' ).data( 'mode' );
 		if ( $buttonElement.length === 0 ) {
 			return;
@@ -21,7 +24,9 @@
 
 		ctaButton = OO.ui.ButtonWidget.static.infuse( $buttonElement );
 		dialog = new StartEditingDialog( {
-			mode: mode
+			mode: mode,
+			useTopicSelector: buttonType === 'startediting',
+			activateWhenDone: buttonType === 'startediting'
 		}, logger, api );
 		windowManager = new OO.ui.WindowManager( {
 			modal: true
@@ -33,7 +38,10 @@
 
 		ctaButton.on( 'click', function () {
 			var lifecycle;
-			if ( mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' ) ) {
+			if (
+				buttonType === 'startediting' &&
+				mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' )
+			) {
 				// already set up, just open suggested edits
 				if ( mode === 'mobile-overlay' ) {
 					// we don't want users to return to the start overlay when they close
@@ -48,14 +56,18 @@
 				return;
 			}
 
+			if ( buttonType === 'startediting' ) {
+				logger.log( 'start-startediting', mode, 'se-cta-click' );
+			} else {
+				logger.log( 'suggested-edits', mode, 'se-info-click' );
+			}
 			lifecycle = windowManager.openWindow( dialog );
-			logger.log( 'start-startediting', mode, 'se-cta-click' );
 			lifecycle.closing.done( function ( data ) {
 				if ( data && data.action === 'activate' ) {
 					// No-op; logging and everything else is done within the dialog,
 					// as it is kept open during setup of the suggested edits module
 					// to make the UI change less disruptive.
-				} else {
+				} else if ( buttonType === 'startediting' ) {
 					logger.log( 'start-startediting', mode, 'se-cancel-activation' );
 				}
 			} );

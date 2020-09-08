@@ -7,6 +7,8 @@ var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).To
 /**
  * @param {Object} config
  * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
+ * @param {boolean} config.useTopicSelector Whether to show the topic selector in the intro panel
+ * @param {boolean} config.activateWhenDone Whether to activate suggested edits when the user finishes the dialog
  * @param {HomepageModuleLogger} logger
  * @param {mw.libs.ge.GrowthTasksApi} api
  * @constructor
@@ -17,6 +19,8 @@ function StartEditingDialog( config, logger, api ) {
 	this.api = api;
 	this.mode = config.mode;
 	this.enableTopics = mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' );
+	this.useTopicSelector = this.enableTopics && config.useTopicSelector;
+	this.activateWhenDone = config.activateWhenDone;
 	this.updateMatchCountDebounced = OO.ui.debounce( this.updateMatchCount.bind( this ) );
 }
 
@@ -60,11 +64,20 @@ StartEditingDialog.static.actions = [
 		framed: true,
 		modes: [ 'intro' ]
 	},
+	// Only used when activateWhenDone is true
 	{
 		action: 'activate',
 		label: OO.ui.isMobile() ?
 			mw.msg( 'growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile' ) :
 			mw.msg( 'growthexperiments-homepage-startediting-dialog-difficulty-forward' ),
+		flags: [ 'progressive', 'primary' ],
+		framed: true,
+		modes: [ 'difficulty' ]
+	},
+	// Only used when activateWhenDone is false
+	{
+		action: 'done',
+		label: mw.msg( 'growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate' ),
 		flags: [ 'progressive', 'primary' ],
 		framed: true,
 		modes: [ 'difficulty' ]
@@ -86,7 +99,7 @@ StartEditingDialog.prototype.initialize = function () {
 			'suggested-edits-article-count-panel-layout-mobile' :
 			'suggested-edits-article-count-panel-layout-desktop'
 		]
-	} ).toggle( this.topicsEnabledAndTopicsExist() );
+	} ).toggle( this.showingTopicSelector() );
 	this.articleCounterPanelLayout
 		.$element.append(
 			new OO.ui.IconWidget( { icon: 'live-broadcast' } ).$element,
@@ -124,8 +137,17 @@ StartEditingDialog.prototype.updateArticleCountLabel = function ( count ) {
  *
  * @return {boolean}
  */
-StartEditingDialog.prototype.topicsEnabledAndTopicsExist = function () {
+StartEditingDialog.prototype.topicsAvailable = function () {
 	return this.enableTopics && this.topicSelector && this.topicSelector.getSuggestions().length;
+};
+
+/**
+ * Convenience function to check if the topic selector will be shown.
+ *
+ * @return {boolean}
+ */
+StartEditingDialog.prototype.showingTopicSelector = function () {
+	return this.useTopicSelector && this.topicsAvailable();
 };
 
 StartEditingDialog.prototype.swapPanel = function ( panel ) {
@@ -168,10 +190,17 @@ StartEditingDialog.prototype.attachActions = function () {
 };
 
 StartEditingDialog.prototype.getSetupProcess = function ( data ) {
+	var dialog = this;
+	data = $.extend( {
+		actions: this.constructor.static.actions.filter( function ( action ) {
+			// If activateWhenDone is true, remove 'done'; otherwise remove 'activate'
+			return action.action !== ( dialog.activateWhenDone ? 'done' : 'activate' );
+		} )
+	}, data );
 	return StartEditingDialog.super.prototype.getSetupProcess
 		.call( this, data )
 		.next( function () {
-			if ( this.topicsEnabledAndTopicsExist() ) {
+			if ( this.showingTopicSelector() ) {
 				this.updateMatchCount();
 			}
 			this.swapPanel( 'intro' );
@@ -191,8 +220,8 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 		config = require( './config.json' );
 	return StartEditingDialog.super.prototype.getActionProcess.call( this, action )
 		.next( function () {
-			if ( action === 'close' ) {
-				this.close();
+			if ( action === 'close' || action === 'done' ) {
+				this.close( { action: action } );
 			}
 			if ( action === 'difficulty' ) {
 				this.logger.log( 'start-startediting', this.mode, 'se-cta-difficulty' );
@@ -202,7 +231,7 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 				this.$body.scrollTop( 0 );
 			}
 			if ( action === 'back' ) {
-				this.articleCounterPanelLayout.toggle( this.topicsEnabledAndTopicsExist() );
+				this.articleCounterPanelLayout.toggle( this.showingTopicSelector() );
 				this.logger.log( 'start-startediting', this.mode, 'se-cta-back' );
 				this.swapPanel( 'intro' );
 			}
@@ -237,7 +266,7 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 
 StartEditingDialog.prototype.buildIntroPanel = function () {
 	var $generalIntro, $generalImage, $responseIntro, surveyData, responseData, imageData, imageUrl, generalImageUrl,
-		$topicIntro, $topicMessage, $topicSelectorWrapper,
+		$topicIntro, $topicMessage, $topicSelectorWrapper, $topicDescription,
 		imagePath = mw.config.get( 'wgExtensionAssetsPath' ) + '/GrowthExperiments/images',
 		config = require( './config.json' ),
 		introLinks = config.GEHomepageSuggestedEditsIntroLinks,
@@ -307,17 +336,19 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 		surveyData = {};
 	}
 
+	// Construct the topic selector even if this.useTopicSelector is false, because
+	// topicsAvailable() needs it
 	this.topicSelector = this.enableTopics ? new TopicSelectionWidget() : false;
 
-	generalImageUrl = this.topicsEnabledAndTopicsExist() ? 'intro-topic-general.svg' : 'intro-heart-article.svg';
+	generalImageUrl = this.topicsAvailable() ? 'intro-topic-general.svg' : 'intro-heart-article.svg';
 
 	responseData = responseMap[ surveyData.reason ];
 	if ( responseData ) {
-		imageData = responseData.image[ this.topicsEnabledAndTopicsExist() ? 'withTopics' : 'withoutTopics' ];
+		imageData = responseData.image[ this.topicsAvailable() ? 'withTopics' : 'withoutTopics' ];
 		imageUrl = typeof imageData === 'string' ? imageData : imageData[ this.getDir() ];
 	}
 
-	if ( this.topicsEnabledAndTopicsExist() ) {
+	if ( this.topicsAvailable() ) {
 		$topicMessage = $( '<div>' )
 			.addClass( 'mw-ge-startediting-dialog-intro-topic-message' )
 			.append( responseData ?
@@ -342,42 +373,70 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 				$topicMessage
 			);
 
-		this.topicSelector.connect( this, {
-			selectAll: function ( groupId ) {
-				this.logger.log( 'suggested-edits', this.mode, 'se-topicfilter-select-all', {
-					isCta: true,
-					topicGroup: groupId
-				} );
-			},
-			removeAll: function ( groupId ) {
-				this.logger.log( 'suggested-edits', this.mode, 'se-topicfilter-remove-all', {
-					isCta: true,
-					topicGroup: groupId
-				} );
-			},
-			// The "select all" buttons fire many toggleSelection events at once, so debounce them
-			toggleSelection: 'updateMatchCountDebounced'
-		} );
-		$topicSelectorWrapper = $( '<div>' )
-			.addClass( 'mw-ge-startediting-dialog-intro-topic-selector' )
-			.append(
-				$( '<p>' )
-					.addClass( 'mw-ge-startediting-dialog-intro-topic-selector-header' )
-					.text( mw.message(
-						'growthexperiments-homepage-startediting-dialog-intro-topic-selector-header'
-					).text() ),
-				$( '<p>' )
-					.addClass( 'mw-ge-startediting-dialog-intro-topic-selector-subheader' )
-					.text( mw.message(
-						'growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader'
-					).text() ),
-				this.topicSelector.$element
-			);
+		if ( this.useTopicSelector ) {
+			this.topicSelector.connect( this, {
+				selectAll: function ( groupId ) {
+					this.logger.log( 'suggested-edits', this.mode, 'se-topicfilter-select-all', {
+						isCta: true,
+						topicGroup: groupId
+					} );
+				},
+				removeAll: function ( groupId ) {
+					this.logger.log( 'suggested-edits', this.mode, 'se-topicfilter-remove-all', {
+						isCta: true,
+						topicGroup: groupId
+					} );
+				},
+				// The "select all" buttons fire many toggleSelection events at once, so debounce them
+				toggleSelection: 'updateMatchCountDebounced'
+			} );
+			$topicSelectorWrapper = $( '<div>' )
+				.addClass( 'mw-ge-startediting-dialog-intro-topic-selector' )
+				.append(
+					$( '<p>' )
+						.addClass( 'mw-ge-startediting-dialog-intro-topic-selector-header' )
+						.text( mw.message(
+							'growthexperiments-homepage-startediting-dialog-intro-topic-selector-header'
+						).text() ),
+					$( '<p>' )
+						.addClass( 'mw-ge-startediting-dialog-intro-topic-selector-subheader' )
+						.text( mw.message(
+							'growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader'
+						).text() ),
+					this.topicSelector.$element
+				);
 
-		introPanel.$element.append(
-			$topicIntro,
-			$topicSelectorWrapper
-		);
+			introPanel.$element.append(
+				$topicIntro,
+				$topicSelectorWrapper
+			);
+		} else {
+			$topicDescription = $( '<div>' )
+				.addClass( 'mw-ge-startediting-dialog-intro-topic-description' )
+				.append(
+					$( '<img>' )
+						.addClass( 'mw-ge-startediting-dialog-intro-topic-description-image' )
+						.attr( { src: imagePath + '/intro-topic-description.svg' } ),
+					$( '<div>' )
+						.addClass( 'mw-ge-startediting-dialog-intro-topic-description-textWrapper' )
+						.append(
+							$( '<p>' )
+								.addClass( 'mw-ge-startediting-dialog-intro-topic-description-header' )
+								.text( mw.message(
+									'growthexperiments-homepage-startediting-dialog-intro-topic-description-header'
+								).text() ),
+							$( '<p>' )
+								.addClass( 'mw-ge-startediting-dialog-intro-topic-description-subheader' )
+								.text( mw.message(
+									'growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader'
+								).text() )
+						)
+				);
+			introPanel.$element.append(
+				$topicIntro,
+				$topicDescription
+			);
+		}
 	} else {
 		$generalImage = $( '<img>' )
 			.addClass( 'mw-ge-startediting-dialog-intro-general-image' )
