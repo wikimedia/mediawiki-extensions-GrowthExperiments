@@ -285,6 +285,6 @@
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "La lista dei tutor ([[$1]]) non esiste o è mal configurata.",
 	"growthexperiments-notification-learn-more": "Scopri di più sul{{GENDER:$2||la}} {{GENDER:$1|tu{{GENDER:$2|o|a|o/a}}}} nuov{{GENDER:$2|o|a|o/a}} tutor",
 	"right-setmentor": "Imposta tutor dell'utente",
-	"action-setmentor": "imposta tutor dell'utente",
+	"action-setmentor": "impostare tutor dell'utente",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Più su questa modifica suggerita"
 }
