@@ -787,9 +787,18 @@ class HomepageHooks implements
 	 * @return array An array of LESS variables
 	 */
 	public static function lessCallback( ResourceLoaderContext $context ) {
+		$isMobile = $context->getSkin() === 'minerva';
 		return [
-			// used in Homepage.SuggestedEdits.less, keep the comment there in sync
-			'cardContainerWrapperHeight' => ( $context->getSkin() === 'minerva' ) ? '16em' : '20.5em',
+			// used in Homepage.SuggestedEdits.less
+			'cardContainerWrapperHeight' => $isMobile ? '16em' : '20.5em',
+			'cardImageHeight' => $isMobile ? '128px' : '160px',
+			'cardWrapperWidth' => $isMobile ? '260px' : '368px',
+			'cardWrapperPadding' => $isMobile ? '0' : '8px',
+			'cardWrapperBorderRadius' => $isMobile ? '0' : '2px',
+			'cardContentTextPadding' => $isMobile ? '0 16px' : '0 8px',
+			'cardExtractHeight' => $isMobile ? '4.5em' : '3em',
+			'cardPageviewsTopPadding' => $isMobile ? '10px' : '16px',
+			'cardPageviewsIconMarginBottom' => $isMobile ? '0' : '4px',
 		];
 	}
 
