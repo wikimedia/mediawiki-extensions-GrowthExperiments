@@ -163,9 +163,17 @@
 			padding: 1.5em @side-padding;
 			display: flex;
 
+			.growthexperiments-homepage-mobile-summary &,
+			.growthexperiments-homepage-mobile-details & {
+				flex-direction: column;
+			}
+
 			&-image {
-				margin-right: 1em;
 				width: 216px;
+				// For desktop, where the image is to the left of the text
+				margin-right: 1em;
+				// For mobile, where the image is above the text
+				margin-bottom: 1em;
 			}
 
 			&-textWrapper {
