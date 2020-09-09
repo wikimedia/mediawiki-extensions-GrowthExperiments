@@ -36,7 +36,7 @@
 	 * @param {mw.libs.ge.GrowthTasksApi} api
 	 */
 	function SuggestedEditsModule( config, logger, api ) {
-		var $pager, $previous, $next, $filters, $filtersContainer;
+		var $previous, $next, $filters, $filtersContainer;
 		SuggestedEditsModule.super.call( this, config );
 
 		this.config = config;
@@ -83,11 +83,11 @@
 		this.nextWidget = new PreviousNextWidget( { direction: 'Next' } )
 			.connect( this, { click: 'onNextCard' } );
 
-		$pager = this.$element.find( '.suggested-edits-pager' );
-		if ( !$pager.length ) {
-			$pager = $( '<div>' ).addClass( 'suggested-edits-pager' ).appendTo( this.$element );
+		this.$pagerWrapper = this.$element.find( '.suggested-edits-pager' );
+		if ( !this.$pagerWrapper.length ) {
+			this.$pagerWrapper = $( '<div>' ).addClass( 'suggested-edits-pager' ).appendTo( this.$element );
 		}
-		$pager.addClass( 'skeleton' );
+		this.$pagerWrapper.addClass( 'skeleton' );
 		$previous = this.$element.find( '.suggested-edits-previous' );
 		if ( !$previous.length ) {
 			$previous = $( '<div>' ).addClass( 'suggested-edits-previous' ).appendTo( this.$element );
@@ -108,7 +108,7 @@
 			$filters = $( '<div>' ).addClass( 'suggested-edits-filters' ).appendTo( $filtersContainer );
 		}
 
-		$pager.append( this.pager.$element );
+		this.$pagerWrapper.append( this.pager.$element );
 		$previous.append( this.previousWidget.$element );
 		$next.append( this.nextWidget.$element );
 		$filters.append( this.filters.$element );
@@ -220,6 +220,7 @@
 		if ( this.taskQueue.length ) {
 			this.pager.setMessage( this.queuePosition + 1, this.taskQueue.length );
 			this.pager.toggle( true );
+			this.$pagerWrapper.removeClass( 'skeleton' );
 		} else {
 			this.pager.toggle( this.currentCard instanceof EditCardWidget );
 		}
