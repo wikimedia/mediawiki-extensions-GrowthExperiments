@@ -149,6 +149,15 @@ class SuggestedEdits extends BaseModule {
 		);
 	}
 
+	/** @inheritDoc */
+	public function getCssClasses() {
+		return array_merge( parent::getCssClasses(),
+			$this->getContext()->getUser()->getOption( self::ACTIVATED_PREF ) ?
+				[ 'activated' ] :
+				[ 'unactivated' ]
+		);
+	}
+
 	/**
 	 * Check whether topic matching has been enabled for the context user.
 	 * Note that even with topic matching disabled, all the relevant backend functionality
