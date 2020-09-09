@@ -789,7 +789,7 @@ class HomepageHooks implements
 	public static function lessCallback( ResourceLoaderContext $context ) {
 		return [
 			// used in Homepage.SuggestedEdits.less, keep the comment there in sync
-			'cardContainerWrapperHeight' => ( $context->getSkin() === 'minerva' ) ? '16em' : '18em',
+			'cardContainerWrapperHeight' => ( $context->getSkin() === 'minerva' ) ? '16em' : '20.5em',
 		];
 	}
 
