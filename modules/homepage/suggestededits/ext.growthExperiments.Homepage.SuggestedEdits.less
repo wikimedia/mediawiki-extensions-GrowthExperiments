@@ -186,6 +186,16 @@ body.mw-special-Homepage {
 		}
 	}
 
+	.suggested-edits-footer {
+		// negate the margin on .growthexperiments-homepage-module in ext.growthExperiments.Homepage.less
+		// margin values are *1.11 due to the font-size rule
+		margin: 16px -( @homepageModuleMargin / 0.9 ) -( @homepageModuleMargin / 0.9 ) -( @homepageModuleMargin / 0.9 );
+		padding: 12px 24px 16px;
+		background-color: @colorBaseInverted;
+		color: @colorGray5;
+		font-size: 0.9em;
+	}
+
 	&.growthexperiments-homepage-module-desktop {
 		background-color: @suggestedEditsBackgroundColor;
 
@@ -211,6 +221,11 @@ body.mw-special-Homepage {
 					}
 				}
 			}
+		}
+
+		.suggested-edits-footer {
+			margin: 16px -( @homepageModuleMargin / 0.9 ) -( @homepageModuleMargin / 0.75 ) -( @homepageModuleMargin / 0.9 );
+			padding: 12px 24px 12px;
 		}
 	}
 
@@ -497,16 +512,6 @@ body.mw-special-Homepage {
 				}
 			}
 		}
-	}
-
-	.suggested-edits-footer {
-		// negate the margin on .growthexperiments-homepage-module in ext.growthExperiments.Homepage.less
-		// margin values are *1.11 due to the font-size rule
-		margin: 16px -( @homepageModuleMargin / 0.9 ) -( @homepageModuleMargin / 0.9 ) -( @homepageModuleMargin / 0.9 );
-		padding: 12px 24px 16px;
-		background-color: @colorBaseInverted;
-		color: @colorGray5;
-		font-size: 0.9em;
 	}
 
 	&.growthexperiments-homepage-module-mobile-summary {
