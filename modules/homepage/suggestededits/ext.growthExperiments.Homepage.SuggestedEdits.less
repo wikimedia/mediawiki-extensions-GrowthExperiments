@@ -227,6 +227,20 @@ body.mw-special-Homepage {
 			margin: 16px -( @homepageModuleMargin / 0.9 ) -( @homepageModuleMargin / 0.75 ) -( @homepageModuleMargin / 0.9 );
 			padding: 12px 24px 12px;
 		}
+
+		.suggested-edits-card-wrapper {
+			.suggested-edits-previous,
+			.suggested-edits-next {
+				.oo-ui-iconElement-icon {
+					width: 30px;
+				}
+
+				.oo-ui-buttonElement-frameless .oo-ui-buttonElement-button {
+					width: 42px;
+					height: 42px;
+				}
+			}
+		}
 	}
 
 	// Styles for mobile filter. Desktop does not have a subheader.
@@ -343,7 +357,6 @@ body.mw-special-Homepage {
 			.suggested-edits-previous,
 			.suggested-edits-next {
 				padding: 0 16px;
-
 				// Override an OOUI style that moves the icons off the center of their containing
 				// blocks and makes symmetric positioning hard.
 				.oo-ui-buttonElement-frameless.oo-ui-iconElement:first-child {
