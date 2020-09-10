@@ -21,6 +21,10 @@
 			isMobile: OO.ui.isMobile(),
 			context: 'postEditDialog'
 		} ),
+		apiConfig = {
+			getDescription: true,
+			size: 10
+		},
 		preferences = api.getPreferences(),
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		newcomerTaskLogger = new NewcomerTaskLogger(),
@@ -38,10 +42,6 @@
 	 *   or fail with an error message if fetching the task failed.
 	 */
 	function getNextTask() {
-		var apiConfig = {
-			getDescription: true,
-			size: 10
-		};
 		// 10 tasks are hopefully enough to find one that's not protected.
 		return api.fetchTasks(
 			preferences.taskTypes,
@@ -53,18 +53,7 @@
 				// Don't offer the same task again.
 				task = data.tasks[ 1 ] || null;
 			}
-			if ( task && !OO.ui.isMobile() ) {
-				return $.when(
-					api.getExtraDataFromPcs( task, apiConfig ),
-					api.getExtraDataFromAqs( task, apiConfig )
-				).then( function () {
-					return task;
-				} );
-			} else if ( task ) {
-				return api.getExtraDataFromPcs( task, apiConfig );
-			} else {
-				return task;
-			}
+			return task;
 		} );
 	}
 
@@ -140,7 +129,7 @@
 	 *   - openPromise: a promise that resolves when the panel has been displayed.
 	 */
 	function setup( task, errorMessage ) {
-		var postEditPanel, openPromise, result;
+		var postEditPanel, openPromise, extraDataPromise, result;
 
 		if ( errorMessage ) {
 			mw.log.error( errorMessage );
@@ -159,6 +148,22 @@
 			userTaskTypes: preferences.taskTypes,
 			userTopics: preferences.topics
 		} ) );
+
+		if ( task && !OO.ui.isMobile() ) {
+			extraDataPromise = $.when(
+				api.getExtraDataFromPcs( task, apiConfig ),
+				api.getExtraDataFromAqs( task, apiConfig )
+			).then( function () {
+				return task;
+			} );
+		} else if ( task ) {
+			extraDataPromise = api.getExtraDataFromPcs( task, apiConfig );
+		} else {
+			extraDataPromise = $.Deferred().reject().promise();
+		}
+		extraDataPromise.then( function ( task ) {
+			postEditPanel.updateTask( task );
+		} );
 
 		result = {
 			panel: postEditPanel,

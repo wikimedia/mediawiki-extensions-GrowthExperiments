@@ -23,6 +23,7 @@
 		this.taskTypes = config.taskTypes;
 		this.newcomerTaskLogger = config.newcomerTaskLogger;
 		this.helpPanelLogger = config.helpPanelLogger;
+		this.$taskCard = null;
 	}
 	OO.initClass( PostEditPanel );
 	OO.mixinClass( PostEditPanel, OO.EventEmitter );
@@ -98,14 +99,14 @@
 		if ( !this.nextTask ) {
 			return null;
 		}
-
+		this.$taskCard = this.getCard( this.nextTask );
 		return $( '<div>' )
 			.addClass( 'mw-ge-help-panel-postedit-main' )
 			.append(
 				$( '<div>' )
 					.addClass( 'mw-ge-help-panel-postedit-subheader' )
 					.text( mw.message( 'growthexperiments-help-panel-postedit-subheader' ).text() ),
-				this.getCard( this.nextTask )
+				this.$taskCard
 			);
 	};
 
@@ -137,6 +138,15 @@
 		} );
 		taskCard.connect( this, { click: 'logTaskClick' } );
 		return taskCard.$element;
+	};
+
+	/**
+	 * Update the task card after some task fields have been lazy-loaded.
+	 *
+	 * @param {mw.libs.ge.TaskData} task
+	 */
+	PostEditPanel.prototype.updateTask = function ( task ) {
+		this.$taskCard.replaceWith( this.getCard( task ) );
 	};
 
 	/**

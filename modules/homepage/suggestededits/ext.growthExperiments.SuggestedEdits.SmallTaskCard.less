@@ -1,6 +1,7 @@
 @import 'mediawiki.mixins';
 @import 'resources/lib/ooui/wikimedia-ui-base.less';
 @import '../ext.growthExperiments.variables.less';
+@import '../ext.growthExperiments.mixins.less';
 
 .mw-ge-small-task-card {
 	display: flex;
@@ -30,6 +31,14 @@
 			/* @embed */
 			background: url( ../../../images/suggestededits/placeholder-image.svg ) no-repeat center/40px, @wmui-color-base80;
 		}
+
+		&-skeleton {
+			.loading-animation (400ms);
+
+			&:before {
+				border-radius: 2px 2px 0 0;
+			}
+		}
 	}
 
 	&-text-container {
@@ -55,6 +64,14 @@
 		text-overflow: ellipsis;
 		overflow: hidden;
 		color: @wmui-color-base20;
+
+		&.skeleton {
+			.loading-animation (800ms);
+
+			&:before {
+				content: '\00a0';
+			}
+		}
 	}
 
 	&-glue {
@@ -78,6 +95,10 @@
 		.oo-ui-iconWidget {
 			margin-right: 8px;
 			opacity: 0.65;
+		}
+
+		&.skeleton {
+			.loading-animation (1200ms);
 		}
 	}
 
