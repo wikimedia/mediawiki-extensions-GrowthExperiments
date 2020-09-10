@@ -5,6 +5,9 @@
 			"Neptune, the Mystic"
 		]
 	},
+	"growthexperiments-homepage-email-header-startemail": "Adresa e-pošte: $1",
+	"growthexperiments-homepage-email-changelink": "promijeni",
+	"growthexperiments-homepage-email-confirmlink": "potvrdi",
 	"tag-newcomer_task": "Zadatak za novopridošlice",
 	"tag-newcomer_task-description": "Izmjena predložena modulom za sugeriranje uređivanja na suradničkoj stranici novopridošlice",
 	"growthexperiments-homepage-claimmentee-already-mentor": "Već ste {{GENDER:$2|mentor|mentorica}} {{GENDER:$1|suradnika|suradnice}} $1",

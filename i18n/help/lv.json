@@ -40,5 +40,8 @@
 	"growthexperiments-help-panel-community-help-desk-text": "Kopienas palīdzības dienests",
 	"growthexperiments-help-panel-search-label": "Meklēt palīdzību",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Ieteiktie labojumi",
-	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|labojumi|labojums|labojumi}} · $2"
+	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|labojumi|labojums|labojumi}} · $2",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Par ieteiktajiem labojumiem",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Pārslēgties uz vizuālo redaktoru",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Pārslēgties uz vikikoda redaktoru"
 }

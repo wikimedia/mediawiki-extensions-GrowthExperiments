@@ -280,5 +280,6 @@
 	"growthexperiments-notification-learn-more": "Lær mer om den nye {{GENDER:$2|fadderen}} {{GENDER:$1|din}}",
 	"right-setmentor": "Sette brukeres faddere",
 	"action-setmentor": "sette brukeres faddere",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Mer om denne foreslåtte redigeringen"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Mer om denne foreslåtte redigeringen",
+	"growthexperiments-homepage-suggestededits-more-info": "Mer informasjon om foreslåtte redigeringer"
 }
