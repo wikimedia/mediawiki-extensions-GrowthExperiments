@@ -39,9 +39,7 @@ class NewcomerTasksUserOptionsLookup {
 	 */
 	public function getTaskTypeFilter( UserIdentity $user ): array {
 		return $this->getJsonListOption( $user, SuggestedEdits::TASKTYPES_PREF ) ??
-			// FIXME: A follow-up commit will define this as a constant and export to
-			// the client side.
-			[ 'copyedit', 'links' ];
+			SuggestedEdits::DEFAULT_TASK_TYPES;
 	}
 
 	/**

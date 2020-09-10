@@ -41,9 +41,9 @@ class NewcomerTasksUserOptionsLookupTest extends TestCase {
 		$lookup = new NewcomerTasksUserOptionsLookup( $userOptionsLookup, $config );
 		$this->assertSame( [ 'tasktypes' ], $lookup->getTaskTypeFilter( $user1 ) );
 		$this->assertSame( [ 'ores' ], $lookup->getTopicFilter( $user1 ) );
-		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user2 ) );
+		$this->assertSame( SuggestedEdits::DEFAULT_TASK_TYPES, $lookup->getTaskTypeFilter( $user2 ) );
 		$this->assertSame( [], $lookup->getTopicFilter( $user2 ) );
-		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user3 ) );
+		$this->assertSame( SuggestedEdits::DEFAULT_TASK_TYPES, $lookup->getTaskTypeFilter( $user3 ) );
 		$this->assertSame( [], $lookup->getTopicFilter( $user3 ) );
 
 		$config->set( 'GENewcomerTasksTopicType', PageConfigurationLoader::CONFIGURATION_TYPE_MORELIKE );

@@ -209,7 +209,7 @@ StartEditingDialog.prototype.getSetupProcess = function ( data ) {
 
 StartEditingDialog.prototype.updateMatchCount = function () {
 	var topics = this.topicSelector ? this.topicSelector.getSelectedTopics() : [];
-	this.api.fetchTasks( [ 'copyedit', 'links' ], topics ).then( function ( data ) {
+	this.api.fetchTasks( this.api.defaultTaskTypes, topics ).then( function ( data ) {
 		this.updateArticleCountLabel( Number( data.tasks.length ) );
 	}.bind( this ) );
 };
