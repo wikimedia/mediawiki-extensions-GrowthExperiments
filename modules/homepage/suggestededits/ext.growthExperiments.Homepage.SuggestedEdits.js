@@ -49,6 +49,7 @@
 		this.topicsQuery = [];
 		this.api = api;
 		this.taskQueue = [];
+		this.taskQueueLoading = false;
 		// Allow restoring on cancel.
 		this.backup = {};
 		this.backup.taskQueue = [];
@@ -125,6 +126,7 @@
 	SuggestedEditsModule.prototype.restoreState = function () {
 		this.taskQueue = this.backup.taskQueue;
 		this.queuePosition = this.backup.queuePosition;
+		this.taskQueueLoading = false;
 		this.filters.updateMatchCount( this.taskQueue.length );
 		this.showCard();
 	};
@@ -170,6 +172,7 @@
 		this.currentCard = null;
 		this.taskQueue = [];
 		this.queuePosition = 0;
+		this.taskQueueLoading = true;
 		if ( options.firstTask ) {
 			// The first card is already available (preloaded on the server side), display it
 			// to reduce wait time.
@@ -205,6 +208,7 @@
 				mw.config.set( 'wgGEHomepageModuleActionData-suggested-edits', extraData );
 			}
 
+			this.taskQueueLoading = false;
 			this.taskQueue = data.tasks;
 			if ( options.firstTask ) {
 				this.taskQueue = this.taskQueue.filter( function ( task ) {
@@ -236,8 +240,10 @@
 	};
 
 	SuggestedEditsModule.prototype.updatePager = function () {
+		var totalCount = this.taskQueueLoading ? undefined : this.taskQueue.length;
+
 		if ( this.taskQueue.length ) {
-			this.pager.setMessage( this.queuePosition + 1, this.taskQueue.length );
+			this.pager.setMessage( this.queuePosition + 1, totalCount );
 			this.pager.toggle( true );
 			this.$pagerWrapper.removeClass( 'skeleton' );
 		} else {
@@ -246,8 +252,8 @@
 	};
 
 	SuggestedEditsModule.prototype.updatePreviousNextButtons = function () {
-		var hasPrevious = this.queuePosition > 0,
-			hasNext = this.queuePosition < this.taskQueue.length;
+		var hasPrevious = !this.taskQueueLoading && this.queuePosition > 0,
+			hasNext = !this.taskQueueLoading && this.queuePosition < this.taskQueue.length;
 		this.previousWidget.setDisabled( !hasPrevious );
 		this.nextWidget.setDisabled( !hasNext );
 		this.previousWidget.toggle( this.currentCard instanceof EditCardWidget || this.taskQueue.length );
