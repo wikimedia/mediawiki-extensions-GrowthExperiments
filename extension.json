@@ -81,7 +81,9 @@
 				"GrowthExperimentsConfigurationLoader",
 				"GrowthExperimentsNewcomerTaskTrackerFactory",
 				"GrowthExperimentsExperimentUserManager",
-				"GrowthExperimentsHomepageModuleRegistry"
+				"GrowthExperimentsHomepageModuleRegistry",
+				"GrowthExperimentsTaskSuggesterFactory",
+				"GrowthExperimentsNewcomerTasksUserOptionsLookup"
 			]
 		},
 		"mentor": {
