@@ -507,7 +507,7 @@
 			preferences = api.getPreferences(),
 			$wrapper = $container.find( '.suggested-edits-module-wrapper' ),
 			mode = $wrapper.closest( '.growthexperiments-homepage-module' ).data( 'mode' ),
-			taskPreviewData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ][ 'task-preview' ],
+			taskPreviewData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ][ 'task-preview' ] || {},
 			fetchTasksOptions = {};
 
 		if ( !$wrapper.length ) {
