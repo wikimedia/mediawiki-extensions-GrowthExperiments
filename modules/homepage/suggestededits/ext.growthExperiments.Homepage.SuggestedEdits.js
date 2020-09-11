@@ -19,7 +19,8 @@
 		Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
 		NewcomerTaskLogger = require( './ext.growthExperiments.NewcomerTaskLogger.js' ),
 		aqsConfig = require( './AQSConfig.json' ),
-		taskTypes = require( './TaskTypes.json' );
+		taskTypes = require( './TaskTypes.json' ),
+		TASK_QUEUE_LENGTH = 200;
 
 	/**
 	 * @class
@@ -157,13 +158,24 @@
 	/**
 	 * Fetch suggested edits from ApiQueryGrowthTasks and update the view and internal state.
 	 *
+	 * @param {Object} [options]
+	 * @param {mw.libs.ge.TaskData} [options.firstTask] Override for the first task, which might
+	 *   have been preloaded earlier. If the task is already in the real result set, it will be
+	 *   hoisted to the front; if not, it will be prepended.
 	 * @return {jQuery.Promise} Status promise. It never fails; errors are handled internally
 	 *   by rendering an error card.
 	 */
-	SuggestedEditsModule.prototype.fetchTasksAndUpdateView = function () {
+	SuggestedEditsModule.prototype.fetchTasksAndUpdateView = function ( options ) {
+		options = options || {};
 		this.currentCard = null;
 		this.taskQueue = [];
 		this.queuePosition = 0;
+		if ( options.firstTask ) {
+			// The first card is already available (preloaded on the server side), display it
+			// to reduce wait time.
+			this.taskQueue = [ options.firstTask ];
+			this.showCard();
+		}
 
 		if ( !this.filters.taskTypeFiltersDialog ) {
 			// Module hasn't finished initializing, return.
@@ -194,6 +206,13 @@
 			}
 
 			this.taskQueue = data.tasks;
+			if ( options.firstTask ) {
+				this.taskQueue = this.taskQueue.filter( function ( task ) {
+					return task.title !== options.firstTask.title;
+				} );
+				this.taskQueue.unshift( options.firstTask );
+				this.taskQueue = this.taskQueue.slice( 0, TASK_QUEUE_LENGTH );
+			}
 			this.filters.updateMatchCount( this.taskQueue.length );
 			// FIXME these are the current values of the filters, not the ones we are just about
 			//   to display. Unlikely to cause much discrepancy though.
@@ -201,7 +220,7 @@
 			if ( this.config.topicMatching ) {
 				extraData.topics = this.topicsQuery;
 			}
-			// FIXME should this be capped to 200 or show the total server-side result count?
+			// FIXME should this be capped to TASK_QUEUE_LENGTH or show the total server-side result count?
 			extraData.taskCount = this.taskQueue.length;
 			this.logger.log( 'suggested-edits', this.mode, 'se-fetch-tasks' );
 			return $.Deferred().resolve().promise();
@@ -318,17 +337,16 @@
 			this.logger.log( 'suggested-edits', this.mode, 'se-task-pseudo-impression',
 				{ type: 'end' } );
 			this.currentCard = new EndOfQueueWidget( { topicMatching: this.config.topicMatching } );
+		} else {
+			this.currentCard = new EditCardWidget( this.taskQueue[ queuePosition ] );
 		}
-		if ( this.currentCard ) {
-			this.updateCardElement();
-			this.updateControls();
-			return $.Deferred().resolve();
-		}
-
-		this.currentCard = new EditCardWidget( this.taskQueue[ queuePosition ] );
 
 		this.updateCardElement();
 		this.updateControls();
+
+		if ( !( this.currentCard instanceof EditCardWidget ) ) {
+			return $.Deferred().resolve();
+		}
 		return this.getExtraDataAndUpdateQueue( queuePosition ).then( function () {
 			if ( queuePosition !== this.queuePosition ) {
 				return;
@@ -482,7 +500,9 @@
 			} ),
 			preferences = api.getPreferences(),
 			$wrapper = $container.find( '.suggested-edits-module-wrapper' ),
-			mode = $wrapper.closest( '.growthexperiments-homepage-module' ).data( 'mode' );
+			mode = $wrapper.closest( '.growthexperiments-homepage-module' ).data( 'mode' ),
+			taskPreviewData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ][ 'task-preview' ],
+			fetchTasksOptions = {};
 
 		if ( !$wrapper.length ) {
 			return;
@@ -501,29 +521,39 @@
 				mw.config.get( 'wgGEHomepagePageviewToken' )
 			),
 			api );
-		// Show an empty skeleton card, which will be overwritten once tasks
-		// are fetched.
-		suggestedEditsModule.showCard( new EditCardWidget( {} ) );
-		return suggestedEditsModule.fetchTasksAndUpdateView()
-			.then( function () {
-				suggestedEditsModule.filters.toggle( true );
-				if ( suggestedEditsModule.currentCard instanceof ErrorCardWidget ) {
-					// currentCard was set by fetchTasksAndUpdateView, do not overwrite it
-					return $.Deferred().resolve();
+
+		if ( taskPreviewData.title ) {
+			fetchTasksOptions = { firstTask: taskPreviewData };
+		} else {
+			// Show an empty skeleton card, which will be overwritten once tasks are fetched.
+			suggestedEditsModule.showCard( new EditCardWidget( {} ) );
+			if ( taskPreviewData.error ) {
+				mw.log.error( 'task preview data unavailable: ' + taskPreviewData.error );
+			}
+		}
+		return suggestedEditsModule.fetchTasksAndUpdateView( fetchTasksOptions ).then( function () {
+			suggestedEditsModule.filters.toggle( true );
+			if ( suggestedEditsModule.currentCard ) {
+				// currentCard was set by fetchTasksAndUpdateView, do not overwrite it
+				if ( fetchTasksOptions.firstTask ) {
+					// update task count
+					suggestedEditsModule.updateControls();
 				}
-				return suggestedEditsModule.showCard();
-			} ).done( function () {
-				mw.track(
-					'timing.growthExperiments.specialHomepage.modules.suggestedEditsLoadingComplete.' +
-						( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
-					mw.now() - initTime
-				);
-				// Use done instead of then because 1) we don't want to make the caller
-				// wait for the preload; 2) failed preloads should not result in an
-				// error card, as they don't affect the current card. The load will be
-				// retried when the user navigates.
-				suggestedEditsModule.preloadNextCard();
-			} );
+				return $.Deferred().resolve();
+			}
+			return suggestedEditsModule.showCard();
+		} ).done( function () {
+			mw.track(
+				'timing.growthExperiments.specialHomepage.modules.suggestedEditsLoadingComplete.' +
+					( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
+				mw.now() - initTime
+			);
+			// Use done instead of then because 1) we don't want to make the caller
+			// wait for the preload; 2) failed preloads should not result in an
+			// error card, as they don't affect the current card. The load will be
+			// retried when the user navigates.
+			suggestedEditsModule.preloadNextCard();
+		} );
 	}
 
 	// Try setup for desktop mode and server-side-rendered mobile mode.
