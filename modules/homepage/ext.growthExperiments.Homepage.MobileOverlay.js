@@ -35,24 +35,32 @@
 		preRender: function () {
 			var options = this.options,
 				infoButton,
-				headerActions = [],
-				oouiPromise;
+				headerActions = [];
+
 			function shouldShowInfoButton( moduleName ) {
 				return Utils.isUserInVariant( [ 'C' ] ) && moduleName === 'suggested-edits';
 			}
+
 			if ( shouldShowInfoButton( options.moduleName ) ) {
-				oouiPromise = mw.loader.using( 'oojs-ui' ).then( function () {
+				this.headerPromise = mw.loader.using( 'oojs-ui' ).then( function () {
 					infoButton = new OO.ui.ButtonWidget( {
+						id: 'mw-ge-homepage-suggestededits-info',
 						icon: 'info',
 						framed: false,
-						title: mw.msg( 'growthexperiments-homepage-suggestededits-more-info' )
+						title: mw.msg( 'growthexperiments-homepage-suggestededits-more-info' ),
+						label: mw.msg( 'growthexperiments-homepage-suggestededits-more-info' ),
+						invisibleLabel: true
 					} );
+					// HACK: make infusing this button (pretend to) work, even though it was created in JS
+					infoButton.$element.data( 'ooui-infused', infoButton );
 					return View.make(
 						{ class: 'homepage-module-overlay-info' },
 						[ infoButton.$element ]
 					);
 				} );
-				headerActions = [ promisedView( oouiPromise ) ];
+				headerActions = [ promisedView( this.headerPromise ) ];
+			} else {
+				this.headerPromise = $.Deferred().resolve().promise();
 			}
 
 			this.options.headers = [
@@ -81,16 +89,21 @@
 			// Load the RL modules if they were not loaded before the user tapped on the
 			// module. Then add the HTML to the DOM, then fire a hook so that the JS in the RL
 			// modules can operate on the HTML in the overlay.
-			mw.loader.using( resourceLoaderModules ).then( function () {
-				appendHtml( moduleHtml );
-				// It's important to always call the hook from a promise so it executes
-				// after postRender() has finished. It ensures the module content is in
-				// the overlay and can be manipulated.
-				mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).fire(
-					moduleName,
-					this.$el.find( '.overlay-content' )
-				);
-			}.bind( this ) );
+			mw.loader.using( resourceLoaderModules )
+				.then( function () {
+					appendHtml( moduleHtml );
+					// Wait for the header promise to finish before firing the hook
+					return this.headerPromise;
+				}.bind( this ) )
+				.then( function () {
+					// It's important to always call the hook from a promise so it executes
+					// after postRender() has finished. It ensures the module content is in
+					// the overlay and can be manipulated.
+					mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).fire(
+						moduleName,
+						this.$el
+					);
+				}.bind( this ) );
 		}
 
 	} );

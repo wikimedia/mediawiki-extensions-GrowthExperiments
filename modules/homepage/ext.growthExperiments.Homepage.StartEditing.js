@@ -81,7 +81,7 @@
 
 	// Try setup for mobile overlay mode
 	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
-		if ( moduleName === 'start' ) {
+		if ( moduleName === 'start' || moduleName === 'suggested-edits' ) {
 			setupCta( $content );
 		}
 	} );
