@@ -160,8 +160,10 @@
 					pageId: item.pageid || null,
 					revisionId: item.revisions ? item.revisions[ 0 ].revid : null,
 					url: null,
-					thumbnailSource: item.thumbnail && item.thumbnail.source || null,
-					imageWidth: item.original && item.original.width || null,
+					// There is no way to tell whether the page has no page image or it is just
+					// missing due to API continuation.
+					thumbnailSource: item.thumbnail && item.thumbnail.source || undefined,
+					imageWidth: item.original && item.original.width || undefined,
 					tasktype: item.tasktype,
 					difficulty: item.difficulty,
 					topics: item.topics || null,
@@ -247,7 +249,7 @@
 			// It is used for some beta wiki configurations and local setups, and also when the
 			// action API data is missing due to query+pageimages having a smaller max limit than
 			// query+growthtasks.
-			if ( !task.thumbnailSource ) {
+			if ( task.thumbnailSource === undefined ) {
 				if ( data.thumbnail ) {
 					task.thumbnailSource = data.thumbnail.source;
 					task.imageWidth = data.originalimage.width;

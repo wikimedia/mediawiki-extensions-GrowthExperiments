@@ -48,7 +48,7 @@
 		var $imageContent = $( '<div>' )
 				.addClass( 'se-card-image no-image' ),
 			$imageForCaching = $( '<img>' );
-		if ( this.data.thumbnailSource ) {
+		if ( this.data.thumbnailSource !== null ) {
 			$imageContent.addClass( 'skeleton' );
 			// Download the image but don't add to the DOM.
 			$imageForCaching.attr( 'src', this.data.thumbnailSource ).on( 'load', function () {
