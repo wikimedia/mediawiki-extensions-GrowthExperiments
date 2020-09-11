@@ -246,12 +246,12 @@ class SuggestedEdits extends BaseModule {
 			$topics = array_slice( $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user ),
 				0, 1 );
 			$tasks = $this->taskSuggester->suggest( $user, $taskTypes, $topics, 10 );
-			$tasks = $this->protectionFilter->filter( $tasks, 1 );
 			if ( $tasks instanceof StatusValue ) {
 				$data['task-preview'] = [ 'error' => Status::wrap( $tasks )->getMessage()->parse() ];
 			} elseif ( $tasks->count() === 0 ) {
 				$data['task-preview'] = [];
 			} else {
+				$tasks = $this->protectionFilter->filter( $tasks, 1 );
 				$task = $tasks[0];
 				$templates = null;
 				if ( $task instanceof TemplateBasedTask ) {
