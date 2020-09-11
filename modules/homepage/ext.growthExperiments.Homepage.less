@@ -180,6 +180,9 @@ body.mw-special-Homepage {
 					.growthexperiments-homepage-module-suggested-edits.growthexperiments-homepage-module-user-variant-A {
 						// 1.5* instead of 2* because the leftmost module doesn't have a left margin
 						width: calc( 50% ~'-'1.5 * @homepageModuleMargin );
+						// Define a minimum height so as to avoid height change once the
+						// card/controls/pager etc are loaded.
+						min-height: 621.7px;
 					}
 
 					.growthexperiments-homepage-module-suggested-edits.growthexperiments-homepage-module-user-variant-C,
@@ -196,6 +199,15 @@ body.mw-special-Homepage {
 					.growthexperiments-homepage-module-start,
 					> .growthexperiments-homepage-module:nth-child( 2 ) {
 						margin-left: 0;
+					}
+				}
+
+				&-subgroup-secondary {
+					.growthexperiments-homepage-module-suggested-edits.growthexperiments-homepage-module-user-variant-C,
+					.growthexperiments-homepage-module-suggested-edits.growthexperiments-homepage-module-user-variant-D {
+						// Define a minimum height so as to avoid height change once the
+						// card/controls/pager etc are loaded.
+						min-height: 631.533px;
 					}
 				}
 			}
