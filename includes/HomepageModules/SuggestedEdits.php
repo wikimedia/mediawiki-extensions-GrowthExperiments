@@ -223,6 +223,7 @@ class SuggestedEdits extends BaseModule {
 	/** @inheritDoc */
 	public function getJsData( $mode ) {
 		$data = parent::getJsData( $mode );
+		$data['task-preview'] = [];
 
 		// Preload one task card for users in variant C and D.
 		if (
