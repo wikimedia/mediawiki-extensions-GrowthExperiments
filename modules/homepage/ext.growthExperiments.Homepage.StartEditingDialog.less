@@ -128,9 +128,17 @@
 			background-color: @colorGray15;
 
 			&-image {
-				float: left;
 				width: 128px;
-				margin-right: 1em;
+
+				body.growthexperiments-homepage-user-variant-A & {
+					float: left;
+					margin-right: 1em;
+				}
+
+				body.growthexperiments-homepage-user-variant-C & {
+					float: right;
+					margin-left: 1em;
+				}
 			}
 
 			&-title {
@@ -148,6 +156,31 @@
 				strong {
 					font-weight: normal;
 				}
+			}
+		}
+
+		&-topic-description {
+			padding: 1.5em @side-padding;
+			display: flex;
+
+			&-image {
+				margin-right: 1em;
+				width: 216px;
+			}
+
+			&-textWrapper {
+				flex-grow: 1;
+			}
+
+			&-header {
+				font-weight: bold;
+				font-size: 1.15em;
+				color: @colorGray2;
+			}
+
+			&-subheader {
+				font-size: 1.15em;
+				color: @colorGray5;
 			}
 		}
 

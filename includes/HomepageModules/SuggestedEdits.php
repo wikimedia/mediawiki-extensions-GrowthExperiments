@@ -19,6 +19,7 @@ use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use Message;
+use OOUI\ButtonWidget;
 use Status;
 use StatusValue;
 use TitleFactory;
@@ -108,20 +109,25 @@ class SuggestedEdits extends BaseModule {
 
 	/** @inheritDoc */
 	protected function getHeaderTextElement() {
+		$context = $this->getContext();
 		if ( $this->getMode() === self::RENDER_DESKTOP &&
 			$this->experimentUserManager->isUserInVariant(
-				$this->getContext()->getUser(), [ 'C' ]
+				$context->getUser(), [ 'C' ]
 			)
 		) {
 			return Html::element(
 					'div',
 					[ 'class' => self::BASE_CSS_CLASS . '-header-text' ],
 					$this->getHeaderText() ) .
-				Html::rawElement( 'a', [
-					'class' => self::BASE_CSS_CLASS . '-header-info',
-					'data-link-id' => 'se-header-info',
-					'href' => '#'
-				], $this->getHeaderIcon( 'info', false ) );
+				new ButtonWidget( [
+					'id' => 'mw-ge-homepage-suggestededits-info',
+					'icon' => 'info',
+					'framed' => false,
+					'title' => $context->msg( 'growthexperiments-homepage-suggestededits-more-info' )->text(),
+					'label' => $context->msg( 'growthexperiments-homepage-suggestededits-more-info' )->text(),
+					'invisibleLabel' => true,
+					'infusable' => true,
+				] );
 		} else {
 			return parent::getHeaderTextElement();
 		}
@@ -390,9 +396,14 @@ class SuggestedEdits extends BaseModule {
 
 	/** @inheritDoc */
 	protected function getModules() {
+		$variantC = $this->experimentUserManager->isUserInVariant(
+			$this->getContext()->getUser(), [ 'C' ]
+		);
 		return array_merge(
 			parent::getModules(),
-			[ 'ext.growthExperiments.Homepage.SuggestedEdits' ]
+			[ 'ext.growthExperiments.Homepage.SuggestedEdits' ],
+			// The code to infuse the info button is in the StartEditing module
+			$variantC ? [ 'ext.growthExperiments.Homepage.StartEditing' ] : []
 		);
 	}
 
