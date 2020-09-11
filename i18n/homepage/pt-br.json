@@ -281,5 +281,6 @@
 	"growthexperiments-notification-learn-more": "Aprender mais sobre {{GENDER:$1|seu|sua}} novo(a) {{GENDER:$2|mentor|mentora}}",
 	"right-setmentor": "Definir mentor do usuário",
 	"action-setmentor": "definir mentor do usuário",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Mais sobre esta edição sugerida"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Mais sobre esta edição sugerida",
+	"growthexperiments-homepage-suggestededits-more-info": "Mais informações sobre as edições sugeridas"
 }

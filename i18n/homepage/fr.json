@@ -295,5 +295,6 @@
 	"growthexperiments-notification-learn-more": "En savoir plus sur {{GENDER:$1|votre}} {{GENDER:$2|nouveau tuteur|nouvelle tutrice}}",
 	"right-setmentor": "Définir le tuteur de l’utilisateur",
 	"action-setmentor": "définir le tuteur de l’utilisateur",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "En savoir plus sur cette modification suggérée"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "En savoir plus sur cette modification suggérée",
+	"growthexperiments-homepage-suggestededits-more-info": "Autres informations sur les modifications suggérées"
 }

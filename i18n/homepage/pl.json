@@ -291,5 +291,6 @@
 	"growthexperiments-notification-learn-more": "Dowiedz się więcej o {{GENDER:$2|swoim nowym|swojej nowej}} przewodni{{GENDER:$2|ku|czce|ku(-czce)}}{{GENDER:$1|}}",
 	"right-setmentor": "Ustaw przewodnika",
 	"action-setmentor": "ustaw przewodnika",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Więcej o sugerowanych edycjach"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Więcej o sugerowanych edycjach",
+	"growthexperiments-homepage-suggestededits-more-info": "Więcej informacji o sugerowanych edycjach"
 }
