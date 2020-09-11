@@ -1,6 +1,7 @@
 @import 'mediawiki.ui/variables.less';
 @import 'mediawiki.mixins.less';
 @import '../ext.growthExperiments.variables.less';
+@import '../ext.growthExperiments.mixins.less';
 
 // The following variables are defined in HomepageHooks::lessCallback, as their
 // values vary between Minerva and Vector.
@@ -464,80 +465,40 @@ body.mw-special-Homepage {
 					}
 
 					.se-card-image.skeleton {
-						animation: loading 2s ease infinite;
-						animation-delay: 400ms;
+						.loading-animation (400ms);
+
+						&:before {
+							border-radius: 2px 2px 0 0;
+						}
 					}
 
 					.se-card-extract.skeleton {
-						animation: loading 2s ease infinite;
-						animation-delay: 800ms;
+						.loading-animation (800ms);
+
+						&:before {
+							background-image: linear-gradient( @colorGray14 14px, transparent 0 ), linear-gradient( @colorGray14 14px, transparent 0 ), linear-gradient( @colorGray14 14px, transparent 0 );
+							background-size: 100% 12px, 100% 12px, 100% 12px;
+							background-position: 0 4px, 0 21px, 0 38px;
+						}
+
+						&:after {
+							// Disable the fading of the last block of text from
+							// se-card-extract:after.
+							width: 0;
+							height: 0;
+						}
 					}
 
 					.se-card-pageviews.skeleton {
-						animation: loading 2s ease infinite;
-						animation-delay: 1200ms;
-					}
+						.loading-animation (1200ms);
 
-					@keyframes loading {
-						0% {
-							opacity: 0.5;
+						&:before {
+							position: absolute;
+							width: 240px;
+							height: 16px;
+							clear: both;
+							z-index: 100;
 						}
-
-						40% {
-							opacity: 1;
-						}
-
-						60% {
-							opacity: 1;
-						}
-
-						100% {
-							opacity: 0.4;
-						}
-					}
-
-					.se-card-extract.skeleton:before {
-						content: '';
-						width: 100%;
-						height: 100%;
-						float: left;
-						background-repeat: no-repeat;
-						background-image: linear-gradient( @colorGray14 14px, transparent 0 ), linear-gradient( @colorGray14 14px, transparent 0 ), linear-gradient( @colorGray14 14px, transparent 0 );
-						background-size: 100% 12px, 100% 12px, 100% 12px;
-						background-position: 0 4px, 0 21px, 0 38px;
-					}
-
-					.se-card-extract.skeleton:after {
-						// Disable the fading of the last block of text from
-						// se-card-extract:after.
-						width: 0;
-						height: 0;
-					}
-
-					.se-card-image.skeleton:before {
-						content: '';
-						width: 100%;
-						height: 100%;
-						float: left;
-						background-repeat: no-repeat;
-						border-radius: 2px 2px 0 0;
-						background-image: linear-gradient( @colorGray14 100%, transparent 0 );
-						background-size: 100% 100%;
-						background-position: 0 0;
-					}
-
-					.se-card-pageviews.skeleton:before {
-						position: absolute;
-						float: left;
-						content: '';
-						width: 240px;
-						height: 16px;
-						clear: both;
-						background-repeat: no-repeat;
-						background-image: linear-gradient( @colorGray14 100%, transparent 0 );
-						background-size: 100% 100%;
-						background-position: 0 0;
-						z-index: 100;
 					}
 				}
 			}

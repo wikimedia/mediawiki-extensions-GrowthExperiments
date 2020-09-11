@@ -1,0 +1,34 @@
+// displays a grey rectangle with a running gradient
+.loading-animation (@delay) {
+	animation: loading 2s ease infinite;
+	animation-delay: @delay;
+
+	&:before {
+		content: '';
+		width: 100%;
+		height: 100%;
+		float: left;
+		background-repeat: no-repeat;
+		background-image: linear-gradient( @colorGray14 100%, transparent 0 );
+		background-size: 100% 100%;
+		background-position: 0 0;
+	}
+
+	@keyframes loading {
+		0% {
+			opacity: 0.5;
+		}
+
+		40% {
+			opacity: 1;
+		}
+
+		60% {
+			opacity: 1;
+		}
+
+		100% {
+			opacity: 0.4;
+		}
+	}
+}
