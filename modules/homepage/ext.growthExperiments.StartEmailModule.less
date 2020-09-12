@@ -5,6 +5,11 @@
 	background-color: @colorGray15;
 	border: unset;
 
+	// Override strong padding-top: 0 rule for mobile from Homepage.less
+	body.mw-special-Homepage.growthexperiments-homepage-mobile-summary .growthexperiments-homepage-container &.growthexperiments-homepage-module {
+		padding-top: 1em;
+	}
+
 	.growthexperiments-homepage-startemail-address {
 		font-weight: bold;
 	}
