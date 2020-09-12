@@ -8,10 +8,9 @@
 	.growthexperiments-homepage-desktop & {
 		.oo-ui-window-head {
 			display: none;
-		}
-
-		.oo-ui-window-foot {
-			outline: 0;
+			// Override the min-height from OOUI, so that measuring the height in JS returns 0
+			min-height: 0;
+			height: 0;
 		}
 
 		.oo-ui-window-body {
@@ -169,11 +168,16 @@
 			}
 
 			&-image {
-				width: 216px;
-				// For desktop, where the image is to the left of the text
-				margin-right: 1em;
-				// For mobile, where the image is above the text
-				margin-bottom: 1em;
+				.growthexperiments-homepage-desktop & {
+					width: 128px;
+					margin-right: 1em;
+				}
+
+				.growthexperiments-homepage-mobile-summary &,
+				.growthexperiments-homepage-mobile-details & {
+					width: 216px;
+					margin-bottom: 1em;
+				}
 			}
 
 			&-textWrapper {

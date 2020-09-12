@@ -264,9 +264,29 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 		}, this );
 };
 
+StartEditingDialog.prototype.getBodyHeight = function () {
+	// Measure the height of each panel, and find the tallest one
+	var i, oldVisibility, panelHeight,
+		maxHeight = 0,
+		panels = this.panels.getItems();
+	for ( i = 0; i < panels.length; i++ ) {
+		// Make the panel visible so we can measure it
+		oldVisibility = panels[ i ].isVisible();
+		panels[ i ].toggle( true );
+		panelHeight = panels[ i ].$element[ 0 ].scrollHeight;
+		panels[ i ].toggle( oldVisibility );
+
+		if ( panelHeight > maxHeight ) {
+			maxHeight = panelHeight;
+		}
+	}
+
+	return maxHeight;
+};
+
 StartEditingDialog.prototype.buildIntroPanel = function () {
 	var $generalIntro, $generalImage, $responseIntro, surveyData, responseData, imageData, imageUrl, generalImageUrl,
-		$topicIntro, $topicMessage, $topicSelectorWrapper, $topicDescription,
+		$topicIntro, $topicMessage, $topicSelectorWrapper, $topicDescription, descriptionImage,
 		imagePath = mw.config.get( 'wgExtensionAssetsPath' ) + '/GrowthExperiments/images',
 		config = require( './config.json' ),
 		introLinks = config.GEHomepageSuggestedEditsIntroLinks,
@@ -411,12 +431,14 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 				$topicSelectorWrapper
 			);
 		} else {
+			descriptionImage = OO.ui.isMobile() ? 'intro-topic-description-landscape.svg' :
+				'intro-topic-description-square.svg';
 			$topicDescription = $( '<div>' )
 				.addClass( 'mw-ge-startediting-dialog-intro-topic-description' )
 				.append(
 					$( '<img>' )
 						.addClass( 'mw-ge-startediting-dialog-intro-topic-description-image' )
-						.attr( { src: imagePath + '/intro-topic-description.svg' } ),
+						.attr( { src: imagePath + '/' + descriptionImage } ),
 					$( '<div>' )
 						.addClass( 'mw-ge-startediting-dialog-intro-topic-description-textWrapper' )
 						.append(
