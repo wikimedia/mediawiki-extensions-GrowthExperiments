@@ -47,6 +47,8 @@
 			.addClass( 'mw-ge-small-task-card-image' );
 		if ( this.task.thumbnailSource ) {
 			$image.css( 'background-image', 'url("' + this.task.thumbnailSource + '")' );
+		} else if ( this.task.thumbnailSource === undefined ) {
+			$image.addClass( 'mw-ge-small-task-card-image-skeleton' );
 		} else {
 			$image.addClass( 'mw-ge-small-task-card-image-placeholder' );
 		}
@@ -58,6 +60,8 @@
 			$description = $( '<div>' )
 				.addClass( 'mw-ge-small-task-card-description' )
 				.text( this.task.description );
+		} else if ( this.task.description === undefined ) {
+			$description = $( '<div>' ).addClass( 'mw-ge-small-task-card-description skeleton' );
 		}
 
 		if ( this.task.pageviews ) {
@@ -66,6 +70,8 @@
 				.text( mw.message( 'growthexperiments-homepage-suggestededits-pageviews',
 					mw.language.convertNumber( this.task.pageviews ) ).text() )
 				.prepend( new OO.ui.IconWidget( { icon: 'chart' } ).$element );
+		} else if ( this.task.pageviews === undefined ) {
+			$pageviews = $( '<span>' ).addClass( 'mw-ge-small-task-card-pageviews skeleton' );
 		}
 
 		$taskType = $( '<span>' )
