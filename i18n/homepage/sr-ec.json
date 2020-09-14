@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"BadDog",
+			"Kizule",
 			"Zoranzoki21",
 			"Вукан Ц"
 		]
@@ -55,9 +56,12 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>Када {{GENDER:|сте}} отворили налог, рекли сте да желите израдити нови чланак.</strong> То је важан, али изазован начин доприношења, те вам препоручујемо да најпре пробате неке мање измене постојећих чланака. Ако бисте радије ишли право на прављење неког новог чланка, сазнајте како да то урадите [$1 овде].",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Изаберите теме које {{GENDER:|вас}} занимају",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "Покушаћемо да предлажемо чланке који се подударају с {{GENDER:|вашим}} интересовањима.",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Филтрирање према теми",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader": "Изаберите теме да бисте прибавили предлоге који су {{GENDER:|вама}} занимљиви. Означите колико год тема желите.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Назад",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Прибави предлоге",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Готово",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Готово",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Најпре покушајте с неким <strong>лакшим</strong> изменама",
 	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "Постоји много начина да допринесете како бисте побољшали овај пројекат. Заједница уредника је направила листу чланака којима је потребна нека врста помоћи.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Лако",
@@ -149,6 +153,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Почните овде.",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Отворите бочни мени и додирните $2 да бисте посетили {{GENDER:$1|своју}} почетну страницу.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> од <strong>$2</strong> {{PLURAL:$2|предлог|предлога}}",
+	"growthexperiments-homepage-suggestededits-pager-unknown-count": "?",
 	"growthexperiments-homepage-suggestededits-pager-end": "Крај",
 	"growthexperiments-homepage-suggestededits-pageviews": "Посета у последњих 60 дана: $1",
 	"growthexperiments-homepage-suggestededits-previous-card": "Претходна предложена измена",
@@ -286,5 +291,6 @@
 	"growthexperiments-notification-learn-more": "Сазнајте више {{GENDER:$1|о}} {{GENDER:$2|новом ментору|новој менторки}}",
 	"right-setmentor": "постављање ментора корисницима",
 	"action-setmentor": "постављате ментора корисницима",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Сазнајте више о предложеној измени"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Сазнајте више о предложеној измени",
+	"growthexperiments-homepage-suggestededits-more-info": "Детаљније о предложеним изменама"
 }

@@ -4,6 +4,7 @@
 			"BaRaN6161 TURK",
 			"Grkn gll",
 			"Mirzali",
+			"MuratTheTurkish",
 			"Sayginer",
 			"ToprakM"
 		]
@@ -28,6 +29,7 @@
 	"growthexperiments-homepage-email-header-noemail": "{{GENDER:$1|Sizin}} e-posta adresinizi ekleyin",
 	"growthexperiments-homepage-email-header-unconfirmed": "{{GENDER:$1|Sizin}} e-posta adresinizi onaylayın",
 	"growthexperiments-homepage-email-header-confirmed": "E-posta eklendi",
+	"growthexperiments-homepage-email-header-startemail": "E-posta: $1",
 	"growthexperiments-homepage-email-text-noemail": "Hesap kurtarma için önerilir",
 	"growthexperiments-homepage-email-text-unconfirmed": "E-postanızda onay bağlantısı olup olmadığını kontrol edin veya yeni bir bağlantı {{GENDER:$1|gönderin}}.",
 	"growthexperiments-homepage-email-text-confirmed": "E-postanız onaylandı. E-posta ayarlarınızı Tercihler bölümünde {{GENDER:$1|değiştirebilirsiniz}}.",
@@ -35,6 +37,7 @@
 	"growthexperiments-homepage-email-button-unconfirmed": "Yeni bir bağlantı al",
 	"growthexperiments-homepage-email-button-confirmed": "Tercihler",
 	"growthexperiments-homepage-email-changelink": "değiştir",
+	"growthexperiments-homepage-email-confirmlink": "onayla",
 	"growthexperiments-homepage-startediting-header": "Düzenlemeye başla",
 	"growthexperiments-homepage-startediting-subheader-edit-typo": "Bu kolay önerilerle şimdi küçük düzeltmeler yapmaya başlayın!",
 	"growthexperiments-homepage-startediting-subheader-add-image": "Bir resim eklemeden önce, daha kolay düzenlemelerle öğrenmeyi deneyin!",
@@ -55,9 +58,12 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>Hesabınızı oluştururken, yeni bir madde oluşturmak istediğinizi söylediniz.</strong> Bu önemli ancak zorlu bir düzenleme türüdür. Bu nedenle, önce mevcut maddelerinizde ki bazı küçük düzenlemeleri denemenizi öneririz. Doğrudan yeni bir madde oluşturmayı tercih ediyorsanız, [$1 nasıl olduğunu öğrenebilirsiniz].",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Düzenlemek istediğiniz bazı konuları seçin",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "İlgi alanlarınıza uygun maddeler önermeye çalışacağız.",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Konuya göre filtrele",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader": "İlginç bulduğunuz öneriler almak için konuları kullanın. Yalnızca bir konu seçebilir veya birçok konu seçebilirsiniz.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Geri",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Öneri alın",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Yapıldı",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Yapıldı",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Önce <strong>Kolay</strong> önerilen düzenlemeleri deneyin",
 	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "{{SITENAME}} hizmetini daha iyi hale getirmeye katkıda bulunmanın birçok yolu vardır. Editörler topluluğu, farklı türden yardıma ihtiyaç duyan makaleleri listelemiştir.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Kolay",
@@ -149,6 +155,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Buradan başla!",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Yan menüyü açın ve ana sayfanızı ziyaret etmek için $2 {{GENDER:$1|dokunun}}.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> - <strong>$2</strong> {{PLURAL:$2|önerisi|önerisi}}",
+	"growthexperiments-homepage-suggestededits-pager-unknown-count": "?",
 	"growthexperiments-homepage-suggestededits-pager-end": "Son",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 ziyaret (son 60 gün)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Önceki önerilen düzenleme",
@@ -281,5 +288,6 @@
 	"growthexperiments-notification-learn-more": "Yeni {{GENDER:$2|mentorunuz}} hakkında daha fazla bilgi {{GENDER:$1|edinin}}",
 	"right-setmentor": "Kullanıcının mentorunu ayarla",
 	"action-setmentor": "kullanıcının mentorunu ayarla",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Önerilen bu düzenleme hakkında daha fazla bilgi"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Önerilen bu düzenleme hakkında daha fazla bilgi",
+	"growthexperiments-homepage-suggestededits-more-info": "Önerilen düzenlemeler hakkında daha fazla bilgi"
 }

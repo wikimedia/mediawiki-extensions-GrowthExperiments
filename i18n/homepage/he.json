@@ -59,9 +59,12 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>כשיצרת את החשבון שלך , אמרת {{GENDER:|שאתה|שאת}} רוצה ליצור ערך חדש.</strong> זה סוג חשוב אבל מאתגר של עריכה, אז אנחנו ממליצים לך לנסות כמה עריכות לערכים קלים קודם. אם {{GENDER:|אתה מעדיף|את מעדיפה}} ללכת ישר ליצירת ערך חדש, {{GENDER:|אתה יכול|את יכולה}} [$1 ללמוד איך לעשות את זה כאן].",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "{{GENDER:|בחר נושאים שאתה מעוניין|בחרי נושאים שאת מעוניינת}} לערוך עליהם",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "אנחנו ננסה להציע ערכים שמתאימים לתחומי העניין {{GENDER:|שלך}}.",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "לסנן לפי נושא",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader": "{{GENDER:|השתמש|השתמשי}} בנושאים כדי לקבל הצעות שמעניינות אותך. {{GENDER:|אתה יכול|את יכולה}} לבחור נושא אחד או יותר.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "חזרה",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "קבלת הצעות",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "בוצע",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "בוצע",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "נסה כמה עריכות מוצעות <strong>קלות</strong> קודם",
 	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "יש דרכים רבות שבהן {{GENDER:|אתה יכול|את יכולה}} לתרום לשיפור {{SITENAME}}. קהילת העורכים יצרה רשימת ערכים שצריכים סוגים שונים של עזרה.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "קלות",
@@ -153,6 +156,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "מתחילים כאן!",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "{{GENDER:$1|פתַח|פִתחי}} את תפריד הצד {{GENDER:$1|ולחץ|ולחצי}} על $2 כדי לבקר בדף הבית שלך.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> מתוך <strong>$2</strong> {{PLURAL:$2|הצעות}}",
+	"growthexperiments-homepage-suggestededits-pager-unknown-count": "?",
 	"growthexperiments-homepage-suggestededits-pager-end": "סיום",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 ביקורים (ב־60 הימים האחרונים)",
 	"growthexperiments-homepage-suggestededits-previous-card": "עריכה מוצעות קודמת",
@@ -285,5 +289,6 @@
 	"growthexperiments-notification-learn-more": "מידע נוסף על {{GENDER:$2|החונך|החונכת}} {{GENDER:$1|שלך}}",
 	"right-setmentor": "הגדרת החונך של משתמש",
 	"action-setmentor": "להגדיר את החונך של משתמש",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "עוד על העריכה המוצעת הזאת"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "עוד על העריכה המוצעת הזאת",
+	"growthexperiments-homepage-suggestededits-more-info": "מידע נוסף על עריכות מוצעות"
 }

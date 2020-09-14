@@ -3,6 +3,7 @@
 		"authors": [
 			"1233qwer1234qwer4",
 			"Ameisenigel",
+			"Bergrübe",
 			"Elliot",
 			"Ferdinand0101",
 			"Killarnee",
@@ -50,6 +51,7 @@
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "Weiter",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Zurück",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Fertig",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Fertig",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Einfach",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Mittel",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Schwierig",

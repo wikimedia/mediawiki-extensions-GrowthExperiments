@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"NGC 54"
+		]
+	},
+	"growthexperiments-homepage-email-header-startemail": "Email: $1",
+	"growthexperiments-homepage-email-changelink": "schimbă",
+	"growthexperiments-homepage-email-confirmlink": "confirmă",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Filtrează după subiect",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Realizat",
+	"growthexperiments-homepage-suggestededits-pager-unknown-count": "?"
+}

@@ -4,6 +4,7 @@
 			"94rain",
 			"A Chinese Wikipedian",
 			"A Retired User",
+			"AYZ04",
 			"Josephine W.",
 			"Looong",
 			"Shizhao",
@@ -61,9 +62,11 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "当{{GENDER:|您}}创建账户时，{{GENDER:|您}}说{{GENDER:|您}}想创建一个新条目。这是一个重要的但具有挑战性的编辑方式，因此我们建议{{GENDER:|您}}先尝试一些简单的编辑。如果{{GENDER:|您}}想直接添加照片或图片，您可以[$1 在这里了解如何操作]。",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "选择一些{{GENDER:|您}}感兴趣的主题进行编辑",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "我们会尽量推荐符合{{GENDER:|您}}兴趣的条目。",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "按主题筛选",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "返回",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "获取建议",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "完成",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "完成",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "请首先尝试一些<strong>简单</strong>的编辑建议",
 	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "您可以通过多种方式为{{SITENAME}}做出贡献。编辑社区已经列出了需要不同类型帮助的条目。",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "简单",
@@ -148,6 +151,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "从这里开始吧！",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "打开侧边菜单并点击 $2 ，即可访问{{GENDER:$1|您的}}主页。",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$2</strong>个{{PLURAL:$2|建议}}中的<strong>$1</strong>个",
+	"growthexperiments-homepage-suggestededits-pager-unknown-count": "？",
 	"growthexperiments-homepage-suggestededits-pager-end": "末尾",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1次访问 (过去60天)",
 	"growthexperiments-homepage-suggestededits-previous-card": "上一个编辑建议",
@@ -279,5 +283,6 @@
 	"growthexperiments-notification-learn-more": "了解更多关于{{GENDER:$1|您}}的新{{GENDER:$2|导师}}的信息",
 	"right-setmentor": "设置用户的导师",
 	"action-setmentor": "设置用户的导师",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "更多关于此编辑建议"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "更多关于此编辑建议",
+	"growthexperiments-homepage-suggestededits-more-info": "有关修改建议的更多信息"
 }
