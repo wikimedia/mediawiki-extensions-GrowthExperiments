@@ -90,6 +90,14 @@ $specialPageAliases['pl'] = [
 	'ClaimMentee' => [ 'Wybierz_nowicjusza' ],
 ];
 
+/** Portuguese (português) */
+$specialPageAliases['pt'] = [
+	'WelcomeSurvey' => [ 'Inquérito_de_boas_vindas' ],
+	'Homepage' => [ 'PáginaInicial' ],
+	'Impact' => [ 'Impacto' ],
+	'ClaimMentee' => [ 'AdotarTutorado' ],
+];
+
 /** Serbian Cyrillic (српски (ћирилица)) */
 $specialPageAliases['sr-ec'] = [
 	'WelcomeSurvey' => [ 'Анкета_добродошлице' ],
