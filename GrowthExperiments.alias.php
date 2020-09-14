@@ -106,6 +106,14 @@ $specialPageAliases['sr-el'] = [
 	'ClaimMentee' => [ 'Preuzimanje_novajlije' ],
 ];
 
+/** Swedish (svenska) */
+$specialPageAliases['sv'] = [
+	'WelcomeSurvey' => [ 'Välkomstenkät' ],
+	'Homepage' => [ 'Hemsida' ],
+	'Impact' => [ 'Påverkan' ],
+	'ClaimMentee' => [ 'Välj_nybörjare' ],
+];
+
 /** Ukranian (українська) */
 $specialPageAliases['uk'] = [
 	'WelcomeSurvey' => [ 'Вітальне_опитування' ],
