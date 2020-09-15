@@ -33,13 +33,15 @@ class NewcomerTasksUserOptionsLookup {
 	/**
 	 * Get the given user's task type preferences.
 	 * @param UserIdentity $user
-	 * @return string[] A list of task type IDs, or an empty array when the user has
-	 *   no preference set. (This is meant to be compatible with TaskSuggester which takes an
-	 *   empty array as "no filtering".)
+	 * @return string[] A list of task type IDs, or the default task types when the user
+	 * has no preference set.
 	 * @see \GrowthExperiments\NewcomerTasks\TaskType\TaskType::getId()
 	 */
 	public function getTaskTypeFilter( UserIdentity $user ): array {
-		return $this->getJsonListOption( $user, SuggestedEdits::TASKTYPES_PREF ) ?? [];
+		return $this->getJsonListOption( $user, SuggestedEdits::TASKTYPES_PREF ) ??
+			// FIXME: A follow-up commit will define this as a constant and export to
+			// the client side.
+			[ 'copyedit', 'links' ];
 	}
 
 	/**

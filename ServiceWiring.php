@@ -16,6 +16,8 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\DecoratingTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
@@ -181,6 +183,14 @@ return [
 				$services->getSearchEngineFactory()
 			);
 		}
+		$taskSuggesterFactory = new DecoratingTaskSuggesterFactory(
+			$taskSuggesterFactory,
+			$services->getObjectFactory(),
+			[ [
+				'class' => CacheDecorator::class,
+				'services' => [ 'MainWANObjectCache' ],
+			] ]
+		);
 		$taskSuggesterFactory->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $taskSuggesterFactory;
 	},
@@ -219,5 +229,4 @@ return [
 		// MediaWikiServices insists on service factories returning an object, so wrap it into one
 		return (object)[ 'project' => $project ];
 	},
-
 ];
