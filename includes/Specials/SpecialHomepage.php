@@ -227,7 +227,7 @@ class SpecialHomepage extends SpecialPage {
 		] );
 		$modules = [];
 		foreach ( $moduleConfig as $moduleId => $_ ) {
-			$modules[$moduleId] = $this->moduleRegistry->create( $moduleId, $this->getContext() );
+			$modules[$moduleId] = $this->moduleRegistry->get( $moduleId, $this->getContext() );
 		}
 		return $modules;
 	}

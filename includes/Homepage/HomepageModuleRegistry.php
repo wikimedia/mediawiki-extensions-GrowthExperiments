@@ -23,8 +23,11 @@ class HomepageModuleRegistry {
 	/** @var MediaWikiServices */
 	private $services;
 
-	/** @var callable[] */
+	/** @var callable[] id => factory method */
 	private $wiring;
+
+	/** @var HomepageModule[] id => module */
+	private $modules = [];
 
 	/**
 	 * @param MediaWikiServices $services
@@ -38,14 +41,18 @@ class HomepageModuleRegistry {
 	 * @param IContextSource $contextSource
 	 * @return HomepageModule
 	 */
-	public function create( string $id, IContextSource $contextSource ): HomepageModule {
+	public function get( string $id, IContextSource $contextSource ): HomepageModule {
+		if ( $this->modules[$id] ?? null ) {
+			return $this->modules[$id];
+		}
 		if ( $this->wiring === null ) {
 			$this->wiring = self::getWiring();
 		}
 		if ( !array_key_exists( $id, $this->wiring ) ) {
 			throw new OutOfBoundsException( 'Module not found: ' . $id );
 		}
-		return $this->wiring[$id]( $this->services, $contextSource );
+		$this->modules[$id] = $this->wiring[$id]( $this->services, $contextSource );
+		return $this->modules[$id];
 	}
 
 	/**
