@@ -21,20 +21,26 @@
 	 * @param {mw.libs.ge.TaskData} config.task Task data, as returned by GrowthTasksApi.
 	 * @param {Object} config.taskTypes Task type data, as returned by
 	 *   HomepageHooks::getTaskTypesJson.
-	 * @param {string} [config.taskUrl] The URL the task links to. Will be generated from task
-	 *   data when omitted.
+	 * @param {string|null} [config.taskUrl] The URL the task links to. Will be generated from task
+	 *   data when omitted. Null disables linking.
 	 */
 	function SmallTaskCard( config ) {
 		SmallTaskCard.super.call( this, config );
 		OO.EventEmitter.call( this );
 		this.task = config.task;
 		this.taskType = config.taskTypes[ this.task.tasktype ];
-		this.taskUrl = config.taskUrl || new mw.Title( this.task.title ).getUrl();
+		this.taskUrl = ( 'taskUrl' in config ) ? config.taskUrl : new mw.Title( this.task.title ).getUrl();
 		this.buildCard();
 	}
 	OO.inheritClass( SmallTaskCard, OO.ui.Element );
 	OO.mixinClass( SmallTaskCard, OO.EventEmitter );
-	SmallTaskCard.static.tagName = 'a';
+
+	/**
+	 * @inheritDoc
+	 */
+	SmallTaskCard.prototype.getTagName = function () {
+		return ( this.taskUrl === null ) ? 'div' : 'a';
+	};
 
 	/**
 	 * Build the card DOM.
