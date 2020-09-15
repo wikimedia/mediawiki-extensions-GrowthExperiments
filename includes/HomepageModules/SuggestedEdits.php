@@ -10,7 +10,9 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
+use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TemplateBasedTask;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use Html;
 use IContextSource;
@@ -20,6 +22,8 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use Message;
 use OOUI\ButtonWidget;
+use OOUI\IconWidget;
+use OOUI\Tag;
 use Status;
 use StatusValue;
 use TitleFactory;
@@ -75,6 +79,9 @@ class SuggestedEdits extends BaseModule {
 
 	/** @var string[] cache key => HTML */
 	private $htmlCache = [];
+
+	/** @var TaskSet|StatusValue */
+	private $tasks;
 
 	/**
 	 * @param IContextSource $context
@@ -235,21 +242,10 @@ class SuggestedEdits extends BaseModule {
 
 		// Preload one task card for users in variant C and D.
 		if ( $this->canRender() ) {
-			$user = $this->getContext()->getUser();
-
-			// There will likely be a cached task set by this point. For scenarios where there
-			// aren't (e.g. user visits homepage, doesn't come back for 8 days, then goes to
-			// homepage again), we should fetch tasks using a single task type and topic to
-			// speed up the query.
-			$taskTypes = $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user );
-			$topics = $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user );
-			$tasks = $this->taskSuggester->suggest( $user, $taskTypes, $topics, 10 );
+			$tasks = $this->getTaskSet();
 			if ( $tasks instanceof StatusValue ) {
 				$data['task-preview'] = [ 'error' => Status::wrap( $tasks )->getMessage()->parse() ];
-			} elseif ( $tasks->count() === 0 ) {
-				$data['task-preview'] = [];
-			} else {
-				$tasks = $this->protectionFilter->filter( $tasks, 1 );
+			} elseif ( $tasks->count() !== 0 ) {
 				$task = $tasks[0];
 				$templates = null;
 				if ( $task instanceof TemplateBasedTask ) {
@@ -298,6 +294,29 @@ class SuggestedEdits extends BaseModule {
 		return self::isActivated( $this->getContext() ) ?
 			self::MODULE_STATE_ACTIVATED :
 			self::MODULE_STATE_UNACTIVATED;
+	}
+
+	/**
+	 * Get a suggested task set, with in-process caching.
+	 * @return TaskSet|StatusValue
+	 */
+	private function getTaskSet() {
+		if ( $this->tasks ) {
+			return $this->tasks;
+		}
+		$user = $this->getContext()->getUser();
+		// There will likely be a cached task set by this point. For scenarios where there
+		// aren't (e.g. user visits homepage, doesn't come back for 8 days, then goes to
+		// homepage again), we should fetch tasks using a single task type and topic to
+		// speed up the query.
+		$taskTypes = $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user );
+		$topics = $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user );
+		$tasks = $this->taskSuggester->suggest( $user, $taskTypes, $topics, 10 );
+		if ( $tasks instanceof TaskSet ) {
+			$tasks = $this->protectionFilter->filter( $tasks, 1 );
+		}
+		$this->tasks = $tasks;
+		return $this->tasks;
 	}
 
 	/** @inheritDoc */
@@ -349,33 +368,99 @@ class SuggestedEdits extends BaseModule {
 	 * @suppress SecurityCheck-DoubleEscaped
 	 */
 	protected function getMobileSummaryBody() {
-		// For some reason phan thinks $siteEditsPerDay and/or $metricNumber get double-escaped,
-		// but they are escaped just the right amount.
-		$siteEditsPerDay = $this->editInfoService->getEditsPerDay();
-		if ( $siteEditsPerDay instanceof StatusValue ) {
-			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
-				'Failed to load site edits per day stat: {status}',
-				[ 'status' => Status::wrap( $siteEditsPerDay )->getWikiText( false, false, 'en' ) ]
-			);
-			// TODO probably have some kind of fallback message?
-			$siteEditsPerDay = 0;
+		$user = $this->getContext()->getUser();
+		$showTaskPreview = $this->experimentUserManager->isUserInVariant( $user, [ 'C', 'D' ] )
+			// If the task cannot be loaded, fall back to the old summary style for now.
+			&& $this->getTaskSet() instanceof TaskSet
+			&& $this->getTaskSet()->count() > 0;
+
+		if ( $showTaskPreview ) {
+			$taskCount = min( $this->getTaskSet()->getTotalCount(),
+				SearchTaskSuggester::DEFAULT_LIMIT );
+			$taskPager = $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
+				->numParams( 1, $taskCount )
+				->text();
+			$button = new ButtonWidget( [
+				'label' => $this->getContext()->msg(
+					'growthexperiments-homepage-suggestededits-mobilesummary-footer-button' )->text(),
+				'classes' => [ 'suggested-edits-preview-cta-button' ],
+				'flags' => [ 'primary', 'progressive' ],
+				// can't nest links
+				'button' => new Tag( 'span' ),
+			] );
+			return Html::rawElement( 'div', [ 'class' => 'suggested-edits-main-with-preview' ],
+				Html::rawElement( 'div', [ 'class' => 'suggested-edits-preview-pager' ], $taskPager )
+					. $this->getTaskCard() . $button );
+		} else {
+			// For some reason phan thinks $siteEditsPerDay and/or $metricNumber get double-escaped,
+			// but they are escaped just the right amount.
+			$siteEditsPerDay = $this->editInfoService->getEditsPerDay();
+			if ( $siteEditsPerDay instanceof StatusValue ) {
+				LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
+					'Failed to load site edits per day stat: {status}',
+					[ 'status' => Status::wrap( $siteEditsPerDay )->getWikiText( false, false, 'en' ) ]
+				);
+				// TODO probably have some kind of fallback message?
+				$siteEditsPerDay = 0;
+			}
+			$metricNumber = $this->getContext()->getLanguage()->formatNum( $siteEditsPerDay );
+			$metricSubtitle = $this->getContext()
+				->msg( 'growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle' )
+				->text();
+			$footerText = $this->getContext()
+				->msg( 'growthexperiments-homepage-suggestededits-mobilesummary-footer' )
+				->text();
+			return Html::rawElement( 'div', [ 'class' => 'suggested-edits-main' ],
+					Html::rawElement( 'div', [ 'class' => 'suggested-edits-icon' ] ) .
+					Html::rawElement( 'div', [ 'class' => 'suggested-edits-metric' ],
+						Html::element( 'div', [ 'class' => 'suggested-edits-metric-number' ], $metricNumber ) .
+						Html::element( 'div', [ 'class' => 'suggested-edits-metric-subtitle' ], $metricSubtitle )
+					)
+				) . Html::element( 'div', [
+					'class' => 'suggested-edits-footer'
+				], $footerText );
 		}
-		$metricNumber = $this->getContext()->getLanguage()->formatNum( $siteEditsPerDay );
-		$metricSubtitle = $this->getContext()
-			->msg( 'growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle' )
-			->text();
-		$footerText = $this->getContext()
-			->msg( 'growthexperiments-homepage-suggestededits-mobilesummary-footer' )
-			->text();
-		return Html::rawElement( 'div', [ 'class' => 'suggested-edits-main' ],
-				Html::rawElement( 'div', [ 'class' => 'suggested-edits-icon' ] ) .
-				Html::rawElement( 'div', [ 'class' => 'suggested-edits-metric' ],
-					Html::element( 'div', [ 'class' => 'suggested-edits-metric-number' ], $metricNumber ) .
-					Html::element( 'div', [ 'class' => 'suggested-edits-metric-subtitle' ], $metricSubtitle )
-				)
-			) . Html::element( 'div', [
-				'class' => 'suggested-edits-footer'
-			], $footerText );
+	}
+
+	/**
+	 * Generate HTML identical to that of mw.libs.ge.SmallTaskCard
+	 * @return string
+	 */
+	private function getTaskCard() {
+		$tasks = $this->getTaskSet();
+		$task = $tasks[0];
+		$title = $this->titleFactory->newFromLinkTarget( $task->getTitle() );
+
+		$image = Html::element( 'div',
+			[ 'class' => 'mw-ge-small-task-card-image mw-ge-small-task-card-image-skeleton' ] );
+		$title = Html::element( 'span',
+			[ 'class' => 'mw-ge-small-task-card-title' ],
+			$title->getPrefixedText() );
+		$description = Html::element( 'div',
+			[ 'class' => 'mw-ge-small-task-card-description skeleton' ] );
+		$taskIcon = new IconWidget( [ 'icon' => 'difficulty-' . $task->getTaskType()->getDifficulty() ] );
+		$taskType = Html::rawElement( 'span',
+			[ 'class' => 'mw-ge-small-task-card-tasktype '
+				 // The following classes are used here:
+				 // * mw-ge-small-task-card-tasktype-difficulty-easy
+				 // * mw-ge-small-task-card-tasktype-difficulty-medium
+				 // * mw-ge-small-task-card-tasktype-difficulty-hard
+				. 'mw-ge-small-task-card-tasktype-difficulty-' . $task->getTaskType()->getDifficulty() ],
+			$taskIcon . $task->getTaskType()->getName( $this->getContext() ) );
+
+		$glue = Html::element( 'div',
+			[ 'class' => 'mw-ge-small-task-card-glue' ] );
+		$cardMetadataContainer = Html::rawElement( 'div',
+			[ 'class' => 'mw-ge-small-task-card-metadata-container' ],
+			// Unlike SmallTaskCard, this version does not have pageviews.
+			$taskType );
+		$cardTextContainer = Html::rawElement( 'div',
+			[ 'class' => 'mw-ge-small-task-card-text-container' ],
+			$title . $description . $glue . $cardMetadataContainer );
+		return Html::rawElement( 'div',
+			// only called for mobile views
+			[ 'class' => 'mw-ge-small-task-card mw-ge-small-task-card-mobile' ],
+		$image . $cardTextContainer );
 	}
 
 	/** @inheritDoc */

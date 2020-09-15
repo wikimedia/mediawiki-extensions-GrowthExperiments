@@ -4,8 +4,8 @@
  * Displays a task card. Sort of a standalone module, but not formally defined as such, since
  * ResourceLoader module definitions are expensive. Instead, when including it into some module,
  * include the following files together:
- * - styles: homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.js
- * - scripts: homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.less
+ * - scripts: homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.js
+ * - styles: homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.less
  * - messages: growthexperiments-homepage-suggestededits-pageviews
  * - dependencies: oojs-ui.styles.icons-media, ext.growthExperiments.Homepage.icons
  * and use homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js to get the task
@@ -46,6 +46,8 @@
 	 * Build the card DOM.
 	 */
 	SmallTaskCard.prototype.buildCard = function () {
+		// Keep HTML structure in sync with SuggestedEdits::getTaskCard().
+
 		var $image, $title, $description, $pageviews, $taskType,
 			$cardTextContainer, $glue, $cardMetadataContainer;
 

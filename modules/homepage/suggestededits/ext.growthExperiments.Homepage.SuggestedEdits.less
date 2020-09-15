@@ -1,5 +1,6 @@
 @import 'mediawiki.ui/variables.less';
 @import 'mediawiki.mixins.less';
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
 @import '../ext.growthExperiments.variables.less';
 @import '../ext.growthExperiments.mixins.less';
 
@@ -506,6 +507,42 @@ body.mw-special-Homepage {
 	}
 
 	&.growthexperiments-homepage-module-mobile-summary {
+		&.growthexperiments-homepage-module-user-variant-C,
+		&.growthexperiments-homepage-module-user-variant-D {
+			background-color: #f5f9ff;
+		}
+
+		.suggested-edits-main-with-preview {
+			.suggested-edits-preview-pager {
+				font-size: 0.8125em; // 16px -> 13 px
+
+				strong {
+					font-weight: normal;
+				}
+			}
+
+			.mw-ge-small-task-card-image {
+				height: 77px;
+				width: 77px;
+			}
+
+			.mw-ge-small-task-card-title {
+				color: @wmui-color-base10;
+			}
+
+			.mw-ge-small-task-card-description {
+				font-size: 0.8125em; // 16px -> 13 px
+			}
+
+			.mw-ge-small-task-card-tasktype {
+				font-size: 0.8125em; // 16px -> 13 px
+			}
+
+			.suggested-edits-preview-cta-button {
+				margin-top: 12px;
+			}
+		}
+
 		.suggested-edits-main {
 			display: flex;
 			padding: 8px 16px 8px 0;
