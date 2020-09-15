@@ -15,17 +15,17 @@ use RequestContext;
 class HomepageModuleRegistryTest extends MediaWikiIntegrationTestCase {
 
 	/**
-	 * @dataProvider provideCreate
-	 * @covers ::create
+	 * @dataProvider provideGet
+	 * @covers ::get
 	 */
-	public function testCreate( $moduleId ) {
+	public function testGet( $moduleId ) {
 		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		$moduleRegistry = $growthServices->getHomepageModuleRegistry();
 		$context = RequestContext::getMain();
-		$this->assertInstanceOf( HomepageModule::class, $moduleRegistry->create( $moduleId, $context ) );
+		$this->assertInstanceOf( HomepageModule::class, $moduleRegistry->get( $moduleId, $context ) );
 	}
 
-	public function provideCreate() {
+	public function provideGet() {
 		foreach ( HomepageModuleRegistry::getModuleIds() as $moduleId ) {
 			yield [ $moduleId ];
 		}
