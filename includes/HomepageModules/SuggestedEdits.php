@@ -39,6 +39,8 @@ class SuggestedEdits extends BaseModule {
 	public const TOPICS_ENABLED_PREF = 'growthexperiments-homepage-suggestededits-topics-enabled';
 	public const TASKTYPES_PREF = 'growthexperiments-homepage-se-filters';
 	public const GUIDANCE_ENABLED_PREF = 'growthexperiments-guidance-enabled';
+	public const DEFAULT_TASK_TYPES = [ 'copyedit', 'links' ];
+
 	/**
 	 * Used to keep track of the state of user interactions with suggested edits per type per skin.
 	 * See also HomepageHooks::onLocalUserCreated

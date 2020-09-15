@@ -56,6 +56,7 @@
 	 * @param {Object} [config.taskTypes] The list of task types, as returned by
 	 *    HomepageHooks::getTaskTypesJson. Can be omitted when the getPreferences
 	 *    method is not needed.
+	 * @param {Array} config.defaultTaskTypes The default task types as returned by HomepageHooks::getDefaultTaskTypes
 	 * @param {Object} [config.suggestedEditsConfig] An object with the values of some PHP globals,
 	 *   as returned by HomepageHooks::getSuggestedEditsConfigJson. Can be omitted when the
 	 *   getPreferences method and individual task data are not needed.
@@ -73,6 +74,7 @@
 	 */
 	function GrowthTasksApi( config ) {
 		this.taskTypes = config.taskTypes;
+		this.defaultTaskTypes = config.defaultTaskTypes;
 		this.suggestedEditsConfig = config.suggestedEditsConfig || {};
 		this.aqsConfig = config.aqsConfig;
 		this.isMobile = config.isMobile;
@@ -388,7 +390,7 @@
 	 * @return {{taskTypes: Array<string>, topics: Array<string>}}
 	 */
 	GrowthTasksApi.prototype.getPreferences = function () {
-		var defaultTaskTypes = [ 'copyedit', 'links' ].filter( function ( taskType ) {
+		var defaultTaskTypes = this.defaultTaskTypes.filter( function ( taskType ) {
 				return taskType in this.taskTypes;
 			}.bind( this ) ),
 			savedTaskTypes = mw.user.options.get( 'growthexperiments-homepage-se-filters' ),

@@ -832,6 +832,14 @@ class HomepageHooks implements
 	}
 
 	/**
+	 * @param ResourceLoaderContext $context
+	 * @return string[]
+	 */
+	public static function getDefaultTaskTypesJson( ResourceLoaderContext $context ) {
+		return SuggestedEdits::DEFAULT_TASK_TYPES;
+	}
+
+	/**
 	 * ResourceLoader JSON package callback for getting the topics defined on the wiki.
 	 * Some UI elements will be disabled if this returns an empty array.
 	 * @param ResourceLoaderContext $context

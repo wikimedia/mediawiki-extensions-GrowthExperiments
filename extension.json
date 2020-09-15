@@ -411,6 +411,10 @@
 				{
 					"name": "homepage/suggestededits/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
+				},
+				{
+					"name": "homepage/suggestededits/DefaultTaskTypes.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
 				}
 			],
 			"targets": [
@@ -507,6 +511,10 @@
 				{
 					"name": "homepage/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
+				},
+				{
+					"name": "homepage/suggestededits/DefaultTaskTypes.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
 				}
 			],
 			"styles": [
@@ -818,6 +826,10 @@
 				{
 					"name": "help/data.json",
 					"callback": [ "GrowthExperiments\\HelpPanelHooks", "getModuleData" ]
+				},
+				{
+					"name": "homepage/suggestededits/DefaultTaskTypes.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
 				}
 			],
 			"dependencies": [

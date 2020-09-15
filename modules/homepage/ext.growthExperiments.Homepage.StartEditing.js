@@ -1,12 +1,14 @@
 ( function () {
 	var StartEditingDialog = require( './ext.growthExperiments.Homepage.StartEditingDialog.js' ),
 		Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
+		defaultTaskTypes = require( '../homepage/suggestededits/DefaultTaskTypes.json' ),
 		logger = new Logger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
 		),
 		GrowthTasksApi = require( './suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js' ),
 		api = new GrowthTasksApi( {
+			defaultTaskTypes: defaultTaskTypes,
 			isMobile: OO.ui.isMobile(),
 			context: 'startEditingDialog'
 		} );

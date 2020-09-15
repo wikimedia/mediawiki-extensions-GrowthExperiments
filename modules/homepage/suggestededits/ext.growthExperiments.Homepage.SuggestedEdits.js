@@ -20,6 +20,7 @@
 		NewcomerTaskLogger = require( './ext.growthExperiments.NewcomerTaskLogger.js' ),
 		aqsConfig = require( './AQSConfig.json' ),
 		taskTypes = require( './TaskTypes.json' ),
+		defaultTaskTypes = require( './DefaultTaskTypes.json' ),
 		TASK_QUEUE_LENGTH = 200;
 
 	/**
@@ -500,6 +501,7 @@
 			suggestedEditsModule,
 			api = new GrowthTasksApi( {
 				taskTypes: taskTypes,
+				defaultTaskTypes: defaultTaskTypes,
 				suggestedEditsConfig: require( './config.json' ),
 				aqsConfig: aqsConfig,
 				isMobile: OO.ui.isMobile()
