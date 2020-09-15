@@ -650,6 +650,61 @@
 				"mobile"
 			]
 		},
+		"ext.growthExperiments.AddLink": {
+			"packageFiles": [
+				"homepage/addlink/index.js",
+				"homepage/addlink/AddLinkArticleTarget.js",
+				"homepage/addlink/dmRecommendedLinkAnnotation.js",
+				"homepage/addlink/ceRecommendedLinkAnnotation.js",
+				"homepage/addlink/dmRecommendedLinkErrorAnnotation.js",
+				"homepage/addlink/ceRecommendedLinkErrorAnnotation.js",
+				"homepage/addlink/RecommendedLinkContextItem.js"
+			],
+			"styles": [
+				"homepage/addlink/ceRecommendedLinkAnnotation.less",
+				"homepage/addlink/RecommendedLinkContextItem.less"
+			],
+			"messages": [
+				"growthexperiments-addlink-context-title",
+				"growthexperiments-addlink-context-intro",
+				"growthexperiments-addlink-context-button-accept",
+				"growthexperiments-addlink-context-button-reject",
+				"growthexperiments-addlink-context-button-next"
+			],
+			"dependencies": [
+				"ext.visualEditor.mwlink"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.growthExperiments.AddLink.desktop": {
+			"packageFiles": [
+				"homepage/addlink/desktop.js",
+				"homepage/addlink/AddLinkDesktopArticleTarget.js"
+			],
+			"dependencies": [
+				"ext.growthExperiments.AddLink",
+				"ext.visualEditor.desktopArticleTarget"
+			],
+			"targets": [
+				"desktop"
+			]
+		},
+		"ext.growthExperiments.AddLink.mobile": {
+			"packageFiles": [
+				"homepage/addlink/mobile.js",
+				"homepage/addlink/AddLinkMobileArticleTarget.js"
+			],
+			"dependencies": [
+				"ext.growthExperiments.AddLink",
+				"ext.visualEditor.mobileArticleTarget"
+			],
+			"targets": [
+				"mobile"
+			]
+		},
 		"ext.growthExperiments.Homepage.icons": {
 			"class": "ResourceLoaderImageModule",
 			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",
@@ -1198,6 +1253,10 @@
 		"GELinkRecommendationServiceUrl": {
 			"description": "Root URL of the link recommendation service.",
 			"value": false
+		},
+		"GELinkRecommendationsFrontendEnabled": {
+			"description": "Global ON/OFF switch for the link recommendations feature.",
+			"value": true
 		},
 		"GEHomepageImpactModuleEnabled": {
 			"description": "Is the impact module in newcomer homepage enabled?",

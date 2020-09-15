@@ -106,7 +106,11 @@ class HelpPanelHooks {
 		}
 
 		if ( SuggestedEdits::isGuidanceEnabled( $out->getContext() ) ) {
-			$out->addJsConfigVars( [ 'wgGENewcomerTasksGuidanceEnabled' => true ] );
+			$out->addJsConfigVars( [
+				'wgGENewcomerTasksGuidanceEnabled' => true,
+				'wgGELinkRecommendationsFrontendEnabled' =>
+					$out->getConfig()->get( 'GELinkRecommendationsFrontendEnabled' )
+			] );
 		}
 
 		// If the help panel would be shown but for the value of the 'action' parameter,

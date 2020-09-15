@@ -1,0 +1,70 @@
+@import 'mediawiki.ui/variables.less';
+@import 'mediawiki.mixins.less';
+
+.mw-ge-recommendedLinkContextItem {
+	.ve-ui-linearContextItem-head {
+		background-color: fade( #e6f1ff, 50% );
+	}
+
+	&-introLabel {
+		color: @colorGray5;
+		font-size: 0.9em;
+	}
+
+	&-editButton {
+		float: right;
+
+		&:after {
+			content: '';
+			clear: both;
+		}
+	}
+
+	&-buttons {
+		clear: both;
+
+		&-prev {
+			// Center the prev button below the link preview image
+			min-width: 60em/14;
+			text-align: center;
+
+			// Override strong rule from OOUI
+			&.oo-ui-buttonElement-frameless.oo-ui-iconElement:first-child {
+				margin-left: 0;
+			}
+		}
+
+		&-next {
+			float: right;
+
+			// HACK: Make the icon appear after the label instead of before it
+			&.oo-ui-buttonElement-frameless.oo-ui-iconElement > .oo-ui-buttonElement-button {
+				padding-left: 0.5em;
+				padding-right: 2.14285714em;
+
+				> .oo-ui-iconElement-icon {
+					left: auto;
+					right: 0.35714286em;
+				}
+			}
+		}
+	}
+
+	&-progress {
+		padding-left: 1em;
+
+		// Make each indicator a circle with a diameter of 8px
+		&-indicator {
+			display: inline-block;
+			width: 8px;
+			height: 8px;
+			margin-right: 8px;
+			border-radius: 50%;
+			background-color: @colorGray12;
+
+			&-selected {
+				background-color: @colorGray2;
+			}
+		}
+	}
+}
