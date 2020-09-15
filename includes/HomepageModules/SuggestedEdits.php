@@ -234,10 +234,7 @@ class SuggestedEdits extends BaseModule {
 		$data['task-preview'] = [];
 
 		// Preload one task card for users in variant C and D.
-		if (
-			in_array( $this->experimentUserManager->getVariant( $this->getContext()->getUser() ), [ 'C', 'D' ] ) &&
-			$this->canRender()
-		) {
+		if ( $this->canRender() ) {
 			$user = $this->getContext()->getUser();
 
 			// There will likely be a cached task set by this point. For scenarios where there
