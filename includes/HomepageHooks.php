@@ -5,6 +5,7 @@ namespace GrowthExperiments;
 
 use Config;
 use ConfigException;
+use DeferredUpdates;
 use DomainException;
 use EchoAttributeManager;
 use EchoUserLocator;
@@ -16,6 +17,8 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\Tracker\Tracker;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use GrowthExperiments\Specials\SpecialClaimMentee;
@@ -101,6 +104,10 @@ class HomepageHooks implements
 	private $experimentUserManager;
 	/** @var HomepageModuleRegistry */
 	private $moduleRegistry;
+	/** @var TaskSuggesterFactory */
+	private $taskSuggesterFactory;
+	/** @var NewcomerTasksUserOptionsLookup */
+	private $newcomerTasksUserOptionsLookup;
 
 	/**
 	 * HomepageHooks constructor.
@@ -113,6 +120,8 @@ class HomepageHooks implements
 	 * @param TrackerFactory $trackerFactory
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param HomepageModuleRegistry $moduleRegistry
+	 * @param TaskSuggesterFactory $taskSuggesterFactory
+	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 */
 	public function __construct(
 		Config $config,
@@ -123,7 +132,9 @@ class HomepageHooks implements
 		ConfigurationLoader $configurationLoader,
 		TrackerFactory $trackerFactory,
 		ExperimentUserManager $experimentUserManager,
-		HomepageModuleRegistry $moduleRegistry
+		HomepageModuleRegistry $moduleRegistry,
+		TaskSuggesterFactory $taskSuggesterFactory,
+		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	) {
 		$this->config = $config;
 		$this->lb = $lb;
@@ -134,6 +145,8 @@ class HomepageHooks implements
 		$this->trackerFactory = $trackerFactory;
 		$this->experimentUserManager = $experimentUserManager;
 		$this->moduleRegistry = $moduleRegistry;
+		$this->taskSuggesterFactory = $taskSuggesterFactory;
+		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 	}
 
 	/**
@@ -542,6 +555,19 @@ class HomepageHooks implements
 				// used for anything in software, it's only used in data analysis to distinguish
 				// users who manually activated suggested edits from those for whom it was pre-activated.
 				$user->setOption( SuggestedEdits::PREACTIVATED_PREF, 1 );
+
+				// Variant C users need to see a suggested edit card when they arrive on the
+				// homepage. We can populate the cache of tasks (default task/topic selections)
+				// so that when the user lands on Special:Homepage, the request to retrieve tasks
+				// will pull from the cached TaskSet instead of doing expensive search queries.
+				DeferredUpdates::addCallableUpdate( function () use ( $user ) {
+					$taskSuggester = $this->taskSuggesterFactory->create();
+					$taskSuggester->suggest(
+						$user,
+						$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
+						$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
+					);
+				} );
 			}
 		}
 	}
