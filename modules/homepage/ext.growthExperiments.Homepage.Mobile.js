@@ -152,6 +152,22 @@
 					lazyLoadModules = lazyLoadModules.concat( rlModules );
 				}
 			} );
+
+			$summaryModules.each( function () {
+				/**
+				 * Fired after homepage module summary content is rendered on the page.
+				 *
+				 * @event growthExperiments.mobileHomepageSummaryHtmlLoaded
+				 * @member mw.hook
+				 * @param {string} moduleName The name of the homepage module.
+				 * @param {jQuery} $content The content of the homepage summary module.
+				 */
+				mw.hook( 'growthExperiments.mobileHomepageSummaryHtmlLoaded' ).fire(
+					$( this ).data( 'module-name' ),
+					$( this )
+				);
+			} );
+
 			setTimeout( function () {
 				mw.loader.load( lazyLoadModules );
 			}, 250 );
