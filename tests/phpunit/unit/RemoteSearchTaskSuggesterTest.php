@@ -184,17 +184,13 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 					$makeTask( $copyedit, 'Boom' ),
 				], 150, 0, new TaskSetFilters() ),
 			],
-			// FIXME: The test should be updated to account for SearchTaskSuggester issuing
-			// requests for the DEFAULT_LIMIT (250) regardless of the limit passed in, but then
-			// returning a result set according to the limit specified by the caller.
-			// We're not really testing a limit here anymore.
 			'limit' => [
 				'taskTypes' => [ 'copyedit' => [ 'Copy-1', 'Copy-2' ], 'link' => [ 'Link-1' ] ],
 				'topics' => [ 'art' => [ 'Music', 'Painting' ], 'science' => [ 'Physics', 'Biology' ] ],
 				'requests' => [
 					[
 						'params' => [
-							'srlimit' => '250',
+							'srlimit' => '2',
 							'srsearch' => 'hastemplate:"Copy-1|Copy-2"',
 						],
 						'response' => [
@@ -211,7 +207,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 					],
 					[
 						'params' => [
-							'srlimit' => '250',
+							'srlimit' => '2',
 							'srsearch' => 'hastemplate:"Link-1"',
 						],
 						'response' => [
@@ -229,12 +225,10 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				],
 				'taskFilter' => [],
 				'topicFilter' => [],
-				'limit' => 250,
+				'limit' => 2,
 				'expectedTaskSet' => new TaskSet( [
 					$makeTask( $copyedit, 'Foo' ),
 					$makeTask( $link, 'Baz' ),
-					$makeTask( $copyedit, 'Bar' ),
-					$makeTask( $link, 'Boom' )
 				], 150, 0, new TaskSetFilters() ),
 			],
 			'task type filter' => [
