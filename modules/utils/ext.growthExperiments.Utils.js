@@ -69,6 +69,13 @@
 	}
 
 	/**
+	 * @return {string|null} The variant a user is assigned to.
+	 */
+	function getUserVariant() {
+		return mw.user.options.get( 'growthexperiments-homepage-variant' );
+	}
+
+	/**
 	 * @param {string|string[]} variants
 	 * @return {boolean}
 	 */
@@ -76,14 +83,15 @@
 		if ( typeof variants === 'string' ) {
 			variants = [ variants ];
 		}
-		return variants.indexOf( mw.user.options.values[ 'growthexperiments-homepage-variant' ] ) !== -1;
+		return variants.indexOf( getUserVariant() ) !== -1;
 	}
 
 	module.exports = {
 		serializeActionData: serializeActionData,
 		removeQueryParam: removeQueryParam,
 		isValidEditor: isValidEditor,
-		isUserInVariant: isUserInVariant
+		isUserInVariant: isUserInVariant,
+		getUserVariant: getUserVariant
 	};
 
 }() );

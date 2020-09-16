@@ -294,5 +294,10 @@
 	"right-setmentor": "Set user's mentor",
 	"action-setmentor": "set user's mentor",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "More about this suggested edit",
-	"growthexperiments-homepage-suggestededits-more-info": "More information about suggested edits"
+	"growthexperiments-homepage-suggestededits-more-info": "More information about suggested edits",
+	"growthexperiments-homepage-welcome-notice-header": "Welcome to {{GENDER:$1|your}} homepage!",
+	"growthexperiments-homepage-welcome-notice-body-variant-c": "{{GENDER:$1|You}} can learn to edit, contact {{GENDER:$1|your}} mentor, and see the impact of {{GENDER:$1|your}} work. Continue to learn about the <strong>suggested edits</strong> on {{GENDER:$1|your}} homepage.",
+	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|You}} can learn to edit, contact {{GENDER:$1|your}} mentor, and see the impact of {{GENDER:$1|your}} work.",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Continue",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Got it"
 }
