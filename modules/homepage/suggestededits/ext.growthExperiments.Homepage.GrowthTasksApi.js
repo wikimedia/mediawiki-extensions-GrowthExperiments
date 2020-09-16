@@ -79,7 +79,9 @@
 		this.aqsConfig = config.aqsConfig;
 		this.isMobile = config.isMobile;
 		this.logContext = config.logContext;
-		this.thumbnailWidth = this.isMobile ? 260 : 368;
+		// FIXME: thumbnailWidth should be 368px on desktop, but that breaks (T263042)
+		// this.thumbnailWidth = this.isMobile ? 260 : 368;
+		this.thumbnailWidth = 260;
 	}
 
 	/**
