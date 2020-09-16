@@ -70,6 +70,7 @@
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Choisissez quelques sujets qui {{GENDER:|vous}} intéressent de modifier",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "Nous essayerons de suggérer des articles correspondant à {{GENDER:|vos}} intérêts.",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Filtrer par sujet",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader": "Utiliser les sujets pour obtenir des suggestions que {{GENDER:|cous}} trouvez intéressantes. {{GENDER:|Vous}} pouvez choisir un seul sujet, ou en sélectionner plusieurs.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Retour",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Obtenir les suggestions",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Fait",

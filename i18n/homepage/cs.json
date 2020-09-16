@@ -57,9 +57,12 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>Když jste si {{GENDER:|vytvářel|vytvářela|vytvářeli}} svůj uživatelský účet, {{GENDER:|řekl|řekl|řekli}} jste nám, že chcete na Wikipedii přidat nový článek.</strong> To je důležitý typ editací, ale je velmi obtížný. Doporučujeme vám proto nejprve zkusit nějaké menší editace. Pokud byste raději rovnou {{GENDER:|vytvořil|vytvořila|vytvořili}} nový článek, můžete se [$1 dozvědět jak na to].",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Vyberte některá témata, které byste {{GENDER:|rád editoval|ráda editovala|rádi editovali}}",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "Pokusíme se doporučit články o tématech, která {{GENDER:|vás}} zajímají.",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Filtrovat podle tématu",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader": "Použít témata, abyste {{GENDER:|získal|získala|získali}} pro vás zajímavá témata. Můžete si vybrat jedno téma, nebo i více.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Zpět",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Zobrazit tipy",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Hotovo",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Hotovo",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Vyzkoušejte nejprve nějaké <strong>jednoduché</strong> editace.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "Existuje mnoho způsobů, jak zlepšovat Wikipedii. Komunita wikipedistů vybrala články, které potřebují různé druhy úprav.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Snadné",
@@ -151,6 +154,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Začněte zde!",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Otevřete menu a klikněte na $2, abyste {{GENDER:$1|navštívil|navštívila|navštívil(a)}} svou domovskou stránku.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> z <strong>$2</strong> {{PLURAL:$2|tipu|tipů}}",
+	"growthexperiments-homepage-suggestededits-pager-unknown-count": "?",
 	"growthexperiments-homepage-suggestededits-pager-end": "Konec",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 návštěv čtenáři (za posl. 60 dní)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Předchozí tip",
@@ -287,5 +291,6 @@
 	"growthexperiments-notification-learn-more": "{{GENDER:$1|Zjistěte}} více o {{GENDER:$2|svém novém mentorovi|své nové mentorce}}",
 	"right-setmentor": "Nastavit mentora uživatele",
 	"action-setmentor": "nastavit mentora uživatele",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Více o tomto editačním tipu"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Více o tomto editačním tipu",
+	"growthexperiments-homepage-suggestededits-more-info": "Více informací o editačních tipech"
 }

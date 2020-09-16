@@ -56,9 +56,12 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>當{{GENDER:|您}}建立完成{{GENDER:|您的}}帳號，且{{GENDER:|您}}認為{{GENDER:|您}}想要先建立一個新條目。</strong>這會是個重要但比較具挑戰性的編輯方式，因此我們建議{{GENDER:|您}}先嘗試一些簡單的編輯。如果{{GENDER:|您}}比較想要先直接建立一個新條目，{{GENDER:|您}}可以[$1 點擊這裡]來了解如何進行。",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "挑選一些{{GENDER:|您}}有興趣編輯的主題",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "我們會嘗試建議符合{{GENDER:|您的}}興趣的條目。",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "依主題篩選",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader": "使用主題來取得{{GENDER:|您}}覺得有興趣的建議。{{GENDER:|您}}可以挑選一個或更多的主題。",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "上一步驟",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "取得建議",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "完成",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "完成",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "首先嘗試一些<strong>簡易</strong>建議編輯",
 	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "這裡有許多方式使您可以將{{SITENAME}}變得更好。編者社群有羅列出需要各種不同協助的條目。",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "簡易",
@@ -150,6 +153,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "在此開始！",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "開啟側邊選單並輕點$2來參訪{{GENDER:$1|您的}}首頁。",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$2</strong> 個{{PLURAL:$2|建議}}裡的第 <strong>$1</strong> 個",
+	"growthexperiments-homepage-suggestededits-pager-unknown-count": "?",
 	"growthexperiments-homepage-suggestededits-pager-end": "末端",
 	"growthexperiments-homepage-suggestededits-pageviews": "觀看過 $1 次（過去 60 天）",
 	"growthexperiments-homepage-suggestededits-previous-card": "前一個建議編輯",
@@ -282,5 +286,6 @@
 	"growthexperiments-notification-learn-more": "了解更多關於{{GENDER:$1|您的}}新{{GENDER:$2|導師}}",
 	"right-setmentor": "設定使用者的導師",
 	"action-setmentor": "設定使用者的導師",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "更多關於此建議編輯"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "更多關於此建議編輯",
+	"growthexperiments-homepage-suggestededits-more-info": "關於建議編輯的更多資訊"
 }
