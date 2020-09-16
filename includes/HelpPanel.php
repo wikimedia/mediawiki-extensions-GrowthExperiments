@@ -157,7 +157,8 @@ class HelpPanel {
 			// kowiki uses a Wikipedia namespace page as its Main_Page.
 			return false;
 		}
-		if ( SuggestedEdits::isGuidanceEnabled( $out->getContext() ) &&
+		if ( $title->inNamespaces( NS_MAIN, NS_TALK ) &&
+			SuggestedEdits::isGuidanceEnabled( $out->getContext() ) &&
 			HomepageHooks::getClickId( $out->getContext() ) ) {
 			return true;
 		}
