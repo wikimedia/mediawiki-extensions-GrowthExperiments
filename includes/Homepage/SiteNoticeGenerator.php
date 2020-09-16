@@ -124,9 +124,11 @@ class SiteNoticeGenerator {
 		&$siteNotice, \Skin $skin, $contextName, &$minervaEnableSiteNotice
 	) {
 		if ( Util::isMobile( $skin ) ) {
-			$this->setMobileDiscoverySiteNotice( $siteNotice, $skin, $contextName,
-				$minervaEnableSiteNotice );
-			$this->checkAndMarkMobileDiscoveryNoticeSeen( $skin );
+			if ( !$this->experimentUserManager->isUserInVariant( $skin->getUser(), [ 'C', 'D' ] ) ) {
+				$this->setMobileDiscoverySiteNotice( $siteNotice, $skin, $contextName,
+					$minervaEnableSiteNotice );
+				$this->checkAndMarkMobileDiscoveryNoticeSeen( $skin );
+			}
 		} else {
 			$this->setDesktopDiscoverySiteNotice( $siteNotice, $skin, $contextName );
 		}

@@ -206,7 +206,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$minervaEnableNotice = false;
 		$experimentUserManager = $this->getExperimentUserManagerMock();
 		$experimentUserManager->method( 'isUserInVariant' )
-			->willReturn( true );
+			->willReturn( false );
 		$siteNoticeGenerator = new SiteNoticeGenerator( $experimentUserManager );
 		$siteNoticeGenerator->setNotice(
 			'specialwelcomesurvey',
@@ -219,6 +219,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			'<div class="mw-ge-homepage-discovery-banner-mobile">' .
 			'<div class="mw-ge-homepage-discovery-arrow"></div>' .
 			'<div class="mw-ge-homepage-discovery-message">' .
+			'<h2>growthexperiments-homepage-discovery-mobile-homepage-banner-header</h2>' .
 			'<p>growthexperiments-homepage-discovery-mobile-homepage-banner-text</p>' .
 			'</div><span %s></span></div>',
 			$siteNotice
