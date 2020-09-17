@@ -400,6 +400,7 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.DifficultyFiltersDialog.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.TopicFiltersDialog.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js",
 				"helppanel/ext.growthExperiments.SuggestedEditsPeek.js",
 				{
@@ -418,6 +419,9 @@
 					"name": "homepage/suggestededits/DefaultTaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
 				}
+			],
+			"styles": [
+				"homepage/suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.less"
 			],
 			"targets": [
 				"desktop",
@@ -510,6 +514,7 @@
 				"homepage/ext.growthExperiments.Homepage.StartEditing.js",
 				"homepage/ext.growthExperiments.Homepage.StartEditingDialog.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.js",
 				{
 					"name": "homepage/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
@@ -520,7 +525,8 @@
 				}
 			],
 			"styles": [
-				"homepage/ext.growthExperiments.Homepage.StartEditingDialog.less"
+				"homepage/ext.growthExperiments.Homepage.StartEditingDialog.less",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.less"
 			],
 			"messages": [
 				"growthexperiments-homepage-startediting-dialog-header",
