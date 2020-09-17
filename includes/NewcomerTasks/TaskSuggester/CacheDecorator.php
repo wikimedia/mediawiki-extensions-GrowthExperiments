@@ -40,6 +40,7 @@ class CacheDecorator implements TaskSuggester {
 		$debug = false
 	) {
 		$taskSetFilters = new TaskSetFilters( $taskTypeFilter, $topicFilter );
+		$limit = $limit ?? SearchTaskSuggester::DEFAULT_LIMIT;
 
 		if ( $debug || $limit > SearchTaskSuggester::DEFAULT_LIMIT ) {
 			return $this->taskSuggester->suggest( $user, $taskTypeFilter, $topicFilter, $limit, $offset, $debug );

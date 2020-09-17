@@ -54,7 +54,11 @@
 	"APIListModules": {
 		"growthtasks": {
 			"class": "GrowthExperiments\\Api\\ApiQueryGrowthTasks",
-			"services": [ "GrowthExperimentsTaskSuggesterFactory", "GrowthExperimentsConfigurationLoader" ]
+			"services": [
+				"GrowthExperimentsTaskSuggesterFactory",
+				"GrowthExperimentsConfigurationLoader",
+				"GrowthExperimentsTemplateFilter"
+			]
 		}
 	},
 	"RestRoutes": [
