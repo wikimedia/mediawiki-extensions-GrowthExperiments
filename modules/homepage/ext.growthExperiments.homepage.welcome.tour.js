@@ -1,26 +1,82 @@
 ( function ( gt ) {
-	var welcomeTour = new gt.TourBuilder( {
+	var welcomeTour, step,
+		homepageVariant = mw.user.options.get( 'growthexperiments-homepage-variant' );
+
+	welcomeTour = new gt.TourBuilder( {
 		name: 'homepage_welcome',
 		isSinglePage: true,
 		shouldLog: true
 	} );
-	welcomeTour.firstStep( {
-		name: 'welcome',
-		title: mw.message( 'growthexperiments-tour-welcome-title' )
-			.params( [ mw.user ] )
-			.parse(),
-		description: mw.message( 'growthexperiments-tour-welcome-description' )
-			.params( [ mw.user ] )
-			.parse(),
-		attachTo: '#pt-userpage',
-		position: 'bottom',
-		overlay: false,
-		autoFocus: true,
-		buttons: [ {
-			action: 'end',
-			namemsg: 'growthexperiments-tour-response-button-okay'
-		} ]
-	} );
+	if ( homepageVariant === 'A' ) {
+		welcomeTour.firstStep( {
+			name: 'welcome',
+			title: mw.message( 'growthexperiments-tour-welcome-title' )
+				.params( [ mw.user ] )
+				.parse(),
+			description: mw.message( 'growthexperiments-tour-welcome-description' )
+				.params( [ mw.user ] )
+				.parse(),
+			attachTo: '#pt-userpage',
+			position: 'bottom',
+			overlay: false,
+			autoFocus: true,
+			buttons: [ {
+				action: 'end',
+				namemsg: 'growthexperiments-tour-response-button-okay'
+			} ]
+		} );
+	} else if ( homepageVariant === 'C' ) {
+		// Give the guider a non-fullwidth node to attach to.
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$( '#firstHeading' ).wrapInner( '<span>' );
+		step = welcomeTour.firstStep( {
+			name: 'welcome',
+			title: mw.message( 'growthexperiments-tour-welcome-title' )
+				.params( [ mw.user ] )
+				.parse(),
+			description: mw.message( 'growthexperiments-tour-welcome-description-c' ).parse(),
+			attachTo: '#firstHeading span',
+			position: 'leftTop',
+			// leftTop messes up positioning, hopefully this fixes that. offset is not documented
+			// but actually TourBuilder just passes the whole parameter object to guiders.js,
+			// so all of its options work.
+			offset: { top: -25, left: 0 },
+			overlay: false,
+			autoFocus: true,
+			buttons: [ {
+				// There is way to influence the button icon without terrible hacks,
+				// so use the 'next' button which has the right icon, and define a fake next step.
+				action: 'next'
+			} ]
+		} );
+		welcomeTour.step( {
+			name: 'fake',
+			description: 'also fake',
+			onShow: function () {
+				mw.guidedTour.endTour();
+				mw.track( 'growthexperiments.startediting' );
+				// cancel displaying the guider
+				return true;
+			}
+		} );
+		step.next( 'fake' );
+	} else if ( homepageVariant === 'D' ) {
+		welcomeTour.firstStep( {
+			name: 'welcome',
+			title: mw.message( 'growthexperiments-tour-welcome-title' )
+				.params( [ mw.user ] )
+				.parse(),
+			description: mw.message( 'growthexperiments-tour-welcome-description-d' ).parse(),
+			attachTo: '#pt-userpage',
+			position: 'bottom',
+			overlay: false,
+			autoFocus: true,
+			buttons: [ {
+				action: 'end',
+				namemsg: 'growthexperiments-tour-response-button-okay'
+			} ]
+		} );
+	}
 	mw.guidedTour.launchTour( 'homepage_welcome' );
 	new mw.Api().saveOption(
 		'growthexperiments-tour-homepage-welcome',

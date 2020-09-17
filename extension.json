@@ -92,7 +92,8 @@
 		"tour": {
 			"class": "GrowthExperiments\\TourHooks",
 			"services": [
-				"UserOptionsLookup"
+				"UserOptionsLookup",
+				"GrowthExperimentsExperimentUserManager"
 			]
 		}
 	},
