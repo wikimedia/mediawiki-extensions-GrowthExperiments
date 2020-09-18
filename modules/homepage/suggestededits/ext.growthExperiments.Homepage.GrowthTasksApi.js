@@ -197,11 +197,11 @@
 			}
 			if ( data.growthtasks.debug && data.growthtasks.debug.searchDebugUrls ) {
 				Object.keys( data.growthtasks.debug.searchDebugUrls ).forEach( function ( type ) {
-					var url = data.growthtasks.debug.searchDebugUrls[ type ],
+					var debugUrl = data.growthtasks.debug.searchDebugUrls[ type ],
 						// eslint-disable-next-line no-console
 						consoleInfo = console && console.info && console.info.bind( console ) ||
 							mw.log;
-					consoleInfo( 'GrowthExperiments ' + type + ' query:', url );
+					consoleInfo( 'GrowthExperiments ' + type + ' query:', debugUrl );
 				} );
 			}
 			self.logTiming( 'fetchTasks', startTime, config.context );

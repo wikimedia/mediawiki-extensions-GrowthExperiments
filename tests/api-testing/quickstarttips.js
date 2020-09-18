@@ -35,8 +35,8 @@ describe( 'GET quickstarttips', () => {
 					const { status: sourceStatus, body: sourceBody, error: error } =
 						await client.get( `/${skin}/${editor}/${taskTypeId}/en` );
 
-					function expectedNumberOfTips( taskTypeId ) {
-						return taskTypeId === 'references' ? 7 : 6;
+					function expectedNumberOfTips( innerTaskTypeId ) {
+						return innerTaskTypeId === 'references' ? 7 : 6;
 					}
 
 					assert.equal(

@@ -91,10 +91,10 @@
 								.html( this.getDescription() )
 						],
 						className: 'suggested-edits-taskexplanation-drawer',
-						onBeforeHide: function ( drawer ) {
+						onBeforeHide: function ( innerDrawer ) {
 							// Wait for the CSS animation before removing.
 							setTimeout( function () {
-								drawer.$el.remove();
+								innerDrawer.$el.remove();
 							}, 250 );
 						}
 					} );

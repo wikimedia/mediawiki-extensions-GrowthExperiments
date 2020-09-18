@@ -163,8 +163,8 @@
 		} else {
 			extraDataPromise = $.Deferred().reject().promise();
 		}
-		extraDataPromise.then( function ( task ) {
-			postEditPanel.updateTask( task );
+		extraDataPromise.then( function ( updateTask ) {
+			postEditPanel.updateTask( updateTask );
 		} );
 
 		result = {
