@@ -166,6 +166,7 @@
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1T",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "edits in the last day",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Volunteers like you have contributed to improving {{SITENAME}} today. Join in!",
+	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "See all suggestions",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Fix spelling, grammar, and tone",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "Add sources to verify Wikipedia articles",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-update": "Bring existing articles up-to-date",

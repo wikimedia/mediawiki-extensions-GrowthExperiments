@@ -79,6 +79,35 @@
 				currentModule = newModule;
 			}
 
+			function loadExtraDataForSuggestedEdits( _, suggestedEditsModule ) {
+				// FIXME doesn't belong here; not sure what the right place would be though.
+				var GrowthTasksApi = require( './suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js' ),
+					SmallTaskCard = require( './suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.js' ),
+					taskPreviewData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ][ 'task-preview' ] || null,
+					api = new GrowthTasksApi( {
+						suggestedEditsConfig: require( './config.json' ),
+						isMobile: OO.ui.isMobile(),
+						logContext: 'mobilesummary'
+					} );
+
+				if ( taskPreviewData ) {
+					api.getExtraDataFromPcs( taskPreviewData ).then( function ( task ) {
+						var previewTask, taskCard;
+
+						// Hide the pageview count in the preview card.
+						previewTask = $.extend( {}, task );
+						previewTask.pageviews = null;
+						taskCard = new SmallTaskCard( {
+							task: previewTask,
+							taskTypes: require( './TaskTypes.json' ),
+							taskUrl: null
+						} );
+						$( suggestedEditsModule ).find( '.mw-ge-small-task-card' )
+							.replaceWith( taskCard.$element );
+					} );
+				}
+			}
+
 			overlayManager.add( routeRegex, function ( moduleName ) {
 				var moduleData;
 				if ( overlays[ moduleName ] === undefined ) {
@@ -104,6 +133,14 @@
 				e.preventDefault();
 				router.navigate( '#/homepage/' + $( this ).data( 'module-name' ) );
 			} );
+
+			// When the suggested edits module is present and we are in the right variant,
+			// finish loading the task preview card.
+			// FIXME doesn't belong here; not sure what the right place would be though.
+			$summaryModules.filter( '.growthexperiments-homepage-module-suggested-edits' )
+				.filter( '.growthexperiments-homepage-module-user-variant-C,' +
+					'.growthexperiments-homepage-module-user-variant-D' )
+				.each( loadExtraDataForSuggestedEdits );
 
 			// Start loading the ResourceLoader modules so that tapping on one will load
 			// instantly. We don't load these with page delivery so as to speed up the

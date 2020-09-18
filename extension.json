@@ -238,10 +238,25 @@
 			"packageFiles": [
 				"homepage/ext.growthExperiments.Homepage.Mobile.js",
 				"homepage/ext.growthExperiments.Homepage.MobileOverlay.js",
-				"utils/ext.growthExperiments.Utils.js"
+				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.js",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
+				"utils/ext.growthExperiments.Utils.js",
+				{
+					"name": "homepage/TaskTypes.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
+				},
+				{
+					"name": "homepage/config.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
+				}
 			],
 			"messages": [
-				"growthexperiments-homepage-suggestededits-more-info"
+				"growthexperiments-homepage-suggestededits-more-info",
+				"growthexperiments-homepage-suggestededits-pageviews"
+			],
+			"dependencies": [
+				"oojs-ui.styles.icons-media",
+				"ext.growthExperiments.Homepage.icons"
 			],
 			"targets": [
 				"mobile"
@@ -870,6 +885,7 @@
 				"homepage/ext.growthExperiments.MentorshipModule.less",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.less",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.TaskExplanation.less",
+				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.less",
 				"homepage/ext.growthExperiments.StartModule.less",
 				"homepage/ext.growthExperiments.StartEmailModule.less",
 				"homepage/ext.growthExperiments.Homepage.less"

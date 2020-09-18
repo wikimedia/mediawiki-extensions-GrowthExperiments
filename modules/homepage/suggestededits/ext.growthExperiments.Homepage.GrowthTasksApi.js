@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * Client and helper methods for the list=growthtasks API.
+ * Standalone, can be included into other modules.
+ */
 ( function () {
 
 	/**
@@ -249,6 +253,7 @@
 		encodedTitle = encodeURIComponent( title.replace( / /g, '_' ) );
 		return $.get( apiUrlBase + '/page/summary/' + encodedTitle ).then( function ( data ) {
 			task.extract = data.extract || null;
+			task.description = data.description || null;
 			// Normally we use the thumbnail source from the action API, this is only a fallback.
 			// It is used for some beta wiki configurations and local setups, and also when the
 			// action API data is missing due to query+pageimages having a smaller max limit than
@@ -319,68 +324,6 @@
 			// not worth replacing the task card with an error message just because we
 			// could not put a pageview count on it.
 			return task;
-		} );
-	};
-
-	/**
-	 * Get data about a single task from the Action API. This gets roughly the same information
-	 * as fetchTasks() does.
-	 *
-	 * @param {mw.libs.ge.TaskData} taskData Partial task data (the only required field is the article
-	 *   title). Will be expanded in-place with pageId, revisionId and description (if configured to).
-	 * @param {Object} config
-	 * @param {boolean} [config.getDescription] Include Wikidata description into the data.
-	 * @param {number} [config.thumbnailWidth] Ideal thumbnail width. The actual width might be
-	 *   smaller if the original image itself is smaller.
-	 * @param {string} [config.context] The context in which this function was
-	 *   called, used for performance instrumentation. Overrides the context given in the constructor.
-	 * @return {jQuery.Promise<mw.libs.ge.TaskData>} The expanded task data (same object as the
-	 *   input, it gets expanded in-place), wrapped in an abortable promise.
-	 */
-	GrowthTasksApi.prototype.getDataFromActionApi = function ( taskData, config ) {
-		var apiParams, actionApiPromise, finalPromise,
-			startTime = mw.now(),
-			self = this;
-
-		config = $.extend( {
-			getDescription: false,
-			thumbnailWidth: this.thumbnailWidth
-		}, config || {} );
-
-		apiParams = {
-			action: 'query',
-			prop: 'revisions' + ( config.getDescription ? '|description' : '' ),
-			rvprop: 'ids',
-			titles: taskData.title,
-			formatversion: 2,
-			uselang: mw.config.get( 'wgUserLanguage' )
-		};
-
-		actionApiPromise = new mw.Api().get( apiParams );
-		finalPromise = actionApiPromise.then( function ( data ) {
-			var item = data.query.pages[ Object.keys( data.query.pages )[ 0 ] ];
-
-			$.extend( taskData, {
-				pageId: item.pageid || null,
-				revisionId: item.revisions ? item.revisions[ 0 ].revid : null,
-				url: null,
-				description: item.description || null
-			} );
-			self.setUrlOverride( taskData );
-			self.logTiming( 'getDataFromActionApi', startTime, config.context );
-			return taskData;
-		} );
-
-		actionApiPromise.fail( function ( error, details ) {
-			if ( error === 'http' && details && details.textStatus === 'abort' ) {
-				// XHR abort, not a real error
-				return;
-			}
-			mw.log.error( 'Fetching task suggestions failed:', error, details );
-		} );
-
-		return finalPromise.catch( this.handleError.bind( this ) ).promise( {
-			abort: actionApiPromise.abort.bind( actionApiPromise )
 		} );
 	};
 
