@@ -354,6 +354,7 @@
 			],
 			"dependencies": [
 				"ext.growthExperiments.Help",
+				"ext.growthExperiments.SuggestedEditSession",
 				"mediawiki.jqueryMsg",
 				"mediawiki.router"
 			]
