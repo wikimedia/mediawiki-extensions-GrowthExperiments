@@ -24,11 +24,19 @@ class TourHooks implements
 	/** @var UserOptionsLookup */
 	private $userOptionsLookup;
 
+	/** @var ExperimentUserManager */
+	private $experimentUserManager;
+
 	/**
 	 * @param UserOptionsLookup $userOptionsLookup
+	 * @param ExperimentUserManager $experimentUserManager
 	 */
-	public function __construct( UserOptionsLookup $userOptionsLookup ) {
+	public function __construct(
+		UserOptionsLookup $userOptionsLookup,
+		ExperimentUserManager $experimentUserManager
+	) {
 		$this->userOptionsLookup = $userOptionsLookup;
+		$this->experimentUserManager = $experimentUserManager;
 	}
 
 	/** @inheritDoc */
@@ -38,6 +46,7 @@ class TourHooks implements
 		if ( !$out->getTitle()->isSpecial( 'WelcomeSurvey' ) &&
 			 !$out->getTitle()->isSpecial( 'Homepage' ) &&
 			 HomepageHooks::isHomepageEnabled( $out->getUser() ) &&
+			 !$this->experimentUserManager->isUserInVariant( $out->getUser(), [ 'C', 'D' ] ) &&
 			 !$this->userOptionsLookup->getBoolOption( $out->getUser(), self::TOUR_COMPLETED_HOMEPAGE_WELCOME )
 		) {
 			Util::maybeAddGuidedTour(
@@ -84,7 +93,9 @@ class TourHooks implements
 				'messages' => [
 					'growthexperiments-tour-welcome-title',
 					'growthexperiments-tour-welcome-description',
-					'growthexperiments-tour-response-button-okay'
+					'growthexperiments-tour-welcome-description-c',
+					'growthexperiments-tour-welcome-description-d',
+					'growthexperiments-tour-response-button-okay',
 				],
 			],
 			'ext.guidedTour.tour.homepage_discovery' => $moduleTemplate + [

@@ -139,6 +139,8 @@
 	"growthexperiments-tour-discovery-title": "Get started here!",
 	"growthexperiments-tour-discovery-description": "Click on {{GENDER:$1|your}} username to visit {{GENDER:$1|your}} homepage.",
 	"growthexperiments-homepage-welcomesurvey-default-close": "Go to {{GENDER:$1|your}} homepage",
+	"growthexperiments-tour-welcome-description-c": "{{GENDER:$1|You}} can always click on {{GENDER:$1|your}} username to return here. Continue to learn about the '''suggested edits''' on {{GENDER:$1|your}} homepage.",
+	"growthexperiments-tour-welcome-description-d": "{{GENDER:$1|You}} can always click on {{GENDER:$1|your}} username to return here. On {{GENDER:$1|your}} homepage, {{GENDER:$1|you}} can find suggested edits, ask questions to {{GENDER:$1|your}} mentor, and see {{GENDER:$1|your}} impact.",
 	"growthexperiments-homepage-discovery-banner-header": "Welcome to {{GENDER:$1|your}} homepage!",
 	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|You}} can always click $2 at the top of the page to return here.",
 	"growthexperiments-homepage-discovery-thanks-header": "Thanks for creating {{GENDER:$1|your}} account!",

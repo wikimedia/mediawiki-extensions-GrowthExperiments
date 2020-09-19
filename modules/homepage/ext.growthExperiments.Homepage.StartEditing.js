@@ -13,8 +13,37 @@
 			context: 'startEditingDialog'
 		} );
 
+	/**
+	 * Launch the suggested edits initiation dialog.
+	 *
+	 * @param {string} type 'startediting' or 'suggestededits'
+	 * @param {string} mode Rendering mode. See constants in HomepageModule.php
+	 * @return {jQuery.Promise<boolean>} Resolves when the dialog is closed, indicates whether
+	 *   initiation was successful or cancelled.
+	 */
+	function launchCta( type, mode ) {
+		var lifecycle, dialog, windowManager;
+
+		dialog = new StartEditingDialog( {
+			mode: mode,
+			useTopicSelector: type === 'startediting',
+			activateWhenDone: type === 'startediting'
+		}, logger, api );
+		windowManager = new OO.ui.WindowManager( {
+			modal: true
+		} );
+
+		// eslint-disable-next-line no-jquery/no-global-selector
+		$( 'body' ).append( windowManager.$element );
+		windowManager.addWindows( [ dialog ] );
+		lifecycle = windowManager.openWindow( dialog );
+		return lifecycle.closing.then( function ( data ) {
+			return ( data && data.action === 'activate' );
+		} );
+	}
+
 	function setupCta( $container ) {
-		var ctaButton, dialog, windowManager,
+		var ctaButton,
 			$startEditingCta = $container.find( '#mw-ge-homepage-startediting-cta' ),
 			$suggestedEditsInfo = $container.find( '#mw-ge-homepage-suggestededits-info' ),
 			$buttonElement = $startEditingCta.length ? $startEditingCta : $suggestedEditsInfo,
@@ -25,21 +54,8 @@
 		}
 
 		ctaButton = OO.ui.ButtonWidget.static.infuse( $buttonElement );
-		dialog = new StartEditingDialog( {
-			mode: mode,
-			useTopicSelector: buttonType === 'startediting',
-			activateWhenDone: buttonType === 'startediting'
-		}, logger, api );
-		windowManager = new OO.ui.WindowManager( {
-			modal: true
-		} );
-
-		// eslint-disable-next-line no-jquery/no-global-selector
-		$( 'body' ).append( windowManager.$element );
-		windowManager.addWindows( [ dialog ] );
 
 		ctaButton.on( 'click', function () {
-			var lifecycle;
 			if (
 				buttonType === 'startediting' &&
 				mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' )
@@ -63,9 +79,8 @@
 			} else {
 				logger.log( 'suggested-edits', mode, 'se-info-click' );
 			}
-			lifecycle = windowManager.openWindow( dialog );
-			lifecycle.closing.done( function ( data ) {
-				if ( data && data.action === 'activate' ) {
+			launchCta( buttonType, mode ).done( function ( activated ) {
+				if ( activated ) {
 					// No-op; logging and everything else is done within the dialog,
 					// as it is kept open during setup of the suggested edits module
 					// to make the UI change less disruptive.
@@ -80,6 +95,13 @@
 	// See also the comment in ext.growthExperiments.Homepage.Mentorship.js
 	// eslint-disable-next-line no-jquery/no-global-selector
 	setupCta( $( '.growthexperiments-homepage-container' ) );
+
+	// Allow activation from a guided tour
+	mw.trackSubscribe( 'growthexperiments.startediting', function () {
+		// eslint-disable-next-line no-jquery/no-global-selector
+		var mode = $( '.growthexperiments-homepage-module' ).data( 'mode' );
+		launchCta( 'suggestededits', mode );
+	} );
 
 	// Try setup for mobile overlay mode
 	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
