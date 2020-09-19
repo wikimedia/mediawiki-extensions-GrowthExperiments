@@ -8,15 +8,17 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use HashConfig;
 use MediaWiki\User\StaticUserOptionsLookup;
 use MediaWiki\User\UserIdentityValue;
-use PHPUnit\Framework\TestCase;
+use MediaWikiUnitTestCase;
 
 /**
  * @coversDefaultClass \GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup
  */
-class NewcomerTasksUserOptionsLookupTest extends TestCase {
+class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 
 	/**
-	 * @covers ::suggest
+	 * @covers ::getTopicFilter
+	 * @covers ::getTaskTypeFilter
+	 * @covers ::getJsonListOption
 	 */
 	public function testSuggest() {
 		$user1 = new UserIdentityValue( 1, 'User1', 1 );

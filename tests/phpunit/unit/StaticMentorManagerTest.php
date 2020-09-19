@@ -5,13 +5,13 @@ namespace GrowthExperiments\Tests;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\StaticMentorManager;
 use GrowthExperiments\WikiConfigException;
-use PHPUnit\Framework\TestCase;
+use MediaWikiUnitTestCase;
 use User;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Mentorship\StaticMentorManager
  */
-class StaticMentorManagerTest extends TestCase {
+class StaticMentorManagerTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers ::getMentorForUser
