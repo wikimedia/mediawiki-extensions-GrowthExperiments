@@ -88,6 +88,12 @@
 		},
 		"mentor": {
 			"class": "GrowthExperiments\\Mentorship\\MentorHooks"
+		},
+		"tour": {
+			"class": "GrowthExperiments\\TourHooks",
+			"services": [
+				"UserOptionsLookup"
+			]
 		}
 	},
 	"Hooks": {
@@ -101,7 +107,7 @@
 		"UserGetDefaultOptions": [
 			"GrowthExperiments\\HelpPanelHooks::onUserGetDefaultOptions",
 			"homepage",
-			"GrowthExperiments\\TourHooks::onUserGetDefaultOptions"
+			"tour"
 		],
 		"LocalUserCreated": [
 			"GrowthExperiments\\HelpPanelHooks::onLocalUserCreated",
@@ -111,7 +117,7 @@
 			"welcomeSurvey",
 			"GrowthExperiments\\HelpPanelHooks::onGetPreferences",
 			"homepage",
-			"GrowthExperiments\\TourHooks::onGetPreferences",
+			"tour",
 			"mentor"
 		],
 		"BeforeWelcomeCreation": "welcomeSurvey",
@@ -121,7 +127,7 @@
 		"BeforePageDisplay": [
 			"GrowthExperiments\\HelpPanelHooks::onBeforePageDisplay",
 			"homepage",
-			"GrowthExperiments\\TourHooks::onBeforePageDisplay"
+			"tour"
 		],
 		"ConfirmEmailComplete": "homepage",
 		"SkinMinervaOptionsInit": [
@@ -146,7 +152,7 @@
 			"GrowthExperiments\\ConfirmEmailHooks::onUserSendConfirmationMail"
 		],
 		"ResourceLoaderRegisterModules": [
-			"GrowthExperiments\\TourHooks::onResourceLoaderRegisterModules"
+			"tour"
 		],
 		"WikimediaEventsShouldSchemaEditAttemptStepOversample": [
 			"GrowthExperiments\\HomepageHooks::onWikimediaEventsShouldSchemaEditAttemptStepOversample"

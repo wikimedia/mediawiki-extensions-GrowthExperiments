@@ -2,28 +2,44 @@
 
 namespace GrowthExperiments;
 
-use ConfigException;
+use MediaWiki\Hook\BeforePageDisplayHook;
+use MediaWiki\Hook\ResourceLoaderRegisterModulesHook;
+use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
+use MediaWiki\User\UserOptionsLookup;
 use ResourceLoader;
-use User;
 
-class TourHooks {
+class TourHooks implements
+	BeforePageDisplayHook,
+	ResourceLoaderRegisterModulesHook,
+	GetPreferencesHook,
+	UserGetDefaultOptionsHook
+{
 
 	const TOUR_COMPLETED_HELP_PANEL = 'growthexperiments-tour-help-panel';
 	const TOUR_COMPLETED_HOMEPAGE_MENTORSHIP = 'growthexperiments-tour-homepage-mentorship';
 	const TOUR_COMPLETED_HOMEPAGE_WELCOME = 'growthexperiments-tour-homepage-welcome';
 	const TOUR_COMPLETED_HOMEPAGE_DISCOVERY = 'growthexperiments-tour-homepage-discovery';
 
+	/** @var UserOptionsLookup */
+	private $userOptionsLookup;
+
 	/**
-	 * @param \OutputPage $out
-	 * @param \Skin $skin
+	 * @param UserOptionsLookup $userOptionsLookup
 	 */
-	public static function onBeforePageDisplay( \OutputPage $out, \Skin $skin ) {
+	public function __construct( UserOptionsLookup $userOptionsLookup ) {
+		$this->userOptionsLookup = $userOptionsLookup;
+	}
+
+	/** @inheritDoc */
+	public function onBeforePageDisplay( $out, $skin ): void {
 		// Show the discovery tour if the user isn't on WelcomeSurvey or Homepage.
 		// If they have already seen the welcome tour, don't show the discovery one.
 		if ( !$out->getTitle()->isSpecial( 'WelcomeSurvey' ) &&
 			 !$out->getTitle()->isSpecial( 'Homepage' ) &&
 			 HomepageHooks::isHomepageEnabled( $out->getUser() ) &&
-			 !$out->getUser()->getBoolOption( self::TOUR_COMPLETED_HOMEPAGE_WELCOME ) ) {
+			 !$this->userOptionsLookup->getBoolOption( $out->getUser(), self::TOUR_COMPLETED_HOMEPAGE_WELCOME )
+		) {
 			Util::maybeAddGuidedTour(
 				$out,
 				self::TOUR_COMPLETED_HOMEPAGE_DISCOVERY,
@@ -33,12 +49,10 @@ class TourHooks {
 	}
 
 	/**
-	 * Register ResourceLoader modules with dynamic dependencies.
-	 *
-	 * @param ResourceLoader $resourceLoader
-	 * @throws \MWException
+	 * Register ResourceLoader modules which depend on other extensions.
+	 * @inheritDoc
 	 */
-	public static function onResourceLoaderRegisterModules( ResourceLoader $resourceLoader ) {
+	public function onResourceLoaderRegisterModules( ResourceLoader $resourceLoader ): void {
 		if ( !self::growthTourDependenciesLoaded() ) {
 			return;
 		}
@@ -97,12 +111,9 @@ class TourHooks {
 
 	/**
 	 * Register tour state as hidden preferences
-	 *
-	 * @param User $user
-	 * @param array &$preferences Preferences object
-	 * @throws ConfigException
+	 * @inheritDoc
 	 */
-	public static function onGetPreferences( $user, &$preferences ) {
+	public function onGetPreferences( $user, &$preferences ) {
 		if ( !self::growthTourDependenciesLoaded() ) {
 			return;
 		}
@@ -130,10 +141,9 @@ class TourHooks {
 	 * Default is to set their visibility to true (seen), and in the LocalUserCreated
 	 * hook we'll set these preferences back to false (unseen).
 	 *
-	 * @param array &$wgDefaultUserOptions Reference to default options array
-	 * @throws ConfigException
+	 * @inheritDoc
 	 */
-	public static function onUserGetDefaultOptions( &$wgDefaultUserOptions ) {
+	public function onUserGetDefaultOptions( &$wgDefaultUserOptions ) {
 		if ( !self::growthTourDependenciesLoaded() ) {
 			return;
 		}
