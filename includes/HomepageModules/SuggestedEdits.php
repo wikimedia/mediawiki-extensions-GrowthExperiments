@@ -14,7 +14,6 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TemplateBasedTask;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
-use GrowthExperiments\NewcomerTasks\TemplateFilter;
 use Html;
 use IContextSource;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
@@ -84,9 +83,6 @@ class SuggestedEdits extends BaseModule {
 	/** @var TaskSet|StatusValue */
 	private $tasks;
 
-	/** @var TemplateFilter */
-	private $templateFilter;
-
 	/**
 	 * @param IContextSource $context
 	 * @param EditInfoService $editInfoService
@@ -97,7 +93,6 @@ class SuggestedEdits extends BaseModule {
 	 * @param TaskSuggester $taskSuggester
 	 * @param TitleFactory $titleFactory
 	 * @param ProtectionFilter $protectionFilter
-	 * @param TemplateFilter $templateFilter
 	 */
 	public function __construct(
 		IContextSource $context,
@@ -108,8 +103,7 @@ class SuggestedEdits extends BaseModule {
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		TaskSuggester $taskSuggester,
 		TitleFactory $titleFactory,
-		ProtectionFilter $protectionFilter,
-		TemplateFilter $templateFilter
+		ProtectionFilter $protectionFilter
 	) {
 		parent::__construct( 'suggested-edits', $context, $experimentUserManager );
 		$this->editInfoService = $editInfoService;
@@ -120,7 +114,6 @@ class SuggestedEdits extends BaseModule {
 		$this->taskSuggester = $taskSuggester;
 		$this->titleFactory = $titleFactory;
 		$this->protectionFilter = $protectionFilter;
-		$this->templateFilter = $templateFilter;
 	}
 
 	/** @inheritDoc */
@@ -255,8 +248,6 @@ class SuggestedEdits extends BaseModule {
 			} elseif ( $tasks->count() === 0 ) {
 				$data['task-preview'] = [];
 			} else {
-				$tasks = $this->templateFilter->filter( $tasks );
-				$tasks = $this->protectionFilter->filter( $tasks, 1 );
 				$task = $tasks[0];
 				$templates = null;
 				if ( $task instanceof TemplateBasedTask ) {

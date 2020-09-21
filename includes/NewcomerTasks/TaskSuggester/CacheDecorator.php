@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
+use GrowthExperiments\NewcomerTasks\TemplateFilter;
 use MediaWiki\User\UserIdentity;
 use WANObjectCache;
 
@@ -15,18 +16,24 @@ class CacheDecorator implements TaskSuggester {
 	/** @var TaskSuggester */
 	private $taskSuggester;
 
+	/** @var TemplateFilter */
+	private $templateFilter;
+
 	/** @var WANObjectCache */
 	private $cache;
 
 	/**
 	 * @param TaskSuggester $taskSuggester
+	 * @param TemplateFilter $templateFilter
 	 * @param WANObjectCache $cache
 	 */
 	public function __construct(
 		TaskSuggester $taskSuggester,
+		TemplateFilter $templateFilter,
 		WANObjectCache $cache
 	) {
 		$this->taskSuggester = $taskSuggester;
+		$this->templateFilter = $templateFilter;
 		$this->cache = $cache;
 	}
 
@@ -63,6 +70,9 @@ class CacheDecorator implements TaskSuggester {
 					// Shuffle the contents again (they were shuffled when first placed into the
 					// cache) and return only the subset of tasks that the requester asked for.
 					$oldValue->randomSort();
+					// Filter out cached tasks which have already been done.
+					// Filter before limiting, so they can be replace by other tasks.
+					$oldValue = $this->templateFilter->filter( $oldValue );
 					$oldValue->truncate( $limit );
 					return $oldValue;
 				}

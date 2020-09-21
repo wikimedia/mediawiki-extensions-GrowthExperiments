@@ -193,15 +193,15 @@ return [
 				$templateProvider,
 				$services->getSearchEngineFactory()
 			);
+			$taskSuggesterFactory = new DecoratingTaskSuggesterFactory(
+				$taskSuggesterFactory,
+				$services->getObjectFactory(),
+				[ [
+					  'class' => CacheDecorator::class,
+					  'services' => [ 'GrowthExperimentsTemplateFilter', 'MainWANObjectCache' ],
+				  ] ]
+			);
 		}
-		$taskSuggesterFactory = new DecoratingTaskSuggesterFactory(
-			$taskSuggesterFactory,
-			$services->getObjectFactory(),
-			[ [
-				'class' => CacheDecorator::class,
-				'services' => [ 'MainWANObjectCache' ],
-			] ]
-		);
 		$taskSuggesterFactory->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $taskSuggesterFactory;
 	},
