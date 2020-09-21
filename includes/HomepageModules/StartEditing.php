@@ -6,19 +6,25 @@ use FormatJson;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\WelcomeSurvey;
+use Html;
 use IContextSource;
 use OOUI\ButtonWidget;
+use OOUI\Tag;
 
 class StartEditing extends BaseTaskModule {
 
 	/** @var bool In-process cache for isCompleted() */
 	private $isCompleted;
 
+	/** @var ExperimentUserManager */
+	private $experimentUserManager;
+
 	/**
 	 * @inheritDoc
 	 */
 	public function __construct( IContextSource $context, ExperimentUserManager $experimentUserManager ) {
 		parent::__construct( 'start-startediting', $context, $experimentUserManager );
+		$this->experimentUserManager = $experimentUserManager;
 	}
 
 	/**
@@ -43,6 +49,12 @@ class StartEditing extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function getHeaderIconName() {
+		if ( $this->experimentUserManager->isUserInVariant(
+			$this->getContext()->getUser(),
+			'D'
+		) ) {
+			return 'suggestedEdits';
+		}
 		return 'edit';
 	}
 
@@ -50,12 +62,49 @@ class StartEditing extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function getHeaderText() {
+		// Variant D
+		if ( $this->experimentUserManager->isUserInVariant(
+				$this->getContext()->getUser(),
+				'D'
+			) && $this->getMode() === HomepageModule::RENDER_MOBILE_SUMMARY ) {
+			return $this->getContext()->msg(
+				'growthexperiments-homepage-startediting-mobilesummary-header-variant-d'
+			)->text();
+		}
+
+		// Variant A/C
 		if ( $this->isCompleted() &&
 			$this->getMode() === HomepageModule::RENDER_MOBILE_SUMMARY
 		) {
 			return $this->getContext()->msg( 'growthexperiments-homepage-startediting-button' )->text();
 		} else {
 			return $this->getContext()->msg( 'growthexperiments-homepage-startediting-header' )->text();
+		}
+	}
+
+	/** @inheritDoc */
+	protected function getMobileSummaryBody() {
+		if ( $this->experimentUserManager->isUserInVariant(
+			$this->getContext()->getUser(),
+			'D'
+		) ) {
+			return Html::rawElement( 'div', [],
+				Html::element( 'p', [],
+					$this->getContext()->msg(
+						'growthexperiments-homepage-startediting-mobilesummary-body-variant-d'
+					)->text() ) .
+				new ButtonWidget( [
+					'id' => 'mw-ge-homepage-startediting-mobilesummary-cta',
+					'framed' => true,
+					'flags' => [ 'progressive', 'primary' ],
+					'label' => $this->getContext()->msg(
+						'growthexperiments-homepage-startediting-mobilesummary-button-variant-d'
+					)->text(),
+					'infusable' => true,
+					'button' => new Tag( 'span' ),
+				] ) );
+		} else {
+			return parent::getMobileSummaryBody();
 		}
 	}
 
@@ -106,9 +155,15 @@ class StartEditing extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function getModuleStyles() {
+		$variantD = $this->experimentUserManager->isUserInVariant(
+			$this->getContext()->getUser(),
+			'D'
+		);
 		return array_merge(
 			parent::getModuleStyles(),
-			[ 'oojs-ui.styles.icons-editing-core' ]
+			[ 'oojs-ui.styles.icons-editing-core' ],
+			// SuggestedEdits icon is in HelpPanel.icons
+			$variantD ? [ 'ext.growthExperiments.HelpPanel.icons' ] : []
 		);
 	}
 
@@ -118,5 +173,10 @@ class StartEditing extends BaseTaskModule {
 			'GEHomepageSuggestedEditsEnableTopics' =>
 				SuggestedEdits::isTopicMatchingEnabled( $this->getContext() )
 		];
+	}
+
+	/** @inheritDoc */
+	protected function getModuleRoute() : string {
+		return '';
 	}
 }

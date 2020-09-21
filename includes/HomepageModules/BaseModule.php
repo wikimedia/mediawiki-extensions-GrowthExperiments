@@ -466,6 +466,7 @@ abstract class BaseModule implements HomepageModule {
 					self::BASE_CSS_CLASS . '-user-variant-' . $this->getUserVariant()
 				], $this->getCssClasses() ),
 				'data-module-name' => $this->name,
+				'data-module-route' => $this->getModuleRoute(),
 				'data-mode' => $this->getMode(),
 			],
 			implode( "\n", $sections )
@@ -484,6 +485,16 @@ abstract class BaseModule implements HomepageModule {
 			'wgGEHomepageModuleState-' . $this->name => $this->getState(),
 			'wgGEHomepageModuleActionData-' . $this->name => $this->getActionData(),
 		] ) );
+	}
+
+	/**
+	 * The component for mw.router to use when routing clicks from mobile
+	 * summary HTML. If this is an empty string, no routing occurs.
+	 *
+	 * @return string
+	 */
+	protected function getModuleRoute() : string {
+		return '#/homepage/' . $this->name;
 	}
 
 	/**

@@ -131,7 +131,10 @@
 
 			$summaryModulesContainer.on( 'click', summaryModulesSelector, function ( e ) {
 				e.preventDefault();
-				router.navigate( '#/homepage/' + $( this ).data( 'module-name' ) );
+				// See BaseModule->getModuleRoute()
+				if ( $( this ).data( 'module-route' ) ) {
+					router.navigate( $( this ).data( 'module-route' ) );
+				}
 			} );
 
 			// When the suggested edits module is present and we are in the right variant,
@@ -157,13 +160,14 @@
 				/**
 				 * Fired after homepage module summary content is rendered on the page.
 				 *
-				 * @event growthExperiments.mobileHomepageSummaryHtmlLoaded
-				 * @member mw.hook
-				 * @param {string} moduleName The name of the homepage module.
+				 * The hook name is constructed with the module name, e.g.
+				 * growthExperiments.mobileHomepageSummaryHtmlLoaded.start-startediting,
+				 * growthExperiments.mobileHomepageSummaryHtmlLoaded.impact
+				 * etc.
+				 *
 				 * @param {jQuery} $content The content of the homepage summary module.
 				 */
-				mw.hook( 'growthExperiments.mobileHomepageSummaryHtmlLoaded' ).fire(
-					$( this ).data( 'module-name' ),
+				mw.hook( 'growthExperiments.mobileHomepageSummaryHtmlLoaded.' + $( this ).data( 'module-name' ) ).fire(
 					$( this )
 				);
 			} );

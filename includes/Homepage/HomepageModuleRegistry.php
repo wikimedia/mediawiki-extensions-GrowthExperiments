@@ -9,6 +9,7 @@ use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\Start;
+use GrowthExperiments\HomepageModules\StartEditing;
 use GrowthExperiments\HomepageModules\StartEmail;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use IContextSource;
@@ -139,6 +140,14 @@ class HomepageModuleRegistry {
 				$growthServices = GrowthExperimentsServices::wrap( $services );
 				return new Help( $context, $growthServices->getExperimentUserManager() );
 			},
+
+			'start-startediting' => function (
+				MediaWikiServices $services,
+				IContextSource $context
+			) {
+				$growthServices = GrowthExperimentsServices::wrap( $services );
+				return new StartEditing( $context, $growthServices->getExperimentUserManager() );
+			}
 
 		];
 	}

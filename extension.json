@@ -916,7 +916,8 @@
 				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.less",
 				"homepage/ext.growthExperiments.StartModule.less",
 				"homepage/ext.growthExperiments.StartEmailModule.less",
-				"homepage/ext.growthExperiments.Homepage.less"
+				"homepage/ext.growthExperiments.Homepage.less",
+				"homepage/ext.growthExperiments.Homepage.StartEditing.less"
 			],
 			"lessCallback": [ "GrowthExperiments\\HomepageHooks", "lessCallback" ],
 			"targets": [

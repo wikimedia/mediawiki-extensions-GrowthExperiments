@@ -134,7 +134,7 @@ class SpecialHomepage extends SpecialPage {
 				'growthexperiments-homepage-container-user-variant-' .
 				$this->experimentUserManager->getVariant( $this->getUser() )
 		] ) );
-		$modules = $this->getModules();
+		$modules = $this->getModules( $isMobile, $par );
 
 		if ( $isMobile ) {
 			if (
@@ -213,13 +213,21 @@ class SpecialHomepage extends SpecialPage {
 	}
 
 	/**
+	 * @param bool $isMobile
+	 * @param string|null $par Path passed into SpecialHomepage::execute()
 	 * @return BaseModule[]
 	 */
-	private function getModules() {
+	private function getModules( bool $isMobile, $par = '' ) {
 		$variantCD = $this->experimentUserManager->isUserInVariant( $this->getUser(), [ 'C', 'D' ] );
 		$moduleConfig = array_filter( [
 			'start' => !$variantCD,
 			'startemail' => $variantCD,
+			// Only load start-startediting code for mobile summary, variant D, unactivated SE users
+			'start-startediting' => $isMobile && !$par &&
+				$this->experimentUserManager->isUserInVariant(
+					$this->getUser(),
+					'D'
+				) && !SuggestedEdits::isActivated( $this->getContext() ),
 			'suggested-edits' => SuggestedEdits::isEnabled( $this->getContext() ),
 			'impact' => true,
 			'mentorship' => true,
@@ -284,7 +292,7 @@ class SpecialHomepage extends SpecialPage {
 
 	private function renderDesktop() {
 		$out = $this->getContext()->getOutput();
-		$modules = $this->getModules();
+		$modules = $this->getModules( false );
 		$out->addBodyClasses( 'growthexperiments-homepage-desktop' );
 		foreach ( $this->getModuleGroups() as $group => $subGroups ) {
 			$out->addHTML( Html::openElement( 'div', [
@@ -347,7 +355,7 @@ class SpecialHomepage extends SpecialPage {
 
 	private function renderMobileSummary() {
 		$out = $this->getContext()->getOutput();
-		$modules = $this->getModules();
+		$modules = $this->getModules( true );
 		$out->addBodyClasses( 'growthexperiments-homepage-mobile-summary' );
 		foreach ( $modules as $moduleName => $module ) {
 			try {

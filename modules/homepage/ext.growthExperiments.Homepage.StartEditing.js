@@ -114,4 +114,12 @@
 		}
 	} );
 
+	mw.hook( 'growthExperiments.mobileHomepageSummaryHtmlLoaded.start-startediting' ).add( function ( $content ) {
+		$content.on( 'click', function () {
+			// TODO: Launch the correct version of the dialog and activate the SE module
+			// upon completion, see T258017
+			launchCta( 'suggestededits', 'mobile-summary' );
+		} );
+	} );
+
 }() );

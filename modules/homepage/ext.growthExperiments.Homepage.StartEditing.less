@@ -1,0 +1,27 @@
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
+
+// Styles for the mobile summary view of StartEditing module for variant D users.
+.growthexperiments-homepage-module-start-startediting {
+	&.growthexperiments-homepage-module-mobile-summary.growthexperiments-homepage-module-user-variant-D {
+		cursor: pointer;
+		border: solid 1px @wmui-color-accent50;
+		border-radius: 2px;
+		background-color: #f5f9ff;
+
+		.growthexperiments-homepage-module-header {
+			padding-top: 16px;
+			padding-bottom: 0;
+
+			&-icon {
+				.oo-ui-iconElement {
+					min-width: 64px;
+					min-height: 64px;
+				}
+			}
+		}
+
+		p {
+			font-size: 0.8em;
+		}
+	}
+}
