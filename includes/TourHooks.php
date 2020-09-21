@@ -3,8 +3,8 @@
 namespace GrowthExperiments;
 
 use MediaWiki\Hook\BeforePageDisplayHook;
-use MediaWiki\Hook\ResourceLoaderRegisterModulesHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\ResourceLoader\Hook\ResourceLoaderRegisterModulesHook;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MediaWiki\User\UserOptionsLookup;
 use ResourceLoader;
