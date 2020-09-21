@@ -12,6 +12,7 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TemplateBasedTask;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\TemplateFilter;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Linker\LinkTarget;
 use StatusValue;
@@ -30,21 +31,27 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
 
+	/** @var TemplateFilter */
+	private $templateFilter;
+
 	/**
 	 * @param ApiQuery $queryModule
 	 * @param string $moduleName
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param ConfigurationLoader $configurationLoader
+	 * @param TemplateFilter $templateFilter
 	 */
 	public function __construct(
 		ApiQuery $queryModule,
 		$moduleName,
 		TaskSuggesterFactory $taskSuggesterFactory,
-		ConfigurationLoader $configurationLoader
+		ConfigurationLoader $configurationLoader,
+		TemplateFilter $templateFilter
 	) {
 		parent::__construct( $queryModule, $moduleName, 'gt' );
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->configurationLoader = $configurationLoader;
+		$this->templateFilter = $templateFilter;
 	}
 
 	/** @inheritDoc */
@@ -76,6 +83,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		if ( $tasks instanceof StatusValue ) {
 			$this->dieStatus( $tasks );
 		}
+		$tasks = $this->templateFilter->filter( $tasks );
 
 		$result = $this->getResult();
 		$basePath = [ 'query', $this->getModuleName() ];

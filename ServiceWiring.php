@@ -23,6 +23,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggesterFacto
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TemplateFilter;
 use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use MediaWiki\Config\ServiceOptions;
@@ -138,6 +139,16 @@ return [
 		MediaWikiServices $services
 	): ProtectionFilter {
 		return new ProtectionFilter(
+			$services->getTitleFactory(),
+			$services->getLinkBatchFactory()
+		);
+	},
+
+	'GrowthExperimentsTemplateFilter' => function (
+		MediaWikiServices $services
+	): TemplateFilter {
+		return new TemplateFilter(
+			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
 			$services->getTitleFactory(),
 			$services->getLinkBatchFactory()
 		);

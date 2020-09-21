@@ -12,6 +12,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TemplateFilter;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use MediaWiki\MediaWikiServices;
 
@@ -77,6 +78,10 @@ class GrowthExperimentsServices {
 
 	public function getProtectionFilter(): ProtectionFilter {
 		return $this->coreServices->get( 'GrowthExperimentsProtectionFilter' );
+	}
+
+	public function getTemplateFilter(): TemplateFilter {
+		return $this->coreServices->get( 'GrowthExperimentsTemplateFilter' );
 	}
 
 	public function getQuestionPosterFactory(): QuestionPosterFactory {

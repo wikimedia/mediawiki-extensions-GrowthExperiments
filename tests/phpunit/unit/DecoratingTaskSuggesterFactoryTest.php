@@ -9,7 +9,6 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use HashBagOStuff;
-use HashConfig;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use Psr\Container\ContainerExceptionInterface;
@@ -38,8 +37,7 @@ class DecoratingTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 			[
 				'class' => CacheDecorator::class,
 				'args' => [
-					new \WANObjectCache( [ 'cache' => new HashBagOStuff() ] ),
-					new HashConfig( [ 'GENewcomerTasksTopicType' => 'x' ] ),
+					new \WANObjectCache( [ 'cache' => new HashBagOStuff() ] )
 				],
 			],
 		] );
