@@ -102,8 +102,7 @@ class HomepageModuleRegistry {
 					$growthServices->getNewcomerTasksUserOptionsLookup(),
 					$growthServices->getTaskSuggesterFactory()->create(),
 					$services->getTitleFactory(),
-					$growthServices->getProtectionFilter(),
-					$growthServices->getTemplateFilter()
+					$growthServices->getProtectionFilter()
 				);
 			},
 

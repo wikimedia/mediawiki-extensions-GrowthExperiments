@@ -56,8 +56,7 @@
 			"class": "GrowthExperiments\\Api\\ApiQueryGrowthTasks",
 			"services": [
 				"GrowthExperimentsTaskSuggesterFactory",
-				"GrowthExperimentsConfigurationLoader",
-				"GrowthExperimentsTemplateFilter"
+				"GrowthExperimentsConfigurationLoader"
 			]
 		}
 	},

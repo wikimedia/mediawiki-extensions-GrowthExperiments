@@ -10,7 +10,6 @@ use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use GrowthExperiments\NewcomerTasks\TemplateFilter;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use StatusValue;
 use TitleValue;
@@ -37,12 +36,6 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$configurationLoader = new StaticConfigurationLoader( [ $taskType1, $taskType2, $taskType3 ] );
 		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
 		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
-		$templateFilter = $this->getMockBuilder( TemplateFilter::class )
-			->disableOriginalConstructor()
-			->getMock();
-		$templateFilter->method( 'filter' )
-			->willReturnArgument( 0 );
-		$this->setService( 'GrowthExperimentsTemplateFilter', $templateFilter );
 
 		$baseParams = [
 			'action' => 'query',
@@ -80,12 +73,6 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$configurationLoader = new StaticConfigurationLoader( [ $taskType ] );
 		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
 		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
-		$templateFilter = $this->getMockBuilder( TemplateFilter::class )
-			->disableOriginalConstructor()
-			->getMock();
-		$templateFilter->method( 'filter' )
-			->willReturnArgument( 0 );
-		$this->setService( 'GrowthExperimentsTemplateFilter', $templateFilter );
 
 		list( $data ) = $this->doApiRequest( [ 'action' => 'query', 'generator' => 'growthtasks' ] );
 		$this->assertSame( 2, $data['growthtasks']['totalCount'] );
