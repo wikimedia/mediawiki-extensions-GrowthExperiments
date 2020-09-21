@@ -174,6 +174,7 @@
 	"growthexperiments-homepage-suggestededits-footer-terasuffix": "$1 {{PLURAL:$1|bilion|biliony|bilionów}}",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "edycje dnia poprzedniego",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Wolontariusze tacy jak ty pomogli dziś w rozwoju {{SITENAME}}. Przyłącz się!",
+	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Zobacz wszystkie sugestie",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Popraw literówki, gramatykę i styl",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "Dodaj źródła, aby zweryfikować artykuły w Wikipedii",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-update": "Uzupełnij artykuł wg bieżących informacji",

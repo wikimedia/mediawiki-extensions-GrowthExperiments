@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Brahim-essaidi",
 			"Hakim1bal"
 		]
 	},
 	"growthexperiments-homepage-email-header-startemail": "ⵉⵎⴰⵢⵍ: $1",
 	"growthexperiments-homepage-email-changelink": "ⵙⵏⴼⵍ",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "ⵙⵖⵣⵏ",
-	"growthexperiments-homepage-suggestededits-pager-unknown-count": "?"
+	"growthexperiments-homepage-suggestededits-pager-unknown-count": "?",
+	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "ⵥⵕ ⵉⵙⵓⵎⴰⵔ ⵎⴰⵕⵕⴰ"
 }
