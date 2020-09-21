@@ -1,6 +1,7 @@
 'use strict';
 
 var DifficultyFiltersDialog,
+	ArticleCountWidget = require( './ext.growthExperiments.Homepage.ArticleCountWidget.js' ),
 	taskTypes = require( './TaskTypes.json' );
 
 /**
@@ -22,7 +23,6 @@ var DifficultyFiltersDialog,
 DifficultyFiltersDialog = function ( config ) {
 	DifficultyFiltersDialog.super.call( this, config );
 	this.config = config;
-	this.articleCountNumber = 0;
 };
 OO.inheritClass( DifficultyFiltersDialog, OO.ui.ProcessDialog );
 
@@ -61,15 +61,12 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 		classes: [ 'suggested-edits-filters-error' ],
 		label: mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-error' ).text()
 	} ).toggle( false );
-	this.buildCheckboxFilters();
-	this.articleCountLabel = new OO.ui.LabelWidget( { classes: [ 'suggested-edits-article-count' ] } );
+	this.articleCounter = new ArticleCountWidget();
 	this.footerPanelLayout
 		.toggle( false )
-		.$element.append(
-			new OO.ui.IconWidget( { icon: 'live-broadcast' } ).$element,
-			this.articleCountLabel.$element
-		);
+		.$element.append( this.articleCounter.$element );
 
+	this.buildCheckboxFilters();
 	this.$body.append( this.content.$element );
 	this.$foot.append( this.footerPanelLayout.$element );
 };
@@ -216,13 +213,7 @@ DifficultyFiltersDialog.prototype.makeCheckbox = function ( taskTypeData ) {
 };
 
 DifficultyFiltersDialog.prototype.updateMatchCount = function ( count ) {
-	this.articleCountNumber = Number( count );
-	this.articleCountLabel
-		.setLabel( new OO.ui.HtmlSnippet(
-			mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filters-article-count' )
-				.params( [ mw.language.convertNumber( this.articleCountNumber ) ] )
-				.parse()
-		) );
+	this.articleCounter.setCount( count );
 	this.footerPanelLayout.toggle( true );
 };
 

@@ -2,7 +2,8 @@
  * @external HomepageModuleLogger
  * @external mw.libs.ge.GrowthTasksApi
  */
-var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).TopicSelectionWidget;
+var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).TopicSelectionWidget,
+	ArticleCountWidget = require( './suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.js' );
 
 /**
  * @param {Object} config
@@ -88,10 +89,10 @@ StartEditingDialog.prototype.initialize = function () {
 	StartEditingDialog.super.prototype.initialize.call( this );
 
 	this.introPanel = this.buildIntroPanel();
-	this.articleCountLabel = new OO.ui.LabelWidget( { classes: [ 'suggested-edits-article-count' ] } );
+	this.articleCounter = new ArticleCountWidget();
 	// Default to the maximum so there is not empty space when the footer is
 	// first rendered, before the HTTP request has finished.
-	this.updateArticleCountLabel( 200 );
+	this.articleCounter.setCount( 200 );
 	this.articleCounterPanelLayout = new OO.ui.PanelLayout( {
 		padded: true,
 		expanded: false,
@@ -100,11 +101,7 @@ StartEditingDialog.prototype.initialize = function () {
 			'suggested-edits-article-count-panel-layout-desktop'
 		]
 	} ).toggle( this.showingTopicSelector() );
-	this.articleCounterPanelLayout
-		.$element.append(
-			new OO.ui.IconWidget( { icon: 'live-broadcast' } ).$element,
-			this.articleCountLabel.$element
-		);
+	this.articleCounterPanelLayout.$element.append( this.articleCounter.$element );
 
 	this.difficultyPanel = this.buildDifficultyPanel();
 
@@ -121,15 +118,6 @@ StartEditingDialog.prototype.initialize = function () {
 	}
 
 	this.$element.addClass( 'mw-ge-startediting-dialog' );
-};
-
-StartEditingDialog.prototype.updateArticleCountLabel = function ( count ) {
-	this.articleCountLabel
-		.setLabel( new OO.ui.HtmlSnippet(
-			mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filters-article-count' )
-				.params( [ mw.language.convertNumber( count ) ] )
-				.parse()
-		) );
 };
 
 /**
@@ -210,7 +198,7 @@ StartEditingDialog.prototype.getSetupProcess = function ( data ) {
 StartEditingDialog.prototype.updateMatchCount = function () {
 	var topics = this.topicSelector ? this.topicSelector.getSelectedTopics() : [];
 	this.api.fetchTasks( this.api.defaultTaskTypes, topics ).then( function ( data ) {
-		this.updateArticleCountLabel( Number( data.tasks.length ) );
+		this.articleCounter.setCount( Number( data.tasks.length ) );
 	}.bind( this ) );
 };
 

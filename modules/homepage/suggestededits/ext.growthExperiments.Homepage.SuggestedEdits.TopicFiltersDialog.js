@@ -1,6 +1,7 @@
 'use strict';
 
 var TopicFiltersDialog,
+	ArticleCountWidget = require( './ext.growthExperiments.Homepage.ArticleCountWidget.js' ),
 	TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).TopicSelectionWidget;
 
 /**
@@ -24,7 +25,6 @@ var TopicFiltersDialog,
 TopicFiltersDialog = function ( config ) {
 	TopicFiltersDialog.super.call( this, config );
 	this.config = config;
-	this.articleCountNumber = 0;
 	this.updating = false;
 	this.performSearchUpdateActionsDebounced =
 		OO.ui.debounce( this.performSearchUpdateActions.bind( this ) );
@@ -66,13 +66,10 @@ TopicFiltersDialog.prototype.initialize = function () {
 		classes: [ 'suggested-edits-filters-error' ],
 		label: mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-error' ).text()
 	} ).toggle( false );
-	this.articleCountLabel = new OO.ui.LabelWidget( { classes: [ 'suggested-edits-article-count' ] } );
+	this.articleCounter = new ArticleCountWidget();
 	this.footerPanelLayout
 		.toggle( false )
-		.$element.append(
-			new OO.ui.IconWidget( { icon: 'live-broadcast' } ).$element,
-			this.articleCountLabel.$element
-		);
+		.$element.append( this.articleCounter.$element );
 
 	this.buildTopicFilters();
 	this.$body.append( this.content.$element );
@@ -147,13 +144,7 @@ TopicFiltersDialog.prototype.performSearchUpdateActions = function () {
 };
 
 TopicFiltersDialog.prototype.updateMatchCount = function ( count ) {
-	this.articleCountNumber = Number( count );
-	this.articleCountLabel
-		.setLabel( new OO.ui.HtmlSnippet(
-			mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filters-article-count' )
-				.params( [ mw.language.convertNumber( this.articleCountNumber ) ] )
-				.parse()
-		) );
+	this.articleCounter.setCount( count );
 	this.footerPanelLayout.toggle( true );
 };
 
