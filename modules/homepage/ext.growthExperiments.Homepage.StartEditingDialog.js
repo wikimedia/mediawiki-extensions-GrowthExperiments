@@ -517,6 +517,10 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 					$( '<div>' )
 						.addClass( [ classPrefix + 'legend-cell', classPrefix + 'legend-label' ] )
 						.append(
+							// The following icons are used here:
+							// * difficulty-easy
+							// * difficulty-medium
+							// * difficulty-hard
 							new OO.ui.IconWidget( { icon: 'difficulty-' + level } ).$element,
 							// The following messages are used here:
 							// * growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label

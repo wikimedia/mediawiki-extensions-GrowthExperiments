@@ -420,6 +420,7 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditPagerWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditsPreviousNextWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.FiltersWidget.js",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.DifficultyFiltersDialog.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.TopicFiltersDialog.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
