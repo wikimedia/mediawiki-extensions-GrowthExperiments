@@ -3,12 +3,14 @@
  * @external mw.libs.ge.GrowthTasksApi
  */
 var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).TopicSelectionWidget,
+	TaskTypeSelectionWidget = require( './suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.js' ),
 	ArticleCountWidget = require( './suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.js' );
 
 /**
  * @param {Object} config
  * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
  * @param {boolean} config.useTopicSelector Whether to show the topic selector in the intro panel
+ * @param {boolean} config.useTaskTypeSelector Whether to show the task type selector in the difficulty panel
  * @param {boolean} config.activateWhenDone Whether to activate suggested edits when the user finishes the dialog
  * @param {HomepageModuleLogger} logger
  * @param {mw.libs.ge.GrowthTasksApi} api
@@ -21,6 +23,7 @@ function StartEditingDialog( config, logger, api ) {
 	this.mode = config.mode;
 	this.enableTopics = mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' );
 	this.useTopicSelector = this.enableTopics && config.useTopicSelector;
+	this.useTaskTypeSelector = config.useTaskTypeSelector;
 	this.activateWhenDone = config.activateWhenDone;
 	this.updateMatchCountDebounced = OO.ui.debounce( this.updateMatchCount.bind( this ) );
 }
@@ -196,8 +199,12 @@ StartEditingDialog.prototype.getSetupProcess = function ( data ) {
 };
 
 StartEditingDialog.prototype.updateMatchCount = function () {
-	var topics = this.topicSelector ? this.topicSelector.getSelectedTopics() : [];
-	this.api.fetchTasks( this.api.defaultTaskTypes, topics ).then( function ( data ) {
+	var topics = this.topicSelector ? this.topicSelector.getSelectedTopics() : [],
+		taskTypes = this.taskTypeSelector ?
+			this.taskTypeSelector.getSelected() :
+			this.api.defaultTaskTypes;
+
+	this.api.fetchTasks( taskTypes, topics ).then( function ( data ) {
 		this.articleCounter.setCount( Number( data.tasks.length ) );
 	}.bind( this ) );
 };
@@ -213,7 +220,7 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 			}
 			if ( action === 'difficulty' ) {
 				this.logger.log( 'start-startediting', this.mode, 'se-cta-difficulty' );
-				this.articleCounterPanelLayout.toggle( false );
+				this.articleCounterPanelLayout.toggle( this.useTaskTypeSelector );
 				this.swapPanel( 'difficulty' );
 				// Force scroll position to top.
 				this.$body.scrollTop( 0 );
@@ -239,6 +246,12 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 							JSON.stringify( this.topicSelector.getSelectedTopics() ) :
 							null;
 					logData.topics = this.topicSelector.getSelectedTopics();
+				}
+				if ( this.taskTypeSelector ) {
+					settings[ 'growthexperiments-homepage-se-filters' ] =
+						this.taskTypeSelector.getSelected().length > 0 ?
+							JSON.stringify( this.taskTypeSelector.getSelected() ) :
+							null;
 				}
 				return new mw.Api().saveOptions( settings )
 					.then( function () {
@@ -501,53 +514,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 };
 
 StartEditingDialog.prototype.buildDifficultyPanel = function () {
-	var difficultyPanel = new OO.ui.PanelLayout( { padded: false, expanded: false } ),
-		levels = [ 'easy', 'medium', 'hard' ],
-		legendRows = levels.map( function ( level ) {
-			var classPrefix = 'mw-ge-startediting-dialog-difficulty-',
-				labelMsg = 'growthexperiments-homepage-startediting-dialog-difficulty-level-' +
-					level + '-label',
-				headerMsg = 'growthexperiments-homepage-startediting-dialog-difficulty-level-' +
-					level + '-description-header',
-				bodyMsg = 'growthexperiments-homepage-startediting-dialog-difficulty-level-' +
-					level + '-description-body';
-			return $( '<div>' )
-				.addClass( [ classPrefix + 'legend-row', classPrefix + 'legend-' + level ] )
-				.append(
-					$( '<div>' )
-						.addClass( [ classPrefix + 'legend-cell', classPrefix + 'legend-label' ] )
-						.append(
-							// The following icons are used here:
-							// * difficulty-easy
-							// * difficulty-medium
-							// * difficulty-hard
-							new OO.ui.IconWidget( { icon: 'difficulty-' + level } ).$element,
-							// The following messages are used here:
-							// * growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label
-							// * growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label
-							// * growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label
-							$( '<span>' ).text( mw.msg( labelMsg ) )
-						),
-					$( '<div>' )
-						.addClass( [ classPrefix + 'legend-cell', classPrefix + 'legend-description' ] )
-						.append(
-							$( '<p>' )
-								.addClass( classPrefix + 'legend-description-header' )
-								// The following messages are used here:
-								// * growthexperiments-homepage-startediting-dialog-difficulty-level-easy-header
-								// * growthexperiments-homepage-startediting-dialog-difficulty-level-medium-header
-								// * growthexperiments-homepage-startediting-dialog-difficulty-level-hard-header
-								.text( mw.msg( headerMsg ) ),
-							$( '<p>' )
-								.addClass( classPrefix + 'legend-description-body' )
-								// The following messages are used here:
-								// * growthexperiments-homepage-startediting-dialog-difficulty-level-easy-body
-								// * growthexperiments-homepage-startediting-dialog-difficulty-level-medium-body
-								// * growthexperiments-homepage-startediting-dialog-difficulty-level-hard-body
-								.text( mw.msg( bodyMsg ) )
-						)
-				);
-		} );
+	var difficultyPanel = new OO.ui.PanelLayout( { padded: false, expanded: false } );
 
 	difficultyPanel.$element.append(
 		this.buildProgressIndicator( 2, 2 ),
@@ -560,12 +527,78 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 				$( '<p>' )
 					.addClass( 'mw-ge-startediting-dialog-difficulty-subheader' )
 					.text( mw.message( 'growthexperiments-homepage-startediting-dialog-difficulty-subheader' ).text() )
-			),
-		$( '<div>' )
-			.addClass( 'mw-ge-startediting-dialog-difficulty-legend' )
-			.append( legendRows )
+			)
 	);
+
+	if ( this.useTaskTypeSelector ) {
+		this.taskTypeSelector = new TaskTypeSelectionWidget( {
+			selectedTaskTypes: require( './suggestededits/DefaultTaskTypes.json' ),
+			introLinks: require( './config.json' ).GEHomepageSuggestedEditsIntroLinks,
+			classes: [ 'mw-ge-startediting-dialog-difficulty-taskTypeSelector' ]
+		} )
+			.connect( this, {
+				select: function ( topics ) {
+					this.actions.get()[ 3 ].setDisabled( topics.length === 0 );
+					this.updateMatchCount();
+				}
+			} );
+		difficultyPanel.$element.append( this.taskTypeSelector.$element );
+	} else {
+		difficultyPanel.$element.append(
+			$( '<div>' )
+				.addClass( 'mw-ge-startediting-dialog-difficulty-legend' )
+				.append( this.buildDifficultyLegend() )
+		);
+	}
 	return difficultyPanel;
+};
+
+StartEditingDialog.prototype.buildDifficultyLegend = function () {
+	return [ 'easy', 'medium', 'hard' ].map( function ( level ) {
+		var classPrefix = 'mw-ge-startediting-dialog-difficulty-',
+			labelMsg = 'growthexperiments-homepage-startediting-dialog-difficulty-level-' +
+				level + '-label',
+			headerMsg = 'growthexperiments-homepage-startediting-dialog-difficulty-level-' +
+				level + '-description-header',
+			bodyMsg = 'growthexperiments-homepage-startediting-dialog-difficulty-level-' +
+				level + '-description-body';
+		return $( '<div>' )
+			.addClass( [ classPrefix + 'legend-row', classPrefix + 'legend-' + level ] )
+			.append(
+				$( '<div>' )
+					.addClass( [ classPrefix + 'legend-cell', classPrefix + 'legend-label' ] )
+					.append(
+						// The following icons are used here:
+						// * difficulty-easy
+						// * difficulty-medium
+						// * difficulty-hard
+						new OO.ui.IconWidget( { icon: 'difficulty-' + level } ).$element,
+						// The following messages are used here:
+						// * growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label
+						// * growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label
+						// * growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label
+						$( '<span>' ).text( mw.msg( labelMsg ) )
+					),
+				$( '<div>' )
+					.addClass( [ classPrefix + 'legend-cell', classPrefix + 'legend-description' ] )
+					.append(
+						$( '<p>' )
+							.addClass( classPrefix + 'legend-description-header' )
+							// The following messages are used here:
+							// * growthexperiments-homepage-startediting-dialog-difficulty-level-easy-header
+							// * growthexperiments-homepage-startediting-dialog-difficulty-level-medium-header
+							// * growthexperiments-homepage-startediting-dialog-difficulty-level-hard-header
+							.text( mw.msg( headerMsg ) ),
+						$( '<p>' )
+							.addClass( classPrefix + 'legend-description-body' )
+							// The following messages are used here:
+							// * growthexperiments-homepage-startediting-dialog-difficulty-level-easy-body
+							// * growthexperiments-homepage-startediting-dialog-difficulty-level-medium-body
+							// * growthexperiments-homepage-startediting-dialog-difficulty-level-hard-body
+							.text( mw.msg( bodyMsg ) )
+					)
+			);
+	} );
 };
 
 StartEditingDialog.prototype.buildProgressIndicator = function ( currentPage, totalPages ) {
