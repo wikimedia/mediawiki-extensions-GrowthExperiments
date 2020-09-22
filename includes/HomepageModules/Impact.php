@@ -287,10 +287,21 @@ class Impact extends BaseModule {
 	}
 
 	private function getTotalViewsElement( $showPendingIcon = false ) {
+		$views = $this->getTotalPageViews();
+		if ( $views === 0 && !$this->pageViewsDataExists && $showPendingIcon ) {
+			$views = new IconWidget( [
+				'icon' => 'clock',
+				'flags' => [ 'progressive' ],
+				'framed' => false,
+				'classes' => [ 'empty-pageviews-summary' ]
+			] );
+		} else {
+			$views = htmlspecialchars( $this->getContext()->getLanguage()->formatNum( $views ) );
+		}
 		return Html::rawElement(
 			'span',
 			[ 'class' => 'growthexperiments-homepage-impact-mobile-totalviews' ],
-			$this->getTotalPageViews( $showPendingIcon )
+			$views
 		);
 	}
 
@@ -406,7 +417,7 @@ class Impact extends BaseModule {
 		return $this->contribs;
 	}
 
-	private function getTotalPageViews( $maybeShowPendingIcon = false ) {
+	private function getTotalPageViews() {
 		if ( !$this->isActivated() ) {
 			return 0;
 		}
@@ -417,14 +428,7 @@ class Impact extends BaseModule {
 			},
 			0
 		);
-		return $views === 0 && !$this->pageViewsDataExists && $maybeShowPendingIcon ?
-			new IconWidget( [
-				'icon' => 'clock',
-				'flags' => [ 'progressive' ],
-				'framed' => false,
-				'classes' => [ 'empty-pageviews-summary' ]
-			] ) :
-			$this->getContext()->getLanguage()->formatNum( $views );
+		return $views;
 	}
 
 	/**
