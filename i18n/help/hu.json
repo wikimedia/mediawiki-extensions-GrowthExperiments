@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Hanna Tardos",
 			"Misibacsi",
 			"Samat",
 			"Tacsipacsi",
@@ -12,6 +13,7 @@
 	"growthexperiments-help-panel-cta-button-text": "Szerkesztési segítség",
 	"growthexperiments-help-panel-question-button-text": "Tovább",
 	"growthexperiments-help-panel-submit-question-button-text": "Elküldés",
+	"growthexperiments-help-panel-return-home-button-text": "Kész",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "A legfontosabb, szerkesztéssel kapcsolatos segítség-oldalak",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Több súgócikk",
 	"growthexperiments-help-panel-question-widget-header": "Írd meg a kérdésed a közösségi tanácsadó lapra",
@@ -26,6 +28,7 @@
 	"growthexperiments-help-panel-postedit-footer": "Több javaslatot szeretnék látni",
 	"growthexperiments-help-panel-postedit-footer2": "Tovább dolgozom ezen a szócikken",
 	"growthexperiments-help-panel-questionreview-title": "Kérdezz a segítőpultnál",
+	"growthexperiments-help-panel-questionreview-title-mentor": "Kérdezd mentorod!",
 	"growthexperiments-help-panel-questionreview-header": "Ha felteszel egy kérdést, azt <strong>nyilvánosan elküldöd</strong> a szerkesztőneveddel ($2) a(z) $1 oldalon, ahol egy önkéntes szerkesztő igyekszik megválaszolni azt nagyjából egy napon belül.",
 	"growthexperiments-help-panel-questionreview-label": "A kérdésed",
 	"growthexperiments-help-panel-questionreview-include-article-title": "A lapcím belefoglalása a kérdésembe",
@@ -121,9 +124,16 @@
 	"tag-help_panel_question-description": "A súgópanelben végzett szerkesztések létrehoznak egy kérelmet a kérdéssel.",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Ajánlott szerkesztések",
 	"growthexperiments-help-panel-button-header-ask-help": "Kérdezz a segítőpultnál",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "Kérj segítséget mentorodtól!",
 	"growthexperiments-help-panel-button-header-general-help": "Általános szerkesztési segédlet",
 	"growthexperiments-help-panel-button-subheader-general-help": "Keress válaszokat és olvasd el a legfontosabb útmutatókat",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Kérdezz más önkéntesektől",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Tippek kezdéshez",
-	"growthexperiments-help-panel-suggested-edits-faq-link-text": "A javasolt szerkesztésekről"
+	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 szerkesztés · $2",
+	"growthexperiments-help-panel-general-help-title": "Általános szerkesztési útmutató",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "A javasolt szerkesztésekről",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Te}} a forráskód-szerkesztőt használod épp, a szerkesztési tippek azonban a vizuális szerkesztőhöz nyújtanak inkább segítséget.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Váltás vizuális szerkesztésre",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Te}} a vizuális szerkesztőt használod épp, a szerkesztési tippek azonban a forráskód-szerkesztéshez nyújtanak inkább segítséget.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Váltás forráskód szerkesztésére"
 }

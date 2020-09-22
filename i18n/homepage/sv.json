@@ -45,7 +45,7 @@
 	"growthexperiments-homepage-startediting-subheader-other": "Hjälp till att utöka världens kunskap med några lätta förbättringar i Wikipediaartiklar.",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Se förslag på redigeringar",
 	"growthexperiments-homepage-startediting-button": "Se förslag på redigeringar",
-	"growthexperiments-homepage-startediting-dialog-header": "Förslag på redigeringar",
+	"growthexperiments-homepage-startediting-dialog-header": "Om förslagna redigeringar",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1 av $2",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "Avbryt",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "Fortsätt",
@@ -59,6 +59,7 @@
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Välj några ämnen som {{GENDER:|du}} är intresserad av att redigera",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "Vi kommer att försöka föreslå artiklar som matchar {{GENDER:|dina}} intressen.",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Filtrera efter ämne",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader": "Använd ämnen för att få förslag du kanske finner intressanta. Du kan välja ett ämne eller flera.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Tillbaka",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Få förslag",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Klar",
@@ -167,6 +168,7 @@
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Andra användare har märkt att dessa artiklar behöver förbättras. Hjälp '''{{SITENAME}}''' bli bättre.",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "redigeringar senaste dagen",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Användare som du har bidragit genom att förbättra {{SITENAME}} idag. Gör det du med!",
+	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Se alla förslag",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Fixa stavfel, grammatik och ton",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "Lägg till källor för att verifiera Wikipediaartiklar",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-update": "Håll artiklar uppdaterade",
@@ -287,5 +289,6 @@
 	"growthexperiments-notification-learn-more": "Läs mer om {{GENDER:$1|din}} nya {{GENDER:$2|fadder}}",
 	"right-setmentor": "Sätt användarens fadder",
 	"action-setmentor": "sätt användares fadder",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Mer om denna föreslagna redigering"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Mer om denna föreslagna redigering",
+	"growthexperiments-homepage-suggestededits-more-info": "Mer information om förslagna redigeringar"
 }

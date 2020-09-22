@@ -5,6 +5,7 @@
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Új szerkesztőknek megfelelő feladatjavaslatok lekérése.",
+	"apihelp-query+growthtasks-extended-description": "Olyan szócikkek halmazának lekérése, amikkel nyilvánvaló és kezdők által is könnyen javítható problémák vannak.",
 	"apihelp-query+growthtasks-param-tasktypes": "Szűrés ezekre a feladattípusokra. Hagyd üresen az összes javaslat lekéréséhez.",
 	"apihelp-query+growthtasks-param-topics": "A javaslatok között preferált szócikktémák.",
 	"apihelp-query+growthtasks-param-limit": "A lekérendő feladatjavaslatok maximális száma.",

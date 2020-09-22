@@ -200,5 +200,6 @@
 	"growthexperiments-notification-body-mentor-change": "Iemesls: $1",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "Lai varētu lietot Special:ClaimMentee, {{GENDER:$1|tev}} ir jābūt mentoru sarakstā [[$2]]",
 	"growthexperiments-notification-learn-more": "Uzzini vairāk par {{GENDER:$1|savu}} jauno {{GENDER:$2|mentoru|mentori}}",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Plašāk par šo ieteikto labojumu"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Plašāk par šo ieteikto labojumu",
+	"growthexperiments-homepage-suggestededits-more-info": "Vairāk informācijas par ieteiktajiem labojumiem"
 }
