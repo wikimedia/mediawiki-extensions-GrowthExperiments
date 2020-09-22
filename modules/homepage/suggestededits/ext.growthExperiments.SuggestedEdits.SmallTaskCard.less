@@ -128,12 +128,18 @@
 	}
 
 	.mw-ge-small-task-card-desktop & {
+		&-title {
+			// limit to a single line
+			white-space: nowrap;
+		}
+
 		&-description {
 			// Show two lines of text, with an ellipsis.
 			// line-clamp has not been standardized, but most modern browsers understand the Webkit syntax.
 			display: -webkit-box;
 			-webkit-box-orient: vertical;
 			-webkit-line-clamp: 2;
+			line-height: 1.4;
 			// For IE 11 and various old browsers, limit height for the same effect, except
 			// for the ellipsis. Height is <# of lines> * <line height> * <font size>.
 			max-height: 2 * 1.4 * 13/14 * 1em;
@@ -161,6 +167,21 @@
 	}
 
 	.mw-ge-small-task-card-mobile & {
+		&-text-container {
+			padding-top: 0;
+		}
+
+		&-title {
+			// Show two lines of text, with an ellipsis, with 16px font size.
+			// See &-description for desktop for explanation.
+			display: -webkit-box;
+			overflow: hidden;
+			-webkit-box-orient: vertical;
+			-webkit-line-clamp: 2;
+			line-height: 1;
+			max-height: 2 * 1.4 * 1em;
+		}
+
 		&-description {
 			// mobile does not have space for two lines
 			white-space: nowrap;
