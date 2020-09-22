@@ -5,20 +5,33 @@
  * @constructor
  * @param {Object} config
  * @param {string[]} config.selectedTaskTypes Pre-selected task types
+ * @param {Object} config.introLinks Link targets for fake task types; must contain a 'create' key
  */
 function TaskTypeSelectionWidget( config ) {
 	// Parent constructor
 	TaskTypeSelectionWidget.super.call( this, config );
 
-	this.buildCheckboxFilters( config.selectedTaskTypes );
+	this.preselectedTaskTypes = config.selectedTaskTypes || [];
+	this.introLinks = config.introLinks;
+
+	this.buildCheckboxFilters();
+	this.errorMessage = new OO.ui.MessageWidget( {
+		type: 'error',
+		inline: true,
+		classes: [ 'mw-ge-homepage-taskTypeSelectionWidget-error' ],
+		label: mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-error' ).text()
+	} ).toggle( false );
+
 	this.$element.append(
+		this.errorMessage.$element,
 		this.makeHeadersForDifficulty( 'easy' ),
 		this.easyFilters.$element,
 		this.makeHeadersForDifficulty( 'medium' ),
 		this.mediumFilters.$element,
 		this.makeHeadersForDifficulty( 'hard' ),
 		this.hardFilters.$element
-	);
+	)
+		.addClass( 'mw-ge-homepage-taskTypeSelectionWidget' );
 }
 
 OO.inheritClass( TaskTypeSelectionWidget, OO.ui.Widget );
@@ -35,7 +48,9 @@ TaskTypeSelectionWidget.prototype.getSelected = function () {
 };
 
 TaskTypeSelectionWidget.prototype.onSelect = function () {
-	this.emit( 'select', this.getSelected() );
+	var selected = this.getSelected();
+	this.errorMessage.toggle( selected.length === 0 );
+	this.emit( 'select', selected );
 };
 
 /**
@@ -49,9 +64,7 @@ TaskTypeSelectionWidget.prototype.setSelected = function ( taskTypes ) {
 	this.hardFilters.selectItemsByData( taskTypes );
 };
 
-TaskTypeSelectionWidget.prototype.buildCheckboxFilters = function ( selectedTaskTypes ) {
-	var introLinks = require( './config.json' ).GEHomepageSuggestedEditsIntroLinks;
-
+TaskTypeSelectionWidget.prototype.buildCheckboxFilters = function () {
 	this.createFilter = this.makeCheckbox( {
 		id: 'create',
 		difficulty: 'hard',
@@ -61,24 +74,24 @@ TaskTypeSelectionWidget.prototype.buildCheckboxFilters = function ( selectedTask
 		disabled: true
 	}, false );
 	this.createFilter.$element.append( $( '<div>' )
-		.addClass( 'suggested-edits-create-article-additional-msg' )
+		.addClass( 'mw-ge-homepage-taskTypeSelectionWidget-additional-msg' )
 		.html(
 			mw.message( 'growthexperiments-homepage-suggestededits-create-article-additional-message' )
-				.params( [ mw.user, mw.util.getUrl( introLinks.create ) ] )
+				.params( [ mw.user, mw.util.getUrl( this.introLinks.create ) ] )
 				.parse()
 		)
 	);
 
 	this.easyFilters = new OO.ui.CheckboxMultiselectWidget( {
-		items: this.makeCheckboxesForDifficulty( 'easy', selectedTaskTypes )
+		items: this.makeCheckboxesForDifficulty( 'easy', this.preselectedTaskTypes )
 	} ).connect( this, { select: 'onSelect' } );
 
 	this.mediumFilters = new OO.ui.CheckboxMultiselectWidget( {
-		items: this.makeCheckboxesForDifficulty( 'medium', selectedTaskTypes )
+		items: this.makeCheckboxesForDifficulty( 'medium', this.preselectedTaskTypes )
 	} ).connect( this, { select: 'onSelect' } );
 
 	this.hardFilters = new OO.ui.CheckboxMultiselectWidget( {
-		items: this.makeCheckboxesForDifficulty( 'hard', selectedTaskTypes )
+		items: this.makeCheckboxesForDifficulty( 'hard', this.preselectedTaskTypes )
 			.concat( [ this.createFilter ] )
 	} ).connect( this, { select: 'onSelect' } );
 };
@@ -94,7 +107,7 @@ TaskTypeSelectionWidget.prototype.makeHeadersForDifficulty = function ( difficul
 	// * difficulty-hard
 	var iconWidget = new OO.ui.IconWidget( { icon: 'difficulty-' + difficulty } ),
 		$label = $( '<h4>' )
-			.addClass( 'suggested-edits-difficulty-level-label' )
+			.addClass( 'mw-ge-homepage-taskTypeSelectionWidget-difficulty-level-label' )
 			.text( mw.message(
 				// The following messages are used here:
 				// * growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label
@@ -103,7 +116,7 @@ TaskTypeSelectionWidget.prototype.makeHeadersForDifficulty = function ( difficul
 				'growthexperiments-homepage-startediting-dialog-difficulty-level-' + difficulty + '-label'
 			).text() ),
 		$description = $( '<p>' )
-			.addClass( 'suggested-edits-difficulty-level-desc' )
+			.addClass( 'mw-ge-homepage-taskTypeSelectionWidget-difficulty-level-desc' )
 			.text( mw.message(
 				// The following messages are used here:
 				// * growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header
@@ -146,12 +159,12 @@ TaskTypeSelectionWidget.prototype.makeCheckbox = function ( taskTypeData, select
 		selected: !!selected,
 		disabled: !!taskTypeData.disabled,
 		// The following classes are used here:
-		// * suggested-edits-checkbox-copyedit
-		// * suggested-edits-checkbox-create
-		// * suggested-edits-checkbox-expand
-		// * suggested-edits-checkbox-links
-		// * suggested-edits-checkbox-update
-		classes: [ 'suggested-edits-checkbox-' + taskTypeData.id ]
+		// * mw-ge-homepage-taskTypeSelectionWidget-checkbox-copyedit
+		// * mw-ge-homepage-taskTypeSelectionWidget-checkbox-create
+		// * mw-ge-homepage-taskTypeSelectionWidget-checkbox-expand
+		// * mw-ge-homepage-taskTypeSelectionWidget-checkbox-links
+		// * mw-ge-homepage-taskTypeSelectionWidget-checkbox-update
+		classes: [ 'mw-ge-homepage-taskTypeSelectionWidget-checkbox-' + taskTypeData.id ]
 	} );
 };
 

@@ -80,7 +80,7 @@
 		} );
 		windows.push( this.taskTypeFiltersDialog );
 
-		this.taskTypeFiltersDialog.$element.addClass( 'suggested-edits-difficulty-filters' )
+		this.taskTypeFiltersDialog.$element
 			.on( 'click', '.suggested-edits-create-article-additional-msg a', function () {
 				logger.log( 'suggested-edits', config.mode, 'link-click',
 					{ linkId: 'se-create-info' } );

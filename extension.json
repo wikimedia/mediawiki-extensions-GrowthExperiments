@@ -448,7 +448,8 @@
 				}
 			],
 			"styles": [
-				"homepage/suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.less"
+				"homepage/suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.less",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.less"
 			],
 			"targets": [
 				"desktop",
