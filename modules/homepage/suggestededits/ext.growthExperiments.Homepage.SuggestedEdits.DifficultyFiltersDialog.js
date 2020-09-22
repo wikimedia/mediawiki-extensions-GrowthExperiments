@@ -55,19 +55,11 @@ DifficultyFiltersDialog.prototype.initialize = function () {
 		padded: true,
 		expanded: false
 	} );
-	this.errorMessage = new OO.ui.MessageWidget( {
-		type: 'error',
-		inline: true,
-		classes: [ 'suggested-edits-filters-error' ],
-		label: mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filter-error' ).text()
-	} ).toggle( false );
 	this.taskTypeSelector = new TaskTypeSelectionWidget( {
-		selectedTaskTypes: this.config.presets
+		selectedTaskTypes: this.config.presets,
+		introLinks: require( './config.json' ).GEHomepageSuggestedEditsIntroLinks
 	} ).connect( this, { select: 'onTaskTypeSelect' } );
-	this.content.$element.append(
-		this.errorMessage.$element,
-		this.taskTypeSelector.$element
-	);
+	this.content.$element.append( this.taskTypeSelector.$element );
 	this.articleCounter = new ArticleCountWidget();
 	this.footerPanelLayout
 		.toggle( false )
@@ -92,14 +84,8 @@ DifficultyFiltersDialog.prototype.getEnabledFilters = function () {
  * @param {string[]} selected
  */
 DifficultyFiltersDialog.prototype.onTaskTypeSelect = function ( selected ) {
+	this.actions.get()[ 0 ].setDisabled( selected.length === 0 );
 	this.emit( 'search', selected );
-	if ( selected.length ) {
-		this.actions.get()[ 0 ].setDisabled( false );
-		this.errorMessage.toggle( false );
-	} else {
-		this.errorMessage.toggle( true );
-		this.actions.get()[ 0 ].setDisabled( true );
-	}
 };
 
 DifficultyFiltersDialog.prototype.updateMatchCount = function ( count ) {
