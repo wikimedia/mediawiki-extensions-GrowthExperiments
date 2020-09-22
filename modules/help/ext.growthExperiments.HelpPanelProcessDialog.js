@@ -13,7 +13,7 @@
 	 *   (standard OOUI process dialog look). Default is 'helppanel'. This only affects the few
 	 *   layout options which have to be handled dynamically in JS code.
 	 * @cfg {string} askSource Logical name of the source to use with the HelpPanelPostQuestion API
-	 * @cfg {bool} guidanceEnabled Whether guidance feature is enabled.
+	 * @cfg {boolean} guidanceEnabled Whether guidance feature is enabled.
 	 * @cfg {SuggestedEditSession} suggestedEditSession The suggested edit session
 	 * @cfg {string} taskTypeId The ID of the suggested edit task type.
 	 * @constructor
