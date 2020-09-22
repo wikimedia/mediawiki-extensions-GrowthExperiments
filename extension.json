@@ -150,7 +150,8 @@
 		"PersonalUrls": "homepage",
 		"MessageCache::get": "homepage",
 		"AuthChangeFormFields": [
-			"GrowthExperiments\\ConfirmEmailHooks::onAuthChangeFormFields"
+			"GrowthExperiments\\ConfirmEmailHooks::onAuthChangeFormFields",
+			"homepage"
 		],
 		"UserSendConfirmationMail": [
 			"GrowthExperiments\\ConfirmEmailHooks::onUserSendConfirmationMail"

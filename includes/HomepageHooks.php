@@ -59,6 +59,7 @@ class HomepageHooks implements
 	\MediaWiki\Cache\Hook\MessageCache__getHook,
 	\MediaWiki\Preferences\Hook\GetPreferencesHook,
 	\MediaWiki\User\Hook\UserGetDefaultOptionsHook,
+	\MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook,
 	\MediaWiki\Auth\Hook\LocalUserCreatedHook,
 	\MediaWiki\ChangeTags\Hook\ListDefinedTagsHook,
 	\MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook,
@@ -491,6 +492,21 @@ class HomepageHooks implements
 	}
 
 	/**
+	 * Pass through the debug flag used by LocalUserCreated
+	 * @inheritDoc
+	 */
+	public function onAuthChangeFormFields( $requests, $fieldInfo, &$formDescriptor, $action ) {
+		$geForceVariant = RequestContext::getMain()->getRequest()->getVal( 'geForceVariant' );
+		if ( $geForceVariant ) {
+			$formDescriptor['geForceVariant'] = [
+				'type' => 'hidden',
+				'name' => 'geForceVariant',
+				'default' => $geForceVariant,
+			];
+		}
+	}
+
+	/**
 	 * Enable the homepage for a percentage of new local accounts.
 	 *
 	 * @param User $user
@@ -536,19 +552,28 @@ class HomepageHooks implements
 			}
 
 			// Variant assignment
-			$random = rand( 0, 99 );
-			$variant = null;
-			foreach ( $this->config->get( 'GEHomepageNewAccountVariants' ) as $candidateVariant => $percentage ) {
-				if ( $random < $percentage ) {
-					$variant = $candidateVariant;
-					$this->experimentUserManager->setVariant( $user, $variant );
-					break;
+			$wgGEHomepageNewAccountVariants = $this->config->get( 'GEHomepageNewAccountVariants' );
+			$defaultVariant = $this->experimentUserManager->getVariant( $user );
+			// Allow override via parameter in registration URL.
+			$forceVariant = RequestContext::getMain()->getRequest()->getVal( 'geForceVariant' );
+			if ( $forceVariant && array_key_exists( $forceVariant, $wgGEHomepageNewAccountVariants ) ) {
+				$variant = $forceVariant;
+			} else {
+				$random = rand( 0, 99 );
+				$variant = null;
+				foreach ( $wgGEHomepageNewAccountVariants as $candidateVariant => $percentage ) {
+					if ( $random < $percentage ) {
+						$variant = $candidateVariant;
+						break;
+					}
+					$random -= $percentage;
 				}
-				$random -= $percentage;
 			}
 			if ( $variant === null ) {
 				// Use the default, unsaved variant.
-				$variant = $this->experimentUserManager->getVariant( $user );
+				$variant = $defaultVariant;
+			} else {
+				$this->experimentUserManager->setVariant( $user, $variant );
 			}
 
 			// Pre-initiate suggested edits for variant C
