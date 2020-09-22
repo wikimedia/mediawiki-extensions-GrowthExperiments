@@ -1,7 +1,7 @@
 ( function () {
 	var StartEditingDialog = require( './ext.growthExperiments.Homepage.StartEditingDialog.js' ),
 		Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
-		defaultTaskTypes = require( '../homepage/suggestededits/DefaultTaskTypes.json' ),
+		defaultTaskTypes = require( './suggestededits/DefaultTaskTypes.json' ),
 		logger = new Logger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
@@ -16,7 +16,7 @@
 	/**
 	 * Launch the suggested edits initiation dialog.
 	 *
-	 * @param {string} type 'startediting' or 'suggestededits'
+	 * @param {string} type 'startediting-cta' or 'suggestededits-info'
 	 * @param {string} mode Rendering mode. See constants in HomepageModule.php
 	 * @return {jQuery.Promise<boolean>} Resolves when the dialog is closed, indicates whether
 	 *   initiation was successful or cancelled.
@@ -26,8 +26,8 @@
 
 		dialog = new StartEditingDialog( {
 			mode: mode,
-			useTopicSelector: type === 'startediting',
-			activateWhenDone: type === 'startediting'
+			useTopicSelector: type === 'startediting-cta',
+			activateWhenDone: type === 'startediting-cta'
 		}, logger, api );
 		windowManager = new OO.ui.WindowManager( {
 			modal: true
@@ -43,50 +43,54 @@
 	}
 
 	function setupCta( $container ) {
-		var ctaButton,
-			$startEditingCta = $container.find( '#mw-ge-homepage-startediting-cta' ),
-			$suggestedEditsInfo = $container.find( '#mw-ge-homepage-suggestededits-info' ),
-			$buttonElement = $startEditingCta.length ? $startEditingCta : $suggestedEditsInfo,
-			buttonType = $startEditingCta.length ? 'startediting' : 'suggestededits',
-			mode = $buttonElement.closest( '.growthexperiments-homepage-module' ).data( 'mode' );
-		if ( $buttonElement.length === 0 ) {
-			return;
-		}
+		$container.find(
+			'#mw-ge-homepage-startediting-cta, ' +
+			'#mw-ge-homepage-suggestededits-info'
+		).each( function ( _, button ) {
+			var $button = $( button ),
+				buttonType = $button.attr( 'id' ).substr( 'mw-ge-homepage-'.length ),
+				mode = $button.closest( '.growthexperiments-homepage-module' ).data( 'mode' ),
+				buttonWidget = OO.ui.ButtonWidget.static.infuse( $button );
 
-		ctaButton = OO.ui.ButtonWidget.static.infuse( $buttonElement );
-
-		ctaButton.on( 'click', function () {
-			if (
-				buttonType === 'startediting' &&
-				mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' )
-			) {
-				// already set up, just open suggested edits
-				if ( mode === 'mobile-overlay' ) {
-					// we don't want users to return to the start overlay when they close
-					// suggested edits
-					window.history.replaceState( null, null, '#/homepage/suggested-edits' );
-					window.dispatchEvent( new HashChangeEvent( 'hashchange' ) );
-				} else if ( mode === 'mobile-details' ) {
-					window.location.href = mw.util.getUrl(
-						new mw.Title( 'Special:Homepage/suggested-edits' ).toString()
-					);
-				}
+			// Don't attach the click handler to the same button twice
+			if ( $button.data( 'mw-ge-homepage-startediting-cta-setup' ) ) {
 				return;
 			}
+			$button.data( 'mw-ge-homepage-startediting-cta-setup', true );
 
-			if ( buttonType === 'startediting' ) {
-				logger.log( 'start-startediting', mode, 'se-cta-click' );
-			} else {
-				logger.log( 'suggested-edits', mode, 'se-info-click' );
-			}
-			launchCta( buttonType, mode ).done( function ( activated ) {
-				if ( activated ) {
-					// No-op; logging and everything else is done within the dialog,
-					// as it is kept open during setup of the suggested edits module
-					// to make the UI change less disruptive.
-				} else if ( buttonType === 'startediting' ) {
-					logger.log( 'start-startediting', mode, 'se-cancel-activation' );
+			buttonWidget.on( 'click', function () {
+				if (
+					buttonType === 'startediting-cta' &&
+					mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' )
+				) {
+					// already set up, just open suggested edits
+					if ( mode === 'mobile-overlay' ) {
+						// we don't want users to return to the start overlay when they close
+						// suggested edits
+						window.history.replaceState( null, null, '#/homepage/suggested-edits' );
+						window.dispatchEvent( new HashChangeEvent( 'hashchange' ) );
+					} else if ( mode === 'mobile-details' ) {
+						window.location.href = mw.util.getUrl(
+							new mw.Title( 'Special:Homepage/suggested-edits' ).toString()
+						);
+					}
+					return;
 				}
+
+				if ( buttonType === 'startediting-cta' ) {
+					logger.log( 'start-startediting', mode, 'se-cta-click' );
+				} else if ( buttonType === 'suggestededits-info' ) {
+					logger.log( 'suggested-edits', mode, 'se-info-click' );
+				}
+				launchCta( buttonType, mode ).done( function ( activated ) {
+					if ( activated ) {
+						// No-op; logging and everything else is done within the dialog,
+						// as it is kept open during setup of the suggested edits module
+						// to make the UI change less disruptive.
+					} else if ( buttonType === 'startediting-cta' ) {
+						logger.log( 'start-startediting', mode, 'se-cancel-activation' );
+					}
+				} );
 			} );
 		} );
 	}
