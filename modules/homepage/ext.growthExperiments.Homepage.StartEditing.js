@@ -16,7 +16,7 @@
 	/**
 	 * Launch the suggested edits initiation dialog.
 	 *
-	 * @param {string} type 'startediting-cta' or 'suggestededits-info'
+	 * @param {string} type 'startediting-cta', 'startediting-mobilesummary-cta' or 'suggestededits-info'
 	 * @param {string} mode Rendering mode. See constants in HomepageModule.php
 	 * @return {jQuery.Promise<boolean>} Resolves when the dialog is closed, indicates whether
 	 *   initiation was successful or cancelled.
@@ -26,8 +26,9 @@
 
 		dialog = new StartEditingDialog( {
 			mode: mode,
-			useTopicSelector: type === 'startediting-cta',
-			activateWhenDone: type === 'startediting-cta'
+			useTopicSelector: type === 'startediting-cta' || type === 'startediting-mobilesummary-cta',
+			useTaskTypeSelector: type === 'startediting-mobilesummary-cta',
+			activateWhenDone: type === 'startediting-cta' || type === 'startediting-mobilesummary-cta'
 		}, logger, api );
 		windowManager = new OO.ui.WindowManager( {
 			modal: true
@@ -116,9 +117,8 @@
 
 	mw.hook( 'growthExperiments.mobileHomepageSummaryHtmlLoaded.start-startediting' ).add( function ( $content ) {
 		$content.on( 'click', function () {
-			// TODO: Launch the correct version of the dialog and activate the SE module
-			// upon completion, see T258017
-			launchCta( 'suggestededits', 'mobile-summary' );
+			logger.log( 'start-startediting', $content.data( 'mode' ), 'se-mobilesummary-cta-click' );
+			launchCta( 'startediting-mobilesummary-cta', 'mobile-summary' );
 		} );
 	} );
 

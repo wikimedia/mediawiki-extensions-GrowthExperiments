@@ -4,7 +4,8 @@
  */
 var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).TopicSelectionWidget,
 	TaskTypeSelectionWidget = require( './suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.js' ),
-	ArticleCountWidget = require( './suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.js' );
+	ArticleCountWidget = require( './suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.js' ),
+	router = require( 'mediawiki.router' );
 
 /**
  * @param {Object} config
@@ -629,7 +630,7 @@ StartEditingDialog.prototype.buildProgressIndicator = function ( currentPage, to
  * @return {jQuery.Promise}
  */
 StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
-	var $homepage, $homepageOverlay, moduleHtml, moduleDependencies;
+	var $homepage, $homepageOverlay, $oldModule, moduleHtml, moduleDependencies;
 	if ( this.mode === 'mobile-details' ) {
 		window.location.href = mw.util.getUrl( new mw.Title( 'Special:Homepage/suggested-edits' ).toString() );
 		// Keep the dialog open while the page is reloading.
@@ -659,7 +660,7 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 		// Mark suggested edits module as activated.
 		$homepage.find( '.growthexperiments-homepage-module-suggested-edits' )
 			.addClass( 'activated' );
-	} else { // mobile-overlay
+	} else if ( this.mode === 'mobile-overlay' ) {
 		// Update StartEditing module icon.
 		$homepage.add( $homepageOverlay )
 			.find( '.growthexperiments-homepage-module-start-startediting' )
@@ -674,13 +675,29 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 		$homepage.find( '.growthexperiments-homepage-module-start' ).parent().after( moduleHtml );
 		// Mark suggested edits module as activated.
 		$homepage.find( '.growthexperiments-homepage-module-suggested-edits' )
-			.addClass( 'activated' );
+			.addClass( 'activated' )
+			.removeClass( 'unactivated' );
+	} else if ( this.mode === 'mobile-summary' ) {
+		$oldModule = $homepage.find( '.growthexperiments-homepage-module-start-startediting' ).parent();
+		// Add SuggestedEdits module summary
+		$oldModule.after( moduleHtml );
+		// Remove the start-startediting module
+		$oldModule.detach();
+		// Mark suggested edits module as activated.
+		$homepage.find( '.growthexperiments-homepage-module-suggested-edits' )
+			.addClass( 'activated' )
+			.removeClass( 'unactivated' );
 	}
 
 	return mw.loader.using( moduleDependencies ).then( function ( require ) {
 		if ( this.mode === 'mobile-overlay' ) {
+			// Replace the current URL, so that when the user exits the overlay or hits the back button,
+			// they go to the main page. If we used router.navigate() here, they'd go back to the
+			// start module overlay instead.
 			window.history.replaceState( null, null, '#/homepage/suggested-edits' );
 			window.dispatchEvent( new HashChangeEvent( 'hashchange' ) );
+		} else if ( this.mode === 'mobile-summary' ) {
+			router.navigate( '#/homepage/suggested-edits' );
 		}
 
 		// Wait for the module to initialize.
