@@ -543,9 +543,14 @@
 				"homepage/ext.growthExperiments.Homepage.StartEditingDialog.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.js",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.js",
 				{
 					"name": "homepage/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
+				},
+				{
+					"name": "homepage/suggestededits/TaskTypes.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
 				},
 				{
 					"name": "homepage/suggestededits/DefaultTaskTypes.json",
@@ -554,7 +559,8 @@
 			],
 			"styles": [
 				"homepage/ext.growthExperiments.Homepage.StartEditingDialog.less",
-				"homepage/suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.less"
+				"homepage/suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.less",
+				"homepage/suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.less"
 			],
 			"messages": [
 				"growthexperiments-homepage-startediting-dialog-header",
@@ -587,7 +593,10 @@
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body",
+				"growthexperiments-homepage-suggestededits-difficulty-filter-error",
 				"growthexperiments-homepage-suggestededits-difficulty-filters-article-count",
+				"growthexperiments-homepage-suggestededits-tasktype-label-create",
+				"growthexperiments-homepage-suggestededits-create-article-additional-message",
 				"vector-view-edit"
 			],
 			"dependencies": [

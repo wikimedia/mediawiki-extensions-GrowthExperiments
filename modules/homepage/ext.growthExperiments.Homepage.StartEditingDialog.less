@@ -273,6 +273,12 @@
 				padding: 5em 1em 1.5em 0;
 				border-left-width: 1em;
 			}
+
+			// The image is not displayed in variant D
+			body.growthexperiments-homepage-user-variant-D & {
+				background-image: none;
+				padding: 0 @side-padding 1.5em 0;
+			}
 		}
 
 		&-header {
@@ -295,13 +301,19 @@
 			}
 		}
 
-		&-legend {
-			margin: 1em;
+		&-legend,
+		&-taskTypeSelector {
+			margin: 0 1em;
 
 			.growthexperiments-homepage-desktop & {
+				margin: 0 @side-padding;
+			}
+		}
+
+		// stylelint-disable-next-line no-descending-specificity
+		&-legend {
+			.growthexperiments-homepage-desktop & {
 				display: table;
-				margin-left: 2em;
-				margin-right: 2em;
 			}
 
 			.growthexperiments-homepage-desktop &-row {
