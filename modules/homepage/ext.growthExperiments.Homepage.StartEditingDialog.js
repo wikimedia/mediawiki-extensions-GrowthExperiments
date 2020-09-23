@@ -22,9 +22,9 @@ function StartEditingDialog( config, logger, api ) {
 	this.api = api;
 	this.mode = config.mode;
 	this.enableTopics = mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' );
-	this.useTopicSelector = this.enableTopics && config.useTopicSelector;
-	this.useTaskTypeSelector = config.useTaskTypeSelector;
-	this.activateWhenDone = config.activateWhenDone;
+	this.useTopicSelector = this.enableTopics && !!config.useTopicSelector;
+	this.useTaskTypeSelector = !!config.useTaskTypeSelector;
+	this.activateWhenDone = !!config.activateWhenDone;
 	this.updateMatchCountDebounced = OO.ui.debounce( this.updateMatchCount.bind( this ) );
 }
 
