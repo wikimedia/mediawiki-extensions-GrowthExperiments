@@ -520,7 +520,16 @@ class HomepageHooks implements
 
 		// Enable the homepage for a percentage of non-autocreated users.
 		$enablePercentage = $this->config->get( 'GEHomepageNewAccountEnablePercentage' );
-		if ( $user->isLoggedIn() && !$autocreated && rand( 0, 99 ) < $enablePercentage ) {
+		// Allow override via parameter in registration URL.
+		$forceVariant = RequestContext::getMain()->getRequest()->getVal( 'geForceVariant' );
+		if (
+			$user->isLoggedIn() &&
+			!$autocreated &&
+			(
+				rand( 0, 99 ) < $enablePercentage ||
+				$forceVariant
+			)
+		) {
 			$user->setOption( self::HOMEPAGE_PREF_ENABLE, 1 );
 			$user->setOption( self::HOMEPAGE_PREF_PT_LINK, 1 );
 			// Default option is that the user has seen the tours/notices (so we don't prompt
@@ -554,8 +563,6 @@ class HomepageHooks implements
 			// Variant assignment
 			$wgGEHomepageNewAccountVariants = $this->config->get( 'GEHomepageNewAccountVariants' );
 			$defaultVariant = $this->experimentUserManager->getVariant( $user );
-			// Allow override via parameter in registration URL.
-			$forceVariant = RequestContext::getMain()->getRequest()->getVal( 'geForceVariant' );
 			if ( $forceVariant && array_key_exists( $forceVariant, $wgGEHomepageNewAccountVariants ) ) {
 				$variant = $forceVariant;
 			} else {
