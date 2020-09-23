@@ -159,6 +159,7 @@
 				return task;
 			} );
 		} else if ( task ) {
+			task.pageviews = null;
 			extraDataPromise = api.getExtraDataFromPcs( task, apiConfig );
 		} else {
 			extraDataPromise = $.Deferred().reject().promise();
