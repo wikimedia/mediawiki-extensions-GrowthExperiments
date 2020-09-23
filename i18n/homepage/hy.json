@@ -54,6 +54,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Հետ",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Ստանալ առաջարկություններ",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Արված է",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Արված է",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Նախ փորձեք որոշ առաջարկվող <strong>հեշտ</strong> խմբագրումենր",
 	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "{{SITENAME}} կայքը ավելի լավը դարձնելու շատ ձևեր կան: Խմբագիրների համայնքը նշել է հոդվածների այս ցանկը, որոնք տարբեր տեսակի օգնության կարիք ունեն:",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Հեշտ",
