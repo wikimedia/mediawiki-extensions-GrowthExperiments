@@ -245,9 +245,15 @@
 			thumbnailWidth: this.thumbnailWidth
 		}, config || {} );
 
-		// Skip if the task already has PCS data; don't fail worse then we have to
-		// when RESTBase is not installed.
-		if ( task.extract !== undefined || !apiUrlBase ) {
+		if ( task.extract !== undefined ) {
+			// The task already has PCS data, skip.
+			return $.Deferred().resolve( task ).promise();
+		} else if ( !apiUrlBase ) {
+			// Don't fail worse then we have to when RESTBase is not installed.
+			task.extract = null;
+			task.description = task.description || null;
+			task.thumbnailSource = task.thumbnailSource || null;
+			task.imageWidth = task.imageWidth || null;
 			return $.Deferred().resolve( task ).promise();
 		}
 		encodedTitle = encodeURIComponent( title.replace( / /g, '_' ) );
@@ -293,8 +299,12 @@
 			startTime = mw.now(),
 			title = task.title;
 
-		if ( task.pageviews !== undefined || !this.aqsConfig.project ) {
+		if ( task.pageviews !== undefined ) {
 			// The task already has AQS data, skip.
+			return $.Deferred().resolve( task ).promise();
+		} else if ( !this.aqsConfig.project ) {
+			// No AQS support for this wiki
+			task.pageviews = null;
 			return $.Deferred().resolve( task ).promise();
 		}
 
@@ -323,6 +333,7 @@
 			// AQS returns a 404 when the page has 0 view. Even for real errors, it's
 			// not worth replacing the task card with an error message just because we
 			// could not put a pageview count on it.
+			task.pageviews = null;
 			return task;
 		} );
 	};
