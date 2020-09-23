@@ -21,7 +21,10 @@
 				overlays = {},
 				currentModule = null,
 				// Matches routes like /homepage/moduleName or /homepage/moduleName/action
-				routeRegex = /^\/homepage\/([^/]+)(?:\/([^/]+))?$/;
+				routeRegex = /^\/homepage\/([^/]+)(?:\/([^/]+))?$/,
+				Utils = require( '../../utils/ext.growthExperiments.Utils.js' ),
+				Drawer = mw.mobileFrontend.require( 'mobile.startup' ).Drawer,
+				Anchor = mw.mobileFrontend.require( 'mobile.startup' ).Anchor;
 
 			/**
 			 * Extract module detail HTML, heading and RL modules config var.
@@ -128,6 +131,80 @@
 
 			// Initialize state for handleRouteChange, and log initial impression if needed
 			handleRouteChange( router.getPath() );
+
+			/**
+			 * Show welcome drawer for users in variant C and D who haven't already seen it.
+			 */
+			function maybeShowWelcomeDrawer() {
+				// Even though this drawer isn't really a tour, we reuse the preference
+				// set on desktop since if the user has seen the tour on desktop they
+				// should not see the drawer on mobile, and vice versa.
+				var welcomeNoticeSeenPreference = 'growthexperiments-tour-homepage-welcome',
+					markAsSeen = function () {
+						new mw.Api().saveOption( welcomeNoticeSeenPreference, 1 );
+					},
+					welcomeDrawer;
+				if ( !Utils.isUserInVariant( [ 'C', 'D' ] ) ||
+					mw.user.options.get( welcomeNoticeSeenPreference ) ) {
+					return;
+				}
+
+				welcomeDrawer = new Drawer( {
+					className: 'homepage-welcome-notice',
+					showCollapseIcon: false,
+					children: [
+						$( '<main>' )
+							.append(
+								$( '<h4>' ).text( mw.message( 'growthexperiments-homepage-welcome-notice-header' )
+									.params( [ mw.user ] )
+									.text() ),
+								// The following messages are used here:
+								// * growthexperiments-homepage-welcome-notice-body-variant-c
+								// * growthexperiments-homepage-welcome-notice-body-variant-d
+								$( '<p>' ).html( mw.message(
+									'growthexperiments-homepage-welcome-notice-body-variant-' +
+									Utils.getUserVariant().toLowerCase()
+								).params( [ mw.user ] )
+									.parse() ),
+								$( '<footer>' ).addClass( 'growthexperiments-homepage-welcome-notice-footer' )
+									.append(
+										new Anchor( {
+											href: '#',
+											additionalClassNames: 'growthexperiments-homepage-welcome-notice-button',
+											progressive: true,
+											// The following messages are used here:
+											// * growthexperiments-homepage-welcome-notice-button-text-variant-c
+											// * growthexperiments-homepage-welcome-notice-button-text-variant-d
+											label: mw.msg(
+												'growthexperiments-homepage-welcome-notice-button-text-variant-' +
+												Utils.getUserVariant().toLowerCase()
+											)
+										} ).$el
+									)
+							)
+					],
+					onBeforeHide: function () {
+						markAsSeen();
+					}
+				} );
+				document.body.appendChild( welcomeDrawer.$el[ 0 ] );
+				welcomeDrawer.$el.find( '.homepage-welcome-notice' ).on( 'click', function () {
+					markAsSeen();
+					// Launch the start editing dialog for variant C users.
+					// TODO: We should probably use mw.hook instead of mw.track/trackSubscribe here
+					if ( Utils.isUserInVariant( [ 'C' ] ) ) {
+						mw.track( 'growthexperiments.startediting' );
+					}
+					welcomeDrawer.hide();
+				} );
+				welcomeDrawer.show();
+			}
+
+			// Respond to mobile summary HTML loading
+			mw.hook( 'growthExperiments.mobileHomepageSummaryHtmlLoaded.suggested-edits' )
+				.add( maybeShowWelcomeDrawer );
+			mw.hook( 'growthExperiments.mobileHomepageSummaryHtmlLoaded.start-startediting' )
+				.add( maybeShowWelcomeDrawer );
 
 			$summaryModulesContainer.on( 'click', summaryModulesSelector, function ( e ) {
 				e.preventDefault();

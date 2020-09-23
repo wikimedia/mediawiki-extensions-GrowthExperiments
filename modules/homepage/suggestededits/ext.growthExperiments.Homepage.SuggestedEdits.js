@@ -577,4 +577,5 @@
 			initSuggestedTasks( $content );
 		}
 	} );
+
 }() );
