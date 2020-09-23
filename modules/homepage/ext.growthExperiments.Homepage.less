@@ -161,8 +161,16 @@ body.mw-special-Homepage {
 			}
 
 			.growthexperiments-homepage-group-main {
+				min-width: @homepageLayoutMinWidth;
+
 				&-user-variant-A {
 					width: 75%;
+					// Set a minimum width to avoid issues with the wide-format
+					// suggested edit module. Variants C / D will resize correctly
+					// to accommodate the wide-format module, but variant A never
+					// had correct responsive resizing (and appears to have none
+					// currently).
+					min-width: 1200px;
 				}
 
 				&-user-variant-C,
