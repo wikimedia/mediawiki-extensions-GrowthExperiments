@@ -686,7 +686,11 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 		// Mark suggested edits module as activated.
 		$homepage.find( '.growthexperiments-homepage-module-suggested-edits' )
 			.addClass( 'activated' )
-			.removeClass( 'unactivated' );
+			.removeClass( 'unactivated' )
+			.each( function ( i, module ) {
+				require( 'ext.growthExperiments.Homepage.Mobile' )
+					.loadExtraDataForSuggestedEdits( module );
+			} );
 	}
 
 	return mw.loader.using( moduleDependencies ).then( function ( require ) {
