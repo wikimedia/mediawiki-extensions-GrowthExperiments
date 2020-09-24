@@ -299,5 +299,10 @@
 	"right-setmentor": "Felhasználó mentorának megváltoztatása",
 	"action-setmentor": "mások mentorát megváltoztatni",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Több információ erről az ajánlott szerkesztésről",
-	"growthexperiments-homepage-suggestededits-more-info": "További információ javasolt szerkesztésekről"
+	"growthexperiments-homepage-suggestededits-more-info": "További információ javasolt szerkesztésekről",
+	"growthexperiments-homepage-welcome-notice-header": "{{GENDER:$1|Üdvözlünk}} a kezdőlapodon!",
+	"growthexperiments-homepage-welcome-notice-body-variant-c": "{{GENDER:$1|Gyakorolhatod}} a szerkesztést, kapcsolatba léphetsz {{GENDER:$1|mentoroddal}} és ellenőrizheted, {{GENDER:$1|munkádnak}} milyen hatása van. További információ a <strong>javasolt szerkesztésekről</strong> {{GENDER:$1|kezdőlapodon}}.",
+	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|Gyakorolhatod}} a szerkesztést, kapcsolatba léphetsz {{GENDER:$1|mentoroddal}} és ellenőrizheted, {{GENDER:$1|munkádnak}} milyen hatása van.",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Folytatás",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Megértettem"
 }

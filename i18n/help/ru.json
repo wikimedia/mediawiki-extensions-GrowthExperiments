@@ -111,7 +111,7 @@
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Ваш вопрос сейчас на Форуме помощи сообщества, на него ответит другой редактор-волонтёр.",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Посмотреть ваш вопрос на Форуме помощи",
 	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "Уведомления для вашего вопроса:",
-	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Как только появится ответ, вы получите уведомление здесь на {{SITENAME}}.",
+	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Как только появится ответ, вы получите уведомление прямо здесь.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email": "Вы также получите электронное письмо на адрес $1 ($2)",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "изменить",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Если {{GENDER:$2|вы}} также хотели бы получать уведомления по электронной почте, подтвердите свой адрес электронной почты сейчас: $1",

@@ -42,6 +42,9 @@
 	"growthexperiments-homepage-startediting-subheader-new-page": "Antes de criar um novo artigo, tente aprender com algumas edições mais fáceis!",
 	"growthexperiments-homepage-startediting-subheader-other": "A Ajude a aumentar o conhecimento do mundo com algumas correções fáceis nos artigos da Wikipédia.",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Veja as edições sugeridas",
+	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "Começar com edições sugeridas",
+	"growthexperiments-homepage-startediting-mobilesummary-body-variant-d": "Ajude a aumentar o conhecimento do mundo com algumas correções fáceis em artigos da Wikipédia.",
+	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "Obter sugestões",
 	"growthexperiments-homepage-startediting-button": "Veja as edições sugeridas",
 	"growthexperiments-homepage-startediting-dialog-header": "Sobre as edições sugeridas",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1 de $2",
@@ -290,5 +293,10 @@
 	"right-setmentor": "Definir mentor do usuário",
 	"action-setmentor": "definir mentor do usuário",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Mais sobre esta edição sugerida",
-	"growthexperiments-homepage-suggestededits-more-info": "Mais informações sobre as edições sugeridas"
+	"growthexperiments-homepage-suggestededits-more-info": "Mais informações sobre as edições sugeridas",
+	"growthexperiments-homepage-welcome-notice-header": "Bem-vindo a {{GENDER:$1|sua}} página inicial!",
+	"growthexperiments-homepage-welcome-notice-body-variant-c": "Pode aprender a editar, contatar o {{GENDER:$1|seu}} mentor, e ver o impacto do {{GENDER:$1|seu}} trabalho. Continua a aprender sobre <strong>edições sugeridas</strong> na {{GENDER:$1|sua}} página inicial.",
+	"growthexperiments-homepage-welcome-notice-body-variant-d": "Pode aprender a editar, contatar o {{GENDER:$1|seu}} mentor, e veja o impacto do {{GENDER:$1|seu}} trabalho.",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Continuar",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Entendi"
 }

@@ -290,5 +290,8 @@
 	"right-setmentor": "Sätt användarens fadder",
 	"action-setmentor": "sätt användares fadder",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Mer om denna föreslagna redigering",
-	"growthexperiments-homepage-suggestededits-more-info": "Mer information om förslagna redigeringar"
+	"growthexperiments-homepage-suggestededits-more-info": "Mer information om förslagna redigeringar",
+	"growthexperiments-homepage-welcome-notice-header": "Välkommen till {{GENDER:$1|din}} hemsida!",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Fortsätt",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Jag förstår"
 }

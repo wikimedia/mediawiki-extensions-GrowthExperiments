@@ -44,6 +44,9 @@
 	"growthexperiments-homepage-startediting-subheader-new-page": "Yeni bir madde oluşturmadan önce, daha kolay düzenlemelerle öğrenmeyi deneyin!",
 	"growthexperiments-homepage-startediting-subheader-other": "Vikipedi makalelerindeki bazı kolay düzeltmelerle dünyanın bilgisine katkıda bulunun.",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Önerilen düzenlemelere bakın",
+	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "Önerilen düzenlemelere başlayın",
+	"growthexperiments-homepage-startediting-mobilesummary-body-variant-d": "Vikipedi maddelerindeki bazı kolay düzeltmelerle dünyanın bilgisine katkıda bulunun.",
+	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "Öneri alın",
 	"growthexperiments-homepage-startediting-button": "Önerilen düzenlemelere bakın",
 	"growthexperiments-homepage-startediting-dialog-header": "Önerilen düzenlemeler hakkında",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1 - $2",
@@ -292,5 +295,10 @@
 	"right-setmentor": "Kullanıcının mentorunu ayarla",
 	"action-setmentor": "kullanıcının mentorunu ayarla",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Önerilen bu düzenleme hakkında daha fazla bilgi",
-	"growthexperiments-homepage-suggestededits-more-info": "Önerilen düzenlemeler hakkında daha fazla bilgi"
+	"growthexperiments-homepage-suggestededits-more-info": "Önerilen düzenlemeler hakkında daha fazla bilgi",
+	"growthexperiments-homepage-welcome-notice-header": "Ana {{GENDER:$1|sayfanıza}} hoş geldiniz!",
+	"growthexperiments-homepage-welcome-notice-body-variant-c": "Düzenlemeyi öğrenebilir, mentorunuzla iletişime geçebilir ve çalışmanızın etkisini görebilirsiniz.  Ana sayfanızdaki <strong>önerilen düzenlemeler</strong> hakkında bilgi edinmeye devam {{GENDER:$1|edin}}.",
+	"growthexperiments-homepage-welcome-notice-body-variant-d": "Düzenlemeyi öğrenebilir, mentorunuzla iletişime geçebilir ve çalışmanızın etkisini {{GENDER:$1|görebilirsiniz}}.",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Devam et",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Anladım"
 }

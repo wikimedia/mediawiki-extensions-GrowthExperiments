@@ -46,6 +46,9 @@
 	"growthexperiments-homepage-startediting-subheader-new-page": "לפני יצירת ערך חדש, {{GENDER:|נסה|נסי}} ללמוד עם עריכות קלות יותר!",
 	"growthexperiments-homepage-startediting-subheader-other": "{{GENDER:|תעזור|תעזרי}} להוסיף לידע של העולם עם תיקונים קטנים בערכים של ויקיפדיה.",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "לראות את העריכות המוצעות",
+	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "{{GENDER:|תתחיל|תתחילי}} לעבוד עם עריכות מוצעות",
+	"growthexperiments-homepage-startediting-mobilesummary-body-variant-d": "{{GENDER:|תעזור|תעזרי}} להוסיף לידע של העולם עם תיקונים קטנים בערכים של ויקיפדיה.",
+	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "לקבל הצעות",
 	"growthexperiments-homepage-startediting-button": "לראות את העריכות המוצעות",
 	"growthexperiments-homepage-startediting-dialog-header": "אודות עריכות מוצעות",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1 מתוך $2",
@@ -294,5 +297,10 @@
 	"right-setmentor": "הגדרת החונך של משתמש",
 	"action-setmentor": "להגדיר את החונך של משתמש",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "עוד על העריכה המוצעת הזאת",
-	"growthexperiments-homepage-suggestededits-more-info": "מידע נוסף על עריכות מוצעות"
+	"growthexperiments-homepage-suggestededits-more-info": "מידע נוסף על עריכות מוצעות",
+	"growthexperiments-homepage-welcome-notice-header": "{{GENDER:$1|ברוך הבא|ברוכה הבאה}} לדף הבית שלך!",
+	"growthexperiments-homepage-welcome-notice-body-variant-c": "{{GENDER:$1|אתה יכול|את יכולה}} ללמוד לערוך, ליצור קשר עם החונך שלך, ולראות את ההשפעה של העבודה שלך. {{GENDER:$1|תמשיך|תמשיכי}} ללמוד על <strong>עריכות מוצעות</strong> בדף הבית שלך.",
+	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|אתה יכול|את יכולה}} ללמוד לערוך, ליצור קשר עם החונך שלך, ולראות את ההשפעה של העבודה שלך.",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "להמשיך",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "הבנתי"
 }

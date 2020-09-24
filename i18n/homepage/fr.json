@@ -56,6 +56,9 @@
 	"growthexperiments-homepage-startediting-subheader-new-page": "Avant de créer un nouvel article, essayez d’apprendre avec des modifications plus faciles !",
 	"growthexperiments-homepage-startediting-subheader-other": "Aidez à étendre la connaissance du monde avec quelques corrections faciles des articles de Wikipédia.",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Voir les modifications suggérées",
+	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "Commencer avec les modifications suggérées",
+	"growthexperiments-homepage-startediting-mobilesummary-body-variant-d": "Aider à ajouter à la connaissance mondiale avec certaines corrections faciles sur les articles de Wikipédia.",
+	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "Trouver des suggestions",
 	"growthexperiments-homepage-startediting-button": "Voir les modifications suggérées",
 	"growthexperiments-homepage-startediting-dialog-header": "À propos des modifications suggérées",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1 sur $2",
@@ -304,5 +307,8 @@
 	"right-setmentor": "Définir le tuteur de l’utilisateur",
 	"action-setmentor": "définir le tuteur de l’utilisateur",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "En savoir plus sur cette modification suggérée",
-	"growthexperiments-homepage-suggestededits-more-info": "Autres informations sur les modifications suggérées"
+	"growthexperiments-homepage-suggestededits-more-info": "Autres informations sur les modifications suggérées",
+	"growthexperiments-homepage-welcome-notice-header": "Bienvenue sur {{GENDER:$1|votre}} page d'accueil !",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Continuer",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "C’est bon"
 }

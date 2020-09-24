@@ -41,6 +41,7 @@
 	"growthexperiments-homepage-startediting-subheader-add-image": "Նախքան պատկեր ավելացնելը փորձեք ավելի հեշտ խմբագրումներ անել",
 	"growthexperiments-homepage-startediting-subheader-new-page": "Նախքան հոդված ստեղծելը փորձեք ավելի հեշտ խմբագրումներ անել",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Տեսնել առաջարկվող խմբագրումները",
+	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "Ստանալ առաջարկություններ",
 	"growthexperiments-homepage-startediting-button": "Տեսնել առաջարկվող խմբագրումները",
 	"growthexperiments-homepage-startediting-dialog-header": "Առաջարկվող խմբագրումներ",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1–ը $2–ից",
@@ -240,5 +241,7 @@
 	"growthexperiments-notification-learn-more": "Իմանալ ավելին {{GENDER:$1|ձեր}} նոր {{GENDER:$2|մոնթրի}} մասին",
 	"right-setmentor": "Սահմանել մասնակցի մենթորին",
 	"action-setmentor": "սահմանել մասնակցի մենթորին",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Ավելին այս առաջարկվող խմբագրման մասին"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Ավելին այս առաջարկվող խմբագրման մասին",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Շարունակել",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Հասկանալի է"
 }

@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abijeet Patro",
 			"Nilesh shukla"
 		]
 	},
-	"growthexperiments-homepage-discovery-thanks-text": "{{GENDER:$1|अपने}} मुख पृष्ठ पर जाने और आरंभ करने के लिए पृष्ठ के शीर्ष पर $2 पर क्लिक करें।"
+	"growthexperiments-homepage-discovery-thanks-text": "{{GENDER:$1|अपने}} मुख पृष्ठ पर जाने और आरंभ करने के लिए पृष्ठ के शीर्ष पर $2 पर क्लिक करें।",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "समझ गया"
 }

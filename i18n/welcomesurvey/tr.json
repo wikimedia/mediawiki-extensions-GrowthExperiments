@@ -6,7 +6,7 @@
 			"MuratTheTurkish"
 		]
 	},
-	"welcomesurvey": "{{GENDER:$1|Hoş geldin}}, $1!",
+	"welcomesurvey": "{{GENDER:$1|Hoş geldiniz}}, $1!",
 	"welcomesurvey-save-confirmation-title": "Teşekkürler! Cevaplarınız kaydedildi.",
 	"welcomesurvey-save-confirmation-text": "Cevaplarınız Vikipedi'de başlamanız için size yararlı yollar sunmamıza yardımcı olacaktır.",
 	"welcomesurvey-subtitle": "Birkaç isteğe bağlı soruyu yanıtlayarak Vikipedi deneyiminizi geliştirmemize yardımcı olun.",
@@ -33,7 +33,7 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Diğer",
 	"welcomesurvey-question-reason-option-other-label": "Diğer (lütfen açıklayınız)",
 	"welcomesurvey-question-reason-other-placeholder": "Başka bir sebep {{GENDER:$1|girin}}...",
-	"welcomesurvey-question-mentor-info": "Daha deneyimli editörlerin yeni kullanıcıların düzenlemelerine yardımcı olması için bir program başlatmayı düşünüyoruz. {{GENDER:$1|İlgilendiğiniz}} düzenleme konusunda yardım almak için sizinle iletişim kuruyor mu?",
+	"welcomesurvey-question-mentor-info": "Daha deneyimli editörlerin yeni kullanıcıların düzenlemelerine yardımcı olması için bir program başlatmayı düşünüyoruz. {{GENDER:$1İlgilendiğiniz}} düzenleme konusunda yardım almak için sizinle iletişim kuruyor mu?",
 	"welcomesurvey-question-mentor-label": "Evet, {{GENDER:$1|ilgileniyorum}}",
 	"welcomesurvey-question-edited-label": "Vikipedi'yi hiç düzenlediniz mi?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Evet, çoğu zaman",
