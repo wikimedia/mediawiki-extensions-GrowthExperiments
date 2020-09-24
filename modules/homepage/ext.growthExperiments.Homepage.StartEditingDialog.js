@@ -656,7 +656,7 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 			.after( moduleHtml );
 		// Move Mentorship module to the sidebar.
 		$homepage.find( '.growthexperiments-homepage-module-mentorship' )
-			.prependTo( '.growthexperiments-homepage-group-sidebar' );
+			.prependTo( '.growthexperiments-homepage-group-sidebar-subgroup-primary' );
 		// Mark suggested edits module as activated.
 		$homepage.find( '.growthexperiments-homepage-module-suggested-edits' )
 			.addClass( 'activated' );
