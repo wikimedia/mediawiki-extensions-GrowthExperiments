@@ -96,10 +96,43 @@
 		} );
 	}
 
+	/**
+	 * Create a StartEditing dialog, and embed it inside the start-startediting module.
+	 * Only used for variant D on desktop; this function is a no-op otherwise.
+	 *
+	 * @param {jQuery} $container DOM element that contains homepage modules
+	 */
+	function setupEmbeddedDialog( $container ) {
+		var mode, dialog, windowManager,
+			// Only do this for the start-startediting module in variant D on desktop
+			$startEditingModule = $container.find(
+				'.growthexperiments-homepage-module-start-startediting' +
+				'.growthexperiments-homepage-module-desktop' +
+				'.growthexperiments-homepage-module-user-variant-D'
+			);
+		if ( $startEditingModule.length === 0 ) {
+			return;
+		}
+
+		mode = $startEditingModule.data( 'mode' );
+		dialog = new StartEditingDialog( {
+			mode: mode,
+			useTopicSelector: true,
+			useTaskTypeSelector: true,
+			activateWhenDone: true
+		}, logger, api );
+		windowManager = new OO.ui.WindowManager( { modal: false } );
+		$startEditingModule.append( windowManager.$element );
+		windowManager.addWindows( [ dialog ] );
+		windowManager.openWindow( dialog );
+	}
+
 	// Try setup for desktop mode and server-side-rendered mobile mode
 	// See also the comment in ext.growthExperiments.Homepage.Mentorship.js
 	// eslint-disable-next-line no-jquery/no-global-selector
 	setupCta( $( '.growthexperiments-homepage-container' ) );
+	// eslint-disable-next-line no-jquery/no-global-selector
+	setupEmbeddedDialog( $( '.growthexperiments-homepage-container' ) );
 
 	// Allow activation from a guided tour
 	mw.trackSubscribe( 'growthexperiments.startediting', function () {

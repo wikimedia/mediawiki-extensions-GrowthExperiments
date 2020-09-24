@@ -186,7 +186,9 @@ StartEditingDialog.prototype.getSetupProcess = function ( data ) {
 	data = $.extend( {
 		actions: this.constructor.static.actions.filter( function ( action ) {
 			// If activateWhenDone is true, remove 'done'; otherwise remove 'activate'
-			return action.action !== ( dialog.activateWhenDone ? 'done' : 'activate' );
+			return action.action !== ( dialog.activateWhenDone ? 'done' : 'activate' ) &&
+				// Remove 'close' in non-modal mode
+				( dialog.getManager().modal || action.action !== 'close' );
 		} )
 	}, data );
 	return StartEditingDialog.super.prototype.getSetupProcess
@@ -267,10 +269,16 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 };
 
 StartEditingDialog.prototype.getBodyHeight = function () {
+	var i, oldVisibility, panelHeight, maxHeight, panels;
+	if ( !this.getManager().modal ) {
+		// When the dialog is embedded on the page, don't make it taller than it needs to be
+		return StartEditingDialog.super.prototype.getBodyHeight.apply( this, arguments );
+	}
+
+	// When the dialog is displayed modally, give it a consistent height
 	// Measure the height of each panel, and find the tallest one
-	var i, oldVisibility, panelHeight,
-		maxHeight = 0,
-		panels = this.panels.getItems();
+	maxHeight = 0;
+	panels = this.panels.getItems();
 	for ( i = 0; i < panels.length; i++ ) {
 		// Make the panel visible so we can measure it
 		oldVisibility = panels[ i ].isVisible();
@@ -630,7 +638,8 @@ StartEditingDialog.prototype.buildProgressIndicator = function ( currentPage, to
  * @return {jQuery.Promise}
  */
 StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
-	var $homepage, $homepageOverlay, $oldModule, moduleHtml, moduleDependencies;
+	var $homepage, $homepageOverlay, $startModule, $startEditingModule, $mentorshipModule,
+		moduleHtml, moduleDependencies;
 	if ( this.mode === 'mobile-details' ) {
 		window.location.href = mw.util.getUrl( new mw.Title( 'Special:Homepage/suggested-edits' ).toString() );
 		// Keep the dialog open while the page is reloading.
@@ -648,15 +657,25 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 	// FIXME needs to be kept in sync with the PHP code. Maybe the homepage layout
 	//   (module containers) should be templated and made available via an API or JSON config.
 	if ( this.mode === 'desktop' ) {
-		// Remove StartEditing submodule from Start module (and update CSS classes for Start).
-		$homepage.find( '.growthexperiments-homepage-module-start-startediting' ).remove();
 		// Add SuggestedEdits module.
-		$homepage.find( '.growthexperiments-homepage-module-start' )
-			.addClass( 'growthexperiments-homepage-module-start-startediting-completed' )
-			.after( moduleHtml );
-		// Move Mentorship module to the sidebar.
-		$homepage.find( '.growthexperiments-homepage-module-mentorship' )
-			.prependTo( '.growthexperiments-homepage-group-sidebar-subgroup-primary' );
+		$startModule = $homepage.find( '.growthexperiments-homepage-module-start' );
+		$startEditingModule = $homepage.find( '.growthexperiments-homepage-module-start-startediting' );
+		if ( $startModule.length ) {
+			// Update CSS class on the Start module, and add SuggestedEdits after it
+			$homepage.find( '.growthexperiments-homepage-module-start' )
+				.addClass( 'growthexperiments-homepage-module-start-startediting-completed' )
+				.after( moduleHtml );
+		} else {
+			// We're in variant D: add SuggestedEdits after StartEditing (which will then be removed)
+			$startEditingModule.after( moduleHtml );
+		}
+		$startEditingModule.remove();
+		// Move Mentorship module to the sidebar (if it's not there already, meaning in variant A)
+		$mentorshipModule = $homepage.find( '.growthexperiments-homepage-module-mentorship' );
+		if ( !$mentorshipModule.closest( '.growthexperiments-homepage-group-sidebar' ).length ) {
+			$homepage.find( '.growthexperiments-homepage-module-mentorship' )
+				.prependTo( '.growthexperiments-homepage-group-sidebar-subgroup-primary' );
+		}
 		// Mark suggested edits module as activated.
 		$homepage.find( '.growthexperiments-homepage-module-suggested-edits' )
 			.addClass( 'activated' );
@@ -678,11 +697,11 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 			.addClass( 'activated' )
 			.removeClass( 'unactivated' );
 	} else if ( this.mode === 'mobile-summary' ) {
-		$oldModule = $homepage.find( '.growthexperiments-homepage-module-start-startediting' ).parent();
+		$startEditingModule = $homepage.find( '.growthexperiments-homepage-module-start-startediting' ).parent();
 		// Add SuggestedEdits module summary
-		$oldModule.after( moduleHtml );
+		$startEditingModule.after( moduleHtml );
 		// Remove the start-startediting module
-		$oldModule.detach();
+		$startEditingModule.remove();
 		// Mark suggested edits module as activated.
 		$homepage.find( '.growthexperiments-homepage-module-suggested-edits' )
 			.addClass( 'activated' )

@@ -2,8 +2,6 @@
 @import 'mediawiki.mixins';
 @import 'ext.growthExperiments.variables.less';
 
-@side-padding: 24px;
-
 .mw-ge-startediting-dialog {
 	.growthexperiments-homepage-desktop & {
 		.oo-ui-window-head {
@@ -33,12 +31,12 @@
 
 		&-desktopActions {
 			margin-left: auto;
-			padding: @side-padding;
+			padding: @startEditingDialogSidePadding;
 		}
 	}
 
 	&-progress {
-		padding: 1em @side-padding;
+		padding: 1em @startEditingDialogSidePadding;
 		background-color: @colorGray15;
 
 		&-label {
@@ -63,7 +61,7 @@
 	&-intro {
 		&-general {
 			background-color: @colorGray15;
-			padding: 1.5em @side-padding;
+			padding: 1.5em @startEditingDialogSidePadding;
 
 			&:after {
 				content: '';
@@ -102,7 +100,7 @@
 		}
 
 		&-response {
-			padding: 1.5em @side-padding;
+			padding: 1.5em @startEditingDialogSidePadding;
 
 			&-image {
 				float: left;
@@ -118,17 +116,19 @@
 		}
 
 		&-topic {
-			padding: 1.5em @side-padding 2.5em;
+			padding: 1.5em @startEditingDialogSidePadding 2.5em;
 			background-color: @colorGray15;
 
 			&-image {
 				width: 128px;
 
-				body.growthexperiments-homepage-user-variant-A & {
+				body.growthexperiments-homepage-user-variant-A &,
+				body.growthexperiments-homepage-user-variant-D.growthexperiments-homepage-desktop & {
 					float: left;
 					margin-right: 1em;
 				}
 
+				// stylelint-disable-next-line no-descending-specificity
 				body.growthexperiments-homepage-user-variant-C &,
 				body.growthexperiments-homepage-user-variant-D.growthexperiments-homepage-mobile-summary & {
 					float: right;
@@ -160,7 +160,7 @@
 		}
 
 		&-topic-description {
-			padding: 1.5em @side-padding;
+			padding: 1.5em @startEditingDialogSidePadding;
 			display: flex;
 
 			.growthexperiments-homepage-mobile-summary &,
@@ -198,7 +198,7 @@
 		}
 
 		&-topic-selector {
-			padding: 1.5em @side-padding;
+			padding: 1.5em @startEditingDialogSidePadding;
 
 			&-header {
 				font-weight: bold;
@@ -257,8 +257,8 @@
 			line-height: 1.375;
 			background-color: @colorGray15;
 			background-repeat: no-repeat;
-			// We can't use e.g. background-position-x: @side-padding; because that's not flippable for RTL
-			// Instead, use a border with the same color as the background
+			// We can't use e.g. background-position-x: @startEditingDialogSidePadding; because
+			// that's not flippable for RTL. Instead, use a border with the same color as the background
 			background-position-x: left;
 			border-left-color: @colorGray15;
 			border-left-style: solid;
@@ -268,7 +268,7 @@
 				background-size: 128px;
 				background-position-y: center;
 				padding: 2.5em 1.5em 2.5em 9.5em;
-				border-left-width: @side-padding;
+				border-left-width: @startEditingDialogSidePadding;
 			}
 
 			.growthexperiments-homepage-mobile-summary &,
@@ -283,7 +283,7 @@
 			// The image is not displayed in variant D
 			body.growthexperiments-homepage-user-variant-D & {
 				background-image: none;
-				padding: 0 @side-padding 1.5em 0;
+				padding: 0 @startEditingDialogSidePadding 1.5em 0;
 			}
 		}
 
@@ -305,6 +305,10 @@
 			.growthexperiments-homepage-mobile-details & {
 				font-size: 0.9em;
 			}
+
+			body.growthexperiments-homepage-user-variant-D & {
+				color: @color-base;
+			}
 		}
 
 		&-legend,
@@ -312,7 +316,7 @@
 			margin: 0 1em;
 
 			.growthexperiments-homepage-desktop & {
-				margin: 0 @side-padding;
+				margin: 0 @startEditingDialogSidePadding;
 			}
 		}
 

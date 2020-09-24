@@ -222,8 +222,8 @@ class SpecialHomepage extends SpecialPage {
 		$moduleConfig = array_filter( [
 			'start' => !$variantCD,
 			'startemail' => $variantCD,
-			// Only load start-startediting code for mobile summary, variant D, unactivated SE users
-			'start-startediting' => $isMobile && !$par &&
+			// Only load start-startediting code for unactivated SE users in variant D
+			'start-startediting' => !$par &&
 				$this->experimentUserManager->isUserInVariant(
 					$this->getUser(),
 					'D'
@@ -248,7 +248,7 @@ class SpecialHomepage extends SpecialPage {
 			return [
 				'main' => [
 					'primary' => [ 'startemail' ],
-					'secondary' => [ 'suggested-edits' ]
+					'secondary' => [ 'start-startediting', 'suggested-edits' ]
 				],
 				'sidebar' => [
 					'primary' => [ 'impact' ],

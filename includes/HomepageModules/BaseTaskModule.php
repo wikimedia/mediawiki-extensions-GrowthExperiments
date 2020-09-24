@@ -38,10 +38,8 @@ abstract class BaseTaskModule extends BaseModule {
 			'check' :
 			$this->getHeaderIconName();
 
-		$icon = $this->getHeaderIcon(
-			$iconName,
-			$this->shouldInvertHeaderIcon()
-		);
+		$icon = $iconName !== null ?
+			$this->getHeaderIcon( $iconName, $this->shouldInvertHeaderIcon() ) : '';
 		$text = $this->getHeaderTextElement();
 		return $icon . $text;
 	}
