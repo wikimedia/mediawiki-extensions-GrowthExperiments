@@ -48,6 +48,7 @@
 			action_data: Utils.serializeActionData( data ),
 			user_id: this.userId,
 			user_editcount: this.userEditCount,
+			user_variant: Utils.getUserVariant(),
 			module: module,
 			is_mobile: this.isMobile,
 			mode: mode,
