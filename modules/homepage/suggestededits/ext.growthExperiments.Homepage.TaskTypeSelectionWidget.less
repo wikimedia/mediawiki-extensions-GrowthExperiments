@@ -1,13 +1,32 @@
 @import 'mediawiki.ui/variables.less';
+@import '../ext.growthExperiments.variables.less';
 
 .mw-ge-homepage-taskTypeSelectionWidget {
+	&-difficulty-level {
+		padding-top: 24px;
+
+		&-easy {
+			color: @easyColor;
+		}
+
+		&-medium {
+			color: @mediumColor;
+		}
+
+		&-hard {
+			color: @hardColor;
+		}
+	}
+
 	h4&-difficulty-level-label {
 		display: inline-block;
-		font-size: 1.15em;
+		font-size: @headerFontSize;
+		color: inherit;
+		padding-top: 0;
+		margin-top: 0;
 		// Align with icon
-		margin-bottom: -0.5em;
+		vertical-align: middle;
 		padding-left: 5px;
-		padding-top: 1em;
 	}
 
 	.oo-ui-checkboxMultiselectWidget {
@@ -15,6 +34,8 @@
 	}
 
 	p&-difficulty-level-desc {
+		font-size: 0.925em;
+		font-weight: bold;
 		color: @colorGray2;
 		padding-top: 5px;
 	}
