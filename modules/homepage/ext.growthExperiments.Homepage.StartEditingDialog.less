@@ -129,9 +129,15 @@
 					margin-right: 1em;
 				}
 
-				body.growthexperiments-homepage-user-variant-C & {
+				body.growthexperiments-homepage-user-variant-C &,
+				body.growthexperiments-homepage-user-variant-D.growthexperiments-homepage-mobile-summary & {
 					float: right;
 					margin-left: 1em;
+				}
+
+				// stylelint-disable-next-line no-descending-specificity
+				body.growthexperiments-homepage-user-variant-D & {
+					width: 64px;
 				}
 			}
 
