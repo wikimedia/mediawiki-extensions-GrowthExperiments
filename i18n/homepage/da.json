@@ -74,5 +74,7 @@
 	"growthexperiments-homepage-suggestededits-topics-more": "vis mere",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|emne|emner}}",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Vælg alle",
-	"growthexperiments-homepage-suggestededits-topics-unselectall": "Fjern alle"
+	"growthexperiments-homepage-suggestededits-topics-unselectall": "Fjern alle",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Fortsæt",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Forstået"
 }

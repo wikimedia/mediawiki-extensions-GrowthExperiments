@@ -8,6 +8,7 @@
 			"Rail",
 			"Railfail536",
 			"Tar Lócesilion",
+			"WTM",
 			"Woytecr"
 		]
 	},
@@ -81,7 +82,7 @@
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Twój}} wpływ",
 	"growthexperiments-homepage-impact-subheader-text": "Ludzie oglądają artykuły, które {{GENDER:$1|edytowałeś|edytowałaś}}!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Liczba odwiedzin po {{GENDER:$1|dokonaniu edycji}} na każdej z tych stron (z ostatnich 60 dni):",
-	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Dokonałeś|Dokonałaś}} <strong>$1</strong> {{PLURAL:$1|edycji|edycje|edycji}} (zobacz wszystkie)",
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Dokonałeś|Dokonałaś}} <strong>$1</strong> {{PLURAL:$1|edycji|edycji|edycji}} (zobacz wszystkie)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Nie edytowa{{GENDER:$1|łeś|łaś|łeś(-aś)}} ani nie dodawa{{GENDER:$1|łeś|łaś|łeś(-aś)}} jeszcze żadnych artykułów.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "W {{GENDER:$1|tym}} obszarze zobaczysz ile razy ludzie oglądali artykuły, które współtworzysz.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> edycji artykułów",

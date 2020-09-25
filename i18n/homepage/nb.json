@@ -40,6 +40,9 @@
 	"growthexperiments-homepage-startediting-subheader-new-page": "Prøv å lære ved å gjøre noen enklere redigeringer før du oppretter en ny artikkel!",
 	"growthexperiments-homepage-startediting-subheader-other": "Hjelp til å gjøre verdens kunnskap bedre ved å fikse småting i Wikipedia-artikler.",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Se foreslåtte redigeringer",
+	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "Kom i gang med foreslåtte redigeringer",
+	"growthexperiments-homepage-startediting-mobilesummary-body-variant-d": "Hjelp til å gjøre verdens kunnskap bedre ved å fikse småting i Wikipedia-artikler.",
+	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "Få forslag",
 	"growthexperiments-homepage-startediting-button": "Se foreslåtte redigeringer",
 	"growthexperiments-homepage-startediting-dialog-header": "Om foreslåtte redigeringer",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1 av $2",
@@ -142,6 +145,8 @@
 	"growthexperiments-tour-discovery-title": "Kom i gang her!",
 	"growthexperiments-tour-discovery-description": "Klikk på brukernavnet {{GENDER:$1|ditt}} for å besøke hjemmesiden din.",
 	"growthexperiments-homepage-welcomesurvey-default-close": "Gå til hjemmesiden {{GENDER:$1|din}}",
+	"growthexperiments-tour-welcome-description-c": "{{GENDER:$1|Du}} kan alltid trykke på brukernavnet ditt for å komme tilbake hit. Fortsett å lære om '''foreslåtte redigeringer''' på hjemmesiden din.",
+	"growthexperiments-tour-welcome-description-d": "{{GENDER:$1|Du}} kan alltid trykke på brukernavnet ditt for å komme tilbake hit. På hjemmesiden din kan du finne foreslåtte redigeringer, stille spørsmål til fadderen din og se hva slags innvirkning du har.",
 	"growthexperiments-homepage-discovery-banner-header": "Velkommen til hjemmesiden {{GENDER:$1|din}}!",
 	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|Du}} kan alltid klikke på $2 på toppen av siden for å komme tilbake hit.",
 	"growthexperiments-homepage-discovery-thanks-header": "Takk for at {{GENDER:$1|du}} opprettet en konto!",
@@ -285,5 +290,10 @@
 	"right-setmentor": "Sette brukeres faddere",
 	"action-setmentor": "sette brukeres faddere",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Mer om denne foreslåtte redigeringen",
-	"growthexperiments-homepage-suggestededits-more-info": "Mer informasjon om foreslåtte redigeringer"
+	"growthexperiments-homepage-suggestededits-more-info": "Mer informasjon om foreslåtte redigeringer",
+	"growthexperiments-homepage-welcome-notice-header": "Velkommen til hjemmesiden {{GENDER:$1|din}}!",
+	"growthexperiments-homepage-welcome-notice-body-variant-c": "{{GENDER:$1|Du}} kan lære å redigere, kontakte fadderen din og se innvirkningen til arbeidet ditt. Fortsett å lære om <strong>foreslåtte redigeringer</strong> på hjemmesiden din.",
+	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|Du}} kan lære å redigere, kontakte fadderen din og se innvirkningen arbeidet ditt har.",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Fortsett",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Skjønner"
 }

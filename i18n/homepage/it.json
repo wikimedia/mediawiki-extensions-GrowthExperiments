@@ -46,6 +46,7 @@
 	"growthexperiments-homepage-startediting-subheader-new-page": "Prima di creare una nuova voce, prova ad imparare con delle modifiche più facili!",
 	"growthexperiments-homepage-startediting-subheader-other": "Aiuta ad aumentare la conoscenza del mondo con alcune semplici correzioni alle voci di Wikipedia.",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Vedi modifiche suggerite",
+	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "Ottieni suggerimenti",
 	"growthexperiments-homepage-startediting-button": "Vedi modifiche suggerite",
 	"growthexperiments-homepage-startediting-dialog-header": "Ulteriori informazioni sulle modifiche suggerite",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1 di $2",
@@ -288,5 +289,8 @@
 	"growthexperiments-notification-learn-more": "Scopri di più sul{{GENDER:$2||la}} {{GENDER:$1|tu{{GENDER:$2|o|a|o/a}}}} nuov{{GENDER:$2|o|a|o/a}} tutor",
 	"right-setmentor": "Imposta tutor dell'utente",
 	"action-setmentor": "impostare tutor dell'utente",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Più su questa modifica suggerita"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Più su questa modifica suggerita",
+	"growthexperiments-homepage-welcome-notice-header": "{{GENDER:$1|Benvenuto|Benvenuta|Benvenuto/a}} sulla tua pagina iniziale!",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Continua",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Capito"
 }

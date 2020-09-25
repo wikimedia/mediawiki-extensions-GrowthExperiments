@@ -302,5 +302,10 @@
 	"right-setmentor": "إضافة مرشد للمستخدمين",
 	"action-setmentor": "تعيين مرشدي المستخدمين",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "المزيد حول هذا التعديل المقترح",
-	"growthexperiments-homepage-suggestededits-more-info": "المزيد من المعلومات حول التعديلات المقترحة"
+	"growthexperiments-homepage-suggestededits-more-info": "المزيد من المعلومات حول التعديلات المقترحة",
+	"growthexperiments-homepage-welcome-notice-header": "مرحبا بـ{{GENDER:$1|كَ|كِ}} في لوحة {{GENDER:$1|المستخدم|المستخدمة}} خاصتك!",
+	"growthexperiments-homepage-welcome-notice-body-variant-c": "بإمكانك تعلّم التحرير، الاتصال بمرشدك، ومشاهدة تأثير تعديلاتك. {{GENDER:$1|استمرّ|استمرّي}} في التعلّم حول <strong>التعديلات المقترحة</strong> على لوحة {{GENDER:$1|المستخدم|المستخدمة}} الخاصة بك.",
+	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|بإمكانكَ|بإمكانكِ}} تعلّم التحرير، والاتصال بمرشدك، ومشاهدة تأثير تعديلاتك.",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "{{GENDER:|استمر|استمرّي}}",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "عُلم"
 }
