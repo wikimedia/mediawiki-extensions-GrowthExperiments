@@ -49,11 +49,8 @@ class StartEditing extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function getHeaderIconName() {
-		if ( $this->experimentUserManager->isUserInVariant(
-			$this->getContext()->getUser(),
-			'D'
-		) ) {
-			return 'suggestedEdits';
+		if ( $this->experimentUserManager->isUserInVariant( $this->getContext()->getUser(), 'D' ) ) {
+			return $this->getMode() === HomepageModule::RENDER_DESKTOP ? null : 'suggestedEdits';
 		}
 		return 'edit';
 	}
@@ -63,13 +60,16 @@ class StartEditing extends BaseTaskModule {
 	 */
 	protected function getHeaderText() {
 		// Variant D
-		if ( $this->experimentUserManager->isUserInVariant(
-				$this->getContext()->getUser(),
-				'D'
-			) && $this->getMode() === HomepageModule::RENDER_MOBILE_SUMMARY ) {
-			return $this->getContext()->msg(
-				'growthexperiments-homepage-startediting-mobilesummary-header-variant-d'
-			)->text();
+		if ( $this->experimentUserManager->isUserInVariant( $this->getContext()->getUser(), 'D' ) ) {
+			if ( $this->getMode() === HomepageModule::RENDER_MOBILE_SUMMARY ) {
+				return $this->getContext()->msg(
+					'growthexperiments-homepage-startediting-mobilesummary-header-variant-d'
+				)->text();
+			} elseif ( $this->getMode() === HomepageModule::RENDER_DESKTOP ) {
+				return $this->getContext()->msg(
+					'growthexperiments-homepage-suggested-edits-header'
+				)->text();
+			}
 		}
 
 		// Variant A/C
@@ -112,6 +112,16 @@ class StartEditing extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function getBody() {
+		// Variant D
+		if ( $this->experimentUserManager->isUserInVariant( $this->getContext()->getUser(), 'D' ) ) {
+			return Html::element(
+				'div',
+				[ 'class' => 'growthexperiments-homepage-startediting-onboarding-wrapper' ],
+				''
+			);
+		}
+
+		// Variant A/C
 		// Decide which message to use based on the user's WelcomeSurvey response. Messages:
 		// growthexperiments-homepage-startediting-subheader-edit-typo
 		// growthexperiments-homepage-startediting-subheader-add-image
@@ -132,6 +142,13 @@ class StartEditing extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function getFooter() {
+		if (
+			$this->experimentUserManager->isUserInVariant( $this->getContext()->getUser(), 'D' ) &&
+			$this->getMode() === HomepageModule::RENDER_DESKTOP
+		) {
+			return '';
+		}
+
 		return new ButtonWidget( [
 			'id' => 'mw-ge-homepage-startediting-cta',
 			'label' => $this->getContext()->msg( 'growthexperiments-homepage-startediting-button' )->text(),
