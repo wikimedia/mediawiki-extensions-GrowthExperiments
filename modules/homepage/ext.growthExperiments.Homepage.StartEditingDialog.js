@@ -547,7 +547,9 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 		} )
 			.connect( this, {
 				select: function ( topics ) {
-					this.actions.get()[ 3 ].setDisabled( topics.length === 0 );
+					this.actions.get( { actions: 'activate' } ).forEach( function ( button ) {
+						button.setDisabled( topics.length === 0 );
+					} );
 					this.updateMatchCount();
 				}
 			} );
