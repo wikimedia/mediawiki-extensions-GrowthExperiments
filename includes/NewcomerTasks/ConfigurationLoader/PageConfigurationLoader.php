@@ -89,6 +89,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 		$topicConfigurationPage,
 		string $topicType
 	) {
+		// FIXME PageConfigurationLoader only needs a TitleParser, not a TitleFactory
 		$this->titleFactory = $titleFactory;
 		$this->messageLocalizer = $messageLocalizer;
 		$this->pageLoader = $pageLoader;
@@ -206,15 +207,22 @@ class PageConfigurationLoader implements ConfigurationLoader {
 			if ( isset( $taskTypeData['group'] ) &&
 				!in_array( $taskTypeData['group'], TaskType::$difficultyClasses, true )
 			) {
-				$status->fatal( 'growthexperiments-homepage-suggestededits-config-wronggroup',
+				$status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidgroup',
 					$taskTypeData['group'], $taskTypeId );
 			}
 
 			if ( $status->isGood() ) {
 				'@phan-var array{group:string,templates:string[]} $taskTypeData';
-				$templates = array_map( function ( $template ) {
-					return new TitleValue( NS_TEMPLATE, $template );
-				}, $taskTypeData['templates'] );
+				$templates = [];
+				foreach ( $taskTypeData['templates'] as $template ) {
+					$title = $this->titleFactory->newFromText( $template, NS_TEMPLATE );
+					if ( $title ) {
+						$templates[] = $title->getTitleValue();
+					} else {
+						$status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidtemplatetitle',
+							$template, $taskTypeId );
+					}
+				}
 				$taskType = new TemplateBasedTaskType(
 					$taskTypeId,
 					$taskTypeData['group'],

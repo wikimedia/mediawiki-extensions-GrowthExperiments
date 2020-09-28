@@ -77,7 +77,8 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			[ 'wrongstructure' ],
 			[ 'invalidid' ],
 			[ 'missingfield' ],
-			[ 'wronggroup' ],
+			[ 'invalidgroup' ],
+			[ 'invalidtemplatetitle' ],
 			[ 'missingmessage' ],
 		];
 	}
@@ -265,8 +266,10 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			return [ '*' => [] ];
 		} elseif ( $error === 'missingfield' ) {
 			unset( $config['references']['group'] );
-		} elseif ( $error === 'wronggroup' ) {
+		} elseif ( $error === 'invalidgroup' ) {
 			$config['references']['group'] = 'hardest';
+		} elseif ( $error === 'invalidtemplatetitle' ) {
+			$config['references']['templates'][] = '<>';
 		} elseif ( $error === 'missingmessage' ) {
 			$config['foo'] = [ 'icon' => 'foo', 'group' => 'hard', 'templates' => [ 'T' ] ];
 		}
@@ -343,17 +346,29 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	protected function getConfigurationLoader(
 		$taskConfig, $topicConfig, $topicType, array $customMessages = [], $useTitleValues = false
 	) {
+		// FIXME make this simpler
+		$templates = [];
+		if ( is_array( $taskConfig ) ) {
+			foreach ( $taskConfig as $taskConfigItem ) {
+				$templates = array_unique( array_merge( $templates, $taskConfigItem['templates'] ?? [] ) );
+			}
+		}
+		$templates = array_combine( $templates, $templates );
+		$templates = array_map( function ( $template ) {
+			return $template === '<>' ? null : $this->getMockTitle( $template );
+		}, $templates );
+
 		if ( $useTitleValues ) {
 			$taskConfigTitle = new TitleValue( NS_MAIN, 'TaskConfigPage' );
 			$topicConfigTitle = new TitleValue( NS_MAIN, 'TopicConfigPage' );
-			$titleFactory = $this->getMockTitleFactory( [] );
+			$titleFactory = $this->getMockTitleFactory( $templates );
 		} else {
 			$taskConfigTitle = 'TaskConfigPage';
 			$topicConfigTitle = 'TopicConfigPage';
 			$titleFactory = $this->getMockTitleFactory( [
 				$taskConfigTitle => $this->getMockTitle( $taskConfigTitle ),
 				$topicConfigTitle => $this->getMockTitle( $topicConfigTitle ),
-			] );
+			] + $templates );
 		}
 		$messageLocalizer = $this->getMockMessageLocalizer( $customMessages );
 		$pageLoader = $this->getMockPageLoader( [
