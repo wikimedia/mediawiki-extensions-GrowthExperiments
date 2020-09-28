@@ -26,21 +26,14 @@
 			} ]
 		} );
 	} else if ( homepageVariant === 'C' ) {
-		// Give the guider a non-fullwidth node to attach to.
-		// eslint-disable-next-line no-jquery/no-global-selector
-		$( '#firstHeading' ).wrapInner( '<span>' );
 		step = welcomeTour.firstStep( {
 			name: 'welcome',
 			title: mw.message( 'growthexperiments-tour-welcome-title' )
 				.params( [ mw.user ] )
 				.parse(),
 			description: mw.message( 'growthexperiments-tour-welcome-description-c' ).parse(),
-			attachTo: '#firstHeading span',
-			position: 'leftTop',
-			// leftTop messes up positioning, hopefully this fixes that. offset is not documented
-			// but actually TourBuilder just passes the whole parameter object to guiders.js,
-			// so all of its options work.
-			offset: { top: -25, left: 0 },
+			attachTo: '#pt-userpage',
+			position: 'bottom',
 			overlay: false,
 			autoFocus: true,
 			buttons: [ {
