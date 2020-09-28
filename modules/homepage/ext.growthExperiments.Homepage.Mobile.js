@@ -15,7 +15,7 @@
 				logContext: 'mobilesummary'
 			} );
 
-		if ( taskPreviewData ) {
+		if ( taskPreviewData && taskPreviewData.title ) {
 			api.getExtraDataFromPcs( taskPreviewData ).then( function ( task ) {
 				var previewTask, taskCard;
 
