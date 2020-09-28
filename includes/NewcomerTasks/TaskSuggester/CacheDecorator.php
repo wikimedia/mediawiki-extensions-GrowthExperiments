@@ -13,6 +13,8 @@ use WANObjectCache;
  */
 class CacheDecorator implements TaskSuggester {
 
+	private const CACHE_VERSION = 1;
+
 	/** @var TaskSuggester */
 	private $taskSuggester;
 
@@ -56,6 +58,7 @@ class CacheDecorator implements TaskSuggester {
 		return $this->cache->getWithSetCallback(
 			$this->cache->makeKey(
 				'GrowthExperiments-NewcomerTasks-TaskSet',
+				self::CACHE_VERSION,
 				$user->getId()
 			),
 			$this->cache::TTL_WEEK,
