@@ -604,14 +604,6 @@ class HomepageHooks implements
 					);
 				} );
 			}
-
-			if ( in_array( $variant, [ 'C', 'D' ] ) ) {
-				// SiteNoticeGenerator ensures the user does not see the site notice on mobile,
-				// we show those users a Drawer (T258010) instead.
-				// As a safeguard in case the code there changes and we forget to backfill
-				// this preference for variant C/D users, set the default value to "seen"
-				$user->setOption( self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN, 1 );
-			}
 		}
 	}
 
