@@ -147,7 +147,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $minervaEnableNotice );
 		$this->assertStringMatchesFormat(
 			'<div class="mw-ge-homepage-discovery-banner-mobile">' .
-			'<div class="mw-ge-homepage-discovery-arrow"></div>' .
+			'<div class="mw-ge-homepage-discovery-arrow mw-ge-homepage-discovery-arrow-user-variant-A"></div>' .
 			'<div class="mw-ge-homepage-discovery-message">' .
 			'<h2>growthexperiments-homepage-discovery-mobile-homepage-banner-header</h2>' .
 			'<p>growthexperiments-homepage-discovery-mobile-homepage-banner-text</p>' .
@@ -180,47 +180,10 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $minervaEnableNotice );
 		$this->assertStringMatchesFormat(
 			'<div class="mw-ge-homepage-discovery-banner-mobile">' .
-			'<div class="mw-ge-homepage-discovery-arrow"></div>' .
+			'<div class="mw-ge-homepage-discovery-arrow mw-ge-homepage-discovery-arrow-user-variant-A"></div>' .
 			'<div class="mw-ge-homepage-discovery-message">' .
 			'<h2>growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header</h2>' .
 			'<p>growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text</p>' .
-			'</div><span %s></span></div>',
-			$siteNotice
-		);
-	}
-
-	/**
-	 * @covers ::setDiscoverySiteNotice
-	 * @covers ::setMobileDiscoverySiteNotice
-	 * @covers ::setNotice
-	 * @covers ::getHeader
-	 */
-	public function testSetDiscoverySiteMobileNoticeVariationC() {
-		$skinMock = $this->getSkinMock( SkinMinerva::class );
-		$skinMock->getUser()->method( 'getName' )
-			->willReturn( 'Bar' );
-		$skinMock->getTitle()->method( 'isSpecial' )
-			->withConsecutive( [ 'WelcomeSurvey' ], [ 'Homepage' ] )
-			->willReturnOnConsecutiveCalls( false, true );
-		$siteNotice = '';
-		$minervaEnableNotice = false;
-		$experimentUserManager = $this->getExperimentUserManagerMock();
-		$experimentUserManager->method( 'isUserInVariant' )
-			->willReturn( false );
-		$siteNoticeGenerator = new SiteNoticeGenerator( $experimentUserManager );
-		$siteNoticeGenerator->setNotice(
-			'specialwelcomesurvey',
-			$siteNotice,
-			$skinMock,
-			$minervaEnableNotice
-		);
-		$this->assertTrue( $minervaEnableNotice );
-		$this->assertStringMatchesFormat(
-			'<div class="mw-ge-homepage-discovery-banner-mobile">' .
-			'<div class="mw-ge-homepage-discovery-arrow"></div>' .
-			'<div class="mw-ge-homepage-discovery-message">' .
-			'<h2>growthexperiments-homepage-discovery-mobile-homepage-banner-header</h2>' .
-			'<p>growthexperiments-homepage-discovery-mobile-homepage-banner-text</p>' .
 			'</div><span %s></span></div>',
 			$siteNotice
 		);
@@ -376,11 +339,15 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * @param string $variant
 	 * @return ExperimentUserManager|MockObject
 	 */
-	private function getExperimentUserManagerMock() {
-		return $this->getMockBuilder( ExperimentUserManager::class )
+	private function getExperimentUserManagerMock( $variant = 'A' ) {
+		$mock = $this->getMockBuilder( ExperimentUserManager::class )
 			->disableOriginalConstructor()
 			->getMock();
+		$mock->method( 'getVariant' )
+			->willReturn( $variant );
+		return $mock;
 	}
 }

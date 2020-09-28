@@ -124,11 +124,9 @@ class SiteNoticeGenerator {
 		&$siteNotice, \Skin $skin, $contextName, &$minervaEnableSiteNotice
 	) {
 		if ( Util::isMobile( $skin ) ) {
-			if ( !$this->experimentUserManager->isUserInVariant( $skin->getUser(), [ 'C', 'D' ] ) ) {
-				$this->setMobileDiscoverySiteNotice( $siteNotice, $skin, $contextName,
-					$minervaEnableSiteNotice );
-				$this->checkAndMarkMobileDiscoveryNoticeSeen( $skin );
-			}
+			$this->setMobileDiscoverySiteNotice( $siteNotice, $skin, $contextName,
+				$minervaEnableSiteNotice );
+			$this->checkAndMarkMobileDiscoveryNoticeSeen( $skin );
 		} else {
 			$this->setDesktopDiscoverySiteNotice( $siteNotice, $skin, $contextName );
 		}
@@ -230,7 +228,9 @@ class SiteNoticeGenerator {
 		$msgBodyKey = "growthexperiments-homepage-discovery-mobile-$location-banner-text";
 
 		$siteNotice = Html::rawElement( 'div', [ 'class' => 'mw-ge-homepage-discovery-banner-mobile' ],
-			Html::element( 'div', [ 'class' => 'mw-ge-homepage-discovery-arrow' ] ) .
+			Html::element( 'div', [ 'class' => 'mw-ge-homepage-discovery-arrow ' .
+				'mw-ge-homepage-discovery-arrow-user-variant-' .
+				$this->experimentUserManager->getVariant( $user ) ] ) .
 			Html::rawElement( 'div', [ 'class' => 'mw-ge-homepage-discovery-message' ],
 				$this->getHeader( $output, $user, $msgHeaderKey, $location ) .
 				$this->getDiscoveryTextWithAvatarIcon( $output, $user, $msgBodyKey )
