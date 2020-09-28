@@ -161,8 +161,6 @@ body.mw-special-Homepage {
 			}
 
 			.growthexperiments-homepage-group-main {
-				min-width: @homepageLayoutMinWidth;
-
 				&-user-variant-A {
 					width: 75%;
 					// Set a minimum width to avoid issues with the wide-format
@@ -175,6 +173,7 @@ body.mw-special-Homepage {
 
 				&-user-variant-C,
 				&-user-variant-D {
+					min-width: @homepageLayoutMinWidth;
 					width: 64%;
 					flex-shrink: 0;
 
