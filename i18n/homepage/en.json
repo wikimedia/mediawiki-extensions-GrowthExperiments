@@ -259,6 +259,7 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Invalid suggested edits configuration: invalid id \"$1\" - must contain a-z, 0-9, - (minus) only",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Invalid suggested edits configuration: missing field $1 for task type or topic $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Invalid suggested edits configuration: invalid group $1 for task type $2",
+	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Invalid suggested edits configuration: invalid template name $1 for task type $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Invalid suggested edits configuration: missing message $1 for field $2",
 	"growthexperiments-homepage-suggestededits-create-article-additional-message": "To successfully create a new article, {{GENDER:$1|you'll}} need to use many of the skills you can learn through completing some easier tasks. To learn more about how to create a new article, [$2 click here].",
 	"growthexperiments-homepage-suggestededits-error-title": "No suggested edits are available at this time.",
