@@ -47,8 +47,9 @@
 	"growthexperiments-homepage-startediting-subheader-new-page": "새 문서를 만들기 전에, 좀 더 쉬운 편집을 시도해 봄으로써 편집 방법을 배워 보세요.",
 	"growthexperiments-homepage-startediting-subheader-other": "위키백과 문서를 손쉽게 고치고 세상의 지식을 더하는 데 기여해 주세요.",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "편집 제안 보기",
+	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "편집 제안과 함께 시작하기",
 	"growthexperiments-homepage-startediting-button": "편집 제안 보기",
-	"growthexperiments-homepage-startediting-dialog-header": "편집 추천",
+	"growthexperiments-homepage-startediting-dialog-header": "편집 제안 정보",
 	"growthexperiments-homepage-startediting-dialog-progress": "$2 중 $1",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "취소",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "계속",
@@ -168,6 +169,7 @@
 	"growthexperiments-homepage-suggestededits-footer-suffix": "-",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "어제의 편집 횟수",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "당신과 같은 사용자들이 오늘도 {{SITENAME}} 을(를) 발전시키고 있습니다. 같이 도와주세요!",
+	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "모든 제안 보기",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "오타, 문법, 어투를 교정합니다",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "위키백과 문서의 내용을 증명할 출처를 추가합니다",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-update": "이미 있는 문서를 최신으로 유지합니다.",
@@ -289,5 +291,8 @@
 	"right-setmentor": "사용자 멘토 설정",
 	"action-setmentor": "사용자 멘토 설정",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "이 편집 추천에 대해 더 알아보기",
-	"growthexperiments-homepage-suggestededits-more-info": "편집 제안에 관한 더 자세한 정보"
+	"growthexperiments-homepage-suggestededits-more-info": "편집 제안에 관한 더 자세한 정보",
+	"growthexperiments-homepage-welcome-notice-header": "{{GENDER:$1|당신의}} 홈페이지에 오신 것을 환영합니다!",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "계속",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "알겠습니다"
 }

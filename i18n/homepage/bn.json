@@ -3,6 +3,7 @@
 		"authors": [
 			"Sohom Datta",
 			"Titodutta",
+			"YahyA",
 			"আফতাবুজ্জামান"
 		]
 	},
@@ -29,7 +30,7 @@
 	"growthexperiments-homepage-startediting-header": "সম্পাদনা শুরু করুন",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "পরামর্শকৃত সম্পাদনাগুলি দেখুন",
 	"growthexperiments-homepage-startediting-button": "পরামর্শকৃত সম্পাদনা দেখুন",
-	"growthexperiments-homepage-startediting-dialog-header": "পরামর্শকৃত সম্পাদনা",
+	"growthexperiments-homepage-startediting-dialog-header": "পরামর্শকৃত সম্পাদনা সম্বন্ধে",
 	"growthexperiments-homepage-startediting-dialog-progress": "$2 এর $1",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "বাতিল",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "অব্যাহত",
