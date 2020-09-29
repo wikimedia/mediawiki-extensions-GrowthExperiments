@@ -203,7 +203,15 @@ class MentorPageMentorManager implements MentorManager, LoggerAwareInterface {
 		}
 
 		$selectedMentorName = $availableMentors[ rand( 0, count( $availableMentors ) - 1 ) ];
-		return $this->userFactory->newFromName( $selectedMentorName );
+		$result = $this->userFactory->newFromName( $selectedMentorName );
+		if ( $result === null ) {
+			throw new WikiConfigException(
+				'Homepage Mentorship module: no mentor available for ' .
+				$mentee->getName()
+			);
+		}
+
+		return $result;
 	}
 
 	/**
