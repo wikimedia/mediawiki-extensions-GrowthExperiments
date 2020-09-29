@@ -57,6 +57,11 @@
 	padding: 24px 0;
 	width: @cardWrapperWidth;
 
+	// FIXME remove once variant A is gone
+	.growthexperiments-homepage-container-user-variant-A & {
+		width: @cardWrapperWidthLegacy;
+	}
+
 	.suggested-edits-taskexplanation-additional-info {
 		h4 {
 			margin-top: unset;
@@ -293,6 +298,11 @@ body.mw-special-Homepage {
 			height: @cardContainerWrapperHeight;
 			padding: 0 8px;
 
+			// FIXME remove once variant A is gone
+			.growthexperiments-homepage-container-user-variant-A & {
+				width: @cardWrapperWidthLegacy;
+			}
+
 			.se-card-image {
 				height: @cardImageHeight;
 			}
@@ -372,6 +382,11 @@ body.mw-special-Homepage {
 				padding: @cardWrapperPadding;
 				border-radius: @cardWrapperBorderRadius;
 
+				// FIXME remove once variant A is gone
+				.growthexperiments-homepage-container-user-variant-A & {
+					width: @cardWrapperWidthLegacy;
+				}
+
 				a {
 					text-decoration: none;
 					color: unset;
@@ -443,6 +458,11 @@ body.mw-special-Homepage {
 						background-position: center 25%;
 						background-repeat: repeat-x;
 						// background-image will be set dynamically in SuggestedEditCardWidget.getImageContent
+
+						// FIXME remove once variant A is gone
+						.growthexperiments-homepage-container-user-variant-A & {
+							width: @cardWrapperWidthLegacy;
+						}
 
 						&.no-image {
 							// This is also used during loading, with .skeleton added to it.
@@ -616,8 +636,14 @@ body.mw-special-Homepage {
 				}
 			}
 
+			// stylelint-disable-next-line no-descending-specificity
 			.suggested-edits-task-card-wrapper {
 				width: @cardWrapperWidth;
+
+				// FIXME remove once variant A is gone
+				.growthexperiments-homepage-container-user-variant-A & {
+					width: @cardWrapperWidthLegacy;
+				}
 
 				.se-card-content {
 					.se-card-text {

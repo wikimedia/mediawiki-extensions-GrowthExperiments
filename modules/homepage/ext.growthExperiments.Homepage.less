@@ -168,7 +168,12 @@ body.mw-special-Homepage {
 					// to accommodate the wide-format module, but variant A never
 					// had correct responsive resizing (and appears to have none
 					// currently).
+					// Make sure the sidebar has always at least 300px (in modern
+					// browsers - sorry IE). This is a hack but it is only needed
+					// by variant A so it will be good enough for the short time
+					// it exists.
 					min-width: 1200px;
+					min-width: ~'min( 1200px, 100% - 300px )';
 				}
 
 				&-user-variant-C,
