@@ -43,6 +43,9 @@
 	"growthexperiments-homepage-startediting-subheader-new-page": "Doporučujeme se před vytvořením článku naučit, jak Wikipedii editovat.",
 	"growthexperiments-homepage-startediting-subheader-other": "Pomozte nám budovat celosvětovou kolekci vědomostí pomocí těchto jednoduchých oprav článků na Wikipedii",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Zobrazit editační tipy",
+	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "Začněte s editačními tipy",
+	"growthexperiments-homepage-startediting-mobilesummary-body-variant-d": "Pomozte rozšířit sbírku veškerých lidských znalostí snadnými opravami článků Wikipedie.",
+	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "Získat tipy",
 	"growthexperiments-homepage-startediting-button": "Zobrazit editační tipy",
 	"growthexperiments-homepage-startediting-dialog-header": "O editačních tipech",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1 z $2",
@@ -295,5 +298,10 @@
 	"right-setmentor": "Nastavit mentora uživatele",
 	"action-setmentor": "nastavit mentora uživatele",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Více o tomto editačním tipu",
-	"growthexperiments-homepage-suggestededits-more-info": "Více informací o editačních tipech"
+	"growthexperiments-homepage-suggestededits-more-info": "Více informací o editačních tipech",
+	"growthexperiments-homepage-welcome-notice-header": "Vítejte na {{GENDER:$1|své}} domovské stránce!",
+	"growthexperiments-homepage-welcome-notice-body-variant-c": "Můžete se zde naučit, jak editovat, kontaktovat {{GENDER:$1|svého}} mentora, a vidět dosah vašich přízpěvků. Pokračujte, abyste se dozvěděli více o <strong>editačních tipech</strong> na {{GENDER:$1|své}} domovské stránce.",
+	"growthexperiments-homepage-welcome-notice-body-variant-d": "Můžete se zde naučit, jak editovat, kontaktovat {{GENDER:$1|svého}} mentora, a vidět dosah vašich přízpěvků.",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Pokračovat",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Rozumím"
 }

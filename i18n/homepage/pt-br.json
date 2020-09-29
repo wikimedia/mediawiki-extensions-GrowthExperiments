@@ -147,7 +147,7 @@
 	"growthexperiments-tour-discovery-title": "Comece aqui!",
 	"growthexperiments-tour-discovery-description": "Clique no {{GENDER:$1|seu}} nome de usuário para visitar {{GENDER:$1|sua}} página inicial.",
 	"growthexperiments-homepage-welcomesurvey-default-close": "Vá para {{GENDER:$1|sua}} página inicial",
-	"growthexperiments-tour-welcome-description-c": "{{GENDER:$1|Você}} sempre pode clicar em {{GENDER:$1|seu}} nome de usuário para voltar aqui. Continue a aprender sobre as '''edições sugeridas''' na {{GENDER:$1|sua}} página inicial.",
+	"growthexperiments-tour-welcome-description-c": "{{GENDER:$1|Você}} sempre pode clicar em {{GENDER:$1|seu}} nome de usuário para voltar aqui. Continue a aprender sobre as <b>edições sugeridas</b> na {{GENDER:$1|sua}} página inicial.",
 	"growthexperiments-tour-welcome-description-d": "{{GENDER:$1|Você}} sempre pode clicar em {{GENDER:$1|seu}} nome de usuário para voltar aqui. Em {{GENDER:$1|sua}} página inicial, {{GENDER:$1|você}} pode encontrar edições sugeridas, fazer perguntas para o {{GENDER:$1|seu}} mentor, e ver {{GENDER:$1|seu}} impacto.",
 	"growthexperiments-homepage-discovery-banner-header": "Bem-vindo a {{GENDER:$1|sua}} página inicial!",
 	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|Você}} sempre é possível clicar em $2 na parte superior da página para retornar aqui.",

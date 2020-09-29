@@ -149,7 +149,7 @@
 	"growthexperiments-tour-discovery-title": "Kezdd itt!",
 	"growthexperiments-tour-discovery-description": "Kattints a szerkesztői {{GENDER:$1|nevedre}} a személyes {{GENDER:$1|kezdőlapod}} meglátogatásához.",
 	"growthexperiments-homepage-welcomesurvey-default-close": "Ugrás a személyes {{GENDER:$1|kezdőlapodra}}",
-	"growthexperiments-tour-welcome-description-c": "Bármikor {{GENDER:$1|visszatérhetsz}} ide a felhasználónevedre kattintva. Tudj meg még többet a honlapodon a '''javasolt szerkesztésekről'''.",
+	"growthexperiments-tour-welcome-description-c": "Bármikor {{GENDER:$1|visszatérhetsz}} ide a felhasználónevedre kattintva. Tudj meg még többet a honlapodon a <b>javasolt szerkesztésekről</b>.",
 	"growthexperiments-tour-welcome-description-d": "Bármikor {{GENDER:$1|visszatérhetsz}} ide a felhasználónevedre kattintva. A honlapodon találhatsz javasolt szerkesztéseket, kérdezhetsz a mentorodtól, és láthatod a hatásodat.",
 	"growthexperiments-homepage-discovery-banner-header": "{{GENDER:$1|Üdvözlünk}} a kezdőlapodon!",
 	"growthexperiments-homepage-discovery-banner-text": "Bármikor {{GENDER:$1|visszatérhetsz}} ide a lap tetején található $2-ra kattintva.",
@@ -301,8 +301,8 @@
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Több információ erről az ajánlott szerkesztésről",
 	"growthexperiments-homepage-suggestededits-more-info": "További információ javasolt szerkesztésekről",
 	"growthexperiments-homepage-welcome-notice-header": "{{GENDER:$1|Üdvözlünk}} a kezdőlapodon!",
-	"growthexperiments-homepage-welcome-notice-body-variant-c": "{{GENDER:$1|Gyakorolhatod}} a szerkesztést, kapcsolatba léphetsz {{GENDER:$1|mentoroddal}} és ellenőrizheted, {{GENDER:$1|munkádnak}} milyen hatása van. További információ a <strong>javasolt szerkesztésekről</strong> {{GENDER:$1|kezdőlapodon}}.",
-	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|Gyakorolhatod}} a szerkesztést, kapcsolatba léphetsz {{GENDER:$1|mentoroddal}} és ellenőrizheted, {{GENDER:$1|munkádnak}} milyen hatása van.",
+	"growthexperiments-homepage-welcome-notice-body-variant-c": "{{GENDER:$1|Gyakorolhatod}} a szerkesztést, kapcsolatba léphetsz {{GENDER:$1|mentoroddal}}, és ellenőrizheted, {{GENDER:$1|munkádnak}} milyen hatása van. További információ a <strong>javasolt szerkesztésekről</strong> {{GENDER:$1|kezdőlapodon}}.",
+	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|Gyakorolhatod}} a szerkesztést, kapcsolatba léphetsz {{GENDER:$1|mentoroddal}}, és ellenőrizheted, {{GENDER:$1|munkádnak}} milyen hatása van.",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Folytatás",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Megértettem"
 }

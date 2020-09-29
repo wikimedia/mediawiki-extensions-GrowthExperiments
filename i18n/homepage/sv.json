@@ -146,6 +146,7 @@
 	"growthexperiments-tour-discovery-title": "Kom igång här!",
 	"growthexperiments-tour-discovery-description": "Klicka på {{GENDER:$1|ditt}} användarnamn för att besöka {{GENDER:$1|din}} hemsida.",
 	"growthexperiments-homepage-welcomesurvey-default-close": "Gå till {{GENDER:$1|din}} hemsida",
+	"growthexperiments-tour-welcome-description-c": "{{GENDER:$1|Du}} kan alltid klicka på {{GENDER:$1|ditt}} användarnamn för att återvända hit. Fortsätt att lära dig om <b>föreslagna redigeringar</b> på {{GENDER:$1|din}} hemsida.",
 	"growthexperiments-homepage-discovery-banner-header": "Välkommen till {{GENDER:$1|din}} hemsida!",
 	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|Du}} kan alltid klicka på $2 längst upp på sidan för att återvända hit.",
 	"growthexperiments-homepage-discovery-thanks-header": "Tack för att du skapade {{GENDER:$1|ditt}} konto!",

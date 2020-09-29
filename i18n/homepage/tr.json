@@ -150,7 +150,7 @@
 	"growthexperiments-tour-discovery-title": "Buradan başla!",
 	"growthexperiments-tour-discovery-description": "Ana sayfanızı ziyaret etmek için kullanıcı adınızı {{GENDER:$1|tıklayın}}.",
 	"growthexperiments-homepage-welcomesurvey-default-close": "Ana {{GENDER:$1|sayfanıza}} gidin",
-	"growthexperiments-tour-welcome-description-c": "Buraya dönmek için her zaman kullanıcı adınıza tıklayabilirsiniz. Ana sayfanızdaki '''önerilen düzenlemeler''' hakkında bilgi edinmeye devam {{GENDER:$1|edin}}.",
+	"growthexperiments-tour-welcome-description-c": "Buraya dönmek için her zaman kullanıcı adınıza tıklayabilirsiniz. Ana sayfanızdaki <b>önerilen düzenlemeler</b> hakkında bilgi edinmeye devam {{GENDER:$1|edin}}.",
 	"growthexperiments-tour-welcome-description-d": "Buraya dönmek için her zaman kullanıcı adınıza tıklayabilirsiniz. Ana sayfanızda önerilen düzenlemeleri bulabilir, mentorunuza sorular sorabilir ve etkinizi {{GENDER:$1|görebilirsiniz}} .",
 	"growthexperiments-homepage-discovery-banner-header": "Ana {{GENDER:$1|sayfanıza}} hoş geldiniz!",
 	"growthexperiments-homepage-discovery-banner-text": "Buraya dönmek için {{GENDER:$1|istediğiniz}} zaman sayfanın üst kısmındaki $2 tıklayabilirsiniz.",

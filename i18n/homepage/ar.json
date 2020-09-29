@@ -151,7 +151,7 @@
 	"growthexperiments-tour-discovery-title": "{{GENDER:|ابدأ|ابدئي}} هنا!",
 	"growthexperiments-tour-discovery-description": "{{GENDER:$1|انقر|انقري}} على اسم {{GENDER:$1|المستخدم|المستخدمة}} الخاص {{GENDER:$1|بكَ|بكِ}} لزيارة لوحة {{GENDER:$1|المستخدم|المستخدمة}} خاصتك.",
 	"growthexperiments-homepage-welcomesurvey-default-close": "{{GENDER:$1|انتقل|انتقلي}} إلى {{GENDER:$1|صفحتكَ|صفحتكِ}} الرئيسية",
-	"growthexperiments-tour-welcome-description-c": "يمكنك في كل وقت الضغط على اسم {{GENDER:$1|المستخدم|المستخدمة}} الخاص بك للرجوع إلى هنا. {{GENDER:$1|تابع|تابعي}} التعلّم حول'''التعديلات المقترحة''' على لوحة {{GENDER:$1|المستخدم|المستخدمة}} الخاصّة بك.",
+	"growthexperiments-tour-welcome-description-c": "يمكنك في كل وقت الضغط على اسم {{GENDER:$1|المستخدم|المستخدمة}} الخاص بك للرجوع إلى هنا. {{GENDER:$1|تابع|تابعي}} التعلّم حول<b>التعديلات المقترحة</b> على لوحة {{GENDER:$1|المستخدم|المستخدمة}} الخاصّة بك.",
 	"growthexperiments-tour-welcome-description-d": "يمكنك في كل وقت الضغط على اسم {{GENDER:$1|المستخدم|المستخدمة}} الخاص بك للرجوع إلى هنا. على لوحة {{GENDER:$1|المستخدم|المستخدمة}} الخاصة بك، يمكنك إيجاد التعديلات المقترحة، وطرح الأسئلة على مرشديكم، ومشاهدة تأثيرك.",
 	"growthexperiments-homepage-discovery-banner-header": "مرحبا بـ{{GENDER:$1|كَ|كِ}} في لوحة {{GENDER:$1|المستخدم|المستخدمة}} خاصتك!",
 	"growthexperiments-homepage-discovery-banner-text": "يمكن{{GENDER:$1|كَ|كِ}} دائما النقر فوق $2 في أعلى الصفحة للعودة إلى هنا.",
