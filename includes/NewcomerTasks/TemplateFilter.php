@@ -127,6 +127,11 @@ class TemplateFilter {
 	 * value.
 	 */
 	private function buildResultsMap( array $conds ): array {
+		if ( !$conds ) {
+			// Needs to be special-cased, would turn into selecting the whole table.
+			return [];
+		}
+
 		$result = $this->dbr->select(
 			'templatelinks',
 			[ 'tl_from', 'tl_title' ],
