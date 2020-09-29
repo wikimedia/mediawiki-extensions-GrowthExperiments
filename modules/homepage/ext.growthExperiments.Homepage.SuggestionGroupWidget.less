@@ -1,5 +1,6 @@
 @import 'mediawiki.mixins';
 @import 'mediawiki.ui/variables';
+@import 'ext.growthExperiments.variables.less';
 
 .mw-ge-suggestionGroupWidget {
 	&-headerRow {
@@ -13,12 +14,12 @@
 			display: flex;
 		}
 
-		&-header {
+		h4&-header {
 			flex-direction: column;
 			text-align: center;
 			justify-content: center;
 			display: flex;
-			font-size: 1.1em;
+			font-size: @headerFontSize;
 			color: @colorGray2;
 		}
 	}
