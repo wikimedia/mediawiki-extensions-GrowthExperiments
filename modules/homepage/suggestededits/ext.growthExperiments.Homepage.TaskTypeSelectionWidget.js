@@ -124,7 +124,17 @@ TaskTypeSelectionWidget.prototype.makeHeadersForDifficulty = function ( difficul
 				// * growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header
 				'growthexperiments-homepage-startediting-dialog-difficulty-level-' + difficulty + '-description-header'
 			).params( [ mw.user ] ).text() );
-	return iconWidget.$element.add( $label ).add( $description );
+
+	return $( '<div>' )
+		// The following classes are used here:
+		// * mw-ge-homepage-taskTypeSelectionWidget-difficulty-level-easy
+		// * mw-ge-homepage-taskTypeSelectionWidget-difficulty-level-medium
+		// * mw-ge-homepage-taskTypeSelectionWidget-difficulty-level-hard
+		.addClass(
+			'mw-ge-homepage-taskTypeSelectionWidget-difficulty-level ' +
+			'mw-ge-homepage-taskTypeSelectionWidget-difficulty-level-' + difficulty
+		)
+		.append( iconWidget.$element, $label, $description );
 };
 
 /**
