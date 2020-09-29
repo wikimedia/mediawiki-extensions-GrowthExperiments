@@ -153,7 +153,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Get started here!",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Open the side menu and tap $2 to visit {{GENDER:$1|your}} homepage.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> of <strong>$2</strong> {{PLURAL:$2|suggestion|suggestions}}",
-	"growthexperiments-homepage-suggestededits-pager-unknown-count": "?",
+	"growthexperiments-homepage-suggestededits-pager-unknown-count": "…",
 	"growthexperiments-homepage-suggestededits-pager-end": "End",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 visits (past 60 days)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Previous suggested edit",
