@@ -1,5 +1,6 @@
 ( function () {
-	var StartEditingDialog = require( './ext.growthExperiments.Homepage.StartEditingDialog.js' ),
+	var Utils = require( '../utils/ext.growthExperiments.Utils.js' ),
+		StartEditingDialog = require( './ext.growthExperiments.Homepage.StartEditingDialog.js' ),
 		Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
 		defaultTaskTypes = require( './suggestededits/DefaultTaskTypes.json' ),
 		logger = new Logger(
@@ -16,23 +17,32 @@
 	/**
 	 * Launch the suggested edits initiation dialog.
 	 *
-	 * @param {string} type 'startediting-cta', 'startediting-mobilesummary-cta' or 'suggestededits-info'
+	 * @param {string} module Which homepage module the dialog was launched from.
 	 * @param {string} mode Rendering mode. See constants in HomepageModule.php
+	 * @param {string|null} trigger What caused the dialog to appear - 'impression' (when it was part of
+	 *   the page from the start), 'welcome' (launched from the homepage welcome dialog), 'info-icon'
+	 *   (launched via the info icon in the suggested edits module header), 'suggested-edits'
+	 *   (launched via the button in the variant D mobile summary), undefined (when launched via
+	 *   the Variant A StartEditing module action button).
 	 * @return {jQuery.Promise<boolean>} Resolves when the dialog is closed, indicates whether
 	 *   initiation was successful or cancelled.
 	 */
-	function launchCta( type, mode ) {
+	function launchCta( module, mode, trigger ) {
 		var lifecycle, dialog, windowManager;
 
 		dialog = new StartEditingDialog( {
+			module: module,
 			mode: mode,
-			useTopicSelector: type === 'startediting-cta' || type === 'startediting-mobilesummary-cta',
-			useTaskTypeSelector: type === 'startediting-mobilesummary-cta',
-			activateWhenDone: type === 'startediting-cta' || type === 'startediting-mobilesummary-cta'
+			trigger: trigger,
+			useTopicSelector: !Utils.isUserInVariant( 'C' ),
+			useTaskTypeSelector: Utils.isUserInVariant( 'D' ),
+			activateWhenDone: !Utils.isUserInVariant( 'C' )
 		}, logger, api );
 		windowManager = new OO.ui.WindowManager( {
 			modal: true
 		} );
+
+		logger.log( module, mode, 'se-cta-click', { trigger: trigger } );
 
 		// eslint-disable-next-line no-jquery/no-global-selector
 		$( 'body' ).append( windowManager.$element );
@@ -43,13 +53,22 @@
 		} );
 	}
 
-	function setupCta( $container ) {
+	/**
+	 * Add event handler to a button for launching the suggested edit dialog.
+	 *
+	 * @param {jQuery} $container The element which contains the button. The button should have
+	 *   the #mw-ge-homepage-startediting-cta or #mw-ge-homepage-suggestededits-info ID, and
+	 *   be inside a homepage module.
+	 */
+	function setupCtaButton( $container ) {
 		$container.find(
 			'#mw-ge-homepage-startediting-cta, ' +
 			'#mw-ge-homepage-suggestededits-info'
 		).each( function ( _, button ) {
-			var $button = $( button ),
+			var trigger,
+				$button = $( button ),
 				buttonType = $button.attr( 'id' ).substr( 'mw-ge-homepage-'.length ),
+				module = $button.closest( '.growthexperiments-homepage-module' ).data( 'module-name' ),
 				mode = $button.closest( '.growthexperiments-homepage-module' ).data( 'mode' ),
 				buttonWidget = OO.ui.ButtonWidget.static.infuse( $button );
 
@@ -58,6 +77,16 @@
 				return;
 			}
 			$button.data( 'mw-ge-homepage-startediting-cta-setup', true );
+
+			if ( $button.is( '#mw-ge-homepage-suggestededits-info' ) ) {
+				// variant C info icon
+				trigger = 'info-icon';
+			} else if ( Utils.isUserInVariant( 'A' ) ) {
+				// trigger is unset for variant A
+			} else {
+				// variant D mobile summary button
+				trigger = 'suggested-edits';
+			}
 
 			buttonWidget.on( 'click', function () {
 				if (
@@ -78,20 +107,7 @@
 					return;
 				}
 
-				if ( buttonType === 'startediting-cta' ) {
-					logger.log( 'start-startediting', mode, 'se-cta-click' );
-				} else if ( buttonType === 'suggestededits-info' ) {
-					logger.log( 'suggested-edits', mode, 'se-info-click' );
-				}
-				launchCta( buttonType, mode ).done( function ( activated ) {
-					if ( activated ) {
-						// No-op; logging and everything else is done within the dialog,
-						// as it is kept open during setup of the suggested edits module
-						// to make the UI change less disruptive.
-					} else if ( buttonType === 'startediting-cta' ) {
-						logger.log( 'start-startediting', mode, 'se-cancel-activation' );
-					}
-				} );
+				launchCta( module, mode, trigger );
 			} );
 		} );
 	}
@@ -116,7 +132,11 @@
 
 		mode = $startEditingModule.data( 'mode' );
 		dialog = new StartEditingDialog( {
+			// For technical reasons we implement this dialog with the StartEditing module,
+			// but conceptually it is the pre-initiation view of the SuggestedEdits module.
+			module: 'suggested-edits',
 			mode: mode,
+			trigger: 'suggested-edits',
 			useTopicSelector: true,
 			useTaskTypeSelector: true,
 			activateWhenDone: true
@@ -125,12 +145,14 @@
 		$startEditingModule.append( windowManager.$element );
 		windowManager.addWindows( [ dialog ] );
 		windowManager.openWindow( dialog );
+
+		logger.log( 'suggested-edits', mode, 'se-cta-click', { trigger: 'impression' } );
 	}
 
 	// Try setup for desktop mode and server-side-rendered mobile mode
 	// See also the comment in ext.growthExperiments.Homepage.Mentorship.js
 	// eslint-disable-next-line no-jquery/no-global-selector
-	setupCta( $( '.growthexperiments-homepage-container' ) );
+	setupCtaButton( $( '.growthexperiments-homepage-container' ) );
 	// eslint-disable-next-line no-jquery/no-global-selector
 	setupEmbeddedDialog( $( '.growthexperiments-homepage-container' ) );
 
@@ -138,20 +160,20 @@
 	mw.trackSubscribe( 'growthexperiments.startediting', function () {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		var mode = $( '.growthexperiments-homepage-module' ).data( 'mode' );
-		launchCta( 'suggestededits', mode );
+		// The welcome dialog doesn't belong to any module.
+		launchCta( 'generic', mode, 'welcome' );
 	} );
 
 	// Try setup for mobile overlay mode
 	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
 		if ( moduleName === 'start' || moduleName === 'suggested-edits' ) {
-			setupCta( $content );
+			setupCtaButton( $content );
 		}
 	} );
 
 	mw.hook( 'growthExperiments.mobileHomepageSummaryHtmlLoaded.start-startediting' ).add( function ( $content ) {
 		$content.on( 'click', function () {
-			logger.log( 'start-startediting', $content.data( 'mode' ), 'se-mobilesummary-cta-click' );
-			launchCta( 'startediting-mobilesummary-cta', 'mobile-summary' );
+			launchCta( 'start-startediting', $content.data( 'mode' ), 'suggested-edits' );
 		} );
 	} );
 

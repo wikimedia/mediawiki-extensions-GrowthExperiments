@@ -1,6 +1,14 @@
 ( function () {
 	'use strict';
 
+	var HomepageModuleLogger = require( 'ext.growthExperiments.Homepage.Logger' ),
+		NewcomerTaskLogger = require( './suggestededits/ext.growthExperiments.NewcomerTaskLogger.js' ),
+		homepageModuleLogger = new HomepageModuleLogger(
+			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
+			mw.config.get( 'wgGEHomepagePageviewToken' )
+		),
+		newcomerTaskLogger = new NewcomerTaskLogger();
+
 	/**
 	 * @param {Element} suggestedEditsModuleNode DOM node of the suggested edits module.
 	 */
@@ -29,7 +37,18 @@
 				} );
 				$( suggestedEditsModuleNode ).find( '.mw-ge-small-task-card' )
 					.replaceWith( taskCard.$element );
+
+				homepageModuleLogger.log( 'suggested-edits', 'mobile-summary', 'se-task-impression',
+					{ newcomerTaskToken: newcomerTaskLogger.log( task, 0 ) } );
+			}, function ( jqXHR, textStatus, errorThrown ) {
+				// Error loading the task
+				homepageModuleLogger.log( 'suggested-edits', 'mobile-summary', 'se-task-pseudo-impression',
+					{ type: 'error', errorMessage: textStatus + ' ' + errorThrown } );
 			} );
+		} else if ( taskPreviewData && taskPreviewData.error ) {
+			// Error loading the task, on the server side
+			homepageModuleLogger.log( 'suggested-edits', 'mobile-summary', 'se-task-pseudo-impression',
+				{ type: 'error', errorMessage: taskPreviewData.error } );
 		}
 	}
 
@@ -43,11 +62,6 @@
 				$overlayModules = $( '.growthexperiments-homepage-overlay-container' ),
 				MobileOverlay = require( './ext.growthExperiments.Homepage.MobileOverlay.js' ),
 				OverlayManager = mw.mobileFrontend.require( 'mobile.startup' ).OverlayManager,
-				Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
-				logger = new Logger(
-					mw.config.get( 'wgGEHomepageLoggingEnabled' ),
-					mw.config.get( 'wgGEHomepagePageviewToken' )
-				),
 				router = require( 'mediawiki.router' ),
 				overlayManager = OverlayManager.getSingleton(),
 				lazyLoadModules = [],
@@ -100,14 +114,14 @@
 					// no closing intent on the part of the user in that case.
 					if ( newModule === null ) {
 						// Navigating away from a module: log closing the overlay
-						logger.log( currentModule, 'mobile-overlay', 'close' );
+						homepageModuleLogger.log( currentModule, 'mobile-overlay', 'close' );
 					} else {
 						// Navigating to a module: log impression
-						logger.log( newModule, 'mobile-overlay', 'impression' );
+						homepageModuleLogger.log( newModule, 'mobile-overlay', 'impression' );
 
 						// Find submodules in the new module, and log impressions for them
 						getSubmodules( newModule ).forEach( function ( submodule ) {
-							logger.log( submodule, 'mobile-overlay', 'impression' );
+							homepageModuleLogger.log( submodule, 'mobile-overlay', 'impression' );
 						} );
 					}
 				}
@@ -144,6 +158,7 @@
 				// set on desktop since if the user has seen the tour on desktop they
 				// should not see the drawer on mobile, and vice versa.
 				var welcomeNoticeSeenPreference = 'growthexperiments-tour-homepage-welcome',
+					buttonClicked = false,
 					markAsSeen = function () {
 						new mw.Api().saveOption( welcomeNoticeSeenPreference, 1 );
 					},
@@ -189,11 +204,17 @@
 					],
 					onBeforeHide: function () {
 						markAsSeen();
+						if ( !buttonClicked ) {
+							homepageModuleLogger.log( 'generic', 'mobile-summary', 'welcome-close',
+								{ type: 'outside-click' } );
+						}
 					}
 				} );
 				document.body.appendChild( welcomeDrawer.$el[ 0 ] );
 				welcomeDrawer.$el.find( '.homepage-welcome-notice' ).on( 'click', function () {
+					buttonClicked = true;
 					markAsSeen();
+					homepageModuleLogger.log( 'generic', 'mobile-summary', 'welcome-close', { type: 'button' } );
 					// Launch the start editing dialog for variant C users.
 					// TODO: We should probably use mw.hook instead of mw.track/trackSubscribe here
 					if ( Utils.isUserInVariant( [ 'C' ] ) ) {
@@ -202,6 +223,7 @@
 					welcomeDrawer.hide();
 				} );
 				welcomeDrawer.show();
+				homepageModuleLogger.log( 'generic', 'mobile-summary', 'welcome-impression' );
 			}
 
 			// Respond to mobile summary HTML loading

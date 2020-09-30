@@ -9,7 +9,14 @@ var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).To
 
 /**
  * @param {Object} config
+ * @param {string} config.module The homepage module the dialog belongs to ('start-startediting'
+ *   or 'suggestededits').
  * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
+ * @param {string} config.trigger How was the dialog triggered? One of 'impression' (when it was
+ *   part of the page from the start), 'welcome' (launched from the homepage welcome dialog),
+ *   'info-icon' (launched via the info icon in the suggested edits module header),
+ *   'suggested-edits' (launched via the button in the variant D mobile summary), undefined
+ *   (when launched via the Variant A StartEditing module action button).
  * @param {boolean} config.useTopicSelector Whether to show the topic selector in the intro panel
  * @param {boolean} config.useTaskTypeSelector Whether to show the task type selector in the difficulty panel
  * @param {boolean} config.activateWhenDone Whether to activate suggested edits when the user finishes the dialog
@@ -21,7 +28,9 @@ function StartEditingDialog( config, logger, api ) {
 	StartEditingDialog.super.call( this, config );
 	this.logger = logger;
 	this.api = api;
+	this.module = config.module;
 	this.mode = config.mode;
+	this.trigger = config.trigger;
 	this.enableTopics = mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' );
 	this.useTopicSelector = this.enableTopics && !!config.useTopicSelector;
 	this.useTaskTypeSelector = !!config.useTaskTypeSelector;
@@ -201,6 +210,23 @@ StartEditingDialog.prototype.getSetupProcess = function ( data ) {
 		}, this );
 };
 
+StartEditingDialog.prototype.getTeardownProcess = function ( data ) {
+	return StartEditingDialog.super.prototype.getTeardownProcess
+		.call( this, data )
+		.next( function () {
+			if ( !data || data.action !== 'activate' ) {
+				if ( data.action === 'done' ) {
+					// used in variant C, technically it just closes the dialog but
+					// conceptually it is closer to accepting it
+					this.logger.log( this.module, this.mode, 'se-activate', { trigger: this.trigger } );
+				} else {
+					// canceled
+					this.logger.log( this.module, this.mode, 'se-cancel-activation', { trigger: this.trigger } );
+				}
+			}
+		}, this );
+};
+
 StartEditingDialog.prototype.updateMatchCount = function () {
 	var topics = this.topicSelector ? this.topicSelector.getSelectedTopics() : [],
 		taskTypes = this.taskTypeSelector ?
@@ -222,7 +248,7 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 				this.close( { action: action } );
 			}
 			if ( action === 'difficulty' ) {
-				this.logger.log( 'start-startediting', this.mode, 'se-cta-difficulty' );
+				this.logger.log( this.module, this.mode, 'se-cta-difficulty', { trigger: this.trigger } );
 				this.articleCounterPanelLayout.toggle( this.useTaskTypeSelector );
 				this.swapPanel( 'difficulty' );
 				// Force scroll position to top.
@@ -230,7 +256,7 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 			}
 			if ( action === 'back' ) {
 				this.articleCounterPanelLayout.toggle( this.showingTopicSelector() );
-				this.logger.log( 'start-startediting', this.mode, 'se-cta-back' );
+				this.logger.log( this.module, this.mode, 'se-cta-back', { trigger: this.trigger } );
 				this.swapPanel( 'intro' );
 			}
 			if ( action === 'activate' ) {
@@ -242,7 +268,7 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 				settings = {
 					'growthexperiments-homepage-suggestededits-activated': 1
 				};
-				logData = {};
+				logData = { trigger: this.trigger };
 				if ( this.topicSelector ) {
 					settings[ config.GENewcomerTasksTopicFiltersPref ] =
 						this.topicSelector.getSelectedTopics().length > 0 ?
@@ -255,11 +281,12 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 						this.taskTypeSelector.getSelected().length > 0 ?
 							JSON.stringify( this.taskTypeSelector.getSelected() ) :
 							null;
+					logData.taskTypes = this.taskTypeSelector.getSelected();
 				}
 				return new mw.Api().saveOptions( settings )
 					.then( function () {
 						mw.user.options.set( settings );
-						this.logger.log( 'start-startediting', this.mode, 'se-activate', logData );
+						this.logger.log( this.module, this.mode, 'se-activate', logData );
 						return this.setupSuggestedEditsModule();
 					}.bind( this ) ).then( function () {
 						dialog.close( { action: 'activate' } );

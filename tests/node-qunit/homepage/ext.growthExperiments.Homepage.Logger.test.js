@@ -31,6 +31,10 @@ QUnit.module( 'HomepageLogger', {
 		global.mw.user.generateRandomSessionId = sinon.stub().returns( 'foo' );
 		global.mw.user.getId = sinon.stub().returns( 24 );
 		global.mw.user.sessionId = sinon.stub().returns( 'bar' );
+		global.mw.user.options = {};
+		global.mw.user.options.get = sinon.stub()
+			.withArgs( 'growthexperiments-homepage-variant' )
+			.returns( 'X' );
 		global.mw.track = sinon.stub();
 		global.mw.Uri = sinon.stub().returns( {
 			query: sinon.stub()
@@ -61,6 +65,7 @@ QUnit.module( 'HomepageLogger', {
 			state: 'done',
 			user_id: 24,
 			user_editcount: 123,
+			user_variant: 'X',
 			module: 'tutorial',
 			is_mobile: false,
 			mode: 'desktop',
@@ -86,6 +91,7 @@ QUnit.module( 'HomepageLogger', {
 			action_data: '',
 			user_id: 24,
 			user_editcount: 123,
+			user_variant: 'X',
 			module: 'mentor',
 			is_mobile: false,
 			mode: 'desktop',

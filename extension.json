@@ -174,7 +174,7 @@
 		"EventLogging": {
 			"Schemas": {
 				"HelpPanel": 20146411,
-				"HomepageModule": 20032959,
+				"HomepageModule": 20490168,
 				"NewcomerTask": 20231400
 			}
 		}
@@ -251,6 +251,7 @@
 				"homepage/ext.growthExperiments.Homepage.MobileOverlay.js",
 				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
+				"homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js",
 				"utils/ext.growthExperiments.Utils.js",
 				{
 					"name": "homepage/TaskTypes.json",
@@ -271,6 +272,9 @@
 			],
 			"targets": [
 				"mobile"
+			],
+			"dependencies": [
+				"ext.growthExperiments.Homepage.Logger"
 			]
 		},
 		"ext.growthExperiments.HelpPanel.icons": {
@@ -546,6 +550,7 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.js",
+				"utils/ext.growthExperiments.Utils.js",
 				{
 					"name": "homepage/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
