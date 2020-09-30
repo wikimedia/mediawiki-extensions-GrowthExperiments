@@ -5,7 +5,6 @@
 var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).TopicSelectionWidget,
 	TaskTypeSelectionWidget = require( './suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.js' ),
 	ArticleCountWidget = require( './suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.js' ),
-	Utils = require( './../utils/ext.growthExperiments.Utils.js' ),
 	router = require( 'mediawiki.router' );
 
 /**
@@ -44,7 +43,6 @@ OO.inheritClass( StartEditingDialog, OO.ui.ProcessDialog );
 StartEditingDialog.static.name = 'startediting';
 StartEditingDialog.static.size = 'large';
 StartEditingDialog.static.title = mw.msg( 'growthexperiments-homepage-startediting-dialog-header' );
-StartEditingDialog.static.escapable = !Utils.isUserInVariant( 'D' );
 
 StartEditingDialog.static.actions = [
 	{
@@ -227,6 +225,12 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 	var settings, logData,
 		dialog = this,
 		config = require( './config.json' );
+
+	// Don't allow the dialog to be closed by the user in non-modal mode
+	if ( !this.getManager().modal && ( !action || action === 'close' || action === 'done' ) ) {
+		// Do nothing
+		return new OO.ui.Process();
+	}
 	return StartEditingDialog.super.prototype.getActionProcess.call( this, action )
 		.next( function () {
 			if ( !action || action === 'close' ) {
