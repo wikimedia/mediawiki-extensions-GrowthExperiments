@@ -25,11 +25,12 @@
 	 *   data when omitted. Null disables linking.
 	 */
 	function SmallTaskCard( config ) {
+		// Must precede parent constructor as getTagName behavior depends on this.
+		this.taskUrl = ( 'taskUrl' in config ) ? config.taskUrl : new mw.Title( this.task.title ).getUrl();
 		SmallTaskCard.super.call( this, config );
 		OO.EventEmitter.call( this );
 		this.task = config.task;
 		this.taskType = config.taskTypes[ this.task.tasktype ];
-		this.taskUrl = ( 'taskUrl' in config ) ? config.taskUrl : new mw.Title( this.task.title ).getUrl();
 		this.buildCard();
 	}
 	OO.inheritClass( SmallTaskCard, OO.ui.Element );
@@ -110,7 +111,9 @@
 				'mw-ge-small-task-card-mobile' : 'mw-ge-small-task-card-desktop' )
 			.attr( 'href', this.taskUrl )
 			.append( $image, $cardTextContainer );
-		this.$element.on( 'click', this.emit.bind( this, 'click' ) );
+		this.$element.on( 'click', function () {
+			this.emit( 'click' );
+		}.bind( this ) );
 	};
 
 	module.exports = SmallTaskCard;
