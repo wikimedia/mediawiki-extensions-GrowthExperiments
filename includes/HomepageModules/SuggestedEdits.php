@@ -130,7 +130,7 @@ class SuggestedEdits extends BaseModule {
 					$this->getHeaderText() ) .
 				new ButtonWidget( [
 					'id' => 'mw-ge-homepage-suggestededits-info',
-					'icon' => 'info',
+					'icon' => 'info-unpadded',
 					'framed' => false,
 					'title' => $context->msg( 'growthexperiments-homepage-suggestededits-more-info' )->text(),
 					'label' => $context->msg( 'growthexperiments-homepage-suggestededits-more-info' )->text(),
