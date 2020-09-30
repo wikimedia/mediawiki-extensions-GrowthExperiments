@@ -122,6 +122,14 @@ $specialPageAliases['sv'] = [
 	'ClaimMentee' => [ 'Välj_nybörjare' ],
 ];
 
+/** Turkish (Türkçe) */
+$specialPageAliases['tr'] = [
+	'WelcomeSurvey' => [ 'Hoş_geldin_anketi' ],
+	'Homepage' => [ 'Anasayfa' ],
+	'Impact' => [ 'Etki' ],
+	'ClaimMentee' => [ 'DanışanSahiplen' ],
+];
+
 /** Ukranian (українська) */
 $specialPageAliases['uk'] = [
 	'WelcomeSurvey' => [ 'Вітальне_опитування' ],
