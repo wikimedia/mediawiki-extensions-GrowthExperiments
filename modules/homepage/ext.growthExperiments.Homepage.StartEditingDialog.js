@@ -210,23 +210,6 @@ StartEditingDialog.prototype.getSetupProcess = function ( data ) {
 		}, this );
 };
 
-StartEditingDialog.prototype.getTeardownProcess = function ( data ) {
-	return StartEditingDialog.super.prototype.getTeardownProcess
-		.call( this, data )
-		.next( function () {
-			if ( !data || data.action !== 'activate' ) {
-				if ( data.action === 'done' ) {
-					// used in variant C, technically it just closes the dialog but
-					// conceptually it is closer to accepting it
-					this.logger.log( this.module, this.mode, 'se-activate', { trigger: this.trigger } );
-				} else {
-					// canceled
-					this.logger.log( this.module, this.mode, 'se-cancel-activation', { trigger: this.trigger } );
-				}
-			}
-		}, this );
-};
-
 StartEditingDialog.prototype.updateMatchCount = function () {
 	var topics = this.topicSelector ? this.topicSelector.getSelectedTopics() : [],
 		taskTypes = this.taskTypeSelector ?
@@ -244,7 +227,18 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 		config = require( './config.json' );
 	return StartEditingDialog.super.prototype.getActionProcess.call( this, action )
 		.next( function () {
-			if ( action === 'close' || action === 'done' ) {
+			if ( !action || action === 'close' ) {
+				// If !action, then the parent method will already have closed the dialog
+				// If action === 'close', then we need to close the dialog ourselves
+				this.logger.log( this.module, this.mode, 'se-cancel-activation', { trigger: this.trigger } );
+				if ( action === 'close' ) {
+					this.close( { action: action } );
+				}
+			}
+			if ( action === 'done' ) {
+				// Used in varant C, technically it just closes the dialog but conceptually it's
+				// closed to accepting it, so log it as an activation
+				this.logger.log( this.module, this.mode, 'se-activate', { trigger: this.trigger } );
 				this.close( { action: action } );
 			}
 			if ( action === 'difficulty' ) {
