@@ -67,9 +67,13 @@ class StartEmail extends BaseModule {
 	/** @inheritDoc */
 	protected function getBody() {
 		return $this->getEmailIcon() .
-			$this->getEmailAddress() .
-			$this->getContext()->msg( 'word-separator' )->escaped() .
-			$this->getEmailAction();
+			Html::rawElement(
+				'span',
+				[ 'class' => 'growthexperiments-homepage-startemail-address-wrapper' ],
+				$this->getEmailAddress() .
+					$this->getContext()->msg( 'word-separator' )->escaped() .
+					$this->getEmailAction()
+			);
 	}
 
 	/** @inheritDoc */
@@ -134,6 +138,7 @@ class StartEmail extends BaseModule {
 			$linkAttrs['href'] = SpecialPage::getTitleFor( 'ChangeEmail' )->getLinkURL( [
 				'returnto' => $this->getContext()->getTitle()->getPrefixedText()
 			] );
+			$linkAttrs['class'] = 'growthexperiments-homepage-startemail-noemail-link';
 		} elseif ( $this->emailState === self::MODULE_STATE_UNCONFIRMED ) {
 			$label = $this->getContext()->msg( 'growthexperiments-homepage-email-confirmlink' )->text();
 			$wrapInParentheses = true;
