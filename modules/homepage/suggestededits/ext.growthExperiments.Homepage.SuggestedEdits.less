@@ -46,6 +46,16 @@
 	}
 }
 
+#mw-ge-homepage-suggestededits-info {
+	.oo-ui-buttonElement-button {
+		.oo-ui-iconElement-icon {
+			width: 20px;
+			// Needed to center the icon in the button element container.
+			margin-left: 2px;
+		}
+	}
+}
+
 .mw-body-content {
 	h4.suggested-edits-task-explanation-heading {
 		margin-top: unset;
@@ -204,14 +214,6 @@ body.mw-special-Homepage {
 
 		.growthexperiments-homepage-module.activated {
 			border: transparent;
-		}
-
-		.growthexperiments-homepage-module-header {
-			.oo-ui-buttonWidget {
-				// The circle in the icon is 15x15px normally, we want it to be 20px.
-				// But the header already has a larger than usual font size (1.2em), correct for that
-				font-size: ( 20 / 15 ) / 1.2em;
-			}
 		}
 
 		.suggested-edits-filters {
