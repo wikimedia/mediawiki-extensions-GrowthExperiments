@@ -17,31 +17,6 @@
 	padding-left: calc( 3px ~'+' 0.625em );
 	box-shadow: 0 2px 3px 0 rgba( 0, 0, 0, 0.15 );
 
-	.skin-minerva & .mw-ge-homepage-discovery-arrow.mw-ge-homepage-discovery-arrow-user-variant-A {
-		/* @embed */
-		background: url( ../../images/homepage-discovery-arrow-up-ltr.svg ) no-repeat left;
-
-		@media all and ( min-width: @width-breakpoint-tablet ) {
-			width: 103px;
-			height: 42px;
-			/* @embed */
-			background: url( ../../images/homepage-discovery-arrow-up-longer-ltr.svg ) no-repeat left;
-		}
-	}
-
-	.skin-minerva & .mw-ge-homepage-discovery-arrow.mw-ge-homepage-discovery-arrow-user-variant-C,
-	.skin-minerva & .mw-ge-homepage-discovery-arrow.mw-ge-homepage-discovery-arrow-user-variant-D {
-		/* @embed */
-		background: url( ../../images/homepage-discovery-arrow-up-variant-cd-ltr.svg ) no-repeat left;
-
-		@media all and ( min-width: @width-breakpoint-tablet ) {
-			width: 103px;
-			height: 42px;
-			/* @embed */
-			background: url( ../../images/homepage-discovery-arrow-up-longer-variant-cd-ltr.svg ) no-repeat left;
-		}
-	}
-
 	// this is tailored to Minerva's hamburger menu so don't show it on other skins
 	.skin-minerva & .mw-ge-homepage-discovery-arrow {
 		flex-shrink: 0;
@@ -49,12 +24,39 @@
 		height: 54px;
 		margin-right: 25px;
 
+		@media all and ( min-width: @width-breakpoint-tablet ) {
+			// We use a different arrow image  (wider but less tall) for tablets
+			width: 103px;
+			height: 42px;
+		}
+
 		@media all and ( min-width: @hamburger-header-maxwidth ) {
 			// Normally on wide screens the main body has width: 90%, the header has a 16px padding
 			// and then width: 90% within that, so it ends up being ~14px narrower. They both have
 			// the same max-width though, so once they hit that they will have the same width, at
 			// which point we need to adjust for that 14px change in the hamburger position.
 			margin-left: -14px;
+		}
+
+		&.mw-ge-homepage-discovery-arrow-user-variant-A {
+			/* @embed */
+			background: url( ../../images/homepage-discovery-arrow-up-ltr.svg ) no-repeat left;
+
+			@media all and ( min-width: @width-breakpoint-tablet ) {
+				/* @embed */
+				background: url( ../../images/homepage-discovery-arrow-up-longer-ltr.svg ) no-repeat left;
+			}
+		}
+
+		&.mw-ge-homepage-discovery-arrow-user-variant-C,
+		&.mw-ge-homepage-discovery-arrow-user-variant-D {
+			/* @embed */
+			background: url( ../../images/homepage-discovery-arrow-up-variant-cd-ltr.svg ) no-repeat left;
+
+			@media all and ( min-width: @width-breakpoint-tablet ) {
+				/* @embed */
+				background: url( ../../images/homepage-discovery-arrow-up-longer-variant-cd-ltr.svg ) no-repeat left;
+			}
 		}
 	}
 
