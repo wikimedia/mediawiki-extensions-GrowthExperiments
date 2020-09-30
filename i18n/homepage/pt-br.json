@@ -4,7 +4,8 @@
 			"Albertoleoncio",
 			"Eduardo Addad de Oliveira",
 			"Fitoschido",
-			"Luk3"
+			"Luk3",
+			"Stanglavine"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Olá}}, {{bidi:$1}}!",
@@ -40,7 +41,7 @@
 	"growthexperiments-homepage-startediting-subheader-edit-typo": "Comece a fazer pequenas correções agora com essas sugestões fáceis!",
 	"growthexperiments-homepage-startediting-subheader-add-image": "Antes de adicionar uma imagem, tente aprender com algumas edições mais fáceis!",
 	"growthexperiments-homepage-startediting-subheader-new-page": "Antes de criar um novo artigo, tente aprender com algumas edições mais fáceis!",
-	"growthexperiments-homepage-startediting-subheader-other": "A Ajude a aumentar o conhecimento do mundo com algumas correções fáceis nos artigos da Wikipédia.",
+	"growthexperiments-homepage-startediting-subheader-other": "Ajude a aumentar o conhecimento do mundo com algumas correções fáceis nos artigos da Wikipédia.",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Veja as edições sugeridas",
 	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "Começar com edições sugeridas",
 	"growthexperiments-homepage-startediting-mobilesummary-body-variant-d": "Ajude a aumentar o conhecimento do mundo com algumas correções fáceis em artigos da Wikipédia.",
@@ -271,7 +272,7 @@
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Escolha alguns tópicos que {{GENDER:$1|você}} deseja editar",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Vamos tentar sugerir artigos que correspondam ao {{GENDER:$1|seu}} interesse.",
 	"growthexperiments-homepage-claimmentee-title": "Reivindicar aprendiz",
-	"growthexperiments-homepage-claimmentee-pretext": "Esta página permite que {{GENDER:$1|você}} para mudar o mentor de aprendiz para {{GENDER:$1|você mesmo}}. É recomendável usar esse recurso para usuários conhecer {{GENDER:$1|você}} ou para {{GENDER:$1|você }} ser mentor usuário de um curso.",
+	"growthexperiments-homepage-claimmentee-pretext": "Esta página permite que você mude o tutor de um aprendiz para você mesmo. É recomendável utilizar esse recurso para usuários que já conhece ou para ser tutor de usuários de um curso.",
 	"growthexperiments-homepage-claimmentee-mentee": "Nome de usuário de mentor",
 	"growthexperiments-homepage-claimmentee-reason": "Razão para reivindicar este aprendiz",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|Você mudou}} o {{GENDER:$1|$4's}} mentor para {{GENDER:$3|$5}}",

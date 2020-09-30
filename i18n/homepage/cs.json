@@ -148,8 +148,8 @@
 	"growthexperiments-tour-discovery-title": "Začněte zde!",
 	"growthexperiments-tour-discovery-description": "Kliknutím na {{GENDER:$1|své}} uživatelské jméno navštívíte {{GENDER:$1|svou}} Domovskou stránku.",
 	"growthexperiments-homepage-welcomesurvey-default-close": "Přejděte na {{GENDER:$1|svou}} Domovskou stránku",
-	"growthexperiments-tour-welcome-description-c": "Vždycky {{GENDER:$1|můžete}} kliknout na {{GENDER:$1|vaše}} uživatelské jméno, abyste se sem {{GENDER:$1|vrátil|vrátila|vrátili}}. Pokračujte, abyste se o dozvěděli více o editačních tipech na {{GENDER:$1|vaší}} domovské stránce.",
-	"growthexperiments-tour-welcome-description-d": "Vždycky {{GENDER:$1|můžete}} kliknout na {{GENDER:$1|vaše}} uživatelské jméno, abyste se sem {{GENDER:$1|vrátil|vrátila|vrátili}}. Na {{GENDER:$1|vaší}} domovské stránce najdete editační tipy, můžete klást otázky {{GENDER:$1|vašemu}} mentorovi, a můžete tam také najít svůj dosah.",
+	"growthexperiments-tour-welcome-description-c": "Vždycky {{GENDER:$1|můžete}} kliknout na {{GENDER:$1|své}} uživatelské jméno, abyste se sem {{GENDER:$1|vrátil|vrátila|vrátili}}. Pokračujte, abyste se o dozvěděli více o <b>editačních tipech</b> na {{GENDER:$1|své}} domovské stránce.",
+	"growthexperiments-tour-welcome-description-d": "Vždycky {{GENDER:$1|můžete}} kliknout na {{GENDER:$1|své}} uživatelské jméno, abyste se sem {{GENDER:$1|vrátil|vrátila|vrátili}}. Na {{GENDER:$1|své}} domovské stránce najdete editační tipy, můžete klást otázky {{GENDER:$1|svému}} mentorovi a můžete tam také najít svůj dosah.",
 	"growthexperiments-homepage-discovery-banner-header": "Vítejte na {{GENDER:$1|vaší}} Domovské stránce!",
 	"growthexperiments-homepage-discovery-banner-text": "Vždy {{GENDER:$1|můžete}} kliknout na $2 nahoře na stránce, abyste se sem {{GENDER:$1|vrátil|vrátila}}.",
 	"growthexperiments-homepage-discovery-thanks-header": "Děkujeme za vytvoření {{GENDER:$1|vašeho}} účtu!",
@@ -300,8 +300,8 @@
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Více o tomto editačním tipu",
 	"growthexperiments-homepage-suggestededits-more-info": "Více informací o editačních tipech",
 	"growthexperiments-homepage-welcome-notice-header": "Vítejte na {{GENDER:$1|své}} domovské stránce!",
-	"growthexperiments-homepage-welcome-notice-body-variant-c": "Můžete se zde naučit, jak editovat, kontaktovat {{GENDER:$1|svého}} mentora, a vidět dosah vašich přízpěvků. Pokračujte, abyste se dozvěděli více o <strong>editačních tipech</strong> na {{GENDER:$1|své}} domovské stránce.",
-	"growthexperiments-homepage-welcome-notice-body-variant-d": "Můžete se zde naučit, jak editovat, kontaktovat {{GENDER:$1|svého}} mentora, a vidět dosah vašich přízpěvků.",
+	"growthexperiments-homepage-welcome-notice-body-variant-c": "Můžete se zde naučit, jak editovat, kontaktovat {{GENDER:$1|svého}} mentora a vidět dosah svých příspěvků. Pokračujte, abyste se dozvěděli více o <strong>editačních tipech</strong> na {{GENDER:$1|své}} domovské stránce.",
+	"growthexperiments-homepage-welcome-notice-body-variant-d": "Můžete se zde naučit, jak editovat, kontaktovat {{GENDER:$1|svého}} mentora a vidět dosah svých příspěvků.",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Pokračovat",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Rozumím"
 }
