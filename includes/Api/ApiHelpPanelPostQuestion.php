@@ -92,17 +92,22 @@ class ApiHelpPanelPostQuestion extends ApiBase {
 	 * @param string $body
 	 * @param string|null $relevantTitle
 	 * @return QuestionPoster
-	 * @throws UserNotLoggedIn
+	 * @throws ApiUsageException
 	 */
 	private function getQuestionPoster( $source, $body, $relevantTitle ): QuestionPoster {
 		$questionPosterType = self::QUESTION_POSTER_TYPES[$source];
-		return $this->questionPosterFactory->getQuestionPoster(
-			$questionPosterType[0],
-			$questionPosterType[1],
-			$this->getContext(),
-			$body,
-			$relevantTitle ?? ''
-		);
+		try {
+			return $this->questionPosterFactory->getQuestionPoster(
+				$questionPosterType[0],
+				$questionPosterType[1],
+				$this->getContext(),
+				$body,
+				$relevantTitle ?? ''
+			);
+		} catch ( UserNotLoggedIn $e ) {
+			throw ApiUsageException::newWithMessage( $this,
+				'apierror-mustbeloggedin-helppanelquestionposter', 'notloggedin' );
+		}
 	}
 
 	/**
