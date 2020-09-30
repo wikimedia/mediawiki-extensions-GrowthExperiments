@@ -5,6 +5,7 @@
 var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).TopicSelectionWidget,
 	TaskTypeSelectionWidget = require( './suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.js' ),
 	ArticleCountWidget = require( './suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.js' ),
+	Utils = require( './../utils/ext.growthExperiments.Utils.js' ),
 	router = require( 'mediawiki.router' );
 
 /**
@@ -43,6 +44,7 @@ OO.inheritClass( StartEditingDialog, OO.ui.ProcessDialog );
 StartEditingDialog.static.name = 'startediting';
 StartEditingDialog.static.size = 'large';
 StartEditingDialog.static.title = mw.msg( 'growthexperiments-homepage-startediting-dialog-header' );
+StartEditingDialog.static.escapable = !Utils.isUserInVariant( 'D' );
 
 StartEditingDialog.static.actions = [
 	{
