@@ -45,7 +45,7 @@
 				this.headerPromise = mw.loader.using( 'oojs-ui' ).then( function () {
 					infoButton = new OO.ui.ButtonWidget( {
 						id: 'mw-ge-homepage-suggestededits-info',
-						icon: 'info',
+						icon: 'info-unpadded',
 						framed: false,
 						title: mw.msg( 'growthexperiments-homepage-suggestededits-more-info' ),
 						label: mw.msg( 'growthexperiments-homepage-suggestededits-more-info' ),

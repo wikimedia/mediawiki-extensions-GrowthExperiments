@@ -650,6 +650,7 @@
 						"rtl": "../images/difficulty-hard-rtl.svg"
 					}
 				},
+				"info-unpadded": "../images/info-unpadded.svg",
 				"live-broadcast": "../images/live-broadcast.svg",
 				"mentor": {
 					"file": {
