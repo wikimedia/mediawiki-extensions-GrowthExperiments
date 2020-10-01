@@ -171,7 +171,7 @@ class HelpPanel {
 	}
 
 	/**
-	 * Get the help desk title and expand the templates and magic words it may contain
+	 * Get the help desk title and expand the templates and magic words it may contain 
 	 *
 	 * @param Config $config
 	 * @return null|Title
