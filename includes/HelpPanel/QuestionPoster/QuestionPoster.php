@@ -100,7 +100,7 @@ abstract class QuestionPoster {
 		$this->context = $context;
 		$this->relevantTitle = $relevantTitle;
 		if ( $this->getContext()->getUser()->isAnon() ) {
-			throw new UserNotLoggedIn( 'User must be logged-in.' );
+			throw new UserNotLoggedIn();
 		}
 		$this->config = $this->getContext()->getConfig();
 		$this->isFirstEdit = ( $this->getContext()->getUser()->getEditCount() === 0 );
