@@ -2,16 +2,17 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
-			"Hedda"
+			"Hedda",
+			"ToprakM"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "Geçerli kullanıcı için yardım panelinden gönderilen soruları ele alın.",
 	"apihelp-helppanelquestionposter-param-body": "Kullanıcı tarafından gönderilen soru metni.",
 	"apihelp-helppanelquestionposter-param-source": "Sorunun gönderilme yöntemi.",
-	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "\"Ask the help desk\" paneli",
-	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Yeni gelen ana sayfada \"Ask your mentor\" paneli",
-	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Yardım panelindeki \"Ask your mentor\" ekranı",
-	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "\"Ask the help desk\" paneli (eski ad)",
-	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Yeni gelen ana sayfadaki \"Ask your mentor\" paneli (eski ad)",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "\"Danışma masasına sorun\" paneli",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Yeni gelen ana sayfada \"Danışmanınıza sorun\" paneli",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Yardım panelindeki \"Danışmanınıza\" ekranı",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "\"Danışma masasına sorun\" paneli (eski ad)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Yeni gelen ana sayfadaki \"Danışmanınıza\" paneli (eski ad)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Seçiliyse, soruya dahil etmek için ilgili başlık."
 }
