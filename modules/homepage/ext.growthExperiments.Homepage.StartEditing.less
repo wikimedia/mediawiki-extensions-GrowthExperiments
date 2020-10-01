@@ -34,19 +34,23 @@
 
 		&.growthexperiments-homepage-module-desktop {
 			padding: 0;
-			min-height: 700px;
+			height: 630px;
+			display: flex;
+			flex-direction: column;
 
 			.growthexperiments-homepage-module-header {
-				padding: 1em @startEditingDialogSidePadding 0;
+				padding: 1em @startEditingDialogSidePadding;
 				background-color: @startediting-suggested-edits-background;
 			}
 
 			.oo-ui-windowManager {
+				flex-grow: 1;
 				position: relative;
 
 				.mw-ge-startediting-dialog {
 					&-progress {
 						background-color: @startediting-suggested-edits-background;
+						padding-top: 0;
 					}
 
 					&-intro-topic {
@@ -78,6 +82,16 @@
 							strong {
 								color: inherit;
 							}
+						}
+					}
+
+					&-desktopFooter {
+						.suggested-edits-article-count-panel-layout-desktop {
+							padding-top: 16px;
+						}
+
+						&-desktopActions {
+							padding: 12px;
 						}
 					}
 				}

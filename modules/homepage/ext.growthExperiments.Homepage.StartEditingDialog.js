@@ -295,15 +295,18 @@ StartEditingDialog.prototype.getActionProcess = function ( action ) {
 		}, this );
 };
 
+StartEditingDialog.prototype.getSize = function () {
+	// Make the dialog always be full size in non-modal mode
+	var parentSize = StartEditingDialog.super.prototype.getSize.apply( this, arguments );
+	return this.getManager().modal ? parentSize : 'full';
+};
+
 StartEditingDialog.prototype.getBodyHeight = function () {
 	var i, oldVisibility, panelHeight, maxHeight, panels;
-	if ( !this.getManager().modal ) {
-		// When the dialog is embedded on the page, don't make it taller than it needs to be
-		return StartEditingDialog.super.prototype.getBodyHeight.apply( this, arguments );
-	}
 
 	// When the dialog is displayed modally, give it a consistent height
 	// Measure the height of each panel, and find the tallest one
+	// (Non-modal mode behaves like fullscreen mode, and this method isn't called)
 	maxHeight = 0;
 	panels = this.panels.getItems();
 	for ( i = 0; i < panels.length; i++ ) {
