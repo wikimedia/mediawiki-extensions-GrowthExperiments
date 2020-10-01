@@ -240,8 +240,8 @@ class SuggestedEdits extends BaseModule {
 		$data = parent::getJsData( $mode );
 		$data['task-preview'] = [];
 
-		// Preload one task card for users in variant C and D.
-		if ( $this->canRender() ) {
+		// Preload one task card for users who have the module activated
+		if ( $this->canRender() && self::isActivated( $this->getContext() ) ) {
 			$tasks = $this->getTaskSet();
 			if ( $tasks instanceof StatusValue ) {
 				$data['task-preview'] = [ 'error' => Status::wrap( $tasks )->getMessage()->parse() ];
