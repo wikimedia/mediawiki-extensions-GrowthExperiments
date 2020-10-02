@@ -343,9 +343,12 @@
 	// This doesn't really belong to the API class conceptually, but most callers of the API
 	// will need it.
 	/**
-	 * Get the task type preferences of the current user.
+	 * Get the task type and topic filter preferences of the current user.
 	 *
-	 * @return {{taskTypes: Array<string>, topics: Array<string>}}
+	 * The topics value will be null if the user has never set topic filters, and an empty array if
+	 * they had previously set topic filters but currently don't have any.
+	 *
+	 * @return {{taskTypes: Array<string>, topics: Array<string>|null}}
 	 */
 	GrowthTasksApi.prototype.getPreferences = function () {
 		var defaultTaskTypes = this.defaultTaskTypes.filter( function ( taskType ) {
@@ -354,7 +357,7 @@
 			savedTaskTypes = mw.user.options.get( 'growthexperiments-homepage-se-filters' ),
 			savedTopics = mw.user.options.get( this.suggestedEditsConfig.GENewcomerTasksTopicFiltersPref ),
 			taskTypes = savedTaskTypes ? JSON.parse( savedTaskTypes ) : defaultTaskTypes,
-			topics = savedTopics ? JSON.parse( savedTopics ) : [];
+			topics = savedTopics ? JSON.parse( savedTopics ) : null;
 
 		return { taskTypes: taskTypes, topics: topics };
 	};

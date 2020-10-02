@@ -31,7 +31,7 @@
 	 * @param {Object} config Configuration options
 	 * @param {jQuery} config.$element SuggestedEdits widget container
 	 * @param {Array<string>} config.taskTypePresets List of IDs of enabled task types
-	 * @param {Array<string>} config.topicPresets Lists of IDs of enabled topic filters.
+	 * @param {Array<string>|null} config.topicPresets Lists of IDs of enabled topic filters.
 	 * @param {boolean} config.topicMatching If topic matching feature is enabled in the UI
 	 * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
 	 * @param {HomepageModuleLogger} logger
@@ -69,7 +69,7 @@
 				open: 'backupState'
 			} );
 
-		// Topic presets will be null or an empty string if the user never set them.
+		// Topic presets will be null if the user never set them.
 		// It's possible that config.topicPresets is an empty array if the user set,
 		// saved, then unset the topics.
 		if ( !config.topicPresets ) {
