@@ -104,9 +104,9 @@
 	"tag-help_module_question": "Hjälpmodulfråga",
 	"tag-help_module_question-description": "Redigering gjord från funktionen \"Ställ en fråga\" i hemsidans hjälpmodul",
 	"tag-mentorship_module_question": "Fadderskapsmodulfråga",
-	"tag-mentorship_module_question-description": "Redigering gjord från funktionen \"Fråga din mentor\" i hemsidans fadderskapsmodul",
-	"tag-mentorship_panel_question": "Mentorskapsmodulfråga",
-	"tag-mentorship_panel_question-description": "Redigering gjord från funktionen \"Fråga din mentor\" i hjälppanelen.",
+	"tag-mentorship_module_question-description": "Redigering gjord från funktionen \"Fråga din fadder\" i hemsidans fadderskapsmodul",
+	"tag-mentorship_panel_question": "Fadderskapspanelfråga",
+	"tag-mentorship_panel_question-description": "Redigering gjord från funktionen \"Fråga din fadder\" i hjälppanelen.",
 	"tag-newcomer_task": "Nybörjaruppgift",
 	"tag-newcomer_task-description": "Redigering föreslagen av redigeringsförslagsmodulen på nybörjarhemsidan",
 	"growthexperiments-homepage-help-dialog-title": "Fråga hjälpcentralen",
@@ -298,7 +298,7 @@
 	"growthexperiments-homepage-suggestededits-more-info": "Mer information om förslagna redigeringar",
 	"growthexperiments-homepage-welcome-notice-header": "Välkommen till {{GENDER:$1|din}} hemsida!",
 	"growthexperiments-homepage-welcome-notice-body-variant-c": "{{GENDER:$1|Du}} kan lära dig att redigera, kontakta {{GENDER:$1|din}} fadder, och se påverkan {{GENDER:$1|ditt}} arbete har haft. Fortsätt att lära dig om <strong>föreslagna redigeringar</strong> på {{GENDER:$1|din}} hemsida.",
-	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|Du}} kan lära att redigera, kontakta {{{{GENDER:$1|din}} fadder och se påverkan {{GENDER:$1|ditt}} arbete har haft.",
+	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|Du}} kan lära dig att redigera, kontakta {{GENDER:$1|din}} fadder och se vilken påverkan {{GENDER:$1|ditt}} arbete har haft.",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Fortsätt",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Jag förstår"
 }

@@ -33,5 +33,6 @@
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Ediciones sugeridas",
 	"growthexperiments-help-panel-button-header-general-help": "Ayuda general sobre la edición",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Consejos de inicio rápido",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Cambiar al editor de código"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Cambiar al editor de código",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Se necesita acceder para formular una pregunta."
 }

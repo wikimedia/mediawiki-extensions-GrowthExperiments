@@ -135,5 +135,6 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Te}} a forráskód-szerkesztőt használod épp, a szerkesztési tippek azonban a vizuális szerkesztőhöz nyújtanak inkább segítséget.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Váltás vizuális szerkesztésre",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Te}} a vizuális szerkesztőt használod épp, a szerkesztési tippek azonban a forráskód-szerkesztéshez nyújtanak inkább segítséget.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Váltás forráskód szerkesztésére"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Váltás forráskód szerkesztésére",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Kérdés feltevéséhez bejelentkezés szükséges."
 }

@@ -45,7 +45,7 @@
 	"welcomesurvey-question-email-label": "Endereço de correio eletrónico (opcional)",
 	"welcomesurvey-question-email-placeholder": "Insira o seu endereço de correio eletrónico...",
 	"welcomesurvey-question-email-help": "Reparámos que não inseriu um correio eletrónico quando criou esta conta. É <strong>altamente recomendado</strong> que o forneça, porque ele é necessário para recuperação da conta se perder a palavra-passe. NOTA: O seu correio eletrónico não é revelado quando outros utilizadores o contactam.",
-	"welcomesurvey-question-languages-label": "{{SITENAME}} está disponível em quase 300 línguas. Lês ou escreves em outras línguas?",
+	"welcomesurvey-question-languages-label": "{{SITENAME}} está disponível em quase 300 línguas. Lê ou escreve em outras línguas?",
 	"welcomesurvey-question-languages-placeholder": "Acrescentar até {{PLURAL:$1|um idioma|$1 idiomas}} ...",
 	"welcomesurvey-question-languages-maximum": "Você adicionou o número máximo de idiomas."
 }

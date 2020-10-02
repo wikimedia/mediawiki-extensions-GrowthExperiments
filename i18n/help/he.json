@@ -134,5 +134,6 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|אתה משתמש|את משתמשת}} בעורך קוד המקור. העצות האלו לעריכה הכי עוזרות עם העורך החזותי.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "לעבור לעורך החזותי",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|אתה משתמש|את משתמשת}} בעורך החזותי. העצות האלו לעריכה הכי עוזרות עם עורך קוד המקור.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "לעבור לעורך קוד מקור"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "לעבור לעורך קוד מקור",
+	"apierror-mustbeloggedin-helppanelquestionposter": "צריך להיכנס לחשבון כדי לשאול שאלה."
 }
