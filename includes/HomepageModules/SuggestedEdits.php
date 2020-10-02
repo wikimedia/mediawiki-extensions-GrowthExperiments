@@ -347,11 +347,6 @@ class SuggestedEdits extends BaseModule {
 	/** @inheritDoc */
 	protected function getBody() {
 		$isDesktop = $this->getMode() === self::RENDER_DESKTOP;
-		$siteViewsCount = $this->getSiteViews();
-		$siteViewsMessage = $siteViewsCount ?
-			$this->getContext()->msg( 'growthexperiments-homepage-suggestededits-footer' )
-				->params( $this->formatSiteViews( $siteViewsCount ) ) :
-			$this->getContext()->msg( 'growthexperiments-homepage-suggestededits-footer-noviews' );
 		return Html::rawElement(
 			'div', [ 'class' => 'suggested-edits-module-wrapper' ],
 			( $isDesktop ? Html::element( 'div', [ 'class' => 'suggested-edits-filters' ] ) : '' ) .
@@ -360,9 +355,18 @@ class SuggestedEdits extends BaseModule {
 				Html::element( 'div', [ 'class' => 'suggested-edits-previous' ] ) .
 				Html::element( 'div', [ 'class' => 'suggested-edits-card' ] ) .
 				Html::element( 'div', [ 'class' => 'suggested-edits-next' ] ) ) .
-			Html::element( 'div', [ 'class' => 'suggested-edits-task-explanation' ] ) .
-			Html::rawElement( 'div', [ 'class' => 'suggested-edits-footer' ], $siteViewsMessage->parse() )
+			Html::element( 'div', [ 'class' => 'suggested-edits-task-explanation' ] )
 		);
+	}
+
+	/** @inheritDoc */
+	protected function getFooter() {
+		$siteViewsCount = $this->getSiteViews();
+		$siteViewsMessage = $siteViewsCount ?
+			$this->getContext()->msg( 'growthexperiments-homepage-suggestededits-footer' )
+				->params( $this->formatSiteViews( $siteViewsCount ) ) :
+			$this->getContext()->msg( 'growthexperiments-homepage-suggestededits-footer-noviews' );
+		return $siteViewsMessage->parse();
 	}
 
 	/**
