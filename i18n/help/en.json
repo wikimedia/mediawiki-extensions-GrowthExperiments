@@ -129,6 +129,5 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|You}} are using the source editor. These editing tips are most helpful with the visual editor.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Switch to the visual editor",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|You}} are using the visual editor. These editing tips are most helpful with the source editor.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Switch to the source editor",
-	"apierror-mustbeloggedin-helppanelquestionposter": "You must be logged in to ask a question."
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Switch to the source editor"
 }

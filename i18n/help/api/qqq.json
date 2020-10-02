@@ -13,5 +13,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|mentor-helppanel}}\n\nSee also {{msg-mw|Growthexperiments-help-panel-questionreview-title-mentor}}",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|helppanel}}\n\nSee also {{msg-mw|Growthexperiments-homepage-help-dialog-title}}",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "{{doc-apihelp-paramvalue|helppanelquestionposter|source|homepage-mentorship}}\n\nSee also {{msg-mw|Growthexperiments-help-panel-questionreview-title-mentor}}",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "{{doc-apihelp-param|helppanelquestionposter|relevanttitle}}"
+	"apihelp-helppanelquestionposter-param-relevanttitle": "{{doc-apihelp-param|helppanelquestionposter|relevanttitle}}",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Error message shown when trying to ask a question while not logged in.\n\n{{doc-growthexperiments-help-panel}}"
 }
