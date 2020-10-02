@@ -26,6 +26,7 @@ QUnit.module( 'HomepageLogger', {
 		configGet.withArgs( 'wgUserEditCount' ).returns( 123 );
 		configGet.withArgs( 'wgGEHomepageModuleActionData-tutorial' ).returns( { foo: 'bar' } );
 		configGet.withArgs( 'wgGEHomepageModuleState-tutorial' ).returns( 'done' );
+		configGet.withArgs( 'wgGEHomepageUserVariant' ).returns( 'X' );
 		global.mw.config.get = configGet;
 		global.mw.user = {};
 		global.mw.user.generateRandomSessionId = sinon.stub().returns( 'foo' );

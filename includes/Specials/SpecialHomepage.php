@@ -121,9 +121,11 @@ class SpecialHomepage extends SpecialPage {
 		$out = $this->getContext()->getOutput();
 		$isMobile = Util::isMobile( $out->getSkin() );
 		$loggingEnabled = $this->getConfig()->get( 'GEHomepageLoggingEnabled' );
+		$userVariant = $this->experimentUserManager->getVariant( $this->getUser() );
 		$out->addJsConfigVars( [
 			'wgGEHomepagePageviewToken' => $this->pageviewToken,
 			'wgGEHomepageLoggingEnabled' => $loggingEnabled,
+			'wgGEHomepageUserVariant' => $userVariant
 		] );
 		$out->addModules( 'ext.growthExperiments.Homepage.Logging' );
 		$out->enableOOUI();
@@ -131,8 +133,7 @@ class SpecialHomepage extends SpecialPage {
 
 		$out->addHTML( Html::openElement( 'div', [
 			'class' => 'growthexperiments-homepage-container ' .
-				'growthexperiments-homepage-container-user-variant-' .
-				$this->experimentUserManager->getVariant( $this->getUser() )
+				'growthexperiments-homepage-container-user-variant-' . $userVariant
 		] ) );
 		$modules = $this->getModules( $isMobile, $par );
 
