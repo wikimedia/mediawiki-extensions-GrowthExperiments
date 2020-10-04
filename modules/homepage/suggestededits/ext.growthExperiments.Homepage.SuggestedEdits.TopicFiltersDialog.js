@@ -81,7 +81,7 @@ TopicFiltersDialog.prototype.buildTopicFilters = function () {
 	var $topicSelectorWrapper;
 	this.content.$element.empty();
 	this.content.$element.append( this.errorMessage.$element );
-	this.topicSelector = new TopicSelectionWidget( { selectedTopics: this.config.presets } );
+	this.topicSelector = new TopicSelectionWidget( { selectedTopics: this.config.presets || [] } );
 	this.topicSelector.connect( this, {
 		// selectAll and removeAll forward a single topic group ID argument
 		selectAll: [ 'emit', 'selectAll' ],

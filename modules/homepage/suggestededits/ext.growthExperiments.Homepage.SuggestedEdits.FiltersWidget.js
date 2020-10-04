@@ -9,7 +9,7 @@
 	/**
 	 * @param {Object} config Configuration options
 	 * @param {Array<string>} config.taskTypePresets List of IDs of enabled task types
-	 * @param {Array<string>} config.topicPresets List of IDs of enabled topic filters
+	 * @param {Array<string>|null} config.topicPresets List of IDs of enabled topic filters
 	 * @param {boolean} config.topicMatching If the topic filters should be enabled in the UI.
 	 * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
 	 * @param {HomepageModuleLogger} logger
@@ -35,7 +35,7 @@
 			} );
 			buttonWidgets.push( this.topicFilterButtonWidget );
 			this.topicFiltersDialog = new TopicFiltersDialog( {
-				presets: config.topicPresets
+				presets: this.topicPresets
 			} ).connect( this, {
 				done: [ 'emit', 'done' ],
 				// forwards one argument, the list of enabled filters
@@ -157,7 +157,7 @@
 					mw.message( 'growthexperiments-homepage-suggestededits-topic-filter-select-interests' ).text()
 				);
 				// topicPresets will be an empty array if the user had saved topics
-				// in the past.
+				// in the past, or null if they have never saved topics
 				this.topicFilterButtonWidget.setFlags( { progressive: !this.topicPresets } );
 			} else {
 				topicSearch.forEach( function ( topic ) {
