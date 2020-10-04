@@ -46,12 +46,22 @@ class NewcomerTasksUserOptionsLookup {
 	 * Get the given user's topic preferences.
 	 * @param UserIdentity $user
 	 * @return string[] A list of topic IDs, or an empty array when the user has
-	 *   no preference set. (This is meant to be compatible with TaskSuggester which takes an
-	 *   empty array as "no filtering".)
+	 *   no preference set (This is method is meant to be compatible with TaskSuggester
+	 *   which takes an empty array as "no filtering".)
 	 * @see \GrowthExperiments\NewcomerTasks\Topic\Topic::getId()
 	 */
 	public function getTopicFilter( UserIdentity $user ): array {
-		return $this->getJsonListOption( $user, SuggestedEdits::getTopicFiltersPref( $this->config ) ) ?? [];
+		return $this->getTopicFilterWithoutFallback( $user ) ?? [];
+	}
+
+	/**
+	 * Get the given user's topic preferences without a fallback to empty array.
+	 * @param UserIdentity $user
+	 * @return string[]|null A list of topic IDs, an empty array when the user has
+	 *   no preference set, or null if preference wasn't set or is invalid.
+	 */
+	public function getTopicFilterWithoutFallback( UserIdentity $user ): ?array {
+		return $this->getJsonListOption( $user, SuggestedEdits::getTopicFiltersPref( $this->config ) );
 	}
 
 	/**
