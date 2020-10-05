@@ -12,5 +12,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "«Spør fadderen din»-skjermen i hjelpepanelet",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "«Spør nybegynnerforumet»-panelet (gammelt navn)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "«Spør fadderen din»-panelet på nybegynnerhjemmesiden (gammelt navn)",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "Den relevante tittelen, om valgt, som skal inkluderes med spørsmålet."
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Den relevante tittelen, om valgt, som skal inkluderes med spørsmålet.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Du må være logget inn for å stille spørsmål."
 }
