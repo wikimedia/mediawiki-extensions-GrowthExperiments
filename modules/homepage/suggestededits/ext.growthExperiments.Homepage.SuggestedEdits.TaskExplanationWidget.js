@@ -59,7 +59,7 @@
 	TaskExplanationWidget.prototype.getInfo = function () {
 		var $name = this.getName(),
 			popupButtonWidget = new OO.ui.PopupButtonWidget( {
-				icon: 'info',
+				icon: 'info-unpadded',
 				framed: false,
 				label: this.taskTypeData.messages.shortdescription,
 				invisibleLabel: true,
