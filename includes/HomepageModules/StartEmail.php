@@ -157,4 +157,9 @@ class StartEmail extends BaseModule {
 		}
 		return $link;
 	}
+
+	/** @inheritDoc */
+	public function getState() {
+		return $this->emailState;
+	}
 }
