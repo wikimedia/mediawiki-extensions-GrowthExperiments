@@ -61,7 +61,7 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>Quando criou a sua conta, disse que queria criar um novo artigo.</strong> Esse é um tipo de edição importante mas desafiante, por isso recomendamos que tente primeiro fazer pequenas edições nos artigos existentes. Se preferir criar já um novo artigo, pode [$1 aprender a fazê-lo aqui].",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Escolha alguns tópicos que esteja interessado em editar",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "Tentaremos sugerir artigos que correspondam aos {{GENDER:|seus}} interesses.",
-	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Filtrar por tema",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Filtrar por tópico",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader": "Use tópicos para obter sugestões que ache interessantes. Pode escolher apenas um tópico ou selecionar vários.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Voltar",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Obter sugestões",

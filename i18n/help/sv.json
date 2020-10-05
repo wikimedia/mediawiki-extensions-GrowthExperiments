@@ -134,6 +134,5 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Du}} använder wikitextredigeraren. Dessa redigeringstips är mest till hjälp för den visuella redigeraren.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Växla till visuellt redigeringsläge",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Du}} använder den visuella redigeraren. Dessa redigeringstips är till mest hjälp i wikitextredigeraren.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Växla till wikitextläge",
-	"apierror-mustbeloggedin-helppanelquestionposter": "Du måste vara inloggad för att ställa en fråga."
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Växla till wikitextläge"
 }

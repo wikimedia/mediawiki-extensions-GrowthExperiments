@@ -12,5 +12,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "A tela \"Pergunte ao seu mentor\" no painel de ajuda",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "O painel \"Pergunte a central de ajuda\" (nome antigo)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "O painel \"Pergunte ao mentor\" na página inicial de um novo editor (nome antigo)",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "O título relevante, se selecionado, para incluir na pergunta."
+	"apihelp-helppanelquestionposter-param-relevanttitle": "O título relevante, se selecionado, para incluir na pergunta.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Você deve entrar para fazer uma pergunta."
 }

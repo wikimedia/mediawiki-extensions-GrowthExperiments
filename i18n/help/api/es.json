@@ -4,5 +4,6 @@
 			"Fitoschido"
 		]
 	},
-	"apihelp-helppanelquestionposter-param-body": "El texto de la pregunta provisto por el usuario."
+	"apihelp-helppanelquestionposter-param-body": "El texto de la pregunta provisto por el usuario.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Se necesita acceder para formular una pregunta."
 }

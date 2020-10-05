@@ -263,6 +263,7 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Neplatná konfigurace editačních tipů: neplatný identifikátor $1 - musí obsahovat pouze znaky a-z, 0-9 nebo - (spojovník)",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Neplatná konfigurace editačních tipů: chybějící pole $1 pro typ úkolu nebo téma $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Neplatná konfigurace editačních tipů: neplatná skupina $1 pro typ úkolu $2",
+	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Neplatná konfigurace editačních tipů: neplatný název šablony $1 pro druh tipu $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Neplatná konfigurace editačních tipů: chybějící zpráva $1 pro pole $2",
 	"growthexperiments-homepage-suggestededits-create-article-additional-message": "Abyste {{GENDER:$1|mohl|mohla|mohli}} úspěšně vytvořit nový článek, budete se muset naučit mnoho dovedností prostřednictvím dokončení některých jednodušších úkolů. Abyste se {{GENDER:$1|dozvěděl|dozvěděla|dozvěděli}} více o tom, jak vytvořit nový článek, [$2 klikněte zde].",
 	"growthexperiments-homepage-suggestededits-error-title": "Nyní nebyly nalezeny žádné editační tipy.",

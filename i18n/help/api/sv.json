@@ -14,5 +14,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "\"Fråga din fadder\"-rutan i hjälppanelen",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "\"Fråga fikarummet\"-panelen (gammalt namn)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "\"Fråga din fadder\"-panelen på nybörjarhemsidan (gammalt namn)",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "Den relevanta titeln, om vald, som ska inkluderas med frågan."
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Den relevanta titeln, om vald, som ska inkluderas med frågan.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Du måste vara inloggad för att ställa en fråga."
 }

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Hanna Tardos",
 			"Samat",
 			"Tacsipacsi",
 			"Tgr"
@@ -14,5 +15,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "A „Kérdezz a mentorodtól” képernyőn a segítségpanelen",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "A „Kérdezz a segítőpultnál” panelen (régi elnevezés)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "A „Kérdezz a mentorodtól” panelen az új szerkesztők honlapján (régi elnevezés)",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "Kiválasztása esetén a kérdéshez tartozó cím."
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Kiválasztása esetén a kérdéshez tartozó cím.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Kérdés feltevéséhez bejelentkezés szükséges."
 }

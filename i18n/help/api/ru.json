@@ -15,5 +15,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Скрин справочной панели «Спросить своего наставника»",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Справочная панель «Спросить службу поддержки» (старое название)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Справочная панель «Спросить своего наставника» на Домашней странице новичка (старое название)",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "Релевантное название, если выбрано, для включения в вопрос."
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Релевантное название, если выбрано, для включения в вопрос.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Вы должны быть авторизованы, чтобы задать вопрос."
 }

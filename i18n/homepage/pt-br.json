@@ -72,7 +72,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Fácil",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Médio",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Difícil",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Recomendado para quem está aprendendo a editar.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Recomendado para quem está {{GENDER:$1|aprendendo}} a editar.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Para quando {{GENDER:$1|você}} concluir algumas edições fáceis.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Quando {{GENDER:$1|você}} já aprendeu sobre as melhores práticas da Wikipédia.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Revisão e adição de links para outros artigos.",

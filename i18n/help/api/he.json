@@ -12,5 +12,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "חלונית \"לשאול את החונך שלך\" בחלנוית העזרה",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "חלונית \"לשאול בחממה\" (שם ישן)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "חלונית \"לשאול את החונך שלך\" בדף הבית למתחילים (שם ישן)",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "הכותרת המתאימה, אם נבחרה, שתיכלל עם השאלה."
+	"apihelp-helppanelquestionposter-param-relevanttitle": "הכותרת המתאימה, אם נבחרה, שתיכלל עם השאלה.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "צריך להיכנס לחשבון כדי לשאול שאלה."
 }

@@ -135,6 +135,5 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Tu}} stai usando l'editor di wikitesto. Questi consigli per la modifica sono più utili con l'editor visuale.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Passa all'editor visuale",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Tu}} stai usando l'editor visuale. Questi consigli di modifica sono più utili con l'editor di wikitesto.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Passa all'editor sorgente",
-	"apierror-mustbeloggedin-helppanelquestionposter": "Devi effettuare l'accesso per fare una domanda."
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Passa all'editor sorgente"
 }

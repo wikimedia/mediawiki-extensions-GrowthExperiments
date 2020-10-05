@@ -14,5 +14,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "شاشة \"اسأل مرشدك\" من لوحة المساعدة",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "لوحة \"اسأل ميدان المساعدة\" (تسمية قديمة)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "لوحة \"اسأل مرشدك\" من لوحة المستخدم للوافدين الجدد (تسمية قديمة)",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "العنوان ذو الصلة، إذا تم تحديده؛ للتضمين مع السؤال."
+	"apihelp-helppanelquestionposter-param-relevanttitle": "العنوان ذو الصلة، إذا تم تحديده؛ للتضمين مع السؤال.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "يجب تسجيل الدخول لطرح سؤال."
 }

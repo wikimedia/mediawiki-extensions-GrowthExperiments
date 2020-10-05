@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Martin Urbanec"
+		]
+	},
+	"apierror-mustbeloggedin-helppanelquestionposter": "Pro položení otázky musíte být přihlášen."
+}

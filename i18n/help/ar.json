@@ -136,6 +136,5 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|أنتَ تستخدم|أنتِ تستخدمين}} المحرر المصدري. هذه النصائح موجّه بالأساس مع استعمال المحرر المرئي.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "{{GENDER:|بدّل|بدّلي}} إلى المحرر المرئي",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|أنتَ تستخدم|أنتِ تستخدمين}} المحرر المرئي. هذه النصائح موجّه بالأساس مع استعمال المحرر المصدري.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "{{GENDER:|بدّل|بدّلي}} إلى المحرر المصدري",
-	"apierror-mustbeloggedin-helppanelquestionposter": "يجب تسجيل الدخول لطرح سؤال."
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "{{GENDER:|بدّل|بدّلي}} إلى المحرر المصدري"
 }
