@@ -54,7 +54,7 @@ class TemplateFilter {
 		}
 		$linkBatch->execute();
 
-		$map = $this->buildResultsMap( $this->buildQueryConds( $taskSet ) );
+		$map = $this->buildResultsMap( $taskSet );
 
 		$filteredTaskSet = new TaskSet(
 			array_filter( iterator_to_array( $taskSet ),
@@ -67,18 +67,14 @@ class TemplateFilter {
 					if ( !$task instanceof TemplateBasedTask ) {
 						return true;
 					}
-					// Normally shouldn't happen, but... just in case.
-					if ( !$task->getTaskType()->getTemplates() ) {
-						return false;
-					}
 					// The article isn't in the map, so all the templates associated with the
-					// task were deleted.
+					// task type were deleted.
 					if ( !isset( $map[$articleID] ) ) {
 						return false;
 					}
 					$templateList = array_map( function ( $template ) {
 						return $template->getDBkey();
-					}, $task->getTemplates() );
+					}, $task->getTaskType()->getTemplates() );
 					// Check to see that at least one of the templates we think should be present
 					// for the article is present in the mapping.
 					return array_intersect( $templateList, $map[$articleID] );
@@ -105,9 +101,9 @@ class TemplateFilter {
 			$articleID = $this->titleFactory->newFromLinkTarget( $task->getTitle() )->getArticleID();
 			$templateList = array_map( function ( $template ) {
 				return $template->getDBkey();
-			}, $task->getTemplates() );
+			}, $task->getTaskType()->getTemplates() );
 			if ( !count( $templateList ) ) {
-				// The search index can be out of sync with the database.
+				// Sanity - empty arrays make the query builder unhappy.
 				continue;
 			}
 
@@ -122,11 +118,13 @@ class TemplateFilter {
 	}
 
 	/**
-	 * @param array $conds
-	 * @return array An array with page IDs as the key and valid templates for the page as the
-	 * value.
+	 * For each task in a task set, lists all the templates present on the task's article page
+	 * that are valid for that task type.
+	 * @param TaskSet $taskSet
+	 * @return array [ page id => [ template title, ... ] ]. Titles are without namespace.
 	 */
-	private function buildResultsMap( array $conds ): array {
+	private function buildResultsMap( TaskSet $taskSet ): array {
+		$conds = $this->buildQueryConds( $taskSet );
 		if ( !$conds ) {
 			// Needs to be special-cased, would turn into selecting the whole table.
 			return [];
