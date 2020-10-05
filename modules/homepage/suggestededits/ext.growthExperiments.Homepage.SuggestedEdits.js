@@ -129,7 +129,24 @@
 		this.queuePosition = this.backup.queuePosition;
 		this.taskQueueLoading = false;
 		this.filters.updateMatchCount( this.taskQueue.length );
+		if ( this.taskQueue.length && OO.ui.isMobile() ) {
+			this.updateMobileSummarySmallTaskCard();
+		}
 		this.showCard();
+	};
+
+	/**
+	 * Update the mobile summary small task card HTML on Special:Homepage
+	 * with the first card in the task queue.
+	 */
+	SuggestedEditsModule.prototype.updateMobileSummarySmallTaskCard = function () {
+		mw.loader.using( 'ext.growthExperiments.Homepage.Mobile' ).done( function () {
+			var homepageModules = mw.config.get( 'homepagemodules' );
+			homepageModules[ 'suggested-edits' ][ 'task-preview' ] = this.taskQueue[ 0 ];
+			mw.config.set( 'homepagemodules', homepageModules );
+			require( 'ext.growthExperiments.Homepage.Mobile' )
+				.loadExtraDataForSuggestedEdits( '.growthexperiments-homepage-module-suggested-edits', false );
+		}.bind( this ) );
 	};
 
 	/**
@@ -142,6 +159,9 @@
 			} );
 		}
 		this.apiPromise.then( function () {
+			if ( this.taskQueue.length && OO.ui.isMobile() ) {
+				this.updateMobileSummarySmallTaskCard();
+			}
 			this.showCard();
 			this.preloadNextCard();
 		}.bind( this ) );
@@ -225,6 +245,7 @@
 			if ( this.config.topicMatching ) {
 				extraData.topics = this.topicsQuery;
 			}
+
 			// FIXME should this be capped to TASK_QUEUE_LENGTH or show the total server-side result count?
 			extraData.taskCount = this.taskQueue.length;
 			this.logger.log( 'suggested-edits', this.mode, 'se-fetch-tasks' );
