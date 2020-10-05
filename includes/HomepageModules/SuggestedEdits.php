@@ -83,6 +83,9 @@ class SuggestedEdits extends BaseModule {
 	/** @var TaskSet|StatusValue */
 	private $tasks;
 
+	/** @var int */
+	private $unfilteredTasksetCount = null;
+
 	/**
 	 * @param IContextSource $context
 	 * @param EditInfoService $editInfoService
@@ -313,8 +316,9 @@ class SuggestedEdits extends BaseModule {
 		// speed up the query.
 		$taskTypes = $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user );
 		$topics = $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user );
-		$tasks = $this->taskSuggester->suggest( $user, $taskTypes, $topics, 10 );
+		$tasks = $this->taskSuggester->suggest( $user, $taskTypes, $topics );
 		if ( $tasks instanceof TaskSet ) {
+			$this->unfilteredTasksetCount = $tasks->count();
 			$tasks = $this->protectionFilter->filter( $tasks, 1 );
 		}
 		$this->tasks = $tasks;
@@ -541,17 +545,20 @@ class SuggestedEdits extends BaseModule {
 
 	/** @inheritDoc */
 	protected function getActionData() {
+		$user = $this->getContext()->getUser();
+		$taskSet = $this->getTaskSet();
+		$topics = null;
+		if ( $taskSet instanceof TaskSet ) {
+			$taskTypes = $taskSet->getFilters()->getTaskTypeFilters();
+			$topics = $taskSet->getFilters()->getTopicFilters();
+		}
+		// these will be updated on the client side as needed
 		$data = [
-			// these will be updated on the client side as needed
-			'taskTypes' => json_decode( $this->getContext()->getUser()->getOption( self::TASKTYPES_PREF ) ),
-			'taskCount' => null,
+			'taskTypes' => $taskTypes ?? $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
+			'taskCount' => $this->unfilteredTasksetCount,
 		];
 		if ( self::isTopicMatchingEnabled( $this->getContext() ) ) {
-			$data['topics'] = json_decode(
-				$this->getContext()->getUser()->getOption(
-					self::getTopicFiltersPref( $this->getContext()->getConfig() )
-				)
-			);
+			$data['topics'] = $topics ?? $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user );
 		}
 		return array_merge( parent::getActionData(), $data );
 	}
