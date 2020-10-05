@@ -740,7 +740,7 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 			.removeClass( 'unactivated' )
 			.each( function ( i, module ) {
 				require( 'ext.growthExperiments.Homepage.Mobile' )
-					.loadExtraDataForSuggestedEdits( module );
+					.loadExtraDataForSuggestedEdits( module, true );
 			} );
 	}
 

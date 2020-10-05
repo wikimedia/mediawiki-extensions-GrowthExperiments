@@ -11,8 +11,11 @@
 
 	/**
 	 * @param {Element} suggestedEditsModuleNode DOM node of the suggested edits module.
+	 * @param {boolean} shouldLog If event logging should be used. Set to false when this method is called from
+	 * fetchTasksAndUpdateView, where the the mobile summary HTML is updated when users interact with
+	 * task / topic filters.
 	 */
-	function loadExtraDataForSuggestedEdits( suggestedEditsModuleNode ) {
+	function loadExtraDataForSuggestedEdits( suggestedEditsModuleNode, shouldLog ) {
 		// FIXME doesn't belong here; not sure what the right place would be though.
 		var GrowthTasksApi = require( './suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js' ),
 			SmallTaskCard = require( './suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.js' ),
@@ -38,17 +41,23 @@
 				$( suggestedEditsModuleNode ).find( '.mw-ge-small-task-card' )
 					.replaceWith( taskCard.$element );
 
-				homepageModuleLogger.log( 'suggested-edits', 'mobile-summary', 'se-task-impression',
-					{ newcomerTaskToken: newcomerTaskLogger.log( task, 0 ) } );
+				if ( shouldLog ) {
+					homepageModuleLogger.log( 'suggested-edits', 'mobile-summary', 'se-task-impression',
+						{ newcomerTaskToken: newcomerTaskLogger.log( task, 0 ) } );
+				}
 			}, function ( jqXHR, textStatus, errorThrown ) {
 				// Error loading the task
-				homepageModuleLogger.log( 'suggested-edits', 'mobile-summary', 'se-task-pseudo-impression',
-					{ type: 'error', errorMessage: textStatus + ' ' + errorThrown } );
+				if ( shouldLog ) {
+					homepageModuleLogger.log( 'suggested-edits', 'mobile-summary', 'se-task-pseudo-impression',
+						{ type: 'error', errorMessage: textStatus + ' ' + errorThrown } );
+				}
 			} );
 		} else if ( taskPreviewData && taskPreviewData.error ) {
 			// Error loading the task, on the server side
-			homepageModuleLogger.log( 'suggested-edits', 'mobile-summary', 'se-task-pseudo-impression',
-				{ type: 'error', errorMessage: taskPreviewData.error } );
+			if ( shouldLog ) {
+				homepageModuleLogger.log( 'suggested-edits', 'mobile-summary', 'se-task-pseudo-impression',
+					{ type: 'error', errorMessage: taskPreviewData.error } );
+			}
 		}
 	}
 
@@ -247,7 +256,7 @@
 				.filter( '.growthexperiments-homepage-module-user-variant-C,' +
 					'.growthexperiments-homepage-module-user-variant-D' )
 				.each( function ( i, module ) {
-					loadExtraDataForSuggestedEdits( module );
+					loadExtraDataForSuggestedEdits( module, true );
 				} );
 
 			// Start loading the ResourceLoader modules so that tapping on one will load
