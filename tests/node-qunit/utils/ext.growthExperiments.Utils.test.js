@@ -15,34 +15,33 @@ QUnit.module( 'ext.growthExperiments.Utils.js', {}, function () {
 	} );
 
 	QUnit.test( 'isUserInVariant', function ( assert ) {
-		const prefName = 'growthexperiments-homepage-variant';
+		const prefName = 'wgGEHomepageUserVariant';
 		global.mw = {};
-		global.mw.user = {};
-		global.mw.user.options = {};
-		global.mw.user.options.get = sinon.stub();
+		global.mw.config = {};
+		global.mw.config.get = sinon.stub();
 
-		global.mw.user.options.get.withArgs( prefName ).returns( 'A' );
+		global.mw.config.get.withArgs( prefName ).returns( 'A' );
 		assert.strictEqual( Utils.isUserInVariant( 'C' ), false );
 
-		global.mw.user.options.get.withArgs( prefName ).returns( 'C' );
+		global.mw.config.get.withArgs( prefName ).returns( 'C' );
 		assert.strictEqual( Utils.isUserInVariant( 'C' ), true );
 
-		global.mw.user.options.get.withArgs( prefName ).returns( 'C' );
+		global.mw.config.get.withArgs( prefName ).returns( 'C' );
 		assert.strictEqual( Utils.isUserInVariant( [ 'C', 'D' ] ), true );
 
-		global.mw.user.options.get.withArgs( prefName ).returns( 'D' );
+		global.mw.config.get.withArgs( prefName ).returns( 'D' );
 		assert.strictEqual( Utils.isUserInVariant( [ 'C', 'D' ] ), true );
 
-		global.mw.user.options.get.withArgs( prefName ).returns( 'A' );
+		global.mw.config.get.withArgs( prefName ).returns( 'A' );
 		assert.strictEqual( Utils.isUserInVariant( 'CAT' ), false );
 
-		global.mw.user.options.get.withArgs( prefName ).returns( 'A' );
+		global.mw.config.get.withArgs( prefName ).returns( 'A' );
 		assert.strictEqual( Utils.isUserInVariant( [ 'CAT' ] ), false );
 
-		global.mw.user.options.get.withArgs( prefName ).returns( 'CAT' );
+		global.mw.config.get.withArgs( prefName ).returns( 'CAT' );
 		assert.strictEqual( Utils.isUserInVariant( 'A' ), false );
 
-		global.mw.user.options.get.withArgs( prefName ).returns( 'CAT' );
+		global.mw.config.get.withArgs( prefName ).returns( 'CAT' );
 		assert.strictEqual( Utils.isUserInVariant( [ 'A' ] ), false );
 	} );
 } );

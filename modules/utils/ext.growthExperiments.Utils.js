@@ -72,7 +72,7 @@
 	 * @return {string|null} The variant a user is assigned to.
 	 */
 	function getUserVariant() {
-		return mw.user.options.get( 'growthexperiments-homepage-variant' );
+		return mw.config.get( 'wgGEHomepageUserVariant' );
 	}
 
 	/**
