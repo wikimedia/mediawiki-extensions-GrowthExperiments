@@ -945,6 +945,31 @@
 			]
 		}
 	},
+	"QUnitTestModule": {
+		"localBasePath": "",
+		"remoteExtPath": "GrowthExperiments",
+		"packageFiles": [
+			"tests/qunit/index.js",
+			"modules/utils/ext.growthExperiments.Utils.js",
+			"tests/qunit/utils/ext.growthExperiments.Utils.test.js",
+			"modules/help/ext.growthExperiments.HelpPanelLogger.js",
+			"tests/qunit/help/ext.growthExperiments.HelpPanelLogger.test.js",
+			"modules/help/ext.growthExperiments.HelpPanelProcessDialog.SwitchEditorPanel.js",
+			"tests/qunit/help/ext.growthExperiments.HelpPanelProcessDialog.SwitchEditorPanel.test.js",
+			"modules/homepage/ext.growthExperiments.Homepage.Logger.js",
+			"tests/qunit/homepage/ext.growthExperiments.Homepage.Logger.test.js",
+			"modules/homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditPagerWidget.js",
+			"tests/qunit/homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditPagerWidget.test.js",
+			"modules/homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.ErrorCardWidget.js",
+			"tests/qunit/homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.ErrorCardWidget.test.js"
+		],
+		"dependencies": [
+			"oojs-ui",
+			"mediawiki.qunit-testrunner",
+			"mediawiki.base",
+			"sinonjs"
+		]
+	},
 	"config": {
 		"GEHomepageTutorialTitle": {
 			"description": "MediaWiki title to link to in the Tutorial button in the homepage Start module.",

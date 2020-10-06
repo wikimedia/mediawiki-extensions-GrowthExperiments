@@ -8,6 +8,7 @@
 	 * @constructor
 	 */
 	function NewcomerTaskLogger() {
+		this.events = [];
 	}
 
 	/**
@@ -28,6 +29,7 @@
 		task.token = mw.user.generateRandomSessionId();
 		data = this.getLogData( task, position );
 		mw.track( 'event.NewcomerTask', data );
+		this.events.push( data );
 		return task.token;
 	};
 
@@ -57,6 +59,15 @@
 		}
 		return logData;
 		/* eslint-enable camelcase */
+	};
+
+	/**
+	 * Get events sent to mw.track by the logger.
+	 *
+	 * @return {Object[]}
+	 */
+	NewcomerTaskLogger.prototype.getEvents = function () {
+		return this.events;
 	};
 
 	module.exports = NewcomerTaskLogger;

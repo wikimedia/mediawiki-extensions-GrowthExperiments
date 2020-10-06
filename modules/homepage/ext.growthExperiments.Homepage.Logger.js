@@ -16,6 +16,7 @@
 		this.exclusions = {
 			start: [ 'impression' ]
 		};
+		this.events = [];
 	}
 
 	/**
@@ -61,6 +62,16 @@
 			event.state = state;
 		}
 		mw.track( 'event.HomepageModule', event );
+		this.events.push( event );
+	};
+
+	/**
+	 * Get events sent to mw.track by the logger.
+	 *
+	 * @return {Object[]}
+	 */
+	HomepageModuleLogger.prototype.getEvents = function () {
+		return this.events;
 	};
 
 	module.exports = HomepageModuleLogger;

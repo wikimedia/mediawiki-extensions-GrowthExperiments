@@ -6,6 +6,9 @@
 		"wikimedia/mediawiki",
 		"wikimedia/qunit"
 	],
+	"globals": {
+		"sinon": "readonly"
+	},
 	"env": {
 		"browser": true
 	},
