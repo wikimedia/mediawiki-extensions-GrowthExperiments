@@ -610,6 +610,7 @@
 				"mediawiki.api",
 				"mediawiki.Title",
 				"mediawiki.jqueryMsg",
+				"mediawiki.router",
 				"mediawiki.util",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
