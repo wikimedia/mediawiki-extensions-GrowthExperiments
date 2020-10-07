@@ -301,6 +301,12 @@ StartEditingDialog.prototype.getSize = function () {
 	return this.getManager().modal ? parentSize : 'full';
 };
 
+StartEditingDialog.prototype.getSizeProperties = function () {
+	var parentResult = StartEditingDialog.super.prototype.getSizeProperties.apply( this, arguments );
+	// Custom width: 640px instead of 700px when not full size (T258016#6495190)
+	return this.getSize() === 'full' ? parentResult : { width: 640 };
+};
+
 StartEditingDialog.prototype.getBodyHeight = function () {
 	var i, oldVisibility, panelHeight, maxHeight, panels;
 

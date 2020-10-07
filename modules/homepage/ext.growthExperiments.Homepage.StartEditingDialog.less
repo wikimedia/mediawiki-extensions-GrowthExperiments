@@ -16,6 +16,13 @@
 		}
 	}
 
+	body.skin-minerva & {
+		// Override the annoying margin reset from Minerva
+		p {
+			margin: 0.5em 0;
+		}
+	}
+
 	.suggested-edits-article-count-panel-layout-desktop {
 		// Align with the desktop actions buttons.
 		padding-top: 30px;
@@ -183,6 +190,11 @@
 				font-size: @headerFontSize;
 				color: @colorGray2;
 			}
+
+			&-header,
+			&-subheader {
+				line-height: 1.375;
+			}
 		}
 
 		&-topic-selector {
@@ -318,8 +330,9 @@
 
 				.growthexperiments-homepage-desktop & {
 					// Because this is a table, width behaves more like min-width
-					width: 25%;
-					// nowrap might make the label column wider than 25%
+					// Align the description to the right of this cell with the text in the banner
+					width: calc( 128px ~'+' 1em / 1.3em );
+					// nowrap might make the label column wider
 					white-space: nowrap;
 				}
 			}
@@ -342,8 +355,6 @@
 				padding-bottom: 1.5em;
 
 				.growthexperiments-homepage-desktop & {
-					padding-left: 0.5em;
-
 					p {
 						margin: 0;
 					}
