@@ -21,6 +21,8 @@ use User;
  */
 class SpecialHomepageTest extends SpecialPageTestBase {
 
+	use \MockHttpTrait;
+
 	/**
 	 * @inheritDoc
 	 */
@@ -31,6 +33,14 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			}
 		} );
 		$this->setService( 'GrowthExperimentsMentorManager', new StaticMentorManager( [] ) );
+
+		// Needed to avoid errors in DeferredUpdates from the SpecialHomepageLogger
+		$mwHttpRequest = $this->getMockBuilder( \MWHttpRequest::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$mwHttpRequest->method( 'execute' )
+			->willReturn( new \StatusValue() );
+		$this->installMockHttp( $mwHttpRequest );
 
 		$growthExperimentsServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		return new SpecialHomepage(

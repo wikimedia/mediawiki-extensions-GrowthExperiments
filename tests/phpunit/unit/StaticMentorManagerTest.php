@@ -5,8 +5,11 @@ namespace GrowthExperiments\Tests;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\StaticMentorManager;
 use GrowthExperiments\WikiConfigException;
+use MediaWiki\User\UserFactory;
+use MediaWiki\User\UserNameUtils;
 use MediaWikiUnitTestCase;
 use User;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
  * @coversDefaultClass \GrowthExperiments\Mentorship\StaticMentorManager
@@ -56,9 +59,15 @@ class StaticMentorManagerTest extends MediaWikiUnitTestCase {
 	 * @return User
 	 */
 	private function getUser( string $name ) {
-		// Creating a real User object is less hassle than mocking; we have to be careful which
-		// constructor to use to avoid invoking name canonization services, though.
-		return User::newFromAnyId( null, $name, null );
+		$userFactory = new UserFactory(
+			$this->getMockBuilder( ILoadBalancer::class )
+				->disableOriginalConstructor()
+				->getMock(),
+			$this->getMockBuilder( UserNameUtils::class )
+				->disableOriginalConstructor()
+				->getMock()
+		);
+		return $userFactory->newFromAnyId( null, $name, null );
 	}
 
 }
