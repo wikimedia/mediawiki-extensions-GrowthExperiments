@@ -162,6 +162,11 @@ body.mw-special-Homepage {
 	.oo-ui-popupButtonWidget-popup {
 		display: none;
 	}
+
+	#mw-ge-homepage-suggestededits-info {
+		// Shift icon in mobile overlay a bit farther to the right.
+		margin-right: 8px;
+	}
 }
 
 .growthexperiments-homepage-module-suggested-edits {
@@ -217,6 +222,18 @@ body.mw-special-Homepage {
 
 	&.growthexperiments-homepage-module-desktop {
 		background-color: @suggestedEditsBackgroundColor;
+
+		.growthexperiments-homepage-module-header {
+			// Ensure that the box shown on hover for the SE info icon can
+			// display, since we are shifting it farther to the right.
+			overflow: visible;
+
+			#mw-ge-homepage-suggestededits-info {
+				// Align the edge of the unpadded info icon with the filters
+				// which display below it.
+				margin-right: -9px;
+			}
+		}
 
 		&.growthexperiments-homepage-module.activated {
 			border: transparent;
