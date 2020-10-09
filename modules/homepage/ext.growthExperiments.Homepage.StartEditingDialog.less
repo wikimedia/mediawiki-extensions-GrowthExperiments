@@ -252,15 +252,13 @@
 			// We can't use e.g. background-position-x: @startEditingDialogSidePadding; because
 			// that's not flippable for RTL. Instead, use a border with the same color as the background
 			background-position-x: left;
-			border-left-color: @colorGray15;
-			border-left-style: solid;
+			border-left: @colorGray15 solid @startEditingDialogSidePadding;
 
 			.growthexperiments-homepage-desktop & {
 				background-image: url( ../../images/difficulty-square-ltr.svg );
 				background-size: 128px;
 				background-position-y: center;
 				padding: 2.5em 1.5em 2.5em calc( 128px ~'+' 1em );
-				border-left-width: @startEditingDialogSidePadding;
 			}
 
 			.growthexperiments-homepage-mobile-summary &,
@@ -269,7 +267,6 @@
 				background-size: 216px 64px;
 				background-position-y: top;
 				padding: calc( 64px ~'+' 1em ) 1em 1.5em 0;
-				border-left-width: 1em;
 			}
 
 			// The image is not displayed in variant D
