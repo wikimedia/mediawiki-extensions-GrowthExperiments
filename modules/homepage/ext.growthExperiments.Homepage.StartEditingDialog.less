@@ -109,7 +109,7 @@
 		}
 
 		&-topic {
-			padding: 1.5em @startEditingDialogSidePadding 2.5em;
+			padding: 0 @startEditingDialogSidePadding 2.5em;
 			background-color: @colorGray15;
 
 			&-image {
@@ -140,6 +140,7 @@
 				font-weight: bold;
 				font-size: @headerFontSize;
 				line-height: 1.375;
+				margin-top: 0;
 			}
 
 			&-message {
@@ -283,10 +284,10 @@
 
 		&-legend,
 		&-taskTypeSelector {
-			margin: 0 1em;
+			padding: 1.5em 1em;
 
 			.growthexperiments-homepage-desktop & {
-				margin: 0 @startEditingDialogSidePadding;
+				padding: 1.5em @startEditingDialogSidePadding;
 			}
 		}
 
