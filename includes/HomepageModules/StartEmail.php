@@ -79,9 +79,13 @@ class StartEmail extends BaseModule {
 	/** @inheritDoc */
 	protected function getMobileSummaryBody() {
 		return $this->getEmailIcon() .
-			$this->getEmailAddressRaw() .
-			$this->getContext()->msg( 'word-separator' )->escaped() .
-			$this->getEmailAction();
+			Html::rawElement(
+				'span',
+				[ 'class' => 'growthexperiments-homepage-startemail-address-wrapper' ],
+				$this->getEmailAddressRaw() .
+					$this->getContext()->msg( 'word-separator' )->escaped() .
+					$this->getEmailAction()
+			);
 	}
 
 	/**
