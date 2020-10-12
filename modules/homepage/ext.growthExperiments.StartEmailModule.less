@@ -11,6 +11,7 @@
 	}
 
 	.growthexperiments-homepage-startemail-address-wrapper {
+		font-size: 0.92857em;
 		vertical-align: middle;
 	}
 
@@ -24,5 +25,15 @@
 
 	.oo-ui-iconWidget {
 		margin-right: 0.5em;
+
+		&:not( .oo-ui-image-progressive ) {
+			// Simulate #595959, closest to @wmui-color-base20
+			opacity: 0.65;
+		}
+
+		body.mw-special-Homepage.growthexperiments-homepage-mobile-summary & {
+			// Make sure font size is consistent between desktop and mobile
+			font-size: 0.875em;
+		}
 	}
 }
