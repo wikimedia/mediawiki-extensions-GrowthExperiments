@@ -45,7 +45,9 @@
 	TaskExplanationWidget.prototype.getInfoRow = function () {
 		var $infoRow = $( '<div>' ).addClass( 'suggested-edits-taskexplanation-additional-info' );
 		$infoRow.append(
-			this.getName(),
+			// Use a span so that wrapped second line text appears in the same
+			// line with the info icon.
+			this.getName( '<span>' ),
 			this.getInfo().$element
 		);
 		return $infoRow;
@@ -57,7 +59,7 @@
 	};
 
 	TaskExplanationWidget.prototype.getInfo = function () {
-		var $name = this.getName(),
+		var $name = this.getName( '<h4>' ),
 			popupButtonWidget = new OO.ui.PopupButtonWidget( {
 				icon: 'info-unpadded',
 				framed: false,
@@ -85,7 +87,7 @@
 				if ( show && OO.ui.isMobile() ) {
 					drawer = new Drawer( {
 						children: [
-							this.getName(),
+							this.getName( '<h4>' ),
 							$( '<div>' )
 								.addClass( 'suggested-edits-taskexplanation-additional-info' )
 								.html( this.getDescription() )
@@ -165,8 +167,12 @@
 			) );
 	};
 
-	TaskExplanationWidget.prototype.getName = function () {
-		return $( '<h4>' )
+	/**
+	 * @param {string} tagName E.g. '<h4>', '<span>'
+	 * @return {jQuery}
+	 */
+	TaskExplanationWidget.prototype.getName = function ( tagName ) {
+		return $( tagName )
 			.addClass( 'suggested-edits-task-explanation-heading' )
 			.text( this.taskTypeData.messages.name );
 	};

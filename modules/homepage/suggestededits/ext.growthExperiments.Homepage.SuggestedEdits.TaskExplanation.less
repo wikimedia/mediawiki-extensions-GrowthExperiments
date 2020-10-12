@@ -4,17 +4,6 @@
 
 .suggested-edits-taskexplanation-difficulty-and-time,
 .suggested-edits-taskexplanation-additional-info {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: flex-start;
-	align-content: center;
-
-	// Align the icon with the h4.
-	.oo-ui-iconElement {
-		text-align: left;
-		margin-top: -5px;
-	}
-
 	p {
 		color: @colorGray2;
 	}
@@ -101,6 +90,28 @@
 		&:after {
 			.suggested-edits-difficulty-indicator-after-mixin( @hardColor );
 		}
+	}
+}
+
+.suggested-edits-taskexplanation-additional-info {
+	h4.suggested-edits-task-explanation-heading {
+		margin-top: unset;
+		margin-bottom: unset;
+		padding-top: unset;
+		// Override line-height: 1.3; in Minerva
+		line-height: 1.6;
+	}
+
+	// Mimic h4 styling for the heading
+	span.suggested-edits-task-explanation-heading {
+		font-weight: bold;
+		font-size: 1em;
+	}
+
+	// Align the icon with the heading.
+	.oo-ui-iconElement {
+		text-align: left;
+		margin-top: -2px;
 	}
 }
 
