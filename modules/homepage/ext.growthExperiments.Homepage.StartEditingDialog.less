@@ -16,13 +16,6 @@
 		}
 	}
 
-	body.skin-minerva & {
-		// Override the annoying margin reset from Minerva
-		p {
-			margin: 0.5em 0;
-		}
-	}
-
 	.suggested-edits-article-count-panel-layout-desktop {
 		// Align with the desktop actions buttons.
 		padding-top: 30px;
@@ -148,6 +141,8 @@
 				font-size: @headerFontSize;
 				line-height: 1.375;
 				margin-top: 0;
+				// Override margin reset on mobile
+				margin-bottom: 0.5em;
 			}
 
 			&-message {
@@ -189,6 +184,8 @@
 				font-weight: bold;
 				font-size: @headerFontSize;
 				color: @colorGray2;
+				// Override margin reset on mobile
+				margin-bottom: 0.5em;
 			}
 
 			&-header,
@@ -286,6 +283,8 @@
 			color: @colorGray2;
 			font-weight: bold;
 			font-size: @headerFontSize;
+			// Override margin reset on mobile
+			margin-bottom: 0.5em;
 
 			// stylelint-disable-next-line no-descending-specificity
 			strong {
