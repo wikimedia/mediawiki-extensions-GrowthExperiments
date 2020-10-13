@@ -98,7 +98,9 @@
 	// x position values.
 	@headBgColor: fade( @suggestedEditsBackgroundColor, 50% );
 
-	.oo-ui-window-head {
+	// This background interferes with the pending effect in a really funky way, so don't apply it
+	// when the pending effect is being shown
+	.oo-ui-window-head:not( .oo-ui-pendingElement-pending ) {
 		body.ltr & {
 			// stylelint-disable-next-line value-list-comma-newline-after
 			background: linear-gradient( @headBgColor, @headBgColor ) 200% ~'/' 50% no-repeat,
@@ -118,8 +120,8 @@
 			outline: unset;
 
 			// This rule is the same in LTR and RTL, but we need the extra selectors for specificity
-			body.ltr &,
-			body.rtl & {
+			body.ltr &:not( .oo-ui-pendingElement-pending ),
+			body.rtl &:not( .oo-ui-pendingElement-pending ) {
 				// stylelint-disable-next-line value-list-comma-newline-after
 				background: linear-gradient( @headBgColor, @headBgColor ) 0 ~'/' 50% no-repeat,
 					linear-gradient( @headBgColor, @headBgColor ) 100% ~'/' 50% no-repeat;
