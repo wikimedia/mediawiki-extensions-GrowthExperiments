@@ -78,7 +78,8 @@ class HomepageHooks implements
 	public const CONFIRMEMAIL_QUERY_PARAM = 'specialconfirmemail';
 
 	public const VARIANTS = [
-		// 'A' doesn't exist anymore; was: not pre-initiated, impact module in main column, full size start module
+		// not pre-initiated, impact module in main column, full size start module
+		'A',
 		// 'B' doesn't exist anymore; was a pre-initiated version of A
 		// pre-initiated, impact module in side column, smaller start module
 		'C',

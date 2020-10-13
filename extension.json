@@ -1030,13 +1030,14 @@
 		"GEHomepageNewAccountVariants": {
 			"description": "Which percentage of new accounts that get the homepage to assign which variant. Percentages must be whole numbers. If the percentages don't add up to 100, some new accounts will not be assigned a variant. Those accounts will fall back on GEHomepageDefaultVariant.",
 			"value": {
+				"A": 0,
 				"C": 0,
 				"D": 0
 			}
 		},
 		"GEHomepageDefaultVariant": {
-			"description": "Variant to use for users who weren't assigned a variant at account creation time. Must be one of C, D.",
-			"value": "D"
+			"description": "Variant to use for users who weren't assigned a variant at account creation time. Must be one of A, C, D.",
+			"value": "A"
 		},
 		"GEHomepageLoggingEnabled": {
 			"description": "ON/OFF switch for the homepage event logging feature.",
