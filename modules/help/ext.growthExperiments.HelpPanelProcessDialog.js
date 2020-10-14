@@ -622,7 +622,9 @@
 		}.bind( this ) );
 
 		// Disable pending effect in the header; it breaks the background transition when navigating
-		// back from the suggested-edits panel to the home panel
+		// back from the suggested-edits panel to the home panel. In getActionProcess(), we set the
+		// pending element back to the default where needed.
+		this.$backupPendingElement = this.$pending;
 		this.setPendingElement( $( [] ) );
 
 		/**
@@ -813,6 +815,12 @@
 					this.swapPanel( 'general-help' );
 				}
 				if ( action === 'questioncomplete' ) {
+					// HACK: by default, the pending element is the head, but that results in brief
+					// flashes of pending state when switching panels or closing the dialog, which
+					// we don't want. Instead, make the head the pending element only while
+					// submitting a question.
+					this.setPendingElement( this.$backupPendingElement );
+
 					/* eslint-disable camelcase */
 					submitAttemptData = {
 						question_length: this.askhelpTextInput.getValue().length,
@@ -888,6 +896,9 @@
 							return $.Deferred().reject(
 								new OO.ui.Error( $( '<p>' ).append( this.submitFailureMessage ) )
 							).promise();
+						}.bind( this ) )
+						.always( function () {
+							this.setPendingElement( $( [] ) );
 						}.bind( this ) );
 				}
 			}.bind( this ) );
