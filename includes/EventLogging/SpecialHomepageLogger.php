@@ -36,7 +36,6 @@ class SpecialHomepageLogger {
 	private $user;
 
 	/**
-	 * SpecialHomepageLogger constructor.
 	 * @param string $pageviewToken
 	 * @param User $user
 	 * @param WebRequest $request

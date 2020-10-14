@@ -245,7 +245,7 @@ abstract class BaseModule implements HomepageModule {
 	/**
 	 * @param string $name Name of the icon
 	 * @param bool $invert Whether the icon should be inverted
-	 * @return string HTML string of the icon.
+	 * @return string HTML
 	 */
 	protected function getHeaderIcon( $name, $invert ) {
 		return Html::rawElement(

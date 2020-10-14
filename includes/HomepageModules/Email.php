@@ -1,4 +1,5 @@
 <?php
+
 namespace GrowthExperiments\HomepageModules;
 
 use GrowthExperiments\ExperimentUserManager;

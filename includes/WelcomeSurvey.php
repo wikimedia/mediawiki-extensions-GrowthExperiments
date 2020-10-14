@@ -31,7 +31,6 @@ class WelcomeSurvey {
 	private $languageNameUtils;
 
 	/**
-	 * WelcomeSurvey constructor.
 	 * @param IContextSource $context
 	 * @param LanguageNameUtils $languageNameUtils
 	 */

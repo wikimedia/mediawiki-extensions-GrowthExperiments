@@ -225,7 +225,7 @@ class Impact extends BaseModule {
 						[
 							'alt' => $titleText,
 							'title' => $titlePrefixedText,
-							'class' => [ 'real-image' ],
+							'class' => 'real-image',
 							'style' => 'background-image: url(' . $imageUrl . ');',
 						]
 					) : $emptyImage;
