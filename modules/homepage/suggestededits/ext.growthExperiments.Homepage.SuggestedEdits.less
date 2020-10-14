@@ -544,19 +544,42 @@ body.mw-special-Homepage {
 		.suggested-edits-main-with-preview {
 			.suggested-edits-preview-pager {
 				font-size: 0.8125em; // 16px -> 13 px
+				padding-bottom: 8px;
 
 				strong {
 					font-weight: normal;
 				}
 			}
 
-			.mw-ge-small-task-card-image {
-				height: 77px;
-				width: 77px;
-			}
+			.mw-ge-small-task-card {
+				margin-left: -8px;
+				margin-right: -8px;
 
-			.mw-ge-small-task-card-title {
-				color: @wmui-color-base10;
+				&-image {
+					height: 80px;
+					width: 80px;
+					border-radius: 2px;
+				}
+
+				&-title {
+					line-height: 1.2;
+					color: @wmui-color-base10;
+				}
+
+				&-description {
+					line-height: 1.5;
+				}
+
+				&-metadata-container {
+					height: 20px;
+				}
+
+				// stylelint-disable-next-line no-descending-specificity
+				&-tasktype .oo-ui-iconWidget {
+					min-width: 16px;
+					min-height: 16px;
+					margin-bottom: 4px;
+				}
 			}
 
 			.suggested-edits-preview-cta-button {
