@@ -104,7 +104,9 @@
 			.append( $pageviews, $taskType );
 		$cardTextContainer = $( '<div>' )
 			.addClass( 'mw-ge-small-task-card-text-container' )
-			.append( $title, $description, $glue, $cardMetadataContainer );
+			// Distribute the flex growth to empty glue divs. This will center the
+			// title + description within the empty area above the metadata.
+			.append( $glue, $title, $description, $glue.clone(), $cardMetadataContainer );
 		this.$element
 			.addClass( 'mw-ge-small-task-card' )
 			.addClass( OO.ui.isMobile() ?
