@@ -531,7 +531,8 @@
 			$wrapper = $container.find( '.suggested-edits-module-wrapper' ),
 			mode = $wrapper.closest( '.growthexperiments-homepage-module' ).data( 'mode' ),
 			taskPreviewData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ][ 'task-preview' ] || {},
-			fetchTasksOptions = {};
+			fetchTasksOptions = {},
+			topicMatching = mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' );
 
 		if ( !$wrapper.length ) {
 			return;
@@ -542,7 +543,7 @@
 				$element: $wrapper,
 				taskTypePresets: preferences.taskTypes,
 				topicPresets: preferences.topics,
-				topicMatching: mw.config.get( 'GEHomepageSuggestedEditsEnableTopics' ),
+				topicMatching: topicMatching,
 				mode: mode
 			},
 			new Logger(
@@ -553,6 +554,8 @@
 
 		if ( taskPreviewData.title ) {
 			fetchTasksOptions = { firstTask: taskPreviewData };
+		} else if ( taskPreviewData.noresults ) {
+			suggestedEditsModule.showCard( new NoResultsWidget( { topicMatching: topicMatching } ) );
 		} else {
 			// Show an empty skeleton card, which will be overwritten once tasks are fetched.
 			suggestedEditsModule.showCard( new EditCardWidget( {} ) );
