@@ -142,7 +142,7 @@
 	SuggestedEditsModule.prototype.updateMobileSummarySmallTaskCard = function () {
 		mw.loader.using( 'ext.growthExperiments.Homepage.Mobile' ).done( function () {
 			var homepageModules = mw.config.get( 'homepagemodules' );
-			homepageModules[ 'suggested-edits' ][ 'task-preview' ] = this.taskQueue[ 0 ];
+			homepageModules[ 'suggested-edits' ][ 'task-preview' ] = this.taskQueue[ this.queuePosition ];
 			mw.config.set( 'homepagemodules', homepageModules );
 			require( 'ext.growthExperiments.Homepage.Mobile' )
 				.loadExtraDataForSuggestedEdits( '.growthexperiments-homepage-module-suggested-edits', false );
@@ -300,12 +300,18 @@
 		this.queuePosition = this.queuePosition + 1;
 		this.showCard();
 		this.preloadNextCard();
+		if ( OO.ui.isMobile() ) {
+			this.updateMobileSummarySmallTaskCard();
+		}
 	};
 
 	SuggestedEditsModule.prototype.onPreviousCard = function () {
 		this.logger.log( 'suggested-edits', this.mode, 'se-task-navigation', { dir: 'prev' } );
 		this.queuePosition = this.queuePosition - 1;
 		this.showCard();
+		if ( OO.ui.isMobile() ) {
+			this.updateMobileSummarySmallTaskCard();
+		}
 	};
 
 	SuggestedEditsModule.prototype.updateTaskExplanationWidget = function () {
