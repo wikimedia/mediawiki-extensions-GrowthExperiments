@@ -13,5 +13,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Màn hình \"Hỏi cố vấn của bạn\" trên bảng trợ giúp",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Bảng \"Hỏi tại bàn trợ giúp\" (tên cũ)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Bảng \"Hỏi cố vấn của bạn\" tại trang nhà người mới (tên cũ)",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "Tiêu đề có liên quan, nếu được chọn, để đi kèm với câu hỏi."
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Tiêu đề có liên quan, nếu được chọn, để đi kèm với câu hỏi.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Bạn phải đăng nhập để đặt câu hỏi."
 }
