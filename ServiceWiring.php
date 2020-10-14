@@ -157,8 +157,9 @@ return [
 	'GrowthExperimentsQuestionPosterFactory' => function (
 		MediaWikiServices $services
 	): QuestionPosterFactory {
+		$wikiPageFactory = $services->getWikiPageFactory();
 		$mentorManager = GrowthExperimentsServices::wrap( $services )->getMentorManager();
-		return new QuestionPosterFactory( $mentorManager );
+		return new QuestionPosterFactory( $wikiPageFactory, $mentorManager );
 	},
 
 	// deprecated, use GrowthExperimentsTaskSuggesterFactory directly

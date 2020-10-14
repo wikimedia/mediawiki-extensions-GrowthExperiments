@@ -12,6 +12,7 @@ use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\StaticMentorManager;
+use MediaWiki\MediaWikiServices;
 
 /**
  * @group API
@@ -61,6 +62,7 @@ class ApiQuestionStoreTest extends ApiTestCase {
 		$context->setRequest( $request );
 		$context->setUser( $user );
 		$questionPoster = new HomepageMentorQuestionPoster(
+			MediaWikiServices::getInstance()->getWikiPageFactory(),
 			new StaticMentorManager( [
 				$user->getName() => new Mentor( $mentor, '' ),
 			] ), $context, 'foo' );

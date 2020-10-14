@@ -14,6 +14,7 @@ use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use Hooks;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\PageUpdater;
 use MWException;
@@ -27,6 +28,11 @@ use WikitextContent;
  * Base class for sending messages containing user questions to some target page.
  */
 abstract class QuestionPoster {
+
+	/**
+	 * @var WikiPageFactory
+	 */
+	private $wikiPageFactory;
 
 	/**
 	 * @var IContextSource
@@ -89,14 +95,16 @@ abstract class QuestionPoster {
 	private $sectionHeader;
 
 	/**
+	 * @param WikiPageFactory $wikiPageFactory
 	 * @param IContextSource $context
 	 * @param string $body
 	 * @param string $relevantTitle
 	 * @throws UserNotLoggedIn
 	 */
 	public function __construct(
-		IContextSource $context, $body, $relevantTitle = ''
+		WikiPageFactory $wikiPageFactory, IContextSource $context, $body, $relevantTitle = ''
 	) {
+		$this->wikiPageFactory = $wikiPageFactory;
 		$this->context = $context;
 		$this->relevantTitle = $relevantTitle;
 		if ( $this->getContext()->getUser()->isAnon() ) {
@@ -155,7 +163,7 @@ abstract class QuestionPoster {
 	 * @return string Content model of the target page. One of the CONTENT_MODEL_* constants.
 	 */
 	protected function getTargetContentModel() {
-		return $this->getTargetTitle()->getContentModel();
+		return $this->targetTitle->getContentModel();
 	}
 
 	/**
@@ -211,7 +219,7 @@ abstract class QuestionPoster {
 	 */
 	private function submitStructuredDiscussions() {
 		$workflowLoaderFactory = Container::get( 'factory.loader.workflow' );
-		$loader = $workflowLoaderFactory->createWorkflowLoader( $this->getTargetTitle() );
+		$loader = $workflowLoaderFactory->createWorkflowLoader( $this->targetTitle );
 		$blocks = $loader->handleSubmit(
 			$this->getContext(),
 			'new-topic',
@@ -431,7 +439,19 @@ abstract class QuestionPoster {
 	/**
 	 * @return Title The page where the question should be posted.
 	 */
-	abstract protected function getTargetTitle();
+	protected function getTargetTitle() : Title {
+		$title = $this->getDirectTargetTitle();
+		if ( $title->isRedirect() ) {
+			$page = $this->wikiPageFactory->newFromTitle( $title );
+			return $page->getRedirectTarget();
+		}
+		return $title;
+	}
+
+	/**
+	 * @return Title The page where the question should be posted (barring redirects).
+	 */
+	abstract protected function getDirectTargetTitle();
 
 	/**
 	 * @return IContextSource
@@ -456,7 +476,7 @@ abstract class QuestionPoster {
 		$errors = $permissionsManager->getPermissionErrors(
 			'edit',
 			$this->getContext()->getUser(),
-			$this->getTargetTitle()
+			$this->targetTitle
 		);
 
 		if ( count( $errors ) ) {
@@ -479,8 +499,8 @@ abstract class QuestionPoster {
 	protected function runEditFilterMergedContentHook( Content $content, $summary ) {
 		$derivativeContext = new DerivativeContext( $this->getContext() );
 		$derivativeContext->setConfig( MediaWikiServices::getInstance()->getMainConfig() );
-		$derivativeContext->setTitle( $this->getTargetTitle() );
-		$derivativeContext->setWikiPage( WikiPage::factory( $this->getTargetTitle() ) );
+		$derivativeContext->setTitle( $this->targetTitle );
+		$derivativeContext->setWikiPage( WikiPage::factory( $this->targetTitle ) );
 		$status = new Status();
 		if ( !Hooks::run( 'EditFilterMergedContent', [
 			$derivativeContext,

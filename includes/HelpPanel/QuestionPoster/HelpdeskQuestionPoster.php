@@ -37,7 +37,7 @@ class HelpdeskQuestionPoster extends QuestionPoster {
 	 * @inheritDoc
 	 * @throws ConfigException
 	 */
-	protected function getTargetTitle() {
+	protected function getDirectTargetTitle() {
 		return HelpPanel::getHelpDeskTitle( $this->getContext()->getConfig() );
 	}
 
