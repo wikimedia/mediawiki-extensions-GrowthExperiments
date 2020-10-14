@@ -48,10 +48,15 @@
 
 #mw-ge-homepage-suggestededits-info {
 	.oo-ui-buttonElement-button {
+		padding: 0;
+		// 20px for the icon + 2*1px for the border
+		min-width: 22px;
+		min-height: 22px;
+
 		.oo-ui-iconElement-icon {
 			width: 20px;
-			// Needed to center the icon in the button element container.
-			margin-left: 2px;
+			height: 20px;
+			left: 0;
 		}
 	}
 }
@@ -175,6 +180,7 @@ body.mw-special-Homepage {
 
 	.growthexperiments-homepage-module-body {
 		flex-grow: 1;
+		padding-top: 4px;
 	}
 
 	.growthexperiments-homepage-module-footer {
@@ -222,18 +228,6 @@ body.mw-special-Homepage {
 
 	&.growthexperiments-homepage-module-desktop {
 		background-color: @suggestedEditsBackgroundColor;
-
-		.growthexperiments-homepage-module-header {
-			// Ensure that the box shown on hover for the SE info icon can
-			// display, since we are shifting it farther to the right.
-			overflow: visible;
-
-			#mw-ge-homepage-suggestededits-info {
-				// Align the edge of the unpadded info icon with the filters
-				// which display below it.
-				margin-right: -9px;
-			}
-		}
 
 		&.growthexperiments-homepage-module.activated {
 			border: transparent;
