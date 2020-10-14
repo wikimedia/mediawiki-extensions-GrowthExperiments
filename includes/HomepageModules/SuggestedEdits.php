@@ -249,7 +249,7 @@ class SuggestedEdits extends BaseModule {
 			if ( $tasks instanceof StatusValue ) {
 				$data['task-preview'] = [ 'error' => Status::wrap( $tasks )->getMessage()->parse() ];
 			} elseif ( $tasks->count() === 0 ) {
-				$data['task-preview'] = [];
+				$data['task-preview'] = [ 'noresults' => true ];
 			} else {
 				$task = $tasks[0];
 				$templates = null;
