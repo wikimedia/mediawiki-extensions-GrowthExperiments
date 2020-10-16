@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"CiaPan",
+			"Nux",
 			"Tar Lócesilion",
 			"Woytecr"
 		]
@@ -14,5 +15,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Sekcja \"Zadaj pytanie swojemu przewodnikowi\" w panelu pomocy",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Panel \"Zapytaj na forum pomocy\" (stara nazwa)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Panel \"Zadaj pytanie swojemu przewodnikowi\" na stronie startowej dla nowicjuszy (stara nazwa)",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "Powiązany tytuł strony, jeśli został wybrany, dołączany do pytania."
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Powiązany tytuł strony, jeśli został wybrany, dołączany do pytania.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Aby zadać pytanie musisz się zalogować."
 }
