@@ -6,6 +6,7 @@ use DerivativeContext;
 use FauxRequest;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use HashConfig;
+use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
 use RequestContext;
 use Status;
@@ -34,7 +35,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiTestCase {
 
 		$this->expectException( \UserNotLoggedIn::class );
 
-		( new HelpdeskQuestionPoster( $context, 'foo' ) );
+		( new HelpdeskQuestionPoster( $this->getWikiPageFactory(), $context, 'foo' ) );
 	}
 
 	/**
@@ -44,7 +45,8 @@ class HelpdeskQuestionPosterTest extends MediaWikiTestCase {
 	 */
 	public function testSubmitExistingTarget() {
 		$this->insertPage( 'HelpDeskTest', '' );
-		$questionPoster = new HelpdeskQuestionPoster( $this->buildContext(), 'a great question' );
+		$questionPoster = new HelpdeskQuestionPoster( $this->getWikiPageFactory(),
+			$this->buildContext(), 'a great question' );
 		$questionPoster->submit();
 		$revision = $questionPoster->getRevisionId();
 		$this->assertGreaterThan( 0, $revision );
@@ -63,6 +65,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiTestCase {
 	public function testSubmitNewTarget() {
 		$title = $this->getNonexistingTestPage()->getTitle();
 		$questionPoster = new HelpdeskQuestionPoster(
+			$this->getWikiPageFactory(),
 			$this->buildContext( $title->getPrefixedDBkey() ),
 			'a great question'
 		);
@@ -82,12 +85,14 @@ class HelpdeskQuestionPosterTest extends MediaWikiTestCase {
 	 */
 	public function testValidateRelevantTitle() {
 		$this->insertPage( 'sample' );
-		$questionPoster = new HelpdeskQuestionPoster( $this->buildContext(), 'blah', 'sample' );
+		$questionPoster = new HelpdeskQuestionPoster( $this->getWikiPageFactory(),
+			$this->buildContext(), 'blah', 'sample' );
 		$this->assertEquals(
 			Status::newGood(),
 			$questionPoster->validateRelevantTitle()
 		);
-		$questionPoster = new HelpdeskQuestionPoster( $this->buildContext(), 'blah', '>123' );
+		$questionPoster = new HelpdeskQuestionPoster( $this->getWikiPageFactory(),
+			$this->buildContext(), 'blah', '>123' );
 		$this->assertEquals(
 			Status::newFatal( 'growthexperiments-help-panel-questionposter-invalid-title' ),
 			$questionPoster->validateRelevantTitle()
@@ -105,6 +110,10 @@ class HelpdeskQuestionPosterTest extends MediaWikiTestCase {
 			'GEHelpPanelHelpDeskTitle' => $helpDeskTitle,
 		] ) );
 		return $context;
+	}
+
+	private function getWikiPageFactory() {
+		return MediaWikiServices::getInstance()->getWikiPageFactory();
 	}
 
 }

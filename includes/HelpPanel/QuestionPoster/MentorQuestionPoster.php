@@ -6,6 +6,7 @@ use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\WikiConfigException;
 use IContextSource;
+use MediaWiki\Page\WikiPageFactory;
 use UserNotLoggedIn;
 
 /**
@@ -17,6 +18,7 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 	protected $mentorManager;
 
 	/**
+	 * @param WikiPageFactory $wikiPageFactory
 	 * @param MentorManager $mentorManager
 	 * @param IContextSource $context
 	 * @param string $body
@@ -24,13 +26,14 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 	 * @throws UserNotLoggedIn
 	 */
 	public function __construct(
+		WikiPageFactory $wikiPageFactory,
 		MentorManager $mentorManager,
 		IContextSource $context,
 		$body,
 		$relevantTitle = ''
 	) {
 		$this->mentorManager = $mentorManager;
-		parent::__construct( $context, $body, $relevantTitle );
+		parent::__construct( $wikiPageFactory, $context, $body, $relevantTitle );
 	}
 
 	/**
@@ -53,7 +56,7 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 	 * @inheritDoc
 	 * @throws WikiConfigException If there's anything wrong with the current user's mentor
 	 */
-	protected function getTargetTitle() {
+	protected function getDirectTargetTitle() {
 		$mentor = $this->mentorManager->getMentorForUser( $this->getContext()->getUser() );
 		return $mentor->getMentorUser()->getTalkPage();
 	}

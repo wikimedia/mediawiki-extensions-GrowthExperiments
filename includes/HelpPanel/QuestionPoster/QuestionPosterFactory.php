@@ -4,6 +4,7 @@ namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
 use GrowthExperiments\Mentorship\MentorManager;
 use IContextSource;
+use MediaWiki\Page\WikiPageFactory;
 use UserNotLoggedIn;
 use Wikimedia\Assert\Assert;
 
@@ -23,13 +24,18 @@ class QuestionPosterFactory {
 	/** The question is sent to the talk page of the asking user's mentor. */
 	public const TARGET_MENTOR_TALK = 'mentor talk page';
 
+	/** @var WikiPageFactory */
+	private $wikiPageFactory;
+
 	/** @var MentorManager */
 	private $mentorManager;
 
 	/**
+	 * @param WikiPageFactory $wikiPageFactory
 	 * @param MentorManager $mentorManager
 	 */
-	public function __construct( MentorManager $mentorManager ) {
+	public function __construct( WikiPageFactory $wikiPageFactory, MentorManager $mentorManager ) {
+		$this->wikiPageFactory = $wikiPageFactory;
 		$this->mentorManager = $mentorManager;
 	}
 
@@ -57,12 +63,12 @@ class QuestionPosterFactory {
 			'$target', 'must be one of the QuestionPosterFactory::TARGET_* constants' );
 
 		if ( $target === self::TARGET_HELPDESK ) {
-			return new HelpdeskQuestionPoster( $context, $body, $relevantTitle );
+			return new HelpdeskQuestionPoster( $this->wikiPageFactory, $context, $body, $relevantTitle );
 		} elseif ( $source === self::SOURCE_HELP_PANEL ) {
-			return new HelppanelMentorQuestionPoster( $this->mentorManager,
+			return new HelppanelMentorQuestionPoster( $this->wikiPageFactory, $this->mentorManager,
 				$context, $body, $relevantTitle );
 		} else {
-			return new HomepageMentorQuestionPoster( $this->mentorManager,
+			return new HomepageMentorQuestionPoster( $this->wikiPageFactory, $this->mentorManager,
 				$context, $body, $relevantTitle );
 		}
 	}

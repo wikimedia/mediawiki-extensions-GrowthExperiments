@@ -2,6 +2,8 @@
 
 use GrowthExperiments\Api\ApiHelpPanelPostQuestion;
 use MediaWiki\Block\DatabaseBlock;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
 
 /**
  * @group API
@@ -103,6 +105,26 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 			$this->mUser,
 			'csrf'
 		);
+	}
+
+	/**
+	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster::getTargetTitle
+	 */
+	public function testRedirectTarget() {
+		$this->editPage( 'HelpDeskTest', '#REDIRECT [[HelpDeskTest2]]' );
+		Title::clearCaches();
+		$ret = $this->doApiRequestWithToken(
+			$this->getParams( 'lorem ipsum' ),
+			null,
+			$this->mUser,
+			'csrf'
+		);
+		$this->assertSame( 'success', $ret[0]['helppanelquestionposter']['result'] );
+		$revisionId = $ret[0]['helppanelquestionposter']['revision'];
+		$revision = MediaWikiServices::getInstance()->getRevisionLookup()->getRevisionById(
+			$revisionId, IDBAccessObject::READ_LATEST );
+		$this->assertInstanceOf( RevisionRecord::class, $revision );
+		$this->assertSame( $revision->getPageAsLinkTarget()->getDBkey(), 'HelpDeskTest2' );
 	}
 
 }
