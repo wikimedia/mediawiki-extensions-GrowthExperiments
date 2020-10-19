@@ -150,15 +150,11 @@ class SpecialHomepage extends SpecialPage {
 			}
 		} else {
 			$mode = HomepageModule::RENDER_DESKTOP;
-			// Display the homepage_welcome tour, but only if the user hasn't already seen the
-			// homepage_discovery tour (T229044)
-			if ( !$this->getUser()->getBoolOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_DISCOVERY ) ) {
-				Util::maybeAddGuidedTour(
-					$out,
-					TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME,
-					'ext.guidedTour.tour.homepage_welcome'
-				);
-			}
+			Util::maybeAddGuidedTour(
+				$out,
+				TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME,
+				'ext.guidedTour.tour.homepage_welcome'
+			);
 			$this->renderDesktop();
 		}
 
