@@ -852,8 +852,8 @@ class HomepageHooks implements
 		return [
 			// used in Homepage.SuggestedEdits.less
 			'cardContainerWrapperHeight' => $isMobile ? '16em' : '20.5em',
-			'cardImageHeight' => $isMobile ? '128px' : '160px',
-			'cardWrapperWidth' => $isMobile ? '260px' : '368px',
+			'cardImageHeight' => $isMobile ? '128px' : '188px',
+			'cardWrapperWidth' => $isMobile ? '260px' : '332px',
 			'cardWrapperWidthLegacy' => '260px',
 			'cardWrapperPadding' => $isMobile ? '0' : '8px',
 			'cardWrapperBorderRadius' => $isMobile ? '0' : '2px',
