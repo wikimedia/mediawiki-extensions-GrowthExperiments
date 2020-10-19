@@ -46,7 +46,6 @@ class TourHooks implements
 		if ( !$out->getTitle()->isSpecial( 'WelcomeSurvey' ) &&
 			 !$out->getTitle()->isSpecial( 'Homepage' ) &&
 			 HomepageHooks::isHomepageEnabled( $out->getUser() ) &&
-			 !$this->experimentUserManager->isUserInVariant( $out->getUser(), [ 'C', 'D' ] ) &&
 			 !$this->userOptionsLookup->getBoolOption( $out->getUser(), self::TOUR_COMPLETED_HOMEPAGE_WELCOME )
 		) {
 			Util::maybeAddGuidedTour(
