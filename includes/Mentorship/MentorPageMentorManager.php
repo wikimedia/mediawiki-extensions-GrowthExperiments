@@ -2,8 +2,8 @@
 
 namespace GrowthExperiments\Mentorship;
 
-use DeferredUpdates;
 use GrowthExperiments\WikiConfigException;
+use JobQueueGroup;
 use Language;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\User\UserFactory;
@@ -18,6 +18,7 @@ use Psr\Log\NullLogger;
 use TitleFactory;
 use User;
 use UserArray;
+use UserOptionsUpdateJob;
 use WikiPage;
 // phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
 use WikitextContent;
@@ -110,13 +111,15 @@ class MentorPageMentorManager implements MentorManager, LoggerAwareInterface {
 
 	/** @inheritDoc */
 	public function setMentorForUser( UserIdentity $user, UserIdentity $mentor ): void {
-		// We cannot use a master connection on what is possibly a GET request, so defer that.
+		// We cannot use a master connection on what is possibly a GET request, so save via the
+		// job queue.
 		// But set the option immediately in UserOptionsManager's in-process cache to avoid
 		// race conditions.
 		$this->userOptionsManager->setOption( $user, static::MENTOR_PREF, $mentor->getId() );
-		DeferredUpdates::addCallableUpdate( function () use ( $user ) {
-			$this->userOptionsManager->saveOptions( $user );
-		} );
+		JobQueueGroup::singleton()->lazyPush( new UserOptionsUpdateJob( [
+			'userId' => $user->getId(),
+			'options' => [ static::MENTOR_PREF => $mentor->getId() ]
+		] ) );
 	}
 
 	/** @inheritDoc */
