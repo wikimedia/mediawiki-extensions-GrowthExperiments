@@ -49,6 +49,16 @@ class StaticConfigurationLoader implements ConfigurationLoader {
 	}
 
 	/** @inheritDoc */
+	public function getTopics(): array {
+		if ( $this->topics instanceof StatusValue ) {
+			return [];
+		}
+		return array_combine( array_map( function ( Topic $topic ) {
+			return $topic->getId();
+		}, $this->topics ), $this->topics );
+	}
+
+	/** @inheritDoc */
 	public function loadTopics() {
 		return $this->topics;
 	}

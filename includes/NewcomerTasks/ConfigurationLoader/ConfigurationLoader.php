@@ -30,6 +30,15 @@ interface ConfigurationLoader {
 	public function getTaskTypes(): array;
 
 	/**
+	 * Convenience method to get topics as an array of topic id => topic.
+	 *
+	 * If an error is generated while loading, an empty array is returned.
+	 *
+	 * @return array
+	 */
+	public function getTopics(): array;
+
+	/**
 	 * Load configured topics.
 	 * @return Topic[]|StatusValue
 	 */

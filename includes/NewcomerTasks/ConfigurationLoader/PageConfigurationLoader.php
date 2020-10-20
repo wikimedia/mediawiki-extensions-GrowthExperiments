@@ -137,6 +137,17 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	}
 
 	/** @inheritDoc */
+	public function getTopics(): array {
+		$topics = $this->loadTopics();
+		if ( $topics instanceof StatusValue ) {
+			return [];
+		}
+		return array_combine( array_map( function ( Topic $topic ) {
+			return $topic->getId();
+		}, $topics ), $topics ) ?: [];
+	}
+
+	/** @inheritDoc */
 	public function loadTopics() {
 		if ( !$this->topicConfigurationPage ) {
 			return [];
