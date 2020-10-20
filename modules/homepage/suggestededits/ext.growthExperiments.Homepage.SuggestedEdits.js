@@ -78,9 +78,6 @@
 		}
 
 		this.pager = new PagerWidget();
-		// Fake message so that the pager takes up space that will be styled
-		// with the skeleton.
-		this.pager.setMessage( 0, 0 );
 		this.previousWidget = new PreviousNextWidget( { direction: 'Previous' } )
 			.connect( this, { click: 'onPreviousCard' } );
 		this.nextWidget = new PreviousNextWidget( { direction: 'Next' } )
@@ -90,7 +87,6 @@
 		if ( !this.$pagerWrapper.length ) {
 			this.$pagerWrapper = $( '<div>' ).addClass( 'suggested-edits-pager' ).appendTo( this.$element );
 		}
-		this.$pagerWrapper.addClass( 'skeleton' );
 		$previous = this.$element.find( '.suggested-edits-previous' );
 		if ( !$previous.length ) {
 			$previous = $( '<div>' ).addClass( 'suggested-edits-previous' ).appendTo( this.$element );
@@ -111,7 +107,7 @@
 			$filters = $( '<div>' ).addClass( 'suggested-edits-filters' ).appendTo( $filtersContainer );
 		}
 
-		this.$pagerWrapper.append( this.pager.$element );
+		this.$pagerWrapper.empty().append( this.pager.$element );
 		$previous.append( this.previousWidget.$element );
 		$next.append( this.nextWidget.$element );
 		$filters.empty().append( this.filters.$element );
@@ -262,12 +258,12 @@
 	};
 
 	SuggestedEditsModule.prototype.updatePager = function () {
-		var totalCount = this.taskQueueLoading ? undefined : this.taskQueue.length;
-
 		if ( this.taskQueue.length ) {
-			this.pager.setMessage( this.queuePosition + 1, totalCount );
+			this.pager.setMessage(
+				this.queuePosition + 1,
+				mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' ).taskCount
+			);
 			this.pager.toggle( true );
-			this.$pagerWrapper.removeClass( 'skeleton' );
 		} else {
 			this.pager.toggle( this.currentCard instanceof EditCardWidget );
 		}

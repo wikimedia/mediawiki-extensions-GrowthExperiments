@@ -9,21 +9,17 @@
 
 	/**
 	 * @param {number} currentPosition
-	 * @param {number|undefined} totalCount Can be undefined when some of the tasks are still loading.
+	 * @param {number} totalCount
 	 */
 	SuggestedEditPagerWidget.prototype.setMessage = function ( currentPosition, totalCount ) {
 		var currentPositionText, totalCountText;
 
-		if ( totalCount !== undefined && currentPosition > totalCount ) {
+		if ( currentPosition > totalCount ) {
 			currentPositionText = mw.message( 'growthexperiments-homepage-suggestededits-pager-end' ).text();
 		} else {
 			currentPositionText = mw.language.convertNumber( currentPosition );
 		}
-		if ( totalCount === undefined ) {
-			totalCountText = mw.message( 'growthexperiments-homepage-suggestededits-pager-unknown-count' ).plain();
-		} else {
-			totalCountText = mw.language.convertNumber( totalCount );
-		}
+		totalCountText = mw.language.convertNumber( totalCount );
 
 		this.$element.html( mw.message(
 			'growthexperiments-homepage-suggestededits-pager', currentPositionText, totalCountText
