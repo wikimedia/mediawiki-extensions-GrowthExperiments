@@ -192,6 +192,12 @@ StartEditingDialog.prototype.attachActions = function () {
 
 StartEditingDialog.prototype.getSetupProcess = function ( data ) {
 	var dialog = this;
+	// HACK: Don't make the content div focusable in non-modal mode. This avoids scrolling (T265751)
+	if ( this.getManager().modal ) {
+		this.$content.attr( 'tabindex', -1 );
+	} else {
+		this.$content.removeAttr( 'tabindex' );
+	}
 	data = $.extend( {
 		actions: this.constructor.static.actions.filter( function ( action ) {
 			// If activateWhenDone is true, remove 'done'; otherwise remove 'activate'
