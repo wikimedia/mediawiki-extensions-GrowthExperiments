@@ -3,7 +3,7 @@
 @import 'ext.growthExperiments.variables.less';
 
 .growthexperiments-homepage-container {
-	display: flex;
+	.flex-display();
 }
 
 .growthexperiments-homepage-overlay-container {
@@ -130,28 +130,33 @@ body.mw-special-Homepage {
 		.growthexperiments-homepage-container {
 			align-items: start;
 
+			&-user-variant-C,
+			&-user-variant-D {
+				.flex-wrap();
+			}
+
 			&-user-variant-A {
 				min-width: 800px;
 				max-width: 1600px;
 			}
 
-			&-user-variant-C,
-			&-user-variant-D {
-				min-width: @homepageLayoutMinWidth;
-				max-width: @homepageLayoutMaxWidth;
-			}
-
 			.growthexperiments-homepage-group-sidebar {
+				&-user-variant-C,
+				&-user-variant-D {
+					.flex( 1, 1, 300px );
+					.flex-display();
+					.flex-wrap();
+				}
+
 				&-user-variant-A {
 					width: 25%;
 				}
 
-				&-user-variant-C,
-				&-user-variant-D {
-					width: 36%;
-
-					@media all and ( min-width: @homepageLayoutWideBreakpoint ) {
-						width: 50%;
+				&-subgroup-primary,
+				&-subgroup-secondary {
+					&-user-variant-C,
+					&-user-variant-D {
+						.flex( 1, 0, 300px );
 					}
 				}
 
@@ -161,6 +166,11 @@ body.mw-special-Homepage {
 			}
 
 			.growthexperiments-homepage-group-main {
+				&-user-variant-C,
+				&-user-variant-D {
+					.flex( 1, 0, 480px );
+				}
+
 				&-user-variant-A {
 					width: 75%;
 					// Set a minimum width to avoid issues with the wide-format
@@ -176,18 +186,10 @@ body.mw-special-Homepage {
 					min-width: ~'min( 1200px, 100% - 300px )';
 				}
 
-				&-user-variant-C,
-				&-user-variant-D {
-					min-width: @homepageLayoutMinWidth;
-					width: 64%;
-					flex-shrink: 0;
-
-					@media all and ( min-width: @homepageLayoutWideBreakpoint ) {
-						width: 50%;
-					}
-				}
-
 				&-subgroup-primary {
+					.flex-display();
+					.flex-wrap();
+
 					.growthexperiments-homepage-module-impact.growthexperiments-homepage-module-user-variant-A,
 					.growthexperiments-homepage-module-mentorship.growthexperiments-homepage-module-user-variant-A,
 					.growthexperiments-homepage-module-suggested-edits.growthexperiments-homepage-module-user-variant-A {
@@ -202,8 +204,6 @@ body.mw-special-Homepage {
 					.growthexperiments-homepage-module-suggested-edits.growthexperiments-homepage-module-user-variant-D {
 						width: calc( 100% ~'-'1.5 * @homepageModuleMargin );
 					}
-					display: flex;
-					.flex-wrap( wrap );
 
 					.growthexperiments-homepage-module-start {
 						width: 100%;
@@ -291,77 +291,34 @@ body.mw-special-Homepage {
 			font-size: 0.8em;
 		}
 	}
-}
 
-body.mw-special-Homepage.growthexperiments-homepage-user-variant-A {
-	@media all and ( max-width: @homepageLayoutNarrowBreakpoint ) {
-		.growthexperiments-homepage-container {
-			flex-direction: column;
+	&.growthexperiments-homepage-user-variant-A {
+		@media all and ( max-width: @homepageLayoutNarrowBreakpoint ) {
+			.growthexperiments-homepage-container {
+				flex-direction: column;
 
-			.growthexperiments-homepage-group-main {
-				width: 100%;
-			}
-
-			.growthexperiments-homepage-group-sidebar {
-				width: 100%;
-
-				&-subgroup-primary,
-				&-subgroup-secondary {
-					display: flex;
+				.growthexperiments-homepage-group-main {
+					width: 100%;
 				}
 
-				.growthexperiments-homepage-module {
-					// Same width as the other non-start modules
-					width: calc( 50% ~'-' 1.5 * (@homepageModuleMargin + 6px) );
-					margin-left: @homepageModuleMargin;
-					margin-right: @homepageModuleMargin;
+				.growthexperiments-homepage-group-sidebar {
+					width: 100%;
 
-					&:first-child {
-						margin-left: 0;
+					&-subgroup-primary,
+					&-subgroup-secondary {
+						.flex-display();
 					}
-				}
-			}
-		}
-	}
-}
 
-body.mw-special-Homepage.growthexperiments-homepage-user-variant-C,
-body.mw-special-Homepage.growthexperiments-homepage-user-variant-D {
-	@media all and ( max-width: @homepageLayoutNarrowBreakpoint ) {
-		.growthexperiments-homepage-container {
-			flex-direction: column;
+					.growthexperiments-homepage-module {
+						// Same width as the other non-start modules
+						width: calc( 50% ~'-' 1.5 * ( @homepageModuleMargin + 6px ) );
+						margin-left: @homepageModuleMargin;
+						margin-right: @homepageModuleMargin;
 
-			.growthexperiments-homepage-group-main {
-				width: 100%;
-			}
-
-			.growthexperiments-homepage-group-sidebar {
-				display: flex;
-				width: 100%;
-
-				&-subgroup-primary,
-				&-subgroup-secondary {
-					width: calc( 50% ~'-' @homepageModuleMarginVariationCVariationD );
-				}
-			}
-		}
-	}
-
-	@media all and ( min-width: @homepageLayoutWideBreakpoint ) {
-		&.growthexperiments-homepage-desktop .growthexperiments-homepage-container {
-			flex-direction: row;
-
-			.growthexperiments-homepage-group-sidebar {
-				display: flex;
-				width: calc( 50% ~'-' @homepageModuleMarginVariationCVariationD );
-
-				&-subgroup-primary,
-				&-subgroup-secondary {
-					width: calc( 50% ~'-' @homepageModuleMarginVariationCVariationD );
-				}
-
-				.growthexperiments-homepage-module {
-					width: calc( 100% ~'-' @homepageModuleMarginVariationCVariationD );
+						&:first-child {
+							margin-left: 0;
+						}
+					}
 				}
 			}
 		}

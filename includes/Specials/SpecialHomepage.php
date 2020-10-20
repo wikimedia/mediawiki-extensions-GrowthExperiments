@@ -300,7 +300,7 @@ class SpecialHomepage extends SpecialPage {
 			foreach ( $subGroups as $subGroup => $moduleNames ) {
 				$out->addHTML( Html::openElement( 'div', [
 					'class' => "growthexperiments-homepage-group-$group-subgroup-$subGroup " .
-						"growthexperiments-homepage-$group-subgroup-$subGroup-user-variant-" .
+						"growthexperiments-homepage-group-$group-subgroup-$subGroup-user-variant-" .
 						$this->experimentUserManager->getVariant( $this->getUser() )
 				] ) );
 				foreach ( $moduleNames as $moduleName ) {
