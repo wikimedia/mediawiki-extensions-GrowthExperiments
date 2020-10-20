@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Alexander Yukal",
+			"Andriy.v",
 			"Base",
 			"Gzhegozh",
 			"Movses",
@@ -61,7 +62,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Отримати пропозиції",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Готово",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Спробуйте спочатку деякі <strong>Легкі</strong> пропоновані редагування",
-	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "Є багато різних шляхів, якими ви можете покращити проект {{SITENAME}}. Спільнота редакторів перелічила статті, які потребують різного плану допомоги.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "Є багато різних шляхів, якими ви можете покращити проєкт {{SITENAME}}. Спільнота редакторів перелічила статті, які потребують різного плану допомоги.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Легкі",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Середні",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Важкі",
