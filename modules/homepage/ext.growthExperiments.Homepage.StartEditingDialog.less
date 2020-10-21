@@ -258,7 +258,9 @@
 				background-image: url( ../../images/difficulty-square-ltr.svg );
 				background-size: 128px;
 				background-position-y: center;
-				padding: 2.5em 1.5em 2.5em calc( 128px ~'+' 1em );
+				padding: 2.5em 1.5em 2.5em;
+				// HACK: Work around a CSSJanus bug where padding: 2.5em 1.5em 2.5em calc( ... ) isn't flipped
+				padding-left: calc( 128px ~'+' 1em );
 			}
 
 			.growthexperiments-homepage-mobile-summary &,
