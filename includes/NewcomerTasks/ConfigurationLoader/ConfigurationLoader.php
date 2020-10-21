@@ -25,7 +25,7 @@ interface ConfigurationLoader {
 	 * If an error is generated while loading task types, an empty array is
 	 * returned.
 	 *
-	 * @return array
+	 * @return TaskType[]
 	 */
 	public function getTaskTypes(): array;
 
@@ -34,7 +34,7 @@ interface ConfigurationLoader {
 	 *
 	 * If an error is generated while loading, an empty array is returned.
 	 *
-	 * @return array
+	 * @return Topic[]
 	 */
 	public function getTopics(): array;
 
