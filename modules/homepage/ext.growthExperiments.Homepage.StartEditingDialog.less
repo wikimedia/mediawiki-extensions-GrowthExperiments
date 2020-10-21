@@ -262,8 +262,10 @@
 				background-image: url( ../../images/difficulty-square-ltr.svg );
 				background-size: 128px;
 				background-position-y: top;
-				padding: 0 @startEditingDialogSidePadding 24px calc( 128px ~'+' 1em );
-				// The padding-bottom: 24px; above doesn't quite work, becausethe height of the
+				padding: 0 @startEditingDialogSidePadding 24px;
+				// HACK: Work around a CSSJanus bug where padding: 0 24px 24px calc( ... ) isn't flipped
+				padding-left: calc( 128px ~'+' 1em );
+				// The padding-bottom: 24px; above doesn't quite work, because the height of the
 				// image isn't counted as part of the height of this div because it's a background
 				// image. Address this by using a min-height.
 				min-height: 128px + 24px;
