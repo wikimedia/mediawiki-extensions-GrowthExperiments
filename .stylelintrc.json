@@ -2,6 +2,7 @@
 	"extends": "stylelint-config-wikimedia",
 	"rules": {
 		"selector-max-id": null,
+		"no-descending-specificity": null,
 		"function-comma-newline-after": "always-multi-line",
 		"function-comma-space-after": "always-single-line",
 		"function-parentheses-newline-inside": "always-multi-line",
