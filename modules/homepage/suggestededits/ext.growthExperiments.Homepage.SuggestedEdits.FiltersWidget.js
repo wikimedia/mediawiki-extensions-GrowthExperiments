@@ -140,6 +140,8 @@
 	/**
 	 * Update the button label and icon depending on task types selected.
 	 *
+	 * Keep this function in sync with HomepageModules\SuggestedEdits::getFiltersButtonGroupWidget()
+	 *
 	 * @param {string[]} taskTypeSearch List of task types to search for
 	 * @param {string[]} topicSearch List of topics to search for
 	 */

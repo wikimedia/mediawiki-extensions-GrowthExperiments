@@ -114,7 +114,7 @@
 		this.$pagerWrapper.append( this.pager.$element );
 		$previous.append( this.previousWidget.$element );
 		$next.append( this.nextWidget.$element );
-		$filters.append( this.filters.$element );
+		$filters.empty().append( this.filters.$element );
 	}
 
 	OO.inheritClass( SuggestedEditsModule, OO.ui.Widget );

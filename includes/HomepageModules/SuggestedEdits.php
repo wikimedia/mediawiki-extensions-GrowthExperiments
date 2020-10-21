@@ -14,6 +14,8 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TemplateBasedTask;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use Html;
 use IContextSource;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
@@ -21,6 +23,7 @@ use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use Message;
+use OOUI\ButtonGroupWidget;
 use OOUI\ButtonWidget;
 use OOUI\IconWidget;
 use OOUI\Tag;
@@ -85,6 +88,9 @@ class SuggestedEdits extends BaseModule {
 
 	/** @var int */
 	private $unfilteredTasksetCount = null;
+
+	/** @var ButtonGroupWidget */
+	private $buttonGroupWidget;
 
 	/**
 	 * @param IContextSource $context
@@ -353,7 +359,9 @@ class SuggestedEdits extends BaseModule {
 		$isDesktop = $this->getMode() === self::RENDER_DESKTOP;
 		return Html::rawElement(
 			'div', [ 'class' => 'suggested-edits-module-wrapper' ],
-			( $isDesktop ? Html::element( 'div', [ 'class' => 'suggested-edits-filters' ] ) : '' ) .
+			( new Tag( 'div' ) )
+				->addClasses( [ 'suggested-edits-filters' ] )
+				->appendContent( $isDesktop ? $this->getFiltersButtonGroupWidget() : '' ) .
 			Html::element( 'div', [ 'class' => 'suggested-edits-pager' ] ) .
 			Html::rawElement( 'div', [ 'class' => 'suggested-edits-card-wrapper' ],
 				Html::element( 'div', [ 'class' => 'suggested-edits-previous' ] ) .
@@ -433,6 +441,139 @@ class SuggestedEdits extends BaseModule {
 	}
 
 	/**
+	 * Generate a button group widget with task and topic filters.
+	 *
+	 * This function should be kept in sync with
+	 * SuggestedEditsFiltersWidget.prototype.updateButtonLabelAndIcon
+	 * @return ButtonGroupWidget
+	 */
+	private function getFiltersButtonGroupWidget() : ButtonGroupWidget {
+		$buttons = [];
+		$user = $this->getContext()->getUser();
+		if ( self::isTopicMatchingEnabled( $this->getContext() ) ) {
+			// topicPreferences will be an empty array if the user had saved topics
+			// in the past, or null if they have never saved topics
+			$topicPreferences = $this->newcomerTasksUserOptionsLookup
+				->getTopicFilterWithoutFallback( $user );
+			$topicData = $this->configurationLoader->getTopics();
+			$topicLabel = '';
+			$addPulsatingDot = false;
+			$flags = [];
+			if ( !$topicPreferences ) {
+				if ( $topicPreferences === null ) {
+					$flags = [ 'progressive' ];
+					$addPulsatingDot = true;
+				}
+				$topicLabel =
+					$this->getContext()
+						->msg( 'growthexperiments-homepage-suggestededits-topic-filter-select-interests' )
+						->text();
+			} else {
+				$topicMessages = [];
+				foreach ( $topicPreferences as $topicPreference ) {
+					/** @var Topic $topic */
+					$topic = $topicData[$topicPreference];
+					if ( $topic instanceof Topic ) {
+						$topicMessages[] = $topic->getName( $this->getContext() );
+					}
+				}
+				array_filter( $topicMessages );
+				if ( count( $topicMessages ) ) {
+					if ( count( $topicMessages ) < 3 ) {
+						$topicLabel =
+							implode( $this->getContext()->msg( 'comma-separator' )->text(),
+								$topicMessages );
+					} else {
+						$topicLabel =
+							$this->getContext()
+								->msg( 'growthexperiments-homepage-suggestededits-topics-button-topic-count' )
+								->params( [
+										$this->getContext()
+											->getLanguage()
+											->parseFormattedNumber( count( $topicMessages ) )
+									] )
+								->text();
+					}
+				}
+			}
+
+			$topicFilterButtonWidget = new ButtonWidget( [
+				'label' => $topicLabel,
+				'flags' => $flags,
+				'classes' => [ 'topic-matching', 'topic-filter-button' ],
+				'indicator' => $this->getMode() === self::RENDER_DESKTOP ? null : 'down',
+				'icon' => 'funnel'
+			] );
+			if ( $addPulsatingDot ) {
+				$topicFilterButtonWidget->appendContent(
+					( new Tag( 'div' ) )->addClasses( [ 'mw-pulsating-dot' ] )
+				);
+			}
+			$buttons[] = $topicFilterButtonWidget;
+		}
+		$difficultyFilterButtonWidget = new ButtonWidget( [
+			'icon' => 'difficulty-outline',
+			'classes' => self::isTopicMatchingEnabled( $this->getContext() ) ? [ 'topic-matching'
+			] : [ '' ],
+			'label' => $this->getContext()->msg(
+				'growthexperiments-homepage-suggestededits-difficulty-filters-title'
+			)->text(),
+			'indicator' => $this->getMode() === self::RENDER_DESKTOP ? null : 'down'
+		] );
+
+		$levels = [];
+		$taskTypeData = $this->configurationLoader->getTaskTypes();
+		foreach ( $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ) as $taskTypeId ) {
+			/** @var TaskType $taskType */
+			$taskType = $taskTypeData[$taskTypeId];
+			$levels[ $taskType->getDifficulty() ] = true;
+		}
+		$taskTypeMessages = [];
+		$messageKey = $this->getMode() === self::RENDER_DESKTOP ?
+			'growthexperiments-homepage-suggestededits-difficulty-filter-label' :
+			'growthexperiments-homepage-suggestededits-difficulty-filter-label-mobile';
+
+		foreach ( [ 'easy', 'medium', 'hard' ] as $level ) {
+			if ( !isset( $levels[$level] ) ) {
+				continue;
+			}
+			// The following messages are used here:
+			// * growthexperiments-homepage-suggestededits-difficulty-filter-label-easy
+			// * growthexperiments-homepage-suggestededits-difficulty-filter-label-medium
+			// * growthexperiments-homepage-suggestededits-difficulty-filter-label-hard
+			$label = $this->getContext()->msg(
+				'growthexperiments-homepage-suggestededits-difficulty-filter-label-' . $level
+			);
+			$message = $this->getContext()->msg( $messageKey )
+				->params( $label )
+				->text();
+			$difficultyFilterButtonWidget->setLabel( $message );
+			// Icons: difficulty-easy, difficulty-medium, difficulty-hard
+			$difficultyFilterButtonWidget->setIcon( 'difficulty-' . $level );
+			$taskTypeMessages[] = $label;
+		}
+		if ( count( $taskTypeMessages ) > 1 ) {
+			$difficultyFilterButtonWidget->setIcon( 'difficulty-outline' );
+			$messageKey = $this->getMode() === self::RENDER_DESKTOP ?
+				'growthexperiments-homepage-suggestededits-difficulty-filter-label' :
+				'growthexperiments-homepage-suggestededits-difficulty-filter-label-mobile';
+			$message = $this->getContext()->msg( $messageKey )
+				->params( implode( $this->getContext()->msg( 'comma-separator' ),
+					$taskTypeMessages ) )
+				->text();
+			$difficultyFilterButtonWidget->setLabel( $message );
+		}
+
+		$buttons[] = $difficultyFilterButtonWidget;
+		$this->buttonGroupWidget = new ButtonGroupWidget( [
+			'class' => 'suggested-edits-filters',
+			'items' => $buttons,
+			'infusable' => true,
+		] );
+		return $this->buttonGroupWidget;
+	}
+
+	/**
 	 * Generate HTML identical to that of mw.libs.ge.SmallTaskCard
 	 * @return string
 	 */
@@ -486,6 +627,14 @@ class SuggestedEdits extends BaseModule {
 	/** @inheritDoc */
 	protected function getSubheaderTag() {
 		return 'div';
+	}
+
+	/** @inheritDoc */
+	protected function getModuleStyles() {
+		return array_merge(
+			parent::getModuleStyles(),
+			[ 'mediawiki.pulsatingdot' ]
+		);
 	}
 
 	/** @inheritDoc */
