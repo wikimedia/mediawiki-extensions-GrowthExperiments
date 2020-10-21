@@ -263,8 +263,13 @@
 			.growthexperiments-homepage-desktop & {
 				background-image: url( ../../images/difficulty-square-ltr.svg );
 				background-size: 128px;
-				background-position-y: center;
-				padding: 2.5em 1.5em 2.5em calc( 128px ~'+' 1em );
+				background-position-y: top;
+				padding: 0 @startEditingDialogSidePadding 24px calc( 128px ~'+' 1em );
+				// The padding-bottom: 24px; above doesn't quite work, becausethe height of the
+				// image isn't counted as part of the height of this div because it's a background
+				// image. Address this by using a min-height.
+				min-height: 128px + 24px;
+				.box-sizing( border-box );
 			}
 
 			.growthexperiments-homepage-mobile-summary &,
@@ -272,13 +277,15 @@
 				background-image: url( ../../images/difficulty-landscape-ltr.svg );
 				background-size: 216px 64px;
 				background-position-y: top;
-				padding: calc( 64px ~'+' 1em ) 1em 1.5em 0;
+				padding: calc( 64px ~'+' 1em ) @startEditingDialogSidePadding 16px 0;
 			}
 
 			// The image is not displayed in variant D
 			body.growthexperiments-homepage-user-variant-D & {
 				background-image: none;
-				padding: 0 @startEditingDialogSidePadding 24px 0;
+				padding-top: 0;
+				padding-left: 0;
+				min-height: unset;
 			}
 		}
 
@@ -286,6 +293,7 @@
 			color: @colorGray2;
 			font-weight: bold;
 			font-size: @headerFontSize;
+			margin-top: 0;
 			// Override margin reset on mobile
 			margin-bottom: 0.5em;
 
