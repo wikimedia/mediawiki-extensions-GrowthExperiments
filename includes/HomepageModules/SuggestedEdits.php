@@ -12,7 +12,6 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TemplateBasedTask;
-use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
@@ -25,6 +24,8 @@ use MediaWiki\MediaWikiServices;
 use Message;
 use OOUI\ButtonGroupWidget;
 use OOUI\ButtonWidget;
+use OOUI\Exception;
+use OOUI\HtmlSnippet;
 use OOUI\IconWidget;
 use OOUI\Tag;
 use Status;
@@ -362,7 +363,9 @@ class SuggestedEdits extends BaseModule {
 			( new Tag( 'div' ) )
 				->addClasses( [ 'suggested-edits-filters' ] )
 				->appendContent( $isDesktop ? $this->getFiltersButtonGroupWidget() : '' ) .
-			Html::element( 'div', [ 'class' => 'suggested-edits-pager' ] ) .
+			( new Tag( 'div' ) )
+			->addClasses( [ 'suggested-edits-pager' ] )
+			->appendContent( $this->getPager() ) .
 			Html::rawElement( 'div', [ 'class' => 'suggested-edits-card-wrapper' ],
 				Html::element( 'div', [ 'class' => 'suggested-edits-previous' ] ) .
 				Html::element( 'div', [ 'class' => 'suggested-edits-card' ] ) .
@@ -393,10 +396,8 @@ class SuggestedEdits extends BaseModule {
 			&& $this->getTaskSet()->count() > 0;
 
 		if ( $showTaskPreview ) {
-			$taskCount = min( $this->getTaskSet()->getTotalCount(),
-				SearchTaskSuggester::DEFAULT_LIMIT );
 			$taskPager = $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
-				->numParams( 1, $taskCount )
+				->numParams( 1, $this->getUnfilteredTaskSetCountReducedToTaskQueueLength() )
 				->text();
 			$button = new ButtonWidget( [
 				'label' => $this->getContext()->msg(
@@ -704,7 +705,7 @@ class SuggestedEdits extends BaseModule {
 		// these will be updated on the client side as needed
 		$data = [
 			'taskTypes' => $taskTypes ?? $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-			'taskCount' => $this->unfilteredTasksetCount,
+			'taskCount' => $this->getUnfilteredTaskSetCountReducedToTaskQueueLength()
 		];
 		if ( self::isTopicMatchingEnabled( $this->getContext() ) ) {
 			$data['topics'] = $topics ?? $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user );
@@ -719,6 +720,34 @@ class SuggestedEdits extends BaseModule {
 		return [
 			'GEHomepageSuggestedEditsEnableTopics' => self::isTopicMatchingEnabled( $this->getContext() )
 		];
+	}
+
+	/**
+	 * Get the pager text (1 of X) to show on server side render.
+	 *
+	 * This code roughly corresponds to SuggestedEditPagerWidget.prototype.setMessage
+	 *
+	 * @return string
+	 * @throws Exception
+	 */
+	private function getPager() {
+		$taskSet = $this->getTaskSet();
+		if ( !$taskSet instanceof TaskSet || !$taskSet->count() ) {
+			return '';
+		}
+		return new HtmlSnippet( $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
+				->params( [ 1, $this->getUnfilteredTaskSetCountReducedToTaskQueueLength() ] )
+			->parse() );
+	}
+
+	/**
+	 * The max number on the client-side is 200 (TASK_QUEUE_LENGTH in SuggestedEdits.js), while
+	 * we can have up to 250 stored in the cache. Reduce the number to TASK_QUEUE_LENGTH
+	 * if it's over that limit.
+	 * @return int
+	 */
+	private function getUnfilteredTaskSetCountReducedToTaskQueueLength() : int {
+		return min( $this->unfilteredTasksetCount ?? 0, 200 );
 	}
 
 }
