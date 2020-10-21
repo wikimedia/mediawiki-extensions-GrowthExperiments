@@ -346,6 +346,9 @@
 					width: calc( 128px ~'+' 1em / 1.3em );
 					// nowrap might make the label column wider
 					white-space: nowrap;
+					// Make sure there's always at least 1em between the two columns
+					padding-right: 1em;
+					.box-sizing( border-box );
 				}
 			}
 
