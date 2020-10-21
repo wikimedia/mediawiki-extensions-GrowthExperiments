@@ -1067,8 +1067,12 @@
 			"value": true
 		},
 		"GEHomepageMentorsList": {
-			"description": "Title of the wiki page that contains the list of available mentors.",
+			"description": "Title of the wiki page that contains the list of auto-assigned mentors (cf. GEHomepageManualAssignmentMentorsList).",
 			"value": "Main_Page"
+		},
+		"GEHomepageManualAssignmentMentorsList": {
+			"description": "Title of the wiki page that contains the list of manually assigned mentors (cf. GEHomepageMentorsList)",
+			"value": null
 		},
 		"GEHomepageSuggestedEditsEnabled": {
 			"description": "Global ON/OFF switch for the suggested edits feature on the homepage.",

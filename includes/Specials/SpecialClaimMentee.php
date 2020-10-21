@@ -79,7 +79,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 	 */
 	public function userCanExecute( User $user ) {
 		try {
-			$this->mentorsList = $this->mentorManager->getAvailableMentors();
+			$this->mentorsList = $this->mentorManager->getMentors();
 		} catch ( WikiConfigException $wikiConfigException ) {
 			return false;
 		}
