@@ -109,7 +109,7 @@
 		}
 
 		&-topic {
-			padding: 0 @startEditingDialogSidePadding 2.5em;
+			padding: 0 @startEditingDialogSidePadding 24px;
 			background-color: @colorGray15;
 
 			&-image {
@@ -150,6 +150,12 @@
 
 				strong {
 					font-weight: normal;
+				}
+
+				&:after {
+					content: '';
+					display: block;
+					clear: both;
 				}
 			}
 		}
@@ -195,7 +201,7 @@
 		}
 
 		&-topic-selector {
-			padding: 1.5em @startEditingDialogSidePadding;
+			padding: 24px @startEditingDialogSidePadding;
 
 			&-header {
 				font-weight: bold;
@@ -315,8 +321,12 @@
 			}
 
 			&-label {
-				font-size: 1.3em;
+				font-size: @headerFontSize;
 				font-weight: bold;
+
+				span {
+					vertical-align: middle;
+				}
 
 				.oo-ui-iconElement {
 					margin-right: 0.5em;
