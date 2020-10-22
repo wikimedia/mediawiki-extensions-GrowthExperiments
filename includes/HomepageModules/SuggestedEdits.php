@@ -7,6 +7,7 @@ use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\CardWrapper;
+use GrowthExperiments\HomepageModules\SuggestedEditsComponents\TaskExplanationWidget;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
@@ -377,7 +378,11 @@ class SuggestedEdits extends BaseModule {
 				$this->getContext()->getLanguage()->getDir(),
 				$this->getTaskSet()
 			) )->render() .
-			Html::element( 'div', [ 'class' => 'suggested-edits-task-explanation' ] )
+			( new Tag( 'div' ) )->addClasses( [ 'suggested-edits-task-explanation' ] )
+				->appendContent( ( new TaskExplanationWidget( [
+					'taskSet' => $this->getTaskSet(),
+					'localizer' => $this->getContext()
+				] ) ) )
 		);
 	}
 
