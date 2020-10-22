@@ -5,6 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TemplateFilter;
+use JobQueueGroup;
 use MediaWiki\User\UserIdentity;
 use WANObjectCache;
 
@@ -24,19 +25,25 @@ class CacheDecorator implements TaskSuggester {
 	/** @var WANObjectCache */
 	private $cache;
 
+	/** @var JobQueueGroup */
+	private $jobQueueGroup;
+
 	/**
 	 * @param TaskSuggester $taskSuggester
+	 * @param JobQueueGroup $jobQueueGroup
 	 * @param TemplateFilter $templateFilter
 	 * @param WANObjectCache $cache
 	 */
 	public function __construct(
 		TaskSuggester $taskSuggester,
+		JobQueueGroup $jobQueueGroup,
 		TemplateFilter $templateFilter,
 		WANObjectCache $cache
 	) {
 		$this->taskSuggester = $taskSuggester;
 		$this->templateFilter = $templateFilter;
 		$this->cache = $cache;
+		$this->jobQueueGroup = $jobQueueGroup;
 	}
 
 	/** @inheritDoc */
@@ -46,7 +53,8 @@ class CacheDecorator implements TaskSuggester {
 		array $topicFilter = [],
 		$limit = null,
 		$offset = null,
-		$debug = false
+		$debug = false,
+		$useCache = true
 	) {
 		$taskSetFilters = new TaskSetFilters( $taskTypeFilter, $topicFilter );
 		$limit = $limit ?? SearchTaskSuggester::DEFAULT_LIMIT;
@@ -62,11 +70,11 @@ class CacheDecorator implements TaskSuggester {
 				$user->getId()
 			),
 			$this->cache::TTL_WEEK,
-			function ( $oldValue, &$ttl ) use ( $user, $taskSetFilters, $limit ) {
+			function ( $oldValue, &$ttl ) use ( $user, $taskSetFilters, $limit, $useCache ) {
 				// This callback is always invoked each time getWithSetCallback is called,
 				// because we need to examine the contents of the cache (if any) before
 				// deciding whether to return those contents or if they need to be regenerated.
-				if ( $oldValue instanceof TaskSet && $oldValue->filtersEqual( $taskSetFilters ) ) {
+				if ( $useCache && $oldValue instanceof TaskSet && $oldValue->filtersEqual( $taskSetFilters ) ) {
 					// &$ttl needs to be set to UNCACHEABLE so that WANObjectCache
 					// doesn't attempt a set() after returning the existing value.
 					$ttl = $this->cache::TTL_UNCACHEABLE;
@@ -92,6 +100,19 @@ class CacheDecorator implements TaskSuggester {
 				);
 				if ( $result instanceof TaskSet && $result->count() ) {
 					$result->randomSort();
+					// Schedule a job to refresh the taskset before the cache
+					// expires.
+					$this->jobQueueGroup->lazyPush(
+						new NewcomerTasksCacheRefreshJob( [
+							'userId' => $user->getId(),
+							'taskTypeFilters' => $taskSetFilters->getTaskTypeFilters(),
+							'topicFilters' => $taskSetFilters->getTopicFilters(),
+							'limit' => SearchTaskSuggester::DEFAULT_LIMIT,
+							'jobReleaseTimestamp' => (int)wfTimestamp() +
+								// Process the job the day before the cache expires.
+								( $this->cache::TTL_WEEK - $this->cache::TTL_DAY ),
+						] )
+					);
 				}
 				return $result;
 			},

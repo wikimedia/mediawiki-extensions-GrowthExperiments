@@ -30,7 +30,7 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess {
 	/** @var array Arbitrary non-task-specific debug data */
 	private $debugData = [];
 
-	/** * @var TaskSetFilters The task and topic filters used to generate this task set. */
+	/** @var TaskSetFilters The task and topic filters used to generate this task set. */
 	private $filters;
 
 	/**

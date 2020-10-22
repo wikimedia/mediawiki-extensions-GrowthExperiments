@@ -21,6 +21,7 @@ interface TaskSuggester {
 	 * @param int|null $limit Number of suggestions to return.
 	 * @param int|null $offset Offset within full result set, for continuation.
 	 * @param bool $debug Debug mode; will return information about how the tasks were selected
+	 * @param bool $useCache If the cache should be used when obtaining suggestions.
 	 * @return TaskSet|StatusValue A set of suggestions or an error in the form of a
 	 *   StatusValue.
 	 */
@@ -30,7 +31,8 @@ interface TaskSuggester {
 		array $topicFilter = [],
 		$limit = null,
 		$offset = null,
-		$debug = false
+		$debug = false,
+		$useCache = true
 	);
 
 }

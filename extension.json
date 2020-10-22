@@ -40,6 +40,9 @@
 	"ConfigRegistry": {
 		"GrowthExperiments": "GlobalVarConfig::newInstance"
 	},
+	"JobClasses": {
+		"newcomerTasksCacheRefreshJob": "GrowthExperiments\\NewcomerTasks\\TaskSuggester\\NewcomerTasksCacheRefreshJob"
+	},
 	"APIModules": {
 		"helppanelquestionposter": {
 			"class": "GrowthExperiments\\Api\\ApiHelpPanelPostQuestion",

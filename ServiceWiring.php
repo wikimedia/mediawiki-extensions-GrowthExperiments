@@ -199,7 +199,11 @@ return [
 				$services->getObjectFactory(),
 				[ [
 					  'class' => CacheDecorator::class,
-					  'services' => [ 'GrowthExperimentsTemplateFilter', 'MainWANObjectCache' ],
+					  'args' => [
+						  JobQueueGroup::singleton(),
+						  GrowthExperimentsServices::wrap( $services )->getTemplateFilter(),
+						  $services->getMainWANObjectCache()
+					  ],
 				  ] ]
 			);
 		}

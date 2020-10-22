@@ -39,6 +39,9 @@ class DecoratingTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 			[
 				'class' => CacheDecorator::class,
 				'args' => [
+					$this->getMockBuilder( \JobQueueGroup::class )
+						->disableOriginalConstructor()
+						->getMock(),
 					$this->getMockTemplateFilter(),
 					new \WANObjectCache( [ 'cache' => new HashBagOStuff() ] ),
 				],

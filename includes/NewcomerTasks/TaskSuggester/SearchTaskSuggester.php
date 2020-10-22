@@ -86,7 +86,8 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		array $topicFilter = [],
 		$limit = null,
 		$offset = null,
-		$debug = false
+		$debug = false,
+		$useCache = true
 	) {
 		$taskTypeFilter = $taskTypeFilter ?: array_keys( $this->taskTypes );
 
