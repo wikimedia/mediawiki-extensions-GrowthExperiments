@@ -6,6 +6,7 @@ use Config;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModule;
+use GrowthExperiments\HomepageModules\SuggestedEditsComponents\CardWrapper;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
@@ -364,12 +365,14 @@ class SuggestedEdits extends BaseModule {
 				->addClasses( [ 'suggested-edits-filters' ] )
 				->appendContent( $isDesktop ? $this->getFiltersButtonGroupWidget() : '' ) .
 			( new Tag( 'div' ) )
-			->addClasses( [ 'suggested-edits-pager' ] )
-			->appendContent( $this->getPager() ) .
-			Html::rawElement( 'div', [ 'class' => 'suggested-edits-card-wrapper' ],
-				Html::element( 'div', [ 'class' => 'suggested-edits-previous' ] ) .
-				Html::element( 'div', [ 'class' => 'suggested-edits-card' ] ) .
-				Html::element( 'div', [ 'class' => 'suggested-edits-next' ] ) ) .
+				->addClasses( [ 'suggested-edits-pager' ] )
+				->appendContent( $this->getPager() ) .
+			( new CardWrapper(
+				$this->getContext(),
+				self::isTopicMatchingEnabled( $this->getContext() ),
+				$this->getContext()->getLanguage()->getDir(),
+				$this->getTaskSet()
+			) )->render() .
 			Html::element( 'div', [ 'class' => 'suggested-edits-task-explanation' ] )
 		);
 	}
