@@ -151,7 +151,6 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "从这里开始吧！",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "打开侧边菜单并点击 $2 ，即可访问{{GENDER:$1|您的}}主页。",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$2</strong>个{{PLURAL:$2|建议}}中的<strong>$1</strong>个",
-	"growthexperiments-homepage-suggestededits-pager-unknown-count": "？",
 	"growthexperiments-homepage-suggestededits-pager-end": "末尾",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1次访问 (过去60天)",
 	"growthexperiments-homepage-suggestededits-previous-card": "上一个编辑建议",

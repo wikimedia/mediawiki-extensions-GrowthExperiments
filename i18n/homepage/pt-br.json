@@ -160,7 +160,6 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Comece aqui!",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Abra o menu lateral e toque em $2 para visitar a {{GENDER:$1|sua}} página inicial.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> de <strong>$2</strong> {{PLURAL:$2|sugestão|sugestões}}",
-	"growthexperiments-homepage-suggestededits-pager-unknown-count": "?",
 	"growthexperiments-homepage-suggestededits-pager-end": "Terminar",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 visitas (últimos 60 dias)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Edição sugerida anterior",

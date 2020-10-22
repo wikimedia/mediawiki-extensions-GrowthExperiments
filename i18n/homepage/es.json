@@ -73,7 +73,6 @@
 	"growthexperiments-tour-welcome-description": "Siempre puedes volver a hacer clic en tu nombre de {{GENDER:$1|usuario|usuaria}} para volver aquí.",
 	"growthexperiments-tour-discovery-description": "Haz clic en tu nombre de {{GENDER:$1|usuario|usuaria}} para ver tu página de inicio.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> de <strong>$2</strong> {{PLURAL:$2|sugerencia|sugerencias}}",
-	"growthexperiments-homepage-suggestededits-pager-unknown-count": "¿?",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 visitas (últimos 60 días)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Edición sugerida anterior",
 	"growthexperiments-homepage-suggestededits-next-card": "Edición sugerida siguiente",

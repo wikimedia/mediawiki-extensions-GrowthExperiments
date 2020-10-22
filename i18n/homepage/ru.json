@@ -290,7 +290,7 @@
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Выберите темы, которые {{GENDER:$1|вам}} интересны.",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Мы постараемся предложить статьи по интересным {{GENDER:$1|вам}} темам.",
 	"growthexperiments-homepage-claimmentee-title": "Взять подопечного",
-	"growthexperiments-homepage-claimmentee-pretext": "Эта страница позволяет стать {{GENDER:$1|наставником|наставницей}} подопечного. Рекомендуется использовать эту возможность для знакомых вам участников, или для тех, кого {{GENDER:$1|вы}} наставляете на путь редактирования.",
+	"growthexperiments-homepage-claimmentee-pretext": "Эта страница позволяет стать {{GENDER:$1|наставником|наставницей}} подопечного. Рекомендуется использовать эту возможность для знакомых вам участников, или для тех, с кем {{GENDER:$1|вы}} уже начали работу.",
 	"growthexperiments-homepage-claimmentee-mentee": "Имя учётной записи подопечного",
 	"growthexperiments-homepage-claimmentee-reason": "Описание причины, почему вы выбрали этого подопечного",
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|Вы изменили}} {{GENDER:$3|наставника|наставницу}} {{GENDER:$1|$4}} на {{GENDER:$3|$5}}",

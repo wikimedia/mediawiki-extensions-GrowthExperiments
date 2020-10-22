@@ -162,7 +162,6 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "מתחילים כאן!",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "{{GENDER:$1|פתַח|פִתחי}} את תפריד הצד {{GENDER:$1|ולחץ|ולחצי}} על $2 כדי לבקר בדף הבית שלך.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> מתוך <strong>$2</strong> {{PLURAL:$2|הצעות}}",
-	"growthexperiments-homepage-suggestededits-pager-unknown-count": "?",
 	"growthexperiments-homepage-suggestededits-pager-end": "סיום",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 ביקורים (ב־60 הימים האחרונים)",
 	"growthexperiments-homepage-suggestededits-previous-card": "עריכה מוצעות קודמת",

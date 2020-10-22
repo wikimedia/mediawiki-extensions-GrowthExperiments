@@ -160,7 +160,6 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Kom igång här!",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Öppna sidomenyn och tryck på $2 för att besöka {{GENDER:$1|din}} hemsida.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$1</strong> av <strong>$2</strong> {{PLURAL:$2|förslag}}",
-	"growthexperiments-homepage-suggestededits-pager-unknown-count": "?",
 	"growthexperiments-homepage-suggestededits-pager-end": "Slut",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 sidvisningar (senaste 60 dagarna)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Föregående föreslagna redigering",

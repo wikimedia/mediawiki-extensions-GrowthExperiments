@@ -161,7 +161,6 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Buradan başla!",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "Yan menüyü açın ve anasayfanızı ziyaret etmek için $2 {{GENDER:$1|dokunun}}.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$2</strong>/<strong>$1</strong> öneri",
-	"growthexperiments-homepage-suggestededits-pager-unknown-count": "…",
 	"growthexperiments-homepage-suggestededits-pager-end": "Son",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 ziyaret (son 60 gün)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Önceki önerilen düzenleme",
