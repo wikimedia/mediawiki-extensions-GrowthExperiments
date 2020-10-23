@@ -15,6 +15,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TemplateFilter;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use MediaWiki\MediaWikiServices;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 /**
  * A simple wrapper for MediaWikiServices, to support type safety when accessing
@@ -46,6 +47,15 @@ class GrowthExperimentsServices {
 
 	public function getConfig(): Config {
 		return $this->coreServices->getConfigFactory()->makeConfig( 'GrowthExperiments' );
+	}
+
+	public function getLoadBalancer(): ILoadBalancer {
+		$databaseCluster = $this->getConfig()->get( 'GEDatabaseCluster' );
+		if ( $databaseCluster ) {
+			return $this->coreServices->getDBLoadBalancerFactory()->getExternalLB( $databaseCluster );
+		} else {
+			return $this->coreServices->getDBLoadBalancerFactory()->getMainLB();
+		}
 	}
 
 	public function getConfigurationLoader(): ConfigurationLoader {
