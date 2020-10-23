@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"A2y4",
 			"Aefgh39622",
 			"Buntschann",
 			"Omotecho",
@@ -66,5 +67,6 @@
 	"growthexperiments-homepage-tutorial-header": "編集方法を学ぶ",
 	"growthexperiments-homepage-tutorial-cta-text": "チュートリアル",
 	"growthexperiments-specialimpact-title": "影響",
+	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "ウィキペディアの記事を検証するためにソースを追加する",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "完了"
 }
