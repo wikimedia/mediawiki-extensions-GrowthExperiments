@@ -172,7 +172,7 @@
 				userTaskTypes: extraData.userTaskTypes,
 				newcomerTaskToken: joinToken
 			};
-			if ( extraData.userTopics.length ) {
+			if ( extraData.userTopics && extraData.userTopics.length ) {
 				data.userTopics = extraData.userTopics;
 			}
 			this.helpPanelLogger.log( 'postedit-impression', data );
