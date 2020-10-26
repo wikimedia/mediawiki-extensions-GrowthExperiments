@@ -886,7 +886,7 @@
 							// Reset the post a question text inputs.
 							this.questionTextInput.setValue( '' );
 							mw.storage.set( this.storageKey, '' );
-						}.bind( this ), function ( errorCode ) {
+						}.bind( this ), function ( errorCode, errorData ) {
 							// Return a recoverable error. The user can either try again, or they
 							// can follow the instructions in the error message for how to post
 							// their message manually.
@@ -894,7 +894,9 @@
 							submitAttemptData.error = errorCode;
 							this.logger.log( 'submit-failure', submitAttemptData );
 							return $.Deferred().reject(
-								new OO.ui.Error( $( '<p>' ).append( this.submitFailureMessage ) )
+								new OO.ui.Error( $( '<p>' ).append(
+									errorCode === 'hookaborted' ? this.submitFailureMessage : errorData.error.info
+								) )
 							).promise();
 						}.bind( this ) )
 						.always( function () {
