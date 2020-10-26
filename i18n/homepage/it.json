@@ -7,6 +7,7 @@
 			"Ghebbro",
 			"JackLantern",
 			"Lemure Saltante",
+			"Luca.favorido",
 			"Sakretsu",
 			"ValeJappo"
 		]
@@ -46,6 +47,8 @@
 	"growthexperiments-homepage-startediting-subheader-new-page": "Prima di creare una nuova voce, prova ad imparare con delle modifiche più facili!",
 	"growthexperiments-homepage-startediting-subheader-other": "Aiuta ad aumentare la conoscenza del mondo con alcune semplici correzioni alle voci di Wikipedia.",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Vedi modifiche suggerite",
+	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "Inizia con le modifiche consigliate",
+	"growthexperiments-homepage-startediting-mobilesummary-body-variant-d": "Aiuta ad aumentare la conoscenza del mondo con alcune semplici correzioni alle voci di Wikipedia.",
 	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "Ottieni suggerimenti",
 	"growthexperiments-homepage-startediting-button": "Vedi modifiche suggerite",
 	"growthexperiments-homepage-startediting-dialog-header": "Ulteriori informazioni sulle modifiche suggerite",
@@ -61,6 +64,8 @@
 	"growthexperiments-homepage-startediting-dialog-intro-response-new-page": "<strong>Quando {{GENDER:|hai}} creato la {{GENDER:|tua}} utenza, {{GENDER:|hai}} detto che avresti voluto creare una nuova voce.</strong> Questa è un'importante ma difficile maniera per contribuire, quindi {{GENDER:|ti}} consigliamo di provare prima qualche modifica facile. Se {{GENDER:|preferisci}} iniziare direttamente scrivendo una voce, {{GENDER:|puoi}} [$1 imparare qui come].",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Scegli alcuni argomenti di {{GENDER:|tuo}} interesse",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-subheader": "Proveremo a suggerirti voci che corrispondano ai {{GENDER:|tuoi}} interessi.",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Filtra per argomento",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader": "Usa argomenti per ricevere consigli che trovi interessanti. Puoi scegliere uno o più argomenti.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Indietro",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Ottieni suggerimenti",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Fatto",
@@ -147,6 +152,7 @@
 	"growthexperiments-tour-discovery-title": "Inizia qui!",
 	"growthexperiments-tour-discovery-description": "Clicca sul {{GENDER:$1|tuo}} nome utente per visitare la {{GENDER:$1|tua}} pagina iniziale.",
 	"growthexperiments-homepage-welcomesurvey-default-close": "Vai alla {{GENDER:$1|tua}} pagina iniziale",
+	"growthexperiments-tour-welcome-description-c": "Puoi sempre premere sul {{GENDER:$1|tuo}} nome utente per tornare qui. Continua ad imparare sulle <b>modifiche suggerite</b> sulla {{GENDER:$1|tua}} pagina iniziale.",
 	"growthexperiments-homepage-discovery-banner-header": "{{GENDER:$1|Benvenuto|Benvenuta|Benvenuto/a}} sulla tua pagina iniziale!",
 	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|Puoi}} sempre premere $2 in cima alla pagina per tornare qui.",
 	"growthexperiments-homepage-discovery-thanks-header": "Grazie per aver creato la {{GENDER:$1|tua}} utenza!",
