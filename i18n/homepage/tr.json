@@ -7,13 +7,14 @@
 			"MuratTheTurkish",
 			"Sayginer",
 			"Stonecy",
-			"ToprakM"
+			"ToprakM",
+			"Vito Genovese"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Merhaba}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Anasayfa",
 	"tooltip-pt-homepage": "{{GENDER:|Sizin}} ana sayfanız",
-	"prefs-homepage": "Yeni gelen anasayfa",
+	"prefs-homepage": "Yeni kullanıcı anasayfası",
 	"growthexperiments-homepage-enable": "Yeni gelen anasayfayı görüntüle",
 	"growthexperiments-homepage-pt-link": "Kişisel araçlardaki kullanıcı adı bağlantısından yeni gelen ana sayfa varsayılanı",
 	"growthexperiments-homepage-start-header": "Buraya {{GENDER:$1|başlat}}",
@@ -131,8 +132,8 @@
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2|danışmanınızın}} {{GENDER:$1|mesaj sayfası}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Sorunuz}} artık danışmanınızın mesaj sayfasındadır. Bu soruya en kısa sürede cevap {{GENDER:$1|verecektir}}.",
 	"growthexperiments-homepage-mentorship-view-question-text": "{{GENDER:$2|Sorunuzu}} {{GENDER:$1|danışmanınızın}} mesaj sayfasında görüntüleyin.",
-	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]] kullanıcısından soru",
-	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[User:$1|$1]] kullanıcısından [[$2]] hakkında soru",
+	"growthexperiments-homepage-mentorship-question-subject": "[[User:$1|$1]] adlı kullanıcıdan soru",
+	"growthexperiments-homepage-mentorship-question-subject-with-title": "[[User:$1|$1]] adlı kullanıcıdan [[$2]] hakkında soru",
 	"growthexperiments-homepage-tutorial-header": "Düzenlemeyi öğrenin",
 	"growthexperiments-homepage-tutorial-subheader": "Vikipedi'de nasıl düzenleme yapılabileceğini öğrenmek için hızlı bir öğreticiye katılın",
 	"growthexperiments-homepage-tutorial-cta-text": "Eğitim",
