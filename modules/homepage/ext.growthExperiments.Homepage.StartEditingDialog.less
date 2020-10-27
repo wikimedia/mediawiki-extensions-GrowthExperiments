@@ -112,6 +112,11 @@
 			padding: 0 @startEditingDialogSidePadding 24px;
 			background-color: @colorGray15;
 
+			.growthexperiments-homepage-mobile-summary &,
+			.growthexperiments-homepage-mobile-details & {
+				padding-bottom: 16px;
+			}
+
 			&-image {
 				width: 128px;
 
@@ -172,11 +177,12 @@
 		}
 
 		&-topic-description {
-			padding: 1.5em @startEditingDialogSidePadding;
+			padding: 24px @startEditingDialogSidePadding;
 			display: flex;
 
 			.growthexperiments-homepage-mobile-summary &,
 			.growthexperiments-homepage-mobile-details & {
+				padding: 16px @startEditingDialogSidePadding;
 				flex-direction: column;
 			}
 
@@ -213,6 +219,11 @@
 
 		&-topic-selector {
 			padding: 24px @startEditingDialogSidePadding;
+
+			.growthexperiments-homepage-mobile-summary &,
+			.growthexperiments-homepage-mobile-details & {
+				padding: 16px @startEditingDialogSidePadding;
+			}
 
 			&-header {
 				font-weight: bold;
@@ -318,10 +329,11 @@
 
 		&-legend,
 		&-taskTypeSelector {
-			padding: 1.5em 1em;
+			padding: 24px @startEditingDialogSidePadding;
 
-			.growthexperiments-homepage-desktop & {
-				padding: 24px @startEditingDialogSidePadding;
+			.growthexperiments-homepage-mobile-summary &,
+			.growthexperiments-homepage-mobile-details & {
+				padding: 16px @startEditingDialogSidePadding;
 			}
 		}
 
