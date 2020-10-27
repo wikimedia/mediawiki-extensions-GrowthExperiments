@@ -265,12 +265,16 @@ class SuggestedEdits extends BaseModule {
 						return $template->getText();
 					}, $task->getTemplates() );
 				}
+				$title = $this->titleFactory->newFromLinkTarget( $task->getTitle() );
 				$data['task-preview'] = [
 					'tasktype' => $task->getTaskType()->getId(),
 					'difficulty' => $task->getTaskType()->getDifficulty(),
-					'title' => $this->titleFactory->newFromLinkTarget( $task->getTitle() )->getPrefixedText(),
+					'title' => $title->getPrefixedText(),
 					'topics' => $task->getTopicScores(),
 					'maintenanceTemplates' => $templates,
+					// The front-end code for constructing SuggestedEditCardWidget checks
+					// to see if pageId is set in order to construct a tracking URL.
+					'pageId' => $title->getArticleID()
 				];
 			}
 		}
