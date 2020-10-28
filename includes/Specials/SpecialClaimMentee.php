@@ -6,6 +6,7 @@ use FormSpecialPage;
 use GrowthExperiments\Mentorship\ChangeMentor;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\WikiConfigException;
+use Linker;
 use LogEventsList;
 use LogPager;
 use MediaWiki\Logger\LoggerFactory;
@@ -16,9 +17,10 @@ use User;
 
 class SpecialClaimMentee extends FormSpecialPage {
 	/**
-	 * @var User|null
+	 * @var array
 	 */
-	private $mentee;
+	private $mentees;
+
 	/**
 	 * @var User|null
 	 */
@@ -110,10 +112,11 @@ class SpecialClaimMentee extends FormSpecialPage {
 	protected function getFormFields() {
 		$req = $this->getRequest();
 		$fields = [
-			'mentee' => [
+			'mentees' => [
 				'label-message' => 'growthexperiments-homepage-claimmentee-mentee',
-				'type'          => 'user',
-				'required'      => true,
+				'type'          => 'usersmultiselect',
+				'exists'        => true,
+				'required'      => true
 			],
 			'reason' => [
 				'label-message' => 'growthexperiments-homepage-claimmentee-reason',
@@ -122,8 +125,8 @@ class SpecialClaimMentee extends FormSpecialPage {
 			'stage' => [ 'type' => 'hidden', 'default' => 2 ]
 		];
 		$stage = $req->getInt( 'wpstage', 1 );
-		$this->setMentee( $req->getVal( 'wpmentee' ) );
-		if ( $stage >= 2 && $this->menteeIsValid() ) {
+		$this->setMentees( $req->getVal( 'wpmentees' ) );
+		if ( $stage >= 2 && $this->validateMentees() ) {
 			$fields['stage']['default'] = 3;
 			$fields['confirm'] = [
 				'label-message' => 'growthexperiments-claimmentee-confirm',
@@ -145,59 +148,92 @@ class SpecialClaimMentee extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function onSubmit( array $data ) {
-		$this->setMentee( $data['mentee'] );
-		if ( !$this->menteeIsValid() ) {
+		$this->setMentees( $data['mentees'] );
+
+		// Should be caught by exits => true, but just to be sure
+		if ( !$this->validateMentees() ) {
 			return Status::newFatal( 'growthexperiments-homepage-claimmentee-invalid-username' );
 		}
+
 		$this->newMentor = $this->getUser();
 
-		$changementor = new ChangeMentor(
-			$this->mentee,
-			$this->newMentor,
-			$this->getContext(),
-			LoggerFactory::getInstance( 'GrowthExperiments' ),
-			$this->mentorManager->getMentorForUser( $this->mentee ),
-			new LogPager(
-				new LogEventsList( $this->getContext() ),
-				[ 'growthexperiments' ],
-				'',
-				$this->mentee->getUserPage()
-			),
-			$this->mentorManager
-		);
-		if (
-			$data['confirm'] !== true
-			&& $data['stage'] !== 3
-			&& $changementor->wasMentorChanged()
-		) {
-			return Status::newFatal(
-				'growthexperiments-homepage-claimmentee-alreadychanged',
-				$this->mentee,
-				$this->newMentor
+		$status = Status::newGood();
+		$logger = LoggerFactory::getInstance( 'GrowthExperiments' );
+		$context = $this->getContext();
+		foreach ( $this->mentees as $mentee ) {
+			$changementor = new ChangeMentor(
+				$mentee,
+				$this->newMentor,
+				$context,
+				$logger,
+				$this->mentorManager->getMentorForUser( $mentee ),
+				new LogPager(
+					new LogEventsList( $context ),
+					[ 'growthexperiments' ],
+					'',
+					$mentee->getUserPage()
+				),
+				$this->mentorManager
 			);
+
+			if (
+				$data['confirm'] !== true
+				&& $data['stage'] !== 3
+				&& $changementor->wasMentorChanged()
+			) {
+				return Status::newFatal(
+					'growthexperiments-homepage-claimmentee-alreadychanged',
+					$mentee,
+					$this->newMentor
+				);
+			}
+
+			$status->merge( $changementor->execute( $this->newMentor, $data['reason'] ) );
+			if ( !$status->isOK() ) {
+				// Do not process next users if at least one failed
+				return $status;
+			}
 		}
 
-		return $changementor->execute( $this->newMentor, $data['reason'] );
+		return $status;
 	}
 
 	public function onSuccess() {
+		$mentees = array_map( function ( $user ) {
+			return Linker::userLink( $user->getId(), $user->getName() );
+		}, $this->mentees );
+
+		$language = $this->getLanguage();
+
 		$this->getOutput()->addWikiMsg(
 			'growthexperiments-homepage-claimmentee-success',
-			$this->mentee->getName(),
+			Message::rawParam( $language->listToText( $mentees ) ),
+			$language->formatNum( count( $mentees ) ),
 			$this->getUser()->getName(),
 			$this->newMentor->getName(),
-			Message::rawParam( $this->getLinkRenderer()->makeLink(
-				$this->mentee->getUserPage(), $this->mentee->getName() ) ),
 			Message::rawParam( $this->getLinkRenderer()->makeLink(
 				$this->newMentor->getUserPage(), $this->newMentor->getName() ) )
 		);
 	}
 
-	private function setMentee( $name = '' ) {
-		$this->mentee = User::newFromName( $name );
+	private function setMentees( $namesRaw = '' ) {
+		$names = explode( "\n", $namesRaw );
+		$this->mentees = [];
+
+		foreach ( $names as $name ) {
+			$user = User::newFromName( $name );
+			if ( $user !== false ) {
+				$this->mentees[] = $user;
+			}
+		}
 	}
 
-	private function menteeIsValid() {
-		return $this->mentee instanceof User && $this->mentee->getId();
+	private function validateMentees() {
+		foreach ( $this->mentees as $mentee ) {
+			if ( ( $mentee instanceof User && $mentee->getId() !== 0 ) !== true ) {
+				return false;
+			}
+		}
+		return true;
 	}
 }
