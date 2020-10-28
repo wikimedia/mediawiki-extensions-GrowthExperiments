@@ -7,7 +7,11 @@ use OOUI\Widget;
 
 class ErrorCardWidget extends Widget {
 
-	/** @inheritDoc */
+	/**
+	 * @param array $config Configuration options
+	 *   - MessageLocalizer $config['localizer']
+	 *   - any option understood by Widget
+	 */
 	public function __construct( array $config = [] ) {
 		parent::__construct( $config );
 		/** @var \MessageLocalizer $localizer */
