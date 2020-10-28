@@ -56,6 +56,9 @@ class MentorPageMentorManager implements MentorManager, LoggerAwareInterface {
 	/** @var string */
 	private $mentorsPageName;
 
+	/** @var string */
+	private $manuallyAssignedMentorsPageName;
+
 	/**
 	 * @param TitleFactory $titleFactory
 	 * @param WikiPageFactory $wikiPageFactory
@@ -66,6 +69,9 @@ class MentorPageMentorManager implements MentorManager, LoggerAwareInterface {
 	 * @param Language $language
 	 * @param string $mentorsPageName Title of the page which contains the list of available mentors.
 	 *   See the documentation of the GEHomepageMentorsList config variable for format.
+	 * @param string $manuallyAssignedMentorsPageName Title of the page which contains the list of automatically
+	 *   assigned mentors (may be an empty string if no such page exists).
+	 *   See the documentation for GEHomepageManualAssignmentMentorsList for format.
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
@@ -75,7 +81,8 @@ class MentorPageMentorManager implements MentorManager, LoggerAwareInterface {
 		UserNameUtils $userNameUtils,
 		MessageLocalizer $messageLocalizer,
 		Language $language,
-		string $mentorsPageName
+		string $mentorsPageName,
+		string $manuallyAssignedMentorsPageName
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->wikiPageFactory = $wikiPageFactory;
@@ -85,6 +92,7 @@ class MentorPageMentorManager implements MentorManager, LoggerAwareInterface {
 		$this->messageLocalizer = $messageLocalizer;
 		$this->language = $language;
 		$this->mentorsPageName = $mentorsPageName;
+		$this->manuallyAssignedMentorsPageName = $manuallyAssignedMentorsPageName;
 		$this->setLogger( new NullLogger() );
 	}
 
@@ -122,9 +130,13 @@ class MentorPageMentorManager implements MentorManager, LoggerAwareInterface {
 		] ) );
 	}
 
-	/** @inheritDoc */
-	public function getAvailableMentors(): array {
-		$page = $this->getMentorsPage();
+	/**
+	 * Helper method returning a list of mentors listed at a specified page
+	 *
+	 * @param WikiPage $page Page to work with
+	 * @return array
+	 */
+	private function getMentorsForPage( WikiPage $page ): array {
 		$links = $page->getParserOutput( ParserOptions::newCanonical( 'canonical' ) )->getLinks();
 		if ( !isset( $links[ NS_USER ] ) ) {
 			$this->logger->info( __METHOD__ . ' found zero mentors, no links at {mentorsList}', [
@@ -153,6 +165,31 @@ class MentorPageMentorManager implements MentorManager, LoggerAwareInterface {
 		}
 
 		return $mentors;
+	}
+
+	/** @inheritDoc */
+	public function getMentors(): array {
+		return array_unique(
+			array_merge(
+				$this->getAvailableMentors(),
+				$this->getManuallyAssignedMentors()
+			)
+		);
+	}
+
+	/** @inheritDoc */
+	public function getAvailableMentors(): array {
+		return $this->getMentorsForPage( $this->getMentorsPage() );
+	}
+
+	/** @inheritDoc */
+	public function getManuallyAssignedMentors(): array {
+		$page = $this->getManuallyAssignedMentorsPage();
+		if ( $page === null ) {
+			return [];
+		}
+
+		return $this->getMentorsForPage( $page );
 	}
 
 	/**
@@ -227,6 +264,27 @@ class MentorPageMentorManager implements MentorManager, LoggerAwareInterface {
 		if ( !$title || !$title->exists() ) {
 			throw new WikiConfigException( 'wgGEHomepageMentorsList is invalid: ' . $this->mentorsPageName );
 		}
+		return $this->wikiPageFactory->newFromTitle( $title );
+	}
+
+	/**
+	 * Get the Title object for the manually assigned mentor page.
+	 * @throws WikiConfigException If the mentor page cannot be fetched due to misconfiguration.
+	 * @return WikiPage|null A page that's guaranteed to exist, or null if impossible to get.
+	 */
+	private function getManuallyAssignedMentorsPage(): ?WikiPage {
+		if ( $this->manuallyAssignedMentorsPageName === '' ) {
+			return null;
+		}
+
+		$title = $this->titleFactory->newFromText( $this->manuallyAssignedMentorsPageName );
+
+		if ( !$title || !$title->exists() ) {
+			throw new WikiConfigException(
+				'wgGEHomepageMentorsList is invalid: ' . $this->manuallyAssignedMentorsPageName
+			);
+		}
+
 		return $this->wikiPageFactory->newFromTitle( $title );
 	}
 

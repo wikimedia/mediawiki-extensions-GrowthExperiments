@@ -38,10 +38,27 @@ interface MentorManager {
 	public function setMentorForUser( UserIdentity $user, UserIdentity $mentor ): void;
 
 	/**
-	 * Get all the mentors who can be assigned to users.
+	 * Get all mentors, regardless on their auto-assignment status
+	 *
+	 * @todo Rewrite MentorManager to an abstract class and put a default logic here. See T266189.
+	 *
+	 * @return string[] List of mentors usernames.
+	 * @throws WikiConfigException If the mentor list cannot be fetched due to misconfiguration.
+	 */
+	public function getMentors(): array;
+
+	/**
+	 * Get all the mentors who are automatically assigned to mentees.
 	 * @return string[] List of mentor usernames.
 	 * @throws WikiConfigException If the mentor list cannot be fetched due to misconfiguration.
 	 */
 	public function getAvailableMentors(): array;
+
+	/**
+	 * Get a list of mentors who are not automatically assigned to mentees.
+	 * @throws WikiConfigException If the mentor list cannot be fetched due to misconfiguration.
+	 * @return string[] List of mentors usernames.
+	 */
+	public function getManuallyAssignedMentors(): array;
 
 }

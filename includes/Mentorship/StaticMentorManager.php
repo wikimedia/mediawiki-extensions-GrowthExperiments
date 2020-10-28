@@ -42,10 +42,20 @@ class StaticMentorManager implements MentorManager {
 	}
 
 	/** @inheritDoc */
+	public function getMentors(): array {
+		return $this->getAvailableMentors();
+	}
+
+	/** @inheritDoc */
 	public function getAvailableMentors(): array {
 		return array_unique( array_values( array_map( function ( Mentor $mentor ) {
 			return $mentor->getMentorUser()->getName();
 		}, $this->mentors ) ) );
+	}
+
+	/** @inheritDoc */
+	public function getManuallyAssignedMentors(): array {
+		return [];
 	}
 
 }

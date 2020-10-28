@@ -110,7 +110,8 @@ return [
 			$services->getUserNameUtils(),
 			RequestContext::getMain(),
 			RequestContext::getMain()->getLanguage(),
-			$config->get( 'GEHomepageMentorsList' ) ?? ''
+			$config->get( 'GEHomepageMentorsList' ) ?? '',
+			$config->get( 'GEHomepageManualAssignmentMentorsList' ) ?? ''
 		);
 		$manager->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $manager;
