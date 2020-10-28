@@ -1,19 +1,27 @@
 {
 	"@metadata": {
 		"authors": [
+			"Biafra",
 			"Papuass"
 		]
 	},
 	"welcomesurvey": "Esi {{GENDER:$1|sveicināts|sveicināta}}, $1!",
 	"welcomesurvey-save-confirmation-title": "Paldies! Tavas atbildes ir saglabātas.",
 	"welcomesurvey-save-confirmation-text": "Tavas atbildes mums palīdzēs atrast noderīgus veidus, kā tev sākt darbu Vikipēdijā.",
+	"welcomesurvey-subtitle": "Palīdzi mums uzlabot tavu pieredzi Vikipēdijā, atbildot uz dažiem neobligātiem jautājumiem.",
 	"welcomesurvey-save-btn": "Pabeigt",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Izlaist}} šo aptauju",
 	"welcomesurvey-close-btn": "Aizvērt un doties atpakaļ uz \"$1\" lapu",
 	"welcomesurvey-sidebar-privacy-title": "Mēs cienām tavu privātumu",
 	"welcomesurvey-sidebar-editing-link1-text": "Apmācība",
 	"welcomesurvey-sidebar-editing-link2-text": "Palīdzības dienests",
+	"welcomesurvey-question-reason-label": "Kāpēc tu izveidoji Vikipēdijas kontu?",
 	"welcomesurvey-dropdown-option-select-label": "Lūdzu izvēlies...",
+	"welcomesurvey-question-reason-option-edit-typo-label": "Lai izlabotu kļūdu Vikipēdijas rakstā",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Lai pievienotu vai izmainītu informāciju Vikipēdijas rakstā",
+	"welcomesurvey-question-reason-option-add-image-label": "Lai pievienotu foto vai attēlu Vikipēdijas rakstam",
+	"welcomesurvey-question-reason-option-new-page-label": "Lai izveidotu jaunu Vikipēdijas rakstu",
+	"welcomesurvey-question-reason-option-program-participant-label": "Es piedalos programmā, mācību stundā vai pasākumā",
 	"welcomesurvey-question-reason-option-read-label": "Lai lasītu Vikipēdiju",
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Cits",
 	"welcomesurvey-question-reason-option-other-label": "Cits (lūdzu, apraksti)",
