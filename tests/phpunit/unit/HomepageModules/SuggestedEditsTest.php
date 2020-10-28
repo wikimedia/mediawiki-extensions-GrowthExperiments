@@ -61,6 +61,8 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 			->getMock();
 		$languageMock->method( 'getCode' )
 			->willReturn( 'el' );
+		$languageMock->method( 'getDir' )
+			->willReturn( 'ltr' );
 
 		$userMock = $this->getMockBuilder( \User::class )
 			->disableOriginalConstructor()

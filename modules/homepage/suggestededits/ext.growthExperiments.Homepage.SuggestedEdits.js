@@ -88,13 +88,7 @@
 			this.$pagerWrapper = $( '<div>' ).addClass( 'suggested-edits-pager' ).appendTo( this.$element );
 		}
 		$previous = this.$element.find( '.suggested-edits-previous' );
-		if ( !$previous.length ) {
-			$previous = $( '<div>' ).addClass( 'suggested-edits-previous' ).appendTo( this.$element );
-		}
 		$next = this.$element.find( '.suggested-edits-next' );
-		if ( !$next.length ) {
-			$next = $( '<div>' ).addClass( 'suggested-edits-next' ).appendTo( this.$element );
-		}
 
 		if ( this.mode === 'mobile-overlay' || this.mode === 'mobile-details' ) {
 			$filtersContainer = this.$element.closest( '.growthexperiments-homepage-module' )
@@ -108,8 +102,8 @@
 		}
 
 		this.$pagerWrapper.empty().append( this.pager.$element );
-		$previous.append( this.previousWidget.$element );
-		$next.append( this.nextWidget.$element );
+		$previous.empty().append( this.previousWidget.$element );
+		$next.empty().append( this.nextWidget.$element );
 		$filters.empty().append( this.filters.$element );
 	}
 
