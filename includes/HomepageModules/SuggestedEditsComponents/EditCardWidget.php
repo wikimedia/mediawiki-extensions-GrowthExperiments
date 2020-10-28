@@ -11,9 +11,18 @@ class EditCardWidget extends Widget {
 	/** @var Task */
 	private $task;
 
-	/** @inheritDoc */
+	/** @var string */
+	private $dir;
+
+	/**
+	 * @param array $config Configuration options
+	 *   - Task $config['task'] Task to show
+	 *   - string $config['dir'] Text direction ('ltr' or 'rtl')
+	 *   - any option understood by Widget
+	 */
 	public function __construct( array $config = [] ) {
 		$this->task = $config['task'];
+		$this->dir = $config['dir'];
 		parent::__construct( array_merge(
 			$config,
 			[ 'classes' => [ 'suggested-edits-task-card-wrapper' ] ]
@@ -41,7 +50,7 @@ class EditCardWidget extends Widget {
 	private function getTextContent() : Tag {
 		return ( new Tag( 'div' ) )
 			->addClasses( [ 'se-card-text' ] )
-			->setAttributes( [ 'dir' => 'dir' ] )
+			->setAttributes( [ 'dir' => $this->dir ] )
 			->appendContent(
 				( new Tag( 'h3' ) )
 					->addClasses( [ 'se-card-title' ] )
