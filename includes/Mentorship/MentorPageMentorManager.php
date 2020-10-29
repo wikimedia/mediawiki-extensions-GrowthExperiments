@@ -23,7 +23,7 @@ use WikiPage;
 // phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
 use WikitextContent;
 
-class MentorPageMentorManager implements MentorManager, LoggerAwareInterface {
+class MentorPageMentorManager extends MentorManager implements LoggerAwareInterface {
 	use LoggerAwareTrait;
 
 	/** @var string User preference for storing the mentor. */
@@ -165,16 +165,6 @@ class MentorPageMentorManager implements MentorManager, LoggerAwareInterface {
 		}
 
 		return $mentors;
-	}
-
-	/** @inheritDoc */
-	public function getMentors(): array {
-		return array_unique(
-			array_merge(
-				$this->getAvailableMentors(),
-				$this->getManuallyAssignedMentors()
-			)
-		);
 	}
 
 	/** @inheritDoc */

@@ -10,7 +10,7 @@ use MediaWiki\User\UserIdentity;
  * MentorManager implementation for local testing and development.
  * Uses a predefined user => mentor mapping.
  */
-class StaticMentorManager implements MentorManager {
+class StaticMentorManager extends MentorManager {
 
 	/** @var array */
 	private $mentors;
@@ -39,11 +39,6 @@ class StaticMentorManager implements MentorManager {
 	/** @inheritDoc */
 	public function setMentorForUser( UserIdentity $user, UserIdentity $mentor ): void {
 		throw new BadMethodCallException( 'Not applicable' );
-	}
-
-	/** @inheritDoc */
-	public function getMentors(): array {
-		return $this->getAvailableMentors();
 	}
 
 	/** @inheritDoc */
