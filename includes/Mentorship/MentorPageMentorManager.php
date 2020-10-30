@@ -262,7 +262,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 * @throws WikiConfigException If the mentor page cannot be fetched due to misconfiguration.
 	 * @return WikiPage|null A page that's guaranteed to exist, or null if impossible to get.
 	 */
-	private function getManuallyAssignedMentorsPage(): ?WikiPage {
+	public function getManuallyAssignedMentorsPage(): ?WikiPage {
 		if ( $this->manuallyAssignedMentorsPageName === '' ) {
 			return null;
 		}
