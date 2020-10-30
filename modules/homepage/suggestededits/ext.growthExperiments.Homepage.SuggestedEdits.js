@@ -252,10 +252,12 @@
 	};
 
 	SuggestedEditsModule.prototype.updatePager = function () {
+		var seModuleActionData = mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' ) || {},
+			homepageModulesConfig = mw.config.get( 'homepagemodules' );
 		if ( this.taskQueue.length ) {
 			this.pager.setMessage(
 				this.queuePosition + 1,
-				mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' ).taskCount
+				seModuleActionData.taskCount || homepageModulesConfig[ 'suggested-edits' ][ 'task-count' ]
 			);
 			this.pager.toggle( true );
 		} else {
