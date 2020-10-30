@@ -245,7 +245,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	}
 
 	/**
-	 * Get the Title object for the mentor page.
+	 * Get the WikiPage object for the mentor page.
 	 * @return WikiPage A page that's guaranteed to exist.
 	 * @throws WikiConfigException If the mentor page cannot be fetched due to misconfiguration.
 	 */
@@ -258,7 +258,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	}
 
 	/**
-	 * Get the Title object for the manually assigned mentor page.
+	 * Get the WikiPage object for the manually assigned mentor page.
 	 * @throws WikiConfigException If the mentor page cannot be fetched due to misconfiguration.
 	 * @return WikiPage|null A page that's guaranteed to exist, or null if impossible to get.
 	 */
