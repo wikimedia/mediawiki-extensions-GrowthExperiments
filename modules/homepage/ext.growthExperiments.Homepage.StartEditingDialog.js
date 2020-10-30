@@ -223,7 +223,12 @@ StartEditingDialog.prototype.updateMatchCount = function () {
 			this.api.defaultTaskTypes;
 
 	this.api.fetchTasks( taskTypes, topics ).then( function ( data ) {
+		var homepageModulesConfig = mw.config.get( 'homepagemodules' );
 		this.articleCounter.setCount( Number( data.tasks.length ) );
+		if ( data.tasks.length ) {
+			homepageModulesConfig[ 'suggested-edits' ][ 'task-preview' ] = data.tasks[ 0 ];
+			homepageModulesConfig[ 'suggested-edits' ][ 'task-count' ] = data.tasks.length;
+		}
 	}.bind( this ) );
 };
 
