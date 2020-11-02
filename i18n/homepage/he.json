@@ -278,7 +278,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "הדף הזה מאפשר לך לקלוט חניך. מומלץ להשתמש בזה למשתמש {{GENDER:$1|שאתה מכיר|שאת מכירה}} או למשתמשים {{GENDER:$1|שאתה חונך|שאת חונכת}}.",
 	"growthexperiments-homepage-claimmentee-mentee": "שם המשתמש של החניך",
 	"growthexperiments-homepage-claimmentee-reason": "סיבה לקליטת החניך הזה",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|שינית}} את החונך של {{GENDER:$1|$4}} ועכשיו החונך הוא {{GENDER:$3|$5}}",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|שינית}} את החונך של {{PLURAL:$2|המשתמש|המשתמשים}} $1 ל{{GRAMMAR:תחילית|{{GENDER:$4|$5}}}}",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "החונך של $1 כבר שוּנה. האם {{GENDER:$2|אתה בטוח שאתה|את בטוחה שאת}} רוצה לשנות אותו שוב?",
 	"growthexperiments-claimmentee-confirm": "כן, אני באמת רוצה לשנות את החונך",
 	"growthexperiments-log-name": "יומן GrowthExperiments",

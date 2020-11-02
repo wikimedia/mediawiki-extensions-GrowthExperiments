@@ -279,7 +279,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Tato stránka {{GENDER:$1|vám}} umožňuje změnit mentora nováčka na {{GENDER:$1|sebe}}. Je doporučené tuto funkcionalitu používat pro nováčky, které {{GENDER:$1|znáte}}, nebo nováčky, které {{GENDER:$1|vedete}} na kurzu.",
 	"growthexperiments-homepage-claimmentee-mentee": "Uživatelské jméno nováčka",
 	"growthexperiments-homepage-claimmentee-reason": "Důvod pro stání-se mentorem",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|Změnil|Změnila|Změnil(a)}} jste mentora {{GENDER:$1|uživatele|uživatelky}} $4 na {{GENDER:$3|uživatele|uživatelku}} $5.",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Změnil|Změnila|Změnil(a)}} jste mentora {{PLURAL:$2|uživatele|uživatelů}} $1 na {{GENDER:$4|uživatele|uživatelku}} $5",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Mentor {{GENDER:$1|uživatele|uživatelky}} $1 již byl změněn. Jste si {{GENDER:$2|jist|jistá}} tím, že ho chcete změnit znovu?",
 	"growthexperiments-claimmentee-confirm": "Ano, opravdu chci mentora změnit",
 	"growthexperiments-log-name": "Protokolovací kniha rozšíření GrowthExperiments",

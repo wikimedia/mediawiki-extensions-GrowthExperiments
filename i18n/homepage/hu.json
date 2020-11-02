@@ -284,7 +284,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Ez az oldal lehetővé teszi {{GENDER:$1|számodra}}, hogy megváltoztasd egy mentorált új szerkesztő mentorát {{GENDER:$1|magadra}}. Ezt a funkciót olyan esetekre javasoljuk, amikor vagy {{GENDER:$1|ismered}} a mentoráltat, vagy a mentorált egy {{GENDER:$1|tanfolyamod}} tagja.",
 	"growthexperiments-homepage-claimmentee-mentee": "A mentorált szerkesztői neve",
 	"growthexperiments-homepage-claimmentee-reason": "A mentoráltra való igény oka",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|Megváltoztattad}} {{GENDER:$1|$4}} mentorát {{GENDER:$3|$5}} mentorra.",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Megváltoztattad}} {{GENDER:$1}} {{PLURAL:$2|mentorát}} {{GENDER:$4|$5}} mentorra.",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1}} mentora már korábban megváltozott. Biztos {{GENDER:$2|vagy}} abban, hogy újra {{GENDER:$2|meg akarod változtatni}}?",
 	"growthexperiments-claimmentee-confirm": "Igen, tényleg meg akarom változtatni a mentort.",
 	"growthexperiments-log-name": "A növekedési kísérlet naplója",

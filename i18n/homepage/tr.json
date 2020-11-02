@@ -278,7 +278,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Bu sayfa danışmanlık edinen kullanıcının danışmanını değiştirmesine olanak tanır. Bu özelliği tanıdığınız kullanıcılar veya bir kursa rehberlik ettiğiniz kullanıcılar için {{GENDER:$1|kullanmanız}} önerilir.",
 	"growthexperiments-homepage-claimmentee-mentee": "Danışmanlık edinen kullanıcının kullanıcısının adı",
 	"growthexperiments-homepage-claimmentee-reason": "Bu danışmanlık edinen kullanıcıyı talep etme nedeni",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$1|$4}} kullanıcısının {{GENDER:$3|$5}} danışmanını {{GENDER:$2|değiştirdiniz}}",
+	"growthexperiments-homepage-claimmentee-success": "{{PLURAL:$2|Kullanıcıyı|Kullanıcıları}} $1 ile danışmanı {{GENDER:$4|$5}} olarak {{GENDER:$3|değiştirdiniz}}",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "$1 kullanıcısının danışmanı zaten değiştirildi. Tekrar değiştirmek istediğinizden emin {{GENDER:$2|misiniz}}?",
 	"growthexperiments-claimmentee-confirm": "Evet, danışmanı gerçekten değiştirmek istiyorum",
 	"growthexperiments-log-name": "GrowthExperiments günlüğü",

@@ -279,7 +279,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Trang này cho phép {{GENDER:$1|bạn}} thay đổi người cố vấn của người được cố vấn thành bản thân {{GENDER:$1|bạn}}. Bạn nên sử dụng tính năng này đối với những người dùng mà bạn biết, hoặc với người dùng mà {{GENDER:$1|bạn}} từng làm cố vấn trong một khóa học nào đó.",
 	"growthexperiments-homepage-claimmentee-mentee": "Tên người dùng của người được cố vấn",
 	"growthexperiments-homepage-claimmentee-reason": "Lý do lựa chọn người được cố vấn này",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|Bạn}} đã thay đổi thành công người cố vấn của {{GENDER:$1|$4}} thành {{GENDER:$3|$5}}",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Bạn đã thay đổi}} thành công người cố vấn của {{PLURAL:$2|người dùng}} $1 thành {{GENDER:$4|$5}}",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Người cố vấn của {{GENDER:$1|$1}} đã được thay đổi rồi. {{GENDER:$2|Bạn}} có chắc muốn thay đổi lại không?",
 	"growthexperiments-claimmentee-confirm": "Có, tôi thực sự muốn thay đổi người cố vấn",
 	"growthexperiments-log-name": "Nhật ký GrowthExperiments",

@@ -283,7 +283,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "تمكِّن هذه الصفحة من تغيير المرشَد من قبل المرشِد ونسبه إلى حسابك. يوصى باستخدام هذه الميزة مع المستخدمين الذين {{GENDER:$1|تعرفهم|تعرفينهم}}، أو مع مستخدمين {{GENDER:$1|تقوم|تقومين}} بإرشادهم في نطاق تدريب.",
 	"growthexperiments-homepage-claimmentee-mentee": "اسم المستخدم للمُرشَد",
 	"growthexperiments-homepage-claimmentee-reason": "سبب المطالبة لهذا(ه) المرشَد(ة)",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|نجحتَ|نجحتِ}} في تغيير {{GENDER:$1|مرشد $4}} إلى {{GENDER:$3|المرشد $5|المرشدة $5}}",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|غيرتَ|غيرتِ}} مرشِد {{PLURAL:$2|المستخدم|المستخدمين}} $1 إلى {{GENDER:$4|المرشد $5|المرشدة $5}}",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "تم مسبقا تغيير مرشِد {{GENDER:$1|المستخدم $1|المستخدمة $1}}. هل أنت {{GENDER:$2|متأكد|متأكدة}} من تغييره مرة أخرى؟",
 	"growthexperiments-claimmentee-confirm": "نعم، فعلا، أريد تغيير المرشِد",
 	"growthexperiments-log-name": "سجلّ GrowthExperiments",
