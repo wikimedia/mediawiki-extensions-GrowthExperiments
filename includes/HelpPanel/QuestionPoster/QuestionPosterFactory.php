@@ -5,6 +5,7 @@ namespace GrowthExperiments\HelpPanel\QuestionPoster;
 use GrowthExperiments\Mentorship\MentorManager;
 use IContextSource;
 use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\Permissions\PermissionManager;
 use UserNotLoggedIn;
 use Wikimedia\Assert\Assert;
 
@@ -30,13 +31,22 @@ class QuestionPosterFactory {
 	/** @var MentorManager */
 	private $mentorManager;
 
+	/** @var PermissionManager */
+	private $permissionManager;
+
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param MentorManager $mentorManager
+	 * @param PermissionManager $permissionManager
 	 */
-	public function __construct( WikiPageFactory $wikiPageFactory, MentorManager $mentorManager ) {
+	public function __construct(
+		WikiPageFactory $wikiPageFactory,
+		MentorManager $mentorManager,
+		PermissionManager $permissionManager
+	) {
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->mentorManager = $mentorManager;
+		$this->permissionManager = $permissionManager;
 	}
 
 	/**
@@ -63,13 +73,31 @@ class QuestionPosterFactory {
 			'$target', 'must be one of the QuestionPosterFactory::TARGET_* constants' );
 
 		if ( $target === self::TARGET_HELPDESK ) {
-			return new HelpdeskQuestionPoster( $this->wikiPageFactory, $context, $body, $relevantTitle );
+			return new HelpdeskQuestionPoster(
+				$this->wikiPageFactory,
+				$this->permissionManager,
+				$context,
+				$body,
+				$relevantTitle
+			);
 		} elseif ( $source === self::SOURCE_HELP_PANEL ) {
-			return new HelppanelMentorQuestionPoster( $this->wikiPageFactory, $this->mentorManager,
-				$context, $body, $relevantTitle );
+			return new HelppanelMentorQuestionPoster(
+				$this->wikiPageFactory,
+				$this->mentorManager,
+				$this->permissionManager,
+				$context,
+				$body,
+				$relevantTitle
+			);
 		} else {
-			return new HomepageMentorQuestionPoster( $this->wikiPageFactory, $this->mentorManager,
-				$context, $body, $relevantTitle );
+			return new HomepageMentorQuestionPoster(
+				$this->wikiPageFactory,
+				$this->mentorManager,
+				$this->permissionManager,
+				$context,
+				$body,
+				$relevantTitle
+			);
 		}
 	}
 

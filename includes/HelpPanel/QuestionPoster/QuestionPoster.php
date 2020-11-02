@@ -15,6 +15,7 @@ use Hooks;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\PageUpdater;
 use MWException;
@@ -33,6 +34,11 @@ abstract class QuestionPoster {
 	 * @var WikiPageFactory
 	 */
 	private $wikiPageFactory;
+
+	/**
+	 * @var PermissionManager
+	 */
+	private $permissionsManager;
 
 	/**
 	 * @var IContextSource
@@ -96,15 +102,21 @@ abstract class QuestionPoster {
 
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
+	 * @param PermissionManager $permissionsManager
 	 * @param IContextSource $context
 	 * @param string $body
 	 * @param string $relevantTitle
 	 * @throws UserNotLoggedIn
 	 */
 	public function __construct(
-		WikiPageFactory $wikiPageFactory, IContextSource $context, $body, $relevantTitle = ''
+		WikiPageFactory $wikiPageFactory,
+		PermissionManager $permissionsManager,
+		IContextSource $context,
+		$body,
+		$relevantTitle = ''
 	) {
 		$this->wikiPageFactory = $wikiPageFactory;
+		$this->permissionsManager = $permissionsManager;
 		$this->context = $context;
 		$this->relevantTitle = $relevantTitle;
 		if ( $this->getContext()->getUser()->isAnon() ) {
@@ -136,6 +148,19 @@ abstract class QuestionPoster {
 	 */
 	public function submit() {
 		$this->loadExistingQuestions();
+
+		// Do not let captcha to stop us
+		if (
+			// This needs to be here for unit tests to pass
+			// TODO: Refactor unit tests to make this workaround no longer necessary
+			$this->permissionsManager !== null &&
+			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' )
+		) {
+			$scope = $this->permissionsManager->addTemporaryUserRights(
+				$this->getContext()->getUser(),
+				'skipcaptcha'
+			);
+		}
 
 		$this->postedOnTimestamp = wfTimestamp();
 		$this->setSectionHeader();
@@ -472,8 +497,7 @@ abstract class QuestionPoster {
 	 * @throws \Exception
 	 */
 	protected function checkUserPermissions() {
-		$permissionsManager = MediaWikiServices::getInstance()->getPermissionManager();
-		$errors = $permissionsManager->getPermissionErrors(
+		$errors = $this->permissionsManager->getPermissionErrors(
 			'edit',
 			$this->getContext()->getUser(),
 			$this->targetTitle

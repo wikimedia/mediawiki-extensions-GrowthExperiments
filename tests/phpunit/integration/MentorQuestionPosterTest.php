@@ -24,6 +24,7 @@ class MentorQuestionPosterTest extends MediaWikiTestCase {
 	 */
 	public function testConstruct() {
 		$wikiPageFactory = MediaWikiServices::getInstance()->getWikiPageFactory();
+		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		$mentorManager = $this->getMockMentorManager();
 		$mentorUser = $this->getTestSysop()->getUser();
 		$mentor = new Mentor( $mentorUser, '*' );
@@ -33,7 +34,13 @@ class MentorQuestionPosterTest extends MediaWikiTestCase {
 		$context->setUser( $this->getTestUser()->getUser() );
 
 		$module = $this->getMockBuilder( MentorQuestionPoster::class )
-			->setConstructorArgs( [ $wikiPageFactory, $mentorManager, $context, 'foo' ] )
+			->setConstructorArgs( [
+				$wikiPageFactory,
+				$mentorManager,
+				$permissionManager,
+				$context,
+				'foo'
+			] )
 			->getMockForAbstractClass();
 		$spy = TestingAccessWrapper::newFromObject( $module );
 		$this->assertTrue( $mentorUser->getTalkPage()->equals( $spy->targetTitle ) );

@@ -61,11 +61,18 @@ class ApiQuestionStoreTest extends ApiTestCase {
 		$context = new DerivativeContext( $this->apiContext );
 		$context->setRequest( $request );
 		$context->setUser( $user );
+
+		$services = MediaWikiServices::getInstance();
 		$questionPoster = new HomepageMentorQuestionPoster(
-			MediaWikiServices::getInstance()->getWikiPageFactory(),
+			$services->getWikiPageFactory(),
 			new StaticMentorManager( [
 				$user->getName() => new Mentor( $mentor, '' ),
-			] ), $context, 'foo' );
+			] ),
+			$services->getPermissionManager(),
+			$context,
+			'foo'
+		);
+
 		$questionPoster->submit();
 		$response = $this->doApiRequest(
 			[

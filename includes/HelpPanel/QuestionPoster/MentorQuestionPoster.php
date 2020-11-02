@@ -7,6 +7,7 @@ use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\WikiConfigException;
 use IContextSource;
 use MediaWiki\Page\WikiPageFactory;
+use MediaWiki\Permissions\PermissionManager;
 use UserNotLoggedIn;
 
 /**
@@ -20,6 +21,7 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param MentorManager $mentorManager
+	 * @param PermissionManager $permissionManager
 	 * @param IContextSource $context
 	 * @param string $body
 	 * @param string $relevantTitle
@@ -28,12 +30,13 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
 		MentorManager $mentorManager,
+		PermissionManager $permissionManager,
 		IContextSource $context,
 		$body,
 		$relevantTitle = ''
 	) {
 		$this->mentorManager = $mentorManager;
-		parent::__construct( $wikiPageFactory, $context, $body, $relevantTitle );
+		parent::__construct( $wikiPageFactory, $permissionManager, $context, $body, $relevantTitle );
 	}
 
 	/**
