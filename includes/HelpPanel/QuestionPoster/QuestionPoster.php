@@ -38,7 +38,7 @@ abstract class QuestionPoster {
 	/**
 	 * @var PermissionManager
 	 */
-	private $permissionsManager;
+	private $permissionManager;
 
 	/**
 	 * @var IContextSource
@@ -102,7 +102,7 @@ abstract class QuestionPoster {
 
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
-	 * @param PermissionManager $permissionsManager
+	 * @param PermissionManager $permissionManager
 	 * @param IContextSource $context
 	 * @param string $body
 	 * @param string $relevantTitle
@@ -110,13 +110,13 @@ abstract class QuestionPoster {
 	 */
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
-		PermissionManager $permissionsManager,
+		PermissionManager $permissionManager,
 		IContextSource $context,
 		$body,
 		$relevantTitle = ''
 	) {
 		$this->wikiPageFactory = $wikiPageFactory;
-		$this->permissionsManager = $permissionsManager;
+		$this->permissionManager = $permissionManager;
 		$this->context = $context;
 		$this->relevantTitle = $relevantTitle;
 		if ( $this->getContext()->getUser()->isAnon() ) {
@@ -150,13 +150,8 @@ abstract class QuestionPoster {
 		$this->loadExistingQuestions();
 
 		// Do not let captcha to stop us
-		if (
-			// This needs to be here for unit tests to pass
-			// TODO: Refactor unit tests to make this workaround no longer necessary
-			$this->permissionsManager !== null &&
-			ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' )
-		) {
-			$scope = $this->permissionsManager->addTemporaryUserRights(
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'ConfirmEdit' ) ) {
+			$scope = $this->permissionManager->addTemporaryUserRights(
 				$this->getContext()->getUser(),
 				'skipcaptcha'
 			);
@@ -497,7 +492,7 @@ abstract class QuestionPoster {
 	 * @throws \Exception
 	 */
 	protected function checkUserPermissions() {
-		$errors = $this->permissionsManager->getPermissionErrors(
+		$errors = $this->permissionManager->getPermissionErrors(
 			'edit',
 			$this->getContext()->getUser(),
 			$this->targetTitle

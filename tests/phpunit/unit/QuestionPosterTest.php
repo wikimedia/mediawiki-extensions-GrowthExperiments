@@ -4,32 +4,65 @@ namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionRecord;
+use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Storage\PageUpdater;
 use MediaWiki\Storage\RevisionRecord;
+use MediaWikiUnitTestCase;
+use RequestContext;
+use StatusValue;
+use User;
+use Wikimedia\ScopedCallback;
 use Wikimedia\TestingAccessWrapper;
+use WikitextContent;
 
 /**
  * @coversDefaultClass \GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster
  */
-class QuestionPosterTest extends \MediaWikiUnitTestCase {
+class QuestionPosterTest extends MediaWikiUnitTestCase {
+
+	private function getQuestionPoster( $methods ) {
+		$questionPoster = $this->getMockBuilder( QuestionPoster::class )
+			->disableOriginalConstructor()
+			->setMethods( $methods )
+			->getMockForAbstractClass();
+		$accessWrapper = TestingAccessWrapper::newFromObject( $questionPoster );
+
+		$permissionManager = $this->createMock( PermissionManager::class );
+		$permissionManager->method( 'addTemporaryUserRights' )
+			->willReturnCallback(
+				function ( $user, $rights ) {
+					return new ScopedCallback(
+						function () {
+							// Do nothing
+						}
+					);
+				}
+			);
+		$accessWrapper->permissionManager = $permissionManager;
+
+		// Needed for providing the user to the permission manager
+		$requestContext = new RequestContext();
+		$user = $this->createMock( User::class );
+		$requestContext->setUser( $user );
+		$accessWrapper->context = $requestContext;
+
+		return $questionPoster;
+	}
 
 	/**
 	 * @covers ::checkContent
 	 * @covers ::submit
 	 */
 	public function testCheckContent() {
-		$questionPoster = $this->getMockBuilder( QuestionPoster::class )
-			->disableOriginalConstructor()
-			->setMethods( [
-				'makeWikitextContent',
-				'checkContent',
-				'loadExistingQuestions',
-				'setSectionHeader',
-				'getTargetContentModel',
-			] )
-			->getMockForAbstractClass();
+		$questionPoster = $this->getQuestionPoster( [
+			'makeWikitextContent',
+			'checkContent',
+			'loadExistingQuestions',
+			'setSectionHeader',
+			'getTargetContentModel',
+		] );
 		$questionPoster->method( 'checkContent' )
-			->willReturn( \StatusValue::newFatal( 'apierror-missingcontent-revid' ) );
+			->willReturn( StatusValue::newFatal( 'apierror-missingcontent-revid' ) );
 		$questionPoster->method( 'makeWikitextContent' )->willReturn( null );
 		$questionPoster->method( 'setSectionHeader' )->willReturn( null );
 		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
@@ -48,17 +81,14 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 	 * @covers ::checkContent
 	 */
 	public function testNullContent() {
-		$questionPoster = $this->getMockBuilder( QuestionPoster::class )
-			->disableOriginalConstructor()
-			->setMethods( [
-				'makeWikitextContent',
-				'setSectionHeader',
-				'loadExistingQuestions',
-				'getPageUpdater',
-				'grabParentRevision',
-				'getTargetContentModel',
-			] )
-			->getMockForAbstractClass();
+		$questionPoster = $this->getQuestionPoster( [
+			'makeWikitextContent',
+			'setSectionHeader',
+			'loadExistingQuestions',
+			'getPageUpdater',
+			'grabParentRevision',
+			'getTargetContentModel',
+		] );
 		$questionPoster->method( 'makeWikitextContent' )->willReturn( null );
 		$questionPoster->method( 'setSectionHeader' )->willReturn( null );
 		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
@@ -80,7 +110,7 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 			->method( 'getPageUpdater' )
 			->willReturn( $pageUpdaterMock );
 
-		/** @var \StatusValue $status */
+		/** @var StatusValue $status */
 		$status = $questionPoster->submit();
 		$this->assertEquals(
 			'apierror-missingcontent-revid',
@@ -88,7 +118,7 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 			'If content is null, submit short-circuits'
 		);
 
-		/** @var \StatusValue $status */
+		/** @var StatusValue $status */
 		$status = $questionPoster->submit();
 		$this->assertEquals(
 			'apierror-missingcontent-revid',
@@ -102,27 +132,24 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 	 * @covers ::checkUserPermissions
 	 */
 	public function testCheckUserPermissions() {
-		$questionPoster = $this->getMockBuilder( QuestionPoster::class )
-			->disableOriginalConstructor()
-			->setMethods( [
-				'makeWikitextContent',
-				'checkUserPermissions',
-				'loadExistingQuestions',
-				'checkContent',
-				'setSectionHeader',
-				'getTargetContentModel',
-			] )
-			->getMockForAbstractClass();
+		$questionPoster = $this->getQuestionPoster( [
+			'makeWikitextContent',
+			'checkUserPermissions',
+			'loadExistingQuestions',
+			'checkContent',
+			'setSectionHeader',
+			'getTargetContentModel',
+		] );
 		$questionPoster->method( 'makeWikitextContent' )->willReturn( null );
 		$questionPoster->method( 'setSectionHeader' )->willReturn( null );
 		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
 		$questionPoster->method( 'checkUserPermissions' )->willReturn(
-			\StatusValue::newFatal( '' )
+			StatusValue::newFatal( '' )
 		);
 		$questionPoster->method( 'checkContent' )->willReturn(
-			\StatusValue::newGood( '' )
+			StatusValue::newGood( '' )
 		);
-		/** @var \StatusValue $status */
+		/** @var StatusValue $status */
 		$status = $questionPoster->submit();
 		$this->assertFalse(
 			$status->isGood(), 'Check user permissions short-circuits checkPermissions call'
@@ -135,27 +162,24 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 	 * @covers ::runEditFilterMergedContentHook
 	 */
 	public function testRunEditFilterMergedContentHook() {
-		$questionPoster = $this->getMockBuilder( QuestionPoster::class )
-			->disableOriginalConstructor()
-			->setMethods( [
-				'checkUserPermissions',
-				'checkContent',
-				'loadExistingQuestions',
-				'makeWikitextContent',
-				'setSectionHeader',
-				'runEditFilterMergedContentHook',
-				'getTargetContentModel',
-			] )
-			->getMockForAbstractClass();
+		$questionPoster = $this->getQuestionPoster( [
+			'checkUserPermissions',
+			'checkContent',
+			'loadExistingQuestions',
+			'makeWikitextContent',
+			'setSectionHeader',
+			'runEditFilterMergedContentHook',
+			'getTargetContentModel',
+		] );
 		$questionPoster->method( 'setSectionHeader' )->willReturn( null );
 		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
 		$questionPoster->method( 'checkUserPermissions' )->willReturn(
-			\StatusValue::newGood( '' )
+			StatusValue::newGood( '' )
 		);
 		$questionPoster->method( 'checkContent' )->willReturn(
-			\StatusValue::newGood( '' )
+			StatusValue::newGood( '' )
 		);
-		$contentMock = $this->getMockBuilder( \WikitextContent::class )
+		$contentMock = $this->getMockBuilder( WikitextContent::class )
 			->disableOriginalConstructor()
 			->getMock();
 		$questionPoster->method( 'makeWikitextContent' )
@@ -163,9 +187,9 @@ class QuestionPosterTest extends \MediaWikiUnitTestCase {
 		$questionPoster->expects( $this->once() )
 			->method( 'runEditFilterMergedContentHook' )
 			->willReturn(
-			\StatusValue::newFatal( '' )
-		);
-		/** @var \StatusValue $status */
+				StatusValue::newFatal( '' )
+			);
+		/** @var StatusValue $status */
 		$status = $questionPoster->submit();
 		$this->assertFalse(
 			$status->isGood(), 'Check edit filter merged content hook short-circuits checkPermissions call'
