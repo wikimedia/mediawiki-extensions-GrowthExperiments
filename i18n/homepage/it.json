@@ -276,7 +276,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Questa pagina {{GENDER:$1|ti}} permette di cambiare il tutor di un allievo a te stess{{GENDER:$1|o|a|o/a}}. È consigliato utilizzare questa funzione con utenti che {{GENDER:$1|conosci}}, o per utenti a cui {{GENDER:$1|stai}} facendo un corso di tutoraggio.",
 	"growthexperiments-homepage-claimmentee-mentee": "Nome utente dell'allievo",
 	"growthexperiments-homepage-claimmentee-reason": "Motivo per seguire questo allievo",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|Hai cambiato}} il tutor {{GENDER:$1|di $4}} a {{GENDER:$3|$5}}",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Hai cambiato}} il tutor {{PLURAL:$2|dell'utente|degli utenti}} $1 a {{GENDER:$4|$5}}",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Il tutor {{GENDER:$1|di $1}} è già stato cambiato. Sei sicur{{GENDER:$2|a|o|o/a}} di volerlo cambiare di nuovo?",
 	"growthexperiments-claimmentee-confirm": "Sì, sono davvero sicuro di voler cambiare tutor",
 	"growthexperiments-log-name": "Registro GrowthExperiments",
