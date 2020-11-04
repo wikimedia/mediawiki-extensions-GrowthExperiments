@@ -272,7 +272,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Denne siden lar {{GENDER:$1|deg}} endre brukerens fadder til deg selv. Det anbefales at du bruker denne funksjonen for brukere du kjenner, eller for brukere du er fadder for i et kurs.",
 	"growthexperiments-homepage-claimmentee-mentee": "Nybegynnerens brukernavn",
 	"growthexperiments-homepage-claimmentee-reason": "Grunn til å velge denne nybegynneren",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|Du}} endret {{GRAMMAR:genitive|{{GENDER:$1|$4}}}} fadder til {{GENDER:$3|$5}}",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Du}} endret {{PLURAL:$2|{{GRAMMAR:genitive|$1}} fadder|fadderen til brukerne $1}} til {{GENDER:$4|$5}}",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GRAMMAR:genitive|{{GENDER:$1|$1}}}} fadder har allerede blitt endret. Er {{GENDER:$2|du}} sikker på at du vil endre det igjen?",
 	"growthexperiments-claimmentee-confirm": "Ja, jeg ønsker virkelig å bytte fadderen",
 	"growthexperiments-log-name": "GrowthExperiments-logg",

@@ -293,7 +293,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Эта страница позволяет стать {{GENDER:$1|наставником|наставницей}} подопечного. Рекомендуется использовать эту возможность для знакомых вам участников, или для тех, с кем {{GENDER:$1|вы}} уже начали работу.",
 	"growthexperiments-homepage-claimmentee-mentee": "Имя учётной записи подопечного",
 	"growthexperiments-homepage-claimmentee-reason": "Описание причины, почему вы выбрали этого подопечного",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|Вы изменили}} {{GENDER:$3|наставника|наставницу}} {{GENDER:$1|$4}} на {{GENDER:$3|$5}}",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Вы изменили}} наставника {{PLURAL:$2|участника|участников}} $1 на {{GENDER:$4|$5}}",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "У {{GENDER:$1|$1}} наставник уже был изменён. {{GENDER:$2|Вы}}, уверены что хотите сменить его ещё раз?",
 	"growthexperiments-claimmentee-confirm": "Да, я действительно хочу сменить наставника",
 	"growthexperiments-log-name": "Журнал GrowthExperiments",
@@ -314,6 +314,8 @@
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Больше информации об этой предложенной правке",
 	"growthexperiments-homepage-suggestededits-more-info": "Подробнее о предлагаемых правках",
 	"growthexperiments-homepage-welcome-notice-header": "Добро пожаловать на {{GENDER:$1|вашу}} домашнюю страницу!",
+	"growthexperiments-homepage-welcome-notice-body-variant-c": "{{GENDER:$1|Вы}} можете научиться редактировать, найти наставника и увидеть результат {{GENDER:$1|вашей}} работы. Продолжайте работать с <strong>предложенными правками</strong> на  {{GENDER:$1|вашей}} домашней странице.",
+	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|Вы}} можете научиться редактировать, найти наставника и увидеть результат {{GENDER:$1|вашей}} работы.",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Продолжить",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Понятно"
 }
