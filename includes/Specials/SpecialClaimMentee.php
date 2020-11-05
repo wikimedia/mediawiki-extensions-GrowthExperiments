@@ -5,6 +5,7 @@ namespace GrowthExperiments\Specials;
 use FormSpecialPage;
 use GrowthExperiments\Mentorship\ChangeMentor;
 use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\WikiConfigException;
 use Linker;
 use LogEventsList;
@@ -92,16 +93,46 @@ class SpecialClaimMentee extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function displayRestrictionError() {
-		$error = !$this->mentorsList ?
-			[
-				'growthexperiments-homepage-mentors-list-missing-or-misconfigured',
-				str_replace( '_', ' ', $this->getConfig()->get( 'GEHomepageMentorsList' ) )
-			]
-			:
-			[ 'growthexperiments-homepage-claimmentee-must-be-mentor',
-			  $this->getUser(),
-			  str_replace( '_', ' ', $this->getConfig()->get( 'GEHomepageMentorsList' ) )
-			];
+		if ( $this->mentorsList === null ) {
+			throw new PermissionsError(
+				null,
+				[ 'growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic' ]
+			);
+		}
+
+		if ( $this->mentorManager instanceof MentorPageMentorManager ) {
+			// User is not signed up at a page
+			if ( $this->mentorManager->getManuallyAssignedMentorsPage() !== null ) {
+				// User is not signed up at either auto-assignment page, or the manual page
+				$error = [ 'growthexperiments-homepage-claimmentee-must-be-mentor-two-lists',
+					$this->getUser(),
+					str_replace(
+						'_',
+						' ',
+						$this->getConfig()->get( 'GEHomepageMentorsList' )
+					),
+					str_replace(
+						'_',
+						' ',
+						$this->getConfig()->get( 'GEHomepageManualAssignmentMentorsList' )
+					)
+				];
+			} else {
+				// User is not signed up at the auto assignment page
+				$error = [ 'growthexperiments-homepage-claimmentee-must-be-mentor',
+					$this->getUser(),
+					str_replace(
+						'_',
+						' ',
+						$this->getConfig()->get( 'GEHomepageMentorsList' )
+					)
+				];
+			}
+		} else {
+			// User is just not a mentor, display a generic access denied message - no details available
+			$error = [ 'growthexperiments-homepage-claimmentee-must-be-mentor-generic', $this->getUser() ];
+		}
+
 		throw new PermissionsError( null, [ $error ] );
 	}
 
