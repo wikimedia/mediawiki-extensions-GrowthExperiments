@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Kenrick95",
-			"Rachmat04"
+			"Rachmat04",
+			"Sonic Speedy"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Aktifkan panel bantuan editor",
@@ -25,5 +26,17 @@
 	"growthexperiments-help-panel-postedit-footer2": "Tutup dan sunting artikel ini lagi",
 	"growthexperiments-help-panel-questionreview-title": "Tanya di meja bantuan",
 	"growthexperiments-help-panel-questionreview-title-mentor": "Tanya mentor Anda",
+	"growthexperiments-help-panel-questionreview-header": "Saat Anda mengirimkan pertanyaan, pertanyaan akan <strong>diposting secara publik</strong> dengan nama pengguna Anda, \"$2\", ke $1, di mana penyuting sukarelawan lain akan mencoba memberikan jawaban dalam waktu sekitar satu hari.",
+	"growthexperiments-help-panel-questionreview-label": "Pertanyaan Anda",
+	"growthexperiments-help-panel-questionreview-include-article-title": "Sertakan judul halaman dengan pertanyaan saya",
+	"growthexperiments-help-panel-question-subject-template": "Pertanyaan panel bantuan",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Pertanyaan panel bantuan tentang [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-from-homepage": "Pertanyaan modul bantuan dari beranda pengguna",
+	"growthexperiments-help-panel-question-post-error": "Terjadi kesalahan saat mencoba memposting pertanyaan Anda. Anda dapat mencoba lagi atau Anda dapat mengunjungi $1 di penjelajah internet Anda dan menambahkan pertanyaan Anda secara manual.",
+	"growthexperiments-help-panel-suggestededits-title": "Penyutingan yang disarankan",
+	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Kiat memulai cepat",
+	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Siap?</strong> Klik \"{{int:vector-view-edit}}\" untuk memulai.",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Siap?</strong> Buka bagian yang ingin Anda sunting dan ketuk ikon pensil.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Copyedit adalah tentang membuat perbaikan kecil pada cara artikel ditulis, seperti ejaan, tata bahasa, atau kejelasan teks. Copyedit membantu artikel menjadi lebih profesional dan dapat dipercaya.",
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Tentang saranan penyuntingan"
 }
