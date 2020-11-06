@@ -1006,6 +1006,10 @@
 			"description": "Mediawiki title for help panel CTA when users have disabled JS. Templates or magic words contained in this string will be expanded.",
 			"value": "Talk:Main_Page"
 		},
+		"GEHelpPanelHelpDeskPostOnTop": {
+			"description": "Whether to post new questions on the top of the help desk. Default is to post on the bottom (like section=new does). Only affects wikitext pages.",
+			"value": false
+		},
 		"GEHelpPanelViewMoreTitle": {
 			"description": "MediaWiki title for view more articles on help link.",
 			"value": "Main_Page"
