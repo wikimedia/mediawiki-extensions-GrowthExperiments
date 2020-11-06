@@ -10,6 +10,11 @@ use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
+use GrowthExperiments\NewcomerTasks\AddLink\DbBackedLinkRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
+use GrowthExperiments\NewcomerTasks\AddLink\ServiceLinkRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\AddLink\StaticLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
@@ -96,6 +101,39 @@ return [
 		MediaWikiServices $services
 	) : HomepageModuleRegistry {
 		return new HomepageModuleRegistry( $services );
+	},
+
+	'GrowthExperimentsLinkRecommendationProvider' => function (
+		MediaWikiServices $services
+	): LinkRecommendationProvider {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$serviceUrl = $growthServices->getConfig()->get( 'GELinkRecommendationServiceUrl' );
+		if ( $serviceUrl ) {
+			return new DbBackedLinkRecommendationProvider(
+				new ServiceLinkRecommendationProvider(
+					$services->getTitleFactory(),
+					$services->getRevisionLookup(),
+					$services->getHttpRequestFactory(),
+					$growthServices->getConfig()->get( 'GELinkRecommendationServiceUrl' ),
+					$services->getContentLanguage()->getCode()
+				),
+				$growthServices->getLinkRecommendationStore()
+			);
+		} else {
+			return new StaticLinkRecommendationProvider( [],
+				StatusValue::newFatal( 'rawmessage', '$wgGELinkRecommendationServiceUrl not set!' ) );
+		}
+	},
+
+	'GrowthExperimentsLinkRecommendationStore' => function (
+		MediaWikiServices $services
+	): LinkRecommendationStore {
+		$loadBalancer = GrowthExperimentsServices::wrap( $services )->getLoadBalancer();
+		return new LinkRecommendationStore(
+			$loadBalancer->getConnection( DB_REPLICA ),
+			$loadBalancer->getConnection( DB_MASTER ),
+			$services->getTitleFactory()
+		);
 	},
 
 	'GrowthExperimentsMentorManager' => function (

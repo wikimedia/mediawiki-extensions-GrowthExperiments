@@ -302,5 +302,10 @@
 	"growthexperiments-homepage-welcome-notice-body-variant-c": "{{GENDER:$1|You}} can learn to edit, contact {{GENDER:$1|your}} mentor, and see the impact of {{GENDER:$1|your}} work. Continue to learn about the <strong>suggested edits</strong> on {{GENDER:$1|your}} homepage.",
 	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|You}} can learn to edit, contact {{GENDER:$1|your}} mentor, and see the impact of {{GENDER:$1|your}} work.",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Continue",
-	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Got it"
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Got it",
+	"growthexperiments-addlink-pagenotfound": "Page \"$1\" does not exist",
+	"growthexperiments-addlink-revdeleted": "Revision $1 of \"$2\" is inaccessible",
+	"growthexperiments-addlink-wrongmodel": "Revision $1 of \"$2\" is not wikitext",
+	"growthexperiments-addlink-invalidjson": "Link recommendation service response for \"$1\" is invalid",
+	"growthexperiments-addlink-serviceerror": "Link recommendation service responded with an error for \"$1\": $2"
 }
