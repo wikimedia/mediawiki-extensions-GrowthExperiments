@@ -196,10 +196,12 @@ return [
 	'GrowthExperimentsQuestionPosterFactory' => function (
 		MediaWikiServices $services
 	): QuestionPosterFactory {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new QuestionPosterFactory(
 			$services->getWikiPageFactory(),
-			GrowthExperimentsServices::wrap( $services )->getMentorManager(),
-			$services->getPermissionManager()
+			$growthServices->getMentorManager(),
+			$services->getPermissionManager(),
+			$growthServices->getConfig()->get( 'GEHelpPanelHelpDeskPostOnTop' )
 		);
 	},
 

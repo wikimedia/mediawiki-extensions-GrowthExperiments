@@ -41,6 +41,11 @@ abstract class QuestionPoster {
 	private $permissionManager;
 
 	/**
+	 * @var bool
+	 */
+	private $postOnTop = false;
+
+	/**
 	 * @var IContextSource
 	 */
 	private $context;
@@ -128,6 +133,15 @@ abstract class QuestionPoster {
 		$page = new WikiPage( $this->targetTitle );
 		$this->pageUpdater = $page->newPageUpdater( $this->getContext()->getUser() );
 		$this->body = trim( $body );
+	}
+
+	/**
+	 * Whether to post on top of the help desk (as opposed to the bottom). Defaults to false.
+	 * Only affects wikitext pages.
+	 * @param bool $postOnTop
+	 */
+	public function setPostOnTop( bool $postOnTop ): void {
+		$this->postOnTop = $postOnTop;
 	}
 
 	/**
@@ -333,6 +347,16 @@ abstract class QuestionPoster {
 		$existingContent = $parent->getContent( SlotRecord::MAIN );
 		if ( !$existingContent ) {
 			return null;
+		}
+
+		if ( $this->postOnTop ) {
+			$section1 = $existingContent->getSection( 1 );
+			if ( $section1 ) {
+				// Prepend to section 1 to post on top without disturbing top-of-the-page templates
+				return $existingContent->replaceSection( 1,
+					$wikitextContent->replaceSection( 'new', $section1 )->addSectionHeader( $header ) );
+			}
+			// No sections on the page - just post on bottom.
 		}
 		return $existingContent->replaceSection(
 			'new',

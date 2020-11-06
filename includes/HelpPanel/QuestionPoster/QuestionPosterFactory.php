@@ -34,19 +34,26 @@ class QuestionPosterFactory {
 	/** @var PermissionManager */
 	private $permissionManager;
 
+	/** @var bool */
+	private $helpDeskPostOnTop;
+
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param MentorManager $mentorManager
 	 * @param PermissionManager $permissionManager
+	 * @param bool $helpDeskPostOnTop Whether to post on top of the help desk
+	 *   (as opposed to the bottom). Only affects wikitext pages.
 	 */
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
 		MentorManager $mentorManager,
-		PermissionManager $permissionManager
+		PermissionManager $permissionManager,
+		bool $helpDeskPostOnTop
 	) {
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->mentorManager = $mentorManager;
 		$this->permissionManager = $permissionManager;
+		$this->helpDeskPostOnTop = $helpDeskPostOnTop;
 	}
 
 	/**
@@ -73,13 +80,15 @@ class QuestionPosterFactory {
 			'$target', 'must be one of the QuestionPosterFactory::TARGET_* constants' );
 
 		if ( $target === self::TARGET_HELPDESK ) {
-			return new HelpdeskQuestionPoster(
+			$questionPoster = new HelpdeskQuestionPoster(
 				$this->wikiPageFactory,
 				$this->permissionManager,
 				$context,
 				$body,
 				$relevantTitle
 			);
+			$questionPoster->setPostOnTop( $this->helpDeskPostOnTop );
+			return $questionPoster;
 		} elseif ( $source === self::SOURCE_HELP_PANEL ) {
 			return new HelppanelMentorQuestionPoster(
 				$this->wikiPageFactory,
