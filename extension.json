@@ -1161,7 +1161,7 @@
 		},
 		"GELinkRecommendationServiceUrl": {
 			"description": "Root URL of the link recommendation service.",
-			"value": "false"
+			"value": false
 		},
 		"WelcomeSurveyExperimentalGroups": {
 			"description": "List of experimental groups. A group is defined with a range to randomly match users and the list of questions they will see on the survey.",
