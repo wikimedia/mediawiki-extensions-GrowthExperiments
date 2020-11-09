@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rachmat04"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "Dapatkan pertanyaan terformat yang dikirim melalui modul beranda",
+	"apihelp-homepagequestionstore-param-questionformat": "Format yang ingin diperoleh, misalnya HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Lokasi penyimpanan pertanyaan itu.",
+	"apihelp-homepagequestionstore-param-userid": "ID pengguna untuk mendapatkan pertanyaan itu.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Tidak ada pertanyaan.",
+	"apihelp-growthsetmentor-summary": "Atur mentor pengguna. Perubahan akan dicatat secara publik.",
+	"apihelp-growthsetmentor-param-mentee": "Nama pengguna dibimbing",
+	"apihelp-growthsetmentor-param-mentor": "Nama pengguna mentor",
+	"apihelp-growthsetmentor-param-reason": "Alasan perubahan"
+}

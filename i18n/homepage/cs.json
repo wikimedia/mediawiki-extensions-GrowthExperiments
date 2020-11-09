@@ -292,7 +292,10 @@
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|je}} {{GENDER:$3|váš}} nový mentor",
 	"growthexperiments-notification-body-mentor-change": "Důvod: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Pozdravte}} {{GENDER:$2|svého nového mentora|svou novou mentorku}}!",
+	"growthexperiments-homepage-claimmentee-must-be-mentor-generic": "{{GENDER:$1|Musíte}} být mentorem, abyste {{GENDER:$1|mohl|mohla|mohli}} použít tuto funkci.",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "Musíte být {{GENDER:$1|uveden|uvedena}} na seznamu mentorů na [[$2]], abyste {{GENDER:$1|mohl|mohla}} použít tuto funkci.",
+	"growthexperiments-homepage-claimmentee-must-be-mentor-two-lists": "Musíte být {{GENDER:$1|uveden|uvedena}} na seznamu mentorů na [[$2]] nebo [[$3]], abyste {{GENDER:$1|mohl|mohla}} použít tuto funkci.",
+	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "Seznam mentorů je špatně nakonfigurován.",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Seznam mentorů ([[$1]]) buď neexistuje, nebo je špatně nastaven.",
 	"growthexperiments-notification-learn-more": "{{GENDER:$1|Zjistěte}} více o {{GENDER:$2|svém novém mentorovi|své nové mentorce}}",
 	"right-setmentor": "Nastavit mentora uživatele",
@@ -303,5 +306,10 @@
 	"growthexperiments-homepage-welcome-notice-body-variant-c": "Můžete se zde naučit, jak editovat, kontaktovat {{GENDER:$1|svého}} mentora a vidět dosah svých příspěvků. Pokračujte, abyste se dozvěděli více o <strong>editačních tipech</strong> na {{GENDER:$1|své}} domovské stránce.",
 	"growthexperiments-homepage-welcome-notice-body-variant-d": "Můžete se zde naučit, jak editovat, kontaktovat {{GENDER:$1|svého}} mentora a vidět dosah svých příspěvků.",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Pokračovat",
-	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Rozumím"
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Rozumím",
+	"growthexperiments-addlink-pagenotfound": "Stránka \"$1\" neexistuje.",
+	"growthexperiments-addlink-revdeleted": "Revize číslo $1 stránky \"$2\" je nedostupná.",
+	"growthexperiments-addlink-wrongmodel": "Revize číslo $1 stránky \"$2\" není ve formátu wikitext.",
+	"growthexperiments-addlink-invalidjson": "Odpověď služby pro doporučování odkazů pro stránku \"$1\" je neplatná",
+	"growthexperiments-addlink-serviceerror": "Služba pro doporučování odkazů odpověděla pro stránku \"$1\" chybou $2"
 }

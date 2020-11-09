@@ -291,7 +291,10 @@
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|הוא החונך החדש|היא החונכת החדשה}} {{GENDER:$3|שלך}}",
 	"growthexperiments-notification-body-mentor-change": "סיבה: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$2|אמור|אמרי}} שלום {{GENDER:$2|לחונך החדש|לחונכת החדשה}} {{GENDER:$3|שלך}}!",
+	"growthexperiments-homepage-claimmentee-must-be-mentor-generic": "{{GENDER:$1|אתה צריך להיות חונך|את צריכה להיות חונכת}} כדי להשתמש בדף המיוחד קליטת חניך",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|אתה צריך להיות רשום בתור חונך|את צריכה להיות רשומה בתור חונכת}} בדף [[$2]] כדי להשתמש בדף מיוחד:קליטת חניך (Special:ClaimMentee)",
+	"growthexperiments-homepage-claimmentee-must-be-mentor-two-lists": "{{GENDER:$1|אתה צריך להיות חונך|את צריכה להיות חונכת}} כדי להיות רשום בדף [[$2]] או [[$3]] או להשתמש בדף המיוחד קליטת חניך",
+	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "רשימת החונכים אינה מוגדרת נכון.",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "דף החונכים ([[$1]]) אינו קיים או שהוא מוגדר לא נכון.",
 	"growthexperiments-notification-learn-more": "מידע נוסף על {{GENDER:$2|החונך|החונכת}} {{GENDER:$1|שלך}}",
 	"right-setmentor": "הגדרת החונך של משתמש",
@@ -302,5 +305,10 @@
 	"growthexperiments-homepage-welcome-notice-body-variant-c": "{{GENDER:$1|אתה יכול|את יכולה}} ללמוד לערוך, ליצור קשר עם החונך שלך, ולראות את ההשפעה של העבודה שלך. {{GENDER:$1|תמשיך|תמשיכי}} ללמוד על <strong>עריכות מוצעות</strong> בדף הבית שלך.",
 	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|אתה יכול|את יכולה}} ללמוד לערוך, ליצור קשר עם החונך שלך, ולראות את ההשפעה של העבודה שלך.",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "להמשיך",
-	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "הבנתי"
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "הבנתי",
+	"growthexperiments-addlink-pagenotfound": "הדף \"$1\" אינו קיים",
+	"growthexperiments-addlink-revdeleted": "הגרסה $1 של \"$2\" אינה נגישה",
+	"growthexperiments-addlink-wrongmodel": "הגרסה $1 של \"$2\" אינה קוד ויקי",
+	"growthexperiments-addlink-invalidjson": "התשובה משירות הצעת הקישורים עבור הדף \"$1\" אינה תקינה",
+	"growthexperiments-addlink-serviceerror": "שירות הצעת הקישורים החזיר עבור \"$1\" שגיאה: $2"
 }

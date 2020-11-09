@@ -292,7 +292,10 @@
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|là}} người cố vấn mới của {{GENDER:$3|bạn}}",
 	"growthexperiments-notification-body-mentor-change": "Lý do: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "Hãy {{GENDER:$3|gửi}} lời chào tới người {{GENDER:$2|cố vấn}} mới của {{GENDER:$3|bạn}}!",
+	"growthexperiments-homepage-claimmentee-must-be-mentor-generic": "{{GENDER:$1|Bạn}} phải là một cố vấn thì mới có thể sử dụng Đặc biệt:NhậnNgườiđượccốvấn",
 	"growthexperiments-homepage-claimmentee-must-be-mentor": "{{GENDER:$1|Bạn}} phải có tên trong danh sách cố vấn viên tại [[$2]] để có thể sử dụng Đặc biệt:NhậnNgườiđượccốvấn",
+	"growthexperiments-homepage-claimmentee-must-be-mentor-two-lists": "{{GENDER:$1|Bạn}} phải có tên trong danh sách cố vấn viên tại [[$2]] hoặc [[$3]] để có thể sử dụng Đặc biệt:NhậnNgườiđượccốvấn",
+	"growthexperiments-homepage-mentors-list-missing-or-misconfigured-generic": "Danh sách cố vấn viên bị định dạng sai.",
 	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "Danh sách cố vấn viên ([[$1]]) không tồn tại hoặc sai định dạng.",
 	"growthexperiments-notification-learn-more": "Tìm hiểu thêm về {{GENDER:$1|cố vấn}} mới của {{GENDER:$2|bạn}}",
 	"right-setmentor": "Đặt cố vấn của người dùng",
@@ -303,5 +306,10 @@
 	"growthexperiments-homepage-welcome-notice-body-variant-c": "{{GENDER:$1|Bạn}} có thể học cách sửa đổi, liên hệ với cố vấn {{GENDER:$1|của bạn}} hay xem ảnh hưởng của những đóng góp {{GENDER:$1|của bản thân}}. Tiếp tục tìm hiểu về <strong>sửa đổi gợi ý</strong> trên trang nhà {{GENDER:$1|của bạn}}.",
 	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|Bạn}} có thể học cách sửa đổi, liên hệ với cố vấn {{GENDER:$1|của bạn}} hoặc xem ảnh hưởng của những đóng góp {{GENDER:$1|của bản thân}}.",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Tiếp tục",
-	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Đã hiểu"
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Đã hiểu",
+	"growthexperiments-addlink-pagenotfound": "Trang \"$1\" không tồn tại",
+	"growthexperiments-addlink-revdeleted": "Không thể xem phiên bản $1 của \"$2\"",
+	"growthexperiments-addlink-wrongmodel": "Phiên bản $1 của \"$2\" không phải wikitext",
+	"growthexperiments-addlink-invalidjson": "Phản hồi dịch vụ gợi ý liên kết cho \"$1\" vô hiệu",
+	"growthexperiments-addlink-serviceerror": "Dịch vụ gợi ý liên kết phản hồi với một lỗi cho \"$1\": $2"
 }

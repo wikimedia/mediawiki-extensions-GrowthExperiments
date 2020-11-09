@@ -76,5 +76,6 @@
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Vælg alle",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Fjern alle",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Fortsæt",
-	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Forstået"
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Forstået",
+	"growthexperiments-addlink-pagenotfound": "Siden \"$1\" findes ikke"
 }

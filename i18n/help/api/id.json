@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Rachmat04"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Tangani pertanyaan yang dikirim melalui panel bantuan untuk pengguna sekarang.",
+	"apihelp-helppanelquestionposter-param-body": "\nTeks pertanyaan yang diberikan oleh pengguna.",
+	"apihelp-helppanelquestionposter-param-source": "Metode yang digunakan ketika mengirimkan pertanyaan itu.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Panel \"Tanya di meja bantuan\"",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Panel \"Tanya pada mentor Anda\" di halaman beranda pengguna baru",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Judul yang relevan, jika dipilih, untuk disertakan dengan pertanyaan tersebut.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Anda wajib masuk log untuk bertanya."
+}

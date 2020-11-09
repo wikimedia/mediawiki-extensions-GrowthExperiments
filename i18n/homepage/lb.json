@@ -125,5 +125,8 @@
 	"growthexperiments-notification-body-mentor-change": "Grond: $1",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Méi iwwer dës proposéiert Ännerung",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Virufueren",
-	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Verstanen"
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Verstanen",
+	"growthexperiments-addlink-pagenotfound": "Säit \"$1\" gëtt et net",
+	"growthexperiments-addlink-revdeleted": "Versioun $1 vu(n) \"$2\" ass net zougänglech",
+	"growthexperiments-addlink-wrongmodel": "Versioun $1 vu(n) \"$2\" ass kee Wikitext"
 }

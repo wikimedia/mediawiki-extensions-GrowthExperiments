@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajam",
 			"Ebraminio",
 			"FarsiNevis",
 			"Huji",
@@ -280,5 +281,6 @@
 	"growthexperiments-notification-learn-more": "دربارهٔ {{GENDER:$2|مربی}} جدید {{GENDER:$1|خود}} بیشتر بدانید",
 	"right-setmentor": "تعریف مربی کاربر",
 	"action-setmentor": "تعریف مربی کاربر",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "اطلاعات بیشتر دربارهٔ این ویرایش پیشنهادی"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "اطلاعات بیشتر دربارهٔ این ویرایش پیشنهادی",
+	"growthexperiments-addlink-pagenotfound": "صفحهٔ \"$1\" وجود ندارد"
 }
