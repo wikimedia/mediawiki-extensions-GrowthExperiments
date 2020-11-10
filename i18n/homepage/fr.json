@@ -315,5 +315,10 @@
 	"growthexperiments-homepage-welcome-notice-body-variant-c": "{{GENDER:$1|Vous}} pouvez apprendre à modifier, contacter {{GENDER:$1|votre}} tuteur, et voir l’impact de {{GENDER:$1|votre}} travail. Apprenez-en plus concernant les <strong>modifications suggérées</strong> sur {{GENDER:$1|votre}} page d’accueil.",
 	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|Vous}} pouvez apprendre à modifier, contacter {{GENDER:$1|votre}} tuteur, et voir l’impact de {{GENDER:$1|votre}} travail.",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Continuer",
-	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "C’est bon"
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "C’est bon",
+	"growthexperiments-addlink-pagenotfound": "La page « $1 » n’existe pas",
+	"growthexperiments-addlink-revdeleted": "La révision $1 de « $2 » est inaccessible",
+	"growthexperiments-addlink-wrongmodel": "La révision $1 de « $2 » n’est pas du wikitexte",
+	"growthexperiments-addlink-invalidjson": "La réponse du service de recommandation de lien pour « $1 » n’est pas valide",
+	"growthexperiments-addlink-serviceerror": "Le service de recommandation de lien a répondu avec une erreur pour « $1 » : $2"
 }
