@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Notanotheramy",
 			"Rachmat04"
 		]
 	},
@@ -9,5 +10,6 @@
 	"growthexperiments-confirmemail-emailrecommended": "Alamat surel (disarankan)",
 	"growthexperiments-confirmemail-emailwarning": "Mohon cari surel dari kami untuk mengonfirmasi alamat surel Anda.",
 	"growthexperiments-confirmemail-confirm-subject": "Selamat datang di {{SITENAME}}: Harap konfirmasi alamat surel Anda",
-	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Halo}} $2,\n\nTerima kasih telah menambahkan alamat surel ke akun {{SITENAME}}, yang didaftarkan dari alamat IP $1.\n\nHarap mengeklik tombol di bawah untuk mengonfirmasi bahwa ini adalah alamat surel yang ingin Anda tautkan ke akun \"$2\":\n\n$3\n\nCatatan: kode konfirmasi ini <strong>berlaku hingga $4</strong>.\n\nTerima kasih,\n\n{{SITENAME}}\n\n----\n\nUntuk membatalkan konfirmasi alamat surel (karena Anda tidak ingin mendaftarkan akun itu atau ada alasan lain), klik pada pranala pembatalan ini:\n\n$5"
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Halo}} $2,\n\nTerima kasih telah menambahkan alamat surel ke akun {{SITENAME}}, yang didaftarkan dari alamat IP $1.\n\nHarap mengeklik tombol di bawah untuk mengonfirmasi bahwa ini adalah alamat surel yang ingin Anda tautkan ke akun \"$2\":\n\n$3\n\nCatatan: kode konfirmasi ini <strong>berlaku hingga $4</strong>.\n\nTerima kasih,\n\n{{SITENAME}}\n\n----\n\nUntuk membatalkan konfirmasi alamat surel (karena Anda tidak ingin mendaftarkan akun itu atau ada alasan lain), klik pada pranala pembatalan ini:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "Konfirmasi alamat surel"
 }

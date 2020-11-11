@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Kenrick95",
+			"Notanotheramy",
 			"Rachmat04",
 			"Sonic Speedy"
 		]
@@ -38,6 +39,10 @@
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Siap?</strong> Klik \"{{int:vector-view-edit}}\" untuk memulai.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Siap?</strong> Buka bagian yang ingin Anda sunting dan ketuk ikon pensil.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Copyedit adalah tentang membuat perbaikan kecil pada cara artikel ditulis, seperti ejaan, tata bahasa, atau kejelasan teks. Copyedit membantu artikel menjadi lebih profesional dan dapat dipercaya.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "Untuk membuat perbedaan, {{GENDER:|Anda}} hanya perlu membuat satu atau dua perbaikan kecil. {{GENDER:|Anda}} tidak perlu memperbaiki keseluruhan artikel. {{GENDER:|Anda}} juga tidak perlu memiliki pengetahuan khusus mengenai topik tersebut.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules1": "{{GENDER:|Anda}} dapat memperbaiki kesalahan ejaan dan tata bahasa. Hal ini bisa mencakup kalimat yang terlalu panjang, kata-kata yang diulang, atau tanda baca yang tidak tepat.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-rules2": "Kalimat ini mengandung opini yang harus dihilangkan.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-text-value": "Kalimat ini memiliki kutipan yang merujuk kepada sumber referensinya di bagian akhir.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|Pelajari lebih lanjut tentang mengembangkan artikel]]",
 	"growthexperiments-help-panel-questioncomplete-title": "Ajukan pertanyaan",
 	"growthexperiments-help-panel-questioncomplete-header": "Pertanyaan Anda telah dikirim!",

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"ArenaL5",
 			"Carlosmg.dg",
 			"Fitoschido",
 			"Johnny243",
@@ -22,7 +23,7 @@
 	"growthexperiments-help-panel-suggestededits-title": "Ediciones sugeridas",
 	"growthexperiments-help-panel-questioncomplete-title": "Formular una pregunta",
 	"growthexperiments-help-panel-questioncomplete-header": "Se ha publicado la pregunta.",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Para recibir notificaciones también por correo electrónico, confirma tu dirección ahora: $1",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Para recibir notificaciones también por correo electrónico, confirma {{GENDER:$2|tu}} dirección ahora: $1",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "confirma tu correo",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Más información sobre esta característica",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Desactiva esta herramienta en Preferencias",
