@@ -624,6 +624,7 @@ class HomepageHooks implements
 		}
 		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 			$tags[] = SuggestedEdits::SUGGESTED_EDIT_TAG;
+			$tags[] = SuggestedEdits::ADD_LINK_TAG;
 		}
 	}
 
@@ -645,6 +646,7 @@ class HomepageHooks implements
 		}
 		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 			$tags[] = SuggestedEdits::SUGGESTED_EDIT_TAG;
+			$tags[] = SuggestedEdits::ADD_LINK_TAG;
 		}
 	}
 

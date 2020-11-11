@@ -102,6 +102,8 @@
 	"tag-mentorship_panel_question-description": "Edit made from the help panel's \"Ask your mentor\" feature",
 	"tag-newcomer_task": "Newcomer task",
 	"tag-newcomer_task-description": "Edit suggested by the suggested edits module of the newcomer homepage",
+	"tag-newcomer_task_add_link": "Suggested: add links",
+	"tag-newcomer_task_add_link-description": "\"Add link\" edit suggested by the suggested edits module of the newcomer homepage",
 	"growthexperiments-homepage-help-dialog-title": "Ask the help desk",
 	"growthexperiments-homepage-help-header": "Get help with editing",
 	"growthexperiments-homepage-help-subheader": "Top help pages about editing",
