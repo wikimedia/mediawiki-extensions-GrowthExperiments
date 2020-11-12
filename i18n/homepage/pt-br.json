@@ -276,7 +276,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Esta página {{GENDER:$1|permite-lhe}} mudar o mentor de um mentorado para ser {{GENDER:$1|você}}. É recomendável usar esta funcionalidade para utilizadores que {{GENDER:$1|conheça}} ou utilizadores de que é que {{GENDER:$1|mentor|mentora}} num curso.",
 	"growthexperiments-homepage-claimmentee-mentee": "Nome de usuário de mentor",
 	"growthexperiments-homepage-claimmentee-reason": "Razão para reivindicar este aprendiz",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$2|Você mudou}} o {{GENDER:$1|$4's}} mentor para {{GENDER:$3|$5}}",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Mudou}} o mentor {{PLURAL:$2|do usuário|dos usuários}} $1 para {{GENDER:$4|$5}}",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Mentor {{GENDER:$1|}} já foi alterado. Estamos {{GENDER:$2|você}} tem certeza que {{GENDER:$2|você}} quer mudar isso de novo?",
 	"growthexperiments-claimmentee-confirm": "Sim, eu realmente quero mudar o mentor",
 	"growthexperiments-log-name": "Registros de GrowthExperiments",
