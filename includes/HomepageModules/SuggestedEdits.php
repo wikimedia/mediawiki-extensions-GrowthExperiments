@@ -57,7 +57,16 @@ class SuggestedEdits extends BaseModule {
 	 */
 	public const GUIDANCE_BLUE_DOT_PREF =
 		'growthexperiments-homepage-suggestededits-guidance-blue-dot';
-	const SUGGESTED_EDIT_TAG = 'newcomer task';
+
+	/**
+	 * Change tag used to track edits made via the suggested edits interface. Some edits get a
+	 * more specific tag instead.
+	 */
+	public const SUGGESTED_EDIT_TAG = 'newcomer task';
+	/**
+	 * Change tag used to track edits made via the Add Link structured edit task type.
+	 */
+	public const ADD_LINK_TAG = 'newcomer task add link';
 
 	/** @var EditInfoService */
 	private $editInfoService;
