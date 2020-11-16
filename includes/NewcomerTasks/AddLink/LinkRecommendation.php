@@ -9,6 +9,27 @@ use MediaWiki\Linker\LinkTarget;
  */
 class LinkRecommendation {
 
+	/**
+	 * Key for the link target in the recommendation data. This is the page the recommended
+	 * link points to. The value is a page title in any format that can be parsed by TitleParser.
+	 */
+	public const FIELD_TARGET = 'target';
+	/**
+	 * Key for the text of the recommended link in the recommendation data. This text is present
+	 * and unlinked in the article revision that was used for generating recommendations.
+	 */
+	public const FIELD_TEXT = 'text';
+	/**
+	 * Key for the link index in the recommendation data. This is a 0-based index of the link,
+	 * within all occurrences of the link text.
+	 */
+	public const FIELD_INDEX = 'index';
+	/**
+	 * Key for the score  in the recommendation data. This is the confidence of the recommendation,
+	 * a number between 0 and 1.
+	 */
+	public const FIELD_SCORE = 'score';
+
 	/** @var LinkTarget */
 	private $title;
 
@@ -59,15 +80,23 @@ class LinkRecommendation {
 	}
 
 	/**
+	 * Get the links recommended for the article.
+	 * @return array[] A list of link recommendations, each an associative array with the
+	 *   fields FIELD_TARGET, FIELD_TEXT, FIELD_INDEX, FIELD_SCORE.
+	 * @see LinkRecommendation::FIELD_TARGET
+	 * @see LinkRecommendation::FIELD_TEXT
+	 * @see LinkRecommendation::FIELD_INDEX
+	 * @see LinkRecommendation::FIELD_SCORE
+	 */
+	public function getLinks(): array {
+		return $this->links;
+	}
+
+	/**
 	 * JSON-ifiable data that represents all state of the object except the page identity and
 	 * revision.
 	 * @return array[] An array with the following fields:
-	 *   - links: Link recommendation data. A list of associative arrays with:
-	 *     - target (string): the title the recommended link points to, in any format that
-	 *       can be parsed by TitleParser.
-	 *     - text (string): text of the recommended link. This text is present and unlinked in
-	 *       the article revision that was used for generating recommendations.
-	 *     - index (integer): 0-based index of the link, within all occurrences of the link text.
+	 *   - links: Link recommendation data, as returned by {@see :getLinks()}.
 	 */
 	public function toArray(): array {
 		return [ 'links' => $this->links ];
