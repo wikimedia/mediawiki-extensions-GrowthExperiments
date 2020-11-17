@@ -121,6 +121,8 @@
 	"tag-mentorship_panel_question-description": "Modification faite depuis la fonction « Demander à votre tuteur » du panneau d’aide",
 	"tag-newcomer_task": "Tâche de nouvel arrivant",
 	"tag-newcomer_task-description": "Modification suggérée par le module de modifications suggérées de la page d’accueil des nouveaux arrivants",
+	"tag-newcomer_task_add_link": "Suggéré : ajouter des liens",
+	"tag-newcomer_task_add_link-description": "Modification « Ajouter un lien » suggérée par le module de modifications suggérées de la page d’accueil pour nouveau venu.",
 	"growthexperiments-homepage-help-dialog-title": "Demander au Centre d’assistance",
 	"growthexperiments-homepage-help-header": "Être aidé dans la modification d’une page",
 	"growthexperiments-homepage-help-subheader": "Meilleures pages d’aide à la rédaction",
