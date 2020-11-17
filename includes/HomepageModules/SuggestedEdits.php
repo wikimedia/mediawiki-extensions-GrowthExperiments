@@ -538,8 +538,11 @@ class SuggestedEdits extends BaseModule {
 		$taskTypeData = $this->configurationLoader->getTaskTypes();
 		foreach ( $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ) as $taskTypeId ) {
 			/** @var TaskType $taskType */
-			$taskType = $taskTypeData[$taskTypeId];
-			$levels[ $taskType->getDifficulty() ] = true;
+			$taskType = $taskTypeData[$taskTypeId] ?? null;
+			if ( $taskType ) {
+				// Sometimes the default task types don't exist on a wiki (T268012)
+				$levels[ $taskType->getDifficulty() ] = true;
+			}
 		}
 		$taskTypeMessages = [];
 		$messageKey = $this->getMode() === self::RENDER_DESKTOP ?
