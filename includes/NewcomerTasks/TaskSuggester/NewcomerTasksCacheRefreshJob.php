@@ -23,13 +23,14 @@ class NewcomerTasksCacheRefreshJob extends Job {
 	/** @inheritDoc */
 	public function run() {
 		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$newcomerTaskOptions = $growthServices->getNewcomerTasksUserOptionsLookup();
 		$taskSuggester = $growthServices->getTaskSuggesterFactory()->create();
 		$user = User::newFromId( $this->params['userId'] );
 		$taskSuggester->suggest(
 			$user,
-			$this->params['taskTypeFilters'],
-			$this->params['topicFilters'],
-			$this->params['limit'],
+			$newcomerTaskOptions->getTaskTypeFilter( $user ),
+			$newcomerTaskOptions->getTopicFilter( $user ),
+			SearchTaskSuggester::DEFAULT_LIMIT,
 			null,
 			false,
 			false

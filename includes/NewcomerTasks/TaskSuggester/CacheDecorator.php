@@ -105,9 +105,6 @@ class CacheDecorator implements TaskSuggester {
 					$this->jobQueueGroup->lazyPush(
 						new NewcomerTasksCacheRefreshJob( [
 							'userId' => $user->getId(),
-							'taskTypeFilters' => $taskSetFilters->getTaskTypeFilters(),
-							'topicFilters' => $taskSetFilters->getTopicFilters(),
-							'limit' => SearchTaskSuggester::DEFAULT_LIMIT,
 							'jobReleaseTimestamp' => (int)wfTimestamp() +
 								// Process the job the day before the cache expires.
 								( $this->cache::TTL_WEEK - $this->cache::TTL_DAY ),
