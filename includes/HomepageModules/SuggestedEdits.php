@@ -493,8 +493,7 @@ class SuggestedEdits extends BaseModule {
 			} else {
 				$topicMessages = [];
 				foreach ( $topicPreferences as $topicPreference ) {
-					/** @var Topic $topic */
-					$topic = $topicData[$topicPreference];
+					$topic = $topicData[$topicPreference] ?? null;
 					if ( $topic instanceof Topic ) {
 						$topicMessages[] = $topic->getName( $this->getContext() );
 					}
