@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
+use GenericParameterJob;
 use GrowthExperiments\GrowthExperimentsServices;
 use Job;
 use MediaWiki\MediaWikiServices;
@@ -10,12 +11,10 @@ use User;
 /**
  * Refresh the newcomer tasks cache for a user.
  */
-class NewcomerTasksCacheRefreshJob extends Job {
+class NewcomerTasksCacheRefreshJob extends Job implements GenericParameterJob {
 
-	/**
-	 * @param array $params
-	 */
-	public function __construct( $params = [] ) {
+	/** @inheritDoc */
+	public function __construct( array $params ) {
 		parent::__construct( 'newcomerTasksCacheRefreshJob', $params );
 		$this->removeDuplicates = true;
 	}
