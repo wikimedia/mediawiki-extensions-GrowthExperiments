@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"NGC 54"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|Bun venit}}, $1!",
+	"welcomesurvey-sidebar-editing-link1-text": "Tutorial",
+	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:Tutorial"
+}
