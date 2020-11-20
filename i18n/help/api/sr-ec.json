@@ -13,5 +13,6 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Екран „Питање ментору” на табли помоћи",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Табла „Постављање питања” (старо име)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Табла „Питање ментору” на почетној страници новајлије (старо име)",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "Релевантан наслов, ако је изабрано, за укључивање с питањем."
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Релевантан наслов, ако је изабрано, за укључивање с питањем.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Морате бити пријављени да бисте поставили питање."
 }
