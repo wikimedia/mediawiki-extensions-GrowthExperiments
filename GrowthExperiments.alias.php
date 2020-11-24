@@ -98,6 +98,14 @@ $specialPageAliases['pt'] = [
 	'ClaimMentee' => [ 'AdotarTutorado' ],
 ];
 
+/** Russian (русский) */
+$specialPageAliases['ru'] = [
+	'WelcomeSurvey' => [ 'Приветственный опрос' ],
+	'Homepage' => [ 'Домашняя страница' ],
+	'Impact' => [ 'Влияние' ],
+	'ClaimMentee' => [ 'Утвердить подопечного' ],
+];
+
 /** Serbian Cyrillic (српски (ћирилица)) */
 $specialPageAliases['sr-ec'] = [
 	'WelcomeSurvey' => [ 'Анкета_добродошлице' ],
