@@ -10,7 +10,8 @@ use SpecialPage;
 
 class Email extends BaseTaskModule {
 
-	protected $emailState = null;
+	/** @var string */
+	protected $emailState = self::MODULE_STATE_NOEMAIL;
 
 	/**
 	 * @inheritDoc
@@ -25,8 +26,6 @@ class Email extends BaseTaskModule {
 			$this->emailState = self::MODULE_STATE_CONFIRMED;
 		} elseif ( $user->getEmail() ) {
 			$this->emailState = self::MODULE_STATE_UNCONFIRMED;
-		} else {
-			$this->emailState = self::MODULE_STATE_NOEMAIL;
 		}
 	}
 

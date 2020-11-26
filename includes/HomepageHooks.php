@@ -480,10 +480,10 @@ class HomepageHooks implements
 	/**
 	 * Register defaults for homepage-related preferences.
 	 *
-	 * @param array &$wgDefaultUserOptions Reference to default options array
+	 * @param array &$defaultOptions
 	 */
-	public function onUserGetDefaultOptions( &$wgDefaultUserOptions ) {
-		$wgDefaultUserOptions += [
+	public function onUserGetDefaultOptions( &$defaultOptions ) {
+		$defaultOptions += [
 			// Set discovery notice seen flag to true; it will be changed for new users in the
 			// LocalUserCreated hook.
 			self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN => true,
@@ -560,14 +560,14 @@ class HomepageHooks implements
 			}
 
 			// Variant assignment
-			$wgGEHomepageNewAccountVariants = $this->config->get( 'GEHomepageNewAccountVariants' );
+			$geHomepageNewAccountVariants = $this->config->get( 'GEHomepageNewAccountVariants' );
 			$defaultVariant = $this->experimentUserManager->getVariant( $user );
-			if ( $forceVariant && array_key_exists( $forceVariant, $wgGEHomepageNewAccountVariants ) ) {
+			if ( $forceVariant && array_key_exists( $forceVariant, $geHomepageNewAccountVariants ) ) {
 				$variant = $forceVariant;
 			} else {
 				$random = rand( 0, 99 );
 				$variant = null;
-				foreach ( $wgGEHomepageNewAccountVariants as $candidateVariant => $percentage ) {
+				foreach ( $geHomepageNewAccountVariants as $candidateVariant => $percentage ) {
 					if ( $random < $percentage ) {
 						$variant = $candidateVariant;
 						break;
