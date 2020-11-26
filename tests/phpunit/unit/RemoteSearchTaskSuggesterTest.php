@@ -9,11 +9,14 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use MediaWiki\Http\HttpRequestFactory;
+use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use MWHttpRequest;
@@ -32,6 +35,7 @@ use TitleValue;
  * @covers \GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy
  * @covers \GrowthExperiments\Util::getApiUrl
  * @covers \GrowthExperiments\Util::getIteratorFromTraversable
+ * @covers \GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler::createTaskFromSearchResult
  */
 class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 
@@ -50,11 +54,12 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	public function testSuggest(
 		$taskTypeSpec, $topicSpec, $requests, $taskFilter, $topicFilter, $limit, $expectedTaskSet
 	) {
-		// FIXME null task/topic filter values are not tested, but they are not implemented anyway
-
+		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
 		$requestFactory = $this->getMockRequestFactory( $requests );
 		$titleFactory = $this->getMockTitleFactory();
+		/** @var SearchStrategy|MockObject $searchStrategy */
 		$searchStrategy = $this->getMockBuilder( SearchStrategy::class )
+			->setConstructorArgs( [ $taskTypeHandlerRegistry ] )
 			->onlyMethods( [ 'shuffleQueryOrder' ] )
 			->getMock();
 		$searchStrategy->method( 'shuffleQueryOrder' )
@@ -63,8 +68,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$user = new UserIdentityValue( 1, 'Foo', 1 );
 		$taskTypes = $this->getTaskTypes( $taskTypeSpec );
 		$topics = $this->getTopics( $topicSpec );
-		$suggester = new RemoteSearchTaskSuggester( $searchStrategy, $requestFactory,
-			$titleFactory, 'https://example.com', $taskTypes, $topics, [] );
+		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry, $searchStrategy,
+			$requestFactory, $titleFactory, 'https://example.com', $taskTypes, $topics, [] );
 
 		$taskSet = $suggester->suggest( $user, $taskFilter, $topicFilter, $limit );
 		if ( $expectedTaskSet instanceof StatusValue ) {
@@ -448,6 +453,24 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'expectedTaskSet' => StatusValue::newFatal( new ApiRawMessage( 'foo', 'bar' ) ),
 			],
 		];
+	}
+
+	/**
+	 * @return TaskTypeHandlerRegistry|MockObject
+	 */
+	private function getMockTaskTypeHandlerRegistry() {
+		$taskTypeHandlerRegistry = $this->createNoOpMock( TaskTypeHandlerRegistry::class,
+			[ 'getByTaskType' ] );
+		$taskTypeHandler = $this->createNoOpAbstractMock( TaskTypeHandler::class, [ 'getSearchTerm' ] );
+		$taskTypeHandlerRegistry->method( 'getByTaskType' )->willReturn( $taskTypeHandler );
+		$taskTypeHandler->method( 'getSearchTerm' )
+			->willReturnCallback( function ( TemplateBasedTaskType $taskType ) {
+				$templates = implode( '|', array_map( function ( LinkTarget $linkTarget ) {
+					return $linkTarget->getDBkey();
+				}, $taskType->getTemplates() ) );
+				return "hastemplate:\"$templates\"";
+			} );
+		return $taskTypeHandlerRegistry;
 	}
 
 	/**

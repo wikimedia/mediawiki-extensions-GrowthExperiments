@@ -6,6 +6,7 @@ use ApiRawMessage;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Linker\LinkTarget;
 use SearchEngine;
@@ -22,6 +23,7 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	private $searchEngineFactory;
 
 	/**
+	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param SearchEngineFactory $searchEngineFactory
 	 * @param SearchStrategy $searchStrategy
 	 * @param TaskType[] $taskTypes
@@ -29,13 +31,15 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	 * @param LinkTarget[] $templateBlacklist
 	 */
 	public function __construct(
+		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		SearchEngineFactory $searchEngineFactory,
 		SearchStrategy $searchStrategy,
 		array $taskTypes,
 		array $topics,
 		array $templateBlacklist
 	) {
-		parent::__construct( $searchStrategy, $taskTypes, $topics, $templateBlacklist );
+		parent::__construct( $taskTypeHandlerRegistry, $searchStrategy,
+			$taskTypes, $topics, $templateBlacklist );
 		$this->searchEngineFactory = $searchEngineFactory;
 	}
 

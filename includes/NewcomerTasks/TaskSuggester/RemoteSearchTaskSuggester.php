@@ -7,6 +7,7 @@ use GrowthExperiments\NewcomerTasks\FauxSearchResultWithScore;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use MediaWiki\Http\HttpRequestFactory;
@@ -30,6 +31,7 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 	private $apiUrl;
 
 	/**
+	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param SearchStrategy $searchStrategy
 	 * @param HttpRequestFactory $requestFactory
 	 * @param TitleFactory $titleFactory
@@ -39,6 +41,7 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 	 * @param LinkTarget[] $templateBlacklist
 	 */
 	public function __construct(
+		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		SearchStrategy $searchStrategy,
 		HttpRequestFactory $requestFactory,
 		TitleFactory $titleFactory,
@@ -47,7 +50,8 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 		array $topics,
 		array $templateBlacklist
 	) {
-		parent::__construct( $searchStrategy, $taskTypes, $topics, $templateBlacklist );
+		parent::__construct( $taskTypeHandlerRegistry, $searchStrategy,
+			$taskTypes, $topics, $templateBlacklist );
 		$this->requestFactory = $requestFactory;
 		$this->titleFactory = $titleFactory;
 		$this->apiUrl = $apiUrl;

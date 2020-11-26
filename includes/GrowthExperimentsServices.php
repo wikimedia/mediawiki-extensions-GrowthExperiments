@@ -11,9 +11,11 @@ use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TemplateFilter;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use MediaWiki\MediaWikiServices;
@@ -64,6 +66,10 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsConfigurationLoader' );
 	}
 
+	public function getConfigurationValidator(): ConfigurationValidator {
+		return $this->coreServices->get( 'GrowthExperimentsConfigurationValidator' );
+	}
+
 	public function getEditInfoService(): EditInfoService {
 		return $this->coreServices->get( 'GrowthExperimentsEditInfoService' );
 	}
@@ -98,6 +104,10 @@ class GrowthExperimentsServices {
 
 	public function getProtectionFilter(): ProtectionFilter {
 		return $this->coreServices->get( 'GrowthExperimentsProtectionFilter' );
+	}
+
+	public function getTaskTypeHandlerRegistry(): TaskTypeHandlerRegistry {
+		return $this->coreServices->get( 'GrowthExperimentsTaskTypeHandlerRegistry' );
 	}
 
 	public function getTemplateFilter(): TemplateFilter {

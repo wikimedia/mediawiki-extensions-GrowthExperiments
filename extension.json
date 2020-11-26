@@ -94,6 +94,7 @@
 				"GrowthExperimentsNewcomerTaskTrackerFactory",
 				"GrowthExperimentsExperimentUserManager",
 				"GrowthExperimentsHomepageModuleRegistry",
+				"GrowthExperimentsTaskTypeHandlerRegistry",
 				"GrowthExperimentsTaskSuggesterFactory",
 				"GrowthExperimentsNewcomerTasksUserOptionsLookup"
 			]
@@ -1139,6 +1140,15 @@
 		"GENewcomerTasksTopicConfigTitle": {
 			"description": "Title of a MediaWiki page which contains morelike topic configuration for suggested edits. If the title has an interwiki prefix, then its content will be loaded remotely via an HTTP request. Should have JSON content type and contain a map of topic id -> topic configuration, which is an object with the properties 'titles' (list of mainspace page names of pages which are considered representative of the topic, to be used for text similarity comparision) and 'label' (human-readable name).",
 			"value": "MediaWiki:NewcomerTopics.json"
+		},
+		"GENewcomerTasksTaskTypeHandlers": {
+			"description": "Used for registering TaskTypeHandlers to the TaskTypeHandlerRegistry. An associative array with handler ID => handler specification, which is an ObjectFactory specification or a factory callable. Handlers IDs correspond to the 'type' parameters in the task config page.",
+			"value": {
+				"template-based": {
+					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\TemplateBasedTaskTypeHandler",
+					"services": [ "GrowthExperimentsConfigurationValidator", "TitleParser" ]
+				}
+			}
 		},
 		"GENewcomerTasksRemoteApiUrl": {
 			"description": "URL of a remote API (ending with 'api.php') to use for identifying suggested edits. This is meant for developer setups.",

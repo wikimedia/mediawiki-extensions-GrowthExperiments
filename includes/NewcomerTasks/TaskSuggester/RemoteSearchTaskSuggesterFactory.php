@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use MediaWiki\Http\HttpRequestFactory;
 use StatusValue;
 use TitleFactory;
@@ -23,6 +24,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	private $apiUrl;
 
 	/**
+	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param SearchStrategy $searchStrategy
 	 * @param HttpRequestFactory $requestFactory
@@ -30,13 +32,18 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	 * @param string $apiUrl Base URL of the remote API (ending with 'api.php').
 	 */
 	public function __construct(
+		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		ConfigurationLoader $configurationLoader,
 		SearchStrategy $searchStrategy,
 		HttpRequestFactory $requestFactory,
 		TitleFactory $titleFactory,
 		string $apiUrl
 	) {
-		parent::__construct( $configurationLoader, $searchStrategy );
+		parent::__construct(
+			$taskTypeHandlerRegistry,
+			$configurationLoader,
+			$searchStrategy
+		);
 		$this->requestFactory = $requestFactory;
 		$this->titleFactory = $titleFactory;
 		$this->apiUrl = $apiUrl;
@@ -59,6 +66,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			return $this->createError( $templateBlacklist );
 		}
 		$suggester = new RemoteSearchTaskSuggester(
+			$this->taskTypeHandlerRegistry,
 			$this->searchStrategy,
 			$this->requestFactory,
 			$this->titleFactory,

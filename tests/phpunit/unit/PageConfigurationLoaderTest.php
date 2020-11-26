@@ -3,13 +3,17 @@
 namespace GrowthExperiments\Tests;
 
 use Collation;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use IContextSource;
+use MalformedTitleException;
 use MediaWiki\Linker\LinkTarget;
 use MediaWikiUnitTestCase;
 use Message;
@@ -18,10 +22,15 @@ use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
 use Title;
 use TitleFactory;
+use TitleParser;
 use TitleValue;
 
 /**
  * @coversDefaultClass  \GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader
+ * FIXME these should be moved to the respective test classes
+ * @covers \GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator
+ * @covers \GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler::validateTaskTypeConfiguration()
+ * @covers \GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler::createTaskType()
  */
 class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 
@@ -199,12 +208,12 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * @covers ::loadTopics
 	 */
 	public function testLoadTopics_noLoader() {
-		$messageLocalizer = $this->getMockMessageLocalizer();
 		$taskTitle = new TitleValue( NS_MAIN, 'TaskConfiguration' );
 		$pageLoader = $this->getMockPageLoader( [ '0:TaskConfiguration' => [] ] );
-		$collation = $this->getMockCollation();
+		$configurationValidator = $this->createMock( ConfigurationValidator::class );
+		$taskHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
 		$configurationLoader = new PageConfigurationLoader( $this->getMockTitleFactory( [] ),
-			$messageLocalizer, $pageLoader, $collation, $taskTitle, null,
+			$pageLoader, $configurationValidator, $taskHandlerRegistry, $taskTitle, null,
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$topics = $configurationLoader->loadTopics();
 		$this->assertSame( [], $topics );
@@ -269,7 +278,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		} elseif ( $error === 'invalidgroup' ) {
 			$config['references']['group'] = 'hardest';
 		} elseif ( $error === 'invalidtemplatetitle' ) {
-			$config['references']['templates'][] = '<>';
+			$config['references']['templates'][] = '<invalid>';
 		} elseif ( $error === 'missingmessage' ) {
 			$config['foo'] = [ 'icon' => 'foo', 'group' => 'hard', 'templates' => [ 'T' ] ];
 		}
@@ -371,13 +380,15 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			] + $templates );
 		}
 		$messageLocalizer = $this->getMockMessageLocalizer( $customMessages );
+		$collation = $this->getMockCollation();
+		$configurationValidator = new ConfigurationValidator( $messageLocalizer, $collation );
 		$pageLoader = $this->getMockPageLoader( [
 			'0:TaskConfigPage' => $taskConfig,
 			'0:TopicConfigPage' => $topicConfig,
 		] );
-		$collation = $this->getMockCollation();
-		return new PageConfigurationLoader( $titleFactory, $messageLocalizer, $pageLoader,
-			$collation, $taskConfigTitle, $topicConfigTitle, $topicType );
+		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry( $configurationValidator );
+		return new PageConfigurationLoader( $titleFactory, $pageLoader, $configurationValidator,
+			$taskTypeHandlerRegistry, $taskConfigTitle, $topicConfigTitle, $topicType );
 	}
 
 	/**
@@ -474,6 +485,26 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			->getMockForAbstractClass();
 		$collation->method( 'getSortKey' )->willReturnArgument( 0 );
 		return $collation;
+	}
+
+	/**
+	 * @param ConfigurationValidator $configurationValidator
+	 * @return TaskTypeHandlerRegistry|MockObject
+	 */
+	private function getMockTaskTypeHandlerRegistry( ConfigurationValidator $configurationValidator ) {
+		$titleParser = $this->createMock( TitleParser::class );
+		$titleParser->method( 'parseTitle' )
+			->willReturnCallback( function ( string $title, int $defaultNamespace ) {
+				if ( $title === '<invalid>' ) {
+					throw $this->createMock( MalformedTitleException::class );
+				}
+				return new TitleValue( $defaultNamespace, $title );
+			} );
+		$registry = $this->createMock( TaskTypeHandlerRegistry::class );
+		$registry->method( 'has' )->willReturn( true );
+		$registry->method( 'get' )->with( TemplateBasedTaskTypeHandler::ID )
+			->willReturn( new TemplateBasedTaskTypeHandler( $configurationValidator, $titleParser ) );
+		return $registry;
 	}
 
 }

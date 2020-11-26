@@ -4,6 +4,8 @@ namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
@@ -29,7 +31,14 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		] );
 		$oresTopic1 = new OresBasedTopic( 'art', 'culture', [ 'painting', 'drawing' ] );
 		$oresTopic2 = new OresBasedTopic( 'science', 'stem', [ 'physics', 'biology' ] );
-		$searchStrategy = new SearchStrategy();
+
+		$taskTypeHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
+		$taskTypeHandler = $this->createMock( TaskTypeHandler::class );
+		$taskTypeHandlerRegistry->method( 'getByTaskType' )->willReturn( $taskTypeHandler );
+		$taskTypeHandler->method( 'getSearchTerm' )
+			->willReturn( 'hastemplate:"Copyedit"' );
+
+		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry );
 
 		$morelikeQueries = $searchStrategy->getQueries( [ $taskType ],
 			[ $morelikeTopic1, $morelikeTopic2 ], [] );

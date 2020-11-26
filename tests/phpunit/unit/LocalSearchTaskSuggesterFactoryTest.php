@@ -6,6 +6,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentityValue;
@@ -29,11 +30,12 @@ class LocalSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest
 	 * @param StatusValue|null $expectedError
 	 */
 	public function testCreate( $taskTypes, $topics, $templateBlacklist, $expectedError ) {
+		$taskTypeHandlerRegistry = $this->getTaskTypeHandlerRegistry();
 		$configurationLoader = $this->getConfigurationLoader( $taskTypes, $topics, $templateBlacklist );
 		$searchStrategy = $this->getSearchStrategy();
 		$searchEngineFactory = $this->getSearchEngineFactory();
-		$taskSuggesterFactory = new LocalSearchTaskSuggesterFactory( $configurationLoader,
-			$searchStrategy, $searchEngineFactory );
+		$taskSuggesterFactory = new LocalSearchTaskSuggesterFactory( $taskTypeHandlerRegistry,
+			$configurationLoader, $searchStrategy, $searchEngineFactory );
 		$taskSuggester = $taskSuggesterFactory->create();
 		if ( $expectedError ) {
 			$this->assertInstanceOf( ErrorForwardingTaskSuggester::class, $taskSuggester );
@@ -43,6 +45,13 @@ class LocalSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest
 		} else {
 			$this->assertInstanceOf( LocalSearchTaskSuggester::class, $taskSuggester );
 		}
+	}
+
+	/**
+	 * @return TaskTypeHandlerRegistry|MockObject
+	 */
+	private function getTaskTypeHandlerRegistry() {
+		return $this->createMock( TaskTypeHandlerRegistry::class );
 	}
 
 	/**

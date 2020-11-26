@@ -6,6 +6,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\ErrorForwardingTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
@@ -30,13 +31,14 @@ class RemoteSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTes
 	 * @param StatusValue|null $expectedError
 	 */
 	public function testCreate( $taskTypes, $topics, $templateBlacklist, $expectedError ) {
+		$taskTypeHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
 		$configurationLoader = $this->getConfigurationLoader( $taskTypes, $topics, $templateBlacklist );
 		$searchStrategy = $this->getSearchStrategy();
 		$requestFactory = $this->getRequestFactory();
 		$titleFactory = $this->getTitleFactory();
 		$apiUrl = 'https://example.com';
-		$taskSuggesterFactory = new RemoteSearchTaskSuggesterFactory( $configurationLoader,
-			$searchStrategy, $requestFactory, $titleFactory, $apiUrl );
+		$taskSuggesterFactory = new RemoteSearchTaskSuggesterFactory( $taskTypeHandlerRegistry,
+			$configurationLoader, $searchStrategy, $requestFactory, $titleFactory, $apiUrl );
 		$taskSuggester = $taskSuggesterFactory->create();
 		if ( $expectedError ) {
 			$this->assertInstanceOf( ErrorForwardingTaskSuggester::class, $taskSuggester );

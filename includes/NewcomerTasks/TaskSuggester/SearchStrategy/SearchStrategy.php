@@ -2,7 +2,8 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy;
 
-use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
@@ -15,10 +16,20 @@ use Wikimedia\Assert\Assert;
  */
 class SearchStrategy {
 
+	/** @var TaskTypeHandlerRegistry */
+	private $taskTypeHandlerRegistry;
+
+	/**
+	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
+	 */
+	public function __construct( TaskTypeHandlerRegistry $taskTypeHandlerRegistry ) {
+		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
+	}
+
 	/**
 	 * Get the search queries for searching for a given user requirement
 	 * (set of task types and topics).
-	 * @param TemplateBasedTaskType[] $taskTypes Task types to limit search results to
+	 * @param TaskType[] $taskTypes Task types to limit search results to
 	 * @param Topic[] $topics Topics to limit search results to
 	 * @param LinkTarget[] $templateBlacklist List of templates which disqualify a page from
 	 *   being recommendable.
@@ -33,7 +44,8 @@ class SearchStrategy {
 		$topics = $topics ?: [ null ];
 		foreach ( $taskTypes as $taskType ) {
 			foreach ( $topics as $topic ) {
-				$typeTerm = $this->getTemplateTerm( $taskType->getTemplates() );
+				$typeTerm = $this->taskTypeHandlerRegistry->getByTaskType( $taskType )
+					->getSearchTerm( $taskType );
 				$topicTerm = null;
 				if ( $topic instanceof OresBasedTopic ) {
 					$topicTerm = $this->getOresBasedTopicTerm( [ $topic ] );
@@ -60,11 +72,11 @@ class SearchStrategy {
 	}
 
 	/**
-	 * @param TemplateBasedTaskType[] $taskTypes
+	 * @param TaskType[] $taskTypes
 	 * @param Topic[] $topics
 	 */
 	protected function validateParams( array $taskTypes, array $topics ) {
-		Assert::parameterElementType( TemplateBasedTaskType::class, $taskTypes, '$taskTypes' );
+		Assert::parameterElementType( TaskType::class, $taskTypes, '$taskTypes' );
 		Assert::parameterElementType( OresBasedTopic::class . '|' . MorelikeBasedTopic::class,
 			$topics, '$topics' );
 	}
