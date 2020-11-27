@@ -221,7 +221,8 @@
 				"mediawiki.Title",
 				"mediawiki.Uri",
 				"mediawiki.user",
-				"mediawiki.util"
+				"mediawiki.util",
+				"mediawiki.storage"
 			]
 		},
 		"ext.growthExperiments.Homepage.ConfirmEmail": {
