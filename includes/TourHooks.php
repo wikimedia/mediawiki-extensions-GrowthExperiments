@@ -153,17 +153,17 @@ class TourHooks implements
 	 *
 	 * @inheritDoc
 	 */
-	public function onUserGetDefaultOptions( &$wgDefaultUserOptions ) {
+	public function onUserGetDefaultOptions( &$defaultOptions ) {
 		if ( !self::growthTourDependenciesLoaded() ) {
 			return;
 		}
 		if ( HelpPanel::isHelpPanelEnabled() ) {
-			$wgDefaultUserOptions += [
+			$defaultOptions += [
 				self::TOUR_COMPLETED_HELP_PANEL => true
 			];
 		}
 		if ( HomepageHooks::isHomepageEnabled() ) {
-			$wgDefaultUserOptions += [
+			$defaultOptions += [
 				self::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP => true,
 				self::TOUR_COMPLETED_HOMEPAGE_WELCOME => true,
 				self::TOUR_COMPLETED_HOMEPAGE_DISCOVERY => true,

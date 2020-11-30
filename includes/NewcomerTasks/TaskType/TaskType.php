@@ -14,7 +14,7 @@ class TaskType {
 	public const DIFFICULTY_MEDIUM = 'medium';
 	public const DIFFICULTY_HARD = 'hard';
 
-	public static $difficultyClasses = [
+	public const DIFFICULTY_CLASSES = [
 		self::DIFFICULTY_EASY,
 		self::DIFFICULTY_MEDIUM,
 		self::DIFFICULTY_HARD,

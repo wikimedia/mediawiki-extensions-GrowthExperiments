@@ -32,7 +32,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	/** @var string Use the configuration for MorelikeBasedTopic topics. */
 	public const CONFIGURATION_TYPE_MORELIKE = 'morelike';
 
-	protected static $validTopicTypes = [
+	private const VALID_TOPIC_TYPES = [
 		self::CONFIGURATION_TYPE_ORES,
 		self::CONFIGURATION_TYPE_MORELIKE,
 	];
@@ -98,7 +98,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 		$this->topicConfigurationPage = $topicConfigurationPage;
 		$this->topicType = $topicType;
 
-		if ( !in_array( $this->topicType, self::$validTopicTypes, true ) ) {
+		if ( !in_array( $this->topicType, self::VALID_TOPIC_TYPES, true ) ) {
 			throw new InvalidArgumentException( 'Invalid topic type ' . $this->topicType );
 		}
 	}
@@ -216,7 +216,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 				}
 			}
 			if ( isset( $taskTypeData['group'] ) &&
-				!in_array( $taskTypeData['group'], TaskType::$difficultyClasses, true )
+				!in_array( $taskTypeData['group'], TaskType::DIFFICULTY_CLASSES, true )
 			) {
 				$status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidgroup',
 					$taskTypeData['group'], $taskTypeId );

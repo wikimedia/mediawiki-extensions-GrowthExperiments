@@ -49,11 +49,11 @@ class HelpPanelHooks {
 	/**
 	 * Register default preferences for Help Panel.
 	 *
-	 * @param array &$wgDefaultUserOptions Reference to default options array
+	 * @param array &$defaultOptions
 	 */
-	public static function onUserGetDefaultOptions( &$wgDefaultUserOptions ) {
+	public static function onUserGetDefaultOptions( &$defaultOptions ) {
 		if ( HelpPanel::isHelpPanelEnabled() ) {
-			$wgDefaultUserOptions += [
+			$defaultOptions += [
 				self::HELP_PANEL_PREFERENCES_TOGGLE => false
 			];
 		}
