@@ -31,10 +31,9 @@ class LocalSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest
 	public function testCreate( $taskTypes, $topics, $templateBlacklist, $expectedError ) {
 		$configurationLoader = $this->getConfigurationLoader( $taskTypes, $topics, $templateBlacklist );
 		$searchStrategy = $this->getSearchStrategy();
-		$templateProvider = $this->getTemplateProvider();
 		$searchEngineFactory = $this->getSearchEngineFactory();
 		$taskSuggesterFactory = new LocalSearchTaskSuggesterFactory( $configurationLoader,
-			$searchStrategy, $templateProvider, $searchEngineFactory );
+			$searchStrategy, $searchEngineFactory );
 		$taskSuggester = $taskSuggesterFactory->create();
 		if ( $expectedError ) {
 			$this->assertInstanceOf( ErrorForwardingTaskSuggester::class, $taskSuggester );

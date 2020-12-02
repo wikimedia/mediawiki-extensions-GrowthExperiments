@@ -2,8 +2,9 @@
 
 namespace GrowthExperiments\NewcomerTasks;
 
+use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
-use GrowthExperiments\NewcomerTasks\Task\TemplateBasedTask;
+use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use MediaWiki\Cache\LinkBatchFactory;
 use TitleFactory;
 use Wikimedia\Rdbms\IDatabase;
@@ -58,13 +59,14 @@ class TemplateFilter {
 
 		$filteredTaskSet = new TaskSet(
 			array_filter( iterator_to_array( $taskSet ),
-				function ( $task ) use ( $map ) {
+				function ( Task $task ) use ( $map ) {
 					$articleID = $this->titleFactory->newFromLinkTarget( $task->getTitle() )->getArticleID();
 					if ( !$articleID ) {
 						return false;
 					}
+					$taskType = $task->getTaskType();
 					// Don't attempt to check non-template based tasks
-					if ( !$task instanceof TemplateBasedTask ) {
+					if ( !$taskType instanceof TemplateBasedTaskType ) {
 						return true;
 					}
 					// The article isn't in the map, so all the templates associated with the
@@ -74,7 +76,7 @@ class TemplateFilter {
 					}
 					$templateList = array_map( function ( $template ) {
 						return $template->getDBkey();
-					}, $task->getTaskType()->getTemplates() );
+					}, $taskType->getTemplates() );
 					// Check to see that at least one of the templates we think should be present
 					// for the article is present in the mapping.
 					return array_intersect( $templateList, $map[$articleID] );
@@ -94,7 +96,7 @@ class TemplateFilter {
 	private function buildQueryConds( TaskSet $taskSet ): array {
 		$conds = [];
 		foreach ( $taskSet as $task ) {
-			if ( !$task instanceof TemplateBasedTask ) {
+			if ( !$task->getTaskType() instanceof TemplateBasedTaskType ) {
 				// Ignore non-template based tasks here.
 				continue;
 			}

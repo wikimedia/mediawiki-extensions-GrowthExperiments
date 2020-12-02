@@ -20,9 +20,6 @@
 	 * @property {((string|number)[][])|null} Topics the task is in. Empty array when the user is not
 	 *   filtering for any topics, null with topic matching disabled entirely, otherwise an array
 	 *   of (topic ID, score) pairs.
-	 * @property {string[]|null} maintenanceTemplates List of maintenance templates on the article
-	 *   (ie. the templates that were used to identify it as appropriate for the task), without the
-	 *   namespace name. Null when the article does not exist.
 	 * @property {number|null|undefined} pageId Article page ID. Null when the article does not exist,
 	 *   which is common in some test/development setups where the returned titles are not local,
 	 *   and also in edge cases where the search index has not caught up with a page deletion yet.
@@ -177,7 +174,6 @@
 					tasktype: item.tasktype,
 					difficulty: item.difficulty,
 					topics: item.topics || null,
-					maintenanceTemplates: item.maintenancetemplates || null,
 					description: item.description || null
 				};
 				self.fixThumbnailWidth( task, config.thumbnailWidth );

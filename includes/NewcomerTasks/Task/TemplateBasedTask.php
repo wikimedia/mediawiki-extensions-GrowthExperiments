@@ -9,6 +9,7 @@ use MediaWiki\Linker\LinkTarget;
 
 /**
  * A task corresponding to a TemplateBasedTaskType.
+ * @deprecated remove this once it's cleared out of the task cache
  */
 class TemplateBasedTask extends Task {
 

@@ -45,7 +45,7 @@
 		var logData = {
 			newcomer_task_token: task.token,
 			task_type: task.tasktype,
-			maintenance_templates: task.maintenanceTemplates,
+			maintenance_templates: [],
 			revision_id: task.revisionId,
 			page_id: task.pageId,
 			page_title: task.title,

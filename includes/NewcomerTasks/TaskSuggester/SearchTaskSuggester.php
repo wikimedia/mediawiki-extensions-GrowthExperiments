@@ -7,12 +7,10 @@ use GrowthExperiments\NewcomerTasks\FauxSearchResultWithScore;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
-use GrowthExperiments\NewcomerTasks\Task\TemplateBasedTask;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
-use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use ISearchResultSet;
@@ -38,9 +36,6 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	// FIXME: Export this constant to client-side.
 	public const DEFAULT_LIMIT = 250;
 
-	/** @var TemplateProvider */
-	private $templateProvider;
-
 	/** @var TaskType[] id => TaskType */
 	protected $taskTypes = [];
 
@@ -54,20 +49,17 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	protected $searchStrategy;
 
 	/**
-	 * @param TemplateProvider $templateProvider
 	 * @param SearchStrategy $searchStrategy
 	 * @param TaskType[] $taskTypes
 	 * @param Topic[] $topics
 	 * @param LinkTarget[] $templateBlacklist
 	 */
 	public function __construct(
-		TemplateProvider $templateProvider,
 		SearchStrategy $searchStrategy,
 		array $taskTypes,
 		array $topics,
 		array $templateBlacklist
 	) {
-		$this->templateProvider = $templateProvider;
 		$this->searchStrategy = $searchStrategy;
 		foreach ( $taskTypes as $taskType ) {
 			$this->taskTypes[$taskType->getId()] = $taskType;
@@ -146,7 +138,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 				/** @var $match SearchResult */
 				$taskType = $queries[$queryId]->getTaskType();
 				$topic = $queries[$queryId]->getTopic();
-				$task = new TemplateBasedTask( $taskType, $match->getTitle() );
+				$task = new Task( $taskType, $match->getTitle() );
 				if ( $topic ) {
 					$score = 0;
 					// CirrusSearch is an optional dependency, prevent phan from complaining
@@ -164,7 +156,6 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 				}
 			}
 		}
-		$this->templateProvider->fill( $suggestions );
 
 		$suggestions = $this->deduplicateSuggestions( $suggestions );
 
@@ -213,11 +204,11 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 
 	/**
 	 * Make sure there's only one task per article, even if an article is multiple task types / topics.
-	 * @param TemplateBasedTask[] $suggestions
-	 * @return TemplateBasedTask[]
+	 * @param Task[] $suggestions
+	 * @return Task[]
 	 */
 	private function deduplicateSuggestions( array $suggestions ) {
-		/** @var TemplateBasedTask[] $deduped */
+		/** @var Task[] $deduped */
 		$deduped = [];
 		foreach ( $suggestions as $suggestion ) {
 			$key = $suggestion->getTitle()->getNamespace() . ':' . $suggestion->getTitle()->getDBkey();

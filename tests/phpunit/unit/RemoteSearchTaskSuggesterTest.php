@@ -10,7 +10,6 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
-use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
@@ -53,7 +52,6 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	) {
 		// FIXME null task/topic filter values are not tested, but they are not implemented anyway
 
-		$templateProvider = $this->getMockTemplateProvider( $expectedTaskSet instanceof TaskSet );
 		$requestFactory = $this->getMockRequestFactory( $requests );
 		$titleFactory = $this->getMockTitleFactory();
 		$searchStrategy = $this->getMockBuilder( SearchStrategy::class )
@@ -65,7 +63,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$user = new UserIdentityValue( 1, 'Foo', 1 );
 		$taskTypes = $this->getTaskTypes( $taskTypeSpec );
 		$topics = $this->getTopics( $topicSpec );
-		$suggester = new RemoteSearchTaskSuggester( $templateProvider, $searchStrategy, $requestFactory,
+		$suggester = new RemoteSearchTaskSuggester( $searchStrategy, $requestFactory,
 			$titleFactory, 'https://example.com', $taskTypes, $topics, [] );
 
 		$taskSet = $suggester->suggest( $user, $taskFilter, $topicFilter, $limit );
@@ -450,20 +448,6 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'expectedTaskSet' => StatusValue::newFatal( new ApiRawMessage( 'foo', 'bar' ) ),
 			],
 		];
-	}
-
-	/**
-	 * @param bool $expectsToBeCalled
-	 * @return TemplateProvider|MockObject
-	 */
-	private function getMockTemplateProvider( bool $expectsToBeCalled ) {
-		$templateProvider = $this->getMockBuilder( TemplateProvider::class )
-			->disableOriginalConstructor()
-			->setMethods( [ 'fill' ] )
-			->getMock();
-		$templateProvider->expects( $expectsToBeCalled ? $this->once() : $this->never() )
-			->method( 'fill' );
-		return $templateProvider;
 	}
 
 	/**
