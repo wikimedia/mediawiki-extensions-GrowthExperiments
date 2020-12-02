@@ -337,7 +337,7 @@ class HomepageHooks implements
 			);
 
 			$links['namespaces']['user'] = $skin->tabAction(
-				$subjectpage, 'nstab-user', $isUserSpace, '', !$isMobile
+				$subjectpage, wfMessage( 'nstab-user', $user->getName() ), $isUserSpace, '', !$isMobile
 			);
 
 			$links['namespaces']['user_talk'] = $skin->tabAction(
