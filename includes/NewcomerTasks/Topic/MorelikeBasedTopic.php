@@ -2,10 +2,12 @@
 
 namespace GrowthExperiments\NewcomerTasks\Topic;
 
+use MediaWiki\Json\JsonUnserializer;
 use MediaWiki\Linker\LinkTarget;
 use Message;
 use MessageLocalizer;
 use RawMessage;
+use TitleValue;
 
 /**
  * A topic based on morelike search (text similarity with a predefined set of reference articles).
@@ -56,6 +58,27 @@ class MorelikeBasedTopic extends Topic {
 	 */
 	public function setName( $name ) {
 		$this->name = $name;
+	}
+
+	/** @inheritDoc */
+	protected function toJsonArray(): array {
+		return [
+			'id' => $this->getId(),
+			'name' => $this->name,
+			'referencePages' => array_map( function ( LinkTarget $page ) {
+				return [ $page->getNamespace(), $page->getDBkey() ];
+			}, $this->getReferencePages() ),
+		];
+	}
+
+	/** @inheritDoc */
+	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+		$referencePages = array_map( function ( array $page ) {
+			return new TitleValue( $page[0], $page[1] );
+		}, $json['referencePages'] );
+		$topic = new MorelikeBasedTopic( $json['id'], $referencePages );
+		$topic->setName( $json['name'] );
+		return $topic;
 	}
 
 }

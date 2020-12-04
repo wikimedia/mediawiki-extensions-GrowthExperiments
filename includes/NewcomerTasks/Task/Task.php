@@ -4,13 +4,19 @@ namespace GrowthExperiments\NewcomerTasks\Task;
 
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use MediaWiki\Json\JsonUnserializable;
+use MediaWiki\Json\JsonUnserializableTrait;
+use MediaWiki\Json\JsonUnserializer;
 use MediaWiki\Linker\LinkTarget;
+use TitleValue;
 
 /**
  * A single task recommendation.
  * A Task specifies a page and the type of the task to perform on it.
  */
-class Task {
+class Task implements JsonUnserializable {
+
+	use JsonUnserializableTrait;
 
 	/** @var TaskType */
 	private $taskType;
@@ -77,6 +83,31 @@ class Task {
 	public function setTopics( array $topics, array $topicScores = [] ): void {
 		$this->topics = $topics;
 		$this->topicScores = $topicScores;
+	}
+
+	/** @inheritDoc */
+	protected function toJsonArray(): array {
+		return [
+			'taskType' => $this->getTaskType()->jsonSerialize(),
+			'title' => [ $this->getTitle()->getNamespace(), $this->getTitle()->getDBkey() ],
+			'topics' => array_map( function ( Topic $topic ) {
+				return $topic->jsonSerialize();
+			}, $this->getTopics() ),
+			'topicScores' => $this->getTopicScores(),
+		];
+	}
+
+	/** @inheritDoc */
+	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+		$taskType = $unserializer->unserialize( $json['taskType'], TaskType::class );
+		$title = new TitleValue( $json['title'][0], $json['title'][1] );
+		$topics = array_map( function ( array $topic ) use ( $unserializer ) {
+			return $unserializer->unserialize( $topic, Topic::class );
+		}, $json['topics'] );
+
+		$task = new Task( $taskType, $title );
+		$task->setTopics( $topics, $json['topicScores'] );
+		return $task;
 	}
 
 }

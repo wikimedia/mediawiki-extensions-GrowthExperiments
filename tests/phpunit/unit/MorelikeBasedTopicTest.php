@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
+use MediaWiki\Json\JsonCodec;
 use MediaWiki\Linker\LinkTarget;
 use MediaWikiUnitTestCase;
 use TitleValue;
@@ -23,5 +24,16 @@ class MorelikeBasedTopicTest extends MediaWikiUnitTestCase {
 	}
 
 	// FIXME can't test get/setName because Message classes break unit tests
+
+	public function testJsonSerialization() {
+		// JsonCodec isn't stable to construct but there is not better way in a unit test.
+		$codec = new JsonCodec();
+		$topic = new MorelikeBasedTopic( 'foo', [
+			new TitleValue( NS_MAIN, 'Title1' ),
+			new TitleValue( NS_MAIN, 'Title2' ),
+		] );
+		$topic2 = $codec->unserialize( $codec->serialize( $topic ) );
+		$this->assertEquals( $topic, $topic2 );
+	}
 
 }
