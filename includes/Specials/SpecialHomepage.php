@@ -414,12 +414,14 @@ class SpecialHomepage extends SpecialPage {
 			 !SuggestedEdits::isEnabled( $this->getContext() ) ) {
 			return false;
 		}
-		$titleId = (int)explode( '/', $par )[1];
 		$request = $this->getRequest();
+		$titleId = (int)explode( '/', $par )[1];
 		$clickId = $request->getVal( 'geclickid' );
-		if ( $this->tracker->track( $titleId, $clickId ) instanceof StatusValue ) {
-			// If a StatusValue is returned from ->track(), it's because constructing the title
-			// from page ID failed, so don't attempt to redirect the user. If track returns false
+		$taskTypeId = $request->getVal( 'getasktype', '' );
+
+		if ( $this->tracker->track( $titleId, $taskTypeId, $clickId ) instanceof StatusValue ) {
+			// If a StatusValue is returned from ->track(), it's because loading the task type or
+			//  title failed, so don't attempt to redirect the user. If track returns false
 			// (storing the value in cache failed) then we are not going to prevent redirection.
 			return false;
 		}

@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests;
 
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Tracker\Tracker;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use MediaWiki\Logger\LoggerFactory;
@@ -19,6 +20,7 @@ class TrackerFactoryTest extends \MediaWikiUnitTestCase {
 		$this->assertInstanceOf( TrackerFactory::class,
 			new TrackerFactory(
 				new \EmptyBagOStuff(),
+				$this->createNoOpMock( ConfigurationLoader::class ),
 				new \TitleFactory(),
 				LoggerFactory::getInstance( 'test' ) )
 		);
@@ -30,6 +32,7 @@ class TrackerFactoryTest extends \MediaWikiUnitTestCase {
 	public function testGetTracker() {
 		$factory = new TrackerFactory(
 			new \EmptyBagOStuff(),
+			$this->createNoOpMock( ConfigurationLoader::class ),
 			new \TitleFactory(),
 			LoggerFactory::getInstance( 'test' )
 		);

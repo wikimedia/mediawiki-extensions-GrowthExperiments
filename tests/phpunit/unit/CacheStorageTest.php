@@ -39,12 +39,14 @@ class CacheStorageTest extends MediaWikiUnitTestCase {
 			new UserIdentityValue( 1, 'Foo', 0 )
 		);
 		$this->assertSame( [], $cacheStorage->get() );
-		$this->assertTrue( $cacheStorage->set( 42 ) );
-		$this->assertSame( [ 42 ], $cacheStorage->get() );
-		$this->assertTrue( $cacheStorage->set( 43 ) );
-		$this->assertArrayEquals( [ 42, 43 ], $cacheStorage->get() );
-		$this->assertTrue( $cacheStorage->set( 43 ) );
-		$this->assertArrayEquals( [ 42, 43 ], $cacheStorage->get() );
+		$this->assertTrue( $cacheStorage->set( 42, 'type1' ) );
+		$this->assertSame( [ 42 => 'type1' ], $cacheStorage->get() );
+		$this->assertTrue( $cacheStorage->set( 43, 'type2' ) );
+		$this->assertArrayEquals( [ 42 => 'type1', 43 => 'type2' ], $cacheStorage->get() );
+		$this->assertTrue( $cacheStorage->set( 43, 'type2' ) );
+		$this->assertArrayEquals( [ 42 => 'type1', 43 => 'type2' ], $cacheStorage->get() );
+		$this->assertTrue( $cacheStorage->set( 43, 'type3' ) );
+		$this->assertArrayEquals( [ 42 => 'type1', 43 => 'type3' ], $cacheStorage->get() );
 	}
 
 	/**
@@ -52,49 +54,45 @@ class CacheStorageTest extends MediaWikiUnitTestCase {
 	 * @covers ::set
 	 */
 	public function testExpiry() {
-		// this will only work after the cache format migration
-		$this->markTestSkipped();
 		$cacheStorage = new CacheStorage(
 			new HashBagOStuff(),
 			new UserIdentityValue( 1, 'Foo', 0 )
 		);
 		MWTimestamp::setFakeTime( '2000-01-01 00:00:00' );
-		$this->assertTrue( $cacheStorage->set( 42 ) );
+		$this->assertTrue( $cacheStorage->set( 42, 'type1' ) );
 		MWTimestamp::setFakeTime( '2000-01-05 00:00:00' );
-		$this->assertTrue( $cacheStorage->set( 43 ) );
-		$this->assertArrayEquals( [ 42, 43 ], $cacheStorage->get() );
+		$this->assertTrue( $cacheStorage->set( 43, 'type2' ) );
+		$this->assertArrayEquals( [ 42 => 'type1', 43 => 'type2' ], $cacheStorage->get() );
 		MWTimestamp::setFakeTime( '2000-01-10 00:00:00' );
-		$this->assertArrayEquals( [ 43 ], $cacheStorage->get() );
-		$this->assertTrue( $cacheStorage->set( 44 ) );
-		$this->assertArrayEquals( [ 43, 44 ], $cacheStorage->get() );
+		$this->assertArrayEquals( [ 43 => 'type2' ], $cacheStorage->get() );
+		$this->assertTrue( $cacheStorage->set( 44, 'type3' ) );
+		$this->assertArrayEquals( [ 43 => 'type2', 44 => 'type3' ], $cacheStorage->get() );
 		MWTimestamp::setFakeTime( '2000-01-15 00:00:00' );
-		$this->assertArrayEquals( [ 44 ], $cacheStorage->get() );
+		$this->assertArrayEquals( [ 44 => 'type3' ], $cacheStorage->get() );
 		MWTimestamp::setFakeTime( '2000-01-20 00:00:00' );
 		$this->assertArrayEquals( [], $cacheStorage->get() );
 	}
 
 	/**
-	 * Test that things work with the future data format [ page id => data ].
-	 * This format will be added by a later patch, and the code needs to survive a rollback.
-	 * @covers ::get
+	 * Test that things work with the legacy data format [ page ID, ... ].
 	 * @covers ::set
+	 * @covers ::get
 	 */
-	public function testGetSetWithFutureData() {
+	public function testLegacyGetSet() {
 		$bag = new HashBagOStuff();
 		$cacheStorage = new CacheStorage(
 			$bag,
 			new UserIdentityValue( 1, 'Foo', 0 )
 		);
+		MWTimestamp::setFakeTime( 1000 );
 		$cacheKey = TestingAccessWrapper::newFromObject( $cacheStorage )->getCacheKey();
-		$bag->set( $cacheKey, [
-			42 => [ 'type' => 'Foo', 'expires' => time() + 10000 ],
-			43 => [ 'type' => 'Bar', 'expires' => time() + 10000 ],
-		] );
-		$this->assertEquals( [ 42, 43 ], $cacheStorage->get() );
-		$this->assertTrue( $cacheStorage->set( 44 ) );
-		$this->assertArrayEquals( [ 42, 43, 44 ], $cacheStorage->get() );
-		$this->assertTrue( $cacheStorage->set( 45 ) );
-		$this->assertArrayEquals( [ 42, 43, 44, 45 ], $cacheStorage->get() );
+		$bag->set( $cacheKey, [ 40, 41 ] );
+		$this->assertEquals( [ 40 => null, 41 => null ], $cacheStorage->get() );
+		$cacheStorage->set( 42, 'type1' );
+		$this->assertEquals( [ 40 => null, 41 => null, 42 => 'type1' ], $cacheStorage->get() );
+		$cacheStorage->set( 43, 'type2' );
+		$this->assertEquals( [ 40 => null, 41 => null, 42 => 'type1', 43 => 'type2' ],
+			$cacheStorage->get() );
 	}
 
 }

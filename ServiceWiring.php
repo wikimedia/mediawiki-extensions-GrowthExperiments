@@ -171,6 +171,7 @@ return [
 	): TrackerFactory {
 		return new TrackerFactory(
 			$services->getMainObjectStash(),
+			GrowthExperimentsServices::wrap( $services )->getConfigurationLoader(),
 			$services->getTitleFactory(),
 			LoggerFactory::getInstance( 'GrowthExperiments' )
 		);

@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\Tracker;
 
 use BagOStuff;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 use TitleFactory;
@@ -14,6 +15,10 @@ class TrackerFactory {
 	 */
 	private $objectStash;
 	/**
+	 * @var ConfigurationLoader
+	 */
+	private $configurationLoader;
+	/**
 	 * @var TitleFactory
 	 */
 	private $titleFactory;
@@ -23,15 +28,19 @@ class TrackerFactory {
 	private $logger;
 
 	/**
-	 * TrackerFactory constructor.
 	 * @param BagOStuff $objectStash
+	 * @param ConfigurationLoader $configurationLoader
 	 * @param TitleFactory $titleFactory
 	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
-		BagOStuff $objectStash, TitleFactory $titleFactory, LoggerInterface $logger
+		BagOStuff $objectStash,
+		ConfigurationLoader $configurationLoader,
+		TitleFactory $titleFactory,
+		LoggerInterface $logger
 	) {
 		$this->objectStash = $objectStash;
+		$this->configurationLoader = $configurationLoader;
 		$this->titleFactory = $titleFactory;
 		$this->logger = $logger;
 	}
@@ -46,6 +55,7 @@ class TrackerFactory {
 				$this->objectStash,
 				$user
 			),
+			$this->configurationLoader,
 			$this->titleFactory,
 			$this->logger
 		);
