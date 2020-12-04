@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Simbu123"
+		]
+	},
+	"growthexperiments-homepage-mentorship-mentor-active-today": "আজি {{GENDER:$1|সক্ৰিয় আছিল}}",
+	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "কালি {{GENDER:$1|সক্ৰিয় আছিল}}"
+}
