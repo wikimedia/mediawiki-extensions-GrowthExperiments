@@ -5,7 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\Tracker;
 use BagOStuff;
 use MediaWiki\User\UserIdentity;
 
-class CacheStorage implements StorageInterface {
+class CacheStorage {
 
 	private const CACHE_CLASS = 'newcomer-tasks';
 
@@ -24,7 +24,11 @@ class CacheStorage implements StorageInterface {
 		$this->userIdentity = $userIdentity;
 	}
 
-	/** @inheritDoc */
+	/**
+	 * Set the page ID in a storage bin specific to the current user.
+	 * @param int $pageId
+	 * @return bool
+	 */
 	public function set( int $pageId ): bool {
 		return $this->cache->merge(
 			$this->getCacheKey(),
@@ -37,7 +41,10 @@ class CacheStorage implements StorageInterface {
 		);
 	}
 
-	/** @inheritDoc */
+	/**
+	 * @return array []int
+	 *   Array of page IDs that the user has visited via clicks in the Suggested Edits module.
+	 */
 	public function get(): array {
 		return $this->cache->get( $this->getCacheKey() ) ?: [];
 	}
