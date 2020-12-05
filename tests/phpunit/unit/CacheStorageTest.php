@@ -7,7 +7,6 @@ use HashBagOStuff;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use MWTimestamp;
-use Wikimedia\TestingAccessWrapper;
 
 /**
  * @coversDefaultClass \GrowthExperiments\NewcomerTasks\Tracker\CacheStorage
@@ -71,28 +70,6 @@ class CacheStorageTest extends MediaWikiUnitTestCase {
 		$this->assertArrayEquals( [ 44 => 'type3' ], $cacheStorage->get() );
 		MWTimestamp::setFakeTime( '2000-01-20 00:00:00' );
 		$this->assertArrayEquals( [], $cacheStorage->get() );
-	}
-
-	/**
-	 * Test that things work with the legacy data format [ page ID, ... ].
-	 * @covers ::set
-	 * @covers ::get
-	 */
-	public function testLegacyGetSet() {
-		$bag = new HashBagOStuff();
-		$cacheStorage = new CacheStorage(
-			$bag,
-			new UserIdentityValue( 1, 'Foo', 0 )
-		);
-		MWTimestamp::setFakeTime( 1000 );
-		$cacheKey = TestingAccessWrapper::newFromObject( $cacheStorage )->getCacheKey();
-		$bag->set( $cacheKey, [ 40, 41 ] );
-		$this->assertEquals( [ 40 => null, 41 => null ], $cacheStorage->get() );
-		$cacheStorage->set( 42, 'type1' );
-		$this->assertEquals( [ 40 => null, 41 => null, 42 => 'type1' ], $cacheStorage->get() );
-		$cacheStorage->set( 43, 'type2' );
-		$this->assertEquals( [ 40 => null, 41 => null, 42 => 'type1', 43 => 'type2' ],
-			$cacheStorage->get() );
 	}
 
 }

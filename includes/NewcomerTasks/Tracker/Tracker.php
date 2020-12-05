@@ -91,8 +91,8 @@ class Tracker {
 	}
 
 	/**
-	 * Get the TaskType of the task associated with the page, or null if no task is associated.
-	 * FIXME during migration period null might be returned even if there is a task.
+	 * Get the TaskType of the task associated with the page, or null if no task is associated
+	 * (or the stored task type was invalid, e.g. task type configuration has changed since).
 	 * @param int $pageId
 	 * @return TaskType|null
 	 */

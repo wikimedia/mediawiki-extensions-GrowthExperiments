@@ -675,9 +675,6 @@ class HomepageHooks implements
 			if ( $taskType ) {
 				$taskTypeHandler = $this->taskTypeHandlerRegistry->getByTaskType( $taskType );
 				$rc->addTags( $taskTypeHandler->getChangeTags() );
-			} elseif ( in_array( $pageId, $tracker->getTrackedPageIds() ) ) {
-				// FIXME remove this after migration period
-				$rc->addTags( SuggestedEdits::SUGGESTED_EDIT_TAG );
 			}
 		}
 	}
