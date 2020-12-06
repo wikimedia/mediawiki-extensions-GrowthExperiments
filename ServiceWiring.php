@@ -114,25 +114,36 @@ return [
 		return new HomepageModuleRegistry( $services );
 	},
 
-	'GrowthExperimentsLinkRecommendationProvider' => function (
+	'GrowthExperimentsLinkRecommendationProviderUncached' => function (
 		MediaWikiServices $services
 	): LinkRecommendationProvider {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$serviceUrl = $growthServices->getConfig()->get( 'GELinkRecommendationServiceUrl' );
 		if ( $serviceUrl ) {
-			return new DbBackedLinkRecommendationProvider(
-				new ServiceLinkRecommendationProvider(
-					$services->getTitleFactory(),
-					$services->getRevisionLookup(),
-					$services->getHttpRequestFactory(),
-					$growthServices->getConfig()->get( 'GELinkRecommendationServiceUrl' ),
-					WikiMap::getCurrentWikiId()
-				),
-				$growthServices->getLinkRecommendationStore()
+			return new ServiceLinkRecommendationProvider(
+				$services->getTitleFactory(),
+				$services->getRevisionLookup(),
+				$services->getHttpRequestFactory(),
+				$serviceUrl,
+				WikiMap::getCurrentWikiId()
 			);
 		} else {
 			return new StaticLinkRecommendationProvider( [],
 				StatusValue::newFatal( 'rawmessage', '$wgGELinkRecommendationServiceUrl not set!' ) );
+		}
+	},
+
+	'GrowthExperimentsLinkRecommendationProvider' => function (
+		MediaWikiServices $services
+	): LinkRecommendationProvider {
+		$uncachedProvider = $services->get( 'GrowthExperimentsLinkRecommendationProviderUncached' );
+		if ( !$uncachedProvider instanceof StaticLinkRecommendationProvider ) {
+			return new DbBackedLinkRecommendationProvider(
+				$uncachedProvider,
+				GrowthExperimentsServices::wrap( $services )->getLinkRecommendationStore()
+			);
+		} else {
+			return $uncachedProvider;
 		}
 	},
 

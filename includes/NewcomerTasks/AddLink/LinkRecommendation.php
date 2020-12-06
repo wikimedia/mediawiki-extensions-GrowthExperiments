@@ -28,7 +28,7 @@ class LinkRecommendation {
 	 * Key for the score  in the recommendation data. This is the confidence of the recommendation,
 	 * a number between 0 and 1.
 	 */
-	public const FIELD_SCORE = 'score';
+	public const FIELD_SCORE = 'probability';
 
 	/** @var LinkTarget */
 	private $title;

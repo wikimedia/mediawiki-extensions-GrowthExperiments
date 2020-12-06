@@ -15,7 +15,7 @@ class OresBasedTopic extends Topic {
 	 * @param string|null $groupId Topic group, for visual grouping. E.g. 'science'.
 	 * @param string[] $oresTopics ORES topic IDs which define this topic.
 	 */
-	public function __construct( string $id, string $groupId, array $oresTopics ) {
+	public function __construct( string $id, ?string $groupId, array $oresTopics ) {
 		parent::__construct( $id, $groupId );
 		$this->oresTopics = $oresTopics;
 	}
