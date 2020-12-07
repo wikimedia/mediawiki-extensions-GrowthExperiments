@@ -2,11 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Piramidion",
+			"Renamerr",
 			"Ата"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "Працювати із запитаннями поточного користувача, поставленими через панель підтримки.",
 	"apihelp-helppanelquestionposter-param-body": "Текст запитання, поставленого користувачем.",
-	"apihelp-helppanelquestionposter-param-source": "Компонент у джерелі запитання. Дійсні значення: 'helppanel', 'homepage-help' та 'homepage-mentorship'",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "Відповідна назва (якщо вибрано), яку слід включити разом із запитанням."
+	"apihelp-helppanelquestionposter-param-source": "Метод, за допомогою якого було надіслано запитання.",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Відповідна назва (якщо вибрано), яку слід включити разом із запитанням.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Ви маєте бути авторизовані, щоб поставити запитання."
 }
