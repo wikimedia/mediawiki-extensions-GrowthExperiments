@@ -49,6 +49,17 @@ class StaticTaskSuggester implements TaskSuggester {
 			count( $filteredTasks ), $offset ?: 0, new TaskSetFilters() );
 	}
 
+	/** @inheritDoc */
+	public function filter( UserIdentity $user, TaskSet $taskSet ) {
+		$tasks = array_filter( iterator_to_array( $taskSet ), function ( Task $task ) {
+			return in_array( $task, $this->tasks, true );
+		} );
+		$newTaskSet = new TaskSet( $tasks, $taskSet->getTotalCount(), $taskSet->getOffset(),
+			$taskSet->getFilters() );
+		$newTaskSet->setDebugData( $taskSet->getDebugData() );
+		return $newTaskSet;
+	}
+
 	/**
 	 * @param Task $task
 	 * @return string[]

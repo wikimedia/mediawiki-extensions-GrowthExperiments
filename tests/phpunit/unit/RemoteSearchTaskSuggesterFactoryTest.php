@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggesterFacto
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentityValue;
@@ -36,9 +37,11 @@ class RemoteSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTes
 		$searchStrategy = $this->getSearchStrategy();
 		$requestFactory = $this->getRequestFactory();
 		$titleFactory = $this->getTitleFactory();
+		$linkBatchFactory = $this->getLinkBatchFactory();
 		$apiUrl = 'https://example.com';
 		$taskSuggesterFactory = new RemoteSearchTaskSuggesterFactory( $taskTypeHandlerRegistry,
-			$configurationLoader, $searchStrategy, $requestFactory, $titleFactory, $apiUrl );
+			$configurationLoader, $searchStrategy, $requestFactory, $titleFactory, $linkBatchFactory,
+			$apiUrl );
 		$taskSuggester = $taskSuggesterFactory->create();
 		if ( $expectedError ) {
 			$this->assertInstanceOf( ErrorForwardingTaskSuggester::class, $taskSuggester );
@@ -62,6 +65,13 @@ class RemoteSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTes
 	 */
 	private function getTitleFactory() {
 		return $this->createNoOpMock( TitleFactory::class );
+	}
+
+	/**
+	 * @return LinkBatchFactory|MockObject
+	 */
+	private function getLinkBatchFactory() {
+		return $this->createNoOpMock( LinkBatchFactory::class );
 	}
 
 }

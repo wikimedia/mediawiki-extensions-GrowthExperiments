@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactor
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentityValue;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -34,8 +35,9 @@ class LocalSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest
 		$configurationLoader = $this->getConfigurationLoader( $taskTypes, $topics, $templateBlacklist );
 		$searchStrategy = $this->getSearchStrategy();
 		$searchEngineFactory = $this->getSearchEngineFactory();
+		$linkBatchFactory = $this->getLinkBatchFactory();
 		$taskSuggesterFactory = new LocalSearchTaskSuggesterFactory( $taskTypeHandlerRegistry,
-			$configurationLoader, $searchStrategy, $searchEngineFactory );
+			$configurationLoader, $searchStrategy, $searchEngineFactory, $linkBatchFactory );
 		$taskSuggester = $taskSuggesterFactory->create();
 		if ( $expectedError ) {
 			$this->assertInstanceOf( ErrorForwardingTaskSuggester::class, $taskSuggester );
@@ -59,6 +61,13 @@ class LocalSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest
 	 */
 	private function getSearchEngineFactory() {
 		return $this->createNoOpMock( SearchEngineFactory::class );
+	}
+
+	/**
+	 * @return LinkBatchFactory|MockObject
+	 */
+	private function getLinkBatchFactory() {
+		return $this->createNoOpMock( LinkBatchFactory::class );
 	}
 
 }

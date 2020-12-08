@@ -16,7 +16,6 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
-use GrowthExperiments\NewcomerTasks\TemplateFilter;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use MediaWiki\MediaWikiServices;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -108,10 +107,6 @@ class GrowthExperimentsServices {
 
 	public function getTaskTypeHandlerRegistry(): TaskTypeHandlerRegistry {
 		return $this->coreServices->get( 'GrowthExperimentsTaskTypeHandlerRegistry' );
-	}
-
-	public function getTemplateFilter(): TemplateFilter {
-		return $this->coreServices->get( 'GrowthExperimentsTemplateFilter' );
 	}
 
 	public function getQuestionPosterFactory(): QuestionPosterFactory {

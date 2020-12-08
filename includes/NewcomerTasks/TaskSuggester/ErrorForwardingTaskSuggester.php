@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
+use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use MediaWiki\User\UserIdentity;
 use StatusValue;
 
@@ -18,10 +19,15 @@ class ErrorForwardingTaskSuggester implements TaskSuggester {
 	/** @var StatusValue */
 	private $status;
 
+	/** @var StatusValue */
+	private $filterStatus;
+
 	/**
-	 * @param StatusValue $status The error to return.
+	 * @param StatusValue $status The error to return for suggest().
+	 * @param StatusValue|null $filterStatus The error to return for filter() (null means the
+	 *   method is a no-op).
 	 */
-	public function __construct( StatusValue $status ) {
+	public function __construct( StatusValue $status, StatusValue $filterStatus = null ) {
 		$this->status = $status;
 	}
 
@@ -35,6 +41,11 @@ class ErrorForwardingTaskSuggester implements TaskSuggester {
 		array $options = []
 	) {
 		return $this->status;
+	}
+
+	/** @inheritDoc */
+	public function filter( UserIdentity $user, TaskSet $taskSet ) {
+		return $this->filterStatus ?: $taskSet;
 	}
 
 }

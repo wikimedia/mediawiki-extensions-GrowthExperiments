@@ -319,13 +319,14 @@ class SuggestedEdits extends BaseModule {
 			return $this->tasks;
 		}
 		$user = $this->getContext()->getUser();
-		// There will likely be a cached task set by this point. For scenarios where there
-		// aren't (e.g. user visits homepage, doesn't come back for 8 days, then goes to
-		// homepage again), we should fetch tasks using a single task type and topic to
-		// speed up the query.
+		// FIXME There will likely be a cached task set by this point. For scenarios where there
+		//   aren't (e.g. user visits homepage, doesn't come back for 8 days, then goes to
+		//   homepage again), we should fetch tasks using a single task type and topic to
+		//   speed up the query. For now, we just skip revalidation entirely.
 		$taskTypes = $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user );
 		$topics = $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user );
-		$tasks = $this->taskSuggester->suggest( $user, $taskTypes, $topics );
+		$tasks = $this->taskSuggester->suggest( $user, $taskTypes, $topics, null, null,
+			[ 'revalidateCache' => false ] );
 		if ( $tasks instanceof TaskSet ) {
 			$this->unfilteredTasksetCount = $tasks->count();
 			$tasks = $this->protectionFilter->filter( $tasks, 1 );

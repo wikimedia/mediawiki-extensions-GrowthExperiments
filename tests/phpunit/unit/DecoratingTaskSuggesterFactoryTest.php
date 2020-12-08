@@ -8,11 +8,9 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\DecoratingTaskSuggesterFactory
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use GrowthExperiments\NewcomerTasks\TemplateFilter;
 use HashBagOStuff;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
-use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use TitleValue;
@@ -42,7 +40,6 @@ class DecoratingTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 					$this->getMockBuilder( \JobQueueGroup::class )
 						->disableOriginalConstructor()
 						->getMock(),
-					$this->getMockTemplateFilter(),
 					new \WANObjectCache( [ 'cache' => new HashBagOStuff() ] ),
 				],
 			],
@@ -62,12 +59,5 @@ class DecoratingTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 				return false;
 			}
 		};
-	}
-
-	/**
-	 * @return TemplateFilter|MockObject
-	 */
-	private function getMockTemplateFilter() {
-		return $this->createNoOpMock( TemplateFilter::class );
 	}
 }

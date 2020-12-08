@@ -15,6 +15,8 @@ use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
+use LinkBatch;
+use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentityValue;
@@ -41,8 +43,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @dataProvider provideSuggest
-	 * @param string[] $taskTypeSpec All configured task types on the server. See getTaskTypes().
-	 * @param string[] $topicSpec All configured topics on the server. See getTopics().
+	 * @param array[] $taskTypeSpec All configured task types on the server. See getTaskTypes().
+	 * @param array[] $topicSpec All configured topics on the server. See getTopics().
 	 * @param array $requests [ [ 'params' => [...], 'response' => ... ], ... ] where params is
 	 *   a list of asserted query parameters (null means asserted to be not present), response is
 	 *   JSON data (in PHP form) or a StatusValue with errors
@@ -57,19 +59,15 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
 		$requestFactory = $this->getMockRequestFactory( $requests );
 		$titleFactory = $this->getMockTitleFactory();
-		/** @var SearchStrategy|MockObject $searchStrategy */
-		$searchStrategy = $this->getMockBuilder( SearchStrategy::class )
-			->setConstructorArgs( [ $taskTypeHandlerRegistry ] )
-			->onlyMethods( [ 'shuffleQueryOrder' ] )
-			->getMock();
-		$searchStrategy->method( 'shuffleQueryOrder' )
-			->willReturnArgument( 0 );
+		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry );
+		$linkBatchFactory = $this->getMockLinkBatchFactory();
 
 		$user = new UserIdentityValue( 1, 'Foo', 1 );
 		$taskTypes = $this->getTaskTypes( $taskTypeSpec );
 		$topics = $this->getTopics( $topicSpec );
 		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry, $searchStrategy,
-			$requestFactory, $titleFactory, 'https://example.com', $taskTypes, $topics, [] );
+			$linkBatchFactory, $requestFactory, $titleFactory, 'https://example.com',
+			$taskTypes, $topics, [] );
 
 		$taskSet = $suggester->suggest( $user, $taskFilter, $topicFilter, $limit );
 		if ( $expectedTaskSet instanceof StatusValue ) {
@@ -456,6 +454,174 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * @dataProvider provideFilter
+	 * @param array[] $taskTypeSpec All configured task types on the server. See getTaskTypes().
+	 * @param array[] $topicSpec All configured topics on the server. See getTopics().
+	 * @param array $pageIds Page IDs returned by the LinkBatch
+	 * @param array $requests [ [ 'params' => [...], 'response' => ... ], ... ] where params is
+	 *   a list of asserted query parameters (null means asserted to be not present), response is
+	 *   JSON data (in PHP form) or a StatusValue with errors
+	 * @param TaskSet|StatusValue $expectedTaskSet
+	 */
+	public function testFilter(
+		array $taskTypeSpec,
+		array $topicSpec,
+		TaskSet $taskSet,
+		array $pageIds,
+		array $requests,
+		$expectedTaskSet
+	) {
+		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
+		$requestFactory = $this->getMockRequestFactory( $requests );
+		$titleFactory = $this->getMockTitleFactory();
+		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry );
+		$linkBatchFactory = $this->getMockLinkBatchFactory( $pageIds );
+
+		$user = new UserIdentityValue( 1, 'Foo', 1 );
+		$taskTypes = $this->getTaskTypes( $taskTypeSpec );
+		$topics = $this->getTopics( $topicSpec );
+		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry, $searchStrategy,
+			$linkBatchFactory, $requestFactory, $titleFactory, 'https://example.com',
+			$taskTypes, $topics, [] );
+
+		$filteredTaskSet = $suggester->filter( $user, $taskSet );
+		if ( $expectedTaskSet instanceof StatusValue ) {
+			$this->assertInstanceOf( StatusValue::class, $filteredTaskSet );
+			$this->assertEquals( $expectedTaskSet->getErrors(), $filteredTaskSet->getErrors() );
+		} else {
+			$this->assertInstanceOf( TaskSet::class, $filteredTaskSet );
+			$this->assertSame( $expectedTaskSet->getOffset(), $filteredTaskSet->getOffset() );
+			$this->assertSame( $expectedTaskSet->getTotalCount(), $filteredTaskSet->getTotalCount() );
+			$this->assertSame( count( $expectedTaskSet ), count( $filteredTaskSet ) );
+			for ( $i = 0; $i < count( $expectedTaskSet ); $i++ ) {
+				$expectedTask = $expectedTaskSet[$i];
+				$filteredTask = $filteredTaskSet[$i];
+				$this->assertEquals( $expectedTask->getTaskType(), $filteredTask->getTaskType() );
+				$this->assertSame( $expectedTask->getTitle()->getNamespace(),
+					$filteredTask->getTitle()->getNamespace() );
+				$this->assertSame( $expectedTask->getTitle()->getDBkey(),
+					$filteredTask->getTitle()->getDBkey() );
+				$this->assertEquals( $expectedTask->getTopics(), $filteredTask->getTopics() );
+				$this->assertSame( $expectedTask->getTopicScores(), $filteredTask->getTopicScores() );
+			}
+		}
+	}
+
+	public function provideFilter() {
+		return [
+			'found' => [
+				'taskTypes' => [ 'type1' => [ 'MaintTempl' ] ],
+				'topics' => [],
+				'taskSet' => new TaskSet( [
+					$this->getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1' ),
+				], 100, 0, new TaskSetFilters( [ 'type1' ], [] ) ),
+				'pageids' => [ 1 ],
+				'requests' => [ [
+					'params' => [
+						'srsearch' => 'hastemplate:"MaintTempl" pageid:1',
+					],
+					'response' => [
+						'query' => [
+							'search' => [
+								[ 'ns' => 0, 'title' => 'Page1' ],
+							],
+							'searchinfo' => [
+								'totalhits' => 10,
+							],
+						],
+					],
+				] ],
+				'expectedTaskSet' => new TaskSet( [
+					$this->getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1' ),
+				], 100, 0, new TaskSetFilters( [ 'type1' ], [] ) ),
+			],
+			'not found' => [
+				'taskTypes' => [ 'type1' => [ 'MaintTempl' ] ],
+				'topics' => [],
+				'taskSet' => new TaskSet( [
+					$this->getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1' ),
+				], 100, 0, new TaskSetFilters( [ 'type1' ], [] ) ),
+				'pageids' => [ 1 ],
+				'requests' => [ [
+					'params' => [
+						'srsearch' => 'hastemplate:"MaintTempl" pageid:1',
+					],
+					'response' => [
+						'query' => [
+							'search' => [],
+							'searchinfo' => [
+								'totalhits' => 10,
+							],
+						],
+					],
+				] ],
+				'expectedTaskSet' => new TaskSet( [], 100, 0,
+					new TaskSetFilters( [ 'type1' ], [] ) ),
+			],
+			'topic' => [
+				'taskTypes' => [ 'type1' => [ 'MaintTempl' ] ],
+				'topics' => [ 'topic1' => [ 'foo' ] ],
+				'taskSet' => new TaskSet( [
+					$this->getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1',
+						[ 'topic1' => [ 'foo' ] ], [ 'topic1' => 0.8 ] ),
+				], 100, 0, new TaskSetFilters( [ 'type1' ], [ 'topic1' ] ) ),
+				'pageids' => [ 1 ],
+				'requests' => [ [
+					'params' => [
+						'srsearch' => 'hastemplate:"MaintTempl" morelikethis:"foo" pageid:1',
+					],
+					'response' => [
+						'query' => [
+							'search' => [
+								[ 'ns' => 0, 'title' => 'Page1' ],
+							],
+							'searchinfo' => [
+								'totalhits' => 10,
+							],
+						],
+					],
+				] ],
+				'expectedTaskSet' => new TaskSet( [
+					$this->getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1',
+						[ 'topic1' => [ 'foo' ] ], [ 'topic1' => 100.0 ] ),
+				], 100, 0, new TaskSetFilters( [ 'type1' ], [] ) ),
+			],
+			'error' => [
+				'taskTypes' => [ 'type1' => [ 'MaintTempl' ] ],
+				'topics' => [],
+				'taskSet' => new TaskSet( [
+					$this->getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1' ),
+				], 100, 0, new TaskSetFilters( [ 'type1' ], [] ) ),
+				'pageids' => [ 1 ],
+				'requests' => [ [
+					'params' => [],
+					'response' => [
+						'errors' => [
+							[ 'text' => 'foo', 'code' => 'bar' ],
+						],
+					],
+				] ],
+				'expectedTaskSet' => StatusValue::newFatal( new ApiRawMessage( 'foo', 'bar' ) ),
+			],
+		];
+	}
+
+	/**
+	 * @param array[] $taskTypeSpec Task type of the task. See getTaskTypes(); should have a single type.
+	 * @param string $title Task page title (assumed to be in the mainspace).
+	 * @param array[] $topicSpec Topics of the task. See getTopics().
+	 * @param float[] $topicScores Topic ID => score.
+	 * @return Task
+	 */
+	private function getTask( $taskTypeSpec, $title, $topicSpec = [], $topicScores = [] ) {
+		$taskTypes = $this->getTaskTypes( $taskTypeSpec );
+		$topics = $this->getTopics( $topicSpec );
+		$task = new Task( $taskTypes[0], new TitleValue( NS_MAIN, $title ) );
+		$task->setTopics( $topics, $topicScores );
+		return $task;
+	}
+
+	/**
 	 * @return TaskTypeHandlerRegistry|MockObject
 	 */
 	private function getMockTaskTypeHandlerRegistry() {
@@ -550,7 +716,33 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param string[] $spec [ task type id => [ title, ... ], ... ]
+	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
+	 * @return SearchStrategy|MockObject
+	 */
+	private function getMockSearchStrategy( TaskTypeHandlerRegistry $taskTypeHandlerRegistry ) {
+		$searchStrategy = $this->getMockBuilder( SearchStrategy::class )
+			->setConstructorArgs( [ $taskTypeHandlerRegistry ] )
+			->onlyMethods( [ 'shuffleQueryOrder' ] )
+			->getMock();
+		$searchStrategy->method( 'shuffleQueryOrder' )
+			->willReturnArgument( 0 );
+		return $searchStrategy;
+	}
+
+	/**
+	 * @param array $pageIds Page IDs to return from LinkBatch::execute()
+	 * @return LinkBatchFactory|MockObject
+	 */
+	private function getMockLinkBatchFactory( array $pageIds = [] ) {
+		$linkBatchFactory = $this->createNoOpMock( LinkBatchFactory::class, [ 'newLinkBatch' ] );
+		$linkBatch = $this->createNoOpMock( LinkBatch::class, [ 'execute' ] );
+		$linkBatchFactory->method( 'newLinkBatch' )->willReturn( $linkBatch );
+		$linkBatch->method( 'execute' )->willReturn( array_combine( $pageIds, $pageIds ) );
+		return $linkBatchFactory;
+	}
+
+	/**
+	 * @param array[] $spec [ task type id => [ title, ... ], ... ]
 	 * @return TemplateBasedTaskType[]
 	 */
 	private function getTaskTypes( array $spec ) {
@@ -567,7 +759,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param string[] $spec [ topic id => [ title, ... ], ... ]
+	 * @param array[] $spec [ topic id => [ title, ... ], ... ]
 	 * @return MorelikeBasedTopic[]
 	 */
 	private function getTopics( array $spec ) {

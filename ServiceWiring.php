@@ -30,7 +30,6 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
-use GrowthExperiments\NewcomerTasks\TemplateFilter;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Logger\LoggerFactory;
@@ -241,6 +240,7 @@ return [
 				$searchStrategy,
 				$services->getHttpRequestFactory(),
 				$services->getTitleFactory(),
+				$services->getLinkBatchFactory(),
 				$config->get( 'GENewcomerTasksRemoteApiUrl' )
 			);
 		} else {
@@ -248,7 +248,8 @@ return [
 				$taskTypeHandlerRegistry,
 				$configLoader,
 				$searchStrategy,
-				$services->getSearchEngineFactory()
+				$services->getSearchEngineFactory(),
+				$services->getLinkBatchFactory()
 			);
 			$taskSuggesterFactory = new DecoratingTaskSuggesterFactory(
 				$taskSuggesterFactory,
@@ -257,7 +258,6 @@ return [
 					  'class' => CacheDecorator::class,
 					  'args' => [
 						  JobQueueGroup::singleton(),
-						  $growthServices->getTemplateFilter(),
 						  $services->getMainWANObjectCache()
 					  ],
 				  ] ]
@@ -274,16 +274,6 @@ return [
 		return new TaskTypeHandlerRegistry(
 			$services->getObjectFactory(),
 			$extensionConfig->get( 'GENewcomerTasksTaskTypeHandlers' )
-		);
-	},
-
-	'GrowthExperimentsTemplateFilter' => function (
-		MediaWikiServices $services
-	): TemplateFilter {
-		return new TemplateFilter(
-			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
-			$services->getTitleFactory(),
-			$services->getLinkBatchFactory()
 		);
 	},
 

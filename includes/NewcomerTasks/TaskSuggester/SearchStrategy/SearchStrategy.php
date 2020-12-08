@@ -33,9 +33,12 @@ class SearchStrategy {
 	 * @param Topic[] $topics Topics to limit search results to
 	 * @param LinkTarget[] $templateBlacklist List of templates which disqualify a page from
 	 *   being recommendable.
+	 * @param array|null $pageIds List of PageIds search results should be restricted to.
 	 * @return SearchQuery[] Array of queries, indexed by query ID.
 	 */
-	public function getQueries( array $taskTypes, array $topics, array $templateBlacklist ) {
+	public function getQueries(
+		array $taskTypes, array $topics, array $templateBlacklist, array $pageIds = null
+	) {
 		$this->validateParams( $taskTypes, $topics );
 		$queries = [];
 		// FIXME Ideally we should do a single search for all topics, but currently this
@@ -55,7 +58,9 @@ class SearchStrategy {
 				$deletionTerm = $templateBlacklist ?
 					'-' . $this->getTemplateTerm( $templateBlacklist ) :
 					null;
-				$queryString = implode( ' ', array_filter( [ $typeTerm, $topicTerm, $deletionTerm ] ) );
+				$pageIdTerm = $pageIds ? $this->getPageIdTerm( $pageIds ) : null;
+				$queryString = implode( ' ', array_filter( [ $typeTerm, $topicTerm,
+					$deletionTerm, $pageIdTerm ] ) );
 
 				$queryId = $taskType->getId() . ':' . ( $topic ? $topic->getId() : '-' );
 				$query = new SearchQuery( $queryId, $queryString, $taskType, $topic );
@@ -87,6 +92,14 @@ class SearchStrategy {
 	 */
 	protected function getTemplateTerm( array $templates ) {
 		return 'hastemplate:' . $this->escapeSearchTitleList( $templates );
+	}
+
+	/**
+	 * @param array $pageIds
+	 * @return string
+	 */
+	private function getPageIdTerm( array $pageIds ) {
+		return 'pageid:' . implode( '|', $pageIds );
 	}
 
 	/**

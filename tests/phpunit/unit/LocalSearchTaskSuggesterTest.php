@@ -9,6 +9,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use ISearchResultSet;
+use MediaWiki\Cache\LinkBatchFactory;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use SearchEngine;
@@ -42,8 +43,9 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$searchEngineFactory = $this->getMockSearchEngineFactory( $searchResults, $searchTerm,
 			$limit, $offset );
 		$searchStrategy = $this->getMockSearchStrategy();
+		$linkBatchFactory = $this->getLinkBatchFactory();
 		$suggester = new LocalSearchTaskSuggester( $taskTypeHandlerRegistry, $searchEngineFactory,
-			$searchStrategy, [], [], [] );
+			$searchStrategy, $linkBatchFactory, [], [], [] );
 		$wrappedSuggester = TestingAccessWrapper::newFromObject( $suggester );
 
 		$taskType = new TaskType( 'fake; wont be used', TaskType::DIFFICULTY_EASY );
@@ -168,6 +170,13 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 */
 	private function getMockSearchStrategy() {
 		return $this->createNoOpMock( SearchStrategy::class );
+	}
+
+	/**
+	 * @return LinkBatchFactory|MockObject
+	 */
+	private function getLinkBatchFactory() {
+		return $this->createNoOpMock( LinkBatchFactory::class );
 	}
 
 }

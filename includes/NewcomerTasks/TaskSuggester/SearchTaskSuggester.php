@@ -12,6 +12,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use ISearchResultSet;
+use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentity;
 use MultipleIterator;
@@ -37,21 +38,25 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	/** @var TaskTypeHandlerRegistry */
 	private $taskTypeHandlerRegistry;
 
+	/** @var SearchStrategy */
+	protected $searchStrategy;
+
+	/** @var LinkBatchFactory */
+	private $linkBatchFactory;
+
 	/** @var TaskType[] id => TaskType */
 	protected $taskTypes = [];
-
-	/** @var LinkTarget[] List of templates which disqualify a page from being recommendable. */
-	protected $templateBlacklist;
 
 	/** @var Topic[] id => Topic */
 	protected $topics = [];
 
-	/** @var SearchStrategy */
-	protected $searchStrategy;
+	/** @var LinkTarget[] List of templates which disqualify a page from being recommendable. */
+	protected $templateBlacklist;
 
 	/**
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param SearchStrategy $searchStrategy
+	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param TaskType[] $taskTypes
 	 * @param Topic[] $topics
 	 * @param LinkTarget[] $templateBlacklist
@@ -59,12 +64,14 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		SearchStrategy $searchStrategy,
+		LinkBatchFactory $linkBatchFactory,
 		array $taskTypes,
 		array $topics,
 		array $templateBlacklist
 	) {
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->searchStrategy = $searchStrategy;
+		$this->linkBatchFactory = $linkBatchFactory;
 		foreach ( $taskTypes as $taskType ) {
 			$this->taskTypes[$taskType->getId()] = $taskType;
 		}
@@ -77,6 +84,56 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 
 	/** @inheritDoc */
 	public function suggest(
+		UserIdentity $user,
+		array $taskTypeFilter = [],
+		array $topicFilter = [],
+		?int $limit = null,
+		?int $offset = null,
+		array $options = []
+	) {
+		return $this->doSuggest( null, $user, $taskTypeFilter, $topicFilter, $limit, $offset,
+			$options );
+	}
+
+	/** @inheritDoc */
+	public function filter( UserIdentity $user, TaskSet $taskSet ) {
+		$filters = $taskSet->getFilters();
+		$taskTypes = $filters->getTaskTypeFilters();
+		$topics = $filters->getTopicFilters();
+
+		$pageTitles = array_map( function ( Task $task ) {
+			return $task->getTitle();
+		}, iterator_to_array( $taskSet ) );
+		$linkBatch = $this->linkBatchFactory->newLinkBatch( $pageTitles );
+		$pageIds = array_values( $linkBatch->execute() );
+
+		// TODO topic filtering is slow and topic changes don't really invalidate tasks, so it
+		//   would make sense to skip the topic filter.
+		$filteredTaskSet = $this->doSuggest( $pageIds, $user, $taskTypes, $topics, $taskSet->count() );
+		if ( !$filteredTaskSet instanceof TaskSet ) {
+			return $filteredTaskSet;
+		}
+
+		$finalTaskSet = new TaskSet( iterator_to_array( $filteredTaskSet ), $taskSet->getTotalCount(),
+			$taskSet->getOffset(), $taskSet->getFilters() );
+		$finalTaskSet->setDebugData( $taskSet->getDebugData() );
+		return $finalTaskSet;
+	}
+
+	/**
+	 * See suggest() for details. The only difference is that $pageIds can be used to restrict
+	 * to a specific set of pages.
+	 * @param array|null $pageIds List of page IDs to limit suggestions to.
+	 * @param UserIdentity $user
+	 * @param array $taskTypeFilter
+	 * @param array $topicFilter
+	 * @param int|null $limit
+	 * @param int|null $offset
+	 * @param array $options Same as in suggest().
+	 * @return TaskSet|StatusValue
+	 */
+	private function doSuggest(
+		?array $pageIds,
 		UserIdentity $user,
 		array $taskTypeFilter = [],
 		array $topicFilter = [],
@@ -109,7 +166,8 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			$taskTypes[] = $taskType;
 		}
 
-		$queries = $this->searchStrategy->getQueries( $taskTypes, $topics, $this->templateBlacklist );
+		$queries = $this->searchStrategy->getQueries( $taskTypes, $topics,
+			$this->templateBlacklist, $pageIds );
 		foreach ( $queries as $query ) {
 			$matches = $this->search( $query, $limit, $offset, $debug );
 			if ( $matches instanceof StatusValue ) {

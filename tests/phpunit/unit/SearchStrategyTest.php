@@ -47,7 +47,7 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		$this->assertTopicsInQueries( $morelikeQueries, [ 'art', 'science' ] );
 		$this->assertTaskTypeInQueries( $morelikeQueries, [ 'copyedit' ] );
 
-		$this->assertTemplatesInQueries( $morelikeQueries, [
+		$this->assertQueryStrings( $morelikeQueries, [
 			'hastemplate:"Copyedit" morelikethis:"Picasso|Watercolor"',
 			'hastemplate:"Copyedit" morelikethis:"Einstein|Physics"' ] );
 
@@ -55,9 +55,18 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		$this->assertCount( 2, $oresQueries );
 		$this->assertTaskTypeInQueries( $oresQueries, [ 'copyedit' ] );
 		$this->assertTopicsInQueries( $oresQueries, [ 'art', 'science' ] );
-		$this->assertTemplatesInQueries( $oresQueries, [
+		$this->assertQueryStrings( $oresQueries, [
 			'hastemplate:"Copyedit" articletopic:painting|drawing',
 			'hastemplate:"Copyedit" articletopic:physics|biology'
+		] );
+
+		$restrictedQueries = $searchStrategy->getQueries( [ $taskType ],
+			[ $oresTopic1, $oresTopic2 ], [], [ 1, 2, 3 ] );
+		$this->assertCount( 2, $restrictedQueries );
+		$this->assertTopicsInQueries( $restrictedQueries, [ 'art', 'science' ] );
+		$this->assertQueryStrings( $restrictedQueries, [
+			'hastemplate:"Copyedit" articletopic:painting|drawing pageid:1|2|3',
+			'hastemplate:"Copyedit" articletopic:physics|biology pageid:1|2|3'
 		] );
 	}
 
@@ -87,9 +96,15 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		}
 	}
 
-	private function assertTemplatesInQueries( $queries, $templates ) {
+	/**
+	 * Assert that the set of $strings is the same as the set of $queries.
+	 * The sets must have exactly two elements.
+	 * @param array $queries
+	 * @param array $strings
+	 */
+	private function assertQueryStrings( $queries, $strings ) {
 		list( $query1, $query2 ) = array_values( $queries );
-		foreach ( $templates as $template ) {
+		foreach ( $strings as $template ) {
 			if ( $query1->getQueryString() === $template ) {
 				$this->assertSame( $query1->getQueryString(), $template );
 			} elseif ( $query2->getQueryString() === $template ) {

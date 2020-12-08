@@ -5,6 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use MediaWiki\Cache\LinkBatchFactory;
 use SearchEngineFactory;
 use StatusValue;
 
@@ -23,17 +24,20 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param SearchStrategy $searchStrategy
 	 * @param SearchEngineFactory $searchEngineFactory
+	 * @param LinkBatchFactory $linkBatchFactory
 	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		ConfigurationLoader $configurationLoader,
 		SearchStrategy $searchStrategy,
-		SearchEngineFactory $searchEngineFactory
+		SearchEngineFactory $searchEngineFactory,
+		LinkBatchFactory $linkBatchFactory
 	) {
 		parent::__construct(
 			$taskTypeHandlerRegistry,
 			$configurationLoader,
-			$searchStrategy
+			$searchStrategy,
+			$linkBatchFactory
 		);
 		$this->searchEngineFactory = $searchEngineFactory;
 	}
@@ -58,6 +62,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$this->taskTypeHandlerRegistry,
 			$this->searchEngineFactory,
 			$this->searchStrategy,
+			$this->linkBatchFactory,
 			$taskTypes,
 			$topics,
 			$templateBlacklist
