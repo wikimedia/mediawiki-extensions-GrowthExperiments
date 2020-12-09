@@ -83,6 +83,8 @@ class TipLoader {
 			case 'copyedit':
 				return new CopyeditTipTree( $extraData );
 			case 'links':
+			// TODO give link-recommendation its own tiptree, if needed
+			case 'link-recommendation':
 				return new LinkTipTree( $extraData );
 			case 'update':
 				return new UpdateTipTree( $extraData );

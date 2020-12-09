@@ -993,7 +993,9 @@
 				tabs = tabIndexLayout.getTabs();
 				currentTab = tabs.findItemFromData( tabIndexLayout.getCurrentTabPanelName() );
 				nextTab = tabs.getItems()[ ( tabs.getItemIndex( currentTab ) + 1 ) % tabs.getItemCount() ];
-				tabIndexLayout.setTabPanel( nextTab.data );
+				if ( nextTab ) {
+					tabIndexLayout.setTabPanel( nextTab.data );
+				}
 			}, 5000 );
 		} else if ( !enable && this.guidanceAutoAdvanceTimer ) {
 			window.clearInterval( this.guidanceAutoAdvanceTimer );
