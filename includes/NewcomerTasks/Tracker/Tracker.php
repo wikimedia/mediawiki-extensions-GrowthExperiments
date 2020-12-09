@@ -9,7 +9,7 @@ use TitleFactory;
 
 class Tracker {
 
-	/** @var StorageInterface */
+	/** @var CacheStorage */
 	private $storage;
 
 	/** @var TitleFactory */
@@ -25,12 +25,12 @@ class Tracker {
 	private $clickId;
 
 	/**
-	 * @param StorageInterface $storage
+	 * @param CacheStorage $storage
 	 * @param TitleFactory $titleFactory
 	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
-		StorageInterface $storage,
+		CacheStorage $storage,
 		TitleFactory $titleFactory,
 		LoggerInterface $logger
 	) {
