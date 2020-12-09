@@ -5,6 +5,7 @@ namespace GrowthExperiments\Homepage;
 use ExtensionRegistry;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageModule;
+use GrowthExperiments\HomepageModules\Banner;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\Mentorship;
@@ -72,6 +73,14 @@ class HomepageModuleRegistry {
 	 */
 	private static function getWiring() {
 		return [
+			'banner' => function (
+				MediaWikiServices $services,
+				IContextSource $context
+			) {
+				$growthServices = GrowthExperimentsServices::wrap( $services );
+				return new Banner( $context, $growthServices->getExperimentUserManager() );
+			},
+
 			'start' => function (
 				MediaWikiServices $services,
 				IContextSource $context

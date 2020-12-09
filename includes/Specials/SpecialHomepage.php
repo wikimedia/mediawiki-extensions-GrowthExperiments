@@ -217,6 +217,7 @@ class SpecialHomepage extends SpecialPage {
 	private function getModules( bool $isMobile, $par = '' ) {
 		$variantCD = $this->experimentUserManager->isUserInVariant( $this->getUser(), [ 'C', 'D' ] );
 		$moduleConfig = array_filter( [
+			'banner' => true,
 			'start' => !$variantCD,
 			'startemail' => $variantCD,
 			// Only load start-startediting code for unactivated SE users in variant D
@@ -244,7 +245,7 @@ class SpecialHomepage extends SpecialPage {
 		if ( $this->experimentUserManager->isUserInVariant( $this->getUser(), [ 'C', 'D' ] ) ) {
 			return [
 				'main' => [
-					'primary' => [ 'startemail' ],
+					'primary' => [ 'banner', 'startemail' ],
 					'secondary' => [ 'start-startediting', 'suggested-edits' ]
 				],
 				'sidebar' => [
@@ -260,7 +261,7 @@ class SpecialHomepage extends SpecialPage {
 		) {
 			return [
 				'main' => [
-					'primary' => [ 'start', 'suggested-edits', 'impact' ] ],
+					'primary' => [ 'banner', 'start', 'suggested-edits', 'impact' ] ],
 				'sidebar' => [
 					'primary' => [ 'mentorship', 'help' ]
 				],
@@ -268,7 +269,7 @@ class SpecialHomepage extends SpecialPage {
 		} else {
 			return [
 				'main' => [
-					'primary' => [ 'start', 'suggested-edits', 'impact', 'mentorship' ]
+					'primary' => [ 'banner', 'start', 'suggested-edits', 'impact', 'mentorship' ]
 				],
 				'sidebar' => [
 					'primary' => [ 'help' ]

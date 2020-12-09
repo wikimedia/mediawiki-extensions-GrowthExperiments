@@ -1,0 +1,13 @@
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
+
+.growthexperiments-homepage-module-banner {
+	width: 100%;
+	background-color: @wmui-color-yellow90;
+	border-color: @wmui-color-yellow50;
+
+	// Override strong padding-top: 0 rule for mobile from Homepage.less
+	// FIXME this should probably be handled centrally for modules with no header
+	body.mw-special-Homepage.growthexperiments-homepage-mobile-summary .growthexperiments-homepage-container &.growthexperiments-homepage-module {
+		padding-top: 1em;
+	}
+}
