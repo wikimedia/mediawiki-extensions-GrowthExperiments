@@ -19,6 +19,7 @@ use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Tracker\Tracker;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use GrowthExperiments\Specials\SpecialClaimMentee;
@@ -104,6 +105,8 @@ class HomepageHooks implements
 	private $experimentUserManager;
 	/** @var HomepageModuleRegistry */
 	private $moduleRegistry;
+	/** @var TaskTypeHandlerRegistry */
+	private $taskTypeHandlerRegistry;
 	/** @var TaskSuggesterFactory */
 	private $taskSuggesterFactory;
 	/** @var NewcomerTasksUserOptionsLookup */
@@ -120,6 +123,7 @@ class HomepageHooks implements
 	 * @param TrackerFactory $trackerFactory
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param HomepageModuleRegistry $moduleRegistry
+	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 */
@@ -133,6 +137,7 @@ class HomepageHooks implements
 		TrackerFactory $trackerFactory,
 		ExperimentUserManager $experimentUserManager,
 		HomepageModuleRegistry $moduleRegistry,
+		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	) {
@@ -145,6 +150,7 @@ class HomepageHooks implements
 		$this->trackerFactory = $trackerFactory;
 		$this->experimentUserManager = $experimentUserManager;
 		$this->moduleRegistry = $moduleRegistry;
+		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 	}
@@ -623,8 +629,7 @@ class HomepageHooks implements
 			$tags[] = Mentorship::MENTORSHIP_HELPPANEL_QUESTION_TAG;
 		}
 		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
-			$tags[] = SuggestedEdits::SUGGESTED_EDIT_TAG;
-			$tags[] = SuggestedEdits::ADD_LINK_TAG;
+			array_push( $tags,  ...$this->taskTypeHandlerRegistry->getChangeTags() );
 		}
 	}
 
@@ -645,8 +650,7 @@ class HomepageHooks implements
 			$tags[] = Mentorship::MENTORSHIP_HELPPANEL_QUESTION_TAG;
 		}
 		if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
-			$tags[] = SuggestedEdits::SUGGESTED_EDIT_TAG;
-			$tags[] = SuggestedEdits::ADD_LINK_TAG;
+			array_push( $tags,  ...$this->taskTypeHandlerRegistry->getChangeTags() );
 		}
 	}
 
@@ -665,6 +669,7 @@ class HomepageHooks implements
 			/** @var Tracker $tracker */
 			$tracker = $this->trackerFactory->getTracker( $rc->getPerformer() );
 			if ( in_array( $rc->getTitle()->getArticleID(), $tracker->getTrackedPageIds() ) ) {
+				// FIXME needs task type
 				$rc->addTags( SuggestedEdits::SUGGESTED_EDIT_TAG );
 			}
 		}
@@ -875,9 +880,13 @@ class HomepageHooks implements
 	 *   - on error: [ '_error' => error message in wikitext format ]
 	 */
 	public static function getTaskTypesJson( ResourceLoaderContext $context ) {
-		$configurationLoader = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
-			->getConfigurationLoader();
-		$configurationLoader->setMessageLocalizer( $context );
+		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+
+		// Hack - ResourceLoaderContext is not exposed to services initialization
+		$configurationValidator = $growthServices->getConfigurationValidator();
+		$configurationValidator->setMessageLocalizer( $context );
+
+		$configurationLoader = $growthServices->getConfigurationLoader();
 		$taskTypes = $configurationLoader->loadTaskTypes();
 		if ( $taskTypes instanceof StatusValue ) {
 			$status = Status::wrap( $taskTypes );
@@ -913,9 +922,13 @@ class HomepageHooks implements
 	 *   - on error: [ '_error' => error message in wikitext format ]
 	 */
 	public static function getTopicsJson( ResourceLoaderContext $context ) {
-		$configurationLoader = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
-			->getConfigurationLoader();
-		$configurationLoader->setMessageLocalizer( $context );
+		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+
+		// Hack - ResourceLoaderContext is not exposed to services initialization
+		$configurationValidator = $growthServices->getConfigurationValidator();
+		$configurationValidator->setMessageLocalizer( $context );
+
+		$configurationLoader = $growthServices->getConfigurationLoader();
 		$topics = $configurationLoader->loadTopics();
 		if ( $topics instanceof StatusValue ) {
 			$status = Status::wrap( $topics );

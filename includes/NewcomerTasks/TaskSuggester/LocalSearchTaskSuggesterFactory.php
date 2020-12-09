@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use SearchEngineFactory;
 use StatusValue;
 
@@ -18,16 +19,22 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	private $searchEngineFactory;
 
 	/**
+	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param SearchStrategy $searchStrategy
 	 * @param SearchEngineFactory $searchEngineFactory
 	 */
 	public function __construct(
+		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		ConfigurationLoader $configurationLoader,
 		SearchStrategy $searchStrategy,
 		SearchEngineFactory $searchEngineFactory
 	) {
-		parent::__construct( $configurationLoader, $searchStrategy );
+		parent::__construct(
+			$taskTypeHandlerRegistry,
+			$configurationLoader,
+			$searchStrategy
+		);
 		$this->searchEngineFactory = $searchEngineFactory;
 	}
 
@@ -48,6 +55,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			return $this->createError( $templateBlacklist );
 		}
 		$suggester = new LocalSearchTaskSuggester(
+			$this->taskTypeHandlerRegistry,
 			$this->searchEngineFactory,
 			$this->searchStrategy,
 			$taskTypes,

@@ -6,6 +6,7 @@ use ApiRawMessage;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use ISearchResultSet;
 use MediaWikiUnitTestCase;
@@ -37,10 +38,12 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	public function testSearch(
 		$searchTerm, $topic, $limit, $offset, $searchResults, $expectedResult
 	) {
+		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
 		$searchEngineFactory = $this->getMockSearchEngineFactory( $searchResults, $searchTerm,
 			$limit, $offset );
 		$searchStrategy = $this->getMockSearchStrategy();
-		$suggester = new LocalSearchTaskSuggester( $searchEngineFactory, $searchStrategy, [], [], [] );
+		$suggester = new LocalSearchTaskSuggester( $taskTypeHandlerRegistry, $searchEngineFactory,
+			$searchStrategy, [], [], [] );
 		$wrappedSuggester = TestingAccessWrapper::newFromObject( $suggester );
 
 		$taskType = new TaskType( 'fake; wont be used', TaskType::DIFFICULTY_EASY );
@@ -106,6 +109,13 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'expected result' => new ApiRawMessage( '', 'grothexperiments-no-fulltext-search' ),
 			],
 		];
+	}
+
+	/**
+	 * @return TaskTypeHandlerRegistry|MockObject
+	 */
+	private function getMockTaskTypeHandlerRegistry() {
+		return $this->createMock( TaskTypeHandlerRegistry::class );
 	}
 
 	/**

@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
-use Collation;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
@@ -13,7 +13,6 @@ use LogicException;
 use MediaWiki\Linker\LinkTarget;
 // phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
 use Message;
-use MessageLocalizer;
 use StatusValue;
 use TitleFactory;
 use TitleValue;
@@ -40,14 +39,14 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	/** @var TitleFactory */
 	private $titleFactory;
 
-	/** @var MessageLocalizer */
-	private $messageLocalizer;
-
 	/** @var PageLoader */
 	private $pageLoader;
 
-	/** @var Collation */
-	private $collation;
+	/** @var TaskTypeHandlerRegistry */
+	private $taskTypeHandlerRegistry;
+
+	/** @var ConfigurationValidator */
+	private $configurationValidator;
 
 	/** @var LinkTarget */
 	private $taskConfigurationPage;
@@ -71,9 +70,9 @@ class PageConfigurationLoader implements ConfigurationLoader {
 
 	/**
 	 * @param TitleFactory $titleFactory
-	 * @param MessageLocalizer $messageLocalizer
 	 * @param PageLoader $pageLoader
-	 * @param Collation $collation
+	 * @param ConfigurationValidator $configurationValidator
+	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param string|LinkTarget $taskConfigurationPage Wiki page to load task configuration from
 	 *   (local or interwiki).
 	 * @param string|LinkTarget|null $topicConfigurationPage Wiki page to load task configuration from
@@ -82,18 +81,17 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
-		MessageLocalizer $messageLocalizer,
 		PageLoader $pageLoader,
-		Collation $collation,
+		ConfigurationValidator $configurationValidator,
+		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		$taskConfigurationPage,
 		$topicConfigurationPage,
 		string $topicType
 	) {
-		// FIXME PageConfigurationLoader only needs a TitleParser, not a TitleFactory
 		$this->titleFactory = $titleFactory;
-		$this->messageLocalizer = $messageLocalizer;
 		$this->pageLoader = $pageLoader;
-		$this->collation = $collation;
+		$this->configurationValidator = $configurationValidator;
+		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->taskConfigurationPage = $taskConfigurationPage;
 		$this->topicConfigurationPage = $topicConfigurationPage;
 		$this->topicType = $topicType;
@@ -101,11 +99,6 @@ class PageConfigurationLoader implements ConfigurationLoader {
 		if ( !in_array( $this->topicType, self::VALID_TOPIC_TYPES, true ) ) {
 			throw new InvalidArgumentException( 'Invalid topic type ' . $this->topicType );
 		}
-	}
-
-	/** @inheritDoc */
-	public function setMessageLocalizer( MessageLocalizer $messageLocalizer ): void {
-		$this->messageLocalizer = $messageLocalizer;
 	}
 
 	/** @inheritDoc */
@@ -207,41 +200,21 @@ class PageConfigurationLoader implements ConfigurationLoader {
 				'growthexperiments-homepage-suggestededits-config-wrongstructure' );
 		}
 		foreach ( $config as $taskTypeId => $taskTypeData ) {
-			$status->merge( $this->validateIdentifier( $taskTypeId ) );
-			$requiredFields = [ 'group', 'templates' ];
-			foreach ( $requiredFields as $field ) {
-				if ( !isset( $taskTypeData[$field] ) ) {
-					$status->fatal( 'growthexperiments-homepage-suggestededits-config-missingfield',
-						$field, $taskTypeId );
-				}
+			// Fall back to legacy handler if not specified.
+			$handlerId = $taskTypeData['type'] ?? TemplateBasedTaskTypeHandler::ID;
+			if ( !$this->taskTypeHandlerRegistry->has( $handlerId ) ) {
+				$status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidhandlerid',
+					$taskTypeId, $handlerId, Message::listParam(
+						$this->taskTypeHandlerRegistry->getKnownIds(), 'comma' ) );
+				continue;
 			}
-			if ( isset( $taskTypeData['group'] ) &&
-				!in_array( $taskTypeData['group'], TaskType::DIFFICULTY_CLASSES, true )
-			) {
-				$status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidgroup',
-					$taskTypeData['group'], $taskTypeId );
-			}
+			$taskTypeHandler = $this->taskTypeHandlerRegistry->get( $handlerId );
+			$status->merge( $taskTypeHandler->validateTaskTypeConfiguration( $taskTypeId, $taskTypeData ) );
 
 			if ( $status->isGood() ) {
-				'@phan-var array{group:string,templates:string[]} $taskTypeData';
-				$templates = [];
-				foreach ( $taskTypeData['templates'] as $template ) {
-					$title = $this->titleFactory->newFromText( $template, NS_TEMPLATE );
-					if ( $title ) {
-						$templates[] = $title->getTitleValue();
-					} else {
-						$status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidtemplatetitle',
-							$template, $taskTypeId );
-					}
-				}
-				$taskType = new TemplateBasedTaskType(
-					$taskTypeId,
-					$taskTypeData['group'],
-					[ 'learnMoreLink' => $taskTypeData['learnmore'] ?? null ],
-					$templates
-				);
-				$status->merge( $this->validateTaskMessages( $taskType ) );
+				$taskType = $taskTypeHandler->createTaskType( $taskTypeId, $taskTypeData );
 				$taskTypes[] = $taskType;
+				$status->merge( $taskTypeHandler->validateTaskTypeObject( $taskType ) );
 			}
 		}
 		return $status->isGood() ? $taskTypes : $status;
@@ -271,7 +244,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 		}
 
 		foreach ( $config as $topicId => $topicConfiguration ) {
-			$status->merge( $this->validateIdentifier( $topicId ) );
+			$status->merge( $this->configurationValidator->validateIdentifier( $topicId ) );
 			$requiredFields = [
 				self::CONFIGURATION_TYPE_ORES => [ 'group', 'oresTopics' ],
 				self::CONFIGURATION_TYPE_MORELIKE => [ 'label', 'titles' ],
@@ -295,7 +268,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 					$oresTopics[] = (string)$oresTopic;
 				}
 				$topic = new OresBasedTopic( $topicId, $topicConfiguration['group'], $oresTopics );
-				$status->merge( $this->validateTopicMessages( $topic ) );
+				$status->merge( $this->configurationValidator->validateTopicMessages( $topic ) );
 			} elseif ( $this->topicType === self::CONFIGURATION_TYPE_MORELIKE ) {
 				'@phan-var array{label:string,titles:string[]} $topicConfiguration';
 				$linkTargets = [];
@@ -311,7 +284,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 		}
 
 		if ( $this->topicType === self::CONFIGURATION_TYPE_ORES && $status->isGood() ) {
-			$this->sortTopics( $topics, $groups );
+			$this->configurationValidator->sortTopics( $topics, $groups );
 		}
 
 		return $status->isGood() ? $topics : $status;
@@ -325,82 +298,6 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	private function parseTemplateBlacklistFromConfig( array $config ) {
 		// TODO: add templates to the wiki page and implement parsing them here.
 		return [];
-	}
-
-	/**
-	 * Validate a task or topic ID
-	 * @param string $id
-	 * @return StatusValue
-	 */
-	private function validateIdentifier( $id ) {
-		return preg_match( '/^[a-z\d\-]+$/', $id )
-			? StatusValue::newGood()
-			: StatusValue::newFatal( 'growthexperiments-homepage-suggestededits-config-invalidid', $id );
-	}
-
-	/**
-	 * Ensure that all messages used by the task type exist.
-	 * @param TemplateBasedTaskType $taskType
-	 * @return StatusValue
-	 */
-	private function validateTaskMessages( TemplateBasedTaskType $taskType ) {
-		return $this->validateMessages( [
-			$taskType->getName( $this->messageLocalizer ),
-			$taskType->getDescription( $this->messageLocalizer ),
-			$taskType->getShortDescription( $this->messageLocalizer ),
-			$taskType->getTimeEstimate( $this->messageLocalizer )
-		], $taskType->getId() );
-	}
-
-	/**
-	 * Ensure that all messages used by the topic exist.
-	 * @param Topic $topic
-	 * @return StatusValue
-	 */
-	private function validateTopicMessages( Topic $topic ) {
-		$messages = [ $topic->getName( $this->messageLocalizer ) ];
-		if ( $topic->getGroupId() ) {
-			$messages[] = $topic->getGroupName( $this->messageLocalizer );
-		}
-		return $this->validateMessages( $messages, $topic->getId() );
-	}
-
-	/**
-	 * @param Message[] $messages
-	 * @param string $field Field name where the missing message was defined (e.g. ID of the task).
-	 * @return StatusValue
-	 */
-	private function validateMessages( array $messages, string $field ) {
-		$status = StatusValue::newGood();
-		foreach ( $messages as $msg ) {
-			/** @var $msg Message */
-			if ( !$msg->exists() ) {
-				$status->fatal( 'growthexperiments-homepage-suggestededits-config-missingmessage',
-					$msg->getKey(), $field );
-			}
-		}
-		return $status;
-	}
-
-	/**
-	 * Sorts topics in-place, based on the group configuration and alphabetically within that.
-	 * @param Topic[] &$topics
-	 * @param string[] $groups
-	 */
-	private function sortTopics( array &$topics, $groups ) {
-		usort( $topics, function ( Topic $left, Topic $right ) use ( $groups ) {
-			$leftGroup = $left->getGroupId();
-			$rightGroup = $right->getGroupId();
-			if ( $leftGroup !== $rightGroup ) {
-				return array_search( $leftGroup, $groups, true ) - array_search( $rightGroup, $groups, true );
-			}
-
-			$leftSortKey = $this->collation->getSortKey(
-				$left->getName( $this->messageLocalizer )->text() );
-			$rightSortKey = $this->collation->getSortKey(
-				$right->getName( $this->messageLocalizer )->text() );
-			return strcmp( $leftSortKey, $rightSortKey );
-		} );
 	}
 
 }

@@ -2,15 +2,13 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
-use CirrusSearch\Search\CirrusSearchResult;
-use GrowthExperiments\NewcomerTasks\FauxSearchResultWithScore;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use ISearchResultSet;
@@ -36,6 +34,9 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	// FIXME: Export this constant to client-side.
 	public const DEFAULT_LIMIT = 250;
 
+	/** @var TaskTypeHandlerRegistry */
+	private $taskTypeHandlerRegistry;
+
 	/** @var TaskType[] id => TaskType */
 	protected $taskTypes = [];
 
@@ -49,17 +50,20 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	protected $searchStrategy;
 
 	/**
+	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param SearchStrategy $searchStrategy
 	 * @param TaskType[] $taskTypes
 	 * @param Topic[] $topics
 	 * @param LinkTarget[] $templateBlacklist
 	 */
 	public function __construct(
+		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		SearchStrategy $searchStrategy,
 		array $taskTypes,
 		array $topics,
 		array $templateBlacklist
 	) {
+		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->searchStrategy = $searchStrategy;
 		foreach ( $taskTypes as $taskType ) {
 			$this->taskTypes[$taskType->getId()] = $taskType;
@@ -101,11 +105,6 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			if ( !$taskType ) {
 				return StatusValue::newFatal( wfMessage( 'growthexperiments-newcomertasks-invalid-tasktype',
 					$taskTypeId ) );
-			} elseif ( !( $taskType instanceof TemplateBasedTaskType ) ) {
-				$this->logger->notice( 'Invalid task type: {taskType}', [
-					'taskType' => get_class( $taskType ),
-				] );
-				continue;
 			}
 			$taskTypes[] = $taskType;
 		}
@@ -136,20 +135,10 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			foreach ( array_filter( $matchSlice ) as $queryId => $match ) {
 				// TODO: Filter out pages that are protected.
 				/** @var $match SearchResult */
-				$taskType = $queries[$queryId]->getTaskType();
-				$topic = $queries[$queryId]->getTopic();
-				$task = new Task( $taskType, $match->getTitle() );
-				if ( $topic ) {
-					$score = 0;
-					// CirrusSearch is an optional dependency, prevent phan from complaining
-					// @phan-suppress-next-line PhanUndeclaredClassInstanceof
-					if ( $match instanceof CirrusSearchResult || $match instanceof FauxSearchResultWithScore ) {
-						// @phan-suppress-next-line PhanUndeclaredClassMethod
-						$score = $match->getScore();
-					}
-					$task->setTopics( [ $topic ], [ $topic->getId() => $score ] );
-				}
-				$suggestions[] = $task;
+				$query = $queries[$queryId];
+				$taskType = $query->getTaskType();
+				$suggestions[] = $this->taskTypeHandlerRegistry->getByTaskType( $taskType )
+					->createTaskFromSearchResult( $query, $match );
 				$taskCount++;
 				if ( $taskCount >= $limit ) {
 					break 2;

@@ -4,8 +4,10 @@ namespace GrowthExperiments\Rest\Handler;
 
 use ApiBase;
 use DerivativeContext;
+use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
 use MWException;
@@ -54,7 +56,10 @@ class TipsHandler extends SimpleHandler {
 		if ( $uselang ) {
 			$context->setLanguage( $uselang );
 		}
+		// FIXME the context language should be set by the API framework
 		$this->tipsAssembler->setMessageLocalizer( $context );
+		GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
+			->getConfigurationValidator()->setMessageLocalizer( $context );
 		$taskTypes = $this->configurationLoader->getTaskTypes();
 		$response = $this->getResponseFactory()->createJson(
 			$this->tipsAssembler->getTips(

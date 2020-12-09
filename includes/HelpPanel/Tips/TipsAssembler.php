@@ -44,7 +44,6 @@ class TipsAssembler {
 		MessageLocalizer $messageLocalizer
 	) :void {
 		$this->messageLocalizer = $messageLocalizer;
-		$this->configurationLoader->setMessageLocalizer( $messageLocalizer );
 		$this->tipNodeRenderer->setMessageLocalizer( $messageLocalizer );
 	}
 

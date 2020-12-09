@@ -23,6 +23,9 @@ class TaskType {
 	/** @var string Task type ID, e.g. 'copyedit'. */
 	protected $id;
 
+	/** @var string TaskTypeHandler ID. */
+	protected $handlerId;
+
 	/** @var string Task type difficulty class, one of the DIFFICULTY_* constants. */
 	protected $difficulty;
 
@@ -33,7 +36,7 @@ class TaskType {
 	 * @param string $id Task type ID, e.g. 'copyedit'.
 	 * @param string $difficulty One of the DIFFICULTY_* constants.
 	 * @param array $extraData Optional pieces of information
-	 *   - 'learnMoreLink' (string): Page title for the "learn more" link for this task type
+	 *   - 'learnMoreLink' (string): Page title for the "learn more" link for this task type.
 	 */
 	public function __construct( $id, $difficulty, array $extraData = [] ) {
 		$this->id = $id;
@@ -42,6 +45,7 @@ class TaskType {
 	}
 
 	/**
+	 * Task type ID, e.g. 'copyedit'.
 	 * @return string
 	 */
 	public function getId() {
@@ -50,12 +54,30 @@ class TaskType {
 
 	/**
 	 * @return string
+	 * @internal for use by TaskTypeHandlerRegistry only
+	 */
+	public function getHandlerId() {
+		return $this->handlerId;
+	}
+
+	/**
+	 * @param string $handlerId
+	 * @internal for use by TaskTypeHandlerRegistry only
+	 */
+	public function setHandlerId( $handlerId ) {
+		$this->handlerId = $handlerId;
+	}
+
+	/**
+	 * One of the DIFFICULTY_* constants.
+	 * @return string
 	 */
 	public function getDifficulty() {
 		return $this->difficulty;
 	}
 
 	/**
+	 * Page title for the "learn more" link for this task type.
 	 * @return string|null
 	 */
 	public function getLearnMoreLink() {

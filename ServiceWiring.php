@@ -16,6 +16,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\AddLink\ServiceLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\StaticLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageLoader;
@@ -28,6 +29,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggesterFacto
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TemplateFilter;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use MediaWiki\Config\ServiceOptions;
@@ -39,7 +41,8 @@ return [
 	'GrowthExperimentsConfigurationLoader' => function (
 		MediaWikiServices $services
 	): ConfigurationLoader {
-		$config = GrowthExperimentsServices::wrap( $services )->getConfig();
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$config = $growthServices->getConfig();
 		$cache = new CachedBagOStuff( ObjectCache::getLocalClusterInstance() );
 
 		$taskConfigTitle = $config->get( 'GENewcomerTasksConfigTitle' );
@@ -69,14 +72,23 @@ return [
 
 		$configurationLoader = new PageConfigurationLoader(
 			$services->getTitleFactory(),
-			RequestContext::getMain(),
 			$pageLoader,
-			Collation::singleton(),
+			$growthServices->getConfigurationValidator(),
+			$growthServices->getTaskTypeHandlerRegistry(),
 			$taskConfigTitle,
 			$topicConfigTitle,
 			$topicType
 		);
 		return $configurationLoader;
+	},
+
+	'GrowthExperimentsConfigurationValidator' => function (
+		MediaWikiServices $services
+	): ConfigurationValidator {
+		return new ConfigurationValidator(
+			RequestContext::getMain(),
+			Collation::singleton()
+		);
 	},
 
 	'GrowthExperimentsEditInfoService' => function ( MediaWikiServices $services ): EditInfoService {
@@ -182,16 +194,6 @@ return [
 		);
 	},
 
-	'GrowthExperimentsTemplateFilter' => function (
-		MediaWikiServices $services
-	): TemplateFilter {
-		return new TemplateFilter(
-			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
-			$services->getTitleFactory(),
-			$services->getLinkBatchFactory()
-		);
-	},
-
 	'GrowthExperimentsQuestionPosterFactory' => function (
 		MediaWikiServices $services
 	): QuestionPosterFactory {
@@ -214,12 +216,15 @@ return [
 	'GrowthExperimentsTaskSuggesterFactory' => function (
 		MediaWikiServices $services
 	): TaskSuggesterFactory {
-		$config = GrowthExperimentsServices::wrap( $services )->getConfig();
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$config = $growthServices->getConfig();
 
-		$configLoader = GrowthExperimentsServices::wrap( $services )->getConfigurationLoader();
-		$searchStrategy = new SearchStrategy();
+		$taskTypeHandlerRegistry = $growthServices->getTaskTypeHandlerRegistry();
+		$configLoader = $growthServices->getConfigurationLoader();
+		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry );
 		if ( $config->get( 'GENewcomerTasksRemoteApiUrl' ) ) {
 			$taskSuggesterFactory = new RemoteSearchTaskSuggesterFactory(
+				$taskTypeHandlerRegistry,
 				$configLoader,
 				$searchStrategy,
 				$services->getHttpRequestFactory(),
@@ -228,6 +233,7 @@ return [
 			);
 		} else {
 			$taskSuggesterFactory = new LocalSearchTaskSuggesterFactory(
+				$taskTypeHandlerRegistry,
 				$configLoader,
 				$searchStrategy,
 				$services->getSearchEngineFactory()
@@ -239,7 +245,7 @@ return [
 					  'class' => CacheDecorator::class,
 					  'args' => [
 						  JobQueueGroup::singleton(),
-						  GrowthExperimentsServices::wrap( $services )->getTemplateFilter(),
+						  $growthServices->getTemplateFilter(),
 						  $services->getMainWANObjectCache()
 					  ],
 				  ] ]
@@ -247,6 +253,26 @@ return [
 		}
 		$taskSuggesterFactory->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $taskSuggesterFactory;
+	},
+
+	'GrowthExperimentsTaskTypeHandlerRegistry' => function (
+		MediaWikiServices $services
+	): TaskTypeHandlerRegistry {
+		$extensionConfig = GrowthExperimentsServices::wrap( $services )->getConfig();
+		return new TaskTypeHandlerRegistry(
+			$services->getObjectFactory(),
+			$extensionConfig->get( 'GENewcomerTasksTaskTypeHandlers' )
+		);
+	},
+
+	'GrowthExperimentsTemplateFilter' => function (
+		MediaWikiServices $services
+	): TemplateFilter {
+		return new TemplateFilter(
+			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
+			$services->getTitleFactory(),
+			$services->getLinkBatchFactory()
+		);
 	},
 
 	'GrowthExperimentsTipsAssembler' => function (
