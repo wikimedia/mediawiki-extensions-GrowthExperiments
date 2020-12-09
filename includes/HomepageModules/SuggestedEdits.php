@@ -13,14 +13,12 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
-use GrowthExperiments\NewcomerTasks\Task\TemplateBasedTask;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use Html;
 use IContextSource;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
-use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use Message;
@@ -270,19 +268,12 @@ class SuggestedEdits extends BaseModule {
 				$data['task-preview'] = [ 'noresults' => true ];
 			} else {
 				$task = $tasks[0];
-				$templates = null;
-				if ( $task instanceof TemplateBasedTask ) {
-					$templates = array_map( function ( LinkTarget $template ) {
-						return $template->getText();
-					}, $task->getTemplates() );
-				}
 				$title = $this->titleFactory->newFromLinkTarget( $task->getTitle() );
 				$data['task-preview'] = [
 					'tasktype' => $task->getTaskType()->getId(),
 					'difficulty' => $task->getTaskType()->getDifficulty(),
 					'title' => $title->getPrefixedText(),
 					'topics' => $task->getTopicScores(),
-					'maintenanceTemplates' => $templates,
 					// The front-end code for constructing SuggestedEditCardWidget checks
 					// to see if pageId is set in order to construct a tracking URL.
 					'pageId' => $title->getArticleID()

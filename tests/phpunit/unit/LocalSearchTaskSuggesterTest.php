@@ -6,7 +6,6 @@ use ApiRawMessage;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use ISearchResultSet;
 use MediaWikiUnitTestCase;
@@ -40,10 +39,8 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	) {
 		$searchEngineFactory = $this->getMockSearchEngineFactory( $searchResults, $searchTerm,
 			$limit, $offset );
-		$templateProvider = $this->getMockTemplateProvider();
 		$searchStrategy = $this->getMockSearchStrategy();
-		$suggester = new LocalSearchTaskSuggester( $searchEngineFactory, $templateProvider,
-			$searchStrategy, [], [], [] );
+		$suggester = new LocalSearchTaskSuggester( $searchEngineFactory, $searchStrategy, [], [], [] );
 		$wrappedSuggester = TestingAccessWrapper::newFromObject( $suggester );
 
 		$taskType = new TaskType( 'fake; wont be used', TaskType::DIFFICULTY_EASY );
@@ -154,17 +151,6 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 			->with( $expectedSearchText )
 			->willReturn( $searchResults );
 		return $factory;
-	}
-
-	/**
-	 * @return TemplateProvider|MockObject
-	 */
-	private function getMockTemplateProvider() {
-		$templateProvider = $this->getMockBuilder( TemplateProvider::class )
-			->disableOriginalConstructor()
-			->setMethods( [ 'fill' ] )
-			->getMock();
-		return $templateProvider;
 	}
 
 	/**

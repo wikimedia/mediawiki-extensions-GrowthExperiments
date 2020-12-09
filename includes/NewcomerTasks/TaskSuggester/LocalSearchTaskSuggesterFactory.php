@@ -4,7 +4,6 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
-use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use SearchEngineFactory;
 use StatusValue;
 
@@ -21,16 +20,14 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	/**
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param SearchStrategy $searchStrategy
-	 * @param TemplateProvider $templateProvider
 	 * @param SearchEngineFactory $searchEngineFactory
 	 */
 	public function __construct(
 		ConfigurationLoader $configurationLoader,
 		SearchStrategy $searchStrategy,
-		TemplateProvider $templateProvider,
 		SearchEngineFactory $searchEngineFactory
 	) {
-		parent::__construct( $configurationLoader, $searchStrategy, $templateProvider );
+		parent::__construct( $configurationLoader, $searchStrategy );
 		$this->searchEngineFactory = $searchEngineFactory;
 	}
 
@@ -52,7 +49,6 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		}
 		$suggester = new LocalSearchTaskSuggester(
 			$this->searchEngineFactory,
-			$this->templateProvider,
 			$this->searchStrategy,
 			$taskTypes,
 			$topics,

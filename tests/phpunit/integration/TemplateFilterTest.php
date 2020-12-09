@@ -5,7 +5,6 @@ namespace GrowthExperiments\Tests;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
-use GrowthExperiments\NewcomerTasks\Task\TemplateBasedTask;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\TemplateFilter;
@@ -43,12 +42,9 @@ class TemplateFilterTest extends \MediaWikiIntegrationTestCase {
 		$copyedit2 = $this->insertPage( 'Copyedit2', '{Kdy?}' );
 		$links1 = $this->insertPage( 'Links1', '{Wikifikovat}' );
 		$linksNontemplate = $this->insertPage( 'LinksNonTemplate', 'LinksNonTemplate' );
-		$task1 = new TemplateBasedTask( $copyeditTaskType, $copyedit1['title'] );
-		$task2 = new TemplateBasedTask( $copyeditTaskType, $copyedit2['title'] );
-		$task3 = new TemplateBasedTask( $linksTaskType, $links1['title'] );
-		$task1->addTemplate( $kdoTemplate['title'] );
-		$task2->addTemplate( $kdyTemplate['title'] );
-		$task3->addTemplate( $wikifikovatTemplate['title'] );
+		$task1 = new Task( $copyeditTaskType, $copyedit1['title'] );
+		$task2 = new Task( $copyeditTaskType, $copyedit2['title'] );
+		$task3 = new Task( $linksTaskType, $links1['title'] );
 
 		$taskSet = new TaskSet( [
 			$task1,

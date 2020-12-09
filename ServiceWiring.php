@@ -29,7 +29,6 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TemplateFilter;
-use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Logger\LoggerFactory;
@@ -219,13 +218,10 @@ return [
 
 		$configLoader = GrowthExperimentsServices::wrap( $services )->getConfigurationLoader();
 		$searchStrategy = new SearchStrategy();
-		$dbr = $services->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA );
-		$templateProvider = new TemplateProvider( $services->getTitleFactory(), $dbr );
 		if ( $config->get( 'GENewcomerTasksRemoteApiUrl' ) ) {
 			$taskSuggesterFactory = new RemoteSearchTaskSuggesterFactory(
 				$configLoader,
 				$searchStrategy,
-				$templateProvider,
 				$services->getHttpRequestFactory(),
 				$services->getTitleFactory(),
 				$config->get( 'GENewcomerTasksRemoteApiUrl' )
@@ -234,7 +230,6 @@ return [
 			$taskSuggesterFactory = new LocalSearchTaskSuggesterFactory(
 				$configLoader,
 				$searchStrategy,
-				$templateProvider,
 				$services->getSearchEngineFactory()
 			);
 			$taskSuggesterFactory = new DecoratingTaskSuggesterFactory(

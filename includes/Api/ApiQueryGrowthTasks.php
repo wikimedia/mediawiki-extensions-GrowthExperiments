@@ -9,11 +9,9 @@ use ApiQueryGeneratorBase;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
-use GrowthExperiments\NewcomerTasks\Task\TemplateBasedTask;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use MediaWiki\Linker\LinkTarget;
 use StatusValue;
 use Title;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -99,11 +97,6 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 					// a list of (topic ID, score) pairs instead.
 					$extraData['topics'][] = [ $id, $score ];
 				}
-			}
-			if ( $task instanceof TemplateBasedTask && $task->getTemplates() ) {
-				$extraData['maintenancetemplates'] = array_map( function ( LinkTarget $template ) {
-					return $template->getText();
-				}, $task->getTemplates() );
 			}
 
 			if ( $resultPageSet ) {

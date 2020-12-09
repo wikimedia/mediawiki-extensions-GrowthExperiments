@@ -32,12 +32,11 @@ class RemoteSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTes
 	public function testCreate( $taskTypes, $topics, $templateBlacklist, $expectedError ) {
 		$configurationLoader = $this->getConfigurationLoader( $taskTypes, $topics, $templateBlacklist );
 		$searchStrategy = $this->getSearchStrategy();
-		$templateProvider = $this->getTemplateProvider();
 		$requestFactory = $this->getRequestFactory();
 		$titleFactory = $this->getTitleFactory();
 		$apiUrl = 'https://example.com';
 		$taskSuggesterFactory = new RemoteSearchTaskSuggesterFactory( $configurationLoader,
-			$searchStrategy, $templateProvider, $requestFactory, $titleFactory, $apiUrl );
+			$searchStrategy, $requestFactory, $titleFactory, $apiUrl );
 		$taskSuggester = $taskSuggesterFactory->create();
 		if ( $expectedError ) {
 			$this->assertInstanceOf( ErrorForwardingTaskSuggester::class, $taskSuggester );

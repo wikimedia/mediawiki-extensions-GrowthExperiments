@@ -6,7 +6,6 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
-use GrowthExperiments\NewcomerTasks\TemplateProvider;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Linker\LinkTarget;
 use MediaWikiUnitTestCase;
@@ -78,17 +77,6 @@ abstract class SearchTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 	 */
 	protected function getSearchStrategy() {
 		return $this->createNoOpMock( SearchStrategy::class );
-	}
-
-	/**
-	 * @return TemplateProvider|MockObject
-	 */
-	protected function getTemplateProvider() {
-		$templateProvider = $this->getMockBuilder( TemplateProvider::class )
-			->disableOriginalConstructor()
-			->setMethods( [ 'fill' ] )
-			->getMock();
-		return $templateProvider;
 	}
 
 }
