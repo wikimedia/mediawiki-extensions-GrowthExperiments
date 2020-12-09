@@ -4,6 +4,7 @@
 			"Ameisenigel",
 			"Bxalber",
 			"Metalhead64",
+			"Tkarcher",
 			"Umherirrender"
 		]
 	},
@@ -14,7 +15,7 @@
 	"welcomesurvey-save-btn": "Beenden",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Überspringe}} diese Umfrage",
 	"welcomesurvey-close-btn": "Schließen und zurück zu $1",
-	"welcomesurvey-sidebar-privacy-title": "Wir wertschätzen deine Privatsphäre",
+	"welcomesurvey-sidebar-privacy-title": "Wir respektieren deine Privatsphäre",
 	"welcomesurvey-sidebar-privacy-text": "Um mehr darüber zu erfahren, wie diese optionalen Antworten verwendet werden, {{GENDER:$2|siehe}} bitte unsere $1.",
 	"welcomesurvey-privacy-policy-link-text": "Mehr erfahren",
 	"welcomesurvey-sidebar-editing-title": "Mit dem Bearbeiten anfangen",
