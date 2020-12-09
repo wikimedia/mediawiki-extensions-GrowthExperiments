@@ -938,6 +938,7 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.less",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.TaskExplanation.less",
 				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.less",
+				"homepage/ext.growthExperiments.BannerModule.less",
 				"homepage/ext.growthExperiments.StartModule.less",
 				"homepage/ext.growthExperiments.StartEmailModule.less",
 				"homepage/ext.growthExperiments.Homepage.less",
