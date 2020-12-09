@@ -897,7 +897,7 @@ class HomepageHooks implements
 		} else {
 			$taskTypesData = [];
 			foreach ( $taskTypes as $taskType ) {
-				$taskTypesData[$taskType->getId()] = $taskType->toArray( $context );
+				$taskTypesData[$taskType->getId()] = $taskType->getViewData( $context );
 			}
 			return $taskTypesData;
 		}
@@ -939,7 +939,7 @@ class HomepageHooks implements
 		} else {
 			$topicsData = [];
 			foreach ( $topics as $topic ) {
-				$topicsData[$topic->getId()] = $topic->toArray( $context );
+				$topicsData[$topic->getId()] = $topic->getViewData( $context );
 			}
 			return $topicsData;
 		}

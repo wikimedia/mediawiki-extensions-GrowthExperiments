@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use MediaWiki\Json\JsonCodec;
 use MediaWikiUnitTestCase;
 use MessageLocalizer;
 
@@ -30,7 +31,7 @@ class TopicTest extends MediaWikiUnitTestCase {
 			'name' => 'growthexperiments-homepage-suggestededits-topic-name-foo',
 			'groupId' => null,
 			'groupName' => null,
-		], $topic->toArray( $fakeContext ) );
+		], $topic->getViewData( $fakeContext ) );
 
 		$topic = new Topic( 'foo', 'bar' );
 		$this->assertSame( 'bar', $topic->getGroupId() );
@@ -41,7 +42,15 @@ class TopicTest extends MediaWikiUnitTestCase {
 			'name' => 'growthexperiments-homepage-suggestededits-topic-name-foo',
 			'groupId' => 'bar',
 			'groupName' => 'growthexperiments-homepage-suggestededits-topic-group-name-bar',
-		], $topic->toArray( $fakeContext ) );
+		], $topic->getViewData( $fakeContext ) );
+	}
+
+	public function testJsonSerialization() {
+		// JsonCodec isn't stable to construct but there is not better way in a unit test.
+		$codec = new JsonCodec();
+		$topic = new Topic( 'foo', 'bar' );
+		$topic2 = $codec->unserialize( $codec->serialize( $topic ) );
+		$this->assertEquals( $topic, $topic2 );
 	}
 
 }

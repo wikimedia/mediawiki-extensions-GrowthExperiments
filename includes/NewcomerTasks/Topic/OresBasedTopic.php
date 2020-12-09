@@ -2,6 +2,8 @@
 
 namespace GrowthExperiments\NewcomerTasks\Topic;
 
+use MediaWiki\Json\JsonUnserializer;
+
 class OresBasedTopic extends Topic {
 
 	/** @var string[] */
@@ -24,6 +26,20 @@ class OresBasedTopic extends Topic {
 	 */
 	public function getOresTopics(): array {
 		return $this->oresTopics;
+	}
+
+	/** @inheritDoc */
+	protected function toJsonArray(): array {
+		return [
+			'id' => $this->getId(),
+			'groupId' => $this->getGroupId(),
+			'oresTopics' => $this->getOresTopics(),
+		];
+	}
+
+	/** @inheritDoc */
+	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+		return new OresBasedTopic( $json['id'], $json['groupId'], $json['oresTopics'] );
 	}
 
 }

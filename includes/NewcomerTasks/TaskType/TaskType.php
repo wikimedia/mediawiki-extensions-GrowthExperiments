@@ -2,13 +2,18 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
+use MediaWiki\Json\JsonUnserializable;
+use MediaWiki\Json\JsonUnserializableTrait;
+use MediaWiki\Json\JsonUnserializer;
 use Message;
 use MessageLocalizer;
 
 /**
  * Describes a type of suggested edit.
  */
-class TaskType {
+class TaskType implements JsonUnserializable {
+
+	use JsonUnserializableTrait;
 
 	public const DIFFICULTY_EASY = 'easy';
 	public const DIFFICULTY_MEDIUM = 'medium';
@@ -137,10 +142,12 @@ class TaskType {
 
 	/**
 	 * Return an array (JSON-ish) representation of the task type.
+	 * This is for the benefit of clients (contains details needed by a task UI) and cannot
+	 * be used to recover the object.
 	 * @param MessageLocalizer $messageLocalizer
 	 * @return array
 	 */
-	public function toArray( MessageLocalizer $messageLocalizer ) {
+	public function getViewData( MessageLocalizer $messageLocalizer ) {
 		return [
 			'id' => $this->getId(),
 			'difficulty' => $this->getDifficulty(),
@@ -153,6 +160,23 @@ class TaskType {
 			],
 			'learnMoreLink' => $this->getLearnMoreLink(),
 		];
+	}
+
+	/** @inheritDoc */
+	protected function toJsonArray(): array {
+		return [
+			'id' => $this->getId(),
+			'difficulty' => $this->getDifficulty(),
+			'extraData' => [ 'learnMoreLink' => $this->getLearnMoreLink() ],
+			'handlerId' => $this->getHandlerId(),
+		];
+	}
+
+	/** @inheritDoc */
+	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+		$taskType = new TaskType( $json['id'], $json['difficulty'], $json['extraData'] );
+		$taskType->setHandlerId( $json['handlerId'] );
+		return $taskType;
 	}
 
 }
