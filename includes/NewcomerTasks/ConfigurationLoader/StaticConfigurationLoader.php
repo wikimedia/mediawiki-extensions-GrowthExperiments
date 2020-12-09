@@ -13,6 +13,8 @@ use StatusValue;
  */
 class StaticConfigurationLoader implements ConfigurationLoader {
 
+	use ConfigurationLoaderTrait;
+
 	/** @var TaskType[]|StatusValue */
 	private $taskTypes;
 
@@ -36,26 +38,6 @@ class StaticConfigurationLoader implements ConfigurationLoader {
 	/** @inheritDoc */
 	public function loadTaskTypes() {
 		return $this->taskTypes;
-	}
-
-	/** @inheritDoc */
-	public function getTaskTypes(): array {
-		if ( $this->taskTypes instanceof StatusValue ) {
-			return [];
-		}
-		return array_combine( array_map( function ( TaskType $taskType ) {
-			return $taskType->getId();
-		}, $this->taskTypes ), $this->taskTypes );
-	}
-
-	/** @inheritDoc */
-	public function getTopics(): array {
-		if ( $this->topics instanceof StatusValue ) {
-			return [];
-		}
-		return array_combine( array_map( function ( Topic $topic ) {
-			return $topic->getId();
-		}, $this->topics ), $this->topics );
 	}
 
 	/** @inheritDoc */
