@@ -257,6 +257,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "區域",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "無效建議編輯設置：不良結構",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "無效建議編輯設置：無效的 ID「$1」- 僅能包含 a-z、0-9、-（減號）",
+	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "無效的建議編輯設置：用於任務類型$2的 <code>type</code> 參數$1無效 - 需為$3其一",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "無效建議編輯設置：缺少用於任務類型或主題$2的欄位$1",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "無效建議編輯設置：缺少用於任務類型$2的群組$1",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "無效建議編輯設置：無效的用於任務類型$2的模板名稱$1",

@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Metalhead64"
+			"Metalhead64",
+			"Tkarcher"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "Bearbeitet Fragen, die über das Hilfepanel des aktuellen Benutzers eingereicht wurden.",
 	"apihelp-helppanelquestionposter-param-body": "Der Text der Frage, die vom Benutzer angegeben wurde.",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "Der relevante Titel, falls ausgewählt, der in der Frage enthalten sein soll."
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Der relevante Titel, falls ausgewählt, der in der Frage enthalten sein soll.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Du musst angemeldet sein, um eine Frage zu stellen."
 }

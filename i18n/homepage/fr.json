@@ -271,6 +271,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Régions",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configuration des modifications suggérées non valide : mauvaise structure",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Configuration de modifications suggérées non valide : id « $1 » non valide — ne peut contenir que des caractères a-z, 0-9, - (moins)",
+	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Configuration suggérée des modifications non valide : \nle paramètre de <code>type</code> $1 pour le type de tâche $2 est non valide - doit être une valeur de $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Configuration de modifications suggérées non valide : champ $1 manquant pour le type de tâche ou le sujet $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Configuration de modifications suggérées non valide : groupe $1 non valide pour le type de tâche $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Configuration des modifications suggérées non valide : nom de modèle $1 non valide pour le type de tâche $2",
