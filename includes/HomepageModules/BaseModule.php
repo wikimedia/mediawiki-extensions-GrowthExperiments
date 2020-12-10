@@ -18,14 +18,14 @@ use SpecialPage;
  */
 abstract class BaseModule implements HomepageModule {
 
-	const BASE_CSS_CLASS = 'growthexperiments-homepage-module';
-	const MODULE_STATE_COMPLETE = 'complete';
-	const MODULE_STATE_INCOMPLETE = 'incomplete';
-	const MODULE_STATE_ACTIVATED = 'activated';
-	const MODULE_STATE_UNACTIVATED = 'unactivated';
-	const MODULE_STATE_NOEMAIL = 'noemail';
-	const MODULE_STATE_UNCONFIRMED = 'unconfirmed';
-	const MODULE_STATE_CONFIRMED = 'confirmed';
+	private const BASE_CSS_CLASS = 'growthexperiments-homepage-module';
+	protected const MODULE_STATE_COMPLETE = 'complete';
+	protected const MODULE_STATE_INCOMPLETE = 'incomplete';
+	protected const MODULE_STATE_ACTIVATED = 'activated';
+	protected const MODULE_STATE_UNACTIVATED = 'unactivated';
+	protected const MODULE_STATE_NOEMAIL = 'noemail';
+	protected const MODULE_STATE_UNCONFIRMED = 'unconfirmed';
+	protected const MODULE_STATE_CONFIRMED = 'confirmed';
 
 	/**
 	 * Modes that are supported by this module.Subclasses that don't support certain modes should

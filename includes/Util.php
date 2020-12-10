@@ -27,12 +27,12 @@ use User;
 
 class Util {
 
-	const MINUTE = 60;
-	const HOUR = 3600;
-	const DAY = 86400;
-	const WEEK = 604800;
-	const MONTH = 2592000;
-	const YEAR = 31536000;
+	private const MINUTE = 60;
+	private const HOUR = 3600;
+	private const DAY = 86400;
+	private const WEEK = 604800;
+	private const MONTH = 2592000;
+	private const YEAR = 31536000;
 
 	/**
 	 * Helper method to check if a user can set their email.

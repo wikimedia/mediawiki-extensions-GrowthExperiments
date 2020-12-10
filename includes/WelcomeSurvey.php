@@ -12,9 +12,9 @@ use SpecialPage;
 
 class WelcomeSurvey {
 
-	const BLOB_SIZE = 65535;
+	private const BLOB_SIZE = 65535;
 
-	const SURVEY_PROP = 'welcomesurvey-responses';
+	public const SURVEY_PROP = 'welcomesurvey-responses';
 
 	/**
 	 * @var IContextSource

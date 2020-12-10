@@ -17,7 +17,7 @@ use User;
 
 class HelpPanel {
 
-	const HELPDESK_QUESTION_TAG = 'help panel question';
+	public const HELPDESK_QUESTION_TAG = 'help panel question';
 
 	/**
 	 * @param bool $mobile

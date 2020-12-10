@@ -39,9 +39,9 @@ use TitleFactory;
  */
 class SuggestedEdits extends BaseModule {
 
-	const ENABLED_PREF = 'growthexperiments-homepage-suggestededits';
-	const ACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-activated';
-	const PREACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-preactivated';
+	public const ENABLED_PREF = 'growthexperiments-homepage-suggestededits';
+	public const ACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-activated';
+	public const PREACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-preactivated';
 	public const TOPICS_PREF = 'growthexperiments-homepage-se-topic-filters';
 	public const TOPICS_ORES_PREF = 'growthexperiments-homepage-se-ores-topic-filters';
 	public const TOPICS_ENABLED_PREF = 'growthexperiments-homepage-suggestededits-topics-enabled';
