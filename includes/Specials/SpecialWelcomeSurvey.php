@@ -117,8 +117,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 				}
 				if ( isset( $question[ 'other-message' ] ) ) {
 					// Add 'other' as the last options
-					$question['options-messages'] = $question['options-messages'] +
-						[ $question[ 'other-message' ] => 'other' ];
+					$question['options-messages'] += [ $question[ 'other-message' ] => 'other' ];
 				}
 			}
 		}
