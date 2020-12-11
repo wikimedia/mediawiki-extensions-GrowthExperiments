@@ -16,6 +16,11 @@ use TitleValue;
 /**
  * A link recommendation provider for testing purposes. Looks for an /addlink.json subpage of
  * the target page, and returns the contents of that page as link data.
+ *
+ * Enable by adding the following to LocalSettings.php or a similar location:
+ *     $class = \GrowthExperiments\NewcomerTasks\AddLink\SubpageLinkRecommendationProvider::class;
+ *     $wgHooks['MediaWikiServices'][] = "$class::onMediaWikiServices";
+ *     $wgHooks['ContentHandlerDefaultModelFor'][] = "$class::onContentHandlerDefaultModelFor";
  */
 class SubpageLinkRecommendationProvider implements LinkRecommendationProvider {
 
@@ -76,18 +81,6 @@ class SubpageLinkRecommendationProvider implements LinkRecommendationProvider {
 		// Turn $title into a real Title
 		$title = $subpage->getTitle()->getBaseTitle();
 		return new LinkRecommendation( $title, $title->getArticleID(), $title->getLatestRevID(), $data );
-	}
-
-	/**
-	 * Convenience method for setting up hooks. Should only be used in development setups.
-	 */
-	public static function setup() {
-		$services = MediaWikiServices::getInstance();
-		// There isn't a convenient way to call setup() early enough for setting a
-		// MediaWikiServices hook here to have any effect. Instead, just run it manually.
-		self::onMediaWikiServices( $services );
-		$services->getHookContainer()->register( 'ContentHandlerDefaultModelFor',
-			self::class . '::onContentHandlerDefaultModelFor' );
 	}
 
 	/**
