@@ -152,6 +152,7 @@ class PageConfigurationLoader implements ConfigurationLoader {
 		if ( $config instanceof StatusValue ) {
 			$topics = $config;
 		} else {
+			// @phan-suppress-next-line SecurityCheck-DoubleEscaped
 			$topics = $this->parseTopicsFromConfig( $config );
 		}
 
