@@ -30,27 +30,27 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 	private $url;
 
 	/** @var string */
-	private $lang;
+	private $wikiId;
 
 	/**
 	 * @param TitleFactory $titleFactory
 	 * @param RevisionLookup $revisionLookup
 	 * @param HttpRequestFactory $httpRequestFactory
 	 * @param string $url Link recommendation service root URL
-	 * @param string $lang Wiki language
+	 * @param string $wikiId Wiki language
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
 		RevisionLookup $revisionLookup,
 		HttpRequestFactory $httpRequestFactory,
 		string $url,
-		string $lang
+		string $wikiId
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->revisionLookup = $revisionLookup;
 		$this->httpRequestFactory = $httpRequestFactory;
 		$this->url = $url;
-		$this->lang = $lang;
+		$this->wikiId = $wikiId;
 	}
 
 	/** @inheritDoc */
@@ -72,13 +72,14 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 		$wikitext = $content->getText();
 
 		$args = [
-			'wikitext' => $wikitext,
-			'revid' => $revId,
+			'wiki_id' => $this->wikiId,
+			'page_title' => $titleText,
 			'pageid' => $pageId,
+			'revid' => $revId,
+			'wikitext' => $wikitext,
 			// TODO make this configurable (on-wiki?)
 			'threshold' => 0.5,
-			'lang' => $this->lang,
-			'page_title' => $titleText,
+			'max_recommendations' => 20,
 		];
 		$request = $this->httpRequestFactory->create(
 			$this->url . '/query',
@@ -104,7 +105,7 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 			return StatusValue::newFatal( 'growthexperiments-addlink-serviceerror',
 				$titleText, $data['error'] );
 		}
-		// TODO validate/process data
+		// TODO validate/process data; compare $data['page_id'] and $data['revid']
 		return new LinkRecommendation( $title, $pageId, $revId, $data );
 	}
 

@@ -52,7 +52,7 @@ class LinkRecommendationStore {
 			return null;
 		}
 		// TODO use JSON_THROW_ON_ERROR once we require PHP 7.3
-		$data = json_decode( $row->gelr_data );
+		$data = json_decode( $row->gelr_data, true );
 		if ( $data === null ) {
 			throw new DomainException( 'Invalid JSON: ' . json_last_error_msg() );
 		}
