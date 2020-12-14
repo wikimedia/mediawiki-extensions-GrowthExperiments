@@ -27,7 +27,7 @@
 	"tooltip-pt-homepage": "{{GENDER:|Ваша}} домашняя страница",
 	"prefs-homepage": "Домашняя страница новичка",
 	"growthexperiments-homepage-enable": "Отображать домашнюю страницу новичка",
-	"growthexperiments-homepage-pt-link": "Открывать по умолчанию домашнюю страницу новичка при переходе по ссылке с имени участника на панели персональных инструментов",
+	"growthexperiments-homepage-pt-link": "Открывать домашнюю страницу новичка при клике на ник участника на панели инструментов вверху страницы",
 	"growthexperiments-homepage-start-header": "{{GENDER:$1|Начните}} отсюда",
 	"growthexperiments-homepage-account-header": "Создана учётная запись",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|правка|правки|правок}}",

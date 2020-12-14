@@ -126,7 +126,7 @@
 	"growthexperiments-help-panel-search-label": "Поиск помощи",
 	"growthexperiments-help-panel-search-no-results": "Результатов не найдено.",
 	"tag-help_panel_question": "Вопрос из панели помощи",
-	"tag-help_panel_question-description": "Правка сделана через функцию отправки вопроса в модуле помощи домашней страницы",
+	"tag-help_panel_question-description": "Правка через панель на домашней странице",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Предложенные правки",
 	"growthexperiments-help-panel-button-header-ask-help": "Задайте вопрос в справочной",
 	"growthexperiments-help-panel-button-header-ask-help-mentor": "Попросить своего наставника о помощи",
@@ -139,6 +139,6 @@
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "О предлагаемых правках",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Вы}} используете редактор кода. Эти советы по редактированию наиболее полезны с визуальным редактором.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Переключиться на визуальный редактор",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Вы}} используете визуальный редактор. Эти советы по редактированию наиболее полезны с редактором кода.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Переключиться в редактор исходного кода"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Вы}} используете визуальный редактор. Эти советы рассчитаны на  редактор кода.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Переключиться в редактор кода"
 }

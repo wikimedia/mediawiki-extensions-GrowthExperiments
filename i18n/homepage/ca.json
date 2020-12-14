@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
-			"Jlrb+"
+			"Jlrb+",
+			"Mguix"
 		]
 	},
 	"growthexperiments-homepage-email-text-noemail": "Recomanat per a la recuperació del compte",
-	"growthexperiments-homepage-email-button-unconfirmed": "Enllaç nou",
+	"growthexperiments-homepage-email-button-unconfirmed": "Obté un enllaç nou",
 	"growthexperiments-homepage-email-button-confirmed": "Preferències",
 	"growthexperiments-homepage-email-changelink": "canvia",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Fet",
