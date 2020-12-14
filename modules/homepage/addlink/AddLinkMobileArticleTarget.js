@@ -16,9 +16,8 @@ OO.inheritClass( AddLinkMobileArticleTarget, ve.init.mw.MobileArticleTarget );
 OO.mixinClass( AddLinkMobileArticleTarget, AddLinkArticleTarget );
 
 AddLinkMobileArticleTarget.prototype.loadSuccess = function ( response ) {
-	this.beforeLoadSuccess( response ).done( function () {
-		AddLinkMobileArticleTarget.super.prototype.loadSuccess.call( this, response );
-	}.bind( this ) );
+	this.beforeLoadSuccess( response );
+	AddLinkMobileArticleTarget.super.prototype.loadSuccess.call( this, response );
 };
 
 AddLinkMobileArticleTarget.prototype.surfaceReady = function () {

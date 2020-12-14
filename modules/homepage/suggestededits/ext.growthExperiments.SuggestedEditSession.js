@@ -33,6 +33,12 @@
 		this.title = null;
 		/** @member {string|null} Task type ID of the suggested editing task. */
 		this.taskType = null;
+		/**
+		 * @member {Object|null} Tasktype-specific task data. Not all task types have this.
+		 *   An 'error' field being present means that loading the task data failed (the
+		 *   field will contain an error message); callers are expected to handle this gracefully.
+		 */
+		this.taskData = null;
 		/** @member {string|null} The editor used last in the suggested edit session. */
 		this.editorInterface = null;
 		/**
@@ -96,6 +102,7 @@
 			clickId: this.clickId,
 			title: this.title.getPrefixedText(),
 			taskType: this.taskType,
+			taskData: this.taskData,
 			editorInterface: this.editorInterface,
 			postEditDialogNeedsToBeShown: this.postEditDialogNeedsToBeShown,
 			mobilePeekShown: this.mobilePeekShown,
@@ -142,6 +149,7 @@
 				this.clickId = data.clickId;
 				this.title = savedTitle;
 				this.taskType = data.taskType;
+				this.taskData = data.taskData;
 				this.editorInterface = data.editorInterface;
 				this.postEditDialogNeedsToBeShown = data.postEditDialogNeedsToBeShown;
 				this.mobilePeekShown = data.mobilePeekShown;
@@ -176,6 +184,7 @@
 			this.clickId = url.query.geclickid;
 			this.title = this.getCurrentTitle();
 			this.taskType = url.query.getasktype || null;
+			this.taskData = mw.config.get( 'wgGESuggestedEditData' );
 
 			Utils.removeQueryParam( url, 'geclickid' );
 			if ( url.query.getasktype ) {

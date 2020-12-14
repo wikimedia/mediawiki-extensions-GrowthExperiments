@@ -16,17 +16,23 @@
 		guidancePrefValue;
 
 	if ( taskTypeId === 'link-recommendation' && mw.config.get( 'wgGELinkRecommendationsFrontendEnabled' ) ) {
-		mw.hook( 've.loadModules' ).add( function ( addPlugin ) {
-			// Either the desktop or the mobile module will be registered, but not both.
-			// Start with both, filter out the unregistered one, and add the remaining one
-			// as a VE plugin.
-			[
-				'ext.growthExperiments.AddLink.desktop',
-				'ext.growthExperiments.AddLink.mobile'
-			].filter( mw.loader.getState ).forEach( function ( module ) {
-				addPlugin( module );
+		if ( !suggestedEditSession.taskData ) {
+			mw.log.error( 'Missing task data' );
+		} else if ( suggestedEditSession.taskData.error ) {
+			mw.log.error( suggestedEditSession.taskData.error );
+		} else {
+			mw.hook( 've.loadModules' ).add( function ( addPlugin ) {
+				// Either the desktop or the mobile module will be registered, but not both.
+				// Start with both, filter out the unregistered one, and add the remaining one
+				// as a VE plugin.
+				[
+					'ext.growthExperiments.AddLink.desktop',
+					'ext.growthExperiments.AddLink.mobile'
+				].filter( mw.loader.getState ).forEach( function ( module ) {
+					addPlugin( module );
+				} );
 			} );
-		} );
+		}
 	}
 
 	try {

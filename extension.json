@@ -108,7 +108,8 @@
 				"GrowthExperimentsHomepageModuleRegistry",
 				"GrowthExperimentsTaskTypeHandlerRegistry",
 				"GrowthExperimentsTaskSuggesterFactory",
-				"GrowthExperimentsNewcomerTasksUserOptionsLookup"
+				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
+				"GrowthExperimentsLinkRecommendationProvider"
 			]
 		},
 		"mentor": {
@@ -672,7 +673,8 @@
 				"growthexperiments-addlink-context-button-next"
 			],
 			"dependencies": [
-				"ext.visualEditor.mwlink"
+				"ext.visualEditor.mwlink",
+				"ext.growthExperiments.SuggestedEditSession"
 			],
 			"targets": [
 				"desktop",
