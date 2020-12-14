@@ -126,7 +126,7 @@ return [
 					$services->getRevisionLookup(),
 					$services->getHttpRequestFactory(),
 					$growthServices->getConfig()->get( 'GELinkRecommendationServiceUrl' ),
-					$services->getContentLanguage()->getCode()
+					WikiMap::getCurrentWikiId()
 				),
 				$growthServices->getLinkRecommendationStore()
 			);

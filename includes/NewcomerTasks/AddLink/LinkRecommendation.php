@@ -39,7 +39,7 @@ class LinkRecommendation {
 	/** @var int */
 	private $revisionId;
 
-	/** @var array[] */
+	/** @var array<int,array{startOffset:int,endOffset:int,anchor:string,context_plaintext:string,context_wikitext:string,linkTarget:string,probability:float}> */
 	private $links;
 
 	/**
