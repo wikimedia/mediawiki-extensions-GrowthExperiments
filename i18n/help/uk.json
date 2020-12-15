@@ -36,7 +36,7 @@
 	"growthexperiments-help-panel-question-post-error": "Виникла помилка при спробі опублікувати Ваше запитання. Ви можете спробувати ще раз або можете відвідати $1 у Вашому браузері й додати своє запитання вручну.",
 	"growthexperiments-help-panel-suggestededits-title": "Пропоновані редагування",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Підказки для швидкого старту",
-	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Готові?</strong> Клікайте \"{{int:vector-view-edit}}\" щоб розпочати.",
+	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Готові?</strong> Натискайте «{{int:vector-view-edit}}», щоб розпочати.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Готові?</strong> Відкрийте розділ, який хочете відредагувати, і натисніть іконку олівця.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Корегування полягає в маленьких змінах до стилю статті: правопис, граматика, ясність тексту. Корегування допомагає статтям бути більш професійними і вартими довіри.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "Запуск апаратів на <mark class=\"negative\">Мерркурій</mark> передбачає вирішення технічних складностей.",
