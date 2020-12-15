@@ -28,6 +28,14 @@ $specialPageAliases['ar'] = [
 	'ClaimMentee' => [ 'مطالبة_مرشد' ],
 ];
 
+/** Bangla (বাংলা) */
+$specialPageAliases['bn'] = [
+	'WelcomeSurvey' => [ 'স্বাগত_জরিপ' ],
+	'Homepage' => [ 'নীড়পাতা' ],
+	'Impact' => [ 'প্রভাব' ],
+	'ClaimMentee' => [ 'পরামর্শগ্রহীতা_দাবিকরণ' ],
+];
+
 /** čeština (Czech) */
 $specialPageAliases['cs'] = [
 	'WelcomeSurvey' => [ 'Uvítací_dotazník', 'Uvitaci_dotaznik' ],
