@@ -286,7 +286,7 @@
 	"growthexperiments-claimmentee-confirm": "Evet, danışmanı gerçekten değiştirmek istiyorum",
 	"growthexperiments-log-name": "GrowthExperiments günlüğü",
 	"growthexperiments-log-header": "Bu, GrowthExperiments uzantısında yapılan işlemlerin günlüğüdür.",
-	"logentry-growthexperiments-claimmentee": "$1, danışman olarak {{GENDER:$6|$3}} sayfasına {{GENDER:$2|talep etti}} (önceki {{GENDER:$4|danışman}} $5)",
+	"logentry-growthexperiments-claimmentee": "$1, {{GENDER:$6|$3}} adlı kullanıcının danışmanlığını {{GENDER:$2|üstlendi}} (önceki {{GENDER:$4|danışman}} $5)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1, danışman olarak {{GENDER:$6|$3}} {{GENDER:$2|talep etti}} (önceki danışman yok)",
 	"logentry-growthexperiments-setmentor": "$1, {{GENDER:$6|$3}} {{GENDER:$5|danışman}} olarak {{GENDER:$5|$7}} {{GENDER:$2|ayarladı}} (önceki {{GENDER:$4|danışman}} $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1, {{GENDER:$5|$7}} kullanıcıyı {{GENDER:$6|$3}} sayfasını danışman olarak {{GENDER:$2|ayarlardı}} (önceki danışman yok)",
