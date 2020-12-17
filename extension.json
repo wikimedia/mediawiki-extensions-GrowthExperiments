@@ -1175,6 +1175,10 @@
 			"description": "Root URL of the link recommendation service.",
 			"value": false
 		},
+		"GEHomepageImpactModuleEnabled": {
+			"description": "Is the impact module in newcomer homepage enabled?",
+			"value": true
+		},
 		"WelcomeSurveyExperimentalGroups": {
 			"description": "List of experimental groups. A group is defined with a range to randomly match users and the list of questions they will see on the survey.",
 			"merge_strategy": "array_plus_2d",

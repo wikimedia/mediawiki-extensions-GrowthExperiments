@@ -227,7 +227,7 @@ class SpecialHomepage extends SpecialPage {
 					'D'
 				) && !SuggestedEdits::isActivated( $this->getContext() ),
 			'suggested-edits' => SuggestedEdits::isEnabled( $this->getContext() ),
-			'impact' => true,
+			'impact' => $this->getConfig()->get( 'GEHomepageImpactModuleEnabled' ),
 			'mentorship' => true,
 			'help' => true,
 		] );
