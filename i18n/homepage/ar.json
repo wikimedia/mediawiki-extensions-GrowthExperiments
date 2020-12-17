@@ -84,7 +84,7 @@
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|تأثيرك}}",
 	"growthexperiments-homepage-impact-subheader-text": "الناس يشاهدون المقالات التي {{GENDER:$1|حررتها}}!",
 	"growthexperiments-homepage-impact-subheader-subtext": "المشاهدات منذ {{GENDER:$1|قيامك}} بالتحرير (آخر 60 يوما):",
-	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|أنت قد}} أجريت {{PLURAL:$1|<strong>$1</strong> تعديلات|تعديلا واحدا|تعديلين اثنين|<strong>$1</strong> تعديلات|<strong>$1</strong> تعديلا|<strong>$1</strong> تعديل}} (شاهد الكل)",
+	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|لقد أجريتَ|لقد أجريتِ}} {{PLURAL:$1|<strong>$1</strong> تعديلات|تعديلا واحدا|تعديلين اثنين|<strong>$1</strong> تعديلات|<strong>$1</strong> تعديلا|<strong>$1</strong> تعديل}} ({{GENDER:$2|شاهد|شاهدي}} الكل)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "لم {{GENDER:$1|تنشئ|تنشئي}} ولم {{GENDER:$1|تحرر|تحرري}} أية مقالة بعد.",
 	"growthexperiments-homepage-impact-subheader-text-no-pageviews": "ستظهر هذه المساحة عدد المرات التي شاهد فيها الأشخاص المقالات التي {{GENDER:$1|قمت}} بإنشائها أو بتحريرها.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> تعديلات للمقالات",

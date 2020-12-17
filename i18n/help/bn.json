@@ -29,7 +29,7 @@
 	"growthexperiments-help-panel-postedit-footer2": "বন্ধ করুন এবং এই নিবন্ধটি আবার সম্পাদনা করুন",
 	"growthexperiments-help-panel-questionreview-title": "সাহায্যকেন্দ্রে জিজ্ঞেস করুন",
 	"growthexperiments-help-panel-questionreview-title-mentor": "আপনার মেন্টরকে জিজ্ঞেস করুন",
-	"growthexperiments-help-panel-questionreview-header": "আপনি যখন একটি প্রশ্ন করবেন, তখন তা স্বয়ংক্রিয়ভাবে আপনার ব্যবহারকারী নাম, \"$2\" দ্বারা $1-এ <strong>সকলের জন্য উন্মুক্তভাবে প্রকাশিত</strong> হয়ে যাবে। আরেকজন অবদানকারী আপনাকে শীঘ্রই উত্তর দেয়ার চেষ্টা করবেন।",
+	"growthexperiments-help-panel-questionreview-header": "আপনি যখন একটি প্রশ্ন করবেন, তখন তা স্বয়ংক্রিয়ভাবে আপনার ব্যবহারকারী নাম, \"$2\" ব্যবহার করে $1-এ <strong>উন্মুক্তভাবে প্রকাশিত</strong> হবে। আরেকজন অবদানকারী আপনাকে শীঘ্রই উত্তর দেয়ার চেষ্টা করবেন।",
 	"growthexperiments-help-panel-questionreview-label": "আপনার প্রশ্ন",
 	"growthexperiments-help-panel-questionreview-include-article-title": "আমার প্রশ্নের সাথে মিলে যাওয়া পাতার শিরোনাম দেখাও",
 	"growthexperiments-help-panel-question-subject-template": "সাহায্য প্যানেলের প্রশ্ন",
