@@ -173,7 +173,7 @@ class HomepageHooks implements
 					$this->experimentUserManager
 				);
 			};
-			if ( $pageViewInfoEnabled ) {
+			if ( $pageViewInfoEnabled && $this->config->get( 'GEHomepageImpactModuleEnabled' ) ) {
 				$list['Impact'] = function () use ( $mwServices ) {
 					return new SpecialImpact(
 						$this->lb->getLazyConnectionRef( DB_REPLICA ),
