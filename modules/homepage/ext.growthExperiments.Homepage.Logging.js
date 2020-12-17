@@ -9,7 +9,8 @@
 		handleClick = function ( e ) {
 			var $link = $( this ),
 				$module = $link.closest( '.growthexperiments-homepage-module' ),
-				linkId = $link.data( 'link-id' ),
+				linkId = $link.data( 'link-id' ) ||
+					$link.closest( '[data-link-group-id]' ).data( 'link-group-id' ),
 				moduleName = $module.data( 'module-name' ),
 				mode = $module.data( 'mode' );
 			logger.log( moduleName, mode, 'link-click', { linkId: linkId } );
@@ -32,7 +33,7 @@
 		} ).length > 0;
 
 	$modules
-		.on( 'click', '[data-link-id]', handleClick );
+		.on( 'click', '[data-link-id], [data-link-group-id] a', handleClick );
 
 	// If we're on mobile and the initial URI specifies a module to navigate to, let
 	// ext.growthExperiments.Homepage.Mobile.js log the intiial impression for only that module.
@@ -43,6 +44,6 @@
 
 	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
 		$content.find( '.growthexperiments-homepage-module' )
-			.on( 'click', '[data-link-id]', handleClick );
+			.on( 'click', '[data-link-id], [data-link-group-id] a', handleClick );
 	} );
 }() );

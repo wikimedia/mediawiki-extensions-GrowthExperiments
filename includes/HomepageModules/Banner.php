@@ -3,6 +3,7 @@
 namespace GrowthExperiments\HomepageModules;
 
 use GrowthExperiments\ExperimentUserManager;
+use Html;
 use IContextSource;
 
 /**
@@ -61,7 +62,11 @@ class Banner extends BaseModule {
 
 	/** @inheritDoc */
 	protected function getBody() {
-		return $this->getContext()->msg( self::MESSAGE_KEY )->parse();
+		return Html::rawElement(
+			'div',
+			[ 'data-link-group-id' => 'banner' ],
+			$this->getContext()->msg( self::MESSAGE_KEY )->parse()
+		);
 	}
 
 	/** @inheritDoc */
