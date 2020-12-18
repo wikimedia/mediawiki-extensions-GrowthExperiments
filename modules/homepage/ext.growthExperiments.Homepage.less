@@ -129,35 +129,16 @@ body.mw-special-Homepage {
 	&.growthexperiments-homepage-desktop {
 		.growthexperiments-homepage-container {
 			align-items: start;
-
-			&-user-variant-C,
-			&-user-variant-D {
-				.flex-wrap();
-			}
-
-			&-user-variant-A {
-				min-width: 800px;
-				max-width: 1600px;
-			}
+			.flex-wrap();
 
 			.growthexperiments-homepage-group-sidebar {
-				&-user-variant-C,
-				&-user-variant-D {
-					.flex( 1, 1, 300px );
-					.flex-display();
-					.flex-wrap();
-				}
-
-				&-user-variant-A {
-					width: 25%;
-				}
+				.flex( 1, 1, 300px );
+				.flex-display();
+				.flex-wrap();
 
 				&-subgroup-primary,
 				&-subgroup-secondary {
-					&-user-variant-C,
-					&-user-variant-D {
-						.flex( 1, 0, 300px );
-					}
+					.flex( 1, 0, 300px );
 				}
 
 				.growthexperiments-homepage-module {
@@ -166,44 +147,12 @@ body.mw-special-Homepage {
 			}
 
 			.growthexperiments-homepage-group-main {
-				&-user-variant-C,
-				&-user-variant-D {
-					.flex( 1, 0, 480px );
-				}
-
-				&-user-variant-A {
-					width: 75%;
-					// Set a minimum width to avoid issues with the wide-format
-					// suggested edit module. Variants C / D will resize correctly
-					// to accommodate the wide-format module, but variant A never
-					// had correct responsive resizing (and appears to have none
-					// currently).
-					// Make sure the sidebar has always at least 300px (in modern
-					// browsers - sorry IE). This is a hack but it is only needed
-					// by variant A so it will be good enough for the short time
-					// it exists.
-					min-width: 1200px;
-					min-width: ~'min( 1200px, 100% - 300px )';
-				}
+				.flex( 1, 0, 480px );
 
 				&-subgroup-primary {
 					.flex-display();
 					.flex-wrap();
-
-					.growthexperiments-homepage-module-impact.growthexperiments-homepage-module-user-variant-A,
-					.growthexperiments-homepage-module-mentorship.growthexperiments-homepage-module-user-variant-A,
-					.growthexperiments-homepage-module-suggested-edits.growthexperiments-homepage-module-user-variant-A {
-						// 1.5* instead of 2* because the leftmost module doesn't have a left margin
-						width: calc( 50% ~'-'1.5 * @homepageModuleMargin );
-						// Define a minimum height so as to avoid height change once the
-						// card/controls/pager etc are loaded.
-						min-height: 621.7px;
-					}
-
-					.growthexperiments-homepage-module-suggested-edits.growthexperiments-homepage-module-user-variant-C,
-					.growthexperiments-homepage-module-suggested-edits.growthexperiments-homepage-module-user-variant-D {
-						width: calc( 100% ~'-'1.5 * @homepageModuleMargin );
-					}
+					width: 100%;
 
 					.growthexperiments-homepage-module-start {
 						width: 100%;
@@ -216,12 +165,9 @@ body.mw-special-Homepage {
 				}
 
 				&-subgroup-secondary {
-					.growthexperiments-homepage-module-suggested-edits.growthexperiments-homepage-module-user-variant-C,
-					.growthexperiments-homepage-module-suggested-edits.growthexperiments-homepage-module-user-variant-D {
-						// Define a minimum height so as to avoid height change once the
-						// card/controls/pager etc are loaded.
-						min-height: 631.533px;
-					}
+					// Define a minimum height so as to avoid height change once the
+					// card/controls/pager etc are loaded.
+					min-height: 631.533px;
 				}
 			}
 		}
@@ -289,38 +235,6 @@ body.mw-special-Homepage {
 
 		.question-posted-on {
 			font-size: 0.8em;
-		}
-	}
-
-	&.growthexperiments-homepage-user-variant-A {
-		@media all and ( max-width: @homepageLayoutNarrowBreakpoint ) {
-			.growthexperiments-homepage-container {
-				flex-direction: column;
-
-				.growthexperiments-homepage-group-main {
-					width: 100%;
-				}
-
-				.growthexperiments-homepage-group-sidebar {
-					width: 100%;
-
-					&-subgroup-primary,
-					&-subgroup-secondary {
-						.flex-display();
-					}
-
-					.growthexperiments-homepage-module {
-						// Same width as the other non-start modules
-						width: calc( 50% ~'-' 1.5 * ( @homepageModuleMargin + 6px ) );
-						margin-left: @homepageModuleMargin;
-						margin-right: @homepageModuleMargin;
-
-						&:first-child {
-							margin-left: 0;
-						}
-					}
-				}
-			}
 		}
 	}
 }

@@ -147,7 +147,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $minervaEnableNotice );
 		$this->assertStringMatchesFormat(
 			'<div class="mw-ge-homepage-discovery-banner-mobile">' .
-			'<div class="mw-ge-homepage-discovery-arrow mw-ge-homepage-discovery-arrow-user-variant-A"></div>' .
+			'<div class="mw-ge-homepage-discovery-arrow mw-ge-homepage-discovery-arrow-user-variant-C"></div>' .
 			'<div class="mw-ge-homepage-discovery-message">' .
 			'<p>growthexperiments-homepage-discovery-mobile-homepage-banner-text</p>' .
 			'</div><span %s></span></div>',
@@ -179,7 +179,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 		$this->assertTrue( $minervaEnableNotice );
 		$this->assertStringMatchesFormat(
 			'<div class="mw-ge-homepage-discovery-banner-mobile">' .
-			'<div class="mw-ge-homepage-discovery-arrow mw-ge-homepage-discovery-arrow-user-variant-A"></div>' .
+			'<div class="mw-ge-homepage-discovery-arrow mw-ge-homepage-discovery-arrow-user-variant-C"></div>' .
 			'<div class="mw-ge-homepage-discovery-message">' .
 			'<h2>growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header</h2>' .
 			'<p>growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text</p>' .
@@ -341,7 +341,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	 * @param string $variant
 	 * @return ExperimentUserManager|MockObject
 	 */
-	private function getExperimentUserManagerMock( $variant = 'A' ) {
+	private function getExperimentUserManagerMock( $variant = 'C' ) {
 		$mock = $this->getMockBuilder( ExperimentUserManager::class )
 			->disableOriginalConstructor()
 			->getMock();

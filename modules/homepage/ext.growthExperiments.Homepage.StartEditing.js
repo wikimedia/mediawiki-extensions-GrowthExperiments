@@ -19,11 +19,10 @@
 	 *
 	 * @param {string} module Which homepage module the dialog was launched from.
 	 * @param {string} mode Rendering mode. See constants in HomepageModule.php
-	 * @param {string|null} trigger What caused the dialog to appear - 'impression' (when it was part of
+	 * @param {string} trigger What caused the dialog to appear - 'impression' (when it was part of
 	 *   the page from the start), 'welcome' (launched from the homepage welcome dialog), 'info-icon'
 	 *   (launched via the info icon in the suggested edits module header), 'suggested-edits'
-	 *   (launched via the button in the variant D mobile summary), 'impact' (when launched from the impact module),
-	 *   undefined (when launched via the Variant A StartEditing module action button).
+	 *   (launched via the button in the variant D mobile summary), 'impact' (when launched from the impact module).
 	 * @return {jQuery.Promise<boolean>} Resolves when the dialog is closed, indicates whether
 	 *   initiation was successful or cancelled.
 	 */
@@ -84,8 +83,6 @@
 			if ( $button.is( '#mw-ge-homepage-suggestededits-info' ) ) {
 				// variant C info icon
 				trigger = 'info-icon';
-			} else if ( Utils.isUserInVariant( 'A' ) ) {
-				// trigger is unset for variant A
 			} else {
 				// variant D mobile summary button
 				trigger = 'suggested-edits';

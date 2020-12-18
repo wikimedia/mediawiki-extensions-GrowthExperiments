@@ -72,7 +72,7 @@ class StartEditing extends BaseTaskModule {
 			}
 		}
 
-		// Variant A/C
+		// Variant C
 		if ( $this->isCompleted() &&
 			$this->getMode() === HomepageModule::RENDER_MOBILE_SUMMARY
 		) {
@@ -121,7 +121,7 @@ class StartEditing extends BaseTaskModule {
 			);
 		}
 
-		// Variant A/C
+		// Variant C
 		// Decide which message to use based on the user's WelcomeSurvey response. Messages:
 		// growthexperiments-homepage-startediting-subheader-edit-typo
 		// growthexperiments-homepage-startediting-subheader-add-image

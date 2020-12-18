@@ -73,11 +73,6 @@
 	width: @cardWrapperWidth;
 	.box-sizing( border-box );
 
-	// FIXME remove once variant A is gone
-	.growthexperiments-homepage-container-user-variant-A & {
-		width: @cardWrapperWidthLegacy;
-	}
-
 	.suggested-edits-taskexplanation-additional-info {
 		h4 {
 			margin-top: unset;
@@ -319,11 +314,6 @@ body.mw-special-Homepage {
 			height: @cardContainerWrapperHeight;
 			padding: 0 8px;
 
-			// FIXME remove once variant A is gone
-			.growthexperiments-homepage-container-user-variant-A & {
-				width: @cardWrapperWidthLegacy;
-			}
-
 			.se-card-image {
 				height: @cardImageHeight;
 			}
@@ -399,11 +389,6 @@ body.mw-special-Homepage {
 				padding: @cardWrapperPadding;
 				border-radius: @cardWrapperBorderRadius;
 
-				// FIXME remove once variant A is gone
-				.growthexperiments-homepage-container-user-variant-A & {
-					width: @cardWrapperWidthLegacy;
-				}
-
 				a {
 					text-decoration: none;
 					color: unset;
@@ -477,11 +462,6 @@ body.mw-special-Homepage {
 						background-repeat: repeat-x;
 						// background-image will be set dynamically in SuggestedEditCardWidget.getImageContent
 
-						// FIXME remove once variant A is gone
-						.growthexperiments-homepage-container-user-variant-A & {
-							width: @cardWrapperWidthLegacy;
-						}
-
 						&.no-image {
 							// This is also used during loading, with .skeleton added to it.
 							background-color: @colorGray14;
@@ -534,10 +514,7 @@ body.mw-special-Homepage {
 	}
 
 	&.growthexperiments-homepage-module-mobile-summary {
-		&.growthexperiments-homepage-module-user-variant-C,
-		&.growthexperiments-homepage-module-user-variant-D {
-			background-color: #f5f9ff;
-		}
+		background-color: #f5f9ff;
 
 		.suggested-edits-main-with-preview {
 			.suggested-edits-preview-pager {
@@ -678,11 +655,6 @@ body.mw-special-Homepage {
 
 			.suggested-edits-task-card-wrapper {
 				width: @cardWrapperWidth;
-
-				// FIXME remove once variant A is gone
-				.growthexperiments-homepage-container-user-variant-A & {
-					width: @cardWrapperWidthLegacy;
-				}
 
 				.se-card-content {
 					.se-card-text {

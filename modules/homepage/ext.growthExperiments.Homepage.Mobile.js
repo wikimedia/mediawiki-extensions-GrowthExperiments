@@ -172,10 +172,6 @@
 						new mw.Api().saveOption( welcomeNoticeSeenPreference, 1 );
 					},
 					welcomeDrawer;
-				if ( !Utils.isUserInVariant( [ 'C', 'D' ] ) ||
-					mw.user.options.get( welcomeNoticeSeenPreference ) ) {
-					return;
-				}
 
 				welcomeDrawer = new Drawer( {
 					className: 'homepage-welcome-notice',
@@ -257,8 +253,6 @@
 			// finish loading the task preview card.
 			// FIXME doesn't belong here; not sure what the right place would be though.
 			$summaryModules.filter( '.growthexperiments-homepage-module-suggested-edits' )
-				.filter( '.growthexperiments-homepage-module-user-variant-C,' +
-					'.growthexperiments-homepage-module-user-variant-D' )
 				.each( function ( i, module ) {
 					loadExtraDataForSuggestedEdits( module, true );
 				} );
