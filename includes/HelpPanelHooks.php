@@ -82,7 +82,7 @@ class HelpPanelHooks {
 		}
 
 		$enablePercentage = $config->get( 'GEHelpPanelNewAccountEnablePercentage' );
-		if ( $user->isLoggedIn() && !$autocreated && rand( 0, 99 ) < $enablePercentage ) {
+		if ( $user->isRegistered() && !$autocreated && rand( 0, 99 ) < $enablePercentage ) {
 			$user->setOption( self::HELP_PANEL_PREFERENCES_TOGGLE, 1 );
 		}
 	}

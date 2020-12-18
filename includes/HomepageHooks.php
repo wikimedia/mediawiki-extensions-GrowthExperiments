@@ -528,7 +528,7 @@ class HomepageHooks implements
 		// Allow override via parameter in registration URL.
 		$forceVariant = RequestContext::getMain()->getRequest()->getVal( 'geForceVariant' );
 		if (
-			$user->isLoggedIn() &&
+			$user->isRegistered() &&
 			!$autocreated &&
 			(
 				rand( 0, 99 ) < $enablePercentage ||

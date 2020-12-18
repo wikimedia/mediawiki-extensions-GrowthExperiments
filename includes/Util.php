@@ -113,7 +113,7 @@ class Util {
 	 * @param string|string[] $modules
 	 */
 	public static function maybeAddGuidedTour( \OutputPage $out, $pref, $modules ) {
-		if ( $out->getUser()->isLoggedIn() &&
+		if ( $out->getUser()->isRegistered() &&
 			!$out->getUser()->getBoolOption( $pref ) &&
 			TourHooks::growthTourDependenciesLoaded() ) {
 			$out->addModules( $modules );

@@ -85,7 +85,7 @@ class SpecialHomepage extends SpecialPage {
 		}
 		$user = $this->getUser();
 		if ( $this->getRequest()->wasPosted() &&
-			 $user->isLoggedIn() &&
+			 $user->isRegistered() &&
 			 !$user->getBoolOption( Tutorial::TUTORIAL_PREF ) ) {
 			DeferredUpdates::addCallableUpdate( function () use ( $user ) {
 				$user = $user->getInstanceForUpdate();
