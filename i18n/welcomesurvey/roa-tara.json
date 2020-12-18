@@ -41,5 +41,8 @@
 	"welcomesurvey-question-edited-option-dont-remember-label": "Non ge m'arrecorde",
 	"welcomesurvey-question-email-label": "Indirizze email (opzionale)",
 	"welcomesurvey-question-email-placeholder": "Mitte l'indirizze email tune...",
-	"welcomesurvey-question-email-help": "Sapime ca non g'è mise 'n'email quanne è ccrejate 'u cunde tune. Jè <strong>conzigliate assaije probbie</strong>, purcé l'email te serve ce vue ccù recupere 'u cunde tune o ce è perse 'a passuord. NOTE: L'indirizze email tune non g'avène efatte 'ndrucà a l'otre utinde."
+	"welcomesurvey-question-email-help": "Sapime ca non g'è mise 'n'email quanne è ccrejate 'u cunde tune. Jè <strong>conzigliate assaije probbie</strong>, purcé l'email te serve ce vue ccù recupere 'u cunde tune o ce è perse 'a passuord. NOTE: L'indirizze email tune non g'avène efatte 'ndrucà a l'otre utinde.",
+	"welcomesurvey-question-languages-label": "{{SITENAME}} jè disponibbele, cchiù o mene, jndr'à 300 lènghe. Lìgge o scrive jndr'à otre lènghe?",
+	"welcomesurvey-question-languages-placeholder": "Aggiunge 'nzigne a {{PLURAL:$1|'na lènghe|$1 lènghe}}...",
+	"welcomesurvey-question-languages-maximum": "E' raggiunde 'u numere massime de lènghe."
 }
