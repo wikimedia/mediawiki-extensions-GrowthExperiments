@@ -7,13 +7,11 @@
 	 * mobile.
 	 *
 	 * @param {Object} config
-	 * @param {Object} config.langCodeMap A mapping of language codes to language names
 	 * @constructor
 	 */
 	var ULSTagMultiselectWidget = function UlsTagMultiselectWidget( config ) {
 		var shouldUseLanguageOverlay = OO.ui.isMobile() &&
 			mw.mobileFrontend.require( 'mobile.startup' ).languageInfoOverlay;
-		this.langCodeMap = config.langCodeMap;
 		ULSTagMultiselectWidget.super.call( this, config );
 		this.$element.on( 'click', function ( e ) {
 			// Intercept clicks to the built-in input widget which we don't
@@ -109,7 +107,10 @@
 	 * @param {boolean} [fixed] If true, the user won't be allowed to remove this language
 	 */
 	ULSTagMultiselectWidget.prototype.addLanguageByCode = function ( langCode, fixed ) {
-		this.addTag( langCode, this.langCodeMap[ langCode ] );
+		// the allowedValues list we pass to the constructor doesn't include language aliases,
+		// so resolve them here before passing to addTag
+		langCode = $.uls.data.isRedirect( langCode ) || langCode;
+		this.addTag( langCode, $.uls.data.getAutonym( langCode ) );
 		if ( fixed ) {
 			this.findItemFromData( langCode ).setFixed( true );
 		}

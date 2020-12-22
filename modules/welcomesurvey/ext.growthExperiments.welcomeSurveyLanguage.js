@@ -17,8 +17,7 @@ $( function () {
 		tagLimit: languageMax,
 		allowedValues: Object.keys( langCodeMap ),
 		allowArbitrary: false,
-		allowEditTags: false,
-		langCodeMap: langCodeMap
+		allowEditTags: false
 	} );
 
 	if ( shouldUseLanguageInfoOverlay ) {
