@@ -5,6 +5,7 @@
 			"Ameisenigel",
 			"Bxalber",
 			"Metalhead64",
+			"Reinhard Kraasch",
 			"Tkarcher",
 			"Umherirrender"
 		]
@@ -48,7 +49,13 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules2": "{{GENDER:|Du}} kannst Aussagen auch so umformulieren, dass sie keine persönliche Wertung enthalten. {{SITENAME}} sollte neutrale, klare und enzyklopädische Inhalte haben. Achte aber darauf, Aussagen dabei nicht inhaltlich zu ändern.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules2": "Jupiter ist der größte <mark class=\"negative\">und interessanteste</mark> Planet des Sonnensystems.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-rules2": "Dieser Satz enthält eine subjektive Wertung, die entfernt werden sollte.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-step1": "Sobald {{GENDER:|du}} etwas korrigieren möchtest, klicke auf \"$1\", um zu beginnen. Mache dann weiter und behebe den Fehler, indem du Text nach Bedarf löschst oder eintippst.",
+	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-copyedit-main-step1": "Sobald {{GENDER:|du}} etwas korrigieren möchtest, tippe auf den Bearbeitungsstift in diesem Abschnitt, um zu beginnen. Mache dann weiter und behebe den Fehler, indem du Text nach Bedarf löschst oder eintippst.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-publish": "Suche entweder nach weiteren Änderungen, die du vornehmen möchtest, oder klicke auf \"$1\", um {{GENDER:|deine}} Bearbeitung zu speichern!",
+	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-copyedit-main-publish": "Suche entweder nach weiteren Änderungen, die du vornehmen möchtest, oder tippe auf die Schaltfläche mit dem blauen Pfeil, um die Bearbeitung zu speichern!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-publish": "[[$1|Erfahre mehr zum Redigieren]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-value": "Links zwischen {{SITENAME}}-Artikeln ermöglichen es Lesern, auf etwas zu klicken, über das sie mehr erfahren möchten. Damit kann man einfach zu anderen {{SITENAME}}-Artikeln navigieren.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-value": "Merkur ist der kleinste <mark class=\"positive\">Planet</mark> im <mark class=\"positive\">Sonnensystem</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-rules1": "Das Wort „Jahr“ sollte nicht verlinkt werden, weil es ein gebräuchliches Wort ist.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-step1": "Die Venus hat eine dichte <mark class=\"positive\">Atmosphäre</mark>",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "[[$1|Lerne mehr über das Hinzufügen von Links]]",

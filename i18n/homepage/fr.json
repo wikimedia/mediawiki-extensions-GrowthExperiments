@@ -271,7 +271,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Régions",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configuration des modifications suggérées non valide : mauvaise structure",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Configuration de modifications suggérées non valide : id « $1 » non valide — ne peut contenir que des caractères a-z, 0-9, - (moins)",
-	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Configuration suggérée des modifications non valide : \nle paramètre de <code>type</code> $1 pour le type de tâche $2 est non valide - doit être une valeur de $3",
+	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Configuration des modifications suggérées non valide : \nle paramètre <code>type</code> ne peut pas valoir $1 pour le type de tâche $2 ; valeurs possibles : $3.",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Configuration de modifications suggérées non valide : champ $1 manquant pour le type de tâche ou le sujet $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Configuration de modifications suggérées non valide : groupe $1 non valide pour le type de tâche $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Configuration des modifications suggérées non valide : nom de modèle $1 non valide pour le type de tâche $2",
@@ -291,7 +291,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Cette page {{GENDER:$1|vous}} permet de changer le tuteur du tutoré en vous-même. Il est recommandé d’utiliser cette fonctionnalité pour des utilisateurs que vous connaissez, ou pour des utilisateurs que vous tutorez sur un cours.",
 	"growthexperiments-homepage-claimmentee-mentee": "Nom d’utilisateur du tutoré",
 	"growthexperiments-homepage-claimmentee-reason": "Motif pour demander ce tutoré",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|}}Vous avez modifié le tuteur {{PLURAL:$2|de l’utilisa{{GENDER:$1|teur|trice}}|des utilisa·teurs·trices}} $1 en {{GENDER:$4|}}$5",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|}}Vous avez modifié le tuteur {{PLURAL:$2|}}de $1 en {{GENDER:$4|}}$5.",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Le tuteur de {{GENDER:$1|$1}} a déjà été modifié. Êtes-vous {{GENDER:$2|sûr|sûre}} de vouloir le modifier de nouveau ?",
 	"growthexperiments-claimmentee-confirm": "Oui, je veux vraiment changer le tuteur",
 	"growthexperiments-log-name": "journal GrowthExperiments",
@@ -321,7 +321,7 @@
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "C’est bon",
 	"growthexperiments-addlink-pagenotfound": "La page « $1 » n’existe pas",
 	"growthexperiments-addlink-revdeleted": "La révision $1 de « $2 » est inaccessible",
-	"growthexperiments-addlink-wrongmodel": "La révision $1 de « $2 » n’est pas du wikitexte",
+	"growthexperiments-addlink-wrongmodel": "La révision $1 de « $2 » n’est pas du wikicode",
 	"growthexperiments-addlink-invalidjson": "La réponse du service de recommandation de lien pour « $1 » n’est pas valide",
 	"growthexperiments-addlink-serviceerror": "Le service de recommandation de lien a répondu avec une erreur pour « $1 » : $2"
 }
