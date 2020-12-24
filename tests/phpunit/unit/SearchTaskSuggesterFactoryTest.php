@@ -7,7 +7,6 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use MediaWiki\Linker\LinkTarget;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Status;
@@ -27,13 +26,11 @@ abstract class SearchTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 					new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY, [], [] ),
 				],
 				'topics' => [ new Topic( 't' ) ],
-				'templateBlacklist' => [],
 				'expectedError' => null,
 			],
 			'tasktype error' => [
 				'taskTypes' => $error,
 				'topics' => [ new Topic( 't' ) ],
-				'templateBlacklist' => [],
 				'expectedError' => $error,
 			],
 			'topic error' => [
@@ -41,15 +38,6 @@ abstract class SearchTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 					new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY, [], [] ),
 				],
 				'topics' => $error,
-				'templateBlacklist' => [],
-				'expectedError' => $error,
-			],
-			'template blacklist error' => [
-				'taskTypes' => [
-					new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY, [], [] ),
-				],
-				'topics' => [ new Topic( 't' ) ],
-				'templateBlacklist' => $error,
 				'expectedError' => $error,
 			],
 		];
@@ -58,17 +46,15 @@ abstract class SearchTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param TaskType[]|StatusValue $taskTypes
 	 * @param Topic[]|StatusValue $topics
-	 * @param LinkTarget[]|StatusValue $templateBlacklist
 	 * @return ConfigurationLoader|MockObject
 	 */
-	protected function getConfigurationLoader( $taskTypes, $topics, $templateBlacklist ) {
+	protected function getConfigurationLoader( $taskTypes, $topics ) {
 		$configurationLoader = $this->getMockBuilder( ConfigurationLoader::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'loadTaskTypes', 'loadTopics', 'loadTemplateBlacklist', 'setMessageLocalizer' ] )
+			->setMethods( [ 'loadTaskTypes', 'loadTopics', 'setMessageLocalizer' ] )
 			->getMockForAbstractClass();
 		$configurationLoader->method( 'loadTaskTypes' )->willReturn( $taskTypes );
 		$configurationLoader->method( 'loadTopics' )->willReturn( $topics );
-		$configurationLoader->method( 'loadTemplateBlacklist' )->willReturn( $templateBlacklist );
 		return $configurationLoader;
 	}
 

@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy;
 
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
@@ -19,11 +20,19 @@ class SearchStrategy {
 	/** @var TaskTypeHandlerRegistry */
 	private $taskTypeHandlerRegistry;
 
+	/** @var ConfigurationLoader */
+	private $configurationLoader;
+
 	/**
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
+	 * @param ConfigurationLoader $configurationLoader
 	 */
-	public function __construct( TaskTypeHandlerRegistry $taskTypeHandlerRegistry ) {
+	public function __construct(
+		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
+		ConfigurationLoader $configurationLoader
+	) {
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
+		$this->configurationLoader = $configurationLoader;
 	}
 
 	/**
@@ -31,13 +40,11 @@ class SearchStrategy {
 	 * (set of task types and topics).
 	 * @param TaskType[] $taskTypes Task types to limit search results to
 	 * @param Topic[] $topics Topics to limit search results to
-	 * @param LinkTarget[] $templateBlacklist List of templates which disqualify a page from
-	 *   being recommendable.
 	 * @param array|null $pageIds List of PageIds search results should be restricted to.
 	 * @return SearchQuery[] Array of queries, indexed by query ID.
 	 */
 	public function getQueries(
-		array $taskTypes, array $topics, array $templateBlacklist, array $pageIds = null
+		array $taskTypes, array $topics, array $pageIds = null
 	) {
 		$this->validateParams( $taskTypes, $topics );
 		$queries = [];
@@ -55,12 +62,11 @@ class SearchStrategy {
 				} elseif ( $topic instanceof MorelikeBasedTopic ) {
 					$topicTerm = $this->getMorelikeBasedTopicTerm( [ $topic ] );
 				}
-				$deletionTerm = $templateBlacklist ?
-					'-' . $this->getTemplateTerm( $templateBlacklist ) :
-					null;
+				$excludedTemplatesTerm = $this->getExcludedTemplatesTerm();
+				$excludedCategoriesTerm = $this->getExcludedCategoriesTerm();
 				$pageIdTerm = $pageIds ? $this->getPageIdTerm( $pageIds ) : null;
 				$queryString = implode( ' ', array_filter( [ $typeTerm, $topicTerm,
-					$deletionTerm, $pageIdTerm ] ) );
+					$excludedTemplatesTerm, $excludedCategoriesTerm, $pageIdTerm ] ) );
 
 				$queryId = $taskType->getId() . ':' . ( $topic ? $topic->getId() : '-' );
 				$query = new SearchQuery( $queryId, $queryString, $taskType, $topic );
@@ -92,6 +98,36 @@ class SearchStrategy {
 	 */
 	protected function getTemplateTerm( array $templates ) {
 		return 'hastemplate:' . $this->escapeSearchTitleList( $templates );
+	}
+
+	/**
+	 * @param LinkTarget[] $categories
+	 * @return string
+	 */
+	private function getCategoryTerm( array $categories ) {
+		return 'incategory:' . $this->escapeSearchTitleList( $categories );
+	}
+
+	/**
+	 * @return string|null
+	 */
+	private function getExcludedTemplatesTerm() {
+		$excludedTemplates = $this->configurationLoader->getExcludedTemplates();
+		if ( $excludedTemplates ) {
+			return '-' . $this->getTemplateTerm( $excludedTemplates );
+		}
+		return null;
+	}
+
+	/**
+	 * @return string|null
+	 */
+	private function getExcludedCategoriesTerm() {
+		$excludedCategories = $this->configurationLoader->getExcludedCategories();
+		if ( $excludedCategories ) {
+			return '-' . $this->getCategoryTerm( $excludedCategories );
+		}
+		return null;
 	}
 
 	/**
@@ -127,6 +163,8 @@ class SearchStrategy {
 	}
 
 	/**
+	 * Turns an array of pages into a CirrusSearch keyword value (pipe-separated, escaped).
+	 * Namespaces are omitted entirely.
 	 * @param LinkTarget[] $titles
 	 * @return string
 	 */

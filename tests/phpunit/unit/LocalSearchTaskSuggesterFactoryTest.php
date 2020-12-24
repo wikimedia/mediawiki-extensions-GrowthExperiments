@@ -9,7 +9,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Cache\LinkBatchFactory;
-use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentityValue;
 use PHPUnit\Framework\MockObject\MockObject;
 use SearchEngineFactory;
@@ -27,12 +26,11 @@ class LocalSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest
 	 * @dataProvider provideCreate
 	 * @param TaskType[]|StatusValue $taskTypes
 	 * @param Topic[]|StatusValue $topics
-	 * @param LinkTarget[]|StatusValue $templateBlacklist
 	 * @param StatusValue|null $expectedError
 	 */
-	public function testCreate( $taskTypes, $topics, $templateBlacklist, $expectedError ) {
+	public function testCreate( $taskTypes, $topics, $expectedError ) {
 		$taskTypeHandlerRegistry = $this->getTaskTypeHandlerRegistry();
-		$configurationLoader = $this->getConfigurationLoader( $taskTypes, $topics, $templateBlacklist );
+		$configurationLoader = $this->getConfigurationLoader( $taskTypes, $topics );
 		$searchStrategy = $this->getSearchStrategy();
 		$searchEngineFactory = $this->getSearchEngineFactory();
 		$linkBatchFactory = $this->getLinkBatchFactory();

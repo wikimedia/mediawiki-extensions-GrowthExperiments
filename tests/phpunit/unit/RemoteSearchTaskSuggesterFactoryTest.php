@@ -10,7 +10,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Http\HttpRequestFactory;
-use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentityValue;
 use PHPUnit\Framework\MockObject\MockObject;
 use StatusValue;
@@ -28,12 +27,11 @@ class RemoteSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTes
 	 * @dataProvider provideCreate
 	 * @param TaskType[]|StatusValue $taskTypes
 	 * @param Topic[]|StatusValue $topics
-	 * @param LinkTarget[]|StatusValue $templateBlacklist
 	 * @param StatusValue|null $expectedError
 	 */
-	public function testCreate( $taskTypes, $topics, $templateBlacklist, $expectedError ) {
+	public function testCreate( $taskTypes, $topics, $expectedError ) {
 		$taskTypeHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
-		$configurationLoader = $this->getConfigurationLoader( $taskTypes, $topics, $templateBlacklist );
+		$configurationLoader = $this->getConfigurationLoader( $taskTypes, $topics );
 		$searchStrategy = $this->getSearchStrategy();
 		$requestFactory = $this->getRequestFactory();
 		$titleFactory = $this->getTitleFactory();

@@ -67,8 +67,11 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 	/** @var Topic[]|StatusValue|null Cached topic set (or an error). */
 	private $topics;
 
-	/** @var LinkTarget[]|StatusValue|null Cached template blacklist (or an error). */
-	private $templateBlacklist;
+	/** @var LinkTarget[]|StatusValue|null Cached excluded template set (or an error). */
+	private $excludedTemplates;
+
+	/** @var LinkTarget[]|StatusValue|null Cached excluded category set (or an error). */
+	private $excludedCategories;
 
 	/**
 	 * @var string One of the PageConfigurationLoader::CONFIGURATION_TYPE constants.
@@ -163,20 +166,39 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 	}
 
 	/** @inheritDoc */
-	public function loadTemplateBlacklist() {
-		if ( $this->templateBlacklist !== null ) {
-			return $this->templateBlacklist;
+	public function loadExcludedTemplates() {
+		if ( $this->excludedTemplates !== null ) {
+			return $this->excludedTemplates;
 		}
 
 		$config = $this->pageLoader->load( $this->makeTitle( $this->taskConfigurationPage ) );
 		if ( $config instanceof StatusValue ) {
-			$templateBlacklist = $config;
+			$excludedTemplates = $config;
 		} else {
-			$templateBlacklist = $this->parseTemplateBlacklistFromConfig( $config );
+			$excludedTemplates = $this->parseTitleListFromConfig( $config,
+				'#excludedTemplates', NS_TEMPLATE );
 		}
 
-		$this->templateBlacklist = $templateBlacklist;
-		return $templateBlacklist;
+		$this->excludedTemplates = $excludedTemplates;
+		return $excludedTemplates;
+	}
+
+	/** @inheritDoc */
+	public function loadExcludedCategories() {
+		if ( $this->excludedCategories !== null ) {
+			return $this->excludedCategories;
+		}
+
+		$config = $this->pageLoader->load( $this->makeTitle( $this->taskConfigurationPage ) );
+		if ( $config instanceof StatusValue ) {
+			$excludedCategories = $config;
+		} else {
+			$excludedCategories = $this->parseTitleListFromConfig( $config,
+				'#excludedCategories', NS_CATEGORY );
+		}
+
+		$this->excludedCategories = $excludedCategories;
+		return $excludedCategories;
 	}
 
 	/**
@@ -207,6 +229,11 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 				'growthexperiments-homepage-suggestededits-config-wrongstructure' );
 		}
 		foreach ( $config as $taskTypeId => $taskTypeData ) {
+			if ( $taskTypeId[0] === '#' ) {
+				// Special configuration field, not a task.
+				continue;
+			}
+
 			// Fall back to legacy handler if not specified.
 			$handlerId = $taskTypeData['type'] ?? TemplateBasedTaskTypeHandler::ID;
 			if ( !$this->taskTypeHandlerRegistry->has( $handlerId ) ) {
@@ -298,13 +325,35 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 	}
 
 	/**
-	 * Like loadTemplateBlacklist() but without caching.
-	 * @param array $config
+	 * Helper function for the loadExcluded* methods.
+	 * @param mixed $config A JSON value.
+	 * @param string $fieldName Name of the top-level field holding the title list.
+	 * @param int $defaultNamespace Default namespace of list items.
 	 * @return LinkTarget[]|StatusValue
 	 */
-	private function parseTemplateBlacklistFromConfig( array $config ) {
-		// TODO: add templates to the wiki page and implement parsing them here.
-		return [];
+	private function parseTitleListFromConfig(
+		$config, string $fieldName, int $defaultNamespace
+	) {
+		$status = StatusValue::newGood();
+		$titleList = [];
+
+		if ( !is_array( $config ) || array_filter( $config, 'is_array' ) !== $config ) {
+			return StatusValue::newFatal(
+				'growthexperiments-homepage-suggestededits-config-wrongstructure' );
+		}
+		$fieldData = $config[$fieldName] ?? [];
+		foreach ( $fieldData as $entry ) {
+			if ( !is_string( $entry ) ) {
+				return StatusValue::newFatal(
+					'growthexperiments-homepage-suggestededits-config-wrongstructure' );
+			}
+			$status->merge( $this->configurationValidator->validateTitle( $entry ) );
+			if ( $status->isOK() ) {
+				$titleList[] = $this->titleFactory->newFromText( $entry, $defaultNamespace );
+			}
+
+		}
+		return $status->isOK() ? $titleList : $status;
 	}
 
 	/**

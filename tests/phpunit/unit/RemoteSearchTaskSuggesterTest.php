@@ -3,6 +3,8 @@
 namespace GrowthExperiments\Tests;
 
 use ApiRawMessage;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
@@ -56,18 +58,20 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	public function testSuggest(
 		$taskTypeSpec, $topicSpec, $requests, $taskFilter, $topicFilter, $limit, $expectedTaskSet
 	) {
-		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
-		$requestFactory = $this->getMockRequestFactory( $requests );
-		$titleFactory = $this->getMockTitleFactory();
-		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry );
-		$linkBatchFactory = $this->getMockLinkBatchFactory();
-
 		$user = new UserIdentityValue( 1, 'Foo', 1 );
 		$taskTypes = $this->getTaskTypes( $taskTypeSpec );
 		$topics = $this->getTopics( $topicSpec );
+
+		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
+		$configurationLoader = new StaticConfigurationLoader( $taskTypes, $topics );
+		$requestFactory = $this->getMockRequestFactory( $requests );
+		$titleFactory = $this->getMockTitleFactory();
+		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry, $configurationLoader );
+		$linkBatchFactory = $this->getMockLinkBatchFactory();
+
 		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry, $searchStrategy,
 			$linkBatchFactory, $requestFactory, $titleFactory, 'https://example.com',
-			$taskTypes, $topics, [] );
+			$taskTypes, $topics );
 
 		$taskSet = $suggester->suggest( $user, $taskFilter, $topicFilter, $limit );
 		if ( $expectedTaskSet instanceof StatusValue ) {
@@ -471,18 +475,20 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		array $requests,
 		$expectedTaskSet
 	) {
-		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
-		$requestFactory = $this->getMockRequestFactory( $requests );
-		$titleFactory = $this->getMockTitleFactory();
-		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry );
-		$linkBatchFactory = $this->getMockLinkBatchFactory( $pageIds );
-
 		$user = new UserIdentityValue( 1, 'Foo', 1 );
 		$taskTypes = $this->getTaskTypes( $taskTypeSpec );
 		$topics = $this->getTopics( $topicSpec );
+
+		$configurationLoader = new StaticConfigurationLoader( $taskTypes, $topics );
+		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
+		$requestFactory = $this->getMockRequestFactory( $requests );
+		$titleFactory = $this->getMockTitleFactory();
+		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry, $configurationLoader );
+		$linkBatchFactory = $this->getMockLinkBatchFactory( $pageIds );
+
 		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry, $searchStrategy,
 			$linkBatchFactory, $requestFactory, $titleFactory, 'https://example.com',
-			$taskTypes, $topics, [] );
+			$taskTypes, $topics );
 
 		$filteredTaskSet = $suggester->filter( $user, $taskSet );
 		if ( $expectedTaskSet instanceof StatusValue ) {
@@ -717,11 +723,15 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
+	 * @param ConfigurationLoader $configurationLoader
 	 * @return SearchStrategy|MockObject
 	 */
-	private function getMockSearchStrategy( TaskTypeHandlerRegistry $taskTypeHandlerRegistry ) {
+	private function getMockSearchStrategy(
+		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
+		ConfigurationLoader $configurationLoader
+	) {
 		$searchStrategy = $this->getMockBuilder( SearchStrategy::class )
-			->setConstructorArgs( [ $taskTypeHandlerRegistry ] )
+			->setConstructorArgs( [ $taskTypeHandlerRegistry, $configurationLoader ] )
 			->onlyMethods( [ 'shuffleQueryOrder' ] )
 			->getMock();
 		$searchStrategy->method( 'shuffleQueryOrder' )
