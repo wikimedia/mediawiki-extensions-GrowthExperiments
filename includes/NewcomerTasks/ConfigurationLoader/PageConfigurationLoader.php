@@ -12,6 +12,8 @@ use InvalidArgumentException;
 use LogicException;
 use MediaWiki\Linker\LinkTarget;
 // phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
+use MediaWiki\Revision\RevisionRecord;
+use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use Message;
 use StatusValue;
 use TitleFactory;
@@ -24,7 +26,7 @@ use TitleValue;
  * https://cs.wikipedia.org/wiki/MediaWiki:NewcomerTopics.json
  * https://www.mediawiki.org/wiki/MediaWiki:NewcomerTopicsOres.json
  */
-class PageConfigurationLoader implements ConfigurationLoader {
+class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHook {
 
 	use ConfigurationLoaderTrait;
 
@@ -165,6 +167,10 @@ class PageConfigurationLoader implements ConfigurationLoader {
 		if ( is_string( $target ) ) {
 			$target = $this->titleFactory->newFromText( $target );
 		}
+		if ( $target && !$target->isExternal() && !$target->inNamespace( NS_MEDIAWIKI ) ) {
+			throw new LogicException( 'Configuration page not in NS_MEDIAWIKI: '
+				. $target->getPrefixedDBkey() );
+		}
 		return $target;
 	}
 
@@ -279,6 +285,29 @@ class PageConfigurationLoader implements ConfigurationLoader {
 	private function parseTemplateBlacklistFromConfig( array $config ) {
 		// TODO: add templates to the wiki page and implement parsing them here.
 		return [];
+	}
+
+	/**
+	 * Invalidate configuration cache when needed.
+	 * {@inheritDoc}
+	 * @inheritDoc
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageSaveComplete
+	 */
+	public function onPageSaveComplete(
+		$wikiPage, $user, $summary, $flags, $revisionRecord, $editResult
+	) {
+		$title = $wikiPage->getTitle();
+		if ( !$title || !$title->inNamespace( NS_MEDIAWIKI ) ) {
+			return;
+		}
+
+		$taskConfigurationTitle = $this->makeTitle( $this->taskConfigurationPage );
+		$topicConfigurationTitle = $this->makeTitle( $this->topicConfigurationPage );
+		if ( $title->equals( $taskConfigurationTitle ) ) {
+			$this->pageLoader->invalidate( $taskConfigurationTitle );
+		} elseif ( $topicConfigurationTitle && $title->equals( $topicConfigurationTitle ) ) {
+			$this->pageLoader->invalidate( $topicConfigurationTitle );
+		}
 	}
 
 }

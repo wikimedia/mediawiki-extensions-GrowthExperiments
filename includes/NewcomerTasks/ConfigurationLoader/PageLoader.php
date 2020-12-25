@@ -71,8 +71,7 @@ class PageLoader {
 	 *   data in PHP-native format), or a StatusValue on error.
 	 */
 	public function load( LinkTarget $configPage ) {
-		$cacheKey = $this->cache->makeKey( 'GrowthExperiments', 'NewcomerTasks',
-			'config', $configPage->getNamespace(), $configPage->getDBkey() );
+		$cacheKey = $this->makeCacheKey( $configPage );
 		$result = $this->cache->get( $cacheKey );
 
 		if ( $result === false ) {
@@ -89,6 +88,24 @@ class PageLoader {
 		}
 
 		return $result;
+	}
+
+	/**
+	 * Clear any cached contents from the given page.
+	 * @param LinkTarget $configPage
+	 */
+	public function invalidate( LinkTarget $configPage ) {
+		$cacheKey = $this->makeCacheKey( $configPage );
+		$this->cache->delete( $cacheKey );
+	}
+
+	/**
+	 * @param LinkTarget $configPage
+	 * @return string
+	 */
+	private function makeCacheKey( LinkTarget $configPage ) {
+		return $this->cache->makeKey( 'GrowthExperiments', 'NewcomerTasks',
+			'config', $configPage->getNamespace(), $configPage->getDBkey() );
 	}
 
 	/**
