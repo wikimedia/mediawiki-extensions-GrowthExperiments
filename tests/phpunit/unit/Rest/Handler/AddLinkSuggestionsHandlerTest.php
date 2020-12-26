@@ -4,6 +4,10 @@ namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\Rest\Handler\AddLinkSuggestionsHandler;
 use MediaWiki\Rest\ResponseFactory;
 use MediaWikiUnitTestCase;
@@ -22,11 +26,15 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiUnitTestCase {
 		$goodTitle = new TitleValue( NS_USER, 'Foo' );
 		$badTitle = new TitleValue( NS_USER, 'Bar' );
 		$linkData = [ 'links' => [ 'x' ] ];
+		$configurationLoader = new StaticConfigurationLoader( [
+			LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => new LinkRecommendationTaskType(
+				LinkRecommendationTaskTypeHandler::TASK_TYPE_ID, TaskType::DIFFICULTY_EASY, [] ),
+		] );
 		$linkRecommendationProvider = $this->getMockLinkRecommendationProvider( [
 			$this->getTitleKey( $goodTitle ) => new LinkRecommendation( $goodTitle, 1, 1, $linkData ),
 			$this->getTitleKey( $badTitle ) => StatusValue::newFatal( new RawMessage( 'error' ) ),
 		] );
-		$handler = new AddLinkSuggestionsHandler( $linkRecommendationProvider );
+		$handler = new AddLinkSuggestionsHandler( $configurationLoader, $linkRecommendationProvider );
 		$this->setResponseFactory( $handler );
 
 		$this->assertSame( [ 'recommendation' => $linkData ], $handler->run( $goodTitle ) );

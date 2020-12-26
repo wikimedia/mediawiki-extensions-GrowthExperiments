@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use MediaWiki\Linker\LinkTarget;
 use StatusValue;
 
@@ -25,7 +26,7 @@ class StaticLinkRecommendationProvider implements LinkRecommendationProvider {
 	}
 
 	/** @inheritDoc */
-	public function get( LinkTarget $title ) {
+	public function get( LinkTarget $title, LinkRecommendationTaskType $taskType ) {
 		$target = $title->getNamespace() . ':' . $title->getDBkey();
 		return $this->recommendations[$target] ?? $this->default;
 	}

@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use FormatJson;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use InvalidArgumentException;
 use JsonContent;
 use LogicException;
@@ -45,7 +46,7 @@ class SubpageLinkRecommendationProvider implements LinkRecommendationProvider {
 	/**
 	 * @inheritDoc
 	 */
-	public function get( LinkTarget $title ) {
+	public function get( LinkTarget $title, LinkRecommendationTaskType $taskType ) {
 		$subpageTitle = new TitleValue( $title->getNamespace(), $title->getDBkey() . '/addlink.json' );
 		try {
 			$subpage = $this->wikiPageFactory->newFromLinkTarget( $subpageTitle );
@@ -61,7 +62,7 @@ class SubpageLinkRecommendationProvider implements LinkRecommendationProvider {
 
 		if ( !$subpage->exists() ) {
 			if ( $this->fallbackLinkRecommendationProvider ) {
-				return $this->fallbackLinkRecommendationProvider->get( $title );
+				return $this->fallbackLinkRecommendationProvider->get( $title, $taskType );
 			} else {
 				// This is a development-only provider, no point in translating its messages.
 				return StatusValue::newFatal( 'rawmessage', 'No /addlink.json subpage found' );

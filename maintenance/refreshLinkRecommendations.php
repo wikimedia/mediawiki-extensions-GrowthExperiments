@@ -76,9 +76,6 @@ class RefreshLinkRecommendations extends Maintenance {
 	/** @var EventBusFactory */
 	private $eventBusFactory;
 
-	/** @var string */
-	private $recommendationTaskTypeId;
-
 	/** @var LinkRecommendationTaskType */
 	private $recommendationTaskType;
 
@@ -94,8 +91,6 @@ class RefreshLinkRecommendations extends Maintenance {
 		$this->addDescription( 'Update the growthexperiments_link_recommendations table to ensure '
 			. 'there are enough recommendations for all topics.' );
 		$this->setBatchSize( 500 );
-
-		$this->recommendationTaskTypeId = 'links';
 	}
 
 	public function execute() {
@@ -108,7 +103,7 @@ class RefreshLinkRecommendations extends Maintenance {
 			$this->output( "  processing topic $oresTopic...\n" );
 			$suggestions = $this->taskSuggester->suggest(
 				$this->searchUser,
-				[ $this->recommendationTaskTypeId ],
+				[ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ],
 				[ $oresTopic ],
 				1,
 				0,
@@ -145,7 +140,8 @@ class RefreshLinkRecommendations extends Maintenance {
 					) {
 						continue;
 					}
-					$recommendation = $this->linkRecommendationProviderUncached->get( $title );
+					$recommendation = $this->linkRecommendationProviderUncached->get( $title,
+						$this->recommendationTaskType );
 					if ( !$this->evaluateRecommendation( $recommendation, $lastRevision ) ) {
 						continue;
 					}
@@ -237,9 +233,10 @@ class RefreshLinkRecommendations extends Maintenance {
 
 	protected function initConfig(): void {
 		$taskTypes = $this->configurationLoader->getTaskTypes();
-		$taskType = $taskTypes[$this->recommendationTaskTypeId] ?? null;
+		$taskType = $taskTypes[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
 		if ( !$taskType || !$taskType instanceof LinkRecommendationTaskType ) {
-			$this->fatalError( "'$this->recommendationTaskTypeId' is not a link recommendation task type" );
+			$this->fatalError( sprintf( "'%s' is not a link recommendation task type",
+				LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ) );
 		} else {
 			$this->recommendationTaskType = $taskType;
 		}
