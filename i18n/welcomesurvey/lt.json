@@ -1,11 +1,27 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eitvys200"
+			"Eitvys200",
+			"Tomasdd"
 		]
 	},
+	"welcomesurvey": "{{GENDER:$1|Sveiki}}, $1!",
+	"welcomesurvey-save-confirmation-title": "Dėkojame! Jūsų atsakymai išsaugoti.",
+	"welcomesurvey-save-btn": "Baigti",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Praleisti}} šią apklausą",
 	"welcomesurvey-sidebar-privacy-text": "Tam, kad sužinotumėte daugiau apie šiuos neprivalomus atsakymus, {{GENDER:$2|peržiūrėkite}} $1 apklausą.",
+	"welcomesurvey-sidebar-editing-link2-text": "Pagalbos skyrius",
+	"welcomesurvey-sidebar-editing-link2-title": "Vikipedija:Pagalbos_skyrius",
+	"welcomesurvey-dropdown-option-select-label": "Prašome pasirinkti...",
+	"welcomesurvey-question-reason-option-new-page-label": "Kad sukurčiau naują straipsnį Vikipedijoje",
+	"welcomesurvey-question-reason-option-other-label": "Kita (prašome patikslinti)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Įveskite}} kitą priežastį...",
-	"welcomesurvey-question-mentor-label": "Taip, {{GENDER:$1|man įdomu}}"
+	"welcomesurvey-question-mentor-label": "Taip, {{GENDER:$1|man įdomu}}",
+	"welcomesurvey-question-edited-label": "Ar kada redagavote Vikipediją?",
+	"welcomesurvey-question-edited-option-yes-many-label": "Taip, daug kartų",
+	"welcomesurvey-question-edited-option-yes-few-label": "Taip, kartą ar du",
+	"welcomesurvey-question-edited-option-no-other-label": "Ne, dėl kitų priežasčių",
+	"welcomesurvey-question-edited-option-dont-remember-label": "Neprisimenu",
+	"welcomesurvey-question-email-label": "El. pašto adresas (neprivaloma)",
+	"welcomesurvey-question-email-placeholder": "Įveskite savo elektroninio pašto adresą..."
 }

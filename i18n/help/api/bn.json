@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Al Riaz Uddin Ripon"
+			"Al Riaz Uddin Ripon",
+			"YahyA"
 		]
 	},
+	"apihelp-helppanelquestionposter-param-body": "ব্যবহারকারীর করা প্রশ্ন",
 	"apierror-mustbeloggedin-helppanelquestionposter": "প্রশ্ন করতে আপনাকে অবশ্যই প্রবেশ করতে হবে।"
 }
