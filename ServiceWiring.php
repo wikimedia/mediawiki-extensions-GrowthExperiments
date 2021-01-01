@@ -13,6 +13,7 @@ use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\NewcomerTasks\AddLink\DbBackedLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkSubmissionRecorder;
 use GrowthExperiments\NewcomerTasks\AddLink\ServiceLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\StaticLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -156,6 +157,12 @@ return [
 			$loadBalancer->getConnection( DB_MASTER ),
 			$services->getTitleFactory()
 		);
+	},
+
+	'GrowthExperimentsLinkSubmissionRecorder' => function (
+		MediaWikiServices $services
+	) : LinkSubmissionRecorder {
+		return new LinkSubmissionRecorder();
 	},
 
 	'GrowthExperimentsMentorManager' => function (

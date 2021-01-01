@@ -10,6 +10,7 @@ use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkSubmissionRecorder;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
@@ -88,6 +89,10 @@ class GrowthExperimentsServices {
 
 	public function getLinkRecommendationStore(): LinkRecommendationStore {
 		return $this->coreServices->get( 'GrowthExperimentsLinkRecommendationStore' );
+	}
+
+	public function getLinkSubmissionRecorder(): LinkSubmissionRecorder {
+		return $this->coreServices->get( 'GrowthExperimentsLinkSubmissionRecorder' );
 	}
 
 	public function getMentorManager(): MentorManager {
