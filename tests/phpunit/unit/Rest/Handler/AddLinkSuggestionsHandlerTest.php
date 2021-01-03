@@ -25,19 +25,28 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiUnitTestCase {
 	public function testRun() {
 		$goodTitle = new TitleValue( NS_USER, 'Foo' );
 		$badTitle = new TitleValue( NS_USER, 'Bar' );
-		$linkData = [ 'links' => [ 'x' ] ];
+		$linkData = [ [
+			'phrase_to_link' => 'foo',
+			'link_target' => 'Bar',
+			'instance_occurrence' => 1,
+			'probability' => 0.9,
+			'context_before' => 'b',
+			'context_after' => 'a',
+			'insertion_order' => 2,
+		] ];
+		$links = LinkRecommendation::getLinksFromArray( $linkData );
 		$configurationLoader = new StaticConfigurationLoader( [
 			LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => new LinkRecommendationTaskType(
 				LinkRecommendationTaskTypeHandler::TASK_TYPE_ID, TaskType::DIFFICULTY_EASY, [] ),
 		] );
 		$linkRecommendationProvider = $this->getMockLinkRecommendationProvider( [
-			$this->getTitleKey( $goodTitle ) => new LinkRecommendation( $goodTitle, 1, 1, $linkData ),
+			$this->getTitleKey( $goodTitle ) => new LinkRecommendation( $goodTitle, 1, 1, $links ),
 			$this->getTitleKey( $badTitle ) => StatusValue::newFatal( new RawMessage( 'error' ) ),
 		] );
 		$handler = new AddLinkSuggestionsHandler( $configurationLoader, $linkRecommendationProvider );
 		$this->setResponseFactory( $handler );
 
-		$this->assertSame( [ 'recommendation' => $linkData ], $handler->run( $goodTitle ) );
+		$this->assertSame( [ 'recommendation' => [ 'links' => $linkData ] ], $handler->run( $goodTitle ) );
 
 		$this->assertSame( [ 'response' => [ 'error' => 'error' ] ], $handler->run( $badTitle ) );
 	}

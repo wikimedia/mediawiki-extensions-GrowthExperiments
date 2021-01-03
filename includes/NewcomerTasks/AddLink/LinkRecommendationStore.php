@@ -61,7 +61,8 @@ class LinkRecommendationStore {
 			return null;
 		}
 
-		return new LinkRecommendation( $title, $pageId, $row->gelr_revision, $data );
+		$links = LinkRecommendation::getLinksFromArray( $data['links'] );
+		return new LinkRecommendation( $title, $pageId, $row->gelr_revision, $links );
 	}
 
 	/**
