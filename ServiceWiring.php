@@ -162,7 +162,12 @@ return [
 	'GrowthExperimentsLinkSubmissionRecorder' => function (
 		MediaWikiServices $services
 	) : LinkSubmissionRecorder {
-		return new LinkSubmissionRecorder();
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		return new LinkSubmissionRecorder(
+			$services->getTitleParser(),
+			$services->getLinkBatchFactory(),
+			$growthServices->getLinkRecommendationStore()
+		);
 	},
 
 	'GrowthExperimentsMentorManager' => function (

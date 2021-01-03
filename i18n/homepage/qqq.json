@@ -332,5 +332,6 @@
 	"growthexperiments-addlink-revdeleted": "Error message shown when the latest revision is not visible.\n\nParameters:\n* $1 - revision ID\n* $2 - page title\n\n{{doc-growthexperiments-addlink}}",
 	"growthexperiments-addlink-wrongmodel": "Error message shown when the latest revision is not a wikitext revision.\n\nParameters:\n* $1 - revision ID\n* $2 - page title\n\n{{doc-growthexperiments-addlink}}",
 	"growthexperiments-addlink-invalidjson": "Error message shown when the link recommendation service gives an invalid response.\n\nParameters:\n* $1 - page title\n\n{{doc-growthexperiments-addlink}}",
-	"growthexperiments-addlink-serviceerror": "Error message shown when the link recommendation service gives an error response.\n\nParameters:\n* $1 - page title\n* $2 - error message from the service\n\n{{doc-growthexperiments-addlink}}"
+	"growthexperiments-addlink-serviceerror": "Error message shown when the link recommendation service gives an error response.\n\nParameters:\n* $1 - page title\n* $2 - error message from the service\n\n{{doc-growthexperiments-addlink}}",
+	"growthexperiments-addlink-duplicatesubmission": "Error message shown when trying to submit the review of a link recommendation the second time for the same revision.\n\nParameters:\n* $1 - revision ID.\n\n{{doc-growthexperiments-addlink}}"
 }

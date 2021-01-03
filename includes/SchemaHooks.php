@@ -25,6 +25,8 @@ class SchemaHooks implements LoadExtensionSchemaUpdatesHook, UnitTestsAfterDatab
 		$engine = $updater->getDB()->getType();
 		$updater->addExtensionTable( 'growthexperiments_link_recommendations',
 			"$extensionRoot/maintenance/$engine/growthexperiments_link_recommendations.sql" );
+		$updater->addExtensionTable( 'growthexperiments_link_submissions',
+			"$extensionRoot/maintenance/$engine/growthexperiments_link_submissions.sql" );
 	}
 
 	/** @inheritDoc */

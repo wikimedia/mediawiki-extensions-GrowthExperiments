@@ -136,7 +136,7 @@ class RefreshLinkRecommendations extends Maintenance {
 					// Skip them to ensure $recommendationsFound is only nonzero then we have
 					// actually added a new recommendation.
 					// FIXME there is probably a better way to do this via search offsets.
-					if ( $this->linkRecommendationStore->getByPageId( $lastRevision->getPageId(),
+					if ( $this->linkRecommendationStore->getByRevId( $lastRevision->getId(),
 						IDBAccessObject::READ_LATEST )
 					) {
 						continue;
@@ -341,7 +341,11 @@ class RefreshLinkRecommendations extends Maintenance {
 		$goodLinks = array_filter( $recommendation->getLinks(), function ( LinkRecommendationLink $link ) {
 			return $link->getProbability() >= $this->recommendationTaskType->getMinimumLinkScore();
 		} );
-		if ( count( $goodLinks ) < $this->recommendationTaskType->getMinimumLinksPerTask() ) {
+		$goodLinkIds = $this->linksToPageIds( $goodLinks );
+		$excludedLinkIds = $this->linkRecommendationStore->getExcludedLinkIds(
+			$recommendation->getPageId(), 2 );
+		$goodLinkIds = array_diff( $goodLinkIds, $excludedLinkIds );
+		if ( count( $goodLinkIds ) < $this->recommendationTaskType->getMinimumLinksPerTask() ) {
 			return false;
 		}
 
@@ -358,6 +362,23 @@ class RefreshLinkRecommendations extends Maintenance {
 			$this->error( "  Could not send search index update:\n    "
 				. implode( "    \n", (array)$result ) );
 		}
+	}
+
+	/**
+	 * Converts title strings to page IDs. Non-existent pages are omitted.
+	 * @param LinkRecommendationLink[] $links
+	 * @return int[]
+	 */
+	private function linksToPageIds( array $links ): array {
+		$linkBatch = $this->linkBatchFactory->newLinkBatch();
+		foreach ( $links as $link ) {
+			$linkBatch->addObj( $this->titleFactory->newFromTextThrow( $link->getLinkTarget() ) );
+		}
+		$ids = $linkBatch->execute();
+		// LinkBatch::execute() returns a title => ID map. Discard titles, discard
+		// 0 ID used for non-existent pages (we assume those won't be recommended anyway),
+		// squash duplicates (just in case; they shouldn't exist).
+		return array_unique( array_filter( array_values( $ids ) ) );
 	}
 
 }
