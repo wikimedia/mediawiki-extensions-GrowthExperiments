@@ -3,10 +3,9 @@
 namespace GrowthExperiments\EventLogging;
 
 use EventLogging;
-use GrowthExperiments\HomepageModules\Email;
 use GrowthExperiments\HomepageModules\Impact;
-use GrowthExperiments\HomepageModules\Tutorial;
-use GrowthExperiments\HomepageModules\Userpage;
+use GrowthExperiments\HomepageModules\StartEmail;
+use MediaWiki\Logger\LoggerFactory;
 use MWException;
 use User;
 use WebRequest;
@@ -102,31 +101,19 @@ class SpecialHomepageLogger {
 			$event['impact_module_state'] = $impactModule->getState();
 		}
 
-		/** @var Start $startModule */
-		$startModule = $this->modules['start'] ?? false;
-		if ( $startModule ) {
-			$startTasks = $startModule->getTasks();
-			/** @var Tutorial $tutorialTask */
-			$tutorialTask = $startTasks['tutorial'];
-			$event['start_tutorial_state'] = $tutorialTask->getState();
-			if ( isset( $startTasks['userpage'] ) ) {
-				/** @var Userpage $userpageTask */
-				$userpageTask = $startTasks['userpage'];
-				$event['start_userpage_state'] = $userpageTask->getState();
-			}
-			if ( isset( $startTasks['startediting'] ) ) {
-				/** @var StartEditing $startEditingTask */
-				$startEditingTask = $startTasks['startediting'];
-				$event['start_startediting_state'] = $startEditingTask->getState();
-			}
-			/** @var Email $emailTask */
-			$emailTask = $startTasks['email'];
-			$event['start_email_state'] = $emailTask->getState();
+		/** @var StartEmail $startEmailModule */
+		$startEmailModule = $this->modules['startemail'] ?? false;
+		if ( $startEmailModule ) {
+			$event['start_email_state'] = $startEmailModule->getState();
+		} else {
+			// Should not happen; it is a required schema field.
+			LoggerFactory::getInstance( 'GrowthExperiments' )
+				->error( 'Could not set HomepageVisit.start_email_state schema field' );
 		}
 
 		$event['homepage_pageview_token'] = $this->pageviewToken;
 
-		EventLogging::logEvent( 'HomepageVisit', 20021981, $event );
+		EventLogging::logEvent( 'HomepageVisit', 20816740, $event );
 	}
 
 }
