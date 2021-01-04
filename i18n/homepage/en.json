@@ -327,5 +327,13 @@
 	"growthexperiments-addlink-context-intro": "Should this link to _____?",
 	"growthexperiments-addlink-context-button-accept": "Yes",
 	"growthexperiments-addlink-context-button-reject": "No",
-	"growthexperiments-addlink-context-button-next": "Skip"
+	"growthexperiments-addlink-context-button-next": "Skip",
+	"growthexperiments-addlink-rejectiondialog-title": "Why is this not a good link? <em>(Optional)</em>",
+	"growthexperiments-addlink-rejectiondialog-message": "Your answer may be used to improve the quality of the AI suggestions.",
+	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Everyday concept that does not need explanation (e.g. \"sky\")",
+	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "Already linked earlier in the article",
+	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Incorrect link destination (e.g. linking \"sun\" to \"star\")",
+	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Tap the edit pencil $1 next to the link to change the link destination",
+	"growthexperiments-addlink-rejectiondialog-reason-other": "Other / prefer not to say",
+	"growthexperiments-addlink-rejectiondialog-action-done": "Done"
 }
