@@ -8,5 +8,9 @@
 	"apihelp-homepagequestionstore-param-questionformat": "'U formate da turnà le dumanne, p.e. HTML.",
 	"apihelp-homepagequestionstore-param-storage": "'U luèche de memorizzazzione de le dumanne.",
 	"apihelp-homepagequestionstore-param-userid": "L'ID de l'utende pe avè le dumanne.",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Nisciuna domande acchiate."
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Nisciuna domande acchiate.",
+	"apihelp-growthsetmentor-summary": "'Mboste 'u tutor de l'utende. Le cangiaminde avène reggistrate pubblecamende.",
+	"apihelp-growthsetmentor-param-mentee": "Nome utende de l'allieve",
+	"apihelp-growthsetmentor-param-mentor": "Nome utende d'u tutor",
+	"apihelp-growthsetmentor-param-reason": "Mutive pu cangiamende"
 }
