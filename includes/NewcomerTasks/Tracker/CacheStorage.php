@@ -26,16 +26,20 @@ class CacheStorage {
 	}
 
 	/**
-	 * Set the page ID in a storage bin specific to the current user.
+	 * Store the page ID and task type of a task card the user has clicked.
+	 * The store is tied to the context user.
 	 * @param int $pageId
+	 * @param string $taskTypeId
 	 * @return bool
 	 */
-	public function set( int $pageId ): bool {
+	public function set( int $pageId, string $taskTypeId ): bool {
 		return $this->cache->merge(
 			$this->getCacheKey(),
-			function ( BagOStuff $cache, $key, $oldVal ) use( $pageId ) {
-				$denormalizedOldVal = array_keys( $this->normalizeCacheData( $oldVal ) );
-				return array_unique( array_merge( [ $pageId ], $denormalizedOldVal ) );
+			function ( BagOStuff $cache, $key, $oldVal ) use( $pageId, $taskTypeId ) {
+				$oldVal = $this->normalizeCacheData( $oldVal );
+				$expires = MWTimestamp::now( TS_UNIX ) + $this->cache::TTL_WEEK;
+				$oldVal[$pageId] = [ 'type' => $taskTypeId, 'expires' => $expires ];
+				return $oldVal;
 			},
 			$this->cache::TTL_WEEK,
 			1,
@@ -44,12 +48,16 @@ class CacheStorage {
 	}
 
 	/**
-	 * @return int[] Array of page IDs that the user has visited via clicks in the
-	 *   Suggested Edits module.
+	 * Get an array of task type objects, indexed by page ID, for tasks that the user has opened
+	 * via clicks on task cards in the Suggested Edits module.
+	 * During the cache migration period the task type can be null.
+	 * @return array<int,string|null>
 	 */
 	public function get(): array {
 		$cacheData = $this->normalizeCacheData( $this->cache->get( $this->getCacheKey() ) );
-		return array_keys( $cacheData );
+		return array_map( function ( $item ) {
+			return $item['type'];
+		}, $cacheData );
 	}
 
 	private function getCacheKey() {

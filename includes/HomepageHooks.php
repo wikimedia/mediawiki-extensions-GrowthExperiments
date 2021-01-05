@@ -666,10 +666,15 @@ class HomepageHooks implements
 		if ( SuggestedEdits::isEnabled( $context ) &&
 			 SuggestedEdits::isActivated( $context )
 		) {
+			$pageId = $rc->getTitle()->getArticleID();
 			/** @var Tracker $tracker */
 			$tracker = $this->trackerFactory->getTracker( $rc->getPerformer() );
-			if ( in_array( $rc->getTitle()->getArticleID(), $tracker->getTrackedPageIds() ) ) {
-				// FIXME needs task type
+			$taskType = $tracker->getTaskTypeForPage( $pageId );
+			if ( $taskType ) {
+				$taskTypeHandler = $this->taskTypeHandlerRegistry->getByTaskType( $taskType );
+				$rc->addTags( $taskTypeHandler->getChangeTags() );
+			} elseif ( in_array( $pageId, $tracker->getTrackedPageIds() ) ) {
+				// FIXME remove this after migration period
 				$rc->addTags( SuggestedEdits::SUGGESTED_EDIT_TAG );
 			}
 		}
