@@ -61,10 +61,6 @@ class SuggestedEdits extends BaseModule {
 	 * more specific tag instead.
 	 */
 	public const SUGGESTED_EDIT_TAG = 'newcomer task';
-	/**
-	 * Change tag used to track edits made via the Add Link structured edit task type.
-	 */
-	public const ADD_LINK_TAG = 'newcomer task add link';
 
 	/** @var EditInfoService */
 	private $editInfoService;
