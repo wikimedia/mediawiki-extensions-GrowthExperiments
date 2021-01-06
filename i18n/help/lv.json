@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Papuass"
+			"Papuass",
+			"Silraks"
 		]
 	},
+	"growthexperiments-help-panel-tog-help-panel": "Iespējot redaktora palīdzības paneli",
 	"growthexperiments-help-panel-cta-button-text": "Saņem palīdzību labošanā",
 	"growthexperiments-help-panel-question-button-text": "Turpināt",
 	"growthexperiments-help-panel-submit-question-button-text": "Iesniegt",

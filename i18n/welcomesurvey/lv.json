@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Biafra",
-			"Papuass"
+			"Papuass",
+			"Silraks"
 		]
 	},
 	"welcomesurvey": "Esi {{GENDER:$1|sveicināts|sveicināta}}, $1!",
@@ -36,5 +37,6 @@
 	"welcomesurvey-question-edited-option-no-other-label": "Nē, citu iemeslu dēļ",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Es neatceros",
 	"welcomesurvey-question-email-label": "E-pasta adrese (nav obligāta)",
-	"welcomesurvey-question-email-placeholder": "Ievadi savu e-pasta adresi..."
+	"welcomesurvey-question-email-placeholder": "Ievadi savu e-pasta adresi...",
+	"welcomesurvey-question-languages-maximum": "Jūs esat pievienojis maksimālo valodu skaitu."
 }
