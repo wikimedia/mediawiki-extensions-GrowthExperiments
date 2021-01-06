@@ -26,6 +26,8 @@ use TitleValue;
  */
 class PageConfigurationLoader implements ConfigurationLoader {
 
+	use ConfigurationLoaderTrait;
+
 	/** @var string Use the configuration for OresBasedTopic topics. */
 	public const CONFIGURATION_TYPE_ORES = 'ores';
 	/** @var string Use the configuration for MorelikeBasedTopic topics. */
@@ -116,28 +118,6 @@ class PageConfigurationLoader implements ConfigurationLoader {
 
 		$this->taskTypes = $taskTypes;
 		return $taskTypes;
-	}
-
-	/** @inheritDoc */
-	public function getTaskTypes(): array {
-		$taskTypes = $this->loadTaskTypes();
-		if ( $taskTypes instanceof StatusValue ) {
-			return [];
-		}
-		return array_combine( array_map( function ( TaskType $taskType ) {
-			return $taskType->getId();
-		}, $taskTypes ), $taskTypes ) ?: [];
-	}
-
-	/** @inheritDoc */
-	public function getTopics(): array {
-		$topics = $this->loadTopics();
-		if ( $topics instanceof StatusValue ) {
-			return [];
-		}
-		return array_combine( array_map( function ( Topic $topic ) {
-			return $topic->getId();
-		}, $topics ), $topics ) ?: [];
 	}
 
 	/** @inheritDoc */
