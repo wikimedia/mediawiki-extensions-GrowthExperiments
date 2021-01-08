@@ -17,6 +17,7 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
@@ -65,6 +66,7 @@ class HomepageHooks implements
 	\MediaWiki\ChangeTags\Hook\ListDefinedTagsHook,
 	\MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook,
 	\MediaWiki\Hook\RecentChange_saveHook,
+	\MediaWiki\Storage\Hook\PageSaveCompleteHook,
 	\MediaWiki\Hook\SpecialContributionsBeforeMainOutputHook,
 	\MediaWiki\SpecialPage\Hook\SpecialPageAfterExecuteHook,
 	\MediaWiki\User\Hook\ConfirmEmailCompleteHook,
@@ -677,6 +679,21 @@ class HomepageHooks implements
 				// FIXME remove this after migration period
 				$rc->addTags( SuggestedEdits::SUGGESTED_EDIT_TAG );
 			}
+		}
+	}
+
+	/**
+	 * Invalidate configuration cache when needed.
+	 * {@inheritDoc}
+	 * @inheritDoc
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageSaveComplete
+	 */
+	public function onPageSaveComplete(
+		$wikiPage, $user, $summary, $flags, $revisionRecord, $editResult
+	) {
+		if ( $this->configurationLoader instanceof PageConfigurationLoader ) {
+			$this->configurationLoader->onPageSaveComplete( $wikiPage, $user, $summary, $flags,
+				$revisionRecord, $editResult );
 		}
 	}
 

@@ -208,8 +208,8 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * @covers ::loadTopics
 	 */
 	public function testLoadTopics_noLoader() {
-		$taskTitle = new TitleValue( NS_MAIN, 'TaskConfiguration' );
-		$pageLoader = $this->getMockPageLoader( [ '0:TaskConfiguration' => [] ] );
+		$taskTitle = new TitleValue( NS_MEDIAWIKI, 'TaskConfiguration' );
+		$pageLoader = $this->getMockPageLoader( [ '8:TaskConfiguration' => [] ] );
 		$configurationValidator = $this->createMock( ConfigurationValidator::class );
 		$taskHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
 		$configurationLoader = new PageConfigurationLoader( $this->getMockTitleFactory( [] ),
@@ -368,23 +368,23 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		}, $templates );
 
 		if ( $useTitleValues ) {
-			$taskConfigTitle = new TitleValue( NS_MAIN, 'TaskConfigPage' );
-			$topicConfigTitle = new TitleValue( NS_MAIN, 'TopicConfigPage' );
+			$taskConfigTitle = new TitleValue( NS_MEDIAWIKI, 'TaskConfigPage' );
+			$topicConfigTitle = new TitleValue( NS_MEDIAWIKI, 'TopicConfigPage' );
 			$titleFactory = $this->getMockTitleFactory( $templates );
 		} else {
-			$taskConfigTitle = 'TaskConfigPage';
-			$topicConfigTitle = 'TopicConfigPage';
+			$taskConfigTitle = 'MediaWiki:TaskConfigPage';
+			$topicConfigTitle = 'MediaWiki:TopicConfigPage';
 			$titleFactory = $this->getMockTitleFactory( [
-				$taskConfigTitle => $this->getMockTitle( $taskConfigTitle ),
-				$topicConfigTitle => $this->getMockTitle( $topicConfigTitle ),
+				$taskConfigTitle => $this->getMockTitle( 'TaskConfigPage', NS_MEDIAWIKI ),
+				$topicConfigTitle => $this->getMockTitle( 'TopicConfigPage', NS_MEDIAWIKI ),
 			] + $templates );
 		}
 		$messageLocalizer = $this->getMockMessageLocalizer( $customMessages );
 		$collation = $this->getMockCollation();
 		$configurationValidator = new ConfigurationValidator( $messageLocalizer, $collation );
 		$pageLoader = $this->getMockPageLoader( [
-			'0:TaskConfigPage' => $taskConfig,
-			'0:TopicConfigPage' => $topicConfig,
+			'8:TaskConfigPage' => $taskConfig,
+			'8:TopicConfigPage' => $topicConfig,
 		] );
 		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry( $configurationValidator );
 		return new PageConfigurationLoader( $titleFactory, $pageLoader, $configurationValidator,
@@ -407,15 +407,20 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param string $title
+	 * @param string $titleText
+	 * @param int $namespace
 	 * @return Title|MockObject
 	 */
-	protected function getMockTitle( string $titleText ) {
+	protected function getMockTitle( string $titleText, int $namespace = 0 ) {
 		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'getNamespace', 'getDBkey' ] )
+			->setMethods( [ 'getNamespace', 'inNamespace', 'getDBkey' ] )
 			->getMock();
-		$title->method( 'getNamespace' )->willReturn( 0 );
+		$title->method( 'getNamespace' )->willReturn( $namespace );
+		$title->method( 'inNamespace' )->willReturnCallback(
+			function ( $inNamespace ) use ( $namespace ) {
+				return $inNamespace === $namespace;
+			} );
 		$title->method( 'getDBkey' )->willReturn( $titleText );
 		return $title;
 	}
