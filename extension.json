@@ -1152,6 +1152,9 @@
 				"link-recommendation": {
 					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\LinkRecommendationTaskTypeHandler",
 					"services": [ "GrowthExperimentsConfigurationValidator" ]
+				},
+				"null": {
+					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\NullTaskTypeHandler"
 				}
 			}
 		},

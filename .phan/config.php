@@ -14,6 +14,7 @@ $cfg['directory_list'] = array_merge(
 		'../../extensions/Flow',
 		'../../extensions/MobileFrontend',
 		'../../extensions/Echo',
+		'.phan/stubs',
 	]
 );
 
@@ -27,6 +28,7 @@ $cfg['exclude_analysis_directory_list'] = array_merge(
 		'../../extensions/Flow',
 		'../../extensions/MobileFrontend',
 		'../../extensions/Echo',
+		'.phan/stubs',
 	]
 );
 
