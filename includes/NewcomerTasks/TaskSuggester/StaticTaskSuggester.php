@@ -31,10 +31,9 @@ class StaticTaskSuggester implements TaskSuggester {
 		UserIdentity $user,
 		array $taskTypeFilter = [],
 		array $topicFilter = [],
-		$limit = null,
-		$offset = null,
-		$debug = false,
-		$useCache = true
+		?int $limit = null,
+		?int $offset = null,
+		array $options = []
 	) {
 		$filteredTasks = array_filter( $this->tasks,
 			function ( Task $task ) use ( $taskTypeFilter, $topicFilter ) {

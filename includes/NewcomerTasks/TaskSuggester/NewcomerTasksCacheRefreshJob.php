@@ -31,8 +31,7 @@ class NewcomerTasksCacheRefreshJob extends Job implements GenericParameterJob {
 			$newcomerTaskOptions->getTopicFilter( $user ),
 			SearchTaskSuggester::DEFAULT_LIMIT,
 			null,
-			false,
-			false
+			[ 'useCache' => false ]
 		);
 		return true;
 	}

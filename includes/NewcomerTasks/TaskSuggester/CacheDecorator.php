@@ -51,16 +51,17 @@ class CacheDecorator implements TaskSuggester {
 		UserIdentity $user,
 		array $taskTypeFilter = [],
 		array $topicFilter = [],
-		$limit = null,
-		$offset = null,
-		$debug = false,
-		$useCache = true
+		?int $limit = null,
+		?int $offset = null,
+		array $options = []
 	) {
+		$useCache = $options['useCache'] ?? true;
+		$debug = $options['debug'] ?? false;
 		$taskSetFilters = new TaskSetFilters( $taskTypeFilter, $topicFilter );
 		$limit = $limit ?? SearchTaskSuggester::DEFAULT_LIMIT;
 
 		if ( $debug || $limit > SearchTaskSuggester::DEFAULT_LIMIT ) {
-			return $this->taskSuggester->suggest( $user, $taskTypeFilter, $topicFilter, $limit, $offset, $debug );
+			return $this->taskSuggester->suggest( $user, $taskTypeFilter, $topicFilter, $limit, $offset, $options );
 		}
 
 		return $this->cache->getWithSetCallback(

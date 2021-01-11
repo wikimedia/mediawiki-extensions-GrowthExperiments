@@ -109,13 +109,13 @@ class RefreshLinkRecommendations extends Maintenance {
 			$suggestions = $this->taskSuggester->suggest(
 				$this->searchUser,
 				[ $this->recommendationTaskTypeId ],
-				// FIXME the task suggester uses a different set of topics
 				[ $oresTopic ],
 				1,
 				0,
 				// Enabling the debug flag is relatively harmless, and disables all caching,
-				// which we need here.
-				true
+				// which we need here. useCache would prevent reading the cache, but would
+				// still write it, which would be just a waste of space.
+				[ 'debug' => true ]
 			);
 			$recommendationsNeeded = $this->recommendationTaskType->getMinimumTasksPerTopic()
 				- $suggestions->getTotalCount();
@@ -260,9 +260,7 @@ class RefreshLinkRecommendations extends Maintenance {
 				[ $oresTopic ],
 				$batchSize,
 				null,
-				// Enabling the debug flag is relatively harmless, and disables all caching,
-				// which we need here.
-				true
+				[ 'debug' => true ]
 			);
 			if ( $candidates instanceof StatusValue ) {
 				// FIXME exiting will make the cronjob unreliable. Not exiting might result

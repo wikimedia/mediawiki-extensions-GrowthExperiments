@@ -70,7 +70,8 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		$taskSuggester = $this->taskSuggesterFactory->create();
 
 		/** @var TaskSet $tasks */
-		$tasks = $taskSuggester->suggest( $user, $taskTypes, $topics, $limit, $offset, $debug );
+		$tasks = $taskSuggester->suggest( $user, $taskTypes, $topics, $limit, $offset,
+			[ 'debug' => $debug ] );
 		if ( $tasks instanceof StatusValue ) {
 			$this->dieStatus( $tasks );
 		}
