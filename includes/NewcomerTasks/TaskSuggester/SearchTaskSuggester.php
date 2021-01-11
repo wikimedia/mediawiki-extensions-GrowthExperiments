@@ -97,9 +97,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 
 	/** @inheritDoc */
 	public function filter( UserIdentity $user, TaskSet $taskSet ) {
-		$filters = $taskSet->getFilters();
-		$taskTypes = $filters->getTaskTypeFilters();
-		$topics = $filters->getTopicFilters();
+		$taskTypes = $taskSet->getFilters()->getTaskTypeFilters();
 
 		$pageTitles = array_map( function ( Task $task ) {
 			return $task->getTitle();
@@ -107,14 +105,16 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		$linkBatch = $this->linkBatchFactory->newLinkBatch( $pageTitles );
 		$pageIds = array_values( $linkBatch->execute() );
 
-		// TODO topic filtering is slow and topic changes don't really invalidate tasks, so it
-		//   would make sense to skip the topic filter.
-		$filteredTaskSet = $this->doSuggest( $pageIds, $user, $taskTypes, $topics, $taskSet->count() );
+		// Topic filtering is slow and topic changes don't really invalidate tasks, so just copy
+		// topic data from the old taskset instead.
+		$filteredTaskSet = $this->doSuggest( $pageIds, $user, $taskTypes, [], $taskSet->count() );
 		if ( !$filteredTaskSet instanceof TaskSet ) {
 			return $filteredTaskSet;
 		}
+		$filteredTasks = iterator_to_array( $filteredTaskSet );
+		$this->mapTopicData( $taskSet, $filteredTasks );
 
-		$finalTaskSet = new TaskSet( iterator_to_array( $filteredTaskSet ), $taskSet->getTotalCount(),
+		$finalTaskSet = new TaskSet( $filteredTasks, $taskSet->getTotalCount(),
 			$taskSet->getOffset(), $taskSet->getFilters() );
 		$finalTaskSet->setDebugData( $taskSet->getDebugData() );
 		return $finalTaskSet;
@@ -232,6 +232,27 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		int $offset,
 		bool $debug
 	);
+
+	/**
+	 * Copy topic data from the tasks in $sourceTaskSet to the tasks in $targetTasks.
+	 * @param TaskSet $sourceTaskSet
+	 * @param Task[] $targetTasks
+	 */
+	private function mapTopicData( TaskSet $sourceTaskSet, array $targetTasks ) {
+		$taskMap = [];
+		foreach ( $sourceTaskSet as $task ) {
+			$key = $task->getTitle()->getNamespace() . ':' . $task->getTitle()->getDBkey();
+			$taskMap[$key] = $task;
+		}
+
+		foreach ( $targetTasks as $task ) {
+			$key = $task->getTitle()->getNamespace() . ':' . $task->getTitle()->getDBkey();
+			$sourceTask = $taskMap[$key] ?? null;
+			if ( $sourceTask ) {
+				$task->setTopics( $sourceTask->getTopics(), $sourceTask->getTopicScores() );
+			}
+		}
+	}
 
 	/**
 	 * Set extra debug data. Only called in debug mode.

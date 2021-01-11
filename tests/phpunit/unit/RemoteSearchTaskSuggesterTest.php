@@ -568,7 +568,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				'pageids' => [ 1 ],
 				'requests' => [ [
 					'params' => [
-						'srsearch' => 'hastemplate:"MaintTempl" morelikethis:"foo" pageid:1',
+						'srsearch' => 'hastemplate:"MaintTempl" pageid:1',
 					],
 					'response' => [
 						'query' => [
@@ -583,7 +583,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				] ],
 				'expectedTaskSet' => new TaskSet( [
 					$this->getTask( [ 'type1' => [ 'MaintTempl' ] ], 'Page1',
-						[ 'topic1' => [ 'foo' ] ], [ 'topic1' => 100.0 ] ),
+						[ 'topic1' => [ 'foo' ] ], [ 'topic1' => 0.8 ] ),
 				], 100, 0, new TaskSetFilters( [ 'type1' ], [] ) ),
 			],
 			'error' => [
