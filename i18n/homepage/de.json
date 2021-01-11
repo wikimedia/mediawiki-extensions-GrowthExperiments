@@ -264,7 +264,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Kultur",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regionen",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Ungültige Konfiguration der Bearbeitungsvorschläge: Falsche Struktur",
-	"growthexperiments-homepage-suggestededits-config-invalidid": "Ungültige Konfiguration der Bearbeitungsvorschläge: Ungültige ID \"$1\" - darf nur a-z, 0-9 und \"-\" (Minus) enthalten",
+	"growthexperiments-homepage-suggestededits-config-invalidid": "Ungültige Konfiguration der Bearbeitungsvorschläge: Ungültige ID „$1“ - darf nur a-z, 0-9 und „-“ (Minus) enthalten",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Ungültige Konfiguration der Bearbeitungsvorschläge: Ungültiger <code>type</code> Parameter $1 für Aufgabentyp $2 - erlaubt sind $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Ungültige Konfiguration der Bearbeitungsvorschläge: Fehlendes Feld $1 für Aufgabentyp oder Thema $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Ungültige Konfiguration der Bearbeitungsvorschläge: Ungültige Gruppe $1 für Aufgabentyp $2",
@@ -314,8 +314,8 @@
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Weiter",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Verstanden",
 	"growthexperiments-addlink-pagenotfound": "Die Seite „$1“ ist nicht vorhanden",
-	"growthexperiments-addlink-revdeleted": "Version $1 von \"$2\" ist nicht abrufbar",
-	"growthexperiments-addlink-wrongmodel": "Version $1 von \"$2\" ist kein Wikitext",
-	"growthexperiments-addlink-invalidjson": "Die Antwort des Link-Vorschlags-Dienstes für \"$1\" ist ungültig",
-	"growthexperiments-addlink-serviceerror": "Der Link-Vorschlags-Dienst hat einen Fehler für \"$1\" zurückgegeben: $2"
+	"growthexperiments-addlink-revdeleted": "Version $1 von „$2“ ist nicht abrufbar",
+	"growthexperiments-addlink-wrongmodel": "Version $1 von „$2“ ist kein Wikitext",
+	"growthexperiments-addlink-invalidjson": "Die Antwort des Link-Vorschlags-Dienstes für „$1“ ist ungültig",
+	"growthexperiments-addlink-serviceerror": "Der Link-Vorschlags-Dienst hat einen Fehler für „$1“ zurückgegeben: $2"
 }
