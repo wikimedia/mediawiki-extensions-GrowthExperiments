@@ -94,7 +94,7 @@ class LinkRecommendationLink {
 	}
 
 	/**
-	 * A few characters of text from the artcile right before the text to be linked. Might
+	 * A few characters of text from the article right before the text to be linked. Might
 	 * be omitted (set to empty string) if the recommended link is preceded by something
 	 * that cannot easily be converted to plaintext (such as a template).
 	 * @return string
@@ -104,7 +104,7 @@ class LinkRecommendationLink {
 	}
 
 	/**
-	 * A few characters of text from the artcile right after the text to be linked. Might
+	 * A few characters of text from the article right after the text to be linked. Might
 	 * be omitted (set to empty string) if the recommended link is followed by something
 	 * that cannot easily be converted to plaintext (such as a template).
 	 * @return string
