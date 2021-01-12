@@ -81,7 +81,8 @@ class SubpageLinkRecommendationProvider implements LinkRecommendationProvider {
 
 		// Turn $title into a real Title
 		$title = $subpage->getTitle()->getBaseTitle();
-		return new LinkRecommendation( $title, $title->getArticleID(), $title->getLatestRevID(), $data );
+		$links = LinkRecommendation::getLinksFromArray( $data['links'] );
+		return new LinkRecommendation( $title, $title->getArticleID(), $title->getLatestRevID(), $links );
 	}
 
 	/**

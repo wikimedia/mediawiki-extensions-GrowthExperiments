@@ -5,30 +5,10 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 use MediaWiki\Linker\LinkTarget;
 
 /**
- * Value object for machine-generated link recommendations.
+ * Value object for machine-generated link recommendations. A link recommendation is a set of
+ * suggested LinkRecommendationItems for a given wiki page.
  */
 class LinkRecommendation {
-
-	/**
-	 * Key for the link target in the recommendation data. This is the page the recommended
-	 * link points to. The value is a page title in any format that can be parsed by TitleParser.
-	 */
-	public const FIELD_TARGET = 'target';
-	/**
-	 * Key for the text of the recommended link in the recommendation data. This text is present
-	 * and unlinked in the article revision that was used for generating recommendations.
-	 */
-	public const FIELD_TEXT = 'text';
-	/**
-	 * Key for the link index in the recommendation data. This is a 0-based index of the link,
-	 * within all occurrences of the link text.
-	 */
-	public const FIELD_INDEX = 'index';
-	/**
-	 * Key for the score  in the recommendation data. This is the confidence of the recommendation,
-	 * a number between 0 and 1.
-	 */
-	public const FIELD_SCORE = 'probability';
 
 	/** @var LinkTarget */
 	private $title;
@@ -39,20 +19,43 @@ class LinkRecommendation {
 	/** @var int */
 	private $revisionId;
 
-	/** @var array<int,array{startOffset:int,endOffset:int,anchor:string,context_plaintext:string,context_wikitext:string,linkTarget:string,probability:float}> */
+	/** @var LinkRecommendationLink[] */
 	private $links;
+
+	/**
+	 * Parse a JSON array into a LinkRecommendationLink array. This is more or less the inverse of
+	 * toArray(), except it only returns a link list, not a LinkRecommendation.
+	 * @param array $array
+	 * @return LinkRecommendationLink[]
+	 */
+	public static function getLinksFromArray( array $array ): array {
+		// FIXME this should probably live in some de/serializer class, with proper error handling.
+		$links = [];
+		foreach ( $array as $item ) {
+			$links[] = new LinkRecommendationLink(
+				$item['phrase_to_link'],
+				$item['link_target'],
+				$item['instance_occurrence'],
+				$item['probability'],
+				$item['context_before'],
+				$item['context_after'],
+				$item['insertion_order']
+			);
+		}
+		return $links;
+	}
 
 	/**
 	 * @param LinkTarget $title Page for which the recommendations were generated.
 	 * @param int $pageId Page for which the recommendations were generated.
 	 * @param int $revisionId Revision ID for which the recommendations were generated.
-	 * @param array[] $data Other state data, as provided by toArray().
+	 * @param LinkRecommendationLink[] $links List of the recommended links
 	 */
-	public function __construct( LinkTarget $title, int $pageId, int $revisionId, array $data ) {
+	public function __construct( LinkTarget $title, int $pageId, int $revisionId, array $links ) {
 		$this->title = $title;
 		$this->pageId = $pageId;
 		$this->revisionId = $revisionId;
-		$this->links = $data['links'] ?? [];
+		$this->links = $links;
 	}
 
 	/**
@@ -81,25 +84,21 @@ class LinkRecommendation {
 
 	/**
 	 * Get the links recommended for the article.
-	 * @return array[] A list of link recommendations, each an associative array with the
-	 *   fields FIELD_TARGET, FIELD_TEXT, FIELD_INDEX, FIELD_SCORE.
-	 * @see LinkRecommendation::FIELD_TARGET
-	 * @see LinkRecommendation::FIELD_TEXT
-	 * @see LinkRecommendation::FIELD_INDEX
-	 * @see LinkRecommendation::FIELD_SCORE
+	 * @return LinkRecommendationLink[]
 	 */
 	public function getLinks(): array {
 		return $this->links;
 	}
 
 	/**
-	 * JSON-ifiable data that represents all state of the object except the page identity and
+	 * JSON-ifiable data that represents the state of the object except the page identity and
 	 * revision.
-	 * @return array[] An array with the following fields:
-	 *   - links: Link recommendation data, as returned by {@see :getLinks()}.
+	 * @return array[]
 	 */
 	public function toArray(): array {
-		return [ 'links' => $this->links ];
+		return [ 'links' => array_map( function ( LinkRecommendationLink $linkRecommendationItem ) {
+			return $linkRecommendationItem->toArray();
+		}, $this->links ) ];
 	}
 
 }

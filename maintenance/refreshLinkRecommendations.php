@@ -7,6 +7,7 @@ use CirrusSearch\Query\ArticleTopicFeature;
 use Generator;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationLink;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -337,9 +338,8 @@ class RefreshLinkRecommendations extends Maintenance {
 		// conditions to happen, so we'll have to deal with them on the client side anyway. No
 		// point in getting a master connection just for that.
 
-		$goodLinks = array_filter( $recommendation->getLinks(), function ( $link ) {
-			return $link[LinkRecommendation::FIELD_SCORE]
-				>= $this->recommendationTaskType->getMinimumLinkScore();
+		$goodLinks = array_filter( $recommendation->getLinks(), function ( LinkRecommendationLink $link ) {
+			return $link->getProbability() >= $this->recommendationTaskType->getMinimumLinkScore();
 		} );
 		if ( count( $goodLinks ) < $this->recommendationTaskType->getMinimumLinksPerTask() ) {
 			return false;
