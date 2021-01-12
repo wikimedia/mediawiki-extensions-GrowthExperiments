@@ -4,23 +4,19 @@ namespace GrowthExperiments\Rest\Handler;
 
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
-use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
-use GrowthExperiments\Util;
-use GrowthExperiments\WikiConfigException;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\ParamValidator\TypeDef\TitleDef;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
-use Status;
-use StatusValue;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**
  * Provide stored recommendations for a given page.
  */
 class AddLinkSuggestionsHandler extends SimpleHandler {
+
+	use AddLinkHandlerTrait;
 
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
@@ -47,19 +43,7 @@ class AddLinkSuggestionsHandler extends SimpleHandler {
 	 * @throws HttpException
 	 */
 	public function run( LinkTarget $title ) {
-		$taskTypeId = LinkRecommendationTaskTypeHandler::TASK_TYPE_ID;
-		$taskType = $this->configurationLoader->getTaskTypes()[$taskTypeId] ?? null;
-		if ( !$taskType ) {
-			throw $this->configError( new WikiConfigException( "No such task type: $taskTypeId" ) );
-		} elseif ( !$taskType instanceof LinkRecommendationTaskType ) {
-			throw $this->configError( new WikiConfigException(
-				"Not a link recommendation task type: $taskTypeId" ) );
-		}
-		$recommendation = $this->linkRecommendationProvider->get( $title, $taskType );
-		if ( $recommendation instanceof StatusValue ) {
-			$error = Status::wrap( $recommendation )->getWikiText();
-			return $this->getResponseFactory()->createHttpError( 404, [ 'error' => $error ] );
-		}
+		$recommendation = $this->getLinkRecommendation( $title );
 		return [ 'recommendation' => $recommendation->toArray() ];
 	}
 
@@ -78,15 +62,6 @@ class AddLinkSuggestionsHandler extends SimpleHandler {
 				TitleDef::PARAM_RETURN_OBJECT => true,
 			],
 		];
-	}
-
-	/**
-	 * @param WikiConfigException $error
-	 * @return HttpException
-	 */
-	private function configError( WikiConfigException $error ): HttpException {
-		Util::logError( $error );
-		return new HttpException( $error->getMessage() );
 	}
 
 }

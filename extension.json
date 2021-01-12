@@ -75,6 +75,18 @@
 			"method": "GET",
 			"class": "GrowthExperiments\\Rest\\Handler\\AddLinkSuggestionsHandler",
 			"services": [ "GrowthExperimentsConfigurationLoader", "GrowthExperimentsLinkRecommendationProvider" ]
+		},
+		{
+			"path": "/growthexperiments/v0/suggestions/addlink/{title}",
+			"method": "POST",
+			"class": "GrowthExperiments\\Rest\\Handler\\AddLinkSubmissionHandler",
+			"services": [
+				"GrowthExperimentsConfigurationLoader",
+				"GrowthExperimentsLinkRecommendationProvider",
+				"GrowthExperimentsLinkSubmissionRecorder",
+				"TitleParser",
+				"TitleFormatter"
+			]
 		}
 	],
 	"HookHandlers": {

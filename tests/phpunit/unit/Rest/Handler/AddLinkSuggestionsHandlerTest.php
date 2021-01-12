@@ -9,6 +9,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\Rest\Handler\AddLinkSuggestionsHandler;
+use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\ResponseFactory;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -48,7 +49,9 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiUnitTestCase {
 
 		$this->assertSame( [ 'recommendation' => [ 'links' => $linkData ] ], $handler->run( $goodTitle ) );
 
-		$this->assertSame( [ 'response' => [ 'error' => 'error' ] ], $handler->run( $badTitle ) );
+		$this->expectException( HttpException::class );
+		$this->expectExceptionMessage( 'error' );
+		$handler->run( $badTitle );
 	}
 
 	/**
