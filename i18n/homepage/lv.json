@@ -77,6 +77,7 @@
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Seko līdzi savu laboto rakstu skatījumiem",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Palīdzības dienesta paziņojumi",
 	"growthexperiments-tour-response-tip-text": "Kad {{GENDER:$1|tavs}} jautājums tiks atbildēts, {{GENDER:$1|tu}} šeit saņemsi jaunu paziņojumu.",
+	"growthexperiments-tour-mentor-response-tip-personal-title": "Mentora paziņojumi",
 	"growthexperiments-tour-response-button-okay": "Sapratu",
 	"tag-help_module_question": "Palīdzības moduļa jautājums",
 	"tag-help_module_question-description": "Labojums veikts no sākumlapas palīdzības moduļa jautājuma uzdošanas iespējas",
