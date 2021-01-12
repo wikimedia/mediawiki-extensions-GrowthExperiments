@@ -8,6 +8,8 @@ class LinkRecommendationTaskTypeHandler extends TaskTypeHandler {
 
 	public const ID = 'link-recommendation';
 
+	public const TASK_TYPE_ID = 'link-recommendation';
+
 	public const CHANGE_TAG = 'newcomer task add link';
 
 	/** @inheritDoc */

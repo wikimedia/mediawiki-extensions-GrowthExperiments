@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use MediaWiki\Linker\LinkTarget;
 use StatusValue;
 
@@ -15,8 +16,9 @@ interface LinkRecommendationProvider {
 	 * A warning status is used when the title had no recommendations, and a fatal status when
 	 * there was some unexpected error.
 	 * @param LinkTarget $title
+	 * @param LinkRecommendationTaskType $taskType
 	 * @return LinkRecommendation|StatusValue
 	 */
-	public function get( LinkTarget $title );
+	public function get( LinkTarget $title, LinkRecommendationTaskType $taskType );
 
 }

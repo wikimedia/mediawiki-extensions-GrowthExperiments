@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Revision\RevisionLookup;
@@ -54,7 +55,7 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 	}
 
 	/** @inheritDoc */
-	public function get( LinkTarget $title ) {
+	public function get( LinkTarget $title, LinkRecommendationTaskType $taskType ) {
 		$title = $this->titleFactory->newFromLinkTarget( $title );
 		$pageId = $title->getArticleID();
 		$titleText = $title->getPrefixedText();
@@ -77,9 +78,8 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 			'pageid' => $pageId,
 			'revid' => $revId,
 			'wikitext' => $wikitext,
-			// TODO make this configurable (on-wiki?)
-			'threshold' => 0.5,
-			'max_recommendations' => 20,
+			'threshold' => $taskType->getMinimumLinkScore(),
+			'max_recommendations' => $taskType->getMaximumLinksPerTask(),
 		];
 		$request = $this->httpRequestFactory->create(
 			$this->url . '/query',

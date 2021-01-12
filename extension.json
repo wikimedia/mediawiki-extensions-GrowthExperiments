@@ -74,7 +74,7 @@
 			"path": "/growthexperiments/v0/suggestions/addlink/{title}",
 			"method": "GET",
 			"class": "GrowthExperiments\\Rest\\Handler\\AddLinkSuggestionsHandler",
-			"services": [ "GrowthExperimentsLinkRecommendationProvider" ]
+			"services": [ "GrowthExperimentsConfigurationLoader", "GrowthExperimentsLinkRecommendationProvider" ]
 		}
 	],
 	"HookHandlers": {
