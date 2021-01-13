@@ -1,6 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
+			"Johnstad Di Maria",
+			"Notanotheramy",
 			"Rachmat04"
 		]
 	},
@@ -9,6 +11,9 @@
 	"apihelp-helppanelquestionposter-param-source": "Metode yang digunakan ketika mengirimkan pertanyaan itu.",
 	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Panel \"Tanya di meja bantuan\"",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Panel \"Tanya pada mentor Anda\" di halaman beranda pengguna baru",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Layar \"Tanyakan mentor Anda\" pada panel bantuan",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Panel (nama lama) \"Tanya meja bantuan\"",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Panel di halaman pengguna baru (nama lama) \"Tanya mentor Anda\"",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Judul yang relevan, jika dipilih, untuk disertakan dengan pertanyaan tersebut.",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Anda wajib masuk log untuk bertanya."
 }
