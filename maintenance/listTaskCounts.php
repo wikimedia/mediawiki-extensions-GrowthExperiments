@@ -5,6 +5,8 @@ namespace GrowthExperiments\Maintenance;
 use GrowthExperiments\GrowthExperimentsServices;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
+use Status;
+use StatusValue;
 use User;
 
 $path = dirname( dirname( dirname( __DIR__ ) ) );
@@ -37,10 +39,7 @@ class ListTaskCounts extends Maintenance {
 		$dummyUser = new User;
 		$allTaskTypes = array_keys( $services->getConfigurationLoader()->getTaskTypes() );
 		$taskTypes = $this->getOption( 'tasktype', $allTaskTypes );
-		$topics = $services->getConfigurationLoader()->loadTopics();
-		$topicIds = array_map( function ( $topic ) {
-			return $topic->getId();
-		}, $topics );
+		$topicIds = array_keys( $services->getConfigurationLoader()->getTopics() );
 
 		// Output header
 		$this->output( str_pad( 'Topic', 25, ' ' ) . ' ' );
@@ -52,7 +51,11 @@ class ListTaskCounts extends Maintenance {
 		foreach ( $topicIds as $topicId ) {
 			$this->output( str_pad( $topicId, 25, ' ' ) . ' ' );
 			foreach ( $taskTypes as $taskType ) {
-				$numTasks = count( $taskSuggester->suggest( $dummyUser, [ $taskType ], [ $topicId ] ) );
+				$tasks = $taskSuggester->suggest( $dummyUser, [ $taskType ], [ $topicId ], 1 );
+				if ( $tasks instanceof StatusValue ) {
+					$this->fatalError( Status::wrap( $tasks )->getWikiText( null, null, 'en' ) );
+				}
+				$numTasks = $tasks->getTotalCount();
 				$this->output( str_pad( $numTasks, 3, ' ', STR_PAD_RIGHT ) . str_repeat( ' ', 8 ) );
 			}
 			$this->output( "\n" );
