@@ -95,6 +95,10 @@ class RefreshLinkRecommendations extends Maintenance {
 	}
 
 	public function execute() {
+		if ( !$this->getConfig()->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
+			$this->output( 'Disabled' );
+			return;
+		}
 		$this->initServices();
 		$this->initConfig();
 

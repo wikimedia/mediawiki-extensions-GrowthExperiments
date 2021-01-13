@@ -66,6 +66,26 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @covers ::loadTaskTypes
+	 */
+	public function testLoadTaskTypes_disabled() {
+		$configurationLoader = $this->getConfigurationLoader( $this->getTaskConfig(), [],
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		$configurationLoader->disableTaskType( 'copyedit' );
+		$this->assertArrayEquals( [ 'references' ], array_map( function ( TaskType $tt ) {
+			return $tt->getId();
+		}, $configurationLoader->loadTaskTypes() ) );
+
+		$configurationLoader = $this->getConfigurationLoader( $this->getTaskConfig(), [],
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		$configurationLoader->disableTaskType( 'copyedit' );
+		$configurationLoader->disableTaskType( 'references' );
+		$this->assertArrayEquals( [], array_map( function ( TaskType $tt ) {
+			return $tt->getId();
+		}, $configurationLoader->loadTaskTypes() ) );
+	}
+
+	/**
+	 * @covers ::loadTaskTypes
 	 * @dataProvider provideLoadTaskTypes_error
 	 */
 	public function testLoadTaskTypes_error( $error ) {

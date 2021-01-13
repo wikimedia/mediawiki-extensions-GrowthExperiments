@@ -69,6 +69,7 @@ class AddLinkSubmissionHandler extends SimpleHandler {
 	 * @throws HttpException
 	 */
 	public function run( LinkTarget $title ) {
+		$this->assertLinkRecommendationsEnabled( RequestContext::getMain() );
 		$user = RequestContext::getMain()->getUser();
 		if ( $user->isAnon() ) {
 			throw new HttpException( 'Must be logged in', 403 );

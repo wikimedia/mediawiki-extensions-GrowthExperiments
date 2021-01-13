@@ -268,4 +268,13 @@ class Util {
 		return $url;
 	}
 
+	/**
+	 * Check whether link recommendations are enabled for the current user.
+	 * @param IContextSource $contextSource
+	 * @return bool
+	 */
+	public static function areLinkRecommendationsEnabled( IContextSource $contextSource ): bool {
+		return (bool)$contextSource->getConfig()->get( 'GENewcomerTasksLinkRecommendationsEnabled' );
+	}
+
 }

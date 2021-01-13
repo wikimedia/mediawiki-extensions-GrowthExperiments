@@ -11,19 +11,20 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\Rest\Handler\AddLinkSuggestionsHandler;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\ResponseFactory;
-use MediaWikiUnitTestCase;
+use MediaWikiIntegrationTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use RawMessage;
 use StatusValue;
 use TitleValue;
 use Wikimedia\TestingAccessWrapper;
 
-class AddLinkSuggestionsHandlerTest extends MediaWikiUnitTestCase {
+class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers \GrowthExperiments\Rest\Handler\AddLinkSuggestionsHandler::run
 	 */
 	public function testRun() {
+		$this->setMwGlobals( 'wgGENewcomerTasksLinkRecommendationsEnabled', true );
 		$goodTitle = new TitleValue( NS_USER, 'Foo' );
 		$badTitle = new TitleValue( NS_USER, 'Bar' );
 		$linkData = [ [
