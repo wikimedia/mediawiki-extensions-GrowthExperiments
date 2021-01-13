@@ -9,6 +9,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\Util;
 use GrowthExperiments\WikiConfigException;
+use IContextSource;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Rest\HttpException;
 use Status;
@@ -21,6 +22,16 @@ trait AddLinkHandlerTrait {
 
 	/** @var LinkRecommendationProvider */
 	private $linkRecommendationProvider;
+
+	/**
+	 * @param IContextSource $contextSource
+	 * @throws HttpException
+	 */
+	protected function assertLinkRecommendationsEnabled( IContextSource $contextSource ) {
+		if ( !Util::areLinkRecommendationsEnabled( $contextSource ) ) {
+			throw new HttpException( 'Disabled', 404 );
+		}
+	}
 
 	/**
 	 * Return the link recommendation stored for the given title.

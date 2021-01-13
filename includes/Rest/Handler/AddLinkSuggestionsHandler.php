@@ -9,6 +9,7 @@ use MediaWiki\ParamValidator\TypeDef\TitleDef;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
+use RequestContext;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**
@@ -43,6 +44,7 @@ class AddLinkSuggestionsHandler extends SimpleHandler {
 	 * @throws HttpException
 	 */
 	public function run( LinkTarget $title ) {
+		$this->assertLinkRecommendationsEnabled( RequestContext::getMain() );
 		$recommendation = $this->getLinkRecommendation( $title );
 		return [ 'recommendation' => $recommendation->toArray() ];
 	}

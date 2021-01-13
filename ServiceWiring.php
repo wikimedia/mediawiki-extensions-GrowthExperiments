@@ -30,6 +30,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggesterFacto
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use MediaWiki\Config\ServiceOptions;
@@ -79,6 +80,9 @@ return [
 			$topicConfigTitle,
 			$topicType
 		);
+		if ( !$config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
+			$configurationLoader->disableTaskType( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID );
+		}
 		return $configurationLoader;
 	},
 

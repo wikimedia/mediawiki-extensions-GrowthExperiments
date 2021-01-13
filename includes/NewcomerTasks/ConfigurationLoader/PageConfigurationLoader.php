@@ -58,6 +58,9 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 	/** @var LinkTarget|null */
 	private $topicConfigurationPage;
 
+	/** @var array */
+	private $disabledTaskTypes = [];
+
 	/** @var TaskType[]|StatusValue|null Cached task type set (or an error). */
 	private $taskTypes;
 
@@ -105,6 +108,17 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 		}
 	}
 
+	/**
+	 * Hide the existence of the given task type. Must be called before task types are loaded.
+	 * @param string $taskTypeId
+	 */
+	public function disableTaskType( string $taskTypeId ): void {
+		if ( $this->taskTypes !== null ) {
+			throw new LogicException( __METHOD__ . ' must be called before task types are loaded' );
+		}
+		$this->disabledTaskTypes[] = $taskTypeId;
+	}
+
 	/** @inheritDoc */
 	public function loadTaskTypes() {
 		if ( $this->taskTypes !== null ) {
@@ -116,6 +130,12 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 			$taskTypes = $config;
 		} else {
 			$taskTypes = $this->parseTaskTypesFromConfig( $config );
+		}
+
+		if ( !$taskTypes instanceof StatusValue ) {
+			$taskTypes = array_filter( $taskTypes, function ( TaskType $taskType ) {
+				return !in_array( $taskType->getId(), $this->disabledTaskTypes, true );
+			} );
 		}
 
 		$this->taskTypes = $taskTypes;
