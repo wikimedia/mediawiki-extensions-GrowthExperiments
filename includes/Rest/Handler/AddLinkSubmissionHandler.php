@@ -103,7 +103,8 @@ class AddLinkSubmissionHandler extends SimpleHandler {
 		if ( !$status->isOK() ) {
 			throw new HttpException( Status::wrap( $status )->getWikiText( null, null, 'en' ) );
 		}
-		return [ 'success' => true ];
+		$result = $status->getValue();
+		return [ 'success' => true, 'logId' => $result['logId'] ];
 	}
 
 	/** @inheritDoc */
