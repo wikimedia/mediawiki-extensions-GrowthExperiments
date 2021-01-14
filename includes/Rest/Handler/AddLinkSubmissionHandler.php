@@ -83,6 +83,7 @@ class AddLinkSubmissionHandler extends SimpleHandler {
 		// FIXME fix JsonBodyValidator so it actually validates
 		$data = $this->getValidatedBody();
 		$baseRevId = (int)$data['baseRevId'];
+		$editRevId = (int)$data['editRevId'] ?: null;
 		$acceptedTargets = $this->normalizeTargets( $data['acceptedTargets'] ?: [] );
 		$rejectedTargets = $this->normalizeTargets( $data['rejectedTargets'] ?: [] );
 		$skippedTargets = $this->normalizeTargets( $data['skippedTargets'] ?: [] );
@@ -99,7 +100,7 @@ class AddLinkSubmissionHandler extends SimpleHandler {
 		}
 
 		$status = $this->addLinkSubmissionRecorder->record( $user, $linkRecommendation, $acceptedTargets,
-			$rejectedTargets, $skippedTargets );
+			$rejectedTargets, $skippedTargets, $editRevId );
 		if ( !$status->isOK() ) {
 			throw new HttpException( Status::wrap( $status )->getWikiText( null, null, 'en' ) );
 		}
@@ -126,6 +127,11 @@ class AddLinkSubmissionHandler extends SimpleHandler {
 				self::PARAM_SOURCE => 'body',
 				ParamValidator::PARAM_TYPE => 'integer',
 				ParamValidator::PARAM_REQUIRED => true,
+			],
+			'editRevId' => [
+				self::PARAM_SOURCE => 'body',
+				ParamValidator::PARAM_TYPE => 'integer',
+				ParamValidator::PARAM_REQUIRED => false,
 			],
 			'acceptedTargets' => [
 				self::PARAM_SOURCE => 'body',

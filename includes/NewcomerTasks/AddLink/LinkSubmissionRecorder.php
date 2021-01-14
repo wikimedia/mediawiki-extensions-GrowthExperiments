@@ -2,15 +2,42 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
+use IDBAccessObject;
 use ManualLogEntry;
+use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\User\UserIdentity;
 use StatusValue;
+use TitleParser;
 
 /**
  * Record information about a user accepting/rejecting parts of a link recommendation.
  * This involves creating a log entry and updating an article-specific exclusion list.
  */
 class LinkSubmissionRecorder {
+
+	/** @var TitleParser */
+	private $titleParser;
+
+	/** @var LinkBatchFactory */
+	private $linkBatchFactory;
+
+	/** @var LinkRecommendationStore */
+	private $linkRecommendationStore;
+
+	/**
+	 * @param TitleParser $titleParser
+	 * @param LinkBatchFactory $linkBatchFactory
+	 * @param LinkRecommendationStore $linkRecommendationStore
+	 */
+	public function __construct(
+		TitleParser $titleParser,
+		LinkBatchFactory $linkBatchFactory,
+		LinkRecommendationStore $linkRecommendationStore
+	) {
+		$this->titleParser = $titleParser;
+		$this->linkBatchFactory = $linkBatchFactory;
+		$this->linkRecommendationStore = $linkRecommendationStore;
+	}
 
 	/**
 	 * Record the results of a user reviewing a link recommendation.
@@ -19,6 +46,8 @@ class LinkSubmissionRecorder {
 	 * @param string[] $acceptedTargets
 	 * @param string[] $rejectedTargets
 	 * @param string[] $skippedTargets
+	 * @param int|null $editRevId Revision ID of the edit adding the links (might be null since
+	 *   it's not necessary that any links have been added).
 	 * @return StatusValue
 	 */
 	public function record(
@@ -26,8 +55,23 @@ class LinkSubmissionRecorder {
 		LinkRecommendation $linkRecommendation,
 		array $acceptedTargets,
 		array $rejectedTargets,
-		array $skippedTargets
+		array $skippedTargets,
+		?int $editRevId
 	): StatusValue {
+		if ( $this->linkRecommendationStore->hasSubmission( $linkRecommendation,
+			IDBAccessObject::READ_LOCKING )
+		) {
+			return StatusValue::newFatal( 'growthexperiments-addlink-duplicatesubmission',
+				$linkRecommendation->getRevisionId() );
+		}
+		$this->linkRecommendationStore->recordSubmission(
+			$user,
+			$linkRecommendation,
+			$this->titlesToPageIds( $acceptedTargets ),
+			$this->titlesToPageIds( $rejectedTargets ),
+			$this->titlesToPageIds( $skippedTargets ),
+			$editRevId
+		);
 		$logId = $this->log( $user, $linkRecommendation,
 			count( $acceptedTargets ) + count( $rejectedTargets ) + count( $skippedTargets ) );
 		return StatusValue::newGood( [ 'logId' => $logId ] );
@@ -54,6 +98,24 @@ class LinkSubmissionRecorder {
 		// be inspected or patrolled.
 		$logEntry->publish( $logId, 'udp' );
 		return $logId;
+	}
+
+	/**
+	 * Converts title strings to page IDs. Non-existent pages are omitted.
+	 * @param string[] $titles
+	 * @return int[]
+	 */
+	private function titlesToPageIds( array $titles ): array {
+		$linkBatch = $this->linkBatchFactory->newLinkBatch();
+		foreach ( $titles as $title ) {
+			// ensuring that the title is valid is left to the caller
+			$linkBatch->addObj( $this->titleParser->parseTitle( $title ) );
+		}
+		$ids = $linkBatch->execute();
+		// LinkBatch::execute() returns a title => ID map. Discard titles, discard
+		// 0 ID used for non-existent pages (we assume those won't be recommended anyway),
+		// squash duplicates (just in case; they shouldn't exist).
+		return array_unique( array_filter( array_values( $ids ) ) );
 	}
 
 }
