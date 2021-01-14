@@ -7,5 +7,11 @@
 	"apihelp-helppanelquestionposter-summary": "Gestisce le domande mannate cu 'u pannelle de aijute pe l'utende de mò.",
 	"apihelp-helppanelquestionposter-param-body": "'U teste d'a domande date da l'utende.",
 	"apihelp-helppanelquestionposter-param-source": "'U metode ausate pe mannà 'a resposte.",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "'U titole rilevande, ce scacchiate, 'da 'ngludere cu 'a domande."
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "'U pannelle \"Cirche a 'u sportelle 'mbormaziune\"",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "'U pannelle \"Cirche a 'u tutor tune\" sus 'a pàgene iniziale",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "'A schermate \"Cirche a 'u tutor tune\" jndr'à 'u pannelle d'aijute",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "'U pannelle \"Cirche a 'u sportelle 'mbormaziune\" (nome vecchie)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "'U pannelle \"Cirche a 'u tutor tune\" sus 'a pàgene iniziale (nome vecchie)",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "'U titole rilevande, ce scacchiate, 'da 'ngludere cu 'a domande.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "A trasè pe fà 'na domande."
 }

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dedalus",
 			"Dutchy45",
 			"Elroy",
 			"Mainframe98"
@@ -8,13 +9,20 @@
 	},
 	"welcomesurvey": "{{GENDER:$1|Welkom}}, $1!",
 	"welcomesurvey-save-confirmation-title": "Bedankt! Uw antwoorden zijn opgeslagen.",
+	"welcomesurvey-save-confirmation-text": "Jouw antwoorden helpen ons je bruikbare hints te geven om van start te gaan op Wikipedia.",
+	"welcomesurvey-subtitle": "Help ons jouw ervaring met Wikipedia te verbeteren door het beantwoorden van enkele optionele vragen.",
 	"welcomesurvey-save-btn": "Voltooien",
-	"welcomesurvey-skip-btn": "Deze enquete overslaan",
+	"welcomesurvey-skip-btn": "Deze enquête overslaan",
 	"welcomesurvey-close-btn": "Sluiten en teruggaan naar $1",
+	"welcomesurvey-sidebar-privacy-title": "We vinden jouw privacy belangrijk",
+	"welcomesurvey-sidebar-privacy-text": "De Wikimedia Foundation zal je antwoorden gebruiken om je op weg te helpen met het bewerken van {{SITENAME}}. $1",
 	"welcomesurvey-privacy-policy-link-text": "Leer meer over data bij nieuwe editors",
 	"welcomesurvey-sidebar-editing-title": "Beginnen met bewerken",
+	"welcomesurvey-sidebar-editing-text": "Iedereen kan bijna iedere pagina bewerken en honderden bewerkingen worden ieder uur gemaakt om inhoud toe te voegen, fouten te verbeteren, en de leesbaarheid te verbeteren. De volgende pagina's kunnen je helpen wanneer je geïnteresseerd bent om bij te dragen.",
 	"welcomesurvey-sidebar-editing-link1-text": "Zelfstudie",
+	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:Snelcursus",
 	"welcomesurvey-sidebar-editing-link2-text": "Helpdesk",
+	"welcomesurvey-sidebar-editing-link2-title": "Help:Helpdesk",
 	"welcomesurvey-question-reason-label": "Waarom hebt u vandaag een account aangemaakt?",
 	"welcomesurvey-dropdown-option-select-label": "Maak een keuze",
 	"welcomesurvey-question-reason-option-edit-typo-label": "Om een (schrijf)fout in een Wikipedia artikel te verbeteren",
@@ -23,8 +31,11 @@
 	"welcomesurvey-question-reason-option-new-page-label": "Om een nieuw Wikipedia artikel toe te voegen",
 	"welcomesurvey-question-reason-option-program-participant-label": "Ik neem deel aan een programma, les of gebeurtenis",
 	"welcomesurvey-question-reason-option-read-label": "Om Wikipedia te lezen",
-	"welcomesurvey-question-reason-other-placeholder": "Voer een reden in...",
-	"welcomesurvey-question-mentor-label": "Ja, ik ben geïnteresseerd",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Overige",
+	"welcomesurvey-question-reason-option-other-label": "Overige (omschrijf alsjeblieft)",
+	"welcomesurvey-question-reason-other-placeholder": "Voer een reden in ...",
+	"welcomesurvey-question-mentor-info": "We overwegen om een programma te starten voor meer ervaren gebruikers om nieuwere gebruikers te helpen met bewerken. Ben jij erin geïnteresseerd dat iemand contact met je opneemt om hulp te krijgen bij bewerken?",
+	"welcomesurvey-question-mentor-label": "Jazeker, ik ben geïnteresseerd",
 	"welcomesurvey-question-edited-label": "Heeft u Wikipedia ooit bewerkt?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Ja, meerdere keren",
 	"welcomesurvey-question-edited-option-yes-few-label": "Ja, een of twee keer",
@@ -32,5 +43,9 @@
 	"welcomesurvey-question-edited-option-no-other-label": "Nee, vanwege andere redenen",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Ik kan het me niet herinneren",
 	"welcomesurvey-question-email-label": "E-mailadres (optioneel)",
-	"welcomesurvey-question-email-placeholder": "Voer uw e-mailadres in..."
+	"welcomesurvey-question-email-placeholder": "Voer uw e-mailadres in...",
+	"welcomesurvey-question-email-help": "We merkten dat je geen e-mailadres hebt ingevoerd toen je dit account aanmaakte. We <strong>raden je sterk aan </strong> om een e-mailadres op te geven, omdat e-mail nodig is om je account te kunnen herstellen mocht je je wachtwoord kwijtraken. Nota bene: Je e-mailadres wordt niet getoond wanneer anderen contact met jou opnemen.",
+	"welcomesurvey-question-languages-label": "{{SITENAME}} is beschikbaar in bijna 300 talen. Zijn er andere talen waarin je kunt lezen en schrijven?",
+	"welcomesurvey-question-languages-placeholder": "Voeg {{PLURAL:$1|een taal|$1 meerdere talen}} toe ...",
+	"welcomesurvey-question-languages-maximum": "Je hebt het maximum aantal talen toegevoegd."
 }
