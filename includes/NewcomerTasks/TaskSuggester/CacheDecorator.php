@@ -50,6 +50,8 @@ class CacheDecorator implements TaskSuggester {
 	) {
 		$useCache = $options['useCache'] ?? true;
 		$revalidateCache = $options['revalidateCache'] ?? true;
+		// FIXME revalidation disabled until we find a fix for T272103
+		$revalidateCache = false;
 		$debug = $options['debug'] ?? false;
 		$taskSetFilters = new TaskSetFilters( $taskTypeFilter, $topicFilter );
 		$limit = $limit ?? SearchTaskSuggester::DEFAULT_LIMIT;
@@ -75,6 +77,7 @@ class CacheDecorator implements TaskSuggester {
 					// &$ttl needs to be set to UNCACHEABLE so that WANObjectCache
 					// doesn't attempt a set() after returning the existing value.
 					$ttl = $this->cache::TTL_UNCACHEABLE;
+					// @phan-suppress-next-line PhanImpossibleCondition
 					if ( $revalidateCache ) {
 						// Filter out cached tasks which have already been done.
 						// Filter before limiting, so they can be replace by other tasks.
