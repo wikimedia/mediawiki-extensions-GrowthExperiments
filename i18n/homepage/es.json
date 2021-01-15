@@ -10,6 +10,7 @@
 			"Joanmp17",
 			"Jorge Ubilla",
 			"MarcoAurelio",
+			"MarleneR329",
 			"Rodney Araujo",
 			"Wizardeck"
 		]
@@ -92,6 +93,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-description-links": "Añadir enlaces es la manera más fácil de editar. Enlaces ayudan a lectors a moverse entre artículos para aprender más rápidamente.",
 	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "Ampliar artículos breves",
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Añadir enlaces entre artículos",
+	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "Añadir enlaces entre artículos",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Crear un artículo nuevo",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Más información",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3-5 minutos",
@@ -114,6 +116,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Actualizar artículos",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Ampliar artículos cortos",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Añadir enlaces entre artículos",
+	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Añadir enlaces entre artículos",
 	"growthexperiments-homepage-suggestededits-topic-name-literature": "Literatura",
 	"growthexperiments-homepage-suggestededits-topic-name-tv-and-film": "Cine y televisión",
 	"growthexperiments-homepage-suggestededits-topic-name-music": "Música",
