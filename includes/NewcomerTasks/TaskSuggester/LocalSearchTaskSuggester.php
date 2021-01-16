@@ -8,8 +8,10 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use ISearchResultSet;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Logger\LoggerFactory;
 use SearchEngine;
 use SearchEngineFactory;
 use SpecialPage;
@@ -68,19 +70,16 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 			$searchEngine->setSort( $sort );
 		}
 		$matches = $searchEngine->searchText( $query->getQueryString() );
-		if ( $matches instanceof StatusValue ) {
-			if ( !$matches->isOK() ) {
-				return $matches;
-			} else {
-				$matches = $matches->getValue();
-			}
-		}
 		if ( !$matches ) {
-			return StatusValue::newFatal( new ApiRawMessage(
+			$matches = StatusValue::newFatal( new ApiRawMessage(
 				'Full text searches are unsupported or disabled',
 				'grothexperiments-no-fulltext-search'
 			) );
+		} elseif ( $matches instanceof StatusValue && $matches->isOK() ) {
+			$matches = $matches->getValue();
+			/** @var ISearchResultSet $matches */
 		}
+
 		if ( $debug ) {
 			$params = [
 				'search' => $query->getQueryString(),
@@ -98,6 +97,13 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 			$query->setDebugUrl( SpecialPage::getTitleFor( 'Search' )
 				->getFullURL( $params, false, PROTO_CANONICAL ) );
 		}
+		LoggerFactory::getInstance( 'GrowthExperiments' )->debug( 'LocalSearchTaskSuggester query', [
+			'query' => $query->getQueryString(),
+			'sort' => $query->getSort(),
+			'limit' => $limit,
+			'success' => $matches instanceof ISearchResultSet,
+		] );
+
 		return $matches;
 	}
 

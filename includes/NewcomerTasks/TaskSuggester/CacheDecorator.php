@@ -5,6 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use JobQueueGroup;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserIdentity;
 use WANObjectCache;
 
@@ -82,6 +83,16 @@ class CacheDecorator implements TaskSuggester {
 					} else {
 						$newValue = $oldValue;
 					}
+					LoggerFactory::getInstance( 'GrowthExperiments' )->debug( 'CacheDecorator hit', [
+						'user' => $user->getName(),
+						'taskTypes' => implode( '|', $taskSetFilters->getTaskTypeFilters() ),
+						'topics' => implode( '|', $taskSetFilters->getTopicFilters() ) ?: null,
+						'limit' => $limit,
+						'revalidateCache' => $revalidateCache,
+						'ttl' => $ttl,
+						'cachedTaskCount' => $oldValue->count(),
+						'validTaskCount' => ( $newValue instanceof TaskSet ) ? $newValue->count() : null,
+					] );
 					if ( $newValue instanceof TaskSet ) {
 						// Shuffle the contents again (they were shuffled when first placed into the
 						// cache) and return only the subset of tasks that the requester asked for.
@@ -114,6 +125,14 @@ class CacheDecorator implements TaskSuggester {
 						] )
 					);
 				}
+				LoggerFactory::getInstance( 'GrowthExperiments' )->debug( 'CacheDecorator miss', [
+					'user' => $user->getName(),
+					'taskTypes' => implode( '|', $taskSetFilters->getTaskTypeFilters() ),
+					'topics' => implode( '|', $taskSetFilters->getTopicFilters() ) ?: null,
+					'limit' => $limit,
+					'useCache' => $useCache,
+					'taskCount' => ( $result instanceof TaskSet ) ? $result->count() : null,
+				] );
 				return $result;
 			},
 			// minAsOf is used to reject values below the defined timestamp. By
