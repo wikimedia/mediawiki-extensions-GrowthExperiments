@@ -72,8 +72,13 @@ class LinkSubmissionRecorder {
 			$this->titlesToPageIds( $skippedTargets ),
 			$editRevId
 		);
-		$logId = $this->log( $user, $linkRecommendation,
-			count( $acceptedTargets ) + count( $rejectedTargets ) + count( $skippedTargets ) );
+		$logId = $this->log(
+			$user,
+			$linkRecommendation,
+			count( $acceptedTargets ),
+			count( $rejectedTargets ),
+			count( $skippedTargets )
+		);
 		return StatusValue::newGood( [ 'logId' => $logId ] );
 	}
 
@@ -81,18 +86,29 @@ class LinkSubmissionRecorder {
 	 * Make a Special:Log entry.
 	 * @param UserIdentity $user
 	 * @param LinkRecommendation $linkRecommendation
-	 * @param int $linkCount Number of reviewed links.
+	 * @param int $acceptedLinkCount
+	 * @param int $rejectedLinkCount
+	 * @param int $skippedLinkCount
 	 * @return int Log ID.
 	 */
 	private function log(
 		UserIdentity $user,
 		LinkRecommendation $linkRecommendation,
-		int $linkCount
+		int $acceptedLinkCount,
+		int $rejectedLinkCount,
+		int $skippedLinkCount
 	): int {
+		$totalLinkCount = $acceptedLinkCount + $rejectedLinkCount + $skippedLinkCount;
+
 		$logEntry = new ManualLogEntry( 'growthexperiments', 'addlink' );
 		$logEntry->setTarget( $linkRecommendation->getTitle() );
 		$logEntry->setPerformer( $user );
-		$logEntry->setParameters( [ '4:number:count' => $linkCount ] );
+		$logEntry->setParameters( [
+			'4:number:count' => $totalLinkCount,
+			'5:number:count' => $acceptedLinkCount,
+			'6:number:count' => $rejectedLinkCount,
+			'7:number:count' => $skippedLinkCount,
+		] );
 		$logId = $logEntry->insert();
 		// Do not publish to recent changes, it would be pointless as this action cannot
 		// be inspected or patrolled.
