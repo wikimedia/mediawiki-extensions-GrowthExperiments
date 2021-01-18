@@ -189,6 +189,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-description-update": "Spolu s tím, jak nastávají nové události, články postupně zastarávají. Najděte nové informace a přidejte je na Wikipedii, tak, aby stále reprezentovala současný stav věcí.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-expand": "Mnoho článků na Wikipedii má jen větu nebo dvě. Najděte více informací a články rozšiřte.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-links": "Přidávání odkazů je jedním z nejjednodušších typů editací. Odkazy pomáhají čtenářům přepínat se mezi články a tím se rychleji dozvídat nové informace.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-link-recommendation": "Přidávání odkazů je tou nejjednodušší cestou, jak editovat. Odkazy umožňují čtenářům kliknout na něco, o čem se chtějí dozvědět více.\n\nAI vám navrhne odkazy k doplnění, a vy rozhodnete, zda je vhodné je do článků přidat.",
 	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "Korektury (oprava překlepů, gramatiky a stylu článku)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-references": "Nalezení referencí (zdrojů pro existující články)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-update": "Aktualizace článků (zaktuálnění článků, které zastaraly)",
@@ -295,6 +296,10 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|se stal mentorem|se stala mentorkou}} {{GENDER:$6|uživatele|uživatelky}} $3 (mentor nebyl nastaven)",
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|nastavil|nastavila}} {{GENDER:$5|uživatele $7 jako mentora|uživatelku $7 jako mentorku}} {{GENDER:$6|uživatele|uživatelky}} $3 (předchozí {{GENDER:$4|mentor|mentorka}} $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|nastavil|nastavila}} {{GENDER:$5|uživatele $7 jako mentora|uživatelku $7 jako mentorku}} {{GENDER:$6|uživatele|uživatelky}} $3 (mentor nebyl nastaven)",
+	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|zkontroloval|zkontrolovala}} $4 navržených odkazů pro stránku $3",
+	"log-action-filter-growthexperiments": "Druh události rozšíření GrowthExperiments:",
+	"log-action-filter-growthexperiments-setmentor": "Změny mentora",
+	"log-action-filter-growthexperiments-addlink": "Doporučování odkazů",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Uživatelské jméno nováčka je neplatné",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|je}} {{GENDER:$3|váš}} nový mentor",
 	"growthexperiments-notification-body-mentor-change": "Důvod: $1",
@@ -318,5 +323,6 @@
 	"growthexperiments-addlink-revdeleted": "Revize číslo $1 stránky \"$2\" je nedostupná.",
 	"growthexperiments-addlink-wrongmodel": "Revize číslo $1 stránky \"$2\" není ve formátu wikitext.",
 	"growthexperiments-addlink-invalidjson": "Odpověď služby pro doporučování odkazů pro stránku \"$1\" je neplatná",
-	"growthexperiments-addlink-serviceerror": "Služba pro doporučování odkazů odpověděla pro stránku \"$1\" chybou $2"
+	"growthexperiments-addlink-serviceerror": "Služba pro doporučování odkazů odpověděla pro stránku \"$1\" chybou $2",
+	"growthexperiments-addlink-duplicatesubmission": "Pokusil jste se zkontrolovat navržené odkazy pro revizi \"$1\", které již byly zkontrolovány."
 }

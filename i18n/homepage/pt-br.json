@@ -293,6 +293,11 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|reivindicou}} {{GENDER:$6|$3}} como seu aprendiz (nenhum mentor anterior)",
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|definiu}} {{GENDER:$5|$7}} como {{GENDER:$5|mentor|mentora}} de {{GENDER:$6|$3}}  ({{GENDER:$4|mentor anterior|mentora anterior}}: $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|definiu}} {{GENDER:$5|$7}} como {{GENDER:$5|mentor|mentora}} de {{GENDER:$6|$3}} (nenhum mentor anterior)",
+	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|revisado}} $4 recomendações de links para $3",
+	"log-action-filter-growthexperiments": "Tipo de evento GrowthExperiments:",
+	"log-action-filter-growthexperiments-claimmentee": "Mudanças de mentor",
+	"log-action-filter-growthexperiments-setmentor": "Mudanças de mentores",
+	"log-action-filter-growthexperiments-addlink": "Recomendações de link",
 	"growthexperiments-homepage-claimmentee-invalid-username": "O nome de usuário do aprendiz não é válido",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|é}} {{GENDER:$3|seu novo mentor|sua nova mentora}}",
 	"growthexperiments-notification-body-mentor-change": "Motivo: $1",
@@ -316,5 +321,6 @@
 	"growthexperiments-addlink-revdeleted": "A revisão $1 de \"$2\" está inacessível",
 	"growthexperiments-addlink-wrongmodel": "A revisão $1 de \"$2\" não é wikitexto",
 	"growthexperiments-addlink-invalidjson": "A resposta do serviço de recomendação de link para \"$1\" é inválida",
-	"growthexperiments-addlink-serviceerror": "O serviço de recomendação de link respondeu com um erro de \"$1\": $2"
+	"growthexperiments-addlink-serviceerror": "O serviço de recomendação de link respondeu com um erro de \"$1\": $2",
+	"growthexperiments-addlink-duplicatesubmission": "Tentei enviar comentários de recomendação de link para a revisão \"$1\", que já foi revisada."
 }
