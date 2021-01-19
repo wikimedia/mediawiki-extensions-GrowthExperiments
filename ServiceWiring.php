@@ -158,7 +158,8 @@ return [
 		return new LinkRecommendationStore(
 			$loadBalancer->getConnection( DB_REPLICA ),
 			$loadBalancer->getConnection( DB_MASTER ),
-			$services->getTitleFactory()
+			$services->getTitleFactory(),
+			$services->getLinkBatchFactory()
 		);
 	},
 

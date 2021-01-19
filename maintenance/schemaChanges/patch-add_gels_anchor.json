@@ -1,0 +1,117 @@
+{
+	"comment": "Add gels_anchor_offset and gels_anchor_length to growthexperiments_link_submissions",
+	"before": {
+		"name": "growthexperiments_link_submissions",
+		"comment": "User reviews of recommended wikilinks.",
+		"columns": [
+			{
+				"name": "gels_page",
+				"comment": "The page the link was recommended for. Foreign key to page.page_id.",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull":  true }
+			},
+			{
+				"name": "gels_revision",
+				"comment": "The revision the link was recommended for. Foreign key to revision.rev_id.",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull":  true }
+			},
+			{
+				"name": "gels_edit_revision",
+				"comment": "The revision created by accepting some of the recommended links and adding them to the article. Foreign key to revision.rev_id. Can be null when all links were rejected/skipped.",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull":  false }
+			},
+			{
+				"name": "gels_user",
+				"comment": "The user who did the review. Foreign key to user.user_id.",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull":  true }
+			},
+			{
+				"name": "gels_target",
+				"comment": "The page the link pointed to. Foreign key to page.page_id. (We are storing page IDs instead of titles as it uses less storage space. Also somewhat more robust over time: we don't want to recommend rejected pages again just because they were renamed.)",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull":  true }
+			},
+			{
+				"name": "gels_feedback",
+				"comment": "The user's feedback on the link: 'a' (accepted), 'r' (rejected), 's' (skipped).",
+				"type": "string",
+				"options": { "length": 1, "notnull": true }
+			}
+		],
+		"indexes": [
+			{
+				"name": "gels_page_feedback_target",
+				"comment": "For generating a (per-page) exclusion list of often rejected targets.",
+				"columns": [ "gels_page", "gels_feedback", "gels_target" ],
+				"unique": false
+			}
+		],
+		"pk": [ "gels_revision", "gels_target" ]
+	},
+	"after": {
+		"name": "growthexperiments_link_submissions",
+		"comment": "User reviews of recommended wikilinks.",
+		"columns": [
+			{
+				"name": "gels_page",
+				"comment": "The page the link was recommended for. Foreign key to page.page_id.",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull":  true }
+			},
+			{
+				"name": "gels_revision",
+				"comment": "The revision the link was recommended for. Foreign key to revision.rev_id.",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull":  true }
+			},
+			{
+				"name": "gels_edit_revision",
+				"comment": "The revision created by accepting some of the recommended links and adding them to the article. Foreign key to revision.rev_id. Can be null when all links were rejected/skipped.",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull":  false }
+			},
+			{
+				"name": "gels_user",
+				"comment": "The user who did the review. Foreign key to user.user_id.",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull":  true }
+			},
+			{
+				"name": "gels_anchor_offset",
+				"comment": "The 0-based index of the first character of the link text in the wikitext, in Unicode characters. (Assumes a $wgMaxArticleSize value of up to 8 MB.)",
+				"type": "integer",
+				"options": { "length": 3, "unsigned": true, "notnull":  true }
+			},
+			{
+				"name": "gels_anchor_length",
+				"comment": "The length of the link text in the wikitext, in UTF-8 bytes.",
+				"type": "integer",
+				"options": { "length": 2, "unsigned": true, "notnull":  true }
+			},
+			{
+				"name": "gels_target",
+				"comment": "The page the link pointed to. Foreign key to page.page_id. (We are storing page IDs instead of titles as it uses less storage space. Also somewhat more robust over time: we don't want to recommend rejected pages again just because they were renamed.)",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull":  true }
+			},
+			{
+				"name": "gels_feedback",
+				"comment": "The user's feedback on the link: 'a' (accepted), 'r' (rejected), 's' (skipped).",
+				"type": "string",
+				"options": { "length": 1, "notnull": true }
+			}
+		],
+		"indexes": [
+			{
+				"name": "gels_page_feedback_target",
+				"comment": "For generating a (per-page) exclusion list of often rejected targets.",
+				"columns": [ "gels_page", "gels_feedback", "gels_target" ],
+				"unique": false
+			}
+		],
+		"pk": [ "gels_revision", "gels_target", "gels_anchor_offset" ]
+	}
+}

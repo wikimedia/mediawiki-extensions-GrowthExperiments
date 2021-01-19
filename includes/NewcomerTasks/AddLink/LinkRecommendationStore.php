@@ -4,9 +4,12 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use DBAccessObjectUtils;
 use DomainException;
+use GrowthExperiments\Util;
 use IDBAccessObject;
+use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentity;
+use RuntimeException;
 use TitleFactory;
 use Wikimedia\Rdbms\IDatabase;
 
@@ -24,15 +27,25 @@ class LinkRecommendationStore {
 	/** @var TitleFactory */
 	private $titleFactory;
 
+	/** @var LinkBatchFactory */
+	private $linkBatchFactory;
+
 	/**
 	 * @param IDatabase $dbr
 	 * @param IDatabase $dbw
 	 * @param TitleFactory $titleFactory
+	 * @param LinkBatchFactory $linkBatchFactory
 	 */
-	public function __construct( IDatabase $dbr, IDatabase $dbw, TitleFactory $titleFactory ) {
+	public function __construct(
+		IDatabase $dbr,
+		IDatabase $dbw,
+		TitleFactory $titleFactory,
+		LinkBatchFactory $linkBatchFactory
+	) {
 		$this->dbr = $dbr;
 		$this->dbw = $dbw;
 		$this->titleFactory = $titleFactory;
+		$this->linkBatchFactory = $linkBatchFactory;
 	}
 
 	// growthexperiments_link_recommendations
@@ -174,6 +187,32 @@ class LinkRecommendationStore {
 	): void {
 		$pageId = $linkRecommendation->getPageId();
 		$revId = $linkRecommendation->getRevisionId();
+		$links = $linkRecommendation->getLinks();
+		$allTargetIds = [ 'a' => $acceptedTargetIds, 'r' => $rejectedTargetIds, 's' => $skippedTargetIds ];
+
+		// correlate LinkRecommendation link data with the target IDs
+		$linkBatch = $this->linkBatchFactory->newLinkBatch();
+		$linkIndexToTitleText = [];
+		foreach ( $links as $i => $link ) {
+			$title = $this->titleFactory->newFromTextThrow( $link->getLinkTarget() );
+			$linkIndexToTitleText[$i] = $title->getPrefixedDBkey();
+			$linkBatch->addObj( $title );
+		}
+		$titleTextToLinkIndex = array_flip( $linkIndexToTitleText );
+		$titleTextToPageId = $linkBatch->execute();
+		$pageIdToTitleText = array_flip( $titleTextToPageId );
+		$pageIdToLink = [];
+		foreach ( array_merge( ...array_values( $allTargetIds ) ) as $targetId ) {
+			$titleText = $pageIdToTitleText[$targetId] ?? null;
+			if ( $titleText === null ) {
+				// User-submitted page ID does not exist. Could be some kind of race condition.
+				Util::logError( new RuntimeException( 'Page ID does not exist ' ), [
+					'pageID' => $targetId,
+				] );
+				continue;
+			}
+			$pageIdToLink[$targetId] = $links[$titleTextToLinkIndex[$titleText]];
+		}
 
 		$rowData = [
 			'gels_page' => $pageId,
@@ -181,12 +220,19 @@ class LinkRecommendationStore {
 			'gels_edit_revision' => $editRevId,
 			'gels_user' => $user->getId(),
 		];
-		$allTargetIds = [ 'a' => $acceptedTargetIds, 'r' => $rejectedTargetIds, 's' => $skippedTargetIds ];
-
 		$rows = [];
 		foreach ( $allTargetIds as $feedback => $targetIds ) {
 			foreach ( $targetIds as $targetId ) {
-				$rows[] = $rowData + [ 'gels_target' => $targetId, 'gels_feedback' => $feedback ];
+				$link = $pageIdToLink[$targetId] ?? null;
+				if ( !$link ) {
+					continue;
+				}
+				$rows[] = $rowData + [
+					'gels_target' => $targetId,
+					'gels_feedback' => $feedback,
+					'gels_anchor_offset' => $link->getWikitextOffset(),
+					'gels_anchor_length' => (int)mb_strlen( $link->getText(), 'UTF-8' ),
+				];
 			}
 		}
 		// No need to check if $rows is empty, Database::insert() does that.

@@ -15,7 +15,6 @@ class SchemaHooks implements LoadExtensionSchemaUpdatesHook, UnitTestsAfterDatab
 	/** @inheritDoc */
 	public function onLoadExtensionSchemaUpdates( $updater ) {
 		global $wgGEDatabaseCluster;
-
 		if ( $wgGEDatabaseCluster ) {
 			throw new Exception( 'Cannot use automatic schema upgrades when not on the '
 				. 'default cluster' );
@@ -24,9 +23,12 @@ class SchemaHooks implements LoadExtensionSchemaUpdatesHook, UnitTestsAfterDatab
 		$extensionRoot = __DIR__ . '/..';
 		$engine = $updater->getDB()->getType();
 		$updater->addExtensionTable( 'growthexperiments_link_recommendations',
-			"$extensionRoot/maintenance/$engine/growthexperiments_link_recommendations.sql" );
+			"$extensionRoot/maintenance/schemas/$engine/growthexperiments_link_recommendations.sql" );
 		$updater->addExtensionTable( 'growthexperiments_link_submissions',
-			"$extensionRoot/maintenance/$engine/growthexperiments_link_submissions.sql" );
+			"$extensionRoot/maintenance/schemas/$engine/growthexperiments_link_submissions.sql" );
+		$updater->addExtensionField( 'growthexperiments_link_submissions',
+			'gels_anchor_offset',
+			"$extensionRoot/maintenance/schemaChanges/$engine/patch-add_gels_anchor.sql" );
 	}
 
 	/** @inheritDoc */
