@@ -296,7 +296,7 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|se stal mentorem|se stala mentorkou}} {{GENDER:$6|uživatele|uživatelky}} $3 (mentor nebyl nastaven)",
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|nastavil|nastavila}} {{GENDER:$5|uživatele $7 jako mentora|uživatelku $7 jako mentorku}} {{GENDER:$6|uživatele|uživatelky}} $3 (předchozí {{GENDER:$4|mentor|mentorka}} $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|nastavil|nastavila}} {{GENDER:$5|uživatele $7 jako mentora|uživatelku $7 jako mentorku}} {{GENDER:$6|uživatele|uživatelky}} $3 (mentor nebyl nastaven)",
-	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|zkontroloval|zkontrolovala}} $4 navržených odkazů pro stránku $3",
+	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|zkontroloval|zkontrolovala}} $4 navržených odkazů pro stránku $3: schváleno $5, odmítnuto $6 a přeskočeno $7",
 	"log-action-filter-growthexperiments": "Druh události rozšíření GrowthExperiments:",
 	"log-action-filter-growthexperiments-setmentor": "Změny mentora",
 	"log-action-filter-growthexperiments-addlink": "Doporučování odkazů",

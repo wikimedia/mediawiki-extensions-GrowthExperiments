@@ -296,7 +296,7 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|לקח|לקחה}} את $3 בתור {{GENDER:$6|החניך|החניכה}} {{GENDER:$2|שלו|שלה}} (אין חונך קודם)",
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|הגדיר|הגדירה}} את $7 בתור {{GENDER:$5|החונך|החונכת}} של {{GENDER:$6|$3}} ({{GENDER:$4|החונך הקודם|החונכת הקודמת}}: $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|הגדיר|הגדירה}} את $5 בתור {{GENDER:$7|החונך|החונכת}} של {{GENDER:$6|$3}} (לא היה חונך קודם)",
-	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|סקר|סקרה}} {{PLURAL:$4|המלצת|$4 המלצות}} קישור עבור $3",
+	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|סקר|סקרה}} {{PLURAL:$4|המלצת|$4 המלצות}} קישור עבור $3: {{GENDER:$2|קיבל $5, דחה $6, דילג על $7|קיבלה $5, דחתה $6, דילגה על $7}}",
 	"log-action-filter-growthexperiments": "סוג אירוע ניסויי צמיחה",
 	"log-action-filter-growthexperiments-claimmentee": "שינוי חניך",
 	"log-action-filter-growthexperiments-setmentor": "שינויי חונך",

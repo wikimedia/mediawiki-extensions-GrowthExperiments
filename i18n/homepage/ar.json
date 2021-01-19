@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dr. Mohammed",
 			"Dyolf77",
 			"Dyolf77 (WMF)",
 			"Meno25",
@@ -20,7 +21,7 @@
 	"growthexperiments-homepage-start-header": "{{GENDER:$1|ابدأ|ابدئي}} من هنا",
 	"growthexperiments-homepage-account-header": "تم إنشاء الحساب",
 	"growthexperiments-homepage-account-editcount": "{{PLURAL:$1|لا تعديلات|تعديل واحد|تعديلان اثنان|$1 تعديلات|$1 تعديلا|$1 تعديل}}",
-	"growthexperiments-homepage-account-age": "حسابك فعال منذ $1",
+	"growthexperiments-homepage-account-age": "حسابك فعال منذُ $1",
 	"growthexperiments-homepage-userpage-header": "{{GENDER:$1|أنشئ|أنشئي}} صفحة {{GENDER:$1|المستخدم|المستخدمة}} الخاصة بك",
 	"growthexperiments-homepage-userpage-header-done": "{{GENDER:$1|عدل|عدلي}} صفحة {{GENDER:$1|المستخدم|المستخدمة}} الخاصة بك",
 	"growthexperiments-homepage-userpage-body": "{{GENDER:$1|تدرب|تدربي}} على التعديل أثناء انشاء ملفك الشخصي العلني.",
@@ -300,7 +301,7 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "{{GENDER:$2|طالب|طالبت}} $1 بـ {{GENDER:$6|$3}} {{GENDER:$3|كمرشَد|كمرشَدة}} {{GENDER:$2|له|لها}} (لا وجود لمرشِد(ة) من قبل)",
 	"logentry-growthexperiments-setmentor": "{{GENDER:$2|قام|قامت}} $1 بتعيين {{GENDER:$5|$7}} {{GENDER:$5|كمرشِد|كمرشِدة}} لـ{{GENDER:$6|$3}} (سابقا {{GENDER:$4|كان|كانت}}: $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "{{GENDER:$2|قام|قامت}} $1 بتعيين {{GENDER:$5|$7}} {{GENDER:$5|كمرشد|كمرشدة}} لـ {{GENDER:$6|$3}} (لا مرشد قبل هذا)",
-	"logentry-growthexperiments-addlink": "{{GENDER:$2|راجع|راجعت}} $1 $4 اقتراحات روابط لـ $3",
+	"logentry-growthexperiments-addlink": "{{GENDER:$2|راجع|راجعت}} $1 $4 اقتراحات روابط لـ $3: {{GENDER:$2|وافق|وافقت}} على $5، و{{GENDER:$2|رفض|رفضت}} $6، و{{GENDER:$2|تخطّى|تخطّت}} على $7",
 	"log-action-filter-growthexperiments": "نوع الحدث من GrowthExperiments:",
 	"log-action-filter-growthexperiments-claimmentee": "تغييرات المُرشَدين (المتعلمين)",
 	"log-action-filter-growthexperiments-setmentor": "تغييرلت المُرشِدين",

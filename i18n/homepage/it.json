@@ -291,6 +291,7 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 ha iniziato a {{GENDER:$2|seguire}} {{GENDER:$6|$3}} come tutor (nessun tutor precedente)",
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|ha impostato}} {{GENDER:$5|$7}} come tutor di {{GENDER:$6|$3}} ({{GENDER:$4|tutor}} precedente: $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|ha impostato}} {{GENDER:$5|$7}} come tutor di {{GENDER:$6|$3}} (nessun tutor precedente)",
+	"log-action-filter-growthexperiments": "Tipo di evento GrowthExperiments:",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Il nome dell'allievo fornito non è valido",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$3|è}} {{GENDER:$2|il tuo nuovo|la tua nuova}} tutor",
 	"growthexperiments-notification-body-mentor-change": "Motivo: $1",

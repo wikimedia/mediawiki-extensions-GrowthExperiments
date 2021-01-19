@@ -131,6 +131,7 @@
 	"growthexperiments-homepage-tutorial-subheader": "ウィキペディアの編集作業について簡単なチュートリアルを受けてみる",
 	"growthexperiments-homepage-tutorial-cta-text": "チュートリアル",
 	"growthexperiments-specialimpact-title": "影響",
+	"growthexperiments-specialimpact-invalid-username": "利用者名が無効もしくは見当たりません。",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "ウィキペディアの記事を検証するためにソースを追加する",
 	"growthexperiments-homepage-suggestededits-tasktype-description-copyedit": "文字編集とは、記事の記述に細かい修正を行うという意味で、ウィキペディアの編集作業の入門編として簡単で身に付きます。文字編集により、記事の信頼度を高め専門性を増します。",
 	"growthexperiments-homepage-suggestededits-tasktype-description-references": "ウィキペディアの正確性を保つには書籍やウェブサイト、報道を出典として使い、読者が事実を読んでいると確信できるように、記事にその出典を記入します。",
@@ -152,5 +153,10 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "編集のタイプを選ぶ",
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "興味を選ぶ",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "え完了",
-	"growthexperiments-homepage-suggestededits-topic-filters-close": "完了"
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "完了",
+	"growthexperiments-homepage-suggestededits-config-wrongstructure": "提案した編集の設定が無効です: 校正が正しくありません",
+	"growthexperiments-homepage-suggestededits-config-invalidid": "提案した編集の設定が無効です: \"$1\" id が無効です - 記入できるのは欧文文字と数字 a-z、0-9、- (マイナス記号) に限定されます",
+	"growthexperiments-homepage-suggestededits-config-missingfield": "提案した編集の設定が無効です: タスクについてタイプの $1 欄もしくは主題欄 $2 を記入していません",
+	"growthexperiments-homepage-suggestededits-config-invalidgroup": "提案した編集の設定が無効です: タスク$2に対するグループ $1 が無効です",
+	"growthexperiments-homepage-suggestededits-config-missingmessage": "提案した編集の設定が無効です: $2 欄の $1 メッセージがありません"
 }

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ciell",
 			"Dedalus",
 			"Dutchy45",
 			"Elroy",
@@ -17,7 +18,7 @@
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Top helppagina's over bewerken",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Bekijk meer help artikelen",
 	"growthexperiments-help-panel-question-widget-header": "Post je vraag op de helpdesk van de gemeenschap",
-	"growthexperiments-help-panel-question-placeholder": "Zeg hallo en stel je vraag.",
+	"growthexperiments-help-panel-question-placeholder": "Zeg hallo en stel {{GENDER:$1|je}} vraag.",
 	"growthexperiments-help-panel-back-home": "Terug",
 	"growthexperiments-help-panel-close": "Afgerond",
 	"growthexperiments-help-panel-home-title": "Krijg hulp bij bewerken",
