@@ -79,9 +79,8 @@ class CacheStorage {
 		$newCacheData = [];
 		$expires = MWTimestamp::now( TS_UNIX ) + $this->cache::TTL_WEEK;
 		foreach ( $cacheData as $key => $val ) {
-			if ( $val['expires'] < MWTimestamp::now( TS_UNIX ) ) {
-				// expired, skip
-			} else {
+			// ignore expired items
+			if ( $val['expires'] >= MWTimestamp::now( TS_UNIX ) ) {
 				$newCacheData[$key] = $val;
 			}
 		}
