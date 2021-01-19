@@ -12,7 +12,6 @@ use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Http\HttpRequestFactory;
-use MediaWiki\Linker\LinkTarget;
 use TitleFactory;
 
 /**
@@ -40,7 +39,6 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 	 * @param string $apiUrl Remote API URL including api.php
 	 * @param TaskType[] $taskTypes
 	 * @param Topic[] $topics
-	 * @param LinkTarget[] $templateBlacklist
 	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
@@ -50,11 +48,10 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 		TitleFactory $titleFactory,
 		$apiUrl,
 		array $taskTypes,
-		array $topics,
-		array $templateBlacklist
+		array $topics
 	) {
 		parent::__construct( $taskTypeHandlerRegistry, $searchStrategy, $linkBatchFactory,
-			$taskTypes, $topics, $templateBlacklist );
+			$taskTypes, $topics );
 		$this->requestFactory = $requestFactory;
 		$this->titleFactory = $titleFactory;
 		$this->apiUrl = $apiUrl;

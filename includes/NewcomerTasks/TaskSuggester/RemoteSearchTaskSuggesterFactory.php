@@ -65,10 +65,6 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		if ( $topics instanceof StatusValue ) {
 			return $this->createError( $topics );
 		}
-		$templateBlacklist = $this->configurationLoader->loadTemplateBlacklist();
-		if ( $templateBlacklist instanceof StatusValue ) {
-			return $this->createError( $templateBlacklist );
-		}
 		$suggester = new RemoteSearchTaskSuggester(
 			$this->taskTypeHandlerRegistry,
 			$this->searchStrategy,
@@ -77,8 +73,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$this->titleFactory,
 			$this->apiUrl,
 			$taskTypes,
-			$topics,
-			$templateBlacklist
+			$topics
 		);
 		$suggester->setLogger( $this->logger );
 		return $suggester;

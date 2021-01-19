@@ -2,6 +2,8 @@
 
 namespace GrowthExperiments\Tests;
 
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
@@ -38,10 +40,11 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		$taskTypeHandler->method( 'getSearchTerm' )
 			->willReturn( 'hastemplate:"Copyedit"' );
 
-		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry );
+		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry,
+			new StaticConfigurationLoader( [], [] ) );
 
 		$morelikeQueries = $searchStrategy->getQueries( [ $taskType ],
-			[ $morelikeTopic1, $morelikeTopic2 ], [] );
+			[ $morelikeTopic1, $morelikeTopic2 ] );
 		$this->assertCount( 2, $morelikeQueries );
 
 		$this->assertTopicsInQueries( $morelikeQueries, [ 'art', 'science' ] );
@@ -61,12 +64,38 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		] );
 
 		$restrictedQueries = $searchStrategy->getQueries( [ $taskType ],
-			[ $oresTopic1, $oresTopic2 ], [], [ 1, 2, 3 ] );
+			[ $oresTopic1, $oresTopic2 ], [ 1, 2, 3 ] );
 		$this->assertCount( 2, $restrictedQueries );
 		$this->assertTopicsInQueries( $restrictedQueries, [ 'art', 'science' ] );
 		$this->assertQueryStrings( $restrictedQueries, [
 			'hastemplate:"Copyedit" articletopic:painting|drawing pageid:1|2|3',
 			'hastemplate:"Copyedit" articletopic:physics|biology pageid:1|2|3'
+		] );
+	}
+
+	public function testExclusion() {
+		$taskType = new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY,
+			[], [ new TitleValue( NS_TEMPLATE, 'Copyedit' ) ] );
+		$taskTypeHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
+		$taskTypeHandler = $this->createMock( TaskTypeHandler::class );
+		$taskTypeHandlerRegistry->method( 'getByTaskType' )->willReturn( $taskTypeHandler );
+		$taskTypeHandler->method( 'getSearchTerm' )
+			->willReturn( 'hastemplate:"Copyedit"' );
+
+		$excludedTemplates = [
+			new TitleValue( NS_TEMPLATE, 'Foo' ),
+			new TitleValue( NS_TEMPLATE, 'Bar' ),
+		];
+		$excludedCategories = [
+			new TitleValue( NS_CATEGORY, 'Baz' ),
+			new TitleValue( NS_CATEGORY, 'Boom' ),
+		];
+		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry,
+			new StaticConfigurationLoader( [], [], $excludedTemplates, $excludedCategories ) );
+
+		$queries = $searchStrategy->getQueries( [ $taskType ], [] );
+		$this->assertQueryStrings( $queries, [
+			'hastemplate:"Copyedit" -hastemplate:"Foo|Bar" -incategory:"Baz|Boom"',
 		] );
 	}
 
@@ -100,19 +129,19 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 	 * Assert that the set of $strings is the same as the set of $queries.
 	 * The sets must have exactly two elements.
 	 * @param array $queries
-	 * @param array $strings
+	 * @param array $expectedQueryStrings
 	 */
-	private function assertQueryStrings( $queries, $strings ) {
-		list( $query1, $query2 ) = array_values( $queries );
-		foreach ( $strings as $template ) {
-			if ( $query1->getQueryString() === $template ) {
-				$this->assertSame( $query1->getQueryString(), $template );
-			} elseif ( $query2->getQueryString() === $template ) {
-				$this->assertSame( $query2->getQueryString(), $template );
-			} else {
-				$this->assertTrue( false, "$template not found in query." );
+	private function assertQueryStrings( $queries, $expectedQueryStrings ) {
+		$queryStrings = array_map( function ( SearchQuery $query ) {
+			return $query->getQueryString();
+		}, array_values( $queries ) );
+		foreach ( $expectedQueryStrings as $expectedQueryString ) {
+			if ( !in_array( $expectedQueryString, $queryStrings, true ) ) {
+				$this->assertTrue( false, "$expectedQueryString not found in queries:\n"
+					. var_export( $queryStrings, true ) );
 			}
 		}
+		$this->assertTrue( true );
 	}
 
 }

@@ -229,8 +229,13 @@ class RefreshLinkRecommendations extends Maintenance {
 					}
 
 					/** @inheritDoc */
-					public function loadTemplateBlacklist() {
-						return $this->realConfigurationLoader->loadTemplateBlacklist();
+					public function loadExcludedTemplates() {
+						return $this->realConfigurationLoader->loadExcludedTemplates();
+					}
+
+					/** @inheritDoc */
+					public function loadExcludedCategories() {
+						return $this->realConfigurationLoader->loadExcludedCategories();
 					}
 				};
 			} );

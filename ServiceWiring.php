@@ -91,7 +91,8 @@ return [
 	): ConfigurationValidator {
 		return new ConfigurationValidator(
 			RequestContext::getMain(),
-			Collation::singleton()
+			Collation::singleton(),
+			$services->getTitleParser()
 		);
 	},
 
@@ -249,7 +250,7 @@ return [
 
 		$taskTypeHandlerRegistry = $growthServices->getTaskTypeHandlerRegistry();
 		$configLoader = $growthServices->getConfigurationLoader();
-		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry );
+		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry, $configLoader );
 		if ( $config->get( 'GENewcomerTasksRemoteApiUrl' ) ) {
 			$taskSuggesterFactory = new RemoteSearchTaskSuggesterFactory(
 				$taskTypeHandlerRegistry,

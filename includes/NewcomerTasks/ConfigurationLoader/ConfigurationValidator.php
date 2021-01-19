@@ -5,9 +5,11 @@ namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 use Collation;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use MalformedTitleException;
 use Message;
 use MessageLocalizer;
 use StatusValue;
+use TitleParser;
 
 /**
  * Helper class for validating task type / topic / etc. configuration.
@@ -20,13 +22,22 @@ class ConfigurationValidator {
 	/** @var Collation */
 	private $collation;
 
+	/** @var TitleParser */
+	private $titleParser;
+
 	/**
 	 * @param MessageLocalizer $messageLocalizer
 	 * @param Collation $collation
+	 * @param TitleParser $titleParser
 	 */
-	public function __construct( MessageLocalizer $messageLocalizer, Collation $collation ) {
+	public function __construct(
+		MessageLocalizer $messageLocalizer,
+		Collation $collation,
+		TitleParser $titleParser
+	) {
 		$this->messageLocalizer = $messageLocalizer;
 		$this->collation = $collation;
+		$this->titleParser = $titleParser;
 	}
 
 	/**
@@ -55,6 +66,24 @@ class ConfigurationValidator {
 		return preg_match( '/^[a-z\d\-]+$/', $id )
 			? StatusValue::newGood()
 			: StatusValue::newFatal( 'growthexperiments-homepage-suggestededits-config-invalidid', $id );
+	}
+
+	/**
+	 * @param string $title
+	 * @return StatusValue
+	 */
+	public function validateTitle( $title ) {
+		if ( !is_string( $title ) ) {
+			return StatusValue::newFatal( 'growthexperiments-homepage-suggestededits-config-invalidtitle',
+				$title );
+		}
+		try {
+			$this->titleParser->parseTitle( $title );
+		} catch ( MalformedTitleException $e ) {
+			return StatusValue::newFatal( 'growthexperiments-homepage-suggestededits-config-invalidtitle',
+				$title );
+		}
+		return StatusValue::newGood();
 	}
 
 	/**

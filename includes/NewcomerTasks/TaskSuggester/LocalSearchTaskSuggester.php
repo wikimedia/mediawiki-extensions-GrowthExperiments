@@ -10,7 +10,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use ISearchResultSet;
 use MediaWiki\Cache\LinkBatchFactory;
-use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
 use SearchEngine;
 use SearchEngineFactory;
@@ -32,7 +31,6 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param TaskType[] $taskTypes
 	 * @param Topic[] $topics
-	 * @param LinkTarget[] $templateBlacklist
 	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
@@ -40,11 +38,10 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 		SearchStrategy $searchStrategy,
 		LinkBatchFactory $linkBatchFactory,
 		array $taskTypes,
-		array $topics,
-		array $templateBlacklist
+		array $topics
 	) {
 		parent::__construct( $taskTypeHandlerRegistry, $searchStrategy, $linkBatchFactory,
-			$taskTypes, $topics, $templateBlacklist );
+			$taskTypes, $topics );
 		$this->searchEngineFactory = $searchEngineFactory;
 	}
 

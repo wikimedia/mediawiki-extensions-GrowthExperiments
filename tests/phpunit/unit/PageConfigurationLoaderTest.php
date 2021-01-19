@@ -232,7 +232,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$pageLoader = $this->getMockPageLoader( [ '8:TaskConfiguration' => [] ] );
 		$configurationValidator = $this->createMock( ConfigurationValidator::class );
 		$taskHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
-		$configurationLoader = new PageConfigurationLoader( $this->getMockTitleFactory( [] ),
+		$configurationLoader = new PageConfigurationLoader( $this->getMockTitleFactory( [], false ),
 			$pageLoader, $configurationValidator, $taskHandlerRegistry, $taskTitle, null,
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$topics = $configurationLoader->loadTopics();
@@ -265,10 +265,105 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::loadTemplateBlacklist
+	 * @covers ::loadExcludedTemplates
 	 */
-	public function testLoadTemplateBlacklist() {
-		$this->markTestSkipped( 'Not implemented yet' );
+	public function testLoadExcludedTemplates() {
+		$taskConfig = [ '#excludedTemplates' => [ 'Foo', 'Bar', 'Baz' ] ];
+		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
+		// in getMockPageLoader() will fail.
+		foreach ( range( 1, 2 ) as $_ ) {
+			$excludedTemplates = $configurationLoader->loadExcludedTemplates();
+			$this->assertIsArray( $excludedTemplates );
+			foreach ( $excludedTemplates as $i => $template ) {
+				$this->assertInstanceOf( LinkTarget::class, $template );
+				$this->assertSame( NS_TEMPLATE, $template->getNamespace() );
+				$this->assertSame( $taskConfig['#excludedTemplates'][$i], $template->getDBkey() );
+			}
+		}
+		$this->assertSame( $configurationLoader->loadExcludedTemplates(),
+			$configurationLoader->getExcludedTemplates() );
+
+		// Make sure task parsing skips the special key
+		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		$taskTypes = $configurationLoader->loadTaskTypes();
+		$this->assertSame( [], $taskTypes );
+
+		// Test that the field is optional
+		$taskConfig = [];
+		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		$this->assertSame( [], $configurationLoader->loadExcludedTemplates() );
+
+		$taskConfig = [ '#excludedTemplates' => 'xy' ];
+		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		$error = $configurationLoader->loadExcludedTemplates();
+		$this->assertInstanceOf( StatusValue::class, $error );
+		$this->assertTrue( $error->hasMessage(
+			'growthexperiments-homepage-suggestededits-config-wrongstructure' ) );
+		$this->assertSame( [], $configurationLoader->getExcludedTemplates() );
+
+		$taskConfig = [ '#excludedTemplates' => [ [] ] ];
+		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		$error = $configurationLoader->loadExcludedTemplates();
+		$this->assertInstanceOf( StatusValue::class, $error );
+		$this->assertTrue( $error->hasMessage(
+			'growthexperiments-homepage-suggestededits-config-wrongstructure' ) );
+
+		$taskConfig = [ '#excludedTemplates' => [ '<invalid>' ] ];
+		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		$error = $configurationLoader->loadExcludedTemplates();
+		$this->assertInstanceOf( StatusValue::class, $error );
+		$this->assertTrue( $error->hasMessage(
+			'growthexperiments-homepage-suggestededits-config-invalidtitle' ) );
+	}
+
+	/**
+	 * @covers ::loadExcludedCategories
+	 */
+	public function testLoadExcludedCategories() {
+		$taskConfig = [ '#excludedCategories' => [ 'Foo', 'Bar', 'Baz' ] ];
+		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
+		// in getMockPageLoader() will fail.
+		foreach ( range( 1, 2 ) as $_ ) {
+			$excludedCategories = $configurationLoader->loadExcludedCategories();
+			$this->assertIsArray( $excludedCategories );
+			foreach ( $excludedCategories as $i => $category ) {
+				$this->assertInstanceOf( LinkTarget::class, $category );
+				$this->assertSame( NS_CATEGORY, $category->getNamespace() );
+				$this->assertSame( $taskConfig['#excludedCategories'][$i], $category->getDBkey() );
+			}
+		}
+		$this->assertSame( $configurationLoader->loadExcludedCategories(),
+			$configurationLoader->getExcludedCategories() );
+
+		// Make sure task parsing skips the special key
+		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		$taskTypes = $configurationLoader->loadTaskTypes();
+		$this->assertSame( [], $taskTypes );
+
+		// Test that the field is optional
+		$taskConfig = [];
+		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		$this->assertSame( [], $configurationLoader->loadExcludedCategories() );
+
+		$taskConfig = [ '#excludedCategories' => 'xy' ];
+		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		$error = $configurationLoader->loadExcludedCategories();
+		$this->assertInstanceOf( StatusValue::class, $error );
+		$this->assertTrue( $error->hasMessage(
+			'growthexperiments-homepage-suggestededits-config-wrongstructure' ) );
+		$this->assertSame( [], $configurationLoader->getExcludedCategories() );
 	}
 
 	/**
@@ -375,33 +470,21 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	protected function getConfigurationLoader(
 		$taskConfig, $topicConfig, $topicType, array $customMessages = [], $useTitleValues = false
 	) {
-		// FIXME make this simpler
-		$templates = [];
-		if ( is_array( $taskConfig ) ) {
-			foreach ( $taskConfig as $taskConfigItem ) {
-				$templates = array_unique( array_merge( $templates, $taskConfigItem['templates'] ?? [] ) );
-			}
-		}
-		$templates = array_combine( $templates, $templates );
-		$templates = array_map( function ( $template ) {
-			return $template === '<>' ? null : $this->getMockTitle( $template );
-		}, $templates );
-
 		if ( $useTitleValues ) {
 			$taskConfigTitle = new TitleValue( NS_MEDIAWIKI, 'TaskConfigPage' );
 			$topicConfigTitle = new TitleValue( NS_MEDIAWIKI, 'TopicConfigPage' );
-			$titleFactory = $this->getMockTitleFactory( $templates );
 		} else {
 			$taskConfigTitle = 'MediaWiki:TaskConfigPage';
 			$topicConfigTitle = 'MediaWiki:TopicConfigPage';
-			$titleFactory = $this->getMockTitleFactory( [
-				$taskConfigTitle => $this->getMockTitle( 'TaskConfigPage', NS_MEDIAWIKI ),
-				$topicConfigTitle => $this->getMockTitle( 'TopicConfigPage', NS_MEDIAWIKI ),
-			] + $templates );
 		}
+		$titleFactory = $this->getMockTitleFactory( [
+			'MediaWiki:TaskConfigPage' => $this->getMockTitle( 'TaskConfigPage', NS_MEDIAWIKI ),
+			'MediaWiki:TopicConfigPage' => $this->getMockTitle( 'TopicConfigPage', NS_MEDIAWIKI ),
+		] );
 		$messageLocalizer = $this->getMockMessageLocalizer( $customMessages );
 		$collation = $this->getMockCollation();
-		$configurationValidator = new ConfigurationValidator( $messageLocalizer, $collation );
+		$configurationValidator = new ConfigurationValidator( $messageLocalizer, $collation,
+			$this->getMockTitleParser() );
 		$pageLoader = $this->getMockPageLoader( [
 			'8:TaskConfigPage' => $taskConfig,
 			'8:TopicConfigPage' => $topicConfig,
@@ -412,17 +495,26 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param Title[] $map Page name => title
+	 * @param Title[]|null $map Page name => title
 	 * @return TitleFactory|MockObject
 	 */
-	protected function getMockTitleFactory( array $map ) {
+	protected function getMockTitleFactory( array $map, bool $allowOther = true ) {
 		$titleFactory = $this->getMockBuilder( TitleFactory::class )
 			->disableOriginalConstructor()
 			->setMethods( [ 'newFromText' ] )
 			->getMock();
-		$titleFactory->method( 'newFromText' )->willReturnCallback( function ( $titleText ) use ( $map ) {
-			return $map[$titleText];
-		} );
+		$titleFactory->method( 'newFromText' )->willReturnCallback(
+			function ( string $titleText, int $defaultNamespace = 0 ) use ( $map, $allowOther ) {
+				if ( array_key_exists( $titleText, $map ) ) {
+					return $map[$titleText];
+				} elseif ( $titleText === '<invalid>' ) {
+					return null;
+				} elseif ( $allowOther ) {
+					return $this->getMockTitle( $titleText, $defaultNamespace );
+				} else {
+					$this->fail( 'unexpected title' );
+				}
+			} );
 		return $titleFactory;
 	}
 
@@ -517,6 +609,18 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * @return TaskTypeHandlerRegistry|MockObject
 	 */
 	private function getMockTaskTypeHandlerRegistry( ConfigurationValidator $configurationValidator ) {
+		$titleParser = $this->getMockTitleParser();
+		$registry = $this->createMock( TaskTypeHandlerRegistry::class );
+		$registry->method( 'has' )->willReturn( true );
+		$registry->method( 'get' )->with( TemplateBasedTaskTypeHandler::ID )
+			->willReturn( new TemplateBasedTaskTypeHandler( $configurationValidator, $titleParser ) );
+		return $registry;
+	}
+
+	/**
+	 * @return TitleParser|MockObject
+	 */
+	private function getMockTitleParser() {
 		$titleParser = $this->createMock( TitleParser::class );
 		$titleParser->method( 'parseTitle' )
 			->willReturnCallback( function ( string $title, int $defaultNamespace ) {
@@ -525,11 +629,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 				}
 				return new TitleValue( $defaultNamespace, $title );
 			} );
-		$registry = $this->createMock( TaskTypeHandlerRegistry::class );
-		$registry->method( 'has' )->willReturn( true );
-		$registry->method( 'get' )->with( TemplateBasedTaskTypeHandler::ID )
-			->willReturn( new TemplateBasedTaskTypeHandler( $configurationValidator, $titleParser ) );
-		return $registry;
+		return $titleParser;
 	}
 
 }

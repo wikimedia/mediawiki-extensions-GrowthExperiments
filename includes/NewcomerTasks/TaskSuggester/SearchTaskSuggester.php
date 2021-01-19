@@ -13,7 +13,6 @@ use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use ISearchResultSet;
 use MediaWiki\Cache\LinkBatchFactory;
-use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentity;
 use MultipleIterator;
 use Psr\Log\LoggerAwareInterface;
@@ -50,24 +49,19 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	/** @var Topic[] id => Topic */
 	protected $topics = [];
 
-	/** @var LinkTarget[] List of templates which disqualify a page from being recommendable. */
-	protected $templateBlacklist;
-
 	/**
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param SearchStrategy $searchStrategy
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param TaskType[] $taskTypes
 	 * @param Topic[] $topics
-	 * @param LinkTarget[] $templateBlacklist
 	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		SearchStrategy $searchStrategy,
 		LinkBatchFactory $linkBatchFactory,
 		array $taskTypes,
-		array $topics,
-		array $templateBlacklist
+		array $topics
 	) {
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->searchStrategy = $searchStrategy;
@@ -78,7 +72,6 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		foreach ( $topics as $topic ) {
 			$this->topics[$topic->getId()] = $topic;
 		}
-		$this->templateBlacklist = $templateBlacklist;
 		$this->logger = new NullLogger();
 	}
 
@@ -166,8 +159,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			$taskTypes[] = $taskType;
 		}
 
-		$queries = $this->searchStrategy->getQueries( $taskTypes, $topics,
-			$this->templateBlacklist, $pageIds );
+		$queries = $this->searchStrategy->getQueries( $taskTypes, $topics, $pageIds );
 		foreach ( $queries as $query ) {
 			$matches = $this->search( $query, $limit, $offset, $debug );
 			if ( $matches instanceof StatusValue ) {

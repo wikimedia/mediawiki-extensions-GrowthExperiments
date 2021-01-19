@@ -22,17 +22,24 @@ class StaticConfigurationLoader implements ConfigurationLoader {
 	private $topics;
 
 	/** @var LinkTarget[]|StatusValue */
-	private $templateBlacklist;
+	private $excludedTemplates;
+
+	/** @var LinkTarget[]|StatusValue */
+	private $excludedCategories;
 
 	/**
 	 * @param TaskType[]|StatusValue $taskTypes
 	 * @param Topic[]|StatusValue $topics
-	 * @param LinkTarget[]|StatusValue $templateBlacklist
+	 * @param LinkTarget[]|StatusValue $excludedTemplates
+	 * @param LinkTarget[]|StatusValue $excludedCategories
 	 */
-	public function __construct( $taskTypes, $topics = [], $templateBlacklist = [] ) {
+	public function __construct(
+		$taskTypes, $topics = [], $excludedTemplates = [], $excludedCategories = []
+	) {
 		$this->taskTypes = $taskTypes;
 		$this->topics = $topics;
-		$this->templateBlacklist = $templateBlacklist;
+		$this->excludedTemplates = $excludedTemplates;
+		$this->excludedCategories = $excludedCategories;
 	}
 
 	/** @inheritDoc */
@@ -46,8 +53,13 @@ class StaticConfigurationLoader implements ConfigurationLoader {
 	}
 
 	/** @inheritDoc */
-	public function loadTemplateBlacklist() {
-		return $this->templateBlacklist;
+	public function loadExcludedTemplates() {
+		return $this->excludedTemplates;
+	}
+
+	/** @inheritDoc */
+	public function loadExcludedCategories() {
+		return $this->excludedCategories;
 	}
 
 	/** @inheritDoc */
