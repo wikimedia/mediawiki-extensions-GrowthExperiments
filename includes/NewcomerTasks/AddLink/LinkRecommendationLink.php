@@ -13,6 +13,8 @@ class LinkRecommendationLink {
 	private $linkTarget;
 	/** @var int */
 	private $instanceOccurrence;
+	/** @var int */
+	private $wikitextOffset;
 	/** @var float */
 	private $probability;
 	/** @var string */
@@ -31,6 +33,8 @@ class LinkRecommendationLink {
 	 * @param int $instanceOccurrence The 1-based index the link text within all matches of $text
 	 *   in the article (calculated after removing all templates / extensions tags / parserfunctions
 	 *   and converting the article to plaintext).
+	 * @param int $wikitextOffset The 0-based index of the first character of the link text in the
+	 *   wikitext, in Unicode characters.
 	 * @param float $probability The confidence score of the recommended link (a number between 0
 	 *   and 1).
 	 * @param string $contextBefore A few characters of text from the artcile right before the
@@ -44,6 +48,7 @@ class LinkRecommendationLink {
 		string $phraseToLink,
 		string $linkTarget,
 		int $instanceOccurrence,
+		int $wikitextOffset,
 		float $probability,
 		string $contextBefore,
 		string $contextAfter,
@@ -52,6 +57,7 @@ class LinkRecommendationLink {
 		$this->phraseToLink = $phraseToLink;
 		$this->linkTarget = $linkTarget;
 		$this->instanceOccurrence = $instanceOccurrence;
+		$this->wikitextOffset = $wikitextOffset;
 		$this->probability = $probability;
 		$this->contextBefore = $contextBefore;
 		$this->contextAfter = $contextAfter;
@@ -83,6 +89,15 @@ class LinkRecommendationLink {
 	 */
 	public function getInstanceOccurrence(): int {
 		return $this->instanceOccurrence;
+	}
+
+	/**
+	 * The 0-based index of the first character of the link text in the wikitext,
+	 * in Unicode characters.
+	 * @return int
+	 */
+	public function getWikitextOffset(): int {
+		return $this->wikitextOffset;
 	}
 
 	/**
@@ -129,6 +144,7 @@ class LinkRecommendationLink {
 			'phrase_to_link' => $this->phraseToLink,
 			'link_target' => $this->linkTarget,
 			'instance_occurrence' => $this->instanceOccurrence,
+			'wikitext_offset' => $this->wikitextOffset,
 			'probability' => $this->probability,
 			'context_before' => $this->contextBefore,
 			'context_after' => $this->contextAfter,

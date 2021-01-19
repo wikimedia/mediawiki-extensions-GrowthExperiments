@@ -36,6 +36,7 @@ class LinkRecommendation {
 				$item['phrase_to_link'],
 				$item['link_target'],
 				$item['instance_occurrence'],
+				$item['wikitext_offset'],
 				$item['probability'],
 				$item['context_before'],
 				$item['context_after'],

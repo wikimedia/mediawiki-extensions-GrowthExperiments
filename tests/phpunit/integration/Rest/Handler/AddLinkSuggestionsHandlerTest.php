@@ -31,6 +31,7 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 			'phrase_to_link' => 'foo',
 			'link_target' => 'Bar',
 			'instance_occurrence' => 1,
+			'wikitext_offset' => 100,
 			'probability' => 0.9,
 			'context_before' => 'b',
 			'context_after' => 'a',
