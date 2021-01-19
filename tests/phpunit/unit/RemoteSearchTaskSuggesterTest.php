@@ -461,6 +461,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideFilter
 	 * @param array[] $taskTypeSpec All configured task types on the server. See getTaskTypes().
 	 * @param array[] $topicSpec All configured topics on the server. See getTopics().
+	 * @param TaskSet $taskSet
 	 * @param array $pageIds Page IDs returned by the LinkBatch
 	 * @param array $requests [ [ 'params' => [...], 'response' => ... ], ... ] where params is
 	 *   a list of asserted query parameters (null means asserted to be not present), response is
@@ -786,8 +787,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * Returns a PHPUnit invocation matcher which matches a range.
-	 * @param $min
-	 * @param $max
+	 * @param int $min
+	 * @param int $max
 	 * @return InvokedBetween
 	 */
 	private function exactlyBetween( $min, $max ) {

@@ -18,6 +18,7 @@ use RequestContext;
  */
 class QuestionStoreTest extends MediaWikiTestCase {
 
+	/** @inheritDoc */
 	protected $tablesUsed = [ 'user_properties' ];
 
 	/**

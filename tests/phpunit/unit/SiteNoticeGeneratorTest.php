@@ -279,7 +279,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @return MockObject
+	 * @return MockObject|\Message
 	 */
 	private function getDefaultMessageMock() {
 		$messageMock = $this->getMockBuilder( \Message::class )
@@ -293,7 +293,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @param bool $isMobile
+	 * @param string $class
 	 * @return MockObject|Skin
 	 */
 	private function getSkinMock( $class = Skin::class ) {

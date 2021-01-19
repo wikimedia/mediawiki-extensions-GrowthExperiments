@@ -368,7 +368,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * Test configuration
-	 * @param string $error
+	 * @param string|null $error
 	 * @return array|int
 	 */
 	protected function getTaskConfig( $error = null ) {
@@ -402,7 +402,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * Test configuration
-	 * @param string $error
+	 * @param string|null $error
 	 * @return array|int
 	 */
 	protected function getOresTopicConfig( $error = null ) {
@@ -435,7 +435,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * Test configuration
-	 * @param string $error
+	 * @param string|null $error
 	 * @return array|int
 	 */
 	protected function getMorelikeTopicConfig( $error = null ) {
