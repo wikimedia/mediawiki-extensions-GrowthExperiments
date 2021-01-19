@@ -50,7 +50,6 @@ class CacheStorage {
 	/**
 	 * Get an array of task type objects, indexed by page ID, for tasks that the user has opened
 	 * via clicks on task cards in the Suggested Edits module.
-	 * During the cache migration period the task type can be null.
 	 * @return array<int,string|null>
 	 */
 	public function get(): array {
@@ -80,9 +79,7 @@ class CacheStorage {
 		$newCacheData = [];
 		$expires = MWTimestamp::now( TS_UNIX ) + $this->cache::TTL_WEEK;
 		foreach ( $cacheData as $key => $val ) {
-			if ( is_numeric( $val ) ) {
-				$newCacheData[$val] = [ 'type' => null, 'expires' => $expires ];
-			} elseif ( $val['expires'] < MWTimestamp::now( TS_UNIX ) ) {
+			if ( $val['expires'] < MWTimestamp::now( TS_UNIX ) ) {
 				// expired, skip
 			} else {
 				$newCacheData[$key] = $val;
