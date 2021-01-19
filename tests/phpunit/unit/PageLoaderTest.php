@@ -29,6 +29,7 @@ use WikitextContent;
  */
 class PageLoaderTest extends MediaWikiUnitTestCase {
 
+	/** @var array */
 	private $oldWgUrlProtocols;
 
 	public function setUp(): void {
