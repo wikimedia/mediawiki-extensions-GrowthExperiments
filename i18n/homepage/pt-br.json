@@ -293,7 +293,7 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|reivindicou}} {{GENDER:$6|$3}} como seu aprendiz (nenhum mentor anterior)",
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|definiu}} {{GENDER:$5|$7}} como {{GENDER:$5|mentor|mentora}} de {{GENDER:$6|$3}}  ({{GENDER:$4|mentor anterior|mentora anterior}}: $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|definiu}} {{GENDER:$5|$7}} como {{GENDER:$5|mentor|mentora}} de {{GENDER:$6|$3}} (nenhum mentor anterior)",
-	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|revisado}} $4 recomendações de links para $3",
+	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|revisado}} $4 recomendações de links para $3: aceitou $5, rejeitou $6 e pulou $7",
 	"log-action-filter-growthexperiments": "Tipo de evento GrowthExperiments:",
 	"log-action-filter-growthexperiments-claimmentee": "Mudanças de mentor",
 	"log-action-filter-growthexperiments-setmentor": "Mudanças de mentores",
