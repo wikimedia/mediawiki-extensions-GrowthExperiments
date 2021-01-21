@@ -1001,7 +1001,7 @@
 	},
 	"config": {
 		"GEDatabaseCluster": {
-			"description": "Which database claster to use. False means the cluster of the current wiki will be used. The database name will be the database name configured for the wiki, regardless of this setting. Only set this if you manage the DB schema manually.",
+			"description": "Which database cluster to use. False means the cluster of the current wiki will be used. The database name will be the database name configured for the wiki, regardless of this setting. Only set this if you manage the DB schema manually.",
 			"value": false
 		},
 		"GEHomepageTutorialTitle": {
