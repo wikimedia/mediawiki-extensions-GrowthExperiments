@@ -10,7 +10,7 @@ use GrowthExperiments\HelpPanel;
  */
 class HelpdeskQuestionPoster extends QuestionPoster {
 
-	const QUESTION_PREF = 'growthexperiments-helppanel-questions';
+	public const QUESTION_PREF = 'growthexperiments-helppanel-questions';
 
 	/**
 	 * @inheritDoc

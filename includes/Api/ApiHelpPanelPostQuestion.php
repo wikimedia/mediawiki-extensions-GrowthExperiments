@@ -12,9 +12,9 @@ use UserNotLoggedIn;
 
 class ApiHelpPanelPostQuestion extends ApiBase {
 
-	const API_PARAM_BODY = 'body';
-	const API_PARAM_SOURCE = 'source';
-	const API_PARAM_RELEVANT_TITLE = 'relevanttitle';
+	public const API_PARAM_BODY = 'body';
+	public const API_PARAM_SOURCE = 'source';
+	public const API_PARAM_RELEVANT_TITLE = 'relevanttitle';
 
 	/** API name => [ source, target ] using the respective QuestionPosterFactory constants */
 	private const QUESTION_POSTER_TYPES = [

@@ -4,10 +4,10 @@ namespace GrowthExperiments;
 
 interface HomepageModule {
 
-	const RENDER_DESKTOP = 'desktop';
-	const RENDER_MOBILE_SUMMARY = 'mobile-summary';
-	const RENDER_MOBILE_DETAILS = 'mobile-details';
-	const RENDER_MOBILE_DETAILS_OVERLAY = 'mobile-overlay';
+	public const RENDER_DESKTOP = 'desktop';
+	public const RENDER_MOBILE_SUMMARY = 'mobile-summary';
+	public const RENDER_MOBILE_DETAILS = 'mobile-details';
+	public const RENDER_MOBILE_DETAILS_OVERLAY = 'mobile-overlay';
 
 	/**
 	 * Render the module in the given mode.

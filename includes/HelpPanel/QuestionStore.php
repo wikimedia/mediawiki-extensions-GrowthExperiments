@@ -18,9 +18,9 @@ use Wikimedia\Rdbms\ILoadBalancer;
 
 class QuestionStore {
 
-	const BLOB_SIZE = 65535;
-	const QUESTION_CHAR_LIMIT = 60;
-	const MAX_QUESTIONS = 3;
+	private const BLOB_SIZE = 65535;
+	private const QUESTION_CHAR_LIMIT = 60;
+	private const MAX_QUESTIONS = 3;
 
 	/**
 	 * @var User

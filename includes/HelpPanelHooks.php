@@ -16,7 +16,7 @@ use User;
 
 class HelpPanelHooks {
 
-	const HELP_PANEL_PREFERENCES_TOGGLE = 'growthexperiments-help-panel-tog-help-panel';
+	public const HELP_PANEL_PREFERENCES_TOGGLE = 'growthexperiments-help-panel-tog-help-panel';
 
 	/**
 	 * Register preference to toggle help panel.

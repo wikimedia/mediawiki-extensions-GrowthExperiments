@@ -12,8 +12,8 @@ use Title;
 
 class Tutorial extends BaseTaskModule {
 
-	const TUTORIAL_PREF = 'growthexperiments-homepage-tutorial-completed';
-	const TUTORIAL_TITLE_CONFIG = 'GEHomepageTutorialTitle';
+	public const TUTORIAL_PREF = 'growthexperiments-homepage-tutorial-completed';
+	public const TUTORIAL_TITLE_CONFIG = 'GEHomepageTutorialTitle';
 
 	/**
 	 * @inheritDoc

@@ -9,7 +9,7 @@ use IContextSource;
 
 class Help extends BaseModule {
 
-	const HELP_MODULE_QUESTION_TAG = 'help module question';
+	public const HELP_MODULE_QUESTION_TAG = 'help module question';
 	/**
 	 * @var string
 	 */

@@ -27,9 +27,9 @@ use User;
  */
 class Mentorship extends BaseModule {
 
-	const MENTORSHIP_MODULE_QUESTION_TAG = 'mentorship module question';
-	const MENTORSHIP_HELPPANEL_QUESTION_TAG = 'mentorship panel question';
-	const QUESTION_PREF = 'growthexperiments-mentor-questions';
+	public const MENTORSHIP_MODULE_QUESTION_TAG = 'mentorship module question';
+	public const MENTORSHIP_HELPPANEL_QUESTION_TAG = 'mentorship panel question';
+	public const QUESTION_PREF = 'growthexperiments-mentor-questions';
 
 	/** @var User */
 	private $mentor;

@@ -16,10 +16,10 @@ class TourHooks implements
 	UserGetDefaultOptionsHook
 {
 
-	const TOUR_COMPLETED_HELP_PANEL = 'growthexperiments-tour-help-panel';
-	const TOUR_COMPLETED_HOMEPAGE_MENTORSHIP = 'growthexperiments-tour-homepage-mentorship';
-	const TOUR_COMPLETED_HOMEPAGE_WELCOME = 'growthexperiments-tour-homepage-welcome';
-	const TOUR_COMPLETED_HOMEPAGE_DISCOVERY = 'growthexperiments-tour-homepage-discovery';
+	public const TOUR_COMPLETED_HELP_PANEL = 'growthexperiments-tour-help-panel';
+	public const TOUR_COMPLETED_HOMEPAGE_MENTORSHIP = 'growthexperiments-tour-homepage-mentorship';
+	public const TOUR_COMPLETED_HOMEPAGE_WELCOME = 'growthexperiments-tour-homepage-welcome';
+	public const TOUR_COMPLETED_HOMEPAGE_DISCOVERY = 'growthexperiments-tour-homepage-discovery';
 
 	/** @var UserOptionsLookup */
 	private $userOptionsLookup;

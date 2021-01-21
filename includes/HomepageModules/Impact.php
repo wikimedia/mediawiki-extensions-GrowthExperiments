@@ -31,7 +31,7 @@ use Wikimedia\Rdbms\IDatabase;
  */
 class Impact extends BaseModule {
 
-	const THUMBNAIL_SIZE = 40;
+	private const THUMBNAIL_SIZE = 40;
 
 	/**
 	 * @var array
