@@ -1,0 +1,47 @@
+.ve-ce-linkAnnotation.mw-ge-recommendedLinkAnnotation {
+	background-color: #fcf5e6;
+	border: 1px solid #fae2a5;
+	padding: 2px;
+	margin: -2px;
+	color: inherit;
+
+	&:after {
+		content: '';
+		display: inline-block;
+		margin-left: 0.5em;
+		width: 1em;
+		height: 1em;
+		position: relative;
+		top: 0.15em;
+		/* @embed */
+		background-image: url( robot-black.svg );
+		background-size: 100%;
+	}
+
+	.ve-ce-annotation-active& {
+		background-color: #e6f1ff;
+		border-color: #c6e0ff;
+		box-shadow: none;
+		text-decoration: underline;
+
+		&-undecided:after {
+			/* @embed */
+			background-image: url( robot-blue.svg );
+		}
+
+		&-rejected:after {
+			/* @embed */
+			background-image: url( clear.svg );
+		}
+	}
+
+	&-accepted:after {
+		/* @embed */
+		background-image: url( check-blue.svg );
+	}
+
+	&-rejected:after {
+		/* @embed */
+		background-image: url( close-red.svg );
+	}
+}

@@ -322,5 +322,10 @@
 	"growthexperiments-addlink-wrongmodel": "Revision $1 of \"$2\" is not wikitext",
 	"growthexperiments-addlink-invalidjson": "Link recommendation service response for \"$1\" is invalid",
 	"growthexperiments-addlink-serviceerror": "Link recommendation service responded with an error for \"$1\": $2",
-	"growthexperiments-addlink-duplicatesubmission": "Tried to submit link recommendation reviews for revision \"$1\" which has already been reviewed."
+	"growthexperiments-addlink-duplicatesubmission": "Tried to submit link recommendation reviews for revision \"$1\" which has already been reviewed.",
+	"growthexperiments-addlink-context-title": "$1 / $2",
+	"growthexperiments-addlink-context-intro": "Should this link to _____?",
+	"growthexperiments-addlink-context-button-accept": "Yes",
+	"growthexperiments-addlink-context-button-reject": "No",
+	"growthexperiments-addlink-context-button-next": "Skip"
 }
