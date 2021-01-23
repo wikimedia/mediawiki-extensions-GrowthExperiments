@@ -496,6 +496,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param Title[]|null $map Page name => title
+	 * @param bool $allowOther
 	 * @return TitleFactory|MockObject
 	 */
 	protected function getMockTitleFactory( array $map, bool $allowOther = true ) {
