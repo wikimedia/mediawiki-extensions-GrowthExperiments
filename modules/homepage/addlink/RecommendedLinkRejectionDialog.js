@@ -21,15 +21,8 @@ RecommendedLinkRejectionDialog.static.actions = [
 ];
 
 RecommendedLinkRejectionDialog.prototype.initialize = function () {
-	var editIcon;
-
 	// Parent method
 	RecommendedLinkRejectionDialog.super.prototype.initialize.call( this );
-
-	editIcon = new OO.ui.IconWidget( {
-		icon: 'edit',
-		flags: [ 'progressive' ]
-	} );
 
 	this.reasonSelect = new OO.ui.RadioSelectWidget( {
 		items: [
@@ -46,14 +39,7 @@ RecommendedLinkRejectionDialog.prototype.initialize = function () {
 				label: $( '<span>' ).append(
 					$( '<span>' )
 						.addClass( 'mw-ge-recommendedLinkRejectionDialog-reason-wrong-target-label' )
-						.text( mw.msg( 'growthexperiments-addlink-rejectiondialog-reason-wrong-target' ) ),
-					$( '<p>' )
-						.addClass( 'mw-ge-recommendedLinkRejectionDialog-reason-wrong-target-tip' )
-						.append(
-							mw.message( 'growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip' )
-								.params( [ editIcon.$element ] )
-								.parseDom()
-						)
+						.text( mw.msg( 'growthexperiments-addlink-rejectiondialog-reason-wrong-target' ) )
 				),
 				classes: [ 'mw-ge-recommendedLinkRejectionDialog-reason-wrong-target' ]
 			} ),

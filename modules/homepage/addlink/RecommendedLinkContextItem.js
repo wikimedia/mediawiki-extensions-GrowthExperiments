@@ -76,8 +76,8 @@ RecommendedLinkContextItem.prototype.setup = function () {
 	this.prevButton.connect( this, { click: [ 'moveToSuggestion', recommendationInfo.index - 1 ] } );
 	this.nextButton.connect( this, { click: [ 'moveToSuggestion', recommendationInfo.index + 1 ] } );
 
-	// TODO actually do something when the edit button is clicked (T267696)
-	this.editButton.$element.addClass( 'mw-ge-recommendedLinkContextItem-editButton' );
+	// link editing is disabled for now (T267696)
+	this.editButton.toggle( false );
 
 	$buttons.append(
 		this.prevButton.$element,
@@ -88,8 +88,6 @@ RecommendedLinkContextItem.prototype.setup = function () {
 
 	this.$body.append(
 		introLabel.$element,
-		// Move the edit button into the body, but only on desktop; on mobile, leave it where it is
-		this.context.isMobile() ? $( [] ) : this.editButton.$element,
 		$linkPreview,
 		$buttons
 	);
