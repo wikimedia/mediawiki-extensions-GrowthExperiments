@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"tag-help_module_question": "vprašanje z modula za pomoč",
+	"tag-help_module_question-description": "Urejanje, opravljeno iz modula začetne strani pomoči »Postavite vprašanje«",
+	"tag-mentorship_module_question": "vprašanje iz modula za mentoriranje",
+	"tag-mentorship_module_question-description": "Urejanje, opravljeno z možnostjo »Vprašajte mentorja« na začetni strani modula za mentoriranje",
+	"tag-mentorship_panel_question": "vprašanje s podokna za mentoriranje",
+	"tag-mentorship_panel_question-description": "Urejanje, opravljeno z možnostjo »Vprašajte mentorja« podokna za pomoč",
+	"tag-newcomer_task": "naloga novinca",
+	"tag-newcomer_task-description": "Urejanje, ki ga je predlagal modul za urejanja na začetni strani za novince",
+	"tag-newcomer_task_add_link": "predlagana povezava",
+	"tag-newcomer_task_add_link-description": "Urejanje »Dodaj povezavo«, ki ga je predlagal modul za urejanja na začetni strani za novince",
+	"growthexperiments-homepage-mentorship-dialog-title": "Vprašajte {{GENDER:$1|svojega mentorja|svojo mentorico|svojega mentorja/svojo mentorico}}"
+}

@@ -261,6 +261,7 @@
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "추천 문서 설정의 구조가 잘못되었습니다",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "추천 문서 설정에 문제가 있습니다: \"$1\" id는 유효하지 않습니다 - a-z, 0-9, - (마이너스 표시)만을 포함해야 합니다",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "잘못된 편집 요청 설정: 작업 종류 또는 주제 $2 에 대한 값 $1 이(가) 없습니다",
+	"growthexperiments-homepage-suggestededits-config-invalidtitle": "제안된 편집 구성이 유효하지 않습니다: 유효하지 않은 제목 \"$1\"",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "잘못된 편집 요청 설정: 작업 종류 $2 에 대한 그룹 $1 이(가) 없습니다",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "잘못된 편집 요청 설정: 작업 종류 또는 주제 $2 에 대한 메시지 $1 이(가) 없습니다",
 	"growthexperiments-homepage-suggestededits-create-article-additional-message": "새 문서를 성공적으로 만들기 위해서는 {{GENDER:$1|쉬운}} 작업을 완료함으로써 배울 수 있는 여러 기술을 활용해야 합니다. 새 문서를 만드는 방법에 대해 알아보려면 [$2 여기를 클릭하세요].",
@@ -301,5 +302,8 @@
 	"growthexperiments-homepage-suggestededits-more-info": "편집 제안에 관한 더 자세한 정보",
 	"growthexperiments-homepage-welcome-notice-header": "{{GENDER:$1|당신의}} 홈페이지에 오신 것을 환영합니다!",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "계속",
-	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "알겠습니다"
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "알겠습니다",
+	"growthexperiments-addlink-context-button-accept": "예",
+	"growthexperiments-addlink-context-button-reject": "아니오",
+	"growthexperiments-addlink-context-button-next": "건너뛰기"
 }

@@ -131,5 +131,8 @@
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Verstanen",
 	"growthexperiments-addlink-pagenotfound": "Säit \"$1\" gëtt et net",
 	"growthexperiments-addlink-revdeleted": "Versioun $1 vu(n) \"$2\" ass net zougänglech",
-	"growthexperiments-addlink-wrongmodel": "Versioun $1 vu(n) \"$2\" ass kee Wikitext"
+	"growthexperiments-addlink-wrongmodel": "Versioun $1 vu(n) \"$2\" ass kee Wikitext",
+	"growthexperiments-addlink-context-button-accept": "Jo",
+	"growthexperiments-addlink-context-button-reject": "Neen",
+	"growthexperiments-addlink-context-button-next": "Iwwersprangen"
 }

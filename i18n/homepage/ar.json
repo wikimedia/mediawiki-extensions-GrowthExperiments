@@ -331,5 +331,10 @@
 	"growthexperiments-addlink-wrongmodel": "المراجعة $1 من «$2» ليست نص ويكي",
 	"growthexperiments-addlink-invalidjson": "ردّ خدمة اقتراح الوصلة الخاص بـ «$1» غير سليم",
 	"growthexperiments-addlink-serviceerror": "خدمة اقتراح الوصلة الخاص بـ «$1» ردّت بالخطأ: $2",
-	"growthexperiments-addlink-duplicatesubmission": "محاولة إرسال مراجعات توصية الروابط لـ \"$1\" التي تمّت مراجعتها سابقا."
+	"growthexperiments-addlink-duplicatesubmission": "محاولة إرسال مراجعات توصية الروابط لـ \"$1\" التي تمّت مراجعتها سابقا.",
+	"growthexperiments-addlink-context-title": "$1 / $2",
+	"growthexperiments-addlink-context-intro": "هل ينبغي أن يربط هذا إلى _____؟",
+	"growthexperiments-addlink-context-button-accept": "نعم",
+	"growthexperiments-addlink-context-button-reject": "لا",
+	"growthexperiments-addlink-context-button-next": "{{GENDER:|تجاوز|تجوزي}}"
 }

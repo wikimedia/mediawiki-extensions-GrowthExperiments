@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Agaafd",
 			"BaRaN6161 TURK",
 			"Grkn gll",
 			"Mirzali",
@@ -318,5 +319,9 @@
 	"growthexperiments-addlink-revdeleted": "\"$2\" revizyonu $1 erişilmiyor",
 	"growthexperiments-addlink-wrongmodel": "\"$2\" revizyonu $1 vikimetin değil",
 	"growthexperiments-addlink-invalidjson": "\"$1\" için bağlantı önerisi hizmeti yanıtı geçersiz",
-	"growthexperiments-addlink-serviceerror": "Bağlantı önerisi hizmeti \"$1\" için bir hatayla yanıt verdi: $2"
+	"growthexperiments-addlink-serviceerror": "Bağlantı önerisi hizmeti \"$1\" için bir hatayla yanıt verdi: $2",
+	"growthexperiments-addlink-context-intro": "Bu _____ ile bağlantı kurmalı mı?",
+	"growthexperiments-addlink-context-button-accept": "Evet",
+	"growthexperiments-addlink-context-button-reject": "Hayır",
+	"growthexperiments-addlink-context-button-next": "Atla"
 }

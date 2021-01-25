@@ -324,5 +324,8 @@
 	"growthexperiments-addlink-revdeleted": "Wersja $1 strony „$2” jest niedostępna",
 	"growthexperiments-addlink-wrongmodel": "Wersja $1 strony „$2” nie zawiera wikitekstu",
 	"growthexperiments-addlink-invalidjson": "Odpowiedź usługi rekomendowania linków dla strony „$1” jest nieprawidłowa",
-	"growthexperiments-addlink-serviceerror": "Usługa rekomendowania linków zwróćiła błąd dla strony „$1”: $2"
+	"growthexperiments-addlink-serviceerror": "Usługa rekomendowania linków zwróćiła błąd dla strony „$1”: $2",
+	"growthexperiments-addlink-context-button-accept": "Tak",
+	"growthexperiments-addlink-context-button-reject": "Nie",
+	"growthexperiments-addlink-context-button-next": "Pomiń"
 }

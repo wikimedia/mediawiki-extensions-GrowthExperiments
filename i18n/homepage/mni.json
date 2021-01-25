@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Awangba Mangang"
+			"Awangba Mangang",
+			"Luwangcha"
 		]
 	},
 	"growthexperiments-homepage-startediting-header": "ꯁꯦꯝꯒꯠꯄ ꯍꯧꯔꯦ",
@@ -11,5 +12,8 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "ꯃꯅꯤꯡ",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "ꯑꯔꯥꯏꯕ",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "ꯃꯌꯥꯏꯑꯣꯏꯔꯞ",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "ꯑꯀꯟꯕ"
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "ꯑꯀꯟꯕ",
+	"growthexperiments-addlink-context-button-accept": "ꯍꯣꯏ",
+	"growthexperiments-addlink-context-button-reject": "ꯅꯠꯇꯦ",
+	"growthexperiments-addlink-context-button-next": "ꯀꯥꯟꯊꯣꯛꯑꯣ"
 }

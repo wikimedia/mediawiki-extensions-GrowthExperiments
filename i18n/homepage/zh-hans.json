@@ -5,6 +5,7 @@
 			"A Chinese Wikipedian",
 			"A Retired User",
 			"AYZ04",
+			"Colathewikian",
 			"Func",
 			"Josephine W.",
 			"Looong",
@@ -288,5 +289,8 @@
 	"right-setmentor": "设置用户的导师",
 	"action-setmentor": "设置用户的导师",
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "更多关于此编辑建议",
-	"growthexperiments-homepage-suggestededits-more-info": "有关修改建议的更多信息"
+	"growthexperiments-homepage-suggestededits-more-info": "有关修改建议的更多信息",
+	"growthexperiments-addlink-context-button-accept": "是",
+	"growthexperiments-addlink-context-button-reject": "否",
+	"growthexperiments-addlink-context-button-next": "跳过"
 }

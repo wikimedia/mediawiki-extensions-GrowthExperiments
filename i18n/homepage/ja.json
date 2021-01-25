@@ -4,6 +4,7 @@
 			"A2y4",
 			"Aefgh39622",
 			"Buntschann",
+			"LaMagiaaa",
 			"Omotecho",
 			"Shirayuki",
 			"Siglite3",
@@ -158,5 +159,8 @@
 	"growthexperiments-homepage-suggestededits-config-invalidid": "提案した編集の設定が無効です: \"$1\" id が無効です - 記入できるのは欧文文字と数字 a-z、0-9、- (マイナス記号) に限定されます",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "提案した編集の設定が無効です: タスクについてタイプの $1 欄もしくは主題欄 $2 を記入していません",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "提案した編集の設定が無効です: タスク$2に対するグループ $1 が無効です",
-	"growthexperiments-homepage-suggestededits-config-missingmessage": "提案した編集の設定が無効です: $2 欄の $1 メッセージがありません"
+	"growthexperiments-homepage-suggestededits-config-missingmessage": "提案した編集の設定が無効です: $2 欄の $1 メッセージがありません",
+	"growthexperiments-addlink-context-button-accept": "はい",
+	"growthexperiments-addlink-context-button-reject": "いいえ",
+	"growthexperiments-addlink-context-button-next": "スキップ"
 }

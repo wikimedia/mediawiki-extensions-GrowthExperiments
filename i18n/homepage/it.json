@@ -311,5 +311,8 @@
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Capito",
 	"growthexperiments-addlink-pagenotfound": "La pagina \"$1\" non esiste",
 	"growthexperiments-addlink-revdeleted": "La versione $1 di \"$2\" è inaccessibile",
-	"growthexperiments-addlink-wrongmodel": "La versione $1 di \"$2\" non è wikitesto"
+	"growthexperiments-addlink-wrongmodel": "La versione $1 di \"$2\" non è wikitesto",
+	"growthexperiments-addlink-context-button-accept": "Sì",
+	"growthexperiments-addlink-context-button-reject": "No",
+	"growthexperiments-addlink-context-button-next": "Salta"
 }

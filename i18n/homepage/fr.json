@@ -13,6 +13,7 @@
 			"Pamputt",
 			"Pols12",
 			"Pyb",
+			"Tektasc",
 			"Thibaut120094",
 			"Trizek",
 			"Trizek (WMF)",
@@ -340,5 +341,9 @@
 	"growthexperiments-addlink-wrongmodel": "La révision $1 de « $2 » n’est pas du wikicode",
 	"growthexperiments-addlink-invalidjson": "La réponse du service de recommandation de lien pour « $1 » n’est pas valide",
 	"growthexperiments-addlink-serviceerror": "Le service de recommandation de lien a répondu avec une erreur pour « $1 » : $2",
-	"growthexperiments-addlink-duplicatesubmission": "Essai de soumission de relectures de recommandation de lien pour la révision « $1 » qui a déjà été relue."
+	"growthexperiments-addlink-duplicatesubmission": "Essai de soumission de relectures de recommandation de lien pour la révision « $1 » qui a déjà été relue.",
+	"growthexperiments-addlink-context-intro": "Faut-il lier cela à _____ ?",
+	"growthexperiments-addlink-context-button-accept": "Oui",
+	"growthexperiments-addlink-context-button-reject": "Non",
+	"growthexperiments-addlink-context-button-next": "Passer"
 }
