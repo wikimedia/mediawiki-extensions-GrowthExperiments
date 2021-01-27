@@ -18,7 +18,7 @@ use SpecialPage;
  */
 abstract class BaseModule implements HomepageModule {
 
-	private const BASE_CSS_CLASS = 'growthexperiments-homepage-module';
+	protected const BASE_CSS_CLASS = 'growthexperiments-homepage-module';
 	protected const MODULE_STATE_COMPLETE = 'complete';
 	protected const MODULE_STATE_INCOMPLETE = 'incomplete';
 	protected const MODULE_STATE_ACTIVATED = 'activated';
