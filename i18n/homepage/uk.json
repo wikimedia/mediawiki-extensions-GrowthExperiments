@@ -328,5 +328,8 @@
 	"growthexperiments-addlink-wrongmodel": "Версія $1 сторінки «$2» не є вікітекстом",
 	"growthexperiments-addlink-invalidjson": "Відповідь сервісу рекомендацій посилань для «$1» недійсна",
 	"growthexperiments-addlink-serviceerror": "Сервіс рекомендацій посилань відповів помилкою для «$1»: $2",
-	"growthexperiments-addlink-duplicatesubmission": "Спроба подати розгляд рекомендації посилань для версії «$1», яку вже було розглянуто."
+	"growthexperiments-addlink-duplicatesubmission": "Спроба подати розгляд рекомендації посилань для версії «$1», яку вже було розглянуто.",
+	"growthexperiments-addlink-context-button-accept": "Так",
+	"growthexperiments-addlink-context-button-reject": "Ні",
+	"growthexperiments-addlink-context-button-next": "Пропустити"
 }
