@@ -6,7 +6,7 @@
 
 	/**
 	 * @class
-	 * @mixins OO.EventEmitter
+	 * @mixes OO.EventEmitter
 	 *
 	 * @constructor
 	 * @param {Object} config

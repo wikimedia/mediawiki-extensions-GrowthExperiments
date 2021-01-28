@@ -16,9 +16,8 @@ OO.inheritClass( AddLinkDesktopArticleTarget, ve.init.mw.DesktopArticleTarget );
 OO.mixinClass( AddLinkDesktopArticleTarget, AddLinkArticleTarget );
 
 AddLinkDesktopArticleTarget.prototype.loadSuccess = function ( response ) {
-	this.beforeLoadSuccess( response ).done( function () {
-		AddLinkDesktopArticleTarget.super.prototype.loadSuccess.call( this, response );
-	}.bind( this ) );
+	this.beforeLoadSuccess( response );
+	AddLinkDesktopArticleTarget.super.prototype.loadSuccess.call( this, response );
 };
 
 AddLinkDesktopArticleTarget.prototype.surfaceReady = function () {

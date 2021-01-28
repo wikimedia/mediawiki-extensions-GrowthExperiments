@@ -1,4 +1,5 @@
-var CeRecommendedLinkAnnotation = require( './ceRecommendedLinkAnnotation.js' );
+var CeRecommendedLinkAnnotation = require( './ceRecommendedLinkAnnotation.js' ),
+	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
 /**
  * @typedef LinkRecommendationLink
  * @property {string} phrase_to_link Text to look for
@@ -13,6 +14,7 @@ var CeRecommendedLinkAnnotation = require( './ceRecommendedLinkAnnotation.js' );
 /**
  * Mixin for a ve.init.mw.ArticleTarget instance. Used by AddLinkDesktopArticleTarget and
  * AddLinkMobileArticleTarget.
+ *
  * @mixin mw.libs.ge.AddLinkArticleTarget
  */
 function AddLinkArticleTarget() {
@@ -25,25 +27,20 @@ function AddLinkArticleTarget() {
  *
  * @param {Object} response Response from the visualeditor or visualeditoredit API,
  *   passed to loadSuccess(). Will be modified.
- * @return {jQuery.Promise}
  */
 AddLinkArticleTarget.prototype.beforeLoadSuccess = function ( response ) {
 	// TODO disable restored edits somehow, right now they break (T267690)
-	var data, addlinkPromise, addlinkUrl, doc;
+	var data, addlinkData, doc;
 
 	if ( !response ) {
 		return;
 	}
 	data = response.visualeditor || response.visualeditoredit;
-	addlinkUrl = mw.util.wikiScript( 'rest' ) + '/growthexperiments/v0/suggestions/addlink/' +
-		encodeURIComponent( this.getPageName() );
-	addlinkPromise = $.getJSON( addlinkUrl );
 	doc = ve.parseXhtml( data.content );
+	addlinkData = suggestedEditSession.taskData;
 	// TODO start loading this earlier (T267691)
-	return addlinkPromise.then( function ( addlinkData ) {
-		this.annotateSuggestions( doc, addlinkData.recommendation.links );
-		data.content = '<!doctype html>' + ve.serializeXhtml( doc );
-	}.bind( this ) );
+	this.annotateSuggestions( doc, addlinkData.links );
+	data.content = '<!doctype html>' + ve.serializeXhtml( doc );
 };
 
 /**

@@ -16,13 +16,16 @@ use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Tracker\Tracker;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
+use GrowthExperiments\Rest\Handler\AddLinkHandlerTrait;
 use GrowthExperiments\Specials\SpecialClaimMentee;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
@@ -34,6 +37,7 @@ use MediaWiki\Minerva\Menu\Entries\HomeMenuEntry;
 use MediaWiki\Minerva\Menu\Entries\IProfileMenuEntry;
 use MediaWiki\Minerva\Menu\Group;
 use MediaWiki\Minerva\SkinOptions;
+use MediaWiki\Rest\HttpException;
 use MediaWiki\User\UserOptionsLookup;
 use NamespaceInfo;
 use OOUI\ButtonWidget;
@@ -72,6 +76,7 @@ class HomepageHooks implements
 	\MediaWiki\User\Hook\ConfirmEmailCompleteHook,
 	\MediaWiki\Hook\SiteNoticeAfterHook
 {
+	use AddLinkHandlerTrait;
 
 	public const HOMEPAGE_PREF_ENABLE = 'growthexperiments-homepage-enable';
 	public const HOMEPAGE_PREF_PT_LINK = 'growthexperiments-homepage-pt-link';
@@ -113,6 +118,8 @@ class HomepageHooks implements
 	private $taskSuggesterFactory;
 	/** @var NewcomerTasksUserOptionsLookup */
 	private $newcomerTasksUserOptionsLookup;
+	/** @var LinkRecommendationProvider */
+	private $linkRecommendationProvider;
 
 	/**
 	 * HomepageHooks constructor.
@@ -128,6 +135,7 @@ class HomepageHooks implements
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
+	 * @param LinkRecommendationProvider $linkRecommendationProvider
 	 */
 	public function __construct(
 		Config $config,
@@ -141,7 +149,8 @@ class HomepageHooks implements
 		HomepageModuleRegistry $moduleRegistry,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		TaskSuggesterFactory $taskSuggesterFactory,
-		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
+		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
+		LinkRecommendationProvider $linkRecommendationProvider
 	) {
 		$this->config = $config;
 		$this->lb = $lb;
@@ -155,6 +164,7 @@ class HomepageHooks implements
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
+		$this->linkRecommendationProvider = $linkRecommendationProvider;
 	}
 
 	/**
@@ -255,6 +265,19 @@ class HomepageHooks implements
 				$out->addJsConfigVars( [
 					'wgWMESchemaEditAttemptStepSessionId' => $clickId,
 				] );
+
+				if (
+					$context->getRequest()->getVal( 'getasktype' ) === LinkRecommendationTaskTypeHandler::TASK_TYPE_ID
+				) {
+					try {
+						$linkRecommendations = $this->getLinkRecommendation( $context->getTitle() )->toArray();
+					} catch ( HttpException $e ) {
+						$linkRecommendations = [ 'error' => $e->getMessage() ];
+					}
+					$out->addJsConfigVars( [
+						'wgGESuggestedEditData' => $linkRecommendations
+					] );
+				}
 			}
 		}
 		if ( !self::isHomepageEnabled( $skin->getUser() ) || !Util::isMobile( $skin ) ) {
