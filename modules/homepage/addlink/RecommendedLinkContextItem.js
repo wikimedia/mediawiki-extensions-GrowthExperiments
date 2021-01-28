@@ -161,7 +161,13 @@ RecommendedLinkContextItem.prototype.getRecommendationInfo = function () {
  * @param {boolean} accepted True if accepted, false if rejected
  */
 RecommendedLinkContextItem.prototype.setAccepted = function ( accepted ) {
-	var recommendationInfo = this.getRecommendationInfo();
+	var recommendationInfo = this.getRecommendationInfo(),
+		surfaceModel = this.context.getSurface().getModel(),
+		oldReadOnly = surfaceModel.isReadOnly();
+
+	// Temporarily disable read-only mode
+	surfaceModel.setReadOnly( false );
+
 	this.applyToAnnotations( function ( fragment, annotation ) {
 		fragment.setAutoSelect( false );
 		fragment.annotateContent( 'clear', annotation );
@@ -170,6 +176,9 @@ RecommendedLinkContextItem.prototype.setAccepted = function ( accepted ) {
 			{ attributes: { recommendationAccepted: accepted } }
 		) ) );
 	} );
+
+	// Re-enable read-only mode (if it was previously enabled)
+	surfaceModel.setReadOnly( oldReadOnly );
 
 	// TODO if !accepted, open rejection dialog (T267704), wrap next block in a promise
 

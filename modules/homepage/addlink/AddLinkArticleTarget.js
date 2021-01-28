@@ -47,6 +47,9 @@ AddLinkArticleTarget.prototype.beforeLoadSuccess = function ( response ) {
  * Implementations should call this in surfaceReady(), before calling the parent method.
  */
 AddLinkArticleTarget.prototype.beforeSurfaceReady = function () {
+	// Put the surface in read-only mode
+	this.getSurface().setReadOnly( true );
+
 	// HACK RecommendedLinkContextItem doesn't have access to the target, so give it access to the
 	// link recommendation data by adding a property to the ui.Surface
 	this.getSurface().linkRecommendationFragments = this.findRecommendationFragments();
