@@ -161,7 +161,8 @@ RecommendedLinkContextItem.prototype.getRecommendationInfo = function () {
  * @param {boolean} accepted True if accepted, false if rejected
  */
 RecommendedLinkContextItem.prototype.setAccepted = function ( accepted ) {
-	var recommendationInfo = this.getRecommendationInfo(),
+	var feedbackDialogPromise,
+		recommendationInfo = this.getRecommendationInfo(),
 		surfaceModel = this.context.getSurface().getModel(),
 		oldReadOnly = surfaceModel.isReadOnly();
 
@@ -180,11 +181,21 @@ RecommendedLinkContextItem.prototype.setAccepted = function ( accepted ) {
 	// Re-enable read-only mode (if it was previously enabled)
 	surfaceModel.setReadOnly( oldReadOnly );
 
-	// TODO if !accepted, open rejection dialog (T267704), wrap next block in a promise
+	if ( accepted ) {
+		feedbackDialogPromise = $.Deferred().resolve();
+	} else {
+		feedbackDialogPromise = this.context.getSurface().dialogs
+			.openWindow( 'recommendedLinkRejection' ).closed
+			.then( function ( /* closedData */ ) {
+				// TODO store closedData.reason somewhere
+			} );
+	}
 
 	if ( recommendationInfo.index < recommendationInfo.total - 1 ) {
 		// Move to the next suggestion
-		this.moveToSuggestion( this.getRecommendationInfo().index + 1 );
+		feedbackDialogPromise.then( function () {
+			this.moveToSuggestion( this.getRecommendationInfo().index + 1 );
+		}.bind( this ) );
 	}
 };
 

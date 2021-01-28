@@ -4,5 +4,6 @@ module.exports = {
 	DMRecommendedLinkErrorAnnotation: require( './dmRecommendedLinkErrorAnnotation.js' ),
 	CERecommendedLinkErrorAnnotation: require( './ceRecommendedLinkErrorAnnotation.js' ),
 	RecommendedLinkContextItem: require( './RecommendedLinkContextItem.js' ),
+	RecommendedLinkRejectionDialog: require( './RecommendedLinkRejectionDialog.js' ),
 	AddLinkArticleTarget: require( './AddLinkArticleTarget.js' )
 };

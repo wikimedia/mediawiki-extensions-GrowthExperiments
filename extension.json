@@ -659,18 +659,28 @@
 				"homepage/addlink/ceRecommendedLinkAnnotation.js",
 				"homepage/addlink/dmRecommendedLinkErrorAnnotation.js",
 				"homepage/addlink/ceRecommendedLinkErrorAnnotation.js",
-				"homepage/addlink/RecommendedLinkContextItem.js"
+				"homepage/addlink/RecommendedLinkContextItem.js",
+				"homepage/addlink/RecommendedLinkRejectionDialog.js"
 			],
 			"styles": [
 				"homepage/addlink/ceRecommendedLinkAnnotation.less",
-				"homepage/addlink/RecommendedLinkContextItem.less"
+				"homepage/addlink/RecommendedLinkContextItem.less",
+				"homepage/addlink/RecommendedLinkRejectionDialog.less"
 			],
 			"messages": [
 				"growthexperiments-addlink-context-title",
 				"growthexperiments-addlink-context-intro",
 				"growthexperiments-addlink-context-button-accept",
 				"growthexperiments-addlink-context-button-reject",
-				"growthexperiments-addlink-context-button-next"
+				"growthexperiments-addlink-context-button-next",
+				"growthexperiments-addlink-rejectiondialog-title",
+				"growthexperiments-addlink-rejectiondialog-message",
+				"growthexperiments-addlink-rejectiondialog-reason-everyday",
+				"growthexperiments-addlink-rejectiondialog-reason-already-linked",
+				"growthexperiments-addlink-rejectiondialog-reason-wrong-target",
+				"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip",
+				"growthexperiments-addlink-rejectiondialog-reason-other",
+				"growthexperiments-addlink-rejectiondialog-action-done"
 			],
 			"dependencies": [
 				"ext.visualEditor.mwlink",
