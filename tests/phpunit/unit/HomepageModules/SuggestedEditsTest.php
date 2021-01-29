@@ -42,7 +42,7 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 		$widget = $wrapper->buttonGroupWidget;
 		$this->assertNotEmpty( $out );
 		$widgetItems = $widget->getItems();
-		$this->assertSame( 1, count( $widgetItems ) );
+		$this->assertCount( 1, $widgetItems );
 	}
 
 	private function getSuggestedEdits() : SuggestedEdits {

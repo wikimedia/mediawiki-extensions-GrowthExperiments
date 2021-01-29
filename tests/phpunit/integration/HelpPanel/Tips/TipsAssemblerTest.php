@@ -40,7 +40,7 @@ class TipsAssemblerTest extends MediaWikiIntegrationTestCase {
 			$config['tasktype']->getId(),
 			$config['dir']
 		);
-		$this->assertSame( $expected['tipCount'], count( $tips ) );
+		$this->assertCount( $expected['tipCount'], $tips );
 	}
 
 	/**
