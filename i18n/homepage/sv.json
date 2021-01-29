@@ -303,5 +303,6 @@
 	"growthexperiments-homepage-welcome-notice-body-variant-c": "{{GENDER:$1|Du}} kan lära dig att redigera, kontakta {{GENDER:$1|din}} fadder, och se påverkan {{GENDER:$1|ditt}} arbete har haft. Fortsätt att lära dig om <strong>föreslagna redigeringar</strong> på {{GENDER:$1|din}} hemsida.",
 	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|Du}} kan lära dig att redigera, kontakta {{GENDER:$1|din}} fadder och se vilken påverkan {{GENDER:$1|ditt}} arbete har haft.",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Fortsätt",
-	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Jag förstår"
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Jag förstår",
+	"growthexperiments-addlink-rejectiondialog-action-done": "Färdigt"
 }

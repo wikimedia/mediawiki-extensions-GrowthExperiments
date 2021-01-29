@@ -1,9 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dbc334",
 			"Eleassar"
 		]
 	},
+	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Prikaži predlagana urejanja",
+	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "Začnite s predlaganimi urejanji",
+	"growthexperiments-homepage-startediting-button": "Prikaži predlagana urejanja",
+	"growthexperiments-homepage-startediting-dialog-header": "O predlaganih urejanjih",
+	"growthexperiments-homepage-startediting-dialog-intro-title": "Predlagana urejanja za začetek",
+	"growthexperiments-homepage-startediting-dialog-intro-subheader": "S svojimi urejanji pomagate izboljševati Wikipedijo in prispevate k našemu poslanstvu deljenja prostega znanja s svetom. Začnite z majhnimi predlaganimi urejanji.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Preizkusite se najprej z nekaj <strong>preprostimi</strong> urejanji",
+	"growthexperiments-homepage-suggested-edits-header": "Predlagana urejanja",
 	"tag-help_module_question": "vprašanje z modula za pomoč",
 	"tag-help_module_question-description": "Urejanje, opravljeno iz modula začetne strani pomoči »Postavite vprašanje«",
 	"tag-mentorship_module_question": "vprašanje iz modula za mentoriranje",
@@ -14,5 +23,20 @@
 	"tag-newcomer_task-description": "Urejanje, ki ga je predlagal modul za urejanja na začetni strani za novince",
 	"tag-newcomer_task_add_link": "predlagana povezava",
 	"tag-newcomer_task_add_link-description": "Urejanje »Dodaj povezavo«, ki ga je predlagal modul za urejanja na začetni strani za novince",
-	"growthexperiments-homepage-mentorship-dialog-title": "Vprašajte {{GENDER:$1|svojega mentorja|svojo mentorico|svojega mentorja/svojo mentorico}}"
+	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$2|Vprašajte}} {{GENDER:$1|svojega mentorja|svojo mentorico|svojega mentorja/svojo mentorico}}",
+	"growthexperiments-tour-welcome-description-c": "Sem se lahko kadar koli {{GENDER:$1|vrnete}} s klikom svojega uporabniškega imena. Na svoji domači strani se še naprej učite s <b>predlaganimi urejanji</b>.",
+	"growthexperiments-tour-welcome-description-d": "Sem se lahko kadar koli {{GENDER:$1|vrnete}} s klikom svojega uporabniškega imena. Na svoji domači strani lahko poiščete predlagana urejanja, postavite vprašanja mentorju in spremljate svoj vpliv.",
+	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Poskusite predlagana urejanja poiskati na drugih ravneh zahtevnosti",
+	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Poskusite predlagana urejanja poiskati pri drugih zanimanjih ali na drugih ravneh zahtevnosti",
+	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Neveljavna konfiguracija predlaganih urejanj: strukturna napaka",
+	"growthexperiments-homepage-suggestededits-config-invalidid": "Neveljavna konfiguracija predlaganih urejanj: neveljaven identifikator »$1« – vsebuje lahko samo znake a–z, 0–9 in - (minus)",
+	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Neveljavna konfiguracija predlaganih urejanj: neveljaven parameter <code>vrsta</code> $1 za nalogo vrste $2 – biti mora eden izmed naslednjih: $3",
+	"growthexperiments-homepage-suggestededits-config-missingfield": "Neveljavna konfiguracija predlaganih urejanj: za vrsto naloge ali temo $2 manjka polje $1",
+	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Neveljavna konfiguracija predlaganih urejanj: neveljaven naslov »$1«",
+	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Neveljavna konfiguracija predlaganih urejanj: neveljavna skupina $1 za nalogo vrste $2",
+	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Neveljavna konfiguracija predlaganih urejanj: neveljavno ime predloge $1 za nalogo vrste $2",
+	"growthexperiments-homepage-suggestededits-config-missingmessage": "Neveljavna konfiguracija predlaganih urejanj: pri polju $2 manjka sporočilo $1",
+	"growthexperiments-homepage-suggestededits-error-title": "Trenutno ni na voljo nobeno predlagano urejanje.",
+	"growthexperiments-homepage-suggestededits-more-info": "Več o predlaganih urejanjih",
+	"growthexperiments-homepage-welcome-notice-body-variant-c": "Lahko se {{GENDER:$1|učite}} urejati, stopite v stik s svojim mentorjem in spremljate vpliv svojega dela. Na svoji domači strani se še naprej učite s <strong>predlaganimi urejanji</strong>."
 }

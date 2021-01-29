@@ -327,5 +327,13 @@
 	"growthexperiments-addlink-context-intro": "Deve este link para _____?",
 	"growthexperiments-addlink-context-button-accept": "Sim",
 	"growthexperiments-addlink-context-button-reject": "Não",
-	"growthexperiments-addlink-context-button-next": "Pular"
+	"growthexperiments-addlink-context-button-next": "Pular",
+	"growthexperiments-addlink-rejectiondialog-title": "Por que este não é um bom link? <em>(Opcional)</em>",
+	"growthexperiments-addlink-rejectiondialog-message": "Sua resposta pode ser usada para melhorar a qualidade das sugestões de IA.",
+	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Conceito cotidiano que não precisa de explicação (por exemplo, \"céu\")",
+	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "Já linkado anteriormente no artigo",
+	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Destino de link incorreto (por exemplo, vinculando \"sol\" para \"estrela\")",
+	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Toque no lápis de edição $1 ao lado do link para alterar o destino do link",
+	"growthexperiments-addlink-rejectiondialog-reason-other": "Outro / prefiro não dizer",
+	"growthexperiments-addlink-rejectiondialog-action-done": "Feito"
 }

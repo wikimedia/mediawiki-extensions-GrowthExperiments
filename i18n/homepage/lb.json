@@ -134,5 +134,6 @@
 	"growthexperiments-addlink-wrongmodel": "Versioun $1 vu(n) \"$2\" ass kee Wikitext",
 	"growthexperiments-addlink-context-button-accept": "Jo",
 	"growthexperiments-addlink-context-button-reject": "Neen",
-	"growthexperiments-addlink-context-button-next": "Iwwersprangen"
+	"growthexperiments-addlink-context-button-next": "Iwwersprangen",
+	"growthexperiments-addlink-rejectiondialog-action-done": "Fäerdeg"
 }

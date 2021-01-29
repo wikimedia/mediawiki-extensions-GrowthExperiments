@@ -323,5 +323,7 @@
 	"growthexperiments-addlink-pagenotfound": "Страница «$1» не существует.",
 	"growthexperiments-addlink-context-button-accept": "Да",
 	"growthexperiments-addlink-context-button-reject": "Нет",
-	"growthexperiments-addlink-context-button-next": "Пропустить"
+	"growthexperiments-addlink-context-button-next": "Пропустить",
+	"growthexperiments-addlink-rejectiondialog-reason-other": "Другое / предпочитаю не говорить",
+	"growthexperiments-addlink-rejectiondialog-action-done": "Готово"
 }
