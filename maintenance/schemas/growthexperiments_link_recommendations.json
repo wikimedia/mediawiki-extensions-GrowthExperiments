@@ -7,13 +7,13 @@
 				"name": "gelr_page",
 				"comment": "The page the recommendations are for. Foreign key to page.page_id.",
 				"type": "integer",
-				"options": { "unsigned": true, "notnull":  true }
+				"options": { "unsigned": true, "notnull": true }
 			},
 			{
 				"name": "gelr_revision",
 				"comment": "The revision the recommendations are for. Foreign key to revision.rev_id.",
 				"type": "integer",
-				"options": { "unsigned": true, "notnull":  true }
+				"options": { "unsigned": true, "notnull": true }
 			},
 			{
 				"name": "gelr_data",
