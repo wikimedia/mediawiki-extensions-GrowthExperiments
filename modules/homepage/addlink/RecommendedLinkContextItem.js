@@ -126,19 +126,19 @@ RecommendedLinkContextItem.prototype.buildProgressIndicators = function ( index,
  * Get information about this recommendation's place in the document.
  *
  * @private
- * @return {{ index: number, total: number, recommendationId: string, fragment: ve.dm.SurfaceFragment }|null}
+ * @return {?{ index: number, total: number, recommendationWikitextOffset: number, fragment: ve.dm.SurfaceFragment }}
  */
 RecommendedLinkContextItem.prototype.getRecommendationInfo = function () {
-	var i, thisId, recommendationFragments;
+	var i, thisOffset, recommendationFragments;
 	if ( this.recommendationInfo !== undefined ) {
 		return this.recommendationInfo;
 	}
 
 	this.recommendationInfo = null;
-	thisId = this.model.getAttribute( 'recommendationId' );
+	thisOffset = this.model.getAttribute( 'recommendationWikitextOffset' );
 	recommendationFragments = this.context.getSurface().linkRecommendationFragments;
 	for ( i = 0; i < recommendationFragments.length; i++ ) {
-		if ( recommendationFragments[ i ].recommendationId === thisId ) {
+		if ( recommendationFragments[ i ].recommendationWikitextOffset === thisOffset ) {
 			this.recommendationInfo = $.extend( {
 				index: i,
 				total: recommendationFragments.length

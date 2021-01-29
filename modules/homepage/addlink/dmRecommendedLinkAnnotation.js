@@ -19,8 +19,9 @@ DMRecommendedLinkAnnotation.static.matchRdfaTypes = [ 'mw:RecommendedLink' ];
 
 DMRecommendedLinkAnnotation.static.allowedRdfaTypes = [];
 
-DMRecommendedLinkAnnotation.static.toDataElement = function ( domElements, converter ) {
+DMRecommendedLinkAnnotation.static.toDataElement = function ( domElements ) {
 	var target = domElements[ 0 ].getAttribute( 'data-target' ),
+		wikitextOffset = domElements[ 0 ].getAttribute( 'data-wikitext-offset' ),
 		title = mw.Title.newFromText( target ),
 		dataElement;
 	if ( !title ) {
@@ -34,7 +35,7 @@ DMRecommendedLinkAnnotation.static.toDataElement = function ( domElements, conve
 	dataElement = this.dataElementFromTitle( title, target );
 	// true means accepted; false means explicitly rejected; null means no selection made yet
 	dataElement.attributes.recommendationAccepted = null;
-	dataElement.attributes.recommendationId = String( converter.internalList.getNextUniqueNumber() );
+	dataElement.attributes.recommendationWikitextOffset = wikitextOffset;
 	return dataElement;
 };
 

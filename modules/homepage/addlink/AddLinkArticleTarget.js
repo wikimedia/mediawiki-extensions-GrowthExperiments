@@ -3,8 +3,10 @@ var CeRecommendedLinkAnnotation = require( './ceRecommendedLinkAnnotation.js' ),
 /**
  * @typedef LinkRecommendationLink
  * @property {string} phrase_to_link Text to look for
- * @property {number} instance_occurrence Which occurrence of the phrase to look for, zero-indexed
  * @property {string} link_target Name of the article the phrase should link to
+ * @property {number} instance_occurrence Which occurrence of the phrase to look for, zero-indexed
+ * @property {number} wikitext_offset The 0-based index of the first character of the link text
+ *   in the wikitext, in Unicode characters.
  * @property {number} probability Probability/confidence that this is a good link
  * @property {string} context_before Small amount of text that occurs immediately before the phrase
  * @property {string} context_after Small amount of text that occurs immediately after the phrase
@@ -91,11 +93,11 @@ AddLinkArticleTarget.prototype.restoreScrollPosition = function () {
  * because of changes elsewhere in the document, these SurfaceFragments update automatically.
  *
  * @private
- * @return {{ recommendationId: string, fragment: ve.dm.SurfaceFragment }[]}
+ * @return {{ recommendationWikitextOffset: number, fragment: ve.dm.SurfaceFragment }[]}
  */
 AddLinkArticleTarget.prototype.findRecommendationFragments = function () {
-	var i, annotations, thisRecommendationId,
-		lastRecommendationId = null,
+	var i, annotations, thisRecommendationWikitextOffset,
+		lastRecommendationWikitextOffset = null,
 		surfaceModel = this.getSurface().getModel(),
 		data = surfaceModel.getDocument().data,
 		dataLength = data.getLength(),
@@ -105,18 +107,19 @@ AddLinkArticleTarget.prototype.findRecommendationFragments = function () {
 		// TODO maybe this could be more efficient (T267693)
 		annotations = data.getAnnotationsFromOffset( i ).getAnnotationsByName( 'mwGeRecommendedLink' );
 		if ( annotations.getLength() ) {
-			thisRecommendationId = annotations.get( 0 ).getAttribute( 'recommendationId' );
-			if ( thisRecommendationId === lastRecommendationId ) {
+			thisRecommendationWikitextOffset = annotations.get( 0 )
+				.getAttribute( 'recommendationWikitextOffset' );
+			if ( thisRecommendationWikitextOffset === lastRecommendationWikitextOffset ) {
 				// Continuation of the current annotation
-				recommendationRanges[ lastRecommendationId ][ 1 ] = i + 1;
+				recommendationRanges[ lastRecommendationWikitextOffset ][ 1 ] = i + 1;
 			} else {
 				// Start of a new annotation
-				recommendationRanges[ thisRecommendationId ] = [ i, i + 1 ];
-				lastRecommendationId = thisRecommendationId;
+				recommendationRanges[ thisRecommendationWikitextOffset ] = [ i, i + 1 ];
+				lastRecommendationWikitextOffset = thisRecommendationWikitextOffset;
 			}
 		} else {
 			// If we had an activate annotation, mark it as having ended
-			lastRecommendationId = null;
+			lastRecommendationWikitextOffset = null;
 		}
 	}
 
@@ -126,12 +129,12 @@ AddLinkArticleTarget.prototype.findRecommendationFragments = function () {
 		.sort( function ( a, b ) {
 			return recommendationRanges[ a ][ 0 ] - recommendationRanges[ b ][ 0 ];
 		} )
-		.map( function ( recommendationId ) {
+		.map( function ( recommendationWikitextOffset ) {
 			return {
-				recommendationId: recommendationId,
+				recommendationWikitextOffset: recommendationWikitextOffset,
 				fragment: surfaceModel.getLinearFragment( new ve.Range(
-					recommendationRanges[ recommendationId ][ 0 ],
-					recommendationRanges[ recommendationId ][ 1 ]
+					recommendationRanges[ recommendationWikitextOffset ][ 0 ],
+					recommendationRanges[ recommendationWikitextOffset ][ 1 ]
 				) )
 			};
 		} );
@@ -152,7 +155,7 @@ AddLinkArticleTarget.prototype.findRecommendationFragments = function () {
  * @param {LinkRecommendationLink[]} suggestions Description of suggested links
  */
 AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions ) {
-	var i, regex, textNode, nextNode, match, phrase, occurrenceTarget, anythingLeft, linkText,
+	var i, regex, textNode, nextNode, match, phrase, suggestion, anythingLeft, linkText,
 		postText, linkWrapper,
 		phraseMap = {},
 		treeWalker = doc.createTreeWalker(
@@ -193,9 +196,9 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 	for ( i = 0; i < suggestions.length; i++ ) {
 		phrase = phraseMap[ suggestions[ i ].phrase_to_link ] = phraseMap[ suggestions[ i ].phrase_to_link ] || {
 			occurrencesSeen: 0,
-			linkTargets: {}
+			suggestions: {}
 		};
-		phrase.linkTargets[ suggestions[ i ].instance_occurrence - 1 ] = suggestions[ i ].link_target;
+		phrase.suggestions[ suggestions[ i ].instance_occurrence - 1 ] = suggestions[ i ];
 	}
 
 	// Build a regex that matches any phrase in phraseMap. We remove phrases from phraseMap when
@@ -213,8 +216,8 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 		regex.lastIndex = 0;
 		while ( anythingLeft && ( match = regex.exec( textNode.data ) ) ) {
 			phrase = phraseMap[ match[ 0 ] ];
-			occurrenceTarget = phrase.linkTargets[ phrase.occurrencesSeen ];
-			if ( occurrenceTarget !== undefined ) {
+			suggestion = phrase.suggestions[ phrase.occurrencesSeen ];
+			if ( suggestion.link_target !== undefined ) {
 				// Split the textNode in three parts: before the matched phrase (textNode),
 				// the matched phrase (linkText), and the text after the matched phrase (postText)
 				linkText = textNode.splitText( match.index );
@@ -222,7 +225,9 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 				// Wrap linkText in a <span typeof="mw:RecommendedLink"> tag
 				linkWrapper = doc.createElement( 'span' );
 				linkWrapper.setAttribute( 'typeof', 'mw:RecommendedLink' );
-				linkWrapper.setAttribute( 'data-target', occurrenceTarget );
+				linkWrapper.setAttribute( 'data-target', suggestion.link_target );
+				// TODO probably use wikitext offset
+				linkWrapper.setAttribute( 'data-wikitext-offset', suggestion.wikitext_offset );
 				linkWrapper.appendChild( linkText );
 				postText.parentNode.insertBefore( linkWrapper, postText );
 				// In the next iteration of the loop, search postText for any additional phrase
@@ -232,8 +237,8 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 
 				// Delete the link that we just found from phraseMap. If there are no more links for
 				// this phrase, delete the phrase and rebuild the regex without it.
-				delete phrase.linkTargets[ phrase.occurrencesSeen ];
-				if ( Object.keys( phrase.linkTargets ).length === 0 ) {
+				delete phrase.suggestions[ phrase.occurrencesSeen ];
+				if ( Object.keys( phrase.suggestions ).length === 0 ) {
 					delete phraseMap[ match[ 0 ] ];
 					regex = buildRegex( Object.keys( phraseMap ) );
 					anythingLeft = Object.keys( phraseMap ).length > 0;
