@@ -314,5 +314,6 @@
 	"growthexperiments-addlink-wrongmodel": "La versione $1 di \"$2\" non è wikitesto",
 	"growthexperiments-addlink-context-button-accept": "Sì",
 	"growthexperiments-addlink-context-button-reject": "No",
-	"growthexperiments-addlink-context-button-next": "Salta"
+	"growthexperiments-addlink-context-button-next": "Salta",
+	"growthexperiments-addlink-rejectiondialog-action-done": "Fatto"
 }

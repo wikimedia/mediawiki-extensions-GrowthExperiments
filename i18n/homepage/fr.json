@@ -345,5 +345,13 @@
 	"growthexperiments-addlink-context-intro": "Faut-il lier cela à _____ ?",
 	"growthexperiments-addlink-context-button-accept": "Oui",
 	"growthexperiments-addlink-context-button-reject": "Non",
-	"growthexperiments-addlink-context-button-next": "Passer"
+	"growthexperiments-addlink-context-button-next": "Passer",
+	"growthexperiments-addlink-rejectiondialog-title": "Pourquoi n’est-ce pas un bon lien ? <em>Facultatif</em>",
+	"growthexperiments-addlink-rejectiondialog-message": "Votre réponse peut être utilisée pour améliorer la qualité de nos suggestions par l’IA.",
+	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Concept courant qui ne nécessite pas d’explication (par ex. « ciel »)",
+	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "Déjà lié plus tôt dans l’article",
+	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Lien de destination incorrect (par ex. liant « soleil » à « étoile »)",
+	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Taper sur l’outil crayon $1 près du lien pour modifier la destination du lien",
+	"growthexperiments-addlink-rejectiondialog-reason-other": "Autre / préfère ne pas dire",
+	"growthexperiments-addlink-rejectiondialog-action-done": "Fait"
 }

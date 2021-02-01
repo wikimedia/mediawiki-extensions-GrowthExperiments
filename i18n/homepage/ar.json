@@ -336,5 +336,13 @@
 	"growthexperiments-addlink-context-intro": "هل ينبغي أن يربط هذا إلى _____؟",
 	"growthexperiments-addlink-context-button-accept": "نعم",
 	"growthexperiments-addlink-context-button-reject": "لا",
-	"growthexperiments-addlink-context-button-next": "{{GENDER:|تجاوز|تجوزي}}"
+	"growthexperiments-addlink-context-button-next": "{{GENDER:|تجاوز|تجوزي}}",
+	"growthexperiments-addlink-rejectiondialog-title": "لماذا هذا ليس بربط جيّد؟ <em>(اختياري)</em>",
+	"growthexperiments-addlink-rejectiondialog-message": "يمكن استغلال إجابتك لتحسين جودة اقتراحات الذكاء الاصطناعي.",
+	"growthexperiments-addlink-rejectiondialog-reason-everyday": "مفهوم متداول لا يحتاج إلى شرح (مثل «سماء»)",
+	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "تمّت إضافة الرّابط في وقت سابق قي المقالة.",
+	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "وجهة خاطئة للرابط (مثل ربط «شمس» بـ«نجم»)",
+	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "{{GENDER:|انقر|انقري}} على قلم التعديل $1 بجانب الرابط لتغيير وجهة الرّابط",
+	"growthexperiments-addlink-rejectiondialog-reason-other": "سبب آخر / أحبّذ عدم الإفصاح",
+	"growthexperiments-addlink-rejectiondialog-action-done": "تمّ"
 }

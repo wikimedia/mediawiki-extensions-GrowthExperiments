@@ -330,5 +330,13 @@
 	"growthexperiments-addlink-context-intro": "האם זה צריך לקשר ל־_____?",
 	"growthexperiments-addlink-context-button-accept": "כן",
 	"growthexperiments-addlink-context-button-reject": "לא",
-	"growthexperiments-addlink-context-button-next": "לדלג"
+	"growthexperiments-addlink-context-button-next": "לדלג",
+	"growthexperiments-addlink-rejectiondialog-title": "למה זה לא קישור טוב? <em>(לא חובה)</em>",
+	"growthexperiments-addlink-rejectiondialog-message": "התשובה שלך עשויה לשמש לשיפור האיכות של ההצעות שמגיעות מבינה מלאכותית.",
+	"growthexperiments-addlink-rejectiondialog-reason-everyday": "מושג יום־יומי שאינו דורש הסדר (למשל, \"שמיים\")",
+	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "כבר מקושר בערך",
+	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "יעד קישור שגוי (למשל, קישור מ\"שמש\" ל\"כוכב\")",
+	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "{{GENDER:|לחץ|לחצי}} על העיפרון $1 ליד הקישור כדי לשנות את יעד הקישור",
+	"growthexperiments-addlink-rejectiondialog-reason-other": "אחר / מעדיף לא לומר",
+	"growthexperiments-addlink-rejectiondialog-action-done": "בוצע"
 }

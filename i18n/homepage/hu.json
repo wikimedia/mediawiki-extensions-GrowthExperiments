@@ -309,5 +309,8 @@
 	"growthexperiments-homepage-welcome-notice-body-variant-c": "{{GENDER:$1|Gyakorolhatod}} a szerkesztést, kapcsolatba léphetsz {{GENDER:$1|mentoroddal}}, és ellenőrizheted, {{GENDER:$1|munkádnak}} milyen hatása van. További információ a <strong>javasolt szerkesztésekről</strong> {{GENDER:$1|kezdőlapodon}}.",
 	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|Gyakorolhatod}} a szerkesztést, kapcsolatba léphetsz {{GENDER:$1|mentoroddal}}, és ellenőrizheted, {{GENDER:$1|munkádnak}} milyen hatása van.",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Folytatás",
-	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Megértettem"
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Megértettem",
+	"growthexperiments-addlink-rejectiondialog-title": "Miért helytelen ez a hivatkozás? <em>(Opcionális)</em>",
+	"growthexperiments-addlink-rejectiondialog-reason-other": "Egyéb / nem nyilatkozom",
+	"growthexperiments-addlink-rejectiondialog-action-done": "Kész"
 }
