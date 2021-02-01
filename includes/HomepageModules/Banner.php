@@ -76,7 +76,7 @@ class Banner extends BaseModule {
 
 	/** @inheritDoc */
 	public function getState() {
-		return $this->canRender() ? 'enabled' : 'disabled';
+		return $this->canRender() ? self::MODULE_STATE_ACTIVATED : self::MODULE_STATE_UNACTIVATED;
 	}
 
 }
