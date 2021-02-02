@@ -78,6 +78,7 @@
 	"growthexperiments-tour-helpdesk-response-tip-title": "Palīdzības dienesta paziņojumi",
 	"growthexperiments-tour-response-tip-text": "Kad {{GENDER:$1|tavs}} jautājums tiks atbildēts, {{GENDER:$1|tu}} šeit saņemsi jaunu paziņojumu.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Mentora paziņojumi",
+	"growthexperiments-tour-mentor-response-tip-personal-text": "Kad {{GENDER:$2|tavs mentors|tava mentore}} atbildēs, {{GENDER:$1|tu}} šeit saņemsi jaunu paziņojumu.",
 	"growthexperiments-tour-response-button-okay": "Sapratu",
 	"tag-help_module_question": "Palīdzības moduļa jautājums",
 	"tag-help_module_question-description": "Labojums veikts no sākumlapas palīdzības moduļa \"Uzdot jautājumu\" iespējas",
@@ -232,5 +233,8 @@
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Turpināt",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Sapratu",
 	"growthexperiments-addlink-pagenotfound": "Lapa \"$1\" nepastāv",
-	"growthexperiments-addlink-serviceerror": "Saišu rekomendācijas pakalpojums lapai \"$1\" atbildēja ar kļūdu: $2"
+	"growthexperiments-addlink-serviceerror": "Saišu rekomendācijas pakalpojums lapai \"$1\" atbildēja ar kļūdu: $2",
+	"growthexperiments-addlink-context-button-accept": "Jā",
+	"growthexperiments-addlink-context-button-reject": "Nē",
+	"growthexperiments-addlink-rejectiondialog-action-done": "Gatavs"
 }

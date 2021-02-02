@@ -305,5 +305,7 @@
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "알겠습니다",
 	"growthexperiments-addlink-context-button-accept": "예",
 	"growthexperiments-addlink-context-button-reject": "아니오",
-	"growthexperiments-addlink-context-button-next": "건너뛰기"
+	"growthexperiments-addlink-context-button-next": "건너뛰기",
+	"growthexperiments-addlink-rejectiondialog-message": "답변은 AI 제안의 품질 개선을 위해 사용할 수 있습니다.",
+	"growthexperiments-addlink-rejectiondialog-action-done": "완료"
 }
