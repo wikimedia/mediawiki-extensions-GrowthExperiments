@@ -221,11 +221,13 @@ class SpecialHomepage extends SpecialPage {
 			'start' => !$variantCD,
 			'startemail' => $variantCD,
 			// Only load start-startediting code for unactivated SE users in variant D
-			'start-startediting' => !$par &&
+			'start-startediting' => SuggestedEdits::isEnabledForAnyone(
+				$this->getContext()->getConfig()
+			) && ( !$par &&
 				$this->experimentUserManager->isUserInVariant(
 					$this->getUser(),
 					'D'
-				) && !SuggestedEdits::isActivated( $this->getContext() ),
+				) && !SuggestedEdits::isActivated( $this->getContext() ) ),
 			'suggested-edits' => SuggestedEdits::isEnabled( $this->getContext() ),
 			'impact' => $this->getConfig()->get( 'GEHomepageImpactModuleEnabled' ),
 			'mentorship' => true,
