@@ -83,6 +83,13 @@ class ApiSetMentor extends ApiBase {
 		return true;
 	}
 
+	/**
+	 * @inheritDoc
+	 */
+	public function needsToken() {
+		return 'csrf';
+	}
+
 	public function isWriteMode() {
 		return true;
 	}
@@ -107,7 +114,7 @@ class ApiSetMentor extends ApiBase {
 			'reason' => [
 				ApiBase::PARAM_TYPE => 'string',
 				ParamValidator::PARAM_DEFAULT => '',
-			]
+			],
 		];
 	}
 }
