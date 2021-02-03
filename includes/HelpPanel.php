@@ -178,6 +178,7 @@ class HelpPanel {
 	 * @throws ConfigException
 	 */
 	public static function getHelpDeskTitle( Config $config ) {
+		// RawMessage is used here to expand magic words like {{#time:o}} - see T213186, T224224
 		$msg = new RawMessage( $config->get( 'GEHelpPanelHelpDeskTitle' ) );
 		return Title::newFromText( $msg->inContentLanguage()->text() );
 	}
