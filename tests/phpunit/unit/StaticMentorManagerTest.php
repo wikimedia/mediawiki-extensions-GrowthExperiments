@@ -42,15 +42,15 @@ class StaticMentorManagerTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::getAvailableMentors
+	 * @covers ::getAutoAssignedMentors
 	 */
-	public function testGetAvailableMentors() {
+	public function testGetAutoAssignedMentors() {
 		$mentorManager = new StaticMentorManager( [
 			'Foo' => new Mentor( $this->getUser( 'FooMentor' ), 'text 1' ),
 			'Bar' => new Mentor( $this->getUser( 'BarMentor' ), 'text 2' ),
 			'Bar2' => new Mentor( $this->getUser( 'BarMentor' ), 'text 2' ),
 		] );
-		$this->assertSame( [ 'FooMentor', 'BarMentor' ], $mentorManager->getAvailableMentors() );
+		$this->assertSame( [ 'FooMentor', 'BarMentor' ], $mentorManager->getAutoAssignedMentors() );
 	}
 
 	/**
