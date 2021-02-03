@@ -44,6 +44,14 @@ $specialPageAliases['cs'] = [
 	'ClaimMentee' => [ 'Převzít_nováčka' ],
 ];
 
+/** Dansk (Danish) */
+$specialPageAliases['da'] = [
+	'WelcomeSurvey' => [ 'Hjemmeside' ],
+	'Homepage' => [ 'Velkomstundersøgelse' ],
+	'Impact' => [ 'Indvirkning' ],
+	'ClaimMentee' => [ 'KræveEMentee' ],
+];
+
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = [
 	'WelcomeSurvey' => [ 'پرسشنامه_خوشامد' ],
