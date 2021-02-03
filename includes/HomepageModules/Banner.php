@@ -9,6 +9,10 @@ use IContextSource;
 /**
  * A module for displaying some text that can be specified on-wiki. This can be used as a low-key
  * sitenotice aimed at new users.
+ *
+ * The Banner message is generated from the contents of the MediaWiki:Growth-homepage-banner wiki
+ * page, if it exists. If the page does not exist or the page content is empty, the banner module
+ * is not shown.
  */
 class Banner extends BaseModule {
 
