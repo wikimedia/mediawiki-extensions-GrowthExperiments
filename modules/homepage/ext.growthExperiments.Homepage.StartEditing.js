@@ -68,8 +68,11 @@
 			var trigger,
 				$button = $( button ),
 				buttonType = $button.attr( 'id' ).substr( 'mw-ge-homepage-'.length ),
-				module = $button.closest( '.growthexperiments-homepage-module' ).data( 'module-name' ),
-				mode = $button.closest( '.growthexperiments-homepage-module' ).data( 'mode' ),
+				// From the mobile overlay header one cannot traverse the DOM tree upwards to find a
+				// homepage module, so for variant C mobile overlay only we embed the module-name and
+				// mode. In all other cases we infer it from the DOM context.
+				module = $button.data( 'module-name' ) || $button.closest( '.growthexperiments-homepage-module' ).data( 'module-name' ),
+				mode = $button.data( 'mode' ) || $button.closest( '.growthexperiments-homepage-module' ).data( 'mode' ),
 				buttonWidget = OO.ui.ButtonWidget.static.infuse( $button );
 
 			// Don't attach the click handler to the same button twice

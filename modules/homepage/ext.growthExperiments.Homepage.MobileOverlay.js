@@ -51,6 +51,11 @@
 						label: mw.msg( 'growthexperiments-homepage-suggestededits-more-info' ),
 						invisibleLabel: true
 					} );
+					// We need to embed the module name and mode so that we can access it
+					// on the mobile overlay info button for variant C users, see setupCtaButton in
+					// ext.growthExperiments.Homepage.StartEditing.js
+					infoButton.$element.data( 'module-name', options.moduleName );
+					infoButton.$element.data( 'mode', 'mobile-overlay' );
 					// HACK: make infusing this button (pretend to) work, even though it was created in JS
 					infoButton.$element.data( 'ooui-infused', infoButton );
 					return View.make(
