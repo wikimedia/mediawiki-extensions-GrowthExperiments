@@ -271,7 +271,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 		if ( !$title || !$title->exists() ) {
 			throw new WikiConfigException(
-				'wgGEHomepageMentorsList is invalid: ' . $this->manuallyAssignedMentorsPageName
+				'wgGEHomepageManualAssignmentMentorsList is invalid: ' . $this->manuallyAssignedMentorsPageName
 			);
 		}
 
