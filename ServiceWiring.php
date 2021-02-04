@@ -179,6 +179,7 @@ return [
 		MediaWikiServices $services
 	) : MentorManager {
 		$config = GrowthExperimentsServices::wrap( $services )->getConfig();
+
 		$manager = new MentorPageMentorManager(
 			$services->getTitleFactory(),
 			$services->getWikiPageFactory(),
@@ -187,8 +188,8 @@ return [
 			$services->getUserNameUtils(),
 			RequestContext::getMain(),
 			RequestContext::getMain()->getLanguage(),
-			$config->get( 'GEHomepageMentorsList' ) ?? '',
-			$config->get( 'GEHomepageManualAssignmentMentorsList' ) ?? ''
+			$config->get( 'GEHomepageMentorsList' ) ?: null,
+			$config->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null
 		);
 		$manager->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $manager;
