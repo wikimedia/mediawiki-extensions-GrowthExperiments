@@ -54,6 +54,7 @@ use StatusValue;
 use stdClass;
 use Throwable;
 use Title;
+use TitleFactory;
 use User;
 use Wikimedia\Rdbms\ILoadBalancer;
 
@@ -120,6 +121,8 @@ class HomepageHooks implements
 	private $newcomerTasksUserOptionsLookup;
 	/** @var LinkRecommendationProvider */
 	private $linkRecommendationProvider;
+	/** @var TitleFactory */
+	private $titleFactory;
 
 	/**
 	 * HomepageHooks constructor.
@@ -136,6 +139,7 @@ class HomepageHooks implements
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param LinkRecommendationProvider $linkRecommendationProvider
+	 * @param TitleFactory $titleFactory
 	 */
 	public function __construct(
 		Config $config,
@@ -150,7 +154,8 @@ class HomepageHooks implements
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		LinkRecommendationProvider $linkRecommendationProvider
+		LinkRecommendationProvider $linkRecommendationProvider,
+		TitleFactory $titleFactory
 	) {
 		$this->config = $config;
 		$this->lb = $lb;
@@ -165,6 +170,7 @@ class HomepageHooks implements
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->linkRecommendationProvider = $linkRecommendationProvider;
+		$this->titleFactory = $titleFactory;
 	}
 
 	/**
@@ -190,6 +196,7 @@ class HomepageHooks implements
 					return new SpecialImpact(
 						$this->lb->getLazyConnectionRef( DB_REPLICA ),
 						$this->experimentUserManager,
+						$this->titleFactory,
 						$mwServices->get( 'PageViewService' )
 					);
 				};

@@ -6,9 +6,11 @@ use DerivativeContext;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\Impact;
+use GrowthExperiments\HomepageModules\SuggestedEdits;
 use Html;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
 use SpecialPage;
+use TitleFactory;
 use User;
 use Wikimedia\Rdbms\IDatabase;
 
@@ -29,20 +31,28 @@ class SpecialImpact extends SpecialPage {
 	private $experimentUserManager;
 
 	/**
+	 * @var TitleFactory
+	 */
+	private $titleFactory;
+
+	/**
 	 * SpecialImpact constructor.
 	 * @param IDatabase $dbr
 	 * @param ExperimentUserManager $experimentUserManager
+	 * @param TitleFactory $titleFactory
 	 * @param PageViewService|null $pageViewService
 	 */
 	public function __construct(
 		IDatabase $dbr,
 		ExperimentUserManager $experimentUserManager,
+		TitleFactory $titleFactory,
 		PageViewService $pageViewService = null
 	) {
 		parent::__construct( 'Impact' );
 		$this->dbr = $dbr;
 		$this->pageViewService = $pageViewService;
 		$this->experimentUserManager = $experimentUserManager;
+		$this->titleFactory = $titleFactory;
 	}
 
 	/**
@@ -99,6 +109,11 @@ class SpecialImpact extends SpecialPage {
 			$context,
 			$this->dbr,
 			$this->experimentUserManager,
+			[
+				'isSuggestedEditsEnabled' => SuggestedEdits::isEnabled( $context ),
+				'isSuggestedEditsActivated' => SuggestedEdits::isActivated( $context ),
+			],
+			$this->titleFactory,
 			$this->pageViewService
 		);
 		$out->addHTML( $impact->render( HomepageModule::RENDER_DESKTOP ) );

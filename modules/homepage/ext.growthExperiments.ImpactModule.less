@@ -70,6 +70,95 @@
 		}
 	}
 
+	&-unactivated-desktop,
+	&-unactivated-mobile-details,
+	&-unactivated-mobile-overlay {
+		padding: 0;
+
+		&-body {
+			text-align: center;
+		}
+
+		&-image {
+			width: 160px;
+			height: 130px;
+			background: url( ../../images/intro-heart-article.svg ) no-repeat center;
+		}
+
+		&-subheader-subtext {
+			padding: 0;
+			margin-top: 1em;
+		}
+
+		&-suggested-edits-button {
+			margin-top: 14px;
+		}
+	}
+
+	&-unactivated-desktop {
+		@paddingValue: 16px;
+
+		.growthexperiments-homepage-module-header {
+			padding: @paddingValue;
+		}
+
+		.growthexperiments-homepage-module-body {
+			padding: 0 @paddingValue 19px @paddingValue;
+		}
+
+		.growthexperiments-homepage-module-footer {
+			padding: 0 @paddingValue 11px @paddingValue;
+		}
+
+		.growthexperiments-homepage-module-header,
+		.growthexperiments-homepage-module-body {
+			background-color: @colorGray15;
+		}
+
+		&-image {
+			margin: 0 auto 7px auto;
+		}
+
+		&-subheader-container {
+			.growthexperiments-homepage-module-impact-unactivated-desktop-subheader {
+				font-size: 1.7em;
+				padding-top: 0;
+			}
+		}
+
+		&-subheader-subtext {
+			line-height: 1.43em;
+			padding: 0 14px;
+		}
+	}
+
+	&-unactivated-mobile-details,
+	&-unactivated-mobile-overlay {
+		&-image {
+			margin: 7px auto;
+		}
+
+		&-subheader {
+			font-size: 2em;
+			margin-top: 16px;
+		}
+
+		&-subheader-subtext {
+			line-height: 1.38em;
+		}
+	}
+
+	&-unactivated-mobile-overlay {
+		.growthexperiments-homepage-module-footer {
+			position: fixed;
+			bottom: 0;
+			padding: 16px 16px 17px 16px;
+			background-color: @colorGray15;
+			width: 100%;
+			line-height: 1.65em;
+		}
+	}
+
 	&.growthexperiments-homepage-module-mobile-summary {
 		.growthexperiments-homepage-module-body {
 			display: flex;

@@ -126,6 +126,11 @@ class HomepageModuleRegistry {
 					$context,
 					$services->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA ),
 					$growthServices->getExperimentUserManager(),
+					[
+						'isSuggestedEditsEnabled' => SuggestedEdits::isEnabled( $context ),
+						'isSuggestedEditsActivated' => SuggestedEdits::isActivated( $context ),
+					],
+					$services->getTitleFactory(),
 					$pageViewInfoEnabled ? $services->get( 'PageViewService' ) : null
 				);
 			},
