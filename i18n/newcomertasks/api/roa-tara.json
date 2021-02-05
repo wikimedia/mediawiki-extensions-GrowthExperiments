@@ -4,5 +4,6 @@
 			"Joetaras"
 		]
 	},
-	"apihelp-query+growthtasks-summary": "Pigghie raccomandaziune de combite bbuène pe le curciule."
+	"apihelp-query+growthtasks-summary": "Pigghie raccomandaziune de combite bbuène pe le curciule.",
+	"apihelp-query+growthtasks-param-debug": "Aggiunge le date de debug a 'u resultate."
 }
