@@ -141,11 +141,13 @@ return [
 	'GrowthExperimentsLinkRecommendationProvider' => function (
 		MediaWikiServices $services
 	): LinkRecommendationProvider {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$useFallback = $growthServices->getConfig()->get( 'GELinkRecommendationFallbackOnDBMiss' );
 		$uncachedProvider = $services->get( 'GrowthExperimentsLinkRecommendationProviderUncached' );
 		if ( !$uncachedProvider instanceof StaticLinkRecommendationProvider ) {
 			return new DbBackedLinkRecommendationProvider(
-				$uncachedProvider,
-				GrowthExperimentsServices::wrap( $services )->getLinkRecommendationStore()
+				GrowthExperimentsServices::wrap( $services )->getLinkRecommendationStore(),
+				$useFallback ? $uncachedProvider : null
 			);
 		} else {
 			return $uncachedProvider;
