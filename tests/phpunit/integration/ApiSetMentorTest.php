@@ -24,9 +24,8 @@ class ApiSetMentorTest extends ApiTestCase {
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage( 'The "mentee" parameter must be set.' );
 
-		$this->doApiRequest(
+		$this->doApiRequestWithToken(
 			[ 'action' => 'growthsetmentor' ],
-			null,
 			null,
 			$this->getTestSysop()->getUser()
 		);
@@ -40,13 +39,12 @@ class ApiSetMentorTest extends ApiTestCase {
 		$this->expectExceptionMessage( "You don't have permission to set user's mentor." );
 		$mentee = $this->getMutableTestUser()->getUser();
 		$mentor = $this->getMutableTestUser()->getUser();
-		$response = $this->doApiRequest(
+		$response = $this->doApiRequestWithToken(
 			[
 				'action' => 'growthsetmentor',
 				'mentor' => $mentor->getName(),
 				'mentee' => $mentee->getName()
 			],
-			null,
 			null,
 			new User()
 		);
@@ -61,13 +59,12 @@ class ApiSetMentorTest extends ApiTestCase {
 		$mentee = $this->getMutableTestUser()->getUser();
 		$mentor = $this->getMutableTestUser()->getUser();
 		$performer = $this->getMutableTestUser()->getUser();
-		$response = $this->doApiRequest(
+		$response = $this->doApiRequestWithToken(
 			[
 				'action' => 'growthsetmentor',
 				'mentor' => $mentor->getName(),
 				'mentee' => $mentee->getName()
 			],
-			null,
 			null,
 			$performer
 		);
@@ -84,13 +81,12 @@ class ApiSetMentorTest extends ApiTestCase {
 			->method( 'setMentorForUser' )
 			->with( $this->ruleUserEquals( $mentee ), $this->ruleUserEquals( $mentor ) );
 		$this->setService( 'GrowthExperimentsMentorManager', $mockMentorManager );
-		$response = $this->doApiRequest(
+		$response = $this->doApiRequestWithToken(
 			[
 				'action' => 'growthsetmentor',
 				'mentor' => $mentor->getName(),
 				'mentee' => $mentee->getName()
 			],
-			null,
 			null,
 			$this->getTestSysop()->getUser()
 		);
@@ -108,13 +104,12 @@ class ApiSetMentorTest extends ApiTestCase {
 			->method( 'setMentorForUser' )
 			->with( $this->ruleUserEquals( $mentee ), $this->ruleUserEquals( $mentor ) );
 		$this->setService( 'GrowthExperimentsMentorManager', $mockMentorManager );
-		$response = $this->doApiRequest(
+		$response = $this->doApiRequestWithToken(
 			[
 				'action' => 'growthsetmentor',
 				'mentor' => $mentor->getName(),
 				'mentee' => $mentee->getName()
 			],
-			null,
 			null,
 			$mentee
 		);
@@ -132,13 +127,12 @@ class ApiSetMentorTest extends ApiTestCase {
 			->method( 'setMentorForUser' )
 			->with( $this->ruleUserEquals( $mentee ), $this->ruleUserEquals( $mentor ) );
 		$this->setService( 'GrowthExperimentsMentorManager', $mockMentorManager );
-		$response = $this->doApiRequest(
+		$response = $this->doApiRequestWithToken(
 			[
 				'action' => 'growthsetmentor',
 				'mentor' => $mentor->getName(),
 				'mentee' => $mentee->getName()
 			],
-			null,
 			null,
 			$mentor
 		);
