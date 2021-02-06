@@ -100,7 +100,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	public function getMentorForUser( UserIdentity $user ): Mentor {
 		$mentorUser = $this->loadMentorUser( $user );
 		if ( !$mentorUser ) {
-			$mentorUser = $this->getRandomAvailableMentor( $user );
+			$mentorUser = $this->getRandomAutoAssignedMentor( $user );
 			$this->setMentorForUser( $user, $mentorUser );
 		}
 		return new Mentor( $this->userFactory->newFromUserIdentity( $mentorUser ),
@@ -168,7 +168,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	}
 
 	/** @inheritDoc */
-	public function getAvailableMentors(): array {
+	public function getAutoAssignedMentors(): array {
 		return $this->getMentorsForPage( $this->getMentorsPage() );
 	}
 
@@ -202,29 +202,29 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 * @return User The selected mentor.
 	 * @throws WikiConfigException When no mentors are available.
 	 */
-	private function getRandomAvailableMentor(
+	private function getRandomAutoAssignedMentor(
 		UserIdentity $mentee, array $excluded = []
 	): UserIdentity {
-		$availableMentors = $this->getAvailableMentors();
-		if ( count( $availableMentors ) === 0 ) {
+		$autoAssignedMentors = $this->getAutoAssignedMentors();
+		if ( count( $autoAssignedMentors ) === 0 ) {
 			throw new WikiConfigException(
 				'Mentorship: no mentor available for user ' . $mentee->getName()
 			);
 		}
-		$availableMentors = array_values( array_diff( $availableMentors,
+		$autoAssignedMentors = array_values( array_diff( $autoAssignedMentors,
 			array_map( function ( UserIdentity $excludedUser ) {
 				return $excludedUser->getName();
 			}, $excluded )
 		) );
-		if ( count( $availableMentors ) === 0 ) {
+		if ( count( $autoAssignedMentors ) === 0 ) {
 			throw new WikiConfigException(
 				'Homepage Mentorship module: no mentor available for ' .
 				$mentee->getName() .
 				' but excluded users'
 			);
 		}
-		$availableMentors = array_values( array_diff( $availableMentors, [ $mentee->getName() ] ) );
-		if ( count( $availableMentors ) === 0 ) {
+		$autoAssignedMentors = array_values( array_diff( $autoAssignedMentors, [ $mentee->getName() ] ) );
+		if ( count( $autoAssignedMentors ) === 0 ) {
 			throw new WikiConfigException(
 				'Homepage Mentorship module: no mentor available for ' .
 				$mentee->getName() .
@@ -232,7 +232,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			);
 		}
 
-		$selectedMentorName = $availableMentors[ rand( 0, count( $availableMentors ) - 1 ) ];
+		$selectedMentorName = $autoAssignedMentors[ rand( 0, count( $autoAssignedMentors ) - 1 ) ];
 		$result = $this->userFactory->newFromName( $selectedMentorName );
 		if ( $result === null ) {
 			throw new WikiConfigException(

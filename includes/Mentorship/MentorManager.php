@@ -29,7 +29,7 @@ abstract class MentorManager {
 
 	/**
 	 * Assign a mentor to this user, overriding any previous assignments.
-	 * Normally this would be one of the mentors listed by getAvailableMentors(), but
+	 * Normally this would be one of the mentors listed by getAutoAssignedMentors(), but
 	 * that is not enforced.
 	 * This method can be safely called on GET requests.
 	 * @param UserIdentity $user
@@ -45,7 +45,7 @@ abstract class MentorManager {
 	public function getMentors(): array {
 		return array_unique(
 			array_merge(
-				$this->getAvailableMentors(),
+				$this->getAutoAssignedMentors(),
 				$this->getManuallyAssignedMentors()
 			)
 		);
@@ -56,7 +56,7 @@ abstract class MentorManager {
 	 * @return string[] List of mentor usernames.
 	 * @throws WikiConfigException If the mentor list cannot be fetched due to misconfiguration.
 	 */
-	abstract public function getAvailableMentors(): array;
+	abstract public function getAutoAssignedMentors(): array;
 
 	/**
 	 * Get a list of mentors who are not automatically assigned to mentees.

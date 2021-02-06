@@ -212,11 +212,11 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 		);
 		$mentorManager = $this->getMentorManager();
 
-		$availableMentors = $mentorManager->getAvailableMentors();
+		$autoAssignedMentors = $mentorManager->getAutoAssignedMentors();
 		$this->assertArrayEquals( [
 			$mentorUser->getName(),
 			$secondMentor->getName(),
-		], $availableMentors );
+		], $autoAssignedMentors );
 	}
 
 	/**
