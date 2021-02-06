@@ -348,7 +348,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		// point in getting a master connection just for that.
 
 		$goodLinks = array_filter( $recommendation->getLinks(), function ( LinkRecommendationLink $link ) {
-			return $link->getProbability() >= $this->recommendationTaskType->getMinimumLinkScore();
+			return $link->getScore() >= $this->recommendationTaskType->getMinimumLinkScore();
 		} );
 		$goodLinkIds = $this->linksToPageIds( $goodLinks );
 		$excludedLinkIds = $this->linkRecommendationStore->getExcludedLinkIds(
