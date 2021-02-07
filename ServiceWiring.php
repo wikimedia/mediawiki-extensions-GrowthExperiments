@@ -147,7 +147,8 @@ return [
 		if ( !$uncachedProvider instanceof StaticLinkRecommendationProvider ) {
 			return new DbBackedLinkRecommendationProvider(
 				GrowthExperimentsServices::wrap( $services )->getLinkRecommendationStore(),
-				$useFallback ? $uncachedProvider : null
+				$useFallback ? $uncachedProvider : null,
+				$services->getTitleFormatter()
 			);
 		} else {
 			return $uncachedProvider;

@@ -4,6 +4,8 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use MediaWiki\Linker\LinkTarget;
+use StatusValue;
+use TitleFormatter;
 
 /**
  * A provider which reads the recommendation from the database. It is the caller's
@@ -20,16 +22,22 @@ class DbBackedLinkRecommendationProvider implements LinkRecommendationProvider {
 	/** @var LinkRecommendationProvider|null */
 	private $fallbackProvider;
 
+	/** @var TitleFormatter */
+	private $titleFormatter;
+
 	/**
 	 * @param LinkRecommendationStore $linkRecommendationStore
 	 * @param LinkRecommendationProvider|null $fallbackProvider
+	 * @param TitleFormatter $titleFormatter
 	 */
 	public function __construct(
 		LinkRecommendationStore $linkRecommendationStore,
-		LinkRecommendationProvider $fallbackProvider = null
+		?LinkRecommendationProvider $fallbackProvider,
+		TitleFormatter $titleFormatter
 	) {
 		$this->linkRecommendationStore = $linkRecommendationStore;
 		$this->fallbackProvider = $fallbackProvider;
+		$this->titleFormatter = $titleFormatter;
 	}
 
 	/** @inheritDoc */
@@ -38,8 +46,13 @@ class DbBackedLinkRecommendationProvider implements LinkRecommendationProvider {
 		// stored in the DB when the task type parameters change is left to some (as of yet
 		// unimplemented) manual mechanism.
 		$linkRecommendation = $this->linkRecommendationStore->getByLinkTarget( $title );
-		if ( !$linkRecommendation && $this->fallbackProvider ) {
-			$linkRecommendation = $this->fallbackProvider->get( $title, $taskType );
+		if ( !$linkRecommendation ) {
+			if ( $this->fallbackProvider ) {
+				$linkRecommendation = $this->fallbackProvider->get( $title, $taskType );
+			} else {
+				$linkRecommendation = StatusValue::newFatal( 'growthexperiments-addlink-notinstore',
+					$this->titleFormatter->getPrefixedText( $title ) );
+			}
 		}
 		return $linkRecommendation;
 	}
