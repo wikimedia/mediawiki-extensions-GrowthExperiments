@@ -8,60 +8,59 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 class LinkRecommendationLink {
 
 	/** @var string */
-	private $phraseToLink;
+	private $linkText;
 	/** @var string */
 	private $linkTarget;
 	/** @var int */
-	private $instanceOccurrence;
+	private $matchIndex;
 	/** @var int */
 	private $wikitextOffset;
 	/** @var float */
-	private $probability;
+	private $score;
 	/** @var string */
 	private $contextBefore;
 	/** @var string */
 	private $contextAfter;
 	/** @var int */
-	private $insertionOrder;
+	private $linkIndex;
 
 	/**
-	 * @param string $phraseToLink The text fragment which would be linked (as plaintext).
+	 * @param string $linkText The text fragment which would be linked (as plaintext).
 	 *   This text is present and unlinked in the article revision that was used for generating
 	 *   recommendations.
 	 * @param string $linkTarget The title to link to, in any format that can be parsed by
 	 *   TitleParser.
-	 * @param int $instanceOccurrence The 1-based index the link text within all matches of $text
-	 *   in the article (calculated after removing all templates / extensions tags / parserfunctions
-	 *   and converting the article to plaintext).
+	 * @param int $matchIndex The 0-based index the link text within all matches of $text
+	 *   in the article.
 	 * @param int $wikitextOffset The 0-based index of the first character of the link text in the
 	 *   wikitext, in Unicode characters.
-	 * @param float $probability The confidence score of the recommended link (a number between 0
+	 * @param float $score The confidence score of the recommended link (a number between 0
 	 *   and 1).
 	 * @param string $contextBefore A few characters of text from the artcile right before the
 	 *   text to be linked. Might be omitted (set to empty string) if the recommended link is
 	 *   preceded by something that cannot easily be converted to plaintext (such as a template).
 	 * @param string $contextAfter Like $contextBefore but the text is right after the link text.
-	 * @param int $insertionOrder 1-based position in the list of recommendations (in the order
+	 * @param int $linkIndex 0-based position in the list of recommendations (in the order
 	 *   they occur in the article).
 	 */
 	public function __construct(
-		string $phraseToLink,
+		string $linkText,
 		string $linkTarget,
-		int $instanceOccurrence,
+		int $matchIndex,
 		int $wikitextOffset,
-		float $probability,
+		float $score,
 		string $contextBefore,
 		string $contextAfter,
-		int $insertionOrder
+		int $linkIndex
 	) {
-		$this->phraseToLink = $phraseToLink;
+		$this->linkText = $linkText;
 		$this->linkTarget = $linkTarget;
-		$this->instanceOccurrence = $instanceOccurrence;
+		$this->matchIndex = $matchIndex;
 		$this->wikitextOffset = $wikitextOffset;
-		$this->probability = $probability;
+		$this->score = $score;
 		$this->contextBefore = $contextBefore;
 		$this->contextAfter = $contextAfter;
-		$this->insertionOrder = $insertionOrder;
+		$this->linkIndex = $linkIndex;
 	}
 
 	/**
@@ -70,7 +69,7 @@ class LinkRecommendationLink {
 	 * @return string
 	 */
 	public function getText(): string {
-		return $this->phraseToLink;
+		return $this->linkText;
 	}
 
 	/**
@@ -82,13 +81,14 @@ class LinkRecommendationLink {
 	}
 
 	/**
-	 * The 1-based index the link text within all matches of $text in the article (calculated after
-	 * removing all templates / extensions tags / parserfunctions and converting the article to
-	 * plaintext).
+	 * The 0-based index the link text within all matches of $text within the simple wikitext
+	 * of the (top-level wikitext that's not part of any kind of wikitext construct). This is
+	 * roughly equivalent to the match index in the text of top-level (within a `<section>`)
+	 * `<p>` nodes in Parsoid HTML.
 	 * @return int
 	 */
-	public function getInstanceOccurrence(): int {
-		return $this->instanceOccurrence;
+	public function getMatchIndex(): int {
+		return $this->matchIndex;
 	}
 
 	/**
@@ -104,8 +104,8 @@ class LinkRecommendationLink {
 	 * The confidence score of the recommended link (a number between 0 and 1).
 	 * @return float
 	 */
-	public function getProbability(): float {
-		return $this->probability;
+	public function getScore(): float {
+		return $this->score;
 	}
 
 	/**
@@ -129,11 +129,11 @@ class LinkRecommendationLink {
 	}
 
 	/**
-	 * 1-based position in the list of recommendations (in the order they occur in the article).
+	 * 0-based position in the list of recommendations (in the order they occur in the article).
 	 * @return int
 	 */
-	public function getInsertionOrder(): int {
-		return $this->insertionOrder;
+	public function getLinkIndex(): int {
+		return $this->linkIndex;
 	}
 
 	/**
@@ -141,14 +141,14 @@ class LinkRecommendationLink {
 	 */
 	public function toArray(): array {
 		return [
-			'phrase_to_link' => $this->phraseToLink,
+			'link_text' => $this->linkText,
 			'link_target' => $this->linkTarget,
-			'instance_occurrence' => $this->instanceOccurrence,
+			'match_index' => $this->matchIndex,
 			'wikitext_offset' => $this->wikitextOffset,
-			'probability' => $this->probability,
+			'score' => $this->score,
 			'context_before' => $this->contextBefore,
 			'context_after' => $this->contextAfter,
-			'insertion_order' => $this->insertionOrder,
+			'link_index' => $this->linkIndex,
 		];
 	}
 

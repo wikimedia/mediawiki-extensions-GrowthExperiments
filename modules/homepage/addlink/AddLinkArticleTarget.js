@@ -2,15 +2,15 @@ var CeRecommendedLinkAnnotation = require( './ceRecommendedLinkAnnotation.js' ),
 	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
 /**
  * @typedef LinkRecommendationLink
- * @property {string} phrase_to_link Text to look for
+ * @property {string} link_text Text to look for
  * @property {string} link_target Name of the article the phrase should link to
- * @property {number} instance_occurrence Which occurrence of the phrase to look for, zero-indexed
+ * @property {number} match_index Which occurrence of the phrase to look for, zero-indexed
  * @property {number} wikitext_offset The 0-based index of the first character of the link text
  *   in the wikitext, in Unicode characters.
- * @property {number} probability Probability/confidence that this is a good link
+ * @property {number} score Probability/confidence that this is a good link
  * @property {string} context_before Small amount of text that occurs immediately before the phrase
  * @property {string} context_after Small amount of text that occurs immediately after the phrase
- * @property {number} insertion_order Position in the order of all recommendations, zero-indexed
+ * @property {number} link_index Position in the order of all recommendations, zero-indexed
  */
 
 /**
@@ -194,11 +194,11 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 	// If suggestions contains { text: 'foo', index: 2, target: 'bar' }, then
 	// phraseMap will contain { 'foo': { occurrencesSeen: 0, linkTargets: { 2: 'bar' } } }
 	for ( i = 0; i < suggestions.length; i++ ) {
-		phrase = phraseMap[ suggestions[ i ].phrase_to_link ] = phraseMap[ suggestions[ i ].phrase_to_link ] || {
+		phrase = phraseMap[ suggestions[ i ].link_text ] = phraseMap[ suggestions[ i ].link_text ] || {
 			occurrencesSeen: 0,
 			suggestions: {}
 		};
-		phrase.suggestions[ suggestions[ i ].instance_occurrence - 1 ] = suggestions[ i ];
+		phrase.suggestions[ suggestions[ i ].match_index ] = suggestions[ i ];
 	}
 
 	// Build a regex that matches any phrase in phraseMap. We remove phrases from phraseMap when

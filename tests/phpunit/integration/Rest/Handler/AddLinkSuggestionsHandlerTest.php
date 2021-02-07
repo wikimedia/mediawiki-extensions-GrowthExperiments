@@ -28,14 +28,14 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 		$goodTitle = new TitleValue( NS_USER, 'Foo' );
 		$badTitle = new TitleValue( NS_USER, 'Bar' );
 		$linkData = [ [
-			'phrase_to_link' => 'foo',
+			'link_text' => 'foo',
 			'link_target' => 'Bar',
-			'instance_occurrence' => 1,
+			'match_index' => 1,
 			'wikitext_offset' => 100,
-			'probability' => 0.9,
+			'score' => 0.9,
 			'context_before' => 'b',
 			'context_after' => 'a',
-			'insertion_order' => 2,
+			'link_index' => 2,
 		] ];
 		$links = LinkRecommendation::getLinksFromArray( $linkData );
 		$configurationLoader = new StaticConfigurationLoader( [

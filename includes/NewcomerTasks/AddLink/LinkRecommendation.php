@@ -33,14 +33,14 @@ class LinkRecommendation {
 		$links = [];
 		foreach ( $array as $item ) {
 			$links[] = new LinkRecommendationLink(
-				$item['phrase_to_link'],
+				$item['link_text'],
 				$item['link_target'],
-				$item['instance_occurrence'],
+				$item['match_index'],
 				$item['wikitext_offset'],
-				$item['probability'],
+				$item['score'],
 				$item['context_before'],
 				$item['context_after'],
-				$item['insertion_order']
+				$item['link_index']
 			);
 		}
 		return $links;
