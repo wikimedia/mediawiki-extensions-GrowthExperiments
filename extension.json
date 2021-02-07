@@ -1266,6 +1266,10 @@
 			"description": "Root URL of the link recommendation service.",
 			"value": false
 		},
+		"GELinkRecommendationFallbackOnDBMiss": {
+			"description": "Fall back to the service at GELinkRecommendationServiceUrl when the recommendation is not cached in the database. This is only intended for simple local setups.",
+			"value": false
+		},
 		"GELinkRecommendationsFrontendEnabled": {
 			"description": "Global ON/OFF switch for the link recommendations feature.",
 			"value": true

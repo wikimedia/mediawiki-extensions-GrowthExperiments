@@ -5,24 +5,31 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use MediaWiki\Linker\LinkTarget;
 
+/**
+ * A provider which reads the recommendation from the database. It is the caller's
+ * responsibility to make sure the recommendation has been stored there (this is
+ * usually done via refreshLinkRecommendations.php).
+ *
+ * Can fall back to a web service for convenience during debugging / local setups.
+ */
 class DbBackedLinkRecommendationProvider implements LinkRecommendationProvider {
-
-	/** @var LinkRecommendationProvider */
-	private $linkRecommendationProvider;
 
 	/** @var LinkRecommendationStore */
 	private $linkRecommendationStore;
 
+	/** @var LinkRecommendationProvider|null */
+	private $fallbackProvider;
+
 	/**
-	 * @param LinkRecommendationProvider $linkRecommendationProvider
 	 * @param LinkRecommendationStore $linkRecommendationStore
+	 * @param LinkRecommendationProvider|null $fallbackProvider
 	 */
 	public function __construct(
-		LinkRecommendationProvider $linkRecommendationProvider,
-		LinkRecommendationStore $linkRecommendationStore
+		LinkRecommendationStore $linkRecommendationStore,
+		LinkRecommendationProvider $fallbackProvider = null
 	) {
-		$this->linkRecommendationProvider = $linkRecommendationProvider;
 		$this->linkRecommendationStore = $linkRecommendationStore;
+		$this->fallbackProvider = $fallbackProvider;
 	}
 
 	/** @inheritDoc */
@@ -31,11 +38,8 @@ class DbBackedLinkRecommendationProvider implements LinkRecommendationProvider {
 		// stored in the DB when the task type parameters change is left to some (as of yet
 		// unimplemented) manual mechanism.
 		$linkRecommendation = $this->linkRecommendationStore->getByLinkTarget( $title );
-		if ( !$linkRecommendation ) {
-			$linkRecommendation = $this->linkRecommendationProvider->get( $title, $taskType );
-			if ( $linkRecommendation instanceof LinkRecommendation ) {
-				$this->linkRecommendationStore->insert( $linkRecommendation );
-			}
+		if ( !$linkRecommendation && $this->fallbackProvider ) {
+			$linkRecommendation = $this->fallbackProvider->get( $title, $taskType );
 		}
 		return $linkRecommendation;
 	}
