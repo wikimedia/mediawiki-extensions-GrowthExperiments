@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Eduardoaddad"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Obter perguntas formatadas postadas via módulos da página inicial",

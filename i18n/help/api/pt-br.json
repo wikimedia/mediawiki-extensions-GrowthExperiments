@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Eduardoaddad"
 		]
 	},
 	"apihelp-helppanelquestionposter-summary": "Lide com perguntas publicadas por meio do painel de ajuda do usuário atual.",

@@ -272,7 +272,7 @@
 	"growthexperiments-homepage-suggestededits-create-article-additional-message": "সঠিকভাবে নতুন নিবন্ধ তৈরির জন্য {{GENDER:$1|আপনাকে}} কিছু দক্ষতা অর্জন করতে হবে, যা সহজ কিছু কাজ করার মধ্য দিয়ে হয়ে যাবে। কীভাবে নতুন নিবন্ধ তৈরি করতে হয়, তা জানার জন্য [$2 এখানে ক্লিক করুন]।",
 	"growthexperiments-homepage-suggestededits-error-title": "এই মুহূর্তে কোনো পরামর্শকৃত সম্পাদনা নেই।",
 	"growthexperiments-homepage-suggestededits-error-description": "অনুগ্রহ করে পরে আবার চেষ্টা করুন।",
-	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "অন্তত এক ধরনের সম্পাদনা নির্বাচন করুন",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "অন্তত একটি সম্পাদনার ধরন নির্বাচন করুন",
 	"growthexperiments-homepage-suggestededits-topic-filter-select-interests": "আগ্রহের বিষয় নির্বাচন করুন",
 	"growthexperiments-homepage-suggestededits-topics-more": "আরো দেখান",
 	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1টি {{PLURAL:$1|বিষয়}}",
