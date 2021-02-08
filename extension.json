@@ -505,6 +505,7 @@
 			],
 			"messages": [
 				"comma-separator",
+				"ellipsis",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label",
 				"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label",
@@ -599,6 +600,7 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.less"
 			],
 			"messages": [
+				"ellipsis",
 				"growthexperiments-homepage-startediting-dialog-header",
 				"growthexperiments-homepage-startediting-dialog-progress",
 				"growthexperiments-homepage-startediting-dialog-intro-back",
@@ -748,6 +750,7 @@
 				},
 				"info-unpadded": "../images/info-unpadded.svg",
 				"live-broadcast": "../images/live-broadcast.svg",
+				"live-broadcast-anim": "../images/live-broadcast-anim.svg",
 				"mentor": {
 					"file": {
 						"ltr": "../images/mentor-ltr.svg",

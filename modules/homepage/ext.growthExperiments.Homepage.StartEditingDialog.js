@@ -221,6 +221,7 @@ StartEditingDialog.prototype.updateMatchCount = function () {
 		taskTypes = this.taskTypeSelector ?
 			this.taskTypeSelector.getSelected() :
 			this.api.defaultTaskTypes;
+	this.articleCounter.setSearching();
 
 	this.api.fetchTasks( taskTypes, topics ).then( function ( data ) {
 		var homepageModulesConfig = mw.config.get( 'homepagemodules' );
