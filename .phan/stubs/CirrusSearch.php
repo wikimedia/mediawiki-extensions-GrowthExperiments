@@ -30,4 +30,13 @@ class CirrusSearch {
 	): void {
 	}
 
+	/**
+	 * Request the reset of the weighted_tags field for the category $tagCategory.
+	 *
+	 * @param ProperPageIdentity $page
+	 * @param string $tagPrefix
+	 */
+	public function resetWeightedTags( ProperPageIdentity $page, string $tagPrefix ): void {
+	}
+
 }
