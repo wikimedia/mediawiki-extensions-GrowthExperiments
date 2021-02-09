@@ -59,7 +59,7 @@
 			"class": "GrowthExperiments\\Api\\ApiQueryGrowthTasks",
 			"services": [
 				"GrowthExperimentsTaskSuggesterFactory",
-				"GrowthExperimentsConfigurationLoader"
+				"GrowthExperimentsNewcomerTasksConfigurationLoader"
 			]
 		}
 	},
@@ -68,20 +68,20 @@
 			"path": "/growthexperiments/v0/quickstarttips/{skin}/{editor}/{tasktypeid}/{uselang}",
 			"method": "GET",
 			"class": "GrowthExperiments\\Rest\\Handler\\TipsHandler",
-			"services": [ "GrowthExperimentsTipsAssembler", "GrowthExperimentsConfigurationLoader" ]
+			"services": [ "GrowthExperimentsTipsAssembler", "GrowthExperimentsNewcomerTasksConfigurationLoader" ]
 		},
 		{
 			"path": "/growthexperiments/v0/suggestions/addlink/{title}",
 			"method": "GET",
 			"class": "GrowthExperiments\\Rest\\Handler\\AddLinkSuggestionsHandler",
-			"services": [ "GrowthExperimentsConfigurationLoader", "GrowthExperimentsLinkRecommendationProvider" ]
+			"services": [ "GrowthExperimentsNewcomerTasksConfigurationLoader", "GrowthExperimentsLinkRecommendationProvider" ]
 		},
 		{
 			"path": "/growthexperiments/v0/suggestions/addlink/{title}",
 			"method": "POST",
 			"class": "GrowthExperiments\\Rest\\Handler\\AddLinkSubmissionHandler",
 			"services": [
-				"GrowthExperimentsConfigurationLoader",
+				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsLinkRecommendationProvider",
 				"GrowthExperimentsLinkSubmissionRecorder",
 				"TitleParser",
@@ -102,7 +102,7 @@
 				"UserOptionsLookup",
 				"NamespaceInfo",
 				"StatsdDataFactory",
-				"GrowthExperimentsConfigurationLoader",
+				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsNewcomerTaskTrackerFactory",
 				"GrowthExperimentsExperimentUserManager",
 				"GrowthExperimentsHomepageModuleRegistry",
@@ -1228,11 +1228,11 @@
 			"value": {
 				"template-based": {
 					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\TemplateBasedTaskTypeHandler",
-					"services": [ "GrowthExperimentsConfigurationValidator", "TitleParser" ]
+					"services": [ "GrowthExperimentsNewcomerTasksConfigurationValidator", "TitleParser" ]
 				},
 				"link-recommendation": {
 					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\LinkRecommendationTaskTypeHandler",
-					"services": [ "GrowthExperimentsConfigurationValidator" ]
+					"services": [ "GrowthExperimentsNewcomerTasksConfigurationValidator" ]
 				},
 				"null": {
 					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\NullTaskTypeHandler"

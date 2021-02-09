@@ -925,10 +925,10 @@ class HomepageHooks implements
 		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 
 		// Hack - ResourceLoaderContext is not exposed to services initialization
-		$configurationValidator = $growthServices->getConfigurationValidator();
+		$configurationValidator = $growthServices->getNewcomerTasksConfigurationValidator();
 		$configurationValidator->setMessageLocalizer( $context );
 
-		$configurationLoader = $growthServices->getConfigurationLoader();
+		$configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 		$taskTypes = $configurationLoader->loadTaskTypes();
 		if ( $taskTypes instanceof StatusValue ) {
 			$status = Status::wrap( $taskTypes );
@@ -967,10 +967,10 @@ class HomepageHooks implements
 		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 
 		// Hack - ResourceLoaderContext is not exposed to services initialization
-		$configurationValidator = $growthServices->getConfigurationValidator();
+		$configurationValidator = $growthServices->getNewcomerTasksConfigurationValidator();
 		$configurationValidator->setMessageLocalizer( $context );
 
-		$configurationLoader = $growthServices->getConfigurationLoader();
+		$configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 		$topics = $configurationLoader->loadTopics();
 		if ( $topics instanceof StatusValue ) {
 			$status = Status::wrap( $topics );

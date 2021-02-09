@@ -39,63 +39,6 @@ use MediaWiki\MediaWikiServices;
 
 return [
 
-	'GrowthExperimentsConfigurationLoader' => function (
-		MediaWikiServices $services
-	): ConfigurationLoader {
-		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$config = $growthServices->getConfig();
-		$cache = new CachedBagOStuff( ObjectCache::getLocalClusterInstance() );
-
-		$taskConfigTitle = $config->get( 'GENewcomerTasksConfigTitle' );
-		if ( !$taskConfigTitle ) {
-			return new ErrorForwardingConfigurationLoader( StatusValue::newFatal( new ApiRawMessage(
-				'The ConfigurationLoader has not been configured!',
-				'configurationloader-not-configured'
-			) ) );
-		}
-
-		$topicType = $config->get( 'GENewcomerTasksTopicType' );
-		$topicConfigTitle = null;
-		if ( $topicType === PageConfigurationLoader::CONFIGURATION_TYPE_ORES ) {
-			$topicConfigTitle = $config->get( 'GENewcomerTasksOresTopicConfigTitle' );
-		} elseif ( $topicType === PageConfigurationLoader::CONFIGURATION_TYPE_MORELIKE ) {
-			$topicConfigTitle = $config->get( 'GENewcomerTasksTopicConfigTitle' );
-		}
-
-		$pageLoader = new PageLoader(
-			$services->getHttpRequestFactory(),
-			$services->getRevisionLookup(),
-			$services->getTitleFactory()
-		);
-		// Cache config for a minute, as a trade-off between avoiding the performance hit of
-		// constant querying and making it not too hard to test changes to the config page.
-		$pageLoader->setCache( $cache, 60 );
-
-		$configurationLoader = new PageConfigurationLoader(
-			$services->getTitleFactory(),
-			$pageLoader,
-			$growthServices->getConfigurationValidator(),
-			$growthServices->getTaskTypeHandlerRegistry(),
-			$taskConfigTitle,
-			$topicConfigTitle,
-			$topicType
-		);
-		if ( !$config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
-			$configurationLoader->disableTaskType( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID );
-		}
-		return $configurationLoader;
-	},
-
-	'GrowthExperimentsConfigurationValidator' => function (
-		MediaWikiServices $services
-	): ConfigurationValidator {
-		return new ConfigurationValidator(
-			RequestContext::getMain(),
-			Collation::singleton(),
-			$services->getTitleParser()
-		);
-	},
-
 	'GrowthExperimentsEditInfoService' => function ( MediaWikiServices $services ): EditInfoService {
 		$project = $services->get( '_GrowthExperimentsAQSConfig' )->project;
 		$editInfoService = new AqsEditInfoService( $services->getHttpRequestFactory(), $project );
@@ -198,12 +141,69 @@ return [
 		return $manager;
 	},
 
+	'GrowthExperimentsNewcomerTasksConfigurationLoader' => function (
+		MediaWikiServices $services
+	): ConfigurationLoader {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$config = $growthServices->getConfig();
+		$cache = new CachedBagOStuff( ObjectCache::getLocalClusterInstance() );
+
+		$taskConfigTitle = $config->get( 'GENewcomerTasksConfigTitle' );
+		if ( !$taskConfigTitle ) {
+			return new ErrorForwardingConfigurationLoader( StatusValue::newFatal( new ApiRawMessage(
+				'The ConfigurationLoader has not been configured!',
+				'configurationloader-not-configured'
+			) ) );
+		}
+
+		$topicType = $config->get( 'GENewcomerTasksTopicType' );
+		$topicConfigTitle = null;
+		if ( $topicType === PageConfigurationLoader::CONFIGURATION_TYPE_ORES ) {
+			$topicConfigTitle = $config->get( 'GENewcomerTasksOresTopicConfigTitle' );
+		} elseif ( $topicType === PageConfigurationLoader::CONFIGURATION_TYPE_MORELIKE ) {
+			$topicConfigTitle = $config->get( 'GENewcomerTasksTopicConfigTitle' );
+		}
+
+		$pageLoader = new PageLoader(
+			$services->getHttpRequestFactory(),
+			$services->getRevisionLookup(),
+			$services->getTitleFactory()
+		);
+		// Cache config for a minute, as a trade-off between avoiding the performance hit of
+		// constant querying and making it not too hard to test changes to the config page.
+		$pageLoader->setCache( $cache, 60 );
+
+		$configurationLoader = new PageConfigurationLoader(
+			$services->getTitleFactory(),
+			$pageLoader,
+			$growthServices->getNewcomerTasksConfigurationValidator(),
+			$growthServices->getTaskTypeHandlerRegistry(),
+			$taskConfigTitle,
+			$topicConfigTitle,
+			$topicType
+		);
+		if ( !$config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
+			$configurationLoader->disableTaskType( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID );
+		}
+		return $configurationLoader;
+	},
+
+	'GrowthExperimentsNewcomerTasksConfigurationValidator' => function (
+		MediaWikiServices $services
+	): ConfigurationValidator {
+		return new ConfigurationValidator(
+			RequestContext::getMain(),
+			Collation::singleton(),
+			$services->getTitleParser()
+		);
+	},
+
 	'GrowthExperimentsNewcomerTaskTrackerFactory' => function (
 		MediaWikiServices $services
 	): TrackerFactory {
 		return new TrackerFactory(
 			$services->getMainObjectStash(),
-			GrowthExperimentsServices::wrap( $services )->getConfigurationLoader(),
+			GrowthExperimentsServices::wrap( $services )->getNewcomerTasksConfigurationLoader(),
 			$services->getTitleFactory(),
 			LoggerFactory::getInstance( 'GrowthExperiments' )
 		);
@@ -253,7 +253,7 @@ return [
 		$config = $growthServices->getConfig();
 
 		$taskTypeHandlerRegistry = $growthServices->getTaskTypeHandlerRegistry();
-		$configLoader = $growthServices->getConfigurationLoader();
+		$configLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry, $configLoader );
 		if ( $config->get( 'GENewcomerTasksRemoteApiUrl' ) ) {
 			$taskSuggesterFactory = new RemoteSearchTaskSuggesterFactory(
@@ -304,7 +304,7 @@ return [
 	): TipsAssembler {
 		$growthExperimentsServices = GrowthExperimentsServices::wrap( $services );
 		return new TipsAssembler(
-			$growthExperimentsServices->getConfigurationLoader(),
+			$growthExperimentsServices->getNewcomerTasksConfigurationLoader(),
 			$growthExperimentsServices->getTipNodeRenderer()
 		);
 	},

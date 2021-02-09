@@ -38,7 +38,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * @covers ::loadTaskTypes
 	 */
 	public function testLoadTaskTypes() {
-		$configurationLoader = $this->getConfigurationLoader( $this->getTaskConfig(), [],
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $this->getTaskConfig(), [],
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
 		// in getMockPageLoader() will fail.
@@ -55,7 +55,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			}, $taskTypes ) );
 		}
 
-		$configurationLoader = $this->getConfigurationLoader( StatusValue::newFatal( 'foo' ),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( StatusValue::newFatal( 'foo' ),
 			[], PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		foreach ( range( 1, 2 ) as $_ ) {
 			$taskTypes = $configurationLoader->loadTaskTypes();
@@ -68,14 +68,14 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * @covers ::loadTaskTypes
 	 */
 	public function testLoadTaskTypes_disabled() {
-		$configurationLoader = $this->getConfigurationLoader( $this->getTaskConfig(), [],
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $this->getTaskConfig(), [],
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$configurationLoader->disableTaskType( 'copyedit' );
 		$this->assertArrayEquals( [ 'references' ], array_map( function ( TaskType $tt ) {
 			return $tt->getId();
 		}, $configurationLoader->loadTaskTypes() ) );
 
-		$configurationLoader = $this->getConfigurationLoader( $this->getTaskConfig(), [],
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $this->getTaskConfig(), [],
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$configurationLoader->disableTaskType( 'copyedit' );
 		$configurationLoader->disableTaskType( 'references' );
@@ -91,7 +91,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	public function testLoadTaskTypes_error( $error ) {
 		$msg = $this->createMock( Message::class );
 		$msg->method( 'exists' )->willReturn( false );
-		$configurationLoader = $this->getConfigurationLoader( $this->getTaskConfig( $error ), [],
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $this->getTaskConfig( $error ), [],
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES,
 			[ 'growthexperiments-homepage-suggestededits-tasktype-name-foo' => $msg ] );
 		$status = $configurationLoader->loadTaskTypes();
@@ -116,7 +116,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * @covers ::loadTopics
 	 */
 	public function testLoadOresTopics() {
-		$configurationLoader = $this->getConfigurationLoader( [], $this->getOresTopicConfig(),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], $this->getOresTopicConfig(),
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
 		// in getMockPageLoader() will fail.
@@ -134,7 +134,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 				}, $topics ) );
 		}
 
-		$configurationLoader = $this->getConfigurationLoader( [], StatusValue::newFatal( 'foo' ),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], StatusValue::newFatal( 'foo' ),
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		foreach ( range( 1, 2 ) as $_ ) {
 			$topics = $configurationLoader->loadTopics();
@@ -148,7 +148,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideLoadOresTopics_error
 	 */
 	public function testLoadOresTopics_error( $error ) {
-		$configurationLoader = $this->getConfigurationLoader( [], $this->getOresTopicConfig( $error ),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], $this->getOresTopicConfig( $error ),
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$status = $configurationLoader->loadTopics();
 		$this->assertInstanceOf( StatusValue::class, $status );
@@ -169,7 +169,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * @covers ::loadTopics
 	 */
 	public function testLoadMorelikeTopics() {
-		$configurationLoader = $this->getConfigurationLoader( [], $this->getMorelikeTopicConfig(),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], $this->getMorelikeTopicConfig(),
 			PageConfigurationLoader::CONFIGURATION_TYPE_MORELIKE );
 		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
 		// in getMockPageLoader() will fail.
@@ -193,7 +193,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 				}, $topics ) );
 		}
 
-		$configurationLoader = $this->getConfigurationLoader( [], StatusValue::newFatal( 'foo' ),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], StatusValue::newFatal( 'foo' ),
 			PageConfigurationLoader::CONFIGURATION_TYPE_MORELIKE );
 		foreach ( range( 1, 2 ) as $_ ) {
 			$topics = $configurationLoader->loadTopics();
@@ -207,7 +207,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * @dataProvider provideLoadMorelikeTopics_error
 	 */
 	public function testLoadMorelikeTopics_error( $error ) {
-		$configurationLoader = $this->getConfigurationLoader( [], $this->getMorelikeTopicConfig( $error ),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], $this->getMorelikeTopicConfig( $error ),
 			PageConfigurationLoader::CONFIGURATION_TYPE_MORELIKE );
 		$status = $configurationLoader->loadTopics();
 		$this->assertInstanceOf( StatusValue::class, $status );
@@ -243,7 +243,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * @coversNothing
 	 */
 	public function testLinkTitleArguments() {
-		$configurationLoader = $this->getConfigurationLoader( $this->getTaskConfig(),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $this->getTaskConfig(),
 			$this->getOresTopicConfig(), PageConfigurationLoader::CONFIGURATION_TYPE_ORES, [], true );
 		$taskTypes = $configurationLoader->loadTaskTypes();
 		$this->assertIsArray( $taskTypes );
@@ -253,7 +253,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			return $tt->getId();
 		}, $taskTypes ) );
 
-		$configurationLoader = $this->getConfigurationLoader( $this->getTaskConfig(),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $this->getTaskConfig(),
 			$this->getOresTopicConfig(), PageConfigurationLoader::CONFIGURATION_TYPE_ORES, [], true );
 		$topics = $configurationLoader->loadTopics();
 		$this->assertIsArray( $topics );
@@ -269,7 +269,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 */
 	public function testLoadExcludedTemplates() {
 		$taskConfig = [ '#excludedTemplates' => [ 'Foo', 'Bar', 'Baz' ] ];
-		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
 		// in getMockPageLoader() will fail.
@@ -286,19 +286,19 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			$configurationLoader->getExcludedTemplates() );
 
 		// Make sure task parsing skips the special key
-		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$taskTypes = $configurationLoader->loadTaskTypes();
 		$this->assertSame( [], $taskTypes );
 
 		// Test that the field is optional
 		$taskConfig = [];
-		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$this->assertSame( [], $configurationLoader->loadExcludedTemplates() );
 
 		$taskConfig = [ '#excludedTemplates' => 'xy' ];
-		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$error = $configurationLoader->loadExcludedTemplates();
 		$this->assertInstanceOf( StatusValue::class, $error );
@@ -307,7 +307,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$this->assertSame( [], $configurationLoader->getExcludedTemplates() );
 
 		$taskConfig = [ '#excludedTemplates' => [ [] ] ];
-		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$error = $configurationLoader->loadExcludedTemplates();
 		$this->assertInstanceOf( StatusValue::class, $error );
@@ -315,7 +315,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			'growthexperiments-homepage-suggestededits-config-wrongstructure' ) );
 
 		$taskConfig = [ '#excludedTemplates' => [ '<invalid>' ] ];
-		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$error = $configurationLoader->loadExcludedTemplates();
 		$this->assertInstanceOf( StatusValue::class, $error );
@@ -328,7 +328,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 */
 	public function testLoadExcludedCategories() {
 		$taskConfig = [ '#excludedCategories' => [ 'Foo', 'Bar', 'Baz' ] ];
-		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
 		// in getMockPageLoader() will fail.
@@ -345,19 +345,19 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			$configurationLoader->getExcludedCategories() );
 
 		// Make sure task parsing skips the special key
-		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$taskTypes = $configurationLoader->loadTaskTypes();
 		$this->assertSame( [], $taskTypes );
 
 		// Test that the field is optional
 		$taskConfig = [];
-		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$this->assertSame( [], $configurationLoader->loadExcludedCategories() );
 
 		$taskConfig = [ '#excludedCategories' => 'xy' ];
-		$configurationLoader = $this->getConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$error = $configurationLoader->loadExcludedCategories();
 		$this->assertInstanceOf( StatusValue::class, $error );
@@ -467,7 +467,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 * @param bool $useTitleValues
 	 * @return PageConfigurationLoader
 	 */
-	protected function getConfigurationLoader(
+	protected function getNewcomerTasksConfigurationLoader(
 		$taskConfig, $topicConfig, $topicType, array $customMessages = [], $useTitleValues = false
 	) {
 		if ( $useTitleValues ) {

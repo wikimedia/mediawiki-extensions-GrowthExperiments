@@ -31,7 +31,7 @@ class RemoteSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTes
 	 */
 	public function testCreate( $taskTypes, $topics, $expectedError ) {
 		$taskTypeHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
-		$configurationLoader = $this->getConfigurationLoader( $taskTypes, $topics );
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskTypes, $topics );
 		$searchStrategy = $this->getSearchStrategy();
 		$requestFactory = $this->getRequestFactory();
 		$titleFactory = $this->getTitleFactory();

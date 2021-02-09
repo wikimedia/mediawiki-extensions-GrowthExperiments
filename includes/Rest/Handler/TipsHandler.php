@@ -59,7 +59,7 @@ class TipsHandler extends SimpleHandler {
 		// FIXME the context language should be set by the API framework
 		$this->tipsAssembler->setMessageLocalizer( $context );
 		GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
-			->getConfigurationValidator()->setMessageLocalizer( $context );
+			->getNewcomerTasksConfigurationValidator()->setMessageLocalizer( $context );
 		$taskTypes = $this->configurationLoader->getTaskTypes();
 		$response = $this->getResponseFactory()->createJson(
 			$this->tipsAssembler->getTips(

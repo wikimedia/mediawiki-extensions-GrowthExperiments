@@ -29,7 +29,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 				new TaskType( 'tt1', TaskType::DIFFICULTY_EASY ),
 				new TaskType( 'tt2', TaskType::DIFFICULTY_EASY ),
 			] );
-		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
+		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 		$context = new ResourceLoaderContext( MediaWikiServices::getInstance()->getResourceLoader(),
 			RequestContext::getMain()->getRequest() );
 		$configData = HomepageHooks::getTaskTypesJson( $context );
@@ -45,7 +45,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 			->getMockForAbstractClass();
 		$configurationLoader->method( 'loadTaskTypes' )
 			->willReturn( StatusValue::newFatal( new RawMessage( 'foo' ) ) );
-		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
+		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 		$context = new ResourceLoaderContext( MediaWikiServices::getInstance()->getResourceLoader(),
 			RequestContext::getMain()->getRequest() );
 		$configData = HomepageHooks::getTaskTypesJson( $context );
