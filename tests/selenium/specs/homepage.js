@@ -33,12 +33,18 @@ describe( 'Homepage', function () {
 		HomepagePage.suggestedEditsNextButton.waitForClickable();
 		assert.strictEqual( HomepagePage.suggestedEditsNextButton.getAttribute( 'aria-disabled' ), 'false' );
 		HomepagePage.suggestedEditsNextButton.click();
+		browser.waitUntil( () => {
+			return HomepagePage.suggestedEditsCardTitle.getText() === 'The Hitchhiker\'s Guide to the Galaxy';
+		} );
 		assert.strictEqual( HomepagePage.suggestedEditsCardTitle.getText(), 'The Hitchhiker\'s Guide to the Galaxy' );
 		// Go back to first card and check that previous button is disabled.
 		HomepagePage.suggestedEditsPreviousButton.click();
 		assert.strictEqual( HomepagePage.suggestedEditsPreviousButton.getAttribute( 'aria-disabled' ), 'true' );
 		// Go forwards again.
 		HomepagePage.suggestedEditsNextButton.click();
+		browser.waitUntil( () => {
+			return HomepagePage.suggestedEditsPreviousButton.getAttribute( 'aria-disabled' ) === 'false';
+		} );
 		assert.strictEqual( HomepagePage.suggestedEditsPreviousButton.getAttribute( 'aria-disabled' ), 'false' );
 		assert.strictEqual( HomepagePage.suggestedEditsNextButton.getAttribute( 'aria-disabled' ), 'false' );
 		// Go to the end of queue card.

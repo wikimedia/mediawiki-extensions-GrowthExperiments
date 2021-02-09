@@ -41,10 +41,11 @@ class SearchStrategy {
 	 * @param TaskType[] $taskTypes Task types to limit search results to
 	 * @param Topic[] $topics Topics to limit search results to
 	 * @param array|null $pageIds List of PageIds search results should be restricted to.
+	 * @param array|null $excludePageIds List of PageIds to exclude from search.
 	 * @return SearchQuery[] Array of queries, indexed by query ID.
 	 */
 	public function getQueries(
-		array $taskTypes, array $topics, array $pageIds = null
+		array $taskTypes, array $topics, array $pageIds = null, array $excludePageIds = null
 	) {
 		$this->validateParams( $taskTypes, $topics );
 		$queries = [];
@@ -65,8 +66,9 @@ class SearchStrategy {
 				$excludedTemplatesTerm = $this->getExcludedTemplatesTerm();
 				$excludedCategoriesTerm = $this->getExcludedCategoriesTerm();
 				$pageIdTerm = $pageIds ? $this->getPageIdTerm( $pageIds ) : null;
+				$excludedPageIdTerm = $excludePageIds ? $this->getExcludedPageIdTerm( $excludePageIds ) : null;
 				$queryString = implode( ' ', array_filter( [ $typeTerm, $topicTerm,
-					$excludedTemplatesTerm, $excludedCategoriesTerm, $pageIdTerm ] ) );
+					$excludedTemplatesTerm, $excludedCategoriesTerm, $pageIdTerm, $excludedPageIdTerm ] ) );
 
 				$queryId = $taskType->getId() . ':' . ( $topic ? $topic->getId() : '-' );
 				$query = new SearchQuery( $queryId, $queryString, $taskType, $topic );
@@ -136,6 +138,14 @@ class SearchStrategy {
 	 */
 	private function getPageIdTerm( array $pageIds ) {
 		return 'pageid:' . implode( '|', $pageIds );
+	}
+
+	/**
+	 * @param array $pageIds
+	 * @return string
+	 */
+	private function getExcludedPageIdTerm( array $pageIds ): string {
+		return '-pageid:' . implode( '|', $pageIds );
 	}
 
 	/**

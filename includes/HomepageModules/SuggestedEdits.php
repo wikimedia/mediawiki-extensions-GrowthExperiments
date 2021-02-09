@@ -115,7 +115,7 @@ class SuggestedEdits extends BaseModule {
 	private $tasks;
 
 	/** @var int */
-	private $unfilteredTasksetCount = null;
+	private $unfilteredTasksetCount = 0;
 
 	/** @var ButtonGroupWidget */
 	private $buttonGroupWidget;
@@ -373,7 +373,7 @@ class SuggestedEdits extends BaseModule {
 		$tasks = $this->taskSuggester->suggest( $user, $taskTypes, $topics, null, null,
 			$suggesterOptions );
 		if ( $tasks instanceof TaskSet ) {
-			$this->unfilteredTasksetCount = $tasks->count();
+			$this->unfilteredTasksetCount = $tasks->getTotalCount();
 			$tasks = $this->protectionFilter->filter( $tasks, 1 );
 		}
 		$this->tasks = $tasks;
@@ -469,7 +469,7 @@ class SuggestedEdits extends BaseModule {
 
 		if ( $showTaskPreview ) {
 			$taskPager = $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
-				->numParams( 1, $this->getUnfilteredTaskSetCountReducedToTaskQueueLength() )
+				->numParams( 1, $this->unfilteredTasksetCount )
 				->text();
 			$button = new ButtonWidget( [
 				'label' => $this->getContext()->msg(
@@ -784,7 +784,7 @@ class SuggestedEdits extends BaseModule {
 		// these will be updated on the client side as needed
 		$data = [
 			'taskTypes' => $taskTypes ?? $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-			'taskCount' => $this->getUnfilteredTaskSetCountReducedToTaskQueueLength()
+			'taskCount' => $this->unfilteredTasksetCount
 		];
 		if ( self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ) ) {
 			$data['topics'] = $topics ?? $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user );
@@ -818,18 +818,8 @@ class SuggestedEdits extends BaseModule {
 			return '';
 		}
 		return new HtmlSnippet( $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
-				->numParams( [ 1, $this->getUnfilteredTaskSetCountReducedToTaskQueueLength() ] )
+				->numParams( [ 1, $this->unfilteredTasksetCount ] )
 			->parse() );
-	}
-
-	/**
-	 * The max number on the client-side is 200 (TASK_QUEUE_LENGTH in SuggestedEdits.js), while
-	 * we can have up to 250 stored in the cache. Reduce the number to TASK_QUEUE_LENGTH
-	 * if it's over that limit.
-	 * @return int
-	 */
-	private function getUnfilteredTaskSetCountReducedToTaskQueueLength(): int {
-		return min( $this->unfilteredTasksetCount ?? 0, 200 );
 	}
 
 	/**

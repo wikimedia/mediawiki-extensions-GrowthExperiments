@@ -32,7 +32,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 
 	// Keep this in sync with GrowthTasksApi.js#fetchTasks
 	// FIXME: Export this constant to client-side.
-	public const DEFAULT_LIMIT = 250;
+	public const DEFAULT_LIMIT = 20;
 
 	/** @var TaskTypeHandlerRegistry */
 	private $taskTypeHandlerRegistry;
@@ -172,7 +172,12 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 			$taskTypes[] = $taskType;
 		}
 
-		$queries = $this->searchStrategy->getQueries( $taskTypes, $topics, $pageIds );
+		$queries = $this->searchStrategy->getQueries(
+			$taskTypes,
+			$topics,
+			$pageIds,
+			$options['excludePageIds'] ?? null
+		);
 		foreach ( $queries as $query ) {
 			$matches = $this->search( $query, $limit, $offset, $debug );
 			if ( $matches instanceof StatusValue ) {

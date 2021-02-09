@@ -22,8 +22,7 @@
 		aqsConfig = require( './AQSConfig.json' ),
 		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),
 		defaultTaskTypes = TaskTypesAbFilter.filterDefaultTaskTypes( require( './DefaultTaskTypes.json' ) ),
-		SwipePane = require( '../../ui-components/SwipePane.js' ),
-		TASK_QUEUE_LENGTH = 200;
+		SwipePane = require( '../../ui-components/SwipePane.js' );
 
 	/**
 	 * @class
@@ -50,6 +49,7 @@
 		this.currentCard = null;
 		this.apiPromise = null;
 		this.newcomerTaskToken = null;
+		this.apiFetchMoreTasksPromise = null;
 		this.taskTypesQuery = [];
 		this.topicsQuery = [];
 		this.api = api;
@@ -169,11 +169,7 @@
 			} );
 		}
 		this.apiPromise.then( function () {
-			if ( this.taskQueue.length && OO.ui.isMobile() ) {
-				this.updateMobileSummarySmallTaskCard();
-			}
-			this.showCard();
-			this.preloadNextCard();
+			this.updateCardAndPreloadNext();
 		}.bind( this ) );
 	};
 
@@ -246,9 +242,8 @@
 					return task.title !== options.firstTask.title;
 				} );
 				this.taskQueue.unshift( options.firstTask );
-				this.taskQueue = this.taskQueue.slice( 0, TASK_QUEUE_LENGTH );
 			}
-			this.filters.updateMatchCount( this.taskQueue.length );
+			this.filters.updateMatchCount( data.count );
 			// FIXME these are the current values of the filters, not the ones we are just about
 			//   to display. Unlikely to cause much discrepancy though.
 			extraData.taskTypes = this.taskTypesQuery;
@@ -256,8 +251,7 @@
 				extraData.topics = this.topicsQuery;
 			}
 
-			// FIXME should this be capped to TASK_QUEUE_LENGTH or show the total server-side result count?
-			extraData.taskCount = this.taskQueue.length;
+			extraData.taskCount = data.count;
 			this.logger.log( 'suggested-edits', this.mode, 'se-fetch-tasks' );
 			return $.Deferred().resolve().promise();
 		}.bind( this ) ).catch( function ( message ) {
@@ -320,12 +314,64 @@
 		}
 		this.isGoingBack = false;
 		this.logger.log( 'suggested-edits', this.mode, action, { dir: 'next' } );
+		var fetchMoreTasksPromise = $.Deferred().resolve();
 		this.queuePosition = this.queuePosition + 1;
-		this.showCard();
-		this.preloadNextCard();
-		if ( OO.ui.isMobile() ) {
+		// Reload the queue.
+		if ( this.queuePosition === this.taskQueue.length - 1 ) {
+			fetchMoreTasksPromise = this.fetchMoreTasks();
+			// Ellipsis is the stand-in for a loading indicator.
+			this.nextWidget.setIcon( 'ellipsis' );
+			this.nextWidget.setDisabled( true );
+		}
+		fetchMoreTasksPromise.done( function () {
+			this.updateCardAndPreloadNext();
+		}.bind( this ) );
+	};
+
+	/**
+	 * Called from onNextCard / filterSelection.
+	 *
+	 * Used to update the mobile summary small task card, show the current card based
+	 * on the queue position, and preload the next card.
+	 */
+	SuggestedEditsModule.prototype.updateCardAndPreloadNext = function () {
+		if ( this.taskQueue.length && OO.ui.isMobile() ) {
 			this.updateMobileSummarySmallTaskCard();
 		}
+		this.showCard();
+		this.preloadNextCard();
+	};
+
+	/**
+	 * Fetch tasks and append to existing task queue, deduplicating as needed.
+	 *
+	 * @return {jQuery.Promise} fetchTasks promise from the GrowthTasksApi.
+	 */
+	SuggestedEditsModule.prototype.fetchMoreTasks = function () {
+		if ( this.apiFetchMoreTasksPromise ) {
+			this.apiFetchMoreTasksPromise.abort();
+		}
+		var i, existingPageIds = [];
+		for ( i = 0; i < this.taskQueue.length; i++ ) {
+			existingPageIds.push( this.taskQueue[ i ].pageId );
+		}
+		var config = {
+			context: 'suggestedEditsModule.fetchMoreTasksOnNextCard'
+		};
+		if ( existingPageIds.length ) {
+			config.excludePageIds = existingPageIds;
+		}
+		this.apiFetchMoreTasksPromise = this.api.fetchTasks(
+			this.taskTypesQuery,
+			this.topicsQuery,
+			config
+		);
+		this.apiFetchMoreTasksPromise.done( function ( data ) {
+			this.taskQueue = this.taskQueue.concat( data.tasks || [] );
+			this.nextWidget.setDisabled( !!data.tasks.length );
+			this.nextWidget.setIcon( 'arrowNext' );
+		}.bind( this ) );
+		return this.apiFetchMoreTasksPromise;
 	};
 
 	/**

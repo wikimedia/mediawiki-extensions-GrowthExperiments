@@ -102,12 +102,15 @@
 	 * @param {number} [config.thumbnailWidth] Ideal thumbnail width. The actual width might be
 	 *   smaller if the original image itself is smaller.
 	 * @param {string} [config.context] The context in which this function was
-	 *   called, used for performance instrumentation. Overrides the context given in the constructor.
+	 *   called, used for performance instrumentation. Overrides the context given in the
+	 *   constructor.
+	 * @param {number[]} [config.excludePageIds] List of page IDs to exclude in query performed
+	 *   in ElasticSearch.
 	 *
 	 * @return {jQuery.Promise<{count: number, tasks: Array<mw.libs.ge.TaskData>}>} An abortable
 	 *   promise with two fields:
 	 *   - count: the number of tasks available. Note this is the full count, not the
-	 *     task list length (which is capped to 200).
+	 *     task list length.
 	 *     FIXME protection status is ignored by the count.
 	 *   - tasks: a list of task data objects
 	 */
@@ -119,7 +122,7 @@
 
 		config = $.extend( {
 			getDescription: false,
-			size: 250,
+			size: 20,
 			thumbnailWidth: this.thumbnailWidth
 		}, config || {} );
 
@@ -141,8 +144,6 @@
 			piprop: 'name|original|thumbnail',
 			pithumbsize: config.thumbnailWidth,
 			generator: 'growthtasks',
-			// Fetch more in case protected articles are in the result set, so that after
-			// filtering we can have 200.
 			// TODO: Filter out protected articles on the server side.
 			ggtlimit: config.size,
 			ggttasktypes: taskTypes.join( '|' ),
@@ -151,6 +152,9 @@
 		};
 		if ( topics && topics.length ) {
 			apiParams.ggttopics = topics.join( '|' );
+		}
+		if ( config.excludePageIds && config.excludePageIds.length ) {
+			apiParams.ggtexcludepageids = config.excludePageIds.join( '|' );
 		}
 		if ( 'debug' in url.query ) {
 			apiParams.ggtdebug = 1;
@@ -190,9 +194,7 @@
 					.sort( function ( l, r ) {
 						return l.order - r.order;
 					} )
-					.map( cleanUpData )
-					// Maximum number of tasks in the queue is always 200.
-					.slice( 0, 200 );
+					.map( cleanUpData );
 			}
 			if ( data.growthtasks.debug && data.growthtasks.debug.searchDebugUrls ) {
 				Object.keys( data.growthtasks.debug.searchDebugUrls ).forEach( function ( type ) {
