@@ -53,10 +53,10 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	/** @var Language */
 	private $language;
 
-	/** @var string */
+	/** @var string|null */
 	private $mentorsPageName;
 
-	/** @var string */
+	/** @var string|null */
 	private $manuallyAssignedMentorsPageName;
 
 	/**
@@ -67,10 +67,11 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 * @param UserNameUtils $userNameUtils
 	 * @param MessageLocalizer $messageLocalizer
 	 * @param Language $language
-	 * @param string $mentorsPageName Title of the page which contains the list of available mentors.
-	 *   See the documentation of the GEHomepageMentorsList config variable for format.
-	 * @param string $manuallyAssignedMentorsPageName Title of the page which contains the list of automatically
-	 *   assigned mentors (may be an empty string if no such page exists).
+	 * @param string|null $mentorsPageName Title of the page which contains the list of available mentors.
+	 *   See the documentation of the GEHomepageMentorsList config variable for format. May be null if no
+	 *   such page exists.
+	 * @param string|null $manuallyAssignedMentorsPageName Title of the page which contains the list of automatically
+	 *   assigned mentors. May be null if no such page exists.
 	 *   See the documentation for GEHomepageManualAssignmentMentorsList for format.
 	 */
 	public function __construct(
@@ -81,8 +82,8 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		UserNameUtils $userNameUtils,
 		MessageLocalizer $messageLocalizer,
 		Language $language,
-		string $mentorsPageName,
-		string $manuallyAssignedMentorsPageName
+		?string $mentorsPageName,
+		?string $manuallyAssignedMentorsPageName
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->wikiPageFactory = $wikiPageFactory;
@@ -133,10 +134,14 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	/**
 	 * Helper method returning a list of mentors listed at a specified page
 	 *
-	 * @param WikiPage $page Page to work with
+	 * @param WikiPage|null $page Page to work with or null if no page is provided
 	 * @return array
 	 */
-	private function getMentorsForPage( WikiPage $page ): array {
+	private function getMentorsForPage( ?WikiPage $page ): array {
+		if ( $page === null ) {
+			return [];
+		}
+
 		$links = $page->getParserOutput( ParserOptions::newCanonical( 'canonical' ) )->getLinks();
 		if ( !isset( $links[ NS_USER ] ) ) {
 			$this->logger->info( __METHOD__ . ' found zero mentors, no links at {mentorsList}', [
@@ -174,12 +179,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 	/** @inheritDoc */
 	public function getManuallyAssignedMentors(): array {
-		$page = $this->getManuallyAssignedMentorsPage();
-		if ( $page === null ) {
-			return [];
-		}
-
-		return $this->getMentorsForPage( $page );
+		return $this->getMentorsForPage( $this->getManuallyAssignedMentorsPage() );
 	}
 
 	/**
@@ -246,10 +246,14 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 	/**
 	 * Get the WikiPage object for the mentor page.
-	 * @return WikiPage A page that's guaranteed to exist.
+	 * @return WikiPage|null A page that's guaranteed to exist or null when no mentors page available
 	 * @throws WikiConfigException If the mentor page cannot be fetched due to misconfiguration.
 	 */
-	private function getMentorsPage(): WikiPage {
+	private function getMentorsPage(): ?WikiPage {
+		if ( $this->mentorsPageName === null ) {
+			return null;
+		}
+
 		$title = $this->titleFactory->newFromText( $this->mentorsPageName );
 		if ( !$title || !$title->exists() ) {
 			throw new WikiConfigException( 'wgGEHomepageMentorsList is invalid: ' . $this->mentorsPageName );
@@ -263,7 +267,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 * @return WikiPage|null A page that's guaranteed to exist, or null if impossible to get.
 	 */
 	public function getManuallyAssignedMentorsPage(): ?WikiPage {
-		if ( $this->manuallyAssignedMentorsPageName === '' ) {
+		if ( $this->manuallyAssignedMentorsPageName === null ) {
 			return null;
 		}
 
@@ -333,6 +337,10 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 */
 	private function getMentorsPageContent() {
 		$page = $this->getMentorsPage();
+		if ( $page === null ) {
+			return "";
+		}
+
 		/** @var $content WikitextContent */
 		$content = $page->getContent();
 		// @phan-suppress-next-line PhanUndeclaredMethod

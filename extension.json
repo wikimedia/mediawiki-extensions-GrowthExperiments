@@ -1172,11 +1172,11 @@
 			"value": true
 		},
 		"GEHomepageMentorsList": {
-			"description": "Title of the wiki page that contains the list of auto-assigned mentors (cf. GEHomepageManualAssignmentMentorsList).",
+			"description": "Title of the wiki page that contains the list of auto-assigned mentors (cf. GEHomepageManualAssignmentMentorsList). May be null if no such page exists.",
 			"value": "Main_Page"
 		},
 		"GEHomepageManualAssignmentMentorsList": {
-			"description": "Title of the wiki page that contains the list of manually assigned mentors (cf. GEHomepageMentorsList)",
+			"description": "Title of the wiki page that contains the list of manually assigned mentors (cf. GEHomepageMentorsList). Null if no such page exists.",
 			"value": null
 		},
 		"GEHomepageSuggestedEditsEnabled": {
