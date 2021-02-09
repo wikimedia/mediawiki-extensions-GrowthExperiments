@@ -324,6 +324,7 @@
 	"growthexperiments-addlink-wrongmodel": "A revisão $1 de \"$2\" não é wikitexto",
 	"growthexperiments-addlink-invalidjson": "A resposta do serviço de recomendação de link para \"$1\" é inválida",
 	"growthexperiments-addlink-serviceerror": "O serviço de recomendação de link respondeu com um erro de \"$1\": $2",
+	"growthexperiments-addlink-notinstore": "Recomendação de link não encontrada para \"$1\"",
 	"growthexperiments-addlink-duplicatesubmission": "Tentei enviar comentários de recomendação de link para a revisão \"$1\", que já foi revisada.",
 	"growthexperiments-addlink-context-intro": "Deve este link para _____?",
 	"growthexperiments-addlink-context-button-accept": "Sim",

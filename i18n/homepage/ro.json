@@ -318,6 +318,7 @@
 	"growthexperiments-addlink-wrongmodel": "Revizia $1 a „$2” nu este wikitext",
 	"growthexperiments-addlink-invalidjson": "Răspunsul serviciului de recomandări de legături pentru „$1” este invalid",
 	"growthexperiments-addlink-serviceerror": "Serviciul de recomandări de legături a răspuns cu o eroare pentru „$1”: $2",
+	"growthexperiments-addlink-notinstore": "Recomandare de legături negăsită pentru „$1”",
 	"growthexperiments-addlink-duplicatesubmission": "Ați încercat să trimiteți revizuiri de recomandări de legături pentru revizia „$1” care a fost deja revizuită.",
 	"growthexperiments-addlink-context-intro": "Ar trebui ca asta se se lege cu _____?",
 	"growthexperiments-addlink-context-button-accept": "Da",

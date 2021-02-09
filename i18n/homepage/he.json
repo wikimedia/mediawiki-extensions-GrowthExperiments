@@ -273,7 +273,7 @@
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "הגדרות בלתי־תקינות של עריכות מוצעות: קבוצה בלתי־תקינה $1 לסוג משימה $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "הגדרות בלתי־תקינות של עריכות מוצעות: שם תבנית בלתי־תקין $1 עבור סוג משימה $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "הגדרות בלתי־תקינות של עריכות מוצעות: חסר ההודעה $1 לשדה $2",
-	"growthexperiments-homepage-suggestededits-create-article-additional-message": "כדי ליצור ערך חדש כמו שצריך {{GENDER:$1|תצטרך|תצטרכי}} להשתמש בכישורים רבים {{GENDER:$1|שאתה יכול|שאתה יכולה}} לרכוש באמצעות השלמת מספר משימות קלות יותר. למידע נוסף על יצירת ערך חדש, [$2 {{GENDER:$1|לחץ|לחצי}} כאן].",
+	"growthexperiments-homepage-suggestededits-create-article-additional-message": "כדי ליצור ערך חדש כמו שצריך {{GENDER:$1|תצטרך|תצטרכי}} להשתמש בכישורים רבים {{GENDER:$1|שאתה יכול|שאתה יכולה}} לרכוש באמצעות השלמת כמה משימות קלות יותר. למידע נוסף על יצירת ערך חדש, [$2 {{GENDER:$1|לחץ|לחצי}} כאן].",
 	"growthexperiments-homepage-suggestededits-error-title": "אין עריכות מוצעות זמינות כרגע.",
 	"growthexperiments-homepage-suggestededits-error-description": "נא לנסות שוב מאוחר יותר.",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "נא לבחור לפחות סוג אחד של עריכה",
