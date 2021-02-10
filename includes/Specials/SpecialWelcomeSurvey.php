@@ -93,7 +93,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 			$this->getContext(),
 			$this->languageNameUtils
 		);
-		$this->groupName = $welcomeSurvey->getGroup();
+		$this->groupName = $welcomeSurvey->getGroup( true );
 		$questions = $welcomeSurvey->getQuestions( $this->groupName );
 
 		if ( !$questions ) {
