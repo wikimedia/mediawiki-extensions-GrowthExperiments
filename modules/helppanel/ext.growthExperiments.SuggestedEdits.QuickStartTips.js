@@ -50,7 +50,7 @@
 			for ( key in quickStartTipsData ) {
 				tipPanel = new QuickStartTipsTabPanelLayout( 'tipset-' + String( tipLabelNumber ), {
 					taskType: taskTypeID,
-					label: String( tipLabelNumber ),
+					label: String( mw.language.convertNumber( tipLabelNumber ) ),
 					data: quickStartTipsData[ key ]
 				} );
 				tipPanels.push( tipPanel );

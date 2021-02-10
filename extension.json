@@ -817,6 +817,7 @@
 				"mediawiki.Uri",
 				"mediawiki.user",
 				"mediawiki.util",
+				"mediawiki.language",
 				"oojs-ui.styles.icons-alerts",
 				"oojs-ui.styles.icons-interactions",
 				"oojs-ui.styles.icons-user",
