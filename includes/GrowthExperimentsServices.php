@@ -3,6 +3,7 @@
 namespace GrowthExperiments;
 
 use Config;
+use GrowthExperiments\Config\WikiPageConfig;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
@@ -51,8 +52,20 @@ class GrowthExperimentsServices {
 	// Service aliases
 	// phpcs:disable MediaWiki.Commenting.FunctionComment
 
+	/**
+	 * @deprecated since 1.36, use getGrowthConfig or getGrowthWikiConfig instead
+	 * @return Config
+	 */
 	public function getConfig(): Config {
 		return $this->coreServices->getConfigFactory()->makeConfig( 'GrowthExperiments' );
+	}
+
+	public function getGrowthConfig(): Config {
+		return $this->coreServices->get( 'GrowthExperimentsConfig' );
+	}
+
+	public function getGrowthWikiConfig(): Config {
+		return $this->coreServices->get( 'GrowthExperimentsMultiConfig' );
 	}
 
 	public function getLoadBalancer(): ILoadBalancer {
@@ -134,6 +147,10 @@ class GrowthExperimentsServices {
 
 	public function getTipNodeRenderer(): TipNodeRenderer {
 		return $this->coreServices->get( 'GrowthExperimentsTipNodeRenderer' );
+	}
+
+	public function getWikiPageConfig(): WikiPageConfig {
+		return $this->coreServices->get( 'GrowthExperimentsWikiPageConfig' );
 	}
 
 	public function getWikiPageConfigLoader(): WikiPageConfigLoader {

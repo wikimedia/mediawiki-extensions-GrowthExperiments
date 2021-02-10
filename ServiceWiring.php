@@ -1,6 +1,8 @@
 <?php
 
 use GrowthExperiments\AqsEditInfoService;
+use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
+use GrowthExperiments\Config\WikiPageConfig;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
@@ -42,6 +44,27 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 
 return [
+
+	'GrowthExperimentsConfig' => function ( MediaWikiServices $services ): Config {
+		return $services->getConfigFactory()->makeConfig( 'GrowthExperiments' );
+	},
+
+	'GrowthExperimentsMultiConfig' => function ( MediaWikiServices $services ): Config {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+		return new GrowthExperimentsMultiConfig(
+			$geServices->getWikiPageConfig(),
+			GlobalVarConfig::newInstance()
+		);
+	},
+
+	'GrowthExperimentsWikiPageConfig' => function ( MediaWikiServices $services ): Config {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+		return new WikiPageConfig(
+			$services->getTitleFactory(),
+			$geServices->getWikiPageConfigLoader(),
+			$services->getMainConfig()->get( 'GEWikiConfigPageTitle' )
+		);
+	},
 
 	'GrowthExperimentsEditInfoService' => function ( MediaWikiServices $services ): EditInfoService {
 		$project = $services->get( '_GrowthExperimentsAQSConfig' )->project;
