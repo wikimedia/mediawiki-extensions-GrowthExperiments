@@ -1,6 +1,7 @@
 <?php
 
 use GrowthExperiments\AqsEditInfoService;
+use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\GrowthExperimentsServices;
@@ -20,7 +21,6 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
@@ -146,7 +146,6 @@ return [
 	): ConfigurationLoader {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$config = $growthServices->getConfig();
-		$cache = new CachedBagOStuff( ObjectCache::getLocalClusterInstance() );
 
 		$taskConfigTitle = $config->get( 'GENewcomerTasksConfigTitle' );
 		if ( !$taskConfigTitle ) {
@@ -164,18 +163,9 @@ return [
 			$topicConfigTitle = $config->get( 'GENewcomerTasksTopicConfigTitle' );
 		}
 
-		$pageLoader = new PageLoader(
-			$services->getHttpRequestFactory(),
-			$services->getRevisionLookup(),
-			$services->getTitleFactory()
-		);
-		// Cache config for a minute, as a trade-off between avoiding the performance hit of
-		// constant querying and making it not too hard to test changes to the config page.
-		$pageLoader->setCache( $cache, 60 );
-
 		$configurationLoader = new PageConfigurationLoader(
 			$services->getTitleFactory(),
-			$pageLoader,
+			$growthServices->getWikiPageConfigLoader(),
 			$growthServices->getNewcomerTasksConfigurationValidator(),
 			$growthServices->getTaskTypeHandlerRegistry(),
 			$taskConfigTitle,
@@ -315,6 +305,24 @@ return [
 		return new TipNodeRenderer(
 			$services->getMainConfig()->get( 'ExtensionAssetsPath' )
 		);
+	},
+
+	'GrowthExperimentsWikiPageConfigLoader' => function (
+		MediaWikiServices $services
+	): WikiPageConfigLoader {
+		$wikiPageConfigLoader = new WikiPageConfigLoader(
+			$services->getHttpRequestFactory(),
+			$services->getRevisionLookup(),
+			$services->getTitleFactory()
+		);
+
+		// Cache config for a minute, as a trade-off between avoiding the performance hit of
+		// constant querying and making it not too hard to test changes to the config page.
+		$wikiPageConfigLoader->setCache(
+			new CachedBagOStuff( ObjectCache::getLocalClusterInstance() ),
+			CachedBagOStuff::TTL_MINUTE
+		);
+		return $wikiPageConfigLoader;
 	},
 
 	'_GrowthExperimentsAQSConfig' => function ( MediaWikiServices $services ): stdClass {

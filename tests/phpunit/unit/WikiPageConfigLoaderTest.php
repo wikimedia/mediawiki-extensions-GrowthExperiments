@@ -5,7 +5,7 @@ namespace GrowthExperiments\Tests;
 use ApiRawMessage;
 use BagOStuff;
 use Content;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageLoader;
+use GrowthExperiments\Config\WikiPageConfigLoader;
 use JsonContent;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
@@ -23,11 +23,11 @@ use TitleValue;
 use WikitextContent;
 
 /**
- * @covers \GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageLoader
+ * @covers \GrowthExperiments\Config\WikiPageConfigLoader
  * @covers \GrowthExperiments\Util::getJsonUrl
  * @covers \GrowthExperiments\Util::getRawUrl
  */
-class PageLoaderTest extends MediaWikiUnitTestCase {
+class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 
 	/** @var array */
 	private $oldWgUrlProtocols;
@@ -57,7 +57,7 @@ class PageLoaderTest extends MediaWikiUnitTestCase {
 		$revisionLookup = $this->getMockRevisionLookup( $titleValue, $lookupResult,
 			$revisionLookupExpectedInvokeCount );
 		$titleFactory = $this->getMockTitleFactory( $fullUrl, $localUrl, $isExternal );
-		$loader = new PageLoader( $requestFactory, $revisionLookup, $titleFactory );
+		$loader = new WikiPageConfigLoader( $requestFactory, $revisionLookup, $titleFactory );
 		$data = $loader->load( $titleValue );
 		$this->assertResultSame( $expectedData, $data );
 
@@ -142,7 +142,7 @@ class PageLoaderTest extends MediaWikiUnitTestCase {
 		/** @var BagOStuff $cache */
 
 		$title = new TitleValue( NS_MAIN, 'X' );
-		$loader = new PageLoader(
+		$loader = new WikiPageConfigLoader(
 			$this->getMockRequestFactory( '', '', 0 ),
 			$this->getMockRevisionLookup( $title, false, 0 ),
 			$this->getMockTitleFactory( '', '', false )
@@ -294,5 +294,4 @@ class PageLoaderTest extends MediaWikiUnitTestCase {
 			$this->assertEquals( $expectedData, $data );
 		}
 	}
-
 }
