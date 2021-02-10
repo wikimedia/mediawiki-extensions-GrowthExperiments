@@ -6,6 +6,7 @@
 			"Sohom Datta",
 			"Titodutta",
 			"YahyA",
+			"Yahya",
 			"আফতাবুজ্জামান"
 		]
 	},
@@ -115,8 +116,8 @@
 	"growthexperiments-homepage-help-header": "সম্পাদনার ক্ষেত্রে সহায়তা পান",
 	"growthexperiments-homepage-help-subheader": "সম্পাদনা বিষয়ক বিভিন্ন সাহায্য পাতা",
 	"growthexperiments-homepage-help-mobilebody": "সাহায্যকেন্দ্রে জিজ্ঞেস করুন অথবা সাহায্য পাতাগুলো পড়ুন।",
-	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|আপনার}} সাম্প্রতিক প্রশ্নগুলো",
-	"growthexperiments-homepage-recent-questions-posted-on": "$1 আগে প্রকাশ",
+	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|আপনার}} সাম্প্রতিক প্রশ্নগুলি",
+	"growthexperiments-homepage-recent-questions-posted-on": "$1 আগে প্রকাশিত",
 	"growthexperiments-homepage-recent-questions-archived": "আর্কাইভকৃত",
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "এই প্রশ্নটি আর্কাইভ করা হয়েছে, মনে হচ্ছে এটি অনেক আগেই জিজ্ঞেস করা হয়েছিল।",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|আপনার}} {{GENDER:$2|মেন্টর}}",

@@ -12,7 +12,8 @@
 			"Tkarcher",
 			"Tobi 406",
 			"Umherirrender",
-			"Wikipeter-HH"
+			"Wikipeter-HH",
+			"Wolfdietmann"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -317,5 +318,6 @@
 	"growthexperiments-addlink-revdeleted": "Version $1 von „$2“ ist nicht abrufbar",
 	"growthexperiments-addlink-wrongmodel": "Version $1 von „$2“ ist kein Wikitext",
 	"growthexperiments-addlink-invalidjson": "Die Antwort des Link-Vorschlags-Dienstes für „$1“ ist ungültig",
-	"growthexperiments-addlink-serviceerror": "Der Link-Vorschlags-Dienst hat einen Fehler für „$1“ zurückgegeben: $2"
+	"growthexperiments-addlink-serviceerror": "Der Link-Vorschlags-Dienst hat einen Fehler für „$1“ zurückgegeben: $2",
+	"growthexperiments-addlink-notinstore": "Link-Empfehlung für \"$1\" nicht gefunden"
 }
