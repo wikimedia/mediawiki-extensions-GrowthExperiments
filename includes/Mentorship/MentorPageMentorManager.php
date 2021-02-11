@@ -8,6 +8,7 @@ use Language;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserNameUtils;
 use MediaWiki\User\UserOptionsManager;
 use MessageLocalizer;
@@ -17,7 +18,6 @@ use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 use TitleFactory;
 use User;
-use UserArray;
 use UserOptionsUpdateJob;
 use WikiPage;
 // phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
@@ -47,6 +47,9 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	/** @var UserNameUtils */
 	private $userNameUtils;
 
+	/** @var UserIdentityLookup */
+	private $userIdentityLookup;
+
 	/** @var MessageLocalizer */
 	private $messageLocalizer;
 
@@ -65,6 +68,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 * @param UserFactory $userFactory
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param UserNameUtils $userNameUtils
+	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param MessageLocalizer $messageLocalizer
 	 * @param Language $language
 	 * @param string|null $mentorsPageName Title of the page which contains the list of available mentors.
@@ -80,6 +84,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		UserFactory $userFactory,
 		UserOptionsManager $userOptionsManager,
 		UserNameUtils $userNameUtils,
+		UserIdentityLookup $userIdentityLookup,
 		MessageLocalizer $messageLocalizer,
 		Language $language,
 		?string $mentorsPageName,
@@ -90,6 +95,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$this->userFactory = $userFactory;
 		$this->userOptionsManager = $userOptionsManager;
 		$this->userNameUtils = $userNameUtils;
+		$this->userIdentityLookup = $userIdentityLookup;
 		$this->messageLocalizer = $messageLocalizer;
 		$this->language = $language;
 		$this->mentorsPageName = $mentorsPageName;
@@ -160,16 +166,11 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		}
 		unset( $username );
 
-		// FIXME should be a service
-		$userArr = UserArray::newFromNames( $mentorsRaw );
-		$mentors = [];
-		foreach ( $userArr as $user ) {
-			if ( $user->getId() ) {
-				$mentors[] = $user->getName();
-			}
-		}
-
-		return $mentors;
+		return $this->userIdentityLookup
+			->newSelectQueryBuilder()
+			->userNames( $mentorsRaw )
+			->registered()
+			->fetchUserNames();
 	}
 
 	/** @inheritDoc */
