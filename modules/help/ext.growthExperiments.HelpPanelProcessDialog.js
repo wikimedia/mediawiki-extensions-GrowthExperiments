@@ -390,7 +390,7 @@
 					taskTypeId: this.taskTypeId,
 					customSubheader: ( buttonId === 'ask-help-mentor' ) ?
 						mw.message( 'growthexperiments-help-panel-button-subsubheader-ask-help-mentor' )
-							.params( [ mentorData.editCount, mentorData.lastActive ] ).text() : null,
+							.params( [ mw.language.convertNumber( mentorData.editCount ), mentorData.lastActive ] ).text() : null,
 					subsubheader: ( buttonId === 'ask-help-mentor' ) ? mentorData.name : null
 				} ).$element
 					.on( 'click', function () {
