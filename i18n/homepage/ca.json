@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Alan Mena",
 			"Fitoschido",
 			"Jlrb+",
 			"Mguix"
@@ -21,5 +22,6 @@
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Fet",
 	"growthexperiments-homepage-suggestededits-error-description": "Torneu-ho a provar més tard.",
 	"growthexperiments-homepage-suggestededits-topics-more": "mostra’n més",
-	"growthexperiments-homepage-suggestededits-topics-selectall": "Selecciona-ho tot"
+	"growthexperiments-homepage-suggestededits-topics-selectall": "Selecciona-ho tot",
+	"growthexperiments-addlink-rejectiondialog-action-done": "Fet"
 }

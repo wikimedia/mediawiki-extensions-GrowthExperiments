@@ -9,7 +9,7 @@
 	},
 	"welcomesurvey": "{{GENDER:$1|স্বাগতম}}, $1!",
 	"welcomesurvey-save-confirmation-title": "ধন্যবাদ! আপনার প্রতিক্রিয়া সংরক্ষণ করা হয়েছে।",
-	"welcomesurvey-save-confirmation-text": "উইকিপিডিয়ায় আপনার যাত্রা সহজ করে তুলতে, এই প্রশ্নগুলোর উত্তর আমাদের সহায়তা করবে।",
+	"welcomesurvey-save-confirmation-text": "উইকিপিডিয়ায় আপনার যাত্রা সহজ করে তুলতে, এই প্রশ্নগুলোর উত্তর আমাদের সাহায্য করবে।",
 	"welcomesurvey-subtitle": "কিছু ঐচ্ছিক প্রশ্নের উত্তর দিয়ে আপনার উইকিপিডিয়া অভিজ্ঞতা উন্নত করে তুলতে আমাদের সাহায্য করুন।",
 	"welcomesurvey-save-btn": "সম্পন্ন",
 	"welcomesurvey-skip-btn": "জরিপটি {{GENDER:$1|এড়িয়ে যান}}",

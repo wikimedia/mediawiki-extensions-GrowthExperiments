@@ -2,8 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Al Riaz Uddin Ripon",
-			"Ankan"
+			"Ankan",
+			"আফতাবুজ্জামান"
 		]
 	},
-	"growthexperiments-desc": "This extension contains experiments done by the Growth team."
+	"growthexperiments-desc": "এই এক্সটেনশনে গ্রোথ দল দ্বারা করা পরীক্ষা/গবেষণা রয়েছে।"
 }

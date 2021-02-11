@@ -3,9 +3,11 @@
 		"authors": [
 			"Al Riaz Uddin Ripon",
 			"YahyA",
-			"Yahya"
+			"Yahya",
+			"আফতাবুজ্জামান"
 		]
 	},
 	"apihelp-helppanelquestionposter-param-body": "ব্যবহারকারীর করা প্রশ্ন",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "\"সাহায্যকেন্দ্রে জিজ্ঞেস করুন\" প্যানেল",
 	"apierror-mustbeloggedin-helppanelquestionposter": "প্রশ্ন করতে আপনাকে অবশ্যই প্রবেশ করতে হবে।"
 }

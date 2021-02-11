@@ -6,7 +6,8 @@
 			"Martin Urbanec",
 			"Martin Urbanec (WMF)",
 			"Matěj Suchánek",
-			"Patriccck"
+			"Patriccck",
+			"Patrik L."
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Vítejte, {{GENDER:$1|uživateli|uživatelko}} {{bidi:$1}}!",
@@ -327,7 +328,7 @@
 	"growthexperiments-addlink-wrongmodel": "Revize číslo $1 stránky \"$2\" není ve formátu wikitext.",
 	"growthexperiments-addlink-invalidjson": "Odpověď služby pro doporučování odkazů pro stránku \"$1\" je neplatná",
 	"growthexperiments-addlink-serviceerror": "Služba pro doporučování odkazů odpověděla pro stránku \"$1\" chybou $2",
-	"growthexperiments-addlink-notinstore": "Navržené odkazy pro stránku \"$1\" nebyly nalezeny.",
+	"growthexperiments-addlink-notinstore": "Navržené odkazy pro stránku „$1“ nebyly nalezeny.",
 	"growthexperiments-addlink-duplicatesubmission": "Pokusil jste se zkontrolovat navržené odkazy pro revizi \"$1\", které již byly zkontrolovány.",
 	"growthexperiments-addlink-context-intro": "Mělo by toto odkazovat na _____?",
 	"growthexperiments-addlink-context-button-accept": "Ano",
