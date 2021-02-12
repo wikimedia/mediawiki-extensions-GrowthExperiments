@@ -1172,6 +1172,10 @@
 			"description": "ON/OFF switch for the homepage event logging feature.",
 			"value": true
 		},
+		"GEMentorshipEnabled": {
+			"description": "Are the mentorship features enabled?",
+			"value": true
+		},
 		"GEHomepageMentorsList": {
 			"description": "Title of the wiki page that contains the list of auto-assigned mentors (cf. GEHomepageManualAssignmentMentorsList). May be null if no such page exists.",
 			"value": "Main_Page"

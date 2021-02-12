@@ -149,7 +149,9 @@ class HelpPanelHooks {
 			'GEHelpPanelSuggestedEditsPreferredEditor' =>
 				$config->get( 'GEHelpPanelSuggestedEditsPreferredEditor' ),
 			'GEHelpPanelHelpDeskTitle' => $helpdeskTitle ? $helpdeskTitle->getPrefixedText() : null,
-			'GEHelpPanelAskMentor' => $config->get( 'GEHelpPanelAskMentor' ),
+			'GEHelpPanelAskMentor' =>
+				$config->get( 'GEMentorshipEnabled' ) &&
+				$config->get( 'GEHelpPanelAskMentor' ),
 		];
 	}
 
@@ -168,7 +170,7 @@ class HelpPanelHooks {
 	}
 
 	private static function getMentorData( Config $config, User $user, MessageLocalizer $localizer ) {
-		if ( !$config->get( 'GEHelpPanelAskMentor' ) ) {
+		if ( !$config->get( 'GEHelpPanelAskMentor' ) || !$config->get( 'GEMentorshipEnabled' ) ) {
 			return [];
 		}
 		$mentor = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
