@@ -45,10 +45,11 @@ class WelcomeSurvey {
 	 * Get the name of the experimental group for the current user or
 	 * false they are not part of any experiment.
 	 *
+	 * @param bool $useDefault Use default group from WelcomeSurveyDefaultGroup, if it is defined
 	 * @return bool|string
 	 * @throws \ConfigException
 	 */
-	public function getGroup() {
+	public function getGroup( $useDefault = false ) {
 		$groups = $this->context->getConfig()->get( 'WelcomeSurveyExperimentalGroups' );
 
 		// The group is specified in the URL
@@ -66,6 +67,11 @@ class WelcomeSurvey {
 		)->_group ?? false;
 		if ( isset( $groups[ $groupFromProp ] ) ) {
 			return $groupFromProp;
+		}
+
+		if ( $useDefault ) {
+			// Fallback to default group if directly visiting Special:WelcomeSurvey
+			return 'exp2_target_specialpage';
 		}
 
 		// Randomly selecting a group
