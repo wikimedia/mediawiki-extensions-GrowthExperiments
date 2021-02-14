@@ -177,7 +177,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		$this->titleFactory = $services->getTitleFactory();
 		$this->linkBatchFactory = $services->getLinkBatchFactory();
 		$this->revisionStore = $services->getRevisionStore();
-		$this->configurationLoader = $growthServices->getConfigurationLoader();
+		$this->configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 		$this->taskSuggester = $growthServices->getTaskSuggesterFactory()->create();
 		$this->linkRecommendationProviderUncached =
 			$services->get( 'GrowthExperimentsLinkRecommendationProviderUncached' );
@@ -193,7 +193,7 @@ class RefreshLinkRecommendations extends Maintenance {
 	 */
 	protected function replaceConfigurationLoader(): void {
 		$services = MediaWikiServices::getInstance();
-		$services->addServiceManipulator( 'GrowthExperimentsConfigurationLoader',
+		$services->addServiceManipulator( 'GrowthExperimentsNewcomerTasksConfigurationLoader',
 			function ( ConfigurationLoader $configurationLoader, MediaWikiServices $services ) {
 				return new class ( $configurationLoader ) implements ConfigurationLoader {
 					use ConfigurationLoaderTrait;

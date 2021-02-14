@@ -35,7 +35,7 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		] );
 		$configurationLoader = new StaticConfigurationLoader( [ $taskType1, $taskType2, $taskType3 ] );
 		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
-		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
+		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 
 		$baseParams = [
 			'action' => 'query',
@@ -72,7 +72,7 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		] );
 		$configurationLoader = new StaticConfigurationLoader( [ $taskType ] );
 		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
-		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
+		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 
 		list( $data ) = $this->doApiRequest( [ 'action' => 'query', 'generator' => 'growthtasks' ] );
 		$this->assertSame( 2, $data['growthtasks']['totalCount'] );
@@ -85,7 +85,7 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 			StatusValue::newFatal( new ApiRawMessage( 'foo' ) ) ) );
 		$configurationLoader = new StaticConfigurationLoader( [] );
 		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
-		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
+		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 
 		$this->expectException( ApiUsageException::class );
 		$this->expectExceptionMessage( 'foo' );
@@ -102,7 +102,7 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$configurationLoader = new StaticConfigurationLoader( [ $taskType1, $taskType2 ],
 			[ $topic1, $topic2 ] );
 		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
-		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
+		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 
 		list( $data ) = $this->doApiRequest( [ 'action' => 'paraminfo',
 			'modules' => 'query+growthtasks' ] );
@@ -123,7 +123,7 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 		$configurationLoader = new StaticConfigurationLoader( StatusValue::newFatal( 'foo' ),
 			StatusValue::newFatal( 'bar' ) );
 		$this->setService( 'GrowthExperimentsTaskSuggesterFactory', $suggesterFactory );
-		$this->setService( 'GrowthExperimentsConfigurationLoader', $configurationLoader );
+		$this->setService( 'GrowthExperimentsNewcomerTasksConfigurationLoader', $configurationLoader );
 		list( $data ) = $this->doApiRequest( [ 'action' => 'paraminfo',
 			'modules' => 'query+growthtasks' ] );
 		$this->assertArrayHasKey( 'paraminfo', $data );

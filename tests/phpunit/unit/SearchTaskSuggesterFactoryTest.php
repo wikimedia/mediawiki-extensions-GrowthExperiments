@@ -48,7 +48,7 @@ abstract class SearchTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 	 * @param Topic[]|StatusValue $topics
 	 * @return ConfigurationLoader|MockObject
 	 */
-	protected function getConfigurationLoader( $taskTypes, $topics ) {
+	protected function getNewcomerTasksConfigurationLoader( $taskTypes, $topics ) {
 		$configurationLoader = $this->getMockBuilder( ConfigurationLoader::class )
 			->disableOriginalConstructor()
 			->setMethods( [ 'loadTaskTypes', 'loadTopics', 'setMessageLocalizer' ] )

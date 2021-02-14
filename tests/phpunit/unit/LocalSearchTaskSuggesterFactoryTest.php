@@ -30,7 +30,7 @@ class LocalSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest
 	 */
 	public function testCreate( $taskTypes, $topics, $expectedError ) {
 		$taskTypeHandlerRegistry = $this->getTaskTypeHandlerRegistry();
-		$configurationLoader = $this->getConfigurationLoader( $taskTypes, $topics );
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskTypes, $topics );
 		$searchStrategy = $this->getSearchStrategy();
 		$searchEngineFactory = $this->getSearchEngineFactory();
 		$linkBatchFactory = $this->getLinkBatchFactory();

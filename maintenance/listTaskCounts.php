@@ -37,9 +37,9 @@ class ListTaskCounts extends Maintenance {
 		$services = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		$taskSuggester = $services->getTaskSuggesterFactory()->create();
 		$dummyUser = new User;
-		$allTaskTypes = array_keys( $services->getConfigurationLoader()->getTaskTypes() );
+		$allTaskTypes = array_keys( $services->getNewcomerTasksConfigurationLoader()->getTaskTypes() );
 		$taskTypes = $this->getOption( 'tasktype', $allTaskTypes );
-		$topicIds = array_keys( $services->getConfigurationLoader()->getTopics() );
+		$topicIds = array_keys( $services->getNewcomerTasksConfigurationLoader()->getTopics() );
 
 		// Output header
 		$this->output( str_pad( 'Topic', 25, ' ' ) . ' ' );

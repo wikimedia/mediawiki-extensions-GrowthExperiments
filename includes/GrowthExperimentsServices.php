@@ -62,14 +62,6 @@ class GrowthExperimentsServices {
 		}
 	}
 
-	public function getConfigurationLoader(): ConfigurationLoader {
-		return $this->coreServices->get( 'GrowthExperimentsConfigurationLoader' );
-	}
-
-	public function getConfigurationValidator(): ConfigurationValidator {
-		return $this->coreServices->get( 'GrowthExperimentsConfigurationValidator' );
-	}
-
 	public function getEditInfoService(): EditInfoService {
 		return $this->coreServices->get( 'GrowthExperimentsEditInfoService' );
 	}
@@ -96,6 +88,14 @@ class GrowthExperimentsServices {
 
 	public function getMentorManager(): MentorManager {
 		return $this->coreServices->get( 'GrowthExperimentsMentorManager' );
+	}
+
+	public function getNewcomerTasksConfigurationLoader(): ConfigurationLoader {
+		return $this->coreServices->get( 'GrowthExperimentsNewcomerTasksConfigurationLoader' );
+	}
+
+	public function getNewcomerTasksConfigurationValidator(): ConfigurationValidator {
+		return $this->coreServices->get( 'GrowthExperimentsNewcomerTasksConfigurationValidator' );
 	}
 
 	public function getNewcomerTaskTrackerFactory(): TrackerFactory {
