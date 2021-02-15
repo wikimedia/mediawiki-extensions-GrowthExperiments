@@ -230,7 +230,7 @@ class SpecialHomepage extends SpecialPage {
 				) && !SuggestedEdits::isActivated( $this->getContext() ) ),
 			'suggested-edits' => SuggestedEdits::isEnabled( $this->getContext() ),
 			'impact' => $this->getConfig()->get( 'GEHomepageImpactModuleEnabled' ),
-			'mentorship' => true,
+			'mentorship' => $this->getConfig()->get( 'GEMentorshipEnabled' ),
 			'help' => true,
 		] );
 		$modules = [];
