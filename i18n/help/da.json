@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Celestinesucess",
+			"InsaneHacker",
 			"Saederup92"
 		]
 	},
@@ -18,6 +19,7 @@
 	"growthexperiments-help-panel-questionreview-title": "Stil et spørgsmål",
 	"growthexperiments-help-panel-questionreview-label": "Dit spørgsmål",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Inkluder sidetitel med mit spørgsmål",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "[[$1|Lær mere om, at tilføje links]]",
 	"growthexperiments-help-panel-questioncomplete-title": "Stil et spørgsmål",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "bekræft din e-mail",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Mere om denne funktion",

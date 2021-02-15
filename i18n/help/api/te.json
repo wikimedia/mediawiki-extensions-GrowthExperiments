@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chaduvari"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "ప్రస్తుత వాడుకరి సహాయ ప్యానెల్ ద్వారా పంపించిన ప్రశ్నలకు సమాధానమివ్వండి.",
+	"apihelp-helppanelquestionposter-param-body": "వాడుకరి ఇచ్చిన ప్రశ్న లోని పాఠ్యం.",
+	"apihelp-helppanelquestionposter-param-source": "ప్రశ్నను పంపించిన పద్ధతి.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "\"సహాయ కేంద్రాన్ని అడగండి\" ప్యానెల్",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "కొత్తవాడుకరి హోంపేజీ లోని \"మీ గురువు గారిని అడగండి\" ప్యానెల్",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "సహాయం ప్యానెల్ లోని \"మీ గురువు గారిని అడగండి\" తెర",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "\"సహాయ కేంద్రాన్ని అడగండి\" ప్యానెల్ (పాత పేరు)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "కొత్తవాడుకరి హోంపేజీ లోని \"మీ గురువు గారిని అడగండి\" ప్యానెల్ (పాత పేరు)",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "ప్రశ్నతో పాటు ఉండే సంబంధిత శీర్షిక -ఎంచుకుని ఉంటే.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "ప్రశ్న అడగాలంటే మీరు లాగినై ఉండాలి."
+}

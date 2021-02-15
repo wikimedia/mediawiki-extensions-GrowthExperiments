@@ -182,7 +182,7 @@
 	"growthexperiments-homepage-suggestededits-no-results": "Не найдено предлагаемых правок",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Выберите другой уровень сложности, чтобы найти предлагаемые правки.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Выберите другие интересы или измените уровень сложности, чтобы найти предлагаемые правки.",
-	"growthexperiments-homepage-suggestededits-footer": "Другие участники отметили эти статьи как нуждающиеся в доработке. Помогите улучшить '''{{grammar:accusative|{{SITENAME}}}}''' для '''$1 человек''' ежедневных читателей.",
+	"growthexperiments-homepage-suggestededits-footer": "Другие участники отметили эти статьи как нуждающиеся в доработке. Помогите улучшить '''{{grammar:accusative|{{SITENAME}}}}''' для '''$1''' ежедневных читателей.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Другие участники отметили эти статьи как нуждающиеся в доработке. Помогите сделать '''{{grammar:accusative|{{SITENAME}}}}''' лучше.",
 	"growthexperiments-homepage-suggestededits-footer-kilosuffix": "$1 тыс.",
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 млн",

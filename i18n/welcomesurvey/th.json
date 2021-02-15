@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"MOphaswongse (WMF)"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|ยินดีต้อนรับ}} $1!",
+	"welcomesurvey-save-confirmation-title": "ขอบคุณ!  คำตอบของคุณได้ถูกบันทึกแล้ว",
+	"welcomesurvey-save-btn": "เสร็จสิ้น",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|ข้าม}}แบบสอบถาม",
+	"welcomesurvey-close-btn": "ปิดและกลับไปที่$1",
+	"welcomesurvey-sidebar-privacy-title": "เราเคารพความเป็นส่วนตัวของคุณ",
+	"welcomesurvey-dropdown-option-select-label": "กรุณาเลือก...",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "อื่น ๆ",
+	"welcomesurvey-question-reason-option-other-label": "อื่น ๆ (กรุณาอธิบาย)",
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|ป้อน}}เหตุผลอื่น ๆ",
+	"welcomesurvey-question-edited-option-dont-remember-label": "จำไม่ได้"
+}

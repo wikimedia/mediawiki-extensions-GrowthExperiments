@@ -2,9 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"B20180",
-			"Horus"
+			"Horus",
+			"MOphaswongse (WMF)"
 		]
 	},
+	"growthexperiments-help-panel-question-button-text": "ดำเนินการต่อ",
+	"growthexperiments-help-panel-submit-question-button-text": "โพสต์",
+	"growthexperiments-help-panel-return-home-button-text": "เสร็จสิ้น",
+	"growthexperiments-help-panel-back-home": "กลับ",
+	"growthexperiments-help-panel-close": "เสร็จสิ้น",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "เปลี่ยน",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "ยืนยันอีเมลของคุณ",
 	"growthexperiments-help-panel-community-help-desk-text": "โต๊ะช่วยเหลือชุมชน",
 	"growthexperiments-help-panel-search-label": "ค้นหาคำอธิบาย"
