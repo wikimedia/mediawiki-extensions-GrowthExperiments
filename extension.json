@@ -32,7 +32,8 @@
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"GrowthExperimentsAlias": "GrowthExperiments.alias.php"
+		"GrowthExperimentsAlias": "GrowthExperiments.alias.php",
+		"GrowthExperimentsMagic": "GrowthExperiments.i18n.magic.php"
 	},
 	"ServiceWiringFiles": [
 		"ServiceWiring.php"
@@ -111,6 +112,9 @@
 				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
 				"GrowthExperimentsLinkRecommendationProvider"
 			]
+		},
+		"parserfunctions": {
+			"class": "GrowthExperiments\\ParserFunctionsHooks"
 		},
 		"mentor": {
 			"class": "GrowthExperiments\\Mentorship\\MentorHooks"
@@ -192,6 +196,7 @@
 		"BeforeCreateEchoEvent": [
 			"GrowthExperiments\\HomepageHooks::onBeforeCreateEchoEvent"
 		],
+		"ParserFirstCallInit": "parserfunctions",
 		"LoadExtensionSchemaUpdates": "schema",
 		"UnitTestsAfterDatabaseSetup": "schema"
 	},

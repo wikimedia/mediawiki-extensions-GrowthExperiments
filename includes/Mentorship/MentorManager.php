@@ -11,6 +11,13 @@ use MediaWiki\User\UserIdentity;
 abstract class MentorManager {
 
 	/**
+	 * Get the mentor assigned to this user, if it exists.
+	 * @param UserIdentity $user
+	 * @return Mentor|null
+	 */
+	abstract public function getMentorForUserIfExists( UserIdentity $user ): ?Mentor;
+
+	/**
 	 * Get the mentor assigned to this user.
 	 * If the user did not have a mentor before, this will assign one on the fly.
 	 * @param UserIdentity $user

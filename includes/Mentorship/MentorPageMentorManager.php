@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Mentorship;
 
 use GrowthExperiments\WikiConfigException;
+use HashBagOStuff;
 use JobQueueGroup;
 use Language;
 use MediaWiki\Page\WikiPageFactory;
@@ -31,6 +32,12 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 	/** @var int Maximum mentor intro length. */
 	private const INTRO_TEXT_LENGTH = 240;
+
+	/** @var HashBagOStuff */
+	private $cache;
+
+	/** @var int */
+	private $cacheTtl = 0;
 
 	/** @var TitleFactory */
 	private $titleFactory;
@@ -85,6 +92,9 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		?string $mentorsPageName,
 		?string $manuallyAssignedMentorsPageName
 	) {
+		$this->cache = new HashBagOStuff();
+		$this->cacheTtl = 0;
+
 		$this->titleFactory = $titleFactory;
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->userFactory = $userFactory;
@@ -95,6 +105,29 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$this->mentorsPageName = $mentorsPageName;
 		$this->manuallyAssignedMentorsPageName = $manuallyAssignedMentorsPageName;
 		$this->setLogger( new NullLogger() );
+	}
+
+	/**
+	 * Helper to generate cache key for a mentee
+	 * @param UserIdentity $user Mentee's username
+	 * @return string Cache key
+	 */
+	private function makeCacheKey( UserIdentity $user ): string {
+		return $this->cache->makeKey( 'GrowthExperiments', 'MentorManager', __CLASS__,
+			'Mentee', $user->getUserId() );
+	}
+
+	/** @inheritDoc */
+	public function getMentorForUserIfExists( UserIdentity $user ): ?Mentor {
+		$mentorUser = $this->loadMentorUser( $user );
+		if ( !$mentorUser ) {
+			return null;
+		}
+
+		return new Mentor(
+			$this->userFactory->newFromUserIdentity( $mentorUser ),
+			$this->getMentorIntroText( $mentorUser, $user )
+		);
 	}
 
 	/** @inheritDoc */
@@ -183,15 +216,21 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	}
 
 	/**
-	 * Try to load the current mentor of the user.
+	 * Load the current mentor of the user (cached)
 	 * @param UserIdentity $mentee
 	 * @return UserIdentity|null The current user's mentor or null if they don't have one
 	 */
 	private function loadMentorUser( UserIdentity $mentee ): ?UserIdentity {
-		$mentorId = $this->userOptionsManager->getIntOption( $mentee, static::MENTOR_PREF );
-		$user = $this->userFactory->newFromId( $mentorId );
-		$user->load();
-		return $user->isRegistered() ? $user : null;
+		return $this->cache->getWithSetCallback(
+			$this->makeCacheKey( $mentee ),
+			$this->cacheTtl,
+			function () use ( $mentee ) {
+				$mentorId = $this->userOptionsManager->getIntOption( $mentee, static::MENTOR_PREF );
+				$user = $this->userFactory->newFromId( $mentorId );
+				$user->load();
+				return $user->isRegistered() ? $user : null;
+			}
+		);
 	}
 
 	/**
