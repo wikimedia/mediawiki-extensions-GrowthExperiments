@@ -496,7 +496,7 @@ class SuggestedEdits extends BaseModule {
 						$topicLabel =
 							$this->getContext()
 								->msg( 'growthexperiments-homepage-suggestededits-topics-button-topic-count' )
-								->params( [
+								->numParams( [
 										$this->getContext()
 											->getLanguage()
 											->parseFormattedNumber( count( $topicMessages ) )
@@ -747,7 +747,7 @@ class SuggestedEdits extends BaseModule {
 			return '';
 		}
 		return new HtmlSnippet( $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
-				->params( [ 1, $this->getUnfilteredTaskSetCountReducedToTaskQueueLength() ] )
+				->numParams( [ 1, $this->getUnfilteredTaskSetCountReducedToTaskQueueLength() ] )
 			->parse() );
 	}
 
