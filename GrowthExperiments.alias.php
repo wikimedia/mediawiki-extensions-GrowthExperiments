@@ -154,6 +154,14 @@ $specialPageAliases['tr'] = [
 	'ClaimMentee' => [ 'DanışanSahiplen' ],
 ];
 
+/** Thai (ภาษาไทย) */
+$specialPageAliases['th'] = [
+	'WelcomeSurvey' => 'แบบสอบถามต้อนรับ',
+	'Homepage' => 'หน้าแรก',
+	'Impact' => 'ผลกระทบ',
+	'ClaimMentee' => 'ยืนยันผู้รับปรึกษา',
+];
+
 /** Ukranian (українська) */
 $specialPageAliases['uk'] = [
 	'WelcomeSurvey' => [ 'Вітальне_опитування' ],
