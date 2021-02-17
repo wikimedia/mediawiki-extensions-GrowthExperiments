@@ -336,5 +336,6 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Incorrect link destination (e.g. linking \"sun\" to \"star\")",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Tap the edit pencil $1 next to the link to change the link destination",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Other / prefer not to say",
-	"growthexperiments-addlink-rejectiondialog-action-done": "Done"
+	"growthexperiments-addlink-rejectiondialog-action-done": "Done",
+	"grant-managementorship": "Manage mentorship"
 }
