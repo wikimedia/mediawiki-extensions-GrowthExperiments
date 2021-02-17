@@ -353,6 +353,6 @@
 	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "Déjà lié plus tôt dans l’article",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Lien de destination incorrect (par ex. liant « soleil » à « étoile »)",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Taper sur l’outil crayon $1 près du lien pour modifier la destination du lien",
-	"growthexperiments-addlink-rejectiondialog-reason-other": "Autre / préfère ne pas dire",
+	"growthexperiments-addlink-rejectiondialog-reason-other": "Autre / préfère ne pas dire",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Fait"
 }

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"InsaneHacker"
+		]
+	},
+	"apihelp-helppanelquestionposter-param-body": "Indholdet af det spørgsmål, der blev stillet af brugeren.",
+	"apihelp-helppanelquestionposter-param-source": "Måden hvorpå spørgsmålet blev spurgt.",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "\"Spørg din mentor\"-panelet på nybegynder-forsiden",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "\"Spørg din mentor\"-vinduet på hjælpepanelet",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Du skal være logget ind for at kunne stille et spørgsmål."
+}

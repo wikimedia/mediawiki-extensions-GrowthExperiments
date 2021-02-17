@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"InsaneHacker",
 			"Saederup92"
 		]
 	},
+	"apihelp-homepagequestionstore-param-questionformat": "Formatet spørgsmålene skal returneres i, f.eks. HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Stedet spørgsmålene lagres.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Der blev ikke fundet noget spørgsmål."
 }
