@@ -23,6 +23,11 @@ class StaticMentorManager extends MentorManager {
 	}
 
 	/** @inheritDoc */
+	public function getMentorForUserIfExists( UserIdentity $user ): ?Mentor {
+		return $this->getMentorForUserSafe( $user );
+	}
+
+	/** @inheritDoc */
 	public function getMentorForUser( UserIdentity $user ): Mentor {
 		$mentor = $this->getMentorForUserSafe( $user );
 		if ( !$mentor ) {
