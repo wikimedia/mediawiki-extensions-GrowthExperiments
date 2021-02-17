@@ -1352,5 +1352,13 @@
 			"setmentor": true
 		}
 	},
+	"GrantPermissions": {
+		"managementorship": {
+			"setmentor": true
+		}
+	},
+	"GrantPermissionGroups": {
+		"managementorship": "administration"
+	},
 	"manifest_version": 2
 }
