@@ -98,6 +98,9 @@ class RefreshLinkRecommendations extends Maintenance {
 		if ( !$this->getConfig()->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
 			$this->output( 'Disabled' );
 			return;
+		} elseif ( wfReadOnly() ) {
+			$this->output( 'DB is readonly' );
+			return;
 		}
 		$this->initServices();
 		$this->initConfig();
