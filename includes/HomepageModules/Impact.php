@@ -18,6 +18,7 @@ use OOUI\IconWidget;
 use PageImages\PageImages;
 use SpecialPage;
 use Title;
+use TitleFactory;
 use Wikimedia\Rdbms\IDatabase;
 
 /**
@@ -57,21 +58,46 @@ class Impact extends BaseModule {
 	private $dbr;
 
 	/**
+	 * @var bool
+	 */
+	private $isSuggestedEditsEnabledForUser;
+
+	/**
+	 * @var bool
+	 */
+	private $isSuggestedEditsActivatedForUser;
+
+	/**
+	 * @var TitleFactory
+	 */
+	private $titleFactory;
+
+	/**
 	 * @var PageViewService|null
 	 */
 	private $pageViewService;
 
 	/**
-	 * @inheritDoc
+	 * @param IContextSource $context
+	 * @param IDatabase $dbr
+	 * @param ExperimentUserManager $experimentUserManager
+	 * @param array $suggestedEditsConfig
+	 * @param TitleFactory $titleFactory
+	 * @param PageViewService|null $pageViewService
 	 */
 	public function __construct(
 		IContextSource $context,
 		IDatabase $dbr,
 		ExperimentUserManager $experimentUserManager,
+		array $suggestedEditsConfig,
+		TitleFactory $titleFactory,
 		PageViewService $pageViewService = null
 	) {
 		parent::__construct( 'impact', $context, $experimentUserManager );
 		$this->dbr = $dbr;
+		$this->isSuggestedEditsEnabledForUser = $suggestedEditsConfig['isSuggestedEditsEnabled'];
+		$this->isSuggestedEditsActivatedForUser = $suggestedEditsConfig['isSuggestedEditsActivated'];
+		$this->titleFactory = $titleFactory;
 		$this->pageViewService = $pageViewService;
 	}
 
@@ -117,6 +143,9 @@ class Impact extends BaseModule {
 		}
 		if ( $this->isActivated() ) {
 			$this->body = $this->getEditsTable();
+		} elseif ( $this->isUnactivatedWithSuggestedEdits() ) {
+			$this->body = $this->getUnactivatedModuleBody();
+
 		} else {
 			$this->body = Html::rawElement(
 				'div',
@@ -334,9 +363,100 @@ class Impact extends BaseModule {
 	}
 
 	/**
+	 * @return string
+	 */
+	private function getUnactivatedModuleCssClass() {
+		// The following classes are used here:
+		// * growthexperiments-homepage-module-impact-unactivated-desktop
+		// * growthexperiments-homepage-module-impact-unactivated-mobile-details
+		// * growthexperiments-homepage-module-impact-unactivated-mobile-overlay
+		// * growthexperiments-homepage-module-impact-unactivated-mobile-summary
+		return 'growthexperiments-homepage-module-impact-unactivated-' . $this->getMode();
+	}
+
+	/**
+	 * @return string
+	 */
+	private function getUnactivatedModuleSubheader() {
+		$subheader = Html::element(
+			'h3',
+			[ 'class' => $this->getUnactivatedModuleCssClass() . '-subheader' ],
+			$this->getContext()
+				->msg( 'growthexperiments-homepage-impact-unactivated-subheader-text' )
+				->text()
+		);
+		$subheaderSubtext = Html::element(
+			'h4',
+			[ 'class' => $this->getUnactivatedModuleCssClass() . '-subheader-subtext' ],
+			$this->getContext()
+				->msg( 'growthexperiments-homepage-impact-unactivated-subheader-subtext' )
+				->params( $this->getContext()->getUser()->getName() )
+				->text()
+		);
+		return Html::rawElement(
+			'div',
+			[ 'class' => $this->getUnactivatedModuleCssClass() . '-subheader-container' ],
+			$subheader . $subheaderSubtext
+		);
+	}
+
+	/**
+	 * @return string
+	 */
+	private function getUnactivatedModuleSuggestedEditsButton() {
+		if ( in_array( $this->getMode(), [ self::RENDER_MOBILE_DETAILS, self::RENDER_MOBILE_DETAILS_OVERLAY ] ) ) {
+			if ( $this->isSuggestedEditsActivatedForUser ) {
+				$linkPath = 'Special:Homepage/suggested-edits';
+				$linkModulePath = 'suggested-edits';
+			} else {
+				$linkPath = 'Special:Homepage';
+				$linkModulePath = '';
+			}
+			$button = new ButtonWidget( [
+				'label' => $this->getContext()
+					->msg( 'growthexperiments-homepage-impact-unactivated-suggested-edits-link' )
+					->text(),
+				'href' => $this->titleFactory->newFromText( $linkPath )->getLinkURL(),
+				'classes' => [
+					$this->getUnactivatedModuleCssClass() . '-suggested-edits-button',
+					'see-suggested-edits-button',
+				],
+			] );
+			$button->setAttributes( [
+				'data-link-id' => 'impact-see-suggested-edits',
+				'data-link-module-path' => '#/homepage/' . $linkModulePath
+			] );
+			return $button;
+		}
+		return '';
+	}
+
+	/**
+	 * @return string
+	 */
+	private function getUnactivatedModuleBody() {
+		if ( $this->isUnactivatedWithSuggestedEdits() ) {
+			return Html::rawElement(
+				'div',
+				[ 'class' => $this->getUnactivatedModuleCssClass() . '-body' ],
+				Html::element(
+					'div',
+					[ 'class' => $this->getUnactivatedModuleCssClass() . '-image' ]
+				) .
+				$this->getUnactivatedModuleSubheader() .
+				$this->getUnactivatedModuleSuggestedEditsButton()
+			);
+		}
+		return '';
+	}
+
+	/**
 	 * @inheritDoc
 	 */
 	protected function getSubheader() {
+		if ( $this->isUnactivatedWithSuggestedEdits() ) {
+			return '';
+		}
 		return $this->getSubheaderText() . $this->getSubheaderSubtext();
 	}
 
@@ -351,6 +471,13 @@ class Impact extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getFooter() {
+		if ( $this->isUnactivatedWithSuggestedEdits() ) {
+			return $this->getContext()
+				->msg( 'growthexperiments-homepage-impact-unactivated-suggested-edits-footer' )
+				->params( $this->getContext()->getUser()->getName() )
+				->text();
+		}
+
 		$user = $this->getContext()->getUser();
 		$msgKey = $this->isActivated() ?
 			'growthexperiments-homepage-impact-contributions-link' :
@@ -373,11 +500,14 @@ class Impact extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getCssClasses() {
+		$unactivatedClasses = $this->isUnactivatedWithSuggestedEdits() ?
+			[ $this->getUnactivatedModuleCssClass() ] :
+			[];
 		return array_merge(
 			parent::getCssClasses(),
 			$this->isActivated() ?
 				[ 'growthexperiments-homepage-impact-activated' ] :
-				[]
+				$unactivatedClasses
 		);
 	}
 
@@ -392,6 +522,15 @@ class Impact extends BaseModule {
 
 	private function isActivated() {
 		return $this->getState() === self::MODULE_STATE_ACTIVATED;
+	}
+
+	/**
+	 * Check if impact module is unactivated and suggested edits module is enabled
+	 *
+	 * @return bool
+	 */
+	private function isUnactivatedWithSuggestedEdits() {
+		return $this->getState() === self::MODULE_STATE_UNACTIVATED && $this->isSuggestedEditsEnabledForUser;
 	}
 
 	/**

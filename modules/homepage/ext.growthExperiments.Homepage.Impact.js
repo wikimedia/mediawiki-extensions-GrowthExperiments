@@ -5,6 +5,7 @@
 			mw.config.get( 'wgGEHomepagePageviewToken' )
 		),
 		pageviewsIconSelector = '.empty-pageviews',
+		seeSuggestedEditsButtonSelector = '.see-suggested-edits-button',
 		logToggle = function ( toggle, $sourceElement ) {
 			var mode = $sourceElement
 				.closest( '.growthexperiments-homepage-module' )
@@ -56,7 +57,14 @@
 				.on( 'mouseleave', togglePopup( buttonPopupWidget, false ) );
 			$( this ).replaceWith( buttonPopupWidget.$element );
 		},
-		handler = OO.ui.isMobile() ? mobileHandler : desktopHandler;
+		handler = OO.ui.isMobile() ? mobileHandler : desktopHandler,
+		onSuggestedEditsButtonClicked = function ( event ) {
+			var modulePath = $( this ).data( 'link-module-path' ) || '#';
+			event.preventDefault();
+			// TODO: Make the following lines sharable via ext.growthExperiments.Utils.js
+			window.history.replaceState( null, null, modulePath );
+			window.dispatchEvent( new HashChangeEvent( 'hashchange' ) );
+		};
 
 	// See comments in homepage/ext.growthExperiments.Homepage.Mentorship.js and
 	// homepage/ext.growthExperiments.Homepage.MobileOverlay.js
@@ -64,6 +72,7 @@
 	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
 		if ( moduleName === 'impact' ) {
 			$content.find( pageviewsIconSelector ).each( handler );
+			$content.find( seeSuggestedEditsButtonSelector ).on( 'click', onSuggestedEditsButtonClicked );
 		}
 	} );
 }() );

@@ -110,7 +110,8 @@
 				"GrowthExperimentsTaskTypeHandlerRegistry",
 				"GrowthExperimentsTaskSuggesterFactory",
 				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
-				"GrowthExperimentsLinkRecommendationProvider"
+				"GrowthExperimentsLinkRecommendationProvider",
+				"TitleFactory"
 			]
 		},
 		"parserfunctions": {
