@@ -341,5 +341,6 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "সংযোগের গন্তব্য ভুল (উদাহরণস্বরূপ \"সূর্য\" কে \"তারা\"-র সাথে সংযুক্ত করা)",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "সংযোগের গন্তব্য পরিবর্তন করতে সংযোগের পাশে সম্পাদনা পেন্সিলে $1 ক্লিক করুন",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "অন্য/বলতে চাই না",
-	"growthexperiments-addlink-rejectiondialog-action-done": "সম্পন্ন"
+	"growthexperiments-addlink-rejectiondialog-action-done": "সম্পন্ন",
+	"grant-managementorship": "মেন্টরশিপ ব্যবস্থাপনা"
 }

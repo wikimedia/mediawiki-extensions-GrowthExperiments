@@ -339,5 +339,6 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "יעד קישור שגוי (למשל, קישור מ\"שמש\" ל\"כוכב\")",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "{{GENDER:|לחץ|לחצי}} על העיפרון $1 ליד הקישור כדי לשנות את יעד הקישור",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "אחר / מעדיף לא לומר",
-	"growthexperiments-addlink-rejectiondialog-action-done": "בוצע"
+	"growthexperiments-addlink-rejectiondialog-action-done": "בוצע",
+	"grant-managementorship": "ניהול חונכות"
 }
