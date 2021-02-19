@@ -131,7 +131,6 @@ class RefreshLinkRecommendations extends Maintenance {
 			$this->output( "    $recommendationsNeeded new tasks needed\n" );
 			foreach ( $this->findArticlesInTopic( $oresTopic ) as $titleBatch ) {
 				$recommendationsFound = 0;
-				$this->linkBatchFactory->newLinkBatch( $titleBatch )->execute();
 				foreach ( $titleBatch as $title ) {
 					// TODO filter out protected pages. Needs to be batched. Or wait for T259346.
 					/** @var Title $title */
@@ -295,9 +294,13 @@ class RefreshLinkRecommendations extends Maintenance {
 					. Status::wrap( $candidates )->getWikiText( null, null, 'en' ) );
 			}
 
-			$titles = [];
+			$linkTargets = $titles = [];
 			foreach ( $candidates as $candidate ) {
-				$titles[] = $this->titleFactory->newFromLinkTarget( $candidate->getTitle() );
+				$linkTargets[] = $candidate->getTitle();
+			}
+			$this->linkBatchFactory->newLinkBatch( $linkTargets )->execute();
+			foreach ( $linkTargets as $linkTarget ) {
+				$titles[] = $this->titleFactory->newFromLinkTarget( $linkTarget );
 			}
 			yield $titles;
 		} while ( $candidates->count() );
