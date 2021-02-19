@@ -97,6 +97,10 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|edção|edições}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Visualizações de edições recentes (últimos 60 dias):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Monitore exibições de artigos que você editou",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 edições até agora",
+	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Ajude a estender o conhecimento gratuito para o mundo editando os tópicos mais importantes para {{GENDER:$1|você}}.",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Veja as edições sugeridas",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Comece com algumas <strong>edições sugeridas</strong>, então veja quantas pessoas estão vendo {{GENDER:$1|sua}} contribuições aqui.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Alertas do suporte técnico",
 	"growthexperiments-tour-response-tip-text": "Quando {{GENDER:$1|sua}} pergunta é respondida, {{GENDER:$1|você}} terá um novo alerta aqui.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Alertas do mentor",
@@ -337,5 +341,6 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Destino de link incorreto (por exemplo, vinculando \"sol\" para \"estrela\")",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Toque no lápis de edição $1 ao lado do link para alterar o destino do link",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Outro / prefiro não dizer",
-	"growthexperiments-addlink-rejectiondialog-action-done": "Feito"
+	"growthexperiments-addlink-rejectiondialog-action-done": "Feito",
+	"grant-managementorship": "Gerenciar mentoria"
 }

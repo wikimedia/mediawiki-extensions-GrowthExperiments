@@ -7,5 +7,8 @@
 	},
 	"apihelp-homepagequestionstore-param-questionformat": "Formatet spørgsmålene skal returneres i, f.eks. HTML.",
 	"apihelp-homepagequestionstore-param-storage": "Stedet spørgsmålene lagres.",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Der blev ikke fundet noget spørgsmål."
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Der blev ikke fundet noget spørgsmål.",
+	"apihelp-growthsetmentor-param-mentee": "Mentee'ens brugernavn",
+	"apihelp-growthsetmentor-param-mentor": "Mentorens brugernavn",
+	"apihelp-growthsetmentor-param-reason": "Begrundelse for ændringen."
 }

@@ -99,6 +99,10 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "{{PLURAL:$1|لا تعديلات|تعديل واحد|تعديلان اثنان|<strong>$1</strong> تعديلات|<strong>$1</strong> تعديلا|<strong>$1</strong> تعديل}} للمقالات",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "مرات المشاهدة من أحدث التعديلات (آخر 60 يوما):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "مراقبة مشاهدات المقالات التي قمت بتحريرها",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 تعديلات إلى حدّ الآن",
+	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "{{GENDER:$1|ساعد|ساعدي}} في نشر المعرفة الحرّة إلى العالم عبر التعديل في مواضيع {{GENDER:$1|تهتمّ|تهتمّين}} بها.",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "{{GENDER:|شاهد|شاهدي}} التعديلات المقترحة",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "{{GENDER:$1|ابدأ|ابدئي}} ببعض <strong>التعديلات المقترحة</strong>، ثمّ {{GENDER:$1|اطّلع|اطّلعي}} على عدد مشاهدي مساهماتك هنا.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "تنبيهات ميدان المساعدة",
 	"growthexperiments-tour-response-tip-text": "عندما يتم الردّ على {{GENDER:$1|سؤالك}}، {{GENDER:$1|ستحصل|ستحصلين}} على تنبيه جديد هنا.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "تنبيهات المرشد",
@@ -345,5 +349,6 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "وجهة خاطئة للرابط (مثل ربط «شمس» بـ«نجم»)",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "{{GENDER:|انقر|انقري}} على قلم التعديل $1 بجانب الرابط لتغيير وجهة الرّابط",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "سبب آخر / أحبّذ عدم الإفصاح",
-	"growthexperiments-addlink-rejectiondialog-action-done": "تمّ"
+	"growthexperiments-addlink-rejectiondialog-action-done": "تمّ",
+	"grant-managementorship": "إدارة الإرشاد"
 }

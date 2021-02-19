@@ -38,11 +38,11 @@
 	"growthexperiments-homepage-startediting-subheader-add-image": "Înainte de a adăuga o imagine, încercați să învățați cu niște editări mai ușoare!",
 	"growthexperiments-homepage-startediting-subheader-new-page": "Înainte de a crea un articol nou, încercați să învățați cu niște editări mai ușoare!",
 	"growthexperiments-homepage-startediting-subheader-other": "Ajutați prin adăugarea la cunoștințele lumii cu niște corecturi ușoare pe articolele Wikipedia.",
-	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Vezi editări sugerate",
+	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Vedeți sugerate",
 	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "Începeți cu editări sugerate",
 	"growthexperiments-homepage-startediting-mobilesummary-body-variant-d": "Ajutați prin adăugarea la cunoștințele lumii cu niște corecturi ușoare pe articolele Wikipedia.",
 	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "Primiți sugestii",
-	"growthexperiments-homepage-startediting-button": "Vezi editări sugerate",
+	"growthexperiments-homepage-startediting-button": "Vedeți editări sugerate",
 	"growthexperiments-homepage-startediting-dialog-header": "Despre editările sugerate",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1 din $2",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "Anulare",
@@ -91,6 +91,10 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|editare|editări}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Vizualizări de la editări recente (ultimele 60 de zile):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Monitorizați vizualizările articolelor pe care le-ați editat",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "O editări până acum",
+	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Ajutați la extinderea cunoștințelor libere ale lumii prin editarea subiectelor care {{GENDER:$1|vă}} interesează cel mai mult.",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Vedeți editări sugerate",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Începeți cu câteva <strong>editări sugerate</strong>, apoi vedeți aici cât de multe persoane văd contribuțiile {{GENDER:$1|dvs}}.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Alerte pentru Zona de ajutor",
 	"growthexperiments-tour-response-tip-text": "Când s-a răspuns la întrebarea {{GENDER:$1|dvs.}}, {{GENDER:$1|veți}} avea aici o alertă nouă.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Alerte pentru mentori",
@@ -331,5 +335,6 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Destinație a legăturii incorectă (de ex. legarea cuvântului „soare” cu „stea”)",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Apasă creionul de editare $1 lângă legătură pentru a schimba destinația legăturii",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Altceva / prefer să nu spun",
-	"growthexperiments-addlink-rejectiondialog-action-done": "Realizat"
+	"growthexperiments-addlink-rejectiondialog-action-done": "Realizat",
+	"grant-managementorship": "Administrare activitate de mentor"
 }
