@@ -602,14 +602,18 @@ class SuggestedEdits extends BaseModule {
 		$description = Html::element( 'div',
 			[ 'class' => 'mw-ge-small-task-card-description skeleton' ] );
 		$taskIcon = new IconWidget( [ 'icon' => 'difficulty-' . $task->getTaskType()->getDifficulty() ] );
+		$taskTypeIcon = $task->getTaskType()->getIconName()
+			? new IconWidget( [ 'icon' => $task->getTaskType()->getIconName() ] )
+			: '';
 		$taskType = Html::rawElement( 'span',
 			[ 'class' => 'mw-ge-small-task-card-tasktype '
 				 // The following classes are used here:
 				 // * mw-ge-small-task-card-tasktype-difficulty-easy
 				 // * mw-ge-small-task-card-tasktype-difficulty-medium
 				 // * mw-ge-small-task-card-tasktype-difficulty-hard
-				. 'mw-ge-small-task-card-tasktype-difficulty-' . $task->getTaskType()->getDifficulty() ],
-			$taskIcon . $task->getTaskType()->getName( $this->getContext() ) );
+				. 'mw-ge-small-task-card-tasktype-difficulty-'
+				. $task->getTaskType()->getDifficulty() ],
+			$taskTypeIcon . $taskIcon . $task->getTaskType()->getName( $this->getContext() ) );
 
 		$glue = Html::element( 'div',
 			[ 'class' => 'mw-ge-small-task-card-glue' ] );
@@ -760,5 +764,4 @@ class SuggestedEdits extends BaseModule {
 	private function getUnfilteredTaskSetCountReducedToTaskQueueLength() : int {
 		return min( $this->unfilteredTasksetCount ?? 0, 200 );
 	}
-
 }

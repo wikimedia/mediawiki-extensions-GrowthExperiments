@@ -159,7 +159,16 @@ class TaskType implements JsonUnserializable {
 				'timeestimate' => $this->getTimeEstimate( $messageLocalizer )->text(),
 			],
 			'learnMoreLink' => $this->getLearnMoreLink(),
+			'iconName' => $this->getIconName()
 		];
+	}
+
+	/**
+	 * Get icon name that should be shown for the task type
+	 * @return string
+	 */
+	public function getIconName(): string {
+		return '';
 	}
 
 	/** @inheritDoc */
