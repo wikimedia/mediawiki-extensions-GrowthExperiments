@@ -86,7 +86,11 @@
 			description: 'also fake',
 			onShow: function () {
 				mw.guidedTour.endTour();
-				mw.track( 'growthexperiments.startediting' );
+				mw.track( 'growthexperiments.startediting', {
+					// The welcome dialog doesn't belong to any module
+					moduleName: 'generic',
+					trigger: 'welcome'
+				} );
 				// cancel displaying the guider
 				return true;
 			}

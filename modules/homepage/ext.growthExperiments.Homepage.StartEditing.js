@@ -22,8 +22,8 @@
 	 * @param {string|null} trigger What caused the dialog to appear - 'impression' (when it was part of
 	 *   the page from the start), 'welcome' (launched from the homepage welcome dialog), 'info-icon'
 	 *   (launched via the info icon in the suggested edits module header), 'suggested-edits'
-	 *   (launched via the button in the variant D mobile summary), undefined (when launched via
-	 *   the Variant A StartEditing module action button).
+	 *   (launched via the button in the variant D mobile summary), 'impact' (when launched from the impact module),
+	 *   undefined (when launched via the Variant A StartEditing module action button).
 	 * @return {jQuery.Promise<boolean>} Resolves when the dialog is closed, indicates whether
 	 *   initiation was successful or cancelled.
 	 */
@@ -159,12 +159,18 @@
 	// eslint-disable-next-line no-jquery/no-global-selector
 	setupEmbeddedDialog( $( '.growthexperiments-homepage-container' ) );
 
-	// Allow activation from a guided tour
-	mw.trackSubscribe( 'growthexperiments.startediting', function () {
+	/**
+	 * Allow activation from guided tour, welcome drawer, impact module CTA, etc.
+	 *
+	 * @param {string} topic growthexperiments.startediting in all cases.
+	 * @param {Object} data The data object passed by the module that called mw.track()
+	 * @param {string} data.moduleName The name of the module
+	 * @param {string} data.trigger The trigger to use in event logging
+	 */
+	mw.trackSubscribe( 'growthexperiments.startediting', function ( topic, data ) {
 		// eslint-disable-next-line no-jquery/no-global-selector
 		var mode = $( '.growthexperiments-homepage-module' ).data( 'mode' );
-		// The welcome dialog doesn't belong to any module.
-		launchCta( 'generic', mode, 'welcome' );
+		launchCta( data.moduleName, mode, data.trigger );
 	} );
 
 	// Try setup for mobile overlay mode
