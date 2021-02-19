@@ -91,6 +91,7 @@ class RefreshLinkRecommendations extends Maintenance {
 
 		$this->addDescription( 'Update the growthexperiments_link_recommendations table to ensure '
 			. 'there are enough recommendations for all topics.' );
+		$this->addOption( 'topic', 'Only update articles in the given ORES topic.', false, true );
 		$this->setBatchSize( 500 );
 	}
 
@@ -105,8 +106,8 @@ class RefreshLinkRecommendations extends Maintenance {
 		$this->initServices();
 		$this->initConfig();
 
+		$oresTopics = $this->getOresTopics();
 		$this->output( "Refreshing link recommendations...\n" );
-		$oresTopics = array_keys( ArticleTopicFeature::TERMS_TO_LABELS );
 		foreach ( $oresTopics as $oresTopic ) {
 			$this->output( "  processing topic $oresTopic...\n" );
 			$suggestions = $this->taskSuggester->suggest(
@@ -254,6 +255,21 @@ class RefreshLinkRecommendations extends Maintenance {
 			$this->recommendationTaskType = $taskType;
 		}
 		$this->searchUser = User::newSystemUser( 'Maintenance script' );
+	}
+
+	/**
+	 * @return string[]
+	 */
+	private function getOresTopics(): array {
+		$topic = $this->getOption( 'topic' );
+		$oresTopics = array_keys( ArticleTopicFeature::TERMS_TO_LABELS );
+		if ( $topic ) {
+			$oresTopics = array_intersect( $oresTopics, [ $topic ] );
+			if ( !$oresTopics ) {
+				$this->fatalError( "invalid topic $topic" );
+			}
+		}
+		return $oresTopics;
 	}
 
 	/**
