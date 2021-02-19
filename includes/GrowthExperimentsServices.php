@@ -11,6 +11,7 @@ use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkSubmissionRecorder;
+use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdater;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
@@ -110,16 +111,20 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsProtectionFilter' );
 	}
 
-	public function getTaskTypeHandlerRegistry(): TaskTypeHandlerRegistry {
-		return $this->coreServices->get( 'GrowthExperimentsTaskTypeHandlerRegistry' );
-	}
-
 	public function getQuestionPosterFactory(): QuestionPosterFactory {
 		return $this->coreServices->get( 'GrowthExperimentsQuestionPosterFactory' );
 	}
 
+	public function getSearchIndexUpdater(): SearchIndexUpdater {
+		return $this->coreServices->get( 'GrowthExperimentsSearchIndexUpdater' );
+	}
+
 	public function getTaskSuggesterFactory(): TaskSuggesterFactory {
 		return $this->coreServices->get( 'GrowthExperimentsTaskSuggesterFactory' );
+	}
+
+	public function getTaskTypeHandlerRegistry(): TaskTypeHandlerRegistry {
+		return $this->coreServices->get( 'GrowthExperimentsTaskTypeHandlerRegistry' );
 	}
 
 	public function getTipsAssembler(): TipsAssembler {

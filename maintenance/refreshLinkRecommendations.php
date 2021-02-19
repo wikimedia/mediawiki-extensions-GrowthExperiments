@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationLink;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
+use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdater;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoaderTrait;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
@@ -21,12 +22,12 @@ use GrowthExperiments\NewcomerTasks\Topic\RawOresTopic;
 use IDBAccessObject;
 use Maintenance;
 use MediaWiki\Cache\LinkBatchFactory;
-use MediaWiki\Extension\EventBus\EventBusFactory;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\NameTableStore;
+use Message;
 use MWTimestamp;
 use RuntimeException;
 use SearchEngineFactory;
@@ -78,11 +79,11 @@ class RefreshLinkRecommendations extends Maintenance {
 	/** @var LinkRecommendationStore */
 	private $linkRecommendationStore;
 
-	/** @var EventBusFactory */
-	private $eventBusFactory;
-
 	/** @var LinkRecommendationTaskType */
 	private $recommendationTaskType;
+
+	/** @var SearchIndexUpdater */
+	private $searchIndexUpdater;
 
 	/** @var User */
 	private $searchUser;
@@ -91,12 +92,21 @@ class RefreshLinkRecommendations extends Maintenance {
 		parent::__construct();
 		$this->requireExtension( 'GrowthExperiments' );
 		$this->requireExtension( 'CirrusSearch' );
-		$this->requireExtension( 'EventBus' );
 
 		$this->addDescription( 'Update the growthexperiments_link_recommendations table to ensure '
 			. 'there are enough recommendations for all topics.' );
 		$this->addOption( 'topic', 'Only update articles in the given ORES topic.', false, true );
 		$this->setBatchSize( 500 );
+	}
+
+	public function checkRequiredExtensions() {
+		// Hack: must be early enough for requireExtension to work but late enough for config
+		// to be available.
+		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		if ( $growthServices->getConfig()->get( 'GELinkRecommendationsUseEventGate' ) ) {
+			$this->requireExtension( 'EventBus' );
+		}
+		parent::checkRequiredExtensions();
 	}
 
 	public function execute() {
@@ -190,7 +200,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		$this->linkRecommendationProviderUncached =
 			$services->get( 'GrowthExperimentsLinkRecommendationProviderUncached' );
 		$this->linkRecommendationStore = $growthServices->getLinkRecommendationStore();
-		$this->eventBusFactory = $services->get( 'EventBus.EventBusFactory' );
+		$this->searchIndexUpdater = $growthServices->getSearchIndexUpdater();
 	}
 
 	/**
@@ -392,14 +402,15 @@ class RefreshLinkRecommendations extends Maintenance {
 	}
 
 	private function updateCirrusSearchIndex( RevisionRecord $revision ): void {
-		$stream = 'mediawiki.revision-recommendation-create';
-		$eventBus = $this->eventBusFactory->getInstanceForStream( $stream );
-		$eventFactory = $eventBus->getFactory();
-		$event = $eventFactory->createRecommendationCreateEvent( $stream, 'link', $revision );
-		$result = $eventBus->send( [ $event ] );
-		if ( $result !== true ) {
+		$status = $this->searchIndexUpdater->update( $revision );
+		if ( !$status->isOK() ) {
+			$errors = array_map( function ( $error ) {
+				$message = $error['params'];
+				array_unshift( $message, $error['message'] );
+				return Message::newFromSpecifier( $message );
+			}, $status->getErrorsByType( 'error' ) );
 			$this->error( "  Could not send search index update:\n    "
-				. implode( "    \n", (array)$result ) );
+				. implode( "    \n", $errors ) );
 		}
 	}
 

@@ -1288,6 +1288,10 @@
 			"description": "Global ON/OFF switch for the link recommendations feature.",
 			"value": true
 		},
+		"GELinkRecommendationsUseEventGate": {
+			"description": "Whether to use EventGate for notifying about link recommendation creation. When set to false, uses CirrusSearch diretcly.",
+			"value": false
+		},
 		"GEHomepageImpactModuleEnabled": {
 			"description": "Is the impact module in newcomer homepage enabled?",
 			"value": true
