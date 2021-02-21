@@ -19,3 +19,8 @@ $magicWords['en'] = [
 $magicWords['ar'] = [
 	'mentor' => [ 0, 'مرشد' ],
 ];
+
+/** Czech (čeština) */
+$magicWords['cs'] = [
+	'mentor' => [ 0, 'mentor' ],
+];
