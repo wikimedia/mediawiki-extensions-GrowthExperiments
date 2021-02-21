@@ -114,6 +114,14 @@ $specialPageAliases['pt'] = [
 	'ClaimMentee' => [ 'AdotarTutorado' ],
 ];
 
+/** Romanian (română) */
+$specialPageAliases['ro'] = [
+	'WelcomeSurvey' => [ 'Pagina_acasă' ],
+	'Homepage' => [ 'Sondaj_de_bun_venit' ],
+	'Impact' => [ 'Impact' ],
+	'ClaimMentee' => [ 'Revendicare_ucenic' ],
+];
+
 /** Russian (русский) */
 $specialPageAliases['ru'] = [
 	'WelcomeSurvey' => [ 'Приветственный опрос' ],
