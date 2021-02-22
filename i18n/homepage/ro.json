@@ -123,7 +123,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Activ|Activă|Activ}} astăzi",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|Activ|Activă|Activ}} ieri",
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Activ|Activă|Activ}} acum $2 {{PLURAL:$2|zi|zile}}",
-	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|Acest utilizator experimentat|Această utilizatoare experimentată|Acest utilizator experimentat}} știe că sunteți {{GENDER:$2|nou|nouă|nou}} și {{GENDER:$2|vă}} poate ajuta cu editarea.",
+	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|Acest utilizator experimentat|Această utilizatoare experimentată|Acest utilizator experimentat}} știe că sunteți {{GENDER:$2|nou|nouă|nou}} și vă poate ajuta cu editarea.",
 	"growthexperiments-homepage-mentorship-question-button": "Puneți {{GENDER:$1|mentorului}} {{GENDER:$2|dvs.}} o întrebare",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Vedeți celelalte conversații ale {{GENDER:$1|mentorului}} {{GENDER:$2|dvs.}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "Întrebați-vă {{GENDER:$1|mentorul}} {{GENDER:$2|dvs.}}",

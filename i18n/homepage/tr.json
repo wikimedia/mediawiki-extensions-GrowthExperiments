@@ -100,6 +100,10 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|düzenleme|düzenleme}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Son düzenlemelerin görüntülenme sayısı (son 60 gün):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Düzenlediğiniz maddelerin görünümlerini izleyin",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "Şimdiye kadar 0 değişiklik",
+	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "{{GENDER:$1|Sizin}} için önemli konuları düzenleyerek özgür bilginin dünyaya yayılmasına yardım edin.",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Önerilen düzenlemelere bakın",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Birkaç <strong>önerilen değişiklikle</strong> başlayın, ardından kaç kişinin {{GENDER:$1|katkılarınızı}} gördüğüne buradan bakın.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Danışma masası uyarıları",
 	"growthexperiments-tour-response-tip-text": "{{GENDER:$1|Sorunuz}} yanıtlandığında, burada yeni bir uyarı alacaksınız.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Danışman uyarıları",
@@ -340,5 +344,6 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Yanlış bağlantı hedefi (ör. \"güneş\"i \"yıldız\"a bağlamak)",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Bağlantı hedefini değiştirmek için bağlantının yanındaki düzenleme kalemine $1 tıklayın",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Diğer / belirtmeyin",
-	"growthexperiments-addlink-rejectiondialog-action-done": "Tamam"
+	"growthexperiments-addlink-rejectiondialog-action-done": "Tamam",
+	"grant-managementorship": "Danışmanlığı yönet"
 }

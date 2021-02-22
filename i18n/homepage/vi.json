@@ -94,6 +94,10 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> lần {{PLURAL:$1|sửa đổi|sửa đổi}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Lượt xem từ các chỉnh sửa gần đây (60 ngày qua):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Theo dõi lượt xem các bài viết mà bạn đã chỉnh sửa",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 sửa đổi tính đến nay",
+	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Giúp mở rộng nguồn tri thức miễn phí tới thế giới bằng cách sửa đổi những chủ đề có ý nghĩa nhất với {{GENDER:$1|bạn}}.",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Xem các sửa đổi gợi ý",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Bắt đầu với một số <strong>sửa đổi gợi ý</strong>, sau đó xem có bao nhiêu người đang xem những đóng góp {{GENDER:$1|của bạn}} tại đây.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Thông báo Bàn trợ giúp",
 	"growthexperiments-tour-response-tip-text": "Khi câu hỏi của {{GENDER:$1|}} được trả lời, {{GENDER:$1|bạn}} sẽ có một thông báo ở đây.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Thông báo của người cố vấn",
@@ -340,5 +344,6 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Nơi đến liên kết không chính xác (ví dụ liên kết \"mặt trời\" tới \"sao\")",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Chạm vào bút chì sửa đổi $1 cạnh liên kết để thay đổi nơi đến liên kết",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Khác / không muốn cung cấp",
-	"growthexperiments-addlink-rejectiondialog-action-done": "Xong"
+	"growthexperiments-addlink-rejectiondialog-action-done": "Xong",
+	"grant-managementorship": "Quản lý việc cố vấn"
 }

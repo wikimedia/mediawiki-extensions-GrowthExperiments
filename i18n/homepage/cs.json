@@ -98,6 +98,8 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|editace|editace|editací}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Počet návštěv stránek, které jste v posledních 60 dnech editovali:",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Sledujte zobrazení stránky, které jste editovali",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "Zatím 0 editací",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Zobrazit editační tipy",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Upozornění",
 	"growthexperiments-tour-response-tip-text": "Jakmile bude {{GENDER:$1|vaše}} otázka zodpovězena, objeví se {{GENDER:$1|vám}} tady nové upozornění.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Upozornění",

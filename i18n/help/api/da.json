@@ -4,11 +4,14 @@
 			"InsaneHacker"
 		]
 	},
+	"apihelp-helppanelquestionposter-summary": "Håndter spørgsmål stillet via hjælpepanelet for den nuværende bruger.",
 	"apihelp-helppanelquestionposter-param-body": "Indholdet af det spørgsmål, der blev stillet af brugeren.",
 	"apihelp-helppanelquestionposter-param-source": "Måden hvorpå spørgsmålet blev spurgt.",
 	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "\"Spørg nybegynder-forummet\"-panelet",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "\"Spørg din mentor\"-panelet på nybegynder-forsiden",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "\"Spørg din mentor\"-vinduet på hjælpepanelet",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "\"Spørg nybegynder-forummet\"-panelet (gammelt navn)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "\"Spørg din mentor\"-panelet på nybegynder-forsiden (gammelt navn)",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Den relevante titel, hvis valgt, der skal inkluderes sammen med spørgsmålet",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Du skal være logget ind for at kunne stille et spørgsmål."
 }

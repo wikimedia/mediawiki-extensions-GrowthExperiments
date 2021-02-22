@@ -3,6 +3,7 @@
 		"authors": [
 			"Bluemersen",
 			"Gongsoonyee",
+			"Gustmd7410",
 			"MemphisA5",
 			"Nuevo Paso",
 			"Revi",
@@ -98,6 +99,8 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "{{PLURAL:$1|편집}} <strong>$1</strong>회",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "최근의 편집 보기 (최근 60일):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "편집한 문서의 방문 횟수 보기",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "현재까지 편집 0개",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "편집 제안 보기",
 	"growthexperiments-tour-helpdesk-response-tip-title": "질문방 알림",
 	"growthexperiments-tour-response-tip-text": "{{GENDER:$1|질문에}} 답변이 등록되면 여기에 새 알림을 받게 됩니다.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "멘토 알림",
@@ -303,10 +306,12 @@
 	"growthexperiments-homepage-welcome-notice-header": "{{GENDER:$1|당신의}} 홈페이지에 오신 것을 환영합니다!",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "계속",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "알겠습니다",
+	"growthexperiments-addlink-notinstore": "\"$1\"에 대한 링크 추천을 찾을 수 없음",
 	"growthexperiments-addlink-context-button-accept": "예",
 	"growthexperiments-addlink-context-button-reject": "아니오",
 	"growthexperiments-addlink-context-button-next": "건너뛰기",
 	"growthexperiments-addlink-rejectiondialog-message": "답변은 AI 제안의 품질 개선을 위해 사용할 수 있습니다.",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "기타 / 언급하고 싶지 않음",
-	"growthexperiments-addlink-rejectiondialog-action-done": "완료"
+	"growthexperiments-addlink-rejectiondialog-action-done": "완료",
+	"grant-managementorship": "멘토십 관리"
 }

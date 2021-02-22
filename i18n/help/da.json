@@ -3,6 +3,7 @@
 		"authors": [
 			"Celestinesucess",
 			"InsaneHacker",
+			"Nico",
 			"Saederup92"
 		]
 	},
@@ -38,9 +39,9 @@
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Er du klar?</strong> Klik på \"{{int:vector-view-edit}}\" for at komme i gang.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Er du klar?</strong> Åben det afsnit du ønsker at redigere og tryk på blyant-ikonet.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "Korrekturlæsning handler om at lave små justeringer af teksten i en artikel, f.eks. rettelse af stavefejl, grammatik eller tekstens klarhed. Korrekturlæsning får artikler til at fremstå mere professionelle og troværdige.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "At nå Merkur fra <mark class=\"negative\">Jordden</mark> indebærer betydelige tekniske udfordringer.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "At nå Merkur fra <mark class=\"negative\">Jorden</mark> indebærer betydelige tekniske udfordringer.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "{{GENDER:|Du}} behøver kun at lave en eller to små rettelser for at gøre en forskel. {{GENDER:|Du}} behøver ikke arbejde på hele artiklen. {{GENDER:|Du}} behøver heller ikke at have nogen specialviden om emnet.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules1": "{{GENDER:|Du}} kan rette stave- og grammatikfejl. Eksempler på disse er sætninger der er for lange, gentagne ord eller ukorrekt tegnsætning.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules1": "{{GENDER:|Du}} kan rette stave- og grammatikfejl. Eksempler på disse, er sætninger der er for lange, gentagne ord eller ukorrekt tegnsætning.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules1": "Mars <mark class=\"negative\">har har</mark> to små måner.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules2": "{{GENDER:|Du}} kan også omskrive sætninger så de ikke indeholder meninger. Indhold på {{SITENAME}} bør være neutralt, klart og encyklopædisk. Vær dog opmærksom på, at du ikke ændrer faktuelle oplysninger i sætningen.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules2": "Jupiter er den største<mark class=\"negative\">, og mest interessante,</mark> planet i Solsystemet.",
