@@ -26,6 +26,7 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\Storage\NameTableStore;
 use MWTimestamp;
 use RuntimeException;
 use SearchEngineFactory;
@@ -61,6 +62,9 @@ class RefreshLinkRecommendations extends Maintenance {
 
 	/** @var RevisionStore */
 	private $revisionStore;
+
+	/** @var NameTableStore */
+	private $changeDefNameTableStore;
 
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
@@ -180,6 +184,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		$this->titleFactory = $services->getTitleFactory();
 		$this->linkBatchFactory = $services->getLinkBatchFactory();
 		$this->revisionStore = $services->getRevisionStore();
+		$this->changeDefNameTableStore = $services->getNameTableStoreFactory()->getChangeTagDef();
 		$this->configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 		$this->taskSuggester = $growthServices->getTaskSuggesterFactory()->create();
 		$this->linkRecommendationProviderUncached =
@@ -334,8 +339,11 @@ class RefreshLinkRecommendations extends Maintenance {
 		if ( array_key_exists( LinkRecommendationTaskTypeHandler::CHANGE_TAG, $tags ) ) {
 			return false;
 		}
-		if ( array_intersect( ChangeTags::REVERT_TAGS, array_keys( $tags ) ) ) {
-			$tagData = json_decode( $tags[ChangeTags::TAG_REVERTED], true );
+		$revertTags = array_intersect( ChangeTags::REVERT_TAGS, array_keys( $tags ) );
+		if ( $revertTags ) {
+			$linkRecommendationChangeTagId = $this->changeDefNameTableStore
+				->getId( LinkRecommendationTaskTypeHandler::CHANGE_TAG );
+			$tagData = json_decode( $tags[reset( $revertTags )], true );
 			/** @var array $tagData */'@phan-var array $tagData';
 			$revertedAddLinkEditCount = $db->selectRowCount(
 				[ 'revision', 'change_tag' ],
@@ -345,7 +353,7 @@ class RefreshLinkRecommendations extends Maintenance {
 					'rev_page' => $title->getArticleID(),
 					'rev_id <=' . (int)$tagData['newestRevertedRevId'],
 					'rev_id >=' . (int)$tagData['oldestRevertedRevId'],
-					'ct_tag_id' => LinkRecommendationTaskTypeHandler::CHANGE_TAG,
+					'ct_tag_id' => $linkRecommendationChangeTagId,
 				],
 				__METHOD__
 			);
