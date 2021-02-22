@@ -407,10 +407,12 @@ class Impact extends BaseModule {
 		if ( in_array( $this->getMode(), [ self::RENDER_MOBILE_DETAILS, self::RENDER_MOBILE_DETAILS_OVERLAY ] ) ) {
 			if ( $this->isSuggestedEditsActivatedForUser ) {
 				$linkPath = 'Special:Homepage/suggested-edits';
-				$linkModulePath = 'suggested-edits';
+				$linkModulePath = '#/homepage/suggested-edits';
 			} else {
 				$linkPath = 'Special:Homepage';
-				$linkModulePath = '';
+				// HACK: We use this to indicate to the client-side to use launchCta() to open the
+				// start editing onboarding dialog for suggested edits.
+				$linkModulePath = 'launchCta';
 			}
 			$button = new ButtonWidget( [
 				'label' => $this->getContext()
@@ -424,7 +426,7 @@ class Impact extends BaseModule {
 			] );
 			$button->setAttributes( [
 				'data-link-id' => 'impact-see-suggested-edits',
-				'data-link-module-path' => '#/homepage/' . $linkModulePath
+				'data-link-module-path' => $linkModulePath
 			] );
 			return $button;
 		}

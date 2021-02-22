@@ -227,7 +227,11 @@
 					// Launch the start editing dialog for variant C users.
 					// TODO: We should probably use mw.hook instead of mw.track/trackSubscribe here
 					if ( Utils.isUserInVariant( [ 'C' ] ) ) {
-						mw.track( 'growthexperiments.startediting' );
+						mw.track( 'growthexperiments.startediting', {
+							// The welcome drawer doesn't belong to any module
+							moduleName: 'generic',
+							trigger: 'welcome'
+						} );
 					}
 					welcomeDrawer.hide();
 				} );

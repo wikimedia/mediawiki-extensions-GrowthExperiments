@@ -59,8 +59,17 @@
 		},
 		handler = OO.ui.isMobile() ? mobileHandler : desktopHandler,
 		onSuggestedEditsButtonClicked = function ( event ) {
-			var modulePath = $( this ).data( 'link-module-path' ) || '#';
+			var modulePath = $( this ).data( 'link-module-path' );
 			event.preventDefault();
+			// "launchCta" isn't a real path, it's our cue to run the launchCta method
+			// in the start editing module.
+			if ( modulePath === 'launchCta' ) {
+				mw.track( 'growthexperiments.startediting', {
+					moduleName: 'impact',
+					trigger: 'impact'
+				} );
+				return;
+			}
 			// TODO: Make the following lines sharable via ext.growthExperiments.Utils.js
 			window.history.replaceState( null, null, modulePath );
 			window.dispatchEvent( new HashChangeEvent( 'hashchange' ) );
