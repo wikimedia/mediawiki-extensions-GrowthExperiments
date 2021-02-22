@@ -34,3 +34,8 @@ $magicWords['cs'] = [
 $magicWords['ru'] = [
 	'mentor' => [ 0, 'наставник' ],
 ];
+
+/** Vietnamese (Tiếng Việt) */
+$magicWords['vi'] = [
+	'mentor' => [ 0, 'cốvấn', 'cố_vấn' ],
+];
