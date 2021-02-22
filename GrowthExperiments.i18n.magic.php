@@ -20,6 +20,11 @@ $magicWords['ar'] = [
 	'mentor' => [ 0, 'مرشد' ],
 ];
 
+/** Bangla (বাংলা) */
+$magicWords['bn'] = [
+	'mentor' => [ 0, 'মেন্টর' ],
+];
+
 /** Czech (čeština) */
 $magicWords['cs'] = [
 	'mentor' => [ 0, 'mentor' ],
