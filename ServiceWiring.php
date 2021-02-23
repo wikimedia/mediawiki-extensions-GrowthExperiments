@@ -14,6 +14,9 @@ use GrowthExperiments\NewcomerTasks\AddLink\DbBackedLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkSubmissionRecorder;
+use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\CirrusSearchIndexUpdater;
+use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\EventGateSearchIndexUpdater;
+use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdater;
 use GrowthExperiments\NewcomerTasks\AddLink\ServiceLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\StaticLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -34,6 +37,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\Extension\EventBus\EventBusFactory;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 
@@ -237,6 +241,19 @@ return [
 			$services->getPermissionManager(),
 			$growthServices->getConfig()->get( 'GEHelpPanelHelpDeskPostOnTop' )
 		);
+	},
+
+	'GrowthExperimentsSearchIndexUpdater' => function (
+		MediaWikiServices $services
+	): SearchIndexUpdater {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		if ( $growthServices->getConfig()->get( 'GELinkRecommendationsUseEventGate' ) ) {
+			/** @var EventBusFactory $eventBusFactory */
+			$eventBusFactory = $services->get( 'EventBus.EventBusFactory' );
+			return new EventGateSearchIndexUpdater( $eventBusFactory );
+		} else {
+			return new CirrusSearchIndexUpdater();
+		}
 	},
 
 	// deprecated, use GrowthExperimentsTaskSuggesterFactory directly

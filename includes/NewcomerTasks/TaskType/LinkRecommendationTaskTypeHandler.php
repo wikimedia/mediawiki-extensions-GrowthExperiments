@@ -12,6 +12,9 @@ class LinkRecommendationTaskTypeHandler extends TaskTypeHandler {
 
 	public const CHANGE_TAG = 'newcomer task add link';
 
+	/** The tag prefix used for CirrusSearch\Wikimedia\WeightedTags. */
+	public const WEIGHTED_TAG_PREFIX = 'recommendation.link';
+
 	/** @inheritDoc */
 	public function getId(): string {
 		return self::ID;
