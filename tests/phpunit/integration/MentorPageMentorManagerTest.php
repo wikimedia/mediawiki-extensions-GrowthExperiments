@@ -238,7 +238,8 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 			$context,
 			$context->getLanguage(),
 			$growthServices->getConfig()->get( 'GEHomepageMentorsList' ) ?? '',
-			$growthServices->getConfig()->get( 'GEHomepageManualAssignmentMentorsList' ) ?? ''
+			$growthServices->getConfig()->get( 'GEHomepageManualAssignmentMentorsList' ) ?? '',
+			$context->getRequest()->wasPosted()
 		);
 	}
 
