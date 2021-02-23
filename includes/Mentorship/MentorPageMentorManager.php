@@ -182,6 +182,8 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 				'options' => [ static::MENTOR_PREF => $mentor->getId() ]
 			] ) );
 		}
+
+		$this->invalidateMentorCache( $user );
 	}
 
 	/**
@@ -250,6 +252,16 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 				$user->load();
 				return $user->isRegistered() ? $user : null;
 			}
+		);
+	}
+
+	/**
+	 * Invalidates mentor cache for loadMentorUser
+	 * @param UserIdentity $user Who will have their cache invalidated
+	 */
+	private function invalidateMentorCache( UserIdentity $user ): void {
+		$this->cache->delete(
+			$this->makeCacheKey( $user )
 		);
 	}
 
