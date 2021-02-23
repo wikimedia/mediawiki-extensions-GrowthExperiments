@@ -130,6 +130,14 @@ $specialPageAliases['ru'] = [
 	'ClaimMentee' => [ 'Утвердить подопечного' ],
 ];
 
+/** Albanian (shqip) */
+$specialPageAliases['sq'] = [
+	'WelcomeSurvey' => [ 'SondazhiMirëseardhjes' ],
+	'Homepage' => [ 'Kryefaqja' ],
+	'Impact' => [ 'Ndikimi' ],
+	'ClaimMentee' => [ 'PretendonMentori' ],
+];
+
 /** Serbian Cyrillic (српски (ћирилица)) */
 $specialPageAliases['sr-ec'] = [
 	'WelcomeSurvey' => [ 'Анкета_добродошлице' ],
