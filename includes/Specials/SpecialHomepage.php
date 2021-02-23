@@ -242,40 +242,16 @@ class SpecialHomepage extends SpecialPage {
 	 * @return string[][][]
 	 */
 	private function getModuleGroups() : array {
-		if ( $this->experimentUserManager->isUserInVariant( $this->getUser(), [ 'C', 'D' ] ) ) {
-			return [
-				'main' => [
-					'primary' => [ 'banner', 'startemail' ],
-					'secondary' => [ 'start-startediting', 'suggested-edits' ]
-				],
-				'sidebar' => [
-					'primary' => [ 'impact' ],
-					'secondary' => [ 'mentorship', 'help' ]
-				]
-			];
-		}
-
-		// else: variant A
-		if ( SuggestedEdits::isEnabled( $this->getContext() )
-			&& SuggestedEdits::isActivated( $this->getContext() )
-		) {
-			return [
-				'main' => [
-					'primary' => [ 'banner', 'start', 'suggested-edits', 'impact' ] ],
-				'sidebar' => [
-					'primary' => [ 'mentorship', 'help' ]
-				],
-			];
-		} else {
-			return [
-				'main' => [
-					'primary' => [ 'banner', 'start', 'suggested-edits', 'impact', 'mentorship' ]
-				],
-				'sidebar' => [
-					'primary' => [ 'help' ]
-				],
-			];
-		}
+		return [
+			'main' => [
+				'primary' => [ 'banner', 'startemail' ],
+				'secondary' => [ 'start-startediting', 'suggested-edits' ]
+			],
+			'sidebar' => [
+				'primary' => [ 'impact' ],
+				'secondary' => [ 'mentorship', 'help' ]
+			]
+		];
 	}
 
 	/**
