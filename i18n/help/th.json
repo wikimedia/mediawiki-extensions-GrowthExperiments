@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"B20180",
+			"Bebiezaza",
 			"Horus",
 			"MOphaswongse (WMF)"
 		]
@@ -11,8 +12,16 @@
 	"growthexperiments-help-panel-return-home-button-text": "เสร็จสิ้น",
 	"growthexperiments-help-panel-back-home": "กลับ",
 	"growthexperiments-help-panel-close": "เสร็จสิ้น",
+	"growthexperiments-help-panel-postedit-header": "ขั้นตอนต่อไป",
+	"growthexperiments-help-panel-questioncomplete-title": "ถามคำถาม",
+	"growthexperiments-help-panel-questioncomplete-header": "คุณได้เผยแพร่คำถามแล้ว",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "เปลี่ยน",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "ยืนยันอีเมลของคุณ",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "เพิ่มอีเมล",
+	"growthexperiments-help-panel-questionposter-invalid-title": "ชื่อเรื่องไม่ถูกต้อง",
 	"growthexperiments-help-panel-community-help-desk-text": "โต๊ะช่วยเหลือชุมชน",
-	"growthexperiments-help-panel-search-label": "ค้นหาคำอธิบาย"
+	"growthexperiments-help-panel-search-label": "ค้นหาคำอธิบาย",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "การแก้ไขที่แนะนำ",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "เปลี่ยนไปใช้ตัวแก้ไขแบบเห็นภาพ",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "เปลี่ยนไปใช้ตัวแก้ไขต้นฉบับ"
 }

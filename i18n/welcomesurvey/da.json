@@ -3,7 +3,8 @@
 		"authors": [
 			"InsaneHacker",
 			"Saederup92",
-			"SimmeD"
+			"SimmeD",
+			"Steenth"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Velkommen}}, $1!",
@@ -43,7 +44,7 @@
 	"welcomesurvey-question-edited-option-dont-remember-label": "Jeg kan ikke huske det",
 	"welcomesurvey-question-email-label": "E-mailadresse (valgfri)",
 	"welcomesurvey-question-email-placeholder": "Indtast din e-mailadresse...",
-	"welcomesurvey-question-email-help": "Vi lagde mærke til, at du ikke indtastede en e-mail-adresse da du oprettede denne konto. Vi <strong>opfordrer dig kraftigt</strong> til at gøre dette, da en e-mail-adresse er nødvendig for at få adgang til din konto, hvis du nogensinde mister dit kodeord. BEMÆRK: Din e-mailadresse bliver ikke afsløret når andre brugere kontakter dig.",
+	"welcomesurvey-question-email-help": "Vi lagde mærke til, at du ikke indtastede en e-mailadresse da du oprettede denne konto. Vi <strong>opfordrer dig kraftigt</strong> til at gøre dette, da en e-mailadresse er nødvendig for at få adgang til din konto, hvis du nogensinde mister dit kodeord. BEMÆRK: Din e-mailadresse bliver ikke afsløret når andre brugere kontakter dig.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} er tilgængelig på mere end 300 sprog. Er der andre sprog du kan læse og skrive?",
 	"welcomesurvey-question-languages-placeholder": "Tilføj op til {{PLURAL:$1|et sprog|$1 sprog}}...",
 	"welcomesurvey-question-languages-maximum": "Du har tilføjet det maksimale antal sprog."

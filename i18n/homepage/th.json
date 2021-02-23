@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Aefgh39622",
+			"Bebiezaza",
 			"Karit",
 			"MOphaswongse (WMF)"
 		]
@@ -13,6 +14,7 @@
 	"growthexperiments-homepage-start-header": "{{GENDER:$1|เริ่ม}}ที่นี่",
 	"growthexperiments-homepage-account-header": "สร้างบัญชีแล้ว",
 	"growthexperiments-homepage-account-editcount": "$1 {{PLURAL:$1|การแก้ไข}}",
+	"growthexperiments-homepage-account-age": "คุณมีบัญชีผู้ใช้มาเป็นเวลา $1 แล้ว",
 	"growthexperiments-homepage-userpage-header": "สร้างหน้าผู้ใช้{{GENDER:$1ของคุณ}}",
 	"growthexperiments-homepage-userpage-header-done": "แก้ไขหน้าผู้ใช้{{GENDER:$1|ของคุณ}}",
 	"growthexperiments-homepage-userpage-button": "สร้างหน้าผู้ใช้",
@@ -27,6 +29,7 @@
 	"growthexperiments-homepage-email-changelink": "เปลี่ยน",
 	"growthexperiments-homepage-email-confirmlink": "ยืนยัน",
 	"growthexperiments-homepage-startediting-header": "เริ่มแก้ไข",
+	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "รับคำแนะนำ",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1 จาก $2",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "ยกเลิก",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "ดำเนินการต่อ",
