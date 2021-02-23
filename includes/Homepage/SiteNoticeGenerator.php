@@ -244,7 +244,8 @@ class SiteNoticeGenerator {
 	/**
 	 * Get the header (H2) element for the site notice.
 	 *
-	 * If the user is in variant C/D, no header is shown.
+	 * If the user is on the homepage, no header is shown.
+	 *
 	 * @param OutputPage $output
 	 * @param User $user
 	 * @param string $msgHeaderKey
@@ -257,7 +258,7 @@ class SiteNoticeGenerator {
 		string $msgHeaderKey,
 		string $location
 	) : string {
-		if ( $location === 'homepage' && $this->experimentUserManager->isUserInVariant( $user, [ 'C', 'D' ] ) ) {
+		if ( $location === 'homepage' ) {
 			return '';
 		}
 		return Html::element( 'h2', [],

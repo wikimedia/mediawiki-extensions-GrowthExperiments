@@ -149,7 +149,6 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			'<div class="mw-ge-homepage-discovery-banner-mobile">' .
 			'<div class="mw-ge-homepage-discovery-arrow mw-ge-homepage-discovery-arrow-user-variant-A"></div>' .
 			'<div class="mw-ge-homepage-discovery-message">' .
-			'<h2>growthexperiments-homepage-discovery-mobile-homepage-banner-header</h2>' .
 			'<p>growthexperiments-homepage-discovery-mobile-homepage-banner-text</p>' .
 			'</div><span %s></span></div>',
 			$siteNotice
