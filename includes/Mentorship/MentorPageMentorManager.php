@@ -146,7 +146,13 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		try {
 			return $this->getMentorForUser( $user );
 		} catch ( WikiConfigException $e ) {
-			$this->logger->warning( $e->getMessage() );
+			// WikiConfigException is thrown when no mentor is available
+			// Log as info level, as not-yet-developed wikis may have
+			// zero mentors for long period of time (T274035)
+			$this->logger->info( 'No mentor available for {user}', [
+				'user' => $user->getName(),
+				'exception' => $e
+			] );
 		}
 		return null;
 	}
