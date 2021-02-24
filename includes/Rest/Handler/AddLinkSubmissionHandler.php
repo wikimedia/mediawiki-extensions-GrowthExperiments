@@ -2,10 +2,12 @@
 
 namespace GrowthExperiments\Rest\Handler;
 
+use CirrusSearch\CirrusSearch;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationLink;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkSubmissionRecorder;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use MalformedTitleException;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\ParamValidator\TypeDef\TitleDef;
@@ -15,8 +17,7 @@ use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\Rest\Validator\JsonBodyValidator;
 use RequestContext;
 use Status;
-use TitleFormatter;
-use TitleParser;
+use TitleFactory;
 use Wikimedia\ParamValidator\ParamValidator;
 
 /**
@@ -35,31 +36,31 @@ class AddLinkSubmissionHandler extends SimpleHandler {
 	/** @var LinkSubmissionRecorder */
 	private $addLinkSubmissionRecorder;
 
-	/** @var TitleParser */
-	private $titleParser;
+	/** @var TitleFactory */
+	private $titleFactory;
 
-	/** @var TitleFormatter */
-	private $titleFormatter;
+	/** @var callable */
+	private $cirrusSearchFactory;
 
 	/**
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param LinkRecommendationProvider $linkRecommendationProvider
 	 * @param LinkSubmissionRecorder $addLinkSubmissionRecorder
-	 * @param TitleParser $titleParser
-	 * @param TitleFormatter $titleFormatter
+	 * @param TitleFactory $titleFactory
+	 * @param callable $cirrusSearchFactory A factory method returning a CirrusSearch instance.
 	 */
 	public function __construct(
 		ConfigurationLoader $configurationLoader,
 		LinkRecommendationProvider $linkRecommendationProvider,
 		LinkSubmissionRecorder $addLinkSubmissionRecorder,
-		TitleParser $titleParser,
-		TitleFormatter $titleFormatter
+		TitleFactory $titleFactory,
+		callable $cirrusSearchFactory
 	) {
 		$this->configurationLoader = $configurationLoader;
 		$this->linkRecommendationProvider = $linkRecommendationProvider;
-		$this->titleParser = $titleParser;
-		$this->titleFormatter = $titleFormatter;
 		$this->addLinkSubmissionRecorder = $addLinkSubmissionRecorder;
+		$this->titleFactory = $titleFactory;
+		$this->cirrusSearchFactory = $cirrusSearchFactory;
 	}
 
 	/**
@@ -97,6 +98,14 @@ class AddLinkSubmissionHandler extends SimpleHandler {
 			throw new HttpException( 'Unexpected link targets: ' . implode( ', ', $unexpectedTargets ) );
 		} elseif ( $missingTargets ) {
 			throw new HttpException( 'Missing link targets: ' . implode( ', ', $missingTargets ) );
+		}
+
+		if ( !$editRevId ) {
+			// The search index is updated after an edit; with no edit, we have to do it manually.
+			$cirrusSearch = ( $this->cirrusSearchFactory )();
+			$pageIdentity = $this->titleFactory->newFromLinkTarget( $title )->toPageIdentity();
+			$cirrusSearch->resetWeightedTags( $pageIdentity,
+				LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX );
 		}
 
 		$status = $this->addLinkSubmissionRecorder->record( $user, $linkRecommendation, $acceptedTargets,
@@ -171,14 +180,24 @@ class AddLinkSubmissionHandler extends SimpleHandler {
 			}
 			if ( !$target instanceof LinkTarget ) {
 				try {
-					$target = $this->titleParser->parseTitle( $target );
+					$target = $this->titleFactory->newFromTextThrow( $target );
 				} catch ( MalformedTitleException $e ) {
-					throw new HttpException( 'Could not parse title: ' . $target );
+					$error = $e->getMessageObject()->inLanguage( 'en' )
+						->useDatabase( false )->text();
+					throw new HttpException( "Could not parse title: $target ($error)" );
 				}
 			}
-			$normalized[] = $this->titleFormatter->getPrefixedDBkey( $target );
+			$normalized[] = $this->titleFactory->newFromLinkTarget( $target )->getPrefixedDBkey();
 		}
 		return $normalized;
+	}
+
+	/**
+	 * Factory method to allow mocking.
+	 * @return CirrusSearch
+	 */
+	private static function cirrusSearchFactory(): CirrusSearch {
+		return new CirrusSearch();
 	}
 
 }

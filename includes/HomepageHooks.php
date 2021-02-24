@@ -3,6 +3,8 @@
 
 namespace GrowthExperiments;
 
+use CirrusSearch\Search\CirrusIndexField;
+use CirrusSearch\Wikimedia\WeightedTagsHooks;
 use Config;
 use ConfigException;
 use DeferredUpdates;
@@ -17,6 +19,7 @@ use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
@@ -75,7 +78,8 @@ class HomepageHooks implements
 	\MediaWiki\Hook\SpecialContributionsBeforeMainOutputHook,
 	\MediaWiki\SpecialPage\Hook\SpecialPageAfterExecuteHook,
 	\MediaWiki\User\Hook\ConfirmEmailCompleteHook,
-	\MediaWiki\Hook\SiteNoticeAfterHook
+	\MediaWiki\Hook\SiteNoticeAfterHook,
+	\MediaWiki\Content\Hook\SearchDataForIndexHook
 {
 	use AddLinkHandlerTrait;
 
@@ -103,6 +107,8 @@ class HomepageHooks implements
 	private $userOptionsLookup;
 	/** @var NamespaceInfo */
 	private $namespaceInfo;
+	/** @var TitleFactory */
+	private $titleFactory;
 	/** @var IBufferingStatsdDataFactory */
 	private $statsdDataFactory;
 	/** @var ConfigurationLoader */
@@ -121,8 +127,8 @@ class HomepageHooks implements
 	private $newcomerTasksUserOptionsLookup;
 	/** @var LinkRecommendationProvider */
 	private $linkRecommendationProvider;
-	/** @var TitleFactory */
-	private $titleFactory;
+	/** @var LinkRecommendationStore */
+	private $linkRecommendationStore;
 
 	/**
 	 * HomepageHooks constructor.
@@ -130,6 +136,7 @@ class HomepageHooks implements
 	 * @param ILoadBalancer $lb
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param NamespaceInfo $namespaceInfo
+	 * @param TitleFactory $titleFactory
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param TrackerFactory $trackerFactory
@@ -139,13 +146,14 @@ class HomepageHooks implements
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param LinkRecommendationProvider $linkRecommendationProvider
-	 * @param TitleFactory $titleFactory
+	 * @param LinkRecommendationStore $linkRecommendationStore
 	 */
 	public function __construct(
 		Config $config,
 		ILoadBalancer $lb,
 		UserOptionsLookup $userOptionsLookup,
 		NamespaceInfo $namespaceInfo,
+		TitleFactory $titleFactory,
 		IBufferingStatsdDataFactory $statsdDataFactory,
 		ConfigurationLoader $configurationLoader,
 		TrackerFactory $trackerFactory,
@@ -155,12 +163,13 @@ class HomepageHooks implements
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		LinkRecommendationProvider $linkRecommendationProvider,
-		TitleFactory $titleFactory
+		LinkRecommendationStore $linkRecommendationStore
 	) {
 		$this->config = $config;
 		$this->lb = $lb;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->namespaceInfo = $namespaceInfo;
+		$this->titleFactory = $titleFactory;
 		$this->statsdDataFactory = $statsdDataFactory;
 		$this->configurationLoader = $configurationLoader;
 		$this->trackerFactory = $trackerFactory;
@@ -170,7 +179,7 @@ class HomepageHooks implements
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->linkRecommendationProvider = $linkRecommendationProvider;
-		$this->titleFactory = $titleFactory;
+		$this->linkRecommendationStore = $linkRecommendationStore;
 	}
 
 	/**
@@ -894,6 +903,29 @@ class HomepageHooks implements
 				$skin,
 				$wgMinervaEnableSiteNotice
 			);
+		}
+	}
+
+	/**
+	 * @inheritDoc
+	 * Update link recommendation data in the search index. Used to deindex pages after they
+	 * have been edited (and thus the recommendation does not apply anymore).
+	 */
+	public function onSearchDataForIndex( &$fields, $handler, $page, $output, $engine ) {
+		// The hook is called after edits, but also on purges or edits to transcluded content,
+		// so we mustn't delete recommendations that are still valid. Checking whether there is any
+		// recommendation stored for the current revision should do the trick.
+		$revision = $page->getRevisionRecord();
+		$revId = $revision ? $revision->getId() : null;
+		// Is the revision ID accurate? Not sure (due to replication lag) but it shouldn't
+		// matter. If $page is being edited, the cache has already been refreshed and the
+		// ID is correct. If this is a purge or other re-rendering-related update, and the
+		// page has been edited very recently, and it already has a recommendation, we might
+		// end up erroneously deleting it; that's a very fringe scenario and can be ignored.
+		$hasRecommendation = $revId && $this->linkRecommendationStore->getByRevId( $revId );
+		if ( !$hasRecommendation ) {
+			$fields[WeightedTagsHooks::FIELD_NAME][] = LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX
+				. '/' . CirrusIndexField::MULTILIST_DELETE_GROUPING;
 		}
 	}
 
