@@ -227,7 +227,7 @@
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "Title of the dialog where the user can can choose topics of tasks they want to see. Same as {{msg-mw|growthexperiments-homepage-suggestededits-topic-filter-select-interests}}.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Label of the button that closes the task filter dialog.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Label of the button that closes the topic filter dialog.\n\n{{doc-growthexperiments-homepage}}\n{{identical|Done}}",
-	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "Text to display in the difficulty filter dialog for suggested edits module. Parameters:\n* $1 - Number of matching articles found, can be used with PLURAL.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "Text to display in the difficulty filter dialog for suggested edits module. Parameters:\n* $1 - Number of matching articles found, can be used with PLURAL. When searching is in progress, {{msg-mw|ellipsis}} is used in place of number.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "Human-readable name of copyedit the task type.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Human-readable name of references the task type.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Human-readable name of update the task type.\n\n{{doc-growthexperiments-homepage}}",

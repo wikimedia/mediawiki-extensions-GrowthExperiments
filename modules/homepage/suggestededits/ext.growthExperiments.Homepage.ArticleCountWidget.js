@@ -27,7 +27,7 @@ OO.inheritClass( ArticleCountWidget, OO.ui.Widget );
 /**
  * Change icons based on count value
  *
- * @param {boolean} True when search results have not been returned
+ * @param {boolean} searching True when search is in progress
  */
 ArticleCountWidget.prototype.toggleIcon = function ( searching ) {
 	this.icon.toggle( !searching );
@@ -47,7 +47,7 @@ ArticleCountWidget.prototype.setSearching = function () {
 /**
  * Change the state of searching and update count.
  *
- * @param {number} count
+ * @param {number} count The number of articles returned by search
  */
 ArticleCountWidget.prototype.setCount = function ( count ) {
 	if ( count < 0 ) {
@@ -55,21 +55,22 @@ ArticleCountWidget.prototype.setCount = function ( count ) {
 	}
 	this.toggleIcon( false );
 	this.setLabel(
-		mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filters-article-count' )
-			.params( [ mw.language.convertNumber( count ) ] )
-			.parse()
+		mw.language.convertNumber( count )
 	);
 };
 
 /**
  * Change the label based on search results
  *
- *  @param {string} A parsed mw.message
+ *  @param {string} labelParams Parameters to pass to the article count message. It can either
+ *  be a string localized number in the case where search is completed, or a parsed mw.message
+ *  in the case where search is in progress.
  */
-ArticleCountWidget.prototype.setLabel = function ( labelMessage ) {
+ArticleCountWidget.prototype.setLabel = function ( labelParams ) {
 	this.label.setLabel( new OO.ui.HtmlSnippet(
-		labelMessage
-	) );
+		mw.message( 'growthexperiments-homepage-suggestededits-difficulty-filters-article-count' )
+			.params( [ labelParams ] )
+			.parse() ) );
 };
 
 module.exports = ArticleCountWidget;
