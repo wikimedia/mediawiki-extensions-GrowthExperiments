@@ -314,7 +314,8 @@
 				"mobile"
 			],
 			"dependencies": [
-				"ext.growthExperiments.Homepage.Logger"
+				"ext.growthExperiments.Homepage.Logger",
+				"ext.growthExperiments.Homepage.icons"
 			]
 		},
 		"ext.growthExperiments.HelpPanel.icons": {
@@ -766,7 +767,8 @@
 						"ltr": "../images/mentor-ltr.svg",
 						"rtl": "../images/mentor-rtl.svg"
 					}
-				}
+				},
+				"robot-task-type": "../images/suggestededits/robot-green.svg"
 			}
 		},
 		"ext.growthExperiments.Homepage.contribs.styles": {

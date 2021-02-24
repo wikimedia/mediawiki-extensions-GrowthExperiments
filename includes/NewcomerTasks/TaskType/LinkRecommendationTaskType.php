@@ -123,4 +123,9 @@ class LinkRecommendationTaskType extends TaskType {
 		return $this->maximumWordCount;
 	}
 
+	/** @inheritDoc */
+	public function getIconName(): string {
+		return 'robot-task-type';
+	}
+
 }

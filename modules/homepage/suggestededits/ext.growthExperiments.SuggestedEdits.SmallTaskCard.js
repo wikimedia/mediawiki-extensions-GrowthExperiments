@@ -97,6 +97,10 @@
 			// * difficulty-hard
 			.prepend( new OO.ui.IconWidget( { icon: 'difficulty-' + this.taskType.difficulty } ).$element );
 
+		if ( this.taskType.iconName ) {
+			$taskType.prepend( new OO.ui.IconWidget( { icon: this.taskType.iconName } ).$element );
+		}
+
 		$glue = $( '<div>' )
 			.addClass( 'mw-ge-small-task-card-glue' );
 		$cardMetadataContainer = $( '<div>' )
