@@ -5,6 +5,7 @@ namespace GrowthExperiments\HomepageModules\SuggestedEditsComponents;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use OOUI\ButtonWidget;
+use OOUI\IconWidget;
 use OOUI\Tag;
 use OOUI\Widget;
 
@@ -78,6 +79,21 @@ class TaskExplanationWidget extends Widget {
 	}
 
 	/**
+	 * @return IconWidget|null
+	 */
+	private function getIcon() : ?IconWidget {
+		if ( $this->taskType->getIconName() ) {
+			return new IconWidget(
+				[
+					'icon' => $this->taskType->getIconName(),
+					'classes' => [ 'suggested-edits-task-explanation-icon' ]
+				]
+			);
+		}
+		return null;
+	}
+
+	/**
 	 * @return Tag
 	 */
 	private function getDescriptionRow() : Tag {
@@ -97,6 +113,7 @@ class TaskExplanationWidget extends Widget {
 				( new Tag( 'div' ) )
 					->addClasses( [ 'suggested-edits-difficulty-time-estimate' ] )
 					->appendContent(
+						$this->getIcon() ?? '',
 						( new Tag( 'div' ) )->addClasses( [
 							'suggested-edits-difficulty-indicator suggested-edits-difficulty-indicator-' . $difficulty
 						] )->appendContent(
