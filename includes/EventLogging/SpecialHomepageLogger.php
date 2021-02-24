@@ -113,7 +113,9 @@ class SpecialHomepageLogger {
 
 		$event['homepage_pageview_token'] = $this->pageviewToken;
 
-		EventLogging::logEvent( 'HomepageVisit', 20816740, $event );
+		// This has been migrated to an Event Platform schema; schema revision is no longer used
+		// in this call.  Versioned schema URI is set in extension.json.
+		EventLogging::logEvent( 'HomepageVisit', -1, $event );
 	}
 
 }
