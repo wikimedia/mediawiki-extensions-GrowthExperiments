@@ -517,9 +517,15 @@ class Impact extends BaseModule {
 	 * @inheritDoc
 	 */
 	public function getState() {
-		return (bool)$this->getArticleContributions() ?
-			self::MODULE_STATE_ACTIVATED :
-			self::MODULE_STATE_UNACTIVATED;
+		if ( $this->canRender() ) {
+			return (bool)$this->getArticleContributions() ?
+				self::MODULE_STATE_ACTIVATED :
+				self::MODULE_STATE_UNACTIVATED;
+		}
+		// FIXME: This should be self::MODULE_STATE_NOTRENDERED but since
+		// we cannot modify the HomepageVisit schema right now, logging as
+		// MODULE_STATE_UNACTIVATED will have to suffice. See T267333
+		return self::MODULE_STATE_UNACTIVATED;
 	}
 
 	private function isActivated() {

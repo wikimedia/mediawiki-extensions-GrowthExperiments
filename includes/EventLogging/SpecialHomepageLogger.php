@@ -97,8 +97,12 @@ class SpecialHomepageLogger {
 
 		/** @var Impact $impactModule */
 		$impactModule = $this->modules['impact'] ?? false;
-		if ( $impactModule && $impactModule->canRender() ) {
+		if ( $impactModule ) {
 			$event['impact_module_state'] = $impactModule->getState();
+		} else {
+			// Should not happen; it is a required schema field.
+			LoggerFactory::getInstance( 'GrowthExperiments' )
+				->error( 'Could not set HomepageVisit.impact_module_state schema field' );
 		}
 
 		/** @var StartEmail $startEmailModule */
