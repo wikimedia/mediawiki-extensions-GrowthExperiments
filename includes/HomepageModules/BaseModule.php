@@ -26,6 +26,7 @@ abstract class BaseModule implements HomepageModule {
 	protected const MODULE_STATE_NOEMAIL = 'noemail';
 	protected const MODULE_STATE_UNCONFIRMED = 'unconfirmed';
 	protected const MODULE_STATE_CONFIRMED = 'confirmed';
+	protected const MODULE_STATE_NOTRENDERED = 'notrendered';
 
 	/**
 	 * Modes that are supported by this module.Subclasses that don't support certain modes should
