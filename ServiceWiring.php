@@ -70,14 +70,15 @@ return [
 		MediaWikiServices $services
 	): LinkRecommendationProvider {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$serviceUrl = $growthServices->getConfig()->get( 'GELinkRecommendationServiceUrl' );
+		$config = $growthServices->getConfig();
+		$serviceUrl = $config->get( 'GELinkRecommendationServiceUrl' );
 		if ( $serviceUrl ) {
 			return new ServiceLinkRecommendationProvider(
 				$services->getTitleFactory(),
 				$services->getRevisionLookup(),
 				$services->getHttpRequestFactory(),
-				$serviceUrl,
-				WikiMap::getCurrentWikiId()
+				$config->get( 'GELinkRecommendationServiceUrl' ),
+				$config->get( 'GELinkRecommendationServiceWikiIdMasquerade' ) ?? WikiMap::getCurrentWikiId()
 			);
 		} else {
 			return new StaticLinkRecommendationProvider( [],

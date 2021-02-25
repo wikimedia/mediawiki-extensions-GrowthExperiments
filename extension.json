@@ -1299,6 +1299,10 @@
 			"description": "Whether to use EventGate for notifying about link recommendation creation. When set to false, uses CirrusSearch diretcly.",
 			"value": false
 		},
+		"GELinkRecommendationServiceWikiIdMasquerade": {
+			"description": "The wiki ID to use in requests to the link recommendation service. Used for developer setups.",
+			"value": null
+		},
 		"GEHomepageImpactModuleEnabled": {
 			"description": "Is the impact module in newcomer homepage enabled?",
 			"value": true
