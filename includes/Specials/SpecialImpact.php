@@ -107,6 +107,7 @@ class SpecialImpact extends SpecialPage {
 		$context->setUser( $impactUser );
 		$impact = new Impact(
 			$context,
+			$context->getConfig()->get( 'GEHomepageImpactModuleEnabled' ),
 			$this->dbr,
 			$this->experimentUserManager,
 			[
