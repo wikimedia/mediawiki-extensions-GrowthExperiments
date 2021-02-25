@@ -96,6 +96,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		$this->addDescription( 'Update the growthexperiments_link_recommendations table to ensure '
 			. 'there are enough recommendations for all topics.' );
 		$this->addOption( 'topic', 'Only update articles in the given ORES topic.', false, true );
+		$this->addOption( 'verbose', 'Show debug output.' );
 		$this->setBatchSize( 500 );
 	}
 
@@ -148,6 +149,7 @@ class RefreshLinkRecommendations extends Maintenance {
 				foreach ( $titleBatch as $title ) {
 					// TODO filter out protected pages. Needs to be batched. Or wait for T259346.
 					/** @var Title $title */
+					$this->verboseLog( "    checking candidate " . $title->getPrefixedDBkey() . "... " );
 					$lastRevision = $this->revisionStore->getRevisionByTitle( $title );
 					if ( !$this->evaluateTitle( $title, $lastRevision ) ) {
 						continue;
@@ -160,6 +162,7 @@ class RefreshLinkRecommendations extends Maintenance {
 					if ( $this->linkRecommendationStore->getByRevId( $lastRevision->getId(),
 						IDBAccessObject::READ_LATEST )
 					) {
+						$this->verboseLog( "link recommendation already stored\n" );
 						continue;
 					}
 					$recommendation = $this->linkRecommendationProviderUncached->get( $title,
@@ -167,6 +170,8 @@ class RefreshLinkRecommendations extends Maintenance {
 					if ( !$this->evaluateRecommendation( $recommendation, $lastRevision ) ) {
 						continue;
 					}
+
+					$this->verboseLog( "success, updating index\n" );
 					$this->linkRecommendationStore->insert( $recommendation );
 					$this->updateCirrusSearchIndex( $lastRevision );
 					// Caching is up to the provider, this script is just warming the cache.
@@ -326,27 +331,33 @@ class RefreshLinkRecommendations extends Maintenance {
 
 		if ( $revision === null ) {
 			// Maybe the article has just been deleted and the search index is behind?
+			$this->verboseLog( "page not found\n" );
 			return false;
 		}
 		$content = $revision->getContent( SlotRecord::MAIN );
 		if ( !$content || !$content instanceof WikitextContent ) {
+			$this->verboseLog( "content not found\n" );
 			return false;
 		}
 		$revisionTime = MWTimestamp::convert( TS_UNIX, $revision->getTimestamp() );
 		if ( time() - $revisionTime < $this->recommendationTaskType->getMinimumTimeSinceLastEdit() ) {
+			$this->verboseLog( "minimum time since last edit did not pass\n" );
 			return false;
 		}
 
 		$wordCount = preg_match_all( '/\w+/', $content->getText() );
-		if ( $wordCount < $this->recommendationTaskType->getMinimumWordCount()
-			|| $wordCount > $this->recommendationTaskType->getMaximumWordCount()
-		) {
+		if ( $wordCount < $this->recommendationTaskType->getMinimumWordCount() ) {
+			$this->verboseLog( "word count too small ($wordCount)\n" );
+			return false;
+		} elseif ( $wordCount > $this->recommendationTaskType->getMaximumWordCount() ) {
+			$this->verboseLog( "word count too large ($wordCount)\n" );
 			return false;
 		}
 
 		$db = $this->getDB( DB_REPLICA );
 		$tags = ChangeTags::getTagsWithData( $db, null, $revision->getId() );
 		if ( array_key_exists( LinkRecommendationTaskTypeHandler::CHANGE_TAG, $tags ) ) {
+			$this->verboseLog( "last edit is a link recommendation\n" );
 			return false;
 		}
 		$revertTags = array_intersect( ChangeTags::REVERT_TAGS, array_keys( $tags ) );
@@ -368,18 +379,27 @@ class RefreshLinkRecommendations extends Maintenance {
 				__METHOD__
 			);
 			if ( $revertedAddLinkEditCount > 0 ) {
+				$this->verboseLog( "last edit reverts a link recommendation edit\n" );
 				return false;
 			}
 		}
 		return true;
 	}
 
+	/**
+	 * @param LinkRecommendation|StatusValue $recommendation
+	 * @param RevisionRecord $revision
+	 * @return bool
+	 */
 	private function evaluateRecommendation( $recommendation, RevisionRecord $revision ): bool {
 		if ( !( $recommendation instanceof LinkRecommendation ) ) {
+			$this->verboseLog( "fetching recommendation failed\n" );
+			$this->error( Status::wrap( $recommendation )->getWikiText( false, false, 'en' ) );
 			return false;
 		}
 		if ( $recommendation->getRevisionId() !== $revision->getId() ) {
 			// Some kind of race condition? Generating another task is easy so just discard this.
+			$this->verboseLog( "revision ID mismatch\n" );
 			return false;
 		}
 		// We could check here for more race conditions, ie. whether the revision in the
@@ -395,6 +415,7 @@ class RefreshLinkRecommendations extends Maintenance {
 			$recommendation->getPageId(), 2 );
 		$goodLinkIds = array_diff( $goodLinkIds, $excludedLinkIds );
 		if ( count( $goodLinkIds ) < $this->recommendationTaskType->getMinimumLinksPerTask() ) {
+			$this->verboseLog( "number of good links too small (" . count( $goodLinkIds ) . ")\n" );
 			return false;
 		}
 
@@ -429,6 +450,12 @@ class RefreshLinkRecommendations extends Maintenance {
 		// 0 ID used for non-existent pages (we assume those won't be recommended anyway),
 		// squash duplicates (just in case; they shouldn't exist).
 		return array_unique( array_filter( array_values( $ids ) ) );
+	}
+
+	private function verboseLog( string $message ): void {
+		if ( $this->hasOption( 'verbose' ) ) {
+			$this->output( $message );
+		}
 	}
 
 }
