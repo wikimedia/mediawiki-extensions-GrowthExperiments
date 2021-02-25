@@ -54,8 +54,8 @@
 	};
 
 	TaskExplanationWidget.prototype.getIcon = function () {
-		if ( this.taskTypeData.iconName ) {
-			return new OO.ui.IconWidget( { icon: this.taskTypeData.iconName, classes: [ 'suggested-edits-task-explanation-icon' ] } ).$element;
+		if ( 'icon' in this.taskTypeData.iconData ) {
+			return new OO.ui.IconWidget( { icon: this.taskTypeData.iconData.icon, classes: [ 'suggested-edits-task-explanation-icon' ] } ).$element;
 		}
 		return '';
 	};

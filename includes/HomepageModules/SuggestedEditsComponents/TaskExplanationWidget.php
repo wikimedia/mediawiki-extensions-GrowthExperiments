@@ -82,10 +82,11 @@ class TaskExplanationWidget extends Widget {
 	 * @return IconWidget|null
 	 */
 	private function getIcon() : ?IconWidget {
-		if ( $this->taskType->getIconName() ) {
+		$iconData = $this->taskType->getIconData();
+		if ( array_key_exists( 'icon', $iconData ) ) {
 			return new IconWidget(
 				[
-					'icon' => $this->taskType->getIconName(),
+					'icon' => $iconData['icon'],
 					'classes' => [ 'suggested-edits-task-explanation-icon' ]
 				]
 			);
