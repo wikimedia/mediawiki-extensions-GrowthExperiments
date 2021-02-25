@@ -58,7 +58,7 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 	public function get( LinkTarget $title, LinkRecommendationTaskType $taskType ) {
 		$title = $this->titleFactory->newFromLinkTarget( $title );
 		$pageId = $title->getArticleID();
-		$titleText = $title->getPrefixedText();
+		$titleText = $title->getPrefixedDBkey();
 		$revId = $title->getLatestRevID();
 
 		if ( !$revId ) {
@@ -73,8 +73,6 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 		$wikitext = $content->getText();
 
 		$args = [
-			'wiki_id' => $this->wikiId,
-			'page_title' => $titleText,
 			'pageid' => $pageId,
 			'revid' => $revId,
 			'wikitext' => $wikitext,
@@ -82,7 +80,10 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 			'max_recommendations' => $taskType->getMaximumLinksPerTask(),
 		];
 		$request = $this->httpRequestFactory->create(
-			$this->url . '/query',
+			$this->url . sprintf(
+				'/v0/linkrecommendations/%s/%s',
+				rawurlencode( $this->wikiId ), rawurlencode( $titleText )
+			),
 			[
 				'method' => 'POST',
 				'postData' => json_encode( $args ),
