@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"ANukuma",
 			"Diki Ananta",
 			"Johnstad Di Maria",
 			"Notanotheramy",
@@ -98,6 +99,9 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|suntingan}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Jumlah tayangan penyuntingan terakhir (60 hari terakhir):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Pantau artikel yang telah Anda sunting",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 suntingan dibuat hingga saat ini",
+	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Bantu memperluas pengetahuan bebas kepada dunia dengan menyunting topik yang paling penting bagi {{GENDER:$1|Anda}}.",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Lihat saranan suntingan",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Pemberitahuan meja bantuan",
 	"growthexperiments-tour-response-tip-text": "Ketika pertanyaan {{GENDER:$1|Anda}} terjawab, {{GENDER:$1|Anda}} akan menerima pemberitahuan di sini.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Pemberitahuan mentor",
@@ -105,6 +109,7 @@
 	"growthexperiments-tour-response-button-okay": "Mengerti",
 	"tag-help_module_question": "Pertanyaan modul bantuan",
 	"tag-mentorship_panel_question": "Panel pertanyaan bimbingan",
+	"tag-mentorship_panel_question-description": "Suntingan yang dibuat dari panel bantuan fitur \"Tanya mentor Anda\"",
 	"tag-newcomer_task": "Tugas pengguna baru",
 	"tag-newcomer_task-description": "Suntingan yang disarankan oleh modul saranan penyuntingan dari beranda pengguna baru",
 	"tag-newcomer_task_add_link": "Disarankan: tambahkan tautan",
@@ -125,6 +130,7 @@
 	"growthexperiments-homepage-mentorship-question-button": "Tanya pertanyaan kepada {{GENDER:$1|mentor}} {{GENDER:$2|Anda}}",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Lihat percakapan lain oleh {{GENDER:$1|mentor}} {{GENDER:$2|Anda}}",
 	"growthexperiments-homepage-mentorship-dialog-title": "Tanya kepada {{GENDER:$1|mentor}} {{GENDER:$2|Anda}}",
+	"growthexperiments-homepage-mentorship-questionreview-header": "Saat Anda mengajukan pertanyaan, pertanyaan tersebut <strong>diposting secara terbuka</strong> dibawah nama pengguna {{GENDER:$2|Anda}}, \"$2\", to $3, tempat di mana {{GENDER:$1|ia|ia|mereka}} dapat menemukan dan menanggapi pertanyaan Anda.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "Halaman pembicaraan {{GENDER:$1|mentor}} {{GENDER:$2|Anda}}",
 	"growthexperiments-homepage-mentorship-confirmation-text": "Pertanyaan {{GENDER:$2|Anda}} sudah berada di halaman pembicaraan mentor Anda. Pertanyaan akan dijawab oleh {{GENDER:$1|dia}} sesegera mungkin.",
 	"growthexperiments-homepage-mentorship-view-question-text": "Lihat pertanyaan {{GENDER:$2|Anda}} di halaman pembicaraan {{GENDER:$1|mentor}} Anda.",
@@ -272,7 +278,11 @@
 	"growthexperiments-homepage-claimmentee-title": "Bimbing pengguna ini",
 	"growthexperiments-homepage-claimmentee-mentee": "Nama pengguna yang dibimbing",
 	"growthexperiments-homepage-claimmentee-reason": "Alasan membimbing pengguna ini",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|Anda mengganti}} mentor dari {{PLURAL:$2|pengguna|pengguna}} $1 ke{{GENDER:$4|$5}}",
+	"growthexperiments-homepage-claimmentee-alreadychanged": "Mentor dari {{GENDER:$1|$1}} telah diganti. Apakah {{GENDER:$2|Anda}} yakin apabila {{GENDER:$2|Anda}} ingin menggantinya kembali?",
 	"growthexperiments-claimmentee-confirm": "Ya, saya ingin mengganti mentor",
+	"log-action-filter-growthexperiments-addlink": "Rekomendasi pranala",
+	"growthexperiments-homepage-claimmentee-invalid-username": "Nama pengguna yang dibimbing tidak valid",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|adalah}} mentor baru {{GENDER:$3|Anda}}",
 	"growthexperiments-notification-body-mentor-change": "Alasan: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "{{GENDER:$3|Sapa}} {{GENDER:$2|mentor}} baru {{GENDER:$3|Anda}}!",
@@ -286,5 +296,13 @@
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Mengerti",
 	"growthexperiments-addlink-pagenotfound": "Halaman \"$1\" tidak ada",
 	"growthexperiments-addlink-revdeleted": "Revisi $1 dari \"$2\" tidak dapak diakses",
-	"growthexperiments-addlink-wrongmodel": "Revisi $1 dari \"$2\" bukan berupa teks wiki"
+	"growthexperiments-addlink-wrongmodel": "Revisi $1 dari \"$2\" bukan berupa teks wiki",
+	"growthexperiments-addlink-context-button-accept": "Ya",
+	"growthexperiments-addlink-context-button-reject": "Tidak",
+	"growthexperiments-addlink-context-button-next": "Lewati",
+	"growthexperiments-addlink-rejectiondialog-title": "Mengapa ini bukan tautan yang baik? <em>(Opsional)</em>",
+	"growthexperiments-addlink-rejectiondialog-message": "Jawaban Anda dapat digunakan untuk meningkatkan kualitas saranan AI.",
+	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "Sudah ditautkan sebelumnya di artikel",
+	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Pranala tujuan tidak benar (contohnya menautkan \"matahari\" ke \"bintang\")",
+	"growthexperiments-addlink-rejectiondialog-action-done": "Selesai"
 }

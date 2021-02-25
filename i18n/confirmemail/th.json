@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Prame Tan"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|นี่คืออะไร?]])",
+	"growthexperiments-confirmemail-emailhelp": "จำเป็นต้องใช้อีเมลเพื่อกู้คืนบัญชีใช้งาน ถ้าคุณลืมรหัสผ่าน",
+	"growthexperiments-confirmemail-emailrecommended": "ที่อยู่อีเมล (แนะนำ)",
+	"growthexperiments-confirmemail-emailwarning": "กรุณารอรับอีเมลจากเราเพื่อยืนยันที่อยู่อีเมล",
+	"growthexperiments-confirmemail-confirm-subject": "ยินดีต้อนรับสู่ {{SITENAME}}: กรุณายืนยันที่อยู่อีเมลของคุณ",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|สวัสดี}} $2,\n\nขอบคุณที่เพิ่มอีเมลของคุณกับบัญชีผู้ใช้ {{SITENAME}} ซึ่งลงทะเบียนจาก IP address $1.\n\nกรุณาคลิกลิงก์ด้านล่างเพื่อยืนยันว่าที่อยู่อีเมลนี้เป็นอีเมลที่คุณต้องการเชื่อมโยงกับบัญชีผู้ใช้ \"$2\" ของคุณ\n\n$3\n\nหมายเหตุ: รหัสยืนยันนี้จะหมดอายุเมื่อ $4\n\nขอบคุณ,\n\n{{SITENAME}}\n\n----\n\nถ้าคุณต้องการยกเลิกการยืนยันอีเมล (เพราะคุณไม่ได้ลงทะเบียนบัญชีผู้ใช้กับเรา หรือด้วยสาเหตุอื่น) คลิกที่ลิงก์ยกเลิกด้านล่าง\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "ยืนยันที่อยู่อีเมล",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|สวัสดี}} $2,\n\nขอบคุณที่เพิ่มอีเมลของคุณกับบัญชีผู้ใช้ {{SITENAME}} ซึ่งลงทะเบียนจาก IP address $1.\n\nกรุณาคลิกลิงก์ด้านล่างเพื่อยืนยันว่าที่อยู่อีเมลนี้เป็นอีเมลที่คุณต้องการเชื่อมโยงกับบัญชีผู้ใช้ \"$2\" ของคุณ\n\n$3\n\nหมายเหตุ: รหัสยืนยันนี้จะหมดอายุเมื่อ $4\n\nขอบคุณ,\n\n{{SITENAME}}\n\n----\n\nถ้าคุณต้องการยกเลิกการยืนยันอีเมล (เพราะคุณไม่ได้ลงทะเบียนบัญชีผู้ใช้กับเรา หรือด้วยสาเหตุอื่น) คลิกที่ลิงก์ยกเลิกด้านล่าง\n\n$5"
+}
