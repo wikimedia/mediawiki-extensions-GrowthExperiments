@@ -96,6 +96,7 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|redigering|redigeringar}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Visningar från senaste redigeringar (senaste 60 dagarna):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Överblicka visningar av artiklar du har redigerat",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 redigeringar hittills",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Avisering från fikarummet",
 	"growthexperiments-tour-response-tip-text": "När {{GENDER:$1|din}} fråga besvaras kommer {{GENDER:$1|du}} få en ny avisering här.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Fadderaviseringar",

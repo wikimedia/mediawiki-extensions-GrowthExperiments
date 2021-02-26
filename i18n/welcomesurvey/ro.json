@@ -42,7 +42,7 @@
 	"welcomesurvey-question-email-label": "Adresa de e-mail (opțională)",
 	"welcomesurvey-question-email-placeholder": "Introduceți adresa dumneavoastră de e-mail",
 	"welcomesurvey-question-email-help": "Am observat că nu ați introdus o adresă de e-mail când ați creat acest cont. Este <strong>puternic recomandat</strong>, din moment ce este necesară o adresă de e-mail pentru recuperarea contului dacă vă pierdeți vreodată parola. NOTĂ: Adresa dvs. de e-mail nu este divulgată când vă contactează alți utilizatori.",
-	"welcomesurvey-question-languages-label": "{{SITENAME}} este disponibilă în aproape 300 de limbi. Există ale limbi în care scrieți și citiți?",
+	"welcomesurvey-question-languages-label": "{{SITENAME}} este disponibilă în aproape 300 de limbi. Există alte limbi în care scrieți și citiți?",
 	"welcomesurvey-question-languages-placeholder": "Adăugați până la {{PLURAL:$1|o limbă|$1 limbi}}...",
 	"welcomesurvey-question-languages-maximum": "Ați adăugat numărul maxim de limbi."
 }
