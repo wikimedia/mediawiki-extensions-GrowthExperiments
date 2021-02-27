@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
+namespace GrowthExperiments\Config;
 
 use ApiRawMessage;
 use BagOStuff;
@@ -11,18 +11,28 @@ use JsonContent;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Revision\RevisionLookup;
+use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Revision\SlotRecord;
-use MediaWiki\Storage\RevisionRecord;
 use StatusValue;
 use TitleFactory;
 
 /**
- * Helper class for PageConfigurationLoader that loads a specified JSON page.
- * If the passed LinkTarget is an interwiki, it will be loaded via a HTTP request,
- * otherwise by direct database lookup.
+ * This class allows callers to fetch various variables
+ * from JSON pages stored on-wiki (the pages need to have JSON
+ * as their content model). It is currently used for configuration
+ * of NewcomerTasks (see [[:w:cs:MediaWiki:NewcomerTasks]] as an example).
+ *
+ * The MediaWiki pages need to be formatted like this:
+ * {
+ * 		"ConfigVariable": "value",
+ * 		"OtherConfigVariable": "value"
+ * }
+ *
+ * Previously present in GrowthExperiments
+ * as \GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageLoader,
+ * generalized to this class taking care about config in general.
  */
-class PageLoader {
-
+class WikiPageConfigLoader {
 	/** @var HttpRequestFactory */
 	private $requestFactory;
 
@@ -51,7 +61,8 @@ class PageLoader {
 		$this->requestFactory = $requestFactory;
 		$this->revisionLookup = $revisionLookup;
 		$this->titleFactory = $titleFactory;
-		$this->cache = new HashBagOStuff();
+
+		$this->setCache( new HashBagOStuff(), 0 );
 	}
 
 	/**
@@ -65,8 +76,25 @@ class PageLoader {
 	}
 
 	/**
+	 * @param LinkTarget $configPage
+	 * @return string
+	 */
+	private function makeCacheKey( LinkTarget $configPage ) {
+		return $this->cache->makeKey( 'GrowthExperiments',
+			'config', $configPage->getNamespace(), $configPage->getDBkey() );
+	}
+
+	/**
+	 * @param LinkTarget $configPage
+	 */
+	public function invalidate( LinkTarget $configPage ) {
+		$cacheKey = $this->makeCacheKey( $configPage );
+		$this->cache->delete( $cacheKey );
+	}
+
+	/**
 	 * Load the configured page, with caching.
-	 * @param LinkTarget $configPage The page to load from
+	 * @param LinkTarget $configPage
 	 * @return array|StatusValue The content of the configuration page (as JSON
 	 *   data in PHP-native format), or a StatusValue on error.
 	 */
@@ -91,29 +119,13 @@ class PageLoader {
 	}
 
 	/**
-	 * Clear any cached contents from the given page.
-	 * @param LinkTarget $configPage
-	 */
-	public function invalidate( LinkTarget $configPage ) {
-		$cacheKey = $this->makeCacheKey( $configPage );
-		$this->cache->delete( $cacheKey );
-	}
-
-	/**
-	 * @param LinkTarget $configPage
-	 * @return string
-	 */
-	private function makeCacheKey( LinkTarget $configPage ) {
-		return $this->cache->makeKey( 'GrowthExperiments', 'NewcomerTasks',
-			'config', $configPage->getNamespace(), $configPage->getDBkey() );
-	}
-
-	/**
 	 * Fetch the contents of the configuration page, without caching.
 	 * @param LinkTarget $configPage
 	 * @return StatusValue Status object, with the configuration (as JSON data) on success.
 	 */
 	private function fetchConfig( LinkTarget $configPage ) {
+		// TODO: Move newcomer-tasks-* messages to...somewhere more generic
+
 		if ( $configPage->isExternal() ) {
 			$url = Util::getRawUrl( $configPage, $this->titleFactory );
 			return Util::getJsonUrl( $this->requestFactory, $url );
@@ -135,5 +147,4 @@ class PageLoader {
 			return FormatJson::parse( $content->getText(), FormatJson::FORCE_ASSOC );
 		}
 	}
-
 }

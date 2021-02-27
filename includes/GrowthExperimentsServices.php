@@ -3,6 +3,7 @@
 namespace GrowthExperiments;
 
 use Config;
+use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
@@ -133,6 +134,10 @@ class GrowthExperimentsServices {
 
 	public function getTipNodeRenderer(): TipNodeRenderer {
 		return $this->coreServices->get( 'GrowthExperimentsTipNodeRenderer' );
+	}
+
+	public function getWikiPageConfigLoader(): WikiPageConfigLoader {
+		return $this->coreServices->get( 'GrowthExperimentsWikiPageConfigLoader' );
 	}
 
 }

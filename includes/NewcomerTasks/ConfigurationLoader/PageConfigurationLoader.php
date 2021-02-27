@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
+use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
@@ -43,8 +44,8 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 	/** @var TitleFactory */
 	private $titleFactory;
 
-	/** @var PageLoader */
-	private $pageLoader;
+	/** @var WikiPageConfigLoader */
+	private $configLoader;
 
 	/** @var TaskTypeHandlerRegistry */
 	private $taskTypeHandlerRegistry;
@@ -80,7 +81,7 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 
 	/**
 	 * @param TitleFactory $titleFactory
-	 * @param PageLoader $pageLoader
+	 * @param WikiPageConfigLoader $configLoader
 	 * @param ConfigurationValidator $configurationValidator
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param string|LinkTarget $taskConfigurationPage Wiki page to load task configuration from
@@ -91,7 +92,7 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
-		PageLoader $pageLoader,
+		WikiPageConfigLoader $configLoader,
 		ConfigurationValidator $configurationValidator,
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		$taskConfigurationPage,
@@ -99,7 +100,7 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 		string $topicType
 	) {
 		$this->titleFactory = $titleFactory;
-		$this->pageLoader = $pageLoader;
+		$this->configLoader = $configLoader;
 		$this->configurationValidator = $configurationValidator;
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->taskConfigurationPage = $taskConfigurationPage;
@@ -128,7 +129,7 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 			return $this->taskTypes;
 		}
 
-		$config = $this->pageLoader->load( $this->makeTitle( $this->taskConfigurationPage ) );
+		$config = $this->configLoader->load( $this->makeTitle( $this->taskConfigurationPage ) );
 		if ( $config instanceof StatusValue ) {
 			$taskTypes = $config;
 		} else {
@@ -153,7 +154,7 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 			return $this->topics;
 		}
 
-		$config = $this->pageLoader->load( $this->makeTitle( $this->topicConfigurationPage ) );
+		$config = $this->configLoader->load( $this->makeTitle( $this->topicConfigurationPage ) );
 		if ( $config instanceof StatusValue ) {
 			$topics = $config;
 		} else {
@@ -171,7 +172,7 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 			return $this->excludedTemplates;
 		}
 
-		$config = $this->pageLoader->load( $this->makeTitle( $this->taskConfigurationPage ) );
+		$config = $this->configLoader->load( $this->makeTitle( $this->taskConfigurationPage ) );
 		if ( $config instanceof StatusValue ) {
 			$excludedTemplates = $config;
 		} else {
@@ -189,7 +190,7 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 			return $this->excludedCategories;
 		}
 
-		$config = $this->pageLoader->load( $this->makeTitle( $this->taskConfigurationPage ) );
+		$config = $this->configLoader->load( $this->makeTitle( $this->taskConfigurationPage ) );
 		if ( $config instanceof StatusValue ) {
 			$excludedCategories = $config;
 		} else {
@@ -373,9 +374,9 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 		$taskConfigurationTitle = $this->makeTitle( $this->taskConfigurationPage );
 		$topicConfigurationTitle = $this->makeTitle( $this->topicConfigurationPage );
 		if ( $title->equals( $taskConfigurationTitle ) ) {
-			$this->pageLoader->invalidate( $taskConfigurationTitle );
+			$this->configLoader->invalidate( $taskConfigurationTitle );
 		} elseif ( $topicConfigurationTitle && $title->equals( $topicConfigurationTitle ) ) {
-			$this->pageLoader->invalidate( $topicConfigurationTitle );
+			$this->configLoader->invalidate( $topicConfigurationTitle );
 		}
 	}
 

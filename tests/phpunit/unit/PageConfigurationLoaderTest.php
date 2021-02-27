@@ -3,9 +3,9 @@
 namespace GrowthExperiments\Tests;
 
 use Collation;
+use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
@@ -41,7 +41,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $this->getTaskConfig(), [],
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
-		// in getMockPageLoader() will fail.
+		// in getMockWikiPageConfigLoader() will fail.
 		foreach ( range( 1, 2 ) as $_ ) {
 			$taskTypes = $configurationLoader->loadTaskTypes();
 			$this->assertIsArray( $taskTypes );
@@ -119,7 +119,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], $this->getOresTopicConfig(),
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
-		// in getMockPageLoader() will fail.
+		// in getMockWikiPageConfigLoader() will fail.
 		foreach ( range( 1, 2 ) as $_ ) {
 			$topics = $configurationLoader->loadTopics();
 			$this->assertIsArray( $topics );
@@ -172,7 +172,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( [], $this->getMorelikeTopicConfig(),
 			PageConfigurationLoader::CONFIGURATION_TYPE_MORELIKE );
 		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
-		// in getMockPageLoader() will fail.
+		// in getMockWikiPageConfigLoader() will fail.
 		foreach ( range( 1, 2 ) as $_ ) {
 			$topics = $configurationLoader->loadTopics();
 			$this->assertIsArray( $topics );
@@ -229,11 +229,11 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 */
 	public function testLoadTopics_noLoader() {
 		$taskTitle = new TitleValue( NS_MEDIAWIKI, 'TaskConfiguration' );
-		$pageLoader = $this->getMockPageLoader( [ '8:TaskConfiguration' => [] ] );
+		$wikiPageConfigLoader = $this->getMockWikiPageConfigLoader( [ '8:TaskConfiguration' => [] ] );
 		$configurationValidator = $this->createMock( ConfigurationValidator::class );
 		$taskHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
 		$configurationLoader = new PageConfigurationLoader( $this->getMockTitleFactory( [], false ),
-			$pageLoader, $configurationValidator, $taskHandlerRegistry, $taskTitle, null,
+			$wikiPageConfigLoader, $configurationValidator, $taskHandlerRegistry, $taskTitle, null,
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$topics = $configurationLoader->loadTopics();
 		$this->assertSame( [], $topics );
@@ -272,7 +272,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
-		// in getMockPageLoader() will fail.
+		// in getMockWikiPageConfigLoader() will fail.
 		foreach ( range( 1, 2 ) as $_ ) {
 			$excludedTemplates = $configurationLoader->loadExcludedTemplates();
 			$this->assertIsArray( $excludedTemplates );
@@ -331,7 +331,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
-		// in getMockPageLoader() will fail.
+		// in getMockWikiPageConfigLoader() will fail.
 		foreach ( range( 1, 2 ) as $_ ) {
 			$excludedCategories = $configurationLoader->loadExcludedCategories();
 			$this->assertIsArray( $excludedCategories );
@@ -485,12 +485,12 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$collation = $this->getMockCollation();
 		$configurationValidator = new ConfigurationValidator( $messageLocalizer, $collation,
 			$this->getMockTitleParser() );
-		$pageLoader = $this->getMockPageLoader( [
+		$wikiPageConfigLoader = $this->getMockWikiPageConfigLoader( [
 			'8:TaskConfigPage' => $taskConfig,
 			'8:TopicConfigPage' => $topicConfig,
 		] );
 		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry( $configurationValidator );
-		return new PageConfigurationLoader( $titleFactory, $pageLoader, $configurationValidator,
+		return new PageConfigurationLoader( $titleFactory, $wikiPageConfigLoader, $configurationValidator,
 			$taskTypeHandlerRegistry, $taskConfigTitle, $topicConfigTitle, $topicType );
 	}
 
@@ -559,10 +559,10 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	/**
 	 * @param array $map Map of title => JSON array or StatusValue, where title is in
 	 *   stringified TitleValue format.
-	 * @return PageLoader|MockObject
+	 * @return WikiPageConfigLoader|MockObject
 	 */
-	protected function getMockPageLoader( $map ) {
-		$loader = $this->getMockBuilder( PageLoader::class )
+	protected function getMockWikiPageConfigLoader( $map ) {
+		$loader = $this->getMockBuilder( WikiPageConfigLoader::class )
 			->disableOriginalConstructor()
 			->setMethods( [ 'load' ] )
 			->getMock();
