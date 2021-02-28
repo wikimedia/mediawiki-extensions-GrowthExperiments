@@ -139,7 +139,8 @@ return [
 			RequestContext::getMain(),
 			RequestContext::getMain()->getLanguage(),
 			$config->get( 'GEHomepageMentorsList' ) ?: null,
-			$config->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null
+			$config->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null,
+			RequestContext::getMain()->getRequest()->wasPosted()
 		);
 		$manager->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $manager;

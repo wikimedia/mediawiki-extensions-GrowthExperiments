@@ -57,6 +57,9 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	/** @var MessageLocalizer */
 	private $messageLocalizer;
 
+	/** @var bool */
+	private $wasPosted;
+
 	/** @var Language */
 	private $language;
 
@@ -80,6 +83,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 * @param string|null $manuallyAssignedMentorsPageName Title of the page which contains the list of automatically
 	 *   assigned mentors. May be null if no such page exists.
 	 *   See the documentation for GEHomepageManualAssignmentMentorsList for format.
+	 * @param bool $wasPosted Is this a POST request?
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
@@ -90,7 +94,8 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		MessageLocalizer $messageLocalizer,
 		Language $language,
 		?string $mentorsPageName,
-		?string $manuallyAssignedMentorsPageName
+		?string $manuallyAssignedMentorsPageName,
+		$wasPosted
 	) {
 		$this->cache = new HashBagOStuff();
 		$this->cacheTtl = 0;
@@ -104,6 +109,8 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$this->language = $language;
 		$this->mentorsPageName = $mentorsPageName;
 		$this->manuallyAssignedMentorsPageName = $manuallyAssignedMentorsPageName;
+		$this->wasPosted = $wasPosted;
+
 		$this->setLogger( new NullLogger() );
 	}
 
@@ -159,15 +166,22 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 	/** @inheritDoc */
 	public function setMentorForUser( UserIdentity $user, UserIdentity $mentor ): void {
-		// We cannot use a master connection on what is possibly a GET request, so save via the
-		// job queue.
-		// But set the option immediately in UserOptionsManager's in-process cache to avoid
-		// race conditions.
 		$this->userOptionsManager->setOption( $user, static::MENTOR_PREF, $mentor->getId() );
-		JobQueueGroup::singleton()->lazyPush( new UserOptionsUpdateJob( [
-			'userId' => $user->getId(),
-			'options' => [ static::MENTOR_PREF => $mentor->getId() ]
-		] ) );
+
+		// setMentorForUser is safe to call in GET requests. Call saveOptions only
+		// when we're in a POST request, change it with a job if we're in a GET request.
+		// setOption is outside of this if to set the option immediately in
+		// UserOptionsManager's in-process cache to avoid race conditions.
+		if ( $this->wasPosted ) {
+			// Do not defer to job queue when in a POST request, assures quicker
+			// propagation of mentor changes.
+			$this->userOptionsManager->saveOptions( $user );
+		} else {
+			JobQueueGroup::singleton()->lazyPush( new UserOptionsUpdateJob( [
+				'userId' => $user->getId(),
+				'options' => [ static::MENTOR_PREF => $mentor->getId() ]
+			] ) );
+		}
 	}
 
 	/**
