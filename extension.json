@@ -121,7 +121,10 @@
 			"class": "GrowthExperiments\\ParserFunctionsHooks"
 		},
 		"mentor": {
-			"class": "GrowthExperiments\\Mentorship\\MentorHooks"
+			"class": "GrowthExperiments\\Mentorship\\MentorHooks",
+			"services": [
+				"MainConfig"
+			]
 		},
 		"tour": {
 			"class": "GrowthExperiments\\TourHooks",
@@ -149,7 +152,8 @@
 		],
 		"LocalUserCreated": [
 			"GrowthExperiments\\HelpPanelHooks::onLocalUserCreated",
-			"homepage"
+			"homepage",
+			"mentor"
 		],
 		"GetPreferences": [
 			"welcomeSurvey",

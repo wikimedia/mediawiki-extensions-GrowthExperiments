@@ -55,7 +55,6 @@ use SpecialPage;
 use Status;
 use StatusValue;
 use stdClass;
-use Throwable;
 use Title;
 use TitleFactory;
 use User;
@@ -586,18 +585,6 @@ class HomepageHooks implements
 			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME, 0 );
 			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_DISCOVERY, 0 );
 			$user->setOption( self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN, 0 );
-			try {
-				// Select a mentor. FIXME Not really necessary, but avoids a change in functionality
-				//   after introducing MentorManager, making debugging easier.
-				GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
-					->getMentorManager()->getMentorForUser( $user );
-			} catch ( Throwable $throwable ) {
-				Util::logError( $throwable, [
-					'user' => $user->getId(),
-					'impact' => 'Failed to assign mentor for user',
-					'origin' => __METHOD__,
-				] );
-			}
 
 			if (
 				$this->config->get( 'GEHelpPanelNewAccountEnableWithHomepage' ) &&
