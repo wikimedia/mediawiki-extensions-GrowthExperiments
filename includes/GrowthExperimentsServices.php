@@ -5,6 +5,7 @@ namespace GrowthExperiments;
 use Config;
 use GrowthExperiments\Config\WikiPageConfig;
 use GrowthExperiments\Config\WikiPageConfigLoader;
+use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
@@ -155,6 +156,10 @@ class GrowthExperimentsServices {
 
 	public function getWikiPageConfigLoader(): WikiPageConfigLoader {
 		return $this->coreServices->get( 'GrowthExperimentsWikiPageConfigLoader' );
+	}
+
+	public function getWikiPageConfigWriterFactory(): WikiPageConfigWriterFactory {
+		return $this->coreServices->get( 'GrowthExperimentsWikiPageConfigWriterFactory' );
 	}
 
 }

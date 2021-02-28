@@ -4,6 +4,7 @@ use GrowthExperiments\AqsEditInfoService;
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
 use GrowthExperiments\Config\WikiPageConfig;
 use GrowthExperiments\Config\WikiPageConfigLoader;
+use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\GrowthExperimentsServices;
@@ -368,6 +369,17 @@ return [
 			CachedBagOStuff::TTL_MINUTE
 		);
 		return $wikiPageConfigLoader;
+	},
+
+	'GrowthExperimentsWikiPageConfigWriterFactory' => function (
+		MediaWikiServices $services
+	) {
+		$growthExperimentsServices = GrowthExperimentsServices::wrap( $services );
+		return new WikiPageConfigWriterFactory(
+			$growthExperimentsServices->getWikiPageConfigLoader(),
+			$services->getWikiPageFactory(),
+			$services->getTitleFactory()
+		);
 	},
 
 	'_GrowthExperimentsAQSConfig' => function ( MediaWikiServices $services ): stdClass {
