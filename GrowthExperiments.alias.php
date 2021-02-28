@@ -19,6 +19,7 @@ $specialPageAliases['en'] = [
 	'Impact' => [ 'Impact' ],
 	'ClaimMentee' => [ 'ClaimMentee' ],
 	'NewcomerTasksInfo' => [ 'NewcomerTasksInfo' ],
+	'EditGrowthConfig' => [ 'EditGrowthConfig' ],
 ];
 
 /** Arabic */

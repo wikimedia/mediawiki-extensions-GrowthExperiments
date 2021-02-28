@@ -23,6 +23,7 @@ class GrowthExperimentsMultiConfig implements Config {
 	/** @var MultiConfig */
 	private $multiConfig;
 
+	// This should be in sync with SpecialEditGrowthConfig::getFormFields
 	public const ALLOW_LIST = [
 		'GEHelpPanelReadingModeNamespaces',
 		'GEHelpPanelExcludedNamespaces',
