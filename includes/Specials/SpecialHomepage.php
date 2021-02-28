@@ -215,11 +215,9 @@ class SpecialHomepage extends SpecialPage {
 	 * @return BaseModule[]
 	 */
 	private function getModules( bool $isMobile, $par = '' ) {
-		$variantCD = $this->experimentUserManager->isUserInVariant( $this->getUser(), [ 'C', 'D' ] );
 		$moduleConfig = array_filter( [
 			'banner' => true,
-			'start' => !$variantCD,
-			'startemail' => $variantCD,
+			'startemail' => true,
 			// Only load start-startediting code for unactivated SE users in variant D
 			'start-startediting' => SuggestedEdits::isEnabledForAnyone(
 				$this->getContext()->getConfig()
