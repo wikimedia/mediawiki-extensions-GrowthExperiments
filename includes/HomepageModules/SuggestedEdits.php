@@ -398,11 +398,8 @@ class SuggestedEdits extends BaseModule {
 	 * @suppress SecurityCheck-DoubleEscaped
 	 */
 	protected function getMobileSummaryBody() {
-		$user = $this->getContext()->getUser();
-		$showTaskPreview = $this->experimentUserManager->isUserInVariant( $user, [ 'C', 'D' ] )
-			// If the task cannot be loaded, fall back to the old summary style for now.
-			&& $this->getTaskSet() instanceof TaskSet
-			&& $this->getTaskSet()->count() > 0;
+		// If the task cannot be loaded, fall back to the old summary style for now.
+		$showTaskPreview = $this->getTaskSet() instanceof TaskSet && $this->getTaskSet()->count() > 0;
 
 		if ( $showTaskPreview ) {
 			$taskPager = $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
