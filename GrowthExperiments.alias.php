@@ -76,6 +76,14 @@ $specialPageAliases['he'] = [
 	'ClaimMentee' => [ 'קליטת_חניך' ],
 ];
 
+/** Croatian (hrvatski) */
+$specialPageAliases['hr'] = [
+	'WelcomeSurvey' => [ 'Anketa_dobrodošlice' ],
+	'Homepage' => [ 'Početna_stranica' ],
+	'Impact' => [ 'Djejstvo' ],
+	'ClaimMentee' => [ 'Tvrde_pridošlica' ],
+];
+
 /** Hungarian (magyar) */
 $specialPageAliases['hu'] = [
 	'WelcomeSurvey' => [ 'Új_szerkesztők_kérdőíve' ],
