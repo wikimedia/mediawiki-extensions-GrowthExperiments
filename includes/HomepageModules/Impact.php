@@ -76,9 +76,14 @@ class Impact extends BaseModule {
 	 * @var PageViewService|null
 	 */
 	private $pageViewService;
+	/**
+	 * @var bool
+	 */
+	private $isEnabled;
 
 	/**
 	 * @param IContextSource $context
+	 * @param bool $isEnabled
 	 * @param IDatabase $dbr
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param array $suggestedEditsConfig
@@ -87,6 +92,7 @@ class Impact extends BaseModule {
 	 */
 	public function __construct(
 		IContextSource $context,
+		bool $isEnabled,
 		IDatabase $dbr,
 		ExperimentUserManager $experimentUserManager,
 		array $suggestedEditsConfig,
@@ -99,11 +105,12 @@ class Impact extends BaseModule {
 		$this->isSuggestedEditsActivatedForUser = $suggestedEditsConfig['isSuggestedEditsActivated'];
 		$this->titleFactory = $titleFactory;
 		$this->pageViewService = $pageViewService;
+		$this->isEnabled = $isEnabled;
 	}
 
 	/** @inheritDoc */
 	public function canRender() {
-		return $this->pageViewService !== null;
+		return $this->isEnabled && $this->pageViewService !== null;
 	}
 
 	/**
@@ -522,10 +529,7 @@ class Impact extends BaseModule {
 				self::MODULE_STATE_ACTIVATED :
 				self::MODULE_STATE_UNACTIVATED;
 		}
-		// FIXME: This should be self::MODULE_STATE_NOTRENDERED but since
-		// we cannot modify the HomepageVisit schema right now, logging as
-		// MODULE_STATE_UNACTIVATED will have to suffice. See T267333
-		return self::MODULE_STATE_UNACTIVATED;
+		return self::MODULE_STATE_NOTRENDERED;
 	}
 
 	private function isActivated() {

@@ -124,6 +124,7 @@ class HomepageModuleRegistry {
 				$pageViewInfoEnabled = ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
 				return new Impact(
 					$context,
+					$growthServices->getConfig()->get( 'GEHomepageImpactModuleEnabled' ),
 					$services->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA ),
 					$growthServices->getExperimentUserManager(),
 					[
