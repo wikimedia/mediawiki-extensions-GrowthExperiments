@@ -1155,7 +1155,7 @@
 		},
 		"GEHelpPanelAskMentor": {
 			"description": "When using the help panel's question-asking functionality, post on the mentor's talk page instead of on the help desk page.",
-			"value": false
+			"value": true
 		},
 		"WelcomeSurveyEnabled": {
 			"description": "Global ON/OFF switch for the Welcome survey feature.",
