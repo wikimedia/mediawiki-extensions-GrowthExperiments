@@ -90,6 +90,14 @@ $specialPageAliases['hy'] = [
 	'Impact' => [ 'Ազդեցություն' ],
 ];
 
+/** Indonesian (Bahasa Indonesia) */
+$specialPageAliases['id'] = [
+	'WelcomeSurvey' => [ 'Survei_awal' ],
+	'Homepage' => [ 'Beranda' ],
+	'Impact' => [ 'Dampak' ],
+	'ClaimMentee' => [ 'Pilih_pengguna_yang_dibimbing' ],
+];
+
 /** 한국어  (Korean) */
 $specialPageAliases['ko'] = [
 	'WelcomeSurvey' => [ '환영설문조사' ],
