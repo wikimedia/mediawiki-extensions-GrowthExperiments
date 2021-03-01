@@ -98,6 +98,14 @@ $specialPageAliases['id'] = [
 	'ClaimMentee' => [ 'Pilih_pengguna_yang_dibimbing' ],
 ];
 
+/** Italian (italiano) */
+$specialPageAliases['it'] = [
+	'WelcomeSurvey' => [ 'IndagineDiBenvenuto' ],
+	'Homepage' => [ 'PaginaIniziale' ],
+	'Impact' => [ 'Impatto' ],
+	'ClaimMentee' => [ 'SeguiAllievo' ],
+];
+
 /** 한국어  (Korean) */
 $specialPageAliases['ko'] = [
 	'WelcomeSurvey' => [ '환영설문조사' ],
