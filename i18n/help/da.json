@@ -5,7 +5,8 @@
 			"InsaneHacker",
 			"Medic",
 			"Nico",
-			"Saederup92"
+			"Saederup92",
+			"Steenth"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Slå hjælpepanelet til",
@@ -108,7 +109,7 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Du vil modtage en notifikation her på {{SITENAME}} når der er et svar.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email": "Du vil også modtage en email til $1 ($2)",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "ændr",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Hvis {{GENDER:$2|du}} også gerne vil blive informeret via e-mail, så bekræft din e-mail-adresse nu: $1",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Hvis {{GENDER:$2|du}} også gerne vil blive informeret via e-mail, så bekræft din e-mailadresse nu: $1",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Bekræft din e-mail",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Hvis {{GENDER:$1|du}} også gerne vil blive informeret via e-mail, så tilføj en e-mail-adresse nu.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Tilføj e-mail",
@@ -134,5 +135,5 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Du}} bruger wikikode-redigeringsvinduet. Disse redigeringstips er mest brugbare ved brug af visuel redigering.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Skift til visuel redigering",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Du}} bruger det visuelle redigeringsvindue. Disse redigeringstip er mest brugbare ved redigering med wikikode.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Skift til kilde redigering"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Skift til kilderedigering"
 }

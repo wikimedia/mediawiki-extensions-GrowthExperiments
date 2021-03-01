@@ -11,7 +11,7 @@
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "সম্পাদকের সাহায্য প্যানেল চালু করুন",
-	"growthexperiments-help-panel-cta-button-text": "সম্পাদনা নিয়ে সাহায্য পান",
+	"growthexperiments-help-panel-cta-button-text": "সম্পাদনা বিষয়ক সাহায্য পান",
 	"growthexperiments-help-panel-question-button-text": "পরবর্তী",
 	"growthexperiments-help-panel-submit-question-button-text": "পোস্ট করুন",
 	"growthexperiments-help-panel-return-home-button-text": "সম্পন্ন",
@@ -21,7 +21,7 @@
 	"growthexperiments-help-panel-question-placeholder": "শুভেচ্ছা জানান ও নির্দ্বিধায় {{GENDER:$1|আপনার}} প্রশ্নটি করুন।",
 	"growthexperiments-help-panel-back-home": "পূর্বের পাতায় ফিরুন",
 	"growthexperiments-help-panel-close": "সম্পন্ন",
-	"growthexperiments-help-panel-home-title": "সম্পাদনা নিয়ে সাহায্য পান",
+	"growthexperiments-help-panel-home-title": "সম্পাদনা বিষয়ক সাহায্য পান",
 	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|আপনি}} একটি সম্পাদনা করেছেন। ধন্যবাদ, এবং চালিয়ে যান!",
 	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|আপনি}} একটি সম্পাদনা সংরক্ষণ করেছেন। ধন্যবাদ এবং চালিয়ে যান।",
 	"growthexperiments-help-panel-postedit-header": "পরবর্তী ধাপসমূহ",

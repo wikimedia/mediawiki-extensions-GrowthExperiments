@@ -9,6 +9,11 @@
 	"apihelp-helppanelquestionposter-summary": "Працювати із запитаннями поточного користувача, поставленими через панель підтримки.",
 	"apihelp-helppanelquestionposter-param-body": "Текст запитання, поставленого користувачем.",
 	"apihelp-helppanelquestionposter-param-source": "Метод, за допомогою якого було надіслано запитання.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Панель «Запитати в інших»",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Панель «Запитати свого наставника» на домашній сторінці новачка",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Вікно «Запитати свого наставника» на довідковій панелі",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Панель «Запитати в інших» (стара назва)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Панель «Запитати свого наставника» на домашній сторінці новачка (стара назва)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Відповідна назва (якщо вибрано), яку слід включити разом із запитанням.",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Ви маєте бути авторизовані, щоб поставити запитання."
 }

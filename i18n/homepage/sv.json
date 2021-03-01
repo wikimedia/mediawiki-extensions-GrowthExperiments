@@ -306,6 +306,8 @@
 	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|Du}} kan lära dig att redigera, kontakta {{GENDER:$1|din}} fadder och se vilken påverkan {{GENDER:$1|ditt}} arbete har haft.",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Fortsätt",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Jag förstår",
+	"growthexperiments-addlink-revdeleted": "Sidversion $1 av \"$2\" är inte tillgänglig",
+	"growthexperiments-addlink-wrongmodel": "Sidversion $1 av \"$2\" är inte wikitext",
 	"growthexperiments-addlink-notinstore": "Hittade ingen länkrekommendation för \"$1\".",
 	"growthexperiments-addlink-context-intro": "Borde detta länka till _____?",
 	"growthexperiments-addlink-context-button-accept": "Ja",
