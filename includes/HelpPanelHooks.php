@@ -108,6 +108,9 @@ class HelpPanelHooks {
 		if ( SuggestedEdits::isGuidanceEnabled( $out->getContext() ) ) {
 			$out->addJsConfigVars( [
 				'wgGENewcomerTasksGuidanceEnabled' => true,
+				'wgGEAskQuestionEnabled' => HelpPanel::getHelpDeskTitle(
+					$out->getConfig()
+				) !== null,
 				'wgGELinkRecommendationsFrontendEnabled' =>
 					$out->getConfig()->get( 'GELinkRecommendationsFrontendEnabled' )
 			] );

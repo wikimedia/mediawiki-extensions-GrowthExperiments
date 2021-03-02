@@ -25,21 +25,25 @@ class HelpPanel {
 	 * @throws ConfigException
 	 */
 	public static function getHelpPanelCtaButton( $mobile ) {
+		$helpdeskTitle = self::getHelpDeskTitle(
+			MediaWikiServices::getInstance()->getMainConfig()
+		);
+		$btnWidgetArr = [
+			'id' => 'mw-ge-help-panel-cta-button',
+			'target' => '_blank',
+			'label' => wfMessage( 'growthexperiments-help-panel-cta-button-text' )->text(),
+			'invisibleLabel' => true,
+			'infusable' => true,
+			'icon' => 'help',
+			'indicator' => 'up',
+			'flags' => [ 'primary', 'progressive' ],
+		];
+		if ( $helpdeskTitle ) {
+			$btnWidgetArr['href'] = $helpdeskTitle->getLinkURL();
+		}
 		return ( new Tag( 'div' ) )
 			->addClasses( [ 'mw-ge-help-panel-cta', $mobile ? 'mw-ge-help-panel-cta-mobile' : '' ] )
-			->appendContent( new ButtonWidget( [
-				'id' => 'mw-ge-help-panel-cta-button',
-				'href' => self::getHelpDeskTitle(
-					MediaWikiServices::getInstance()->getMainConfig()
-				)->getLinkURL(),
-				'target' => '_blank',
-				'label' => wfMessage( 'growthexperiments-help-panel-cta-button-text' )->text(),
-				'invisibleLabel' => true,
-				'infusable' => true,
-				'icon' => 'help',
-				'indicator' => 'up',
-				'flags' => [ 'primary', 'progressive' ],
-			] ) );
+			->appendContent( new ButtonWidget( $btnWidgetArr ) );
 	}
 
 	/**
@@ -70,11 +74,11 @@ class HelpPanel {
 		$helpPanelLinks .= Html::closeElement( 'ul' );
 
 		$helpDeskTitle = self::getHelpDeskTitle( $config );
-		$helpDeskLink = $linkRenderer->makeLink(
+		$helpDeskLink = $helpDeskTitle ? $linkRenderer->makeLink(
 			$helpDeskTitle,
 			$ml->msg( 'growthexperiments-help-panel-community-help-desk-text' )->text(),
 			[ 'target' => '_blank', 'data-link-id' => 'help-desk' ]
-		);
+		) : null;
 
 		$viewMoreTitle = Title::newFromText( $config->get( 'GEHelpPanelViewMoreTitle' ) );
 		$viewMoreLink = $linkRenderer->makeLink(
@@ -116,11 +120,6 @@ class HelpPanel {
 		}
 		if ( in_array( $out->getTitle()->getNamespace(),
 			$out->getConfig()->get( 'GEHelpPanelExcludedNamespaces' ) ) ) {
-			return false;
-		}
-		// Ensure the help desk title is valid.
-		$helpDeskTitle = self::getHelpDeskTitle( $out->getConfig() );
-		if ( !$helpDeskTitle || !$helpDeskTitle->exists() ) {
 			return false;
 		}
 		if ( $checkAction ) {
@@ -178,8 +177,13 @@ class HelpPanel {
 	 * @throws ConfigException
 	 */
 	public static function getHelpDeskTitle( Config $config ) {
+		$helpdeskTitle = $config->get( 'GEHelpPanelHelpDeskTitle' );
+		if ( $helpdeskTitle === null ) {
+			return null;
+		}
+
 		// RawMessage is used here to expand magic words like {{#time:o}} - see T213186, T224224
-		$msg = new RawMessage( $config->get( 'GEHelpPanelHelpDeskTitle' ) );
+		$msg = new RawMessage( $helpdeskTitle );
 		return Title::newFromText( $msg->inContentLanguage()->text() );
 	}
 

@@ -11,10 +11,10 @@
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		suggestedEditsPeek = require( './ext.growthExperiments.SuggestedEditsPeek.js' ),
 		guidanceEnabled = mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ),
+		askHelpEnabled = mw.config.get( 'wgGEAskQuestionEnabled' ),
 		guidanceAvailable,
 		taskTypeId,
 		taskTypeLogData;
-
 	if ( guidanceEnabled && suggestedEditSession.active &&
 		!suggestedEditSession.postEditDialogNeedsToBeShown
 	) {
@@ -59,6 +59,7 @@
 				logger: logger,
 				questionPosterAllowIncludingTitle: true,
 				guidanceEnabled: guidanceEnabled,
+				askHelpEnabled: askHelpEnabled,
 				taskTypeId: taskTypeId,
 				suggestedEditSession: suggestedEditSession
 			} ),
