@@ -76,14 +76,15 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 			'pageid' => $pageId,
 			'revid' => $revId,
 			'wikitext' => $wikitext,
-			'threshold' => $taskType->getMinimumLinkScore(),
-			'max_recommendations' => $taskType->getMaximumLinksPerTask(),
 		];
 		$request = $this->httpRequestFactory->create(
-			$this->url . sprintf(
+			wfAppendQuery( $this->url . sprintf(
 				'/v0/linkrecommendations/%s/%s',
 				rawurlencode( $this->wikiId ), rawurlencode( $titleText )
-			),
+			), [
+				'threshold' => $taskType->getMinimumLinkScore(),
+				'max_recommendations' => $taskType->getMaximumLinksPerTask()
+			] ),
 			[
 				'method' => 'POST',
 				'postData' => json_encode( $args ),
