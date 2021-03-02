@@ -15,8 +15,7 @@ var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).To
  * @param {string} config.trigger How was the dialog triggered? One of 'impression' (when it was
  *   part of the page from the start), 'welcome' (launched from the homepage welcome dialog),
  *   'info-icon' (launched via the info icon in the suggested edits module header),
- *   'suggested-edits' (launched via the button in the variant D mobile summary), undefined
- *   (when launched via the Variant A StartEditing module action button).
+ *   'suggested-edits' (launched via the button in the variant D mobile summary).
  * @param {boolean} config.useTopicSelector Whether to show the topic selector in the intro panel
  * @param {boolean} config.useTaskTypeSelector Whether to show the task type selector in the difficulty panel
  * @param {boolean} config.activateWhenDone Whether to activate suggested edits when the user finishes the dialog
@@ -692,8 +691,7 @@ StartEditingDialog.prototype.buildProgressIndicator = function ( currentPage, to
  * @return {jQuery.Promise}
  */
 StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
-	var $homepage, $homepageOverlay, $startModule, $startEditingModule, $mentorshipModule,
-		moduleHtml, moduleDependencies;
+	var $homepage, $homepageOverlay, $startModule, $startEditingModule, moduleHtml, moduleDependencies;
 	if ( this.mode === 'mobile-details' ) {
 		window.location.href = mw.util.getUrl( new mw.Title( 'Special:Homepage/suggested-edits' ).toString() );
 		// Keep the dialog open while the page is reloading.
@@ -724,12 +722,6 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 			$startEditingModule.after( moduleHtml );
 		}
 		$startEditingModule.remove();
-		// Move Mentorship module to the sidebar (if it's not there already, meaning in variant A)
-		$mentorshipModule = $homepage.find( '.growthexperiments-homepage-module-mentorship' );
-		if ( !$mentorshipModule.closest( '.growthexperiments-homepage-group-sidebar' ).length ) {
-			$homepage.find( '.growthexperiments-homepage-module-mentorship' )
-				.prependTo( '.growthexperiments-homepage-group-sidebar-subgroup-primary' );
-		}
 		// Mark suggested edits module as activated.
 		$homepage.find( '.growthexperiments-homepage-module-suggested-edits' )
 			.addClass( 'activated' );

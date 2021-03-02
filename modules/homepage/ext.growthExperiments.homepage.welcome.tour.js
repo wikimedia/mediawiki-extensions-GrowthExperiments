@@ -41,27 +41,7 @@
 		isSinglePage: true,
 		shouldLog: true
 	} );
-	if ( homepageVariant === 'A' ) {
-		welcomeTour.firstStep( {
-			name: 'welcome',
-			title: mw.message( 'growthexperiments-tour-welcome-title' )
-				.params( [ mw.user ] )
-				.parse(),
-			description: mw.message( 'growthexperiments-tour-welcome-description' )
-				.params( [ mw.user ] )
-				.parse(),
-			attachTo: '#pt-userpage',
-			position: 'bottom',
-			overlay: false,
-			autoFocus: true,
-			buttons: [ {
-				action: 'end',
-				namemsg: 'growthexperiments-tour-response-button-okay'
-			} ],
-			onShow: setupCloseButtonLogging,
-			onClose: logTourClose
-		} );
-	} else if ( homepageVariant === 'C' ) {
+	if ( homepageVariant === 'C' ) {
 		step = welcomeTour.firstStep( {
 			name: 'welcome',
 			title: mw.message( 'growthexperiments-tour-welcome-title' )
