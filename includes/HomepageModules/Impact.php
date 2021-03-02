@@ -177,6 +177,15 @@ class Impact extends BaseModule {
 				[ 'class' => 'growthexperiments-homepage-impact-subheader-text' ],
 				$this->getArticleOrTotalEditCountText()
 			);
+		} elseif ( $this->isUnactivatedWithSuggestedEdits() ) {
+			return $this->getUnactivatedModuleBody() . Html::element(
+					'div',
+					[ 'class' => $this->getUnactivatedModuleCssClass() . '-description' ],
+					$this->getContext()
+						->msg( 'growthexperiments-homepage-impact-unactivated-description' )
+						->params( $this->getContext()->getUser()->getName() )
+						->text()
+				);
 		} else {
 			$purposeElement = Html::element(
 				'div',
