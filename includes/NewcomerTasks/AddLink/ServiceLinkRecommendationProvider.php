@@ -32,6 +32,10 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 
 	/** @var string */
 	private $wikiId;
+	/**
+	 * @var string|null
+	 */
+	private $accessToken;
 
 	/**
 	 * @param TitleFactory $titleFactory
@@ -39,19 +43,23 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 	 * @param HttpRequestFactory $httpRequestFactory
 	 * @param string $url Link recommendation service root URL
 	 * @param string $wikiId Wiki language
+	 * @param string|null $accessToken Jwt for authorization with external traffic release of link
+	 * recommendation service
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
 		RevisionLookup $revisionLookup,
 		HttpRequestFactory $httpRequestFactory,
 		string $url,
-		string $wikiId
+		string $wikiId,
+		?string $accessToken
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->revisionLookup = $revisionLookup;
 		$this->httpRequestFactory = $httpRequestFactory;
 		$this->url = $url;
 		$this->wikiId = $wikiId;
+		$this->accessToken = $accessToken;
 	}
 
 	/** @inheritDoc */
@@ -92,6 +100,11 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 			],
 			__METHOD__
 		);
+		if ( $this->accessToken ) {
+			// TODO: Support app authentication with client ID / secret
+			// https://api.wikimedia.org/wiki/Documentation/Getting_started/Authentication#App_authentication
+			$request->setHeader( 'Authorization', "Bearer $this->accessToken" );
+		}
 		$request->setHeader( 'Content-Type', 'application/json' );
 		$status = $request->execute();
 		if ( !$status->isOK() ) {

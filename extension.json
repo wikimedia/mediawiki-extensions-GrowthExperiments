@@ -1291,6 +1291,10 @@
 			"description": "Root URL of the link recommendation service.",
 			"value": false
 		},
+		"GELinkRecommendationServiceAccessToken": {
+			"description": "Personal access token from api.wikimedia.org to use when accessing the external production service. For developer setups only.",
+			"value": null
+		},
 		"GELinkRecommendationFallbackOnDBMiss": {
 			"description": "Fall back to the service at GELinkRecommendationServiceUrl when the recommendation is not cached in the database. This is only intended for simple local setups.",
 			"value": false
