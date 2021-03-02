@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Horus"
+		]
+	},
+	"apihelp-growthsetmentor-summary": "ตั้งเมนเทอร์ของผู้ใช้ การเปลี่ยนแปลงจะบันทึกในปูมสาธารณะ",
+	"apihelp-growthsetmentor-param-mentee": "ชื่อผู้ใช้ของผู้รับเมนเทอร์",
+	"apihelp-growthsetmentor-param-mentor": "ชื่อผู้ใช้ของเมนเทอร์",
+	"apihelp-growthsetmentor-param-reason": "เหตุผลสำหรับการเปลี่ยน"
+}

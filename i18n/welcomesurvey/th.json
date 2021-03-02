@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Horus",
 			"MOphaswongse (WMF)",
 			"Patsagorn Y."
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|ยินดีต้อนรับ}} $1!",
-	"welcomesurvey-save-confirmation-title": "ขอบคุณ!  คำตอบของคุณได้ถูกบันทึกแล้ว",
+	"welcomesurvey-save-confirmation-title": "ขอบคุณ! บันทึกคำตอบของคุณแล้ว",
 	"welcomesurvey-save-confirmation-text": "การตอบกลับของคุณจะช่วยเราให้เตรียมวิธีที่ดีที่สุดสำหรับการเริ่มต้นกับวิกิพีเดีย",
 	"welcomesurvey-subtitle": "ร่วมช่วยเราปรับปรุงประสบการณ์ในวิกิพีเดียของคุณ เพียงตอบแบบสอบถามสั้น ๆ นี้",
 	"welcomesurvey-save-btn": "เสร็จสิ้น",
@@ -17,14 +18,14 @@
 	"welcomesurvey-privacy-policy-link-text": "เรียนรู้เพิ่มเติมเกี่ยวกับการใช้ข้อมูลผู้ใช้ใหม่",
 	"welcomesurvey-sidebar-editing-title": "มาเริ่มต้นกับการแก้ไข",
 	"welcomesurvey-sidebar-editing-text": "ทุกคนสามารถแก้ไขได้แทบจะในทุกหน้า ในทุก ๆ ชั่วโมงจะมีกว่าร้อยการแก้ไขเพื่อทำการเพิ่มเนื้อหา แก้ข้อผิดพลาด และปรับกรุงความสามารถในการอ่าน หน้าที่แสดงถัดจากนี้คือหน้าที่{{GENDER:$1|คุณอาจสนใจ}}ร่วมปรับปรุง",
-	"welcomesurvey-sidebar-editing-link1-text": "บทแนะนำ",
+	"welcomesurvey-sidebar-editing-link1-text": "สอนใช้งาน",
 	"welcomesurvey-sidebar-editing-link1-title": "วิกิพีเดีย:สอนการใช้งาน",
 	"welcomesurvey-sidebar-editing-link2-text": "แผนกช่วยเหลือ",
 	"welcomesurvey-sidebar-editing-link2-title": "วิกิพีเดีย:แผนกช่วยเหลือ",
-	"welcomesurvey-question-reason-label": "ทำไมคุณจึงสร้างบัญชีวันนี้?",
+	"welcomesurvey-question-reason-label": "ทำไมคุณสร้างบัญชีวันนี้?",
 	"welcomesurvey-dropdown-option-select-label": "กรุณาเลือก...",
-	"welcomesurvey-question-reason-option-edit-typo-label": "เพื่อแก้คำที่เขียนผิดหรือข้อผิดพลาดในบทความวิกิพีเดีย",
-	"welcomesurvey-question-reason-option-edit-info-add-change-label": "เพื่อเพิ่มหรือเปลี่ยนแปลงข้อมูลในบทความวิกิพีเดีย",
+	"welcomesurvey-question-reason-option-edit-typo-label": "เพื่อแก้คำผิดหรือข้อผิดพลาดในบทความวิกิพีเดีย",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "เพื่อเพิ่มหรือเปลี่ยนแปลงสารนิเทศในบทความวิกิพีเดีย",
 	"welcomesurvey-question-reason-option-add-image-label": "เพื่อเพิ่มภาพในบทความ",
 	"welcomesurvey-question-reason-option-new-page-label": "เพื่อสร้างบทความใหม่",
 	"welcomesurvey-question-reason-option-program-participant-label": "เพื่อมีส่วนร่วมในงานกิจกรรม หรือส่งงานในชั้นเรียน",
@@ -32,18 +33,18 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "อื่น ๆ",
 	"welcomesurvey-question-reason-option-other-label": "อื่น ๆ (กรุณาอธิบาย)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|ป้อน}}เหตุผลอื่น ๆ",
-	"welcomesurvey-question-mentor-info": "เรากำลังพิจารณาเปิดกิจกรรมเมนเทอร์ โดยให้ผู้ใช้มีประสบการณ์สามารถช่วยเหลือและแนะแนวทางการแก้ไขวิกิพีเดียแก่ผู้ใช้ใหม่ได้ {{GENDER:$1|คุณสนใจ}}ที่จะรับการติดต่อเพื่อช่วยเหลือในการแก้ไขบทความหรือไม่?",
+	"welcomesurvey-question-mentor-info": "เรากำลังพิจารณาเปิดโครงการให้ผู้ใช้มีประสบการณ์ช่วยเหลือผู้ใช้มือใหม่ในเรื่องการแก้ไข {{GENDER:$1|คุณสนใจ}}รับการติดต่อเพื่อช่วยเหลือในการแก้ไขหรือไม่?",
 	"welcomesurvey-question-mentor-label": "ใช่ {{GENDER:$1|ฉันสนใจ}}",
 	"welcomesurvey-question-edited-label": "คุณเคยแก้ไขวิกิพีเดียมาก่อนหรือไม่?",
 	"welcomesurvey-question-edited-option-yes-many-label": "เคย หลายครั้งแล้ว",
-	"welcomesurvey-question-edited-option-yes-few-label": "เคย ประมาณหนึ่งหรือสองครั้ง",
+	"welcomesurvey-question-edited-option-yes-few-label": "เคย แต่ไม่กี่ครั้ง",
 	"welcomesurvey-question-edited-option-no-dunno-label": "ไม่เคย ฉันไม่ทราบว่าสามารถแก้ไขวิกิพีเดียได้",
 	"welcomesurvey-question-edited-option-no-other-label": "ไม่เคย เนื่องด้วยเหตุผลอื่น",
 	"welcomesurvey-question-edited-option-dont-remember-label": "ฉันจำไม่ได้",
 	"welcomesurvey-question-email-label": "ที่อยู่อีเมล (ไม่จำเป็น)",
 	"welcomesurvey-question-email-placeholder": "ป้อนอีเมลของคุณ...",
-	"welcomesurvey-question-email-help": "เราสังเกตว่าคุณยังไม่ได้ให้ที่อยู่อีเมลขณะสร้างบัญชีนี้ เรา<strong>แนะนำเป็นอย่างยิ่ง</strong>ให้เพิ่มที่อยู่อีเมล เมื่อคุณไม่สามารถเข้าถึงบัญชีอย่างลืมรหัสผ่าน คุณจะสามารถกู้คืนผ่านอีเมลในภายหลังได้ หมายเหตุว่าหากมีผู้ใช้อื่นติดต่อคุณผ่านอีเมล ที่อยู่อีเมลของคุณจะไม่ถูกแสดง",
+	"welcomesurvey-question-email-help": "เราสังเกตว่าคุณยังไม่ได้ให้ที่อยู่อีเมลขณะสร้างบัญชีนี้ เรา<strong>แนะนำเป็นอย่างยิ่ง</strong>ให้เพิ่มที่อยู่อีเมล เมื่อคุณไม่สามารถเข้าถึงบัญชีอย่างลืมรหัสผ่าน คุณจะสามารถกู้คืนผ่านอีเมลในภายหลังได้ หมายเหตุว่าจะไม่มีการเปิดเผยที่อยู่อีเมลแม้ว่าผู้ใช้อื่นติดต่อคุณ",
 	"welcomesurvey-question-languages-label": "{{SITENAME}}มีในอีกกว่า 300 ภาษา มีภาษาอื่นที่คุณอ่านและเขียนได้อีกหรือไม่?",
-	"welcomesurvey-question-languages-placeholder": "เพิ่มภาษาได้กว่า {{PLURAL:$1| $1 ภาษา}}",
-	"welcomesurvey-question-languages-maximum": "คุณได้เพิ่มภาษาจนถึงจำกัด"
+	"welcomesurvey-question-languages-placeholder": "เพิ่มภาษาได้กว่า {{PLURAL:$1| $1 ภาษา}}...",
+	"welcomesurvey-question-languages-maximum": "คุณได้เพิ่มภาษาจำนวนสูงสุดแล้ว"
 }
