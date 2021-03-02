@@ -899,6 +899,9 @@ class HomepageHooks implements
 	 * have been edited (and thus the recommendation does not apply anymore).
 	 */
 	public function onSearchDataForIndex( &$fields, $handler, $page, $output, $engine ) {
+		if ( !$this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
+			return;
+		}
 		// The hook is called after edits, but also on purges or edits to transcluded content,
 		// so we mustn't delete recommendations that are still valid. Checking whether there is any
 		// recommendation stored for the current revision should do the trick.
