@@ -121,7 +121,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 */
 	private function makeCacheKey( UserIdentity $user ): string {
 		return $this->cache->makeKey( 'GrowthExperiments', 'MentorManager', __CLASS__,
-			'Mentee', $user->getUserId() );
+			'Mentee', $user->getId() );
 	}
 
 	/** @inheritDoc */
