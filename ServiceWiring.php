@@ -108,8 +108,8 @@ return [
 	): LinkRecommendationStore {
 		$loadBalancer = GrowthExperimentsServices::wrap( $services )->getLoadBalancer();
 		return new LinkRecommendationStore(
-			$loadBalancer->getConnection( DB_REPLICA ),
-			$loadBalancer->getConnection( DB_MASTER ),
+			$loadBalancer->getLazyConnectionRef( DB_REPLICA ),
+			$loadBalancer->getLazyConnectionRef( DB_MASTER ),
 			$services->getTitleFactory(),
 			$services->getLinkBatchFactory()
 		);
