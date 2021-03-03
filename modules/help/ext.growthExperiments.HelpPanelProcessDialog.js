@@ -31,6 +31,7 @@
 			} );
 			this.logger = config.logger;
 			this.guidanceEnabled = config.guidanceEnabled;
+			this.askHelpEnabled = config.askHelpEnabled;
 			this.taskTypeId = config.taskTypeId;
 			this.panelTitleMessages = {
 				// ask-help and questioncomplete are added in configureAskScreen()
@@ -367,7 +368,10 @@
 
 	HelpPanelProcessDialog.prototype.buildHomePanelButtons = function () {
 		var buttonId,
-			buttonIds = [ 'ask-help', 'general-help' ];
+			buttonIds = [ 'general-help' ];
+		if ( this.askHelpEnabled || configData.GEHelpPanelAskMentor ) {
+			buttonIds.unshift( 'ask-help' );
+		}
 		if ( this.guidanceEnabled && this.taskTypeId ) {
 			buttonIds.unshift( 'suggested-edits' );
 		}
