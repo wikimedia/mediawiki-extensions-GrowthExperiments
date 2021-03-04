@@ -6,7 +6,6 @@ use EventLogging;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\StartEmail;
 use MediaWiki\Logger\LoggerFactory;
-use MWException;
 use User;
 use WebRequest;
 
@@ -58,7 +57,6 @@ class SpecialHomepageLogger {
 
 	/**
 	 * Log an event to HomepageVisit.
-	 * @throws MWException
 	 */
 	public function log() {
 		$event = [];
