@@ -311,6 +311,10 @@
 	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|Gyakorolhatod}} a szerkesztést, kapcsolatba léphetsz {{GENDER:$1|mentoroddal}}, és ellenőrizheted, {{GENDER:$1|munkádnak}} milyen hatása van.",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Folytatás",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Megértettem",
+	"growthexperiments-addlink-pagenotfound": "\"$1\" oldal nem létezik",
+	"growthexperiments-addlink-context-button-accept": "Igen",
+	"growthexperiments-addlink-context-button-reject": "Nem",
+	"growthexperiments-addlink-context-button-next": "Kihagy",
 	"growthexperiments-addlink-rejectiondialog-title": "Miért helytelen ez a hivatkozás? <em>(Opcionális)</em>",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Egyéb / nem nyilatkozom",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Kész"

@@ -104,6 +104,7 @@
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "{{GENDER:$1|ساعد|ساعدي}} في نشر المعرفة الحرّة إلى العالم عبر التعديل في مواضيع {{GENDER:$1|تهتمّ|تهتمّين}} بها.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "{{GENDER:|شاهد|شاهدي}} التعديلات المقترحة",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "{{GENDER:$1|ابدأ|ابدئي}} ببعض <strong>التعديلات المقترحة</strong>، ثمّ {{GENDER:$1|اطّلع|اطّلعي}} على عدد مشاهدي مساهماتك هنا.",
+	"growthexperiments-homepage-impact-unactivated-description": "حين {{GENDER:$1|تبدأ|تبدئين}} في التعديل، {{GENDER:$1|ستتحصّل|ستتحصلين}} هنا على عدد الأشخاص الذين سيشاهدون المقالات التي قمت بتعديلها.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "تنبيهات ميدان المساعدة",
 	"growthexperiments-tour-response-tip-text": "عندما يتم الردّ على {{GENDER:$1|سؤالك}}، {{GENDER:$1|ستحصل|ستحصلين}} على تنبيه جديد هنا.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "تنبيهات المرشد",
