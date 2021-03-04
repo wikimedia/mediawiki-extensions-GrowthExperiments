@@ -10,17 +10,12 @@ use IContextSource;
 class Help extends BaseModule {
 
 	public const HELP_MODULE_QUESTION_TAG = 'help module question';
-	/**
-	 * @var string
-	 */
-	private $helpDeskUrl;
 
 	/**
 	 * @inheritDoc
 	 */
 	public function __construct( IContextSource $context, ExperimentUserManager $experimentUserManager ) {
 		parent::__construct( 'help', $context, $experimentUserManager );
-		$this->helpDeskUrl = HelpPanel::getHelpDeskTitle( $context->getConfig() )->getLinkURL();
 	}
 
 	/** @inheritDoc */
