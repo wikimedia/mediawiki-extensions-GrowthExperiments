@@ -124,7 +124,7 @@ abstract class QuestionPoster {
 		$this->permissionManager = $permissionManager;
 		$this->context = $context;
 		$this->relevantTitle = $relevantTitle;
-		if ( $this->getContext()->getUser()->isAnon() ) {
+		if ( !$this->getContext()->getUser()->isRegistered() ) {
 			throw new UserNotLoggedIn();
 		}
 		$this->config = $this->getContext()->getConfig();

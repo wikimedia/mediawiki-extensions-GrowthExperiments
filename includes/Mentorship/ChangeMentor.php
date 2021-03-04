@@ -133,7 +133,7 @@ class ChangeMentor {
 		] );
 		$status = Status::newGood();
 
-		if ( $this->mentee->getId() === 0 ) {
+		if ( !$this->mentee->isRegistered() ) {
 			$this->logger->info(
 				'Mentor change for {mentee} from {oldMentor} to {newMentor}'
 				. ' did not succeed, because the mentee doesn\'t exist', [

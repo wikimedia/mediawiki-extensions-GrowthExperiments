@@ -18,7 +18,7 @@ use User;
 
 class SpecialClaimMentee extends FormSpecialPage {
 	/**
-	 * @var array
+	 * @var User[]
 	 */
 	private $mentees;
 
@@ -261,7 +261,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 
 	private function validateMentees() {
 		foreach ( $this->mentees as $mentee ) {
-			if ( ( $mentee instanceof User && $mentee->getId() !== 0 ) !== true ) {
+			if ( !( $mentee instanceof User && $mentee->isRegistered() ) ) {
 				return false;
 			}
 		}
