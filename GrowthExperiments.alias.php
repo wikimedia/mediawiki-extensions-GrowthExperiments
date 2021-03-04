@@ -76,6 +76,14 @@ $specialPageAliases['he'] = [
 	'ClaimMentee' => [ 'קליטת_חניך' ],
 ];
 
+/** Hindi (हिन्द) */
+$specialPageAliases['hi'] = [
+	'WelcomeSurvey' => [ 'सर्वेक्षण_में_आपका_स्वागत_है' ],
+	'Homepage' => [ 'मुखपृष्ठ' ],
+	'Impact' => [ 'प्रभाव' ],
+	'ClaimMentee' => [ 'एक_नवागंतुक_का_दावा_करें' ],
+];
+
 /** Croatian (hrvatski) */
 $specialPageAliases['hr'] = [
 	'WelcomeSurvey' => [ 'Anketa_dobrodošlice' ],
