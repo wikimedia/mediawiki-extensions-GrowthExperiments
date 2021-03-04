@@ -6,9 +6,9 @@ use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Util;
 use Html;
+use MediaWiki\User\UserIdentity;
 use OOUI\IconWidget;
 use OutputPage;
-use User;
 use UserOptionsUpdateJob;
 
 class SiteNoticeGenerator {
@@ -247,14 +247,14 @@ class SiteNoticeGenerator {
 	 * If the user is on the homepage, no header is shown.
 	 *
 	 * @param OutputPage $output
-	 * @param User $user
+	 * @param UserIdentity $user
 	 * @param string $msgHeaderKey
 	 * @param string $location
 	 * @return string
 	 */
 	private function getHeader(
 		OutputPage $output,
-		User $user,
+		UserIdentity $user,
 		string $msgHeaderKey,
 		string $location
 	) : string {
@@ -268,13 +268,13 @@ class SiteNoticeGenerator {
 
 	/**
 	 * @param OutputPage $output
-	 * @param User $user
+	 * @param UserIdentity $user
 	 * @param string $msgBodyKey
 	 * @param string $class
 	 * @return string
 	 */
 	private function getDiscoveryTextWithAvatarIcon(
-		OutputPage $output, User $user, string $msgBodyKey, $class = ''
+		OutputPage $output, UserIdentity $user, string $msgBodyKey, $class = ''
 	) : string {
 		return Html::rawElement( 'p', [ 'class' => $class ],
 			$output->msg( $msgBodyKey )

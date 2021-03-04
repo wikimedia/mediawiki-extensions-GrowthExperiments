@@ -13,6 +13,7 @@ use GrowthExperiments\Mentorship\MentorManager;
 use Html;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserIdentity;
 use MessageLocalizer;
 use MWTimestamp;
 use OOUI\ButtonWidget;
@@ -31,7 +32,7 @@ class Mentorship extends BaseModule {
 	public const MENTORSHIP_HELPPANEL_QUESTION_TAG = 'mentorship panel question';
 	public const QUESTION_PREF = 'growthexperiments-mentor-questions';
 
-	/** @var User */
+	/** @var UserIdentity */
 	private $mentor;
 
 	/** @var QuestionRecord[] */
@@ -56,15 +57,16 @@ class Mentorship extends BaseModule {
 
 	/**
 	 * Get the time a mentor was last active, as a human-readable relative time.
-	 * @param User $mentor The mentoring user.
+	 * @param UserIdentity $mentor The mentoring user.
 	 * @param User $mentee The mentored user (for time formatting).
 	 * @param MessageLocalizer $messageLocalizer
 	 * @return string
 	 */
 	public static function getMentorLastActive(
-		User $mentor, User $mentee, MessageLocalizer $messageLocalizer
+		UserIdentity $mentor, User $mentee, MessageLocalizer $messageLocalizer
 	) {
-		$editTimestamp = new MWTimestamp( $mentor->getLatestEditTimestamp() );
+		$editTimestamp = new MWTimestamp( MediaWikiServices::getInstance()->getUserEditTracker()
+			->getLatestEditTimestamp( $mentor ) );
 		$editTimestamp->offsetForUser( $mentee );
 		$editDate = $editTimestamp->format( 'Ymd' );
 
@@ -143,7 +145,7 @@ class Mentorship extends BaseModule {
 		return Html::element(
 			'a',
 			[
-				'href' => $this->getMentor()->getTalkPage()->getLinkURL(),
+				'href' => User::newFromIdentity( $this->getMentor() )->getTalkPage()->getLinkURL(),
 				'data-link-id' => 'mentor-usertalk',
 			],
 			$this->getContext()
@@ -191,6 +193,7 @@ class Mentorship extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getActionData() {
+		$editTracker = MediaWikiServices::getInstance()->getUserEditTracker();
 		$archivedQuestions = 0;
 		$unarchivedQuestions = 0;
 		foreach ( $this->getRecentQuestions() as $questionRecord ) {
@@ -200,11 +203,12 @@ class Mentorship extends BaseModule {
 				$unarchivedQuestions++;
 			}
 		}
+
 		return array_merge(
 			parent::getActionData(),
 			[
-				'mentorEditCount' => $this->getMentor()->getEditCount(),
-				'mentorLastActive' => $this->getMentor()->getLatestEditTimestamp(),
+				'mentorEditCount' => $editTracker->getUserEditCount( $this->getMentor() ),
+				'mentorLastActive' => $editTracker->getLatestEditTimestamp( $this->getMentor() ),
 				'archivedQuestions' => $archivedQuestions,
 				'unarchivedQuestions' => $unarchivedQuestions
 			]
@@ -231,7 +235,7 @@ class Mentorship extends BaseModule {
 			$content = Html::rawElement(
 				'a',
 				[
-					'href' => $this->getMentor()->getUserPage()->getLinkURL(),
+					'href' => User::newFromIdentity( $this->getMentor() )->getUserPage()->getLinkURL(),
 					'data-link-id' => 'mentor-userpage',
 				],
 				$iconElement . $usernameElement
@@ -261,7 +265,8 @@ class Mentorship extends BaseModule {
 	private function getEditCount() {
 		$text = $this->getContext()
 			->msg( 'growthexperiments-homepage-mentorship-mentor-edits' )
-			->numParams( $this->getMentor()->getEditCount() )
+			->numParams( MediaWikiServices::getInstance()->getUserEditTracker()
+				->getUserEditCount( $this->getMentor() ) )
 			->text();
 		return Html::element( 'span', [
 			'class' => 'growthexperiments-homepage-mentorship-editcount'
@@ -294,7 +299,7 @@ class Mentorship extends BaseModule {
 				->params( $this->getContext()->getUser()->getName() )
 				->text(),
 			// nojs action
-			'href' => $this->getMentor()->getTalkPage()->getLinkURL( [
+			'href' => User::newFromIdentity( $this->getMentor() )->getTalkPage()->getLinkURL( [
 				'action' => 'edit',
 				'section' => 'new',
 			] ),
@@ -303,7 +308,7 @@ class Mentorship extends BaseModule {
 	}
 
 	/**
-	 * @return bool|User The current user's mentor or false if not set.
+	 * @return UserIdentity|false The current user's mentor or false if not set.
 	 * @throws ConfigException
 	 */
 	private function getMentor() {

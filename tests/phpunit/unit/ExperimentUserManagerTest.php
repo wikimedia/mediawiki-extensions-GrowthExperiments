@@ -4,10 +4,10 @@ namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\ExperimentUserManager;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\User\UserOptionsManager;
 use MediaWikiUnitTestCase;
-use User;
 
 /**
  * @coversDefaultClass \GrowthExperiments\ExperimentUserManager
@@ -18,9 +18,7 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 	 * @covers ::getVariant
 	 */
 	public function testGetVariantFallbackToDefault() {
-		$user = $this->getMockBuilder( User::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$user = new UserIdentityValue( 0, __CLASS__, 0 );
 		$userOptionsLookupMock = $this->getMockBuilder( UserOptionsLookup::class )
 			->disableOriginalConstructor()
 			->getMock();
@@ -39,9 +37,7 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 	 * @covers ::getVariant
 	 */
 	public function testGetVariantWithUserAssigned() {
-		$user = $this->getMockBuilder( User::class )
-			->disableOriginalConstructor()
-			->getMock();
+		$user = new UserIdentityValue( 0, __CLASS__, 0 );
 		$userOptionsLookupMock = $this->getMockBuilder( UserOptionsLookup::class )
 			->disableOriginalConstructor()
 			->getMock();

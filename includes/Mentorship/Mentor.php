@@ -2,12 +2,12 @@
 
 namespace GrowthExperiments\Mentorship;
 
-use User;
+use MediaWiki\User\UserIdentity;
 
 class Mentor {
 
 	/**
-	 * @var User
+	 * @var UserIdentity
 	 */
 	private $mentorUser;
 
@@ -17,16 +17,16 @@ class Mentor {
 	private $introText;
 
 	/**
-	 * @param User $mentorUser
+	 * @param UserIdentity $mentorUser
 	 * @param string $introText
 	 */
-	public function __construct( User $mentorUser, string $introText ) {
+	public function __construct( UserIdentity $mentorUser, string $introText ) {
 		$this->mentorUser = $mentorUser;
 		$this->introText = $introText;
 	}
 
 	/**
-	 * @return User
+	 * @return UserIdentity
 	 */
 	public function getMentorUser() {
 		return $this->mentorUser;

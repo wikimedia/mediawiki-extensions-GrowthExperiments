@@ -190,7 +190,8 @@ class HelpPanelHooks {
 		}
 		return [
 			'name' => $mentor->getMentorUser()->getName(),
-			'editCount' => $mentor->getMentorUser()->getEditCount(),
+			'editCount' => MediaWikiServices::getInstance()->getUserEditTracker()
+				->getUserEditCount( $mentor->getMentorUser() ),
 			'lastActive' => Mentorship::getMentorLastActive( $mentor->getMentorUser(), $user, $localizer ),
 		];
 	}

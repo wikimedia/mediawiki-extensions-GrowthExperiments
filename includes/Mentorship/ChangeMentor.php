@@ -6,25 +6,26 @@ use EchoEvent;
 use IContextSource;
 use LogPager;
 use ManualLogEntry;
+use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 use Status;
 use User;
 
 class ChangeMentor {
 	/**
-	 * @var User
+	 * @var UserIdentity
 	 */
 	private $mentee;
 	/**
-	 * @var User|null
+	 * @var UserIdentity|null
 	 */
 	private $mentor;
 	/**
-	 * @var User|null
+	 * @var UserIdentity|null
 	 */
 	private $newMentor;
 	/**
-	 * @var User
+	 * @var UserIdentity
 	 */
 	private $performer;
 	/**
@@ -46,8 +47,8 @@ class ChangeMentor {
 	private $mentorManager;
 
 	/**
-	 * @param User $mentee Mentee's user object
-	 * @param User $performer Performer's user object
+	 * @param UserIdentity $mentee Mentee's user object
+	 * @param UserIdentity $performer Performer's user object
 	 * @param IContextSource $context Context
 	 * @param LoggerInterface $logger Logger
 	 * @param Mentor|null $mentor Old mentor
@@ -55,8 +56,8 @@ class ChangeMentor {
 	 * @param MentorManager $mentorManager
 	 */
 	public function __construct(
-		User $mentee,
-		User $performer,
+		UserIdentity $mentee,
+		UserIdentity $performer,
 		IContextSource $context,
 		LoggerInterface $logger,
 		?Mentor $mentor,
@@ -109,7 +110,7 @@ class ChangeMentor {
 				"$primaryLogtype-no-previous-mentor"
 		);
 		$logEntry->setPerformer( $this->performer );
-		$logEntry->setTarget( $this->mentee->getUserPage() );
+		$logEntry->setTarget( User::newFromIdentity( $this->mentee )->getUserPage() );
 		$logEntry->setComment( $reason );
 		$parameters = [];
 		if ( $this->mentor ) {
@@ -175,7 +176,7 @@ class ChangeMentor {
 			] );
 			EchoEvent::create( [
 				'type' => 'mentor-changed',
-				'title' => $this->newMentor->getUserPage(),
+				'title' => User::newFromIdentity( $this->newMentor )->getUserPage(),
 				'extra' => [
 					'mentee' => $this->mentee->getId(),
 					'reason' => $reason
@@ -188,11 +189,11 @@ class ChangeMentor {
 	/**
 	 * Change mentor
 	 *
-	 * @param User $newMentor New mentor to assign
+	 * @param UserIdentity $newMentor New mentor to assign
 	 * @param string $reason Reason for the change
 	 * @return Status
 	 */
-	public function execute( User $newMentor, $reason ) {
+	public function execute( UserIdentity $newMentor, $reason ) {
 		$this->newMentor = $newMentor;
 		$status = $this->validate();
 		if ( !$status->isOK() ) {
