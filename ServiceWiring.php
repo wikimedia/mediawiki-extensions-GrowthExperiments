@@ -78,7 +78,9 @@ return [
 				$services->getRevisionLookup(),
 				$services->getHttpRequestFactory(),
 				$config->get( 'GELinkRecommendationServiceUrl' ),
-				$config->get( 'GELinkRecommendationServiceWikiIdMasquerade' ) ?? WikiMap::getCurrentWikiId()
+				$config->get( 'GELinkRecommendationServiceWikiIdMasquerade' ) ??
+					WikiMap::getCurrentWikiId(),
+				$config->get( 'GELinkRecommendationServiceAccessToken' )
 			);
 		} else {
 			return new StaticLinkRecommendationProvider( [],
