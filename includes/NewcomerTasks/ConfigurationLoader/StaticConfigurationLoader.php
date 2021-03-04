@@ -5,7 +5,6 @@ namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\Linker\LinkTarget;
-use MessageLocalizer;
 use StatusValue;
 
 /**
@@ -60,10 +59,6 @@ class StaticConfigurationLoader implements ConfigurationLoader {
 	/** @inheritDoc */
 	public function loadExcludedCategories() {
 		return $this->excludedCategories;
-	}
-
-	/** @inheritDoc */
-	public function setMessageLocalizer( MessageLocalizer $messageLocalizer ): void {
 	}
 
 }

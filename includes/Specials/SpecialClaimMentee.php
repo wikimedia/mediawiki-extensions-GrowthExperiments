@@ -18,7 +18,7 @@ use User;
 
 class SpecialClaimMentee extends FormSpecialPage {
 	/**
-	 * @var array
+	 * @var User[]
 	 */
 	private $mentees;
 

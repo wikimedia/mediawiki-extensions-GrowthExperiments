@@ -15,7 +15,7 @@ class TaskTypeHandlerRegistry {
 	private $objectFactory;
 
 	/** @var (array|callable)[] ObjectFactory specifications or callbacks, keyed by handler ID. */
-	private $handlerSpecifications = [];
+	private $handlerSpecifications;
 
 	/** @var TaskTypeHandler[] Task type handlers, keyed by ID. */
 	private $handlers = [];

@@ -754,7 +754,7 @@ class HomepageHooks implements
 
 	private static function getZeroContributionsHtml( SpecialPage $sp, $wrapperClasses = '' ) {
 		$linkUrl = SpecialPage::getTitleFor( 'Homepage' )
-			->getFullUrl( [ 'source' => 'specialcontributions' ] );
+			->getFullURL( [ 'source' => 'specialcontributions' ] );
 		return Html::rawElement( 'div', [ 'class' => 'mw-ge-contributions-zero ' . $wrapperClasses ],
 			Html::element( 'p', [ 'class' => 'mw-ge-contributions-zero-title' ],
 				$sp->msg( 'growthexperiments-homepage-contributions-zero-title' )

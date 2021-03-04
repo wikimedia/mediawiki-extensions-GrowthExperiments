@@ -98,7 +98,6 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$wasPosted
 	) {
 		$this->cache = new HashBagOStuff();
-		$this->cacheTtl = 0;
 
 		$this->titleFactory = $titleFactory;
 		$this->wikiPageFactory = $wikiPageFactory;
