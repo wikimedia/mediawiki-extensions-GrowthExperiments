@@ -102,6 +102,7 @@
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Rozšiřte svobodnou studnici vědomostí editováním článků o tématech, na kterých nejvíce záleží právě {{GENDER:$1|vám}}.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Zobrazit editační tipy",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Začněte s několika <strong>editačními tipy</strong>, poté zde uvidíte, kolik lidí si {{GENDER:$1|vaše příspěvky}} zobrazilo.",
+	"growthexperiments-homepage-impact-unactivated-description": "Jakmile {{GENDER:$1|začnete editovat}}, {{GENDER:$1|uvidíte}}, kolik lidí si prohlíží články, které {{GENDER:$1|jste editoval|jste editovala|jste editovali}}.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Upozornění",
 	"growthexperiments-tour-response-tip-text": "Jakmile bude {{GENDER:$1|vaše}} otázka zodpovězena, objeví se {{GENDER:$1|vám}} tady nové upozornění.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Upozornění",
