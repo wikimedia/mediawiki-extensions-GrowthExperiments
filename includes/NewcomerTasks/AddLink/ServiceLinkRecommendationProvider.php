@@ -32,10 +32,12 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 
 	/** @var string */
 	private $wikiId;
-	/**
-	 * @var string|null
-	 */
+
+	/** @var string|null */
 	private $accessToken;
+
+	/** @var int|null Service request timeout in seconds. */
+	private $requestTimeout;
 
 	/**
 	 * @param TitleFactory $titleFactory
@@ -44,7 +46,8 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 	 * @param string $url Link recommendation service root URL
 	 * @param string $wikiId Wiki language
 	 * @param string|null $accessToken Jwt for authorization with external traffic release of link
-	 * recommendation service
+	 *   recommendation service
+	 * @param int|null $requestTimeout Service request timeout in seconds.
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
@@ -52,7 +55,8 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 		HttpRequestFactory $httpRequestFactory,
 		string $url,
 		string $wikiId,
-		?string $accessToken
+		?string $accessToken,
+		?int $requestTimeout
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->revisionLookup = $revisionLookup;
@@ -60,6 +64,7 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 		$this->url = $url;
 		$this->wikiId = $wikiId;
 		$this->accessToken = $accessToken;
+		$this->requestTimeout = $requestTimeout;
 	}
 
 	/** @inheritDoc */
@@ -80,23 +85,28 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 		}
 		$wikitext = $content->getText();
 
-		$args = [
+		$pathArgs = [ $this->wikiId, $titleText ];
+		$queryArgs = [
+			'threshold' => $taskType->getMinimumLinkScore(),
+			'max_recommendations' => $taskType->getMaximumLinksPerTask()
+		];
+		$postBodyArgs = [
 			'pageid' => $pageId,
 			'revid' => $revId,
 			'wikitext' => $wikitext,
 		];
 		$request = $this->httpRequestFactory->create(
-			wfAppendQuery( $this->url . sprintf(
-				'/v0/linkrecommendations/%s/%s',
-				rawurlencode( $this->wikiId ), rawurlencode( $titleText )
-			), [
-				'threshold' => $taskType->getMinimumLinkScore(),
-				'max_recommendations' => $taskType->getMaximumLinksPerTask()
-			] ),
+			wfAppendQuery(
+				$this->url . '/v0/linkrecommendations/' . implode( '/', array_map( function ( $arg ) {
+					return rawurlencode( $arg );
+				}, $pathArgs ) ),
+				$queryArgs
+			),
 			[
 				'method' => 'POST',
-				'postData' => json_encode( $args ),
+				'postData' => json_encode( $postBodyArgs ),
 				'originalRequest' => RequestContext::getMain()->getRequest(),
+				'timeout' => $this->requestTimeout,
 			],
 			__METHOD__
 		);
@@ -106,6 +116,7 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 			$request->setHeader( 'Authorization', "Bearer $this->accessToken" );
 		}
 		$request->setHeader( 'Content-Type', 'application/json' );
+
 		$status = $request->execute();
 		if ( !$status->isOK() ) {
 			return $status;

@@ -1295,6 +1295,10 @@
 			"description": "Personal access token from api.wikimedia.org to use when accessing the external production service. For developer setups only.",
 			"value": null
 		},
+		"GELinkRecommendationServiceTimeout": {
+			"description": "Request timeout when contacting the link recommendation service.",
+			"value": null
+		},
 		"GELinkRecommendationFallbackOnDBMiss": {
 			"description": "Fall back to the service at GELinkRecommendationServiceUrl when the recommendation is not cached in the database. This is only intended for simple local setups.",
 			"value": false

@@ -80,7 +80,8 @@ return [
 				$config->get( 'GELinkRecommendationServiceUrl' ),
 				$config->get( 'GELinkRecommendationServiceWikiIdMasquerade' ) ??
 					WikiMap::getCurrentWikiId(),
-				$config->get( 'GELinkRecommendationServiceAccessToken' )
+				$config->get( 'GELinkRecommendationServiceAccessToken' ),
+				$config->get( 'GELinkRecommendationServiceTimeout' )
 			);
 		} else {
 			return new StaticLinkRecommendationProvider( [],
