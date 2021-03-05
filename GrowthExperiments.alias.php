@@ -148,8 +148,8 @@ $specialPageAliases['pt'] = [
 
 /** Romanian (română) */
 $specialPageAliases['ro'] = [
-	'WelcomeSurvey' => [ 'Pagina_acasă' ],
-	'Homepage' => [ 'Sondaj_de_bun_venit' ],
+	'WelcomeSurvey' => [ 'Sondaj_de_bun_venit' ],
+	'Homepage' => [ 'Pagina_acasă' ],
 	'Impact' => [ 'Impact' ],
 	'ClaimMentee' => [ 'Revendicare_ucenic' ],
 ];
