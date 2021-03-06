@@ -4,6 +4,7 @@ namespace GrowthExperiments\Maintenance;
 
 use ChangeTags;
 use CirrusSearch\Query\ArticleTopicFeature;
+use Config;
 use Generator;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
@@ -51,6 +52,9 @@ require_once $path . '/maintenance/Maintenance.php';
  * recommendations for all topics
  */
 class RefreshLinkRecommendations extends Maintenance {
+
+	/** @var Config */
+	private $growthConfig;
 
 	/** @var SearchEngineFactory */
 	protected $searchEngineFactory;
@@ -195,6 +199,7 @@ class RefreshLinkRecommendations extends Maintenance {
 
 		$services = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$this->growthConfig = $growthServices->getConfig();
 		$this->searchEngineFactory = $services->getSearchEngineFactory();
 		$this->titleFactory = $services->getTitleFactory();
 		$this->linkBatchFactory = $services->getLinkBatchFactory();
@@ -411,11 +416,18 @@ class RefreshLinkRecommendations extends Maintenance {
 			return $link->getScore() >= $this->recommendationTaskType->getMinimumLinkScore();
 		} );
 		$goodLinkIds = $this->linksToPageIds( $goodLinks );
+		$redLinkCount = count( $goodLinks ) - count( $goodLinkIds );
 		$excludedLinkIds = $this->linkRecommendationStore->getExcludedLinkIds(
 			$recommendation->getPageId(), 2 );
-		$goodLinkIds = array_diff( $goodLinkIds, $excludedLinkIds );
-		if ( count( $goodLinkIds ) < $this->recommendationTaskType->getMinimumLinksPerTask() ) {
-			$this->verboseLog( "number of good links too small (" . count( $goodLinkIds ) . ")\n" );
+		$goodLinkCount = count( array_diff( $goodLinkIds, $excludedLinkIds ) );
+		if ( $this->growthConfig->get( 'GEDeveloperSetup' ) ) {
+			// In developer setups, the recommendation service is usually suggestion link targets
+			// from a different wiki, which might end up being red links locally. Allow these,
+			// otherwise we'd get lots of failures here.
+			$goodLinkCount += $redLinkCount;
+		}
+		if ( $goodLinkCount < $this->recommendationTaskType->getMinimumLinksPerTask() ) {
+			$this->verboseLog( "number of good links too small (" . $goodLinkCount . ")\n" );
 			return false;
 		}
 
