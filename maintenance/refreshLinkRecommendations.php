@@ -177,6 +177,10 @@ class RefreshLinkRecommendations extends Maintenance {
 
 					$this->verboseLog( "success, updating index\n" );
 					$this->linkRecommendationStore->insert( $recommendation );
+					// If the script gets interrupted, uncommitted DB writes get discarded, while
+					// updateCirrusSearchIndex() is immediate. Minimize the likelyhood of the DB
+					// and the search index getting out of sync.
+					$this->linkRecommendationStore->getDB( DB_MASTER )->commit( __METHOD__ );
 					$this->updateCirrusSearchIndex( $lastRevision );
 					// Caching is up to the provider, this script is just warming the cache.
 					$recommendationsFound++;
@@ -185,6 +189,9 @@ class RefreshLinkRecommendations extends Maintenance {
 						break 2;
 					}
 				}
+				// There is nothing new to commit, but commitTransaction() will sleep if needed to
+				// avoid replication lag, which we should do every once in a while.
+				$this->commitTransaction( $this->linkRecommendationStore->getDB( DB_MASTER ), __METHOD__ );
 				if ( $recommendationsFound === 0 ) {
 					break;
 				}

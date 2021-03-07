@@ -266,7 +266,7 @@ class LinkRecommendationStore {
 	 * @param int $index DB_MASTER or DB_SLAVE
 	 * @return IDatabase
 	 */
-	private function getDB( int $index ): IDatabase {
+	public function getDB( int $index ): IDatabase {
 		return ( $index === DB_MASTER ) ? $this->dbw : $this->dbr;
 	}
 
