@@ -30,7 +30,11 @@ class MentorHooks implements GetPreferencesHook, LocalUserCreatedHook {
 
 	/** @inheritDoc */
 	public function onLocalUserCreated( $user, $autocreated ) {
-		if ( $this->config->get( 'GEMentorshipEnabled' ) ) {
+		if ( $autocreated ) {
+			// Excluding autocreated users is necessary, see T276720
+			return;
+		}
+		if ( $user->isRegistered() && $this->config->get( 'GEMentorshipEnabled' ) ) {
 			try {
 				// Select a mentor. FIXME Not really necessary, but avoids a change in functionality
 				//   after introducing MentorManager, making debugging easier.
