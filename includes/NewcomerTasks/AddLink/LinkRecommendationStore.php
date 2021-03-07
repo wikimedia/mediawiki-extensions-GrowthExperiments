@@ -95,6 +95,39 @@ class LinkRecommendationStore {
 	}
 
 	/**
+	 * Given a set of page IDs, return the ones which occur in the database.
+	 * @param int[] $pageIds
+	 * @return int[]
+	 */
+	public function filterPageIds( array $pageIds ): array {
+		return array_map( 'intval', $this->dbr->selectFieldValues(
+			'growthexperiments_link_recommendations',
+			'gelr_page',
+			[ 'gelr_page' => $pageIds ],
+			__METHOD__
+		) );
+	}
+
+	/**
+	 * @param int $limit
+	 * @param int|null $from ID to list from, exclusive
+	 * @return int[]
+	 */
+	public function listPageIds( int $limit, int $from = null ): array {
+		return array_map( 'intval', $this->dbr->selectFieldValues(
+			'growthexperiments_link_recommendations',
+			'gelr_page',
+			$from ? [ "gelr_page > $from" ] : [],
+			__METHOD__,
+			[
+				'LIMIT' => $limit,
+				'GROUP BY' => 'gelr_page',
+				'ORDER BY' => 'gelr_page ASC',
+			]
+		) );
+	}
+
+	/**
 	 * @param LinkRecommendation $linkRecommendation
 	 */
 	public function insert( LinkRecommendation $linkRecommendation ): void {
@@ -115,16 +148,16 @@ class LinkRecommendationStore {
 	}
 
 	/**
-	 * @param int $pageId
-	 * @return bool Whether anything was deleted.
+	 * @param int[] $pageIds
+	 * @return int The number of deleted rows.
 	 */
-	public function deleteByPageId( int $pageId ): bool {
+	public function deleteByPageIds( array $pageIds ): int {
 		$this->dbw->delete(
 			'growthexperiments_link_recommendations',
-			[ 'gelr_page' => $pageId ],
+			[ 'gelr_page' => $pageIds ],
 			__METHOD__
 		);
-		return (bool)$this->dbw->affectedRows();
+		return $this->dbw->affectedRows();
 	}
 
 	/**
@@ -137,7 +170,7 @@ class LinkRecommendationStore {
 		if ( $pageId === 0 ) {
 			return false;
 		}
-		return $this->deleteByPageId( $pageId );
+		return (bool)$this->deleteByPageIds( [ $pageId ] );
 	}
 
 	// growthexperiments_link_submissions
