@@ -130,6 +130,14 @@ $specialPageAliases['ko'] = [
 	'ClaimMentee' => [ '멘티데려오기' ],
 ];
 
+/** Norwegian Bokmål (norsk bokmål) */
+$specialPageAliases['nb'] = [
+	'WelcomeSurvey' => [ 'Velkomstundersøkelse' ],
+	'Homepage' => [ 'Hjemmeside' ],
+	'Impact' => [ 'Virkning' ],
+	'ClaimMentee' => [ 'Krev_nykommer' ],
+];
+
 /** Polish (polski) */
 $specialPageAliases['pl'] = [
 	'WelcomeSurvey' => [ 'Ankieta_powitalna' ],
