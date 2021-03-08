@@ -104,7 +104,7 @@
 			userName = mw.user.getName();
 
 		// mentor-homepage, mentor-helppanel or helpdesk
-		this.askSource = config.askSource || ( configData.GEHelpPanelAskMentor ? 'mentor-helppanel' : 'helpdesk' );
+		this.askSource = config.askSource || ( mw.config.get( 'wgGEHelpPanelAskMentor' ) ? 'mentor-helppanel' : 'helpdesk' );
 		askFromMentor = ( this.askSource !== 'helpdesk' );
 		this.storageKey = askFromMentor ? 'homepage-questionposter-question-text-mentorship' :
 			'help-panel-question-text';
@@ -369,7 +369,7 @@
 	HelpPanelProcessDialog.prototype.buildHomePanelButtons = function () {
 		var buttonId,
 			buttonIds = [ 'general-help' ];
-		if ( this.askHelpEnabled || configData.GEHelpPanelAskMentor ) {
+		if ( this.askHelpEnabled || mw.config.get( 'wgGEHelpPanelAskMentor' ) ) {
 			buttonIds.unshift( 'ask-help' );
 		}
 		if ( this.guidanceEnabled && this.taskTypeId ) {
@@ -380,7 +380,7 @@
 			// Asking the mentor needs a different button but the same panel / logging.
 			// FIXME find a nicer way to do this.
 			buttonId = id;
-			if ( id === 'ask-help' && configData.GEHelpPanelAskMentor &&
+			if ( id === 'ask-help' && mw.config.get( 'wgGEHelpPanelAskMentor' ) &&
 				// Do not try to use mentor data when it is not present. This is the case on the
 				// homepage when the help panel is disabled. Home button widgets are not used
 				// on the homepage but the build method still needs to run without error.
