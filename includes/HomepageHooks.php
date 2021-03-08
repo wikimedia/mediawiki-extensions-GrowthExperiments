@@ -26,7 +26,6 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
-use GrowthExperiments\NewcomerTasks\Tracker\Tracker;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use GrowthExperiments\Rest\Handler\AddLinkHandlerTrait;
 use GrowthExperiments\Specials\SpecialClaimMentee;
@@ -316,7 +315,6 @@ class HomepageHooks implements
 		$isHomepage = $skin->getTitle()->isSpecial( 'Homepage' );
 		if ( $isHomepage ||
 			 self::titleIsUserPageOrUserTalk( $skin->getTitle(), $skin->getUser() ) ) {
-			/** @var SkinOptions $skinOptions */
 			$skinOptions->setMultiple( [
 				SkinOptions::TALK_AT_TOP => true,
 				SkinOptions::TABS_ON_SPECIALS => true,
@@ -695,7 +693,6 @@ class HomepageHooks implements
 			 SuggestedEdits::isActivated( $context )
 		) {
 			$pageId = $rc->getTitle()->getArticleID();
-			/** @var Tracker $tracker */
 			$tracker = $this->trackerFactory->getTracker( $rc->getPerformer() );
 			$taskType = $tracker->getTaskTypeForPage( $pageId );
 			if ( $taskType ) {

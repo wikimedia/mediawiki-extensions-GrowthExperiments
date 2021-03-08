@@ -109,7 +109,6 @@ class ConfigurationValidator {
 	public function validateMessages( array $messages, string $field ) {
 		$status = StatusValue::newGood();
 		foreach ( $messages as $msg ) {
-			/** @var $msg Message */
 			if ( !$msg->exists() ) {
 				$status->fatal( 'growthexperiments-homepage-suggestededits-config-missingmessage',
 					$msg->getKey(), $field );

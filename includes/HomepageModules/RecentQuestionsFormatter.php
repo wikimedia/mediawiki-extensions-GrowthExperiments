@@ -18,6 +18,7 @@ class RecentQuestionsFormatter {
 	 */
 	private $contextSource;
 	private $dataLinkIdKey;
+	/** @var string */
 	private $recentQuestionsCssClass;
 
 	/**

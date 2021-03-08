@@ -249,7 +249,6 @@ abstract class QuestionPoster {
 
 	/**
 	 * @return Status
-	 * @throws MWException
 	 */
 	private function submitStructuredDiscussions() {
 		$workflowLoaderFactory = Container::get( 'factory.loader.workflow' );
@@ -537,7 +536,6 @@ abstract class QuestionPoster {
 	 * @param string $summary
 	 * @return Status
 	 * @throws MWException
-	 * @throws FatalError
 	 */
 	protected function runEditFilterMergedContentHook( Content $content, $summary ) {
 		$derivativeContext = new DerivativeContext( $this->getContext() );
