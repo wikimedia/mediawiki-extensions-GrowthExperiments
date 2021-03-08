@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Horus",
+			"Just Sayori",
 			"MOphaswongse (WMF)",
 			"Patsagorn Y."
 		]
@@ -26,7 +27,7 @@
 	"welcomesurvey-dropdown-option-select-label": "กรุณาเลือก...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "เพื่อแก้คำผิดหรือข้อผิดพลาดในบทความวิกิพีเดีย",
 	"welcomesurvey-question-reason-option-edit-info-add-change-label": "เพื่อเพิ่มหรือเปลี่ยนแปลงสารนิเทศในบทความวิกิพีเดีย",
-	"welcomesurvey-question-reason-option-add-image-label": "เพื่อเพิ่มภาพในบทความ",
+	"welcomesurvey-question-reason-option-add-image-label": "เพื่อเพิ่มภาพลงในบทความ",
 	"welcomesurvey-question-reason-option-new-page-label": "เพื่อสร้างบทความใหม่",
 	"welcomesurvey-question-reason-option-program-participant-label": "เพื่อมีส่วนร่วมในงานกิจกรรม หรือส่งงานในชั้นเรียน",
 	"welcomesurvey-question-reason-option-read-label": "เพื่ออ่านอย่างเดียว",
@@ -38,7 +39,7 @@
 	"welcomesurvey-question-edited-label": "คุณเคยแก้ไขวิกิพีเดียมาก่อนหรือไม่?",
 	"welcomesurvey-question-edited-option-yes-many-label": "เคย หลายครั้งแล้ว",
 	"welcomesurvey-question-edited-option-yes-few-label": "เคย แต่ไม่กี่ครั้ง",
-	"welcomesurvey-question-edited-option-no-dunno-label": "ไม่เคย ฉันไม่ทราบว่าสามารถแก้ไขวิกิพีเดียได้",
+	"welcomesurvey-question-edited-option-no-dunno-label": "ไม่เคย ฉันไม่ทราบว่าวิกิพีเดียสามารถแก้ไขได้",
 	"welcomesurvey-question-edited-option-no-other-label": "ไม่เคย เนื่องด้วยเหตุผลอื่น",
 	"welcomesurvey-question-edited-option-dont-remember-label": "ฉันจำไม่ได้",
 	"welcomesurvey-question-email-label": "ที่อยู่อีเมล (ไม่จำเป็น)",

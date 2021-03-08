@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dr. Mohammed",
 			"Dyolf77",
 			"Dyolf77 (WMF)",
 			"Meno25",
@@ -9,7 +10,7 @@
 	},
 	"welcomesurvey": "{{GENDER:$1|مرحبا}}، $1!",
 	"welcomesurvey-save-confirmation-title": "شكر! تم حفظ ردودك.",
-	"welcomesurvey-save-confirmation-text": "ستساعدنا إجاباتك في تمكينك من مناهج مفيدة للبدء في ويكيبيديا.",
+	"welcomesurvey-save-confirmation-text": "ستساعدنا إجاباتك في إعطائك طرقًا مفيدة للبدء في ويكيبيديا.",
 	"welcomesurvey-subtitle": "{{GENDER:|ساعدنا|ساعدينا}} في تحسين تجربتك لويكيبيديا من خلال الإجابة على بعض الأسئلة الاختيارية.",
 	"welcomesurvey-save-btn": "{{GENDER:|أنه|أنهي}}",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|تخطَّ|تخطي}} هذا الاستطلاع",
@@ -18,8 +19,8 @@
 	"welcomesurvey-sidebar-privacy-text": "ستستخدم مؤسّسة ويكيميديا {{GENDER:$2|إجابتكَ|إجاباتكِ}} لمساعدتك عند الشروع في تعديل {{SITENAME}}. $1",
 	"welcomesurvey-privacy-policy-link-text": "{{GENDER:|تعلّم|تعلّمي}} المزيد حول البيانات والمحررين الجدد",
 	"welcomesurvey-sidebar-editing-title": "الشروع في التحرير",
-	"welcomesurvey-sidebar-editing-text": "يمكن لأي شخص تعديل كل صفحة تقريبا، كل ساعة، تحدث مئات التعديلات، لإضافة محتوى وتصحيح الأخطاء وتحسين إمكانية القراءة، الصفحات التالية يمكنها مساعدتك إذا كنت {{GENDER:$1|مهتما|مهتمة}} بالمساهمة.",
-	"welcomesurvey-sidebar-editing-link1-text": "الدرس التعليمي",
+	"welcomesurvey-sidebar-editing-text": "يمكن لأي شخص تعديل كل صفحة تقريبا، كل ساعة، تحدث مئات التعديلات، لإضافة محتوى وتصحيح الأخطاء وتحسين إمكانية القراءة، الصفحات التالية يمكنها مساعدتك إذا كنت {{GENDER:$1|مهتمًا|مهتمة}} بالمساهمة.",
+	"welcomesurvey-sidebar-editing-link1-text": "الدروس التعليمية",
 	"welcomesurvey-sidebar-editing-link1-title": "ويكيبيديا:دروس",
 	"welcomesurvey-sidebar-editing-link2-text": "ميدان المساعدة",
 	"welcomesurvey-sidebar-editing-link2-title": "ويكيبيديا:بوابة_المشاركة",

@@ -104,6 +104,7 @@
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "{{GENDER:$1|Sizin}} için önemli konuları düzenleyerek özgür bilginin dünyaya yayılmasına yardım edin.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Önerilen düzenlemelere bakın",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Birkaç <strong>önerilen değişiklikle</strong> başlayın, ardından kaç kişinin {{GENDER:$1|katkılarınızı}} gördüğüne buradan bakın.",
+	"growthexperiments-homepage-impact-unactivated-description": "{{GENDER:$1|Düzenlemeye}} başladığınızda, düzenlediğiniz maddeleri kaç kişinin görüntülediğini burada görebilirsiniz.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Danışma masası uyarıları",
 	"growthexperiments-tour-response-tip-text": "{{GENDER:$1|Sorunuz}} yanıtlandığında, burada yeni bir uyarı alacaksınız.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Danışman uyarıları",
