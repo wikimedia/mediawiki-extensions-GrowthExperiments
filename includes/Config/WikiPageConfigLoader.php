@@ -4,9 +4,11 @@ namespace GrowthExperiments\Config;
 
 use ApiRawMessage;
 use BagOStuff;
+use DBAccessObjectUtils;
 use FormatJson;
 use GrowthExperiments\Util;
 use HashBagOStuff;
+use IDBAccessObject;
 use JsonContent;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
@@ -32,7 +34,7 @@ use TitleFactory;
  * as \GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageLoader,
  * generalized to this class taking care about config in general.
  */
-class WikiPageConfigLoader {
+class WikiPageConfigLoader implements IDBAccessObject {
 	/** @var HttpRequestFactory */
 	private $requestFactory;
 
@@ -95,15 +97,24 @@ class WikiPageConfigLoader {
 	/**
 	 * Load the configured page, with caching.
 	 * @param LinkTarget $configPage
+	 * @param int $flags bit field, see IDBAccessObject::READ_XXX
 	 * @return array|StatusValue The content of the configuration page (as JSON
 	 *   data in PHP-native format), or a StatusValue on error.
 	 */
-	public function load( LinkTarget $configPage ) {
+	public function load( LinkTarget $configPage, int $flags = 0 ) {
 		$cacheKey = $this->makeCacheKey( $configPage );
-		$result = $this->cache->get( $cacheKey );
+
+		if ( !DBAccessObjectUtils::hasFlags( $flags, self::READ_LATEST ) ) {
+			// Consult cache
+			$result = $this->cache->get( $cacheKey );
+		} else {
+			// Pretend there is no cache entry and invalidate cache
+			$result = false;
+			$this->invalidate( $configPage );
+		}
 
 		if ( $result === false ) {
-			$status = $this->fetchConfig( $configPage );
+			$status = $this->fetchConfig( $configPage, $flags );
 			if ( $status->isOK() ) {
 				$result = $status->getValue();
 				$cacheFlags = 0;
@@ -121,16 +132,17 @@ class WikiPageConfigLoader {
 	/**
 	 * Fetch the contents of the configuration page, without caching.
 	 * @param LinkTarget $configPage
+	 * @param int $flags bit field, see IDBAccessObject::READ_XXX
 	 * @return StatusValue Status object, with the configuration (as JSON data) on success.
 	 */
-	private function fetchConfig( LinkTarget $configPage ) {
+	private function fetchConfig( LinkTarget $configPage, int $flags ) {
 		// TODO: Move newcomer-tasks-* messages to...somewhere more generic
 
 		if ( $configPage->isExternal() ) {
 			$url = Util::getRawUrl( $configPage, $this->titleFactory );
 			return Util::getJsonUrl( $this->requestFactory, $url );
 		} else {
-			$revision = $this->revisionLookup->getRevisionByTitle( $configPage );
+			$revision = $this->revisionLookup->getRevisionByTitle( $configPage, 0, $flags );
 			if ( !$revision ) {
 				return StatusValue::newFatal( new ApiRawMessage(
 					'The configuration title does not exist.',
