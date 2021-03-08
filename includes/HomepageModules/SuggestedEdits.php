@@ -39,7 +39,6 @@ use TitleFactory;
  */
 class SuggestedEdits extends BaseModule {
 
-	public const ENABLED_PREF = 'growthexperiments-homepage-suggestededits';
 	public const ACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-activated';
 	public const PREACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-preactivated';
 	public const TOPICS_PREF = 'growthexperiments-homepage-se-topic-filters';
@@ -134,11 +133,7 @@ class SuggestedEdits extends BaseModule {
 	/** @inheritDoc */
 	protected function getHeaderTextElement() {
 		$context = $this->getContext();
-		if ( $this->getMode() === self::RENDER_DESKTOP &&
-			$this->experimentUserManager->isUserInVariant(
-				$context->getUser(), [ 'C' ]
-			)
-		) {
+		if ( $this->getMode() === self::RENDER_DESKTOP ) {
 			return Html::element(
 					'div',
 					[ 'class' => self::BASE_CSS_CLASS . '-header-text' ],
@@ -172,11 +167,8 @@ class SuggestedEdits extends BaseModule {
 	 * @param IContextSource $context
 	 * @return bool
 	 */
-	public static function isEnabled( IContextSource $context ) {
-		return self::isEnabledForAnyone( $context->getConfig() ) && (
-			!$context->getConfig()->get( 'GEHomepageSuggestedEditsRequiresOptIn' ) ||
-			$context->getUser()->getBoolOption( self::ENABLED_PREF )
-		);
+	public static function isEnabled( IContextSource $context ): bool {
+		return self::isEnabledForAnyone( $context->getConfig() );
 	}
 
 	/** @inheritDoc */
@@ -343,6 +335,16 @@ class SuggestedEdits extends BaseModule {
 
 	/** @inheritDoc */
 	protected function shouldRender() {
+		// Always render for mobile.
+		if ( in_array( $this->getMode(), [
+			self::RENDER_MOBILE_SUMMARY,
+			self::RENDER_MOBILE_DETAILS,
+			self::RENDER_MOBILE_DETAILS_OVERLAY
+		] ) ) {
+			return true;
+		}
+		// For desktop, we output a different module (start-startediting) in place of suggested edits, so SE
+		// should not render before the module is activated.
 		return $this->canRender() && self::isActivated( $this->getContext() );
 	}
 
@@ -399,7 +401,8 @@ class SuggestedEdits extends BaseModule {
 	 */
 	protected function getMobileSummaryBody() {
 		// If the task cannot be loaded, fall back to the old summary style for now.
-		$showTaskPreview = $this->getTaskSet() instanceof TaskSet && $this->getTaskSet()->count() > 0;
+		$showTaskPreview = $this->getTaskSet() instanceof TaskSet &&
+			$this->getTaskSet()->count() > 0;
 
 		if ( $showTaskPreview ) {
 			$taskPager = $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
@@ -652,14 +655,11 @@ class SuggestedEdits extends BaseModule {
 
 	/** @inheritDoc */
 	protected function getModules() {
-		$variantC = $this->experimentUserManager->isUserInVariant(
-			$this->getContext()->getUser(), [ 'C' ]
-		);
 		return array_merge(
 			parent::getModules(),
 			[ 'ext.growthExperiments.Homepage.SuggestedEdits' ],
 			// The code to infuse the info button is in the StartEditing module
-			$variantC ? [ 'ext.growthExperiments.Homepage.StartEditing' ] : []
+			[ 'ext.growthExperiments.Homepage.StartEditing' ]
 		);
 	}
 

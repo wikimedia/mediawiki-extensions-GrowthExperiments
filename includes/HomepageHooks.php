@@ -504,12 +504,6 @@ class HomepageHooks implements
 			'type' => 'api'
 		];
 
-		if ( $this->config->get( 'GEHomepageSuggestedEditsRequiresOptIn' ) ) {
-			$preferences[ SuggestedEdits::ENABLED_PREF ] = [
-				'type' => 'api'
-			];
-		}
-
 		if ( $this->config->get( 'GEHomepageSuggestedEditsTopicsRequiresOptIn' ) ) {
 			$preferences[ SuggestedEdits::TOPICS_ENABLED_PREF ] = [
 				'type' => 'api'
@@ -557,21 +551,13 @@ class HomepageHooks implements
 	 * @throws ConfigException
 	 */
 	public function onLocalUserCreated( $user, $autocreated ) {
-		if ( !self::isHomepageEnabled() ) {
+		if ( $autocreated || !self::isHomepageEnabled() ) {
 			return;
 		}
 
 		// Enable the homepage for a percentage of non-autocreated users.
 		$enablePercentage = $this->config->get( 'GEHomepageNewAccountEnablePercentage' );
-		// Allow override via parameter in registration URL.
-		$forceVariant = RequestContext::getMain()->getRequest()->getVal( 'geForceVariant' );
-		if (
-			!$autocreated &&
-			(
-				rand( 0, 99 ) < $enablePercentage ||
-				$forceVariant
-			)
-		) {
+		if ( rand( 0, 99 ) < $enablePercentage ) {
 			$user->setOption( self::HOMEPAGE_PREF_ENABLE, 1 );
 			$user->setOption( self::HOMEPAGE_PREF_PT_LINK, 1 );
 			// Default option is that the user has seen the tours/notices (so we don't prompt
@@ -591,49 +577,37 @@ class HomepageHooks implements
 			}
 
 			// Variant assignment
+			// FIXME: Remove the variant assignment code one train after this code is deployed.
+			// Retaining for now in case a rollback is needed.
 			$geHomepageNewAccountVariants = $this->config->get( 'GEHomepageNewAccountVariants' );
 			$defaultVariant = $this->experimentUserManager->getVariant( $user );
-			if ( $forceVariant && array_key_exists( $forceVariant, $geHomepageNewAccountVariants ) ) {
-				$variant = $forceVariant;
-			} else {
-				$random = rand( 0, 99 );
-				$variant = null;
-				foreach ( $geHomepageNewAccountVariants as $candidateVariant => $percentage ) {
-					if ( $random < $percentage ) {
-						$variant = $candidateVariant;
-						break;
-					}
-					$random -= $percentage;
+			$random = rand( 0, 99 );
+			$variant = null;
+			foreach ( $geHomepageNewAccountVariants as $candidateVariant => $percentage ) {
+				if ( $random < $percentage ) {
+					$variant = $candidateVariant;
+					break;
 				}
+				$random -= $percentage;
 			}
 			if ( $variant === null ) {
-				// Use the default, unsaved variant.
 				$variant = $defaultVariant;
-			} else {
-				$this->experimentUserManager->setVariant( $user, $variant );
 			}
+			$this->experimentUserManager->setVariant( $user, $variant );
 
-			// Pre-initiate suggested edits for variant C
-			if ( $variant === 'C' ) {
-				$user->setOption( SuggestedEdits::ACTIVATED_PREF, 1 );
-				// Record that the user has suggested edits pre-activated. This preference isn't
-				// used for anything in software, it's only used in data analysis to distinguish
-				// users who manually activated suggested edits from those for whom it was pre-activated.
-				$user->setOption( SuggestedEdits::PREACTIVATED_PREF, 1 );
-
-				// Variant C users need to see a suggested edit card when they arrive on the
-				// homepage. We can populate the cache of tasks (default task/topic selections)
-				// so that when the user lands on Special:Homepage, the request to retrieve tasks
-				// will pull from the cached TaskSet instead of doing expensive search queries.
-				DeferredUpdates::addCallableUpdate( function () use ( $user ) {
-					$taskSuggester = $this->taskSuggesterFactory->create();
-					$taskSuggester->suggest(
-						$user,
-						$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-						$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
-					);
-				} );
-			}
+			// Populate the cache of tasks with default task/topic selections
+			// so that when the user lands on Special:Homepage, the request to retrieve tasks
+			// will pull from the cached TaskSet instead of doing time consuming search queries.
+			// With nuances in how mobile/desktop users are onboarded, this may not be always
+			// necessary but does no harm to run for all newly created users.
+			DeferredUpdates::addCallableUpdate( function () use ( $user ) {
+				$taskSuggester = $this->taskSuggesterFactory->create();
+				$taskSuggester->suggest(
+					$user,
+					$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
+					$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
+				);
+			} );
 		}
 	}
 

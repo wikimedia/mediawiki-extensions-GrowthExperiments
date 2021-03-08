@@ -219,14 +219,11 @@ class SpecialHomepage extends SpecialPage {
 		$moduleConfig = array_filter( [
 			'banner' => true,
 			'startemail' => true,
-			// Only load start-startediting code for unactivated SE users in variant D
+			// Only load start-startediting code (the uninitiated view of suggested edits) for desktop users who
+			// haven't activated SE yet.
 			'start-startediting' => SuggestedEdits::isEnabledForAnyone(
 				$this->getContext()->getConfig()
-			) && ( !$par &&
-				$this->experimentUserManager->isUserInVariant(
-					$this->getUser(),
-					'D'
-				) && !SuggestedEdits::isActivated( $this->getContext() ) ),
+			) && ( !$par && !$isMobile && !SuggestedEdits::isActivated( $this->getContext() ) ),
 			'suggested-edits' => SuggestedEdits::isEnabled( $this->getContext() ),
 			'impact' => true,
 			'mentorship' => $this->getConfig()->get( 'GEMentorshipEnabled' ),

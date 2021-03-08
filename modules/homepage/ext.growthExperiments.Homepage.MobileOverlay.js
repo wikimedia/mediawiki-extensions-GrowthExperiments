@@ -7,7 +7,6 @@
 		promisedView = mobile.promisedView,
 		Overlay = mobile.Overlay,
 		util = mobile.util,
-		Utils = require( '../utils/ext.growthExperiments.Utils.js' ),
 		mfExtend = mobile.mfExtend;
 
 	/**
@@ -38,7 +37,7 @@
 				headerActions = [];
 
 			function shouldShowInfoButton( moduleName ) {
-				return Utils.isUserInVariant( [ 'C' ] ) && moduleName === 'suggested-edits';
+				return moduleName === 'suggested-edits';
 			}
 
 			if ( shouldShowInfoButton( options.moduleName ) ) {
@@ -52,7 +51,7 @@
 						invisibleLabel: true
 					} );
 					// We need to embed the module name and mode so that we can access it
-					// on the mobile overlay info button for variant C users, see setupCtaButton in
+					// on the mobile overlay info button, see setupCtaButton in
 					// ext.growthExperiments.Homepage.StartEditing.js
 					infoButton.$element.data( 'module-name', options.moduleName );
 					infoButton.$element.data( 'mode', 'mobile-overlay' );

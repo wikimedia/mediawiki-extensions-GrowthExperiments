@@ -5,20 +5,24 @@
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
 		),
-		homepageVariant = mw.user.options.get( 'growthexperiments-homepage-variant' );
+		isSuggestedEditsActivated = mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' );
 
 	/**
 	 * @param {Object} guider The guider configuration object
 	 * @param {boolean} isAlternativeClose Legacy parameter, should be ignored.
 	 * @param {string} closeMethod Guider close method: 'xButton', 'escapeKey', 'clickOutside'
 	 */
-	function logTourClose( guider, isAlternativeClose, closeMethod ) {
+	function logTourCloseAndMarkAsComplete( guider, isAlternativeClose, closeMethod ) {
 		var type = {
 			xButton: 'close-icon',
 			escapeKey: 'should-not-happen',
 			clickOutside: 'outside-click'
 		}[ closeMethod ];
 
+		new mw.Api().saveOption(
+			'growthexperiments-tour-homepage-welcome',
+			'1'
+		);
 		homepageModuleLogger.log( 'generic', 'desktop', 'welcome-close', { type: type } );
 	}
 
@@ -41,12 +45,13 @@
 		isSinglePage: true,
 		shouldLog: true
 	} );
-	if ( homepageVariant === 'C' ) {
+	if ( isSuggestedEditsActivated ) {
 		step = welcomeTour.firstStep( {
 			name: 'welcome',
 			title: mw.message( 'growthexperiments-tour-welcome-title' )
 				.params( [ mw.user ] )
 				.parse(),
+			// TODO: Rename this message key because it's not variant C anymore
 			description: mw.message( 'growthexperiments-tour-welcome-description-c' ).parse(),
 			attachTo: '#pt-userpage',
 			position: 'bottom',
@@ -59,7 +64,7 @@
 				action: 'next'
 			} ],
 			onShow: setupCloseButtonLogging,
-			onClose: logTourClose
+			onClose: logTourCloseAndMarkAsComplete
 		} );
 		welcomeTour.step( {
 			name: 'fake',
@@ -76,12 +81,13 @@
 			}
 		} );
 		step.next( 'fake' );
-	} else if ( homepageVariant === 'D' ) {
+	} else {
 		welcomeTour.firstStep( {
 			name: 'welcome',
 			title: mw.message( 'growthexperiments-tour-welcome-title' )
 				.params( [ mw.user ] )
 				.parse(),
+			// TODO: Rename this message key because it's not variant D anymore
 			description: mw.message( 'growthexperiments-tour-welcome-description-d' ).parse(),
 			attachTo: '#pt-userpage',
 			position: 'bottom',
@@ -92,13 +98,9 @@
 				namemsg: 'growthexperiments-tour-response-button-okay'
 			} ],
 			onShow: setupCloseButtonLogging,
-			onClose: logTourClose
+			onClose: logTourCloseAndMarkAsComplete
 		} );
 	}
 	mw.guidedTour.launchTour( 'homepage_welcome' );
 	homepageModuleLogger.log( 'generic', 'desktop', 'welcome-impression' );
-	new mw.Api().saveOption(
-		'growthexperiments-tour-homepage-welcome',
-		'1'
-	);
 }( mw.guidedTour ) );
