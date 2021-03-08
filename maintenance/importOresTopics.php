@@ -4,6 +4,7 @@ namespace GrowthExperiments\Maintenance;
 
 use CirrusSearch\CirrusSearch;
 use CirrusSearch\Query\ArticleTopicFeature;
+use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Util;
 use LogicException;
 use Maintenance;
@@ -96,6 +97,12 @@ class ImportOresTopics extends Maintenance {
 	}
 
 	private function init() {
+		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		if ( !$growthServices->getConfig()->get( 'GEDeveloperSetup' ) ) {
+			$this->fatalError( 'This script cannot be safely run in production. (If the current '
+				. 'environment is not production, $wgGEDeveloperSetup should be set to true.)' );
+		}
+
 		$this->cirrusSearch = new CirrusSearch();
 		$this->isBeta = preg_match( '/\.beta\.wmflabs\./', $this->getConfig()->get( 'Server' ) );
 
