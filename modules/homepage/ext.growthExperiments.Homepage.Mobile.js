@@ -173,6 +173,10 @@
 					},
 					welcomeDrawer;
 
+				if ( mw.user.options.get( welcomeNoticeSeenPreference ) ) {
+					return;
+				}
+
 				welcomeDrawer = new Drawer( {
 					className: 'homepage-welcome-notice',
 					showCollapseIcon: false,
