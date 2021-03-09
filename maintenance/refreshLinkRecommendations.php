@@ -375,7 +375,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		$revertTags = array_intersect( ChangeTags::REVERT_TAGS, array_keys( $tags ) );
 		if ( $revertTags ) {
 			$linkRecommendationChangeTagId = $this->changeDefNameTableStore
-				->getId( LinkRecommendationTaskTypeHandler::CHANGE_TAG );
+				->acquireId( LinkRecommendationTaskTypeHandler::CHANGE_TAG );
 			$tagData = json_decode( $tags[reset( $revertTags )], true );
 			/** @var array $tagData */'@phan-var array $tagData';
 			$revertedAddLinkEditCount = $db->selectRowCount(
