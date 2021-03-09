@@ -22,10 +22,12 @@ interface TaskSuggester {
 	 * @param int|null $offset Offset within full result set, for continuation.
 	 * @param array $options Associative array of options:
 	 *   - useCache (bool, default true): enable/disable caching if the implementation has any.
+	 *   - resetCache (bool, default false): ignore and replace the cached result. Overrides
+	 *     useCache.
 	 *   - revalidateCache (bool, default true): whether cached results should be revalidated
 	 *     by filtering out tasks where the page changed in such a way that makes the task
 	 *     inapplicable (e.g. in the case of a template-based task, the template was removed).
-	 *     This is more accurate but slower. No effect when useCache is false.
+	 *     This is more accurate but slower. No effect when useCache or resetCache is used.
 	 *   - debug (bool, default false): Debug mode. Depending on the implementation, might
 	 *     result in filling TaskSet::getDebugData(). Might also disable optimizations such as
 	 *     caching.

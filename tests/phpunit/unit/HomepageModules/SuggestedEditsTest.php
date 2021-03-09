@@ -17,6 +17,7 @@ use MediaWiki\Extensions\PageViewInfo\PageViewService;
 use OOUI\BlankTheme;
 use OOUI\Theme;
 use OutputPage;
+use WebRequest;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -55,7 +56,6 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 			->disableOriginalConstructor()
 			->setMethodsExcept()
 			->getMock();
-
 		$languageMock = $this->getMockBuilder( Language::class )
 			->disableOriginalConstructor()
 			->getMock();
@@ -63,13 +63,20 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 			->willReturn( 'el' );
 		$languageMock->method( 'getDir' )
 			->willReturn( 'ltr' );
-
 		$userMock = $this->getMockBuilder( \User::class )
 			->disableOriginalConstructor()
 			->getMock();
 		$userMock->method( 'getBoolOption' )
 			->with( SuggestedEdits::ACTIVATED_PREF )
 			->willReturn( true );
+		$requestMock = $this->getMockBuilder( WebRequest::class )
+			->disableOriginalConstructor()
+			->setMethods( [ 'getCheck' ] )
+			->getMock();
+		$requestMock->method( 'getCheck' )
+			->with( 'resetTaskCache' )
+			->willReturn( false );
+
 		$contextMock = $this->getMockBuilder( \IContextSource::class )
 			->disableOriginalConstructor()
 			->getMock();
@@ -81,6 +88,8 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 			->willReturn( $outputMock );
 		$contextMock->method( 'getLanguage' )
 			->willReturn( $languageMock );
+		$contextMock->method( 'getRequest' )
+			->willReturn( $requestMock );
 		$contextMock->method( 'msg' )
 			->willReturn( $this->getMockMessage() );
 		$editInfoServiceMock = $this->getMockBuilder( EditInfoService::class )
