@@ -14,6 +14,7 @@ use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\BaseModule;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\Tracker\Tracker;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use GrowthExperiments\TourHooks;
@@ -401,8 +402,14 @@ class SpecialHomepage extends SpecialPage {
 			// (storing the value in cache failed) then we are not going to prevent redirection.
 			return false;
 		}
+
+		$redirectParams = [ 'getasktype' => $request->getVal( 'getasktype' ) ];
+		if ( $taskTypeId === LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
+			$redirectParams[ 'veaction' ] = 'edit';
+			$redirectParams[ 'section' ] = 'all';
+		}
 		$this->getOutput()->redirect(
-			$this->tracker->getTitleUrl( [ 'getasktype' => $request->getVal( 'getasktype' ) ] )
+			$this->tracker->getTitleUrl( $redirectParams )
 		);
 		return true;
 	}
