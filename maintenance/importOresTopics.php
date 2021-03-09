@@ -76,7 +76,7 @@ class ImportOresTopics extends Maintenance {
 		while ( $totalCount > 0 ) {
 			// Exclude Selenium test articles. The search query regex syntax does not seem to
 			// allow for \d.
-			$titles = $this->search( '-intitle:/0\.[0-9]{10}/', $batchSize, $offset );
+			$titles = $this->search( '-intitle:/[0-9]{10}/', $batchSize, $offset );
 			if ( !$titles ) {
 				$this->fatalError( 'No more articles found' );
 			} elseif ( $this->verbose ) {
