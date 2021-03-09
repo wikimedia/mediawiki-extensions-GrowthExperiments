@@ -72,10 +72,14 @@ class CacheDecorator implements TaskSuggester {
 				// This callback is always invoked each time getWithSetCallback is called,
 				// because we need to examine the contents of the cache (if any) before
 				// deciding whether to return those contents or if they need to be regenerated.
+
 				if ( $useCache && $oldValue instanceof TaskSet && $oldValue->filtersEqual( $taskSetFilters ) ) {
+					// There's a cached value we can use; we need to randomize and potentially
+					// revalidate it.
 					// &$ttl needs to be set to UNCACHEABLE so that WANObjectCache
 					// doesn't attempt a set() after returning the existing value.
 					$ttl = $this->cache::TTL_UNCACHEABLE;
+
 					if ( $revalidateCache ) {
 						// Filter out cached tasks which have already been done.
 						// Filter before limiting, so they can be replace by other tasks.
@@ -101,8 +105,10 @@ class CacheDecorator implements TaskSuggester {
 					}
 					return $newValue;
 				}
+
 				// We don't have a task set, or the taskset filters in the request don't match
-				// what is stored in the cache. Call the search backend and return the results.
+				// what is stored in the cache, or using the cached value was explicitly diallowed
+				// by the caller. Call the search backend and return the results.
 				// N.B. we cache whatever the taskSuggester returns, which could be a StatusValue,
 				// so when retrieving items from the cache we need to check the type before assuming
 				// we are working with a TaskSet.
@@ -114,16 +120,21 @@ class CacheDecorator implements TaskSuggester {
 				);
 				if ( $result instanceof TaskSet && $result->count() ) {
 					$result->randomSort();
-					// Schedule a job to refresh the taskset before the cache
-					// expires.
-					$this->jobQueueGroup->lazyPush(
-						new NewcomerTasksCacheRefreshJob( [
-							'userId' => $user->getId(),
-							'jobReleaseTimestamp' => (int)wfTimestamp() +
-								// Process the job the day before the cache expires.
-								( $this->cache::TTL_WEEK - $this->cache::TTL_DAY ),
-						] )
-					);
+					if ( $useCache ) {
+						// Schedule a job to refresh the taskset before the cache
+						// expires.
+						$this->jobQueueGroup->lazyPush(
+							new NewcomerTasksCacheRefreshJob( [
+								'userId' => $user->getId(),
+								'jobReleaseTimestamp' => (int)wfTimestamp() +
+									// Process the job the day before the cache expires.
+									( $this->cache::TTL_WEEK - $this->cache::TTL_DAY ),
+							] )
+						);
+					}
+				}
+				if ( !$useCache ) {
+					$ttl = $this->cache::TTL_UNCACHEABLE;
 				}
 				LoggerFactory::getInstance( 'GrowthExperiments' )->debug( 'CacheDecorator miss', [
 					'user' => $user->getName(),
