@@ -93,6 +93,9 @@ class HelpPanelHooks {
 	 * @throws \ConfigException
 	 */
 	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
+		$geServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$config = $geServices->getConfig();
+
 		$definitelyShow = HelpPanel::shouldShowHelpPanel( $out );
 		$maybeShow = HelpPanel::shouldShowHelpPanel( $out, false );
 
@@ -125,6 +128,12 @@ class HelpPanelHooks {
 				'wgGEHelpPanelEnabled' => true,
 				'wgGEHelpPanelMentorData'
 					=> self::getMentorData( $out->getConfig(), $out->getUser(), $out->getContext() ),
+				// wgGEHelpPanelAskMentor needs to be here and not in getModuleData,
+				// because getting current user is not possible within ResourceLoader context
+				'wgGEHelpPanelAskMentor' =>
+					$config->get( 'GEMentorshipEnabled' ) &&
+					$config->get( 'GEHelpPanelAskMentor' ) &&
+					$geServices->getMentorManager()->getMentorForUserSafe( $out->getUser() ) !== null,
 			] + HelpPanel::getUserEmailConfigVars( $out->getUser() ) );
 
 			if ( !$definitelyShow ) {
@@ -152,9 +161,6 @@ class HelpPanelHooks {
 			'GEHelpPanelSuggestedEditsPreferredEditor' =>
 				$config->get( 'GEHelpPanelSuggestedEditsPreferredEditor' ),
 			'GEHelpPanelHelpDeskTitle' => $helpdeskTitle ? $helpdeskTitle->getPrefixedText() : null,
-			'GEHelpPanelAskMentor' =>
-				$config->get( 'GEMentorshipEnabled' ) &&
-				$config->get( 'GEHelpPanelAskMentor' ),
 		];
 	}
 
