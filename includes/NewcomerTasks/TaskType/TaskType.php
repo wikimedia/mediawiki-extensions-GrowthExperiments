@@ -188,4 +188,19 @@ class TaskType implements JsonUnserializable {
 		return $taskType;
 	}
 
+	/**
+	 * Whether the corresponding article for the task type should be opened in edit mode
+	 * @return bool
+	 */
+	public function shouldOpenInEditMode(): bool {
+		return false;
+	}
+
+	/**
+	 * Get the default edit section for the task type
+	 * @return string
+	 */
+	public function getDefaultEditSection(): string {
+		return '';
+	}
 }

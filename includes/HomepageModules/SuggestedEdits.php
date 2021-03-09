@@ -761,4 +761,26 @@ class SuggestedEdits extends BaseModule {
 	private function getUnfilteredTaskSetCountReducedToTaskQueueLength() : int {
 		return min( $this->unfilteredTasksetCount ?? 0, 200 );
 	}
+
+	/**
+	 * Get the query params for the redirect URL for the specified task type ID
+	 *
+	 * @param string $taskTypeId
+	 * @return array
+	 */
+	public function getRedirectParams( string $taskTypeId ): array {
+		$taskType = $this->configurationLoader->getTaskTypes()[ $taskTypeId ];
+		if ( !$taskType ) {
+			return [];
+		}
+
+		$redirectParams = [];
+		if ( $taskType->shouldOpenInEditMode() ) {
+			$redirectParams[ 'veaction' ] = 'edit';
+		}
+		if ( (bool)$taskType->getDefaultEditSection() ) {
+			$redirectParams[ 'section' ] = $taskType->getDefaultEditSection();
+		}
+		return $redirectParams;
+	}
 }
