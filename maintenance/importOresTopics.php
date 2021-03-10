@@ -4,15 +4,19 @@ namespace GrowthExperiments\Maintenance;
 
 use CirrusSearch\CirrusSearch;
 use CirrusSearch\Query\ArticleTopicFeature;
+use Generator;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Util;
 use LogicException;
 use Maintenance;
+use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\MediaWikiServices;
 use Status;
 use StatusValue;
 use Title;
+use TitleFactory;
 use WikiMap;
+use Wikimedia\Assert\PreconditionException;
 
 $path = dirname( dirname( dirname( __DIR__ ) ) );
 
@@ -35,6 +39,12 @@ class ImportOresTopics extends Maintenance {
 	/** @var CirrusSearch */
 	private $cirrusSearch;
 
+	/** @var TitleFactory */
+	private $titleFactory;
+
+	/** @var LinkBatchFactory */
+	private $linkBatchFactory;
+
 	/** @var bool Are we on the beta cluster? */
 	private $isBeta;
 
@@ -56,13 +66,15 @@ class ImportOresTopics extends Maintenance {
 		$this->requireExtension( 'CirrusSearch' );
 
 		$this->addDescription( 'Import ORES topics from a production wiki' );
-		$this->addOption( 'count', 'Number of articles to fetch a topic for.', true, true );
+		$this->addOption( 'count', 'Number of articles to fetch a topic for.', false, true );
 		$this->addOption( 'topicSource', "Topic source: 'prod' for fetching from a production wiki '
 			. '(assumes a wiki with titles imported from production), 'random': random topics", false, true );
 		$this->addOption( 'apiUrl', "MediaWiki API URL of the wiki the articles are from. '
 			. 'Only with --topicSource=prod. Can be auto-guessed in the beta cluster.", false, true );
 		$this->addOption( 'wikiId', "Wiki ID to use when fetching scores from the ORES API. '
 			. 'Only with --topicSource=prod. Can be auto-guessed in the beta cluster.", false, true );
+		$this->addOption( 'pageList', 'Name of a file containing the list of pages to import topics for, '
+			. 'one title per line. When omitted, pages with no topics are selected randomly.', false, true );
 		$this->addOption( 'verbose', 'Use verbose output' );
 		$this->setBatchSize( 50 );
 	}
@@ -70,40 +82,37 @@ class ImportOresTopics extends Maintenance {
 	public function execute() {
 		$this->init();
 
-		$totalCount = $this->getOption( 'count' );
-		$batchSize = min( $this->getBatchSize(), $totalCount );
-		$offset = 0;
-		while ( $totalCount > 0 ) {
-			// Exclude Selenium test articles. The search query regex syntax does not seem to
-			// allow for \d.
-			$titles = $this->search( '-intitle:/[0-9]{10}/', $batchSize, $offset );
-			if ( !$titles ) {
-				$this->fatalError( 'No more articles found' );
-			} elseif ( $this->verbose ) {
-				$this->output( 'Found ' . count( $titles ) . " articles\n" );
-			}
-			$topics = $this->getTopics( $titles );
-			foreach ( $topics as $title => $titleTopics ) {
+		$gen = $this->getPages( $this->getBatchSize() );
+		foreach ( $gen as $titleBatch ) {
+			$topics = $this->getTopics( $titleBatch );
+			foreach ( $topics as $pageName => $titleTopics ) {
 				if ( $this->verbose ) {
 					$topicList = urldecode( http_build_query( $titleTopics, '', ', ' ) );
-					$this->output( "Adding topics for $title: $topicList\n" );
+					$this->output( "Adding topics for $pageName: $topicList\n" );
 				}
-				$this->cirrusSearch->updateWeightedTags( Title::newFromText( $title )->toPageIdentity(),
-					'classification.ores.articletopic', array_keys( $titleTopics ), $titleTopics );
+				try {
+					$this->cirrusSearch->updateWeightedTags( Title::newFromText( $pageName )->toPageIdentity(),
+						'classification.ores.articletopic', array_keys( $titleTopics ), $titleTopics );
+				} catch ( PreconditionException $e ) {
+					// Page did not exist
+					$this->error( $pageName . ': ' . $e->getMessage() );
+				}
 			}
-			$totalCount -= count( $topics );
-			$offset += $batchSize;
+			$gen->send( count( $topics ) );
 		}
 	}
 
 	private function init() {
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$services = MediaWikiServices::getInstance();
+		$growthServices = GrowthExperimentsServices::wrap( $services );
 		if ( !$growthServices->getConfig()->get( 'GEDeveloperSetup' ) ) {
 			$this->fatalError( 'This script cannot be safely run in production. (If the current '
 				. 'environment is not production, $wgGEDeveloperSetup should be set to true.)' );
 		}
 
 		$this->cirrusSearch = new CirrusSearch();
+		$this->titleFactory = $services->getTitleFactory();
+		$this->linkBatchFactory = $services->getLinkBatchFactory();
 		$this->isBeta = preg_match( '/\.beta\.wmflabs\./', $this->getConfig()->get( 'Server' ) );
 
 		$this->topicSource = $this->getOption( 'topicSource', self::TOPIC_SOURCE_PROD );
@@ -124,7 +133,59 @@ class ImportOresTopics extends Maintenance {
 					. 'unless running in the beta cluster' );
 			}
 		}
+		if ( $this->hasOption( 'pageList' ) && $this->hasOption( 'count' ) ) {
+			$this->fatalError( 'It makes no sense to use --count and --pageList together' );
+		} elseif ( !$this->hasOption( 'pageList' ) && !$this->hasOption( 'count' ) ) {
+			$this->fatalError( 'One of --count or --pageList is required' );
+		}
+
 		$this->verbose = $this->hasOption( 'verbose' );
+	}
+
+	/**
+	 * @param int $batchSize
+	 * @return Generator<Title[]>
+	 */
+	private function getPages( int $batchSize ) {
+		$pageList = $this->getOption( 'pageList' );
+		if ( $pageList ) {
+			if ( $pageList[0] !== '/' ) {
+				$pageList = ( $_SERVER['PWD'] ?? getcwd() ) . '/' . $pageList;
+			}
+			$pages = file_get_contents( $pageList );
+			if ( $pages === false ) {
+				$this->fatalError( "Could not read $pageList" );
+			}
+			$pages = preg_split( '/\n/', $pages, -1, PREG_SPLIT_NO_EMPTY );
+			foreach ( array_chunk( $pages, $batchSize ) as $pageBatch ) {
+				$titleBatch = array_map( function ( string $page ) {
+					return $this->titleFactory->newFromText( $page );
+				}, $pageBatch );
+				$this->linkBatchFactory->newLinkBatch( $titleBatch )->execute();
+				yield $titleBatch;
+			}
+		} else {
+			$totalCount = $this->getOption( 'count' );
+			$batchSize = min( $batchSize, $totalCount );
+			$offset = 0;
+			while ( $totalCount > 0 ) {
+				// Exclude Selenium test articles. The search query regex syntax does not seem to
+				// allow for \d.
+				$searchTerms = [
+					'-intitle:/[0-9]{10}/',
+					'-articletopic:' . implode( '|', array_keys( ArticleTopicFeature::TERMS_TO_LABELS ) ),
+				];
+				$titleBatch = $this->search( implode( ' ', $searchTerms ), $batchSize, $offset );
+				if ( !$titleBatch ) {
+					$this->fatalError( 'No more articles found' );
+				} elseif ( $this->verbose ) {
+					$this->output( 'Found ' . count( $titleBatch ) . " articles\n" );
+				}
+				$fixedCount = yield $titleBatch;
+				$totalCount -= $fixedCount;
+				$offset += $batchSize;
+			}
+		}
 	}
 
 	/**
@@ -253,7 +314,7 @@ class ImportOresTopics extends Maintenance {
 		$searchEngine->setLimitOffset( $limit, $offset );
 		$searchEngine->setNamespaces( [ NS_MAIN ] );
 		$searchEngine->setShowSuggestion( false );
-		$searchEngine->setSort( 'random' );
+		$searchEngine->setSort( 'none' );
 		$matches = $searchEngine->searchText( $query )
 			?? StatusValue::newFatal( 'rawmessage', 'Search is disabled' );
 		if ( $matches instanceof StatusValue ) {
