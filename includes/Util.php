@@ -13,6 +13,7 @@ use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 use MWExceptionHandler;
+use Psr\Log\LogLevel;
 use RawMessage;
 use RequestContext;
 use Sanitizer;
@@ -125,12 +126,23 @@ class Util {
 	 * internal errors are logged to the exception channel.
 	 * @param Throwable $error Error object from the catch block
 	 * @param array $extraData
+	 * @param string $level Log-level on which WikiConfigException should be logged
 	 */
-	public static function logError( Throwable $error, array $extraData = [] ) {
+	public static function logError(
+		Throwable $error,
+		array $extraData = [],
+		string $level = LogLevel::ERROR
+	) {
+		// Special-handling for WikiConfigException
 		if ( $error instanceof WikiConfigException ) {
-			LoggerFactory::getInstance( 'GrowthExperiments' )->error(
-				$error->getMessage(), $extraData + [ 'exception' => $error ] );
+			LoggerFactory::getInstance( 'GrowthExperiments' )
+				->log(
+					$level,
+					$error->getMessage(),
+					$extraData + [ 'exception' => $error ]
+				);
 		} else {
+			// Normal exception handling
 			MWExceptionHandler::logException( $error, MWExceptionHandler::CAUGHT_BY_OTHER, $extraData );
 		}
 	}

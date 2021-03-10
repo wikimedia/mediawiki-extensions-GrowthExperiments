@@ -8,6 +8,7 @@ use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use Psr\Log\LogLevel;
 use Throwable;
 
 class MentorHooks implements GetPreferencesHook, LocalUserCreatedHook {
@@ -45,7 +46,7 @@ class MentorHooks implements GetPreferencesHook, LocalUserCreatedHook {
 					'user' => $user->getId(),
 					'impact' => 'Failed to assign mentor for user',
 					'origin' => __METHOD__,
-				] );
+				], LogLevel::INFO );
 			}
 		}
 	}
