@@ -122,6 +122,14 @@ $specialPageAliases['it'] = [
 	'ClaimMentee' => [ 'SeguiAllievo' ],
 ];
 
+/** Japanese (日本語) */
+$specialPageAliases['ja'] = [
+	'WelcomeSurvey' => [ 'ようこそ調査' ],
+	'Homepage' => [ 'ホームページ' ],
+	'Impact' => [ '影響' ],
+	'ClaimMentee' => [ '新規参入者を主張する' ],
+];
+
 /** 한국어  (Korean) */
 $specialPageAliases['ko'] = [
 	'WelcomeSurvey' => [ '환영설문조사' ],
