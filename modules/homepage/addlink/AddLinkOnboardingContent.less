@@ -1,0 +1,75 @@
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
+
+.addlink-onboarding-content {
+	&-title {
+		font-weight: bold;
+		font-size: 1.143em;
+		line-height: 1.425em;
+	}
+
+	&-body {
+		line-height: 1.429em;
+		margin: 8px 0;
+		padding-bottom: 35px;
+	}
+
+	&-link {
+		margin-top: 1em;
+		color: @wmui-color-accent50;
+
+		&:visited {
+			color: @wmui-color-accent50;
+		}
+	}
+
+	&-list {
+		list-style: inside;
+		margin-left: 8px;
+	}
+
+	&-list-item {
+		margin-top: 8px;
+	}
+
+	&-example-label {
+		font-style: italic;
+		font-size: 0.929em;
+		line-height: 1.462em;
+		margin-top: 8px;
+		color: @wmui-color-base30;
+	}
+
+	&-example {
+		padding: 12px;
+		background: @wmui-color-base90;
+		border: 1px solid @wmui-color-base80;
+		box-sizing: border-box;
+		border-radius: 2px;
+		margin-bottom: 8px;
+
+		mark {
+			background: @wmui-color-accent90;
+			mix-blend-mode: multiply;
+			padding: 2px;
+		}
+	}
+
+	&-image1 {
+		background-image: url( ../../../images/addlink/onboarding-image1.svg );
+	}
+
+	&-image2 {
+		background-image: url( ../../../images/addlink/onboarding-image2.svg );
+	}
+
+	&-image3 {
+		background-image: url( ../../../images/addlink/onboarding-image3.svg );
+	}
+
+	&-image1,
+	&-image2,
+	&-image3 {
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+}

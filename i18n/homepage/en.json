@@ -342,5 +342,15 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Tap the edit pencil $1 next to the link to change the link destination",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Other / prefer not to say",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Done",
+	"growthexperiments-addlink-onboarding-content-intro-title": "Adding links will help people learn faster.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|You}} will decide whether words in one {{SITENAME}} article should link to other {{SITENAME}} articles.",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Example sentence",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "The moon is the only <mark>natural satellite</mark> that <mark>orbits</mark> around the <mark>Earth</mark>.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "No special knowledge about the article is needed to do this task.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Suggested links come from artificial intelligence (AI), which can make mistakes.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "AI might suggest links on words that don’t need them, or might suggest linking to the wrong article. Use {{GENDER:$1|your}} judgment to decide whether it is right or wrong.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Learn more about AI suggestions",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Guidelines",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Link concepts that a reader might want to learn more about.</li><li>Make sure the link is going to the right article.</li><li>Don't link common words, years, or dates.</li><li>If {{GENDER:$1|you're}} not sure, skip.</li>",
 	"grant-managementorship": "Manage mentorship"
 }

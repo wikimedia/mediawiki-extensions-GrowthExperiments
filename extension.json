@@ -735,6 +735,42 @@
 				"mobile"
 			]
 		},
+		"ext.growthExperiments.AddLink.onboardingContent": {
+			"packageFiles": [
+				"homepage/addlink/AddLinkOnboardingContent.js",
+				{
+					"name": "homepage/addlink/TaskTypes.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
+				}
+			],
+			"styles": [
+				"homepage/addlink/AddLinkOnboardingContent.less"
+			],
+			"messages": [
+				"growthexperiments-addlink-onboarding-content-intro-title",
+				"growthexperiments-addlink-onboarding-content-intro-body-paragraph1",
+				"growthexperiments-addlink-onboarding-content-intro-body-example-label",
+				"growthexperiments-addlink-onboarding-content-intro-body-example-text",
+				"growthexperiments-addlink-onboarding-content-intro-body-paragraph2",
+				"growthexperiments-addlink-onboarding-content-about-suggested-links-title",
+				"growthexperiments-addlink-onboarding-content-about-suggested-links-body",
+				"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text",
+				"growthexperiments-addlink-onboarding-content-linking-guidelines-title",
+				"growthexperiments-addlink-onboarding-content-linking-guidelines-body"
+			],
+			"dependencies": [
+				"mediawiki.jqueryMsg",
+				"mediawiki.language",
+				"mediawiki.user",
+				"mediawiki.util",
+				"oojs-ui-widgets",
+				"oojs-ui-windows"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
 		"ext.growthExperiments.Homepage.icons": {
 			"class": "ResourceLoaderImageModule",
 			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",
