@@ -323,10 +323,14 @@ class SuggestedEdits extends BaseModule {
 		//   aren't (e.g. user visits homepage, doesn't come back for 8 days, then goes to
 		//   homepage again), we should fetch tasks using a single task type and topic to
 		//   speed up the query. For now, we just skip revalidation entirely.
+		$suggesterOptions = [ 'revalidateCache' => false ];
+		if ( $this->getContext()->getRequest()->getCheck( 'resetTaskCache' ) ) {
+			$suggesterOptions = [ 'resetCache' => true ];
+		}
 		$taskTypes = $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user );
 		$topics = $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user );
 		$tasks = $this->taskSuggester->suggest( $user, $taskTypes, $topics, null, null,
-			[ 'revalidateCache' => false ] );
+			$suggesterOptions );
 		if ( $tasks instanceof TaskSet ) {
 			$this->unfilteredTasksetCount = $tasks->count();
 			$tasks = $this->protectionFilter->filter( $tasks, 1 );

@@ -50,6 +50,7 @@ class CacheDecorator implements TaskSuggester {
 		array $options = []
 	) {
 		$useCache = $options['useCache'] ?? true;
+		$resetCache = $options['resetCache'] ?? false;
 		$revalidateCache = $options['revalidateCache'] ?? true;
 		$debug = $options['debug'] ?? false;
 		$taskSetFilters = new TaskSetFilters( $taskTypeFilter, $topicFilter );
@@ -67,13 +68,17 @@ class CacheDecorator implements TaskSuggester {
 			),
 			$this->cache::TTL_WEEK,
 			function ( $oldValue, &$ttl ) use (
-				$user, $taskSetFilters, $limit, $useCache, $revalidateCache
+				$user, $taskSetFilters, $limit, $useCache, $resetCache, $revalidateCache
 			) {
 				// This callback is always invoked each time getWithSetCallback is called,
 				// because we need to examine the contents of the cache (if any) before
 				// deciding whether to return those contents or if they need to be regenerated.
 
-				if ( $useCache && $oldValue instanceof TaskSet && $oldValue->filtersEqual( $taskSetFilters ) ) {
+				if ( $useCache
+					 && !$resetCache
+					 && $oldValue instanceof TaskSet
+					 && $oldValue->filtersEqual( $taskSetFilters )
+				) {
 					// There's a cached value we can use; we need to randomize and potentially
 					// revalidate it.
 					// &$ttl needs to be set to UNCACHEABLE so that WANObjectCache
@@ -120,7 +125,7 @@ class CacheDecorator implements TaskSuggester {
 				);
 				if ( $result instanceof TaskSet && $result->count() ) {
 					$result->randomSort();
-					if ( $useCache ) {
+					if ( $useCache || $resetCache ) {
 						// Schedule a job to refresh the taskset before the cache
 						// expires.
 						$this->jobQueueGroup->lazyPush(
@@ -133,7 +138,7 @@ class CacheDecorator implements TaskSuggester {
 						);
 					}
 				}
-				if ( !$useCache ) {
+				if ( !$useCache && !$resetCache ) {
 					$ttl = $this->cache::TTL_UNCACHEABLE;
 				}
 				LoggerFactory::getInstance( 'GrowthExperiments' )->debug( 'CacheDecorator miss', [
