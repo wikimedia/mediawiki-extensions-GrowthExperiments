@@ -289,16 +289,14 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		) );
 		if ( count( $autoAssignedMentors ) === 0 ) {
 			throw new WikiConfigException(
-				'Homepage Mentorship module: no mentor available for ' .
-				$mentee->getName() .
+				'Homepage Mentorship module: no mentor available' .
 				' but excluded users'
 			);
 		}
 		$autoAssignedMentors = array_values( array_diff( $autoAssignedMentors, [ $mentee->getName() ] ) );
 		if ( count( $autoAssignedMentors ) === 0 ) {
 			throw new WikiConfigException(
-				'Homepage Mentorship module: no mentor available for ' .
-				$mentee->getName() .
+				'Homepage Mentorship module: no mentor available for a user' .
 				' but themselves'
 			);
 		}
@@ -307,8 +305,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$result = $this->userFactory->newFromName( $selectedMentorName );
 		if ( $result === null ) {
 			throw new WikiConfigException(
-				'Homepage Mentorship module: no mentor available for ' .
-				$mentee->getName()
+				'Homepage Mentorship module: no mentor available'
 			);
 		}
 
