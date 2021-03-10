@@ -1,5 +1,5 @@
 // displays a grey rectangle with a running gradient
-.loading-animation (@delay) {
+.loading-animation ( @delay ) {
 	animation: loading 2s ease infinite;
 	animation-delay: @delay;
 
@@ -31,4 +31,9 @@
 			opacity: 0.4;
 		}
 	}
+}
+
+.filter ( @value ) {
+	-webkit-filter: @value;
+	filter: @value;
 }
