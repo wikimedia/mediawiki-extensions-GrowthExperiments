@@ -9,6 +9,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
+use GrowthExperiments\Util;
 use InvalidArgumentException;
 use LogicException;
 use MediaWiki\Linker\LinkTarget;
@@ -211,8 +212,8 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 			$target = $this->titleFactory->newFromText( $target );
 		}
 		if ( $target && !$target->isExternal() && !$target->inNamespace( NS_MEDIAWIKI ) ) {
-			throw new LogicException( 'Configuration page not in NS_MEDIAWIKI: '
-				. $target->getPrefixedDBkey() );
+			Util::logError( new LogicException( 'Configuration page not in NS_MEDIAWIKI' ),
+				[ 'title' => $target->__toString() ] );
 		}
 		return $target;
 	}
