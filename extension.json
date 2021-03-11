@@ -771,6 +771,52 @@
 				"mobile"
 			]
 		},
+		"ext.growthExperiments.AddLink.onboarding": {
+			"packageFiles": [
+				"homepage/addlink/AddLinkOnboarding.js",
+				"homepage/addlink/AddLinkOnboardingDialog.js"
+			],
+			"styles": [
+				"homepage/addlink/AddLinkOnboardingDialog.less"
+			],
+			"messages": [
+				"growthexperiments-addlink-onboarding-dialog-label-skip-all",
+				"growthexperiments-addlink-onboarding-dialog-title",
+				"growthexperiments-addlink-onboarding-dialog-progress",
+				"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox",
+				"growthexperiments-addlink-onboarding-dialog-label-next",
+				"growthexperiments-addlink-onboarding-dialog-label-previous",
+				"growthexperiments-addlink-onboarding-dialog-get-started-button"
+			],
+			"dependencies": [
+				"mediawiki.language",
+				"oojs-ui-widgets",
+				"oojs-ui-windows",
+				"ext.growthExperiments.AddLink.onboardingContent",
+				"ext.growthExperiments.MultiPaneDialog"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.growthExperiments.MultiPaneDialog": {
+			"packageFiles": [
+				"ui-components/MultiPaneDialog.js"
+			],
+			"styles": [
+				"ui-components/MultiPaneDialog.less"
+			],
+			"dependencies": [
+				"mediawiki.language",
+				"oojs-ui-widgets",
+				"oojs-ui-windows"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
 		"ext.growthExperiments.Homepage.icons": {
 			"class": "ResourceLoaderImageModule",
 			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",
@@ -979,7 +1025,8 @@
 				"ext.growthExperiments.HelpPanelCta.styles",
 				"ext.growthExperiments.SuggestedEditSession",
 				"mediawiki.pulsatingdot",
-				"oojs-ui.styles.icons-movement"
+				"oojs-ui.styles.icons-movement",
+				"ext.growthExperiments.AddLink.onboarding"
 			],
 			"messages": [
 				"growthexperiments-help-panel-cta-button-text",
