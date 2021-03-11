@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"1233qwer1234qwer4",
 			"Aarrnn",
 			"Derugon",
 			"Eneelk",
@@ -312,7 +313,7 @@
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|}}Vous avez modifié {{GENDER:$4|le tuteur|la tutrice}} de {{PLURAL:$2|}}$1 en $5.",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Le tuteur de {{GENDER:$1|$1}} a déjà été modifié. Êtes-vous {{GENDER:$2|sûr|sûre}} de vouloir le modifier de nouveau ?",
 	"growthexperiments-claimmentee-confirm": "Oui, je veux vraiment changer le tuteur",
-	"growthexperiments-log-name": "journal GrowthExperiments",
+	"growthexperiments-log-name": "Journal GrowthExperiments",
 	"growthexperiments-log-header": "Ceci est un journal des actions faites dans l’extension GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|a défini}} $3 comme étant {{GENDER:$6|son tutoré|sa tutorée}} ({{GENDER:$4|tuteur précédent|tutrice précédente}} : $5)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|a défini}} $3 comme étant {{GENDER:$6|son tutoré|sa tutorée}} (pas de tuteur précédemment)",
@@ -362,5 +363,14 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Taper sur l’outil crayon $1 près du lien pour modifier la destination du lien",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Autre / préfère ne pas dire",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Fait",
+	"growthexperiments-addlink-onboarding-content-intro-title": "Ajouter des liens aidera les utilisateurs à apprendre plus vite.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "Vous{{GENDER:$1|}} déciderez sir des mots dans un article sur {{SITENAME}} devrait être lié vers d’autres articles sur {{SITENAME}}.",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Phrase d’exemple",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "La lune est le seul <mark>satellite naturel</mark> qui <mark>orbite</mark> autour de la <mark>Terre</mark>.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "Aucune connaissance spéciale concernant l’article n’est nécessaire pour réaliser cette tâche.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Les liens suggérés proviennent d’une intelligence artificielle (IA), qui peut faire des erreurs.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "L’IA pourrait générer des liens sur des mots qui n’en ont pas besoin ou pourrait suggérer des liens vers le mauvais article. Utilisez {{GENDER:$1|}}votre jugement pour décider s’il est approprié ou pas.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "En savoir plus sur les suggestions de l’IA",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Lignes directrices",
 	"grant-managementorship": "Gérer le tutorat"
 }

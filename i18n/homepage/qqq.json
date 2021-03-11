@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
+			"Jeeputer",
 			"Jon Harald Søby",
 			"Martin Urbanec",
 			"Matěj Suchánek",
@@ -310,7 +311,7 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "{{logentry|[[Special:Log/growthexperiments]]}}\n{{doc-growthexperiments-homepage}}\nAdditional parameters:\n* $4 - (unused)\n* $5 - (unused)\n* $6 - name of the mentee whose mentor was changed, for use in GENDER",
 	"logentry-growthexperiments-setmentor": "{{logentry|[[Special:Log/growthexperiments]]}}\n{{doc-growthexperiments-homepage}}\nAdditional parameters:\n* $4 - name of the previous mentor, for use in GENDER\n* $5 - name of the user who became mentor, for use in GENDER\n* $6 - name of the mentee whose mentor was changed, for use in GENDER\n* $7 - link to the user who became mentor\n* $8 - link to the previous mentor",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "{{logentry|[[Special:Log/growthexperiments]]}}\n{{doc-growthexperiments-homepage}}\nAdditional parameters:\n* $4 - (unused)\n* $5 - name of the user who became mentor, for use in GENDER\n* $6 - name of the mentee whose mentor was changed, for use in GENDER\n* $7 - link to the user who became mentor",
-	"logentry-growthexperiments-addlink": "{{logentry|[[Special:Log/growthexperiments]]}}\n{{doc-growthexperiments-addlink}}\nAdditional parameters:\n* $4 - the number of links that the user reviewed.\n* $5 - the number of links that the user accepted.\n* $4 - the number of links that the user rejected.\n* $4 - the number of links that the user skipped.",
+	"logentry-growthexperiments-addlink": "{{logentry|[[Special:Log/growthexperiments]]}}\n{{doc-growthexperiments-addlink}}\nAdditional parameters:\n* $4 - the number of links that the user reviewed.\n* $5 - the number of links that the user accepted.\n* $6 - the number of links that the user rejected.\n* $7 - the number of links that the user skipped.",
 	"log-action-filter-growthexperiments": "{{doc-log-action-filter-type|growthexperiments}}",
 	"log-action-filter-growthexperiments-claimmentee": "{{doc-log-action-filter-action|growthexperiments|claimmentee}}",
 	"log-action-filter-growthexperiments-setmentor": "{{doc-log-action-filter-action|growthexperiments|setmentor}}",
