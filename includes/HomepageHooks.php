@@ -692,7 +692,7 @@ class HomepageHooks implements
 			 SuggestedEdits::isActivated( $context )
 		) {
 			$pageId = $rc->getTitle()->getArticleID();
-			$tracker = $this->trackerFactory->getTracker( $rc->getPerformer() );
+			$tracker = $this->trackerFactory->getTracker( $rc->getPerformerIdentity() );
 			$taskType = $tracker->getTaskTypeForPage( $pageId );
 			if ( $taskType ) {
 				$taskTypeHandler = $this->taskTypeHandlerRegistry->getByTaskType( $taskType );
