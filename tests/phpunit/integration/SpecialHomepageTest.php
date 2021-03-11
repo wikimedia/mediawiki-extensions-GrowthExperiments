@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests;
 
+use GlobalVarConfig;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageHooks;
@@ -47,7 +48,10 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			$growthExperimentsServices->getHomepageModuleRegistry(),
 			$growthExperimentsServices->getNewcomerTaskTrackerFactory(),
 			MediaWikiServices::getInstance()->getStatsdDataFactory(),
-			$growthExperimentsServices->getExperimentUserManager()
+			$growthExperimentsServices->getExperimentUserManager(),
+			// This would normally be wiki-powered config, but
+			// there is no need to test this
+			GlobalVarConfig::newInstance()
 		);
 	}
 

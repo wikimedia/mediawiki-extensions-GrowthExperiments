@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Specials;
 
+use Config;
 use ConfigException;
 use DeferredUpdates;
 use ErrorPageError;
@@ -40,6 +41,9 @@ class SpecialHomepage extends SpecialPage {
 	/** @var ExperimentUserManager */
 	private $experimentUserManager;
 
+	/** @var Config */
+	private $wikiConfig;
+
 	/**
 	 * @var string Unique identifier for this specific rendering of Special:Homepage.
 	 * Used by various EventLogging schemas to correlate events.
@@ -51,12 +55,14 @@ class SpecialHomepage extends SpecialPage {
 	 * @param TrackerFactory $trackerFactory
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param ExperimentUserManager $experimentUserManager
+	 * @param Config $wikiConfig
 	 */
 	public function __construct(
 		HomepageModuleRegistry $moduleRegistry,
 		TrackerFactory $trackerFactory,
 		IBufferingStatsdDataFactory $statsdDataFactory,
-		ExperimentUserManager $experimentUserManager
+		ExperimentUserManager $experimentUserManager,
+		Config $wikiConfig
 	) {
 		parent::__construct( 'Homepage', '', false );
 		$this->moduleRegistry = $moduleRegistry;
@@ -74,11 +80,12 @@ class SpecialHomepage extends SpecialPage {
 			$this->getSkin()->setRelevantTitle( $this->getUser()->getUserPage() );
 		}
 		$this->experimentUserManager = $experimentUserManager;
+		$this->wikiConfig = $wikiConfig;
 	}
 
 	private function handleTutorialVisit( $par ) {
 		$tutorialTitle = Title::newFromText(
-			$this->getConfig()->get( Tutorial::TUTORIAL_TITLE_CONFIG )
+			$this->wikiConfig->get( Tutorial::TUTORIAL_TITLE_CONFIG )
 		);
 		if ( !$tutorialTitle || $tutorialTitle->getPrefixedDBkey() !== $par ) {
 			return false;
@@ -225,7 +232,7 @@ class SpecialHomepage extends SpecialPage {
 			) && ( !$par && !$isMobile && !SuggestedEdits::isActivated( $this->getContext() ) ),
 			'suggested-edits' => SuggestedEdits::isEnabled( $this->getContext() ),
 			'impact' => true,
-			'mentorship' => $this->getConfig()->get( 'GEMentorshipEnabled' ),
+			'mentorship' => $this->wikiConfig->get( 'GEMentorshipEnabled' ),
 			'help' => true,
 		] );
 		$modules = [];

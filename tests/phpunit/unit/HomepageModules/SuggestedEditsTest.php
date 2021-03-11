@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests\HomepageModules;
 
+use GlobalVarConfig;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
@@ -125,6 +126,7 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 		);
 		return new SuggestedEdits(
 			$contextMock,
+			GlobalVarConfig::newInstance(),
 			$editInfoServiceMock,
 			$experimentUserManagerMock,
 			$pageViewServiceMock,
