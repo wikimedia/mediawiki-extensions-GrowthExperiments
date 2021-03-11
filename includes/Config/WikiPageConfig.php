@@ -4,8 +4,8 @@ namespace GrowthExperiments\Config;
 
 use Config;
 use ConfigException;
-use MediaWiki\Linker\LinkTarget;
 use StatusValue;
+use Title;
 use TitleFactory;
 
 class WikiPageConfig implements Config {
@@ -15,7 +15,7 @@ class WikiPageConfig implements Config {
 	/** @var WikiPageConfigLoader|null */
 	private $configLoader;
 
-	/** @var LinkTarget|null */
+	/** @var Title|null */
 	private $configTitle;
 
 	/** @var string|null */
@@ -44,9 +44,9 @@ class WikiPageConfig implements Config {
 	 * which should be much later, and probably after init sequence finished.
 	 *
 	 * @throws ConfigException
-	 * @return LinkTarget
+	 * @return Title
 	 */
-	private function getConfigTitle(): LinkTarget {
+	private function getConfigTitle(): Title {
 		if ( $this->configTitle == null ) {
 			$configTitle = $this->titleFactory->newFromText( $this->rawConfigTitle );
 
@@ -75,6 +75,10 @@ class WikiPageConfig implements Config {
 	 * @return array
 	 */
 	private function getConfigData(): array {
+		if ( !$this->getConfigTitle()->exists() ) {
+			// configLoader throws an exception for no-page case
+			return [];
+		}
 		$res = $this->configLoader->load( $this->getConfigTitle() );
 		if ( $res instanceof StatusValue ) {
 			throw new ConfigException(
