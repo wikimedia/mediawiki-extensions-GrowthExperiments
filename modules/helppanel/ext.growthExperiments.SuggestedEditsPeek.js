@@ -3,11 +3,14 @@
 	/**
 	 * @param {string} difficulty
 	 * @param {string} timeestimate
+     * @param {jQuery|string|undefined} [$icon] An OOUI IconWidget with the icon for the task type,
+	 *  empty string if no icon exists, or undefined if no parameter passed
 	 * @return {jQuery}
 	 */
-	function getDifficultyAndTime( difficulty, timeestimate ) {
+	function getDifficultyAndTime( difficulty, timeestimate, $icon ) {
 		return $( '<div>' ).addClass( 'suggested-edits-taskexplanation-difficulty-and-time' ).html(
 			$( '<div>' ).addClass( 'suggested-edits-difficulty-time-estimate' ).append(
+				$icon || '',
 				$( '<div>' ).addClass( 'suggested-edits-difficulty-indicator' )
 					.addClass( 'suggested-edits-difficulty-indicator-' + difficulty )
 					// The following messages are used here:

@@ -32,7 +32,7 @@
 				.append(
 					this.getInfoRow(),
 					suggestedEditsPeek.getDifficultyAndTime(
-						this.taskTypeData.difficulty, this.taskTypeData.messages.timeestimate
+						this.taskTypeData.difficulty, this.taskTypeData.messages.timeestimate, this.getIcon()
 					),
 					this.getDescriptionRow()
 				)
@@ -51,6 +51,13 @@
 			this.getInfo().$element
 		);
 		return $infoRow;
+	};
+
+	TaskExplanationWidget.prototype.getIcon = function () {
+		if ( this.taskTypeData.iconName ) {
+			return new OO.ui.IconWidget( { icon: this.taskTypeData.iconName, classes: [ 'suggested-edits-task-explanation-icon' ] } ).$element;
+		}
+		return '';
 	};
 
 	TaskExplanationWidget.prototype.getDescriptionRow = function () {
