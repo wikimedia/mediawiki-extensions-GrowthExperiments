@@ -378,7 +378,8 @@ return [
 		return new WikiPageConfigWriterFactory(
 			$growthExperimentsServices->getWikiPageConfigLoader(),
 			$services->getWikiPageFactory(),
-			$services->getTitleFactory()
+			$services->getTitleFactory(),
+			LoggerFactory::getInstance( 'GrowthExperiments' )
 		);
 	},
 
