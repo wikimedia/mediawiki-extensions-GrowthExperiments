@@ -98,6 +98,7 @@
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Giúp mở rộng nguồn tri thức miễn phí tới thế giới bằng cách sửa đổi những chủ đề có ý nghĩa nhất với {{GENDER:$1|bạn}}.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Xem các sửa đổi gợi ý",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Bắt đầu với một số <strong>sửa đổi gợi ý</strong>, sau đó xem có bao nhiêu người đang xem những đóng góp {{GENDER:$1|của bạn}} tại đây.",
+	"growthexperiments-homepage-impact-unactivated-description": "Hễ bắt đầu sửa đổi thì {{GENDER:$1|bạn}} sẽ thấy tại đây số lượng người đã xem những bài viết mà {{GENDER:$1|bạn}} đã sửa đổi.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Thông báo Bàn trợ giúp",
 	"growthexperiments-tour-response-tip-text": "Khi câu hỏi của {{GENDER:$1|}} được trả lời, {{GENDER:$1|bạn}} sẽ có một thông báo ở đây.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Thông báo của người cố vấn",
@@ -345,5 +346,15 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Chạm vào bút chì sửa đổi $1 cạnh liên kết để thay đổi nơi đến liên kết",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Khác / không muốn cung cấp",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Xong",
+	"growthexperiments-addlink-onboarding-content-intro-title": "Thêm liên kết sẽ giúp mọi người học hỏi nhanh hơn.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "Ban sẽ quyết định liệu các từ trong một bài viết trên {{SITENAME}} có nên được liên kết tới các bài viết khác trên {{SITENAME}} hay không.",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Câu ví dụ",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "Mặt trăng chỉ làm một <mark>vệ tinh tự nhiên</mark> có <mark>quỹ đạo</mark> quay xung quanh <mark>Trái Đất</mark>.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "Nhiệm vụ này không đòi hỏi kiến thức đặc biệt gì về bài viết cả.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Các liên kết gợi ý tới từ trí tuệ nhân tạo (AI), và nó đôi khi cũng mắc sai lầm.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "AI có thể gợi ý liên kết đối với những từ không cần được gán liên kết, hoặc có thể gợi ý liên kết tới nhầm bài viết. Hãy sử dụng óc phán đoán của bạn để quyết định xem gợi ý của AI là đúng hay sai.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Tìm hiểu thêm về gợi ý của AI",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Hướng dẫn",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Các khái niệm về liên kết mà người đọc có thể muốn tìm hiểu thêm.</li><li>Hãy đảm bảo rằng liên kết dẫn tới đúng bài viết.</li><li>Đừng liên kết những từ thông dụng, năm hay ngày tháng.</li><li>Nếu bạn không thấy chắc, hãy bỏ qua.</li>",
 	"grant-managementorship": "Quản lý việc cố vấn"
 }

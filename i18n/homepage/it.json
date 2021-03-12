@@ -315,5 +315,6 @@
 	"growthexperiments-addlink-context-button-accept": "Sì",
 	"growthexperiments-addlink-context-button-reject": "No",
 	"growthexperiments-addlink-context-button-next": "Salta",
-	"growthexperiments-addlink-rejectiondialog-action-done": "Fatto"
+	"growthexperiments-addlink-rejectiondialog-action-done": "Fatto",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Linee guida"
 }

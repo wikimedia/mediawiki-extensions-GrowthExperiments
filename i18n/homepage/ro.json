@@ -337,5 +337,15 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Apasă creionul de editare $1 lângă legătură pentru a schimba destinația legăturii",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Altceva / prefer să nu spun",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Realizat",
+	"growthexperiments-addlink-onboarding-content-intro-title": "Adăugarea de legături va ajuta oamenii să învețe mai rapid.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|Dvs.}} veți decide dacă cuvintele dintr-un articol {{SITENAME}} ar trebui să se lege de alte articole {{SITENAME}}.",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Propoziție exemplu",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "Luna este singurul <mark>satelit natural</mark> care <mark>orbitează</mark> în jurul <mark>Pământului</mark>.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "Nu este necesară vreo cunoaștere specială despre articol pentru a efectua această sarcină.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Legăturile sugerate provin de la inteligența artificială (AI), care poate face greșeli.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "AI-ul poate sugera legături pentru cuvinte care nu au nevoie de ele, sau poate sugera legarea de un articol greșit. {{GENDER:$1|Utilizați-vă}} judecata pentru a decide dacă este corect sau greșit.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Aflați mai mult despre sugestiile AI",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Îndrumări",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Legați concepte despre care un cititor și-ar dori să afle mai multe.</li><li>Asigurați-vă că legătura duce către articolul corect.</li><li>Nu legați cuvinte, ani sau date comune.</li><li>Dacă nu sunteți {{GENDER:$1|sigur|sigură|sigur}}, omiteți.</li>",
 	"grant-managementorship": "Administrare activitate de mentor"
 }

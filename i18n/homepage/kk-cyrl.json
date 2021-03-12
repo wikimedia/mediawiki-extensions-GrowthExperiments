@@ -4,5 +4,8 @@
 			"Hedeyohu22"
 		]
 	},
-	"growthexperiments-homepage-impact-unactivated-description": "Өңдеуді бастағаннан кейін  {{GENDER:$1|cіз}} өңдеген мақаланы қанша адам қарап отырғанын көресіз."
+	"growthexperiments-homepage-impact-unactivated-description": "Өңдеуді бастағаннан кейін  {{GENDER:$1|cіз}} өңдеген мақаланы қанша адам қарап отырғанын көресіз.",
+	"growthexperiments-addlink-onboarding-content-intro-title": "Сілтемелерді қосқан адамдарға тезірек білім алуға көмектеседі.",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Мысалы сөйлем",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "ЖИ ұсыныстары туралы көбірек біліңіз"
 }

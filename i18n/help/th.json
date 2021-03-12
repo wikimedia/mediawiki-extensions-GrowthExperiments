@@ -7,7 +7,8 @@
 			"Just Sayori",
 			"MOphaswongse (WMF)",
 			"Patsagorn Y.",
-			"Prame Tan"
+			"Prame Tan",
+			"SaldırganSincap"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "เปิดใช้งานแผงช่วยเหลือผู้เขียน",
@@ -63,7 +64,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-step1": "เมื่อ{{GENDER:|คุณ}}เห็นส่วนที่ควรเพิ่มลิงก์เชื่อมโยง ให้คลิก \"$1\" เพื่อเริ่มต้น แล้วเน้นคำหรือวลีที่คุณต้องการให้มีการเชื่อมโยง",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-step1": "เมื่อ{{GENDER:|คุณ}}พบจุดที่ต้องเพิ่มลิงก์ แตะที่ปุ่มดินสอ และกดเลือกคำหรือประโยคเพื่อแปลงเป็นลิงก์",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-step1": "ดาวศุกร์มี<mark class=\"positive\">ชั้นบรรยากาศ</mark>ที่หนาแน่น",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-step2": "กดที่ปุ่ม \"$1\" $2 และเลือกบทความ{{SUTENAME}}จากรายการซึ่งควรลิงก์",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-step2": "กดที่ปุ่ม \"$1\" $2 และเลือกบทความ{{SITENAME}}จากรายการซึ่งควรลิงก์",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-step2": "แตะที่ \"$1\" $2 และเลือกบทความ{{SITENAME}}จากรายการซึ่งควรลิงก์",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-main-publish": "เพิ่มลิงก์อีก หรือคลิก \"$1\" เพื่อบันทึกการแก้ไข{{GENDER:|ของคุณ}}!",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-publish": "เพิ่มลิงก์อีก หรือแตะปุ่มลูกศรสีน้ำเงินเพื่อบันทึกการแก้ไข{{GENDER:|ของคุณ}}!",

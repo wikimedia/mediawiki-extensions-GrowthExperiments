@@ -349,5 +349,12 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Klikněte na ikonku tužky $1 vedle odkazu, abyste změnili jeho cíl.",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Ostatní / Nechci uvést",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Hotovo",
+	"growthexperiments-addlink-onboarding-content-intro-title": "Přidávání odkazů umožní lidem rychleji se učit.",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Příklad",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "K dokončení tohoto úkolu nejsou třeba žádné zvláštní znalosti.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Navržené odkazy pocházejí od umělé inteligence (AI), která může dělat chyby.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "AI může doporučit odkazy ze slov, které je ve skutečnosti nepotřebují, anebo může omylem doporučit odkázat na nesprávný článek. Použijte {{GENDER:$1|svůj}} úsudek k tomu, abyste rozhodli, zda je odkaz správný či špatný.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Zjistit více o návrzích od AI",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Pravidla",
 	"grant-managementorship": "Spravovat mentorství"
 }

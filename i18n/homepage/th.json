@@ -166,7 +166,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-time-expand": "20 - 30 นาที",
 	"growthexperiments-homepage-suggestededits-tasktype-time-update": "20 - 30 นาที",
 	"growthexperiments-homepage-suggestededits-tasktype-time-link-recommendation": "3 - 5 นาที",
-	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "$1 การแก้ไข",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "ระดับ$1",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "ง่าย",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "ปานกลาง",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-hard": "ยาก",

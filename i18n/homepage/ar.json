@@ -352,5 +352,15 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "{{GENDER:|انقر|انقري}} على قلم التعديل $1 بجانب الرابط لتغيير وجهة الرّابط",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "سبب آخر / أحبّذ عدم الإفصاح",
 	"growthexperiments-addlink-rejectiondialog-action-done": "تمّ",
+	"growthexperiments-addlink-onboarding-content-intro-title": "إضافة الروابط سيسرّع في تعليم النّاس.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|ستقرّر|ستقرّرين}} ما إذا كانت كلمات في مقالة ما من {{SITENAME}} ينبغي لها أن تربط إلى مقالات أخرى من {{SITENAME}}.",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "جملة للمثال",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "القمر هو <mark>القمر الطبيعي</mark> الوحيد الذي <mark>يلف</mark> حول <mark>الأرض</mark>.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "ليست هنالك ضرورة لمعرفة خاصة حول المقالة لإنجاز هذه المهمّة.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "تتأتّى مقترحات الروابط من الذكاء الاصطناعي (AI)، الذي يمكن أن يخطئ.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "يمكن للذكاء الاصطناعي أن يقترح روابط إلى كلمات لا تحتاجها، أو ربّما يمكن أن يقترح روابط إلى المقال الخاطئ. {{GENDER:$1|استخدم|استخدمي}} حُكمك لتقرير ما إذا كان الرابط سليما أو خاطئا.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "{{GENDER:|تعلّم|تعلّمي}} المزيد حول مقترحات الذكاء الاصطناعي.",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "القواعد الإرشادية",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>{{GENDER:$1|اربط|اربطي}} المفاهيم التي يمكن أن يريد القارئ تعلّم المزيد حولها.</li><li>{{GENDER:$1|تأكّد|تأكّدي}} من أنّ الرابط سيصل إلى المقالة الصحيحة.</li><li>عدم ربط الكلمات الشائعة، أو السنوات، أو التواريخ.</li><li>لو كنت غير {{GENDER:$1|متأكّد، تخطّ|متأكّدة، تخطّيْ}} المقترح.</li>",
 	"grant-managementorship": "إدارة الإرشاد"
 }

@@ -372,5 +372,6 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "L’IA pourrait générer des liens sur des mots qui n’en ont pas besoin ou pourrait suggérer des liens vers le mauvais article. Utilisez {{GENDER:$1|}}votre jugement pour décider s’il est approprié ou pas.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "En savoir plus sur les suggestions de l’IA",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Lignes directrices",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Liez des concepts au sujets desquels un lecteur pourrait vouloir en savoir plus.</li>\n<li>Assurez-vous que le lien mène vers le bon article.</li>\n<li>Ne liez pas les mots courants, les années ou les dates.</li>\n<li>Si {{GENDER:$1|}}vous n’êtes pas sûr, ignorez la suggestion et passez à la suivante.</li>",
 	"grant-managementorship": "Gérer le tutorat"
 }

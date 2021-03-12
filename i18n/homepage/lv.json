@@ -144,6 +144,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-references": "Atrodi atsauces (avotus esošiem rakstiem)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "Paplašināt īsus rakstus",
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Pievienot saites starp rakstiem",
+	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "Pievienot saites starp rakstiem",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Izveidot jaunu rakstu",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Uzzināt vairāk",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3—5 minūtes",
@@ -247,5 +248,10 @@
 	"growthexperiments-addlink-context-button-reject": "Nē",
 	"growthexperiments-addlink-context-button-next": "Izlaist",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Cits / nevēlos atbildēt",
-	"growthexperiments-addlink-rejectiondialog-action-done": "Gatavs"
+	"growthexperiments-addlink-rejectiondialog-action-done": "Gatavs",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Teikuma piemērs",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Ieteiktos labojumus veido mākslīgais intelekts (MI), kas var pieļaut kļūdas.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "MI var ieteikt saites uz vārdiem, kur to nevajag vai var ieteikt saiti uz nepareizo rakstu. Izmanto {{GENDER:$1|savu}} veselo saprātu, lai izlemtu, vai tam ir taisnība, vai tas kļūdās.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Uzzini vairāk par MI ieteikumiem",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Vadlīnijas"
 }
