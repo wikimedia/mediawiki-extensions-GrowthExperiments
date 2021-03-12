@@ -97,8 +97,8 @@
 			// * difficulty-hard
 			.prepend( new OO.ui.IconWidget( { icon: 'difficulty-' + this.taskType.difficulty } ).$element );
 
-		if ( this.taskType.iconName ) {
-			$taskType.prepend( new OO.ui.IconWidget( { icon: this.taskType.iconName } ).$element );
+		if ( 'icon' in this.taskType.iconData ) {
+			$taskType.prepend( new OO.ui.IconWidget( { icon: this.taskType.iconData.icon } ).$element );
 		}
 
 		$glue = $( '<div>' )

@@ -603,8 +603,9 @@ class SuggestedEdits extends BaseModule {
 		$description = Html::element( 'div',
 			[ 'class' => 'mw-ge-small-task-card-description skeleton' ] );
 		$taskIcon = new IconWidget( [ 'icon' => 'difficulty-' . $task->getTaskType()->getDifficulty() ] );
-		$taskTypeIcon = $task->getTaskType()->getIconName()
-			? new IconWidget( [ 'icon' => $task->getTaskType()->getIconName() ] )
+		$iconData = $task->getTaskType()->getIconData();
+		$taskTypeIcon = array_key_exists( 'icon', $iconData )
+			? new IconWidget( [ 'icon' => $iconData['icon'] ] )
 			: '';
 		$taskType = Html::rawElement( 'span',
 			[ 'class' => 'mw-ge-small-task-card-tasktype '
