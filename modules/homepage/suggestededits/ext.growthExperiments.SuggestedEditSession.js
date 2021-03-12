@@ -173,7 +173,8 @@
 	 * @return {boolean} Whether the session has been initiated.
 	 */
 	SuggestedEditSession.prototype.maybeStart = function () {
-		var url = new mw.Uri();
+		var url = new mw.Uri(),
+			isArticleInEditMode = false;
 
 		if ( this.active ) {
 			throw new Error( 'Trying to start an already started active edit session' );
@@ -191,6 +192,11 @@
 				Utils.removeQueryParam( url, 'getasktype' );
 			}
 		}
+
+		// Don't show help panel & mobile peek if the article is in edit mode
+		isArticleInEditMode = url.query.veaction === 'edit';
+		this.helpPanelShouldOpen = !isArticleInEditMode;
+		this.mobilePeekShown = isArticleInEditMode;
 
 		return this.active;
 	};
