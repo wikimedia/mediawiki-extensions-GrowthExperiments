@@ -3,7 +3,7 @@
 	/**
 	 * @param {string} difficulty
 	 * @param {string} timeestimate
-     * @param {jQuery|string|undefined} [$icon] An OOUI IconWidget with the icon for the task type,
+	 * @param {jQuery|string|undefined} [$icon] An OOUI IconWidget with the icon for the task type,
 	 *  empty string if no icon exists, or undefined if no parameter passed
 	 * @return {jQuery}
 	 */
