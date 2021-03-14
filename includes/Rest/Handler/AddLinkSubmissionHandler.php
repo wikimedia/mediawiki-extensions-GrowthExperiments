@@ -3,11 +3,12 @@
 namespace GrowthExperiments\Rest\Handler;
 
 use CirrusSearch\CirrusSearch;
+use GrowthExperiments\ErrorException;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationLink;
-use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkSubmissionRecorder;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
+use GrowthExperiments\Util;
 use MalformedTitleException;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\ParamValidator\TypeDef\TitleDef;
@@ -25,13 +26,8 @@ use Wikimedia\ParamValidator\ParamValidator;
  */
 class AddLinkSubmissionHandler extends SimpleHandler {
 
-	use AddLinkHandlerTrait;
-
-	/** @var ConfigurationLoader */
-	private $configurationLoader;
-
-	/** @var LinkRecommendationProvider */
-	private $linkRecommendationProvider;
+	/** @var LinkRecommendationHelper */
+	private $linkRecommendationHelper;
 
 	/** @var LinkSubmissionRecorder */
 	private $addLinkSubmissionRecorder;
@@ -43,21 +39,18 @@ class AddLinkSubmissionHandler extends SimpleHandler {
 	private $cirrusSearchFactory;
 
 	/**
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param LinkRecommendationProvider $linkRecommendationProvider
+	 * @param LinkRecommendationHelper $linkRecommendationHelper
 	 * @param LinkSubmissionRecorder $addLinkSubmissionRecorder
 	 * @param TitleFactory $titleFactory
 	 * @param callable $cirrusSearchFactory A factory method returning a CirrusSearch instance.
 	 */
 	public function __construct(
-		ConfigurationLoader $configurationLoader,
-		LinkRecommendationProvider $linkRecommendationProvider,
+		LinkRecommendationHelper $linkRecommendationHelper,
 		LinkSubmissionRecorder $addLinkSubmissionRecorder,
 		TitleFactory $titleFactory,
 		callable $cirrusSearchFactory
 	) {
-		$this->configurationLoader = $configurationLoader;
-		$this->linkRecommendationProvider = $linkRecommendationProvider;
+		$this->linkRecommendationHelper = $linkRecommendationHelper;
 		$this->addLinkSubmissionRecorder = $addLinkSubmissionRecorder;
 		$this->titleFactory = $titleFactory;
 		$this->cirrusSearchFactory = $cirrusSearchFactory;
@@ -70,14 +63,23 @@ class AddLinkSubmissionHandler extends SimpleHandler {
 	 * @throws HttpException
 	 */
 	public function run( LinkTarget $title ) {
-		$this->assertLinkRecommendationsEnabled( RequestContext::getMain() );
+		if ( !Util::areLinkRecommendationsEnabled( RequestContext::getMain() ) ) {
+			throw new HttpException( 'Disabled', 404 );
+		}
 		$user = RequestContext::getMain()->getUser();
 		if ( $user->isAnon() ) {
 			throw new HttpException( 'Must be logged in', 403 );
 		}
 		// should we also check the user's Tracker?
 
-		$linkRecommendation = $this->getLinkRecommendation( $title );
+		try {
+			$linkRecommendation = $this->linkRecommendationHelper->getLinkRecommendation( $title );
+		} catch ( ErrorException $e ) {
+			throw new HttpException( $e->getErrorMessageInEnglish() );
+		}
+		if ( !$linkRecommendation ) {
+			throw new HttpException( 'None of the links in the recommendation are valid', 409 );
+		}
 		$expectedRevId = $linkRecommendation->getRevisionId();
 		$links = $this->normalizeTargets( $linkRecommendation->getLinks() );
 

@@ -15,6 +15,7 @@ use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\NewcomerTasks\AddLink\DbBackedLinkRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkSubmissionRecorder;
@@ -88,6 +89,24 @@ return [
 		MediaWikiServices $services
 	) : HomepageModuleRegistry {
 		return new HomepageModuleRegistry( $services );
+	},
+
+	'GrowthExperimentsLinkRecommendationHelper' => function (
+		MediaWikiServices $services
+	) : LinkRecommendationHelper {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$config = $growthServices->getGrowthConfig();
+		return new LinkRecommendationHelper(
+			$growthServices->getNewcomerTasksConfigurationLoader(),
+			$growthServices->getLinkRecommendationProvider(),
+			$growthServices->getLinkRecommendationStore(),
+			$services->getLinkBatchFactory(),
+			$services->getTitleFactory(),
+			// In developer setups, the recommendation service is usually suggestion link targets
+			// from a different wiki, which might end up being red links locally. Allow these,
+			// otherwise we'd get mostly failures when trying to generate new tasks.
+			!$config->get( 'GEDeveloperSetup' )
+		);
 	},
 
 	'GrowthExperimentsLinkRecommendationProviderUncached' => function (

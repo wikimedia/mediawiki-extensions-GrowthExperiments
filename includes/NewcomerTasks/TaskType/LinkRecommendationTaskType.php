@@ -21,6 +21,9 @@ class LinkRecommendationTaskType extends TaskType {
 	/** @see :getMaximumWordCount */
 	public const FIELD_MAX_WORD_COUNT = 'maximumWordCount';
 
+	/** Exclude a (task page, target page) pair from future tasks after this many rejections. */
+	public const REJECTION_EXCLUSION_LIMIT = 2;
+
 	public const DEFAULT_SETTINGS = [
 		self::FIELD_MIN_TASKS_PER_TOPIC => 500,
 		self::FIELD_MIN_LINKS_PER_TASK => 4,

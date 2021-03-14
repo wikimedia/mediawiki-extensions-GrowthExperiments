@@ -18,7 +18,7 @@ use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
-use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
@@ -27,7 +27,6 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
-use GrowthExperiments\Rest\Handler\AddLinkHandlerTrait;
 use GrowthExperiments\Specials\SpecialClaimMentee;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
@@ -39,7 +38,6 @@ use MediaWiki\Minerva\Menu\Entries\HomeMenuEntry;
 use MediaWiki\Minerva\Menu\Entries\IProfileMenuEntry;
 use MediaWiki\Minerva\Menu\Group;
 use MediaWiki\Minerva\SkinOptions;
-use MediaWiki\Rest\HttpException;
 use MediaWiki\User\UserOptionsLookup;
 use NamespaceInfo;
 use OOUI\ButtonWidget;
@@ -79,7 +77,6 @@ class HomepageHooks implements
 	\MediaWiki\Hook\SiteNoticeAfterHook,
 	\MediaWiki\Content\Hook\SearchDataForIndexHook
 {
-	use AddLinkHandlerTrait;
 
 	public const HOMEPAGE_PREF_ENABLE = 'growthexperiments-homepage-enable';
 	public const HOMEPAGE_PREF_PT_LINK = 'growthexperiments-homepage-pt-link';
@@ -122,10 +119,10 @@ class HomepageHooks implements
 	private $taskSuggesterFactory;
 	/** @var NewcomerTasksUserOptionsLookup */
 	private $newcomerTasksUserOptionsLookup;
-	/** @var LinkRecommendationProvider */
-	private $linkRecommendationProvider;
 	/** @var LinkRecommendationStore */
 	private $linkRecommendationStore;
+	/** @var LinkRecommendationHelper */
+	private $linkRecommendationHelper;
 
 	/**
 	 * HomepageHooks constructor.
@@ -142,8 +139,8 @@ class HomepageHooks implements
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
-	 * @param LinkRecommendationProvider $linkRecommendationProvider
 	 * @param LinkRecommendationStore $linkRecommendationStore
+	 * @param LinkRecommendationHelper $linkRecommendationHelper
 	 */
 	public function __construct(
 		Config $config,
@@ -159,8 +156,8 @@ class HomepageHooks implements
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		LinkRecommendationProvider $linkRecommendationProvider,
-		LinkRecommendationStore $linkRecommendationStore
+		LinkRecommendationStore $linkRecommendationStore,
+		LinkRecommendationHelper $linkRecommendationHelper
 	) {
 		$this->config = $config;
 		$this->lb = $lb;
@@ -175,8 +172,8 @@ class HomepageHooks implements
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
-		$this->linkRecommendationProvider = $linkRecommendationProvider;
 		$this->linkRecommendationStore = $linkRecommendationStore;
+		$this->linkRecommendationHelper = $linkRecommendationHelper;
 	}
 
 	/**
@@ -283,9 +280,15 @@ class HomepageHooks implements
 					$context->getRequest()->getVal( 'getasktype' ) === LinkRecommendationTaskTypeHandler::TASK_TYPE_ID
 				) {
 					try {
-						$linkRecommendations = $this->getLinkRecommendation( $context->getTitle() )->toArray();
-					} catch ( HttpException $e ) {
-						$linkRecommendations = [ 'error' => $e->getMessage() ];
+						$linkRecommendations = $this->linkRecommendationHelper
+							->getLinkRecommendation( $context->getTitle() );
+						if ( $linkRecommendations ) {
+							$linkRecommendations = $linkRecommendations->toArray();
+						} else {
+							$linkRecommendations = [ 'error' => 'None of the links in the recommendation are valid' ];
+						}
+					} catch ( ErrorException $e ) {
+						$linkRecommendations = [ 'error' => $e->getErrorMessageInEnglish() ];
 					}
 					$out->addJsConfigVars( [
 						'wgGESuggestedEditData' => $linkRecommendations
