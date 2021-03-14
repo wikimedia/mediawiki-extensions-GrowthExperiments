@@ -115,15 +115,18 @@ class RefreshLinkRecommendations extends Maintenance {
 	}
 
 	public function execute() {
-		if ( !$this->getConfig()->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
+		$this->initServices();
+		$this->initConfig();
+		if ( !$this->growthConfig->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
 			$this->output( "Disabled\n" );
+			return;
+		} elseif ( $this->growthConfig->get( 'GENewcomerTasksRemoteApiUrl' ) ) {
+			$this->output( "Local tasks disabled\n" );
 			return;
 		} elseif ( wfReadOnly() ) {
 			$this->output( "DB is readonly\n" );
 			return;
 		}
-		$this->initServices();
-		$this->initConfig();
 
 		$oresTopics = $this->getOresTopics();
 		$this->output( "Refreshing link recommendations...\n" );
