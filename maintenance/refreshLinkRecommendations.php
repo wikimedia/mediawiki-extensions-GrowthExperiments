@@ -126,6 +126,11 @@ class RefreshLinkRecommendations extends Maintenance {
 		} elseif ( wfReadOnly() ) {
 			$this->output( "DB is readonly\n" );
 			return;
+		} elseif ( !$this->linkRecommendationStore->getDB( DB_MASTER )->lock(
+			'GrowthExperiments-RefreshLinkRecommendations', __METHOD__, 0 )
+		) {
+			$this->output( "Previous invocation of the script is still running\n" );
+			return;
 		}
 
 		$oresTopics = $this->getOresTopics();
