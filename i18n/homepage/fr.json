@@ -313,7 +313,7 @@
 	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|}}Vous avez modifié {{GENDER:$4|le tuteur|la tutrice}} de {{PLURAL:$2|}}$1 en $5.",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Le tuteur de {{GENDER:$1|$1}} a déjà été modifié. Êtes-vous {{GENDER:$2|sûr|sûre}} de vouloir le modifier de nouveau ?",
 	"growthexperiments-claimmentee-confirm": "Oui, je veux vraiment changer le tuteur",
-	"growthexperiments-log-name": "Journal GrowthExperiments",
+	"growthexperiments-log-name": "Journal de GrowthExperiments",
 	"growthexperiments-log-header": "Ceci est un journal des actions faites dans l’extension GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|a défini}} $3 comme étant {{GENDER:$6|son tutoré|sa tutorée}} ({{GENDER:$4|tuteur précédent|tutrice précédente}} : $5)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|a défini}} $3 comme étant {{GENDER:$6|son tutoré|sa tutorée}} (pas de tuteur précédemment)",

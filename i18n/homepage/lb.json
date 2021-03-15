@@ -136,5 +136,6 @@
 	"growthexperiments-addlink-context-button-accept": "Jo",
 	"growthexperiments-addlink-context-button-reject": "Neen",
 	"growthexperiments-addlink-context-button-next": "Iwwersprangen",
-	"growthexperiments-addlink-rejectiondialog-action-done": "Fäerdeg"
+	"growthexperiments-addlink-rejectiondialog-action-done": "Fäerdeg",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Richtlinnen"
 }

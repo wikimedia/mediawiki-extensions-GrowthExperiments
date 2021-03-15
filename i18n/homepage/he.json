@@ -345,5 +345,15 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "{{GENDER:|לחץ|לחצי}} על העיפרון $1 ליד הקישור כדי לשנות את יעד הקישור",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "אחר / מעדיף לא לומר",
 	"growthexperiments-addlink-rejectiondialog-action-done": "בוצע",
+	"growthexperiments-addlink-onboarding-content-intro-title": "הוספת קישורים תעזור לאנשים ללמוד מהר יותר.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|אתה תחליט|את תחיליטי}} האם מילים בערך אחד באתר {{SITENAME}} צריכות לקשר לערכים אחרים באתר {{SITENAME}}.",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "משפט לדוגמה",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "הירח הוא <mark>הלוויין הטבעי</mark> היחיד שנע ב<mark>מסלול מעגלי</mark> סביב <mark>כדור הארץ</mark>.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "לא נחוץ ידע מיוחד על הערך בשביל ביצוע המשימה הזאת.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "הקישורים המומלצים מגיעים מבינה מלאכותית, שיכולה לטעות.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "בינה מלאכותית יכולה להציע קישורים על מילים שלא זקוקים להם, או להציע קישור לערך שגוי. אנא {{GENDER:$1|השתמש|השתמשי}} בשיקול דעתך להחליט האם זה נכון או לא נכון.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "מידע נוסף על הצעות מבינה מלאכותית",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "הנחיות",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>{{GENDER:$1|קשר|קשרי}} רק מושגים שהקורא יכול לרצות לדעת עליהם עוד.</li><li>{{GENDER:$1|ודא|ודאי}} שהקישור מצביע לערך הנכון.</li><li>אל {{GENDER:$1|תקשר|תקשרי}} מילים נפוצות, שנים, או תאריכים.</li><li>אם אינך {{GENDER:$1|בטוח, דלג|בטוחה, דלגי}}.</li>",
 	"grant-managementorship": "ניהול חונכות"
 }

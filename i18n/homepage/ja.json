@@ -99,6 +99,7 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "編集<strong>$1</strong>{{PLURAL:$1|回|回}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "最近の編集以降のビューを見る（直近60日間）：",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "自分が編集した記事のビューにに注目",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "お勧めの編集を見る",
 	"growthexperiments-tour-helpdesk-response-tip-title": "ヘルプデスクの通知",
 	"growthexperiments-tour-response-tip-text": "{{GENDER:$1|ご自分}}の質問に回答があると、{{GENDER:$1|}}ここに新しい通知が表示されます。",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "指導役の通知",
