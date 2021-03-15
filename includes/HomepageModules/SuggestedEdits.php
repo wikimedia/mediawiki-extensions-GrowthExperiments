@@ -781,7 +781,7 @@ class SuggestedEdits extends BaseModule {
 
 		$redirectParams = [];
 		if ( $taskType->shouldOpenInEditMode() ) {
-			$redirectParams[ 'veaction' ] = 'edit';
+			$redirectParams[ 'articleAction' ] = 'edit';
 		}
 		if ( (bool)$taskType->getDefaultEditSection() ) {
 			$redirectParams[ 'section' ] = $taskType->getDefaultEditSection();

@@ -60,6 +60,8 @@
 		/** @member {boolean} Whether the user interacted with the help panel in
 		 * the suggested edits screen by navigating or clicking tips. */
 		this.helpPanelSuggestedEditsInteractionHappened = false;
+		/** @member {boolean} Whether the article should be opened in edit mode after loading. */
+		this.shouldOpenArticleInEditMode = false;
 	}
 
 	OO.mixinClass( SuggestedEditSession, OO.EventEmitter );
@@ -173,8 +175,7 @@
 	 * @return {boolean} Whether the session has been initiated.
 	 */
 	SuggestedEditSession.prototype.maybeStart = function () {
-		var url = new mw.Uri(),
-			isArticleInEditMode = false;
+		var url = new mw.Uri();
 
 		if ( this.active ) {
 			throw new Error( 'Trying to start an already started active edit session' );
@@ -194,9 +195,10 @@
 		}
 
 		// Don't show help panel & mobile peek if the article is in edit mode
-		isArticleInEditMode = url.query.veaction === 'edit';
-		this.helpPanelShouldOpen = !isArticleInEditMode;
-		this.mobilePeekShown = isArticleInEditMode;
+		this.shouldOpenArticleInEditMode = url.query.articleAction === 'edit';
+		Utils.removeQueryParam( url, 'articleAction' );
+		this.helpPanelShouldOpen = !this.shouldOpenArticleInEditMode;
+		this.mobilePeekShown = this.shouldOpenArticleInEditMode;
 
 		return this.active;
 	};

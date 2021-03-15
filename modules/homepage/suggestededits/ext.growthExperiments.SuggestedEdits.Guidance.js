@@ -13,7 +13,8 @@
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		taskTypeId = suggestedEditSession.taskType,
 		guidancePrefName = 'growthexperiments-homepage-suggestededits-guidance-blue-dot',
-		guidancePrefValue;
+		guidancePrefValue,
+		uri;
 
 	if ( taskTypeId === 'link-recommendation' && mw.config.get( 'wgGELinkRecommendationsFrontendEnabled' ) ) {
 		if ( !suggestedEditSession.taskData ) {
@@ -32,6 +33,17 @@
 					addPlugin( module );
 				} );
 			} );
+
+			if ( suggestedEditSession.shouldOpenArticleInEditMode && $editLink.length ) {
+				uri = new mw.Uri();
+				if ( uri.query.section ) {
+					$editLink.attr(
+						'href',
+						uri.clone().extend( { section: uri.query.section } )
+					);
+				}
+				$editLink[ 0 ].click();
+			}
 		}
 	}
 
