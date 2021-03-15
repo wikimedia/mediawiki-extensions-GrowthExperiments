@@ -37,6 +37,7 @@ class HelpPanelHooks {
 		}
 
 		$context = RequestContext::getMain();
+		// FIXME: Guidance doesn't need an opt-in anymore, let's remove this.
 		if ( SuggestedEdits::isGuidanceEnabledForAnyone( $context )
 			&& $context->getConfig()->get( 'GENewcomerTasksGuidanceRequiresOptIn' )
 		) {

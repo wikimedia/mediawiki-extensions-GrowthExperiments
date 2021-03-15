@@ -14,8 +14,7 @@ var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).To
  * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
  * @param {string} config.trigger How was the dialog triggered? One of 'impression' (when it was
  *   part of the page from the start), 'welcome' (launched from the homepage welcome dialog),
- *   'info-icon' (launched via the info icon in the suggested edits module header),
- *   'suggested-edits' (launched via the button in the variant D mobile summary).
+ *   'info-icon' (launched via the info icon in the suggested edits module header)
  * @param {boolean} config.useTopicSelector Whether to show the topic selector in the intro panel
  * @param {boolean} config.useTaskTypeSelector Whether to show the task type selector in the difficulty panel
  * @param {boolean} config.activateWhenDone Whether to activate suggested edits when the user finishes the dialog
@@ -691,7 +690,7 @@ StartEditingDialog.prototype.buildProgressIndicator = function ( currentPage, to
  * @return {jQuery.Promise}
  */
 StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
-	var $homepage, $homepageOverlay, $startModule, $startEditingModule, moduleHtml, moduleDependencies;
+	var $homepage, $homepageOverlay, $startEditingModule, moduleHtml, moduleDependencies;
 	if ( this.mode === 'mobile-details' ) {
 		window.location.href = mw.util.getUrl( new mw.Title( 'Special:Homepage/suggested-edits' ).toString() );
 		// Keep the dialog open while the page is reloading.
@@ -709,22 +708,14 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 	// FIXME needs to be kept in sync with the PHP code. Maybe the homepage layout
 	//   (module containers) should be templated and made available via an API or JSON config.
 	if ( this.mode === 'desktop' ) {
-		// Add SuggestedEdits module.
-		$startModule = $homepage.find( '.growthexperiments-homepage-module-start' );
+		// Add SuggestedEdits after StartEditing (which will then be removed)
 		$startEditingModule = $homepage.find( '.growthexperiments-homepage-module-start-startediting' );
-		if ( $startModule.length ) {
-			// Update CSS class on the Start module, and add SuggestedEdits after it
-			$homepage.find( '.growthexperiments-homepage-module-start' )
-				.addClass( 'growthexperiments-homepage-module-start-startediting-completed' )
-				.after( moduleHtml );
-		} else {
-			// We're in variant D: add SuggestedEdits after StartEditing (which will then be removed)
-			$startEditingModule.after( moduleHtml );
-		}
+		$startEditingModule.after( moduleHtml );
 		$startEditingModule.remove();
 		// Mark suggested edits module as activated.
 		$homepage.find( '.growthexperiments-homepage-module-suggested-edits' )
 			.addClass( 'activated' );
+		this.emit( 'activation', $homepage.find( '.growthexperiments-homepage-module-suggested-edits' ) );
 	} else if ( this.mode === 'mobile-overlay' ) {
 		// Update StartEditing module icon.
 		$homepage.add( $homepageOverlay )

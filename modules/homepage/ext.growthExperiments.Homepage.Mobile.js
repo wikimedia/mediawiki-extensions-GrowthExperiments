@@ -7,6 +7,8 @@
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
 		),
+		isMobile = OO.ui.isMobile(),
+		isSuggestedEditsActivated = mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' ),
 		newcomerTaskLogger = new NewcomerTaskLogger();
 
 	/**
@@ -20,11 +22,25 @@
 		var GrowthTasksApi = require( './suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js' ),
 			SmallTaskCard = require( './suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.js' ),
 			taskPreviewData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ][ 'task-preview' ] || null,
+			activationSettings = { 'growthexperiments-homepage-suggestededits-activated': 1 },
 			api = new GrowthTasksApi( {
 				suggestedEditsConfig: require( './config.json' ),
-				isMobile: OO.ui.isMobile(),
+				isMobile: isMobile,
 				logContext: 'mobilesummary'
 			} );
+
+		if ( !isSuggestedEditsActivated ) {
+			// Tapping on the task card should be considered enough to activate the module, with no
+			// further onboarding dialogs shown.
+			$( suggestedEditsModuleNode ).on( 'click', function () {
+				new mw.Api().saveOptions( activationSettings ).then( function () {
+					mw.user.options.set( activationSettings );
+				} );
+				// Set state to activated so that HomepageLogger uses correct value for
+				// subsequent log events.
+				mw.config.set( 'wgGEHomepageModuleState-suggested-edits', 'activated' );
+			} );
+		}
 
 		if ( taskPreviewData && taskPreviewData.title ) {
 			api.getExtraDataFromPcs( taskPreviewData ).then( function ( task ) {
@@ -78,7 +94,6 @@
 				currentModule = null,
 				// Matches routes like /homepage/moduleName or /homepage/moduleName/action
 				routeRegex = /^\/homepage\/([^/]+)(?:\/([^/]+))?$/,
-				Utils = require( '../../utils/ext.growthExperiments.Utils.js' ),
 				Drawer = mw.mobileFrontend.require( 'mobile.startup' ).Drawer,
 				Anchor = mw.mobileFrontend.require( 'mobile.startup' ).Anchor;
 
@@ -160,7 +175,7 @@
 			handleRouteChange( router.getPath() );
 
 			/**
-			 * Show welcome drawer for users in variant C and D who haven't already seen it.
+			 * Show welcome drawer for users who haven't already seen it.
 			 */
 			function maybeShowWelcomeDrawer() {
 				// Even though this drawer isn't really a tour, we reuse the preference
@@ -171,6 +186,9 @@
 					markAsSeen = function () {
 						new mw.Api().saveOption( welcomeNoticeSeenPreference, 1 );
 					},
+					// FIXME: in a follow-up, convert these messages to something besides variant C/D,
+					// e.g. "se-activated" / "se-unactivated"
+					variantKey = isSuggestedEditsActivated ? 'd' : 'c',
 					welcomeDrawer;
 
 				if ( mw.user.options.get( welcomeNoticeSeenPreference ) ) {
@@ -191,7 +209,7 @@
 								// * growthexperiments-homepage-welcome-notice-body-variant-d
 								$( '<p>' ).html( mw.message(
 									'growthexperiments-homepage-welcome-notice-body-variant-' +
-									Utils.getUserVariant().toLowerCase()
+									variantKey
 								).params( [ mw.user ] )
 									.parse() ),
 								$( '<footer>' ).addClass( 'growthexperiments-homepage-welcome-notice-footer' )
@@ -205,7 +223,7 @@
 											// * growthexperiments-homepage-welcome-notice-button-text-variant-d
 											label: mw.msg(
 												'growthexperiments-homepage-welcome-notice-button-text-variant-' +
-												Utils.getUserVariant().toLowerCase()
+												variantKey
 											)
 										} ).$el
 									)
@@ -224,9 +242,9 @@
 					buttonClicked = true;
 					markAsSeen();
 					homepageModuleLogger.log( 'generic', 'mobile-summary', 'welcome-close', { type: 'button' } );
-					// Launch the start editing dialog for variant C users.
+					// Launch the start editing dialog for mobile users who haven't activated the module yet.
 					// TODO: We should probably use mw.hook instead of mw.track/trackSubscribe here
-					if ( Utils.isUserInVariant( [ 'C' ] ) ) {
+					if ( isMobile && !isSuggestedEditsActivated ) {
 						mw.track( 'growthexperiments.startediting', {
 							// The welcome drawer doesn't belong to any module
 							moduleName: 'generic',
@@ -253,8 +271,7 @@
 				}
 			} );
 
-			// When the suggested edits module is present and we are in the right variant,
-			// finish loading the task preview card.
+			// When the suggested edits module is present finish loading the task preview card.
 			// FIXME doesn't belong here; not sure what the right place would be though.
 			$summaryModules.filter( '.growthexperiments-homepage-module-suggested-edits' )
 				.each( function ( i, module ) {
