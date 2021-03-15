@@ -190,15 +190,24 @@ class ImportOresTopics extends Maintenance {
 
 	/**
 	 * @param Title[] $titles
-	 * @return float[][] title => topic => score
+	 * @return int[][] title => topic => score
 	 */
 	private function getTopics( array $titles ): array {
 		if ( $this->topicSource === self::TOPIC_SOURCE_RANDOM ) {
-			return $this->getTopicsByRandom( $titles );
+			$topics = $this->getTopicsByRandom( $titles );
 		} elseif ( $this->topicSource === self::TOPIC_SOURCE_PROD ) {
-			return $this->getTopicsFromOres( $titles, $this->apiUrl, $this->wikiId );
+			$topics = $this->getTopicsFromOres( $titles, $this->apiUrl, $this->wikiId );
+		} else {
+			throw new LogicException( 'cannot get here' );
 		}
-		throw new LogicException( 'cannot get here' );
+		foreach ( $topics as $title => &$scores ) {
+			foreach ( $scores as $topic => &$score ) {
+				// Scale probability values to 1-1000. We avoid 0 as ElasticSearch cannot
+				// represent it.
+				$score = intval( ceil( 1000 * $score ) );
+			}
+		}
+		return $topics;
 	}
 
 	/**
