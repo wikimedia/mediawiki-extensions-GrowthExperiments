@@ -8,6 +8,7 @@
 			"Rail",
 			"Railfail536",
 			"Tar Lócesilion",
+			"The Polish",
 			"WTM",
 			"Woytecr"
 		]
@@ -295,7 +296,7 @@
 	"growthexperiments-homepage-claimmentee-success": "Zmieni{{GENDER:$3|łeś|łaś|łeś(-aś)}} przewodni{{GENDER:$4|ka|czkę|ka(-czkę)}} dla {{PLURAL:$2|użytkownika|użytkowników}} $1 na $5",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Przewodnik {{GENDER:$1|$1}} został już ustawiony. Czy na pewno {{GENDER:$2|chcesz}} zmienić go ponownie?",
 	"growthexperiments-claimmentee-confirm": "Tak, na pewno chcę zmienić przewodnika",
-	"growthexperiments-log-name": "Log GrowthExperiments",
+	"growthexperiments-log-name": "Rejestr GrowthExperiments",
 	"growthexperiments-log-header": "To jest log akcji wykonanych w ramach rozszerzenia GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|wziął|wzięła|wziął/wzięła}} {{GENDER:$6|$3}} pod swoje skrzydła (poprzed{{GENDER:$4|ni|nia|ni}} przewodni{{GENDER:$4|k|czka|k(-czka)}}: $5)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|wziął|wzięła|wziął/wzięła}} {{GENDER:$6|$3}} pod swoje skrzydła (brak poprzednich przewodników)",

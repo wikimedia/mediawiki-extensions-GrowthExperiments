@@ -110,6 +110,7 @@
 	"growthexperiments-tour-mentor-response-tip-personal-text": "Ketika {{GENDER:$2|mentor}} {{GENDER:$1|Anda}} merespons, {{GENDER:$1|Anda}} akan menerima pemberitahuan di sini.",
 	"growthexperiments-tour-response-button-okay": "Mengerti",
 	"tag-help_module_question": "Pertanyaan modul bantuan",
+	"tag-mentorship_module_question": "Pertanyaan modul bimbingan",
 	"tag-mentorship_panel_question": "Panel pertanyaan bimbingan",
 	"tag-mentorship_panel_question-description": "Suntingan yang dibuat dari panel bantuan fitur \"Tanya mentor Anda\"",
 	"tag-newcomer_task": "Tugas pengguna baru",
@@ -319,5 +320,14 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Ketuk pensil edit $1 di sebelah pranala itu untuk mengganti tujuan pranala",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Lainnya / tidak ingin menyebutkan",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Selesai",
+	"growthexperiments-addlink-onboarding-content-intro-title": "Menambahkan pranala akan membantu pembaca belajar lebih cepat.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|Anda}} akan menentukan apakah kata dalam salah satu artikel {{SITENAME}} tertaut ke artikel {{SITENAME}} lainnya.",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Kalimat contoh",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "Bulan adalah satu-satunya <mark>satelit alami</mark> yang <mark>mengorbit</mark> mengelilingi <mark>Bumi</mark>.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "Mengerjakan tugas ini tidak membutuhkan pengetahuan khusus mengenai artikel.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Saranan pranala berasal dari kecerdasan buatan, yang mungkin saja salah.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "Kecerdasan buatan dapat memberikan saran pada kata-kata yang tidak diperlukan atau menyarankan untuk menautkan ke artikel yang salah. Gunakan penilaian {{GENDER:$1|Anda}} untuk memutuskan apakah benar atau salah.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Pelajari lebih lanjut mngenai saranan dari kecerdasan buatan",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Panduan",
 	"grant-managementorship": "Atur bimbingan"
 }

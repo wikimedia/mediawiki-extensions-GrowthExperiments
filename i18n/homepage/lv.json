@@ -247,6 +247,7 @@
 	"growthexperiments-addlink-context-button-accept": "Jā",
 	"growthexperiments-addlink-context-button-reject": "Nē",
 	"growthexperiments-addlink-context-button-next": "Izlaist",
+	"growthexperiments-addlink-rejectiondialog-title": "Kāpēc šī nav laba saite? <em>(Neobligāti)</em>",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Cits / nevēlos atbildēt",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Gatavs",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Teikuma piemērs",
