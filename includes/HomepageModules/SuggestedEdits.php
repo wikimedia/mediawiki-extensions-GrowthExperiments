@@ -345,7 +345,7 @@ class SuggestedEdits extends BaseModule {
 			self::RENDER_MOBILE_DETAILS,
 			self::RENDER_MOBILE_DETAILS_OVERLAY
 		] ) ) {
-			return true;
+			return $this->canRender();
 		}
 		// For desktop, we output a different module (start-startediting) in place of suggested edits, so SE
 		// should not render before the module is activated.
