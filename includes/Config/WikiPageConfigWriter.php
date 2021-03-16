@@ -93,6 +93,16 @@ class WikiPageConfigWriter {
 	}
 
 	/**
+	 * Unset all config variables
+	 *
+	 * Useful for migration purposes, or for other places where we want to
+	 * start with an empty config.
+	 */
+	public function pruneConfig(): void {
+		$this->wikiConfig = [];
+	}
+
+	/**
 	 * @param string $variable
 	 * @param mixed $value
 	 */
