@@ -312,16 +312,11 @@ class HomepageHooks implements
 		if ( !self::isHomepageEnabled( $skin->getUser() ) ) {
 			return;
 		}
-		$isHomepage = $skin->getTitle()->isSpecial( 'Homepage' );
-		if ( $isHomepage ||
+		if ( $skin->getTitle()->isSpecial( 'Homepage' ) ||
 			 self::titleIsUserPageOrUserTalk( $skin->getTitle(), $skin->getUser() ) ) {
 			$skinOptions->setMultiple( [
 				SkinOptions::TALK_AT_TOP => true,
 				SkinOptions::TABS_ON_SPECIALS => true,
-				// Another hack. When overflow submenu is true, the various tabs normally shown
-				// on editable page will be hidden, which is what we want on Special:Homepage.
-				// On User:Foo or User_talk:Foo, however, we want this set to false.
-				SkinOptions::TOOLBAR_SUBMENU => $isHomepage
 			] );
 		}
 	}
