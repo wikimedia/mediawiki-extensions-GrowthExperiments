@@ -8,6 +8,7 @@
 			"Elliot",
 			"FF11",
 			"Ferdinand0101",
+			"Gebu",
 			"HajFunk",
 			"Killarnee",
 			"Metalhead64",
@@ -351,7 +352,11 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Klicke auf den Stift $1 neben dem Link, um das Linkziel zu ändern",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Sonstiges / Möchte nicht antworten",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Fertig",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Beispielsatz",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "Der Mond ist der einzige natürliche Satelit, der sich um die Erde bewegt.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "Es ist kein besonderes Wissen über den Artikel nötig, um diese Aufgabe zu erledigen.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Die vorgeschlagenen Links stammen von einer künstlichen Intelligenz (KI, ein Computerprogramm), die Fehler machen kann.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Erfahre mehr über KI-Vorschläge",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Richtlinien",
 	"grant-managementorship": "Mentorenschaft bearbeiten"
 }

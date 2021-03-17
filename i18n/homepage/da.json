@@ -340,5 +340,6 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Klik på blyanten $1 ved siden af linket for at ændre linkets destination",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Andet / ønsker ikke at angive hvorfor",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Færdig",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Retningslinjer",
 	"grant-managementorship": "Administrer mentorskab"
 }
