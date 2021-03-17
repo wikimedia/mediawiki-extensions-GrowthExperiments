@@ -122,7 +122,7 @@ class DeleteOldSurveysTest extends MediaWikiIntegrationTestCase {
 			$user = User::newFromId( $user->getId() );
 			$user->load( User::READ_LATEST );
 			// sanity
-			$this->assertTrue( (bool)$user->getId() );
+			$this->assertNotSame( 0, $user->getId() );
 			$this->assertArrayHasKey( $pref,
 				$user->getOptions( User::GETOPTIONS_EXCLUDE_DEFAULTS ),
 				"$name should have a survey pref but doesn't" );
@@ -142,7 +142,7 @@ class DeleteOldSurveysTest extends MediaWikiIntegrationTestCase {
 			$user = User::newFromId( $user->getId() );
 			$user->load( User::READ_LATEST );
 			// sanity
-			$this->assertTrue( (bool)$user->getId() );
+			$this->assertNotSame( 0, $user->getId() );
 			$this->assertArrayNotHasKey( $pref,
 				$user->getOptions( User::GETOPTIONS_EXCLUDE_DEFAULTS ),
 				"$name should not have a survey pref but does" );

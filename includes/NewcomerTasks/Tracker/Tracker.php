@@ -45,7 +45,6 @@ class Tracker {
 		$this->configurationLoader = $configurationLoader;
 		$this->titleFactory = $titleFactory;
 		$this->logger = $logger;
-		$this->title = null;
 	}
 
 	/**
