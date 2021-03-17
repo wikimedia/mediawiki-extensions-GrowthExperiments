@@ -102,7 +102,7 @@ class HelpPanel {
 	 * @return bool
 	 */
 	private static function shouldShowHelpPanelToUser( User $user ) {
-		return !$user->isAnon() &&
+		return $user->isRegistered() &&
 			   $user->getOption( HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE );
 	}
 

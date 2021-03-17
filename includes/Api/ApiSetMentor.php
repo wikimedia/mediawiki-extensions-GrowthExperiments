@@ -11,6 +11,7 @@ use LogEventsList;
 use LogPager;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
+use User;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiSetMentor extends ApiBase {
@@ -36,7 +37,9 @@ class ApiSetMentor extends ApiBase {
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
+		/** @var User $mentee */
 		$mentee = $params['mentee'];
+		/** @var User $mentor */
 		$mentor = $params['mentor'];
 
 		if ( !in_array( $this->getUser()->getId(), [ $mentee->getId(), $mentor->getId() ] ) ) {
@@ -46,9 +49,9 @@ class ApiSetMentor extends ApiBase {
 		}
 		$mentorObj = $this->mentorManager->getMentorForUserSafe( $mentee );
 
-		if ( $mentee->isAnon() || $mentor->isAnon() ) {
+		if ( !$mentee->isRegistered() || !$mentor->isRegistered() ) {
 			// User doesn't exist
-			$wrongUser = $mentee->isAnon() ? $mentee : $mentor;
+			$wrongUser = $mentee->isRegistered() ? $mentor : $mentee;
 			$this->dieWithError( [ 'nosuchusershort', $wrongUser->getName() ] );
 		}
 
