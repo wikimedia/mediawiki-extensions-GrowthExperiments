@@ -171,7 +171,7 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 					return NodeFilter.FILTER_ACCEPT;
 				}
 				// Skip element nodes that shouldn't be excluded; this doesn't return them (we only
-				// want to return text nodes), but it does descned
+				// want to return text nodes), but it does descend
 				return NodeFilter.FILTER_SKIP;
 			} }
 		);
@@ -217,7 +217,7 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 		while ( anythingLeft && ( match = regex.exec( textNode.data ) ) ) {
 			phrase = phraseMap[ match[ 0 ] ];
 			suggestion = phrase.suggestions[ phrase.occurrencesSeen ];
-			if ( suggestion.link_target !== undefined ) {
+			if ( suggestion ) {
 				// Split the textNode in three parts: before the matched phrase (textNode),
 				// the matched phrase (linkText), and the text after the matched phrase (postText)
 				linkText = textNode.splitText( match.index );
