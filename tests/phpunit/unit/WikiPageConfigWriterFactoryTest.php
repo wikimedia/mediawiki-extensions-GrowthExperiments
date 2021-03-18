@@ -7,6 +7,7 @@ use GrowthExperiments\Config\WikiPageConfigWriter;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWikiUnitTestCase;
+use Psr\Log\LoggerInterface;
 use Title;
 use TitleFactory;
 use User;
@@ -20,6 +21,7 @@ class WikiPageConfigWriterFactoryTest extends MediaWikiUnitTestCase {
 			$this->createNoOpMock( WikiPageConfigLoader::class ),
 			$this->createNoOpMock( WikiPageFactory::class ),
 			$this->createNoOpMock( TitleFactory::class ),
+			$this->createNoOpMock( LoggerInterface::class ),
 			$this->createNoOpMock( User::class )
 		);
 		$this->assertInstanceOf(

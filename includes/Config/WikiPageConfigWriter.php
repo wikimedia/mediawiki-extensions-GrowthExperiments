@@ -10,6 +10,7 @@ use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Revision\SlotRecord;
 use MWException;
+use Psr\Log\LoggerInterface;
 use Status;
 use TitleFactory;
 use User;
@@ -30,6 +31,9 @@ class WikiPageConfigWriter {
 	/** @var TitleFactory */
 	private $titleFactory;
 
+	/** @var LoggerInterface */
+	private $logger;
+
 	/** @var array|null */
 	private $wikiConfig;
 
@@ -40,6 +44,7 @@ class WikiPageConfigWriter {
 	 * @param WikiPageConfigLoader $wikiPageConfigLoader
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param TitleFactory $titleFactory
+	 * @param LoggerInterface $logger
 	 * @param string[] $allowList
 	 * @param LinkTarget $configPage
 	 * @param User $performer
@@ -48,6 +53,7 @@ class WikiPageConfigWriter {
 		WikiPageConfigLoader $wikiPageConfigLoader,
 		WikiPageFactory $wikiPageFactory,
 		TitleFactory $titleFactory,
+		LoggerInterface $logger,
 		array $allowList,
 		LinkTarget $configPage,
 		User $performer
@@ -55,6 +61,7 @@ class WikiPageConfigWriter {
 		$this->wikiPageConfigLoader = $wikiPageConfigLoader;
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->titleFactory = $titleFactory;
+		$this->logger = $logger;
 
 		$this->allowList = $allowList;
 		$this->configPage = $configPage;
@@ -62,17 +69,40 @@ class WikiPageConfigWriter {
 	}
 
 	/**
-	 * Load wiki-config via WikiPageConfigLoader, if some exists
+	 * Return current wiki config, loaded via WikiPageConfigLoader
+	 *
+	 * @return array
 	 */
-	private function loadConfig(): void {
+	private function getCurrentWikiConfig(): array {
 		if ( $this->titleFactory->newFromLinkTarget( $this->configPage )->exists() ) {
-			$this->wikiConfig = $this->wikiPageConfigLoader->load(
+			$config = $this->wikiPageConfigLoader->load(
 				$this->configPage,
 				WikiPageConfigLoader::READ_LATEST
 			);
+			if ( !is_array( $config ) ) {
+				if ( $config instanceof Status ) {
+					// In case config loader returned a status object, log details that could
+					// be useful for debugging.
+					$this->logger->error(
+						__METHOD__ . ' failed to load config, Status object returned',
+						[
+							'errorArray' => $config->getErrors()
+						]
+					);
+				}
+				throw new InvalidArgumentException( __METHOD__ . ' failed to load config' );
+			}
+			return $config;
 		} else {
-			$this->wikiConfig = [];
+			return [];
 		}
+	}
+
+	/**
+	 * Load wiki-config via WikiPageConfigLoader, if some exists
+	 */
+	private function loadConfig(): void {
+		$this->wikiConfig = $this->getCurrentWikiConfig();
 	}
 
 	/**
@@ -139,19 +169,27 @@ class WikiPageConfigWriter {
 		// Sort config alphabetically
 		ksort( $this->wikiConfig, SORT_STRING );
 
-		$page = $this->wikiPageFactory->newFromLinkTarget( $this->configPage );
-		$updater = $page->newPageUpdater( $this->performer );
-		// TODO: T275976: Maybe we should get rid of JsonContent?
-		$updater->setContent( SlotRecord::MAIN, new JsonContent(
-			FormatJson::encode( $this->wikiConfig )
-		) );
-		$updater->saveRevision(
-			CommentStoreComment::newUnsavedComment( $summary ),
-			$minor ? EDIT_MINOR : 0
-		);
-		$status = $updater->getStatus() ?? Status::newGood();
+		$status = Status::newGood();
 
-		// Invalidate config cache after the edit
+		// Save only if config was changed, so editing interface
+		// doesn't need to make sure config was indeed changed.
+		if ( $this->wikiConfig !== $this->getCurrentWikiConfig() ) {
+			$page = $this->wikiPageFactory->newFromLinkTarget( $this->configPage );
+			$updater = $page->newPageUpdater( $this->performer );
+			// TODO: T275976: Maybe we should get rid of JsonContent?
+			$updater->setContent( SlotRecord::MAIN, new JsonContent(
+				FormatJson::encode( $this->wikiConfig )
+			) );
+			$updater->saveRevision(
+				CommentStoreComment::newUnsavedComment( $summary ),
+				$minor ? EDIT_MINOR : 0
+			);
+			$status = $updater->getStatus() ?? Status::newGood();
+		}
+
+		// Invalidate config cache regardless of whether any variable was changed
+		// to let users to invalidate cache when they wish so (similar to action=purge
+		// or null edit concepts)
 		$this->wikiPageConfigLoader->invalidate( $this->configPage );
 
 		return $status;
