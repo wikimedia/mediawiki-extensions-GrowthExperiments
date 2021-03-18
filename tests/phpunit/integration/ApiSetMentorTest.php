@@ -139,7 +139,7 @@ class ApiSetMentorTest extends ApiTestCase {
 		$this->assertEquals( $response[0]['growthsetmentor']['status'], 'ok' );
 	}
 
-	private function getMockMentorManager( User $mentee, User $mentor ) {
+	private function getMockMentorManager( UserIdentity $mentee, UserIdentity $mentor ) {
 		$oldMentor = $this->getMutableTestUser()->getUser();
 		$mentorManager = $this->getMockBuilder( StaticMentorManager::class )
 			->setConstructorArgs( [ [ $mentee->getName() => new Mentor( $oldMentor, '' ) ] ] )
@@ -148,11 +148,11 @@ class ApiSetMentorTest extends ApiTestCase {
 		return $mentorManager;
 	}
 
-	private function ruleUserEquals( User $user ) {
+	private function ruleUserEquals( UserIdentity $user ) {
 		return new class( $user ) extends Constraint {
 			private $user;
 
-			public function __construct( User $user ) {
+			public function __construct( UserIdentity $user ) {
 				$this->user = $user;
 			}
 

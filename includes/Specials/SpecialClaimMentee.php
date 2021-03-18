@@ -11,6 +11,7 @@ use Linker;
 use LogEventsList;
 use LogPager;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\User\UserIdentity;
 use Message;
 use PermissionsError;
 use Status;
@@ -230,7 +231,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 	}
 
 	public function onSuccess() {
-		$mentees = array_map( function ( $user ) {
+		$mentees = array_map( function ( UserIdentity $user ) {
 			return Linker::userLink( $user->getId(), $user->getName() );
 		}, $this->mentees );
 

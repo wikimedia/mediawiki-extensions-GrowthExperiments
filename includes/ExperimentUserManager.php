@@ -3,9 +3,9 @@
 namespace GrowthExperiments;
 
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\User\UserOptionsManager;
-use User;
 
 /**
  * Service for handling experiment / variant related functions for users.
@@ -41,10 +41,10 @@ class ExperimentUserManager {
 	}
 
 	/**
-	 * @param User $user
+	 * @param UserIdentity $user
 	 * @return string
 	 */
-	public function getVariant( User $user ) {
+	public function getVariant( UserIdentity $user ) {
 		$variant = $this->userOptionsLookup->getOption(
 			$user,
 			HomepageHooks::HOMEPAGE_PREF_VARIANT
@@ -58,10 +58,10 @@ class ExperimentUserManager {
 	/**
 	 * Set (but does not save) the variant for a user.
 	 *
-	 * @param User $user
+	 * @param UserIdentity $user
 	 * @param mixed $variant
 	 */
-	public function setVariant( User $user, $variant ) {
+	public function setVariant( UserIdentity $user, $variant ) {
 		$this->userOptionsManager->setOption(
 			$user,
 			HomepageHooks::HOMEPAGE_PREF_VARIANT,
@@ -70,11 +70,11 @@ class ExperimentUserManager {
 	}
 
 	/**
-	 * @param User $user
+	 * @param UserIdentity $user
 	 * @param string|string[] $variant
 	 * @return bool
 	 */
-	public function isUserInVariant( User $user, $variant ) : bool {
+	public function isUserInVariant( UserIdentity $user, $variant ) : bool {
 		return in_array( $this->getVariant( $user ), (array)$variant );
 	}
 }

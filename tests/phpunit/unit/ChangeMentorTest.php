@@ -7,11 +7,12 @@ use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorManager;
 use IContextSource;
 use LogPager;
+use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\NullLogger;
 use Status;
-use User;
 use Wikimedia\Rdbms\IResultWrapper;
 use Wikimedia\TestingAccessWrapper;
 
@@ -144,17 +145,11 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 
 	/**
 	 * @param string $name
-	 * @param int|null $id
-	 * @return MockObject|User
+	 * @param int $id
+	 * @return UserIdentity
 	 */
 	private function getUserMock( string $name, int $id ) {
-		$user = $this->getMockBuilder( User::class )
-			->disableOriginalConstructor()
-			->setMethods( [ 'getName', 'getId' ] )
-			->getMock();
-		$user->method( 'getName' )->willReturn( $name );
-		$user->method( 'getId' )->willReturn( $id );
-		return $user;
+		return new UserIdentityValue( $id, $name, 0 );
 	}
 
 	/**

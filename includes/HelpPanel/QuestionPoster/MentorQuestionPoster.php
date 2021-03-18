@@ -8,6 +8,7 @@ use GrowthExperiments\WikiConfigException;
 use IContextSource;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
+use User;
 use UserNotLoggedIn;
 
 /**
@@ -61,7 +62,7 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 	 */
 	protected function getDirectTargetTitle() {
 		$mentor = $this->mentorManager->getMentorForUser( $this->getContext()->getUser() );
-		return $mentor->getMentorUser()->getTalkPage();
+		return User::newFromIdentity( $mentor->getMentorUser() )->getTalkPage();
 	}
 
 	/**
