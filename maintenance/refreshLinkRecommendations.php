@@ -116,7 +116,6 @@ class RefreshLinkRecommendations extends Maintenance {
 
 	public function execute() {
 		$this->initServices();
-		$this->initConfig();
 		if ( !$this->growthConfig->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
 			$this->output( "Disabled\n" );
 			return;
@@ -132,6 +131,7 @@ class RefreshLinkRecommendations extends Maintenance {
 			$this->output( "Previous invocation of the script is still running\n" );
 			return;
 		}
+		$this->initConfig();
 
 		$oresTopics = $this->getOresTopics();
 		$this->output( "Refreshing link recommendations...\n" );
