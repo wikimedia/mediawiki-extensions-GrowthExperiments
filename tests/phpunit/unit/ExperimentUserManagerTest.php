@@ -46,8 +46,8 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 			->disableOriginalConstructor()
 			->getMock();
 		$userOptionsLookupMock->method( 'getOption' )
-			->willReturn( 'C' );
-		$this->assertEquals( 'C', $this->getExperimentUserManager(
+			->willReturn( 'D' );
+		$this->assertEquals( 'D', $this->getExperimentUserManager(
 			new ServiceOptions(
 				[ 'GEHomepageDefaultVariant' ],
 				[ 'GEHomepageDefaultVariant' => 'Foo' ]
