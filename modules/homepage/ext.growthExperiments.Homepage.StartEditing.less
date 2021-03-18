@@ -6,93 +6,91 @@
 
 // Styles for the mobile summary view of StartEditing module for variant D users.
 .growthexperiments-homepage-module-start-startediting {
-	&.growthexperiments-homepage-module-user-variant-D {
-		&.growthexperiments-homepage-module-mobile-summary {
-			cursor: pointer;
-			border: solid 1px @wmui-color-accent50;
-			border-radius: 2px;
-			background-color: #f5f9ff;
+	&.growthexperiments-homepage-module-mobile-summary {
+		cursor: pointer;
+		border: solid 1px @wmui-color-accent50;
+		border-radius: 2px;
+		background-color: #f5f9ff;
 
-			.growthexperiments-homepage-module-header {
-				padding-top: 16px;
-				padding-bottom: 0;
+		.growthexperiments-homepage-module-header {
+			padding-top: 16px;
+			padding-bottom: 0;
 
-				&-icon {
-					margin-right: 16px;
+			&-icon {
+				margin-right: 16px;
 
-					.oo-ui-iconElement {
-						min-width: 64px;
-						min-height: 64px;
-					}
+				.oo-ui-iconElement {
+					min-width: 64px;
+					min-height: 64px;
 				}
-			}
-
-			p {
-				font-size: 0.8em;
 			}
 		}
 
-		&.growthexperiments-homepage-module-desktop {
-			padding: 0;
-			height: 630px;
-			display: flex;
-			flex-direction: column;
+		p {
+			font-size: 0.8em;
+		}
+	}
 
-			.growthexperiments-homepage-module-header {
-				padding: 1em @startEditingDialogSidePadding;
-				background-color: @startediting-suggested-edits-background;
-			}
+	&.growthexperiments-homepage-module-desktop {
+		padding: 0;
+		height: 630px;
+		display: flex;
+		flex-direction: column;
 
-			.oo-ui-windowManager {
-				flex-grow: 1;
-				position: relative;
+		.growthexperiments-homepage-module-header {
+			padding: 1em @startEditingDialogSidePadding;
+			background-color: @startediting-suggested-edits-background;
+		}
 
-				.mw-ge-startediting-dialog {
-					&-progress {
-						background-color: @startediting-suggested-edits-background;
-						padding-top: 0;
+		.oo-ui-windowManager {
+			flex-grow: 1;
+			position: relative;
+
+			.mw-ge-startediting-dialog {
+				&-progress {
+					background-color: @startediting-suggested-edits-background;
+					padding-top: 0;
+				}
+
+				&-intro-topic {
+					background-color: @startediting-suggested-edits-background;
+
+					&-title {
+						display: none;
 					}
 
-					&-intro-topic {
-						background-color: @startediting-suggested-edits-background;
+					&-message {
+						color: @color-base;
+						font-size: 1em;
 
-						&-title {
-							display: none;
-						}
-
-						&-message {
-							color: @color-base;
-							font-size: 1em;
-
-							p:first-child {
-								margin-top: 0;
-							}
-						}
-					}
-
-					&-difficulty {
-						&-banner {
-							background-color: @startediting-suggested-edits-background;
-							border-left-color: @startediting-suggested-edits-background;
-						}
-
-						&-header {
+						p:first-child {
 							margin-top: 0;
-
-							strong {
-								color: inherit;
-							}
 						}
 					}
+				}
 
-					&-desktopFooter {
-						.suggested-edits-article-count-panel-layout-desktop {
-							padding-top: 16px;
-						}
+				&-difficulty {
+					&-banner {
+						background-color: @startediting-suggested-edits-background;
+						border-left-color: @startediting-suggested-edits-background;
+					}
 
-						&-desktopActions {
-							padding: 12px;
+					&-header {
+						margin-top: 0;
+
+						strong {
+							color: inherit;
 						}
+					}
+				}
+
+				&-desktopFooter {
+					.suggested-edits-article-count-panel-layout-desktop {
+						padding-top: 16px;
+					}
+
+					&-desktopActions {
+						padding: 12px;
 					}
 				}
 			}
