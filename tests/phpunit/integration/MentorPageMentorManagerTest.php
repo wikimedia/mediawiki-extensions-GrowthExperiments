@@ -235,6 +235,7 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 			$coreServices->getUserFactory(),
 			$coreServices->getUserOptionsManager(),
 			$coreServices->getUserNameUtils(),
+			$coreServices->getActorStore(),
 			$context,
 			$context->getLanguage(),
 			$growthServices->getConfig()->get( 'GEHomepageMentorsList' ) ?? '',

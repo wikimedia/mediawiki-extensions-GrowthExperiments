@@ -164,6 +164,7 @@ return [
 			$services->getUserFactory(),
 			$services->getUserOptionsManager(),
 			$services->getUserNameUtils(),
+			$services->getActorStore(),
 			RequestContext::getMain(),
 			RequestContext::getMain()->getLanguage(),
 			$config->get( 'GEHomepageMentorsList' ) ?: null,
