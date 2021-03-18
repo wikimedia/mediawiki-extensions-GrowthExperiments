@@ -1,0 +1,99 @@
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
+@import '../homepage/ext.growthExperiments.variables.less';
+@import '../homepage/ext.growthExperiments.mixins.less';
+
+.growthexperiments-multi-pane-dialog {
+	.oo-ui-window-head {
+		background-color: @suggestedEditsBackgroundColor;
+		outline: unset;
+	}
+
+	.oo-ui-window-body {
+		overflow-x: hidden;
+	}
+
+	.oo-ui-window-head,
+	.oo-ui-window-body,
+	.oo-ui-window-foot {
+		color: @wmui-color-base10;
+	}
+
+	&-fixed-content {
+		position: absolute;
+		z-index: 1;
+	}
+
+	&-progress-indicator {
+		padding: 0 16px;
+		color: @wmui-color-base20;
+	}
+
+	&-progress-indicator,
+	&-dots-container {
+		display: flex;
+		align-items: center;
+	}
+
+	&-dot {
+		border-radius: 50%;
+		width: 8px;
+		height: 8px;
+		margin-right: 8px;
+		background-color: @wmui-color-base70;
+		display: inline-block;
+
+		&.dot-completed {
+			background-color: @wmui-color-base10;
+		}
+	}
+
+	.oo-ui-panelLayout {
+		transition: left 500ms;
+		left: 0;
+		background: @wmui-color-base100;
+		width: 100%;
+		box-sizing: border-box;
+
+		&.offscreen-content-prev {
+			left: -100%;
+		}
+
+		&.offscreen-content-next {
+			left: 100%;
+		}
+	}
+
+	&-footer {
+		display: flex;
+		align-items: center;
+	}
+
+	&-footer-widget {
+		flex-grow: 1;
+
+		&.align-end {
+			text-align: right;
+			margin-right: 0;
+		}
+	}
+
+	&-progress-text {
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
+	}
+
+	&-desktop {
+		.oo-ui-processDialog-location {
+			text-align: left;
+			// Override padding set by ProcessDialog (JS) when there are ActionWidgets
+			padding: 0 !important; // stylelint-disable-line declaration-no-important
+		}
+
+		.oo-ui-processDialog-title {
+			margin-left: 1em;
+		}
+
+		.growthexperiments-multi-pane-dialog-progress-text {
+			.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 12.4px, @targetLineHeight: 17.3px );
+		}
+	}
+}

@@ -352,5 +352,12 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Learn more about AI suggestions",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Guidelines",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Link concepts that a reader might want to learn more about.</li><li>Make sure the link is going to the right article.</li><li>Don't link common words, years, or dates.</li><li>If {{GENDER:$1|you're}} not sure, skip.</li>",
+	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "Skip all",
+	"growthexperiments-addlink-onboarding-dialog-title": "Introduction",
+	"growthexperiments-addlink-onboarding-dialog-progress": "$1 of $2",
+	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "Don't show again",
+	"growthexperiments-addlink-onboarding-dialog-label-next": "Next introduction step",
+	"growthexperiments-addlink-onboarding-dialog-label-previous": "Previous introduction step",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Get started",
 	"grant-managementorship": "Manage mentorship"
 }

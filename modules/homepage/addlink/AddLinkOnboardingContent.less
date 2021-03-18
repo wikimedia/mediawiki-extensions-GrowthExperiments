@@ -1,16 +1,20 @@
 @import 'resources/lib/ooui/wikimedia-ui-base.less';
+@import 'mediawiki.mixins';
+@import '../ext.growthExperiments.variables.less';
+@import '../ext.growthExperiments.mixins.less';
 
 .addlink-onboarding-content {
+	@mobileFontSize: 16px;
+
 	&-title {
 		font-weight: bold;
-		font-size: 1.143em;
-		line-height: 1.425em;
+		.rel-font-size-and-line-height( @parentFontSize: @mobileFontSize, @targetFontSize: 18.28px, @targetLineHeight: 26px );
 	}
 
 	&-body {
-		line-height: 1.429em;
+		.rel-line-height( @parentFontSize: @mobileFontSize, @targetLineHeight: 22.8px );
 		margin: 8px 0;
-		padding-bottom: 35px;
+		padding-bottom: 8px;
 	}
 
 	&-link {
@@ -32,9 +36,8 @@
 	}
 
 	&-example-label {
+		.rel-font-size-and-line-height( @parentFontSize: @mobileFontSize, @targetFontSize: 14.8px, @targetLineHeight: 22px );
 		font-style: italic;
-		font-size: 0.929em;
-		line-height: 1.462em;
 		margin-top: 8px;
 		color: @wmui-color-base30;
 	}
@@ -55,21 +58,42 @@
 	}
 
 	&-image1 {
-		background-image: url( ../../../images/addlink/onboarding-image1.svg );
+		background-image: url( ../../../images/addlink/onboarding-image1-ltr.svg );
 	}
 
 	&-image2 {
-		background-image: url( ../../../images/addlink/onboarding-image2.svg );
+		background-image: url( ../../../images/addlink/onboarding-image2-ltr.svg );
 	}
 
 	&-image3 {
-		background-image: url( ../../../images/addlink/onboarding-image3.svg );
+		background-image: url( ../../../images/addlink/onboarding-image3-ltr.svg );
 	}
 
 	&-image1,
 	&-image2,
 	&-image3 {
+		.box-shadow( inset 0 -1px 0 @wmui-color-base80 );
+		height: 216px;
 		background-position: center;
 		background-repeat: no-repeat;
+		background-color: @suggestedEditsBackgroundColor;
+		// Extend background beyond padding
+		margin: -12px -16px 16px -16px;
+	}
+
+	&-desktop {
+		@desktopFontSize: 14px;
+
+		.addlink-onboarding-content-title {
+			.rel-font-size-and-line-height( @parentFontSize: @desktopFontSize, @targetFontSize: 16px, @targetLineHeight: 22.8px );
+		}
+
+		.addlink-onboarding-content-body {
+			.rel-line-height( @parentFontSize: @desktopFontSize, @targetLineHeight: 20px );
+		}
+
+		.addlink-onboarding-content-example-label {
+			.rel-font-size-and-line-height( @parentFontSize: @desktopFontSize, @targetFontSize: 13px, @targetLineHeight: 19px );
+		}
 	}
 }

@@ -507,6 +507,10 @@ class HomepageHooks implements
 		$preferences[ SuggestedEdits::GUIDANCE_BLUE_DOT_PREF ] = [
 			'type' => 'api'
 		];
+
+		$preferences[ SuggestedEdits::ADD_LINK_ONBOARDING_PREF ] = [
+			'type' => 'api'
+		];
 	}
 
 	/**

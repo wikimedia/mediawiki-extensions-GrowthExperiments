@@ -56,6 +56,11 @@ class SuggestedEdits extends BaseModule {
 		'growthexperiments-homepage-suggestededits-guidance-blue-dot';
 
 	/**
+	 * Used to keep track of the whether the user has opted out of seeing Add a Link onboarding
+	 */
+	public const ADD_LINK_ONBOARDING_PREF = 'growthexperiments-addlink-onboarding';
+
+	/**
 	 * Change tag used to track edits made via the suggested edits interface. Some edits get a
 	 * more specific tag instead.
 	 */

@@ -10,6 +10,7 @@
 		/* eslint-enable no-jquery/no-global-selector */
 		$editLink = $( editLinkWrapper ).find( 'a' ),
 		skin = mw.config.get( 'skin' ),
+		AddLinkOnboarding = require( 'ext.growthExperiments.AddLink.onboarding' ),
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		taskTypeId = suggestedEditSession.taskType,
 		guidancePrefName = 'growthexperiments-homepage-suggestededits-guidance-blue-dot',
@@ -22,6 +23,8 @@
 		} else if ( suggestedEditSession.taskData.error ) {
 			mw.log.error( suggestedEditSession.taskData.error );
 		} else {
+			AddLinkOnboarding.showDialogIfEligible();
+
 			mw.hook( 've.loadModules' ).add( function ( addPlugin ) {
 				// Either the desktop or the mobile module will be registered, but not both.
 				// Start with both, filter out the unregistered one, and add the remaining one

@@ -1,0 +1,23 @@
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
+
+.addlink-onboarding-dialog {
+
+	// Additional specificity to override OO UI ActionWidget button style
+	.oo-ui-actionWidget.addlink-onboarding-dialog-skip-button > .oo-ui-buttonElement-button {
+		border: unset;
+	}
+
+	&-footer {
+		display: flex;
+		align-items: center;
+	}
+
+	&-footer-widget {
+		flex-grow: 1;
+
+		&.align-end {
+			text-align: right;
+			margin-right: 0;
+		}
+	}
+}

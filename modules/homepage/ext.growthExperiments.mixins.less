@@ -37,3 +37,19 @@
 	-webkit-filter: @value;
 	filter: @value;
 }
+
+// Set font-size in em based on the default font size
+.rel-font-size( @parentFontSize, @targetFontSize ) {
+	font-size: unit( @targetFontSize / @parentFontSize, em );
+}
+
+// Set line-height based on the container's font size
+.rel-line-height( @parentFontSize, @targetLineHeight ) {
+	line-height: unit( @targetLineHeight / @parentFontSize );
+}
+
+// Set font-size and line-height in em based on the target font size
+.rel-font-size-and-line-height( @parentFontSize, @targetFontSize, @targetLineHeight ) {
+	.rel-font-size( @parentFontSize, @targetFontSize );
+	.rel-line-height( @targetFontSize, @targetLineHeight );
+}

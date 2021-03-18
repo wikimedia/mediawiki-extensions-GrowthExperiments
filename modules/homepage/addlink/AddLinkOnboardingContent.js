@@ -11,16 +11,26 @@ module.exports = ( function () {
 	 *
 	 * @param {string} title Localized text for panel title
 	 * @param {jQuery} $content Content for the panel
+	 * @param {string} [heroImageClassName] Class name for the image to be shown with the panel
 	 * @return {OO.ui.PanelLayout}
 	 */
-	function createPanel( title, $content ) {
+	function createPanel( title, $content, heroImageClassName ) {
+		// The following classes are used here:
+		// * addlink-onboarding-content-image1
+		// * addlink-onboarding-content-image2
+		// * addlink-onboarding-content-image3
+		var $heroElement = hasHeroImage && heroImageClassName ? $( '<div>' ).addClass( heroImageClassName ) : '';
 		return new OO.ui.PanelLayout( {
 			content: [
+				$heroElement,
 				$( '<div>' ).attr( 'class', 'addlink-onboarding-content-title' ).text( title ),
 				$content.addClass( 'addlink-onboarding-content-body' )
 			],
 			padded: true,
-			classes: [ 'addlink-onboarding-content' ],
+			classes: [
+				'addlink-onboarding-content',
+				OO.ui.isMobile() ? 'addlink-onboarding-content-mobile' : 'addlink-onboarding-content-desktop'
+			],
 			data: {}
 		} );
 	}
@@ -66,12 +76,8 @@ module.exports = ( function () {
 				$( '<div>' ).attr( 'class', 'addlink-onboarding-content-example-label' ).text( messages.exampleLabel ),
 				$( '<div>' ).attr( 'class', 'addlink-onboarding-content-example' ).html( messages.exampleHtml ),
 				$( '<p>' ).text( messages.paragraph2 )
-			] ),
-			panel = createPanel( messages.title, $content );
-		if ( hasHeroImage ) {
-			panel.data.heroClass = getHeroClass( 1 );
-		}
-		return panel;
+			] );
+		return createPanel( messages.title, $content, getHeroClass( 1 ) );
 	}
 
 	/**
@@ -95,8 +101,7 @@ module.exports = ( function () {
 	 */
 	function createAboutSuggestedLinksPanel() {
 		var messages = getAboutSuggestedLinksPanelMessages(),
-			$content = $( '<div>' ).append( $( '<p>' ).text( messages.paragraph1 ) ),
-			panel = createPanel( messages.title, $content );
+			$content = $( '<div>' ).append( $( '<p>' ).text( messages.paragraph1 ) );
 
 		if ( messages.learnMoreLinkText && messages.learnMoreLinkUrl ) {
 			$content.append( $( '<a>' ).text( messages.learnMoreLinkText ).attr( {
@@ -105,10 +110,7 @@ module.exports = ( function () {
 				target: '_blank'
 			} ) );
 		}
-		if ( hasHeroImage ) {
-			panel.data.heroClass = getHeroClass( 2 );
-		}
-		return panel;
+		return createPanel( messages.title, $content, getHeroClass( 2 ) );
 	}
 
 	/**
@@ -134,16 +136,11 @@ module.exports = ( function () {
 	function createLinkingGuidelinesPanel() {
 		var messages = getLinkingGuidelinesPanelMessages(),
 			$content = $( '<div>' ),
-			$list,
-			panel;
+			$list;
 		$list = $( '<ul>' ).html( messages.body ).addClass( 'addlink-onboarding-content-list' );
 		$list.find( 'li' ).addClass( 'addlink-onboarding-content-list-item' );
 		$content.append( $list );
-		panel = createPanel( messages.title, $content );
-		if ( hasHeroImage ) {
-			panel.data.heroClass = getHeroClass( 3 );
-		}
-		return panel;
+		return createPanel( messages.title, $content, getHeroClass( 3 ) );
 	}
 
 	return {
@@ -151,7 +148,7 @@ module.exports = ( function () {
 		 * Return an array of OOUI PanelLayouts for Add a Link onboarding screens
 		 *
 		 * @param {Object} [config]
-		 * @param {boolean} [config.includeImage] Whether hero image class should be included in the panel data
+		 * @param {boolean} [config.includeImage] Whether the panel content includes an image
 		 * @return {OO.ui.PanelLayout[]}
 		 */
 		getPanels: function ( config ) {
