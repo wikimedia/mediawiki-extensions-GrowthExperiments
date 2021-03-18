@@ -197,9 +197,7 @@ class RefreshLinkRecommendations extends Maintenance {
 						break 2;
 					}
 				}
-				// There is nothing new to commit, but commitTransaction() will sleep if needed to
-				// avoid replication lag, which we should do every once in a while.
-				$this->commitTransaction( $this->linkRecommendationStore->getDB( DB_MASTER ), __METHOD__ );
+				$this->waitForReplication();
 				if ( $recommendationsFound === 0 ) {
 					break;
 				}
