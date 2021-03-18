@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests;
 use GrowthExperiments\Maintenance\DeleteOldSurveys;
 use GrowthExperiments\WelcomeSurvey;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserOptionsLookup;
 use MediaWikiIntegrationTestCase;
 use User;
 use Wikimedia\TestingAccessWrapper;
@@ -116,15 +117,18 @@ class DeleteOldSurveysTest extends MediaWikiIntegrationTestCase {
 	private function assertUsersHavePreference(
 		array $users, string $pref = WelcomeSurvey::SURVEY_PROP
 	) {
+		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
+
 		foreach ( $users as $name => $user ) {
-			$user->clearSharedCache();
-			$user->clearInstanceCache( 'id' );
-			$user = User::newFromId( $user->getId() );
-			$user->load( User::READ_LATEST );
+			$userOptionsManager->clearUserOptionsCache( $user );
 			// sanity
 			$this->assertNotSame( 0, $user->getId() );
 			$this->assertArrayHasKey( $pref,
-				$user->getOptions( User::GETOPTIONS_EXCLUDE_DEFAULTS ),
+				$userOptionsManager->getOptions(
+					$user,
+					UserOptionsLookup::EXCLUDE_DEFAULTS,
+					UserOptionsLookup::READ_LATEST
+				),
 				"$name should have a survey pref but doesn't" );
 		}
 	}
@@ -136,15 +140,18 @@ class DeleteOldSurveysTest extends MediaWikiIntegrationTestCase {
 	private function assertUsersNotHavePreference(
 		array $users, string $pref = WelcomeSurvey::SURVEY_PROP
 	) {
+		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
+
 		foreach ( $users as $name => $user ) {
-			$user->clearSharedCache();
-			$user->clearInstanceCache( 'id' );
-			$user = User::newFromId( $user->getId() );
-			$user->load( User::READ_LATEST );
+			$userOptionsManager->clearUserOptionsCache( $user );
 			// sanity
 			$this->assertNotSame( 0, $user->getId() );
 			$this->assertArrayNotHasKey( $pref,
-				$user->getOptions( User::GETOPTIONS_EXCLUDE_DEFAULTS ),
+				$userOptionsManager->getOptions(
+					$user,
+					UserOptionsLookup::EXCLUDE_DEFAULTS,
+					UserOptionsLookup::READ_LATEST
+				),
 				"$name should not have a survey pref but does" );
 		}
 	}
