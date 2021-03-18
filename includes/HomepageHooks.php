@@ -91,8 +91,7 @@ class HomepageHooks implements
 	public const VARIANTS = [
 		// 'A' doesn't exist anymore; was: not pre-initiated, impact module in main column, full size start module
 		// 'B' doesn't exist anymore; was a pre-initiated version of A
-		// pre-initiated, impact module in side column, smaller start module
-		'C',
+		// 'C' doesn't exist anymore; was pre-initiated, impact module in side column, smaller start module
 		// not pre-initiated, onboarding embedded in suggested edits module, otherwise like C
 		'D',
 	];
