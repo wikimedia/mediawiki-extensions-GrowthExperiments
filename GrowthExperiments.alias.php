@@ -138,6 +138,14 @@ $specialPageAliases['ko'] = [
 	'ClaimMentee' => [ '멘티데려오기' ],
 ];
 
+/** Malay (Bahasa Melayu) */
+$specialPageAliases['ms'] = [
+	'WelcomeSurvey' => [ 'Penyiasatan_Selamat_Datang' ],
+	'Homepage' => [ 'Laman_Utama' ],
+	'Impact' => [ 'Kesan' ],
+	'ClaimMentee' => [ 'Tuntut_pendatang_baru' ],
+];
+
 /** Norwegian Bokmål (norsk bokmål) */
 $specialPageAliases['nb'] = [
 	'WelcomeSurvey' => [ 'Velkomstundersøkelse' ],
