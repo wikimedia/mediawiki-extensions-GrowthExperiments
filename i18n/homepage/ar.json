@@ -362,5 +362,12 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "{{GENDER:|تعلّم|تعلّمي}} المزيد حول مقترحات الذكاء الاصطناعي.",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "القواعد الإرشادية",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>{{GENDER:$1|اربط|اربطي}} المفاهيم التي يمكن أن يريد القارئ تعلّم المزيد حولها.</li><li>{{GENDER:$1|تأكّد|تأكّدي}} من أنّ الرابط سيصل إلى المقالة الصحيحة.</li><li>عدم ربط الكلمات الشائعة، أو السنوات، أو التواريخ.</li><li>لو كنت غير {{GENDER:$1|متأكّد، تخطّ|متأكّدة، تخطّيْ}} المقترح.</li>",
+	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "تخطي الكل",
+	"growthexperiments-addlink-onboarding-dialog-title": "مقدّمة",
+	"growthexperiments-addlink-onboarding-dialog-progress": "$1 من $2",
+	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "عدم الإظهار مستقبلا",
+	"growthexperiments-addlink-onboarding-dialog-label-next": "الخطوة التقديمية التالية",
+	"growthexperiments-addlink-onboarding-dialog-label-previous": "الخطوة التقديمية السابقة",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "فلنبدأ",
 	"grant-managementorship": "إدارة الإرشاد"
 }

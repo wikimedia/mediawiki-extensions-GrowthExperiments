@@ -356,5 +356,12 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "AI önerileri hakkında daha fazla bilgi alın",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Rehberler",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Okuyucunun daha fazla bilgi almak isteyebileceği kavramları bağlayın.</li><li>Bağlantının doğru sayfaya gittiğine emin olun.</li><li>Genel kelimeleri, yılları ya da tarihleri bağlamayın.</li><li>Eğer emin {{GENDER:$1|değilseniz}}, atlayın.</li>",
+	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "Hepsini geç",
+	"growthexperiments-addlink-onboarding-dialog-title": "Giriş",
+	"growthexperiments-addlink-onboarding-dialog-progress": "$1 / $2",
+	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "Bir daha gösterme",
+	"growthexperiments-addlink-onboarding-dialog-label-next": "Sonraki giriş adımı",
+	"growthexperiments-addlink-onboarding-dialog-label-previous": "Önceki giriş adımı",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Başla",
 	"grant-managementorship": "Danışmanlığı yönet"
 }

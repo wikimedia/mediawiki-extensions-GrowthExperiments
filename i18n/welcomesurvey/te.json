@@ -8,7 +8,7 @@
 	"welcomesurvey": "{{GENDER:$1|స్వాగతం}}, $1 గారూ!",
 	"welcomesurvey-save-confirmation-title": "ధన్యవాదాలు! మీ స్పందనలను భద్రపరచాం.",
 	"welcomesurvey-save-confirmation-text": "మీరిచ్చే సమాధానాలు, వికీపీడియాలో మీ పని మొదలుపెట్టడంలో చక్కటి బాట వేసేందుకు మాకు సాయపడతాయి.",
-	"welcomesurvey-subtitle": "కొన్ని ఐచ్ఛికమైన ప్రశ్నలకు సమాధానాలు ఇచ్చి మీ వికీపీడియా అనుభవాన్ని మెరుగుపరచడమ్లో మాకు సాయపడండి.",
+	"welcomesurvey-subtitle": "కొన్ని ఐచ్ఛికమైన ప్రశ్నలకు సమాధానాలు ఇచ్చి మీ వికీపీడియా అనుభవాన్ని మెరుగుపరచడంలో మాకు సాయపడండి.",
 	"welcomesurvey-save-btn": "ముగించు",
 	"welcomesurvey-skip-btn": "సర్వేను {{GENDER:$1|వదిలెయ్యండి}}",
 	"welcomesurvey-close-btn": "మూసేసి $1 కు తిరిగి వెళ్ళండి",

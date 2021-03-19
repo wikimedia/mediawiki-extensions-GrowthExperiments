@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Malikxan"
+		]
+	},
+	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|Siz}} {{GENDER:$2|mentor}}"
+}

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Afaz",
 			"Omotecho",
 			"Shirayuki"
 		]
@@ -16,7 +17,7 @@
 	"welcomesurvey-sidebar-privacy-text": "ウィキメディア財団は{{SITENAME}}の編集を始める人が参照できるように、{{GENDER:$2|皆さんの}}回答を活用します。$1。",
 	"welcomesurvey-privacy-policy-link-text": "個人情報について",
 	"welcomesurvey-sidebar-editing-title": "編集入門",
-	"welcomesurvey-sidebar-editing-text": "ほとんどすべてのページは、だれでも編集できる決まりで、1時間単位に数百件、コンテンツの追加からミスの修正、読みやすさの改善などの編集が実行されています。もし貢献に{{GENDER:$1|皆さんも興味がある}}場合は、以下のそれぞれのページがお役に立つはずです。",
+	"welcomesurvey-sidebar-editing-text": "ほとんどすべてのページは、だれでも編集でき、コンテンツの追加からミスの修正、読みやすさの改善などの編集が、毎時間、何百件も行われています。もし{{GENDER:$1|皆さんも編集に興味がある}}場合は、以下のそれぞれのページがお役に立つはずです。",
 	"welcomesurvey-sidebar-editing-link1-text": "チュートリアル",
 	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:チュートリアル",
 	"welcomesurvey-sidebar-editing-link2-text": "ヘルプ デスク",

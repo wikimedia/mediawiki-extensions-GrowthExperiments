@@ -347,5 +347,12 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Aflați mai mult despre sugestiile AI",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Îndrumări",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Legați concepte despre care un cititor și-ar dori să afle mai multe.</li><li>Asigurați-vă că legătura duce către articolul corect.</li><li>Nu legați cuvinte, ani sau date comune.</li><li>Dacă nu sunteți {{GENDER:$1|sigur|sigură|sigur}}, omiteți.</li>",
+	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "Omiteți tot",
+	"growthexperiments-addlink-onboarding-dialog-title": "Introducere",
+	"growthexperiments-addlink-onboarding-dialog-progress": "$1 din $2",
+	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "Nu afișa din nou",
+	"growthexperiments-addlink-onboarding-dialog-label-next": "Pasul de introducere următor",
+	"growthexperiments-addlink-onboarding-dialog-label-previous": "Pasul de introducere anterior",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Noțiuni de bază",
 	"grant-managementorship": "Administrare activitate de mentor"
 }

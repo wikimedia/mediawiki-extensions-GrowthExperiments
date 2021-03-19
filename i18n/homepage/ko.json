@@ -319,5 +319,9 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "링크 제안은 인공지능(AI)에서 비롯되며 실수가 수반될 수 있습니다.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "AI 제안에 대해 더 알아보기",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "가이드라인",
+	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "모두 건너뛰기",
+	"growthexperiments-addlink-onboarding-dialog-progress": "$2 중 $1",
+	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "다시 보지 않음",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "시작하기",
 	"grant-managementorship": "멘토십 관리"
 }

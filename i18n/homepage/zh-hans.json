@@ -7,6 +7,7 @@
 			"AYZ04",
 			"Colathewikian",
 			"Func",
+			"Hmgrmb",
 			"Josephine W.",
 			"Looong",
 			"Shizhao",
@@ -292,5 +293,11 @@
 	"growthexperiments-homepage-suggestededits-more-info": "有关修改建议的更多信息",
 	"growthexperiments-addlink-context-button-accept": "是",
 	"growthexperiments-addlink-context-button-reject": "否",
-	"growthexperiments-addlink-context-button-next": "跳过"
+	"growthexperiments-addlink-context-button-next": "跳过",
+	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "全部跳过",
+	"growthexperiments-addlink-onboarding-dialog-title": "介绍",
+	"growthexperiments-addlink-onboarding-dialog-progress": "第$1个，共$2个",
+	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "不要再次展现",
+	"growthexperiments-addlink-onboarding-dialog-label-next": "下一部介绍",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "入门"
 }

@@ -347,7 +347,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Khác / không muốn cung cấp",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Xong",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Thêm liên kết sẽ giúp mọi người học hỏi nhanh hơn.",
-	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "Ban sẽ quyết định liệu các từ trong một bài viết trên {{SITENAME}} có nên được liên kết tới các bài viết khác trên {{SITENAME}} hay không.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "Bạn sẽ quyết định liệu các từ trong một bài viết trên {{SITENAME}} có nên được liên kết tới các bài viết khác trên {{SITENAME}} hay không.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Câu ví dụ",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "Mặt trăng chỉ làm một <mark>vệ tinh tự nhiên</mark> có <mark>quỹ đạo</mark> quay xung quanh <mark>Trái Đất</mark>.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "Nhiệm vụ này không đòi hỏi kiến thức đặc biệt gì về bài viết cả.",
@@ -356,5 +356,12 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Tìm hiểu thêm về gợi ý của AI",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Hướng dẫn",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Các khái niệm về liên kết mà người đọc có thể muốn tìm hiểu thêm.</li><li>Hãy đảm bảo rằng liên kết dẫn tới đúng bài viết.</li><li>Đừng liên kết những từ thông dụng, năm hay ngày tháng.</li><li>Nếu bạn không thấy chắc, hãy bỏ qua.</li>",
+	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "Bỏ qua tất cả",
+	"growthexperiments-addlink-onboarding-dialog-title": "Giới thiệu",
+	"growthexperiments-addlink-onboarding-dialog-progress": "$1 trong số $2",
+	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "Đừng hiện lại",
+	"growthexperiments-addlink-onboarding-dialog-label-next": "Bước giới thiệu tiếp theo",
+	"growthexperiments-addlink-onboarding-dialog-label-previous": "Bước giới thiệu trước đó",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Bắt đầu",
 	"grant-managementorship": "Quản lý việc cố vấn"
 }

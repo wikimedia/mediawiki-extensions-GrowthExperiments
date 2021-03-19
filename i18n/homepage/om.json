@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ahrada2016",
 			"Maammee"
 		]
 	},
-	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Hima fakkeenyaa"
+	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Hima fakkeenyaa",
+	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "Hunda irra darbi",
+	"growthexperiments-addlink-onboarding-dialog-label-previous": "Tarsadarkaa seensa darbee",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Jalqabi"
 }

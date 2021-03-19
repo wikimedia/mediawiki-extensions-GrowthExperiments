@@ -330,5 +330,6 @@
 	"growthexperiments-addlink-context-button-next": "Пропустить",
 	"growthexperiments-addlink-rejectiondialog-title": "Почему это плохая ссылка? <em>(Необязательно)</em>",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Другое / предпочитаю не говорить",
-	"growthexperiments-addlink-rejectiondialog-action-done": "Готово"
+	"growthexperiments-addlink-rejectiondialog-action-done": "Готово",
+	"growthexperiments-addlink-onboarding-dialog-progress": "$1 из $2"
 }

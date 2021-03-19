@@ -358,5 +358,9 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Die vorgeschlagenen Links stammen von einer künstlichen Intelligenz (KI, ein Computerprogramm), die Fehler machen kann.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Erfahre mehr über KI-Vorschläge",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Richtlinien",
+	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "Alle übersprignen",
+	"growthexperiments-addlink-onboarding-dialog-title": "Einführung",
+	"growthexperiments-addlink-onboarding-dialog-progress": "$1 von $2",
+	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "Nicht noch einmal anzeigen",
 	"grant-managementorship": "Mentorenschaft bearbeiten"
 }
