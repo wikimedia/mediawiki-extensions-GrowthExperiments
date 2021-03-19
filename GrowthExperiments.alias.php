@@ -210,6 +210,14 @@ $specialPageAliases['sv'] = [
 	'ClaimMentee' => [ 'Välj_nybörjare' ],
 ];
 
+/** Telugu (తెలుగ) */
+$specialPageAliases['te'] = [
+	'WelcomeSurvey' => [ 'స్వాగత_సర్వే' ],
+	'Homepage' => [ 'హోంపేజీ' ],
+	'Impact' => [ 'ప్రభావం' ],
+	'ClaimMentee' => [ 'శిష్య_స్వీకారం' ],
+];
+
 /** Turkish (Türkçe) */
 $specialPageAliases['tr'] = [
 	'WelcomeSurvey' => [ 'Hoş_geldin_anketi' ],
