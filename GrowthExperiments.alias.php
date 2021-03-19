@@ -52,6 +52,14 @@ $specialPageAliases['da'] = [
 	'ClaimMentee' => [ 'KræveEMentee' ],
 ];
 
+/** Esperanto (Esperanto) */
+$specialPageAliases['eo'] = [
+	'WelcomeSurvey' => [ 'Bonvenig_Enketo' ],
+	'Homepage' => [ 'Hejmpaĝo' ],
+	'Impact' => [ 'Efiko' ],
+	'ClaimMentee' => [ 'AsertiMentee' ],
+];
+
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = [
 	'WelcomeSurvey' => [ 'پرسشنامه_خوشامد' ],
