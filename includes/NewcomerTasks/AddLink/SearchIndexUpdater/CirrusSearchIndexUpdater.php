@@ -17,8 +17,9 @@ class CirrusSearchIndexUpdater implements SearchIndexUpdater {
 	/** @inheritDoc */
 	public function update( RevisionRecord $revisionRecord ) {
 		$cirrusSearch = new CirrusSearch();
+		// FIXME simplify after T275531 is done
 		$pageIdentity = new PageIdentityValue(
-			$revisionRecord->getId( $revisionRecord->getWikiId() ),
+			$revisionRecord->getPageId( $revisionRecord->getWikiId() ),
 			$revisionRecord->getPage()->getNamespace(),
 			$revisionRecord->getPage()->getDBkey(),
 			$revisionRecord->getWikiId()
