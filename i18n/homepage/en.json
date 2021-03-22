@@ -369,5 +369,7 @@
 	"newcomertasksinfo-table-header-task-type": "Task type",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Count",
-	"newcomertasksinfo-table-header-topic-type": "Topic ID"
+	"newcomertasksinfo-table-header-topic-type": "Topic ID",
+	"growthexperiments-addlink-ve-ai-mode-title": "AI suggestions",
+	"growthexperiments-addlink-ve-ai-mode-submit-button": "Submit..."
 }

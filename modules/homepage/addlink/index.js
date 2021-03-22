@@ -5,5 +5,6 @@ module.exports = {
 	CERecommendedLinkErrorAnnotation: require( './ceRecommendedLinkErrorAnnotation.js' ),
 	RecommendedLinkContextItem: require( './RecommendedLinkContextItem.js' ),
 	RecommendedLinkRejectionDialog: require( './RecommendedLinkRejectionDialog.js' ),
-	AddLinkArticleTarget: require( './AddLinkArticleTarget.js' )
+	AddLinkArticleTarget: require( './AddLinkArticleTarget.js' ),
+	AiSuggestionsMode: require( './AiSuggestionsMode.js' )
 };

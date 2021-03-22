@@ -196,6 +196,8 @@ RecommendedLinkContextItem.prototype.setAccepted = function ( accepted ) {
 			this.moveToSuggestion( this.getRecommendationInfo().index + 1 );
 		}.bind( this ) );
 	}
+
+	this.onAcceptanceChanged();
 };
 
 /**
@@ -240,6 +242,21 @@ RecommendedLinkContextItem.prototype.setupHelpButton = function () {
 	if ( this.closeButton ) {
 		this.closeButton.$element.remove();
 	}
+};
+
+/**
+ * Fire an event when a recommendation is accepted or rejected
+ * This allows the publish button to be updated based on whether there are any acceptances.
+ */
+RecommendedLinkContextItem.prototype.onAcceptanceChanged = function () {
+	var linkRecommendationFragments = this.context.getSurface().linkRecommendationFragments,
+		hasAcceptedRecommendations = linkRecommendationFragments.some( function ( recommendation ) {
+			var annotationSet = recommendation.fragment
+				.getAnnotations().getAnnotationsByName( 'mwGeRecommendedLink' );
+			return annotationSet.getLength() ? annotationSet.get( 0 ).isAccepted() : false;
+		} );
+
+	mw.hook( 'growthExperiments.aiSuggestionAcceptanceChanged' ).fire( hasAcceptedRecommendations );
 };
 
 module.exports = RecommendedLinkContextItem;

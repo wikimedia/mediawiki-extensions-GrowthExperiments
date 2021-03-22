@@ -694,12 +694,14 @@
 				"homepage/addlink/dmRecommendedLinkErrorAnnotation.js",
 				"homepage/addlink/ceRecommendedLinkErrorAnnotation.js",
 				"homepage/addlink/RecommendedLinkContextItem.js",
-				"homepage/addlink/RecommendedLinkRejectionDialog.js"
+				"homepage/addlink/RecommendedLinkRejectionDialog.js",
+				"homepage/addlink/AiSuggestionsMode.js"
 			],
 			"styles": [
 				"homepage/addlink/ceRecommendedLinkAnnotation.less",
 				"homepage/addlink/RecommendedLinkContextItem.less",
-				"homepage/addlink/RecommendedLinkRejectionDialog.less"
+				"homepage/addlink/RecommendedLinkRejectionDialog.less",
+				"homepage/addlink/AiSuggestionsMode.less"
 			],
 			"messages": [
 				"growthexperiments-addlink-context-title",
@@ -728,11 +730,16 @@
 		"ext.growthExperiments.AddLink.desktop": {
 			"packageFiles": [
 				"homepage/addlink/desktop.js",
-				"homepage/addlink/AddLinkDesktopArticleTarget.js"
+				"homepage/addlink/AddLinkDesktopArticleTarget.js",
+				"homepage/addlink/AiSuggestionsSaveTool.js"
 			],
 			"dependencies": [
 				"ext.growthExperiments.AddLink",
 				"ext.visualEditor.desktopArticleTarget"
+			],
+			"messages": [
+				"growthexperiments-addlink-ve-ai-mode-title",
+				"growthexperiments-addlink-ve-ai-mode-submit-button"
 			],
 			"targets": [
 				"desktop"
@@ -741,11 +748,15 @@
 		"ext.growthExperiments.AddLink.mobile": {
 			"packageFiles": [
 				"homepage/addlink/mobile.js",
-				"homepage/addlink/AddLinkMobileArticleTarget.js"
+				"homepage/addlink/AddLinkMobileArticleTarget.js",
+				"homepage/addlink/AiSuggestionsPlaceholderTool.js"
 			],
 			"dependencies": [
 				"ext.growthExperiments.AddLink",
 				"ext.visualEditor.mobileArticleTarget"
+			],
+			"messages": [
+				"growthexperiments-addlink-ve-ai-mode-title"
 			],
 			"targets": [
 				"mobile"

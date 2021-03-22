@@ -383,5 +383,7 @@
 	"newcomertasksinfo-table-header-task-type": "The label to show in the column header for task type name on Special:SuggestionsInfo.\n\n{{doc-growthexperiments-homepage}}",
 	"newcomertasksinfo-table-header-task-type-id": "The label to show in the column header for task type ID on Special:SuggestionsInfo.\n\n{{doc-growthexperiments-homepage}}",
 	"newcomertasksinfo-table-header-task-count": "The label to show in the column header for task type count on Special:SuggestionsInfo.\n\n{{doc-growthexperiments-homepage}}",
-	"newcomertasksinfo-table-header-topic-type": "The label to show in the column header for topic ID on Special:SuggestionsInfo.\n\n{{doc-growthexperiments-homepage}}"
+	"newcomertasksinfo-table-header-topic-type": "The label to show in the column header for topic ID on Special:SuggestionsInfo.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-addlink-ve-ai-mode-title": "Text shown on VisualEditor toolbar indicating that the user is editing suggestions from artificial intelligence (AI).\n\n{{doc-growthexperiments-addlink}}",
+	"growthexperiments-addlink-ve-ai-mode-submit-button": "The label for the editor's \"publish\" button before the user has actually accepted any of the suggestions.  If they have only rejected suggestions, they will \"submit\" them instead of \"publishing\" them.\n\n{{doc-growthexperiments-addlink}}"
 }
