@@ -151,7 +151,7 @@ class RefreshLinkRecommendations extends Maintenance {
 			$recommendationsNeeded = $this->recommendationTaskType->getMinimumTasksPerTopic()
 				- $suggestions->getTotalCount();
 			// TODO can we reuse actual Suggester / SearchStrategy / etc code here?
-			if ( $recommendationsNeeded === 0 ) {
+			if ( $recommendationsNeeded <= 0 ) {
 				$this->output( "    no new tasks needed\n" );
 				continue;
 			}
