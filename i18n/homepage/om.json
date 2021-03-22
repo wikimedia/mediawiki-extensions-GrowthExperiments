@@ -7,6 +7,10 @@
 	},
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Hima fakkeenyaa",
 	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "Hunda irra darbi",
+	"growthexperiments-addlink-onboarding-dialog-title": "Seensa",
+	"growthexperiments-addlink-onboarding-dialog-progress": "$1 keessaa $2",
+	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "Irradeebitee hin agarsiisiin",
+	"growthexperiments-addlink-onboarding-dialog-label-next": "Seensa tarsadarkaa ittaanu",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "Tarsadarkaa seensa darbee",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Jalqabi"
 }

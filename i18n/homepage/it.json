@@ -10,6 +10,7 @@
 			"Luca.favorido",
 			"Sakretsu",
 			"Sofia Stecchi",
+			"Toa",
 			"ValeJappo"
 		]
 	},
@@ -317,8 +318,11 @@
 	"growthexperiments-addlink-context-button-reject": "No",
 	"growthexperiments-addlink-context-button-next": "Salta",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Fatto",
-	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Frase esempio",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Frase d'esempio",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "La luna è l'unico<mark>satellite</mark>che <mark>orbita</mark>attorno alla <mark>Terra</mark>.",
-	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Scopri di piú sui suggerimenti generati da AI",
-	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Linee guida"
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Scopri di più sui suggerimenti generati da IA",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Linee guida",
+	"growthexperiments-addlink-onboarding-dialog-title": "Introduzione",
+	"growthexperiments-addlink-onboarding-dialog-progress": "$1 di $2",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Inizia"
 }

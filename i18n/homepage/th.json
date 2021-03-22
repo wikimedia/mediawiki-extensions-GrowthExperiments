@@ -258,5 +258,10 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "แตะที่ดินสอแก้ไข $1 ถัดจากลิงก์เพื่อแก้ไขปลายทางลิงก์",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "อื่น ๆ/ไม่ต้องการระบุ",
 	"growthexperiments-addlink-rejectiondialog-action-done": "เสร็จสิ้น",
+	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "ข้ามทั้งหมด",
+	"growthexperiments-addlink-onboarding-dialog-title": "คำแนะนำ",
+	"growthexperiments-addlink-onboarding-dialog-progress": "$1 จากทั้งหมด $2",
+	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "ไม่ต้องแสดงอีก",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "เริ่มต้นใช้งาน",
 	"grant-managementorship": "จัดการระบบเมนเทอร์"
 }

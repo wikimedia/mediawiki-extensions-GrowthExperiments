@@ -299,5 +299,6 @@
 	"growthexperiments-addlink-onboarding-dialog-progress": "第$1个，共$2个",
 	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "不要再次展现",
 	"growthexperiments-addlink-onboarding-dialog-label-next": "下一部介绍",
+	"growthexperiments-addlink-onboarding-dialog-label-previous": "之前的介绍步骤",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "入门"
 }

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"AVVK Chaitanya",
 			"Chaduvari",
 			"Veeven"
 		]
@@ -164,7 +165,7 @@
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-text": "పక్కనున్న మెనూను తెరిచి $2 ను వత్తి {{GENDER:$1|మీ}} హోంపేజీకి వెళ్లండి.",
 	"growthexperiments-homepage-suggestededits-pager": "<strong>$2</strong> లో <strong>$1</strong> {{PLURAL:$2|సూచన|సూచనలు}}",
 	"growthexperiments-homepage-suggestededits-pager-end": "ముగింపు",
-	"growthexperiments-homepage-suggestededits-pageviews": "$1 సందర్శనలు (గత 60 రోజులు)",
+	"growthexperiments-homepage-suggestededits-pageviews": "$1 సందర్శనలు (గత 60 రోజుల్లో)",
 	"growthexperiments-homepage-suggestededits-previous-card": "గత దిద్దుబాటు సూచన",
 	"growthexperiments-homepage-suggestededits-next-card": "తరువాతి దిద్దుబాటు సూచన",
 	"growthexperiments-homepage-suggestededits-no-more-results": "ఇక సూచనలేమీ లేవు",
@@ -286,7 +287,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "శిష్యుడికి {{GENDER:$1|మీరే}} గురువుగా ఉండేలా ఈ పేజీలో {{GENDER:$1|మీరు}} మార్చుకోవచ్చు. {{GENDER:$1|మీకు}} పరిచయమున్న వాడుకరుల విషయంలో గానీ, ఏదైనా కోర్సులో {{GENDER:$1|మీరు}} బోధిస్తున్న వాడుకరుల విషయంలో గానీ మాత్రమే దీన్ని వాడాలని సూచిస్తున్నాం.",
 	"growthexperiments-homepage-claimmentee-mentee": "శిష్యుడి వాడుకరిపేరు",
 	"growthexperiments-homepage-claimmentee-reason": "ఈ శిష్యుడిని స్వీకరించడానికి కారణం",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|మీరు}} {{PLURAL:$2|వాడుకరి|వాడుకరుల}} గురువును $1 నుండి {{GENDER:$4|$5}} కు మార్చారు",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|మీరు}} {{PLURAL:$2|వాడుకరి|వాడుకరులు}} $1 యొక్క గురువును {{GENDER:$4|$5}} కు మార్చారు",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "{{GENDER:$1|$1}} గురువును ఈసరికే మార్చారు. దాన్ని మళ్ళీ మార్చాలనే {{GENDER:$2|మీరు}} నిశ్చయించుకున్నారా?",
 	"growthexperiments-claimmentee-confirm": "ఔను, గురువును మార్చాలనే నేను నిశ్చయించాను",
 	"growthexperiments-log-name": "GrowthExperiments చిట్టా",
@@ -348,5 +349,12 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "AI సూచనల గురించి మరింత తెలుసుకోండి",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "మార్గదర్శకాలు",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>పాఠకుడు మరింతగా తెలుసుకోదగ్గ లింకు సంబంధ వివరాలు.</li><li>లింకు సరైన వ్యాసానికే అవుతోందని నిర్ధారించుకోండి.</li><li>సాధారణంగా వాడే పదాలను, సంవత్సరాలు, తేదీలకు లింకులివ్వకండి.</li><li>{{GENDER:$1|సందేహంగా}} ఉంటే, వదిలెయ్యండి.</li>",
+	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "అన్నిటినీ దాటు",
+	"growthexperiments-addlink-onboarding-dialog-title": "పరిచయం",
+	"growthexperiments-addlink-onboarding-dialog-progress": "$2 లోని $1",
+	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "మళ్ళీ చూపించవద్దు",
+	"growthexperiments-addlink-onboarding-dialog-label-next": "తరువాతి పరిచయ దశ",
+	"growthexperiments-addlink-onboarding-dialog-label-previous": "మునుపటి పరిచయ దశ",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "మొదలు పెట్టండి",
 	"grant-managementorship": "శిష్యరికాన్ని నిర్వహించండి"
 }

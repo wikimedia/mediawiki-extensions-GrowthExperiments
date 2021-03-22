@@ -352,5 +352,12 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Saiba mais sobre as sugestões de IA",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Diretrizes",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Conceitos de link que um leitor pode querer aprender mais sobre.</li><li>Certifique-se de que o link direciona para o artigo correto.</li><li>Não vincule palavras comuns, anos ou datas.</li><li>If {{GENDER:$1|você}} não tem certeza, pule.</li>",
+	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "Pular tudo",
+	"growthexperiments-addlink-onboarding-dialog-title": "Introdução",
+	"growthexperiments-addlink-onboarding-dialog-progress": "$1 de $2",
+	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "Não mostrar de novo",
+	"growthexperiments-addlink-onboarding-dialog-label-next": "Próxima etapa de introdução",
+	"growthexperiments-addlink-onboarding-dialog-label-previous": "Etapa de introdução anterior",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Começar",
 	"grant-managementorship": "Gerenciar mentoria"
 }
