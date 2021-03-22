@@ -372,5 +372,7 @@
 	"growthexperiments-addlink-onboarding-dialog-label-next": "Text to use in the invisible label for the next \">\" icon button in the dialog introducing the \"add a link\" editing task.\n\n{{doc-growthexperiments-addlink}}",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "Text to use in the invisible label for the previous \"<\" icon button in the dialog introducing the \"add a link\" editing task.\n\n{{doc-growthexperiments-addlink}}",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Text of the button which closes the final screen that introduces the \"add a link\" editing task.\n\n{{doc-growthexperiments-addlink}}",
+	"growthexperiments-addlink-no-suggestions-found-dialog-message": "Text to use in the dialog that appears if the user is viewing a task that should have link recommendations, but no link recommendations are found.\n\n{{doc-growthexperiments-addlink}}",
+	"growthexperiments-addlink-no-suggestions-found-dialog-button": "Text to use in the button in the dialog that appears if the user is viewing a task that should have link recommendations, but no link recommendations are found.\n\n{{doc-growthexperiments-addlink}}",
 	"grant-managementorship": "Name for grant \"managementorship\".\n{{Related|Grant}}"
 }

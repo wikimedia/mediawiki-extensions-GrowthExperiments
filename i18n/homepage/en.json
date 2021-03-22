@@ -359,5 +359,7 @@
 	"growthexperiments-addlink-onboarding-dialog-label-next": "Next introduction step",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "Previous introduction step",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Get started",
+	"growthexperiments-addlink-no-suggestions-found-dialog-message": "Suggestions are no longer available on this article.",
+	"growthexperiments-addlink-no-suggestions-found-dialog-button": "Back to suggested edits",
 	"grant-managementorship": "Manage mentorship"
 }
