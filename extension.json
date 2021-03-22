@@ -87,9 +87,6 @@
 				"GrowthExperimentsLinkRecommendationHelper",
 				"GrowthExperimentsLinkSubmissionRecorder",
 				"TitleFactory"
-			],
-			"args": [
-				"GrowthExperiments\\Rest\\Handler\\AddLinkSubmissionHandler::cirrusSearchFactory"
 			]
 		}
 	],

@@ -1,5 +1,6 @@
 <?php
 
+use CirrusSearch\CirrusSearch;
 use GrowthExperiments\AqsEditInfoService;
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
 use GrowthExperiments\Config\WikiPageConfig;
@@ -96,12 +97,16 @@ return [
 	) : LinkRecommendationHelper {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$config = $growthServices->getGrowthConfig();
+		$cirrusSearchFactory = function () {
+			return new CirrusSearch();
+		};
 		return new LinkRecommendationHelper(
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			$growthServices->getLinkRecommendationProvider(),
 			$growthServices->getLinkRecommendationStore(),
 			$services->getLinkBatchFactory(),
 			$services->getTitleFactory(),
+			$cirrusSearchFactory,
 			// In developer setups, the recommendation service is usually suggestion link targets
 			// from a different wiki, which might end up being red links locally. Allow these,
 			// otherwise we'd get mostly failures when trying to generate new tasks.

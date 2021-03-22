@@ -888,6 +888,7 @@ class HomepageHooks implements
 			$fields[WeightedTagsHooks::FIELD_NAME][] = LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX
 				. '/' . CirrusIndexField::MULTILIST_DELETE_GROUPING;
 		}
+		$this->linkRecommendationHelper->deleteLinkRecommendation( $page->getTitle()->toPageIdentity(), false );
 	}
 
 	/**

@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
+use DeferredUpdates;
 use GrowthExperiments\ErrorException;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
@@ -11,6 +12,7 @@ use GrowthExperiments\WikiConfigException;
 use MalformedTitleException;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Page\ProperPageIdentity;
 use StatusValue;
 use TitleFactory;
 
@@ -34,6 +36,9 @@ class LinkRecommendationHelper {
 	/** @var TitleFactory */
 	private $titleFactory;
 
+	/** @var callable */
+	private $cirrusSearchFactory;
+
 	/** @var bool */
 	private $pruneRedLinks;
 
@@ -43,6 +48,7 @@ class LinkRecommendationHelper {
 	 * @param LinkRecommendationStore $linkRecommendationStore
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param TitleFactory $titleFactory
+	 * @param callable $cirrusSearchFactory A factory method returning a CirrusSearch instance.
 	 * @param bool $pruneRedLinks Prune red links in pruneLinkRecommendation()?
 	 */
 	public function __construct(
@@ -51,6 +57,7 @@ class LinkRecommendationHelper {
 		LinkRecommendationStore $linkRecommendationStore,
 		LinkBatchFactory $linkBatchFactory,
 		TitleFactory $titleFactory,
+		callable $cirrusSearchFactory,
 		bool $pruneRedLinks
 	) {
 		$this->configurationLoader = $configurationLoader;
@@ -58,6 +65,7 @@ class LinkRecommendationHelper {
 		$this->linkRecommendationStore = $linkRecommendationStore;
 		$this->linkBatchFactory = $linkBatchFactory;
 		$this->titleFactory = $titleFactory;
+		$this->cirrusSearchFactory = $cirrusSearchFactory;
 		$this->pruneRedLinks = $pruneRedLinks;
 	}
 
@@ -86,7 +94,7 @@ class LinkRecommendationHelper {
 	}
 
 	/**
-	 * Removes exclusion-listed links and optionally red links from a LinkRecommendation.
+	 * Remove exclusion-listed links and optionally red links from a LinkRecommendation.
 	 * Returns null when all links have been removed.
 	 * @param LinkRecommendation $linkRecommendation
 	 * @return LinkRecommendation|null
@@ -124,6 +132,25 @@ class LinkRecommendationHelper {
 			$linkRecommendation->getRevisionId(),
 			$goodLinks
 		);
+	}
+
+	/**
+	 * Delete recommendations for a given page from the database and optionally from the search index.
+	 * @param ProperPageIdentity $pageIdentity
+	 * @param bool $deleteFromSearchIndex
+	 */
+	public function deleteLinkRecommendation(
+		ProperPageIdentity $pageIdentity,
+		bool $deleteFromSearchIndex
+	): void {
+		DeferredUpdates::addCallableUpdate( function () use ( $pageIdentity ) {
+			$this->linkRecommendationStore->deleteByPageIds( [ $pageIdentity->getId() ] );
+		} );
+		if ( $deleteFromSearchIndex ) {
+			$cirrusSearch = ( $this->cirrusSearchFactory )();
+			$cirrusSearch->resetWeightedTags( $pageIdentity,
+				LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX );
+		}
 	}
 
 	/**

@@ -51,6 +51,7 @@ class LinkRecommendationStore {
 	// growthexperiments_link_recommendations
 
 	/**
+	 * Get a link recommendation by revision ID.
 	 * @param int $revId
 	 * @param int $flags IDBAccessObject flags
 	 * @return LinkRecommendation|null
@@ -82,6 +83,7 @@ class LinkRecommendationStore {
 	}
 
 	/**
+	 * Get a link recommendation by link target.
 	 * @param LinkTarget $linkTarget
 	 * @param int $flags IDBAccessObject flags
 	 * @return LinkRecommendation|null
@@ -95,7 +97,7 @@ class LinkRecommendationStore {
 	}
 
 	/**
-	 * Given a set of page IDs, return the ones which occur in the database.
+	 * Given a set of page IDs, return the ones which have a link recommendation.
 	 * @param int[] $pageIds
 	 * @return int[]
 	 */
@@ -109,6 +111,7 @@ class LinkRecommendationStore {
 	}
 
 	/**
+	 * List all pages with link recommendations, by page ID.
 	 * @param int $limit
 	 * @param int|null $from ID to list from, exclusive
 	 * @return int[]
@@ -128,6 +131,7 @@ class LinkRecommendationStore {
 	}
 
 	/**
+	 * Insert a new link recommendation.
 	 * @param LinkRecommendation $linkRecommendation
 	 */
 	public function insert( LinkRecommendation $linkRecommendation ): void {
@@ -148,6 +152,7 @@ class LinkRecommendationStore {
 	}
 
 	/**
+	 * Delete all link recommendations for the given pages.
 	 * @param int[] $pageIds
 	 * @return int The number of deleted rows.
 	 */
@@ -161,6 +166,7 @@ class LinkRecommendationStore {
 	}
 
 	/**
+	 * Delete all link recommendations for the given page.
 	 * @param LinkTarget $linkTarget
 	 * @return bool
 	 */

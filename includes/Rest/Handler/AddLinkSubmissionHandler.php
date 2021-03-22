@@ -2,12 +2,10 @@
 
 namespace GrowthExperiments\Rest\Handler;
 
-use CirrusSearch\CirrusSearch;
 use GrowthExperiments\ErrorException;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationLink;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkSubmissionRecorder;
-use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\Util;
 use MalformedTitleException;
 use MediaWiki\Linker\LinkTarget;
@@ -35,25 +33,19 @@ class AddLinkSubmissionHandler extends SimpleHandler {
 	/** @var TitleFactory */
 	private $titleFactory;
 
-	/** @var callable */
-	private $cirrusSearchFactory;
-
 	/**
 	 * @param LinkRecommendationHelper $linkRecommendationHelper
 	 * @param LinkSubmissionRecorder $addLinkSubmissionRecorder
 	 * @param TitleFactory $titleFactory
-	 * @param callable $cirrusSearchFactory A factory method returning a CirrusSearch instance.
 	 */
 	public function __construct(
 		LinkRecommendationHelper $linkRecommendationHelper,
 		LinkSubmissionRecorder $addLinkSubmissionRecorder,
-		TitleFactory $titleFactory,
-		callable $cirrusSearchFactory
+		TitleFactory $titleFactory
 	) {
 		$this->linkRecommendationHelper = $linkRecommendationHelper;
 		$this->addLinkSubmissionRecorder = $addLinkSubmissionRecorder;
 		$this->titleFactory = $titleFactory;
-		$this->cirrusSearchFactory = $cirrusSearchFactory;
 	}
 
 	/**
@@ -102,14 +94,9 @@ class AddLinkSubmissionHandler extends SimpleHandler {
 			throw new HttpException( 'Missing link targets: ' . implode( ', ', $missingTargets ) );
 		}
 
-		if ( !$editRevId ) {
-			// The search index is updated after an edit; with no edit, we have to do it manually.
-			$cirrusSearch = ( $this->cirrusSearchFactory )();
-			$pageIdentity = $this->titleFactory->newFromLinkTarget( $title )->toPageIdentity();
-			$cirrusSearch->resetWeightedTags( $pageIdentity,
-				LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX );
-		}
-
+		$pageIdentity = $this->titleFactory->newFromLinkTarget( $title )->toPageIdentity();
+		// The search index is updated after an edit; with no edit, we have to do it manually.
+		$this->linkRecommendationHelper->deleteLinkRecommendation( $pageIdentity, (bool)$editRevId );
 		$status = $this->addLinkSubmissionRecorder->record( $user, $linkRecommendation, $acceptedTargets,
 			$rejectedTargets, $skippedTargets, $editRevId );
 		if ( !$status->isOK() ) {
@@ -192,14 +179,6 @@ class AddLinkSubmissionHandler extends SimpleHandler {
 			$normalized[] = $this->titleFactory->newFromLinkTarget( $target )->getPrefixedDBkey();
 		}
 		return $normalized;
-	}
-
-	/**
-	 * Factory method to allow mocking.
-	 * @return CirrusSearch
-	 */
-	private static function cirrusSearchFactory(): CirrusSearch {
-		return new CirrusSearch();
 	}
 
 }
