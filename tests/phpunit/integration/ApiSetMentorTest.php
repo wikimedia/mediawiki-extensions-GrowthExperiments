@@ -4,9 +4,10 @@ namespace GrowthExperiments\Tests;
 
 use ApiTestCase;
 use ApiUsageException;
-use GrowthExperiments\Mentorship\Mentor;
-use GrowthExperiments\Mentorship\StaticMentorManager;
+use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserOptionsManager;
 use PHPUnit\Framework\Constraint\Constraint;
 use User;
 
@@ -76,11 +77,11 @@ class ApiSetMentorTest extends ApiTestCase {
 	public function testSetMentorBySysop() {
 		$mentee = $this->getMutableTestUser()->getUser();
 		$mentor = $this->getMutableTestUser()->getUser();
-		$mockMentorManager = $this->getMockMentorManager( $mentee, $mentor );
-		$mockMentorManager->expects( $this->once() )
+		$mockMentorStore = $this->getMockMentorStore( $mentee, $mentor );
+		$mockMentorStore->expects( $this->once() )
 			->method( 'setMentorForUser' )
 			->with( $this->ruleUserEquals( $mentee ), $this->ruleUserEquals( $mentor ) );
-		$this->setService( 'GrowthExperimentsMentorManager', $mockMentorManager );
+		$this->setService( 'GrowthExperimentsMentorStore', $mockMentorStore );
 		$response = $this->doApiRequestWithToken(
 			[
 				'action' => 'growthsetmentor',
@@ -99,11 +100,11 @@ class ApiSetMentorTest extends ApiTestCase {
 	public function testSetMentorByMentee() {
 		$mentee = $this->getMutableTestUser()->getUser();
 		$mentor = $this->getMutableTestUser()->getUser();
-		$mockMentorManager = $this->getMockMentorManager( $mentee, $mentor );
-		$mockMentorManager->expects( $this->once() )
+		$mockMentorStore = $this->getMockMentorStore( $mentee, $mentor );
+		$mockMentorStore->expects( $this->once() )
 			->method( 'setMentorForUser' )
 			->with( $this->ruleUserEquals( $mentee ), $this->ruleUserEquals( $mentor ) );
-		$this->setService( 'GrowthExperimentsMentorManager', $mockMentorManager );
+		$this->setService( 'GrowthExperimentsMentorStore', $mockMentorStore );
 		$response = $this->doApiRequestWithToken(
 			[
 				'action' => 'growthsetmentor',
@@ -122,11 +123,11 @@ class ApiSetMentorTest extends ApiTestCase {
 	public function testSetMentorByMentor() {
 		$mentee = $this->getMutableTestUser()->getUser();
 		$mentor = $this->getMutableTestUser()->getUser();
-		$mockMentorManager = $this->getMockMentorManager( $mentee, $mentor );
-		$mockMentorManager->expects( $this->once() )
+		$mockMentorStore = $this->getMockMentorStore( $mentee, $mentor );
+		$mockMentorStore->expects( $this->once() )
 			->method( 'setMentorForUser' )
 			->with( $this->ruleUserEquals( $mentee ), $this->ruleUserEquals( $mentor ) );
-		$this->setService( 'GrowthExperimentsMentorManager', $mockMentorManager );
+		$this->setService( 'GrowthExperimentsMentorStore', $mockMentorStore );
 		$response = $this->doApiRequestWithToken(
 			[
 				'action' => 'growthsetmentor',
@@ -139,13 +140,20 @@ class ApiSetMentorTest extends ApiTestCase {
 		$this->assertEquals( $response[0]['growthsetmentor']['status'], 'ok' );
 	}
 
-	private function getMockMentorManager( UserIdentity $mentee, UserIdentity $mentor ) {
+	private function getMockMentorStore( UserIdentity $mentee, UserIdentity $mentor ) {
 		$oldMentor = $this->getMutableTestUser()->getUser();
-		$mentorManager = $this->getMockBuilder( StaticMentorManager::class )
-			->setConstructorArgs( [ [ $mentee->getName() => new Mentor( $oldMentor, '' ) ] ] )
+		return $this->getMockBuilder( PreferenceMentorStore::class )
+			->setConstructorArgs( [
+				$this->getMockBuilder( UserFactory::class )
+					->disableOriginalConstructor()
+					->getMock(),
+				$this->getMockBuilder( UserOptionsManager::class )
+					->disableOriginalConstructor()
+					->getMock(),
+				false
+			] )
 			->setMethods( [ 'setMentorForUser' ] )
 			->getMock();
-		return $mentorManager;
 	}
 
 	private function ruleUserEquals( UserIdentity $user ) {

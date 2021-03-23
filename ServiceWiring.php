@@ -15,6 +15,7 @@ use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
+use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
 use GrowthExperiments\NewcomerTasks\AddLink\DbBackedLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
@@ -183,10 +184,10 @@ return [
 		$config = GrowthExperimentsServices::wrap( $services )->getConfig();
 
 		$manager = new MentorPageMentorManager(
+			GrowthExperimentsServices::wrap( $services )->getMentorStore(),
 			$services->getTitleFactory(),
 			$services->getWikiPageFactory(),
 			$services->getUserFactory(),
-			$services->getUserOptionsManager(),
 			$services->getUserNameUtils(),
 			$services->getActorStore(),
 			RequestContext::getMain(),
@@ -197,6 +198,14 @@ return [
 		);
 		$manager->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $manager;
+	},
+
+	'GrowthExperimentsMentorStore' => function ( MediaWikiServices $services ): PreferenceMentorStore {
+		return new PreferenceMentorStore(
+			$services->getUserFactory(),
+			$services->getUserOptionsManager(),
+			RequestContext::getMain()->getRequest()->wasPosted()
+		);
 	},
 
 	'GrowthExperimentsNewcomerTasksConfigurationLoader' => function (

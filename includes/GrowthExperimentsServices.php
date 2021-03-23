@@ -11,6 +11,7 @@ use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
@@ -109,6 +110,10 @@ class GrowthExperimentsServices {
 
 	public function getMentorManager(): MentorManager {
 		return $this->coreServices->get( 'GrowthExperimentsMentorManager' );
+	}
+
+	public function getMentorStore(): MentorStore {
+		return $this->coreServices->get( 'GrowthExperimentsMentorStore' );
 	}
 
 	public function getNewcomerTasksConfigurationLoader(): ConfigurationLoader {

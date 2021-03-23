@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Mentorship;
 
-use BadMethodCallException;
 use GrowthExperiments\WikiConfigException;
 use MediaWiki\User\UserIdentity;
 
@@ -39,11 +38,6 @@ class StaticMentorManager extends MentorManager {
 	/** @inheritDoc */
 	public function getMentorForUserSafe( UserIdentity $user ): ?Mentor {
 		return $this->mentors[$user->getName()] ?? null;
-	}
-
-	/** @inheritDoc */
-	public function setMentorForUser( UserIdentity $user, UserIdentity $mentor ): void {
-		throw new BadMethodCallException( 'Not applicable' );
 	}
 
 	/** @inheritDoc */

@@ -7,6 +7,7 @@ use ApiMain;
 use GrowthExperiments\Mentorship\ChangeMentor;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\Store\MentorStore;
 use LogEventsList;
 use LogPager;
 use MediaWiki\Logger\LoggerFactory;
@@ -18,18 +19,24 @@ class ApiSetMentor extends ApiBase {
 	/** @var MentorManager */
 	private $mentorManager;
 
+	/** @var MentorStore */
+	private $mentorStore;
+
 	/**
 	 * @param ApiMain $mainModule
 	 * @param string $moduleName
 	 * @param MentorManager $mentorManager
+	 * @param MentorStore $mentorStore
 	 */
 	public function __construct(
 		ApiMain $mainModule,
 		$moduleName,
-		MentorManager $mentorManager
+		MentorManager $mentorManager,
+		MentorStore $mentorStore
 	) {
 		parent::__construct( $mainModule, $moduleName );
 		$this->mentorManager = $mentorManager;
+		$this->mentorStore = $mentorStore;
 	}
 
 	/**
@@ -67,7 +74,7 @@ class ApiSetMentor extends ApiBase {
 				'',
 				$mentee->getUserPage()
 			),
-			$this->mentorManager
+			$this->mentorStore
 		);
 		$status = $changeMentor->execute( $mentor, $params['reason'] );
 		if ( !$status->isOK() ) {

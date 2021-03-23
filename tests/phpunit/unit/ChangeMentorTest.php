@@ -4,7 +4,7 @@ namespace GrowthExperiments;
 
 use GrowthExperiments\Mentorship\ChangeMentor;
 use GrowthExperiments\Mentorship\Mentor;
-use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\Store\MentorStore;
 use IContextSource;
 use LogPager;
 use MediaWiki\User\UserIdentity;
@@ -33,7 +33,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 				new NullLogger(),
 				new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/' ),
 				$this->getLogPagerMock(),
-				$this->getMentorManagerMock()
+				$this->getMentorStoreMock()
 			)
 		);
 	}
@@ -54,7 +54,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			new NullLogger(),
 			new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/' ),
 			$logPagerMock,
-			$this->getMentorManagerMock()
+			$this->getMentorStoreMock()
 		);
 		$this->assertNotFalse( $changeMentor->wasMentorChanged() );
 	}
@@ -70,7 +70,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			new NullLogger(),
 			new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/' ),
 			$this->getLogPagerMock(),
-			$this->getMentorManagerMock()
+			$this->getMentorStoreMock()
 		);
 		$changeMentorWrapper = TestingAccessWrapper::newFromObject( $changeMentor );
 		$changeMentorWrapper->newMentor = $this->getUserMock( 'NewMentor', 4 );
@@ -94,7 +94,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			new NullLogger(),
 			new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/' ),
 			$this->getLogPagerMock(),
-			$this->getMentorManagerMock()
+			$this->getMentorStoreMock()
 		);
 		$changeMentorWrapper = TestingAccessWrapper::newFromObject( $changeMentor );
 		$changeMentorWrapper->newMentor = $this->getUserMock( 'NewMentor', 4 );
@@ -114,7 +114,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			new NullLogger(),
 			new Mentor( $this->getUserMock( 'SameMentor', 3 ), 'o/' ),
 			$this->getLogPagerMock(),
-			$this->getMentorManagerMock()
+			$this->getMentorStoreMock()
 		);
 		$changeMentorWrapper = TestingAccessWrapper::newFromObject( $changeMentor );
 		$changeMentorWrapper->newMentor = $this->getUserMock( 'SameMentor', 3 );
@@ -135,7 +135,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			new NullLogger(),
 			new Mentor( $this->getUserMock( 'SameMentor', 3 ), 'o/' ),
 			$this->getLogPagerMock(),
-			$this->getMentorManagerMock()
+			$this->getMentorStoreMock()
 		);
 		$status = $changeMentor->execute( $this->getUserMock( 'SameMentor', 3 ), 'test' );
 		$this->assertFalse( $status->isOK() );
@@ -171,10 +171,10 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @return MockObject|MentorManager
+	 * @return MockObject|MentorStore
 	 */
-	private function getMentorManagerMock() {
-		return $this->getMockBuilder( MentorManager::class )
+	private function getMentorStoreMock() {
+		return $this->getMockBuilder( MentorStore::class )
 			->getMockForAbstractClass();
 	}
 
