@@ -38,12 +38,12 @@ RecommendedLinkContextItem.prototype.setup = function () {
 		$buttons = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-buttons' );
 
 	this.yesButton = new OO.ui.ButtonWidget( {
-		icon: this.context.isMobile() ? undefined : 'check',
+		icon: 'check',
 		label: mw.msg( 'growthexperiments-addlink-context-button-accept' ),
 		classes: [ 'mw-ge-recommendedLinkContextItem-buttons-yes' ]
 	} );
 	this.noButton = new OO.ui.ButtonWidget( {
-		icon: this.context.isMobile() ? undefined : 'cancel',
+		icon: 'close',
 		label: mw.msg( 'growthexperiments-addlink-context-button-reject' ),
 		classes: [ 'mw-ge-recommendedLinkContextItem-buttons-no' ]
 	} );
@@ -67,7 +67,7 @@ RecommendedLinkContextItem.prototype.setup = function () {
 	this.$title.append( this.buildProgressIndicators( recommendationInfo.index, recommendationInfo.total ) );
 
 	this.yesButton.setFlags( this.model.isAccepted() ? [ 'progressive', 'primary' ] : [] );
-	this.noButton.setFlags( this.model.isRejected() ? [ 'destructive', 'primary' ] : [] );
+	this.noButton.setFlags( this.model.isRejected() ? [ 'progressive', 'primary' ] : [] );
 	this.prevButton.setDisabled( recommendationInfo.index === 0 );
 	this.nextButton.setDisabled( recommendationInfo.index === recommendationInfo.total - 1 );
 
