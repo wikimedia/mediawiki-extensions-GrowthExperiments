@@ -2,5 +2,9 @@
 	"@metadata": {
 		"authors": []
 	},
-	"growthexperiments-desc": "This extension contains experiments done by the Growth team."
+	"growthexperiments-desc": "This extension contains experiments done by the Growth team.",
+	"growthexperiments-config-validator-additional-fields": "The new config has config keys that cannot be customized here.",
+	"growthexperiments-config-validator-error": "Validation for $1 failed with: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> is expected to be <code>$2</code>, but is <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Content-model mismatch: GrowthExperiments config file must have JSON content model, $1 detected"
 }

@@ -29,7 +29,6 @@ class GrowthExperimentsMultiConfig implements Config {
 		'GEHelpPanelHelpDeskTitle',
 		'GEHelpPanelHelpDeskPostOnTop',
 		'GEHelpPanelViewMoreTitle',
-		'GEHelpPanelLinks',
 		'GEHelpPanelSearchNamespaces',
 		'GEHelpPanelAskMentor',
 		'GEHomepageTutorialTitle',

@@ -146,6 +146,12 @@
 		},
 		"schema": {
 			"class": "GrowthExperiments\\SchemaHooks"
+		},
+		"config": {
+			"class": "GrowthExperiments\\Config\\ConfigHooks",
+			"services": [
+				"TitleFactory"
+			]
 		}
 	},
 	"Hooks": {
@@ -218,7 +224,8 @@
 		"ParserFirstCallInit": "parserfunctions",
 		"SearchDataForIndex": "homepage",
 		"LoadExtensionSchemaUpdates": "schema",
-		"UnitTestsAfterDatabaseSetup": "schema"
+		"UnitTestsAfterDatabaseSetup": "schema",
+		"EditFilterMergedContent": "config"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",

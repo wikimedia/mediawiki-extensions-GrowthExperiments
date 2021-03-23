@@ -35,6 +35,9 @@ use TitleFactory;
  * generalized to this class taking care about config in general.
  */
 class WikiPageConfigLoader implements IDBAccessObject {
+	/** @var WikiPageConfigValidation */
+	private $configValidator;
+
 	/** @var HttpRequestFactory */
 	private $requestFactory;
 
@@ -51,15 +54,18 @@ class WikiPageConfigLoader implements IDBAccessObject {
 	private $cacheTtl = 0;
 
 	/**
+	 * @param WikiPageConfigValidation $configValidator
 	 * @param HttpRequestFactory $requestFactory
 	 * @param RevisionLookup $revisionLookup
 	 * @param TitleFactory $titleFactory
 	 */
 	public function __construct(
+		WikiPageConfigValidation $configValidator,
 		HttpRequestFactory $requestFactory,
 		RevisionLookup $revisionLookup,
 		TitleFactory $titleFactory
 	) {
+		$this->configValidator = $configValidator;
 		$this->requestFactory = $requestFactory;
 		$this->revisionLookup = $revisionLookup;
 		$this->titleFactory = $titleFactory;
@@ -115,12 +121,13 @@ class WikiPageConfigLoader implements IDBAccessObject {
 
 		if ( $result === false ) {
 			$status = $this->fetchConfig( $configPage, $flags );
+			$cacheFlags = 0;
 			if ( $status->isOK() ) {
 				$result = $status->getValue();
-				$cacheFlags = 0;
-			} else {
+				$status->merge( $this->configValidator->validate( $result ) );
+			}
+			if ( !$status->isOK() ) {
 				$result = $status;
-				// FIXME use something more aggressive in production
 				$cacheFlags = BagOStuff::WRITE_CACHE_ONLY;
 			}
 			$this->cache->set( $cacheKey, $result, $this->cacheTtl, $cacheFlags );
