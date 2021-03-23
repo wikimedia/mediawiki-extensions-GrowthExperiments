@@ -78,6 +78,7 @@ class CacheDecorator implements TaskSuggester {
 					 && !$resetCache
 					 && $oldValue instanceof TaskSet
 					 && $oldValue->filtersEqual( $taskSetFilters )
+					 && $oldValue->count()
 				) {
 					// There's a cached value we can use; we need to randomize and potentially
 					// revalidate it.
