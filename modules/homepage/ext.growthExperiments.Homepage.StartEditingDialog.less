@@ -118,22 +118,16 @@
 			}
 
 			&-image {
-				width: 128px;
+				width: 64px;
 
-				body.growthexperiments-homepage-user-variant-D.growthexperiments-homepage-desktop & {
+				.growthexperiments-homepage-desktop & {
 					float: left;
 					margin-right: 1em;
 				}
 
-				body.growthexperiments-homepage-user-variant-C &,
-				body.growthexperiments-homepage-user-variant-D.growthexperiments-homepage-mobile-summary & {
+				.growthexperiments-homepage-mobile-summary & {
 					float: right;
 					margin-left: 1em;
-				}
-
-				body.growthexperiments-homepage-user-variant-D &,
-				body.growthexperiments-homepage-mobile-summary & {
-					width: 64px;
 				}
 			}
 
@@ -303,14 +297,6 @@
 				background-size: 216px 64px;
 				background-position-y: top;
 				padding: calc( 64px ~'+' 1em ) @startEditingDialogSidePadding 16px 0;
-			}
-
-			// The image is not displayed in variant D
-			body.growthexperiments-homepage-user-variant-D & {
-				background-image: none;
-				padding-top: 0;
-				padding-left: 0;
-				min-height: unset;
 			}
 		}
 
