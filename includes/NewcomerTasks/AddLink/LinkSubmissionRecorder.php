@@ -77,7 +77,8 @@ class LinkSubmissionRecorder {
 			$linkRecommendation,
 			count( $acceptedTargets ),
 			count( $rejectedTargets ),
-			count( $skippedTargets )
+			count( $skippedTargets ),
+			$editRevId
 		);
 		return StatusValue::newGood( [ 'logId' => $logId ] );
 	}
@@ -90,13 +91,16 @@ class LinkSubmissionRecorder {
 	 * @param int $rejectedLinkCount
 	 * @param int $skippedLinkCount
 	 * @return int Log ID.
+	 * @param int|null $editRevId Revision ID of the edit adding the links (might be null since
+	 *   it's not necessary that any links have been added).
 	 */
 	private function log(
 		UserIdentity $user,
 		LinkRecommendation $linkRecommendation,
 		int $acceptedLinkCount,
 		int $rejectedLinkCount,
-		int $skippedLinkCount
+		int $skippedLinkCount,
+		?int $editRevId
 	): int {
 		$totalLinkCount = $acceptedLinkCount + $rejectedLinkCount + $skippedLinkCount;
 
@@ -109,6 +113,9 @@ class LinkSubmissionRecorder {
 			'6:number:count' => $rejectedLinkCount,
 			'7:number:count' => $skippedLinkCount,
 		] );
+		if ( $editRevId ) {
+			$logEntry->setAssociatedRevId( $editRevId );
+		}
 		$logId = $logEntry->insert();
 		// Do not publish to recent changes, it would be pointless as this action cannot
 		// be inspected or patrolled.
