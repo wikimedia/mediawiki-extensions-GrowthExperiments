@@ -5,5 +5,6 @@
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|kas tas ir?]])",
-	"growthexperiments-confirmemail-emailrecommended": "E-pasta adrese (ieteicama)"
+	"growthexperiments-confirmemail-emailrecommended": "E-pasta adrese (ieteicama)",
+	"growthexperiments-confirmemail-confirm-button": "Apstiprināt e-pasta adresi"
 }

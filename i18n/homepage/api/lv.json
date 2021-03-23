@@ -6,5 +6,7 @@
 	},
 	"apihelp-homepagequestionstore-param-questionformat": "Formāts, kādā atgriezt jautājumus, piemēram, HTML.",
 	"apihelp-homepagequestionstore-param-storage": "Jautājumu glabāšanas vieta.",
+	"apihelp-growthsetmentor-param-mentee": "Audzēkņa lietotājvārds",
+	"apihelp-growthsetmentor-param-mentor": "Mentora lietotājvārds",
 	"apihelp-growthsetmentor-param-reason": "Nomaiņas iemesls"
 }

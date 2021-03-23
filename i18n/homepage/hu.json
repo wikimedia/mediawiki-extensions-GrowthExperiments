@@ -317,5 +317,8 @@
 	"growthexperiments-addlink-context-button-next": "Kihagy",
 	"growthexperiments-addlink-rejectiondialog-title": "Miért helytelen ez a hivatkozás? <em>(Opcionális)</em>",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Egyéb / nem nyilatkozom",
-	"growthexperiments-addlink-rejectiondialog-action-done": "Kész"
+	"growthexperiments-addlink-rejectiondialog-action-done": "Kész",
+	"growthexperiments-addlink-onboarding-dialog-title": "Bevezető",
+	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "Ne mutasd még egyszer",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Kezdés"
 }
