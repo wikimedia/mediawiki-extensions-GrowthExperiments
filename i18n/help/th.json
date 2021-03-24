@@ -70,6 +70,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-links-main-publish": "เพิ่มลิงก์อีก หรือแตะปุ่มลูกศรสีน้ำเงินเพื่อบันทึกการแก้ไข{{GENDER:|ของคุณ}}!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "[[$1|เรียนรู้เพิ่มเติมเกี่ยวกับการเพิ่มลิงก์]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-value": "ทุกข้อความใน{{SITENAME}}มาจากแหล่งอ้างอิงที่น่าเชื่อถือ เช่น หนังสือและหนังสือพิมพ์ เมื่อผู้อ่านเห็นแหล่งอ้างอิงจากแหล่งที่มาในบทความแล้ว จะได้รู้สึกมั่นใจสิ่งที่พวกเขากำลังเรียนรู้",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-example-value": "ดาวเสาร์เป็นที่รู้จักกันดีจากระบบวงแหวนรอบดาวเสาร์ ซึ่งทำให้ดาวเสาร์มีลักษณะเฉพาะตัว <sup>[3]</sup>",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-text-value": "ประโยคนี้มีการอ้างอิงท้ายประโยคที่ลิงก์ไปยังแหล่งที่มา",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-calm": "ในการสร้างความเปลี่ยนแปลง {{GENDER:|คุณ}}จำเป็นแค่เพียงเพิ่มแหล่งอ้างอิง 1 แหล่งเพิ่มในบทความนี้ {{GENDER:|คุณ}}ไม่จำเป็นต้องทำทั้งบทความ",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-rules1": "ประโยคจำเป็นต้องมีแหล่งอ้างอิงเมื่อพูดถึงข้อเท็จจริงที่เฉพาะเจาะจง เช่น ตัวเลข วันที่และเหตุการณ์ประวัติศาสตร์\n\nประโยคใดมีสารสนเทศที่บุคคลอาจเห็นไม่ตรงกัน หรือสารสนเทศนั้นไม่ใช่สิ่งที่คนทั่วไปทราบ ก็น่าจะต้องมีแหล่งอ้างอิงด้วยเช่นกัน",
