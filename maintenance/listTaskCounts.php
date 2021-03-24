@@ -34,6 +34,7 @@ class ListTaskCounts extends Maintenance {
 
 	/** @inheritDoc */
 	public function execute() {
+		// FIXME: Integrate with GrowthExperimentsSuggestionsInfo service
 		$services = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		$taskSuggester = $services->getTaskSuggesterFactory()->create();
 		$dummyUser = new User;

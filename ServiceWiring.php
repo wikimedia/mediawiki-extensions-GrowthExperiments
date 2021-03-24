@@ -31,6 +31,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigura
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
+use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\DecoratingTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactory;
@@ -348,6 +349,17 @@ return [
 		}
 		$taskSuggesterFactory->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $taskSuggesterFactory;
+	},
+
+	'GrowthExperimentsSuggestionsInfo' => function (
+		MediaWikiServices $services
+	): SuggestionsInfo {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		return new SuggestionsInfo(
+			$growthServices->getTaskSuggesterFactory(),
+			$growthServices->getTaskTypeHandlerRegistry(),
+			$growthServices->getNewcomerTasksConfigurationLoader()
+		);
 	},
 
 	'GrowthExperimentsTaskTypeHandlerRegistry' => function (
