@@ -60,6 +60,14 @@ $specialPageAliases['eo'] = [
 	'ClaimMentee' => [ 'AsertiMentee' ],
 ];
 
+/** Spanish (español) */
+$specialPageAliases['es'] = [
+	'WelcomeSurvey' => [ 'Encuesta_de_bienvenida' ],
+	'Homepage' => [ 'Página_inicial' ],
+	'Impact' => [ 'Incidencia' ],
+	'ClaimMentee' => [ 'Reclamar_nuevo_usuario' ],
+];
+
 /** Persian (فارسی) */
 $specialPageAliases['fa'] = [
 	'WelcomeSurvey' => [ 'پرسشنامه_خوشامد' ],
