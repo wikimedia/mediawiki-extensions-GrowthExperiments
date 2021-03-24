@@ -11,17 +11,28 @@
 		$editLink = $( editLinkWrapper ).find( 'a' ),
 		skin = mw.config.get( 'skin' ),
 		AddLinkOnboarding = require( 'ext.growthExperiments.AddLink.onboarding' ),
+		router = require( 'mediawiki.router' ),
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		taskTypeId = suggestedEditSession.taskType,
 		guidancePrefName = 'growthexperiments-homepage-suggestededits-guidance-blue-dot',
+		errorDialogOnFailure = function () {
+			OO.ui.alert( mw.message( 'growthexperiments-addlink-no-suggestions-found-dialog-message' ).text(), {
+				actions: [ { action: 'accept', label: mw.message( 'growthexperiments-addlink-no-suggestions-found-dialog-button' ).text(), flags: 'primary' } ]
+			} ).done( function () {
+				// TODO: Instrumentation (T278112)
+				router.back();
+			} );
+		},
 		guidancePrefValue,
 		uri;
 
 	if ( taskTypeId === 'link-recommendation' && mw.config.get( 'wgGELinkRecommendationsFrontendEnabled' ) ) {
 		if ( !suggestedEditSession.taskData ) {
 			mw.log.error( 'Missing task data' );
+			errorDialogOnFailure();
 		} else if ( suggestedEditSession.taskData.error ) {
 			mw.log.error( suggestedEditSession.taskData.error );
+			errorDialogOnFailure();
 		} else {
 			AddLinkOnboarding.showDialogIfEligible();
 

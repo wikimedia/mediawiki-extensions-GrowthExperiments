@@ -1026,14 +1026,17 @@
 				"ext.growthExperiments.SuggestedEditSession",
 				"mediawiki.pulsatingdot",
 				"oojs-ui.styles.icons-movement",
-				"ext.growthExperiments.AddLink.onboarding"
+				"ext.growthExperiments.AddLink.onboarding",
+				"mediawiki.router"
 			],
 			"messages": [
 				"growthexperiments-help-panel-cta-button-text",
 				"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit",
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy",
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium",
-				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard"
+				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard",
+				"growthexperiments-addlink-no-suggestions-found-dialog-message",
+				"growthexperiments-addlink-no-suggestions-found-dialog-button"
 			],
 			"targets": [
 				"desktop",
