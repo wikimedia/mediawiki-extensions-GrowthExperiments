@@ -85,7 +85,9 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 		}
 		$wikitext = $content->getText();
 
-		$pathArgs = [ $this->wikiId, $titleText ];
+		// FIXME: Don't hardcode 'wikipedia' project
+		// FIXME: Use a less hacky way to get the project/subdomain pair that the API gateway wants.
+		$pathArgs = [ 'wikipedia', str_replace( 'wiki', '', $this->wikiId ), $titleText ];
 		$queryArgs = [
 			'threshold' => $taskType->getMinimumLinkScore(),
 			'max_recommendations' => $taskType->getMaximumLinksPerTask()
@@ -97,7 +99,7 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 		];
 		$request = $this->httpRequestFactory->create(
 			wfAppendQuery(
-				$this->url . '/v0/linkrecommendations/' . implode( '/', array_map( function ( $arg ) {
+				$this->url . '/v1/linkrecommendations/' . implode( '/', array_map( function ( $arg ) {
 					return rawurlencode( $arg );
 				}, $pathArgs ) ),
 				$queryArgs
