@@ -1,5 +1,7 @@
 @import 'mediawiki.ui/variables.less';
 @import '../ext.growthExperiments.variables.less';
+@import '../ext.growthExperiments.mixins.less';
+@import '../../lib/ooui/wikimedia-ui-base';
 
 .mw-ge-homepage-taskTypeSelectionWidget {
 	&-difficulty-level {
@@ -56,6 +58,21 @@
 			display: block;
 			padding-left: 6px;
 			font-size: 12px;
+		}
+	}
+
+	.mw-ge-homepage-taskTypeSelectionWidget-checkbox-link-recommendation {
+		.oo-ui-iconElement-icon {
+			background-size: 80%;
+			margin: 0 4px 4px 0;
+			// @wmui-color-base20
+			opacity: 0.65;
+		}
+
+		.mw-ge-tasktype-icon-label {
+			.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 12.4px, @targetLineHeight: 17px );
+			color: @wmui-color-base20;
+			display: inline;
 		}
 	}
 }

@@ -516,6 +516,7 @@
 				"mediawiki.Uri",
 				"oojs-ui-widgets",
 				"oojs-ui.styles.icons-media",
+				"oojs-ui.styles.icons-content",
 				"oojs-ui-windows",
 				"ext.growthExperiments.Homepage.Topics",
 				"ext.growthExperiments.Homepage.Logger"
@@ -562,6 +563,7 @@
 				"growthexperiments-homepage-suggestededits-tasktype-label-expand",
 				"growthexperiments-homepage-suggestededits-tasktype-label-links",
 				"growthexperiments-homepage-suggestededits-tasktype-label-create",
+				"growthexperiments-homepage-suggestededits-tasktype-ai-description",
 				"growthexperiments-homepage-suggestededits-difficulty-filter-label",
 				"growthexperiments-homepage-suggestededits-difficulty-filter-label-mobile",
 				"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy",
@@ -651,6 +653,7 @@
 				"growthexperiments-homepage-suggestededits-difficulty-filter-error",
 				"growthexperiments-homepage-suggestededits-difficulty-filters-article-count",
 				"growthexperiments-homepage-suggestededits-tasktype-label-create",
+				"growthexperiments-homepage-suggestededits-tasktype-ai-description",
 				"growthexperiments-homepage-suggestededits-create-article-additional-message",
 				"vector-view-edit"
 			],
@@ -660,6 +663,7 @@
 				"mediawiki.jqueryMsg",
 				"mediawiki.router",
 				"mediawiki.util",
+				"oojs-ui.styles.icons-content",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
 				"ext.growthExperiments.Homepage.Topics",

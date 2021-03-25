@@ -71,7 +71,8 @@ TaskTypeSelectionWidget.prototype.buildCheckboxFilters = function () {
 		messages: {
 			label: mw.message( 'growthexperiments-homepage-suggestededits-tasktype-label-create' ).text()
 		},
-		disabled: true
+		disabled: true,
+		iconData: {}
 	}, false );
 	this.createFilter.$element.append( $( '<div>' )
 		.addClass( 'mw-ge-homepage-taskTypeSelectionWidget-additional-msg' )
@@ -163,9 +164,22 @@ TaskTypeSelectionWidget.prototype.makeCheckboxesForDifficulty = function ( diffi
  * @return {OO.ui.CheckboxMultioptionWidget}
  */
 TaskTypeSelectionWidget.prototype.makeCheckbox = function ( taskTypeData, selected ) {
+	var $checkboxIcon, descriptionMessage, $label = $( '<span>' ).text( taskTypeData.messages.label );
+	if ( 'filterIcon' in taskTypeData.iconData ) {
+		// Messages that can be used here:
+		// * growthexperiments-homepage-suggestededits-tasktype-ai-description
+		// * FORMAT growthexperiments-homepage-suggestededits-tasktype-{other}-description
+		descriptionMessage = mw.message( taskTypeData.iconData.descriptionMessageKey ).text();
+		$checkboxIcon = new OO.ui.Element().$element;
+		$checkboxIcon.append(
+			new OO.ui.IconWidget( { icon: taskTypeData.iconData.filterIcon } ).$element,
+			new OO.ui.LabelWidget( { label: descriptionMessage, classes: [ 'mw-ge-tasktype-icon-label' ] } ).$element
+		);
+		$label.append( $checkboxIcon );
+	}
 	return new OO.ui.CheckboxMultioptionWidget( {
 		data: taskTypeData.id,
-		label: taskTypeData.messages.label,
+		label: $label,
 		selected: !!selected,
 		disabled: !!taskTypeData.disabled,
 		// The following classes are used here:

@@ -175,6 +175,8 @@ class TaskType implements JsonUnserializable {
 		if ( $this->isAISuggestion ) {
 			return [
 				'icon' => 'robot-task-type',
+				'filterIcon' => 'robot',
+				'descriptionMessageKey' => 'growthexperiments-homepage-suggestededits-tasktype-ai-description'
 			];
 		}
 		return [];
@@ -187,6 +189,7 @@ class TaskType implements JsonUnserializable {
 			'difficulty' => $this->getDifficulty(),
 			'extraData' => [ 'learnMoreLink' => $this->getLearnMoreLink() ],
 			'handlerId' => $this->getHandlerId(),
+			'iconData' => $this->getIconData()
 		];
 	}
 

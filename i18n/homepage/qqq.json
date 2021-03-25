@@ -236,6 +236,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Human-readable name of expand the task type.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Human-readable name of links the task type.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Human-readable name of link recommendation the task type.\n\n{{doc-growthexperiments-addlink}}",
+	"growthexperiments-homepage-suggestededits-tasktype-ai-description": "Description of AI suggested task types displayed with robot icon.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Text shown in the topic filter dialog in the suggested edits module for the 'biography' topic.",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Text shown in the topic filter dialog in the suggested edits module for the 'women' topic.",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Text shown in the topic filter dialog in the suggested edits module for the 'food-and-drink' topic.",
