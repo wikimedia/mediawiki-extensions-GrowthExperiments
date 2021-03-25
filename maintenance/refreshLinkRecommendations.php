@@ -8,6 +8,7 @@ use Config;
 use Generator;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationLink;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
@@ -83,11 +84,14 @@ class RefreshLinkRecommendations extends Maintenance {
 	/** @var LinkRecommendationStore */
 	private $linkRecommendationStore;
 
-	/** @var LinkRecommendationTaskType */
-	private $recommendationTaskType;
+	/** @var LinkRecommendationHelper */
+	private $linkRecommendationHelper;
 
 	/** @var SearchIndexUpdater */
 	private $searchIndexUpdater;
+
+	/** @var LinkRecommendationTaskType */
+	private $recommendationTaskType;
 
 	/** @var User */
 	private $searchUser;
@@ -223,6 +227,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		$this->linkRecommendationProviderUncached =
 			$services->get( 'GrowthExperimentsLinkRecommendationProviderUncached' );
 		$this->linkRecommendationStore = $growthServices->getLinkRecommendationStore();
+		$this->linkRecommendationHelper = $growthServices->getLinkRecommendationHelper();
 		$this->searchIndexUpdater = $growthServices->getSearchIndexUpdater();
 	}
 
@@ -428,19 +433,12 @@ class RefreshLinkRecommendations extends Maintenance {
 		$goodLinks = array_filter( $recommendation->getLinks(), function ( LinkRecommendationLink $link ) {
 			return $link->getScore() >= $this->recommendationTaskType->getMinimumLinkScore();
 		} );
-		$goodLinkIds = $this->linksToPageIds( $goodLinks );
-		$redLinkCount = count( $goodLinks ) - count( $goodLinkIds );
-		$excludedLinkIds = $this->linkRecommendationStore->getExcludedLinkIds(
-			$recommendation->getPageId(), 2 );
-		$goodLinkCount = count( array_diff( $goodLinkIds, $excludedLinkIds ) );
-		if ( $this->growthConfig->get( 'GEDeveloperSetup' ) ) {
-			// In developer setups, the recommendation service is usually suggestion link targets
-			// from a different wiki, which might end up being red links locally. Allow these,
-			// otherwise we'd get lots of failures here.
-			$goodLinkCount += $redLinkCount;
-		}
-		if ( $goodLinkCount < $this->recommendationTaskType->getMinimumLinksPerTask() ) {
-			$this->verboseLog( "number of good links too small (" . $goodLinkCount . ")\n" );
+		$recommendation = new LinkRecommendation( $recommendation->getTitle(),
+			$recommendation->getPageId(), $recommendation->getRevisionId(), $goodLinks );
+		$recommendation = $this->linkRecommendationHelper->pruneLinkRecommendation( $recommendation );
+		$prunedLinkCount = $recommendation ? count( $recommendation->getLinks() ) : 0;
+		if ( !$prunedLinkCount || $prunedLinkCount < $this->recommendationTaskType->getMinimumLinksPerTask() ) {
+			$this->verboseLog( "number of good links too small (" . $prunedLinkCount . ")\n" );
 			return false;
 		}
 
@@ -458,23 +456,6 @@ class RefreshLinkRecommendations extends Maintenance {
 			$this->error( "  Could not send search index update:\n    "
 				. implode( "    \n", $errors ) );
 		}
-	}
-
-	/**
-	 * Converts title strings to page IDs. Non-existent pages are omitted.
-	 * @param LinkRecommendationLink[] $links
-	 * @return int[]
-	 */
-	private function linksToPageIds( array $links ): array {
-		$linkBatch = $this->linkBatchFactory->newLinkBatch();
-		foreach ( $links as $link ) {
-			$linkBatch->addObj( $this->titleFactory->newFromTextThrow( $link->getLinkTarget() ) );
-		}
-		$ids = $linkBatch->execute();
-		// LinkBatch::execute() returns a title => ID map. Discard titles, discard
-		// 0 ID used for non-existent pages (we assume those won't be recommended anyway),
-		// squash duplicates (just in case; they shouldn't exist).
-		return array_unique( array_filter( array_values( $ids ) ) );
 	}
 
 	private function verboseLog( string $message ): void {

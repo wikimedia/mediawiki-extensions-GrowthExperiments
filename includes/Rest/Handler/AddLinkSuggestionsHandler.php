@@ -2,8 +2,9 @@
 
 namespace GrowthExperiments\Rest\Handler;
 
-use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\ErrorException;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
+use GrowthExperiments\Util;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\ParamValidator\TypeDef\TitleDef;
 use MediaWiki\Rest\HttpException;
@@ -17,24 +18,16 @@ use Wikimedia\ParamValidator\ParamValidator;
  */
 class AddLinkSuggestionsHandler extends SimpleHandler {
 
-	use AddLinkHandlerTrait;
-
-	/** @var ConfigurationLoader */
-	private $configurationLoader;
-
-	/** @var LinkRecommendationProvider */
-	private $linkRecommendationProvider;
+	/** @var LinkRecommendationHelper */
+	private $linkRecommendationHelper;
 
 	/**
-	 * @param ConfigurationLoader $configurationLoader
-	 * @param LinkRecommendationProvider $linkRecommendationProvider
+	 * @param LinkRecommendationHelper $linkRecommendationHelper
 	 */
 	public function __construct(
-		ConfigurationLoader $configurationLoader,
-		LinkRecommendationProvider $linkRecommendationProvider
+		LinkRecommendationHelper $linkRecommendationHelper
 	) {
-		$this->configurationLoader = $configurationLoader;
-		$this->linkRecommendationProvider = $linkRecommendationProvider;
+		$this->linkRecommendationHelper = $linkRecommendationHelper;
 	}
 
 	/**
@@ -44,8 +37,17 @@ class AddLinkSuggestionsHandler extends SimpleHandler {
 	 * @throws HttpException
 	 */
 	public function run( LinkTarget $title ) {
-		$this->assertLinkRecommendationsEnabled( RequestContext::getMain() );
-		$recommendation = $this->getLinkRecommendation( $title );
+		if ( !Util::areLinkRecommendationsEnabled( RequestContext::getMain() ) ) {
+			throw new HttpException( 'Disabled', 404 );
+		}
+		try {
+			$recommendation = $this->linkRecommendationHelper->getLinkRecommendation( $title );
+		} catch ( ErrorException $e ) {
+			throw new HttpException( $e->getErrorMessageInEnglish() );
+		}
+		if ( !$recommendation ) {
+			throw new HttpException( 'The recommendation has already been invalidated', 409 );
+		}
 		return [ 'recommendation' => $recommendation->toArray() ];
 	}
 

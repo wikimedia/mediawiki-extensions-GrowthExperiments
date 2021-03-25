@@ -75,15 +75,16 @@
 			"path": "/growthexperiments/v0/suggestions/addlink/{title}",
 			"method": "GET",
 			"class": "GrowthExperiments\\Rest\\Handler\\AddLinkSuggestionsHandler",
-			"services": [ "GrowthExperimentsNewcomerTasksConfigurationLoader", "GrowthExperimentsLinkRecommendationProvider" ]
+			"services": [
+				"GrowthExperimentsLinkRecommendationHelper"
+			]
 		},
 		{
 			"path": "/growthexperiments/v0/suggestions/addlink/{title}",
 			"method": "POST",
 			"class": "GrowthExperiments\\Rest\\Handler\\AddLinkSubmissionHandler",
 			"services": [
-				"GrowthExperimentsNewcomerTasksConfigurationLoader",
-				"GrowthExperimentsLinkRecommendationProvider",
+				"GrowthExperimentsLinkRecommendationHelper",
 				"GrowthExperimentsLinkSubmissionRecorder",
 				"TitleFactory"
 			],
@@ -113,8 +114,8 @@
 				"GrowthExperimentsTaskTypeHandlerRegistry",
 				"GrowthExperimentsTaskSuggesterFactory",
 				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
-				"GrowthExperimentsLinkRecommendationProvider",
-				"GrowthExperimentsLinkRecommendationStore"
+				"GrowthExperimentsLinkRecommendationStore",
+				"GrowthExperimentsLinkRecommendationHelper"
 			]
 		},
 		"parserfunctions": {

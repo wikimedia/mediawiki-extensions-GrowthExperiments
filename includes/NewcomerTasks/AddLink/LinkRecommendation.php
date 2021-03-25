@@ -56,7 +56,7 @@ class LinkRecommendation {
 		$this->title = $title;
 		$this->pageId = $pageId;
 		$this->revisionId = $revisionId;
-		$this->links = $links;
+		$this->links = array_values( $links );
 	}
 
 	/**

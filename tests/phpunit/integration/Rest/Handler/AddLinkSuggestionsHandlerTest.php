@@ -2,13 +2,11 @@
 
 namespace GrowthExperiments\Tests;
 
+use GrowthExperiments\ErrorException;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
-use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
-use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
-use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\Rest\Handler\AddLinkSuggestionsHandler;
+use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\ResponseFactory;
 use MediaWikiIntegrationTestCase;
@@ -38,15 +36,11 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 			'link_index' => 2,
 		] ];
 		$links = LinkRecommendation::getLinksFromArray( $linkData );
-		$configurationLoader = new StaticConfigurationLoader( [
-			LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => new LinkRecommendationTaskType(
-				LinkRecommendationTaskTypeHandler::TASK_TYPE_ID, TaskType::DIFFICULTY_EASY, [] ),
-		] );
-		$linkRecommendationProvider = $this->getMockLinkRecommendationProvider( [
+		$linkRecommendationHelper = $this->getMockLinkRecommendationHelper( [
 			$this->getTitleKey( $goodTitle ) => new LinkRecommendation( $goodTitle, 1, 1, $links ),
 			$this->getTitleKey( $badTitle ) => StatusValue::newFatal( new RawMessage( 'error' ) ),
 		] );
-		$handler = new AddLinkSuggestionsHandler( $configurationLoader, $linkRecommendationProvider );
+		$handler = new AddLinkSuggestionsHandler( $linkRecommendationHelper );
 		$this->setResponseFactory( $handler );
 
 		$this->assertSame( [ 'recommendation' => [ 'links' => $linkData ] ], $handler->run( $goodTitle ) );
@@ -58,14 +52,17 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @param (LinkRecommendation|StatusValue) $recommendationMap Title to recommendation.
-	 * @return LinkRecommendationProvider|MockObject
+	 * @return LinkRecommendationHelper|MockObject
 	 */
-	private function getMockLinkRecommendationProvider( $recommendationMap ) {
-		$mock = $this->createMock( LinkRecommendationProvider::class );
-		$mock->method( 'get' )->willReturnCallback(
-			function ( TitleValue $title ) use ( $recommendationMap ) {
-				$key = $this->getTitleKey( $title );
+	private function getMockLinkRecommendationHelper( $recommendationMap ) {
+		$mock = $this->createMock( LinkRecommendationHelper::class );
+		$mock->method( 'getLinkRecommendation' )->willReturnCallback(
+			function ( LinkTarget $linkTarget ) use ( $recommendationMap ) {
+				$key = $this->getTitleKey( $linkTarget );
 				$this->assertArrayHasKey( $key, $recommendationMap, 'page not configured: ' . $key );
+				if ( $recommendationMap[$key] instanceof StatusValue ) {
+					throw new ErrorException( $recommendationMap[$key] );
+				}
 				return $recommendationMap[$key];
 			} );
 		return $mock;
@@ -80,8 +77,8 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 		TestingAccessWrapper::newFromObject( $handler )->responseFactory = $mockResponseFactory;
 	}
 
-	private function getTitleKey( TitleValue $title ): string {
-		return $title->getNamespace() . ':' . $title->getDBkey();
+	private function getTitleKey( LinkTarget $linkTarget ): string {
+		return $linkTarget->getNamespace() . ':' . $linkTarget->getDBkey();
 	}
 
 }
