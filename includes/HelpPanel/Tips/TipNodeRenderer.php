@@ -62,6 +62,7 @@ class TipNodeRenderer {
 	 */
 	private function buildHtml( TipNode $node, string $skin, string $dir ): string {
 		switch ( $node->getType() ) {
+			case 'header':
 			case 'main':
 			case 'text':
 				return $this->mainAndTextRender( $node, $skin );
@@ -164,9 +165,16 @@ class TipNodeRenderer {
 	 * @return string
 	 */
 	private function exampleRender( TipNode $node ): string {
-		return Html::rawElement( 'div', [
+		$exampleLabelKey = $node->getData()[0]['data']['labelKey'] ?? null;
+		$exampleLabel = $exampleLabelKey ?
+			Html::element( 'div',
+			[ 'class' => 'growthexperiments-quickstart-tips-tip-example-label' ],
+				$this->messageLocalizer->msg( $exampleLabelKey )->text() )
+			: '';
+		return $exampleLabel . Html::rawElement( 'div', [
 			'class' => $this->getBaseCssClasses( $node->getType() )
-		], Html::rawElement( 'p', [
+		],
+			Html::rawElement( 'p', [
 			'class' => [
 				'growthexperiments-quickstart-tips-tip-' . $node->getType() . '-text'
 			] ], $this->messageLocalizer->msg(

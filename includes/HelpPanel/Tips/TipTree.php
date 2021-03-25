@@ -24,7 +24,7 @@ abstract class TipTree {
 
 	// The types of tips that can be shown for a task type. Hard-coded for now.
 	private const TIP_TYPES = [
-		'main', 'example', 'graphic', 'text'
+		'header', 'main', 'example', 'graphic', 'text'
 	];
 	/**
 	 * @var string|null
@@ -96,11 +96,17 @@ abstract class TipTree {
 
 	/**
 	 * @param array $steps
+	 * @param string $stepName Step to which learn more link is added
+	 * @param string $tipType Tip type to which learn more link is added
 	 * @return array
 	 */
-	protected function maybeAddLearnMoreLinkTipNode( array $steps ): array {
+	protected function maybeAddLearnMoreLinkTipNode(
+		array $steps,
+		string $stepName = 'publish',
+		string $tipType = 'text'
+	): array {
 		if ( $this->getLearnMoreLink() ) {
-			$steps['publish']['text'] = [
+			$steps[$stepName][$tipType] = [
 				[
 					'type' => self::TIP_DATA_TYPE_TITLE,
 					'data' => [ 'title' => $this->getLearnMoreLink() ],
@@ -116,5 +122,4 @@ abstract class TipTree {
 	protected function getLearnMoreLink() {
 		return $this->learnMoreLink;
 	}
-
 }
