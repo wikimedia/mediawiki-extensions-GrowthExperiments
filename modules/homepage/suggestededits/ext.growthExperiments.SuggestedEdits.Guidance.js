@@ -34,7 +34,11 @@
 			mw.log.error( suggestedEditSession.taskData.error );
 			errorDialogOnFailure();
 		} else {
-			AddLinkOnboarding.showDialogIfEligible();
+			if ( suggestedEditSession.onboardingNeedsToBeShown ) {
+				suggestedEditSession.onboardingNeedsToBeShown = false;
+				suggestedEditSession.save();
+				AddLinkOnboarding.showDialogIfEligible();
+			}
 
 			mw.hook( 've.loadModules' ).add( function ( addPlugin ) {
 				// Either the desktop or the mobile module will be registered, but not both.
