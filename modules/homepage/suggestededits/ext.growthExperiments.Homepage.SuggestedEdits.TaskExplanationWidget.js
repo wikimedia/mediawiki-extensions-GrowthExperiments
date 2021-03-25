@@ -55,7 +55,15 @@
 
 	TaskExplanationWidget.prototype.getIcon = function () {
 		if ( 'icon' in this.taskTypeData.iconData ) {
-			return new OO.ui.IconWidget( { icon: this.taskTypeData.iconData.icon, classes: [ 'suggested-edits-task-explanation-icon' ] } ).$element;
+			return new OO.ui.IconWidget( {
+				icon: this.taskTypeData.iconData.icon,
+				// The following messages are used here:
+				// * growthexperiments-homepage-suggestededits-tasktype-ai-description
+				// * FORMAT growthexperiments-homepage-suggestededits-tasktype-{other}-description
+				label: mw.message( this.taskTypeData.iconData.descriptionMessageKey ).text(),
+				invisibleLabel: true,
+				classes: [ 'suggested-edits-task-explanation-icon' ]
+			} ).$element;
 		}
 		return '';
 	};
