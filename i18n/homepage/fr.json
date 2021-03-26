@@ -245,6 +245,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Développer les articles courts",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Ajouter des liens entre les articles",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Ajouter des liens entre articles",
+	"growthexperiments-homepage-suggestededits-tasktype-ai-description": "Suggestion par l’intelligence artificielle (IA)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biographie (tous)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biographie (femmes)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Nourriture et boissons",
@@ -381,6 +382,7 @@
 	"growthexperiments-addlink-onboarding-dialog-label-next": "Étape suivante d’introduction",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "Étape précédente d’introduction",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Démarrer",
-	"growthexperiments-addlink-no-suggestions-found-dialog-message": "Les suggestions ne sont plus disponibles sur cet article.",
+	"growthexperiments-addlink-no-suggestions-found-dialog-message": "Les suggestions ne sont plus disponibles pour cet article.",
+	"growthexperiments-addlink-no-suggestions-found-dialog-button": "Retour aux modifications suggérées",
 	"grant-managementorship": "Gérer le tutorat"
 }

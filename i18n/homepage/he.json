@@ -227,6 +227,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "הרחבת ערכים קצרים",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "הוספת קישורים בין ערכים",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "הוספת קישורים בין ערכים",
+	"growthexperiments-homepage-suggestededits-tasktype-ai-description": "הצעות מבינה מלאכותית",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "ביוגרפיה (הכול)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "ביוגרפיה (נשים)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "מזון ושתייה",
@@ -362,5 +363,7 @@
 	"growthexperiments-addlink-onboarding-dialog-label-next": "צעד המבוא הבא",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "צעד מבוא קודם",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "מדריך למתחילים",
+	"growthexperiments-addlink-no-suggestions-found-dialog-message": "הצעות כבר לא זמינות בערך הזה.",
+	"growthexperiments-addlink-no-suggestions-found-dialog-button": "חזרה לעריכות מוצעות",
 	"grant-managementorship": "ניהול חונכות"
 }

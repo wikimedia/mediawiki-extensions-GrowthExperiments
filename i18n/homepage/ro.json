@@ -354,5 +354,7 @@
 	"growthexperiments-addlink-onboarding-dialog-label-next": "Pasul de introducere următor",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "Pasul de introducere anterior",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Noțiuni de bază",
+	"growthexperiments-addlink-no-suggestions-found-dialog-message": "Sugestiile nu mai sunt disponibile pentru acest articol.",
+	"growthexperiments-addlink-no-suggestions-found-dialog-button": "Înapoi la editările sugerate",
 	"grant-managementorship": "Administrare activitate de mentor"
 }

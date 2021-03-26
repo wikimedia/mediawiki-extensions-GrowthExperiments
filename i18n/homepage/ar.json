@@ -369,5 +369,7 @@
 	"growthexperiments-addlink-onboarding-dialog-label-next": "الخطوة التقديمية التالية",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "الخطوة التقديمية السابقة",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "فلنبدأ",
+	"growthexperiments-addlink-no-suggestions-found-dialog-message": "لم تعد المقترحات متوفّرة في هذه المقالة.",
+	"growthexperiments-addlink-no-suggestions-found-dialog-button": "الرجوع إلى التعديلات المقترحة",
 	"grant-managementorship": "إدارة الإرشاد"
 }

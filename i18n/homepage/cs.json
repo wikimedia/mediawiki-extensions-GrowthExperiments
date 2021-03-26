@@ -366,5 +366,7 @@
 	"growthexperiments-addlink-onboarding-dialog-label-next": "Další krok",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "Předchozí krok",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Začněte zde",
+	"growthexperiments-addlink-no-suggestions-found-dialog-message": "Pro tento článek nejsou k dispozici žádné tipy.",
+	"growthexperiments-addlink-no-suggestions-found-dialog-button": "Zpět k editačním tipům",
 	"grant-managementorship": "Spravovat mentorství"
 }

@@ -82,7 +82,7 @@
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "Ikustaldi kopurua ez da oraindik kalkulatu. Itzul zaitez bihar!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Ulertu dut",
 	"growthexperiments-homepage-impact-mobilebody-articleedits": "{{PLURAL:$1|Aldaketa <strong>$1</strong>|<strong>$1</strong> aldaketa}} artikuluetan",
-	"growthexperiments-homepage-impact-mobilebody-totaledits": "{{PLURAL:$1|Aldaketa <strong>$1</strong>|<strong>$1</strong> aldaketa}}",
+	"growthexperiments-homepage-impact-mobilebody-totaledits": "{{PLURAL:$1|Aldaketa <strong>bat</strong>|<strong>$1</strong> aldaketa}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Zure azken aldaketen ikustaldiak (azken 60 egunak):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Behatu zuk aldatu dituzun artikuluen ikustaldiak",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Laguntza guneko alertak",

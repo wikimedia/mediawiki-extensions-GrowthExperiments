@@ -363,5 +363,7 @@
 	"growthexperiments-addlink-onboarding-dialog-label-next": "Sonraki giriş adımı",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "Önceki giriş adımı",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Başla",
+	"growthexperiments-addlink-no-suggestions-found-dialog-message": "Öneriler artık bu sayfada mevcut değil.",
+	"growthexperiments-addlink-no-suggestions-found-dialog-button": "Önerilen değişikliklere geri dön",
 	"grant-managementorship": "Danışmanlığı yönet"
 }

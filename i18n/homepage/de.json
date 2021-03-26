@@ -7,6 +7,7 @@
 			"Bergrübe",
 			"Distel135",
 			"Elliot",
+			"FF-11",
 			"FF11",
 			"Ferdinand0101",
 			"Gebu",
@@ -364,5 +365,8 @@
 	"growthexperiments-addlink-onboarding-dialog-title": "Einführung",
 	"growthexperiments-addlink-onboarding-dialog-progress": "$1 von $2",
 	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "Nicht noch einmal anzeigen",
+	"growthexperiments-addlink-onboarding-dialog-label-next": "Nächster Schritt der Einführung",
+	"growthexperiments-addlink-onboarding-dialog-label-previous": "Vorheriger Schritt der Einführung",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Anfangen",
 	"grant-managementorship": "Mentorenschaft bearbeiten"
 }

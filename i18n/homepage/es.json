@@ -12,7 +12,8 @@
 			"MarcoAurelio",
 			"MarleneR329",
 			"Rodney Araujo",
-			"Wizardeck"
+			"Wizardeck",
+			"ZebaX2010"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Bienvenido|Bienvenida}}, {{bidi:$1}}!",
@@ -37,6 +38,7 @@
 	"growthexperiments-homepage-startediting-dialog-progress": "$1 de $2",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "Cancelar",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "Continuar",
+	"growthexperiments-homepage-startediting-dialog-intro-header": "Wikipedia está construida por gente como {{GENDER:|tú}} trabajando juntos.",
 	"growthexperiments-homepage-startediting-dialog-intro-topic-description-header": "Filtrar por tema",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Atrás",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Obtener sugerencias",
@@ -51,6 +53,7 @@
 	"growthexperiments-homepage-impact-article-link-tooltip": "Ir al artículo",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "Todavía no se han calculado las visitas a la página. Vuelve mañana.",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Entendido",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 ediciones hasta el momento.",
 	"growthexperiments-tour-response-button-okay": "Entendido",
 	"tag-newcomer_task": "Tarea para novatos",
 	"growthexperiments-homepage-help-header": "Obtén ayuda para editar",
