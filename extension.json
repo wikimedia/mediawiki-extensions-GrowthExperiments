@@ -88,6 +88,15 @@
 				"GrowthExperimentsLinkSubmissionRecorder",
 				"TitleFactory"
 			]
+		},
+		{
+			"path": "/growthexperiments/v0/suggestions/info",
+			"method": "GET",
+			"class": "GrowthExperiments\\Rest\\Handler\\SuggestionsInfoHandler",
+			"services": [
+				"GrowthExperimentsSuggestionsInfo",
+				"MainWANObjectCache"
+			]
 		}
 	],
 	"HookHandlers": {

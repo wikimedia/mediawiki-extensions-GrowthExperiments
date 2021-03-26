@@ -20,6 +20,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
+use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
@@ -137,6 +138,10 @@ class GrowthExperimentsServices {
 
 	public function getSearchIndexUpdater(): SearchIndexUpdater {
 		return $this->coreServices->get( 'GrowthExperimentsSearchIndexUpdater' );
+	}
+
+	public function getSuggestionsInfo(): SuggestionsInfo {
+		return $this->coreServices->get( 'GrowthExperimentsSuggestionsInfo' );
 	}
 
 	public function getTaskSuggesterFactory(): TaskSuggesterFactory {
