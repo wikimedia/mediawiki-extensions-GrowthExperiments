@@ -2,8 +2,10 @@
 
 namespace GrowthExperiments\Tests;
 
+use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\StaticMentorManager;
 use GrowthExperiments\Specials\SpecialClaimMentee;
+use MediaWiki\MediaWikiServices;
 use PermissionsError;
 use SpecialPageTestBase;
 
@@ -18,7 +20,9 @@ class SpecialClaimMenteeTest extends SpecialPageTestBase {
 	protected function newSpecialPage() {
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
 		return new SpecialClaimMentee(
-			new StaticMentorManager( [] )
+			new StaticMentorManager( [] ),
+			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
+				->getMentorStore()
 		);
 	}
 

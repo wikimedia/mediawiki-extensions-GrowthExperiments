@@ -52,7 +52,10 @@
 		"homepagequestionstore": "GrowthExperiments\\Api\\ApiQuestionStore",
 		"growthsetmentor": {
 			"class": "GrowthExperiments\\Api\\ApiSetMentor",
-			"services": [ "GrowthExperimentsMentorManager" ]
+			"services": [
+				"GrowthExperimentsMentorManager",
+				"GrowthExperimentsMentorStore"
+			]
 		}
 	},
 	"APIListModules": {

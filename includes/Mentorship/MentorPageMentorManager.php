@@ -2,16 +2,15 @@
 
 namespace GrowthExperiments\Mentorship;
 
+use GrowthExperiments\Mentorship\Store\MentorStore;
+use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
 use GrowthExperiments\WikiConfigException;
-use HashBagOStuff;
-use JobQueueGroup;
 use Language;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserNameUtils;
-use MediaWiki\User\UserOptionsManager;
 use MessageLocalizer;
 use ParserOptions;
 use Psr\Log\LoggerAwareInterface;
@@ -19,7 +18,6 @@ use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 use TitleFactory;
 use User;
-use UserOptionsUpdateJob;
 use WikiPage;
 // phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
 use WikitextContent;
@@ -27,17 +25,16 @@ use WikitextContent;
 class MentorPageMentorManager extends MentorManager implements LoggerAwareInterface {
 	use LoggerAwareTrait;
 
-	/** @var string User preference for storing the mentor. */
-	public const MENTOR_PREF = 'growthexperiments-mentor-id';
+	/**
+	 * @var string User preference for storing the mentor.
+	 * @deprecated since 1.36, use PreferenceMentorStore::MENTOR_PREF instead
+	 */
+	public const MENTOR_PREF = PreferenceMentorStore::MENTOR_PREF;
 
 	/** @var int Maximum mentor intro length. */
 	private const INTRO_TEXT_LENGTH = 240;
 
-	/** @var HashBagOStuff */
-	private $cache;
-
-	/** @var int */
-	private $cacheTtl = 0;
+	private $mentorStore;
 
 	/** @var TitleFactory */
 	private $titleFactory;
@@ -47,9 +44,6 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 	/** @var UserFactory */
 	private $userFactory;
-
-	/** @var UserOptionsManager */
-	private $userOptionsManager;
 
 	/** @var UserNameUtils */
 	private $userNameUtils;
@@ -73,10 +67,10 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	private $manuallyAssignedMentorsPageName;
 
 	/**
+	 * @param MentorStore $mentorStore
 	 * @param TitleFactory $titleFactory
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param UserFactory $userFactory
-	 * @param UserOptionsManager $userOptionsManager
 	 * @param UserNameUtils $userNameUtils
 	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param MessageLocalizer $messageLocalizer
@@ -90,10 +84,10 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 * @param bool $wasPosted Is this a POST request?
 	 */
 	public function __construct(
+		MentorStore $mentorStore,
 		TitleFactory $titleFactory,
 		WikiPageFactory $wikiPageFactory,
 		UserFactory $userFactory,
-		UserOptionsManager $userOptionsManager,
 		UserNameUtils $userNameUtils,
 		UserIdentityLookup $userIdentityLookup,
 		MessageLocalizer $messageLocalizer,
@@ -102,12 +96,10 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		?string $manuallyAssignedMentorsPageName,
 		$wasPosted
 	) {
-		$this->cache = new HashBagOStuff();
-
+		$this->mentorStore = $mentorStore;
 		$this->titleFactory = $titleFactory;
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->userFactory = $userFactory;
-		$this->userOptionsManager = $userOptionsManager;
 		$this->userNameUtils = $userNameUtils;
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->messageLocalizer = $messageLocalizer;
@@ -119,19 +111,9 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$this->setLogger( new NullLogger() );
 	}
 
-	/**
-	 * Helper to generate cache key for a mentee
-	 * @param UserIdentity $user Mentee's username
-	 * @return string Cache key
-	 */
-	private function makeCacheKey( UserIdentity $user ): string {
-		return $this->cache->makeKey( 'GrowthExperiments', 'MentorManager', __CLASS__,
-			'Mentee', $user->getId() );
-	}
-
 	/** @inheritDoc */
 	public function getMentorForUserIfExists( UserIdentity $user ): ?Mentor {
-		$mentorUser = $this->loadMentorUser( $user );
+		$mentorUser = $this->mentorStore->loadMentorUser( $user );
 		if ( !$mentorUser ) {
 			return null;
 		}
@@ -144,10 +126,10 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 	/** @inheritDoc */
 	public function getMentorForUser( UserIdentity $user ): Mentor {
-		$mentorUser = $this->loadMentorUser( $user );
+		$mentorUser = $this->mentorStore->loadMentorUser( $user );
 		if ( !$mentorUser ) {
 			$mentorUser = $this->getRandomAutoAssignedMentor( $user );
-			$this->setMentorForUser( $user, $mentorUser );
+			$this->mentorStore->setMentorForUser( $user, $mentorUser );
 		}
 		return new Mentor( $this->userFactory->newFromUserIdentity( $mentorUser ),
 			$this->getMentorIntroText( $mentorUser, $user ) );
@@ -167,28 +149,6 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			] );
 		}
 		return null;
-	}
-
-	/** @inheritDoc */
-	public function setMentorForUser( UserIdentity $user, UserIdentity $mentor ): void {
-		$this->userOptionsManager->setOption( $user, static::MENTOR_PREF, $mentor->getId() );
-
-		// setMentorForUser is safe to call in GET requests. Call saveOptions only
-		// when we're in a POST request, change it with a job if we're in a GET request.
-		// setOption is outside of this if to set the option immediately in
-		// UserOptionsManager's in-process cache to avoid race conditions.
-		if ( $this->wasPosted ) {
-			// Do not defer to job queue when in a POST request, assures quicker
-			// propagation of mentor changes.
-			$this->userOptionsManager->saveOptions( $user );
-		} else {
-			JobQueueGroup::singleton()->lazyPush( new UserOptionsUpdateJob( [
-				'userId' => $user->getId(),
-				'options' => [ static::MENTOR_PREF => $mentor->getId() ]
-			] ) );
-		}
-
-		$this->invalidateMentorCache( $user );
 	}
 
 	/**
@@ -235,34 +195,6 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	/** @inheritDoc */
 	public function getManuallyAssignedMentors(): array {
 		return $this->getMentorsForPage( $this->getManuallyAssignedMentorsPage() );
-	}
-
-	/**
-	 * Load the current mentor of the user (cached)
-	 * @param UserIdentity $mentee
-	 * @return UserIdentity|null The current user's mentor or null if they don't have one
-	 */
-	private function loadMentorUser( UserIdentity $mentee ): ?UserIdentity {
-		return $this->cache->getWithSetCallback(
-			$this->makeCacheKey( $mentee ),
-			$this->cacheTtl,
-			function () use ( $mentee ) {
-				$mentorId = $this->userOptionsManager->getIntOption( $mentee, static::MENTOR_PREF );
-				$user = $this->userFactory->newFromId( $mentorId );
-				$user->load();
-				return $user->isRegistered() ? $user : null;
-			}
-		);
-	}
-
-	/**
-	 * Invalidates mentor cache for loadMentorUser
-	 * @param UserIdentity $user Who will have their cache invalidated
-	 */
-	private function invalidateMentorCache( UserIdentity $user ): void {
-		$this->cache->delete(
-			$this->makeCacheKey( $user )
-		);
 	}
 
 	/**

@@ -6,6 +6,7 @@ use FormSpecialPage;
 use GrowthExperiments\Mentorship\ChangeMentor;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
+use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use Linker;
 use LogEventsList;
@@ -32,17 +33,24 @@ class SpecialClaimMentee extends FormSpecialPage {
 	 * @var string[]|null List of mentors that can be assigned.
 	 */
 	private $mentorsList;
-	/**
-	 * @var MentorManager
-	 */
+
+	/** @var MentorManager */
 	private $mentorManager;
+
+	/** @var MentorStore */
+	private $mentorStore;
 
 	/**
 	 * @param MentorManager $mentorManager
+	 * @param MentorStore $mentorStore
 	 */
-	public function __construct( MentorManager $mentorManager ) {
+	public function __construct(
+		MentorManager $mentorManager,
+		MentorStore $mentorStore
+	) {
 		parent::__construct( 'ClaimMentee' );
 		$this->mentorManager = $mentorManager;
+		$this->mentorStore = $mentorStore;
 	}
 
 	public function doesWrites() {
@@ -205,7 +213,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 					'',
 					$mentee->getUserPage()
 				),
-				$this->mentorManager
+				$this->mentorStore
 			);
 
 			if (

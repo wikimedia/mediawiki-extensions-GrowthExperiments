@@ -35,16 +35,6 @@ abstract class MentorManager {
 	abstract public function getMentorForUserSafe( UserIdentity $user ): ?Mentor;
 
 	/**
-	 * Assign a mentor to this user, overriding any previous assignments.
-	 * Normally this would be one of the mentors listed by getAutoAssignedMentors(), but
-	 * that is not enforced.
-	 * This method can be safely called on GET requests.
-	 * @param UserIdentity $user
-	 * @param UserIdentity $mentor
-	 */
-	abstract public function setMentorForUser( UserIdentity $user, UserIdentity $mentor ): void;
-
-	/**
 	 * Get all mentors, regardless on their auto-assignment status
 	 * @return string[] List of mentors usernames.
 	 * @throws WikiConfigException If the mentor list cannot be fetched due to misconfiguration.

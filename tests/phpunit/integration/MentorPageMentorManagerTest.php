@@ -229,11 +229,11 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 		$growthServices = GrowthExperimentsServices::wrap( $coreServices );
 		$context = $context ?? RequestContext::getMain();
 		return new MentorPageMentorManager(
+			$growthServices->getMentorStore(),
 			$coreServices->getTitleFactory(),
 			$pages ? $this->getMockWikiPageFactory( $pages )
 				: $coreServices->getWikiPageFactory(),
 			$coreServices->getUserFactory(),
-			$coreServices->getUserOptionsManager(),
 			$coreServices->getUserNameUtils(),
 			$coreServices->getActorStore(),
 			$context,
