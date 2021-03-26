@@ -98,7 +98,14 @@
 			.prepend( new OO.ui.IconWidget( { icon: 'difficulty-' + this.taskType.difficulty } ).$element );
 
 		if ( 'icon' in this.taskType.iconData ) {
-			$taskType.prepend( new OO.ui.IconWidget( { icon: this.taskType.iconData.icon } ).$element );
+			$taskType.prepend( new OO.ui.IconWidget( {
+				icon: this.taskType.iconData.icon,
+				// The following messages are used here:
+				// * growthexperiments-homepage-suggestededits-tasktype-ai-description
+				// * FORMAT growthexperiments-homepage-suggestededits-tasktype-{other}-description
+				label: mw.message( this.taskType.iconData.descriptionMessageKey ).text(),
+				invisibleLabel: true
+			} ).$element );
 		}
 
 		$glue = $( '<div>' )
