@@ -23,6 +23,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
+use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
@@ -30,6 +31,7 @@ use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use GrowthExperiments\Specials\SpecialClaimMentee;
 use GrowthExperiments\Specials\SpecialHomepage;
 use GrowthExperiments\Specials\SpecialImpact;
+use GrowthExperiments\Specials\SpecialNewcomerTasksInfo;
 use Html;
 use IBufferingStatsdDataFactory;
 use IContextSource;
@@ -123,6 +125,8 @@ class HomepageHooks implements
 	private $linkRecommendationStore;
 	/** @var LinkRecommendationHelper */
 	private $linkRecommendationHelper;
+	/** @var SuggestionsInfo */
+	private $suggestionsInfo;
 
 	/**
 	 * HomepageHooks constructor.
@@ -141,6 +145,7 @@ class HomepageHooks implements
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param LinkRecommendationStore $linkRecommendationStore
 	 * @param LinkRecommendationHelper $linkRecommendationHelper
+	 * @param SuggestionsInfo $suggestionsInfo
 	 */
 	public function __construct(
 		Config $config,
@@ -157,7 +162,8 @@ class HomepageHooks implements
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		LinkRecommendationStore $linkRecommendationStore,
-		LinkRecommendationHelper $linkRecommendationHelper
+		LinkRecommendationHelper $linkRecommendationHelper,
+		SuggestionsInfo $suggestionsInfo
 	) {
 		$this->config = $config;
 		$this->lb = $lb;
@@ -174,18 +180,19 @@ class HomepageHooks implements
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->linkRecommendationStore = $linkRecommendationStore;
 		$this->linkRecommendationHelper = $linkRecommendationHelper;
+		$this->suggestionsInfo = $suggestionsInfo;
 	}
 
 	/**
-	 * Register Homepage, Impact and ClaimMentee special pages.
+	 * Register Homepage, Impact, ClaimMentee and NewcomerTasksInfo special pages.
 	 *
 	 * @param array &$list
 	 * @throws ConfigException
 	 */
 	public function onSpecialPage_initList( &$list ) {
 		if ( self::isHomepageEnabled() ) {
-			$pageViewInfoEnabled = \ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
 			$mwServices = MediaWikiServices::getInstance();
+			$pageViewInfoEnabled = \ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
 			$list['Homepage'] = function () use ( $pageViewInfoEnabled, $mwServices ) {
 				return new SpecialHomepage(
 					$this->moduleRegistry,
@@ -211,6 +218,12 @@ class HomepageHooks implements
 					'GrowthExperimentsMentorStore'
 				]
 			];
+			$list['NewcomerTasksInfo'] = function () use ( $mwServices ) {
+				return new SpecialNewcomerTasksInfo(
+					$this->suggestionsInfo,
+					$mwServices->getMainWANObjectCache()
+				);
+			};
 		}
 	}
 

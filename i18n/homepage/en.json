@@ -362,5 +362,12 @@
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Get started",
 	"growthexperiments-addlink-no-suggestions-found-dialog-message": "Suggestions are no longer available on this article.",
 	"growthexperiments-addlink-no-suggestions-found-dialog-button": "Back to suggested edits",
-	"grant-managementorship": "Manage mentorship"
+	"grant-managementorship": "Manage mentorship",
+	"newcomertasksinfo": "Newcomer Tasks",
+	"newcomertasksinfo-no-data": "No data is available.",
+	"newcomertasksinfo-task-count": "$1",
+	"newcomertasksinfo-table-header-task-type": "Task type",
+	"newcomertasksinfo-table-header-task-type-id": "ID",
+	"newcomertasksinfo-table-header-task-count": "Count",
+	"newcomertasksinfo-table-header-topic-type": "Topic ID"
 }

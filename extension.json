@@ -124,7 +124,8 @@
 				"GrowthExperimentsTaskSuggesterFactory",
 				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
 				"GrowthExperimentsLinkRecommendationStore",
-				"GrowthExperimentsLinkRecommendationHelper"
+				"GrowthExperimentsLinkRecommendationHelper",
+				"GrowthExperimentsSuggestionsInfo"
 			]
 		},
 		"parserfunctions": {
