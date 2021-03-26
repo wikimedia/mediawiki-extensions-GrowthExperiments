@@ -43,6 +43,7 @@ $specialPageAliases['cs'] = [
 	'Homepage' => [ 'Domovská_stránka' ],
 	'Impact' => [ 'Dosah_příspěvků' ],
 	'ClaimMentee' => [ 'Převzít_nováčka' ],
+	'NewcomerTasksInfo' => [ 'Informace_o_editačních_tipech' ],
 ];
 
 /** Dansk (Danish) */
