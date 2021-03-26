@@ -62,6 +62,12 @@
 		this.helpPanelSuggestedEditsInteractionHappened = false;
 		/** @member {boolean} Whether the article should be opened in edit mode after loading. */
 		this.shouldOpenArticleInEditMode = false;
+		/**
+		 * @member {boolean} Whether onboarding dialog needs to be shown for the session
+		 * This prevents onboading dialog from being shown multiple times during the same session.
+		 * This is separate from user preference to dismiss onboarding altogether.
+		 */
+		this.onboardingNeedsToBeShown = true;
 	}
 
 	OO.mixinClass( SuggestedEditSession, OO.EventEmitter );
@@ -113,7 +119,8 @@
 			helpPanelShouldOpen: this.helpPanelShouldOpen,
 			helpPanelCurrentTip: this.helpPanelCurrentTip,
 			helpPanelSuggestedEditsInteractionHappened:
-				this.helpPanelSuggestedEditsInteractionHappened
+				this.helpPanelSuggestedEditsInteractionHappened,
+			onboardingNeedsToBeShown: this.onboardingNeedsToBeShown
 		};
 		if ( !this.active ) {
 			throw new Error( 'Trying to save an inactive suggested edit session' );
@@ -161,6 +168,7 @@
 				this.helpPanelCurrentTip = data.helpPanelCurrentTip;
 				this.helpPanelSuggestedEditsInteractionHappened =
 					data.helpPanelSuggestedEditsInteractionHappened;
+				this.onboardingNeedsToBeShown = data.onboardingNeedsToBeShown;
 			} else {
 				mw.storage.session.remove( 'ge-suggestededit-session' );
 			}
