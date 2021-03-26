@@ -102,6 +102,7 @@
 			]
 		}
 	],
+	"callback": "GrowthExperiments\\GrowthHooks::onRegistration",
 	"HookHandlers": {
 		"welcomeSurvey": {
 			"class": "GrowthExperiments\\WelcomeSurveyHooks",
@@ -1331,6 +1332,10 @@
 		"GEMentorshipEnabled": {
 			"description": "Are the mentorship features enabled?",
 			"value": true
+		},
+		"GEMentorshipMigrationStage": {
+			"description": "Migration stage of mentorship. Default value is a PHP constant, decoded in GrowthHooks",
+			"value": "SCHEMA_COMPAT_WRITE_OLD | SCHEMA_COMPAT_READ_OLD"
 		},
 		"GEHomepageMentorsList": {
 			"description": "Title of the wiki page that contains the list of auto-assigned mentors (cf. GEHomepageManualAssignmentMentorsList). May be null if no such page exists.",

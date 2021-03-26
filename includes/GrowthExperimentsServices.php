@@ -11,7 +11,9 @@ use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
@@ -115,6 +117,14 @@ class GrowthExperimentsServices {
 
 	public function getMentorStore(): MentorStore {
 		return $this->coreServices->get( 'GrowthExperimentsMentorStore' );
+	}
+
+	public function getDatabaseMentorStore(): DatabaseMentorStore {
+		return $this->coreServices->get( 'GrowthExperimentsMentorStoreDatabase' );
+	}
+
+	public function getPreferenceMentorStore(): PreferenceMentorStore {
+		return $this->coreServices->get( 'GrowthExperimentsMentorStorePreference' );
 	}
 
 	public function getNewcomerTasksConfigurationLoader(): ConfigurationLoader {

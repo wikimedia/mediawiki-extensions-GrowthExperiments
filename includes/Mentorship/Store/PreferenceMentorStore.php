@@ -42,7 +42,7 @@ class PreferenceMentorStore extends MentorStore {
 	/**
 	 * @inheritDoc
 	 */
-	protected function loadMentorUserUncached(
+	public function loadMentorUserUncached(
 		UserIdentity $mentee,
 		string $mentorRole,
 		$flags

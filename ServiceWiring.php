@@ -16,6 +16,9 @@ use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
+use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
+use GrowthExperiments\Mentorship\Store\MentorStore;
+use GrowthExperiments\Mentorship\Store\MultiWriteMentorStore;
 use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
 use GrowthExperiments\NewcomerTasks\AddLink\DbBackedLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
@@ -203,7 +206,27 @@ return [
 		return $manager;
 	},
 
-	'GrowthExperimentsMentorStore' => function ( MediaWikiServices $services ): PreferenceMentorStore {
+	'GrowthExperimentsMentorStore' => function ( MediaWikiServices $services ): MentorStore {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+		return new MultiWriteMentorStore(
+			(int)$geServices->getGrowthConfig()->get( 'GEMentorshipMigrationStage' ),
+			$geServices->getPreferenceMentorStore(),
+			$geServices->getDatabaseMentorStore()
+		);
+	},
+
+	'GrowthExperimentsMentorStoreDatabase' => function ( MediaWikiServices $services ): DatabaseMentorStore {
+		$lb = GrowthExperimentsServices::wrap( $services )->getLoadBalancer();
+
+		return new DatabaseMentorStore(
+			$services->getUserFactory(),
+			$lb->getLazyConnectionRef( DB_REPLICA ),
+			$lb->getLazyConnectionRef( DB_MASTER ),
+			RequestContext::getMain()->getRequest()->wasPosted()
+		);
+	},
+
+	'GrowthExperimentsMentorStorePreference' => function ( MediaWikiServices $services ): PreferenceMentorStore {
 		return new PreferenceMentorStore(
 			$services->getUserFactory(),
 			$services->getUserOptionsManager(),
