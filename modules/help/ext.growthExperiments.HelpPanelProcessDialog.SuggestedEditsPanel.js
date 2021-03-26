@@ -131,7 +131,8 @@
 		return suggestedEditsPeek.getSuggestedEditsPeek(
 			'suggested-edits-panel-header',
 			this.taskTypeData.messages,
-			this.taskTypeData.difficulty
+			this.taskTypeData.difficulty,
+			this.taskTypeData.iconData
 		);
 	};
 
