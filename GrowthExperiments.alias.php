@@ -204,6 +204,14 @@ $specialPageAliases['ru'] = [
 	'ClaimMentee' => [ 'Утвердить подопечного' ],
 ];
 
+/** Serbo-Croatian (srpskohrvatski / српскохрватски) */
+$specialPageAliases['sh'] = [
+	'WelcomeSurvey' => [ 'Anketa_dobrodošlice' ],
+	'Homepage' => [ 'Početna_stranica' ],
+	'Impact' => [ 'Djejstvo' ],
+	'ClaimMentee' => [ 'Tvrde_pridošlica' ],
+];
+
 /** Albanian (shqip) */
 $specialPageAliases['sq'] = [
 	'WelcomeSurvey' => [ 'SondazhiMirëseardhjes' ],
