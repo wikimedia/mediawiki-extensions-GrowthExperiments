@@ -51,7 +51,8 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			$growthExperimentsServices->getExperimentUserManager(),
 			// This would normally be wiki-powered config, but
 			// there is no need to test this
-			GlobalVarConfig::newInstance()
+			GlobalVarConfig::newInstance(),
+			MediaWikiServices::getInstance()->getUserOptionsManager()
 		);
 	}
 

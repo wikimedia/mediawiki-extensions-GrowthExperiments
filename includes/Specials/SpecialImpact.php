@@ -10,6 +10,7 @@ use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use Html;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
+use MediaWiki\User\UserOptionsLookup;
 use SpecialPage;
 use TitleFactory;
 use User;
@@ -39,12 +40,16 @@ class SpecialImpact extends SpecialPage {
 	/** @var Config */
 	private $wikiConfig;
 
+	/** @var UserOptionsLookup */
+	private $userOptionsLookup;
+
 	/**
 	 * SpecialImpact constructor.
 	 * @param IDatabase $dbr
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param TitleFactory $titleFactory
 	 * @param Config $wikiConfig
+	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param PageViewService|null $pageViewService
 	 */
 	public function __construct(
@@ -52,6 +57,7 @@ class SpecialImpact extends SpecialPage {
 		ExperimentUserManager $experimentUserManager,
 		TitleFactory $titleFactory,
 		Config $wikiConfig,
+		UserOptionsLookup $userOptionsLookup,
 		PageViewService $pageViewService = null
 	) {
 		parent::__construct( 'Impact' );
@@ -60,6 +66,7 @@ class SpecialImpact extends SpecialPage {
 		$this->experimentUserManager = $experimentUserManager;
 		$this->titleFactory = $titleFactory;
 		$this->wikiConfig = $wikiConfig;
+		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**
@@ -120,7 +127,7 @@ class SpecialImpact extends SpecialPage {
 			$this->experimentUserManager,
 			[
 				'isSuggestedEditsEnabled' => SuggestedEdits::isEnabled( $context ),
-				'isSuggestedEditsActivated' => SuggestedEdits::isActivated( $context ),
+				'isSuggestedEditsActivated' => SuggestedEdits::isActivated( $context, $this->userOptionsLookup ),
 			],
 			$this->titleFactory,
 			$this->pageViewService

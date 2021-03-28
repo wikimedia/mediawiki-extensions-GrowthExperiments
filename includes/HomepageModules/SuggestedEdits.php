@@ -21,6 +21,7 @@ use IContextSource;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserOptionsLookup;
 use Message;
 use OOUI\ButtonGroupWidget;
 use OOUI\ButtonWidget;
@@ -119,6 +120,9 @@ class SuggestedEdits extends BaseModule {
 	/** @var ButtonGroupWidget */
 	private $buttonGroupWidget;
 
+	/** @var UserOptionsLookup */
+	private $userOptionsLookup;
+
 	/**
 	 * @param IContextSource $context
 	 * @param Config $wikiConfig
@@ -130,6 +134,7 @@ class SuggestedEdits extends BaseModule {
 	 * @param TaskSuggester $taskSuggester
 	 * @param TitleFactory $titleFactory
 	 * @param ProtectionFilter $protectionFilter
+	 * @param UserOptionsLookup $userOptionsLookup
 	 */
 	public function __construct(
 		IContextSource $context,
@@ -141,7 +146,8 @@ class SuggestedEdits extends BaseModule {
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		TaskSuggester $taskSuggester,
 		TitleFactory $titleFactory,
-		ProtectionFilter $protectionFilter
+		ProtectionFilter $protectionFilter,
+		UserOptionsLookup $userOptionsLookup
 	) {
 		parent::__construct( 'suggested-edits', $context, $wikiConfig, $experimentUserManager );
 		$this->editInfoService = $editInfoService;
@@ -152,6 +158,7 @@ class SuggestedEdits extends BaseModule {
 		$this->taskSuggester = $taskSuggester;
 		$this->titleFactory = $titleFactory;
 		$this->protectionFilter = $protectionFilter;
+		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/** @inheritDoc */
@@ -209,13 +216,20 @@ class SuggestedEdits extends BaseModule {
 	 * Note that even with topic matching disabled, all the relevant backend functionality
 	 * should still work (but logging and UI will be different).
 	 * @param IContextSource $context
+	 * @param UserOptionsLookup $userOptionsLookup
 	 * @return bool
 	 */
-	public static function isTopicMatchingEnabled( IContextSource $context ) {
+	public static function isTopicMatchingEnabled(
+		IContextSource $context,
+		UserOptionsLookup $userOptionsLookup
+	) {
 		return self::isEnabled( $context ) &&
 			$context->getConfig()->get( 'GEHomepageSuggestedEditsEnableTopics' ) && (
 				!$context->getConfig()->get( 'GEHomepageSuggestedEditsTopicsRequiresOptIn' ) ||
-				$context->getUser()->getBoolOption( self::TOPICS_ENABLED_PREF )
+				$userOptionsLookup->getBoolOption(
+					$context->getUser(),
+					self::TOPICS_ENABLED_PREF
+				)
 			);
 	}
 
@@ -272,7 +286,7 @@ class SuggestedEdits extends BaseModule {
 		$data['task-preview'] = [];
 
 		// Preload one task card for users who have the module activated
-		if ( $this->canRender() && self::isActivated( $this->getContext() ) ) {
+		if ( $this->canRender() && self::isActivated( $this->getContext(), $this->userOptionsLookup ) ) {
 			$tasks = $this->getTaskSet();
 			if ( $tasks instanceof StatusValue ) {
 				$data['task-preview'] = [ 'error' => Status::wrap( $tasks )->getMessage()->parse() ];
@@ -296,7 +310,7 @@ class SuggestedEdits extends BaseModule {
 		// When the module is not activated yet, but can be, include module HTML in the
 		// data, for dynamic loading on activation.
 		if ( $this->canRender() &&
-			!self::isActivated( $this->getContext() ) &&
+			!self::isActivated( $this->getContext(), $this->userOptionsLookup ) &&
 			$this->getMode() !== HomepageModule::RENDER_MOBILE_DETAILS
 		) {
 			$data += [
@@ -313,15 +327,19 @@ class SuggestedEdits extends BaseModule {
 	 * Before activation, suggested edits are exposed via the StartEditing module;
 	 * after activation (which happens by interacting with that module) via this one.
 	 * @param IContextSource $context
+	 * @param UserOptionsLookup $userOptionsLookup
 	 * @return bool
 	 */
-	public static function isActivated( IContextSource $context ) {
-		return (bool)$context->getUser()->getBoolOption( self::ACTIVATED_PREF );
+	public static function isActivated(
+		IContextSource $context,
+		UserOptionsLookup $userOptionsLookup
+	) {
+		return $userOptionsLookup->getBoolOption( $context->getUser(), self::ACTIVATED_PREF );
 	}
 
 	/** @inheritDoc */
 	public function getState() {
-		return self::isActivated( $this->getContext() ) ?
+		return self::isActivated( $this->getContext(), $this->userOptionsLookup ) ?
 			self::MODULE_STATE_ACTIVATED :
 			self::MODULE_STATE_UNACTIVATED;
 	}
@@ -373,7 +391,7 @@ class SuggestedEdits extends BaseModule {
 		}
 		// For desktop, we output a different module (start-startediting) in place of suggested edits, so SE
 		// should not render before the module is activated.
-		return $this->canRender() && self::isActivated( $this->getContext() );
+		return $this->canRender() && self::isActivated( $this->getContext(), $this->userOptionsLookup );
 	}
 
 	/** @inheritDoc */
@@ -401,7 +419,7 @@ class SuggestedEdits extends BaseModule {
 				->appendContent( $this->getPager() ) .
 			( new CardWrapper(
 				$this->getContext(),
-				self::isTopicMatchingEnabled( $this->getContext() ),
+				self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ),
 				$this->getContext()->getLanguage()->getDir(),
 				$this->getTaskSet()
 			) )->render() .
@@ -488,7 +506,7 @@ class SuggestedEdits extends BaseModule {
 	private function getFiltersButtonGroupWidget() : ButtonGroupWidget {
 		$buttons = [];
 		$user = $this->getContext()->getUser();
-		if ( self::isTopicMatchingEnabled( $this->getContext() ) ) {
+		if ( self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ) ) {
 			// topicPreferences will be an empty array if the user had saved topics
 			// in the past, or null if they have never saved topics
 			$topicPreferences = $this->newcomerTasksUserOptionsLookup
@@ -550,8 +568,8 @@ class SuggestedEdits extends BaseModule {
 		}
 		$difficultyFilterButtonWidget = new ButtonWidget( [
 			'icon' => 'difficulty-outline',
-			'classes' => self::isTopicMatchingEnabled( $this->getContext() ) ? [ 'topic-matching'
-			] : [ '' ],
+			'classes' => self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ) ?
+				[ 'topic-matching' ] : [ '' ],
 			'label' => $this->getContext()->msg(
 				'growthexperiments-homepage-suggestededits-difficulty-filters-title'
 			)->text(),
@@ -748,7 +766,7 @@ class SuggestedEdits extends BaseModule {
 			'taskTypes' => $taskTypes ?? $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
 			'taskCount' => $this->getUnfilteredTaskSetCountReducedToTaskQueueLength()
 		];
-		if ( self::isTopicMatchingEnabled( $this->getContext() ) ) {
+		if ( self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ) ) {
 			$data['topics'] = $topics ?? $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user );
 		}
 		return array_merge( parent::getActionData(), $data );
@@ -759,7 +777,10 @@ class SuggestedEdits extends BaseModule {
 	 */
 	protected function getJsConfigVars() {
 		return [
-			'GEHomepageSuggestedEditsEnableTopics' => self::isTopicMatchingEnabled( $this->getContext() )
+			'GEHomepageSuggestedEditsEnableTopics' => self::isTopicMatchingEnabled(
+				$this->getContext(),
+				$this->userOptionsLookup
+			)
 		];
 	}
 

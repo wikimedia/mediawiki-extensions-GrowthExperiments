@@ -21,6 +21,7 @@ use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
 use Html;
 use IBufferingStatsdDataFactory;
+use MediaWiki\User\UserOptionsManager;
 use SpecialPage;
 use StatusValue;
 use Throwable;
@@ -44,6 +45,9 @@ class SpecialHomepage extends SpecialPage {
 	/** @var Config */
 	private $wikiConfig;
 
+	/** @var UserOptionsManager */
+	private $userOptionsManager;
+
 	/**
 	 * @var string Unique identifier for this specific rendering of Special:Homepage.
 	 * Used by various EventLogging schemas to correlate events.
@@ -56,13 +60,15 @@ class SpecialHomepage extends SpecialPage {
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param Config $wikiConfig
+	 * @param UserOptionsManager $userOptionsManager
 	 */
 	public function __construct(
 		HomepageModuleRegistry $moduleRegistry,
 		TrackerFactory $trackerFactory,
 		IBufferingStatsdDataFactory $statsdDataFactory,
 		ExperimentUserManager $experimentUserManager,
-		Config $wikiConfig
+		Config $wikiConfig,
+		UserOptionsManager $userOptionsManager
 	) {
 		parent::__construct( 'Homepage', '', false );
 		$this->moduleRegistry = $moduleRegistry;
@@ -81,6 +87,7 @@ class SpecialHomepage extends SpecialPage {
 		}
 		$this->experimentUserManager = $experimentUserManager;
 		$this->wikiConfig = $wikiConfig;
+		$this->userOptionsManager = $userOptionsManager;
 	}
 
 	private function handleTutorialVisit( $par ) {
@@ -92,8 +99,9 @@ class SpecialHomepage extends SpecialPage {
 		}
 		$user = $this->getUser();
 		if ( $this->getRequest()->wasPosted() &&
-			 $user->isRegistered() &&
-			 !$user->getBoolOption( Tutorial::TUTORIAL_PREF ) ) {
+			$user->isRegistered() &&
+			!$this->userOptionsManager->getBoolOption( $user, Tutorial::TUTORIAL_PREF )
+		) {
 			DeferredUpdates::addCallableUpdate( static function () use ( $user ) {
 				$user = $user->getInstanceForUpdate();
 				$user->setOption( Tutorial::TUTORIAL_PREF, 1 );
@@ -159,7 +167,8 @@ class SpecialHomepage extends SpecialPage {
 			Util::maybeAddGuidedTour(
 				$out,
 				TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME,
-				'ext.guidedTour.tour.homepage_welcome'
+				'ext.guidedTour.tour.homepage_welcome',
+				$this->userOptionsManager
 			);
 			$this->renderDesktop();
 		}
@@ -228,7 +237,9 @@ class SpecialHomepage extends SpecialPage {
 			// haven't activated SE yet.
 			'start-startediting' => SuggestedEdits::isEnabledForAnyone(
 				$this->getContext()->getConfig()
-			) && ( !$par && !$isMobile && !SuggestedEdits::isActivated( $this->getContext() ) ),
+			) && ( !$par && !$isMobile &&
+				!SuggestedEdits::isActivated( $this->getContext(), $this->userOptionsManager )
+			),
 			'suggested-edits' => SuggestedEdits::isEnabled( $this->getContext() ),
 			'impact' => true,
 			'mentorship' => $this->wikiConfig->get( 'GEMentorshipEnabled' ),

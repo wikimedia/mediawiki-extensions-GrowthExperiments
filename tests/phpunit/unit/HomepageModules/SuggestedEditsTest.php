@@ -15,6 +15,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use Language;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
+use MediaWiki\User\UserOptionsLookup;
 use OOUI\BlankTheme;
 use OOUI\Theme;
 use OutputPage;
@@ -70,8 +71,11 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 		$userMock = $this->getMockBuilder( \User::class )
 			->disableOriginalConstructor()
 			->getMock();
-		$userMock->method( 'getBoolOption' )
-			->with( SuggestedEdits::ACTIVATED_PREF )
+		$userOptionsLookupMock = $this->getMockBuilder( UserOptionsLookup::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$userOptionsLookupMock->method( 'getBoolOption' )
+			->with( $userMock, SuggestedEdits::ACTIVATED_PREF )
 			->willReturn( true );
 		$requestMock = $this->getMockBuilder( WebRequest::class )
 			->disableOriginalConstructor()
@@ -137,8 +141,8 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 			$newcomerTasksUserOptionsLookupMock,
 			$taskSuggester,
 			$titleFactoryMock,
-			$protectionFilter
+			$protectionFilter,
+			$userOptionsLookupMock
 		);
 	}
-
 }
