@@ -65,6 +65,7 @@ return [
 	'GrowthExperimentsWikiPageConfig' => function ( MediaWikiServices $services ): Config {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		return new WikiPageConfig(
+			LoggerFactory::getInstance( 'GrowthExperiments' ),
 			$services->getTitleFactory(),
 			$geServices->getWikiPageConfigLoader(),
 			$services->getMainConfig()->get( 'GEWikiConfigPageTitle' )
