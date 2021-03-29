@@ -68,6 +68,7 @@ class SpecialNewcomerTasksInfo extends SpecialPage {
 			( new Tag( 'td' ) )->appendContent(
 				$out->msg( 'newcomertasksinfo-task-count' )
 					->numParams( $info['totalCount'] )
+					->text()
 			)
 		);
 		$taskTypeTable = ( new Tag( 'table' ) )->addClasses( [ 'wikitable' ] )
