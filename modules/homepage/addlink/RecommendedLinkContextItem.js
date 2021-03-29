@@ -97,6 +97,7 @@ RecommendedLinkContextItem.prototype.setup = function () {
 	// method does too), otherwise the label stays empty.
 	if ( this.context.isMobile() ) {
 		this.updateLabelPreview();
+		this.setupHelpButton();
 	}
 };
 
@@ -215,6 +216,29 @@ RecommendedLinkContextItem.prototype.moveToSuggestion = function ( index ) {
 	if ( OO.ui.isMobile() ) {
 		// On mobile, deactivate the surface so that the context appears
 		this.context.getSurface().getView().deactivate( false, false, true );
+	}
+};
+
+/**
+ * Replace close button with help button
+ *
+ * @private
+ */
+RecommendedLinkContextItem.prototype.setupHelpButton = function () {
+	// TODO: Update invisible label when copy is finalized
+	this.helpButton = new OO.ui.ButtonWidget( {
+		classes: [ 'mw-ge-recommendedLinkContextItem-help-button' ],
+		framed: false,
+		icon: 'helpNotice'
+	} );
+	this.helpButton.on( 'click', function () {
+		mw.hook( 'growthExperiments.contextItem.openHelpPanel' ).fire();
+	} );
+
+	this.$head.append( this.helpButton.$element );
+
+	if ( this.closeButton ) {
+		this.closeButton.$element.remove();
 	}
 };
 

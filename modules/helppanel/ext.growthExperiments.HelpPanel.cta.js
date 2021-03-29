@@ -314,6 +314,24 @@
 		// Attach or detach the help panel CTA in response to hooks from MobileFrontend,
 		// and set the logger's editor interface.
 		if ( OO.ui.isMobile() ) {
+			if ( suggestedEditSession.shouldOpenArticleInEditMode ) {
+				/* Hide CTA if the article is opened in edit mode automatically
+				 * since the CTA appears on top of the context item on mobile.
+				 * Help panel can be invoked from help button in the context item.
+				 */
+				$buttonWrapper.addClass( 'oo-ui-element-hidden' );
+				mw.hook( 'growthExperiments.contextItem.openHelpPanel' ).add(
+					function () {
+						var prevScrollPosition = $( document ).scrollTop();
+						openHelpPanel( 'suggested-edits' ).closing.done( function () {
+							// When help panel closes, article is scrolled to 0.
+							// Make sure annotation is visible.
+							$( document ).scrollTop( prevScrollPosition );
+						} );
+					}
+				);
+			}
+
 			mw.hook( 'mobileFrontend.editorOpened' ).add(
 				function ( editor ) {
 					helpPanelProcessDialog.logger.setEditor( editor );
