@@ -3,6 +3,9 @@
 namespace GrowthExperiments\Maintenance;
 
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\NewcomerTasks\OresTopicTrait;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
+use GrowthExperiments\NewcomerTasks\TaskType\NullTaskTypeHandler;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
 use Status;
@@ -16,11 +19,20 @@ if ( getenv( 'MW_INSTALL_PATH' ) !== false ) {
 }
 
 require_once $path . '/maintenance/Maintenance.php';
+require_once dirname( __DIR__ ) . '/includes/NewcomerTasks/OresTopicTrait.php';
 
 /**
  * List the number of tasks available for each topic
  */
 class ListTaskCounts extends Maintenance {
+
+	use OresTopicTrait;
+
+	/** @var string 'growth' or 'ores' */
+	private $topicType;
+
+	/** @var TaskSuggester */
+	private $taskSuggester;
 
 	public function __construct() {
 		parent::__construct();
@@ -28,20 +40,107 @@ class ListTaskCounts extends Maintenance {
 
 		$this->addDescription( 'List the number of tasks available for each topic.' );
 		$this->addOption( 'tasktype', 'Task types to query, specify multiple times for multiple ' .
-				'task types. Defaults to all task types.',
-			false, true, false, true );
+									  'task types. Defaults to all task types.', false, true, false, true );
+		$this->addOption( 'topic', 'Topics to query, specify multiple times for multiple ' .
+									  'topics. Defaults to all topics.', false, true, false, true );
+		$this->addOption( 'topictype', "Topic type to use ('ores' or 'growth').", false, true );
 	}
 
 	/** @inheritDoc */
 	public function execute() {
-		// FIXME: Integrate with GrowthExperimentsSuggestionsInfo service
-		$services = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
-		$taskSuggester = $services->getTaskSuggesterFactory()->create();
-		$dummyUser = new User;
-		$allTaskTypes = array_keys( $services->getNewcomerTasksConfigurationLoader()->getTaskTypes() );
-		$taskTypes = $this->getOption( 'tasktype', $allTaskTypes );
-		$topicIds = array_keys( $services->getNewcomerTasksConfigurationLoader()->getTopics() );
+		$this->topicType = $this->getOption( 'topictype', 'growth' );
+		if ( !in_array( $this->topicType, [ 'ores', 'growth' ], true ) ) {
+			$this->fatalError( 'topictype must be one of: growth, ores' );
+		}
 
+		[ $taskTypes, $topics ] = $this->getTaskTypesAndTopics();
+		[ $taskCounts, $taskTypeCounts, $topicCounts ] = $this->getStats( $taskTypes, $topics );
+		$this->printTable( $taskTypes, $topics, $taskCounts, $taskTypeCounts, $topicCounts );
+	}
+
+	/**
+	 * This method replaces the normal configuration loader and as such must be called first.
+	 * @return array{0:string[],1:string[]} [ task type ID list, topic ID list ]
+	 */
+	private function getTaskTypesAndTopics(): array {
+		$nullTaskType = NullTaskTypeHandler::getNullTaskType( '_null' );
+		$this->replaceConfigurationLoader( $this->topicType === 'ores', [ $nullTaskType ] );
+
+		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+
+		$allTaskTypes = array_keys( $growthServices->getNewcomerTasksConfigurationLoader()->getTaskTypes() );
+		$taskTypes = $this->getOption( 'tasktype', $allTaskTypes );
+		if ( array_diff( $taskTypes, $allTaskTypes ) ) {
+			$this->fatalError( 'Invalid task types: ' . implode( ', ', array_diff( $taskTypes, $allTaskTypes ) ) );
+		}
+		$taskTypes = array_diff( $taskTypes, [ '_null' ] );
+
+		$allTopics = array_keys( $growthServices->getNewcomerTasksConfigurationLoader()->getTopics() );
+		$topics = $this->getOption( 'topic', $allTopics );
+		if ( array_diff( $topics, $allTopics ) ) {
+			$this->fatalError( 'Invalid topics: ' . implode( ', ', array_diff( $topics, $allTopics ) ) );
+		}
+
+		return [ $taskTypes, $topics ];
+	}
+
+	/**
+	 * @param string[] $taskTypes List of task type IDs to count for
+	 * @param string[] $topics List of topic IDs to count for
+	 * @return array{0:int[][],1:int[],2:int[]} An array with three elements:
+	 *   - a matrix of task type ID => topic ID => count
+	 *   - a list of task type ID => total count
+	 *   - a list of topic ID => total count.
+	 *   Note that the second and third elements are not the same as column and row totals
+	 *   of the first element, because an article can have multiple topics and multiple
+	 *   task types, and not all articles have task types, and some (the recently created)
+	 *   might not even have topics.
+	 */
+	private function getStats( $taskTypes, $topics ): array {
+		// FIXME: Integrate with GrowthExperimentsSuggestionsInfo service, need a more robust
+		//   implementation of OresTopicTrait functionality first.
+		$taskCounts = $taskTypeCounts = $topicCounts = [];
+		foreach ( $taskTypes as $taskType ) {
+			if ( $taskType === '_null' ) {
+				continue;
+			}
+			foreach ( $topics as $topic ) {
+				$taskCounts[$taskType][$topic] = $this->getTaskCount( [ $taskType ], [ $topic ] );
+			}
+			$taskTypeCounts[$taskType] = $this->getTaskCount( [ $taskType ], [] );
+		}
+		foreach ( $topics as $topic ) {
+			$topicCounts[$topic] = $this->getTaskCount( [ '_null' ], [ $topic ] );
+		}
+
+		return [ $taskCounts, $taskTypeCounts, $topicCounts ];
+	}
+
+	/**
+	 * @param string[] $taskTypes
+	 * @param string[] $topics
+	 * @return int
+	 */
+	private function getTaskCount( $taskTypes, $topics ): int {
+		if ( !$this->taskSuggester ) {
+			$services = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+			$this->taskSuggester = $services->getTaskSuggesterFactory()->create();
+		}
+		$tasks = $this->taskSuggester->suggest( new User, $taskTypes, $topics, 0, null, [ 'useCache' => false ] );
+		if ( $tasks instanceof StatusValue ) {
+			$this->fatalError( Status::wrap( $tasks )->getWikiText( null, null, 'en' ) );
+		}
+		return $tasks->getTotalCount();
+	}
+
+	/**
+	 * @param string[] $taskTypes List of task type IDs to count for
+	 * @param string[] $topics List of topic IDs to count for
+	 * @param int[][] $taskCounts task type ID => topic ID => count
+	 * @param int[] $taskTypeCounts task type ID => total count
+	 * @param int[] $topicCounts topic ID => total count
+	 */
+	private function printTable( $taskTypes, $topics, array $taskCounts, array $taskTypeCounts, array $topicCounts ) {
 		// Output header
 		$this->output( str_pad( 'Topic', 25, ' ' ) . ' ' );
 		foreach ( $taskTypes as $taskType ) {
@@ -49,15 +148,11 @@ class ListTaskCounts extends Maintenance {
 		}
 		$this->output( "\n" . str_repeat( '-', 80 ) . "\n" );
 
-		foreach ( $topicIds as $topicId ) {
-			$this->output( str_pad( $topicId, 25, ' ' ) . ' ' );
+		foreach ( $topics as $topic ) {
+			$this->output( str_pad( $topic, 25, ' ' ) . ' ' );
 			foreach ( $taskTypes as $taskType ) {
-				$tasks = $taskSuggester->suggest( $dummyUser, [ $taskType ], [ $topicId ], 1 );
-				if ( $tasks instanceof StatusValue ) {
-					$this->fatalError( Status::wrap( $tasks )->getWikiText( null, null, 'en' ) );
-				}
-				$numTasks = $tasks->getTotalCount();
-				$this->output( str_pad( $numTasks, 3, ' ', STR_PAD_RIGHT ) . str_repeat( ' ', 8 ) );
+				$this->output( str_pad( $taskCounts[$taskType][$topic], 3, ' ', STR_PAD_RIGHT )
+							   . str_repeat( ' ', 8 ) );
 			}
 			$this->output( "\n" );
 		}

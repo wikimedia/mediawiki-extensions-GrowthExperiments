@@ -14,13 +14,11 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdater;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoaderTrait;
+use GrowthExperiments\NewcomerTasks\OresTopicTrait;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\NullTaskTypeHandler;
-use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use GrowthExperiments\NewcomerTasks\Topic\RawOresTopic;
 use IDBAccessObject;
 use Maintenance;
 use MediaWiki\Cache\LinkBatchFactory;
@@ -47,12 +45,15 @@ if ( getenv( 'MW_INSTALL_PATH' ) !== false ) {
 }
 
 require_once $path . '/maintenance/Maintenance.php';
+require_once dirname( __DIR__ ) . '/includes/NewcomerTasks/OresTopicTrait.php';
 
 /**
  * Update the growthexperiments_link_recommendations table to ensure there are enough
  * recommendations for all topics
  */
 class RefreshLinkRecommendations extends Maintenance {
+
+	use OresTopicTrait;
 
 	/** @var Config */
 	private $growthConfig;
@@ -212,7 +213,11 @@ class RefreshLinkRecommendations extends Maintenance {
 	}
 
 	protected function initServices(): void {
-		$this->replaceConfigurationLoader();
+		// Extend the task type configuration with a custom "candidate" task type, which
+		// finds articles which do not have link recommendations.
+		$linkRecommendationCandidateTaskType = NullTaskTypeHandler::getNullTaskType(
+			'_nolinkrecommendations', '-hasrecommendation:link' );
+		$this->replaceConfigurationLoader( true, [ $linkRecommendationCandidateTaskType ] );
 
 		$services = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
@@ -229,62 +234,6 @@ class RefreshLinkRecommendations extends Maintenance {
 		$this->linkRecommendationStore = $growthServices->getLinkRecommendationStore();
 		$this->linkRecommendationHelper = $growthServices->getLinkRecommendationHelper();
 		$this->searchIndexUpdater = $growthServices->getSearchIndexUpdater();
-	}
-
-	/**
-	 * Use fake topic configuration consisting of raw ORES topics, so we can use TaskSuggester
-	 * to check the number of suggestions per ORES topic. Extend the task type configuration
-	 * with a null task type, which generates the same generic search filters as all other
-	 * task types, to handle non-task-type-specific filtering.
-	 */
-	protected function replaceConfigurationLoader(): void {
-		$services = MediaWikiServices::getInstance();
-		$services->addServiceManipulator( 'GrowthExperimentsNewcomerTasksConfigurationLoader',
-			function ( ConfigurationLoader $configurationLoader, MediaWikiServices $services ) {
-				return new class ( $configurationLoader ) implements ConfigurationLoader {
-					use ConfigurationLoaderTrait;
-
-					/** @var ConfigurationLoader */
-					private $realConfigurationLoader;
-
-					/** @var TaskType[] */
-					private $extraTaskTypes;
-
-					/** @var RawOresTopic[] */
-					private $topics;
-
-					/** @param ConfigurationLoader $realConfigurationLoader */
-					public function __construct( ConfigurationLoader $realConfigurationLoader ) {
-						$this->realConfigurationLoader = $realConfigurationLoader;
-						$this->extraTaskTypes = [
-							NullTaskTypeHandler::getNullTaskType( 'nolinkrecommendations', '-hasrecommendation:link' ),
-						];
-						$this->topics = array_map( function ( string $oresId ) {
-							return new RawOresTopic( $oresId, $oresId );
-						}, array_keys( ArticleTopicFeature::TERMS_TO_LABELS ) );
-					}
-
-					/** @inheritDoc */
-					public function loadTaskTypes() {
-						return array_merge( $this->realConfigurationLoader->loadTaskTypes(), $this->extraTaskTypes );
-					}
-
-					/** @inheritDoc */
-					public function loadTopics() {
-						return $this->topics;
-					}
-
-					/** @inheritDoc */
-					public function loadExcludedTemplates() {
-						return $this->realConfigurationLoader->loadExcludedTemplates();
-					}
-
-					/** @inheritDoc */
-					public function loadExcludedCategories() {
-						return $this->realConfigurationLoader->loadExcludedCategories();
-					}
-				};
-			} );
 	}
 
 	protected function initConfig(): void {
@@ -324,7 +273,7 @@ class RefreshLinkRecommendations extends Maintenance {
 			$this->output( "    fetching $batchSize tasks...\n" );
 			$candidates = $this->taskSuggester->suggest(
 				$this->searchUser,
-				[ 'nolinkrecommendations' ],
+				[ '_nolinkrecommendations' ],
 				[ $oresTopic ],
 				$batchSize,
 				null,
