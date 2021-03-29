@@ -145,8 +145,16 @@ class ListTaskCounts extends Maintenance {
 	 * @param int[] $taskTypeCounts task type ID => total count
 	 */
 	private function reportTaskCounts( array $taskCounts, array $taskTypeCounts ): void {
+		// Limit to link recommendations to avoid excessive use of statsd metrics as we don't
+		// care too much about the others. Maybe there will be a nicer way to handle this in
+		// the future with Prometheus.
 		$taskTypeId = LinkRecommendationTaskTypeHandler::TASK_TYPE_ID;
-		$taskData = $taskCounts[$taskTypeId];
+		$taskData = $taskCounts[$taskTypeId] ?? null;
+		if ( $taskData === null ) {
+			$this->output( "No link recommendation task type, skipping statsd\n" );
+			return;
+		}
+
 		$taskTypeCount = $taskTypeCounts[$taskTypeId];
 		$dataFactory = MediaWikiServices::getInstance()->getPerDbNameStatsdDataFactory();
 		foreach ( $taskData as $topic => $count ) {
