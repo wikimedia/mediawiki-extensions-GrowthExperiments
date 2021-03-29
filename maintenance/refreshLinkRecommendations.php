@@ -153,8 +153,16 @@ class RefreshLinkRecommendations extends Maintenance {
 				// still write it, which would be just a waste of space.
 				[ 'debug' => true ]
 			);
+
+			// TaskSuggester::suggest() only returns StatusValue when there's an error.
+			if ( $suggestions instanceof StatusValue ) {
+				$this->error( Status::wrap( $suggestions )->getWikiText( false, false, 'en' ) );
+				continue;
+			}
+
 			$recommendationsNeeded = $this->recommendationTaskType->getMinimumTasksPerTopic()
 				- $suggestions->getTotalCount();
+
 			// TODO can we reuse actual Suggester / SearchStrategy / etc code here?
 			if ( $recommendationsNeeded <= 0 ) {
 				$this->output( "    no new tasks needed\n" );
