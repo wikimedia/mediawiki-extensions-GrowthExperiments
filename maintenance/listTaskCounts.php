@@ -2,9 +2,11 @@
 
 namespace GrowthExperiments\Maintenance;
 
+use FormatJson;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\OresTopicTrait;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\NullTaskTypeHandler;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
@@ -44,6 +46,8 @@ class ListTaskCounts extends Maintenance {
 		$this->addOption( 'topic', 'Topics to query, specify multiple times for multiple ' .
 									  'topics. Defaults to all topics.', false, true, false, true );
 		$this->addOption( 'topictype', "Topic type to use ('ores' or 'growth').", false, true );
+		$this->addOption( 'statsd', 'Send topic counts to statsd. For link recommendations only.' );
+		$this->addOption( 'output', "'ascii-table' (default), 'json' or 'none'", false, true );
 	}
 
 	/** @inheritDoc */
@@ -55,7 +59,10 @@ class ListTaskCounts extends Maintenance {
 
 		[ $taskTypes, $topics ] = $this->getTaskTypesAndTopics();
 		[ $taskCounts, $taskTypeCounts, $topicCounts ] = $this->getStats( $taskTypes, $topics );
-		$this->printTable( $taskTypes, $topics, $taskCounts, $taskTypeCounts, $topicCounts );
+		if ( $this->hasOption( 'statsd' ) ) {
+			$this->reportTaskCounts( $taskCounts, $taskTypeCounts );
+		}
+		$this->printResults( $taskTypes, $topics, $taskCounts, $taskTypeCounts, $topicCounts );
 	}
 
 	/**
@@ -134,13 +141,40 @@ class ListTaskCounts extends Maintenance {
 	}
 
 	/**
+	 * @param int[][] $taskCounts task type ID => topic ID => count
+	 * @param int[] $taskTypeCounts task type ID => total count
+	 */
+	private function reportTaskCounts( array $taskCounts, array $taskTypeCounts ): void {
+		$taskTypeId = LinkRecommendationTaskTypeHandler::TASK_TYPE_ID;
+		$taskData = $taskCounts[$taskTypeId];
+		$taskTypeCount = $taskTypeCounts[$taskTypeId];
+		$dataFactory = MediaWikiServices::getInstance()->getPerDbNameStatsdDataFactory();
+		foreach ( $taskData as $topic => $count ) {
+			$dataFactory->updateCount( "growthexperiments.taskcount.$taskTypeId.$topic", $count );
+		}
+		$dataFactory->updateCount( "growthexperiments.tasktypecount.$taskTypeId", $taskTypeCount );
+	}
+
+	/**
 	 * @param string[] $taskTypes List of task type IDs to count for
 	 * @param string[] $topics List of topic IDs to count for
 	 * @param int[][] $taskCounts task type ID => topic ID => count
 	 * @param int[] $taskTypeCounts task type ID => total count
 	 * @param int[] $topicCounts topic ID => total count
 	 */
-	private function printTable( $taskTypes, $topics, array $taskCounts, array $taskTypeCounts, array $topicCounts ) {
+	private function printResults( $taskTypes, $topics, array $taskCounts, array $taskTypeCounts, array $topicCounts ) {
+		$output = $this->getOption( 'output', 'ascii-table' );
+		if ( $output === 'none' ) {
+			return;
+		} elseif ( $output === 'json' ) {
+			$this->output( FormatJson::encode( [
+				'taskCounts' => $taskCounts,
+				'taskTypeCounts' => $taskTypeCounts,
+				'topicCounts' => $topicCounts,
+			], false, FormatJson::UTF8_OK ) );
+			return;
+		}
+
 		// Output header
 		$this->output( str_pad( 'Topic', 25, ' ' ) . ' ' );
 		foreach ( $taskTypes as $taskType ) {
