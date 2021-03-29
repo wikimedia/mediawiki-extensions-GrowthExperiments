@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dnshitobu"
+			"Dnshitobu",
+			"Yakubu Fadilatu"
 		]
 	},
-	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Yɛltɔɣili shɛhira"
+	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Yɛltɔɣili shɛhira",
+	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "Yaɣimi zaa",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Piligi ma"
 }

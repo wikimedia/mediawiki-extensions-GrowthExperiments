@@ -16,6 +16,7 @@
 			"Pamputt",
 			"Pols12",
 			"Pyb",
+			"Scratcheur-2020Send",
 			"Tektasc",
 			"Thibaut120094",
 			"Trizek",
@@ -384,5 +385,11 @@
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Démarrer",
 	"growthexperiments-addlink-no-suggestions-found-dialog-message": "Les suggestions ne sont plus disponibles pour cet article.",
 	"growthexperiments-addlink-no-suggestions-found-dialog-button": "Retour aux modifications suggérées",
-	"grant-managementorship": "Gérer le tutorat"
+	"grant-managementorship": "Gérer le tutorat",
+	"newcomertasksinfo": "Tâche de nouvel arrivant",
+	"newcomertasksinfo-no-data": "Aucune donnée disponible.",
+	"newcomertasksinfo-table-header-task-type": "Type de tâche",
+	"newcomertasksinfo-table-header-task-type-id": "ID",
+	"newcomertasksinfo-table-header-task-count": "Compteur",
+	"newcomertasksinfo-table-header-topic-type": "ID de sujet"
 }

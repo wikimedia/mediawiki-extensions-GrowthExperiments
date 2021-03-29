@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Papuass"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Iegūt jaunpienācējiem, piemērotu uzdevumu rekomendācijas.",
+	"apihelp-query+growthtasks-param-debug": "Pievienot izvadam atkļūdošanas informāciju."
+}

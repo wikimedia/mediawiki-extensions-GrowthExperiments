@@ -233,6 +233,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "تطوير مقالات صغيرة",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "إضافة روابط بين المقالات",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "إضافة روابط بين المقالات",
+	"growthexperiments-homepage-suggestededits-tasktype-ai-description": "مقترحات حدّدها الذكاء الاصطناعي (AI)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "سيرة ذاتية (الكل)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "سيرة ذاتية (نساء)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "أكلات وشراب",
@@ -371,5 +372,11 @@
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "فلنبدأ",
 	"growthexperiments-addlink-no-suggestions-found-dialog-message": "لم تعد المقترحات متوفّرة في هذه المقالة.",
 	"growthexperiments-addlink-no-suggestions-found-dialog-button": "الرجوع إلى التعديلات المقترحة",
-	"grant-managementorship": "إدارة الإرشاد"
+	"grant-managementorship": "إدارة الإرشاد",
+	"newcomertasksinfo": "مهام الوافدين الجدد",
+	"newcomertasksinfo-no-data": "بيانات غير متوفرة.",
+	"newcomertasksinfo-table-header-task-type": "نوع المهمة",
+	"newcomertasksinfo-table-header-task-type-id": "المعرّف",
+	"newcomertasksinfo-table-header-task-count": "العدد",
+	"newcomertasksinfo-table-header-topic-type": "معرّف الموضوع"
 }

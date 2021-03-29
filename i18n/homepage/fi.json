@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Joquliina",
 			"Nike",
 			"Pyscowicz"
 		]
@@ -12,5 +13,11 @@
 	"growthexperiments-homepage-email-button-noemail": "Lisää sähköpostiosoite",
 	"growthexperiments-homepage-email-button-unconfirmed": "Hanki uusi linkki",
 	"growthexperiments-homepage-tutorial-header": "Opi muokkaamaan",
-	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Luo uusi artikkeli"
+	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Luo uusi artikkeli",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Esimerkkivirke",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Ohjesäännöt",
+	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "Ohita kaikki",
+	"newcomertasksinfo-no-data": "Tietoja ei ole saatavilla.",
+	"newcomertasksinfo-table-header-task-type-id": "Tunniste",
+	"newcomertasksinfo-table-header-task-count": "Määrä"
 }

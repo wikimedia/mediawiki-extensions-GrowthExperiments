@@ -3,6 +3,7 @@
 		"authors": [
 			"Al Riaz Uddin Ripon",
 			"Ankan",
+			"R4356th",
 			"Sohom Datta",
 			"Titodutta",
 			"YahyA",
@@ -342,5 +343,13 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "সংযোগের গন্তব্য পরিবর্তন করতে সংযোগের পাশে সম্পাদনা পেন্সিলে $1 ক্লিক করুন",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "অন্য/বলতে চাই না",
 	"growthexperiments-addlink-rejectiondialog-action-done": "সম্পন্ন",
-	"grant-managementorship": "মেন্টরশিপ ব্যবস্থাপনা"
+	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "সব বাদ দিন",
+	"growthexperiments-addlink-onboarding-dialog-title": "ভূমিকা",
+	"growthexperiments-addlink-onboarding-dialog-progress": "$2-এর $1",
+	"growthexperiments-addlink-onboarding-dialog-label-next": "পরবর্তী ভূমিকা পদক্ষেপ",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "শুরু করুন",
+	"growthexperiments-addlink-no-suggestions-found-dialog-message": "এই নিবন্ধে আর পরামর্শ উপলব্ধ নেই।",
+	"grant-managementorship": "মেন্টরশিপ ব্যবস্থাপনা",
+	"newcomertasksinfo": "নবাগতদের কাজ",
+	"newcomertasksinfo-table-header-task-type-id": "আইডি"
 }

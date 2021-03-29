@@ -14,5 +14,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Tambah pautan di antara rencana",
 	"growthexperiments-addlink-context-button-accept": "Ya",
 	"growthexperiments-addlink-context-button-reject": "Tidak",
-	"growthexperiments-addlink-context-button-next": "Langkau"
+	"growthexperiments-addlink-context-button-next": "Langkau",
+	"growthexperiments-addlink-no-suggestions-found-dialog-message": "Cadangan tidak lagi tersedia di rencana ini."
 }

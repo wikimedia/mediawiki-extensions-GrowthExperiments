@@ -5,6 +5,7 @@
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|kas tas ir?]])",
+	"growthexperiments-confirmemail-emailhelp": "E-pasts ir nepieciešams, lai atgūtu savu kontu gadījumā, ja tiek pazaudēta parole.",
 	"growthexperiments-confirmemail-emailrecommended": "E-pasta adrese (ieteicama)",
 	"growthexperiments-confirmemail-confirm-button": "Apstiprināt e-pasta adresi"
 }

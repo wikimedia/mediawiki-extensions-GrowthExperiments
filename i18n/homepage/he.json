@@ -365,5 +365,11 @@
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "מדריך למתחילים",
 	"growthexperiments-addlink-no-suggestions-found-dialog-message": "הצעות כבר לא זמינות בערך הזה.",
 	"growthexperiments-addlink-no-suggestions-found-dialog-button": "חזרה לעריכות מוצעות",
-	"grant-managementorship": "ניהול חונכות"
+	"grant-managementorship": "ניהול חונכות",
+	"newcomertasksinfo": "משימות למתחילים",
+	"newcomertasksinfo-no-data": "אין נתונים זמינים.",
+	"newcomertasksinfo-table-header-task-type": "סוג המשימה",
+	"newcomertasksinfo-table-header-task-type-id": "מזהה",
+	"newcomertasksinfo-table-header-task-count": "מספר",
+	"newcomertasksinfo-table-header-topic-type": "מזהה נושא"
 }

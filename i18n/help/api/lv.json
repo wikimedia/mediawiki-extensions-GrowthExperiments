@@ -4,5 +4,7 @@
 			"Papuass"
 		]
 	},
+	"apihelp-helppanelquestionposter-param-body": "Dalībnieka iesniegtais jautājuma teksts.",
+	"apihelp-helppanelquestionposter-param-source": "Jautājuma iesniegšanas metode.",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Tev ir jāpieslēdzas, lai uzdotu jautājumu."
 }

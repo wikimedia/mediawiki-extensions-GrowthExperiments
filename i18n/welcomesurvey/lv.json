@@ -17,6 +17,7 @@
 	"welcomesurvey-sidebar-privacy-text": "Wikimedia Foundation izmantos {{GENDER:$2|tavas}} atbildes, lai palīdzētu sākt Vikipēdijas labošanu. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Uzzini vairāk par datiem par jaunajiem dalībniekiem",
 	"welcomesurvey-sidebar-editing-title": "Labošanas sākšana",
+	"welcomesurvey-sidebar-editing-text": "Ikviens var labot gandrīz visas lapas un katru stundu tiek veiktas simtiem izmaiņas, lai pievienotu saturu, labotu kļūdas un uzlabotu lasāmību. Šīs lapas var noderēt, ja {{GENDER:$1|tu esi ieinteresēts|tu esi ieinteresēta}} palīdzēt.",
 	"welcomesurvey-sidebar-editing-link1-text": "Apmācība",
 	"welcomesurvey-sidebar-editing-link2-text": "Palīdzības dienests",
 	"welcomesurvey-question-reason-label": "Kāpēc tu izveidoji Vikipēdijas kontu?",

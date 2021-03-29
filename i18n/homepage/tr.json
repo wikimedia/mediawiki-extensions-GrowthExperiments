@@ -228,6 +228,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Kısa maddeleri genişletin",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Maddeler arasına bağlantılar ekleyin",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Maddeler arasına bağlantılar ekleyin",
+	"growthexperiments-homepage-suggestededits-tasktype-ai-description": "Yapay zeka (AI) önerileri",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biyografi (tümü)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biyografi (kadın)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Yiyecek ve içecek",
@@ -365,5 +366,11 @@
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Başla",
 	"growthexperiments-addlink-no-suggestions-found-dialog-message": "Öneriler artık bu sayfada mevcut değil.",
 	"growthexperiments-addlink-no-suggestions-found-dialog-button": "Önerilen değişikliklere geri dön",
-	"grant-managementorship": "Danışmanlığı yönet"
+	"grant-managementorship": "Danışmanlığı yönet",
+	"newcomertasksinfo": "Yeni başlayan Görevleri",
+	"newcomertasksinfo-no-data": "Veri yok.",
+	"newcomertasksinfo-table-header-task-type": "Görev türü",
+	"newcomertasksinfo-table-header-task-type-id": "Kimlik",
+	"newcomertasksinfo-table-header-task-count": "Adet",
+	"newcomertasksinfo-table-header-topic-type": "Konu Kimliği"
 }
