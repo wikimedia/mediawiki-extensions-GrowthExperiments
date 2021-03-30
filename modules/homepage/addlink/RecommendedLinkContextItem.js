@@ -53,16 +53,23 @@ RecommendedLinkContextItem.prototype.setup = function () {
 	} );
 	$buttons = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-buttons' );
 
-	this.yesButton = new OO.ui.ButtonWidget( {
+	this.yesButton = new OO.ui.ToggleButtonWidget( {
 		icon: 'check',
 		label: mw.msg( 'growthexperiments-addlink-context-button-accept' ),
 		classes: [ 'mw-ge-recommendedLinkContextItem-buttons-yes' ]
 	} );
-	this.noButton = new OO.ui.ButtonWidget( {
+	this.noButton = new OO.ui.ToggleButtonWidget( {
 		icon: 'close',
 		label: mw.msg( 'growthexperiments-addlink-context-button-reject' ),
 		classes: [ 'mw-ge-recommendedLinkContextItem-buttons-no' ]
 	} );
+	this.reopenRejectionDialogButton = new OO.ui.ButtonWidget( {
+		icon: 'ellipsis',
+		framed: false,
+		title: mw.msg( 'growthexperiments-addlink-rejectiondialog-reopen-button-title' ),
+		classes: [ 'mw-ge-recommendedLinkContextItem-buttons-no-reopen' ]
+	} );
+	this.reopenRejectionDialogButton.toggle( this.model.isRejected() );
 	this.prevButton = new OO.ui.ButtonWidget( {
 		icon: 'previous',
 		framed: false,
@@ -82,12 +89,13 @@ RecommendedLinkContextItem.prototype.setup = function () {
 	) );
 	this.$title.append( this.buildProgressIndicators( recommendationInfo.index, recommendationInfo.total ) );
 
-	this.yesButton.setFlags( this.model.isAccepted() ? [ 'progressive', 'primary' ] : [] );
-	this.noButton.setFlags( this.model.isRejected() ? [ 'progressive', 'primary' ] : [] );
+	this.yesButton.setValue( this.model.isAccepted() );
+	this.noButton.setValue( this.model.isRejected() );
 	this.prevButton.setDisabled( recommendationInfo.index === 0 );
 
-	this.yesButton.connect( this, { click: [ 'setAccepted', true ] } );
-	this.noButton.connect( this, { click: [ 'setAccepted', false ] } );
+	this.yesButton.connect( this, { click: [ 'setAccepted', this.model.isAccepted() ? null : true ] } );
+	this.noButton.connect( this, { click: [ 'setAccepted', this.model.isRejected() ? null : false ] } );
+	this.reopenRejectionDialogButton.connect( this, { click: [ 'setAccepted', false ] } );
 	this.prevButton.connect( this, { click: [ 'moveToSuggestion', recommendationInfo.index - 1 ] } );
 	this.nextButton.connect( this, { click: [ 'onNextActionClicked', recommendationInfo.index + 1 ] } );
 
@@ -96,7 +104,8 @@ RecommendedLinkContextItem.prototype.setup = function () {
 	this.$acceptanceButtonGroup = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-buttons-acceptance-group' );
 	this.$acceptanceButtonGroup.append( [
 		this.yesButton.$element,
-		this.noButton.$element
+		this.noButton.$element,
+		this.reopenRejectionDialogButton.$element
 	] );
 
 	this.$navButtonGroup = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-buttons-nav-group' );
@@ -180,64 +189,77 @@ RecommendedLinkContextItem.prototype.getRecommendationInfo = function () {
 };
 
 /**
- * Mark this suggestion as accepted or rejected.
+ * Mark this suggestion as accepted, rejected or undecided, and store rejection reason if given.
  *
  * Commits a transaction that removes the existing annotation and adds a new one that is
  * identical except for the 'recommendationAccepted' attribute. This will cause the context item
  * to be destroyed, and a new one to be created for the new annotation.
  *
  * @private
- * @param {boolean} accepted True if accepted, false if rejected
+ * @param {boolean|null} accepted True if accepted, false if rejected, null if undecided
+ * (the yes/no button has been toggled).
  */
 RecommendedLinkContextItem.prototype.setAccepted = function ( accepted ) {
-	var feedbackDialogPromise,
+	var acceptancePromise,
 		recommendationInfo = this.getRecommendationInfo(),
 		surfaceModel = this.context.getSurface().getModel(),
-		oldReadOnly = surfaceModel.isReadOnly();
+		oldReadOnly = surfaceModel.isReadOnly(),
+		attributes = {
+			recommendationAccepted: accepted,
+			rejectionReason: undefined
+		};
 
 	// Temporarily disable read-only mode
 	surfaceModel.setReadOnly( false );
 
-	this.applyToAnnotations( function ( fragment, annotation ) {
-		fragment.setAutoSelect( false );
-		fragment.annotateContent( 'clear', annotation );
-		fragment.annotateContent( 'set', new DmRecommendedLinkAnnotation( $.extend( true,
-			annotation.getElement(),
-			{ attributes: { recommendationAccepted: accepted } }
-		) ) );
-	} );
-
-	// Re-enable read-only mode (if it was previously enabled)
-	surfaceModel.setReadOnly( oldReadOnly );
-
-	if ( accepted ) {
-		feedbackDialogPromise = $.Deferred().resolve();
-	} else {
-		feedbackDialogPromise = this.context.getSurface().dialogs
-			.openWindow( 'recommendedLinkRejection' ).closed
-			.then( function ( /* closedData */ ) {
-				// TODO store closedData.reason somewhere
-			} );
+	if ( accepted || accepted === null ) {
+		acceptancePromise = $.Deferred().resolve();
 	}
+	if ( accepted === false ) {
+		acceptancePromise = this.context.getSurface().dialogs
+			.openWindow( 'recommendedLinkRejection', this.model.getRejectionReason() ).closed
+			.then( function ( closedData ) {
+				return closedData && closedData.reason || this.model.getRejectionReason();
+			}.bind( this ) );
+	}
+
+	acceptancePromise.then( function ( rejectionReason ) {
+		if ( rejectionReason ) {
+			attributes.rejectionReason = rejectionReason;
+		}
+		this.applyToAnnotations( function ( fragment, annotation ) {
+			fragment.setAutoSelect( false );
+			fragment.annotateContent( 'clear', annotation );
+			fragment.annotateContent( 'set', new DmRecommendedLinkAnnotation( $.extend( true,
+				annotation.getElement(),
+				{ attributes: attributes }
+			) ) );
+		} );
+	}.bind( this ) ).then( function () {
+		// Re-enable read-only mode (if it was previously enabled)
+		surfaceModel.setReadOnly( oldReadOnly );
+	} ).then( this.onAcceptanceChanged.bind( this ) );
 
 	// Auto-advance
 	if ( this.context.isMobile() ) {
 		if ( recommendationInfo.index < recommendationInfo.total - 1 ) {
 			// Move to the next suggestion
-			feedbackDialogPromise.then( function () {
+			acceptancePromise.then( function () {
 				this.moveToSuggestion( recommendationInfo.index + 1 );
 			}.bind( this ) );
 		} else if ( accepted && recommendationInfo.index === recommendationInfo.total - 1 ) {
 			// Publish changes when the user accepted the last suggestion
-			feedbackDialogPromise.then( function () {
+			acceptancePromise.then( function () {
 				mw.hook( 'growthExperiments.contextItem.saveArticle' ).fire();
 			} );
 		}
 	}
 
 	// Show the new context item created when acceptance changed
-	this.forceContextItemToAppear();
-	this.onAcceptanceChanged();
+	acceptancePromise.then( function () {
+		this.forceContextItemToAppear();
+		this.onAcceptanceChanged();
+	}.bind( this ) );
 };
 
 /**

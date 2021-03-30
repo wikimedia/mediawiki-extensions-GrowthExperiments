@@ -728,11 +728,12 @@
 				"growthexperiments-addlink-rejectiondialog-title",
 				"growthexperiments-addlink-rejectiondialog-message",
 				"growthexperiments-addlink-rejectiondialog-reason-everyday",
-				"growthexperiments-addlink-rejectiondialog-reason-already-linked",
+				"growthexperiments-addlink-rejectiondialog-reason-more-fewer-words",
 				"growthexperiments-addlink-rejectiondialog-reason-wrong-target",
 				"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip",
 				"growthexperiments-addlink-rejectiondialog-reason-other",
-				"growthexperiments-addlink-rejectiondialog-action-done"
+				"growthexperiments-addlink-rejectiondialog-action-done",
+				"growthexperiments-addlink-rejectiondialog-reopen-button-title"
 			],
 			"dependencies": [
 				"ext.visualEditor.mwlink",

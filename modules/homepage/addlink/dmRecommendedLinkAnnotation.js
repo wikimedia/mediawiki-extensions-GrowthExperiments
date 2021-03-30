@@ -35,6 +35,8 @@ DMRecommendedLinkAnnotation.static.toDataElement = function ( domElements ) {
 	dataElement = this.dataElementFromTitle( title, target );
 	// true means accepted; false means explicitly rejected; null means no selection made yet
 	dataElement.attributes.recommendationAccepted = null;
+	// undefined means no reason supplied, otherwise this is a string.
+	dataElement.attributes.rejectionReason = undefined;
 	dataElement.attributes.recommendationWikitextOffset = wikitextOffset;
 	return dataElement;
 };
@@ -61,6 +63,10 @@ DMRecommendedLinkAnnotation.prototype.isRejected = function () {
 
 DMRecommendedLinkAnnotation.prototype.isUndecided = function () {
 	return this.getAttribute( 'recommendationAccepted' ) === null;
+};
+
+DMRecommendedLinkAnnotation.prototype.getRejectionReason = function () {
+	return this.getAttribute( 'rejectionReason' );
 };
 
 module.exports = DMRecommendedLinkAnnotation;
