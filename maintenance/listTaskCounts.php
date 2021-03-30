@@ -52,6 +52,11 @@ class ListTaskCounts extends Maintenance {
 
 	/** @inheritDoc */
 	public function execute() {
+		if ( $this->getConfig()->get( 'GENewcomerTasksRemoteApiUrl' ) ) {
+			$this->output( "Local tasks disabled\n" );
+			return;
+		}
+
 		$this->topicType = $this->getOption( 'topictype', 'growth' );
 		if ( !in_array( $this->topicType, [ 'ores', 'growth' ], true ) ) {
 			$this->fatalError( 'topictype must be one of: growth, ores' );
