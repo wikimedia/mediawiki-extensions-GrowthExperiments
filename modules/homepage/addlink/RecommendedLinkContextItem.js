@@ -190,7 +190,7 @@ RecommendedLinkContextItem.prototype.setAccepted = function ( accepted ) {
 			} );
 	}
 
-	if ( recommendationInfo.index < recommendationInfo.total - 1 ) {
+	if ( this.context.isMobile() && recommendationInfo.index < recommendationInfo.total - 1 ) {
 		// Move to the next suggestion
 		feedbackDialogPromise.then( function () {
 			this.moveToSuggestion( this.getRecommendationInfo().index + 1 );
@@ -215,7 +215,7 @@ RecommendedLinkContextItem.prototype.moveToSuggestion = function ( index ) {
 	this.context.getSurface().getView().selectAnnotation( function ( annotationView ) {
 		return annotationView instanceof CeRecommendedLinkAnnotation;
 	} );
-	if ( OO.ui.isMobile() ) {
+	if ( this.context.isMobile() ) {
 		// On mobile, deactivate the surface so that the context appears
 		this.context.getSurface().getView().deactivate( false, false, true );
 	}
