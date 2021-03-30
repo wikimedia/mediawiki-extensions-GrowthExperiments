@@ -196,7 +196,7 @@ RecommendedLinkContextItem.prototype.setAccepted = function ( accepted ) {
 			this.moveToSuggestion( this.getRecommendationInfo().index + 1 );
 		}.bind( this ) );
 	}
-
+	this.forceContextItemToAppear();
 	this.onAcceptanceChanged();
 };
 
@@ -211,14 +211,20 @@ RecommendedLinkContextItem.prototype.setAccepted = function ( accepted ) {
 RecommendedLinkContextItem.prototype.moveToSuggestion = function ( index ) {
 	var fragment = this.context.getSurface().linkRecommendationFragments[ index ].fragment;
 	fragment.select();
-	// Force the context item to appear
-	this.context.getSurface().getView().selectAnnotation( function ( annotationView ) {
-		return annotationView instanceof CeRecommendedLinkAnnotation;
-	} );
+	this.forceContextItemToAppear();
 	if ( this.context.isMobile() ) {
 		// On mobile, deactivate the surface so that the context appears
 		this.context.getSurface().getView().deactivate( false, false, true );
 	}
+};
+
+/**
+ * Force the context item to appear.
+ */
+RecommendedLinkContextItem.prototype.forceContextItemToAppear = function () {
+	this.context.getSurface().getView().selectAnnotation( function ( annotationView ) {
+		return annotationView instanceof CeRecommendedLinkAnnotation;
+	} );
 };
 
 /**
