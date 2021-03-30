@@ -4,6 +4,7 @@
 			"1233qwer1234qwer4",
 			"Ameisenigel",
 			"Anna7321",
+			"BPX-web",
 			"Bergrübe",
 			"Distel135",
 			"Elliot",
@@ -370,5 +371,7 @@
 	"growthexperiments-addlink-onboarding-dialog-label-next": "Nächster Schritt der Einführung",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "Vorheriger Schritt der Einführung",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Anfangen",
-	"grant-managementorship": "Mentorenschaft bearbeiten"
+	"grant-managementorship": "Mentorenschaft bearbeiten",
+	"newcomertasksinfo-no-data": "Es sind keine Daten verfügbar.",
+	"newcomertasksinfo-table-header-task-type-id": "ID"
 }

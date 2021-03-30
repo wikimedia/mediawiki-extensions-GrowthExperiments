@@ -241,10 +241,13 @@
 	"growthexperiments-homepage-suggestededits-topics-selectall": "เลือกทั้งหมด",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "นำออกทั้งหมด",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "เลือกหัวข้อบางหัวข้อที่{{GENDER:$1|คุณ}}สนใจจะแก้ไข",
+	"growthexperiments-homepage-claimmentee-mentee": "ชื่อผู้ใช้ของผู้รับเมนเทอร์",
+	"growthexperiments-homepage-claimmentee-reason": "เหตุผลในการรับผู้ใช้นี้",
 	"growthexperiments-claimmentee-confirm": "ใช่ ฉันมีความประสงค์ที่จะเปลี่ยนเมนเทอร์",
 	"log-action-filter-growthexperiments-setmentor": "การเปลี่ยนแปลงเมนเทอร์",
 	"growthexperiments-notification-body-mentor-change": "สาเหตุ: $1",
 	"right-setmentor": "ตั้งเมนเทอร์สำหรับผู้ใช้นี้",
+	"action-setmentor": "ตั้งเมนเทอร์สำหรับผู้ใช้นี้",
 	"growthexperiments-homepage-welcome-notice-header": "ยินดีต้อนรับสู่หน้าหลักของ{{GENDER:$1|คุณ}}",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "ดำเนินการต่อ",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "รับทราบ",
@@ -266,6 +269,7 @@
 	"growthexperiments-addlink-rejectiondialog-action-done": "เสร็จสิ้น",
 	"growthexperiments-addlink-onboarding-content-intro-title": "การเพิ่มลิงก์จะช่วยให้ผู้อ่านเรียนรู้ได้เร็วขึ้น",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "ตัวอย่างประโยค",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "ดวงจันทร์เป็น<mark>ดาวเทียมตามธรรมชาติ</mark>เพียงดวงเดียวที่<mark>โคจร</mark>รอบ<mark>โลก</mark>",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "เรียนรู้เพิ่มเติมเกี่ยวกับการแนะนำของ AI",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "แนวทางปฏิบัติ",
 	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "ข้ามทั้งหมด",
@@ -273,5 +277,6 @@
 	"growthexperiments-addlink-onboarding-dialog-progress": "$1 จากทั้งหมด $2",
 	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "ไม่ต้องแสดงอีก",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "เริ่มต้นใช้งาน",
-	"grant-managementorship": "จัดการระบบเมนเทอร์"
+	"grant-managementorship": "จัดการระบบเมนเทอร์",
+	"newcomertasksinfo-no-data": "ไม่มีข้อมูล"
 }

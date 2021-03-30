@@ -82,6 +82,8 @@
 	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|labojumi|labojums|labojumi}} · $2",
 	"growthexperiments-help-panel-general-help-title": "Vispārēja labošanas palīdzība",
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Par ieteiktajiem labojumiem",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Tu}} izmanto vikikoda redaktoru. Šie labošanas padomi ir noderīgāki, izmantojot vizuālo redaktoru.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Pārslēgties uz vizuālo redaktoru",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Tu}} izmanto vizuālo redaktoru. Šie labošanas padomi ir noderīgāki, izmantojot vikikoda redaktoru.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Pārslēgties uz vikikoda redaktoru"
 }

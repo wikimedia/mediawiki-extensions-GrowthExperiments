@@ -378,5 +378,7 @@
 	"newcomertasksinfo-table-header-task-type": "نوع المهمة",
 	"newcomertasksinfo-table-header-task-type-id": "المعرّف",
 	"newcomertasksinfo-table-header-task-count": "العدد",
-	"newcomertasksinfo-table-header-topic-type": "معرّف الموضوع"
+	"newcomertasksinfo-table-header-topic-type": "معرّف الموضوع",
+	"growthexperiments-addlink-ve-ai-mode-title": "اقتراحات الذكاء الاصطناعي",
+	"growthexperiments-addlink-ve-ai-mode-submit-button": "إرسال..."
 }

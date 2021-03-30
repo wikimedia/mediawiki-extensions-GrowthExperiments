@@ -391,5 +391,7 @@
 	"newcomertasksinfo-table-header-task-type": "Type de tâche",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Compteur",
-	"newcomertasksinfo-table-header-topic-type": "ID de sujet"
+	"newcomertasksinfo-table-header-topic-type": "ID de sujet",
+	"growthexperiments-addlink-ve-ai-mode-title": "Suggestions de l’IA",
+	"growthexperiments-addlink-ve-ai-mode-submit-button": "Soumettre..."
 }
