@@ -18,7 +18,6 @@ use MultipleIterator;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
-// phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
 use SearchResult;
 use Status;
 use StatusValue;

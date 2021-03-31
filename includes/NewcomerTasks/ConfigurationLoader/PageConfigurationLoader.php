@@ -12,8 +12,6 @@ use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use InvalidArgumentException;
 use LogicException;
 use MediaWiki\Linker\LinkTarget;
-// phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
-use MediaWiki\Revision\RevisionRecord;
 use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use Message;
 use StatusValue;

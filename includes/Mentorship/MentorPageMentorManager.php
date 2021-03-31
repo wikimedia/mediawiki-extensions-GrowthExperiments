@@ -21,7 +21,6 @@ use User;
 use UserArray;
 use UserOptionsUpdateJob;
 use WikiPage;
-// phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
 use WikitextContent;
 
 class MentorPageMentorManager extends MentorManager implements LoggerAwareInterface {
