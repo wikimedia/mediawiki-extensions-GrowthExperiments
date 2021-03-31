@@ -6,6 +6,7 @@
 			"R4356th",
 			"Sohom Datta",
 			"Titodutta",
+			"WikiAbuHuraira",
 			"YahyA",
 			"Yahya",
 			"আফতাবুজ্জামান"
@@ -351,5 +352,11 @@
 	"growthexperiments-addlink-no-suggestions-found-dialog-message": "এই নিবন্ধে আর পরামর্শ উপলব্ধ নেই।",
 	"grant-managementorship": "মেন্টরশিপ ব্যবস্থাপনা",
 	"newcomertasksinfo": "নবাগতদের কাজ",
-	"newcomertasksinfo-table-header-task-type-id": "আইডি"
+	"newcomertasksinfo-no-data": "কোনো উপাত্ত উপলব্ধ নয়।",
+	"newcomertasksinfo-table-header-task-type": "কাজের ধরণ",
+	"newcomertasksinfo-table-header-task-type-id": "আইডি",
+	"newcomertasksinfo-table-header-task-count": "গণনা",
+	"newcomertasksinfo-table-header-topic-type": "বিষয়বস্তু আইডি",
+	"growthexperiments-addlink-ve-ai-mode-title": "কৃত্রিম বুদ্ধিমত্তা প্রদত্ত পরামর্শসমূহ",
+	"growthexperiments-addlink-ve-ai-mode-submit-button": "জমা দিন..."
 }

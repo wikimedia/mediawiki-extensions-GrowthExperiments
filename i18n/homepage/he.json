@@ -371,5 +371,7 @@
 	"newcomertasksinfo-table-header-task-type": "סוג המשימה",
 	"newcomertasksinfo-table-header-task-type-id": "מזהה",
 	"newcomertasksinfo-table-header-task-count": "מספר",
-	"newcomertasksinfo-table-header-topic-type": "מזהה נושא"
+	"newcomertasksinfo-table-header-topic-type": "מזהה נושא",
+	"growthexperiments-addlink-ve-ai-mode-title": "הצעות של בינה מלאכותית",
+	"growthexperiments-addlink-ve-ai-mode-submit-button": "שליחה..."
 }

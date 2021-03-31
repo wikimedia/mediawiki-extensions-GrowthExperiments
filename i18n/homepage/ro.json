@@ -363,5 +363,7 @@
 	"newcomertasksinfo-table-header-task-type": "Tipul sarcinii",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Număr",
-	"newcomertasksinfo-table-header-topic-type": "ID-ul subiectului"
+	"newcomertasksinfo-table-header-topic-type": "ID-ul subiectului",
+	"growthexperiments-addlink-ve-ai-mode-title": "Sugestii AI",
+	"growthexperiments-addlink-ve-ai-mode-submit-button": "Trimitere..."
 }

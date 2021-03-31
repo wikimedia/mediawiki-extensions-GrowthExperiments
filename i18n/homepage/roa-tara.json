@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
+			"Casadelproverbio",
 			"Joetaras"
 		]
 	},
@@ -203,5 +204,7 @@
 	"growthexperiments-homepage-suggestededits-error-title": "Nisciune cangiamende suggerite jè disponibbele jndr'à stu mumende.",
 	"growthexperiments-homepage-suggestededits-error-description": "Pruève chciù tarde.",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-error": "Scacchie almene 'nu tipe de cangiamende",
-	"growthexperiments-homepage-suggestededits-topics-selectall": "Scacchie tutte"
+	"growthexperiments-homepage-suggestededits-topics-selectall": "Scacchie tutte",
+	"newcomertasksinfo-table-header-task-type-id": "ID",
+	"growthexperiments-addlink-ve-ai-mode-submit-button": "Conferme..."
 }

@@ -13,6 +13,7 @@
 			"MarleneR329",
 			"Rodney Araujo",
 			"Wizardeck",
+			"ZealousBlaze",
 			"ZebaX2010"
 		]
 	},
@@ -175,5 +176,7 @@
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Continuar",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Entendido",
 	"growthexperiments-addlink-context-button-accept": "Si",
-	"growthexperiments-addlink-context-button-reject": "No"
+	"growthexperiments-addlink-context-button-reject": "No",
+	"newcomertasksinfo-no-data": "No hay información disponible.",
+	"growthexperiments-addlink-ve-ai-mode-submit-button": "Enviar..."
 }

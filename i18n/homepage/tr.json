@@ -7,6 +7,7 @@
 			"Joseph",
 			"Mirzali",
 			"MuratTheTurkish",
+			"SaldırganSincap",
 			"Sayginer",
 			"Stonecy",
 			"ToprakM",
@@ -372,5 +373,7 @@
 	"newcomertasksinfo-table-header-task-type": "Görev türü",
 	"newcomertasksinfo-table-header-task-type-id": "Kimlik",
 	"newcomertasksinfo-table-header-task-count": "Adet",
-	"newcomertasksinfo-table-header-topic-type": "Konu Kimliği"
+	"newcomertasksinfo-table-header-topic-type": "Konu Kimliği",
+	"growthexperiments-addlink-ve-ai-mode-title": "AZ önerileri",
+	"growthexperiments-addlink-ve-ai-mode-submit-button": "Gönder..."
 }

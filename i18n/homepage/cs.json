@@ -375,5 +375,7 @@
 	"newcomertasksinfo-table-header-task-type": "Typ úkolu",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Počet",
-	"newcomertasksinfo-table-header-topic-type": "ID tématu"
+	"newcomertasksinfo-table-header-topic-type": "ID tématu",
+	"growthexperiments-addlink-ve-ai-mode-title": "Návrhy umělé inteligence",
+	"growthexperiments-addlink-ve-ai-mode-submit-button": "Odeslat..."
 }

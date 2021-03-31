@@ -326,5 +326,6 @@
 	"growthexperiments-addlink-onboarding-dialog-progress": "$1 di $2",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Inizia",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
-	"newcomertasksinfo-table-header-topic-type": "ID argomento"
+	"newcomertasksinfo-table-header-topic-type": "ID argomento",
+	"growthexperiments-addlink-ve-ai-mode-submit-button": "Invia..."
 }

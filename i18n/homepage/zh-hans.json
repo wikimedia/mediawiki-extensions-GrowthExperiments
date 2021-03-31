@@ -295,6 +295,7 @@
 	"growthexperiments-addlink-context-button-accept": "是",
 	"growthexperiments-addlink-context-button-reject": "否",
 	"growthexperiments-addlink-context-button-next": "跳过",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "指导方针",
 	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "全部跳过",
 	"growthexperiments-addlink-onboarding-dialog-title": "介绍",
 	"growthexperiments-addlink-onboarding-dialog-progress": "第$1个，共$2个",
@@ -303,6 +304,7 @@
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "之前的介绍步骤",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "入门",
 	"newcomertasksinfo": "新人任务",
+	"newcomertasksinfo-table-header-task-type": "任务类型",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "计数",
 	"growthexperiments-addlink-ve-ai-mode-submit-button": "提交。。。"
