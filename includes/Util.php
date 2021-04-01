@@ -46,11 +46,11 @@ class Util {
 	 * third argument to false.
 	 *
 	 * @param User $user
-	 * @param null $newEmail
+	 * @param string $newEmail
 	 * @param bool $checkConfirmedEmail
 	 * @return bool
 	 */
-	public static function canSetEmail( User $user, $newEmail = null, $checkConfirmedEmail = true ) {
+	public static function canSetEmail( User $user, string $newEmail = '', $checkConfirmedEmail = true ) {
 		return ( $checkConfirmedEmail ?
 				!$user->getEmail() || !$user->isEmailConfirmed() :
 				!$user->getEmail() ) &&
