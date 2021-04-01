@@ -106,8 +106,8 @@ $specialPageAliases['hi'] = [
 $specialPageAliases['hr'] = [
 	'WelcomeSurvey' => [ 'Anketa_dobrodošlice' ],
 	'Homepage' => [ 'Početna_stranica' ],
-	'Impact' => [ 'Djejstvo' ],
-	'ClaimMentee' => [ 'Tvrde_pridošlica' ],
+	'Impact' => [ 'Učinak_uređivanja' ],
+	'ClaimMentee' => [ 'Preuzimanje_mentorstva' ],
 ];
 
 /** Hungarian (magyar) */
