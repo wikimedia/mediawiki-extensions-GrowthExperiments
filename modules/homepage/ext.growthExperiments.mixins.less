@@ -53,3 +53,20 @@
 	.rel-font-size( @parentFontSize, @targetFontSize );
 	.rel-line-height( @targetFontSize, @targetLineHeight );
 }
+
+.paragraph-ellipsis( @lines: 2, @parentFontSize, @targetFontSize, @targetLineHeight ) {
+	overflow: hidden;
+	// Show @lines lines of text, with an ellipsis.
+	// line-clamp has not been standardized, but most modern browsers understand the Webkit syntax.
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: @lines;
+	@lineHeightValue: unit( @targetLineHeight / @targetFontSize );
+	@fontSizeValue: unit( @targetFontSize / @parentFontSize, em );
+	line-height: @lineHeightValue;
+	// For IE 11 and various old browsers, limit height for the same effect, except
+	// for the ellipsis. Height is <# of lines> * <line height> * <font size>
+	// with 0.5em added to account for descenders.
+	max-height: @lines * @lineHeightValue * @fontSizeValue + 0.5em;
+	font-size: @fontSizeValue;
+}

@@ -9,7 +9,10 @@ var DmRecommendedLinkAnnotation = require( './dmRecommendedLinkAnnotation.js' ),
 function RecommendedLinkContextItem() {
 	RecommendedLinkContextItem.super.apply( this, arguments );
 
-	this.$element.addClass( 'mw-ge-recommendedLinkContextItem' );
+	this.$element.addClass( [
+		'mw-ge-recommendedLinkContextItem',
+		this.context.isMobile() ? 'mw-ge-recommendedLinkContextItem-mobile' : 'mw-ge-recommendedLinkContextItem-desktop'
+	] );
 }
 
 OO.inheritClass( RecommendedLinkContextItem, ve.ui.MWInternalLinkContextItem );
@@ -69,28 +72,37 @@ RecommendedLinkContextItem.prototype.setup = function () {
 	this.yesButton.setFlags( this.model.isAccepted() ? [ 'progressive', 'primary' ] : [] );
 	this.noButton.setFlags( this.model.isRejected() ? [ 'progressive', 'primary' ] : [] );
 	this.prevButton.setDisabled( recommendationInfo.index === 0 );
-	this.nextButton.setDisabled( recommendationInfo.index === recommendationInfo.total - 1 );
 
 	this.yesButton.connect( this, { click: [ 'setAccepted', true ] } );
 	this.noButton.connect( this, { click: [ 'setAccepted', false ] } );
 	this.prevButton.connect( this, { click: [ 'moveToSuggestion', recommendationInfo.index - 1 ] } );
-	this.nextButton.connect( this, { click: [ 'moveToSuggestion', recommendationInfo.index + 1 ] } );
+	this.nextButton.connect( this, { click: [ 'onNextActionClicked', recommendationInfo.index + 1 ] } );
 
 	// link editing is disabled for now (T267696)
 	this.editButton.toggle( false );
-
-	$buttons.append(
-		this.prevButton.$element,
+	this.$acceptanceButtonGroup = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-buttons-acceptance-group' );
+	this.$acceptanceButtonGroup.append( [
 		this.yesButton.$element,
-		this.noButton.$element,
-		this.nextButton.$element
-	);
+		this.noButton.$element
+	] );
+
+	this.$navButtonGroup = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-buttons-nav-group' );
+	this.$navButtonGroup.append( [ this.prevButton.$element, this.nextButton.$element ] );
+
+	$buttons.append( [ this.$acceptanceButtonGroup, this.$navButtonGroup ] );
 
 	this.$body.append(
 		introLabel.$element,
-		$linkPreview,
-		$buttons
+		$linkPreview
 	);
+
+	// On mobile, add buttons to $foot to make sure they are always visible.
+	$buttons.appendTo( this.context.isMobile() ? this.$foot : this.$body );
+
+	// "Link" label is appended to old body (this.$body refers to innerBody)
+	// See ve.ui.LinkContextItem's constructor
+	this.$element.find( '.ve-ui-linkContextItem-link-label' ).addClass( 'oo-ui-element-hidden' );
+	this.$actions.remove();
 
 	// The label isn't visible on desktop, but it is on mobile (because of the parent's
 	// implementation of generateBody()). We have to call updateLabelPreview() (which the parent
@@ -98,6 +110,11 @@ RecommendedLinkContextItem.prototype.setup = function () {
 	if ( this.context.isMobile() ) {
 		this.updateLabelPreview();
 		this.setupHelpButton();
+		this.updateActionButtonsMode();
+
+		$( window ).on( 'resize',
+			OO.ui.debounce( this.updateActionButtonsMode.bind( this ), 250 )
+		);
 	}
 };
 
@@ -115,7 +132,7 @@ RecommendedLinkContextItem.prototype.buildProgressIndicators = function ( index,
 		$progress = $( '<span>' ).addClass( 'mw-ge-recommendedLinkContextItem-progress' );
 	for ( i = 0; i < total; i++ ) {
 		$indicator = $( '<span>' ).addClass( 'mw-ge-recommendedLinkContextItem-progress-indicator' );
-		if ( i === index ) {
+		if ( i <= index ) {
 			$indicator.addClass( 'mw-ge-recommendedLinkContextItem-progress-indicator-selected' );
 		}
 		$progress.append( $indicator );
@@ -190,11 +207,19 @@ RecommendedLinkContextItem.prototype.setAccepted = function ( accepted ) {
 			} );
 	}
 
-	if ( this.context.isMobile() && recommendationInfo.index < recommendationInfo.total - 1 ) {
-		// Move to the next suggestion
-		feedbackDialogPromise.then( function () {
-			this.moveToSuggestion( this.getRecommendationInfo().index + 1 );
-		}.bind( this ) );
+	// Auto-advance
+	if ( this.context.isMobile() ) {
+		if ( recommendationInfo.index < recommendationInfo.total - 1 ) {
+			// Move to the next suggestion
+			feedbackDialogPromise.then( function () {
+				this.moveToSuggestion( recommendationInfo.index + 1 );
+			}.bind( this ) );
+		} else if ( accepted && recommendationInfo.index === recommendationInfo.total - 1 ) {
+			// Publish changes when the user accepted the last suggestion
+			feedbackDialogPromise.then( function () {
+				mw.hook( 'growthExperiments.contextItem.saveArticle' ).fire();
+			} );
+		}
 	}
 
 	// Show the new context item created when acceptance changed
@@ -270,6 +295,72 @@ RecommendedLinkContextItem.prototype.onAcceptanceChanged = function () {
 		} );
 
 	mw.hook( 'growthExperiments.aiSuggestionAcceptanceChanged' ).fire( hasAcceptedRecommendations );
+};
+
+/**
+ * Update action buttons' classes based on whether yes & no buttons can be shown
+ * on the same line as prev & next buttons
+ */
+RecommendedLinkContextItem.prototype.updateActionButtonsMode = function () {
+	var $lastAcceptanceButton = this.$acceptanceButtonGroup.children().last(),
+		$nextButton = this.nextButton.$element,
+		acceptanceButtonLeft = $lastAcceptanceButton.offset().left,
+		nextButtonLeft = $nextButton.offset().left,
+		hasOverflow;
+
+	// Overflow if the edge of the no/rejection dialog button is over next button's
+	if ( document.documentElement.dir === 'rtl' ) {
+		hasOverflow = acceptanceButtonLeft < nextButtonLeft + $nextButton.width();
+	} else {
+		hasOverflow = acceptanceButtonLeft + $lastAcceptanceButton.width() > nextButtonLeft;
+	}
+	if ( hasOverflow ) {
+		this.$acceptanceButtonGroup.addClass( 'overflow-state' );
+	} else {
+		this.$acceptanceButtonGroup.removeClass( 'overflow-state' );
+	}
+	this.context.updateDimensions();
+};
+
+/**
+ * Check whether all recommendations were skipped
+ *
+ * @return {boolean}
+ */
+RecommendedLinkContextItem.prototype.allRecommendationsSkipped = function () {
+	var linkRecommendationFragments = this.context.getSurface().linkRecommendationFragments;
+	return linkRecommendationFragments.every( function ( recommendation ) {
+		var annotationSet = recommendation.fragment
+			.getAnnotations().getAnnotationsByName( 'mwGeRecommendedLink' );
+		return annotationSet.getLength() ? annotationSet.get( 0 ).isUndecided() : false;
+	} );
+};
+
+/**
+ * Move the selection to the next suggestion if it exists, if the user is on the last recommendation:
+ * fire an event to save the article if user decided on any of the recommendations
+ * show skipped all suggestions dialog if user didn't decide on any of the recommendations
+ *
+ * @param {number} nextIndex Zero-based index of the next suggestion in the linkRecommendationFragments array
+ */
+RecommendedLinkContextItem.prototype.onNextActionClicked = function ( nextIndex ) {
+	if ( nextIndex === this.getRecommendationInfo().total ) {
+		if ( this.allRecommendationsSkipped() ) {
+			// TODO: Show skip all suggestions dialog (T269658)
+		} else {
+			mw.hook( 'growthExperiments.contextItem.saveArticle' ).fire();
+		}
+	} else {
+		this.moveToSuggestion( nextIndex );
+	}
+};
+
+/**
+ * @inheritdoc
+ */
+RecommendedLinkContextItem.prototype.teardown = function () {
+	RecommendedLinkContextItem.super.prototype.teardown.apply( this, arguments );
+	$( window ).off( 'resize' );
 };
 
 module.exports = RecommendedLinkContextItem;

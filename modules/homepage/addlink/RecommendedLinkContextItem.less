@@ -1,14 +1,53 @@
 @import 'mediawiki.ui/variables.less';
 @import 'mediawiki.mixins.less';
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
+@import '../ext.growthExperiments.variables.less';
+@import '../ext.growthExperiments.mixins.less';
 
 .mw-ge-recommendedLinkContextItem {
+	@iconOpacity: 0.65;
+
 	.ve-ui-linearContextItem-head {
-		background-color: fade( #e6f1ff, 50% );
+		background-color: @suggestedEditsBackgroundColor;
+
+		.oo-ui-labelElement {
+			font-weight: bold;
+			margin-left: 9px;
+		}
+	}
+
+	.ve-ui-linkContextItem-label-label {
+		color: @wmui-color-base20;
+		margin-top: 4px;
+	}
+
+	.ve-ui-mwInternalLinkContextItem-withImage {
+		.ve-ui-linkContextItem-link {
+			font-weight: bold;
+			color: @wmui-color-accent50;
+		}
+
+		// Article icon is shown when the article doesn't have an image.
+		.oo-ui-icon-article,
+		.oo-ui-icon-page-existing,
+		.ve-ui-mwInternalLinkContextItem-hasImage {
+			margin-bottom: 0;
+			margin-right: 12px;
+		}
+
+		.ve-ui-mwInternalLinkContextItem-description {
+			.paragraph-ellipsis( @lines: 2, @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19px );
+		}
+	}
+
+	.ve-ui-linearContextItem-foot:not( :empty ) {
+		border-top: unset;
 	}
 
 	&-introLabel {
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19px );
 		color: @colorGray5;
-		font-size: 0.9em;
+		margin: 8px 0;
 	}
 
 	&-editButton {
@@ -21,13 +60,28 @@
 	}
 
 	&-buttons {
-		clear: both;
+		padding-top: 24px;
+		position: relative;
+
+		&-acceptance-group {
+			text-align: center;
+			display: block;
+			position: absolute;
+			width: 100%;
+
+			&.overflow-state {
+				position: relative;
+				margin-bottom: 14px;
+			}
+		}
+
+		&-nav-group {
+			width: 100%;
+		}
 
 		&-prev {
-			// Center the prev button below the link preview image
-			min-width: 60em/14;
-			text-align: center;
-
+			float: left;
+			margin-bottom: 10px;
 			// Override strong rule from OOUI
 			&.oo-ui-buttonElement-frameless.oo-ui-iconElement:first-child {
 				margin-left: 0;
@@ -51,7 +105,7 @@
 	}
 
 	&-progress {
-		padding-left: 1em;
+		padding-left: 16px;
 
 		// Make each indicator a circle with a diameter of 8px
 		&-indicator {
@@ -60,19 +114,61 @@
 			height: 8px;
 			margin-right: 8px;
 			border-radius: 50%;
-			background-color: @colorGray12;
+			background-color: @wmui-color-base70;
 
 			&-selected {
-				background-color: @colorGray2;
+				background-color: @wmui-color-accent50;
 			}
 		}
 	}
 
 	&-help-button {
-		opacity: 0.65;
+		opacity: @iconOpacity;
 
 		.oo-ui-iconElement-icon {
 			max-width: 20px;
+		}
+	}
+
+	&-desktop {
+		.mw-ge-recommendedLinkContextItem-progress {
+			padding-left: 20px;
+		}
+
+		.mw-ge-recommendedLinkContextItem-introLabel {
+			.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 12.4px, @targetLineHeight: 17px);
+			margin: 14px 0 16px 0;
+		}
+
+		.mw-ge-recommendedLinkContextItem-buttons-prev {
+			margin-bottom: 0;
+		}
+
+		.ve-ui-linearContextItem-head {
+			.oo-ui-icon-robot {
+				opacity: @iconOpacity;
+			}
+		}
+
+		.ve-ui-mwInternalLinkContextItem-withImage {
+			.ve-ui-linkContextItem-link {
+				&:after {
+					@iconDimension: unit(12px / 14px, em);
+					/* @embed */
+					background-image: url( link-external-ltr.svg );
+					background-size: 100%;
+					content: '';
+					display: inline-block;
+					width: @iconDimension;
+					height: @iconDimension;
+					position: relative;
+					margin-left: 10px;
+				}
+			}
+
+			.ve-ui-mwInternalLinkContextItem-description {
+				.paragraph-ellipsis( @lines: 2, @parentFontSize: 14px, @targetFontSize: 12.4px, @targetLineHeight: 17px );
+			}
 		}
 	}
 }

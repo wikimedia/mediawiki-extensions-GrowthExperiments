@@ -66,6 +66,11 @@ AddLinkArticleTarget.prototype.afterSurfaceReady = function () {
 	} else {
 		this.selectFirstRecommendation();
 	}
+
+	// Save can be triggered from RecommendedLinkContextItem.
+	mw.hook( 'growthExperiments.contextItem.saveArticle' ).add( function () {
+		this.surface.executeCommand( 'showSave' );
+	}.bind( this ) );
 };
 
 AddLinkArticleTarget.prototype.selectFirstRecommendation = function () {
