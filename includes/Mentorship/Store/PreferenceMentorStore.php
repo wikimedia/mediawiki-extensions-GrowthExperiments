@@ -41,8 +41,16 @@ class PreferenceMentorStore extends MentorStore {
 	/**
 	 * @inheritDoc
 	 */
-	public function loadMentorUserUncached( UserIdentity $mentee ): ?UserIdentity {
-		$mentorId = $this->userOptionsManager->getIntOption( $mentee, static::MENTOR_PREF );
+	protected function loadMentorUserUncached(
+		UserIdentity $mentee,
+		$flags
+	): ?UserIdentity {
+		$mentorId = $this->userOptionsManager->getIntOption(
+			$mentee,
+			static::MENTOR_PREF,
+			0,
+			$flags
+		);
 		$user = $this->userFactory->newFromId( $mentorId );
 		$user->load();
 		return $user->isRegistered() ? $user : null;
