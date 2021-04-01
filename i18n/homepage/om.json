@@ -13,7 +13,11 @@
 	"growthexperiments-addlink-onboarding-dialog-label-next": "Seensa tarsadarkaa ittaanu",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "Tarsadarkaa seensa darbee",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Jalqabi",
+	"newcomertasksinfo": "Hojii Dhufaarotaa",
 	"newcomertasksinfo-no-data": "Daataan tajaajilu hin jiru.",
+	"newcomertasksinfo-table-header-task-type": "Gosa hojii",
+	"newcomertasksinfo-table-header-task-type-id": "WE",
+	"newcomertasksinfo-table-header-task-count": "Lakkaa'uu",
 	"growthexperiments-addlink-ve-ai-mode-title": "Yaada dhiyaatu hunda",
 	"growthexperiments-addlink-ve-ai-mode-submit-button": "Galchuu..."
 }

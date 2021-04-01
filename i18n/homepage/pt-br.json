@@ -224,6 +224,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Expandir artigos curtos",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Adicionar links entre artigos",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Adicionar links entre artigos",
+	"growthexperiments-homepage-suggestededits-tasktype-ai-description": "Sugestões de inteligência artificial (IA)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biografia (todos)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biografia (mulheres)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Comida e bebida",
@@ -359,7 +360,15 @@
 	"growthexperiments-addlink-onboarding-dialog-label-next": "Próxima etapa de introdução",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "Etapa de introdução anterior",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Começar",
+	"growthexperiments-addlink-no-suggestions-found-dialog-message": "As sugestões não estão mais disponíveis neste artigo.",
+	"growthexperiments-addlink-no-suggestions-found-dialog-button": "Voltar para edições sugeridas",
 	"grant-managementorship": "Gerenciar mentoria",
+	"newcomertasksinfo": "Tarefas para iniciante",
+	"newcomertasksinfo-no-data": "Nenhum dado está disponível.",
+	"newcomertasksinfo-table-header-task-type": "Tipo de tarefa",
+	"newcomertasksinfo-table-header-task-type-id": "ID",
+	"newcomertasksinfo-table-header-task-count": "Contagem",
+	"newcomertasksinfo-table-header-topic-type": "ID do tópico",
 	"growthexperiments-addlink-ve-ai-mode-title": "Todas as sugestões",
 	"growthexperiments-addlink-ve-ai-mode-submit-button": "Enviar..."
 }

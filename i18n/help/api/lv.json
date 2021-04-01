@@ -4,7 +4,14 @@
 			"Papuass"
 		]
 	},
+	"apihelp-helppanelquestionposter-summary": "Apstrādāt jautājumus, kas iesniegti no pašreizējā lietotāja palīdzības paneļa.",
 	"apihelp-helppanelquestionposter-param-body": "Dalībnieka iesniegtais jautājuma teksts.",
 	"apihelp-helppanelquestionposter-param-source": "Jautājuma iesniegšanas metode.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "\"Jautā palīdzības dienestā\" panelis",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "\"Jautā savam mentoram\" panelis jaunpienācēju sākumlapā",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "\"Jautā savam mentoram\" ekrāns palīdzības panelī",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "\"Jautā palīdzības dienestā\" panelis (vecais nosaukums)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "\"Jautā savam mentoram\" panelis jaunpienācēju sākumlapā (vecais nosaukums)",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Atbilstošais nosaukums, ja izvēlēts, ko iekļaut ar jautājumu.",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Tev ir jāpieslēdzas, lai uzdotu jautājumu."
 }

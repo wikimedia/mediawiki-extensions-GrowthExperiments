@@ -319,8 +319,8 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Egyéb / nem nyilatkozom",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Kész",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Példamondat",
-	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "A linkeket mesterséges intelligencia (AI) ajánlja, mely hajlamos hibát elkövetni.",
-	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Tudj meg többet az AI ajánlásairól",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "A linkeket mesterséges intelligencia (MI) ajánlja, ami hibázhat.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Tudj meg többet az MI ajánlásairól",
 	"growthexperiments-addlink-onboarding-dialog-title": "Bevezető",
 	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "Ne mutasd még egyszer",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Kezdés"

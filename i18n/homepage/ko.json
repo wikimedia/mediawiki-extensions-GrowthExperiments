@@ -323,5 +323,11 @@
 	"growthexperiments-addlink-onboarding-dialog-progress": "$2 중 $1",
 	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "다시 보지 않음",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "시작하기",
-	"grant-managementorship": "멘토십 관리"
+	"growthexperiments-addlink-no-suggestions-found-dialog-message": "이 문서에 사용 가능한 제안이 더 이상 없습니다.",
+	"growthexperiments-addlink-no-suggestions-found-dialog-button": "편집 제안으로 돌아가기",
+	"grant-managementorship": "멘토십 관리",
+	"newcomertasksinfo-no-data": "이용 가능한 데이터가 없습니다.",
+	"newcomertasksinfo-table-header-task-type-id": "ID",
+	"growthexperiments-addlink-ve-ai-mode-title": "AI 제안",
+	"growthexperiments-addlink-ve-ai-mode-submit-button": "제출..."
 }

@@ -7,5 +7,6 @@
 	},
 	"growthexperiments-homepage-discovery-thanks-text": "{{GENDER:$1|अपने}} मुख पृष्ठ पर जाने और आरंभ करने के लिए पृष्ठ के शीर्ष पर $2 पर क्लिक करें।",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "आगे बढ़ें",
-	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "समझ गया"
+	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "समझ गया",
+	"newcomertasksinfo-table-header-task-count": "गणना"
 }

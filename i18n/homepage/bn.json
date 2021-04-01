@@ -99,6 +99,8 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong>টি {{PLURAL:$1|সম্পাদনা}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "সাম্প্রতিক সম্পাদনার পরিদর্শন (বিগত ৬০ দিনের):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "আপনার অবদান রাখা নিবন্ধের পরিদর্শনসংখ্যা দেখুন",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "এখন পর্যন্ত ০টি সম্পাদনা",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "পরামর্শকৃত সম্পাদনাগুলি দেখুন",
 	"growthexperiments-tour-helpdesk-response-tip-title": "সাহায্য কেন্দ্র বিজ্ঞপ্তি",
 	"growthexperiments-tour-response-tip-text": "যখন {{GENDER:$1|আপনার}} প্রশ্নের উত্তর দেওয়া হবে, তখন {{GENDER:$1|আপনি}} এখানে একটি বিজ্ঞপ্তি দেখতে পাবেন।",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "মেন্টর বিজ্ঞপ্তি",
@@ -227,6 +229,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "ছোট নিবন্ধ সম্প্রসারণ করুন",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "নিবন্ধের মাঝে সংযোগ করুন",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "নিবন্ধের মাঝে সংযোগ করুন",
+	"growthexperiments-homepage-suggestededits-tasktype-ai-description": "কৃত্রিম বুদ্ধিমত্তা কর্তৃক পরামর্শ",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "জীবনী (সকল)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "জীবনী (নারী)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "খাদ্য ও পানীয়",
@@ -357,6 +360,6 @@
 	"newcomertasksinfo-table-header-task-type-id": "আইডি",
 	"newcomertasksinfo-table-header-task-count": "গণনা",
 	"newcomertasksinfo-table-header-topic-type": "বিষয়বস্তু আইডি",
-	"growthexperiments-addlink-ve-ai-mode-title": "কৃত্রিম বুদ্ধিমত্তা প্রদত্ত পরামর্শসমূহ",
+	"growthexperiments-addlink-ve-ai-mode-title": "কৃত্রিম বুদ্ধিমত্তা প্রদত্ত পরামর্শ",
 	"growthexperiments-addlink-ve-ai-mode-submit-button": "জমা দিন..."
 }
