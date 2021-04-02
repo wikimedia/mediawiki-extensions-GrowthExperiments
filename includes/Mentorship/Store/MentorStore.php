@@ -2,10 +2,12 @@
 
 namespace GrowthExperiments\Mentorship\Store;
 
+use DBAccessObjectUtils;
 use HashBagOStuff;
+use IDBAccessObject;
 use MediaWiki\User\UserIdentity;
 
-abstract class MentorStore {
+abstract class MentorStore implements IDBAccessObject {
 	/** @var HashBagOStuff */
 	protected $cache;
 
@@ -39,14 +41,22 @@ abstract class MentorStore {
 	/**
 	 * Get the mentor assigned to this user, if it exists.
 	 * @param UserIdentity $mentee
+	 * @param int $flags bit field, see IDBAccessObject::READ_XXX
 	 * @return UserIdentity|null
 	 */
-	public function loadMentorUser( UserIdentity $mentee ): ?UserIdentity {
+	public function loadMentorUser(
+		UserIdentity $mentee,
+		$flags = self::READ_NORMAL
+	): ?UserIdentity {
+		if ( DBAccessObjectUtils::hasFlags( $flags, self::READ_LATEST ) ) {
+			$this->invalidateMentorCache( $mentee );
+		}
+
 		return $this->cache->getWithSetCallback(
 			$this->makeCacheKey( $mentee ),
 			$this->cacheTtl,
-			function () use ( $mentee ) {
-				return $this->loadMentorUserUncached( $mentee );
+			function () use ( $mentee, $flags ) {
+				return $this->loadMentorUserUncached( $mentee, $flags );
 			}
 		);
 	}
@@ -55,9 +65,10 @@ abstract class MentorStore {
 	 * Load mentor user with no cache
 	 *
 	 * @param UserIdentity $mentee
+	 * @param int $flags bit field, see IDBAccessObject::READ_XXX
 	 * @return UserIdentity|null
 	 */
-	abstract protected function loadMentorUserUncached( UserIdentity $mentee ): ?UserIdentity;
+	abstract protected function loadMentorUserUncached( UserIdentity $mentee, $flags ): ?UserIdentity;
 
 	/**
 	 * Assign a mentor to this user, overriding any previous assignments.
