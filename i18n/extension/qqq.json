@@ -2,5 +2,9 @@
 	"@metadata": {
 		"authors": []
 	},
-	"growthexperiments-desc": "{{desc|name=GrowthExperiments|url=https://www.mediawiki.org/wiki/Extension:GrowthExperiments}}"
+	"growthexperiments-desc": "{{desc|name=GrowthExperiments|url=https://www.mediawiki.org/wiki/Extension:GrowthExperiments}}",
+	"growthexperiments-config-validator-additional-fields": "Error returned by validator of Growth config (Special:EditGrowthConfig)",
+	"growthexperiments-config-validator-error": "Error returned by validator of Growth config (Special:EditGrowthConfig)",
+	"growthexperiments-config-validator-datatype-mismatch": "Error returned by validator of Growth config (Special:EditGrowthConfig)",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Error returned by validator of Growth config (Special:EditGrowthConfig)"
 }
