@@ -109,7 +109,7 @@ class WelcomeSurvey {
 
 		$questionNames = $groups[ $group ][ 'questions' ];
 		if ( in_array( 'email', $questionNames ) &&
-			!Util::canSetEmail( $this->context->getUser(), null, false )
+			!Util::canSetEmail( $this->context->getUser(), '', false )
 		) {
 			$questionNames = array_diff( $questionNames, [ 'email' ] );
 		}
@@ -247,7 +247,7 @@ class WelcomeSurvey {
 
 		if ( $save ) {
 			// set email
-			$newEmail = $data[ 'email' ] ?? false;
+			$newEmail = $data[ 'email' ] ?? '';
 			if ( $newEmail ) {
 				$data[ 'email' ] = '[redacted]';
 				if ( Util::canSetEmail( $user, $newEmail ) ) {
