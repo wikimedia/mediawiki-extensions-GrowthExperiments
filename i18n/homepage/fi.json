@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Joquliina",
+			"Mediawikitranslator",
 			"Nike",
 			"Pyscowicz"
 		]
@@ -17,6 +18,7 @@
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Esimerkkivirke",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Ohjesäännöt",
 	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "Ohita kaikki",
+	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "Älä näytä uudelleen",
 	"newcomertasksinfo-no-data": "Tietoja ei ole saatavilla.",
 	"newcomertasksinfo-table-header-task-type-id": "Tunniste",
 	"newcomertasksinfo-table-header-task-count": "Määrä"

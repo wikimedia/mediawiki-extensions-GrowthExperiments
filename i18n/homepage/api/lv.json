@@ -4,6 +4,7 @@
 			"Papuass"
 		]
 	},
+	"apihelp-homepagequestionstore-summary": "Iegūt formatētus jautājumus, kas iesniegti no sākumlapas moduļiem",
 	"apihelp-homepagequestionstore-param-questionformat": "Formāts, kādā atgriezt jautājumus, piemēram, HTML.",
 	"apihelp-homepagequestionstore-param-storage": "Jautājumu glabāšanas vieta.",
 	"apihelp-homepagequestionstore-param-userid": "Lietotāja ID, kam iegūt jautājumus.",
