@@ -19,7 +19,6 @@ use Psr\Log\NullLogger;
 use TitleFactory;
 use User;
 use WikiPage;
-// phpcs:ignore MediaWiki.Classes.UnusedUseStatement.UnusedUse
 use WikitextContent;
 
 class MentorPageMentorManager extends MentorManager implements LoggerAwareInterface {
