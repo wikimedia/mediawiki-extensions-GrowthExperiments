@@ -60,6 +60,9 @@ class ImportOresTopics extends Maintenance {
 	/** @var string|null Wiki ID of the production wiki. */
 	private $wikiId;
 
+	/** @var bool|null Does the wiki have an 'articletopic' ORES model? */
+	private $wikiHasOresModel;
+
 	public function __construct() {
 		parent::__construct();
 		$this->requireExtension( 'GrowthExperiments' );
@@ -196,7 +199,41 @@ class ImportOresTopics extends Maintenance {
 		if ( $this->topicSource === self::TOPIC_SOURCE_RANDOM ) {
 			$topics = $this->getTopicsByRandom( $titles );
 		} elseif ( $this->topicSource === self::TOPIC_SOURCE_PROD ) {
-			$topics = $this->getTopicsFromOres( $titles, $this->apiUrl, $this->wikiId );
+			$titleStrings = array_map( function ( Title $title ) {
+				return $title->getPrefixedText();
+			}, $titles );
+			$wikiId = $this->wikiId;
+			$apiUrl = $this->apiUrl;
+			$titleMap = [];
+
+			if ( !$this->hasOresModel( $this->wikiId ) ) {
+				$wikiId = 'enwiki';
+				$apiUrl = 'https://en.wikipedia.org/w/api.php';
+				$titleMap = $this->getSiteLinks( $titleStrings, $this->apiUrl, $missingTitles );
+				$titleStrings = array_values( $titleMap );
+				if ( $this->verbose && $missingTitles ) {
+					$this->output( 'not found on enwiki: ' . implode( ', ', $missingTitles ) . "\n" );
+				}
+				if ( !$titleStrings ) {
+					return [];
+				}
+			}
+
+			$titleToRevId = $this->titlesToRevisionIds( $titleStrings, $apiUrl, $missingTitles );
+			if ( $this->verbose && $missingTitles ) {
+				$this->output( 'not found on the production wiki: ' . implode( ', ', $missingTitles ) . "\n" );
+			}
+			if ( !$titleToRevId ) {
+				return [];
+			}
+			if ( !$this->hasOresModel( $this->wikiId ) ) {
+				$reverseTitleMap = array_flip( $titleMap );
+				$titleToRevId = array_flip( array_map( function ( string $title ) use ( $reverseTitleMap ) {
+					return $reverseTitleMap[$title];
+				}, array_flip( $titleToRevId ) ) );
+			}
+
+			$topics = $this->getTopicsFromOres( $titleToRevId, $wikiId );
 		} else {
 			throw new LogicException( 'cannot get here' );
 		}
@@ -244,33 +281,86 @@ class ImportOresTopics extends Maintenance {
 	}
 
 	/**
+	 * Does the wiki have an 'articletopic' ORES model?
+	 * @param string $wikiId
+	 * @return bool
+	 */
+	private function hasOresModel( string $wikiId ): bool {
+		if ( $this->wikiHasOresModel === null ) {
+			// We don't care about the version but we can't ask for an empty set of
+			// fields and it's the smallest.
+			$oresApiUrl = 'https://ores.wikimedia.org/v3/scores/';
+			$modelData = $this->getJsonData( $oresApiUrl, [ 'model_info' => 'version' ] );
+			$this->wikiHasOresModel = isset( $modelData[$wikiId]['models']['articletopic'] );
+		}
+		return $this->wikiHasOresModel;
+	}
+
+	/**
 	 * For a set of titles, fetch the ORES topic data for the articles with the same titles
 	 * from a Wikimedia production wiki.
-	 * @param Title[] $titles
-	 * @param string $apiUrl MediaWiki API URL to use for converting titles to page IDs.
+	 * @param int[] $revIds revision IDs (keys will be preserved and used in the return value).
 	 * @param string $wikiId Wiki ID to use for the ORES queries.
-	 * @return float[][] title => topic => score
+	 * @return float[][] key => topic => score.
 	 */
-	private function getTopicsFromOres( array $titles, string $apiUrl, string $wikiId ): array {
-		$requestFactory = MediaWikiServices::getInstance()->getHttpRequestFactory();
+	private function getTopicsFromOres( array $revIds, string $wikiId ): array {
+		$oresApiUrl = "https://ores.wikimedia.org/v3/scores/$wikiId";
+		$data = $this->getJsonData( $oresApiUrl, [
+			'models' => 'articletopic',
+			'revids' => implode( '|', $revIds ),
+		] );
 
-		$titleStrings = array_map( function ( Title $title ) {
-			return $title->getPrefixedText();
-		}, $titles );
-		$result = Util::getApiUrl(
-			$requestFactory,
-			$apiUrl,
-			[
-				'action' => 'query',
-				'prop' => 'revisions',
-				'rvprop' => 'ids',
-				'titles' => implode( '|', $titleStrings ),
-			]
-		);
-		if ( !$result->isOK() ) {
-			$this->fatalError( Status::wrap( $result )->getWikiText( false, false, 'en' ) );
+		$topics = [];
+		$revIdKeys = array_flip( $revIds );
+		foreach ( $data[$wikiId]['scores'] as $revId => $scores ) {
+			$topicScores = [];
+			foreach ( $scores['articletopic']['score']['prediction'] as $topic ) {
+				$topicScores[$topic] = $scores['articletopic']['score']['probability'][$topic];
+			}
+			$topics[$revIdKeys[$revId]] = $topicScores;
 		}
-		$data = $result->getValue();
+		return $topics;
+	}
+
+	/**
+	 * Gets enwiki sitelinks for a batch of pages.
+	 * @param string[] $titles Titles as prefixed text.
+	 * @param string $apiUrl
+	 * @param string[]|null &$missingTitles Returns the list of titles (as prefixed text) which are not found.
+	 * @return string[] Title => enwiki title
+	 */
+	private function getSiteLinks( array $titles, string $apiUrl, array &$missingTitles = null ): array {
+		$data = $this->getJsonData( $apiUrl, [
+			'action' => 'query',
+			'prop' => 'langlinks',
+			'rvprop' => 'ids',
+			'titles' => implode( '|', $titles ),
+			'lllang' => 'en',
+			'lllimit' => 'max',
+		], true );
+		$siteLinks = [];
+		foreach ( $data['query']['pages'] as $page ) {
+			if ( isset( $page['langlinks'] ) ) {
+				$siteLinks[$page['title']] = $page['langlinks'][0]['title'];
+			}
+		}
+		$missingTitles = array_diff( $titles, array_keys( $siteLinks ) );
+		return $siteLinks;
+	}
+
+	/**
+	 * @param string[] $titles Titles as prefixed text.
+	 * @param string $apiUrl
+	 * @param string[]|null &$missingTitles Returns the list of titles (as prefixed text) which are not found.
+	 * @return int[] title as prefixed text => rev ID
+	 */
+	private function titlesToRevisionIds( array $titles, string $apiUrl, array &$missingTitles = null ): array {
+		$data = $this->getJsonData( $apiUrl, [
+			'action' => 'query',
+			'prop' => 'revisions',
+			'rvprop' => 'ids',
+			'titles' => implode( '|', $titles ),
+		], true );
 
 		$titleToRevId = [];
 		foreach ( $data['query']['pages'] as $row ) {
@@ -278,37 +368,33 @@ class ImportOresTopics extends Maintenance {
 				$titleToRevId[$row['title']] = $row['revisions'][0]['revid'];
 			}
 		}
+
 		$revIdToTitle = array_flip( $titleToRevId );
+		$missingTitles = array_diff( $titles, array_values( $revIdToTitle ) );
 
-		if ( $this->verbose ) {
-			$missingTitles = array_diff( $titleStrings, array_values( $revIdToTitle ) );
-			if ( $missingTitles ) {
-				$this->output( 'not found on the production wiki: ' . implode( ', ', $missingTitles ) . "\n" );
+		return $titleToRevId;
+	}
+
+	/**
+	 * @param string $url JSON URL
+	 * @param string[] $parameters Query parameters
+	 * @param bool $isMediaWikiApiUrl
+	 * @return mixed A JSON value
+	 */
+	private function getJsonData( string $url, array $parameters = [], bool $isMediaWikiApiUrl = false ) {
+		$requestFactory = MediaWikiServices::getInstance()->getHttpRequestFactory();
+		if ( $isMediaWikiApiUrl ) {
+			$result = Util::getApiUrl( $requestFactory, $url, $parameters + [ 'errorlang' => 'en' ] );
+		} else {
+			if ( $parameters ) {
+				$url .= '?' . wfArrayToCgi( $parameters );
 			}
+			$result = Util::getJsonUrl( $requestFactory, $url );
 		}
-		if ( !$titleToRevId ) {
-			return [];
-		}
-
-		$oresApiUrl = "https://ores.wikimedia.org/v3/scores/$wikiId?" . wfArrayToCgi( [
-			'models' => 'articletopic',
-			'revids' => implode( '|', $titleToRevId ),
-		] );
-		$result = Util::getJsonUrl( $requestFactory, $oresApiUrl );
 		if ( !$result->isOK() ) {
 			$this->fatalError( Status::wrap( $result )->getWikiText( false, false, 'en' ) );
 		}
-		$data = $result->getValue();
-
-		$topics = [];
-		foreach ( $data[$wikiId]['scores'] as $revId => $scores ) {
-			$topicScores = [];
-			foreach ( $scores['articletopic']['score']['prediction'] as $topic ) {
-				$topicScores[$topic] = $scores['articletopic']['score']['probability'][$topic];
-			}
-			$topics[$revIdToTitle[$revId]] = $topicScores;
-		}
-		return $topics;
+		return $result->getValue();
 	}
 
 	/**
