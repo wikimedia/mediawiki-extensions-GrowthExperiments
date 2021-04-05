@@ -196,6 +196,8 @@ RecommendedLinkContextItem.prototype.setAccepted = function ( accepted ) {
 			this.moveToSuggestion( this.getRecommendationInfo().index + 1 );
 		}.bind( this ) );
 	}
+
+	// Show the new context item created when acceptance changed
 	this.forceContextItemToAppear();
 	this.onAcceptanceChanged();
 };
@@ -212,10 +214,6 @@ RecommendedLinkContextItem.prototype.moveToSuggestion = function ( index ) {
 	var fragment = this.context.getSurface().linkRecommendationFragments[ index ].fragment;
 	fragment.select();
 	this.forceContextItemToAppear();
-	if ( this.context.isMobile() ) {
-		// On mobile, deactivate the surface so that the context appears
-		this.context.getSurface().getView().deactivate( false, false, true );
-	}
 };
 
 /**
@@ -225,6 +223,14 @@ RecommendedLinkContextItem.prototype.forceContextItemToAppear = function () {
 	this.context.getSurface().getView().selectAnnotation( function ( annotationView ) {
 		return annotationView instanceof CeRecommendedLinkAnnotation;
 	} );
+	if ( this.context.isMobile() ) {
+		// On mobile, deactivate the surface so that the context appears (see ve.ce.Surface)
+		// Deactivation logic is only executed if the surface isn't already de-activated
+		this.context.getSurface().getView().activate();
+		this.context.getSurface().getView().deactivate( false, false, true );
+		// Update active annotations based on current model (instead of DOM cursor)
+		this.context.getSurface().getView().updateActiveAnnotations( true );
+	}
 };
 
 /**
