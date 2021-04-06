@@ -1,4 +1,7 @@
 .ve-ce-linkAnnotation.mw-ge-recommendedLinkAnnotation {
+	// allow annotation to be selected on Safari, otherwise window.getSelection().focusNode is null
+	-webkit-user-select: auto;
+	user-select: auto;
 	background-color: #fcf5e6;
 	border: 1px solid #fae2a5;
 	padding: 2px;
