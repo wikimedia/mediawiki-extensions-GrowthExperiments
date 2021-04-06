@@ -2,9 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Hedda",
+			"Joseph",
 			"MuratTheTurkish",
 			"ToprakM"
 		]
 	},
-	"growthexperiments-desc": "Bu eklenti, Growth ekibinin yaptığı deneyleri içeriyor."
+	"growthexperiments-desc": "Bu eklenti, Growth ekibinin yaptığı deneyleri içeriyor.",
+	"growthexperiments-config-validator-additional-fields": "Yeni yapılandırma, burada özelleştirilemeyecek yapılandırma anahtarı içeriyor.",
+	"growthexperiments-config-validator-error": "$1 doğrulaması başarısız oldu: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code>, <code>$2</code> olması bekleniyordu, ancak <code>$3</code> oldu",
+	"growthexperiments-config-validator-contentmodel-mismatch": "İçerik-model uyumsuz: GrowthExperiments yapılandırma dosyası JSON içerik modeli olmalıdır, $1 algılandı"
 }

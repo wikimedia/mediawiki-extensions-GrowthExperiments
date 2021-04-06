@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ainali"
+			"Ainali",
+			"WikiPhoenix"
 		]
 	},
-	"growthexperiments-desc": "Detta tillägg innehåller experiment som göres av Growth-teamet."
+	"growthexperiments-desc": "Detta tillägg innehåller experiment som göres av Growth-teamet.",
+	"growthexperiments-config-validator-error": "Validering av $1 misslyckades med: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> förväntas vara <code>$2</code>, men är <code>$3</code>"
 }

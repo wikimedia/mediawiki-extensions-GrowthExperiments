@@ -323,5 +323,8 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Tudj meg többet az MI ajánlásairól",
 	"growthexperiments-addlink-onboarding-dialog-title": "Bevezető",
 	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "Ne mutasd még egyszer",
-	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Kezdés"
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Kezdés",
+	"newcomertasksinfo": "Az új szerkesztő feladata",
+	"newcomertasksinfo-no-data": "Nincs elérhető adat.",
+	"newcomertasksinfo-table-header-task-type-id": "Azonosító"
 }

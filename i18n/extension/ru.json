@@ -2,8 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Ailbeve",
+			"Nastua Buldakova",
 			"Vlad5250"
 		]
 	},
-	"growthexperiments-desc": "Данное расширение является результатом исследований Команды «Роста»."
+	"growthexperiments-desc": "Данное расширение является результатом исследований Команды «Роста».",
+	"growthexperiments-config-validator-additional-fields": "Новая конфигурация имеет ключи конфигурации, которые здесь не могут быть настроены."
 }

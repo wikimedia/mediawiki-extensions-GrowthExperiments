@@ -4,5 +4,9 @@
 			"Amire80"
 		]
 	},
-	"growthexperiments-desc": "ההרחבה הזאת מכילה ניסויים שעשה צוות הצמיחה."
+	"growthexperiments-desc": "ההרחבה הזאת מכילה ניסויים שעשה צוות הצמיחה.",
+	"growthexperiments-config-validator-additional-fields": "בהגדרות החדשות יש מפתחות הגדרה שאי־אפשר להתאים אישית כאן.",
+	"growthexperiments-config-validator-error": "בדיקת התקינות של $1 נכשלה עם: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> צפוי להיות <code>$2</code>, אבל עכשיו זה <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "חוסר־התאמה במודל התוכן: לקובץ ההגדרות של GrowthExperiments צריך להיות מודל התוכן JSON, וזוהה $1"
 }

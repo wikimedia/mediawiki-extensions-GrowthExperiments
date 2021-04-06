@@ -18,10 +18,10 @@
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Omitir}} esta encuesta",
 	"welcomesurvey-close-btn": "Cerrar y volver a $1",
 	"welcomesurvey-sidebar-privacy-title": "Valoramos tu privacidad",
-	"welcomesurvey-sidebar-privacy-text": "La Fundación Wikimedia usará {{GENDER:$2|tus}} respuestas para ayudarte a comenzar a editar {{SITENAME}}. $1",
+	"welcomesurvey-sidebar-privacy-text": "La Fundación Wikimedia usará {{GENDER:$2|tus}} respuestas para ayudarte a comenzar a editar {{SITENAME}}. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Para saber más sobre los datos en los editores nuevos",
 	"welcomesurvey-sidebar-editing-title": "Empezar a editar",
-	"welcomesurvey-sidebar-editing-text": "Casi cualquier página puede ser editada por cualquiera, y se realizan cientos de cambios cada hora para añadir contenido, corregir errores y mejorar la legibilidad. Las siguientes páginas te pueden ayudar si {{GENDER:$1|estás interesado|estás interesada}} en contribuir.",
+	"welcomesurvey-sidebar-editing-text": "Casi cualquier página puede ser editada por cualquier persona, y se realizan cientos de cambios cada hora para añadir contenido, corregir errores y mejorar la legibilidad. Las siguientes páginas te pueden ayudar si {{GENDER:$1|estás interesado|estás interesada}} en contribuir.",
 	"welcomesurvey-sidebar-editing-link1-text": "Tutorial",
 	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:Tutorial",
 	"welcomesurvey-sidebar-editing-link2-text": "Ayuda",
@@ -47,8 +47,8 @@
 	"welcomesurvey-question-edited-option-dont-remember-label": "No lo recuerdo",
 	"welcomesurvey-question-email-label": "Dirección de correo electrónico (opcional)",
 	"welcomesurvey-question-email-placeholder": "Escribe tu dirección de correo electrónico...",
-	"welcomesurvey-question-email-help": "Notamos que no introdujiste un correo electrónico cuando creaste esta cuenta. Es <strong>altamente recomendado</strong>, ya que un correo electrónico es necesario para la recuperación de la cuenta si en algún momento pierdes tu contraseña. NOTA: Tu dirección de correo electrónico no es revelada cuándo otros usuarios te contactan.",
+	"welcomesurvey-question-email-help": "Notamos que no introdujiste un correo electrónico cuando creaste esta cuenta. Esto es <strong>altamente recomendado</strong>, ya que un correo electrónico es necesario para la recuperación de la cuenta si en algún momento pierdes tu contraseña. NOTA: Tu dirección de correo electrónico no es revelada cuándo otros usuarios te contactan.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} está disponible en casi 300 idiomas. ¿Lees o escribes en otros idiomas?",
 	"welcomesurvey-question-languages-placeholder": "Añade hasta {{PLURAL:$1|un idioma|$1 idiomas}}...",
-	"welcomesurvey-question-languages-maximum": "Ha agregado el numero máximo de idiomas."
+	"welcomesurvey-question-languages-maximum": "Has añadido el numero máximo de idiomas."
 }

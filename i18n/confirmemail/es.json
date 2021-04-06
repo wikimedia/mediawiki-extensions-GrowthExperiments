@@ -2,11 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Fitoschido",
+			"LORDZRAWN",
 			"Wizardeck"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|¿qué es esto?]])",
+	"growthexperiments-confirmemail-emailhelp": "Se requiere un correo electrónico para recuperar tu cuenta si pierdes tu contraseña.",
 	"growthexperiments-confirmemail-emailrecommended": "Dirección de correo electrónico (recomendado)",
+	"growthexperiments-confirmemail-emailwarning": "Por favor, busca un correo electrónico nuestro para verificar su dirección.",
 	"growthexperiments-confirmemail-confirm-subject": "Te damos la bienvenida a {{SITENAME}}. Confirma tu dirección de correo electrónico",
 	"growthexperiments-confirmemail-confirm-button": "Confirmar dirección de correo electrónico"
 }

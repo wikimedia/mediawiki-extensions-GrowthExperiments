@@ -1,11 +1,33 @@
 {
 	"@metadata": {
 		"authors": [
+			"Achiri Bitamsimli",
+			"Alhassan Peter",
+			"Anamzooya",
+			"Din-nani1",
 			"Dnshitobu",
+			"Hidrash",
+			"Ruky Wunpini",
+			"Sir Amugi",
 			"Yakubu Fadilatu"
 		]
 	},
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Yɛltɔɣili shɛhira",
 	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "Yaɣimi zaa",
-	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Piligi ma"
+	"growthexperiments-addlink-onboarding-dialog-title": "Piligu",
+	"growthexperiments-addlink-onboarding-dialog-progress": "$1 zaŋ $2",
+	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "Di lahi n-yi na yaha",
+	"growthexperiments-addlink-onboarding-dialog-label-next": "Piligu din pahi soli",
+	"growthexperiments-addlink-onboarding-dialog-label-previous": "Dingari piligu soli",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Piligima",
+	"growthexperiments-addlink-no-suggestions-found-dialog-message": "Buɣisibunima lahi ka lahabali ŋɔ ni",
+	"growthexperiments-addlink-no-suggestions-found-dialog-button": "Labimi tiɛha zaŋ jɛndi mali sabi.",
+	"newcomertasksinfo": "Ninvuɣ' Palo tuma",
+	"newcomertasksinfo-no-data": "Lahabali sheli kani",
+	"newcomertasksinfo-table-header-task-type": "Tuma balibu",
+	"newcomertasksinfo-table-header-task-type-id": "ŋahan gbana",
+	"newcomertasksinfo-table-header-task-count": "Kali",
+	"newcomertasksinfo-table-header-topic-type": "Yaɣali ŋmahan gbana",
+	"growthexperiments-addlink-ve-ai-mode-title": "AI tiɛha bee pahigu",
+	"growthexperiments-addlink-ve-ai-mode-submit-button": "Zaŋ ti"
 }

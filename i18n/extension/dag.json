@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Alhassan Peter",
+			"Chirifo",
+			"Sir Amugi"
+		]
+	},
+	"growthexperiments-config-validator-additional-fields": "Taɣimi yaɣali",
+	"growthexperiments-config-validator-error": "Dihitabli n zaŋ ti ni $1 zaɣsi zaŋ tabli $2",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> di tu ni di ti <code>$2</code>, amaa di <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Din be dipuni bi ŋman taba"
+}

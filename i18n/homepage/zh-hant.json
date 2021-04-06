@@ -4,6 +4,7 @@
 			"Go1002opn",
 			"HTan (WMF)",
 			"Kly",
+			"SiderealArt",
 			"Winston Sung"
 		]
 	},
@@ -314,5 +315,12 @@
 	"growthexperiments-addlink-revdeleted": "「$2」的修訂 $1 無法存取",
 	"growthexperiments-addlink-wrongmodel": "「$2」的修訂 $1 內容不是維基語法",
 	"growthexperiments-addlink-invalidjson": "「$1」的連結推薦服務回應無效",
-	"growthexperiments-addlink-serviceerror": "「$1」的連結推薦服務回應無效出現錯誤：$2"
+	"growthexperiments-addlink-serviceerror": "「$1」的連結推薦服務回應無效出現錯誤：$2",
+	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "全部跳過",
+	"growthexperiments-addlink-onboarding-dialog-progress": "$1 之 $2",
+	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "不要再顯示",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "入門",
+	"newcomertasksinfo-table-header-task-type-id": "ID",
+	"growthexperiments-addlink-ve-ai-mode-title": "AI 建議",
+	"growthexperiments-addlink-ve-ai-mode-submit-button": "提交..."
 }
