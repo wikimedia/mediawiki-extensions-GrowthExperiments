@@ -120,14 +120,17 @@ class RefreshLinkRecommendations extends Maintenance {
 	}
 
 	public function execute() {
-		$this->initServices();
+		$this->initGrowthConfig();
 		if ( !$this->growthConfig->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
 			$this->output( "Disabled\n" );
 			return;
 		} elseif ( $this->growthConfig->get( 'GENewcomerTasksRemoteApiUrl' ) ) {
 			$this->output( "Local tasks disabled\n" );
 			return;
-		} elseif ( wfReadOnly() ) {
+		}
+		$this->initServices();
+		$this->initConfig();
+		if ( wfReadOnly() ) {
 			$this->output( "DB is readonly\n" );
 			return;
 		} elseif ( !$this->linkRecommendationStore->getDB( DB_MASTER )->lock(
@@ -136,7 +139,6 @@ class RefreshLinkRecommendations extends Maintenance {
 			$this->output( "Previous invocation of the script is still running\n" );
 			return;
 		}
-		$this->initConfig();
 
 		$oresTopics = $this->getOresTopics();
 		$this->output( "Refreshing link recommendations...\n" );
@@ -220,6 +222,16 @@ class RefreshLinkRecommendations extends Maintenance {
 		}
 	}
 
+	protected function initGrowthConfig(): void {
+		// Needs to be separate from initServices/initConfig as checking whether the script
+		// should run on a given wiki relies on this, but initServices/initConfig will break
+		// on some wikis where the script is not supposed to run and the task configuration
+		// is missing.
+		$services = MediaWikiServices::getInstance();
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$this->growthConfig = $growthServices->getConfig();
+	}
+
 	protected function initServices(): void {
 		// Extend the task type configuration with a custom "candidate" task type, which
 		// finds articles which do not have link recommendations.
@@ -229,7 +241,6 @@ class RefreshLinkRecommendations extends Maintenance {
 
 		$services = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$this->growthConfig = $growthServices->getConfig();
 		$this->searchEngineFactory = $services->getSearchEngineFactory();
 		$this->titleFactory = $services->getTitleFactory();
 		$this->linkBatchFactory = $services->getLinkBatchFactory();
