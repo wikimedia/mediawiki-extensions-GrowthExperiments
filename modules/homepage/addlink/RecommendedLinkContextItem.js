@@ -233,11 +233,12 @@ RecommendedLinkContextItem.prototype.forceContextItemToAppear = function () {
  * @private
  */
 RecommendedLinkContextItem.prototype.setupHelpButton = function () {
-	// TODO: Update invisible label when copy is finalized
 	this.helpButton = new OO.ui.ButtonWidget( {
 		classes: [ 'mw-ge-recommendedLinkContextItem-help-button' ],
 		framed: false,
-		icon: 'helpNotice'
+		icon: 'helpNotice',
+		label: mw.message( 'growthexperiments-addlink-context-button-help' ).text(),
+		invisibleLabel: true
 	} );
 	this.helpButton.on( 'click', function () {
 		mw.hook( 'growthExperiments.contextItem.openHelpPanel' ).fire();
