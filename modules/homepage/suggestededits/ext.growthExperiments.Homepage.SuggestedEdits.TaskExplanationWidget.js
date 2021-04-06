@@ -7,7 +7,8 @@
 	var taskTypes = require( './TaskTypes.json' ),
 		mobileFrontend = mw.mobileFrontend,
 		suggestedEditsPeek = require( '../../helppanel/ext.growthExperiments.SuggestedEditsPeek.js' ),
-		Drawer = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Drawer : undefined;
+		Drawer = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Drawer : undefined,
+		IconUtils = require( '../../utils/ext.growthExperiments.IconUtils.js' );
 
 	/**
 	 * @param {Object} config
@@ -54,18 +55,9 @@
 	};
 
 	TaskExplanationWidget.prototype.getIcon = function () {
-		if ( 'icon' in this.taskTypeData.iconData ) {
-			return new OO.ui.IconWidget( {
-				icon: this.taskTypeData.iconData.icon,
-				// The following messages are used here:
-				// * growthexperiments-homepage-suggestededits-tasktype-ai-description
-				// * FORMAT growthexperiments-homepage-suggestededits-tasktype-{other}-description
-				label: mw.message( this.taskTypeData.iconData.descriptionMessageKey ).text(),
-				invisibleLabel: true,
-				classes: [ 'suggested-edits-task-explanation-icon' ]
-			} ).$element;
-		}
-		return '';
+		return IconUtils.getIconElementForTaskType( this.taskTypeData.iconData, {
+			classes: [ 'suggested-edits-task-explanation-icon' ]
+		} );
 	};
 
 	TaskExplanationWidget.prototype.getDescriptionRow = function () {

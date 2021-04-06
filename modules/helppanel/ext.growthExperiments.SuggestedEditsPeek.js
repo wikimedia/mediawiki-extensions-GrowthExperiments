@@ -1,4 +1,5 @@
 ( function () {
+	var IconUtils = require( '../utils/ext.growthExperiments.IconUtils.js' );
 
 	/**
 	 * @param {string} difficulty
@@ -46,9 +47,11 @@
 	 *   The i18n string name to use for the time estimate on a task type.
 	 * @param {string} difficulty
 	 *   The difficulty level for the current task, e.g. 'easy', 'medium', 'hard'
+	 * @param {Object} [iconData]
+	 *   An object with icon data corresponding to the task type
 	 * @return {jQuery}
 	 */
-	function getSuggestedEditsPeek( wrapperClass, messages, difficulty ) {
+	function getSuggestedEditsPeek( wrapperClass, messages, difficulty, iconData ) {
 		return $( '<div>' ).addClass( wrapperClass )
 			.append(
 				$( '<div>' ).addClass( 'suggested-edits-header-text' )
@@ -56,7 +59,11 @@
 						$( '<h4>' )
 							.addClass( 'suggested-edits-task-explanation-heading' )
 							.text( messages.name ),
-						getDifficultyAndTime( difficulty, messages.timeestimate )
+						getDifficultyAndTime(
+							difficulty,
+							messages.timeestimate,
+							IconUtils.getIconElementForTaskType( iconData )
+						)
 					)
 			).append( $( '<div>' ).addClass( 'suggested-edits-icon' ) );
 	}

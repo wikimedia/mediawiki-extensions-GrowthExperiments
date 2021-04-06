@@ -316,6 +316,7 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
 				"homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js",
 				"utils/ext.growthExperiments.Utils.js",
+				"utils/ext.growthExperiments.IconUtils.js",
 				{
 					"name": "homepage/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
@@ -339,7 +340,9 @@
 			],
 			"dependencies": [
 				"ext.growthExperiments.Homepage.Logger",
-				"ext.growthExperiments.Homepage.icons"
+				"ext.growthExperiments.Homepage.icons",
+				"mediawiki.language",
+				"oojs-ui-widgets"
 			]
 		},
 		"ext.growthExperiments.HelpPanel.icons": {
@@ -501,6 +504,7 @@
 				"homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js",
 				"helppanel/ext.growthExperiments.SuggestedEditsPeek.js",
 				"utils/ext.growthExperiments.Utils.js",
+				"utils/ext.growthExperiments.IconUtils.js",
 				{
 					"name": "homepage/suggestededits/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
@@ -930,6 +934,7 @@
 				"help/ext.growthExperiments.HelpPanelLogger.js",
 				"homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js",
 				"utils/ext.growthExperiments.Utils.js",
+				"utils/ext.growthExperiments.IconUtils.js",
 				"help/ext.growthExperiments.HelpPanelSearchWidget.js",
 				"help/ext.growthExperiments.HelpPanelHomeButtonWidget.js",
 				"help/ext.growthExperiments.HelpPanelProcessDialog.js",
@@ -1009,6 +1014,7 @@
 				"growthexperiments-help-panel-search-label",
 				"growthexperiments-help-panel-search-no-results",
 				"ellipsis",
+				"growthexperiments-homepage-suggestededits-tasktype-ai-description",
 				"growthexperiments-homepage-suggestededits-tasktype-name-copyedit",
 				"growthexperiments-homepage-suggestededits-tasktype-name-references",
 				"growthexperiments-homepage-suggestededits-tasktype-name-update",
@@ -1049,6 +1055,7 @@
 				"helppanel/ext.growthExperiments.SuggestedEditsPeek.js",
 				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.js",
 				"utils/ext.growthExperiments.Utils.js",
+				"utils/ext.growthExperiments.IconUtils.js",
 				{
 					"name": "helppanel/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
@@ -1062,7 +1069,9 @@
 				"mediawiki.pulsatingdot",
 				"oojs-ui.styles.icons-movement",
 				"ext.growthExperiments.AddLink.onboarding",
-				"mediawiki.router"
+				"mediawiki.router",
+				"mediawiki.language",
+				"oojs-ui-widgets"
 			],
 			"messages": [
 				"growthexperiments-help-panel-cta-button-text",
@@ -1070,6 +1079,7 @@
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy",
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium",
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard",
+				"growthexperiments-homepage-suggestededits-tasktype-ai-description",
 				"growthexperiments-addlink-no-suggestions-found-dialog-message",
 				"growthexperiments-addlink-no-suggestions-found-dialog-button"
 			],
