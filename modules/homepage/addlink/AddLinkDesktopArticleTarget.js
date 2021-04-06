@@ -29,7 +29,14 @@ AddLinkDesktopArticleTarget.prototype.loadSuccess = function ( response ) {
 AddLinkDesktopArticleTarget.prototype.surfaceReady = function () {
 	this.beforeSurfaceReady();
 	AddLinkDesktopArticleTarget.super.prototype.surfaceReady.apply( this, arguments );
-	this.afterSurfaceReady();
+	/**
+	 * The page is focused in ve.init.mw.DesktopArticleTarget's afterActivate hook.
+	 * If the RecommendedLinkContextItem were opened before this focus, it will be torn down.
+	 * The focus is happening in the next run loop (see ve.ce.Surface.prototype.focus)
+	 * so afterSurfaceReady should be called in the next run loop to make sure that
+	 * the annotation is selected after the page is focused.
+	 */
+	setTimeout( this.afterSurfaceReady.bind( this ) );
 };
 
 AddLinkDesktopArticleTarget.prototype.setupToolbar = function () {
