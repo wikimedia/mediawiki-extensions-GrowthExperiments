@@ -411,7 +411,10 @@
 		HelpPanelProcessDialog.super.prototype.initialize.call( this );
 
 		this.$content
-			.addClass( 'mw-ge-help-panel-processdialog' );
+			.addClass( [
+				'mw-ge-help-panel-processdialog',
+				OO.ui.isMobile() ? 'mw-ge-help-panel-processdialog-mobile' : 'mw-ge-help-panel-processdialog-desktop'
+			] );
 
 		this.panels = new OO.ui.StackLayout( {
 			classes: [ 'mw-ge-help-panel-processdialog-subpanels' ]

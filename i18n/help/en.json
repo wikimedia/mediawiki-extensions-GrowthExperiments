@@ -129,5 +129,15 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|You}} are using the source editor. These editing tips are most helpful with the visual editor.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Switch to the visual editor",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|You}} are using the visual editor. These editing tips are most helpful with the source editor.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Switch to the source editor"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Switch to the source editor",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Adding links will help people learn faster.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|You}} will decide whether words in one {{SITENAME}} article should link to other {{SITENAME}} articles.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "The moon is the only <mark class=\"positive\">natural satellite</mark> that  <mark class=\"positive\">orbits</mark> around the  <mark class=\"positive\">Earth</mark>.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "No special knowledge about the article is needed to do this task.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "Suggested links come from artificial intelligence (AI), which can make mistakes.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "AI might suggest links on words that don’t need them, or might suggest linking to the wrong article. Use {{GENDER:$1|your}} judgment to decide whether it is right or wrong.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Learn more about AI suggestions]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Guidelines",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "\n* Link concepts that a reader might want to learn more about.\n* Make sure the link is going to the right article.\n* Don't link common words, years, or dates.\n* If {{GENDER:$1|you're}} not sure, skip.",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Example sentence"
 }

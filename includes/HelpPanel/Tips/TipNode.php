@@ -54,5 +54,4 @@ class TipNode {
 	public function getType(): string {
 		return $this->type;
 	}
-
 }

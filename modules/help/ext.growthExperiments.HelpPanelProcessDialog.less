@@ -1,6 +1,7 @@
 @import 'mediawiki.ui/variables';
 @import 'mediawiki.mixins';
 @import '../homepage/ext.growthExperiments.variables.less';
+@import '../homepage/ext.growthExperiments.mixins.less';
 @import '../../lib/ooui/wikimedia-ui-base';
 
 .mw-ge-help-panel-processdialog {
@@ -286,6 +287,13 @@
 						}
 					}
 
+					&-example-label {
+						.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 14.8px, @targetLineHeight: 22px );
+						font-style: italic;
+						color: @wmui-color-base30;
+						margin-top: 8px;
+					}
+
 					&-example {
 						border-radius: 2px;
 						border: solid 1px @wmui-color-base80;
@@ -312,6 +320,11 @@
 					&-graphic {
 						max-width: 64px;
 					}
+
+					&-header {
+						.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 18.28px, @targetLineHeight: 26px );
+						font-weight: bold;
+					}
 				}
 			}
 		}
@@ -330,6 +343,18 @@
 				line-height: 1.3;
 				color: @colorGray2;
 			}
+		}
+	}
+
+	&-desktop {
+		@desktopFontSize: 14px;
+
+		.growthexperiments-quickstart-tips-tip-header {
+			.rel-font-size-and-line-height( @parentFontSize: @desktopFontSize, @targetFontSize: 16px, @targetLineHeight: 22.8px );
+		}
+
+		.growthexperiments-quickstart-tips-tip-example-label {
+			.rel-font-size-and-line-height( @parentFontSize: @desktopFontSize, @targetFontSize: 13px, @targetLineHeight: 19px );
 		}
 	}
 }
