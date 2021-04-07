@@ -7,12 +7,16 @@ function CERecommendedLinkAnnotation() {
 	// Parent constructor
 	CERecommendedLinkAnnotation.super.apply( this, arguments );
 
-	this.$element.addClass( 'mw-ge-recommendedLinkAnnotation' );
+	this.$element.addClass( [
+		'mw-ge-recommendedLinkAnnotation',
+		OO.ui.isMobile() ? 'mw-ge-recommendedLinkAnnotation-mobile' : 'mw-ge-recommendedLinkAnnotation-desktop'
+	] );
 }
 
 OO.inheritClass( CERecommendedLinkAnnotation, ve.ce.MWInternalLinkAnnotation );
 
 CERecommendedLinkAnnotation.static.name = 'mwGeRecommendedLink';
+CERecommendedLinkAnnotation.static.canBeActive = true;
 
 CERecommendedLinkAnnotation.prototype.updateClasses = function () {
 	// Don't call the parent: we don't want redlink styling, and we don't want to write to
