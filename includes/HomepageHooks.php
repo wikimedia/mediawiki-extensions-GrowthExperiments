@@ -542,6 +542,15 @@ class HomepageHooks implements
 			// Set discovery notice seen flag to true; it will be changed for new users in the
 			// LocalUserCreated hook.
 			self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN => true,
+			// Disable blue dot on Edit tab for link-recommendation tasks.
+			SuggestedEdits::GUIDANCE_BLUE_DOT_PREF => json_encode( [
+				'vector' => [
+					LinkRecommendationTaskTypeHandler::ID => true,
+				],
+				'minerva' => [
+					LinkRecommendationTaskTypeHandler::ID => true
+				]
+			] )
 		];
 	}
 
