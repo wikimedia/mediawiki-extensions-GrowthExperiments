@@ -136,5 +136,15 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|أنتَ تستخدم|أنتِ تستخدمين}} المحرر المصدري. هذه النصائح موجّه بالأساس مع استعمال المحرر المرئي.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "{{GENDER:|بدّل|بدّلي}} إلى المحرر المرئي",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|أنتَ تستخدم|أنتِ تستخدمين}} المحرر المرئي. هذه النصائح موجّه بالأساس مع استعمال المحرر المصدري.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "{{GENDER:|بدّل|بدّلي}} إلى المحرر المصدري"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "{{GENDER:|بدّل|بدّلي}} إلى المحرر المصدري",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "إضافة الروابط ستساهم في تعلّمٍ أسرعَ للأشخاص.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|ستقرّر|ستقرّرين}} إن كانت بعض الكلمات من مقالة في {{SITENAME}} عليها أن تربط إلى مقالات أخرى من {{SITENAME}}.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "القمر هو <mark class=\"positive\">القمر الطبيعي</mark> الوحيد الذي <mark class=\"positive\">يلف</mark> حول <mark class=\"positive\">الأرض</mark>.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "لا ضرورة لمعرفة خاصة حول المقالة لإنجاز هذه المهمّة.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "تتأتّى اقتراحات الروابط، من الذكاء الاصطناعي (AI)، الذي بدوره يمكن أن يخطئ.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "يمكن للذكاء الاصطناعي أن يقترح روابط إلى كلمات لا تحتاج إليها، أو ربّما يمكن أن يقترح روابط إلى المقال الخاطئ. {{GENDER:$1|استخدم|استخدمي}} تقديرك لتقرير ما إذا كان الرابط سليما أم خاطئا.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|تعلّم المزيد حول اقتراحات الذكاء الاصطناعي]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "القواعد الإرشادية",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* {{GENDER:$1|اربط|اربطي}} المفاهيم التي يمكن للقارئ أن يريد تعلّم المزيد حولها.\n* {{GENDER:$1|تأكّد|تأكّدي}} من أنّ الرابط سيصل إلى المقالة الصحيحة.\n* عدم ربط الكلمات الشائعة، أو السنوات، أو التواريخ.\n* لو كنت غير {{GENDER:$1|واثقا، تخطّ|واثقة، تخطّيْ}} الاقتراح.",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "جملة للمثال"
 }

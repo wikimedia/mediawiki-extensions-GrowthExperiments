@@ -351,7 +351,7 @@
 	"growthexperiments-addlink-onboarding-content-intro-title": "Bağlantı eklemek insanların hızlı öğrenmelerine yardımcı olur.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "Bir {{SITENAME}} sayfasındaki kelimelerin başka {{SITENAME}} sayfalarına bağlantı eklenip eklenmemesine karar {{GENDER:$1|vereceksiniz}}.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Örnek cümle",
-	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "Ay, <mark>dünya</mark> etrafında <mark>dönen</mark> tek <mark>doğal uydudur</mark>.",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "Ay, <mark class=\"positive\">dünya</mark> etrafında <mark class=\"positive\">dönen</mark> tek <mark class=\"positive\">doğal uydudur</mark>.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "Bu görevi yapmak için sayfa hakkında özel bir bilgiye ihtiyaç yoktur.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Önerilen bağlantılar yapay zekadan (AI) gelir, AI hata yapabilir.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "AI ihtiyaç duymayan kelimelere ya da yanlış sayfalara bağlantı önerebilir. Bunun doğru ya da yanlış olduğuna kendi takdirinize göre karar {{GENDER:$1|verin}}.",

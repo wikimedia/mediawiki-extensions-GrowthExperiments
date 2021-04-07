@@ -3,6 +3,7 @@
 		"authors": [
 			"Chrumps",
 			"FunPL",
+			"Kareyac",
 			"Matma Rex",
 			"Nux",
 			"Rail",
@@ -338,5 +339,6 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Niewłaściwy element docelowy linku (na przykład linkowanie \"słońce\" do \"gwiazda\")",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Dotknij ikonkę ołówka $1 obok linka aby zmienić jego cel",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Inne / brak odpowiedzi",
-	"growthexperiments-addlink-rejectiondialog-action-done": "Gotowe"
+	"growthexperiments-addlink-rejectiondialog-action-done": "Gotowe",
+	"growthexperiments-addlink-onboarding-dialog-title": "Wprowadzenie"
 }
