@@ -1,0 +1,22 @@
+[
+	{
+		"name": "growthexperiments_mentee_data",
+		"comment": "Table having details about all mentees, to be displayed in T278971",
+		"columns": [
+			{
+				"name": "mentee_id",
+				"comment": "User ID of the mentee",
+				"type": "integer",
+				"options": { "unsigned": true, "notnull": true }
+			},
+			{
+				"name": "mentee_data",
+				"comment": "JSON blob containing the data",
+				"type": "blob",
+				"options": { "notnull": true, "length": 65535, "default": "{}" }
+			}
+		],
+		"indexes": [],
+		"pk": [ "mentee_id" ]
+	}
+]

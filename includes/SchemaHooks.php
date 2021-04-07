@@ -26,6 +26,8 @@ class SchemaHooks implements LoadExtensionSchemaUpdatesHook, UnitTestsAfterDatab
 			"$extensionRoot/maintenance/schemas/$engine/growthexperiments_link_recommendations.sql" );
 		$updater->addExtensionTable( 'growthexperiments_link_submissions',
 			"$extensionRoot/maintenance/schemas/$engine/growthexperiments_link_submissions.sql" );
+		$updater->addExtensionTable( 'growthexperiments_mentee_data',
+			"$extensionRoot/maintenance/schemas/$engine/growthexperiments_mentee_data.sql" );
 		$updater->addExtensionField( 'growthexperiments_link_submissions',
 			'gels_anchor_offset',
 			"$extensionRoot/maintenance/schemaChanges/$engine/patch-add_gels_anchor.sql" );
