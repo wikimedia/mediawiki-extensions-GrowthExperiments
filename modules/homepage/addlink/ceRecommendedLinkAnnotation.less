@@ -1,11 +1,18 @@
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
+
 .ve-ce-linkAnnotation.mw-ge-recommendedLinkAnnotation {
 	// allow annotation to be selected on Safari, otherwise window.getSelection().focusNode is null
 	-webkit-user-select: auto;
 	user-select: auto;
-	background-color: #fcf5e6;
-	border: 1px solid #fae2a5;
-	padding: 2px;
-	margin: -2px;
+	background-color: @wmui-color-yellow90;
+	border: 1px solid @wmui-color-yellow50;
+	@paddingXMobile: 6px;
+	@paddingXDesktop: 8px;
+	@paddingY: 2px;
+
+	// Prevent shifting when annotation is active (2px border instead of default 1px)
+	padding: calc( @paddingY + 1px ) calc( @paddingXMobile + 1px );
+	margin: 4px;
 	color: inherit;
 
 	&:after {
@@ -22,8 +29,9 @@
 	}
 
 	.ve-ce-annotation-active& {
-		background-color: #e6f1ff;
-		border-color: #c6e0ff;
+		background-color: fade( @wmui-color-accent90, 50% );
+		border: 2px solid @wmui-color-accent50;
+		padding: @paddingY @paddingXMobile;
 		box-shadow: none;
 		text-decoration: underline;
 
@@ -46,5 +54,13 @@
 	&-rejected:after {
 		/* @embed */
 		background-image: url( close-red.svg );
+	}
+
+	&-desktop {
+		padding: calc( @paddingY + 1px ) calc( @paddingXDesktop + 1px );
+
+		&.ve-ce-annotation-active {
+			padding: @paddingY @paddingXDesktop;
+		}
 	}
 }
