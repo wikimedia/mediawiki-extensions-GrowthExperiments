@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Mentorship\Store;
 
+use InvalidArgumentException;
 use JobQueueGroup;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
@@ -43,8 +44,18 @@ class PreferenceMentorStore extends MentorStore {
 	 */
 	protected function loadMentorUserUncached(
 		UserIdentity $mentee,
+		string $mentorRole,
 		$flags
 	): ?UserIdentity {
+		// As of now, we don't have non-primary mentors, and by the time T227876 is worked on,
+		// we will use DatabaseMentorStore. Make sure we throw if mentor is not primary for safety.
+		// This should never actually happen.
+		if ( $mentorRole !== self::ROLE_PRIMARY ) {
+			throw new InvalidArgumentException(
+				'PreferenceMentorStore cannot handle non-primary mentors'
+			);
+		}
+
 		$mentorId = $this->userOptionsManager->getIntOption(
 			$mentee,
 			static::MENTOR_PREF,
@@ -59,7 +70,20 @@ class PreferenceMentorStore extends MentorStore {
 	/**
 	 * @inheritDoc
 	 */
-	public function setMentorForUser( UserIdentity $mentee, UserIdentity $mentor ): void {
+	protected function setMentorForUserInternal(
+		UserIdentity $mentee,
+		UserIdentity $mentor,
+		string $mentorRole = self::ROLE_PRIMARY
+	): void {
+		// As of now, we don't have non-primary mentors, and by the time T227876 is worked on,
+		// we will use DatabaseMentorStore. Make sure we throw if mentor is not primary for safety.
+		// This should never actually happen.
+		if ( $mentorRole !== self::ROLE_PRIMARY ) {
+			throw new InvalidArgumentException(
+				'PreferenceMentorStore cannot handle non-primary mentors'
+			);
+		}
+
 		$this->userOptionsManager->setOption( $mentee, static::MENTOR_PREF, $mentor->getId() );
 
 		// setMentorForUser is safe to call in GET requests. Call saveOptions only
@@ -76,7 +100,5 @@ class PreferenceMentorStore extends MentorStore {
 				'options' => [ static::MENTOR_PREF => $mentor->getId() ]
 			] ) );
 		}
-
-		$this->invalidateMentorCache( $mentee );
 	}
 }
