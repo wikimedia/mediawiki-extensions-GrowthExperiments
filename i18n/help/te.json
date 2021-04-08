@@ -131,5 +131,8 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|మీరు}} సోర్సు ఎడిటరును వాడుతున్నారు. ఈ దిద్దుబాటు చిట్కాలు విజువల్ ఎడిటరు కైతే బాగా ఉపయోగ పడతాయి",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "విజువల్ ఎడిటరుకు మారండి",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|మీరు}} విజువల్ ఎడిటరును వాడుతున్నారు. ఈ దిద్దుబాటు చిట్కాలు సోర్సు ఎడిటరు కైతే బాగా ఉపయోగ పడతాయి",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "సోర్సు ఎడిటరుకు మారండి"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "సోర్సు ఎడిటరుకు మారండి",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "ఈ పని చెయ్యడానికి ప్రత్యేకమైన పరిజ్ఞానమేమీ అక్కర్లేదు.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "మార్గదర్శకాలు",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "ఉదాహరణ వాక్యం"
 }

@@ -4,6 +4,7 @@
 			"Arbormedi",
 			"BaRaN6161 TURK",
 			"Hedda",
+			"Joseph",
 			"MuratTheTurkish",
 			"ToprakM"
 		]
@@ -134,5 +135,15 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;Kaynak düzenleyiciyi kullanıyorsunuz. Bu düzenleme ipuçları en çok görsel düzenleyici için faydalıdır.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Görsel düzenleyiciye geç",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;Görsel düzenleyiciyi kullanıyorsunuz. Bu düzenleme ipuçları en çok kaynak düzenleyicide faydalıdır.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Kaynak düzenleyiciye geç"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Kaynak düzenleyiciye geç",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Bağlantı eklemek insanların hızlı öğrenmelerine yardımcı olur.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "Bir {{SITENAME}} sayfasındaki kelimelerin başka {{SITENAME}} sayfalarına bağlantı eklenip eklenmemesine karar {{GENDER:$1|vereceksiniz}}.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "Ay, <mark class=\"positive\">dünya</mark> etrafında <mark class=\"positive\">dönen</mark> tek <mark class=\"positive\">doğal uydudur</mark>.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Bu görevi yapmak için sayfa hakkında özel bir bilgiye ihtiyacınız yoktur.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "Önerilen bağlantılar yapay zekadan (AI) gelir, AI hata yapabilir.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "AI ihtiyaç duymayan kelimelere ya da yanlış sayfalara bağlantı önerebilir. Bunun doğru ya da yanlış olduğuna kendi takdirinize göre karar {{GENDER:$1|verin}}.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|AI önerileri hakkında daha fazla bilgi alın]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Rehber",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* Okuyucunun daha fazla bilgi almak isteyebileceği kavramları bağlayın.\n* Bağlantının doğru sayfaya gittiğine emin olun.\n* Genel kelimeleri, yılları ya da tarihleri bağlamayın.\n* Eğer emin {{GENDER:$1|değilseniz}}, atlayın.",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Örnek cümle"
 }

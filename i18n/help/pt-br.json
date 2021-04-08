@@ -4,6 +4,7 @@
 			"Albertoleoncio",
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
+			"Gustavo.moraes",
 			"Luk3",
 			"Tks4Fish"
 		]
@@ -137,6 +138,7 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Alternar para o editor de código-fonte",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Adicionar links ajudará as pessoas a aprender mais rápido.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|Você}} vai decidir se as palavras em um artigo no {{SITENAME}} deve ter link para outros artigos {{SITENAME}}.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "A lua é o único <mark class=\"positive\">Satélite natural</mark> que <mark class=\"positive\">orbita</mark> ao redor da  <mark class=\"positive\">Terra</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Nenhum conhecimento especial sobre o artigo é necessário para fazer esta tarefa.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "Os links sugeridos vêm da inteligência artificial (IA), que pode cometer erros.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "A IA pode sugerir links em palavras que não precisam deles ou pode sugerir links para o artigo errado. Usar {{GENDER:$1|seu}} julgamento para decidir se está certo ou errado.",

@@ -2,10 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Alhassan Peter",
-			"Karimbaasani"
+			"Karimbaasani",
+			"Sir Amugi"
 		]
 	},
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "N-zaŋdi sodolisi pahiri nyɛla din yɛn soŋ ka niriba bɔhindi yɔmyɔm.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|nyini}} Zang yellow shenga ban Karinda ni bora",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "Goli maa ko",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Di baŋsim gahindili zaŋ chaŋ lahabali ŋɔ  bi kpa ni a mali ka naanyi tooi tum tuuni ŋɔ.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "So' shɜŋa di ni buɣisi maa pala wuzaligu dinxuɣu ni ni tooi yaɣi",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Zalisi"
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Bohimma sagsigu kam]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Zalisi",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Shɛhira yɛltɔɣili"
 }
