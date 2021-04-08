@@ -156,6 +156,14 @@ $specialPageAliases['ko'] = [
 	'ClaimMentee' => [ '멘티데려오기' ],
 ];
 
+/** Latvian (latviešu) */
+$specialPageAliases['lv'] = [
+	'WelcomeSurvey' => [ 'SveicienaAptauja' ],
+	'Homepage' => [ 'Sākumlapa' ],
+	'Impact' => [ 'Ietekme' ],
+	'ClaimMentee' => [ 'PieņemtAudzēkni' ],
+];
+
 /** Malay (Bahasa Melayu) */
 $specialPageAliases['ms'] = [
 	'WelcomeSurvey' => [ 'Penyiasatan_Selamat_Datang' ],
