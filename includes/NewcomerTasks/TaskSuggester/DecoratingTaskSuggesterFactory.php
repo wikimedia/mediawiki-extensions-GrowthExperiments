@@ -2,6 +2,9 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 use Wikimedia\ObjectFactory;
 
 /**
@@ -36,6 +39,13 @@ class DecoratingTaskSuggesterFactory extends TaskSuggesterFactory {
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->objectFactory = $objectFactory;
 		$this->decorators = $decorators;
+		$this->logger = new NullLogger();
+	}
+
+	/** @inheritDoc */
+	public function setLogger( LoggerInterface $logger ) {
+		$this->logger = $logger;
+		$this->taskSuggesterFactory->setLogger( $logger );
 	}
 
 	/** @inheritDoc */
@@ -47,6 +57,9 @@ class DecoratingTaskSuggesterFactory extends TaskSuggesterFactory {
 				'extraArgs' => [ $suggester ],
 				'assertClass' => TaskSuggester::class,
 			] );
+			if ( $suggester instanceof LoggerAwareInterface ) {
+				$suggester->setLogger( $this->logger );
+			}
 		}
 		return $suggester;
 	}

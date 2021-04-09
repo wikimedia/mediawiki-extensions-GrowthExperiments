@@ -5,14 +5,18 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use JobQueueGroup;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserIdentity;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\NullLogger;
 use WANObjectCache;
 
 /**
  * A TaskSuggester decorator which uses WANObjectCache to get/set TaskSets.
  */
-class CacheDecorator implements TaskSuggester {
+class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
+
+	use LoggerAwareTrait;
 
 	private const CACHE_VERSION = 1;
 
@@ -38,6 +42,7 @@ class CacheDecorator implements TaskSuggester {
 		$this->taskSuggester = $taskSuggester;
 		$this->cache = $cache;
 		$this->jobQueueGroup = $jobQueueGroup;
+		$this->logger = new NullLogger();
 	}
 
 	/** @inheritDoc */
@@ -93,7 +98,7 @@ class CacheDecorator implements TaskSuggester {
 					} else {
 						$newValue = $oldValue;
 					}
-					LoggerFactory::getInstance( 'GrowthExperiments' )->debug( 'CacheDecorator hit', [
+					$this->logger->debug( 'CacheDecorator hit', [
 						'user' => $user->getName(),
 						'taskTypes' => implode( '|', $taskSetFilters->getTaskTypeFilters() ),
 						'topics' => implode( '|', $taskSetFilters->getTopicFilters() ) ?: null,
@@ -142,7 +147,7 @@ class CacheDecorator implements TaskSuggester {
 				if ( !$useCache && !$resetCache ) {
 					$ttl = $this->cache::TTL_UNCACHEABLE;
 				}
-				LoggerFactory::getInstance( 'GrowthExperiments' )->debug( 'CacheDecorator miss', [
+				$this->logger->debug( 'CacheDecorator miss', [
 					'user' => $user->getName(),
 					'taskTypes' => implode( '|', $taskSetFilters->getTaskTypeFilters() ),
 					'topics' => implode( '|', $taskSetFilters->getTopicFilters() ) ?: null,
