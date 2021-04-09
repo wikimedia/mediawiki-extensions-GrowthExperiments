@@ -314,7 +314,7 @@
 	"growthexperiments-addlink-pagenotfound": "\"$1\" oldal nem létezik",
 	"growthexperiments-addlink-context-button-accept": "Igen",
 	"growthexperiments-addlink-context-button-reject": "Nem",
-	"growthexperiments-addlink-context-button-next": "Kihagy",
+	"growthexperiments-addlink-context-button-next": "Következő",
 	"growthexperiments-addlink-rejectiondialog-title": "Miért helytelen ez a hivatkozás? <em>(Opcionális)</em>",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Egyéb / nem nyilatkozom",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Kész",

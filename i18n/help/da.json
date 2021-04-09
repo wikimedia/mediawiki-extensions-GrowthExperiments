@@ -135,5 +135,6 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Du}} bruger wikikode-redigeringsvinduet. Disse redigeringstips er mest brugbare ved brug af visuel redigering.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Skift til visuel redigering",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Du}} bruger det visuelle redigeringsvindue. Disse redigeringstip er mest brugbare ved redigering med wikikode.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Skift til kilderedigering"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Skift til kilderedigering",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Retningslinjer"
 }

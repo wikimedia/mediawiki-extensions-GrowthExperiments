@@ -357,7 +357,7 @@
 	"growthexperiments-addlink-onboarding-content-intro-title": "リンクを追加すると、人々がより速く学ぶのに役立ちます。",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|}}1つの{{SITENAME}}記事の単語を他の{{SITENAME}}記事にリンクするかどうかを決定します。",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "例文",
-	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "月は、<mark>地球</mark>の周りを<mark>周回</mark>する唯一の<mark>衛星</mark>です。",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "月は<mark class=\"positive\">地球</mark>の周りを<mark class=\"positive\">周回</mark>する<mark class=\"positive\">唯一の衛星</mark>です。",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "この作業を実行するために、記事に関する特別な知識は必要ありません。",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "お勧めされたリンクは、間違いを犯す可能性のある人工知能（AI）からのものです。",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "AIは、それらを必要としない単語へのリンクを提案したり、間違った記事へのリンクを提案したりする場合があります。それが正しいか間違っているかを決定するために{{GENDER:$1|あなた}}の判断を使用してください。",
