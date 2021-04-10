@@ -24,6 +24,8 @@
 	"growthexperiments-edit-config-help-panel-ask-mentor": "Should the help panel direct questions to mentors?",
 	"growthexperiments-edit-config-homepage": "Newcomer homepage",
 	"growthexperiments-edit-config-homepage-tutorial-title": "Tutorial page title",
+	"growthexperiments-edit-config-homepage-intro-links-create": "Link to a page about creating articles in the visual editor",
+	"growthexperiments-edit-config-homepage-intro-links-image": "Link to a page about adding images in the visual editor",
 	"growthexperiments-edit-config-mentorship": "Mentorship",
 	"growthexperiments-edit-config-mentorship-enabled": "Are mentorship features enabled?",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Page title of list of automatically assigned mentors",

@@ -69,6 +69,20 @@ class WikiPageConfigValidation {
 				'required' => false,
 				'section' => 'homepage',
 			],
+			'GEHomepageSuggestedEditsIntroLinks-create' => [
+				'type' => 'title',
+				'exists' => true,
+				'label-message' => 'growthexperiments-edit-config-homepage-intro-links-create',
+				'required' => true,
+				'section' => 'homepage',
+			],
+			'GEHomepageSuggestedEditsIntroLinks-image' => [
+				'type' => 'title',
+				'exists' => true,
+				'label-message' => 'growthexperiments-edit-config-homepage-intro-links-image',
+				'required' => true,
+				'section' => 'homepage',
+			],
 			'GEMentorshipEnabled' => [
 				'type' => 'check',
 				'label-message' => 'growthexperiments-edit-config-mentorship-enabled',

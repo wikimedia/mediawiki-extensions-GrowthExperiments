@@ -14,6 +14,9 @@ use Title;
 use TitleFactory;
 
 class SpecialEditGrowthConfig extends FormSpecialPage {
+	/** @var string[] */
+	private const SUGGESTED_EDITS_INTRO_LINKS = [ 'create', 'image' ];
+
 	/** @var WikiPageConfigValidation */
 	private $wikiPageConfigValidation;
 
@@ -188,12 +191,23 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 
 		// Add default values
 		foreach ( $descriptors as $name => $descriptor ) {
+			if ( strpos( $name, '-' ) !== false ) {
+				// Non-standard field, will be handled later in this method
+				continue;
+			}
+
 			$default = $this->growthWikiConfig->get( $name );
 			if ( is_array( $default ) ) {
 				$default = implode( "\n", $default );
 			}
 
 			$descriptors[$name]['default'] = $default;
+		}
+
+		// Add default values for intro links
+		$linkValues = $this->growthWikiConfig->get( 'GEHomepageSuggestedEditsIntroLinks' );
+		foreach ( self::SUGGESTED_EDITS_INTRO_LINKS as $link ) {
+			$descriptors["GEHomepageSuggestedEditsIntroLinks-$link"]['default'] = $linkValues[$link];
 		}
 
 		// Add edit summary field
@@ -204,14 +218,20 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		return $descriptors;
 	}
 
+	private function normalizeSuggestedEditsIntroLinks( array $data ): array {
+		$links = [];
+		foreach ( self::SUGGESTED_EDITS_INTRO_LINKS as $link ) {
+			$links[$link] = $data["GEHomepageSuggestedEditsIntroLinks-$link"];
+		}
+		return $links;
+	}
+
 	/**
 	 * @inheritDoc
 	 */
 	public function onSubmit( array $data ) {
-		$summary = $data['summary'];
-		unset( $data['summary'] );
-
-		// Normalize data about namespaces
+		// Normalize data about namespaces + populate $dataToSave
+		$dataToSave = [];
 		foreach ( $this->getFormFields() as $name => $descriptor ) {
 			if ( $descriptor['type'] === 'namespacesmultiselect' ) {
 				if ( $data[$name] === '' ) {
@@ -223,17 +243,25 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					);
 				}
 			}
+
+			if ( strpos( $name, '-' ) === false && $name !== 'summary' ) {
+				$dataToSave[$name] = $data[$name];
+			}
 		}
+
+		// Normalize GEHomepageSuggestedEditsIntroLinks
+		$dataToSave['GEHomepageSuggestedEditsIntroLinks'] =
+			$this->normalizeSuggestedEditsIntroLinks( $data );
 
 		// Make sure the config is valid. FormSpecialPage should validate it as well, but just in
 		// case
-		$validateStatus = $this->wikiPageConfigValidation->validate( $data );
+		$validateStatus = $this->wikiPageConfigValidation->validate( $dataToSave );
 		if ( !$validateStatus->isOK() ) {
 			return $validateStatus;
 		}
 
-		$this->configWriter->setVariables( $data );
-		return $this->configWriter->save( $summary );
+		$this->configWriter->setVariables( $dataToSave );
+		return $this->configWriter->save( $data['summary'] );
 	}
 
 	/**
