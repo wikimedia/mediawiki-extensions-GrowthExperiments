@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
@@ -63,6 +64,13 @@ abstract class SearchTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 	 */
 	protected function getSearchStrategy() {
 		return $this->createNoOpMock( SearchStrategy::class );
+	}
+
+	/**
+	 * @return NewcomerTasksUserOptionsLookup|MockObject
+	 */
+	protected function getNewcomerTasksUserOptionsLookup() {
+		return $this->createNoOpMock( NewcomerTasksUserOptionsLookup::class );
 	}
 
 }

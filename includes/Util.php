@@ -281,7 +281,9 @@ class Util {
 	}
 
 	/**
-	 * Check whether link recommendations are enabled for the current user.
+	 * Check whether link recommendations are enabled.
+	 * @note While T278123 is in effect, link recommendations can be enabled per-user, and
+	 *   most callers should use NewcomerTasksUserOptionsLookup::areLinkRecommendationsEnabled().
 	 * @param IContextSource $contextSource
 	 * @return bool
 	 */

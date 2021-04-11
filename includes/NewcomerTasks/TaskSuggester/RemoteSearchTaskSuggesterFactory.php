@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use MediaWiki\Cache\LinkBatchFactory;
@@ -28,6 +29,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param SearchStrategy $searchStrategy
+	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param HttpRequestFactory $requestFactory
 	 * @param TitleFactory $titleFactory
 	 * @param LinkBatchFactory $linkBatchFactory
@@ -37,6 +39,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		ConfigurationLoader $configurationLoader,
 		SearchStrategy $searchStrategy,
+		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		HttpRequestFactory $requestFactory,
 		TitleFactory $titleFactory,
 		LinkBatchFactory $linkBatchFactory,
@@ -46,6 +49,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$taskTypeHandlerRegistry,
 			$configurationLoader,
 			$searchStrategy,
+			$newcomerTasksUserOptionsLookup,
 			$linkBatchFactory
 		);
 		$this->requestFactory = $requestFactory;
@@ -68,6 +72,7 @@ class RemoteSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		$suggester = new RemoteSearchTaskSuggester(
 			$this->taskTypeHandlerRegistry,
 			$this->searchStrategy,
+			$this->newcomerTasksUserOptionsLookup,
 			$this->linkBatchFactory,
 			$this->requestFactory,
 			$this->titleFactory,

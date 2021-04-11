@@ -87,7 +87,10 @@ return [
 		MediaWikiServices $services
 	) : ExperimentUserManager {
 		return new ExperimentUserManager(
-			new ServiceOptions( [ 'GEHomepageDefaultVariant' ], $services->getMainConfig() ),
+			new ServiceOptions( [
+				'GEHomepageNewAccountVariants',
+				'GEHomepageDefaultVariant',
+			], $services->getMainConfig() ),
 			$services->getUserOptionsManager(),
 			$services->getUserOptionsLookup()
 		);
@@ -309,6 +312,7 @@ return [
 		MediaWikiServices $services
 	): NewcomerTasksUserOptionsLookup {
 		return new NewcomerTasksUserOptionsLookup(
+			GrowthExperimentsServices::wrap( $services )->getExperimentUserManager(),
 			$services->getUserOptionsLookup(),
 			$services->getMainConfig()
 		);
@@ -369,6 +373,7 @@ return [
 				$taskTypeHandlerRegistry,
 				$configLoader,
 				$searchStrategy,
+				$growthServices->getNewcomerTasksUserOptionsLookup(),
 				$services->getHttpRequestFactory(),
 				$services->getTitleFactory(),
 				$services->getLinkBatchFactory(),
@@ -379,6 +384,7 @@ return [
 				$taskTypeHandlerRegistry,
 				$configLoader,
 				$searchStrategy,
+				$growthServices->getNewcomerTasksUserOptionsLookup(),
 				$services->getSearchEngineFactory(),
 				$services->getLinkBatchFactory()
 			);

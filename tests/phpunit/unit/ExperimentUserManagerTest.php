@@ -3,7 +3,9 @@
 namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\ExperimentUserManager;
+use GrowthExperiments\VariantHooks;
 use MediaWiki\Config\ServiceOptions;
+use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\User\UserOptionsManager;
@@ -37,19 +39,31 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 	 * @covers ::getVariant
 	 */
 	public function testGetVariantWithUserAssigned() {
-		$user = new UserIdentityValue( 0, __CLASS__ );
+		$user1 = new UserIdentityValue( 1, __CLASS__ );
+		$user2 = new UserIdentityValue( 2, __CLASS__ );
 		$userOptionsLookupMock = $this->getMockBuilder( UserOptionsLookup::class )
 			->disableOriginalConstructor()
 			->getMock();
 		$userOptionsLookupMock->method( 'getOption' )
-			->willReturn( 'D' );
-		$this->assertEquals( 'D', $this->getExperimentUserManager(
+			->with( $this->anything(), VariantHooks::USER_PREFERENCE )
+			->willReturnCallback( function ( UserIdentity $user, string $optionName ) {
+				return [
+					1 => VariantHooks::VARIANT_NULL,
+					2 => VariantHooks::VARIANT_LINK_RECOMMENDATION_ENABLED,
+				][$user->getId()];
+			} );
+		$experimentUserManager = $this->getExperimentUserManager(
 			new ServiceOptions(
 				[ 'GEHomepageDefaultVariant' ],
 				[ 'GEHomepageDefaultVariant' => 'Foo' ]
 			),
 			$userOptionsLookupMock
-		)->getVariant( $user ) );
+		);
+
+		$this->assertEquals( VariantHooks::VARIANT_NULL,
+			$experimentUserManager->getVariant( $user1 ) );
+		$this->assertEquals( VariantHooks::VARIANT_LINK_RECOMMENDATION_ENABLED,
+			$experimentUserManager->getVariant( $user2 ) );
 	}
 
 	private function getExperimentUserManager(

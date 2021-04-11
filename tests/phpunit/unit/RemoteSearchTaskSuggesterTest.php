@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests;
 use ApiRawMessage;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
@@ -64,14 +65,15 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 
 		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
 		$configurationLoader = new StaticConfigurationLoader( $taskTypes, $topics );
+		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry, $configurationLoader );
+		$newcomerTasksUserOptionsLookup = $this->getNewcomerTasksUserOptionsLookup();
+		$linkBatchFactory = $this->getMockLinkBatchFactory();
 		$requestFactory = $this->getMockRequestFactory( $requests );
 		$titleFactory = $this->getMockTitleFactory();
-		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry, $configurationLoader );
-		$linkBatchFactory = $this->getMockLinkBatchFactory();
 
 		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry, $searchStrategy,
-			$linkBatchFactory, $requestFactory, $titleFactory, 'https://example.com',
-			$taskTypes, $topics );
+			$newcomerTasksUserOptionsLookup, $linkBatchFactory, $requestFactory, $titleFactory,
+			'https://example.com', $taskTypes, $topics );
 
 		$taskSet = $suggester->suggest( $user, $taskFilter, $topicFilter, $limit );
 		if ( $expectedTaskSet instanceof StatusValue ) {
@@ -482,14 +484,15 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 
 		$configurationLoader = new StaticConfigurationLoader( $taskTypes, $topics );
 		$taskTypeHandlerRegistry = $this->getMockTaskTypeHandlerRegistry();
+		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry, $configurationLoader );
+		$newcomerTasksUserOptionsLookup = $this->getNewcomerTasksUserOptionsLookup();
+		$linkBatchFactory = $this->getMockLinkBatchFactory( $pageIds );
 		$requestFactory = $this->getMockRequestFactory( $requests );
 		$titleFactory = $this->getMockTitleFactory();
-		$searchStrategy = $this->getMockSearchStrategy( $taskTypeHandlerRegistry, $configurationLoader );
-		$linkBatchFactory = $this->getMockLinkBatchFactory( $pageIds );
 
 		$suggester = new RemoteSearchTaskSuggester( $taskTypeHandlerRegistry, $searchStrategy,
-			$linkBatchFactory, $requestFactory, $titleFactory, 'https://example.com',
-			$taskTypes, $topics );
+			$newcomerTasksUserOptionsLookup, $linkBatchFactory, $requestFactory, $titleFactory,
+			'https://example.com', $taskTypes, $topics );
 
 		$filteredTaskSet = $suggester->filter( $user, $taskSet );
 		if ( $expectedTaskSet instanceof StatusValue ) {
@@ -738,6 +741,15 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$searchStrategy->method( 'shuffleQueryOrder' )
 			->willReturnArgument( 0 );
 		return $searchStrategy;
+	}
+
+	/**
+	 * @return NewcomerTasksUserOptionsLookup|MockObject
+	 */
+	private function getNewcomerTasksUserOptionsLookup() {
+		$lookup = $this->createNoOpMock( NewcomerTasksUserOptionsLookup::class, [ 'filterTaskTypes' ] );
+		$lookup->method( 'filterTaskTypes' )->willReturnArgument( 0 );
+		return $lookup;
 	}
 
 	/**

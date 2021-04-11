@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use ApiRawMessage;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -43,9 +44,10 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$searchEngineFactory = $this->getMockSearchEngineFactory( $searchResults, $searchTerm,
 			$limit, $offset );
 		$searchStrategy = $this->getMockSearchStrategy();
+		$newcomerTasksUserOptionsLookup = $this->getNewcomerTasksUserOptionsLookup();
 		$linkBatchFactory = $this->getLinkBatchFactory();
 		$suggester = new LocalSearchTaskSuggester( $taskTypeHandlerRegistry, $searchEngineFactory,
-			$searchStrategy, $linkBatchFactory, [], [], [] );
+			$searchStrategy, $newcomerTasksUserOptionsLookup, $linkBatchFactory, [], [] );
 		$wrappedSuggester = TestingAccessWrapper::newFromObject( $suggester );
 
 		$taskType = new TaskType( 'fake; wont be used', TaskType::DIFFICULTY_EASY );
@@ -170,6 +172,15 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 */
 	private function getMockSearchStrategy() {
 		return $this->createNoOpMock( SearchStrategy::class );
+	}
+
+	/**
+	 * @return NewcomerTasksUserOptionsLookup|MockObject
+	 */
+	private function getNewcomerTasksUserOptionsLookup() {
+		$lookup = $this->createNoOpMock( NewcomerTasksUserOptionsLookup::class, [ 'filterTaskTypes' ] );
+		$lookup->method( 'filterTaskTypes' )->willReturnArgument( 0 );
+		return $lookup;
 	}
 
 	/**

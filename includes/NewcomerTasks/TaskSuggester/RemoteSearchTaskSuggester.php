@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use FauxSearchResultSet;
 use GrowthExperiments\NewcomerTasks\FauxSearchResultWithScore;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -33,6 +34,7 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 	/**
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param SearchStrategy $searchStrategy
+	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param HttpRequestFactory $requestFactory
 	 * @param TitleFactory $titleFactory
@@ -43,6 +45,7 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		SearchStrategy $searchStrategy,
+		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		LinkBatchFactory $linkBatchFactory,
 		HttpRequestFactory $requestFactory,
 		TitleFactory $titleFactory,
@@ -50,8 +53,8 @@ class RemoteSearchTaskSuggester extends SearchTaskSuggester {
 		array $taskTypes,
 		array $topics
 	) {
-		parent::__construct( $taskTypeHandlerRegistry, $searchStrategy, $linkBatchFactory,
-			$taskTypes, $topics );
+		parent::__construct( $taskTypeHandlerRegistry, $searchStrategy, $newcomerTasksUserOptionsLookup,
+			$linkBatchFactory, $taskTypes, $topics );
 		$this->requestFactory = $requestFactory;
 		$this->titleFactory = $titleFactory;
 		$this->apiUrl = $apiUrl;

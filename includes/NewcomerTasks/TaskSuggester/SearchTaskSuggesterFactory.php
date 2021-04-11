@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use MediaWiki\Cache\LinkBatchFactory;
@@ -19,6 +20,9 @@ abstract class SearchTaskSuggesterFactory extends TaskSuggesterFactory {
 	/** @var SearchStrategy */
 	protected $searchStrategy;
 
+	/** @var NewcomerTasksUserOptionsLookup */
+	protected $newcomerTasksUserOptionsLookup;
+
 	/** @var LinkBatchFactory */
 	protected $linkBatchFactory;
 
@@ -26,12 +30,14 @@ abstract class SearchTaskSuggesterFactory extends TaskSuggesterFactory {
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param SearchStrategy $searchStrategy
+	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param LinkBatchFactory $linkBatchFactory
 	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		ConfigurationLoader $configurationLoader,
 		SearchStrategy $searchStrategy,
+		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		LinkBatchFactory $linkBatchFactory
 	) {
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
@@ -39,6 +45,7 @@ abstract class SearchTaskSuggesterFactory extends TaskSuggesterFactory {
 		$this->searchStrategy = $searchStrategy;
 		$this->linkBatchFactory = $linkBatchFactory;
 		$this->logger = new NullLogger();
+		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 	}
 
 }

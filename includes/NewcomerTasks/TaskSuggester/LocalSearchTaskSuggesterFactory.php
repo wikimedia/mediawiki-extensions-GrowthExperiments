@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use MediaWiki\Cache\LinkBatchFactory;
@@ -23,6 +24,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param SearchStrategy $searchStrategy
+	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param SearchEngineFactory $searchEngineFactory
 	 * @param LinkBatchFactory $linkBatchFactory
 	 */
@@ -30,6 +32,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		ConfigurationLoader $configurationLoader,
 		SearchStrategy $searchStrategy,
+		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		SearchEngineFactory $searchEngineFactory,
 		LinkBatchFactory $linkBatchFactory
 	) {
@@ -37,6 +40,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$taskTypeHandlerRegistry,
 			$configurationLoader,
 			$searchStrategy,
+			$newcomerTasksUserOptionsLookup,
 			$linkBatchFactory
 		);
 		$this->searchEngineFactory = $searchEngineFactory;
@@ -58,6 +62,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$this->taskTypeHandlerRegistry,
 			$this->searchEngineFactory,
 			$this->searchStrategy,
+			$this->newcomerTasksUserOptionsLookup,
 			$this->linkBatchFactory,
 			$taskTypes,
 			$topics

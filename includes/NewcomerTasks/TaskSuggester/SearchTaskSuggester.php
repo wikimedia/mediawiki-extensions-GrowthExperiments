@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
+use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
@@ -39,6 +40,9 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	/** @var SearchStrategy */
 	protected $searchStrategy;
 
+	/** @var NewcomerTasksUserOptionsLookup */
+	private $newcomerTasksUserOptionsLookup;
+
 	/** @var LinkBatchFactory */
 	private $linkBatchFactory;
 
@@ -51,6 +55,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	/**
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param SearchStrategy $searchStrategy
+	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param TaskType[] $taskTypes
 	 * @param Topic[] $topics
@@ -58,12 +63,14 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		SearchStrategy $searchStrategy,
+		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		LinkBatchFactory $linkBatchFactory,
 		array $taskTypes,
 		array $topics
 	) {
 		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->searchStrategy = $searchStrategy;
+		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->linkBatchFactory = $linkBatchFactory;
 		foreach ( $taskTypes as $taskType ) {
 			$this->taskTypes[$taskType->getId()] = $taskType;
@@ -134,7 +141,14 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		array $options = []
 	) {
 		$debug = $options['debug'] ?? false;
-		$taskTypeFilter = $taskTypeFilter ?: array_keys( $this->taskTypes );
+
+		// We generally don't try to handle task type filtering for the A/B test (T278123) here
+		// as it is already handled in NewcomerTasksUserOptionsLookup, but we make an exception
+		// for the case when $taskTypeFilter === [] which would be difficult to handle elsewhere.
+		if ( !$taskTypeFilter ) {
+			$taskTypeFilter = $this->newcomerTasksUserOptionsLookup
+				->filterTaskTypes( array_keys( $this->taskTypes ), $user );
+		}
 
 		// FIXME these and task types should have similar validation rules
 		$topics = array_values( array_intersect_key( $this->topics, array_flip( $topicFilter ) ) );

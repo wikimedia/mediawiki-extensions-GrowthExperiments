@@ -32,10 +32,12 @@ class LocalSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest
 		$taskTypeHandlerRegistry = $this->getTaskTypeHandlerRegistry();
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskTypes, $topics );
 		$searchStrategy = $this->getSearchStrategy();
+		$newcomerTasksUserOptionsLookup = $this->getNewcomerTasksUserOptionsLookup();
 		$searchEngineFactory = $this->getSearchEngineFactory();
 		$linkBatchFactory = $this->getLinkBatchFactory();
 		$taskSuggesterFactory = new LocalSearchTaskSuggesterFactory( $taskTypeHandlerRegistry,
-			$configurationLoader, $searchStrategy, $searchEngineFactory, $linkBatchFactory );
+			$configurationLoader, $searchStrategy, $newcomerTasksUserOptionsLookup,
+			$searchEngineFactory, $linkBatchFactory );
 		$taskSuggester = $taskSuggesterFactory->create();
 		if ( $expectedError ) {
 			$this->assertInstanceOf( ErrorForwardingTaskSuggester::class, $taskSuggester );

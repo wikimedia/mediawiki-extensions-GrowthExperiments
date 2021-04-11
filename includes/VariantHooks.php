@@ -14,17 +14,26 @@ class VariantHooks implements
 	GetPreferencesHook,
 	ResourceLoaderGetConfigVarsHook
 {
+	/** Default A/B testing variant (control group). */
+	public const VARIANT_NULL = 'null';
+
+	/** A/B testing variant with link recommendations enabled. */
+	public const VARIANT_LINK_RECOMMENDATION_ENABLED = 'linkrecommendation';
 
 	/**
 	 * This defines the allowed values for the variant preference. The default value is defined
 	 * via $wgGEHomepageDefaultVariant.
 	 */
 	public const VARIANTS = [
-		// 'A' doesn't exist anymore; was: not pre-initiated, impact module in main column, full size start module
+		// 'A' doesn't exist anymore; was: not pre-initiated, impact module in main column,
+		//     full size start module
 		// 'B' doesn't exist anymore; was a pre-initiated version of A
-		// 'C' doesn't exist anymore; was pre-initiated, impact module in side column, smaller start module
-		// not pre-initiated, onboarding embedded in suggested edits module, otherwise like C
-		'D',
+		// 'C' doesn't exist anymore; was pre-initiated, impact module in side column,
+		//     smaller start module
+		// 'D' doesn't exist anymore; was not pre-initiated, onboarding embedded in suggested
+		//     edits module, otherwise like C
+		self::VARIANT_NULL,
+		self::VARIANT_LINK_RECOMMENDATION_ENABLED,
 	];
 
 	/** User option name for storing variants. */

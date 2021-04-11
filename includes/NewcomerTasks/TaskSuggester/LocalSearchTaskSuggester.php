@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use ApiRawMessage;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -27,6 +28,7 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param SearchEngineFactory $searchEngineFactory
 	 * @param SearchStrategy $searchStrategy
+	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param TaskType[] $taskTypes
 	 * @param Topic[] $topics
@@ -35,12 +37,13 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
 		SearchEngineFactory $searchEngineFactory,
 		SearchStrategy $searchStrategy,
+		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		LinkBatchFactory $linkBatchFactory,
 		array $taskTypes,
 		array $topics
 	) {
-		parent::__construct( $taskTypeHandlerRegistry, $searchStrategy, $linkBatchFactory,
-			$taskTypes, $topics );
+		parent::__construct( $taskTypeHandlerRegistry, $searchStrategy, $newcomerTasksUserOptionsLookup,
+			$linkBatchFactory, $taskTypes, $topics );
 		$this->searchEngineFactory = $searchEngineFactory;
 	}
 

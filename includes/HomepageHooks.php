@@ -555,12 +555,13 @@ class HomepageHooks implements
 	}
 
 	/**
-	 * Pass through the debug flag used by LocalUserCreated
+	 * Pass through the debug flag used by LocalUserCreated.
 	 * @inheritDoc
 	 */
 	public function onAuthChangeFormFields( $requests, $fieldInfo, &$formDescriptor, $action ) {
-		$geForceVariant = RequestContext::getMain()->getRequest()->getVal( 'geForceVariant' );
-		if ( $geForceVariant ) {
+		$geForceVariant = RequestContext::getMain()->getRequest()
+			->getVal( 'geForceVariant' );
+		if ( $geForceVariant !== null ) {
 			$formDescriptor['geForceVariant'] = [
 				'type' => 'hidden',
 				'name' => 'geForceVariant',
@@ -581,9 +582,12 @@ class HomepageHooks implements
 			return;
 		}
 
+		$geForceVariant = RequestContext::getMain()->getRequest()
+			->getVal( 'geForceVariant' );
+
 		// Enable the homepage for a percentage of non-autocreated users.
 		$enablePercentage = $this->config->get( 'GEHomepageNewAccountEnablePercentage' );
-		if ( rand( 0, 99 ) < $enablePercentage ) {
+		if ( $geForceVariant !== null || rand( 0, 99 ) < $enablePercentage ) {
 			$user->setOption( self::HOMEPAGE_PREF_ENABLE, 1 );
 			$user->setOption( self::HOMEPAGE_PREF_PT_LINK, 1 );
 			// Default option is that the user has seen the tours/notices (so we don't prompt
@@ -603,21 +607,12 @@ class HomepageHooks implements
 			}
 
 			// Variant assignment
-			// FIXME: Remove the variant assignment code one train after this code is deployed.
-			// Retaining for now in case a rollback is needed.
-			$geHomepageNewAccountVariants = $this->config->get( 'GEHomepageNewAccountVariants' );
-			$defaultVariant = $this->experimentUserManager->getVariant( $user );
-			$random = rand( 0, 99 );
-			$variant = null;
-			foreach ( $geHomepageNewAccountVariants as $candidateVariant => $percentage ) {
-				if ( $random < $percentage ) {
-					$variant = $candidateVariant;
-					break;
-				}
-				$random -= $percentage;
-			}
-			if ( $variant === null ) {
-				$variant = $defaultVariant;
+			if ( $geForceVariant !== null
+				 && $this->experimentUserManager->isValidVariant( $geForceVariant )
+			) {
+				$variant = $geForceVariant;
+			} else {
+				$variant = $this->experimentUserManager->getRandomVariant();
 			}
 			$this->experimentUserManager->setVariant( $user, $variant );
 

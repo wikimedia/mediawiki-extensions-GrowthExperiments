@@ -39,13 +39,30 @@ use TitleFactory;
  */
 class SuggestedEdits extends BaseModule {
 
+	/**
+	 * User preference to track that suggested edits should be shown to the user (instead of an
+	 * onboarding dialog). Might be ignored in some situations.
+	 */
 	public const ACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-activated';
+	/** User preference to track that suggested edits were enabled this user automatically on signup. Not used. */
 	public const PREACTIVATED_PREF = 'growthexperiments-homepage-suggestededits-preactivated';
+	/** User preference used to remember the user's topic selection, when using morelike topics. */
 	public const TOPICS_PREF = 'growthexperiments-homepage-se-topic-filters';
+	/** User preference used to remember the user's topic selection, when using ORES topics. */
 	public const TOPICS_ORES_PREF = 'growthexperiments-homepage-se-ores-topic-filters';
+	/**
+	 * User preference for opting into topic filters for suggested edits, when
+	 * $wgGEHomepageSuggestedEditsTopicsRequiresOptIn is true.
+	 */
 	public const TOPICS_ENABLED_PREF = 'growthexperiments-homepage-suggestededits-topics-enabled';
+	/** User preference used to remember the user's task type selection. */
 	public const TASKTYPES_PREF = 'growthexperiments-homepage-se-filters';
+	/** User preference for opting into guidance, when $wgGENewcomerTasksGuidanceRequiresOptIn is true. */
 	public const GUIDANCE_ENABLED_PREF = 'growthexperiments-guidance-enabled';
+	/**
+	 * Default value for TASKTYPES_PREF. While link recommendations are being A/B tested (T278123),
+	 * these might be overridden, see NewcomerTasksUserOptionsLookup::getTaskTypeFilter().
+	 */
 	public const DEFAULT_TASK_TYPES = [ 'copyedit', 'links' ];
 
 	/**
