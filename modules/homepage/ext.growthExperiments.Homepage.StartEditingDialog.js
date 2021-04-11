@@ -5,6 +5,7 @@
 var TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).TopicSelectionWidget,
 	TaskTypeSelectionWidget = require( './suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.js' ),
 	ArticleCountWidget = require( './suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.js' ),
+	TaskTypesAbFilter = require( './suggestededits/TaskTypesAbFilter.js' ),
 	router = require( 'mediawiki.router' );
 
 /**
@@ -591,7 +592,8 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 
 	if ( this.useTaskTypeSelector ) {
 		this.taskTypeSelector = new TaskTypeSelectionWidget( {
-			selectedTaskTypes: require( './suggestededits/DefaultTaskTypes.json' ),
+			selectedTaskTypes: TaskTypesAbFilter.filterDefaultTaskTypes(
+				require( './suggestededits/DefaultTaskTypes.json' ) ),
 			introLinks: require( './suggestededits/config.json' ).GEHomepageSuggestedEditsIntroLinks,
 			classes: [ 'mw-ge-startediting-dialog-difficulty-taskTypeSelector' ]
 		} )

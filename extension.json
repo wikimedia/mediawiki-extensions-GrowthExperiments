@@ -332,6 +332,7 @@
 				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
 				"homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js",
+				"homepage/suggestededits/TaskTypesAbFilter.js",
 				"utils/ext.growthExperiments.Utils.js",
 				"utils/ext.growthExperiments.IconUtils.js",
 				{
@@ -519,6 +520,7 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js",
+				"homepage/suggestededits/TaskTypesAbFilter.js",
 				"helppanel/ext.growthExperiments.SuggestedEditsPeek.js",
 				"utils/ext.growthExperiments.Utils.js",
 				"utils/ext.growthExperiments.IconUtils.js",
@@ -638,6 +640,7 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.js",
+				"homepage/suggestededits/TaskTypesAbFilter.js",
 				"utils/ext.growthExperiments.Utils.js",
 				{
 					"name": "homepage/suggestededits/config.json",
@@ -795,6 +798,12 @@
 		"ext.growthExperiments.AddLink.onboardingContent": {
 			"packageFiles": [
 				"homepage/addlink/AddLinkOnboardingContent.js",
+				"homepage/suggestededits/TaskTypesAbFilter.js",
+				"utils/ext.growthExperiments.Utils.js",
+				{
+					"name": "homepage/suggestededits/config.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
+				},
 				{
 					"name": "homepage/addlink/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
@@ -952,6 +961,7 @@
 				"help/ext.growthExperiments.Help.js",
 				"help/ext.growthExperiments.HelpPanelLogger.js",
 				"homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js",
+				"homepage/suggestededits/TaskTypesAbFilter.js",
 				"utils/ext.growthExperiments.Utils.js",
 				"utils/ext.growthExperiments.IconUtils.js",
 				"help/ext.growthExperiments.HelpPanelSearchWidget.js",
@@ -965,6 +975,10 @@
 				{
 					"name": "help/data.json",
 					"callback": [ "GrowthExperiments\\HelpPanelHooks", "getModuleData" ]
+				},
+				{
+					"name": "homepage/suggestededits/config.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
 				},
 				{
 					"name": "help/TaskTypes.json",
@@ -1073,24 +1087,29 @@
 				"helppanel/ext.growthExperiments.HelpPanel.cta.js",
 				"helppanel/ext.growthExperiments.SuggestedEditsPeek.js",
 				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.js",
+				"homepage/suggestededits/TaskTypesAbFilter.js",
 				"utils/ext.growthExperiments.Utils.js",
 				"utils/ext.growthExperiments.IconUtils.js",
+				{
+					"name": "homepage/suggestededits/config.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
+				},
 				{
 					"name": "helppanel/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
 				}
 			],
 			"dependencies": [
+				"mediawiki.language",
+				"mediawiki.pulsatingdot",
+				"mediawiki.router",
+				"oojs-ui-widgets",
+				"oojs-ui.styles.icons-movement",
 				"ext.growthExperiments.Help",
 				"ext.growthExperiments.HelpPanel.icons",
 				"ext.growthExperiments.HelpPanelCta.styles",
 				"ext.growthExperiments.SuggestedEditSession",
-				"mediawiki.pulsatingdot",
-				"oojs-ui.styles.icons-movement",
-				"ext.growthExperiments.AddLink.onboarding",
-				"mediawiki.router",
-				"mediawiki.language",
-				"oojs-ui-widgets"
+				"ext.growthExperiments.AddLink.onboarding"
 			],
 			"messages": [
 				"growthexperiments-help-panel-cta-button-text",
@@ -1126,10 +1145,11 @@
 				"help/ext.growthExperiments.PostEdit.js",
 				"help/ext.growthExperiments.PostEditPanel.js",
 				"help/ext.growthExperiments.PostEditDialog.js",
-				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.js",
 				"help/ext.growthExperiments.HelpPanelLogger.js",
+				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
 				"homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js",
+				"homepage/suggestededits/TaskTypesAbFilter.js",
 				"utils/ext.growthExperiments.Utils.js",
 				"utils/ext.growthExperiments.IconUtils.js",
 				{

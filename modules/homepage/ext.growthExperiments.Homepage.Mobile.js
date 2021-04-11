@@ -3,6 +3,7 @@
 
 	var HomepageModuleLogger = require( 'ext.growthExperiments.Homepage.Logger' ),
 		NewcomerTaskLogger = require( './suggestededits/ext.growthExperiments.NewcomerTaskLogger.js' ),
+		TaskTypesAbFilter = require( './suggestededits/TaskTypesAbFilter.js' ),
 		homepageModuleLogger = new HomepageModuleLogger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
@@ -51,7 +52,7 @@
 				previewTask.pageviews = null;
 				taskCard = new SmallTaskCard( {
 					task: previewTask,
-					taskTypes: require( './TaskTypes.json' ),
+					taskTypes: TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),
 					taskUrl: null
 				} );
 				$( suggestedEditsModuleNode ).find( '.mw-ge-small-task-card' )

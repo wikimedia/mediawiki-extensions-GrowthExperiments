@@ -145,7 +145,8 @@ TaskTypeSelectionWidget.prototype.makeHeadersForDifficulty = function ( difficul
  */
 TaskTypeSelectionWidget.prototype.makeCheckboxesForDifficulty = function ( difficulty, selectedTaskTypes ) {
 	var taskType,
-		taskTypes = require( './TaskTypes.json' ),
+		TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
+		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),
 		checkboxes = [];
 	for ( taskType in taskTypes ) {
 		if ( taskTypes[ taskType ].difficulty === difficulty ) {

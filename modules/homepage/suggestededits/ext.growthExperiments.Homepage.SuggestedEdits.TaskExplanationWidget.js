@@ -4,7 +4,8 @@
 ( function () {
 	'use strict';
 
-	var taskTypes = require( './TaskTypes.json' ),
+	var TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
+		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),
 		mobileFrontend = mw.mobileFrontend,
 		suggestedEditsPeek = require( '../../helppanel/ext.growthExperiments.SuggestedEditsPeek.js' ),
 		Drawer = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Drawer : undefined,

@@ -1,7 +1,8 @@
 ( function () {
 	var Help = require( 'ext.growthExperiments.Help' ),
 		Utils = require( '../utils/ext.growthExperiments.Utils.js' ),
-		taskTypes = require( './TaskTypes.json' ),
+		TaskTypesAbFilter = require( '../homepage/suggestededits/TaskTypesAbFilter.js' ),
+		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),
 		HelpPanelLogger = Help.HelpPanelLogger,
 		HelpPanelProcessDialog = Help.HelpPanelProcessDialog,
 		mobileFrontend = mw.mobileFrontend,

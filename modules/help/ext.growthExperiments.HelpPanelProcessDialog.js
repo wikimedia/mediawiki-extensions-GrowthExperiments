@@ -20,7 +20,8 @@
 	 */
 	var configData = require( './data.json' ),
 		SuggestedEditsPanel = require( './ext.growthExperiments.HelpPanelProcessDialog.SuggestedEditsPanel.js' ),
-		taskTypeData = require( './TaskTypes.json' ),
+		TaskTypesAbFilter = require( '../homepage/suggestededits/TaskTypesAbFilter.js' ),
+		taskTypeData = TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),
 		linksConfig = configData.GEHelpPanelLinks,
 		HelpPanelProcessDialog = function helpPanelProcessDialog( config ) {
 			HelpPanelProcessDialog.super.call( this, config );

@@ -18,9 +18,10 @@
 		GrowthTasksApi = require( './ext.growthExperiments.Homepage.GrowthTasksApi.js' ),
 		Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
 		NewcomerTaskLogger = require( './ext.growthExperiments.NewcomerTaskLogger.js' ),
+		TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
 		aqsConfig = require( './AQSConfig.json' ),
-		taskTypes = require( './TaskTypes.json' ),
-		defaultTaskTypes = require( './DefaultTaskTypes.json' ),
+		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),
+		defaultTaskTypes = TaskTypesAbFilter.filterDefaultTaskTypes( require( './DefaultTaskTypes.json' ) ),
 		TASK_QUEUE_LENGTH = 200;
 
 	/**

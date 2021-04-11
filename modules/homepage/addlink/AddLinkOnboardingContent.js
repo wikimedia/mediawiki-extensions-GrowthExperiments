@@ -3,7 +3,8 @@ module.exports = ( function () {
 
 	var hasHeroImage = false,
 		userName = mw.user.getName(),
-		taskTypes = require( './TaskTypes.json' ),
+		TaskTypesAbFilter = require( '../suggestededits/TaskTypesAbFilter.js' ),
+		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),
 		taskTypeData = taskTypes[ 'link-recommendation' ] || {};
 
 	/**

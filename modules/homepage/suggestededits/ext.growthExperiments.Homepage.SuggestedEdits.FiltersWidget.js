@@ -3,7 +3,8 @@
  */
 ( function () {
 	'use strict';
-	var taskTypes = require( './TaskTypes.json' ),
+	var TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
+		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),
 		topicData = require( 'ext.growthExperiments.Homepage.Topics' ).topics;
 
 	/**

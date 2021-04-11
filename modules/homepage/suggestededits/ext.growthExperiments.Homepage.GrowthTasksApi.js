@@ -3,6 +3,9 @@
 /**
  * Client and helper methods for the list=growthtasks API.
  * Standalone, can be included into other modules.
+ * Dependencies:
+ * - mediawiki.util
+ * - TaskTypesAbFilter.js (for T278123)
  */
 ( function () {
 
@@ -343,13 +346,18 @@
 	 * @return {{taskTypes: Array<string>, topics: Array<string>|null}}
 	 */
 	GrowthTasksApi.prototype.getPreferences = function () {
-		var defaultTaskTypes = this.defaultTaskTypes.filter( function ( taskType ) {
-				return taskType in this.taskTypes;
-			}.bind( this ) ),
-			savedTaskTypes = mw.user.options.get( 'growthexperiments-homepage-se-filters' ),
+		var savedTaskTypes = mw.user.options.get( 'growthexperiments-homepage-se-filters' ),
 			savedTopics = mw.user.options.get( this.suggestedEditsConfig.GENewcomerTasksTopicFiltersPref ),
-			taskTypes = savedTaskTypes ? JSON.parse( savedTaskTypes ) : defaultTaskTypes,
+			taskTypes = savedTaskTypes ? JSON.parse( savedTaskTypes ) : this.defaultTaskTypes,
 			topics = savedTopics ? JSON.parse( savedTopics ) : null;
+
+		// T278123: map the two versions of link tasks to each other - FIXME remove when done
+		taskTypes = require( './TaskTypesAbFilter.js' ).convertTaskTypes( taskTypes );
+
+		// The list of valid task types can change over time, discard invalid ones.
+		taskTypes = taskTypes.filter( function ( taskType ) {
+			return taskType in this.taskTypes;
+		}.bind( this ) );
 
 		return { taskTypes: taskTypes, topics: topics };
 	};

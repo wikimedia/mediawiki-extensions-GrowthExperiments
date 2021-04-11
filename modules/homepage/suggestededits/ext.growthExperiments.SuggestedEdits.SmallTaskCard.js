@@ -4,7 +4,8 @@
  * Displays a task card. Sort of a standalone module, but not formally defined as such, since
  * ResourceLoader module definitions are expensive. Instead, when including it into some module,
  * include the following files together:
- * - scripts: homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.js
+ * - scripts: homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.js,
+ *   utils/ext.growthExperiments.IconUtils.js
  * - styles: homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.less
  * - messages: growthexperiments-homepage-suggestededits-pageviews
  * - dependencies: oojs-ui.styles.icons-media, ext.growthExperiments.Homepage.icons

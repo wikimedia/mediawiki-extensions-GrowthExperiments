@@ -947,6 +947,10 @@ class HomepageHooks implements
 	public static function getTaskTypesJson( ResourceLoaderContext $context ) {
 		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 
+		// HACK For the duration of the link recommendation A/B test (T278123), either the 'links'
+		// or 'link-recommendation' task type should be hidden for any given user. We can't access
+		// user identity here though, so that will have to be done on the client side.
+
 		// Hack - ResourceLoaderContext is not exposed to services initialization
 		$configurationValidator = $growthServices->getNewcomerTasksConfigurationValidator();
 		$configurationValidator->setMessageLocalizer( $context );
@@ -969,10 +973,16 @@ class HomepageHooks implements
 	}
 
 	/**
+	 * ResourceLoader JSON package callback for getting the default task types when the user
+	 * does not have SuggestedEdits::TASKTYPES_PREF set.
 	 * @param ResourceLoaderContext $context
 	 * @return string[]
 	 */
 	public static function getDefaultTaskTypesJson( ResourceLoaderContext $context ) {
+		// HACK For the duration of the link recommendation A/B test (T278123), the default
+		// task types should be [ 'link-recommendation' ] for users who have been opted into
+		// link recommendations. We can't access user identity here though, so that will
+		// have to be done on the client side.
 		return SuggestedEdits::DEFAULT_TASK_TYPES;
 	}
 
@@ -1035,6 +1045,8 @@ class HomepageHooks implements
 			'GEHomepageSuggestedEditsIntroLinks' => self::getGrowthWikiConfig()
 				->get( 'GEHomepageSuggestedEditsIntroLinks' ),
 			'GENewcomerTasksTopicFiltersPref' => SuggestedEdits::getTopicFiltersPref( $config ),
+			'GELinkRecommendationsEnabled' => $config->get( 'GENewcomerTasksLinkRecommendationsEnabled' )
+				&& $config->get( 'GELinkRecommendationsFrontendEnabled' ),
 		];
 	}
 

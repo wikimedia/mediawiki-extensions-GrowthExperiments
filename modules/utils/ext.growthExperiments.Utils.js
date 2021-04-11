@@ -88,11 +88,13 @@
 	 * @param {string|null} variant The new variant, or null to unset.
 	 */
 	function setUserVariant( variant ) {
-		return mw.loader.using( 'mediawiki.api' ).then( function () {
-			return new mw.Api().saveOption( 'growthexperiments-homepage-variant', variant )
-				.done( function () {
-					window.location.reload();
-				} );
+		return mw.loader.using( [ 'mediawiki.util', 'mediawiki.api' ] ).then( function () {
+			return new mw.Api().saveOption( 'growthexperiments-homepage-variant', variant );
+		} ).then( function () {
+			// Do a cache reset as a variant switch will mess up caching. FIXME T278123 remove when done
+			return $.get( mw.util.getUrl( 'Special:Homepage', { resetTaskCache: 1 } ) );
+		} ).then( function () {
+			window.location.reload();
 		} );
 	}
 
