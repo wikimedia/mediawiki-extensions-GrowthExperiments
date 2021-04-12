@@ -11,9 +11,12 @@ class GrowthHooks {
 	public static function onRegistration() {
 		global $wgGEMentorshipMigrationStage;
 
-		$stage = 0;
-		foreach ( explode( '|', $wgGEMentorshipMigrationStage ) as $constant ) {
-			$stage |= constant( trim( $constant ) );
+		$stage = $wgGEMentorshipMigrationStage;
+		if ( is_string( $stage ) ) {
+			$stage = 0;
+			foreach ( explode( '|', $wgGEMentorshipMigrationStage ) as $constant ) {
+				$stage |= constant( trim( $constant ) );
+			}
 		}
 
 		// Validation for the mentorship migration stage, stolen from ActorMigration
