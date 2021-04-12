@@ -3,6 +3,7 @@
 		"authors": [
 			"Catrope",
 			"Martin Urbanec",
+			"Martin Urbanec (WMF)",
 			"Matěj Suchánek",
 			"Patriccck",
 			"Patrik L.",
@@ -135,5 +136,15 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Používáte}} momentálně editor zdrojového kódu. Tyto editační tipy jsou nejvíce užitečné ve vizuálním editoru.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Přepnout se na vizuální editor",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Používáte}} momentálně vizuální editor. Tyto editační tipy jsou nejvíce užitečné v editoru zdrojového kódu.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Přepnout se na editor zdrojového kódu"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Přepnout se na editor zdrojového kódu",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Přidávání odkazů umožní lidem rychleji se učit.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "Budete {{GENDER:$1|rozhodovat}} o tom, zda by jednotlivá slova v některém z článků ve {{GRAMMAR:6sg|{{SITENAME}}}} měla odkazovat na další články.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "Měsíc je jediným <mark class=\"positive\">přirozeným satelitem</mark>, který <mark class=\"positive\">obíhá</mark> okolo <mark class=\"positive\">Země</mark>.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "K dokončení tohoto úkolu nejsou třeba žádné zvláštní znalosti.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "Navržené odkazy pocházejí od umělé inteligence (AI), která může dělat chyby.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "AI může doporučit odkazy ze slov, kde by ve skutečnosti neměly být, anebo může omylem doporučit odkázat na nesprávný článek. Použijte {{GENDER:$1|svůj}} úsudek k tomu, abyste {{GENDER:$1|rozhodl|rozhodla|rozhodli}}, zda je odkaz správný či špatný.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Zjistit více o návrzích od AI]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Pravidla",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "\n* Odkazujte na věci, které by čtenáře mohly zajímat\n* Ujistěte se, že odkazujete na správný článek.\n* Netvořte odkazy z běžných slov, let či dat.\n* Pokud si něčím nejste {{GENDER:$1|jist|jista|jisti}}, odkaz přeskočte.",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Příklad"
 }

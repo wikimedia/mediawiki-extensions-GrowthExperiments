@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Dvorapa",
+			"Georg101",
 			"Janbery",
 			"MOphaswongse (WMF)",
 			"Martin Urbanec",
@@ -342,7 +343,8 @@
 	"growthexperiments-addlink-context-intro": "Mělo by toto odkazovat na _____?",
 	"growthexperiments-addlink-context-button-accept": "Ano",
 	"growthexperiments-addlink-context-button-reject": "Ne",
-	"growthexperiments-addlink-context-button-next": "Přeskočit",
+	"growthexperiments-addlink-context-button-help": "Získejte pomoc s editováním",
+	"growthexperiments-addlink-context-button-next": "Další",
 	"growthexperiments-addlink-rejectiondialog-title": "Proč nejde o dobrý odkaz? <em>(nepovinné)</em>",
 	"growthexperiments-addlink-rejectiondialog-message": "Vaše odpověď může být použita k vylepšení kvality návrhů AI.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Každodenní koncept, který nepotřebuje vysvětlení (např. \"obloha\")",
@@ -378,5 +380,5 @@
 	"newcomertasksinfo-table-header-task-count": "Počet",
 	"newcomertasksinfo-table-header-topic-type": "ID tématu",
 	"growthexperiments-addlink-ve-ai-mode-title": "Návrhy umělé inteligence",
-	"growthexperiments-addlink-ve-ai-mode-submit-button": "Odeslat..."
+	"growthexperiments-addlink-ve-ai-mode-submit-button": "Potvrdit..."
 }
