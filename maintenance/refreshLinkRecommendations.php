@@ -199,10 +199,14 @@ class RefreshLinkRecommendations extends Maintenance {
 					}
 
 					$this->verboseLog( "success, updating index\n" );
-					$this->linkRecommendationStore->insert( $recommendation );
 					// If the script gets interrupted, uncommitted DB writes get discarded, while
 					// updateCirrusSearchIndex() is immediate. Minimize the likelyhood of the DB
-					// and the search index getting out of sync.
+					// and the search index getting out of sync by wrapping each insert into a
+					// separate transaction. Use an explicit begin here to avoid Database::commit
+					// complaining about "no transaction to commit". That should never happen as
+					// the insert() call does an implicit begin, but it does occur somehow.
+					$this->linkRecommendationStore->getDB( DB_MASTER )->begin( __METHOD__ );
+					$this->linkRecommendationStore->insert( $recommendation );
 					$this->linkRecommendationStore->getDB( DB_MASTER )->commit( __METHOD__ );
 					$this->updateCirrusSearchIndex( $lastRevision );
 					// Caching is up to the provider, this script is just warming the cache.
