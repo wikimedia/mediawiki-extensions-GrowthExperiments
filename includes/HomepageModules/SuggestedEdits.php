@@ -104,7 +104,6 @@ class SuggestedEdits extends BaseModule {
 
 	/**
 	 * @param IContextSource $context
-	 * @param Config $wikiConfig
 	 * @param EditInfoService $editInfoService
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param PageViewService|null $pageViewService
@@ -116,7 +115,6 @@ class SuggestedEdits extends BaseModule {
 	 */
 	public function __construct(
 		IContextSource $context,
-		Config $wikiConfig,
 		EditInfoService $editInfoService,
 		ExperimentUserManager $experimentUserManager,
 		?PageViewService $pageViewService,
@@ -126,7 +124,7 @@ class SuggestedEdits extends BaseModule {
 		TitleFactory $titleFactory,
 		ProtectionFilter $protectionFilter
 	) {
-		parent::__construct( 'suggested-edits', $context, $wikiConfig, $experimentUserManager );
+		parent::__construct( 'suggested-edits', $context, $experimentUserManager );
 		$this->editInfoService = $editInfoService;
 		$this->experimentUserManager = $experimentUserManager;
 		$this->pageViewService = $pageViewService;

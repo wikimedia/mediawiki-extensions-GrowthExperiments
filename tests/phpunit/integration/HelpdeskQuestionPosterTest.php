@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests;
 use DerivativeContext;
 use FauxRequest;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
+use HashConfig;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
 use RequestContext;
@@ -29,7 +30,6 @@ class HelpdeskQuestionPosterTest extends MediaWikiTestCase {
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster::__construct
 	 */
 	public function testConstruct() {
-		$this->setMwGlobals( 'wgGEHelpPanelHelpDeskTitle', 'HelpDeskTest' );
 		$context = $this->buildContext();
 		$context->setUser( new User() );
 
@@ -49,7 +49,6 @@ class HelpdeskQuestionPosterTest extends MediaWikiTestCase {
 	 * @covers \GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster::submit
 	 */
 	public function testSubmitExistingTarget() {
-		$this->setMwGlobals( 'wgGEHelpPanelHelpDeskTitle', 'HelpDeskTest' );
 		$this->insertPage( 'HelpDeskTest', '' );
 		$questionPoster = new HelpdeskQuestionPoster(
 			$this->getWikiPageFactory(),
@@ -74,11 +73,10 @@ class HelpdeskQuestionPosterTest extends MediaWikiTestCase {
 	 */
 	public function testSubmitNewTarget() {
 		$title = $this->getNonexistingTestPage()->getTitle();
-		$this->setMwGlobals( 'wgGEHelpPanelHelpDeskTitle', $title->getPrefixedDBkey() );
 		$questionPoster = new HelpdeskQuestionPoster(
 			$this->getWikiPageFactory(),
 			MediaWikiServices::getInstance()->getPermissionManager(),
-			$this->buildContext(),
+			$this->buildContext( $title->getPrefixedDBkey() ),
 			'a great question'
 		);
 		$questionPoster->submit();
@@ -121,13 +119,16 @@ class HelpdeskQuestionPosterTest extends MediaWikiTestCase {
 		);
 	}
 
-	private function buildContext() {
+	private function buildContext( $helpDeskTitle = 'HelpDeskTest' ) {
 		if ( $this->mutableTestUser === null ) {
 			$this->mutableTestUser = $this->getMutableTestUser()->getUser();
 		}
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setRequest( new FauxRequest( [], true ) );
 		$context->setUser( $this->mutableTestUser->getInstanceForUpdate() );
+		$context->setConfig( new HashConfig( [
+			'GEHelpPanelHelpDeskTitle' => $helpDeskTitle,
+		] ) );
 		return $context;
 	}
 

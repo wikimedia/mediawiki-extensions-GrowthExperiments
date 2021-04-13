@@ -3,7 +3,6 @@
 namespace GrowthExperiments;
 
 use Config;
-use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
@@ -16,7 +15,6 @@ use Skin;
 use User;
 
 class HelpPanelHooks {
-	use GrowthConfigLoaderStaticTrait;
 
 	public const HELP_PANEL_PREFERENCES_TOGGLE = 'growthexperiments-help-panel-tog-help-panel';
 
@@ -97,7 +95,7 @@ class HelpPanelHooks {
 	 */
 	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
 		$geServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
-		$wikiConfig = $geServices->getGrowthWikiConfig();
+		$config = $geServices->getConfig();
 
 		$definitelyShow = HelpPanel::shouldShowHelpPanel( $out );
 		$maybeShow = HelpPanel::shouldShowHelpPanel( $out, false );
@@ -114,7 +112,9 @@ class HelpPanelHooks {
 		if ( SuggestedEdits::isGuidanceEnabled( $out->getContext() ) ) {
 			$out->addJsConfigVars( [
 				'wgGENewcomerTasksGuidanceEnabled' => true,
-				'wgGEAskQuestionEnabled' => HelpPanel::getHelpDeskTitle( $wikiConfig ) !== null,
+				'wgGEAskQuestionEnabled' => HelpPanel::getHelpDeskTitle(
+					$out->getConfig()
+				) !== null,
 				'wgGELinkRecommendationsFrontendEnabled' =>
 					$out->getConfig()->get( 'GELinkRecommendationsFrontendEnabled' )
 			] );
@@ -128,12 +128,12 @@ class HelpPanelHooks {
 				// We know the help panel is enabled, otherwise we wouldn't get here
 				'wgGEHelpPanelEnabled' => true,
 				'wgGEHelpPanelMentorData'
-					=> self::getMentorData( $wikiConfig, $out->getUser(), $out->getContext() ),
+					=> self::getMentorData( $out->getConfig(), $out->getUser(), $out->getContext() ),
 				// wgGEHelpPanelAskMentor needs to be here and not in getModuleData,
 				// because getting current user is not possible within ResourceLoader context
 				'wgGEHelpPanelAskMentor' =>
-					$wikiConfig->get( 'GEMentorshipEnabled' ) &&
-					$wikiConfig->get( 'GEHelpPanelAskMentor' ) &&
+					$config->get( 'GEMentorshipEnabled' ) &&
+					$config->get( 'GEHelpPanelAskMentor' ) &&
 					$geServices->getMentorManager()->getMentorForUserSafe( $out->getUser() ) !== null,
 			] + HelpPanel::getUserEmailConfigVars( $out->getUser() ) );
 
@@ -152,19 +152,15 @@ class HelpPanelHooks {
 	 * @return array
 	 */
 	public static function getModuleData( ResourceLoaderContext $context, Config $config ) {
-		$helpdeskTitle = HelpPanel::getHelpDeskTitle( self::getGrowthWikiConfig() );
+		$helpdeskTitle = HelpPanel::getHelpDeskTitle( $config );
 		return [
 			'GEHelpPanelLoggingEnabled' => $config->get( 'GEHelpPanelLoggingEnabled' ),
-			'GEHelpPanelSearchNamespaces' => self::getGrowthWikiConfig()
-				->get( 'GEHelpPanelSearchNamespaces' ),
-			'GEHelpPanelReadingModeNamespaces' => self::getGrowthWikiConfig()
-				->get( 'GEHelpPanelReadingModeNamespaces' ),
+			'GEHelpPanelSearchNamespaces' => $config->get( 'GEHelpPanelSearchNamespaces' ),
+			'GEHelpPanelReadingModeNamespaces' => $config->get( 'GEHelpPanelReadingModeNamespaces' ),
 			'GEHelpPanelSearchForeignAPI' => $config->get( 'GEHelpPanelSearchForeignAPI' ),
-			'GEHelpPanelLinks' => HelpPanel::getHelpPanelLinks(
-				$context, self::getGrowthWikiConfig(), $config
-			),
+			'GEHelpPanelLinks' => HelpPanel::getHelpPanelLinks( $context, $config ),
 			'GEHelpPanelSuggestedEditsPreferredEditor' =>
-				self::getGrowthWikiConfig()->get( 'GEHelpPanelSuggestedEditsPreferredEditor' ),
+				$config->get( 'GEHelpPanelSuggestedEditsPreferredEditor' ),
 			'GEHelpPanelHelpDeskTitle' => $helpdeskTitle ? $helpdeskTitle->getPrefixedText() : null,
 		];
 	}
@@ -183,12 +179,8 @@ class HelpPanelHooks {
 		}
 	}
 
-	private static function getMentorData(
-		Config $wikiConfig,
-		User $user,
-		MessageLocalizer $localizer
-	) {
-		if ( !$wikiConfig->get( 'GEHelpPanelAskMentor' ) || !$wikiConfig->get( 'GEMentorshipEnabled' ) ) {
+	private static function getMentorData( Config $config, User $user, MessageLocalizer $localizer ) {
+		if ( !$config->get( 'GEHelpPanelAskMentor' ) || !$config->get( 'GEMentorshipEnabled' ) ) {
 			return [];
 		}
 		$mentor = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )

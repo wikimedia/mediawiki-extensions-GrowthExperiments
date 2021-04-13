@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
-use GlobalVarConfig;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\Mentorship;
@@ -27,7 +26,6 @@ class MentorshipTest extends MediaWikiTestCase {
 		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		$mentorshipModule = new Mentorship(
 			$context,
-			GlobalVarConfig::newInstance(),
 			$growthServices->getExperimentUserManager(),
 			$growthServices->getMentorManager()
 		);
@@ -48,7 +46,6 @@ class MentorshipTest extends MediaWikiTestCase {
 		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		$mentorshipModule = new Mentorship(
 			$context,
-			GlobalVarConfig::newInstance(),
 			$growthServices->getExperimentUserManager(),
 			$growthServices->getMentorManager()
 		);

@@ -187,7 +187,7 @@ return [
 	'GrowthExperimentsMentorManager' => function (
 		MediaWikiServices $services
 	) : MentorManager {
-		$wikiConfig = GrowthExperimentsServices::wrap( $services )->getGrowthWikiConfig();
+		$config = GrowthExperimentsServices::wrap( $services )->getConfig();
 
 		$manager = new MentorPageMentorManager(
 			GrowthExperimentsServices::wrap( $services )->getMentorStore(),
@@ -198,8 +198,8 @@ return [
 			$services->getActorStore(),
 			RequestContext::getMain(),
 			RequestContext::getMain()->getLanguage(),
-			$wikiConfig->get( 'GEHomepageMentorsList' ) ?: null,
-			$wikiConfig->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null,
+			$config->get( 'GEHomepageMentorsList' ) ?: null,
+			$config->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null,
 			RequestContext::getMain()->getRequest()->wasPosted()
 		);
 		$manager->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
@@ -318,7 +318,7 @@ return [
 			$services->getWikiPageFactory(),
 			$growthServices->getMentorManager(),
 			$services->getPermissionManager(),
-			$growthServices->getGrowthWikiConfig()->get( 'GEHelpPanelHelpDeskPostOnTop' )
+			$growthServices->getConfig()->get( 'GEHelpPanelHelpDeskPostOnTop' )
 		);
 	},
 

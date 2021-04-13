@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Specials;
 
-use Config;
 use FormSpecialPage;
 use GrowthExperiments\Mentorship\ChangeMentor;
 use GrowthExperiments\Mentorship\MentorManager;
@@ -41,23 +40,17 @@ class SpecialClaimMentee extends FormSpecialPage {
 	/** @var MentorStore */
 	private $mentorStore;
 
-	/** @var Config */
-	private $wikiConfig;
-
 	/**
 	 * @param MentorManager $mentorManager
 	 * @param MentorStore $mentorStore
-	 * @param Config $wikiConfig
 	 */
 	public function __construct(
 		MentorManager $mentorManager,
-		MentorStore $mentorStore,
-		Config $wikiConfig
+		MentorStore $mentorStore
 	) {
 		parent::__construct( 'ClaimMentee' );
 		$this->mentorManager = $mentorManager;
 		$this->mentorStore = $mentorStore;
-		$this->wikiConfig = $wikiConfig;
 	}
 
 	public function doesWrites() {
@@ -125,12 +118,12 @@ class SpecialClaimMentee extends FormSpecialPage {
 					str_replace(
 						'_',
 						' ',
-						$this->wikiConfig->get( 'GEHomepageMentorsList' )
+						$this->getConfig()->get( 'GEHomepageMentorsList' )
 					),
 					str_replace(
 						'_',
 						' ',
-						$this->wikiConfig->get( 'GEHomepageManualAssignmentMentorsList' )
+						$this->getConfig()->get( 'GEHomepageManualAssignmentMentorsList' )
 					)
 				];
 			} else {
@@ -140,7 +133,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 					str_replace(
 						'_',
 						' ',
-						$this->wikiConfig->get( 'GEHomepageMentorsList' )
+						$this->getConfig()->get( 'GEHomepageMentorsList' )
 					)
 				];
 			}

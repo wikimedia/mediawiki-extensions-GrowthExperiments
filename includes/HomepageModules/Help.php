@@ -2,24 +2,20 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use Config;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HelpPanel;
 use Html;
 use IContextSource;
 
 class Help extends BaseModule {
+
 	public const HELP_MODULE_QUESTION_TAG = 'help module question';
 
 	/**
 	 * @inheritDoc
 	 */
-	public function __construct(
-		IContextSource $context,
-		Config $wikiConfig,
-		ExperimentUserManager $experimentUserManager
-	) {
-		parent::__construct( 'help', $context, $wikiConfig, $experimentUserManager );
+	public function __construct( IContextSource $context, ExperimentUserManager $experimentUserManager ) {
+		parent::__construct( 'help', $context, $experimentUserManager );
 	}
 
 	/** @inheritDoc */
@@ -70,7 +66,6 @@ class Help extends BaseModule {
 	protected function getBody() {
 		$helpPanelLinkData = HelpPanel::getHelpPanelLinks(
 			$this->getContext(),
-			$this->getGrowthWikiConfig(),
 			$this->getContext()->getConfig()
 		);
 		return $helpPanelLinkData['helpPanelLinks'] . $helpPanelLinkData['viewMoreLink'];

@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use Config;
 use ConfigException;
 use DateInterval;
 use GrowthExperiments\ExperimentUserManager;
@@ -44,17 +43,15 @@ class Mentorship extends BaseModule {
 
 	/**
 	 * @param IContextSource $context
-	 * @param Config $wikiConfig
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param MentorManager $mentorManager
 	 */
 	public function __construct(
 		IContextSource $context,
-		Config $wikiConfig,
 		ExperimentUserManager $experimentUserManager,
 		MentorManager $mentorManager
 	) {
-		parent::__construct( 'mentorship', $context, $wikiConfig, $experimentUserManager );
+		parent::__construct( 'mentorship', $context, $experimentUserManager );
 		$this->mentorManager = $mentorManager;
 	}
 

@@ -3,7 +3,6 @@
 namespace GrowthExperiments\HomepageModules;
 
 use ActorMigration;
-use Config;
 use DateTime;
 use Exception;
 use ExtensionRegistry;
@@ -84,7 +83,6 @@ class Impact extends BaseModule {
 
 	/**
 	 * @param IContextSource $context
-	 * @param Config $wikiConfig
 	 * @param bool $isEnabled
 	 * @param IDatabase $dbr
 	 * @param ExperimentUserManager $experimentUserManager
@@ -94,7 +92,6 @@ class Impact extends BaseModule {
 	 */
 	public function __construct(
 		IContextSource $context,
-		Config $wikiConfig,
 		bool $isEnabled,
 		IDatabase $dbr,
 		ExperimentUserManager $experimentUserManager,
@@ -102,7 +99,7 @@ class Impact extends BaseModule {
 		TitleFactory $titleFactory,
 		PageViewService $pageViewService = null
 	) {
-		parent::__construct( 'impact', $context,  $wikiConfig, $experimentUserManager );
+		parent::__construct( 'impact', $context, $experimentUserManager );
 		$this->dbr = $dbr;
 		$this->isSuggestedEditsEnabledForUser = $suggestedEditsConfig['isSuggestedEditsEnabled'];
 		$this->isSuggestedEditsActivatedForUser = $suggestedEditsConfig['isSuggestedEditsActivated'];

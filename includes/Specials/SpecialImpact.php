@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Specials;
 
-use Config;
 use DerivativeContext;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModule;
@@ -36,22 +35,17 @@ class SpecialImpact extends SpecialPage {
 	 */
 	private $titleFactory;
 
-	/** @var Config */
-	private $wikiConfig;
-
 	/**
 	 * SpecialImpact constructor.
 	 * @param IDatabase $dbr
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param TitleFactory $titleFactory
-	 * @param Config $wikiConfig
 	 * @param PageViewService|null $pageViewService
 	 */
 	public function __construct(
 		IDatabase $dbr,
 		ExperimentUserManager $experimentUserManager,
 		TitleFactory $titleFactory,
-		Config $wikiConfig,
 		PageViewService $pageViewService = null
 	) {
 		parent::__construct( 'Impact' );
@@ -59,7 +53,6 @@ class SpecialImpact extends SpecialPage {
 		$this->pageViewService = $pageViewService;
 		$this->experimentUserManager = $experimentUserManager;
 		$this->titleFactory = $titleFactory;
-		$this->wikiConfig = $wikiConfig;
 	}
 
 	/**
@@ -114,7 +107,6 @@ class SpecialImpact extends SpecialPage {
 		$context->setUser( $impactUser );
 		$impact = new Impact(
 			$context,
-			$this->wikiConfig,
 			$context->getConfig()->get( 'GEHomepageImpactModuleEnabled' ),
 			$this->dbr,
 			$this->experimentUserManager,

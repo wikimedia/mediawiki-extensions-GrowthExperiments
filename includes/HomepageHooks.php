@@ -11,7 +11,6 @@ use DeferredUpdates;
 use DomainException;
 use EchoAttributeManager;
 use EchoUserLocator;
-use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageModules\Help;
@@ -80,7 +79,6 @@ class HomepageHooks implements
 	\MediaWiki\Hook\SiteNoticeAfterHook,
 	\MediaWiki\Content\Hook\SearchDataForIndexHook
 {
-	use GrowthConfigLoaderStaticTrait;
 
 	public const HOMEPAGE_PREF_ENABLE = 'growthexperiments-homepage-enable';
 	public const HOMEPAGE_PREF_PT_LINK = 'growthexperiments-homepage-pt-link';
@@ -99,8 +97,6 @@ class HomepageHooks implements
 
 	/** @var Config */
 	private $config;
-	/** @var Config */
-	private $wikiConfig;
 	/** @var ILoadBalancer */
 	private $lb;
 	/** @var UserOptionsLookup */
@@ -135,7 +131,6 @@ class HomepageHooks implements
 	/**
 	 * HomepageHooks constructor.
 	 * @param Config $config
-	 * @param Config $wikiConfig
 	 * @param ILoadBalancer $lb
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param NamespaceInfo $namespaceInfo
@@ -154,7 +149,6 @@ class HomepageHooks implements
 	 */
 	public function __construct(
 		Config $config,
-		Config $wikiConfig,
 		ILoadBalancer $lb,
 		UserOptionsLookup $userOptionsLookup,
 		NamespaceInfo $namespaceInfo,
@@ -172,7 +166,6 @@ class HomepageHooks implements
 		SuggestionsInfo $suggestionsInfo
 	) {
 		$this->config = $config;
-		$this->wikiConfig = $wikiConfig;
 		$this->lb = $lb;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->namespaceInfo = $namespaceInfo;
@@ -205,8 +198,7 @@ class HomepageHooks implements
 					$this->moduleRegistry,
 					$this->trackerFactory,
 					$this->statsdDataFactory,
-					$this->experimentUserManager,
-					$this->wikiConfig
+					$this->experimentUserManager
 				);
 			};
 			if ( $pageViewInfoEnabled && $this->config->get( 'GEHomepageImpactModuleEnabled' ) ) {
@@ -215,9 +207,6 @@ class HomepageHooks implements
 						$this->lb->getLazyConnectionRef( DB_REPLICA ),
 						$this->experimentUserManager,
 						$this->titleFactory,
-						GrowthExperimentsServices::wrap(
-							$mwServices
-						)->getGrowthWikiConfig(),
 						$mwServices->get( 'PageViewService' )
 					);
 				};
@@ -226,8 +215,7 @@ class HomepageHooks implements
 				'class' => SpecialClaimMentee::class,
 				'services' => [
 					'GrowthExperimentsMentorManager',
-					'GrowthExperimentsMentorStore',
-					'GrowthExperimentsMultiConfig'
+					'GrowthExperimentsMentorStore'
 				]
 			];
 			$list['NewcomerTasksInfo'] = function () use ( $mwServices ) {
@@ -1047,8 +1035,7 @@ class HomepageHooks implements
 		return [
 			'GERestbaseUrl' => Util::getRestbaseUrl( $config ),
 			'GENewcomerTasksRemoteArticleOrigin' => $config->get( 'GENewcomerTasksRemoteArticleOrigin' ),
-			'GEHomepageSuggestedEditsIntroLinks' => self::getGrowthWikiConfig()
-				->get( 'GEHomepageSuggestedEditsIntroLinks' ),
+			'GEHomepageSuggestedEditsIntroLinks' => $config->get( 'GEHomepageSuggestedEditsIntroLinks' ),
 			'GENewcomerTasksTopicFiltersPref' => SuggestedEdits::getTopicFiltersPref( $config ),
 		];
 	}

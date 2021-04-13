@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\HomepageModules;
 
-use Config;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModule;
 use IContextSource;
@@ -18,12 +17,8 @@ class StartEditing extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	public function __construct(
-		IContextSource $context,
-		Config $wikiConfig,
-		ExperimentUserManager $experimentUserManager
-	) {
-		parent::__construct( 'start-startediting', $context, $wikiConfig, $experimentUserManager );
+	public function __construct( IContextSource $context, ExperimentUserManager $experimentUserManager ) {
+		parent::__construct( 'start-startediting', $context, $experimentUserManager );
 		$this->experimentUserManager = $experimentUserManager;
 	}
 

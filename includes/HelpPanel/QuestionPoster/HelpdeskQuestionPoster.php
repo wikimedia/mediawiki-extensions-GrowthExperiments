@@ -3,9 +3,7 @@
 namespace GrowthExperiments\HelpPanel\QuestionPoster;
 
 use ConfigException;
-use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel;
-use MediaWiki\MediaWikiServices;
 
 /**
  * QuestionPoster variant for asking questions on the wiki's help desk.
@@ -40,10 +38,7 @@ class HelpdeskQuestionPoster extends QuestionPoster {
 	 * @throws ConfigException
 	 */
 	protected function getDirectTargetTitle() {
-		return HelpPanel::getHelpDeskTitle(
-			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
-				->getGrowthWikiConfig()
-			);
+		return HelpPanel::getHelpDeskTitle( $this->getContext()->getConfig() );
 	}
 
 	/**

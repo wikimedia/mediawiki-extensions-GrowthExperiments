@@ -4,7 +4,6 @@ namespace GrowthExperiments;
 
 use Config;
 use ConfigException;
-use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use Html;
 use MediaWiki\MediaWikiServices;
@@ -17,7 +16,6 @@ use Title;
 use User;
 
 class HelpPanel {
-	use GrowthConfigLoaderStaticTrait;
 
 	public const HELPDESK_QUESTION_TAG = 'help panel question';
 
@@ -28,7 +26,7 @@ class HelpPanel {
 	 */
 	public static function getHelpPanelCtaButton( $mobile ) {
 		$helpdeskTitle = self::getHelpDeskTitle(
-			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )->getGrowthWikiConfig()
+			MediaWikiServices::getInstance()->getMainConfig()
 		);
 		$btnWidgetArr = [
 			'id' => 'mw-ge-help-panel-cta-button',
@@ -50,15 +48,11 @@ class HelpPanel {
 
 	/**
 	 * @param MessageLocalizer $ml
-	 * @param Config $wikiConfig
-	 * @param Config $mainConfig
+	 * @param Config $config
 	 * @return array Links that should appear in the help panel. Exported to JS as wgGEHelpPanelLinks.
+	 * @throws ConfigException
 	 */
-	public static function getHelpPanelLinks(
-		MessageLocalizer $ml,
-		Config $wikiConfig,
-		Config $mainConfig
-	) {
+	public static function getHelpPanelLinks( MessageLocalizer $ml, Config $config ) {
 		if ( !self::isHelpPanelEnabled() ) {
 			return [];
 		}
@@ -66,7 +60,7 @@ class HelpPanel {
 		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
 
 		$helpPanelLinks = Html::openElement( 'ul', [ 'class' => 'mw-ge-help-panel-links' ] );
-		foreach ( $mainConfig->get( 'GEHelpPanelLinks' ) as $link ) {
+		foreach ( $config->get( 'GEHelpPanelLinks' ) as $link ) {
 			$title = Title::newFromText( $link['title'] );
 			if ( $title ) {
 				$helpPanelLinks .= Html::rawElement(
@@ -79,14 +73,14 @@ class HelpPanel {
 		}
 		$helpPanelLinks .= Html::closeElement( 'ul' );
 
-		$helpDeskTitle = self::getHelpDeskTitle( $wikiConfig );
+		$helpDeskTitle = self::getHelpDeskTitle( $config );
 		$helpDeskLink = $helpDeskTitle ? $linkRenderer->makeLink(
 			$helpDeskTitle,
 			$ml->msg( 'growthexperiments-help-panel-community-help-desk-text' )->text(),
 			[ 'target' => '_blank', 'data-link-id' => 'help-desk' ]
 		) : null;
 
-		$viewMoreTitle = Title::newFromText( $wikiConfig->get( 'GEHelpPanelViewMoreTitle' ) );
+		$viewMoreTitle = Title::newFromText( $config->get( 'GEHelpPanelViewMoreTitle' ) );
 		$viewMoreLink = $viewMoreTitle ? $linkRenderer->makeLink(
 			$viewMoreTitle,
 			$ml->msg( 'growthexperiments-help-panel-editing-help-links-widget-view-more-link' )
@@ -125,7 +119,7 @@ class HelpPanel {
 			return false;
 		}
 		if ( in_array( $out->getTitle()->getNamespace(),
-			self::getGrowthWikiConfig()->get( 'GEHelpPanelExcludedNamespaces' ) ) ) {
+			$out->getConfig()->get( 'GEHelpPanelExcludedNamespaces' ) ) ) {
 			return false;
 		}
 		if ( $checkAction ) {
@@ -168,7 +162,7 @@ class HelpPanel {
 			return true;
 		}
 		return in_array( $title->getSubjectPage()->getNamespace(),
-				   self::getGrowthWikiConfig()->get( 'GEHelpPanelReadingModeNamespaces' ) );
+				   $out->getConfig()->get( 'GEHelpPanelReadingModeNamespaces' ) );
 	}
 
 	public static function isHelpPanelEnabled() {
@@ -178,12 +172,12 @@ class HelpPanel {
 	/**
 	 * Get the help desk title and expand the templates and magic words it may contain
 	 *
-	 * @param Config $wikiConfig
+	 * @param Config $config
 	 * @return null|Title
 	 * @throws ConfigException
 	 */
-	public static function getHelpDeskTitle( Config $wikiConfig ) {
-		$helpdeskTitle = $wikiConfig->get( 'GEHelpPanelHelpDeskTitle' );
+	public static function getHelpDeskTitle( Config $config ) {
+		$helpdeskTitle = $config->get( 'GEHelpPanelHelpDeskTitle' );
 		if ( $helpdeskTitle === null ) {
 			return null;
 		}
