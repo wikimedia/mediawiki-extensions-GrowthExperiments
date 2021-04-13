@@ -71,7 +71,7 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 				'Full text searches are unsupported or disabled',
 				'grothexperiments-no-fulltext-search'
 			) );
-		} elseif ( $matches instanceof StatusValue && $matches->isOK() ) {
+		} elseif ( $matches instanceof StatusValue && $matches->isGood() ) {
 			$matches = $matches->getValue();
 			/** @var ISearchResultSet $matches */
 		}
