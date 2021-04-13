@@ -24,6 +24,8 @@
 	"growthexperiments-edit-config-help-panel-ask-mentor": "Description of a form field in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-homepage": "Subheader in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-homepage-tutorial-title": "Description of a form field in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-homepage-intro-links-create": "Description of a form field in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-homepage-intro-links-image": "Description of a form field in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-mentorship": "Subheader in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-mentorship-enabled": "Description of a form field in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Description of a form field in Special:EditGrowthConfig",
