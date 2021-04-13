@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Mentorship\Store;
 
+use BagOStuff;
 use DBAccessObjectUtils;
 use HashBagOStuff;
 use IDBAccessObject;
@@ -24,6 +25,16 @@ abstract class MentorStore implements IDBAccessObject {
 
 	public function __construct() {
 		$this->cache = new HashBagOStuff();
+	}
+
+	/**
+	 * Use a different cache. (Default is in-process caching only.)
+	 * @param BagOStuff $cache
+	 * @param int $ttl Cache expiry (0 for unlimited).
+	 */
+	public function setCache( BagOStuff $cache, int $ttl ) {
+		$this->cache = $cache;
+		$this->cacheTtl = $ttl;
 	}
 
 	/**

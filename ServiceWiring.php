@@ -218,12 +218,17 @@ return [
 	'GrowthExperimentsMentorStoreDatabase' => function ( MediaWikiServices $services ): DatabaseMentorStore {
 		$lb = GrowthExperimentsServices::wrap( $services )->getLoadBalancer();
 
-		return new DatabaseMentorStore(
+		$databaseMentorStore = new DatabaseMentorStore(
 			$services->getUserFactory(),
 			$lb->getLazyConnectionRef( DB_REPLICA ),
 			$lb->getLazyConnectionRef( DB_MASTER ),
 			RequestContext::getMain()->getRequest()->wasPosted()
 		);
+		$databaseMentorStore->setCache(
+			new CachedBagOStuff( ObjectCache::getLocalClusterInstance() ),
+			CachedBagOStuff::TTL_DAY
+		);
+		return $databaseMentorStore;
 	},
 
 	'GrowthExperimentsMentorStorePreference' => function ( MediaWikiServices $services ): PreferenceMentorStore {
