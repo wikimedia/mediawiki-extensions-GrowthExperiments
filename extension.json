@@ -152,7 +152,8 @@
 		"config": {
 			"class": "GrowthExperiments\\Config\\ConfigHooks",
 			"services": [
-				"TitleFactory"
+				"TitleFactory",
+				"MainConfig"
 			]
 		}
 	},
@@ -227,7 +228,8 @@
 		"SearchDataForIndex": "homepage",
 		"LoadExtensionSchemaUpdates": "schema",
 		"UnitTestsAfterDatabaseSetup": "schema",
-		"EditFilterMergedContent": "config"
+		"EditFilterMergedContent": "config",
+		"SkinTemplateNavigation": "config"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
@@ -1497,6 +1499,17 @@
 					]
 				}
 			}
+		}
+	},
+	"SpecialPages": {
+		"EditGrowthConfig": {
+			"class": "GrowthExperiments\\Specials\\SpecialEditGrowthConfig",
+			"services": [
+				"TitleFactory",
+				"RevisionLookup",
+				"GrowthExperimentsWikiPageConfigWriterFactory",
+				"GrowthExperimentsMultiConfig"
+			]
 		}
 	},
 	"LogTypes": [

@@ -2,28 +2,39 @@
 
 namespace GrowthExperiments\Config;
 
+use Config;
 use Content;
 use FormatJson;
 use IContextSource;
 use MediaWiki\Hook\EditFilterMergedContentHook;
+use MediaWiki\Hook\SkinTemplateNavigationHook;
+use SpecialPage;
 use Status;
 use TextContent;
 use TitleFactory;
 use User;
 
-class ConfigHooks implements EditFilterMergedContentHook {
+class ConfigHooks implements EditFilterMergedContentHook, SkinTemplateNavigationHook {
 	/** @var WikiPageConfigValidation */
 	private $configValidation;
 
 	/** @var TitleFactory */
 	private $titleFactory;
 
+	/** @var Config */
+	private $config;
+
 	/**
 	 * @param TitleFactory $titleFactory
+	 * @param Config $config
 	 */
-	public function __construct( TitleFactory $titleFactory ) {
+	public function __construct(
+		TitleFactory $titleFactory,
+		Config $config
+	) {
 		$this->configValidation = new WikiPageConfigValidation();
 		$this->titleFactory = $titleFactory;
+		$this->config = $config;
 	}
 
 	/**
@@ -70,5 +81,37 @@ class ConfigHooks implements EditFilterMergedContentHook {
 		$status->merge( $this->configValidation->validate(
 			$loadedConfigStatus->getValue()
 		) );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onSkinTemplateNavigation( $sktemplate, &$links ): void {
+		// Code inspired by MassMessageHooks::onSkinTemplateNavigation
+
+		$title = $sktemplate->getTitle();
+		$configTitle = $this->titleFactory
+			->newFromText(
+				$this->config->get( 'GEWikiConfigPageTitle' )
+			);
+		if (
+			array_key_exists( 'edit', $links['views'] ) &&
+			$configTitle !== null &&
+			$title->equals( $configTitle ) &&
+			$title->hasContentModel( CONTENT_MODEL_JSON )
+		) {
+			// Get the revision being viewed, if applicable
+			$request = $sktemplate->getRequest();
+			// $oldid is guaranteed to be an integer, 0 if invalid
+			$oldid = $request->getInt( 'oldid' );
+
+			// Show normal JSON editor if the user is trying to edit old version
+			if ( $oldid == 0 ) {
+				$links['views']['edit']['href'] = SpecialPage::getTitleFor(
+					'EditGrowthConfig',
+					$title
+				)->getFullUrl();
+			}
+		}
 	}
 }
