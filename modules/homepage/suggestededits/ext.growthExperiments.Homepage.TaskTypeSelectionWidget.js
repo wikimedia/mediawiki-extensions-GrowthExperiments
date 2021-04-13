@@ -167,7 +167,7 @@ TaskTypeSelectionWidget.prototype.makeCheckbox = function ( taskTypeData, select
 	var $checkboxIcon, descriptionMessage, $label = $( '<span>' ).text( taskTypeData.messages.label );
 	if ( 'filterIcon' in taskTypeData.iconData ) {
 		// Messages that can be used here:
-		// * growthexperiments-homepage-suggestededits-tasktype-ai-description
+		// * growthexperiments-homepage-suggestededits-tasktype-machine-description
 		// * FORMAT growthexperiments-homepage-suggestededits-tasktype-{other}-description
 		descriptionMessage = mw.message( taskTypeData.iconData.descriptionMessageKey ).text();
 		$checkboxIcon = new OO.ui.Element().$element;

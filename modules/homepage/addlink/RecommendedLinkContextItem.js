@@ -294,7 +294,7 @@ RecommendedLinkContextItem.prototype.onAcceptanceChanged = function () {
 			return annotationSet.getLength() ? annotationSet.get( 0 ).isAccepted() : false;
 		} );
 
-	mw.hook( 'growthExperiments.aiSuggestionAcceptanceChanged' ).fire( hasAcceptedRecommendations );
+	mw.hook( 'growthExperiments.machineSuggestionAcceptanceChanged' ).fire( hasAcceptedRecommendations );
 };
 
 /**

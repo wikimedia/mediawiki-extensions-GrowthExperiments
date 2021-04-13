@@ -1,5 +1,5 @@
 var AddLinkArticleTarget = require( 'ext.growthExperiments.AddLink' ).AddLinkArticleTarget,
-	AiSuggestionsMode = require( 'ext.growthExperiments.AddLink' ).AiSuggestionsMode;
+	MachineSuggestionsMode = require( 'ext.growthExperiments.AddLink' ).MachineSuggestionsMode;
 
 /**
  * Mobile version of AddLinkArticleTarget
@@ -17,7 +17,7 @@ OO.inheritClass( AddLinkMobileArticleTarget, ve.init.mw.MobileArticleTarget );
 OO.mixinClass( AddLinkMobileArticleTarget, AddLinkArticleTarget );
 
 AddLinkMobileArticleTarget.static.toolbarGroups =
-	AiSuggestionsMode.getMobileTools( AddLinkMobileArticleTarget.static.toolbarGroups );
+	MachineSuggestionsMode.getMobileTools( AddLinkMobileArticleTarget.static.toolbarGroups );
 
 AddLinkMobileArticleTarget.prototype.loadSuccess = function ( response ) {
 	this.beforeLoadSuccess( response );
@@ -33,15 +33,15 @@ AddLinkMobileArticleTarget.prototype.surfaceReady = function () {
 /** @inheritdoc */
 AddLinkMobileArticleTarget.prototype.setupToolbar = function () {
 	AddLinkMobileArticleTarget.super.prototype.setupToolbar.apply( this, arguments );
-	this.toolbar.$group.addClass( 'mw-ge-ai-suggestions-title-toolgroup' );
+	this.toolbar.$group.addClass( 'mw-ge-machine-suggestions-title-toolgroup' );
 
-	if ( AiSuggestionsMode.toolbarHasTitleElement( this.toolbar.$element ) ) {
+	if ( MachineSuggestionsMode.toolbarHasTitleElement( this.toolbar.$element ) ) {
 		/* Replace placeholder tool with title content
 		 * Using a placeholder tool instead of appending to this.$element like desktop
 		 * so that the position of the existing tools can be taken into account
 		 */
-		this.toolbar.$group.find( '.ve-ui-toolbar-group-aiSuggestionsPlaceholder' ).html(
-			AiSuggestionsMode.getTitleElement()
+		this.toolbar.$group.find( '.ve-ui-toolbar-group-machineSuggestionsPlaceholder' ).html(
+			MachineSuggestionsMode.getTitleElement()
 		);
 	}
 };

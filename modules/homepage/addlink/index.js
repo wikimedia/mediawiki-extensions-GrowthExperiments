@@ -6,5 +6,5 @@ module.exports = {
 	RecommendedLinkContextItem: require( './RecommendedLinkContextItem.js' ),
 	RecommendedLinkRejectionDialog: require( './RecommendedLinkRejectionDialog.js' ),
 	AddLinkArticleTarget: require( './AddLinkArticleTarget.js' ),
-	AiSuggestionsMode: require( './AiSuggestionsMode.js' )
+	MachineSuggestionsMode: require( './MachineSuggestionsMode.js' )
 };

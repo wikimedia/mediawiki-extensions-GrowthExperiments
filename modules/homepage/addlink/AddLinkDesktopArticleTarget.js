@@ -1,5 +1,5 @@
 var AddLinkArticleTarget = require( 'ext.growthExperiments.AddLink' ).AddLinkArticleTarget,
-	AiSuggestionsMode = require( 'ext.growthExperiments.AddLink' ).AiSuggestionsMode;
+	MachineSuggestionsMode = require( 'ext.growthExperiments.AddLink' ).MachineSuggestionsMode;
 
 /**
  * Desktop version of AddLinkArticleTarget
@@ -19,7 +19,7 @@ OO.mixinClass( AddLinkDesktopArticleTarget, AddLinkArticleTarget );
 AddLinkDesktopArticleTarget.static.toolbarGroups = [];
 
 AddLinkDesktopArticleTarget.static.actionGroups =
-	AiSuggestionsMode.getActionGroups( AddLinkDesktopArticleTarget.static.actionGroups );
+	MachineSuggestionsMode.getActionGroups( AddLinkDesktopArticleTarget.static.actionGroups );
 
 AddLinkDesktopArticleTarget.prototype.loadSuccess = function ( response ) {
 	this.beforeLoadSuccess( response );
@@ -41,9 +41,9 @@ AddLinkDesktopArticleTarget.prototype.surfaceReady = function () {
 
 AddLinkDesktopArticleTarget.prototype.setupToolbar = function () {
 	AddLinkDesktopArticleTarget.super.prototype.setupToolbar.apply( this, arguments );
-	if ( AiSuggestionsMode.toolbarHasTitleElement( this.toolbar.$element ) ) {
+	if ( MachineSuggestionsMode.toolbarHasTitleElement( this.toolbar.$element ) ) {
 		this.toolbar.$element.find( '.oo-ui-toolbar-bar' ).first().prepend(
-			AiSuggestionsMode.getTitleElement( { includeIcon: true } )
+			MachineSuggestionsMode.getTitleElement( { includeIcon: true } )
 		);
 	}
 };

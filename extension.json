@@ -337,7 +337,7 @@
 				"growthexperiments-homepage-welcome-notice-body-variant-d",
 				"growthexperiments-homepage-welcome-notice-button-text-variant-c",
 				"growthexperiments-homepage-welcome-notice-button-text-variant-d",
-				"growthexperiments-homepage-suggestededits-tasktype-ai-description"
+				"growthexperiments-homepage-suggestededits-tasktype-machine-description"
 			],
 			"targets": [
 				"mobile"
@@ -589,7 +589,7 @@
 				"growthexperiments-homepage-suggestededits-tasktype-label-expand",
 				"growthexperiments-homepage-suggestededits-tasktype-label-links",
 				"growthexperiments-homepage-suggestededits-tasktype-label-create",
-				"growthexperiments-homepage-suggestededits-tasktype-ai-description",
+				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
 				"growthexperiments-homepage-suggestededits-difficulty-filter-label",
 				"growthexperiments-homepage-suggestededits-difficulty-filter-label-mobile",
 				"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy",
@@ -679,7 +679,7 @@
 				"growthexperiments-homepage-suggestededits-difficulty-filter-error",
 				"growthexperiments-homepage-suggestededits-difficulty-filters-article-count",
 				"growthexperiments-homepage-suggestededits-tasktype-label-create",
-				"growthexperiments-homepage-suggestededits-tasktype-ai-description",
+				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
 				"growthexperiments-homepage-suggestededits-create-article-additional-message",
 				"vector-view-edit"
 			],
@@ -710,13 +710,13 @@
 				"homepage/addlink/ceRecommendedLinkErrorAnnotation.js",
 				"homepage/addlink/RecommendedLinkContextItem.js",
 				"homepage/addlink/RecommendedLinkRejectionDialog.js",
-				"homepage/addlink/AiSuggestionsMode.js"
+				"homepage/addlink/MachineSuggestionsMode.js"
 			],
 			"styles": [
 				"homepage/addlink/ceRecommendedLinkAnnotation.less",
 				"homepage/addlink/RecommendedLinkContextItem.less",
 				"homepage/addlink/RecommendedLinkRejectionDialog.less",
-				"homepage/addlink/AiSuggestionsMode.less"
+				"homepage/addlink/MachineSuggestionsMode.less"
 			],
 			"messages": [
 				"growthexperiments-addlink-context-title",
@@ -747,15 +747,15 @@
 			"packageFiles": [
 				"homepage/addlink/desktop.js",
 				"homepage/addlink/AddLinkDesktopArticleTarget.js",
-				"homepage/addlink/AiSuggestionsSaveTool.js"
+				"homepage/addlink/MachineSuggestionsSaveTool.js"
 			],
 			"dependencies": [
 				"ext.growthExperiments.AddLink",
 				"ext.visualEditor.desktopArticleTarget"
 			],
 			"messages": [
-				"growthexperiments-addlink-ve-ai-mode-title",
-				"growthexperiments-addlink-ve-ai-mode-submit-button"
+				"growthexperiments-addlink-ve-machine-suggestions-mode-title",
+				"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button"
 			],
 			"targets": [
 				"desktop"
@@ -765,14 +765,14 @@
 			"packageFiles": [
 				"homepage/addlink/mobile.js",
 				"homepage/addlink/AddLinkMobileArticleTarget.js",
-				"homepage/addlink/AiSuggestionsPlaceholderTool.js"
+				"homepage/addlink/MachineSuggestionsPlaceholderTool.js"
 			],
 			"dependencies": [
 				"ext.growthExperiments.AddLink",
 				"ext.visualEditor.mobileArticleTarget"
 			],
 			"messages": [
-				"growthexperiments-addlink-ve-ai-mode-title"
+				"growthexperiments-addlink-ve-machine-suggestions-mode-title"
 			],
 			"targets": [
 				"mobile"
@@ -1019,7 +1019,7 @@
 				"growthexperiments-help-panel-search-label",
 				"growthexperiments-help-panel-search-no-results",
 				"ellipsis",
-				"growthexperiments-homepage-suggestededits-tasktype-ai-description",
+				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
 				"growthexperiments-homepage-suggestededits-tasktype-name-copyedit",
 				"growthexperiments-homepage-suggestededits-tasktype-name-references",
 				"growthexperiments-homepage-suggestededits-tasktype-name-update",
@@ -1084,7 +1084,7 @@
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy",
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium",
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard",
-				"growthexperiments-homepage-suggestededits-tasktype-ai-description",
+				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
 				"growthexperiments-addlink-no-suggestions-found-dialog-message",
 				"growthexperiments-addlink-no-suggestions-found-dialog-button"
 			],
