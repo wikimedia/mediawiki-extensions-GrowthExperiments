@@ -10,7 +10,6 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use ISearchResultSet;
 use MediaWiki\Cache\LinkBatchFactory;
-use MediaWiki\Logger\LoggerFactory;
 use SearchEngine;
 use SearchEngineFactory;
 use SpecialPage;
@@ -94,7 +93,7 @@ class LocalSearchTaskSuggester extends SearchTaskSuggester {
 			$query->setDebugUrl( SpecialPage::getTitleFor( 'Search' )
 				->getFullURL( $params, false, PROTO_CANONICAL ) );
 		}
-		LoggerFactory::getInstance( 'GrowthExperiments' )->debug( 'LocalSearchTaskSuggester query', [
+		$this->logger->debug( 'LocalSearchTaskSuggester query', [
 			'query' => $query->getQueryString(),
 			'sort' => $query->getSort(),
 			'limit' => $limit,
