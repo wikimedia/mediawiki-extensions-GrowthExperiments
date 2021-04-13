@@ -38,7 +38,7 @@ class TrackerFactoryTest extends \MediaWikiUnitTestCase {
 		);
 		$this->assertInstanceOf(
 			Tracker::class,
-			$factory->getTracker( new UserIdentityValue( 1, 'Foo', 0 ) )
+			$factory->getTracker( new UserIdentityValue( 1, 'Foo' ) )
 		);
 	}
 

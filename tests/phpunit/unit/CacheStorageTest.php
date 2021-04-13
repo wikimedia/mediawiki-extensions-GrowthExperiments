@@ -24,7 +24,7 @@ class CacheStorageTest extends MediaWikiUnitTestCase {
 	public function testConstruct() {
 		$this->assertInstanceOf(
 			CacheStorage::class,
-			new CacheStorage( new \EmptyBagOStuff(), new UserIdentityValue( 1, 'Foo', 0 ) )
+			new CacheStorage( new \EmptyBagOStuff(), new UserIdentityValue( 1, 'Foo' ) )
 		);
 	}
 
@@ -35,7 +35,7 @@ class CacheStorageTest extends MediaWikiUnitTestCase {
 	public function testGetSet() {
 		$cacheStorage = new CacheStorage(
 			new HashBagOStuff(),
-			new UserIdentityValue( 1, 'Foo', 0 )
+			new UserIdentityValue( 1, 'Foo' )
 		);
 		$this->assertSame( [], $cacheStorage->get() );
 		$this->assertTrue( $cacheStorage->set( 42, 'type1' ) );
@@ -55,7 +55,7 @@ class CacheStorageTest extends MediaWikiUnitTestCase {
 	public function testExpiry() {
 		$cacheStorage = new CacheStorage(
 			new HashBagOStuff(),
-			new UserIdentityValue( 1, 'Foo', 0 )
+			new UserIdentityValue( 1, 'Foo' )
 		);
 		MWTimestamp::setFakeTime( '2000-01-01 00:00:00' );
 		$this->assertTrue( $cacheStorage->set( 42, 'type1' ) );

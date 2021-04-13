@@ -13,7 +13,7 @@ use StatusValue;
 class ErrorForwardingTaskSuggesterTest extends MediaWikiUnitTestCase {
 
 	public function testSuggest() {
-		$user = new UserIdentityValue( 1, 'Foo', 1 );
+		$user = new UserIdentityValue( 1, 'Foo' );
 		$suggester = new ErrorForwardingTaskSuggester( StatusValue::newFatal( 'foo' ) );
 		$result = $suggester->suggest( $user );
 		$this->assertInstanceOf( StatusValue::class, $result );

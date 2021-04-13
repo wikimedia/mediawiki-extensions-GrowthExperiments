@@ -23,7 +23,7 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$taskTypeFilter, $topicFilter, $limit, $offset,
 		$expectedTitles, $expectedTotalCount, $expectedOffset
 	) {
-		$user = new UserIdentityValue( 1, 'Foo', 1 );
+		$user = new UserIdentityValue( 1, 'Foo' );
 		$taskType1 = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
 		$taskType2 = new TaskType( 'link', TaskType::DIFFICULTY_EASY );
 		$taskType3 = new TaskType( 'create', TaskType::DIFFICULTY_HARD );
