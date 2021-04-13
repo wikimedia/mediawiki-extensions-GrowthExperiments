@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Joquliina",
+			"MITO",
 			"Mediawikitranslator",
 			"Nike",
 			"Pyscowicz"
@@ -15,6 +16,7 @@
 	"growthexperiments-homepage-email-button-unconfirmed": "Hanki uusi linkki",
 	"growthexperiments-homepage-tutorial-header": "Opi muokkaamaan",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Luo uusi artikkeli",
+	"growthexperiments-addlink-context-button-next": "Seuraava",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Esimerkkivirke",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Ohjesäännöt",
 	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "Ohita kaikki",
