@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+use Config;
 use GrowthExperiments\ExperimentUserManager;
 use Html;
 use IContextSource;
@@ -17,9 +18,11 @@ class Email extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	public function __construct(
-		IContextSource $context, ExperimentUserManager $experimentUserManager
+		IContextSource $context,
+		Config $wikiConfig,
+		ExperimentUserManager $experimentUserManager
 	) {
-		parent::__construct( 'start-email', $context, $experimentUserManager );
+		parent::__construct( 'start-email', $context, $wikiConfig, $experimentUserManager );
 
 		$user = $this->getContext()->getUser();
 		if ( $user->isEmailConfirmed() ) {

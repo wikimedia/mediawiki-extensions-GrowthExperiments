@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+use Config;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModule;
 use Html;
@@ -59,14 +60,24 @@ abstract class BaseModule implements HomepageModule {
 	 */
 	private $experimentUserManager;
 
+	/** @var Config */
+	private $wikiConfig;
+
 	/**
 	 * @param string $name Name of the module
 	 * @param IContextSource $ctx
+	 * @param Config $wikiConfig
 	 * @param ExperimentUserManager $experimentUserManager
 	 */
-	public function __construct( $name, IContextSource $ctx, ExperimentUserManager $experimentUserManager ) {
+	public function __construct(
+		$name,
+		IContextSource $ctx,
+		Config $wikiConfig,
+		ExperimentUserManager $experimentUserManager
+	) {
 		$this->name = $name;
 		$this->ctx = $ctx;
+		$this->wikiConfig = $wikiConfig;
 		$this->experimentUserManager = $experimentUserManager;
 	}
 
@@ -198,6 +209,13 @@ abstract class BaseModule implements HomepageModule {
 	 */
 	protected function setMode( $mode ) {
 		$this->mode = $mode;
+	}
+
+	/**
+	 * @return Config
+	 */
+	final protected function getGrowthWikiConfig(): Config {
+		return $this->wikiConfig;
 	}
 
 	/**

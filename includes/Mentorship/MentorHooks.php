@@ -13,13 +13,13 @@ use Throwable;
 
 class MentorHooks implements GetPreferencesHook, LocalUserCreatedHook {
 	/** @var Config */
-	private $config;
+	private $wikiConfig;
 
 	/**
-	 * @param Config $config
+	 * @param Config $wikiConfig
 	 */
-	public function __construct( Config $config ) {
-		$this->config = $config;
+	public function __construct( Config $wikiConfig ) {
+		$this->wikiConfig = $wikiConfig;
 	}
 
 	/** @inheritDoc */
@@ -35,7 +35,7 @@ class MentorHooks implements GetPreferencesHook, LocalUserCreatedHook {
 			// Excluding autocreated users is necessary, see T276720
 			return;
 		}
-		if ( $this->config->get( 'GEMentorshipEnabled' ) ) {
+		if ( $this->wikiConfig->get( 'GEMentorshipEnabled' ) ) {
 			try {
 				// Select a mentor. FIXME Not really necessary, but avoids a change in functionality
 				//   after introducing MentorManager, making debugging easier.

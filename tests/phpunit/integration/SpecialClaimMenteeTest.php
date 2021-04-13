@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests;
 
+use GlobalVarConfig;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\StaticMentorManager;
 use GrowthExperiments\Specials\SpecialClaimMentee;
@@ -22,7 +23,10 @@ class SpecialClaimMenteeTest extends SpecialPageTestBase {
 		return new SpecialClaimMentee(
 			new StaticMentorManager( [] ),
 			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
-				->getMentorStore()
+				->getMentorStore(),
+			// This would normally be GrowthExperimentsMultiConfig, but there
+			// is no need to test the on-wiki config here
+			GlobalVarConfig::newInstance()
 		);
 	}
 

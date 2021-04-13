@@ -78,7 +78,11 @@ class HomepageModuleRegistry {
 				IContextSource $context
 			) {
 				$growthServices = GrowthExperimentsServices::wrap( $services );
-				return new Banner( $context, $growthServices->getExperimentUserManager() );
+				return new Banner(
+					$context,
+					$growthServices->getGrowthWikiConfig(),
+					$growthServices->getExperimentUserManager()
+				);
 			},
 
 			'start' => function (
@@ -86,7 +90,11 @@ class HomepageModuleRegistry {
 				IContextSource $context
 			) {
 				$growthServices = GrowthExperimentsServices::wrap( $services );
-				return new Start( $context, $growthServices->getExperimentUserManager() );
+				return new Start(
+					$context,
+					$growthServices->getGrowthWikiConfig(),
+					$growthServices->getExperimentUserManager()
+				);
 			},
 
 			'startemail' => function (
@@ -94,7 +102,11 @@ class HomepageModuleRegistry {
 				IContextSource $context
 			) {
 				$growthServices = GrowthExperimentsServices::wrap( $services );
-				return new StartEmail( $context, $growthServices->getExperimentUserManager() );
+				return new StartEmail(
+					$context,
+					$growthServices->getGrowthWikiConfig(),
+					$growthServices->getExperimentUserManager()
+				);
 			},
 
 			'suggested-edits' => function (
@@ -105,6 +117,7 @@ class HomepageModuleRegistry {
 				$pageViewInfoEnabled = ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
 				return new SuggestedEdits(
 					$context,
+					$growthServices->getGrowthWikiConfig(),
 					$growthServices->getEditInfoService(),
 					$growthServices->getExperimentUserManager(),
 					$pageViewInfoEnabled ? $services->get( 'PageViewService' ) : null,
@@ -124,7 +137,8 @@ class HomepageModuleRegistry {
 				$pageViewInfoEnabled = ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
 				return new Impact(
 					$context,
-					$growthServices->getConfig()->get( 'GEHomepageImpactModuleEnabled' ),
+					$growthServices->getGrowthWikiConfig(),
+					$growthServices->getGrowthConfig()->get( 'GEHomepageImpactModuleEnabled' ),
 					$services->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA ),
 					$growthServices->getExperimentUserManager(),
 					[
@@ -143,6 +157,7 @@ class HomepageModuleRegistry {
 				$growthServices = GrowthExperimentsServices::wrap( $services );
 				return new Mentorship(
 					$context,
+					$growthServices->getGrowthWikiConfig(),
 					$growthServices->getExperimentUserManager(),
 					$growthServices->getMentorManager()
 				);
@@ -153,7 +168,11 @@ class HomepageModuleRegistry {
 				IContextSource $context
 			) {
 				$growthServices = GrowthExperimentsServices::wrap( $services );
-				return new Help( $context, $growthServices->getExperimentUserManager() );
+				return new Help(
+					$context,
+					$growthServices->getGrowthWikiConfig(),
+					$growthServices->getExperimentUserManager()
+				);
 			},
 
 			'start-startediting' => function (
@@ -161,7 +180,11 @@ class HomepageModuleRegistry {
 				IContextSource $context
 			) {
 				$growthServices = GrowthExperimentsServices::wrap( $services );
-				return new StartEditing( $context, $growthServices->getExperimentUserManager() );
+				return new StartEditing(
+					$context,
+					$growthServices->getGrowthWikiConfig(),
+					$growthServices->getExperimentUserManager()
+				);
 			}
 
 		];

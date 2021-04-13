@@ -112,6 +112,7 @@
 			"class": "GrowthExperiments\\HomepageHooks",
 			"services": [
 				"MainConfig",
+				"GrowthExperimentsMultiConfig",
 				"DBLoadBalancer",
 				"UserOptionsLookup",
 				"NamespaceInfo",
@@ -135,7 +136,7 @@
 		"mentor": {
 			"class": "GrowthExperiments\\Mentorship\\MentorHooks",
 			"services": [
-				"MainConfig"
+				"GrowthExperimentsMultiConfig"
 			]
 		},
 		"tour": {

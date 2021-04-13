@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+use Config;
 use GrowthExperiments\ExperimentUserManager;
 use IContextSource;
 use OOUI\ButtonInputWidget;
@@ -18,8 +19,12 @@ class Tutorial extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	public function __construct( IContextSource $context, ExperimentUserManager $experimentUserManager ) {
-		parent::__construct( 'start-tutorial', $context, $experimentUserManager );
+	public function __construct(
+		IContextSource $context,
+		Config $wikiConfig,
+		ExperimentUserManager $experimentUserManager
+	) {
+		parent::__construct( 'start-tutorial', $context, $wikiConfig, $experimentUserManager );
 	}
 
 	/**
@@ -32,7 +37,7 @@ class Tutorial extends BaseTaskModule {
 	}
 
 	private function getHomepageTutorialTitleValue() {
-		return $this->getContext()->getConfig()->get( self::TUTORIAL_TITLE_CONFIG );
+		return $this->getGrowthWikiConfig()->get( self::TUTORIAL_TITLE_CONFIG );
 	}
 
 	private function getHomepageTutorialTitle() {

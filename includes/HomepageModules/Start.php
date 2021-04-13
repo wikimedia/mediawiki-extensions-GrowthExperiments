@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\HomepageModules;
 
+use Config;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModule;
 use IContextSource;
@@ -22,18 +23,30 @@ class Start extends BaseTaskModule {
 	/**
 	 * @inheritDoc
 	 */
-	public function __construct( IContextSource $context, ExperimentUserManager $experimentUserManager ) {
-		parent::__construct( 'start', $context, $experimentUserManager );
+	public function __construct(
+		IContextSource $context,
+		Config $wikiConfig,
+		ExperimentUserManager $experimentUserManager
+	) {
+		parent::__construct( 'start', $context, $wikiConfig, $experimentUserManager );
 
 		$this->tasks = [
-			'account' => new Account( $context, $experimentUserManager ),
-			'email' => new Email( $context, $experimentUserManager ),
-			'tutorial' => new Tutorial( $context, $experimentUserManager )
+			'account' => new Account( $context, $wikiConfig, $experimentUserManager ),
+			'email' => new Email( $context, $wikiConfig, $experimentUserManager ),
+			'tutorial' => new Tutorial( $context, $wikiConfig, $experimentUserManager )
 		];
 		if ( SuggestedEdits::isEnabled( $context ) ) {
-			$this->tasks['startediting'] = new StartEditing( $context, $experimentUserManager );
+			$this->tasks['startediting'] = new StartEditing(
+				$context,
+				$wikiConfig,
+				$experimentUserManager
+			);
 		} else {
-			$this->tasks['userpage'] = new Userpage( $context, $experimentUserManager );
+			$this->tasks['userpage'] = new Userpage(
+				$context,
+				$wikiConfig,
+				$experimentUserManager
+			);
 		}
 	}
 
