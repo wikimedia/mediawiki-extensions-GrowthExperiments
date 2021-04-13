@@ -58,7 +58,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	public function testSuggest(
 		$taskTypeSpec, $topicSpec, $requests, $taskFilter, $topicFilter, $limit, $expectedTaskSet
 	) {
-		$user = new UserIdentityValue( 1, 'Foo', 1 );
+		$user = new UserIdentityValue( 1, 'Foo' );
 		$taskTypes = $this->getTaskTypes( $taskTypeSpec );
 		$topics = $this->getTopics( $topicSpec );
 
@@ -476,7 +476,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		array $requests,
 		$expectedTaskSet
 	) {
-		$user = new UserIdentityValue( 1, 'Foo', 1 );
+		$user = new UserIdentityValue( 1, 'Foo' );
 		$taskTypes = $this->getTaskTypes( $taskTypeSpec );
 		$topics = $this->getTopics( $topicSpec );
 

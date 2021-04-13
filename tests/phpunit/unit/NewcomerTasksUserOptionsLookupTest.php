@@ -21,9 +21,9 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 	 * @covers ::getJsonListOption
 	 */
 	public function testSuggest() {
-		$user1 = new UserIdentityValue( 1, 'User1', 1 );
-		$user2 = new UserIdentityValue( 2, 'User2', 2 );
-		$user3 = new UserIdentityValue( 3, 'User3', 3 );
+		$user1 = new UserIdentityValue( 1, 'User1' );
+		$user2 = new UserIdentityValue( 2, 'User2' );
+		$user3 = new UserIdentityValue( 3, 'User3' );
 		$userOptionsLookup = new StaticUserOptionsLookup( [
 			'User1' => [
 				SuggestedEdits::TASKTYPES_PREF => '[ "tasktypes" ]',
