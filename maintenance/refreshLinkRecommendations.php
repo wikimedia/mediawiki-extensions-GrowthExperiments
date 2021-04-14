@@ -29,6 +29,7 @@ use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\NameTableStore;
 use Message;
 use MWTimestamp;
+use PageProps;
 use RuntimeException;
 use SearchEngineFactory;
 use Status;
@@ -350,6 +351,12 @@ class RefreshLinkRecommendations extends Maintenance {
 		}
 
 		$db = $this->getDB( DB_REPLICA );
+
+		if ( PageProps::getInstance()->getProperties( $title, 'disambiguation' ) ) {
+			$this->verboseLog( "disambiguation page\n" );
+			return false;
+		}
+
 		$tags = ChangeTags::getTagsWithData( $db, null, $revision->getId() );
 		if ( array_key_exists( LinkRecommendationTaskTypeHandler::CHANGE_TAG, $tags ) ) {
 			$this->verboseLog( "last edit is a link recommendation\n" );
