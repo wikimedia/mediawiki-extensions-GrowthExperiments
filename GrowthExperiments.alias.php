@@ -45,6 +45,7 @@ $specialPageAliases['cs'] = [
 	'Impact' => [ 'Dosah_příspěvků' ],
 	'ClaimMentee' => [ 'Převzít_nováčka' ],
 	'NewcomerTasksInfo' => [ 'Informace_o_editačních_tipech' ],
+	'EditGrowthConfig' => [ 'Editovat_konfiguraci_Growth_funkcí' ],
 ];
 
 /** Dansk (Danish) */
