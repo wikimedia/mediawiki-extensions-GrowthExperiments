@@ -28,6 +28,7 @@ $specialPageAliases['ar'] = [
 	'Homepage' => [ 'صفحة_رئيسية', 'لوحة_مستخدم' ],
 	'Impact' => [ 'تأثير' ],
 	'ClaimMentee' => [ 'مطالبة_مرشد' ],
+	'EditGrowthConfig' => [ 'تعديل_إعداد_النمو' ],
 ];
 
 /** Bangla (বাংলা) */
