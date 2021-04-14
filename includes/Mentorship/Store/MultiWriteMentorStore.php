@@ -19,13 +19,15 @@ class MultiWriteMentorStore extends MentorStore {
 	 * @param int $migrationStage
 	 * @param PreferenceMentorStore $preferenceMentorStore
 	 * @param DatabaseMentorStore $databaseMentorStore
+	 * @param bool $wasPosted
 	 */
 	public function __construct(
 		int $migrationStage,
 		PreferenceMentorStore $preferenceMentorStore,
-		DatabaseMentorStore $databaseMentorStore
+		DatabaseMentorStore $databaseMentorStore,
+		bool $wasPosted
 	) {
-		parent::__construct();
+		parent::__construct( $wasPosted );
 
 		$this->migrationStage = $migrationStage;
 		$this->preferenceMentorStore = $preferenceMentorStore;

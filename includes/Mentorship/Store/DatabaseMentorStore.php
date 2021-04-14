@@ -18,9 +18,6 @@ class DatabaseMentorStore extends MentorStore {
 	/** @var IDatabase */
 	private $dbw;
 
-	/** @var bool */
-	private $wasPosted;
-
 	/**
 	 * @param UserFactory $userFactory
 	 * @param IDatabase $dbr
@@ -33,12 +30,11 @@ class DatabaseMentorStore extends MentorStore {
 		IDatabase $dbw,
 		bool $wasPosted
 	) {
-		parent::__construct();
+		parent::__construct( $wasPosted );
 
 		$this->userFactory = $userFactory;
 		$this->dbr = $dbr;
 		$this->dbw = $dbw;
-		$this->wasPosted = $wasPosted;
 	}
 
 	/**

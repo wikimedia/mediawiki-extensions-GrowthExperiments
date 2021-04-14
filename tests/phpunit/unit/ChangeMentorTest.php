@@ -175,6 +175,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 	 */
 	private function getMentorStoreMock() {
 		return $this->getMockBuilder( MentorStore::class )
+			->disableOriginalConstructor()
 			->getMockForAbstractClass();
 	}
 
