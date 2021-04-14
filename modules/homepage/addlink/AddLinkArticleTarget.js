@@ -65,6 +65,7 @@ AddLinkArticleTarget.prototype.afterSurfaceReady = function () {
 		this.overlay.on( 'editor-loaded', this.selectFirstRecommendation.bind( this ) );
 	} else {
 		this.selectFirstRecommendation();
+		mw.hook( 'growthExperiments.showAddLinkOnboardingIfNeeded' ).fire();
 	}
 
 	// Save can be triggered from RecommendedLinkContextItem.
