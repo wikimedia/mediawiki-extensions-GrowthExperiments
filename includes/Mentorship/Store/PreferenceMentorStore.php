@@ -19,9 +19,6 @@ class PreferenceMentorStore extends MentorStore {
 	/** @var UserOptionsManager */
 	private $userOptionsManager;
 
-	/** @var bool */
-	private $wasPosted;
-
 	/**
 	 * @param UserFactory $userFactory
 	 * @param UserOptionsManager $userOptionsManager
@@ -32,11 +29,10 @@ class PreferenceMentorStore extends MentorStore {
 		UserOptionsManager $userOptionsManager,
 		bool $wasPosted
 	) {
-		parent::__construct();
+		parent::__construct( $wasPosted );
 
 		$this->userFactory = $userFactory;
 		$this->userOptionsManager = $userOptionsManager;
-		$this->wasPosted = $wasPosted;
 	}
 
 	/**

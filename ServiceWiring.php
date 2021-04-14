@@ -211,7 +211,9 @@ return [
 		return new MultiWriteMentorStore(
 			(int)$geServices->getGrowthConfig()->get( 'GEMentorshipMigrationStage' ),
 			$geServices->getPreferenceMentorStore(),
-			$geServices->getDatabaseMentorStore()
+			$geServices->getDatabaseMentorStore(),
+			defined( 'MEDIAWIKI_JOB_RUNNER' ) || RequestContext::getMain()
+				->getRequest()->wasPosted()
 		);
 	},
 
@@ -236,7 +238,8 @@ return [
 		return new PreferenceMentorStore(
 			$services->getUserFactory(),
 			$services->getUserOptionsManager(),
-			RequestContext::getMain()->getRequest()->wasPosted()
+			defined( 'MEDIAWIKI_JOB_RUNNER' ) || RequestContext::getMain()
+				->getRequest()->wasPosted()
 		);
 	},
 
