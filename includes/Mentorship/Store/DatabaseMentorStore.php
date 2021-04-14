@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Mentorship\Store;
 
 use DBAccessObjectUtils;
+use JobQueueGroup;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Wikimedia\Rdbms\IDatabase;
@@ -79,12 +80,16 @@ class DatabaseMentorStore extends MentorStore {
 	}
 
 	/**
-	 * @inheritDoc
+	 * Really set a mentor for a given user
+	 *
+	 * @param UserIdentity $mentee
+	 * @param UserIdentity $mentor
+	 * @param string $mentorRole
 	 */
-	protected function setMentorForUserInternal(
+	private function setMentorForUserReal(
 		UserIdentity $mentee,
 		UserIdentity $mentor,
-		string $mentorRole = self::ROLE_PRIMARY
+		string $mentorRole
 	): void {
 		$this->dbw->upsert(
 			'growthexperiments_mentor_mentee',
@@ -99,5 +104,28 @@ class DatabaseMentorStore extends MentorStore {
 			],
 			__METHOD__
 		);
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function setMentorForUserInternal(
+		UserIdentity $mentee,
+		UserIdentity $mentor,
+		string $mentorRole = self::ROLE_PRIMARY
+	): void {
+		if ( $this->wasPosted ) {
+			$this->setMentorForUserReal(
+				$mentee,
+				$mentor,
+				$mentorRole
+			);
+		} else {
+			JobQueueGroup::singleton()->lazyPush( new SetUserMentorDatabaseJob( [
+				'menteeId' => $mentee->getId(),
+				'mentorId' => $mentor->getId(),
+				'roleId' => $mentorRole,
+			] ) );
+		}
 	}
 }
