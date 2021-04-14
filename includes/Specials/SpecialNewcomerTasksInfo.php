@@ -53,7 +53,7 @@ class SpecialNewcomerTasksInfo extends SpecialPage {
 		foreach ( $info['tasks'] as $taskTypeId => $taskTypeData ) {
 			$taskTypeTableRows[] = ( new Tag( 'tr' ) )->appendContent(
 				( new Tag( 'td' ) )->appendContent(
-					$out->msg( 'growthexperiments-homepage-suggestededits-tasktype-name-' . $taskTypeId )
+					$out->msg( 'growthexperiments-homepage-suggestededits-tasktype-name-' . $taskTypeId )->text()
 				),
 				( new Tag( 'td' ) )->appendContent( ( new Tag( 'code' ) )->appendContent( $taskTypeId ) ),
 				( new Tag( 'td' ) )->appendContent(
@@ -112,6 +112,7 @@ class SpecialNewcomerTasksInfo extends SpecialPage {
 			$topicsTableRowData[] = ( new Tag( 'td' ) )->appendContent(
 				$out->msg( 'newcomertasksinfo-task-count' )
 				->numParams( $topicData['totalCount'] )
+				->text()
 			);
 			$topicsTableRows[] = ( new Tag( 'tr' ) )->appendContent(
 				$topicsTableRowData
