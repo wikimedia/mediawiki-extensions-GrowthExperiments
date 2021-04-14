@@ -83,11 +83,11 @@ abstract class MentorStore implements IDBAccessObject {
 	 * As of now, the only allowed constant is MentorStore::MENTOR_PRIMARY;
 	 * this will be more useful when T227876 is done.
 	 *
-	 * @param string $mentorType
+	 * @param string $mentorRole
 	 * @return bool True when valid, false otherwise
 	 */
-	private function validateMentorType( string $mentorType ): bool {
-		return in_array( $mentorType, [ self::ROLE_PRIMARY ] );
+	private function validateMentorRole( string $mentorRole ): bool {
+		return in_array( $mentorRole, [ self::ROLE_PRIMARY ] );
 	}
 
 	/**
@@ -102,8 +102,8 @@ abstract class MentorStore implements IDBAccessObject {
 		string $mentorRole = self::ROLE_PRIMARY,
 		$flags = self::READ_NORMAL
 	): ?UserIdentity {
-		if ( !$this->validateMentorType( $mentorRole ) ) {
-			throw new InvalidArgumentException( "Invalid \$mentorType passed: $mentorRole" );
+		if ( !$this->validateMentorRole( $mentorRole ) ) {
+			throw new InvalidArgumentException( "Invalid \$mentorRole passed: $mentorRole" );
 		}
 
 		if ( DBAccessObjectUtils::hasFlags( $flags, self::READ_LATEST ) ) {
@@ -144,24 +144,24 @@ abstract class MentorStore implements IDBAccessObject {
 	 *
 	 * @param UserIdentity $mentee
 	 * @param UserIdentity $mentor
-	 * @param string $mentorType One of MentorStore::MENTOR_ constants
+	 * @param string $mentorRole One of MentorStore::MENTOR_ constants
 	 */
 	public function setMentorForUser(
 		UserIdentity $mentee,
 		UserIdentity $mentor,
-		string $mentorType = self::ROLE_PRIMARY
+		string $mentorRole = self::ROLE_PRIMARY
 	): void {
-		if ( !$this->validateMentorType( $mentorType ) ) {
-			throw new InvalidArgumentException( "Invalid \$mentorType passed: $mentorType" );
+		if ( !$this->validateMentorRole( $mentorRole ) ) {
+			throw new InvalidArgumentException( "Invalid \$mentorRole passed: $mentorRole" );
 		}
 
-		$this->setMentorForUserInternal( $mentee, $mentor, $mentorType );
+		$this->setMentorForUserInternal( $mentee, $mentor, $mentorRole );
 
-		$this->invalidateMentorCache( $mentee, $mentorType );
+		$this->invalidateMentorCache( $mentee, $mentorRole );
 
 		// Set the mentor in the in-process cache
 		$this->cache->set(
-			$this->makeCacheKey( $mentee, $mentorType ),
+			$this->makeCacheKey( $mentee, $mentorRole ),
 			$mentor,
 			$this->cacheTtl,
 			BagOStuff::WRITE_CACHE_ONLY

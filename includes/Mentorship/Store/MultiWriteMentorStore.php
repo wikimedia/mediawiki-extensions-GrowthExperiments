@@ -39,15 +39,15 @@ class MultiWriteMentorStore extends MentorStore {
 	 */
 	public function loadMentorUserUncached(
 		UserIdentity $mentee,
-		string $mentorType,
+		string $mentorRole,
 		$flags
 	): ?UserIdentity {
 		if ( $this->migrationStage & SCHEMA_COMPAT_READ_OLD ) {
 			return $this->preferenceMentorStore
-				->loadMentorUserUncached( $mentee, $mentorType, $flags );
+				->loadMentorUserUncached( $mentee, $mentorRole, $flags );
 		} elseif ( $this->migrationStage & SCHEMA_COMPAT_READ_NEW ) {
 			return $this->databaseMentorStore
-				->loadMentorUserUncached( $mentee, $mentorType, $flags );
+				->loadMentorUserUncached( $mentee, $mentorRole, $flags );
 		} else {
 			// Migration stage is supposed to be already validated
 			throw new LogicException(
@@ -62,14 +62,14 @@ class MultiWriteMentorStore extends MentorStore {
 	protected function setMentorForUserInternal(
 		UserIdentity $mentee,
 		UserIdentity $mentor,
-		string $mentorType = self::ROLE_PRIMARY
+		string $mentorRole = self::ROLE_PRIMARY
 	): void {
 		if ( $this->migrationStage & SCHEMA_COMPAT_WRITE_OLD ) {
-			$this->preferenceMentorStore->setMentorForUser( $mentee, $mentor, $mentorType );
+			$this->preferenceMentorStore->setMentorForUser( $mentee, $mentor, $mentorRole );
 		}
 
 		if ( $this->migrationStage & SCHEMA_COMPAT_WRITE_NEW ) {
-			$this->databaseMentorStore->setMentorForUser( $mentee, $mentor, $mentorType );
+			$this->databaseMentorStore->setMentorForUser( $mentee, $mentor, $mentorRole );
 		}
 	}
 }
