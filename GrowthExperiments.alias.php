@@ -292,6 +292,14 @@ $specialPageAliases['uk'] = [
 	'Impact' => [ 'Вплив' ],
 ];
 
+/** Urdu (اردو) */
+$specialPageAliases['ur'] = [
+	'WelcomeSurvey' => [ 'خیرمقدم_سروے' ],
+	'Homepage' => [ 'ہوم_پیج' ],
+	'Impact' => [ 'ثر' ],
+	'ClaimMentee' => [ 'ایک_نووارد_کا_دعوی' ],
+];
+
 /** Vietnamese (Tiếng Việt) */
 $specialPageAliases['vi'] = [
 	'WelcomeSurvey' => [ 'Bảng_câu_hỏi_chào_mừng' ],
