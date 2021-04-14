@@ -27,8 +27,17 @@ abstract class MentorStore implements IDBAccessObject {
 	/** @var int */
 	protected $cacheTtl = 0;
 
-	public function __construct() {
+	/** @var bool */
+	protected $wasPosted;
+
+	/**
+	 * @param bool $wasPosted
+	 */
+	public function __construct(
+		bool $wasPosted
+	) {
 		$this->cache = new HashBagOStuff();
+		$this->wasPosted = $wasPosted;
 	}
 
 	/**
