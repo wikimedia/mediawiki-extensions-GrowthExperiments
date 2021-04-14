@@ -34,9 +34,8 @@
 			mw.log.error( suggestedEditSession.taskData.error );
 			errorDialogOnFailure();
 		} else {
-			if ( suggestedEditSession.onboardingNeedsToBeShown ) {
-				suggestedEditSession.onboardingNeedsToBeShown = false;
-				suggestedEditSession.save();
+
+			if ( OO.ui.isMobile() ) {
 				AddLinkOnboarding.showDialogIfEligible();
 			}
 
