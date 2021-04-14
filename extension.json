@@ -42,7 +42,8 @@
 		"GrowthExperiments": "GlobalVarConfig::newInstance"
 	},
 	"JobClasses": {
-		"newcomerTasksCacheRefreshJob": "GrowthExperiments\\NewcomerTasks\\TaskSuggester\\NewcomerTasksCacheRefreshJob"
+		"newcomerTasksCacheRefreshJob": "GrowthExperiments\\NewcomerTasks\\TaskSuggester\\NewcomerTasksCacheRefreshJob",
+		"setUserMentorDatabaseJob": "GrowthExperiments\\Mentorship\\Store\\SetUserMentorDatabaseJob"
 	},
 	"APIModules": {
 		"helppanelquestionposter": {

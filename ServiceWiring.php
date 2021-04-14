@@ -222,10 +222,11 @@ return [
 			$services->getUserFactory(),
 			$lb->getLazyConnectionRef( DB_REPLICA ),
 			$lb->getLazyConnectionRef( DB_MASTER ),
-			RequestContext::getMain()->getRequest()->wasPosted()
+			defined( 'MEDIAWIKI_JOB_RUNNER' ) || RequestContext::getMain()
+				->getRequest()->wasPosted()
 		);
 		$databaseMentorStore->setCache(
-			new CachedBagOStuff( ObjectCache::getLocalClusterInstance() ),
+			ObjectCache::getLocalClusterInstance(),
 			CachedBagOStuff::TTL_DAY
 		);
 		return $databaseMentorStore;

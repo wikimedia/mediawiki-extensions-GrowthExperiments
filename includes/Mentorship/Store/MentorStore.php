@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Mentorship\Store;
 
 use BagOStuff;
+use CachedBagOStuff;
 use DBAccessObjectUtils;
 use HashBagOStuff;
 use IDBAccessObject;
@@ -17,8 +18,11 @@ abstract class MentorStore implements IDBAccessObject {
 	 */
 	public const ROLE_PRIMARY = 'primary';
 
-	/** @var HashBagOStuff */
+	/** @var BagOStuff */
 	protected $cache;
+
+	/** @var BagOStuff */
+	protected $innerCache;
 
 	/** @var int */
 	protected $cacheTtl = 0;
@@ -33,7 +37,8 @@ abstract class MentorStore implements IDBAccessObject {
 	 * @param int $ttl Cache expiry (0 for unlimited).
 	 */
 	public function setCache( BagOStuff $cache, int $ttl ) {
-		$this->cache = $cache;
+		$this->innerCache = $cache;
+		$this->cache = new CachedBagOStuff( $this->innerCache );
 		$this->cacheTtl = $ttl;
 	}
 
@@ -144,6 +149,14 @@ abstract class MentorStore implements IDBAccessObject {
 		$this->setMentorForUserInternal( $mentee, $mentor, $mentorType );
 
 		$this->invalidateMentorCache( $mentee, $mentorType );
+
+		// Set the mentor in the in-process cache
+		$this->cache->set(
+			$this->makeCacheKey( $mentee, $mentorType ),
+			$mentor,
+			$this->cacheTtl,
+			BagOStuff::WRITE_CACHE_ONLY
+		);
 	}
 
 	/**
