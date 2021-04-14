@@ -22,7 +22,7 @@ use Wikimedia\ObjectFactory;
  */
 class DecoratingTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 	public function testCreate() {
-		$user = new UserIdentityValue( 1, 'User', 1 );
+		$user = new UserIdentityValue( 1, 'User' );
 		$taskType = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
 		$tasks = [
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Foo' ) ),

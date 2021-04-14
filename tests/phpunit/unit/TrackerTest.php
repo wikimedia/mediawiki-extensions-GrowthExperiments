@@ -26,7 +26,7 @@ class TrackerTest extends \MediaWikiUnitTestCase {
 			new Tracker(
 				new CacheStorage(
 					new \EmptyBagOStuff(),
-					new UserIdentityValue( 1, 'Foo', 0 )
+					new UserIdentityValue( 1, 'Foo' )
 				),
 				$this->getMockConfigurationLoader( [] ),
 				$this->getMockTitleFactory( [] ),
@@ -43,7 +43,7 @@ class TrackerTest extends \MediaWikiUnitTestCase {
 		$tracker = new Tracker(
 			new CacheStorage(
 				new \EmptyBagOStuff(),
-				new UserIdentityValue( 1, 'Foo', 0 )
+				new UserIdentityValue( 1, 'Foo' )
 			),
 			$this->getMockConfigurationLoader( [ 'type1' => new TaskType( 'type1', 'easy' ) ] ),
 			$this->getMockTitleFactory( [ 42 => 'https://foo' ] ),
@@ -79,7 +79,7 @@ class TrackerTest extends \MediaWikiUnitTestCase {
 		$tracker = new Tracker(
 			new CacheStorage(
 				new \EmptyBagOStuff(),
-				new UserIdentityValue( 1, 'Foo', 0 )
+				new UserIdentityValue( 1, 'Foo' )
 			),
 			$this->getMockConfigurationLoader( [ 'type1' => new TaskType( 'type1', 'easy' ) ] ),
 			$this->getMockTitleFactory( [ 42 => 'https://foo' ] ),

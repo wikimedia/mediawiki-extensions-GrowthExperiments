@@ -18,7 +18,7 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 	 * @covers ::getVariant
 	 */
 	public function testGetVariantFallbackToDefault() {
-		$user = new UserIdentityValue( 0, __CLASS__, 0 );
+		$user = new UserIdentityValue( 0, __CLASS__ );
 		$userOptionsLookupMock = $this->getMockBuilder( UserOptionsLookup::class )
 			->disableOriginalConstructor()
 			->getMock();
@@ -37,7 +37,7 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 	 * @covers ::getVariant
 	 */
 	public function testGetVariantWithUserAssigned() {
-		$user = new UserIdentityValue( 0, __CLASS__, 0 );
+		$user = new UserIdentityValue( 0, __CLASS__ );
 		$userOptionsLookupMock = $this->getMockBuilder( UserOptionsLookup::class )
 			->disableOriginalConstructor()
 			->getMock();

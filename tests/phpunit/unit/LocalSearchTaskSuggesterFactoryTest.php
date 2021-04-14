@@ -39,7 +39,7 @@ class LocalSearchTaskSuggesterFactoryTest extends SearchTaskSuggesterFactoryTest
 		$taskSuggester = $taskSuggesterFactory->create();
 		if ( $expectedError ) {
 			$this->assertInstanceOf( ErrorForwardingTaskSuggester::class, $taskSuggester );
-			$error = $taskSuggester->suggest( new UserIdentityValue( 1, 'Foo', 1 ) );
+			$error = $taskSuggester->suggest( new UserIdentityValue( 1, 'Foo' ) );
 			$this->assertInstanceOf( StatusValue::class, $error );
 			$this->assertSame( $expectedError, $error );
 		} else {

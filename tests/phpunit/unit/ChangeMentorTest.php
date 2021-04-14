@@ -149,7 +149,7 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 	 * @return UserIdentity
 	 */
 	private function getUserMock( string $name, int $id ) {
-		return new UserIdentityValue( $id, $name, 0 );
+		return new UserIdentityValue( $id, $name );
 	}
 
 	/**

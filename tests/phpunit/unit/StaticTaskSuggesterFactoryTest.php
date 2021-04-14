@@ -18,7 +18,7 @@ use TitleValue;
 class StaticTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 
 	public function testCreate() {
-		$user = new UserIdentityValue( 1, 'Foo', 1 );
+		$user = new UserIdentityValue( 1, 'Foo' );
 		$taskType = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
 		$task = new Task( $taskType, new TitleValue( NS_MAIN, 'Task' ) );
 
