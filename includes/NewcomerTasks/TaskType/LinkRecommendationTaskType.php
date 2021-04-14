@@ -26,7 +26,7 @@ class LinkRecommendationTaskType extends TaskType {
 
 	public const DEFAULT_SETTINGS = [
 		self::FIELD_MIN_TASKS_PER_TOPIC => 500,
-		self::FIELD_MIN_LINKS_PER_TASK => 4,
+		self::FIELD_MIN_LINKS_PER_TASK => 2,
 		self::FIELD_MIN_LINK_SCORE => 0.5,
 		self::FIELD_MAX_LINKS_PER_TASK => 10,
 		self::FIELD_MIN_TIME_SINCE_LAST_EDIT => ExpirationAwareness::TTL_DAY,
