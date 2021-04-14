@@ -27,18 +27,31 @@ RecommendedLinkContextItem.static.commandName = 'TODO';
 RecommendedLinkContextItem.prototype.setup = function () {
 	// Don't call the parent method, because we want to build a slightly different UI
 	var recommendationInfo = this.getRecommendationInfo(),
-		// This generateBody() call is copied from the parent method
-		$linkPreview = this.constructor.static.generateBody(
-			ve.init.platform.linkCache,
-			this.model,
-			this.context.getSurface().getModel().getDocument().getHtmlDocument(),
-			this.context
-		),
-		introLabel = new OO.ui.LabelWidget( {
-			label: mw.msg( 'growthexperiments-addlink-context-intro' ),
-			classes: [ 'mw-ge-recommendedLinkContextItem-introLabel' ]
-		} ),
-		$buttons = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-buttons' );
+		$linkPreview, introLabel, $buttons;
+
+	/**
+	 * When the annotation is clicked on (rather than using buttons in the context item),
+	 * the data model from the surface can be that of the prior annotation.
+	 * When this is the case, manually select the fragment to make sure the right
+	 * data model is updated.
+	 */
+	if ( this.hasWrongDataModel() ) {
+		this.moveToSuggestion( recommendationInfo.index );
+		return;
+	}
+
+	// This generateBody() call is copied from the parent method
+	$linkPreview = this.constructor.static.generateBody(
+		ve.init.platform.linkCache,
+		this.model,
+		this.context.getSurface().getModel().getDocument().getHtmlDocument(),
+		this.context
+	);
+	introLabel = new OO.ui.LabelWidget( {
+		label: mw.msg( 'growthexperiments-addlink-context-intro' ),
+		classes: [ 'mw-ge-recommendedLinkContextItem-introLabel' ]
+	} );
+	$buttons = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-buttons' );
 
 	this.yesButton = new OO.ui.ButtonWidget( {
 		icon: 'check',
@@ -361,6 +374,21 @@ RecommendedLinkContextItem.prototype.onNextActionClicked = function ( nextIndex 
 RecommendedLinkContextItem.prototype.teardown = function () {
 	RecommendedLinkContextItem.super.prototype.teardown.apply( this, arguments );
 	$( window ).off( 'resize' );
+};
+
+/**
+ * Check if the data model of the context item is different from the current fragment's
+ *
+ * @return {boolean}
+ */
+RecommendedLinkContextItem.prototype.hasWrongDataModel = function () {
+	var fragmentAnnotations = this.context.getSurface().getModel().getFragment().getAnnotations(),
+		annotation = fragmentAnnotations.getAnnotationsByName( 'mwGeRecommendedLink' ).get( 0 );
+	if ( !annotation ) {
+		return false;
+	}
+	return annotation.getAttribute( 'recommendationWikitextOffset' ) !==
+		this.model.getAttribute( 'recommendationWikitextOffset' );
 };
 
 module.exports = RecommendedLinkContextItem;
