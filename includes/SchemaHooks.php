@@ -3,6 +3,7 @@
 namespace GrowthExperiments;
 
 use Exception;
+use GrowthExperiments\Maintenance\MigrateMentorMenteeRelationship;
 use MediaWiki\Hook\UnitTestsAfterDatabaseSetupHook;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 
@@ -33,6 +34,8 @@ class SchemaHooks implements LoadExtensionSchemaUpdatesHook, UnitTestsAfterDatab
 		$updater->addExtensionField( 'growthexperiments_link_submissions',
 			'gels_anchor_offset',
 			"$extensionRoot/maintenance/schemaChanges/$engine/patch-add_gels_anchor.sql" );
+
+		$updater->addPostDatabaseUpdateMaintenance( MigrateMentorMenteeRelationship::class );
 	}
 
 	/** @inheritDoc */

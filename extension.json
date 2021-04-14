@@ -15,6 +15,9 @@
 	"AutoloadNamespaces": {
 		"GrowthExperiments\\": "includes/"
 	},
+	"AutoloadClasses": {
+		"GrowthExperiments\\Maintenance\\MigrateMentorMenteeRelationship": "maintenance/migrateMentorMenteeRelationship.php"
+	},
 	"TestAutoloadClasses": {
 		"GrowthExperiments\\Tests\\InvokedBetween": "tests/phpunit/InvokedBetween.php",
 		"GrowthExperiments\\Tests\\SearchTaskSuggesterFactoryTest": "tests/phpunit/unit/SearchTaskSuggesterFactoryTest.php"
