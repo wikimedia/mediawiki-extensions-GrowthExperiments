@@ -20,7 +20,8 @@
 	},
 	"TestAutoloadClasses": {
 		"GrowthExperiments\\Tests\\InvokedBetween": "tests/phpunit/InvokedBetween.php",
-		"GrowthExperiments\\Tests\\SearchTaskSuggesterFactoryTest": "tests/phpunit/unit/SearchTaskSuggesterFactoryTest.php"
+		"GrowthExperiments\\Tests\\SearchTaskSuggesterFactoryTest": "tests/phpunit/unit/SearchTaskSuggesterFactoryTest.php",
+		"GrowthExperiments\\Tests\\MentorStoreTestCase": "tests/phpunit/integration/Mentorship/Store/MentorStoreTestCase.php"
 	},
 	"MessagesDirs": {
 		"GrowthExperiments": [
