@@ -11,5 +11,7 @@
 	"growthexperiments-config-validator-additional-fields": "يحتوي التكوين الجديد على مفاتيح تهيئة لا يمكن تخصيصها هنا.",
 	"growthexperiments-config-validator-error": "أخفق التأكيد لـ$1 مع: «$2»",
 	"growthexperiments-config-validator-datatype-mismatch": "من المتوقّع لـ<code>$1</code> أن يكون <code>$2</code>، لكنّه <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "محتوى النموذج غير مطابق: ملفّ التكوين لـ GrowthExperiments يجب أن يتكوّن من نموذج محتوى JSON، تم العثور على $1"
+	"growthexperiments-config-validator-contentmodel-mismatch": "محتوى النموذج غير مطابق: ملفّ التكوين لـ GrowthExperiments يجب أن يتكوّن من نموذج محتوى JSON، تم العثور على $1",
+	"growthexperiments-edit-config-edit-summary": "ملخص التعديل",
+	"growthexperiments-edit-config-homepage": "لوحة المستخدم للوافد الجديد"
 }

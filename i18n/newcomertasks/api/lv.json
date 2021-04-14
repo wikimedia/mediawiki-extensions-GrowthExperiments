@@ -5,5 +5,7 @@
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Iegūt jaunpienācējiem, piemērotu uzdevumu rekomendācijas.",
+	"apihelp-query+growthtasks-param-topics": "Rakstu tēmas, kam dot priekšroku uzdevumu ieteikumos.",
+	"apihelp-query+growthtasks-param-limit": "Maksimālais atgriežamo uzdevumu skaits.",
 	"apihelp-query+growthtasks-param-debug": "Pievienot izvadam atkļūdošanas informāciju."
 }
