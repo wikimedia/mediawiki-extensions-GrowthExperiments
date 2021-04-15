@@ -97,6 +97,9 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-publish": "వ్యాసాన్ని విస్తరించడం {{GENDER:|అయిపోయాక}}, \"$1\" నొక్కి {{GENDER:|మీ}} దిద్దుబాటును భద్రపరచండి!",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-publish": "వ్యాసాన్ని విస్తరించడం {{GENDER:|అయిపోయాక}}, నీలం రంగు బాణం బొత్తాన్ని వత్తి {{GENDER:|మీ}} దిద్దుబాటును భద్రపరచండి!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|వ్యాసాలను విస్తరించడం గురించి మరింత తెలుసుకోండి]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "ఈ పని చెయ్యడానికి ప్రత్యేకమైన పరిజ్ఞానమేమీ అక్కర్లేదు.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "మార్గదర్శకాలు",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "ఉదాహరణ వాక్యం",
 	"growthexperiments-help-panel-questioncomplete-title": "సందేహం అడగండి",
 	"growthexperiments-help-panel-questioncomplete-header": "మీ ప్రశ్నను పంపించాం!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "మీ ప్రశ్న సముదాయ సహాయ కేంద్రం వద్దకు చేరింది. మరో స్వచ్ఛంద ఎడిటరు ఎవరైనా దానికి సమాధానం ఇస్తారు.",
@@ -131,8 +134,5 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|మీరు}} సోర్సు ఎడిటరును వాడుతున్నారు. ఈ దిద్దుబాటు చిట్కాలు విజువల్ ఎడిటరు కైతే బాగా ఉపయోగ పడతాయి",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "విజువల్ ఎడిటరుకు మారండి",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|మీరు}} విజువల్ ఎడిటరును వాడుతున్నారు. ఈ దిద్దుబాటు చిట్కాలు సోర్సు ఎడిటరు కైతే బాగా ఉపయోగ పడతాయి",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "సోర్సు ఎడిటరుకు మారండి",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "ఈ పని చెయ్యడానికి ప్రత్యేకమైన పరిజ్ఞానమేమీ అక్కర్లేదు.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "మార్గదర్శకాలు",
-	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "ఉదాహరణ వాక్యం"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "సోర్సు ఎడిటరుకు మారండి"
 }

@@ -103,6 +103,13 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-publish": "যখন {{GENDER:|আপনি}} নিবন্ধটি সম্প্রসারণ করা শেষ করবেন, তখন \"$1\" ক্লিক করে {{GENDER:|আপনার}} সম্পাদনাটি সংরক্ষণ করুন!",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-publish": "যখন {{GENDER:|আপনি}} নিবন্ধটি সম্প্রসারণ করা শেষ করবেন, তখন নীল তীরচিহ্নবিশিষ্ট বাটনে ক্লিক করে {{GENDER:|আপনার}} সম্পাদনাটি সংরক্ষণ করুন!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|নিবন্ধ সম্প্রসারণ সম্পর্কে আরও জানুন]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "সংযোগ যোগ করে মানুষকে দ্রুত শিখতে সাহায্য করুন।",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "চাঁদই হল একমাত্র <mark class=\"positive\">প্রাকৃতিক উপগ্রহ</mark> যা <mark class=\"positive\">পৃথিবীর</mark> চারপাশে <mark class=\"positive\">প্রদক্ষিণ করে</mark>।",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "এই কাজটি করার জন্য এই নিবন্ধ সম্পর্কে কোন বিশেষ জ্ঞান থাকার প্রয়োজন নেই।",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "পরামর্শকৃত সংযোগগুলি কৃত্রিম বুদ্ধিমত্তা (এআই) থেকে আসে, যা ভুল করতে পারে।",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|এআই পরামর্শ সম্পর্কে আরও জানুন]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "নির্দেশিকা",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "নমুনা বাক্য",
 	"growthexperiments-help-panel-questioncomplete-title": "প্রশ্ন জিজ্ঞাসা করুন",
 	"growthexperiments-help-panel-questioncomplete-header": "আপনার প্রশ্নটি পোস্ট করা হয়েছে!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "আপনার প্রশ্নটি সম্প্রদায়ের সাহায্যকেন্দ্রে পৌঁছে গেছে, এখন একজন স্বেচ্ছাসেবক সম্পাদক প্রশ্নটির উত্তর দেবেন।",
@@ -137,12 +144,5 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|আপনি}} উৎস সম্পাদনা ব্যবহার করছেন। অবদান রাখা সম্পর্কিত এই পরামর্শগুলো দৃশ্যমান সম্পাদনার ক্ষেত্রে সবচেয়ে সহায়ক হবে।",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "দৃশ্যমান সম্পাদনায় যান",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|আপনি}} দৃশ্যমান সম্পাদনা ব্যবহার করছেন। অবদান রাখা সম্পর্কিত এই পরামর্শগুলো উৎস সম্পাদনার ক্ষেত্রে সবচেয়ে সহায়ক হবে।",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "উৎস সম্পাদকে যান",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "সংযোগ যোগ করে মানুষকে দ্রুত শিখতে সাহায্য করুন।",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "চাঁদই হল একমাত্র <mark class=\"positive\">প্রাকৃতিক উপগ্রহ</mark> যা <mark class=\"positive\">পৃথিবীর</mark> চারপাশে <mark class=\"positive\">প্রদক্ষিণ করে</mark>।",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "এই কাজটি করার জন্য এই নিবন্ধ সম্পর্কে কোন বিশেষ জ্ঞান থাকার প্রয়োজন নেই।",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "পরামর্শকৃত সংযোগগুলি কৃত্রিম বুদ্ধিমত্তা (এআই) থেকে আসে, যা ভুল করতে পারে।",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|এআই পরামর্শ সম্পর্কে আরও জানুন]]",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "নির্দেশিকা",
-	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "নমুনা বাক্য"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "উৎস সম্পাদকে যান"
 }

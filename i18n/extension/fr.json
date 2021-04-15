@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Gomoko",
 			"Trizek (WMF)",
 			"Verdy p",
 			"Wladek92"
@@ -10,5 +11,28 @@
 	"growthexperiments-config-validator-additional-fields": "La nouvelle configuration comprend des clés de configuration qui ne peuvent pas être personnalisées ici.",
 	"growthexperiments-config-validator-error": "La validation pour $1 a échoué avec : « $2 »",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> est attendu comme <code>$2</code>, mais est <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Modèle de contenu non correspondant : le fichier de configuration de GrowthExperiments  doit avoir un modèle de contenu JSON, $1 détecté."
+	"growthexperiments-config-validator-contentmodel-mismatch": "Modèle de contenu non correspondant : le fichier de configuration de GrowthExperiments  doit avoir un modèle de contenu JSON, $1 détecté.",
+	"growthexperiments-edit-config-title": "Modifier la configuration de Growth",
+	"growthexperiments-edit-config-last-edit": "Dernière mise à jour par [[User:$1|$1]] $2.",
+	"growthexperiments-edit-config-last-edit-unknown-user": "Dernière mise à jour par l’utilisateur inconnu $1.",
+	"growthexperiments-edit-config-pretext": "Cette page vous permet de modifier la configuration des fonctionnalités de l’équipe [[:mw:Special:MyLanguage/Growth|Growth]]. Elle modifiera [[$1]] pour vous. Vous pouvez voir ces modifications dans l’historique de cette page.",
+	"growthexperiments-edit-config-error-invalid-title": "La page de configuration n’a pas bien été configurée",
+	"growthexperiments-edit-config-edit-summary": "Modifier le résumé",
+	"growthexperiments-edit-config-config-changed": "La configuration a été modifiée",
+	"growthexperiments-edit-config-help-panel": "Panneau d’aide",
+	"growthexperiments-edit-config-help-panel-reading-namespaces": "Espaces de noms avec le panneau d’aide activé en mode lecture",
+	"growthexperiments-edit-config-help-panel-disabled-namespaces": "Espaces de noms avec le panneau d’aide désactivé",
+	"growthexperiments-edit-config-help-panel-helpdesk-title": "Titre de la page du bureau d’aide (s’il y en a un)",
+	"growthexperiments-edit-config-help-panel-post-on-top": "Poster les questions en haut du panneau d’aide ?",
+	"growthexperiments-edit-config-help-panel-view-more": "Afficher plus de liens affichés dans le bureau d’aide",
+	"growthexperiments-edit-config-help-panel-searched-namespaces": "Rechercher dans les espaces de nom suivants",
+	"growthexperiments-edit-config-help-panel-ask-mentor": "Le panneau d’aide doit-il envoyer les questions aux tuteurs ?",
+	"growthexperiments-edit-config-homepage": "Page d’accueil des débutants",
+	"growthexperiments-edit-config-homepage-tutorial-title": "Titre de la page de tutoriel",
+	"growthexperiments-edit-config-homepage-intro-links-create": "Lien vers une page sur la création des articles dans l’éditeur visuel",
+	"growthexperiments-edit-config-homepage-intro-links-image": "Lien vers une page sur l’ajout des images dans l’éditeur visuel",
+	"growthexperiments-edit-config-mentorship": "Tutorat",
+	"growthexperiments-edit-config-mentorship-enabled": "Les fonctionnalités de tutorat sont-elles activées ?",
+	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Titre de la page de liste des tuteurs automatiquement affectés",
+	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Titre de la page de la liste des tuteurs manuellement affectés"
 }

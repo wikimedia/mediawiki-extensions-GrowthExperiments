@@ -380,7 +380,7 @@
 	"grant-managementorship": "Name for grant \"managementorship\".\n{{Related|Grant}}",
 	"newcomertasksinfo": "Header for the special page that shows statistics about task suggestions available on this wiki.\n\n{{doc-growthexperiments-homepage}}",
 	"newcomertasksinfo-no-data": "Message for Special:SuggestionsInfo shown when no statistics are available.\n\n{{doc-growthexperiments-homepage}}",
-	"newcomertasksinfo-task-count": "The total count for a task type shown on Special:SuggestionsInfo. Parameters: \n*$1 The total count for the task type.\n\n{{doc-growthexperiments-homepage}}",
+	"newcomertasksinfo-task-count": "{{notranslate}}\nThe total count for a task type shown on Special:SuggestionsInfo. Parameters: \n*$1 The total count for the task type.\n\n{{doc-growthexperiments-homepage}}",
 	"newcomertasksinfo-table-header-task-type": "The label to show in the column header for task type name on Special:SuggestionsInfo.\n\n{{doc-growthexperiments-homepage}}",
 	"newcomertasksinfo-table-header-task-type-id": "The label to show in the column header for task type ID on Special:SuggestionsInfo.\n\n{{doc-growthexperiments-homepage}}",
 	"newcomertasksinfo-table-header-task-count": "The label to show in the column header for task type count on Special:SuggestionsInfo.\n\n{{doc-growthexperiments-homepage}}",

@@ -17,12 +17,12 @@
 	"growthexperiments-help-panel-questionreview-label": "Är Fro",
 	"growthexperiments-help-panel-suggestededits-title": "Proposéiert Ännerungen",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Fir séier unzefänken",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Richtlinnen",
 	"growthexperiments-help-panel-questioncomplete-title": "Eng Fro stellen",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "änneren",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "confirméiert Är E-Mail-Adress",
 	"growthexperiments-help-panel-search-label": "No Hëllef sichen",
 	"growthexperiments-help-panel-search-no-results": "Et goufe keng Resultater fonnt.",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Proposéiert Ännerungen",
-	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|Ännerung|Ännerungen}} · $2",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Richtlinnen"
+	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|Ännerung|Ännerungen}} · $2"
 }

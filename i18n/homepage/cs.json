@@ -233,7 +233,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Rozšíření krátkých článků",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Přidání odkazů mezi články",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Přidání odkazů mezi články",
-	"growthexperiments-homepage-suggestededits-tasktype-ai-description": "Návrhy umělé inteligence (AI)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biografie (vše)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biografie (ženy)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Jídlo a pití",
@@ -379,6 +378,6 @@
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Počet",
 	"newcomertasksinfo-table-header-topic-type": "ID tématu",
-	"growthexperiments-addlink-ve-ai-mode-title": "Návrhy umělé inteligence",
-	"growthexperiments-addlink-ve-ai-mode-submit-button": "Potvrdit..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Návrhy",
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Potvrdit..."
 }

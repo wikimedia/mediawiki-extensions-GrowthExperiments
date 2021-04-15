@@ -218,7 +218,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "짧은 문서 키우기",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "문서 사이에 링크 추가하기",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "문서 사이에 링크 추가하기",
-	"growthexperiments-homepage-suggestededits-tasktype-ai-description": "인공 지능(AI) 제안",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "전기문 (전부)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "전기문 (여성)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "음식 및 음료",
@@ -330,6 +329,5 @@
 	"grant-managementorship": "멘토십 관리",
 	"newcomertasksinfo-no-data": "이용 가능한 데이터가 없습니다.",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
-	"growthexperiments-addlink-ve-ai-mode-title": "AI 제안",
-	"growthexperiments-addlink-ve-ai-mode-submit-button": "제출..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "제출..."
 }

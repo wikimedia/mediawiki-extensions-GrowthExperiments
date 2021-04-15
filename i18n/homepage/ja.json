@@ -234,7 +234,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "短い記事への加筆",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "記事同士をつなぐリンクを追加",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "記事同士をつなぐリンクを追加",
-	"growthexperiments-homepage-suggestededits-tasktype-ai-description": "人工知能（AI）による提案",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "人物伝（すべて）",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "人物伝（女性）",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "食べ物と飲み物",
@@ -380,6 +379,5 @@
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "件数",
 	"newcomertasksinfo-table-header-topic-type": "トピックID",
-	"growthexperiments-addlink-ve-ai-mode-title": "AIの提案",
-	"growthexperiments-addlink-ve-ai-mode-submit-button": "送信する..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "送信する..."
 }

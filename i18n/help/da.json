@@ -101,6 +101,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-publish": "Når {{GENDER:|du}} er færdig med at udvide artiklen trykker du på \"$1\" for at gemme {{GENDER:|din}} redigering!",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-publish": "Når {{GENDER:|du}} er færdig med at udvide artiklen trykker du på knappen med den blå pil for at gemme {{GENDER:|din}} redigering!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|Lær mere om at udvide artikler]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Retningslinjer",
 	"growthexperiments-help-panel-questioncomplete-title": "Stil et spørgsmål",
 	"growthexperiments-help-panel-questioncomplete-header": "Dit spørgsmål er blevet offentliggjort!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Dit spørgsmål er nu tilgængeligt på nybegynder-forummet, og vil blive besvaret af en anden frivillig bruger.",
@@ -135,6 +136,5 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Du}} bruger wikikode-redigeringsvinduet. Disse redigeringstips er mest brugbare ved brug af visuel redigering.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Skift til visuel redigering",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Du}} bruger det visuelle redigeringsvindue. Disse redigeringstip er mest brugbare ved redigering med wikikode.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Skift til kilderedigering",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Retningslinjer"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Skift til kilderedigering"
 }

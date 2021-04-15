@@ -321,6 +321,5 @@
 	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "不要再顯示",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "入門",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
-	"growthexperiments-addlink-ve-ai-mode-title": "AI 建議",
-	"growthexperiments-addlink-ve-ai-mode-submit-button": "提交..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "提交..."
 }

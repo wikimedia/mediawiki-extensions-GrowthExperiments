@@ -227,7 +227,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Mở rộng các bài viết sơ khai",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Thêm liên kết giữa các bài viết",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Thêm liên kết giữa các bài viết",
-	"growthexperiments-homepage-suggestededits-tasktype-ai-description": "Gợi ý bởi trí tuệ nhân tạo (AI)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Tiểu sử (tất cả)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Tiểu sử (phụ nữ)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Đồ ăn uống",
@@ -373,6 +372,5 @@
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Số lượng",
 	"newcomertasksinfo-table-header-topic-type": "ID chủ đề",
-	"growthexperiments-addlink-ve-ai-mode-title": "Gợi ý AI",
-	"growthexperiments-addlink-ve-ai-mode-submit-button": "Gửi..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Gửi..."
 }

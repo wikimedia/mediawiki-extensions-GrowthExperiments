@@ -14,7 +14,6 @@
 			"Yakubu Fadilatu"
 		]
 	},
-	"growthexperiments-homepage-suggestededits-tasktype-ai-description": "Pahigu artificial hankali parigu",
 	"growthexperiments-addlink-context-button-help": "Nyami sɔŋsim zaŋ chaŋ malizani polo",
 	"growthexperiments-addlink-context-button-next": "Ŋun/din paya",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Yɛltɔɣili shɛhira",
@@ -34,6 +33,5 @@
 	"newcomertasksinfo-table-header-task-type-id": "ŋahan gbana",
 	"newcomertasksinfo-table-header-task-count": "Kali",
 	"newcomertasksinfo-table-header-topic-type": "Yaɣali ŋmahan gbana",
-	"growthexperiments-addlink-ve-ai-mode-title": "AI tiɛha bee pahigu",
-	"growthexperiments-addlink-ve-ai-mode-submit-button": "Zaŋ ti"
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Zaŋ ti"
 }

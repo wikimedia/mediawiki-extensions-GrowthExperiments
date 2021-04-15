@@ -57,6 +57,11 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-text-publish": "[[$1|Uzzini vairāk par atjaunināšanu]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-rules1": "Paplašinot rakstu, seko šīm vadlīnijām:\n* Apskati rakstus par līdzīgām tēmām, lai iegūtu idejas, ar kādu saturu raksts jāpapildina.\n* Pievieno tikai faktus, ko citi var pārbaudīt.\n* Raksti neitrālā tonī, neiekļaujot {{GENDER:|savu}} viedokli.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|Uzzini vairāk par rakstu paplašināšanu]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Saišu pievienošana palīdzēs cilvēkiem mācīties ātrāk.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "Ieteiktos labojumus veido mākslīgais intelekts (MI), kas var pieļaut kļūdas.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Uzzini vairāk par MI ieteikumiem]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Vadlīnijas",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Teikuma piemērs",
 	"growthexperiments-help-panel-questioncomplete-title": "Uzdot jautājumu",
 	"growthexperiments-help-panel-questioncomplete-header": "Tavs jautājums ir iesniegts!",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Apskati savu jautājumu Palīdzības dienestā",
@@ -89,10 +94,5 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Tu}} izmanto vikikoda redaktoru. Šie labošanas padomi ir noderīgāki, izmantojot vizuālo redaktoru.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Pārslēgties uz vizuālo redaktoru",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Tu}} izmanto vizuālo redaktoru. Šie labošanas padomi ir noderīgāki, izmantojot vikikoda redaktoru.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Pārslēgties uz vikikoda redaktoru",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Saišu pievienošana palīdzēs cilvēkiem mācīties ātrāk.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "Ieteiktos labojumus veido mākslīgais intelekts (MI), kas var pieļaut kļūdas.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Uzzini vairāk par MI ieteikumiem]]",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Vadlīnijas",
-	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Teikuma piemērs"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Pārslēgties uz vikikoda redaktoru"
 }

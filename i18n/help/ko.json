@@ -102,6 +102,11 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-publish": "내용을 모두 추가했다면, 계속하여 \"$1\" 버튼을 클릭해서 편집을 저장하세요!",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-publish": "내용을 모두 추가했다면, 계속하여 파란 화살표 버튼을 터치해서 편집을 저장하세요!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|문서 확장에 대해 더 알아봅니다]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "링크를 추가하면 사람들이 더 빨리 배울 수 있습니다.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "이 작업을 수행하기 위해 문서에 관한 특별한 지식이 필요하지 않습니다.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|AI 제안에 대해 더 알아보기]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "가이드라인",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "예시 문장",
 	"growthexperiments-help-panel-questioncomplete-title": "질문하기",
 	"growthexperiments-help-panel-questioncomplete-header": "질문이 게시되었습니다!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "질문이 질문방에 게시되었으며 다른 편집자가 당신의 질문에 대해 응답하려고 노력할 것입니다.",
@@ -136,10 +141,5 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;현재 원본편집기를 사용하고 계십니다. 다음 편집 팁들은 시각편집기에서 가장 잘 작동합니다.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "시각편집기로 전환",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;시각 편집기를 사용하고 계십니다. 다음 편집 팁들은 원본 편집기에서 가장 잘 동작합니다.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "원본 편집기로 전환하기",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "링크를 추가하면 사람들이 더 빨리 배울 수 있습니다.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "이 작업을 수행하기 위해 문서에 관한 특별한 지식이 필요하지 않습니다.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|AI 제안에 대해 더 알아보기]]",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "가이드라인",
-	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "예시 문장"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "원본 편집기로 전환하기"
 }

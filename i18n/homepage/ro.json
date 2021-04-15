@@ -219,7 +219,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Extindeți articole scurte",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Adăugați legături între articole",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Adăugați legături între articole",
-	"growthexperiments-homepage-suggestededits-tasktype-ai-description": "Sugestii de la inteligența artificială (AI)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biografie (tot)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biografie (femei)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Mâncare și băutură",
@@ -365,6 +364,5 @@
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Număr",
 	"newcomertasksinfo-table-header-topic-type": "ID-ul subiectului",
-	"growthexperiments-addlink-ve-ai-mode-title": "Sugestii AI",
-	"growthexperiments-addlink-ve-ai-mode-submit-button": "Trimitere..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Trimitere..."
 }

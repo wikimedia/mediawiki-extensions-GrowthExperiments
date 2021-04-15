@@ -101,6 +101,8 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-publish": "Quando {{GENDER:|hai}} finito di ampliare la voce, prosegui premendo \"$1\" per salvare le tue modifiche!",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-publish": "Quando {{GENDER:|hai}} finito di ampliare la voce, prosegui premendo il pulsante blu con una freccia per salvare le tue modifiche!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|Ulteriori informazioni sull'ampliare voci]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "La luna è l'unico <mark class=\"positive\">satellite naturale</mark> che <mark class=\"positive\">orbita</mark> attorno alla <mark class=\"positive\">Terra</mark>.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Linee guida",
 	"growthexperiments-help-panel-questioncomplete-title": "Fai una domanda",
 	"growthexperiments-help-panel-questioncomplete-header": "La tua domanda è stata pubblicata!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "La tua domanda si trova attualmente allo sportello informazioni, in attesa di risposta da un volontario.",
@@ -135,7 +137,5 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Tu}} stai usando l'editor di wikitesto. Questi consigli per la modifica sono più utili con l'editor visuale.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Passa all'editor visuale",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Tu}} stai usando l'editor visuale. Questi consigli di modifica sono più utili con l'editor di wikitesto.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Passa all'editor sorgente",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "La luna è l'unico <mark class=\"positive\">satellite naturale</mark> che <mark class=\"positive\">orbita</mark> attorno alla <mark class=\"positive\">Terra</mark>.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Linee guida"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Passa all'editor sorgente"
 }

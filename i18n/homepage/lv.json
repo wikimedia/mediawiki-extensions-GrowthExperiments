@@ -62,6 +62,9 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Viegls",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Vidējs",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Grūts",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-header": "Ieteicams, kad {{GENDER:$1|tu}} vēl mācies labot.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "Pēc tam, kad tu esi {{GENDER:$1|veicies|veikusi}} dažus vienkāršus labojumus.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Kad tu esi {{GENDER:$1|apguvis|apguvusi}} Vikipēdijas labās prakses.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Teksta uzlabošana un saišu pievienošana uz citiem rakstiem.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Uzticamu atsauču pievienošana un novecojušu rakstu atjaunināšana",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Veido jaunus un paplašini īsus rakstus.",
@@ -203,7 +206,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Paplašināt īsus rakstus",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Pievienot saites starp rakstiem",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Pievienot saites starp rakstiem",
-	"growthexperiments-homepage-suggestededits-tasktype-ai-description": "Mākslīgā intelekta (MI) ieteikumi",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biogrāfijas (visas)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biogrāfijas (sievietes)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Pārtika un dzērieni",
@@ -313,6 +315,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Cits / nevēlos atbildēt",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Gatavs",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Saišu pievienošana palīdzēs cilvēkiem mācīties ātrāk.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|Tu}} izlemsi, vai vārdiem vienā Vikipēdijas rakstā jābūt saitēm uz citiem Vikipēdijas rakstiem.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Teikuma piemērs",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "Lai veiktu šo uzdevumu, nav nepieciešamas īpašas zināšanas.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Ieteiktos labojumus veido mākslīgais intelekts (MI), kas var pieļaut kļūdas.",
@@ -335,6 +338,5 @@
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Skaits",
 	"newcomertasksinfo-table-header-topic-type": "Temata ID",
-	"growthexperiments-addlink-ve-ai-mode-title": "MI ieteikumi",
-	"growthexperiments-addlink-ve-ai-mode-submit-button": "Iesniegt..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Iesniegt..."
 }

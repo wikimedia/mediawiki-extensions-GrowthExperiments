@@ -221,7 +221,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Proširite kratke članke",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Dodajte poveznice između članaka",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Dodajte poveznice između članaka",
-	"growthexperiments-homepage-suggestededits-tasktype-ai-description": "Prijedlozi algoritma umjetne inteligencije (AI)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Životopisi (svi)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Životopisi (žene)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Hrana i piće",
@@ -361,6 +360,5 @@
 	"newcomertasksinfo-table-header-task-type": "Vrsta zadatka",
 	"newcomertasksinfo-table-header-task-count": "Broj",
 	"newcomertasksinfo-table-header-topic-type": "ID teme",
-	"growthexperiments-addlink-ve-ai-mode-title": "Prijedlozi umjetne inteligencije",
-	"growthexperiments-addlink-ve-ai-mode-submit-button": "Potvrdi..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Potvrdi..."
 }

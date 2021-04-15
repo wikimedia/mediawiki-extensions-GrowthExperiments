@@ -231,7 +231,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Ampliar artículos cortos",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Añadir enlaces entre artículos",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Añadir enlaces entre artículos",
-	"growthexperiments-homepage-suggestededits-tasktype-ai-description": "Sugerencias de la inteligencia artificial (IA)",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biografías (todos)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biografías (mujeres)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Comidas y bebidas",
@@ -357,6 +356,5 @@
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Cantidad",
 	"newcomertasksinfo-table-header-topic-type": "ID de tema",
-	"growthexperiments-addlink-ve-ai-mode-title": "Sugerencias",
-	"growthexperiments-addlink-ve-ai-mode-submit-button": "Enviar..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Enviar..."
 }

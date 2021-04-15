@@ -233,7 +233,6 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "ছোট নিবন্ধ সম্প্রসারণ করুন",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "নিবন্ধের মাঝে সংযোগ করুন",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "নিবন্ধের মাঝে সংযোগ করুন",
-	"growthexperiments-homepage-suggestededits-tasktype-ai-description": "কৃত্রিম বুদ্ধিমত্তা কর্তৃক পরামর্শ",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "জীবনী (সকল)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "জীবনী (নারী)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "খাদ্য ও পানীয়",
@@ -375,6 +374,5 @@
 	"newcomertasksinfo-table-header-task-type-id": "আইডি",
 	"newcomertasksinfo-table-header-task-count": "গণনা",
 	"newcomertasksinfo-table-header-topic-type": "বিষয়বস্তু আইডি",
-	"growthexperiments-addlink-ve-ai-mode-title": "কৃত্রিম বুদ্ধিমত্তা প্রদত্ত পরামর্শ",
-	"growthexperiments-addlink-ve-ai-mode-submit-button": "জমা দিন..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "জমা দিন..."
 }
