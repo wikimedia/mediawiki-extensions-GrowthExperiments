@@ -47,7 +47,9 @@
 					'ext.growthExperiments.AddLink.desktop',
 					'ext.growthExperiments.AddLink.mobile'
 				].filter( mw.loader.getState ).forEach( function ( module ) {
-					addPlugin( module );
+					addPlugin( function () {
+						return mw.loader.using( module );
+					} );
 				} );
 			} );
 
