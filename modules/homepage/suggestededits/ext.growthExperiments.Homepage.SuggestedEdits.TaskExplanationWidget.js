@@ -144,7 +144,7 @@
 						this.getDifficultyIndicator(),
 						this.getTimeEstimate()
 					),
-				$( '<p>' ).text( this.taskTypeData.messages.description ),
+				$( '<p>' ).html( this.taskTypeData.messages.description ),
 				this.getLearnMoreLink()
 			);
 	};
