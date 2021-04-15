@@ -269,5 +269,6 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 */
 	public function onSuccess() {
 		$this->getOutput()->addWikiMsg( 'growthexperiments-edit-config-config-changed' );
+		$this->getOutput()->addWikiMsg( 'growthexperiments-edit-config-return-to-form' );
 	}
 }
