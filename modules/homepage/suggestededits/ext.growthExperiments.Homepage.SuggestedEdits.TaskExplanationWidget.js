@@ -131,13 +131,19 @@
 			.text( this.taskTypeData.messages.timeestimate );
 	};
 
+	/**
+	 * @return {jQuery}
+	 */
 	TaskExplanationWidget.prototype.getDescription = function () {
 		return $( '<div>' ).addClass( 'suggested-edits-popup-detail' )
 			.append(
-				$( '<div>' ).addClass( 'suggested-edits-difficulty-time-estimate' ).append(
-					this.getDifficultyIndicator(),
-					this.getTimeEstimate()
-				),
+				$( '<div>' )
+					.addClass( 'suggested-edits-difficulty-time-estimate' )
+					.append(
+						this.getIcon(),
+						this.getDifficultyIndicator(),
+						this.getTimeEstimate()
+					),
 				$( '<p>' ).text( this.taskTypeData.messages.description ),
 				this.getLearnMoreLink()
 			);
