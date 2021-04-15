@@ -4,12 +4,13 @@ namespace GrowthExperiments\Config;
 
 use Config;
 use ConfigException;
+use IDBAccessObject;
 use Psr\Log\LoggerInterface;
 use StatusValue;
 use Title;
 use TitleFactory;
 
-class WikiPageConfig implements Config {
+class WikiPageConfig implements Config, IDBAccessObject {
 	/** @var LoggerInterface */
 	private $logger;
 
@@ -78,15 +79,17 @@ class WikiPageConfig implements Config {
 	 * This may sound expensive, but WikiPageConfigLoader is supposed
 	 * to take care about caching.
 	 *
+	 * @param int $flags bit field, see IDBAccessObject::READ_XXX
+	 *
 	 * @throws ConfigException on an error
 	 * @return array
 	 */
-	private function getConfigData(): array {
+	private function getConfigData( int $flags = 0 ): array {
 		if ( !$this->getConfigTitle()->exists() ) {
 			// configLoader throws an exception for no-page case
 			return [];
 		}
-		$res = $this->configLoader->load( $this->getConfigTitle() );
+		$res = $this->configLoader->load( $this->getConfigTitle(), $flags );
 		if ( $res instanceof StatusValue ) {
 			// Loading config failed. This can happen in case of both a software error and
 			// an error made by an administrator (setting the JSON blob manually to something
@@ -119,17 +122,35 @@ class WikiPageConfig implements Config {
 	 * @inheritDoc
 	 */
 	public function get( $name ) {
+		return $this->getWithFlags( $name );
+	}
+
+	/**
+	 * @param string $name
+	 * @param int $flags bit field, see IDBAccessObject::READ_XXX
+	 * @return mixed Config value
+	 */
+	public function getWithFlags( $name, int $flags = 0 ) {
 		if ( !$this->has( $name ) ) {
 			throw new ConfigException( 'Config key was not found in WikiPageConfig' );
 		}
 
-		return $this->getConfigData()[ $name ];
+		return $this->getConfigData( $flags )[ $name ];
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function has( $name ) {
-		return array_key_exists( $name, $this->getConfigData() );
+		return $this->hasWithFlags( $name );
+	}
+
+	/**
+	 * @param string $name
+	 * @param int $flags bit field, see IDBAccessObject::READ_XXX
+	 * @return bool
+	 */
+	public function hasWithFlags( $name, int $flags = 0 ) {
+		return array_key_exists( $name, $this->getConfigData( $flags ) );
 	}
 }
