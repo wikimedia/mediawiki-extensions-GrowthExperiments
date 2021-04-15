@@ -6,6 +6,7 @@ use InvalidArgumentException;
 use JobQueueGroup;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserOptionsManager;
 use UserOptionsUpdateJob;
 
@@ -60,7 +61,10 @@ class PreferenceMentorStore extends MentorStore {
 		);
 		$user = $this->userFactory->newFromId( $mentorId );
 		$user->load();
-		return $user->isRegistered() ? $user : null;
+		if ( !$user->isRegistered() ) {
+			return null;
+		}
+		return new UserIdentityValue( $user->getId(), $user->getName() );
 	}
 
 	/**
