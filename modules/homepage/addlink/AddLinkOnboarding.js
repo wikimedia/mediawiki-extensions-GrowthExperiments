@@ -23,12 +23,15 @@ module.exports = ( function () {
 	 * Show onboarding dialog if it hasn't been shown in the session and
 	 * if the user hasn't checked "Don't show again"
 	 *
+	 * If the user has completed onboarding, fire an event so that actions
+	 * that need to happen after onboarding can be invoked.
 	 */
 	function showDialogIfEligible() {
-		if ( !shouldShowOnboarding || !suggestedEditSession.onboardingNeedsToBeShown ) {
-			return;
+		if ( shouldShowOnboarding && suggestedEditSession.onboardingNeedsToBeShown ) {
+			showDialogForSession();
+		} else {
+			mw.hook( 'growthExperiments.addLinkOnboardingCompleted' ).fire();
 		}
-		showDialogForSession();
 	}
 
 	// Only append window manager & construct dialog if onboarding should be shown
@@ -41,9 +44,10 @@ module.exports = ( function () {
 			{ prefName: addLinkOnboardingPrefName }
 		);
 		windowManager.addWindows( windows );
-		// In case onboarding is invoked from a different module
-		mw.hook( 'growthExperiments.showAddLinkOnboardingIfNeeded' ).add( showDialogIfEligible );
 	}
+
+	// In case onboarding is invoked from a different module
+	mw.hook( 'growthExperiments.showAddLinkOnboardingIfNeeded' ).add( showDialogIfEligible );
 
 	return {
 		showDialogIfEligible: showDialogIfEligible

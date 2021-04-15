@@ -92,7 +92,7 @@ AddLinkOnboardingDialog.prototype.getFooterElement = function () {
 		classes: [ 'addlink-onboarding-dialog-footer-widget', 'align-end' ]
 	} ).$element;
 	this.$getStartedButton.on( 'click', function () {
-		this.close();
+		this.closeDialog();
 	}.bind( this ) );
 
 	return new OO.ui.PanelLayout( {
@@ -108,7 +108,7 @@ AddLinkOnboardingDialog.prototype.getActionProcess = function ( action ) {
 	return AddLinkOnboardingDialog.super.prototype.getActionProcess.call( this, action )
 		.next( function () {
 			if ( action === 'cancel' ) {
-				this.close();
+				this.closeDialog();
 			}
 		}, this );
 };
@@ -135,6 +135,14 @@ AddLinkOnboardingDialog.prototype.updateViewState = function () {
 		this.$prevButton.show();
 		this.$nextButton.show();
 	}
+};
+
+/**
+ * Close dialog and fire an event indicating that onboarding has been completed
+ */
+AddLinkOnboardingDialog.prototype.closeDialog = function () {
+	this.close();
+	mw.hook( 'growthExperiments.addLinkOnboardingCompleted' ).fire();
 };
 
 module.exports = AddLinkOnboardingDialog;

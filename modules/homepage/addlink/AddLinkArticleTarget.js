@@ -64,7 +64,8 @@ AddLinkArticleTarget.prototype.afterSurfaceReady = function () {
 	if ( OO.ui.isMobile() ) {
 		this.overlay.on( 'editor-loaded', this.selectFirstRecommendation.bind( this ) );
 	} else {
-		this.selectFirstRecommendation();
+		// On desktop, the recommendation is selected after onboarding has been completed
+		mw.hook( 'growthExperiments.addLinkOnboardingCompleted' ).add( this.selectFirstRecommendation.bind( this ) );
 		mw.hook( 'growthExperiments.showAddLinkOnboardingIfNeeded' ).fire();
 	}
 
