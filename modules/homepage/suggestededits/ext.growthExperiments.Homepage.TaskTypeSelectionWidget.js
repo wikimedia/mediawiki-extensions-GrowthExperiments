@@ -164,18 +164,28 @@ TaskTypeSelectionWidget.prototype.makeCheckboxesForDifficulty = function ( diffi
  * @return {OO.ui.CheckboxMultioptionWidget}
  */
 TaskTypeSelectionWidget.prototype.makeCheckbox = function ( taskTypeData, selected ) {
-	var $checkboxIcon, descriptionMessage, $label = $( '<span>' ).text( taskTypeData.messages.label );
+	var $additionalMessage, descriptionMessage, $label = $( '<span>' ).text( taskTypeData.messages.label );
 	if ( 'filterIcon' in taskTypeData.iconData ) {
 		// Messages that can be used here:
 		// * growthexperiments-homepage-suggestededits-tasktype-machine-description
 		// * FORMAT growthexperiments-homepage-suggestededits-tasktype-{other}-description
 		descriptionMessage = mw.message( taskTypeData.iconData.descriptionMessageKey ).text();
-		$checkboxIcon = new OO.ui.Element().$element;
-		$checkboxIcon.append(
+		$additionalMessage = new OO.ui.Element( { classes: [
+			'mw-ge-homepage-taskTypeSelectionWidget-additional-msg',
+			// The following classes are used here:
+			// * mw-ge-homepage-taskTypeSelectionWidget-additional-msg-copyedit
+			// * mw-ge-homepage-taskTypeSelectionWidget-additional-msg-create
+			// * mw-ge-homepage-taskTypeSelectionWidget-additional-msg-expand
+			// * mw-ge-homepage-taskTypeSelectionWidget-additional-msg-links
+			// * mw-ge-homepage-taskTypeSelectionWidget-additional-msg-link-recommendation
+			// * mw-ge-homepage-taskTypeSelectionWidget-additional-msg-update
+			'mw-ge-homepage-taskTypeSelectionWidget-additional-msg-' + taskTypeData.id
+		] } ).$element;
+		$additionalMessage.append( $( '<span>' ).append(
 			new OO.ui.IconWidget( { icon: taskTypeData.iconData.filterIcon } ).$element,
-			new OO.ui.LabelWidget( { label: descriptionMessage, classes: [ 'mw-ge-tasktype-icon-label' ] } ).$element
-		);
-		$label.append( $checkboxIcon );
+			new OO.ui.LabelWidget( { label: descriptionMessage } ).$element
+		) );
+		$label.append( $additionalMessage );
 	}
 	return new OO.ui.CheckboxMultioptionWidget( {
 		data: taskTypeData.id,
@@ -187,6 +197,7 @@ TaskTypeSelectionWidget.prototype.makeCheckbox = function ( taskTypeData, select
 		// * mw-ge-homepage-taskTypeSelectionWidget-checkbox-create
 		// * mw-ge-homepage-taskTypeSelectionWidget-checkbox-expand
 		// * mw-ge-homepage-taskTypeSelectionWidget-checkbox-links
+		// * mw-ge-homepage-taskTypeSelectionWidget-checkbox-link-recommendation
 		// * mw-ge-homepage-taskTypeSelectionWidget-checkbox-update
 		classes: [ 'mw-ge-homepage-taskTypeSelectionWidget-checkbox-' + taskTypeData.id ]
 	} );
