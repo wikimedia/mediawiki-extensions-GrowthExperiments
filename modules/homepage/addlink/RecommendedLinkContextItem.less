@@ -14,6 +14,10 @@
 			font-weight: bold;
 			margin-left: 9px;
 		}
+
+		.oo-ui-icon-robot {
+			opacity: @iconOpacity;
+		}
 	}
 
 	.ve-ui-linkContextItem-label-label {
@@ -102,6 +106,29 @@
 				}
 			}
 		}
+
+		&-prev,
+		&-next {
+			// Additional specificity to override OOUI's base10 color
+			&.oo-ui-widget-enabled {
+				> .oo-ui-buttonElement-button {
+					color: @wmui-color-base20;
+
+					> .oo-ui-iconElement-icon:not( .oo-ui-image-invert ) {
+						opacity: @iconOpacity;
+					}
+				}
+			}
+
+			&.oo-ui-widget-disabled {
+				> .oo-ui-buttonElement-button {
+					> .oo-ui-iconElement-icon {
+						// Intended opacity with existing disabled state's opacity
+						opacity: calc( @iconOpacity * 0.51 );
+					}
+				}
+			}
+		}
 	}
 
 	&-progress {
@@ -142,12 +169,6 @@
 
 		.mw-ge-recommendedLinkContextItem-buttons-prev {
 			margin-bottom: 0;
-		}
-
-		.ve-ui-linearContextItem-head {
-			.oo-ui-icon-robot {
-				opacity: @iconOpacity;
-			}
 		}
 
 		.ve-ui-mwInternalLinkContextItem-withImage {
