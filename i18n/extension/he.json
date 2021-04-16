@@ -15,7 +15,7 @@
 	"growthexperiments-edit-config-pretext": "הדף הזה מאפשר לך לערוך את ההגדרות של האפשרויות של צוות [[:mw:Special:MyLanguage/Growth|צמיחה]]. הוא יערוך את [[$1]] בשמך. אפשר לראות את השינויים שלך בדף ההיסטוריה של הדף ההוא.",
 	"growthexperiments-edit-config-error-invalid-title": "דף ההגדרות לא הוגדר כראוי",
 	"growthexperiments-edit-config-edit-summary": "תקציר העריכה",
-	"growthexperiments-edit-config-config-changed": "ההגדרות שונו בהצלחה",
+	"growthexperiments-edit-config-config-changed": "ההגדרות שונו",
 	"growthexperiments-edit-config-help-panel": "חלונית עזרה",
 	"growthexperiments-edit-config-help-panel-reading-namespaces": "מרחבי שם שחלונית העזרה מופעלת בהם במצב קריאה",
 	"growthexperiments-edit-config-help-panel-disabled-namespaces": "מרחבי שם שחלונית העזרה כבויה בהם",

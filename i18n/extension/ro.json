@@ -15,7 +15,7 @@
 	"growthexperiments-edit-config-pretext": "Această pagină vă permite să editați configurația funcțiilor echipei [[:mw:Special:MyLanguage/Growth|Growth]]. Va edita [[$1]] în numele dvs. Puteți să vă vedeți schimbările în pagina istoricului acelei pagini.",
 	"growthexperiments-edit-config-error-invalid-title": "Pagina de configurație nu a fost configurată corect",
 	"growthexperiments-edit-config-edit-summary": "Rezumatul editării",
-	"growthexperiments-edit-config-config-changed": "Configurarea a fost schimbată cu succes",
+	"growthexperiments-edit-config-config-changed": "Configurația a fost schimbată",
 	"growthexperiments-edit-config-help-panel": "Panoul de ajutor",
 	"growthexperiments-edit-config-help-panel-reading-namespaces": "Spații de nume cu Panoul de ajutor activat în modul lecturii",
 	"growthexperiments-edit-config-help-panel-disabled-namespaces": "Spații de nume cu Panoul de ajutor dezactivat",

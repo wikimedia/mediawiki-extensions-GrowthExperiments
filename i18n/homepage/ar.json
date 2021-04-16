@@ -200,7 +200,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-description-update": "تصبح المقالات غير مواكبة للأحداث وتحدث تطورات جديدة للتاريخ. {{GENDER:|ابحث|ابحثي}} عن المعلومات الصحيحة و{{GENDER:|أضفها|أضيفيها}} حتى تتضمن ويكيبيديا دائما على الحقائق المتداولة.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-expand": "طول العديد من مقالات ويكيبيديا لا يزيد عن طول جملة أو جملتين. {{GENDER:|ابحث|ابحثي}} عن مزيد من المعلومات و{{GENDER:|أضفها|أضيفيها}} لجعل المقال أكثر اكتمالا.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-links": "إضافة الروابط هي أسهل طريقة للتعديل، تساعد الروابط القراء في الانتقال بين المقالات للتعلم سريعا.",
-	"growthexperiments-homepage-suggestededits-tasktype-description-link-recommendation": "إضافة الروابط هي من أسهل طرق التحرير. لدى القرّاء، تخوّل الروابط من النقر على أشياء يريدون مزيد التعلّم حولها.\n\nسنقترح روابط آليا، ثمّ {{GENDER:$1|قرّر|قرّري}} إضافتها أو لا.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-link-recommendation": "إضافة الروابط هي من أسهل طرق التحرير. لدى القرّاء، تخوّل الروابط من النقر على أشياء يريدون مزيد التعلّم حولها.\n\nسنقترح الروابط آليا، ثمّ {{GENDER:$1|قرّر|قرّري}} إضافتها أو لا.",
 	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "تحرير النسخ ({{GENDER:|أصلح|أصلحي}} الإملاء والنحو والنمط)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-references": "{{GENDER:|ابحث|ابحثي}} عن مراجع (مصادر للمقالات الموجودة)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-update": "{{GENDER:|قم|قومي}} بتحديث المقالات ({{GENDER:|اجعل|اجعلي}} المقالات الحالية محيّنة)",

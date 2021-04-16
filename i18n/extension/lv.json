@@ -10,7 +10,7 @@
 	"growthexperiments-config-validator-datatype-mismatch": "Tika gaidīts, ka <code>$1</code> būs <code>$2</code>, bet ir <code>$3</code>",
 	"growthexperiments-edit-config-error-invalid-title": "Konfigurācijas lapa bija nekorekti konfigurēta",
 	"growthexperiments-edit-config-edit-summary": "Izmaiņu kopsavilkums",
-	"growthexperiments-edit-config-config-changed": "Konfigurācija veiksmīgi nomainīta",
+	"growthexperiments-edit-config-config-changed": "Konfigurācija nomainīta",
 	"growthexperiments-edit-config-help-panel": "Palīdzības panelis",
 	"growthexperiments-edit-config-help-panel-helpdesk-title": "Palīdzības dienesta lapas nosaukums (ja pastāv)",
 	"growthexperiments-edit-config-help-panel-post-on-top": "Ievietot jautājumus palīdzības paneļa augšā?",

@@ -66,6 +66,7 @@
 	"growthexperiments-help-panel-questioncomplete-header": "Tavs jautājums ir iesniegts!",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Apskati savu jautājumu Palīdzības dienestā",
 	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "Paziņojumi par tavu jautājumu:",
+	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Tiklīdz būs atbilde, tu šeit Vikipēdijā saņemsi paziņojumu.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email": "Tu saņemsi arī e-pastu uz to $1 ($2)",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "mainīt",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Ja {{GENDER:$2|vēlies}} saņemt paziņojumu arī uz e-pastu, apstiprini savu e-pasta adresi: $1",

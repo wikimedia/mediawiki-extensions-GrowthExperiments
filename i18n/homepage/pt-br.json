@@ -225,6 +225,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Expandir artigos curtos",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Adicionar links entre artigos",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Adicionar links entre artigos",
+	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Sugestões de máquina",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biografia (todos)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biografia (mulheres)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "Comida e bebida",
@@ -349,7 +350,7 @@
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Frase de exemplo",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "A lua é o único <mark>satélite natural</mark> que <mark>orbita</mark> ao redor da <mark>Terra</mark>.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "Nenhum conhecimento especial sobre o artigo é necessário para fazer esta tarefa.",
-	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Os links sugeridos vêm da inteligência artificial (IA), que pode cometer erros.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Os links sugeridos são gerados por máquina e podem estar incorretos.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "A IA pode sugerir links em palavras que não precisam deles ou pode sugerir links para o artigo errado. Usar {{GENDER:$1|seu}} julgamento para decidir se está certo ou errado.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Saiba mais sobre as sugestões de IA",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Diretrizes",
@@ -370,5 +371,6 @@
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Contagem",
 	"newcomertasksinfo-table-header-topic-type": "ID do tópico",
+	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Sugestões",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Enviar..."
 }

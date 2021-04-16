@@ -10,5 +10,18 @@
 	"growthexperiments-config-validator-additional-fields": "A nova configuração possui chaves de configuração que não podem ser personalizadas aqui.",
 	"growthexperiments-config-validator-error": "A validação de $1 falhou com: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> espera-se que seja <code>$2</code>, mas é <code>$3</code>",
-	"growthexperiments-config-validator-contentmodel-mismatch": "Incompatibilidade de modelo de conteúdo: O arquivo de configuração do GrowthExperiments deve ter um modelo de conteúdo JSON, $1 detectado"
+	"growthexperiments-config-validator-contentmodel-mismatch": "Incompatibilidade de modelo de conteúdo: O arquivo de configuração do GrowthExperiments deve ter um modelo de conteúdo JSON, $1 detectado",
+	"growthexperiments-edit-config-title": "Editar configuração de Growth",
+	"growthexperiments-edit-config-last-edit": "Última atualização por [[User:$1|$1]] $2.",
+	"growthexperiments-edit-config-error-invalid-title": "A página de configuração não foi configurada corretamente",
+	"growthexperiments-edit-config-edit-summary": "Resumo da edição",
+	"growthexperiments-edit-config-config-changed": "A configuração foi alterada",
+	"growthexperiments-edit-config-help-panel": "Página de ajuda",
+	"growthexperiments-edit-config-help-panel-view-more": "Veja mais links exibidos na central de ajuda",
+	"growthexperiments-edit-config-help-panel-ask-mentor": "O painel de ajuda deve direcionar perguntas aos mentores?",
+	"growthexperiments-edit-config-homepage": "Página inicial do recém-chegado",
+	"growthexperiments-edit-config-homepage-tutorial-title": "Título da página do tutorial",
+	"growthexperiments-edit-config-homepage-intro-links-create": "Link para uma página sobre a criação de artigos no editor visual",
+	"growthexperiments-edit-config-mentorship-enabled": "Os recursos de mentoria estão ativados?",
+	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Título da página da lista de mentores atribuídos automaticamente"
 }
