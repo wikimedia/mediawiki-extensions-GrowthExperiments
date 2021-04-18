@@ -106,6 +106,8 @@ class RefreshLinkRecommendations extends Maintenance {
 		$this->addDescription( 'Update the growthexperiments_link_recommendations table to ensure '
 			. 'there are enough recommendations for all topics.' );
 		$this->addOption( 'topic', 'Only update articles in the given ORES topic.', false, true );
+		$this->addOption( 'page', 'Only update a specific page.', false, true );
+		$this->addOption( 'force', 'Generate recommendations even if they fail quality criteria.' );
 		$this->addOption( 'verbose', 'Show debug output.' );
 		$this->setBatchSize( 500 );
 	}
@@ -141,8 +143,21 @@ class RefreshLinkRecommendations extends Maintenance {
 			return;
 		}
 
-		$oresTopics = $this->getOresTopics();
+		$force = $this->hasOption( 'force' );
 		$this->output( "Refreshing link recommendations...\n" );
+
+		$pageName = $this->getOption( 'page' );
+		if ( $pageName ) {
+			$title = $this->titleFactory->newFromText( $pageName );
+			if ( $title ) {
+				$this->processCandidate( $title, $force );
+			} else {
+				$this->fatalError( 'Invalid title: ' . $pageName );
+			}
+			return;
+		}
+
+		$oresTopics = $this->getOresTopics();
 		foreach ( $oresTopics as $oresTopic ) {
 			$this->output( "  processing topic $oresTopic...\n" );
 			$suggestions = $this->taskSuggester->suggest(
@@ -176,41 +191,7 @@ class RefreshLinkRecommendations extends Maintenance {
 				$recommendationsFound = 0;
 				foreach ( $titleBatch as $title ) {
 					// TODO filter out protected pages. Needs to be batched. Or wait for T259346.
-					/** @var Title $title */
-					$this->verboseLog( "    checking candidate " . $title->getPrefixedDBkey() . "... " );
-					$lastRevision = $this->revisionStore->getRevisionByTitle( $title );
-					if ( !$this->evaluateTitle( $title, $lastRevision ) ) {
-						continue;
-					}
-					// Prevent infinite loop. Cirrus updates are not realtime so pages we have
-					// just created recommendations for will be included again in the next batch.
-					// Skip them to ensure $recommendationsFound is only nonzero then we have
-					// actually added a new recommendation.
-					// FIXME there is probably a better way to do this via search offsets.
-					if ( $this->linkRecommendationStore->getByRevId( $lastRevision->getId(),
-						IDBAccessObject::READ_LATEST )
-					) {
-						$this->verboseLog( "link recommendation already stored\n" );
-						continue;
-					}
-					$recommendation = $this->linkRecommendationProviderUncached->get( $title,
-						$this->recommendationTaskType );
-					if ( !$this->evaluateRecommendation( $recommendation, $lastRevision ) ) {
-						continue;
-					}
-
-					$this->verboseLog( "success, updating index\n" );
-					// If the script gets interrupted, uncommitted DB writes get discarded, while
-					// updateCirrusSearchIndex() is immediate. Minimize the likelyhood of the DB
-					// and the search index getting out of sync by wrapping each insert into a
-					// separate transaction. Use an explicit begin here to avoid Database::commit
-					// complaining about "no transaction to commit". That should never happen as
-					// the insert() call does an implicit begin, but it does occur somehow.
-					$this->linkRecommendationStore->getDB( DB_MASTER )->begin( __METHOD__ );
-					$this->linkRecommendationStore->insert( $recommendation );
-					$this->linkRecommendationStore->getDB( DB_MASTER )->commit( __METHOD__ );
-					$this->updateCirrusSearchIndex( $lastRevision );
-					// Caching is up to the provider, this script is just warming the cache.
+					$this->processCandidate( $title, $force );
 					$recommendationsFound++;
 					$recommendationsNeeded--;
 					if ( $recommendationsNeeded <= 0 ) {
@@ -322,9 +303,60 @@ class RefreshLinkRecommendations extends Maintenance {
 		} while ( $candidates->count() );
 	}
 
-	private function evaluateTitle( Title $title, ?RevisionRecord $revision ): bool {
+	/**
+	 * Evaluate a task candidate and potentially generate the task.
+	 * @param Title $title
+	 * @param bool $force Ignore all failed conditions that can be safely ignored.
+	 */
+	private function processCandidate( Title $title, bool $force = false ) {
+		$this->verboseLog( "    checking candidate " . $title->getPrefixedDBkey() . "... " );
+		$lastRevision = $this->revisionStore->getRevisionByTitle( $title );
+		if ( !$this->evaluateTitle( $title, $lastRevision, $force ) ) {
+			return;
+		}
+
+		// Prevent infinite loop. Cirrus updates are not realtime so pages we have
+		// just created recommendations for will be included again in the next batch.
+		// Skip them to ensure $recommendationsFound is only nonzero then we have
+		// actually added a new recommendation.
+		// FIXME there is probably a better way to do this via search offsets.
+		if ( $this->linkRecommendationStore->getByRevId( $lastRevision->getId(),
+			IDBAccessObject::READ_LATEST )
+		) {
+			$this->verboseLog( "link recommendation already stored\n" );
+			return;
+		}
+
+		$recommendation = $this->linkRecommendationProviderUncached->get( $title,
+			$this->recommendationTaskType );
+		if ( !$this->evaluateRecommendation( $recommendation, $lastRevision, $force ) ) {
+			return;
+		}
+
+		$this->verboseLog( "success, updating index\n" );
+		// If the script gets interrupted, uncommitted DB writes get discarded, while
+		// updateCirrusSearchIndex() is immediate. Minimize the likelyhood of the DB
+		// and the search index getting out of sync by wrapping each insert into a
+		// separate transaction. Use an explicit begin here to avoid Database::commit
+		// complaining about "no transaction to commit". That should never happen as
+		// the insert() call does an implicit begin, but it does occur somehow.
+		$this->linkRecommendationStore->getDB( DB_MASTER )->begin( __METHOD__ );
+		$this->linkRecommendationStore->insert( $recommendation );
+		$this->linkRecommendationStore->getDB( DB_MASTER )->commit( __METHOD__ );
+		$this->updateCirrusSearchIndex( $lastRevision );
+	}
+
+	/**
+	 * Check all conditions which are not related to the recommendation.
+	 * @param Title $title
+	 * @param RevisionRecord|null $revision
+	 * @param bool $force Ignore all failed conditions that can be safely ignored.
+	 * @return bool
+	 */
+	private function evaluateTitle( Title $title, ?RevisionRecord $revision, bool $force ): bool {
 		// FIXME ideally most of this should be moved inside the search query
 
+		// 1. the revision must exist and the mwaddlink service must be able to interpret it.
 		if ( $revision === null ) {
 			// Maybe the article has just been deleted and the search index is behind?
 			$this->verboseLog( "page not found\n" );
@@ -335,12 +367,12 @@ class RefreshLinkRecommendations extends Maintenance {
 			$this->verboseLog( "content not found\n" );
 			return false;
 		}
-		$revisionTime = MWTimestamp::convert( TS_UNIX, $revision->getTimestamp() );
-		if ( time() - $revisionTime < $this->recommendationTaskType->getMinimumTimeSinceLastEdit() ) {
-			$this->verboseLog( "minimum time since last edit did not pass\n" );
-			return false;
+
+		if ( $force ) {
+			return true;
 		}
 
+		// 2. the article must match size conditions.
 		$wordCount = preg_match_all( '/\w+/', $content->getText() );
 		if ( $wordCount < $this->recommendationTaskType->getMinimumWordCount() ) {
 			$this->verboseLog( "word count too small ($wordCount)\n" );
@@ -350,13 +382,21 @@ class RefreshLinkRecommendations extends Maintenance {
 			return false;
 		}
 
-		$db = $this->getDB( DB_REPLICA );
+		// 3. exclude articles which have been edited very recently.
+		$revisionTime = MWTimestamp::convert( TS_UNIX, $revision->getTimestamp() );
+		if ( time() - $revisionTime < $this->recommendationTaskType->getMinimumTimeSinceLastEdit() ) {
+			$this->verboseLog( "minimum time since last edit did not pass\n" );
+			return false;
+		}
 
+		// 4. exclude disambiguation pages.
 		if ( PageProps::getInstance()->getProperties( $title, 'disambiguation' ) ) {
 			$this->verboseLog( "disambiguation page\n" );
 			return false;
 		}
 
+		// 5. exclude pages where the last edit is a link recommendation edit or its revert.
+		$db = $this->getDB( DB_REPLICA );
 		$tags = ChangeTags::getTagsWithData( $db, null, $revision->getId() );
 		if ( array_key_exists( LinkRecommendationTaskTypeHandler::CHANGE_TAG, $tags ) ) {
 			$this->verboseLog( "last edit is a link recommendation\n" );
@@ -391,9 +431,10 @@ class RefreshLinkRecommendations extends Maintenance {
 	/**
 	 * @param LinkRecommendation|StatusValue $recommendation
 	 * @param RevisionRecord $revision
+	 * @param bool $force Ignore all failed conditions that can be safely ignored.
 	 * @return bool
 	 */
-	private function evaluateRecommendation( $recommendation, RevisionRecord $revision ): bool {
+	private function evaluateRecommendation( $recommendation, RevisionRecord $revision, bool $force ): bool {
 		if ( !( $recommendation instanceof LinkRecommendation ) ) {
 			$this->verboseLog( "fetching recommendation failed\n" );
 			$this->error( Status::wrap( $recommendation )->getWikiText( false, false, 'en' ) );
@@ -416,7 +457,9 @@ class RefreshLinkRecommendations extends Maintenance {
 			$recommendation->getPageId(), $recommendation->getRevisionId(), $goodLinks );
 		$recommendation = $this->linkRecommendationHelper->pruneLinkRecommendation( $recommendation );
 		$prunedLinkCount = $recommendation ? count( $recommendation->getLinks() ) : 0;
-		if ( !$prunedLinkCount || $prunedLinkCount < $this->recommendationTaskType->getMinimumLinksPerTask() ) {
+		if ( $prunedLinkCount === 0
+			 || !$force && $prunedLinkCount < $this->recommendationTaskType->getMinimumLinksPerTask()
+		) {
 			$this->verboseLog( "number of good links too small (" . $prunedLinkCount . ")\n" );
 			return false;
 		}
