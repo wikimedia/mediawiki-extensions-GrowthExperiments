@@ -1,5 +1,6 @@
 var AddLinkMobileArticleTarget = require( './AddLinkMobileArticleTarget.js' ),
 	addlinkClasses = require( 'ext.growthExperiments.AddLink' ),
+	AddLinkMobileSaveDialog = require( './AddLinkMobileSaveDialog.js' ),
 	MachineSuggestionsPlaceholderTool = require( './MachineSuggestionsPlaceholderTool.js' );
 
 ve.dm.modelRegistry.register( addlinkClasses.DMRecommendedLinkAnnotation );
@@ -8,6 +9,7 @@ ve.dm.modelRegistry.register( addlinkClasses.DMRecommendedLinkErrorAnnotation );
 ve.ce.annotationFactory.register( addlinkClasses.CERecommendedLinkErrorAnnotation );
 ve.ui.contextItemFactory.register( addlinkClasses.RecommendedLinkContextItem );
 ve.ui.windowFactory.register( addlinkClasses.RecommendedLinkRejectionDialog );
+ve.ui.windowFactory.register( AddLinkMobileSaveDialog );
 ve.ui.toolFactory.register( MachineSuggestionsPlaceholderTool );
 
 // Disable context items for non-recommended links

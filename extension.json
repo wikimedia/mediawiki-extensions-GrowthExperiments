@@ -726,13 +726,15 @@
 				"homepage/addlink/ceRecommendedLinkErrorAnnotation.js",
 				"homepage/addlink/RecommendedLinkContextItem.js",
 				"homepage/addlink/RecommendedLinkRejectionDialog.js",
-				"homepage/addlink/MachineSuggestionsMode.js"
+				"homepage/addlink/MachineSuggestionsMode.js",
+				"homepage/addlink/AddLinkSaveDialogMixin.js"
 			],
 			"styles": [
 				"homepage/addlink/ceRecommendedLinkAnnotation.less",
 				"homepage/addlink/RecommendedLinkContextItem.less",
 				"homepage/addlink/RecommendedLinkRejectionDialog.less",
-				"homepage/addlink/MachineSuggestionsMode.less"
+				"homepage/addlink/MachineSuggestionsMode.less",
+				"homepage/addlink/AddLinkSaveDialog.less"
 			],
 			"messages": [
 				"growthexperiments-addlink-context-title",
@@ -749,10 +751,18 @@
 				"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip",
 				"growthexperiments-addlink-rejectiondialog-reason-other",
 				"growthexperiments-addlink-rejectiondialog-action-done",
-				"growthexperiments-addlink-rejectiondialog-reopen-button-title"
+				"growthexperiments-addlink-rejectiondialog-reopen-button-title",
+				"growthexperiments-addlink-summary-title",
+				"growthexperiments-addlink-summary-column-header-suggestion",
+				"growthexperiments-addlink-summary-column-header-linked",
+				"growthexperiments-addlink-summary-copyrightwarning",
+				"growthexperiments-addlink-summary-submit",
+				"growthexperiments-addlink-summary-summary"
 			],
 			"dependencies": [
+				"oojs-ui.styles.icons-editing-core",
 				"ext.visualEditor.mwlink",
+				"ext.growthExperiments.AddLink.icons",
 				"ext.growthExperiments.SuggestedEditSession"
 			],
 			"targets": [
@@ -764,7 +774,8 @@
 			"packageFiles": [
 				"homepage/addlink/desktop.js",
 				"homepage/addlink/AddLinkDesktopArticleTarget.js",
-				"homepage/addlink/MachineSuggestionsSaveTool.js"
+				"homepage/addlink/MachineSuggestionsSaveTool.js",
+				"homepage/addlink/AddLinkSaveDialog.js"
 			],
 			"dependencies": [
 				"ext.growthExperiments.AddLink",
@@ -782,7 +793,8 @@
 			"packageFiles": [
 				"homepage/addlink/mobile.js",
 				"homepage/addlink/AddLinkMobileArticleTarget.js",
-				"homepage/addlink/MachineSuggestionsPlaceholderTool.js"
+				"homepage/addlink/MachineSuggestionsPlaceholderTool.js",
+				"homepage/addlink/AddLinkMobileSaveDialog.js"
 			],
 			"dependencies": [
 				"ext.growthExperiments.AddLink",
@@ -865,6 +877,14 @@
 				"desktop",
 				"mobile"
 			]
+		},
+		"ext.growthExperiments.AddLink.icons": {
+			"class": "ResourceLoaderImageModule",
+			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",
+			"selectorWithoutVariant": ".oo-ui-icon-{name}",
+			"images": {
+				"robot-black": "homepage/addlink/robot-black.svg"
+			}
 		},
 		"ext.growthExperiments.MultiPaneDialog": {
 			"packageFiles": [

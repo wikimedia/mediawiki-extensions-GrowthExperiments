@@ -259,4 +259,49 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 
 };
 
+/**
+ * Get the current state of the recommendations (ie. the feedback the user gave on them).
+ *
+ * @return {Array} A list of objects with the following fields:
+ *   - title: the link target
+ *   - text: the link text
+ *   - accepted/rejected/skipped: user feedback (exactly one of these will be true)
+ *   - rejectionReason: the rejection option chosen by the user, when rejected
+ */
+AddLinkArticleTarget.prototype.getAnnotationStates = function () {
+	var states = [];
+	this.getSurface().linkRecommendationFragments.forEach( function ( recommendation ) {
+		var state, annotations, annotation;
+
+		annotations = recommendation.fragment
+			.getAnnotations()
+			.getAnnotationsByName( 'mwGeRecommendedLink' );
+		if ( annotations.getLength() !== 1 ) {
+			mw.log.error( 'annotation not found for offset ' + recommendation.recommendationWikitextOffset );
+			mw.errorLogger.logError( new Error( 'annotation not found for offset ' +
+				recommendation.recommendationWikitextOffset ) );
+			return;
+		}
+		annotation = annotations.get( 0 );
+
+		// Despite the name, getDisplayTitle() is the title, not the display title.
+		state = {
+			title: annotation.getDisplayTitle(),
+			text: annotation.getOriginalDomElements( annotation.getStore() ).map( function ( element ) {
+				return element.textContent;
+			} ).join( '' )
+		};
+		if ( annotation.isAccepted() ) {
+			state.accepted = true;
+		} else if ( annotation.isRejected() ) {
+			state.rejected = true;
+			state.rejectionReason = annotation.getRejectionReason();
+		} else {
+			state.skipped = true;
+		}
+		states.push( state );
+	} );
+	return states;
+};
+
 module.exports = AddLinkArticleTarget;
