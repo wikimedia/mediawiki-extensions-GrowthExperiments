@@ -1123,6 +1123,7 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
 				"homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js",
 				"utils/ext.growthExperiments.Utils.js",
+				"utils/ext.growthExperiments.IconUtils.js",
 				{
 					"name": "homepage/suggestededits/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
