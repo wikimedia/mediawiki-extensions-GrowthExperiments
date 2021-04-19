@@ -98,7 +98,7 @@ class DatabaseMentorStore extends MentorStore {
 				'gemm_mentor_id' => $mentor->getId(),
 				'gemm_mentor_role' => $mentorRole,
 			],
-			[ 'gemm_mentee_id', 'gemm_mentor_role' ],
+			[ [ 'gemm_mentee_id', 'gemm_mentor_role' ] ],
 			[
 				'gemm_mentor_id' => $mentor->getId()
 			],
