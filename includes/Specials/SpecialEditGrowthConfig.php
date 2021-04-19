@@ -197,8 +197,12 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'section' => 'help-panel',
 			],
 			'GEHelpPanelHelpDeskPostOnTop' => [
-				'type' => 'check',
+				'type' => 'radio',
 				'label-message' => 'growthexperiments-edit-config-help-panel-post-on-top',
+				'options-messages' => [
+					'growthexperiments-edit-config-help-panel-post-on-top-true' => 'true',
+					'growthexperiments-edit-config-help-panel-post-on-top-false' => 'false',
+				],
 				'section' => 'help-panel',
 			],
 			'GEHelpPanelViewMoreTitle' => [
@@ -216,8 +220,12 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'section' => 'help-panel',
 			],
 			'GEHelpPanelAskMentor' => [
-				'type' => 'check',
+				'type' => 'radio',
 				'label-message' => 'growthexperiments-edit-config-help-panel-ask-mentor',
+				'options-messages' => [
+					'growthexperiments-edit-config-help-panel-ask-mentor-true' => 'true',
+					'growthexperiments-edit-config-help-panel-ask-mentor-false' => 'false',
+				],
 				'section' => 'help-panel',
 			],
 			'GEHomepageTutorialTitle' => [
@@ -242,8 +250,12 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'section' => 'homepage',
 			],
 			'GEMentorshipEnabled' => [
-				'type' => 'check',
+				'type' => 'radio',
 				'label-message' => 'growthexperiments-edit-config-mentorship-enabled',
+				'options-messages' => [
+					'growthexperiments-edit-config-mentorship-enabled-true' => 'true',
+					'growthexperiments-edit-config-mentorship-enabled-false' => 'false',
+				],
 				'section' => 'mentorship',
 			],
 			'GEHomepageMentorsList' => [
@@ -287,6 +299,9 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			);
 			if ( is_array( $default ) ) {
 				$default = implode( "\n", $default );
+			}
+			if ( is_bool( $default ) ) {
+				$default = $default ? 'true' : 'false';
 			}
 
 			$descriptors[$name]['default'] = $default;
@@ -337,6 +352,13 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 
 			if ( strpos( $name, '-' ) === false && $name !== 'summary' ) {
 				$dataToSave[$name] = $data[$name];
+
+				// Basic normalization
+				if ( $dataToSave[$name] === 'true' ) {
+					$dataToSave[$name] = true;
+				} elseif ( $dataToSave[$name] === 'false' ) {
+					$dataToSave[$name] = false;
+				}
 			}
 		}
 
