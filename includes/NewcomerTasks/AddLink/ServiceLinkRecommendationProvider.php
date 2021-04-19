@@ -134,8 +134,13 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 				$titleText, $data['error'] );
 		}
 		// TODO validate/process data; compare $data['page_id'] and $data['revid']
-		$links = LinkRecommendation::getLinksFromArray( $data['links'] );
-		return new LinkRecommendation( $title, $pageId, $revId, $links );
+		return new LinkRecommendation(
+			$title,
+			$pageId,
+			$revId,
+			LinkRecommendation::getLinksFromArray( $data['links'] ),
+			LinkRecommendation::getMetadataFromArray( $data['meta'] )
+		);
 	}
 
 }

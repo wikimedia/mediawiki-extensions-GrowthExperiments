@@ -22,6 +22,9 @@ class LinkRecommendation {
 	/** @var LinkRecommendationLink[] */
 	private $links;
 
+	/** @var LinkRecommendationMetadata */
+	private $metadata;
+
 	/**
 	 * Parse a JSON array into a LinkRecommendationLink array. This is more or less the inverse of
 	 * toArray(), except it only returns a link list, not a LinkRecommendation.
@@ -47,16 +50,42 @@ class LinkRecommendation {
 	}
 
 	/**
+	 * Construct a LinkRecommendationMetadata value object with metadata included by the service for a
+	 * link recommendation.
+	 *
+	 * Includes backward compatibility as this method is called when retrieving stored link recommendations
+	 * in the cache, which may not have the meta field stored.
+	 *
+	 * @param array $meta
+	 * @return LinkRecommendationMetadata
+	 */
+	public static function getMetadataFromArray( array $meta ): LinkRecommendationMetadata {
+		return new LinkRecommendationMetadata(
+			$meta['application_version'] ?? '',
+			$meta['format_version'] ?? 1,
+			$meta['dataset_checksums'] ?? []
+		);
+	}
+
+	/**
 	 * @param LinkTarget $title Page for which the recommendations were generated.
 	 * @param int $pageId Page for which the recommendations were generated.
 	 * @param int $revisionId Revision ID for which the recommendations were generated.
 	 * @param LinkRecommendationLink[] $links List of the recommended links
+	 * @param LinkRecommendationMetadata $metadata Metadata associated with the links.
 	 */
-	public function __construct( LinkTarget $title, int $pageId, int $revisionId, array $links ) {
+	public function __construct(
+		LinkTarget $title,
+		int $pageId,
+		int $revisionId,
+		array $links,
+		LinkRecommendationMetadata $metadata
+	) {
 		$this->title = $title;
 		$this->pageId = $pageId;
 		$this->revisionId = $revisionId;
 		$this->links = array_values( $links );
+		$this->metadata = $metadata;
 	}
 
 	/**
@@ -91,6 +120,11 @@ class LinkRecommendation {
 		return $this->links;
 	}
 
+	/** @return LinkRecommendationMetadata */
+	public function getMetadata(): LinkRecommendationMetadata {
+		return $this->metadata;
+	}
+
 	/**
 	 * JSON-ifiable data that represents the state of the object except the page identity and
 	 * revision.
@@ -99,7 +133,7 @@ class LinkRecommendation {
 	public function toArray(): array {
 		return [ 'links' => array_map( function ( LinkRecommendationLink $linkRecommendationItem ) {
 			return $linkRecommendationItem->toArray();
-		}, $this->links ) ];
+		}, $this->links ), 'meta' => $this->metadata->toArray() ];
 	}
 
 }

@@ -78,8 +78,14 @@ class LinkRecommendationStore {
 			return null;
 		}
 
-		$links = LinkRecommendation::getLinksFromArray( $data['links'] );
-		return new LinkRecommendation( $title, $row->gelr_page, $revId, $links );
+		return new LinkRecommendation(
+			$title,
+			$row->gelr_page,
+			$revId,
+			LinkRecommendation::getLinksFromArray( $data['links'] ),
+			// Backwards compatibility for recommendations added before metadata was included in output and stored.
+			LinkRecommendation::getMetadataFromArray( $data['meta'] ?? [] )
+		);
 	}
 
 	/**

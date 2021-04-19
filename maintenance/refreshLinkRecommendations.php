@@ -453,8 +453,13 @@ class RefreshLinkRecommendations extends Maintenance {
 		$goodLinks = array_filter( $recommendation->getLinks(), function ( LinkRecommendationLink $link ) {
 			return $link->getScore() >= $this->recommendationTaskType->getMinimumLinkScore();
 		} );
-		$recommendation = new LinkRecommendation( $recommendation->getTitle(),
-			$recommendation->getPageId(), $recommendation->getRevisionId(), $goodLinks );
+		$recommendation = new LinkRecommendation(
+			$recommendation->getTitle(),
+			$recommendation->getPageId(),
+			$recommendation->getRevisionId(),
+			$goodLinks,
+			$recommendation->getMetadata()
+		);
 		$recommendation = $this->linkRecommendationHelper->pruneLinkRecommendation( $recommendation );
 		$prunedLinkCount = $recommendation ? count( $recommendation->getLinks() ) : 0;
 		if ( $prunedLinkCount === 0
