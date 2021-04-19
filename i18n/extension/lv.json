@@ -15,5 +15,9 @@
 	"growthexperiments-edit-config-help-panel-helpdesk-title": "Palīdzības dienesta lapas nosaukums (ja pastāv)",
 	"growthexperiments-edit-config-help-panel-post-on-top": "Ievietot jautājumus palīdzības paneļa augšā?",
 	"growthexperiments-edit-config-help-panel-searched-namespaces": "Meklēt šajās vārdtelpās",
-	"growthexperiments-edit-config-homepage": "Jaunpienācēju sākumlapa"
+	"growthexperiments-edit-config-homepage": "Jaunpienācēju sākumlapa",
+	"growthexperiments-edit-config-mentorship": "Mentorēšana",
+	"growthexperiments-edit-config-mentorship-enabled": "Vai mentoru funkcionalitāte ir ieslēgta?",
+	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Lapas nosaukums sarakstam ar automātiski piešķirtiem mentoriem",
+	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Lapas nosaukums sarakstam ar manuāli piešķirtiem mentoriem"
 }

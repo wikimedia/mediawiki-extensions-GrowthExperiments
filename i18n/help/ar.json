@@ -103,7 +103,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-publish": "حين {{GENDER:|تنته|تنتهين}} من توسعة المقالة، {{GENDER:|تابع وانقر|تابعي وانقري}} فوق السهم الأزرق لحفظ تعديلك!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|{{GENDER:|تعلّم|تعلّمي}} المزيد حول توسيع المقالات]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "إضافة الروابط ستساهم في تعلّمٍ أسرعَ للأشخاص.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|ستقرّر|ستقرّرين}} إن كانت بعض الكلمات من مقالة في {{SITENAME}} عليها أن تربط إلى مقالات أخرى من {{SITENAME}}.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|ستقرّر|ستقرّرين}} ما إذا كانت بعض كلمات من مقالة ما في {{SITENAME}} عليها أن تربط إلى مقالات أخرى من {{SITENAME}}.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "القمر هو <mark class=\"positive\">القمر الطبيعي</mark> الوحيد الذي <mark class=\"positive\">يلف</mark> حول <mark class=\"positive\">الأرض</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "لا ضرورة لمعرفة خاصة حول المقالة لإنجاز هذه المهمّة.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "اقتراحات الروابط، هي نِتاج آلي، ويمكن أن تكون خاطئة.",

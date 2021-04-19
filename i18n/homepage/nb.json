@@ -333,7 +333,6 @@
 	"growthexperiments-addlink-rejectiondialog-title": "Hvorfor er ikke dette en god lenke? <em>(Valgfritt)</em>",
 	"growthexperiments-addlink-rejectiondialog-message": "Svaret ditt kan bli brukt til å forbedre forslagene fra den kunstige intelligensen.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Hverdagslig konsept som ikke trenger forklaring (f.eks. «himmel»)",
-	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "Er allerede lenket til tidligere i artikkelen",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Feil lenkemål (f.eks. en lenke fra «sol» til «stjerne»)",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Trykk på redigeringsblyanten $1 ved siden av lenken for å endre lenkemålet",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Annet / foretrekker å ikke svare",

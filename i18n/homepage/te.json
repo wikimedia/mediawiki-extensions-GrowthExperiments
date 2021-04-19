@@ -334,7 +334,6 @@
 	"growthexperiments-addlink-rejectiondialog-title": "ఈ లింకు మంచిది ఎందుకు కాదు? <em>(ఐచ్ఛికం)</em>",
 	"growthexperiments-addlink-rejectiondialog-message": "AI సూచనల నాణ్యతను మెరుగుపరచేందుకు మీ సమాధానాన్ని వాడవచ్చు.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "వివరణ ఏమీ అవసరం లేని రోజూ కనిపించే భావన (ఉదా: \"ఆకాశం\")",
-	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "వ్యాసంలో ఈసరికే లింకు ఇచ్చి ఉంది",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "సరైన లింకు గమ్యం కాదు (ఉదాహరణకు \"సూర్యుడు\" ను \"నక్షత్రం\" కు లింకు ఇస్తున్నట్లుగా)",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "లింకు గమ్యాన్ని మార్చేందుకు, లింకు పక్కనే ఉన్న దిద్దుబాటు పెన్సిలు $1 ను వత్తండి",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "ఇతరత్రా / చెప్పను",

@@ -348,7 +348,6 @@
 	"growthexperiments-addlink-rejectiondialog-title": "なぜこれは良いリンクではないのですか？<em>（任意）</em>",
 	"growthexperiments-addlink-rejectiondialog-message": "あなたの答えは、AIによるお勧めの質を向上させるために使用されます。",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "説明不要の日常的な概念（たとえば「空」）",
-	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "記事の前半ですでにリンクされている",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "リンク先が正しくない（たとえば「太陽」を「星」にリンクする等）",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "リンクの横にある編集鉛筆$1をタップしてリンク先を変更",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "その他/答えない",

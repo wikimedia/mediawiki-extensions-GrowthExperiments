@@ -16,6 +16,7 @@
 	"growthexperiments-edit-config-error-invalid-title": "A página de configuração não foi configurada corretamente",
 	"growthexperiments-edit-config-edit-summary": "Resumo da edição",
 	"growthexperiments-edit-config-config-changed": "A configuração foi alterada",
+	"growthexperiments-edit-config-return-to-form": "Você pode [[Special:EditGrowthConfig|voltar]] para o formulário de edição.",
 	"growthexperiments-edit-config-help-panel": "Página de ajuda",
 	"growthexperiments-edit-config-help-panel-view-more": "Veja mais links exibidos na central de ajuda",
 	"growthexperiments-edit-config-help-panel-ask-mentor": "O painel de ajuda deve direcionar perguntas aos mentores?",

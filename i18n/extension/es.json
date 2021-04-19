@@ -14,5 +14,19 @@
 	"growthexperiments-config-validator-contentmodel-mismatch": "Discrepancia del modelo de contenido: el archivo de configuración de GrowthExperiments debe tener un modelo de contenido JSON, se detectó $1",
 	"growthexperiments-edit-config-last-edit": "Última actualización por [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "Última actualización por usuario desconocido $1.",
-	"growthexperiments-edit-config-homepage": "Página de inicio para usuarios nuevos"
+	"growthexperiments-edit-config-pretext": "Esta página te permite editar la configuración de las funciones del equipo [[:mw:Special:MyLanguage/Growth|Crecimiento]]. Editarás [[$ 1]] con tu nombre. Puedes ver tus cambios en el historial de esa página.",
+	"growthexperiments-edit-config-error-invalid-title": "La página de configuración no se configuró correctamente",
+	"growthexperiments-edit-config-edit-summary": "Resumen de edición",
+	"growthexperiments-edit-config-config-changed": "Se cambió la configuración",
+	"growthexperiments-edit-config-return-to-form": "Puedes [[Special:EditGrowthConfig|regresar]] al formulario de edición.",
+	"growthexperiments-edit-config-help-panel": "Panel de ayuda",
+	"growthexperiments-edit-config-help-panel-searched-namespaces": "Busque los siguientes espacios de nombres",
+	"growthexperiments-edit-config-homepage": "Página de inicio para usuarios nuevos",
+	"growthexperiments-edit-config-homepage-tutorial-title": "Título de la página del tutorial",
+	"growthexperiments-edit-config-homepage-intro-links-create": "Enlace a una página sobre la creación de artículos en el editor visual",
+	"growthexperiments-edit-config-homepage-intro-links-image": "Enlace a una página sobre cómo agregar imágenes en el editor visual",
+	"growthexperiments-edit-config-mentorship": "Tutoría",
+	"growthexperiments-edit-config-mentorship-enabled": "¿Están habilitadas las funciones de tutoría?",
+	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Título de la página de la lista de mentores asignados automáticamente",
+	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Título de la página de la lista de mentores asignados manualmente"
 }

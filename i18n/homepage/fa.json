@@ -343,7 +343,6 @@
 	"growthexperiments-addlink-rejectiondialog-title": "چرا این پیوند خوب نیست؟ <em>(اختیاری)</em>",
 	"growthexperiments-addlink-rejectiondialog-message": "پاسخ شما ممکن است برای بهبود کیفیت پیشنهاد‌های هوش مصنوعی مورد استفاده قرار گیرد.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "مفهومی روزمره که نیازی به توضیح ندارد (مثلاً «آسمان»)",
-	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "از پیش در مقاله پیوند داده‌شده",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "هدف پیوند اشتباه است (مثلاً پیوند دادن «خورشید» به «ستاره»)",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "برای تغییر هدف پیوند، مداد ویرایش $1 در کنار پیوند را لمس کنید",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "سایر / ترجیح می‌دهم نگویم",

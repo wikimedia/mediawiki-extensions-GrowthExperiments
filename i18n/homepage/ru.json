@@ -83,7 +83,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Готово",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Готово!",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Попробуйте вначале несколько <strong>лёгких</strong> предложенных правок",
-	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "Есть много способов внести свой вклад чтобы сделать {{grammar:accusative|{{SITENAME}}}} лучше. Участники сообщества составили список статей, нуждающихся в разных доработках.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "Есть много способов внести свой вклад чтобы сделать {{grammar:accusative|{{SITENAME}}}} лучше.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Легко",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Средне",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Сложно",
@@ -329,8 +329,8 @@
 	"growthexperiments-addlink-context-button-accept": "Да",
 	"growthexperiments-addlink-context-button-reject": "Нет",
 	"growthexperiments-addlink-context-button-next": "Следующая",
-	"growthexperiments-addlink-rejectiondialog-title": "Почему это плохая ссылка? <em>(Необязательно)</em>",
-	"growthexperiments-addlink-rejectiondialog-reason-other": "Другое / предпочитаю не говорить",
+	"growthexperiments-addlink-rejectiondialog-title": "Почему это плохая ссылка?",
+	"growthexperiments-addlink-rejectiondialog-reason-other": "Другое",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Готово",
 	"growthexperiments-addlink-onboarding-dialog-progress": "$1 из $2"
 }

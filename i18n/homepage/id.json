@@ -329,7 +329,6 @@
 	"growthexperiments-addlink-rejectiondialog-title": "Mengapa ini bukan tautan yang baik? <em>(Opsional)</em>",
 	"growthexperiments-addlink-rejectiondialog-message": "Jawaban Anda dapat digunakan untuk meningkatkan kualitas saranan AI.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Konsep sehari-hari yang tidak memerlukan penjelasan (seperti \"langit\")",
-	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "Sudah ditautkan sebelumnya di artikel",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Pranala tujuan tidak benar (contohnya menautkan \"matahari\" ke \"bintang\")",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Ketuk pensil edit $1 di sebelah pranala itu untuk mengganti tujuan pranala",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Lainnya / tidak ingin menyebutkan",

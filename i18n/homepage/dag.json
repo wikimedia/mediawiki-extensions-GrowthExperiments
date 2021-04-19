@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Achiri Bitamsimli",
+			"Adam Tuferu",
 			"Alhassan Peter",
 			"Anamzooya",
 			"Chirifo",
@@ -14,6 +15,7 @@
 			"Yakubu Fadilatu"
 		]
 	},
+	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "Soya pam beni ka a ni tɔɔi doli n-chɛ ka {{SITENAME}} nya toon'tibɔ",
 	"growthexperiments-addlink-context-button-help": "Nyami sɔŋsim zaŋ chaŋ malizani polo",
 	"growthexperiments-addlink-context-button-next": "Ŋun/din paya",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Yɛltɔɣili shɛhira",

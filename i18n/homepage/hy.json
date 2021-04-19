@@ -57,7 +57,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Արված է",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Արված է",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Նախ փորձեք որոշ առաջարկվող <strong>հեշտ</strong> խմբագրումենր",
-	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "{{SITENAME}} կայքը ավելի լավը դարձնելու շատ ձևեր կան: Խմբագիրների համայնքը նշել է հոդվածների այս ցանկը, որոնք տարբեր տեսակի օգնության կարիք ունեն:",
+	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "{{SITENAME}} կայքը ավելի լավը դարձնելու շատ ձևեր կան:",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Հեշտ",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Միջին",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Բարդ",
@@ -246,5 +246,6 @@
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Հասկանալի է",
 	"growthexperiments-addlink-context-button-accept": "Այո",
 	"growthexperiments-addlink-context-button-reject": "Ոչ",
-	"growthexperiments-addlink-context-button-next": "Հաջորդ"
+	"growthexperiments-addlink-context-button-next": "Հաջորդ",
+	"growthexperiments-addlink-rejectiondialog-reason-other": "Այլ"
 }

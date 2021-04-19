@@ -351,7 +351,6 @@
 	"growthexperiments-addlink-rejectiondialog-title": "Warum ist das kein guter Link? <em>(Optional)</em>",
 	"growthexperiments-addlink-rejectiondialog-message": "Deine Antwort kann genutzt werden, um die Qualität der KI-Vorschläge zu verbessern.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Alltägliches Konzept, das nicht erklärt werden muss (z.B. „Himmel“)",
-	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "Bereits früher im Artikel verlinkt",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Falsches Linkziel (z.B. Verlinkung von „Sonne“ auf „Stern“)",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Klicke auf den Stift $1 neben dem Link, um das Linkziel zu ändern",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Sonstiges / Möchte nicht antworten",

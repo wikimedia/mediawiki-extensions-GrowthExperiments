@@ -19,6 +19,7 @@
 	"growthexperiments-edit-config-error-invalid-title": "La page de configuration n’a pas bien été configurée",
 	"growthexperiments-edit-config-edit-summary": "Modifier le résumé",
 	"growthexperiments-edit-config-config-changed": "La configuration a été modifiée",
+	"growthexperiments-edit-config-return-to-form": "Vous pouvez [[Special:EditGrowthConfig|retourner]] au formulaire de modification.",
 	"growthexperiments-edit-config-help-panel": "Panneau d’aide",
 	"growthexperiments-edit-config-help-panel-reading-namespaces": "Espaces de noms avec le panneau d’aide activé en mode lecture",
 	"growthexperiments-edit-config-help-panel-disabled-namespaces": "Espaces de noms avec le panneau d’aide désactivé",

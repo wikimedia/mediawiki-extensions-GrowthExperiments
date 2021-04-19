@@ -109,7 +109,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|Tú}} decidirás si las palabras de un artículo de {{SITENAME}} deben enlazar con otros artículos de {{SITENAME}}.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "La luna es el único <mark class=\"positive\">satélite natural</mark> que <mark class=\"positive\">orbita</mark> alrededor de la <mark class=\"positive\">Tierra</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "No se necesitan conocimientos especiales sobre el artículo para realizar esta tarea.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "Los enlaces sugeridos provienen de la inteligencia artificial (IA), que puede cometer errores.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "Los enlaces sugeridos son generados por una inteligencia artificial y pueden estar incorrectos.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "La IA puede sugerir enlaces a palabras que no los necesitan, o podría sugerir enlaces al artículo incorrecto. Usa {{GENDER:$1|tu}} juicio para decidir si es correcto o incorrecto.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Más información sobre sugerencias de la IA]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Normas",

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kareyac",
 			"StanProg",
 			"Ted Masters",
 			"Vlad5250"
@@ -13,5 +14,6 @@
 	"growthexperiments-homepage-pt-link": "По подразбиране към началната страница за новобранци от връзката за потребителско име в личните инструменти",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "Отказ",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Назад",
-	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Научете повече"
+	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Научете повече",
+	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Предложения"
 }

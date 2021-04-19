@@ -182,7 +182,7 @@
 	"growthexperiments-homepage-suggestededits-no-results": "No se encontraron sugerencias",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Selecciona otros niveles de dificultad para encontrar ediciones sugeridas.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Selecciona otros intereses o niveles de dificultad para encontrar ediciones sugeridas.",
-	"growthexperiments-homepage-suggestededits-footer": "Otros usuarios han indicado que estos artículos necesitan mejoras. Ayuda a mejorar '''{{SITENAME}}'' para sus ''$1 de lectores''' cada día.",
+	"growthexperiments-homepage-suggestededits-footer": "Otros usuarios han indicado que estos artículos necesitan mejoras. Ayuda a mejorar '''{{SITENAME}}''' para sus '''$1 de lectores''' cada día.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Otros usuarios han observado que estos artículos necesitan trabajo. Ayuda a mejorar '''{{SITENAME}}'''.",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "ediciones en el último día",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Voluntarios como tú han contribuido a la mejora de {{SITENAME}} hoy. ¡Únete a nosotros!",
@@ -298,6 +298,7 @@
 	"growthexperiments-log-name": "Registro de la extensión GrowthExperiments",
 	"growthexperiments-log-header": "Esto es un registro de los cambios hechos en la extensión GrowthExperiments.",
 	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|revisó}} $4 recomendaciones de enlaces para $3: se aceptaron $5, se rechazaron $6 y se omitieron $7",
+	"log-action-filter-growthexperiments-addlink": "Recomendaciones de enlaces",
 	"growthexperiments-notification-header-mentor-change": "$1 es {{GENDER:$3|tu}} nuevo {{GENDER:$2|mentor|mentora}}",
 	"growthexperiments-notification-body-mentor-change": "Motivo: $1",
 	"growthexperiments-notification-say-hi-mentor-change": "¡{{GENDER:$3|Saluda}} a {{GENDER:$3|tu}} {{GENDER:$2|nuevo mentor|nueva mentora}}!",
@@ -326,7 +327,6 @@
 	"growthexperiments-addlink-rejectiondialog-title": "¿Por qué este no es un buen enlace? <em>(opcional)</em>",
 	"growthexperiments-addlink-rejectiondialog-message": "Tu respuesta puede usarse para mejorar la calidad de las sugerencias de la IA.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Concepto común que no necesita explicación (p. ej. \"cielo\")",
-	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "Ya enlazado anteriormente en el artículo",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Destino de enlace incorrecto (Ejemplo: enlazar «sol» a «estrella»)",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Toca el lápiz de edición $1 junto al enlace para cambiar el destino del enlace",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Otro / prefiero no decirlo",
@@ -356,5 +356,6 @@
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Cantidad",
 	"newcomertasksinfo-table-header-topic-type": "ID de tema",
+	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Sugerencias",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Enviar..."
 }

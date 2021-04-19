@@ -261,7 +261,6 @@
 	"growthexperiments-addlink-rejectiondialog-title": "เพราะเหตุใดนี่จึงไม่ใช่ลิงก์ที่ดี? <em>(ไม่จำเป็น)</em>",
 	"growthexperiments-addlink-rejectiondialog-message": "การตอบกลับของคุณจะถูกใช้เพื่อปรับปรุงคุณภาพของการแนะนำโดยปัญญาประดิษฐ์",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "เป็นคำที่ใช้อยู่ทั่วไปซึ่งไม่จำเป็นต้องมีการขยายความเพิ่มเติม (เช่น \"น้ำ\")",
-	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "เคยลิงก์แล้วก่อนหน้านี้ในบทความเดียวกัน",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "ปลายทางการลิงก์ไม่ถูกต้อง (เช่นลิงก์ \"ดาวฤกษ์\" ไป \"ดวงอาทิตย์\")",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "แตะที่ดินสอแก้ไข $1 ถัดจากลิงก์เพื่อแก้ไขปลายทางลิงก์",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "อื่น ๆ/ไม่ต้องการระบุ",

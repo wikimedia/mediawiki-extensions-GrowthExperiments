@@ -11,5 +11,7 @@
 	"growthexperiments-addlink-revdeleted": "Awendednys $1 be \"$1\" is ungefered",
 	"growthexperiments-addlink-wrongmodel": "Awendednys $1 be \"$2\" nis wicigewrit",
 	"growthexperiments-addlink-invalidjson": "For \"$1\" andswarode seo befæsthlenc þegnung þe swylc nis genge",
-	"growthexperiments-addlink-serviceerror": "Befæsthlenca þegnung andswarode mid dolscipes tacne for \"$1\": $2"
+	"growthexperiments-addlink-serviceerror": "Befæsthlenca þegnung andswarode mid dolscipes tacne for \"$1\": $2",
+	"growthexperiments-addlink-rejectiondialog-title": "Hwy nis þes til hlenc?",
+	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Ceos for hwy þes nis til hlenc"
 }

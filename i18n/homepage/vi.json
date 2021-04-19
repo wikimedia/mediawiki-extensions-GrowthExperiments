@@ -341,7 +341,6 @@
 	"growthexperiments-addlink-rejectiondialog-title": "Tại sao đây không phải một liên kết tốt? <em>(Tùy chọn)</em>",
 	"growthexperiments-addlink-rejectiondialog-message": "Câu trả lời của bạn có thể được sử dụng để cải thiện chất lượng của các gợi ý AI.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Không phải mọi khái niệm đều cần giải thích (ví dụ \"bầu trời\")",
-	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "Đã được liên kết trước đó trong bài viết",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Nơi đến liên kết không chính xác (ví dụ liên kết \"mặt trời\" tới \"sao\")",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Chạm vào bút chì sửa đổi $1 cạnh liên kết để thay đổi nơi đến liên kết",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Khác / không muốn cung cấp",

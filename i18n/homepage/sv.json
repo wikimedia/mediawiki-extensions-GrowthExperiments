@@ -323,7 +323,6 @@
 	"growthexperiments-addlink-rejectiondialog-title": "Varför är detta inte en bra länk? <em>(valfri)</em>",
 	"growthexperiments-addlink-rejectiondialog-message": "Ditt svar kan användas för att förbättra kvalitén på AI-förslag.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Vardagliga koncept behöver ingen förklaring (t.ex. \"solen\")",
-	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "Redan länkade tidigare i artikeln",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Felaktig länkmål (t.ex. länkar \"sol\" till \"stjärna\")",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Tryck på pennan $1 bredvid länken för att ändra länkmål",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Övrigt / vill inte säga",

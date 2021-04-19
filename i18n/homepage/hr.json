@@ -330,7 +330,6 @@
 	"growthexperiments-addlink-rejectiondialog-title": "Zašto ovo nije dobra poveznica: <em>(Neobavezno)</em>?",
 	"growthexperiments-addlink-rejectiondialog-message": "Vaš odgovor može biti iskorišten za treniranje algoritama za  prijedloge.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Svakodnevni pojam koji ne treba pojašnjenje, primjerice »nebo«",
-	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "Poveznica već ranije dodana u članku",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Poveznica upućuje na krivu stranicu (na primjer, povezuje »sunce« sa »zvijezda«)",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Dodirnite sličicu olovke $1 pored poveznice kako biste promijenili na što poveznica upućuje.",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Ostalo / ne obrazlaže mi se",

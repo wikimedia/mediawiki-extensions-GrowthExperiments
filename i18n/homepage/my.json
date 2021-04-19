@@ -18,5 +18,8 @@
 	"growthexperiments-homepage-tutorial-header": "တည်းဖြတ်ရန် သင်ယူမည်",
 	"growthexperiments-homepage-tutorial-cta-text": "သင်ခန်းစာ",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "ပြီးပြီ",
-	"growthexperiments-notification-body-mentor-change": "အကြောင်းပြချက်: $1"
+	"growthexperiments-notification-body-mentor-change": "အကြောင်းပြချက်: $1",
+	"growthexperiments-addlink-context-button-next": "ရှေ့သို့",
+	"growthexperiments-addlink-rejectiondialog-reason-other": "အခြား",
+	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "အကြံပေးမှုများ"
 }

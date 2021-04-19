@@ -333,12 +333,11 @@
 	"growthexperiments-addlink-context-button-accept": "Tak",
 	"growthexperiments-addlink-context-button-reject": "Nie",
 	"growthexperiments-addlink-context-button-next": "Pomiń",
-	"growthexperiments-addlink-rejectiondialog-title": "Dlaczego nie jest to dobry link? <em>(Opcjonalnie)</em>",
+	"growthexperiments-addlink-rejectiondialog-title": "Dlaczego nie jest to dobry link?",
 	"growthexperiments-addlink-rejectiondialog-message": "Twoja odpowiedź może pomóc ulepszyć jakość podpowiedzi sztucznej inteligencji.",
-	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "Już jest podlinkowany wcześniej w artykule",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Niewłaściwy element docelowy linku (na przykład linkowanie \"słońce\" do \"gwiazda\")",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Dotknij ikonkę ołówka $1 obok linka aby zmienić jego cel",
-	"growthexperiments-addlink-rejectiondialog-reason-other": "Inne / brak odpowiedzi",
+	"growthexperiments-addlink-rejectiondialog-reason-other": "Inne",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Gotowe",
 	"growthexperiments-addlink-onboarding-dialog-title": "Wprowadzenie"
 }
