@@ -120,7 +120,8 @@
 			helpPanelCurrentTip: this.helpPanelCurrentTip,
 			helpPanelSuggestedEditsInteractionHappened:
 				this.helpPanelSuggestedEditsInteractionHappened,
-			onboardingNeedsToBeShown: this.onboardingNeedsToBeShown
+			onboardingNeedsToBeShown: this.onboardingNeedsToBeShown,
+			shouldOpenArticleInEditMode: this.shouldOpenArticleInEditMode
 		};
 		if ( !this.active ) {
 			throw new Error( 'Trying to save an inactive suggested edit session' );
@@ -169,6 +170,7 @@
 				this.helpPanelSuggestedEditsInteractionHappened =
 					data.helpPanelSuggestedEditsInteractionHappened;
 				this.onboardingNeedsToBeShown = data.onboardingNeedsToBeShown;
+				this.shouldOpenArticleInEditMode = data.shouldOpenArticleInEditMode;
 			} else {
 				mw.storage.session.remove( 'ge-suggestededit-session' );
 			}
