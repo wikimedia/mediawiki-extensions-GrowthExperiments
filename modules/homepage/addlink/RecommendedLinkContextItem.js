@@ -26,8 +26,7 @@ RecommendedLinkContextItem.static.commandName = 'TODO';
 
 RecommendedLinkContextItem.prototype.setup = function () {
 	// Don't call the parent method, because we want to build a slightly different UI
-	var recommendationInfo = this.getRecommendationInfo(),
-		$linkPreview, introLabel, $buttons;
+	var recommendationInfo = this.getRecommendationInfo(), introLabel;
 
 	/**
 	 * When the annotation is clicked on (rather than using buttons in the context item),
@@ -40,18 +39,31 @@ RecommendedLinkContextItem.prototype.setup = function () {
 		return;
 	}
 
+	/**
+	 * HACK: Customize getIconForLink function which gets called in generateBody
+	 * Even though linkCache is passed as the first argument, getIconForLink is called directly
+	 * from ve.init.platform.linkCache.constructor so passing a custom linkCache object won't work.
+	 * Store the original implementation to be restored
+	 */
+	this.originalGetIconForLink = ve.init.platform.linkCache.constructor.static.getIconForLink;
+	this.setLinkCacheIconFunction( function () {
+		return 'image';
+	} );
+
 	// This generateBody() call is copied from the parent method
-	$linkPreview = this.constructor.static.generateBody(
+	this.$linkPreview = this.constructor.static.generateBody(
 		ve.init.platform.linkCache,
 		this.model,
 		this.context.getSurface().getModel().getDocument().getHtmlDocument(),
 		this.context
 	);
+	this.$linkPreview.addClass( 'mw-ge-recommendedLinkContextItem-linkPreview' );
+
 	introLabel = new OO.ui.LabelWidget( {
 		label: mw.msg( 'growthexperiments-addlink-context-intro' ),
 		classes: [ 'mw-ge-recommendedLinkContextItem-introLabel' ]
 	} );
-	$buttons = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-buttons' );
+	this.$buttons = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-buttons' );
 
 	this.yesButton = new OO.ui.ToggleButtonWidget( {
 		icon: 'check',
@@ -111,15 +123,14 @@ RecommendedLinkContextItem.prototype.setup = function () {
 	this.$navButtonGroup = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-buttons-nav-group' );
 	this.$navButtonGroup.append( [ this.prevButton.$element, this.nextButton.$element ] );
 
-	$buttons.append( [ this.$acceptanceButtonGroup, this.$navButtonGroup ] );
-
+	this.$buttons.append( [ this.$acceptanceButtonGroup, this.$navButtonGroup ] );
 	this.$body.append(
 		introLabel.$element,
-		$linkPreview
+		this.$linkPreview
 	);
 
 	// On mobile, add buttons to $foot to make sure they are always visible.
-	$buttons.appendTo( this.context.isMobile() ? this.$foot : this.$body );
+	this.$buttons.appendTo( this.context.isMobile() ? this.$foot : this.$body );
 
 	// "Link" label is appended to old body (this.$body refers to innerBody)
 	// See ve.ui.LinkContextItem's constructor
@@ -133,10 +144,12 @@ RecommendedLinkContextItem.prototype.setup = function () {
 		this.updateLabelPreview();
 		this.setupHelpButton();
 		this.updateActionButtonsMode();
-
 		$( window ).on( 'resize',
 			OO.ui.debounce( this.updateActionButtonsMode.bind( this ), 250 )
 		);
+	} else {
+		// On desktop, wait until the buttons show up
+		setTimeout( this.updateActionButtonsMode.bind( this ) );
 	}
 };
 
@@ -333,27 +346,40 @@ RecommendedLinkContextItem.prototype.onAcceptanceChanged = function () {
 };
 
 /**
- * Update action buttons' classes based on whether yes & no buttons can be shown
- * on the same line as prev & next buttons
+ * Update action buttons' classes based on whether yes, no, and rejection dialog
+ * buttons can be shown on the same line as prev & next buttons
+ *
+ * There are 3 possible states:
+ * - Acceptance and navigation buttons on the same line, acceptance buttons aligned with description
+ * - Acceptance buttons separated, aligned with description
+ * - Acceptance buttons separated, center aligned (overflow if aligned w/description)
  */
 RecommendedLinkContextItem.prototype.updateActionButtonsMode = function () {
-	var $lastAcceptanceButton = this.$acceptanceButtonGroup.children().last(),
+	var acceptanceButtonsWidth = this.acceptanceButtonsWidth || this.$acceptanceButtonGroup.width(),
 		$nextButton = this.nextButton.$element,
-		acceptanceButtonLeft = $lastAcceptanceButton.offset().left,
+		$linkPreviewText = this.$linkPreview.find( '.ve-ui-linkContextItem-link' ),
 		nextButtonLeft = $nextButton.offset().left,
-		hasOverflow;
+		linkPreviewTextLeft = $linkPreviewText.offset().left,
+		canOverflowStateAlign = false,
+		availableWidth;
 
-	// Overflow if the edge of the no/rejection dialog button is over next button's
-	if ( document.documentElement.dir === 'rtl' ) {
-		hasOverflow = acceptanceButtonLeft < nextButtonLeft + $nextButton.width();
+	// This doesn't have to be re-computed (doesn't change upon window resize).
+	this.acceptanceButtonsWidth = acceptanceButtonsWidth;
+
+	if ( document.dir === 'rtl' ) {
+		availableWidth = $linkPreviewText.width() - ( nextButtonLeft + $nextButton.width() );
 	} else {
-		hasOverflow = acceptanceButtonLeft + $lastAcceptanceButton.width() > nextButtonLeft;
+		availableWidth = nextButtonLeft - linkPreviewTextLeft;
 	}
-	if ( hasOverflow ) {
+
+	if ( availableWidth < acceptanceButtonsWidth ) {
+		canOverflowStateAlign = acceptanceButtonsWidth + linkPreviewTextLeft < this.$buttons.width();
 		this.$acceptanceButtonGroup.addClass( 'overflow-state' );
+		this.$acceptanceButtonGroup.toggleClass( 'overflow-state-left-aligned', canOverflowStateAlign );
 	} else {
 		this.$acceptanceButtonGroup.removeClass( 'overflow-state' );
 	}
+
 	this.context.updateDimensions();
 };
 
@@ -396,6 +422,7 @@ RecommendedLinkContextItem.prototype.onNextActionClicked = function ( nextIndex 
 RecommendedLinkContextItem.prototype.teardown = function () {
 	RecommendedLinkContextItem.super.prototype.teardown.apply( this, arguments );
 	$( window ).off( 'resize' );
+	this.setLinkCacheIconFunction( this.originalGetIconForLink );
 };
 
 /**
@@ -411,6 +438,15 @@ RecommendedLinkContextItem.prototype.hasWrongDataModel = function () {
 	}
 	return annotation.getAttribute( 'recommendationWikitextOffset' ) !==
 		this.model.getAttribute( 'recommendationWikitextOffset' );
+};
+
+/**
+ * Set getIconForLink function for the current linkCache object
+ *
+ * @param {Function} iconFunction
+ */
+RecommendedLinkContextItem.prototype.setLinkCacheIconFunction = function ( iconFunction ) {
+	ve.init.platform.linkCache.constructor.static.getIconForLink = iconFunction;
 };
 
 module.exports = RecommendedLinkContextItem;
