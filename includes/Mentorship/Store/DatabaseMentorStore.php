@@ -6,6 +6,7 @@ use DBAccessObjectUtils;
 use JobQueueGroup;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityValue;
 use Wikimedia\Rdbms\IDatabase;
 
 class DatabaseMentorStore extends MentorStore {
@@ -72,7 +73,7 @@ class DatabaseMentorStore extends MentorStore {
 		if ( !$user->isRegistered() ) {
 			return null;
 		}
-		return $user;
+		return new UserIdentityValue( $user->getId(), $user->getName() );
 	}
 
 	/**

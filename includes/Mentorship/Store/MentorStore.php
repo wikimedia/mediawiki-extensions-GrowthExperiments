@@ -9,6 +9,7 @@ use HashBagOStuff;
 use IDBAccessObject;
 use InvalidArgumentException;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityValue;
 
 abstract class MentorStore implements IDBAccessObject {
 	/**
@@ -20,9 +21,6 @@ abstract class MentorStore implements IDBAccessObject {
 
 	/** @var BagOStuff */
 	protected $cache;
-
-	/** @var BagOStuff */
-	protected $innerCache;
 
 	/** @var int */
 	protected $cacheTtl = 0;
@@ -46,8 +44,7 @@ abstract class MentorStore implements IDBAccessObject {
 	 * @param int $ttl Cache expiry (0 for unlimited).
 	 */
 	public function setCache( BagOStuff $cache, int $ttl ) {
-		$this->innerCache = $cache;
-		$this->cache = new CachedBagOStuff( $this->innerCache );
+		$this->cache = new CachedBagOStuff( $cache );
 		$this->cacheTtl = $ttl;
 	}
 
@@ -162,7 +159,7 @@ abstract class MentorStore implements IDBAccessObject {
 		// Set the mentor in the in-process cache
 		$this->cache->set(
 			$this->makeCacheKey( $mentee, $mentorRole ),
-			$mentor,
+			new UserIdentityValue( $mentor->getId(), $mentor->getName() ),
 			$this->cacheTtl,
 			BagOStuff::WRITE_CACHE_ONLY
 		);
