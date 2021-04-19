@@ -8,7 +8,11 @@ QUnit.module( 'ext.growthExperiments.Homepage.Logger.js', QUnit.newMwEnvironment
 		wgUserEditCount: 123,
 		'wgGEHomepageModuleActionData-tutorial': { foo: 'bar' },
 		'wgGEHomepageModuleState-tutorial': 'done',
-		wgGEHomepageUserVariant: 'X'
+		wgGEUserVariants: [ 'X', 'Y' ]
+	},
+	beforeEach: function () {
+		this.sandbox.stub( mw.user.options, 'get' );
+		mw.user.options.get.withArgs( 'growthexperiments-homepage-variant' ).returns( 'X' );
 	}
 } ) );
 

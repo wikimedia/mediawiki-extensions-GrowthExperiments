@@ -47,9 +47,9 @@ class ExperimentUserManager {
 	public function getVariant( UserIdentity $user ) {
 		$variant = $this->userOptionsLookup->getOption(
 			$user,
-			HomepageHooks::HOMEPAGE_PREF_VARIANT
+			VariantHooks::USER_PREFERENCE
 		);
-		if ( !in_array( $variant, HomepageHooks::VARIANTS ) ) {
+		if ( !in_array( $variant, VariantHooks::VARIANTS ) ) {
 			$variant = $this->options->get( 'GEHomepageDefaultVariant' );
 		}
 		return $variant;
@@ -64,7 +64,7 @@ class ExperimentUserManager {
 	public function setVariant( UserIdentity $user, $variant ) {
 		$this->userOptionsManager->setOption(
 			$user,
-			HomepageHooks::HOMEPAGE_PREF_VARIANT,
+			VariantHooks::USER_PREFERENCE,
 			$variant
 		);
 	}

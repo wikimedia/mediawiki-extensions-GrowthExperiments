@@ -160,6 +160,12 @@
 				"TitleFactory",
 				"MainConfig"
 			]
+		},
+		"variant": {
+			"class": "GrowthExperiments\\VariantHooks",
+			"services": [
+				"MainConfig"
+			]
 		}
 	},
 	"Hooks": {
@@ -185,7 +191,8 @@
 			"GrowthExperiments\\HelpPanelHooks::onGetPreferences",
 			"homepage",
 			"tour",
-			"mentor"
+			"mentor",
+			"variant"
 		],
 		"BeforeWelcomeCreation": "welcomeSurvey",
 		"SiteNoticeAfter": "homepage",
@@ -234,7 +241,8 @@
 		"LoadExtensionSchemaUpdates": "schema",
 		"UnitTestsAfterDatabaseSetup": "schema",
 		"EditFilterMergedContent": "config",
-		"SkinTemplateNavigation": "config"
+		"SkinTemplateNavigation": "config",
+		"ResourceLoaderGetConfigVars": "variant"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
