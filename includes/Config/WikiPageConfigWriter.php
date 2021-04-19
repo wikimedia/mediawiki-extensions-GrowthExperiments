@@ -22,6 +22,9 @@ class WikiPageConfigWriter {
 	/** @var User */
 	private $performer;
 
+	/** @var WikiPageConfigValidation */
+	private $wikiPageConfigValidation;
+
 	/** @var WikiPageConfigLoader */
 	private $wikiPageConfigLoader;
 
@@ -41,6 +44,7 @@ class WikiPageConfigWriter {
 	private $allowList;
 
 	/**
+	 * @param WikiPageConfigValidation $wikiPageConfigValidation
 	 * @param WikiPageConfigLoader $wikiPageConfigLoader
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param TitleFactory $titleFactory
@@ -50,6 +54,7 @@ class WikiPageConfigWriter {
 	 * @param User $performer
 	 */
 	public function __construct(
+		WikiPageConfigValidation $wikiPageConfigValidation,
 		WikiPageConfigLoader $wikiPageConfigLoader,
 		WikiPageFactory $wikiPageFactory,
 		TitleFactory $titleFactory,
@@ -58,6 +63,7 @@ class WikiPageConfigWriter {
 		LinkTarget $configPage,
 		User $performer
 	) {
+		$this->wikiPageConfigValidation = $wikiPageConfigValidation;
 		$this->wikiPageConfigLoader = $wikiPageConfigLoader;
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->titleFactory = $titleFactory;
@@ -170,6 +176,7 @@ class WikiPageConfigWriter {
 		ksort( $this->wikiConfig, SORT_STRING );
 
 		$status = Status::newGood();
+		$status->merge( $this->wikiPageConfigValidation->validate( $this->wikiConfig ) );
 
 		// Save only if config was changed, so editing interface
 		// doesn't need to make sure config was indeed changed.

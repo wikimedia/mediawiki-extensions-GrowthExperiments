@@ -253,13 +253,6 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		$dataToSave['GEHomepageSuggestedEditsIntroLinks'] =
 			$this->normalizeSuggestedEditsIntroLinks( $data );
 
-		// Make sure the config is valid. FormSpecialPage should validate it as well, but just in
-		// case
-		$validateStatus = $this->wikiPageConfigValidation->validate( $dataToSave );
-		if ( !$validateStatus->isOK() ) {
-			return $validateStatus;
-		}
-
 		$this->configWriter->setVariables( $dataToSave );
 		return $this->configWriter->save( $data['summary'] );
 	}

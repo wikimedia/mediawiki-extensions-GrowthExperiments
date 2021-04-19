@@ -25,6 +25,9 @@ class WikiPageConfigWriterFactory {
 	/** @var User|null Injected system user, to allow injecting from tests */
 	private $systemUser;
 
+	/** @var WikiPageConfigValidation */
+	private $wikiPageConfigValidation;
+
 	/**
 	 * @param WikiPageConfigLoader $wikiPageConfigLoader
 	 * @param WikiPageFactory $wikiPageFactory
@@ -39,6 +42,7 @@ class WikiPageConfigWriterFactory {
 		LoggerInterface $logger,
 		?User $systemUser = null
 	) {
+		$this->wikiPageConfigValidation = new WikiPageConfigValidation();
 		$this->wikiPageConfigLoader = $wikiPageConfigLoader;
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->titleFactory = $titleFactory;
@@ -62,6 +66,7 @@ class WikiPageConfigWriterFactory {
 			throw new InvalidArgumentException( 'Invalid performer passed' );
 		}
 		return new WikiPageConfigWriter(
+			$this->wikiPageConfigValidation,
 			$this->wikiPageConfigLoader,
 			$this->wikiPageFactory,
 			$this->titleFactory,
