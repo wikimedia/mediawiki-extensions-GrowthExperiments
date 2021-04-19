@@ -37,7 +37,7 @@ class Tutorial extends BaseTaskModule {
 	}
 
 	private function getHomepageTutorialTitleValue() {
-		return $this->getGrowthWikiConfig()->get( self::TUTORIAL_TITLE_CONFIG );
+		return $this->getContext()->getConfig()->get( self::TUTORIAL_TITLE_CONFIG );
 	}
 
 	private function getHomepageTutorialTitle() {
