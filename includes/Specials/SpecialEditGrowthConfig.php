@@ -4,7 +4,6 @@ namespace GrowthExperiments\Specials;
 
 use FormSpecialPage;
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
-use GrowthExperiments\Config\WikiPageConfigValidation;
 use GrowthExperiments\Config\WikiPageConfigWriter;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use HTMLForm;
@@ -16,9 +15,6 @@ use TitleFactory;
 class SpecialEditGrowthConfig extends FormSpecialPage {
 	/** @var string[] */
 	private const SUGGESTED_EDITS_INTRO_LINKS = [ 'create', 'image' ];
-
-	/** @var WikiPageConfigValidation */
-	private $wikiPageConfigValidation;
 
 	/** @var TitleFactory */
 	private $titleFactory;
@@ -58,7 +54,6 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	) {
 		parent::__construct( 'EditGrowthConfig', 'editinterface' );
 
-		$this->wikiPageConfigValidation = new WikiPageConfigValidation();
 		$this->titleFactory = $titleFactory;
 		$this->revisionLookup = $revisionLookup;
 		$this->configWriterFactory = $configWriterFactory;
@@ -178,6 +173,96 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		)->parseAsBlock() );
 	}
 
+	private function getRawDescriptors(): array {
+		return [
+			'GEHelpPanelReadingModeNamespaces' => [
+				'type' => 'namespacesmultiselect',
+				'exists' => true,
+				'autocomplete' => false,
+				'label-message' => 'growthexperiments-edit-config-help-panel-reading-namespaces',
+				'section' => 'help-panel',
+			],
+			'GEHelpPanelExcludedNamespaces' => [
+				'type' => 'namespacesmultiselect',
+				'exists' => true,
+				'autocomplete' => false,
+				'label-message' => 'growthexperiments-edit-config-help-panel-disabled-namespaces',
+				'section' => 'help-panel',
+			],
+			'GEHelpPanelHelpDeskTitle' => [
+				'type' => 'title',
+				'exists' => true,
+				'label-message' => 'growthexperiments-edit-config-help-panel-helpdesk-title',
+				'required' => false,
+				'section' => 'help-panel',
+			],
+			'GEHelpPanelHelpDeskPostOnTop' => [
+				'type' => 'check',
+				'label-message' => 'growthexperiments-edit-config-help-panel-post-on-top',
+				'section' => 'help-panel',
+			],
+			'GEHelpPanelViewMoreTitle' => [
+				'type' => 'title',
+				'exists' => true,
+				'label-message' => 'growthexperiments-edit-config-help-panel-view-more',
+				'required' => false,
+				'section' => 'help-panel',
+			],
+			'GEHelpPanelSearchNamespaces' => [
+				'type' => 'namespacesmultiselect',
+				'exists' => true,
+				'autocomplete' => false,
+				'label-message' => 'growthexperiments-edit-config-help-panel-searched-namespaces',
+				'section' => 'help-panel',
+			],
+			'GEHelpPanelAskMentor' => [
+				'type' => 'check',
+				'label-message' => 'growthexperiments-edit-config-help-panel-ask-mentor',
+				'section' => 'help-panel',
+			],
+			'GEHomepageTutorialTitle' => [
+				'type' => 'title',
+				'exists' => true,
+				'label-message' => 'growthexperiments-edit-config-homepage-tutorial-title',
+				'required' => false,
+				'section' => 'homepage',
+			],
+			'GEHomepageSuggestedEditsIntroLinks-create' => [
+				'type' => 'title',
+				'exists' => true,
+				'label-message' => 'growthexperiments-edit-config-homepage-intro-links-create',
+				'required' => true,
+				'section' => 'homepage',
+			],
+			'GEHomepageSuggestedEditsIntroLinks-image' => [
+				'type' => 'title',
+				'exists' => true,
+				'label-message' => 'growthexperiments-edit-config-homepage-intro-links-image',
+				'required' => true,
+				'section' => 'homepage',
+			],
+			'GEMentorshipEnabled' => [
+				'type' => 'check',
+				'label-message' => 'growthexperiments-edit-config-mentorship-enabled',
+				'section' => 'mentorship',
+			],
+			'GEHomepageMentorsList' => [
+				'type' => 'title',
+				'exists' => true,
+				'label-message' => 'growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors',
+				'required' => false,
+				'section' => 'mentorship',
+			],
+			'GEHomepageManualAssignmentMentorsList' => [
+				'type' => 'title',
+				'exists' => true,
+				'label-message' => 'growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors',
+				'required' => false,
+				'section' => 'mentorship',
+			],
+		];
+	}
+
 	/**
 	 * @inheritDoc
 	 */
@@ -187,7 +272,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			return [];
 		}
 
-		$descriptors = $this->wikiPageConfigValidation->getFormDescriptors();
+		$descriptors = $this->getRawDescriptors();
 
 		// Add default values
 		foreach ( $descriptors as $name => $descriptor ) {

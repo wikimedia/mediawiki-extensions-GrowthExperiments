@@ -6,126 +6,48 @@ use LogicException;
 use StatusValue;
 
 class WikiPageConfigValidation {
-	/**
-	 * Returns form field in the same form as FormSpecialPage::getFormFields
-	 *
-	 * This needs to be in line with GrowthExperimentsMultiConfig::ALLOW_LIST
-	 *
-	 * @see FormSpecialPage::getFormFields()
-	 *
-	 * @return array
-	 */
-	public function getFormDescriptors(): array {
+	private function getConfigDescriptors(): array {
 		return [
 			'GEHelpPanelReadingModeNamespaces' => [
-				'type' => 'namespacesmultiselect',
-				'exists' => true,
-				'autocomplete' => false,
-				'label-message' => 'growthexperiments-edit-config-help-panel-reading-namespaces',
-				'section' => 'help-panel',
+				'type' => 'int[]',
 			],
 			'GEHelpPanelExcludedNamespaces' => [
-				'type' => 'namespacesmultiselect',
-				'exists' => true,
-				'autocomplete' => false,
-				'label-message' => 'growthexperiments-edit-config-help-panel-disabled-namespaces',
-				'section' => 'help-panel',
+				'type' => 'int[]',
 			],
 			'GEHelpPanelHelpDeskTitle' => [
-				'type' => 'title',
-				'exists' => true,
-				'label-message' => 'growthexperiments-edit-config-help-panel-helpdesk-title',
-				'required' => false,
-				'section' => 'help-panel',
+				'type' => 'string',
 			],
 			'GEHelpPanelHelpDeskPostOnTop' => [
-				'type' => 'check',
-				'label-message' => 'growthexperiments-edit-config-help-panel-post-on-top',
-				'section' => 'help-panel',
+				'type' => 'bool',
 			],
 			'GEHelpPanelViewMoreTitle' => [
-				'type' => 'title',
-				'exists' => true,
-				'label-message' => 'growthexperiments-edit-config-help-panel-view-more',
-				'required' => false,
-				'section' => 'help-panel',
+				'type' => 'string',
 			],
 			'GEHelpPanelSearchNamespaces' => [
-				'type' => 'namespacesmultiselect',
-				'exists' => true,
-				'autocomplete' => false,
-				'label-message' => 'growthexperiments-edit-config-help-panel-searched-namespaces',
-				'section' => 'help-panel',
+				'type' => 'int[]',
 			],
 			'GEHelpPanelAskMentor' => [
-				'type' => 'check',
-				'label-message' => 'growthexperiments-edit-config-help-panel-ask-mentor',
-				'section' => 'help-panel',
+				'type' => 'bool',
 			],
 			'GEHomepageTutorialTitle' => [
-				'type' => 'title',
-				'exists' => true,
-				'label-message' => 'growthexperiments-edit-config-homepage-tutorial-title',
-				'required' => false,
-				'section' => 'homepage',
-			],
-			'GEHomepageSuggestedEditsIntroLinks-create' => [
-				'type' => 'title',
-				'exists' => true,
-				'label-message' => 'growthexperiments-edit-config-homepage-intro-links-create',
-				'required' => true,
-				'section' => 'homepage',
-			],
-			'GEHomepageSuggestedEditsIntroLinks-image' => [
-				'type' => 'title',
-				'exists' => true,
-				'label-message' => 'growthexperiments-edit-config-homepage-intro-links-image',
-				'required' => true,
-				'section' => 'homepage',
+				'type' => 'string',
 			],
 			'GEMentorshipEnabled' => [
-				'type' => 'check',
-				'label-message' => 'growthexperiments-edit-config-mentorship-enabled',
-				'section' => 'mentorship',
+				'type' => 'bool',
 			],
 			'GEHomepageMentorsList' => [
-				'type' => 'title',
-				'exists' => true,
-				'label-message' => 'growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors',
-				'required' => false,
-				'section' => 'mentorship',
+				'type' => 'string',
 			],
 			'GEHomepageManualAssignmentMentorsList' => [
-				'type' => 'title',
-				'exists' => true,
-				'label-message' => 'growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors',
-				'required' => false,
-				'section' => 'mentorship',
+				'type' => 'string',
 			],
+			'GEHelpPanelSuggestedEditsPreferredEditor' => [
+				'type' => 'string',
+			],
+			'GEHomepageSuggestedEditsIntroLinks' => [
+				'type' => 'array<string,string>',
+			]
 		];
-	}
-
-	/**
-	 * Get datatype from a form field type
-	 *
-	 * Ideally, this should provide a meaningful output for all values used
-	 * as type in self::getFormDescriptors(), but this is not enforced. The default
-	 * is null, which means "no datatype validation".
-	 *
-	 * @param string $typeString
-	 * @return string|null
-	 */
-	private function getNativeDatatype( string $typeString ): ?string {
-		switch ( $typeString ) {
-			case 'check':
-				return 'bool';
-			case 'title':
-				return 'string';
-			case 'namespacesmultiselect':
-				return 'int[]';
-		}
-
-		return null;
 	}
 
 	/**
@@ -156,6 +78,17 @@ class WikiPageConfigValidation {
 					}
 				}
 				return true;
+			case 'array<string,string>':
+				if ( !is_array( $value ) ) {
+					// If it is not an array, it cannot be an array of the intended format
+					return false;
+				}
+				foreach ( $value as $key => $item ) {
+					if ( !is_string( $key ) || !is_string( $item ) ) {
+						return false;
+					}
+				}
+				return true;
 		}
 
 		// No validation branch was executed, unsupported datatype
@@ -180,7 +113,7 @@ class WikiPageConfigValidation {
 		$value = $data[$fieldName];
 
 		// Check only the datatype for now
-		$expectedType = $this->getNativeDatatype( $descriptor['type'] );
+		$expectedType = $descriptor['type'];
 		if ( !$this->validateFieldDatatype( $expectedType, $value ) ) {
 			return StatusValue::newFatal(
 				'growthexperiments-config-validator-datatype-mismatch',
@@ -201,7 +134,7 @@ class WikiPageConfigValidation {
 	 */
 	public function validate( array $data ): StatusValue {
 		$status = StatusValue::newGood();
-		foreach ( $this->getFormDescriptors() as $field => $descriptor ) {
+		foreach ( $this->getConfigDescriptors() as $field => $descriptor ) {
 			if ( !array_key_exists( $field, $data ) ) {
 				// No need to validate something we're not setting
 				continue;
