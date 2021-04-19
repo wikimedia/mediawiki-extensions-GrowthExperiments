@@ -37,6 +37,7 @@ $specialPageAliases['bn'] = [
 	'Homepage' => [ 'নীড়পাতা' ],
 	'Impact' => [ 'প্রভাব' ],
 	'ClaimMentee' => [ 'পরামর্শগ্রহীতা_দাবিকরণ' ],
+	'EditGrowthConfig' => [ 'গ্রোথ_কনফিগারেশন_সম্পাদনা' ],
 ];
 
 /** čeština (Czech) */
@@ -307,4 +308,5 @@ $specialPageAliases['vi'] = [
 	'WelcomeSurvey' => [ 'Bảng_câu_hỏi_chào_mừng' ],
 	'Homepage' => [ 'Trang_nhà' ],
 	'ClaimMentee' => [ 'Nhận_Người_được_cố_vấn' ],
+	'EditGrowthConfig' => [ 'Sửa_đổi_cấu_hình_Tăng_Trưởng' ],
 ];
