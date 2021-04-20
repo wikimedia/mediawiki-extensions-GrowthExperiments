@@ -1239,6 +1239,10 @@
 			"description": "Name of page used for on-wiki config; must be in NS_MEDIAWIKI and end with .json; only variables listed in GEOnWikiConfigAllowList may be overriden on wiki",
 			"value": "MediaWiki:GrowthExperimentsConfig.json"
 		},
+		"GEWikiConfigEnabled": {
+			"description": "If set to false, on-wiki configuration will be ignored. WARNING: This will fallback to PHP-globals for all config. By setting this to false, you can break most of the features.",
+			"value": true
+		},
 		"GEHomepageTutorialTitle": {
 			"description": "MediaWiki title to link to in the Tutorial button in the homepage Start module.",
 			"value": "Main_Page"
