@@ -1,8 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
-			"Martin Urbanec"
+			"Martin Urbanec",
+			"Martin Urbanec (WMF)"
 		]
 	},
-	"growthexperiments-desc": "Toto rozšíření obsahuje experimenty týmu Growth."
+	"growthexperiments-desc": "Toto rozšíření obsahuje experimenty týmu Growth.",
+	"growthexperiments-config-validator-error": "Validace $1 selhala: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> by mělo být <code>$2</code>, ale je <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Model obsahu stránky se neshoduje: Konfigurace rozšíření GrowthExperiments musí mít model JSON, ale má $1",
+	"growthexperiments-edit-config-title": "Editujte konfiguraci Growth funkcí",
+	"growthexperiments-edit-config-last-edit": "Naposledy upraveno {{GENDER:$1|uživatelem|uživatelkou}} [[User:$1|$1]] $2.",
+	"growthexperiments-edit-config-last-edit-unknown-user": "Naposledy upraveno neznámým uživatelem $1.",
+	"growthexperiments-edit-config-edit-summary": "Shrnutí editace",
+	"growthexperiments-edit-config-config-changed": "Konfigurace byla změněna.",
+	"growthexperiments-edit-config-return-to-form": "Můžete se [[Special:EditGrowthConfig|vrátit]] do editačního formuláře.",
+	"growthexperiments-edit-config-help-panel": "Panel Potřebuji pomoc",
+	"growthexperiments-edit-config-help-panel-disabled-namespaces": "Jmenné prostory s deaktivovaným panelem Potřebuji pomoc",
+	"growthexperiments-edit-config-help-panel-helpdesk-title": "Název stránky Potřebuji pomoc"
 }

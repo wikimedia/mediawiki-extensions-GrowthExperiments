@@ -20,6 +20,8 @@
 	"growthexperiments-edit-config-config-changed": "Se cambió la configuración",
 	"growthexperiments-edit-config-return-to-form": "Puedes [[Special:EditGrowthConfig|regresar]] al formulario de edición.",
 	"growthexperiments-edit-config-help-panel": "Panel de ayuda",
+	"growthexperiments-edit-config-help-panel-reading-namespaces": "Espacios de nombres con el panel de ayuda habilitado en modo lectura",
+	"growthexperiments-edit-config-help-panel-disabled-namespaces": "Espacios de nombres con el panel de ayuda desactivado",
 	"growthexperiments-edit-config-help-panel-searched-namespaces": "Busque los siguientes espacios de nombres",
 	"growthexperiments-edit-config-homepage": "Página de inicio para usuarios nuevos",
 	"growthexperiments-edit-config-homepage-tutorial-title": "Título de la página del tutorial",
