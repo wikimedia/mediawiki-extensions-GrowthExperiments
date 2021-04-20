@@ -72,6 +72,11 @@ class SuggestionsInfo {
 				null,
 				[ 'useCache' => false ]
 			);
+			if ( $result instanceof StatusValue ) {
+				// Use -1 as a crude indicator of an error.
+				$data['tasks'][$taskType->getId()]['totalCount'] = -1;
+				continue;
+			}
 			$data['tasks'][$taskType->getId()]['totalCount'] += $result->getTotalCount();
 			$totalCount += $result->getTotalCount();
 		}
@@ -84,6 +89,11 @@ class SuggestionsInfo {
 					[ $topic->getId() ],
 					1
 				);
+				if ( $result instanceof StatusValue ) {
+					// Use -1 as a crude indicator of an error.
+					$data['topics'][$topic->getId()]['tasks'][$taskType->getId()]['count'] = -1;
+					continue;
+				}
 				$data['topics'][$topic->getId()]['tasks'][$taskType->getId()]['count'] =
 					$result->getTotalCount();
 				$data['topics'][$topic->getId()]['totalCount'] += $result->getTotalCount();
