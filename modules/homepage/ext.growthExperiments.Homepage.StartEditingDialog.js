@@ -234,7 +234,7 @@ StartEditingDialog.prototype.updateMatchCount = function () {
 StartEditingDialog.prototype.getActionProcess = function ( action ) {
 	var settings, logData,
 		dialog = this,
-		config = require( './config.json' );
+		config = require( './suggestededits/config.json' );
 
 	// Don't allow the dialog to be closed by the user in non-modal mode
 	if ( !this.getManager().modal && ( !action || action === 'close' || action === 'done' ) ) {
@@ -344,7 +344,7 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 	var $generalIntro, $generalImage, $responseIntro, surveyData, responseData, imageData, imageUrl, generalImageUrl,
 		$topicIntro, $topicMessage, $topicSelectorWrapper, $topicDescription, descriptionImage,
 		imagePath = mw.config.get( 'wgExtensionAssetsPath' ) + '/GrowthExperiments/images',
-		config = require( './config.json' ),
+		config = require( './suggestededits/config.json' ),
 		introLinks = config.GEHomepageSuggestedEditsIntroLinks,
 		responseMap = {
 			'add-image': {
@@ -592,7 +592,7 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 	if ( this.useTaskTypeSelector ) {
 		this.taskTypeSelector = new TaskTypeSelectionWidget( {
 			selectedTaskTypes: require( './suggestededits/DefaultTaskTypes.json' ),
-			introLinks: require( './config.json' ).GEHomepageSuggestedEditsIntroLinks,
+			introLinks: require( './suggestededits/config.json' ).GEHomepageSuggestedEditsIntroLinks,
 			classes: [ 'mw-ge-startediting-dialog-difficulty-taskTypeSelector' ]
 		} )
 			.connect( this, {

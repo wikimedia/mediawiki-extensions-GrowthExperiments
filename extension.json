@@ -331,7 +331,7 @@
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
 				},
 				{
-					"name": "homepage/config.json",
+					"name": "homepage/suggestededits/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
 				}
 			],
@@ -632,7 +632,7 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.js",
 				"utils/ext.growthExperiments.Utils.js",
 				{
-					"name": "homepage/config.json",
+					"name": "homepage/suggestededits/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
 				},
 				{

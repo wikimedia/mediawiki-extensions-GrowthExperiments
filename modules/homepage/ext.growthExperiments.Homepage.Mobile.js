@@ -24,7 +24,7 @@
 			taskPreviewData = mw.config.get( 'homepagemodules' )[ 'suggested-edits' ][ 'task-preview' ] || null,
 			activationSettings = { 'growthexperiments-homepage-suggestededits-activated': 1 },
 			api = new GrowthTasksApi( {
-				suggestedEditsConfig: require( './config.json' ),
+				suggestedEditsConfig: require( './suggestededits/config.json' ),
 				isMobile: isMobile,
 				logContext: 'mobilesummary'
 			} );
