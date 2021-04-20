@@ -161,7 +161,7 @@ class HelpPanelHooks {
 				->get( 'GEHelpPanelReadingModeNamespaces' ),
 			'GEHelpPanelSearchForeignAPI' => $config->get( 'GEHelpPanelSearchForeignAPI' ),
 			'GEHelpPanelLinks' => HelpPanel::getHelpPanelLinks(
-				$context, self::getGrowthWikiConfig(), $config
+				$context, self::getGrowthWikiConfig()
 			),
 			'GEHelpPanelSuggestedEditsPreferredEditor' =>
 				self::getGrowthWikiConfig()->get( 'GEHelpPanelSuggestedEditsPreferredEditor' ),
