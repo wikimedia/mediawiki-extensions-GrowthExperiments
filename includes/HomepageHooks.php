@@ -35,6 +35,7 @@ use GrowthExperiments\Specials\SpecialNewcomerTasksInfo;
 use Html;
 use IBufferingStatsdDataFactory;
 use IContextSource;
+use IDBAccessObject;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Minerva\Menu\Entries\HomeMenuEntry;
 use MediaWiki\Minerva\Menu\Entries\IProfileMenuEntry;
@@ -128,6 +129,9 @@ class HomepageHooks implements
 	/** @var SuggestionsInfo */
 	private $suggestionsInfo;
 
+	/** @var bool Are we in a context where it is safe to access the primary DB? */
+	private $canAccessPrimary;
+
 	/**
 	 * HomepageHooks constructor.
 	 * @param Config $config
@@ -181,6 +185,11 @@ class HomepageHooks implements
 		$this->linkRecommendationStore = $linkRecommendationStore;
 		$this->linkRecommendationHelper = $linkRecommendationHelper;
 		$this->suggestionsInfo = $suggestionsInfo;
+
+		// Ideally this would be injected but the way hook handlers are defined makes that hard.
+		$this->canAccessPrimary = defined( 'MEDIAWIKI_JOB_RUNNER' )
+			|| MediaWikiServices::getInstance()->getMainConfig()->get( 'CommandLineMode' )
+			|| RequestContext::getMain()->getRequest()->wasPosted();
 	}
 
 	/**
@@ -898,22 +907,39 @@ class HomepageHooks implements
 		if ( !$this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
 			return;
 		}
+		$revision = $page->getRevisionRecord();
+		$revId = $revision ? $revision->getId() : null;
+		if ( !$revId || !$page->getTitle() ) {
+			// should not happen
+			return;
+		} elseif ( !$this->canAccessPrimary ) {
+			// A GET request; the hook might be called for diagnostic purposes, e.g. via
+			// CirrusSearch\Api\QueryBuildDocument, but not for anything important.
+			return;
+		}
+
 		// The hook is called after edits, but also on purges or edits to transcluded content,
 		// so we mustn't delete recommendations that are still valid. Checking whether there is any
 		// recommendation stored for the current revision should do the trick.
-		$revision = $page->getRevisionRecord();
-		$revId = $revision ? $revision->getId() : null;
-		// Is the revision ID accurate? Not sure (due to replication lag) but it shouldn't
-		// matter. If $page is being edited, the cache has already been refreshed and the
-		// ID is correct. If this is a purge or other re-rendering-related update, and the
-		// page has been edited very recently, and it already has a recommendation, we might
-		// end up erroneously deleting it; that's a very fringe scenario and can be ignored.
-		$hasRecommendation = $revId && $this->linkRecommendationStore->getByRevId( $revId );
-		if ( !$hasRecommendation ) {
+		//
+		// Both revision IDs might be incorrect due to replication lag but usually it won't
+		// matter. If $page is being edited, the cache has already been refreshed and $revId
+		// is correct, so we are guaranteed to end up on the delete branch. If this is a purge
+		// or other re-rendering-related update, and the page has been edited very recently,
+		// and it already has a recommendation (so the real recommendation revision is larger
+		// than what we see), we need to avoid erroneously deleting the recommendation - since
+		// new recommendations are added to the search index asynchronously, it would result
+		// in the DB and search index getting out of sync.
+		$linkRecommendation = $this->linkRecommendationStore->getByLinkTarget( $page->getTitle() );
+		if ( $linkRecommendation && $linkRecommendation->getRevisionId() < $revId ) {
+			$linkRecommendation = $this->linkRecommendationStore->getByLinkTarget( $page->getTitle(),
+				IDBAccessObject::READ_LATEST );
+		}
+		if ( $linkRecommendation && $linkRecommendation->getRevisionId() < $revId ) {
 			$fields[WeightedTagsHooks::FIELD_NAME][] = LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX
 				. '/' . CirrusIndexField::MULTILIST_DELETE_GROUPING;
+			$this->linkRecommendationHelper->deleteLinkRecommendation( $page->getTitle()->toPageIdentity(), false );
 		}
-		$this->linkRecommendationHelper->deleteLinkRecommendation( $page->getTitle()->toPageIdentity(), false );
 	}
 
 	/**
