@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoaderTrait
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\RawOresTopic;
 use MediaWiki\MediaWikiServices;
+use StatusValue;
 
 /**
  * Functionality for searching for ORES topics instead of Growth topics.
@@ -74,8 +75,11 @@ trait OresTopicTrait {
 
 					/** @inheritDoc */
 					public function loadTaskTypes() {
-						return array_merge( $this->realConfigurationLoader->loadTaskTypes(),
-							$this->extraTaskTypes );
+						$taskTypes = $this->realConfigurationLoader->loadTaskTypes();
+						if ( $taskTypes instanceof StatusValue ) {
+							return $taskTypes;
+						}
+						return array_merge( $taskTypes, $this->extraTaskTypes );
 					}
 
 					/** @inheritDoc */
