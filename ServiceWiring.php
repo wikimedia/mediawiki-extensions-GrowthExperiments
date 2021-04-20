@@ -212,20 +212,23 @@ return [
 			(int)$geServices->getGrowthConfig()->get( 'GEMentorshipMigrationStage' ),
 			$geServices->getPreferenceMentorStore(),
 			$geServices->getDatabaseMentorStore(),
-			defined( 'MEDIAWIKI_JOB_RUNNER' ) || RequestContext::getMain()
-				->getRequest()->wasPosted()
+			defined( 'MEDIAWIKI_JOB_RUNNER' ) ||
+				$geServices->getConfig()->get( 'CommandLineMode' ) ||
+				RequestContext::getMain()->getRequest()->wasPosted()
 		);
 	},
 
 	'GrowthExperimentsMentorStoreDatabase' => function ( MediaWikiServices $services ): DatabaseMentorStore {
-		$lb = GrowthExperimentsServices::wrap( $services )->getLoadBalancer();
+		$geServices = GrowthExperimentsServices::wrap( $services );
+		$lb = $geServices->getLoadBalancer();
 
 		$databaseMentorStore = new DatabaseMentorStore(
 			$services->getUserFactory(),
 			$lb->getLazyConnectionRef( DB_REPLICA ),
 			$lb->getLazyConnectionRef( DB_MASTER ),
-			defined( 'MEDIAWIKI_JOB_RUNNER' ) || RequestContext::getMain()
-				->getRequest()->wasPosted()
+			defined( 'MEDIAWIKI_JOB_RUNNER' ) ||
+				$geServices->getConfig()->get( 'CommandLineMode' ) ||
+				RequestContext::getMain()->getRequest()->wasPosted()
 		);
 		$databaseMentorStore->setCache(
 			ObjectCache::getLocalClusterInstance(),
@@ -238,8 +241,9 @@ return [
 		return new PreferenceMentorStore(
 			$services->getUserFactory(),
 			$services->getUserOptionsManager(),
-			defined( 'MEDIAWIKI_JOB_RUNNER' ) || RequestContext::getMain()
-				->getRequest()->wasPosted()
+			defined( 'MEDIAWIKI_JOB_RUNNER' ) ||
+				GrowthExperimentsServices::wrap( $services )->getConfig()->get( 'CommandLineMode' ) ||
+				RequestContext::getMain()->getRequest()->wasPosted()
 		);
 	},
 
