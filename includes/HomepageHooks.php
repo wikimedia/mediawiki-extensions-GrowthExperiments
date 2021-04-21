@@ -633,19 +633,21 @@ class HomepageHooks implements
 			}
 			$this->experimentUserManager->setVariant( $user, $variant );
 
-			// Populate the cache of tasks with default task/topic selections
-			// so that when the user lands on Special:Homepage, the request to retrieve tasks
-			// will pull from the cached TaskSet instead of doing time consuming search queries.
-			// With nuances in how mobile/desktop users are onboarded, this may not be always
-			// necessary but does no harm to run for all newly created users.
-			DeferredUpdates::addCallableUpdate( function () use ( $user ) {
-				$taskSuggester = $this->taskSuggesterFactory->create();
-				$taskSuggester->suggest(
-					$user,
-					$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-					$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
-				);
-			} );
+			if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
+				// Populate the cache of tasks with default task/topic selections
+				// so that when the user lands on Special:Homepage, the request to retrieve tasks
+				// will pull from the cached TaskSet instead of doing time consuming search queries.
+				// With nuances in how mobile/desktop users are onboarded, this may not be always
+				// necessary but does no harm to run for all newly created users.
+				DeferredUpdates::addCallableUpdate( function () use ( $user ) {
+					$taskSuggester = $this->taskSuggesterFactory->create();
+					$taskSuggester->suggest(
+						$user,
+						$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
+						$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
+					);
+				} );
+			}
 		}
 	}
 
