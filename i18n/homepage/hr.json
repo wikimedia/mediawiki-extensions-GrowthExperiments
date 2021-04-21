@@ -214,7 +214,7 @@
 	"growthexperiments-homepage-suggestededits-topic-filters-title": "Izaberite interese",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Gotovo",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "Gotovo",
-	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "{{PLURAL:$1|Pronađen <strong>$1</strong> članak|Pronađena <strong>$1</strong> članka|Pronađeno <strong>$1</strong> članaka}}",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "{{PLURAL:$1|Pronađen je|Pronađena su|Pronađeno je}} <strong>$1</strong> {{PLURAL:$1|članak|članka|članaka}}",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "Korektura",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Pronađite izvore",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Popravite članke",

@@ -336,7 +336,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "వివరణ ఏమీ అవసరం లేని రోజూ కనిపించే భావన (ఉదా: \"ఆకాశం\")",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "సరైన లింకు గమ్యం కాదు (ఉదాహరణకు \"సూర్యుడు\" ను \"నక్షత్రం\" కు లింకు ఇస్తున్నట్లుగా)",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "లింకు గమ్యాన్ని మార్చేందుకు, లింకు పక్కనే ఉన్న దిద్దుబాటు పెన్సిలు $1 ను వత్తండి",
-	"growthexperiments-addlink-rejectiondialog-reason-other": "ఇతరత్రా / చెప్పను",
+	"growthexperiments-addlink-rejectiondialog-reason-other": "ఇతరాలు",
 	"growthexperiments-addlink-rejectiondialog-action-done": "పూర్తయింది",
 	"growthexperiments-addlink-onboarding-content-intro-title": "లింకులు చేరుస్తూ వికీలో దిద్దుబాట్ల గురించి త్వరగా నేర్చుకోవచ్చు.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "ఒక {{SITENAME}} వ్యాసం లోని పదాలు, ఇతర {{SITENAME}} వ్యాసాలకు లింకు అవ్వాలో లేదో {{GENDER:$1|మీరు}} నిర్ణయిస్తారు.",
@@ -355,5 +355,6 @@
 	"growthexperiments-addlink-onboarding-dialog-label-next": "తరువాతి పరిచయ దశ",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "మునుపటి పరిచయ దశ",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "మొదలు పెట్టండి",
-	"grant-managementorship": "శిష్యరికాన్ని నిర్వహించండి"
+	"grant-managementorship": "శిష్యరికాన్ని నిర్వహించండి",
+	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "సలహాలు"
 }

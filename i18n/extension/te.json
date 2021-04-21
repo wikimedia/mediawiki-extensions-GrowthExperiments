@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Chaduvari"
+			"Chaduvari",
+			"Veeven"
 		]
 	},
-	"growthexperiments-desc": "గ్రోత్ బృందం చేసిన ప్రయోగాలు ఈ పొడిగింతలో ఉంటాయి"
+	"growthexperiments-desc": "గ్రోత్ బృందం చేసిన ప్రయోగాలు ఈ పొడిగింతలో ఉంటాయి",
+	"growthexperiments-edit-config-edit-summary": "దిద్దుబాటు సారాంశం"
 }
