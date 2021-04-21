@@ -130,7 +130,8 @@ class LinkRecommendationHelper {
 			$linkRecommendation->getTitle(),
 			$linkRecommendation->getPageId(),
 			$linkRecommendation->getRevisionId(),
-			$goodLinks
+			$goodLinks,
+			$linkRecommendation->getMetadata()
 		);
 	}
 

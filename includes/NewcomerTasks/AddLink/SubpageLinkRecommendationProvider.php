@@ -81,8 +81,15 @@ class SubpageLinkRecommendationProvider implements LinkRecommendationProvider {
 
 		// Turn $title into a real Title
 		$title = $subpage->getTitle()->getBaseTitle();
-		$links = LinkRecommendation::getLinksFromArray( $data['links'] );
-		return new LinkRecommendation( $title, $title->getArticleID(), $title->getLatestRevID(), $links );
+		return new LinkRecommendation(
+			$title,
+			$title->getArticleID(),
+			$title->getLatestRevID(),
+			LinkRecommendation::getLinksFromArray( $data['links'] ),
+			// We don't really need the meta field for subpage provider, so provide
+			// a fallback if not set
+			LinkRecommendation::getMetadataFromArray( $data['meta'] ?? [] )
+		);
 	}
 
 	/**
