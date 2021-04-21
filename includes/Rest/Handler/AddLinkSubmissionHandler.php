@@ -14,6 +14,7 @@ use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\Response;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\Rest\Validator\JsonBodyValidator;
+use MediaWiki\Rest\Validator\Validator;
 use RequestContext;
 use Status;
 use TitleFactory;
@@ -116,6 +117,16 @@ class AddLinkSubmissionHandler extends SimpleHandler {
 				TitleDef::PARAM_RETURN_OBJECT => true,
 			],
 		];
+	}
+
+	/** @inheritDoc */
+	public function validate( Validator $restValidator ) {
+		$contentType = $this->getRequest()->getHeader( 'Content-Type' )[0] ?? '';
+		if ( strtolower( trim( $contentType ) ) !== 'application/json' ) {
+			throw new HttpException( 'Must use Content-Type: application/json', 415 );
+		}
+
+		parent::validate( $restValidator );
 	}
 
 	/** @inheritDoc */
