@@ -134,8 +134,9 @@ class HomepageHooks implements
 
 	/**
 	 * HomepageHooks constructor.
-	 * @param Config $config
-	 * @param Config $wikiConfig
+	 * @param Config $config Uses PHP globals
+	 * @param Config $wikiConfig Uses on-wiki config store, only for variables listed in
+	 *  GrowthExperimentsMultiConfig::ALLOW_LIST.
 	 * @param ILoadBalancer $lb
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param NamespaceInfo $namespaceInfo
