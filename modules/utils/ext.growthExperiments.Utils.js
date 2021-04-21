@@ -69,10 +69,31 @@
 	}
 
 	/**
-	 * @return {string|null} The variant a user is assigned to.
+	 * Get the variant the user is assigned to, for A/B testing and gradual rollouts.
+	 * @return {string}
 	 */
 	function getUserVariant() {
-		return mw.config.get( 'wgGEHomepageUserVariant' );
+		var variant = mw.user.options.get( 'growthexperiments-homepage-variant' );
+		if ( variant === null ||
+			mw.config.get( 'wgGEUserVariants' ).indexOf( variant ) === -1
+		) {
+			variant = mw.config.get( 'wgGEDefaultUserVariant' );
+		}
+		return variant;
+	}
+
+	/**
+	 * Set the variant the user is assigned to, for A/B testing and gradual rollouts.
+	 * @internal For debug/QA purposes only.
+	 * @param {string|null} variant The new variant, or null to unset.
+	 */
+	function setUserVariant( variant ) {
+		return mw.loader.using( 'mediawiki.api' ).then( function () {
+			return new mw.Api().saveOption( 'growthexperiments-homepage-variant', variant )
+				.done( function () {
+					window.location.reload();
+				} );
+		} );
 	}
 
 	/**
@@ -85,6 +106,13 @@
 		}
 		return variants.indexOf( getUserVariant() ) !== -1;
 	}
+
+	// Expose some methods for debugging.
+	window.ge = window.ge || {};
+	ge.utils = {
+		getUserVariant: getUserVariant,
+		setUserVariant: setUserVariant
+	};
 
 	module.exports = {
 		serializeActionData: serializeActionData,

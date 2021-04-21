@@ -84,18 +84,9 @@ class HomepageHooks implements
 
 	public const HOMEPAGE_PREF_ENABLE = 'growthexperiments-homepage-enable';
 	public const HOMEPAGE_PREF_PT_LINK = 'growthexperiments-homepage-pt-link';
-	public const HOMEPAGE_PREF_VARIANT = 'growthexperiments-homepage-variant';
 	/** @var string User options key for storing whether the user has seen the notice. */
 	public const HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN = 'homepage_mobile_discovery_notice_seen';
 	public const CONFIRMEMAIL_QUERY_PARAM = 'specialconfirmemail';
-
-	public const VARIANTS = [
-		// 'A' doesn't exist anymore; was: not pre-initiated, impact module in main column, full size start module
-		// 'B' doesn't exist anymore; was a pre-initiated version of A
-		// 'C' doesn't exist anymore; was pre-initiated, impact module in side column, smaller start module
-		// not pre-initiated, onboarding embedded in suggested edits module, otherwise like C
-		'D',
-	];
 
 	/** @var Config */
 	private $config;
@@ -496,10 +487,6 @@ class HomepageHooks implements
 			'section' => 'personal/homepage',
 			'label-message' => self::HOMEPAGE_PREF_PT_LINK,
 			'hide-if' => [ '!==', self::HOMEPAGE_PREF_ENABLE, '1' ],
-		];
-
-		$preferences[ self::HOMEPAGE_PREF_VARIANT ] = [
-			'type' => 'api',
 		];
 
 		$preferences[ self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN ] = [

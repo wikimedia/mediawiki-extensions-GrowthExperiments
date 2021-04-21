@@ -5,6 +5,9 @@
 		"wikimedia/jquery",
 		"wikimedia/mediawiki"
 	],
+	"globals": {
+		"ge": "writable"
+	},
 	"env": {
 		"commonjs": true
 	},
