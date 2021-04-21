@@ -40,6 +40,14 @@ $specialPageAliases['bn'] = [
 	'EditGrowthConfig' => [ 'গ্রোথ_কনফিগারেশন_সম্পাদনা' ],
 ];
 
+/** Catalan (català) */
+$specialPageAliases['ca'] = [
+	'WelcomeSurvey' => [ 'Enquesta_de_benvinguda' ],
+	'Homepage' => [ 'Pàgina_d\'inici' ],
+	'Impact' => [ 'Impacte' ],
+	'ClaimMentee' => [ 'ClaimMentee' ],
+];
+
 /** čeština (Czech) */
 $specialPageAliases['cs'] = [
 	'WelcomeSurvey' => [ 'Uvítací_dotazník', 'Uvitaci_dotaznik' ],
