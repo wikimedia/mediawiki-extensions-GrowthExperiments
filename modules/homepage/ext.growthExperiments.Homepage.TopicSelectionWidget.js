@@ -42,14 +42,16 @@ function TopicSelectionWidget( config ) {
 	// Parent constructor
 	TopicSelectionWidget.parent.call( this, config );
 
-	// eslint-disable-next-line no-underscore-dangle
+	/* eslint-disable no-underscore-dangle */
 	if ( topicData._error ) {
 		// Handle errors from configuration loader early and return.
-		// eslint-disable-next-line no-underscore-dangle
 		mw.log.error( 'Unable to load topic data for suggested edits: ' + topicData._error );
+		mw.errorLogger.logError( new Error( 'Unable to load topic data for suggested edits: ' +
+			topicData._error ) );
 		this.suggestions = [];
 		return;
 	}
+	/* eslint-enable no-underscore-dangle */
 
 	this.suggestions = [];
 	this.suggestionGroupWidgets = [];
