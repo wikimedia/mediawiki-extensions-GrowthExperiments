@@ -110,4 +110,17 @@ AddLinkSaveDialogMixin.prototype.getSetupProcess = function ( data ) {
 	}, this );
 };
 
+/** @inheritDoc */
+AddLinkSaveDialogMixin.prototype.getTeardownProcess = function ( data ) {
+	return this.constructor.super.prototype.getTeardownProcess.call( this, data ).next( function () {
+		// If the page was saved, try showing the post-edit dialog. This is a hack for the case
+		// when no link recommendation was accepted so the save was a null edit and the postEdit
+		// hook did not fire.
+		if ( ve.init.target.madeNullEdit ) {
+			require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance()
+				.showPostEditDialog( { resetSession: true } );
+		}
+	}, this );
+};
+
 module.exports = AddLinkSaveDialogMixin;

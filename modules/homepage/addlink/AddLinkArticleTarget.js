@@ -20,6 +20,13 @@ var CeRecommendedLinkAnnotation = require( './ceRecommendedLinkAnnotation.js' ),
  * @mixin mw.libs.ge.AddLinkArticleTarget
  */
 function AddLinkArticleTarget() {
+	/**
+	 * Will be true when the recommendations were submitted but no real edit happened
+	 * (no recommended link was accepted, or, less plausibly, the save conflicted with
+	 * (and got auto-merge with) another edit which added the same link.
+	 * @type {boolean}
+	 */
+	this.madeNullEdit = false;
 }
 
 /**
@@ -257,6 +264,20 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 		textNode = nextNode;
 	}
 
+};
+
+/** @inheritDoc */
+AddLinkArticleTarget.prototype.save = function ( doc, options, isRetry ) {
+	return this.constructor.super.prototype.save.call( this, doc, options, isRetry )
+		.done( function () {
+			var annotationStates = this.getAnnotationStates(),
+				hasAccepts = annotationStates.some( function ( state ) {
+					return state.accepted;
+				} );
+			if ( !hasAccepts ) {
+				this.madeNullEdit = true;
+			}
+		}.bind( this ) );
 };
 
 /**
