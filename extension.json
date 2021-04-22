@@ -88,16 +88,6 @@
 			]
 		},
 		{
-			"path": "/growthexperiments/v0/suggestions/addlink/{title}",
-			"method": "POST",
-			"class": "GrowthExperiments\\Rest\\Handler\\AddLinkSubmissionHandler",
-			"services": [
-				"GrowthExperimentsLinkRecommendationHelper",
-				"GrowthExperimentsLinkSubmissionRecorder",
-				"TitleFactory"
-			]
-		},
-		{
 			"path": "/growthexperiments/v0/suggestions/info",
 			"method": "GET",
 			"class": "GrowthExperiments\\Rest\\Handler\\SuggestionsInfoHandler",
@@ -132,7 +122,8 @@
 				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
 				"GrowthExperimentsLinkRecommendationStore",
 				"GrowthExperimentsLinkRecommendationHelper",
-				"GrowthExperimentsSuggestionsInfo"
+				"GrowthExperimentsSuggestionsInfo",
+				"GrowthExperimentsAddLinkSubmissionHandler"
 			]
 		},
 		"parserfunctions": {
@@ -243,7 +234,8 @@
 		"UnitTestsAfterDatabaseSetup": "schema",
 		"EditFilterMergedContent": "config",
 		"SkinTemplateNavigation": "config",
-		"ResourceLoaderGetConfigVars": "variant"
+		"ResourceLoaderGetConfigVars": "variant",
+		"VisualEditorApiVisualEditorEditPostSave": "homepage"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
