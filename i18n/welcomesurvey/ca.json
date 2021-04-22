@@ -1,8 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mguix"
+			"Mguix",
+			"Paucabot"
 		]
 	},
+	"welcomesurvey-save-btn": "Finalitzar",
+	"welcomesurvey-sidebar-editing-link1-text": "Tutorial",
+	"welcomesurvey-sidebar-editing-link1-title": "Viquipèdia:Tutorial",
+	"welcomesurvey-dropdown-option-select-label": "Si us plau, seleccioneu...",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Altres",
+	"welcomesurvey-question-edited-option-yes-many-label": "Sí, moltes vegades",
+	"welcomesurvey-question-edited-option-dont-remember-label": "No ho record",
 	"welcomesurvey-question-languages-placeholder": "Afegir fins a {{PLURAL:$1|un idioma|$1 idiomes}} ..."
 }

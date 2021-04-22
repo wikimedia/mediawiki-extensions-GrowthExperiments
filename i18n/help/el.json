@@ -1,11 +1,31 @@
 {
 	"@metadata": {
 		"authors": [
+			"Geraki",
 			"Giorgos456",
 			"Norhorn"
 		]
 	},
+	"growthexperiments-help-panel-tog-help-panel": "Ενεργοποίηση της καρτέλας βοήθειας συντακτών",
+	"growthexperiments-help-panel-cta-button-text": "Πάρετε βοήθεια για την επεξεργασία",
+	"growthexperiments-help-panel-question-button-text": "Συνέχεια",
+	"growthexperiments-help-panel-submit-question-button-text": "Καταχώρηση",
 	"growthexperiments-help-panel-return-home-button-text": "Έγινε",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "Κορυφαίες σελίδες βοήθειας για την επεξεργασία",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Δείτε περισσότερες σελίδες βοήθειας",
+	"growthexperiments-help-panel-question-widget-header": "Αναρτήστε την ερώτησή σας στο Χώρο Βοήθειας της Κοινότητας",
+	"growthexperiments-help-panel-question-placeholder": "Πείτε γεια και κάντε {{GENDER:$1|την}} ερώτησή σας.",
+	"growthexperiments-help-panel-back-home": "Πίσω",
+	"growthexperiments-help-panel-close": "Έγινε",
+	"growthexperiments-help-panel-home-title": "Πάρετε βοήθεια για την επεξεργασία",
+	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|Δημοσιεύσατε}} μια επεξεργασία. Ευχαριστούμε και συνεχίστε!",
+	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|Αποθηκεύσατε}} μια επεξεργασία. Ευχαριστούμε και συνεχίστε!",
+	"growthexperiments-help-panel-postedit-header": "Επόμενα βήματα",
+	"growthexperiments-help-panel-postedit-subheader": "Επεξεργαστείτε μια άλλη πρόταση:",
+	"growthexperiments-help-panel-postedit-footer": "Δείτε περισσότερες προτεινόμενες επεξεργασίες",
+	"growthexperiments-help-panel-postedit-footer2": "Κλείσιμο και επεξεργασία αυτού του λήμματος ξανά",
+	"growthexperiments-help-panel-questionreview-title": "Ρωτήστε στο χώρο βοήθειας",
+	"growthexperiments-help-panel-questionreview-title-mentor": "Ρωτήστε τον καθοδηγητή σας",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Έτυμοι;</strong> Κάντε κλικ στο \"{{int:vector-view-edit}}\" για να ξεκινήσετε;",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Εναλλαγή στον οπτικό επεξεργαστή"
 }

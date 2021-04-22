@@ -55,7 +55,7 @@
 	"growthexperiments-homepage-startediting-dialog-header": "عن التعديلات المقترحة",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1 من $2",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "إلغاء",
-	"growthexperiments-homepage-startediting-dialog-intro-forward": "استمرار",
+	"growthexperiments-homepage-startediting-dialog-intro-forward": "{{GENDER:|تابع|تابعي}}",
 	"growthexperiments-homepage-startediting-dialog-intro-title": "البَدْء بالتعديلات المقترحة",
 	"growthexperiments-homepage-startediting-dialog-intro-header": "أُنشِئت ويكيبيديا من قبل أشخاص {{GENDER:|مثلكَ| مثلكِ}} يعملون معًا.",
 	"growthexperiments-homepage-startediting-dialog-intro-subheader": "تساعد {{GENDER:|تعديلاتكَ| تعديلاتكِ}} في تحسين ويكيبيديا، وعلى نطاق أشمل في نشر المعرفة الحرة ومشاركتها مع العالم. {{GENDER:|استمر وابدأ|استمري وابدئي}} بالتعديلات الصغيرة المقترحة.",

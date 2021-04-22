@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Geraki"
+		]
+	},
+	"growthexperiments-edit-config-edit-summary": "Σύνοψη επεξεργασίας",
+	"growthexperiments-edit-config-config-changed": "Η ρύθμιση έχει αλλάξει",
+	"growthexperiments-edit-config-help-panel": "Σελίδα βοήθειας",
+	"growthexperiments-edit-config-help-panel-ask-mentor": "Θα πρέπει το πλαίσιο βοήθειας να απευθύνει τις ερωτήσεις στους καθοδηγητές;",
+	"growthexperiments-edit-config-homepage": "Αρχική σελίδα νεοεισερχόμενων",
+	"growthexperiments-edit-config-homepage-tutorial-title": "Τίτλος σελίδας οδηγού",
+	"growthexperiments-edit-config-homepage-intro-links-create": "Σύνδεσμος προς μια σελίδα για τη δημιουργία λημμάτων στον οπτικό επεξεργαστή",
+	"growthexperiments-edit-config-homepage-intro-links-image": "Σύνδεσμος προς μια σελίδα για τη προσθήκη εικόνων στον οπτικό επεξεργαστή",
+	"growthexperiments-edit-config-mentorship": "Καθοδήγηση",
+	"growthexperiments-edit-config-mentorship-enabled": "Είναι ενεργοποιημένες οι λειτουργίες καθοδήγησης;",
+	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Τίτλος σελίδας του καταλόγου των αυτόματα ορισμένων καθοδηγητών",
+	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Τίτλος σελίδας του καταλόγου των χειροκίνητα ορισμένων καθοδηγητών"
+}

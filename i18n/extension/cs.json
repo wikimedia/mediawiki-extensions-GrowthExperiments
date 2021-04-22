@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ankan",
 			"Martin Urbanec",
 			"Martin Urbanec (WMF)"
 		]
@@ -17,5 +18,6 @@
 	"growthexperiments-edit-config-return-to-form": "Můžete se [[Special:EditGrowthConfig|vrátit]] do editačního formuláře.",
 	"growthexperiments-edit-config-help-panel": "Panel Potřebuji pomoc",
 	"growthexperiments-edit-config-help-panel-disabled-namespaces": "Jmenné prostory s deaktivovaným panelem Potřebuji pomoc",
-	"growthexperiments-edit-config-help-panel-helpdesk-title": "Název stránky Potřebuji pomoc"
+	"growthexperiments-edit-config-help-panel-helpdesk-title": "Název stránky Potřebuji pomoc",
+	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Page title of list of manually assigned mentors"
 }

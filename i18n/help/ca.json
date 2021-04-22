@@ -1,19 +1,36 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"Paucabot"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Activa el panell d’ajuda per a editors",
 	"growthexperiments-help-panel-question-button-text": "Continua",
 	"growthexperiments-help-panel-submit-question-button-text": "Publica",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "Principals pàgines d'ajuda sobre edició",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Mostra més articles d’ajuda",
 	"growthexperiments-help-panel-back-home": "Enrere",
 	"growthexperiments-help-panel-close": "Fet",
+	"growthexperiments-help-panel-postedit-header": "Passes següents",
 	"growthexperiments-help-panel-questionreview-label": "La vostra pregunta",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Inclou el títol de la pàgina amb la meva pregunta",
 	"growthexperiments-help-panel-question-subject-template": "Pregunta del panell d’ajuda",
+	"growthexperiments-help-panel-suggestededits-title": "Edicions suggerides",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules1": "Mart <mark class=\"negative\">té té</mark> dues llunes petites.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-rules2": "Aquesta frase conté una opinió que hauria de ser eliminada.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-step1": "Venus té una <mark class=\"positive\">atmosfera</mark> densa",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-example-value": "Saturn és probablement més conegut pel sistema d'anells planetaris que el fa visualment únic.<sup>[3]</sup>",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-text-publish": "[[$1|Aprèn més sobre les referències]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Afegir enllaços ajudarà les persones a aprendre més ràpid.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Directrius",
 	"growthexperiments-help-panel-questioncomplete-header": "S’ha publicat la vostra pregunta.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "canvia",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "confirmeu la vostra adreça electrònica",
-	"growthexperiments-help-panel-questionposter-invalid-title": "El títol no és vàlid."
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Afegeix correu electrònic",
+	"growthexperiments-help-panel-questionposter-invalid-title": "El títol no és vàlid.",
+	"growthexperiments-help-panel-search-label": "Cerca ajuda",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Edicions suggerides",
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "Consells d'inici ràpid",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Canvia a l'editor visual"
 }
