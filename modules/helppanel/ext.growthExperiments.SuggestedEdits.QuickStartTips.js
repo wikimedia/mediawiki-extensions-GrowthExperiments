@@ -73,8 +73,10 @@
 			// Used by the auto-advance logic in HelpPanelProcessDialog
 			stackLayout.tabIndexLayout = indexLayout;
 			return stackLayout;
-		}, function ( err, details ) {
-			mw.log.error( 'Unable to load quick start tips', err, details );
+		}, function ( jqXHR, statusText, error ) {
+			mw.log.error( 'Unable to load quick start tips', statusText, error );
+			mw.errorLogger.logError( new Error( 'Unable to load quick start tips: ' +
+				statusText + ' / ' + error ) );
 		} );
 	}
 

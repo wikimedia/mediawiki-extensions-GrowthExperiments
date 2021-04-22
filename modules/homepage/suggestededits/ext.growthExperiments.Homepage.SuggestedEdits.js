@@ -560,6 +560,8 @@
 			suggestedEditsModule.showCard( new EditCardWidget( {} ) );
 			if ( taskPreviewData.error ) {
 				mw.log.error( 'task preview data unavailable: ' + taskPreviewData.error );
+				mw.errorLogger.logError( new Error( 'task preview data unavailable: ' +
+					taskPreviewData.error ) );
 			}
 		}
 		return suggestedEditsModule.fetchTasksAndUpdateView( fetchTasksOptions ).then( function () {
