@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Mentorship\Store;
 
+use BadMethodCallException;
 use InvalidArgumentException;
 use JobQueueGroup;
 use MediaWiki\User\UserFactory;
@@ -65,6 +66,19 @@ class PreferenceMentorStore extends MentorStore {
 			return null;
 		}
 		return new UserIdentityValue( $user->getId(), $user->getName() );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getMenteesByMentor(
+		UserIdentity $mentor,
+		?string $mentorRole = null,
+		int $flags = 0
+	): array {
+		throw new BadMethodCallException(
+			'PreferenceMentorStore::getMenteesByMentor() not implemented'
+		);
 	}
 
 	/**

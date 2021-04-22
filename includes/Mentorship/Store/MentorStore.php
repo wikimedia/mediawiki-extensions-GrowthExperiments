@@ -132,6 +132,22 @@ abstract class MentorStore implements IDBAccessObject {
 	): ?UserIdentity;
 
 	/**
+	 * Return mentees who are mentored by given mentor
+	 *
+	 * Optionally allows to filter by role
+	 *
+	 * @param UserIdentity $mentor
+	 * @param string|null $mentorRole
+	 * @param int $flags
+	 * @return UserIdentity[]
+	 */
+	abstract public function getMenteesByMentor(
+		UserIdentity $mentor,
+		?string $mentorRole = null,
+		int $flags = 0
+	): array;
+
+	/**
 	 * Assign a mentor to this user, overriding any previous assignments.
 	 *
 	 * This method can be safely called on GET requests.
