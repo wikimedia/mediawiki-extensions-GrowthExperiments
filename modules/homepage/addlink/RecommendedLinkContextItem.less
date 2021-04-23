@@ -29,6 +29,7 @@
 
 	.mw-ge-recommendedLinkContextItem-linkPreview {
 		min-height: @imageThumbnailSize;
+		padding: 8px 0;
 
 		.ve-ui-linkContextItem-link {
 			.rel-line-height( @parentFontSize: 16px, @targetLineHeight: 16px );
@@ -214,6 +215,128 @@
 
 			.ve-ui-mwInternalLinkContextItem-description {
 				.paragraph-ellipsis( @lines: 2, @parentFontSize: 14px, @targetFontSize: 12.4px, @targetLineHeight: 17.3px );
+			}
+		}
+	}
+}
+
+// TODO: Consolidate styles when old context item is removed
+.ve-ui-toolbarDialog.mw-ge-recommendedLinkContextItem {
+	background: @wmui-color-base100;
+
+	.oo-ui-window-head {
+		min-height: 32px;
+		padding: 0.5em;
+		display: flex;
+		align-items: center;
+		box-sizing: content-box;
+		background-color: @suggestedEditsBackgroundColor;
+		position: relative;
+
+		.mw-ge-recommendedLinkContextItem-head-robot-icon {
+			margin-left: 0.5em;
+			opacity: 0.65;
+		}
+	}
+
+	.oo-ui-window-body {
+		position: relative;
+		padding: 0.5em 1em;
+	}
+
+	.mw-ge-recommendedLinkContextItem-progress-title {
+		font-weight: bold;
+		margin-left: 9px;
+	}
+
+	.mw-ge-recommendedLinkContextItem-help-button {
+		margin-left: auto;
+	}
+
+	.mw-ge-recommendedLinkContextItem-label-preview {
+		margin-bottom: 0.5em;
+	}
+
+	.mw-ge-recommendedLinkContextItem-label-preview-label {
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
+		color: @wmui-color-base20;
+	}
+
+	.mw-ge-recommendedLinkContextItem-label-preview-text {
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 16px, @targetLineHeight: 22px );
+		font-weight: bold;
+	}
+
+	&.ve-ui-toolbarDialog-position-below {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		border-top: 1px solid @wmui-color-base70;
+		box-shadow: 0 -1px 1px 0 fade( @wmui-color-base0, 10% );
+		transition: transform 100ms;
+		transform: translateY( 0% );
+	}
+
+	&.ve-ui-toolbarDialog-position-inline {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 400px;
+		background-color: #fff;
+		border: 1px solid #a2a9b1;
+		border-radius: 2px;
+		filter: drop-shadow( 0 2px 1px rgba( 0, 0, 0, 0.3 ) );
+		transform: translateZ( 0 );
+	}
+
+	&-desktop {
+		.oo-ui-window-body {
+			padding: 0 16px 12px 16px;
+		}
+
+		.mw-ge-recommendedLinkContextItem-desktop-anchor {
+			position: absolute;
+			top: -11px;
+			z-index: 1;
+
+			&:before,
+			&:after {
+				content: '';
+				position: absolute;
+				width: 0;
+				height: 0;
+				bottom: -11px;
+			}
+
+			&:before {
+				border-left: 10px solid transparent;
+				border-right: 10px solid transparent;
+				border-bottom: 10px solid #a8a8a8;
+				left: 0;
+			}
+
+			&:after {
+				border-left: 9px solid transparent;
+				border-right: 9px solid transparent;
+				border-bottom: 9px solid #fff;
+				left: 1px;
+			}
+		}
+
+		.mw-ge-recommendedLinkContextItem-desktop-anchor-start {
+			left: 13px;
+		}
+
+		.mw-ge-recommendedLinkContextItem-desktop-anchor-end {
+			right: 30px;
+		}
+
+		.mw-ge-recommendedLinkContextItem-linkPreview {
+			padding: 0;
+
+			.ve-ui-linkContextItem-link {
+				margin-left: 0;
 			}
 		}
 	}

@@ -1,5 +1,5 @@
-var CeRecommendedLinkAnnotation = require( './ceRecommendedLinkAnnotation.js' ),
-	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
+var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
+
 /**
  * @typedef LinkRecommendationLink
  * @property {string} link_text Text to look for
@@ -83,17 +83,8 @@ AddLinkArticleTarget.prototype.afterSurfaceReady = function () {
 };
 
 AddLinkArticleTarget.prototype.selectFirstRecommendation = function () {
+	this.getSurface().executeCommand( 'recommendedLink' );
 	this.getSurface().linkRecommendationFragments[ 0 ].fragment.select();
-	// Force the context item to appear
-	// TODO perhaps deduplicate this code, figure out where to put it
-	this.getSurface().getView().selectAnnotation( function ( annotationView ) {
-		return annotationView instanceof CeRecommendedLinkAnnotation;
-	} );
-	if ( OO.ui.isMobile() ) {
-		this.getSurface().getView().activate();
-		this.getSurface().getView().deactivate( false, false, true );
-		this.getSurface().getView().updateActiveAnnotations( true );
-	}
 };
 
 AddLinkArticleTarget.prototype.restoreScrollPosition = function () {
