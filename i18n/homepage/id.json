@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"AJBot2",
 			"ANukuma",
 			"Diki Ananta",
 			"Johnstad Di Maria",
@@ -331,7 +332,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Konsep sehari-hari yang tidak memerlukan penjelasan (seperti \"langit\")",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Pranala tujuan tidak benar (contohnya menautkan \"matahari\" ke \"bintang\")",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Ketuk pensil edit $1 di sebelah pranala itu untuk mengganti tujuan pranala",
-	"growthexperiments-addlink-rejectiondialog-reason-other": "Lainnya / tidak ingin menyebutkan",
+	"growthexperiments-addlink-rejectiondialog-reason-other": "Lain",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Selesai",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Menambahkan pranala akan membantu pembaca belajar lebih cepat.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|Anda}} akan menentukan apakah kata dalam salah satu artikel {{SITENAME}} tertaut ke artikel {{SITENAME}} lainnya.",

@@ -4,6 +4,8 @@
 			"Geraki"
 		]
 	},
+	"growthexperiments-edit-config-last-edit": "Τελευταία ενημέρωση από [[User:$1|$1]] $2.",
+	"growthexperiments-edit-config-last-edit-unknown-user": "Τελευταία ενημέρωση από άγνωστο χρήστη $1",
 	"growthexperiments-edit-config-edit-summary": "Σύνοψη επεξεργασίας",
 	"growthexperiments-edit-config-config-changed": "Η ρύθμιση έχει αλλάξει",
 	"growthexperiments-edit-config-help-panel": "Σελίδα βοήθειας",

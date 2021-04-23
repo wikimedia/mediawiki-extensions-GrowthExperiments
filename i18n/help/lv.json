@@ -34,6 +34,8 @@
 	"growthexperiments-help-panel-question-post-error": "Mēģinot pievienot jautājumu, notika kļūda. Tu vari mēģināt vēlreiz vai savā pārlūkā apmeklēt $1 un pievienot jautājumu manuāli.",
 	"growthexperiments-help-panel-suggestededits-title": "Ieteiktie labojumi",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "Sākuma padomi",
+	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Viss skaidrs?</strong> Klikšķini uz \"{{int:vector-view-edit}}\", lai sāktu.",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Viss skaidrs?</strong> Atver sadaļu, ko vēlies labot un nospied uz zīmuļa ikonas.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules1": "Marsam <mark class=\"negative\">ir ir</mark> divi mazi pavadoņi.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules2": "Jupiters ir lielākā<mark class=\"negative\"> un interesantākā</mark> planēta Saules sistēmā.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-rules2": "Šis teikums satur viedokli, kas būtu jāizņem.",

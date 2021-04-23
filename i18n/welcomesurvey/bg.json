@@ -4,7 +4,8 @@
 			"Spiritia",
 			"StanProg",
 			"Ted Masters",
-			"Vlad5250"
+			"Vlad5250",
+			"Vodnokon4e"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Добре дошъл|Добре дошла}}, $1!",
@@ -16,7 +17,7 @@
 	"welcomesurvey-close-btn": "Затваряне и връщане обратно към $1",
 	"welcomesurvey-sidebar-privacy-title": "Ние ценим вашата лична информация",
 	"welcomesurvey-sidebar-privacy-text": "За да разберете как ще се използват тези незадължителни отговори,  {{GENDER:$2|вижте}} анкета $1.",
-	"welcomesurvey-privacy-policy-link-text": "за личните данни",
+	"welcomesurvey-privacy-policy-link-text": "Научете повече за данните на нови редактори",
 	"welcomesurvey-sidebar-editing-title": "Как да започнем с редактирането",
 	"welcomesurvey-sidebar-editing-link1-text": "Ръководство",
 	"welcomesurvey-sidebar-editing-link1-title": "Уикипедия:Наръчник",

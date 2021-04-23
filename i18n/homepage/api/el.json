@@ -5,5 +5,8 @@
 		]
 	},
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Δεν βρέθηκαν ερωτήσεις.",
-	"apihelp-growthsetmentor-summary": "Ορισμός συμβούλου χρήστη. Η αλλαγή θα καταγραφεί δημόσια."
+	"apihelp-growthsetmentor-summary": "Ορισμός καθοδηγητή. Η αλλαγή θα καταγραφεί δημόσια.",
+	"apihelp-growthsetmentor-param-mentee": "Όνομα χρήστη καθοδηγούμενου",
+	"apihelp-growthsetmentor-param-mentor": "Όνομα χρήστη καθοδηγητή",
+	"apihelp-growthsetmentor-param-reason": "Αιτία αλλαγής"
 }
