@@ -100,14 +100,11 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 			->disableOriginalConstructor()
 			->setMethods( [ 'getId' ] )
 			->getMockForAbstractClass();
-		$revisionRecordMock->expects( $this->any() )
-			->method( 'getId' )
+		$revisionRecordMock->method( 'getId' )
 			->willReturn( 0 );
-		$pageUpdaterMock->expects( $this->any() )
-			->method( 'grabParentRevision' )
+		$pageUpdaterMock->method( 'grabParentRevision' )
 			->willReturn( $revisionRecordMock );
-		$questionPoster->expects( $this->any() )
-			->method( 'getPageUpdater' )
+		$questionPoster->method( 'getPageUpdater' )
 			->willReturn( $pageUpdaterMock );
 
 		/** @var StatusValue $status */

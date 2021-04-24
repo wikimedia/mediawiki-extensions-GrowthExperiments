@@ -28,8 +28,8 @@ class MentorQuestionPosterTest extends MediaWikiTestCase {
 		$mentorManager = $this->getMockMentorManager();
 		$mentorUser = $this->getTestSysop()->getUser();
 		$mentor = new Mentor( $mentorUser, '*' );
-		$mentorManager->expects( $this->any() )->method( 'getMentorForUser' )->willReturn( $mentor );
-		$mentorManager->expects( $this->any() )->method( 'getMentorForUserSafe' )->willReturn( $mentor );
+		$mentorManager->method( 'getMentorForUser' )->willReturn( $mentor );
+		$mentorManager->method( 'getMentorForUserSafe' )->willReturn( $mentor );
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $this->getTestUser()->getUser() );
 

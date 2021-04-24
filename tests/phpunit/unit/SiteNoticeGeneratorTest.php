@@ -285,9 +285,9 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->disableOriginalConstructor()
 			->getMock();
 		$messageMock->method( 'params' )
-			->will( $this->returnValue( $messageMock ) );
+			->willReturn( $messageMock );
 		$messageMock->method( 'rawParams' )
-			->will( $this->returnValue( $messageMock ) );
+			->willReturn( $messageMock );
 		return $messageMock;
 	}
 
