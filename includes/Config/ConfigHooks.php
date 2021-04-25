@@ -76,11 +76,13 @@ class ConfigHooks implements EditFilterMergedContentHook, SkinTemplateNavigation
 		$loadedConfigStatus = FormatJson::parse( $content->getText(), FormatJson::FORCE_ASSOC );
 		if ( !$loadedConfigStatus->isOK() ) {
 			$status->merge( $loadedConfigStatus );
-			return true;
+		} else {
+			$status->merge( $this->configValidation->validate(
+				$loadedConfigStatus->getValue()
+			) );
 		}
-		$status->merge( $this->configValidation->validate(
-			$loadedConfigStatus->getValue()
-		) );
+
+		return $status->isOK();
 	}
 
 	/**
