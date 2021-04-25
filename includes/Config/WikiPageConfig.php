@@ -131,11 +131,12 @@ class WikiPageConfig implements Config, IDBAccessObject {
 	 * @return mixed Config value
 	 */
 	public function getWithFlags( $name, int $flags = 0 ) {
-		if ( !$this->has( $name ) ) {
+		$configData = $this->getConfigData( $flags );
+		if ( !array_key_exists( $name, $configData ) ) {
 			throw new ConfigException( 'Config key was not found in WikiPageConfig' );
 		}
 
-		return $this->getConfigData( $flags )[ $name ];
+		return $configData[ $name ];
 	}
 
 	/**
