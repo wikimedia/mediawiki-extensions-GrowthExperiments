@@ -64,6 +64,18 @@ class GrowthExperimentsMultiConfig implements Config, IDBAccessObject {
 	}
 
 	/**
+	 * Determine if on-wiki config is enabled or not
+	 *
+	 * If this returns false, all calls to get()/has() will be immediately
+	 * forwarded to GlobalVarConfig, as if there was no on-wiki config.
+	 *
+	 * @return bool
+	 */
+	private function isWikiConfigEnabled(): bool {
+		return (bool)$this->globalVarConfig->get( 'GEWikiConfigEnabled' );
+	}
+
+	/**
 	 * @inheritDoc
 	 */
 	public function get( $name ) {
@@ -76,6 +88,10 @@ class GrowthExperimentsMultiConfig implements Config, IDBAccessObject {
 	 * @return mixed Config value
 	 */
 	public function getWithFlags( $name, int $flags = 0 ) {
+		if ( !$this->isWikiConfigEnabled() ) {
+			return $this->globalVarConfig->get( $name );
+		}
+
 		if ( !$this->variableIsAllowed( $name ) ) {
 			throw new ConfigException( 'Config key cannot be retrieved via GrowthExperimentsMultiConfig' );
 		}
@@ -102,6 +118,10 @@ class GrowthExperimentsMultiConfig implements Config, IDBAccessObject {
 	 * @return bool
 	 */
 	public function hasWithFlags( $name, int $flags = 0 ) {
+		if ( !$this->isWikiConfigEnabled() ) {
+			return $this->globalVarConfig->has( $name );
+		}
+
 		return $this->variableIsAllowed( $name ) && (
 			$this->wikiPageConfig->hasWithFlags( $name, $flags ) ||
 			$this->globalVarConfig->has( $name )
