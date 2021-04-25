@@ -196,7 +196,10 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				continue;
 			}
 
-			$default = $this->growthWikiConfig->get( $name );
+			$default = $this->growthWikiConfig->getWithFlags(
+				$name,
+				GrowthExperimentsMultiConfig::READ_LATEST
+			);
 			if ( is_array( $default ) ) {
 				$default = implode( "\n", $default );
 			}
@@ -205,7 +208,10 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		}
 
 		// Add default values for intro links
-		$linkValues = $this->growthWikiConfig->get( 'GEHomepageSuggestedEditsIntroLinks' );
+		$linkValues = $this->growthWikiConfig->getWithFlags(
+			'GEHomepageSuggestedEditsIntroLinks',
+			GrowthExperimentsMultiConfig::READ_LATEST
+		);
 		foreach ( self::SUGGESTED_EDITS_INTRO_LINKS as $link ) {
 			$descriptors["GEHomepageSuggestedEditsIntroLinks-$link"]['default'] = $linkValues[$link];
 		}
