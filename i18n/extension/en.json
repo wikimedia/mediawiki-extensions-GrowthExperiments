@@ -7,6 +7,7 @@
 	"growthexperiments-config-validator-error": "Validation for $1 failed with: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> is expected to be <code>$2</code>, but is <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Content-model mismatch: GrowthExperiments config file must have JSON content model, $1 detected",
+	"growthexperiments-edit-config-disabled": "Community configuration is currently disabled.",
 	"growthexperiments-edit-config-title": "Edit Growth configuration",
 	"growthexperiments-edit-config-last-edit": "Last updated by [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "Last updated by unknown user $1.",

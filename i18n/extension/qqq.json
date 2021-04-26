@@ -7,6 +7,7 @@
 	"growthexperiments-config-validator-error": "Error returned by validator of Growth config (Special:EditGrowthConfig)",
 	"growthexperiments-config-validator-datatype-mismatch": "Error returned by validator of Growth config (Special:EditGrowthConfig)",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Error returned by validator of Growth config (Special:EditGrowthConfig)",
+	"growthexperiments-edit-config-disabled": "Error displayed by Special:EditGrowthConfig when community configuration is disabled",
 	"growthexperiments-edit-config-title": "Title of Special:EditGrowthConfig",
 	"growthexperiments-edit-config-last-edit": "Last updated header in Special:EditGrowthConfig\n\nParameters:\n* $1 – username of revision author\n* $2 - time of last update in relative format (eg. 3 days ago)",
 	"growthexperiments-edit-config-last-edit-unknown-user": "Last updated header in Special:EditGrowthConfig when the username is not known\n\nParameters:\n* $1 – time of last update in relative format (eg. 3 days ago)",
