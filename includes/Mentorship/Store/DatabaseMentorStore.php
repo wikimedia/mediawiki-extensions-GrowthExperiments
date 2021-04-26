@@ -6,12 +6,16 @@ use DBAccessObjectUtils;
 use JobQueueGroup;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use Wikimedia\Rdbms\IDatabase;
 
 class DatabaseMentorStore extends MentorStore {
 	/** @var UserFactory */
 	private $userFactory;
+
+	/** @var UserIdentityLookup */
+	private $userIdentityLookup;
 
 	/** @var IDatabase */
 	private $dbr;
@@ -21,12 +25,14 @@ class DatabaseMentorStore extends MentorStore {
 
 	/**
 	 * @param UserFactory $userFactory
+	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param IDatabase $dbr
 	 * @param IDatabase $dbw
 	 * @param bool $wasPosted
 	 */
 	public function __construct(
 		UserFactory $userFactory,
+		UserIdentityLookup $userIdentityLookup,
 		IDatabase $dbr,
 		IDatabase $dbw,
 		bool $wasPosted
@@ -34,6 +40,7 @@ class DatabaseMentorStore extends MentorStore {
 		parent::__construct( $wasPosted );
 
 		$this->userFactory = $userFactory;
+		$this->userIdentityLookup = $userIdentityLookup;
 		$this->dbr = $dbr;
 		$this->dbw = $dbw;
 	}
@@ -74,6 +81,38 @@ class DatabaseMentorStore extends MentorStore {
 			return null;
 		}
 		return new UserIdentityValue( $user->getId(), $user->getName() );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getMenteesByMentor(
+		UserIdentity $mentor,
+		?string $mentorRole = null,
+		int $flags = 0
+	): array {
+		list( $index, $options ) = DBAccessObjectUtils::getDBOptions( $flags );
+		$db = ( $index === DB_MASTER ) ? $this->dbw : $this->dbr;
+
+		$conds = [
+			'gemm_mentor_id' => $mentor->getId()
+		];
+
+		if ( $mentorRole !== null ) {
+			$conds['gemm_mentor_role'] = $mentorRole;
+		}
+
+		$ids = $db->selectFieldValues(
+			'growthexperiments_mentor_mentee',
+			'gemm_mentee_id',
+			$conds,
+			__METHOD__
+		);
+		return iterator_to_array( $this->userIdentityLookup
+			->newSelectQueryBuilder()
+			->registered()
+			->userIds( $ids )
+			->fetchUserIdentities() );
 	}
 
 	/**

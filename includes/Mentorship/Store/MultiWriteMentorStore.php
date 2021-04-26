@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Mentorship\Store;
 
+use DBAccessObjectUtils;
 use LogicException;
 use MediaWiki\User\UserIdentity;
 
@@ -54,6 +55,29 @@ class MultiWriteMentorStore extends MentorStore {
 				'Invalid GrowthExperiments mentorship migration stage'
 			);
 		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getMenteesByMentor(
+		UserIdentity $mentor,
+		?string $mentorRole = null,
+		int $flags = 0
+	): array {
+		if (
+			!DBAccessObjectUtils::hasFlags( $this->migrationStage, SCHEMA_COMPAT_READ_NEW )
+		) {
+			throw new LogicException(
+				'MultiWriteMentorStore::getMenteesByMentor cannot be used with old schema'
+			);
+		}
+
+		return $this->databaseMentorStore->getMenteesByMentor(
+			$mentor,
+			$mentorRole,
+			$flags
+		);
 	}
 
 	/**

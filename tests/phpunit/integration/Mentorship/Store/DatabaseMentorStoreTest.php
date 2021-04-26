@@ -17,8 +17,13 @@ use Wikimedia\TestingAccessWrapper;
 class DatabaseMentorStoreTest extends MentorStoreTestCase {
 
 	protected function getStore( bool $wasPosted ): MentorStore {
-		return new DatabaseMentorStore( $this->getServiceContainer()->getUserFactory(),
-			$this->db, $this->db, $wasPosted );
+		return new DatabaseMentorStore(
+			$this->getServiceContainer()->getUserFactory(),
+			$this->getServiceContainer()->getUserIdentityLookup(),
+			$this->db,
+			$this->db,
+			$wasPosted
+		);
 	}
 
 	protected function getJobType(): string {
@@ -59,6 +64,28 @@ class DatabaseMentorStoreTest extends MentorStoreTestCase {
 		$this->assertSame( 'job-limit', $response['reached'] );
 		$actualMentor = $store->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY, MentorStore::READ_LATEST );
 		$this->assertSameUser( $mentor, $actualMentor );
+	}
+
+	public function testGetMenteesByMentor() {
+		$store = $this->getStore( true );
+
+		// Prepare users
+		$menteeOne = $this->getMutableTestUser()->getUser();
+		$menteeTwo = $this->getMutableTestUser()->getUser();
+		$menteeThree = $this->getMutableTestUser()->getUser();
+		$mentor = $this->getMutableTestUser()->getUser();
+		$otherMentor = $this->getMutableTestUser()->getUser();
+
+		// Save mentor/mentee relationship
+		$store->setMentorForUser( $menteeOne, $mentor );
+		$store->setMentorForUser( $menteeTwo, $mentor );
+		$store->setMentorForUser( $menteeThree, $otherMentor );
+
+		// Test that mentees by $mentor are all expected
+		$ids = array_map( function ( $mentee ) {
+			return $mentee->getId();
+		}, $store->getMenteesByMentor( $mentor ) );
+		$this->assertArrayEquals( [ $menteeOne->getId(), $menteeTwo->getId() ], $ids );
 	}
 
 }
