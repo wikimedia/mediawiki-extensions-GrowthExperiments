@@ -22,7 +22,7 @@
 	"growthexperiments-homepage-email-header-unconfirmed": "確認{{GENDER:$1|你嘅}}電郵地址",
 	"growthexperiments-homepage-email-header-confirmed": "加咗電郵地址",
 	"growthexperiments-homepage-email-header-startemail": "電郵地址：$1",
-	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|你嘅}}電郵地址已經已經核實咗。你可以喺喜好設定度改你嘅電郵設定。",
+	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|你嘅}}電郵地址核實咗。你可以喺喜好設定度改你嘅電郵設定。",
 	"growthexperiments-homepage-email-button-noemail": "加電郵地址",
 	"growthexperiments-homepage-email-button-confirmed": "自訂喜好",
 	"growthexperiments-homepage-email-changelink": "改",

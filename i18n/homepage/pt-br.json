@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Albertoleoncio",
+			"Cottonhead",
 			"Eduardo Addad de Oliveira",
 			"Eduardoaddad",
 			"Fitoschido",
@@ -364,6 +365,7 @@
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Começar",
 	"growthexperiments-addlink-no-suggestions-found-dialog-message": "As sugestões não estão mais disponíveis neste artigo.",
 	"growthexperiments-addlink-no-suggestions-found-dialog-button": "Voltar para edições sugeridas",
+	"growthexperiments-addlink-summary-column-header-suggestion": "Sugestões",
 	"grant-managementorship": "Gerenciar mentoria",
 	"newcomertasksinfo": "Tarefas para iniciante",
 	"newcomertasksinfo-no-data": "Nenhum dado está disponível.",

@@ -332,5 +332,7 @@
 	"growthexperiments-addlink-rejectiondialog-title": "Почему это плохая ссылка?",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Другое",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Готово",
-	"growthexperiments-addlink-onboarding-dialog-progress": "$1 из $2"
+	"growthexperiments-addlink-onboarding-dialog-progress": "$1 из $2",
+	"growthexperiments-addlink-summary-title": "Описание",
+	"growthexperiments-addlink-summary-submit": "Отправить"
 }
