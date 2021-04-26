@@ -9,6 +9,7 @@ use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use HTMLForm;
 use MediaWiki\Revision\RevisionLookup;
 use MWTimestamp;
+use PageProps;
 use Title;
 use TitleFactory;
 
@@ -21,6 +22,9 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 
 	/** @var RevisionLookup */
 	private $revisionLookup;
+
+	/** @var PageProps */
+	private $pageProps;
 
 	/** @var WikiPageConfigWriterFactory */
 	private $configWriterFactory;
@@ -43,12 +47,14 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	/**
 	 * @param TitleFactory $titleFactory
 	 * @param RevisionLookup $revisionLookup
+	 * @param PageProps $pageProps
 	 * @param WikiPageConfigWriterFactory $configWriterFactory
 	 * @param GrowthExperimentsMultiConfig $growthWikiConfig
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
 		RevisionLookup $revisionLookup,
+		PageProps $pageProps,
 		WikiPageConfigWriterFactory $configWriterFactory,
 		GrowthExperimentsMultiConfig $growthWikiConfig
 	) {
@@ -56,6 +62,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 
 		$this->titleFactory = $titleFactory;
 		$this->revisionLookup = $revisionLookup;
+		$this->pageProps = $pageProps;
 		$this->configWriterFactory = $configWriterFactory;
 		$this->growthWikiConfig = $growthWikiConfig;
 	}
@@ -231,9 +238,66 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			'GEHomepageTutorialTitle' => [
 				'type' => 'title',
 				'exists' => true,
-				'label-message' => 'growthexperiments-edit-config-homepage-tutorial-title',
+			],
+			'GEHelpPanelLinks-0-title' => [
+				'type' => 'title',
+				'label-message' => 'growthexperiments-edit-config-help-panel-links-mos-title',
+				'section' => 'help-panel-links',
 				'required' => false,
-				'section' => 'homepage',
+				'exists' => true,
+			],
+			'GEHelpPanelLinks-0-label' => [
+				'type' => 'text',
+				'label-message' => 'growthexperiments-edit-config-help-panel-links-mos-label',
+				'section' => 'help-panel-links',
+			],
+			'GEHelpPanelLinks-1-title' => [
+				'type' => 'title',
+				'label-message' => 'growthexperiments-edit-config-help-panel-links-editing-title',
+				'section' => 'help-panel-links',
+				'required' => false,
+				'exists' => true,
+			],
+			'GEHelpPanelLinks-1-label' => [
+				'type' => 'text',
+				'label-message' => 'growthexperiments-edit-config-help-panel-links-editing-label',
+				'section' => 'help-panel-links',
+			],
+			'GEHelpPanelLinks-2-title' => [
+				'type' => 'title',
+				'label-message' => 'growthexperiments-edit-config-help-panel-links-images-title',
+				'section' => 'help-panel-links',
+				'required' => false,
+				'exists' => true,
+			],
+			'GEHelpPanelLinks-2-label' => [
+				'type' => 'text',
+				'label-message' => 'growthexperiments-edit-config-help-panel-links-images-label',
+				'section' => 'help-panel-links',
+			],
+			'GEHelpPanelLinks-3-title' => [
+				'type' => 'title',
+				'label-message' => 'growthexperiments-edit-config-help-panel-links-references-title',
+				'section' => 'help-panel-links',
+				'required' => false,
+				'exists' => true,
+			],
+			'GEHelpPanelLinks-3-label' => [
+				'type' => 'text',
+				'label-message' => 'growthexperiments-edit-config-help-panel-links-references-label',
+				'section' => 'help-panel-links',
+			],
+			'GEHelpPanelLinks-4-title' => [
+				'type' => 'title',
+				'label-message' => 'growthexperiments-edit-config-help-panel-links-articlewizard-title',
+				'section' => 'help-panel-links',
+				'required' => false,
+				'exists' => true,
+			],
+			'GEHelpPanelLinks-4-label' => [
+				'type' => 'text',
+				'label-message' => 'growthexperiments-edit-config-help-panel-links-articlewizard-label',
+				'section' => 'help-panel-links',
 			],
 			'GEHomepageSuggestedEditsIntroLinks-create' => [
 				'type' => 'title',
@@ -316,6 +380,18 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			$descriptors["GEHomepageSuggestedEditsIntroLinks-$link"]['default'] = $linkValues[$link];
 		}
 
+		// Add default values for help panel links
+		$helpPanelLinks = $this->growthWikiConfig->get( 'GEHelpPanelLinks' );
+		for ( $i = 0; $i < count( $helpPanelLinks ); $i++ ) {
+			if (
+				isset( $descriptors["GEHelpPanelLinks-$i-title"] ) &&
+				isset( $descriptors["GEHelpPanelLinks-$i-label"] )
+			) {
+				$descriptors["GEHelpPanelLinks-$i-title"]['default'] = $helpPanelLinks[$i]['title'];
+				$descriptors["GEHelpPanelLinks-$i-label"]['default'] = $helpPanelLinks[$i]['text'];
+			}
+		}
+
 		// Add edit summary field
 		$descriptors['summary'] = [
 			'type' => 'text',
@@ -330,6 +406,38 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			$links[$link] = $data["GEHomepageSuggestedEditsIntroLinks-$link"];
 		}
 		return $links;
+	}
+
+	private function normalizeHelpPanelLinks( array $data ): array {
+		$res = [];
+		// Right now, we support up to 5 help panel links
+		// If you want to change this, don't forget to update
+		// SpecialEditGrowthConfig::getRawDescriptors as well.
+		$supportedHelpPanelLinks = 5;
+		for ( $i = 0; $i < $supportedHelpPanelLinks; $i++ ) {
+			if (
+				$data["GEHelpPanelLinks-$i-title"] == '' ||
+				$data["GEHelpPanelLinks-$i-label"] == ''
+			) {
+				continue;
+			}
+
+			$title = $this->titleFactory->newFromText( $data["GEHelpPanelLinks-$i-title"] );
+			$props = ( $title !== null && $title->exists() && !$title->isExternal() ) ?
+				$this->pageProps->getProperties( $title, 'wikibase_item' ) :
+				[];
+			$linkId = null;
+			$pageId = $title->getId();
+			if ( in_array( $pageId, $props ) ) {
+				$linkId = $props[$pageId];
+			}
+			$res[] = [
+				'title' => $data["GEHelpPanelLinks-$i-title"],
+				'text' => $data["GEHelpPanelLinks-$i-label"],
+				'id' => $linkId ?? $title->getPrefixedDBkey(),
+			];
+		}
+		return $res;
 	}
 
 	/**
@@ -362,9 +470,10 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			}
 		}
 
-		// Normalize GEHomepageSuggestedEditsIntroLinks
+		// Normalize complex variables
 		$dataToSave['GEHomepageSuggestedEditsIntroLinks'] =
 			$this->normalizeSuggestedEditsIntroLinks( $data );
+		$dataToSave['GEHelpPanelLinks'] = $this->normalizeHelpPanelLinks( $data );
 
 		$this->configWriter->setVariables( $dataToSave );
 		return $this->configWriter->save( $data['summary'] );

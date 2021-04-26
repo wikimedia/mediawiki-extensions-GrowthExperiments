@@ -51,13 +51,11 @@ class HelpPanel {
 	/**
 	 * @param MessageLocalizer $ml
 	 * @param Config $wikiConfig
-	 * @param Config $mainConfig
 	 * @return array Links that should appear in the help panel. Exported to JS as wgGEHelpPanelLinks.
 	 */
 	public static function getHelpPanelLinks(
 		MessageLocalizer $ml,
-		Config $wikiConfig,
-		Config $mainConfig
+		Config $wikiConfig
 	) {
 		if ( !self::isHelpPanelEnabled() ) {
 			return [];
@@ -66,7 +64,7 @@ class HelpPanel {
 		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
 
 		$helpPanelLinks = Html::openElement( 'ul', [ 'class' => 'mw-ge-help-panel-links' ] );
-		foreach ( $mainConfig->get( 'GEHelpPanelLinks' ) as $link ) {
+		foreach ( $wikiConfig->get( 'GEHelpPanelLinks' ) as $link ) {
 			$title = Title::newFromText( $link['title'] );
 			if ( $title ) {
 				$helpPanelLinks .= Html::rawElement(

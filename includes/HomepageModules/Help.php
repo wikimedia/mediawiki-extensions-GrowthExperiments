@@ -70,8 +70,7 @@ class Help extends BaseModule {
 	protected function getBody() {
 		$helpPanelLinkData = HelpPanel::getHelpPanelLinks(
 			$this->getContext(),
-			$this->getGrowthWikiConfig(),
-			$this->getContext()->getConfig()
+			$this->getGrowthWikiConfig()
 		);
 		return $helpPanelLinkData['helpPanelLinks'] . $helpPanelLinkData['viewMoreLink'];
 	}
