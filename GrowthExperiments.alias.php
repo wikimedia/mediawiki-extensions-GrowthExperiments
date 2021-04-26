@@ -40,6 +40,13 @@ $specialPageAliases['bn'] = [
 	'EditGrowthConfig' => [ 'গ্রোথ_কনফিগারেশন_সম্পাদনা' ],
 ];
 
+/** Bulgarian (български) */
+$specialPageAliases['bg'] = [
+	'WelcomeSurvey' => [ 'анкета_за_добре_дошли' ],
+	'Homepage' => [ 'начална_страница_за_новодошли' ],
+	'Impact' => [ 'влияние' ],
+];
+
 /** Catalan (català) */
 $specialPageAliases['ca'] = [
 	'WelcomeSurvey' => [ 'Enquesta_de_benvinguda' ],
