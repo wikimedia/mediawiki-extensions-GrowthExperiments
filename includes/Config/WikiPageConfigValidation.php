@@ -29,9 +29,6 @@ class WikiPageConfigValidation {
 			'GEHelpPanelAskMentor' => [
 				'type' => 'bool',
 			],
-			'GEHomepageTutorialTitle' => [
-				'type' => 'string',
-			],
 			'GEMentorshipEnabled' => [
 				'type' => 'bool',
 			],

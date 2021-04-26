@@ -235,10 +235,6 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				],
 				'section' => 'help-panel',
 			],
-			'GEHomepageTutorialTitle' => [
-				'type' => 'title',
-				'exists' => true,
-			],
 			'GEHelpPanelLinks-0-title' => [
 				'type' => 'title',
 				'label-message' => 'growthexperiments-edit-config-help-panel-links-mos-title',

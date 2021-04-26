@@ -36,7 +36,6 @@ class GrowthExperimentsMultiConfig implements Config, IDBAccessObject {
 		'GEHelpPanelSearchNamespaces',
 		'GEHelpPanelLinks',
 		'GEHelpPanelAskMentor',
-		'GEHomepageTutorialTitle',
 		'GEMentorshipEnabled',
 		'GEHomepageMentorsList',
 		'GEHomepageManualAssignmentMentorsList',

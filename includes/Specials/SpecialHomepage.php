@@ -85,7 +85,7 @@ class SpecialHomepage extends SpecialPage {
 
 	private function handleTutorialVisit( $par ) {
 		$tutorialTitle = Title::newFromText(
-			$this->wikiConfig->get( Tutorial::TUTORIAL_TITLE_CONFIG )
+			$this->getConfig()->get( Tutorial::TUTORIAL_TITLE_CONFIG )
 		);
 		if ( !$tutorialTitle || $tutorialTitle->getPrefixedDBkey() !== $par ) {
 			return false;
