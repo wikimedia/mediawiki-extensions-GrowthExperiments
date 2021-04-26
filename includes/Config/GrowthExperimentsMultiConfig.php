@@ -71,7 +71,7 @@ class GrowthExperimentsMultiConfig implements Config, IDBAccessObject {
 	 *
 	 * @return bool
 	 */
-	private function isWikiConfigEnabled(): bool {
+	public function isWikiConfigEnabled(): bool {
 		return (bool)$this->globalVarConfig->get( 'GEWikiConfigEnabled' );
 	}
 

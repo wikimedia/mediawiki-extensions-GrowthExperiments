@@ -10,8 +10,10 @@ use HTMLForm;
 use MediaWiki\Revision\RevisionLookup;
 use MWTimestamp;
 use PageProps;
+use PermissionsError;
 use Title;
 use TitleFactory;
+use User;
 
 class SpecialEditGrowthConfig extends FormSpecialPage {
 	/** @var string[] */
@@ -65,6 +67,40 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		$this->pageProps = $pageProps;
 		$this->configWriterFactory = $configWriterFactory;
 		$this->growthWikiConfig = $growthWikiConfig;
+	}
+
+	/**
+	 * Determines if wiki config is enabled
+	 *
+	 * @return bool
+	 */
+	private function isWikiConfigEnabled(): bool {
+		return $this->growthWikiConfig->isWikiConfigEnabled();
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function userCanExecute( User $user ) {
+		// Require both enabled wiki config and user-specific access level to
+		// be able to use the special page.
+		return $this->isWikiConfigEnabled() && parent::userCanExecute( $user );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function displayRestrictionError() {
+		if ( !$this->isWikiConfigEnabled() ) {
+			// Wiki config is disabled, display a meaningful restriction error
+			throw new PermissionsError(
+				null,
+				[ 'growthexperiments-edit-config-disabled' ]
+			);
+		}
+
+		// Otherwise, defer to the default logic
+		parent::displayRestrictionError();
 	}
 
 	/**
