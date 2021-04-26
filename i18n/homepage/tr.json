@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aferinamca",
 			"Agaafd",
 			"BaRaN6161 TURK",
 			"Grkn gll",
@@ -369,6 +370,12 @@
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Başla",
 	"growthexperiments-addlink-no-suggestions-found-dialog-message": "Öneriler artık bu sayfada mevcut değil.",
 	"growthexperiments-addlink-no-suggestions-found-dialog-button": "Önerilen değişikliklere geri dön",
+	"growthexperiments-addlink-summary-title": "Özet",
+	"growthexperiments-addlink-summary-column-header-suggestion": "Öneri",
+	"growthexperiments-addlink-summary-column-header-linked": "Bağlı mı?",
+	"growthexperiments-addlink-summary-copyrightwarning": "Değişiklikleri kaydederek, [https://foundation.wikimedia.org/wiki/Terms_of_Use Kullanım Şartlarını] kabul {{GENDER:|eder}} ve katkınızı [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] ve  [https://www.gnu.org/licenses/fdl-1.3.html GFDL] lisanslarıyla yayınlamayı kabul edersiniz.",
+	"growthexperiments-addlink-summary-submit": "Gönder",
+	"growthexperiments-addlink-summary-summary": "Bağlantı önerileri: $1 kabul edildi, $2 reddedildi, $3 atlandı.",
 	"grant-managementorship": "Danışmanlığı yönet",
 	"newcomertasksinfo": "Yeni başlayan Görevleri",
 	"newcomertasksinfo-no-data": "Veri yok.",

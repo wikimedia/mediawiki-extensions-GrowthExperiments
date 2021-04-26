@@ -108,7 +108,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "ההצעות יכולות להיות על מילים שלא זקוקות להן, או להציע קישורים לערך לא נכון. {{GENDER:$1|השתמש|השתמשי}} בשיקול הדעת שלך כדי להחליט האם הן נכונות או שגויות.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|מידע נוסף על הצעות ממכונה]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "הנחיות",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* {{GENDER:$1|קשר|קשרי}} רק מושגים שהקורא יכול לרצות לדעת עליהם עוד.\n* {{GENDER:$1|ודא|ודאי}} שהקישור מצביע לערך הנכון.\n* אל {{GENDER:$1|תקשר|תקשרי}} מילים נפוצות, שנים, או תאריכים.\n* אם אינך {{GENDER:$1|בטוח, דלג|בטוחה, דלגי}}.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* {{GENDER:$1|תקשר|תקשרי}} מושגים שהקורא יכול לרצות לדעת עליהם עוד.\n* {{GENDER:$1|תוודא|תוודאי}} שהקישור מצביע לערך הנכון.\n* אל {{GENDER:$1|תקשר|תקשרי}} מילים נפוצות, שנים, או תאריכים.\n* אם אינך {{GENDER:$1|בטוח, תפסח|בטוחה, תפסחי}}.",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "משפט לדוגמה",
 	"growthexperiments-help-panel-questioncomplete-title": "לשאול שאלה",
 	"growthexperiments-help-panel-questioncomplete-header": "השאלה שלך התפרסמה!",
