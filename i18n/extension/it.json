@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Beta16",
 			"ValeJappo"
 		]
 	},
-	"growthexperiments-desc": "Quest'estensione contiene esperimenti effettuati dal Growth team"
+	"growthexperiments-desc": "Quest'estensione contiene esperimenti effettuati dal Growth team",
+	"growthexperiments-edit-config-mentorship-enabled-true": "Sì",
+	"growthexperiments-edit-config-mentorship-enabled-false": "No"
 }

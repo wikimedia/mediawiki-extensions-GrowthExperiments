@@ -4,5 +4,7 @@
 			"Robby"
 		]
 	},
-	"growthexperiments-desc": "An dëser Erweiderung sinn Experimenter vum 'Growth team'."
+	"growthexperiments-desc": "An dëser Erweiderung sinn Experimenter vum 'Growth team'.",
+	"growthexperiments-edit-config-mentorship-enabled-true": "Jo",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Neen"
 }

@@ -1,6 +1,8 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Robby"
+		]
 	},
 	"growthexperiments-desc": "{{desc|name=GrowthExperiments|url=https://www.mediawiki.org/wiki/Extension:GrowthExperiments}}",
 	"growthexperiments-config-validator-additional-fields": "Error returned by validator of Growth config (Special:EditGrowthConfig)",
@@ -28,10 +30,6 @@
 	"growthexperiments-edit-config-help-panel-ask-mentor": "Description of a form field in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Description of a form field in Special:EditGrowthConfig: help panel questions will be sent to mentors",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Description of a form field in Special:EditGrowthConfig: help panel questions will be sent to the help desk",
-	"growthexperiments-edit-config-homepage": "Subheader in Special:EditGrowthConfig",
-	"growthexperiments-edit-config-homepage-tutorial-title": "Description of a form field in Special:EditGrowthConfig",
-	"growthexperiments-edit-config-homepage-intro-links-create": "Description of a form field in Special:EditGrowthConfig",
-	"growthexperiments-edit-config-homepage-intro-links-image": "Description of a form field in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-help-panel-links": "Subheader in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-help-panel-links-mos-title": "Page title for a help panel link, displayed in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-help-panel-links-mos-label": "Label for a help panel link displayed to newcomers, displayed in Special:EditGrowthConfig",
@@ -43,10 +41,14 @@
 	"growthexperiments-edit-config-help-panel-links-references-label": "Label for a help panel link displayed to newcomers, displayed in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-help-panel-links-articlewizard-title": "Page title for a help panel link, displayed in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "Label for a help panel link displayed to newcomers, displayed in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-homepage": "Subheader in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-homepage-tutorial-title": "Description of a form field in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-homepage-intro-links-create": "Description of a form field in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-homepage-intro-links-image": "Description of a form field in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-mentorship": "Subheader in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-mentorship-enabled": "Description of a form field in Special:EditGrowthConfig",
-	"growthexperiments-edit-config-mentorship-enabled-true": "Description of a form field in Special:EditGrowthConfig",
-	"growthexperiments-edit-config-mentorship-enabled-false": "Description of a form field in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-mentorship-enabled-true": "Description of a form field in Special:EditGrowthConfig\n{{identical|Yes}}",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Description of a form field in Special:EditGrowthConfig\n{{identical|No}}",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Description of a form field in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Description of a form field in Special:EditGrowthConfig"
 }
