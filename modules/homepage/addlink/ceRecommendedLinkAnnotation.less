@@ -16,6 +16,10 @@
 	display: inline-block;
 	.rel-line-height( @parentFontSize: 16px, @targetLineHeight: 22.8px );
 
+	&::selection {
+		background: none;
+	}
+
 	&:after {
 		content: '';
 		display: inline-block;
@@ -57,5 +61,11 @@
 	&-desktop {
 		padding: 2px 8px;
 		.rel-line-height( @parentFontSize: 14px, @targetLineHeight: 20px );
+	}
+}
+
+.ve-init-mobileTarget .ve-ce-surface:not( .ve-ce-surface-deactivated ) {
+	.ve-ce-linkAnnotation.ve-ce-annotation-active {
+		background-color: fade( @wmui-color-accent90, 50% );
 	}
 }
