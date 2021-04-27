@@ -165,6 +165,7 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 	var i, regex, textNode, nextNode, match, phrase, suggestion, anythingLeft, linkText,
 		postText, linkWrapper,
 		phraseMap = {},
+		phraseMapKeys = [],
 		treeWalker = doc.createTreeWalker(
 			doc.body,
 			// eslint-disable-next-line no-bitwise
@@ -255,6 +256,20 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 		}
 
 		textNode = nextNode;
+	}
+	phraseMapKeys = Object.keys( phraseMap );
+	if ( phraseMapKeys.length > 0 ) {
+		// If any items are remaining in the phrase map, that means we failed to locate them
+		// in the document.
+		phraseMapKeys.forEach( function ( phraseItem ) {
+			mw.log.error( 'Failed to locate "' + phraseItem + '" (occurrences seen: ' +
+				phraseMap[ phraseItem ].occurrencesSeen + ') in document.' );
+		} );
+		mw.errorLogger.logError(
+			new Error(
+				'Unable to find ' + phraseMapKeys.length + ' link recommendation phrase item(s) in document.'
+			)
+		);
 	}
 
 };
