@@ -15,7 +15,7 @@ class WikiPageConfigValidation {
 				'type' => 'int[]',
 			],
 			'GEHelpPanelHelpDeskTitle' => [
-				'type' => 'string',
+				'type' => '?string',
 			],
 			'GEHelpPanelHelpDeskPostOnTop' => [
 				'type' => 'bool',
@@ -33,10 +33,10 @@ class WikiPageConfigValidation {
 				'type' => 'bool',
 			],
 			'GEHomepageMentorsList' => [
-				'type' => 'string',
+				'type' => '?string',
 			],
 			'GEHomepageManualAssignmentMentorsList' => [
-				'type' => 'string',
+				'type' => '?string',
 			],
 			'GEHelpPanelSuggestedEditsPreferredEditor' => [
 				'type' => 'string',
@@ -67,6 +67,8 @@ class WikiPageConfigValidation {
 				return is_bool( $value );
 			case 'string':
 				return is_string( $value );
+			case '?string':
+				return $value === null || is_string( $value );
 			case 'int[]':
 				if ( !is_array( $value ) ) {
 					// If it is not an array, it cannot be an array of integers
