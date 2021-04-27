@@ -237,12 +237,18 @@ abstract class QuestionPoster {
 		}
 
 		$this->revisionId = $newRev->getId();
-		$this->targetTitle->setFragment(
-			MediaWikiServices::getInstance()
+		$fragment = MediaWikiServices::getInstance()
 				->getParser()
-				->guessSectionNameFromWikiText( $this->getSectionHeader() )
+				->guessSectionNameFromWikiText( $this->getSectionHeader() );
+
+		// NOTE: Don't call setFragment() on the original Title, that may corrupt the internal
+		//       cache of Title objects.
+		$target = Title::makeTitle(
+			$this->targetTitle->getNamespace(),
+			$this->targetTitle->getDBkey(),
+			$fragment
 		);
-		$this->setResultUrl( $this->targetTitle->getLinkURL() );
+		$this->setResultUrl( $target->getLinkURL() );
 
 		return Status::newGood();
 	}
