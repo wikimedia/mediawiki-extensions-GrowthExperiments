@@ -48,9 +48,10 @@ RecommendedLinkToolbarDialog.prototype.initialize = function () {
 			label: mw.msg( 'growthexperiments-addlink-context-intro' ),
 			classes: [ 'mw-ge-recommendedLinkContextItem-introLabel' ]
 		} ),
-		// TODO: invisible label for robot icon
 		robotIcon = new OO.ui.IconWidget( {
 			icon: 'robot',
+			label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-machine-description' ),
+			invisibleLabel: true,
 			classes: [ 'mw-ge-recommendedLinkContextItem-head-robot-icon' ]
 		} );
 	RecommendedLinkToolbarDialog.super.prototype.initialize.call( this );
@@ -158,7 +159,7 @@ RecommendedLinkToolbarDialog.prototype.onAcceptanceChanged = function () {
 				.getAnnotations().getAnnotationsByName( 'mwGeRecommendedLink' );
 			return annotationSet.getLength() ? annotationSet.get( 0 ).isAccepted() : false;
 		} );
-	mw.hook( 'growthExperiments.machineSuggestionAcceptanceChanged' ).fire( hasAcceptedRecommendations );
+	mw.hook( 'growthExperiments.linkSuggestionAcceptanceChange' ).fire( hasAcceptedRecommendations );
 };
 
 /**
@@ -172,9 +173,9 @@ RecommendedLinkToolbarDialog.prototype.onContextChange = function () {
  * @inheritdoc
  */
 RecommendedLinkToolbarDialog.prototype.teardown = function () {
-	RecommendedLinkToolbarDialog.super.prototype.teardown.apply( this, arguments );
 	$( window ).off( 'resize' );
 	this.setLinkCacheIconFunction( this.originalGetIconForLink );
+	return RecommendedLinkToolbarDialog.super.prototype.teardown.apply( this, arguments );
 };
 
 // Interactions with annotation view & data model
@@ -209,6 +210,7 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 			rejectionReason: undefined
 		};
 
+	this.resetAcceptanceButtonStates();
 	// Temporarily disable read-only mode
 	surfaceModel.setReadOnly( false );
 
@@ -268,9 +270,7 @@ RecommendedLinkToolbarDialog.prototype.getIndexForCurrentSelection = function ()
 		}
 	}
 	// currentSelectionIndex is undefined when the user selects outside the annotations.
-	// TODO: Confirm what should happen since this is a new use case w/permanent context item
-	// Since the context item remains open, it probably makes sense for the user to be able to
-	// accept/reject the most recent recommendation.
+	// Since the context item remains open, show the last selected recommendation.
 	return typeof currentSelectionIndex !== 'undefined' ? currentSelectionIndex : currentIndex;
 };
 
@@ -452,6 +452,15 @@ RecommendedLinkToolbarDialog.prototype.updateButtonStates = function () {
 	this.noButton.setValue( this.currentDataModel.isRejected() );
 	this.reopenRejectionDialogButton.toggle( this.currentDataModel.isRejected() );
 	this.prevButton.setDisabled( this.currentIndex === 0 );
+};
+
+/**
+ * Reset active states on accept, reject and reopen rejection dialog buttons
+ */
+RecommendedLinkToolbarDialog.prototype.resetAcceptanceButtonStates = function () {
+	this.yesButton.setValue( false );
+	this.noButton.setValue( false );
+	this.reopenRejectionDialogButton.toggle( false );
 };
 
 /**
