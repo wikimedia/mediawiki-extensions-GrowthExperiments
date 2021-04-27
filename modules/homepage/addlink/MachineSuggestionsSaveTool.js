@@ -9,7 +9,7 @@
 function MachineSuggestionsSaveTool() {
 	MachineSuggestionsSaveTool.super.apply( this, arguments );
 	mw.config.set( 'wgEditSubmitButtonLabelPublish', true );
-	mw.hook( 'growthExperiments.machineSuggestionAcceptanceChanged' ).add( function ( hasAcceptedSuggestions ) {
+	mw.hook( 'growthExperiments.linkSuggestionAcceptanceChange' ).add( function ( hasAcceptedSuggestions ) {
 		this.updateSaveButtonTitle( hasAcceptedSuggestions );
 	}.bind( this ) );
 	this.updateSaveButtonTitle( false );

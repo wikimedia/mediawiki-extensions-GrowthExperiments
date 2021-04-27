@@ -20,7 +20,7 @@ RecommendedLinkToolbarDialogMobile.static.position = 'below';
  */
 RecommendedLinkToolbarDialogMobile.prototype.initialize = function () {
 	RecommendedLinkToolbarDialogMobile.super.prototype.initialize.call( this );
-	this.$labelPreview = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-label-preview' );
+	this.$labelPreview = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-labelPreview' );
 	this.setupLabelPreview();
 	this.$body.prepend( this.$labelPreview );
 	this.setupHelpButton();
@@ -71,9 +71,9 @@ RecommendedLinkToolbarDialogMobile.prototype.selectAnnotationView = function () 
  * @private
  */
 RecommendedLinkToolbarDialogMobile.prototype.setupLabelPreview = function () {
-	this.$labelPreviewText = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-label-preview-text' );
+	this.$labelPreviewText = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-labelPreview-text' );
 	this.$labelPreview.append( [
-		$( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-label-preview-label' ).text(
+		$( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-labelPreview-label' ).text(
 			mw.message( 'growthexperiments-addlink-context-text-label' ).text()
 		),
 		this.$labelPreviewText

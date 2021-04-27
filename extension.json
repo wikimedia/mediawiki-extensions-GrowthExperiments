@@ -758,7 +758,8 @@
 				"growthexperiments-addlink-summary-column-header-linked",
 				"growthexperiments-addlink-summary-copyrightwarning",
 				"growthexperiments-addlink-summary-submit",
-				"growthexperiments-addlink-summary-summary"
+				"growthexperiments-addlink-summary-summary",
+				"growthexperiments-homepage-suggestededits-tasktype-machine-description"
 			],
 			"dependencies": [
 				"oojs-ui.styles.icons-editing-core",
