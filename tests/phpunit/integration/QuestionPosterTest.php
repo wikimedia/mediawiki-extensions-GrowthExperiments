@@ -8,7 +8,7 @@ use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\PageUpdater;
 use MediaWiki\Storage\RevisionRecord;
 use MediaWikiIntegrationTestCase;
-use Title;
+use MockTitleTrait;
 use Wikimedia\TestingAccessWrapper;
 use WikitextContent;
 
@@ -16,6 +16,7 @@ use WikitextContent;
  * @coversDefaultClass \GrowthExperiments\HelpPanel\QuestionPoster\QuestionPoster
  */
 class QuestionPosterTest extends MediaWikiIntegrationTestCase {
+	use MockTitleTrait;
 
 	/**
 	 * @covers ::makeWikitextContent
@@ -50,8 +51,7 @@ class QuestionPosterTest extends MediaWikiIntegrationTestCase {
 
 	public function provideMakeWikitextContent() {
 		$makeParent = function ( string $text ) {
-			$title = $this->createMock( Title::class );
-			$title->method( 'getArticleID' )->willReturn( 123456789 );
+			$title = $this->makeMockTitle( 'QuestionPosterTest' );
 			$revision = new MutableRevisionRecord( $title );
 			$revision->setContent( SlotRecord::MAIN, new WikitextContent( $text ) );
 			return $revision;
