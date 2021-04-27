@@ -18,12 +18,14 @@ var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession'
  * AddLinkMobileArticleTarget.
  *
  * @mixin mw.libs.ge.AddLinkArticleTarget
+ * @extends ve.init.mw.ArticleTarget
  */
 function AddLinkArticleTarget() {
 	/**
 	 * Will be true when the recommendations were submitted but no real edit happened
 	 * (no recommended link was accepted, or, less plausibly, the save conflicted with
 	 * (and got auto-merge with) another edit which added the same link.
+	 *
 	 * @type {boolean}
 	 */
 	this.madeNullEdit = false;
@@ -255,6 +257,25 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 		textNode = nextNode;
 	}
 
+};
+
+/** @inheritDoc */
+AddLinkArticleTarget.prototype.isSaveable = function () {
+	// Call parent method just in case it has some side effect, but ignore its return value.
+	// The page is saveable if the user accepted or rejected recommendations.
+	// (If there are only rejections, the save will be a null edit but it's still a convenient
+	// way of handling various needed updates via the same mechanism, so we don't special-case it.)
+	this.constructor.super.prototype.isSaveable.call( this );
+
+	if ( !this.getSurface().linkRecommendationFragments ) {
+		// Too early; we can assume there are no changes to save.
+		// FIXME need to re-check this if we fix restoring abandoned edits.
+		return false;
+	}
+
+	return this.getAnnotationStates().some( function ( state ) {
+		return state.accepted || state.rejected;
+	} );
 };
 
 /** @inheritDoc */
