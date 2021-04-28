@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vodnokon4e"
+		]
+	},
+	"growthexperiments-edit-config-edit-summary": "Резюме на редакцията",
+	"growthexperiments-edit-config-return-to-form": "Може [[Special:EditGrowthConfig|да се върнете]] към формата за редактиране.",
+	"growthexperiments-edit-config-help-panel": "Помощен панел",
+	"growthexperiments-edit-config-mentorship": "Менторство",
+	"growthexperiments-edit-config-mentorship-enabled-true": "Да",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Не"
+}

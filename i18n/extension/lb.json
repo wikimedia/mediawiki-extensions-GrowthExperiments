@@ -5,6 +5,8 @@
 		]
 	},
 	"growthexperiments-desc": "An dëser Erweiderung sinn Experimenter vum 'Growth team'.",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "Uewen op der Säit",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "Ënnen op der Säit",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Jo",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Neen"
 }
