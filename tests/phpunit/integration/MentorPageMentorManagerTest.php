@@ -84,8 +84,9 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 	public function testGetMentorUserExisting() {
 		$sysop = $this->getTestSysop()->getUser();
 		$user = $this->getMutableTestUser()->getUser();
-		$user->setOption( MentorPageMentorManager::MENTOR_PREF, $sysop->getId() );
-		$user->saveSettings();
+		GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorStore()
+			->setMentorForUser( $user, $sysop );
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
 		$mentorManager = $this->getMentorManager( null, [
 			'MentorsList' => [ '* [[User:Mentor]]', [ 'Mentor' ] ],
