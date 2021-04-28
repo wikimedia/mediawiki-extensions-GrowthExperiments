@@ -205,8 +205,7 @@
 		}
 
 		// Don't show help panel & mobile peek if the article is in edit mode
-		this.shouldOpenArticleInEditMode = url.query.articleAction === 'edit';
-		Utils.removeQueryParam( url, 'articleAction' );
+		this.shouldOpenArticleInEditMode = url.query.veaction === 'edit';
 		this.helpPanelShouldOpen = !this.shouldOpenArticleInEditMode;
 		this.mobilePeekShown = this.shouldOpenArticleInEditMode;
 

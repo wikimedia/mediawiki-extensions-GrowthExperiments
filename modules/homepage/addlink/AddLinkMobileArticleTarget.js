@@ -28,6 +28,7 @@ AddLinkMobileArticleTarget.prototype.surfaceReady = function () {
 	this.beforeSurfaceReady();
 	AddLinkMobileArticleTarget.super.prototype.surfaceReady.apply( this, arguments );
 	this.afterSurfaceReady();
+	this.updateHistory();
 };
 
 /** @inheritdoc */
@@ -44,6 +45,16 @@ AddLinkMobileArticleTarget.prototype.setupToolbar = function () {
 			MachineSuggestionsMode.getTitleElement()
 		);
 	}
+};
+
+/**
+ * Make the close button take the user to the article's read mode
+ * instead of Special:Homepage
+ */
+AddLinkMobileArticleTarget.prototype.updateHistory = function () {
+	var uri = new mw.Uri();
+	uri.fragment = '';
+	window.history.replaceState( null, null, uri.toString() );
 };
 
 module.exports = AddLinkMobileArticleTarget;
