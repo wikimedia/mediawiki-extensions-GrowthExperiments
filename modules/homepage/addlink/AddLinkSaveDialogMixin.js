@@ -64,7 +64,7 @@ AddLinkSaveDialogMixin.prototype.updateSummary = function ( annotationStates ) {
 		return $( '<tr>' ).append(
 			$( '<td>' ).append(
 				mw.html.escape( state.text ),
-				' ⟶ ',
+				mw.message( 'colon-separator' ).parse(),
 				new OO.ui.IconWidget( { icon: 'link' } ).$element,
 				mw.html.escape( state.title )
 			),
