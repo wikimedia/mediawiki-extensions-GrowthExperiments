@@ -92,6 +92,9 @@ RecommendedLinkToolbarDialog.prototype.afterSetupProcess = function () {
 	$( window ).on( 'resize',
 		OO.ui.debounce( this.updateActionButtonsMode.bind( this ), 250 )
 	);
+	// By default, a box is shown on top of the selected annotation.
+	this.$surfaceSelectionOverlay = this.surface.$element.find( '.ve-ce-surface-deactivatedSelection-showAsDeactivated' );
+	this.$surfaceSelectionOverlay.hide();
 	/**
 	 * HACK: Customize getIconForLink function which gets called in generateBody
 	 * Even though linkCache is passed as the first argument, getIconForLink is called directly
@@ -175,6 +178,7 @@ RecommendedLinkToolbarDialog.prototype.onContextChange = function () {
 RecommendedLinkToolbarDialog.prototype.teardown = function () {
 	$( window ).off( 'resize' );
 	this.setLinkCacheIconFunction( this.originalGetIconForLink );
+	this.$surfaceSelectionOverlay.show();
 	return RecommendedLinkToolbarDialog.super.prototype.teardown.apply( this, arguments );
 };
 
