@@ -803,7 +803,8 @@
 			],
 			"dependencies": [
 				"ext.growthExperiments.AddLink",
-				"ext.visualEditor.mobileArticleTarget"
+				"ext.visualEditor.mobileArticleTarget",
+				"mediawiki.Uri"
 			],
 			"messages": [
 				"growthexperiments-addlink-ve-machine-suggestions-mode-title"

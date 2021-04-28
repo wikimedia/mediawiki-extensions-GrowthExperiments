@@ -23,8 +23,7 @@
 				router.back();
 			} );
 		},
-		guidancePrefValue,
-		uri;
+		guidancePrefValue;
 
 	if ( taskTypeId === 'link-recommendation' && mw.config.get( 'wgGELinkRecommendationsFrontendEnabled' ) ) {
 		if ( !suggestedEditSession.taskData ) {
@@ -54,17 +53,6 @@
 					} );
 				} );
 			} );
-
-			if ( suggestedEditSession.shouldOpenArticleInEditMode && $editLink.length ) {
-				uri = new mw.Uri();
-				if ( uri.query.section ) {
-					$editLink.attr(
-						'href',
-						uri.clone().extend( { section: uri.query.section } )
-					);
-				}
-				$editLink[ 0 ].click();
-			}
 		}
 	}
 
