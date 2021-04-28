@@ -17,7 +17,7 @@ function RecommendedLinkToolbarDialog() {
 	 */
 	this.currentIndex = 0;
 	/**
-	 * @property {Object} surface VisualEditor UI surface
+	 * @property {ve.ui.Surface} surface VisualEditor UI surface
 	 */
 	this.surface = null;
 	/**
@@ -126,7 +126,7 @@ RecommendedLinkToolbarDialog.prototype.onPrevButtonClicked = function () {
 RecommendedLinkToolbarDialog.prototype.onNextButtonClicked = function () {
 	if ( this.isLastRecommendationSelected() ) {
 		if ( this.allRecommendationsSkipped() ) {
-			// TODO: Show skip all suggestions dialog (T269658)
+			this.showSkippedAllDialog();
 		} else {
 			mw.hook( 'growthExperiments.contextItem.saveArticle' ).fire();
 		}
@@ -524,6 +524,34 @@ RecommendedLinkToolbarDialog.prototype.updateActionButtonsMode = function () {
 	}
 
 	this.updateSize();
+};
+
+/**
+ * Show a dialog informing the user that they skipped all recommendations and
+ * offering them to stay or leave.
+ */
+RecommendedLinkToolbarDialog.prototype.showSkippedAllDialog = function () {
+	this.surface.dialogs.openWindow( 'message', {
+		title: mw.message( 'growthexperiments-addlink-skip-title' ).text(),
+		message: mw.message( 'growthexperiments-addlink-skip-body' ).text(),
+		actions: [
+			{
+				action: 'accept',
+				label: mw.message( 'growthexperiments-addlink-skip-accept' ).text()
+			},
+			{
+				action: 'reject',
+				label: mw.message( 'growthexperiments-addlink-skip-reject' ).text()
+			}
+		]
+	} ).closed.then( function ( data ) {
+		if ( data && data.action === 'accept' ) {
+			ve.init.target.tryTeardown( true, 'navigate-read' ).then( function () {
+				require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance()
+					.showPostEditDialog( { resetSession: true } );
+			} );
+		}
+	} );
 };
 
 // Helpers
