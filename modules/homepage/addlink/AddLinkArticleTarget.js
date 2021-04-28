@@ -95,6 +95,14 @@ AddLinkArticleTarget.prototype.restoreScrollPosition = function () {
 };
 
 /**
+ * Don't save or restore edits
+ * @override
+ */
+AddLinkArticleTarget.prototype.initAutosave = function () {
+	// https://phabricator.wikimedia.org/T267690
+};
+
+/**
  * Find all mwGeRecommendedLink annotations in the document, and build a data structure with their
  * IDs and SurfaceFragments representing the range they cover. If the annotations move around
  * because of changes elsewhere in the document, these SurfaceFragments update automatically.
