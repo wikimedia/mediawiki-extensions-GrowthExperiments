@@ -1214,8 +1214,10 @@
 			"messages": [
 				"growthexperiments-help-panel-postedit-success-message-published",
 				"growthexperiments-help-panel-postedit-success-message-saved",
+				"growthexperiments-help-panel-postedit-success-message-notsaved",
 				"growthexperiments-help-panel-postedit-header",
 				"growthexperiments-help-panel-postedit-subheader",
+				"growthexperiments-help-panel-postedit-subheader-notsaved",
 				"growthexperiments-help-panel-postedit-footer",
 				"growthexperiments-help-panel-postedit-footer2",
 				"growthexperiments-homepage-suggestededits-pageviews"

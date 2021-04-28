@@ -31,6 +31,7 @@
 		},
 		preferences = api.getPreferences(),
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
+		isLinkRecommendationTask = ( suggestedEditSession.taskType === 'link-recommendation' ),
 		newcomerTaskLogger = new NewcomerTaskLogger(),
 		helpPanelLogger = new HelpPanelLogger( helpConfig.GEHelpPanelLoggingEnabled, {
 			context: 'postedit',
@@ -46,9 +47,11 @@
 	 *   or fail with an error message if fetching the task failed.
 	 */
 	function getNextTask() {
+		var taskTypesToFetch = isLinkRecommendationTask ? [ 'link-recommendation' ] : preferences.taskTypes;
+
 		// 10 tasks are hopefully enough to find one that's not protected.
 		return api.fetchTasks(
-			preferences.taskTypes,
+			taskTypesToFetch,
 			preferences.topics,
 			apiConfig
 		).then( function ( data ) {
@@ -141,6 +144,8 @@
 		}
 
 		postEditPanel = new PostEditPanel( {
+			taskType: suggestedEditSession.taskType,
+			taskState: suggestedEditSession.taskState,
 			nextTask: task,
 			taskTypes: task ? taskTypes : {},
 			newcomerTaskLogger: newcomerTaskLogger,

@@ -547,8 +547,11 @@ RecommendedLinkToolbarDialog.prototype.showSkippedAllDialog = function () {
 	} ).closed.then( function ( data ) {
 		if ( data && data.action === 'accept' ) {
 			ve.init.target.tryTeardown( true, 'navigate-read' ).then( function () {
-				require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance()
-					.showPostEditDialog( { resetSession: true } );
+				var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
+					suggestedEditSession = SuggestedEditSession.getInstance();
+
+				suggestedEditSession.setTaskState( SuggestedEditSession.static.STATES.CANCELLED );
+				suggestedEditSession.showPostEditDialog( { resetSession: true } );
 			} );
 		}
 	} );

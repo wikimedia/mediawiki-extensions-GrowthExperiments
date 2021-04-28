@@ -3,6 +3,7 @@
 ( function () {
 	var SmallTaskCard = require( '../homepage/suggestededits/' +
 		'ext.growthExperiments.SuggestedEdits.SmallTaskCard.js' );
+	var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' );
 
 	/**
 	 * @class
@@ -10,6 +11,8 @@
 	 *
 	 * @constructor
 	 * @param {Object} config
+	 * @param {string} config.taskType Task type of the current task.
+	 * @param {string} config.taskState State of the current task, as in SuggestedEditSession.taskState.
 	 * @param {mw.libs.ge.TaskData|null} config.nextTask Data for the next suggested edit, as returned by
 	 *   GrowthTasksApi, or null if there are no available tasks or fetching tasks failed.
 	 * @param {Object} config.taskTypes Task type data, as returned by
@@ -19,6 +22,8 @@
 	 */
 	function PostEditPanel( config ) {
 		OO.EventEmitter.call( this );
+		this.taskType = config.taskType;
+		this.taskState = config.taskState;
 		this.nextTask = config.nextTask;
 		this.taskTypes = config.taskTypes;
 		this.newcomerTaskLogger = config.newcomerTaskLogger;
@@ -34,19 +39,27 @@
 	 * @return {OO.ui.MessageWidget}
 	 */
 	PostEditPanel.prototype.getSuccessMessage = function () {
-		var type = mw.config.get( 'wgEditSubmitButtonLabelPublish' ) ? 'published' : 'saved';
-		if ( mw.config.get( 'wgStableRevisionId' ) &&
-			mw.config.get( 'wgStableRevisionId' ) !== mw.config.get( 'wgRevisionId' )
-		) {
-			// FlaggedRevs wiki, the current revision needs review
-			type = 'saved';
+		var type;
+
+		if ( this.taskState === SuggestedEditSession.static.STATES.SAVED ) {
+			type = mw.config.get( 'wgEditSubmitButtonLabelPublish' ) ? 'published' : 'saved';
+			if ( mw.config.get( 'wgStableRevisionId' ) &&
+				mw.config.get( 'wgStableRevisionId' ) !== mw.config.get( 'wgRevisionId' )
+			) {
+				// FlaggedRevs wiki, the current revision needs review
+				type = 'saved';
+			}
+		} else {
+			type = 'notsaved';
 		}
+
 		return new OO.ui.MessageWidget( {
 			type: 'success',
 			classes: [ 'mw-ge-help-panel-postedit-message' ],
 			// The following messages are used here:
 			// * growthexperiments-help-panel-postedit-success-message-published
 			// * growthexperiments-help-panel-postedit-success-message-saved
+			// * growthexperiments-help-panel-postedit-success-message-notsaved
 			label: mw.message( 'growthexperiments-help-panel-postedit-success-message-' + type ).text()
 		} );
 	};
@@ -57,9 +70,10 @@
 	 * @return {Array<jQuery>} A list of footer elements.
 	 */
 	PostEditPanel.prototype.getFooterButtons = function () {
-		var title, footer, footer2,
+		var title, buttons, footer, footer2,
 			self = this;
 
+		buttons = [];
 		title = new mw.Title( 'Special:Homepage' );
 		footer = new OO.ui.ButtonWidget( {
 			href: title.getUrl( { source: 'postedit-panel' } ) +
@@ -69,24 +83,28 @@
 			classes: [ 'mw-ge-help-panel-postedit-footer' ]
 		} );
 		footer.$element.on( 'click', this.logLinkClick.bind( this, 'homepage' ) );
+		buttons.push( footer.$element );
 
-		footer2 = new OO.ui.ButtonWidget( {
-			href: '#',
-			label: mw.message( 'growthexperiments-help-panel-postedit-footer2' ).text(),
-			framed: false,
-			classes: [ 'mw-ge-help-panel-postedit-footer' ]
-		} );
-		footer2.$element.on( 'click', function () {
-			self.logLinkClick( 'edit' );
-			// When the user clicks the edit link, close the panel. (Actually opening
-			// the editor would not be a great user experience as we can't predict whether
-			// the user wants to edit a section or the whole article.) Since it could be a
-			// dialog or a drawer, closing is handled by the caller.
-			self.emit( 'edit-link-clicked' );
-			return false;
-		} );
+		if ( this.taskType !== 'link-recommendation' ) {
+			footer2 = new OO.ui.ButtonWidget( {
+				href: '#',
+				label: mw.message( 'growthexperiments-help-panel-postedit-footer2' ).text(),
+				framed: false,
+				classes: [ 'mw-ge-help-panel-postedit-footer' ]
+			} );
+			footer2.$element.on( 'click', function () {
+				self.logLinkClick( 'edit' );
+				// When the user clicks the edit link, close the panel. (Actually opening
+				// the editor would not be a great user experience as we can't predict whether
+				// the user wants to edit a section or the whole article.) Since it could be a
+				// dialog or a drawer, closing is handled by the caller.
+				self.emit( 'edit-link-clicked' );
+				return false;
+			} );
+			buttons.push( footer2.$element );
+		}
 
-		return [ footer.$element, footer2.$element ];
+		return buttons;
 	};
 
 	/**
@@ -96,6 +114,10 @@
 	 *   Null if the panel should not have a main area (as no task should be displayed).
 	 */
 	PostEditPanel.prototype.getMainArea = function () {
+		var subheaderMessage = ( this.taskState === SuggestedEditSession.static.STATES.SAVED ) ?
+			mw.message( 'growthexperiments-help-panel-postedit-subheader' ).text() :
+			mw.message( 'growthexperiments-help-panel-postedit-subheader-notsaved' ).text();
+
 		if ( !this.nextTask ) {
 			return null;
 		}
@@ -105,7 +127,7 @@
 			.append(
 				$( '<div>' )
 					.addClass( 'mw-ge-help-panel-postedit-subheader' )
-					.text( mw.message( 'growthexperiments-help-panel-postedit-subheader' ).text() ),
+					.text( subheaderMessage ),
 				this.$taskCard
 			);
 	};

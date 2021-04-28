@@ -1,5 +1,16 @@
 ( function () {
 	var Utils = require( '../../utils/ext.growthExperiments.Utils.js' );
+	var states = {
+		/** Initial task state when the user opens a task. */
+		STARTED: 'started',
+		/** Task state after the user makes a real edit. */
+		SAVED: 'saved',
+		/** Task state after the user submits a structured task without making an edit. */
+		SUBMITTED: 'submitted',
+		/** Task state after the user leaves the workflow without saving or submitting anything. */
+		CANCELLED: 'cancelled'
+	};
+	var allStates = [ states.STARTED, states.SAVED, states.SUBMITTED, states.CANCELLED ];
 
 	/**
 	 * Class for tracking suggested edit sessions and triggering actions related to them.
@@ -20,6 +31,7 @@
 	 */
 	function SuggestedEditSession() {
 		OO.EventEmitter.call( this );
+
 		/** @member {boolean} Whether we are in a suggested edit session currently. */
 		this.active = false;
 		/**
@@ -39,6 +51,8 @@
 		 *   field will contain an error message); callers are expected to handle this gracefully.
 		 */
 		this.taskData = null;
+		/** @member {string} Task state; one of the STATES constants. */
+		this.taskState = null;
 		/** @member {string|null} The editor used last in the suggested edit session. */
 		this.editorInterface = null;
 		/**
@@ -69,8 +83,10 @@
 		 */
 		this.onboardingNeedsToBeShown = true;
 	}
-
 	OO.mixinClass( SuggestedEditSession, OO.EventEmitter );
+
+	/** pseudo-constants for the 'taskState' property */
+	SuggestedEditSession.static.STATES = states;
 
 	/**
 	 * Initialize the suggested edit session. This should be called on every page load.
@@ -111,6 +127,7 @@
 			title: this.title.getPrefixedText(),
 			taskType: this.taskType,
 			taskData: this.taskData,
+			taskState: this.taskState,
 			editorInterface: this.editorInterface,
 			postEditDialogNeedsToBeShown: this.postEditDialogNeedsToBeShown,
 			mobilePeekShown: this.mobilePeekShown,
@@ -160,6 +177,7 @@
 				this.title = savedTitle;
 				this.taskType = data.taskType;
 				this.taskData = data.taskData;
+				this.taskState = data.taskState;
 				this.editorInterface = data.editorInterface;
 				this.postEditDialogNeedsToBeShown = data.postEditDialogNeedsToBeShown;
 				this.mobilePeekShown = data.mobilePeekShown;
@@ -197,6 +215,7 @@
 			this.title = this.getCurrentTitle();
 			this.taskType = url.query.getasktype || null;
 			this.taskData = mw.config.get( 'wgGESuggestedEditData' );
+			this.taskState = states.STARTED;
 
 			Utils.removeQueryParam( url, 'geclickid' );
 			if ( url.query.getasktype ) {
@@ -226,6 +245,16 @@
 				mw.libs.ve.disableWelcomeDialog();
 				mw.libs.ve.disableEducationPopups();
 			} );
+		}
+	};
+
+	SuggestedEditSession.prototype.setTaskState = function ( state ) {
+		if ( allStates.indexOf( state ) !== -1 ) {
+			this.taskState = state;
+			this.save();
+		} else {
+			mw.log.error( 'SuggestedEditSession.setTaskState: invalid state ' + state );
+			mw.errorLogger.logError( new Error( 'SuggestedEditSession.setTaskState: invalid state ' + state ) );
 		}
 	};
 
@@ -349,9 +378,11 @@
 		// Do this even if we have just shown the dialog above. This is important when the user
 		// edits again right after dismissing the dialog.
 		mw.hook( 'postEdit' ).add( function () {
+			self.setTaskState( states.SAVED );
 			self.showPostEditDialog( { resetSession: true } );
 		} );
 		mw.hook( 'postEditMobile' ).add( function () {
+			self.setTaskState( states.SAVED );
 			self.showPostEditDialog( { resetSession: true, nextRequest: true } );
 		} );
 	};
