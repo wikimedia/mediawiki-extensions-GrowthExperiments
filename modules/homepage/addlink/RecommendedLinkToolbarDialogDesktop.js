@@ -8,6 +8,7 @@ var RecommendedLinkToolbarDialog = require( 'ext.growthExperiments.AddLink' ).Re
 function RecommendedLinkToolbarDialogDesktop() {
 	RecommendedLinkToolbarDialogDesktop.super.apply( this, arguments );
 	this.$element.addClass( [ 'mw-ge-recommendedLinkContextItem-desktop' ] );
+	this.minHeight = 200;
 }
 
 OO.inheritClass( RecommendedLinkToolbarDialogDesktop, RecommendedLinkToolbarDialog );
