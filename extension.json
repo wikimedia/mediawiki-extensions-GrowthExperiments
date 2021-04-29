@@ -1409,7 +1409,7 @@
 		},
 		"GEMentorshipMigrationStage": {
 			"description": "Migration stage of mentorship. Default value is a PHP constant, decoded in GrowthHooks",
-			"value": "SCHEMA_COMPAT_WRITE_BOTH | SCHEMA_COMPAT_READ_OLD"
+			"value": "SCHEMA_COMPAT_NEW"
 		},
 		"GEHomepageMentorsList": {
 			"description": "Title of the wiki page that contains the list of auto-assigned mentors (cf. GEHomepageManualAssignmentMentorsList). May be null if no such page exists.",
