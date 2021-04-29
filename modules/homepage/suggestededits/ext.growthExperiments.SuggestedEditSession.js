@@ -377,5 +377,9 @@
 	// navigates away from the target page.
 	SuggestedEditSession.getInstance();
 
+	// To facilitate QA/debugging.
+	window.ge = window.ge || {};
+	ge.suggestedEditSession = SuggestedEditSession.getInstance();
+
 	module.exports = SuggestedEditSession;
 }() );

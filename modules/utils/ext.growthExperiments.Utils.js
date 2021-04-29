@@ -70,6 +70,7 @@
 
 	/**
 	 * Get the variant the user is assigned to, for A/B testing and gradual rollouts.
+	 *
 	 * @return {string}
 	 */
 	function getUserVariant() {
@@ -84,6 +85,7 @@
 
 	/**
 	 * Set the variant the user is assigned to, for A/B testing and gradual rollouts.
+	 *
 	 * @internal For debug/QA purposes only.
 	 * @param {string|null} variant The new variant, or null to unset.
 	 */
