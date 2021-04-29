@@ -2,10 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Ailbeve",
+			"Kareyac",
 			"Nastua Buldakova",
 			"Vlad5250"
 		]
 	},
 	"growthexperiments-desc": "Данное расширение является результатом исследований Команды «Роста».",
-	"growthexperiments-config-validator-additional-fields": "Новая конфигурация имеет ключи конфигурации, которые здесь не могут быть настроены."
+	"growthexperiments-config-validator-additional-fields": "Новая конфигурация имеет ключи конфигурации, которые здесь не могут быть настроены.",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "Наверх страницы",
+	"growthexperiments-edit-config-mentorship-enabled-true": "Да",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Нет"
 }

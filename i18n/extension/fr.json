@@ -21,7 +21,7 @@
 	"growthexperiments-edit-config-pretext": "Cette page vous permet de modifier la configuration des fonctionnalités de l’équipe [[:mw:Special:MyLanguage/Growth|Growth]]. Elle modifiera [[$1]] pour vous. Vous pouvez voir ces modifications dans l’historique de cette page.",
 	"growthexperiments-edit-config-error-invalid-title": "La page de configuration n’a pas bien été configurée",
 	"growthexperiments-edit-config-edit-summary": "Modifier le résumé",
-	"growthexperiments-edit-config-config-changed": "La configuration a été modifiée",
+	"growthexperiments-edit-config-config-changed": "La configuration a été modifiée. Vous devrez peut-être attendre quelques minutes pour que les modifications prennent effet.",
 	"growthexperiments-edit-config-return-to-form": "Vous pouvez [[Special:EditGrowthConfig|retourner]] au formulaire de modification.",
 	"growthexperiments-edit-config-help-panel": "Panneau d’aide",
 	"growthexperiments-edit-config-help-panel-reading-namespaces": "Espaces de noms avec le panneau d’aide activé en mode lecture",

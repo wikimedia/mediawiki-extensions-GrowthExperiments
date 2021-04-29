@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hello903hello",
+			"Matttest"
+		]
+	},
+	"growthexperiments-edit-config-edit-summary": "編輯摘要",
+	"growthexperiments-edit-config-mentorship-enabled": "係唔係開著導師（mentorship）功能？",
+	"growthexperiments-edit-config-mentorship-enabled-true": "係",
+	"growthexperiments-edit-config-mentorship-enabled-false": "唔係"
+}

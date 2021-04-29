@@ -6,5 +6,11 @@
 		]
 	},
 	"growthexperiments-desc": "이 확장 기능은 성장 팀의 실험적인 기능을 포함합니다.",
-	"growthexperiments-config-validator-additional-fields": "새 구성에는 여기서 사용자 지정을 할 수 없는 구성 키가 있습니다."
+	"growthexperiments-config-validator-additional-fields": "새 구성에는 여기서 사용자 지정을 할 수 없는 구성 키가 있습니다.",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "문서 최상단",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "문서 최하단",
+	"growthexperiments-edit-config-help-panel-ask-mentor-true": "멘토",
+	"growthexperiments-edit-config-help-panel-links": "도움말 패널 링크",
+	"growthexperiments-edit-config-mentorship-enabled-true": "예",
+	"growthexperiments-edit-config-mentorship-enabled-false": "아니오"
 }

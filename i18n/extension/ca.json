@@ -18,7 +18,7 @@
 	"growthexperiments-edit-config-pretext": "Aquesta pàgina us permet d'editar la configuració dels ginys i novetats establerts per l'equip de [[:mw:Special:MyLanguage/Growth|Creixement]]. Editarà [[$1]] en el vostre nom. Pot ser que trobeu canvis a l'historial de canvis d'aquella pàgina.",
 	"growthexperiments-edit-config-error-invalid-title": "La configuració de pàgina no ha s'ha efectuat adequadament.",
 	"growthexperiments-edit-config-edit-summary": "Resum d’edició",
-	"growthexperiments-edit-config-config-changed": "La configuració ha estat canviada",
+	"growthexperiments-edit-config-config-changed": "Ha canviat la configuració. Potser haureu d'esperar uns minuts perquè s'implementin els nous canvis.",
 	"growthexperiments-edit-config-return-to-form": "Podeu [[Special:EditGrowthConfig|tornar enrere]] a la pestanya d'edició.",
 	"growthexperiments-edit-config-help-panel": "Plafó d'Ajuda",
 	"growthexperiments-edit-config-help-panel-reading-namespaces": "Espai de noms amb el Plafó d'Ajuda activat en el mode de lectura",

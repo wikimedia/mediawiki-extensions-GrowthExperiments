@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"فیروز"
+		]
+	},
+	"growthexperiments-edit-config-help-panel-post-on-top": "کجه جا بنشنه سوالات ره رانمای میز سَر پست هاکردن؟",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "صفحهٔ سَر",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "صفحهٔ بِن",
+	"growthexperiments-edit-config-help-panel-ask-mentor-true": "مربیون",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "کمک میز",
+	"growthexperiments-edit-config-help-panel-links": "رانمای پنل لینکون",
+	"growthexperiments-edit-config-mentorship-enabled-true": "اره",
+	"growthexperiments-edit-config-mentorship-enabled-false": "نا"
+}

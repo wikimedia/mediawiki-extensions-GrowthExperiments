@@ -19,7 +19,7 @@
 	"growthexperiments-edit-config-pretext": "تتيح لك هذه الصفحة، ضبط إعدادات مزايا فريق [[:mw:Special:MyLanguage/Growth|النموّ]]. ستعدّل [[$1]] نيابة عنك. يمكنك مشاهدة تغييراتك على تاريخ تلك الصفحة.",
 	"growthexperiments-edit-config-error-invalid-title": "لم تُضبط صفحة الإعدادات جيّدًا.",
 	"growthexperiments-edit-config-edit-summary": "ملخص التعديل",
-	"growthexperiments-edit-config-config-changed": "تمّ تغيير الإعداد",
+	"growthexperiments-edit-config-config-changed": "تمّ تغيير الإعداد. ربّما يجب الانتظار لبضع دقائق لتفعيل التغييرات.",
 	"growthexperiments-edit-config-return-to-form": "يمكن [[Special:EditGrowthConfig|الرجوع]] إلى تنسيق الضبط.",
 	"growthexperiments-edit-config-help-panel": "لوحة المساعدة",
 	"growthexperiments-edit-config-help-panel-reading-namespaces": "نطاقات مع لوحة المساعدة مفعّلة على وضعيّة القراءة",

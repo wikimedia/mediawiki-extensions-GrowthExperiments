@@ -326,6 +326,7 @@
 	"growthexperiments-addlink-serviceerror": "Serviciul de recomandări de legături a răspuns cu o eroare pentru „$1”: $2",
 	"growthexperiments-addlink-notinstore": "Recomandare de legături negăsită pentru „$1”",
 	"growthexperiments-addlink-duplicatesubmission": "Ați încercat să trimiteți revizuiri de recomandări de legături pentru revizia „$1” care a fost deja revizuită.",
+	"growthexperiments-addlink-context-text-label": "Text",
 	"growthexperiments-addlink-context-intro": "Ar trebui ca asta se se lege cu _____?",
 	"growthexperiments-addlink-context-button-accept": "Da",
 	"growthexperiments-addlink-context-button-reject": "Nu",
