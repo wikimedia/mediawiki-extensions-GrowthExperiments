@@ -19,11 +19,29 @@ ve.ui.commandRegistry.register(
 	)
 );
 
+// T280129 Disable all unnecessary context items
+Object.keys( ve.ui.contextItemFactory.registry ).forEach( function ( contextItem ) {
+	ve.ui.contextItemFactory.unregister( contextItem );
+} );
+
+// T280129 Disable all unnecessary tools
+Object.keys( ve.ui.toolFactory.registry ).forEach( function ( toolFactoryItem ) {
+	var safeList = [ 'machineSuggestionsSave', 'machineSuggestionsPlaceholder', 'showMobileSave', 'showSave', 'back' ];
+	if ( safeList.indexOf( toolFactoryItem ) === -1 ) {
+		ve.ui.toolFactory.unregister( toolFactoryItem );
+	}
+} );
+
+// T281434 Disable window related commands (including their keyboard shortcuts)
+Object.keys( ve.ui.commandRegistry.registry ).forEach( function ( commandItem ) {
+	var safeList = [ 'showSave', 'showChanges', 'recommendedLink', 'back' ];
+	if ( safeList.indexOf( commandItem ) === -1 ) {
+		ve.ui.commandRegistry.unregister( commandItem );
+	}
+} );
+
 // Disable context items for non-recommended links
 ve.ce.MWInternalLinkAnnotation.static.canBeActive = false;
-ve.ui.contextItemFactory.unregister( 'link' );
-ve.ui.contextItemFactory.unregister( 'link/internal' );
-ve.ui.toolFactory.unregister( ve.ui.MWLinkInspectorTool );
 
 // HACK: Override the registration of MobileArticleTarget for 'wikitext'
 ve.init.mw.targetFactory.register( AddLinkMobileArticleTarget );

@@ -11,6 +11,7 @@ var AddLinkArticleTarget = require( 'ext.growthExperiments.AddLink' ).AddLinkArt
  */
 function AddLinkMobileArticleTarget() {
 	AddLinkMobileArticleTarget.super.apply( this, arguments );
+	this.$element.addClass( 've-init-mw-addLinkArticleTarget' );
 }
 
 OO.inheritClass( AddLinkMobileArticleTarget, ve.init.mw.MobileArticleTarget );
