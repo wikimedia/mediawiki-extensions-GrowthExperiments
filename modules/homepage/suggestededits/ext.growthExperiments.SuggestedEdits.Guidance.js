@@ -4,9 +4,12 @@
 	// We can't use $( 'li#ca-ve-edit, li#ca-edit, li#page-actions-edit' ).first() here,
 	// because that returns the one that appears first in the DOM. Instead, we want to use
 	// #ca-ve-edit if it exists, and only if that doesn't exist fall back to #ca-edit (T261001)
-	var editLinkWrapper = $( 'li#ca-ve-edit' )[ 0 ] ||
-			$( 'li#ca-edit' )[ 0 ] ||
-			$( 'li#page-actions-edit' )[ 0 ],
+	var veEditLinkWrapper = $( 'li#ca-ve-edit' )[ 0 ],
+		sourceEditingLinkWrapper = $( 'li#ca-edit' )[ 0 ],
+		pageActionsEditWrapper = $( 'li#page-actions-edit' )[ 0 ],
+		editLinkWrapper = veEditLinkWrapper ||
+			sourceEditingLinkWrapper ||
+			pageActionsEditWrapper,
 		/* eslint-enable no-jquery/no-global-selector */
 		$editLink = $( editLinkWrapper ).find( 'a' ),
 		skin = mw.config.get( 'skin' ),
@@ -40,6 +43,10 @@
 				AddLinkOnboarding.showDialogIfEligible();
 			}
 
+			if ( sourceEditingLinkWrapper && sourceEditingLinkWrapper !== editLinkWrapper ) {
+				// FIXME: When edit mode toggle is implemented, remove this (T269653)
+				sourceEditingLinkWrapper.remove();
+			}
 			mw.hook( 've.loadModules' ).add( function ( addPlugin ) {
 				// Either the desktop or the mobile module will be registered, but not both.
 				// Start with both, filter out the unregistered one, and add the remaining one
