@@ -5,6 +5,8 @@ namespace GrowthExperiments\Specials;
 use Config;
 use FormSpecialPage;
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
+use GrowthExperiments\Config\Validation\NewcomerTasksValidator;
+use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use HTMLForm;
 use MediaWiki\Revision\RevisionLookup;
@@ -24,7 +26,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	private const SUGGESTED_EDITS_INTRO_LINKS = [ 'create', 'image' ];
 
 	/** @var string[] Keys that will be present in $configPages */
-	private const CONFIG_PAGES_KEYS = [ 'geconfig' ];
+	private const CONFIG_PAGES_KEYS = [ 'geconfig', 'newcomertasks' ];
 
 	/** @var TitleFactory */
 	private $titleFactory;
@@ -37,6 +39,9 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 
 	/** @var ILoadBalancer */
 	private $loadBalancer;
+
+	/** @var WikiPageConfigLoader */
+	private $configLoader;
 
 	/** @var WikiPageConfigWriterFactory */
 	private $configWriterFactory;
@@ -62,6 +67,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 * @param RevisionLookup $revisionLookup
 	 * @param PageProps $pageProps
 	 * @param ILoadBalancer $loadBalancer
+	 * @param WikiPageConfigLoader $configLoader
 	 * @param WikiPageConfigWriterFactory $configWriterFactory
 	 * @param GrowthExperimentsMultiConfig $growthWikiConfig
 	 */
@@ -71,6 +77,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		RevisionLookup $revisionLookup,
 		PageProps $pageProps,
 		ILoadBalancer $loadBalancer,
+		WikiPageConfigLoader $configLoader,
 		WikiPageConfigWriterFactory $configWriterFactory,
 		GrowthExperimentsMultiConfig $growthWikiConfig
 	) {
@@ -80,12 +87,17 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		$this->revisionLookup = $revisionLookup;
 		$this->pageProps = $pageProps;
 		$this->loadBalancer = $loadBalancer;
+		$this->configLoader = $configLoader;
 		$this->configWriterFactory = $configWriterFactory;
 		$this->growthWikiConfig = $growthWikiConfig;
 
 		$this->setConfigPage(
 			'geconfig',
 			$config->get( 'GEWikiConfigPageTitle' )
+		);
+		$this->setConfigPage(
+			'newcomertasks',
+			$config->get( 'GENewcomerTasksConfigTitle' )
 		);
 	}
 
@@ -242,7 +254,8 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	}
 
 	private function getRawDescriptors(): array {
-		return [
+		$descriptors = [
+			// Growth experiments config (stored in MediaWiki:GrowthExperimentsConfig.json)
 			'geconfig-GEHelpPanelReadingModeNamespaces' => [
 				'type' => 'namespacesmultiselect',
 				'exists' => true,
@@ -394,6 +407,28 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'section' => 'mentorship',
 			],
 		];
+
+		// Add fields for suggested edits config (stored in MediaWiki:NewcomerTasks.json)
+		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $group ) {
+			$descriptors["newcomertasks-${taskType}Templates"] = [
+				'type' => 'titlesmultiselect',
+				'exists' => true,
+				'namespace' => NS_TEMPLATE,
+				'relative' => true,
+				'label-message' => "growthexperiments-edit-config-newcomer-tasks-$taskType-templates",
+				'required' => false,
+				'section' => 'newcomertasks'
+			];
+			$descriptors["newcomertasks-${taskType}Learnmore"] = [
+				'type' => 'title',
+				'exists' => true,
+				'label-message' => "growthexperiments-edit-config-newcomer-tasks-$taskType-learnmore",
+				'required' => false,
+				'section' => 'newcomertasks'
+			];
+		}
+
+		return $descriptors;
 	}
 
 	/**
@@ -415,6 +450,31 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		}
 
 		return $default;
+	}
+
+	/**
+	 * Get (uncached) newcomer tasks config
+	 *
+	 * @return array
+	 */
+	private function getNewcomerTasksConfig(): array {
+		$title = $this->titleFactory->newFromText(
+			$this->getConfig()->get( 'GENewcomerTasksConfigTitle' )
+		);
+		if ( $title === null || !$title->exists() ) {
+			return [];
+		}
+
+		$res = $this->configLoader->load(
+			$title,
+			WikiPageConfigLoader::READ_LATEST
+		);
+		if ( !is_array( $res ) ) {
+			// TODO: Maybe log the failure?
+			return [];
+		}
+
+		return $res;
 	}
 
 	/**
@@ -442,7 +502,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 
 		$descriptors = $this->getRawDescriptors();
 
-		// Add default values
+		// Add default values for geconfig variables
 		foreach ( $descriptors as $nameRaw => $descriptor ) {
 			list( $prefix, $name ) = $this->getPrefixAndName( $nameRaw );
 			if ( strpos( $name, '-' ) !== false ) {
@@ -456,6 +516,16 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					$descriptors[$nameRaw]['default'] = $default;
 				}
 			}
+		}
+		// Add default values for newcomertasks variables
+		$newcomerTasksConfig = $this->getNewcomerTasksConfig();
+		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $group ) {
+			$descriptors["newcomertasks-${taskType}Templates"]['default'] = implode(
+				"\n",
+				$newcomerTasksConfig[$taskType]['templates'] ?? []
+			);
+			$descriptors["newcomertasks-${taskType}Learnmore"]['default'] =
+				$newcomerTasksConfig[$taskType]['learnmore'] ?? '';
 		}
 
 		// Add default values for intro links
@@ -575,6 +645,42 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	}
 
 	/**
+	 * Normalize configuration used in NewcomerTasks.json config file
+	 *
+	 * This function converts form fields into array that's then stored
+	 * in the JSON file.
+	 *
+	 * @param array $data
+	 * @return array
+	 */
+	private function normalizeSuggestedEditsConfig( array $data ): array {
+		$normalizedData = [];
+		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $group ) {
+			$templates = array_filter( array_map( function ( string $template ) {
+				$title = $this->titleFactory->newFromText( $template );
+				if ( $title === null ) {
+					return null;
+				}
+				return $title->getText();
+			}, explode( "\n", $data["${taskType}Templates"] ) ) );
+			if ( $templates === [] ) {
+				// Do not save tasks with no templates
+				continue;
+			}
+			$normalizedData[$taskType] = [
+				'group' => $group,
+				'templates' => $templates
+			];
+
+			// Add learnmore link if specified
+			if ( $data["${taskType}Learnmore"] !== '' ) {
+				$normalizedData[$taskType]['learnmore'] = $data["${taskType}Learnmore"];
+			}
+		}
+		return $normalizedData;
+	}
+
+	/**
 	 * @inheritDoc
 	 */
 	public function onSubmit( array $data ) {
@@ -584,6 +690,9 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		$dataToSave['geconfig']['GEHomepageSuggestedEditsIntroLinks'] =
 			$this->normalizeSuggestedEditsIntroLinks( $data );
 		$dataToSave['geconfig']['GEHelpPanelLinks'] = $this->normalizeHelpPanelLinks( $data );
+
+		// Normalize suggested edits configuration
+		$dataToSave['newcomertasks'] = $this->normalizeSuggestedEditsConfig( $dataToSave['newcomertasks'] );
 
 		// Start atomic section; we can end up editing multiple pages here,
 		// with some edits failing and other succeeding. We want to either save everything,

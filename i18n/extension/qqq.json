@@ -50,5 +50,16 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "Description of a form field in Special:EditGrowthConfig\n{{identical|Yes}}",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Description of a form field in Special:EditGrowthConfig\n{{identical|No}}",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Description of a form field in Special:EditGrowthConfig",
-	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Description of a form field in Special:EditGrowthConfig"
+	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Description of a form field in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-newcomertasks": "Subheader in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Description of a form field in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Description of a form field in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Description of a form field in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-newcomer-tasks-expand-learnmore": "Description of a form field in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-newcomer-tasks-links-templates": "Description of a form field in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-newcomer-tasks-links-learnmore": "Description of a form field in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Description of a form field in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Description of a form field in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Description of a form field in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Description of a form field in Special:EditGrowthConfig"
 }
