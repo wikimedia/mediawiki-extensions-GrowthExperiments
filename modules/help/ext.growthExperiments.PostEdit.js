@@ -69,12 +69,15 @@
 	 * Also handles some of the logging.
 	 *
 	 * @param {PostEditPanel} postEditPanel
-	 * @return {jQuery.Promise} A promise that resolves when the dialog has been displayed.
+	 * @return {Object} An object with:
+	 *   - openPromise {jQuery.Promise} A promise that resolves when the dialog has been displayed.
+	 *   - closePromise {jQuery.Promise} A promise that resolves when the dialog has been closed.
 	 */
 	function displayPanel( postEditPanel ) {
-		var drawer, dialog, lifecycle, windowManager, openPromise;
+		var drawer, dialog, lifecycle, windowManager, openPromise, closePromise;
 
 		if ( OO.ui.isMobile() && Drawer ) {
+			closePromise = $.Deferred().resolve();
 			drawer = new Drawer( {
 				children: [
 					postEditPanel.getMainArea()
@@ -84,6 +87,11 @@
 				className: 'mw-ge-help-panel-postedit-drawer',
 				onBeforeHide: function () {
 					postEditPanel.logClose();
+					// There's no onAfterHide hook in Drawer; allow a short delay for
+					// the drawer to close before resolving the promise.
+					setTimeout( function () {
+						closePromise.resolve();
+					}, 250 );
 				}
 			} );
 			postEditPanel.on( 'edit-link-clicked', function () {
@@ -114,19 +122,24 @@
 			postEditPanel.on( 'edit-link-clicked', function () {
 				dialog.close();
 			} );
-			lifecycle.closing.done( function () {
-				postEditPanel.logClose();
+			closePromise = lifecycle.closing.done( function () {
+				// Used by GettingStarted extension.
 				mw.hook( 'postEdit.afterRemoval' ).fire();
+				postEditPanel.logClose();
 			} );
 			openPromise = lifecycle.opened;
 		}
-		return openPromise;
+		return {
+			openPromise: openPromise,
+			closePromise: closePromise
+		};
 	}
 
 	/**
 	 * Helper method to tie getNextTask() and displayPanel() together.
 	 *
-	 * @param {mw.libs.ge.TaskData|null} task Task data, or null when the task card should not be shown.
+	 * @param {mw.libs.ge.TaskData|null} task Task data, or null when the task card should not be
+	 *   shown.
 	 * @param {string|null} errorMessage Error message, or null when there was no error.
 	 * @return {Object} An object with:
 	 *   - task: task data as a plain Object (as returned by GrowthTasksApi), omitted
@@ -136,7 +149,7 @@
 	 *   - openPromise: a promise that resolves when the panel has been displayed.
 	 */
 	function setup( task, errorMessage ) {
-		var postEditPanel, openPromise, extraDataPromise, result;
+		var postEditPanel, displayPanelPromises, openPromise, closePromise, extraDataPromise, result;
 
 		if ( errorMessage ) {
 			mw.log.error( errorMessage );
@@ -151,13 +164,35 @@
 			newcomerTaskLogger: newcomerTaskLogger,
 			helpPanelLogger: helpPanelLogger
 		} );
-		openPromise = displayPanel( postEditPanel );
+		displayPanelPromises = displayPanel( postEditPanel );
+		openPromise = displayPanelPromises.openPromise;
 		openPromise.done( postEditPanel.logImpression.bind( postEditPanel, {
 			savedTaskType: suggestedEditSession.taskType,
 			errorMessage: errorMessage,
 			userTaskTypes: preferences.taskTypes,
 			userTopics: preferences.topics
 		} ) );
+
+		closePromise = displayPanelPromises.closePromise;
+		closePromise.done( function () {
+			if ( isLinkRecommendationTask ) {
+				// Link recommendation tasks are different from the unstructured tasks in that they
+				// cannot be repeated immediately after edit. So, after post edit dialog is closed,
+				// clear out the task type ID and task data. Currently not used elsewhere,
+				// but in case some code is relying on it, better to have removed here.
+				suggestedEditSession.taskType = null;
+				suggestedEditSession.taskData = null;
+				suggestedEditSession.save();
+				if ( !OO.ui.isMobile() ) {
+					// On mobile, the page is reloaded automatically after making an edit.
+					// On desktop, a reload is needed to unload AddLinkArticleTarget.
+					// Reloading the window is kind of extreme but on the other hand
+					// canceling out of the post edit dialog isn't a path we are trying to
+					// optimize for.
+					window.location.reload();
+				}
+			}
+		} );
 
 		if ( task && !OO.ui.isMobile() ) {
 			extraDataPromise = $.when(

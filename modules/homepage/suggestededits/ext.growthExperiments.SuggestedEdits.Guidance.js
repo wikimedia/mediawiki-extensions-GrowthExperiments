@@ -27,7 +27,9 @@
 		},
 		guidancePrefValue;
 
-	if ( taskTypeId === 'link-recommendation' && mw.config.get( 'wgGELinkRecommendationsFrontendEnabled' ) ) {
+	if ( taskTypeId === 'link-recommendation' &&
+		mw.config.get( 'wgGELinkRecommendationsFrontendEnabled' ) &&
+		suggestedEditSession.taskState === 'started' ) {
 		if ( !suggestedEditSession.taskData ) {
 			mw.log.error( 'Missing task data' );
 			mw.errorLogger.logError( new Error( 'Missing task data' ) );
