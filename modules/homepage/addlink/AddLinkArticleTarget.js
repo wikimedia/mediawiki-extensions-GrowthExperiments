@@ -96,6 +96,7 @@ AddLinkArticleTarget.prototype.restoreScrollPosition = function () {
 
 /**
  * Don't save or restore edits
+ *
  * @override
  */
 AddLinkArticleTarget.prototype.initAutosave = function () {
@@ -315,6 +316,10 @@ AddLinkArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 		}.bind( this ) );
 };
 
+AddLinkArticleTarget.prototype.updateToolbarSaveButtonState = function () {
+	// T281452 no-op, we have our own custom logic for this in AddLinkSaveDialogMixin
+};
+
 /**
  * Get the current state of the recommendations (ie. the feedback the user gave on them).
  *
@@ -332,6 +337,12 @@ AddLinkArticleTarget.prototype.getAnnotationStates = function () {
 		annotations = recommendation.fragment
 			.getAnnotations()
 			.getAnnotationsByName( 'mwGeRecommendedLink' );
+
+		if ( !annotations.storeHashes.length ) {
+			// Avoid throwing errors further below when no store hashes exist (e.g. if the user
+			// toggles No for a suggestion).
+			return;
+		}
 		if ( annotations.getLength() !== 1 ) {
 			mw.log.error( 'annotation not found for offset ' + recommendation.recommendationWikitextOffset );
 			mw.errorLogger.logError( new Error( 'annotation not found for offset ' +
