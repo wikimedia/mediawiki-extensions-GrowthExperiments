@@ -4,6 +4,7 @@ namespace GrowthExperiments\Config;
 
 use CommentStoreComment;
 use FormatJson;
+use GrowthExperiments\Config\Validation\IConfigValidator;
 use InvalidArgumentException;
 use JsonContent;
 use MediaWiki\Linker\LinkTarget;
@@ -22,8 +23,8 @@ class WikiPageConfigWriter {
 	/** @var User */
 	private $performer;
 
-	/** @var WikiPageConfigValidation */
-	private $wikiPageConfigValidation;
+	/** @var IConfigValidator */
+	private $configValidator;
 
 	/** @var WikiPageConfigLoader */
 	private $wikiPageConfigLoader;
@@ -44,7 +45,7 @@ class WikiPageConfigWriter {
 	private $allowList;
 
 	/**
-	 * @param WikiPageConfigValidation $wikiPageConfigValidation
+	 * @param IConfigValidator $configValidator
 	 * @param WikiPageConfigLoader $wikiPageConfigLoader
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param TitleFactory $titleFactory
@@ -54,7 +55,7 @@ class WikiPageConfigWriter {
 	 * @param User $performer
 	 */
 	public function __construct(
-		WikiPageConfigValidation $wikiPageConfigValidation,
+		IConfigValidator $configValidator,
 		WikiPageConfigLoader $wikiPageConfigLoader,
 		WikiPageFactory $wikiPageFactory,
 		TitleFactory $titleFactory,
@@ -63,7 +64,7 @@ class WikiPageConfigWriter {
 		LinkTarget $configPage,
 		User $performer
 	) {
-		$this->wikiPageConfigValidation = $wikiPageConfigValidation;
+		$this->configValidator = $configValidator;
 		$this->wikiPageConfigLoader = $wikiPageConfigLoader;
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->titleFactory = $titleFactory;
@@ -112,23 +113,6 @@ class WikiPageConfigWriter {
 	}
 
 	/**
-	 * Validate an attempt to add a variable
-	 *
-	 * Currently only checks the allowlist in GEOnWikiConfigAllowList
-	 *
-	 * @param string $variable
-	 * @param mixed $value
-	 * @throws InvalidArgumentException In case of a validation error
-	 */
-	private function validateVariable( string $variable, $value ): void {
-		if ( !in_array( $variable,  $this->allowList ) ) {
-			throw new InvalidArgumentException(
-				'Invalid attempt to set a variable via WikiPageConfigWriter'
-			);
-		}
-	}
-
-	/**
 	 * Unset all config variables
 	 *
 	 * Useful for migration purposes, or for other places where we want to
@@ -147,7 +131,7 @@ class WikiPageConfigWriter {
 			$this->loadConfig();
 		}
 
-		$this->validateVariable( $variable, $value );
+		$this->configValidator->validateVariable( $variable, $value );
 		$this->wikiConfig[$variable] = $value;
 	}
 
@@ -176,7 +160,7 @@ class WikiPageConfigWriter {
 		ksort( $this->wikiConfig, SORT_STRING );
 
 		$status = Status::newGood();
-		$status->merge( $this->wikiPageConfigValidation->validate( $this->wikiConfig ) );
+		$status->merge( $this->configValidator->validate( $this->wikiConfig ) );
 
 		// Save only if config was changed, so editing interface
 		// doesn't need to make sure config was indeed changed.

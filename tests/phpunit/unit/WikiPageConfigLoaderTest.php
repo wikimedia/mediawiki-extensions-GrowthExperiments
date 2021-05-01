@@ -5,8 +5,8 @@ namespace GrowthExperiments\Tests;
 use ApiRawMessage;
 use BagOStuff;
 use Content;
+use GrowthExperiments\Config\Validation\GrowthConfigValidation;
 use GrowthExperiments\Config\WikiPageConfigLoader;
-use GrowthExperiments\Config\WikiPageConfigValidation;
 use JsonContent;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
@@ -58,7 +58,7 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 		$revisionLookup = $this->getMockRevisionLookup( $titleValue, $lookupResult,
 			$revisionLookupExpectedInvokeCount );
 		$titleFactory = $this->getMockTitleFactory( $fullUrl, $localUrl, $isExternal );
-		$configValidator = $this->getMockBuilder( WikiPageConfigValidation::class )
+		$configValidator = $this->getMockBuilder( GrowthConfigValidation::class )
 			->disableOriginalConstructor()
 			->getMock();
 		$configValidator
@@ -160,7 +160,7 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 
 		$title = new TitleValue( NS_MAIN, 'X' );
 		$loader = new WikiPageConfigLoader(
-			$this->getMockBuilder( WikiPageConfigValidation::class )
+			$this->getMockBuilder( GrowthConfigValidation::class )
 				->disableOriginalConstructor()
 				->getMock(),
 			$this->getMockRequestFactory( '', '', 0 ),

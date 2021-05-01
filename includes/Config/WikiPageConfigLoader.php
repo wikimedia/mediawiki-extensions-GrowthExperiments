@@ -6,6 +6,7 @@ use ApiRawMessage;
 use BagOStuff;
 use DBAccessObjectUtils;
 use FormatJson;
+use GrowthExperiments\Config\Validation\GrowthConfigValidation;
 use GrowthExperiments\Util;
 use HashBagOStuff;
 use IDBAccessObject;
@@ -35,7 +36,7 @@ use TitleFactory;
  * generalized to this class taking care about config in general.
  */
 class WikiPageConfigLoader implements IDBAccessObject {
-	/** @var WikiPageConfigValidation */
+	/** @var GrowthConfigValidation */
 	private $configValidator;
 
 	/** @var HttpRequestFactory */
@@ -54,13 +55,13 @@ class WikiPageConfigLoader implements IDBAccessObject {
 	private $cacheTtl = 0;
 
 	/**
-	 * @param WikiPageConfigValidation $configValidator
+	 * @param GrowthConfigValidation $configValidator
 	 * @param HttpRequestFactory $requestFactory
 	 * @param RevisionLookup $revisionLookup
 	 * @param TitleFactory $titleFactory
 	 */
 	public function __construct(
-		WikiPageConfigValidation $configValidator,
+		GrowthConfigValidation $configValidator,
 		HttpRequestFactory $requestFactory,
 		RevisionLookup $revisionLookup,
 		TitleFactory $titleFactory

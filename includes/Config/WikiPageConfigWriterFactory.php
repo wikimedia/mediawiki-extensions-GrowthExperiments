@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Config;
 
+use GrowthExperiments\Config\Validation\GrowthConfigValidation;
 use InvalidArgumentException;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\WikiPageFactory;
@@ -25,8 +26,8 @@ class WikiPageConfigWriterFactory {
 	/** @var User|null Injected system user, to allow injecting from tests */
 	private $systemUser;
 
-	/** @var WikiPageConfigValidation */
-	private $wikiPageConfigValidation;
+	/** @var GrowthConfigValidation */
+	private $growthConfigValidation;
 
 	/**
 	 * @param WikiPageConfigLoader $wikiPageConfigLoader
@@ -42,7 +43,7 @@ class WikiPageConfigWriterFactory {
 		LoggerInterface $logger,
 		?User $systemUser = null
 	) {
-		$this->wikiPageConfigValidation = new WikiPageConfigValidation();
+		$this->growthConfigValidation = new GrowthConfigValidation();
 		$this->wikiPageConfigLoader = $wikiPageConfigLoader;
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->titleFactory = $titleFactory;
@@ -66,7 +67,7 @@ class WikiPageConfigWriterFactory {
 			throw new InvalidArgumentException( 'Invalid performer passed' );
 		}
 		return new WikiPageConfigWriter(
-			$this->wikiPageConfigValidation,
+			$this->growthConfigValidation,
 			$this->wikiPageConfigLoader,
 			$this->wikiPageFactory,
 			$this->titleFactory,

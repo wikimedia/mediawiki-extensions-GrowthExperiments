@@ -5,6 +5,7 @@ namespace GrowthExperiments\Config;
 use Config;
 use Content;
 use FormatJson;
+use GrowthExperiments\Config\Validation\GrowthConfigValidation;
 use IContextSource;
 use MediaWiki\Hook\EditFilterMergedContentHook;
 use MediaWiki\Hook\SkinTemplateNavigationHook;
@@ -15,7 +16,7 @@ use TitleFactory;
 use User;
 
 class ConfigHooks implements EditFilterMergedContentHook, SkinTemplateNavigationHook {
-	/** @var WikiPageConfigValidation */
+	/** @var GrowthConfigValidation */
 	private $configValidation;
 
 	/** @var TitleFactory */
@@ -32,7 +33,7 @@ class ConfigHooks implements EditFilterMergedContentHook, SkinTemplateNavigation
 		TitleFactory $titleFactory,
 		Config $config
 	) {
-		$this->configValidation = new WikiPageConfigValidation();
+		$this->configValidation = new GrowthConfigValidation();
 		$this->titleFactory = $titleFactory;
 		$this->config = $config;
 	}
