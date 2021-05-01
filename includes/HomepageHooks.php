@@ -59,6 +59,7 @@ use stdClass;
 use Title;
 use TitleFactory;
 use User;
+use Wikimedia\Rdbms\DBReadOnlyError;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class HomepageHooks implements
@@ -935,7 +936,12 @@ class HomepageHooks implements
 		if ( $linkRecommendation && $linkRecommendation->getRevisionId() < $revId ) {
 			$fields[WeightedTagsHooks::FIELD_NAME][] = LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX
 				. '/' . CirrusIndexField::MULTILIST_DELETE_GROUPING;
-			$this->linkRecommendationHelper->deleteLinkRecommendation( $page->getTitle()->toPageIdentity(), false );
+			try {
+				$this->linkRecommendationHelper->deleteLinkRecommendation(
+					$page->getTitle()->toPageIdentity(), false );
+			} catch ( DBReadOnlyError $e ) {
+				// Leaving a dangling DB row behind doesn't cause any problems so just ignore this.
+			}
 		}
 	}
 

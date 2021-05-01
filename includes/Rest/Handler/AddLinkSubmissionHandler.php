@@ -19,6 +19,7 @@ use RequestContext;
 use Status;
 use TitleFactory;
 use Wikimedia\ParamValidator\ParamValidator;
+use Wikimedia\Rdbms\DBReadOnlyError;
 
 /**
  * Record the user's decision on the recommendations for a given page.
@@ -97,9 +98,17 @@ class AddLinkSubmissionHandler extends SimpleHandler {
 
 		$pageIdentity = $this->titleFactory->newFromLinkTarget( $title )->toPageIdentity();
 		// The search index is updated after an edit; with no edit, we have to do it manually.
-		$this->linkRecommendationHelper->deleteLinkRecommendation( $pageIdentity, (bool)$editRevId );
-		$status = $this->addLinkSubmissionRecorder->record( $user, $linkRecommendation, $acceptedTargets,
-			$rejectedTargets, $skippedTargets, $editRevId );
+		try {
+			$this->linkRecommendationHelper->deleteLinkRecommendation( $pageIdentity, (bool)$editRevId );
+			$status = $this->addLinkSubmissionRecorder->record( $user, $linkRecommendation, $acceptedTargets,
+				$rejectedTargets, $skippedTargets, $editRevId );
+		} catch ( DBReadOnlyError $e ) {
+			// The search index deletion worked, since that happens first. The DB deletion not happening
+			// is not that important, the next time the page is edited the recommendation revision ID will
+			// mismatch and the page will become available for new recommendations again. Losing the
+			// submission record is unfortunate but can't do much about it.
+			throw new HttpException( $e->getMessage() );
+		}
 		if ( !$status->isOK() ) {
 			throw new HttpException( Status::wrap( $status )->getWikiText( null, null, 'en' ) );
 		}
