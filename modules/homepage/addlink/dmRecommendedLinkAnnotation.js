@@ -21,9 +21,12 @@ DMRecommendedLinkAnnotation.static.allowedRdfaTypes = [];
 
 DMRecommendedLinkAnnotation.static.toDataElement = function ( domElements ) {
 	var target = domElements[ 0 ].getAttribute( 'data-target' ),
+		text = domElements[ 0 ].getAttribute( 'data-text' ),
 		wikitextOffset = domElements[ 0 ].getAttribute( 'data-wikitext-offset' ),
+		score = domElements[ 0 ].getAttribute( 'data-score' ),
 		title = mw.Title.newFromText( target ),
 		dataElement;
+
 	if ( !title ) {
 		// We would like to not wrap the text in an annotation at all, but ve.dm.Converter
 		// doesn't offer that option. We also can't have the CE class render the text as a plain
@@ -38,6 +41,8 @@ DMRecommendedLinkAnnotation.static.toDataElement = function ( domElements ) {
 	// undefined means no reason supplied, otherwise this is a string.
 	dataElement.attributes.rejectionReason = undefined;
 	dataElement.attributes.recommendationWikitextOffset = wikitextOffset;
+	dataElement.attributes.score = score;
+	dataElement.attributes.text = text;
 	return dataElement;
 };
 

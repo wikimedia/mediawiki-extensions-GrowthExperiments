@@ -396,9 +396,10 @@ class SpecialHomepage extends SpecialPage {
 		$request = $this->getRequest();
 		$titleId = (int)explode( '/', $par )[1];
 		$clickId = $request->getVal( 'geclickid' );
+		$newcomerTaskToken = $request->getVal( 'genewcomertasktoken' );
 		$taskTypeId = $request->getVal( 'getasktype', '' );
 
-		if ( $this->tracker->track( $titleId, $taskTypeId, $clickId ) instanceof StatusValue ) {
+		if ( $this->tracker->track( $titleId, $taskTypeId, $clickId, $newcomerTaskToken ) instanceof StatusValue ) {
 			// If a StatusValue is returned from ->track(), it's because loading the task type or
 			//  title failed, so don't attempt to redirect the user. If track returns false
 			// (storing the value in cache failed) then we are not going to prevent redirection.

@@ -29,6 +29,9 @@ class Tracker {
 	/** @var string|null */
 	private $clickId;
 
+	/** @var string|null */
+	private $newcomerTaskToken;
+
 	/**
 	 * @param CacheStorage $storage
 	 * @param ConfigurationLoader $configurationLoader
@@ -51,9 +54,10 @@ class Tracker {
 	 * @param int $pageId
 	 * @param string $taskTypeId
 	 * @param string|null $clickId
+	 * @param string|null $newcomerTaskToken
 	 * @return bool|StatusValue
 	 */
-	public function track( int $pageId, string $taskTypeId, string $clickId = null ) {
+	public function track( int $pageId, string $taskTypeId, string $clickId = null, string $newcomerTaskToken = null ) {
 		$this->title = $this->titleFactory->newFromID( $pageId );
 		if ( !$this->title ) {
 			return $this->makeError( 'Unable to create a Title from page ID {pageId}', [
@@ -69,6 +73,7 @@ class Tracker {
 			] );
 		}
 		$this->clickId = $clickId;
+		$this->newcomerTaskToken = $newcomerTaskToken;
 		return $this->storage->set( $pageId, $taskType->getId() );
 	}
 
@@ -90,7 +95,10 @@ class Tracker {
 	 */
 	public function getTitleUrl( $additionalQueryParams = [] ) :string {
 		return $this->title->getLinkURL(
-			array_merge( $additionalQueryParams, [ 'geclickid' => $this->clickId ] )
+			array_merge( $additionalQueryParams, [
+				'geclickid' => $this->clickId,
+				'genewcomertasktoken' => $this->newcomerTaskToken
+			] )
 		);
 	}
 

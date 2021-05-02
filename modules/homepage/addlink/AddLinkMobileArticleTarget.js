@@ -1,5 +1,7 @@
-var AddLinkArticleTarget = require( 'ext.growthExperiments.AddLink' ).AddLinkArticleTarget,
-	MachineSuggestionsMode = require( 'ext.growthExperiments.AddLink' ).MachineSuggestionsMode;
+var AddLink = require( 'ext.growthExperiments.AddLink' ),
+	AddLinkArticleTarget = AddLink.AddLinkArticleTarget,
+	MachineSuggestionsMode = AddLink.MachineSuggestionsMode,
+	LinkSuggestionInteractionLogger = AddLink.LinkSuggestionInteractionLogger;
 
 /**
  * Mobile version of AddLinkArticleTarget
@@ -12,6 +14,8 @@ var AddLinkArticleTarget = require( 'ext.growthExperiments.AddLink' ).AddLinkArt
 function AddLinkMobileArticleTarget() {
 	AddLinkMobileArticleTarget.super.apply( this, arguments );
 	this.$element.addClass( 've-init-mw-addLinkArticleTarget' );
+	// eslint-disable-next-line camelcase
+	this.logger = new LinkSuggestionInteractionLogger( { is_mobile: true } );
 }
 
 OO.inheritClass( AddLinkMobileArticleTarget, ve.init.mw.MobileArticleTarget );

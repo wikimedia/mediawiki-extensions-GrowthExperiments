@@ -82,6 +82,8 @@
 		 * This is separate from user preference to dismiss onboarding altogether.
 		 */
 		this.onboardingNeedsToBeShown = true;
+		/** @member {string|null} The newcomer task token set from NewcomerTaskLogger#log. */
+		this.newcomerTaskToken = null;
 	}
 	OO.mixinClass( SuggestedEditSession, OO.EventEmitter );
 
@@ -138,6 +140,7 @@
 			helpPanelSuggestedEditsInteractionHappened:
 				this.helpPanelSuggestedEditsInteractionHappened,
 			onboardingNeedsToBeShown: this.onboardingNeedsToBeShown,
+			newcomerTaskToken: this.newcomerTaskToken,
 			shouldOpenArticleInEditMode: this.shouldOpenArticleInEditMode
 		};
 		if ( !this.active ) {
@@ -188,6 +191,7 @@
 				this.helpPanelSuggestedEditsInteractionHappened =
 					data.helpPanelSuggestedEditsInteractionHappened;
 				this.onboardingNeedsToBeShown = data.onboardingNeedsToBeShown;
+				this.newcomerTaskToken = data.newcomerTaskToken;
 				this.shouldOpenArticleInEditMode = data.shouldOpenArticleInEditMode;
 			} else {
 				mw.storage.session.remove( 'ge-suggestededit-session' );
@@ -221,6 +225,11 @@
 			if ( url.query.getasktype ) {
 				Utils.removeQueryParam( url, 'getasktype' );
 			}
+		}
+
+		if ( url.query.genewcomertasktoken ) {
+			this.newcomerTaskToken = url.query.genewcomertasktoken;
+			Utils.removeQueryParam( url, 'genewcomertasktoken' );
 		}
 
 		// Don't show help panel & mobile peek if the article is in edit mode

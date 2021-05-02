@@ -238,8 +238,10 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 				linkWrapper = doc.createElement( 'span' );
 				linkWrapper.setAttribute( 'typeof', 'mw:RecommendedLink' );
 				linkWrapper.setAttribute( 'data-target', suggestion.link_target );
+				linkWrapper.setAttribute( 'data-text', suggestion.link_text );
 				// TODO probably use wikitext offset
 				linkWrapper.setAttribute( 'data-wikitext-offset', suggestion.wikitext_offset );
+				linkWrapper.setAttribute( 'data-score', suggestion.score );
 				linkWrapper.appendChild( linkText );
 				postText.parentNode.insertBefore( linkWrapper, postText );
 				// In the next iteration of the loop, search postText for any additional phrase
@@ -275,6 +277,14 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 			)
 		);
 	}
+	this.logger.log( 'impression', {
+		/* eslint-disable camelcase */
+		number_phrases_found: suggestions.length - phraseMapKeys.length,
+		number_phrases_expected: suggestions.length
+	}, {
+		active_interface: 'machinesuggestions_mode'
+		/* eslint-enable camelcase */
+	} );
 };
 
 /**
@@ -284,6 +294,7 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
  * matches in plain text, not inside templates, tables etc. To interpret the match count correctly,
  * we need to reproduce that logic here (as much as possible, given that the service uses the
  * wikitext AST and we use the Parsoid DOM).
+ *
  * @param {HTMLDocument} doc
  * @return {TreeWalker}
  */
