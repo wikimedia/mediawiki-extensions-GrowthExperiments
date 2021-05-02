@@ -1,11 +1,16 @@
 <?php
 
-namespace GrowthExperiments\Config;
+namespace GrowthExperiments\Config\Validation;
 
+use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
+use InvalidArgumentException;
 use LogicException;
 use StatusValue;
 
-class WikiPageConfigValidation {
+/**
+ * Validation class for MediaWiki:GrowthExperimentsConfig.json
+ */
+class GrowthConfigValidation implements IConfigValidator {
 	private function getConfigDescriptors(): array {
 		return [
 			'GEHelpPanelReadingModeNamespaces' => [
@@ -162,5 +167,16 @@ class WikiPageConfigValidation {
 		}
 
 		return $status;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function validateVariable( string $variable, $value ): void {
+		if ( !in_array( $variable, GrowthExperimentsMultiConfig::ALLOW_LIST ) ) {
+			throw new InvalidArgumentException(
+				'Invalid attempt to set a variable via WikiPageConfigWriter'
+			);
+		}
 	}
 }

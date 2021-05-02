@@ -2,13 +2,13 @@
 
 namespace GrowthExperiments\Tests;
 
-use GrowthExperiments\Config\WikiPageConfigValidation;
+use GrowthExperiments\Config\Validation\GrowthConfigValidation;
 use MediaWikiIntegrationTestCase;
 
 /**
- * @covers \GrowthExperiments\Config\WikiPageConfigValidation
+ * @covers \GrowthExperiments\Config\Validation\GrowthConfigValidation
  */
-class WikiPageConfigValidationTest extends MediaWikiIntegrationTestCase {
+class GrowthConfigValidationTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideValidate
@@ -16,7 +16,7 @@ class WikiPageConfigValidationTest extends MediaWikiIntegrationTestCase {
 	 * @param string|null $expectedError
 	 */
 	public function testValidate( array $data, $expectedError ) {
-		$validation = new WikiPageConfigValidation();
+		$validation = new GrowthConfigValidation();
 		$status = $validation->validate( $data );
 		if ( $expectedError === null ) {
 			$this->assertTrue( $status->isOK() );
