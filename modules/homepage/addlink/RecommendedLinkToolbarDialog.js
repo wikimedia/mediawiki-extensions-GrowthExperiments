@@ -31,14 +31,20 @@ function RecommendedLinkToolbarDialog() {
 		this.showRecommendationForSelection.bind( this ),
 		250
 	);
+	/**
+	 * @property {number} scrollOffset Amount of space between the window and the annotation when scrolled
+	 */
+	this.scrollOffset = 100;
+	/**
+	 * @property {number} minHeight Minimum value to use for window height (used in setting surface padding value
+	 */
+	this.minHeight = 250;
 	this.$element.addClass( 'mw-ge-recommendedLinkContextItem' );
 }
 
 OO.inheritClass( RecommendedLinkToolbarDialog, ve.ui.ToolbarDialog );
 
 RecommendedLinkToolbarDialog.static.name = 'recommendedLink';
-RecommendedLinkToolbarDialog.static.position = 'side';
-RecommendedLinkToolbarDialog.static.size = 'medium';
 
 /**
  * @inheritdoc
@@ -86,6 +92,7 @@ RecommendedLinkToolbarDialog.prototype.getSetupProcess = function ( data ) {
  * Initialize elements after this.surface and this.linkRecommendationFragments are set
  */
 RecommendedLinkToolbarDialog.prototype.afterSetupProcess = function () {
+	this.updateSurfacePadding();
 	this.setupProgressIndicators( this.linkRecommendationFragments.length );
 	this.showRecommendationAtIndex( this.currentIndex );
 	setTimeout( this.updateActionButtonsMode.bind( this ) );
@@ -440,7 +447,7 @@ RecommendedLinkToolbarDialog.prototype.updateContentForCurrentRecommendation = f
 		this.currentDataModel,
 		this.surface.getModel().getDocument().getHtmlDocument(),
 		{
-			updateDimensions: this.updateSize.bind( this )
+			updateDimensions: this.updateDimensions.bind( this )
 		}
 	);
 	this.$linkPreview.html( $linkPreviewBody );
@@ -523,7 +530,25 @@ RecommendedLinkToolbarDialog.prototype.updateActionButtonsMode = function () {
 		this.$acceptanceButtonGroup.removeClass( 'overflow-state' );
 	}
 
+	this.updateDimensions();
+};
+
+/**
+ * Update the bottom padding value on the surface so that
+ * scroll-into-view calculations can be adjusted so that both
+ * the annotation and the link inspector are in the viewport
+ */
+RecommendedLinkToolbarDialog.prototype.updateSurfacePadding = function () {
+	var bottomPadding = Math.max( this.$element.height(), this.minHeight ) + this.scrollOffset;
+	this.surface.setPadding( { bottom: bottomPadding } );
+};
+
+/**
+ * Update the window size and surface padding in case the window height changes
+ */
+RecommendedLinkToolbarDialog.prototype.updateDimensions = function () {
 	this.updateSize();
+	this.updateSurfacePadding();
 };
 
 /**

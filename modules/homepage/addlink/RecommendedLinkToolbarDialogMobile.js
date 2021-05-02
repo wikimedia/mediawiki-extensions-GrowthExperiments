@@ -29,6 +29,16 @@ RecommendedLinkToolbarDialogMobile.prototype.initialize = function () {
 /**
  * @inheritdoc
  */
+RecommendedLinkToolbarDialogMobile.prototype.afterSetupProcess = function () {
+	RecommendedLinkToolbarDialogMobile.super.prototype.afterSetupProcess.call( this );
+	// Disable virtual keyboard when tapping on areas other than annotations
+	// (inputmode will need to be updated when editing link text is supported)
+	this.setSurfaceInputMode( 'none' );
+};
+
+/**
+ * @inheritdoc
+ */
 RecommendedLinkToolbarDialogMobile.prototype.updateContentForCurrentRecommendation = function () {
 	RecommendedLinkToolbarDialogMobile.super.prototype.updateContentForCurrentRecommendation.call( this );
 	if ( this.annotationView ) {
@@ -54,15 +64,10 @@ RecommendedLinkToolbarDialogMobile.prototype.onAcceptanceChanged = function () {
  * @inheritdoc
  */
 RecommendedLinkToolbarDialogMobile.prototype.selectAnnotationView = function () {
-	// Account for area covered by toolbar and link inspector
-	var padding = {
-		top: 60,
-		bottom: Math.max( this.$element.height() + 100, 300 )
-	};
 	RecommendedLinkToolbarDialogMobile.super.prototype.selectAnnotationView.call( this );
-	ve.scrollIntoView(
-		this.annotationView.$element.get( 0 ), { padding: padding }
-	);
+	// Without deactivation, virtual keyboard shows up upon selection.
+	this.surface.getView().activate();
+	this.surface.getView().deactivate( false, false, true );
 };
 
 /**
@@ -97,6 +102,16 @@ RecommendedLinkToolbarDialogMobile.prototype.setupHelpButton = function () {
 		mw.hook( 'growthExperiments.contextItem.openHelpPanel' ).fire();
 	} );
 	this.$head.append( helpButton.$element );
+};
+
+/**
+ * Set inputmode attribute on the document
+ *
+ * @param {string} inputMode
+ * @private
+ */
+RecommendedLinkToolbarDialogMobile.prototype.setSurfaceInputMode = function ( inputMode ) {
+	this.surface.getView().$element.find( '.ve-ce-documentNode' ).get( 0 ).inputMode = inputMode;
 };
 
 module.exports = RecommendedLinkToolbarDialogMobile;
