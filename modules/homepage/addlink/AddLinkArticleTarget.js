@@ -40,7 +40,6 @@ function AddLinkArticleTarget() {
  *   passed to loadSuccess(). Will be modified.
  */
 AddLinkArticleTarget.prototype.beforeLoadSuccess = function ( response ) {
-	// TODO disable restored edits somehow, right now they break (T267690)
 	var data, addlinkData, doc;
 
 	if ( !response ) {
