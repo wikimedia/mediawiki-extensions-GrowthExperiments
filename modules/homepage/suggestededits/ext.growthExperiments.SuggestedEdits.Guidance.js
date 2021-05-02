@@ -11,7 +11,6 @@
 		$editLink = $( editLinkWrapper ).find( 'a' ),
 		skin = mw.config.get( 'skin' ),
 		AddLinkOnboarding = require( 'ext.growthExperiments.AddLink.onboarding' ),
-		router = require( 'mediawiki.router' ),
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		taskTypeId = suggestedEditSession.taskType,
 		guidancePrefName = 'growthexperiments-homepage-suggestededits-guidance-blue-dot',
@@ -20,7 +19,7 @@
 				actions: [ { action: 'accept', label: mw.message( 'growthexperiments-addlink-no-suggestions-found-dialog-button' ).text(), flags: 'primary' } ]
 			} ).done( function () {
 				// TODO: Instrumentation (T278112)
-				router.back();
+				window.location.href = mw.Title.newFromText( 'Special:Homepage' ).getUrl();
 			} );
 		},
 		guidancePrefValue;
