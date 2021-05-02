@@ -18,6 +18,7 @@ use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 use TitleFactory;
 use User;
+use Wikimedia\Rdbms\DBReadOnlyError;
 use WikiPage;
 use WikitextContent;
 
@@ -146,6 +147,10 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 				'user' => $user->getName(),
 				'exception' => $e
 			] );
+		} catch ( DBReadOnlyError $e ) {
+			// Just pretend the user doesn't have a mentor. It will be set later, and often
+			// this call is made in the context of something not specifically mentorship-
+			// related, such as the homepage, so it's better than erroring out.
 		}
 		return null;
 	}
