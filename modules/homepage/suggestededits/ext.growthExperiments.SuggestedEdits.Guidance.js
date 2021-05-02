@@ -14,14 +14,22 @@
 		$editLink = $( editLinkWrapper ).find( 'a' ),
 		skin = mw.config.get( 'skin' ),
 		AddLinkOnboarding = require( 'ext.growthExperiments.AddLink.onboarding' ),
+		LinkSuggestionInteractionLogger = require( '../addlink/LinkSuggestionInteractionLogger.js' ),
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		taskTypeId = suggestedEditSession.taskType,
 		guidancePrefName = 'growthexperiments-homepage-suggestededits-guidance-blue-dot',
 		errorDialogOnFailure = function () {
+			var logger = new LinkSuggestionInteractionLogger( {
+				/* eslint-disable camelcase */
+				is_mobile: OO.ui.isMobile(),
+				active_interface: 'nosuggestions_dialog'
+				/* eslint-enable camelcase */
+			} );
+			logger.log( 'impression' );
 			OO.ui.alert( mw.message( 'growthexperiments-addlink-no-suggestions-found-dialog-message' ).text(), {
 				actions: [ { action: 'accept', label: mw.message( 'growthexperiments-addlink-no-suggestions-found-dialog-button' ).text(), flags: 'primary' } ]
 			} ).done( function () {
-				// TODO: Instrumentation (T278112)
+				logger.log( 'close' );
 				window.location.href = mw.Title.newFromText( 'Special:Homepage' ).getUrl();
 			} );
 		},

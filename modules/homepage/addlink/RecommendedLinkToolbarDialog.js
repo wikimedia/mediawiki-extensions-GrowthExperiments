@@ -88,7 +88,7 @@ RecommendedLinkToolbarDialog.prototype.getSetupProcess = function ( data ) {
  * @param {mw.libs.ge.dm.RecommendedLinkAnnotation} annotationModel DataModel
  */
 RecommendedLinkToolbarDialog.prototype.onAnnotationClicked = function ( annotationModel ) {
-	this.showRecommendationAtIndex( this.getIndexForModel( annotationModel ) );
+	this.showRecommendationAtIndex( this.getIndexForModel( annotationModel ), true );
 	this.surface.scrollSelectionIntoView();
 };
 
@@ -118,6 +118,7 @@ RecommendedLinkToolbarDialog.prototype.afterSetupProcess = function () {
 		OO.ui.debounce( this.updateActionButtonsMode.bind( this ), 250 )
 	);
 	mw.hook( 'growthExperiments.onAnnotationClicked' ).add( this.onAnnotationClicked.bind( this ) );
+	this.logger.log( 'impression', this.suggestionLogMetadata() );
 };
 
 /**
@@ -125,6 +126,7 @@ RecommendedLinkToolbarDialog.prototype.afterSetupProcess = function () {
  * Do nothing if the user is on the first recommendation
  */
 RecommendedLinkToolbarDialog.prototype.onPrevButtonClicked = function () {
+	this.logger.log( 'back', this.suggestionLogMetadata() );
 	if ( this.currentIndex === 0 ) {
 		return;
 	}
@@ -137,6 +139,10 @@ RecommendedLinkToolbarDialog.prototype.onPrevButtonClicked = function () {
  * show skipped all suggestions dialog if user didn't decide on any of the recommendations
  */
 RecommendedLinkToolbarDialog.prototype.onNextButtonClicked = function () {
+	this.logger.log( 'next', this.suggestionLogMetadata() );
+	if ( this.currentDataModel.isUndecided() ) {
+		this.logger.log( 'suggestion_skip', this.suggestionLogMetadata() );
+	}
 	if ( this.isLastRecommendationSelected() ) {
 		if ( this.allRecommendationsSkipped() ) {
 			this.showSkippedAllDialog();
@@ -156,6 +162,14 @@ RecommendedLinkToolbarDialog.prototype.onYesButtonClicked = function () {
 	if ( this.currentDataModel.isRejected() ) {
 		this.resetAcceptanceButtonStates();
 	}
+	if ( this.currentDataModel.isAccepted() ) {
+		this.logger.log( 'suggestion_mark_undecided', $.extend( this.suggestionLogMetadata(), {
+			// eslint-disable-next-line camelcase
+			previous_acceptance_state: 'accepted'
+		} ) );
+	} else {
+		this.logger.log( 'suggestion_accept', this.suggestionLogMetadata() );
+	}
 	this.setAccepted( this.currentDataModel.isAccepted() ? null : true );
 };
 
@@ -166,6 +180,14 @@ RecommendedLinkToolbarDialog.prototype.onYesButtonClicked = function () {
 RecommendedLinkToolbarDialog.prototype.onNoButtonClicked = function () {
 	if ( this.currentDataModel.isAccepted() ) {
 		this.resetAcceptanceButtonStates();
+	}
+	if ( this.currentDataModel.isRejected() ) {
+		this.logger.log( 'suggestion_mark_undecided', $.extend( this.suggestionLogMetadata(), {
+			// eslint-disable-next-line camelcase
+			previous_acceptance_state: 'rejected'
+		} ) );
+	} else {
+		this.logger.log( 'suggestion_reject', this.suggestionLogMetadata() );
 	}
 	this.setAccepted( this.currentDataModel.isRejected() ? null : false );
 };
@@ -197,6 +219,14 @@ RecommendedLinkToolbarDialog.prototype.teardown = function () {
 // Interactions with annotation view & data model
 
 /**
+ * Reopen the rejection dialog.
+ */
+RecommendedLinkToolbarDialog.prototype.reopenRejectionDialog = function () {
+	this.logger.log( 'suggestion_view_rejection_reasons', this.suggestionLogMetadata() );
+	this.setAccepted( false );
+};
+
+/**
  * Mark this suggestion as accepted, rejected or undecided, and store rejection reason if given.
  *
  * Commits a transaction that removes the existing annotation and adds a new one that is
@@ -207,7 +237,7 @@ RecommendedLinkToolbarDialog.prototype.teardown = function () {
  * (the yes/no button has been toggled).
  */
 RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
-	var acceptancePromise,
+	var acceptancePromise = $.Deferred().resolve(),
 		fragment = this.getCurrentFragment(),
 		annotation = this.getCurrentDataModel(),
 		surfaceModel = this.surface.getModel(),
@@ -215,33 +245,53 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 		attributes = {
 			recommendationAccepted: accepted,
 			rejectionReason: undefined
-		};
+		},
+		openRejectionDialogWindowPromise;
 
 	// Temporarily disable read-only mode
 	surfaceModel.setReadOnly( false );
 
-	if ( accepted || accepted === null ) {
-		acceptancePromise = $.Deferred().resolve();
-	}
 	if ( accepted === false ) {
-		acceptancePromise = this.surface.dialogs
-			.openWindow( 'recommendedLinkRejection', this.currentDataModel.getRejectionReason() ).closed
-			.then( function ( closedData ) {
-				return closedData && closedData.reason ||
-					this.currentDataModel.getRejectionReason();
-			}.bind( this ) );
+		// Update the annotation immediately, so that the acceptance state is correct for
+		// impression and close events.
+		this.updateAnnotation( fragment, annotation, attributes );
+
+		openRejectionDialogWindowPromise = this.surface.dialogs.openWindow(
+			'recommendedLinkRejection', this.currentDataModel.getRejectionReason()
+		);
+
+		openRejectionDialogWindowPromise.opening.then( function () {
+			this.logger.log(
+				'impression',
+				$.extend( this.suggestionLogMetadata(), {
+					// eslint-disable-next-line camelcase
+					rejection_reason: this.currentDataModel.getRejectionReason()
+				} ),
+				// eslint-disable-next-line camelcase
+				{ active_interface: 'rejection_dialog' }
+			);
+		}.bind( this ) );
+
+		acceptancePromise = openRejectionDialogWindowPromise.closed.then( function ( closedData ) {
+			var rejectionReason = closedData && closedData.reason || this.currentDataModel.getRejectionReason();
+			this.logger.log(
+				'close',
+				$.extend( this.suggestionLogMetadata(), {
+					// eslint-disable-next-line camelcase
+					rejection_reason: rejectionReason
+				} ),
+				// eslint-disable-next-line camelcase
+				{ active_interface: 'rejection_dialog' }
+			);
+			return closedData && rejectionReason;
+		}.bind( this ) );
 	}
 
 	acceptancePromise.then( function ( rejectionReason ) {
 		if ( rejectionReason ) {
 			attributes.rejectionReason = rejectionReason;
 		}
-		fragment.annotateContent( 'clear', annotation );
-		this.isUpdatingCurrentRecommendation = true;
-		fragment.annotateContent( 'set', new DmRecommendedLinkAnnotation( $.extend( true,
-			annotation.getElement(),
-			{ attributes: attributes }
-		) ) );
+		return this.updateAnnotation( fragment, annotation, attributes );
 	}.bind( this ) ).then( function () {
 		// Re-enable read-only mode (if it was previously enabled)
 		surfaceModel.setReadOnly( oldReadOnly );
@@ -294,9 +344,11 @@ RecommendedLinkToolbarDialog.prototype.selectAnnotationView = function () {
  * is false, or if the index is invalid
  *
  * @param {number} index Zero-based index of the suggestion in the linkRecommendationFragments array
+ * @param {boolean} [manualFocus] if the recommendation was manually focused via a click/tap as
+ *  opposed to using the next/back buttons.
  * @throws Will throw an error if this.linkRecommendationFragments is empty
  */
-RecommendedLinkToolbarDialog.prototype.showRecommendationAtIndex = function ( index ) {
+RecommendedLinkToolbarDialog.prototype.showRecommendationAtIndex = function ( index, manualFocus ) {
 	var isUpdatingCurrentRecommendation = this.isUpdatingCurrentRecommendation;
 	if ( !isUpdatingCurrentRecommendation && ( index === this.currentIndex || index < 0 ) ) {
 		return;
@@ -317,6 +369,11 @@ RecommendedLinkToolbarDialog.prototype.showRecommendationAtIndex = function ( in
 		this.annotationView.updateActiveClass( true );
 	}
 	this.updateContentForCurrentRecommendation();
+	this.logger.log(
+		'suggestion_focus',
+		// eslint-disable-next-line camelcase
+		$.extend( this.suggestionLogMetadata(), { manual_focus: manualFocus || false } )
+	);
 };
 
 /**
@@ -407,7 +464,7 @@ RecommendedLinkToolbarDialog.prototype.setupButtons = function () {
 	] );
 	this.yesButton.connect( this, { click: [ 'onYesButtonClicked' ] } );
 	this.noButton.connect( this, { click: [ 'onNoButtonClicked' ] } );
-	this.reopenRejectionDialogButton.connect( this, { click: [ 'setAccepted', false ] } );
+	this.reopenRejectionDialogButton.connect( this, { click: [ 'reopenRejectionDialog', null ] } );
 	this.$buttons.append( this.$acceptanceButtonGroup, this.$navButtonGroup );
 };
 
@@ -448,6 +505,9 @@ RecommendedLinkToolbarDialog.prototype.updateContentForCurrentRecommendation = f
 		}
 	);
 	this.$linkPreview.html( $linkPreviewBody );
+	$linkPreviewBody.find( 'a' ).on( 'click', function () {
+		this.logger.log( 'link_click', this.suggestionLogMetadata() );
+	}.bind( this ) );
 	this.updateButtonStates();
 	this.updateProgressIndicators();
 };
@@ -589,6 +649,24 @@ RecommendedLinkToolbarDialog.prototype.showSkippedAllDialog = function () {
 // Helpers
 
 /**
+ * Clear an annotation for a fragment, and set a new one with the provided attributes.
+ *
+ * @param {ve.dm.SurfaceFragment} fragment
+ * @param {mw.libs.ge.dm.RecommendedLinkAnnotation} annotation
+ * @param {Object} attributes
+ */
+RecommendedLinkToolbarDialog.prototype.updateAnnotation = function (
+	fragment, annotation, attributes
+) {
+	fragment.annotateContent( 'clear', annotation );
+	this.isUpdatingCurrentRecommendation = true;
+	fragment.annotateContent( 'set', new DmRecommendedLinkAnnotation( $.extend( true,
+		annotation.getElement(),
+		{ attributes: attributes }
+	) ) );
+};
+
+/**
  * Check whether the last recommendation is shown
  *
  * @return {boolean}
@@ -604,6 +682,39 @@ RecommendedLinkToolbarDialog.prototype.isLastRecommendationSelected = function (
  */
 RecommendedLinkToolbarDialog.prototype.setLinkCacheIconFunction = function ( iconFunction ) {
 	ve.init.platform.linkCache.constructor.static.getIconForLink = iconFunction;
+};
+
+/**
+ * Get metadata to pass to the LinkSuggestionInteractionLogger.
+ *
+ * @return {{
+ * acceptance_state: string,
+ * probability_score: number,
+ * link_target: string,
+ * series_number: number,
+ * rejection_reason: (null|string),
+ * link_text: string
+ * }}
+ */
+RecommendedLinkToolbarDialog.prototype.suggestionLogMetadata = function () {
+	var suggestion = this.getCurrentDataModel().element.attributes,
+		acceptanceState = 'undecided';
+	if ( this.getCurrentDataModel().isAccepted() ) {
+		acceptanceState = 'accepted';
+	} else if ( this.getCurrentDataModel().isRejected() ) {
+		acceptanceState = 'rejected';
+	}
+
+	return {
+		/* eslint-disable camelcase */
+		link_target: suggestion.normalizedTitle,
+		link_text: suggestion.text,
+		probability_score: suggestion.score,
+		series_number: this.getIndexForModel( this.currentDataModel ),
+		rejection_reason: this.currentDataModel.isRejected() ? this.currentDataModel.getRejectionReason() : '',
+		acceptance_state: acceptanceState
+		/* eslint-enable camelcase */
+	};
 };
 
 module.exports = RecommendedLinkToolbarDialog;

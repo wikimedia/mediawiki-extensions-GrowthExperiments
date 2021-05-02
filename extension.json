@@ -727,7 +727,9 @@
 				"homepage/addlink/RecommendedLinkRejectionDialog.js",
 				"homepage/addlink/MachineSuggestionsMode.js",
 				"homepage/addlink/AddLinkSaveDialogMixin.js",
-				"homepage/addlink/RecommendedLinkToolbarDialog.js"
+				"homepage/addlink/RecommendedLinkToolbarDialog.js",
+				"homepage/addlink/LinkSuggestionInteractionLogger.js",
+				"utils/ext.growthExperiments.Utils.js"
 			],
 			"styles": [
 				"homepage/addlink/ceRecommendedLinkAnnotation.less",
@@ -1119,6 +1121,7 @@
 				"helppanel/ext.growthExperiments.HelpPanel.cta.js",
 				"helppanel/ext.growthExperiments.SuggestedEditsPeek.js",
 				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.js",
+				"homepage/addlink/LinkSuggestionInteractionLogger.js",
 				"homepage/suggestededits/TaskTypesAbFilter.js",
 				"utils/ext.growthExperiments.Utils.js",
 				"utils/ext.growthExperiments.IconUtils.js",
