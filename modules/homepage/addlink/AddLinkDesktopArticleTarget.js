@@ -11,6 +11,7 @@ var AddLinkArticleTarget = require( 'ext.growthExperiments.AddLink' ).AddLinkArt
  */
 function AddLinkDesktopArticleTarget() {
 	AddLinkDesktopArticleTarget.super.apply( this, arguments );
+	this.$element.addClass( 've-init-mw-addLinkArticleTarget' );
 }
 
 OO.inheritClass( AddLinkDesktopArticleTarget, ve.init.mw.DesktopArticleTarget );

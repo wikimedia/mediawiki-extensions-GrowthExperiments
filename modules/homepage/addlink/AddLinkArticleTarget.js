@@ -65,6 +65,17 @@ AddLinkArticleTarget.prototype.beforeSurfaceReady = function () {
 	this.getSurface().linkRecommendationFragments = this.findRecommendationFragments();
 };
 
+/**
+ * Set machineSuggestions mode (as opposed to 'visual' or 'source')
+ *
+ * @inheritDoc
+ */
+AddLinkArticleTarget.prototype.getSurfaceConfig = function ( config ) {
+	config = config || {};
+	config.mode = 'machineSuggestions';
+	return this.constructor.super.prototype.getSurfaceConfig.call( this, config );
+};
+
 AddLinkArticleTarget.prototype.afterSurfaceReady = function () {
 	// Select the first recommendation
 	// On mobile, the surface is not yet attached to the DOM when this runs, so wait for that to happen
