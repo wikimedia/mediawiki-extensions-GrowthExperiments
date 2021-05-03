@@ -30,4 +30,12 @@ CERecommendedLinkAnnotation.prototype.updateClasses = function () {
 	}
 };
 
+/**
+ * Update active states on the annotation
+ * @param {boolean} isActive
+ */
+CERecommendedLinkAnnotation.prototype.updateActiveClass = function ( isActive ) {
+	this.$element.toggleClass( 'mw-ge-recommendedLinkAnnotation-active', isActive );
+};
+
 module.exports = CERecommendedLinkAnnotation;
