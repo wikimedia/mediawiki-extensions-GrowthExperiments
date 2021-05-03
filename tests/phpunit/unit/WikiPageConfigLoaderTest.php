@@ -5,7 +5,9 @@ namespace GrowthExperiments\Tests;
 use ApiRawMessage;
 use BagOStuff;
 use Content;
+use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use GrowthExperiments\Config\Validation\GrowthConfigValidation;
+use GrowthExperiments\Config\Validation\NoValidationValidator;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use JsonContent;
 use MediaWiki\Http\HttpRequestFactory;
@@ -69,8 +71,14 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 				) ? $this->never() : $this->once() )
 			->method( 'validate' )
 			->willReturn( StatusValue::newGood() );
+		$configValidatorFactory = $this->getMockBuilder( ConfigValidatorFactory::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$configValidatorFactory
+			->method( 'newConfigValidator' )
+			->willReturn( $configValidator );
 		$loader = new WikiPageConfigLoader(
-			$configValidator,
+			$configValidatorFactory,
 			$requestFactory,
 			$revisionLookup,
 			$titleFactory
@@ -159,10 +167,14 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 		/** @var BagOStuff $cache */
 
 		$title = new TitleValue( NS_MAIN, 'X' );
+		$configValidatorFactory = $this->getMockBuilder( ConfigValidatorFactory::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$configValidatorFactory
+			->method( 'newConfigValidator' )
+			->willReturn( new NoValidationValidator() );
 		$loader = new WikiPageConfigLoader(
-			$this->getMockBuilder( GrowthConfigValidation::class )
-				->disableOriginalConstructor()
-				->getMock(),
+			$configValidatorFactory,
 			$this->getMockRequestFactory( '', '', 0 ),
 			$this->getMockRevisionLookup( $title, false, 0 ),
 			$this->getMockTitleFactory( '', '', false )

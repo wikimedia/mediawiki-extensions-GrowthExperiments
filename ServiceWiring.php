@@ -4,7 +4,6 @@ use CirrusSearch\CirrusSearch;
 use GrowthExperiments\AqsEditInfoService;
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
-use GrowthExperiments\Config\Validation\GrowthConfigValidation;
 use GrowthExperiments\Config\WikiPageConfig;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
@@ -458,7 +457,8 @@ return [
 		MediaWikiServices $services
 	): WikiPageConfigLoader {
 		$wikiPageConfigLoader = new WikiPageConfigLoader(
-			new GrowthConfigValidation(),
+			GrowthExperimentsServices::wrap( $services )
+				->getWikiPageConfigValidatorFactory(),
 			$services->getHttpRequestFactory(),
 			$services->getRevisionLookup(),
 			$services->getTitleFactory()
