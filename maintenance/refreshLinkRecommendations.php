@@ -37,6 +37,7 @@ use StatusValue;
 use Title;
 use TitleFactory;
 use User;
+use WikiMap;
 use Wikimedia\Rdbms\DBReadOnlyError;
 use WikitextContent;
 
@@ -134,9 +135,8 @@ class RefreshLinkRecommendations extends Maintenance {
 		}
 		$this->initServices();
 		$this->initConfig();
-		if ( !$this->linkRecommendationStore->getDB( DB_MASTER )->lock(
-			'GrowthExperiments-RefreshLinkRecommendations', __METHOD__, 0 )
-		) {
+		$lockName = 'GrowthExperiments-RefreshLinkRecommendations-' . WikiMap::getCurrentWikiId();
+		if ( !$this->linkRecommendationStore->getDB( DB_PRIMARY )->lock( $lockName, __METHOD__, 0 ) ) {
 			$this->output( "Previous invocation of the script is still running\n" );
 			return;
 		}
@@ -339,9 +339,9 @@ class RefreshLinkRecommendations extends Maintenance {
 			// separate transaction. Use an explicit begin here to avoid Database::commit
 			// complaining about "no transaction to commit". That should never happen as
 			// the insert() call does an implicit begin, but it does occur somehow.
-			$this->linkRecommendationStore->getDB( DB_MASTER )->begin( __METHOD__ );
+			$this->linkRecommendationStore->getDB( DB_PRIMARY )->begin( __METHOD__ );
 			$this->linkRecommendationStore->insert( $recommendation );
-			$this->linkRecommendationStore->getDB( DB_MASTER )->commit( __METHOD__ );
+			$this->linkRecommendationStore->getDB( DB_PRIMARY )->commit( __METHOD__ );
 			$this->updateCirrusSearchIndex( $lastRevision );
 		} catch ( DBReadOnlyError $e ) {
 			// This is a long-running script, read-only state can change in the middle.
