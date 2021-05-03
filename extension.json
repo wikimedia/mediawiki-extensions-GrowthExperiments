@@ -1577,9 +1577,11 @@
 		"EditGrowthConfig": {
 			"class": "GrowthExperiments\\Specials\\SpecialEditGrowthConfig",
 			"services": [
+				"MainConfig",
 				"TitleFactory",
 				"RevisionLookup",
 				"PageProps",
+				"DBLoadBalancer",
 				"GrowthExperimentsWikiPageConfigWriterFactory",
 				"GrowthExperimentsMultiConfig"
 			]

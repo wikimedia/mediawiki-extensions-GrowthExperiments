@@ -2,22 +2,29 @@
 
 namespace GrowthExperiments\Specials;
 
+use Config;
 use FormSpecialPage;
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
-use GrowthExperiments\Config\WikiPageConfigWriter;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use HTMLForm;
 use MediaWiki\Revision\RevisionLookup;
 use MWTimestamp;
 use PageProps;
 use PermissionsError;
+use Status;
 use Title;
 use TitleFactory;
 use User;
+use Wikimedia\Assert\Assert;
+use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\ILoadBalancer;
 
 class SpecialEditGrowthConfig extends FormSpecialPage {
 	/** @var string[] */
 	private const SUGGESTED_EDITS_INTRO_LINKS = [ 'create', 'image' ];
+
+	/** @var string[] Keys that will be present in $configPages */
+	private const CONFIG_PAGES_KEYS = [ 'geconfig' ];
 
 	/** @var TitleFactory */
 	private $titleFactory;
@@ -28,35 +35,42 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	/** @var PageProps */
 	private $pageProps;
 
+	/** @var ILoadBalancer */
+	private $loadBalancer;
+
 	/** @var WikiPageConfigWriterFactory */
 	private $configWriterFactory;
 
 	/** @var GrowthExperimentsMultiConfig */
 	private $growthWikiConfig;
 
-	/** @var WikiPageConfigWriter */
-	private $configWriter;
-
-	/** @var Title */
-	private $configTitle;
-
 	/** @var string|null */
 	private $errorMsgKey;
 
-	/** @var bool Set to false if directly accessed, to not show potentially confusing backlink */
-	private $showBacklink = true;
+	/**
+	 * @var Title[]
+	 *
+	 * All keys listed in CONFIG_PAGES_KEYS will be present,
+	 * unless $errorMsgKey is not null (in which case the special page
+	 * short-circuits anyway).
+	 */
+	private $configPages = [];
 
 	/**
+	 * @param Config $config We can't use getConfig() in constructor, as context is not yet set
 	 * @param TitleFactory $titleFactory
 	 * @param RevisionLookup $revisionLookup
 	 * @param PageProps $pageProps
+	 * @param ILoadBalancer $loadBalancer
 	 * @param WikiPageConfigWriterFactory $configWriterFactory
 	 * @param GrowthExperimentsMultiConfig $growthWikiConfig
 	 */
 	public function __construct(
+		Config $config,
 		TitleFactory $titleFactory,
 		RevisionLookup $revisionLookup,
 		PageProps $pageProps,
+		ILoadBalancer $loadBalancer,
 		WikiPageConfigWriterFactory $configWriterFactory,
 		GrowthExperimentsMultiConfig $growthWikiConfig
 	) {
@@ -65,8 +79,42 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		$this->titleFactory = $titleFactory;
 		$this->revisionLookup = $revisionLookup;
 		$this->pageProps = $pageProps;
+		$this->loadBalancer = $loadBalancer;
 		$this->configWriterFactory = $configWriterFactory;
 		$this->growthWikiConfig = $growthWikiConfig;
+
+		$this->setConfigPage(
+			'geconfig',
+			$config->get( 'GEWikiConfigPageTitle' )
+		);
+	}
+
+	/**
+	 * Register a config page
+	 *
+	 * This validates the config page has proper content model
+	 * and that it can be used to store config.
+	 *
+	 * @param string $key One of keys listed in CONFIG_PAGES_KEYS
+	 * @param string $configPage
+	 */
+	private function setConfigPage( string $key, string $configPage ): void {
+		Assert::parameter(
+			in_array( $key, self::CONFIG_PAGES_KEYS ),
+			'$key',
+			'must be one of keys listed in SpecialEditGrowthConfig::CONFIG_PAGES_KEYS'
+		);
+
+		$configTitle = $this->titleFactory->newFromText( $configPage );
+		if (
+			$configTitle === null ||
+			!$configTitle->hasContentModel( CONTENT_MODEL_JSON )
+		) {
+			$this->errorMsgKey = 'growthexperiments-edit-config-error-invalid-title';
+			return;
+		}
+
+		$this->configPages[$key] = $configTitle;
 	}
 
 	/**
@@ -134,49 +182,11 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	/**
 	 * @inheritDoc
 	 */
-	protected function setParameter( $par ) {
-		// If no parameter is passed, pretend the default is to be used;
-		// there is normally only one GE config page.
-		if ( $par === null || $par === '' ) {
-			$par = $this->getConfig()->get( 'GEWikiConfigPageTitle' );
-			$this->showBacklink = false;
-		}
-
-		parent::setParameter( $par );
-
-		$this->configTitle = $this->titleFactory->newFromText( $par );
-		if (
-			$this->configTitle === null ||
-			!$this->configTitle->hasContentModel( CONTENT_MODEL_JSON )
-		) {
-			$this->errorMsgKey = 'growthexperiments-edit-config-error-invalid-title';
-			return;
-		}
-
-		$this->configWriter = $this->configWriterFactory->newWikiPageConfigWriter(
-			$this->configTitle,
-			$this->getUser()
-		);
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	protected function preText() {
 		if ( $this->errorMsgKey !== null ) {
 			return $this->msg( $this->errorMsgKey )->text();
 		}
 		return '';
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function setHeaders() {
-		parent::setHeaders();
-		if ( $this->configTitle !== null && $this->showBacklink ) {
-			$this->getOutput()->addBacklinkSubtitle( $this->configTitle );
-		}
 	}
 
 	/**
@@ -192,54 +202,69 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	protected function alterForm( HTMLForm $form ) {
 		if ( $this->errorMsgKey !== null ) {
 			$form->suppressDefaultSubmit( true );
+			return;
 		}
 
-		$revision = $this->revisionLookup->getRevisionByTitle( $this->configTitle );
-		if ( $revision !== null ) {
-			$lastRevisionUser = $revision->getUser();
-			if ( $lastRevisionUser !== null ) {
-				$form->addPreText( $this->msg(
-					'growthexperiments-edit-config-last-edit',
-					$lastRevisionUser,
-					MWTimestamp::getInstance( $revision->getTimestamp() )->getRelativeTimestamp()
-				)->parseAsBlock() );
-			} else {
-				$form->addPreText( $this->msg(
-					'growthexperiments-edit-config-last-edit-unknown-user',
-					MWTimestamp::getInstance( $revision->getTimestamp() )->getRelativeTimestamp()
-				)->parseAsBlock() );
+		// Add last updated data
+		/** @var Title[] */
+		$configTitles = [];
+		foreach ( $this->configPages as $configType => $configTitle ) {
+			$revision = $this->revisionLookup->getRevisionByTitle( $configTitle );
+			if ( $revision !== null ) {
+				$lastRevisionUser = $revision->getUser();
+				if ( $lastRevisionUser !== null ) {
+					$form->addPreText( $this->msg(
+						'growthexperiments-edit-config-last-edit',
+						$lastRevisionUser,
+						MWTimestamp::getInstance( $revision->getTimestamp() )
+							->getRelativeTimestamp(),
+						$configTitle->getPrefixedText()
+					)->parseAsBlock() );
+				} else {
+					$form->addPreText( $this->msg(
+						'growthexperiments-edit-config-last-edit-unknown-user',
+						MWTimestamp::getInstance( $revision->getTimestamp() )
+							->getRelativeTimestamp(),
+						$configTitle->getPrefixedText()
+					)->parseAsBlock() );
+				}
 			}
+
+			$configTitles[] = $configTitle;
 		}
+
 		$form->addPreText( $this->msg(
 			'growthexperiments-edit-config-pretext',
-			$this->configTitle->getPrefixedText()
+			\Message::listParam( array_map( function ( Title $title ) {
+				return '[[' . $title->getPrefixedText() . ']]';
+			}, $configTitles ) )
 		)->parseAsBlock() );
 	}
 
 	private function getRawDescriptors(): array {
 		return [
-			'GEHelpPanelReadingModeNamespaces' => [
+			'geconfig-GEHelpPanelReadingModeNamespaces' => [
 				'type' => 'namespacesmultiselect',
 				'exists' => true,
 				'autocomplete' => false,
 				'label-message' => 'growthexperiments-edit-config-help-panel-reading-namespaces',
 				'section' => 'help-panel',
 			],
-			'GEHelpPanelExcludedNamespaces' => [
+			'geconfig-GEHelpPanelExcludedNamespaces' => [
 				'type' => 'namespacesmultiselect',
 				'exists' => true,
 				'autocomplete' => false,
 				'label-message' => 'growthexperiments-edit-config-help-panel-disabled-namespaces',
 				'section' => 'help-panel',
 			],
-			'GEHelpPanelHelpDeskTitle' => [
+			'geconfig-GEHelpPanelHelpDeskTitle' => [
 				'type' => 'title',
 				'exists' => true,
 				'label-message' => 'growthexperiments-edit-config-help-panel-helpdesk-title',
 				'required' => false,
 				'section' => 'help-panel',
 			],
-			'GEHelpPanelHelpDeskPostOnTop' => [
+			'geconfig-GEHelpPanelHelpDeskPostOnTop' => [
 				'type' => 'radio',
 				'label-message' => 'growthexperiments-edit-config-help-panel-post-on-top',
 				'options-messages' => [
@@ -248,21 +273,21 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				],
 				'section' => 'help-panel',
 			],
-			'GEHelpPanelViewMoreTitle' => [
+			'geconfig-GEHelpPanelViewMoreTitle' => [
 				'type' => 'title',
 				'exists' => true,
 				'label-message' => 'growthexperiments-edit-config-help-panel-view-more',
 				'required' => false,
 				'section' => 'help-panel',
 			],
-			'GEHelpPanelSearchNamespaces' => [
+			'geconfig-GEHelpPanelSearchNamespaces' => [
 				'type' => 'namespacesmultiselect',
 				'exists' => true,
 				'autocomplete' => false,
 				'label-message' => 'growthexperiments-edit-config-help-panel-searched-namespaces',
 				'section' => 'help-panel',
 			],
-			'GEHelpPanelAskMentor' => [
+			'geconfig-GEHelpPanelAskMentor' => [
 				'type' => 'radio',
 				'label-message' => 'growthexperiments-edit-config-help-panel-ask-mentor',
 				'options-messages' => [
@@ -271,81 +296,81 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				],
 				'section' => 'help-panel',
 			],
-			'GEHelpPanelLinks-0-title' => [
+			'geconfig-GEHelpPanelLinks-0-title' => [
 				'type' => 'title',
 				'label-message' => 'growthexperiments-edit-config-help-panel-links-mos-title',
 				'section' => 'help-panel-links',
 				'required' => false,
 				'exists' => true,
 			],
-			'GEHelpPanelLinks-0-label' => [
+			'geconfig-GEHelpPanelLinks-0-label' => [
 				'type' => 'text',
 				'label-message' => 'growthexperiments-edit-config-help-panel-links-mos-label',
 				'section' => 'help-panel-links',
 			],
-			'GEHelpPanelLinks-1-title' => [
+			'geconfig-GEHelpPanelLinks-1-title' => [
 				'type' => 'title',
 				'label-message' => 'growthexperiments-edit-config-help-panel-links-editing-title',
 				'section' => 'help-panel-links',
 				'required' => false,
 				'exists' => true,
 			],
-			'GEHelpPanelLinks-1-label' => [
+			'geconfig-GEHelpPanelLinks-1-label' => [
 				'type' => 'text',
 				'label-message' => 'growthexperiments-edit-config-help-panel-links-editing-label',
 				'section' => 'help-panel-links',
 			],
-			'GEHelpPanelLinks-2-title' => [
+			'geconfig-GEHelpPanelLinks-2-title' => [
 				'type' => 'title',
 				'label-message' => 'growthexperiments-edit-config-help-panel-links-images-title',
 				'section' => 'help-panel-links',
 				'required' => false,
 				'exists' => true,
 			],
-			'GEHelpPanelLinks-2-label' => [
+			'geconfig-GEHelpPanelLinks-2-label' => [
 				'type' => 'text',
 				'label-message' => 'growthexperiments-edit-config-help-panel-links-images-label',
 				'section' => 'help-panel-links',
 			],
-			'GEHelpPanelLinks-3-title' => [
+			'geconfig-GEHelpPanelLinks-3-title' => [
 				'type' => 'title',
 				'label-message' => 'growthexperiments-edit-config-help-panel-links-references-title',
 				'section' => 'help-panel-links',
 				'required' => false,
 				'exists' => true,
 			],
-			'GEHelpPanelLinks-3-label' => [
+			'geconfig-GEHelpPanelLinks-3-label' => [
 				'type' => 'text',
 				'label-message' => 'growthexperiments-edit-config-help-panel-links-references-label',
 				'section' => 'help-panel-links',
 			],
-			'GEHelpPanelLinks-4-title' => [
+			'geconfig-GEHelpPanelLinks-4-title' => [
 				'type' => 'title',
 				'label-message' => 'growthexperiments-edit-config-help-panel-links-articlewizard-title',
 				'section' => 'help-panel-links',
 				'required' => false,
 				'exists' => true,
 			],
-			'GEHelpPanelLinks-4-label' => [
+			'geconfig-GEHelpPanelLinks-4-label' => [
 				'type' => 'text',
 				'label-message' => 'growthexperiments-edit-config-help-panel-links-articlewizard-label',
 				'section' => 'help-panel-links',
 			],
-			'GEHomepageSuggestedEditsIntroLinks-create' => [
+			'geconfig-GEHomepageSuggestedEditsIntroLinks-create' => [
 				'type' => 'title',
 				'exists' => true,
 				'label-message' => 'growthexperiments-edit-config-homepage-intro-links-create',
 				'required' => true,
 				'section' => 'homepage',
 			],
-			'GEHomepageSuggestedEditsIntroLinks-image' => [
+			'geconfig-GEHomepageSuggestedEditsIntroLinks-image' => [
 				'type' => 'title',
 				'exists' => true,
 				'label-message' => 'growthexperiments-edit-config-homepage-intro-links-image',
 				'required' => true,
 				'section' => 'homepage',
 			],
-			'GEMentorshipEnabled' => [
+			'geconfig-GEMentorshipEnabled' => [
 				'type' => 'radio',
 				'label-message' => 'growthexperiments-edit-config-mentorship-enabled',
 				'options-messages' => [
@@ -354,14 +379,14 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				],
 				'section' => 'mentorship',
 			],
-			'GEHomepageMentorsList' => [
+			'geconfig-GEHomepageMentorsList' => [
 				'type' => 'title',
 				'exists' => true,
 				'label-message' => 'growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors',
 				'required' => false,
 				'section' => 'mentorship',
 			],
-			'GEHomepageManualAssignmentMentorsList' => [
+			'geconfig-GEHomepageManualAssignmentMentorsList' => [
 				'type' => 'title',
 				'exists' => true,
 				'label-message' => 'growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors',
@@ -369,6 +394,41 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'section' => 'mentorship',
 			],
 		];
+	}
+
+	/**
+	 * Provide current value for a GrowthExperimentsMultiConfig variable
+	 *
+	 * @param string $name
+	 * @return string|null
+	 */
+	private function getValueGeConfig( string $name ): ?string {
+		$default = $this->growthWikiConfig->getWithFlags(
+			$name,
+			GrowthExperimentsMultiConfig::READ_LATEST
+		);
+		if ( is_array( $default ) ) {
+			$default = implode( "\n", $default );
+		}
+		if ( is_bool( $default ) ) {
+			$default = $default ? 'true' : 'false';
+		}
+
+		return $default;
+	}
+
+	/**
+	 * Get config type from a form field name
+	 *
+	 * Form field names are always $configType-$configName, where
+	 * $configType refers to the config page the variable is set in and
+	 * $configName is the variable name.
+	 *
+	 * @param string $nameRaw
+	 * @return string[]
+	 */
+	private function getPrefixAndName( string $nameRaw ): array {
+		return explode( '-', $nameRaw, 2 );
 	}
 
 	/**
@@ -383,24 +443,19 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		$descriptors = $this->getRawDescriptors();
 
 		// Add default values
-		foreach ( $descriptors as $name => $descriptor ) {
+		foreach ( $descriptors as $nameRaw => $descriptor ) {
+			list( $prefix, $name ) = $this->getPrefixAndName( $nameRaw );
 			if ( strpos( $name, '-' ) !== false ) {
 				// Non-standard field, will be handled later in this method
 				continue;
 			}
 
-			$default = $this->growthWikiConfig->getWithFlags(
-				$name,
-				GrowthExperimentsMultiConfig::READ_LATEST
-			);
-			if ( is_array( $default ) ) {
-				$default = implode( "\n", $default );
+			if ( $prefix === 'geconfig' ) {
+				$default = $this->getValueGeConfig( $name );
+				if ( $default !== null ) {
+					$descriptors[$nameRaw]['default'] = $default;
+				}
 			}
-			if ( is_bool( $default ) ) {
-				$default = $default ? 'true' : 'false';
-			}
-
-			$descriptors[$name]['default'] = $default;
 		}
 
 		// Add default values for intro links
@@ -409,18 +464,19 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			GrowthExperimentsMultiConfig::READ_LATEST
 		);
 		foreach ( self::SUGGESTED_EDITS_INTRO_LINKS as $link ) {
-			$descriptors["GEHomepageSuggestedEditsIntroLinks-$link"]['default'] = $linkValues[$link];
+			$descriptors["geconfig-GEHomepageSuggestedEditsIntroLinks-$link"]['default'] =
+				$linkValues[$link];
 		}
 
 		// Add default values for help panel links
 		$helpPanelLinks = $this->growthWikiConfig->get( 'GEHelpPanelLinks' );
 		for ( $i = 0; $i < count( $helpPanelLinks ); $i++ ) {
 			if (
-				isset( $descriptors["GEHelpPanelLinks-$i-title"] ) &&
-				isset( $descriptors["GEHelpPanelLinks-$i-label"] )
+				isset( $descriptors["geconfig-GEHelpPanelLinks-$i-title"] ) &&
+				isset( $descriptors["geconfig-GEHelpPanelLinks-$i-label"] )
 			) {
-				$descriptors["GEHelpPanelLinks-$i-title"]['default'] = $helpPanelLinks[$i]['title'];
-				$descriptors["GEHelpPanelLinks-$i-label"]['default'] = $helpPanelLinks[$i]['text'];
+				$descriptors["geconfig-GEHelpPanelLinks-$i-title"]['default'] = $helpPanelLinks[$i]['title'];
+				$descriptors["geconfig-GEHelpPanelLinks-$i-label"]['default'] = $helpPanelLinks[$i]['text'];
 			}
 		}
 
@@ -435,7 +491,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	private function normalizeSuggestedEditsIntroLinks( array $data ): array {
 		$links = [];
 		foreach ( self::SUGGESTED_EDITS_INTRO_LINKS as $link ) {
-			$links[$link] = $data["GEHomepageSuggestedEditsIntroLinks-$link"];
+			$links[$link] = $data["geconfig-GEHomepageSuggestedEditsIntroLinks-$link"];
 		}
 		return $links;
 	}
@@ -448,13 +504,13 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		$supportedHelpPanelLinks = 5;
 		for ( $i = 0; $i < $supportedHelpPanelLinks; $i++ ) {
 			if (
-				$data["GEHelpPanelLinks-$i-title"] == '' ||
-				$data["GEHelpPanelLinks-$i-label"] == ''
+				$data["geconfig-GEHelpPanelLinks-$i-title"] == '' ||
+				$data["geconfig-GEHelpPanelLinks-$i-label"] == ''
 			) {
 				continue;
 			}
 
-			$title = $this->titleFactory->newFromText( $data["GEHelpPanelLinks-$i-title"] );
+			$title = $this->titleFactory->newFromText( $data["geconfig-GEHelpPanelLinks-$i-title"] );
 			$props = ( $title !== null && $title->exists() && !$title->isExternal() ) ?
 				$this->pageProps->getProperties( $title, 'wikibase_item' ) :
 				[];
@@ -464,8 +520,8 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				$linkId = $props[$pageId];
 			}
 			$res[] = [
-				'title' => $data["GEHelpPanelLinks-$i-title"],
-				'text' => $data["GEHelpPanelLinks-$i-label"],
+				'title' => $data["geconfig-GEHelpPanelLinks-$i-title"],
+				'text' => $data["geconfig-GEHelpPanelLinks-$i-label"],
 				'id' => $linkId ?? $title->getPrefixedDBkey(),
 			];
 		}
@@ -473,42 +529,85 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	}
 
 	/**
-	 * @inheritDoc
+	 * Helper function that preprocesses submitted data
+	 *
+	 * This function:
+	 *   * normalizes namespaces into arrays
+	 *   * normalizes string true/false variables to actual booleans
+	 *   * ignores "complex fields" (fields having - in their name) and field for edit summary
+	 *   * splits variables by config type (one for each config page)
+	 *
+	 * @param array $data
+	 * @return array
 	 */
-	public function onSubmit( array $data ) {
-		// Normalize data about namespaces + populate $dataToSave
+	private function preprocessSubmittedData( array $data ): array {
 		$dataToSave = [];
-		foreach ( $this->getFormFields() as $name => $descriptor ) {
+		foreach ( $this->getFormFields() as $nameRaw => $descriptor ) {
+			if ( $nameRaw === 'summary' ) {
+				continue;
+			}
+
+			list( $prefix, $name ) = $this->getPrefixAndName( $nameRaw );
+
 			if ( $descriptor['type'] === 'namespacesmultiselect' ) {
-				if ( $data[$name] === '' ) {
-					$data[$name] = [];
+				if ( $data[$nameRaw] === '' ) {
+					$data[$nameRaw] = [];
 				} else {
-					$data[$name] = array_map(
+					$data[$nameRaw] = array_map(
 						'intval',
-						explode( "\n", $data[$name] )
+						explode( "\n", $data[$nameRaw] )
 					);
 				}
 			}
 
-			if ( strpos( $name, '-' ) === false && $name !== 'summary' ) {
-				$dataToSave[$name] = $data[$name];
+			if ( strpos( $name, '-' ) === false ) {
+				$dataToSave[$prefix][$name] = $data[$nameRaw];
 
 				// Basic normalization
-				if ( $dataToSave[$name] === 'true' ) {
-					$dataToSave[$name] = true;
-				} elseif ( $dataToSave[$name] === 'false' ) {
-					$dataToSave[$name] = false;
+				if ( $dataToSave[$prefix][$name] === 'true' ) {
+					$dataToSave[$prefix][$name] = true;
+				} elseif ( $dataToSave[$prefix][$name] === 'false' ) {
+					$dataToSave[$prefix][$name] = false;
 				}
 			}
 		}
+		return $dataToSave;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onSubmit( array $data ) {
+		$dataToSave = $this->preprocessSubmittedData( $data );
 
 		// Normalize complex variables
-		$dataToSave['GEHomepageSuggestedEditsIntroLinks'] =
+		$dataToSave['geconfig']['GEHomepageSuggestedEditsIntroLinks'] =
 			$this->normalizeSuggestedEditsIntroLinks( $data );
-		$dataToSave['GEHelpPanelLinks'] = $this->normalizeHelpPanelLinks( $data );
+		$dataToSave['geconfig']['GEHelpPanelLinks'] = $this->normalizeHelpPanelLinks( $data );
 
-		$this->configWriter->setVariables( $dataToSave );
-		return $this->configWriter->save( $data['summary'] );
+		// Start atomic section; we can end up editing multiple pages here,
+		// with some edits failing and other succeeding. We want to either save everything,
+		// or nothing.
+		$dbw = $this->loadBalancer->getConnection( DB_PRIMARY );
+		$dbw->startAtomic( __METHOD__, IDatabase::ATOMIC_CANCELABLE );
+
+		// Actually save the edits
+		$status = Status::newGood();
+		foreach ( $dataToSave as $configType => $configData ) {
+			$configWriter = $this->configWriterFactory
+				->newWikiPageConfigWriter( $this->configPages[$configType], $this->getUser() );
+			$configWriter->setVariables( $configData );
+			$status->merge( $configWriter->save( $data['summary'] ) );
+		}
+
+		// End atomic section if all edits succeeded, cancel it otherwise
+		if ( $status->isOK() ) {
+			$dbw->endAtomic( __METHOD__ );
+		} else {
+			$dbw->cancelAtomic( __METHOD__ );
+		}
+
+		return $status;
 	}
 
 	/**

@@ -111,8 +111,7 @@ class ConfigHooks implements EditFilterMergedContentHook, SkinTemplateNavigation
 			// Show normal JSON editor if the user is trying to edit old version
 			if ( $oldid == 0 ) {
 				$links['views']['edit']['href'] = SpecialPage::getTitleFor(
-					'EditGrowthConfig',
-					$title
+					'EditGrowthConfig'
 				)->getFullUrl();
 			}
 		}
