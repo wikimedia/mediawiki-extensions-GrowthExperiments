@@ -3,6 +3,7 @@
 use CirrusSearch\CirrusSearch;
 use GrowthExperiments\AqsEditInfoService;
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
+use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use GrowthExperiments\Config\Validation\GrowthConfigValidation;
 use GrowthExperiments\Config\WikiPageConfig;
 use GrowthExperiments\Config\WikiPageConfigLoader;
@@ -56,6 +57,15 @@ return [
 
 	'GrowthExperimentsConfig' => function ( MediaWikiServices $services ): Config {
 		return $services->getConfigFactory()->makeConfig( 'GrowthExperiments' );
+	},
+
+	'GrowthExperimentsConfigValidatorFactory' => function (
+		MediaWikiServices $services
+	): ConfigValidatorFactory {
+		return new ConfigValidatorFactory(
+			$services->getMainConfig(),
+			$services->getTitleFactory()
+		);
 	},
 
 	'GrowthExperimentsMultiConfig' => function ( MediaWikiServices $services ): Config {
@@ -469,6 +479,7 @@ return [
 		$growthExperimentsServices = GrowthExperimentsServices::wrap( $services );
 		return new WikiPageConfigWriterFactory(
 			$growthExperimentsServices->getWikiPageConfigLoader(),
+			$growthExperimentsServices->getWikiPageConfigValidatorFactory(),
 			$services->getWikiPageFactory(),
 			$services->getTitleFactory(),
 			LoggerFactory::getInstance( 'GrowthExperiments' )

@@ -3,6 +3,7 @@
 namespace GrowthExperiments;
 
 use Config;
+use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use GrowthExperiments\Config\WikiPageConfig;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
@@ -181,6 +182,10 @@ class GrowthExperimentsServices {
 
 	public function getWikiPageConfigLoader(): WikiPageConfigLoader {
 		return $this->coreServices->get( 'GrowthExperimentsWikiPageConfigLoader' );
+	}
+
+	public function getWikiPageConfigValidatorFactory(): ConfigValidatorFactory {
+		return $this->coreServices->get( 'GrowthExperimentsConfigValidatorFactory' );
 	}
 
 	public function getWikiPageConfigWriterFactory(): WikiPageConfigWriterFactory {
