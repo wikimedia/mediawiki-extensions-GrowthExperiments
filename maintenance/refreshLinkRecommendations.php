@@ -248,7 +248,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		} else {
 			$this->recommendationTaskType = $taskType;
 		}
-		$this->searchUser = User::newSystemUser( 'Maintenance script' );
+		$this->searchUser = User::newSystemUser( 'Maintenance script', [ 'steal' => true ] );
 	}
 
 	/**
