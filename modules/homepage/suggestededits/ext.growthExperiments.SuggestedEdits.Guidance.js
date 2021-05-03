@@ -40,6 +40,14 @@
 
 			if ( OO.ui.isMobile() ) {
 				AddLinkOnboarding.showDialogIfEligible();
+				// If we're on mobile and can add link recommendations, then rewrite the main
+				// edit link on read mode to open "section=all", and hide section edit buttons.
+				// The AddLink plugin only works when section=all is used.
+				var editUri = new mw.Uri( $editLink.attr( 'href' ) );
+				editUri.query.section = 'all';
+				$editLink.attr( 'href', editUri.toString() );
+				// eslint-disable-next-line no-jquery/no-global-selector
+				$( '#mw-content-text' ).find( '.mw-editsection' ).hide();
 			}
 
 			if ( sourceEditingLinkWrapper && sourceEditingLinkWrapper !== editLinkWrapper ) {
