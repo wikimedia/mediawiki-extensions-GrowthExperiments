@@ -1,10 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kareyac",
 			"Nux",
 			"Rail",
 			"Railfail536"
 		]
 	},
-	"growthexperiments-desc": "To rozszerzenie zawiera eksperymentalne funkcje wykonane przez Zespół Growth."
+	"growthexperiments-desc": "To rozszerzenie zawiera eksperymentalne funkcje wykonane przez Zespół Growth.",
+	"growthexperiments-edit-config-mentorship-enabled-true": "Tak",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Nie"
 }

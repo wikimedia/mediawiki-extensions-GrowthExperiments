@@ -16,7 +16,7 @@
 	"growthexperiments-edit-config-last-edit": "Última atualização por [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-error-invalid-title": "A página de configuração não foi configurada corretamente",
 	"growthexperiments-edit-config-edit-summary": "Resumo da edição",
-	"growthexperiments-edit-config-config-changed": "A configuração foi alterada",
+	"growthexperiments-edit-config-config-changed": "A configuração foi alterada. Você pode precisar esperar por alguns minutos para que as alterações entrem em vigor.",
 	"growthexperiments-edit-config-return-to-form": "Você pode [[Special:EditGrowthConfig|voltar]] para o formulário de edição.",
 	"growthexperiments-edit-config-help-panel": "Página de ajuda",
 	"growthexperiments-edit-config-help-panel-post-on-top": "Onde postar perguntas na central de ajuda?",

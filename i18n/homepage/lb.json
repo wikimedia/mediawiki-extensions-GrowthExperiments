@@ -140,5 +140,7 @@
 	"growthexperiments-addlink-rejectiondialog-action-done": "Fäerdeg",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Richtlinnen",
 	"growthexperiments-addlink-summary-title": "Resumé",
-	"growthexperiments-addlink-summary-column-header-suggestion": "Virschlag"
+	"growthexperiments-addlink-summary-column-header-suggestion": "Virschlag",
+	"growthexperiments-addlink-summary-submit": "Schécken",
+	"growthexperiments-addlink-skip-accept": "All iwwersprangen"
 }

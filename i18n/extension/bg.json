@@ -1,12 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ted Masters",
 			"Vodnokon4e"
 		]
 	},
+	"growthexperiments-edit-config-last-edit": "Последно обновено от [[User:$1|$1]], $2.",
+	"growthexperiments-edit-config-last-edit-unknown-user": "Последно обновено от неизвестен потребител, $1.",
+	"growthexperiments-edit-config-error-invalid-title": "Конфигурационната страница не е правилно конфигурирана",
 	"growthexperiments-edit-config-edit-summary": "Резюме на редакцията",
 	"growthexperiments-edit-config-return-to-form": "Може [[Special:EditGrowthConfig|да се върнете]] към формата за редактиране.",
 	"growthexperiments-edit-config-help-panel": "Помощен панел",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "Началото на страницата",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "Краят на страницата",
 	"growthexperiments-edit-config-mentorship": "Менторство",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Да",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Не"

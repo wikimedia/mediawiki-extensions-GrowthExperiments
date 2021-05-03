@@ -3,7 +3,8 @@
 		"authors": [
 			"Ankan",
 			"Martin Urbanec",
-			"Martin Urbanec (WMF)"
+			"Martin Urbanec (WMF)",
+			"Matěj Suchánek"
 		]
 	},
 	"growthexperiments-desc": "Toto rozšíření obsahuje experimenty týmu Growth.",
@@ -18,7 +19,7 @@
 	"growthexperiments-edit-config-pretext": "Tato stránka vám umožňuje editovat konfiguraci funkcí vyvinutých týmem [[:mw:Special:MyLanguage/Growth|Growth]]. Vaším jménem bude editovat konfigurační stránku [[$1]]. Výsledek vašich změn můžete vidět na této stránce.",
 	"growthexperiments-edit-config-error-invalid-title": "Konfigurační stránka nebyla správně nastavena.",
 	"growthexperiments-edit-config-edit-summary": "Shrnutí editace",
-	"growthexperiments-edit-config-config-changed": "Konfigurace byla změněna.",
+	"growthexperiments-edit-config-config-changed": "Konfigurace byla změněna. Možná budete muset počkat několik minut, než se změny projeví.",
 	"growthexperiments-edit-config-return-to-form": "Můžete se [[Special:EditGrowthConfig|vrátit]] do editačního formuláře.",
 	"growthexperiments-edit-config-help-panel": "Panel Potřebuji pomoc",
 	"growthexperiments-edit-config-help-panel-reading-namespaces": "Jmenné prostory s aktivovaným panelem Potřebuji pomoc i v módu pro čtení",

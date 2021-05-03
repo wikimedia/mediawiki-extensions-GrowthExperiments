@@ -2,9 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"AYZ04",
+			"Grace03",
 			"VulpesVulpes825"
 		]
 	},
 	"growthexperiments-desc": "这个扩展包含了增长团队所做的实验。",
-	"growthexperiments-edit-config-config-changed": "配置已更改"
+	"growthexperiments-edit-config-config-changed": "配置已更改。你可能需要等待几分钟让更改完成。"
 }

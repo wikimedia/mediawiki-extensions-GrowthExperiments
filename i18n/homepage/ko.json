@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Bluemersen",
+			"Ellif",
 			"Gongsoonyee",
 			"Gustmd7410",
 			"MemphisA5",
@@ -330,6 +331,9 @@
 	"growthexperiments-addlink-summary-title": "요약",
 	"growthexperiments-addlink-summary-column-header-suggestion": "제안",
 	"growthexperiments-addlink-summary-submit": "제출",
+	"growthexperiments-addlink-skip-body": "제안을 받아들이거나 거절하는 것을 중단하시겠습니까?",
+	"growthexperiments-addlink-skip-accept": "모두 건너뛰기",
+	"growthexperiments-addlink-skip-reject": "재검토",
 	"grant-managementorship": "멘토십 관리",
 	"newcomertasksinfo-no-data": "이용 가능한 데이터가 없습니다.",
 	"newcomertasksinfo-table-header-task-type-id": "ID",

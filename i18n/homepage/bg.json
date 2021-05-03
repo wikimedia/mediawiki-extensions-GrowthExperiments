@@ -25,6 +25,7 @@
 	"growthexperiments-homepage-email-button-confirmed": "Настройки",
 	"growthexperiments-homepage-email-changelink": "промяна",
 	"growthexperiments-homepage-startediting-header": "Започнете да редактирате",
+	"growthexperiments-homepage-startediting-dialog-progress": "$1 от $2",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "Отказ",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "Продължаване",
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Назад",
@@ -58,5 +59,6 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Региони",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Избиране на всички",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Премахване на всички",
+	"growthexperiments-addlink-context-text-label": "Текст",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Предложения"
 }

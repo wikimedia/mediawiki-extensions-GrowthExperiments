@@ -16,7 +16,7 @@
 	"growthexperiments-edit-config-pretext": "Šī lapa ļauj labot [[:mw:Special:MyLanguage/Growth|Izaugsmes]] komandas iespēju konfigurāciju. Tā labos [[$1]] tavā vārdā. Tu varēsi redzēt savas izmaiņas šī lapas vēsturē.",
 	"growthexperiments-edit-config-error-invalid-title": "Konfigurācijas lapa bija nekorekti konfigurēta",
 	"growthexperiments-edit-config-edit-summary": "Izmaiņu kopsavilkums",
-	"growthexperiments-edit-config-config-changed": "Konfigurācija nomainīta",
+	"growthexperiments-edit-config-config-changed": "Konfigurācija nomainīta. Var būt nepieciešams uzgaidīt dažas minūtes, pirms izmaiņas stājas spēkā.",
 	"growthexperiments-edit-config-return-to-form": "Tu vari [[Special:EditGrowthConfig|atgriezties]] labošanas formā.",
 	"growthexperiments-edit-config-help-panel": "Palīdzības panelis",
 	"growthexperiments-edit-config-help-panel-reading-namespaces": "Vārdtelpas ar lasīšanas režīmā iespējotu Palīdzības paneli",

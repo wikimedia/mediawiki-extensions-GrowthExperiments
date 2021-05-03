@@ -18,6 +18,7 @@
 			"Pacha Tchernof",
 			"Putnik",
 			"Radmir Far",
+			"Rivka Silinsky",
 			"Stjn",
 			"Sunpriat",
 			"Urfiner",
@@ -335,5 +336,8 @@
 	"growthexperiments-addlink-rejectiondialog-action-done": "Готово",
 	"growthexperiments-addlink-onboarding-dialog-progress": "$1 из $2",
 	"growthexperiments-addlink-summary-title": "Описание",
-	"growthexperiments-addlink-summary-submit": "Отправить"
+	"growthexperiments-addlink-summary-submit": "Отправить",
+	"growthexperiments-addlink-skip-title": "{{ПОЛ:|Вы}}пропустили все предложения для этой статьи.",
+	"growthexperiments-addlink-skip-accept": " Пропустить все",
+	"growthexperiments-addlink-skip-reject": "Рассмотреть опять"
 }

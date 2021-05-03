@@ -20,7 +20,7 @@
 	"growthexperiments-edit-config-pretext": "Bu sayfa, [[:mw:Special:MyLanguage/Growth|Growth]] takımı özelliklerinin yapılandırmasını düzenlemenize izin verir. Sizin adınıza [[$1]] sayfasını değiştirir. Değişikliklerinizi o sayfanın geçmişinde görebilirsiniz.",
 	"growthexperiments-edit-config-error-invalid-title": "Yapılandırma sayfası düzgün yapılandırılmamış",
 	"growthexperiments-edit-config-edit-summary": "Değişiklik özeti",
-	"growthexperiments-edit-config-config-changed": "Yapılandırma değişti",
+	"growthexperiments-edit-config-config-changed": "Yapılandırma değiştirildi. Değişikliklerin etkili olması için birkaç dakika beklemeniz gerekebilir.",
 	"growthexperiments-edit-config-return-to-form": "Değiştirme formuna [[Special:EditGrowthConfig|geri dönebilirsiniz]].",
 	"growthexperiments-edit-config-help-panel": "Yardım panosu",
 	"growthexperiments-edit-config-help-panel-reading-namespaces": "Yardım Panosuna sahip ad alanları okuma modunda etkinleştirildi",

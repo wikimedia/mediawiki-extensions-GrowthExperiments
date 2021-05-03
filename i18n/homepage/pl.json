@@ -329,6 +329,7 @@
 	"growthexperiments-addlink-wrongmodel": "Wersja $1 strony „$2” nie zawiera wikitekstu",
 	"growthexperiments-addlink-invalidjson": "Odpowiedź usługi rekomendowania linków dla strony „$1” jest nieprawidłowa",
 	"growthexperiments-addlink-serviceerror": "Usługa rekomendowania linków zwróćiła błąd dla strony „$1”: $2",
+	"growthexperiments-addlink-context-text-label": "Tekst",
 	"growthexperiments-addlink-context-intro": "Czy powinno to linkować do _____?",
 	"growthexperiments-addlink-context-button-accept": "Tak",
 	"growthexperiments-addlink-context-button-reject": "Nie",
@@ -339,5 +340,6 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Dotknij ikonkę ołówka $1 obok linka aby zmienić jego cel",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Inne",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Gotowe",
-	"growthexperiments-addlink-onboarding-dialog-title": "Wprowadzenie"
+	"growthexperiments-addlink-onboarding-dialog-title": "Wprowadzenie",
+	"growthexperiments-addlink-summary-title": "Podsumowanie"
 }
