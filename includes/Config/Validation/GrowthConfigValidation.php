@@ -150,10 +150,7 @@ class GrowthConfigValidation implements IConfigValidator {
 	}
 
 	/**
-	 * Validate config that's going to be saved
-	 *
-	 * @param array $data
-	 * @return StatusValue
+	 * @inheritDoc
 	 */
 	public function validate( array $data ): StatusValue {
 		$status = StatusValue::newGood();
