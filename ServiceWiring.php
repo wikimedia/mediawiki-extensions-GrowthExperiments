@@ -18,6 +18,7 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\DatabaseMenteeOverviewDataP
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider;
+use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
@@ -242,6 +243,12 @@ return [
 			$services->getActorMigration(),
 			$services->getDBLoadBalancer()->getConnection( DB_REPLICA, 'vslow' )
 		);
+	},
+
+	'GrowthExperimentsMentorDashboardModuleRegistry' => static function (
+		MediaWikiServices $services
+	): MentorDashboardModuleRegistry {
+		return new MentorDashboardModuleRegistry( $services );
 	},
 
 	'GrowthExperimentsMentorManager' => static function (

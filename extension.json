@@ -34,6 +34,7 @@
 			"i18n/homepage/api",
 			"i18n/confirmemail",
 			"i18n/newcomertasks/api",
+			"i18n/mentorship",
 			"i18n/mentorship/api"
 		]
 	},
@@ -1305,6 +1306,56 @@
 				},
 				"robot-task-type": "../images/suggestededits/robot-green.svg"
 			}
+		},
+		"ext.growthExperiments.MentorDashboard": {
+			"packageFiles": [
+				"mentordashboard/ext.growthExperiments.MentorDashboard.init.js",
+				"mentordashboard/ext.growthExperiments.MentorDashboard.MenteeOverview.js",
+				"mentordashboard/ext.growthExperiments.MentorDashboard.MenteeOverviewApi.js",
+				"mentordashboard/ext.growthExperiments.MentorDashboard.MenteeOverview.Pagination.js",
+				"mentordashboard/ext.growthExperiments.MentorDashboard.MenteeOverview.FilterDropdown.js",
+				"mentordashboard/ext.growthExperiments.MentorDashboard.MenteeOverview.MenteeSearchInputWidget.js"
+			],
+			"messages": [
+				"growthexperiments-mentor-dashboard-mentee-overview-add-filter",
+				"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline",
+				"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from",
+				"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to",
+				"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-headline",
+				"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred",
+				"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit",
+				"growthexperiments-mentor-dashboard-mentee-overview-active-ago",
+				"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown",
+				"growthexperiments-mentor-dashboard-mentee-overview-show-entries",
+				"growthexperiments-mentor-dashboard-mentee-overview-page-counter",
+				"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder"
+			],
+			"dependencies": [
+				"mediawiki.language",
+				"oojs-ui-widgets",
+				"oojs-ui.styles.icons-movement",
+				"oojs-ui.styles.icons-editing-core",
+				"oojs-ui.styles.icons-interactions",
+				"oojs-ui.styles.icons-user",
+				"oojs-ui.styles.icons-moderation",
+				"mediawiki.widgets.UserInputWidget"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
+		},
+		"ext.growthExperiments.MentorDashboard.styles": {
+			"styles": [
+				"mentordashboard/ext.growthExperiments.MentorDashboard.less",
+				"mentordashboard/ext.growthExperiments.MentorDashboard.BaseModule.less",
+				"mentordashboard/ext.growthExperiments.MentorDashboard.MenteeOverview.less",
+				"mentordashboard/ext.growthExperiments.MentorDashboard.MenteeOverview.mobile.less"
+			],
+			"targets": [
+				"desktop",
+				"mobile"
+			]
 		}
 	},
 	"QUnitTestModule": {
@@ -1490,6 +1541,10 @@
 			"description": "Title of the wiki page that contains the list of manually assigned mentors (cf. GEHomepageMentorsList). Null if no such page exists.",
 			"value": null
 		},
+		"GEMentorDashboardEnabled": {
+			"description": "Should users be allowed to access Special:MentorDashboard?",
+			"value": true
+		},
 		"GEMentorDashboardBackendEnabled": {
 			"description": "Enable backend for mentor dashboard (currently controls whether updateMenteeData.php runs on that wiki)",
 			"value": true
@@ -1656,6 +1711,12 @@
 		}
 	},
 	"SpecialPages": {
+		"MentorDashboard": {
+			"class": "GrowthExperiments\\Specials\\SpecialMentorDashboard",
+			"services": [
+				"GrowthExperimentsMentorDashboardModuleRegistry"
+			]
+		},
 		"EditGrowthConfig": {
 			"class": "GrowthExperiments\\Specials\\SpecialEditGrowthConfig",
 			"services": [

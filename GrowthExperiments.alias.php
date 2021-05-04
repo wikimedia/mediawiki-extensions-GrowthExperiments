@@ -20,6 +20,7 @@ $specialPageAliases['en'] = [
 	'ClaimMentee' => [ 'ClaimMentee' ],
 	'NewcomerTasksInfo' => [ 'NewcomerTasksInfo' ],
 	'EditGrowthConfig' => [ 'EditGrowthConfig' ],
+	'MentorDashboard' => [ 'MentorDashboard' ],
 ];
 
 /** Arabic */
