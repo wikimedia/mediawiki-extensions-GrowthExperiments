@@ -107,6 +107,9 @@ AddLinkSaveDialogMixin.prototype.getSetupProcess = function ( data ) {
 		if ( this.checkboxesByName.wpWatchthis ) {
 			this.checkboxesByName.wpWatchthis.setSelected( true );
 		}
+
+		// Select visual diff mode, because it's more user-friendly, and also to avoid T281924.
+		this.reviewModeButtonSelect.selectItemByData( 'visual' );
 	}, this );
 };
 
