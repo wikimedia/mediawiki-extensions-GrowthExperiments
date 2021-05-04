@@ -15,7 +15,7 @@ class VariantHooks implements
 	ResourceLoaderGetConfigVarsHook
 {
 	/** Default A/B testing variant (control group). */
-	public const VARIANT_NULL = 'null';
+	public const VARIANT_CONTROL = 'control';
 
 	/** A/B testing variant with link recommendations enabled. */
 	public const VARIANT_LINK_RECOMMENDATION_ENABLED = 'linkrecommendation';
@@ -32,7 +32,7 @@ class VariantHooks implements
 		//     smaller start module
 		// 'D' doesn't exist anymore; was not pre-initiated, onboarding embedded in suggested
 		//     edits module, otherwise like C
-		self::VARIANT_NULL,
+		self::VARIANT_CONTROL,
 		self::VARIANT_LINK_RECOMMENDATION_ENABLED,
 	];
 
