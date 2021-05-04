@@ -70,10 +70,10 @@
 	 * @return {Array<jQuery>} A list of footer elements.
 	 */
 	PostEditPanel.prototype.getFooterButtons = function () {
-		var title, buttons, footer, footer2,
+		var title, footer, footer2,
+			isSaved = ( this.taskState === SuggestedEditSession.static.STATES.SAVED ),
 			self = this;
 
-		buttons = [];
 		title = new mw.Title( 'Special:Homepage' );
 		footer = new OO.ui.ButtonWidget( {
 			href: title.getUrl( { source: 'postedit-panel' } ) +
@@ -83,28 +83,26 @@
 			classes: [ 'mw-ge-help-panel-postedit-footer' ]
 		} );
 		footer.$element.on( 'click', this.logLinkClick.bind( this, 'homepage' ) );
-		buttons.push( footer.$element );
 
-		if ( this.taskType !== 'link-recommendation' ) {
-			footer2 = new OO.ui.ButtonWidget( {
-				href: '#',
-				label: mw.message( 'growthexperiments-help-panel-postedit-footer2' ).text(),
-				framed: false,
-				classes: [ 'mw-ge-help-panel-postedit-footer' ]
-			} );
-			footer2.$element.on( 'click', function () {
-				self.logLinkClick( 'edit' );
-				// When the user clicks the edit link, close the panel. (Actually opening
-				// the editor would not be a great user experience as we can't predict whether
-				// the user wants to edit a section or the whole article.) Since it could be a
-				// dialog or a drawer, closing is handled by the caller.
-				self.emit( 'edit-link-clicked' );
-				return false;
-			} );
-			buttons.push( footer2.$element );
-		}
+		footer2 = new OO.ui.ButtonWidget( {
+			href: '#',
+			label: isSaved ?
+				mw.message( 'growthexperiments-help-panel-postedit-footer2' ).text() :
+				mw.message( 'growthexperiments-help-panel-postedit-footer2-notsaved' ).text(),
+			framed: false,
+			classes: [ 'mw-ge-help-panel-postedit-footer' ]
+		} );
+		footer2.$element.on( 'click', function () {
+			self.logLinkClick( 'edit' );
+			// When the user clicks the edit link, close the panel. (Actually opening
+			// the editor would not be a great user experience as we can't predict whether
+			// the user wants to edit a section or the whole article.) Since it could be a
+			// dialog or a drawer, closing is handled by the caller.
+			self.emit( 'edit-link-clicked' );
+			return false;
+		} );
 
-		return buttons;
+		return [ footer.$element, footer2.$element ];
 	};
 
 	/**
