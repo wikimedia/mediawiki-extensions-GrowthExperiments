@@ -190,9 +190,9 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 			// eslint-disable-next-line no-bitwise
 			NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT,
 			{ acceptNode: function ( node ) {
-				// Exclude the contents of templates; don't descend into these nodes
+				// Exclude the contents of templates and wikilinks; don't descend into these nodes
 				// TODO flesh out with more exclusions, handle about groups (T267694)
-				if ( node.getAttribute && node.getAttribute( 'typeof' ) === 'mw:Transclusion' ) {
+				if ( node.getAttribute && ( node.getAttribute( 'typeof' ) === 'mw:Transclusion' || node.getAttribute( 'rel' ) === 'mw:WikiLink' ) ) {
 					return NodeFilter.FILTER_REJECT;
 				} else if ( node.nodeType === Node.TEXT_NODE ) {
 					return NodeFilter.FILTER_ACCEPT;
