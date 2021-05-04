@@ -11,6 +11,7 @@ use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
+use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
@@ -110,6 +111,14 @@ class GrowthExperimentsServices {
 
 	public function getLinkSubmissionRecorder(): LinkSubmissionRecorder {
 		return $this->coreServices->get( 'GrowthExperimentsLinkSubmissionRecorder' );
+	}
+
+	public function getMenteeOverviewDataProvider(): MenteeOverviewDataProvider {
+		return $this->coreServices->get( 'GrowthExperimentsMenteeOverviewDataProvider' );
+	}
+
+	public function getUncachedMenteeOverviewDataProvider(): MenteeOverviewDataProvider {
+		return $this->coreServices->get( 'GrowthExperimentsMenteeOverviewDataProviderUncached' );
 	}
 
 	public function getMentorManager(): MentorManager {
