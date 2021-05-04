@@ -39,7 +39,7 @@ class TemplateBasedTaskType extends TaskType {
 			'difficulty' => $this->getDifficulty(),
 			'extraData' => [ 'learnMoreLink' => $this->getLearnMoreLink() ],
 			'handlerId' => $this->getHandlerId(),
-			'templates' => array_map( function ( LinkTarget $template ) {
+			'templates' => array_map( static function ( LinkTarget $template ) {
 				return [ $template->getNamespace(), $template->getDBkey() ];
 			}, $this->getTemplates() ),
 		];
@@ -47,7 +47,7 @@ class TemplateBasedTaskType extends TaskType {
 
 	/** @inheritDoc */
 	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
-		$templates = array_map( function ( array $template ) {
+		$templates = array_map( static function ( array $template ) {
 			return new TitleValue( $template[0], $template[1] );
 		}, $json['templates'] );
 		$taskType = new TemplateBasedTaskType( $json['id'], $json['difficulty'], $json['extraData'],

@@ -131,7 +131,7 @@ class LinkRecommendation {
 	 * @return array[]
 	 */
 	public function toArray(): array {
-		return [ 'links' => array_map( function ( LinkRecommendationLink $linkRecommendationItem ) {
+		return [ 'links' => array_map( static function ( LinkRecommendationLink $linkRecommendationItem ) {
 			return $linkRecommendationItem->toArray();
 		}, $this->links ), 'meta' => $this->metadata->toArray() ];
 	}

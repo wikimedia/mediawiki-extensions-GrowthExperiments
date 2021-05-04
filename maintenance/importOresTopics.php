@@ -199,7 +199,7 @@ class ImportOresTopics extends Maintenance {
 		if ( $this->topicSource === self::TOPIC_SOURCE_RANDOM ) {
 			$topics = $this->getTopicsByRandom( $titles );
 		} elseif ( $this->topicSource === self::TOPIC_SOURCE_PROD ) {
-			$titleStrings = array_map( function ( Title $title ) {
+			$titleStrings = array_map( static function ( Title $title ) {
 				return $title->getPrefixedText();
 			}, $titles );
 			$wikiId = $this->wikiId;
@@ -228,7 +228,7 @@ class ImportOresTopics extends Maintenance {
 			}
 			if ( !$this->hasOresModel( $this->wikiId ) ) {
 				$reverseTitleMap = array_flip( $titleMap );
-				$titleToRevId = array_flip( array_map( function ( string $title ) use ( $reverseTitleMap ) {
+				$titleToRevId = array_flip( array_map( static function ( string $title ) use ( $reverseTitleMap ) {
 					return $reverseTitleMap[$title];
 				}, array_flip( $titleToRevId ) ) );
 			}
@@ -256,7 +256,7 @@ class ImportOresTopics extends Maintenance {
 		$topicScores = [];
 		foreach ( $titles as $title ) {
 			$randomTopics = $oresTopics = array_rand( array_flip( ArticleTopicFeature::TERMS_TO_LABELS ), 3 );
-			$topicScores[$title->getPrefixedText()] = array_combine( $randomTopics, array_map( function ( $_ ) {
+			$topicScores[$title->getPrefixedText()] = array_combine( $randomTopics, array_map( static function ( $_ ) {
 				return mt_rand() / mt_getrandmax();
 			}, $randomTopics ) );
 		}

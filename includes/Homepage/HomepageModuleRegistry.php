@@ -73,7 +73,7 @@ class HomepageModuleRegistry {
 	 */
 	private static function getWiring() {
 		return [
-			'banner' => function (
+			'banner' => static function (
 				MediaWikiServices $services,
 				IContextSource $context
 			) {
@@ -85,7 +85,7 @@ class HomepageModuleRegistry {
 				);
 			},
 
-			'start' => function (
+			'start' => static function (
 				MediaWikiServices $services,
 				IContextSource $context
 			) {
@@ -97,7 +97,7 @@ class HomepageModuleRegistry {
 				);
 			},
 
-			'startemail' => function (
+			'startemail' => static function (
 				MediaWikiServices $services,
 				IContextSource $context
 			) {
@@ -109,7 +109,7 @@ class HomepageModuleRegistry {
 				);
 			},
 
-			'suggested-edits' => function (
+			'suggested-edits' => static function (
 				MediaWikiServices $services,
 				IContextSource $context
 			) {
@@ -129,7 +129,7 @@ class HomepageModuleRegistry {
 				);
 			},
 
-			'impact' => function (
+			'impact' => static function (
 				MediaWikiServices $services,
 				IContextSource $context
 			) {
@@ -150,7 +150,7 @@ class HomepageModuleRegistry {
 				);
 			},
 
-			'mentorship' => function (
+			'mentorship' => static function (
 				MediaWikiServices $services,
 				IContextSource $context
 			) {
@@ -163,7 +163,7 @@ class HomepageModuleRegistry {
 				);
 			},
 
-			'help' => function (
+			'help' => static function (
 				MediaWikiServices $services,
 				IContextSource $context
 			) {
@@ -175,7 +175,7 @@ class HomepageModuleRegistry {
 				);
 			},
 
-			'start-startediting' => function (
+			'start-startediting' => static function (
 				MediaWikiServices $services,
 				IContextSource $context
 			) {

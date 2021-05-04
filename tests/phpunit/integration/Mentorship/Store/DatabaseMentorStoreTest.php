@@ -72,7 +72,7 @@ class DatabaseMentorStoreTest extends MentorStoreTestCase {
 	 * @return array
 	 */
 	private function getIds( array $data ): array {
-		return array_map( function ( $mentee ) {
+		return array_map( static function ( $mentee ) {
 			return $mentee->getId();
 		}, $data );
 	}

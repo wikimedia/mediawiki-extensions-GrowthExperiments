@@ -479,7 +479,7 @@ class RefreshLinkRecommendations extends Maintenance {
 	private function updateCirrusSearchIndex( RevisionRecord $revision ): void {
 		$status = $this->searchIndexUpdater->update( $revision );
 		if ( !$status->isOK() ) {
-			$errors = array_map( function ( $error ) {
+			$errors = array_map( static function ( $error ) {
 				$message = $error['params'];
 				array_unshift( $message, $error['message'] );
 				return Message::newFromSpecifier( $message );

@@ -160,13 +160,13 @@ class Start extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	protected function getMobileSummaryBody() {
-		return implode( "\n", array_map( function ( BaseTaskModule $module ) {
+		return implode( "\n", array_map( static function ( BaseTaskModule $module ) {
 			return $module->render( HomepageModule::RENDER_MOBILE_SUMMARY );
 		}, $this->getVisibleTasks() ) );
 	}
 
 	private function getVisibleTasks() {
-		return array_filter( $this->tasks, function ( BaseTaskModule $module ) {
+		return array_filter( $this->tasks, static function ( BaseTaskModule $module ) {
 			return $module->isVisible();
 		} );
 	}

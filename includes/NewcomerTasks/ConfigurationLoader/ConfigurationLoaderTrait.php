@@ -50,7 +50,7 @@ trait ConfigurationLoaderTrait {
 		if ( $taskTypes instanceof StatusValue ) {
 			return [];
 		}
-		return array_combine( array_map( function ( TaskType $taskType ) {
+		return array_combine( array_map( static function ( TaskType $taskType ) {
 			return $taskType->getId();
 		}, $taskTypes ), $taskTypes );
 	}
@@ -67,7 +67,7 @@ trait ConfigurationLoaderTrait {
 		if ( $topics instanceof StatusValue ) {
 			return [];
 		}
-		return array_combine( array_map( function ( Topic $topic ) {
+		return array_combine( array_map( static function ( Topic $topic ) {
 			return $topic->getId();
 		}, $topics ), $topics );
 	}

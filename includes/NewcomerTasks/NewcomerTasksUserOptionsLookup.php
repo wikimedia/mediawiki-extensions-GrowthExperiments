@@ -127,7 +127,7 @@ class NewcomerTasksUserOptionsLookup {
 		} else {
 			$map = [ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => 'links' ];
 		}
-		$taskTypes = array_map( function ( string $taskType ) use ( $map ) {
+		$taskTypes = array_map( static function ( string $taskType ) use ( $map ) {
 			return $map[$taskType] ?? $taskType;
 		}, $taskTypes );
 		return array_unique( $taskTypes );

@@ -235,7 +235,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 
 		$form->addPreText( $this->msg(
 			'growthexperiments-edit-config-pretext',
-			\Message::listParam( array_map( function ( Title $title ) {
+			\Message::listParam( array_map( static function ( Title $title ) {
 				return '[[' . $title->getPrefixedText() . ']]';
 			}, $configTitles ) )
 		)->parseAsBlock() );

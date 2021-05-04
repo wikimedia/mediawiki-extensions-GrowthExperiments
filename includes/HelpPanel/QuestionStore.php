@@ -159,7 +159,7 @@ class QuestionStore {
 	 * @return QuestionRecord[]
 	 */
 	private function excludeHiddenQuestions( array $questionRecords ) {
-		return array_filter( $questionRecords, function ( QuestionRecord $questionRecord ) {
+		return array_filter( $questionRecords, static function ( QuestionRecord $questionRecord ) {
 			return $questionRecord->isVisible();
 		} );
 	}

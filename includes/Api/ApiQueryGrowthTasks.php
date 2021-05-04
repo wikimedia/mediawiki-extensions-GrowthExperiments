@@ -191,7 +191,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		if ( $topics instanceof StatusValue ) {
 			return [];
 		}
-		return array_combine( array_map( function ( Topic $topic ) {
+		return array_combine( array_map( static function ( Topic $topic ) {
 			return $topic->getId();
 		}, $topics ), $topics ) ?: [];
 	}

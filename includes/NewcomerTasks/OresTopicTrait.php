@@ -33,7 +33,7 @@ trait OresTopicTrait {
 	): void {
 		$services = MediaWikiServices::getInstance();
 		$services->addServiceManipulator( 'GrowthExperimentsNewcomerTasksConfigurationLoader',
-			function (
+			static function (
 				ConfigurationLoader $configurationLoader,
 				MediaWikiServices $services
 			) use ( $useOresTopics, $extraTaskTypes ) {
@@ -67,7 +67,7 @@ trait OresTopicTrait {
 						$this->realConfigurationLoader = $realConfigurationLoader;
 						$this->extraTaskTypes = $extraTaskTypes;
 						if ( $useOresTopics ) {
-							$this->topics = array_map( function ( string $oresId ) {
+							$this->topics = array_map( static function ( string $oresId ) {
 								return new RawOresTopic( $oresId, $oresId );
 							}, array_keys( ArticleTopicFeature::TERMS_TO_LABELS ) );
 						}

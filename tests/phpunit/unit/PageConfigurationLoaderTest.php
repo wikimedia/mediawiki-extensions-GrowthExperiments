@@ -47,10 +47,10 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			$this->assertIsArray( $taskTypes );
 			$this->assertNotEmpty( $taskTypes );
 			$this->assertInstanceOf( TaskType::class, $taskTypes[0] );
-			$this->assertSame( [ 'copyedit', 'references' ], array_map( function ( TaskType $tt ) {
+			$this->assertSame( [ 'copyedit', 'references' ], array_map( static function ( TaskType $tt ) {
 				return $tt->getId();
 			}, $taskTypes ) );
-			$this->assertSame( [ 'easy', 'medium' ], array_map( function ( TaskType $tt ) {
+			$this->assertSame( [ 'easy', 'medium' ], array_map( static function ( TaskType $tt ) {
 				return $tt->getDifficulty();
 			}, $taskTypes ) );
 		}
@@ -71,7 +71,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $this->getTaskConfig(), [],
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$configurationLoader->disableTaskType( 'copyedit' );
-		$this->assertArrayEquals( [ 'references' ], array_map( function ( TaskType $tt ) {
+		$this->assertArrayEquals( [ 'references' ], array_map( static function ( TaskType $tt ) {
 			return $tt->getId();
 		}, $configurationLoader->loadTaskTypes() ) );
 
@@ -79,7 +79,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$configurationLoader->disableTaskType( 'copyedit' );
 		$configurationLoader->disableTaskType( 'references' );
-		$this->assertArrayEquals( [], array_map( function ( TaskType $tt ) {
+		$this->assertArrayEquals( [], array_map( static function ( TaskType $tt ) {
 			return $tt->getId();
 		}, $configurationLoader->loadTaskTypes() ) );
 	}
@@ -125,11 +125,11 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			$this->assertIsArray( $topics );
 			$this->assertNotEmpty( $topics );
 			$this->assertInstanceOf( Topic::class, $topics[0] );
-			$this->assertSame( [ 'art', 'food', 'science' ], array_map( function ( Topic $t ) {
+			$this->assertSame( [ 'art', 'food', 'science' ], array_map( static function ( Topic $t ) {
 				return $t->getId();
 			}, $topics ) );
 			$this->assertSame( [ [ 'music', 'painting' ], [ 'food' ], [ 'physics', 'biology' ] ],
-				array_map( function ( OresBasedTopic $t ) {
+				array_map( static function ( OresBasedTopic $t ) {
 					return $t->getOresTopics();
 				}, $topics ) );
 		}
@@ -178,7 +178,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			$this->assertIsArray( $topics );
 			$this->assertNotEmpty( $topics );
 			$this->assertInstanceOf( Topic::class, $topics[0] );
-			$this->assertSame( [ 'art', 'science' ], array_map( function ( Topic $t ) {
+			$this->assertSame( [ 'art', 'science' ], array_map( static function ( Topic $t ) {
 				return $t->getId();
 			}, $topics ) );
 			// FIXME can't test this while the RawMessage hack is used
@@ -186,8 +186,8 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			//	return $t->getName( $this->getMockMessageLocalizer() );
 			// }, $topics ) );
 			$this->assertSame( [ [ 'Music', 'Painting' ], [ 'Physics', 'Biology' ] ],
-				array_map( function ( MorelikeBasedTopic $t ) {
-					return array_map( function ( LinkTarget $lt ) {
+				array_map( static function ( MorelikeBasedTopic $t ) {
+					return array_map( static function ( LinkTarget $lt ) {
 						return $lt->getText();
 					}, $t->getReferencePages() );
 				}, $topics ) );
@@ -249,7 +249,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$this->assertIsArray( $taskTypes );
 		$this->assertNotEmpty( $taskTypes );
 		$this->assertInstanceOf( TaskType::class, $taskTypes[0] );
-		$this->assertSame( [ 'copyedit', 'references' ], array_map( function ( TaskType $tt ) {
+		$this->assertSame( [ 'copyedit', 'references' ], array_map( static function ( TaskType $tt ) {
 			return $tt->getId();
 		}, $taskTypes ) );
 
@@ -259,7 +259,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$this->assertIsArray( $topics );
 		$this->assertNotEmpty( $topics );
 		$this->assertInstanceOf( Topic::class, $topics[0] );
-		$this->assertSame( [ 'art', 'food', 'science' ], array_map( function ( Topic $t ) {
+		$this->assertSame( [ 'art', 'food', 'science' ], array_map( static function ( Topic $t ) {
 			return $t->getId();
 		}, $topics ) );
 	}
@@ -531,7 +531,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			->getMock();
 		$title->method( 'getNamespace' )->willReturn( $namespace );
 		$title->method( 'inNamespace' )->willReturnCallback(
-			function ( $inNamespace ) use ( $namespace ) {
+			static function ( $inNamespace ) use ( $namespace ) {
 				return $inNamespace === $namespace;
 			} );
 		$title->method( 'getDBkey' )->willReturn( $titleText );

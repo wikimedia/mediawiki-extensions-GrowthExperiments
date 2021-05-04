@@ -18,7 +18,7 @@ class MorelikeBasedTopicTest extends MediaWikiUnitTestCase {
 			new TitleValue( NS_MAIN, 'Title1' ),
 			new TitleValue( NS_MAIN, 'Title2' ),
 		] );
-		$this->assertEquals( [ 'Title1', 'Title2' ], array_map( function ( LinkTarget $title ) {
+		$this->assertEquals( [ 'Title1', 'Title2' ], array_map( static function ( LinkTarget $title ) {
 			return $title->getDBkey();
 		}, $topic->getReferencePages() ) );
 	}

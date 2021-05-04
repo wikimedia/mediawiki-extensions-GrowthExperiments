@@ -134,7 +134,9 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		}
 		$linkRecommendationStore->expects( $expectPrimaryRead ? $this->exactly( 2 ) : $this->once() )
 			->method( 'getByLinkTarget' )->willReturnCallback(
-				function ( LinkTarget $title, int $flags ) use ( $linkRecommendation, $linkRecommendationPrimary ) {
+				static function (
+					LinkTarget $title, int $flags
+				) use ( $linkRecommendation, $linkRecommendationPrimary ) {
 					return $flags ? $linkRecommendationPrimary : $linkRecommendation;
 				}
 			);

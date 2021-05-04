@@ -91,7 +91,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 	 */
 	public function testEditFilterMergedContentHookReturnsFalse() {
 		$this->setTemporaryHook( 'EditFilterMergedContent',
-			function ( $unused1, $unused2, Status $status ) {
+			static function ( $unused1, $unused2, Status $status ) {
 				$status->setOK( false );
 				return false;
 			}

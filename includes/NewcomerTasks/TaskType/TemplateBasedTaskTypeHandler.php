@@ -88,7 +88,7 @@ class TemplateBasedTaskTypeHandler extends TaskTypeHandler {
 	 */
 	protected function escapeSearchTitleList( array $titles ) {
 		// FIXME duplicate of SearchStrategy::escapeSearchTitleList
-		return '"' . implode( '|', array_map( function ( LinkTarget $title ) {
+		return '"' . implode( '|', array_map( static function ( LinkTarget $title ) {
 			return str_replace( [ '"', '?' ], [ '\"', '\?' ], $title->getDBkey() );
 		}, $titles ) ) . '"';
 	}

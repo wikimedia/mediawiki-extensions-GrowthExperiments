@@ -246,7 +246,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 	}
 
 	public function onSuccess() {
-		$mentees = array_map( function ( UserIdentity $user ) {
+		$mentees = array_map( static function ( UserIdentity $user ) {
 			return Linker::userLink( $user->getId(), $user->getName() );
 		}, $this->mentees );
 

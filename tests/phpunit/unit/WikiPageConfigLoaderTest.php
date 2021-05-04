@@ -296,7 +296,7 @@ class WikiPageConfigLoaderTest extends MediaWikiUnitTestCase {
 					// avoid breaking the test on wording changes, as long as the error code matches
 					$code = $expectedMessage->getApiCode();
 					$this->assertNotEmpty(
-						array_filter( $data->getErrors(), function ( $error ) use ( $code ) {
+						array_filter( $data->getErrors(), static function ( $error ) use ( $code ) {
 							return $error['message'] instanceof ApiRawMessage
 								&& $error['message']->getApiCode() === $code;
 						} ),
