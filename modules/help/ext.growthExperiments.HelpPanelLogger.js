@@ -175,6 +175,9 @@
 					if ( mode === 'visual' ) {
 						return 'visualeditor';
 					}
+					if ( mode ) {
+						return mode;
+					}
 				}
 			}
 
