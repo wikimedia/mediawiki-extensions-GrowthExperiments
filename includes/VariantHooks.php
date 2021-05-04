@@ -32,6 +32,9 @@ class VariantHooks implements
 		//     smaller start module
 		// 'D' doesn't exist anymore; was not pre-initiated, onboarding embedded in suggested
 		//     edits module, otherwise like C
+		// Temporarily re-add 'null' control group until the
+		// operations/mediawiki-config repository can be updated (I90856de)
+		'null',
 		self::VARIANT_CONTROL,
 		self::VARIANT_LINK_RECOMMENDATION_ENABLED,
 	];
