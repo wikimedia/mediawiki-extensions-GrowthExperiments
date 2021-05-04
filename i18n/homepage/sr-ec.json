@@ -66,7 +66,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Готово",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Готово",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Најпре покушајте с неким <strong>лакшим</strong> изменама",
-	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "Постоји много начина да допринесете како бисте побољшали овај пројекат. Заједница уредника је направила листу чланака којима је потребна нека врста помоћи.",
+	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "Постоји много начина да допринесете како бисте побољшали {{SITENAME}} пројекат.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Лако",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Средње",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Тешко",
