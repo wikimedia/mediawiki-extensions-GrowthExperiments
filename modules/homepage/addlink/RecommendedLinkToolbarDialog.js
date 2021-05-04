@@ -318,7 +318,12 @@ RecommendedLinkToolbarDialog.prototype.showRecommendationAtIndex = function ( in
 	this.currentIndex = index;
 	this.currentDataModel = this.getCurrentDataModel();
 	this.isUpdatingCurrentRecommendation = false;
+	// Before selecting the new annotation view, unset active state on the current one
+	if ( this.annotationView ) {
+		this.annotationView.updateActiveClass( false );
+	}
 	this.selectAnnotationView();
+	this.annotationView.updateActiveClass( true );
 	this.updateContentForCurrentRecommendation();
 };
 
