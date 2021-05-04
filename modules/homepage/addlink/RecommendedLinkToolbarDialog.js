@@ -539,8 +539,14 @@ RecommendedLinkToolbarDialog.prototype.updateActionButtonsMode = function () {
  * the annotation and the link inspector are in the viewport
  */
 RecommendedLinkToolbarDialog.prototype.updateSurfacePadding = function () {
-	var bottomPadding = Math.max( this.$element.height(), this.minHeight ) + this.scrollOffset;
-	this.surface.setPadding( { bottom: bottomPadding } );
+	var bottomPadding = Math.max( this.$element.height(), this.minHeight ) + this.scrollOffset,
+		topOffset = this.topOffset || 0,
+		topPadding;
+	if ( !this.originalTopPadding ) {
+		this.originalTopPadding = this.surface.padding.top;
+	}
+	topPadding = this.originalTopPadding + topOffset;
+	this.surface.setPadding( { top: topPadding, bottom: bottomPadding } );
 };
 
 /**

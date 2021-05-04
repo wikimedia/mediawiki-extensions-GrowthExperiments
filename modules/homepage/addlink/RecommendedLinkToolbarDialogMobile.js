@@ -8,6 +8,7 @@ var RecommendedLinkToolbarDialog = require( 'ext.growthExperiments.AddLink' ).Re
 function RecommendedLinkToolbarDialogMobile() {
 	RecommendedLinkToolbarDialogMobile.super.apply( this, arguments );
 	this.$element.addClass( [ 'mw-ge-recommendedLinkContextItem-mobile' ] );
+	this.topOffset = 25;
 }
 
 OO.inheritClass( RecommendedLinkToolbarDialogMobile, RecommendedLinkToolbarDialog );
@@ -111,7 +112,10 @@ RecommendedLinkToolbarDialogMobile.prototype.setupHelpButton = function () {
  * @private
  */
 RecommendedLinkToolbarDialogMobile.prototype.setSurfaceInputMode = function ( inputMode ) {
-	this.surface.getView().$element.find( '.ve-ce-documentNode' ).get( 0 ).inputMode = inputMode;
+	var documentNode = this.surface.getView().$element.find( '.ve-ce-documentNode' ).get( 0 );
+	if ( documentNode ) {
+		documentNode.inputMode = inputMode;
+	}
 };
 
 module.exports = RecommendedLinkToolbarDialogMobile;
