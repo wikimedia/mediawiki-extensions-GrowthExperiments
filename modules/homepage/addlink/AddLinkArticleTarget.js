@@ -59,6 +59,8 @@ AddLinkArticleTarget.prototype.beforeLoadSuccess = function ( response ) {
 AddLinkArticleTarget.prototype.beforeSurfaceReady = function () {
 	// Put the surface in read-only mode
 	this.getSurface().setReadOnly( true );
+	// Remove any edit notices (T281960)
+	this.editNotices = [];
 
 	// HACK RecommendedLinkContextItem doesn't have access to the target, so give it access to the
 	// link recommendation data by adding a property to the ui.Surface
