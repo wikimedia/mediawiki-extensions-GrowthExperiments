@@ -6,6 +6,7 @@ use CachedBagOStuff;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use HashBagOStuff;
+use MediaWiki\User\UserIdentity;
 use Wikimedia\TestingAccessWrapper;
 
 /**
@@ -66,6 +67,16 @@ class DatabaseMentorStoreTest extends MentorStoreTestCase {
 		$this->assertSameUser( $mentor, $actualMentor );
 	}
 
+	/**
+	 * @param UserIdentity[] $data
+	 * @return array
+	 */
+	private function getIds( array $data ): array {
+		return array_map( function ( $mentee ) {
+			return $mentee->getId();
+		}, $data );
+	}
+
 	public function testGetMenteesByMentor() {
 		$store = $this->getStore( true );
 
@@ -75,17 +86,30 @@ class DatabaseMentorStoreTest extends MentorStoreTestCase {
 		$menteeThree = $this->getMutableTestUser()->getUser();
 		$mentor = $this->getMutableTestUser()->getUser();
 		$otherMentor = $this->getMutableTestUser()->getUser();
+		$mentorNoMentees = $this->getMutableTestUser()->getUser();
 
 		// Save mentor/mentee relationship
 		$store->setMentorForUser( $menteeOne, $mentor );
 		$store->setMentorForUser( $menteeTwo, $mentor );
 		$store->setMentorForUser( $menteeThree, $otherMentor );
 
-		// Test that mentees by $mentor are all expected
-		$ids = array_map( function ( $mentee ) {
-			return $mentee->getId();
-		}, $store->getMenteesByMentor( $mentor ) );
-		$this->assertArrayEquals( [ $menteeOne->getId(), $menteeTwo->getId() ], $ids );
+		// Test mentees mentored by $mentor
+		$this->assertArrayEquals(
+			[ $menteeOne->getId(), $menteeTwo->getId() ],
+			$this->getIds( $store->getMenteesByMentor( $mentor ) )
+		);
+
+		// Test mentees mentored by $otherMentor
+		$this->assertArrayEquals(
+			[ $menteeThree->getId() ],
+			$this->getIds( $store->getMenteesByMentor( $otherMentor ) )
+		);
+
+		// Test mentees mentored by $mentorNoMentees (none expected)
+		$this->assertArrayEquals(
+			[],
+			$this->getIds( $store->getMenteesByMentor( $mentorNoMentees ) )
+		);
 	}
 
 }
