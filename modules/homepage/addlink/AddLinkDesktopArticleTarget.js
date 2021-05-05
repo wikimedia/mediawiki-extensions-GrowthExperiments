@@ -12,7 +12,7 @@ var AddLinkArticleTarget = require( 'ext.growthExperiments.AddLink' ).AddLinkArt
 function AddLinkDesktopArticleTarget() {
 	AddLinkDesktopArticleTarget.super.apply( this, arguments );
 	this.$element.addClass( 've-init-mw-addLinkArticleTarget' );
-	this.toolbarScrollOffset = 100;
+	this.toolbarScrollOffset = 50;
 }
 
 OO.inheritClass( AddLinkDesktopArticleTarget, ve.init.mw.DesktopArticleTarget );
