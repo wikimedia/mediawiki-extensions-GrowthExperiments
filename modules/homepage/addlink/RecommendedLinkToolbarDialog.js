@@ -147,6 +147,9 @@ RecommendedLinkToolbarDialog.prototype.onNextButtonClicked = function () {
  * Mark it as undecided if it has been accepted
  */
 RecommendedLinkToolbarDialog.prototype.onYesButtonClicked = function () {
+	if ( this.currentDataModel.isRejected() ) {
+		this.resetAcceptanceButtonStates();
+	}
 	this.setAccepted( this.currentDataModel.isAccepted() ? null : true );
 };
 
@@ -155,6 +158,9 @@ RecommendedLinkToolbarDialog.prototype.onYesButtonClicked = function () {
  * Mark it as undecided if it has been rejected
  */
 RecommendedLinkToolbarDialog.prototype.onNoButtonClicked = function () {
+	if ( this.currentDataModel.isAccepted() ) {
+		this.resetAcceptanceButtonStates();
+	}
 	this.setAccepted( this.currentDataModel.isRejected() ? null : false );
 };
 
@@ -221,7 +227,6 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 			rejectionReason: undefined
 		};
 
-	this.resetAcceptanceButtonStates();
 	// Temporarily disable read-only mode
 	surfaceModel.setReadOnly( false );
 
