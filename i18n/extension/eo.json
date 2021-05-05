@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jakub Fabijan"
+		]
+	},
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Laste ĝisdatigita de [[User:$1|$1]] $2.",
+	"growthexperiments-edit-config-mentorship-enabled-true": "Jes",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Ne"
+}

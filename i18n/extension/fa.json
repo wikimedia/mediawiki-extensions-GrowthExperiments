@@ -2,8 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Mardetanha",
+			"Mohammad ebz",
 			"Reza1615"
 		]
 	},
-	"growthexperiments-desc": "این افزونه شامل تجربیاتی است که توسط تیم رشد انجام شده."
+	"growthexperiments-desc": "این افزونه شامل تجربیاتی است که توسط تیم رشد انجام شده.",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "میز کمک",
+	"growthexperiments-edit-config-mentorship-enabled-true": "بله",
+	"growthexperiments-edit-config-mentorship-enabled-false": "خیر"
 }

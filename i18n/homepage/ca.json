@@ -8,11 +8,12 @@
 			"Jordiventura96",
 			"Mguix",
 			"Paucabot",
-			"Townie"
+			"Townie",
+			"Xavier Dengra"
 		]
 	},
-	"growthexperiments-homepage-tab": "Pàgina d'inici",
-	"growthexperiments-homepage-enable": "Mostra la pàgina de nouvingut",
+	"growthexperiments-homepage-tab": "Espai de progrés d'usuari",
+	"growthexperiments-homepage-enable": "Mostra la pàgina del meu progrés d'usuari",
 	"growthexperiments-homepage-account-header": "S'ha creat el compte",
 	"growthexperiments-homepage-account-editcount": "{{PLURAL:$1|edició|edicions}}",
 	"growthexperiments-homepage-userpage-header": "Crea {{GÈNERE:1$|la vostra}} pàgina d'usuari",
@@ -74,6 +75,9 @@
 	"growthexperiments-tour-response-button-okay": "Entesos",
 	"growthexperiments-homepage-help-header": "Us cal ajuda per editar",
 	"growthexperiments-homepage-help-subheader": "Principals pàgines d'ajuda sobre edició",
+	"growthexperiments-homepage-mentorship-dialog-title": "Preguntar al teu mentor",
+	"growthexperiments-homepage-mentorship-questionreview-header": "Quan feu una pregunta, es <strong>fa pública</strong> sota el vostre nom d'usuari, \"$2\", a $3, que és on podrà trobar i respondre la vostra pregunta.",
+	"growthexperiments-homepage-tutorial-cta-text": "Tutorial",
 	"growthexperiments-specialimpact-title": "Impacte",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "edicions el darrer dia",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "Voluntaris com tu han contribuït a millorar {{SITENAME}} avui. Uneix-t'hi!",

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Jakub Fabijan",
 			"Luis Miguel Obando",
 			"Mirin"
 		]
@@ -20,5 +21,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|Aktiva}} hieraŭ",
 	"growthexperiments-homepage-mentorship-question-subject": "Demando de [[User:$1|$1]]",
 	"growthexperiments-homepage-tutorial-cta-text": "Lernilo",
-	"growthexperiments-specialimpact-title": "Efiko"
+	"growthexperiments-specialimpact-title": "Efiko",
+	"growthexperiments-addlink-context-text-label": "Teksto",
+	"growthexperiments-addlink-skip-accept": "Preterpasi ĉiujn"
 }

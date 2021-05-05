@@ -8,6 +8,7 @@
 			"Jeeputer",
 			"Ladsgroup",
 			"Mardetanha",
+			"Mohammad ebz",
 			"Reza1615"
 		]
 	},
@@ -336,6 +337,7 @@
 	"growthexperiments-addlink-serviceerror": "سرویس توصیه پیوند برای «$1» با خطا پاسخ داد: $2",
 	"growthexperiments-addlink-notinstore": "توصیهٔ پیوند برای «$1» یافت نشد",
 	"growthexperiments-addlink-duplicatesubmission": "تلاش برای ثبت بازبینی توصیهٔ پیوند برای نسخهٔ «$1» که هم‌اکنون بازبینی شده‌است.",
+	"growthexperiments-addlink-context-text-label": "متن",
 	"growthexperiments-addlink-context-intro": "ایجاد پیوند به _____؟",
 	"growthexperiments-addlink-context-button-accept": "بله",
 	"growthexperiments-addlink-context-button-reject": "خیر",
@@ -347,5 +349,9 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "برای تغییر هدف پیوند، مداد ویرایش $1 در کنار پیوند را لمس کنید",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "سایر / ترجیح می‌دهم نگویم",
 	"growthexperiments-addlink-rejectiondialog-action-done": "انجام شد",
-	"grant-managementorship": "مدیریت مربی‌گری"
+	"growthexperiments-addlink-summary-column-header-suggestion": "پیشنهاد",
+	"growthexperiments-addlink-summary-submit": "ثبت",
+	"growthexperiments-addlink-skip-reject": "بازبینی مجدد",
+	"grant-managementorship": "مدیریت مربی‌گری",
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "ارسال..."
 }
