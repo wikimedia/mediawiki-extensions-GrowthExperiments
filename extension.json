@@ -251,7 +251,7 @@
 	"attributes": {
 		"EventLogging": {
 			"Schemas": {
-				"HelpPanel": "/analytics/legacy/helppanel/1.0.0",
+				"HelpPanel": "/analytics/legacy/helppanel/1.0.1",
 				"HomepageModule": "/analytics/legacy/homepagemodule/1.1.0",
 				"NewcomerTask": "/analytics/legacy/newcomertask/1.0.0",
 				"HomepageVisit": "/analytics/legacy/homepagevisit/1.1.1"
@@ -1363,8 +1363,11 @@
 			"value": false
 		},
 		"GEHelpPanelSuggestedEditsPreferredEditor": {
-			"description": "The preferred editor interface for suggested edits. Either 'visualeditor' or 'wikitext'.",
-			"value": "visualeditor"
+			"description": "The preferred editor interface for suggested edits. The key is the task type handler ID (template-based or link-recommendation). Valid values for template-based are 'visualeditor' or 'wikitext'; for link-recommendation only machineSuggestions is valid",
+			"value": {
+				"template-based": "visualeditor",
+				"link-recommendation": "machineSuggestions"
+			}
 		},
 		"GEHelpPanelAskMentor": {
 			"description": "When using the help panel's question-asking functionality, post on the mentor's talk page instead of on the help desk page.",

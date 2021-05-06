@@ -452,7 +452,7 @@
 			editorInterface: this.logger.getEditor(),
 			currentTip: this.suggestedEditSession.helpPanelCurrentTip,
 			parentWindow: this,
-			preferredEditor: configData.GEHelpPanelSuggestedEditsPreferredEditor
+			preferredEditor: configData.GEHelpPanelSuggestedEditsPreferredEditor[ this.suggestedEditSession.taskType ]
 		} );
 		guidanceTipsPromise = this.suggestededitsPanel.build();
 
