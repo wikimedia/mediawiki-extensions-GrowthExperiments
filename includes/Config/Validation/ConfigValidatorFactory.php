@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Config\Validation;
 
 use Config;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use InvalidArgumentException;
 use MediaWiki\Linker\LinkTarget;
 use Title;
@@ -15,6 +16,9 @@ class ConfigValidatorFactory {
 	/** @var TitleFactory */
 	private $titleFactory;
 
+	/** @var TaskTypeHandlerRegistry */
+	private $taskTypeHandlerRegistry;
+
 	/**
 	 * @var string[]
 	 *
@@ -25,8 +29,7 @@ class ConfigValidatorFactory {
 	 */
 	private const CONFIG_VALIDATOR_MAP = [
 		'GEWikiConfigPageTitle' => GrowthConfigValidation::class,
-		// Will be replaced with an actual validator in a subsequent commit
-		'GENewcomerTasksConfigTitle' => NoValidationValidator::class,
+		'GENewcomerTasksConfigTitle' => NewcomerTasksValidator::class,
 		'GENewcomerTasksOresTopicConfigTitle' => NoValidationValidator::class,
 		'GENewcomerTasksTopicConfigTitle' => NoValidationValidator::class,
 	];
@@ -34,13 +37,21 @@ class ConfigValidatorFactory {
 	/**
 	 * @param Config $config
 	 * @param TitleFactory $titleFactory
+	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 */
 	public function __construct(
 		Config $config,
-		TitleFactory $titleFactory
+		TitleFactory $titleFactory,
+
+		// Dependencies for validators
+		TaskTypeHandlerRegistry $taskTypeHandlerRegistry
+
 	) {
 		$this->config = $config;
 		$this->titleFactory = $titleFactory;
+
+		// Dependencies for validators
+		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 	}
 
 	/**
@@ -86,6 +97,10 @@ class ConfigValidatorFactory {
 		switch ( $class ) {
 			case GrowthConfigValidation::class:
 				return new GrowthConfigValidation();
+			case NewcomerTasksValidator::class:
+				return new NewcomerTasksValidator(
+					$this->taskTypeHandlerRegistry
+				);
 			case NoValidationValidator::class:
 				return new NoValidationValidator();
 			default:

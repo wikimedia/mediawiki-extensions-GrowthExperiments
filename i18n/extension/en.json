@@ -48,5 +48,16 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "Yes",
 	"growthexperiments-edit-config-mentorship-enabled-false": "No",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Page title of list of automatically assigned mentors",
-	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Page title of list of manually assigned mentors"
+	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Page title of list of manually assigned mentors",
+	"growthexperiments-edit-config-newcomertasks": "Suggested edits",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Templates used to find articles that need copy editing",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Page when newcomers can learn more about copy editing",
+	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Templates used to find articles that need to be expanded",
+	"growthexperiments-edit-config-newcomer-tasks-expand-learnmore": "Page when newcomers can learn more about editing articles",
+	"growthexperiments-edit-config-newcomer-tasks-links-templates": "Templates used to find articles that need more links",
+	"growthexperiments-edit-config-newcomer-tasks-links-learnmore": "Page when newcomers can learn more about adding links",
+	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Templates used to find articles that need more references",
+	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Page when newcomers can learn more about adding references",
+	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Templates used to find articles that need to be updated",
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Page when newcomers can learn more about editing articles"
 }

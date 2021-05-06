@@ -1587,6 +1587,7 @@
 				"RevisionLookup",
 				"PageProps",
 				"DBLoadBalancer",
+				"GrowthExperimentsWikiPageConfigLoader",
 				"GrowthExperimentsWikiPageConfigWriterFactory",
 				"GrowthExperimentsMultiConfig"
 			]

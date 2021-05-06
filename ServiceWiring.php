@@ -61,9 +61,11 @@ return [
 	'GrowthExperimentsConfigValidatorFactory' => function (
 		MediaWikiServices $services
 	): ConfigValidatorFactory {
+		$geServices = GrowthExperimentsServices::wrap( $services );
 		return new ConfigValidatorFactory(
 			$services->getMainConfig(),
-			$services->getTitleFactory()
+			$services->getTitleFactory(),
+			$geServices->getTaskTypeHandlerRegistry()
 		);
 	},
 
