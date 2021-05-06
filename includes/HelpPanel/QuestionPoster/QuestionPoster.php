@@ -259,7 +259,7 @@ abstract class QuestionPoster {
 	private function submitStructuredDiscussions() {
 		$workflowLoaderFactory = Container::get( 'factory.loader.workflow' );
 		$loader = $workflowLoaderFactory->createWorkflowLoader( $this->targetTitle );
-		$blocks = $loader->handleSubmit(
+		$blocksToCommit = $loader->handleSubmit(
 			$this->getContext(),
 			'new-topic',
 			[
@@ -272,7 +272,7 @@ abstract class QuestionPoster {
 		);
 
 		$status = Status::newGood();
-		foreach ( $blocks as $block ) {
+		foreach ( $loader->getBlocks() as $block ) {
 			if ( $block->hasErrors() ) {
 				$errors = $block->getErrors();
 				foreach ( $errors as $errorKey ) {
@@ -284,7 +284,7 @@ abstract class QuestionPoster {
 			return $status;
 		}
 
-		$commitMetadata = $loader->commit( $blocks );
+		$commitMetadata = $loader->commit( $blocksToCommit );
 
 		$topicTitle = Title::newFromText( $commitMetadata['topiclist']['topic-page'] );
 		$this->setResultUrl( $topicTitle->getLinkURL() );
