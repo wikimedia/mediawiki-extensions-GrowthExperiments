@@ -108,6 +108,10 @@ class DatabaseMentorStore extends MentorStore {
 			$conds,
 			__METHOD__
 		);
+		if ( $ids === [] ) {
+			return [];
+		}
+
 		return iterator_to_array( $this->userIdentityLookup
 			->newSelectQueryBuilder()
 			->registered()
