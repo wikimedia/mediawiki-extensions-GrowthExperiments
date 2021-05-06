@@ -39,10 +39,11 @@ RecommendedLinkToolbarDialogMobile.prototype.initialize = function () {
  * @inheritdoc
  */
 RecommendedLinkToolbarDialogMobile.prototype.afterSetupProcess = function () {
+	var ceSurface = this.surface.getView();
+	// HACK: Disable virtual keyboard, text edit menu on the surface
+	ceSurface.$documentNode.attr( 'contenteditable', false );
+	ceSurface.$documentNode.addClass( 'mw-ge-user-select-none' );
 	RecommendedLinkToolbarDialogMobile.super.prototype.afterSetupProcess.call( this );
-	// Disable virtual keyboard when tapping on areas other than annotations
-	// (inputmode will need to be updated when editing link text is supported)
-	this.setSurfaceInputMode( 'none' );
 };
 
 /**
@@ -112,17 +113,13 @@ RecommendedLinkToolbarDialogMobile.prototype.setupHelpButton = function () {
 };
 
 /**
- * Set inputmode attribute on the document
- *
- * @param {string} inputMode
- * @private
+ * @inheritdoc
  */
-RecommendedLinkToolbarDialogMobile.prototype.setSurfaceInputMode = function ( inputMode ) {
-	var $documentNode = this.surface.getView().$element.find( '.ve-ce-documentNode' );
-	$documentNode.addClass( 'mw-ge-user-select-none' );
-	if ( $documentNode.get( 0 ) ) {
-		$documentNode.get( 0 ).inputMode = inputMode;
-	}
+RecommendedLinkToolbarDialogMobile.prototype.teardown = function () {
+	var ceSurface = this.surface.getView();
+	ceSurface.$documentNode.attr( 'contenteditable', true );
+	ceSurface.$documentNode.removeClass( 'mw-ge-user-select-none' );
+	return RecommendedLinkToolbarDialogMobile.super.prototype.teardown.apply( this, arguments );
 };
 
 module.exports = RecommendedLinkToolbarDialogMobile;
