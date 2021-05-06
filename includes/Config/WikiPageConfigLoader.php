@@ -6,7 +6,7 @@ use ApiRawMessage;
 use BagOStuff;
 use DBAccessObjectUtils;
 use FormatJson;
-use GrowthExperiments\Config\Validation\GrowthConfigValidation;
+use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use GrowthExperiments\Util;
 use HashBagOStuff;
 use IDBAccessObject;
@@ -36,8 +36,8 @@ use TitleFactory;
  * generalized to this class taking care about config in general.
  */
 class WikiPageConfigLoader implements IDBAccessObject {
-	/** @var GrowthConfigValidation */
-	private $configValidator;
+	/** @var ConfigValidatorFactory */
+	private $configValidatorFactory;
 
 	/** @var HttpRequestFactory */
 	private $requestFactory;
@@ -55,18 +55,18 @@ class WikiPageConfigLoader implements IDBAccessObject {
 	private $cacheTtl = 0;
 
 	/**
-	 * @param GrowthConfigValidation $configValidator
+	 * @param ConfigValidatorFactory $configValidatorFactory
 	 * @param HttpRequestFactory $requestFactory
 	 * @param RevisionLookup $revisionLookup
 	 * @param TitleFactory $titleFactory
 	 */
 	public function __construct(
-		GrowthConfigValidation $configValidator,
+		ConfigValidatorFactory $configValidatorFactory,
 		HttpRequestFactory $requestFactory,
 		RevisionLookup $revisionLookup,
 		TitleFactory $titleFactory
 	) {
-		$this->configValidator = $configValidator;
+		$this->configValidatorFactory = $configValidatorFactory;
 		$this->requestFactory = $requestFactory;
 		$this->revisionLookup = $revisionLookup;
 		$this->titleFactory = $titleFactory;
@@ -125,7 +125,11 @@ class WikiPageConfigLoader implements IDBAccessObject {
 			$cacheFlags = 0;
 			if ( $status->isOK() ) {
 				$result = $status->getValue();
-				$status->merge( $this->configValidator->validate( $result ) );
+				$status->merge(
+					$this->configValidatorFactory
+						->newConfigValidator( $configPage )
+						->validate( $result )
+				);
 			}
 			if ( !$status->isOK() ) {
 				$result = $status;

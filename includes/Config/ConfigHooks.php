@@ -5,7 +5,7 @@ namespace GrowthExperiments\Config;
 use Config;
 use Content;
 use FormatJson;
-use GrowthExperiments\Config\Validation\GrowthConfigValidation;
+use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use IContextSource;
 use MediaWiki\Hook\EditFilterMergedContentHook;
 use MediaWiki\Hook\SkinTemplateNavigationHook;
@@ -16,8 +16,8 @@ use TitleFactory;
 use User;
 
 class ConfigHooks implements EditFilterMergedContentHook, SkinTemplateNavigationHook {
-	/** @var GrowthConfigValidation */
-	private $configValidation;
+	/** @var ConfigValidatorFactory */
+	private $configValidatorFactory;
 
 	/** @var TitleFactory */
 	private $titleFactory;
@@ -26,14 +26,16 @@ class ConfigHooks implements EditFilterMergedContentHook, SkinTemplateNavigation
 	private $config;
 
 	/**
+	 * @param ConfigValidatorFactory $configValidatorFactory
 	 * @param TitleFactory $titleFactory
 	 * @param Config $config
 	 */
 	public function __construct(
+		ConfigValidatorFactory $configValidatorFactory,
 		TitleFactory $titleFactory,
 		Config $config
 	) {
-		$this->configValidation = new GrowthConfigValidation();
+		$this->configValidatorFactory = $configValidatorFactory;
 		$this->titleFactory = $titleFactory;
 		$this->config = $config;
 	}
@@ -49,41 +51,38 @@ class ConfigHooks implements EditFilterMergedContentHook, SkinTemplateNavigation
 		User $user,
 		$minoredit
 	) {
-		// Do not proceed on non-config pages
+		// Check whether this is a config page edited
 		$title = $context->getTitle();
-		$configTitle = $this->titleFactory
-			->newFromText(
-				$context->getConfig()->get( 'GEWikiConfigPageTitle' )
-			);
-		if (
-			$title === null ||
-			$configTitle === null ||
-			!$title->equals( $configTitle )
-		) {
-			return true;
-		}
+		foreach ( $this->configValidatorFactory->getSupportedConfigPages() as $configTitle ) {
+			if ( $title->equals( $configTitle ) ) {
+				// Check content model
+				if (
+					$content->getModel() !== CONTENT_MODEL_JSON ||
+					!( $content instanceof TextContent )
+				) {
+					$status->fatal(
+						'growthexperiments-config-validator-contentmodel-mismatch',
+						$content->getModel()
+					);
+					return false;
+				}
 
-		if (
-			$content->getModel() !== CONTENT_MODEL_JSON ||
-			!( $content instanceof TextContent )
-		) {
-			$status->fatal(
-				'growthexperiments-config-validator-contentmodel-mismatch',
-				$content->getModel()
-			);
-			return false;
-		}
+				// Try to parse the config, and validate if parsing succeeded
+				$loadedConfigStatus = FormatJson::parse( $content->getText(), FormatJson::FORCE_ASSOC );
+				if ( !$loadedConfigStatus->isOK() ) {
+					$status->merge( $loadedConfigStatus );
+				} else {
+					$status->merge(
+						$this->configValidatorFactory
+							->newConfigValidator( $title )
+							->validate( $loadedConfigStatus->getValue() )
+					);
+				}
 
-		$loadedConfigStatus = FormatJson::parse( $content->getText(), FormatJson::FORCE_ASSOC );
-		if ( !$loadedConfigStatus->isOK() ) {
-			$status->merge( $loadedConfigStatus );
-		} else {
-			$status->merge( $this->configValidation->validate(
-				$loadedConfigStatus->getValue()
-			) );
+				return $status->isOK();
+			}
 		}
-
-		return $status->isOK();
+		return true;
 	}
 
 	/**

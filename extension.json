@@ -157,6 +157,7 @@
 		"config": {
 			"class": "GrowthExperiments\\Config\\ConfigHooks",
 			"services": [
+				"GrowthExperimentsConfigValidatorFactory",
 				"TitleFactory",
 				"MainConfig"
 			]
