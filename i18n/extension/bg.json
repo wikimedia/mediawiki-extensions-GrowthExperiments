@@ -5,15 +5,30 @@
 			"Vodnokon4e"
 		]
 	},
-	"growthexperiments-edit-config-last-edit": "Последно обновено от [[User:$1|$1]], $2.",
-	"growthexperiments-edit-config-last-edit-unknown-user": "Последно обновено от неизвестен потребител, $1.",
+	"growthexperiments-desc": "Това разширение съдържа експерименти, направени от екипа на Растеж.",
+	"growthexperiments-config-validator-additional-fields": "Новата конфигурация има конфигурационни ключове, които не могат да бъдат персонализирани тук.",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> се очаква да бъде <code>$2</code>, но е <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Неправилен модел на съдържание: конфигурационният файл на GrowthExperiments трябва да бъде с модел на съдържание JSON, установено е $1",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Последно обновено от [[User:$1|$1]] $2.",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Последно обновено от неизвестен потребител $1.",
 	"growthexperiments-edit-config-error-invalid-title": "Конфигурационната страница не е правилно конфигурирана",
 	"growthexperiments-edit-config-edit-summary": "Резюме на редакцията",
+	"growthexperiments-edit-config-config-changed": "Конфигурацията е променена. Може да се наложи да изчакате няколко минути, докато настройките влязат в действие.",
 	"growthexperiments-edit-config-return-to-form": "Може [[Special:EditGrowthConfig|да се върнете]] към формата за редактиране.",
 	"growthexperiments-edit-config-help-panel": "Помощен панел",
+	"growthexperiments-edit-config-help-panel-reading-namespaces": "Именни пространства с активиран Помощен панел в режим на четене",
+	"growthexperiments-edit-config-help-panel-disabled-namespaces": "Именни пространства с деактивиран Помощен панел",
+	"growthexperiments-edit-config-help-panel-post-on-top": "Къде да публикувате въпроси в бюрото за помощ?",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "Началото на страницата",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "Краят на страницата",
+	"growthexperiments-edit-config-help-panel-searched-namespaces": "Търсене в следните именни пространства",
+	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Ментори",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Бюрото за помощ",
+	"growthexperiments-edit-config-homepage": "Начална страница за новодошли",
 	"growthexperiments-edit-config-mentorship": "Менторство",
+	"growthexperiments-edit-config-mentorship-enabled": "Активирани ли са функциите за менторство?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Да",
-	"growthexperiments-edit-config-mentorship-enabled-false": "Не"
+	"growthexperiments-edit-config-mentorship-enabled-false": "Не",
+	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Целева страница на списъка с автоматично отредени ментори",
+	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Целева страница на списъка с ръчно отредени ментори"
 }

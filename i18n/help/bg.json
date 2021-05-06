@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ted Masters",
 			"Vlad5250",
 			"Vodnokon4e"
 		]
@@ -10,10 +11,29 @@
 	"growthexperiments-help-panel-return-home-button-text": "Готово",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "Най-добри страници за помощ с редактирането",
 	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Повече помощни статии",
+	"growthexperiments-help-panel-question-placeholder": "Поздравете и задайте {{GENDER:$1|Вашият}} въпрос.",
+	"growthexperiments-help-panel-back-home": "Назад",
 	"growthexperiments-help-panel-close": "Готово",
+	"growthexperiments-help-panel-home-title": "Помощ за редактиране",
+	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|Вие}} публикувахте Вашата редакция. Благодарим Ви, продължавайте в същия дух!",
+	"growthexperiments-help-panel-postedit-success-message-saved": "{{GENDER:|Вие}} запазихте Вашата редакция. Благодарим Ви, продължавайте в същия дух!",
+	"growthexperiments-help-panel-postedit-success-message-notsaved": "Благодарим Ви за прегледа на предложенията. Продължавайте в същия дух!",
 	"growthexperiments-help-panel-postedit-header": "Следващи стъпки",
-	"growthexperiments-help-panel-questionreview-title": "Задаване на въпрос",
+	"growthexperiments-help-panel-postedit-subheader": "Редактиране на друго предложение:",
+	"growthexperiments-help-panel-postedit-subheader-notsaved": "Следващо предложение:",
+	"growthexperiments-help-panel-postedit-footer": "Преглед на повече предложения за редакции",
+	"growthexperiments-help-panel-postedit-footer2": "Затворете, след което редактирайте тази статия отново",
+	"growthexperiments-help-panel-postedit-footer2-notsaved": "Затваряне",
+	"growthexperiments-help-panel-questionreview-title": "Попитайте бюрото за помощ",
+	"growthexperiments-help-panel-questionreview-title-mentor": "Попитайте своя ментор",
 	"growthexperiments-help-panel-questionreview-label": "Вашият въпрос",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-example-step1": "Венера има плътна <mark class=\"positive\">атмосфера</mark>",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-links-text-publish": "[[$1|Научете повече за добавянето на препратки]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-publish": "Добавете повече източници или продължете, натискайки „$1“, за да запазите {{GENDER:|Вашата}} редакция!",
+	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-references-main-publish": "Добавете повече източници или продължете, натискайки бутона със синята стрелка, за да запазите {{GENDER:|Вашата}} редакция!",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-text-publish": "[[$1|Научете повече за източниците]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-value": "Статията става неактуална колкото повече време минава. Случват се и нови събития. {{GENDER:|Вие}} можете да обновите текста, като добавите правилните детайли, така че {{SITENAME}} винаги да съдържа най-добрата информация.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-example-value": "Сондата <mark class=\"negative\">ще</mark> кацне на Марс <mark class=\"negative\">през 2018</mark>.",
 	"growthexperiments-help-panel-questioncomplete-title": "Задаване на въпрос",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Невалидно заглавие."
 }

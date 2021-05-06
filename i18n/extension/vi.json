@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bluetpp",
 			"Tuanminh01"
 		]
 	},
-	"growthexperiments-desc": "Phần mở rộng này chứa các thử nghiệm được thực hiện bởi nhóm Tăng trưởng."
+	"growthexperiments-desc": "Phần mở rộng này chứa các thử nghiệm được thực hiện bởi nhóm Tăng trưởng.",
+	"growthexperiments-config-validator-additional-fields": "Cấu hình mới có các phím cấu hình không thể sửa đổi tại đây."
 }
