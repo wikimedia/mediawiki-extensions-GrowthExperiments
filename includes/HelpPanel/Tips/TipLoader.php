@@ -67,7 +67,7 @@ class TipLoader {
 	 * @return array
 	 */
 	private function buildExtraData( array $taskTypes ): array {
-		return array_map( function ( TaskType $taskType ) {
+		return array_map( static function ( TaskType $taskType ) {
 			return [ 'learnMoreLink' => $taskType->getLearnMoreLink() ];
 		}, $taskTypes );
 	}

@@ -102,7 +102,7 @@ class DeleteOldSurveysTest extends MediaWikiIntegrationTestCase {
 	 * @param string $output Script output (must be run with -v)
 	 */
 	private function assertDeletedUsers( array $users, string $output ) {
-		$ids = array_map( function ( User $u ) {
+		$ids = array_map( static function ( User $u ) {
 			return $u->getId();
 		}, $users );
 		preg_match_all( '/Deleting survey data for user:(\d+)/', $output, $matches );

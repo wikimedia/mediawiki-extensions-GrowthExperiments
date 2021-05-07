@@ -54,7 +54,7 @@ class CacheStorage {
 	 */
 	public function get(): array {
 		$cacheData = $this->normalizeCacheData( $this->cache->get( $this->getCacheKey() ) );
-		return array_map( function ( $item ) {
+		return array_map( static function ( $item ) {
 			return $item['type'];
 		}, $cacheData );
 	}

@@ -94,7 +94,7 @@ class SpecialHomepage extends SpecialPage {
 		if ( $this->getRequest()->wasPosted() &&
 			 $user->isRegistered() &&
 			 !$user->getBoolOption( Tutorial::TUTORIAL_PREF ) ) {
-			DeferredUpdates::addCallableUpdate( function () use ( $user ) {
+			DeferredUpdates::addCallableUpdate( static function () use ( $user ) {
 				$user = $user->getInstanceForUpdate();
 				$user->setOption( Tutorial::TUTORIAL_PREF, 1 );
 				$user->saveSettings();
@@ -185,7 +185,7 @@ class SpecialHomepage extends SpecialPage {
 				$isMobile,
 				$modules
 			);
-			DeferredUpdates::addCallableUpdate( function () use ( $logger ) {
+			DeferredUpdates::addCallableUpdate( static function () use ( $logger ) {
 				$logger->log();
 			} );
 		}

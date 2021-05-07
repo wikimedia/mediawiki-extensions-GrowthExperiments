@@ -219,7 +219,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			);
 		}
 		$autoAssignedMentors = array_values( array_diff( $autoAssignedMentors,
-			array_map( function ( UserIdentity $excludedUser ) {
+			array_map( static function ( UserIdentity $excludedUser ) {
 				return $excludedUser->getName();
 			}, $excluded )
 		) );

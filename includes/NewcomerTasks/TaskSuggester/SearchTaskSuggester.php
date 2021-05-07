@@ -98,7 +98,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	public function filter( UserIdentity $user, TaskSet $taskSet ) {
 		$taskTypes = $taskSet->getFilters()->getTaskTypeFilters();
 
-		$pageTitles = array_map( function ( Task $task ) {
+		$pageTitles = array_map( static function ( Task $task ) {
 			return $task->getTitle();
 		}, iterator_to_array( $taskSet ) );
 		$linkBatch = $this->linkBatchFactory->newLinkBatch( $pageTitles );

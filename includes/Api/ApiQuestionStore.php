@@ -27,7 +27,7 @@ class ApiQuestionStore extends ApiBase {
 		);
 		$result = [
 			'html' => $questionFormatter->format(),
-			'questions' => array_map( function ( JsonSerializable $question ) {
+			'questions' => array_map( static function ( JsonSerializable $question ) {
 				return $question->jsonSerialize();
 			}, $questions )
 		];

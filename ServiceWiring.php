@@ -54,11 +54,11 @@ use MediaWiki\MediaWikiServices;
 
 return [
 
-	'GrowthExperimentsConfig' => function ( MediaWikiServices $services ): Config {
+	'GrowthExperimentsConfig' => static function ( MediaWikiServices $services ): Config {
 		return $services->getConfigFactory()->makeConfig( 'GrowthExperiments' );
 	},
 
-	'GrowthExperimentsConfigValidatorFactory' => function (
+	'GrowthExperimentsConfigValidatorFactory' => static function (
 		MediaWikiServices $services
 	): ConfigValidatorFactory {
 		$geServices = GrowthExperimentsServices::wrap( $services );
@@ -69,7 +69,7 @@ return [
 		);
 	},
 
-	'GrowthExperimentsMultiConfig' => function ( MediaWikiServices $services ): Config {
+	'GrowthExperimentsMultiConfig' => static function ( MediaWikiServices $services ): Config {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		return new GrowthExperimentsMultiConfig(
 			$geServices->getWikiPageConfig(),
@@ -77,7 +77,7 @@ return [
 		);
 	},
 
-	'GrowthExperimentsWikiPageConfig' => function ( MediaWikiServices $services ): Config {
+	'GrowthExperimentsWikiPageConfig' => static function ( MediaWikiServices $services ): Config {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		return new WikiPageConfig(
 			LoggerFactory::getInstance( 'GrowthExperiments' ),
@@ -87,14 +87,14 @@ return [
 		);
 	},
 
-	'GrowthExperimentsEditInfoService' => function ( MediaWikiServices $services ): EditInfoService {
+	'GrowthExperimentsEditInfoService' => static function ( MediaWikiServices $services ): EditInfoService {
 		$project = $services->get( '_GrowthExperimentsAQSConfig' )->project;
 		$editInfoService = new AqsEditInfoService( $services->getHttpRequestFactory(), $project );
 		$editInfoService->setCache( ObjectCache::getLocalClusterInstance() );
 		return $editInfoService;
 	},
 
-	'GrowthExperimentsExperimentUserManager' => function (
+	'GrowthExperimentsExperimentUserManager' => static function (
 		MediaWikiServices $services
 	) : ExperimentUserManager {
 		return new ExperimentUserManager(
@@ -107,18 +107,18 @@ return [
 		);
 	},
 
-	'GrowthExperimentsHomepageModuleRegistry' => function (
+	'GrowthExperimentsHomepageModuleRegistry' => static function (
 		MediaWikiServices $services
 	) : HomepageModuleRegistry {
 		return new HomepageModuleRegistry( $services );
 	},
 
-	'GrowthExperimentsLinkRecommendationHelper' => function (
+	'GrowthExperimentsLinkRecommendationHelper' => static function (
 		MediaWikiServices $services
 	) : LinkRecommendationHelper {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$config = $growthServices->getGrowthConfig();
-		$cirrusSearchFactory = function () {
+		$cirrusSearchFactory = static function () {
 			return new CirrusSearch();
 		};
 		return new LinkRecommendationHelper(
@@ -135,7 +135,7 @@ return [
 		);
 	},
 
-	'GrowthExperimentsLinkRecommendationProviderUncached' => function (
+	'GrowthExperimentsLinkRecommendationProviderUncached' => static function (
 		MediaWikiServices $services
 	): LinkRecommendationProvider {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
@@ -158,7 +158,7 @@ return [
 		}
 	},
 
-	'GrowthExperimentsLinkRecommendationProvider' => function (
+	'GrowthExperimentsLinkRecommendationProvider' => static function (
 		MediaWikiServices $services
 	): LinkRecommendationProvider {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
@@ -175,7 +175,7 @@ return [
 		}
 	},
 
-	'GrowthExperimentsLinkRecommendationStore' => function (
+	'GrowthExperimentsLinkRecommendationStore' => static function (
 		MediaWikiServices $services
 	): LinkRecommendationStore {
 		$loadBalancer = GrowthExperimentsServices::wrap( $services )->getLoadBalancer();
@@ -187,7 +187,7 @@ return [
 		);
 	},
 
-	'GrowthExperimentsLinkSubmissionRecorder' => function (
+	'GrowthExperimentsLinkSubmissionRecorder' => static function (
 		MediaWikiServices $services
 	) : LinkSubmissionRecorder {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
@@ -198,7 +198,7 @@ return [
 		);
 	},
 
-	'GrowthExperimentsMentorManager' => function (
+	'GrowthExperimentsMentorManager' => static function (
 		MediaWikiServices $services
 	) : MentorManager {
 		$wikiConfig = GrowthExperimentsServices::wrap( $services )->getGrowthWikiConfig();
@@ -220,7 +220,7 @@ return [
 		return $manager;
 	},
 
-	'GrowthExperimentsMentorStore' => function ( MediaWikiServices $services ): MentorStore {
+	'GrowthExperimentsMentorStore' => static function ( MediaWikiServices $services ): MentorStore {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		return new MultiWriteMentorStore(
 			(int)$geServices->getGrowthConfig()->get( 'GEMentorshipMigrationStage' ),
@@ -232,7 +232,7 @@ return [
 		);
 	},
 
-	'GrowthExperimentsMentorStoreDatabase' => function ( MediaWikiServices $services ): DatabaseMentorStore {
+	'GrowthExperimentsMentorStoreDatabase' => static function ( MediaWikiServices $services ): DatabaseMentorStore {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		$lb = $geServices->getLoadBalancer();
 
@@ -252,7 +252,7 @@ return [
 		return $databaseMentorStore;
 	},
 
-	'GrowthExperimentsMentorStorePreference' => function ( MediaWikiServices $services ): PreferenceMentorStore {
+	'GrowthExperimentsMentorStorePreference' => static function ( MediaWikiServices $services ): PreferenceMentorStore {
 		return new PreferenceMentorStore(
 			$services->getUserFactory(),
 			$services->getUserOptionsManager(),
@@ -262,7 +262,7 @@ return [
 		);
 	},
 
-	'GrowthExperimentsNewcomerTasksConfigurationLoader' => function (
+	'GrowthExperimentsNewcomerTasksConfigurationLoader' => static function (
 		MediaWikiServices $services
 	): ConfigurationLoader {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
@@ -299,7 +299,7 @@ return [
 		return $configurationLoader;
 	},
 
-	'GrowthExperimentsNewcomerTasksConfigurationValidator' => function (
+	'GrowthExperimentsNewcomerTasksConfigurationValidator' => static function (
 		MediaWikiServices $services
 	): ConfigurationValidator {
 		return new ConfigurationValidator(
@@ -309,7 +309,7 @@ return [
 		);
 	},
 
-	'GrowthExperimentsNewcomerTaskTrackerFactory' => function (
+	'GrowthExperimentsNewcomerTaskTrackerFactory' => static function (
 		MediaWikiServices $services
 	): TrackerFactory {
 		return new TrackerFactory(
@@ -320,7 +320,7 @@ return [
 		);
 	},
 
-	'GrowthExperimentsNewcomerTasksUserOptionsLookup' => function (
+	'GrowthExperimentsNewcomerTasksUserOptionsLookup' => static function (
 		MediaWikiServices $services
 	): NewcomerTasksUserOptionsLookup {
 		return new NewcomerTasksUserOptionsLookup(
@@ -330,7 +330,7 @@ return [
 		);
 	},
 
-	'GrowthExperimentsProtectionFilter' => function (
+	'GrowthExperimentsProtectionFilter' => static function (
 		MediaWikiServices $services
 	): ProtectionFilter {
 		return new ProtectionFilter(
@@ -339,7 +339,7 @@ return [
 		);
 	},
 
-	'GrowthExperimentsQuestionPosterFactory' => function (
+	'GrowthExperimentsQuestionPosterFactory' => static function (
 		MediaWikiServices $services
 	): QuestionPosterFactory {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
@@ -351,7 +351,7 @@ return [
 		);
 	},
 
-	'GrowthExperimentsSearchIndexUpdater' => function (
+	'GrowthExperimentsSearchIndexUpdater' => static function (
 		MediaWikiServices $services
 	): SearchIndexUpdater {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
@@ -365,13 +365,13 @@ return [
 	},
 
 	// deprecated, use GrowthExperimentsTaskSuggesterFactory directly
-	'GrowthExperimentsTaskSuggester' => function ( MediaWikiServices $services ): TaskSuggester {
+	'GrowthExperimentsTaskSuggester' => static function ( MediaWikiServices $services ): TaskSuggester {
 		wfDeprecated( 'GrowthExperimentsTaskSuggester service', '1.35', 'GrowthExperiments' );
 		$taskSuggesterFactory = GrowthExperimentsServices::wrap( $services )->getTaskSuggesterFactory();
 		return $taskSuggesterFactory->create();
 	},
 
-	'GrowthExperimentsTaskSuggesterFactory' => function (
+	'GrowthExperimentsTaskSuggesterFactory' => static function (
 		MediaWikiServices $services
 	): TaskSuggesterFactory {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
@@ -416,7 +416,7 @@ return [
 		return $taskSuggesterFactory;
 	},
 
-	'GrowthExperimentsSuggestionsInfo' => function (
+	'GrowthExperimentsSuggestionsInfo' => static function (
 		MediaWikiServices $services
 	): SuggestionsInfo {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
@@ -427,7 +427,7 @@ return [
 		);
 	},
 
-	'GrowthExperimentsTaskTypeHandlerRegistry' => function (
+	'GrowthExperimentsTaskTypeHandlerRegistry' => static function (
 		MediaWikiServices $services
 	): TaskTypeHandlerRegistry {
 		$extensionConfig = GrowthExperimentsServices::wrap( $services )->getConfig();
@@ -437,7 +437,7 @@ return [
 		);
 	},
 
-	'GrowthExperimentsTipsAssembler' => function (
+	'GrowthExperimentsTipsAssembler' => static function (
 		MediaWikiServices $services
 	): TipsAssembler {
 		$growthExperimentsServices = GrowthExperimentsServices::wrap( $services );
@@ -447,7 +447,7 @@ return [
 		);
 	},
 
-	'GrowthExperimentsTipNodeRenderer' => function (
+	'GrowthExperimentsTipNodeRenderer' => static function (
 		MediaWikiServices $services
 	): TipNodeRenderer {
 		return new TipNodeRenderer(
@@ -455,7 +455,7 @@ return [
 		);
 	},
 
-	'GrowthExperimentsWikiPageConfigLoader' => function (
+	'GrowthExperimentsWikiPageConfigLoader' => static function (
 		MediaWikiServices $services
 	): WikiPageConfigLoader {
 		$wikiPageConfigLoader = new WikiPageConfigLoader(
@@ -475,7 +475,7 @@ return [
 		return $wikiPageConfigLoader;
 	},
 
-	'GrowthExperimentsWikiPageConfigWriterFactory' => function (
+	'GrowthExperimentsWikiPageConfigWriterFactory' => static function (
 		MediaWikiServices $services
 	) {
 		$growthExperimentsServices = GrowthExperimentsServices::wrap( $services );
@@ -488,7 +488,7 @@ return [
 		);
 	},
 
-	'_GrowthExperimentsAQSConfig' => function ( MediaWikiServices $services ): stdClass {
+	'_GrowthExperimentsAQSConfig' => static function ( MediaWikiServices $services ): stdClass {
 		// This is not a service and doesn't quite belong here, but we need to share it with
 		// Javascript code as fetching this information in bulk is not feasible, and this seems
 		// the least awkward option (as opposed to creating a dedicated service just for fetching

@@ -175,7 +175,7 @@ class StaticTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 * @param TaskSet $taskSet
 	 */
 	protected function assertTaskSetEqualsTitles( array $expectedTitles, TaskSet $taskSet ) {
-		$actualTitles = array_map( function ( Task $task ) {
+		$actualTitles = array_map( static function ( Task $task ) {
 			return $task->getTitle()->getText();
 		}, iterator_to_array( $taskSet ) );
 		$this->assertSame( $expectedTitles, $actualTitles );

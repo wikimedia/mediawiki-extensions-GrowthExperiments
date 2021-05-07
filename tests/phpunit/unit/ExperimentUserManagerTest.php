@@ -46,7 +46,7 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 			->getMock();
 		$userOptionsLookupMock->method( 'getOption' )
 			->with( $this->anything(), VariantHooks::USER_PREFERENCE )
-			->willReturnCallback( function ( UserIdentity $user, string $optionName ) {
+			->willReturnCallback( static function ( UserIdentity $user, string $optionName ) {
 				return [
 					1 => VariantHooks::VARIANT_CONTROL,
 					2 => VariantHooks::VARIANT_LINK_RECOMMENDATION_ENABLED,

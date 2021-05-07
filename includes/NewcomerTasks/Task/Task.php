@@ -90,7 +90,7 @@ class Task implements JsonUnserializable {
 		return [
 			'taskType' => $this->getTaskType()->jsonSerialize(),
 			'title' => [ $this->getTitle()->getNamespace(), $this->getTitle()->getDBkey() ],
-			'topics' => array_map( function ( Topic $topic ) {
+			'topics' => array_map( static function ( Topic $topic ) {
 				return $topic->jsonSerialize();
 			}, $this->getTopics() ),
 			'topicScores' => $this->getTopicScores(),
@@ -101,7 +101,7 @@ class Task implements JsonUnserializable {
 	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
 		$taskType = $unserializer->unserialize( $json['taskType'], TaskType::class );
 		$title = new TitleValue( $json['title'][0], $json['title'][1] );
-		$topics = array_map( function ( array $topic ) use ( $unserializer ) {
+		$topics = array_map( static function ( array $topic ) use ( $unserializer ) {
 			return $unserializer->unserialize( $topic, Topic::class );
 		}, $json['topics'] );
 

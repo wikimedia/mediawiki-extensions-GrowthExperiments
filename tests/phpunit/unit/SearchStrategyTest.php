@@ -132,7 +132,7 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 	 * @param array $expectedQueryStrings
 	 */
 	private function assertQueryStrings( $queries, $expectedQueryStrings ) {
-		$queryStrings = array_map( function ( SearchQuery $query ) {
+		$queryStrings = array_map( static function ( SearchQuery $query ) {
 			return $query->getQueryString();
 		}, array_values( $queries ) );
 		foreach ( $expectedQueryStrings as $expectedQueryString ) {

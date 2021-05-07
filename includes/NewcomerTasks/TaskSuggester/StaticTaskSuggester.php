@@ -65,7 +65,7 @@ class StaticTaskSuggester implements TaskSuggester {
 	 * @return string[]
 	 */
 	private function getTopicIds( Task $task ) {
-		return array_map( function ( Topic $topic ) {
+		return array_map( static function ( Topic $topic ) {
 			return $topic->getId();
 		}, $task->getTopics() );
 	}

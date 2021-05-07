@@ -22,7 +22,7 @@ class TaskSetTest extends MediaWikiUnitTestCase {
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Bar' ) ),
 			new Task( $taskType, new TitleValue( NS_MAIN, 'Baz' ) ),
 		], 3, 1, new TaskSetFilters() );
-		$pages = array_map( function ( Task $task ) {
+		$pages = array_map( static function ( Task $task ) {
 			return $task->getTitle()->getText();
 		}, iterator_to_array( $taskSet ) );
 		$this->assertSame( [ 'Foo', 'Bar', 'Baz' ], $pages );

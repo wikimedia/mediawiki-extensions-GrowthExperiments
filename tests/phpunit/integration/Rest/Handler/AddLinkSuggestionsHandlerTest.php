@@ -107,7 +107,7 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 	private function setResponseFactory( AddLinkSuggestionsHandler $handler ) {
 		$mockResponseFactory = $this->createMock( ResponseFactory::class );
 		$mockResponseFactory->method( 'createHttpError' )
-			->willReturnCallback( function ( $code, $error ) {
+			->willReturnCallback( static function ( $code, $error ) {
 				return [ 'response' => $error ];
 			} );
 		TestingAccessWrapper::newFromObject( $handler )->responseFactory = $mockResponseFactory;

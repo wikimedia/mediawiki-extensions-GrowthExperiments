@@ -144,7 +144,7 @@ class SearchStrategy {
 	 */
 	protected function getOresBasedTopicTerm( array $topics ) {
 		return 'articletopic:' . implode( '|', array_reduce( $topics,
-			function ( array $carry, OresBasedTopic $topic ) {
+			static function ( array $carry, OresBasedTopic $topic ) {
 				return array_merge( $carry, $topic->getOresTopics() );
 			}, [] ) );
 	}
@@ -157,7 +157,7 @@ class SearchStrategy {
 	 */
 	protected function getMorelikeBasedTopicTerm( array $topics ) {
 		return 'morelikethis:' . $this->escapeSearchTitleList(
-			array_reduce( $topics, function ( array $carry, MorelikeBasedTopic $topic ) {
+			array_reduce( $topics, static function ( array $carry, MorelikeBasedTopic $topic ) {
 				return array_merge( $carry, $topic->getReferencePages() );
 			}, [] ) );
 	}
@@ -169,7 +169,7 @@ class SearchStrategy {
 	 * @return string
 	 */
 	protected function escapeSearchTitleList( array $titles ) {
-		return '"' . implode( '|', array_map( function ( LinkTarget $title ) {
+		return '"' . implode( '|', array_map( static function ( LinkTarget $title ) {
 			return str_replace( [ '"', '?' ], [ '\"', '\?' ], $title->getDBkey() );
 		}, $titles ) ) . '"';
 	}

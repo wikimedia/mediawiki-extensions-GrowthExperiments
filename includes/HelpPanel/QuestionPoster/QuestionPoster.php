@@ -295,7 +295,7 @@ abstract class QuestionPoster {
 
 	private function getNumberedSectionHeaderIfDuplicatesExist( $sectionHeader ) {
 		$sectionHeaders = array_map(
-			function ( QuestionRecord $questionRecord ) {
+			static function ( QuestionRecord $questionRecord ) {
 				return $questionRecord->getSectionHeader();
 			},
 			$this->existingQuestionsByUser

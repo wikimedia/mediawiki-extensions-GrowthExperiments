@@ -92,9 +92,9 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	}
 
 	public function provideSuggest() {
-		$makeTask = function ( TaskType $taskType, string $titleText, array $topicScores = [] ) {
+		$makeTask = static function ( TaskType $taskType, string $titleText, array $topicScores = [] ) {
 			$task = new Task( $taskType, new TitleValue( NS_MAIN, $titleText ) );
-			$task->setTopics( array_map( function ( string $topicId ) {
+			$task->setTopics( array_map( static function ( string $topicId ) {
 				return new Topic( $topicId );
 			}, array_keys( $topicScores ) ), $topicScores );
 			return $task;
@@ -640,8 +640,8 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$taskTypeHandler = $this->createNoOpAbstractMock( TaskTypeHandler::class, [ 'getSearchTerm' ] );
 		$taskTypeHandlerRegistry->method( 'getByTaskType' )->willReturn( $taskTypeHandler );
 		$taskTypeHandler->method( 'getSearchTerm' )
-			->willReturnCallback( function ( TemplateBasedTaskType $taskType ) {
-				$templates = implode( '|', array_map( function ( LinkTarget $linkTarget ) {
+			->willReturnCallback( static function ( TemplateBasedTaskType $taskType ) {
+				$templates = implode( '|', array_map( static function ( LinkTarget $linkTarget ) {
 					return $linkTarget->getDBkey();
 				}, $taskType->getTemplates() ) );
 				return "hastemplate:\"$templates\"";
@@ -663,7 +663,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 		$requestFactory->method( 'getUserAgent' )->willReturn( 'Foo' );
 
 		$numRequests = count( $requests );
-		$numErrors = count( array_filter( $requests, function ( $request ) {
+		$numErrors = count( array_filter( $requests, static function ( $request ) {
 			return $request['response'] instanceof StatusValue;
 		} ) );
 		$expectation = $numErrors ? $this->exactlyBetween( 1, $numRequests - $numErrors + 1 )
@@ -815,7 +815,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	}
 
 	private function taskSetToArray( TaskSet $taskSet ) {
-		return array_map( function ( Task $task ) {
+		return array_map( static function ( Task $task ) {
 			$taskData = [
 				'taskType' => $task->getTaskType()->getId(),
 				'titleNs' => $task->getTitle()->getNamespace(),

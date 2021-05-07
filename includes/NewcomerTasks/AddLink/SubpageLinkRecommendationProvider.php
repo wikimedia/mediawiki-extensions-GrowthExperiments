@@ -98,7 +98,7 @@ class SubpageLinkRecommendationProvider implements LinkRecommendationProvider {
 	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/MediaWikiServices
 	 */
 	public static function onMediaWikiServices( MediaWikiServices $services ) {
-		$services->addServiceManipulator( 'GrowthExperimentsLinkRecommendationProvider', function (
+		$services->addServiceManipulator( 'GrowthExperimentsLinkRecommendationProvider', static function (
 			LinkRecommendationProvider $linkRecommendationProvider, MediaWikiServices $services
 		) {
 			return new self( $services->getWikiPageFactory(), $linkRecommendationProvider );

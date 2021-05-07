@@ -92,7 +92,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			[ 'isUserInVariant' ] );
 		$experimentUserManager->method( 'isUserInVariant' )
 			->with( $this->anything(), VariantHooks::VARIANT_LINK_RECOMMENDATION_ENABLED )
-			->willReturnCallback( function ( UserIdentity $user, string $variant ) {
+			->willReturnCallback( static function ( UserIdentity $user, string $variant ) {
 				return [
 					'User1' => false,
 					'User2' => false,

@@ -65,7 +65,7 @@ class MorelikeBasedTopic extends Topic {
 		return [
 			'id' => $this->getId(),
 			'name' => $this->name,
-			'referencePages' => array_map( function ( LinkTarget $page ) {
+			'referencePages' => array_map( static function ( LinkTarget $page ) {
 				return [ $page->getNamespace(), $page->getDBkey() ];
 			}, $this->getReferencePages() ),
 		];
@@ -73,7 +73,7 @@ class MorelikeBasedTopic extends Topic {
 
 	/** @inheritDoc */
 	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
-		$referencePages = array_map( function ( array $page ) {
+		$referencePages = array_map( static function ( array $page ) {
 			return new TitleValue( $page[0], $page[1] );
 		}, $json['referencePages'] );
 		$topic = new MorelikeBasedTopic( $json['id'], $referencePages );

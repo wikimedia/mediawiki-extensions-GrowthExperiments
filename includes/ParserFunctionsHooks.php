@@ -13,7 +13,7 @@ class ParserFunctionsHooks implements \MediaWiki\Hook\ParserFirstCallInitHook {
 	 * @param \Parser $parser
 	 */
 	public function onParserFirstCallInit( $parser ) {
-		$parser->setFunctionHook( 'mentor', function ( Parser $parser, $username ) {
+		$parser->setFunctionHook( 'mentor', static function ( Parser $parser, $username ) {
 			// Do not use dependency injection here. MentorManager's service wiring
 			// tries to read the context language, which fails when sessions are disabled,
 			// such as in ResourceLoader callbacks. Having this hook depending on MentorManager

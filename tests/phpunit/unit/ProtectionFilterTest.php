@@ -42,7 +42,7 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 		$taskSet->setDebugData( [ 'x' ] );
 
 		$filteredTaskSet = $filter->filter( $taskSet );
-		$this->assertArrayEquals( [ 'Page1', 'Page2', 'Page3', 'Page5' ], array_map( function ( Task $task ) {
+		$this->assertArrayEquals( [ 'Page1', 'Page2', 'Page3', 'Page5' ], array_map( static function ( Task $task ) {
 			return $task->getTitle()->getDBkey();
 		}, iterator_to_array( $filteredTaskSet ) ) );
 		$this->assertSame( 10, $filteredTaskSet->getTotalCount() );
@@ -50,15 +50,15 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 		$this->assertSame( [ 'x' ], $filteredTaskSet->getDebugData() );
 
 		$filteredTaskSet = $filter->filter( $taskSet, 0 );
-		$this->assertArrayEquals( [], array_map( function ( Task $task ) {
+		$this->assertArrayEquals( [], array_map( static function ( Task $task ) {
 			return $task->getTitle()->getDBkey();
 		}, iterator_to_array( $filteredTaskSet ) ) );
 		$filteredTaskSet = $filter->filter( $taskSet, 2 );
-		$this->assertArrayEquals( [ 'Page1', 'Page2' ], array_map( function ( Task $task ) {
+		$this->assertArrayEquals( [ 'Page1', 'Page2' ], array_map( static function ( Task $task ) {
 			return $task->getTitle()->getDBkey();
 		}, iterator_to_array( $filteredTaskSet ) ) );
 		$filteredTaskSet = $filter->filter( $taskSet, 6 );
-		$this->assertArrayEquals( [ 'Page1', 'Page2', 'Page3', 'Page5' ], array_map( function ( Task $task ) {
+		$this->assertArrayEquals( [ 'Page1', 'Page2', 'Page3', 'Page5' ], array_map( static function ( Task $task ) {
 			return $task->getTitle()->getDBkey();
 		}, iterator_to_array( $filteredTaskSet ) ) );
 	}

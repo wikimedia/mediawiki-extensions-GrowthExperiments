@@ -30,9 +30,9 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 		$permissionManager = $this->createMock( PermissionManager::class );
 		$permissionManager->method( 'addTemporaryUserRights' )
 			->willReturnCallback(
-				function ( $user, $rights ) {
+				static function ( $user, $rights ) {
 					return new ScopedCallback(
-						function () {
+						static function () {
 							// Do nothing
 						}
 					);

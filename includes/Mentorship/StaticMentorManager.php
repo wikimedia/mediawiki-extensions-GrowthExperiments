@@ -42,7 +42,7 @@ class StaticMentorManager extends MentorManager {
 
 	/** @inheritDoc */
 	public function getAutoAssignedMentors(): array {
-		return array_unique( array_values( array_map( function ( Mentor $mentor ) {
+		return array_unique( array_values( array_map( static function ( Mentor $mentor ) {
 			return $mentor->getMentorUser()->getName();
 		}, $this->mentors ) ) );
 	}

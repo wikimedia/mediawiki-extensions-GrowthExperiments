@@ -570,7 +570,7 @@ class Impact extends BaseModule {
 				$this->addPageViews( $this->contribs );
 
 				// Sort by pageviews DESC
-				usort( $this->contribs, function ( $a, $b ) {
+				usort( $this->contribs, static function ( $a, $b ) {
 					return ( $b['views'] ?? -1 ) <=> ( $a['views'] ?? -1 );
 				} );
 				// Generate the edits table for later use.
@@ -586,7 +586,7 @@ class Impact extends BaseModule {
 		}
 		$views = array_reduce(
 			$this->getArticleContributions(),
-			function ( $subTotal, $contrib ) {
+			static function ( $subTotal, $contrib ) {
 				return $subTotal + ( $contrib['views'] ?? 0 );
 			},
 			0
@@ -685,7 +685,7 @@ class Impact extends BaseModule {
 	 * @param array[] &$contribs Recent contributions
 	 */
 	private function addPageViews( &$contribs ) {
-		$titles = array_map( function ( $contrib ) {
+		$titles = array_map( static function ( $contrib ) {
 			return $contrib[ 'title' ];
 		}, $contribs );
 		$days = min( 60, $this->daysSince( end( $contribs )[ 'ts' ] ) );
@@ -699,7 +699,7 @@ class Impact extends BaseModule {
 					$editDate->setTime( 0, 0 );
 					$viewsByDaySinceEdit = array_filter(
 						$viewsByDay,
-						function ( $views, $date ) use ( $editDate ) {
+						static function ( $views, $date ) use ( $editDate ) {
 							return new DateTime( $date ) >= $editDate;
 						},
 						ARRAY_FILTER_USE_BOTH
@@ -707,7 +707,7 @@ class Impact extends BaseModule {
 					if ( $viewsByDaySinceEdit ) {
 						$contrib['views'] = array_reduce(
 							$viewsByDaySinceEdit,
-							function ( $total, $views ) {
+							static function ( $total, $views ) {
 								return $total + ( is_numeric( $views ) ? $views : 0 );
 							},
 							0

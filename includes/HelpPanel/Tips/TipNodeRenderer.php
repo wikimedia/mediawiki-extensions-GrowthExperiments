@@ -112,7 +112,7 @@ class TipNodeRenderer {
 	 */
 	private function getMessageKeyWithVariantFallback( TipNode $node ): string {
 		$messageKey = $node->getMessageKey();
-		$messageKeyVariant = current( array_filter( array_map( function ( $nodeConfig ) {
+		$messageKeyVariant = current( array_filter( array_map( static function ( $nodeConfig ) {
 			// This could be more flexible, but as we don't have a use
 			// case yet, leaving as is for now.
 			if ( $nodeConfig['type'] === TipTree::TIP_DATA_TYPE_TITLE &&
