@@ -61,8 +61,8 @@ class MigrateMentorMenteeRelationship extends LoggedUpdateMaintenance {
 		$dryRun = $this->hasOption( 'dry-run' );
 		$batchSize = $this->getBatchSize();
 
-		$dbw = $this->getDB( DB_MASTER );
-		$growthDbw = $this->growthLoadBalancer->getConnection( DB_MASTER );
+		$dbw = $this->getDB( DB_PRIMARY );
+		$growthDbw = $this->growthLoadBalancer->getConnection( DB_PRIMARY );
 
 		$allRowsCount = (int)$dbw->selectField(
 			'user',

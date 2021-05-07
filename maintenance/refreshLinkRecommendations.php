@@ -452,7 +452,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		// We could check here for more race conditions, ie. whether the revision in the
 		// recommendation matches the live revision. But there are plenty of other ways for race
 		// conditions to happen, so we'll have to deal with them on the client side anyway. No
-		// point in getting a master connection just for that.
+		// point in getting a primary database connection just for that.
 
 		$goodLinks = array_filter( $recommendation->getLinks(), function ( LinkRecommendationLink $link ) {
 			return $link->getScore() >= $this->recommendationTaskType->getMinimumLinkScore();

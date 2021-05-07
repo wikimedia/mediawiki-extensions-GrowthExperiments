@@ -118,7 +118,7 @@ class FixLinkRecommendationData extends Maintenance {
 			if ( $pageIdsToFix ) {
 				$this->linkRecommendationStore->deleteByPageIds( $pageIdsToFix );
 			}
-			$this->commitTransaction( $this->linkRecommendationStore->getDB( DB_MASTER ), __METHOD__ );
+			$this->commitTransaction( $this->linkRecommendationStore->getDB( DB_PRIMARY ), __METHOD__ );
 			$from = end( $pageIds );
 		}
 	}

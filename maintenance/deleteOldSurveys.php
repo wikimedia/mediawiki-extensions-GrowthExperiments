@@ -51,7 +51,7 @@ class DeleteOldSurveys extends Maintenance {
 			( $dryRun ? ' (dry run)' : '' ) . "\n" );
 
 		$dbr = wfGetDB( DB_REPLICA );
-		$dbw = wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_PRIMARY );
 		$fromUserId = 0;
 		$break = false;
 		do {

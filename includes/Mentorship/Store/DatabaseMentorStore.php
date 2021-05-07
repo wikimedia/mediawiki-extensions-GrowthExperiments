@@ -54,7 +54,7 @@ class DatabaseMentorStore extends MentorStore {
 		$flags
 	): ?UserIdentity {
 		list( $index, $options ) = DBAccessObjectUtils::getDBOptions( $flags );
-		$db = ( $index === DB_MASTER ) ? $this->dbw : $this->dbr;
+		$db = ( $index === DB_PRIMARY ) ? $this->dbw : $this->dbr;
 		$id = $db->selectField(
 			'growthexperiments_mentor_mentee',
 			'gemm_mentor_id',
@@ -92,7 +92,7 @@ class DatabaseMentorStore extends MentorStore {
 		int $flags = 0
 	): array {
 		list( $index, $options ) = DBAccessObjectUtils::getDBOptions( $flags );
-		$db = ( $index === DB_MASTER ) ? $this->dbw : $this->dbr;
+		$db = ( $index === DB_PRIMARY ) ? $this->dbw : $this->dbr;
 
 		$conds = [
 			'gemm_mentor_id' => $mentor->getId()

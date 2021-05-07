@@ -181,7 +181,7 @@ return [
 		$loadBalancer = GrowthExperimentsServices::wrap( $services )->getLoadBalancer();
 		return new LinkRecommendationStore(
 			$loadBalancer->getLazyConnectionRef( DB_REPLICA ),
-			$loadBalancer->getLazyConnectionRef( DB_MASTER ),
+			$loadBalancer->getLazyConnectionRef( DB_PRIMARY ),
 			$services->getTitleFactory(),
 			$services->getLinkBatchFactory()
 		);
@@ -240,7 +240,7 @@ return [
 			$services->getUserFactory(),
 			$services->getUserIdentityLookup(),
 			$lb->getLazyConnectionRef( DB_REPLICA ),
-			$lb->getLazyConnectionRef( DB_MASTER ),
+			$lb->getLazyConnectionRef( DB_PRIMARY ),
 			defined( 'MEDIAWIKI_JOB_RUNNER' ) ||
 				$geServices->getConfig()->get( 'CommandLineMode' ) ||
 				RequestContext::getMain()->getRequest()->wasPosted()
