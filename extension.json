@@ -866,7 +866,9 @@
 		"ext.growthExperiments.AddLink.onboarding": {
 			"packageFiles": [
 				"homepage/addlink/AddLinkOnboarding.js",
-				"homepage/addlink/AddLinkOnboardingDialog.js"
+				"homepage/addlink/AddLinkOnboardingDialog.js",
+				"homepage/addlink/LinkSuggestionInteractionLogger.js",
+				"utils/ext.growthExperiments.Utils.js"
 			],
 			"styles": [
 				"homepage/addlink/AddLinkOnboardingDialog.less"

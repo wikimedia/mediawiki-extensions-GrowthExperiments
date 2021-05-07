@@ -8,6 +8,7 @@ var AddLinkOnboardingContent = require( 'ext.growthExperiments.AddLink.onboardin
  *
  * @param {Object} [dialogConfig]
  * @param {boolean} [dialogConfig.hasSlideTransition] Use slide transition between panels
+ * @param {LinkSuggestionInteractionLogger} [dialogConfig.logger] Instrumentation logger for the dialog
  * @param {string} [dialogConfig.progressMessageKey] Key name for the progress indicator text
  * @param {string[]} [dialogConfig.classes] Classname(s) of the dialog
  *
@@ -18,6 +19,7 @@ var AddLinkOnboardingContent = require( 'ext.growthExperiments.AddLink.onboardin
 function AddLinkOnboardingDialog( dialogConfig, onboardingConfig ) {
 	dialogConfig = dialogConfig || {};
 	dialogConfig.progressMessageKey = dialogConfig.progressMessageKey || 'growthexperiments-addlink-onboarding-dialog-progress';
+	this.logger = dialogConfig.logger;
 	if ( !Array.isArray( dialogConfig.classes ) ) {
 		dialogConfig.classes = [];
 	}
@@ -47,19 +49,18 @@ AddLinkOnboardingDialog.static.actions = [
 
 /** @inheritdoc */
 AddLinkOnboardingDialog.prototype.getFooterElement = function () {
-	var checkBoxInput = new OO.ui.CheckboxInputWidget( {
-			selected: false,
-			value: 'dismissAddLinkOnboarding'
-		} ),
-		prefName = this.prefName;
+	this.checkBoxInput = new OO.ui.CheckboxInputWidget( {
+		selected: false,
+		value: 'dismissAddLinkOnboarding'
+	} );
 
-	if ( prefName ) {
-		checkBoxInput.on( 'change', function ( isSelected ) {
-			new mw.Api().saveOption( prefName, isSelected ? '1' : '0' );
-		} );
+	if ( this.prefName ) {
+		this.checkBoxInput.on( 'change', function ( isSelected ) {
+			new mw.Api().saveOption( this.prefName, isSelected ? '1' : '0' );
+		}.bind( this ) );
 	}
 
-	this.$dismissField = new OO.ui.FieldLayout( checkBoxInput, {
+	this.$dismissField = new OO.ui.FieldLayout( this.checkBoxInput, {
 		label: mw.message( 'growthexperiments-addlink-onboarding-dialog-dismiss-checkbox' ).text(),
 		align: 'inline',
 		classes: [ 'addlink-onboarding-dialog-footer-widget' ]
@@ -92,7 +93,7 @@ AddLinkOnboardingDialog.prototype.getFooterElement = function () {
 		classes: [ 'addlink-onboarding-dialog-footer-widget', 'align-end' ]
 	} ).$element;
 	this.$getStartedButton.on( 'click', function () {
-		this.closeDialog();
+		this.closeDialog( 'get_started' );
 	}.bind( this ) );
 
 	return new OO.ui.PanelLayout( {
@@ -107,9 +108,7 @@ AddLinkOnboardingDialog.prototype.getFooterElement = function () {
 AddLinkOnboardingDialog.prototype.getActionProcess = function ( action ) {
 	return AddLinkOnboardingDialog.super.prototype.getActionProcess.call( this, action )
 		.next( function () {
-			if ( action === 'cancel' ) {
-				this.closeDialog();
-			}
+			this.closeDialog( action === 'cancel' ? 'skip_all' : 'close' );
 		}, this );
 };
 
@@ -123,6 +122,16 @@ AddLinkOnboardingDialog.prototype.updateViewState = function () {
 	this.$dismissField.hide();
 
 	$skipButton.show();
+	this.logger.log( 'impression', this.getLogActionData(), this.getLogMetadata() );
+
+	if ( this.currentPanelIndex === 1 ) {
+		var $learnMoreLink = this.panels[ 1 ].$element.find( '.addlink-onboarding-content-link' );
+		if ( $learnMoreLink ) {
+			$learnMoreLink.on( 'click', function () {
+				this.logger.log( 'link_click', this.getLogActionData(), this.getLogMetadata() );
+			}.bind( this ) );
+		}
+	}
 
 	if ( this.currentPanelIndex === this.panels.length - 1 ) {
 		this.$getStartedButton.show();
@@ -139,10 +148,37 @@ AddLinkOnboardingDialog.prototype.updateViewState = function () {
 
 /**
  * Close dialog and fire an event indicating that onboarding has been completed
+ *
+ * @param {string} action One of 'skip_all', 'get_started', or 'close'
  */
-AddLinkOnboardingDialog.prototype.closeDialog = function () {
+AddLinkOnboardingDialog.prototype.closeDialog = function ( action ) {
+	this.logger.log( action, this.getLogActionData(), this.getLogMetadata() );
 	this.close();
 	mw.hook( 'growthExperiments.addLinkOnboardingCompleted' ).fire();
+};
+
+/**
+ * Get action_data to use with LinkSuggestionInteractionLogger
+ *
+ * @return {{dont_show_again: boolean}}
+ */
+AddLinkOnboardingDialog.prototype.getLogActionData = function () {
+	return {
+		// eslint-disable-next-line camelcase
+		dont_show_again: this.checkBoxInput.selected
+	};
+};
+
+/**
+ * Get metadata override to use with LinkSuggestionInteractionLogger
+ *
+ * @return {{active_interface: string}}
+ */
+AddLinkOnboardingDialog.prototype.getLogMetadata = function () {
+	return {
+		// eslint-disable-next-line camelcase
+		active_interface: 'onboarding_step_' + ( this.currentPanelIndex + 1 ) + '_dialog'
+	};
 };
 
 module.exports = AddLinkOnboardingDialog;

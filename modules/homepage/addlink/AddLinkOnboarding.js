@@ -1,6 +1,7 @@
 module.exports = ( function () {
 	'use strict';
 	var AddLinkOnboardingDialog = require( './AddLinkOnboardingDialog.js' ),
+		LinkSuggestionInteractionLogger = require( './LinkSuggestionInteractionLogger.js' ),
 		dialogName = 'addLinkOnboardingDialog',
 		addLinkOnboardingPrefName = 'growthexperiments-addlink-onboarding',
 		shouldShowOnboarding = !mw.user.options.get( addLinkOnboardingPrefName ),
@@ -40,7 +41,13 @@ module.exports = ( function () {
 		$( document.body ).append( windowManager.$element );
 
 		windows[ dialogName ] = new AddLinkOnboardingDialog(
-			{ hasSlideTransition: true },
+			{
+				hasSlideTransition: true,
+				logger: new LinkSuggestionInteractionLogger( {
+					// eslint-disable-next-line camelcase
+					is_mobile: OO.ui.isMobile()
+				} )
+			},
 			{ prefName: addLinkOnboardingPrefName }
 		);
 		windowManager.addWindows( windows );
