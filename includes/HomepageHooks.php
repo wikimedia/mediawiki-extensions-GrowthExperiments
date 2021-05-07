@@ -1168,6 +1168,12 @@ class HomepageHooks implements
 			$saveResult['edit']['newrevid'] ?? null,
 			$data
 		);
+		DeferredUpdates::addCallableUpdate( function () use ( $user, $page ) {
+			$tracker = $this->trackerFactory->getTracker( $user );
+			// Untrack the page so that future edits by the user are not tagged with
+			// the suggested link edit tag.
+			$tracker->untrack( $page->getId() );
+		} );
 	}
 
 }
