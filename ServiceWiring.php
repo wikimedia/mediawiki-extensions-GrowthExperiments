@@ -20,6 +20,7 @@ use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Mentorship\Store\MultiWriteMentorStore;
 use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
+use GrowthExperiments\NewcomerTasks\AddLink\AddLinkSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddLink\DbBackedLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
@@ -53,6 +54,19 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 
 return [
+
+	'GrowthExperimentsAddLinkSubmissionHandler' => static function (
+		MediaWikiServices $services
+	): AddLinkSubmissionHandler {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		return new AddLinkSubmissionHandler(
+			$growthServices->getLinkRecommendationHelper(),
+			$growthServices->getLinkRecommendationStore(),
+			$growthServices->getLinkSubmissionRecorder(),
+			$services->getLinkBatchFactory(),
+			$services->getTitleFactory()
+		);
+	},
 
 	'GrowthExperimentsConfig' => static function ( MediaWikiServices $services ): Config {
 		return $services->getConfigFactory()->makeConfig( 'GrowthExperiments' );

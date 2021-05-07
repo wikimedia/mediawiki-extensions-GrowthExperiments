@@ -316,12 +316,32 @@ AddLinkArticleTarget.prototype.isSaveable = function () {
 
 /** @inheritDoc */
 AddLinkArticleTarget.prototype.save = function ( doc, options, isRetry ) {
+	var acceptedTargets = [],
+		rejectedTargets = [],
+		skippedTargets = [],
+		annotationStates = this.getAnnotationStates();
+	annotationStates.forEach( function ( state ) {
+		if ( state.accepted ) {
+			acceptedTargets.push( state.title );
+		} else if ( state.rejected ) {
+			rejectedTargets.push( state.title );
+		} else {
+			skippedTargets.push( state.title );
+		}
+	} );
+	// This data will be processed in HomepageHooks::onVisualEditorApiVisualEditorEditPostSaveHookj
+	options[ 'data-linkrecommendation' ] = JSON.stringify( {
+		acceptedTargets: acceptedTargets,
+		rejectedTargets: rejectedTargets,
+		skippedTargets: skippedTargets,
+		taskType: 'link-recommendation'
+	} );
+	options.plugins = 'linkrecommendation';
 	return this.constructor.super.prototype.save.call( this, doc, options, isRetry )
 		.done( function () {
-			var annotationStates = this.getAnnotationStates(),
-				hasAccepts = annotationStates.some( function ( state ) {
-					return state.accepted;
-				} );
+			var hasAccepts = annotationStates.some( function ( state ) {
+				return state.accepted;
+			} );
 			if ( !hasAccepts ) {
 				this.madeNullEdit = true;
 			}

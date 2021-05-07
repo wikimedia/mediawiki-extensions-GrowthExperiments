@@ -140,8 +140,6 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 					return $flags ? $linkRecommendationPrimary : $linkRecommendation;
 				}
 			);
-		$linkRecommendationHelper->expects( $expectDeleted ? $this->once() : $this->never() )
-			->method( 'deleteLinkRecommendation' );
 
 		$homepageHooks->onSearchDataForIndex(
 			$fields,
