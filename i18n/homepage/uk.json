@@ -340,12 +340,12 @@
 	"growthexperiments-addlink-context-button-accept": "Так",
 	"growthexperiments-addlink-context-button-reject": "Ні",
 	"growthexperiments-addlink-context-button-next": "Далі",
-	"growthexperiments-addlink-rejectiondialog-title": "Чому це погане посилання? <em>(Необов'язково)</em>",
-	"growthexperiments-addlink-rejectiondialog-message": "Ваша відповідь може допомогти покращити якість підказок ШІ.",
-	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Буденне явище, яке не потребує пояснення (напр., «небо»)",
-	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Некоректне посилання (напр., «сонце» на «зірка»)",
+	"growthexperiments-addlink-rejectiondialog-title": "Чому це погане посилання?",
+	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|Ваші}} відповіді покращують якість майбутніх підказок.",
+	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Практично всі знають, що це",
+	"growthexperiments-addlink-rejectiondialog-reason-wrong-target": "Посилання на неправильну статтю (напр., «супутник» на «планета»)",
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Натисніть на олівець редагування $1 поруч з посиланням, щоб змінити, куди воно веде",
-	"growthexperiments-addlink-rejectiondialog-reason-other": "Інше / не бажаю вказувати",
+	"growthexperiments-addlink-rejectiondialog-reason-other": "Інше",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Готово",
 	"grant-managementorship": "Керувати наставництвом"
 }

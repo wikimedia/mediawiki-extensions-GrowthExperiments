@@ -147,6 +147,8 @@
 	"growthexperiments-tour-discovery-title": "Sāc šeit!",
 	"growthexperiments-tour-discovery-description": "Klikšķini uz {{GENDER:$1|sava}} lietotājvārda, lai apmeklētu {{GENDER:$1|savu}} sākumlapu.",
 	"growthexperiments-homepage-welcomesurvey-default-close": "Dodies uz {{GENDER:$1|savu}} sākumlapu",
+	"growthexperiments-tour-welcome-description-c": "{{GENDER:$1|Tu}} vienmēr vari klikšķināt uz {{GENDER:$1|sava}} lietotājvārda, lai atgrieztos šeit. Turpini apgūt <b>ieteiktos labojumus</b> {{GENDER:$1|savā}} sākumlapā.",
+	"growthexperiments-tour-welcome-description-d": "{{GENDER:$1|Tu}} vienmēr vari klikšķināt uz {{GENDER:$1|sava}} lietotājvārda, lai atgrieztos šeit. {{GENDER:$1|Savā}} sākumlapā {{GENDER:$1|tu}} vari atrast ieteiktos labojumus, uzdot jautājumus {{GENDER:$1|savam}} mentoram un redzēt {{GENDER:$1|savu}} ietekmi.",
 	"growthexperiments-homepage-discovery-banner-header": "Laipni {{GENDER:$1|lūgts|lūgta}} savā sākumlapā!",
 	"growthexperiments-homepage-discovery-banner-text": "{{GENDER:$1|Tu}} vienmēr vari klikšķināt uz $2 lapas augšā, lai atgrieztos šeit.",
 	"growthexperiments-homepage-discovery-thanks-header": "Paldies par {{GENDER:$1|tava}} konta izveidi!",

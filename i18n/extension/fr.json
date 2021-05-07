@@ -55,5 +55,6 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "Oui",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Non",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Titre de la page de liste des tuteurs automatiquement affectés",
-	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Titre de la page de la liste des tuteurs manuellement affectés"
+	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Titre de la page de la liste des tuteurs manuellement affectés",
+	"growthexperiments-edit-config-newcomertasks": "Modifications suggérées"
 }

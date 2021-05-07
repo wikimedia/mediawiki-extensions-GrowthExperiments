@@ -232,6 +232,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "گسترش مقالات کوتاه",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "پیونددادن به دیگر مقاله‌ها",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "افزودن پیوند میان مقاله‌ها",
+	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "پیشنهادهای ماشینی",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "زندگینامه (همه)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "زندگی‌نامه (زنان)",
 	"growthexperiments-homepage-suggestededits-topic-name-food-and-drink": "غذا و نوشیدنی",
@@ -349,6 +350,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "برای تغییر هدف پیوند، مداد ویرایش $1 در کنار پیوند را لمس کنید",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "سایر / ترجیح می‌دهم نگویم",
 	"growthexperiments-addlink-rejectiondialog-action-done": "انجام شد",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "اطلاعات بیشتر پیرامون پیشنهادهای ماشینی",
 	"growthexperiments-addlink-summary-title": "خلاصه",
 	"growthexperiments-addlink-summary-column-header-suggestion": "پیشنهاد",
 	"growthexperiments-addlink-summary-column-header-linked": "پیوند؟",
@@ -359,5 +361,6 @@
 	"growthexperiments-addlink-skip-accept": "رد کردن همه",
 	"growthexperiments-addlink-skip-reject": "بازبینی مجدد",
 	"grant-managementorship": "مدیریت مربی‌گری",
+	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "پیشنهادها",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "ارسال..."
 }
