@@ -73,6 +73,18 @@ class Tracker {
 	}
 
 	/**
+	 * Reset the task type ID data for a page ID for the user's tracker.
+	 *
+	 * This is useful for the linkrecommendation task type, where only a single edit using the interface is possible.
+	 *
+	 * @param int $pageId
+	 * @return bool
+	 */
+	public function untrack( int $pageId ): bool {
+		return $this->storage->set( $pageId, '' );
+	}
+
+	/**
 	 * @param array $additionalQueryParams
 	 * @return string
 	 */
