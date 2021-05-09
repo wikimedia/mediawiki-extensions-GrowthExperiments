@@ -88,7 +88,11 @@ AddLinkSaveDialogMixin.prototype.getSetupProcess = function ( data ) {
 		data.canPreview = data.canReview = false;
 		data.saveButtonLabel = mw.message( 'growthexperiments-addlink-summary-submit' ).text();
 	}
-	return this.constructor.super.prototype.getSetupProcess.call( this, data ).next( function () {
+	return this.constructor.super.prototype.getSetupProcess.call( this, data ).first( function () {
+		// Set a fake user preference for visual diffs to avoid T281924.
+		// The extra quote is needed because VE uses JSON preferences.
+		mw.user.options.set( 'visualeditor-diffmode-machineSuggestions', '"visual"' );
+	} ).next( function () {
 		var acceptedCount, rejectedCount, skippedCount;
 		acceptedCount = rejectedCount = skippedCount = 0;
 		annotationStates.forEach( function ( state ) {
@@ -107,9 +111,6 @@ AddLinkSaveDialogMixin.prototype.getSetupProcess = function ( data ) {
 		if ( this.checkboxesByName.wpWatchthis ) {
 			this.checkboxesByName.wpWatchthis.setSelected( true );
 		}
-
-		// Select visual diff mode, because it's more user-friendly, and also to avoid T281924.
-		this.reviewModeButtonSelect.selectItemByData( 'visual' );
 	}, this );
 };
 
