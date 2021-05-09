@@ -187,23 +187,7 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 		postText, linkWrapper,
 		phraseMap = {},
 		phraseMapKeys = [],
-		treeWalker = doc.createTreeWalker(
-			doc.body,
-			// eslint-disable-next-line no-bitwise
-			NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT,
-			{ acceptNode: function ( node ) {
-				// Exclude the contents of templates and wikilinks; don't descend into these nodes
-				// TODO flesh out with more exclusions, handle about groups (T267694)
-				if ( node.getAttribute && ( node.getAttribute( 'typeof' ) === 'mw:Transclusion' || node.getAttribute( 'rel' ) === 'mw:WikiLink' ) ) {
-					return NodeFilter.FILTER_REJECT;
-				} else if ( node.nodeType === Node.TEXT_NODE ) {
-					return NodeFilter.FILTER_ACCEPT;
-				}
-				// Skip element nodes that shouldn't be excluded; this doesn't return them (we only
-				// want to return text nodes), but it does descend
-				return NodeFilter.FILTER_SKIP;
-			} }
-		);
+		treeWalker = this.getTreeWalker( doc );
 
 	/**
 	 * Build a regex that matches any of the given phrases.
@@ -292,7 +276,58 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 			)
 		);
 	}
+};
 
+/**
+ * Creates a tree walker which will iterate all the DOM nodes where a link suggestion might appear.
+ * The link recommendation service specifies the position of link suggestions in the document via
+ * match count (e.g. "the third occurrence of the string 'Foo' in the text"), but it only counts
+ * matches in plain text, not inside templates, tables etc. To interpret the match count correctly,
+ * we need to reproduce that logic here (as much as possible, given that the service uses the
+ * wikitext AST and we use the Parsoid DOM).
+ * @param {HTMLDocument} doc
+ * @return {TreeWalker}
+ */
+AddLinkArticleTarget.prototype.getTreeWalker = function ( doc ) {
+	function startsWith( str, prefix ) {
+		return str && str.substr( 0, prefix.length ) === prefix;
+	}
+
+	return doc.createTreeWalker(
+		doc.body,
+		// eslint-disable-next-line no-bitwise
+		NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT,
+		{ acceptNode: function ( node ) {
+			if ( node.nodeType === Node.TEXT_NODE ) {
+				return NodeFilter.FILTER_ACCEPT;
+			}
+
+			// Exclude all DOM nodes produced by Parsoid. Partially based on
+			// https://www.mediawiki.org/wiki/Specs/HTML/2.2.0
+			if (
+				// transcluded content, media, most other things
+				startsWith( node.getAttribute( 'typeof' ), 'mw:' ) ||
+				// links and link-like things
+				startsWith( node.getAttribute( 'rel' ), 'mw:' ) ||
+				// metadata (though it has no content so doesn't really matter)
+				startsWith( node.getAttribute( 'property' ), 'mw:' ) ||
+				// part of a transcluded DOM forest such as a template with multiple
+				// top-level nodes; typeof is only present on the first node
+				node.getAttribute( 'about' ) ||
+				// HTML representation of some basic wikitext contructs
+				// OL/UL are absent because of the weird way mwparserfromhell (the parser used
+				// by the link recommendation service) handles them, see
+				// https://github.com/earwig/mwparserfromhell/issues/46
+				[ 'TABLE', 'B', 'I', 'BLOCKQUOTE' ].indexOf( node.tagName ) !== -1
+			) {
+				return NodeFilter.FILTER_REJECT;
+			}
+
+			// An element we did not exclude above, probably <p> or <section>. SKIP means do
+			// not return it (we only want to return text nodes), but descend into it.
+			return NodeFilter.FILTER_SKIP;
+		} }
+	);
 };
 
 /** @inheritDoc */
