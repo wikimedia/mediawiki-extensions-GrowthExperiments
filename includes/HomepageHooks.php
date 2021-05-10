@@ -19,7 +19,6 @@ use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
-use GrowthExperiments\NewcomerTasks\AddLink\AddLinkSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -43,8 +42,6 @@ use MediaWiki\Minerva\Menu\Entries\HomeMenuEntry;
 use MediaWiki\Minerva\Menu\Entries\IProfileMenuEntry;
 use MediaWiki\Minerva\Menu\Group;
 use MediaWiki\Minerva\SkinOptions;
-use MediaWiki\Page\ProperPageIdentity;
-use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use NamespaceInfo;
 use OOUI\ButtonWidget;
@@ -61,7 +58,6 @@ use StatusValue;
 use stdClass;
 use Title;
 use TitleFactory;
-use UnexpectedValueException;
 use User;
 use Wikimedia\Rdbms\DBReadOnlyError;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -84,8 +80,7 @@ class HomepageHooks implements
 	\MediaWiki\SpecialPage\Hook\SpecialPageAfterExecuteHook,
 	\MediaWiki\User\Hook\ConfirmEmailCompleteHook,
 	\MediaWiki\Hook\SiteNoticeAfterHook,
-	\MediaWiki\Content\Hook\SearchDataForIndexHook,
-	\MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPostSaveHook
+	\MediaWiki\Content\Hook\SearchDataForIndexHook
 {
 	use GrowthConfigLoaderStaticTrait;
 
@@ -129,8 +124,6 @@ class HomepageHooks implements
 	private $linkRecommendationHelper;
 	/** @var SuggestionsInfo */
 	private $suggestionsInfo;
-	/** @var AddLinkSubmissionHandler */
-	private $addLinkSubmissionHandler;
 
 	/** @var bool Are we in a context where it is safe to access the primary DB? */
 	private $canAccessPrimary;
@@ -155,7 +148,6 @@ class HomepageHooks implements
 	 * @param LinkRecommendationStore $linkRecommendationStore
 	 * @param LinkRecommendationHelper $linkRecommendationHelper
 	 * @param SuggestionsInfo $suggestionsInfo
-	 * @param AddLinkSubmissionHandler $addLinkSubmissionHandler
 	 */
 	public function __construct(
 		Config $config,
@@ -174,8 +166,7 @@ class HomepageHooks implements
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		LinkRecommendationStore $linkRecommendationStore,
 		LinkRecommendationHelper $linkRecommendationHelper,
-		SuggestionsInfo $suggestionsInfo,
-		AddLinkSubmissionHandler $addLinkSubmissionHandler
+		SuggestionsInfo $suggestionsInfo
 	) {
 		$this->config = $config;
 		$this->wikiConfig = $wikiConfig;
@@ -194,7 +185,6 @@ class HomepageHooks implements
 		$this->linkRecommendationStore = $linkRecommendationStore;
 		$this->linkRecommendationHelper = $linkRecommendationHelper;
 		$this->suggestionsInfo = $suggestionsInfo;
-		$this->addLinkSubmissionHandler = $addLinkSubmissionHandler;
 
 		// Ideally this would be injected but the way hook handlers are defined makes that hard.
 		$this->canAccessPrimary = defined( 'MEDIAWIKI_JOB_RUNNER' )
@@ -1140,40 +1130,6 @@ class HomepageHooks implements
 				'rtl' => 'GrowthExperiments/images/mentor-rtl.svg'
 			]
 		];
-	}
-
-	/** @inheritDoc */
-	public function onVisualEditorApiVisualEditorEditPostSave(
-		ProperPageIdentity $page,
-		UserIdentity $user,
-		string $wikitext,
-		array $params,
-		array $pluginData,
-		array $saveResult,
-		array &$apiResponse
-	): void {
-		$data = $pluginData['linkrecommendation'] ?? null;
-		if ( !$data || $apiResponse['result'] !== 'success' ) {
-			return;
-		}
-		$data = json_decode( $data, true ) ?? [];
-		$title = $this->titleFactory->castFromPageIdentity( $page );
-		if ( !$title ) {
-			throw new UnexpectedValueException( 'Unable to get Title from PageIdentity' );
-		}
-		$apiResponse['gelogId'] = $this->addLinkSubmissionHandler->run(
-			$title,
-			$user,
-			$params['oldid'],
-			$saveResult['edit']['newrevid'] ?? null,
-			$data
-		);
-		DeferredUpdates::addCallableUpdate( function () use ( $user, $page ) {
-			$tracker = $this->trackerFactory->getTracker( $user );
-			// Untrack the page so that future edits by the user are not tagged with
-			// the suggested link edit tag.
-			$tracker->untrack( $page->getId() );
-		} );
 	}
 
 }
