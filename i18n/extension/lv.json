@@ -40,5 +40,6 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "Jā",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Nē",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Lapas nosaukums sarakstam ar automātiski piešķirtiem mentoriem",
-	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Lapas nosaukums sarakstam ar manuāli piešķirtiem mentoriem"
+	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Lapas nosaukums sarakstam ar manuāli piešķirtiem mentoriem",
+	"growthexperiments-edit-config-newcomertasks": "Ieteiktie labojumi"
 }

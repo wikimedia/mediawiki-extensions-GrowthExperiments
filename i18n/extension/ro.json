@@ -50,5 +50,16 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "Da",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Nu",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Titlul paginii listei de mentori atribuiți automat",
-	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Titlul paginii listei de mentori atribuiți manual"
+	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Titlul paginii listei de mentori atribuiți manual",
+	"growthexperiments-edit-config-newcomertasks": "Editări sugerate",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Formatele utilizate pentru a găsi articole care necesită corectare",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Pagina unde nou-veniții pot afla mai mult despre corectare",
+	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Formatele utilizate pentru a găsi articole care necesită să fie extinse",
+	"growthexperiments-edit-config-newcomer-tasks-expand-learnmore": "Pagina unde nou-veniții pot afla mai mult despre editarea articolelor",
+	"growthexperiments-edit-config-newcomer-tasks-links-templates": "Formatele utilizate pentru a găsi articole care necesită mai multe legături",
+	"growthexperiments-edit-config-newcomer-tasks-links-learnmore": "Pagina unde nou-veniții pot afla mai mult despre adăugarea legăturilor",
+	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Formatele utilizate pentru a găsi articole care necesită mai multe referințe",
+	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Pagina unde nou-veniții pot afla mai mult despre adăugarea referințelor",
+	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Formatele utilizate pentru a găsi articole care necesită să fie actualizate",
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Pagina unde nou-veniții pot afla mai mult despre actualizarea articolelor"
 }

@@ -342,7 +342,7 @@
 	"growthexperiments-addlink-duplicatesubmission": "محاولة إرسال مراجعات توصية الروابط لـ \"$1\" التي تمّت مراجعتها سابقا.",
 	"growthexperiments-addlink-context-title": "$1 / $2",
 	"growthexperiments-addlink-context-text-label": "النص",
-	"growthexperiments-addlink-context-intro": "هل يجب أن يربط هذا إلى _____؟",
+	"growthexperiments-addlink-context-intro": "هل يجب ربط هذا، إلى المقالة التالية؟",
 	"growthexperiments-addlink-context-button-accept": "نعم",
 	"growthexperiments-addlink-context-button-reject": "لا",
 	"growthexperiments-addlink-context-button-help": "{{GENDER:|احصل|احصلي}} على المساعدة في التحرير",

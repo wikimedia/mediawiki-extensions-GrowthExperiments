@@ -327,7 +327,7 @@
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Понятно",
 	"growthexperiments-addlink-pagenotfound": "Страница «$1» не существует.",
 	"growthexperiments-addlink-context-text-label": "Текст",
-	"growthexperiments-addlink-context-intro": "Следует ли ссылаться на _____?",
+	"growthexperiments-addlink-context-intro": "Следует ли ссылаться на следующую статью?",
 	"growthexperiments-addlink-context-button-accept": "Да",
 	"growthexperiments-addlink-context-button-reject": "Нет",
 	"growthexperiments-addlink-context-button-next": "Следующая",

@@ -4,6 +4,7 @@
 			"Gomoko",
 			"JenyxGym",
 			"Raphoraph",
+			"Thibaut120094",
 			"Trizek (WMF)",
 			"Verdy p",
 			"Wladek92"
@@ -16,8 +17,8 @@
 	"growthexperiments-config-validator-contentmodel-mismatch": "Modèle de contenu non correspondant : le fichier de configuration de GrowthExperiments  doit avoir un modèle de contenu JSON, $1 détecté.",
 	"growthexperiments-edit-config-disabled": "La configuration de la communauté est actuellement désactivée.",
 	"growthexperiments-edit-config-title": "Modifier la configuration de Growth",
-	"growthexperiments-edit-config-last-edit": "[[$3]] : Dernière mise à jour par [[User:$1|$1]] $2.",
-	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]] : Dernière mise à jour par l’utilisateur inconnu $1.",
+	"growthexperiments-edit-config-last-edit": "[[$3]] : Dernière mise à jour par [[User:$1|$1]] $2.",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]] : Dernière mise à jour par l’utilisateur inconnu $1.",
 	"growthexperiments-edit-config-pretext": "Cette page vous permet de modifier la configuration des fonctionnalités de l’équipe [[:mw:Special:MyLanguage/Growth|Growth]]. Elle modifiera $1 pour vous. Vous pouvez voir ces modifications dans l’historique de cette page.",
 	"growthexperiments-edit-config-error-invalid-title": "La page de configuration n’a pas bien été configurée",
 	"growthexperiments-edit-config-edit-summary": "Modifier le résumé",
@@ -56,5 +57,15 @@
 	"growthexperiments-edit-config-mentorship-enabled-false": "Non",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Titre de la page de liste des tuteurs automatiquement affectés",
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Titre de la page de la liste des tuteurs manuellement affectés",
-	"growthexperiments-edit-config-newcomertasks": "Modifications suggérées"
+	"growthexperiments-edit-config-newcomertasks": "Modifications suggérées",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Modèles utilisés pour trouver des articles qui nécessitent une modification de la copie",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Page où les débutants peuvent en apprendre davantage sur la modification de copie",
+	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Modèles utilisés pour trouver des articles qui nécessitent d’être développés",
+	"growthexperiments-edit-config-newcomer-tasks-expand-learnmore": "Page où les débutants peuvent en apprendre davantage sur la modification des articles",
+	"growthexperiments-edit-config-newcomer-tasks-links-templates": "Modèles utilisés pour trouver des articles qui nécessitent plus de liens",
+	"growthexperiments-edit-config-newcomer-tasks-links-learnmore": "Page où les débutants peuvent en apprendre davantage sur l’ajout de liens",
+	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Modèles utilisés pour trouver des articles qui nécessitent plus de références",
+	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Page où les débutants peuvent en apprendre davantage sur l’ajout de références",
+	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Modèles utilisés pour trouver des articles qui doivent être mis à jour",
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Page où les débutants  peuvent en apprendre davantage sur la modification d’articles"
 }

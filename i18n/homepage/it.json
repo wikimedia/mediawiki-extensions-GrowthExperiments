@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Annibale covini gerolamo",
 			"Beta16",
 			"Elitre (WMF)",
@@ -37,7 +38,7 @@
 	"growthexperiments-homepage-email-header-startemail": "Email: $1",
 	"growthexperiments-homepage-email-text-noemail": "Raccomandato per il ripristino dell'utenza",
 	"growthexperiments-homepage-email-text-unconfirmed": "Controlla il link di verifica inviato alla {{GENDER:$1|tua}} email, o fanne inviare uno nuovo.",
-	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|La tua}} email é stata confermata. Puoi cambiare le tue impostazioni email nelle Preferenze.",
+	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|La tua}} email è stata confermata. Puoi cambiare le tue impostazioni email nelle Preferenze.",
 	"growthexperiments-homepage-email-button-noemail": "Aggiungi email",
 	"growthexperiments-homepage-email-button-unconfirmed": "Ottieni un nuovo collegamento",
 	"growthexperiments-homepage-email-button-confirmed": "Preferenze",

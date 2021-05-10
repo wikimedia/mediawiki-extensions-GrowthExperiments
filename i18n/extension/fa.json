@@ -33,5 +33,16 @@
 	"growthexperiments-edit-config-help-panel-links-articlewizard-title": "عنوان صفحهٔ پیوند پنجم در پنل راهنمایی (پیشنهاد: جادوگر ایجاد مقاله)",
 	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "برچسب پیوند پنجم در پنل راهنمایی (پیشنهاد: جادوگر ایجاد مقاله)",
 	"growthexperiments-edit-config-mentorship-enabled-true": "بله",
-	"growthexperiments-edit-config-mentorship-enabled-false": "خیر"
+	"growthexperiments-edit-config-mentorship-enabled-false": "خیر",
+	"growthexperiments-edit-config-newcomertasks": "ویرایش‌های پیشنهادی",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "الگوهای مورد استفاده برای یافتن مقاله‌هایی که نیازمند ویرایشتاری جزئی هستند",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "صفحه‌ای که تازه‌واردان می‌توانند در آن دربارهٔ ویرایش انتشار بیشتر بیاموزند",
+	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "الگوهای مورد استفاده برای یافتن مقاله‌هایی که نیازمند گسترش هستند",
+	"growthexperiments-edit-config-newcomer-tasks-expand-learnmore": "صفحه‌ای که تازه‌واردان می‌توانند در آن دربارهٔ ویرایش مقاله‌ها بیشتر بیاموزند",
+	"growthexperiments-edit-config-newcomer-tasks-links-templates": "الگوهای مورد استفاده برای یافتن مقاله‌هایی که نیازمند پیوندهای بیشتر هستند",
+	"growthexperiments-edit-config-newcomer-tasks-links-learnmore": "صفحه‌ای که تازه‌واردان می‌توانند در آن دربارهٔ افزودن پیوند بیشتر بیاموزند",
+	"growthexperiments-edit-config-newcomer-tasks-references-templates": "الگوهای مورد استفاده برای یافتن مقاله‌هایی که نیازمند ارجاع‌های بیشتر هستند",
+	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "صفحه‌ای که تازه‌واردان می‌توانند در آن دربارهٔ افزودن منابع بیشتر بیاموزند",
+	"growthexperiments-edit-config-newcomer-tasks-update-templates": "الگوهای مورد استفاده برای یافتن مقاله‌هایی که نیازمند به‌روزرسانی هستند",
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "صفحه‌ای که تازه‌واردان می‌توانند در آن دربارهٔ ویرایش مقاله‌ها بیشتر بیاموزند"
 }

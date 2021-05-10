@@ -338,7 +338,7 @@
 	"growthexperiments-addlink-notinstore": "\"$1\" için bağlantı önerisi bulunamadı",
 	"growthexperiments-addlink-duplicatesubmission": "Zaten gözden geçirilmiş \"$1\" sürümü için bağlantı öneri değerlendirmesi göndermeye çalıştınız.",
 	"growthexperiments-addlink-context-text-label": "Metin",
-	"growthexperiments-addlink-context-intro": "Bu _____ ile bağlantı kurmalı mı?",
+	"growthexperiments-addlink-context-intro": "Bu aşağıdaki maddeye bağlanmalı mı?",
 	"growthexperiments-addlink-context-button-accept": "Evet",
 	"growthexperiments-addlink-context-button-reject": "Hayır",
 	"growthexperiments-addlink-context-button-help": "Düzenleme ile ilgili yardım alın",

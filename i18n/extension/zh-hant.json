@@ -1,8 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kly"
+			"Kly",
+			"Neetp7k9"
 		]
 	},
-	"growthexperiments-desc": "此擴充套件包含由 Growth 團隊完成的試驗。"
+	"growthexperiments-desc": "此擴充套件包含由 Growth 團隊完成的試驗。",
+	"growthexperiments-edit-config-newcomertasks": "建議的編輯",
+	"growthexperiments-edit-config-newcomer-tasks-expand-learnmore": "可以讓新手學到更多關於增加連結的頁面",
+	"growthexperiments-edit-config-newcomer-tasks-links-learnmore": "可以讓新手學到更多關於增加連結的頁面",
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "可以讓新手學到更多關於編輯文章的頁面"
 }

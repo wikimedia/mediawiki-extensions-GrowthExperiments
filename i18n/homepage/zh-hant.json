@@ -4,6 +4,7 @@
 			"Go1002opn",
 			"HTan (WMF)",
 			"Kly",
+			"Neetp7k9",
 			"SiderealArt",
 			"Winston Sung"
 		]
@@ -316,6 +317,7 @@
 	"growthexperiments-addlink-wrongmodel": "「$2」的修訂 $1 內容不是維基語法",
 	"growthexperiments-addlink-invalidjson": "「$1」的連結推薦服務回應無效",
 	"growthexperiments-addlink-serviceerror": "「$1」的連結推薦服務回應無效出現錯誤：$2",
+	"growthexperiments-addlink-context-intro": "這應該被連接至以下的文章嗎？",
 	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "全部跳過",
 	"growthexperiments-addlink-onboarding-dialog-progress": "$1 之 $2",
 	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "不要再顯示",

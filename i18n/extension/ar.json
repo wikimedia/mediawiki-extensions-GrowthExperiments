@@ -53,5 +53,16 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "نعم",
 	"growthexperiments-edit-config-mentorship-enabled-false": "لا",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "عنوان صفحة قائمة المرشدين المعينين تلقائيًا",
-	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "عنوان صفحة قائمة المرشدين المعيّنين يدويّا"
+	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "عنوان صفحة قائمة المرشدين المعيّنين يدويّا",
+	"growthexperiments-edit-config-newcomertasks": "التعديلات المقترحة",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "القوالب المستخدمة للعثور على مقالات في حاجة إلى تحرير النسخ",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "صفحات بمكن من خلالها للوافدين الجدد التعلّم حول تحرير النسخ",
+	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "القوالب المستخدمة للعثور على مقالات في حاجة إلى توسعة",
+	"growthexperiments-edit-config-newcomer-tasks-expand-learnmore": "صفحات بمكن من خلالها للوافدين الجدد التعلّم حول تعديل المقالات",
+	"growthexperiments-edit-config-newcomer-tasks-links-templates": "القوالب المستخدمة للعثور على مقالات في حاجة إلى روابط أكثر",
+	"growthexperiments-edit-config-newcomer-tasks-links-learnmore": "صفحات بمكن من خلالها للوافدين الجدد التعلّم حول إضافة روابط",
+	"growthexperiments-edit-config-newcomer-tasks-references-templates": "القوالب المستخدمة للعثور على مقالات في حاجة إلى مراجع",
+	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "صفحات بمكن من خلالها للوافدين الجدد التعلّم حول إضافة مراجع",
+	"growthexperiments-edit-config-newcomer-tasks-update-templates": "القوالب المستخدمة للعثور على مقالات في حاجة إلى تحديث",
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "صفحات بمكن من خلالها للوافدين الجدد التعلّم حول تعديل المقالات"
 }

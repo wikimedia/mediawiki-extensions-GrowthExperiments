@@ -9,5 +9,6 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Ultimo aggiornamento di [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Ultimo aggiornamento di utente sconosciuto $1.",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Sì",
-	"growthexperiments-edit-config-mentorship-enabled-false": "No"
+	"growthexperiments-edit-config-mentorship-enabled-false": "No",
+	"growthexperiments-edit-config-newcomertasks": "Modifiche suggerite"
 }

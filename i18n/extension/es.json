@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"BnSrSa",
 			"Khiari",
 			"LORDZRAWN",
 			"MarcoAurelio",
@@ -30,5 +31,6 @@
 	"growthexperiments-edit-config-mentorship": "Tutoría",
 	"growthexperiments-edit-config-mentorship-enabled": "¿Están habilitadas las funciones de tutoría?",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Título de la página de la lista de mentores asignados automáticamente",
-	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Título de la página de la lista de mentores asignados manualmente"
+	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Título de la página de la lista de mentores asignados manualmente",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Pagina donde recién llegados pueden aprender más sobre el corrector de textos."
 }

@@ -52,5 +52,16 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "Sim",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Não",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Título da página da lista de mentores atribuídos automaticamente",
-	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Título da página da lista de mentores atribuídos manualmente"
+	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Título da página da lista de mentores atribuídos manualmente",
+	"growthexperiments-edit-config-newcomertasks": "Edições sugeridas",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Predefinições usadas para encontrar artigos que precisam de edição de texto",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Página onde os novatos podem aprender mais sobre edição de texto",
+	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Predefinições usada para encontrar artigos que precisam ser expandidos",
+	"growthexperiments-edit-config-newcomer-tasks-expand-learnmore": "Página onde os novatos podem aprender mais sobre como editar artigos",
+	"growthexperiments-edit-config-newcomer-tasks-links-templates": "Predefinições usadas para encontrar artigos que precisam de mais links",
+	"growthexperiments-edit-config-newcomer-tasks-links-learnmore": "Página onde os novatos podem aprender mais sobre como adicionar links",
+	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Predefinições usadas para encontrar artigos que precisam de mais referências",
+	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Página onde os novatos podem aprender mais sobre como adicionar referências",
+	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Predefinições usadas para encontrar artigos que precisam ser atualizados",
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Página onde os novatos podem aprender mais sobre como atualizar artigos"
 }

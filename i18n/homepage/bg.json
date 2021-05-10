@@ -136,7 +136,7 @@
 	"growthexperiments-addlink-revdeleted": "Версия $1 на „$2“ е недостъпна",
 	"growthexperiments-addlink-wrongmodel": "Версия $1 на „$2“ не е уикитекст",
 	"growthexperiments-addlink-context-text-label": "Текст",
-	"growthexperiments-addlink-context-intro": "Трябва ли това да сочи към _____?",
+	"growthexperiments-addlink-context-intro": "Трябва ли този линк да сочи към следната статия?",
 	"growthexperiments-addlink-context-button-accept": "Да",
 	"growthexperiments-addlink-context-button-reject": "Не",
 	"growthexperiments-addlink-context-button-next": "Следваща",

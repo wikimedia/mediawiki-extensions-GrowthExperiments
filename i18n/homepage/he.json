@@ -336,7 +336,7 @@
 	"growthexperiments-addlink-notinstore": "לא נמצאו המלצות קישורים עבור \"$1\"",
 	"growthexperiments-addlink-duplicatesubmission": "ניסיון לשלוח סקירות הצעות קישור עבור הגרסה \"$1\", שכבר נסקרה",
 	"growthexperiments-addlink-context-text-label": "טקסט",
-	"growthexperiments-addlink-context-intro": "האם זה צריך לקשר ל־_____?",
+	"growthexperiments-addlink-context-intro": "האם זה צריך לקשר לערך הבא?",
 	"growthexperiments-addlink-context-button-accept": "כן",
 	"growthexperiments-addlink-context-button-reject": "לא",
 	"growthexperiments-addlink-context-button-help": "קבלת עזרה עם עריכה",

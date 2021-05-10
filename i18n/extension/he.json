@@ -50,5 +50,16 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "כן",
 	"growthexperiments-edit-config-mentorship-enabled-false": "לא",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "כותרת דף רשימות החונכים שהוקצו אוטומטית",
-	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "כותרת דף רשימות החונכים שהוקצו ידנית"
+	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "כותרת דף רשימות החונכים שהוקצו ידנית",
+	"growthexperiments-edit-config-newcomertasks": "עריכות מוצעות",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "תבניות שמשמשות למציאת ערכים שזקוקים להגהה",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "דף שבו עורכים חדשים יכולים ללמוד יותר על הגהה",
+	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "תבניות שמשמשות למציאת ערכים שזקוקים להרחבה",
+	"growthexperiments-edit-config-newcomer-tasks-expand-learnmore": "דף שבו עורכים חדשים יכולים ללמוד עוד על עריכת ערכים",
+	"growthexperiments-edit-config-newcomer-tasks-links-templates": "תבניות שמשמשות למציאת ערכים שזקוקים ליותר קישורים",
+	"growthexperiments-edit-config-newcomer-tasks-links-learnmore": "דף שבו עורכים חדשים יכולים ללמוד עוד על הוספת קישורים",
+	"growthexperiments-edit-config-newcomer-tasks-references-templates": "תבניות שמשמשות למציאת ערכים שזקוקים ליותר מקורות",
+	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "דף שבו עורכים חדשים יכולים ללמוד עוד על הוספת מקורות",
+	"growthexperiments-edit-config-newcomer-tasks-update-templates": "תבניות שמשמשות למציאת ערכים שזקוקים לעדכון",
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "דף שבו עורכים חדשים יכולים ללמוד עוד על עדכון ערכים"
 }

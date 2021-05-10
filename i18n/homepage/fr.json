@@ -357,7 +357,7 @@
 	"growthexperiments-addlink-duplicatesubmission": "Essai de soumission de relectures de recommandation de lien pour la révision « $1 » qui a déjà été relue.",
 	"growthexperiments-addlink-context-title": "$1 / $2",
 	"growthexperiments-addlink-context-text-label": "Texte",
-	"growthexperiments-addlink-context-intro": "Faut-il lier cela à _____ ?",
+	"growthexperiments-addlink-context-intro": "Faut-il lier cela à l’article suivant ?",
 	"growthexperiments-addlink-context-button-accept": "Oui",
 	"growthexperiments-addlink-context-button-reject": "Non",
 	"growthexperiments-addlink-context-button-help": "Obtenir de l’aide en modifiant",

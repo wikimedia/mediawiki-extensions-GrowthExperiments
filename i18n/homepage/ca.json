@@ -8,18 +8,19 @@
 			"Jordiventura96",
 			"Mguix",
 			"Paucabot",
+			"Skurz0",
 			"Townie",
 			"Xavier Dengra"
 		]
 	},
 	"growthexperiments-homepage-tab": "Espai de progrés d'usuari",
-	"growthexperiments-homepage-enable": "Mostra la pàgina del meu progrés d'usuari",
+	"growthexperiments-homepage-enable": "Mostra la pàgina d'inici d'usuari",
 	"growthexperiments-homepage-account-header": "S'ha creat el compte",
 	"growthexperiments-homepage-account-editcount": "{{PLURAL:$1|edició|edicions}}",
 	"growthexperiments-homepage-userpage-header": "Crea {{GÈNERE:1$|la vostra}} pàgina d'usuari",
 	"growthexperiments-homepage-userpage-header-done": "Edita {{GÈNERE:1$|la vostra}} pàgina d'usuari",
 	"growthexperiments-homepage-userpage-button": "Crea pàgina d'usuari",
-	"growthexperiments-homepage-userpage-button-done": "Modifica pàgina d'usuari",
+	"growthexperiments-homepage-userpage-button-done": "Editar pàgina d'usuari",
 	"growthexperiments-homepage-userpage-guidelines": "Directrius per pàgines d'usuari",
 	"growthexperiments-homepage-email-header-noemail": "Afegiu la vostra adreça de correu electrònic",
 	"growthexperiments-homepage-email-header-unconfirmed": "Confirmeu la vostra adreça de correu electrònic",
@@ -42,7 +43,7 @@
 	"growthexperiments-homepage-startediting-mobilesummary-header-variant-d": "Començar amb edicions suggerides",
 	"growthexperiments-homepage-startediting-mobilesummary-body-variant-d": "Per ajudar al coneixement lliure amb algunes correccions menors en articles de la Viquipèdia.",
 	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "Obtenir suggeriments",
-	"growthexperiments-homepage-startediting-button": "Edicions suggerides",
+	"growthexperiments-homepage-startediting-button": "Veure edicions suggerides",
 	"growthexperiments-homepage-startediting-dialog-header": "Sobre edicions suggerides",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1 de $2",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "Cancel·la",
@@ -105,5 +106,8 @@
 	"growthexperiments-homepage-suggestededits-topics-more": "mostra’n més",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Selecciona-ho tot",
 	"growthexperiments-addlink-context-button-help": "Demaneu ajuda per editar",
-	"growthexperiments-addlink-rejectiondialog-action-done": "Fet"
+	"growthexperiments-addlink-rejectiondialog-action-done": "Fet",
+	"growthexperiments-addlink-summary-title": "Resum",
+	"growthexperiments-addlink-summary-column-header-suggestion": "Suggeriment",
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Envia..."
 }

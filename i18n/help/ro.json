@@ -120,7 +120,7 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "schimbă",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Dacă {{GENDER:$2|v-ar}} plăcea de asemenea să fiți {{GENDER:$2|notificat|notificată|notificat}} prin e-mail, confirmați-vă adresa dvs. de e-mail acum: $1",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Confirmați-vă e-mail-ul",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Dacă {{GENDER:$1|v-ar}} plăcea de asemenea să fiți {{GENDER:$1|notificat|notificată|notificat}} prin e-mail, adăugați o adrese de e-mail acum.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Dacă {{GENDER:$1|v-ar}} plăcea de asemenea să fiți {{GENDER:$1|notificat|notificată|notificat}} prin e-mail, adăugați o adresă de e-mail acum.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Adăugați e-mail",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Despre panoul de ajutor",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "Apropo, publicând această întrebare, numai ce ați făcut prima dvs. editare la o pagină. Felicitări!",
