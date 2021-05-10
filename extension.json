@@ -122,8 +122,7 @@
 				"GrowthExperimentsNewcomerTasksUserOptionsLookup",
 				"GrowthExperimentsLinkRecommendationStore",
 				"GrowthExperimentsLinkRecommendationHelper",
-				"GrowthExperimentsSuggestionsInfo",
-				"GrowthExperimentsAddLinkSubmissionHandler"
+				"GrowthExperimentsSuggestionsInfo"
 			]
 		},
 		"parserfunctions": {
@@ -157,6 +156,14 @@
 			"class": "GrowthExperiments\\VariantHooks",
 			"services": [
 				"MainConfig"
+			]
+		},
+		"visualeditor": {
+			"class": "GrowthExperiments\\VisualEditorHooks",
+			"services": [
+				"TitleFactory",
+				"GrowthExperimentsNewcomerTaskTrackerFactory",
+				"GrowthExperimentsAddLinkSubmissionHandler"
 			]
 		}
 	},
@@ -235,7 +242,7 @@
 		"EditFilterMergedContent": "config",
 		"SkinTemplateNavigation": "config",
 		"ResourceLoaderGetConfigVars": "variant",
-		"VisualEditorApiVisualEditorEditPostSave": "homepage"
+		"VisualEditorApiVisualEditorEditPostSave": "visualeditor"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
