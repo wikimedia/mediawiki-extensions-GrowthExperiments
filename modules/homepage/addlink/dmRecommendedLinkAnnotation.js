@@ -53,6 +53,21 @@ DMRecommendedLinkAnnotation.static.toDomElements = function ( dataElement ) {
 	return DMRecommendedLinkAnnotation.super.static.toDomElements.apply( this, arguments );
 };
 
+/** @inheritDoc */
+DMRecommendedLinkAnnotation.static.describeChange = function () {
+	// We don't want to show change descriptions, given that the diff will not contain
+	// any other kind of change it's not really useful.
+};
+
+/** @inheritdoc */
+DMRecommendedLinkAnnotation.prototype.getComparableObject = function () {
+	return {
+		type: this.getType(),
+		normalizedTitle: this.getAttribute( 'normalizedTitle' ),
+		accepted: this.isAccepted()
+	};
+};
+
 DMRecommendedLinkAnnotation.prototype.isAccepted = function () {
 	return this.getAttribute( 'recommendationAccepted' ) === true;
 };
