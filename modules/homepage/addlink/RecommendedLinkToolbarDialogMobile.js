@@ -54,7 +54,7 @@ RecommendedLinkToolbarDialogMobile.prototype.onAcceptanceChanged = function () {
 	var isLastRecommendationSelected = this.isLastRecommendationSelected();
 	RecommendedLinkToolbarDialogMobile.super.prototype.onAcceptanceChanged.call( this );
 	// Auto-advance
-	if ( isLastRecommendationSelected && this.currentDataModel.isAccepted() ) {
+	if ( isLastRecommendationSelected ) {
 		mw.hook( 'growthExperiments.contextItem.saveArticle' ).fire();
 	} else if ( !isLastRecommendationSelected ) {
 		this.showRecommendationAtIndex( this.currentIndex + 1 );
