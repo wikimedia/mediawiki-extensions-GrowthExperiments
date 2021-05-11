@@ -82,11 +82,11 @@ MultiPaneDialog.prototype.getFooterElement = function () {
  * @return {jQuery}
  */
 MultiPaneDialog.prototype.getProgressDots = function () {
-	var dots = '', i;
+	var dots = [], i;
 	for ( i = 0; i < this.panels.length; i++ ) {
-		dots += '<span class="growthexperiments-multi-pane-dialog-dot"/>';
+		dots.push( $( '<span>' ).addClass( 'growthexperiments-multi-pane-dialog-dot' ) );
 	}
-	return $( '<div>' ).addClass( 'growthexperiments-multi-pane-dialog-dots-container' ).html( dots );
+	return $( '<div>' ).addClass( 'growthexperiments-multi-pane-dialog-dots-container' ).append( dots );
 };
 
 /**

@@ -3,9 +3,9 @@
 @import '../ext.growthExperiments.variables';
 
 .ve-ce-linkAnnotation.mw-ge-recommendedLinkAnnotation {
-	// allow annotation to be selected on Safari, otherwise window.getSelection().focusNode is null
-	-webkit-user-select: auto;
-	user-select: auto;
+	// On mobile, prevent text edit menu from showing up (T281771)
+	-webkit-user-select: none;
+	user-select: none;
 	background-color: @wmui-color-yellow90;
 	// use box-shadow instead of border to prevent shifting when annotation is active (2px border instead of 1px)
 	box-shadow: 0 0 0 1px @wmui-color-yellow50;
@@ -63,6 +63,9 @@
 	&-desktop {
 		padding: 2px 8px;
 		.rel-line-height( @parentFontSize: 14px, @targetLineHeight: 20px );
+		// allow annotation to be selected on Safari, otherwise window.getSelection().focusNode is null
+		-webkit-user-select: auto;
+		user-select: auto;
 	}
 }
 
