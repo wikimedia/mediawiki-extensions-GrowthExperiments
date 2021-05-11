@@ -72,3 +72,21 @@
 		box-shadow: 0 0 0 2px @wmui-color-accent50;
 	}
 }
+
+.ltr.sitedir-rtl {
+	.mw-ge-recommendedLinkAnnotation {
+		&:after {
+			/* @noflip */
+			margin: 0 0.5em 0 0;
+		}
+	}
+}
+
+.rtl.sitedir-ltr {
+	.mw-ge-recommendedLinkAnnotation {
+		&:after {
+			/* @noflip */
+			margin: 0 0 0 0.5em;
+		}
+	}
+}
