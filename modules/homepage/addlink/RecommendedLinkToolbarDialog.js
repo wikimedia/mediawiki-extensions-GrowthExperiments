@@ -639,8 +639,8 @@ RecommendedLinkToolbarDialog.prototype.showSkippedAllDialog = function () {
 	} ).closed.then( function ( data ) {
 		if ( data && data.action === 'accept' ) {
 			this.logger.log( 'confirm_skip_all_suggestions', {}, logMetadata );
-			// FIXME: T282546 ve.init.target.tryTeardown.then() does not work on mobile.
-			ve.init.target.tryTeardown( true, 'navigate-read' ).then( function () {
+			// FIXME: Implement a fix in VisualEditor T282546
+			( ve.init.target.tryTeardown( true, 'navigate-read' ) || $.Deferred().resolve() ).then( function () {
 				var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
 					suggestedEditSession = SuggestedEditSession.getInstance();
 
