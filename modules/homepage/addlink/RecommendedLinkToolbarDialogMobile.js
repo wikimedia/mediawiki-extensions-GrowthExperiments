@@ -66,9 +66,7 @@ RecommendedLinkToolbarDialogMobile.prototype.onAcceptanceChanged = function () {
  */
 RecommendedLinkToolbarDialogMobile.prototype.selectAnnotationView = function () {
 	RecommendedLinkToolbarDialogMobile.super.prototype.selectAnnotationView.call( this );
-	// Without deactivation, virtual keyboard shows up upon selection.
-	this.surface.getView().activate();
-	this.surface.getView().deactivate( false, false, true );
+	this.surface.scrollSelectionIntoView();
 };
 
 /**
@@ -112,9 +110,10 @@ RecommendedLinkToolbarDialogMobile.prototype.setupHelpButton = function () {
  * @private
  */
 RecommendedLinkToolbarDialogMobile.prototype.setSurfaceInputMode = function ( inputMode ) {
-	var documentNode = this.surface.getView().$element.find( '.ve-ce-documentNode' ).get( 0 );
-	if ( documentNode ) {
-		documentNode.inputMode = inputMode;
+	var $documentNode = this.surface.getView().$element.find( '.ve-ce-documentNode' );
+	$documentNode.addClass( 'mw-ge-user-select-none' );
+	if ( $documentNode.get( 0 ) ) {
+		$documentNode.get( 0 ).inputMode = inputMode;
 	}
 };
 

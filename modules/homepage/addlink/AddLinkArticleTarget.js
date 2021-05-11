@@ -98,7 +98,6 @@ AddLinkArticleTarget.prototype.afterSurfaceReady = function () {
 
 AddLinkArticleTarget.prototype.selectFirstRecommendation = function () {
 	this.getSurface().executeCommand( 'recommendedLink' );
-	this.getSurface().linkRecommendationFragments[ 0 ].fragment.select();
 };
 
 AddLinkArticleTarget.prototype.restoreScrollPosition = function () {
