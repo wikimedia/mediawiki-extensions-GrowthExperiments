@@ -620,6 +620,9 @@ RecommendedLinkToolbarDialog.prototype.updateDimensions = function () {
  * offering them to stay or leave.
  */
 RecommendedLinkToolbarDialog.prototype.showSkippedAllDialog = function () {
+	// eslint-disable-next-line camelcase
+	var logMetadata = { active_interface: 'skipall_dialog' };
+	this.logger.log( 'impression', {}, logMetadata );
 	this.surface.dialogs.openWindow( 'message', {
 		title: mw.message( 'growthexperiments-addlink-skip-title' ).text(),
 		message: mw.message( 'growthexperiments-addlink-skip-body' ).text(),
@@ -635,6 +638,8 @@ RecommendedLinkToolbarDialog.prototype.showSkippedAllDialog = function () {
 		]
 	} ).closed.then( function ( data ) {
 		if ( data && data.action === 'accept' ) {
+			this.logger.log( 'confirm_skip_all_suggestions', {}, logMetadata );
+			// FIXME: T282546 ve.init.target.tryTeardown.then() does not work on mobile.
 			ve.init.target.tryTeardown( true, 'navigate-read' ).then( function () {
 				var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
 					suggestedEditSession = SuggestedEditSession.getInstance();
@@ -642,8 +647,10 @@ RecommendedLinkToolbarDialog.prototype.showSkippedAllDialog = function () {
 				suggestedEditSession.setTaskState( SuggestedEditSession.static.STATES.CANCELLED );
 				suggestedEditSession.showPostEditDialog( { resetSession: true } );
 			} );
+		} else {
+			this.logger.log( 'review_again', {}, logMetadata );
 		}
-	} );
+	}.bind( this ) );
 };
 
 // Helpers
