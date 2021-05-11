@@ -45,6 +45,8 @@
 	"welcomesurvey-question-edited-option-dont-remember-label": "Не си спомням",
 	"welcomesurvey-question-email-label": "Адрес за електронна поща (незадължително)",
 	"welcomesurvey-question-email-placeholder": "Въведете Вашия адрес за електронна поща...",
+	"welcomesurvey-question-email-help": "Забелязахме, че не сте въвели електронна поща при създаването на този акаунт. Това е <strong>силно препоръчително</strong>, тъй като е необходима електронна поща за възстановяване на акаунта, ако загубите паролата си. ЗАБЕЛЕЖКА: Вашата електронна поща не се показва, когато други потребители се свързват с вас.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} е достъпен на близо 300 езика. Има ли други езици, на които четете и пишете?",
+	"welcomesurvey-question-languages-placeholder": "Добавяне към {{PLURAL:$1|един език|$1 езици}}...",
 	"welcomesurvey-question-languages-maximum": "Достигнали сте максималния брой на езиците."
 }

@@ -14,7 +14,7 @@
 		]
 	},
 	"growthexperiments-homepage-tab": "Espai de progrés d'usuari",
-	"growthexperiments-homepage-enable": "Mostra la pàgina d'inici d'usuari",
+	"growthexperiments-homepage-enable": "Mostra l'espai de progrés d'usuari",
 	"growthexperiments-homepage-account-header": "S'ha creat el compte",
 	"growthexperiments-homepage-account-editcount": "{{PLURAL:$1|edició|edicions}}",
 	"growthexperiments-homepage-userpage-header": "Crea {{GÈNERE:1$|la vostra}} pàgina d'usuari",

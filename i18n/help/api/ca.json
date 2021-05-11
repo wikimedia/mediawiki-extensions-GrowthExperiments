@@ -10,10 +10,10 @@
 	"apihelp-helppanelquestionposter-param-body": "El text de la pregunta feta per l'usuari.",
 	"apihelp-helppanelquestionposter-param-source": "El mètode en què es va publicar la pregunta.",
 	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "El plafó \"Pregunta al taulell de consultes\"",
-	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "El plafó \"Demana el teu mentor\" a la pàgina d'inici de nouvingut",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "El plafó «Sol·licita el teu mentor» a la pàgina de progrés d'usuari",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "La pantalla \"Demana al teu mentor\" al Plafó d'Ajuda",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "El plafó \"Demana al taulell de consultes\" (nom antic)",
-	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "El plafó \"Demana el teu mentor\" a la pàgina d'inici de nouvingut (nom antic)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "El plafó «Sol·licita el teu mentor» a l'espai de progrés d'usuari (nom antic)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "El títol pertinent, si està seleccionat, a incloure amb la pregunta.",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Has d'estar registrat per fer una pregunta."
 }

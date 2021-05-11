@@ -1,8 +1,45 @@
 {
 	"@metadata": {
 		"authors": [
+			"Emma Franzen",
 			"Hamilton Abreu"
 		]
 	},
-	"growthexperiments-desc": "Esta extensão contém experiências feita pela equipa Growth."
+	"growthexperiments-desc": "Esta extensão contém experiências feita pela equipa Growth.",
+	"growthexperiments-edit-config-disabled": "A configuração da comunidade está desativada no momento.",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Última atualização por [[Usuário: $1 | $1]] $2.",
+	"growthexperiments-edit-config-last-edit-unknown-user": "\n[[$2]]: Última atualização pelo usuário desconhecido $1.",
+	"growthexperiments-edit-config-pretext": "Esta página permite que você edite a configuração dos recursos da equipe [[: mw: Special: MyLanguage / Growth | Growth]]. Ele editará $ 1 em seu nome. Você pode ver suas alterações no histórico dessa página.",
+	"growthexperiments-edit-config-config-changed": "A configuração foi alterada. Pode ser necessário aguardar alguns minutos para que as alterações tenham efeito.",
+	"growthexperiments-edit-config-help-panel-post-on-top": "Onde postar perguntas no help desk?",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "Topo da página",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "Fim da página",
+	"growthexperiments-edit-config-help-panel-view-more": "Veja mais links exibidos no painel de ajuda",
+	"growthexperiments-edit-config-help-panel-ask-mentor": "Para onde as perguntas do painel de ajuda devem ser direcionadas?",
+	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Mentoras\nMentores",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "O help desk",
+	"growthexperiments-edit-config-help-panel-links": "Links do painel de ajuda",
+	"growthexperiments-edit-config-help-panel-links-mos-title": "Título da página do primeiro link no painel de ajuda (recomendação: o manual de estilo)",
+	"growthexperiments-edit-config-help-panel-links-mos-label": "Rótulo do primeiro link no painel de ajuda (recomendação: o manual de estilo)",
+	"growthexperiments-edit-config-help-panel-links-editing-title": "Título da página do segundo link no painel de ajuda (recomendação: manual para o editor visual)",
+	"growthexperiments-edit-config-help-panel-links-editing-label": "Rótulo do segundo link no painel de ajuda (recomendação: manual para o editor visual)",
+	"growthexperiments-edit-config-help-panel-links-images-title": "Título da página do terceiro link no painel de ajuda (recomendação: adicionar imagens usando o editor visual)",
+	"growthexperiments-edit-config-help-panel-links-images-label": "Rótulo do terceiro link no painel de ajuda (recomendação: adicionar imagens usando o editor visual)",
+	"growthexperiments-edit-config-help-panel-links-references-title": "Título da página do quarto link no painel de ajuda (recomendação: adicionar referências usando o editor visual)",
+	"growthexperiments-edit-config-help-panel-links-references-label": "Rótulo do quarto link no painel de ajuda (recomendação: adicionar referências usando o editor visual)",
+	"growthexperiments-edit-config-help-panel-links-articlewizard-title": "Título da página do quinto link no painel de ajuda (recomendação: o assistente de artigo)",
+	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "Rótulo do quinto link no painel de ajuda (recomendação: o assistente de artigo)",
+	"growthexperiments-edit-config-mentorship-enabled-true": "sim",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Não",
+	"growthexperiments-edit-config-newcomertasks": "Edições sugeridas",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Modelos usados ​​para encontrar artigos que precisam de edição de texto",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Pagina onde os recem-chegados podem aprendermais sobre edicao de copia.",
+	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Modelos usados ​​para encontrar artigos que precisam ser expandidos e que precisam de edição de cópia",
+	"growthexperiments-edit-config-newcomer-tasks-expand-learnmore": "Pagina onde os novatos podem aprender mais sobre como editar artigos",
+	"growthexperiments-edit-config-newcomer-tasks-links-templates": "Modelos usados ​​para encontrar artigos que precisam de mais links",
+	"growthexperiments-edit-config-newcomer-tasks-links-learnmore": "Página onde os novatos podem aprender mais sobre como adicionar links",
+	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Modelos usados ​​para encontrar artigos que precisam de mais referências",
+	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Pagina onde os novatos podem aprender mais sobre como adicionar referencias",
+	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Modelos usados ​​para encontrar artigos que precisam ser atualizados",
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Página onde os novatos podem aprender mais sobre como atualizar artigos"
 }

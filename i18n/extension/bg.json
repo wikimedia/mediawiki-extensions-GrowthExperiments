@@ -32,6 +32,8 @@
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Ментори",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Бюрото за помощ",
 	"growthexperiments-edit-config-help-panel-links": "Препратки от панела за помощ",
+	"growthexperiments-edit-config-help-panel-links-mos-title": "Заглавие на страницата на първата препратка в помощния панел (препоръчително: стил)",
+	"growthexperiments-edit-config-help-panel-links-mos-label": "Наименование на първата препратка в помощния панел (препоръчително: стил)",
 	"growthexperiments-edit-config-homepage": "Начална страница за новодошли",
 	"growthexperiments-edit-config-mentorship": "Менторство",
 	"growthexperiments-edit-config-mentorship-enabled": "Активирани ли са функциите за менторство?",
@@ -39,5 +41,15 @@
 	"growthexperiments-edit-config-mentorship-enabled-false": "Не",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Целева страница на списъка с автоматично отредени ментори",
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Целева страница на списъка с ръчно отредени ментори",
-	"growthexperiments-edit-config-newcomertasks": "Предложения за редактиране"
+	"growthexperiments-edit-config-newcomertasks": "Предложения за редактиране",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Шаблони, използвани за откриването на статии, които се нуждаят от редакции, свързани с правописа и граматиката",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Страница, от която новодошлите могат да научат повече за редактирането на правописа и граматиката",
+	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Шаблони, използвани за откриването на статии, които се нуждаят от допълване",
+	"growthexperiments-edit-config-newcomer-tasks-expand-learnmore": "Страница, от която новодошлите могат да научат повече за редактирането на статии",
+	"growthexperiments-edit-config-newcomer-tasks-links-templates": "Шаблони, използвани за откриването на статии, които се нуждаят от повече препратки",
+	"growthexperiments-edit-config-newcomer-tasks-links-learnmore": "Страница, от която новодошлите могат да научат повече за добавянето на препратки",
+	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Шаблони, използвани за откриването на статии, които се нуждаят от повече източници",
+	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Страница, от която новодошлите могат да научат повече за добавянето на източници",
+	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Шаблони, използвани за откриването на статии, които се нуждаят от актуализация",
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Страница, от която новодошлите могат да научат повече за актуализирането на статиите"
 }

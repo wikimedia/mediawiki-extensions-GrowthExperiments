@@ -3,6 +3,7 @@
 		"authors": [
 			"Albertoleoncio",
 			"Eduardoaddad",
+			"Emma Franzen",
 			"Fúlvio",
 			"GoEThe",
 			"Hamilton Abreu",
@@ -186,6 +187,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-description-update": "Os artigos ficam desatualizados à medida que o tempo passa e ocorrem novos acontecimentos. Encontre e adicione a informação correta para que a Wikipédia contenha sempre a verdade atual.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-expand": "Muitos artigos da Wikipédia têm apenas uma ou duas frases. Encontre mais informação e adicione-a para tornar o artigo mais completo.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-links": "Adicionar hiperligações é a maneira mais fácil de editar. As ligações ajudam os leitores a passarem de artigo para artigo para aprenderem mais rapidamente.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-link-recommendation": "Adicionar links e o mais facil maneria de editar. Links permitem que os leitores cliquem em algo que eles querem aprender mais sobre. <be/> Links sao sugeridos minha maquina, e {{genero sexual:$1|voces}} decidira se os adiciona ao artigo.",
 	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "Revisão (corrigir ortografia, gramática e tom)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-references": "Encontrar referências (fontes para artigos existentes)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-update": "Atualizar artigos (tornar os artigos existentes atuais)",
@@ -289,6 +291,8 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|adotou}} {{GENDER:$6|$3}} como seu mentorado (não tinha mentor anterior)",
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|definiu}} {{GENDER:$5|$7}} como {{GENDER:$5|mentor|mentora}} de {{GENDER:$6|$3}}  ({{GENDER:$4|mentor|mentora}} anterior: $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|definiu}} {{GENDER:$5|$7}} como {{GENDER:$5|mentor|mentora}} de {{GENDER:$6|$3}} (não tinha mentor anterior)",
+	"logentry-growthexperiments-addlink": "$1 {{genero sexual: $2|reveja}} $4 sugestoes de links para $3: aceitaram $5, rejeitada $6 e pulou $7",
+	"log-action-filter-growthexperiments-addlink": "sugestoes de links",
 	"growthexperiments-homepage-claimmentee-invalid-username": "O nome de utilizador do mentorado é inválido",
 	"growthexperiments-notification-header-mentor-change": "$1 é {{GENDER:$2|o {{GENDER:$3|seu}} novo mentor|a {{GENDER:$3|sua}} nova mentora}}",
 	"growthexperiments-notification-body-mentor-change": "Motivo: $1",
@@ -312,5 +316,14 @@
 	"growthexperiments-addlink-revdeleted": "A revisão $1 de \"$2\" não pode ser acedida",
 	"growthexperiments-addlink-wrongmodel": "A revisão $1 de \"$2\" não é texto wiki",
 	"growthexperiments-addlink-invalidjson": "A resposta do serviço de recomendação de hiperligações para \"$1\" é inválida",
-	"growthexperiments-addlink-serviceerror": "O serviço de recomendação de hiperligações respondeu com um erro para \"$1\": $2"
+	"growthexperiments-addlink-serviceerror": "O serviço de recomendação de hiperligações respondeu com um erro para \"$1\": $2",
+	"growthexperiments-addlink-notinstore": "Sugestao de link nao encontrada para $1",
+	"growthexperiments-addlink-duplicatesubmission": "tentou enviar sugestao de link comentarios para revisao \"$1\" que ja foi revisada.",
+	"growthexperiments-addlink-context-text-label": "Texto",
+	"growthexperiments-addlink-context-intro": "Este deve ser um link para o seguinte artigo?",
+	"growthexperiments-addlink-skip-title": "{{GENDER: | Você}} ignorou todas as sugestões para este artigo.",
+	"growthexperiments-addlink-skip-body": "Tem certeza de que {{GENDER: | você}} não deseja aceitar ou rejeitar nenhuma sugestão?",
+	"growthexperiments-addlink-skip-accept": "Pule tudo",
+	"growthexperiments-addlink-skip-reject": "Review again",
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Enviar…"
 }
