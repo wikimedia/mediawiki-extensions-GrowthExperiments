@@ -111,6 +111,11 @@
 			$( document.body ).append( windowManager.$element );
 			windowManager.addWindows( [ dialog ] );
 			lifecycle = windowManager.openWindow( dialog );
+			closePromise = lifecycle.closed.done( function () {
+				// Used by GettingStarted extension.
+				mw.hook( 'postEdit.afterRemoval' ).fire();
+				postEditPanel.logClose();
+			} );
 			lifecycle.opened.then( function () {
 				// Close dialog on outside click.
 				dialog.$element.on( 'click', function ( e ) {
@@ -121,11 +126,6 @@
 			} );
 			postEditPanel.on( 'edit-link-clicked', function () {
 				dialog.close();
-			} );
-			closePromise = lifecycle.closing.done( function () {
-				// Used by GettingStarted extension.
-				mw.hook( 'postEdit.afterRemoval' ).fire();
-				postEditPanel.logClose();
 			} );
 			openPromise = lifecycle.opened;
 		}
@@ -175,7 +175,7 @@
 
 		closePromise = displayPanelPromises.closePromise;
 		closePromise.done( function () {
-			if ( isLinkRecommendationTask ) {
+			if ( isLinkRecommendationTask && suggestedEditSession.taskState !== 'cancelled' ) {
 				// Link recommendation tasks are different from the unstructured tasks in that they
 				// cannot be repeated immediately after edit. So, after post edit dialog is closed,
 				// clear out the task type ID and task data. Currently not used elsewhere,
