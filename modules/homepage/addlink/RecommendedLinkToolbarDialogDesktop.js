@@ -53,7 +53,7 @@ RecommendedLinkToolbarDialogDesktop.prototype.updateContentForCurrentRecommendat
 RecommendedLinkToolbarDialogDesktop.prototype.updatePosition = function () {
 	var $surfaceView = this.surface.getView().$element,
 		surfaceOffset = $surfaceView.offset(),
-		maxSideEdge = $surfaceView.width(),
+		surfaceWidth = $surfaceView.width(),
 		$annotationView = this.annotationView.$element,
 		annotationOffset = $annotationView.offset(),
 		annotationWidth = $annotationView.outerWidth(),
@@ -67,13 +67,14 @@ RecommendedLinkToolbarDialogDesktop.prototype.updatePosition = function () {
 		startPosition;
 
 	if ( isRtl ) {
-		startPosition = maxSideEdge - annotationOffset.left - annotationWidth;
+		// Offset is the surface's right edge and the annotation's right edge.
+		startPosition = surfaceOffset.left + surfaceWidth - ( annotationOffset.left + annotationWidth );
 	} else {
 		startPosition = annotationOffset.left - surfaceOffset.left;
 	}
 
 	// Check whether the window will overflow past the surface edge
-	if ( startPosition + elementWidth > maxSideEdge ) {
+	if ( startPosition + elementWidth > surfaceWidth ) {
 		newPosition[ positionName ] = startPosition - elementWidth + annotationWidth;
 		isStartAnchored = false;
 	} else {
