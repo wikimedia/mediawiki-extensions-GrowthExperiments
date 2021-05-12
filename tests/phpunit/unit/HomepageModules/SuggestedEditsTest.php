@@ -38,6 +38,9 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 	 * @covers ::render
 	 */
 	public function testNoTopicFiltersWhenTopicMatchingDisabled() {
+		if ( !interface_exists( PageViewService::class ) ) {
+			$this->markTestSkipped( 'PageViewService not installed' );
+		}
 		$suggestedEdits = $this->getSuggestedEdits();
 		$out = $suggestedEdits->render( SuggestedEdits::RENDER_DESKTOP );
 		$wrapper = TestingAccessWrapper::newFromObject( $suggestedEdits );
