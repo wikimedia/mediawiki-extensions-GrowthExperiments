@@ -1,0 +1,20 @@
+{
+	"GEHelpPanelHelpDeskTitle": "Main Page",
+	"GEHelpPanelLinks": {
+		"helpDeskLink": "<a href=\"wiki/Main_Page\" title=\"Main Page\" target=\"_blank\" data-link-id=\"help-desk\">Community Help Desk</a>",
+		"helpPanelLinks": "<ul class=\"mw-ge-help-panel-links\"><li><a href=\"/w/index.php?title=Mewlocal:Help&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"Mewlocal:Help (page does not exist)\" target=\"_blank\" data-link-id=\"help\">Site help</a></li></ul>",
+		"viewMoreLink": "<a href=\"/wiki/Main_Page\" title=\"Main Page\" target=\"_blank\" data-link-id=\"view-more\">View more help articles</a>"
+	},
+	"GEHelpPanelLoggingEnabled": true,
+	"GEHelpPanelReadingModeNamespaces": [
+		2,
+		4,
+		12
+	],
+	"GEHelpPanelSearchForeignAPI": false,
+	"GEHelpPanelSearchNamespaces": [
+		4,
+		12
+	],
+	"GEHelpPanelSuggestedEditsPreferredEditor": "visualeditor"
+}
