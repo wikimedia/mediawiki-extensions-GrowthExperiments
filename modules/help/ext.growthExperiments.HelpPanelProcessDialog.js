@@ -646,6 +646,7 @@
 			if ( !suggestedEditSession.active ) {
 				return 'home';
 			}
+
 			// If the user is editing, they are on the guidance screen, and they
 			// have not interacted with guidance, switch them over to the home panel.
 			if ( isEditing && !suggestedEditSession.helpPanelSuggestedEditsInteractionHappened ) {
@@ -656,7 +657,9 @@
 				suggestedEditSession.helpPanelCurrentPanel;
 		}
 
-		this.swapPanel( getPanelFromSession( this.suggestedEditSession, this.logger.isEditing() ) );
+		this.swapPanel(
+			this.getDefaultPanelForSuggestedEditSession() ||
+			getPanelFromSession( this.suggestedEditSession, this.logger.isEditing() ) );
 		if ( !this.suggestedEditSession.helpPanelSuggestedEditsInteractionHappened ) {
 			this.setGuidanceAutoAdvance( true );
 		}
@@ -746,9 +749,12 @@
 			this.logger.isEditing(),
 			this.logger.getEditor()
 		);
+
 		// If the user is editing, they are on the guidance screen, and they
 		// have not interacted with guidance, switch them over to the home panel.
-		if ( this.logger.isEditing() && !this.suggestedEditSession.helpPanelSuggestedEditsInteractionHappened ) {
+		if ( this.logger.isEditing() &&
+			!this.suggestedEditSession.helpPanelSuggestedEditsInteractionHappened &&
+			!this.getDefaultPanelForSuggestedEditSession() ) {
 			// But now that they have seen the root screen, let's pretend
 			// an interaction happened so that the user doesn't get swapped
 			// over without asking again.
@@ -1007,6 +1013,22 @@
 			}, 5000 );
 		} else if ( !enable && this.guidanceAutoAdvanceTimer ) {
 			window.clearInterval( this.guidanceAutoAdvanceTimer );
+		}
+	};
+
+	/**
+	 * Return the default panel (if any) that should be shown for the
+	 * suggested edit session based on the task type
+	 *
+	 * @return {string|undefined}
+	 */
+	HelpPanelProcessDialog.prototype.getDefaultPanelForSuggestedEditSession = function () {
+		function shouldDefaultToSuggestedEdits( suggestedEditSession ) {
+			var targetTaskTypes = [ 'link-recommendation' ];
+			return targetTaskTypes.indexOf( suggestedEditSession.taskType ) !== -1;
+		}
+		if ( shouldDefaultToSuggestedEdits( this.suggestedEditSession ) ) {
+			return 'suggested-edits';
 		}
 	};
 
