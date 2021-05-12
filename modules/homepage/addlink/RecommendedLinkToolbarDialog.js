@@ -508,19 +508,20 @@ RecommendedLinkToolbarDialog.prototype.updateActionButtonsMode = function () {
 		nextButtonLeft = $nextButton.offset().left,
 		linkPreviewTextLeft = $linkPreviewText.offset().left,
 		canOverflowStateAlign = false,
+		imageOffset = 68, // @imageThumbnailSize + @gutterSize in RecommendedLinkContextItem.less
 		availableWidth;
 
 	// This doesn't have to be re-computed (doesn't change upon window resize).
 	this.acceptanceButtonsWidth = acceptanceButtonsWidth;
 
 	if ( this.surface.getDir() === 'rtl' ) {
-		availableWidth = $linkPreviewText.width() - ( nextButtonLeft + $nextButton.width() );
+		availableWidth = this.$linkPreview.width() - imageOffset - $nextButton.width();
 	} else {
 		availableWidth = nextButtonLeft - linkPreviewTextLeft;
 	}
 
 	if ( availableWidth < acceptanceButtonsWidth ) {
-		canOverflowStateAlign = acceptanceButtonsWidth + linkPreviewTextLeft < this.$buttons.width();
+		canOverflowStateAlign = acceptanceButtonsWidth + imageOffset < this.$buttons.width();
 		this.$acceptanceButtonGroup.addClass( 'overflow-state' );
 		this.$acceptanceButtonGroup.toggleClass( 'overflow-state-left-aligned', canOverflowStateAlign );
 	} else {
