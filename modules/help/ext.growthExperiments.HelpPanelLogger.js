@@ -43,7 +43,9 @@
 	 */
 	HelpPanelLogger.prototype.log = function ( action, data, metadataOverride ) {
 		var eventData;
-		if ( !this.enabled ) {
+		// T273700 in some rare cases the user is logged out when this is called, so to avoid
+		// eventgate-validation issues make sure we have an ID.
+		if ( !this.enabled || !mw.user.getId() ) {
 			return;
 		}
 
