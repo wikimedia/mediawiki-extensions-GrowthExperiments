@@ -187,7 +187,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-description-update": "Os artigos ficam desatualizados à medida que o tempo passa e ocorrem novos acontecimentos. Encontre e adicione a informação correta para que a Wikipédia contenha sempre a verdade atual.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-expand": "Muitos artigos da Wikipédia têm apenas uma ou duas frases. Encontre mais informação e adicione-a para tornar o artigo mais completo.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-links": "Adicionar hiperligações é a maneira mais fácil de editar. As ligações ajudam os leitores a passarem de artigo para artigo para aprenderem mais rapidamente.",
-	"growthexperiments-homepage-suggestededits-tasktype-description-link-recommendation": "Adicionar links e o mais facil maneria de editar. Links permitem que os leitores cliquem em algo que eles querem aprender mais sobre. <be/> Links sao sugeridos minha maquina, e {{genero sexual:$1|voces}} decidira se os adiciona ao artigo.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-link-recommendation": "Adicionar links e o mais facil maneria de editar. Links permitem que os leitores cliquem em algo que eles querem aprender mais sobre. <br/> Links sao sugeridos minha maquina, e {{GENDER:$1|voces}} decidira se os adiciona ao artigo.",
 	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "Revisão (corrigir ortografia, gramática e tom)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-references": "Encontrar referências (fontes para artigos existentes)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-update": "Atualizar artigos (tornar os artigos existentes atuais)",

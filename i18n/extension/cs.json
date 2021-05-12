@@ -14,9 +14,9 @@
 	"growthexperiments-config-validator-contentmodel-mismatch": "Model obsahu stránky se neshoduje: Konfigurace rozšíření GrowthExperiments musí mít model JSON, ale má $1",
 	"growthexperiments-edit-config-disabled": "Komunitní konfigurace je momentálně zakázaná.",
 	"growthexperiments-edit-config-title": "Editujte konfiguraci Growth funkcí",
-	"growthexperiments-edit-config-last-edit": "Naposledy upraveno {{GENDER:$1|uživatelem|uživatelkou}} [[User:$1|$1]] $2.",
-	"growthexperiments-edit-config-last-edit-unknown-user": "Naposledy upraveno neznámým uživatelem $1.",
-	"growthexperiments-edit-config-pretext": "Tato stránka vám umožňuje editovat konfiguraci funkcí vyvinutých týmem [[:mw:Special:MyLanguage/Growth|Growth]]. Vaším jménem bude editovat konfigurační stránku [[$1]]. Výsledek vašich změn můžete vidět na této stránce.",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Naposledy upraveno {{GENDER:$1|uživatelem|uživatelkou}} [[User:$1|$1]] $2.",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Naposledy upraveno neznámým uživatelem $1.",
+	"growthexperiments-edit-config-pretext": "Tato stránka vám umožňuje editovat konfiguraci funkcí vyvinutých týmem [[:mw:Special:MyLanguage/Growth|Growth]]. Vaším jménem bude editovat konfigurační stránku $1. Výsledek vašich změn můžete vidět na této stránce.",
 	"growthexperiments-edit-config-error-invalid-title": "Konfigurační stránka nebyla správně nastavena.",
 	"growthexperiments-edit-config-edit-summary": "Shrnutí editace",
 	"growthexperiments-edit-config-config-changed": "Konfigurace byla změněna. Možná budete muset počkat několik minut, než se změny projeví.",
@@ -53,5 +53,6 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "Ano",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Ne",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Stránka se seznamem automaticky přiřazovaných mentorů",
-	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Page title of list of manually assigned mentors"
+	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Page title of list of manually assigned mentors",
+	"growthexperiments-edit-config-newcomertasks": "Editační tipy"
 }

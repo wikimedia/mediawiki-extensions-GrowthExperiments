@@ -40,6 +40,7 @@
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>Viss skaidrs?</strong> Klikšķini uz \"{{int:vector-view-edit}}\", lai sāktu.",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>Viss skaidrs?</strong> Atver sadaļu, ko vēlies labot un nospied uz zīmuļa ikonas.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "Merkura sasniegšana no <mark class=\"negative\">Zemess</mark> rada ievērojamas tehniskas problēmas.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules1": "{{GENDER:|Tu}} vari labot pareizrakstības un gramatikas kļūdas. Tie var būt teikumi, kas ir par gariem, atkārtoti vārdi vai nepareizi lietotas pieturzīmes.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules1": "Marsam <mark class=\"negative\">ir ir</mark> divi mazi pavadoņi.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules2": "Jupiters ir lielākā<mark class=\"negative\"> un interesantākā</mark> planēta Saules sistēmā.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-text-rules2": "Šis teikums satur viedokli, kas būtu jāizņem.",

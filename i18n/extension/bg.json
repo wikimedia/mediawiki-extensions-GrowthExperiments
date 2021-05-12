@@ -34,6 +34,8 @@
 	"growthexperiments-edit-config-help-panel-links": "Препратки от панела за помощ",
 	"growthexperiments-edit-config-help-panel-links-mos-title": "Заглавие на страницата на първата препратка в помощния панел (препоръчително: стил)",
 	"growthexperiments-edit-config-help-panel-links-mos-label": "Наименование на първата препратка в помощния панел (препоръчително: стил)",
+	"growthexperiments-edit-config-help-panel-links-articlewizard-title": "Заглавие на страницата на петата препратка в помощния панел (препоръчително: вълшебник)",
+	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "Наименование на петата препратка в помощния панел (препоръчително: вълшебник)",
 	"growthexperiments-edit-config-homepage": "Начална страница за новодошли",
 	"growthexperiments-edit-config-mentorship": "Менторство",
 	"growthexperiments-edit-config-mentorship-enabled": "Активирани ли са функциите за менторство?",
