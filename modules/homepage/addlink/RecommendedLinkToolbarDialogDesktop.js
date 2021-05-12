@@ -86,4 +86,13 @@ RecommendedLinkToolbarDialogDesktop.prototype.updatePosition = function () {
 	this.$anchor.toggleClass( 'mw-ge-recommendedLinkContextItem-desktop-anchor-end', !isStartAnchored );
 };
 
+/**
+ * @inheritdoc
+ */
+RecommendedLinkToolbarDialogDesktop.prototype.onAcceptanceChanged = function () {
+	RecommendedLinkToolbarDialogDesktop.super.prototype.onAcceptanceChanged.call( this );
+	// Annotation element changes so it needs to be re-selected.
+	this.selectAnnotationView();
+};
+
 module.exports = RecommendedLinkToolbarDialogDesktop;
