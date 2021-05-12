@@ -25,13 +25,6 @@ function RecommendedLinkToolbarDialog() {
 	 */
 	this.isUpdatingCurrentRecommendation = true;
 	/**
-	 * @property {Function} onContextChangeDebounced Debounced handler for onContextChange event
-	 */
-	this.onContextChangeDebounced = ve.debounce(
-		this.showRecommendationForSelection.bind( this ),
-		250
-	);
-	/**
 	 * @property {number} scrollOffset Amount of space between the window and the annotation when scrolled
 	 */
 	this.scrollOffset = 100;
@@ -81,7 +74,6 @@ RecommendedLinkToolbarDialog.prototype.getSetupProcess = function ( data ) {
 		.next( function () {
 			this.surface = data.surface;
 			this.linkRecommendationFragments = data.surface.linkRecommendationFragments;
-			this.surface.getModel().connect( this, { contextChange: 'onContextChange' } );
 			this.afterSetupProcess();
 		}, this );
 };
@@ -89,16 +81,23 @@ RecommendedLinkToolbarDialog.prototype.getSetupProcess = function ( data ) {
 // Event Handlers
 
 /**
+ * Show the recommendation corresponding to the annotation model
+ * This is used when the user clicks on an annotation instead of using
+ * the navigation in the link inspector.
+ *
+ * @param {mw.libs.ge.dm.RecommendedLinkAnnotation} annotationModel DataModel
+ */
+RecommendedLinkToolbarDialog.prototype.onAnnotationClicked = function ( annotationModel ) {
+	this.showRecommendationAtIndex( this.getIndexForModel( annotationModel ) );
+	this.surface.scrollSelectionIntoView();
+};
+
+/**
  * Initialize elements after this.surface and this.linkRecommendationFragments are set
  */
 RecommendedLinkToolbarDialog.prototype.afterSetupProcess = function () {
 	this.updateSurfacePadding();
 	this.setupProgressIndicators( this.linkRecommendationFragments.length );
-	this.showRecommendationAtIndex( this.currentIndex );
-	setTimeout( this.updateActionButtonsMode.bind( this ) );
-	$( window ).on( 'resize',
-		OO.ui.debounce( this.updateActionButtonsMode.bind( this ), 250 )
-	);
 	// By default, a box is shown on top of the selected annotation.
 	this.$surfaceSelectionOverlay = this.surface.$element.find( '.ve-ce-surface-deactivatedSelection-showAsDeactivated' );
 	this.$surfaceSelectionOverlay.hide();
@@ -112,6 +111,13 @@ RecommendedLinkToolbarDialog.prototype.afterSetupProcess = function () {
 	this.setLinkCacheIconFunction( function () {
 		return 'image';
 	} );
+
+	this.showRecommendationAtIndex( this.currentIndex );
+	setTimeout( this.updateActionButtonsMode.bind( this ) );
+	$( window ).on( 'resize',
+		OO.ui.debounce( this.updateActionButtonsMode.bind( this ), 250 )
+	);
+	mw.hook( 'growthExperiments.onAnnotationClicked' ).add( this.onAnnotationClicked.bind( this ) );
 };
 
 /**
@@ -179,13 +185,6 @@ RecommendedLinkToolbarDialog.prototype.onAcceptanceChanged = function () {
 };
 
 /**
- * Handle context change events from the surface model
- */
-RecommendedLinkToolbarDialog.prototype.onContextChange = function () {
-	this.onContextChangeDebounced();
-};
-
-/**
  * @inheritdoc
  */
 RecommendedLinkToolbarDialog.prototype.teardown = function () {
@@ -196,15 +195,6 @@ RecommendedLinkToolbarDialog.prototype.teardown = function () {
 };
 
 // Interactions with annotation view & data model
-
-/**
- * Show the recommendation corresponding to the current selection
- * This is used when the user clicks on an annotation instead of using
- * the navigation in the link inspector.
- */
-RecommendedLinkToolbarDialog.prototype.showRecommendationForSelection = function () {
-	this.showRecommendationAtIndex( this.getIndexForCurrentSelection() );
-};
 
 /**
  * Mark this suggestion as accepted, rejected or undecided, and store rejection reason if given.
@@ -259,35 +249,30 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 };
 
 /**
- * Get the index of the corresponding linkRecommendationFragment for the current selection
+ * Get the index of the corresponding linkRecommendationFragment for the specified model
  *
  * @private
+ * @param {mw.libs.ge.dm.RecommendedLinkAnnotation} annotationModel DataModel
  * @return {number} Zero-based index of the suggestion in the linkRecommendationFragments array
  */
-RecommendedLinkToolbarDialog.prototype.getIndexForCurrentSelection = function () {
-	var currentSelection = this.surface.getModel().getSelection(),
-		currentSelectionRange = currentSelection.range,
+RecommendedLinkToolbarDialog.prototype.getIndexForModel = function ( annotationModel ) {
+	var modelRecommendationWikiTextOffset = annotationModel.getAttribute( 'recommendationWikitextOffset' ),
 		currentIndex = this.currentIndex,
-		currentRange = this.linkRecommendationFragments[ currentIndex ].fragment.selection.range,
-		i, currentSelectionIndex,
-		recommendation, recommendationSelectionRange;
+		fragment = this.linkRecommendationFragments[ currentIndex ],
+		i, modelIndex;
 
-	if ( !currentSelectionRange || currentRange.containsRange( currentSelectionRange ) ) {
+	if ( modelRecommendationWikiTextOffset === fragment.recommendationWikitextOffset ) {
 		return currentIndex;
 	}
 
 	for ( i = 0; i < this.linkRecommendationFragments.length; i++ ) {
-		recommendation = this.linkRecommendationFragments[ i ].fragment;
-		recommendationSelectionRange = recommendation.selection.range;
-		if ( i !== currentIndex &&
-			recommendationSelectionRange.containsRange( currentSelectionRange ) ) {
-			currentSelectionIndex = i;
+		fragment = this.linkRecommendationFragments[ i ];
+		if ( modelRecommendationWikiTextOffset === fragment.recommendationWikitextOffset ) {
+			modelIndex = i;
 			break;
 		}
 	}
-	// currentSelectionIndex is undefined when the user selects outside the annotations.
-	// Since the context item remains open, show the last selected recommendation.
-	return typeof currentSelectionIndex !== 'undefined' ? currentSelectionIndex : currentIndex;
+	return typeof modelIndex !== 'undefined' ? modelIndex : currentIndex;
 };
 
 /**
@@ -328,7 +313,9 @@ RecommendedLinkToolbarDialog.prototype.showRecommendationAtIndex = function ( in
 		this.annotationView.updateActiveClass( false );
 	}
 	this.selectAnnotationView();
-	this.annotationView.updateActiveClass( true );
+	if ( this.annotationView ) {
+		this.annotationView.updateActiveClass( true );
+	}
 	this.updateContentForCurrentRecommendation();
 };
 
