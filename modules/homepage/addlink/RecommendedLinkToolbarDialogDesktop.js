@@ -1,4 +1,6 @@
-var RecommendedLinkToolbarDialog = require( 'ext.growthExperiments.AddLink' ).RecommendedLinkToolbarDialog;
+var AddLink = require( 'ext.growthExperiments.AddLink' ),
+	RecommendedLinkToolbarDialog = AddLink.RecommendedLinkToolbarDialog,
+	LinkSuggestionInteractionLogger = AddLink.LinkSuggestionInteractionLogger;
 
 /**
  * @class mw.libs.ge.RecommendedLinkToolbarDialogDesktop
@@ -9,6 +11,12 @@ function RecommendedLinkToolbarDialogDesktop() {
 	RecommendedLinkToolbarDialogDesktop.super.apply( this, arguments );
 	this.$element.addClass( [ 'mw-ge-recommendedLinkContextItem-desktop' ] );
 	this.minHeight = 200;
+	this.logger = new LinkSuggestionInteractionLogger( {
+		/* eslint-disable camelcase */
+		is_mobile: false,
+		active_interface: 'recommendedlinktoolbar_dialog'
+		/* eslint-enable camelcase */
+	} );
 }
 
 OO.inheritClass( RecommendedLinkToolbarDialogDesktop, RecommendedLinkToolbarDialog );

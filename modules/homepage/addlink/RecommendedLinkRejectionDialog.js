@@ -60,14 +60,11 @@ RecommendedLinkRejectionDialog.prototype.getSetupProcess = function ( data ) {
 		}, this );
 };
 
-RecommendedLinkRejectionDialog.prototype.getActionProcess = function ( action ) {
-	if ( action === 'done' ) {
-		return new OO.ui.Process( function () {
-			var selectedItem = this.reasonSelect.findSelectedItem();
-			this.close( { action: 'done', reason: selectedItem && selectedItem.getData() } );
-		}, this );
-	}
-	return RecommendedLinkRejectionDialog.super.prototype.getActionProcess.call( this, action );
+RecommendedLinkRejectionDialog.prototype.getActionProcess = function () {
+	return new OO.ui.Process( function () {
+		var selectedItem = this.reasonSelect.findSelectedItem();
+		this.close( { action: 'done', reason: selectedItem && selectedItem.getData() } );
+	}, this );
 };
 
 module.exports = RecommendedLinkRejectionDialog;

@@ -47,6 +47,7 @@
 		this.mode = config.mode;
 		this.currentCard = null;
 		this.apiPromise = null;
+		this.newcomerTaskToken = null;
 		this.taskTypesQuery = [];
 		this.topicsQuery = [];
 		this.api = api;
@@ -333,8 +334,8 @@
 	SuggestedEditsModule.prototype.logCardData = function ( cardPosition ) {
 		var newcomerTaskLogger = new NewcomerTaskLogger(),
 			task = this.taskQueue[ cardPosition ];
-
-		return newcomerTaskLogger.log( task, cardPosition );
+		this.newcomerTaskToken = newcomerTaskLogger.log( task, cardPosition );
+		return this.newcomerTaskToken;
 	};
 
 	/**
@@ -367,7 +368,12 @@
 		} else {
 			this.currentCard = new EditCardWidget( this.taskQueue[ queuePosition ] );
 		}
-
+		this.logger.log(
+			'suggested-edits',
+			this.mode,
+			'se-task-impression',
+			{ newcomerTaskToken: this.logCardData( queuePosition ) }
+		);
 		this.updateCardElement();
 		this.updateControls();
 
@@ -382,12 +388,6 @@
 				$.extend( { extraDataLoaded: true }, this.taskQueue[ queuePosition ] )
 			);
 			this.updateCardElement();
-			this.logger.log(
-				'suggested-edits',
-				this.mode,
-				'se-task-impression',
-				{ newcomerTaskToken: this.logCardData( queuePosition ) }
-			);
 		}.bind( this ) );
 	};
 
@@ -483,7 +483,10 @@
 		var $link = this.currentCard.$element.find( '.se-card-content' ),
 			clickId = mw.config.get( 'wgGEHomepagePageviewToken' ),
 			newUrl = $link.attr( 'href' ) ?
-				new mw.Uri( $link.attr( 'href' ) ).extend( { geclickid: clickId } ).toString() :
+				new mw.Uri( $link.attr( 'href' ) ).extend( {
+					geclickid: clickId,
+					genewcomertasktoken: this.newcomerTaskToken
+				} ).toString() :
 				'';
 
 		$link

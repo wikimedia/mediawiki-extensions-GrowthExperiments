@@ -1,5 +1,7 @@
-var AddLinkArticleTarget = require( 'ext.growthExperiments.AddLink' ).AddLinkArticleTarget,
-	MachineSuggestionsMode = require( 'ext.growthExperiments.AddLink' ).MachineSuggestionsMode;
+var AddLink = require( 'ext.growthExperiments.AddLink' ),
+	AddLinkArticleTarget = AddLink.AddLinkArticleTarget,
+	MachineSuggestionsMode = AddLink.MachineSuggestionsMode,
+	LinkSuggestionInteractionLogger = AddLink.LinkSuggestionInteractionLogger;
 
 /**
  * Desktop version of AddLinkArticleTarget
@@ -13,6 +15,10 @@ function AddLinkDesktopArticleTarget() {
 	AddLinkDesktopArticleTarget.super.apply( this, arguments );
 	this.$element.addClass( 've-init-mw-addLinkArticleTarget' );
 	this.toolbarScrollOffset = 50;
+	this.logger = new LinkSuggestionInteractionLogger( {
+		// eslint-disable-next-line camelcase
+		is_mobile: false
+	} );
 }
 
 OO.inheritClass( AddLinkDesktopArticleTarget, ve.init.mw.DesktopArticleTarget );
