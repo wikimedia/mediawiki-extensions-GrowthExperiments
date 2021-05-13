@@ -10,10 +10,10 @@ class NewcomerTasksValidator implements IConfigValidator {
 	/** @var string[] */
 	public const SUGGESTED_EDITS_TASK_TYPES = [
 		'copyedit' => 'easy',
-		'expand' => 'hard',
 		'links' => 'easy',
 		'references' => 'medium',
-		'update' => 'medium'
+		'update' => 'medium',
+		'expand' => 'hard'
 	];
 
 	/** @var TaskTypeHandlerRegistry */
