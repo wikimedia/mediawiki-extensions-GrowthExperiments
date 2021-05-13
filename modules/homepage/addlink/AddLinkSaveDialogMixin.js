@@ -1,3 +1,5 @@
+var LinkSuggestionInteractionLogger = require( './LinkSuggestionInteractionLogger.js' );
+
 /**
  * Mixin for code sharing between AddLinkSaveDialog and AddLinkMobileSaveDialog.
  * This is to solve the diamond inheritance problem of ve.ui.MWSaveDialog -->
@@ -10,6 +12,12 @@
  */
 function AddLinkSaveDialogMixin() {
 	this.$element.addClass( 'ge-addlink-mwSaveDialog' );
+	this.logger = new LinkSuggestionInteractionLogger( {
+		/* eslint-disable camelcase */
+		is_mobile: OO.ui.isMobile(),
+		active_interface: 'editsummary_dialog'
+		/* eslint-enable camelcase */
+	} );
 }
 OO.initClass( AddLinkSaveDialogMixin );
 
@@ -111,6 +119,13 @@ AddLinkSaveDialogMixin.prototype.getSetupProcess = function ( data ) {
 		if ( this.checkboxesByName.wpWatchthis ) {
 			this.checkboxesByName.wpWatchthis.setSelected( true );
 		}
+		this.logger.log( 'impression', {
+			/* eslint-disable camelcase */
+			accepted_count: acceptedCount,
+			rejected_count: rejectedCount,
+			skipped_count: skippedCount
+			/* eslint-enable camelcase */
+		} );
 	}, this );
 };
 
@@ -119,6 +134,7 @@ AddLinkSaveDialogMixin.prototype.getTeardownProcess = function ( data ) {
 	return this.constructor.super.prototype.getTeardownProcess.call( this, data ).next( function () {
 		var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
 			suggestedEditSession = SuggestedEditSession.getInstance();
+		this.logger.log( 'close' );
 
 		// If the page was saved, try showing the post-edit dialog. This is a hack for the case
 		// when no link recommendation was accepted so the save was a null edit and the postEdit
@@ -128,6 +144,14 @@ AddLinkSaveDialogMixin.prototype.getTeardownProcess = function ( data ) {
 			suggestedEditSession.showPostEditDialog( { resetSession: true } );
 		}
 	}, this );
+};
+
+/** @inheritDoc */
+AddLinkSaveDialogMixin.prototype.getActionProcess = function ( action ) {
+	if ( [ 'save', 'review', 'approve', 'report' ].indexOf( action ) >= 0 ) {
+		this.logger.log( 'editsummary_' + action );
+	}
+	return this.constructor.super.prototype.getActionProcess.call( this, action );
 };
 
 module.exports = AddLinkSaveDialogMixin;
