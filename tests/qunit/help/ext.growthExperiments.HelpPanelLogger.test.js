@@ -7,7 +7,8 @@ QUnit.module( 'ext.growthExperiments.HelpPanelLogger.js', QUnit.newMwEnvironment
 		wgCanonicalSpecialPageName: false,
 		wgUserEditCount: 42,
 		wgNamespaceNumber: 0,
-		wgIsProbablyEditable: true
+		wgIsProbablyEditable: true,
+		wgUserId: 1
 	}
 } ) );
 
