@@ -63,6 +63,11 @@ RecommendedLinkToolbarDialog.prototype.initialize = function () {
 	this.$progressTitle = $( '<span>' ).addClass( 'mw-ge-recommendedLinkContextItem-progress-title' );
 	this.$head.append( [ robotIcon.$element, this.$progressTitle, this.$progress ] );
 	this.$body.append( [ introLabel.$element, this.$linkPreview, this.$buttons ] );
+
+	// Used by other dialogs to return focus.
+	mw.hook( 'addlink-regainfocus' ).add( function () {
+		this.regainFocus();
+	}.bind( this ) );
 };
 
 /**
@@ -351,6 +356,7 @@ RecommendedLinkToolbarDialog.prototype.selectAnnotationView = function () {
 			return true;
 		}
 	}.bind( this ) );
+	this.regainFocus();
 };
 
 /**
@@ -631,6 +637,13 @@ RecommendedLinkToolbarDialog.prototype.updateDimensions = function () {
 };
 
 /**
+ * Return focus to the dialog, so that navigation with tab, Esc etc. works.
+ */
+RecommendedLinkToolbarDialog.prototype.regainFocus = function () {
+	this.$content.get( 0 ).focus( { preventScroll: true } );
+};
+
+/**
  * Show a dialog informing the user that they skipped all recommendations and
  * offering them to stay or leave.
  */
@@ -664,6 +677,7 @@ RecommendedLinkToolbarDialog.prototype.showSkippedAllDialog = function () {
 			} );
 		} else {
 			this.logger.log( 'review_again', {}, logMetadata );
+			this.regainFocus();
 		}
 	}.bind( this ) );
 };
