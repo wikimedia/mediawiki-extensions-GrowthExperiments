@@ -266,6 +266,11 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'required' => true,
 				'section' => 'homepage',
 			],
+			'geconfig-mentorship-description' => [
+				'type' => 'info',
+				'label-message' => 'growthexperiments-edit-config-mentorship-description',
+				'section' => 'mentorship',
+			],
 			'geconfig-GEMentorshipEnabled' => [
 				'type' => 'radio',
 				'label-message' => 'growthexperiments-edit-config-mentorship-enabled',
@@ -288,6 +293,13 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'label-message' => 'growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors',
 				'required' => false,
 				'section' => 'mentorship',
+			],
+
+			// Description for suggested edits config
+			'newcomertasks-section-description' => [
+				'type' => 'info',
+				'label-message' => 'growthexperiments-edit-config-newcomer-tasks-description',
+				'section' => 'newcomertasks',
 			],
 		];
 
@@ -312,6 +324,11 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		}
 
 		$descriptors = array_merge( $descriptors, [
+			'geconfig-help-panel-description' => [
+				'type' => 'info',
+				'label-message' => 'growthexperiments-edit-config-help-panel-description',
+				'section' => 'help-panel',
+			],
 			'geconfig-GEHelpPanelExcludedNamespaces' => [
 				'type' => 'namespacesmultiselect',
 				'exists' => true,
@@ -357,6 +374,11 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					'growthexperiments-edit-config-help-panel-post-on-top-false' => 'false',
 				],
 				'section' => 'help-panel',
+			],
+			'geconfig-GEHelpPanelLinks-description' => [
+				'type' => 'info',
+				'label-message' => 'growthexperiments-edit-config-help-panel-links-description',
+				'section' => 'help-panel-links',
 			],
 			'geconfig-GEHelpPanelLinks-0-title' => [
 				'type' => 'title',
