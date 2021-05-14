@@ -1,7 +1,8 @@
 var AddLink = require( 'ext.growthExperiments.AddLink' ),
 	AddLinkArticleTarget = AddLink.AddLinkArticleTarget,
 	MachineSuggestionsMode = AddLink.MachineSuggestionsMode,
-	LinkSuggestionInteractionLogger = AddLink.LinkSuggestionInteractionLogger;
+	LinkSuggestionInteractionLogger = AddLink.LinkSuggestionInteractionLogger,
+	router = require( 'mediawiki.router' );
 
 /**
  * Mobile version of AddLinkArticleTarget
@@ -36,7 +37,9 @@ AddLinkMobileArticleTarget.prototype.surfaceReady = function () {
 	this.updateHistory();
 };
 
-/** @inheritdoc */
+/**
+ * @inheritdoc
+ */
 AddLinkMobileArticleTarget.prototype.setupToolbar = function () {
 	AddLinkMobileArticleTarget.super.prototype.setupToolbar.apply( this, arguments );
 	this.toolbar.$group.addClass( 'mw-ge-machine-suggestions-title-toolgroup' );
@@ -53,13 +56,19 @@ AddLinkMobileArticleTarget.prototype.setupToolbar = function () {
 };
 
 /**
- * Make the close button take the user to the article's read mode
- * instead of Special:Homepage
+ * Update history as if the user were to navigate to edit mode from read mode
+ *
+ * This allows the close button to take the user to the article's read mode
+ * instead of Special:Homepage and for OO.Router to show abandonededit dialog
+ * which relies on hashchange event.
  */
 AddLinkMobileArticleTarget.prototype.updateHistory = function () {
-	var uri = new mw.Uri();
-	uri.fragment = '';
-	window.history.replaceState( null, null, uri.toString() );
+	router.navigateTo( 'read', { path: location.pathname + location.search, useReplaceState: true } );
+	router.navigateTo( 'edit', {
+		path: location.pathname + location.search + '#/editor/all',
+		useReplaceState: false
+	} );
+	router.oldHash = '/editor/all';
 };
 
 module.exports = AddLinkMobileArticleTarget;
