@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ted Masters"
+		]
+	},
+	"apihelp-helppanelquestionposter-param-body": "Текстът на въпроса, предоставен от потребителя.",
+	"apihelp-helppanelquestionposter-param-source": "Начинът, по който е бил публикуван въпросът.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Трябва да сте влезли в системата, за да зададете своя въпрос."
+}

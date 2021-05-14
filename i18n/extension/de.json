@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"FF-11",
 			"Metalhead64"
 		]
 	},
-	"growthexperiments-desc": "Diese Erweiterung enthält Experimente des Growth-Teams."
+	"growthexperiments-desc": "Diese Erweiterung enthält Experimente des Growth-Teams.",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Zuletzt aktualisiert von [[User:$1|$1]] $2.",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Zuletzt vom unbekannten Benutzer $1 aktualisiert.",
+	"growthexperiments-edit-config-newcomertasks": "Vorgeschlagene Bearbeitungen"
 }

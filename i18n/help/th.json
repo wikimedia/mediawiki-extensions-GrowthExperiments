@@ -35,7 +35,7 @@
 	"growthexperiments-help-panel-questionreview-label": "คำถามของคุณ",
 	"growthexperiments-help-panel-questionreview-include-article-title": "ใส่ชื่อหน้าในคำถามของฉันด้วย",
 	"growthexperiments-help-panel-question-subject-template": "คำถามโดยผ่านหน้าต่างช่วยเหลือ",
-	"growthexperiments-help-panel-question-subject-template-with-title": "คำถามเกี่ยวกับ [[$1]] โดยผ่านหน้าต่างช่วยเหลือ",
+	"growthexperiments-help-panel-question-subject-template-with-title": "คำถามเกี่ยวกับ [[:$1]] โดยผ่านหน้าต่างช่วยเหลือ",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "คำถามถามโดยการใช้หน้าหลักผู้ใช้",
 	"growthexperiments-help-panel-question-post-error": "พบข้อผิดพลาดขณะพยายามโพสต์คำถามของคุณ กรุณาลองใหม่อีกครั้ง หรือไปที่$1ในเบราว์เซอร์แล้วเพิ่มคำถามด้วยตนเอง",
 	"growthexperiments-help-panel-suggestededits-title": "การแก้ไขที่แนะนำ",

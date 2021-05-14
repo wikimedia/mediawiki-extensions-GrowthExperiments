@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Bluetpp",
+			"Keo010122",
 			"Tuanminh01"
 		]
 	},
@@ -11,7 +12,7 @@
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> phải là <code>$2</code>, nhưng thay vào đó lại là <code>$3</code>",
 	"growthexperiments-edit-config-disabled": "Cấu hình cộng đồng hiện đang tắt.",
 	"growthexperiments-edit-config-title": "Sửa đổi cấu hình Tăng trưởng",
-	"growthexperiments-edit-config-last-edit": "[[$3]]: Được cập nhật lần cuối bởi [[Thành viên:$1|$1]] $2.",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Được cập nhật lần cuối bởi [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Được cập nhật lần cuối bởi thành viên vô danh $1.",
 	"growthexperiments-edit-config-pretext": "Trang này cho phép bạn sửa đổi cấu hình của các tính năng của nhóm [[:mw:Special:MyLanguage/Growth|Tăng trưởng]]. Nó sẽ sửa đổi $1 thay bạn. Bạn có thể xem các thay đổi ở lịch sử trang của trang đó.",
 	"growthexperiments-edit-config-error-invalid-title": "Trang cấu hình không được thiết lập một cách hợp lệ",
