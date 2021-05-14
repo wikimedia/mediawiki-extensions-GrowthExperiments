@@ -163,8 +163,7 @@ class HelpPanelHooks {
 			'GEHelpPanelLinks' => HelpPanel::getHelpPanelLinks(
 				$context, self::getGrowthWikiConfig()
 			),
-			'GEHelpPanelSuggestedEditsPreferredEditor' =>
-				self::getGrowthWikiConfig()->get( 'GEHelpPanelSuggestedEditsPreferredEditor' ),
+			'GEHelpPanelSuggestedEditsPreferredEditor' => self::getPreferredEditor(),
 			'GEHelpPanelHelpDeskTitle' => $helpdeskTitle ? $helpdeskTitle->getPrefixedText() : null,
 		];
 	}
@@ -202,6 +201,22 @@ class HelpPanelHooks {
 				->getUserEditCount( $mentor->getMentorUser() ),
 			'lastActive' => Mentorship::getMentorLastActive( $mentor->getMentorUser(), $user, $localizer ),
 		];
+	}
+
+	/**
+	 * Return preferred editor for each task type based on task type handler
+	 *
+	 * @return array
+	 */
+	private static function getPreferredEditor(): array {
+		$geServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		$taskTypes = $geServices->getNewcomerTasksConfigurationLoader()->getTaskTypes();
+		$preferredEditorPerHandlerId = self::getGrowthWikiConfig()->get( 'GEHelpPanelSuggestedEditsPreferredEditor' );
+		$preferredEditorPerTaskType = [];
+		foreach ( $taskTypes as $taskTypeId => $taskType ) {
+			$preferredEditorPerTaskType[ $taskTypeId ] = $preferredEditorPerHandlerId[ $taskType->getHandlerId() ];
+		}
+		return $preferredEditorPerTaskType;
 	}
 
 }
