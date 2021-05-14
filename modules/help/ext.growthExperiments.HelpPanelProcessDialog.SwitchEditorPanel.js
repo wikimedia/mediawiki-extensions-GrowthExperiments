@@ -27,7 +27,7 @@
 		if ( this.currentEditor === 'wikitext-2017' ) {
 			this.currentEditor = 'wikitext';
 		}
-		shouldShow = inEditMode && this.currentEditor !== this.preferredEditor && !currentTitle.isTalkPage();
+		shouldShow = inEditMode && !this.isCurrentEditorPreferred() && !currentTitle.isTalkPage();
 		this.$element.toggle( shouldShow );
 	};
 
@@ -108,6 +108,23 @@
 			// eslint-disable-next-line no-undef
 			ve.init.target.switchToWikitextEditor();
 		}
+	};
+
+	/**
+	 * Check whether the current editor is the same as the preferred editor
+	 * or if the preferred editor is a subtype of the current editor
+	 *
+	 * @private
+	 * @return {boolean}
+	 */
+	SwitchEditorPanel.prototype.isCurrentEditorPreferred = function () {
+		var editorModes = {
+			visualeditor: [ 'machineSuggestions' ]
+		};
+		if ( this.currentEditor === this.preferredEditor ) {
+			return true;
+		}
+		return ( editorModes[ this.currentEditor ] || [] ).indexOf( this.preferredEditor ) !== -1;
 	};
 
 	module.exports = SwitchEditorPanel;
