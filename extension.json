@@ -6,7 +6,8 @@
 		"Stephane Bisson",
 		"Kosta Harlan",
 		"Roan Kattouw",
-		"Gergő Tisza"
+		"Gergő Tisza",
+		"Martin Urbanec"
 	],
 	"url": "https://www.mediawiki.org/wiki/Extension:GrowthExperiments",
 	"requires": {
