@@ -37,7 +37,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testGetTaskTypesJson() {
 		$configurationLoader = $this->getMockBuilder( ConfigurationLoader::class )
-			->setMethods( [ 'loadTaskTypes', 'setMessageLocalizer' ] )
+			->onlyMethods( [ 'loadTaskTypes' ] )
 			->getMockForAbstractClass();
 		$configurationLoader->method( 'loadTaskTypes' )
 			->willReturn( [
@@ -56,7 +56,7 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 	 */
 	public function testGetTaskTypesJson_error() {
 		$configurationLoader = $this->getMockBuilder( ConfigurationLoader::class )
-			->setMethods( [ 'loadTaskTypes', 'setMessageLocalizer' ] )
+			->onlyMethods( [ 'loadTaskTypes' ] )
 			->getMockForAbstractClass();
 		$configurationLoader->method( 'loadTaskTypes' )
 			->willReturn( StatusValue::newFatal( new RawMessage( 'foo' ) ) );

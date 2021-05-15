@@ -33,7 +33,7 @@ class StaticTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 
 		$error = $this->getMockBuilder( Status::class )
 			->setConstructorArgs( [] )
-			->setMethods( [ 'getWikiText' ] )
+			->onlyMethods( [ 'getWikiText' ] )
 			->getMock();
 		// avoid triggering service loading when the factory tries to log the error
 		$error->method( 'getWikiText' )->willReturn( 'Test error' );

@@ -21,7 +21,7 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 	public function testConstruct() {
 		$configMock = $this->getMockBuilder( Config::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'get', 'has' ] )
+			->onlyMethods( [ 'get', 'has' ] )
 			->getMock();
 		$contextMock = $this->getMockBuilder( RequestContext::class )
 			->disableOriginalConstructor()

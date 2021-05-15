@@ -253,20 +253,20 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 	private function getMockWikiPageFactory( array $pages ) {
 		$wikiPageFactory = $this->getMockBuilder( WikiPageFactory::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'newFromTitle' ] )
+			->onlyMethods( [ 'newFromTitle' ] )
 			->getMock();
 		$wikiPageFactory->method( 'newFromTitle' )->willReturnCallback(
 			function ( Title $title ) use ( $pages ) {
 				[ $text, $mentors ] = $pages[$title->getPrefixedText()];
 				$wikiPage = $this->getMockBuilder( WikiPage::class )
 					->disableOriginalConstructor()
-					->setMethods( [ 'getContent', 'getParserOutput' ] )
+					->onlyMethods( [ 'getContent', 'getParserOutput' ] )
 					->getMock();
 				$content = $this->getMockBuilder( Content::class )
-					->setMethods( [ 'getText' ] )
+					->addMethods( [ 'getText' ] )
 					->getMockForAbstractClass();
 				$parserOutput = $this->getMockBuilder( ParserOutput::class )
-					->setMethods( [ 'getLinks' ] )
+					->onlyMethods( [ 'getLinks' ] )
 					->getMock();
 				$wikiPage->method( 'getContent' )->willReturn( $content );
 				$content->method( 'getText' )->willReturn( $text );

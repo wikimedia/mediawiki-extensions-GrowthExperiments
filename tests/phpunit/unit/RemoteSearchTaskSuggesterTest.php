@@ -658,7 +658,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	protected function getMockRequestFactory( array $requests ) {
 		$requestFactory = $this->getMockBuilder( HttpRequestFactory::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'create', 'getUserAgent' ] )
+			->onlyMethods( [ 'create', 'getUserAgent' ] )
 			->getMock();
 		$requestFactory->method( 'getUserAgent' )->willReturn( 'Foo' );
 
@@ -696,7 +696,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 
 				$request = $this->getMockBuilder( MWHttpRequest::class )
 					->disableOriginalConstructor()
-					->setMethods( [ 'execute', 'getContent' ] )
+					->onlyMethods( [ 'execute', 'getContent' ] )
 					->getMock();
 				$request->method( 'execute' )->willReturn( $status );
 				$request->method( 'getContent' )->willReturn( $response );
@@ -711,12 +711,12 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	protected function getMockTitleFactory() {
 		$titleFactory = $this->getMockBuilder( TitleFactory::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'newFromText' ] )
+			->onlyMethods( [ 'newFromText' ] )
 			->getMock();
 		$titleFactory->method( 'newFromText' )->willReturnCallback( function ( $dbKey, $ns ) {
 			$title = $this->getMockBuilder( Title::class )
 				->disableOriginalConstructor()
-				->setMethods( [ 'getNamespace', 'getDBkey' ] )
+				->onlyMethods( [ 'getNamespace', 'getDBkey' ] )
 				->getMock();
 			$title->method( 'getNamespace' )->willReturn( $ns );
 			$title->method( 'getDBkey' )->willReturn( $dbKey );

@@ -75,7 +75,7 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 			->willReturn( true );
 		$requestMock = $this->getMockBuilder( WebRequest::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'getCheck' ] )
+			->onlyMethods( [ 'getCheck' ] )
 			->getMock();
 		$requestMock->method( 'getCheck' )
 			->with( 'resetTaskCache' )

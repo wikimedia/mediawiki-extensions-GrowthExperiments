@@ -147,7 +147,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 	private function getContextForUserId( int $id ) {
 		$context = $this->getMockBuilder( RequestContext::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'getConfig', 'getUser' ] )
+			->onlyMethods( [ 'getConfig', 'getUser' ] )
 			->getMock();
 		$config = new HashConfig( [ 'SecretKey' => '42' ] );
 		$context->method( 'getConfig' )->willReturn( $config );

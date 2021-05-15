@@ -311,7 +311,7 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 
 		$userMock = $this->getMockBuilder( \User::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'getId', 'getName', 'getOption' ] )
+			->onlyMethods( [ 'getId', 'getName', 'getOption' ] )
 			->getMock();
 		// This will make user settings update job fail, but we don't care about that.
 		$userMock->method( 'getId' )

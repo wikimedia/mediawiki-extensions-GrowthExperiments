@@ -152,7 +152,7 @@ class ApiSetMentorTest extends ApiTestCase {
 					->getMock(),
 				false
 			] )
-			->setMethods( [ 'setMentorForUser' ] )
+			->onlyMethods( [ 'setMentorForUser' ] )
 			->getMock();
 	}
 

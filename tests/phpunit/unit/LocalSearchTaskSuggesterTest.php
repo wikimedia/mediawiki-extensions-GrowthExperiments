@@ -127,7 +127,7 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	 */
 	private function getMockSearchResultSet() {
 		return $this->getMockBuilder( ISearchResultSet::class )
-			->setMethods( [] )
+			->onlyMethods( [] )
 			->getMockForAbstractClass();
 	}
 
@@ -143,12 +143,12 @@ class LocalSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	) {
 		$factory = $this->getMockBuilder( SearchEngineFactory::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'create' ] )
+			->onlyMethods( [ 'create' ] )
 			->getMockForAbstractClass();
 
 		$searchEngine = $this->getMockBuilder( SearchEngine::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'setLimitOffset', 'setNamespaces', 'setShowSuggestion', 'getValidSorts',
+			->onlyMethods( [ 'setLimitOffset', 'setNamespaces', 'setShowSuggestion', 'getValidSorts',
 				'setSort', 'searchText' ] )
 			->getMockForAbstractClass();
 		$factory->expects( $this->once() )

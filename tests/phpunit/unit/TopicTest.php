@@ -14,7 +14,7 @@ class TopicTest extends MediaWikiUnitTestCase {
 
 	public function testTopic() {
 		$fakeContext = $this->getMockBuilder( MessageLocalizer::class )
-			->setMethods( [ 'msg' ] )
+			->onlyMethods( [ 'msg' ] )
 			->getMockForAbstractClass();
 		$fakeContext->method( 'msg' )->willReturnCallback( function ( $id ) {
 			return $this->getMockMessage( $id );

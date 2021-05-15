@@ -23,7 +23,7 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 	private function getQuestionPoster( $methods ) {
 		$questionPoster = $this->getMockBuilder( QuestionPoster::class )
 			->disableOriginalConstructor()
-			->setMethods( $methods )
+			->onlyMethods( $methods )
 			->getMockForAbstractClass();
 		$accessWrapper = TestingAccessWrapper::newFromObject( $questionPoster );
 
@@ -86,7 +86,6 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 			'setSectionHeader',
 			'loadExistingQuestions',
 			'getPageUpdater',
-			'grabParentRevision',
 			'getTargetContentModel',
 		] );
 		$questionPoster->method( 'makeWikitextContent' )->willReturn( null );
@@ -94,11 +93,11 @@ class QuestionPosterTest extends MediaWikiUnitTestCase {
 		$questionPoster->method( 'getTargetContentModel' )->willReturn( CONTENT_MODEL_WIKITEXT );
 		$pageUpdaterMock = $this->getMockBuilder( PageUpdater::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'grabParentRevision' ] )
+			->onlyMethods( [ 'grabParentRevision' ] )
 			->getMock();
 		$revisionRecordMock = $this->getMockBuilder( RevisionRecord::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'getId' ] )
+			->onlyMethods( [ 'getId' ] )
 			->getMockForAbstractClass();
 		$revisionRecordMock->method( 'getId' )
 			->willReturn( 0 );

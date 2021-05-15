@@ -70,7 +70,7 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 	private function getMockTitleFactory( array $map ) {
 		$factory = $this->getMockBuilder( TitleFactory::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'newFromLinkTarget' ] )
+			->onlyMethods( [ 'newFromLinkTarget' ] )
 			->getMock();
 		$factory->method( 'newFromLinkTarget' )->willReturnCallback(
 			function ( LinkTarget $target ) use ( $map ) {
@@ -78,7 +78,7 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 				$data = $map[$target->getNamespace() . ':' . $target->getDBkey()];
 				$title = $this->getMockBuilder( Title::class )
 					->disableOriginalConstructor()
-					->setMethods( [ 'exists', 'isProtected' ] )
+					->onlyMethods( [ 'exists', 'isProtected' ] )
 					->getMock();
 				$title->method( 'exists' )->willReturn( $data[0] );
 				$title->method( 'isProtected' )->willReturn( $data[1] );
@@ -93,7 +93,7 @@ class ProtectionFilterTest extends MediaWikiUnitTestCase {
 	protected function getMockLinkBatchFactory() {
 		return $this->getMockBuilder( LinkBatchFactory::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'newLinkBatch' ] )
+			->onlyMethods( [ 'newLinkBatch' ] )
 			->getMock();
 	}
 

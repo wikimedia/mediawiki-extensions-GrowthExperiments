@@ -502,7 +502,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	protected function getMockTitleFactory( array $map, bool $allowOther = true ) {
 		$titleFactory = $this->getMockBuilder( TitleFactory::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'newFromText' ] )
+			->onlyMethods( [ 'newFromText' ] )
 			->getMock();
 		$titleFactory->method( 'newFromText' )->willReturnCallback(
 			function ( string $titleText, int $defaultNamespace = 0 ) use ( $map, $allowOther ) {
@@ -527,7 +527,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	protected function getMockTitle( string $titleText, int $namespace = 0 ) {
 		$title = $this->getMockBuilder( Title::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'getNamespace', 'inNamespace', 'getDBkey' ] )
+			->onlyMethods( [ 'getNamespace', 'inNamespace', 'getDBkey' ] )
 			->getMock();
 		$title->method( 'getNamespace' )->willReturn( $namespace );
 		$title->method( 'inNamespace' )->willReturnCallback(
@@ -544,7 +544,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 */
 	protected function getMockMessageLocalizer( array $customMessages = [] ) {
 		$localizer = $this->getMockBuilder( MessageLocalizer::class )
-			->setMethods( [ 'msg' ] )
+			->onlyMethods( [ 'msg' ] )
 			->getMockForAbstractClass();
 		$localizer->method( 'msg' )
 			->willReturnCallback( function ( $key, ...$params ) use ( $customMessages ) {
@@ -564,7 +564,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	protected function getMockWikiPageConfigLoader( $map ) {
 		$loader = $this->getMockBuilder( WikiPageConfigLoader::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'load' ] )
+			->onlyMethods( [ 'load' ] )
 			->getMock();
 		$loader->expects( $this->atMost( 1 ) )
 			->method( 'load' )
@@ -582,7 +582,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	 */
 	protected function getMockContext( array $customMessages = [] ) {
 		$context = $this->getMockBuilder( IContextSource::class )
-			->setMethods( [ 'msg' ] )
+			->onlyMethods( [ 'msg' ] )
 			->getMockForAbstractClass();
 		$context->method( 'msg' )->willReturnCallback( function ( $key ) use ( $customMessages ) {
 			if ( isset( $customMessages[$key] ) ) {
@@ -599,7 +599,7 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	protected function getMockCollation() {
 		$collation = $this->getMockBuilder( Collation::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'getSortKey' ] )
+			->onlyMethods( [ 'getSortKey' ] )
 			->getMockForAbstractClass();
 		$collation->method( 'getSortKey' )->willReturnArgument( 0 );
 		return $collation;

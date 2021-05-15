@@ -18,7 +18,7 @@ abstract class SearchTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 	public function provideCreate() {
 		$error = $this->getMockBuilder( Status::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'getWikiText' ] )
+			->onlyMethods( [ 'getWikiText' ] )
 			->getMock();
 		$error->method( 'getWikiText' )->willReturn( 'foo' );
 		return [
@@ -52,7 +52,7 @@ abstract class SearchTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 	protected function getNewcomerTasksConfigurationLoader( $taskTypes, $topics ) {
 		$configurationLoader = $this->getMockBuilder( ConfigurationLoader::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'loadTaskTypes', 'loadTopics', 'setMessageLocalizer' ] )
+			->onlyMethods( [ 'loadTaskTypes', 'loadTopics' ] )
 			->getMockForAbstractClass();
 		$configurationLoader->method( 'loadTaskTypes' )->willReturn( $taskTypes );
 		$configurationLoader->method( 'loadTopics' )->willReturn( $topics );

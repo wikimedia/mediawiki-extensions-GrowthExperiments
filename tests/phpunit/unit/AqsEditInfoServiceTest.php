@@ -68,14 +68,14 @@ class AqsEditInfoServiceTest extends MediaWikiUnitTestCase {
 
 		$request = $this->getMockBuilder( MWHttpRequest::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'execute', 'getContent' ] )
+			->onlyMethods( [ 'execute', 'getContent' ] )
 			->getMock();
 		$request->method( 'execute' )->willReturn( $result );
 		$request->method( 'getContent' )->willReturn( $content );
 
 		$requestFactory = $this->getMockBuilder( HttpRequestFactory::class )
 			->disableOriginalConstructor()
-			->setMethods( [ 'create', 'getUserAgent' ] )
+			->onlyMethods( [ 'create', 'getUserAgent' ] )
 			->getMock();
 		$requestFactory->method( 'getUserAgent' )->willReturn( 'Foo' );
 		$requestFactory->expects( $this->once() )
