@@ -217,9 +217,14 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			return;
 		}
 
+		$form->addPreText( $this->msg(
+			'growthexperiments-edit-config-pretext',
+			\Message::listParam( array_map( static function ( Title $title ) {
+				return '[[' . $title->getPrefixedText() . ']]';
+			}, array_values( $this->configPages ) ) )
+		)->parseAsBlock() );
+
 		// Add last updated data
-		/** @var Title[] */
-		$configTitles = [];
 		foreach ( $this->configPages as $configType => $configTitle ) {
 			$revision = $this->revisionLookup->getRevisionByTitle( $configTitle );
 			if ( $revision !== null ) {
@@ -241,28 +246,72 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					)->parseAsBlock() );
 				}
 			}
-
-			$configTitles[] = $configTitle;
 		}
-
-		$form->addPreText( $this->msg(
-			'growthexperiments-edit-config-pretext',
-			\Message::listParam( array_map( static function ( Title $title ) {
-				return '[[' . $title->getPrefixedText() . ']]';
-			}, $configTitles ) )
-		)->parseAsBlock() );
 	}
 
 	private function getRawDescriptors(): array {
 		$descriptors = [
 			// Growth experiments config (stored in MediaWiki:GrowthExperimentsConfig.json)
-			'geconfig-GEHelpPanelReadingModeNamespaces' => [
-				'type' => 'namespacesmultiselect',
+			'geconfig-GEHomepageSuggestedEditsIntroLinks-create' => [
+				'type' => 'title',
 				'exists' => true,
-				'autocomplete' => false,
-				'label-message' => 'growthexperiments-edit-config-help-panel-reading-namespaces',
-				'section' => 'help-panel',
+				'label-message' => 'growthexperiments-edit-config-homepage-intro-links-create',
+				'required' => true,
+				'section' => 'homepage',
 			],
+			'geconfig-GEHomepageSuggestedEditsIntroLinks-image' => [
+				'type' => 'title',
+				'exists' => true,
+				'label-message' => 'growthexperiments-edit-config-homepage-intro-links-image',
+				'required' => true,
+				'section' => 'homepage',
+			],
+			'geconfig-GEMentorshipEnabled' => [
+				'type' => 'radio',
+				'label-message' => 'growthexperiments-edit-config-mentorship-enabled',
+				'options-messages' => [
+					'growthexperiments-edit-config-mentorship-enabled-true' => 'true',
+					'growthexperiments-edit-config-mentorship-enabled-false' => 'false',
+				],
+				'section' => 'mentorship',
+			],
+			'geconfig-GEHomepageMentorsList' => [
+				'type' => 'title',
+				'exists' => true,
+				'label-message' => 'growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors',
+				'required' => false,
+				'section' => 'mentorship',
+			],
+			'geconfig-GEHomepageManualAssignmentMentorsList' => [
+				'type' => 'title',
+				'exists' => true,
+				'label-message' => 'growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors',
+				'required' => false,
+				'section' => 'mentorship',
+			],
+		];
+
+		// Add fields for suggested edits config (stored in MediaWiki:NewcomerTasks.json)
+		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $group ) {
+			$descriptors["newcomertasks-${taskType}Templates"] = [
+				'type' => 'titlesmultiselect',
+				'exists' => true,
+				'namespace' => NS_TEMPLATE,
+				'relative' => true,
+				'label-message' => "growthexperiments-edit-config-newcomer-tasks-$taskType-templates",
+				'required' => false,
+				'section' => 'newcomertasks'
+			];
+			$descriptors["newcomertasks-${taskType}Learnmore"] = [
+				'type' => 'title',
+				'exists' => true,
+				'label-message' => "growthexperiments-edit-config-newcomer-tasks-$taskType-learnmore",
+				'required' => false,
+				'section' => 'newcomertasks'
+			];
+		}
+
+		$descriptors = array_merge( $descriptors, [
 			'geconfig-GEHelpPanelExcludedNamespaces' => [
 				'type' => 'namespacesmultiselect',
 				'exists' => true,
@@ -270,27 +319,11 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'label-message' => 'growthexperiments-edit-config-help-panel-disabled-namespaces',
 				'section' => 'help-panel',
 			],
-			'geconfig-GEHelpPanelHelpDeskTitle' => [
-				'type' => 'title',
+			'geconfig-GEHelpPanelReadingModeNamespaces' => [
+				'type' => 'namespacesmultiselect',
 				'exists' => true,
-				'label-message' => 'growthexperiments-edit-config-help-panel-helpdesk-title',
-				'required' => false,
-				'section' => 'help-panel',
-			],
-			'geconfig-GEHelpPanelHelpDeskPostOnTop' => [
-				'type' => 'radio',
-				'label-message' => 'growthexperiments-edit-config-help-panel-post-on-top',
-				'options-messages' => [
-					'growthexperiments-edit-config-help-panel-post-on-top-true' => 'true',
-					'growthexperiments-edit-config-help-panel-post-on-top-false' => 'false',
-				],
-				'section' => 'help-panel',
-			],
-			'geconfig-GEHelpPanelViewMoreTitle' => [
-				'type' => 'title',
-				'exists' => true,
-				'label-message' => 'growthexperiments-edit-config-help-panel-view-more',
-				'required' => false,
+				'autocomplete' => false,
+				'label-message' => 'growthexperiments-edit-config-help-panel-reading-namespaces',
 				'section' => 'help-panel',
 			],
 			'geconfig-GEHelpPanelSearchNamespaces' => [
@@ -306,6 +339,22 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'options-messages' => [
 					'growthexperiments-edit-config-help-panel-ask-mentor-true' => 'true',
 					'growthexperiments-edit-config-help-panel-ask-mentor-false' => 'false',
+				],
+				'section' => 'help-panel',
+			],
+			'geconfig-GEHelpPanelHelpDeskTitle' => [
+				'type' => 'title',
+				'exists' => true,
+				'label-message' => 'growthexperiments-edit-config-help-panel-helpdesk-title',
+				'required' => false,
+				'section' => 'help-panel',
+			],
+			'geconfig-GEHelpPanelHelpDeskPostOnTop' => [
+				'type' => 'radio',
+				'label-message' => 'growthexperiments-edit-config-help-panel-post-on-top',
+				'options-messages' => [
+					'growthexperiments-edit-config-help-panel-post-on-top-true' => 'true',
+					'growthexperiments-edit-config-help-panel-post-on-top-false' => 'false',
 				],
 				'section' => 'help-panel',
 			],
@@ -369,64 +418,14 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'label-message' => 'growthexperiments-edit-config-help-panel-links-articlewizard-label',
 				'section' => 'help-panel-links',
 			],
-			'geconfig-GEHomepageSuggestedEditsIntroLinks-create' => [
+			'geconfig-GEHelpPanelViewMoreTitle' => [
 				'type' => 'title',
 				'exists' => true,
-				'label-message' => 'growthexperiments-edit-config-homepage-intro-links-create',
-				'required' => true,
-				'section' => 'homepage',
-			],
-			'geconfig-GEHomepageSuggestedEditsIntroLinks-image' => [
-				'type' => 'title',
-				'exists' => true,
-				'label-message' => 'growthexperiments-edit-config-homepage-intro-links-image',
-				'required' => true,
-				'section' => 'homepage',
-			],
-			'geconfig-GEMentorshipEnabled' => [
-				'type' => 'radio',
-				'label-message' => 'growthexperiments-edit-config-mentorship-enabled',
-				'options-messages' => [
-					'growthexperiments-edit-config-mentorship-enabled-true' => 'true',
-					'growthexperiments-edit-config-mentorship-enabled-false' => 'false',
-				],
-				'section' => 'mentorship',
-			],
-			'geconfig-GEHomepageMentorsList' => [
-				'type' => 'title',
-				'exists' => true,
-				'label-message' => 'growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors',
+				'label-message' => 'growthexperiments-edit-config-help-panel-view-more',
 				'required' => false,
-				'section' => 'mentorship',
+				'section' => 'help-panel-links',
 			],
-			'geconfig-GEHomepageManualAssignmentMentorsList' => [
-				'type' => 'title',
-				'exists' => true,
-				'label-message' => 'growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors',
-				'required' => false,
-				'section' => 'mentorship',
-			],
-		];
-
-		// Add fields for suggested edits config (stored in MediaWiki:NewcomerTasks.json)
-		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $group ) {
-			$descriptors["newcomertasks-${taskType}Templates"] = [
-				'type' => 'titlesmultiselect',
-				'exists' => true,
-				'namespace' => NS_TEMPLATE,
-				'relative' => true,
-				'label-message' => "growthexperiments-edit-config-newcomer-tasks-$taskType-templates",
-				'required' => false,
-				'section' => 'newcomertasks'
-			];
-			$descriptors["newcomertasks-${taskType}Learnmore"] = [
-				'type' => 'title',
-				'exists' => true,
-				'label-message' => "growthexperiments-edit-config-newcomer-tasks-$taskType-learnmore",
-				'required' => false,
-				'section' => 'newcomertasks'
-			];
-		}
+		] );
 
 		return $descriptors;
 	}
