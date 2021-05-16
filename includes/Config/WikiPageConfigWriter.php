@@ -162,6 +162,10 @@ class WikiPageConfigWriter {
 		$status = Status::newGood();
 		$status->merge( $this->configValidator->validate( $this->wikiConfig ) );
 
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+
 		// Save only if config was changed, so editing interface
 		// doesn't need to make sure config was indeed changed.
 		if ( $this->wikiConfig !== $this->getCurrentWikiConfig() ) {
@@ -175,7 +179,7 @@ class WikiPageConfigWriter {
 				CommentStoreComment::newUnsavedComment( $summary ),
 				$minor ? EDIT_MINOR : 0
 			);
-			$status = $updater->getStatus() ?? Status::newGood();
+			$status->merge( $updater->getStatus() ?? Status::newGood() );
 		}
 
 		// Invalidate config cache regardless of whether any variable was changed
