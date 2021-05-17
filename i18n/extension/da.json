@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Saederup92",
 			"Steenth"
 		]
 	},
-	"growthexperiments-desc": "Denne udvidelse indeholder eksperimenter som udføres af Growth-teamet."
+	"growthexperiments-desc": "Denne udvidelse indeholder eksperimenter som udføres af Growth-teamet.",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "Toppen af siden",
+	"growthexperiments-edit-config-mentorship-enabled-true": "Ja",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Nej"
 }
