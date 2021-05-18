@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="64" height="54" xmlns="http://www.w3.org/2000/svg">
-    <g id="Discovery-aid" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Homepage-Discovery---After-account-creation---Go-to-Reading-ctxt---Mobile" transform="translate(-16 -141)">
-            <g id="banner-mobile" transform="translate(0 122)">
-                <g id="Group-4-Copy-2" transform="matrix(1 0 0 -1 15 71)">
-                    <path d="M2 43h12a2 2 0 110 4H2a2 2 0 110-4z" id="Rectangle-Copy-7" fill="#36C" transform="rotate(45 8 45)"/>
-                    <path d="M12 43h12a2 2 0 110 4H12a2 2 0 110-4z" id="Rectangle-Copy-8" fill="#36C" transform="scale(-1 1) rotate(45 0 1.544)"/>
-                    <path d="M13 50c-.667-16 3-28.667 11-38C36-2 63 1 63 1" id="Line" stroke="#36C" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-                </g>
-            </g>
-        </g>
-    </g>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="54">
+	<g id="Discovery-aid" fill="none" fill-rule="evenodd" stroke="none" stroke-width="1">
+		<g id="Homepage-Discovery---After-account-creation---Go-to-Reading-ctxt---Mobile" transform="translate(-16 -141)">
+			<g id="banner-mobile" transform="translate(0 122)">
+				<g id="Group-4-Copy-2" transform="matrix(1 0 0 -1 15 71)">
+					<path id="Rectangle-Copy-7" fill="#36C" d="M2 43h12a2 2 0 1 1 0 4H2a2 2 0 1 1 0-4z" transform="rotate(45 8 45)"/>
+					<path id="Rectangle-Copy-8" fill="#36C" d="M12 43h12a2 2 0 1 1 0 4H12a2 2 0 1 1 0-4z" transform="scale(-1 1) rotate(45 0 1.544)"/>
+					<path id="Line" stroke="#36C" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M13 50c-.667-16 3-28.667 11-38C36-2 63 1 63 1"/>
+				</g>
+			</g>
+		</g>
+	</g>
 </svg>

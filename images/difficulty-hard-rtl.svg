@@ -1,3 +1,3 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20">
-    <path d="m1 1v18h5v-18zm6 6v12h5v-12zm6 6v6h6v-6z" fill="#b32424"/>
+	<path fill="#b32424" d="M1 1v18h5V1zm6 6v12h5V7zm6 6v6h6v-6z"/>
 </svg>

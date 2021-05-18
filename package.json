@@ -2,6 +2,7 @@
 	"private": true,
 	"scripts": {
 		"api-testing": "mocha tests/api-testing",
+		"minify-svg": "svgo --config=.svgo.config.js -q -r -f images/",
 		"selenium-daily": "npm run selenium-test",
 		"selenium-test": "wdio tests/selenium/wdio.conf.js",
 		"test": "grunt test"
@@ -20,6 +21,7 @@
 		"grunt-eslint": "23.0.0",
 		"grunt-stylelint": "0.16.0",
 		"stylelint-config-wikimedia": "0.10.3",
+		"svgo": "2.3.0",
 		"wdio-mediawiki": "1.0.0",
 		"webdriverio": "6.1.16"
 	}
