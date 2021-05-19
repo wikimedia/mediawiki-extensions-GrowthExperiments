@@ -3,6 +3,7 @@
 		"authors": [
 			"Hedda",
 			"Joseph",
+			"Melissadilara",
 			"MuratTheTurkish",
 			"SaldırganSincap",
 			"ToprakM"
@@ -32,7 +33,7 @@
 	"growthexperiments-edit-config-help-panel-view-more": "Yardım panelinde görüntülenen daha fazla bağlantıyı görün",
 	"growthexperiments-edit-config-help-panel-searched-namespaces": "Şu ad alanlarında ara",
 	"growthexperiments-edit-config-help-panel-ask-mentor": "Yardım panelinden gelen sorular nereye yönlendirilmelidir?",
-	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Danışmanlar",
+	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Danışman tartışma sayfaları",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Yardım masası",
 	"growthexperiments-edit-config-help-panel-links": "Yardım panosu bağlantıları",
 	"growthexperiments-edit-config-help-panel-links-mos-title": "Yardım panosundaki ilk bağlantının sayfa başlığı (öneri: biçim el kitabı)",
@@ -54,5 +55,6 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "Evet",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Hayır",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "Kendiliğinden atanmış danışmanlar listesinin sayfa başlığı",
-	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Elle atanmış danışmanlar listesinin sayfa başlığı"
+	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Elle atanmış danışmanlar listesinin sayfa başlığı",
+	"growthexperiments-edit-config-newcomertasks": "Önerilen düzenlemeler"
 }

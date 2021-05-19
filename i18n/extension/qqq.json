@@ -34,7 +34,7 @@
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Description of a form field in Special:EditGrowthConfig: help panel questions will be sent to mentors",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Description of a form field in Special:EditGrowthConfig: help panel questions will be sent to the help desk",
 	"growthexperiments-edit-config-help-panel-links": "Subheader in Special:EditGrowthConfig",
-	"growthexperiments-edit-config-help-panel-links-description": "Description of the help panel links section in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-help-panel-links-description": "Description of the help panel links section in Special:EditGrowthConfig\n\n\"view more\" are messages like {{msg-mw|growthexperiments-help-panel-editing-help-links-widget-view-more-link}}",
 	"growthexperiments-edit-config-help-panel-links-mos-title": "Page title for a help panel link, displayed in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-help-panel-links-mos-label": "Label for a help panel link displayed to newcomers, displayed in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-help-panel-links-editing-title": "Page title for a help panel link, displayed in Special:EditGrowthConfig",

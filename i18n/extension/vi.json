@@ -19,8 +19,8 @@
 	"growthexperiments-edit-config-edit-summary": "Tóm lược sửa đổi",
 	"growthexperiments-edit-config-config-changed": "Cấu hình đã được thay đổi. Bạn có lẽ cần chờ một vài phút để thay đổi có hiệu lực.",
 	"growthexperiments-edit-config-return-to-form": "Bạn có thể [[Special:EditGrowthConfig|quay trở lại]] mẫu sửa đổi.",
-	"growthexperiments-edit-config-help-panel": "Bảng trợ giúp",
-	"growthexperiments-edit-config-help-panel-reading-namespaces": "Không gian tên với Bảng Trợ giúp bật ở chế độ đọc",
+	"growthexperiments-edit-config-help-panel": "Cài đặt bảng trợ giúp",
+	"growthexperiments-edit-config-help-panel-reading-namespaces": "Không gian tên nơi có Bảng Trợ giúp bật ở chế độ đọc",
 	"growthexperiments-edit-config-help-panel-disabled-namespaces": "Không gian tên với Bảng trợ giúp tắt",
 	"growthexperiments-edit-config-help-panel-helpdesk-title": "Tiêu đề trang bàn trợ giúp (nếu có)",
 	"growthexperiments-edit-config-help-panel-post-on-top": "Đăng câu hỏi vào đâu tại bàn trợ giúp?",
@@ -29,7 +29,10 @@
 	"growthexperiments-edit-config-help-panel-view-more": "Xem thêm liên kết hiển thị ở bảng trợ giúp",
 	"growthexperiments-edit-config-help-panel-searched-namespaces": "Tìm không gian tên sau",
 	"growthexperiments-edit-config-help-panel-ask-mentor": "Câu hỏi từ bảng trợ giúp nên được chuyển đến đâu?",
-	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Cố vấn",
+	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Trang thảo luận cố vấn",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Bàn trợ giúp",
-	"growthexperiments-edit-config-help-panel-links": "Liên kết bảng trợ giúp"
+	"growthexperiments-edit-config-help-panel-links": "Liên kết bảng trợ giúp",
+	"growthexperiments-edit-config-mentorship-enabled-true": "Có",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Không",
+	"growthexperiments-edit-config-newcomertasks": "Sửa đổi gợi ý"
 }
