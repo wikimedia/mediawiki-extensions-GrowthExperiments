@@ -4,8 +4,8 @@ module.exports = ( function () {
 		LinkSuggestionInteractionLogger = require( './LinkSuggestionInteractionLogger.js' ),
 		dialogName = 'addLinkOnboardingDialog',
 		addLinkOnboardingPrefName = 'growthexperiments-addlink-onboarding',
-		shouldShowOnboarding = !mw.user.options.get( addLinkOnboardingPrefName ),
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
+		shouldShowOnboarding = !mw.user.options.get( addLinkOnboardingPrefName ) && suggestedEditSession.taskType === 'link-recommendation',
 		windows = {},
 		windowManager;
 
