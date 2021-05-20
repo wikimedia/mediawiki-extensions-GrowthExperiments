@@ -1,5 +1,5 @@
-var AddLinkOnboardingContent = require( 'ext.growthExperiments.AddLink.onboardingContent' ),
-	MultiPaneDialog = require( 'ext.growthExperiments.MultiPaneDialog' );
+var AddLinkOnboardingContent = require( './AddLinkOnboardingContent.js' ),
+	MultiPaneDialog = require( '../../ui-components/MultiPaneDialog.js' );
 
 /**
  * Dialog with onboarding screens for Add a Link

@@ -822,10 +822,14 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.AddLink.onboardingContent": {
+		"ext.growthExperiments.AddLink.onboarding": {
 			"packageFiles": [
+				"homepage/addlink/AddLinkOnboarding.js",
+				"homepage/addlink/AddLinkOnboardingDialog.js",
 				"homepage/addlink/AddLinkOnboardingContent.js",
+				"homepage/addlink/LinkSuggestionInteractionLogger.js",
 				"homepage/suggestededits/TaskTypesAbFilter.js",
+				"ui-components/MultiPaneDialog.js",
 				"utils/ext.growthExperiments.Utils.js",
 				{
 					"name": "homepage/suggestededits/config.json",
@@ -837,9 +841,18 @@
 				}
 			],
 			"styles": [
-				"homepage/addlink/AddLinkOnboardingContent.less"
+				"homepage/addlink/AddLinkOnboardingDialog.less",
+				"homepage/addlink/AddLinkOnboardingContent.less",
+				"ui-components/MultiPaneDialog.less"
 			],
 			"messages": [
+				"growthexperiments-addlink-onboarding-dialog-label-skip-all",
+				"growthexperiments-addlink-onboarding-dialog-title",
+				"growthexperiments-addlink-onboarding-dialog-progress",
+				"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox",
+				"growthexperiments-addlink-onboarding-dialog-label-next",
+				"growthexperiments-addlink-onboarding-dialog-label-previous",
+				"growthexperiments-addlink-onboarding-dialog-get-started-button",
 				"growthexperiments-addlink-onboarding-content-intro-title",
 				"growthexperiments-addlink-onboarding-content-intro-body-paragraph1",
 				"growthexperiments-addlink-onboarding-content-intro-body-example-label",
@@ -864,37 +877,6 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.AddLink.onboarding": {
-			"packageFiles": [
-				"homepage/addlink/AddLinkOnboarding.js",
-				"homepage/addlink/AddLinkOnboardingDialog.js",
-				"homepage/addlink/LinkSuggestionInteractionLogger.js",
-				"utils/ext.growthExperiments.Utils.js"
-			],
-			"styles": [
-				"homepage/addlink/AddLinkOnboardingDialog.less"
-			],
-			"messages": [
-				"growthexperiments-addlink-onboarding-dialog-label-skip-all",
-				"growthexperiments-addlink-onboarding-dialog-title",
-				"growthexperiments-addlink-onboarding-dialog-progress",
-				"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox",
-				"growthexperiments-addlink-onboarding-dialog-label-next",
-				"growthexperiments-addlink-onboarding-dialog-label-previous",
-				"growthexperiments-addlink-onboarding-dialog-get-started-button"
-			],
-			"dependencies": [
-				"mediawiki.language",
-				"oojs-ui-widgets",
-				"oojs-ui-windows",
-				"ext.growthExperiments.AddLink.onboardingContent",
-				"ext.growthExperiments.MultiPaneDialog"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
 		"ext.growthExperiments.AddLink.icons": {
 			"class": "ResourceLoaderImageModule",
 			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",
@@ -902,23 +884,6 @@
 			"images": {
 				"robot-black": "homepage/addlink/robot-black.svg"
 			}
-		},
-		"ext.growthExperiments.MultiPaneDialog": {
-			"packageFiles": [
-				"ui-components/MultiPaneDialog.js"
-			],
-			"styles": [
-				"ui-components/MultiPaneDialog.less"
-			],
-			"dependencies": [
-				"mediawiki.language",
-				"oojs-ui-widgets",
-				"oojs-ui-windows"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
 		},
 		"ext.growthExperiments.Homepage.icons": {
 			"class": "ResourceLoaderImageModule",
