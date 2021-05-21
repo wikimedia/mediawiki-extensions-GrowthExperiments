@@ -60,7 +60,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-description": "Description of the newcomer tasks section in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Description of a form field in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Description of a form field in Special:EditGrowthConfig",
-	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Description of a form field in Special:EditGrowthConfig",
+	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Description of a form field in Special:EditGrowthConfig\n\n\"Expand\" means in this case ''to make an artikle longer'', not as in \"expand templates\"",
 	"growthexperiments-edit-config-newcomer-tasks-expand-learnmore": "Description of a form field in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-newcomer-tasks-links-templates": "Description of a form field in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-newcomer-tasks-links-learnmore": "Description of a form field in Special:EditGrowthConfig",
