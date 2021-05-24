@@ -813,7 +813,7 @@
 			"dependencies": [
 				"ext.growthExperiments.AddLink",
 				"ext.visualEditor.mobileArticleTarget",
-				"mediawiki.Uri"
+				"mediawiki.router"
 			],
 			"messages": [
 				"growthexperiments-addlink-ve-machine-suggestions-mode-title"
