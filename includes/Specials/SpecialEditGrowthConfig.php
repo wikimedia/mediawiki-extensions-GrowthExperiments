@@ -259,6 +259,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			'geconfig-GEHomepageSuggestedEditsIntroLinks-create' => [
 				'type' => 'title',
 				'exists' => $this->pagesMustExist,
+				'interwiki' => true,
 				'label-message' => 'growthexperiments-edit-config-homepage-intro-links-create',
 				'required' => true,
 				'section' => 'homepage',
@@ -266,6 +267,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			'geconfig-GEHomepageSuggestedEditsIntroLinks-image' => [
 				'type' => 'title',
 				'exists' => $this->pagesMustExist,
+				'interwiki' => true,
 				'label-message' => 'growthexperiments-edit-config-homepage-intro-links-image',
 				'required' => true,
 				'section' => 'homepage',
@@ -394,6 +396,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					'section' => 'help-panel-links',
 					'required' => false,
 					'exists' => $this->pagesMustExist,
+					'interwiki' => true,
 				],
 				"geconfig-GEHelpPanelLinks-$position-label" => [
 					'type' => 'text',
@@ -409,6 +412,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'exists' => $this->pagesMustExist,
 				'label-message' => 'growthexperiments-edit-config-help-panel-view-more',
 				'required' => false,
+				'interwiki' => true,
 				'section' => 'help-panel-links',
 			],
 		] );
