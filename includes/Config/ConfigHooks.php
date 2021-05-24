@@ -48,6 +48,7 @@ class ConfigHooks implements EditFilterMergedContentHook {
 			$configTitle === null ||
 			!$title->equals( $configTitle )
 		) {
+			$status->value = \EditPage::AS_HOOK_ERROR_EXPECTED;
 			return true;
 		}
 
@@ -65,10 +66,15 @@ class ConfigHooks implements EditFilterMergedContentHook {
 		$loadedConfigStatus = FormatJson::parse( $content->getText(), FormatJson::FORCE_ASSOC );
 		if ( !$loadedConfigStatus->isOK() ) {
 			$status->merge( $loadedConfigStatus );
-			return true;
+		} else {
+			$status->merge( $this->configValidation->validate(
+				$loadedConfigStatus->getValue()
+			) );
 		}
-		$status->merge( $this->configValidation->validate(
-			$loadedConfigStatus->getValue()
-		) );
+
+		if ( !$status->isOK() && $status->getValue() === null ) {
+			$status->value = \EditPage::AS_HOOK_ERROR_EXPECTED;
+		}
+		return $status->isOK();
 	}
 }
