@@ -114,6 +114,8 @@
 	"tag-mentorship_panel_question": "멘토 패널 질문",
 	"tag-newcomer_task": "새 사용자 작업",
 	"tag-newcomer_task-description": "새 사용자가 새 사용자 홈페이지의 편집 추천 기능을 통해 추천받아 작업한 편집입니다.",
+	"tag-newcomer_task_add_link": "제안됨: 링크 추가",
+	"tag-newcomer_task_add_link-description": "새 사용자 홈페이지의 편집 제안 모듈을 통해 제안된 \"링크 추가\" 편집",
 	"growthexperiments-homepage-help-dialog-title": "질문방에 도움 요청하기",
 	"growthexperiments-homepage-help-header": "편집에 도움 받기",
 	"growthexperiments-homepage-help-subheader": "편집에 관한 유용한 도움말 문서",

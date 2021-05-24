@@ -1,8 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Omotecho",
 			"Shirayuki"
 		]
 	},
-	"growthexperiments-desc": "この拡張機能は Growth チームが完了した実験を含んでいます。"
+	"growthexperiments-desc": "この拡張機能は Growth チームが完了した実験を含んでいます。",
+	"growthexperiments-edit-config-help-panel-description": "ヘルプパネルは下記の設定により、どの名前空間でも、モードは閲覧でも編集でも利用可能にできます。含まれる機能にはヘルプの検索、ヘルプリンクを押す、ほかの指導役またはヘルプデスクに質問するなどがあります。",
+	"growthexperiments-edit-config-help-panel-reading-namespaces": "名前空間のヘルプパネルが閲覧モードで有効",
+	"growthexperiments-edit-config-help-panel-disabled-namespaces": "ヘルプパネル付きの名前空間を閲覧と編集のモードで無効にする",
+	"growthexperiments-edit-config-help-panel-searched-namespaces": "名前空間のヘルプパネルで任意の文を記入してヘルプを検索できるようにする"
 }
