@@ -204,6 +204,7 @@ RecommendedLinkToolbarDialog.prototype.onAcceptanceChanged = function () {
 			return annotationSet.getLength() ? annotationSet.get( 0 ).isAccepted() : false;
 		} );
 	mw.hook( 'growthExperiments.linkSuggestionAcceptanceChange' ).fire( hasAcceptedRecommendations );
+	this.updateButtonStates();
 };
 
 /**
@@ -333,6 +334,7 @@ RecommendedLinkToolbarDialog.prototype.selectAnnotationView = function () {
 	this.surface.getView().selectAnnotation( function ( annotationView ) {
 		if ( annotationView instanceof CeRecommendedLinkAnnotation ) {
 			this.annotationView = annotationView;
+			this.annotationView.updateActiveClass( true );
 			return true;
 		}
 	}.bind( this ) );
@@ -365,9 +367,6 @@ RecommendedLinkToolbarDialog.prototype.showRecommendationAtIndex = function ( in
 		this.annotationView.updateActiveClass( false );
 	}
 	this.selectAnnotationView();
-	if ( this.annotationView ) {
-		this.annotationView.updateActiveClass( true );
-	}
 	this.updateContentForCurrentRecommendation();
 	this.logger.log(
 		'suggestion_focus',
