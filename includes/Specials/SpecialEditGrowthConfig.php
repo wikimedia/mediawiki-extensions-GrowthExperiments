@@ -49,6 +49,9 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	/** @var GrowthExperimentsMultiConfig */
 	private $growthWikiConfig;
 
+	/** @var bool Whether the various pages configured as help links etc. must exist. */
+	private $pagesMustExist;
+
 	/** @var string|null */
 	private $errorMsgKey;
 
@@ -90,6 +93,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		$this->configLoader = $configLoader;
 		$this->configWriterFactory = $configWriterFactory;
 		$this->growthWikiConfig = $growthWikiConfig;
+		$this->pagesMustExist = !$config->get( 'GEDeveloperSetup' );
 
 		$this->setConfigPage(
 			'geconfig',
@@ -254,14 +258,14 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			// Growth experiments config (stored in MediaWiki:GrowthExperimentsConfig.json)
 			'geconfig-GEHomepageSuggestedEditsIntroLinks-create' => [
 				'type' => 'title',
-				'exists' => true,
+				'exists' => $this->pagesMustExist,
 				'label-message' => 'growthexperiments-edit-config-homepage-intro-links-create',
 				'required' => true,
 				'section' => 'homepage',
 			],
 			'geconfig-GEHomepageSuggestedEditsIntroLinks-image' => [
 				'type' => 'title',
-				'exists' => true,
+				'exists' => $this->pagesMustExist,
 				'label-message' => 'growthexperiments-edit-config-homepage-intro-links-image',
 				'required' => true,
 				'section' => 'homepage',
@@ -307,7 +311,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $group ) {
 			$descriptors["newcomertasks-${taskType}Templates"] = [
 				'type' => 'titlesmultiselect',
-				'exists' => true,
+				'exists' => $this->pagesMustExist,
 				'namespace' => NS_TEMPLATE,
 				'relative' => true,
 				'label-message' => "growthexperiments-edit-config-newcomer-tasks-$taskType-templates",
@@ -316,7 +320,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			];
 			$descriptors["newcomertasks-${taskType}Learnmore"] = [
 				'type' => 'title',
-				'exists' => true,
+				'exists' => $this->pagesMustExist,
 				'label-message' => "growthexperiments-edit-config-newcomer-tasks-$taskType-learnmore",
 				'required' => false,
 				'section' => 'newcomertasks'
@@ -361,7 +365,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			],
 			'geconfig-GEHelpPanelHelpDeskTitle' => [
 				'type' => 'title',
-				'exists' => true,
+				'exists' => $this->pagesMustExist,
 				'label-message' => 'growthexperiments-edit-config-help-panel-helpdesk-title',
 				'required' => false,
 				'section' => 'help-panel',
@@ -380,69 +384,29 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'label-message' => 'growthexperiments-edit-config-help-panel-links-description',
 				'section' => 'help-panel-links',
 			],
-			'geconfig-GEHelpPanelLinks-0-title' => [
-				'type' => 'title',
-				'label-message' => 'growthexperiments-edit-config-help-panel-links-mos-title',
-				'section' => 'help-panel-links',
-				'required' => false,
-				'exists' => true,
-			],
-			'geconfig-GEHelpPanelLinks-0-label' => [
-				'type' => 'text',
-				'label-message' => 'growthexperiments-edit-config-help-panel-links-mos-label',
-				'section' => 'help-panel-links',
-			],
-			'geconfig-GEHelpPanelLinks-1-title' => [
-				'type' => 'title',
-				'label-message' => 'growthexperiments-edit-config-help-panel-links-editing-title',
-				'section' => 'help-panel-links',
-				'required' => false,
-				'exists' => true,
-			],
-			'geconfig-GEHelpPanelLinks-1-label' => [
-				'type' => 'text',
-				'label-message' => 'growthexperiments-edit-config-help-panel-links-editing-label',
-				'section' => 'help-panel-links',
-			],
-			'geconfig-GEHelpPanelLinks-2-title' => [
-				'type' => 'title',
-				'label-message' => 'growthexperiments-edit-config-help-panel-links-images-title',
-				'section' => 'help-panel-links',
-				'required' => false,
-				'exists' => true,
-			],
-			'geconfig-GEHelpPanelLinks-2-label' => [
-				'type' => 'text',
-				'label-message' => 'growthexperiments-edit-config-help-panel-links-images-label',
-				'section' => 'help-panel-links',
-			],
-			'geconfig-GEHelpPanelLinks-3-title' => [
-				'type' => 'title',
-				'label-message' => 'growthexperiments-edit-config-help-panel-links-references-title',
-				'section' => 'help-panel-links',
-				'required' => false,
-				'exists' => true,
-			],
-			'geconfig-GEHelpPanelLinks-3-label' => [
-				'type' => 'text',
-				'label-message' => 'growthexperiments-edit-config-help-panel-links-references-label',
-				'section' => 'help-panel-links',
-			],
-			'geconfig-GEHelpPanelLinks-4-title' => [
-				'type' => 'title',
-				'label-message' => 'growthexperiments-edit-config-help-panel-links-articlewizard-title',
-				'section' => 'help-panel-links',
-				'required' => false,
-				'exists' => true,
-			],
-			'geconfig-GEHelpPanelLinks-4-label' => [
-				'type' => 'text',
-				'label-message' => 'growthexperiments-edit-config-help-panel-links-articlewizard-label',
-				'section' => 'help-panel-links',
-			],
+		] );
+
+		foreach ( [ 'mos', 'editing', 'images', 'references', 'articlewizard' ] as $position => $type ) {
+			$descriptors = array_merge( $descriptors, [
+				"geconfig-GEHelpPanelLinks-$position-title" => [
+					'type' => 'title',
+					'label-message' => "growthexperiments-edit-config-help-panel-links-$type-title",
+					'section' => 'help-panel-links',
+					'required' => false,
+					'exists' => $this->pagesMustExist,
+				],
+				"geconfig-GEHelpPanelLinks-$position-label" => [
+					'type' => 'text',
+					'label-message' => "growthexperiments-edit-config-help-panel-links-$type-label",
+					'section' => 'help-panel-links',
+				],
+			] );
+		}
+
+		$descriptors = array_merge( $descriptors, [
 			'geconfig-GEHelpPanelViewMoreTitle' => [
 				'type' => 'title',
-				'exists' => true,
+				'exists' => $this->pagesMustExist,
 				'label-message' => 'growthexperiments-edit-config-help-panel-view-more',
 				'required' => false,
 				'section' => 'help-panel-links',
@@ -601,14 +565,14 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				continue;
 			}
 
-			$title = $this->titleFactory->newFromText( $data["geconfig-GEHelpPanelLinks-$i-title"] );
-			$props = ( $title !== null && $title->exists() && !$title->isExternal() ) ?
-				$this->pageProps->getProperties( $title, 'wikibase_item' ) :
-				[];
 			$linkId = null;
-			$pageId = $title->getId();
-			if ( in_array( $pageId, $props ) ) {
-				$linkId = $props[$pageId];
+			$title = $this->titleFactory->newFromText( $data["geconfig-GEHelpPanelLinks-$i-title"] );
+			if ( $title !== null && $title->exists() && !$title->isExternal() ) {
+				$props = $this->pageProps->getProperties( $title, 'wikibase_item' );
+				$pageId = $title->getId();
+				if ( array_key_exists( $pageId, $props ) ) {
+					$linkId = $props[$pageId];
+				}
 			}
 			$res[] = [
 				'title' => $data["geconfig-GEHelpPanelLinks-$i-title"],
