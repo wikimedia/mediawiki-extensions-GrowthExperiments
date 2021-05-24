@@ -2,6 +2,13 @@
 
 .ve-ui-surface-machineSuggestions {
 	z-index: 1;
+
+	// By default, a box is shown on top of the selected annotation
+	// and focused elements are highlighted (T282899)
+	.ve-ce-surface-highlights,
+	.ve-ce-surface-deactivatedSelection-showAsDeactivated {
+		display: none;
+	}
 }
 
 .mw-ge-machine-suggestions-mode-title {
