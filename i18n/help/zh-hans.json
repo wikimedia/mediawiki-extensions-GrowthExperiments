@@ -36,7 +36,7 @@
 	"growthexperiments-help-panel-questionreview-label": "您的问题",
 	"growthexperiments-help-panel-questionreview-include-article-title": "在我的问题中包括页面标题",
 	"growthexperiments-help-panel-question-subject-template": "帮助面板问题",
-	"growthexperiments-help-panel-question-subject-template-with-title": "在[[$1]]上的帮助面板问题",
+	"growthexperiments-help-panel-question-subject-template-with-title": "在[[:$1|$1]]上的帮助面板问题",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "用户首页的帮助模块问题",
 	"growthexperiments-help-panel-question-post-error": "发布您的问题时发生了错误。您可以重试，也可以在浏览器中访问$1，手工输入您的问题。",
 	"growthexperiments-help-panel-suggestededits-title": "编辑提议",

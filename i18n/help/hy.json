@@ -31,7 +31,7 @@
 	"growthexperiments-help-panel-questionreview-label": "Ձեր հարցը",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Իմ հարցի հետ միասին ներառել էջի վերնագիրը",
 	"growthexperiments-help-panel-question-subject-template": "Օգնության վահանակի հարց",
-	"growthexperiments-help-panel-question-subject-template-with-title": "Օգնության վահանակի հարց [[$1]]-ում",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Օգնության վահանակի հարց [[:$1|$1]]-ում",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Օգնության մոդուլի հարց օգտվողի հիմնական էջից",
 	"growthexperiments-help-panel-question-post-error": "Հարցը հրապարակելիս խնդիր է առաջացել։ Դուք կարող եք կրկին փորձել կամ այցելել $1 և հարցը ձեռքով ավելացնել։",
 	"growthexperiments-help-panel-suggestededits-title": "Առաջարկվող խմբագրումներ",

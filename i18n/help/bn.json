@@ -38,7 +38,7 @@
 	"growthexperiments-help-panel-questionreview-label": "আপনার প্রশ্ন",
 	"growthexperiments-help-panel-questionreview-include-article-title": "আমার প্রশ্নের সাথে পাতার শিরোনাম অন্তর্ভুক্ত করুন",
 	"growthexperiments-help-panel-question-subject-template": "সাহায্য প্যানেলের প্রশ্ন",
-	"growthexperiments-help-panel-question-subject-template-with-title": "[[$1]] নিয়ে সাহায্য প্যানেলের প্রশ্ন",
+	"growthexperiments-help-panel-question-subject-template-with-title": "[[:$1|$1]] নিয়ে সাহায্য প্যানেলের প্রশ্ন",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "ব্যবহারকারীর নীড়পাতা থেকে সাহায্য মডিউলের প্রশ্ন",
 	"growthexperiments-help-panel-question-post-error": "আপনার প্রশ্ন প্রকাশ করার সময় একটি ত্রুটি দেখা দিয়েছে। আপনি আবারও চেষ্টা করতে পারেন অথবা আপনার ব্রাউজার থেকে $1-এ গিয়ে সরাসরি প্রশ্নটি করতে পারেন।",
 	"growthexperiments-help-panel-suggestededits-title": "পরামর্শকৃত সম্পাদনা",

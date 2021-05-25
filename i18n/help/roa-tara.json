@@ -21,7 +21,7 @@
 	"growthexperiments-help-panel-questionreview-label": "'A domanda toje",
 	"growthexperiments-help-panel-questionreview-include-article-title": "'Nglude 'u titole d'a pàgene cu 'a domanda meje",
 	"growthexperiments-help-panel-question-subject-template": "Pannelle d'aijute pe le dumande",
-	"growthexperiments-help-panel-question-subject-template-with-title": "Pannelle d'aijute pe le dumande sus a [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Pannelle d'aijute pe le dumande sus a [[:$1|$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Module d'aiujte pe le dummande da 'a pàgene prengepàle de l'utende",
 	"growthexperiments-help-panel-question-post-error": "Ha assute 'n'errore quanne ste pruvave a mannà 'a domanda toje. Puè pruvà arrete o puè 'ndrucà $1 jndr'à 'u browser tune e aggiungere 'a domanda yoje a màne.",
 	"growthexperiments-help-panel-suggestededits-title": "Cangiaminde suggerite",

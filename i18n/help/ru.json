@@ -43,7 +43,7 @@
 	"growthexperiments-help-panel-questionreview-label": "Ваш вопрос",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Включить название страницы в мой вопрос",
 	"growthexperiments-help-panel-question-subject-template": "Вопрос с панели помощи",
-	"growthexperiments-help-panel-question-subject-template-with-title": "Вопрос со страницы «[[$1]]»",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Вопрос со страницы «[[:$1|$1]]»",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Вопрос с модуля помощи из домашней страницы участника",
 	"growthexperiments-help-panel-question-post-error": "Произошла ошибка при попытке разместить ваш вопрос. Вы можете попробовать снова или вы можете посетить $1 в вашем браузере и добавить ваш вопрос вручную.",
 	"growthexperiments-help-panel-suggestededits-title": "Предложенные правки",

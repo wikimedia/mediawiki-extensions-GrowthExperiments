@@ -32,7 +32,7 @@
 	"growthexperiments-help-panel-questionreview-label": "Întrebarea dvs.",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Include titlul paginii cu întrebarea mea",
 	"growthexperiments-help-panel-question-subject-template": "Întrebare de la panoul de ajutor",
-	"growthexperiments-help-panel-question-subject-template-with-title": "Întrebare de la panoul de ajutor pe [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Întrebare de la panoul de ajutor pe [[:$1|$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Întrebare privitoare la modulul de ajutor din pagina acasă a utilizatorului",
 	"growthexperiments-help-panel-question-post-error": "A apărut o eroare când s-a încercat publicare întrebării dvs. Puteți încerca din nou sau puteți vizita $1 în browser-ul dvs. și să vă adăugați întrebarea manual.",
 	"growthexperiments-help-panel-suggestededits-title": "Editări sugerate",

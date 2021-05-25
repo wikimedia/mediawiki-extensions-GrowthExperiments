@@ -39,7 +39,7 @@
 	"growthexperiments-help-panel-questionreview-label": "Deine Frage",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Seitentitel in meiner Frage einfügen",
 	"growthexperiments-help-panel-question-subject-template": "Hilfepanel-Frage",
-	"growthexperiments-help-panel-question-subject-template-with-title": "Hilfepanel-Frage auf [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Hilfepanel-Frage auf [[:$1|$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Hilfemodul-Frage von der Benutzer-Startseite",
 	"growthexperiments-help-panel-question-post-error": "Beim Versuch, deine Frage zu speichern, ist ein Fehler aufgetreten. Du kannst es erneut versuchen oder $1 in deinem Browser besuchen und deine Frage manuell hinzufügen.",
 	"growthexperiments-help-panel-suggestededits-title": "Vorgeschlagene Bearbeitungen",

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Geraki"
+			"Geraki",
+			"Giannaras99"
 		]
 	},
 	"growthexperiments-desc": "Αυτή η επέκταση περιέχει πειράματα που γίνονται από την ομάδα Ανάπτυξης",
@@ -12,8 +13,8 @@
 	"growthexperiments-edit-config-config-changed": "Η ρύθμιση έχει αλλάξει. Ίσως χρειάζεται να περιμένετε λίγα λεπτά μέχρι να έχουν αποτέλεσμα οι αλλαγές.",
 	"growthexperiments-edit-config-help-panel": "Σελίδα βοήθειας",
 	"growthexperiments-edit-config-help-panel-ask-mentor": "Που θα πρέπει να απευθύνονται οι ερωτήσεις από το πλαίσιο βοήθειας;",
-	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Καθοδηγητές",
-	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Αγορά",
+	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Σελίδες συνομιλίας των Καθοδηγητών.",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Γραφείο βοήθειας",
 	"growthexperiments-edit-config-help-panel-links": "Σύνδεσμοι πλαισίου βοήθειας",
 	"growthexperiments-edit-config-homepage": "Αρχική σελίδα νεοεισερχόμενων",
 	"growthexperiments-edit-config-homepage-tutorial-title": "Τίτλος σελίδας οδηγού",

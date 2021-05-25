@@ -34,7 +34,7 @@
 	"growthexperiments-help-panel-questionreview-label": "La tua domanda",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Includi il titolo della pagina con la mia domanda",
 	"growthexperiments-help-panel-question-subject-template": "Domande pannello introduttivo",
-	"growthexperiments-help-panel-question-subject-template-with-title": "Domanda pannello introduttivo su [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Domanda pannello introduttivo su [[:$1|$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Modulo di aiuto per le domande dalla pagina iniziale",
 	"growthexperiments-help-panel-question-post-error": "Si è verificato un errore nel tentativo di pubblicare la tua domanda. Puoi riprovare o visitare $1 dal tuo browser ed aggiungere la richiesta manualmente.",
 	"growthexperiments-help-panel-suggestededits-title": "Modifiche suggerite",

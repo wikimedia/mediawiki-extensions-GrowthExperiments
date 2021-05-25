@@ -33,7 +33,7 @@
 	"growthexperiments-help-panel-questionreview-label": "Dit spørgsmål",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Inkluder sidetitel med mit spørgsmål",
 	"growthexperiments-help-panel-question-subject-template": "Hjælpepanel-spørgsmål",
-	"growthexperiments-help-panel-question-subject-template-with-title": "Hjælpepanel-spørgsmål på [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Hjælpepanel-spørgsmål på [[:$1|$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Hjælpemodul-spørgsmål fra brugerforsiden",
 	"growthexperiments-help-panel-question-post-error": "Der skete en fejl da dit spørgsmål skulle sendes. Du kan prøve igen, eller du kan besøge $1 i din browser og tilføje spørgsmålet manuelt.",
 	"growthexperiments-help-panel-suggestededits-title": "Foreslåede redigeringer",

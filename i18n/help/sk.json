@@ -22,7 +22,7 @@
 	"growthexperiments-help-panel-questionreview-label": "Vaša otázka",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Vložiť názov stránky, na ktorej som, spolu s mojou otázkou",
 	"growthexperiments-help-panel-question-subject-template": "Otázka vložená pomocou panelu Potrebujem pomoc",
-	"growthexperiments-help-panel-question-subject-template-with-title": "Otázka vložená pomocou panelu Potrebujem pomoc: [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Otázka vložená pomocou panelu Potrebujem pomoc: [[:$1|$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Otázka zo sekcie „Získajte pomoc s editáciou“ domovskej stránky",
 	"growthexperiments-help-panel-question-post-error": "Počas vkladania vašej otázky nastala chyba. Môžete ju skúsiť vložiť znovu alebo ísť na stránku $1 a vložiť ju manuálne.",
 	"growthexperiments-help-panel-questioncomplete-title": "Položiť otázku",

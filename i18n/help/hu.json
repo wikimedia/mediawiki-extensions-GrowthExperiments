@@ -33,7 +33,7 @@
 	"growthexperiments-help-panel-questionreview-label": "A kérdésed",
 	"growthexperiments-help-panel-questionreview-include-article-title": "A lapcím belefoglalása a kérdésembe",
 	"growthexperiments-help-panel-question-subject-template": "Kérdés a segítségpanelből",
-	"growthexperiments-help-panel-question-subject-template-with-title": "Kérdés a(z) [[$1]] lapról a segítségpanel segítségével",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Kérdés a(z) [[:$1|$1]] lapról a segítségpanel segítségével",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Kérdés a segítség modulból a felhasználói honlapról",
 	"growthexperiments-help-panel-question-post-error": "Hiba történt a kérdésed elküldése közben. Megpróbálhatod újra, vagy meglátogathatod a(z) $1 oldalt a böngészőben, és felteheted a kérdésedet manuálisan.",
 	"growthexperiments-help-panel-suggestededits-title": "Javasolt szerkesztések",

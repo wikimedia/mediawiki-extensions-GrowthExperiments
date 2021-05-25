@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Geraki",
+			"Giannaras99",
 			"Kostajh"
 		]
 	},
@@ -76,7 +77,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Δημιουργία νέων λημμάτων και ανάπτυξη μικρών λημμάτων.",
 	"growthexperiments-homepage-suggested-edits-header": "Προτεινόμενες επεξεργασίες",
 	"growthexperiments-homepage-impact-header": "Ο αντίκτυπός {{GENDER:$1|σας}}",
-	"growthexperiments-homepage-impact-subheader-text": "Κάποιοι βλέπουν τα λήμματα που {{GENDER:$1|επεξεργαστήκατε}}!",
+	"growthexperiments-homepage-impact-subheader-text": "Οι χρήστες βλέπουν τα άρθρα που έχουν επεξεργαστεί {{GENDER:$1|εσείς}}!",
 	"growthexperiments-homepage-impact-subheader-subtext": "Εμφανίσεις από τότε που {{GENDER:$1|επεξεργαστήκατε}} (τελευταίες 60 ημέρες):",
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|Έχετε}} κάνει <strong>$1</strong> {{PLURAL:$1|επεξεργασία|επεξεργασίες}} (εμφάνιση όλων)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "Δεν {{GENDER:$1|έχετε}} ακόμη δημιουργήσει ή επεξεργαστεί καθόλου λήμματα.",
@@ -373,7 +374,7 @@
 	"newcomertasksinfo-no-data": "Δεν υπάρχουν διαθέσιμα δεδομένα.",
 	"newcomertasksinfo-table-header-task-type": "Είδος εργασίας",
 	"newcomertasksinfo-table-header-task-type-id": "Αναγνωριστικό",
-	"newcomertasksinfo-table-header-task-count": "Αριθμός",
+	"newcomertasksinfo-table-header-task-count": "Μέτρηση",
 	"newcomertasksinfo-table-header-topic-type": "Αναγνωριστικό Θέματος",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Προτάσεις",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Υποβολή..."

@@ -36,7 +36,7 @@
 	"growthexperiments-help-panel-questionreview-label": "A sua pergunta",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Incluir o título da página com a minha pergunta",
 	"growthexperiments-help-panel-question-subject-template": "Pergunta do painel de ajuda",
-	"growthexperiments-help-panel-question-subject-template-with-title": "Pergunta do painel de ajuda sobre [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Pergunta do painel de ajuda sobre [[:$1|$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Pergunta do módulo de ajuda a partir da página principal do utilizador",
 	"growthexperiments-help-panel-question-post-error": "Ocorreu um erro ao tentar publicar a sua pergunta. Pode tentar novamente ou visitar $1 no seu ''browser'' e acrescentar a sua pergunta manualmente.",
 	"growthexperiments-help-panel-suggestededits-title": "Edições sugeridas",

@@ -29,7 +29,7 @@
 	"growthexperiments-help-panel-questionreview-label": "Pitanje",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Uvrsti naslov stranice uz moje pitanje",
 	"growthexperiments-help-panel-question-subject-template": "Traženje pomoći",
-	"growthexperiments-help-panel-question-subject-template-with-title": "Pitanje sa stranice [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Pitanje sa stranice [[:$1|$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Pomoćni modul za pitanja s korisničke početne stranice",
 	"growthexperiments-help-panel-question-post-error": "Došlo je do greške prilikom postavljanja pitanja. Pokušajte ponovo ili posetite $1 u pregledaču da biste ručno postavili pitanje.",
 	"growthexperiments-help-panel-suggestededits-title": "Predložene izmene",

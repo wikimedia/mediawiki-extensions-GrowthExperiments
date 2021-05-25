@@ -38,7 +38,7 @@
 	"growthexperiments-help-panel-questionreview-label": "پرسش شما",
 	"growthexperiments-help-panel-questionreview-include-article-title": "شامل عنوان صفحه با سوال من",
 	"growthexperiments-help-panel-question-subject-template": "سؤال میز کمک",
-	"growthexperiments-help-panel-question-subject-template-with-title": "سوال میز کمک راجع به [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title": "سوال میز کمک راجع به [[:$1|$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "سؤال پودمان کمک از صفحهٔ کاربر",
 	"growthexperiments-help-panel-question-post-error": "هنگام تلاش برای ارسال پرسش شما، خطایی رخ داد. شما می‌توانید دوباره تلاش کنید و یا می‌توانید از $1 در مرورگر خود بازدید کنید و پرسش خود را به صورت دستی اضافه کنید.",
 	"growthexperiments-help-panel-suggestededits-title": "ویرایش‌های پیشنهادی",

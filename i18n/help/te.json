@@ -29,7 +29,7 @@
 	"growthexperiments-help-panel-questionreview-label": "మీ ప్రశ్న",
 	"growthexperiments-help-panel-questionreview-include-article-title": "నా ప్రశ్నకు పేజీ పేరును కూడా చేర్చు",
 	"growthexperiments-help-panel-question-subject-template": "సహాయ ప్యానెల్ ప్రశ్న",
-	"growthexperiments-help-panel-question-subject-template-with-title": "[[$1]] పై సహాయ ప్యానెల్ ప్రశ్న",
+	"growthexperiments-help-panel-question-subject-template-with-title": "[[:$1|$1]] పై సహాయ ప్యానెల్ ప్రశ్న",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "వాడుకరి హోంపేజీ నుండి సహాయ మాడ్యూల్ ప్రశ్న",
 	"growthexperiments-help-panel-question-post-error": "మీ ప్రశ్నను పంపించడంలో లోపం ఎదురైంది. మళ్ళీ ప్రయత్నించండి. లేదా మీ బ్రౌజరులో $1 కు వెళ్ళి అక్కడ మీ ప్రశ్నను నేరుగా చేర్చవచ్చు",
 	"growthexperiments-help-panel-suggestededits-title": "దిద్దుబాటు సూచనలు",

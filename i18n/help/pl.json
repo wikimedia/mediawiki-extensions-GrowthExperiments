@@ -39,7 +39,7 @@
 	"growthexperiments-help-panel-questionreview-label": "Twoje pytanie",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Dołącz tytuł tej strony do mojego pytania",
 	"growthexperiments-help-panel-question-subject-template": "Pytanie wysłane z panelu pomocy",
-	"growthexperiments-help-panel-question-subject-template-with-title": "Pytanie wysłane z panelu pomocy odnośnie [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Pytanie wysłane z panelu pomocy odnośnie [[:$1|$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Pytanie z modułu pomocy strony domowej użytkownika",
 	"growthexperiments-help-panel-question-post-error": "Wystąpił błąd podczas próby opublikowania Twojego pytania. Możesz spróbować ponownie lub przejść w przeglądarce do $1 i tam dodać pytanie ręcznie.",
 	"growthexperiments-help-panel-suggestededits-title": "Sugerowane edycje",

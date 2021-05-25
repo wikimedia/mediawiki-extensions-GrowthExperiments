@@ -20,7 +20,7 @@
 	"growthexperiments-help-panel-questionreview-label": "Zure galdera",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Txertatu orrialdearen izenburua nire galderarekin batera",
 	"growthexperiments-help-panel-question-subject-template": "Laguntza guneko galdera",
-	"growthexperiments-help-panel-question-subject-template-with-title": "Laguntza guneko galdera honi buruz: [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Laguntza guneko galdera honi buruz: [[:$1|$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Erabiltzailearen orrialde nagusiko laguntza moduluko galdera",
 	"growthexperiments-help-panel-question-post-error": "Zure galdera bidaltzen saiatzerakoan akats bat egon da. Saia zaitezke berriro ere edo $1 bisita dezakezu eta zure galdera eskuz bertan jarri.",
 	"growthexperiments-help-panel-questioncomplete-title": "Galdera egin",

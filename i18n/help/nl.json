@@ -36,7 +36,7 @@
 	"growthexperiments-help-panel-questionreview-label": "Uw vraag",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Voeg paginatitel toe bij mijn vraag",
 	"growthexperiments-help-panel-question-subject-template": "Hulppaneelvraag",
-	"growthexperiments-help-panel-question-subject-template-with-title": "Hulppaneelvraag op [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Hulppaneelvraag op [[:$1|$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Hulpmodulevraag van de gebruikersthuispagina",
 	"growthexperiments-help-panel-question-post-error": "Er is een fout opgetreden bij het plaatsen van uw vraag. U kunt het opnieuw proberen, of u kunt $1 in uw browser openen en uw vraag handmatig toevoegen.",
 	"growthexperiments-help-panel-suggestededits-title": "Voorgestelde bewerkingen",

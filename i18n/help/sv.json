@@ -32,7 +32,7 @@
 	"growthexperiments-help-panel-questionreview-label": "Din fråga",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Inkludera sidtiteln med min fråga",
 	"growthexperiments-help-panel-question-subject-template": "Hjälppanelfråga",
-	"growthexperiments-help-panel-question-subject-template-with-title": "Hjälppanelfråga på [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Hjälppanelfråga på [[:$1|$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Hjälpmodulfråga från användarhemsida",
 	"growthexperiments-help-panel-question-post-error": "Ett fel uppstod när din fråga skulle skickas. Du kan försöka igen eller besöka $1 i din webbläsare och lägga till din fråga manuellt.",
 	"growthexperiments-help-panel-suggestededits-title": "Förslag på redigeringar",

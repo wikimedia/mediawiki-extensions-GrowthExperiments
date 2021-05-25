@@ -32,7 +32,7 @@
 	"growthexperiments-help-panel-questionreview-label": "Pertanyaan Anda",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Sertakan judul halaman dengan pertanyaan saya",
 	"growthexperiments-help-panel-question-subject-template": "Pertanyaan panel bantuan",
-	"growthexperiments-help-panel-question-subject-template-with-title": "Pertanyaan panel bantuan tentang [[$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Pertanyaan panel bantuan tentang [[:$1|$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Pertanyaan modul bantuan dari beranda pengguna",
 	"growthexperiments-help-panel-question-post-error": "Terjadi kesalahan saat mencoba memposting pertanyaan Anda. Anda dapat mencoba lagi atau Anda dapat mengunjungi $1 di penjelajah internet Anda dan menambahkan pertanyaan Anda secara manual.",
 	"growthexperiments-help-panel-suggestededits-title": "Penyutingan yang disarankan",
