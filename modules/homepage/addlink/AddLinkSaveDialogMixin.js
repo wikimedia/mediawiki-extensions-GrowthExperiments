@@ -151,7 +151,14 @@ AddLinkSaveDialogMixin.prototype.getActionProcess = function ( action ) {
 	if ( [ 'save', 'review', 'approve', 'report' ].indexOf( action ) >= 0 ) {
 		this.logger.log( 'editsummary_' + action );
 	}
-	return this.constructor.super.prototype.getActionProcess.call( this, action );
+	if ( action === '' ) {
+		// On cancel, return focus to the link inspector.
+		return this.constructor.super.prototype.getActionProcess.call( this, action ).next( function () {
+			this.manager.lifecycle.closed.done( function () {
+				mw.hook( 'addlink-regainfocus' ).fire();
+			} );
+		}.bind( this ) );
+	}
 };
 
 module.exports = AddLinkSaveDialogMixin;
