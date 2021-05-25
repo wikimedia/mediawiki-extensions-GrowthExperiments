@@ -207,6 +207,21 @@ RecommendedLinkToolbarDialog.prototype.onAcceptanceChanged = function () {
 /**
  * @inheritdoc
  */
+RecommendedLinkToolbarDialog.prototype.onDialogKeyDown = function ( e ) {
+	if ( e.which === OO.ui.Keys.ESCAPE ) {
+		// We want to behave as if the dialog were part of the editing surface, ie. on Esc
+		// close the editor instead of the dialog.
+		e.preventDefault();
+		e.stopPropagation();
+		ve.init.target.tryTeardown( false, 'navigate-read' );
+	} else {
+		return RecommendedLinkToolbarDialog.super.prototype.onDialogKeyDown.call( this, e );
+	}
+};
+
+/**
+ * @inheritdoc
+ */
 RecommendedLinkToolbarDialog.prototype.teardown = function () {
 	$( window ).off( 'resize' );
 	this.setLinkCacheIconFunction( this.originalGetIconForLink );
