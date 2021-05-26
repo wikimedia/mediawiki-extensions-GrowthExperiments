@@ -148,17 +148,17 @@ AddLinkSaveDialogMixin.prototype.getTeardownProcess = function ( data ) {
 
 /** @inheritDoc */
 AddLinkSaveDialogMixin.prototype.getActionProcess = function ( action ) {
-	if ( [ 'save', 'review', 'approve', 'report' ].indexOf( action ) >= 0 ) {
-		this.logger.log( 'editsummary_' + action );
-	}
-	if ( action === '' ) {
+	return this.constructor.super.prototype.getActionProcess.call( this, action ).next( function () {
+		if ( [ 'save', 'review', 'approve', 'report' ].indexOf( action ) >= 0 ) {
+			this.logger.log( 'editsummary_' + action );
+		}
 		// On cancel, return focus to the link inspector.
-		return this.constructor.super.prototype.getActionProcess.call( this, action ).next( function () {
+		if ( action === '' ) {
 			this.manager.lifecycle.closed.done( function () {
 				mw.hook( 'addlink-regainfocus' ).fire();
 			} );
-		}.bind( this ) );
-	}
+		}
+	}.bind( this ) );
 };
 
 module.exports = AddLinkSaveDialogMixin;
