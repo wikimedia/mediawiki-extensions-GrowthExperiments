@@ -77,8 +77,10 @@ class FixLinkRecommendationData extends Maintenance {
 	public function init() {
 		$services = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		if ( !$growthServices->getConfig()->get( 'GEDeveloperSetup' ) ) {
-			$this->fatalError( 'This script cannot be safely run in production. (If the current '
+		if ( !$growthServices->getConfig()->get( 'GEDeveloperSetup' ) && $this->hasOption( 'db-table' ) ) {
+			// Adding search index entries is batched in production, and takes hours. This script would delete
+			// the associated DB records in the meantime.
+			$this->fatalError( 'The --db-table option cannot be safely run in production. (If the current '
 				. 'environment is not production, $wgGEDeveloperSetup should be set to true.)' );
 		}
 		$this->linkRecommendationStore = $growthServices->getLinkRecommendationStore();
