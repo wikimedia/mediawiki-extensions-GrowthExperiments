@@ -54,6 +54,7 @@ class FixLinkRecommendationData extends Maintenance {
 		$this->addOption( 'search-index', 'Delete search index entries which do not match the DB table. '
 			. '(Note that this relies on the job queue to work.)' );
 		$this->addOption( 'db-table', 'Delete DB table entries which do not match the search index.' );
+		$this->addOption( 'dry-run', 'Run without making any changes.' );
 		$this->addOption( 'verbose', 'Show debug output.' );
 		$this->setBatchSize( 100 );
 	}
@@ -90,6 +91,7 @@ class FixLinkRecommendationData extends Maintenance {
 	}
 
 	private function fixSearchIndex() {
+		$fixing = $this->hasOption( 'dry-run' ) ? 'Would fix' : 'Fixing';
 		$from = 0;
 		// phpcs:ignore MediaWiki.ControlStructures.AssignmentInControlStructures.AssignmentInControlStructures
 		while ( $titles = $this->search( 'hasrecommendation:link', $this->getBatchSize(), $from ) ) {
@@ -99,14 +101,17 @@ class FixLinkRecommendationData extends Maintenance {
 				$this->linkRecommendationStore->filterPageIds( $pageIdsToCheck ) );
 			$titlesToFix = $this->pageIdsToTitles( $pageIdsToFix );
 			foreach ( $titlesToFix as $title ) {
-				$this->verboseOutput( '    Fixing ' . $title->getPrefixedText() . "\n" );
-				$this->cirrusSearch->resetWeightedTags( $title->toPageIdentity(), 'recommendation.link' );
+				$this->verboseOutput( "    $fixing " . $title->getPrefixedText() . "\n" );
+				if ( !$this->hasOption( 'dry-run' ) ) {
+					$this->cirrusSearch->resetWeightedTags( $title->toPageIdentity(), 'recommendation.link' );
+				}
 			}
 			$from += $this->getBatchSize();
 		}
 	}
 
 	private function fixDatabaseTable() {
+		$fixing = $this->hasOption( 'dry-run' ) ? 'Would fix' : 'Fixing';
 		$from = null;
 		// phpcs:ignore MediaWiki.ControlStructures.AssignmentInControlStructures.AssignmentInControlStructures
 		while ( $pageIds = $this->linkRecommendationStore->listPageIds( $this->getBatchSize(), $from ) ) {
@@ -115,12 +120,12 @@ class FixLinkRecommendationData extends Maintenance {
 				$this->getBatchSize(), 0 );
 			$pageIdsToFix = $this->titlesToPageIds( $titlesToFix );
 			foreach ( $titlesToFix as $title ) {
-				$this->verboseOutput( '    Fixing ' . $title->getPrefixedText() . "\n" );
+				$this->verboseOutput( "    $fixing " . $title->getPrefixedText() . "\n" );
 			}
-			if ( $pageIdsToFix ) {
+			if ( $pageIdsToFix && !$this->hasOption( 'dry-run' ) ) {
 				$this->linkRecommendationStore->deleteByPageIds( $pageIdsToFix );
+				$this->commitTransaction( $this->linkRecommendationStore->getDB( DB_PRIMARY ), __METHOD__ );
 			}
-			$this->commitTransaction( $this->linkRecommendationStore->getDB( DB_PRIMARY ), __METHOD__ );
 			$from = end( $pageIds );
 		}
 	}
