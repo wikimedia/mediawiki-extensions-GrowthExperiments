@@ -5,7 +5,7 @@ namespace GrowthExperiments\NewcomerTasks;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
-use RequestContext;
+use MediaWiki\User\UserIdentityValue;
 use Status;
 use StatusValue;
 
@@ -44,7 +44,7 @@ class SuggestionsInfo {
 	 * @return array
 	 */
 	public function getInfo(): array {
-		$user = RequestContext::getMain()->getUser();
+		$user = new UserIdentityValue( 0, 'SuggestionsInfo' );
 		$taskSuggester = $this->taskSuggesterFactory->create();
 		$taskTypes = $this->configurationLoader->loadTaskTypes();
 		$topics = $this->configurationLoader->loadTopics();
