@@ -32,6 +32,8 @@
 	function SuggestedEditSession() {
 		OO.EventEmitter.call( this );
 
+		// These variables are persisted for the lifetime of the session.
+
 		/** @member {boolean} Whether we are in a suggested edit session currently. */
 		this.active = false;
 		/**
@@ -84,6 +86,11 @@
 		this.onboardingNeedsToBeShown = true;
 		/** @member {string|null} The newcomer task token set from NewcomerTaskLogger#log. */
 		this.newcomerTaskToken = null;
+
+		// These variables are not persisted and only used for immediate state management.
+
+		/** @member {bool} Flag to prevent double-opening of the post-edit dialog (T283120) */
+		this.postEditDialogIsOpen = false;
 	}
 	OO.mixinClass( SuggestedEditSession, OO.EventEmitter );
 
@@ -334,6 +341,13 @@
 		var self = this,
 			uri = new mw.Uri();
 
+		// T283120: avoid opening the dialog multiple times at once. This shouldn't be
+		// happening but with the various delayed mechanisms for opening the dialog, it's
+		// hard to avoid.
+		if ( this.postEditDialogIsOpen ) {
+			return $.Deferred().resolve().promise();
+		}
+
 		if ( config.resetSession ) {
 			self.clickId = mw.user.generateRandomSessionId();
 			// Need to update the click ID in edit links as well.
@@ -353,11 +367,15 @@
 			// This can happen when VisualEditor fires the postEdit hook before reloading the page.
 			!( uri.query.veaction || uri.query.action === 'edit' )
 		) {
+			this.postEditDialogIsOpen = true;
 			return mw.loader.using( 'ext.growthExperiments.PostEdit' ).then( function ( require ) {
 				return require( 'ext.growthExperiments.PostEdit' ).setupPanel().then( function ( result ) {
 					result.openPromise.done( function () {
 						self.postEditDialogNeedsToBeShown = false;
 						self.save();
+					} );
+					result.closePromise.done( function () {
+						self.postEditDialogIsOpen = false;
 					} );
 					return result.openPromise;
 				} );
