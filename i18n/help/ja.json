@@ -32,7 +32,7 @@
 	"growthexperiments-help-panel-questionreview-label": "質問をどうぞ",
 	"growthexperiments-help-panel-questionreview-include-article-title": "自分の質問に記事名を付け加える",
 	"growthexperiments-help-panel-question-subject-template": "ヘルプパネルからの質問",
-	"growthexperiments-help-panel-question-subject-template-with-title": "[[:$1|$1]]についてヘルプパネルでの質問",
+	"growthexperiments-help-panel-question-subject-template-with-title": "ヘルプパネルの質問は[[:$1|$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "利用者ホームページからのヘルプモジュールの質問",
 	"growthexperiments-help-panel-question-post-error": "質問を投稿する過程でエラーが発生しました。もう一度やり直すか、ご利用のブラウザの$1を開き、手動で質問を投稿してください。",
 	"growthexperiments-help-panel-suggestededits-title": "お勧めの編集",
