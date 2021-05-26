@@ -84,15 +84,19 @@
 		guidancePrefValue = JSON.parse( mw.user.options.get( guidancePrefName ) || {} );
 	} catch ( e ) {
 		// Pref value was mangled for whatever reason.
+		mw.log.error( e );
+		mw.errorLogger.logError( e );
 		guidancePrefValue = {};
 	}
 	if ( !guidancePrefValue[ skin ] ) {
 		guidancePrefValue[ skin ] = {};
 	}
 
-	if ( guidancePrefValue[ skin ][ taskTypeId ] ) {
-		// The user has already seen the blue dot for this task type and skin and
-		// clicked "edit", don't do anything else.
+	if ( guidancePrefValue[ skin ][ taskTypeId ] ||
+		taskTypeId === 'link-recommendation'
+	) {
+		// The user has already seen the blue dot for this task type and skin and clicked
+		// "edit", or the dot doesn't make sense for this task type. Don't do anything else.
 		return;
 	}
 
