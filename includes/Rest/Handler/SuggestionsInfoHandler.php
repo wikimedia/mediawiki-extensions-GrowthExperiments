@@ -39,7 +39,7 @@ class SuggestionsInfoHandler extends SimpleHandler {
 			function ( $oldValue, &$ttl ) {
 				$info = $this->suggestionsInfo->getInfo();
 				// Don't cache error responses.
-				if ( $info['error'] ) {
+				if ( !$info || isset( $info['error'] ) ) {
 					$ttl = $this->cache::TTL_UNCACHEABLE;
 				}
 				return $info;

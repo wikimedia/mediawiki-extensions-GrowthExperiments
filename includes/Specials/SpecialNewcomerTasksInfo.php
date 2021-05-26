@@ -34,7 +34,7 @@ class SpecialNewcomerTasksInfo extends SpecialPage {
 			$this->cache::TTL_HOUR,
 			function ( $oldValue, &$ttl ) {
 				$data = $this->suggestionsInfo->getInfo();
-				if ( !$data ) {
+				if ( !$data || isset( $data['error'] ) ) {
 					$ttl = $this->cache::TTL_UNCACHEABLE;
 				}
 				return $data;
