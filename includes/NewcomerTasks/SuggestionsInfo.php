@@ -87,7 +87,9 @@ class SuggestionsInfo {
 					$user,
 					[ $taskType->getId() ],
 					[ $topic->getId() ],
-					1
+					1,
+					null,
+					[ 'useCache' => false ]
 				);
 				if ( $result instanceof StatusValue ) {
 					// Use -1 as a crude indicator of an error.
