@@ -4,11 +4,6 @@
 
 .suggested-edits-taskexplanation-difficulty-and-time,
 .suggested-edits-taskexplanation-additional-info {
-	.suggested-edits-task-explanation-icon {
-		margin-right: 10px;
-		background-size: 90%;
-	}
-
 	p {
 		color: @colorGray2;
 	}
@@ -59,7 +54,13 @@
 		}
 
 		.oo-ui-icon-robot-task-type {
+			@iconDimension: 16px;
 			margin-right: 8px;
+			width: @iconDimension;
+			height: @iconDimension;
+			// OOUI sets 20px min width & height.
+			min-height: @iconDimension;
+			min-width: @iconDimension;
 		}
 	}
 
