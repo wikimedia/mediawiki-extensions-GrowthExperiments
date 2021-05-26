@@ -103,16 +103,19 @@ class LinkRecommendationStore {
 	}
 
 	/**
-	 * Given a set of page IDs, return the ones which have a link recommendation.
+	 * Given a set of page IDs, return the ones which have a valid link recommendation
+	 * (valid as in it's for the latest revision).
 	 * @param int[] $pageIds
 	 * @return int[]
 	 */
 	public function filterPageIds( array $pageIds ): array {
 		return array_map( 'intval', $this->dbr->selectFieldValues(
-			'growthexperiments_link_recommendations',
+			[ 'growthexperiments_link_recommendations', 'page' ],
 			'gelr_page',
 			[ 'gelr_page' => $pageIds ],
-			__METHOD__
+			__METHOD__,
+			[],
+			[ 'page' => [ 'JOIN', 'page_id = gelr_page AND page_latest = gelr_revision' ] ]
 		) );
 	}
 
