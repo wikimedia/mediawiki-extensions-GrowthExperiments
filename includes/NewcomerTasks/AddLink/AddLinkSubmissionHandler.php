@@ -90,8 +90,12 @@ class AddLinkSubmissionHandler {
 		try {
 			$this->linkRecommendationHelper->deleteLinkRecommendation(
 				$pageIdentity,
-				// Update the search index if this was a null edit.
-				!(bool)$editRevId
+				// FIXME T283606: In theory if $editRevId is set (this is a real edit, not a null edit that
+				//   happens when the user accepted nothing), we can leave search index updates to the
+				//   SearchDataForIndex hook. In practice that does not work because we delete the DB row
+				//   here so the hook logic will assume there's nothing to do. Might want to improve that
+				//   in the future.
+				true
 			);
 			$status = $this->addLinkSubmissionRecorder->record( $user, $linkRecommendation, $acceptedTargets,
 				$rejectedTargets, $skippedTargets, $editRevId );
