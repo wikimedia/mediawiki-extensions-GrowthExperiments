@@ -147,6 +147,7 @@
 	 *   - errorMessage: error message (only when loading the task failed);
 	 *   - panel: the PostEditPanel object;
 	 *   - openPromise: a promise that resolves when the panel has been displayed.
+	 *   - closePromise: A promise that resolves when the dialog has been closed.
 	 */
 	function setup( task, errorMessage ) {
 		var postEditPanel, displayPanelPromises, openPromise, closePromise, extraDataPromise, result;
@@ -213,7 +214,8 @@
 
 		result = {
 			panel: postEditPanel,
-			openPromise: openPromise
+			openPromise: openPromise,
+			closePromise: closePromise
 		};
 		if ( task ) {
 			result.task = task;
@@ -236,6 +238,7 @@
 		 *   - errorMessage: error message (only when loading the task failed);
 		 *   - panel: the PostEditPanel object;
 		 *   - openPromise: a promise that resolves when the panel has been displayed.
+		 *   - closePromise: A promise that resolves when the dialog has been closed.
 		 */
 		setupPanel: function () {
 			return getNextTask().then( function ( task ) {
