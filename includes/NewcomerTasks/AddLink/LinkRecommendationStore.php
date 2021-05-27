@@ -109,13 +109,24 @@ class LinkRecommendationStore {
 	 * @return int[]
 	 */
 	public function filterPageIds( array $pageIds ): array {
+		$titles = $this->titleFactory->newFromIDs( $pageIds );
+		$conds = [];
+		foreach ( $titles as $title ) {
+			// Making it obvious there's no SQL injection risk is nice, but Phan disagrees.
+			// @phan-suppress-next-line PhanRedundantConditionInLoop
+			$pageId = (int)$title->getId();
+			$revId = (int)$title->getLatestRevID();
+			if ( !$pageId || !$revId ) {
+				continue;
+			}
+			// $revId can be outdated due to replag; we don't want to delete the record then.
+			$conds[] = "gelr_page = $pageId AND gelr_revision >= $revId";
+		}
 		return array_map( 'intval', $this->dbr->selectFieldValues(
-			[ 'growthexperiments_link_recommendations', 'page' ],
+			'growthexperiments_link_recommendations',
 			'gelr_page',
-			[ 'gelr_page' => $pageIds ],
-			__METHOD__,
-			[],
-			[ 'page' => [ 'JOIN', 'page_id = gelr_page AND page_latest = gelr_revision' ] ]
+			$this->dbr->makeList( $conds, IDatabase::LIST_OR ),
+			__METHOD__
 		) );
 	}
 
