@@ -76,6 +76,11 @@
 					moduleName: 'generic',
 					trigger: 'welcome'
 				} );
+				// Update the preference so the tour isn't shown again.
+				new mw.Api().saveOption(
+					'growthexperiments-tour-homepage-welcome',
+					'1'
+				);
 				// cancel displaying the guider
 				return true;
 			}
