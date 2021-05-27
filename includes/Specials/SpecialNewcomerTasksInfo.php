@@ -32,10 +32,15 @@ class SpecialNewcomerTasksInfo extends SpecialPage {
 		$info = $this->cache->getWithSetCallback(
 			$this->cache->makeKey( 'GrowthExperiments', 'SuggestionsInfo' ),
 			$this->cache::TTL_HOUR,
-			function ( $oldValue, &$ttl ) {
+			function ( $oldValue, &$ttl, &$setOpts ) {
 				$data = $this->suggestionsInfo->getInfo();
 				if ( !$data || isset( $data['error'] ) ) {
 					$ttl = $this->cache::TTL_UNCACHEABLE;
+				} else {
+					// WANObjectCache::fetchOrRegenerate would set this to the start of callback
+					// execution if unset. If at the end of the callback more than a few seconds
+					// have passed since the given time, it will refuse to cache.
+					$setOpts['since'] = INF;
 				}
 				return $data;
 			}
