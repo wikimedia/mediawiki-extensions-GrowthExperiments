@@ -1,8 +1,0 @@
-{
-	"@metadata": {
-		"authors": [
-			"Fitoschido"
-		]
-	},
-	"welcomesurvey-question-languages-help": "Proporcione {{PLURAL:$1|un idioma|$1 idiomas}} como máximo."
-}
