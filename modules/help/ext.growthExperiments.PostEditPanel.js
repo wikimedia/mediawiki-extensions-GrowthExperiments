@@ -28,6 +28,7 @@
 		this.taskTypes = config.taskTypes;
 		this.newcomerTaskLogger = config.newcomerTaskLogger;
 		this.helpPanelLogger = config.helpPanelLogger;
+		this.newcomerTaskToken = null;
 		this.$taskCard = null;
 	}
 	OO.initClass( PostEditPanel );
@@ -139,9 +140,11 @@
 	PostEditPanel.prototype.getCard = function ( task ) {
 		var params, url, taskCard;
 
+		this.newcomerTaskToken = this.newcomerTaskLogger.log( task );
 		params = {
 			geclickid: this.helpPanelLogger.helpPanelSessionId,
-			getasktype: task.tasktype
+			getasktype: task.tasktype,
+			genewcomertasktoken: this.newcomerTaskToken
 		};
 		if ( task.url ) {
 			// Override for developer setups
@@ -182,15 +185,14 @@
 	 *   only if the impression involved showing a task
 	 */
 	PostEditPanel.prototype.logImpression = function ( extraData ) {
-		var joinToken, data;
+		var data;
 
 		if ( this.nextTask ) {
-			joinToken = this.newcomerTaskLogger.log( this.nextTask );
 			data = {
 				type: 'full',
 				savedTaskType: extraData.savedTaskType,
 				userTaskTypes: extraData.userTaskTypes,
-				newcomerTaskToken: joinToken
+				newcomerTaskToken: this.newcomerTaskToken
 			};
 			if ( extraData.userTopics && extraData.userTopics.length ) {
 				data.userTopics = extraData.userTopics;

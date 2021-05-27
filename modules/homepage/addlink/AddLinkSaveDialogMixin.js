@@ -1,4 +1,5 @@
-var LinkSuggestionInteractionLogger = require( './LinkSuggestionInteractionLogger.js' );
+var LinkSuggestionInteractionLogger = require( './LinkSuggestionInteractionLogger.js' ),
+	SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' );
 
 /**
  * Mixin for code sharing between AddLinkSaveDialog and AddLinkMobileSaveDialog.
@@ -24,6 +25,10 @@ OO.initClass( AddLinkSaveDialogMixin );
 /** @inheritDoc */
 AddLinkSaveDialogMixin.prototype.initialize = function () {
 	this.constructor.super.prototype.initialize.call( this );
+
+	// Snapshot the homepage PV token. It will change during save, and we want the events
+	// belonging to this dialog to be grouped together.
+	this.homepagePageviewToken = SuggestedEditSession.getInstance().clickId;
 
 	// Replace the save panel. The other panels are good as they are.
 	this.savePanel.$element.empty();
@@ -132,9 +137,12 @@ AddLinkSaveDialogMixin.prototype.getSetupProcess = function ( data ) {
 /** @inheritDoc */
 AddLinkSaveDialogMixin.prototype.getTeardownProcess = function ( data ) {
 	return this.constructor.super.prototype.getTeardownProcess.call( this, data ).next( function () {
-		var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
-			suggestedEditSession = SuggestedEditSession.getInstance();
-		this.logger.log( 'close' );
+		var suggestedEditSession = SuggestedEditSession.getInstance();
+
+		// T283765: use the stored pageview token. The real one might have been reset at
+		// this point by a showPostEditDialog call from the postEdit hook.
+		// eslint-disable-next-line camelcase
+		this.logger.log( 'close', {}, { homepage_pageview_token: this.homepagePageviewToken } );
 
 		// If the page was saved, try showing the post-edit dialog. This is a hack for the case
 		// when no link recommendation was accepted so the save was a null edit and the postEdit
@@ -150,7 +158,10 @@ AddLinkSaveDialogMixin.prototype.getTeardownProcess = function ( data ) {
 AddLinkSaveDialogMixin.prototype.getActionProcess = function ( action ) {
 	return this.constructor.super.prototype.getActionProcess.call( this, action ).next( function () {
 		if ( [ 'save', 'review', 'approve', 'report' ].indexOf( action ) >= 0 ) {
-			this.logger.log( 'editsummary_' + action );
+			this.logger.log( 'editsummary_' + action, {}, {
+				// eslint-disable-next-line camelcase
+				homepage_pageview_token: this.homepagePageviewToken
+			} );
 		}
 		// On cancel, return focus to the link inspector.
 		if ( action === '' ) {
