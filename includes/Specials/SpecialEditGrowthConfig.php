@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Specials;
 
-use Config;
 use FormSpecialPage;
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
 use GrowthExperiments\Config\Validation\NewcomerTasksValidator;
@@ -49,9 +48,6 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	/** @var GrowthExperimentsMultiConfig */
 	private $growthWikiConfig;
 
-	/** @var bool Whether the various pages configured as help links etc. must exist. */
-	private $pagesMustExist;
-
 	/** @var string|null */
 	private $errorMsgKey;
 
@@ -65,7 +61,6 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	private $configPages = [];
 
 	/**
-	 * @param Config $config We can't use getConfig() in constructor, as context is not yet set
 	 * @param TitleFactory $titleFactory
 	 * @param RevisionLookup $revisionLookup
 	 * @param PageProps $pageProps
@@ -75,7 +70,6 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 * @param GrowthExperimentsMultiConfig $growthWikiConfig
 	 */
 	public function __construct(
-		Config $config,
 		TitleFactory $titleFactory,
 		RevisionLookup $revisionLookup,
 		PageProps $pageProps,
@@ -93,8 +87,13 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		$this->configLoader = $configLoader;
 		$this->configWriterFactory = $configWriterFactory;
 		$this->growthWikiConfig = $growthWikiConfig;
-		$this->pagesMustExist = !$config->get( 'GEDeveloperSetup' );
+	}
 
+	/**
+	 * @param string|null $par
+	 */
+	public function execute( $par ) {
+		$config = $this->getConfig();
 		$this->setConfigPage(
 			'geconfig',
 			$config->get( 'GEWikiConfigPageTitle' )
@@ -103,6 +102,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			'newcomertasks',
 			$config->get( 'GENewcomerTasksConfigTitle' )
 		);
+		parent::execute( $par );
 	}
 
 	/**
@@ -261,11 +261,14 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	}
 
 	private function getRawDescriptors(): array {
+		// Whether the various pages configured as help links etc. must exist.
+		$pagesMustExist = !$this->getConfig()->get( 'GEDeveloperSetup' );
+
 		$descriptors = [
 			// Growth experiments config (stored in MediaWiki:GrowthExperimentsConfig.json)
 			'geconfig-GEHomepageSuggestedEditsIntroLinks-create' => [
 				'type' => 'title',
-				'exists' => $this->pagesMustExist,
+				'exists' => $pagesMustExist,
 				'interwiki' => true,
 				'label-message' => 'growthexperiments-edit-config-homepage-intro-links-create',
 				'required' => true,
@@ -273,7 +276,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			],
 			'geconfig-GEHomepageSuggestedEditsIntroLinks-image' => [
 				'type' => 'title',
-				'exists' => $this->pagesMustExist,
+				'exists' => $pagesMustExist,
 				'interwiki' => true,
 				'label-message' => 'growthexperiments-edit-config-homepage-intro-links-image',
 				'required' => true,
@@ -320,7 +323,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $group ) {
 			$descriptors["newcomertasks-${taskType}Templates"] = [
 				'type' => 'titlesmultiselect',
-				'exists' => $this->pagesMustExist,
+				'exists' => $pagesMustExist,
 				'namespace' => NS_TEMPLATE,
 				'relative' => true,
 				'label-message' => "growthexperiments-edit-config-newcomer-tasks-$taskType-templates",
@@ -329,7 +332,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			];
 			$descriptors["newcomertasks-${taskType}Learnmore"] = [
 				'type' => 'title',
-				'exists' => $this->pagesMustExist,
+				'exists' => $pagesMustExist,
 				'label-message' => "growthexperiments-edit-config-newcomer-tasks-$taskType-learnmore",
 				'required' => false,
 				'section' => 'newcomertasks'
@@ -374,7 +377,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			],
 			'geconfig-GEHelpPanelHelpDeskTitle' => [
 				'type' => 'title',
-				'exists' => $this->pagesMustExist,
+				'exists' => $pagesMustExist,
 				'label-message' => 'growthexperiments-edit-config-help-panel-helpdesk-title',
 				'required' => false,
 				'section' => 'help-panel',
@@ -402,7 +405,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					'label-message' => "growthexperiments-edit-config-help-panel-links-$type-title",
 					'section' => 'help-panel-links',
 					'required' => false,
-					'exists' => $this->pagesMustExist,
+					'exists' => $pagesMustExist,
 					'interwiki' => true,
 				],
 				"geconfig-GEHelpPanelLinks-$position-label" => [
@@ -416,7 +419,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		$descriptors = array_merge( $descriptors, [
 			'geconfig-GEHelpPanelViewMoreTitle' => [
 				'type' => 'title',
-				'exists' => $this->pagesMustExist,
+				'exists' => $pagesMustExist,
 				'label-message' => 'growthexperiments-edit-config-help-panel-view-more',
 				'required' => false,
 				'interwiki' => true,
