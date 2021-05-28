@@ -177,6 +177,13 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	/**
 	 * @inheritDoc
 	 */
+	public function doesWrites() {
+		return true;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function getMessagePrefix() {
 		return 'growthexperiments-edit-config';
 	}
