@@ -5,5 +5,12 @@
 			"Mainframe98"
 		]
 	},
-	"growthexperiments-desc": "Deze uitbreiding bevat experimenten uitgevoerd door het Growth-team."
+	"growthexperiments-desc": "Deze uitbreiding bevat experimenten uitgevoerd door het Growth-team.",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Voor het laatst bijgewerkt door [[User:$1|$1]] $2.",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Voor het laatst bijgewerkt door onbekende gebruiker $1.",
+	"growthexperiments-edit-config-edit-summary": "Bewerkingssamenvatting",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "Bovenaan pagina",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "Onderaan pagina",
+	"growthexperiments-edit-config-mentorship-enabled-true": "Ja",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Nee"
 }

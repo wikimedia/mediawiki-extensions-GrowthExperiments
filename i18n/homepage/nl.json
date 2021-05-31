@@ -148,7 +148,16 @@
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Doorgaan",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Begrepen",
 	"growthexperiments-addlink-pagenotfound": "Pagina \"$1\" bestaat niet",
+	"growthexperiments-addlink-context-text-label": "Tekst",
 	"growthexperiments-addlink-context-button-accept": "Ja",
 	"growthexperiments-addlink-context-button-reject": "Nee",
-	"growthexperiments-addlink-context-button-next": "Overslaan"
+	"growthexperiments-addlink-context-button-next": "Volgende",
+	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "Alles overslaan",
+	"growthexperiments-addlink-onboarding-dialog-title": "Inleiding",
+	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "Niet opnieuw weergeven",
+	"growthexperiments-addlink-summary-title": "Samenvatting",
+	"growthexperiments-addlink-summary-column-header-suggestion": "Suggestie",
+	"growthexperiments-addlink-skip-accept": "Alles overslaan",
+	"newcomertasksinfo-table-header-task-count": "Aantal",
+	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Suggesties"
 }
