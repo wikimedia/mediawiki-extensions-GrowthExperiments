@@ -179,7 +179,6 @@ class RefreshLinkRecommendations extends Maintenance {
 			$recommendationsNeeded = $this->recommendationTaskType->getMinimumTasksPerTopic()
 				- $suggestions->getTotalCount();
 
-			// TODO can we reuse actual Suggester / SearchStrategy / etc code here?
 			if ( $recommendationsNeeded <= 0 ) {
 				$this->output( "    no new tasks needed\n" );
 				continue;
@@ -189,14 +188,18 @@ class RefreshLinkRecommendations extends Maintenance {
 				$recommendationsFound = 0;
 				foreach ( $titleBatch as $title ) {
 					// TODO filter out protected pages. Needs to be batched. Or wait for T259346.
-					$this->processCandidate( $title, $force );
-					$recommendationsFound++;
-					$recommendationsNeeded--;
-					if ( $recommendationsNeeded <= 0 ) {
-						break 2;
+					$success = $this->processCandidate( $title, $force );
+					if ( $success ) {
+						$recommendationsFound++;
+						$recommendationsNeeded--;
+						if ( $recommendationsNeeded <= 0 ) {
+							break 2;
+						}
 					}
 				}
 				$this->waitForReplication();
+				// findArticlesInTopic() picks articles at random, so we need to abort the loop
+				// at some point. Do it when no new tasks were generated from the current batch.
 				if ( $recommendationsFound === 0 ) {
 					break;
 				}
@@ -305,12 +308,13 @@ class RefreshLinkRecommendations extends Maintenance {
 	 * Evaluate a task candidate and potentially generate the task.
 	 * @param Title $title
 	 * @param bool $force Ignore all failed conditions that can be safely ignored.
+	 * @return bool Whether a new task was generated.
 	 */
 	private function processCandidate( Title $title, bool $force = false ) {
 		$this->verboseLog( "    checking candidate " . $title->getPrefixedDBkey() . "... " );
 		$lastRevision = $this->revisionStore->getRevisionByTitle( $title );
 		if ( !$this->evaluateTitle( $title, $lastRevision, $force ) ) {
-			return;
+			return false;
 		}
 
 		// Prevent infinite loop. Cirrus updates are not realtime so pages we have
@@ -322,13 +326,13 @@ class RefreshLinkRecommendations extends Maintenance {
 			IDBAccessObject::READ_LATEST )
 		) {
 			$this->verboseLog( "link recommendation already stored\n" );
-			return;
+			return false;
 		}
 
 		$recommendation = $this->linkRecommendationProviderUncached->get( $title,
 			$this->recommendationTaskType );
 		if ( !$this->evaluateRecommendation( $recommendation, $lastRevision, $force ) ) {
-			return;
+			return false;
 		}
 
 		$this->verboseLog( "success, updating index\n" );
@@ -348,6 +352,7 @@ class RefreshLinkRecommendations extends Maintenance {
 			// It's run frequently so just do the easy thing and abort.
 			$this->fatalError( 'DB is readonly, aborting' );
 		}
+		return true;
 	}
 
 	/**
