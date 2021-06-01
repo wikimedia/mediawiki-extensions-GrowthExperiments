@@ -310,7 +310,7 @@ class RefreshLinkRecommendations extends Maintenance {
 	 * @param bool $force Ignore all failed conditions that can be safely ignored.
 	 * @return bool Whether a new task was generated.
 	 */
-	private function processCandidate( Title $title, bool $force = false ) {
+	private function processCandidate( Title $title, bool $force = false ) : bool {
 		$this->verboseLog( "    checking candidate " . $title->getPrefixedDBkey() . "... " );
 		$lastRevision = $this->revisionStore->getRevisionByTitle( $title );
 		if ( !$this->evaluateTitle( $title, $lastRevision, $force ) ) {
