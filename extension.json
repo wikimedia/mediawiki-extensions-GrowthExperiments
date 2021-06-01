@@ -770,6 +770,7 @@
 				"colon-separator"
 			],
 			"dependencies": [
+				"mediawiki.language",
 				"oojs-ui-core",
 				"oojs-ui-windows",
 				"oojs-ui.styles.icons-editing-core",
