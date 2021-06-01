@@ -18,14 +18,21 @@
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		taskTypeId = suggestedEditSession.taskType,
 		guidancePrefName = 'growthexperiments-homepage-suggestededits-guidance-blue-dot',
-		errorDialogOnFailure = function () {
+		errorDialogOnFailure = function ( error ) {
 			var logger = new LinkSuggestionInteractionLogger( {
 				/* eslint-disable camelcase */
 				is_mobile: OO.ui.isMobile(),
 				active_interface: 'nosuggestions_dialog'
 				/* eslint-enable camelcase */
 			} );
+			var wiki = mw.config.get( 'wgDBname' );
+
+			mw.log.error( error );
+			mw.errorLogger.logError( new Error( error ), 'error.growthexperiments' );
+			mw.track( 'counter.MediaWiki.GrowthExperiments.AddLink.nosuggestions.' + wiki, 1 );
+
 			logger.log( 'impression' );
+
 			OO.ui.alert( mw.message( 'growthexperiments-addlink-no-suggestions-found-dialog-message' ).text(), {
 				actions: [ { action: 'accept', label: mw.message( 'growthexperiments-addlink-no-suggestions-found-dialog-button' ).text(), flags: 'primary' } ]
 			} ).done( function () {
@@ -39,13 +46,9 @@
 		mw.config.get( 'wgGELinkRecommendationsFrontendEnabled' ) &&
 		suggestedEditSession.taskState === 'started' ) {
 		if ( !suggestedEditSession.taskData ) {
-			mw.log.error( 'Missing task data' );
-			mw.errorLogger.logError( new Error( 'Missing task data' ), 'error.growthexperiments' );
-			errorDialogOnFailure();
+			errorDialogOnFailure( 'Missing task data' );
 		} else if ( suggestedEditSession.taskData.error ) {
-			mw.log.error( suggestedEditSession.taskData.error );
-			mw.errorLogger.logError( new Error( suggestedEditSession.taskData.error ), 'error.growthexperiments' );
-			errorDialogOnFailure();
+			errorDialogOnFailure( suggestedEditSession.taskData.error );
 		} else {
 
 			if ( OO.ui.isMobile() ) {
