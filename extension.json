@@ -1598,7 +1598,9 @@
 		"growthexperiments": "growthexperiments-log-header"
 	},
 	"LogActionsHandlers": {
-		"growthexperiments/*": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter"
+		"growthexperiments/setmentor": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
+		"growthexperiments/claimmentee": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
+		"growthexperiments/addlink": "LogFormatter"
 	},
 	"ActionFilteredLogs": {
 		"growthexperiments": {
