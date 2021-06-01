@@ -43,6 +43,11 @@ RecommendedLinkToolbarDialogMobile.prototype.afterSetupProcess = function () {
 	// HACK: Disable virtual keyboard, text edit menu on the surface
 	ceSurface.$documentNode.attr( 'contenteditable', false );
 	ceSurface.$documentNode.addClass( 'mw-ge-user-select-none' );
+	mw.hook( 'growthExperiments.addLinkOnboardingCompleted' ).add( function () {
+		// If onboarding is completed after selecting first recommendation, the selection needs to
+		// be scrolled into view since it wasn't in the viewport when onboarding was open.
+		this.surface.scrollSelectionIntoView();
+	}.bind( this ) );
 	RecommendedLinkToolbarDialogMobile.super.prototype.afterSetupProcess.call( this );
 };
 
