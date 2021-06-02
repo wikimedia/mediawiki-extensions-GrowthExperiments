@@ -270,7 +270,7 @@
 			this.save();
 		} else {
 			mw.log.error( 'SuggestedEditSession.setTaskState: invalid state ' + state );
-			mw.errorLogger.logError( new Error( 'SuggestedEditSession.setTaskState: invalid state ' + state ) );
+			mw.errorLogger.logError( new Error( 'SuggestedEditSession.setTaskState: invalid state ' + state ), 'error.growthexperiments' );
 		}
 	};
 

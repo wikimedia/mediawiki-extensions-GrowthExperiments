@@ -40,11 +40,11 @@
 		suggestedEditSession.taskState === 'started' ) {
 		if ( !suggestedEditSession.taskData ) {
 			mw.log.error( 'Missing task data' );
-			mw.errorLogger.logError( new Error( 'Missing task data' ) );
+			mw.errorLogger.logError( new Error( 'Missing task data' ), 'error.growthexperiments' );
 			errorDialogOnFailure();
 		} else if ( suggestedEditSession.taskData.error ) {
 			mw.log.error( suggestedEditSession.taskData.error );
-			mw.errorLogger.logError( new Error( suggestedEditSession.taskData.error ) );
+			mw.errorLogger.logError( new Error( suggestedEditSession.taskData.error ), 'error.growthexperiments' );
 			errorDialogOnFailure();
 		} else {
 
@@ -85,7 +85,7 @@
 	} catch ( e ) {
 		// Pref value was mangled for whatever reason.
 		mw.log.error( e );
-		mw.errorLogger.logError( e );
+		mw.errorLogger.logError( e, 'error.growthexperiments' );
 		guidancePrefValue = {};
 	}
 	if ( !guidancePrefValue[ skin ] ) {

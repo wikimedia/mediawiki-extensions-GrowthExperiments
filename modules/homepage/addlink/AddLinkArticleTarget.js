@@ -271,11 +271,9 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 			mw.log.error( 'Failed to locate "' + phraseItem + '" (occurrences seen: ' +
 				phraseMap[ phraseItem ].occurrencesSeen + ') in document.' );
 		} );
-		mw.errorLogger.logError(
-			new Error(
-				'Unable to find ' + phraseMapKeys.length + ' link recommendation phrase item(s) in document.'
-			)
-		);
+		mw.errorLogger.logError( new Error(
+			'Unable to find ' + phraseMapKeys.length + ' link recommendation phrase item(s) in document.'
+		), 'error.growthexperiments' );
 	}
 	this.logger.log( 'impression', {
 		/* eslint-disable camelcase */
@@ -423,7 +421,7 @@ AddLinkArticleTarget.prototype.getAnnotationStates = function () {
 		if ( annotations.getLength() !== 1 ) {
 			mw.log.error( 'annotation not found for offset ' + recommendation.recommendationWikitextOffset );
 			mw.errorLogger.logError( new Error( 'annotation not found for offset ' +
-				recommendation.recommendationWikitextOffset ) );
+				recommendation.recommendationWikitextOffset ), 'error.growthexperiments' );
 			return;
 		}
 		annotation = annotations.get( 0 );

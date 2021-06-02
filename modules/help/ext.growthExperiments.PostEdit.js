@@ -154,7 +154,7 @@
 
 		if ( errorMessage ) {
 			mw.log.error( errorMessage );
-			mw.errorLogger.logError( new Error( errorMessage ) );
+			mw.errorLogger.logError( new Error( errorMessage ), 'error.growthexperiments' );
 		}
 
 		postEditPanel = new PostEditPanel( {

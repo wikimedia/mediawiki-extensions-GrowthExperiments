@@ -406,7 +406,7 @@
 
 		if ( isRealError ) {
 			mw.log.error( 'Fetching task suggestions failed: ' + message, error, details );
-			mw.errorLogger.logError( error instanceof Error ? error : new Error( message ) );
+			mw.errorLogger.logError( error instanceof Error ? error : new Error( message ), 'error.growthexperiments' );
 		}
 
 		return $.Deferred().reject( message ).promise();

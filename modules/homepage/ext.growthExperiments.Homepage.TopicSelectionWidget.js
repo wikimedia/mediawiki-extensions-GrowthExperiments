@@ -47,7 +47,7 @@ function TopicSelectionWidget( config ) {
 		// Handle errors from configuration loader early and return.
 		mw.log.error( 'Unable to load topic data for suggested edits: ' + topicData._error );
 		mw.errorLogger.logError( new Error( 'Unable to load topic data for suggested edits: ' +
-			topicData._error ) );
+			topicData._error ), 'error.growthexperiments' );
 		this.suggestions = [];
 		return;
 	}
