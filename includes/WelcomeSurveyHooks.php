@@ -22,7 +22,6 @@ class WelcomeSurveyHooks implements
 	private $languageNameUtils;
 
 	/**
-	 * WelcomeSurveyHooks constructor.
 	 * @param Config $config
 	 * @param LanguageNameUtils $languageNameUtils
 	 */

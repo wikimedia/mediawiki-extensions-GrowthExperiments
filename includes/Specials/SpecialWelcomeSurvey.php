@@ -24,7 +24,6 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	private $languageNameUtils;
 
 	/**
-	 * SpecialWelcomeSurvey constructor.
 	 * @param LanguageNameUtils $languageNameUtils
 	 */
 	public function __construct( LanguageNameUtils $languageNameUtils ) {

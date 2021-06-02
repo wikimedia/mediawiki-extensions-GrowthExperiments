@@ -40,7 +40,6 @@ class SpecialImpact extends SpecialPage {
 	private $wikiConfig;
 
 	/**
-	 * SpecialImpact constructor.
 	 * @param IDatabase $dbr
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param TitleFactory $titleFactory

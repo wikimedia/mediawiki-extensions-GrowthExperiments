@@ -129,7 +129,6 @@ class HomepageHooks implements
 	private $canAccessPrimary;
 
 	/**
-	 * HomepageHooks constructor.
 	 * @param Config $config Uses PHP globals
 	 * @param Config $wikiConfig Uses on-wiki config store, only for variables listed in
 	 *  GrowthExperimentsMultiConfig::ALLOW_LIST.
