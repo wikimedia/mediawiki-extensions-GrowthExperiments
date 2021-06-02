@@ -21,26 +21,12 @@
 		background: none;
 	}
 
-	&:after {
-		content: '';
-		display: inline-block;
-		margin-left: 0.5em;
-		width: 1em;
-		height: 1em;
-		position: relative;
-		top: 0.15em;
-		/* @embed */
-		background-image: url( robot-black.svg );
-		background-size: 100%;
-	}
-
-	.ve-ce-annotation-active&,
-	&-active {
+	&.mw-ge-recommendedLinkAnnotation-active {
 		.filter( drop-shadow( 0 1px 2px rgba( 0, 0, 0, 0.2 ) ) );
 		background-color: @activeAnnotationBackgroundColor;
 		box-shadow: 0 0 0 2px @wmui-color-accent50;
 
-		.mw-ge-recommendedLinkAnnotation-undecided:after {
+		.mw-ge-recommendedLinkAnnotation-icon-undecided {
 			/* @embed */
 			background-image: url( robot-blue.svg );
 		}
@@ -48,16 +34,54 @@
 
 	&-accepted {
 		color: @wmui-color-accent50;
+	}
 
-		&:after {
-			/* @embed */
-			background-image: url( check-blue.svg );
+	.mw-ge-recommendedLinkAnnotation-iconContainer {
+		display: inline-block;
+		overflow: hidden;
+		width: 1em;
+		height: 1em;
+		position: relative;
+		top: 0.15em;
+		margin-left: 0.5em;
+
+		.current {
+			bottom: 0;
+		}
+
+		.animate-from-top {
+			bottom: 1em;
+		}
+
+		.animate-from-bottom {
+			bottom: -1em;
 		}
 	}
 
-	&-rejected:after {
+	.mw-ge-recommendedLinkAnnotation-icon-accepted,
+	.mw-ge-recommendedLinkAnnotation-icon-rejected,
+	.mw-ge-recommendedLinkAnnotation-icon-undecided {
+		position: absolute;
+		width: 1em;
+		height: 1em;
+		bottom: -1em;
+		background-size: 100%;
+		transition: bottom 500ms;
+	}
+
+	.mw-ge-recommendedLinkAnnotation-icon-accepted {
+		/* @embed */
+		background-image: url( check-blue.svg );
+	}
+
+	.mw-ge-recommendedLinkAnnotation-icon-rejected {
 		/* @embed */
 		background-image: url( close-red.svg );
+	}
+
+	.mw-ge-recommendedLinkAnnotation-icon-undecided {
+		/* @embed */
+		background-image: url( robot-black.svg );
 	}
 
 	&-desktop {
@@ -78,7 +102,7 @@
 
 .ltr.sitedir-rtl {
 	.mw-ge-recommendedLinkAnnotation {
-		&:after {
+		.mw-ge-recommendedLinkAnnotation-iconContainer {
 			/* @noflip */
 			margin: 0 0.5em 0 0;
 		}
@@ -87,7 +111,7 @@
 
 .rtl.sitedir-ltr {
 	.mw-ge-recommendedLinkAnnotation {
-		&:after {
+		.mw-ge-recommendedLinkAnnotation-iconContainer {
 			/* @noflip */
 			margin: 0 0 0 0.5em;
 		}

@@ -1,5 +1,6 @@
 var DmRecommendedLinkAnnotation = require( './dmRecommendedLinkAnnotation.js' ),
-	CeRecommendedLinkAnnotation = require( './ceRecommendedLinkAnnotation.js' );
+	CeRecommendedLinkAnnotation = require( './ceRecommendedLinkAnnotation.js' ),
+	AnnotationAnimation = require( './AnnotationAnimation.js' );
 
 /**
  * @class mw.libs.ge.RecommendedLinkToolbarDialog
@@ -169,8 +170,10 @@ RecommendedLinkToolbarDialog.prototype.onYesButtonClicked = function () {
 			// eslint-disable-next-line camelcase
 			previous_acceptance_state: 'accepted'
 		} ) );
+		this.setLastAnnotationState( true );
 	} else {
 		this.logger.log( 'suggestion_accept', this.suggestionLogMetadata() );
+		this.setLastAnnotationState();
 	}
 	this.setAccepted( this.currentDataModel.isAccepted() ? null : true );
 };
@@ -188,8 +191,10 @@ RecommendedLinkToolbarDialog.prototype.onNoButtonClicked = function () {
 			// eslint-disable-next-line camelcase
 			previous_acceptance_state: 'rejected'
 		} ) );
+		this.setLastAnnotationState( true );
 	} else {
 		this.logger.log( 'suggestion_reject', this.suggestionLogMetadata() );
+		this.setLastAnnotationState();
 	}
 	this.setAccepted( this.currentDataModel.isRejected() ? null : false );
 };
@@ -695,6 +700,24 @@ RecommendedLinkToolbarDialog.prototype.updateAnnotation = function (
 		annotation.getElement(),
 		{ attributes: attributes }
 	) ) );
+};
+
+/**
+ * Store the last annotation state before the annotation is updated
+ * This is used to animate the acceptance state icons in the annotation view.
+ * The annotation views for the corresponding paragraph are re-rendered when the data changes
+ * (not just the annotation that's being cleared) so the state needs to be stored in a
+ * singleton so that animation can occur only on the annotation view that's being updated.
+ *
+ * @param {boolean|undefined} isDeselect Whether the annotation state is being un-applied
+ */
+RecommendedLinkToolbarDialog.prototype.setLastAnnotationState = function ( isDeselect ) {
+	var annotation = this.getCurrentDataModel();
+	AnnotationAnimation.setLastState( {
+		oldState: annotation.getState(),
+		recommendationWikitextOffset: annotation.getAttribute( 'recommendationWikitextOffset' ),
+		isDeselect: isDeselect
+	} );
 };
 
 /**

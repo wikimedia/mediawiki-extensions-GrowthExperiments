@@ -730,6 +730,7 @@
 				"homepage/addlink/AddLinkSaveDialogMixin.js",
 				"homepage/addlink/RecommendedLinkToolbarDialog.js",
 				"homepage/addlink/LinkSuggestionInteractionLogger.js",
+				"homepage/addlink/AnnotationAnimation.js",
 				"utils/ext.growthExperiments.Utils.js"
 			],
 			"styles": [

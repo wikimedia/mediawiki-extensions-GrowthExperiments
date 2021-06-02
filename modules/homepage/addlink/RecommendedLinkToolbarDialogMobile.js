@@ -71,7 +71,12 @@ RecommendedLinkToolbarDialogMobile.prototype.onAcceptanceChanged = function () {
 	if ( isLastRecommendationSelected ) {
 		mw.hook( 'growthExperiments.contextItem.saveArticle' ).fire();
 	} else if ( !isLastRecommendationSelected ) {
-		this.showRecommendationAtIndex( this.currentIndex + 1 );
+		// Show next recommendation after animation for the current recommendation is done
+		// TODO: Animation delay as a config in AnnotationAnimation
+		// Probably make sense to update this along with T283548 when auto-advance is enabled for desktop
+		setTimeout( function () {
+			this.showRecommendationAtIndex( this.currentIndex + 1 );
+		}.bind( this ), 600 );
 	}
 };
 
