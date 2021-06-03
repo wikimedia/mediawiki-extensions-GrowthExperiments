@@ -91,11 +91,22 @@ class InitWikiConfig extends Maintenance {
 			// Manual of style
 			$this->getHelpPanelLink( 'Q4994848' ),
 			// Help:Editing
-			$this->getHelpPanelLink( 'Q151637' ),
+			$this->getHelpPanelLink(
+				'Q151637',
+				[],
+				'mw:Special:MyLanguage/Help:VisualEditor/User_guide'
+			),
 			// Help:Introduction to images with VisualEditor
-			$this->getHelpPanelLink( 'Q27919584' ),
+			$this->getHelpPanelLink(
+				'Q27919584',
+				[],
+				'mw:Special:MyLanguage/Help:VisualEditor/User_guide#Images' ),
 			// Help:Introduction to referencing with VisualEditor
-			$this->getHelpPanelLink( 'Q24238629' ),
+			$this->getHelpPanelLink(
+				'Q24238629',
+				[],
+				'mw:Special:MyLanguage/Help:VisualEditor/User_guide#Editing_references'
+			),
 			// Wikipedia:Article wizard
 			$this->getHelpPanelLink( 'Q10968373' ),
 		] );
@@ -106,9 +117,14 @@ class InitWikiConfig extends Maintenance {
 		// Set suggested edits learn more links
 		$variables['GEHomepageSuggestedEditsIntroLinks'] = array_filter( [
 			// Wikipedia:Article wizard (preferred) or Help:How to start a new page
-			'create' => $this->getRawTitleFromWikidata( 'Q10968373', [ 'Q4966605' ] ),
+			'create' => $this->getRawTitleFromWikidata(
+				'Q10968373',
+				[ 'Q4966605' ]
+			) ?? 'mw:Special:MyLanguage/Help:VisualEditor/User_guide',
 			// Help:Introduction to images with VisualEditor
-			'image' => $this->getRawTitleFromWikidata( 'Q27919584' ),
+			'image' => $this->getRawTitleFromWikidata(
+				'Q27919584'
+			) ?? 'mw:Special:MyLanguage/Help:VisualEditor/User_guide#Images',
 		] );
 
 		// Set homepage variables
@@ -261,16 +277,21 @@ class InitWikiConfig extends Maintenance {
 	/**
 	 * @param string $primaryQid
 	 * @param array $backupQids
+	 * @param string|null $backupExternal Interwiki link to be used as link of last resort
 	 * @return array|null
 	 * @throws \MWException
 	 */
 	private function getHelpPanelLink(
 		string $primaryQid,
-		array $backupQids = []
+		array $backupQids = [],
+		?string $backupExternal = null
 	) : ?array {
 		$rawTitle = $this->getRawTitleFromWikidata( $primaryQid, $backupQids );
 		if ( $rawTitle === null ) {
-			return null;
+			if ( $backupExternal === null ) {
+				return null;
+			}
+			$rawTitle = $backupExternal;
 		}
 		$title = $this->titleFactory->newFromText( $rawTitle );
 		if ( $title === null ) {
