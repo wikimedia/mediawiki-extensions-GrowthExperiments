@@ -17,6 +17,7 @@ function RecommendedLinkToolbarDialogDesktop() {
 		active_interface: 'recommendedlinktoolbar_dialog'
 		/* eslint-enable camelcase */
 	} );
+	this.isFirstRender = true;
 }
 
 OO.inheritClass( RecommendedLinkToolbarDialogDesktop, RecommendedLinkToolbarDialog );
@@ -112,6 +113,74 @@ RecommendedLinkToolbarDialogDesktop.prototype.onAcceptanceChanged = function () 
 RecommendedLinkToolbarDialogDesktop.prototype.teardown = function () {
 	this.surface.getView().$documentNode.attr( 'inputMode', '' );
 	return RecommendedLinkToolbarDialogDesktop.super.prototype.teardown.apply( this, arguments );
+};
+
+/**
+ * Fade out the link inspector
+ *
+ * @return {jQuery.Promise} Promise which resolves when the transition is complete
+ */
+RecommendedLinkToolbarDialogDesktop.prototype.fadeOut = function () {
+	var promise = $.Deferred();
+	this.$element.on( 'transitionend', promise.resolve );
+	this.$element.addClass( 'fade-out' );
+	return promise;
+};
+
+/**
+ * Fade out the link inspector
+ *
+ * @return {jQuery.Promise} Promise which resolves when the transition is complete
+ */
+RecommendedLinkToolbarDialogDesktop.prototype.fadeIn = function () {
+	var promise = $.Deferred();
+	this.$element.on( 'transitionend', promise.resolve );
+	this.$element.removeClass( 'fade-out' );
+	return promise;
+};
+
+/**
+ * @inheritdoc
+ */
+RecommendedLinkToolbarDialogDesktop.prototype.showFirstRecommendation = function () {
+	var promise = $.Deferred();
+	this.fadeOut();
+	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( 0 ) ).always( function () {
+		this.showRecommendationAtIndex( 0 );
+		this.fadeIn().then( promise.resolve );
+	}.bind( this ) );
+	return promise;
+};
+
+/**
+ * @inheritdoc
+ */
+RecommendedLinkToolbarDialogDesktop.prototype.showRecommendationAtIndex = function (
+	index, manualFocus
+) {
+	var updateContent = function () {
+		RecommendedLinkToolbarDialogDesktop.super.prototype.showRecommendationAtIndex.call(
+			this, index, manualFocus
+		);
+	}.bind( this );
+
+	if ( this.isFirstRender ) {
+		this.isFirstRender = false;
+		updateContent();
+		return;
+	}
+
+	if ( this.annotationView ) {
+		this.annotationView.updateActiveClass( false );
+	}
+
+	this.fadeOut();
+	// Call scrollToAnnotationView right away instead of wait for fadeOut to resolve
+	// so that fade animation can be cancelled if scrolling isn't needed
+	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( index ) ).always( function () {
+		updateContent();
+		this.fadeIn();
+	}.bind( this ) );
 };
 
 module.exports = RecommendedLinkToolbarDialogDesktop;
