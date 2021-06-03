@@ -1545,7 +1545,7 @@
 			"merge_strategy": "array_plus_2d",
 			"value": {
 				"exp1_group1": {
-					"range": "x",
+					"percentage": 0,
 					"format": "specialpage",
 					"questions": [
 						"reason",
@@ -1554,15 +1554,15 @@
 					]
 				},
 				"exp1_group2": {
-					"range": "x",
+					"percentage": 100,
 					"questions": []
 				},
 				"exp2_control": {
-					"range": "x",
+					"percentage": 0,
 					"questions": []
 				},
 				"exp2_target_specialpage": {
-					"range": "x",
+					"percentage": 0,
 					"format": "specialpage",
 					"questions": [
 						"reason",

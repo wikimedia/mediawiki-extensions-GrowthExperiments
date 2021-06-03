@@ -76,18 +76,32 @@ class WelcomeSurvey {
 
 		// Randomly selecting a group
 		$js = $this->context->getRequest()->getBool( 'client-runs-javascript' );
-		$rand = rand( 0, 9 );
+		$rand = rand( 0, 99 );
 		foreach ( $groups as $name => $groupConfig ) {
-			$range = explode( '-', $groupConfig[ 'range' ] );
-			if (
-				( count( $range ) === 1 && $range[0] === $rand ) ||
-				( count( $range ) === 2 && $range[0] <= $rand && $range[1] >= $rand )
-			) {
+			$percentage = 0;
+			if ( isset( $groupConfig[ 'percentage' ] ) ) {
+				$percentage = intval( $groupConfig[ 'percentage' ] );
+			} elseif ( isset( $groupConfig[ 'range' ] ) ) {
+				// B&C code, remove once WMF config is updated
+				// Convert range notation to percentage
+				$range = explode( '-', $groupConfig[ 'range' ] );
+				if ( count( $range ) === 1 ) {
+					// 1 - 1 block => 10 %
+					$percentage = 10;
+				} elseif ( count( $range ) === 2 ) {
+					// 0-9 - blocks 0 to 9 => 100 %
+					// 0-1  - blocks 0 and 1 => 20 %
+					$percentage = ( intval( $range[1] ) - intval( $range[0] ) + 1 ) * 10;
+				}
+			}
+
+			if ( $rand < $percentage ) {
 				if ( !$js && isset( $groupConfig[ 'nojs-fallback' ] ) ) {
 					return $groupConfig[ 'nojs-fallback' ];
 				}
 				return $name;
 			}
+			$rand -= $percentage;
 		}
 
 		return false;
