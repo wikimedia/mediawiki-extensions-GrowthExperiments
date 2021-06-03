@@ -9,6 +9,8 @@ use GrowthExperiments\Util;
 use Maintenance;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\MediaWikiServices;
+use PageProps;
+use Title;
 use TitleFactory;
 use WikiMap;
 
@@ -22,6 +24,9 @@ class InitWikiConfig extends Maintenance {
 	/** @var TitleFactory */
 	private $titleFactory;
 
+	/** @var PageProps */
+	private $pageProps;
+
 	/** @var WikiPageConfigWriterFactory */
 	private $wikiPageConfigWriterFactory;
 
@@ -34,7 +39,7 @@ class InitWikiConfig extends Maintenance {
 	public function __construct() {
 		parent::__construct();
 		$this->requireExtension( 'GrowthExperiments' );
-		$this->addDescription( 'Initialize wiki configuration of GrowthExperiments based on WIkidata' );
+		$this->addDescription( 'Initialize wiki configuration of GrowthExperiments based on Wikidata' );
 
 		$this->addOption( 'dry-run', 'Print the configuration that would be saved on-wiki.' );
 		$this->addOption( 'force', 'Skip validation (you should check the resulting config)' );
@@ -59,6 +64,7 @@ class InitWikiConfig extends Maintenance {
 		$this->wikiPageConfigWriterFactory = GrowthExperimentsServices::wrap( $services )
 			->getWikiPageConfigWriterFactory();
 		$this->titleFactory = $services->getTitleFactory();
+		$this->pageProps = $services->getPageProps();
 		$this->httpRequestFactory = $services->getHttpRequestFactory();
 	}
 
@@ -83,15 +89,15 @@ class InitWikiConfig extends Maintenance {
 		$variables['GEHelpPanelHelpDeskTitle'] = $this->getRawTitleFromWikidata( 'Q4026300' );
 		$variables['GEHelpPanelLinks'] = array_filter( [
 			// Manual of style
-			$this->getHelpPanelLink( 'Q4994848', 'mos' ),
+			$this->getHelpPanelLink( 'Q4994848' ),
 			// Help:Editing
-			$this->getHelpPanelLink( 'Q151637', 'editing' ),
+			$this->getHelpPanelLink( 'Q151637' ),
 			// Help:Introduction to images with VisualEditor
-			$this->getHelpPanelLink( 'Q27919584', 'images' ),
+			$this->getHelpPanelLink( 'Q27919584' ),
 			// Help:Introduction to referencing with VisualEditor
-			$this->getHelpPanelLink( 'Q24238629', 'references' ),
+			$this->getHelpPanelLink( 'Q24238629' ),
 			// Wikipedia:Article wizard
-			$this->getHelpPanelLink( 'Q10968373', 'articlewizard' ),
+			$this->getHelpPanelLink( 'Q10968373' ),
 		] );
 
 		// Help:Contents
@@ -234,15 +240,32 @@ class InitWikiConfig extends Maintenance {
 	}
 
 	/**
+	 * Get help panel link ID to be used for given Title
+	 *
+	 * @note Similar code is used in SpecialEditGrowthConfig::normalizeHelpPanelLinks.
+	 * @param Title $link
+	 * @return string
+	 */
+	private function getHelpPanelLinkId( Title $link ) {
+		$wdLinkId = null;
+		if ( $link->exists() && !$link->isExternal() ) {
+			$props = $this->pageProps->getProperties( $link, 'wikibase_item' );
+			$pageId = $link->getId();
+			if ( array_key_exists( $pageId, $props ) ) {
+				$wdLinkId = $props[$pageId];
+			}
+		}
+		return $wdLinkId ?? $link->getPrefixedDBkey();
+	}
+
+	/**
 	 * @param string $primaryQid
-	 * @param string $id
 	 * @param array $backupQids
 	 * @return array|null
 	 * @throws \MWException
 	 */
 	private function getHelpPanelLink(
 		string $primaryQid,
-		string $id,
 		array $backupQids = []
 	) : ?array {
 		$rawTitle = $this->getRawTitleFromWikidata( $primaryQid, $backupQids );
@@ -250,10 +273,13 @@ class InitWikiConfig extends Maintenance {
 			return null;
 		}
 		$title = $this->titleFactory->newFromText( $rawTitle );
+		if ( $title === null ) {
+			return null;
+		}
 		return [
 			'title' => $title->getFullText(),
 			'text' => $title->getText(),
-			'id' => $id,
+			'id' => $this->getHelpPanelLinkId( $title )
 		];
 	}
 }
