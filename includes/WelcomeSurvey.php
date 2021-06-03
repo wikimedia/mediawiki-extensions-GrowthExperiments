@@ -16,6 +16,8 @@ class WelcomeSurvey {
 
 	public const SURVEY_PROP = 'welcomesurvey-responses';
 
+	public const DEFAULT_SURVEY_GROUP = 'exp2_target_specialpage';
+
 	/**
 	 * @var IContextSource
 	 */
@@ -50,6 +52,17 @@ class WelcomeSurvey {
 	 * @throws \ConfigException
 	 */
 	public function getGroup( $useDefault = false ) {
+		if ( $this->context->getConfig()->get( 'WelcomeSurveyEnableWithHomepage' ) ) {
+			// At the earliest, this runs in BeforeWelcomeCreation, which is way
+			// after LocalUserCreated. We can just rely at the homepage preference
+			// at this point.
+			if ( HomepageHooks::isHomepageEnabled( $this->context->getUser() ) ) {
+				return self::DEFAULT_SURVEY_GROUP;
+			} else {
+				return false;
+			}
+		}
+
 		$groups = $this->context->getConfig()->get( 'WelcomeSurveyExperimentalGroups' );
 
 		// The group is specified in the URL
@@ -71,7 +84,7 @@ class WelcomeSurvey {
 
 		if ( $useDefault ) {
 			// Fallback to default group if directly visiting Special:WelcomeSurvey
-			return 'exp2_target_specialpage';
+			return self::DEFAULT_SURVEY_GROUP;
 		}
 
 		// Randomly selecting a group
