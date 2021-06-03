@@ -247,6 +247,13 @@ $specialPageAliases['sh'] = [
 	'ClaimMentee' => [ 'Tvrde_pridošlica' ],
 ];
 
+/** Slovak (slovenčina) */
+$specialPageAliases['sk'] = [
+	'WelcomeSurvey' => [ 'UvítacíPrieskum' ],
+	'Homepage' => [ 'Domovská_stránka' ],
+	'Impact' => [ 'Dopad' ],
+];
+
 /** Albanian (shqip) */
 $specialPageAliases['sq'] = [
 	'WelcomeSurvey' => [ 'SondazhiMirëseardhjes' ],
