@@ -62,7 +62,7 @@
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Yalnızca manuel olarak atanabilen mentorların listesini içeren sayfa",
 	"growthexperiments-edit-config-newcomertasks": "Önerilen düzenlemeler",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Bazı önerilen düzenleme türleri, bakım şablonları aracılığıyla ortaya çıkar. Bu şablonları içeren makaleler beslemeye eklenir. Her bir görev türü için kaç makalenin mevcut olduğunu görmek için [[Special:NewcomerTasksInfo|this page]] konusuna bakın.",
-	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Kopya düzenleme: kopya düzenleme, yazım, dilbilgisi, noktalama iyileştirmeleri gerektiren makaleleri bulmaya yarayan şablonlardır.",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Kopya düzenleme: Yazım, dil bilgisi ve noktalama iyileştirmeleri gibi kopya düzenlemesi gereken maddeleri bulmak için şablonlar.",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Kopya düzenleme hakkında daha fazla bilgi edinmek için hedef sayfa.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Genişlet: Genişletilmesi gereken makaleleri bulmak için şablonlar.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-learnmore": "Genişleyen makaleler hakkında daha fazla bilgi edinmek için hedef sayfa.",

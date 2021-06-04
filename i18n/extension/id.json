@@ -2,8 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Rachmat04",
-			"Sonic Speedy"
+			"Sonic Speedy",
+			"WillsonEP09"
 		]
 	},
-	"growthexperiments-desc": "Ekstensi ini berisi uji coba yang dilakukan oleh tim Pertumbuhan."
+	"growthexperiments-desc": "Ekstensi ini berisi uji coba yang dilakukan oleh tim Pertumbuhan.",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Salin pengeditan: templat untuk menemukan artikel yang memerlukan pengeditan salinan, seperti peningkatan ejaan, tata bahasa, dan tanda baca."
 }

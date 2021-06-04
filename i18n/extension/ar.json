@@ -59,7 +59,7 @@
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "صفحة تحمل قائمة المرشدين الذين يعيّنون يدويّا فقط",
 	"growthexperiments-edit-config-newcomertasks": "التعديلات المقترحة",
 	"growthexperiments-edit-config-newcomer-tasks-description": "تظهر بعض الأنواع من التعديلات المقترحة عير قوالب الصيانة. المقالات التي تتضمّن على تلك القوالب تضاف إلى خلاصة المقترحات. لمشاهدة كم عدد المقالات لكلّ نوع من المهام، شاهدوا [[Special:NewcomerTasksInfo|هذه الصفحة]].",
-	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "تحرير النسخ: القوالب المستخدمة للعثور على مقالات في حاجة إلى تحرير النسخ، الرّسم، النحو، تحسين التنقيط.",
+	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "تحرير النسخ: القوالب المستخدمة للعثور على مقالات في حاجة إلى تحرير النسخ، مثل الرّسم، أو النحو، أو تحسين التنقيط.",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "صفحة الوصول لتعلّم المزيد حول تحرير النسخ.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "التوسعة: القوالب المستخدمة للعثور على مقالات في حاجة إلى توسعة.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-learnmore": "صفحة الوصول لتعلّم المزيد حول توسيع المقالات.",
