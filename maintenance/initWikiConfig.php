@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Maintenance;
 
-use GrowthExperiments\Config\WikiPageConfigWriter;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Util;
@@ -29,9 +28,6 @@ class InitWikiConfig extends Maintenance {
 
 	/** @var WikiPageConfigWriterFactory */
 	private $wikiPageConfigWriterFactory;
-
-	/** @var WikiPageConfigWriter */
-	private $wikiPageConfigWriter;
 
 	/** @var HttpRequestFactory */
 	private $httpRequestFactory;
@@ -77,11 +73,62 @@ class InitWikiConfig extends Maintenance {
 			WikiMap::getCurrentWikiId();
 	}
 
+	private function getEditSummary() {
+		$summary = 'Configuration for [[mw:Growth/Personalized first day/Newcomer homepage]].';
+		if ( $this->hasOption( 'phab' ) ) {
+			$summary .= ' See [[phab:' . $this->getOption( 'phab' ) . ']] for more information.';
+		}
+		return $summary;
+	}
+
+	/**
+	 * Retreive entity data from Wikidata
+	 *
+	 * @param string $qid
+	 * @return array|null
+	 * @throws \MWException
+	 */
+	private function getWikidataData( string $qid ): ?array {
+		$url = "https://www.wikidata.org/wiki/Special:EntityData/$qid.json";
+		$status = Util::getJsonUrl( $this->httpRequestFactory, $url );
+		if ( !$status->isOK() ) {
+			$this->fatalError( 'Failed to download ' . $url . "\n" );
+			return null;
+		}
+		return $status->getValue();
+	}
+
+	/**
+	 * @param string $primaryQid
+	 * @param string[] $backupQids
+	 * @return string|null String on success, null on failure
+	 * @throws \MWException
+	 */
+	private function getRawTitleFromWikidata(
+		string $primaryQid,
+		array $backupQids = []
+	) : ?string {
+		$qids = array_merge( [ $primaryQid ], $backupQids );
+		foreach ( $qids as $qid ) {
+			$data = $this->getWikidataData( $qid );
+			if ( $data == null ) {
+				$this->fatalError( "Wikidata returned an invalid JSON\n" );
+				return null;
+			}
+			$sitelinks = $data['entities'][$qid]['sitelinks'];
+			if ( array_key_exists( $this->getWikidataWikiId(), $sitelinks ) ) {
+				return $sitelinks[$this->getWikidataWikiId()]['title'];
+			}
+		}
+
+		return null;
+	}
+
 	/**
 	 * @return array|false
 	 * @throws \MWException
 	 */
-	private function getVariables() {
+	private function getGEConfigVariables() {
 		// Init list of variables
 		$variables = [];
 
@@ -140,7 +187,7 @@ class InitWikiConfig extends Maintenance {
 
 		// Validate variables if --force was not used
 		if ( !$this->hasOption( 'force' ) ) {
-			$validationRes = $this->validateVariables( $variables );
+			$validationRes = $this->validateGEConfigVariables( $variables );
 			if ( is_string( $validationRes ) ) {
 				$this->fatalError( $validationRes . "\n" );
 				return false;
@@ -150,55 +197,11 @@ class InitWikiConfig extends Maintenance {
 		return $variables;
 	}
 
-	private function getEditSummary() {
-		$summary = 'Configuration for [[mw:Growth/Personalized first day/Newcomer homepage]].';
-		if ( $this->hasOption( 'phab' ) ) {
-			$summary .= ' See [[phab:' . $this->getOption( 'phab' ) . ']] for more information.';
-		}
-		return $summary;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function execute() {
-		$this->initServices();
-		$dryRun = $this->hasOption( 'dry-run' );
-
-		$title = $this->titleFactory->newFromText(
-			$this->getConfig()->get( 'GEWikiConfigPageTitle' )
-		);
-		if ( $title === null ) {
-			$this->fatalError( "Invalid GEWikiConfigPageTitle!\n" );
-			return false;
-		}
-		$this->wikiPageConfigWriter = $this->wikiPageConfigWriterFactory
-			->newWikiPageConfigWriter(
-				$title
-			);
-
-		$variables = $this->getVariables();
-		if ( $variables === false ) {
-			// Error messages were printed in getVariables
-			return false;
-		}
-
-		if ( !$dryRun ) {
-			$this->wikiPageConfigWriter->setVariables( $variables );
-			$this->wikiPageConfigWriter->save( $this->getEditSummary() );
-			$url = $title->getFullURL();
-			$this->output( "Done! Please review the config on $url\n" );
-			return true;
-		} else {
-			$this->output( json_encode( $variables, JSON_PRETTY_PRINT ) . "\n" );
-		}
-	}
-
 	/**
 	 * @param array $variables
 	 * @return true|string True on success, error message otherwise
 	 */
-	private function validateVariables( array $variables ) {
+	private function validateGEConfigVariables( array $variables ) {
 		if ( !array_key_exists( 'GEHomepageSuggestedEditsIntroLinks', $variables ) ) {
 			return 'GEHomepageSuggestedEditsIntroLinks was not provided, please edit config manually';
 		}
@@ -210,49 +213,6 @@ class InitWikiConfig extends Maintenance {
 		}
 
 		return true;
-	}
-
-	/**
-	 * Retreive entity data from Wikidata
-	 *
-	 * @param string $qid
-	 * @return array|null
-	 * @throws \MWException
-	 */
-	private function getWikidataData( string $qid ): ?array {
-		$url = "https://www.wikidata.org/wiki/Special:EntityData/$qid.json";
-		$status = Util::getJsonUrl( $this->httpRequestFactory, $url );
-		if ( !$status->isOK() ) {
-			$this->fatalError( 'Failed to download ' . $url . "\n" );
-			return null;
-		}
-		return $status->getValue();
-	}
-
-	/**
-	 * @param string $primaryQid
-	 * @param string[] $backupQids
-	 * @return string|null String on success, null on failure
-	 * @throws \MWException
-	 */
-	private function getRawTitleFromWikidata(
-		string $primaryQid,
-		array $backupQids = []
-	) : ?string {
-		$qids = array_merge( [ $primaryQid ], $backupQids );
-		foreach ( $qids as $qid ) {
-			$data = $this->getWikidataData( $qid );
-			if ( $data == null ) {
-				$this->fatalError( "Wikidata returned an invalid JSON\n" );
-				return null;
-			}
-			$sitelinks = $data['entities'][$qid]['sitelinks'];
-			if ( array_key_exists( $this->getWikidataWikiId(), $sitelinks ) ) {
-				return $sitelinks[$this->getWikidataWikiId()]['title'];
-			}
-		}
-
-		return null;
 	}
 
 	/**
@@ -302,6 +262,53 @@ class InitWikiConfig extends Maintenance {
 			'text' => $title->getText(),
 			'id' => $this->getHelpPanelLinkId( $title )
 		];
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function execute() {
+		$this->initServices();
+		$dryRun = $this->hasOption( 'dry-run' );
+
+		$status = $this->initGEConfig( $dryRun );
+		if ( !$status ) {
+			return false;
+		}
+	}
+
+	/**
+	 * @param bool $dryRun
+	 * @return bool
+	 */
+	private function initGEConfig( $dryRun ) {
+		$title = $this->titleFactory->newFromText(
+			$this->getConfig()->get( 'GEWikiConfigPageTitle' )
+		);
+		if ( $title === null ) {
+			$this->fatalError( "Invalid GEWikiConfigPageTitle!\n" );
+			return false;
+		}
+		$wikiPageConfigWriter = $this->wikiPageConfigWriterFactory
+			->newWikiPageConfigWriter(
+				$title
+			);
+
+		$variables = $this->getGEConfigVariables();
+		if ( $variables === false ) {
+			// Error messages were printed in getVariables
+			return false;
+		}
+
+		if ( !$dryRun ) {
+			$wikiPageConfigWriter->setVariables( $variables );
+			$wikiPageConfigWriter->save( $this->getEditSummary() );
+		} else {
+			$this->output( $title->getPrefixedText() . ":\n" );
+			$this->output( json_encode( $variables, JSON_PRETTY_PRINT ) . "\n" );
+		}
+
+		return true;
 	}
 }
 
