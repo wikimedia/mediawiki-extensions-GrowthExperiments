@@ -39,7 +39,10 @@ RecommendedLinkToolbarDialogDesktop.prototype.initialize = function () {
  */
 RecommendedLinkToolbarDialogDesktop.prototype.afterSetupProcess = function () {
 	RecommendedLinkToolbarDialogDesktop.super.prototype.afterSetupProcess.call( this );
-	this.surface.getView().$element.append( this.$element );
+	var ceSurface = this.surface.getView();
+	ceSurface.$element.append( this.$element );
+	// Prevent virtual keyboard from showing up when desktop site is loaded on tablet
+	ceSurface.$documentNode.attr( 'inputMode', 'none' );
 	$( window ).on( 'resize',
 		OO.ui.debounce( this.updatePosition.bind( this ), 250 )
 	);
@@ -101,6 +104,14 @@ RecommendedLinkToolbarDialogDesktop.prototype.onAcceptanceChanged = function () 
 	RecommendedLinkToolbarDialogDesktop.super.prototype.onAcceptanceChanged.call( this );
 	// Annotation element changes so it needs to be re-selected.
 	this.selectAnnotationView();
+};
+
+/**
+ * @inheritdoc
+ */
+RecommendedLinkToolbarDialogDesktop.prototype.teardown = function () {
+	this.surface.getView().$documentNode.attr( 'inputMode', '' );
+	return RecommendedLinkToolbarDialogDesktop.super.prototype.teardown.apply( this, arguments );
 };
 
 module.exports = RecommendedLinkToolbarDialogDesktop;
