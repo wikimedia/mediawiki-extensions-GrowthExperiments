@@ -76,7 +76,7 @@
 		}, function ( jqXHR, statusText, error ) {
 			mw.log.error( 'Unable to load quick start tips', statusText, error );
 			mw.errorLogger.logError( new Error( 'Unable to load quick start tips: ' +
-				statusText + ' / ' + error ) );
+				statusText + ' / ' + error ), 'error.growthexperiments' );
 		} );
 	}
 
