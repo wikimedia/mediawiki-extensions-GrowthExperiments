@@ -89,4 +89,19 @@ DMRecommendedLinkAnnotation.prototype.getRejectionReason = function () {
 	return this.getAttribute( 'rejectionReason' );
 };
 
+/**
+ * Return acceptance state of the annotation as a string
+ *
+ * @return {string}
+ */
+DMRecommendedLinkAnnotation.prototype.getState = function () {
+	if ( this.isAccepted() ) {
+		return 'accepted';
+	} else if ( this.isRejected() ) {
+		return 'rejected';
+	} else {
+		return 'undecided';
+	}
+};
+
 module.exports = DMRecommendedLinkAnnotation;
