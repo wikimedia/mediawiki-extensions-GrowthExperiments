@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Maintenance;
 
+use GrowthExperiments\Config\Validation\NewcomerTasksValidator;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Util;
@@ -265,6 +266,69 @@ class InitWikiConfig extends Maintenance {
 	}
 
 	/**
+	 * @return array
+	 */
+	private function getSuggestedEditsVariables(): array {
+		$taskTemplatesQIDs = [
+			'copyedit' => [ 'Q6292692', 'Q6706206', 'Q6931087', 'Q7656698', 'Q6931386' ],
+			'links' => [ 'Q13107723', 'Q5849007', 'Q5621858' ],
+			'references' => [ 'Q5962027', 'Q6192879' ],
+			'update' => [ 'Q5617874', 'Q14337093' ],
+			'expand' => [ 'Q5529697', 'Q5623589', 'Q5866533' ],
+		];
+		$taskLearnMoreQIDs = [
+			'copyedit' => [ 'Q10953805' ],
+			'links' => [ 'Q27919580', 'Q75275496' ],
+			'references' => [ 'Q79951', 'Q642335' ],
+			'update' => [ 'Q4664141' ],
+			'expand' => [ 'Q10973854', 'Q4663261' ],
+		];
+		$taskLearnMoreBackup = [
+			'links' => 'mw:Special:MyLanguage/Help:VisualEditor/User_guide#Editing_links',
+		];
+
+		$variables = [];
+		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $group ) {
+			if (
+				!array_key_exists( $taskType, $taskTemplatesQIDs ) ||
+				!array_key_exists( $taskType, $taskLearnMoreQIDs )
+			) {
+				continue;
+			}
+
+			$templates = [];
+			foreach ( $taskTemplatesQIDs[$taskType] as $qid ) {
+				$candidateTitle = $this->getRawTitleFromWikidata( $qid );
+				if ( $candidateTitle === null ) {
+					continue;
+				}
+				$templates[] = $this->titleFactory->newFromText( $candidateTitle )->getText();
+			}
+
+			if ( $templates === [] ) {
+				continue;
+			}
+
+			$variables[$taskType] = [
+				'group' => $group,
+				'templates' => $templates,
+			];
+
+			$learnmoreLink = $this->getRawTitleFromWikidata(
+				$taskLearnMoreQIDs[$taskType][0],
+				array_slice( $taskLearnMoreQIDs[$taskType], 1 )
+			);
+			if ( $learnmoreLink === null && array_key_exists( $taskType, $taskLearnMoreBackup ) ) {
+				$learnmoreLink = $taskLearnMoreBackup[$taskType];
+			}
+			if ( $learnmoreLink !== null ) {
+				$variables[$taskType]['learnmore'] = $learnmoreLink;
+			}
+		}
+		return $variables;
+	}
+
+	/**
 	 * @inheritDoc
 	 */
 	public function execute() {
@@ -275,6 +339,13 @@ class InitWikiConfig extends Maintenance {
 		if ( !$status ) {
 			return false;
 		}
+
+		$status = $this->initSuggestedEditsConfig( $dryRun );
+		if ( !$status ) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
@@ -302,13 +373,49 @@ class InitWikiConfig extends Maintenance {
 
 		if ( !$dryRun ) {
 			$wikiPageConfigWriter->setVariables( $variables );
-			$wikiPageConfigWriter->save( $this->getEditSummary() );
+			$status = $wikiPageConfigWriter->save( $this->getEditSummary() );
+			if ( !$status->isOK() ) {
+				$this->fatalError( $status->getWikiText( false, false, 'en' ) );
+			}
 		} else {
 			$this->output( $title->getPrefixedText() . ":\n" );
 			$this->output( json_encode( $variables, JSON_PRETTY_PRINT ) . "\n" );
 		}
 
 		return true;
+	}
+
+	/**
+	 * @param bool $dryRun
+	 * @return bool
+	 */
+	private function initSuggestedEditsConfig( bool $dryRun ): bool {
+		$title = $this->titleFactory->newFromText(
+			$this->getConfig()->get( 'GENewcomerTasksConfigTitle' )
+		);
+		if ( $title === null ) {
+			$this->fatalError( "Invalid GENewcomerTasksConfigTitle!\n" );
+			return false;
+		}
+		$wikiPageConfigWriter = $this->wikiPageConfigWriterFactory
+			->newWikiPageConfigWriter(
+				$title
+			);
+
+		$variables = $this->getSuggestedEditsVariables();
+
+		if ( !$dryRun ) {
+			$wikiPageConfigWriter->setVariables( $variables );
+			$status = $wikiPageConfigWriter->save( $this->getEditSummary() );
+			if ( !$status->isOK() ) {
+				$this->fatalError( $status->getWikiText( false, false, 'en' ) );
+			}
+			return true;
+		} else {
+			$this->output( $title->getPrefixedText() . ":\n" );
+			$this->output( json_encode( $variables, JSON_PRETTY_PRINT ) . "\n" );
+			return false;
+		}
 	}
 }
 
