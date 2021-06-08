@@ -30,6 +30,10 @@ function RecommendedLinkToolbarDialog() {
 	 */
 	this.scrollOffset = 100;
 	/**
+	 * @property {number} scrollTimeout Maximum time to spend in ms when scrolling to annotation
+	 */
+	this.scrollTimeout = 800;
+	/**
 	 * @property {number} minHeight Minimum value to use for window height (used in setting surface padding value)
 	 */
 	this.minHeight = 250;
@@ -434,15 +438,24 @@ RecommendedLinkToolbarDialog.prototype.getAnnotationViewAtIndex = function ( ind
  * Scroll so that the specified annotation view is in the viewport
  *
  * @param {jQuery} $el Annotation view to scroll to
- * @return {jQuery.Promise} Promise which resolves when the scroll is complete
+ * @return {jQuery.Promise} Promise which resolves when the scroll is complete or
+ * when scrollTimeout is reached
  */
 RecommendedLinkToolbarDialog.prototype.scrollToAnnotationView = function ( $el ) {
-	return OO.ui.Element.static.scrollIntoView( $el, {
+	var promise = $.Deferred(),
+		resolveTimeout = setTimeout( function () {
+			promise.resolve();
+		}, this.scrollTimeout );
+	OO.ui.Element.static.scrollIntoView( $el, {
 		animate: true,
 		duration: 'slow',
 		padding: this.surface.padding,
 		direction: 'y'
+	} ).then( function () {
+		clearTimeout( resolveTimeout );
+		promise.resolve();
 	} );
+	return promise;
 };
 
 /**
