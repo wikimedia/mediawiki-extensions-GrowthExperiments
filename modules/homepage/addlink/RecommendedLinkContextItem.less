@@ -9,6 +9,11 @@
 	@imageThumbnailSize: 56px;
 	@gutterSize: 12px;
 	background: @wmui-color-base100;
+	transition: opacity 250ms;
+
+	&.fade-out {
+		opacity: 0;
+	}
 
 	.oo-ui-window-head {
 		min-height: 32px;

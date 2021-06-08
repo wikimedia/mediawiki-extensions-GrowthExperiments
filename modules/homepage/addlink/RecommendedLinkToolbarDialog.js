@@ -30,7 +30,7 @@ function RecommendedLinkToolbarDialog() {
 	 */
 	this.scrollOffset = 100;
 	/**
-	 * @property {number} minHeight Minimum value to use for window height (used in setting surface padding value
+	 * @property {number} minHeight Minimum value to use for window height (used in setting surface padding value)
 	 */
 	this.minHeight = 250;
 	this.$element.addClass( 'mw-ge-recommendedLinkContextItem' );
@@ -95,7 +95,6 @@ RecommendedLinkToolbarDialog.prototype.getSetupProcess = function ( data ) {
  */
 RecommendedLinkToolbarDialog.prototype.onAnnotationClicked = function ( annotationModel ) {
 	this.showRecommendationAtIndex( this.getIndexForModel( annotationModel ), true );
-	this.surface.scrollSelectionIntoView();
 };
 
 /**
@@ -115,13 +114,15 @@ RecommendedLinkToolbarDialog.prototype.afterSetupProcess = function () {
 		return 'image';
 	} );
 
-	this.showRecommendationAtIndex( this.currentIndex );
-	setTimeout( this.updateActionButtonsMode.bind( this ) );
+	this.showFirstRecommendation().then( function () {
+		this.updateActionButtonsMode();
+		this.logger.log( 'impression', this.suggestionLogMetadata() );
+	}.bind( this ) );
+
 	$( window ).on( 'resize',
 		OO.ui.debounce( this.updateActionButtonsMode.bind( this ), 250 )
 	);
 	mw.hook( 'growthExperiments.onAnnotationClicked' ).add( this.onAnnotationClicked.bind( this ) );
-	this.logger.log( 'impression', this.suggestionLogMetadata() );
 };
 
 /**
@@ -372,7 +373,9 @@ RecommendedLinkToolbarDialog.prototype.selectAnnotationView = function () {
  *  opposed to using the next/back buttons.
  * @throws Will throw an error if this.linkRecommendationFragments is empty
  */
-RecommendedLinkToolbarDialog.prototype.showRecommendationAtIndex = function ( index, manualFocus ) {
+RecommendedLinkToolbarDialog.prototype.showRecommendationAtIndex = function (
+	index, manualFocus
+) {
 	var isUpdatingCurrentRecommendation = this.isUpdatingCurrentRecommendation;
 	if ( !isUpdatingCurrentRecommendation && ( index === this.currentIndex || index < 0 ) ) {
 		return;
@@ -395,6 +398,51 @@ RecommendedLinkToolbarDialog.prototype.showRecommendationAtIndex = function ( in
 		// eslint-disable-next-line camelcase
 		$.extend( this.suggestionLogMetadata(), { manual_focus: manualFocus || false } )
 	);
+};
+
+/**
+ * Scroll to the first annotation view and show the corresponding link inspector
+ *
+ * @return {jQuery.Promise} Promise which resolves when the link inspector is shown
+ */
+RecommendedLinkToolbarDialog.prototype.showFirstRecommendation = function () {
+	var promise = $.Deferred();
+	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( 0 ) ).then( function () {
+		this.showRecommendationAtIndex( 0 );
+		promise.resolve();
+	}.bind( this ) );
+	return promise;
+};
+
+/**
+ * Get annotation view for the specified index
+ *
+ * @param {number} index Zero-based index of the suggestion in the linkRecommendationFragments array
+ * @throws Will throw an error if annotation view at the specified index can't be found
+ * @return {jQuery}
+ */
+RecommendedLinkToolbarDialog.prototype.getAnnotationViewAtIndex = function ( index ) {
+	var annotationView = this.surface.getView().$documentNode
+		.find( '.mw-ge-recommendedLinkAnnotation' )[ index ];
+	if ( !annotationView ) {
+		throw new Error( 'No annotation view found' );
+	}
+	return annotationView;
+};
+
+/**
+ * Scroll so that the specified annotation view is in the viewport
+ *
+ * @param {jQuery} $el Annotation view to scroll to
+ * @return {jQuery.Promise} Promise which resolves when the scroll is complete
+ */
+RecommendedLinkToolbarDialog.prototype.scrollToAnnotationView = function ( $el ) {
+	return OO.ui.Element.static.scrollIntoView( $el, {
+		animate: true,
+		duration: 'slow',
+		padding: this.surface.padding,
+		direction: 'y'
+	} );
 };
 
 /**
