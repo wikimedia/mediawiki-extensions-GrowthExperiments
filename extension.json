@@ -1556,7 +1556,7 @@
 					]
 				},
 				"exp1_group2": {
-					"percentage": 100,
+					"percentage": 0,
 					"questions": []
 				},
 				"exp2_control": {
@@ -1564,7 +1564,7 @@
 					"questions": []
 				},
 				"exp2_target_specialpage": {
-					"percentage": 0,
+					"percentage": 100,
 					"format": "specialpage",
 					"questions": [
 						"reason",
