@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": []
+	},
+	"apihelp-growthstarmentee-summary": "{{doc-apihelp-summary|growthstarmentee}}",
+	"apihelp-growthstarmentee-param-gesaction": "{{doc-apihelp-param|growthstarmentee|gesaction}}",
+	"apihelp-growthstarmentee-param-gesmentee": "{{doc-apihelp-param|growthstarmentee|gesmentee}}",
+	"apihelp-query+growthstarredmentees-summary": "{{doc-apihelp-summary|query+growthstarredmentees}}"
+}

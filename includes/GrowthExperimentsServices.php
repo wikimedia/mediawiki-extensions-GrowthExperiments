@@ -12,6 +12,7 @@ use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
+use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
@@ -163,6 +164,10 @@ class GrowthExperimentsServices {
 
 	public function getSearchIndexUpdater(): SearchIndexUpdater {
 		return $this->coreServices->get( 'GrowthExperimentsSearchIndexUpdater' );
+	}
+
+	public function getStarredMenteesStore(): StarredMenteesStore {
+		return $this->coreServices->get( 'GrowthExperimentsStarredMenteesStore' );
 	}
 
 	public function getSuggestionsInfo(): SuggestionsInfo {

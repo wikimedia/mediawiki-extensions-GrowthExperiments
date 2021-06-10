@@ -33,7 +33,8 @@
 			"i18n/homepage",
 			"i18n/homepage/api",
 			"i18n/confirmemail",
-			"i18n/newcomertasks/api"
+			"i18n/newcomertasks/api",
+			"i18n/mentorship/api"
 		]
 	},
 	"ExtensionMessagesFiles": {
@@ -62,6 +63,12 @@
 				"GrowthExperimentsMentorManager",
 				"GrowthExperimentsMentorStore"
 			]
+		},
+		"growthstarmentee": {
+			"class": "GrowthExperiments\\Api\\ApiStarMentee",
+			"services": [
+				"GrowthExperimentsStarredMenteesStore"
+			]
 		}
 	},
 	"APIListModules": {
@@ -70,6 +77,12 @@
 			"services": [
 				"GrowthExperimentsTaskSuggesterFactory",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader"
+			]
+		},
+		"growthstarredmentees": {
+			"class": "GrowthExperiments\\Api\\ApiQueryStarredMentees",
+			"services": [
+				"GrowthExperimentsStarredMenteesStore"
 			]
 		}
 	},
@@ -151,6 +164,9 @@
 				"GrowthExperimentsMultiConfig"
 			]
 		},
+		"mentordashboard": {
+			"class": "GrowthExperiments\\MentorDashboard\\MentorDashboardHooks"
+		},
 		"tour": {
 			"class": "GrowthExperiments\\TourHooks",
 			"services": [
@@ -197,7 +213,8 @@
 		"UserGetDefaultOptions": [
 			"GrowthExperiments\\HelpPanelHooks::onUserGetDefaultOptions",
 			"homepage",
-			"tour"
+			"tour",
+			"mentordashboard"
 		],
 		"LocalUserCreated": [
 			"GrowthExperiments\\HelpPanelHooks::onLocalUserCreated",
@@ -211,6 +228,7 @@
 			"homepage",
 			"tour",
 			"mentor",
+			"mentordashboard",
 			"variant"
 		],
 		"BeforeWelcomeCreation": [
