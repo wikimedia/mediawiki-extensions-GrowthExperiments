@@ -37,7 +37,11 @@ function RecommendedLinkToolbarDialog() {
 	 * @property {number} minHeight Minimum value to use for window height (used in setting surface padding value)
 	 */
 	this.minHeight = 250;
-	this.$element.addClass( 'mw-ge-recommendedLinkContextItem' );
+	/**
+	 * @property {boolean} isFirstRender Whether the first recommendation is being rendered
+	 */
+	this.isFirstRender = true;
+	this.$element.addClass( 'mw-ge-recommendedLinkToolbarDialog' );
 }
 
 OO.inheritClass( RecommendedLinkToolbarDialog, ve.ui.ToolbarDialog );
@@ -50,24 +54,23 @@ RecommendedLinkToolbarDialog.static.name = 'recommendedLink';
 RecommendedLinkToolbarDialog.prototype.initialize = function () {
 	var introLabel = new OO.ui.LabelWidget( {
 			label: mw.msg( 'growthexperiments-addlink-context-intro' ),
-			classes: [ 'mw-ge-recommendedLinkContextItem-introLabel' ]
+			classes: [ 'mw-ge-recommendedLinkToolbarDialog-introLabel' ]
 		} ),
 		robotIcon = new OO.ui.IconWidget( {
 			icon: 'robot',
 			label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-machine-description' ),
 			invisibleLabel: true,
-			classes: [ 'mw-ge-recommendedLinkContextItem-head-robot-icon' ]
+			classes: [ 'mw-ge-recommendedLinkToolbarDialog-head-robot-icon' ]
 		} );
 	RecommendedLinkToolbarDialog.super.prototype.initialize.call( this );
-	this.$buttons = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-buttons' );
-	this.setupButtons();
 
 	// The following elements have to be set up when this.linkRecommendationFragments is set.
-	this.$progress = $( '<span>' ).addClass( 'mw-ge-recommendedLinkContextItem-progress' );
-	this.$linkPreview = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-linkPreview' );
-	this.$progressTitle = $( '<span>' ).addClass( 'mw-ge-recommendedLinkContextItem-progress-title' );
+	this.$progress = $( '<span>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-progress' );
+	this.$progressTitle = $( '<span>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-progress-title' );
+	this.$buttons = $( '<div>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-buttons' );
+	this.setupButtons();
 	this.$head.append( [ robotIcon.$element, this.$progressTitle, this.$progress ] );
-	this.$body.append( [ introLabel.$element, this.$linkPreview, this.$buttons ] );
+	this.$body.append( [ introLabel.$element, this.setupLinkPreview(), this.$buttons ] );
 
 	// Used by other dialogs to return focus.
 	mw.hook( 'addlink-regainfocus' ).add( function () {
@@ -387,6 +390,7 @@ RecommendedLinkToolbarDialog.prototype.showRecommendationAtIndex = function (
 	if ( this.linkRecommendationFragments.length === 0 ) {
 		throw new Error( 'No link recommendation fragments' );
 	}
+	this.isGoingBack = this.currentIndex > index;
 	this.linkRecommendationFragments[ index ].fragment.select();
 	this.currentIndex = index;
 	this.currentDataModel = this.getCurrentDataModel();
@@ -413,6 +417,7 @@ RecommendedLinkToolbarDialog.prototype.showFirstRecommendation = function () {
 	var promise = $.Deferred();
 	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( 0 ) ).then( function () {
 		this.showRecommendationAtIndex( 0 );
+		this.$element.removeClass( 'animate-from-below' );
 		promise.resolve();
 	}.bind( this ) );
 	return promise;
@@ -502,43 +507,30 @@ RecommendedLinkToolbarDialog.prototype.allRecommendationsSkipped = function () {
 // UI setup methods for elements that are not specific to the current recommendation
 
 /**
- * Set up navigation and acceptance buttons
+ * Set up yes, no and reopen rejection dialog buttons
  *
- * @private
+ * @return {jQuery}
  */
-RecommendedLinkToolbarDialog.prototype.setupButtons = function () {
-	this.prevButton = new OO.ui.ButtonWidget( {
-		icon: 'previous',
-		framed: false,
-		classes: [ 'mw-ge-recommendedLinkContextItem-buttons-prev' ]
-	} );
-	this.nextButton = new OO.ui.ButtonWidget( {
-		icon: 'next',
-		framed: false,
-		label: mw.msg( 'growthexperiments-addlink-context-button-next' ),
-		classes: [ 'mw-ge-recommendedLinkContextItem-buttons-next' ]
-	} );
-	this.prevButton.connect( this, { click: [ 'onPrevButtonClicked' ] } );
-	this.nextButton.connect( this, { click: [ 'onNextButtonClicked' ] } );
-	this.$navButtonGroup = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-buttons-nav-group' );
-	this.$navButtonGroup.append( [ this.prevButton.$element, this.nextButton.$element ] );
+RecommendedLinkToolbarDialog.prototype.setupAcceptanceButtons = function () {
 	this.yesButton = new OO.ui.ToggleButtonWidget( {
 		icon: 'check',
 		label: mw.msg( 'growthexperiments-addlink-context-button-accept' ),
-		classes: [ 'mw-ge-recommendedLinkContextItem-buttons-yes' ]
+		classes: [ 'mw-ge-recommendedLinkToolbarDialog-buttons-yes' ]
 	} );
 	this.noButton = new OO.ui.ToggleButtonWidget( {
 		icon: 'close',
 		label: mw.msg( 'growthexperiments-addlink-context-button-reject' ),
-		classes: [ 'mw-ge-recommendedLinkContextItem-buttons-no' ]
+		classes: [ 'mw-ge-recommendedLinkToolbarDialog-buttons-no' ]
 	} );
 	this.reopenRejectionDialogButton = new OO.ui.ButtonWidget( {
 		icon: 'ellipsis',
 		framed: false,
 		title: mw.msg( 'growthexperiments-addlink-rejectiondialog-reopen-button-title' ),
-		classes: [ 'mw-ge-recommendedLinkContextItem-buttons-no-reopen' ]
+		classes: [ 'mw-ge-recommendedLinkToolbarDialog-buttons-no-reopen' ]
 	} );
-	this.$acceptanceButtonGroup = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-buttons-acceptance-group' );
+	this.$acceptanceButtonGroup = $( '<div>' ).addClass(
+		'mw-ge-recommendedLinkToolbarDialog-buttons-acceptance-group'
+	);
 	this.$acceptanceButtonGroup.append( [
 		this.yesButton.$element,
 		this.noButton.$element,
@@ -547,7 +539,32 @@ RecommendedLinkToolbarDialog.prototype.setupButtons = function () {
 	this.yesButton.connect( this, { click: [ 'onYesButtonClicked' ] } );
 	this.noButton.connect( this, { click: [ 'onNoButtonClicked' ] } );
 	this.reopenRejectionDialogButton.connect( this, { click: [ 'reopenRejectionDialog', null ] } );
-	this.$buttons.append( this.$acceptanceButtonGroup, this.$navButtonGroup );
+	return this.$acceptanceButtonGroup;
+};
+
+/**
+ * Set up navigation and acceptance buttons
+ *
+ * @return {jQuery}
+ */
+RecommendedLinkToolbarDialog.prototype.setupButtons = function () {
+	this.prevButton = new OO.ui.ButtonWidget( {
+		icon: 'previous',
+		framed: false,
+		classes: [ 'mw-ge-recommendedLinkToolbarDialog-buttons-prev' ]
+	} );
+	this.nextButton = new OO.ui.ButtonWidget( {
+		icon: 'next',
+		framed: false,
+		label: mw.msg( 'growthexperiments-addlink-context-button-next' ),
+		classes: [ 'mw-ge-recommendedLinkToolbarDialog-buttons-next' ]
+	} );
+	this.prevButton.connect( this, { click: [ 'onPrevButtonClicked' ] } );
+	this.nextButton.connect( this, { click: [ 'onNextButtonClicked' ] } );
+	this.$navButtonGroup = $( '<div>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-buttons-nav-group' );
+	this.$navButtonGroup.append( [ this.prevButton.$element, this.nextButton.$element ] );
+	this.$buttons.append( this.setupAcceptanceButtons(), this.$navButtonGroup );
+	return this.$buttons;
 };
 
 /**
@@ -560,9 +577,21 @@ RecommendedLinkToolbarDialog.prototype.setupProgressIndicators = function ( tota
 	var i, $indicator;
 
 	for ( i = 0; i < total; i++ ) {
-		$indicator = $( '<span>' ).addClass( 'mw-ge-recommendedLinkContextItem-progress-indicator' );
+		$indicator = $( '<span>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-progress-indicator' );
 		this.$progress.append( $indicator );
 	}
+};
+
+/**
+ * Set up link preview element
+ *
+ * @return {jQuery}
+ */
+RecommendedLinkToolbarDialog.prototype.setupLinkPreview = function () {
+	this.$linkPreview = $( '<div>' ).addClass(
+		'mw-ge-recommendedLinkToolbarDialog-linkPreview'
+	);
+	return this.$linkPreview;
 };
 
 // UI update methods based on recommendation-specific "computed properties"
@@ -598,10 +627,10 @@ RecommendedLinkToolbarDialog.prototype.updateContentForCurrentRecommendation = f
  * Update button states based on the current DataModel
  */
 RecommendedLinkToolbarDialog.prototype.updateButtonStates = function () {
+	this.prevButton.setDisabled( this.currentIndex === 0 );
 	this.yesButton.setValue( this.currentDataModel.isAccepted() );
 	this.noButton.setValue( this.currentDataModel.isRejected() );
 	this.reopenRejectionDialogButton.toggle( this.currentDataModel.isRejected() );
-	this.prevButton.setDisabled( this.currentIndex === 0 );
 };
 
 /**
@@ -620,9 +649,9 @@ RecommendedLinkToolbarDialog.prototype.updateProgressIndicators = function () {
 	var currentIndex = this.currentIndex;
 	this.$progress.children().each( function ( index, indicator ) {
 		if ( index <= currentIndex ) {
-			indicator.classList.add( 'mw-ge-recommendedLinkContextItem-progress-indicator-selected' );
+			indicator.classList.add( 'mw-ge-recommendedLinkToolbarDialog-progress-indicator-selected' );
 		} else {
-			indicator.classList.remove( 'mw-ge-recommendedLinkContextItem-progress-indicator-selected' );
+			indicator.classList.remove( 'mw-ge-recommendedLinkToolbarDialog-progress-indicator-selected' );
 		}
 	} );
 	this.$progressTitle.text(
@@ -650,7 +679,7 @@ RecommendedLinkToolbarDialog.prototype.updateActionButtonsMode = function () {
 		nextButtonLeft = $nextButton.offset().left,
 		linkPreviewTextLeft = $linkPreviewText.offset().left,
 		canOverflowStateAlign = false,
-		imageOffset = 68, // @imageThumbnailSize + @gutterSize in RecommendedLinkContextItem.less
+		imageOffset = 68, // @imageThumbnailSize + @gutterSize in RecommendedLinkToolbarDialog.less
 		availableWidth;
 
 	// This doesn't have to be re-computed (doesn't change upon window resize).
@@ -666,8 +695,11 @@ RecommendedLinkToolbarDialog.prototype.updateActionButtonsMode = function () {
 		canOverflowStateAlign = acceptanceButtonsWidth + imageOffset < this.$buttons.width();
 		this.$acceptanceButtonGroup.addClass( 'overflow-state' );
 		this.$acceptanceButtonGroup.toggleClass( 'overflow-state-left-aligned', canOverflowStateAlign );
+		// Push nav buttons down onto its own line
+		this.$navButtonGroup.css( 'margin-top', this.$acceptanceButtonGroup.outerHeight( true ) );
 	} else {
 		this.$acceptanceButtonGroup.removeClass( 'overflow-state' );
+		this.$navButtonGroup.css( 'margin-top', 0 );
 	}
 
 	this.updateDimensions();
