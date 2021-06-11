@@ -402,6 +402,31 @@ AddLinkArticleTarget.prototype.updateToolbarSaveButtonState = function () {
 	// T281452 no-op, we have our own custom logic for this in AddLinkSaveDialogMixin
 };
 
+AddLinkArticleTarget.prototype.saveErrorHookAborted = function ( data ) {
+	var errors = data.errors || [],
+		error = errors[ 0 ] || {},
+		errorData = error.data || '',
+		errorMessage = errorData.message || [],
+		errorMessageKey = errorMessage[ 0 ] || '';
+	// For the not-in-store path, handle the errors ourselves, otherwise
+	// let VE do the error handling.
+	if ( errorMessageKey !== 'growthexperiments-addlink-notinstore' ) {
+		return this.constructor.super.prototype.saveErrorHookAborted.call( this, data );
+	}
+	this.logger.log( 'impression', {}, {
+		// eslint-disable-next-line camelcase
+		active_interface: 'outdatedsuggestions_dialog'
+	} );
+	this.getSurface().getDialogs().currentWindow.close();
+	window.onbeforeunload = null;
+	$( window ).off( 'beforeunload' );
+	OO.ui.alert( mw.message( 'growthexperiments-addlink-suggestions-outdated' ).text(), {
+		actions: [ { action: 'accept', label: mw.message( 'growthexperiments-addlink-no-suggestions-found-dialog-button' ).text(), flags: 'primary' } ]
+	} ).done( function () {
+		window.location.href = mw.Title.newFromText( 'Special:Homepage' ).getUrl();
+	} );
+};
+
 /**
  * Get the current state of the recommendations (ie. the feedback the user gave on them).
  *

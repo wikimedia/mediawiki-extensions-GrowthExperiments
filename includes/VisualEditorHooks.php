@@ -4,9 +4,12 @@ namespace GrowthExperiments;
 
 use DeferredUpdates;
 use GrowthExperiments\NewcomerTasks\AddLink\AddLinkSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
+use IDBAccessObject;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPostSaveHook;
+use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPreSaveHook;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\User\UserIdentity;
 use TitleFactory;
@@ -16,7 +19,10 @@ use UnexpectedValueException;
  * Hook handlers for hooks defined in VisualEditor. Handled in a dedicated class to avoid other
  *  classes depending on interfaces defined in VisualEditor (which is an optional dependency).
  */
-class VisualEditorHooks implements VisualEditorApiVisualEditorEditPostSaveHook {
+class VisualEditorHooks implements
+	VisualEditorApiVisualEditorEditPreSaveHook,
+	VisualEditorApiVisualEditorEditPostSaveHook
+{
 
 	/** @var TitleFactory */
 	private $titleFactory;
@@ -24,20 +30,58 @@ class VisualEditorHooks implements VisualEditorApiVisualEditorEditPostSaveHook {
 	private $trackerFactory;
 	/** @var AddLinkSubmissionHandler */
 	private $addLinkSubmissionHandler;
+	/** @var LinkRecommendationStore */
+	private $linkRecommendationStore;
 
 	/**
 	 * @param TitleFactory $titleFactory
 	 * @param TrackerFactory $trackerFactory
 	 * @param AddLinkSubmissionHandler $addLinkSubmissionHandler
+	 * @param LinkRecommendationStore $linkRecommendationStore
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
 		TrackerFactory $trackerFactory,
-		AddLinkSubmissionHandler $addLinkSubmissionHandler
+		AddLinkSubmissionHandler $addLinkSubmissionHandler,
+		LinkRecommendationStore $linkRecommendationStore
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->trackerFactory = $trackerFactory;
 		$this->addLinkSubmissionHandler = $addLinkSubmissionHandler;
+		$this->linkRecommendationStore = $linkRecommendationStore;
+	}
+
+	/** @inheritDoc */
+	public function onVisualEditorApiVisualEditorEditPreSave(
+		ProperPageIdentity $page,
+		UserIdentity $user,
+		string $wikitext,
+		array $params,
+		array $pluginData,
+		array &$apiResponse
+	) {
+		$data = $pluginData['linkrecommendation'] ?? null;
+		if ( !$data ) {
+			// Not an edit we are interested in looking at.
+			return;
+		}
+		$title = $this->titleFactory->castFromPageIdentity( $page );
+		if ( !$title ) {
+			// Something weird has happened; let the save attempt go through because
+			// presumably later an exception will be thrown and that can be dealt
+			// with by VisualEditor.
+			return;
+		}
+		if ( !$this->linkRecommendationStore->getByLinkTarget(
+			$title,
+			IDBAccessObject::READ_LATEST )
+		) {
+			// There's no link recommendation data stored for this page, so it must have been
+			// removed from the database during the time the user had the UI open. Don't allow
+			// the save to continue.
+			$apiResponse['message'] = [ 'growthexperiments-addlink-notinstore', $title->getPrefixedText() ];
+			return false;
+		}
 	}
 
 	/** @inheritDoc */

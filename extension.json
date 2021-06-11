@@ -208,7 +208,8 @@
 			"services": [
 				"TitleFactory",
 				"GrowthExperimentsNewcomerTaskTrackerFactory",
-				"GrowthExperimentsAddLinkSubmissionHandler"
+				"GrowthExperimentsAddLinkSubmissionHandler",
+				"GrowthExperimentsLinkRecommendationStore"
 			]
 		}
 	},
@@ -297,6 +298,7 @@
 		"EditFilterMergedContent": "config",
 		"SkinTemplateNavigation": "config",
 		"ResourceLoaderGetConfigVars": "variant",
+		"VisualEditorApiVisualEditorEditPreSave": "visualeditor",
 		"VisualEditorApiVisualEditorEditPostSave": "visualeditor",
 		"ChangesListSpecialPageStructuredFilters": "mentorfilters"
 	},
@@ -820,6 +822,9 @@
 				"growthexperiments-addlink-editmode-confirmation-dialog-action-confirm",
 				"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel",
 				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
+				"growthexperiments-addlink-suggestions-outdated",
+				"growthexperiments-addlink-no-suggestions-found-dialog-message",
+				"growthexperiments-addlink-no-suggestions-found-dialog-button",
 				"colon-separator"
 			],
 			"dependencies": [

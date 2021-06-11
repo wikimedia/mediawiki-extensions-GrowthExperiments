@@ -394,5 +394,6 @@
 	"growthexperiments-addlink-editmode-confirmation-dialog-title": "Leave suggestions?",
 	"growthexperiments-addlink-editmode-confirmation-dialog-message": "Switching modes will allow {{GENDER:$1|you}} to make other kinds of edits. Finish reviewing to submit {{GENDER:$1|your}} progress so far.",
 	"growthexperiments-addlink-editmode-confirmation-dialog-action-confirm": "Switch without submitting",
-	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Cancel"
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Cancel",
+	"growthexperiments-addlink-suggestions-outdated": "Another user edited this article while {{GENDER:|you}} were reviewing it, and {{GENDER:|your}} changes could not be saved."
 }
