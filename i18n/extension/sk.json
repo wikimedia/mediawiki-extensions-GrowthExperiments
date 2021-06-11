@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Luky001"
+			"Luky001",
+			"Wizzard"
 		]
 	},
-	"growthexperiments-desc": "Toto rozšírenie obsahuje experimenty tímu Growth."
+	"growthexperiments-desc": "Toto rozšírenie obsahuje experimenty tímu Growth.",
+	"growthexperiments-edit-config-edit-summary": "Zhrnutie úprav"
 }
