@@ -332,6 +332,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			];
 			$descriptors["newcomertasks-${taskType}Learnmore"] = [
 				'type' => 'title',
+				'interwiki' => true,
 				'exists' => $pagesMustExist,
 				'label-message' => "growthexperiments-edit-config-newcomer-tasks-$taskType-learnmore",
 				'required' => false,
