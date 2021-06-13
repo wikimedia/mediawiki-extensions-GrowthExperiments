@@ -48,6 +48,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
+use GrowthExperiments\WelcomeSurveyFactory;
 use MediaWiki\Config\ServiceOptions;
 use MediaWiki\Extension\EventBus\EventBusFactory;
 use MediaWiki\Logger\LoggerFactory;
@@ -466,6 +467,14 @@ return [
 	): TipNodeRenderer {
 		return new TipNodeRenderer(
 			$services->getMainConfig()->get( 'ExtensionAssetsPath' )
+		);
+	},
+
+	'GrowthExperimentsWelcomeSurveyFactory' => static function (
+		MediaWikiServices $services
+	): WelcomeSurveyFactory {
+		return new WelcomeSurveyFactory(
+			$services->getLanguageNameUtils()
 		);
 	},
 

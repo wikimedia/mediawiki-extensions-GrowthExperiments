@@ -176,6 +176,10 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsTipNodeRenderer' );
 	}
 
+	public function getWelcomeSurveyFactory(): WelcomeSurveyFactory {
+		return $this->coreServices->get( 'GrowthExperimentsWelcomeSurveyFactory' );
+	}
+
 	public function getWikiPageConfig(): WikiPageConfig {
 		return $this->coreServices->get( 'GrowthExperimentsWikiPageConfig' );
 	}

@@ -4,31 +4,27 @@ namespace GrowthExperiments\Specials;
 
 use FormSpecialPage;
 use GrowthExperiments\HomepageHooks;
-use GrowthExperiments\WelcomeSurvey;
+use GrowthExperiments\WelcomeSurveyFactory;
 use Html;
 use HTMLForm;
-use MediaWiki\Languages\LanguageNameUtils;
 use MWTimestamp;
 use Status;
 use Title;
 
 class SpecialWelcomeSurvey extends FormSpecialPage {
 
-	/**
-	 * @var string
-	 */
+	/** @var string */
 	private $groupName;
-	/**
-	 * @var LanguageNameUtils
-	 */
-	private $languageNameUtils;
+
+	/** @var WelcomeSurveyFactory */
+	private $welcomeSurveyFactory;
 
 	/**
-	 * @param LanguageNameUtils $languageNameUtils
+	 * @param WelcomeSurveyFactory $welcomeSurveyFactory
 	 */
-	public function __construct( LanguageNameUtils $languageNameUtils ) {
+	public function __construct( WelcomeSurveyFactory $welcomeSurveyFactory ) {
 		parent::__construct( 'WelcomeSurvey', '', false );
-		$this->languageNameUtils = $languageNameUtils;
+		$this->welcomeSurveyFactory = $welcomeSurveyFactory;
 	}
 
 	/**
@@ -88,10 +84,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	 * @return array
 	 */
 	protected function getFormFields() {
-		$welcomeSurvey = new WelcomeSurvey(
-			$this->getContext(),
-			$this->languageNameUtils
-		);
+		$welcomeSurvey = $this->welcomeSurveyFactory->newWelcomeSurvey( $this->getContext() );
 		$this->groupName = $welcomeSurvey->getGroup( true );
 		$questions = $welcomeSurvey->getQuestions( $this->groupName );
 
@@ -174,7 +167,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 		$returnTo = $redirectParams[ 'returnto' ] ?? '';
 		$returnToQuery = $redirectParams[ 'returntoquery' ] ?? '';
 
-		$welcomeSurvey = new WelcomeSurvey( $this->getContext(), $this->languageNameUtils );
+		$welcomeSurvey = $this->welcomeSurveyFactory->newWelcomeSurvey( $this->getContext() );
 		$welcomeSurvey->handleResponses(
 			$data,
 			$save,

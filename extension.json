@@ -102,7 +102,7 @@
 	"HookHandlers": {
 		"welcomeSurvey": {
 			"class": "GrowthExperiments\\WelcomeSurveyHooks",
-			"services": [ "MainConfig", "LanguageNameUtils" ]
+			"services": [ "MainConfig", "GrowthExperimentsWelcomeSurveyFactory" ]
 		},
 		"homepage": {
 			"class": "GrowthExperiments\\HomepageHooks",
