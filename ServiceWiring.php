@@ -474,7 +474,8 @@ return [
 		MediaWikiServices $services
 	): WelcomeSurveyFactory {
 		return new WelcomeSurveyFactory(
-			$services->getLanguageNameUtils()
+			$services->getLanguageNameUtils(),
+			$services->getUserOptionsManager()
 		);
 	},
 

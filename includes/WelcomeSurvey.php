@@ -7,6 +7,7 @@ use FormatJson;
 use IContextSource;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\User\UserOptionsManager;
 use MWTimestamp;
 use SpecialPage;
 
@@ -18,29 +19,33 @@ class WelcomeSurvey {
 
 	public const DEFAULT_SURVEY_GROUP = 'exp2_target_specialpage';
 
-	/**
-	 * @var IContextSource
-	 */
+	/** @var IContextSource */
 	private $context;
 
-	/**
-	 * @var bool
-	 */
+	/** @var bool */
 	private $allowFreetext;
-	/**
-	 * @var LanguageNameUtils
-	 */
+
+	/** @var LanguageNameUtils */
 	private $languageNameUtils;
+
+	/** @var UserOptionsManager */
+	private $userOptionsManager;
 
 	/**
 	 * @param IContextSource $context
 	 * @param LanguageNameUtils $languageNameUtils
+	 * @param UserOptionsManager $userOptionsManager
 	 */
-	public function __construct( IContextSource $context, LanguageNameUtils $languageNameUtils ) {
+	public function __construct(
+		IContextSource $context,
+		LanguageNameUtils $languageNameUtils,
+		UserOptionsManager $userOptionsManager
+	) {
 		$this->context = $context;
 		$this->allowFreetext =
 			$this->context->getConfig()->get( 'WelcomeSurveyAllowFreetextResponses' );
 		$this->languageNameUtils = $languageNameUtils;
+		$this->userOptionsManager = $userOptionsManager;
 	}
 
 	/**
@@ -76,7 +81,11 @@ class WelcomeSurvey {
 
 		// The user was already assigned a group
 		$groupFromProp = FormatJson::decode(
-			$this->context->getUser()->getOption( self::SURVEY_PROP, '' )
+			$this->userOptionsManager->getOption(
+				$this->context->getUser(),
+				self::SURVEY_PROP,
+				''
+			)
 		)->_group ?? false;
 		if ( isset( $groups[ $groupFromProp ] ) ) {
 			return $groupFromProp;
@@ -289,7 +298,11 @@ class WelcomeSurvey {
 		}
 
 		$counter = ( FormatJson::decode(
-			$user->getOption( self::SURVEY_PROP, '' )
+			$this->userOptionsManager->getOption(
+				$this->context->getUser(),
+				self::SURVEY_PROP,
+				''
+			)
 		)->_counter ?? 0 ) + 1;
 
 		$results = array_merge(
@@ -303,7 +316,7 @@ class WelcomeSurvey {
 		);
 		$encodedData = FormatJson::encode( $results );
 		if ( strlen( $encodedData ) <= self::BLOB_SIZE ) {
-			$user->setOption( self::SURVEY_PROP, $encodedData );
+			$this->userOptionsManager->setOption( $user, self::SURVEY_PROP, $encodedData );
 			$userUpdated = true;
 		} else {
 			LoggerFactory::getInstance( 'GrowthExperiments' )->warning(
@@ -330,7 +343,8 @@ class WelcomeSurvey {
 			'_group' => $group,
 			'_render_date' => MWTimestamp::now(),
 		];
-		$user->setOption(
+		$this->userOptionsManager->setOption(
+			$user,
 			self::SURVEY_PROP,
 			FormatJson::encode( $data )
 		);

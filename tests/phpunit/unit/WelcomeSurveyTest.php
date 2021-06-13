@@ -6,6 +6,7 @@ use Config;
 use GrowthExperiments\WelcomeSurvey;
 use HashConfig;
 use MediaWiki\Languages\LanguageNameUtils;
+use MediaWiki\User\UserOptionsManager;
 use MediaWikiUnitTestCase;
 use RequestContext;
 use User;
@@ -33,7 +34,8 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 			WelcomeSurvey::class,
 			new WelcomeSurvey(
 				$contextMock,
-				$this->getLanguageNameUtilsMockObject()
+				$this->getLanguageNameUtilsMockObject(),
+				$this->getUserOptionsManagerMockObject()
 			)
 		);
 	}
@@ -83,7 +85,11 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 		$contextMock->expects( $this->atLeastOnce() )
 			->method( 'getUser' )
 			->willReturn( $userMock );
-		return new WelcomeSurvey( $contextMock, $this->getLanguageNameUtilsMockObject() );
+		return new WelcomeSurvey(
+			$contextMock,
+			$this->getLanguageNameUtilsMockObject(),
+			$this->getUserOptionsManagerMockObject()
+		);
 	}
 
 	/**
@@ -96,6 +102,13 @@ class WelcomeSurveyTest extends MediaWikiUnitTestCase {
 		$mock->method( 'getLanguageNames' )
 			->willReturn( [ 'es', 'el', 'en', 'ar' ] );
 		return $mock;
+	}
+
+	/**
+	 * @return \PHPUnit\Framework\MockObject\MockObject|UserOptionsManager
+	 */
+	private function getUserOptionsManagerMockObject() {
+		return $this->createNoOpMock( UserOptionsManager::class );
 	}
 
 }
