@@ -1606,6 +1606,8 @@
 	"LogActionsHandlers": {
 		"growthexperiments/setmentor": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
 		"growthexperiments/claimmentee": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
+		"growthexperiments/setmentor-no-previous-mentor": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
+		"growthexperiments/claimmentee-no-previous-mentor": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
 		"growthexperiments/addlink": "LogFormatter"
 	},
 	"ActionFilteredLogs": {
