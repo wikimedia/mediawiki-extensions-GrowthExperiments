@@ -156,7 +156,7 @@ class InitWikiConfig extends Maintenance {
 				'mw:Special:MyLanguage/Help:VisualEditor/User_guide#Editing_references'
 			),
 			// Wikipedia:Article wizard
-			$this->getHelpPanelLink( 'Q10968373' ),
+			$this->getHelpPanelLink( 'Q10968373', [ 'Q4966605' ] ),
 		] );
 
 		// Help:Contents
