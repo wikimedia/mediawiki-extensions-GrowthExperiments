@@ -51,7 +51,8 @@ class TourHooks implements
 			Util::maybeAddGuidedTour(
 				$out,
 				self::TOUR_COMPLETED_HOMEPAGE_DISCOVERY,
-				'ext.guidedTour.tour.homepage_discovery'
+				'ext.guidedTour.tour.homepage_discovery',
+				$this->userOptionsLookup
 			);
 		}
 	}

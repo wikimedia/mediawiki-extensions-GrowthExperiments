@@ -93,7 +93,8 @@ class HomepageModuleRegistry {
 				return new Start(
 					$context,
 					$growthServices->getGrowthWikiConfig(),
-					$growthServices->getExperimentUserManager()
+					$growthServices->getExperimentUserManager(),
+					$services->getUserOptionsLookup()
 				);
 			},
 
@@ -125,7 +126,8 @@ class HomepageModuleRegistry {
 					$growthServices->getNewcomerTasksUserOptionsLookup(),
 					$growthServices->getTaskSuggesterFactory()->create(),
 					$services->getTitleFactory(),
-					$growthServices->getProtectionFilter()
+					$growthServices->getProtectionFilter(),
+					$services->getUserOptionsLookup()
 				);
 			},
 
@@ -135,6 +137,7 @@ class HomepageModuleRegistry {
 			) {
 				$growthServices = GrowthExperimentsServices::wrap( $services );
 				$pageViewInfoEnabled = ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
+				$userOptionsLookup = $services->getUserOptionsLookup();
 				return new Impact(
 					$context,
 					$growthServices->getGrowthWikiConfig(),
@@ -143,7 +146,7 @@ class HomepageModuleRegistry {
 					$growthServices->getExperimentUserManager(),
 					[
 						'isSuggestedEditsEnabled' => SuggestedEdits::isEnabled( $context ),
-						'isSuggestedEditsActivated' => SuggestedEdits::isActivated( $context ),
+						'isSuggestedEditsActivated' => SuggestedEdits::isActivated( $context, $userOptionsLookup ),
 					],
 					$services->getTitleFactory(),
 					$pageViewInfoEnabled ? $services->get( 'PageViewService' ) : null
@@ -183,7 +186,8 @@ class HomepageModuleRegistry {
 				return new StartEditing(
 					$context,
 					$growthServices->getGrowthWikiConfig(),
-					$growthServices->getExperimentUserManager()
+					$growthServices->getExperimentUserManager(),
+					$services->getUserOptionsLookup()
 				);
 			}
 

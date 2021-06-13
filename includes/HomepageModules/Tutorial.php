@@ -5,6 +5,7 @@ namespace GrowthExperiments\HomepageModules;
 use Config;
 use GrowthExperiments\ExperimentUserManager;
 use IContextSource;
+use MediaWiki\User\UserOptionsLookup;
 use OOUI\ButtonInputWidget;
 use OOUI\FormLayout;
 use OOUI\Tag;
@@ -16,24 +17,31 @@ class Tutorial extends BaseTaskModule {
 	public const TUTORIAL_PREF = 'growthexperiments-homepage-tutorial-completed';
 	public const TUTORIAL_TITLE_CONFIG = 'GEHomepageTutorialTitle';
 
+	/** @var UserOptionsLookup */
+	private $userOptionsLookup;
+
 	/**
 	 * @inheritDoc
 	 */
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
-		ExperimentUserManager $experimentUserManager
+		ExperimentUserManager $experimentUserManager,
+		UserOptionsLookup $userOptionsLookup
 	) {
 		parent::__construct( 'start-tutorial', $context, $wikiConfig, $experimentUserManager );
+
+		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function isCompleted() {
-		return $this->getContext()
-			->getUser()
-			->getBoolOption( self::TUTORIAL_PREF );
+		return $this->userOptionsLookup->getBoolOption(
+			$this->getContext()->getUser(),
+			self::TUTORIAL_PREF
+		);
 	}
 
 	private function getHomepageTutorialTitleValue() {

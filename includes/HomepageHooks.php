@@ -42,6 +42,7 @@ use MediaWiki\Minerva\Menu\Entries\HomeMenuEntry;
 use MediaWiki\Minerva\Menu\Entries\IProfileMenuEntry;
 use MediaWiki\Minerva\Menu\Group;
 use MediaWiki\Minerva\SkinOptions;
+use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use NamespaceInfo;
 use OOUI\ButtonWidget;
@@ -207,7 +208,8 @@ class HomepageHooks implements
 					$this->trackerFactory,
 					$this->statsdDataFactory,
 					$this->experimentUserManager,
-					$this->wikiConfig
+					$this->wikiConfig,
+					$mwServices->getUserOptionsManager()
 				);
 			};
 			if ( $pageViewInfoEnabled && $this->config->get( 'GEHomepageImpactModuleEnabled' ) ) {
@@ -219,6 +221,7 @@ class HomepageHooks implements
 						GrowthExperimentsServices::wrap(
 							$mwServices
 						)->getGrowthWikiConfig(),
+						$this->userOptionsLookup,
 						$mwServices->get( 'PageViewService' )
 					);
 				};
@@ -241,14 +244,21 @@ class HomepageHooks implements
 	}
 
 	/**
-	 * @param User|null $user
+	 * @param UserIdentity|null $user
 	 * @return bool
 	 * @throws ConfigException
 	 */
-	public static function isHomepageEnabled( User $user = null ) {
+	public static function isHomepageEnabled( UserIdentity $user = null ) {
+		$services = MediaWikiServices::getInstance();
 		return (
-			MediaWikiServices::getInstance()->getMainConfig()->get( 'GEHomepageEnabled' ) &&
-			( $user === null || $user->getBoolOption( self::HOMEPAGE_PREF_ENABLE ) )
+			$services->getMainConfig()->get( 'GEHomepageEnabled' ) &&
+			(
+				$user === null ||
+				$services->getUserOptionsLookup()->getBoolOption(
+					$user,
+					self::HOMEPAGE_PREF_ENABLE
+				)
+			)
 		);
 	}
 
@@ -445,7 +455,7 @@ class HomepageHooks implements
 			return;
 		}
 
-		if ( self::userHasPersonalToolsPrefEnabled( $user ) ) {
+		if ( self::userHasPersonalToolsPrefEnabled( $user, $this->userOptionsLookup ) ) {
 			$personal_urls['userpage']['href'] = self::getPersonalToolsHomepageLinkUrl(
 				$title->getNamespace()
 			);
@@ -467,7 +477,7 @@ class HomepageHooks implements
 		if (
 			$lcKey === 'tooltip-pt-userpage' &&
 			self::isHomepageEnabled( $user ) &&
-			self::userHasPersonalToolsPrefEnabled( $user )
+			self::userHasPersonalToolsPrefEnabled( $user, $this->userOptionsLookup )
 		) {
 			$lcKey = 'tooltip-pt-homepage';
 		}
@@ -695,7 +705,7 @@ class HomepageHooks implements
 	public function onRecentChange_save( $rc ) {
 		$context = RequestContext::getMain();
 		if ( SuggestedEdits::isEnabled( $context ) &&
-			 SuggestedEdits::isActivated( $context )
+			 SuggestedEdits::isActivated( $context, $this->userOptionsLookup )
 		) {
 			$pageId = $rc->getTitle()->getArticleID();
 			$tracker = $this->trackerFactory->getTracker( $rc->getPerformerIdentity() );
@@ -772,8 +782,9 @@ class HomepageHooks implements
 		if ( in_array( $tool, [ 'personal', 'discovery', 'user' ] ) ) {
 			$context = RequestContext::getMain();
 			$user = $context->getUser();
+			$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
 			if ( self::isHomepageEnabled( $user ) &&
-				 self::userHasPersonalToolsPrefEnabled( $user ) ) {
+				 self::userHasPersonalToolsPrefEnabled( $user, $userOptionsLookup ) ) {
 				switch ( $tool ) {
 					case 'personal':
 						self::updateProfileMenuEntry( $group, 'auth' );
@@ -1082,11 +1093,15 @@ class HomepageHooks implements
 	}
 
 	/**
-	 * @param User $user
+	 * @param UserIdentity $user
+	 * @param UserOptionsLookup $userOptionsLookup
 	 * @return bool
 	 */
-	private static function userHasPersonalToolsPrefEnabled( User $user ) {
-		return $user->getBoolOption( self::HOMEPAGE_PREF_PT_LINK );
+	private static function userHasPersonalToolsPrefEnabled(
+		UserIdentity $user,
+		UserOptionsLookup $userOptionsLookup
+	) {
+		return $userOptionsLookup->getBoolOption( $user, self::HOMEPAGE_PREF_PT_LINK );
 	}
 
 	/**

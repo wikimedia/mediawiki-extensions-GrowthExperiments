@@ -6,6 +6,7 @@ use Config;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModule;
 use IContextSource;
+use MediaWiki\User\UserOptionsLookup;
 
 class StartEditing extends BaseTaskModule {
 
@@ -15,16 +16,22 @@ class StartEditing extends BaseTaskModule {
 	/** @var ExperimentUserManager */
 	private $experimentUserManager;
 
+	/** @var UserOptionsLookup */
+	private $userOptionsLookup;
+
 	/**
 	 * @inheritDoc
 	 */
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
-		ExperimentUserManager $experimentUserManager
+		ExperimentUserManager $experimentUserManager,
+		UserOptionsLookup $userOptionsLookup
 	) {
 		parent::__construct( 'start-startediting', $context, $wikiConfig, $experimentUserManager );
+
 		$this->experimentUserManager = $experimentUserManager;
+		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**
@@ -32,8 +39,10 @@ class StartEditing extends BaseTaskModule {
 	 */
 	public function isCompleted() {
 		if ( $this->isCompleted === null ) {
-			$this->isCompleted =
-				$this->getContext()->getUser()->getBoolOption( SuggestedEdits::ACTIVATED_PREF );
+			$this->isCompleted = $this->userOptionsLookup->getBoolOption(
+				$this->getContext()->getUser(),
+				SuggestedEdits::ACTIVATED_PREF
+			);
 		}
 		return $this->isCompleted;
 	}
@@ -94,7 +103,10 @@ class StartEditing extends BaseTaskModule {
 	protected function getJsConfigVars() {
 		return [
 			'GEHomepageSuggestedEditsEnableTopics' =>
-				SuggestedEdits::isTopicMatchingEnabled( $this->getContext() )
+				SuggestedEdits::isTopicMatchingEnabled(
+					$this->getContext(),
+					$this->userOptionsLookup
+				)
 		];
 	}
 

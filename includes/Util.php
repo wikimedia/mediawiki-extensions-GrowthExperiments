@@ -12,6 +12,7 @@ use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserOptionsLookup;
 use MWExceptionHandler;
 use Psr\Log\LogLevel;
 use RawMessage;
@@ -112,10 +113,16 @@ class Util {
 	 * @param \OutputPage $out
 	 * @param string $pref
 	 * @param string|string[] $modules
+	 * @param UserOptionsLookup $userOptionsLookup
 	 */
-	public static function maybeAddGuidedTour( \OutputPage $out, $pref, $modules ) {
+	public static function maybeAddGuidedTour(
+		\OutputPage $out,
+		$pref,
+		$modules,
+		UserOptionsLookup $userOptionsLookup
+	) {
 		if ( $out->getUser()->isRegistered() &&
-			!$out->getUser()->getBoolOption( $pref ) &&
+			!$userOptionsLookup->getBoolOption( $out->getUser(), $pref ) &&
 			TourHooks::growthTourDependenciesLoaded() ) {
 			$out->addModules( $modules );
 		}

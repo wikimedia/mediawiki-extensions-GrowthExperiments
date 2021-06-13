@@ -6,6 +6,7 @@ use Config;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModule;
 use IContextSource;
+use MediaWiki\User\UserOptionsLookup;
 
 /**
  * This is the "Start" module. It shows specific tasks to help
@@ -26,20 +27,35 @@ class Start extends BaseTaskModule {
 	public function __construct(
 		IContextSource $context,
 		Config $wikiConfig,
-		ExperimentUserManager $experimentUserManager
+		ExperimentUserManager $experimentUserManager,
+		UserOptionsLookup $userOptionsLookup
 	) {
 		parent::__construct( 'start', $context, $wikiConfig, $experimentUserManager );
 
 		$this->tasks = [
-			'account' => new Account( $context, $wikiConfig, $experimentUserManager ),
-			'email' => new Email( $context, $wikiConfig, $experimentUserManager ),
-			'tutorial' => new Tutorial( $context, $wikiConfig, $experimentUserManager )
+			'account' => new Account(
+				$context,
+				$wikiConfig,
+				$experimentUserManager
+			),
+			'email' => new Email(
+				$context,
+				$wikiConfig,
+				$experimentUserManager
+			),
+			'tutorial' => new Tutorial(
+				$context,
+				$wikiConfig,
+				$experimentUserManager,
+				$userOptionsLookup
+			)
 		];
 		if ( SuggestedEdits::isEnabled( $context ) ) {
 			$this->tasks['startediting'] = new StartEditing(
 				$context,
 				$wikiConfig,
-				$experimentUserManager
+				$experimentUserManager,
+				$userOptionsLookup
 			);
 		} else {
 			$this->tasks['userpage'] = new Userpage(
