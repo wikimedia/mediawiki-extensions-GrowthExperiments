@@ -54,7 +54,7 @@ class ApiSetMentor extends ApiBase {
 			// you must have setmentor rights.
 			$this->checkUserRightsAny( 'setmentor' );
 		}
-		$mentorObj = $this->mentorManager->getMentorForUserSafe( $mentee );
+		$mentorObj = $this->mentorManager->getMentorForUserIfExists( $mentee );
 
 		if ( !$mentee->isRegistered() || !$mentor->isRegistered() ) {
 			// User doesn't exist

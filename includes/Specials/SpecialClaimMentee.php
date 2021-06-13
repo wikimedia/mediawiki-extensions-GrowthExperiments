@@ -213,7 +213,7 @@ class SpecialClaimMentee extends FormSpecialPage {
 				$this->newMentor,
 				$context,
 				$logger,
-				$this->mentorManager->getMentorForUser( $mentee ),
+				$this->mentorManager->getMentorForUserIfExists( $mentee ),
 				new LogPager(
 					new LogEventsList( $context ),
 					[ 'growthexperiments' ],
