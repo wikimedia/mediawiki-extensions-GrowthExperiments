@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chinamoonroll"
+		]
+	},
+	"welcomesurvey-question-mentor-label": "Inggih, {{GENDER:$1|titiang meled}}",
+	"welcomesurvey-question-edited-option-yes-many-label": "Inggih, makudang galah",
+	"welcomesurvey-question-edited-option-yes-few-label": "Inggih, acepok utawi pindo"
+}
