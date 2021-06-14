@@ -32,12 +32,18 @@ describe( 'Homepage', function () {
 		assert.strictEqual( HomepagePage.suggestedEditsNextButton.getAttribute( 'aria-disabled' ), 'false' );
 		HomepagePage.suggestedEditsNextButton.click();
 		assert.strictEqual( HomepagePage.suggestedEditsCardTitle.getText(), 'The Hitchhiker\'s Guide to the Galaxy' );
-		browser.waitUntil( () => {
-			return HomepagePage.suggestedEditsNextButton.getAttribute( 'aria-disabled' ) === 'false';
-		} );
+		// Go back to first card and check that previous button is disabled.
+		HomepagePage.suggestedEditsPreviousButton.click();
+		assert.strictEqual( HomepagePage.suggestedEditsPreviousButton.getAttribute( 'aria-disabled' ), 'true' );
+		// Go forwards again.
+		HomepagePage.suggestedEditsNextButton.click();
 		assert.strictEqual( HomepagePage.suggestedEditsPreviousButton.getAttribute( 'aria-disabled' ), 'false' );
-		// TODO: Fix in T283546
-		// assert.strictEqual( HomepagePage.suggestedEditsNextButton.getAttribute( 'aria-disabled' ), 'true' );
+		assert.strictEqual( HomepagePage.suggestedEditsNextButton.getAttribute( 'aria-disabled' ), 'false' );
+		// Go to the end of queue card.
+		HomepagePage.suggestedEditsNextButton.click();
+		assert.strictEqual( HomepagePage.suggestedEditsCardTitle.getText(), 'No more suggestions' );
+		assert.strictEqual( HomepagePage.suggestedEditsPreviousButton.getAttribute( 'aria-disabled' ), 'false' );
+		assert.strictEqual( HomepagePage.suggestedEditsNextButton.getAttribute( 'aria-disabled' ), 'true' );
 	} );
 
 } );

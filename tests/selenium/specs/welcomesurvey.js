@@ -22,6 +22,7 @@ describe( 'Special:WelcomeSurvey', function () {
 		SpecialWelcomeSurveyPage.open();
 		SpecialWelcomeSurveyPage.finishButtonSelector.waitForExist();
 		SpecialWelcomeSurveyPage.finish.click();
+		Util.waitForModuleState( 'mediawiki.user', 'ready', 5000 );
 		const responses = browser.execute( function () {
 			return JSON.parse( mw.user.options.get( 'welcomesurvey-responses' ) );
 		} );
