@@ -18,4 +18,26 @@ describe( 'Homepage', function () {
 		assert( HomepagePage.firstheading.getText(), `Hello, ${username}!` );
 	} );
 
+	it( 'Shows a suggested edits card and allows navigation forwards and backwards through queue', () => {
+		HomepagePage.open();
+		assert( HomepagePage.suggestedEditsCard.isExisting() );
+		assert.strictEqual( HomepagePage.suggestedEditsCardTitle.getText(), 'Douglas Adams' );
+		// The previous/next buttons start out as disabled, and then are switched to
+		// enabled/disabled depending on where in the task queue the user is.
+		browser.waitUntil( () => {
+			return HomepagePage.suggestedEditsNextButton.getAttribute( 'aria-disabled' ) === 'false';
+		} );
+		assert.strictEqual( HomepagePage.suggestedEditsPreviousButton.getAttribute( 'aria-disabled' ), 'true' );
+		HomepagePage.suggestedEditsNextButton.waitForClickable();
+		assert.strictEqual( HomepagePage.suggestedEditsNextButton.getAttribute( 'aria-disabled' ), 'false' );
+		HomepagePage.suggestedEditsNextButton.click();
+		assert.strictEqual( HomepagePage.suggestedEditsCardTitle.getText(), 'The Hitchhiker\'s Guide to the Galaxy' );
+		browser.waitUntil( () => {
+			return HomepagePage.suggestedEditsNextButton.getAttribute( 'aria-disabled' ) === 'false';
+		} );
+		assert.strictEqual( HomepagePage.suggestedEditsPreviousButton.getAttribute( 'aria-disabled' ), 'false' );
+		// TODO: Fix in T283546
+		// assert.strictEqual( HomepagePage.suggestedEditsNextButton.getAttribute( 'aria-disabled' ), 'true' );
+	} );
+
 } );
