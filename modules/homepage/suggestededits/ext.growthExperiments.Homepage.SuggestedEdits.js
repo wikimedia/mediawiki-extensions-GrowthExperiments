@@ -368,12 +368,14 @@
 		} else {
 			this.currentCard = new EditCardWidget( this.taskQueue[ queuePosition ] );
 		}
-		this.logger.log(
-			'suggested-edits',
-			this.mode,
-			'se-task-impression',
-			{ newcomerTaskToken: this.logCardData( queuePosition ) }
-		);
+		if ( this.currentCard instanceof EditCardWidget ) {
+			this.logger.log(
+				'suggested-edits',
+				this.mode,
+				'se-task-impression',
+				{ newcomerTaskToken: this.logCardData( queuePosition ) }
+			);
+		}
 		this.updateCardElement();
 		this.updateControls();
 
