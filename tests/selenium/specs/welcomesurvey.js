@@ -7,11 +7,6 @@ const assert = require( 'assert' ),
 
 describe( 'Special:WelcomeSurvey', function () {
 
-	it( 'requires login', function () {
-		SpecialWelcomeSurveyPage.open();
-		assert( !SpecialWelcomeSurveyPage.specialwelcomesurvey.isExisting() );
-	} );
-
 	// T233263
 	it( 'stores responses for users with NONE group when survey is submitted', function () {
 		UserLoginPage.login( browser.config.mwUser, browser.config.mwPwd );
