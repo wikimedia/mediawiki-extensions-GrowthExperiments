@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dedalus",
 			"Elroy",
 			"Klaas van Buiten",
 			"LongJohn nl",
@@ -152,12 +153,18 @@
 	"growthexperiments-addlink-context-button-accept": "Ja",
 	"growthexperiments-addlink-context-button-reject": "Nee",
 	"growthexperiments-addlink-context-button-next": "Volgende",
+	"growthexperiments-addlink-rejectiondialog-reason-other": "Overige",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Richtlijnen",
 	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "Alles overslaan",
 	"growthexperiments-addlink-onboarding-dialog-title": "Inleiding",
 	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "Niet opnieuw weergeven",
+	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Aan de slag",
 	"growthexperiments-addlink-summary-title": "Samenvatting",
 	"growthexperiments-addlink-summary-column-header-suggestion": "Suggestie",
+	"growthexperiments-addlink-summary-submit": "Opslaan",
 	"growthexperiments-addlink-skip-accept": "Alles overslaan",
+	"grant-managementorship": "Beheer mentorschap",
+	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Aantal",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Suggesties"
 }

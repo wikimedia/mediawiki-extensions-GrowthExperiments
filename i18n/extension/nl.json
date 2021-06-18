@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dedalus",
 			"Encycloon",
 			"Klaas van Buiten",
 			"Mainframe98"
@@ -14,11 +15,16 @@
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Voor het laatst bijgewerkt door onbekende gebruiker $1.",
 	"growthexperiments-edit-config-pretext": "Deze pagina maakt het mogelijk de configuratie van [[:mw:Special:MyLanguage/Growth|Growth]]-team-features te bewerken. Het zal $1 namens jou bewerken. Je kunt de veranderingen zien in de bewerkingsgeschiedenis van die pagina.",
 	"growthexperiments-edit-config-edit-summary": "Bewerkingssamenvatting",
+	"growthexperiments-edit-config-return-to-form": "Je kan [[Special:EditGrowthConfig|terugkeren]] naar het bewerkscherm.",
+	"growthexperiments-edit-config-help-panel": "Instellingen voor het help paneel.",
+	"growthexperiments-edit-config-help-panel-description": "Het helppaneel kan beschikbaar zijn in iedere naamruimte, in lees- en bewerkmodus, zoals hier beneden ingesteld. Het omvat mogelijkheden om hulp te zoeken, op helplinks klikken, en vragenstellen aan mentoren en/of de helpdesk.",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "Bovenaan pagina",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "Onderaan pagina",
 	"growthexperiments-edit-config-help-panel-view-more": "Doelpagina voor \"Bekijk meer hulpartikelen\"",
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Mentor-overlegpagina's",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Helpdesk",
+	"growthexperiments-edit-config-homepage": "Startpagina voor nieuwkomers",
+	"growthexperiments-edit-config-mentorship": "Mentorschap",
 	"growthexperiments-edit-config-mentorship-enabled": "Zijn mentorschap-features ingeschakeld?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Ja",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Nee",

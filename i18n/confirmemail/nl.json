@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dedalus",
 			"Mainframe98",
 			"Mar(c)"
 		]
@@ -8,5 +9,6 @@
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|wat is dit?]])",
 	"growthexperiments-confirmemail-emailhelp": "E-mail is vereist om uw account te herstellen als u uw wachtwoord kwijtraakt.",
 	"growthexperiments-confirmemail-emailrecommended": "E-mailadres (aanbevolen)",
+	"growthexperiments-confirmemail-confirm-subject": "Welkom op {{SITENAME}}: Bevestig alsjeblieft je e-mailadres",
 	"growthexperiments-confirmemail-confirm-button": "E-mailadres bevestigen"
 }
