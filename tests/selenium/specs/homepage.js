@@ -2,7 +2,6 @@
 
 const assert = require( 'assert' ),
 	HomepagePage = require( '../pageobjects/homepage.page' ),
-	PreferencesPage = require( '../pageobjects/preferences.page' ),
 	LoginPage = require( 'wdio-mediawiki/LoginPage' ),
 	Api = require( 'wdio-mediawiki/Api' ),
 	Util = require( 'wdio-mediawiki/Util' );
@@ -27,16 +26,6 @@ describe( 'Homepage', function () {
 
 		HomepagePage.open();
 		assert( HomepagePage.homepage.isExisting() );
-
-	} );
-
-	it.skip( 'can be disabled for new user', function () {
-
-		PreferencesPage.open();
-		PreferencesPage.clickHomepageCheckBox();
-
-		HomepagePage.open();
-		assert( !HomepagePage.homepage.isExisting() );
 
 	} );
 
