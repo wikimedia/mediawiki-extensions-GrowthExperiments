@@ -3,8 +3,17 @@
 namespace GrowthExperiments;
 
 use Config;
+use GrowthExperiments\Specials\SpecialCreateAccountCampaign;
+use IContextSource;
+use MediaWiki\Auth\Hook\LocalUserCreatedHook;
+use MediaWiki\Hook\BeforeWelcomeCreationHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
+use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
+use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
+use MediaWiki\User\UserOptionsManager;
+use RequestContext;
+use SpecialPage;
 
 /**
  * Hooks related to feature flags used for A/B testing and opt-in.
@@ -12,7 +21,11 @@ use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
  */
 class VariantHooks implements
 	GetPreferencesHook,
-	ResourceLoaderGetConfigVarsHook
+	ResourceLoaderGetConfigVarsHook,
+	SpecialPage_initListHook,
+	LocalUserCreatedHook,
+	AuthChangeFormFieldsHook,
+	BeforeWelcomeCreationHook
 {
 	/** Default A/B testing variant (control group). */
 	public const VARIANT_CONTROL = 'control';
@@ -38,20 +51,29 @@ class VariantHooks implements
 
 	/** User option name for storing variants. */
 	public const USER_PREFERENCE = 'growthexperiments-homepage-variant';
+	/** @var string User option name for storing the campaign associated with account creation */
+	public const GROWTH_CAMPAIGN = 'growthexperiments-campaign';
 
 	/** @var Config */
 	private $config;
+	/** @var UserOptionsManager */
+	private $userOptionsManager;
 
 	/**
 	 * @param Config $config
+	 * @param UserOptionsManager $userOptionsManager
 	 */
-	public function __construct( Config $config ) {
+	public function __construct( Config $config, UserOptionsManager $userOptionsManager ) {
 		$this->config = $config;
+		$this->userOptionsManager = $userOptionsManager;
 	}
 
 	/** @inheritDoc */
 	public function onGetPreferences( $user, &$preferences ) {
 		$preferences[self::USER_PREFERENCE] = [
+			'type' => 'api',
+		];
+		$preferences[self::GROWTH_CAMPAIGN] = [
 			'type' => 'api',
 		];
 	}
@@ -67,4 +89,69 @@ class VariantHooks implements
 		$vars['wgGEDefaultUserVariant'] = $this->config->get( 'GEHomepageDefaultVariant' );
 	}
 
+	/** @inheritDoc */
+	public function onSpecialPage_initList( &$list ) {
+		// FIXME: Temporary hack for T284740, should be removed after the end of the campaign.
+		$context = RequestContext::getMain();
+		if ( self::isGrowthDonorCampaign( $context ) ) {
+			$list['CreateAccount']['class'] = SpecialCreateAccountCampaign::class;
+		}
+	}
+
+	/**
+	 * Check if this is a Growth donor campaign by inspecting the campaign query parameter.
+	 *
+	 * @param IContextSource $context
+	 * @return bool
+	 */
+	public static function isGrowthDonorCampaign( IContextSource $context ): bool {
+		$geCampaignPattern = $context->getConfig()->get( 'GECampaignPattern' );
+		$campaign = self::getCampaign( $context );
+		return $geCampaignPattern
+			&& $campaign
+			&& $context->getTitle()->isSpecial( 'CreateAccount' )
+			&& preg_match( $geCampaignPattern, $campaign );
+	}
+
+	private static function getCampaign( IContextSource $context ): string {
+		return $context->getRequest()->getVal( 'campaign', '' );
+	}
+
+	/**
+	 * Pass through the campaign flag for use by LocalUserCreated.
+	 *
+	 * @inheritDoc
+	 */
+	public function onAuthChangeFormFields( $requests, $fieldInfo, &$formDescriptor, $action ) {
+		$campaign = self::getCampaign( RequestContext::getMain() );
+		// This is probably not strictly necessary; the Campaign extension sets this hidden field.
+		// But if it's not there for whatever reason, add it here so we are sure it's available
+		// in LocalUserCreated hook.
+		if ( $campaign && !isset( $formDescriptor['campaign'] ) ) {
+			$formDescriptor['campaign'] = [
+				'type' => 'hidden',
+				'name' => 'campaign',
+				'default' => $campaign,
+			];
+		}
+	}
+
+	/** @inheritDoc */
+	public function onLocalUserCreated( $user, $autocreated ) {
+		if ( $autocreated ) {
+			return;
+		}
+		$context = RequestContext::getMain();
+		if ( self::isGrowthDonorCampaign( $context ) ) {
+			$this->userOptionsManager->setOption( $user, self::GROWTH_CAMPAIGN, $this->getCampaign( $context ) );
+		}
+	}
+
+	/** @inheritDoc */
+	public function onBeforeWelcomeCreation( &$welcome_creation_msg, &$injected_html ) {
+		$context = RequestContext::getMain();
+		if ( self::isGrowthDonorCampaign( $context ) ) {
+			$context->getOutput()->redirect( SpecialPage::getSafeTitleFor( 'Homepage' )->getFullUrlForRedirect() );
+		}
+	}
 }
