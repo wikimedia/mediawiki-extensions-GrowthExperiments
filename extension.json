@@ -156,7 +156,8 @@
 		"variant": {
 			"class": "GrowthExperiments\\VariantHooks",
 			"services": [
-				"MainConfig"
+				"MainConfig",
+				"UserOptionsManager"
 			]
 		},
 		"visualeditor": {
@@ -174,7 +175,8 @@
 		],
 		"SpecialPage_initList": [
 			"welcomeSurvey",
-			"homepage"
+			"homepage",
+			"variant"
 		],
 		"UserGetDefaultOptions": [
 			"GrowthExperiments\\HelpPanelHooks::onUserGetDefaultOptions",
@@ -184,7 +186,8 @@
 		"LocalUserCreated": [
 			"GrowthExperiments\\HelpPanelHooks::onLocalUserCreated",
 			"homepage",
-			"mentor"
+			"mentor",
+			"variant"
 		],
 		"GetPreferences": [
 			"welcomeSurvey",
@@ -194,7 +197,10 @@
 			"mentor",
 			"variant"
 		],
-		"BeforeWelcomeCreation": "welcomeSurvey",
+		"BeforeWelcomeCreation": [
+			"welcomeSurvey",
+			"variant"
+		],
 		"SiteNoticeAfter": "homepage",
 		"SpecialContributionsBeforeMainOutput": "homepage",
 		"SpecialPageAfterExecute": "homepage",
@@ -222,7 +228,8 @@
 		"MessageCache::get": "homepage",
 		"AuthChangeFormFields": [
 			"GrowthExperiments\\ConfirmEmailHooks::onAuthChangeFormFields",
-			"homepage"
+			"homepage",
+			"variant"
 		],
 		"UserSendConfirmationMail": [
 			"GrowthExperiments\\ConfirmEmailHooks::onUserSendConfirmationMail"

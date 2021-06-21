@@ -5,8 +5,12 @@ namespace GrowthExperiments;
 use Config;
 use GrowthExperiments\Specials\SpecialCreateAccountCampaign;
 use IContextSource;
+use MediaWiki\Auth\Hook\LocalUserCreatedHook;
+use MediaWiki\Hook\BeforeWelcomeCreationHook;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\ResourceLoader\Hook\ResourceLoaderGetConfigVarsHook;
+use MediaWiki\SpecialPage\Hook\AuthChangeFormFieldsHook;
+use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
 use MediaWiki\User\UserOptionsManager;
 use RequestContext;
 use SpecialPage;
@@ -17,7 +21,11 @@ use SpecialPage;
  */
 class VariantHooks implements
 	GetPreferencesHook,
-	ResourceLoaderGetConfigVarsHook
+	ResourceLoaderGetConfigVarsHook,
+	SpecialPage_initListHook,
+	LocalUserCreatedHook,
+	AuthChangeFormFieldsHook,
+	BeforeWelcomeCreationHook
 {
 	/** Default A/B testing variant (control group). */
 	public const VARIANT_CONTROL = 'control';
