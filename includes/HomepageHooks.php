@@ -91,6 +91,10 @@ class HomepageHooks implements
 	public const HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN = 'homepage_mobile_discovery_notice_seen';
 	public const CONFIRMEMAIL_QUERY_PARAM = 'specialconfirmemail';
 
+	public const GROWTH_FORCE_OPTIN = 1;
+	public const GROWTH_FORCE_OPTOUT = 2;
+	public const GROWTH_FORCE_NONE = 3;
+
 	/** @var Config */
 	private $config;
 	/** @var Config */
@@ -578,14 +582,42 @@ class HomepageHooks implements
 	 * @inheritDoc
 	 */
 	public function onAuthChangeFormFields( $requests, $fieldInfo, &$formDescriptor, $action ) {
-		$geForceVariant = RequestContext::getMain()->getRequest()
-			->getVal( 'geForceVariant' );
+		$request = RequestContext::getMain()->getRequest();
+
+		$geForceVariant = $request->getVal( 'geForceVariant' );
 		if ( $geForceVariant !== null ) {
 			$formDescriptor['geForceVariant'] = [
 				'type' => 'hidden',
 				'name' => 'geForceVariant',
 				'default' => $geForceVariant,
 			];
+		}
+
+		$geEnabled = $request->getInt( 'geEnabled' );
+		if ( $geEnabled !== null ) {
+			$formDescriptor['geEnabled'] = [
+				'type' => 'hidden',
+				'name' => 'geEnabled',
+				'default' => $geEnabled
+			];
+		}
+	}
+
+	/**
+	 * Check if an user opted-in or opted-out from Growth features
+	 *
+	 * @return int One of GROWTH_FORCE_* constants
+	 */
+	public static function getGrowthFeaturesOptInOptOutOverride(): int {
+		$enableGrowthFeatures = RequestContext::getMain()
+			->getRequest()
+			->getInt( 'geEnabled', -1 );
+		if ( $enableGrowthFeatures === 1 ) {
+			return self::GROWTH_FORCE_OPTIN;
+		} elseif ( $enableGrowthFeatures === 0 ) {
+			return self::GROWTH_FORCE_OPTOUT;
+		} else {
+			return self::GROWTH_FORCE_NONE;
 		}
 	}
 
@@ -603,10 +635,20 @@ class HomepageHooks implements
 
 		$geForceVariant = RequestContext::getMain()->getRequest()
 			->getVal( 'geForceVariant' );
+		$growthOptInOptOutOverride = self::getGrowthFeaturesOptInOptOutOverride();
+
+		if ( $growthOptInOptOutOverride === self::GROWTH_FORCE_OPTOUT ) {
+			// Growth features cannot be enabled, short-circuit
+			return;
+		}
 
 		// Enable the homepage for a percentage of non-autocreated users.
 		$enablePercentage = $this->config->get( 'GEHomepageNewAccountEnablePercentage' );
-		if ( $geForceVariant !== null || rand( 0, 99 ) < $enablePercentage ) {
+		if (
+			$growthOptInOptOutOverride === self::GROWTH_FORCE_OPTIN ||
+			$geForceVariant !== null ||
+			rand( 0, 99 ) < $enablePercentage
+		) {
 			$user->setOption( self::HOMEPAGE_PREF_ENABLE, 1 );
 			$user->setOption( self::HOMEPAGE_PREF_PT_LINK, 1 );
 			// Default option is that the user has seen the tours/notices (so we don't prompt

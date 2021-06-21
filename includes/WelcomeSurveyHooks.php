@@ -65,7 +65,9 @@ class WelcomeSurveyHooks implements
 	 */
 	public function onBeforeWelcomeCreation( &$welcome_creation_msg, &$injected_html ) {
 		if ( !$this->isWelcomeSurveyEnabled() ||
-			VariantHooks::isGrowthDonorCampaign( RequestContext::getMain() ) ) {
+			VariantHooks::isGrowthDonorCampaign( RequestContext::getMain() ) ||
+			HomepageHooks::getGrowthFeaturesOptInOptOutOverride() === HomepageHooks::GROWTH_FORCE_OPTOUT
+		) {
 			return;
 		}
 
