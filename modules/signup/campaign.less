@@ -1,0 +1,60 @@
+// Depends on the following ResourceLoader modules:
+// - oojs-ui.styles.icons-interactions
+// - ext.growthExperiments.Homepage.icons
+// (ResourceLoader does not seem to allow expressing dependencies for style modules.)
+
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
+@import '../homepage/ext.growthExperiments.mixins.less';
+
+.watermark {
+	display: none;
+}
+
+// Unhide the benefit block on mobile.
+.skin-minerva .mw-ui-container .mw-createacct-benefits-container {
+	display: block;
+}
+
+.mw-ge-donorsignup-block {
+	width: 400px;
+	background-image: url( ../../images/intro-heart-article.svg );
+	background-size: 255px auto;
+	background-position: top center;
+	background-repeat: no-repeat;
+
+	.mw-ge-donorsignup-title {
+		margin: 0 auto 16px;
+		border: 0;
+		padding: 216px 0 0;
+		font-weight: bold;
+		.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 21px, @targetLineHeight: 27.3px );
+		text-align: center;
+	}
+
+	.mw-ge-donorsignup-list {
+		margin-top: 24px;
+		list-style: none;
+		font-weight: bold;
+		color: @wmui-color-base10;
+
+		li {
+			margin: 0 0 16px;
+		}
+
+		.oo-ui-iconElement {
+			padding-right: 19px;
+			opacity: 0.65;
+		}
+	}
+
+	.skin-minerva & {
+		width: auto;
+		padding-bottom: 24px;
+		border-bottom: 1px solid @wmui-color-base80;
+		margin-bottom: 24px;
+
+		.mw-ge-donorsignup-body {
+			display: none;
+		}
+	}
+}
