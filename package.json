@@ -8,13 +8,14 @@
 		"test": "grunt test"
 	},
 	"devDependencies": {
-		"@wdio/cli": "7.4.6",
-		"@wdio/dot-reporter": "7.4.2",
-		"@wdio/junit-reporter": "7.4.2",
-		"@wdio/local-runner": "7.4.6",
-		"@wdio/mocha-framework": "7.13.2",
-		"@wdio/sync": "7.4.6",
-		"api-testing": "^1.3.0",
+		"@wdio/cli": "7.16.10",
+		"@wdio/devtools-service": "7.16.10",
+		"@wdio/dot-reporter": "7.16.6",
+		"@wdio/junit-reporter": "7.16.6",
+		"@wdio/local-runner": "7.16.10",
+		"@wdio/mocha-framework": "7.16.6",
+		"@wdio/sync": "7.16.10",
+		"api-testing": "^1.4.2",
 		"eslint-config-wikimedia": "0.21.0",
 		"grunt": "1.4.0",
 		"grunt-banana-checker": "0.9.0",
@@ -23,6 +24,6 @@
 		"stylelint-config-wikimedia": "0.11.1",
 		"svgo": "2.3.1",
 		"wdio-mediawiki": "1.1.1",
-		"webdriverio": "7.4.6"
+		"webdriverio": "^7.16.10"
 	}
 }
