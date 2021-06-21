@@ -34,7 +34,7 @@
 			action_data: Utils.serializeActionData( data )
 			/* eslint-enable camelcase */
 		}, this.getMetadata(), metadataOverride );
-		event.$schema = '/analytics/mediawiki/structured_task/article/link_suggestion_interaction/1.0.0';
+		event.$schema = '/analytics/mediawiki/structured_task/article/link_suggestion_interaction/1.1.0';
 		mw.eventLog.submit( 'mediawiki.structured_task.article.link_suggestion_interaction', event );
 		this.events.push( event );
 	};

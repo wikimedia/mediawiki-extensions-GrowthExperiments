@@ -384,5 +384,12 @@
 	"newcomertasksinfo-table-header-task-count": "Count",
 	"newcomertasksinfo-table-header-topic-type": "Topic ID",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Suggestions",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Submit…"
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Submit…",
+	"growthexperiments-addlink-editmode-selection-label": "Switch editor",
+	"growthexperiments-addlink-editmode-selection-machine-suggestions": "Suggestions",
+	"growthexperiments-addlink-editmode-selection-visual": "Visual editing",
+	"growthexperiments-addlink-editmode-confirmation-dialog-title": "Leave suggestions?",
+	"growthexperiments-addlink-editmode-confirmation-dialog-message": "Switching modes will allow {{GENDER:$1|you}} to make other kinds of edits.  Finish reviewing to submit {{GENDER:$1|your}} progress so far.",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-confirm": "Switch without submitting",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Cancel"
 }

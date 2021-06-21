@@ -40,6 +40,9 @@ AddLinkDesktopArticleTarget.prototype.surfaceReady = function () {
 	this.afterSurfaceReady();
 };
 
+/**
+ * @inheritdoc
+ */
 AddLinkDesktopArticleTarget.prototype.setupToolbar = function () {
 	AddLinkDesktopArticleTarget.super.prototype.setupToolbar.apply( this, arguments );
 	if ( MachineSuggestionsMode.toolbarHasTitleElement( this.toolbar.$element ) ) {
@@ -47,6 +50,7 @@ AddLinkDesktopArticleTarget.prototype.setupToolbar = function () {
 			MachineSuggestionsMode.getTitleElement( { includeIcon: true } )
 		);
 	}
+	MachineSuggestionsMode.trackEditModeClick( this.toolbar.$element );
 };
 
 /**
@@ -63,6 +67,17 @@ AddLinkDesktopArticleTarget.prototype.onDocumentKeyDown = function ( e ) {
 		return;
 	}
 	AddLinkDesktopArticleTarget.super.prototype.onDocumentKeyDown.call( this, e );
+};
+
+/**
+ * @inheritdoc
+ */
+AddLinkDesktopArticleTarget.prototype.onBeforeUnload = function () {
+	if ( this.hasSwitched ) {
+		// Custom confirmation dialog is shown so default warning should be skipped.
+		return;
+	}
+	return AddLinkDesktopArticleTarget.super.prototype.onBeforeUnload.apply( this, arguments );
 };
 
 module.exports = AddLinkDesktopArticleTarget;

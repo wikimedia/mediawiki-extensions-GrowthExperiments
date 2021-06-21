@@ -89,7 +89,7 @@
 
 		// These variables are not persisted and only used for immediate state management.
 
-		/** @member {bool} Flag to prevent double-opening of the post-edit dialog (T283120) */
+		/** @member {boolean} Flag to prevent double-opening of the post-edit dialog (T283120) */
 		this.postEditDialogIsOpen = false;
 	}
 	OO.mixinClass( SuggestedEditSession, OO.EventEmitter );
@@ -389,11 +389,14 @@
 	 */
 	SuggestedEditSession.prototype.maybeShowPostEditDialog = function () {
 		var self = this,
-			currentTitle = this.getCurrentTitle();
+			currentTitle = this.getCurrentTitle(),
+			hasSwitchedFromMachineSuggestions = new mw.Uri().query.hideMachineSuggestions;
 
 		// Only show the post-edit dialog on the task page, not e.g. on talk page edits.
+		// Skip the dialog if the user saved an edit w/VE after switching from suggestions mode.
 		if ( !currentTitle || !this.title ||
-			currentTitle.getPrefixedText() !== this.title.getPrefixedText()
+			currentTitle.getPrefixedText() !== this.title.getPrefixedText() ||
+			hasSwitchedFromMachineSuggestions
 		) {
 			return;
 		}

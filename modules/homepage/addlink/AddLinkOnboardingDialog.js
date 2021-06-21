@@ -8,7 +8,7 @@ var AddLinkOnboardingContent = require( './AddLinkOnboardingContent.js' ),
  *
  * @param {Object} [dialogConfig]
  * @param {boolean} [dialogConfig.hasSlideTransition] Use slide transition between panels
- * @param {LinkSuggestionInteractionLogger} [dialogConfig.logger] Instrumentation logger for the dialog
+ * @param {mw.libs.ge.LinkSuggestionInteractionLogger} [dialogConfig.logger] Instrumentation logger for the dialog
  * @param {string} [dialogConfig.progressMessageKey] Key name for the progress indicator text
  * @param {string[]} [dialogConfig.classes] Classname(s) of the dialog
  *
