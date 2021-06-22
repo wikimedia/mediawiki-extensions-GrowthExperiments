@@ -16,6 +16,7 @@
 	"growthexperiments-edit-config-last-edit": "Last updated header in Special:EditGrowthConfig. Will be displayed for all pages Special:EditGrowthConfig is capable of editing.\n\nParameters:\n* $1 – username of revision author\n* $2 - time of last update in relative format (eg. 3 days ago)\n* $3 – page title the edit changed",
 	"growthexperiments-edit-config-last-edit-unknown-user": "Last updated header in Special:EditGrowthConfig when the username is not known\n\nParameters:\n* $1 – time of last update in relative format (eg. 3 days ago)\n* $2 – page title the edit changed",
 	"growthexperiments-edit-config-pretext": "Introductory sentence in EditGrowthConfig\n\nParameters: \n* $1 – list of pages Special:EditGrowthConfig can edit, with links",
+	"growthexperiments-edit-config-pretext-unprivileged": "Introductory sentence in EditGrowthConfig that shows in read-only mode",
 	"growthexperiments-edit-config-error-invalid-title": "Shown in Special:EditGrowthConfig when invalid config title is passed.",
 	"growthexperiments-edit-config-edit-summary": "Edit summary in Special:EditGrowthConfig",
 	"growthexperiments-edit-config-config-changed": "Success message displayed after submitting Special:EditGrowthConfig",

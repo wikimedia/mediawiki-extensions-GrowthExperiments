@@ -21,6 +21,9 @@ use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Rdbms\ILoadBalancer;
 
 class SpecialEditGrowthConfig extends FormSpecialPage {
+	/** @var string Right required to write */
+	private const REQUIRED_RIGHT_TO_WRITE = 'editinterface';
+
 	/** @var string[] */
 	private const SUGGESTED_EDITS_INTRO_LINKS = [ 'create', 'image' ];
 
@@ -60,6 +63,9 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 */
 	private $configPages = [];
 
+	/** @var bool */
+	private $userCanWrite;
+
 	/**
 	 * @param TitleFactory $titleFactory
 	 * @param RevisionLookup $revisionLookup
@@ -78,7 +84,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		WikiPageConfigWriterFactory $configWriterFactory,
 		GrowthExperimentsMultiConfig $growthWikiConfig
 	) {
-		parent::__construct( 'EditGrowthConfig', 'editinterface' );
+		parent::__construct( 'EditGrowthConfig' );
 
 		$this->titleFactory = $titleFactory;
 		$this->revisionLookup = $revisionLookup;
@@ -102,6 +108,9 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			'newcomertasks',
 			$config->get( 'GENewcomerTasksConfigTitle' )
 		);
+
+		$this->userCanWrite = $this->getAuthority()->isAllowed( self::REQUIRED_RIGHT_TO_WRITE );
+
 		parent::execute( $par );
 	}
 
@@ -171,14 +180,14 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function requiresWrite() {
-		return true;
+		return $this->userCanWrite;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function doesWrites() {
-		return true;
+		return $this->userCanWrite;
 	}
 
 	/**
@@ -228,12 +237,16 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			return;
 		}
 
-		$form->addPreText( $this->msg(
-			'growthexperiments-edit-config-pretext',
-			\Message::listParam( array_map( static function ( Title $title ) {
-				return '[[' . $title->getPrefixedText() . ']]';
-			}, array_values( $this->configPages ) ) )
-		)->parseAsBlock() );
+		if ( $this->userCanWrite ) {
+			$form->addPreText( $this->msg(
+				'growthexperiments-edit-config-pretext',
+				\Message::listParam( array_map( static function ( Title $title ) {
+					return '[[' . $title->getPrefixedText() . ']]';
+				}, array_values( $this->configPages ) ) )
+			)->parseAsBlock() );
+		} else {
+			$form->addPreText( $this->msg( 'growthexperiments-edit-config-pretext-unprivileged' ) );
+		}
 
 		// Add last updated data
 		foreach ( $this->configPages as $configType => $configTitle ) {
@@ -257,6 +270,10 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					)->parseAsBlock() );
 				}
 			}
+		}
+
+		if ( !$this->userCanWrite ) {
+			$form->suppressDefaultSubmit( true );
 		}
 	}
 
@@ -428,6 +445,12 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			],
 		] );
 
+		if ( !$this->userCanWrite ) {
+			foreach ( $descriptors as $key => $descriptor ) {
+				$descriptors[$key]['disabled'] = true;
+			}
+		}
+
 		return $descriptors;
 	}
 
@@ -550,11 +573,13 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			}
 		}
 
-		// Add edit summary field
-		$descriptors['summary'] = [
-			'type' => 'text',
-			'label-message' => 'growthexperiments-edit-config-edit-summary',
-		];
+		// Add edit summary field, if user can write
+		if ( $this->userCanWrite ) {
+			$descriptors['summary'] = [
+				'type' => 'text',
+				'label-message' => 'growthexperiments-edit-config-edit-summary',
+			];
+		}
 		return $descriptors;
 	}
 
@@ -684,6 +709,11 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function onSubmit( array $data ) {
+		// DO NOT rely on userCanWrite here, in case its value is wrong for some weird reason
+		if ( !$this->getAuthority()->isAllowed( self::REQUIRED_RIGHT_TO_WRITE ) ) {
+			throw new PermissionsError( self::REQUIRED_RIGHT_TO_WRITE );
+		}
+
 		$dataToSave = $this->preprocessSubmittedData( $data );
 
 		// Normalize complex variables
