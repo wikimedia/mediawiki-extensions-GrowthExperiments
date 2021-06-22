@@ -6,7 +6,10 @@ const { config } = require( 'wdio-mediawiki/wdio-defaults.conf.js' ),
 	fs = require( 'fs' ),
 	ip = path.resolve( __dirname + '/../../../../' ),
 	// Take a snapshot of the local settings contents
-	localSettings = fs.readFileSync( path.resolve( ip + '/LocalSettings.php' ) );
+	localSettings = fs.readFileSync( path.resolve( ip + '/LocalSettings.php' ) ),
+	UserLoginPage = require( 'wdio-mediawiki/LoginPage' ),
+	Util = require( 'wdio-mediawiki/Util' ),
+	Api = require( 'wdio-mediawiki/Api' );
 
 exports.config = { ...config,
 	// Override, or add to, the setting from wdio-mediawiki.
@@ -14,6 +17,23 @@ exports.config = { ...config,
 	//
 	// Example:
 	// logLevel: 'info',
+	beforeSuite: function () {
+		const username = Util.getTestString( 'NewUser-' );
+		const password = Util.getTestString();
+		browser.call( async () => {
+			const bot = await Api.bot();
+			await Api.createAccount( bot, username, password );
+		} );
+		UserLoginPage.login( username, password );
+		Util.waitForModuleState( 'mediawiki.api', 'ready', 5000 );
+		browser.execute( async () => {
+			return new mw.Api().saveOptions( {
+				'growthexperiments-homepage-suggestededits-activated': 1,
+				'growthexperiments-tour-homepage-discovery': 1,
+				'growthexperiments-tour-homepage-welcome': 1
+			} );
+		} );
+	},
 	onPrepare: function () {
 		fs.writeFileSync( path.resolve( ip + '/LocalSettings.php' ),
 			// Load the service overrides
