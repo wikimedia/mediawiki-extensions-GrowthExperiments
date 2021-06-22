@@ -44,6 +44,12 @@ RecommendedLinkToolbarDialogDesktop.prototype.afterSetupProcess = function () {
 	ceSurface.$element.append( this.$element );
 	// Prevent virtual keyboard from showing up when desktop site is loaded on tablet
 	ceSurface.$documentNode.attr( 'inputMode', 'none' );
+	// Handle Esc keydown even if the user clicks on the surface (otherwise onDialogKeyDown
+	// only gets called when the dialog is focused)
+	this.documentNodeKeydownHandler = function ( e ) {
+		this.onDialogKeyDown( e );
+	}.bind( this );
+	ceSurface.$documentNode.on( 'keydown', this.documentNodeKeydownHandler );
 	$( window ).on( 'resize',
 		OO.ui.debounce( this.updatePosition.bind( this ), 250 )
 	);
@@ -111,7 +117,9 @@ RecommendedLinkToolbarDialogDesktop.prototype.onAcceptanceChanged = function () 
  * @inheritdoc
  */
 RecommendedLinkToolbarDialogDesktop.prototype.teardown = function () {
-	this.surface.getView().$documentNode.attr( 'inputMode', '' );
+	var $documentNode = this.surface.getView().$documentNode;
+	$documentNode.attr( 'inputMode', '' );
+	$documentNode.off( 'keydown', this.documentNodeKeydownHandler );
 	return RecommendedLinkToolbarDialogDesktop.super.prototype.teardown.apply( this, arguments );
 };
 

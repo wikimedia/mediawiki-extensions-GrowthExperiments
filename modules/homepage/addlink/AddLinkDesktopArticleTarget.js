@@ -56,4 +56,20 @@ AddLinkDesktopArticleTarget.prototype.setupToolbar = function () {
 	}
 };
 
+/**
+ * @inheritdoc
+ */
+AddLinkDesktopArticleTarget.prototype.onDocumentKeyDown = function ( e ) {
+	// By default, the open toolbar dialog is closed while the editor remains open.
+	// In this case, RecommendedLinkToolbarDialog behaves as if it were part of the editing surface,
+	// so the editor should be closed upon the first Esc (not the second).
+	if ( e.which === OO.ui.Keys.ESCAPE ) {
+		e.preventDefault();
+		e.stopPropagation();
+		this.tryTeardown( false, 'navigate-read' );
+		return;
+	}
+	AddLinkDesktopArticleTarget.super.prototype.onDocumentKeyDown.call( this, e );
+};
+
 module.exports = AddLinkDesktopArticleTarget;
