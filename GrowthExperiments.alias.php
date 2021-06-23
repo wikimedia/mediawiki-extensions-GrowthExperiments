@@ -191,6 +191,14 @@ $specialPageAliases['lv'] = [
 	'ClaimMentee' => [ 'PieņemtAudzēkni' ],
 ];
 
+/** Dutch (Nederlands) */
+$specialPageAliases['nl'] = [
+	'WelcomeSurvey' => [ 'WelkomEnquête' ],
+	'Homepage' => [ 'Thuispagina' ],
+	'Impact' => [ 'Gevolg' ],
+	'ClaimMentee' => [ 'ClaimMentee' ],
+];
+
 /** Malay (Bahasa Melayu) */
 $specialPageAliases['ms'] = [
 	'WelcomeSurvey' => [ 'Penyiasatan_Selamat_Datang' ],
