@@ -4,9 +4,11 @@ namespace GrowthExperiments\Rest\Handler;
 
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataFilter;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
+use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\Util;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\SimpleHandler;
+use MediaWiki\User\UserIdentity;
 use MWTimestamp;
 use RequestContext;
 use Wikimedia\Assert\ParameterAssertionException;
@@ -23,13 +25,19 @@ class MenteesHandler extends SimpleHandler {
 	/** @var MenteeOverviewDataProvider */
 	private $dataProvider;
 
+	/** @var StarredMenteesStore */
+	private $starredMenteesStore;
+
 	/**
 	 * @param MenteeOverviewDataProvider $dataProvider
+	 * @param StarredMenteesStore $starredMenteesStore
 	 */
 	public function __construct(
-		MenteeOverviewDataProvider $dataProvider
+		MenteeOverviewDataProvider $dataProvider,
+		StarredMenteesStore $starredMenteesStore
 	) {
 		$this->dataProvider = $dataProvider;
+		$this->starredMenteesStore = $starredMenteesStore;
 	}
 
 	/**
@@ -60,6 +68,13 @@ class MenteesHandler extends SimpleHandler {
 		}
 		if ( $params['maxedits'] !== null ) {
 			$dataFilter->maxEdits( $params['maxedits'] );
+		}
+		if ( $params['onlystarred'] === true ) {
+			$dataFilter->onlyIds(
+				array_map( static function ( UserIdentity $mentee ) {
+					return $mentee->getId();
+				}, $this->starredMenteesStore->getStarredMentees( $user ) )
+			);
 		}
 		if ( $params['sortby'] !== null ) {
 			// validation is done by data filter
@@ -141,6 +156,11 @@ class MenteesHandler extends SimpleHandler {
 			'maxedits' => [
 				self::PARAM_SOURCE => 'query',
 				ParamValidator::PARAM_TYPE => 'integer',
+				ParamValidator::PARAM_REQUIRED => false,
+			],
+			'onlystarred' => [
+				self::PARAM_SOURCE => 'query',
+				ParamValidator::PARAM_TYPE => 'boolean',
 				ParamValidator::PARAM_REQUIRED => false,
 			],
 			'sortby' => [
