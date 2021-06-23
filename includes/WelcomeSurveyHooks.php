@@ -65,7 +65,8 @@ class WelcomeSurveyHooks implements
 	 * @param string &$injected_html
 	 */
 	public function onBeforeWelcomeCreation( &$welcome_creation_msg, &$injected_html ) {
-		if ( !$this->isWelcomeSurveyEnabled() ) {
+		if ( !$this->isWelcomeSurveyEnabled() ||
+			VariantHooks::isGrowthDonorCampaign( RequestContext::getMain() ) ) {
 			return;
 		}
 
