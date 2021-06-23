@@ -118,9 +118,7 @@ AddLinkSaveDialogMixin.prototype.getSetupProcess = function ( data ) {
 		this.updateSummary( annotationStates );
 		this.editSummaryInput.setValue(
 			mw.message( 'growthexperiments-addlink-summary-summary' ).params( [
-				mw.language.convertNumber( acceptedCount ),
-				mw.language.convertNumber( rejectedCount ),
-				mw.language.convertNumber( skippedCount )
+				mw.language.convertNumber( acceptedCount )
 			] ).text()
 		);
 		if ( this.checkboxesByName.wpWatchthis ) {
