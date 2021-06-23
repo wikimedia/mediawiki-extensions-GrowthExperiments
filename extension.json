@@ -156,8 +156,7 @@
 		"variant": {
 			"class": "GrowthExperiments\\VariantHooks",
 			"services": [
-				"MainConfig",
-				"UserOptionsManager"
+				"MainConfig"
 			]
 		},
 		"visualeditor": {
@@ -175,8 +174,7 @@
 		],
 		"SpecialPage_initList": [
 			"welcomeSurvey",
-			"homepage",
-			"variant"
+			"homepage"
 		],
 		"UserGetDefaultOptions": [
 			"GrowthExperiments\\HelpPanelHooks::onUserGetDefaultOptions",
@@ -186,8 +184,7 @@
 		"LocalUserCreated": [
 			"GrowthExperiments\\HelpPanelHooks::onLocalUserCreated",
 			"homepage",
-			"mentor",
-			"variant"
+			"mentor"
 		],
 		"GetPreferences": [
 			"welcomeSurvey",
@@ -197,10 +194,7 @@
 			"mentor",
 			"variant"
 		],
-		"BeforeWelcomeCreation": [
-			"welcomeSurvey",
-			"variant"
-		],
+		"BeforeWelcomeCreation": "welcomeSurvey",
 		"SiteNoticeAfter": "homepage",
 		"SpecialContributionsBeforeMainOutput": "homepage",
 		"SpecialPageAfterExecute": "homepage",
@@ -228,8 +222,7 @@
 		"MessageCache::get": "homepage",
 		"AuthChangeFormFields": [
 			"GrowthExperiments\\ConfirmEmailHooks::onAuthChangeFormFields",
-			"homepage",
-			"variant"
+			"homepage"
 		],
 		"UserSendConfirmationMail": [
 			"GrowthExperiments\\ConfirmEmailHooks::onUserSendConfirmationMail"
@@ -923,12 +916,6 @@
 						"rtl": "../images/difficulty-hard-rtl.svg"
 					}
 				},
-				"difficulty-easy-bw": {
-					"file": {
-						"ltr": "../images/difficulty-easy-bw-ltr.svg",
-						"rtl": "../images/difficulty-easy-bw-rtl.svg"
-					}
-				},
 				"info-unpadded": "../images/info-unpadded.svg",
 				"live-broadcast": "../images/live-broadcast.svg",
 				"live-broadcast-anim": "../images/live-broadcast-anim.svg",
@@ -1237,15 +1224,6 @@
 				"homepage/ext.growthExperiments.Homepage.StartEditing.less"
 			],
 			"lessCallback": [ "GrowthExperiments\\HomepageHooks", "lessCallback" ],
-			"targets": [
-				"desktop",
-				"mobile"
-			]
-		},
-		"ext.growthExperiments.donorSignupCampaign.styles": {
-			"styles": [
-				"signup/campaign.less"
-			],
 			"targets": [
 				"desktop",
 				"mobile"
@@ -1563,10 +1541,6 @@
 		"GEHomepageImpactModuleEnabled": {
 			"description": "Is the impact module in newcomer homepage enabled?",
 			"value": true
-		},
-		"GECampaignPattern": {
-			"description": "Regexp for campaign names which result in a special landing page. A full PHP PCRE regexp, including the delimiters and (if needed) start/end anchor (e.g. `/^foo$/`). Temporary code for T284740.",
-			"value": null
 		},
 		"WelcomeSurveyExperimentalGroups": {
 			"description": "List of experimental groups. A group is defined with a range to randomly match users and the list of questions they will see on the survey.",
