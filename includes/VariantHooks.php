@@ -56,14 +56,14 @@ class VariantHooks implements
 
 	/** @var Config */
 	private $config;
-	/** @var UserOptionsManager|null */
+	/** @var UserOptionsManager */
 	private $userOptionsManager;
 
 	/**
 	 * @param Config $config
-	 * @param UserOptionsManager|null $userOptionsManager
+	 * @param UserOptionsManager $userOptionsManager
 	 */
-	public function __construct( Config $config, UserOptionsManager $userOptionsManager = null ) {
+	public function __construct( Config $config, UserOptionsManager $userOptionsManager ) {
 		$this->config = $config;
 		$this->userOptionsManager = $userOptionsManager;
 	}
@@ -142,7 +142,7 @@ class VariantHooks implements
 			return;
 		}
 		$context = RequestContext::getMain();
-		if ( self::isGrowthDonorCampaign( $context ) && $this->userOptionsManager ) {
+		if ( self::isGrowthDonorCampaign( $context ) ) {
 			$this->userOptionsManager->setOption( $user, self::GROWTH_CAMPAIGN, $this->getCampaign( $context ) );
 		}
 	}
