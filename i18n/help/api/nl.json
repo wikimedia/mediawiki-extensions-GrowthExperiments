@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dedalus",
+			"Encycloon"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Behandel vragen die zijn gesteld via het hulppaneel voor de huidige gebruiker.",
+	"apihelp-helppanelquestionposter-param-body": "De tekst van de vraag die door de gebruiker is aangeleverd."
+}
