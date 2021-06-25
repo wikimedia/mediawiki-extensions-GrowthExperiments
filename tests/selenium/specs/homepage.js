@@ -1,6 +1,7 @@
 'use strict';
 
 const assert = require( 'assert' ),
+	Util = require( 'wdio-mediawiki/Util' ),
 	HomepagePage = require( '../pageobjects/homepage.page' );
 
 describe( 'Homepage', function () {
@@ -12,6 +13,7 @@ describe( 'Homepage', function () {
 
 	it( 'Heading shows the logged-in user\'s name', function () {
 		HomepagePage.open();
+		Util.waitForModuleState( 'mediawiki.base', 'ready', 5000 );
 		const username = browser.execute( function () {
 			return mw.user.getName();
 		} );
