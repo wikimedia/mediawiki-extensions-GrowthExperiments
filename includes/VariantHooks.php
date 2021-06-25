@@ -109,7 +109,8 @@ class VariantHooks implements
 		$campaign = self::getCampaign( $context );
 		return $geCampaignPattern
 			&& $campaign
-			&& $context->getTitle()->isSpecial( 'CreateAccount' )
+			// T285506: Don't assume the context has a title
+			&& ( !$context->getTitle() || $context->getTitle()->isSpecial( 'CreateAccount' ) )
 			&& preg_match( $geCampaignPattern, $campaign );
 	}
 
