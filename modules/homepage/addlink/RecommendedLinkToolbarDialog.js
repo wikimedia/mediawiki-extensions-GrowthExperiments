@@ -41,6 +41,10 @@ function RecommendedLinkToolbarDialog() {
 	 * @property {boolean} isFirstRender Whether the first recommendation is being rendered
 	 */
 	this.isFirstRender = true;
+	/**
+	 * @property {boolean} shouldSkipAutoAdvance Whether auto-advance should not occur
+	 */
+	this.shouldSkipAutoAdvance = false;
 	this.$element.addClass( 'mw-ge-recommendedLinkToolbarDialog' );
 }
 
@@ -220,6 +224,8 @@ RecommendedLinkToolbarDialog.prototype.onAcceptanceChanged = function () {
 		} );
 	mw.hook( 'growthExperiments.linkSuggestionAcceptanceChange' ).fire( hasAcceptedRecommendations );
 	this.updateButtonStates();
+	// Annotation element changes so it needs to be re-selected.
+	this.selectAnnotationView();
 };
 
 /**
@@ -811,6 +817,7 @@ RecommendedLinkToolbarDialog.prototype.setLastAnnotationState = function ( isDes
 		recommendationWikitextOffset: annotation.getAttribute( 'recommendationWikitextOffset' ),
 		isDeselect: isDeselect
 	} );
+	this.shouldSkipAutoAdvance = isDeselect;
 };
 
 /**

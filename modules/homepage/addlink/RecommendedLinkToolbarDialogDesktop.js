@@ -106,15 +106,6 @@ RecommendedLinkToolbarDialogDesktop.prototype.updatePosition = function () {
 /**
  * @inheritdoc
  */
-RecommendedLinkToolbarDialogDesktop.prototype.onAcceptanceChanged = function () {
-	RecommendedLinkToolbarDialogDesktop.super.prototype.onAcceptanceChanged.call( this );
-	// Annotation element changes so it needs to be re-selected.
-	this.selectAnnotationView();
-};
-
-/**
- * @inheritdoc
- */
 RecommendedLinkToolbarDialogDesktop.prototype.teardown = function () {
 	var $documentNode = this.surface.getView().$documentNode;
 	$documentNode.attr( 'inputMode', '' );
