@@ -742,7 +742,7 @@
 			],
 			"styles": [
 				"homepage/addlink/ceRecommendedLinkAnnotation.less",
-				"homepage/addlink/RecommendedLinkContextItem.less",
+				"homepage/addlink/RecommendedLinkToolbarDialog.less",
 				"homepage/addlink/RecommendedLinkRejectionDialog.less",
 				"homepage/addlink/MachineSuggestionsMode.less",
 				"homepage/addlink/AddLinkSaveDialog.less"

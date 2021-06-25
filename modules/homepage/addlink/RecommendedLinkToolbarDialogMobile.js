@@ -9,7 +9,7 @@ var AddLink = require( 'ext.growthExperiments.AddLink' ),
  */
 function RecommendedLinkToolbarDialogMobile() {
 	RecommendedLinkToolbarDialogMobile.super.apply( this, arguments );
-	this.$element.addClass( [ 'mw-ge-recommendedLinkContextItem-mobile' ] );
+	this.$element.addClass( [ 'mw-ge-recommendedLinkToolbarDialog-mobile', 'animate-from-below' ] );
 	this.topOffset = 25;
 	this.logger = new LinkSuggestionInteractionLogger( {
 		/* eslint-disable camelcase */
@@ -29,10 +29,13 @@ RecommendedLinkToolbarDialogMobile.static.position = 'below';
  */
 RecommendedLinkToolbarDialogMobile.prototype.initialize = function () {
 	RecommendedLinkToolbarDialogMobile.super.prototype.initialize.call( this );
-	this.$labelPreview = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-labelPreview' );
+	this.$labelPreview = $( '<div>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-labelPreview' );
 	this.setupLabelPreview();
 	this.$body.prepend( this.$labelPreview );
 	this.setupHelpButton();
+	this.$acceptanceButtonsContainer = this.setUpAnimationContainer(
+		this.$acceptanceButtonGroup, this.$buttons
+	);
 };
 
 /**
@@ -54,30 +57,65 @@ RecommendedLinkToolbarDialogMobile.prototype.afterSetupProcess = function () {
 /**
  * @inheritdoc
  */
-RecommendedLinkToolbarDialogMobile.prototype.updateContentForCurrentRecommendation = function () {
-	RecommendedLinkToolbarDialogMobile.super.prototype.updateContentForCurrentRecommendation.call( this );
-	if ( this.annotationView ) {
-		this.$labelPreviewText.text( this.annotationView.$element.text() );
+RecommendedLinkToolbarDialogMobile.prototype.showRecommendationAtIndex = function (
+	index, manualFocus ) {
+	if ( this.isFirstRender ) {
+		RecommendedLinkToolbarDialogMobile.super.prototype.showRecommendationAtIndex.call(
+			this, index, manualFocus
+		);
+		this.isFirstRender = false;
+		return;
 	}
+	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( index ) ).always( function () {
+		RecommendedLinkToolbarDialogMobile.super.prototype.showRecommendationAtIndex.call(
+			this, index, manualFocus
+		);
+	}.bind( this ) );
 };
 
 /**
  * @inheritdoc
  */
+RecommendedLinkToolbarDialogMobile.prototype.updateContentForCurrentRecommendation = function () {
+	var shouldAnimateContent = !this.isFirstRender;
+	if ( shouldAnimateContent ) {
+		this.prepareAnimatedContent( this.$labelPreviewTextContainer );
+		this.prepareAnimatedContent( this.$linkPreviewContainer );
+		this.prepareAnimatedContent( this.$acceptanceButtonsContainer, true );
+	}
+
+	RecommendedLinkToolbarDialogMobile.super.prototype.updateContentForCurrentRecommendation.call( this );
+
+	if ( this.annotationView ) {
+		this.$labelPreviewText.text( this.annotationView.$element.text() );
+	}
+
+	if ( shouldAnimateContent ) {
+		// Delay animation to account for ToggleButtonWidget's transition
+		setTimeout( function () {
+			this.animateNewContent( this.$labelPreviewTextContainer );
+			this.animateNewContent( this.$linkPreviewContainer );
+			this.animateNewContent( this.$acceptanceButtonsContainer );
+		}.bind( this ), 150 );
+	}
+};
+
+/**
+ * Show the next recommendation or save the article (if the last recommendation is shown)
+ */
 RecommendedLinkToolbarDialogMobile.prototype.onAcceptanceChanged = function () {
 	var isLastRecommendationSelected = this.isLastRecommendationSelected();
 	RecommendedLinkToolbarDialogMobile.super.prototype.onAcceptanceChanged.call( this );
-	// Auto-advance
-	if ( isLastRecommendationSelected ) {
-		mw.hook( 'growthExperiments.contextItem.saveArticle' ).fire();
-	} else if ( !isLastRecommendationSelected ) {
-		// Show next recommendation after animation for the current recommendation is done
-		// TODO: Animation delay as a config in AnnotationAnimation
-		// Probably make sense to update this along with T283548 when auto-advance is enabled for desktop
-		setTimeout( function () {
+	// Auto-advance after animation for the current recommendation is done
+	// TODO: Animation delay as a config in AnnotationAnimation
+	// Probably make sense to update this along with T283548 when auto-advance is enabled for desktop
+	setTimeout( function () {
+		if ( isLastRecommendationSelected ) {
+			mw.hook( 'growthExperiments.contextItem.saveArticle' ).fire();
+		} else if ( !isLastRecommendationSelected ) {
 			this.showRecommendationAtIndex( this.currentIndex + 1 );
-		}.bind( this ), 600 );
-	}
+		}
+	}.bind( this ), 600 );
 };
 
 /**
@@ -94,12 +132,15 @@ RecommendedLinkToolbarDialogMobile.prototype.selectAnnotationView = function () 
  * @private
  */
 RecommendedLinkToolbarDialogMobile.prototype.setupLabelPreview = function () {
-	this.$labelPreviewText = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-labelPreview-text' );
+	this.$labelPreviewText = $( '<div>' ).addClass(
+		'mw-ge-recommendedLinkToolbarDialog-labelPreview-text'
+	);
+	this.$labelPreviewTextContainer = this.setUpAnimationContainer( this.$labelPreviewText );
 	this.$labelPreview.append( [
-		$( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-labelPreview-label' ).text(
+		$( '<div>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-labelPreview-label' ).text(
 			mw.message( 'growthexperiments-addlink-context-text-label' ).text()
 		),
-		this.$labelPreviewText
+		this.$labelPreviewTextContainer
 	] );
 };
 
@@ -110,7 +151,7 @@ RecommendedLinkToolbarDialogMobile.prototype.setupLabelPreview = function () {
  */
 RecommendedLinkToolbarDialogMobile.prototype.setupHelpButton = function () {
 	var helpButton = new OO.ui.ButtonWidget( {
-		classes: [ 'mw-ge-recommendedLinkContextItem-help-button' ],
+		classes: [ 'mw-ge-recommendedLinkToolbarDialog-help-button' ],
 		framed: false,
 		icon: 'helpNotice',
 		label: mw.message( 'growthexperiments-addlink-context-button-help' ).text(),
@@ -125,11 +166,89 @@ RecommendedLinkToolbarDialogMobile.prototype.setupHelpButton = function () {
 /**
  * @inheritdoc
  */
+RecommendedLinkToolbarDialogMobile.prototype.setupLinkPreview = function () {
+	var $linkPreview = RecommendedLinkToolbarDialogMobile.super.prototype.setupLinkPreview.apply(
+		this, arguments
+	);
+	this.$linkPreviewContainer = this.setUpAnimationContainer( $linkPreview );
+	return this.$linkPreviewContainer;
+};
+
+/**
+ * @inheritdoc
+ */
 RecommendedLinkToolbarDialogMobile.prototype.teardown = function () {
 	var ceSurface = this.surface.getView();
 	ceSurface.$documentNode.attr( 'contenteditable', true );
 	ceSurface.$documentNode.removeClass( 'mw-ge-user-select-none' );
 	return RecommendedLinkToolbarDialogMobile.super.prototype.teardown.apply( this, arguments );
+};
+
+// Animation helpers
+
+/**
+ * Set up container to animate the specified element in and out
+ *
+ * @param {jQuery} $el Element to animate in and out
+ * @param {jQuery} [$existingContainer] Container element
+ * @return {jQuery}
+ */
+RecommendedLinkToolbarDialogMobile.prototype.setUpAnimationContainer = function (
+	$el, $existingContainer
+) {
+	$el.addClass( [ 'current', 'animation-content' ] );
+	if ( $existingContainer ) {
+		$el.addClass( 'animation-content-with-position' );
+		return $existingContainer.addClass( 'animation-container' );
+	}
+	return $( '<div>' ).addClass( 'animation-container' ).append( $el );
+};
+
+/**
+ * Set up the specified animation container by cloning the current content that needs to be
+ * animated out and position the upcoming content off-screen so that it can be animated in
+ *
+ * If the content being animated is not absolutely positioned, position it absolutely so that
+ * the position can be animated.
+ *
+ * @param {jQuery} $container Animation container
+ * @param {boolean} [isContentAbsolutelyPositioned] Whether the element being animated
+ * is already absolutely positioned
+ */
+RecommendedLinkToolbarDialogMobile.prototype.prepareAnimatedContent = function (
+	$container, isContentAbsolutelyPositioned
+) {
+	var $realCurrent = $container.find( '.current' ),
+		$fakeCurrent = $realCurrent.clone().addClass( 'fake-current' ).removeClass( 'current' );
+	// Explicitly set container height to hide content that's animating in
+	if ( !isContentAbsolutelyPositioned ) {
+		$container.css( 'height', $realCurrent.outerHeight() );
+	}
+	$realCurrent.addClass( this.isGoingBack ? 'animate-from-start' : 'animate-from-end' );
+	$container.prepend( $fakeCurrent );
+	// At this point, animation container should be showing a copy of the current view and the
+	// upcoming view is positioned off-screen.
+	$container.addClass( 'ready-to-animate' );
+};
+
+/**
+ * Animate in upcoming content for the specified animation container
+ *
+ * @param {jQuery} $container Animation container
+ */
+RecommendedLinkToolbarDialogMobile.prototype.animateNewContent = function ( $container ) {
+	// Animate in new content
+	var $fakeCurrent = $container.find( '.fake-current' ),
+		$realCurrent = $container.find( '.current' );
+
+	$container.addClass( 'animating' );
+	$realCurrent.on( 'transitionend', function removeFakeCurrent() {
+		$fakeCurrent.remove();
+		$container.removeClass( [ 'animating', 'ready-to-animate' ] );
+		$realCurrent.off( 'transitionend', removeFakeCurrent );
+	} );
+	$fakeCurrent.addClass( this.isGoingBack ? 'animate-from-end' : 'animate-from-start' );
+	$realCurrent.removeClass( [ 'animate-from-end', 'animate-from-start' ] );
 };
 
 module.exports = RecommendedLinkToolbarDialogMobile;

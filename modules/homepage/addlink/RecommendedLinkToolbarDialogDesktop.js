@@ -9,7 +9,7 @@ var AddLink = require( 'ext.growthExperiments.AddLink' ),
  */
 function RecommendedLinkToolbarDialogDesktop() {
 	RecommendedLinkToolbarDialogDesktop.super.apply( this, arguments );
-	this.$element.addClass( [ 'mw-ge-recommendedLinkContextItem-desktop' ] );
+	this.$element.addClass( [ 'mw-ge-recommendedLinkToolbarDialog-desktop' ] );
 	this.minHeight = 200;
 	this.logger = new LinkSuggestionInteractionLogger( {
 		/* eslint-disable camelcase */
@@ -17,7 +17,6 @@ function RecommendedLinkToolbarDialogDesktop() {
 		active_interface: 'recommendedlinktoolbar_dialog'
 		/* eslint-enable camelcase */
 	} );
-	this.isFirstRender = true;
 }
 
 OO.inheritClass( RecommendedLinkToolbarDialogDesktop, RecommendedLinkToolbarDialog );
@@ -30,7 +29,7 @@ RecommendedLinkToolbarDialogDesktop.static.position = 'inline';
  */
 RecommendedLinkToolbarDialogDesktop.prototype.initialize = function () {
 	RecommendedLinkToolbarDialogDesktop.super.prototype.initialize.call( this );
-	this.$anchor = $( '<div>' ).addClass( 'mw-ge-recommendedLinkContextItem-desktop-anchor' );
+	this.$anchor = $( '<div>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-desktop-anchor' );
 	this.$element.prepend( this.$anchor );
 	this.$element.detach();
 };
@@ -100,8 +99,8 @@ RecommendedLinkToolbarDialogDesktop.prototype.updatePosition = function () {
 	}
 
 	this.$element.css( newPosition );
-	this.$anchor.toggleClass( 'mw-ge-recommendedLinkContextItem-desktop-anchor-start', isStartAnchored );
-	this.$anchor.toggleClass( 'mw-ge-recommendedLinkContextItem-desktop-anchor-end', !isStartAnchored );
+	this.$anchor.toggleClass( 'mw-ge-recommendedLinkToolbarDialog-desktop-anchor-start', isStartAnchored );
+	this.$anchor.toggleClass( 'mw-ge-recommendedLinkToolbarDialog-desktop-anchor-end', !isStartAnchored );
 };
 
 /**

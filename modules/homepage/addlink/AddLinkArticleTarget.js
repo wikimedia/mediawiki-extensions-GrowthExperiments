@@ -62,7 +62,7 @@ AddLinkArticleTarget.prototype.beforeSurfaceReady = function () {
 	// Remove any edit notices (T281960)
 	this.editNotices = [];
 
-	// HACK RecommendedLinkContextItem doesn't have access to the target, so give it access to the
+	// HACK RecommendedLinkToolbarDialog doesn't have access to the target, so give it access to the
 	// link recommendation data by adding a property to the ui.Surface
 	this.getSurface().linkRecommendationFragments = this.findRecommendationFragments();
 };
@@ -90,7 +90,7 @@ AddLinkArticleTarget.prototype.afterSurfaceReady = function () {
 		mw.hook( 'growthExperiments.showAddLinkOnboardingIfNeeded' ).fire();
 	}
 
-	// Save can be triggered from RecommendedLinkContextItem.
+	// Save can be triggered from RecommendedLinkToolbarDialog.
 	mw.hook( 'growthExperiments.contextItem.saveArticle' ).add( function () {
 		this.surface.executeCommand( 'showSave' );
 	}.bind( this ) );
