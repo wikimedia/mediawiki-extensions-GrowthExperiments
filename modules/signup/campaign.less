@@ -26,6 +26,7 @@
 		margin: 0 auto 16px;
 		border: 0;
 		padding: 216px 0 0;
+		color: @wmui-color-base10;
 		font-weight: bold;
 		.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 21px, @targetLineHeight: 27.3px );
 		text-align: center;
@@ -33,28 +34,42 @@
 
 	.mw-ge-donorsignup-list {
 		margin-top: 24px;
+		// The icon + space takes 20+16px, start the next line at the right edge of it.
+		margin-left: 36px;
+		text-indent: -36px;
 		list-style: none;
-		font-weight: bold;
 		color: @wmui-color-base10;
+		font-weight: bold;
 
 		li {
 			margin: 0 0 16px;
 		}
 
 		.oo-ui-iconElement {
-			padding-right: 19px;
+			margin-right: 16px;
 			opacity: 0.65;
 		}
 	}
 
 	.skin-minerva & {
 		width: auto;
-		padding-bottom: 24px;
-		border-bottom: 1px solid @wmui-color-base80;
 		margin-bottom: 24px;
+		border-bottom: 1px solid @wmui-color-base80;
+		padding-bottom: 24px;
+		background-size: 128px auto;
+
+		.mw-ge-donorsignup-title {
+			padding: 120px 0 0;
+		}
 
 		.mw-ge-donorsignup-body {
 			display: none;
+			color: @wmui-color-base10;
+		}
+
+		.mw-ge-donorsignup-list .oo-ui-iconElement {
+			height: 20px;
+			width: 20px;
 		}
 	}
 }
