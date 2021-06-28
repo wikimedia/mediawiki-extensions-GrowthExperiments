@@ -74,6 +74,12 @@ class HelpPanelHooks {
 			return;
 		}
 
+		$growthOptInOptOutOverride = HomepageHooks::getGrowthFeaturesOptInOptOutOverride();
+		if ( $growthOptInOptOutOverride === HomepageHooks::GROWTH_FORCE_OPTOUT ) {
+			// User opted-out from Growth features, short-circuit
+			return;
+		}
+
 		// Enable the help panel for a percentage of non-autocreated users.
 		$config = RequestContext::getMain()->getConfig();
 		if (
@@ -85,7 +91,10 @@ class HelpPanelHooks {
 		}
 
 		$enablePercentage = $config->get( 'GEHelpPanelNewAccountEnablePercentage' );
-		if ( $user->isRegistered() && !$autocreated && rand( 0, 99 ) < $enablePercentage ) {
+		if (
+			$growthOptInOptOutOverride === HomepageHooks::GROWTH_FORCE_OPTIN ||
+			( $user->isRegistered() && !$autocreated && rand( 0, 99 ) < $enablePercentage )
+		) {
 			$user->setOption( self::HELP_PANEL_PREFERENCES_TOGGLE, 1 );
 		}
 	}
