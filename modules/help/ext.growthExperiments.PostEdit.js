@@ -38,7 +38,29 @@
 			previousEditorInterface: suggestedEditSession.editorInterface,
 			sessionId: suggestedEditSession.clickId,
 			isSuggestedTask: suggestedEditSession.active
+		} ),
+		otherTasks = [],
+		nextTaskIndex = 0;
+
+	/**
+	 * Fetch potential tasks for the next suggested edit.
+	 */
+	function fetchOtherTasks() {
+		var taskTypesToFetch = isLinkRecommendationTask ?
+			[ 'link-recommendation' ] :
+			preferences.taskTypes;
+		// 10 tasks are hopefully enough to find one that's not protected.
+		return api.fetchTasks(
+			taskTypesToFetch,
+			preferences.topics,
+			apiConfig
+		).then( function ( data ) {
+			data = data || {};
+			otherTasks = ( data.tasks || [] ).filter( function ( task ) {
+				return task.title !== suggestedEditSession.title.getPrefixedText();
+			} );
 		} );
+	}
 
 	/**
 	 * Fetch the next task.
@@ -47,21 +69,34 @@
 	 *   or fail with an error message if fetching the task failed.
 	 */
 	function getNextTask() {
-		var taskTypesToFetch = isLinkRecommendationTask ? [ 'link-recommendation' ] : preferences.taskTypes;
-
-		// 10 tasks are hopefully enough to find one that's not protected.
-		return api.fetchTasks(
-			taskTypesToFetch,
-			preferences.topics,
-			apiConfig
-		).then( function ( data ) {
-			var task = data.tasks[ 0 ] || null;
-			if ( task && task.title === suggestedEditSession.title.getPrefixedText() ) {
-				// Don't offer the same task again.
-				task = data.tasks[ 1 ] || null;
-			}
-			return task;
+		return fetchOtherTasks().then( function () {
+			return otherTasks[ 0 ] || null;
 		} );
+	}
+
+	/**
+	 * Fetch additional data for the specified task.
+	 *
+	 * @param {mw.libs.ge.TaskData|null} task Task data
+	 * @return {jQuery.Promise<mw.libs.ge.TaskData>} A promise that resolves with task data or
+	 *   rejects if the task data can't be fetched
+	 */
+	function fetchExtraDataForTask( task ) {
+		var extraDataPromise;
+		if ( task && !OO.ui.isMobile() ) {
+			extraDataPromise = $.when(
+				api.getExtraDataFromPcs( task, apiConfig ),
+				api.getExtraDataFromAqs( task, apiConfig )
+			).then( function () {
+				return task;
+			} );
+		} else if ( task ) {
+			task.pageviews = null;
+			extraDataPromise = api.getExtraDataFromPcs( task, apiConfig );
+		} else {
+			extraDataPromise = $.Deferred().reject().promise();
+		}
+		return extraDataPromise;
 	}
 
 	/**
@@ -129,6 +164,18 @@
 			} );
 			openPromise = lifecycle.opened;
 		}
+
+		postEditPanel.on( 'refresh-button-clicked', function () {
+			if ( nextTaskIndex === otherTasks.length - 1 ) {
+				nextTaskIndex = 0;
+			} else {
+				nextTaskIndex += 1;
+			}
+			fetchExtraDataForTask( otherTasks[ nextTaskIndex ] ).then( function ( updatedTask ) {
+				postEditPanel.updateNextTask( updatedTask );
+			} );
+		} );
+
 		return {
 			openPromise: openPromise,
 			closePromise: closePromise
@@ -195,19 +242,7 @@
 			}
 		} );
 
-		if ( task && !OO.ui.isMobile() ) {
-			extraDataPromise = $.when(
-				api.getExtraDataFromPcs( task, apiConfig ),
-				api.getExtraDataFromAqs( task, apiConfig )
-			).then( function () {
-				return task;
-			} );
-		} else if ( task ) {
-			task.pageviews = null;
-			extraDataPromise = api.getExtraDataFromPcs( task, apiConfig );
-		} else {
-			extraDataPromise = $.Deferred().reject().promise();
-		}
+		extraDataPromise = fetchExtraDataForTask( task );
 		extraDataPromise.then( function ( updateTask ) {
 			postEditPanel.updateTask( updateTask );
 		} );

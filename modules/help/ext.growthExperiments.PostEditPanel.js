@@ -126,9 +126,33 @@
 			.append(
 				$( '<div>' )
 					.addClass( 'mw-ge-help-panel-postedit-subheader' )
-					.text( subheaderMessage ),
+					.text( subheaderMessage )
+					.append( this.getRefreshButton() ),
 				this.$taskCard
 			);
+	};
+
+	/**
+	 * Get the refresh button
+	 *
+	 * @return {jQuery}
+	 */
+	PostEditPanel.prototype.getRefreshButton = function () {
+		var button = new OO.ui.ButtonWidget( {
+			label: mw.message(
+				'growthexperiments-help-panel-postedit-subheader-refresh-button-label'
+			).text(),
+			invisibleLabel: true,
+			icon: 'reload',
+			framed: false,
+			flags: [ 'progressive' ],
+			classes: [ 'mw-ge-help-panel-postedit-subheader-refresh-button' ]
+		} );
+		button.on( 'click', function () {
+			this.logRefreshClick();
+			this.emit( 'refresh-button-clicked' );
+		}.bind( this ) );
+		return button.$element;
 	};
 
 	/**
@@ -169,7 +193,10 @@
 	 * @param {mw.libs.ge.TaskData} task
 	 */
 	PostEditPanel.prototype.updateTask = function ( task ) {
-		this.$taskCard.replaceWith( this.getCard( task ) );
+		var $newTaskCard = this.getCard( task );
+		this.$taskCard.replaceWith( $newTaskCard );
+		// Reference to the DOM node has to be updated since the old one has been replaced.
+		this.$taskCard = $newTaskCard;
 	};
 
 	/**
@@ -237,6 +264,28 @@
 	PostEditPanel.prototype.logTaskClick = function () {
 		var joinToken = this.newcomerTaskLogger.log( this.nextTask );
 		this.helpPanelLogger.log( 'postedit-task-click', { newcomerTaskToken: joinToken } );
+	};
+
+	/**
+	 * Log that the refresh button was clicked.
+	 * This is handled automatically by the class.
+	 */
+	PostEditPanel.prototype.logRefreshClick = function () {
+		this.helpPanelLogger.log( 'postedit-task-refresh', '' );
+	};
+
+	/**
+	 * Update the task for the next suggested edit and log an impression.
+	 *
+	 * @param {mw.libs.ge.TaskData} task
+	 */
+	PostEditPanel.prototype.updateNextTask = function ( task ) {
+		this.nextTask = task;
+		this.updateTask( task );
+		this.helpPanelLogger.log( 'postedit-impression', {
+			type: this.nextTask ? 'full' : 'small',
+			newcomerTaskToken: this.newcomerTaskToken
+		} );
 	};
 
 	module.exports = PostEditPanel;
