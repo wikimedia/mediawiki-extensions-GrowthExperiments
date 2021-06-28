@@ -4,6 +4,7 @@ namespace GrowthExperiments;
 
 use DeferredUpdates;
 use GrowthExperiments\NewcomerTasks\AddLink\AddLinkSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPostSaveHook;
 use MediaWiki\Page\ProperPageIdentity;
@@ -50,7 +51,23 @@ class VisualEditorHooks implements VisualEditorApiVisualEditorEditPostSaveHook {
 		array &$apiResponse
 	): void {
 		$data = $pluginData['linkrecommendation'] ?? null;
-		if ( !$data || $apiResponse['result'] !== 'success' ) {
+		if ( $apiResponse['result'] !== 'success' ) {
+			return;
+		}
+		if ( !$data ) {
+			// This is going to run on every edit and not in a deferred update, so at least filter
+			// by authenticated users to make this slightly faster for anons.
+			if ( $user->isRegistered() ) {
+				// The user is registered, obtain an edit tracker for the user, then check to see if
+				// the page that was edited is in their tracker and is also an instance of a link recommendation.
+				// Because we're already in this code path ($pluginData['linkrecommendation'] is not set), that means
+				// the edit came external to the add link interface. Untracking the page avoids adding the "add link"
+				// tag in the onRecentChanges_save hook.
+				$tracker = $this->trackerFactory->getTracker( $user );
+				if ( $tracker->getTaskTypeForPage( $page->getId() ) instanceof LinkRecommendationTaskType ) {
+					$tracker->untrack( $page->getId() );
+				}
+			}
 			return;
 		}
 		$data = json_decode( $data, true ) ?? [];
