@@ -4,7 +4,8 @@
 			"AYZ04",
 			"Grace03",
 			"Shizhao",
-			"VulpesVulpes825"
+			"VulpesVulpes825",
+			"Zhang8569"
 		]
 	},
 	"growthexperiments-desc": "这个扩展包含了增长团队所做的实验。",
@@ -17,6 +18,7 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]：由[[User:$1|$1]]最近更新于$2。",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]：由未知用户最近更新于$1。",
 	"growthexperiments-edit-config-pretext": "此页面允许您编辑[[:mw:Special:MyLanguage/Growth|Growth]]团队功能的配置。它将代表您编辑 $1。您可以在该页面的页面历史记录中看到您的更改。",
+	"growthexperiments-edit-config-pretext-unprivileged": "这让一些有特权的用户来编辑[[:mw:Special:MyLanguage/Growth|Growth]] 的团队功能参数。",
 	"growthexperiments-edit-config-error-invalid-title": "配置页面没有正确配置",
 	"growthexperiments-edit-config-edit-summary": "编辑摘要",
 	"growthexperiments-edit-config-config-changed": "配置已更改。你可能需要等待几分钟让更改完成。",

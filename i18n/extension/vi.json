@@ -17,6 +17,7 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Được cập nhật lần cuối bởi [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Được cập nhật lần cuối bởi thành viên vô danh $1.",
 	"growthexperiments-edit-config-pretext": "Trang này cho phép bạn sửa đổi cấu hình của các tính năng của nhóm [[:mw:Special:MyLanguage/Growth|Tăng trưởng]]. Nó sẽ sửa đổi $1 thay bạn. Bạn có thể xem các thay đổi ở lịch sử trang của trang đó.",
+	"growthexperiments-edit-config-pretext-unprivileged": "Biểu mẫu này cho phép các người dùng có đặc quyền được sửa đổi cấu hình của các tính năng nhóm [[:mw:Special:MyLanguage/Growth|Tăng trưởng]].",
 	"growthexperiments-edit-config-error-invalid-title": "Trang cấu hình không được thiết lập một cách hợp lệ",
 	"growthexperiments-edit-config-edit-summary": "Tóm lược sửa đổi",
 	"growthexperiments-edit-config-config-changed": "Cấu hình đã được thay đổi. Bạn có lẽ cần chờ một vài phút để thay đổi có hiệu lực.",

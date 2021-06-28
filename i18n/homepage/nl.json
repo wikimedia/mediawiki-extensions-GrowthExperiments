@@ -304,6 +304,7 @@
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|stel}} {{GENDER:$5|$7}} als mentor van {{GENDER:$6|$3}} in (vorige {{GENDER:$4|mentor}} $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|stel}} {{GENDER:$5|$7}} als mentor van {{GENDER:$6|$3}} in (geen eerdere mentor)",
 	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|nagekeken}} $4 linksuggesties voor $3: $5 geaccepteerd, $6 afgewezen en $7 overgeslagen",
+	"log-action-filter-growthexperiments-claimmentee": "Mentee-wijzigingen",
 	"log-action-filter-growthexperiments-setmentor": "Mentorwijzigingen",
 	"log-action-filter-growthexperiments-addlink": "Linksuggesties",
 	"growthexperiments-homepage-claimmentee-invalid-username": "De opgegeven gebruikersnaam van de mentee is ongeldig",

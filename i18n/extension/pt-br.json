@@ -16,6 +16,7 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Última atualização por [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Última atualização pelo usuário desconhecido $1.",
 	"growthexperiments-edit-config-pretext": "Esta página permite que você edite a configuração de recursos da equipe [[:mw:Special:MyLanguage/Growth|Growth]]. Esse recurso editará $1 em seu nome. Você pode ver suas alterações no histórico dessa página.",
+	"growthexperiments-edit-config-pretext-unprivileged": "Este formulário permite que os usuários privilegiados editem a configuração de recursos da equipe de [[:mw:Special:MyLanguage/Growth|crescimento]].",
 	"growthexperiments-edit-config-error-invalid-title": "A página de configuração não foi configurada corretamente",
 	"growthexperiments-edit-config-edit-summary": "Resumo da edição",
 	"growthexperiments-edit-config-config-changed": "A configuração foi alterada. Você pode precisar esperar por alguns minutos para que as alterações entrem em vigor.",

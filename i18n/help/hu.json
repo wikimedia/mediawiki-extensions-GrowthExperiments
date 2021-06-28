@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dj",
 			"Hanna Tardos",
 			"Misibacsi",
 			"Samat",
@@ -27,6 +28,7 @@
 	"growthexperiments-help-panel-postedit-subheader": "Szerkessz egy másik javaslatot:",
 	"growthexperiments-help-panel-postedit-footer": "Több javaslatot szeretnék látni",
 	"growthexperiments-help-panel-postedit-footer2": "Tovább dolgozom ezen a szócikken",
+	"growthexperiments-help-panel-postedit-footer2-notsaved": "Bezár",
 	"growthexperiments-help-panel-questionreview-title": "Kérdezz a segítőpultnál",
 	"growthexperiments-help-panel-questionreview-title-mentor": "Kérdezd a mentorod!",
 	"growthexperiments-help-panel-questionreview-header": "Ha felteszel egy kérdést, azt <strong>nyilvánosan elküldöd</strong> a szerkesztőneveddel ($2) a(z) $1 oldalon, ahol egy önkéntes szerkesztő igyekszik megválaszolni azt nagyjából egy napon belül.",
@@ -101,6 +103,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-publish": "Ha befejezted a bővítést, kattints a \"$1\" gombra a szerkesztésed elmentéséhez.",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-publish": "Ha befejezted a bővítést, koppints a kék nyílra, hogy elmentsd a szerkesztésedet.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|Tudj meg többet a szócikkek bővítéséről]]",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Példamondat",
 	"growthexperiments-help-panel-questioncomplete-title": "Kérdés feltevése",
 	"growthexperiments-help-panel-questioncomplete-header": "A kérdésed elküldve!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "A kérdésed megjelent a Közösségi portálon annak érdekében, hogy egy másik önkéntes szerkesztő megválaszolhassa azt.",

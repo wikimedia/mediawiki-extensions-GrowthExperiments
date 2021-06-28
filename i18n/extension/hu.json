@@ -1,8 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dj",
 			"Tacsipacsi"
 		]
 	},
-	"growthexperiments-desc": "Ez a kiterjesztés a Növekedés (Growth) csapat kísérleteit tartalmazza."
+	"growthexperiments-desc": "Ez a kiterjesztés a Növekedés (Growth) csapat kísérleteit tartalmazza.",
+	"growthexperiments-edit-config-edit-summary": "Szerkesztési összefoglaló",
+	"growthexperiments-edit-config-mentorship-enabled-true": "Igen",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Nem",
+	"growthexperiments-edit-config-newcomertasks": "Javasolt szerkesztések"
 }

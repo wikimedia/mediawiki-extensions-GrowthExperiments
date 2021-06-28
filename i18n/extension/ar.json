@@ -17,6 +17,7 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: آخر تحديث من [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: آخر تحديث من مستخدم مجهول $1.",
 	"growthexperiments-edit-config-pretext": "تتيح لك هذه الصفحة، ضبط إعدادات مزايا فريق [[:mw:Special:MyLanguage/Growth|النموّ]]. ستعدّل $1 نيابة عنك. يمكنك مشاهدة تغييراتك على تاريخ الصفحة.",
+	"growthexperiments-edit-config-pretext-unprivileged": "تمكّن هذه الاستمارة المستخدمين من ضبط الإعدادات الخاصة بمزايا فريق[[:mw:Special:MyLanguage/Growth|النموّ]].",
 	"growthexperiments-edit-config-error-invalid-title": "لم تُضبط صفحة الإعدادات جيّدًا.",
 	"growthexperiments-edit-config-edit-summary": "ملخص التعديل",
 	"growthexperiments-edit-config-config-changed": "تمّ تغيير الإعداد. ربّما يجب الانتظار لبضع دقائق لتفعيل التغييرات.",
