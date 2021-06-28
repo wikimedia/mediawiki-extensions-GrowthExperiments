@@ -106,6 +106,9 @@ RecommendedLinkToolbarDialogMobile.prototype.updateContentForCurrentRecommendati
 RecommendedLinkToolbarDialogMobile.prototype.onAcceptanceChanged = function () {
 	var isLastRecommendationSelected = this.isLastRecommendationSelected();
 	RecommendedLinkToolbarDialogMobile.super.prototype.onAcceptanceChanged.call( this );
+	if ( this.shouldSkipAutoAdvance ) {
+		return;
+	}
 	// Auto-advance after animation for the current recommendation is done
 	// TODO: Animation delay as a config in AnnotationAnimation
 	// Probably make sense to update this along with T283548 when auto-advance is enabled for desktop
