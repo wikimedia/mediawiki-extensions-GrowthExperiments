@@ -325,7 +325,9 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'type' => 'titlesmultiselect',
 				'exists' => $pagesMustExist,
 				'namespace' => NS_TEMPLATE,
-				'relative' => true,
+				// TODO: This should be relative => true in an ideal world, see T285750 and
+				// T285748 for blockers
+				'relative' => false,
 				'label-message' => "growthexperiments-edit-config-newcomer-tasks-$taskType-templates",
 				'required' => false,
 				'section' => 'newcomertasks'
@@ -522,7 +524,11 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $group ) {
 			$descriptors["newcomertasks-${taskType}Templates"]['default'] = implode(
 				"\n",
-				$newcomerTasksConfig[$taskType]['templates'] ?? []
+				array_map( function ( $rawTitle ) {
+					return $this->titleFactory
+						->newFromTextThrow( $rawTitle, NS_TEMPLATE )
+						->getPrefixedText();
+				}, $newcomerTasksConfig[$taskType]['templates'] ?? [] )
 			);
 			$descriptors["newcomertasks-${taskType}Learnmore"]['default'] =
 				$newcomerTasksConfig[$taskType]['learnmore'] ?? '';
