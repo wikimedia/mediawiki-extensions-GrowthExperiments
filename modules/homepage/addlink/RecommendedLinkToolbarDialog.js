@@ -260,6 +260,7 @@ RecommendedLinkToolbarDialog.prototype.teardown = function () {
 RecommendedLinkToolbarDialog.prototype.reopenRejectionDialog = function () {
 	this.logger.log( 'suggestion_view_rejection_reasons', this.suggestionLogMetadata() );
 	this.setAccepted( false );
+	this.shouldSkipAutoAdvance = true;
 };
 
 /**
