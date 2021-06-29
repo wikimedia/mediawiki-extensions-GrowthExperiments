@@ -95,7 +95,9 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 				);
 				$data = [];
 				foreach ( $res as $row ) {
-					$data[$row->mentee_id] = FormatJson::decode( $row->mentee_data, true );
+					$tmp = FormatJson::decode( $row->mentee_data, true );
+					$tmp['user_id'] = $row->mentee_id;
+					$data[] = $tmp;
 				}
 				return $data;
 			}

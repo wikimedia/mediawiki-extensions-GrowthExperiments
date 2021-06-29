@@ -96,6 +96,22 @@
 				"GrowthExperimentsSuggestionsInfo",
 				"MainWANObjectCache"
 			]
+		},
+		{
+			"path": "/growthexperiments/v0/mentees",
+			"method": "GET",
+			"class": "GrowthExperiments\\Rest\\Handler\\MenteesHandler",
+			"services": [
+				"GrowthExperimentsMenteeOverviewDataProvider"
+			]
+		},
+		{
+			"path": "/growthexperiments/v0/mentees/prefixsearch/{prefix}",
+			"method": "GET",
+			"class": "GrowthExperiments\\Rest\\Handler\\MenteesPrefixSearchHandler",
+			"services": [
+				"GrowthExperimentsMenteeOverviewDataProvider"
+			]
 		}
 	],
 	"callback": "GrowthExperiments\\GrowthHooks::onRegistration",
