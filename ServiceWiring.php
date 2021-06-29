@@ -14,6 +14,9 @@ use GrowthExperiments\HelpPanel\QuestionPoster\QuestionPosterFactory;
 use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
+use GrowthExperiments\MentorDashboard\MenteeOverview\DatabaseMenteeOverviewDataProvider;
+use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
+use GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
@@ -210,6 +213,33 @@ return [
 			$services->getTitleParser(),
 			$services->getLinkBatchFactory(),
 			$growthServices->getLinkRecommendationStore()
+		);
+	},
+
+	'GrowthExperimentsMenteeOverviewDataProvider' => static function (
+		MediaWikiServices $services
+	) : MenteeOverviewDataProvider {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+		$dataProvider = new DatabaseMenteeOverviewDataProvider(
+			$geServices->getMentorStore(),
+			$geServices->getLoadBalancer()->getConnection( DB_REPLICA )
+		);
+		$dataProvider->setCache(
+			ObjectCache::getLocalClusterInstance(),
+			CachedBagOStuff::TTL_HOUR
+		);
+		return $dataProvider;
+	},
+
+	'GrowthExperimentsMenteeOverviewDataProviderUncached' => static function (
+		MediaWikiServices $services
+	) : MenteeOverviewDataProvider {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+		return new UncachedMenteeOverviewDataProvider(
+			$geServices->getMentorStore(),
+			$services->getChangeTagDefStore(),
+			$services->getActorMigration(),
+			$services->getDBLoadBalancer()->getConnection( DB_REPLICA, 'vslow' )
 		);
 	},
 
