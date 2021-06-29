@@ -51,7 +51,7 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/Grow
 		childProcess.spawnSync(
 			'php',
 			[ 'maintenance/edit.php', '--user=Admin', 'MediaWiki:NewcomerTasks.json' ],
-			{ input: fs.readFileSync( path.resolve( __dirname + '/fixtures/MediaWiki:NewcomerTasks.json' ) ), cwd: ip }
+			{ input: fs.readFileSync( path.resolve( __dirname + '/fixtures/MediaWikiNewcomerTasks.json' ) ), cwd: ip }
 		);
 	},
 	onComplete: function () {
