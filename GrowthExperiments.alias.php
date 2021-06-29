@@ -337,7 +337,7 @@ $specialPageAliases['uk'] = [
 $specialPageAliases['ur'] = [
 	'WelcomeSurvey' => [ 'خیرمقدم_سروے' ],
 	'Homepage' => [ 'ہوم_پیج' ],
-	'Impact' => [ 'ثر' ],
+	'Impact' => [ 'اثر', 'ثر' ],
 	'ClaimMentee' => [ 'ایک_نووارد_کا_دعوی' ],
 ];
 
