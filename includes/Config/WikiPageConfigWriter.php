@@ -12,6 +12,7 @@ use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Revision\SlotRecord;
 use MWException;
 use Psr\Log\LoggerInterface;
+use RecentChange;
 use Status;
 use TitleFactory;
 use User;
@@ -175,6 +176,11 @@ class WikiPageConfigWriter {
 			$updater->setContent( SlotRecord::MAIN, new JsonContent(
 				FormatJson::encode( $this->wikiConfig )
 			) );
+
+			if ( $this->performer->authorizeWrite( 'autopatrolled', $page ) ) {
+				$updater->setRcPatrolStatus( RecentChange::PRC_AUTOPATROLLED );
+			}
+
 			$updater->saveRevision(
 				CommentStoreComment::newUnsavedComment( $summary ),
 				$minor ? EDIT_MINOR : 0
