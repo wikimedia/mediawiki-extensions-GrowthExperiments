@@ -8,6 +8,16 @@
 		isSuggestedEditsActivated = mw.user.options.get( 'growthexperiments-homepage-suggestededits-activated' );
 
 	/**
+	 * Update the user preference to indicate the tour has been seen.
+	 */
+	function markTourAsSeen() {
+		new mw.Api().saveOption(
+			'growthexperiments-tour-homepage-welcome',
+			'1'
+		);
+	}
+
+	/**
 	 * @param {Object} guider The guider configuration object
 	 * @param {boolean} isAlternativeClose Legacy parameter, should be ignored.
 	 * @param {string} closeMethod Guider close method: 'xButton', 'escapeKey', 'clickOutside'
@@ -19,10 +29,7 @@
 			clickOutside: 'outside-click'
 		}[ closeMethod ];
 
-		new mw.Api().saveOption(
-			'growthexperiments-tour-homepage-welcome',
-			'1'
-		);
+		markTourAsSeen();
 		homepageModuleLogger.log( 'generic', 'desktop', 'welcome-close', { type: type } );
 	}
 
@@ -63,7 +70,10 @@
 				// callback, and define a fake next step and use its onShow callback instead.
 				action: 'next'
 			} ],
-			onShow: setupCloseButtonLogging,
+			onShow: function () {
+				markTourAsSeen();
+				setupCloseButtonLogging( this );
+			},
 			onClose: logTourCloseAndMarkAsComplete
 		} );
 		welcomeTour.step( {
@@ -97,7 +107,10 @@
 				action: 'end',
 				namemsg: 'growthexperiments-tour-response-button-okay'
 			} ],
-			onShow: setupCloseButtonLogging,
+			onShow: function () {
+				markTourAsSeen();
+				setupCloseButtonLogging( this );
+			},
 			onClose: logTourCloseAndMarkAsComplete
 		} );
 	}
