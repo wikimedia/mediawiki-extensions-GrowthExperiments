@@ -995,10 +995,11 @@ class HomepageHooks implements
 		// than what we see), we need to avoid erroneously deleting the recommendation - since
 		// new recommendations are added to the search index asynchronously, it would result
 		// in the DB and search index getting out of sync.
-		$linkRecommendation = $this->linkRecommendationStore->getByLinkTarget( $page->getTitle() );
+		$linkRecommendation = $this->linkRecommendationStore->getByLinkTarget( $page->getTitle(),
+			IDBAccessObject::READ_NORMAL, true );
 		if ( $linkRecommendation && $linkRecommendation->getRevisionId() < $revId ) {
 			$linkRecommendation = $this->linkRecommendationStore->getByLinkTarget( $page->getTitle(),
-				IDBAccessObject::READ_LATEST );
+				IDBAccessObject::READ_LATEST, true );
 		}
 		if ( $linkRecommendation && $linkRecommendation->getRevisionId() < $revId ) {
 			$fields[WeightedTagsHooks::FIELD_NAME][] = LinkRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX
