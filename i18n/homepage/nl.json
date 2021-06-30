@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bdijkstra",
 			"Dedalus",
 			"Elroy",
 			"Encycloon",
@@ -133,12 +134,12 @@
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Actief}} $2 {{PLURAL:$2|dag|dagen}} geleden",
 	"growthexperiments-homepage-mentorship-intro": "Deze {{GENDER:$1|ervaren gebruiker}} weet dat je nieuw bent en kan {{GENDER:$2|je}} helpen met bewerken.",
 	"growthexperiments-homepage-mentorship-question-button": "Stel {{GENDER:$2|je}} {{GENDER:$1|mentor}} een vraag",
-	"growthexperiments-homepage-mentorship-mentor-conversations": "Bekijk andere gesprekken van {{GENDER:$2|je}} {{GENDER:$1|mentor}}",
-	"growthexperiments-homepage-mentorship-dialog-title": "Stel {{GENDER:$2|je}} {{GENDER:$1|mentor}} een vraag",
-	"growthexperiments-homepage-mentorship-questionreview-header": "Wanneer je een vraag stelt, wordt deze <strong>openbaar geplaatst</strong> onder {{GENDER:$2|je}} gebruikersnaam, \"$2\", tot $3, waar {{GENDER:$1|hij|zij|de mentor}} je vraag kan vinden en beantwoorden.",
-	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "{{GENDER:$2|je}} {{GENDER:$1|mentors}} overlegpagina",
-	"growthexperiments-homepage-mentorship-confirmation-text": "{{GENDER:$2|Je}} vraag staat nu op de overlegpagina van je mentor, waar {{GENDER:$1|hij|zij|de mentor}} deze zal beantwoorden zodra {{GENDER:$1|hij|zij|hij/zij}} dat kan.",
-	"growthexperiments-homepage-mentorship-view-question-text": "Bekijk {{GENDER:$2|je}} vraag op je {{GENDER:$1|mentors}} overlegpagina.",
+	"growthexperiments-homepage-mentorship-mentor-conversations": "Bekijk andere gesprekken van uw mentor",
+	"growthexperiments-homepage-mentorship-dialog-title": "Stel uw mentor een vraag",
+	"growthexperiments-homepage-mentorship-questionreview-header": "Wanneer u een vraag stelt, wordt deze <strong>openbaar geplaatst</strong> onder uw gebruikersnaam, \"$2\", tot $3, waar {{GENDER:$1|hij|zij|de mentor}} uw vraag kan vinden en beantwoorden.",
+	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "uw mentors overlegpagina",
+	"growthexperiments-homepage-mentorship-confirmation-text": "Uw vraag staat nu op de overlegpagina van uw mentor, waar {{GENDER:$1|hij|zij|de mentor}} deze zal beantwoorden zodra {{GENDER:$1|hij|zij|diegene}} dat kan.",
+	"growthexperiments-homepage-mentorship-view-question-text": "Bekijk uw vraag op uw mentors overlegpagina.",
 	"growthexperiments-homepage-mentorship-question-subject": "Vraag van [[User:$1|$1]]",
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Vraag van [[User:$1|$1]] over [[$2]]",
 	"growthexperiments-homepage-tutorial-header": "Leren hoe je kunt bewerken",

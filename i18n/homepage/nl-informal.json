@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bdijkstra"
+		]
+	},
+	"growthexperiments-homepage-mentorship-mentor-conversations": "Bekijk andere gesprekken van je mentor",
+	"growthexperiments-homepage-mentorship-dialog-title": "Stel je mentor een vraag",
+	"growthexperiments-homepage-mentorship-questionreview-header": "Wanneer je een vraag stelt, wordt deze <strong>openbaar geplaatst</strong> onder je gebruikersnaam, \"$2\", tot $3, waar {{GENDER:$1|hij|zij|de mentor}} je vraag kan vinden en beantwoorden.",
+	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "je mentors overlegpagina",
+	"growthexperiments-homepage-mentorship-confirmation-text": "Je vraag staat nu op de overlegpagina van je mentor, waar {{GENDER:$1|hij|zij|de mentor}} deze zal beantwoorden zodra {{GENDER:$1|hij|zij|diegene}} dat kan.",
+	"growthexperiments-homepage-mentorship-view-question-text": "Bekijk je vraag op je mentors overlegpagina."
+}
