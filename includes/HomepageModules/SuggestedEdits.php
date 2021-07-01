@@ -283,7 +283,7 @@ class SuggestedEdits extends BaseModule {
 	/** @inheritDoc */
 	public function getJsData( $mode ) {
 		$data = parent::getJsData( $mode );
-		$data['task-preview'] = [];
+		$data['task-preview'] = [ 'noresults' => true ];
 
 		// Preload one task card for users who have the module activated
 		if ( $this->canRender() && self::isActivated( $this->getContext(), $this->userOptionsLookup ) ) {
