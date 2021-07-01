@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Jeeputer",
+			"Pikne",
 			"Roan Kattouw"
 		]
 	},
@@ -16,6 +17,6 @@
 	"growthexperiments-signupcampaign-title": "Title of the Special:CreateAccount block that's shown to Wikimedia donors. (This is for a one-off experiment and will be removed soon. Only needs to be translated into es and pt.)",
 	"growthexperiments-signupcampaign-body": "Body of the Special:CreateAccount block that's shown to Wikimedia donors. (This is for a one-off experiment and will be removed soon. Only needs to be translated into es and pt.)",
 	"growthexperiments-signupcampaign-bullet1": "First highlight of the Special:CreateAccount block that's shown to Wikimedia donors. (This is for a one-off experiment and will be removed soon. Only needs to be translated into es and pt.)",
-	"growthexperiments-signupcampaign-bullet2": "از یک ویرایشگر باتجربه درخواست کمک کنید",
-	"growthexperiments-signupcampaign-bullet3": "با ویرایش‌های کوچک و آسان شروع کنید"
+	"growthexperiments-signupcampaign-bullet2": "Second highlight of the Special:CreateAccount block that's shown to Wikimedia donors. (This is for a one-off experiment and will be removed soon. Only needs to be translated into es and pt.)",
+	"growthexperiments-signupcampaign-bullet3": "Third highlight of the Special:CreateAccount block that's shown to Wikimedia donors. (This is for a one-off experiment and will be removed soon. Only needs to be translated into es and pt.)"
 }
