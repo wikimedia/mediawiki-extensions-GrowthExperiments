@@ -146,7 +146,10 @@ AddLinkSaveDialogMixin.prototype.getTeardownProcess = function ( data ) {
 
 		// If the page was saved, try showing the post-edit dialog. This is a hack for the case
 		// when no link recommendation was accepted so the save was a null edit and the postEdit
-		// hook did not fire.
+		// hook did not fire. This is only needed for desktop since postEditMobile hook is fired.
+		if ( OO.ui.isMobile() ) {
+			return;
+		}
 		if ( ve.init.target.madeNullEdit ) {
 			suggestedEditSession.setTaskState( SuggestedEditSession.static.STATES.SUBMITTED );
 			suggestedEditSession.showPostEditDialog( { resetSession: true } );
