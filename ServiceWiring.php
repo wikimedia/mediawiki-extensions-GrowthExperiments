@@ -16,6 +16,7 @@ use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\MentorDashboard\MenteeOverview\DatabaseMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
+use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
@@ -407,6 +408,16 @@ return [
 		} else {
 			return new CirrusSearchIndexUpdater();
 		}
+	},
+
+	'GrowthExperimentsStarredMenteesStore' => static function (
+		MediaWikiServices $services
+	): StarredMenteesStore {
+		return new StarredMenteesStore(
+			$services->getUserFactory(),
+			$services->getUserIdentityLookup(),
+			$services->getUserOptionsManager()
+		);
 	},
 
 	// deprecated, use GrowthExperimentsTaskSuggesterFactory directly
