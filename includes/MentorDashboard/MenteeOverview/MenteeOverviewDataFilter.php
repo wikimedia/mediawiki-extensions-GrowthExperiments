@@ -62,6 +62,9 @@ class MenteeOverviewDataFilter {
 	/** @var int|null */
 	private $maxEdits = null;
 
+	/** @var int[]|null */
+	private $onlyIds = null;
+
 	/** @var int|null */
 	private $totalRows = null;
 
@@ -129,6 +132,19 @@ class MenteeOverviewDataFilter {
 	 */
 	public function maxEdits( ?int $maxEdits ): MenteeOverviewDataFilter {
 		$this->maxEdits = $maxEdits;
+		return $this;
+	}
+
+	/**
+	 * Include only users with specified IDs
+	 *
+	 * Used to filter by starred mentees.
+	 *
+	 * @param array|null $ids User IDs
+	 * @return static
+	 */
+	public function onlyIds( ?array $ids ): MenteeOverviewDataFilter {
+		$this->onlyIds = $ids;
 		return $this;
 	}
 
@@ -252,6 +268,10 @@ class MenteeOverviewDataFilter {
 				if ( substr( $menteeData['username'], 0, $prefixLen ) !== $this->prefix ) {
 					return false;
 				}
+			}
+
+			if ( $this->onlyIds !== null && !in_array( $menteeData['user_id'], $this->onlyIds ) ) {
+				return false;
 			}
 
 			if ( $this->minEdits !== null && $menteeData['editcount'] < $this->minEdits ) {

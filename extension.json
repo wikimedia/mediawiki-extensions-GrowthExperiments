@@ -115,7 +115,8 @@
 			"method": "GET",
 			"class": "GrowthExperiments\\Rest\\Handler\\MenteesHandler",
 			"services": [
-				"GrowthExperimentsMenteeOverviewDataProvider"
+				"GrowthExperimentsMenteeOverviewDataProvider",
+				"GrowthExperimentsStarredMenteesStore"
 			]
 		},
 		{
