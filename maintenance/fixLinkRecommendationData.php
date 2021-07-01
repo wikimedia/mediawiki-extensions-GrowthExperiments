@@ -55,6 +55,8 @@ class FixLinkRecommendationData extends Maintenance {
 			. '(Note that this relies on the job queue to work.)' );
 		$this->addOption( 'db-table', 'Delete DB table entries which do not match the search index.' );
 		$this->addOption( 'dry-run', 'Run without making any changes.' );
+		$this->addOption( 'statsd', 'Report the number of fixes (or would-be fixes, '
+			. 'when called with --dry-run) to statsd' );
 		$this->addOption( 'verbose', 'Show debug output.' );
 		$this->setBatchSize( 100 );
 	}
@@ -93,6 +95,7 @@ class FixLinkRecommendationData extends Maintenance {
 	private function fixSearchIndex() {
 		$fixing = $this->hasOption( 'dry-run' ) ? 'Would fix' : 'Fixing';
 		$from = 0;
+		$fixedCount = 0;
 		// phpcs:ignore MediaWiki.ControlStructures.AssignmentInControlStructures.AssignmentInControlStructures
 		while ( $titles = $this->search( 'hasrecommendation:link', $this->getBatchSize(), $from ) ) {
 			$this->verboseOutput( '  checking ' . count( $titles ) . " titles...\n" );
@@ -107,12 +110,15 @@ class FixLinkRecommendationData extends Maintenance {
 				}
 			}
 			$from += $this->getBatchSize();
+			$fixedCount += count( $titlesToFix );
 		}
+		$this->maybeReportFixedCount( $fixedCount, 'search-index' );
 	}
 
 	private function fixDatabaseTable() {
 		$fixing = $this->hasOption( 'dry-run' ) ? 'Would fix' : 'Fixing';
 		$from = null;
+		$fixedCount = 0;
 		// phpcs:ignore MediaWiki.ControlStructures.AssignmentInControlStructures.AssignmentInControlStructures
 		while ( $pageIds = $this->linkRecommendationStore->listPageIds( $this->getBatchSize(), $from ) ) {
 			$this->verboseOutput( '  checking ' . count( $pageIds ) . " titles...\n" );
@@ -127,7 +133,9 @@ class FixLinkRecommendationData extends Maintenance {
 				$this->commitTransaction( $this->linkRecommendationStore->getDB( DB_PRIMARY ), __METHOD__ );
 			}
 			$from = end( $pageIds );
+			$fixedCount += count( $pageIdsToFix );
 		}
+		$this->maybeReportFixedCount( $fixedCount, 'db-table' );
 	}
 
 	/**
@@ -176,6 +184,15 @@ class FixLinkRecommendationData extends Maintenance {
 		if ( $this->hasOption( 'verbose' ) ) {
 			$this->output( $output );
 		}
+	}
+
+	private function maybeReportFixedCount( int $count, string $type ) {
+		if ( !$this->hasOption( 'statsd' ) ) {
+			return;
+		}
+		$fixWord = $this->hasOption( 'dry-run' ) ? 'fixable' : 'fixed';
+		$dataFactory = MediaWikiServices::getInstance()->getPerDbNameStatsdDataFactory();
+		$dataFactory->updateCount( "growthexperiments.$fixWord.link-recommendation.$type", $count );
 	}
 
 }
