@@ -2,11 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Dj",
+			"Llz78",
 			"Tacsipacsi"
 		]
 	},
 	"growthexperiments-desc": "Ez a kiterjesztés a Növekedés (Growth) csapat kísérleteit tartalmazza.",
 	"growthexperiments-edit-config-edit-summary": "Szerkesztési összefoglaló",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "Az oldal teteje",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "A oldal alja",
+	"growthexperiments-edit-config-mentorship": "Mentorálás",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Igen",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Nem",
 	"growthexperiments-edit-config-newcomertasks": "Javasolt szerkesztések"

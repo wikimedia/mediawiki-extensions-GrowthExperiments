@@ -4,6 +4,7 @@
 			"Csega",
 			"Dj",
 			"Hanna Tardos",
+			"Llz78",
 			"Misibacsi",
 			"Samat",
 			"Tacsipacsi",
@@ -318,6 +319,7 @@
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Folytatás",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Megértettem",
 	"growthexperiments-addlink-pagenotfound": "\"$1\" oldal nem létezik",
+	"growthexperiments-addlink-context-text-label": "Szöveg",
 	"growthexperiments-addlink-context-button-accept": "Igen",
 	"growthexperiments-addlink-context-button-reject": "Nem",
 	"growthexperiments-addlink-context-button-next": "Következő",
@@ -332,5 +334,6 @@
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Kezdés",
 	"newcomertasksinfo": "Az új szerkesztő feladata",
 	"newcomertasksinfo-no-data": "Nincs elérhető adat.",
-	"newcomertasksinfo-table-header-task-type-id": "Azonosító"
+	"newcomertasksinfo-table-header-task-type-id": "Azonosító",
+	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Javaslatok"
 }
