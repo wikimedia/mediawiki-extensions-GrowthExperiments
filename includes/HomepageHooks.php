@@ -593,7 +593,7 @@ class HomepageHooks implements
 			];
 		}
 
-		$geEnabled = $request->getInt( 'geEnabled' );
+		$geEnabled = $request->getInt( 'geEnabled', -1 );
 		if ( $geEnabled !== null ) {
 			$formDescriptor['geEnabled'] = [
 				'type' => 'hidden',
