@@ -42,6 +42,19 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/Grow
     require_once "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/GrowthExperiments.LocalSettings.php";
 }
 ` );
+		// This is needed in Quibble + Apache (T225218) because we use supervisord to control
+		// the php-fpm service, and with supervisord you need to restart the php-fpm service
+		// in order to load updated php code.
+		// TODO: Add a conditional so that this only executes when we're in the quibble + apache environment.
+		childProcess.spawnSync(
+			'service',
+			[ 'php7.2-fpm', 'restart' ]
+		);
+		// Super ugly hack: Run this twice because sometimes the first invocation hangs.
+		childProcess.spawnSync(
+			'service',
+			[ 'php7.2-fpm', 'restart' ]
+		);
 		// Import the test article and its suggestions
 		childProcess.spawnSync(
 			'php',
