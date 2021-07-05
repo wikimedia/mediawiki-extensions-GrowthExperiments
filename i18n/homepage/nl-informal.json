@@ -4,10 +4,22 @@
 			"Bdijkstra"
 		]
 	},
+	"growthexperiments-homepage-userpage-body": "Oefen met bewerken terwijl u uw openbare profiel opbouwt.",
+	"growthexperiments-homepage-startediting-dialog-intro-response-add-image": "<strong>Toen je jouw account aanmaakte, zei je dat je een foto of afbeelding wilde toevoegen.</strong> Dat is een belangrijke maar uitdagende manier om te bewerken, dus we raden je aan om eerst een paar eenvoudige bewerkingen uit te proberen. Als je liever direct een foto of afbeelding toevoegt, kan je [$1 hier leren hoe dat moet].",
+	"growthexperiments-homepage-startediting-dialog-intro-response-edit-typo": "<strong>Toen je jouw account aanmaakte, zei je dat je een typefout of fout wilde herstellen.</strong> Hier vind je suggesties voor kleine bewerkingen om aan de slag te gaan. Als je liever direct een specifiek artikel wilt verbeteren, kun je naar het artikel zoeken en op \"{{int:vector-view-edit}}\" klikken.",
+	"growthexperiments-homepage-startediting-dialog-intro-response-edit-info-add-change": "<strong>Toen je jouw account aanmaakte, zei je dat je informatie over een bestaand artikel wilde toevoegen of wijzigen.</strong> Hier kun je suggesties voor kleine bewerkingen vinden om aan de slag te gaan. Als je liever direct een specifiek artikel wijzigt, kun je het artikel zoeken en klikken op \"{{int:vector-view-edit}}\".",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-selector-header": "Kies enkele onderwerpen waarin je geïnteresseerd bent om te bewerken",
+	"growthexperiments-homepage-startediting-dialog-intro-topic-description-subheader": "Gebruik onderwerpen om suggesties te krijgen die je interessant vindt. Je kan een onderwerp kiezen of meerdere.",
+	"growthexperiments-homepage-impact-header": "{{GENDER:$1|Jouw}} impact",
+	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Bekijk weergaven van artikelen die je hebt bewerkt",
+	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Help de wereld gratis kennis te verspreiden door onderwerpen te bewerken die het belangrijkst zijn voor jou.",
+	"growthexperiments-tour-response-tip-text": "Wanneer je vraag is beantwoord, krijg je hier een nieuwe melding.",
+	"growthexperiments-tour-mentor-response-tip-personal-text": "Wanneer jouw mentor reageert, krijg je hier een nieuwe melding.",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "Bekijk andere gesprekken van je mentor",
 	"growthexperiments-homepage-mentorship-dialog-title": "Stel je mentor een vraag",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Wanneer je een vraag stelt, wordt deze <strong>openbaar geplaatst</strong> onder je gebruikersnaam, \"$2\", tot $3, waar {{GENDER:$1|hij|zij|de mentor}} je vraag kan vinden en beantwoorden.",
 	"growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text": "je mentors overlegpagina",
 	"growthexperiments-homepage-mentorship-confirmation-text": "Je vraag staat nu op de overlegpagina van je mentor, waar {{GENDER:$1|hij|zij|de mentor}} deze zal beantwoorden zodra {{GENDER:$1|hij|zij|diegene}} dat kan.",
-	"growthexperiments-homepage-mentorship-view-question-text": "Bekijk je vraag op je mentors overlegpagina."
+	"growthexperiments-homepage-mentorship-view-question-text": "Bekijk je vraag op je mentors overlegpagina.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-link-recommendation": "Het toevoegen van links is de makkelijkste manier van bewerken. Links bieden de lezer de mogelijkheid op een onderwerp te klikken waar ze meer over willen weten.<br />Links worden automatisch voorgesteld en jij bepaalt of ze aan het artikel toegevoegd moeten worden."
 }
