@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"BnSrSa",
+			"Jackiezelaya",
 			"Khiari",
 			"LORDZRAWN",
 			"MarcoAurelio",
@@ -16,6 +17,7 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Última actualización por [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Última actualización por usuario desconocido $1.",
 	"growthexperiments-edit-config-pretext": "Esta página te permite editar la configuración de las funciones del equipo [[:mw:Special:MyLanguage/Growth|Crecimiento]]. Editarás $1 con tu nombre. Puedes ver tus cambios en el historial de esa página.",
+	"growthexperiments-edit-config-pretext-unprivileged": "Este formulario permite a los usuarios con privilegios editar la configuración de [[:mw:Special:MyLanguage/Growth| Crecimiento]] características del equipo.",
 	"growthexperiments-edit-config-error-invalid-title": "La página de configuración no se configuró correctamente",
 	"growthexperiments-edit-config-edit-summary": "Resumen de edición",
 	"growthexperiments-edit-config-config-changed": "Se cambió la configuración. Es posible que debas esperar unos minutos para que los cambios tengan efecto.",
@@ -62,7 +64,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Pagina donde los recién llegados pueden aprender más sobre el corrector de textos.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Expandir: plantillas para buscar artículos que necesiten expansión.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-learnmore": "Página de destino para obtener más información sobre la expansión de artículos.",
-	"growthexperiments-edit-config-newcomer-tasks-links-templates": "Enlaces: plantillas para encontrar artículos que necesitan más enlaces wiki.",
+	"growthexperiments-edit-config-newcomer-tasks-links-templates": "Referencias: plantillas para buscar artículos que necesiten más referencias.",
 	"growthexperiments-edit-config-newcomer-tasks-links-learnmore": "Página de destino para obtener más información sobre cómo agregar enlaces.",
 	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Referencias: plantillas para buscar artículos que necesiten más referencias.",
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Página de destino para obtener más información sobre cómo agregar referencias.",
