@@ -11,6 +11,7 @@
 			"Paucabot",
 			"Skurz0",
 			"Townie",
+			"Vfc",
 			"Xavier Dengra"
 		]
 	},
@@ -79,6 +80,8 @@
 	"growthexperiments-tour-response-button-okay": "Entesos",
 	"growthexperiments-homepage-help-header": "Us cal ajuda per editar",
 	"growthexperiments-homepage-help-subheader": "Principals pàgines d'ajuda sobre edició",
+	"growthexperiments-homepage-recent-questions-archived": "arxivat",
+	"growthexperiments-homepage-recent-questions-archived-tooltip": "Aquesta pregunta s'ha arxivat, probablement perquè es va fer fa molt de temps.",
 	"growthexperiments-homepage-mentorship-dialog-title": "Preguntar {{GENDER:$2|}}{{GENDER:$1|al vostre mentor|a la vostre mentora}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Quan feu una pregunta, es <strong>fa pública</strong> sota el vostre nom d'{{GENDER:$2|usuari|usuària}}, \"$2\", a $3, que és on {{GENDER:$1|podreu}} trobar i respondre la vostra pregunta.",
 	"growthexperiments-homepage-tutorial-cta-text": "Tutorial",
