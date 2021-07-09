@@ -3,10 +3,10 @@
 		var $emailInput = $root.find( '#wpEmail' );
 		$emailInput
 			.on( 'focus', function () {
-				var $warningBox = $emailInput.next( '.warning' );
+				var $warningBox = $emailInput.next( '.warningbox' );
 				if ( $warningBox.length === 0 ) {
-					$warningBox = $( '<span>' )
-						.addClass( 'warning' )
+					$warningBox = $( '<div>' )
+						.addClass( 'warningbox' )
 						.text( mw.msg( 'growthexperiments-confirmemail-emailwarning' ) )
 						.hide();
 					$emailInput.after( $warningBox );
@@ -16,7 +16,7 @@
 			} )
 			.on( 'blur', function () {
 				// Hide the warning again if the user leaves the email input without typing anything
-				var $warningBox = $emailInput.next( '.warning' );
+				var $warningBox = $emailInput.next( '.warningbox' );
 				if ( $warningBox.length && $emailInput.val().trim() === '' ) {
 					// eslint-disable-next-line no-jquery/no-slide
 					$warningBox.slideUp();
