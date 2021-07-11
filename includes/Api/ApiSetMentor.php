@@ -12,7 +12,8 @@ use LogEventsList;
 use LogPager;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
-use User;
+use MediaWiki\User\UserIdentity;
+use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiSetMentor extends ApiBase {
@@ -44,9 +45,9 @@ class ApiSetMentor extends ApiBase {
 	 */
 	public function execute() {
 		$params = $this->extractRequestParams();
-		/** @var User $mentee */
+		/** @var UserIdentity $mentee */
 		$mentee = $params['mentee'];
-		/** @var User $mentor */
+		/** @var UserIdentity $mentor */
 		$mentor = $params['mentor'];
 
 		if ( !in_array( $this->getUser()->getId(), [ $mentee->getId(), $mentor->getId() ] ) ) {
@@ -72,7 +73,7 @@ class ApiSetMentor extends ApiBase {
 				new LogEventsList( $this->getContext() ),
 				[ 'growthexperiments' ],
 				'',
-				$mentee->getUserPage()
+				Title::makeTitle( NS_USER, $mentee->getName() )
 			),
 			$this->mentorStore
 		);
