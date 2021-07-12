@@ -464,7 +464,7 @@ class HomepageHooks implements
 				$title->getNamespace()
 			);
 			// Make the link blue
-			unset( $personal_urls['userpage']['class'] );
+			unset( $personal_urls['userpage']['link-class'] );
 			// Remove the "this page doesn't exist" part of the tooltip
 			$personal_urls['userpage' ]['exists'] = true;
 		}
