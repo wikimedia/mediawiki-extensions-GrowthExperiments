@@ -16,21 +16,14 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 	/** @inheritDoc */
 	protected function getPageHtml( $formHtml ) {
 		// This is copy-paste from the parent, except the middle code block is replaced by getDonorHtml()
-		// and the order of the form and donor HTML depends on the device type.
-
-		global $wgLoginLanguageSelector;
+		// and the order of the form and donor HTML depends on the device type. $wgLoginLanguageSelector
+		// is ignored (T286587).
 
 		$loginPrompt = $this->isSignup() ? '' : Html::rawElement( 'div',
 			[ 'id' => 'userloginprompt' ], $this->msg( 'loginprompt' )->parseAsBlock() );
-		$languageLinks = $wgLoginLanguageSelector ? $this->makeLanguageSelector() : '';
 		$signupStartMsg = $this->msg( 'signupstart' );
 		$signupStart = ( $this->isSignup() && !$signupStartMsg->isDisabled() )
 			? Html::rawElement( 'div', [ 'id' => 'signupstart' ], $signupStartMsg->parseAsBlock() ) : '';
-		if ( $languageLinks ) {
-			$languageLinks = Html::rawElement( 'div', [ 'id' => 'languagelinks' ],
-				Html::rawElement( 'p', [], $languageLinks )
-			);
-		}
 
 		$donorHtml = $this->getDonorHtml();
 		$formBlock = Html::rawElement( 'div', [ 'id' => 'userloginForm' ],
@@ -41,7 +34,6 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 
 		$html = Html::rawElement( 'div', [ 'class' => 'mw-ui-container' ],
 			$loginPrompt
-			. $languageLinks
 			. $signupStart
 			. $formAndDonor
 		);
