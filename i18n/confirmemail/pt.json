@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"Martin Urbanec (WMF)"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|o que é isto?]])",
@@ -11,5 +12,10 @@
 	"growthexperiments-confirmemail-confirm-subject": "Bem-vindo(a) à wiki {{SITENAME}}: confirme o seu endereço de correio eletrónico, por favor",
 	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Olá}} $2,\n\nObrigado por ter adicionado um endereço à sua conta na wiki {{SITENAME}}, registada do endereço IP $1.\n\nClique o botão abaixo, por favor, para confirmar este endereço de correio eletrónico como aquele que gostaria de associar à sua conta \"$2\":\n\n$3\n\nNota: este código de confirmação <strong>expira em $4</strong>.\n\nObrigado,\n\n{{SITENAME}}\n\n----\n\nPara cancelar a confirmação do endereço de correio eletrónico (porque não registou a conta, ou por qualquer outra razão) clique esta hiperligação de cancelamento:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "Confirmar endereço de correio eletrónico",
-	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Olá}} $2,\n\nObrigado por ter adicionado um endereço à sua conta na wiki {{SITENAME}}, registada do endereço IP $1.\n\nClique a hiperligação abaixo, por favor, para confirmar este endereço de correio eletrónico como aquele que gostaria de associar à sua conta \"$2\":\n\n$3\n\nNota: este código de confirmação expira em $4.\n\nObrigado,\n\n{{SITENAME}}\n\n----\n\nPara cancelar a confirmação do endereço de correio eletrónico (porque não registou a conta, ou por qualquer outra razão) clique esta hiperligação de cancelamento:\n\n$5"
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Olá}} $2,\n\nObrigado por ter adicionado um endereço à sua conta na wiki {{SITENAME}}, registada do endereço IP $1.\n\nClique a hiperligação abaixo, por favor, para confirmar este endereço de correio eletrónico como aquele que gostaria de associar à sua conta \"$2\":\n\n$3\n\nNota: este código de confirmação expira em $4.\n\nObrigado,\n\n{{SITENAME}}\n\n----\n\nPara cancelar a confirmação do endereço de correio eletrónico (porque não registou a conta, ou por qualquer outra razão) clique esta hiperligação de cancelamento:\n\n$5",
+	"growthexperiments-signupcampaign-title": "Obrigado/a por ser um/a doador/a. Crie uma conta para começar a melhorar a Wikipédia.",
+	"growthexperiments-signupcampaign-body": "A Wikipédia é construída por pessoas como você trabalhando juntas. Editar um artigo pode ser tão simples quanto adicionar um link ou alterar uma palavra.",
+	"growthexperiments-signupcampaign-bullet1": "Tarefas sugeridas que correspondem aos seus interesses",
+	"growthexperiments-signupcampaign-bullet2": "Obtenha ajuda e orientação enquanto edita",
+	"growthexperiments-signupcampaign-bullet3": "Comece com edições pequenas e fáceis"
 }
