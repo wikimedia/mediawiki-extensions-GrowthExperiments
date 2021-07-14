@@ -148,6 +148,52 @@ body.mw-special-Homepage {
 		padding: 0;
 		background-color: @suggestedEditsBackgroundColor;
 	}
+
+	.overlay.suggested-edits-module-mobile-overlay {
+		// @suggestedEditsBackgroundColor can't be used here since the overlay background color
+		// needs to be opaque to cover the content behind it.
+		background: @suggestedEditsOpaqueBackgroundColor;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+
+		// overlay-content scrolls behind fixed header & footer
+		.overlay-header-container,
+		.overlay-footer-container {
+			flex-shrink: 0;
+		}
+
+		.overlay-content {
+			flex-grow: 1;
+			overflow-x: hidden;
+			overflow-y: auto;
+
+			.growthexperiments-homepage-module-suggested-edits {
+				background: none;
+				margin: 0 0 67px 0; // account for fixed footer
+				display: flex;
+				flex-direction: column;
+			}
+
+			.growthexperiments-homepage-module-body {
+				height: 100%;
+			}
+		}
+
+		.growthexperiments-homepage-module-footer {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			width: 100%;
+			border: unset;
+			box-shadow: 0 -2px 2px rgba( 0, 0, 0, 0.1 );
+			padding: 17px 0;
+		}
+
+		.overlay-footer-container {
+			border: unset;
+		}
+	}
 }
 
 .overlay-enabled {
@@ -636,8 +682,6 @@ body.mw-special-Homepage {
 		}
 
 		.growthexperiments-homepage-module-footer {
-			font-size: 0.8em;
-			line-height: 1.5;
 			margin: 0;
 		}
 
@@ -657,12 +701,7 @@ body.mw-special-Homepage {
 		}
 
 		.suggested-edits-card-wrapper {
-			.suggested-edits-previous,
-			.suggested-edits-next {
-				.oo-ui-iconElement .oo-ui-iconElement-icon {
-					width: 20px;
-				}
-			}
+			position: relative;
 
 			.suggested-edits-task-card-wrapper {
 				width: @cardWrapperWidth;
@@ -695,6 +734,47 @@ body.mw-special-Homepage {
 						}
 					}
 				}
+			}
+		}
+
+		.suggested-edits-footer-navigation {
+			display: flex;
+			justify-content: center;
+
+			.suggested-edits-footer-navigation-edit-button {
+				margin: 0;
+			}
+
+			.suggested-edits-previous,
+			.suggested-edits-next {
+				margin: 0 26px;
+
+				.oo-ui-iconElement .oo-ui-iconElement-icon {
+					width: 20px;
+				}
+			}
+		}
+
+		.suggested-edits-card-fake {
+			position: absolute;
+			top: 0;
+		}
+
+		.suggested-edits-card,
+		.suggested-edits-card-fake {
+			transition: transform 1s ease-in-out;
+			transform: translateX( 0 );
+
+			&.no-transition {
+				transition: unset;
+			}
+
+			&.to-start {
+				transform: translateX( -100vw );
+			}
+
+			&.to-end {
+				transform: translateX( 100vw );
 			}
 		}
 	}

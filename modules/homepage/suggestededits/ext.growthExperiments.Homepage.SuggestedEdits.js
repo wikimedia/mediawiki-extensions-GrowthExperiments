@@ -22,6 +22,7 @@
 		aqsConfig = require( './AQSConfig.json' ),
 		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),
 		defaultTaskTypes = TaskTypesAbFilter.filterDefaultTaskTypes( require( './DefaultTaskTypes.json' ) ),
+		SwipePane = require( '../../ui-components/SwipePane.js' ),
 		TASK_QUEUE_LENGTH = 200;
 
 	/**
@@ -31,6 +32,7 @@
 	 * @constructor
 	 * @param {Object} config Configuration options
 	 * @param {jQuery} config.$element SuggestedEdits widget container
+	 * @param {jQuery} config.$nav Navigation element (if navigation is separate from $element)
 	 * @param {Array<string>} config.taskTypePresets List of IDs of enabled task types
 	 * @param {Array<string>|null} config.topicPresets Lists of IDs of enabled topic filters.
 	 * @param {boolean} config.topicMatching If topic matching feature is enabled in the UI
@@ -39,7 +41,7 @@
 	 * @param {mw.libs.ge.GrowthTasksApi} api
 	 */
 	function SuggestedEditsModule( config, logger, api ) {
-		var $previous, $next, $filters, $filtersContainer;
+		var $previous, $next, $filters, $filtersContainer, $navContainer;
 		SuggestedEditsModule.super.call( this, config );
 
 		this.config = config;
@@ -53,6 +55,9 @@
 		this.api = api;
 		this.taskQueue = [];
 		this.taskQueueLoading = false;
+		this.editWidget = null;
+		this.isFirstRender = true;
+		this.isShowingPseudoCard = true;
 		// Allow restoring on cancel.
 		this.backup = {};
 		this.backup.taskQueue = [];
@@ -80,17 +85,23 @@
 		}
 
 		this.pager = new PagerWidget();
+		this.$pagerWrapper = this.$element.find( '.suggested-edits-pager' );
+		if ( !this.$pagerWrapper.length ) {
+			this.$pagerWrapper = $( '<div>' ).addClass( 'suggested-edits-pager' ).appendTo( this.$element );
+		}
+
 		this.previousWidget = new PreviousNextWidget( { direction: 'Previous' } )
 			.connect( this, { click: 'onPreviousCard' } );
 		this.nextWidget = new PreviousNextWidget( { direction: 'Next' } )
 			.connect( this, { click: 'onNextCard' } );
 
-		this.$pagerWrapper = this.$element.find( '.suggested-edits-pager' );
-		if ( !this.$pagerWrapper.length ) {
-			this.$pagerWrapper = $( '<div>' ).addClass( 'suggested-edits-pager' ).appendTo( this.$element );
+		$navContainer = this.$element;
+		if ( this.config.$nav.length ) {
+			$navContainer = this.config.$nav;
+			this.setupEditWidget( $navContainer );
 		}
-		$previous = this.$element.find( '.suggested-edits-previous' );
-		$next = this.$element.find( '.suggested-edits-next' );
+		$previous = $navContainer.find( '.suggested-edits-previous' );
+		$next = $navContainer.find( '.suggested-edits-next' );
 
 		if ( this.mode === 'mobile-overlay' || this.mode === 'mobile-details' ) {
 			$filtersContainer = this.$element.closest( '.growthexperiments-homepage-module' )
@@ -107,6 +118,10 @@
 		$previous.empty().append( this.previousWidget.$element );
 		$next.empty().append( this.nextWidget.$element );
 		$filters.empty().append( this.filters.$element );
+
+		if ( OO.ui.isMobile() ) {
+			this.setupSwipeNavigation();
+		}
 	}
 
 	OO.inheritClass( SuggestedEditsModule, OO.ui.Widget );
@@ -137,7 +152,10 @@
 			homepageModules[ 'suggested-edits' ][ 'task-preview' ] = this.taskQueue[ this.queuePosition ];
 			mw.config.set( 'homepagemodules', homepageModules );
 			require( 'ext.growthExperiments.Homepage.Mobile' )
-				.loadExtraDataForSuggestedEdits( '.growthexperiments-homepage-module-suggested-edits', false );
+				.loadExtraDataForSuggestedEdits(
+					'.growthexperiments-homepage-module-suggested-edits',
+					false
+				);
 		}.bind( this ) );
 	};
 
@@ -289,8 +307,18 @@
 		}
 	};
 
-	SuggestedEditsModule.prototype.onNextCard = function () {
-		this.logger.log( 'suggested-edits', this.mode, 'se-task-navigation', { dir: 'next' } );
+	/**
+	 * Show the next card if it's available
+	 * @param {boolean} [isSwipe] Whether the action is triggered via swipe action
+	 */
+	SuggestedEditsModule.prototype.onNextCard = function ( isSwipe ) {
+		var action = isSwipe ? 'se-task-navigation-swipe' : 'se-task-navigation';
+		if ( this.queuePosition === this.taskQueue.length ) {
+			// EndOfQueueWidget is already shown.
+			return;
+		}
+		this.isGoingBack = false;
+		this.logger.log( 'suggested-edits', this.mode, action, { dir: 'next' } );
 		this.queuePosition = this.queuePosition + 1;
 		this.showCard();
 		this.preloadNextCard();
@@ -299,8 +327,17 @@
 		}
 	};
 
-	SuggestedEditsModule.prototype.onPreviousCard = function () {
-		this.logger.log( 'suggested-edits', this.mode, 'se-task-navigation', { dir: 'prev' } );
+	/**
+	 * Show the previous card if it's available
+	 * @param {boolean} [isSwipe] Whether the action is triggered via swipe action
+	 */
+	SuggestedEditsModule.prototype.onPreviousCard = function ( isSwipe ) {
+		var action = isSwipe ? 'se-task-navigation-swipe' : 'se-task-navigation';
+		if ( this.queuePosition === 0 ) {
+			return;
+		}
+		this.isGoingBack = true;
+		this.logger.log( 'suggested-edits', this.mode, action, { dir: 'prev' } );
 		this.queuePosition = this.queuePosition - 1;
 		this.showCard();
 		if ( OO.ui.isMobile() ) {
@@ -342,7 +379,7 @@
 	 * Display the given card, or the current card.
 	 * Sets this.currentCard.
 	 *
-	 * @param {SuggestedEditCardWidget|ErrorCardWidget|NoResultsWidget|EndOfQueueWidget|null} card
+	 * @param {SuggestedEditCardWidget|ErrorCardWidget|NoResultsWidget|EndOfQueueWidget|null} [card]
 	 *   The card to show. Only used for special cards, for normal cards typically null is passed,
 	 *   in which case a new SuggestedEditCardWidget will be created from the data in
 	 *   this.taskQueue[this.queuePosition]. This might involve fetching supplemental data via
@@ -376,12 +413,14 @@
 				{ newcomerTaskToken: this.logCardData( queuePosition ) }
 			);
 		}
-		this.updateCardElement();
-		this.updateControls();
+		this.updateCardElement( OO.ui.isMobile() ).then( this.updateControls.bind( this ) );
 
 		if ( !( this.currentCard instanceof EditCardWidget ) ) {
+			this.setEditWidgetDisabled( true );
 			return $.Deferred().resolve();
 		}
+		this.setEditWidgetDisabled( false );
+
 		return this.getExtraDataAndUpdateQueue( queuePosition ).then( function () {
 			if ( queuePosition !== this.queuePosition ) {
 				return;
@@ -449,19 +488,95 @@
 	};
 
 	/**
-	 * Update the HTML for the card with whatever is in this.currentCard.
+	 * Animate the current card out and the next card in
+	 *
+	 * @param {jQuery} $cardElement
+	 * @param {jQuery} $cardWrapper
+	 * @return {Promise} Promise that resolves when the animation is done
 	 */
-	SuggestedEditsModule.prototype.updateCardElement = function () {
+	SuggestedEditsModule.prototype.animateCard = function ( $cardElement, $cardWrapper ) {
+		var isGoingBack = this.isGoingBack,
+			$fakeCard = $cardElement.clone(),
+			promise = $.Deferred(),
+			onTransitionEnd;
+
+		// A copy of the current card will be animated out.
+		$fakeCard.addClass( [
+			'suggested-edits-card-fake'
+		] ).removeClass( 'suggested-edits-card' );
+		$cardWrapper.append( $fakeCard );
+		// The current card is positioned off screen so it can be animated in.
+		$cardElement.addClass( [ 'no-transition', isGoingBack ? 'to-start' : 'to-end' ] );
+
+		onTransitionEnd = function () {
+			$fakeCard.remove();
+			$cardElement.off( 'transitionend transitioncancel', onTransitionEnd );
+			promise.resolve();
+		};
+
+		// A delay is added to make sure the fake card is shown and the real card is off screen.
+		setTimeout( function () {
+			$fakeCard.addClass( isGoingBack ? 'to-end' : 'to-start' );
+			$cardElement.html( this.currentCard.$element );
+			$cardElement.on( 'transitionend transitioncancel', onTransitionEnd );
+			$cardElement.removeClass( [ 'no-transition', 'to-start', 'to-end' ] );
+		}.bind( this ), 100 );
+
+		return promise;
+	};
+
+	/**
+	 * Update the HTML for the card with whatever is in this.currentCard.
+	 *
+	 * @param {boolean} [shouldAnimateEditCard] Whether EditCardWidget should be animated
+	 * @return {jQuery.Promise} Promise that resolves when card element has been updated
+	 */
+	SuggestedEditsModule.prototype.updateCardElement = function ( shouldAnimateEditCard ) {
 		var cardSelector = '.suggested-edits-card',
-			$cardElement = $( cardSelector );
-		$cardElement.html( this.currentCard.$element );
-		$cardElement.closest( '.suggested-edits-card-wrapper' )
-			.toggleClass( 'pseudo-card', !( this.currentCard instanceof EditCardWidget ) )
+			$cardElement = $( cardSelector ),
+			$cardWrapper = $cardElement.closest( '.suggested-edits-card-wrapper' ),
+			isShowingEditCardWidget = this.currentCard instanceof EditCardWidget,
+			promise = $.Deferred(),
+			canAnimate = shouldAnimateEditCard &&
+				isShowingEditCardWidget &&
+				!this.isFirstRender &&
+				!this.isShowingPseudoCard;
+
+		if ( canAnimate ) {
+			this.animateCard( $cardElement, $cardWrapper ).then( function () {
+				promise.resolve();
+			} );
+		} else {
+			this.isFirstRender = false;
+			$cardElement.html( this.currentCard.$element );
+			promise.resolve();
+		}
+
+		this.isShowingPseudoCard = !isShowingEditCardWidget;
+		$cardWrapper
+			.toggleClass( 'pseudo-card', !isShowingEditCardWidget )
 			.toggleClass( 'pseudo-card-eoq', this.currentCard instanceof EndOfQueueWidget );
 		this.setupClickLogging();
-		if ( this.currentCard instanceof EditCardWidget ) {
+		if ( isShowingEditCardWidget ) {
 			this.setupEditTypeTracking();
 		}
+		return promise;
+	};
+
+	/**
+	 * Allow the user to swipe left and right to navigate through the task feed
+	 */
+	SuggestedEditsModule.prototype.setupSwipeNavigation = function () {
+		this.swipeCard = new SwipePane( this.config.$element, {
+			isRtl: document.documentElement.dir === 'rtl',
+			isHorizontal: true
+		} );
+		this.swipeCard.setToStartHandler( function () {
+			this.onNextCard( true );
+		}.bind( this ) );
+		this.swipeCard.setToEndHandler( function () {
+			this.onPreviousCard( true );
+		}.bind( this ) );
 	};
 
 	/**
@@ -474,6 +589,16 @@
 		this.updatePager();
 		this.updatePreviousNextButtons();
 		this.updateTaskExplanationWidget();
+	};
+
+	/**
+	 * Log click events on the task card or on the edit button
+	 *
+	 * @param {string} action Either 'se-task-click' or 'se-edit-button-click'
+	 */
+	SuggestedEditsModule.prototype.logEditTaskClick = function ( action ) {
+		this.logger.log( 'suggested-edits', this.mode, action,
+			{ newcomerTaskToken: this.logCardData( this.queuePosition ) } );
 	};
 
 	/**
@@ -490,14 +615,12 @@
 					genewcomertasktoken: this.newcomerTaskToken
 				} ).toString() :
 				'';
-
 		$link
 			.attr( 'href', newUrl )
 			.on( 'click', function () {
 				if ( newUrl ) {
 					// Only log if this is a task card, not the skeleton loading card
-					this.logger.log( 'suggested-edits', this.mode, 'se-task-click',
-						{ newcomerTaskToken: this.logCardData( this.queuePosition ) } );
+					this.logEditTaskClick( 'se-task-click' );
 				}
 			}.bind( this ) );
 	};
@@ -512,6 +635,43 @@
 					.extend( { getasktype: this.currentCard.getTaskType() } ).toString() :
 				'';
 		$link.attr( 'href', newUrl );
+		if ( this.editWidget ) {
+			this.editWidget.setHref( newUrl );
+		}
+	};
+
+	/**
+	 * Replace edit button HTML with ButtonWidget so that OOUI methods can be used
+	 *
+	 * @param {jQuery} $container
+	 */
+	SuggestedEditsModule.prototype.setupEditWidget = function ( $container ) {
+		this.editWidget = new OO.ui.ButtonWidget( {
+			icon: 'edit',
+			label: mw.message( 'growthexperiments-homepage-suggestededits-edit-card' ).text(),
+			flags: [ 'primary', 'progressive' ],
+			classes: [ 'suggested-edits-footer-navigation-edit-button' ]
+		} );
+		var $editButton = $container.find( '.suggested-edits-footer-navigation-edit-button' );
+		$editButton.html( this.editWidget.$element );
+
+		this.editWidget.on( 'click', function () {
+			this.logEditTaskClick( 'se-edit-button-click' );
+			// OO.ui.mixin.ButtonElement.onClick prevents default when clicked
+			// so the href needs to be navigated to manually.
+			location.href = this.editWidget.getHref();
+		}.bind( this ) );
+	};
+
+	/**
+	 * Enable or disable editWidget (if editWidget is shown)
+	 *
+	 * @param {boolean} isDisabled
+	 */
+	SuggestedEditsModule.prototype.setEditWidgetDisabled = function ( isDisabled ) {
+		if ( this.editWidget ) {
+			this.editWidget.setDisabled( isDisabled );
+		}
 	};
 
 	/**
@@ -542,9 +702,14 @@
 			return;
 		}
 
+		if ( OO.ui.isMobile() ) {
+			$container.addClass( 'suggested-edits-module-mobile-overlay' );
+		}
+
 		suggestedEditsModule = new SuggestedEditsModule(
 			{
 				$element: $wrapper,
+				$nav: $container.find( '.suggested-edits-footer-navigation' ),
 				taskTypePresets: preferences.taskTypes,
 				topicPresets: preferences.topics,
 				topicMatching: topicMatching,

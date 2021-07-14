@@ -296,7 +296,7 @@
 		"EventLogging": {
 			"Schemas": {
 				"HelpPanel": "/analytics/legacy/helppanel/1.0.2",
-				"HomepageModule": "/analytics/legacy/homepagemodule/1.1.0",
+				"HomepageModule": "/analytics/legacy/homepagemodule/1.2.0",
 				"NewcomerTask": "/analytics/legacy/newcomertask/1.0.0",
 				"HomepageVisit": "/analytics/legacy/homepagevisit/1.1.1"
 			}
@@ -568,6 +568,7 @@
 				"helppanel/ext.growthExperiments.SuggestedEditsPeek.js",
 				"utils/ext.growthExperiments.Utils.js",
 				"utils/ext.growthExperiments.IconUtils.js",
+				"ui-components/SwipePane.js",
 				{
 					"name": "homepage/suggestededits/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
@@ -602,6 +603,7 @@
 				"oojs-ui-widgets",
 				"oojs-ui.styles.icons-media",
 				"oojs-ui.styles.icons-content",
+				"oojs-ui.styles.icons-editing-core",
 				"oojs-ui-windows",
 				"ext.growthExperiments.Homepage.Topics",
 				"ext.growthExperiments.Homepage.Logger"
@@ -620,6 +622,7 @@
 				"growthexperiments-homepage-suggestededits-pageviews",
 				"growthexperiments-homepage-suggestededits-previous-card",
 				"growthexperiments-homepage-suggestededits-next-card",
+				"growthexperiments-homepage-suggestededits-edit-card",
 				"growthexperiments-homepage-suggestededits-no-results",
 				"growthexperiments-homepage-suggestededits-no-more-results",
 				"growthexperiments-homepage-suggestededits-error-title",

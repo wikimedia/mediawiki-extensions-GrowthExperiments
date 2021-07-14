@@ -7,6 +7,7 @@ use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\CardWrapper;
+use GrowthExperiments\HomepageModules\SuggestedEditsComponents\NavigationWidgetFactory;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\TaskExplanationWidget;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
@@ -123,6 +124,9 @@ class SuggestedEdits extends BaseModule {
 	/** @var UserOptionsLookup */
 	private $userOptionsLookup;
 
+	/** @var NavigationWidgetFactory */
+	private $navigationWidgetFactory;
+
 	/**
 	 * @param IContextSource $context
 	 * @param Config $wikiConfig
@@ -159,6 +163,10 @@ class SuggestedEdits extends BaseModule {
 		$this->titleFactory = $titleFactory;
 		$this->protectionFilter = $protectionFilter;
 		$this->userOptionsLookup = $userOptionsLookup;
+		$this->navigationWidgetFactory = new NavigationWidgetFactory(
+			$this->getContext(),
+			$this->getTaskSet()
+		);
 	}
 
 	/** @inheritDoc */
@@ -421,7 +429,9 @@ class SuggestedEdits extends BaseModule {
 				$this->getContext(),
 				self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ),
 				$this->getContext()->getLanguage()->getDir(),
-				$this->getTaskSet()
+				$this->getTaskSet(),
+				$this->navigationWidgetFactory,
+				$isDesktop
 			) )->render() .
 			( new Tag( 'div' ) )->addClasses( [ 'suggested-edits-task-explanation' ] )
 				->appendContent( ( new TaskExplanationWidget( [
@@ -433,12 +443,20 @@ class SuggestedEdits extends BaseModule {
 
 	/** @inheritDoc */
 	protected function getFooter() {
-		$siteViewsCount = $this->getSiteViews();
-		$siteViewsMessage = $siteViewsCount ?
-			$this->getContext()->msg( 'growthexperiments-homepage-suggestededits-footer' )
-				->params( $this->formatSiteViews( $siteViewsCount ) ) :
-			$this->getContext()->msg( 'growthexperiments-homepage-suggestededits-footer-noviews' );
-		return $siteViewsMessage->parse();
+		if ( $this->getMode() === self::RENDER_DESKTOP ) {
+			$siteViewsCount = $this->getSiteViews();
+			$siteViewsMessage = $siteViewsCount ?
+				$this->getContext()->msg( 'growthexperiments-homepage-suggestededits-footer' )
+					->params( $this->formatSiteViews( $siteViewsCount ) ) :
+				$this->getContext()->msg( 'growthexperiments-homepage-suggestededits-footer-noviews' );
+			return $siteViewsMessage->parse();
+		}
+		return ( new Tag( 'div' ) )->addClasses( [ 'suggested-edits-footer-navigation' ] )
+			->appendContent( [
+				$this->navigationWidgetFactory->getPreviousNextButtonHtml( 'Previous' ),
+				$this->navigationWidgetFactory->getEditButton(),
+				$this->navigationWidgetFactory->getPreviousNextButtonHtml( 'Next' )
+			] );
 	}
 
 	/**
@@ -696,7 +714,10 @@ class SuggestedEdits extends BaseModule {
 	protected function getModuleStyles() {
 		return array_merge(
 			parent::getModuleStyles(),
-			[ 'mediawiki.pulsatingdot' ]
+			[
+				'mediawiki.pulsatingdot',
+				'oojs-ui.styles.icons-editing-core'
+			]
 		);
 	}
 

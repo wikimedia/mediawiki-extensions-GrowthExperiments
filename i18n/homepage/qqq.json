@@ -178,6 +178,7 @@
 	"growthexperiments-homepage-suggestededits-pageviews": "Text used in the page views info component of a Suggested Edit card.\n\nParameters:\n* $1 - Number of pageviews over the last 60 days.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-previous-card": "Text to use in the invisible label for the previous card button in the suggested edits module.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-next-card": "Text to use in the invisible label for the next card button in the suggested edits module.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-homepage-suggestededits-edit-card": "Text to use in the button that links to the article for the task in the suggested edits module.\n\n{{doc-growthexperiments-homepage}}",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Text to use in the heading of the end-of-queue card for the suggested edits module\n\n{{doc-growthexperiments-homepage}}.",
 	"growthexperiments-homepage-suggestededits-no-results": "Text to use in the heading of the no results found card for the suggested edits module\n\n{{doc-growthexperiments-homepage}}.",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Text to use in description of the end-of-queue card for the suggested edits module when topic-matching is not enabled.\n\n{{doc-growthexperiments-homepage}}",
