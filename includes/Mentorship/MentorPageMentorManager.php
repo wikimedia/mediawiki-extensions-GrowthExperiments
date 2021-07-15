@@ -159,7 +159,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 * Helper method returning a list of mentors listed at a specified page
 	 *
 	 * @param WikiPage|null $page Page to work with or null if no page is provided
-	 * @return array
+	 * @return string[]
 	 */
 	private function getMentorsForPage( ?WikiPage $page ): array {
 		if ( $page === null ) {
