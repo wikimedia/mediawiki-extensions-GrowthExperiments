@@ -15,7 +15,7 @@
 	/**
 	 * @param {Element} suggestedEditsModuleNode DOM node of the suggested edits module.
 	 * @param {boolean} shouldLog If event logging should be used. Set to false when this method is called from
-	 * fetchTasksAndUpdateView, where the the mobile summary HTML is updated when users interact with
+	 * fetchTasksAndUpdateView, where the mobile summary HTML is updated when users interact with
 	 * task / topic filters.
 	 */
 	function loadExtraDataForSuggestedEdits( suggestedEditsModuleNode, shouldLog ) {
