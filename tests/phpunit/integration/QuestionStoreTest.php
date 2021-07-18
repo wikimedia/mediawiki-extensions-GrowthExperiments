@@ -25,12 +25,14 @@ class QuestionStoreTest extends MediaWikiTestCase {
 	 * @covers \GrowthExperiments\HelpPanel\QuestionStore::__construct
 	 */
 	public function testValidConstructionDoesntCauseErrors() {
+		$services = MediaWikiServices::getInstance();
 		$questionStore = new QuestionStore(
 			$this->getTestSysop()->getUser(),
 			'foo',
-			MediaWikiServices::getInstance()->getRevisionStore(),
-			MediaWikiServices::getInstance()->getDBLoadBalancer(),
-			MediaWikiServices::getInstance()->getContentLanguage(),
+			$services->getRevisionStore(),
+			$services->getDBLoadBalancer(),
+			$services->getContentLanguage(),
+			$services->getUserOptionsManager(),
 			RequestContext::getMain()->getRequest()->wasPosted()
 		);
 		$this->assertInstanceOf( QuestionStore::class, $questionStore );

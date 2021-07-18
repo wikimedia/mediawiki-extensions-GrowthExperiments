@@ -79,8 +79,9 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			'wgGEHelpPanelHelpDeskTitle' => 'HelpDeskTitle',
 		] );
 		$user = $this->getMutableTestUser()->getUser()->getInstanceForUpdate();
-		$user->setOption( HomepageHooks::HOMEPAGE_PREF_ENABLE, 1 );
-		$user->setOption( HomepageHooks::HOMEPAGE_PREF_PT_LINK, 1 );
+		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
+		$userOptionsManager->setOption( $user, HomepageHooks::HOMEPAGE_PREF_ENABLE, 1 );
+		$userOptionsManager->setOption( $user, HomepageHooks::HOMEPAGE_PREF_PT_LINK, 1 );
 		$user->saveSettings();
 		$response = $this->executeSpecialPage( '', null, null, $user );
 		$this->assertStringContainsString( 'growthexperiments-homepage-container', $response[0] );
@@ -136,8 +137,9 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			'wgGEHelpPanelHelpDeskTitle' => 'HelpDeskTitle',
 			'wgGEHomepageTutorialTitle' => 'Main_Page',
 		] );
-		$user->setOption( HomepageHooks::HOMEPAGE_PREF_ENABLE, 1 );
-		$user->setOption( HomepageHooks::HOMEPAGE_PREF_PT_LINK, 1 );
+		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
+		$userOptionsManager->setOption( $user, HomepageHooks::HOMEPAGE_PREF_ENABLE, 1 );
+		$userOptionsManager->setOption( $user, HomepageHooks::HOMEPAGE_PREF_PT_LINK, 1 );
 		$user->saveSettings();
 	}
 

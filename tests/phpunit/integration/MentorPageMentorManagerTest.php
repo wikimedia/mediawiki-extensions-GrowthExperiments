@@ -154,7 +154,11 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 		$mentorUser = $this->getTestUser( 'sysop' )->getUser();
 		$mentee = $this->getMutableTestUser()->getUser();
 		$this->insertPage( 'MentorsList', str_replace( '$1', $mentorUser->getName(), $mentorsList ) );
-		$mentee->setOption( MentorPageMentorManager::MENTOR_PREF, $mentorUser->getId() );
+		$this->getServiceContainer()->getUserOptionsManager()->setOption(
+			$mentee,
+			MentorPageMentorManager::MENTOR_PREF,
+			$mentorUser->getId()
+		);
 		$mentee->saveSettings();
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $mentee );
@@ -185,7 +189,11 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 		$mentorUser = $this->getTestUser( 'sysop' )->getUser();
 		$mentee = $this->getMutableTestUser()->getUser();
 		$this->insertPage( 'MentorsList', '[[User:' . $mentorUser->getName() . ']]' );
-		$mentee->setOption( MentorPageMentorManager::MENTOR_PREF, $mentorUser->getId() );
+		$this->getServiceContainer()->getUserOptionsManager()->setOption(
+			$mentee,
+			MentorPageMentorManager::MENTOR_PREF,
+			$mentorUser->getId()
+		);
 		$mentee->saveSettings();
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $mentee );

@@ -140,7 +140,7 @@
 				"MainConfig",
 				"GrowthExperimentsMultiConfig",
 				"DBLoadBalancer",
-				"UserOptionsLookup",
+				"UserOptionsManager",
 				"NamespaceInfo",
 				"TitleFactory",
 				"StatsdDataFactory",

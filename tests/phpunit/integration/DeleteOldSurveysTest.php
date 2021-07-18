@@ -19,38 +19,40 @@ require_once __DIR__ . '/../../../maintenance/deleteOldSurveys.php';
 class DeleteOldSurveysTest extends MediaWikiIntegrationTestCase {
 
 	public function testExecute() {
+		$userOptionsManager = $this->getServiceContainer()->getUserOptionsManager();
+
 		$u1 = $this->getMutableTestUser()->getUser();
 		$this->setRegistrationDate( $u1, '2000-01-01 00:00:00' );
 
 		$u2 = $this->getMutableTestUser()->getUser();
-		$u2->setOption( WelcomeSurvey::SURVEY_PROP, json_encode( [], JSON_FORCE_OBJECT ) );
-		$u2->setOption( 'foo', 'bar' );
+		$userOptionsManager->setOption( $u2, WelcomeSurvey::SURVEY_PROP, json_encode( [], JSON_FORCE_OBJECT ) );
+		$userOptionsManager->setOption( $u2, 'foo', 'bar' );
 		$u2->saveSettings();
 		$this->setRegistrationDate( $u2, '2000-01-01 00:00:00' );
 
 		$u3 = $this->getMutableTestUser()->getUser();
-		$u3->setOption( WelcomeSurvey::SURVEY_PROP, json_encode( [
+		$userOptionsManager->setOption( $u3, WelcomeSurvey::SURVEY_PROP, json_encode( [
 			'_submit_date' => wfTimestamp( TS_MW, '2000-01-01 00:00:00' ),
 		] ) );
 		$u3->saveSettings();
 		$this->setRegistrationDate( $u3, '2000-01-01 00:00:00' );
 
 		$u4 = $this->getMutableTestUser()->getUser();
-		$u4->setOption( WelcomeSurvey::SURVEY_PROP, json_encode( [
+		$userOptionsManager->setOption( $u4, WelcomeSurvey::SURVEY_PROP, json_encode( [
 			'_submit_date' => wfTimestamp( TS_MW, '2100-01-01 00:00:00' ),
 		] ) );
 		$u4->saveSettings();
 		$this->setRegistrationDate( $u4, '2000-01-01 00:00:00' );
 
 		$u5 = $this->getMutableTestUser()->getUser();
-		$u5->setOption( WelcomeSurvey::SURVEY_PROP, json_encode( [
+		$userOptionsManager->setOption( $u5, WelcomeSurvey::SURVEY_PROP, json_encode( [
 			'_submit_date' => wfTimestamp( TS_MW, '2000-01-01 00:00:00' ),
 		] ) );
 		$u5->saveSettings();
 		$this->setRegistrationDate( $u1, '2100-01-01 00:00:00' );
 
 		$u6 = $this->getMutableTestUser()->getUser();
-		$u6->setOption( WelcomeSurvey::SURVEY_PROP, json_encode( [
+		$userOptionsManager->setOption( $u6, WelcomeSurvey::SURVEY_PROP, json_encode( [
 			'_submit_date' => wfTimestamp( TS_MW, '2000-01-01 00:00:00' ),
 		] ) );
 		$u6->saveSettings();
