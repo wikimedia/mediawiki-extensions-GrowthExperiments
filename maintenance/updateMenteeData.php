@@ -58,6 +58,11 @@ class UpdateMenteeData extends Maintenance {
 	}
 
 	public function execute() {
+		if ( !$this->getConfig()->get( 'GEMentorDashboardBackendEnabled' ) ) {
+			$this->output( "Mentor dashboard backend is disabled.\n" );
+			return;
+		}
+
 		$this->initServices();
 
 		if ( $this->hasOption( 'mentor' ) ) {
