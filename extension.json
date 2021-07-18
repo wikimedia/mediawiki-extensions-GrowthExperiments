@@ -1480,6 +1480,10 @@
 			"description": "Title of the wiki page that contains the list of manually assigned mentors (cf. GEHomepageMentorsList). Null if no such page exists.",
 			"value": null
 		},
+		"GEMentorDashboardBackendEnabled": {
+			"description": "Enable backend for mentor dashboard (currently controls whether updateMenteeData.php runs on that wiki)",
+			"value": false
+		},
 		"GEHomepageSuggestedEditsEnabled": {
 			"description": "Global ON/OFF switch for the suggested edits feature on the homepage.",
 			"value": true
