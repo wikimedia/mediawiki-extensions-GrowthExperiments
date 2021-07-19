@@ -7,6 +7,7 @@
 			"Jordiventura96",
 			"Paucabot",
 			"Skurz0",
+			"Toniher",
 			"Xavier Dengra"
 		]
 	},
@@ -36,7 +37,7 @@
 	"growthexperiments-help-panel-questionreview-label": "La vostra pregunta",
 	"growthexperiments-help-panel-questionreview-include-article-title": "Inclou el títol de la pàgina amb la meva pregunta",
 	"growthexperiments-help-panel-question-subject-template": "Pregunta del Plafó d'Ajuda",
-	"growthexperiments-help-panel-question-subject-template-with-title": "Pregunta del Plafó d'Ajuda a [[:$1|$1]]",
+	"growthexperiments-help-panel-question-subject-template-with-title": "Pregunta del tauler d'ajuda a [[:$1|$1]]",
 	"growthexperiments-help-panel-question-subject-template-from-homepage": "Pregunta del mòdul d'ajuda de l'espai de progrés d'usuari",
 	"growthexperiments-help-panel-question-post-error": "S'ha produït un error quan provàveu de publicar la vostra pregunta. O bé podeu provar-ho un cop més o bé podeu anar a $1 al vostre cercador i afegir-l'hi manualment.",
 	"growthexperiments-help-panel-suggestededits-title": "Edicions suggerides",

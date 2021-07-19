@@ -37,7 +37,7 @@
 	"growthexperiments-homepage-email-text-unconfirmed": "ایمیل {{GENDER:$1|خود}} را برای پیوند تأییدیه بررسی کنید، یا یک پیوند جدید ارسال کنید.",
 	"growthexperiments-homepage-email-text-confirmed": "ایمیل {{GENDER:$1|شما}} تأیید شده‌است. از بخش ترجیحات می‌توانید تنظیمات ایمیل خود را در تغییر دهید.",
 	"growthexperiments-homepage-email-button-noemail": "افزودن ایمیل",
-	"growthexperiments-homepage-email-button-unconfirmed": "یک لینک جدید دریافت کنید",
+	"growthexperiments-homepage-email-button-unconfirmed": "یک پیوند جدید دریافت کنید",
 	"growthexperiments-homepage-email-button-confirmed": "ترجیحات",
 	"growthexperiments-homepage-email-changelink": "تغییر",
 	"growthexperiments-homepage-email-confirmlink": "تأیید",
