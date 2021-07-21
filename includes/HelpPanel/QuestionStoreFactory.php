@@ -13,12 +13,14 @@ class QuestionStoreFactory {
 	 * @return QuestionStore
 	 */
 	public static function newFromContextAndStorage( IContextSource $context, $storage ) {
+		$services = MediaWikiServices::getInstance();
 		return new QuestionStore(
 			$context->getUser(),
 			$storage,
-			MediaWikiServices::getInstance()->getRevisionStore(),
-			MediaWikiServices::getInstance()->getDBLoadBalancer(),
-			MediaWikiServices::getInstance()->getContentLanguage(),
+			$services->getRevisionStore(),
+			$services->getDBLoadBalancer(),
+			$services->getContentLanguage(),
+			$services->getUserOptionsManager(),
 			$context->getRequest()->wasPosted()
 		);
 	}

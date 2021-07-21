@@ -4,6 +4,7 @@ namespace GrowthExperiments\Maintenance;
 
 use GrowthExperiments\WelcomeSurvey;
 use Maintenance;
+use MediaWiki\MediaWikiServices;
 use MWTimestamp;
 use User;
 
@@ -54,6 +55,7 @@ class DeleteOldSurveys extends Maintenance {
 		$dbw = wfGetDB( DB_PRIMARY );
 		$fromUserId = 0;
 		$break = false;
+		$userOptionsManager = MediaWikiServices::getInstance()->getUserOptionsManager();
 		do {
 			$res = $dbr->select(
 				[ 'user', 'user_properties' ],
@@ -108,7 +110,7 @@ class DeleteOldSurveys extends Maintenance {
 					$user->load( User::READ_EXCLUSIVE );
 					// Setting an option to null will assign it the default value, which in turn
 					// will delete it (meaning we won't have to reprocess this row on the next run).
-					$user->setOption( WelcomeSurvey::SURVEY_PROP, null );
+					$userOptionsManager->setOption( $user, WelcomeSurvey::SURVEY_PROP, null );
 					$user->saveSettings();
 					$this->commitTransaction( $dbw, __METHOD__ );
 				}

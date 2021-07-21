@@ -102,9 +102,9 @@ class SpecialHomepage extends SpecialPage {
 			$user->isRegistered() &&
 			!$this->userOptionsManager->getBoolOption( $user, Tutorial::TUTORIAL_PREF )
 		) {
-			DeferredUpdates::addCallableUpdate( static function () use ( $user ) {
+			DeferredUpdates::addCallableUpdate( function () use ( $user ) {
 				$user = $user->getInstanceForUpdate();
-				$user->setOption( Tutorial::TUTORIAL_PREF, 1 );
+				$this->userOptionsManager->setOption( $user, Tutorial::TUTORIAL_PREF, 1 );
 				$user->saveSettings();
 			} );
 		}

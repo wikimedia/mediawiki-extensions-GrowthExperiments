@@ -95,7 +95,9 @@ class HelpPanelHooks {
 			$growthOptInOptOutOverride === HomepageHooks::GROWTH_FORCE_OPTIN ||
 			( $user->isRegistered() && !$autocreated && rand( 0, 99 ) < $enablePercentage )
 		) {
-			$user->setOption( self::HELP_PANEL_PREFERENCES_TOGGLE, 1 );
+			MediaWikiServices::getInstance()
+				->getUserOptionsManager()
+				->setOption( $user, self::HELP_PANEL_PREFERENCES_TOGGLE, 1 );
 		}
 	}
 

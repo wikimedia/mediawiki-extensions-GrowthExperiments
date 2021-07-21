@@ -9,6 +9,7 @@ use Language;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\User\UserOptionsManager;
 use RequestContext;
 use TextContent;
 use Title;
@@ -43,6 +44,10 @@ class QuestionStore {
 	 */
 	private $language;
 	/**
+	 * @var UserOptionsManager
+	 */
+	private $userOptionsManager;
+	/**
 	 * @var bool
 	 */
 	private $wasPosted;
@@ -53,6 +58,7 @@ class QuestionStore {
 	 * @param RevisionStore $revisionStore
 	 * @param ILoadBalancer $loadBalancer
 	 * @param Language $language
+	 * @param UserOptionsManager $userOptionsManager
 	 * @param bool $wasPosted
 	 */
 	public function __construct(
@@ -61,6 +67,7 @@ class QuestionStore {
 		RevisionStore $revisionStore,
 		ILoadBalancer $loadBalancer,
 		Language $language,
+		UserOptionsManager $userOptionsManager,
 		$wasPosted
 	) {
 		$this->user = $user;
@@ -68,6 +75,7 @@ class QuestionStore {
 		$this->revisionStore = $revisionStore;
 		$this->loadBalancer = $loadBalancer;
 		$this->language = $language;
+		$this->userOptionsManager = $userOptionsManager;
 		$this->wasPosted = $wasPosted;
 	}
 
@@ -217,7 +225,7 @@ class QuestionStore {
 
 	private function saveToUserSettings( $storage, $formattedQuestions ) {
 		$updateUser = $this->user->getInstanceForUpdate();
-		$updateUser->setOption( $storage, $formattedQuestions );
+		$this->userOptionsManager->setOption( $updateUser, $storage, $formattedQuestions );
 		$updateUser->saveSettings();
 	}
 

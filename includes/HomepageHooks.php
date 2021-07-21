@@ -44,6 +44,7 @@ use MediaWiki\Minerva\Menu\Group;
 use MediaWiki\Minerva\SkinOptions;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\User\UserOptionsManager;
 use NamespaceInfo;
 use OOUI\ButtonWidget;
 use OutputPage;
@@ -101,8 +102,8 @@ class HomepageHooks implements
 	private $wikiConfig;
 	/** @var ILoadBalancer */
 	private $lb;
-	/** @var UserOptionsLookup */
-	private $userOptionsLookup;
+	/** @var UserOptionsManager */
+	private $userOptionsManager;
 	/** @var NamespaceInfo */
 	private $namespaceInfo;
 	/** @var TitleFactory */
@@ -138,7 +139,7 @@ class HomepageHooks implements
 	 * @param Config $wikiConfig Uses on-wiki config store, only for variables listed in
 	 *  GrowthExperimentsMultiConfig::ALLOW_LIST.
 	 * @param ILoadBalancer $lb
-	 * @param UserOptionsLookup $userOptionsLookup
+	 * @param UserOptionsManager $userOptionsManager
 	 * @param NamespaceInfo $namespaceInfo
 	 * @param TitleFactory $titleFactory
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
@@ -157,7 +158,7 @@ class HomepageHooks implements
 		Config $config,
 		Config $wikiConfig,
 		ILoadBalancer $lb,
-		UserOptionsLookup $userOptionsLookup,
+		UserOptionsManager $userOptionsManager,
 		NamespaceInfo $namespaceInfo,
 		TitleFactory $titleFactory,
 		IBufferingStatsdDataFactory $statsdDataFactory,
@@ -175,7 +176,7 @@ class HomepageHooks implements
 		$this->config = $config;
 		$this->wikiConfig = $wikiConfig;
 		$this->lb = $lb;
-		$this->userOptionsLookup = $userOptionsLookup;
+		$this->userOptionsManager = $userOptionsManager;
 		$this->namespaceInfo = $namespaceInfo;
 		$this->titleFactory = $titleFactory;
 		$this->statsdDataFactory = $statsdDataFactory;
@@ -206,14 +207,14 @@ class HomepageHooks implements
 		if ( self::isHomepageEnabled() ) {
 			$mwServices = MediaWikiServices::getInstance();
 			$pageViewInfoEnabled = \ExtensionRegistry::getInstance()->isLoaded( 'PageViewInfo' );
-			$list['Homepage'] = function () use ( $pageViewInfoEnabled, $mwServices ) {
+			$list['Homepage'] = function () {
 				return new SpecialHomepage(
 					$this->moduleRegistry,
 					$this->trackerFactory,
 					$this->statsdDataFactory,
 					$this->experimentUserManager,
 					$this->wikiConfig,
-					$mwServices->getUserOptionsManager()
+					$this->userOptionsManager
 				);
 			};
 			if ( $pageViewInfoEnabled && $this->config->get( 'GEHomepageImpactModuleEnabled' ) ) {
@@ -225,7 +226,7 @@ class HomepageHooks implements
 						GrowthExperimentsServices::wrap(
 							$mwServices
 						)->getGrowthWikiConfig(),
-						$this->userOptionsLookup,
+						$this->userOptionsManager,
 						$mwServices->get( 'PageViewService' )
 					);
 				};
@@ -459,7 +460,7 @@ class HomepageHooks implements
 			return;
 		}
 
-		if ( self::userHasPersonalToolsPrefEnabled( $user, $this->userOptionsLookup ) ) {
+		if ( self::userHasPersonalToolsPrefEnabled( $user, $this->userOptionsManager ) ) {
 			$personal_urls['userpage']['href'] = self::getPersonalToolsHomepageLinkUrl(
 				$title->getNamespace()
 			);
@@ -481,7 +482,7 @@ class HomepageHooks implements
 		if (
 			$lcKey === 'tooltip-pt-userpage' &&
 			self::isHomepageEnabled( $user ) &&
-			self::userHasPersonalToolsPrefEnabled( $user, $this->userOptionsLookup )
+			self::userHasPersonalToolsPrefEnabled( $user, $this->userOptionsManager )
 		) {
 			$lcKey = 'tooltip-pt-homepage';
 		}
@@ -649,22 +650,22 @@ class HomepageHooks implements
 			$geForceVariant !== null ||
 			rand( 0, 99 ) < $enablePercentage
 		) {
-			$user->setOption( self::HOMEPAGE_PREF_ENABLE, 1 );
-			$user->setOption( self::HOMEPAGE_PREF_PT_LINK, 1 );
+			$this->userOptionsManager->setOption( $user, self::HOMEPAGE_PREF_ENABLE, 1 );
+			$this->userOptionsManager->setOption( $user, self::HOMEPAGE_PREF_PT_LINK, 1 );
 			// Default option is that the user has seen the tours/notices (so we don't prompt
 			// existing users to view them). We set the option to false on new user accounts
 			// so they see them once (and then the option gets reset for them).
-			$user->setOption( TourHooks::TOUR_COMPLETED_HELP_PANEL, 0 );
-			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP, 0 );
-			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME, 0 );
-			$user->setOption( TourHooks::TOUR_COMPLETED_HOMEPAGE_DISCOVERY, 0 );
-			$user->setOption( self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN, 0 );
+			$this->userOptionsManager->setOption( $user, TourHooks::TOUR_COMPLETED_HELP_PANEL, 0 );
+			$this->userOptionsManager->setOption( $user, TourHooks::TOUR_COMPLETED_HOMEPAGE_MENTORSHIP, 0 );
+			$this->userOptionsManager->setOption( $user, TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME, 0 );
+			$this->userOptionsManager->setOption( $user, TourHooks::TOUR_COMPLETED_HOMEPAGE_DISCOVERY, 0 );
+			$this->userOptionsManager->setOption( $user, self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN, 0 );
 
 			if (
 				$this->config->get( 'GEHelpPanelNewAccountEnableWithHomepage' ) &&
 				HelpPanel::isHelpPanelEnabled()
 			) {
-				$user->setOption( HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE, 1 );
+				$this->userOptionsManager->setOption( $user, HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE, 1 );
 			}
 
 			// Variant assignment
@@ -747,7 +748,7 @@ class HomepageHooks implements
 	public function onRecentChange_save( $rc ) {
 		$context = RequestContext::getMain();
 		if ( SuggestedEdits::isEnabled( $context ) &&
-			 SuggestedEdits::isActivated( $context, $this->userOptionsLookup )
+			 SuggestedEdits::isActivated( $context, $this->userOptionsManager )
 		) {
 			$pageId = $rc->getTitle()->getArticleID();
 			$tracker = $this->trackerFactory->getTracker( $rc->getPerformerIdentity() );
