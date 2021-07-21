@@ -96,6 +96,7 @@ RecommendedLinkToolbarDialogMobile.prototype.updateContentForCurrentRecommendati
 			this.animateNewContent( this.$labelPreviewTextContainer );
 			this.animateNewContent( this.$linkPreviewContainer );
 			this.animateNewContent( this.$acceptanceButtonsContainer );
+			this.updateActionButtonsMode();
 		}.bind( this ), 150 );
 	}
 };
