@@ -362,6 +362,7 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "این پیشنهادات ممکن است در مورد کلماتی باشد که به آنها نیازی نیست یا ممکن است به مقاله‌ی اشتباه پیوند داشته باشند. از قضاوت {{GENDER:$1|خود}} برای تعیین صحت یا غلط بودن آنها استفاده کنید.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "اطلاعات بیشتر پیرامون پیشنهادهای ماشینی",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "رهنمودها",
+	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>مفهوم‌هایی که یک مخاطب ممکن است مایل به کسب اطلاعات بیشتر دربارهٔ آن‌ها باشد را پیوند دهید.</li><li>مطمئن شوید که پیوند به مقالهٔ درست هدایت می‌شود.</li><li>واژگان بدیهی، سال‌ها یا تاریخ‌ها را پیوند ندهید.</li><li>اگر {{GENDER:$1|مطمئن نیستید}}، از این پیوند صرف نظر کنید.</li>",
 	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "رد کردن همه",
 	"growthexperiments-addlink-onboarding-dialog-title": "معرفی",
 	"growthexperiments-addlink-onboarding-dialog-progress": "$1 از $2",
@@ -374,6 +375,7 @@
 	"growthexperiments-addlink-summary-title": "خلاصه",
 	"growthexperiments-addlink-summary-column-header-suggestion": "پیشنهاد",
 	"growthexperiments-addlink-summary-column-header-linked": "پیوند شده؟",
+	"growthexperiments-addlink-summary-copyrightwarning": "با ذخیره‌کردن تغییرات، {{GENDER:|شما}} با [https://foundation.wikimedia.org/wiki/Terms_of_Use شرایط استفاده] موافقت می‌کنید و می‌پذیرید که مشارکت‌های شما تحت [https://creativecommons.org/licenses/by-sa/3.0/ مجوز CC BY-SA 3.0] و [https://www.gnu.org/licenses/fdl-1.3.html مجوز مستندات آزاد گنو] منتشر شود.",
 	"growthexperiments-addlink-summary-submit": "ثبت",
 	"growthexperiments-addlink-summary-summary": "ویژگی پیوندهای پیشنهادی: $1 {{PLURAL:$1|پیوند}} افزوده شد.",
 	"growthexperiments-addlink-skip-title": "{{GENDER:|شما}} از همه پیشنهاد‌های این مقاله صرف نظر کرده‌اید.",
@@ -385,6 +387,8 @@
 	"newcomertasksinfo-no-data": "هیچ دادهای موجود نیست.",
 	"newcomertasksinfo-table-header-task-type": "نوع کار",
 	"newcomertasksinfo-table-header-task-type-id": "شناسه",
+	"newcomertasksinfo-table-header-task-count": "تعداد",
+	"newcomertasksinfo-table-header-topic-type": "شناسهٔ موضوع",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "پیشنهادها",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "ارسال..."
 }
