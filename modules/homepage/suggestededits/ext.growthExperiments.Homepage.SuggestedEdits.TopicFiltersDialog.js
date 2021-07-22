@@ -2,7 +2,7 @@
 
 var TopicFiltersDialog,
 	ArticleCountWidget = require( './ext.growthExperiments.Homepage.ArticleCountWidget.js' ),
-	TopicSelectionWidget = require( 'ext.growthExperiments.Homepage.Topics' ).TopicSelectionWidget;
+	TopicSelectionWidget = require( '../ext.growthExperiments.Homepage.TopicSelectionWidget.js' );
 
 /**
  * Class for handling UI changes to topic filters.

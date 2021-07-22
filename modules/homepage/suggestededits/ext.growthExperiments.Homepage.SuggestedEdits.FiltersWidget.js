@@ -5,7 +5,7 @@
 	'use strict';
 	var TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
 		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),
-		topicData = require( 'ext.growthExperiments.Homepage.Topics' ).topics;
+		topicData = require( '../Topics.json' );
 
 	/**
 	 * @param {Object} config Configuration options
