@@ -8,7 +8,7 @@
  *   utils/ext.growthExperiments.IconUtils.js
  * - styles: homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.less
  * - messages: growthexperiments-homepage-suggestededits-pageviews
- * - dependencies: oojs-ui.styles.icons-media, ext.growthExperiments.Homepage.icons
+ * - dependencies: oojs-ui.styles.icons-media, ext.growthExperiments.icons
  * and use homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js to get the task
  * parameter for the constructor, and the [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
  * callback to get the taskTypes parameter.
