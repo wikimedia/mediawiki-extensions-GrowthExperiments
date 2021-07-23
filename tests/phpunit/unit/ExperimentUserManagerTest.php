@@ -68,7 +68,7 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 
 	private function getExperimentUserManager(
 		ServiceOptions $options, UserOptionsLookup $lookup
-	) : ExperimentUserManager {
+	): ExperimentUserManager {
 		return new ExperimentUserManager(
 			$options,
 			$this->getMockBuilder( UserOptionsManager::class )

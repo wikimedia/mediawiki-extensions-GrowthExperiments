@@ -512,14 +512,14 @@ abstract class BaseModule implements HomepageModule {
 	 *
 	 * @return string
 	 */
-	protected function getModuleRoute() : string {
+	protected function getModuleRoute(): string {
 		return '#/homepage/' . $this->name;
 	}
 
 	/**
 	 * @return string
 	 */
-	private function getUserVariant() : string {
+	private function getUserVariant(): string {
 		return $this->experimentUserManager->getVariant( $this->getContext()->getUser() );
 	}
 

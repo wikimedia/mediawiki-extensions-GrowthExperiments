@@ -182,7 +182,7 @@ class SearchStrategy {
 	 * @param array $queries
 	 * @return array
 	 */
-	protected function shuffleQueryOrder( array $queries ) : array {
+	protected function shuffleQueryOrder( array $queries ): array {
 		$keys = array_keys( $queries );
 		shuffle( $keys );
 		$shuffled = [];

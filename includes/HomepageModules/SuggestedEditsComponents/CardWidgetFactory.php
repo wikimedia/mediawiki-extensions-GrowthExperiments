@@ -16,7 +16,7 @@ class CardWidgetFactory {
 	 */
 	public static function newFromTaskSet(
 		\MessageLocalizer $messageLocalizer, bool $topicMatching, string $dir, $taskSet
-	) : Widget {
+	): Widget {
 		if ( $taskSet instanceof TaskSet ) {
 			if ( $taskSet->count() ) {
 				return new EditCardWidget( [

@@ -265,7 +265,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	 * @param SearchQuery[] $queries
 	 * @return void
 	 */
-	private function setDebugData( TaskSet $taskSet, array $queries ) : void {
+	private function setDebugData( TaskSet $taskSet, array $queries ): void {
 		$debugUrls = [];
 		foreach ( $queries as $query ) {
 			if ( $query->getDebugUrl() ) {
@@ -300,7 +300,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 	 * @param Task $second
 	 * @return int
 	 */
-	private function compareTasks( Task $first, Task $second ) : int {
+	private function compareTasks( Task $first, Task $second ): int {
 		$taskTypePosFirst = array_search( $first->getTaskType()->getId(),
 			array_keys( $this->taskTypes ), true );
 		$taskTypePosSecond = array_search( $second->getTaskType()->getId(),

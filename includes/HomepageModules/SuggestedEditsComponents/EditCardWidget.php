@@ -42,12 +42,12 @@ class EditCardWidget extends Widget {
 	}
 
 	/** @return Tag */
-	private function getImageContent() : Tag {
+	private function getImageContent(): Tag {
 		return ( new Tag( 'div' ) )->addClasses( [ 'se-card-image no-image skeleton' ] );
 	}
 
 	/** @return Tag */
-	private function getTextContent() : Tag {
+	private function getTextContent(): Tag {
 		return ( new Tag( 'div' ) )
 			->addClasses( [ 'se-card-text' ] )
 			->setAttributes( [ 'dir' => $this->dir ] )

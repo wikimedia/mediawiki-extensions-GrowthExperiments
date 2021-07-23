@@ -115,7 +115,7 @@ return [
 
 	'GrowthExperimentsExperimentUserManager' => static function (
 		MediaWikiServices $services
-	) : ExperimentUserManager {
+	): ExperimentUserManager {
 		return new ExperimentUserManager(
 			new ServiceOptions( [
 				'GEHomepageNewAccountVariants',
@@ -128,13 +128,13 @@ return [
 
 	'GrowthExperimentsHomepageModuleRegistry' => static function (
 		MediaWikiServices $services
-	) : HomepageModuleRegistry {
+	): HomepageModuleRegistry {
 		return new HomepageModuleRegistry( $services );
 	},
 
 	'GrowthExperimentsLinkRecommendationHelper' => static function (
 		MediaWikiServices $services
-	) : LinkRecommendationHelper {
+	): LinkRecommendationHelper {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		$config = $growthServices->getGrowthConfig();
 		$cirrusSearchFactory = static function () {
@@ -208,7 +208,7 @@ return [
 
 	'GrowthExperimentsLinkSubmissionRecorder' => static function (
 		MediaWikiServices $services
-	) : LinkSubmissionRecorder {
+	): LinkSubmissionRecorder {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new LinkSubmissionRecorder(
 			$services->getTitleParser(),
@@ -219,7 +219,7 @@ return [
 
 	'GrowthExperimentsMenteeOverviewDataProvider' => static function (
 		MediaWikiServices $services
-	) : MenteeOverviewDataProvider {
+	): MenteeOverviewDataProvider {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		$dataProvider = new DatabaseMenteeOverviewDataProvider(
 			$geServices->getMentorStore(),
@@ -234,7 +234,7 @@ return [
 
 	'GrowthExperimentsMenteeOverviewDataProviderUncached' => static function (
 		MediaWikiServices $services
-	) : MenteeOverviewDataProvider {
+	): MenteeOverviewDataProvider {
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		return new UncachedMenteeOverviewDataProvider(
 			$geServices->getMentorStore(),
@@ -246,7 +246,7 @@ return [
 
 	'GrowthExperimentsMentorManager' => static function (
 		MediaWikiServices $services
-	) : MentorManager {
+	): MentorManager {
 		$wikiConfig = GrowthExperimentsServices::wrap( $services )->getGrowthWikiConfig();
 
 		$manager = new MentorPageMentorManager(

@@ -177,7 +177,7 @@ class WelcomeSurvey {
 	 * and 'other-message' for type=select (see SpecialWelcomeSurvey::getFormFields()).
 	 * @return array
 	 */
-	protected function getQuestionBank() : array {
+	protected function getQuestionBank(): array {
 		// When free text is enabled, add other-* settings and the reason-other question
 		$reasonOtherSettings = $this->allowFreetext ? [
 			'other-message' => 'welcomesurvey-question-reason-option-other-label',

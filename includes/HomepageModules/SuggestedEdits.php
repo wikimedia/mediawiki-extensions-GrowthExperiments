@@ -252,7 +252,7 @@ class SuggestedEdits extends BaseModule {
 	 * @param IContextSource $context
 	 * @return bool
 	 */
-	public static function isGuidanceEnabledForAnyone( IContextSource $context ) :bool {
+	public static function isGuidanceEnabledForAnyone( IContextSource $context ): bool {
 		return $context->getConfig()->get( 'GENewcomerTasksGuidanceEnabled' );
 	}
 
@@ -262,7 +262,7 @@ class SuggestedEdits extends BaseModule {
 	 * @param IContextSource $context
 	 * @return bool
 	 */
-	public static function isGuidanceEnabled( IContextSource $context ) :bool {
+	public static function isGuidanceEnabled( IContextSource $context ): bool {
 		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
 		return self::isGuidanceEnabledForAnyone( $context ) && (
 			!$context->getConfig()->get( 'GENewcomerTasksGuidanceRequiresOptIn' ) ||
@@ -503,7 +503,7 @@ class SuggestedEdits extends BaseModule {
 	 * SuggestedEditsFiltersWidget.prototype.updateButtonLabelAndIcon
 	 * @return ButtonGroupWidget
 	 */
-	private function getFiltersButtonGroupWidget() : ButtonGroupWidget {
+	private function getFiltersButtonGroupWidget(): ButtonGroupWidget {
 		$buttons = [];
 		$user = $this->getContext()->getUser();
 		if ( self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ) ) {
@@ -808,7 +808,7 @@ class SuggestedEdits extends BaseModule {
 	 * if it's over that limit.
 	 * @return int
 	 */
-	private function getUnfilteredTaskSetCountReducedToTaskQueueLength() : int {
+	private function getUnfilteredTaskSetCountReducedToTaskQueueLength(): int {
 		return min( $this->unfilteredTasksetCount ?? 0, 200 );
 	}
 

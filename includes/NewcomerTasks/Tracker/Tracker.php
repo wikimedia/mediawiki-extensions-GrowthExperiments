@@ -93,7 +93,7 @@ class Tracker {
 	 * @param array $additionalQueryParams
 	 * @return string
 	 */
-	public function getTitleUrl( $additionalQueryParams = [] ) :string {
+	public function getTitleUrl( $additionalQueryParams = [] ): string {
 		return $this->title->getLinkURL(
 			array_merge( $additionalQueryParams, [
 				'geclickid' => $this->clickId,
@@ -105,7 +105,7 @@ class Tracker {
 	/**
 	 * @return int[]
 	 */
-	public function getTrackedPageIds() :array {
+	public function getTrackedPageIds(): array {
 		return array_keys( $this->storage->get() );
 	}
 

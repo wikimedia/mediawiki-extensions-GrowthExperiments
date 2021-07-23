@@ -42,7 +42,7 @@ class TipsAssembler {
 	 */
 	public function setMessageLocalizer(
 		MessageLocalizer $messageLocalizer
-	) :void {
+	): void {
 		$this->messageLocalizer = $messageLocalizer;
 		$this->tipNodeRenderer->setMessageLocalizer( $messageLocalizer );
 	}

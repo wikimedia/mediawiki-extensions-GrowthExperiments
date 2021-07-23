@@ -32,7 +32,7 @@ class InvokedBetween extends InvocationOrder {
 	}
 
 	/** @inheritDoc */
-	public function verify() : void {
+	public function verify(): void {
 		$count = $this->getInvocationCount();
 		if ( $count < $this->min || $count > $this->max ) {
 			throw new ExpectationFailedException(
@@ -43,12 +43,12 @@ class InvokedBetween extends InvocationOrder {
 	}
 
 	/** @inheritDoc */
-	public function matches( Invocation $invocation ) : bool {
+	public function matches( Invocation $invocation ): bool {
 		return true;
 	}
 
 	/** @inheritDoc */
-	protected function invokedDo( Invocation $invocation ) : void {
+	protected function invokedDo( Invocation $invocation ): void {
 	}
 
 }

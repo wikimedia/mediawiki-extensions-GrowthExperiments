@@ -17,7 +17,7 @@ use SkinMinerva;
  */
 class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 
-	protected function setUp() : void {
+	protected function setUp(): void {
 		parent::setUp();
 		Theme::setSingleton( new BlankTheme() );
 	}

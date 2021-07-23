@@ -68,7 +68,7 @@ class InitWikiConfig extends Maintenance {
 	/**
 	 * @return string
 	 */
-	private function getWikidataWikiId() : string {
+	private function getWikidataWikiId(): string {
 		return $this->hasOption( 'wikidata-wikiid' ) ?
 			$this->getOption( 'wikidata-wikiid' ) :
 			WikiMap::getCurrentWikiId();
@@ -108,7 +108,7 @@ class InitWikiConfig extends Maintenance {
 	private function getRawTitleFromWikidata(
 		string $primaryQid,
 		array $backupQids = []
-	) : ?string {
+	): ?string {
 		$qids = array_merge( [ $primaryQid ], $backupQids );
 		foreach ( $qids as $qid ) {
 			$data = $this->getWikidataData( $qid );
@@ -246,7 +246,7 @@ class InitWikiConfig extends Maintenance {
 		string $primaryQid,
 		array $backupQids = [],
 		?string $backupExternal = null
-	) : ?array {
+	): ?array {
 		$rawTitle = $this->getRawTitleFromWikidata( $primaryQid, $backupQids );
 		if ( $rawTitle === null ) {
 			if ( $backupExternal === null ) {

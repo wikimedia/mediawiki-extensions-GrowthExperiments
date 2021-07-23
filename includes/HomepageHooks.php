@@ -298,7 +298,7 @@ class HomepageHooks implements
 	 * @param Skin $skin
 	 * @throws ConfigException
 	 */
-	public function onBeforePageDisplay( $out, $skin ) : void {
+	public function onBeforePageDisplay( $out, $skin ): void {
 		$context = $out->getContext();
 		if ( $context->getTitle()->inNamespaces( NS_MAIN, NS_TALK ) &&
 			SuggestedEdits::isEnabled( $context ) ) {
@@ -375,7 +375,7 @@ class HomepageHooks implements
 	 * @throws \MWException
 	 * @throws ConfigException
 	 */
-	public function onSkinTemplateNavigation__Universal( $skin, &$links ) : void {
+	public function onSkinTemplateNavigation__Universal( $skin, &$links ): void {
 		$user = $skin->getUser();
 		if ( !self::isHomepageEnabled( $user ) ) {
 			return;
@@ -454,7 +454,7 @@ class HomepageHooks implements
 	 * @throws \MWException
 	 * @throws ConfigException
 	 */
-	public function onPersonalUrls( &$personal_urls, &$title, $sk ) : void {
+	public function onPersonalUrls( &$personal_urls, &$title, $sk ): void {
 		$user = $sk->getUser();
 		if ( !self::isHomepageEnabled( $user ) || Util::isMobile( $sk ) ) {
 			return;

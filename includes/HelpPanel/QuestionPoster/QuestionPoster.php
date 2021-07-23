@@ -488,7 +488,7 @@ abstract class QuestionPoster {
 	/**
 	 * @return Title The page where the question should be posted.
 	 */
-	protected function getTargetTitle() : Title {
+	protected function getTargetTitle(): Title {
 		$title = $this->getDirectTargetTitle();
 		if ( $title->isRedirect() ) {
 			$page = $this->wikiPageFactory->newFromTitle( $title );

@@ -111,7 +111,7 @@ class StartEditing extends BaseTaskModule {
 	}
 
 	/** @inheritDoc */
-	protected function getModuleRoute() : string {
+	protected function getModuleRoute(): string {
 		return '';
 	}
 }

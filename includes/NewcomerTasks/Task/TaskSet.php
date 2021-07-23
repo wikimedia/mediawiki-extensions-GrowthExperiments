@@ -134,7 +134,7 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess {
 	/**
 	 * @return TaskSetFilters
 	 */
-	public function getFilters() : TaskSetFilters {
+	public function getFilters(): TaskSetFilters {
 		return $this->filters;
 	}
 
@@ -143,7 +143,7 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess {
 	 *
 	 * @param int $limit
 	 */
-	public function truncate( int $limit ) : void {
+	public function truncate( int $limit ): void {
 		if ( $this->count() ) {
 			$this->tasks = array_slice( $this->tasks, 0, $limit, true );
 		}
@@ -152,7 +152,7 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess {
 	/**
 	 * Shuffle the tasks.
 	 */
-	public function randomSort() : void {
+	public function randomSort(): void {
 		shuffle( $this->tasks );
 	}
 
@@ -161,7 +161,7 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess {
 	 * @param TaskSetFilters $filters
 	 * @return bool
 	 */
-	public function filtersEqual( TaskSetFilters $filters ) : bool {
+	public function filtersEqual( TaskSetFilters $filters ): bool {
 		return json_encode( $this->filters ) === json_encode( $filters );
 	}
 

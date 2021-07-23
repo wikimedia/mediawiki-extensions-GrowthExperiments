@@ -48,7 +48,7 @@ class TaskExplanationWidget extends Widget {
 	/**
 	 * @return Tag
 	 */
-	private function getInfoRow() : Tag {
+	private function getInfoRow(): Tag {
 		return ( new Tag( 'div' ) )
 			->addClasses( [ 'suggested-edits-taskexplanation-additional-info' ] )
 			->appendContent(
@@ -60,7 +60,7 @@ class TaskExplanationWidget extends Widget {
 	/**
 	 * @return Tag
 	 */
-	private function getName() : Tag {
+	private function getName(): Tag {
 		return ( new Tag( 'span' ) )
 			->addClasses( [ 'suggested-edits-task-explanation-heading' ] )
 			->appendContent( $this->taskType->getName( $this->localizer )->text() );
@@ -69,7 +69,7 @@ class TaskExplanationWidget extends Widget {
 	/**
 	 * @return ButtonWidget
 	 */
-	private function getInfo() : ButtonWidget {
+	private function getInfo(): ButtonWidget {
 		return new ButtonWidget( [
 			'icon' => 'info-unpadded',
 			'framed' => false,
@@ -81,7 +81,7 @@ class TaskExplanationWidget extends Widget {
 	/**
 	 * @return IconWidget|null
 	 */
-	private function getIcon() : ?IconWidget {
+	private function getIcon(): ?IconWidget {
 		$iconData = $this->taskType->getIconData();
 		if ( array_key_exists( 'icon', $iconData ) ) {
 			return new IconWidget(
@@ -97,7 +97,7 @@ class TaskExplanationWidget extends Widget {
 	/**
 	 * @return Tag
 	 */
-	private function getDescriptionRow() : Tag {
+	private function getDescriptionRow(): Tag {
 		return ( new Tag( 'p' ) )
 			->addClasses( [ 'suggested-edits-short-description' ] )
 			->appendContent( $this->taskType->getShortDescription( $this->localizer )->text() );
@@ -106,7 +106,7 @@ class TaskExplanationWidget extends Widget {
 	/**
 	 * @return Tag
 	 */
-	private function getDifficultyAndTime() : Tag {
+	private function getDifficultyAndTime(): Tag {
 		$difficulty = $this->taskType->getDifficulty();
 		return ( new Tag( 'div' ) )
 			->addClasses( [ 'suggested-edits-taskexplanation-difficulty-and-time' ] )

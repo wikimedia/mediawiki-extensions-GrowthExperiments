@@ -29,7 +29,7 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 
 	use \MediaWikiTestCaseTrait;
 
-	protected function setUp() : void {
+	protected function setUp(): void {
 		parent::setUp();
 		Theme::setSingleton( new BlankTheme() );
 	}
@@ -51,7 +51,7 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 		$this->assertCount( 1, $widgetItems );
 	}
 
-	private function getSuggestedEdits() : SuggestedEdits {
+	private function getSuggestedEdits(): SuggestedEdits {
 		$config = new \HashConfig( [
 			'GEHomepageSuggestedEditsEnabled' => true,
 			'GEHomepageSuggestedEditsRequiresOptIn' => false,

@@ -255,7 +255,7 @@ class SpecialHomepage extends SpecialPage {
 	/**
 	 * @return string[][][]
 	 */
-	private function getModuleGroups() : array {
+	private function getModuleGroups(): array {
 		return [
 			'main' => [
 				'primary' => [ 'banner', 'startemail' ],

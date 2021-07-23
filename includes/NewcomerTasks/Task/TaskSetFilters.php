@@ -31,14 +31,14 @@ class TaskSetFilters implements \JsonSerializable {
 	/**
 	 * @return string[]
 	 */
-	public function getTopicFilters() : array {
+	public function getTopicFilters(): array {
 		return $this->topicFilters;
 	}
 
 	/**
 	 * @return string[]
 	 */
-	public function getTaskTypeFilters() : array {
+	public function getTaskTypeFilters(): array {
 		return $this->taskTypeFilters;
 	}
 

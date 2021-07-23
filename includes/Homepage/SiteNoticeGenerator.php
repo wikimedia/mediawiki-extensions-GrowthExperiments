@@ -257,7 +257,7 @@ class SiteNoticeGenerator {
 		UserIdentity $user,
 		string $msgHeaderKey,
 		string $location
-	) : string {
+	): string {
 		if ( $location === 'homepage' ) {
 			return '';
 		}
@@ -275,7 +275,7 @@ class SiteNoticeGenerator {
 	 */
 	private function getDiscoveryTextWithAvatarIcon(
 		OutputPage $output, UserIdentity $user, string $msgBodyKey, $class = ''
-	) : string {
+	): string {
 		return Html::rawElement( 'p', [ 'class' => $class ],
 			$output->msg( $msgBodyKey )
 				->params( $user->getName() )

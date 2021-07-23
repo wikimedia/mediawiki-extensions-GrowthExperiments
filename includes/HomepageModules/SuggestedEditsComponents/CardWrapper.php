@@ -72,7 +72,7 @@ class CardWrapper {
 	 * @return Tag
 	 * @throws \OOUI\Exception
 	 */
-	private function getPreviousNextButtonHtml( string $direction ) : Tag {
+	private function getPreviousNextButtonHtml( string $direction ): Tag {
 		return ( new Tag( 'div' ) )->addClasses( [ 'suggested-edits-' . strtolower( $direction ) ] )
 			->appendContent( new HtmlSnippet( ( new PreviousNext( [
 				'direction' => $direction,
