@@ -346,10 +346,32 @@
 		}
 	}
 
+	&.mw-ge-help-panel-processdialog-activepanel-ask-help {
+		// Make sure that truncation occurs when the text fits exactly into the title area
+		.oo-ui-processDialog-title {
+			margin-right: 5px;
+		}
+	}
+
 	&-mobile {
+		&.mw-ge-help-panel-processdialog-activepanel-ask-help {
+			.mw-ge-help-panel-post {
+				.oo-ui-buttonElement-button {
+					min-height: 3.14285714em; // same min-height as the dialog navigation bar
+					display: flex;
+					align-items: center;
+				}
+			}
+		}
+
 		.oo-ui-processDialog-location {
 			display: flex;
 			align-items: center;
+		}
+
+		.oo-ui-processDialog-title {
+			overflow: hidden;
+			text-overflow: ellipsis;
 		}
 	}
 
