@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Martin Urbanec (WMF)"
+		]
+	},
+	"apihelp-growthstarmentee-param-gesaction": "Akce k provedení (<kbd>star</kbd> nebo <kbd>unstar</kbd>)",
+	"apihelp-query+growthstarredmentees-summary": "Získat seznam uživatelů mentorovaných uživatelem, který je v tuto chvíli přihlášen"
+}

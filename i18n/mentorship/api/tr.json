@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hedda"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Bir danışanı, mevcut kullanıcı tarafından yıldızlı olarak işaretleyin veya işaretini kaldırın (özel olarak saklanır ve günlüğe kaydedilmez)",
+	"apihelp-growthstarmentee-param-gesaction": "Yapılacak işlem (<kbd>yıldızla</kbd> veya <kbd>yıldızı kaldır</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Danışanı yıldızla(ma)",
+	"apihelp-query+growthstarredmentees-summary": "Şu anda oturum açmış olan mentor tarafından yıldız verilen danışanların listesini alın"
+}

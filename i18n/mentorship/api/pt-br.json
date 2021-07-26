@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eduardoaddad"
+		]
+	},
+	"apihelp-growthstarmentee-param-gesaction": "Ação a ser tomada (<kbd>star</kbd> ou <kbd>unstar</kbd>)",
+	"apihelp-query+growthstarredmentees-summary": "Obtenha uma lista de pupilos estrelados pelo mentor conectado no momento"
+}

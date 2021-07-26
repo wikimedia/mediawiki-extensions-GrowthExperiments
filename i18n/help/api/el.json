@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Geraki"
+		]
+	},
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Το πλαίσιο «Ρωτήστε τον καθοδηγητή σας» στην αρχική σελίδα του νεοεισερχόμενου",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Η οθόνη \"Ρωτήστε τον καθοδηγητή σας\" στον πίνακα βοήθειας",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Το πλαίσιο \"Ρωτήστε το γραφείο βοήθειας\" (παλιό όνομα)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Το πλαίσιο «Ρωτήστε τον καθοδηγητή σας» στην αρχική σελίδα του νεοεισερχόμενου (παλιό όνομα)",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Πρέπει να είστε συνδεδεμένοι για να κάνετε μια ερώτηση."
+}
