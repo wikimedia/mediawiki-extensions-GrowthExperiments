@@ -871,16 +871,22 @@
 				"homepage/addlink/MachineSuggestionsPlaceholderTool.js",
 				"homepage/addlink/AddLinkMobileSaveDialog.js",
 				"homepage/addlink/RecommendedLinkToolbarDialogMobile.js",
+				"homepage/addlink/RecommendedLinkToolbarDialogButton.js",
 				"homepage/addlink/SuggestionsMobileArticleTarget.js",
 				"utils/ext.growthExperiments.Utils.js"
+			],
+			"styles": [
+				"homepage/addlink/RecommendedLinkToolbarDialogButton.less"
 			],
 			"dependencies": [
 				"ext.growthExperiments.AddLink",
 				"ext.visualEditor.mobileArticleTarget",
-				"mediawiki.router"
+				"mediawiki.router",
+				"oojs-ui-widgets"
 			],
 			"messages": [
-				"growthexperiments-addlink-ve-machine-suggestions-mode-title"
+				"growthexperiments-addlink-ve-machine-suggestions-mode-title",
+				"growthexperiments-addlink-context-button-show-suggestion"
 			],
 			"targets": [
 				"mobile"

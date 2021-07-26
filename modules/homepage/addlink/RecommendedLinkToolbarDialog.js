@@ -438,7 +438,7 @@ RecommendedLinkToolbarDialog.prototype.showFirstRecommendation = function () {
 	var promise = $.Deferred();
 	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( 0 ) ).then( function () {
 		this.showRecommendationAtIndex( 0 );
-		this.$element.removeClass( 'animate-from-below' );
+		this.$element.removeClass( 'animate-below' );
 		promise.resolve();
 	}.bind( this ) );
 	return promise;

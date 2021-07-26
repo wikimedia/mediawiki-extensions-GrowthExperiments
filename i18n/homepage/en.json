@@ -337,6 +337,7 @@
 	"growthexperiments-addlink-context-button-reject": "No",
 	"growthexperiments-addlink-context-button-help": "Get help with editing",
 	"growthexperiments-addlink-context-button-next": "Next",
+	"growthexperiments-addlink-context-button-show-suggestion": "Show link suggestion",
 	"growthexperiments-addlink-rejectiondialog-title": "Why is this not a good link?",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|Your}} answers improve future suggestions.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Almost everyone knows what it is",

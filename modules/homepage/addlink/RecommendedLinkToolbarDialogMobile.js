@@ -1,6 +1,7 @@
 var AddLink = require( 'ext.growthExperiments.AddLink' ),
 	RecommendedLinkToolbarDialog = AddLink.RecommendedLinkToolbarDialog,
-	LinkSuggestionInteractionLogger = AddLink.LinkSuggestionInteractionLogger;
+	LinkSuggestionInteractionLogger = AddLink.LinkSuggestionInteractionLogger,
+	RecommendedLinkToolbarDialogButton = require( './RecommendedLinkToolbarDialogButton.js' );
 
 /**
  * @class mw.libs.ge.RecommendedLinkToolbarDialogMobile
@@ -9,7 +10,7 @@ var AddLink = require( 'ext.growthExperiments.AddLink' ),
  */
 function RecommendedLinkToolbarDialogMobile() {
 	RecommendedLinkToolbarDialogMobile.super.apply( this, arguments );
-	this.$element.addClass( [ 'mw-ge-recommendedLinkToolbarDialog-mobile', 'animate-from-below' ] );
+	this.$element.addClass( [ 'mw-ge-recommendedLinkToolbarDialog-mobile', 'animate-below' ] );
 	this.topOffset = 25;
 	this.logger = new LinkSuggestionInteractionLogger( {
 		/* eslint-disable camelcase */
@@ -17,6 +18,19 @@ function RecommendedLinkToolbarDialogMobile() {
 		active_interface: 'recommendedlinktoolbar_dialog'
 		/* eslint-enable camelcase */
 	} );
+	/**
+	 * @property {boolean} isHidden Whether the dialog is out of view
+	 */
+	this.isHidden = false;
+	/**
+	 * @property {boolean} isAdvancing Whether the animation to the next suggestions is in progress
+	 */
+	this.isAnimating = false;
+	/**
+	 * @property {mw.libs.ge.RecommendedLinkToolbarDialogButton|null} toolbarDialogButton
+	 */
+	this.toolbarDialogButton = null;
+	this.onDocumentNodeClick = this.hideDialog.bind( this );
 }
 
 OO.inheritClass( RecommendedLinkToolbarDialogMobile, RecommendedLinkToolbarDialog );
@@ -29,7 +43,9 @@ RecommendedLinkToolbarDialogMobile.static.position = 'below';
  */
 RecommendedLinkToolbarDialogMobile.prototype.initialize = function () {
 	RecommendedLinkToolbarDialogMobile.super.prototype.initialize.call( this );
-	this.$labelPreview = $( '<div>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-labelPreview' );
+	this.$labelPreview = $( '<div>' ).addClass(
+		'mw-ge-recommendedLinkToolbarDialog-labelPreview'
+	);
 	this.setupLabelPreview();
 	this.$body.prepend( this.$labelPreview );
 	this.setupHelpButton();
@@ -46,11 +62,13 @@ RecommendedLinkToolbarDialogMobile.prototype.afterSetupProcess = function () {
 	// HACK: Disable virtual keyboard, text edit menu on the surface
 	ceSurface.$documentNode.attr( 'contenteditable', false );
 	ceSurface.$documentNode.addClass( 'mw-ge-user-select-none' );
+	ceSurface.$documentNode.on( 'click', this.onDocumentNodeClick );
 	mw.hook( 'growthExperiments.addLinkOnboardingCompleted' ).add( function () {
 		// If onboarding is completed after selecting first recommendation, the selection needs to
 		// be scrolled into view since it wasn't in the viewport when onboarding was open.
 		this.surface.scrollSelectionIntoView();
 	}.bind( this ) );
+	this.setUpToolbarDialogButton();
 	RecommendedLinkToolbarDialogMobile.super.prototype.afterSetupProcess.call( this );
 };
 
@@ -59,6 +77,11 @@ RecommendedLinkToolbarDialogMobile.prototype.afterSetupProcess = function () {
  */
 RecommendedLinkToolbarDialogMobile.prototype.showRecommendationAtIndex = function (
 	index, manualFocus ) {
+
+	if ( this.isHidden ) {
+		this.showDialog();
+	}
+
 	if ( this.isFirstRender ) {
 		RecommendedLinkToolbarDialogMobile.super.prototype.showRecommendationAtIndex.call(
 			this, index, manualFocus
@@ -91,12 +114,15 @@ RecommendedLinkToolbarDialogMobile.prototype.updateContentForCurrentRecommendati
 	}
 
 	if ( shouldAnimateContent ) {
+		this.isAnimating = true;
 		// Delay animation to account for ToggleButtonWidget's transition
 		setTimeout( function () {
 			this.animateNewContent( this.$labelPreviewTextContainer );
 			this.animateNewContent( this.$linkPreviewContainer );
-			this.animateNewContent( this.$acceptanceButtonsContainer );
-			this.updateActionButtonsMode();
+			this.animateNewContent( this.$acceptanceButtonsContainer ).then( function () {
+				this.isAnimating = false;
+				this.updateActionButtonsMode();
+			}.bind( this ) );
 		}.bind( this ), 150 );
 	}
 };
@@ -120,14 +146,6 @@ RecommendedLinkToolbarDialogMobile.prototype.onAcceptanceChanged = function () {
 			this.showRecommendationAtIndex( this.currentIndex + 1 );
 		}
 	}.bind( this ), 600 );
-};
-
-/**
- * @inheritdoc
- */
-RecommendedLinkToolbarDialogMobile.prototype.selectAnnotationView = function () {
-	RecommendedLinkToolbarDialogMobile.super.prototype.selectAnnotationView.call( this );
-	this.surface.scrollSelectionIntoView();
 };
 
 /**
@@ -185,10 +203,10 @@ RecommendedLinkToolbarDialogMobile.prototype.teardown = function () {
 	var ceSurface = this.surface.getView();
 	ceSurface.$documentNode.attr( 'contenteditable', true );
 	ceSurface.$documentNode.removeClass( 'mw-ge-user-select-none' );
+	ceSurface.$documentNode.off( 'click', this.onDocumentNodeClick );
+	this.toolbarDialogButton.$element.detach();
 	return RecommendedLinkToolbarDialogMobile.super.prototype.teardown.apply( this, arguments );
 };
-
-// Animation helpers
 
 /**
  * Set up container to animate the specified element in and out
@@ -239,20 +257,77 @@ RecommendedLinkToolbarDialogMobile.prototype.prepareAnimatedContent = function (
  * Animate in upcoming content for the specified animation container
  *
  * @param {jQuery} $container Animation container
+ * @return {jQuery.promise} Promise which resolves when the animation is done
  */
 RecommendedLinkToolbarDialogMobile.prototype.animateNewContent = function ( $container ) {
 	// Animate in new content
 	var $fakeCurrent = $container.find( '.fake-current' ),
-		$realCurrent = $container.find( '.current' );
+		$realCurrent = $container.find( '.current' ),
+		promise = $.Deferred();
 
 	$container.addClass( 'animating' );
 	$realCurrent.on( 'transitionend', function removeFakeCurrent() {
 		$fakeCurrent.remove();
 		$container.removeClass( [ 'animating', 'ready-to-animate' ] );
 		$realCurrent.off( 'transitionend', removeFakeCurrent );
+		promise.resolve();
 	} );
 	$fakeCurrent.addClass( this.isGoingBack ? 'animate-from-end' : 'animate-from-start' );
 	$realCurrent.removeClass( [ 'animate-from-end', 'animate-from-start' ] );
+	return promise;
+};
+
+/**
+ * Hide the dialog if it's not already hidden and if animation is not in progress
+ * and show the re-open dialog button
+ */
+RecommendedLinkToolbarDialogMobile.prototype.hideDialog = function () {
+	if ( this.isHidden || this.isAnimating ) {
+		return;
+	}
+	this.$element.addClass( 'animate-below' );
+	this.isHidden = true;
+	this.isFirstRender = true;
+	this.toolbarDialogButton.emit( 'dialogVisibilityChanged', false );
+	this.logger.log( 'close', this.suggestionLogMetadata() );
+};
+
+/**
+ * Show the dialog and and hide the re-open dialog button
+ **/
+RecommendedLinkToolbarDialogMobile.prototype.showDialog = function () {
+	if ( !this.isHidden ) {
+		return;
+	}
+	this.isHidden = false;
+	this.$element.removeClass( 'animate-below' );
+	this.toolbarDialogButton.emit( 'dialogVisibilityChanged', true );
+	this.logger.log( 'impression', this.suggestionLogMetadata() );
+};
+
+/**
+ * Scroll to the suggestion and re-open the dialog
+ */
+RecommendedLinkToolbarDialogMobile.prototype.onToolbarDialogButtonClicked = function () {
+	// When the dialog is re-opened with the same suggestion selected, there's no new render.
+	this.isFirstRender = false;
+	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( this.currentIndex ) )
+		.always( this.showDialog.bind( this ) );
+	this.logger.log(
+		'reopen_dialog_click',
+		{},
+		// eslint-disable-next-line camelcase
+		{ active_interface: 'machinesuggestions_mode' }
+	);
+};
+
+/**
+ * Attach button for re-opening the dialog
+ */
+RecommendedLinkToolbarDialogMobile.prototype.setUpToolbarDialogButton = function () {
+	this.toolbarDialogButton = new RecommendedLinkToolbarDialogButton();
+	this.toolbarDialogButton.on( 'click', this.onToolbarDialogButtonClicked.bind( this ) );
+	this.surface.getGlobalOverlay().$element.append( this.toolbarDialogButton.$element );
 };
 
 module.exports = RecommendedLinkToolbarDialogMobile;
