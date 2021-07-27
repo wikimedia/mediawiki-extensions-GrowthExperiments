@@ -352,6 +352,7 @@
 	"growthexperiments-addlink-summary-column-header-suggestion": "Предложение",
 	"growthexperiments-addlink-summary-column-header-linked": "Связано?",
 	"growthexperiments-addlink-summary-submit": "Отправить",
+	"growthexperiments-addlink-summary-summary": "Функция «Добавить ссылку»: {{PLURAL:$1|добавлена $1 ссылка|добавлено $1 ссылки|добавлено $1 ссылок}}.",
 	"growthexperiments-addlink-skip-title": "{{ПОЛ:|Вы}}пропустили все предложения для этой статьи.",
 	"growthexperiments-addlink-skip-accept": " Пропустить все",
 	"growthexperiments-addlink-skip-reject": "Рассмотреть опять",

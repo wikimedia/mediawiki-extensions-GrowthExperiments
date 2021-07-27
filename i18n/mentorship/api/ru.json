@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"NR Deblocked"
+		]
+	},
+	"apihelp-query+growthstarredmentees-summary": "Получить список подопечных, помеченных текущим наставником, вошедшим в систему"
+}

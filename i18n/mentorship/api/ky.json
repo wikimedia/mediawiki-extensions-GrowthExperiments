@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"NR Deblocked"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Ментени учурдагы колдонуучу жылдызча деп белгилеңиз же белгини алыңыз (купуя сакталат жана катталбай)",
+	"apihelp-growthstarmentee-param-gesaction": "Колдонуу чаралары ( <kbd>жылдыз</kbd> же <kbd>жылдызчасыз</kbd> )",
+	"apihelp-growthstarmentee-param-gesmentee": "Жылдызчага (ун)",
+	"apihelp-query+growthstarredmentees-summary": "Учурда кирген насаатчы белгилеген устаттардын тизмесин алыңыз"
+}

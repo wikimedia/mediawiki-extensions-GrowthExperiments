@@ -323,6 +323,6 @@
 	"growthexperiments-addlink-skip-accept": "Прескочи све",
 	"growthexperiments-addlink-skip-reject": "Прегледај поново",
 	"newcomertasksinfo-no-data": "Нема доступних података.",
-	"newcomertasksinfo-table-header-task-type": "Тип задатка",
+	"newcomertasksinfo-table-header-task-type": "Врста задатка",
 	"newcomertasksinfo-table-header-task-type-id": "ID"
 }
