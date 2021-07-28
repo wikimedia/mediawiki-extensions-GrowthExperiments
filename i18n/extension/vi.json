@@ -4,7 +4,8 @@
 			"Bluetpp",
 			"Keo010122",
 			"Martin Urbanec (WMF)",
-			"Tuanminh01"
+			"Tuanminh01",
+			"Vinhtantran"
 		]
 	},
 	"growthexperiments-desc": "Phần mở rộng này chứa các thử nghiệm được thực hiện bởi nhóm Tăng trưởng.",
@@ -47,7 +48,7 @@
 	"growthexperiments-edit-config-help-panel-links-references-label": "4) Nhãn cho liên kết bảng trợ giúp thứ tư (khuyến nghị: \"Cách thêm nguồn tham khảo\")",
 	"growthexperiments-edit-config-help-panel-links-articlewizard-title": "5) Trang đích cho liên kết bảng trợ giúp thứ năm (khuyến nghị: Thuật sĩ bài viết)",
 	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "5) Nhãn cho liên kết bảng trợ giúp thứ năm (khuyến nghị: \"Cách tạo một bài viết\")",
-	"growthexperiments-edit-config-homepage": "Trang nhà cho người mới đến",
+	"growthexperiments-edit-config-homepage": "Trang nhà cho người mới tham gia",
 	"growthexperiments-edit-config-homepage-tutorial-title": "Tiêu đề trang tutorial",
 	"growthexperiments-edit-config-homepage-intro-links-create": "Trang đích cho một liên kết về cách tạo một bài viết mới",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Trang đích cho một liên kết về cách thêm hình ảnh trong sửa đổi trực quan",

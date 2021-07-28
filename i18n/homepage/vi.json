@@ -4,14 +4,15 @@
 			"Bluetpp",
 			"Ioe2015",
 			"Trizek (WMF)",
-			"Tuanminh01"
+			"Tuanminh01",
+			"Vinhtantran"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "\n{{GENDER:$1|Xin chào}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-tab": "Trang nhà",
 	"tooltip-pt-homepage": "Trang chính {{GENDER:|của bạn}}",
-	"prefs-homepage": "Trang nhà cho người mới đến",
-	"growthexperiments-homepage-enable": "Hiển thị trang nhà của người mới đến",
+	"prefs-homepage": "Trang nhà cho người mới tham gia",
+	"growthexperiments-homepage-enable": "Hiển thị trang nhà dành cho người mới tham gia",
 	"growthexperiments-homepage-pt-link": "Mặc định cho trang nhà của người mới từ liên kết tên người dùng trong các công cụ cá nhân",
 	"growthexperiments-homepage-start-header": "{{GENDER:$1|Bắt đầu}} tại đây",
 	"growthexperiments-homepage-account-header": "Đã mở tài khoản thành công",
