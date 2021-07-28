@@ -9,6 +9,8 @@
  */
 ( function () {
 
+	var formatTitle = require( '../../utils/ext.growthExperiments.Utils.js' ).formatTitle;
+
 	/**
 	 * @typedef {Object} mw.libs.ge.TaskData
 	 * A POJO describing a newcomer task. Usually created via fetchTasks(), but sometimes exported
@@ -253,7 +255,7 @@
 			task.imageWidth = task.imageWidth || null;
 			return $.Deferred().resolve( task ).promise();
 		}
-		encodedTitle = encodeURIComponent( title.replace( / /g, '_' ) );
+		encodedTitle = formatTitle( title );
 		return $.get( apiUrlBase + '/page/summary/' + encodedTitle ).then( function ( data ) {
 			task.extract = data.extract || null;
 			task.description = data.description || null;
@@ -305,7 +307,7 @@
 			return $.Deferred().resolve( task ).promise();
 		}
 
-		encodedTitle = encodeURIComponent( title.replace( / /g, '_' ) );
+		encodedTitle = formatTitle( title );
 		// Get YYYYMMDD timestamps of 2 days ago (typically the last day that has full
 		// data in AQS) and 60+2 days ago, using Javascript's somewhat cumbersome date API
 		day = new Date();
