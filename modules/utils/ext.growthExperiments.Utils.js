@@ -111,6 +111,16 @@
 		return variants.indexOf( getUserVariant() ) !== -1;
 	}
 
+	/**
+	 * Format title to be used in URLs
+	 *
+	 * @param {string} title
+	 * @return {string}
+	 */
+	function formatTitle( title ) {
+		return encodeURIComponent( title.replace( / /g, '_' ) );
+	}
+
 	// Expose some methods for debugging.
 	window.ge = window.ge || {};
 	ge.utils = {
@@ -123,7 +133,8 @@
 		removeQueryParam: removeQueryParam,
 		isValidEditor: isValidEditor,
 		isUserInVariant: isUserInVariant,
-		getUserVariant: getUserVariant
+		getUserVariant: getUserVariant,
+		formatTitle: formatTitle
 	};
 
 }() );
