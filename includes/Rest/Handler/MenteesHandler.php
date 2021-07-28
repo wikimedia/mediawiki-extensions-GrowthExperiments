@@ -112,12 +112,9 @@ class MenteesHandler extends SimpleHandler {
 			if ( $menteeData['registration'] ) {
 				$menteeData['registration'] = [
 					'raw' => $menteeData['registration'],
-					'human' => Util::getRelativeTime(
-						$context,
-						$nowUnix - MWTimestamp::getInstance(
-							$menteeData['registration']
-						)->getTimestamp()
-					)
+					'human' => MWTimestamp::getInstance(
+						$menteeData['registration']
+					)->format( 'Y-m-d' )
 				];
 			}
 		} );
