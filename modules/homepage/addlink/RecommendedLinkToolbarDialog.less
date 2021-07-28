@@ -106,9 +106,14 @@
 		}
 
 		.ve-ui-mwInternalLinkContextItem-description {
+			display: none;
+		}
+
+		&-description {
 			.paragraph-ellipsis( @lines: 2, @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
 			margin-top: 4px;
 			margin-left: @imageThumbnailSize;
+			color: @wmui-color-base30;
 		}
 
 		// Strong rule to override VE style
@@ -277,7 +282,7 @@
 				}
 			}
 
-			.ve-ui-mwInternalLinkContextItem-description {
+			&-description {
 				.paragraph-ellipsis( @lines: 2, @parentFontSize: 14px, @targetFontSize: 12.4px, @targetLineHeight: 17.3px );
 			}
 		}

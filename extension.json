@@ -773,7 +773,11 @@
 				"homepage/addlink/RecommendedLinkToolbarDialog.js",
 				"homepage/addlink/LinkSuggestionInteractionLogger.js",
 				"homepage/addlink/AnnotationAnimation.js",
-				"utils/ext.growthExperiments.Utils.js"
+				"utils/ext.growthExperiments.Utils.js",
+				{
+					"name": "homepage/suggestededits/config.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
+				}
 			],
 			"styles": [
 				"homepage/addlink/ceRecommendedLinkAnnotation.less",
