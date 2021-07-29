@@ -102,9 +102,12 @@ RecommendedLinkToolbarDialog.prototype.getSetupProcess = function ( data ) {
  * This is used when the user clicks on an annotation instead of using
  * the navigation in the link inspector.
  *
- * @param {mw.libs.ge.dm.RecommendedLinkAnnotation} annotationModel DataModel
+ * @param {mw.libs.ge.dm.RecommendedLinkAnnotation|undefined} [annotationModel] DataModel
  */
 RecommendedLinkToolbarDialog.prototype.onAnnotationClicked = function ( annotationModel ) {
+	if ( !annotationModel ) {
+		return;
+	}
 	this.showRecommendationAtIndex( this.getIndexForModel( annotationModel ), true );
 };
 
@@ -249,6 +252,10 @@ RecommendedLinkToolbarDialog.prototype.onDialogKeyDown = function ( e ) {
 RecommendedLinkToolbarDialog.prototype.teardown = function () {
 	$( window ).off( 'resize' );
 	this.setLinkCacheIconFunction( this.originalGetIconForLink );
+	// If an event is previously fired and the handler is added afterwards, the handler gets called
+	// with the last argument. Fire this without passing the model in case the user navigates to
+	// read mode and comes back since the handler has to be added again
+	mw.hook( 'growthExperiments.onAnnotationClicked' ).fire();
 	return RecommendedLinkToolbarDialog.super.prototype.teardown.apply( this, arguments );
 };
 
