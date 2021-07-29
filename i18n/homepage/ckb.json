@@ -2,9 +2,17 @@
 	"@metadata": {
 		"authors": [
 			"Arya sarhan",
+			"Muhammed taha",
 			"ئارام بکر"
 		]
 	},
+	"growthexperiments-homepage-tab": "دەستپێک",
+	"growthexperiments-homepage-account-header": "ھەژمار دروست کرا",
+	"growthexperiments-homepage-userpage-button": "پەڕەی بەکارھێنەر دروست بکە",
+	"growthexperiments-homepage-userpage-button-done": "پەڕەی بەکارھێنەر دەستکاری بکە",
+	"growthexperiments-homepage-userpage-guidelines": "رێنماییەکانی پەڕەی بەکارھێنەر",
+	"growthexperiments-homepage-email-button-unconfirmed": "بەستەرێکی نوێ وەربگرە",
+	"growthexperiments-homepage-email-button-confirmed": "ھەڵبژاردەکان",
 	"growthexperiments-homepage-suggestededits-topic-filters-close": "کرا",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "ھەمووی ھەڵبژێرە",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "لابردنی ھەموو"
