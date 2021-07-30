@@ -1,8 +1,6 @@
 var DmRecommendedLinkAnnotation = require( './dmRecommendedLinkAnnotation.js' ),
 	CeRecommendedLinkAnnotation = require( './ceRecommendedLinkAnnotation.js' ),
-	AnnotationAnimation = require( './AnnotationAnimation.js' ),
-	suggestedEditsConfig = require( '../suggestededits/config.json' ),
-	formatTitle = require( '../../utils/ext.growthExperiments.Utils.js' ).formatTitle;
+	AnnotationAnimation = require( './AnnotationAnimation.js' );
 
 /**
  * @class mw.libs.ge.RecommendedLinkToolbarDialog
@@ -47,10 +45,6 @@ function RecommendedLinkToolbarDialog() {
 	 * @property {boolean} shouldSkipAutoAdvance Whether auto-advance should not occur
 	 */
 	this.shouldSkipAutoAdvance = false;
-	/**
-	 * @property {Object} extracts Article extracts that have been fetched
-	 */
-	this.extracts = {};
 	this.$element.addClass( 'mw-ge-recommendedLinkToolbarDialog' );
 }
 
@@ -610,16 +604,17 @@ RecommendedLinkToolbarDialog.prototype.setupLinkPreview = function () {
 // UI update methods based on recommendation-specific "computed properties"
 
 /**
- * Construct link preview element
+ * Render content specific to the current recommendation
  *
- * TODO: Since we're overriding a lot of ve.ui.MWInternalLinkContextItem.static.generateBody's
- * functionality, it might make more sense to construct the link preview from scratch.
- *
- * @return {jQuery}
+ * @throws Will throw an error if there's no DataModel
  */
-RecommendedLinkToolbarDialog.prototype.getLinkPreview = function () {
+RecommendedLinkToolbarDialog.prototype.updateContentForCurrentRecommendation = function () {
+	var $linkPreviewBody;
+	if ( !this.currentDataModel ) {
+		throw new Error( 'No DataModel' );
+	}
 	// In transient context items, the context object is passed so that it can be resized.
-	var $linkPreviewBody = ve.ui.MWInternalLinkContextItem.static.generateBody(
+	$linkPreviewBody = ve.ui.MWInternalLinkContextItem.static.generateBody(
 		ve.init.platform.linkCache,
 		this.currentDataModel,
 		this.surface.getModel().getDocument().getHtmlDocument(),
@@ -627,35 +622,10 @@ RecommendedLinkToolbarDialog.prototype.getLinkPreview = function () {
 			updateDimensions: this.updateDimensions.bind( this )
 		}
 	);
-	this.fetchArticleExtract().then( function ( extract ) {
-		// Replace page description (if any) with article extract
-		var $description = $linkPreviewBody.find( '.ve-ui-mwInternalLinkContextItem-description' );
-		if ( $description.length ) {
-			$description.text( extract );
-		} else {
-			$linkPreviewBody.append(
-				$( '<span>' )
-					.addClass( 've-ui-mwInternalLinkContextItem-description' )
-					.text( extract )
-			);
-		}
-	} );
+	this.$linkPreview.html( $linkPreviewBody );
 	$linkPreviewBody.find( 'a' ).on( 'click', function () {
 		this.logger.log( 'link_click', this.suggestionLogMetadata() );
 	}.bind( this ) );
-	return $linkPreviewBody;
-};
-
-/**
- * Render content specific to the current recommendation
- *
- * @throws Will throw an error if there's no DataModel
- */
-RecommendedLinkToolbarDialog.prototype.updateContentForCurrentRecommendation = function () {
-	if ( !this.currentDataModel ) {
-		throw new Error( 'No DataModel' );
-	}
-	this.$linkPreview.html( this.getLinkPreview() );
 	this.updateButtonStates();
 	this.updateProgressIndicators();
 };
@@ -900,39 +870,6 @@ RecommendedLinkToolbarDialog.prototype.suggestionLogMetadata = function () {
 		acceptance_state: acceptanceState
 		/* eslint-enable camelcase */
 	};
-};
-
-/**
- * Fetch article extract for the selected suggestion
- *
- * @return {jQuery.Promise} Promise that resolves when the extract has been fetched
- */
-RecommendedLinkToolbarDialog.prototype.fetchArticleExtract = function () {
-	var promise = $.Deferred(),
-		apiUrlBase = suggestedEditsConfig.GERestbaseUrl,
-		title = this.currentDataModel.getAttribute( 'lookupTitle' );
-
-	if ( this.extracts[ title ] ) {
-		promise.resolve( this.extracts[ title ] );
-		return promise;
-	}
-
-	if ( !apiUrlBase ) {
-		promise.reject();
-		return promise;
-	}
-
-	$.get( apiUrlBase + '/page/summary/' + formatTitle( title ) ).then( function ( data ) {
-		if ( data && data.extract ) {
-			this.extracts[ title ] = data.extract;
-			promise.resolve( data.extract );
-		} else {
-			promise.reject();
-		}
-	}.bind( this ) ).catch( function () {
-		promise.reject();
-	} );
-	return promise;
 };
 
 module.exports = RecommendedLinkToolbarDialog;
