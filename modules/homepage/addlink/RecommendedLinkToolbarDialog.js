@@ -635,17 +635,11 @@ RecommendedLinkToolbarDialog.prototype.getLinkPreview = function () {
 		}
 	);
 	this.fetchArticleExtract().then( function ( extract ) {
-		// Replace page description (if any) with article extract
-		var $description = $linkPreviewBody.find( '.ve-ui-mwInternalLinkContextItem-description' );
-		if ( $description.length ) {
-			$description.text( extract );
-		} else {
-			$linkPreviewBody.append(
-				$( '<span>' )
-					.addClass( 've-ui-mwInternalLinkContextItem-description' )
-					.text( extract )
-			);
-		}
+		$linkPreviewBody.append(
+			$( '<span>' )
+				.addClass( 'mw-ge-recommendedLinkToolbarDialog-linkPreview-description' )
+				.text( extract )
+		);
 	} );
 	$linkPreviewBody.find( 'a' ).on( 'click', function () {
 		this.logger.log( 'link_click', this.suggestionLogMetadata() );
