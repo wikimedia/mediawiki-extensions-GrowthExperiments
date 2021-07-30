@@ -7,9 +7,11 @@ use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
 use GrowthExperiments\Config\Validation\NewcomerTasksValidator;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
+use Html;
 use HTMLForm;
 use MediaWiki\Revision\RevisionLookup;
 use MWTimestamp;
+use OOUI\ButtonWidget;
 use PageProps;
 use PermissionsError;
 use Status;
@@ -271,6 +273,8 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				}
 			}
 		}
+
+		$form->addPreText( $this->getFeedbackHtml() );
 
 		if ( !$this->userCanWrite ) {
 			$form->suppressDefaultSubmit( true );
@@ -759,7 +763,35 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function onSuccess() {
-		$this->getOutput()->addWikiMsg( 'growthexperiments-edit-config-config-changed' );
-		$this->getOutput()->addWikiMsg( 'growthexperiments-edit-config-return-to-form' );
+		$out = $this->getOutput();
+
+		// Add success message
+		$out->addWikiMsg( 'growthexperiments-edit-config-config-changed' );
+		$out->addWikiMsg( 'growthexperiments-edit-config-return-to-form' );
+
+		// Ask for feedback
+		$out->addHTML( $this->getFeedbackHtml() );
+	}
+
+	/**
+	 * Add feedback CTA to the output
+	 *
+	 * @return string HTML to add to the output
+	 */
+	private function getFeedbackHtml(): string {
+		$this->getOutput()->addModuleStyles( 'oojs-ui.styles.icons-interactions' );
+		return Html::rawElement( 'div', [], implode( "\n", [
+			Html::rawElement(
+				'h3',
+				[],
+				$this->msg( 'growthexperiments-edit-config-feedback-headline' )
+			),
+			new ButtonWidget( [
+				'icon' => 'feedback',
+				'label' => $this->msg( 'growthexperiments-edit-config-feedback-cta' ),
+				'href' => 'https://www.mediawiki.org/wiki/Talk:Growth',
+				'flags' => [ 'primary', 'progressive' ]
+			] )
+		] ) );
 	}
 }

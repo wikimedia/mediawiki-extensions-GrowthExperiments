@@ -13,6 +13,8 @@
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Last updated by unknown user $1.",
 	"growthexperiments-edit-config-pretext": "This page allows you to edit configuration of [[:mw:Special:MyLanguage/Growth|Growth]] team features. It will edit $1 on your behalf. You can see your changes in the page history of that page.",
 	"growthexperiments-edit-config-pretext-unprivileged": "This form allows privileged users to edit configuration of [[:mw:Special:MyLanguage/Growth|Growth]] team features.",
+	"growthexperiments-edit-config-feedback-headline": "Do you have ideas or questions about this form?",
+	"growthexperiments-edit-config-feedback-cta": "Give feedback",
 	"growthexperiments-edit-config-error-invalid-title": "Configuration page was not configured properly",
 	"growthexperiments-edit-config-edit-summary": "Edit summary",
 	"growthexperiments-edit-config-config-changed": "Configuration was changed. You might need to wait for a few minutes for the changes to take effect.",
