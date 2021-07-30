@@ -8,7 +8,6 @@ use DateTime;
 use Exception;
 use ExtensionRegistry;
 use GrowthExperiments\ExperimentUserManager;
-use GrowthExperiments\HomepageModule;
 use Html;
 use IContextSource;
 use MediaWiki\Extensions\PageViewInfo\PageViewService;
@@ -130,7 +129,7 @@ class Impact extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getModules() {
-		return $this->getMode() !== HomepageModule::RENDER_MOBILE_SUMMARY ?
+		return $this->getMode() !== self::RENDER_MOBILE_SUMMARY ?
 			[ 'ext.growthExperiments.Homepage.Impact' ] : [];
 	}
 

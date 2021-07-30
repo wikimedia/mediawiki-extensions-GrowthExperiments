@@ -7,11 +7,11 @@ use ConfigException;
 use DeferredUpdates;
 use ErrorPageError;
 use ExtensionRegistry;
+use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\EventLogging\SpecialHomepageLogger;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageHooks;
-use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\BaseModule;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
@@ -154,16 +154,16 @@ class SpecialHomepage extends SpecialPage {
 		if ( $isMobile ) {
 			if (
 				array_key_exists( $par, $modules ) &&
-				$modules[$par]->supports( HomepageModule::RENDER_MOBILE_DETAILS )
+				$modules[$par]->supports( IDashboardModule::RENDER_MOBILE_DETAILS )
 			) {
-				$mode = HomepageModule::RENDER_MOBILE_DETAILS;
+				$mode = IDashboardModule::RENDER_MOBILE_DETAILS;
 				$this->renderMobileDetails( $modules[$par] );
 			} else {
-				$mode = HomepageModule::RENDER_MOBILE_SUMMARY;
+				$mode = IDashboardModule::RENDER_MOBILE_SUMMARY;
 				$this->renderMobileSummary();
 			}
 		} else {
-			$mode = HomepageModule::RENDER_DESKTOP;
+			$mode = IDashboardModule::RENDER_DESKTOP;
 			Util::maybeAddGuidedTour(
 				$out,
 				TourHooks::TOUR_COMPLETED_HOMEPAGE_WELCOME,
@@ -295,13 +295,13 @@ class SpecialHomepage extends SpecialPage {
 						$this->experimentUserManager->getVariant( $this->getUser() )
 				] ) );
 				foreach ( $moduleNames as $moduleName ) {
-					/** @var HomepageModule $module */
+					/** @var IDashboardModule $module */
 					$module = $modules[$moduleName] ?? null;
 					if ( !$module ) {
 						continue;
 					}
 					try {
-						$out->addHTML( $module->render( HomepageModule::RENDER_DESKTOP ) );
+						$out->addHTML( $module->render( IDashboardModule::RENDER_DESKTOP ) );
 					}
 					catch ( Throwable $throwable ) {
 						Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
@@ -314,14 +314,14 @@ class SpecialHomepage extends SpecialPage {
 	}
 
 	/**
-	 * @param HomepageModule $module
+	 * @param IDashboardModule $module
 	 */
-	private function renderMobileDetails( HomepageModule $module ) {
+	private function renderMobileDetails( IDashboardModule $module ) {
 		$out = $this->getContext()->getOutput();
 		$out->addBodyClasses( 'growthexperiments-homepage-mobile-details' );
 
 		try {
-			$out->addHTML( $module->render( HomepageModule::RENDER_MOBILE_DETAILS ) );
+			$out->addHTML( $module->render( IDashboardModule::RENDER_MOBILE_DETAILS ) );
 		} catch ( Throwable $throwable ) {
 			Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
 		}
@@ -347,8 +347,8 @@ class SpecialHomepage extends SpecialPage {
 		$out->addBodyClasses( 'growthexperiments-homepage-mobile-summary' );
 		foreach ( $modules as $moduleName => $module ) {
 			try {
-				$mobileSummary = $module->render( HomepageModule::RENDER_MOBILE_SUMMARY );
-				if ( $module->supports( HomepageModule::RENDER_MOBILE_DETAILS ) ) {
+				$mobileSummary = $module->render( IDashboardModule::RENDER_MOBILE_SUMMARY );
+				if ( $module->supports( IDashboardModule::RENDER_MOBILE_DETAILS ) ) {
 					$mobileSummary = $this->wrapMobileSummaryWithLink( $moduleName, $mobileSummary );
 				}
 				$out->addHTML( $mobileSummary );
@@ -360,7 +360,7 @@ class SpecialHomepage extends SpecialPage {
 
 	/**
 	 * @param string $mode One of RENDER_DESKTOP, RENDER_MOBILE_SUMMARY, RENDER_MOBILE_DETAILS
-	 * @param HomepageModule[] $modules
+	 * @param IDashboardModule[] $modules
 	 */
 	private function outputJsData( $mode, array $modules ) {
 		$out = $this->getContext()->getOutput();
@@ -370,10 +370,10 @@ class SpecialHomepage extends SpecialPage {
 		foreach ( $modules as $moduleName => $module ) {
 			try {
 				$data[$moduleName] = $module->getJsData( $mode );
-				if ( isset( $data[$moduleName]['html'] ) && $mode === HomepageModule::RENDER_MOBILE_SUMMARY ) {
+				if ( isset( $data[$moduleName]['html'] ) && $mode === IDashboardModule::RENDER_MOBILE_SUMMARY ) {
 					// This is slightly ugly, but making modules generate special-page-based
 					// links to themselves would be uglier.
-					if ( $module->supports( HomepageModule::RENDER_MOBILE_DETAILS ) ) {
+					if ( $module->supports( IDashboardModule::RENDER_MOBILE_DETAILS ) ) {
 						$data[$moduleName]['html'] = $this->wrapMobileSummaryWithLink( $moduleName,
 							$data[$moduleName]['html'] );
 					}
@@ -388,7 +388,7 @@ class SpecialHomepage extends SpecialPage {
 		}
 		$out->addJsConfigVars( 'homepagemodules', $data );
 
-		if ( $mode === HomepageModule::RENDER_MOBILE_SUMMARY ) {
+		if ( $mode === IDashboardModule::RENDER_MOBILE_SUMMARY ) {
 			$out->addJsConfigVars( 'homepagemobile', true );
 			$out->addModules( 'ext.growthExperiments.Homepage.Mobile' );
 			$out->addHTML( Html::rawElement(

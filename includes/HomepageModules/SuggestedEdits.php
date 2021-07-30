@@ -5,7 +5,6 @@ namespace GrowthExperiments\HomepageModules;
 use Config;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
-use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\CardWrapper;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\NavigationWidgetFactory;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\TaskExplanationWidget;
@@ -319,7 +318,7 @@ class SuggestedEdits extends BaseModule {
 		// data, for dynamic loading on activation.
 		if ( $this->canRender() &&
 			!self::isActivated( $this->getContext(), $this->userOptionsLookup ) &&
-			$this->getMode() !== HomepageModule::RENDER_MOBILE_DETAILS
+			$this->getMode() !== self::RENDER_MOBILE_DETAILS
 		) {
 			$data += [
 				'html' => $this->getHtml(),

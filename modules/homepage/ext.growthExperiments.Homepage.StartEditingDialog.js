@@ -12,7 +12,7 @@ var TopicSelectionWidget = require( './ext.growthExperiments.Homepage.TopicSelec
  * @param {Object} config
  * @param {string} config.module The homepage module the dialog belongs to ('start-startediting'
  *   or 'suggestededits').
- * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
+ * @param {string} config.mode Rendering mode. See constants in IDashboardModule.php
  * @param {string} config.trigger How was the dialog triggered? One of 'impression' (when it was
  *   part of the page from the start), 'welcome' (launched from the homepage welcome dialog),
  *   'info-icon' (launched via the info icon in the suggested edits module header)

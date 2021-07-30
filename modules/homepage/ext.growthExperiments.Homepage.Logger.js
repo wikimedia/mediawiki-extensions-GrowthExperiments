@@ -23,7 +23,7 @@
 	 * Log an event to the HomepageModule schema
 	 *
 	 * @param {string} module Name of the module
-	 * @param {string} mode Rendering mode See constants in HomepageModule.php
+	 * @param {string} mode Rendering mode See constants in IDashboardModule.php
 	 * @param {string} action User action
 	 * @param {Object} [extraData] Additional data related to the action or the state of the module
 	 */

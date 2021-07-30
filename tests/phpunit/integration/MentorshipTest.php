@@ -4,8 +4,8 @@ namespace GrowthExperiments\Tests;
 
 use DerivativeContext;
 use GlobalVarConfig;
+use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\Mentorship;
 use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
@@ -32,7 +32,7 @@ class MentorshipTest extends MediaWikiTestCase {
 			$growthServices->getMentorManager()
 		);
 
-		$this->assertEmpty( $mentorshipModule->render( HomepageModule::RENDER_DESKTOP ) );
+		$this->assertEmpty( $mentorshipModule->render( IDashboardModule::RENDER_DESKTOP ) );
 	}
 
 	/**
@@ -53,6 +53,6 @@ class MentorshipTest extends MediaWikiTestCase {
 			$growthServices->getMentorManager()
 		);
 		$context->getOutput()->enableOOUI();
-		$this->assertNotEmpty( $mentorshipModule->render( HomepageModule::RENDER_DESKTOP ) );
+		$this->assertNotEmpty( $mentorshipModule->render( IDashboardModule::RENDER_DESKTOP ) );
 	}
 }

@@ -3,8 +3,8 @@
 namespace GrowthExperiments\Homepage;
 
 use ExtensionRegistry;
+use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\Banner;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
@@ -28,7 +28,7 @@ class HomepageModuleRegistry {
 	/** @var callable[] id => factory method */
 	private $wiring;
 
-	/** @var HomepageModule[] id => module */
+	/** @var IDashboardModule[] id => module */
 	private $modules = [];
 
 	/**
@@ -41,9 +41,9 @@ class HomepageModuleRegistry {
 	/**
 	 * @param string $id
 	 * @param IContextSource $contextSource
-	 * @return HomepageModule
+	 * @return IDashboardModule
 	 */
-	public function get( string $id, IContextSource $contextSource ): HomepageModule {
+	public function get( string $id, IContextSource $contextSource ): IDashboardModule {
 		if ( $this->modules[$id] ?? null ) {
 			return $this->modules[$id];
 		}

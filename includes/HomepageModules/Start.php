@@ -4,7 +4,6 @@ namespace GrowthExperiments\HomepageModules;
 
 use Config;
 use GrowthExperiments\ExperimentUserManager;
-use GrowthExperiments\HomepageModule;
 use IContextSource;
 use MediaWiki\User\UserOptionsLookup;
 
@@ -177,7 +176,7 @@ class Start extends BaseTaskModule {
 	 */
 	protected function getMobileSummaryBody() {
 		return implode( "\n", array_map( static function ( BaseTaskModule $module ) {
-			return $module->render( HomepageModule::RENDER_MOBILE_SUMMARY );
+			return $module->render( self::RENDER_MOBILE_SUMMARY );
 		}, $this->getVisibleTasks() ) );
 	}
 

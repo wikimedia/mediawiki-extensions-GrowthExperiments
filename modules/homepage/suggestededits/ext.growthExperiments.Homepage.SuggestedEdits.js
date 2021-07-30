@@ -36,7 +36,7 @@
 	 * @param {Array<string>} config.taskTypePresets List of IDs of enabled task types
 	 * @param {Array<string>|null} config.topicPresets Lists of IDs of enabled topic filters.
 	 * @param {boolean} config.topicMatching If topic matching feature is enabled in the UI
-	 * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
+	 * @param {string} config.mode Rendering mode. See constants in IDashboardModule.php
 	 * @param {HomepageModuleLogger} logger
 	 * @param {mw.libs.ge.GrowthTasksApi} api
 	 */

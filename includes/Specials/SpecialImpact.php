@@ -4,8 +4,8 @@ namespace GrowthExperiments\Specials;
 
 use Config;
 use DerivativeContext;
+use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\ExperimentUserManager;
-use GrowthExperiments\HomepageModule;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use Html;
@@ -131,6 +131,6 @@ class SpecialImpact extends SpecialPage {
 			$this->titleFactory,
 			$this->pageViewService
 		);
-		$out->addHTML( $impact->render( HomepageModule::RENDER_DESKTOP ) );
+		$out->addHTML( $impact->render( IDashboardModule::RENDER_DESKTOP ) );
 	}
 }

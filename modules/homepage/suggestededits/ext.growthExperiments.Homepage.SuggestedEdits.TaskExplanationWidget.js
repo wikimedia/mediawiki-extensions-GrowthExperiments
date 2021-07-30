@@ -14,7 +14,7 @@
 	/**
 	 * @param {Object} config
 	 * @param {string} [config.taskType] The task type (e.g. "copyedit").
-	 * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
+	 * @param {string} config.mode Rendering mode. See constants in IDashboardModule.php
 	 * @param {HomepageModuleLogger} logger
 	 * @constructor
 	 */

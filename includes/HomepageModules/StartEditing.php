@@ -4,7 +4,6 @@ namespace GrowthExperiments\HomepageModules;
 
 use Config;
 use GrowthExperiments\ExperimentUserManager;
-use GrowthExperiments\HomepageModule;
 use IContextSource;
 use MediaWiki\User\UserOptionsLookup;
 
@@ -51,14 +50,14 @@ class StartEditing extends BaseTaskModule {
 	 * @inheritDoc
 	 */
 	public function isVisible() {
-		return ( $this->getMode() !== HomepageModule::RENDER_DESKTOP ) || !$this->isCompleted();
+		return ( $this->getMode() !== self::RENDER_DESKTOP ) || !$this->isCompleted();
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	protected function getHeaderIconName() {
-		return $this->getMode() === HomepageModule::RENDER_DESKTOP ? null : 'suggestedEdits';
+		return $this->getMode() === self::RENDER_DESKTOP ? null : 'suggestedEdits';
 	}
 
 	/**

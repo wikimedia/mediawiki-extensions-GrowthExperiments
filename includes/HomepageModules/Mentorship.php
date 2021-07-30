@@ -9,7 +9,6 @@ use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
-use GrowthExperiments\HomepageModule;
 use GrowthExperiments\Mentorship\MentorManager;
 use Html;
 use IContextSource;
@@ -173,7 +172,7 @@ class Mentorship extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getModules() {
-		return $this->getMode() !== HomepageModule::RENDER_MOBILE_SUMMARY ?
+		return $this->getMode() !== self::RENDER_MOBILE_SUMMARY ?
 			[
 				'ext.growthExperiments.Homepage.Mentorship',
 				'ext.growthExperiments.Homepage.RecentQuestions'

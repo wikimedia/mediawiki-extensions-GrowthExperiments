@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\Tests;
 
+use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
-use GrowthExperiments\HomepageModule;
 use MediaWiki\MediaWikiServices;
 use MediaWikiIntegrationTestCase;
 use RequestContext;
@@ -22,7 +22,7 @@ class HomepageModuleRegistryTest extends MediaWikiIntegrationTestCase {
 		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		$moduleRegistry = $growthServices->getHomepageModuleRegistry();
 		$context = RequestContext::getMain();
-		$this->assertInstanceOf( HomepageModule::class, $moduleRegistry->get( $moduleId, $context ) );
+		$this->assertInstanceOf( IDashboardModule::class, $moduleRegistry->get( $moduleId, $context ) );
 	}
 
 	public function provideGet() {

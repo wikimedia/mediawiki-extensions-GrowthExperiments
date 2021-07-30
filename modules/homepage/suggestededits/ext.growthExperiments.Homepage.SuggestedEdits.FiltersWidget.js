@@ -12,7 +12,7 @@
 	 * @param {Array<string>} config.taskTypePresets List of IDs of enabled task types
 	 * @param {Array<string>|null} config.topicPresets List of IDs of enabled topic filters
 	 * @param {boolean} config.topicMatching If the topic filters should be enabled in the UI.
-	 * @param {string} config.mode Rendering mode. See constants in HomepageModule.php
+	 * @param {string} config.mode Rendering mode. See constants in IDashboardModule.php
 	 * @param {HomepageModuleLogger} logger
 	 * @constructor
 	 */

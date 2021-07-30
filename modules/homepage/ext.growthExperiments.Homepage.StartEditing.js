@@ -23,7 +23,7 @@
 	 * Launch the suggested edits initiation dialog.
 	 *
 	 * @param {string} module Which homepage module the dialog was launched from.
-	 * @param {string} mode Rendering mode. See constants in HomepageModule.php
+	 * @param {string} mode Rendering mode. See constants in IDashboardModule.php
 	 * @param {string} trigger What caused the dialog to appear - 'impression' (when it was part of
 	 *   the page from the start), 'welcome' (launched from the homepage welcome dialog),
 	 *   'info-icon' (launched via the info icon in the suggested edits module header),
