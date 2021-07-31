@@ -1,10 +1,13 @@
 ( function ( gt ) {
-	var mentorTour = new gt.TourBuilder( {
+	var mentorTour,
+		tourUtils = require( '../utils/tourUtils.js' );
+
+	mentorTour = new gt.TourBuilder( {
 		name: 'homepage_mentor',
 		isSinglePage: true,
 		shouldLog: true
 	} );
-	mentorTour.firstStep( {
+	mentorTour.firstStep( tourUtils.adjustPersonalToolbarTourStep( {
 		name: 'incomingmessage',
 		titlemsg: 'growthexperiments-tour-mentor-response-tip-personal-title',
 		description: mw.message( 'growthexperiments-tour-mentor-response-tip-personal-text' )
@@ -18,5 +21,5 @@
 			action: 'end',
 			namemsg: 'growthexperiments-tour-response-button-okay'
 		} ]
-	} );
+	} ) );
 }( mw.guidedTour ) );

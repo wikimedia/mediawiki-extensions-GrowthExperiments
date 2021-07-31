@@ -1,6 +1,7 @@
 ( function ( gt ) {
 	var welcomeTour, step,
 		HomepageModuleLogger = require( 'ext.growthExperiments.Homepage.Logger' ),
+		tourUtils = require( '../utils/tourUtils.js' ),
 		homepageModuleLogger = new HomepageModuleLogger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )
@@ -53,14 +54,14 @@
 		shouldLog: true
 	} );
 	if ( isSuggestedEditsActivated ) {
-		step = welcomeTour.firstStep( {
+		step = welcomeTour.firstStep( tourUtils.adjustPersonalToolbarTourStep( {
 			name: 'welcome',
 			title: mw.message( 'growthexperiments-tour-welcome-title' )
 				.params( [ mw.user ] )
 				.parse(),
 			// TODO: Rename this message key because it's not variant C anymore
 			description: mw.message( 'growthexperiments-tour-welcome-description-c' ).parse(),
-			attachTo: '#pt-userpage',
+			attachTo: '#pt-userpage-2:visible, .vector-user-links #p-personal, #pt-userpage:visible',
 			position: 'bottom',
 			overlay: false,
 			autoFocus: true,
@@ -75,7 +76,7 @@
 				setupCloseButtonLogging( this );
 			},
 			onClose: logTourCloseAndMarkAsComplete
-		} );
+		} ) );
 		welcomeTour.step( {
 			name: 'fake',
 			description: 'also fake',
@@ -92,14 +93,14 @@
 		} );
 		step.next( 'fake' );
 	} else {
-		welcomeTour.firstStep( {
+		welcomeTour.firstStep( tourUtils.adjustPersonalToolbarTourStep( {
 			name: 'welcome',
 			title: mw.message( 'growthexperiments-tour-welcome-title' )
 				.params( [ mw.user ] )
 				.parse(),
 			// TODO: Rename this message key because it's not variant D anymore
 			description: mw.message( 'growthexperiments-tour-welcome-description-d' ).parse(),
-			attachTo: '#pt-userpage',
+			attachTo: '#pt-userpage-2:visible, .vector-user-links #p-personal, #pt-userpage:visible',
 			position: 'bottom',
 			overlay: false,
 			autoFocus: true,
@@ -112,7 +113,7 @@
 				setupCloseButtonLogging( this );
 			},
 			onClose: logTourCloseAndMarkAsComplete
-		} );
+		} ) );
 	}
 	mw.guidedTour.launchTour( 'homepage_welcome' );
 	homepageModuleLogger.log( 'generic', 'desktop', 'welcome-impression' );

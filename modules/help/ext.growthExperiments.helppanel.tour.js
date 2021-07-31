@@ -1,10 +1,13 @@
 ( function ( gt ) {
-	var dashboardTour = new gt.TourBuilder( {
+	var dashboardTour,
+		tourUtils = require( '../utils/tourUtils.js' );
+
+	dashboardTour = new gt.TourBuilder( {
 		name: 'helppanel',
 		isSinglePage: true,
 		shouldLog: true
 	} );
-	dashboardTour.firstStep( {
+	dashboardTour.firstStep( tourUtils.adjustPersonalToolbarTourStep( {
 		name: 'incomingmessage',
 		titlemsg: 'growthexperiments-tour-helpdesk-response-tip-title',
 		description: mw.message( 'growthexperiments-tour-response-tip-text' )
@@ -18,5 +21,5 @@
 			action: 'end',
 			namemsg: 'growthexperiments-tour-response-button-okay'
 		} ]
-	} );
+	} ) );
 }( mw.guidedTour ) );
