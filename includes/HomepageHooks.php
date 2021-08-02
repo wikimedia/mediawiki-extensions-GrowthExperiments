@@ -82,7 +82,8 @@ class HomepageHooks implements
 	\MediaWiki\SpecialPage\Hook\SpecialPageAfterExecuteHook,
 	\MediaWiki\User\Hook\ConfirmEmailCompleteHook,
 	\MediaWiki\Hook\SiteNoticeAfterHook,
-	\MediaWiki\Content\Hook\SearchDataForIndexHook
+	\MediaWiki\Content\Hook\SearchDataForIndexHook,
+	\MediaWiki\Hook\FormatAutocommentsHook
 {
 	use GrowthConfigLoaderStaticTrait;
 
@@ -1187,6 +1188,28 @@ class HomepageHooks implements
 				'rtl' => 'GrowthExperiments/images/mentor-rtl.svg'
 			]
 		];
+	}
+
+	/**
+	 * @inheritDoc
+	 * This gets called when the autocomment is rendered.
+	 *
+	 * For add link tasks, localize the edit summary in the viewer's language.
+	 */
+	public function onFormatAutocomments( &$comment, $pre, $auto, $post, $title,
+										  $local, $wikiId
+	) {
+		$allowedMessageKeys = [
+			'growthexperiments-addlink-summary-summary'
+		];
+		if ( strpos( $auto, 'growthexperiments-addlink' ) === 0 ) {
+			[ $messageKey, $messageParamsStr ] = explode( ':', $auto );
+			if ( in_array( $messageKey, $allowedMessageKeys ) ) {
+				$comment = wfMessage( $messageKey )
+					->numParams( ...explode( '|', $messageParamsStr ) )
+					->parse();
+			}
+		}
 	}
 
 }

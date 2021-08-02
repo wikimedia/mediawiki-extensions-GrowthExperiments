@@ -116,12 +116,10 @@ AddLinkSaveDialogMixin.prototype.getSetupProcess = function ( data ) {
 		} );
 
 		this.updateSummary( annotationStates );
+		// Edit summary will be localized in the content language via FormatAutocomments hook
 		this.editSummaryInput.setValue(
-			mw.message( 'growthexperiments-addlink-summary-summary' ).params( [
-				mw.language.convertNumber( acceptedCount ),
-				mw.language.convertNumber( rejectedCount ),
-				mw.language.convertNumber( skippedCount )
-			] ).text()
+			'/* growthexperiments-addlink-summary-summary:' +
+			acceptedCount + '|' + rejectedCount + '|' + skippedCount + ' */'
 		);
 		if ( this.checkboxesByName.wpWatchthis ) {
 			this.checkboxesByName.wpWatchthis.setSelected( true );
