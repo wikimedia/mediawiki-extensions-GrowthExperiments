@@ -22,6 +22,8 @@
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]] : Dernière mise à jour par l’utilisateur inconnu $1.",
 	"growthexperiments-edit-config-pretext": "Cette page vous permet de modifier la configuration des fonctionnalités de l’équipe [[:mw:Special:MyLanguage/Growth|Growth]]. Elle modifiera $1 pour vous. Vous pouvez voir ces modifications dans l’historique de cette page.",
 	"growthexperiments-edit-config-pretext-unprivileged": "Ce formulaire permet aux utilisateurs privilégiés de modifier la configuration des fonctionnalités d’équipe [[:mw:Special:MyLanguage/Growth|Growth]].",
+	"growthexperiments-edit-config-feedback-headline": "Avez-vous des idées ou des questions sur ce formulaire ?",
+	"growthexperiments-edit-config-feedback-cta": "Donner un avis",
 	"growthexperiments-edit-config-error-invalid-title": "La page de configuration n’a pas bien été configurée",
 	"growthexperiments-edit-config-edit-summary": "Modifier le résumé",
 	"growthexperiments-edit-config-config-changed": "La configuration a été modifiée. Vous devrez peut-être attendre quelques minutes pour que les modifications prennent effet.",

@@ -8,6 +8,7 @@
 	"growthexperiments-desc": "Quest'estensione contiene esperimenti effettuati dal Growth team",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Ultimo aggiornamento di [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Ultimo aggiornamento di utente sconosciuto $1.",
+	"growthexperiments-edit-config-feedback-headline": "Hai idee o domande su questo modulo?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Sì",
 	"growthexperiments-edit-config-mentorship-enabled-false": "No",
 	"growthexperiments-edit-config-newcomertasks": "Modifiche suggerite"

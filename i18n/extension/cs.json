@@ -18,6 +18,8 @@
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Naposledy upraveno neznámým uživatelem $1.",
 	"growthexperiments-edit-config-pretext": "Tato stránka vám umožňuje editovat konfiguraci funkcí vyvinutých týmem [[:mw:Special:MyLanguage/Growth|Growth]]. Vaším jménem bude editovat konfigurační stránku $1. Výsledek vašich změn můžete vidět na této stránce.",
 	"growthexperiments-edit-config-pretext-unprivileged": "Tento formulář umožňuje uživatelům s dostatečnými právy měnit konfiguraci [[:mw:Special:MyLanguage/Growth|funkcí týmu Growth]].",
+	"growthexperiments-edit-config-feedback-headline": "Máte nějaké nápady či otázky týkající se tohoto formuláře?",
+	"growthexperiments-edit-config-feedback-cta": "Pošlete nám zpětnou vazbu",
 	"growthexperiments-edit-config-error-invalid-title": "Konfigurační stránka nebyla správně nastavena.",
 	"growthexperiments-edit-config-edit-summary": "Shrnutí editace",
 	"growthexperiments-edit-config-config-changed": "Konfigurace byla změněna. Možná budete muset počkat několik minut, než se změny projeví.",

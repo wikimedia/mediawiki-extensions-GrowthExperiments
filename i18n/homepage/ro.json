@@ -295,7 +295,7 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 a {{GENDER:$2|revendicat}} {{GENDER:$6|utilizatorul $3|utilizatoarea $3|utilizatorul $3}} ca {{GENDER:$6|ucenic|ucenică|ucenic}} pentru sine (înainte ucenicul nu avea mentor)",
 	"logentry-growthexperiments-setmentor": "$1 a {{GENDER:$2|setat}} {{GENDER:$5|$7}} ca mentorul lui {{GENDER:$6|$3}} (înainte ucenicul avea {{GENDER:$4|mentorul}} $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 a {{GENDER:$2|setat}} {{GENDER:$5|$7}} ca mentorul lui {{GENDER:$6|$3}} (înainte ucenicul nu avea mentor)",
-	"logentry-growthexperiments-addlink": "$1 a {{GENDER:$2|revizuit}} $4 sugestii de legături pentru $3: a acceptat $5, a respins $6 și trecut peste $7",
+	"logentry-growthexperiments-addlink": "$1 a {{GENDER:$2|revizuit}} $4 sugestii de legături pentru $3: a acceptat $5, a respins $6 și omis $7",
 	"log-action-filter-growthexperiments": "Tip de eveniment GrowthExperiments:",
 	"log-action-filter-growthexperiments-claimmentee": "Schimbări de ucenic",
 	"log-action-filter-growthexperiments-setmentor": "Schimbări de mentor",

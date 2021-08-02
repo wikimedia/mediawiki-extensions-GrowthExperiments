@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"NGC 54"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Marcați sau demarcați un ucenic ca fiind cu stea de utilizatorul actual (stocat privat și nu în jurnal)",
+	"apihelp-growthstarmentee-param-gesaction": "Acțiunea de luat (<kbd>marcare</kbd> or <kbd>demarcare/kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Ucenic de (de)marcat",
+	"apihelp-query+growthstarredmentees-summary": "Obțineți lista ucenicilor marcați de către mentorul momentan autentificat"
+}
