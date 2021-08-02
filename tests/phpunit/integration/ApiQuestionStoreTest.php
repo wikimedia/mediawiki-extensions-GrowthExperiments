@@ -12,7 +12,6 @@ use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\StaticMentorManager;
-use MediaWiki\MediaWikiServices;
 
 /**
  * @group API
@@ -55,14 +54,18 @@ class ApiQuestionStoreTest extends ApiTestCase {
 	public function testApiResponseHtmlJson() {
 		$user = $this->getMutableTestUser()->getUser();
 		$mentor = $this->getTestSysop()->getUser();
-		$user->setOption( MentorPageMentorManager::MENTOR_PREF, $mentor->getId() );
+		$services = $this->getServiceContainer();
+		$services->getUserOptionsManager()->setOption(
+			$user,
+			MentorPageMentorManager::MENTOR_PREF,
+			$mentor->getId()
+		);
 		$user->saveSettings();
 		$request = new FauxRequest( [], true );
 		$context = new DerivativeContext( $this->apiContext );
 		$context->setRequest( $request );
 		$context->setUser( $user );
 
-		$services = MediaWikiServices::getInstance();
 		$questionPoster = new HomepageMentorQuestionPoster(
 			$services->getWikiPageFactory(),
 			new StaticMentorManager( [
