@@ -294,7 +294,7 @@
 	"attributes": {
 		"EventLogging": {
 			"Schemas": {
-				"HelpPanel": "/analytics/legacy/helppanel/1.0.1",
+				"HelpPanel": "/analytics/legacy/helppanel/1.0.2",
 				"HomepageModule": "/analytics/legacy/homepagemodule/1.1.0",
 				"NewcomerTask": "/analytics/legacy/newcomertask/1.0.0",
 				"HomepageVisit": "/analytics/legacy/homepagevisit/1.1.1"
@@ -1242,6 +1242,7 @@
 				"growthexperiments-help-panel-postedit-header",
 				"growthexperiments-help-panel-postedit-subheader",
 				"growthexperiments-help-panel-postedit-subheader-notsaved",
+				"growthexperiments-help-panel-postedit-subheader-refresh-label",
 				"growthexperiments-help-panel-postedit-footer",
 				"growthexperiments-help-panel-postedit-footer2",
 				"growthexperiments-help-panel-postedit-footer2-notsaved",
