@@ -13,7 +13,7 @@ function RecommendedLinkToolbarDialogMobile() {
 	this.topOffset = 25;
 	this.logger = new LinkSuggestionInteractionLogger( {
 		/* eslint-disable camelcase */
-		is_mobile: false,
+		is_mobile: true,
 		active_interface: 'recommendedlinktoolbar_dialog'
 		/* eslint-enable camelcase */
 	} );
