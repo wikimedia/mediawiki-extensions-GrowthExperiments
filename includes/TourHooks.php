@@ -73,7 +73,10 @@ class TourHooks implements
 		];
 		$modules = [
 			'ext.guidedTour.tour.helppanel' => $moduleTemplate + [
-				'scripts' => 'help/ext.growthExperiments.helppanel.tour.js',
+				'packageFiles' => [
+					'help/ext.growthExperiments.helppanel.tour.js',
+					'utils/tourUtils.js',
+				],
 				'messages' => [
 					'growthexperiments-tour-helpdesk-response-tip-title',
 					'growthexperiments-tour-response-tip-text',
@@ -81,7 +84,10 @@ class TourHooks implements
 				],
 			],
 			'ext.guidedTour.tour.homepage_mentor' => $moduleTemplate + [
-				'scripts' => 'help/ext.growthExperiments.homepage.mentor.tour.js',
+				'packageFiles' => [
+					'help/ext.growthExperiments.homepage.mentor.tour.js',
+					'utils/tourUtils.js',
+				],
 				'messages' => [
 					'growthexperiments-tour-mentor-response-tip-personal-title',
 					'growthexperiments-tour-mentor-response-tip-personal-text',
@@ -89,7 +95,10 @@ class TourHooks implements
 				],
 			],
 			'ext.guidedTour.tour.homepage_welcome' => $moduleTemplate + [
-				'scripts' => [ 'homepage/ext.growthExperiments.homepage.welcome.tour.js' ],
+				'packageFiles' => [
+					'homepage/ext.growthExperiments.homepage.welcome.tour.js',
+					'utils/tourUtils.js',
+				],
 				'messages' => [
 					'growthexperiments-tour-welcome-title',
 					'growthexperiments-tour-welcome-description',
@@ -99,7 +108,10 @@ class TourHooks implements
 				],
 			],
 			'ext.guidedTour.tour.homepage_discovery' => $moduleTemplate + [
-				'scripts' => [ 'homepage/ext.growthExperiments.homepage.discovery.tour.js' ],
+				'packageFiles' => [
+					'homepage/ext.growthExperiments.homepage.discovery.tour.js',
+					'utils/tourUtils.js',
+				],
 				'messages' => [
 					'growthexperiments-tour-discovery-title',
 					'growthexperiments-tour-discovery-description',
