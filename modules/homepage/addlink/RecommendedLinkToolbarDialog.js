@@ -233,6 +233,7 @@ RecommendedLinkToolbarDialog.prototype.onAcceptanceChanged = function () {
 		} );
 	mw.hook( 'growthExperiments.linkSuggestionAcceptanceChange' ).fire( hasAcceptedRecommendations );
 	this.updateButtonStates();
+	this.updateActionButtonsMode();
 	// Annotation element changes so it needs to be re-selected.
 	this.selectAnnotationView();
 };
@@ -713,15 +714,20 @@ RecommendedLinkToolbarDialog.prototype.updateProgressIndicators = function () {
 RecommendedLinkToolbarDialog.prototype.updateActionButtonsMode = function () {
 	var acceptanceButtonsWidth = this.acceptanceButtonsWidth || this.$acceptanceButtonGroup.width(),
 		$nextButton = this.nextButton.$element,
-		$linkPreviewText = this.$linkPreview.find( '.ve-ui-linkContextItem-link' ),
 		nextButtonLeft = $nextButton.offset().left,
-		linkPreviewTextLeft = $linkPreviewText.offset().left,
+		linkPreviewTextLeft = this.linkPreviewTextLeft ||
+			this.$linkPreview.find( '.ve-ui-linkContextItem-link' ).offset().left,
 		canOverflowStateAlign = false,
 		imageOffset = 68, // @imageThumbnailSize + @gutterSize in RecommendedLinkToolbarDialog.less
 		availableWidth;
 
 	// This doesn't have to be re-computed (doesn't change upon window resize).
 	this.acceptanceButtonsWidth = acceptanceButtonsWidth;
+	this.linkPreviewTextLeft = linkPreviewTextLeft;
+
+	if ( this.reopenRejectionDialogButton.isVisible() ) {
+		acceptanceButtonsWidth += this.reopenRejectionDialogButton.$element.outerWidth();
+	}
 
 	if ( this.surface.getDir() === 'rtl' ) {
 		availableWidth = this.$linkPreview.width() - imageOffset - $nextButton.width();
