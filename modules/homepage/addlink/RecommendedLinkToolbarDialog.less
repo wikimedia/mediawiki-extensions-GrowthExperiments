@@ -240,6 +240,23 @@
 	}
 
 	&-mobile {
+		@compactViewBreakpoint: 360px;
+
+		@media screen and ( max-device-width: @compactViewBreakpoint ) {
+			.mw-ge-recommendedLinkToolbarDialog-labelPreview,
+			.mw-ge-recommendedLinkToolbarDialog-introLabel,
+			.mw-ge-recommendedLinkToolbarDialog-buttons-next .oo-ui-labelElement-label {
+				display: none;
+			}
+		}
+
+		.mw-ge-recommendedLinkToolbarDialog-labelPreview {
+			// Make sure the container height is not 0 in case it's constructed while the labelPreview is hidden
+			.animation-container {
+				min-height: 19.5px;
+			}
+		}
+
 		.ve-ui-linkContextItem-link {
 			display: block;
 		}
