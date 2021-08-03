@@ -60,6 +60,7 @@ RecommendedLinkToolbarDialogDesktop.prototype.afterSetupProcess = function () {
 RecommendedLinkToolbarDialogDesktop.prototype.updateContentForCurrentRecommendation = function () {
 	RecommendedLinkToolbarDialogDesktop.super.prototype.updateContentForCurrentRecommendation.call( this );
 	this.updatePosition();
+	this.updateActionButtonsMode();
 };
 
 /**

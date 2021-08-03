@@ -123,17 +123,6 @@ RecommendedLinkToolbarDialog.prototype.onAnnotationClicked = function ( annotati
 RecommendedLinkToolbarDialog.prototype.afterSetupProcess = function () {
 	this.updateSurfacePadding();
 	this.setupProgressIndicators( this.linkRecommendationFragments.length );
-	/**
-	 * HACK: Customize getIconForLink function which gets called in generateBody
-	 * Even though linkCache is passed as the first argument, getIconForLink is called directly
-	 * from ve.init.platform.linkCache.constructor so passing a custom linkCache object won't work.
-	 * Store the original implementation to be restored
-	 */
-	this.originalGetIconForLink = ve.init.platform.linkCache.constructor.static.getIconForLink;
-	this.setLinkCacheIconFunction( function () {
-		return 'image';
-	} );
-
 	this.showFirstRecommendation().then( function () {
 		this.updateActionButtonsMode();
 		this.logger.log( 'impression', this.suggestionLogMetadata() );
@@ -258,7 +247,6 @@ RecommendedLinkToolbarDialog.prototype.onDialogKeyDown = function ( e ) {
  */
 RecommendedLinkToolbarDialog.prototype.teardown = function () {
 	$( window ).off( 'resize' );
-	this.setLinkCacheIconFunction( this.originalGetIconForLink );
 	// If an event is previously fired and the handler is added afterwards, the handler gets called
 	// with the last argument. Fire this without passing the model in case the user navigates to
 	// read mode and comes back since the handler has to be added again
@@ -618,33 +606,71 @@ RecommendedLinkToolbarDialog.prototype.setupLinkPreview = function () {
 // UI update methods based on recommendation-specific "computed properties"
 
 /**
- * Construct link preview element
+ * Construct link element for link preview
  *
- * TODO: Since we're overriding a lot of ve.ui.MWInternalLinkContextItem.static.generateBody's
- * functionality, it might make more sense to construct the link preview from scratch.
+ * This logic is the same as in ve.ui.MWInternalLinkContextItem.static.generateBody.
+ * @return {jQuery}
+ */
+RecommendedLinkToolbarDialog.prototype.getLinkForPreview = function () {
+	var linkCache = ve.init.platform.linkCache,
+		title = this.currentDataModel.getAttribute( 'lookupTitle' ),
+		normalizedTitle = this.currentDataModel.getAttribute( 'normalizedTitle' ),
+		href = this.currentDataModel.getHref(),
+		titleObj = mw.Title.newFromText( mw.libs.ve.normalizeParsoidResourceName( href ) ),
+		$link = $( '<a>' )
+			.addClass( 'mw-ge-recommendedLinkToolbarDialog-linkPreview-link' )
+			.text( normalizedTitle )
+			.attr( {
+				href: titleObj.getUrl(),
+				target: '_blank',
+				rel: 'noopener'
+			} );
+	linkCache.styleElement( title, $link, this.currentDataModel.getFragment() );
+	$link.removeClass( 'mw-selflink' );
+	$link.on( 'click', function () {
+		this.logger.log( 'link_click', this.suggestionLogMetadata() );
+	}.bind( this ) );
+	return $link;
+};
+
+/**
+ * Construct link preview element
  *
  * @return {jQuery}
  */
 RecommendedLinkToolbarDialog.prototype.getLinkPreview = function () {
-	// In transient context items, the context object is passed so that it can be resized.
-	var $linkPreviewBody = ve.ui.MWInternalLinkContextItem.static.generateBody(
-		ve.init.platform.linkCache,
-		this.currentDataModel,
-		this.surface.getModel().getDocument().getHtmlDocument(),
-		{
-			updateDimensions: this.updateDimensions.bind( this )
-		}
-	);
-	this.fetchArticleExtract().then( function ( extract ) {
-		$linkPreviewBody.append(
-			$( '<span>' )
-				.addClass( 'mw-ge-recommendedLinkToolbarDialog-linkPreview-description' )
-				.text( extract )
+	var icon = new OO.ui.IconWidget( {
+			icon: 'image',
+			classes: [ 'mw-ge-recommendedLinkToolbarDialog-linkPreview-icon' ]
+		} ),
+		$extract = $( '<span>' ).addClass(
+			'mw-ge-recommendedLinkToolbarDialog-linkPreview-extract'
+		),
+		$linkPreviewBody = $( '<div>' ).addClass(
+			'mw-ge-recommendedLinkToolbarDialog-linkPreview-body'
 		);
+
+	ve.init.platform.linkCache.get( this.currentDataModel.getAttribute( 'lookupTitle' ) )
+		.then( function ( linkData ) {
+			if ( linkData.imageUrl ) {
+				icon.$element.addClass( 'mw-ge-recommendedLinkToolbarDialog-linkPreview-hasImage' )
+					.css( 'background-image', 'url(' + linkData.imageUrl + ')' );
+			}
+		} );
+
+	$linkPreviewBody.append( [
+		$( '<div>' )
+			.addClass( 'mw-ge-recommendedLinkToolbarDialog-linkPreview-thumbnail' )
+			.append( icon.$element ),
+		$( '<div>' )
+			.addClass( 'mw-ge-recommendedLinkToolbarDialog-linkPreview-content' )
+			.append( [ this.getLinkForPreview(), $extract ] )
+	] );
+
+	this.fetchArticleExtract().then( function ( extract ) {
+		$extract.text( extract );
 	} );
-	$linkPreviewBody.find( 'a' ).on( 'click', function () {
-		this.logger.log( 'link_click', this.suggestionLogMetadata() );
-	}.bind( this ) );
+
 	return $linkPreviewBody;
 };
 
@@ -714,9 +740,11 @@ RecommendedLinkToolbarDialog.prototype.updateProgressIndicators = function () {
 RecommendedLinkToolbarDialog.prototype.updateActionButtonsMode = function () {
 	var acceptanceButtonsWidth = this.acceptanceButtonsWidth || this.$acceptanceButtonGroup.width(),
 		$nextButton = this.nextButton.$element,
-		nextButtonLeft = $nextButton.offset().left,
-		linkPreviewTextLeft = this.linkPreviewTextLeft ||
-			this.$linkPreview.find( '.ve-ui-linkContextItem-link' ).offset().left,
+		nextButtonLeft = $nextButton.position().left,
+		$linkPreviewText = this.$linkPreview.find(
+			'.mw-ge-recommendedLinkToolbarDialog-linkPreview-content'
+		),
+		linkPreviewTextLeft = this.linkPreviewTextLeft || $linkPreviewText.position().left,
 		canOverflowStateAlign = false,
 		imageOffset = 68, // @imageThumbnailSize + @gutterSize in RecommendedLinkToolbarDialog.less
 		availableWidth;
@@ -729,8 +757,9 @@ RecommendedLinkToolbarDialog.prototype.updateActionButtonsMode = function () {
 		acceptanceButtonsWidth += this.reopenRejectionDialogButton.$element.outerWidth();
 	}
 
-	if ( this.surface.getDir() === 'rtl' ) {
-		availableWidth = this.$linkPreview.width() - imageOffset - $nextButton.width();
+	// Use document dir rather than surface dir since this corresponds to the direction of the UI
+	if ( document.documentElement.dir === 'rtl' ) {
+		availableWidth = $linkPreviewText.width() - $nextButton.width();
 	} else {
 		availableWidth = nextButtonLeft - linkPreviewTextLeft;
 	}
@@ -865,15 +894,6 @@ RecommendedLinkToolbarDialog.prototype.setLastAnnotationState = function ( isDes
  */
 RecommendedLinkToolbarDialog.prototype.isLastRecommendationSelected = function () {
 	return this.currentIndex === this.linkRecommendationFragments.length - 1;
-};
-
-/**
- * Set getIconForLink function for the current linkCache object
- *
- * @param {Function} iconFunction
- */
-RecommendedLinkToolbarDialog.prototype.setLinkCacheIconFunction = function ( iconFunction ) {
-	ve.init.platform.linkCache.constructor.static.getIconForLink = iconFunction;
 };
 
 /**
