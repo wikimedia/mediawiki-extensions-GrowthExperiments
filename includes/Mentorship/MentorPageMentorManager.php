@@ -186,7 +186,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 		return $this->userIdentityLookup
 			->newSelectQueryBuilder()
-			->userNames( $mentorsRaw )
+			->whereUserNames( $mentorsRaw )
 			->registered()
 			->fetchUserNames();
 	}

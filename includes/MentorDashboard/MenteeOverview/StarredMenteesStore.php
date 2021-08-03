@@ -65,7 +65,7 @@ class StarredMenteesStore implements IDBAccessObject {
 
 		return iterator_to_array( $this->userIdentityLookup
 			->newSelectQueryBuilder()
-			->userIds( $ids )
+			->whereUserIds( $ids )
 			->fetchUserIdentities() );
 	}
 

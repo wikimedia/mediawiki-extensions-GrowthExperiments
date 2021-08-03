@@ -115,7 +115,7 @@ class DatabaseMentorStore extends MentorStore {
 		return iterator_to_array( $this->userIdentityLookup
 			->newSelectQueryBuilder()
 			->registered()
-			->userIds( $ids )
+			->whereUserIds( $ids )
 			->fetchUserIdentities() );
 	}
 
