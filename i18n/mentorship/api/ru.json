@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kylaix",
 			"NR Deblocked"
 		]
 	},
+	"apihelp-growthstarmentee-summary": "Отметить или снять пометку с подопечного как помеченного этим пользователем (хранится закрыто и не логируется)",
+	"apihelp-growthstarmentee-param-gesaction": "Необходимое действие (<kbd>пометить</kbd> или <kbd>снять пометку</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Снять пометку с подопечного",
 	"apihelp-query+growthstarredmentees-summary": "Получить список подопечных, помеченных текущим наставником, вошедшим в систему"
 }

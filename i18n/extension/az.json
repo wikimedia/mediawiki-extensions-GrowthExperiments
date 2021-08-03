@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"NMW03"
+		]
+	},
+	"growthexperiments-desc": "Bu qadcet, İnkişaf komandası tərəfindən edilən təcrübələri ehtiva edir.",
+	"growthexperiments-config-validator-additional-fields": "Yeni konfiqurasiya burada redaktə edilə bilməyən konfiqurasiya açarları ehtiva edir.",
+	"growthexperiments-config-validator-error": "$1 üçün olan təsdiqləmə uğursuz oldu: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code>, <code>$2</code> olmalıdır, amma <code>$3</code> olaraq qeyd olunub.",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Məzmun modeli xətası: GrowthExperiments konfiqurasiya faylı JSON məzmun modelinə sahib olmalıdır, $1 aşkar edildi.",
+	"growthexperiments-edit-config-disabled": "İcma konfiqurasiyası hal-hazırda deaktivdir.",
+	"growthexperiments-edit-config-title": "İnkişaf konfiqurasiyasını redaktə edin",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Axırıncı dəfə [[User:$1|$1]] tərəfindən $2 tarixində yenilənib.",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Axırıncı dəfə bilinməyən istifadəçi tərəfindən $1 tarixində yenilənib.",
+	"growthexperiments-edit-config-pretext": "Bu səhifə [[:mw:Special:MyLanguage/Growth|İnkişaf]] komandasının xüsusiyyətlərinin konfiqurasiyasını redaktə etməyə imkan verir. O sizin adınızla $1 səhifələrini redaktə edəcək. Dəyişikliklərinizi o səhifənin tarixçəsində görə bilərsiniz.",
+	"growthexperiments-edit-config-pretext-unprivileged": "Bu anket, səlahiyyətli istifadəçilərə [[:mw:Special:MyLanguage/Growth|İnkişaf]] komanda xüsusiyyətlərinin konfiqurasiyasını redaktə etməyə imkan verir.",
+	"growthexperiments-edit-config-feedback-headline": "Bu anket haqqında ideyalarınız və ya suallarınız var?",
+	"growthexperiments-edit-config-feedback-cta": "Rəy ver",
+	"growthexperiments-edit-config-error-invalid-title": "Konfiqurasiya səhifəsi düzgün qurulmayıb.",
+	"growthexperiments-edit-config-edit-summary": "Dəyişikliklərin təsviri",
+	"growthexperiments-edit-config-config-changed": "Konfiqurasiya dəyişdirildi. Dəyişikliklərin görünməsi üçün bir neçə dəqiqə gözləməyiniz lazım ola bilər.",
+	"growthexperiments-edit-config-return-to-form": "Redaktə anketinə [[Special:EditGrowthConfig|geri qayıda]] bilərsiniz.",
+	"growthexperiments-edit-config-help-panel": "Kömək paneli parametrləri",
+	"growthexperiments-edit-config-help-panel-description": "Yardım paneli aşağıda konfiqurasiya edildiyi kimi hər hansı bir ad fəzasında, oxu və ya redaktə rejimində ola bilər. O kömək axtarmağı, kömək linklərinə klikləməyi və ya müəllimlərə və ya kömək masasına sual verməyi əhatə edir.",
+	"growthexperiments-edit-config-help-panel-reading-namespaces": "Yardım panelinin oxu rejimində mövcud olduğu ad fəzaları"
+}

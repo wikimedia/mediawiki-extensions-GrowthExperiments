@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"ئارام بکر"
+		]
+	},
+	"growthexperiments-edit-config-edit-summary": "کورتەی دەستکاری",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "سەرەوەی پەڕە",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "خوارەوەی پەڕە",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "پرسگا",
+	"growthexperiments-edit-config-mentorship-enabled-true": "بەڵێ",
+	"growthexperiments-edit-config-mentorship-enabled-false": "نەخێر",
+	"growthexperiments-edit-config-newcomertasks": "دەستکارییە پێشنیارکراوەکان"
+}
