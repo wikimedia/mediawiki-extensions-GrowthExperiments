@@ -8,6 +8,12 @@
 	z-index: 2;
 	animation: help-panel-slidein 800ms;
 
+	&.animate-out {
+		animation: help-panel-slideout 400ms;
+		bottom: -1em;
+		opacity: 0;
+	}
+
 	.client-js &:not( .mw-ge-help-panel-ready ) {
 		display: none;
 	}
@@ -74,6 +80,18 @@
 	100% {
 		bottom: 2em;
 		opacity: 1;
+	}
+}
+
+@keyframes help-panel-slideout {
+	0% {
+		bottom: 2em;
+		opacity: 1;
+	}
+
+	100% {
+		bottom: -1em;
+		opacity: 0;
 	}
 }
 

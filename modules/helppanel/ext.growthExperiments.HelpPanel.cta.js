@@ -65,7 +65,8 @@
 				suggestedEditSession: suggestedEditSession
 			} ),
 			helpCtaButton,
-			lifecycle;
+			lifecycle,
+			onContextResizeDebounced;
 
 		/**
 		 * Invoked from mobileFrontend.editorOpened, ve.activationComplete
@@ -127,6 +128,20 @@
 			if ( !guidanceAvailable ) {
 				$buttonWrapper.detach();
 			}
+		}
+
+		/**
+		 * Hide the CTA when VE's context item is opened and show it when the context item is closed
+		 */
+		function setupHelpButtonToggle() {
+			var onContextResize = function () {
+				var isContextItemVisible = window.ve.init.target.surface.context.isVisible();
+				$buttonWrapper.toggleClass( 'animate-out', isContextItemVisible );
+			};
+			onContextResizeDebounced = OO.ui.debounce( onContextResize, 200 );
+			mw.hook( 've.activationComplete' ).add( function () {
+				window.ve.init.target.surface.context.on( 'resize', onContextResizeDebounced );
+			} );
 		}
 
 		$overlay.append( windowManager.$element );
@@ -337,6 +352,7 @@
 				function ( editor ) {
 					helpPanelProcessDialog.logger.setEditor( editor );
 					attachHelpButton( editor );
+
 				}
 			);
 			mw.hook( 'mobileFrontend.editorClosed' ).add(
@@ -345,6 +361,9 @@
 					detachHelpButton();
 				}
 			);
+
+			setupHelpButtonToggle();
+
 		} else {
 			// VisualEditor activation hooks are ignored in mobile context because MobileFrontend
 			// hooks are sufficient for attaching/detaching the help CTA.
