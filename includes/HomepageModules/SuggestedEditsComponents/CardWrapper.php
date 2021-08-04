@@ -2,9 +2,7 @@
 
 namespace GrowthExperiments\HomepageModules\SuggestedEditsComponents;
 
-use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
-use OOUI\HtmlSnippet;
 use OOUI\Tag;
 
 class CardWrapper {
@@ -15,33 +13,36 @@ class CardWrapper {
 	/** @var \MessageLocalizer */
 	private $messageLocalizer;
 
-	/** @var Task */
-	private $task;
-
-	/** @var \StatusValue */
-	private $error;
-
 	/** @var string */
 	private $dir;
 
 	/** @var bool */
 	private $topicMatching;
 
+	/** @var NavigationWidgetFactory */
+	private $navigationWidgetFactory;
+
+	/** @var bool */
+	private $isDesktop;
+
 	/**
 	 * @param \MessageLocalizer $messageLocalizer
 	 * @param bool $topicMatching
 	 * @param string $dir
 	 * @param TaskSet|\StatusValue $taskSet
+	 * @param NavigationWidgetFactory $navigationWidgetFactory
+	 * @param bool $isDesktop
 	 */
 	public function __construct(
-		\MessageLocalizer $messageLocalizer, bool $topicMatching, string $dir, $taskSet
+		\MessageLocalizer $messageLocalizer, bool $topicMatching, string $dir, $taskSet,
+		NavigationWidgetFactory $navigationWidgetFactory, bool $isDesktop
 	) {
 		$this->taskSet = $taskSet;
-		$this->task = $taskSet instanceof TaskSet && $taskSet->count() ? $taskSet[0] : null;
-		$this->error = $taskSet instanceof \StatusValue ? $taskSet : null;
 		$this->messageLocalizer = $messageLocalizer;
 		$this->dir = $dir;
 		$this->topicMatching = $topicMatching;
+		$this->navigationWidgetFactory = $navigationWidgetFactory;
+		$this->isDesktop = $isDesktop;
 	}
 
 	/**
@@ -55,32 +56,22 @@ class CardWrapper {
 			$this->dir,
 			$this->taskSet
 		);
+		$suggestedEditsClass = ( new Tag( 'div' ) )
+			->addClasses( [ 'suggested-edits-card' ] )
+			->appendContent( $card );
+		$contents = [ $suggestedEditsClass ];
+		if ( $this->isDesktop ) {
+			$contents = [
+				$this->navigationWidgetFactory->getPreviousNextButtonHtml( 'Previous' ),
+				$suggestedEditsClass,
+				$this->navigationWidgetFactory->getPreviousNextButtonHtml( 'Next' )
+			];
+		}
 		return ( new Tag( 'div' ) )->addClasses( [
 			'suggested-edits-card-wrapper',
 			$card instanceof EditCardWidget ? '' : 'pseudo-card'
 		] )->appendContent(
-			$this->getPreviousNextButtonHtml( 'Previous' ),
-			( new Tag( 'div' ) )
-				->addClasses( [ 'suggested-edits-card' ] )
-				->appendContent( $card ),
-			$this->getPreviousNextButtonHtml( 'Next' )
+			$contents
 		);
 	}
-
-	/**
-	 * @param string $direction Should be one of "Previous" or "Next" (case sensitive)
-	 * @return Tag
-	 * @throws \OOUI\Exception
-	 */
-	private function getPreviousNextButtonHtml( string $direction ): Tag {
-		return ( new Tag( 'div' ) )->addClasses( [ 'suggested-edits-' . strtolower( $direction ) ] )
-			->appendContent( new HtmlSnippet( ( new PreviousNext( [
-				'direction' => $direction,
-				'message' => $this->messageLocalizer->msg(
-					'growthexperiments-homepage-suggestededits-' . strtolower( $direction ) . '-card'
-				)->text(),
-				'hidden' => !$this->task || $this->error
-			] ) )->toString() ) );
-	}
-
 }
