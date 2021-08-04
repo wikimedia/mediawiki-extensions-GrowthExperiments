@@ -65,6 +65,8 @@ class UpdateMenteeData extends Maintenance {
 
 		$this->initServices();
 
+		$startTime = time();
+
 		if ( $this->hasOption( 'mentor' ) ) {
 			$mentors = [ $this->getOption( 'mentor' ) ];
 		} else {
@@ -165,6 +167,9 @@ class UpdateMenteeData extends Maintenance {
 				);
 			}
 		}
+
+		$totalTime = time() - $startTime;
+		$this->output( "Done. Took {$totalTime} seconds.\n" );
 	}
 }
 
