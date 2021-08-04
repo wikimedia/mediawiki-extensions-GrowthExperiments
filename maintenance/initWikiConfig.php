@@ -135,7 +135,7 @@ class InitWikiConfig extends Maintenance {
 
 		// Set help panel variables
 		$variables['GEHelpPanelHelpDeskTitle'] = $this->getRawTitleFromWikidata( 'Q4026300' );
-		$variables['GEHelpPanelLinks'] = array_filter( [
+		$variables['GEHelpPanelLinks'] = array_values( array_filter( [
 			// Manual of style
 			$this->getHelpPanelLink( 'Q4994848' ),
 			// Help:Editing
@@ -157,7 +157,7 @@ class InitWikiConfig extends Maintenance {
 			),
 			// Wikipedia:Article wizard
 			$this->getHelpPanelLink( 'Q10968373', [ 'Q4966605' ] ),
-		] );
+		] ) );
 
 		// Help:Contents
 		$variables['GEHelpPanelViewMoreTitle'] = $this->getRawTitleFromWikidata( 'Q914807' );

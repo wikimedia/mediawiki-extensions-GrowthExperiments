@@ -569,13 +569,13 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 
 		// Add default values for help panel links
 		$helpPanelLinks = $this->growthWikiConfig->get( 'GEHelpPanelLinks' );
-		for ( $i = 0; $i < count( $helpPanelLinks ); $i++ ) {
+		foreach ( $helpPanelLinks as $i => $link ) {
 			if (
 				isset( $descriptors["geconfig-GEHelpPanelLinks-$i-title"] ) &&
 				isset( $descriptors["geconfig-GEHelpPanelLinks-$i-label"] )
 			) {
-				$descriptors["geconfig-GEHelpPanelLinks-$i-title"]['default'] = $helpPanelLinks[$i]['title'];
-				$descriptors["geconfig-GEHelpPanelLinks-$i-label"]['default'] = $helpPanelLinks[$i]['text'];
+				$descriptors["geconfig-GEHelpPanelLinks-$i-title"]['default'] = $link['title'];
+				$descriptors["geconfig-GEHelpPanelLinks-$i-label"]['default'] = $link['text'];
 			}
 		}
 
