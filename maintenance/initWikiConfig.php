@@ -39,7 +39,8 @@ class InitWikiConfig extends Maintenance {
 		$this->addDescription( 'Initialize wiki configuration of GrowthExperiments based on Wikidata' );
 
 		$this->addOption( 'dry-run', 'Print the configuration that would be saved on-wiki.' );
-		$this->addOption( 'force', 'Skip validation (you should check the resulting config)' );
+		$this->addOption( 'override', 'Override existing config files' );
+		$this->addOption( 'skip-validation', 'Skip validation (you should check the resulting config)' );
 		$this->addOption(
 			'phab',
 			'ID of a Phabricator task about configuration of the wiki (e.q. T274646).' .
@@ -186,8 +187,8 @@ class InitWikiConfig extends Maintenance {
 		// as getRawTitleFromWikidata would return null in that case)
 		$variables = array_filter( $variables );
 
-		// Validate variables if --force was not used
-		if ( !$this->hasOption( 'force' ) ) {
+		// Validate variables if --skip-validation was not used
+		if ( !$this->hasOption( 'skip-validation' ) ) {
 			$validationRes = $this->validateGEConfigVariables( $variables );
 			if ( is_string( $validationRes ) ) {
 				$this->fatalError( $validationRes . "\n" );
@@ -360,6 +361,18 @@ class InitWikiConfig extends Maintenance {
 			$this->fatalError( "Invalid GEWikiConfigPageTitle!\n" );
 			return false;
 		}
+		if (
+			!$this->hasOption( 'override' ) &&
+			!$this->hasOption( 'dry-run' ) &&
+			$title->exists()
+		) {
+			$this->fatalError(
+				"On-wiki config already exists ({$title->getPrefixedText()}). " .
+				"You can skip the validation using --override."
+			);
+			return false;
+		}
+
 		$wikiPageConfigWriter = $this->wikiPageConfigWriterFactory
 			->newWikiPageConfigWriter(
 				$title
@@ -397,6 +410,18 @@ class InitWikiConfig extends Maintenance {
 			$this->fatalError( "Invalid GENewcomerTasksConfigTitle!\n" );
 			return false;
 		}
+		if (
+			!$this->hasOption( 'override' ) &&
+			!$this->hasOption( 'dry-run' ) &&
+			$title->exists()
+		) {
+			$this->fatalError(
+				"On-wiki config already exists ({$title->getPrefixedText()}). " .
+				"You can skip the validation using --override."
+			);
+			return false;
+		}
+
 		$wikiPageConfigWriter = $this->wikiPageConfigWriterFactory
 			->newWikiPageConfigWriter(
 				$title
