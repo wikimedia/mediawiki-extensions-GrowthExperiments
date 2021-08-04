@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Serkanland",
 			"Verman1",
 			"Vesely35"
 		]
 	},
+	"growthexperiments-help-panel-tog-help-panel": "Redaktor köməkçisi panelini aç",
 	"growthexperiments-help-panel-return-home-button-text": "Tamamlandı",
 	"growthexperiments-help-panel-button-header-general-help": "Redaktə barədə ümumi kömək",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Digər könüllülərdən cavab al"
