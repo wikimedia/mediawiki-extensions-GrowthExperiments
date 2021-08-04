@@ -8,5 +8,9 @@ module.exports = {
 	MachineSuggestionsMode: require( './MachineSuggestionsMode.js' ),
 	LinkSuggestionInteractionLogger: require( './LinkSuggestionInteractionLogger.js' ),
 	AddLinkSaveDialogMixin: require( './AddLinkSaveDialogMixin.js' ),
-	RecommendedLinkToolbarDialog: require( './RecommendedLinkToolbarDialog.js' )
+	RecommendedLinkToolbarDialog: require( './RecommendedLinkToolbarDialog.js' ),
+	EditModeMachineSuggestions: require( './EditModeMachineSuggestions.js' ),
+	EditModeVisualWithSuggestions: require( './EditModeVisualWithSuggestions.js' ),
+	SuggestionsArticleTarget: require( './SuggestionsArticleTarget.js' ),
+	EditModeConfirmationDialog: require( './EditModeConfirmationDialog.js' )
 };

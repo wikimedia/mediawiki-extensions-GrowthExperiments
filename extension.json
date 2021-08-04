@@ -774,6 +774,10 @@
 				"homepage/addlink/RecommendedLinkToolbarDialog.js",
 				"homepage/addlink/LinkSuggestionInteractionLogger.js",
 				"homepage/addlink/AnnotationAnimation.js",
+				"homepage/addlink/EditModeMachineSuggestions.js",
+				"homepage/addlink/EditModeVisualWithSuggestions.js",
+				"homepage/addlink/SuggestionsArticleTarget.js",
+				"homepage/addlink/EditModeConfirmationDialog.js",
 				"utils/ext.growthExperiments.Utils.js",
 				{
 					"name": "homepage/suggestededits/config.json",
@@ -785,7 +789,8 @@
 				"homepage/addlink/RecommendedLinkToolbarDialog.less",
 				"homepage/addlink/RecommendedLinkRejectionDialog.less",
 				"homepage/addlink/MachineSuggestionsMode.less",
-				"homepage/addlink/AddLinkSaveDialog.less"
+				"homepage/addlink/AddLinkSaveDialog.less",
+				"homepage/addlink/EditModeConfirmationDialog.less"
 			],
 			"messages": [
 				"growthexperiments-addlink-context-title",
@@ -814,6 +819,13 @@
 				"growthexperiments-addlink-skip-body",
 				"growthexperiments-addlink-skip-accept",
 				"growthexperiments-addlink-skip-reject",
+				"growthexperiments-addlink-editmode-selection-label",
+				"growthexperiments-addlink-editmode-selection-machine-suggestions",
+				"growthexperiments-addlink-editmode-selection-visual",
+				"growthexperiments-addlink-editmode-confirmation-dialog-title",
+				"growthexperiments-addlink-editmode-confirmation-dialog-message",
+				"growthexperiments-addlink-editmode-confirmation-dialog-action-confirm",
+				"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel",
 				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
 				"colon-separator"
 			],
@@ -837,7 +849,8 @@
 				"homepage/addlink/AddLinkDesktopArticleTarget.js",
 				"homepage/addlink/MachineSuggestionsSaveTool.js",
 				"homepage/addlink/AddLinkSaveDialog.js",
-				"homepage/addlink/RecommendedLinkToolbarDialogDesktop.js"
+				"homepage/addlink/RecommendedLinkToolbarDialogDesktop.js",
+				"homepage/addlink/SuggestionsDesktopArticleTarget.js"
 			],
 			"dependencies": [
 				"ext.growthExperiments.AddLink",
@@ -857,7 +870,9 @@
 				"homepage/addlink/AddLinkMobileArticleTarget.js",
 				"homepage/addlink/MachineSuggestionsPlaceholderTool.js",
 				"homepage/addlink/AddLinkMobileSaveDialog.js",
-				"homepage/addlink/RecommendedLinkToolbarDialogMobile.js"
+				"homepage/addlink/RecommendedLinkToolbarDialogMobile.js",
+				"homepage/addlink/SuggestionsMobileArticleTarget.js",
+				"utils/ext.growthExperiments.Utils.js"
 			],
 			"dependencies": [
 				"ext.growthExperiments.AddLink",

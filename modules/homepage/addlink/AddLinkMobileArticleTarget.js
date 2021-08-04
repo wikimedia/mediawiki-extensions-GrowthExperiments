@@ -53,6 +53,7 @@ AddLinkMobileArticleTarget.prototype.setupToolbar = function () {
 			MachineSuggestionsMode.getTitleElement()
 		);
 	}
+	MachineSuggestionsMode.trackEditModeClick( this.toolbar.$group );
 };
 
 /**

@@ -1,4 +1,14 @@
+var LinkSuggestionInteractionLogger = require( './LinkSuggestionInteractionLogger.js' );
+
 module.exports = ( function () {
+	// The order of the tools here correspond to the order they are shown in editMode dropdown.
+	var editModeToolNames = [ 'editModeMachineSuggestions', 'editModeVisualWithSuggestions' ],
+		logger = new LinkSuggestionInteractionLogger( {
+			/* eslint-disable camelcase */
+			is_mobile: OO.ui.isMobile(),
+			active_interface: 'machinesuggestions_mode'
+			/* eslint-enable camelcase */
+		} );
 
 	/**
 	 * Check whether the specified toolbar already has title element
@@ -28,6 +38,39 @@ module.exports = ( function () {
 	}
 
 	/**
+	 * Return the toolgroup for the edit mode dropdown with visual and machine suggestions modes.
+	 * This replaces VE's 'editMode' toolgroup.
+	 *
+	 * @return {Object[]}
+	 */
+	function getEditModeToolGroup() {
+		return {
+			name: 'suggestionsEditMode',
+			type: 'list',
+			icon: 'edit',
+			title: mw.message( 'growthexperiments-addlink-editmode-selection-label' ).text(),
+			label: mw.message( 'growthexperiments-addlink-editmode-selection-label' ).text(),
+			invisibleLabel: true,
+			include: editModeToolNames
+		};
+	}
+
+	/**
+	 * Update edit mode tools in editMode group and return an array of tools
+	 *
+	 * @param {Object[]} currentTools Existing VE tools
+	 * @return {Object[]}
+	 */
+	function updateEditModeTool( currentTools ) {
+		return currentTools.map( function ( tool ) {
+			if ( tool.name === 'editMode' ) {
+				return getEditModeToolGroup();
+			}
+			return tool;
+		} );
+	}
+
+	/**
 	 * Return an array of tools for machine suggestions mode on mobile
 	 *
 	 * @param {Object[]} currentTools Existing VE tools
@@ -35,13 +78,14 @@ module.exports = ( function () {
 	 */
 	function getMobileTools( currentTools ) {
 		var activeTools = currentTools.filter( function ( tool ) {
-			return [ 'editMode', 'save', 'back' ].indexOf( tool.name ) !== -1;
+			return [ 'save', 'back' ].indexOf( tool.name ) !== -1;
 		} );
 		activeTools.push(
 			{
 				name: 'machineSuggestionsPlaceholder',
 				include: [ 'machineSuggestionsPlaceholder' ]
-			}
+			},
+			getEditModeToolGroup()
 		);
 		return activeTools;
 	}
@@ -63,14 +107,34 @@ module.exports = ( function () {
 				include: [ 'machineSuggestionsSave' ]
 			}
 		);
-		return activeGroups;
+		return updateEditModeTool( activeGroups );
+	}
+
+	/**
+	 * Add click event listener on editMode toolbar group
+	 *
+	 * @param {jQuery} $toolbar Toolbar element
+	 */
+	function trackEditModeClick( $toolbar ) {
+		var $editModeToolbarGroup = $toolbar.find( '.ve-ui-toolbar-group-suggestionsEditMode' );
+		if ( $editModeToolbarGroup.length ) {
+			$editModeToolbarGroup.on( 'click', function () {
+				logger.log( 'editmode_click' );
+			} );
+		}
 	}
 
 	return {
 		toolbarHasTitleElement: toolbarHasTitleElement,
 		getTitleElement: getTitleElement,
 		getMobileTools: getMobileTools,
-		getActionGroups: getActionGroups
+		getActionGroups: getActionGroups,
+		getEditModeToolNames: function () {
+			return editModeToolNames;
+		},
+		updateEditModeTool: updateEditModeTool,
+		getEditModeToolGroup: getEditModeToolGroup,
+		trackEditModeClick: trackEditModeClick
 	};
 
 }() );

@@ -34,9 +34,11 @@
 	 *  Object created by mw.Uri()
 	 * @param {string} queryParam
 	 *   The query param to remove from the URL.
+	 * @param {boolean} [useLiteralFragment]
+	 *   Whether to keep the fragment as is (instead of encoding it)
 	 */
-	function removeQueryParam( url, queryParam ) {
-		var newUrl;
+	function removeQueryParam( url, queryParam, useLiteralFragment ) {
+		var newUrl, fragment = '';
 		if ( !queryParam || !url.query[ queryParam ] ) {
 			return;
 		}
@@ -48,8 +50,15 @@
 		} else {
 			newUrl = url;
 		}
+
+		// mw.uri.toString encodes fragment by default.
+		if ( useLiteralFragment && url.fragment ) {
+			fragment = '#' + url.fragment;
+			newUrl.fragment = '';
+		}
+
 		if ( history.replaceState ) {
-			history.replaceState( history.state, document.title, newUrl.toString() );
+			history.replaceState( history.state, document.title, newUrl.toString() + fragment );
 		}
 	}
 

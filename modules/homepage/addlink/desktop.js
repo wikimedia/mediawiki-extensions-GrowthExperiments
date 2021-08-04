@@ -2,17 +2,30 @@ var AddLinkDesktopArticleTarget = require( './AddLinkDesktopArticleTarget.js' ),
 	addlinkClasses = require( 'ext.growthExperiments.AddLink' ),
 	AddLinkSaveDialog = require( './AddLinkSaveDialog.js' ),
 	MachineSuggestionsSaveTool = require( './MachineSuggestionsSaveTool.js' ),
-	RecommendedLinkToolbarDialogDesktop = require( './RecommendedLinkToolbarDialogDesktop.js' );
+	RecommendedLinkToolbarDialogDesktop = require( './RecommendedLinkToolbarDialogDesktop.js' ),
+	SuggestionsDesktopArticleTarget = require( './SuggestionsDesktopArticleTarget.js' ),
+	MachineSuggestionsMode = addlinkClasses.MachineSuggestionsMode;
+
+ve.ui.toolFactory.register( addlinkClasses.EditModeMachineSuggestions );
+ve.ui.toolFactory.register( addlinkClasses.EditModeVisualWithSuggestions );
+
+// Only register custom edit mode tools when showing regular VE mode
+if ( ( new mw.Uri().query || {} ).hideMachineSuggestions ) {
+	ve.init.mw.targetFactory.register( SuggestionsDesktopArticleTarget );
+	return;
+}
 
 ve.dm.modelRegistry.register( addlinkClasses.DMRecommendedLinkAnnotation );
 ve.ce.annotationFactory.register( addlinkClasses.CERecommendedLinkAnnotation );
 ve.dm.modelRegistry.register( addlinkClasses.DMRecommendedLinkErrorAnnotation );
 ve.ce.annotationFactory.register( addlinkClasses.CERecommendedLinkErrorAnnotation );
-ve.ui.windowFactory.register( addlinkClasses.RecommendedLinkRejectionDialog );
-ve.ui.windowFactory.register( AddLinkSaveDialog );
 ve.ui.toolFactory.register( MachineSuggestionsSaveTool );
 
+ve.ui.windowFactory.register( addlinkClasses.RecommendedLinkRejectionDialog );
+ve.ui.windowFactory.register( addlinkClasses.EditModeConfirmationDialog );
+ve.ui.windowFactory.register( AddLinkSaveDialog );
 ve.ui.windowFactory.register( RecommendedLinkToolbarDialogDesktop );
+
 ve.ui.commandRegistry.register(
 	new ve.ui.Command(
 		'recommendedLink', 'window', 'toggle', { args: [ 'recommendedLink' ] }
@@ -26,7 +39,9 @@ Object.keys( ve.ui.contextItemFactory.registry ).forEach( function ( contextItem
 
 // T280129 Disable all unnecessary tools
 Object.keys( ve.ui.toolFactory.registry ).forEach( function ( toolFactoryItem ) {
-	var safeList = [ 'machineSuggestionsSave', 'showSave' ];
+	var safeList = [ 'machineSuggestionsSave', 'showSave', 'editMode' ].concat(
+		MachineSuggestionsMode.getEditModeToolNames()
+	);
 	if ( safeList.indexOf( toolFactoryItem ) === -1 ) {
 		ve.ui.toolFactory.unregister( toolFactoryItem );
 	}
