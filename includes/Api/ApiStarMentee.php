@@ -6,7 +6,7 @@ use ApiBase;
 use ApiMain;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
-use User;
+use MediaWiki\User\UserIdentity;
 
 class ApiStarMentee extends ApiBase {
 	/** @var StarredMenteesStore */
@@ -38,7 +38,7 @@ class ApiStarMentee extends ApiBase {
 		$params = $this->extractRequestParams();
 		$mentor = $this->getUser();
 		$action = $params['gesaction'];
-		/** @var User */
+		/** @var UserIdentity */
 		$mentee = $params['gesmentee'];
 
 		if ( $action === 'star' ) {
@@ -56,7 +56,7 @@ class ApiStarMentee extends ApiBase {
 		$this->getResult()->addValue( null, $this->getModuleName(), [
 			'status' => 'ok',
 			'action' => $action,
-			'mentee' => $mentee
+			'mentee' => $mentee->getName(),
 		] );
 	}
 
