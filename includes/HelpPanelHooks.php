@@ -116,7 +116,7 @@ class HelpPanelHooks {
 		if ( $definitelyShow ) {
 			$out->enableOOUI();
 			$out->addModuleStyles( 'ext.growthExperiments.HelpPanelCta.styles' );
-			$out->addModuleStyles( 'ext.growthExperiments.HelpPanel.icons' );
+			$out->addModuleStyles( 'ext.growthExperiments.icons' );
 			$out->addModules( 'ext.growthExperiments.HelpPanel' );
 
 			$out->addHTML( HelpPanel::getHelpPanelCtaButton( Util::isMobile( $skin ) ) );

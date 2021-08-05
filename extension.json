@@ -402,26 +402,10 @@
 			],
 			"dependencies": [
 				"ext.growthExperiments.Homepage.Logger",
-				"ext.growthExperiments.Homepage.icons",
+				"ext.growthExperiments.icons",
 				"mediawiki.language",
 				"oojs-ui-widgets"
 			]
-		},
-		"ext.growthExperiments.HelpPanel.icons": {
-			"class": "ResourceLoaderImageModule",
-			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",
-			"selectorWithoutVariant": ".oo-ui-icon-{name}",
-			"images": {
-				"askQuestion": {
-					"file": {
-						"ltr": "../images/askQuestion-ltr.svg",
-						"rtl": "../images/askQuestion-rtl.svg"
-					}
-				},
-				"suggestedEdits": {
-					"file": "../images/suggestededits/Topic-general-64w.svg"
-				}
-			}
 		},
 		"ext.growthExperiments.welcomeSurvey.styles": {
 			"styles": [
@@ -832,7 +816,7 @@
 				"oojs-ui-windows",
 				"oojs-ui.styles.icons-editing-core",
 				"ext.visualEditor.mwlink",
-				"ext.growthExperiments.AddLink.icons",
+				"ext.growthExperiments.icons",
 				"ext.growthExperiments.SuggestedEditSession"
 			],
 			"targets": [
@@ -944,61 +928,6 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.AddLink.icons": {
-			"class": "ResourceLoaderImageModule",
-			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",
-			"selectorWithoutVariant": ".oo-ui-icon-{name}",
-			"images": {
-				"robot-black": "homepage/addlink/robot-black.svg"
-			}
-		},
-		"ext.growthExperiments.Homepage.icons": {
-			"class": "ResourceLoaderImageModule",
-			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",
-			"selectorWithoutVariant": ".oo-ui-icon-{name}",
-			"images": {
-				"difficulty-outline": {
-					"file": {
-						"ltr": "../images/levels-outline-ltr.svg",
-						"rtl": "../images/levels-outline-rtl.svg"
-					}
-				},
-				"difficulty-easy": {
-					"file": {
-						"ltr": "../images/difficulty-easy-ltr.svg",
-						"rtl": "../images/difficulty-easy-rtl.svg"
-					}
-				},
-				"difficulty-medium": {
-					"file": {
-						"ltr": "../images/difficulty-medium-ltr.svg",
-						"rtl": "../images/difficulty-medium-rtl.svg"
-					}
-				},
-				"difficulty-hard": {
-					"file": {
-						"ltr": "../images/difficulty-hard-ltr.svg",
-						"rtl": "../images/difficulty-hard-rtl.svg"
-					}
-				},
-				"difficulty-easy-bw": {
-					"file": {
-						"ltr": "../images/difficulty-easy-bw-ltr.svg",
-						"rtl": "../images/difficulty-easy-bw-rtl.svg"
-					}
-				},
-				"info-unpadded": "../images/info-unpadded.svg",
-				"live-broadcast": "../images/live-broadcast.svg",
-				"live-broadcast-anim": "../images/live-broadcast-anim.svg",
-				"mentor": {
-					"file": {
-						"ltr": "../images/mentor-ltr.svg",
-						"rtl": "../images/mentor-rtl.svg"
-					}
-				},
-				"robot-task-type": "../images/suggestededits/robot-green.svg"
-			}
-		},
 		"ext.growthExperiments.Homepage.contribs.styles": {
 			"styles": "homepage/ext.growthExperiments.Homepage.contribs.less",
 			"targets": [
@@ -1075,7 +1004,7 @@
 				"oojs-ui.styles.icons-editing-advanced",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
-				"ext.growthExperiments.Homepage.icons"
+				"ext.growthExperiments.icons"
 			],
 			"messages": [
 				"growthexperiments-help-panel-question-button-text",
@@ -1181,7 +1110,7 @@
 				"oojs-ui-widgets",
 				"oojs-ui.styles.icons-movement",
 				"ext.growthExperiments.Help",
-				"ext.growthExperiments.HelpPanel.icons",
+				"ext.growthExperiments.icons",
 				"ext.growthExperiments.HelpPanelCta.styles",
 				"ext.growthExperiments.SuggestedEditSession",
 				"ext.growthExperiments.AddLink.onboarding"
@@ -1251,7 +1180,7 @@
 			"dependencies": [
 				"oojs-ui-windows",
 				"oojs-ui.styles.icons-media",
-				"ext.growthExperiments.Homepage.icons",
+				"ext.growthExperiments.icons",
 				"ext.growthExperiments.SuggestedEditSession"
 			],
 			"messages": [
@@ -1319,6 +1248,63 @@
 				"desktop",
 				"mobile"
 			]
+		},
+		"ext.growthExperiments.icons": {
+			"class": "ResourceLoaderImageModule",
+			"selectorWithVariant": ".oo-ui-image-{variant}.oo-ui-icon-{name}",
+			"selectorWithoutVariant": ".oo-ui-icon-{name}",
+			"images": {
+				"askQuestion": {
+					"file": {
+						"ltr": "../images/askQuestion-ltr.svg",
+						"rtl": "../images/askQuestion-rtl.svg"
+					}
+				},
+				"suggestedEdits": {
+					"file": "../images/suggestededits/Topic-general-64w.svg"
+				},
+				"robot-black": "homepage/addlink/robot-black.svg",
+				"difficulty-outline": {
+					"file": {
+						"ltr": "../images/levels-outline-ltr.svg",
+						"rtl": "../images/levels-outline-rtl.svg"
+					}
+				},
+				"difficulty-easy": {
+					"file": {
+						"ltr": "../images/difficulty-easy-ltr.svg",
+						"rtl": "../images/difficulty-easy-rtl.svg"
+					}
+				},
+				"difficulty-medium": {
+					"file": {
+						"ltr": "../images/difficulty-medium-ltr.svg",
+						"rtl": "../images/difficulty-medium-rtl.svg"
+					}
+				},
+				"difficulty-hard": {
+					"file": {
+						"ltr": "../images/difficulty-hard-ltr.svg",
+						"rtl": "../images/difficulty-hard-rtl.svg"
+					}
+				},
+				"difficulty-easy-bw": {
+					"file": {
+						"ltr": "../images/difficulty-easy-bw-ltr.svg",
+						"rtl": "../images/difficulty-easy-bw-rtl.svg"
+					}
+				},
+				"info-unpadded": "../images/info-unpadded.svg",
+				"live-broadcast": "../images/live-broadcast.svg",
+				"live-broadcast-anim": "../images/live-broadcast-anim.svg",
+				"mentor": {
+					"file": {
+						"ltr": "../images/mentor-ltr.svg",
+						"rtl": "../images/mentor-rtl.svg"
+					}
+				},
+				"robot-task-type": "../images/suggestededits/robot-green.svg"
+			}
 		}
 	},
 	"QUnitTestModule": {

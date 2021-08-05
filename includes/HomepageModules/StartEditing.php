@@ -94,8 +94,7 @@ class StartEditing extends BaseTaskModule {
 		return array_merge(
 			parent::getModuleStyles(),
 			[ 'oojs-ui.styles.icons-editing-core' ],
-			// SuggestedEdits icon is in HelpPanel.icons
-			[ 'ext.growthExperiments.HelpPanel.icons' ]
+			[ 'ext.growthExperiments.icons' ]
 		);
 	}
 

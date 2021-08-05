@@ -62,7 +62,7 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 		$this->getOutput()->enableOOUI();
 		$this->getOutput()->addModuleStyles( [
 			'oojs-ui.styles.icons-interactions',
-			'ext.growthExperiments.Homepage.icons',
+			'ext.growthExperiments.icons',
 			'ext.growthExperiments.donorSignupCampaign.styles',
 		] );
 
