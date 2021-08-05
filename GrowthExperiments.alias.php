@@ -199,6 +199,22 @@ $specialPageAliases['nl'] = [
 	'ClaimMentee' => [ 'ClaimMentee' ],
 ];
 
+/** Malayalam (മലയാളം) */
+$specialPageAliases['ml'] = [
+	'WelcomeSurvey' => [ 'സ്വാഗതം_സർവേ' ],
+	'Homepage' => [ 'ഹോംപേജ്' ],
+	'Impact' => [ 'ആഘാതം' ],
+	'ClaimMentee' => [ 'പുതിയ_ഉപയോക്താവിനെ_ക്ലെയിം_ചെയ്യുക' ],
+];
+
+/** Marathi (मराठी) */
+$specialPageAliases['mr'] = [
+	'WelcomeSurvey' => [ 'स्वागत_सर्वेक्षण' ],
+	'Homepage' => [ 'मुखपृष्ठ' ],
+	'Impact' => [ 'परिणाम' ],
+	'ClaimMentee' => [ 'नवीन_वापरकर्त्याचा_दावा_करा' ],
+];
+
 /** Malay (Bahasa Melayu) */
 $specialPageAliases['ms'] = [
 	'WelcomeSurvey' => [ 'Penyiasatan_Selamat_Datang' ],
