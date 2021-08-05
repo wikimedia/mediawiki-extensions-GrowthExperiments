@@ -519,34 +519,6 @@
 				"mediawiki.router"
 			]
 		},
-		"ext.growthExperiments.Homepage.Topics": {
-			"packageFiles": [
-				"homepage/ext.growthExperiments.Homepage.Topics.js",
-				"homepage/ext.growthExperiments.Homepage.TopicSelectionWidget.js",
-				"homepage/ext.growthExperiments.Homepage.SuggestionWidget.js",
-				"homepage/ext.growthExperiments.Homepage.SuggestionGroupWidget.js",
-				{
-					"name": "homepage/Topics.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getTopicsJson" ]
-				}
-			],
-			"styles": [
-				"homepage/ext.growthExperiments.Homepage.SuggestionWidget.less",
-				"homepage/ext.growthExperiments.Homepage.SuggestionGroupWidget.less"
-			],
-			"messages": [
-				"growthexperiments-homepage-suggestededits-topics-more",
-				"growthexperiments-homepage-suggestededits-topics-selectall",
-				"growthexperiments-homepage-suggestededits-topics-unselectall"
-			],
-			"targets": [
-				"desktop",
-				"mobile"
-			],
-			"dependencies": [
-				"oojs-ui-widgets"
-			]
-		},
 		"ext.growthExperiments.Homepage.SuggestedEdits": {
 			"packageFiles": [
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.js",
@@ -565,6 +537,9 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js",
 				"homepage/suggestededits/TaskTypesAbFilter.js",
+				"homepage/ext.growthExperiments.Homepage.TopicSelectionWidget.js",
+				"homepage/ext.growthExperiments.Homepage.SuggestionWidget.js",
+				"homepage/ext.growthExperiments.Homepage.SuggestionGroupWidget.js",
 				"helppanel/ext.growthExperiments.SuggestedEditsPeek.js",
 				"utils/ext.growthExperiments.Utils.js",
 				"utils/ext.growthExperiments.IconUtils.js",
@@ -584,11 +559,17 @@
 				{
 					"name": "homepage/suggestededits/DefaultTaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
+				},
+				{
+					"name": "homepage/Topics.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getTopicsJson" ]
 				}
 			],
 			"styles": [
 				"homepage/suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.less",
-				"homepage/suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.less"
+				"homepage/suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.less",
+				"homepage/ext.growthExperiments.Homepage.SuggestionWidget.less",
+				"homepage/ext.growthExperiments.Homepage.SuggestionGroupWidget.less"
 			],
 			"targets": [
 				"desktop",
@@ -605,7 +586,6 @@
 				"oojs-ui.styles.icons-content",
 				"oojs-ui.styles.icons-editing-core",
 				"oojs-ui-windows",
-				"ext.growthExperiments.Homepage.Topics",
 				"ext.growthExperiments.Homepage.Logger"
 			],
 			"messages": [
@@ -652,6 +632,9 @@
 				"growthexperiments-homepage-suggestededits-tasktype-label-links",
 				"growthexperiments-homepage-suggestededits-tasktype-label-create",
 				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
+				"growthexperiments-homepage-suggestededits-topics-more",
+				"growthexperiments-homepage-suggestededits-topics-selectall",
+				"growthexperiments-homepage-suggestededits-topics-unselectall",
 				"growthexperiments-homepage-suggestededits-difficulty-filter-label",
 				"growthexperiments-homepage-suggestededits-difficulty-filter-label-mobile",
 				"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy",
@@ -684,6 +667,9 @@
 			"packageFiles": [
 				"homepage/ext.growthExperiments.Homepage.StartEditing.js",
 				"homepage/ext.growthExperiments.Homepage.StartEditingDialog.js",
+				"homepage/ext.growthExperiments.Homepage.TopicSelectionWidget.js",
+				"homepage/ext.growthExperiments.Homepage.SuggestionWidget.js",
+				"homepage/ext.growthExperiments.Homepage.SuggestionGroupWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.js",
@@ -700,12 +686,18 @@
 				{
 					"name": "homepage/suggestededits/DefaultTaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
+				},
+				{
+					"name": "homepage/Topics.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getTopicsJson" ]
 				}
 			],
 			"styles": [
 				"homepage/ext.growthExperiments.Homepage.StartEditingDialog.less",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.less",
-				"homepage/suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.less"
+				"homepage/suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.less",
+				"homepage/ext.growthExperiments.Homepage.SuggestionWidget.less",
+				"homepage/ext.growthExperiments.Homepage.SuggestionGroupWidget.less"
 			],
 			"messages": [
 				"ellipsis",
@@ -744,6 +736,9 @@
 				"growthexperiments-homepage-suggestededits-tasktype-label-create",
 				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
 				"growthexperiments-homepage-suggestededits-create-article-additional-message",
+				"growthexperiments-homepage-suggestededits-topics-more",
+				"growthexperiments-homepage-suggestededits-topics-selectall",
+				"growthexperiments-homepage-suggestededits-topics-unselectall",
 				"vector-view-edit"
 			],
 			"dependencies": [
@@ -755,7 +750,6 @@
 				"oojs-ui.styles.icons-content",
 				"oojs-ui-widgets",
 				"oojs-ui-windows",
-				"ext.growthExperiments.Homepage.Topics",
 				"ext.growthExperiments.Homepage.Logger"
 			],
 			"targets": [
