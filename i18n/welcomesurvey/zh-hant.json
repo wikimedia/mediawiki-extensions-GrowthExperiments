@@ -3,14 +3,15 @@
 		"authors": [
 			"Hello903hello",
 			"Kly",
+			"Pseudo Classes",
 			"Xiplus"
 		]
 	},
-	"welcomesurvey": "{{GENDER:$1|歡迎您}}，$1！",
+	"welcomesurvey": "{{GENDER:$1|歡迎}}，$1！",
 	"welcomesurvey-save-confirmation-title": "感謝！已保存您的回覆。",
 	"welcomesurvey-save-confirmation-text": "您的答覆，會用來協助我們在維基百科入門裡提供您的有用方法。",
 	"welcomesurvey-subtitle": "透過回答一些選填的問題，來協助我們增進您的維基百科使用體驗。",
-	"welcomesurvey-save-btn": "結束",
+	"welcomesurvey-save-btn": "完成",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|跳過}}此調查",
 	"welcomesurvey-close-btn": "關閉並返回至$1",
 	"welcomesurvey-sidebar-privacy-title": "我們重視您的隱私",

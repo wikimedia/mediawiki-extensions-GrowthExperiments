@@ -341,6 +341,7 @@
 	"growthexperiments-addlink-context-button-reject": "לא",
 	"growthexperiments-addlink-context-button-help": "קבלת עזרה עם עריכה",
 	"growthexperiments-addlink-context-button-next": "הבא",
+	"growthexperiments-addlink-context-button-show-suggestion": "הצגת הצעת קישור",
 	"growthexperiments-addlink-rejectiondialog-title": "למה זה לא קישור טוב?",
 	"growthexperiments-addlink-rejectiondialog-message": "התשובות {{GENDER:$1|שלך}} משפרות הצעות עתידיות.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "כמעט כולם יודעים מה זה",
@@ -387,5 +388,12 @@
 	"newcomertasksinfo-table-header-task-count": "מספר",
 	"newcomertasksinfo-table-header-topic-type": "מזהה נושא",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "הצעות",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "שליחה..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "שליחה...",
+	"growthexperiments-addlink-editmode-selection-label": "החלפת עורך",
+	"growthexperiments-addlink-editmode-selection-machine-suggestions": "הצעות",
+	"growthexperiments-addlink-editmode-selection-visual": "עריכה חזותית",
+	"growthexperiments-addlink-editmode-confirmation-dialog-title": "לעזוב את ההצעות?",
+	"growthexperiments-addlink-editmode-confirmation-dialog-message": "מעבר מצבים יאפשר {{GENDER:$1|לך}} לעשות סוגים אחרים של עריכות. נא לסיים לסקור כדי לשלוח את ההתקדמות שלך עד כאן.",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-confirm": "מעבר ללא שליחה",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "ביטול"
 }

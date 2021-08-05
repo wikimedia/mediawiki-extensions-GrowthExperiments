@@ -15,6 +15,7 @@
 			"Shizhao",
 			"Si109",
 			"SomeyaMako",
+			"Sunny00217",
 			"Tranve",
 			"VulpesVulpes825",
 			"Xzonn",
@@ -399,7 +400,7 @@
 	"newcomertasksinfo-table-header-task-type": "任务类型",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "计数",
-	"newcomertasksinfo-table-header-topic-type": "主题IP",
+	"newcomertasksinfo-table-header-topic-type": "主题ID",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "建议",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "提交..."
 }

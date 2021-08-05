@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sunny00217"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "將學員標記或取消標記星號（私密存儲且不記錄）",
+	"apihelp-growthstarmentee-param-gesaction": "要採取的行動（<kbd>加上標記</kbd>或<kbd>移除標記</kbd>）",
+	"apihelp-growthstarmentee-param-gesmentee": "（反）標記學員",
+	"apihelp-query+growthstarredmentees-summary": "獲取當前登錄導師標記星號的學員名單"
+}

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bluetpp"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Đánh dấu hoặc bỏ đánh dấu sao một người được cố vấn bởi người dùng hiện tại (lưu trữ riêng tư và không được ghi lại)",
+	"apihelp-growthstarmentee-param-gesaction": "Hành vi thực hiện (<kbd>star</kbd> hoặc <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Người được cố vấn để (bỏ) đánh dấu sao",
+	"apihelp-query+growthstarredmentees-summary": "Lấy danh sách người được cố vấn được đánh dấu sao bởi cố vấn đã đăng nhập hiện tại"
+}
