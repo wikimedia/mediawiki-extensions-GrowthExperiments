@@ -85,16 +85,28 @@
 		min-height: @imageThumbnailSize;
 		padding: 8px 0;
 
-		.ve-ui-linkContextItem-link {
+		&-body {
+			display: flex;
+			position: relative;
+		}
+
+		&-content {
+			flex-grow: 1;
+		}
+
+		.mw-ge-recommendedLinkToolbarDialog-linkPreview-link {
 			.rel-line-height( @parentFontSize: 16px, @targetLineHeight: 16px );
 			font-weight: bold;
 			color: @wmui-color-accent50;
-			margin-left: @imageThumbnailSize;
 		}
 
 		// OOUI icon is shown when the article doesn't have an image.
-		.oo-ui-iconWidget,
-		.ve-ui-mwInternalLinkContextItem-hasImage {
+		.mw-ge-recommendedLinkToolbarDialog-linkPreview-icon {
+			float: left;
+			font-size: 2em;
+			background-color: @wmui-color-base70;
+			border: 0.35714em solid @wmui-color-base70;
+			opacity: 0.4;
 			margin-bottom: 0;
 			margin-right: @gutterSize;
 			width: @imageThumbnailSize;
@@ -105,20 +117,19 @@
 			background-position: center;
 		}
 
-		.ve-ui-mwInternalLinkContextItem-description {
-			display: none;
+		.mw-ge-recommendedLinkToolbarDialog-linkPreview-thumbnail {
+			// Additional specificity to override OOUI rule
+			.mw-ge-recommendedLinkToolbarDialog-linkPreview-hasImage {
+				background-size: cover;
+				border: unset;
+				opacity: 1;
+			}
 		}
 
-		&-description {
+		&-extract {
 			.paragraph-ellipsis( @lines: 2, @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
 			margin-top: 4px;
-			margin-left: @imageThumbnailSize;
 			color: @wmui-color-base30;
-		}
-
-		// Strong rule to override VE style
-		.ve-ui-mwInternalLinkContextItem-withImage > .oo-ui-iconElement.oo-ui-iconElement-icon {
-			margin-bottom: 0;
 		}
 	}
 
@@ -257,7 +268,7 @@
 			}
 		}
 
-		.ve-ui-linkContextItem-link {
+		.mw-ge-recommendedLinkToolbarDialog-linkPreview-link {
 			display: block;
 		}
 	}
@@ -281,7 +292,7 @@
 		}
 
 		.mw-ge-recommendedLinkToolbarDialog-linkPreview {
-			.ve-ui-linkContextItem-link {
+			.mw-ge-recommendedLinkToolbarDialog-linkPreview-link {
 				.rel-line-height( @parentFontSize: 14px, @targetLineHeight: 16px );
 				margin-left: 0;
 
@@ -299,7 +310,11 @@
 				}
 			}
 
-			&-description {
+			&-content {
+				margin-top: -3px; // align cap-height w/top of image
+			}
+
+			&-extract {
 				.paragraph-ellipsis( @lines: 2, @parentFontSize: 14px, @targetFontSize: 12.4px, @targetLineHeight: 17.3px );
 			}
 		}
