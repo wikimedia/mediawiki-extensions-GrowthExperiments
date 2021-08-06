@@ -334,7 +334,7 @@ abstract class DashboardModule implements IDashboardModule {
 			],
 			new IconWidget( [
 				'icon' => 'arrowPrevious',
-				'classes' => [ self::BASE_CSS_CLASS . '-header-back-icon' ],
+				'classes' => [ static::BASE_CSS_CLASS . '-header-back-icon' ],
 			] )
 		);
 	}
@@ -345,7 +345,7 @@ abstract class DashboardModule implements IDashboardModule {
 	protected function getNavIcon() {
 		return new IconWidget( [
 			'icon' => 'arrowNext',
-			'classes' => [ self::BASE_CSS_CLASS . '-header-nav-icon' ],
+			'classes' => [ static::BASE_CSS_CLASS . '-header-nav-icon' ],
 		] );
 	}
 
