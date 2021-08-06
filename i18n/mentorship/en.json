@@ -18,5 +18,12 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "active $1 ago",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "unknown",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Show $1",
-	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 of $2"
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 of $2",
+	"growthexperiments-mentor-dashboard-resources-headline": "Resources",
+	"growthexperiments-mentor-dashboard-resources-intro": "The links below help you quickly navigate to relevant mentor related pages.",
+	"growthexperiments-mentor-dashboard-resources-links-headline": "Top pages for mentoring",
+	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "The mentor list",
+	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "How to introduce yourself as a mentor",
+	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "How to claim a mentee",
+	"growthexperiments-mentor-dashboard-resources-link-tools": "Growth tools"
 }

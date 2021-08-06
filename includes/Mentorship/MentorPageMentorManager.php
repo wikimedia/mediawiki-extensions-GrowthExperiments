@@ -16,6 +16,7 @@ use ParserOptions;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
+use Title;
 use TitleFactory;
 use User;
 use Wikimedia\Rdbms\DBReadOnlyError;
@@ -249,16 +250,23 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function getAutoMentorsListTitle(): ?Title {
+		if ( $this->mentorsPageName === null ) {
+			return null;
+		}
+
+		return $this->titleFactory->newFromText( $this->mentorsPageName );
+	}
+
+	/**
 	 * Get the WikiPage object for the mentor page.
 	 * @return WikiPage|null A page that's guaranteed to exist or null when no mentors page available
 	 * @throws WikiConfigException If the mentor page cannot be fetched due to misconfiguration.
 	 */
 	private function getMentorsPage(): ?WikiPage {
-		if ( $this->mentorsPageName === null ) {
-			return null;
-		}
-
-		$title = $this->titleFactory->newFromText( $this->mentorsPageName );
+		$title = $this->getAutoMentorsListTitle();
 		if ( !$title || !$title->exists() ) {
 			throw new WikiConfigException( 'wgGEHomepageMentorsList is invalid: ' . $this->mentorsPageName );
 		}

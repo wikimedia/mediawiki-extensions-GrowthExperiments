@@ -3,7 +3,9 @@
 namespace GrowthExperiments\MentorDashboard;
 
 use GrowthExperiments\DashboardModule\IDashboardModule;
+use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\Modules\MenteeOverview;
+use GrowthExperiments\MentorDashboard\Modules\Resources;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
 
@@ -63,6 +65,19 @@ class MentorDashboardModuleRegistry {
 				return new MenteeOverview(
 					'mentee-overview',
 					$context
+				);
+			},
+			'resources' => static function (
+				MediaWikiServices $services,
+				IContextSource $context
+			): IDashboardModule {
+				$geServices = GrowthExperimentsServices::wrap( $services );
+				return new Resources(
+					'resources',
+					$context,
+					$services->getTitleParser(),
+					$services->getLinkRenderer(),
+					$geServices->getMentorManager()
 				);
 			}
 		];
