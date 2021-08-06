@@ -300,7 +300,15 @@ abstract class DashboardModule implements IDashboardModule {
 	 * @return string HTML content of the header. Will be wrapped in a section.
 	 */
 	protected function getHeader() {
-		return $this->getHeaderTextElement();
+		$html = '';
+		if ( $this->shouldHeaderIncludeIcon() ) {
+			$html .= $this->getHeaderIcon(
+				$this->getHeaderIconName(),
+				$this->shouldInvertHeaderIcon()
+			);
+		}
+		$html .= $this->getHeaderTextElement();
+		return $html;
 	}
 
 	/**
@@ -417,6 +425,17 @@ abstract class DashboardModule implements IDashboardModule {
 	 * @return bool Whether the header icon should be inverted.
 	 */
 	protected function shouldInvertHeaderIcon() {
+		return false;
+	}
+
+	/**
+	 * Override this method if header should include the icon
+	 *
+	 * No styles provided by default! Remember to position the icon manually via CSS.
+	 *
+	 * @return bool Should header include the icon?
+	 */
+	protected function shouldHeaderIncludeIcon(): bool {
 		return false;
 	}
 }
