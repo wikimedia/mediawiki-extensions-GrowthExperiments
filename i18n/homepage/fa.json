@@ -174,6 +174,7 @@
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 بازدید (۶۰ روز گذشته)",
 	"growthexperiments-homepage-suggestededits-previous-card": "ویرایش پیشنهادی قبلی",
 	"growthexperiments-homepage-suggestededits-next-card": "ویرایش پیشنهادی بعدی",
+	"growthexperiments-homepage-suggestededits-edit-card": "ویرایش",
 	"growthexperiments-homepage-suggestededits-no-more-results": "دیگر پیشنهادی نیست",
 	"growthexperiments-homepage-suggestededits-no-results": "هیچ پیشنهادی پیدا نشد",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "سایر سطوح دشواری را برای یافتن ویرایش‌های پیشنهادی انتخاب کنید.",
@@ -345,6 +346,7 @@
 	"growthexperiments-addlink-context-button-reject": "خیر",
 	"growthexperiments-addlink-context-button-help": "در زمینه ویرایش کمک بگیرید",
 	"growthexperiments-addlink-context-button-next": "بعدی",
+	"growthexperiments-addlink-context-button-show-suggestion": "نمایش پیوند پیشنهادی",
 	"growthexperiments-addlink-rejectiondialog-title": "چرا این پیوند خوبی نیست؟",
 	"growthexperiments-addlink-rejectiondialog-message": "پاسخ‌های {{GENDER:$1|شما}} پیشنهادهای آینده را بهبود می‌بخشد.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "تقریباً همه می‌دانند چیست",
@@ -391,5 +393,11 @@
 	"newcomertasksinfo-table-header-task-count": "تعداد",
 	"newcomertasksinfo-table-header-topic-type": "شناسهٔ موضوع",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "پیشنهادها",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "ارسال..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "ارسال...",
+	"growthexperiments-addlink-editmode-selection-label": "تغییر ویرایشگر",
+	"growthexperiments-addlink-editmode-selection-machine-suggestions": "پیشنهادها",
+	"growthexperiments-addlink-editmode-selection-visual": "ویرایش دیداری",
+	"growthexperiments-addlink-editmode-confirmation-dialog-title": "ترک کردن پیشنهادها؟",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-confirm": "تغییر بدون ثبت",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "لغو"
 }

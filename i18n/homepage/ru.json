@@ -404,5 +404,6 @@
 	"newcomertasksinfo-table-header-task-count": "Количество",
 	"newcomertasksinfo-table-header-topic-type": "Идентификатор темы",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Предложения",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Подтвердить…"
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Подтвердить…",
+	"growthexperiments-addlink-editmode-selection-machine-suggestions": "Предложения"
 }

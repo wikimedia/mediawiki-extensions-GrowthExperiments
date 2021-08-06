@@ -49,6 +49,7 @@
 	"growthexperiments-homepage-discovery-banner-header": "Wëllkomm op  {{GENDER:$1|Ärer}} Homepage!",
 	"growthexperiments-homepage-suggestededits-pager-end": "Schluss",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 Visitten (an de leschte 60 Deeg)",
+	"growthexperiments-homepage-suggestededits-edit-card": "Änneren",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Keng aner Virschléi",
 	"growthexperiments-homepage-suggestededits-no-results": "Keng Virschléi fonnt",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "Ännerungen de leschten Dag",
@@ -145,5 +146,7 @@
 	"growthexperiments-addlink-summary-column-header-linked": "Verlinkt?",
 	"growthexperiments-addlink-summary-submit": "Schécken",
 	"growthexperiments-addlink-skip-accept": "All iwwersprangen",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Späicheren..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Späicheren...",
+	"growthexperiments-addlink-editmode-selection-machine-suggestions": "Virschléi",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Ofbriechen"
 }

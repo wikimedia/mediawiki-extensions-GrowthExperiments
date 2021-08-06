@@ -12,6 +12,8 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: آخرین بار در $2 توسط [[User:$1|$1]] به‌روز شده‌است.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: آخرین بار $1 توسط کاربری ناشناس به‌روز شده‌است.",
 	"growthexperiments-edit-config-pretext": "این صفحه به شما این امکان را می‌دهد که تنظیمات ویژگی‌های تیم [[:mw:Special:MyLanguage/Growth|رشد]] را ویرایش کنید. با این عمل، $1 به نمایندگی از شما ویرایش خواهد شد. می‌توانید تغییرات خود را در تاریخچهٔ آن صفحه مشاهده کنید.",
+	"growthexperiments-edit-config-feedback-headline": "آیا در مورد این فرم ایده یا پرسشی دارید؟",
+	"growthexperiments-edit-config-feedback-cta": "ارائهٔ بازخورد",
 	"growthexperiments-edit-config-config-changed": "تنظیمات تغییر یافت. شاید لازم باشد برای تأثیرگذاری این تغییرات چند دقیقه صبر کنید.",
 	"growthexperiments-edit-config-help-panel-post-on-top": "محل ارسال پرسش‌ها در میز کمک؟",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "بالای صفحه",

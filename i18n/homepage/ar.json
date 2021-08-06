@@ -175,6 +175,7 @@
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 تصفّح (آخر 60 يوما)",
 	"growthexperiments-homepage-suggestededits-previous-card": "التعديل المقترح السابق",
 	"growthexperiments-homepage-suggestededits-next-card": "التعديل المقترح الموالي",
+	"growthexperiments-homepage-suggestededits-edit-card": "تعديل",
 	"growthexperiments-homepage-suggestededits-no-more-results": "لا يوجد المزيد من الاقتراحات",
 	"growthexperiments-homepage-suggestededits-no-results": "لم يتم العثور على اقتراحات",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "{{GENDER:|حدد|حددي}} مستويات صعوبة أخرى للعثور على التعديلات المقترحة.",
@@ -347,6 +348,7 @@
 	"growthexperiments-addlink-context-button-reject": "لا",
 	"growthexperiments-addlink-context-button-help": "{{GENDER:|احصل|احصلي}} على المساعدة في التحرير",
 	"growthexperiments-addlink-context-button-next": "التالي",
+	"growthexperiments-addlink-context-button-show-suggestion": "إظهار اقتراح الروايط",
 	"growthexperiments-addlink-rejectiondialog-title": "لماذا هذا الرابط غير جيّد؟",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|إجاباتك}} ستُحسّن الاقتراحات المستقبلية.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "يعرف مُعظم الناس ماذا يعني ذلك",
@@ -393,5 +395,12 @@
 	"newcomertasksinfo-table-header-task-count": "العدد",
 	"newcomertasksinfo-table-header-topic-type": "معرّف الموضوع",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "اقتراحات",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "إرسال..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "إرسال...",
+	"growthexperiments-addlink-editmode-selection-label": "تغيير المحرر",
+	"growthexperiments-addlink-editmode-selection-machine-suggestions": "اقتراحات",
+	"growthexperiments-addlink-editmode-selection-visual": "التحرير المرئي",
+	"growthexperiments-addlink-editmode-confirmation-dialog-title": "مغادرة الاقتراحات؟",
+	"growthexperiments-addlink-editmode-confirmation-dialog-message": "تغيير المحرر سيمكّنك من القيام بأعمال تحريرية أخرى. {{GENDER:$1|أنه|أنهي}} المعاينة لتسجيل تقدّمك المنجز إلى حدّ الآن.",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-confirm": "تغيير دون تسجيل",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "إلغاء"
 }

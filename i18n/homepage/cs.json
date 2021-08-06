@@ -175,6 +175,7 @@
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 návštěv čtenáři (za posl. 60 dní)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Předchozí tip",
 	"growthexperiments-homepage-suggestededits-next-card": "Následující tip",
+	"growthexperiments-homepage-suggestededits-edit-card": "Editovat",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Žádné další tipy",
 	"growthexperiments-homepage-suggestededits-no-results": "Žádné tipy nenalezeny",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Vyberte jiné úrovně obtížnosti, abyste našli nějaké tipy.",
@@ -392,5 +393,9 @@
 	"newcomertasksinfo-table-header-task-count": "Počet",
 	"newcomertasksinfo-table-header-topic-type": "ID tématu",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Návrhy",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Potvrdit..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Potvrdit...",
+	"growthexperiments-addlink-editmode-selection-label": "Přepnout editor",
+	"growthexperiments-addlink-editmode-selection-machine-suggestions": "Návrhy",
+	"growthexperiments-addlink-editmode-selection-visual": "Vizuální editace",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Zrušit"
 }

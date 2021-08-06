@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Hedda",
+			"Jelican9",
 			"Joseph",
 			"Melissadilara",
 			"Mim.saitkilic",
@@ -21,6 +22,8 @@
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: En son bilinmeyen kullanıcı tarafından güncellendi $1.",
 	"growthexperiments-edit-config-pretext": "Bu sayfa, [[:mw:Special:MyLanguage/Growth|Growth]] takımı özelliklerinin yapılandırmasını düzenlemenize izin verir. Sizin adınıza $1 sayfasını değiştirir. Değişikliklerinizi o sayfanın geçmişinde görebilirsiniz.",
 	"growthexperiments-edit-config-pretext-unprivileged": "Bu form, ayrıcalıklı kullanıcıların [[:mw:Special:MyLanguage/Growth|Büyüme]] ekibi özelliklerinin yapılandırmasını düzenlemesine olanak tanır.",
+	"growthexperiments-edit-config-feedback-headline": "Bu form hakkında bir sorunuz veya fikriniz var mı?",
+	"growthexperiments-edit-config-feedback-cta": "Geri bildirimde bulun",
 	"growthexperiments-edit-config-error-invalid-title": "Yapılandırma sayfası düzgün yapılandırılmamış",
 	"growthexperiments-edit-config-edit-summary": "Değişiklik özeti",
 	"growthexperiments-edit-config-config-changed": "Yapılandırma değiştirildi. Değişikliklerin etkili olması için birkaç dakika beklemeniz gerekebilir.",

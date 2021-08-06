@@ -7,6 +7,7 @@
 			"Buntschann",
 			"Kkairri",
 			"LaMagiaaa",
+			"MathXplore",
 			"Omotecho",
 			"Shirayuki",
 			"Siglite3",
@@ -177,6 +178,7 @@
 	"growthexperiments-homepage-suggestededits-pageviews": "閲覧回数$1回（直近60日間）",
 	"growthexperiments-homepage-suggestededits-previous-card": "前のおすすめ編集",
 	"growthexperiments-homepage-suggestededits-next-card": "次のおすすめ編集",
+	"growthexperiments-homepage-suggestededits-edit-card": "編集",
 	"growthexperiments-homepage-suggestededits-no-more-results": "おすすめ編集は他にありません",
 	"growthexperiments-homepage-suggestededits-no-results": "おすすめ編集は見つかりませんでした",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "難易度を変えて、おすすめ編集を見つけてください。",
@@ -383,5 +385,9 @@
 	"newcomertasksinfo-table-header-task-count": "件数",
 	"newcomertasksinfo-table-header-topic-type": "トピックID",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "提案",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "送信する..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "送信する...",
+	"growthexperiments-addlink-editmode-selection-label": "エディターを切り替え",
+	"growthexperiments-addlink-editmode-selection-machine-suggestions": "提案",
+	"growthexperiments-addlink-editmode-selection-visual": "ビジュアル編集",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "キャンセル"
 }

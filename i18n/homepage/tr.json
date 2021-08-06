@@ -5,6 +5,7 @@
 			"Agaafd",
 			"BaRaN6161 TURK",
 			"Grkn gll",
+			"Jelican9",
 			"Joseph",
 			"Mirzali",
 			"MuratTheTurkish",
@@ -177,6 +178,7 @@
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 ziyaret (son 60 gün)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Önceki önerilen düzenleme",
 	"growthexperiments-homepage-suggestededits-next-card": "Sonraki önerilen düzenleme",
+	"growthexperiments-homepage-suggestededits-edit-card": "Düzenle",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Başka öneri yok",
 	"growthexperiments-homepage-suggestededits-no-results": "Öneri bulunamadı",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Önerilen düzenlemeleri bulmak için diğer zorluk seviyelerini seçin.",
@@ -389,5 +391,10 @@
 	"newcomertasksinfo-table-header-task-count": "Adet",
 	"newcomertasksinfo-table-header-topic-type": "Konu Kimliği",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Öneriler",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Gönder..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Gönder...",
+	"growthexperiments-addlink-editmode-selection-label": "Düzenleyiciyi değiştir",
+	"growthexperiments-addlink-editmode-selection-machine-suggestions": "Öneriler",
+	"growthexperiments-addlink-editmode-selection-visual": "Görsel düzenleme",
+	"growthexperiments-addlink-editmode-confirmation-dialog-title": "Öneri bırakın?",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "İptal"
 }

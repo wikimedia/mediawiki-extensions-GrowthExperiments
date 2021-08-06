@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Signe o lìve 'nu tirocinande cumme signate da l'utende de mò (reggistrate privatamende e non collegate)",
+	"apihelp-growthstarmentee-param-gesaction": "Azione fà (<kbd>star</kbd> o <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Tirocinande da mettere (o luà)",
+	"apihelp-query+growthstarredmentees-summary": "Pigghie l'elenghe de le tirocinande signate da l'utende trasute de mò cumme tutor"
+}
