@@ -5,6 +5,8 @@ namespace GrowthExperiments\DashboardModule;
 use Html;
 use IContextSource;
 use InvalidArgumentException;
+use Message;
+use MessageSpecifier;
 use OOUI\IconWidget;
 use SpecialPage;
 
@@ -437,5 +439,17 @@ abstract class DashboardModule implements IDashboardModule {
 	 */
 	protected function shouldHeaderIncludeIcon(): bool {
 		return false;
+	}
+
+	/**
+	 * Alias for MessageLocalizer::msg
+	 *
+	 * @param string|string[]|MessageSpecifier $key
+	 * @param mixed ...$params
+	 * @return Message
+	 * @see MessageLocalizer::msg()
+	 */
+	protected function msg( $key, ...$params ) {
+		return $this->getContext()->msg( $key, ...$params );
 	}
 }
