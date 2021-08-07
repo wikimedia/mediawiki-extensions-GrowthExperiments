@@ -52,4 +52,8 @@ class StaticMentorManager extends MentorManager {
 		return [];
 	}
 
+	/** @inheritDoc */
+	public function isMentorshipEnabledForUser( UserIdentity $user ): bool {
+		return true;
+	}
 }

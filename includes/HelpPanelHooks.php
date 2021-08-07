@@ -135,6 +135,7 @@ class HelpPanelHooks {
 		// add the email config var anyway. We'll need it if the user loads an editor via JS.
 		// Also set wgGEHelpPanelEnabled to let our JS modules know it's safe to display the help panel.
 		if ( $maybeShow ) {
+			$mentorManager = $geServices->getMentorManager();
 			$out->addJsConfigVars( [
 				// We know the help panel is enabled, otherwise we wouldn't get here
 				'wgGEHelpPanelEnabled' => true,
@@ -145,7 +146,8 @@ class HelpPanelHooks {
 				'wgGEHelpPanelAskMentor' =>
 					$wikiConfig->get( 'GEMentorshipEnabled' ) &&
 					$wikiConfig->get( 'GEHelpPanelAskMentor' ) &&
-					$geServices->getMentorManager()->getMentorForUserSafe( $out->getUser() ) !== null,
+					$mentorManager->isMentorshipEnabledForUser( $out->getUser() ) &&
+					$mentorManager->getMentorForUserSafe( $out->getUser() ) !== null,
 			] + HelpPanel::getUserEmailConfigVars( $out->getUser() ) );
 
 			if ( !$definitelyShow ) {

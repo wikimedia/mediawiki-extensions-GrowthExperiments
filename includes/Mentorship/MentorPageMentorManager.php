@@ -11,6 +11,7 @@ use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserNameUtils;
+use MediaWiki\User\UserOptionsLookup;
 use MessageLocalizer;
 use ParserOptions;
 use Psr\Log\LoggerAwareInterface;
@@ -32,6 +33,8 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 */
 	public const MENTOR_PREF = PreferenceMentorStore::MENTOR_PREF;
 
+	public const MENTORSHIP_ENABLED_PREF = 'growthexperiments-homepage-mentorship-enabled';
+
 	/** @var int Maximum mentor intro length. */
 	private const INTRO_TEXT_LENGTH = 240;
 
@@ -51,6 +54,8 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 	/** @var UserIdentityLookup */
 	private $userIdentityLookup;
+
+	private $userOptionsLookup;
 
 	/** @var MessageLocalizer */
 	private $messageLocalizer;
@@ -74,6 +79,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 * @param UserFactory $userFactory
 	 * @param UserNameUtils $userNameUtils
 	 * @param UserIdentityLookup $userIdentityLookup
+	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param MessageLocalizer $messageLocalizer
 	 * @param Language $language
 	 * @param string|null $mentorsPageName Title of the page which contains the list of available mentors.
@@ -91,6 +97,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		UserFactory $userFactory,
 		UserNameUtils $userNameUtils,
 		UserIdentityLookup $userIdentityLookup,
+		UserOptionsLookup $userOptionsLookup,
 		MessageLocalizer $messageLocalizer,
 		Language $language,
 		?string $mentorsPageName,
@@ -103,6 +110,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$this->userFactory = $userFactory;
 		$this->userNameUtils = $userNameUtils;
 		$this->userIdentityLookup = $userIdentityLookup;
+		$this->userOptionsLookup = $userOptionsLookup;
 		$this->messageLocalizer = $messageLocalizer;
 		$this->language = $language;
 		$this->mentorsPageName = $mentorsPageName;
@@ -359,4 +367,10 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		return $content->getText();
 	}
 
+	/**
+	 * @inheritDoc
+	 */
+	public function isMentorshipEnabledForUser( UserIdentity $user ): bool {
+		return $this->userOptionsLookup->getBoolOption( $user, self::MENTORSHIP_ENABLED_PREF );
+	}
 }

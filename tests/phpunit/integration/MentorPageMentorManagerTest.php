@@ -229,6 +229,26 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 	}
 
 	/**
+	 * @covers ::isMentorshipEnabledForUser
+	 */
+	public function testIsMentorshipEnabled() {
+		$optionManager = $this->getServiceContainer()->getUserOptionsManager();
+
+		$enabledUser = $this->getMutableTestUser()->getUser();
+		$disabledUser = $this->getMutableTestUser()->getUser();
+		$defaultUser = $this->getMutableTestUser()->getUser();
+		$optionManager->setOption( $enabledUser, MentorPageMentorManager::MENTORSHIP_ENABLED_PREF, 1 );
+		$enabledUser->saveSettings();
+		$optionManager->setOption( $disabledUser, MentorPageMentorManager::MENTORSHIP_ENABLED_PREF, 0 );
+		$disabledUser->saveSettings();
+
+		$manager = $this->getMentorManager();
+		$this->assertTrue( $manager->isMentorshipEnabledForUser( $enabledUser ) );
+		$this->assertFalse( $manager->isMentorshipEnabledForUser( $disabledUser ) );
+		$this->assertTrue( $manager->isMentorshipEnabledForUser( $defaultUser ) );
+	}
+
+	/**
 	 * @param IContextSource|null $context
 	 * @param array[] $pages title as prefixed text => content
 	 * @return MentorPageMentorManager
@@ -245,6 +265,7 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 			$coreServices->getUserFactory(),
 			$coreServices->getUserNameUtils(),
 			$coreServices->getActorStore(),
+			$coreServices->getUserOptionsLookup(),
 			$context,
 			$context->getLanguage(),
 			$growthServices->getConfig()->get( 'GEHomepageMentorsList' ) ?? '',

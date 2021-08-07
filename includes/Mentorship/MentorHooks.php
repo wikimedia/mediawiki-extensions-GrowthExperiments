@@ -8,10 +8,11 @@ use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use Psr\Log\LogLevel;
 use Throwable;
 
-class MentorHooks implements GetPreferencesHook, LocalUserCreatedHook {
+class MentorHooks implements GetPreferencesHook, UserGetDefaultOptionsHook, LocalUserCreatedHook {
 	/** @var Config */
 	private $wikiConfig;
 
@@ -26,6 +27,18 @@ class MentorHooks implements GetPreferencesHook, LocalUserCreatedHook {
 	public function onGetPreferences( $user, &$preferences ) {
 		$preferences[ MentorPageMentorManager::MENTOR_PREF ] = [
 			'type' => 'api',
+		];
+		$preferences[ MentorPageMentorManager::MENTORSHIP_ENABLED_PREF ] = [
+			'type' => 'api'
+		];
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onUserGetDefaultOptions( &$defaultOptions ) {
+		$defaultOptions += [
+			MentorPageMentorManager::MENTORSHIP_ENABLED_PREF => 1
 		];
 	}
 

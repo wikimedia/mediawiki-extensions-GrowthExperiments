@@ -19,6 +19,7 @@ use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
+use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -667,6 +668,18 @@ class HomepageHooks implements
 				HelpPanel::isHelpPanelEnabled()
 			) {
 				$this->userOptionsManager->setOption( $user, HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE, 1 );
+			}
+
+			// Mentorship
+			$mentorshipEnablePercentage = $this->config->get( 'GEMentorshipNewAccountEnablePercentage' );
+			if ( rand( 0, 99 ) >= $mentorshipEnablePercentage ) {
+				// the default value is enabled, to avoid removing mentorship from someone who used
+				// to have it. Only setOption if the result is "do not enable".
+				$this->userOptionsManager->setOption(
+					$user,
+					MentorPageMentorManager::MENTORSHIP_ENABLED_PREF,
+					0
+				);
 			}
 
 			// Variant assignment

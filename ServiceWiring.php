@@ -263,6 +263,7 @@ return [
 			$services->getUserFactory(),
 			$services->getUserNameUtils(),
 			$services->getActorStore(),
+			$services->getUserOptionsLookup(),
 			RequestContext::getMain(),
 			RequestContext::getMain()->getLanguage(),
 			$wikiConfig->get( 'GEHomepageMentorsList' ) ?: null,

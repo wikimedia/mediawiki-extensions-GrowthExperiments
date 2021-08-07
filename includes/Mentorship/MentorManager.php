@@ -72,4 +72,12 @@ abstract class MentorManager {
 		return null;
 	}
 
+	/**
+	 * Checks if mentorship is enabled
+	 *
+	 * @note See T287903 in Phabricator for use-case.
+	 * @param UserIdentity $user
+	 * @return bool
+	 */
+	abstract public function isMentorshipEnabledForUser( UserIdentity $user ): bool;
 }

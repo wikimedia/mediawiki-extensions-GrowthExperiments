@@ -216,7 +216,8 @@
 			"GrowthExperiments\\HelpPanelHooks::onUserGetDefaultOptions",
 			"homepage",
 			"tour",
-			"mentordashboard"
+			"mentordashboard",
+			"mentor"
 		],
 		"LocalUserCreated": [
 			"GrowthExperiments\\HelpPanelHooks::onLocalUserCreated",
@@ -1528,6 +1529,10 @@
 		"GEMentorshipEnabled": {
 			"description": "Are the mentorship features enabled?",
 			"value": true
+		},
+		"GEMentorshipNewAccountEnablePercentage": {
+			"description": "Percentage of new homepage-enabled users who will receive the mentorship module. Note that user must fall into _both_ GEHomepageNewAccountEnablePercentage and this percentage to be considered for mentorship.",
+			"value": 100
 		},
 		"GEMentorshipMigrationStage": {
 			"description": "Migration stage of mentorship. Default value is a PHP constant, decoded in GrowthHooks",
