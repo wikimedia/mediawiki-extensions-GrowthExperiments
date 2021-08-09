@@ -73,6 +73,14 @@ $specialPageAliases['da'] = [
 	'ClaimMentee' => [ 'KræveEMentee' ],
 ];
 
+/** German (Deutsch) */
+$specialPageAliases['de'] = [
+	'WelcomeSurvey' => [ 'WillkommensFragebogen' ],
+	'Homepage' => [ 'Meine_Startseite' ],
+	'Impact' => [ 'Mein_Einfluss' ],
+	'ClaimMentee' => [ 'Neulingsübernahme' ],
+];
+
 /** Greek (Ελληνικά) */
 $specialPageAliases['el'] = [
 	'WelcomeSurvey' => [ 'WelcomeSurvey' ],
