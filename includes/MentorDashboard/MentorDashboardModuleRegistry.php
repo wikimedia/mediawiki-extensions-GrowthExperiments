@@ -1,0 +1,70 @@
+<?php
+
+namespace GrowthExperiments\MentorDashboard;
+
+use GrowthExperiments\DashboardModule\IDashboardModule;
+use GrowthExperiments\MentorDashboard\Modules\MenteeOverview;
+use IContextSource;
+use MediaWiki\MediaWikiServices;
+
+class MentorDashboardModuleRegistry {
+	/** @var MediaWikiServices */
+	private $services;
+
+	/** @var callable[] id => module factory function */
+	private $wiring;
+
+	/** @var IDashboardModule[] */
+	private $modules;
+
+	/**
+	 * @param MediaWikiServices $services
+	 */
+	public function __construct(
+		MediaWikiServices $services
+	) {
+		$this->services = $services;
+	}
+
+	/**
+	 * @param string $moduleId
+	 * @param IContextSource $context
+	 * @return IDashboardModule
+	 */
+	public function get( string $moduleId, IContextSource $context ): IDashboardModule {
+		if ( isset( $this->modules[$moduleId] ) ) {
+			return $this->modules[$moduleId];
+		}
+
+		if ( $this->wiring === null ) {
+			$this->wiring = self::getWiring();
+		}
+
+		$this->modules[$moduleId] = $this->wiring[$moduleId]( $this->services, $context );
+		return $this->modules[$moduleId];
+	}
+
+	/**
+	 * @return array
+	 */
+	public static function getModules(): array {
+		return array_keys( self::getWiring() );
+	}
+
+	/**
+	 * @return callable[]
+	 */
+	private static function getWiring() {
+		return [
+			'mentee-overview' => static function (
+				MediaWikiServices $services,
+				IContextSource $context
+			): IDashboardModule {
+				return new MenteeOverview(
+					'mentee-overview',
+					$context
+				);
+			}
+		];
+	}
+}

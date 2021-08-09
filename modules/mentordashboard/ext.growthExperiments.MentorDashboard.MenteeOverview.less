@@ -1,0 +1,112 @@
+.growthexperiments-mentor-dashboard-module-mentee-overview {
+	overflow: hidden;
+	border: 1px solid #c8ccd1;
+	padding-bottom: 0;
+
+	.growthexperiments-mentor-dashboard-header {
+		#growthexperiments-mentor-dashboard-overview-info {
+			float: right;
+			margin: 0 -16px 0 0;
+		}
+	}
+
+	.growthexperiments-mentor-dashboard-module-body {
+		.growthexperiments-mentor-dashboard-module-mentee-overview-content {
+			.growthexperiments-mentor-dashboard-module-mentee-overview-controls {
+				padding-bottom: 45px;
+
+				.growthexperiments-mentor-dashboard-module-mentee-overview-filter {
+					float: left;
+					width: 30%;
+				}
+
+				.mw-widget-userInputWidget {
+					float: right;
+					width: 30%;
+				}
+			}
+
+			.growthexperiments-mentor-dashboard-module-mentee-overview-filter-dropdown {
+				hr {
+					margin-top: 15px;
+				}
+
+				.growthexperiments-mentor-dashboard-module-mentee-overview-submit-btn {
+					float: right;
+					padding: 10px 0;
+				}
+			}
+
+			table {
+				border: 1px solid #c8ccd1;
+				border-radius: 2px;
+				border-collapse: collapse;
+				padding-top: 15px;
+				width: 100%;
+
+				thead {
+					border-bottom: 1px solid #c8ccd1;
+
+					tr {
+						background-color: #f8f9fa;
+						height: 47px;
+
+						.growthexperiments-mentor-dashboard-module-mentee-overview-table-sort {
+							background-repeat: no-repeat;
+							background-position: center right;
+							padding-right: 21px;
+						}
+
+						.growthexperiments-mentor-dashboard-module-mentee-overview-table-sort-neutral {
+							background-image: url( ../../../../resources/src/jquery.tablesorter.styles/images/sort_both.svg );
+						}
+
+						.growthexperiments-mentor-dashboard-module-mentee-overview-table-sort-ascending {
+							background-image: url( ../../../../resources/src/jquery.tablesorter.styles/images/sort_up.svg );
+						}
+
+						.growthexperiments-mentor-dashboard-module-mentee-overview-table-sort-descending {
+							background-image: url( ../../../../resources/src/jquery.tablesorter.styles/images/sort_down.svg );
+						}
+					}
+				}
+
+				tbody {
+					.growthexperiments-mentor-dashboard-module-mentee-overview-userinfo-outer-container {
+						position: relative;
+						padding-left: 45px;
+
+						.growthexperiments-mentor-dashboard-module-mentee-overview-userinfo-star {
+							position: absolute;
+							left: 10px;
+							top: 3px;
+						}
+
+						.growthexperiments-mentor-dashboard-module-mentee-overview-userinfo-inner-container {
+							span {
+								display: block;
+							}
+
+							.growthexperiments-mentor-dashboard-module-mentee-overview-table-activity {
+								font-size: 12px;
+								color: #72777d;
+							}
+						}
+					}
+
+					td {
+						border-bottom: 1px solid #c8ccd1;
+					}
+
+					td.growthexperiments-mentor-dashboard-module-mentee-overview-table-value {
+						text-align: center;
+					}
+				}
+			}
+
+			.growthexperiments-mentor-dashboard-module-mentee-overview-pagination {
+				float: right;
+			}
+		}
+	}
+}
