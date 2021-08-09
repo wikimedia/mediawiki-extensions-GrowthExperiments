@@ -344,5 +344,6 @@
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Retningslinjer",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Kom igang",
 	"grant-managementorship": "Administrer mentorskab",
-	"newcomertasksinfo-table-header-task-type-id": "ID"
+	"newcomertasksinfo-table-header-task-type-id": "ID",
+	"growthexperiments-addlink-editmode-selection-machine-suggestions": "Forslag"
 }

@@ -1,7 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
+			"Jonathan5566",
 			"Kly",
+			"LNDDYL",
 			"Neetp7k9",
 			"Pseudo Classes",
 			"Sunny00217"
@@ -19,13 +21,13 @@
 	"growthexperiments-edit-config-pretext": "此頁面允許您編輯 [[:mw:Special:MyLanguage/Growth|Growth]] 團隊功能的配置。它將代表您編輯 $1。您可以在該頁面的頁面歷史記錄中看到您的變更。",
 	"growthexperiments-edit-config-pretext-unprivileged": "這讓一些有特權的使用者來編輯 [[:mw:Special:MyLanguage/Growth|Growth]] 的團隊功能參數。",
 	"growthexperiments-edit-config-feedback-headline": "關於此表單的問題與想法：",
-	"growthexperiments-edit-config-feedback-cta": "反饋意見",
+	"growthexperiments-edit-config-feedback-cta": "回饋意見",
 	"growthexperiments-edit-config-error-invalid-title": "配置頁面沒有被正確配置",
 	"growthexperiments-edit-config-edit-summary": "編輯摘要",
 	"growthexperiments-edit-config-config-changed": "配置已更改。您可能需要等待幾分鐘來完成更改。",
 	"growthexperiments-edit-config-return-to-form": "您可以[[Special:EditGrowthConfig|返回]]到編輯表單。",
 	"growthexperiments-edit-config-help-panel": "幫助面板設定",
-	"growthexperiments-edit-config-help-panel-description": "在任何命名空間中，幫助面板都能自由使用閱讀或編輯模式，如下配置。其中包含搜尋幫助、點擊幫助連結和向導師或諮詢台提問的功能。",
+	"growthexperiments-edit-config-help-panel-description": "在任何命名空間中，幫助面板都能自由使用閱讀或編輯模式，如下配置。其中包含搜尋幫助、點選幫助連結和向導師或諮詢台提問的功能。",
 	"growthexperiments-edit-config-help-panel-reading-namespaces": "在閱讀模式下，可用幫助面板的命名空間",
 	"growthexperiments-edit-config-help-panel-disabled-namespaces": "在閱讀和編輯模式下，禁用幫助面板的命名空間",
 	"growthexperiments-edit-config-help-panel-helpdesk-title": "應在幫助面板中釋出問題的諮詢台頁面。",
@@ -36,9 +38,9 @@
 	"growthexperiments-edit-config-help-panel-searched-namespaces": "要包含在幫助面板的自由文字搜尋幫助中的命名空間",
 	"growthexperiments-edit-config-help-panel-ask-mentor": "來自幫助面板的問題應該指向哪裡？",
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "導師討論頁",
-	"growthexperiments-edit-config-help-panel-ask-mentor-false": "諮詢台",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "諮詢臺",
 	"growthexperiments-edit-config-help-panel-links": "幫助面板連結",
-	"growthexperiments-edit-config-help-panel-links-description": "幫助面板顯示五個連結和一個「檢視更多」連結。 這些可以組態為wiki中的任何連結，但建議包含在下面。",
+	"growthexperiments-edit-config-help-panel-links-description": "說明面板顯示五個連結和一個「檢視更多」連結。 這些可以組態為wiki中的任何連結，但建議包含在下面。",
 	"growthexperiments-edit-config-help-panel-links-mos-title": "一、第一個幫助面板連結的目標頁面（推薦：格式手冊）",
 	"growthexperiments-edit-config-help-panel-links-mos-label": "一、第一個幫助面板連結的標籤（推薦：「格式手冊」）",
 	"growthexperiments-edit-config-help-panel-links-editing-title": "二、第二個幫助面板連結的目標頁面（推薦：視覺化編輯器指南）",

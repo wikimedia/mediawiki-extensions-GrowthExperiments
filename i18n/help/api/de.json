@@ -3,6 +3,7 @@
 		"authors": [
 			"Ameisenigel",
 			"Metalhead64",
+			"Reinhard Kraasch",
 			"Tkarcher"
 		]
 	},
@@ -10,10 +11,10 @@
 	"apihelp-helppanelquestionposter-param-body": "Der Text der Frage, die vom Benutzer angegeben wurde.",
 	"apihelp-helppanelquestionposter-param-source": "Die Methode, auf die die Frage gestellt wurde.",
 	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Das Feld „Frage auf der Hilfeseite“",
-	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Das Feld „Frage deinen Mentor“ auf der Neulings-Startseite",
-	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Das Feld „Frage deinen Mentor“ auf der Hilfeseite",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Das Feld „Frage deinen Lotsen“ auf der Neulings-Startseite",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Das Feld „Frage deinen Lotsen“ auf der Hilfeseite",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Das Feld „Frage auf der Hilfeseite“ (alter Name)",
-	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Das Feld „Frage deinen Mentor“ auf der Neulings-Startseite (alter Name)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Das Feld „Frage deinen Lotsen“ auf der Neulings-Startseite (alter Name)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Der relevante Titel, falls ausgewählt, der in der Frage enthalten sein soll.",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Du musst angemeldet sein, um eine Frage zu stellen."
 }

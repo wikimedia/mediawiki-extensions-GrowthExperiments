@@ -347,6 +347,7 @@
 	"growthexperiments-addlink-context-button-reject": "Ne",
 	"growthexperiments-addlink-context-button-help": "Získejte pomoc s editováním",
 	"growthexperiments-addlink-context-button-next": "Další",
+	"growthexperiments-addlink-context-button-show-suggestion": "Ukázat návrhy odkazů",
 	"growthexperiments-addlink-rejectiondialog-title": "Proč nejde o dobrý odkaz?",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|Vaše}} odpověď může být použita k vylepšení budoucích návrhů.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Téměř každý ví, co to je",
@@ -397,5 +398,8 @@
 	"growthexperiments-addlink-editmode-selection-label": "Přepnout editor",
 	"growthexperiments-addlink-editmode-selection-machine-suggestions": "Návrhy",
 	"growthexperiments-addlink-editmode-selection-visual": "Vizuální editace",
+	"growthexperiments-addlink-editmode-confirmation-dialog-title": "Opustit návrhy?",
+	"growthexperiments-addlink-editmode-confirmation-dialog-message": "Přepnutí editačního módu {{GENDER:$1|vám}} umožní uložit i další druhy editací. Dokončete kontrolu odkazů, abyste své změny {{GENDER:$1|uložil|uložila|uložili}}.",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-confirm": "Přepnout bez odeslání",
 	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Zrušit"
 }

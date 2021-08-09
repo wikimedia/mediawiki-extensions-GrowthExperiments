@@ -166,6 +166,7 @@
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 apmeklējumi (pēdējās 60 dienās)",
 	"growthexperiments-homepage-suggestededits-previous-card": "Iepriekšējais ieteiktais labojums",
 	"growthexperiments-homepage-suggestededits-next-card": "Nākamais ieteiktais labojums",
+	"growthexperiments-homepage-suggestededits-edit-card": "Labot",
 	"growthexperiments-homepage-suggestededits-no-more-results": "Nav vairāk ieteikumu",
 	"growthexperiments-homepage-suggestededits-no-results": "Šobrīd nav ieteikumu",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Izvēlies citus grūtības līmeņus, lai atrastu ieteiktos labojumus.",
@@ -332,6 +333,7 @@
 	"growthexperiments-addlink-context-button-reject": "Nē",
 	"growthexperiments-addlink-context-button-help": "Saņem palīdzību labošanā",
 	"growthexperiments-addlink-context-button-next": "Nākamais",
+	"growthexperiments-addlink-context-button-show-suggestion": "Rādīt saišu ieteikumu",
 	"growthexperiments-addlink-rejectiondialog-title": "Kāpēc šī nav laba saite?",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|Tavas}} atbildes uzlabos nākotnes ieteikumus.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Gandrīz visi zina, kas tas ir",
@@ -378,5 +380,12 @@
 	"newcomertasksinfo-table-header-task-count": "Skaits",
 	"newcomertasksinfo-table-header-topic-type": "Temata ID",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Ieteikumi",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Iesniegt..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Iesniegt...",
+	"growthexperiments-addlink-editmode-selection-label": "Pārslēgt redaktoru",
+	"growthexperiments-addlink-editmode-selection-machine-suggestions": "Ieteikumi",
+	"growthexperiments-addlink-editmode-selection-visual": "Vizuālā labošana",
+	"growthexperiments-addlink-editmode-confirmation-dialog-title": "Pamest ieteikumus?",
+	"growthexperiments-addlink-editmode-confirmation-dialog-message": "Režīmu pārslēgšana ļaus {{GENDER:$1|tev}} veikt cita veida labojumus. Pabeidz pārskatīšanu, lai iesniegtu līdz šim padarīto.",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-confirm": "Pārslēgties bez iesniegšanas",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Atcelt"
 }

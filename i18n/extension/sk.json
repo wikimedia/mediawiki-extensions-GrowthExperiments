@@ -2,9 +2,29 @@
 	"@metadata": {
 		"authors": [
 			"Luky001",
+			"Reinhard Kraasch",
 			"Wizzard"
 		]
 	},
 	"growthexperiments-desc": "Toto rozšírenie obsahuje experimenty tímu Growth.",
-	"growthexperiments-edit-config-edit-summary": "Zhrnutie úprav"
+	"growthexperiments-config-validator-additional-fields": "Die neue Konfiguration hat Konfigurationsschlüssel, die hier nicht angepasst werden können.",
+	"growthexperiments-config-validator-error": "Validierung für $1 fehlgeschlagen mit: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> sollte <code>$2</code> sein, ist aber <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Unstimmigkeit des Inhaltsmodells: GrowthExperiments-Konfigurationsdatei muss JSON-Inhaltsmodell haben, es wurde aber $1 festgestellt",
+	"growthexperiments-edit-config-disabled": "Die Community-Konfiguration ist derzeit deaktiviert.",
+	"growthexperiments-edit-config-title": "Bearbeite die Growth-Konfiguration",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Zuletzt aktualisiert von [[User:$1|$1]] $2.",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Zuletzt aktualisiert von unbekanntem Benutzer $1.",
+	"growthexperiments-edit-config-pretext": "Diese Seite ermöglicht es dir, die Konfiguration der Teamfunktionen von [[:mw:Special:MyLanguage/Growth|Growth]] zu bearbeiten. Sie wird $1 in deinem Namen bearbeiten. Du kannst deine Änderungen in der Seitenhistorie dieser Seite sehen.",
+	"growthexperiments-edit-config-pretext-unprivileged": "Dieses Formular erlaubt es privilegierten Benutzern, die Konfiguration der [[:mw:Special:MyLanguage/Growth|Growth]]-Teamfunktionen zu bearbeiten.",
+	"growthexperiments-edit-config-feedback-headline": "Hast du Ideen oder Fragen zu diesem Formular?",
+	"growthexperiments-edit-config-feedback-cta": "Gib Feedback",
+	"growthexperiments-edit-config-error-invalid-title": "Die Konfigurationsseite wurde nicht richtig konfiguriert",
+	"growthexperiments-edit-config-edit-summary": "Zhrnutie úprav",
+	"growthexperiments-edit-config-config-changed": "Die Konfiguration wurde geändert. Möglicherweise musst du ein paar Minuten warten, bis die Änderungen wirksam werden.",
+	"growthexperiments-edit-config-return-to-form": "Du kannst zum Bearbeitungsformular [[Special:EditGrowthConfig|zurückkehren]].",
+	"growthexperiments-edit-config-help-panel": "Einstellungen des Hilfefelds",
+	"growthexperiments-edit-config-help-panel-description": "Das Hilfefeld kann in jedem Namensraum im Lese- oder Bearbeitungsmodus verfügbar sein, wie unten konfiguriert. Es bietet die Möglichkeit, nach Hilfe zu suchen, auf Hilfe-Links zu klicken und Fragen entweder an Lotsinnen/Lotsen oder an den Helpdesk zu stellen.",
+	"growthexperiments-edit-config-help-panel-reading-namespaces": "Namensräume, in denen das Hilfefeld im Lesemodus verfügbar ist",
+	"growthexperiments-edit-config-help-panel-disabled-namespaces": "Namensräume, bei denen das Hilfefeld sowohl im Lese- als auch im Bearbeitungsmodus deaktiviert ist"
 }
