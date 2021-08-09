@@ -4,6 +4,7 @@ namespace GrowthExperiments\Mentorship;
 
 use GrowthExperiments\WikiConfigException;
 use MediaWiki\User\UserIdentity;
+use Title;
 
 /**
  * A service for handling mentors.
@@ -61,5 +62,14 @@ abstract class MentorManager {
 	 * @return string[] List of mentors usernames.
 	 */
 	abstract public function getManuallyAssignedMentors(): array;
+
+	/**
+	 * Link to the list of mentors, if there is any
+	 *
+	 * @return Title|null
+	 */
+	public function getAutoMentorsListTitle(): ?Title {
+		return null;
+	}
 
 }

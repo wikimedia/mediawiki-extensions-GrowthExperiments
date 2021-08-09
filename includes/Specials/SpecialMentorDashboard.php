@@ -39,6 +39,7 @@ class SpecialMentorDashboard extends SpecialPage {
 	private function getModules( bool $isMobile = false ): array {
 		$moduleConfig = array_filter( [
 			'mentee-overview' => true,
+			'resources' => true,
 		] );
 		$modules = [];
 		foreach ( $moduleConfig as $moduleId => $_ ) {
@@ -58,7 +59,9 @@ class SpecialMentorDashboard extends SpecialPage {
 			'main' => [
 				'mentee-overview'
 			],
-			'sidebar' => []
+			'sidebar' => [
+				'resources'
+			]
 		];
 	}
 
