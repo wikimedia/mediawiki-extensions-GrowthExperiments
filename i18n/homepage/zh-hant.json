@@ -9,7 +9,8 @@
 			"Pseudo Classes",
 			"SiderealArt",
 			"Sunny00217",
-			"Winston Sung"
+			"Winston Sung",
+			"羊羊32521"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
@@ -104,7 +105,7 @@
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "查看建議編輯",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "從幾個<strong>編輯建議</strong>開始，然後看看有多少人在此處檢視{{GENDER:$1|您的}}貢獻。",
 	"growthexperiments-homepage-impact-unactivated-description": "{{GENDER:$1|您}}開始編輯後，{{GENDER:$1|您}}會在此處檢視有多少人正在瀏覽{{GENDER:$1|您}}編輯的條目。",
-	"growthexperiments-tour-helpdesk-response-tip-title": "互助客棧通知",
+	"growthexperiments-tour-helpdesk-response-tip-title": "諮詢臺通知",
 	"growthexperiments-tour-response-tip-text": "當{{GENDER:$1|您的}}問題有人答覆時，{{GENDER:$1|您}}會在此收到新的通知。",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "導師通知",
 	"growthexperiments-tour-mentor-response-tip-personal-text": "當{{GENDER:$1|您的}}{{GENDER:$2|導師}}回應時，{{GENDER:$1|您}}會在此收到新的通知。",
@@ -119,10 +120,10 @@
 	"tag-newcomer_task-description": "編輯按新手首頁建議編輯模組的建議",
 	"tag-newcomer_task_add_link": "[[mw:Growth/Personalized first day/Structured tasks/Add a link|建議：添加連結]]",
 	"tag-newcomer_task_add_link-description": "透過新手頁面建議編輯模組所建議作出的「添加連結」編輯",
-	"growthexperiments-homepage-help-dialog-title": "詢問互助客棧/求助",
+	"growthexperiments-homepage-help-dialog-title": "詢問諮詢臺",
 	"growthexperiments-homepage-help-header": "取得編輯方面的詢問",
 	"growthexperiments-homepage-help-subheader": "有關編輯的熱門求助頁面",
-	"growthexperiments-homepage-help-mobilebody": "詢問互助客棧或閱讀求助頁面。",
+	"growthexperiments-homepage-help-mobilebody": "詢問諮詢臺或閱讀求助頁面。",
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|您的}}最近問題",
 	"growthexperiments-homepage-recent-questions-posted-on": "發佈於$1前",
 	"growthexperiments-homepage-recent-questions-archived": "已歸檔",

@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"BHARATHESHA ALASANDEMAJALU"
+			"BHARATHESHA ALASANDEMAJALU",
+			"Chidananda Kampa"
 		]
 	},
-	"growthexperiments-homepage-impact-article-link-tooltip": "ಲೇಕನೊಗ್ ಪೊಲೆ"
+	"growthexperiments-homepage-impact-article-link-tooltip": "ಲೇಕನೊಗ್ ಪೊಲೆ",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "ವಜಾ ಮಲ್ಪುಲೆ"
 }
