@@ -85,9 +85,12 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			return [];
 		}
 
-		return $this->mainDbr->selectFieldValues(
+		$res = $this->mainDbr->select(
 			'user',
-			'user_id',
+			[
+				'user_id',
+				'has_edits' => 'user_editcount > 0'
+			],
 			[
 				// filter to mentees only
 				'user_id' => $this->getIds( $mentees ),
@@ -122,6 +125,21 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			],
 			__METHOD__
 		);
+
+		$editingUsers = [];
+		$notEditingUsers = [];
+		foreach ( $res as $row ) {
+			if ( $row->has_edits ) {
+				$editingUsers[] = $row->user_id;
+			} else {
+				$notEditingUsers[] = $row->user_id;
+			}
+		}
+
+		return array_merge(
+			$notEditingUsers,
+			$this->filterMenteesByLastActive( $editingUsers )
+		);
 	}
 
 	/**
@@ -153,18 +171,14 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	}
 
 	/**
-	 * Get last edits and user IDs of users who edited up to 6 months ago
-	 *
-	 * Returns two arrays; first is a map of user ID to last edit of the user,
-	 * second is a list of users who did edit in the last 6 months.
+	 * Filter provided user IDs to IDs of users who edited up to 6 months ago
 	 *
 	 * @param array $allUserIds
-	 * @return array[]
+	 * @return int[]
 	 */
-	private function getLastEditsAndUserIds( array $allUserIds ): array {
+	private function filterMenteesByLastActive( array $allUserIds ): array {
 		$allLastEdits = $this->getLastActiveTimestampForUsers( $allUserIds );
 		$userIds = [];
-		$lastEdits = [];
 		foreach ( $allLastEdits as $userId => $lastEdit ) {
 			$secondsSinceLastEdit = wfTimestamp( TS_UNIX ) -
 				(int)ConvertibleTimestamp::convert(
@@ -173,13 +187,9 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 				);
 			if ( $secondsSinceLastEdit <= self::SECONDS_DAY * 6 * 30 ) {
 				$userIds[] = $userId;
-				$lastEdits[$userId] = $lastEdit;
 			}
 		}
-		return [
-			$lastEdits,
-			$userIds
-		];
+		return $userIds;
 	}
 
 	/**
@@ -189,12 +199,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return array
 	 */
 	public function getFormattedDataForMentor( UserIdentity $mentor ): array {
-		$allUserIds = $this->getFilteredMenteesForMentor( $mentor );
-		if ( $allUserIds === [] ) {
-			return [];
-		}
-
-		list( $lastEdits, $userIds ) = $this->getLastEditsAndUserIds( $allUserIds );
+		$userIds = $this->getFilteredMenteesForMentor( $mentor );
 		if ( $userIds === [] ) {
 			return [];
 		}
@@ -205,7 +210,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			'questions' => $this->getQuestionsAskedForUsers( $userIds ),
 			'editcount' => $this->getEditCountsForUsers( $userIds ),
 			'registration' => $this->getRegistrationTimestampForUsers( $userIds ),
-			'last_active' => $lastEdits,
+			'last_active' => $this->getLastActiveTimestampForUsers( $userIds ),
 			'blocks' => $this->getBlocksForUsers( $userIds ),
 		];
 
