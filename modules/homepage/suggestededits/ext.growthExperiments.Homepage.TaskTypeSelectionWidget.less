@@ -6,6 +6,9 @@
 .mw-ge-homepage-taskTypeSelectionWidget {
 	&-difficulty-level {
 		padding-top: 24px;
+		display: flex;
+		flex-wrap: wrap;
+		align-items: baseline;
 
 		&-easy {
 			// Ideally we'd use :first-child but since each combination of
@@ -23,6 +26,14 @@
 		&-hard {
 			color: @hardColor;
 		}
+
+		.oo-ui-icon-difficulty-easy,
+		.oo-ui-icon-difficulty-medium,
+		.oo-ui-icon-difficulty-hard {
+			// align icon w/baseline of the h4
+			transform: translateY( 1px );
+			background-position: center bottom;
+		}
 	}
 
 	h4&-difficulty-level-label {
@@ -33,8 +44,6 @@
 		padding-bottom: 0;
 		margin-top: 0;
 		margin-bottom: 0;
-		// Align with icon
-		vertical-align: middle;
 		padding-left: 8px;
 	}
 
@@ -47,6 +56,7 @@
 		font-weight: bold;
 		color: @colorGray2;
 		padding-top: 5px;
+		flex-basis: 100%;
 	}
 
 	.oo-ui-widget&-checkbox-create,
