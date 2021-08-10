@@ -30,6 +30,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\DbBackedLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkSubmissionRecorder;
 use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\CirrusSearchIndexUpdater;
 use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\EventGateSearchIndexUpdater;
@@ -204,6 +205,23 @@ return [
 			$loadBalancer->getLazyConnectionRef( DB_PRIMARY ),
 			$services->getTitleFactory(),
 			$services->getLinkBatchFactory()
+		);
+	},
+
+	'GrowthExperimentsLinkRecommendationUpdater' => static function (
+		MediaWikiServices $services
+	): LinkRecommendationUpdater {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		return new LinkRecommendationUpdater(
+			$services->getDBLoadBalancer()->getLazyConnectionRef( DB_REPLICA ),
+			$services->getRevisionStore(),
+			$services->getNameTableStoreFactory()->getChangeTagDef(),
+			$services->getPageProps(),
+			$growthServices->getNewcomerTasksConfigurationLoader(),
+			$growthServices->getSearchIndexUpdater(),
+			$services->get( 'GrowthExperimentsLinkRecommendationProviderUncached' ),
+			$growthServices->getLinkRecommendationStore(),
+			$growthServices->getLinkRecommendationHelper()
 		);
 	},
 
