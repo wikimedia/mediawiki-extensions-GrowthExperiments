@@ -46,6 +46,7 @@ class SpecialNewcomerTasksInfo extends SpecialPage {
 			}
 		);
 		$out = $this->getOutput();
+		$out->addWikiMsg( 'newcomertasksinfo-config-form-info' );
 		if ( !isset( $info['tasks'] ) || !isset( $info[ 'topics' ] ) ) {
 			$out->addHTML(
 				( new Tag( 'p' ) )
