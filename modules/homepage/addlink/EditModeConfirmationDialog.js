@@ -2,6 +2,7 @@
  * Dialog confirming whether to switch away from machine suggestions mode
  *
  * @class mw.libs.ge.EditModeConfirmationDialog
+ * @param {Object} config Configuration options
  * @extends OO.ui.MessageDialog
  * @constructor
  */

@@ -44,6 +44,9 @@
 
 	/**
 	 * Fetch potential tasks for the next suggested edit.
+	 *
+	 * @return {jQuery.Promise} A promise that will update otherTasks array and resolve when
+	 *   additional tasks have been fetched
 	 */
 	function fetchOtherTasks() {
 		var taskTypesToFetch = isLinkRecommendationTask ?

@@ -9,6 +9,7 @@
 	 * Check whether link recommendations are enabled for the current user.
 	 *
 	 * This is the equivalent of NewcomerTasksUserOptionsLookup::areLinkRecommendationsEnabled().
+	 *
 	 * @return {boolean}
 	 */
 	function areLinkRecommendationsEnabled() {
@@ -42,7 +43,9 @@
 	/**
 	 * Convert task types which the user is not supposed to see, given the link recommendation
 	 * configuration, to the closest task type available to them.
+	 *
 	 * @param {Array<string>} taskTypes
+	 * @return {Array<string>}
 	 */
 	function convertTaskTypes( taskTypes ) {
 		var linkRecommendationsEnabled = areLinkRecommendationsEnabled();

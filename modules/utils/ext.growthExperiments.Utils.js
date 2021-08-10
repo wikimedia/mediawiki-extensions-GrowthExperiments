@@ -95,8 +95,9 @@
 	/**
 	 * Set the variant the user is assigned to, for A/B testing and gradual rollouts.
 	 *
-	 * @internal For debug/QA purposes only.
+	 * @private For debug/QA purposes only.
 	 * @param {string|null} variant The new variant, or null to unset.
+	 * @return {jQuery.Promise}
 	 */
 	function setUserVariant( variant ) {
 		return mw.loader.using( [ 'mediawiki.util', 'mediawiki.api' ] ).then( function () {

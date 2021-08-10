@@ -609,6 +609,7 @@ RecommendedLinkToolbarDialog.prototype.setupLinkPreview = function () {
  * Construct link element for link preview
  *
  * This logic is the same as in ve.ui.MWInternalLinkContextItem.static.generateBody.
+ *
  * @return {jQuery}
  */
 RecommendedLinkToolbarDialog.prototype.getLinkForPreview = function () {
