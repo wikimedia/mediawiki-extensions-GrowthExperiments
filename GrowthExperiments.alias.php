@@ -64,6 +64,7 @@ $specialPageAliases['cs'] = [
 	'ClaimMentee' => [ 'Převzít_nováčka' ],
 	'NewcomerTasksInfo' => [ 'Informace_o_editačních_tipech' ],
 	'EditGrowthConfig' => [ 'Editovat_konfiguraci_Growth_funkcí' ],
+	'MentorDashboard' => [ 'Nástěnka_mentora' ],
 ];
 
 /** Dansk (Danish) */
