@@ -138,7 +138,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 
 		return array_merge(
 			$notEditingUsers,
-			$this->filterMenteesByLastActive( $editingUsers )
+			$this->filterMenteesByLastEdit( $editingUsers )
 		);
 	}
 
@@ -146,7 +146,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @param int[] $userIds
 	 * @return array
 	 */
-	private function getLastActiveTimestampForUsers( array $userIds ): array {
+	private function getLastEditTimestampForUsers( array $userIds ): array {
 		$queryInfo = $this->actorMigration->getJoin( 'rev_user' );
 		$rows = $this->mainDbr->select(
 			[ 'revision' ] + $queryInfo['tables'],
@@ -176,8 +176,8 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @param array $allUserIds
 	 * @return int[]
 	 */
-	private function filterMenteesByLastActive( array $allUserIds ): array {
-		$allLastEdits = $this->getLastActiveTimestampForUsers( $allUserIds );
+	private function filterMenteesByLastEdit( array $allUserIds ): array {
+		$allLastEdits = $this->getLastEditTimestampForUsers( $allUserIds );
 		$userIds = [];
 		foreach ( $allLastEdits as $userId => $lastEdit ) {
 			$secondsSinceLastEdit = wfTimestamp( TS_UNIX ) -
@@ -210,7 +210,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			'questions' => $this->getQuestionsAskedForUsers( $userIds ),
 			'editcount' => $this->getEditCountsForUsers( $userIds ),
 			'registration' => $this->getRegistrationTimestampForUsers( $userIds ),
-			'last_active' => $this->getLastActiveTimestampForUsers( $userIds ),
+			'last_active' => $this->getLastEditTimestampForUsers( $userIds ),
 			'blocks' => $this->getBlocksForUsers( $userIds ),
 		];
 
