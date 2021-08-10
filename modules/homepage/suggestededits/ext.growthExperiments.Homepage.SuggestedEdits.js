@@ -309,6 +309,7 @@
 
 	/**
 	 * Show the next card if it's available
+	 *
 	 * @param {boolean} [isSwipe] Whether the action is triggered via swipe action
 	 */
 	SuggestedEditsModule.prototype.onNextCard = function ( isSwipe ) {
@@ -329,6 +330,7 @@
 
 	/**
 	 * Show the previous card if it's available
+	 *
 	 * @param {boolean} [isSwipe] Whether the action is triggered via swipe action
 	 */
 	SuggestedEditsModule.prototype.onPreviousCard = function ( isSwipe ) {
@@ -492,7 +494,7 @@
 	 *
 	 * @param {jQuery} $cardElement
 	 * @param {jQuery} $cardWrapper
-	 * @return {Promise} Promise that resolves when the animation is done
+	 * @return {jQuery.Promise} Promise that resolves when the animation is done
 	 */
 	SuggestedEditsModule.prototype.animateCard = function ( $cardElement, $cardWrapper ) {
 		var isGoingBack = this.isGoingBack,
