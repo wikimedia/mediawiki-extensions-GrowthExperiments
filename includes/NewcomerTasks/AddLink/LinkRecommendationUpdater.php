@@ -96,6 +96,7 @@ class LinkRecommendationUpdater {
 
 	/**
 	 * Evaluate a task candidate and generate the task if the candidate is viable.
+	 * If a link recommendation task already exists for the given page, it will be overwritten.
 	 * @param Title $title
 	 * @param bool $force Ignore all failed conditions that can be safely ignored.
 	 * @return StatusValue Success status. Note that the error messages are not intended

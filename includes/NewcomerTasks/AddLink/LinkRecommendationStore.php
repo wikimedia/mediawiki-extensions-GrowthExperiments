@@ -10,6 +10,7 @@ use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentity;
 use RuntimeException;
+use stdClass;
 use TitleFactory;
 use Wikimedia\Rdbms\IDatabase;
 
@@ -72,24 +73,7 @@ class LinkRecommendationStore {
 		if ( $row === false ) {
 			return null;
 		}
-		// TODO use JSON_THROW_ON_ERROR once we require PHP 7.3
-		$data = json_decode( $row->gelr_data, true );
-		if ( $data === null ) {
-			throw new DomainException( 'Invalid JSON: ' . json_last_error_msg() );
-		}
-		$title = $this->titleFactory->newFromID( $row->gelr_page, $flags );
-		if ( !$title ) {
-			return null;
-		}
-
-		return new LinkRecommendation(
-			$title,
-			$row->gelr_page,
-			$row->gelr_revision,
-			LinkRecommendation::getLinksFromArray( $data['links'] ),
-			// Backwards compatibility for recommendations added before metadata was included in output and stored.
-			LinkRecommendation::getMetadataFromArray( $data['meta'] ?? [] )
-		);
+		return $this->getLinkRecommendationsFromRows( [ $row ], $flags )[0] ?? null;
 	}
 
 	/**
@@ -139,6 +123,31 @@ class LinkRecommendationStore {
 			}
 			return $this->getByRevId( $revId, $flags );
 		}
+	}
+
+	/**
+	 * Iterate through all link recommendations, in ascending page ID order.
+	 * @param int $limit
+	 * @param int &$fromPageId Starting page ID. Will be set to the last fetched page ID plus one.
+	 *   (This cannot be done on the caller side because records with non-existing page IDs are
+	 *   omitted from the result.) Will be set to false when there are no more rows.
+	 * @return LinkRecommendation[]
+	 */
+	public function getAllRecommendations( int $limit, int &$fromPageId ): array {
+		$res = $this->getDB( DB_REPLICA )->select(
+			'growthexperiments_link_recommendations',
+			[ 'gelr_revision', 'gelr_page', 'gelr_data' ],
+			[ 'gelr_page >= ' . $fromPageId ],
+			__METHOD__,
+			[
+				'ORDER BY' => 'gelr_page ASC',
+				'LIMIT' => $limit,
+			]
+		);
+		$rows = iterator_to_array( $res );
+		$fromPageId = ( $res->numRows() === $limit ) ? end( $rows )->gelr_page + 1 : false;
+		reset( $rows );
+		return $this->getLinkRecommendationsFromRows( $rows );
 	}
 
 	/**
@@ -366,6 +375,56 @@ class LinkRecommendationStore {
 	 */
 	public function getDB( int $index ): IDatabase {
 		return ( $index === DB_PRIMARY ) ? $this->dbw : $this->dbr;
+	}
+
+	/**
+	 * Convert growthexperiments_link_recommendations rows into objects.
+	 * Rows with no matching page are skipped.
+	 * @param stdClass[] $rows
+	 * @param int $flags IDBAccessObject flags
+	 * @return LinkRecommendation[]
+	 */
+	private function getLinkRecommendationsFromRows( array $rows, int $flags = 0 ): array {
+		if ( !$rows ) {
+			return [];
+		}
+
+		$pageIds = $titles = [];
+		foreach ( $rows as $row ) {
+			$pageIds[] = $row->gelr_page;
+		}
+		if ( $flags ) {
+			foreach ( $pageIds as $pageId ) {
+				$titles[$pageId] = $this->titleFactory->newFromID( $pageId, $flags );
+			}
+			$titles = array_filter( $titles );
+		} else {
+			foreach ( $this->titleFactory->newFromIDs( $pageIds ) as $title ) {
+				$titles[$title->getArticleID()] = $title;
+			}
+		}
+
+		$linkRecommendations = [];
+		foreach ( $rows as $row ) {
+			// TODO use JSON_THROW_ON_ERROR once we require PHP 7.3
+			$data = json_decode( $row->gelr_data, true );
+			if ( $data === null ) {
+				throw new DomainException( 'Invalid JSON: ' . json_last_error_msg() );
+			}
+			$title = $titles[$row->gelr_page] ?? null;
+			if ( !$title ) {
+				continue;
+			}
+			$linkRecommendations[] = new LinkRecommendation(
+				$title,
+				$row->gelr_page,
+				$row->gelr_revision,
+				LinkRecommendation::getLinksFromArray( $data['links'] ),
+				// Backwards compatibility for recommendations added before metadata was included in output and stored.
+				LinkRecommendation::getMetadataFromArray( $data['meta'] ?? [] )
+			);
+		}
+		return $linkRecommendations;
 	}
 
 }
