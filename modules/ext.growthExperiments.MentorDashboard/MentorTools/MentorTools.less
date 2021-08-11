@@ -1,0 +1,66 @@
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
+@import '../../homepage/ext.growthExperiments.mixins.less';
+@import '../variables.less';
+
+// .growthexperiments-mentor-dashboard-container is here only to make the resulting selector
+// specific enough for browsers to prefer rules that are here.
+.growthexperiments-mentor-dashboard-container .growthexperiments-mentor-dashboard-module-mentor-tools {
+	position: relative;
+
+	#growthexperiments-mentor-dashboard-module-mentor-tools-info-icon {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+
+	h4 {
+		color: @wmui-color-base20;
+	}
+
+	.growthexperiments-mentor-dashboard-module-mentor-tools-status {
+		#growthexperiments-mentor-dashboard-mentor-tools-mentor-status-dropdown {
+			display: block;
+			padding-top: 10px;
+			width: 120px;
+		}
+	}
+
+	.growthexperiments-mentor-dashboard-module-mentor-tools-message {
+		.growthexperiments-mentor-dashboard-module-mentor-tools-mentor-message-headline-container {
+			h4 {
+				display: inline-block;
+				margin: 0;
+			}
+
+			.oo-ui-buttonWidget {
+				opacity: 0.66;
+				float: right;
+			}
+		}
+
+		#growthexperiments-mentor-dashboard-module-mentor-tools-message-content {
+			margin-top: 14px;
+			margin-bottom: 20px;
+			margin-left: 20px;
+			padding-left: 12px;
+			border-left: solid 4px @wmui-color-base50;
+		}
+	}
+
+	.growthexperiments-mentor-dashboard-module-mentor-tools-other-actions {
+		// to get out of padding set to the module's container div and be able to apply background-color edge-to-edge
+		margin: 0 @mentorDashboardModulePadding * -1 @mentorDashboardModulePadding * -1;
+		padding: 0 @mentorDashboardModulePadding @mentorDashboardModulePadding;
+		background-color: @wmui-color-base90;
+
+		h4 {
+			padding-top: 17px;
+		}
+
+		.growthexperiments-mentor-dashboard-module-mentor-tools-claim-mentee-footer {
+			margin-bottom: 0;
+			color: @wmui-color-base20;
+			.rel-font-size( @parentFontSize: 14px, @targetFontSize: 13px );
+		}
+	}
+}

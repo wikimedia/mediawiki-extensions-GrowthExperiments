@@ -73,6 +73,7 @@ class SpecialMentorDashboard extends SpecialPage {
 	private function getModules( bool $isMobile = false ): array {
 		$moduleConfig = array_filter( [
 			'mentee-overview' => true,
+			'mentor-tools' => $this->getConfig()->get( 'GEMentorDashboardBetaMode' ),
 			'resources' => true,
 		] );
 		$modules = [];
@@ -94,6 +95,7 @@ class SpecialMentorDashboard extends SpecialPage {
 				'mentee-overview'
 			],
 			'sidebar' => [
+				'mentor-tools',
 				'resources'
 			]
 		];
