@@ -5,14 +5,29 @@ namespace GrowthExperiments\Tests;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataFilter;
 use MediaWikiUnitTestCase;
 use Wikimedia\TestingAccessWrapper;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * @coversDefaultClass \GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataFilter
  */
 class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 
+	/** @var int Seconds in a day */
+	private const SECONDS_DAY = 86400;
+
 	/** @var array|null */
 	private static $testingData = null;
+
+	/**
+	 * @param int $secondsAgo
+	 * @return string
+	 */
+	private function getLastActive( int $secondsAgo ): string {
+		return ConvertibleTimestamp::convert(
+			TS_MW,
+			wfTimestamp( TS_UNIX ) - $secondsAgo
+		);
+	}
 
 	private function getTestingData(): array {
 		if ( self::$testingData !== null ) {
@@ -25,18 +40,21 @@ class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 				'user_id' => 1,
 				'editcount' => 2,
 				'questions' => 14,
+				'last_active' => $this->getLastActive( self::SECONDS_DAY ),
 			],
 			[
 				'username' => 'Bar',
 				'user_id' => 2,
 				'editcount' => 42,
 				'questions' => 2,
+				'last_active' => $this->getLastActive( self::SECONDS_DAY * 4 ),
 			],
 			[
 				'username' => 'Baz',
 				'user_id' => 3,
 				'editcount' => 54,
 				'questions' => 10,
+				'last_active' => $this->getLastActive( self::SECONDS_DAY * 10 ),
 			],
 		];
 		return self::$testingData;
@@ -157,5 +175,42 @@ class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 				MenteeOverviewDataFilter::SORT_ORDER_ASCENDING
 			],
 		];
+	}
+
+	public function provideDataActiveDaysAgo() {
+		return [
+			[
+				[],
+				1,
+			],
+			[
+				$this->getTestingDataForUsernames( 'Foo' ),
+				2,
+			],
+			[
+				$this->getTestingDataForUsernames( 'Foo' ),
+				3,
+			],
+			[
+				$this->getTestingDataForUsernames( [ 'Foo', 'Bar' ] ),
+				5,
+			],
+		];
+	}
+
+	/**
+	 * @covers ::activeDaysAgo
+	 * @covers ::filterInternal
+	 * @dataProvider provideDataActiveDaysAgo
+	 * @param array $expected
+	 * @param int $daysAgo
+	 */
+	public function testActiveDaysAgo( $expected, $daysAgo ) {
+		$dataFilter = new MenteeOverviewDataFilter( $this->getTestingData() );
+		$dataFilter->activeDaysAgo( $daysAgo );
+		$this->assertArrayEquals(
+			$expected,
+			TestingAccessWrapper::newFromObject( $dataFilter )->filterInternal()
+		);
 	}
 }

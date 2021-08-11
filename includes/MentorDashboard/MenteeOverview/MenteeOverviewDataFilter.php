@@ -5,6 +5,7 @@ namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 use LogicException;
 use MWTimestamp;
 use Wikimedia\Assert\Assert;
+use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 /**
  * Helper class to filter data about mentees
@@ -22,6 +23,9 @@ class MenteeOverviewDataFilter {
 
 	public const SORT_ORDER_ASCENDING = 'asc';
 	public const SORT_ORDER_DESCENDING = 'desc';
+
+	/** @var int Number of seconds in a day */
+	private const SECONDS_DAY = 86400;
 
 	private const TIMESTAMP_SORTS = [
 		self::SORT_BY_TENURE,
@@ -61,6 +65,9 @@ class MenteeOverviewDataFilter {
 
 	/** @var int|null */
 	private $maxEdits = null;
+
+	/** @var int|null */
+	private $activeDaysAgo = null;
 
 	/** @var int[]|null */
 	private $onlyIds = null;
@@ -132,6 +139,17 @@ class MenteeOverviewDataFilter {
 	 */
 	public function maxEdits( ?int $maxEdits ): MenteeOverviewDataFilter {
 		$this->maxEdits = $maxEdits;
+		return $this;
+	}
+
+	/**
+	 * Filter by user's activity
+	 *
+	 * @param int|null $activeDaysAgo
+	 * @return static
+	 */
+	public function activeDaysAgo( ?int $activeDaysAgo ): MenteeOverviewDataFilter {
+		$this->activeDaysAgo = $activeDaysAgo;
 		return $this;
 	}
 
@@ -280,6 +298,17 @@ class MenteeOverviewDataFilter {
 
 			if ( $this->maxEdits !== null && $menteeData['editcount'] > $this->maxEdits ) {
 				return false;
+			}
+
+			if ( $this->activeDaysAgo !== null && $menteeData['last_active'] !== null ) {
+				$secondsSinceLastActivity = wfTimestamp( TS_UNIX ) -
+					(int)ConvertibleTimestamp::convert(
+						TS_UNIX,
+						$menteeData['last_active']
+					);
+				if ( $secondsSinceLastActivity >= self::SECONDS_DAY * $this->activeDaysAgo ) {
+					return false;
+				}
 			}
 
 			return true;
