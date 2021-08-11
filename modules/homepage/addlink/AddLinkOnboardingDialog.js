@@ -105,6 +105,13 @@ AddLinkOnboardingDialog.prototype.getFooterElement = function () {
 };
 
 /** @inheritdoc */
+AddLinkOnboardingDialog.prototype.getReadyProcess = function ( data ) {
+	// Record an impression event when the dialog is opened
+	this.logger.log( 'impression', this.getLogActionData(), this.getLogMetadata() );
+	return AddLinkOnboardingDialog.super.prototype.getReadyProcess.call( this, data );
+};
+
+/** @inheritdoc */
 AddLinkOnboardingDialog.prototype.getActionProcess = function ( action ) {
 	return AddLinkOnboardingDialog.super.prototype.getActionProcess.call( this, action )
 		.next( function () {
@@ -122,7 +129,6 @@ AddLinkOnboardingDialog.prototype.updateViewState = function () {
 	this.$dismissField.hide();
 
 	$skipButton.show();
-	this.logger.log( 'impression', this.getLogActionData(), this.getLogMetadata() );
 
 	if ( this.currentPanelIndex === 1 ) {
 		var $learnMoreLink = this.panels[ 1 ].$element.find( '.addlink-onboarding-content-link' );
@@ -144,6 +150,12 @@ AddLinkOnboardingDialog.prototype.updateViewState = function () {
 		this.$prevButton.show();
 		this.$nextButton.show();
 	}
+};
+
+/** @inheritdoc */
+AddLinkOnboardingDialog.prototype.showPanelIndex = function ( index ) {
+	AddLinkOnboardingDialog.super.prototype.showPanelIndex.call( this, index );
+	this.logger.log( 'impression', this.getLogActionData(), this.getLogMetadata() );
 };
 
 /**
