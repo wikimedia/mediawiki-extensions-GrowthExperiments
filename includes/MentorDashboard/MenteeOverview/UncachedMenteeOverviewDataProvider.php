@@ -69,12 +69,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * should be considered:
 	 *  * user is not a bot
 	 *  * user is not indefinitely blocked
-	 *  * user registered less than 2 weeks ago OR made at least one edit
-	 *
-	 * This does not filter users according to last edit made (which is also
-	 * in the list of business rules), because doing so would require knowing the last
-	 * edit timestamp. So, instead, we calculate last edit timestamp for all users,
-	 * and then filter from there.
+	 *  * user registered less than 2 weeks ago OR made at least one edit in the last 6 months
 	 *
 	 * @param UserIdentity $mentor
 	 * @return int[] User IDs of the mentees
