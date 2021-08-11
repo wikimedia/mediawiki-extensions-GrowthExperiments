@@ -210,7 +210,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			'questions' => $this->getQuestionsAskedForUsers( $userIds ),
 			'editcount' => $this->getEditCountsForUsers( $userIds ),
 			'registration' => $this->getRegistrationTimestampForUsers( $userIds ),
-			'last_active' => $this->getLastEditTimestampForUsers( $userIds ),
+			'last_edit' => $this->getLastEditTimestampForUsers( $userIds ),
 			'blocks' => $this->getBlocksForUsers( $userIds ),
 		];
 
