@@ -1,6 +1,8 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Ата"
+		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Title of a special page",
 	"growthexperiments-mentor-dashboard-disabled": "Error message shown when user tries to load mentor dashboard when it is disabled",
@@ -24,6 +26,6 @@
 	"growthexperiments-mentor-dashboard-resources-links-headline": "Description for a link in the \"Resources\" mentor dashboard module.",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Description for a link in the \"Resources\" mentor dashboard module.",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Description for a link in the \"Resources\" mentor dashboard module.",
-	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Description for a link in the \"Resources\" mentor dashboard module.",
+	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Description for a link in the \"Resources\" mentor dashboard module.\nhttps://www.mediawiki.org/wiki/Help:Growth/Tools/How_to_claim_a_mentee\nSee also: {{int:MediaWiki:Growthexperiments-homepage-claimmentee-title}}",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Description for a link in the \"Resources\" mentor dashboard module."
 }
