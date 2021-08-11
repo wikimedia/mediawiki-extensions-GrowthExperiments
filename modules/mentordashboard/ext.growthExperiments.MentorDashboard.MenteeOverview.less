@@ -1,10 +1,56 @@
+@import 'mediawiki.ui/variables';
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
+
 .growthexperiments-mentor-dashboard-module-mentee-overview {
 	display: flow-root;
 	border: 1px solid #c8ccd1;
 	padding-bottom: 0;
+	position: relative;
 
 	.growthexperiments-mentor-dashboard-module-body {
 		.growthexperiments-mentor-dashboard-module-mentee-overview-content {
+			#growthexperiments-mentor-dashboard-module-mentee-overview-info-icon {
+				position: absolute;
+				top: 0;
+				right: 0;
+			}
+
+			.growthexperiments-mentor-dashboard-module-mentee-overview-info-content {
+				width: 410px;
+
+				p {
+					color: @wmui-color-base10;
+				}
+
+				.growthexperiments-mentor-dashboard-overview-info-legend-content {
+					display: flex;
+					flex-wrap: wrap;
+
+					.growthexperiments-mentor-dashboard-overview-info-legend-content-icon {
+						@legendWidth: 45%;
+						width: @legendWidth;
+						min-height: 36px;
+						padding-right: 50% - @legendWidth;
+						padding-bottom: 10px;
+						position: relative;
+
+						.oo-ui-iconWidget {
+							position: absolute;
+							top: 50%;
+							transform: translateY( -50% );
+						}
+
+						p {
+							margin: 0;
+							padding-left: 30px;
+							position: absolute;
+							top: 50%;
+							transform: translateY( -50% );
+						}
+					}
+				}
+			}
+
 			.growthexperiments-mentor-dashboard-module-mentee-overview-controls {
 				padding-bottom: 45px;
 

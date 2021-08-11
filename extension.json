@@ -1336,6 +1336,16 @@
 				"mentordashboard/ext.growthExperiments.MentorDashboard.MenteeOverview.MenteeSearchInputWidget.js"
 			],
 			"messages": [
+				"growthexperiments-mentor-dashboard-mentee-overview-info-headline",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-text",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount",
+				"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration",
 				"growthexperiments-mentor-dashboard-mentee-overview-add-filter",
 				"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline",
 				"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from",
