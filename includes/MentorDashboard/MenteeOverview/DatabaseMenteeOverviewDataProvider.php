@@ -70,6 +70,14 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	}
 
 	/**
+	 * Invalidate cache for given mentor
+	 * @param UserIdentity $mentor
+	 */
+	public function invalidateCacheForMentor( UserIdentity $mentor ): void {
+		$this->cache->delete( $this->makeCacheKey( $mentor ) );
+	}
+
+	/**
 	 * @inheritDoc
 	 */
 	public function getFormattedDataForMentor( UserIdentity $mentor ): array {
