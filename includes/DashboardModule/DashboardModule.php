@@ -9,6 +9,7 @@ use Message;
 use MessageSpecifier;
 use OOUI\IconWidget;
 use SpecialPage;
+use User;
 
 abstract class DashboardModule implements IDashboardModule {
 	/**
@@ -54,6 +55,17 @@ abstract class DashboardModule implements IDashboardModule {
 	 */
 	final protected function getContext(): IContextSource {
 		return $this->ctx;
+	}
+
+	/**
+	 * Get current user
+	 *
+	 * Short for $this->getContext()->getUser().
+	 *
+	 * @return User
+	 */
+	final protected function getUser(): User {
+		return $this->getContext()->getUser();
 	}
 
 	/**
