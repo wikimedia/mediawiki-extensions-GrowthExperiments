@@ -47,9 +47,12 @@ class LinkRecommendationStoreTest extends MediaWikiIntegrationTestCase {
 				$revisionIds[$titleText][$revisionText] = $revisionRecord->getId();
 			}
 		}
+		$timestamp = 1577865600;
 
 		// fixture
-		$insert = static function ( string $titleText, string $revisionText ) use ( $store, $pageIds, $revisionIds ) {
+		$insert = static function (
+			string $titleText, string $revisionText
+		) use ( $store, $pageIds, $revisionIds, $timestamp ) {
 			$links = [];
 			foreach ( range( 1, 3 ) as $i ) {
 				$links[] = new LinkRecommendationLink(
@@ -68,7 +71,7 @@ class LinkRecommendationStoreTest extends MediaWikiIntegrationTestCase {
 				$pageIds[$titleText],
 				$revisionIds[$titleText][$revisionText],
 				$links,
-				new LinkRecommendationMetadata( 'v1', 1, [] )
+				new LinkRecommendationMetadata( 'v1', 1, [], $timestamp )
 			) );
 		};
 		$insert( 'T1', 'r2' );
@@ -87,6 +90,7 @@ class LinkRecommendationStoreTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame( 'T1_r2_1_text', $linkRecommendation->getLinks()[0]->getText() );
 		$this->assertInstanceOf( LinkRecommendationMetadata::class, $linkRecommendation->getMetadata() );
 		$this->assertSame( 'v1', $linkRecommendation->getMetadata()->getApplicationVersion() );
+		$this->assertSame( $timestamp, $linkRecommendation->getMetadata()->getTaskTimestamp() );
 
 		// get by mismatching revision ID
 		$this->assertNull( $store->getByRevId( $revisionIds['T1']['r3'] ) );

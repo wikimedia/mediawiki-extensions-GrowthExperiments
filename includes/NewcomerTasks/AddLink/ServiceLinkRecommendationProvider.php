@@ -7,6 +7,7 @@ use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Revision\RevisionLookup;
 use MediaWiki\Revision\SlotRecord;
+use MWTimestamp;
 use RequestContext;
 use StatusValue;
 use TitleFactory;
@@ -139,7 +140,9 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 			$pageId,
 			$revId,
 			LinkRecommendation::getLinksFromArray( $data['links'] ),
-			LinkRecommendation::getMetadataFromArray( $data['meta'] )
+			LinkRecommendation::getMetadataFromArray( $data['meta'] + [
+				'task_timestamp' => MWTimestamp::time(),
+			] )
 		);
 	}
 
