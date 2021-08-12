@@ -127,10 +127,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			return null;
 		}
 
-		return new Mentor(
-			$this->userFactory->newFromUserIdentity( $mentorUser ),
-			$this->getMentorIntroText( $mentorUser, $user )
-		);
+		return $this->newMentorFromUserIdentity( $mentorUser, $user );
 	}
 
 	/** @inheritDoc */
@@ -140,8 +137,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			$mentorUser = $this->getRandomAutoAssignedMentor( $user );
 			$this->mentorStore->setMentorForUser( $user, $mentorUser );
 		}
-		return new Mentor( $this->userFactory->newFromUserIdentity( $mentorUser ),
-			$this->getMentorIntroText( $mentorUser, $user ) );
+		return $this->newMentorFromUserIdentity( $mentorUser, $user );
 	}
 
 	/** @inheritDoc */
@@ -162,6 +158,19 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			// related, such as the homepage, so it's better than erroring out.
 		}
 		return null;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function newMentorFromUserIdentity(
+		UserIdentity $mentorUser,
+		?UserIdentity $menteeUser = null
+	): Mentor {
+		return new Mentor(
+			$this->userFactory->newFromUserIdentity( $mentorUser ),
+			$this->getMentorIntroText( $mentorUser, $menteeUser ?? $mentorUser )
+		);
 	}
 
 	/**

@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Mentorship;
 
 use GrowthExperiments\WikiConfigException;
+use InvalidArgumentException;
 use MediaWiki\User\UserIdentity;
 
 /**
@@ -38,6 +39,19 @@ class StaticMentorManager extends MentorManager {
 	/** @inheritDoc */
 	public function getMentorForUserSafe( UserIdentity $user ): ?Mentor {
 		return $this->mentors[$user->getName()] ?? null;
+	}
+
+	/** @inheritDoc */
+	public function newMentorFromUserIdentity(
+		UserIdentity $mentorUser,
+		?UserIdentity $menteeUser = null
+	): Mentor {
+		foreach ( $this->mentors as $mentee => $mentor ) {
+			if ( $mentor->getMentorUser()->equals( $mentorUser ) ) {
+				return $mentor;
+			}
+		}
+		throw new InvalidArgumentException( 'Invalid mentor passed' );
 	}
 
 	/** @inheritDoc */

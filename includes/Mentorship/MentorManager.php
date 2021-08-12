@@ -36,6 +36,22 @@ abstract class MentorManager {
 	abstract public function getMentorForUserSafe( UserIdentity $user ): ?Mentor;
 
 	/**
+	 * Construct a Mentor object for given UserIdentity
+	 *
+	 * This is useful for when you know the mentor's username, and need MentorManager to provide
+	 * specific details about them.
+	 *
+	 * @param UserIdentity $mentorUser
+	 * @param UserIdentity|null $menteeUser If passed, may be used to customize message using
+	 * mentee's username.
+	 * @return Mentor
+	 */
+	abstract public function newMentorFromUserIdentity(
+		UserIdentity $mentorUser,
+		?UserIdentity $menteeUser = null
+	): Mentor;
+
+	/**
 	 * Get all mentors, regardless on their auto-assignment status
 	 * @return string[] List of mentors usernames.
 	 * @throws WikiConfigException If the mentor list cannot be fetched due to misconfiguration.
