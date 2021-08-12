@@ -51,19 +51,23 @@ class LinkRecommendationStore {
 	// growthexperiments_link_recommendations
 
 	/**
-	 * Get a link recommendation by revision ID.
-	 * @param int $revId
+	 * Get a link recommendation by some condition.
+	 * @param array $condition A Database::select() condition array.
 	 * @param int $flags IDBAccessObject flags
 	 * @return LinkRecommendation|null
 	 */
-	public function getByRevId( int $revId, int $flags = 0 ): ?LinkRecommendation {
+	protected function getByCondition( array $condition, int $flags = 0 ): ?LinkRecommendation {
 		[ $index, $options ] = DBAccessObjectUtils::getDBOptions( $flags );
 		$row = $this->getDB( $index )->selectRow(
 			'growthexperiments_link_recommendations',
-			[ 'gelr_page', 'gelr_data' ],
-			[ 'gelr_revision' => $revId ],
+			[ 'gelr_page', 'gelr_revision', 'gelr_data' ],
+			$condition,
 			__METHOD__,
-			$options
+			$options + [
+				// $condition is supposed to be unique, but if somehow that isn't the case,
+				// use the most up-to-date recommendation.
+				'ORDER BY' => 'gelr_revision DESC'
+			]
 		);
 		if ( $row === false ) {
 			return null;
@@ -81,7 +85,7 @@ class LinkRecommendationStore {
 		return new LinkRecommendation(
 			$title,
 			$row->gelr_page,
-			$revId,
+			$row->gelr_revision,
 			LinkRecommendation::getLinksFromArray( $data['links'] ),
 			// Backwards compatibility for recommendations added before metadata was included in output and stored.
 			LinkRecommendation::getMetadataFromArray( $data['meta'] ?? [] )
@@ -89,17 +93,52 @@ class LinkRecommendationStore {
 	}
 
 	/**
-	 * Get a link recommendation by link target.
-	 * @param LinkTarget $linkTarget
+	 * Get a link recommendation by revision ID.
+	 * @param int $revId
 	 * @param int $flags IDBAccessObject flags
 	 * @return LinkRecommendation|null
 	 */
-	public function getByLinkTarget( LinkTarget $linkTarget, int $flags = 0 ): ?LinkRecommendation {
-		$revId = $this->titleFactory->newFromLinkTarget( $linkTarget )->getLatestRevID( $flags );
-		if ( $revId === 0 ) {
-			return null;
+	public function getByRevId( int $revId, int $flags = 0 ): ?LinkRecommendation {
+		return $this->getByCondition( [ 'gelr_revision' => $revId ], $flags );
+	}
+
+	/**
+	 * Get a link recommendation by page ID.
+	 * @param int $pageId
+	 * @param int $flags IDBAccessObject flags
+	 * @return LinkRecommendation|null
+	 */
+	public function getByPageId( int $pageId, int $flags = 0 ): ?LinkRecommendation {
+		return $this->getByCondition( [ 'gelr_page' => $pageId ], $flags );
+	}
+
+	/**
+	 * Get a link recommendation by link target.
+	 * @param LinkTarget $linkTarget
+	 * @param int $flags IDBAccessObject flags
+	 * @param bool $allowOldRevision When true, return any recommendation for the given page;
+	 *   otherwise, only use a recommendation if it's for the current revision.
+	 * @return LinkRecommendation|null
+	 */
+	public function getByLinkTarget(
+		LinkTarget $linkTarget,
+		int $flags = 0,
+		bool $allowOldRevision = false
+	): ?LinkRecommendation {
+		$title = $this->titleFactory->newFromLinkTarget( $linkTarget );
+		if ( $allowOldRevision ) {
+			$pageId = $title->getArticleID( $flags );
+			if ( $pageId === 0 ) {
+				return null;
+			}
+			return $this->getByPageId( $pageId, $flags );
+		} else {
+			$revId = $title->getLatestRevID( $flags );
+			if ( $revId === 0 ) {
+				return null;
+			}
+			return $this->getByRevId( $revId, $flags );
 		}
-		return $this->getByRevId( $revId, $flags );
 	}
 
 	/**
