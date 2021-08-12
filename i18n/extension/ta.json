@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Balajijagadesh"
+		]
+	},
+	"growthexperiments-edit-config-feedback-cta": "உங்களுடைய கருத்தைத் தெரிவியுங்கள்",
+	"growthexperiments-edit-config-edit-summary": "தொகுப்புச் சுருக்கம்",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "பக்கத்தின் மேல் பகுதி",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "பக்கதின் கீழ் பகுதி",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "ஒத்தாசைப் பக்கம்",
+	"growthexperiments-edit-config-homepage": "புதுப்பயனர் முகப்புப் பக்கம்",
+	"growthexperiments-edit-config-mentorship-enabled-true": "ஆம்",
+	"growthexperiments-edit-config-mentorship-enabled-false": "இல்லை",
+	"growthexperiments-edit-config-newcomertasks": "பரிந்துரைக்கப்படும் தொகுப்புகள்"
+}

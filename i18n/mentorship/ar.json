@@ -4,5 +4,14 @@
 			"Dyolf77 (WMF)"
 		]
 	},
-	"growthexperiments-mentor-dashboard-title": "لوحة المرشدين"
+	"growthexperiments-mentor-dashboard-title": "لوحة المرشدين",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "من",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "إلى",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "إرسال",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "بحث",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "نشط منذ $1",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "غير معروف",
+	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "إظهار $1",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 من $2",
+	"growthexperiments-mentor-dashboard-resources-headline": "المراجع"
 }

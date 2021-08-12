@@ -172,6 +172,7 @@
 	"growthexperiments-homepage-suggestededits-pageviews": "$1회 방문 (지난 60일간)",
 	"growthexperiments-homepage-suggestededits-previous-card": "이전 편집 제안",
 	"growthexperiments-homepage-suggestededits-next-card": "다음 편집 제안",
+	"growthexperiments-homepage-suggestededits-edit-card": "편집",
 	"growthexperiments-homepage-suggestededits-no-more-results": "제안 더 없음",
 	"growthexperiments-homepage-suggestededits-no-results": "제안이 없습니다",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "편집 제안을 찾으려면 난이도를 조절하세요.",
@@ -355,5 +356,9 @@
 	"newcomertasksinfo-table-header-task-count": "건수",
 	"newcomertasksinfo-table-header-topic-type": "주제 ID",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "제안",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "제출..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "제출...",
+	"growthexperiments-addlink-editmode-selection-machine-suggestions": "제안",
+	"growthexperiments-addlink-editmode-selection-visual": "시각 편집",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-confirm": "제출 없이 전환",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "취소"
 }

@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"DDPAT"
+			"DDPAT",
+			"Ата"
 		]
 	},
 	"apihelp-growthstarmentee-summary": "Позначити або зняти позначку з підпорядкованого як зірочку поточного користувача (зберігається приватно і не реєструється)",
 	"apihelp-growthstarmentee-param-gesaction": "Вжити заходів (<kbd>star</kbd> або <kbd>unstar</kbd>)",
 	"apihelp-growthstarmentee-param-gesmentee": "Ментований до (не)зірки",
-	"apihelp-query+growthstarredmentees-summary": "Отримайте список підпорядкованих зірок, які зібрав наставник, який наразі увійшов у систему"
+	"apihelp-query+growthstarredmentees-summary": "Отримайте список підопічних, відмічених наставником, який наразі увійшов у систему"
 }

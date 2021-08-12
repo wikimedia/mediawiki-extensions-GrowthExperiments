@@ -389,6 +389,7 @@
 	"grant-managementorship": "Spravovat mentorství",
 	"newcomertasksinfo": "Editační tipy",
 	"newcomertasksinfo-no-data": "Žádná data nejsou dostupná.",
+	"newcomertasksinfo-config-form-info": "Konfiguraci editačních tipů je možné najít a změnit na stránce [[Special:EditGrowthConfig|Speciální:Editovat konfiguraci Growth funkcí]].",
 	"newcomertasksinfo-table-header-task-type": "Typ úkolu",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Počet",

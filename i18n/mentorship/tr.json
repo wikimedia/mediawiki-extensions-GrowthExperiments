@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Hedda"
+		]
+	},
+	"growthexperiments-mentor-dashboard-title": "Danışman kontrol paneli",
+	"growthexperiments-mentor-dashboard-disabled": "Danışman kontrol paneli, bu wiki'de etkinleştirilmemiştir.",
+	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Danışanlarınız",
+	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Tablo, mevcut danışanlarınızın durumunu ve ilerlemesini gösterir. Belirli sonuçları görüntülemek için tabloyu filtreler aracılığıyla kişiselleştirin.",
+	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Tablo için JavaScript gereklidir. Bu modülü kullanabilmek için lütfen JavaScript'i etkinleştirin.",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filtre ekle",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Toplam düzenlemeleriyle danışanları görün",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Şuradan",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Şuraya",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-headline": "Yıldızlı danışanlar",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Sadece yıldızlı danışanları göster",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Gönder",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Ara",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "$1 önce aktifti",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "bilinmiyor",
+	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 göster",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1/$2",
+	"growthexperiments-mentor-dashboard-resources-headline": "Kaynaklar",
+	"growthexperiments-mentor-dashboard-resources-intro": "Aşağıdaki bağlantılar, ilgili danışmanlarla ilgili sayfalara hızlı bir şekilde gitmenize yardımcı olur.",
+	"growthexperiments-mentor-dashboard-resources-links-headline": "Danışmanlık için en iyi sayfalar",
+	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Danışman listesi",
+	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Kendinizi bir danışman olarak nasıl tanıtabilirsiniz?",
+	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Bir danışan nasıl talep edilir",
+	"growthexperiments-mentor-dashboard-resources-link-tools": "Büyüme araçları"
+}

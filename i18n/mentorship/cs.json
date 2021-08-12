@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Martin Urbanec (WMF)"
+			"Martin Urbanec (WMF)",
+			"Matěj Suchánek"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Nástěnka mentora",
@@ -17,7 +18,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Ukázat $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 z $2",
 	"growthexperiments-mentor-dashboard-resources-headline": "Zdroje",
-	"growthexperiments-mentor-dashboard-resources-intro": "Odkazy níže uvedené vám umožní rychle se dostat ke všem důležitým informacím týkající se mentorství.",
+	"growthexperiments-mentor-dashboard-resources-intro": "Odkazy níže uvedené vám umožní rychle se dostat ke všem důležitým informacím týkajícím se mentorství.",
 	"growthexperiments-mentor-dashboard-resources-links-headline": "Nejdůležitější stránky pro mentory",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Seznam mentorů",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Jak se představit jako mentor",
