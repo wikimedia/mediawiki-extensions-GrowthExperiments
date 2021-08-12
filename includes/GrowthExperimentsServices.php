@@ -21,6 +21,7 @@ use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkSubmissionRecorder;
 use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdater;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -109,6 +110,10 @@ class GrowthExperimentsServices {
 
 	public function getLinkRecommendationStore(): LinkRecommendationStore {
 		return $this->coreServices->get( 'GrowthExperimentsLinkRecommendationStore' );
+	}
+
+	public function getLinkRecommendationUpdater(): LinkRecommendationUpdater {
+		return $this->coreServices->get( 'GrowthExperimentsLinkRecommendationUpdater' );
 	}
 
 	public function getLinkSubmissionRecorder(): LinkSubmissionRecorder {

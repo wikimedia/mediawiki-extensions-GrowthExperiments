@@ -2,36 +2,23 @@
 
 namespace GrowthExperiments\Maintenance;
 
-use ChangeTags;
 use CirrusSearch\Query\ArticleTopicFeature;
 use Config;
 use Generator;
 use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
-use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
-use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationLink;
-use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
-use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdater;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\OresTopicTrait;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\NullTaskTypeHandler;
-use IDBAccessObject;
+use GrowthExperiments\WikiConfigException;
 use Maintenance;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Revision\RevisionRecord;
-use MediaWiki\Revision\RevisionStore;
-use MediaWiki\Revision\SlotRecord;
-use MediaWiki\Storage\NameTableStore;
-use Message;
-use MWTimestamp;
-use PageProps;
 use RuntimeException;
-use SearchEngineFactory;
 use Status;
 use StatusValue;
 use Title;
@@ -39,7 +26,6 @@ use TitleFactory;
 use User;
 use WikiMap;
 use Wikimedia\Rdbms\DBReadOnlyError;
-use WikitextContent;
 
 $path = dirname( dirname( dirname( __DIR__ ) ) );
 
@@ -61,20 +47,11 @@ class RefreshLinkRecommendations extends Maintenance {
 	/** @var Config */
 	private $growthConfig;
 
-	/** @var SearchEngineFactory */
-	protected $searchEngineFactory;
-
 	/** @var TitleFactory */
 	private $titleFactory;
 
 	/** @var LinkBatchFactory */
 	private $linkBatchFactory;
-
-	/** @var RevisionStore */
-	private $revisionStore;
-
-	/** @var NameTableStore */
-	private $changeDefNameTableStore;
 
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
@@ -82,17 +59,11 @@ class RefreshLinkRecommendations extends Maintenance {
 	/** @var TaskSuggester */
 	private $taskSuggester;
 
-	/** @var LinkRecommendationProvider */
-	protected $linkRecommendationProviderUncached;
-
 	/** @var LinkRecommendationStore */
 	private $linkRecommendationStore;
 
-	/** @var LinkRecommendationHelper */
-	private $linkRecommendationHelper;
-
-	/** @var SearchIndexUpdater */
-	private $searchIndexUpdater;
+	/** @var LinkRecommendationUpdater */
+	private $linkRecommendationUpdater;
 
 	/** @var LinkRecommendationTaskType */
 	private $recommendationTaskType;
@@ -228,18 +199,12 @@ class RefreshLinkRecommendations extends Maintenance {
 
 		$services = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$this->searchEngineFactory = $services->getSearchEngineFactory();
 		$this->titleFactory = $services->getTitleFactory();
 		$this->linkBatchFactory = $services->getLinkBatchFactory();
-		$this->revisionStore = $services->getRevisionStore();
-		$this->changeDefNameTableStore = $services->getNameTableStoreFactory()->getChangeTagDef();
 		$this->configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 		$this->taskSuggester = $growthServices->getTaskSuggesterFactory()->create();
-		$this->linkRecommendationProviderUncached =
-			$services->get( 'GrowthExperimentsLinkRecommendationProviderUncached' );
 		$this->linkRecommendationStore = $growthServices->getLinkRecommendationStore();
-		$this->linkRecommendationHelper = $growthServices->getLinkRecommendationHelper();
-		$this->searchIndexUpdater = $growthServices->getSearchIndexUpdater();
+		$this->linkRecommendationUpdater = $growthServices->getLinkRecommendationUpdater();
 	}
 
 	protected function initConfig(): void {
@@ -312,186 +277,24 @@ class RefreshLinkRecommendations extends Maintenance {
 	 */
 	private function processCandidate( Title $title, bool $force = false ): bool {
 		$this->verboseLog( "    checking candidate " . $title->getPrefixedDBkey() . "... " );
-		$lastRevision = $this->revisionStore->getRevisionByTitle( $title );
-		if ( !$this->evaluateTitle( $title, $lastRevision, $force ) ) {
-			return false;
-		}
-
-		// Prevent infinite loop. Cirrus updates are not realtime so pages we have
-		// just created recommendations for will be included again in the next batch.
-		// Skip them to ensure $recommendationsFound is only nonzero then we have
-		// actually added a new recommendation.
-		// FIXME there is probably a better way to do this via search offsets.
-		if ( $this->linkRecommendationStore->getByRevId( $lastRevision->getId(),
-			IDBAccessObject::READ_LATEST )
-		) {
-			$this->verboseLog( "link recommendation already stored\n" );
-			return false;
-		}
-
-		$recommendation = $this->linkRecommendationProviderUncached->get( $title,
-			$this->recommendationTaskType );
-		if ( !$this->evaluateRecommendation( $recommendation, $lastRevision, $force ) ) {
-			return false;
-		}
-
-		$this->verboseLog( "success, updating index\n" );
 		try {
-			// If the script gets interrupted, uncommitted DB writes get discarded, while
-			// updateCirrusSearchIndex() is immediate. Minimize the likelyhood of the DB
-			// and the search index getting out of sync by wrapping each insert into a
-			// separate transaction. Use an explicit begin here to avoid Database::commit
-			// complaining about "no transaction to commit". That should never happen as
-			// the insert() call does an implicit begin, but it does occur somehow.
-			$this->linkRecommendationStore->getDB( DB_PRIMARY )->begin( __METHOD__ );
-			$this->linkRecommendationStore->insert( $recommendation );
-			$this->linkRecommendationStore->getDB( DB_PRIMARY )->commit( __METHOD__ );
-			$this->updateCirrusSearchIndex( $lastRevision );
+			$status = $this->linkRecommendationUpdater->processCandidate( $title, $force );
+			if ( $status->isOK() ) {
+				$this->verboseLog( "success, updating index\n" );
+				return true;
+			} else {
+				$error = Status::wrap( $status )->getWikiText( false, false, 'en' );
+				$this->verboseLog( "$error\n" );
+			}
 		} catch ( DBReadOnlyError $e ) {
 			// This is a long-running script, read-only state can change in the middle.
 			// It's run frequently so just do the easy thing and abort.
 			$this->fatalError( 'DB is readonly, aborting' );
+		} catch ( WikiConfigException $e ) {
+			// Link recommendations are not configured correctly.
+			$this->fatalError( $e->getMessage() );
 		}
-		return true;
-	}
-
-	/**
-	 * Check all conditions which are not related to the recommendation.
-	 * @param Title $title
-	 * @param RevisionRecord|null $revision
-	 * @param bool $force Ignore all failed conditions that can be safely ignored.
-	 * @return bool
-	 */
-	private function evaluateTitle( Title $title, ?RevisionRecord $revision, bool $force ): bool {
-		// FIXME ideally most of this should be moved inside the search query
-
-		// 1. the revision must exist and the mwaddlink service must be able to interpret it.
-		if ( $revision === null ) {
-			// Maybe the article has just been deleted and the search index is behind?
-			$this->verboseLog( "page not found\n" );
-			return false;
-		}
-		$content = $revision->getContent( SlotRecord::MAIN );
-		if ( !$content || !$content instanceof WikitextContent ) {
-			$this->verboseLog( "content not found\n" );
-			return false;
-		}
-
-		if ( $force ) {
-			return true;
-		}
-
-		// 2. the article must match size conditions.
-		$wordCount = preg_match_all( '/\w+/', $content->getText() );
-		if ( $wordCount < $this->recommendationTaskType->getMinimumWordCount() ) {
-			$this->verboseLog( "word count too small ($wordCount)\n" );
-			return false;
-		} elseif ( $wordCount > $this->recommendationTaskType->getMaximumWordCount() ) {
-			$this->verboseLog( "word count too large ($wordCount)\n" );
-			return false;
-		}
-
-		// 3. exclude articles which have been edited very recently.
-		$revisionTime = MWTimestamp::convert( TS_UNIX, $revision->getTimestamp() );
-		if ( time() - $revisionTime < $this->recommendationTaskType->getMinimumTimeSinceLastEdit() ) {
-			$this->verboseLog( "minimum time since last edit did not pass\n" );
-			return false;
-		}
-
-		// 4. exclude disambiguation pages.
-		if ( PageProps::getInstance()->getProperties( $title, 'disambiguation' ) ) {
-			$this->verboseLog( "disambiguation page\n" );
-			return false;
-		}
-
-		// 5. exclude pages where the last edit is a link recommendation edit or its revert.
-		$db = $this->getDB( DB_REPLICA );
-		$tags = ChangeTags::getTagsWithData( $db, null, $revision->getId() );
-		if ( array_key_exists( LinkRecommendationTaskTypeHandler::CHANGE_TAG, $tags ) ) {
-			$this->verboseLog( "last edit is a link recommendation\n" );
-			return false;
-		}
-		$revertTags = array_intersect( ChangeTags::REVERT_TAGS, array_keys( $tags ) );
-		if ( $revertTags ) {
-			$linkRecommendationChangeTagId = $this->changeDefNameTableStore
-				->acquireId( LinkRecommendationTaskTypeHandler::CHANGE_TAG );
-			$tagData = json_decode( $tags[reset( $revertTags )], true );
-			/** @var array $tagData */'@phan-var array $tagData';
-			$revertedAddLinkEditCount = $db->selectRowCount(
-				[ 'revision', 'change_tag' ],
-				'1',
-				[
-					'rev_id = ct_rev_id',
-					'rev_page' => $title->getArticleID(),
-					'rev_id <=' . (int)$tagData['newestRevertedRevId'],
-					'rev_id >=' . (int)$tagData['oldestRevertedRevId'],
-					'ct_tag_id' => $linkRecommendationChangeTagId,
-				],
-				__METHOD__
-			);
-			if ( $revertedAddLinkEditCount > 0 ) {
-				$this->verboseLog( "last edit reverts a link recommendation edit\n" );
-				return false;
-			}
-		}
-		return true;
-	}
-
-	/**
-	 * @param LinkRecommendation|StatusValue $recommendation
-	 * @param RevisionRecord $revision
-	 * @param bool $force Ignore all failed conditions that can be safely ignored.
-	 * @return bool
-	 */
-	private function evaluateRecommendation( $recommendation, RevisionRecord $revision, bool $force ): bool {
-		if ( !( $recommendation instanceof LinkRecommendation ) ) {
-			$this->verboseLog( "fetching recommendation failed\n" );
-			$this->error( Status::wrap( $recommendation )->getWikiText( false, false, 'en' ) );
-			return false;
-		}
-		if ( $recommendation->getRevisionId() !== $revision->getId() ) {
-			// Some kind of race condition? Generating another task is easy so just discard this.
-			$this->verboseLog( "revision ID mismatch\n" );
-			return false;
-		}
-		// We could check here for more race conditions, ie. whether the revision in the
-		// recommendation matches the live revision. But there are plenty of other ways for race
-		// conditions to happen, so we'll have to deal with them on the client side anyway. No
-		// point in getting a primary database connection just for that.
-
-		$goodLinks = array_filter( $recommendation->getLinks(), function ( LinkRecommendationLink $link ) {
-			return $link->getScore() >= $this->recommendationTaskType->getMinimumLinkScore();
-		} );
-		$recommendation = new LinkRecommendation(
-			$recommendation->getTitle(),
-			$recommendation->getPageId(),
-			$recommendation->getRevisionId(),
-			$goodLinks,
-			$recommendation->getMetadata()
-		);
-		$recommendation = $this->linkRecommendationHelper->pruneLinkRecommendation( $recommendation );
-		$prunedLinkCount = $recommendation ? count( $recommendation->getLinks() ) : 0;
-		if ( $prunedLinkCount === 0
-			 || !$force && $prunedLinkCount < $this->recommendationTaskType->getMinimumLinksPerTask()
-		) {
-			$this->verboseLog( "number of good links too small (" . $prunedLinkCount . ")\n" );
-			return false;
-		}
-
-		return true;
-	}
-
-	private function updateCirrusSearchIndex( RevisionRecord $revision ): void {
-		$status = $this->searchIndexUpdater->update( $revision );
-		if ( !$status->isOK() ) {
-			$errors = array_map( static function ( $error ) {
-				$message = $error['params'];
-				array_unshift( $message, $error['message'] );
-				return Message::newFromSpecifier( $message );
-			}, $status->getErrorsByType( 'error' ) );
-			$this->error( "  Could not send search index update:\n    "
-				. implode( "    \n", $errors ) );
-		}
+		return false;
 	}
 
 	private function verboseLog( string $message ): void {
