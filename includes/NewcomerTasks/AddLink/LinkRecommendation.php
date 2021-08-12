@@ -10,6 +10,13 @@ use MediaWiki\Linker\LinkTarget;
  */
 class LinkRecommendation {
 
+	/**
+	 * Fallback timestamp for tasks which have been stored before the code was updated to
+	 * record a timestamp. It is 2000-01-01 (chosen arbitrarily as an "old" value).
+	 * @internal Exposed for tests, should be treated as private.
+	 */
+	public const FALLBACK_TASK_TIMESTAMP = 946713600;
+
 	/** @var LinkTarget */
 	private $title;
 
@@ -63,7 +70,8 @@ class LinkRecommendation {
 		return new LinkRecommendationMetadata(
 			$meta['application_version'] ?? '',
 			$meta['format_version'] ?? 1,
-			$meta['dataset_checksums'] ?? []
+			$meta['dataset_checksums'] ?? [],
+			$meta['task_timestamp'] ?? self::FALLBACK_TASK_TIMESTAMP
 		);
 	}
 
