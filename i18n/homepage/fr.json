@@ -407,6 +407,7 @@
 	"grant-managementorship": "Gérer le tutorat",
 	"newcomertasksinfo": "Tâche de nouvel arrivant",
 	"newcomertasksinfo-no-data": "Aucune donnée disponible.",
+	"newcomertasksinfo-config-form-info": "La configuration des tâches de débutant peut être vue et modifiée sur [[Special:EditGrowthConfig]].",
 	"newcomertasksinfo-table-header-task-type": "Type de tâche",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Compteur",

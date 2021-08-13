@@ -3,6 +3,7 @@
 		"authors": [
 			"Ameisenigel",
 			"FF-11",
+			"Inkowik",
 			"Metalhead64",
 			"Reinhard Kraasch"
 		]
@@ -48,7 +49,7 @@
 	"growthexperiments-edit-config-help-panel-links-references-title": "4) Zielseite für den vierten Help-Panel-Link (Empfohlen: Einzelnachweise mit dem viesuellen Editor einfügen)",
 	"growthexperiments-edit-config-help-panel-links-references-label": "4) Beschriftung für den vierten Help-Panel-Link (Empfohlen: Einfügen eines Einzelnachweises)",
 	"growthexperiments-edit-config-help-panel-links-articlewizard-title": "5) Zielseite für den fünften Help-Panel-Link (Empfohlen: Artikelassistent)",
-	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "5) Beschriftung für den fünten Help-Panel-Link (Empfohlen: Erstellen eines Artikels)",
+	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "5) Beschriftung für den fünften Help-Panel-Link (Empfohlen: Erstellen eines Artikels)",
 	"growthexperiments-edit-config-homepage": "Neulings-Startseite",
 	"growthexperiments-edit-config-homepage-tutorial-title": "Seitentitel der Anleitung",
 	"growthexperiments-edit-config-homepage-intro-links-create": "Zielseite für einen Link über das Erstellen neuer Artikel",
