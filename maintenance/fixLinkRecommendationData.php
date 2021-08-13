@@ -53,6 +53,8 @@ class FixLinkRecommendationData extends Maintenance {
 			. 'without a matching search index entry and/or search index entries without a matching table row.' );
 		$this->addOption( 'search-index', 'Delete search index entries which do not match the DB table. '
 			. '(Note that this relies on the job queue to work.)' );
+		$this->addOption( 'reverse', 'Iterate from end to beginning. Applies to --search-index only. '
+			. 'This is a temporary workaround for T284531.' );
 		$this->addOption( 'db-table', 'Delete DB table entries which do not match the search index.' );
 		$this->addOption( 'dry-run', 'Run without making any changes.' );
 		$this->addOption( 'statsd', 'Report the number of fixes (or would-be fixes, '
@@ -150,7 +152,7 @@ class FixLinkRecommendationData extends Maintenance {
 		$searchEngine->setLimitOffset( $limit, $offset );
 		$searchEngine->setShowSuggestion( false );
 		// Sort by creation date as it's stable over time.
-		$searchEngine->setSort( 'create_timestamp_asc' );
+		$searchEngine->setSort( $this->getOption( 'reverse' ) ? 'create_timestamp_desc' : 'create_timestamp_asc' );
 		$matches = $searchEngine->searchText( $query )
 			?? StatusValue::newFatal( 'rawmessage', 'Search is disabled' );
 		if ( $matches instanceof StatusValue ) {
