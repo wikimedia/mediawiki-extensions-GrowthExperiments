@@ -52,6 +52,7 @@ use MediaWiki\User\UserOptionsManager;
 use NamespaceInfo;
 use OOUI\ButtonWidget;
 use OutputPage;
+use Psr\Log\LogLevel;
 use RecentChange;
 use RequestContext;
 use ResourceLoaderContext;
@@ -354,7 +355,8 @@ class HomepageHooks implements
 					$errorMessage = Status::wrap( $recommendation )->getWikiText( false, false, 'en' );
 					Util::logError( $recommendation->isOK()
 						? new WikiConfigException( $errorMessage )
-						: new Exception( $errorMessage ) );
+						: new Exception( $errorMessage ),
+						[], LogLevel::ERROR, $recommendation );
 					$serializedRecommendation = [ 'error' => $errorMessage ];
 				}
 				$out->addJsConfigVars( [
