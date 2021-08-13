@@ -78,8 +78,8 @@
 		this.$pageCounterSpan.text(
 			mw.msg(
 				'growthexperiments-mentor-dashboard-mentee-overview-page-counter',
-				this.currentPage,
-				this.totalPages
+				mw.language.convertNumber( this.currentPage ),
+				mw.language.convertNumber( this.totalPages )
 			)
 		);
 	};
@@ -105,7 +105,7 @@
 	MenteeOverviewPagination.prototype.setPageSize = function ( value ) {
 		this.pageSize = value;
 		this.showEntriesBtn.setLabel(
-			mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-show-entries', this.pageSize )
+			mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-show-entries', mw.language.convertNumber( this.pageSize ) )
 		);
 	};
 

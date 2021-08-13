@@ -229,10 +229,10 @@
 										)
 								)
 						),
-						menteeOverview.makeValueTd( userData.reverted, 'reverted' ),
-						menteeOverview.makeValueTd( userData.blocks, 'blocks' ),
-						menteeOverview.makeValueTd( userData.questions, 'questions' ),
-						menteeOverview.makeValueTd( userData.editcount, 'editcount' ),
+						menteeOverview.makeValueTd( mw.language.convertNumber( userData.reverted ), 'reverted' ),
+						menteeOverview.makeValueTd( mw.language.convertNumber( userData.blocks ), 'blocks' ),
+						menteeOverview.makeValueTd( mw.language.convertNumber( userData.questions ), 'questions' ),
+						menteeOverview.makeValueTd( mw.language.convertNumber( userData.editcount ), 'editcount' ),
 						menteeOverview.makeValueTd(
 							userData.registration !== null ?
 								userData.registration.human :
