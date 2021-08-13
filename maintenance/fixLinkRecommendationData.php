@@ -43,6 +43,9 @@ class FixLinkRecommendationData extends Maintenance {
 	/** @var TitleFactory */
 	private $titleFactory;
 
+	/** @var int|null */
+	private $randomSeed;
+
 	public function __construct() {
 		parent::__construct();
 		$this->requireExtension( 'GrowthExperiments' );
@@ -55,6 +58,8 @@ class FixLinkRecommendationData extends Maintenance {
 			. '(Note that this relies on the job queue to work.)' );
 		$this->addOption( 'reverse', 'Iterate from end to beginning. Applies to --search-index only. '
 			. 'This is a temporary workaround for T284531.' );
+		$this->addOption( 'random', 'Sort randomly. Applies to --search-index only. '
+			. 'This is mainly useful with --statsd.' );
 		$this->addOption( 'db-table', 'Delete DB table entries which do not match the search index.' );
 		$this->addOption( 'dry-run', 'Run without making any changes.' );
 		$this->addOption( 'statsd', 'Report the number of fixes (or would-be fixes, '
@@ -96,10 +101,12 @@ class FixLinkRecommendationData extends Maintenance {
 
 	private function fixSearchIndex() {
 		$fixing = $this->hasOption( 'dry-run' ) ? 'Would fix' : 'Fixing';
+		$batchSize = $this->getBatchSize();
 		$from = 0;
+		$randomize = $this->getOption( 'random', false );
 		$fixedCount = 0;
 		// phpcs:ignore MediaWiki.ControlStructures.AssignmentInControlStructures.AssignmentInControlStructures
-		while ( $titles = $this->search( 'hasrecommendation:link', $this->getBatchSize(), $from ) ) {
+		while ( $titles = $this->search( 'hasrecommendation:link', $batchSize, $from, $randomize ) ) {
 			$this->verboseOutput( '  checking ' . count( $titles ) . " titles...\n" );
 			$pageIdsToCheck = $this->titlesToPageIds( $titles );
 			$pageIdsToFix = array_diff( $pageIdsToCheck,
@@ -111,7 +118,7 @@ class FixLinkRecommendationData extends Maintenance {
 					$this->cirrusSearch->resetWeightedTags( $title->toPageIdentity(), 'recommendation.link' );
 				}
 			}
-			$from += $this->getBatchSize();
+			$from += $batchSize;
 			$fixedCount += count( $titlesToFix );
 		}
 		$this->maybeReportFixedCount( $fixedCount, 'search-index' );
@@ -145,14 +152,22 @@ class FixLinkRecommendationData extends Maintenance {
 	 * @param string $query Search query
 	 * @param int $limit
 	 * @param int $offset
+	 * @param bool $randomize Use random sorting
 	 * @return Title[]
 	 */
-	private function search( string $query, int $limit, int $offset ): array {
+	private function search( string $query, int $limit, int $offset, bool $randomize = false ): array {
 		$searchEngine = MediaWikiServices::getInstance()->newSearchEngine();
 		$searchEngine->setLimitOffset( $limit, $offset );
 		$searchEngine->setShowSuggestion( false );
-		// Sort by creation date as it's stable over time.
-		$searchEngine->setSort( $this->getOption( 'reverse' ) ? 'create_timestamp_desc' : 'create_timestamp_asc' );
+		if ( $randomize ) {
+			$searchEngine->setFeatureData( 'random_seed', $this->getRandomSeed() );
+			$searchEngine->setSort( 'random' );
+		} else {
+			// Sort by creation date as it's stable over time.
+			$searchEngine->setSort(
+				$this->getOption( 'reverse' ) ? 'create_timestamp_desc' : 'create_timestamp_asc'
+			);
+		}
 		$matches = $searchEngine->searchText( $query )
 			?? StatusValue::newFatal( 'rawmessage', 'Search is disabled' );
 		if ( $matches instanceof StatusValue ) {
@@ -163,6 +178,17 @@ class FixLinkRecommendationData extends Maintenance {
 			}
 		}
 		return $matches->extractTitles();
+	}
+
+	/**
+	 * Helper method for a random value that remains the same during successive calls.
+	 * @return int
+	 */
+	private function getRandomSeed(): int {
+		if ( $this->randomSeed === null ) {
+			$this->randomSeed = random_int( 0, PHP_INT_MAX );
+		}
+		return $this->randomSeed;
 	}
 
 	/**
