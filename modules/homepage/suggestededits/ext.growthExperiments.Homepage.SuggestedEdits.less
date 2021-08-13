@@ -175,6 +175,15 @@ body.mw-special-Homepage {
 				flex-direction: column;
 			}
 
+			.suggested-edits-filters {
+				position: fixed;
+				z-index: 2;
+			}
+
+			.suggested-edits-module-wrapper {
+				padding-top: 2em; // account for fixed header & filters
+			}
+
 			.growthexperiments-homepage-module-body {
 				height: 100%;
 			}
@@ -777,5 +786,12 @@ body.mw-special-Homepage {
 				transform: translateX( 100vw );
 			}
 		}
+	}
+}
+
+.growthexperiments-homepage-mobile-summary {
+	&.growthexperiments-swipe-navigation-enabled {
+		overflow: hidden;
+		height: 100%;
 	}
 }
