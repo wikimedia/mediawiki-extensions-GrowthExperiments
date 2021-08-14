@@ -166,6 +166,15 @@
 				"GrowthExperimentsMultiConfig"
 			]
 		},
+		"mentorfilters": {
+			"class": "GrowthExperiments\\Mentorship\\MentorFilterHooks",
+			"services": [
+				"GrowthExperimentsConfig",
+				"GrowthExperimentsMentorStore",
+				"GrowthExperimentsStarredMenteesStore",
+				"GrowthExperimentsMentorManager"
+			]
+		},
 		"mentordashboard": {
 			"class": "GrowthExperiments\\MentorDashboard\\MentorDashboardHooks"
 		},
@@ -288,7 +297,8 @@
 		"EditFilterMergedContent": "config",
 		"SkinTemplateNavigation": "config",
 		"ResourceLoaderGetConfigVars": "variant",
-		"VisualEditorApiVisualEditorEditPostSave": "visualeditor"
+		"VisualEditorApiVisualEditorEditPostSave": "visualeditor",
+		"ChangesListSpecialPageStructuredFilters": "mentorfilters"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",

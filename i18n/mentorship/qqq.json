@@ -30,5 +30,10 @@
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Description for a link in the \"Resources\" mentor dashboard module.\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Description for a link in the \"Resources\" mentor dashboard module.\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Description for a link in the \"Resources\" mentor dashboard module.\nhttps://www.mediawiki.org/wiki/Help:Growth/Tools/How_to_claim_a_mentee\nSee also: {{int:MediaWiki:Growthexperiments-homepage-claimmentee-title}}\n\n{{doc-growthexperiments-mentor-dashboard}}",
-	"growthexperiments-mentor-dashboard-resources-link-tools": "Description for a link in the \"Resources\" mentor dashboard module.\n\n{{doc-growthexperiments-mentor-dashboard}}"
+	"growthexperiments-mentor-dashboard-resources-link-tools": "Description for a link in the \"Resources\" mentor dashboard module.\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-rcfilters-mentorship-title": "RecentChanges filter group title",
+	"growthexperiments-rcfilters-mentorship-starred-label": "RecentChanges filter title for starred mentees filter",
+	"growthexperiments-rcfilters-mentorship-starred-desc": "RecentChanges filter description for starred mentees filter",
+	"growthexperiments-rcfilters-mentorship-unstarred-label": "RecentChanges filter title for unstarred mentees filter",
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "RecentChanges filter description for unstarred mentees filter"
 }

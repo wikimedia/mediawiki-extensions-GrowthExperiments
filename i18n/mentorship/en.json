@@ -26,5 +26,10 @@
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "The mentor list",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "How to introduce yourself as a mentor",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "How to claim a mentee",
-	"growthexperiments-mentor-dashboard-resources-link-tools": "Growth tools"
+	"growthexperiments-mentor-dashboard-resources-link-tools": "Growth tools",
+	"growthexperiments-rcfilters-mentorship-title": "Mentorship",
+	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Your}} starred mentees",
+	"growthexperiments-rcfilters-mentorship-starred-desc": "Mentees assigned to {{GENDER:|you}} whom {{GENDER:|you}} have starred on {{GENDER:|your}} mentor dashboard",
+	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|Your}} unstarred mentees",
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Other mentees assigned to {{GENDER:|you}}"
 }
