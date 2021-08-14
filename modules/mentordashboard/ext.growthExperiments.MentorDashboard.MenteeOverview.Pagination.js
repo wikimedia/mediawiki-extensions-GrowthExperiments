@@ -32,7 +32,10 @@
 			framed: false,
 			indicator: 'down',
 			clearOnSelect: false,
-			label: mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-show-entries', this.pageSize ),
+			label: mw.msg(
+				'growthexperiments-mentor-dashboard-mentee-overview-show-entries',
+				mw.language.convertNumber( this.pageSize )
+			),
 			menu: {
 				items: [
 					new OO.ui.MenuOptionWidget( {
