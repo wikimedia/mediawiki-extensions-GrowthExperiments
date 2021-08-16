@@ -4,6 +4,7 @@ namespace GrowthExperiments\Maintenance;
 
 use FormatJson;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\MentorDashboard\MenteeOverview\DatabaseMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
@@ -23,7 +24,10 @@ require_once $path . '/maintenance/Maintenance.php';
 
 class UpdateMenteeData extends Maintenance {
 	/** @var MenteeOverviewDataProvider */
-	private $menteeOverviewDataProvider;
+	private $uncachedMenteeOverviewDataProvider;
+
+	/** @var MenteeOverviewDataProvider */
+	private $databaseMenteeOverviewDataProvider;
 
 	/** @var MentorManager */
 	private $mentorManager;
@@ -50,7 +54,8 @@ class UpdateMenteeData extends Maintenance {
 		$services = MediaWikiServices::getInstance();
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
-		$this->menteeOverviewDataProvider = $geServices->getUncachedMenteeOverviewDataProvider();
+		$this->uncachedMenteeOverviewDataProvider = $geServices->getUncachedMenteeOverviewDataProvider();
+		$this->databaseMenteeOverviewDataProvider = $geServices->getMenteeOverviewDataProvider();
 		$this->mentorManager = $geServices->getMentorManager();
 		$this->mentorStore = $geServices->getMentorStore();
 		$this->userFactory = $services->getUserFactory();
@@ -89,7 +94,7 @@ class UpdateMenteeData extends Maintenance {
 				continue;
 			}
 
-			$data = $this->menteeOverviewDataProvider->getFormattedDataForMentor( $mentor );
+			$data = $this->uncachedMenteeOverviewDataProvider->getFormattedDataForMentor( $mentor );
 			$updatedMenteeIds = [];
 			foreach ( $data as $menteeId => $menteeData ) {
 				$encodedData = FormatJson::encode( $menteeData );
@@ -139,6 +144,11 @@ class UpdateMenteeData extends Maintenance {
 				);
 				$dbw->commit( __METHOD__ );
 				$this->waitForReplication();
+			}
+
+			// if applicable, clear cache for the mentor we just updated
+			if ( $this->databaseMenteeOverviewDataProvider instanceof DatabaseMenteeOverviewDataProvider ) {
+				$this->databaseMenteeOverviewDataProvider->invalidateCacheForMentor( $mentor );
 			}
 		}
 
