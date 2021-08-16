@@ -15,6 +15,7 @@
 	"growthexperiments-homepage-email-button-noemail": "Lisää sähköpostiosoite",
 	"growthexperiments-homepage-email-button-unconfirmed": "Hanki uusi linkki",
 	"growthexperiments-homepage-tutorial-header": "Opi muokkaamaan",
+	"growthexperiments-homepage-suggestededits-edit-card": "Muokkaa",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Luo uusi artikkeli",
 	"growthexperiments-addlink-context-button-next": "Seuraava",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Esimerkkivirke",
@@ -24,5 +25,9 @@
 	"growthexperiments-addlink-skip-accept": "Ohita kaikki",
 	"newcomertasksinfo-no-data": "Tietoja ei ole saatavilla.",
 	"newcomertasksinfo-table-header-task-type-id": "Tunniste",
-	"newcomertasksinfo-table-header-task-count": "Määrä"
+	"newcomertasksinfo-table-header-task-count": "Määrä",
+	"growthexperiments-addlink-editmode-selection-label": "Vaihda muokkainta",
+	"growthexperiments-addlink-editmode-selection-machine-suggestions": "Ehdotukset",
+	"growthexperiments-addlink-editmode-selection-visual": "Visuaalinen muokkaaminen",
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Peruuta"
 }

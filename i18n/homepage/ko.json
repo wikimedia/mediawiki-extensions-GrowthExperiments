@@ -324,6 +324,7 @@
 	"growthexperiments-addlink-context-button-reject": "아니오",
 	"growthexperiments-addlink-context-button-help": "편집 도움 받기",
 	"growthexperiments-addlink-context-button-next": "다음",
+	"growthexperiments-addlink-context-button-show-suggestion": "링크 제안 표시",
 	"growthexperiments-addlink-rejectiondialog-message": "답변은 AI 제안의 품질 개선을 위해 사용할 수 있습니다.",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "기타",
 	"growthexperiments-addlink-rejectiondialog-action-done": "완료",
@@ -359,6 +360,7 @@
 	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "제출...",
 	"growthexperiments-addlink-editmode-selection-machine-suggestions": "제안",
 	"growthexperiments-addlink-editmode-selection-visual": "시각 편집",
+	"growthexperiments-addlink-editmode-confirmation-dialog-title": "제안 편집을 그만두시겠습니까?",
 	"growthexperiments-addlink-editmode-confirmation-dialog-action-confirm": "제출 없이 전환",
 	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "취소"
 }

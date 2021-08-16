@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Albertoleoncio",
+			"DannyS712",
 			"Eduardoaddad",
 			"Emma Franzen",
 			"Fúlvio",
@@ -291,7 +292,7 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|adotou}} {{GENDER:$6|$3}} como seu mentorado (não tinha mentor anterior)",
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|definiu}} {{GENDER:$5|$7}} como {{GENDER:$5|mentor|mentora}} de {{GENDER:$6|$3}}  ({{GENDER:$4|mentor|mentora}} anterior: $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|definiu}} {{GENDER:$5|$7}} como {{GENDER:$5|mentor|mentora}} de {{GENDER:$6|$3}} (não tinha mentor anterior)",
-	"logentry-growthexperiments-addlink": "$1 {{genero sexual: $2|reveja}} $4 sugestoes de links para $3: aceitaram $5, rejeitada $6 e pulou $7",
+	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|reveja}} $4 sugestoes de links para $3: aceitaram $5, rejeitada $6 e pulou $7",
 	"log-action-filter-growthexperiments-addlink": "sugestoes de links",
 	"growthexperiments-homepage-claimmentee-invalid-username": "O nome de utilizador do mentorado é inválido",
 	"growthexperiments-notification-header-mentor-change": "$1 é {{GENDER:$2|o {{GENDER:$3|seu}} novo mentor|a {{GENDER:$3|sua}} nova mentora}}",

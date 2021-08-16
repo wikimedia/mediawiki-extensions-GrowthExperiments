@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ykhwong"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "현재 사용자가 지정한 멘티를 표시하거나 표시를 해제합니다 (비공개 상태로 저장되며 기록에 남지 않습니다)"
+}

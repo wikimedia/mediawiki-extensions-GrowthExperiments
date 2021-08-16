@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"MITO"
+		]
+	},
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Lisää suodatin",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Lähetä",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Etsi",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "aktiivinen $1 sitten",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "tuntematon",
+	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Näytä $1",
+	"growthexperiments-mentor-dashboard-resources-headline": "Resurssit"
+}
