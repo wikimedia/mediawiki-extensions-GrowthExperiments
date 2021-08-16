@@ -1,4 +1,5 @@
 @import 'mediawiki.ui/variables';
+@import '../homepage/ext.growthExperiments.mixins.less';
 
 @mentorDashboardHeaderFont: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
 
@@ -8,10 +9,11 @@
 	border: @colorGray12 @border-width-base @border-style-base;
 	padding: 16px;
 	margin: 6px;
+	.rel-font-size( @parentFontSize: 12.25px, @targetFontSize: 14px );
 
 	.growthexperiments-mentor-dashboard-module-header {
 		font-family: @mentorDashboardHeaderFont;
-		font-size: 1.2em;
+		.rel-font-size( @parentFontSize: 14px, @targetFontSize: 16px );
 		line-height: 1.2em;
 		font-weight: bold;
 		color: @colorGray2;
