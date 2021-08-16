@@ -579,6 +579,8 @@
 		this.swipeCard.setToEndHandler( function () {
 			this.onPreviousCard( true );
 		}.bind( this ) );
+
+		$( document.body ).addClass( 'growthexperiments-swipe-navigation-enabled' );
 	};
 
 	/**
