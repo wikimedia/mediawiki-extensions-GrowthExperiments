@@ -493,7 +493,7 @@ class Impact extends BaseModule {
 			return $this->getContext()
 				->msg( 'growthexperiments-homepage-impact-unactivated-suggested-edits-footer' )
 				->params( $this->getContext()->getUser()->getName() )
-				->text();
+				->parse();
 		}
 
 		$user = $this->getContext()->getUser();
