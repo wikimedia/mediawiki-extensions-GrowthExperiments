@@ -66,6 +66,31 @@ abstract class MentorManager {
 	}
 
 	/**
+	 * Get all mentors, regardless of their auto-assignment status
+	 *
+	 * This does the same thing as getMentors(), but it suppresses any instance
+	 * of WikiConfigException (and returns an empty array instead).
+	 *
+	 * @return string[]
+	 */
+	public function getMentorsSafe(): array {
+		try {
+			return $this->getMentors();
+		} catch ( WikiConfigException $e ) {
+			return [];
+		}
+	}
+
+	/**
+	 * Checks if an user is a mentor (regardless of their auto-assignment status)
+	 * @param UserIdentity $user
+	 * @return bool
+	 */
+	public function isMentor( UserIdentity $user ): bool {
+		return in_array( $user->getName(), $this->getMentorsSafe() );
+	}
+
+	/**
 	 * Get all the mentors who are automatically assigned to mentees.
 	 * @return string[] List of mentor usernames.
 	 * @throws WikiConfigException If the mentor list cannot be fetched due to misconfiguration.
