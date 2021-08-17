@@ -4,6 +4,7 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentor dashboard",
 	"growthexperiments-mentor-dashboard-disabled": "Mentor dashboard is not enabled at this wiki.",
+	"growthexperiments-mentor-dashboard-must-be-mentor": "To enable mentor dashboard, {{GENDER:|you}} first need to [[$1|enroll as a mentor]].",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Your}} mentees",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "The table showcases the state and progress of {{GENDER:|your}} current mentees. Personalize the table through filters to view specific results.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "The table requires JavaScript. Please enable JavaScript to be able to use this module.",
