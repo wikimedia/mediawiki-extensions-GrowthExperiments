@@ -10,8 +10,16 @@ use Wikimedia\TestingAccessWrapper;
  * @coversDefaultClass \GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataFilter
  */
 class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
+
+	/** @var array|null */
+	private static $testingData = null;
+
 	private function getTestingData(): array {
-		return [
+		if ( self::$testingData !== null ) {
+			return self::$testingData;
+		}
+
+		self::$testingData = [
 			[
 				'username' => 'Foo',
 				'user_id' => 1,
@@ -31,6 +39,26 @@ class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 				'questions' => 10,
 			],
 		];
+		return self::$testingData;
+	}
+
+	/**
+	 * @param array|string $usernames
+	 * @return array
+	 */
+	private function getTestingDataForUsernames( $usernames ): array {
+		if ( is_string( $usernames ) ) {
+			$usernames = [ $usernames ];
+		}
+
+		$testingData = $this->getTestingData();
+		$res = [];
+		foreach ( $testingData as $userData ) {
+			if ( in_array( $userData['username'], $usernames ) ) {
+				$res[] = $userData;
+			}
+		}
+		return $res;
 	}
 
 	/**
@@ -56,14 +84,7 @@ class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 				300
 			],
 			[
-				[
-					[
-						'username' => 'Baz',
-						'user_id' => 3,
-						'editcount' => 54,
-						'questions' => 10,
-					]
-				],
+				$this->getTestingDataForUsernames( 'Baz' ),
 				50
 			],
 		];
@@ -92,14 +113,7 @@ class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 				1
 			],
 			[
-				[
-					[
-						'username' => 'Foo',
-						'user_id' => 1,
-						'editcount' => 2,
-						'questions' => 14,
-					]
-				],
+				$this->getTestingDataForUsernames( 'Foo' ),
 				30
 			]
 		];
@@ -128,74 +142,17 @@ class MenteeOverviewDataFilterTest extends MediaWikiUnitTestCase {
 	public function provideDataSort() {
 		return [
 			[
-				[
-					[
-						'username' => 'Foo',
-						'user_id' => 1,
-						'editcount' => 2,
-						'questions' => 14,
-					],
-					[
-						'username' => 'Bar',
-						'user_id' => 2,
-						'editcount' => 42,
-						'questions' => 2,
-					],
-					[
-						'username' => 'Baz',
-						'user_id' => 3,
-						'editcount' => 54,
-						'questions' => 10,
-					],
-				],
+				$this->getTestingDataForUsernames( [ 'Foo', 'Bar', 'Baz' ] ),
 				MenteeOverviewDataFilter::SORT_BY_EDITCOUNT,
 				MenteeOverviewDataFilter::SORT_ORDER_ASCENDING
 			],
 			[
-				[
-					[
-						'username' => 'Baz',
-						'user_id' => 3,
-						'editcount' => 54,
-						'questions' => 10,
-					],
-					[
-						'username' => 'Bar',
-						'user_id' => 2,
-						'editcount' => 42,
-						'questions' => 2,
-					],
-					[
-						'username' => 'Foo',
-						'user_id' => 1,
-						'editcount' => 2,
-						'questions' => 14,
-					],
-				],
+				$this->getTestingDataForUsernames( [ 'Baz', 'Bar', 'Foo' ] ),
 				MenteeOverviewDataFilter::SORT_BY_EDITCOUNT,
 				MenteeOverviewDataFilter::SORT_ORDER_DESCENDING
 			],
 			[
-				[
-					[
-						'username' => 'Bar',
-						'user_id' => 2,
-						'editcount' => 42,
-						'questions' => 2,
-					],
-					[
-						'username' => 'Baz',
-						'user_id' => 3,
-						'editcount' => 54,
-						'questions' => 10,
-					],
-					[
-						'username' => 'Foo',
-						'user_id' => 1,
-						'editcount' => 2,
-						'questions' => 14,
-					],
-				],
+				$this->getTestingDataForUsernames( [ 'Bar', 'Baz', 'Foo' ] ),
 				MenteeOverviewDataFilter::SORT_BY_QUESTIONS,
 				MenteeOverviewDataFilter::SORT_ORDER_ASCENDING
 			],
