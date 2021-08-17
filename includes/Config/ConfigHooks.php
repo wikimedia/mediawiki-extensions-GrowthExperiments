@@ -92,14 +92,20 @@ class ConfigHooks implements EditFilterMergedContentHook, SkinTemplateNavigation
 		// Code inspired by MassMessageHooks::onSkinTemplateNavigation
 
 		$title = $sktemplate->getTitle();
-		$configTitle = $this->titleFactory
+		$geConfigTitle = $this->titleFactory
 			->newFromText(
 				$this->config->get( 'GEWikiConfigPageTitle' )
 			);
+		$newcomerTasksConfigTitle = $this->titleFactory
+			->newFromText(
+				$this->config->get( 'GENewcomerTasksConfigTitle' )
+			);
 		if (
 			array_key_exists( 'edit', $links['views'] ) &&
-			$configTitle !== null &&
-			$title->equals( $configTitle ) &&
+			(
+				( $geConfigTitle !== null && $title->equals( $geConfigTitle ) ) ||
+				( $newcomerTasksConfigTitle !== null && $title->equals( $newcomerTasksConfigTitle ) )
+			) &&
 			$title->hasContentModel( CONTENT_MODEL_JSON )
 		) {
 			// Get the revision being viewed, if applicable
