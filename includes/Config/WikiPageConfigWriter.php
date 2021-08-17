@@ -177,7 +177,7 @@ class WikiPageConfigWriter {
 				FormatJson::encode( $this->wikiConfig )
 			) );
 
-			if ( $this->performer->authorizeWrite( 'autopatrolled', $page ) ) {
+			if ( $this->performer->authorizeWrite( 'autopatrol', $page ) ) {
 				$updater->setRcPatrolStatus( RecentChange::PRC_AUTOPATROLLED );
 			}
 
