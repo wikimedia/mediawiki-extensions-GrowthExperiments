@@ -20,6 +20,7 @@
 			"VulpesVulpes825",
 			"Xzonn",
 			"Yfdyh000",
+			"Zhang8569",
 			"予弦",
 			"列维劳德",
 			"坑触可",
@@ -191,6 +192,7 @@
 	"growthexperiments-homepage-suggestededits-pageviews": "$1次访问 (过去60天)",
 	"growthexperiments-homepage-suggestededits-previous-card": "上一个编辑建议",
 	"growthexperiments-homepage-suggestededits-next-card": "下一个编辑建议",
+	"growthexperiments-homepage-suggestededits-edit-card": "编辑",
 	"growthexperiments-homepage-suggestededits-no-more-results": "没有更多建议",
 	"growthexperiments-homepage-suggestededits-no-results": "未发现任何建议",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "选择其他难度级别以查找编辑建议。",
@@ -398,10 +400,12 @@
 	"grant-managementorship": "管理导师",
 	"newcomertasksinfo": "新人任务",
 	"newcomertasksinfo-no-data": "没有可用数据。",
+	"newcomertasksinfo-config-form-info": "新人任务的参数可在[[Special:EditGrowthConfig]]查看或更改。",
 	"newcomertasksinfo-table-header-task-type": "任务类型",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "计数",
 	"newcomertasksinfo-table-header-topic-type": "主题ID",
 	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "建议",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "提交..."
+	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "提交...",
+	"growthexperiments-addlink-editmode-confirmation-dialog-message": "改变模组将允许{{GENDER:$1|you}}来进行其他种类的编辑.结束检阅来提交{{GENDER:$1|your}}现有的进度。"
 }
