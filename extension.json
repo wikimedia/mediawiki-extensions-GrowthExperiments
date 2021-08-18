@@ -1719,7 +1719,8 @@
 		"MentorDashboard": {
 			"class": "GrowthExperiments\\Specials\\SpecialMentorDashboard",
 			"services": [
-				"GrowthExperimentsMentorDashboardModuleRegistry"
+				"GrowthExperimentsMentorDashboardModuleRegistry",
+				"GrowthExperimentsMentorManager"
 			]
 		},
 		"EditGrowthConfig": {

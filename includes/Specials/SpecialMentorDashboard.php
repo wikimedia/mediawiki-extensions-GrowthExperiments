@@ -4,6 +4,7 @@ namespace GrowthExperiments\Specials;
 
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
+use GrowthExperiments\Mentorship\MentorManager;
 use Html;
 use PermissionsError;
 use SpecialPage;
@@ -14,15 +15,21 @@ class SpecialMentorDashboard extends SpecialPage {
 	/** @var MentorDashboardModuleRegistry */
 	private $mentorDashboardModuleRegistry;
 
+	/** @var MentorManager */
+	private $mentorManager;
+
 	/**
 	 * @param MentorDashboardModuleRegistry $mentorDashboardModuleRegistry
+	 * @param MentorManager $mentorManager
 	 */
 	public function __construct(
-		MentorDashboardModuleRegistry $mentorDashboardModuleRegistry
+		MentorDashboardModuleRegistry $mentorDashboardModuleRegistry,
+		MentorManager $mentorManager
 	) {
 		parent::__construct( 'MentorDashboard' );
 
 		$this->mentorDashboardModuleRegistry = $mentorDashboardModuleRegistry;
+		$this->mentorManager = $mentorManager;
 	}
 
 	/**
@@ -119,7 +126,9 @@ class SpecialMentorDashboard extends SpecialPage {
 	public function userCanExecute( User $user ) {
 		// Require both enabled wiki config and user-specific access level to
 		// be able to use the special page.
-		return $this->isEnabled() && parent::userCanExecute( $user );
+		return $this->isEnabled() &&
+			$this->mentorManager->isMentor( $this->getUser() ) &&
+			parent::userCanExecute( $user );
 	}
 
 	/**
@@ -131,6 +140,14 @@ class SpecialMentorDashboard extends SpecialPage {
 			throw new PermissionsError(
 				null,
 				[ 'growthexperiments-mentor-dashboard-disabled' ]
+			);
+		}
+
+		if ( !$this->mentorManager->isMentor( $this->getUser() ) ) {
+			throw new PermissionsError(
+				null,
+				[ [ 'growthexperiments-mentor-dashboard-must-be-mentor',
+					$this->mentorManager->getAutoMentorsListTitle()->getPrefixedText() ] ]
 			);
 		}
 

@@ -6,6 +6,7 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Title of a special page",
 	"growthexperiments-mentor-dashboard-disabled": "Error message shown when user tries to load mentor dashboard when it is disabled",
+	"growthexperiments-mentor-dashboard-must-be-mentor": "Error message shown when user tries to load mentor dashboard while not being a mentor",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Headline for the \"Mentee overview\" mentor dashboard module",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Introduction for the \"Mentee overview\" mentor dashboard module",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Error message shown to no-JS users.",
