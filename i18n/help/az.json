@@ -111,7 +111,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "Təkliflər onlara ehtiyacı olmayan sözlər ola bilər və ya yanlış məqaləyə keçid verə bilər. Doğru və ya səhv olub olmadığına qərar vermək sizin {{GENDER:$1|qərarınızdır}}.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Maşının tövsiyələri haqqında daha çox öyrən]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Təlimatlar",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* Bir oxucunun oxumaq istəyə biləcəyi məqalələrə keçid verin.\n* Keçidin doğru məqaləyə keçdiyinə əmin olun.\n* Ümumi sözləri, illəri və tarixlərə keçid verməyin.\n* Əmin deyilsinizsə, digər sözə keçin.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* Bir oxucunun oxumaq istəyə biləcəyi məqalələrə keçid verin.\n* Keçidin doğru məqaləyə keçdiyinə əmin olun.\n* Ümumi sözləri, illəri və tarixlərə keçid verməyin.\n* {{GENDER:$1|Əmin deyilsinizsə}}, digər sözə keçin.",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Nümunə cümlə",
 	"growthexperiments-help-panel-questioncomplete-title": "Sual ver",
 	"growthexperiments-help-panel-questioncomplete-header": "Sualınız paylaşıldı!",

@@ -345,6 +345,7 @@
 	"growthexperiments-addlink-context-button-reject": "Hayır",
 	"growthexperiments-addlink-context-button-help": "Düzenleme ile ilgili yardım alın",
 	"growthexperiments-addlink-context-button-next": "Sonraki",
+	"growthexperiments-addlink-context-button-show-suggestion": "Bağlantı önerisi gör",
 	"growthexperiments-addlink-rejectiondialog-title": "Neden iyi bir bağlantı değil?",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|Cevaplarınız}} önerileri geleceği iyileştirir.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Neredeyse herkes ne olduğunu biliyor",
