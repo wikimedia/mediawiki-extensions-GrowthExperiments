@@ -14,7 +14,6 @@ use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\BaseModule;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
-use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\NewcomerTasks\Tracker\Tracker;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use GrowthExperiments\TourHooks;
@@ -25,7 +24,6 @@ use MediaWiki\User\UserOptionsManager;
 use SpecialPage;
 use StatusValue;
 use Throwable;
-use Title;
 use UserNotLoggedIn;
 
 class SpecialHomepage extends SpecialPage {
@@ -90,28 +88,6 @@ class SpecialHomepage extends SpecialPage {
 		$this->userOptionsManager = $userOptionsManager;
 	}
 
-	private function handleTutorialVisit( $par ) {
-		$tutorialTitle = Title::newFromText(
-			$this->getConfig()->get( Tutorial::TUTORIAL_TITLE_CONFIG )
-		);
-		if ( !$tutorialTitle || $tutorialTitle->getPrefixedDBkey() !== $par ) {
-			return false;
-		}
-		$user = $this->getUser();
-		if ( $this->getRequest()->wasPosted() &&
-			$user->isRegistered() &&
-			!$this->userOptionsManager->getBoolOption( $user, Tutorial::TUTORIAL_PREF )
-		) {
-			DeferredUpdates::addCallableUpdate( function () use ( $user ) {
-				$user = $user->getInstanceForUpdate();
-				$this->userOptionsManager->setOption( $user, Tutorial::TUTORIAL_PREF, 1 );
-				$user->saveSettings();
-			} );
-		}
-		$this->getOutput()->redirect( $tutorialTitle->getLinkURL() );
-		return true;
-	}
-
 	/**
 	 * @inheritDoc
 	 * @param string $par
@@ -124,9 +100,6 @@ class SpecialHomepage extends SpecialPage {
 		$this->requireLogin();
 		parent::execute( $par );
 		$this->handleDisabledPreference();
-		if ( $this->handleTutorialVisit( $par ) ) {
-			return;
-		}
 		// Redirect the user to the newcomer task if the page ID in $par can be used
 		// to construct a Title object.
 		if ( $this->handleNewcomerTask( $par ) ) {

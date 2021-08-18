@@ -6,8 +6,8 @@ QUnit.module( 'ext.growthExperiments.Homepage.Logger.js', QUnit.newMwEnvironment
 	config: {
 		'wgGEHomepageModuleState-mentor': 1,
 		wgUserEditCount: 123,
-		'wgGEHomepageModuleActionData-tutorial': { foo: 'bar' },
-		'wgGEHomepageModuleState-tutorial': 'done',
+		'wgGEHomepageModuleActionData-foo': { foo: 'bar' },
+		'wgGEHomepageModuleState-foo': 'done',
 		wgGEUserVariants: [ 'X', 'Y' ]
 	},
 	beforeEach: function () {
@@ -28,7 +28,7 @@ QUnit.test( 'disabled/enabled', function ( assert ) {
 } );
 QUnit.test( 'log', function ( assert ) {
 	const homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
-	homepageModuleLogger.log( 'tutorial', 'desktop', 'impression', { foo: 'bar' } );
+	homepageModuleLogger.log( 'foo', 'desktop', 'impression', { foo: 'bar' } );
 	const events = homepageModuleLogger.getEvents();
 	assert.strictEqual( events.length, 1 );
 	assert.deepEqual( events[ 0 ], {
@@ -39,18 +39,12 @@ QUnit.test( 'log', function ( assert ) {
 		user_id: mw.user.getId(),
 		user_editcount: 123,
 		user_variant: 'X',
-		module: 'tutorial',
+		module: 'foo',
 		is_mobile: OO.ui.isMobile(),
 		mode: 'desktop',
 		homepage_pageview_token: 'blah'
 		/* eslint-enable camelcase */
 	} );
-} );
-
-QUnit.test( 'exclude start', function ( assert ) {
-	const homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
-	homepageModuleLogger.log( 'start', 'mode', 'impression' );
-	assert.strictEqual( homepageModuleLogger.getEvents().length, 0 );
 } );
 
 QUnit.test( 'do not include state in event if empty', function ( assert ) {

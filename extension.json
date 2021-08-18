@@ -1221,7 +1221,6 @@
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.TaskExplanation.less",
 				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.less",
 				"homepage/ext.growthExperiments.BannerModule.less",
-				"homepage/ext.growthExperiments.StartModule.less",
 				"homepage/ext.growthExperiments.StartEmailModule.less",
 				"homepage/ext.growthExperiments.Homepage.less",
 				"homepage/ext.growthExperiments.Homepage.StartEditing.less"
@@ -1422,10 +1421,6 @@
 		"GEWikiConfigEnabled": {
 			"description": "If set to false, on-wiki configuration will be ignored. WARNING: This will fallback to PHP-globals for all config. By setting this to false, you can break most of the features.",
 			"value": true
-		},
-		"GEHomepageTutorialTitle": {
-			"description": "MediaWiki title to link to in the Tutorial button in the homepage Start module.",
-			"value": "Main_Page"
 		},
 		"GEHelpPanelReadingModeNamespaces": {
 			"description": "Numerical IDs of the MediaWiki namespaces in which to show the help panel in reading mode. Specifying a namespace will also include its talk namespace. Defaults to NS_PROJECT and NS_HELP namespaces.",

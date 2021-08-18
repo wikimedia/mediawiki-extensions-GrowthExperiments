@@ -45,7 +45,6 @@
 	"growthexperiments-edit-config-help-panel-links-articlewizard-title": "5) Destination page for fifth help panel link (recommended: article wizard)",
 	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "5) Label of fifth help panel link (recommended: \"How to create an article\")",
 	"growthexperiments-edit-config-homepage": "Newcomer homepage",
-	"growthexperiments-edit-config-homepage-tutorial-title": "Tutorial page title",
 	"growthexperiments-edit-config-homepage-intro-links-create": "Destination page for a link about how create a new article",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Destination page for a link about how to add images in the visual editor",
 	"growthexperiments-edit-config-mentorship": "Mentorship",

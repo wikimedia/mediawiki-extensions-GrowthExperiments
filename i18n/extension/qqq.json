@@ -53,7 +53,6 @@
 	"growthexperiments-edit-config-help-panel-links-articlewizard-title": "Page title for a help panel link, displayed in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "Label for a help panel link displayed to newcomers, displayed in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-homepage": "Subheader in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
-	"growthexperiments-edit-config-homepage-tutorial-title": "Description of a form field in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-homepage-intro-links-create": "Description of a form field in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-homepage-intro-links-image": "Description of a form field in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-mentorship": "Subheader in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",

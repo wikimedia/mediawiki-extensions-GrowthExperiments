@@ -9,7 +9,6 @@ use GrowthExperiments\HomepageModules\Banner;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Impact;
 use GrowthExperiments\HomepageModules\Mentorship;
-use GrowthExperiments\HomepageModules\Start;
 use GrowthExperiments\HomepageModules\StartEditing;
 use GrowthExperiments\HomepageModules\StartEmail;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
@@ -82,19 +81,6 @@ class HomepageModuleRegistry {
 					$context,
 					$growthServices->getGrowthWikiConfig(),
 					$growthServices->getExperimentUserManager()
-				);
-			},
-
-			'start' => static function (
-				MediaWikiServices $services,
-				IContextSource $context
-			) {
-				$growthServices = GrowthExperimentsServices::wrap( $services );
-				return new Start(
-					$context,
-					$growthServices->getGrowthWikiConfig(),
-					$growthServices->getExperimentUserManager(),
-					$services->getUserOptionsLookup()
 				);
 			},
 

@@ -7,13 +7,7 @@ use GrowthExperiments\ExperimentUserManager;
 use IContextSource;
 use MediaWiki\User\UserOptionsLookup;
 
-class StartEditing extends BaseTaskModule {
-
-	/** @var bool In-process cache for isCompleted() */
-	private $isCompleted;
-
-	/** @var ExperimentUserManager */
-	private $experimentUserManager;
+class StartEditing extends BaseModule {
 
 	/** @var UserOptionsLookup */
 	private $userOptionsLookup;
@@ -29,35 +23,14 @@ class StartEditing extends BaseTaskModule {
 	) {
 		parent::__construct( 'start-startediting', $context, $wikiConfig, $experimentUserManager );
 
-		$this->experimentUserManager = $experimentUserManager;
 		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function isCompleted() {
-		if ( $this->isCompleted === null ) {
-			$this->isCompleted = $this->userOptionsLookup->getBoolOption(
-				$this->getContext()->getUser(),
-				SuggestedEdits::ACTIVATED_PREF
-			);
-		}
-		return $this->isCompleted;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function isVisible() {
-		return ( $this->getMode() !== self::RENDER_DESKTOP ) || !$this->isCompleted();
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	protected function getHeaderIconName() {
-		return $this->getMode() === self::RENDER_DESKTOP ? null : 'suggestedEdits';
+		return '';
 	}
 
 	/**
@@ -111,5 +84,19 @@ class StartEditing extends BaseTaskModule {
 	/** @inheritDoc */
 	protected function getModuleRoute(): string {
 		return '';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getMobileSummaryBody() {
+		return '';
+	}
+
+	/** @inheritDoc */
+	public function getState(): string {
+		return SuggestedEdits::isActivated( $this->getContext(), $this->userOptionsLookup ) ?
+			self::MODULE_STATE_COMPLETE :
+			self::MODULE_STATE_INCOMPLETE;
 	}
 }

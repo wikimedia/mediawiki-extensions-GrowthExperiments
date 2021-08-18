@@ -175,7 +175,7 @@
 
 	// Try setup for mobile overlay mode
 	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
-		if ( moduleName === 'start' || moduleName === 'suggested-edits' ) {
+		if ( moduleName === 'suggested-edits' ) {
 			setupCtaButton( $content );
 		}
 	} );
