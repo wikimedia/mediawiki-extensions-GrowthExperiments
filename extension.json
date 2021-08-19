@@ -1266,6 +1266,9 @@
 					"file": "../images/suggestededits/Topic-general-64w.svg"
 				},
 				"robot-black": "homepage/addlink/robot-black.svg",
+				"close-destructive": {
+					"file": "../images/close-destructive.svg"
+				},
 				"difficulty-outline": {
 					"file": {
 						"ltr": "../images/levels-outline-ltr.svg",

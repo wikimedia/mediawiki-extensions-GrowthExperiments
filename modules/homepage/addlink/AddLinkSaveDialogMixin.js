@@ -70,7 +70,7 @@ AddLinkSaveDialogMixin.prototype.updateSummary = function ( annotationStates ) {
 		if ( state.accepted ) {
 			$icon = new OO.ui.IconWidget( { icon: 'check', flags: 'progressive' } ).$element;
 		} else if ( state.rejected ) {
-			$icon = new OO.ui.IconWidget( { icon: 'close', flags: 'destructive' } ).$element;
+			$icon = new OO.ui.IconWidget( { icon: 'close-destructive' } ).$element;
 		} else {
 			$icon = new OO.ui.IconWidget( { icon: 'subtract' } ).$element;
 		}
