@@ -102,9 +102,7 @@ StartEditingDialog.prototype.initialize = function () {
 
 	this.introPanel = this.buildIntroPanel();
 	this.articleCounter = new ArticleCountWidget();
-	// Default to the maximum so there is not empty space when the footer is
-	// first rendered, before the HTTP request has finished.
-	this.articleCounter.setCount( 200 );
+	this.articleCounter.setSearching();
 	this.articleCounterPanelLayout = new OO.ui.PanelLayout( {
 		padded: true,
 		expanded: false,
@@ -224,10 +222,10 @@ StartEditingDialog.prototype.updateMatchCount = function () {
 
 	this.api.fetchTasks( taskTypes, topics ).then( function ( data ) {
 		var homepageModulesConfig = mw.config.get( 'homepagemodules' );
-		this.articleCounter.setCount( Number( data.tasks.length ) );
-		if ( data.tasks.length ) {
+		this.articleCounter.setCount( Number( data.count ) );
+		if ( data.count ) {
 			homepageModulesConfig[ 'suggested-edits' ][ 'task-preview' ] = data.tasks[ 0 ];
-			homepageModulesConfig[ 'suggested-edits' ][ 'task-count' ] = data.tasks.length;
+			homepageModulesConfig[ 'suggested-edits' ][ 'task-count' ] = data.count;
 		}
 	}.bind( this ) );
 };

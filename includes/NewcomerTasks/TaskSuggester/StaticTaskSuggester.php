@@ -7,6 +7,7 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use MediaWiki\User\UserIdentity;
+use TitleFactory;
 use Wikimedia\Assert\Assert;
 
 /**
@@ -17,13 +18,19 @@ class StaticTaskSuggester implements TaskSuggester {
 
 	/** @var Task[] */
 	private $tasks;
+	/**
+	 * @var TitleFactory|null
+	 */
+	private $titleFactory;
 
 	/**
 	 * @param Task[] $tasks
+	 * @param TitleFactory|null $titleFactory
 	 */
-	public function __construct( array $tasks ) {
+	public function __construct( array $tasks, ?TitleFactory $titleFactory = null ) {
 		Assert::parameterElementType( Task::class, $tasks, '$suggestions' );
 		$this->tasks = $tasks;
+		$this->titleFactory = $titleFactory;
 	}
 
 	/** @inheritDoc */
@@ -36,7 +43,13 @@ class StaticTaskSuggester implements TaskSuggester {
 		array $options = []
 	) {
 		$filteredTasks = array_filter( $this->tasks,
-			function ( Task $task ) use ( $taskTypeFilter, $topicFilter ) {
+			function ( Task $task ) use ( $taskTypeFilter, $topicFilter, $options ) {
+				if ( isset( $options['excludePageIds'] ) && $this->titleFactory instanceof TitleFactory ) {
+					$title = $this->titleFactory->castFromLinkTarget( $task->getTitle() );
+					if ( in_array( $title->getArticleID(), $options['excludePageIds'] ) ) {
+						return false;
+					}
+				}
 				if ( $taskTypeFilter && !in_array( $task->getTaskType()->getId(), $taskTypeFilter, true ) ) {
 					return false;
 				} elseif ( $topicFilter && !array_intersect( $this->getTopicIds( $task ), $topicFilter ) ) {

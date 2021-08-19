@@ -7,6 +7,7 @@
 	"apihelp-query+growthtasks-param-tasktypes": "Task types to limit results to. Leave empty to receive all suggestions.",
 	"apihelp-query+growthtasks-param-topics": "Article topics to prefer in task suggestions.",
 	"apihelp-query+growthtasks-param-limit": "Maximum number of task suggestions to return.",
+	"apihelp-query+growthtasks-param-excludepageids": "Page IDs to exclude from the query.",
 	"apihelp-query+growthtasks-param-debug": "Add debug data to the output.",
 	"apihelp-query+growthtasks-example-1": "Get task recommendations for copyediting-type tasks for the current user.",
 	"apihelp-query+growthtasks-example-2": "Get task recommendations for the current user, with extended information about the pages."

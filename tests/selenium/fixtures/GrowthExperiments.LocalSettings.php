@@ -26,11 +26,11 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 	# Mock the task suggester to specify what article(s) will be suggested.
 	$services->redefineService(
 		'GrowthExperimentsTaskSuggesterFactory',
-		static function () use ( $linkRecommendationTaskType, $copyeditTaskType ): TaskSuggesterFactory {
+		static function () use ( $linkRecommendationTaskType, $copyeditTaskType, $services ): TaskSuggesterFactory {
 			return new StaticTaskSuggesterFactory( [
 				new Task( $linkRecommendationTaskType, new TitleValue( NS_MAIN, 'Douglas Adams' ) ),
 				new Task( $copyeditTaskType, new TitleValue( NS_MAIN, "The_Hitchhiker's_Guide_to_the_Galaxy" ) )
-			] );
+			], $services->getTitleFactory() );
 		}
 	);
 };

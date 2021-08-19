@@ -66,12 +66,26 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		$limit = $params['limit'];
 		$offset = $params['offset'];
 		$debug = $params['debug'];
+		$excludePageIds = $params['excludepageids'] ?? [];
 
 		$taskSuggester = $this->taskSuggesterFactory->create();
 
 		/** @var TaskSet $tasks */
-		$tasks = $taskSuggester->suggest( $user, $taskTypes, $topics, $limit, $offset,
-			[ 'debug' => $debug ] );
+		$tasks = $taskSuggester->suggest(
+			$user,
+			$taskTypes,
+			$topics,
+			$limit,
+			$offset,
+			[
+				'debug' => $debug,
+				'excludePageIds' => $excludePageIds,
+				// Don't use the cache if exclude page IDs has been provided;
+				// the page IDs are supplied if we are attempting to load more
+				// tasks into the queue in the front end.
+				'useCache' => !(bool)$excludePageIds,
+			]
+		);
 		if ( $tasks instanceof StatusValue ) {
 			$this->dieStatus( $tasks );
 		}
@@ -180,6 +194,10 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				ApiBase::PARAM_TYPE => 'boolean',
 				ApiBase::PARAM_DFLT => false,
 			],
+			'excludepageids' => [
+				ApiBase::PARAM_TYPE => 'integer',
+				ApiBase::PARAM_ISMULTI => true,
+			]
 		];
 	}
 

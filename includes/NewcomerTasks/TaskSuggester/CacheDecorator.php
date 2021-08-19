@@ -57,6 +57,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 		$useCache = $options['useCache'] ?? true;
 		$resetCache = $options['resetCache'] ?? false;
 		$revalidateCache = $options['revalidateCache'] ?? true;
+		$excludePageIds = $options['excludePageIds'] ?? [];
 		$debug = $options['debug'] ?? false;
 		$taskSetFilters = new TaskSetFilters( $taskTypeFilter, $topicFilter );
 		$limit = $limit ?? SearchTaskSuggester::DEFAULT_LIMIT;
@@ -73,7 +74,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 			),
 			$this->cache::TTL_WEEK,
 			function ( $oldValue, &$ttl ) use (
-				$user, $taskSetFilters, $limit, $useCache, $resetCache, $revalidateCache
+				$user, $taskSetFilters, $limit, $useCache, $resetCache, $revalidateCache, $excludePageIds
 			) {
 				// This callback is always invoked each time getWithSetCallback is called,
 				// because we need to examine the contents of the cache (if any) before
@@ -127,7 +128,9 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 					$user,
 					$taskSetFilters->getTaskTypeFilters(),
 					$taskSetFilters->getTopicFilters(),
-					SearchTaskSuggester::DEFAULT_LIMIT
+					SearchTaskSuggester::DEFAULT_LIMIT,
+					null,
+					[ 'excludePageIds' => $excludePageIds ]
 				);
 				if ( $result instanceof TaskSet && $result->count() ) {
 					$result->randomSort();
