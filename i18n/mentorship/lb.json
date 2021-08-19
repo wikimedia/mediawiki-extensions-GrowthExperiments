@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Sichen",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "aktiv viru(n) $1",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "onbekannt",
+	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 weisen",
+	"growthexperiments-mentor-dashboard-resources-headline": "Ressourcen"
+}

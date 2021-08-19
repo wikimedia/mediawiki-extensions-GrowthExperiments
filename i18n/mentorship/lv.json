@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Papuass"
+		]
+	},
+	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Tavi}} audzēkņi",
+	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Šai tabulai nepieciešams JavaScript. Lūdzu, iespējo JavaScript, lai varētu izmantot šo moduli.",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Pievienot filtru",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "No",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Līdz",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Iesniegt",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Meklēt",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "nav zināms",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 no $2",
+	"growthexperiments-mentor-dashboard-resources-headline": "Resursi",
+	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Mentoru saraksts",
+	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Kā pieņemt audzēkni",
+	"growthexperiments-mentor-dashboard-resources-link-tools": "Izaugsmes rīki"
+}

@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Papuass"
+		]
+	},
+	"apihelp-growthstarmentee-param-gesaction": "Veicamā darbība (<kbd>pievienot zvaigznīti</kbd> vai <kbd>noņemt zvaigznīti</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Audzēknis, kam pievienot/noņemt zvaigznīti"
+}
