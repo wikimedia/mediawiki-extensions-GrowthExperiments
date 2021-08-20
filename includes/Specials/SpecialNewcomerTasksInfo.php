@@ -79,11 +79,11 @@ class SpecialNewcomerTasksInfo extends SpecialPage {
 		);
 		$taskTypeTable = ( new Tag( 'table' ) )->addClasses( [ 'wikitable' ] )
 			->appendContent( ( new Tag( 'thead' ) )->appendContent(
-				( new Tag( 'td' ) )->appendContent( $out->msg( 'newcomertasksinfo-table-header-task-type' )->text() ),
-				( new Tag( 'td' ) )->appendContent(
+				( new Tag( 'th' ) )->appendContent( $out->msg( 'newcomertasksinfo-table-header-task-type' )->text() ),
+				( new Tag( 'th' ) )->appendContent(
 					$out->msg( 'newcomertasksinfo-table-header-task-type-id' )->text()
 				),
-				( new Tag( 'td' ) )->appendContent(
+				( new Tag( 'th' ) )->appendContent(
 					$out->msg( 'newcomertasksinfo-table-header-task-count' )->text()
 				)
 			) )
@@ -92,14 +92,12 @@ class SpecialNewcomerTasksInfo extends SpecialPage {
 		$out->addHTML( $taskTypeTable );
 
 		$topicsTableHeaders = [
-			( new Tag( 'td' ) )->appendContent( $out->msg( 'newcomertasksinfo-table-header-topic-type' )->text() )
+			( new Tag( 'th' ) )->appendContent( $out->msg( 'newcomertasksinfo-table-header-topic-type' )->text() )
 		];
 		foreach ( array_keys( $info['tasks'] ) as $taskTypeId ) {
-			$topicsTableHeaders[] = ( new Tag( 'td' ) )->appendContent(
-				( new Tag( 'code' ) )->appendContent( $taskTypeId )
-			);
+			$topicsTableHeaders[] = ( new Tag( 'th' ) )->appendContent( $taskTypeId );
 		}
-		$topicsTableHeaders[] = ( new Tag( 'td' ) )->appendContent(
+		$topicsTableHeaders[] = ( new Tag( 'th' ) )->appendContent(
 			$out->msg( 'newcomertasksinfo-table-header-task-count' )->text()
 		);
 
