@@ -713,7 +713,14 @@ body.mw-special-Homepage {
 			position: relative;
 
 			.suggested-edits-task-card-wrapper {
+				@borderRadius: 2px;
 				width: @cardWrapperWidth;
+				border-radius: @borderRadius;
+
+				.se-card-image {
+					border-top-left-radius: @borderRadius;
+					border-top-right-radius: @borderRadius;
+				}
 
 				.se-card-content {
 					.se-card-text {
