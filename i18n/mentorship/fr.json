@@ -6,6 +6,7 @@
 	},
 	"growthexperiments-mentor-dashboard-title": "Tableau de bord du tuteur",
 	"growthexperiments-mentor-dashboard-disabled": "Le tableau de bord du tuteur n’est pas activé sur ce wiki.",
+	"growthexperiments-mentor-dashboard-must-be-mentor": "Pour activer le tableau de bord du tuteur, {{GENDER:|vous}} devez d’abord [[$1|vous inscrire comme tuteur]].",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Vos}} tutorés",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Le tableau présente l’état et la progression de {{GENDER:|vos}} tutorés actuels. Personnalisez le tableau via des filtres pour afficher des résultats particuliers.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Le tableau nécessite JavaScript. Veuillez l’activer pour pouvoir utiliser ce module.",

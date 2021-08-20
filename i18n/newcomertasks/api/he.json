@@ -11,6 +11,7 @@
 	"apihelp-query+growthtasks-param-tasktypes": "סוגי משימות שהתוצאות יהיו מוגבלות אליהם. יש להשאיר את זה ריק כדי לקבל את כל ההצעות.",
 	"apihelp-query+growthtasks-param-topics": "נושאי ערכים להעדפה בהצעת משימות.",
 	"apihelp-query+growthtasks-param-limit": "מספר מרבי של הצעות משימות להחזיר.",
+	"apihelp-query+growthtasks-param-excludepageids": "מזהי דפים שצריך להוציא מהשאילתה.",
 	"apihelp-query+growthtasks-param-debug": "הוספת נתוני ניפוי שגיאות לפלט.",
 	"apihelp-query+growthtasks-example-1": "קבלת המלצות משימות למשימות מסוג הגהה עבור המשתמש הנוכחי.",
 	"apihelp-query+growthtasks-example-2": "קבלת המלצות משימות עבור המשתמש הנוכחי, עם מידע מורחב על הדפים."
