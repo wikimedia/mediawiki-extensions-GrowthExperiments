@@ -42,6 +42,55 @@
 		// Empty $element, then construct the interface
 		this.$element.html( '' );
 		this.$element.append(
+			new OO.ui.PopupButtonWidget( {
+				icon: 'info',
+				id: 'growthexperiments-mentor-dashboard-module-mentee-overview-info-icon',
+				framed: false,
+				invisibleLabel: true,
+				popup: {
+					head: true,
+					align: 'backwards',
+					width: null,
+					// HACK: setting label should not be necessary in theory, but the label doesn't appear without it
+					label: mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-headline' ),
+					$label: $( '<h3>' ).append( mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-headline' ) ),
+					$content: $( '<div>' ).addClass( 'growthexperiments-mentor-dashboard-module-mentee-overview-info-content' ).append(
+						$( '<p>' ).append( mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-text' ) ),
+						$( '<h3>' ).append( mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline' ) ),
+						$( '<div>' ).addClass( 'growthexperiments-mentor-dashboard-overview-info-legend-content' ).append(
+							this.makeLegendIcon(
+								'unStar',
+								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-star' )
+							),
+							this.makeLegendIcon(
+								'help',
+								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions' )
+							),
+							this.makeLegendIcon(
+								'userAvatar',
+								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo' )
+							),
+							this.makeLegendIcon(
+								'edit',
+								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount' )
+							),
+							this.makeLegendIcon(
+								'editUndo',
+								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts' )
+							),
+							this.makeLegendIcon(
+								'clock',
+								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration' )
+							),
+							this.makeLegendIcon(
+								'block',
+								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks' )
+							)
+						)
+					),
+					padded: true
+				}
+			} ).$element,
 			$( '<div>' ).addClass( 'growthexperiments-mentor-dashboard-module-mentee-overview-controls' ).append(
 				this.filterDropdown.$element,
 				this.searchInput.$element
@@ -107,6 +156,15 @@
 	}
 
 	OO.inheritClass( MenteeOverview, OO.ui.Widget );
+
+	MenteeOverview.prototype.makeLegendIcon = function ( iconName, description ) {
+		return $( '<div>' )
+			.addClass( 'growthexperiments-mentor-dashboard-overview-info-legend-content-icon' )
+			.append(
+				new OO.ui.IconWidget( { icon: iconName } ).$element,
+				$( '<p>' ).append( description )
+			);
+	};
 
 	MenteeOverview.prototype.getData = function () {
 		return this.apiClient.getMenteeData();
