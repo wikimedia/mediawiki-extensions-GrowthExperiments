@@ -19,7 +19,7 @@ use IDBAccessObject;
  * works without any config page, and also to not let wikis break
  * GE setup by removing an arbitrary config variable.
  */
-class GrowthExperimentsMultiConfig implements Config, IDBAccessObject {
+class GrowthExperimentsMultiConfig implements Config, IDBAccessObject, ICustomReadConstants {
 	/** @var WikiPageConfig */
 	private $wikiPageConfig;
 

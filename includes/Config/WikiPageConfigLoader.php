@@ -35,7 +35,8 @@ use TitleFactory;
  * as \GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageLoader,
  * generalized to this class taking care about config in general.
  */
-class WikiPageConfigLoader implements IDBAccessObject {
+class WikiPageConfigLoader implements IDBAccessObject, ICustomReadConstants {
+
 	/** @var ConfigValidatorFactory */
 	private $configValidatorFactory;
 
@@ -104,14 +105,18 @@ class WikiPageConfigLoader implements IDBAccessObject {
 	/**
 	 * Load the configured page, with caching.
 	 * @param LinkTarget $configPage
-	 * @param int $flags bit field, see IDBAccessObject::READ_XXX
+	 * @param int $flags bit field, see self::READ_XXX
 	 * @return array|StatusValue The content of the configuration page (as JSON
 	 *   data in PHP-native format), or a StatusValue on error.
 	 */
 	public function load( LinkTarget $configPage, int $flags = 0 ) {
 		$cacheKey = $this->makeCacheKey( $configPage );
 
-		if ( !DBAccessObjectUtils::hasFlags( $flags, self::READ_LATEST ) ) {
+		if (
+			!DBAccessObjectUtils::hasFlags( $flags, self::READ_LATEST ) &&
+			// This is a custom flag, but bitfield logic should work regardless.
+			!DBAccessObjectUtils::hasFlags( $flags, self::READ_UNCACHED )
+		) {
 			// Consult cache
 			$result = $this->cache->get( $cacheKey );
 		} else {
@@ -121,30 +126,58 @@ class WikiPageConfigLoader implements IDBAccessObject {
 		}
 
 		if ( $result === false ) {
-			$status = $this->fetchConfig( $configPage, $flags );
-			$cacheFlags = 0;
-			if ( $status->isOK() ) {
-				$result = $status->getValue();
-				$status->merge(
-					$this->configValidatorFactory
-						->newConfigValidator( $configPage )
-						->validate( $result )
-				);
-			}
-			if ( !$status->isOK() ) {
-				$result = $status;
-				$cacheFlags = BagOStuff::WRITE_CACHE_ONLY;
-			}
-			$this->cache->set( $cacheKey, $result, $this->cacheTtl, $cacheFlags );
+			// this also stores the value in cache
+			$result = $this->loadUncached( $configPage, $flags );
 		}
 
 		return $result;
 	}
 
 	/**
+	 *
+	 * @param int $flags Bitfield consisting of READ_* constants
+	 * @return int Bitfield consisting only of standard IDBAccessObject READ_* constants.
+	 */
+	private function removeCustomFlags( int $flags ): int {
+		return $flags & ~self::READ_UNCACHED;
+	}
+
+	/**
+	 * Load the configuration page, bypassing caching.
+	 *
+	 * This stores the loaded value to cache.
+	 *
+	 * @param LinkTarget $configPage
+	 * @param int $flags
+	 * @return false|mixed|StatusValue
+	 */
+	private function loadUncached( LinkTarget $configPage, int $flags = 0 ) {
+		$cacheKey = $this->makeCacheKey( $configPage );
+
+		$result = false;
+		$status = $this->fetchConfig( $configPage, $this->removeCustomFlags( $flags ) );
+		$cacheFlags = 0;
+		if ( $status->isOK() ) {
+			$result = $status->getValue();
+			$status->merge(
+				$this->configValidatorFactory
+					->newConfigValidator( $configPage )
+					->validate( $result )
+			);
+		}
+		if ( !$status->isOK() ) {
+			$result = $status;
+			$cacheFlags = BagOStuff::WRITE_CACHE_ONLY;
+		}
+
+		$this->cache->set( $cacheKey, $result, $this->cacheTtl, $cacheFlags );
+		return $result;
+	}
+
+	/**
 	 * Fetch the contents of the configuration page, without caching.
 	 * @param LinkTarget $configPage
-	 * @param int $flags bit field, see IDBAccessObject::READ_XXX
+	 * @param int $flags bit field, see IDBAccessObject::READ_XXX; do NOT pass READ_UNCACHED
 	 * @return StatusValue Status object, with the configuration (as JSON data) on success.
 	 */
 	private function fetchConfig( LinkTarget $configPage, int $flags ) {

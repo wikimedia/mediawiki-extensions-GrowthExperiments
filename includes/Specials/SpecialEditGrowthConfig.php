@@ -469,7 +469,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	private function getValueGeConfig( string $name ): ?string {
 		$default = $this->growthWikiConfig->getWithFlags(
 			$name,
-			GrowthExperimentsMultiConfig::READ_LATEST
+			GrowthExperimentsMultiConfig::READ_UNCACHED
 		);
 		if ( is_array( $default ) ) {
 			$default = implode( "\n", $default );
@@ -496,7 +496,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 
 		$res = $this->configLoader->load(
 			$title,
-			WikiPageConfigLoader::READ_LATEST
+			WikiPageConfigLoader::READ_UNCACHED
 		);
 		if ( !is_array( $res ) ) {
 			// TODO: Maybe log the failure?
@@ -564,7 +564,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		// Add default values for intro links
 		$linkValues = $this->growthWikiConfig->getWithFlags(
 			'GEHomepageSuggestedEditsIntroLinks',
-			GrowthExperimentsMultiConfig::READ_LATEST
+			GrowthExperimentsMultiConfig::READ_UNCACHED
 		);
 		foreach ( self::SUGGESTED_EDITS_INTRO_LINKS as $link ) {
 			$descriptors["geconfig-GEHomepageSuggestedEditsIntroLinks-$link"]['default'] =
