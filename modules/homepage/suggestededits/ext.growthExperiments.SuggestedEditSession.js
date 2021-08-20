@@ -309,13 +309,14 @@
 	 * Change the URL of edit links to propagate the editing session ID to certain log records.
 	 */
 	SuggestedEditSession.prototype.updateEditingStatsConfig = function () {
-		var self = this;
+		var self = this,
+			linkSelector = '#ca-edit a[href], a#ca-edit[href], #ca-ve-edit a[href], ' +
+				'a#ca-ve-edit[href], .mw-editsection a[href]';
 
 		mw.config.set( 'wgWMESchemaEditAttemptStepSamplingRate', 1 );
 		$( function () {
-			// eslint-disable-next-line no-jquery/no-global-selector
-			$( '#ca-edit a, a#ca-edit, #ca-ve-edit a, a#ca-ve-edit, .mw-editsection a' ).each( function () {
-				var linkUrl = new mw.Uri( $( this ).attr( 'href' ) );
+			$( linkSelector ).each( function () {
+				var linkUrl = new mw.Uri( this.href );
 				linkUrl.extend( {
 					editingStatsId: self.clickId,
 					editingStatsOversample: 1
