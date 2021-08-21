@@ -61,10 +61,10 @@
 					width: null,
 					// HACK: setting label should not be necessary in theory, but the label doesn't appear without it
 					label: mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-headline' ),
-					$label: $( '<h3>' ).append( mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-headline' ) ),
+					$label: $( '<h3>' ).text( mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-headline' ) ),
 					$content: $( '<div>' ).addClass( 'growthexperiments-mentor-dashboard-module-mentee-overview-info-content' ).append(
-						$( '<p>' ).append( mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-text' ) ),
-						$( '<h3>' ).append( mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline' ) ),
+						$( '<p>' ).text( mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-text' ) ),
+						$( '<h3>' ).text( mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline' ) ),
 						$( '<div>' ).addClass( 'growthexperiments-mentor-dashboard-overview-info-legend-content' ).append(
 							this.makeLegendIcon(
 								'unStar',
@@ -196,7 +196,7 @@
 			.addClass( 'growthexperiments-mentor-dashboard-overview-info-legend-content-icon' )
 			.append(
 				new OO.ui.IconWidget( { icon: iconName } ).$element,
-				$( '<p>' ).append( description )
+				$( '<p>' ).text( description )
 			);
 	};
 
@@ -208,7 +208,7 @@
 		return $( '<td>' )
 			.attr( 'data-field', fieldName )
 			.addClass( 'growthexperiments-mentor-dashboard-module-mentee-overview-table-value' )
-			.append( value );
+			.text( value );
 	};
 
 	MenteeOverview.prototype.sortTable = function ( field, dir ) {
@@ -355,11 +355,11 @@
 															'href',
 															( new mw.Title( userData.username, 2 ) ).getUrl()
 														)
-														.append( userData.username )
+														.text( userData.username )
 												),
 											$( '<span>' )
 												.addClass( 'growthexperiments-mentor-dashboard-module-mentee-overview-table-activity' )
-												.append( mw.msg(
+												.text( mw.msg(
 													'growthexperiments-mentor-dashboard-mentee-overview-active-ago',
 													userData.last_active.human
 												) )

@@ -49,7 +49,7 @@
 		this.$filterDropdown = $( '<div>' )
 			.addClass( 'growthexperiments-mentor-dashboard-module-mentee-overview-filter-dropdown' )
 			.append(
-				$( '<h3>' ).append(
+				$( '<h3>' ).text(
 					mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline' )
 				),
 				$( '<div>' )
