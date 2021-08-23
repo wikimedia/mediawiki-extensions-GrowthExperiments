@@ -158,7 +158,11 @@ RecommendedLinkToolbarDialog.prototype.onNextButtonClicked = function () {
 	}
 	if ( this.isLastRecommendationSelected() ) {
 		if ( this.allRecommendationsSkipped() ) {
-			this.showSkippedAllDialog();
+			if ( this.linkRecommendationFragments.length === 1 ) {
+				this.endSession();
+			} else {
+				this.showSkippedAllDialog();
+			}
 		} else {
 			mw.hook( 'growthExperiments.contextItem.saveArticle' ).fire();
 		}
@@ -811,6 +815,22 @@ RecommendedLinkToolbarDialog.prototype.regainFocus = function () {
 };
 
 /**
+ * Tear down VE and show post-edit dialog
+ *
+ * Called when the user has skipped all suggestions
+ */
+RecommendedLinkToolbarDialog.prototype.endSession = function () {
+	// FIXME: Implement a fix in VisualEditor T282546
+	( ve.init.target.tryTeardown( true, 'navigate-read' ) || $.Deferred().resolve() ).then( function () {
+		var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
+			suggestedEditSession = SuggestedEditSession.getInstance();
+
+		suggestedEditSession.setTaskState( SuggestedEditSession.static.STATES.CANCELLED );
+		suggestedEditSession.showPostEditDialog( { resetSession: true } );
+	} );
+};
+
+/**
  * Show a dialog informing the user that they skipped all recommendations and
  * offering them to stay or leave.
  */
@@ -834,16 +854,10 @@ RecommendedLinkToolbarDialog.prototype.showSkippedAllDialog = function () {
 	} ).closed.then( function ( data ) {
 		if ( data && data.action === 'accept' ) {
 			this.logger.log( 'confirm_skip_all_suggestions', {}, logMetadata );
-			// FIXME: Implement a fix in VisualEditor T282546
-			( ve.init.target.tryTeardown( true, 'navigate-read' ) || $.Deferred().resolve() ).then( function () {
-				var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
-					suggestedEditSession = SuggestedEditSession.getInstance();
-
-				suggestedEditSession.setTaskState( SuggestedEditSession.static.STATES.CANCELLED );
-				suggestedEditSession.showPostEditDialog( { resetSession: true } );
-			} );
+			this.endSession();
 		} else {
 			this.logger.log( 'review_again', {}, logMetadata );
+			this.showRecommendationAtIndex( 0 );
 			this.regainFocus();
 		}
 	}.bind( this ) );
