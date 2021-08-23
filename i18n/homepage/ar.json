@@ -403,5 +403,6 @@
 	"growthexperiments-addlink-editmode-confirmation-dialog-title": "مغادرة الاقتراحات؟",
 	"growthexperiments-addlink-editmode-confirmation-dialog-message": "تغيير المحرر سيمكّنك من القيام بأعمال تحريرية أخرى. {{GENDER:$1|أنه|أنهي}} المعاينة لتسجيل تقدّمك المنجز إلى حدّ الآن.",
 	"growthexperiments-addlink-editmode-confirmation-dialog-action-confirm": "تغيير دون تسجيل",
-	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "إلغاء"
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "إلغاء",
+	"growthexperiments-addlink-suggestions-outdated": "عدّل مستخدم آخر هذه المقالة عندما كنت {{GENDER:|تراجعها|تراجعينها}}، لذلك لا يمكن حفظ تعديلاتك."
 }

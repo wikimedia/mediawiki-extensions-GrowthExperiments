@@ -10,5 +10,6 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "aktiivinen $1 sitten",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "tuntematon",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Näytä $1",
-	"growthexperiments-mentor-dashboard-resources-headline": "Resurssit"
+	"growthexperiments-mentor-dashboard-resources-headline": "Resurssit",
+	"growthexperiments-rcfilters-mentorship-title": "Mentorointi"
 }

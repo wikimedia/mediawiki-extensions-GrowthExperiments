@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"محک"
+		]
+	},
+	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|شمه}} شاگرد إستاره‌دار بیه",
+	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|شمه}} شاگردون إستاره‌دار نینه",
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "{{GENDER:|شما ره}} دیگه شاگردون ره هدانه"
+}

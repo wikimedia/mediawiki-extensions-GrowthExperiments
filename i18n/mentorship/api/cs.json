@@ -4,6 +4,8 @@
 			"Martin Urbanec (WMF)"
 		]
 	},
+	"apihelp-growthstarmentee-summary": "Nastavit nováčka jako označeného hvězdičkou (uloženo soukromě a nelogováno)",
 	"apihelp-growthstarmentee-param-gesaction": "Akce k provedení (<kbd>star</kbd> nebo <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Nováček k (od)hvězdičkování",
 	"apihelp-query+growthstarredmentees-summary": "Získat seznam uživatelů mentorovaných uživatelem, který je v tuto chvíli přihlášen"
 }

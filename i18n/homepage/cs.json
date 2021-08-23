@@ -402,5 +402,6 @@
 	"growthexperiments-addlink-editmode-confirmation-dialog-title": "Opustit návrhy?",
 	"growthexperiments-addlink-editmode-confirmation-dialog-message": "Přepnutí editačního módu {{GENDER:$1|vám}} umožní uložit i další druhy editací. Dokončete kontrolu odkazů, abyste své změny {{GENDER:$1|uložil|uložila|uložili}}.",
 	"growthexperiments-addlink-editmode-confirmation-dialog-action-confirm": "Přepnout bez odeslání",
-	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Zrušit"
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Zrušit",
+	"growthexperiments-addlink-suggestions-outdated": "Jiný uživatel editoval tento článek, zatímco jste {{GENDER:|posuzoval|posuzovala|posuzovali}} návrhy. {{GENDER:|Vaše}} změny proto nemohly být uloženy."
 }

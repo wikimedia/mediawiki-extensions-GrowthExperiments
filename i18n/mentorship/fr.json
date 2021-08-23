@@ -28,5 +28,10 @@
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "La liste des tuteurs",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Comment vous présenter comme tuteur",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Comment demander un tutoré",
-	"growthexperiments-mentor-dashboard-resources-link-tools": "Outils de croissance"
+	"growthexperiments-mentor-dashboard-resources-link-tools": "Outils de croissance",
+	"growthexperiments-rcfilters-mentorship-title": "Tutorat",
+	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Vos}} tutorés étoilés",
+	"growthexperiments-rcfilters-mentorship-starred-desc": "Tutorés qui {{GENDER:|vous}} ont été affectés et à que {{GENDER:|vous}} avez décoré sur {{GENDER:|votre}} tableau e bord du tuteur",
+	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|Vos}} tutorés non étoilés",
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Autres tutorés qui {{GENDER:|vous}} sont affectés"
 }

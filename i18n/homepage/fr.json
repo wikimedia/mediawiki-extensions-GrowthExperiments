@@ -420,5 +420,6 @@
 	"growthexperiments-addlink-editmode-confirmation-dialog-title": "Quitter les suggestions ?",
 	"growthexperiments-addlink-editmode-confirmation-dialog-message": "La bascule des modes {{GENDER:$1|vous}} permettra de faire d’autres sortes de modifications.  Finir de relire pour soumettre {{GENDER:$1|votre}} progression jusque-là.",
 	"growthexperiments-addlink-editmode-confirmation-dialog-action-confirm": "Basculer sans soumettre",
-	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Annuler"
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Annuler",
+	"growthexperiments-addlink-suggestions-outdated": "Un autre utilisateur a modifié cet article alors que {{GENDER:|vous}} le consultiez, et {{GENDER:|vos}} modifications pourraient ne pas être enregistrées."
 }

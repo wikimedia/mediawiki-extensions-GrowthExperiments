@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"NR Deblocked"
+		]
+	},
+	"growthexperiments-mentor-dashboard-must-be-mentor": "Что́бы включить панель ​ᲂу҆правле́нїѧ​ ​наста́вникомъ​ {{GENDER:|you}} снача́ла необходимо [[$1|зарегистрироватьсѧ ​въ​ ка́чествѣ наста́вника]].",
+	"growthexperiments-rcfilters-mentorship-title": "Ⱀⰰⱄⱅⰰⰲⱀⰹⱍⰵⱄⱅⰲⱁ",
+	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Your}} и҆збра́нныхъ подопечныхъ",
+	"growthexperiments-rcfilters-mentorship-starred-desc": "Подопечные назначенные ​длѧ​ {{GENDER:|you}} кото́рыхъ {{GENDER:|you}} пометили на ​панели​ ​ᲂу҆правле́нїѧ​ ​наста́вникомъ​ {{GENDER:|your}}",
+	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|Your}} ​ᲂу҆ченики҄​ ​безꙿ​ пометки",
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Дрꙋгї́е подопечные назначенные на {{GENDER:|you}}"
+}
