@@ -69,6 +69,9 @@ class MenteesHandler extends SimpleHandler {
 		if ( $params['maxedits'] !== null ) {
 			$dataFilter->maxEdits( $params['maxedits'] );
 		}
+		if ( $params['activedaysago'] !== null ) {
+			$dataFilter->activeDaysAgo( $params['activedaysago'] );
+		}
 		if ( $params['onlystarred'] === true ) {
 			$dataFilter->onlyIds(
 				array_map( static function ( UserIdentity $mentee ) {
@@ -143,6 +146,11 @@ class MenteesHandler extends SimpleHandler {
 			'prefix' => [
 				self::PARAM_SOURCE => 'query',
 				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => false,
+			],
+			'activedaysago' => [
+				self::PARAM_SOURCE => 'query',
+				ParamValidator::PARAM_TYPE => 'integer',
 				ParamValidator::PARAM_REQUIRED => false,
 			],
 			'minedits' => [
