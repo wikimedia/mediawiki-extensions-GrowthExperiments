@@ -10,6 +10,7 @@ use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\ResponseFactory;
 use MediaWikiIntegrationTestCase;
+use MWTimestamp;
 use PHPUnit\Framework\MockObject\MockObject;
 use RawMessage;
 use StatusValue;
@@ -25,6 +26,8 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 		$this->setMwGlobals( 'wgGENewcomerTasksLinkRecommendationsEnabled', true );
 		$goodTitle = new TitleValue( NS_USER, 'Foo' );
 		$badTitle = new TitleValue( NS_USER, 'Bar' );
+		$currentTime = 1577865600;
+		MWTimestamp::setFakeTime( $currentTime );
 		$linkData = [ [
 			'link_text' => 'foo',
 			'link_target' => 'Bar',
@@ -44,7 +47,7 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 				'redirects' => '57c5ce51d0ce4048743674a7ebb53e7a527d325765fd0632fa1455be46f7eb3c',
 				'w2vfiltered' => '096a5f2ca30708ce41408897c99efb854204ac8322fbada8a8147d8156b031e8'
 			],
-			'format_version' => 1
+			'format_version' => 1,
 		];
 		$links = LinkRecommendation::getLinksFromArray( $linkData );
 		$meta = LinkRecommendation::getMetadataFromArray( $metadata );
@@ -56,7 +59,14 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 		$this->setResponseFactory( $handler );
 
 		$this->assertSame(
-			[ 'recommendation' => [ 'links' => $linkData, 'meta' => $metadata ] ],
+			[
+				'recommendation' => [
+					'links' => $linkData,
+					'meta' => $metadata + [
+						'task_timestamp' => LinkRecommendation::FALLBACK_TASK_TIMESTAMP,
+					],
+				],
+			],
 			$handler->run( $goodTitle )
 		);
 
@@ -76,7 +86,12 @@ class AddLinkSuggestionsHandlerTest extends MediaWikiIntegrationTestCase {
 		$this->assertSame(
 			[ 'recommendation' => [
 				'links' => $linkData,
-				'meta' => [ 'application_version' => '', 'dataset_checksums' => [], 'format_version' => 1 ]
+				'meta' => [
+					'application_version' => '',
+					'dataset_checksums' => [],
+					'format_version' => 1,
+					'task_timestamp' => LinkRecommendation::FALLBACK_TASK_TIMESTAMP,
+				],
 			] ],
 			$handler->run( $goodTitle )
 		);
