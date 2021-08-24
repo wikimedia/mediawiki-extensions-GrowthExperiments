@@ -41,14 +41,16 @@ SwipePane.prototype.onTouchMove = function ( event ) {
 		return;
 	}
 
-	if ( this.isSwipeToStart( event.touches.item( 0 ) ) ) {
-		this.onSwipeToStart();
-	} else {
-		this.onSwipeToEnd();
-	}
+	if ( this.shouldHandleTouchMove( event ) ) {
+		if ( this.isSwipeToStart( event.touches.item( 0 ) ) ) {
+			this.onSwipeToStart();
+		} else {
+			this.onSwipeToEnd();
+		}
 
-	this.initialX = null;
-	this.initialY = null;
+		this.initialX = null;
+		this.initialY = null;
+	}
 };
 
 /**
@@ -92,6 +94,25 @@ SwipePane.prototype.setToEndHandler = function ( handler ) {
 		throw new Error( 'Handler must be a function' );
 	}
 	this.onSwipeToEnd = handler;
+};
+
+/**
+ * Determine whether the touchmove event should be handled
+ *
+ * If horizontal gestures are prioritized, only handle the event when the horizontal difference is
+ * greater than the vertical. If vertical gestures are prioritized, only handle the event when
+ * the vertical difference is greater than the horizontal.
+ *
+ * @param {Object} event Touchmove event
+ */
+SwipePane.prototype.shouldHandleTouchMove = function ( event ) {
+	var touchEvent = event.touches.item( 0 ),
+		xDelta = Math.abs( this.initialX - touchEvent.clientX ),
+		yDelta = Math.abs( this.initialY - touchEvent.clientY );
+	if ( this.isHorizontal ) {
+		return xDelta > yDelta;
+	}
+	return yDelta > xDelta;
 };
 
 module.exports = SwipePane;

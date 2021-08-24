@@ -30,6 +30,7 @@
 	 *
 	 * @constructor
 	 * @param {Object} config Configuration options
+	 * @param {jQuery} config.$container Module container
 	 * @param {jQuery} config.$element SuggestedEdits widget container
 	 * @param {jQuery} config.$nav Navigation element (if navigation is separate from $element)
 	 * @param {Array<string>} config.taskTypePresets List of IDs of enabled task types
@@ -545,8 +546,12 @@
 	SuggestedEditsModule.prototype.animateCard = function ( $cardElement, $cardWrapper ) {
 		var isGoingBack = this.isGoingBack,
 			$fakeCard = $cardElement.clone(),
+			$overlayContent = this.config.$container.find( '.overlay-content' ),
 			promise = $.Deferred(),
 			onTransitionEnd;
+
+		// Prevent scrolling while animation is in progress
+		$overlayContent.addClass( 'is-swiping' );
 
 		// A copy of the current card will be animated out.
 		$fakeCard.addClass( [
@@ -568,6 +573,7 @@
 			$cardElement.html( this.currentCard.$element );
 			$cardElement.on( 'transitionend transitioncancel', onTransitionEnd );
 			$cardElement.removeClass( [ 'no-transition', 'to-start', 'to-end' ] );
+			$overlayContent.removeClass( 'is-swiping' );
 		}.bind( this ), 100 );
 
 		return promise;
@@ -758,6 +764,7 @@
 
 		suggestedEditsModule = new SuggestedEditsModule(
 			{
+				$container: $container,
 				$element: $wrapper,
 				$nav: $container.find( '.suggested-edits-footer-navigation' ),
 				taskTypePresets: preferences.taskTypes,
