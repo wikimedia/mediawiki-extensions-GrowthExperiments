@@ -89,12 +89,14 @@
 			table {
 				border: 1px solid #c8ccd1;
 				border-radius: 2px;
-				border-collapse: collapse;
-				padding-top: 15px;
+				overflow: hidden;
+				border-spacing: 0;
 				width: 100%;
 
 				thead {
-					border-bottom: 1px solid #c8ccd1;
+					th {
+						border-bottom: 1px solid #c8ccd1;
+					}
 
 					tr {
 						background-color: #f8f9fa;
@@ -149,6 +151,11 @@
 
 					td {
 						border-bottom: 1px solid #c8ccd1;
+					}
+
+					tr:last-child td {
+						// without this, border from the whole table and for the row would be combined
+						border-bottom: unset;
 					}
 
 					td.growthexperiments-mentor-dashboard-module-mentee-overview-table-value {
