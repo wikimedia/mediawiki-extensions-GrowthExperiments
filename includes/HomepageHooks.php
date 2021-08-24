@@ -27,6 +27,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
@@ -572,9 +573,11 @@ class HomepageHooks implements
 			SuggestedEdits::GUIDANCE_BLUE_DOT_PREF => json_encode( [
 				'vector' => [
 					LinkRecommendationTaskTypeHandler::ID => true,
+					ImageRecommendationTaskTypeHandler::ID => true,
 				],
 				'minerva' => [
-					LinkRecommendationTaskTypeHandler::ID => true
+					LinkRecommendationTaskTypeHandler::ID => true,
+					ImageRecommendationTaskTypeHandler::ID => true,
 				]
 			] )
 		];

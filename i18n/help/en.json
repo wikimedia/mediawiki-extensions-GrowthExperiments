@@ -99,6 +99,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-publish": "When {{GENDER:|you}} are finished expanding the article, go ahead and click \"$1\" to save {{GENDER:|your}} edit!",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-publish": "When {{GENDER:|you}} are finished expanding the article, go ahead and tap the blue arrow button to save {{GENDER:|your}} edit!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|Learn more about expanding articles]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-onboarding-value": "Placeholder text, do not translate yet.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Adding links will help people learn faster.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|You}} will decide whether words in one {{SITENAME}} article should link to other {{SITENAME}} articles.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "The moon is the only <mark class=\"positive\">natural satellite</mark> that <mark class=\"positive\">orbits</mark> around the <mark class=\"positive\">Earth</mark>.",

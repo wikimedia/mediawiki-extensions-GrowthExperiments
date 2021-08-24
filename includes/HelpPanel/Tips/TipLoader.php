@@ -82,6 +82,8 @@ class TipLoader {
 		switch ( $taskTypeId ) {
 			case 'copyedit':
 				return new CopyeditTipTree( $extraData );
+			case 'image-recommendation':
+				return new ImageRecommendationTipTree( $extraData );
 			case 'links':
 				return new LinkTipTree( $extraData );
 			case 'link-recommendation':

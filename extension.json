@@ -1075,6 +1075,7 @@
 				"growthexperiments-homepage-suggestededits-tasktype-name-links",
 				"growthexperiments-homepage-suggestededits-tasktype-name-expand",
 				"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation",
+				"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation",
 				"growthexperiments-help-panel-button-preheader-suggested-edits",
 				"growthexperiments-help-panel-button-header-ask-help",
 				"growthexperiments-help-panel-button-header-ask-help-mentor",
@@ -1514,10 +1515,11 @@
 			"value": false
 		},
 		"GEHelpPanelSuggestedEditsPreferredEditor": {
-			"description": "The preferred editor interface for suggested edits. The key is the task type handler ID (template-based or link-recommendation). Valid values for template-based are 'visualeditor' or 'wikitext'; for link-recommendation only machineSuggestions is valid",
+			"description": "The preferred editor interface for suggested edits. The key is the task type handler ID (template-based or link-recommendation). Valid values for template-based are 'visualeditor' or 'wikitext'; for link-recommendation & image-recommendation only machineSuggestions is valid",
 			"value": {
 				"template-based": "visualeditor",
-				"link-recommendation": "machineSuggestions"
+				"link-recommendation": "machineSuggestions",
+				"image-recommendation": "machineSuggestions"
 			}
 		},
 		"GEHelpPanelAskMentor": {
@@ -1641,6 +1643,10 @@
 					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\LinkRecommendationTaskTypeHandler",
 					"services": [ "GrowthExperimentsNewcomerTasksConfigurationValidator" ]
 				},
+				"image-recommendation": {
+					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\ImageRecommendationTaskTypeHandler",
+					"services": [ "GrowthExperimentsNewcomerTasksConfigurationValidator" ]
+				},
 				"null": {
 					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\NullTaskTypeHandler"
 				}
@@ -1676,6 +1682,10 @@
 		},
 		"GELinkRecommendationsFrontendEnabled": {
 			"description": "Global ON/OFF switch for the link recommendations feature. Depending on the state, either the 'links' or the 'link-recommendation' task type is hidden. Can be overridden by SuggestedEdits::LINK_RECOMMENDATIONS_ENABLED_PREF.",
+			"value": true
+		},
+		"GENewcomerTasksImageRecommendationsEnabled": {
+			"description": "Global ON/OFF switch for image recommendations.",
 			"value": true
 		},
 		"GELinkRecommendationServiceUrl": {

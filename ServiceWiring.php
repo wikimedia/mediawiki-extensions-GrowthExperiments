@@ -51,6 +51,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggesterFacto
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
@@ -367,6 +368,9 @@ return [
 		);
 		if ( !$config->get( 'GENewcomerTasksLinkRecommendationsEnabled' ) ) {
 			$configurationLoader->disableTaskType( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID );
+		}
+		if ( !$config->get( 'GENewcomerTasksImageRecommendationsEnabled' ) ) {
+			$configurationLoader->disableTaskType( ImageRecommendationTaskTypeHandler::TASK_TYPE_ID );
 		}
 		return $configurationLoader;
 	},
