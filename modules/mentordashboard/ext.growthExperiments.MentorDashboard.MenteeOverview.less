@@ -36,25 +36,16 @@
 					flex-wrap: wrap;
 
 					.growthexperiments-mentor-dashboard-overview-info-legend-content-icon {
-						@legendWidth: 45%;
-						width: @legendWidth;
-						min-height: 36px;
-						padding-right: 50% - @legendWidth;
+						display: flex;
+						align-items: center;
+						@legendSpacing: 5%;
+						width: 50% - @legendSpacing;
+						margin-right: @legendSpacing;
 						padding-bottom: 10px;
-						position: relative;
-
-						.oo-ui-iconWidget {
-							position: absolute;
-							top: 50%;
-							transform: translateY( -50% );
-						}
 
 						p {
 							margin: 0;
-							padding-left: 30px;
-							position: absolute;
-							top: 50%;
-							transform: translateY( -50% );
+							padding-left: 10px;
 						}
 					}
 				}
