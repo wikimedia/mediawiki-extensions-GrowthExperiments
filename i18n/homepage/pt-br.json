@@ -396,5 +396,6 @@
 	"growthexperiments-addlink-editmode-confirmation-dialog-title": "Deixar sugestões?",
 	"growthexperiments-addlink-editmode-confirmation-dialog-message": "Alternar os modos permitirá que {{GENDER:$1|você}} faça outros tipos de edições. Conclua a análise para enviar o progresso de {{GENDER:$1|seu}} até agora.",
 	"growthexperiments-addlink-editmode-confirmation-dialog-action-confirm": "Mudar sem enviar",
-	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Cancelar"
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Cancelar",
+	"growthexperiments-addlink-suggestions-outdated": "Outro usuário editou este artigo enquanto você o revisava e não foi possível salvar as alterações."
 }

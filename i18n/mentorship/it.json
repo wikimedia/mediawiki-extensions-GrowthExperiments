@@ -1,8 +1,25 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ajeje Brazorf"
+			"Ajeje Brazorf",
+			"Stefano"
 		]
 	},
-	"growthexperiments-mentor-dashboard-resources-headline": "Risorse"
+	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "La tabella richiede JavaScript. Abilita JavaScript per poter utilizzare questo modulo.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legenda tabella",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Visualizza il nome utente e la data dell'ultima attività",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Data registrazione {{SITENAME}}",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Aggiungi filtro",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Da",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "A",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Periodo di ricerca",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Ultimi giorni",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Ultimi mesi",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Invia",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Ricerca",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "Attivo $1 fa",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "sconosciuto",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 di $2",
+	"growthexperiments-mentor-dashboard-resources-headline": "Risorse",
+	"growthexperiments-mentor-dashboard-resources-link-tools": "Strumenti di crescita"
 }

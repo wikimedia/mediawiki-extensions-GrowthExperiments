@@ -5,6 +5,8 @@
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Lisää suodatin",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Viimeisimmät päivät",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Viimeisimmät kuukaudet",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Lähetä",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Etsi",
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "aktiivinen $1 sitten",
