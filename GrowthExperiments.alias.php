@@ -32,6 +32,14 @@ $specialPageAliases['ar'] = [
 	'EditGrowthConfig' => [ 'تعديل_إعداد_النمو' ],
 ];
 
+/** Azerbaijani (azərbaycanca) */
+$specialPageAliases['az'] = [
+	'WelcomeSurvey' => [ 'XoşAnket' ],
+	'Homepage' => [ 'AnaSəhifə' ],
+	'Impact' => [ 'Təsir' ],
+	'ClaimMentee' => [ 'YeniIstifadəçiTələbEdin' ],
+];
+
 /** Bangla (বাংলা) */
 $specialPageAliases['bn'] = [
 	'WelcomeSurvey' => [ 'স্বাগত_জরিপ' ],
@@ -185,6 +193,14 @@ $specialPageAliases['ja'] = [
 	'ClaimMentee' => [ '新規参入者を主張する' ],
 ];
 
+/** Georgian (ქართული) */
+$specialPageAliases['ka'] = [
+	'WelcomeSurvey' => [ 'მოგესალმებით_გამოკითხვა' ],
+	'Homepage' => [ 'საწყისი_გვერდი' ],
+	'Impact' => [ 'Გავლენა' ],
+	'ClaimMentee' => [ 'მოითხოვეთ_ახალი_მომხმარებელი' ],
+];
+
 /** 한국어  (Korean) */
 $specialPageAliases['ko'] = [
 	'WelcomeSurvey' => [ '환영설문조사' ],
@@ -286,6 +302,14 @@ $specialPageAliases['sk'] = [
 	'WelcomeSurvey' => [ 'UvítacíPrieskum' ],
 	'Homepage' => [ 'Domovská_stránka' ],
 	'Impact' => [ 'Dopad' ],
+];
+
+/** Slovenian (slovenščina) */
+$specialPageAliases['sl'] = [
+	'WelcomeSurvey' => [ 'AnketaDobrodošlice' ],
+	'Homepage' => [ 'DomačaStran' ],
+	'Impact' => [ 'Vpliv' ],
+	'ClaimMentee' => [ 'ZahtevajNovegaUporabnika' ],
 ];
 
 /** Albanian (shqip) */
