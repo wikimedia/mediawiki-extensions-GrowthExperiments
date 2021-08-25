@@ -4,8 +4,6 @@ namespace GrowthExperiments\NewcomerTasks\TaskType;
 
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use InvalidArgumentException;
-use MalformedTitleException;
-use MediaWiki\Linker\LinkTarget;
 use StatusValue;
 use TitleParser;
 
@@ -27,7 +25,7 @@ class TemplateBasedTaskTypeHandler extends TaskTypeHandler {
 		ConfigurationValidator $configurationValidator,
 		TitleParser $titleParser
 	) {
-		parent::__construct( $configurationValidator );
+		parent::__construct( $configurationValidator, $titleParser );
 		$this->titleParser = $titleParser;
 	}
 
@@ -39,18 +37,13 @@ class TemplateBasedTaskTypeHandler extends TaskTypeHandler {
 	/** @inheritDoc */
 	public function validateTaskTypeConfiguration( string $taskTypeId, array $config ): StatusValue {
 		$status = parent::validateTaskTypeConfiguration( $taskTypeId, $config );
-
 		$templateFieldStatus = $this->configurationValidator->validateRequiredField( 'templates',
 			$config, $taskTypeId );
 		$status->merge( $templateFieldStatus );
-		if ( $templateFieldStatus->isOK() ) {
+		$status->merge( $this->configurationValidator->validateFieldIsArray( 'templates', $config, $taskTypeId ) );
+		if ( $status->isOK() ) {
 			foreach ( $config['templates'] as $template ) {
-				try {
-					$this->titleParser->parseTitle( $template, NS_TEMPLATE );
-				} catch ( MalformedTitleException $e ) {
-					$status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidtemplatetitle',
-						$template, $taskTypeId );
-				}
+				$this->validateTemplate( $template, $taskTypeId, $status );
 			}
 		}
 		return $status;
@@ -67,7 +60,9 @@ class TemplateBasedTaskTypeHandler extends TaskTypeHandler {
 			$taskTypeId,
 			$config['group'],
 			[ 'learnMoreLink' => $config['learnmore'] ?? null ],
-			$templates
+			$templates,
+			$this->parseExcludedTemplates( $config ),
+			$this->parseExcludedCategories( $config )
 		);
 		$taskType->setHandlerId( $this->getId() );
 		return $taskType;
@@ -78,19 +73,8 @@ class TemplateBasedTaskTypeHandler extends TaskTypeHandler {
 		if ( !$taskType instanceof TemplateBasedTaskType ) {
 			throw new InvalidArgumentException( '$taskType must be a TemplateBasedTaskType' );
 		}
-		$templates = $taskType->getTemplates();
-		return 'hastemplate:' . $this->escapeSearchTitleList( $templates );
-	}
-
-	/**
-	 * @param LinkTarget[] $titles
-	 * @return string
-	 */
-	protected function escapeSearchTitleList( array $titles ) {
-		// FIXME duplicate of SearchStrategy::escapeSearchTitleList
-		return '"' . implode( '|', array_map( static function ( LinkTarget $title ) {
-			return str_replace( [ '"', '?' ], [ '\"', '\?' ], $title->getDBkey() );
-		}, $titles ) ) . '"';
+		return parent::getSearchTerm( $taskType ) .
+			'hastemplate:' . Util::escapeSearchTitleList( $taskType->getTemplates() );
 	}
 
 }

@@ -47,12 +47,15 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 			$this->assertIsArray( $taskTypes );
 			$this->assertNotEmpty( $taskTypes );
 			$this->assertInstanceOf( TaskType::class, $taskTypes[0] );
-			$this->assertSame( [ 'copyedit', 'references' ], array_map( static function ( TaskType $tt ) {
+			$this->assertSame( [ 'copyedit', 'references', 'update' ], array_map( static function (
+				TaskType $tt ) {
 				return $tt->getId();
 			}, $taskTypes ) );
-			$this->assertSame( [ 'easy', 'medium' ], array_map( static function ( TaskType $tt ) {
-				return $tt->getDifficulty();
-			}, $taskTypes ) );
+			$this->assertSame( [ 'easy', 'medium', 'hard' ],
+				array_map( static function ( TaskType $tt ) {
+					return $tt->getDifficulty();
+				}, $taskTypes )
+			);
 		}
 
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( StatusValue::newFatal( 'foo' ),
@@ -71,14 +74,17 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $this->getTaskConfig(), [],
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$configurationLoader->disableTaskType( 'copyedit' );
-		$this->assertArrayEquals( [ 'references' ], array_map( static function ( TaskType $tt ) {
-			return $tt->getId();
-		}, $configurationLoader->loadTaskTypes() ) );
+		$this->assertArrayEquals( [ 'references', 'update' ],
+			array_map( static function ( TaskType $tt ) {
+				return $tt->getId();
+			}, $configurationLoader->loadTaskTypes() )
+		);
 
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $this->getTaskConfig(), [],
 			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
 		$configurationLoader->disableTaskType( 'copyedit' );
 		$configurationLoader->disableTaskType( 'references' );
+		$configurationLoader->disableTaskType( 'update' );
 		$this->assertArrayEquals( [], array_map( static function ( TaskType $tt ) {
 			return $tt->getId();
 		}, $configurationLoader->loadTaskTypes() ) );
@@ -249,9 +255,11 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$this->assertIsArray( $taskTypes );
 		$this->assertNotEmpty( $taskTypes );
 		$this->assertInstanceOf( TaskType::class, $taskTypes[0] );
-		$this->assertSame( [ 'copyedit', 'references' ], array_map( static function ( TaskType $tt ) {
-			return $tt->getId();
-		}, $taskTypes ) );
+		$this->assertSame( [ 'copyedit', 'references', 'update' ],
+			array_map( static function ( TaskType $tt ) {
+				return $tt->getId();
+			}, $taskTypes )
+		);
 
 		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $this->getTaskConfig(),
 			$this->getOresTopicConfig(), PageConfigurationLoader::CONFIGURATION_TYPE_ORES, [], true );
@@ -265,108 +273,6 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::loadExcludedTemplates
-	 */
-	public function testLoadExcludedTemplates() {
-		$taskConfig = [ '#excludedTemplates' => [ 'Foo', 'Bar', 'Baz' ] ];
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
-			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
-		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
-		// in getMockWikiPageConfigLoader() will fail.
-		foreach ( range( 1, 2 ) as $_ ) {
-			$excludedTemplates = $configurationLoader->loadExcludedTemplates();
-			$this->assertIsArray( $excludedTemplates );
-			foreach ( $excludedTemplates as $i => $template ) {
-				$this->assertInstanceOf( LinkTarget::class, $template );
-				$this->assertSame( NS_TEMPLATE, $template->getNamespace() );
-				$this->assertSame( $taskConfig['#excludedTemplates'][$i], $template->getDBkey() );
-			}
-		}
-		$this->assertSame( $configurationLoader->loadExcludedTemplates(),
-			$configurationLoader->getExcludedTemplates() );
-
-		// Make sure task parsing skips the special key
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
-			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
-		$taskTypes = $configurationLoader->loadTaskTypes();
-		$this->assertSame( [], $taskTypes );
-
-		// Test that the field is optional
-		$taskConfig = [];
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
-			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
-		$this->assertSame( [], $configurationLoader->loadExcludedTemplates() );
-
-		$taskConfig = [ '#excludedTemplates' => 'xy' ];
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
-			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
-		$error = $configurationLoader->loadExcludedTemplates();
-		$this->assertInstanceOf( StatusValue::class, $error );
-		$this->assertTrue( $error->hasMessage(
-			'growthexperiments-homepage-suggestededits-config-wrongstructure' ) );
-		$this->assertSame( [], $configurationLoader->getExcludedTemplates() );
-
-		$taskConfig = [ '#excludedTemplates' => [ [] ] ];
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
-			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
-		$error = $configurationLoader->loadExcludedTemplates();
-		$this->assertInstanceOf( StatusValue::class, $error );
-		$this->assertTrue( $error->hasMessage(
-			'growthexperiments-homepage-suggestededits-config-wrongstructure' ) );
-
-		$taskConfig = [ '#excludedTemplates' => [ '<invalid>' ] ];
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
-			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
-		$error = $configurationLoader->loadExcludedTemplates();
-		$this->assertInstanceOf( StatusValue::class, $error );
-		$this->assertTrue( $error->hasMessage(
-			'growthexperiments-homepage-suggestededits-config-invalidtitle' ) );
-	}
-
-	/**
-	 * @covers ::loadExcludedCategories
-	 */
-	public function testLoadExcludedCategories() {
-		$taskConfig = [ '#excludedCategories' => [ 'Foo', 'Bar', 'Baz' ] ];
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
-			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
-		// Run twice to test caching. If caching is broken, the 'atMost(1)' expectation
-		// in getMockWikiPageConfigLoader() will fail.
-		foreach ( range( 1, 2 ) as $_ ) {
-			$excludedCategories = $configurationLoader->loadExcludedCategories();
-			$this->assertIsArray( $excludedCategories );
-			foreach ( $excludedCategories as $i => $category ) {
-				$this->assertInstanceOf( LinkTarget::class, $category );
-				$this->assertSame( NS_CATEGORY, $category->getNamespace() );
-				$this->assertSame( $taskConfig['#excludedCategories'][$i], $category->getDBkey() );
-			}
-		}
-		$this->assertSame( $configurationLoader->loadExcludedCategories(),
-			$configurationLoader->getExcludedCategories() );
-
-		// Make sure task parsing skips the special key
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
-			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
-		$taskTypes = $configurationLoader->loadTaskTypes();
-		$this->assertSame( [], $taskTypes );
-
-		// Test that the field is optional
-		$taskConfig = [];
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
-			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
-		$this->assertSame( [], $configurationLoader->loadExcludedCategories() );
-
-		$taskConfig = [ '#excludedCategories' => 'xy' ];
-		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $taskConfig, $this->getOresTopicConfig(),
-			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
-		$error = $configurationLoader->loadExcludedCategories();
-		$this->assertInstanceOf( StatusValue::class, $error );
-		$this->assertTrue( $error->hasMessage(
-			'growthexperiments-homepage-suggestededits-config-wrongstructure' ) );
-		$this->assertSame( [], $configurationLoader->getExcludedCategories() );
-	}
-
-	/**
 	 * Test configuration
 	 * @param string|null $error
 	 * @return array|int
@@ -377,12 +283,23 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 				'icon' => 'articleCheck',
 				'group' => 'easy',
 				'templates' => [ 'Foo', 'Bar', 'Baz' ],
+				'excludedTemplates' => [ 'Exclude1', 'Exclude2' ],
+				'excludedCategories' => [ 'ExcludedCategory1', 'ExcludedCategory2' ]
 			],
 			'references' => [
 				'icon' => 'references',
 				'group' => 'medium',
 				'templates' => [ 'R1', 'R2', 'R3' ],
+				'excludedTemplates' => [ 'Exclude3', 'Exclude4' ],
+				'excludedCategories' => [ 'ExcludedCategory1', 'ExcludedCategory2' ]
 			],
+			'update' => [
+				'icon' => 'newspaper',
+				'group' => 'hard',
+				'templates' => [ 'U1', 'U2' ],
+				'excludedTemplates' => [ 'Exclude3', 'Exclude4' ],
+				'excludedCategories' => [ 'ExcludedCategory1', 'ExcludedCategory2' ]
+			]
 		];
 		if ( $error === 'wrongstructure' ) {
 			return 0;

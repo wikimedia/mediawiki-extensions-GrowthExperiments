@@ -56,8 +56,15 @@ class LinkRecommendationTaskType extends TaskType {
 	 * @inheritDoc
 	 * @param array $settings A settings array matching LinkRecommendationTaskType::DEFAULT_SETTINGS.
 	 */
-	public function __construct( $id, $difficulty, array $settings, array $extraData = [] ) {
-		parent::__construct( $id, $difficulty, $extraData );
+	public function __construct(
+		$id,
+		$difficulty,
+		array $settings,
+		array $extraData = [],
+		array $excludedTemplates = [],
+		array $excludedCategories = []
+	) {
+		parent::__construct( $id, $difficulty, $extraData, $excludedTemplates, $excludedCategories );
 		$settings += self::DEFAULT_SETTINGS;
 		$this->minimumTasksPerTopic = $settings[self::FIELD_MIN_TASKS_PER_TOPIC];
 		$this->minimumLinksPerTask = $settings[self::FIELD_MIN_LINKS_PER_TASK];

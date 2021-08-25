@@ -4,6 +4,7 @@ namespace GrowthExperiments\Tests;
 
 use ApiRawMessage;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Task\Task;
@@ -12,16 +13,15 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use GrowthExperiments\Util;
 use LinkBatch;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Http\HttpRequestFactory;
-use MediaWiki\Linker\LinkTarget;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use MWHttpRequest;
@@ -31,6 +31,7 @@ use Status;
 use StatusValue;
 use Title;
 use TitleFactory;
+use TitleParser;
 use TitleValue;
 
 /**
@@ -637,15 +638,13 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 	private function getMockTaskTypeHandlerRegistry() {
 		$taskTypeHandlerRegistry = $this->createNoOpMock( TaskTypeHandlerRegistry::class,
 			[ 'getByTaskType' ] );
-		$taskTypeHandler = $this->createNoOpAbstractMock( TaskTypeHandler::class, [ 'getSearchTerm' ] );
+		$configurationValidator = $this->createMock( ConfigurationValidator::class );
+		$titleParser = $this->createNoOpMock( TitleParser::class );
+		$taskTypeHandler = new TemplateBasedTaskTypeHandler(
+			$configurationValidator,
+			$titleParser
+		);
 		$taskTypeHandlerRegistry->method( 'getByTaskType' )->willReturn( $taskTypeHandler );
-		$taskTypeHandler->method( 'getSearchTerm' )
-			->willReturnCallback( static function ( TemplateBasedTaskType $taskType ) {
-				$templates = implode( '|', array_map( static function ( LinkTarget $linkTarget ) {
-					return $linkTarget->getDBkey();
-				}, $taskType->getTemplates() ) );
-				return "hastemplate:\"$templates\"";
-			} );
 		return $taskTypeHandlerRegistry;
 	}
 
@@ -776,7 +775,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 				$titleValues[] = new TitleValue( NS_TEMPLATE, $titleName );
 			}
 			$taskTypes[] = new TemplateBasedTaskType( $topicId, TaskType::DIFFICULTY_EASY, [],
-				$titleValues );
+				$titleValues, [] );
 		}
 		return $taskTypes;
 	}

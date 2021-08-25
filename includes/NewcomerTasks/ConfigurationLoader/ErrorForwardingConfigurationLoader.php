@@ -16,7 +16,7 @@ class ErrorForwardingConfigurationLoader extends StaticConfigurationLoader {
 	 * @param StatusValue $statusValue The error to forward.
 	 */
 	public function __construct( StatusValue $statusValue ) {
-		parent::__construct( $statusValue, [], [] );
+		parent::__construct( $statusValue, [] );
 	}
 
 }

@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Tests;
 
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
@@ -9,9 +10,11 @@ use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\Topic\MorelikeBasedTopic;
 use GrowthExperiments\NewcomerTasks\Topic\OresBasedTopic;
 use MediaWikiUnitTestCase;
+use TitleParser;
 use TitleValue;
 
 /**
@@ -22,7 +25,7 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 
 	public function testGetQueries() {
 		$taskType = new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY,
-			[], [ new TitleValue( NS_TEMPLATE, 'Copyedit' ) ] );
+			[], [ new TitleValue( NS_TEMPLATE, 'Copyedit' ) ], [ new TitleValue( NS_TEMPLATE, 'DontCopyedit' ) ] );
 		$morelikeTopic1 = new MorelikeBasedTopic( 'art', [
 			new TitleValue( NS_MAIN, 'Picasso' ),
 			new TitleValue( NS_MAIN, 'Watercolor' ),
@@ -38,7 +41,7 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		$taskTypeHandler = $this->createMock( TaskTypeHandler::class );
 		$taskTypeHandlerRegistry->method( 'getByTaskType' )->willReturn( $taskTypeHandler );
 		$taskTypeHandler->method( 'getSearchTerm' )
-			->willReturn( 'hastemplate:"Copyedit"' );
+			->willReturn( 'hastemplate:"Copyedit" -hastemplate:"DontCopyedit"' );
 
 		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry,
 			new StaticConfigurationLoader( [], [] ) );
@@ -51,16 +54,16 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		$this->assertTaskTypeInQueries( $morelikeQueries, [ 'copyedit' ] );
 
 		$this->assertQueryStrings( $morelikeQueries, [
-			'hastemplate:"Copyedit" morelikethis:"Picasso|Watercolor"',
-			'hastemplate:"Copyedit" morelikethis:"Einstein|Physics"' ] );
+			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" morelikethis:"Picasso|Watercolor"',
+			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" morelikethis:"Einstein|Physics"' ] );
 
 		$oresQueries = $searchStrategy->getQueries( [ $taskType ], [ $oresTopic1, $oresTopic2 ], [] );
 		$this->assertCount( 2, $oresQueries );
 		$this->assertTaskTypeInQueries( $oresQueries, [ 'copyedit' ] );
 		$this->assertTopicsInQueries( $oresQueries, [ 'art', 'science' ] );
 		$this->assertQueryStrings( $oresQueries, [
-			'hastemplate:"Copyedit" articletopic:painting|drawing',
-			'hastemplate:"Copyedit" articletopic:physics|biology'
+			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" articletopic:painting|drawing',
+			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" articletopic:physics|biology'
 		] );
 
 		$restrictedQueries = $searchStrategy->getQueries( [ $taskType ],
@@ -68,20 +71,12 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 		$this->assertCount( 2, $restrictedQueries );
 		$this->assertTopicsInQueries( $restrictedQueries, [ 'art', 'science' ] );
 		$this->assertQueryStrings( $restrictedQueries, [
-			'hastemplate:"Copyedit" articletopic:painting|drawing pageid:1|2|3',
-			'hastemplate:"Copyedit" articletopic:physics|biology pageid:1|2|3'
+			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" articletopic:painting|drawing pageid:1|2|3',
+			'hastemplate:"Copyedit" -hastemplate:"DontCopyedit" articletopic:physics|biology pageid:1|2|3'
 		] );
 	}
 
 	public function testExclusion() {
-		$taskType = new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY,
-			[], [ new TitleValue( NS_TEMPLATE, 'Copyedit' ) ] );
-		$taskTypeHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
-		$taskTypeHandler = $this->createMock( TaskTypeHandler::class );
-		$taskTypeHandlerRegistry->method( 'getByTaskType' )->willReturn( $taskTypeHandler );
-		$taskTypeHandler->method( 'getSearchTerm' )
-			->willReturn( 'hastemplate:"Copyedit"' );
-
 		$excludedTemplates = [
 			new TitleValue( NS_TEMPLATE, 'Foo' ),
 			new TitleValue( NS_TEMPLATE, 'Bar' ),
@@ -90,12 +85,29 @@ class SearchStrategyTest extends MediaWikiUnitTestCase {
 			new TitleValue( NS_CATEGORY, 'Baz' ),
 			new TitleValue( NS_CATEGORY, 'Boom' ),
 		];
+		$taskType = new TemplateBasedTaskType(
+			'copyedit',
+			TaskType::DIFFICULTY_EASY,
+			[],
+			[ new TitleValue( NS_TEMPLATE, 'Copyedit' ) ],
+			$excludedTemplates,
+			$excludedCategories
+		);
+		$taskTypeHandlerRegistry = $this->createMock( TaskTypeHandlerRegistry::class );
+		$configurationValidator = $this->createMock( ConfigurationValidator::class );
+		$titleParser = $this->createNoOpMock( TitleParser::class );
+		$taskTypeHandler = new TemplateBasedTaskTypeHandler(
+			$configurationValidator,
+			$titleParser
+		);
+		$taskTypeHandlerRegistry->method( 'getByTaskType' )->willReturn( $taskTypeHandler );
+
 		$searchStrategy = new SearchStrategy( $taskTypeHandlerRegistry,
-			new StaticConfigurationLoader( [], [], $excludedTemplates, $excludedCategories ) );
+			new StaticConfigurationLoader( [], [] ) );
 
 		$queries = $searchStrategy->getQueries( [ $taskType ], [] );
 		$this->assertQueryStrings( $queries, [
-			'hastemplate:"Copyedit" -hastemplate:"Foo|Bar" -incategory:"Baz|Boom"',
+			'-hastemplate:"Foo|Bar" -incategory:"Baz|Boom" hastemplate:"Copyedit"',
 		] );
 	}
 

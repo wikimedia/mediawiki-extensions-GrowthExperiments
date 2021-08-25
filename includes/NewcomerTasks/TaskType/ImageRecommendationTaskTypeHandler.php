@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\RecommendationSubmissionHandler;
 use InvalidArgumentException;
+use TitleParser;
 use Wikimedia\Assert\Assert;
 
 class ImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
@@ -29,15 +30,17 @@ class ImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 
 	/**
 	 * @param ConfigurationValidator $configurationValidator
+	 * @param TitleParser $titleParser
 	 * @param RecommendationProvider $recommendationProvider
 	 * @param AddImageSubmissionHandler $submissionHandler
 	 */
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
+		TitleParser $titleParser,
 		RecommendationProvider $recommendationProvider,
 		AddImageSubmissionHandler $submissionHandler
 	) {
-		parent::__construct( $configurationValidator );
+		parent::__construct( $configurationValidator, $titleParser );
 		Assert::parameterType( ImageRecommendationProvider::class, $recommendationProvider,
 			'$recommendationProvider' );
 		$this->recommendationProvider = $recommendationProvider;
@@ -68,7 +71,13 @@ class ImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	/** @inheritDoc */
 	public function createTaskType( string $taskTypeId, array $config ): TaskType {
 		$extraData = [ 'learnMoreLink' => $config['learnmore'] ?? null ];
-		$taskType = new ImageRecommendationTaskType( $taskTypeId, $config['group'], $extraData );
+		$taskType = new ImageRecommendationTaskType(
+			$taskTypeId,
+			$config['group'],
+			$extraData,
+			$this->parseExcludedTemplates( $config ),
+			$this->parseExcludedCategories( $config )
+		);
 		$taskType->setHandlerId( $this->getId() );
 		return $taskType;
 	}
@@ -78,7 +87,7 @@ class ImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 		if ( $taskType->getHandlerId() !== self::ID ) {
 			throw new InvalidArgumentException( '$taskType must be an image recommendation task type' );
 		}
-		return 'hasrecommendation:image';
+		return parent::getSearchTerm( $taskType ) . 'hasrecommendation:image';
 	}
 
 	/** @inheritDoc */

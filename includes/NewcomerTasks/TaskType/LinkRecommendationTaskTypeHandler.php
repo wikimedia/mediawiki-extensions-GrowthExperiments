@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\RecommendationSubmissionHandler;
 use InvalidArgumentException;
+use TitleParser;
 use Wikimedia\Assert\Assert;
 
 class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
@@ -26,22 +27,29 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 
 	/** @var AddLinkSubmissionHandler */
 	private $submissionHandler;
+	/**
+	 * @var TitleParser
+	 */
+	private $titleParser;
 
 	/**
 	 * @param ConfigurationValidator $configurationValidator
+	 * @param TitleParser $titleParser
 	 * @param RecommendationProvider $recommendationProvider
 	 * @param AddLinkSubmissionHandler $submissionHandler
 	 */
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
+		TitleParser $titleParser,
 		RecommendationProvider $recommendationProvider,
 		AddLinkSubmissionHandler $submissionHandler
 	) {
 		Assert::parameterType( LinkRecommendationProvider::class, $recommendationProvider,
 			'$recommendationProvider' );
-		parent::__construct( $configurationValidator );
+		parent::__construct( $configurationValidator, $titleParser );
 		$this->recommendationProvider = $recommendationProvider;
 		$this->submissionHandler = $submissionHandler;
+		$this->titleParser = $titleParser;
 	}
 
 	/** @inheritDoc */
@@ -69,7 +77,15 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	public function createTaskType( string $taskTypeId, array $config ): TaskType {
 		$extraData = [ 'learnMoreLink' => $config['learnmore'] ?? null ];
 		$settings = array_intersect_key( $config, LinkRecommendationTaskType::DEFAULT_SETTINGS );
-		$taskType = new LinkRecommendationTaskType( $taskTypeId, $config['group'], $settings, $extraData );
+
+		$taskType = new LinkRecommendationTaskType(
+			$taskTypeId,
+			$config['group'],
+			$settings,
+			$extraData,
+			$this->parseExcludedTemplates( $config ),
+			$this->parseExcludedCategories( $config )
+		);
 		$taskType->setHandlerId( $this->getId() );
 		return $taskType;
 	}
@@ -79,7 +95,7 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 		if ( $taskType->getHandlerId() !== self::ID ) {
 			throw new InvalidArgumentException( '$taskType must be a link recommendation task type' );
 		}
-		return 'hasrecommendation:link';
+		return parent::getSearchTerm( $taskType ) . 'hasrecommendation:link';
 	}
 
 	/** @inheritDoc */

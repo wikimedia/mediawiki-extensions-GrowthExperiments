@@ -63,12 +63,10 @@ class SearchStrategy {
 				} elseif ( $topic instanceof MorelikeBasedTopic ) {
 					$topicTerm = $this->getMorelikeBasedTopicTerm( [ $topic ] );
 				}
-				$excludedTemplatesTerm = $this->getExcludedTemplatesTerm();
-				$excludedCategoriesTerm = $this->getExcludedCategoriesTerm();
 				$pageIdTerm = $pageIds ? $this->getPageIdTerm( $pageIds ) : null;
 				$excludedPageIdTerm = $excludePageIds ? $this->getExcludedPageIdTerm( $excludePageIds ) : null;
 				$queryString = implode( ' ', array_filter( [ $typeTerm, $topicTerm,
-					$excludedTemplatesTerm, $excludedCategoriesTerm, $pageIdTerm, $excludedPageIdTerm ] ) );
+					$pageIdTerm, $excludedPageIdTerm ] ) );
 
 				$queryId = $taskType->getId() . ':' . ( $topic ? $topic->getId() : '-' );
 				$query = new SearchQuery( $queryId, $queryString, $taskType, $topic );
@@ -100,36 +98,6 @@ class SearchStrategy {
 	 */
 	protected function getTemplateTerm( array $templates ) {
 		return 'hastemplate:' . $this->escapeSearchTitleList( $templates );
-	}
-
-	/**
-	 * @param LinkTarget[] $categories
-	 * @return string
-	 */
-	private function getCategoryTerm( array $categories ) {
-		return 'incategory:' . $this->escapeSearchTitleList( $categories );
-	}
-
-	/**
-	 * @return string|null
-	 */
-	private function getExcludedTemplatesTerm() {
-		$excludedTemplates = $this->configurationLoader->getExcludedTemplates();
-		if ( $excludedTemplates ) {
-			return '-' . $this->getTemplateTerm( $excludedTemplates );
-		}
-		return null;
-	}
-
-	/**
-	 * @return string|null
-	 */
-	private function getExcludedCategoriesTerm() {
-		$excludedCategories = $this->configurationLoader->getExcludedCategories();
-		if ( $excludedCategories ) {
-			return '-' . $this->getCategoryTerm( $excludedCategories );
-		}
-		return null;
 	}
 
 	/**

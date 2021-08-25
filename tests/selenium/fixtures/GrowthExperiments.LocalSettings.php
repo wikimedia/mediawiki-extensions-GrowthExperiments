@@ -8,7 +8,6 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
-use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use MediaWiki\MediaWikiServices;
 
 # Enable under-development features still behind feature flag:
@@ -24,20 +23,19 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 	$linkRecommendationTaskType = new LinkRecommendationTaskType(
 		'link-recommendation', TaskType::DIFFICULTY_EASY, []
 	);
-	$copyeditTaskType = new TemplateBasedTaskType(
-		'link-recommendation', TaskType::DIFFICULTY_MEDIUM, [], []
-	);
 
 	# Mock the task suggester to specify what article(s) will be suggested.
 	$services->redefineService(
 		'GrowthExperimentsTaskSuggesterFactory',
 		static function () use (
-			$imageRecommendationTaskType, $linkRecommendationTaskType, $copyeditTaskType, $services
+			$imageRecommendationTaskType, $linkRecommendationTaskType, $services
 		): TaskSuggesterFactory {
 			return new StaticTaskSuggesterFactory( [
 				new Task( $imageRecommendationTaskType, new TitleValue( NS_MAIN, "Ma'amoul" ) ),
 				new Task( $linkRecommendationTaskType, new TitleValue( NS_MAIN, 'Douglas Adams' ) ),
-				new Task( $copyeditTaskType, new TitleValue( NS_MAIN, "The_Hitchhiker's_Guide_to_the_Galaxy" ) )
+				new Task(
+					$linkRecommendationTaskType, new TitleValue( NS_MAIN, "The_Hitchhiker's_Guide_to_the_Galaxy" )
+				)
 			], $services->getTitleFactory() );
 		}
 	);

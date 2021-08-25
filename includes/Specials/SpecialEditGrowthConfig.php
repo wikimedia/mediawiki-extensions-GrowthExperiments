@@ -12,6 +12,7 @@ use HTMLForm;
 use MediaWiki\Revision\RevisionLookup;
 use MWTimestamp;
 use OOUI\ButtonWidget;
+use OOUI\IconWidget;
 use PageProps;
 use PermissionsError;
 use Status;
@@ -101,6 +102,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 * @param string|null $par
 	 */
 	public function execute( $par ) {
+		$this->getOutput()->enableOOUI();
 		$config = $this->getConfig();
 		$this->setConfigPage(
 			'geconfig',
@@ -341,15 +343,58 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		];
 
 		// Add fields for suggested edits config (stored in MediaWiki:NewcomerTasks.json)
-		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $group ) {
+		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $taskTypeData ) {
+			$isMachineSuggestionTaskType = in_array(
+				$taskType,
+				NewcomerTasksValidator::SUGGESTED_EDITS_MACHINE_SUGGESTIONS_TASK_TYPES
+			);
+			$descriptors["newcomertasks-${taskType}Info"] = [
+				'type' => 'info',
+				// TODO: It looks nicer to have each task type in its own section, but that's a bigger
+				// reorganization.
+				'default' => '<h3>' . new IconWidget( [ 'icon' => $taskTypeData['icon'] ] ) . '  ' .
+					$this->msg( "growthexperiments-homepage-suggestededits-tasktype-name-$taskType" )->parse() .
+					'</h3>',
+				'raw' => true,
+				'section' => 'newcomertasks',
+			];
 			$descriptors["newcomertasks-${taskType}Templates"] = [
+				'type' => 'titlesmultiselect',
+				'disabled' => $isMachineSuggestionTaskType,
+				'exists' => $pagesMustExist,
+				'namespace' => NS_TEMPLATE,
+				// TODO: This should be relative => true in an ideal world, see T285750 and
+				// T285748 for blockers
+				'relative' => false,
+				'label-message' => $isMachineSuggestionTaskType ?
+					"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates" :
+					"growthexperiments-edit-config-newcomer-tasks-$taskType-templates",
+				'required' => false,
+				'section' => 'newcomertasks'
+			];
+			$descriptors["newcomertasks-${taskType}ExcludedTemplates"] = [
 				'type' => 'titlesmultiselect',
 				'exists' => $pagesMustExist,
 				'namespace' => NS_TEMPLATE,
 				// TODO: This should be relative => true in an ideal world, see T285750 and
 				// T285748 for blockers
 				'relative' => false,
-				'label-message' => "growthexperiments-edit-config-newcomer-tasks-$taskType-templates",
+				'label-message' => $this->msg(
+					"growthexperiments-edit-config-newcomer-tasks-excluded-templates"
+				),
+				'required' => false,
+				'section' => 'newcomertasks'
+			];
+			$descriptors["newcomertasks-${taskType}ExcludedCategories"] = [
+				'type' => 'titlesmultiselect',
+				'exists' => $pagesMustExist,
+				'namespace' => NS_CATEGORY,
+				// TODO: This should be relative => true in an ideal world, see T285750 and
+				// T285748 for blockers
+				'relative' => false,
+				'label-message' => $this->msg(
+					"growthexperiments-edit-config-newcomer-tasks-excluded-categories"
+				),
 				'required' => false,
 				'section' => 'newcomertasks'
 			];
@@ -557,6 +602,22 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 						->getPrefixedText();
 				}, $newcomerTasksConfig[$taskType]['templates'] ?? [] )
 			);
+			$descriptors["newcomertasks-${taskType}ExcludedTemplates"]['default'] = implode(
+				"\n",
+				array_map( function ( $rawTitle ) {
+					return $this->titleFactory
+						->newFromTextThrow( $rawTitle, NS_TEMPLATE )
+						->getPrefixedText();
+				}, $newcomerTasksConfig[$taskType]['excludedTemplates'] ?? [] )
+			);
+			$descriptors["newcomertasks-${taskType}ExcludedCategories"]['default'] = implode(
+				"\n",
+				array_map( function ( $rawTitle ) {
+					return $this->titleFactory
+						->newFromTextThrow( $rawTitle, NS_CATEGORY )
+						->getPrefixedText();
+				}, $newcomerTasksConfig[$taskType]['excludedCategories'] ?? [] )
+			);
 			$descriptors["newcomertasks-${taskType}Learnmore"]['default'] =
 				$newcomerTasksConfig[$taskType]['learnmore'] ?? '';
 		}
@@ -665,8 +726,10 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				}
 			}
 
-			if ( strpos( $name, '-' ) === false ) {
-				$dataToSave[$prefix][$name] = $data[$nameRaw];
+			// Ignore fields with dashes except for newcomertasks, where task types
+			// can have a dash, e.g. 'link-recommendation'
+			if ( $prefix === 'newcomertasks' || strpos( $name, '-' ) === false ) {
+				$dataToSave[$prefix][$name] = $data[$nameRaw] ?? 'false';
 
 				// Basic normalization
 				if ( $dataToSave[$prefix][$name] === 'true' ) {
@@ -690,25 +753,46 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 */
 	private function normalizeSuggestedEditsConfig( array $data ): array {
 		$normalizedData = [];
-		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $group ) {
-			$templates = array_filter( array_map( function ( string $template ) {
+		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $taskTypeData ) {
+			$templates = array_values( array_filter( array_map( function ( string $template ) {
 				$title = $this->titleFactory->newFromText( $template );
 				if ( $title === null ) {
 					return null;
 				}
 				return $title->getText();
-			}, explode( "\n", $data["${taskType}Templates"] ) ) );
-			if ( $templates === [] ) {
-				// Do not save tasks with no templates
+			}, explode( "\n", $data["${taskType}Templates"] ?? '' ) ) ) );
+			if ( $templates === [] &&
+				!in_array( $taskType, NewcomerTasksValidator::SUGGESTED_EDITS_MACHINE_SUGGESTIONS_TASK_TYPES )
+			) {
+				// Do not save template-based tasks with no templates
 				continue;
 			}
+			$excludedTemplates = array_values( array_filter( array_map( function ( string $template ) {
+				$title = $this->titleFactory->newFromText( $template );
+				if ( $title === null ) {
+					return null;
+				}
+				return $title->getText();
+			}, explode( "\n", $data["${taskType}ExcludedTemplates"] ?? '' ) ) ) );
+
+			$excludedCategories = array_values( array_filter( array_map( function ( string $category ) {
+				$title = $this->titleFactory->newFromText( $category );
+				if ( $title === null ) {
+					return null;
+				}
+				return $title->getText();
+			}, explode( "\n", $data["${taskType}ExcludedCategories"] ?? '' ) ) ) );
+
 			$normalizedData[$taskType] = [
-				'group' => $group,
-				'templates' => $templates
+				'group' => $taskTypeData['difficulty'],
+				'templates' => $templates,
+				'excludedTemplates' => $excludedTemplates,
+				'excludedCategories' => $excludedCategories,
+				'type' => $taskTypeData['handler-id'],
 			];
 
 			// Add learnmore link if specified
-			if ( $data["${taskType}Learnmore"] !== '' ) {
+			if ( isset( $data["${taskType}Learnmore"] ) ) {
 				$normalizedData[$taskType]['learnmore'] = $data["${taskType}Learnmore"];
 			}
 		}

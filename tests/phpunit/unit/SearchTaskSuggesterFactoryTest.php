@@ -24,7 +24,7 @@ abstract class SearchTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 		return [
 			'success' => [
 				'taskTypes' => [
-					new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY, [], [] ),
+					new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY, [], [], [] ),
 				],
 				'topics' => [ new Topic( 't' ) ],
 				'expectedError' => null,
@@ -36,7 +36,7 @@ abstract class SearchTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 			],
 			'topic error' => [
 				'taskTypes' => [
-					new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY, [], [] ),
+					new TemplateBasedTaskType( 'copyedit', TaskType::DIFFICULTY_EASY, [], [], [] ),
 				],
 				'topics' => $error,
 				'expectedError' => $error,
