@@ -1,0 +1,35 @@
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
+@import '../../homepage/ext.growthExperiments.mixins.less';
+
+.ge-addlink-mwSaveDialog {
+	.ge-addlink-mwSaveDialog-table-data {
+		padding: 0;
+		text-align: left;
+		color: @wmui-color-base10;
+		.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 14px, @targetLineHeight: 27px );
+
+		&:last-child {
+			text-align: right;
+		}
+
+		.ve-ui-mwMobileSaveDialog& {
+			.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 16px, @targetLineHeight: 32px );
+		}
+
+		.oo-ui-icon-link {
+			min-width: 16px;
+			min-height: 16px;
+			width: 1.14285714em;
+			height: 1.14285714em;
+			margin-left: 6px;
+			margin-right: 6px;
+			// close to @wmui-color-base20
+			opacity: 0.65;
+		}
+
+		.oo-ui-icon-subtract {
+			// close to @wmui-color-base20
+			opacity: 0.65;
+		}
+	}
+}

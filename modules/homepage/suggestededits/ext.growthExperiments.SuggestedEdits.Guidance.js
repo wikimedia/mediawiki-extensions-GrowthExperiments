@@ -13,74 +13,32 @@
 		/* eslint-enable no-jquery/no-global-selector */
 		$editLink = $( editLinkWrapper ).find( 'a' ),
 		skin = mw.config.get( 'skin' ),
-		AddLinkOnboarding = require( 'ext.growthExperiments.AddLink.onboarding' ),
-		LinkSuggestionInteractionLogger = require( '../addlink/LinkSuggestionInteractionLogger.js' ),
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		taskTypeId = suggestedEditSession.taskType,
 		guidancePrefName = 'growthexperiments-homepage-suggestededits-guidance-blue-dot',
-		errorDialogOnFailure = function ( error ) {
-			var logger = new LinkSuggestionInteractionLogger( {
-				/* eslint-disable camelcase */
-				is_mobile: OO.ui.isMobile(),
-				active_interface: 'nosuggestions_dialog'
-				/* eslint-enable camelcase */
-			} );
-			var wiki = mw.config.get( 'wgDBname' );
-
-			mw.log.error( error );
-			mw.errorLogger.logError( new Error( error ), 'error.growthexperiments' );
-			mw.track( 'counter.MediaWiki.GrowthExperiments.AddLink.nosuggestions.' + wiki, 1 );
-
-			logger.log( 'impression' );
-
-			OO.ui.alert( mw.message( 'growthexperiments-addlink-no-suggestions-found-dialog-message' ).text(), {
-				actions: [ { action: 'accept', label: mw.message( 'growthexperiments-addlink-no-suggestions-found-dialog-button' ).text(), flags: 'primary' } ]
-			} ).done( function () {
-				logger.log( 'close' );
-				window.location.href = mw.Title.newFromText( 'Special:Homepage' ).getUrl();
-			} );
-		},
+		StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEdit' ),
 		guidancePrefValue;
 
-	if ( taskTypeId === 'link-recommendation' &&
-		mw.config.get( 'wgGELinkRecommendationsFrontendEnabled' ) &&
-		suggestedEditSession.taskState === 'started' ) {
-		if ( !suggestedEditSession.taskData ) {
-			errorDialogOnFailure( 'Missing task data' );
-		} else if ( suggestedEditSession.taskData.error ) {
-			errorDialogOnFailure( suggestedEditSession.taskData.error );
-		} else {
-
+	if ( StructuredTaskPreEdit.shouldInitializeStructuredTask() ) {
+		StructuredTaskPreEdit.checkTaskData().then( function () {
 			if ( OO.ui.isMobile() ) {
-				AddLinkOnboarding.showDialogIfEligible();
+				StructuredTaskPreEdit.showAddLinkOnboardingIfEligible();
 				// If we're on mobile and can add link recommendations, then rewrite the main
 				// edit link on read mode to open "section=all", and hide section edit buttons.
 				// The AddLink plugin only works when section=all is used.
-				var editUri = new mw.Uri( $editLink.attr( 'href' ) );
-				editUri.query.section = 'all';
-				$editLink.attr( 'href', editUri.toString() );
+				StructuredTaskPreEdit.updateEditLinkSection( $editLink, 'all' );
 				// eslint-disable-next-line no-jquery/no-global-selector
 				$( '#mw-content-text' ).find( '.mw-editsection' ).hide();
 			}
 
 			if ( sourceEditingLinkWrapper && sourceEditingLinkWrapper !== editLinkWrapper ) {
-				// FIXME: When edit mode toggle is implemented, remove this (T269653)
+				// FIXME: When edit mode toggle is supported in WikiEditor, remove this (T285785)
 				sourceEditingLinkWrapper.remove();
 			}
-			mw.hook( 've.loadModules' ).add( function ( addPlugin ) {
-				// Either the desktop or the mobile module will be registered, but not both.
-				// Start with both, filter out the unregistered one, and add the remaining one
-				// as a VE plugin.
-				[
-					'ext.growthExperiments.AddLink.desktop',
-					'ext.growthExperiments.AddLink.mobile'
-				].filter( mw.loader.getState ).forEach( function ( module ) {
-					addPlugin( function () {
-						return mw.loader.using( module );
-					} );
-				} );
-			} );
-		}
+			StructuredTaskPreEdit.loadEditModule();
+		} ).catch( function ( error ) {
+			StructuredTaskPreEdit.showErrorDialogOnFailure( error );
+		} );
 	}
 
 	try {

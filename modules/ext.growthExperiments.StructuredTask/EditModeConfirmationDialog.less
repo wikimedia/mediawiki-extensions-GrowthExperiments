@@ -1,0 +1,31 @@
+@import '../homepage/ext.growthExperiments.mixins.less';
+
+.mw-ge-edit-mode-confirmation-dialog {
+	@mobileFontSize: 16px;
+	@desktopFontSize: 14px;
+
+	.oo-ui-messageDialog-text {
+		.oo-ui-messageDialog-title {
+			.rel-font-size-and-line-height( @parentFontSize: @mobileFontSize, @targetFontSize: 18.28px, @targetLineHeight: 26px );
+			text-align: left;
+			margin-bottom: 1em;
+			font-weight: bold;
+		}
+
+		.oo-ui-messageDialog-message {
+			.rel-font-size-and-line-height( @parentFontSize: @mobileFontSize, @targetFontSize: 16px, @targetLineHeight: 26.4px );
+		}
+	}
+
+	&-desktop {
+		.oo-ui-messageDialog-text {
+			.oo-ui-messageDialog-title {
+				.rel-font-size-and-line-height( @parentFontSize: @desktopFontSize, @targetFontSize: 16px, @targetLineHeight: 22.8px );
+			}
+
+			.oo-ui-messageDialog-message {
+				.rel-font-size-and-line-height( @parentFontSize: @desktopFontSize, @targetFontSize: 14px, @targetLineHeight: 22.4px );
+			}
+		}
+	}
+}

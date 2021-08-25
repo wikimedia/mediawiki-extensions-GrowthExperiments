@@ -1,0 +1,23 @@
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
+@import 'mediawiki.ui/variables.less';
+@import '../../homepage/ext.growthExperiments.mixins.less';
+
+.mw-ge-recommendedLinkRejectionDialog {
+	.oo-ui-messageDialog-title {
+		color: @wmui-color-base10;
+		text-align: left;
+		font-weight: bold;
+		.rel-font-size( @parentFontSize: 14px, @targetFontSize: 14px );
+	}
+
+	.oo-ui-messageDialog-message {
+		margin: 0.25em 0 1em;
+		color: @colorGray5;
+	}
+
+	&-reason-wrong-target {
+		&-tip {
+			color: @colorGray5;
+		}
+	}
+}

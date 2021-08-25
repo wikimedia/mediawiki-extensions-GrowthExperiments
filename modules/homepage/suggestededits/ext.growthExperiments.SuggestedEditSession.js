@@ -27,7 +27,7 @@
 	 *
 	 * @class mw.libs.ge.SuggestedEditSession
 	 * @constructor
-	 * @private UseSuggestedEditSession.getInstance()
+	 * @private Use SuggestedEditSession.getInstance()
 	 */
 	function SuggestedEditSession() {
 		OO.EventEmitter.call( this );
