@@ -17,7 +17,6 @@ use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
-use GrowthExperiments\HomepageModules\Tutorial;
 use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
@@ -516,10 +515,6 @@ class HomepageHooks implements
 		];
 
 		$preferences[ self::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN ] = [
-			'type' => 'api',
-		];
-
-		$preferences[ Tutorial::TUTORIAL_PREF ] = [
 			'type' => 'api',
 		];
 
