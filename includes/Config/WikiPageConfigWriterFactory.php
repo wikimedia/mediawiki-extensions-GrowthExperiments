@@ -64,7 +64,7 @@ class WikiPageConfigWriterFactory {
 	): WikiPageConfigWriter {
 		$performerTmp = $performer
 			?? $this->systemUser
-			?? User::newSystemUser( 'MediaWiki default' );
+			?? User::newSystemUser( 'MediaWiki default', [ 'steal' => true ] );
 		if ( $performerTmp === null ) {
 			throw new InvalidArgumentException( 'Invalid performer passed' );
 		}
