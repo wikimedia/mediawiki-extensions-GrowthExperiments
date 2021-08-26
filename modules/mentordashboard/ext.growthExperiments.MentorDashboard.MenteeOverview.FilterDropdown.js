@@ -38,7 +38,7 @@
 
 		// prepare submit button
 		this.filterDropdownSubmit = new OO.ui.ButtonWidget( {
-			label: mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit' ),
+			label: mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter' ),
 			classes: [ 'growthexperiments-mentor-dashboard-module-mentee-overview-submit-btn' ]
 		} );
 		this.filterDropdownSubmit.connect( this, {

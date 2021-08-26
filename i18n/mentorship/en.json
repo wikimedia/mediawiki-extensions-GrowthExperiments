@@ -29,7 +29,6 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title": "Filter to mentees active in last $2 {{PLURAL:$1|month|months}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-headline": "Starred mentees",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Only show starred mentees",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Submit",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Search",
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "active $1 ago",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "unknown",
