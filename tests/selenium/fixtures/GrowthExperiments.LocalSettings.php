@@ -1,5 +1,6 @@
 <?php
 
+use GrowthExperiments\NewcomerTasks\AddImage\SubpageImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\SubpageLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
@@ -47,3 +48,7 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 $wgHooks['MediaWikiServices'][] = SubpageLinkRecommendationProvider::class . '::onMediaWikiServices';
 $wgHooks['ContentHandlerDefaultModelFor'][] =
 	SubpageLinkRecommendationProvider::class . '::onContentHandlerDefaultModelFor';
+# Same for image recommendations, with addimage.json and http://image-suggestion-api.wmcloud.org/?doc
+$wgHooks['MediaWikiServices'][] = SubpageImageRecommendationProvider::class . '::onMediaWikiServices';
+$wgHooks['ContentHandlerDefaultModelFor'][] =
+	SubpageImageRecommendationProvider::class . '::onContentHandlerDefaultModelFor';

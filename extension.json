@@ -1682,6 +1682,10 @@
 			"description": "Global ON/OFF switch for image recommendations.",
 			"value": true
 		},
+		"GEImageRecommendationServiceUrl": {
+			"description": "Root URL of the image recommendation service (no trailing slash).",
+			"value": false
+		},
 		"GELinkRecommendationServiceUrl": {
 			"description": "Root URL of the link recommendation service.",
 			"value": false

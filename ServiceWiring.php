@@ -25,6 +25,8 @@ use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Mentorship\Store\MultiWriteMentorStore;
 use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\AddLinkSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddLink\DbBackedLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
@@ -133,6 +135,21 @@ return [
 		MediaWikiServices $services
 	): HomepageModuleRegistry {
 		return new HomepageModuleRegistry( $services );
+	},
+
+	'GrowthExperimentsImageRecommendationProvider' => static function (
+		MediaWikiServices $services
+	): ImageRecommendationProvider {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$config = $growthServices->getGrowthConfig();
+		return new ServiceImageRecommendationProvider(
+			$services->getTitleFactory(),
+			$services->getHttpRequestFactory(),
+			$config->get( 'GEImageRecommendationServiceUrl' ),
+			'wikipedia',
+			$services->getContentLanguage()->getCode(),
+			null
+		);
 	},
 
 	'GrowthExperimentsLinkRecommendationHelper' => static function (
