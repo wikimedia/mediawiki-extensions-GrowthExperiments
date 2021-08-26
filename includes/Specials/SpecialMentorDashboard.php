@@ -2,15 +2,25 @@
 
 namespace GrowthExperiments\Specials;
 
+use DeferredUpdates;
+use EventLogging;
+use ExtensionRegistry;
 use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
 use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Util;
 use Html;
 use PermissionsError;
 use SpecialPage;
 use User;
 
 class SpecialMentorDashboard extends SpecialPage {
+
+	/** @var string Versioned schema URL for $schema field */
+	private const SCHEMA_VERSIONED = '/analytics/mediawiki/mentor_dashboard/visit/1.0.0';
+
+	/** @var string Stream name for EventLogging::submit */
+	private const STREAM = 'mediawiki.mentor_dashboard.visit';
 
 	/** @var MentorDashboardModuleRegistry */
 	private $mentorDashboardModuleRegistry;
@@ -109,6 +119,26 @@ class SpecialMentorDashboard extends SpecialPage {
 		}
 
 		$out->addHTML( Html::closeElement( 'div' ) );
+
+		$this->maybeLogVisit();
+	}
+
+	/**
+	 * Log visit to the mentor dashboard, if EventLogging is installed
+	 */
+	private function maybeLogVisit(): void {
+		if ( ExtensionRegistry::getInstance()->isLoaded( 'EventLogging' ) ) {
+			DeferredUpdates::addCallableUpdate( function () {
+				EventLogging::submit(
+					self::STREAM,
+					[
+						'$schema' => self::SCHEMA_VERSIONED,
+						'user_id' => $this->getUser()->getId(),
+						'is_mobile' => Util::isMobile( $this->getSkin() )
+					]
+				);
+			} );
+		}
 	}
 
 	/**
