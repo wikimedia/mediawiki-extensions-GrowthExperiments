@@ -6,10 +6,6 @@
 			"Mirin"
 		]
 	},
-	"growthexperiments-homepage-account-header": "Eliminita konto",
-	"growthexperiments-homepage-userpage-header": "Krei vian uzantopaĝon.",
-	"growthexperiments-homepage-userpage-body-done": "Daŭrigi laborante sur via publika profilo.",
-	"growthexperiments-homepage-userpage-button": "Krei uzantopaĝon",
 	"growthexperiments-homepage-email-button-noemail": "Aldoni retpoŝtan adreson",
 	"growthexperiments-homepage-email-button-confirmed": "Preferoj",
 	"growthexperiments-homepage-email-changelink": "ŝanĝi",
@@ -20,7 +16,6 @@
 	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Aktiva}} hodiaŭ",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|Aktiva}} hieraŭ",
 	"growthexperiments-homepage-mentorship-question-subject": "Demando de [[User:$1|$1]]",
-	"growthexperiments-homepage-tutorial-cta-text": "Lernilo",
 	"growthexperiments-specialimpact-title": "Efiko",
 	"growthexperiments-addlink-context-text-label": "Teksto",
 	"growthexperiments-addlink-skip-accept": "Preterpasi ĉiujn"

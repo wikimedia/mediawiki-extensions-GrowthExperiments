@@ -5,9 +5,6 @@
 		]
 	},
 	"tooltip-pt-homepage": "Саҳифаи аввали {{GENDER:|шумо}}",
-	"growthexperiments-homepage-start-header": "Дар инҷо {{GENDER:$1|оғоз намоед}}",
-	"growthexperiments-homepage-userpage-header": "Эҷоди саҳифаи корбарии {{GENDER:$1|Шумо}}",
-	"growthexperiments-homepage-userpage-header-done": "Вироиши саҳифаи корбарии {{GENDER:$1|Шумо}}",
 	"growthexperiments-homepage-email-changelink": "тағйир",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Иҷро шуд",
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Пайвандҳоро миёни мақолаҳо илова намудан",

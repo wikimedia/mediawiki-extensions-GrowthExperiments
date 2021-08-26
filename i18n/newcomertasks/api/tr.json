@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"Hedda"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Yeni gelenlere uygun görev önerileri alın.",
@@ -9,6 +10,7 @@
 	"apihelp-query+growthtasks-param-tasktypes": "Sonuçları sınırlamak için görev türleri. Tüm önerileri almak için boş bırakın.",
 	"apihelp-query+growthtasks-param-topics": "Görev önerilerinde tercih edilecek madde konuları.",
 	"apihelp-query+growthtasks-param-limit": "Döndürülecek maksimum görev önerisi sayısı.",
+	"apihelp-query+growthtasks-param-excludepageids": "Sorgudan hariç tutulacak sayfa kimlikleri.",
 	"apihelp-query+growthtasks-param-debug": "Çıkışa hata ayıklama verileri ekleyin.",
 	"apihelp-query+growthtasks-example-1": "Geçerli kullanıcı için kopyalama türü görevler için görev önerileri alın.",
 	"apihelp-query+growthtasks-example-2": "Sayfalar hakkında genişletilmiş bilgiler içeren mevcut kullanıcı için görev önerileri alın."
