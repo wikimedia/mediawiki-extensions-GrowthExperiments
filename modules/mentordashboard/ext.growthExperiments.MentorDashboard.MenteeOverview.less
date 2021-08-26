@@ -1,12 +1,18 @@
 @import 'mediawiki.ui/variables';
 @import 'resources/lib/ooui/wikimedia-ui-base.less';
 
-.growthexperiments-mentor-dashboard-module-mentee-overview {
+// .growthexperiments-mentor-dashboard-container is here only to make the resulting selector
+// specific enough for browsers to prefer rules that are here.
+.growthexperiments-mentor-dashboard-container .growthexperiments-mentor-dashboard-module-mentee-overview {
 	display: flow-root;
 	overflow-wrap: anywhere;
 	border: 1px solid #c8ccd1;
 	padding-bottom: 0;
 	position: relative;
+
+	h3 {
+		color: @wmui-color-base10;
+	}
 
 	.oo-ui-iconWidget {
 		opacity: 0.66;
