@@ -97,6 +97,20 @@ class NewcomerTasksUserOptionsLookup {
 	}
 
 	/**
+	 * Check if link recommendations are enabled. When true, the link-recommendation task type
+	 * should be made available to the user.
+	 * This is a temporary hack that is expected to be removed when the image recommendation A/B
+	 * test is over.
+	 * @param UserIdentity $user
+	 * @return bool
+	 */
+	public function areImageRecommendationsEnabled( UserIdentity $user ): bool {
+		return $this->config->get( 'GENewcomerTasksImageRecommendationsEnabled' )
+			&& $this->experimentUserManager->isUserInVariant( $user,
+				VariantHooks::VARIANT_IMAGE_RECOMMENDATION_ENABLED );
+	}
+
+	/**
 	 * Remove task types which the user is not supposed to see, given the link recommendation
 	 * configuration.
 	 * This is a hack that should be removed when the link recommendation A/B test is over (T278123).

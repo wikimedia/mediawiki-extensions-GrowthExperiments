@@ -37,5 +37,9 @@
 	"link-recommendation": {
 		"group": "easy",
 		"type": "link-recommendation"
+	},
+	"image-recommendation": {
+		"group": "medium",
+		"type": "image-recommendation"
 	}
 }

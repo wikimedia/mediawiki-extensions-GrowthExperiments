@@ -33,6 +33,9 @@ class VariantHooks implements
 	/** A/B testing variant with link recommendations enabled. */
 	public const VARIANT_LINK_RECOMMENDATION_ENABLED = 'linkrecommendation';
 
+	/** A/B testing variant with image recommendations enabled. */
+	public const VARIANT_IMAGE_RECOMMENDATION_ENABLED = 'imagerecommendation';
+
 	/**
 	 * This defines the allowed values for the variant preference. The default value is defined
 	 * via $wgGEHomepageDefaultVariant.
@@ -47,6 +50,7 @@ class VariantHooks implements
 		//     edits module, otherwise like C
 		self::VARIANT_CONTROL,
 		self::VARIANT_LINK_RECOMMENDATION_ENABLED,
+		self::VARIANT_IMAGE_RECOMMENDATION_ENABLED,
 	];
 
 	/** User option name for storing variants. */
