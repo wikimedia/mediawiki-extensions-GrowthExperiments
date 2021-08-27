@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"NMW03"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "Ana səhifə modulları vasitəsi ilə göndərilmiş formatlaşdırılmış sualları əldə edin",
+	"apihelp-homepagequestionstore-param-questionformat": "Sualların formatı, məsələn HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Sualların saxlanma yeri",
+	"apihelp-homepagequestionstore-param-userid": "Sualları əldə etmək üçün istifadəçi nömrəsi.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Sual yoxdur.",
+	"apihelp-growthsetmentor-summary": "İstifadəçinin mentorunu təyin et. Dəyişiklik ictimai olaraq görünəcək.",
+	"apihelp-growthsetmentor-param-mentee": "Tələbənin istifadəçi adı",
+	"apihelp-growthsetmentor-param-mentor": "Mentorun istifadəçi adı",
+	"apihelp-growthsetmentor-param-reason": "Dəyişikliyin səbəbi"
+}

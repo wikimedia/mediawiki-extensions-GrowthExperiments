@@ -32,7 +32,6 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title": "Filtrovat na nováčky aktivní v {{PLURAL:$1|posledním|posledních}} $2 {{PLURAL:$1|měsíci|měsících}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-headline": "Ohvězdičkovaní nováčci",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Pouze nováčci označení hvězdičkou",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Odeslat",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Hledat",
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "aktivní před $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "neznámé",

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"NMW03"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "İstifadəçini cari istifadəçi tərəfindən ulduzlanmış olaraq işarələyin və ya silin (şəxsi olaraq saxlanılır və jurnalda göstərilmir)",
+	"apihelp-growthstarmentee-param-gesaction": "Ediləcək fəaliyyət (<kbd>ulduzla</kbd> və ya <kbd>ulduzu sil</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Ulduzlanacaq (və ya tərsi) istifadəçi",
+	"apihelp-query+growthstarredmentees-summary": "Hal-hazırki mentorun ulduzladığı mentorların siyahısını alın"
+}

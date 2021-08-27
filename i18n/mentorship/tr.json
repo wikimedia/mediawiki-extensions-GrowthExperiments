@@ -31,7 +31,6 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title": "Son  $2 {{PLURAL:$1|gün}} içinde aktif olan danışanlara göre filtrele",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-headline": "Yıldızlı danışanlar",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Sadece yıldızlı danışanları göster",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Gönder",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Ara",
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "$1 önce aktifti",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "bilinmiyor",

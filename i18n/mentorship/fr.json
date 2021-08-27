@@ -31,7 +31,6 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title": "Filtrer les tutorés actifs dans {{PLURAL:$1|le dernier mois|les $2 derniers mois}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-headline": "Tutorés étoilés",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Afficher seulement les tutorés étoilés",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Soumettre",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Rechercher",
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "actif il y a $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "inconnu",
