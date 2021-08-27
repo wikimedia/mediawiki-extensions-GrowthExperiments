@@ -34,7 +34,7 @@ $specialPageAliases['ar'] = [
 
 /** Azerbaijani (azərbaycanca) */
 $specialPageAliases['az'] = [
-	'WelcomeSurvey' => [ 'XoşAnket' ],
+	'WelcomeSurvey' => [ 'XoşGəlmisinizAnketi', 'XoşAnket' ],
 	'Homepage' => [ 'AnaSəhifə' ],
 	'Impact' => [ 'Təsir' ],
 	'ClaimMentee' => [ 'YeniIstifadəçiTələbEdin' ],
