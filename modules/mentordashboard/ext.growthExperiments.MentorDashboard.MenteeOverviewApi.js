@@ -20,6 +20,7 @@
 			limit: 10,
 			offset: 0
 		};
+		this.nonFilterKeys = [ 'order', 'sortby', 'limit', 'offset' ];
 		this.page = 0;
 		this.totalRows = null;
 
@@ -34,13 +35,32 @@
 		// First, delete all filtering API params
 		var menteeOverviewApi = this;
 		Object.keys( this.apiParams ).forEach( function ( key ) {
-			if ( [ 'order', 'sortby', 'limit', 'offset' ].indexOf( key ) === -1 ) {
+			if ( menteeOverviewApi.nonFilterKeys.indexOf( key ) === -1 ) {
 				delete menteeOverviewApi.apiParams[ key ];
 			}
 		} );
 
 		// Then, apply passed ones
 		this.applyApiParams( filters );
+	};
+
+	MenteeOverviewApi.prototype.hasFilters = function () {
+		var menteeOverviewApi = this;
+		var res = false;
+		Object.keys( this.apiParams ).every( function ( key ) {
+			if ( res ) {
+				return false;
+			}
+
+			if ( menteeOverviewApi.nonFilterKeys.indexOf( key ) === -1 ) {
+				res = true;
+				return false;
+			}
+
+			return true;
+		} );
+
+		return res;
 	};
 
 	MenteeOverviewApi.prototype.setPrefix = function ( prefix ) {

@@ -39,6 +39,14 @@
 			pageSizeChanged: [ 'onPageSizeChanged' ]
 		} );
 
+		// construct empty screen interface
+		this.$emptyScreen = $( '<div>' ).addClass( 'growthexperiments-mentor-dashboard-mentee-overview-empty' ).append(
+			$( '<div>' ).addClass( 'growthexperiments-mentor-dashboard-mentee-overview-empty-icon' ),
+			$( '<h3>' ),
+			$( '<p>' )
+		);
+		this.$emptyScreen.hide(); // will be shown on as-needed basis by renderMenteeTable()
+
 		// Empty $element, then construct the interface
 		this.$element.html( '' );
 		this.$element.append(
@@ -95,6 +103,7 @@
 				this.filterDropdown.$element,
 				this.searchInput.$element
 			),
+			this.$emptyScreen,
 			$( '<table>' ).append(
 				$( '<thead>' ).append(
 					$( '<tr>' ).append(
@@ -245,6 +254,46 @@
 		} );
 	};
 
+	MenteeOverview.prototype.updateNoResultsScreen = function ( hasResults ) {
+		if ( hasResults ) {
+			this.$emptyScreen.hide();
+			this.$element.find( 'table' ).show();
+			$( '.growthexperiments-mentor-dashboard-module-mentee-overview-pagination' ).show();
+		} else {
+			this.$emptyScreen.show();
+			this.$element.find( 'table' ).hide();
+			$( '.growthexperiments-mentor-dashboard-module-mentee-overview-pagination' ).hide();
+		}
+
+		if ( !this.apiClient.hasFilters() ) {
+			this.$emptyScreen.find( '.growthexperiments-mentor-dashboard-mentee-overview-empty-icon' ).html(
+				new OO.ui.IconWidget( {
+					icon: 'clock'
+				} ).$element
+			);
+
+			this.$emptyScreen.find( 'h3' ).text(
+				mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline' )
+			);
+			this.$emptyScreen.find( 'p' ).text(
+				mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text' )
+			);
+		} else {
+			this.$emptyScreen.find( '.growthexperiments-mentor-dashboard-mentee-overview-empty-icon' ).html(
+				new OO.ui.IconWidget( {
+					icon: 'error'
+				} ).$element
+			);
+
+			this.$emptyScreen.find( 'h3' ).text(
+				mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline' )
+			);
+			this.$emptyScreen.find( 'p' ).text(
+				mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text' )
+			);
+		}
+	};
+
 	MenteeOverview.prototype.renderMenteeTable = function () {
 		// Make sure apiClient knows which page to return
 		this.apiClient.setPage( this.paginationWidget.getCurrentPage() - 1 );
@@ -252,6 +301,11 @@
 		// Render the table
 		var menteeOverview = this;
 		this.getData().then( function ( data ) {
+			if ( data.length === 0 ) {
+				menteeOverview.updateNoResultsScreen( false );
+				return;
+			}
+
 			var $menteeTable = $( '<tbody>' );
 			Object.keys( data ).forEach( function ( ordinalId ) {
 				var userData = data[ ordinalId ];
@@ -308,8 +362,8 @@
 			} );
 
 			// update the table itself
-			var $table = menteeOverview.$element.find( 'table' );
-			$table.find( 'tbody' ).replaceWith( $menteeTable );
+			menteeOverview.$element.find( 'tbody' ).replaceWith( $menteeTable );
+			menteeOverview.updateNoResultsScreen( true );
 
 			// update pagination info
 			menteeOverview.paginationWidget.setTotalPages( menteeOverview.apiClient.getTotalPages() );
