@@ -95,7 +95,10 @@ class FixLinkRecommendationData extends Maintenance {
 	public function init() {
 		$services = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		if ( !$growthServices->getConfig()->get( 'GEDeveloperSetup' ) && $this->hasOption( 'db-table' ) ) {
+		if ( $this->hasOption( 'db-table' )
+			&& !$this->hasOption( 'dry-run' )
+			&& !$growthServices->getGrowthConfig()->get( 'GEDeveloperSetup' )
+		) {
 			// Adding search index entries is batched in production, and takes hours. This script would delete
 			// the associated DB records in the meantime.
 			$this->fatalError( 'The --db-table option cannot be safely run in production. (If the current '
