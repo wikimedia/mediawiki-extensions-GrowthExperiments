@@ -14,6 +14,7 @@
 	"growthexperiments-config-validator-additional-fields": "Error returned by validator of Growth config (Special:EditGrowthConfig)",
 	"growthexperiments-config-validator-error": "Error returned by validator of Growth config (Special:EditGrowthConfig)",
 	"growthexperiments-config-validator-datatype-mismatch": "Error returned by validator of Growth config (Special:EditGrowthConfig)\n\n$1 is a variable name, $2 and $3 are data types.",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Error returned by validator of Growth config\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Error returned by validator of Growth config (Special:EditGrowthConfig)",
 	"growthexperiments-edit-config-disabled": "Error displayed by Special:EditGrowthConfig when community configuration is disabled\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-title": "Title of Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",

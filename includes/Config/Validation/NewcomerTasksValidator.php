@@ -38,11 +38,21 @@ class NewcomerTasksValidator implements IConfigValidator {
 		foreach ( $config as $taskId => $taskConfig ) {
 			// Fall back to legacy task type handler if none specified
 			$handlerId = $taskConfig['type'] ?? TemplateBasedTaskTypeHandler::ID;
+
+			if ( !$this->taskTypeHandlerRegistry->has( $handlerId ) ) {
+				$status->fatal(
+					'growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id',
+					$handlerId
+				);
+				continue;
+			}
+
 			$status->merge(
-				$this->taskTypeHandlerRegistry->get( $handlerId )->validateTaskTypeConfiguration(
-					$taskId,
-					$taskConfig
-				)
+				$this->taskTypeHandlerRegistry->get( $handlerId )
+					->validateTaskTypeConfiguration(
+						$taskId,
+						$taskConfig
+					)
 			);
 		}
 		return $status;

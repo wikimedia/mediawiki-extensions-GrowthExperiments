@@ -42,7 +42,7 @@ class TaskTypeHandlerRegistry {
 	/**
 	 * @param string $handlerId TaskTypeHandler ID
 	 * @return TaskTypeHandler
-	 * @throws OutOfBoundsException
+	 * @throws OutOfBoundsException when invalid $handlerId is provided
 	 */
 	public function get( string $handlerId ): TaskTypeHandler {
 		return $this->handlers[$handlerId] ?? $this->createHandler( $handlerId );
