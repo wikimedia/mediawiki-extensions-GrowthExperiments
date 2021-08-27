@@ -9,6 +9,7 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
+use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
 use Maintenance;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\UserFactory;
@@ -41,6 +42,9 @@ class UpdateMenteeData extends Maintenance {
 	/** @var ILoadBalancer */
 	private $growthLoadBalancer;
 
+	/** @var StatsdDataFactoryInterface */
+	private $dataFactory;
+
 	public function __construct() {
 		parent::__construct();
 		$this->setBatchSize( 200 );
@@ -48,6 +52,7 @@ class UpdateMenteeData extends Maintenance {
 
 		$this->addDescription( 'Update growthexperiments_mentee_data database table' );
 		$this->addOption( 'mentor', 'Username of the mentor to update the data for', false, true );
+		$this->addOption( 'statsd', 'Send timing information to statsd' );
 	}
 
 	private function initServices() {
@@ -60,6 +65,7 @@ class UpdateMenteeData extends Maintenance {
 		$this->mentorStore = $geServices->getMentorStore();
 		$this->userFactory = $services->getUserFactory();
 		$this->growthLoadBalancer = $geServices->getLoadBalancer();
+		$this->dataFactory = $services->getPerDbNameStatsdDataFactory();
 	}
 
 	public function execute() {
@@ -180,6 +186,10 @@ class UpdateMenteeData extends Maintenance {
 
 		$totalTime = time() - $startTime;
 		$this->output( "Done. Took {$totalTime} seconds.\n" );
+
+		if ( $this->hasOption( 'statsd' ) ) {
+			$this->dataFactory->timing( 'timing.growthExperiments.updateMenteeData', $totalTime );
+		}
 	}
 }
 
