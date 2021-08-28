@@ -338,6 +338,7 @@
 	};
 
 	MenteeOverview.prototype.onFilterDropdownSubmit = function ( filters ) {
+		this.paginationWidget.resetPagination(); // reset pagination (T289916)
 		this.apiClient.setFilters( filters );
 
 		// Rerender the table
@@ -345,6 +346,7 @@
 	};
 
 	MenteeOverview.prototype.onSearchInputEnter = function () {
+		this.paginationWidget.resetPagination(); // reset pagination (T289916)
 		this.apiClient.setPrefix( this.searchInput.value );
 		this.renderMenteeTable();
 	};
