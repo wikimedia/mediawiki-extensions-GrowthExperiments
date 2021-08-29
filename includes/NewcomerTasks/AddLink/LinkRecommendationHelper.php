@@ -89,50 +89,7 @@ class LinkRecommendationHelper {
 		if ( $linkRecommendation instanceof StatusValue ) {
 			throw new ErrorException( $linkRecommendation );
 		}
-
-		return $this->pruneLinkRecommendation( $linkRecommendation );
-	}
-
-	/**
-	 * Remove exclusion-listed links and optionally red links from a LinkRecommendation.
-	 * Returns null when all links have been removed.
-	 * @param LinkRecommendation $linkRecommendation
-	 * @return LinkRecommendation|null
-	 * @throws MalformedTitleException
-	 */
-	public function pruneLinkRecommendation( LinkRecommendation $linkRecommendation ): ?LinkRecommendation {
-		$excludedLinkIds = $this->linkRecommendationStore->getExcludedLinkIds(
-			$linkRecommendation->getPageId(),
-			LinkRecommendationTaskType::REJECTION_EXCLUSION_LIMIT
-		);
-		$this->linkBatchFactory->newLinkBatch(
-			array_map(
-				function ( LinkRecommendationLink $link ) {
-					return $this->titleFactory->newFromText( $link->getLinkTarget() );
-				},
-				$linkRecommendation->getLinks()
-			)
-		);
-		$goodLinks = array_filter( $linkRecommendation->getLinks(),
-			function ( LinkRecommendationLink $link ) use ( $excludedLinkIds ) {
-				$pageId = $this->titleFactory->newFromTextThrow( $link->getLinkTarget() )->getArticleID();
-				if ( $this->pruneRedLinks && !$pageId ) {
-					return false;
-				}
-				return !in_array( $pageId, $excludedLinkIds );
-			} );
-
-		if ( !$goodLinks ) {
-			return null;
-		}
-		// In most cases we could just return the original object; opt for consistency instead.
-		return new LinkRecommendation(
-			$linkRecommendation->getTitle(),
-			$linkRecommendation->getPageId(),
-			$linkRecommendation->getRevisionId(),
-			$goodLinks,
-			$linkRecommendation->getMetadata()
-		);
+		return $linkRecommendation;
 	}
 
 	/**

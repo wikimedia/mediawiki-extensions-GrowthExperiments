@@ -1635,11 +1635,17 @@
 				},
 				"link-recommendation": {
 					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\LinkRecommendationTaskTypeHandler",
-					"services": [ "GrowthExperimentsNewcomerTasksConfigurationValidator" ]
+					"services": [
+						"GrowthExperimentsNewcomerTasksConfigurationValidator",
+						"GrowthExperimentsLinkRecommendationProvider"
+					]
 				},
 				"image-recommendation": {
 					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\ImageRecommendationTaskTypeHandler",
-					"services": [ "GrowthExperimentsNewcomerTasksConfigurationValidator" ]
+					"services": [
+						"GrowthExperimentsNewcomerTasksConfigurationValidator",
+						"GrowthExperimentsImageRecommendationProvider"
+					]
 				},
 				"null": {
 					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\NullTaskTypeHandler"

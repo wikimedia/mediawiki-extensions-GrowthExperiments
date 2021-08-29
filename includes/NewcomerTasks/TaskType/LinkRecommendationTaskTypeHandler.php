@@ -2,9 +2,13 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
+use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use InvalidArgumentException;
+use Wikimedia\Assert\Assert;
 
-class LinkRecommendationTaskTypeHandler extends TaskTypeHandler {
+class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 
 	public const ID = 'link-recommendation';
 
@@ -15,9 +19,34 @@ class LinkRecommendationTaskTypeHandler extends TaskTypeHandler {
 	/** The tag prefix used for CirrusSearch\Wikimedia\WeightedTags. */
 	public const WEIGHTED_TAG_PREFIX = 'recommendation.link';
 
+	/** @var LinkRecommendationProvider */
+	private $recommendationProvider;
+
+	/**
+	 * @param ConfigurationValidator $configurationValidator
+	 * @param RecommendationProvider $recommendationProvider
+	 */
+	public function __construct(
+		ConfigurationValidator $configurationValidator,
+		RecommendationProvider $recommendationProvider
+	) {
+		Assert::parameterType( LinkRecommendationProvider::class, $recommendationProvider,
+			'$recommendationProvider' );
+		parent::__construct( $configurationValidator );
+		$this->recommendationProvider = $recommendationProvider;
+	}
+
 	/** @inheritDoc */
 	public function getId(): string {
 		return self::ID;
+	}
+
+	/**
+	 * @inheritDoc
+	 * @return LinkRecommendationProvider
+	 */
+	public function getRecommendationProvider(): RecommendationProvider {
+		return $this->recommendationProvider;
 	}
 
 	/** @inheritDoc */

@@ -11,6 +11,7 @@ use DeferredUpdates;
 use DomainException;
 use EchoAttributeManager;
 use EchoUserLocator;
+use Exception;
 use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
@@ -24,10 +25,12 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
+use GrowthExperiments\NewcomerTasks\Recommendation;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\StructuredTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use GrowthExperiments\Specials\SpecialClaimMentee;
@@ -302,50 +305,63 @@ class HomepageHooks implements
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
 		$context = $out->getContext();
+		if ( self::isHomepageEnabled( $skin->getUser() ) && Util::isMobile( $skin ) ) {
+			$out->addModuleStyles( 'ext.growthExperiments.mobileMenu.icons' );
+		}
 		if ( $context->getTitle()->inNamespaces( NS_MAIN, NS_TALK ) &&
 			SuggestedEdits::isEnabled( $context ) ) {
 			// Manage the suggested edit session.
 			$out->addModules( 'ext.growthExperiments.SuggestedEditSession' );
 		}
 
-		if ( $context->getTitle()->inNamespaces( NS_MAIN, NS_TALK ) ) {
-			$clickId = self::getClickId( $context );
-			if ( $clickId ) {
-				// Override the edit session ID.
-				// The suggested edit session is tracked on the client side, because it is
-				// specific to the browser tab, but some of the EditAttemptStep events it
-				// needs to be associated with happen early on page load so setting this
-				// on the JS side might be too late. So, we use JS to propagate the clickId
-				// to all edit links, and then use this code to set the JS variable for the
-				// pageview that's initiated by clicking on the edit link. This might be overkill.
-				$out->addJsConfigVars( [
-					'wgWMESchemaEditAttemptStepSessionId' => $clickId,
-				] );
+		$clickId = self::getClickId( $context );
+		if ( $context->getTitle()->inNamespaces( NS_MAIN, NS_TALK ) && $clickId ) {
+			// The user just clicked on a suggested edit task card; we need to initialize the
+			// suggested edit session.
 
-				if (
-					$context->getRequest()->getVal( 'getasktype' ) === LinkRecommendationTaskTypeHandler::TASK_TYPE_ID
-				) {
-					try {
-						$linkRecommendations = $this->linkRecommendationHelper
-							->getLinkRecommendation( $context->getTitle() );
-						if ( $linkRecommendations ) {
-							$linkRecommendations = $linkRecommendations->toArray();
-						} else {
-							$linkRecommendations = [ 'error' => 'None of the links in the recommendation are valid' ];
-						}
-					} catch ( ErrorException $e ) {
-						$linkRecommendations = [ 'error' => $e->getErrorMessageInEnglish() ];
+			// Override the edit session ID.
+			// The suggested edit session is tracked on the client side, because it is
+			// specific to the browser tab, but some of the EditAttemptStep events it
+			// needs to be associated with happen early on page load so setting this
+			// on the JS side might be too late. So, we use JS to propagate the clickId
+			// to all edit links, and then use this code to set the JS variable for the
+			// pageview that's initiated by clicking on the edit link. This might be overkill.
+			$out->addJsConfigVars( [
+				'wgWMESchemaEditAttemptStepSessionId' => $clickId,
+			] );
+
+			$recommendationProvider = $taskType = null;
+			$taskTypeId = $context->getRequest()->getVal( 'getasktype' );
+			if ( !$taskTypeId ) {
+				Util::logError( new WikiConfigException( 'Click ID present but task type ID missing' ) );
+			} else {
+				$taskType = $this->configurationLoader->getTaskTypes()[$taskTypeId] ?? null;
+				if ( !$taskType ) {
+					Util::logError( new WikiConfigException( "No such task type: $taskTypeId" ) );
+				} else {
+					$taskTypeHandler = $this->taskTypeHandlerRegistry->getByTaskType( $taskType );
+					if ( $taskTypeHandler instanceof StructuredTaskTypeHandler ) {
+						$recommendationProvider = $taskTypeHandler->getRecommendationProvider();
 					}
-					$out->addJsConfigVars( [
-						'wgGESuggestedEditData' => $linkRecommendations
-					] );
 				}
 			}
+
+			if ( $recommendationProvider && $taskType ) {
+				$recommendation = $recommendationProvider->get( $context->getTitle(), $taskType );
+				if ( $recommendation instanceof Recommendation ) {
+					$serializedRecommendation = $recommendation->toArray();
+				} else {
+					$errorMessage = Status::wrap( $recommendation )->getWikiText( false, false, 'en' );
+					Util::logError( $recommendation->isOK()
+						? new WikiConfigException( $errorMessage )
+						: new Exception( $errorMessage ) );
+					$serializedRecommendation = [ 'error' => $errorMessage ];
+				}
+				$out->addJsConfigVars( [
+					'wgGESuggestedEditData' => $serializedRecommendation,
+				] );
+			}
 		}
-		if ( !self::isHomepageEnabled( $skin->getUser() ) || !Util::isMobile( $skin ) ) {
-			return;
-		}
-		$out->addModuleStyles( 'ext.growthExperiments.mobileMenu.icons' );
 	}
 
 	/**
