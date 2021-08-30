@@ -105,6 +105,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-publish": "Quando {{GENDER:|você}} terminar de expandir o artigo, clique em \"$1\" para salvar a {{GENDER:|sua}} edição!",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-publish": "Quando {{GENDER:|você}} terminar de expandir o artigo, vá em frente e toque no botão de seta azul para salvar a {{GENDER:|sua}} edição!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|Saiba mais sobre a expansão de artigos]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-onboarding-value": "Texto de espaço reservado, ainda não traduz.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Adicionar links ajudará as pessoas a aprender mais rápido.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|Você}} vai decidir se as palavras em um artigo no {{SITENAME}} deve ter link para outros artigos {{SITENAME}}.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "A lua é o único <mark class=\"positive\">Satélite natural</mark> que <mark class=\"positive\">orbita</mark> ao redor da  <mark class=\"positive\">Terra</mark>.",

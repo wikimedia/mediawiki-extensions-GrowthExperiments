@@ -1,0 +1,26 @@
+{
+	"@metadata": {
+		"authors": [
+			"Balyozxane"
+		]
+	},
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Rojanekirina dawî ji aliyê [[User:$1|$1]] ve $2.",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Rojanekirina dawî ji aliyê bikarherenekî anomîn $1 ve.",
+	"growthexperiments-edit-config-pretext": "Dikarî taybetmendiyên koma [[:mw:Special:MyLanguage/Growth|Mezinbûnê]] li ser vê rûpelê biguhêrî. $1 dê bi otomatîkî biguhere. Dikarî guhartinên xwe di dîroka wê rûpelê de bibînî.",
+	"growthexperiments-edit-config-pretext-unprivileged": "Bikarhênerên taybet dikarin taybetmendiyên koma [[:mw:Special:MyLanguage/Growth|Mezinbûnê]] li ser vê formê biguhêrin.",
+	"growthexperiments-edit-config-feedback-headline": "Raman û pirsên te yên li ser vê forma heye?",
+	"growthexperiments-edit-config-feedback-cta": "Pirs û fikrên xwe bibêje",
+	"growthexperiments-edit-config-error-invalid-title": "Rûpela mîhengê xelet hatiye sazkirin",
+	"growthexperiments-edit-config-edit-summary": "Kurteya guhartinê",
+	"growthexperiments-edit-config-config-changed": "Mîheng hatin guhartin. Çend deqe hewce ne heta ku hemû guhartin werin sepandin.",
+	"growthexperiments-edit-config-return-to-form": "Dikarî [[Special:EditGrowthConfig|vegerî]] forma guhartinê.",
+	"growthexperiments-edit-config-help-panel": "Mîhengên panela alîkariyê",
+	"growthexperiments-edit-config-help-panel-reading-namespaces": "Valahiyên navî yên ku tê de panela alîkariyê di moda xwendinê de berdest e",
+	"growthexperiments-edit-config-help-panel-disabled-namespaces": "Valahiyên navî yên ku tê de panela alîkariyê hem di moda xwendinê de hem jî moda guhartinê de hatiye girtin",
+	"growthexperiments-edit-config-help-panel-helpdesk-title": "Rûpela maseya alîkariyê ya ku mirov dikare bi rêya panela alîkariyê li wir pirsên xwe bike.",
+	"growthexperiments-edit-config-help-panel-post-on-top": "Divê li ser rûpela maseya alîkariyê li kû derê mirov dikare pirs bike?",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "Herî jor",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "Herî jêr",
+	"growthexperiments-edit-config-help-panel-view-more": "Rûpela ji bo \"Li zêdetir gotarên alîkariyê binêre\"",
+	"growthexperiments-edit-config-newcomertasks": "Guhartinên pêşniyazkirî"
+}

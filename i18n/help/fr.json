@@ -114,6 +114,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-publish": "Quand {{GENDER:|}}vous aurez fini de développer l’article, poursuivez en cliquant sur « $1 » pour enregistrer {{GENDER:|}}votre modification !",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-publish": "Quand {{GENDER:|}}vous aurez fini de développer l’article, poursuivez en appuyant sur la flèche bleue pour enregistrer {{GENDER:|}}votre modification !",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|En savoir plus sur le développement d’articles]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-onboarding-value": "Texte de substitution, ne pas le traduire.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "L’ajout de liens aidera les gens à apprendre plus vite.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|}}Vous déciderez si les mots dans un article de {{SITENAME}} doivent fournir un lien vers d’autres articles de {{SITENAME}}.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "La lune est le seul <mark class=\"positive\">satelite naturel</mark> qui <mark class=\"positive\">tourne</mark> autour de la <mark class=\"positive\">Terre</mark>.",

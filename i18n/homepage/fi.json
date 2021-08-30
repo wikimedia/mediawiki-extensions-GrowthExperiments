@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Joquliina",
+			"Kyykaarme",
 			"MITO",
 			"Mediawikitranslator",
 			"Nike",
@@ -12,6 +13,7 @@
 	"growthexperiments-homepage-email-header-confirmed": "Sähköpostiosoite lisätty",
 	"growthexperiments-homepage-email-button-noemail": "Lisää sähköpostiosoite",
 	"growthexperiments-homepage-email-button-unconfirmed": "Hanki uusi linkki",
+	"growthexperiments-homepage-help-dialog-title": "Kysy neuvonnasta",
 	"growthexperiments-homepage-suggestededits-edit-card": "Muokkaa",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Luo uusi artikkeli",
 	"growthexperiments-addlink-context-button-next": "Seuraava",
