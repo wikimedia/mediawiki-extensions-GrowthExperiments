@@ -774,15 +774,20 @@
 		if ( taskPreviewData.title ) {
 			fetchTasksOptions = { firstTask: taskPreviewData };
 		} else if ( taskPreviewData.noresults ) {
-			suggestedEditsModule.showCard( new NoResultsWidget( { topicMatching: topicMatching } ) );
+			suggestedEditsModule.showCard(
+				new NoResultsWidget( { topicMatching: topicMatching } )
+			);
+		} else if ( taskPreviewData.error ) {
+			suggestedEditsModule.showCard( new ErrorCardWidget() );
+			mw.log.error( 'task preview data unavailable: ' + taskPreviewData.error );
+			mw.errorLogger.logError( new Error( 'task preview data unavailable: ' +
+				taskPreviewData.error ), 'error.growthexperiments' );
 		} else {
+			// This code path shouldn't be possible with our current setup, where tasks
+			// are fetched server side and exported from SuggestedEdits.php. But keep it
+			// for now, in case that setup changes.
 			// Show an empty skeleton card, which will be overwritten once tasks are fetched.
 			suggestedEditsModule.showCard( new EditCardWidget( {} ) );
-			if ( taskPreviewData.error ) {
-				mw.log.error( 'task preview data unavailable: ' + taskPreviewData.error );
-				mw.errorLogger.logError( new Error( 'task preview data unavailable: ' +
-					taskPreviewData.error ), 'error.growthexperiments' );
-			}
 		}
 		return suggestedEditsModule.fetchTasksAndUpdateView( fetchTasksOptions ).then( function () {
 			suggestedEditsModule.filters.toggle( true );
