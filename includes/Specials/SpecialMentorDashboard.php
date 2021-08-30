@@ -20,7 +20,7 @@ class SpecialMentorDashboard extends SpecialPage {
 	private const SCHEMA_VERSIONED = '/analytics/mediawiki/mentor_dashboard/visit/1.0.0';
 
 	/** @var string Stream name for EventLogging::submit */
-	private const STREAM = 'analytics.mediawiki.mentor_dashboard.visit';
+	private const STREAM = 'mediawiki.mentor_dashboard.visit';
 
 	/** @var MentorDashboardModuleRegistry */
 	private $mentorDashboardModuleRegistry;
