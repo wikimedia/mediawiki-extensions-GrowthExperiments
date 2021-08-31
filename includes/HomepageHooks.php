@@ -972,7 +972,7 @@ class HomepageHooks implements
 		}
 		$revision = $page->getRevisionRecord();
 		$revId = $revision ? $revision->getId() : null;
-		if ( !$revId || !$page->getTitle() ) {
+		if ( !$revId ) {
 			// should not happen
 			return;
 		} elseif ( !$this->canAccessPrimary ) {

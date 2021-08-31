@@ -365,7 +365,7 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 		$wikiPage, $user, $summary, $flags, $revisionRecord, $editResult
 	) {
 		$title = $wikiPage->getTitle();
-		if ( !$title || !$title->inNamespace( NS_MEDIAWIKI ) ) {
+		if ( !$title->inNamespace( NS_MEDIAWIKI ) ) {
 			return;
 		}
 
