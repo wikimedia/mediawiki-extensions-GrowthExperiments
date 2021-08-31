@@ -2,13 +2,13 @@
 	'use strict';
 
 	function MenteeOverviewPagination( config ) {
-		config = $.extend( {
+		this.config = $.extend( {
 			pageSize: 10,
 			currentPage: 1,
 			totalPages: 1
 		}, config );
 
-		MenteeOverviewPagination.super.call( this, config );
+		MenteeOverviewPagination.super.call( this, this.config );
 
 		this.prevBtn = new OO.ui.ButtonInputWidget( {
 			framed: false,
@@ -21,9 +21,9 @@
 		this.prevBtn.connect( this, { click: [ 'onPreviousButtonClicked' ] } );
 		this.nextBtn.connect( this, { click: [ 'onNextButtonClicked' ] } );
 
-		this.pageSize = config.pageSize;
-		this.currentPage = config.currentPage;
-		this.totalPages = config.totalPages;
+		this.pageSize = this.config.pageSize;
+		this.currentPage = this.config.currentPage;
+		this.totalPages = this.config.totalPages;
 		// Will be filled with data as part of UpdatePaginationState.
 		this.$pageCounterSpan = $( '<span>' );
 		this.updatePaginationState();
@@ -110,6 +110,14 @@
 		this.showEntriesBtn.setLabel(
 			mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-show-entries', mw.language.convertNumber( this.pageSize ) )
 		);
+	};
+
+	MenteeOverviewPagination.prototype.resetPagination = function () {
+		this.pageSize = this.config.pageSize;
+		this.currentPage = this.config.currentPage;
+		this.totalPages = this.config.totalPages;
+
+		this.updatePaginationState();
 	};
 
 	MenteeOverviewPagination.prototype.onPageSizeChanged = function ( menuOptions ) {
