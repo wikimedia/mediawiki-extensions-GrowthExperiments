@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Specials;
 
 use DeferredUpdates;
+use ErrorPageError;
 use EventLogging;
 use ExtensionRegistry;
 use GrowthExperiments\DashboardModule\IDashboardModule;
@@ -83,10 +84,41 @@ class SpecialMentorDashboard extends SpecialPage {
 	}
 
 	/**
+	 * Ensure mentor dashboard is enabled
+	 *
+	 * @throws ErrorPageError
+	 */
+	private function requireMentorDashboardEnabled() {
+		if ( !$this->isEnabled() ) {
+			// Mentor dashboard is disabled, display a meaningful restriction error
+			throw new ErrorPageError(
+				'growthexperiments-mentor-dashboard-title',
+				'growthexperiments-mentor-dashboard-disabled'
+			);
+		}
+	}
+
+	/**
+	 * Ensure the automatic mentor list is configured
+	 *
+	 * @throws ErrorPageError if mentor list is missing
+	 */
+	private function requireMentorList() {
+		if ( !$this->mentorManager->getAutoMentorsListTitle() ) {
+			throw new ErrorPageError(
+				'growthexperiments-mentor-dashboard-title',
+				'growthexperiments-mentor-dashboard-misconfigured-missing-list'
+			);
+		}
+	}
+
+	/**
 	 * @inheritDoc
 	 */
 	public function execute( $par ) {
 		$this->requireLogin();
+		$this->requireMentorDashboardEnabled();
+		$this->requireMentorList();
 		parent::execute( $par );
 
 		$out = $this->getContext()->getOutput();
@@ -156,8 +188,7 @@ class SpecialMentorDashboard extends SpecialPage {
 	public function userCanExecute( User $user ) {
 		// Require both enabled wiki config and user-specific access level to
 		// be able to use the special page.
-		return $this->isEnabled() &&
-			$this->mentorManager->isMentor( $this->getUser() ) &&
+		return $this->mentorManager->isMentor( $this->getUser() ) &&
 			parent::userCanExecute( $user );
 	}
 
@@ -165,23 +196,10 @@ class SpecialMentorDashboard extends SpecialPage {
 	 * @inheritDoc
 	 */
 	public function displayRestrictionError() {
-		if ( !$this->isEnabled() ) {
-			// Mentor dashboard is disabled, display a meaningful restriction error
-			throw new PermissionsError(
-				null,
-				[ 'growthexperiments-mentor-dashboard-disabled' ]
-			);
-		}
-
-		if ( !$this->mentorManager->isMentor( $this->getUser() ) ) {
-			throw new PermissionsError(
-				null,
-				[ [ 'growthexperiments-mentor-dashboard-must-be-mentor',
-					$this->mentorManager->getAutoMentorsListTitle()->getPrefixedText() ] ]
-			);
-		}
-
-		// Otherwise, defer to the default logic
-		parent::displayRestrictionError();
+		throw new PermissionsError(
+			null,
+			[ [ 'growthexperiments-mentor-dashboard-must-be-mentor',
+				$this->mentorManager->getAutoMentorsListTitle()->getPrefixedText() ] ]
+		);
 	}
 }
