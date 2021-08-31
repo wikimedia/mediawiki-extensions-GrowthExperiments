@@ -210,9 +210,8 @@ class LinkRecommendationStore {
 			'gelr_page' => $pageId,
 			'gelr_data' => json_encode( $linkRecommendation->toArray() ),
 		];
-		$this->dbw->upsert(
+		$this->dbw->replace(
 			'growthexperiments_link_recommendations',
-			$row,
 			'gelr_revision',
 			$row,
 			__METHOD__
