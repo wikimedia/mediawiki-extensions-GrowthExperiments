@@ -34,6 +34,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkSubmissionRecorder;
+use GrowthExperiments\NewcomerTasks\AddLink\PruningLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\CirrusSearchIndexUpdater;
 use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\EventGateSearchIndexUpdater;
 use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdater;
@@ -178,10 +179,14 @@ return [
 		MediaWikiServices $services
 	): LinkRecommendationProvider {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$config = $growthServices->getConfig();
+		$config = $growthServices->getGrowthConfig();
 		$serviceUrl = $config->get( 'GELinkRecommendationServiceUrl' );
+		// In developer setups, the recommendation service is usually suggestion link targets
+		// from a different wiki, which might end up being red links locally. Allow these,
+		// otherwise we'd get mostly failures when trying to generate new tasks.
+		$pruneRedLinks = !$config->get( 'GEDeveloperSetup' );
 		if ( $serviceUrl ) {
-			return new ServiceLinkRecommendationProvider(
+			$rawProvider = new ServiceLinkRecommendationProvider(
 				$services->getTitleFactory(),
 				$services->getRevisionLookup(),
 				$services->getHttpRequestFactory(),
@@ -191,6 +196,14 @@ return [
 				$config->get( 'GELinkRecommendationServiceAccessToken' ),
 				$config->get( 'GELinkRecommendationServiceTimeout' )
 			);
+			return new PruningLinkRecommendationProvider(
+				$services->getTitleFactory(),
+				$services->getLinkBatchFactory(),
+				$growthServices->getLinkRecommendationStore(),
+				$rawProvider,
+				$pruneRedLinks
+			);
+
 		} else {
 			return new StaticLinkRecommendationProvider( [],
 				StatusValue::newFatal( 'rawmessage', '$wgGELinkRecommendationServiceUrl not set!' ) );
@@ -201,13 +214,24 @@ return [
 		MediaWikiServices $services
 	): LinkRecommendationProvider {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$useFallback = $growthServices->getConfig()->get( 'GELinkRecommendationFallbackOnDBMiss' );
+		$useFallback = $growthServices->getGrowthConfig()->get( 'GELinkRecommendationFallbackOnDBMiss' );
 		$uncachedProvider = $services->get( 'GrowthExperimentsLinkRecommendationProviderUncached' );
+		// In developer setups, the recommendation service is usually suggestion link targets
+		// from a different wiki, which might end up being red links locally. Allow these,
+		// otherwise we'd get mostly failures when trying to generate new tasks.
+		$pruneRedLinks = !$growthServices->getGrowthConfig()->get( 'GEDeveloperSetup' );
 		if ( !$uncachedProvider instanceof StaticLinkRecommendationProvider ) {
-			return new DbBackedLinkRecommendationProvider(
+			$rawProvider = new DbBackedLinkRecommendationProvider(
 				GrowthExperimentsServices::wrap( $services )->getLinkRecommendationStore(),
 				$useFallback ? $uncachedProvider : null,
 				$services->getTitleFormatter()
+			);
+			return new PruningLinkRecommendationProvider(
+				$services->getTitleFactory(),
+				$services->getLinkBatchFactory(),
+				$growthServices->getLinkRecommendationStore(),
+				$rawProvider,
+				$pruneRedLinks
 			);
 		} else {
 			return $uncachedProvider;

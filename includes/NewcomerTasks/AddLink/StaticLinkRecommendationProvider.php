@@ -5,6 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\AddLink;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Linker\LinkTarget;
+use OutOfBoundsException;
 use StatusValue;
 use Wikimedia\Assert\Assert;
 
@@ -13,16 +14,16 @@ class StaticLinkRecommendationProvider implements LinkRecommendationProvider {
 	/** @var (LinkRecommendation|StatusValue)[] */
 	private $recommendations;
 
-	/** @var LinkRecommendation|StatusValue */
+	/** @var LinkRecommendation|StatusValue|null */
 	private $default;
 
 	/**
 	 * @param (LinkRecommendation|StatusValue)[] $recommendations Title => recommendation
 	 *   where title is in a <namespace number>:<dbkey> format.
-	 * @param LinkRecommendation|StatusValue $default Default recommendation to use for titles
-	 *   not present in $recommendations.
+	 * @param LinkRecommendation|StatusValue|null $default Default recommendation to use for titles
+	 *   not present in $recommendations. When unset, will throw an error for such titles.
 	 */
-	public function __construct( array $recommendations, $default ) {
+	public function __construct( array $recommendations, $default = null ) {
 		$this->recommendations = $recommendations;
 		$this->default = $default;
 	}
@@ -31,7 +32,9 @@ class StaticLinkRecommendationProvider implements LinkRecommendationProvider {
 	public function get( LinkTarget $title, TaskType $taskType ) {
 		Assert::parameterType( LinkRecommendationTaskType::class, $taskType, '$taskType' );
 		$target = $title->getNamespace() . ':' . $title->getDBkey();
-		return $this->recommendations[$target] ?? $this->default;
+		return $this->recommendations[$target] ?? $this->default ?? ( static function () use ( $target ) {
+			throw new OutOfBoundsException( "No recommendation for $target" );
+		} )();
 	}
 
 }

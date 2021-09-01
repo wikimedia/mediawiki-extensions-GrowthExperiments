@@ -125,6 +125,9 @@ class LinkRecommendationUpdater {
 		$recommendation = $this->linkRecommendationProvider->get( $title,
 			$this->getLinkRecommendationTaskType() );
 		if ( $recommendation instanceof StatusValue ) {
+			// Returning a StatusValue is always an error for the provider. When returning it
+			// from this class, it isn't necessarily interpreted that way.
+			$recommendation->setOK( false );
 			return $recommendation;
 		}
 		$status = $this->evaluateRecommendation( $recommendation, $lastRevision, $force );
@@ -253,12 +256,11 @@ class LinkRecommendationUpdater {
 			$goodLinks,
 			$recommendation->getMetadata()
 		);
-		$recommendation = $this->linkRecommendationHelper->pruneLinkRecommendation( $recommendation );
-		$prunedLinkCount = $recommendation ? count( $recommendation->getLinks() ) : 0;
-		if ( $prunedLinkCount === 0
-			 || !$force && $prunedLinkCount < $this->getLinkRecommendationTaskType()->getMinimumLinksPerTask()
+		$goodLinkCount = count( $recommendation->getLinks() );
+		if ( $goodLinkCount === 0
+			 || !$force && $goodLinkCount < $this->getLinkRecommendationTaskType()->getMinimumLinksPerTask()
 		) {
-			return $this->failure( "number of good links too small ($prunedLinkCount)" );
+			return $this->failure( "number of good links too small ($goodLinkCount)" );
 		}
 
 		return StatusValue::newGood();
