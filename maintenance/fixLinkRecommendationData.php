@@ -3,8 +3,12 @@
 namespace GrowthExperiments\Maintenance;
 
 use CirrusSearch\CirrusSearch;
+use CirrusSearch\Query\ArticleTopicFeature;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use Maintenance;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\MediaWikiServices;
@@ -31,6 +35,9 @@ require_once $path . '/maintenance/Maintenance.php';
  */
 class FixLinkRecommendationData extends Maintenance {
 
+	/** @var ConfigurationLoader */
+	private $configurationLoader;
+
 	/** @var LinkRecommendationStore */
 	private $linkRecommendationStore;
 
@@ -46,6 +53,9 @@ class FixLinkRecommendationData extends Maintenance {
 	/** @var int|null */
 	private $randomSeed;
 
+	/** @var LinkRecommendationTaskType */
+	private $linkRecommendationTaskType;
+
 	public function __construct() {
 		parent::__construct();
 		$this->requireExtension( 'GrowthExperiments' );
@@ -56,8 +66,6 @@ class FixLinkRecommendationData extends Maintenance {
 			. 'without a matching search index entry and/or search index entries without a matching table row.' );
 		$this->addOption( 'search-index', 'Delete search index entries which do not match the DB table. '
 			. '(Note that this relies on the job queue to work.)' );
-		$this->addOption( 'reverse', 'Iterate from end to beginning. Applies to --search-index only. '
-			. 'This is a temporary workaround for T284531.' );
 		$this->addOption( 'random', 'Sort randomly. Applies to --search-index only. '
 			. 'This is mainly useful with --statsd.' );
 		$this->addOption( 'db-table', 'Delete DB table entries which do not match the search index.' );
@@ -96,10 +104,20 @@ class FixLinkRecommendationData extends Maintenance {
 			$this->fatalError( 'The --db-table option cannot be safely run in production. (If the current '
 				. 'environment is not production, $wgGEDeveloperSetup should be set to true.)' );
 		}
+		$this->configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 		$this->linkRecommendationStore = $growthServices->getLinkRecommendationStore();
 		$this->cirrusSearch = new CirrusSearch();
 		$this->linkBatchFactory = $services->getLinkBatchFactory();
 		$this->titleFactory = $services->getTitleFactory();
+
+		$taskTypes = $this->configurationLoader->getTaskTypes();
+		$linkRecommendationTaskType = $taskTypes[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
+		if ( !$linkRecommendationTaskType instanceof LinkRecommendationTaskType ) {
+			$this->fatalError( sprintf( "'%s' is not a link recommendation task type",
+				LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ) );
+		} else {
+			$this->linkRecommendationTaskType = $linkRecommendationTaskType;
+		}
 	}
 
 	private function fixSearchIndex() {
@@ -108,21 +126,29 @@ class FixLinkRecommendationData extends Maintenance {
 		$from = 0;
 		$randomize = $this->getOption( 'random', false );
 		$fixedCount = 0;
-		// phpcs:ignore MediaWiki.ControlStructures.AssignmentInControlStructures.AssignmentInControlStructures
-		while ( $titles = $this->search( 'hasrecommendation:link', $batchSize, $from, $randomize ) ) {
-			$this->verboseOutput( '  checking ' . count( $titles ) . " titles...\n" );
-			$pageIdsToCheck = $this->titlesToPageIds( $titles );
-			$pageIdsToFix = array_diff( $pageIdsToCheck,
-				$this->linkRecommendationStore->filterPageIds( $pageIdsToCheck ) );
-			$titlesToFix = $this->pageIdsToTitles( $pageIdsToFix );
-			foreach ( $titlesToFix as $title ) {
-				$this->verboseOutput( "    $fixing " . $title->getPrefixedText() . "\n" );
-				if ( !$this->hasOption( 'dry-run' ) ) {
-					$this->cirrusSearch->resetWeightedTags( $title->toPageIdentity(), 'recommendation.link' );
+
+		$oresTopics = array_keys( ArticleTopicFeature::TERMS_TO_LABELS );
+		$topicSize = $this->linkRecommendationTaskType->getMinimumTasksPerTopic();
+		// Search offsets are limited to 10K. Search by <10K groups of topics.
+		$oresTopicChunks = array_chunk( $oresTopics, ceil( 10000 / $topicSize ) );
+		foreach ( $oresTopicChunks as $oresTopicBatch ) {
+			$oresQuery = 'articletopic:' . implode( '|', $oresTopicBatch );
+			// phpcs:ignore MediaWiki.ControlStructures.AssignmentInControlStructures.AssignmentInControlStructures
+			while ( $titles = $this->search( "hasrecommendation:link $oresQuery", $batchSize, $from, $randomize ) ) {
+				$this->verboseOutput( '  checking ' . count( $titles ) . " titles...\n" );
+				$pageIdsToCheck = $this->titlesToPageIds( $titles );
+				$pageIdsToFix = array_diff( $pageIdsToCheck,
+					$this->linkRecommendationStore->filterPageIds( $pageIdsToCheck ) );
+				$titlesToFix = $this->pageIdsToTitles( $pageIdsToFix );
+				foreach ( $titlesToFix as $title ) {
+					$this->verboseOutput( "    $fixing " . $title->getPrefixedText() . "\n" );
+					if ( !$this->hasOption( 'dry-run' ) ) {
+						$this->cirrusSearch->resetWeightedTags( $title->toPageIdentity(), 'recommendation.link' );
+					}
 				}
+				$from += $batchSize;
+				$fixedCount += count( $titlesToFix );
 			}
-			$from += $batchSize;
-			$fixedCount += count( $titlesToFix );
 		}
 		$this->maybeReportFixedCount( $fixedCount, 'search-index' );
 	}
@@ -167,9 +193,7 @@ class FixLinkRecommendationData extends Maintenance {
 			$searchEngine->setSort( 'random' );
 		} else {
 			// Sort by creation date as it's stable over time.
-			$searchEngine->setSort(
-				$this->getOption( 'reverse' ) ? 'create_timestamp_desc' : 'create_timestamp_asc'
-			);
+			$searchEngine->setSort( 'create_timestamp_asc' );
 		}
 		$matches = $searchEngine->searchText( $query )
 			?? StatusValue::newFatal( 'rawmessage', 'Search is disabled' );
