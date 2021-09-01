@@ -3,8 +3,10 @@
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Linker\LinkTarget;
 use StatusValue;
+use Wikimedia\Assert\Assert;
 
 class StaticLinkRecommendationProvider implements LinkRecommendationProvider {
 
@@ -26,7 +28,8 @@ class StaticLinkRecommendationProvider implements LinkRecommendationProvider {
 	}
 
 	/** @inheritDoc */
-	public function get( LinkTarget $title, LinkRecommendationTaskType $taskType ) {
+	public function get( LinkTarget $title, TaskType $taskType ) {
+		Assert::parameterType( LinkRecommendationTaskType::class, $taskType, '$taskType' );
 		$target = $title->getNamespace() . ':' . $title->getDBkey();
 		return $this->recommendations[$target] ?? $this->default;
 	}

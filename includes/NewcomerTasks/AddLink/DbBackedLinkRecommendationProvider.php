@@ -3,9 +3,11 @@
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Linker\LinkTarget;
 use StatusValue;
 use TitleFormatter;
+use Wikimedia\Assert\Assert;
 
 /**
  * A provider which reads the recommendation from the database. It is the caller's
@@ -41,7 +43,8 @@ class DbBackedLinkRecommendationProvider implements LinkRecommendationProvider {
 	}
 
 	/** @inheritDoc */
-	public function get( LinkTarget $title, LinkRecommendationTaskType $taskType ) {
+	public function get( LinkTarget $title, TaskType $taskType ) {
+		Assert::parameterType( LinkRecommendationTaskType::class, $taskType, '$taskType' );
 		// Task type parameters are assumed to be mostly static. Invalidating the recommendations
 		// stored in the DB when the task type parameters change is left to some (as of yet
 		// unimplemented) manual mechanism.

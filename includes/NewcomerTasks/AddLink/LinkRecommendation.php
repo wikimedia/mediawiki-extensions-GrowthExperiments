@@ -2,13 +2,14 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
+use GrowthExperiments\NewcomerTasks\Recommendation;
 use MediaWiki\Linker\LinkTarget;
 
 /**
  * Value object for machine-generated link recommendations. A link recommendation is a set of
- * suggested LinkRecommendationItems for a given wiki page.
+ * suggested LinkRecommendationLinks for a given wiki page.
  */
-class LinkRecommendation {
+class LinkRecommendation implements Recommendation {
 
 	/**
 	 * Fallback timestamp for tasks which have been stored before the code was updated to
@@ -96,10 +97,7 @@ class LinkRecommendation {
 		$this->metadata = $metadata;
 	}
 
-	/**
-	 * Get the title of the page for which the recommendations were generated.
-	 * @return LinkTarget
-	 */
+	/** @inheritDoc */
 	public function getTitle(): LinkTarget {
 		return $this->title;
 	}

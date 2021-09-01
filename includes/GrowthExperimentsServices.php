@@ -18,6 +18,7 @@ use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
@@ -98,6 +99,10 @@ class GrowthExperimentsServices {
 
 	public function getHomepageModuleRegistry(): HomepageModuleRegistry {
 		return $this->coreServices->get( 'GrowthExperimentsHomepageModuleRegistry' );
+	}
+
+	public function getImageRecommendationProvider(): ImageRecommendationProvider {
+		return $this->coreServices->get( 'GrowthExperimentsImageRecommendationProvider' );
 	}
 
 	public function getLinkRecommendationHelper(): LinkRecommendationHelper {

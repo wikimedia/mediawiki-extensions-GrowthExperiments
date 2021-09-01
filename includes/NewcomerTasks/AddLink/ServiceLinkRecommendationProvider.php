@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Revision\RevisionLookup;
@@ -11,6 +12,7 @@ use MWTimestamp;
 use RequestContext;
 use StatusValue;
 use TitleFactory;
+use Wikimedia\Assert\Assert;
 use WikitextContent;
 
 /**
@@ -69,7 +71,9 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 	}
 
 	/** @inheritDoc */
-	public function get( LinkTarget $title, LinkRecommendationTaskType $taskType ) {
+	public function get( LinkTarget $title, TaskType $taskType ) {
+		Assert::parameterType( LinkRecommendationTaskType::class, $taskType, '$taskType' );
+		/** @var LinkRecommendationTaskType $taskType */'@phan-var LinkRecommendationTaskType $taskType';
 		$title = $this->titleFactory->newFromLinkTarget( $title );
 		$pageId = $title->getArticleID();
 		$titleText = $title->getPrefixedDBkey();
