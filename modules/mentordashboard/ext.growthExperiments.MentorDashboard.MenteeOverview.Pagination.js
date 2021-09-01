@@ -113,7 +113,6 @@
 	};
 
 	MenteeOverviewPagination.prototype.resetPagination = function () {
-		this.pageSize = this.config.pageSize;
 		this.currentPage = this.config.currentPage;
 		this.totalPages = this.config.totalPages;
 
