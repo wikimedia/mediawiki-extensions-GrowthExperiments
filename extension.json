@@ -178,6 +178,13 @@
 		"mentordashboard": {
 			"class": "GrowthExperiments\\MentorDashboard\\MentorDashboardHooks"
 		},
+		"mentordashboarddiscovery": {
+			"class": "GrowthExperiments\\MentorDashboard\\MentorDashboardDiscoveryHooks",
+			"services": [
+				"GrowthExperimentsConfig",
+				"GrowthExperimentsMentorManager"
+			]
+		},
 		"tour": {
 			"class": "GrowthExperiments\\TourHooks",
 			"services": [
@@ -271,7 +278,10 @@
 		"RecentChange_save": "homepage",
 		"PageSaveComplete": "homepage",
 		"SkinTemplateNavigation::Universal": "homepage",
-		"PersonalUrls": "homepage",
+		"PersonalUrls": [
+			"homepage",
+			"mentordashboarddiscovery"
+		],
 		"MessageCache::get": "homepage",
 		"AuthChangeFormFields": [
 			"GrowthExperiments\\ConfirmEmailHooks::onAuthChangeFormFields",
@@ -1581,6 +1591,10 @@
 		},
 		"GEMentorDashboardBackendEnabled": {
 			"description": "Enable backend for mentor dashboard (currently controls whether updateMenteeData.php runs on that wiki)",
+			"value": true
+		},
+		"GEMentorDashboardDiscoveryEnabled": {
+			"description": "Enable discovery links for mentor dashboard",
 			"value": true
 		},
 		"GEHomepageSuggestedEditsEnabled": {
