@@ -1,18 +1,36 @@
 {
 	"@metadata": {
 		"authors": [
+			"DDPAT",
 			"Ата"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Панель наставника",
 	"growthexperiments-mentor-dashboard-disabled": "Панель наставника не увімкнена в цій вікі.",
+	"growthexperiments-mentor-dashboard-must-be-mentor": "Щоб увімкнути інформаційну панель наставника, спочатку потрібно [[$1|зареєструватися як наставник]].",
+	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Перш ніж можна використовувати інформаційну панель наставника, спочатку потрібно налаштувати список наставників. Адміністратор може використовувати для цього [[Special:EditGrowthConfig]].",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Ваші}} підопічні",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Таблиця показує статус і прогрес {{GENDER:|ваших}} поточних підопічних. Налаштуйте таблицю на відображення конкретних результатів, скориставшись фільтрами.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Таблиця вимагає JavaScript. Будь ласка, увімкніть JavaScript, щоб могти користуватися цим модулем.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Хто відображається у вашій таблиці?",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Щотижня ви отримуєте сотні новачків, але не кожен новачок зацікавлений у редагуванні Вікіпедії. У вашій таблиці не відображатимуться новачки, які 1) не вносили зміни протягом перших двох тижнів після реєстрації, 2) не редагували більше 6 місяців. Однак, як тільки ваш підопічний вносить нові зміни, вони знову з’являться у таблиці. Таблиця буде оновлюватися щодня.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Легенда таблиці",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Дозволяє швидко знаходити підопічних",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Відображає ім’я користувача та дату останньої активності",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Скасовані зміни",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Кількість випадків блокування облікового запису",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Задані питання",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Загальний внесок",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Дата реєстрації {{SITENAME}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Додати фільтр",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Переглянути підопічних із сумарною кількістю редагувань",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Від",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "До",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Період часу пошуку",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Останні дні",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Останні місяці",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days-title": "Фільтрувати підпорядкованих, активних за останні $2 {{PLURAL:$1|дні}}",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title": "Фільтрувати підпорядкованих, активних за останні $2 {{PLURAL:$1|місяці}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-headline": "Позначені підопічні",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Показувати лише позначених підопічних",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Пошук",
@@ -26,5 +44,10 @@
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Список наставників",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Як представити себе як наставника",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Як узяти підопічного",
-	"growthexperiments-mentor-dashboard-resources-link-tools": "Інструменти Зростання"
+	"growthexperiments-mentor-dashboard-resources-link-tools": "Інструменти Зростання",
+	"growthexperiments-rcfilters-mentorship-title": "Наставництво",
+	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Ваші}} наставники з зірками",
+	"growthexperiments-rcfilters-mentorship-starred-desc": "Наставники, призначені {{GENDER:|вам}}, яких {{GENDER:|ви}} зіграли на інформаційній панелі наставника",
+	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|Ваші}} наставники без зірок",
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Інше {{GENDER:|ваше}} наставництво"
 }

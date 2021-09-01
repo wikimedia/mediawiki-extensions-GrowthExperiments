@@ -388,5 +388,6 @@
 	"growthexperiments-addlink-editmode-confirmation-dialog-title": "Залишити пропозиції?",
 	"growthexperiments-addlink-editmode-confirmation-dialog-message": "Перемикання режимів дозволить {{GENDER:$1|Вам}} вносити інші види редагування. Завершіть перевірку, щоб надіслати {{GENDER:$1|свої}} досягнення.",
 	"growthexperiments-addlink-editmode-confirmation-dialog-action-confirm": "Переключити без відправки",
-	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Скасувати"
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Скасувати",
+	"growthexperiments-addlink-suggestions-outdated": "Інший користувач редагував цю статтю, поки {{GENDER:|ви}} її переглядали, і {{GENDER:|ваші}} зміни не вдалося зберегти."
 }
