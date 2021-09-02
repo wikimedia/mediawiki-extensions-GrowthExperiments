@@ -55,6 +55,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\EventGateSearchIn
 use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdater;
 use GrowthExperiments\NewcomerTasks\AddLink\ServiceLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\StaticLinkRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\CachedSuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
@@ -63,6 +64,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
@@ -727,12 +729,15 @@ return [
 
 	'GrowthExperimentsSuggestionsInfo' => static function (
 		MediaWikiServices $services
-	): SuggestionsInfo {
+	): NewcomerTasksInfo {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		return new SuggestionsInfo(
-			$growthServices->getTaskSuggesterFactory(),
-			$growthServices->getTaskTypeHandlerRegistry(),
-			$growthServices->getNewcomerTasksConfigurationLoader()
+		return new CachedSuggestionsInfo(
+			new SuggestionsInfo(
+				$growthServices->getTaskSuggesterFactory(),
+				$growthServices->getTaskTypeHandlerRegistry(),
+				$growthServices->getNewcomerTasksConfigurationLoader()
+			),
+			$services->getMainWANObjectCache()
 		);
 	},
 

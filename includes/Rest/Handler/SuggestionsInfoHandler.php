@@ -2,7 +2,7 @@
 
 namespace GrowthExperiments\Rest\Handler;
 
-use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
 use MediaWiki\Rest\SimpleHandler;
 use WANObjectCache;
 
@@ -11,7 +11,7 @@ use WANObjectCache;
  */
 class SuggestionsInfoHandler extends SimpleHandler {
 	/**
-	 * @var SuggestionsInfo
+	 * @var NewcomerTasksInfo
 	 */
 	private $suggestionsInfo;
 	/**
@@ -20,11 +20,11 @@ class SuggestionsInfoHandler extends SimpleHandler {
 	private $cache;
 
 	/**
-	 * @param SuggestionsInfo $suggestionsInfo
+	 * @param NewcomerTasksInfo $suggestionsInfo
 	 * @param WANObjectCache $cache
 	 */
 	public function __construct(
-		SuggestionsInfo $suggestionsInfo,
+		NewcomerTasksInfo $suggestionsInfo,
 		WANObjectCache $cache
 	) {
 		$this->suggestionsInfo = $suggestionsInfo;

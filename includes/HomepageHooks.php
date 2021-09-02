@@ -23,6 +23,7 @@ use GrowthExperiments\NewcomerTasks\CampaignConfig;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\GrowthArticleTopicFeature;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksChangeTagsManager;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksInfo;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Recommendation;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
@@ -165,6 +166,8 @@ class HomepageHooks implements
 	private $linkRecommendationStore;
 	/** @var LinkRecommendationHelper */
 	private $linkRecommendationHelper;
+	/** @var NewcomerTasksInfo */
+	private $suggestionsInfo;
 	/** @var PrefixingStatsdDataFactoryProxy */
 	private $perDbNameStatsdDataFactory;
 	/** @var JobQueueGroup */
@@ -196,6 +199,7 @@ class HomepageHooks implements
 	 * @param LinkRecommendationHelper $linkRecommendationHelper
 	 * @param SpecialPageFactory $specialPageFactory
 	 * @param NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager
+	 * @param NewcomerTasksInfo $suggestionsInfo
 	 */
 	public function __construct(
 		Config $config,
@@ -215,7 +219,8 @@ class HomepageHooks implements
 		LinkRecommendationStore $linkRecommendationStore,
 		LinkRecommendationHelper $linkRecommendationHelper,
 		SpecialPageFactory $specialPageFactory,
-		NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager
+		NewcomerTasksChangeTagsManager $newcomerTasksChangeTagsManager,
+		NewcomerTasksInfo $suggestionsInfo
 	) {
 		$this->config = $config;
 		$this->lb = $lb;
@@ -235,6 +240,7 @@ class HomepageHooks implements
 		$this->linkRecommendationHelper = $linkRecommendationHelper;
 		$this->specialPageFactory = $specialPageFactory;
 		$this->newcomerTasksChangeTagsManager = $newcomerTasksChangeTagsManager;
+		$this->suggestionsInfo = $suggestionsInfo;
 
 		// Ideally this would be injected but the way hook handlers are defined makes that hard.
 		$this->canAccessPrimary = defined( 'MEDIAWIKI_JOB_RUNNER' )
@@ -285,11 +291,11 @@ class HomepageHooks implements
 					'GrowthExperimentsMultiConfig'
 				]
 			];
-			$list['NewcomerTasksInfo'] = [
+
+			$list[ 'NewcomerTasksInfo' ] = [
 				'class' => SpecialNewcomerTasksInfo::class,
 				'services' => [
-					'GrowthExperimentsSuggestionsInfo',
-					'MainWANObjectCache',
+					'GrowthExperimentsSuggestionsInfo'
 				]
 			];
 		}

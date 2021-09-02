@@ -227,7 +227,8 @@
 				"GrowthExperimentsLinkRecommendationStore",
 				"GrowthExperimentsLinkRecommendationHelper",
 				"SpecialPageFactory",
-				"GrowthExperimentsNewcomerTasksChangeTagsManager"
+				"GrowthExperimentsNewcomerTasksChangeTagsManager",
+				"GrowthExperimentsSuggestionsInfo"
 			]
 		},
 		"parserfunctions": {
