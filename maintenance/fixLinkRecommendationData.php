@@ -128,14 +128,14 @@ class FixLinkRecommendationData extends Maintenance {
 		$fixedCount = 0;
 
 		$oresTopics = array_keys( ArticleTopicFeature::TERMS_TO_LABELS );
-		$topicSize = $this->linkRecommendationTaskType->getMinimumTasksPerTopic();
-		// Search offsets are limited to 10K. Search by <10K groups of topics.
-		$oresTopicChunks = array_chunk( $oresTopics, ceil( 10000 / $topicSize ) );
-		foreach ( $oresTopicChunks as $oresTopicBatch ) {
-			$oresQuery = 'articletopic:' . implode( '|', $oresTopicBatch );
+		// Search offsets are limited to 10K. Search topic by topic. This is still not a 100%
+		// guarantee that we'll avoid a >10K result set, but it's the best we can do.
+		foreach ( $oresTopics as $oresTopic ) {
+			$this->verboseOutput( "  checking topic $oresTopic...\n" );
+			$searchQuery = "hasrecommendation:link articletopic:$oresTopic";
 			// phpcs:ignore MediaWiki.ControlStructures.AssignmentInControlStructures.AssignmentInControlStructures
-			while ( $titles = $this->search( "hasrecommendation:link $oresQuery", $batchSize, $from, $randomize ) ) {
-				$this->verboseOutput( '  checking ' . count( $titles ) . " titles...\n" );
+			while ( $titles = $this->search( $searchQuery, $batchSize, $from, $randomize ) ) {
+				$this->verboseOutput( '    checking ' . count( $titles ) . " titles...\n" );
 				$pageIdsToCheck = $this->titlesToPageIds( $titles );
 				$pageIdsToFix = array_diff( $pageIdsToCheck,
 					$this->linkRecommendationStore->filterPageIds( $pageIdsToCheck ) );
@@ -146,7 +146,11 @@ class FixLinkRecommendationData extends Maintenance {
 						$this->cirrusSearch->resetWeightedTags( $title->toPageIdentity(), 'recommendation.link' );
 					}
 				}
-				$from += $batchSize;
+				if ( $from === 10000 ) {
+					$this->error( "  topic $oresTopic had more than 10K tasks\n" );
+					break;
+				}
+				$from = min( 10000, $batchSize + $from );
 				$fixedCount += count( $titlesToFix );
 			}
 		}
