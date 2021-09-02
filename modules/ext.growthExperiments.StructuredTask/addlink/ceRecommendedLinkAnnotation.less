@@ -1,0 +1,119 @@
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
+@import '../../homepage/ext.growthExperiments.mixins';
+@import '../../homepage/ext.growthExperiments.variables';
+
+.ve-ce-linkAnnotation.mw-ge-recommendedLinkAnnotation {
+	// On mobile, prevent text edit menu from showing up (T281771)
+	-webkit-user-select: none;
+	user-select: none;
+	background-color: @wmui-color-yellow90;
+	// use box-shadow instead of border to prevent shifting when annotation is active (2px border instead of 1px)
+	box-shadow: 0 0 0 1px @wmui-color-yellow50;
+	border-radius: 2px;
+	text-decoration: none;
+	color: inherit;
+	padding: 2px 6px 3px 6px;
+	margin: 0 4px;
+	display: inline-block;
+	.rel-line-height( @parentFontSize: 16px, @targetLineHeight: 22.8px );
+
+	&::selection {
+		background: none;
+	}
+
+	&.mw-ge-recommendedLinkAnnotation-active {
+		.filter( drop-shadow( 0 1px 2px rgba( 0, 0, 0, 0.2 ) ) );
+		background-color: @activeAnnotationBackgroundColor;
+		box-shadow: 0 0 0 2px @wmui-color-accent50;
+
+		.mw-ge-recommendedLinkAnnotation-icon-undecided {
+			/* @embed */
+			background-image: url( ../robot-blue.svg );
+		}
+	}
+
+	&-accepted {
+		color: @wmui-color-accent50;
+	}
+
+	.mw-ge-recommendedLinkAnnotation-iconContainer {
+		display: inline-block;
+		overflow: hidden;
+		width: 1em;
+		height: 1em;
+		position: relative;
+		top: 0.15em;
+		margin-left: 0.5em;
+
+		.current {
+			bottom: 0;
+		}
+
+		.animate-from-top {
+			bottom: 1em;
+		}
+
+		.animate-from-bottom {
+			bottom: -1em;
+		}
+	}
+
+	.mw-ge-recommendedLinkAnnotation-icon-accepted,
+	.mw-ge-recommendedLinkAnnotation-icon-rejected,
+	.mw-ge-recommendedLinkAnnotation-icon-undecided {
+		position: absolute;
+		width: 1em;
+		height: 1em;
+		bottom: -1em;
+		background-size: 100%;
+		transition: bottom 300ms;
+	}
+
+	.mw-ge-recommendedLinkAnnotation-icon-accepted {
+		/* @embed */
+		background-image: url( ../check-blue.svg );
+	}
+
+	.mw-ge-recommendedLinkAnnotation-icon-rejected {
+		/* @embed */
+		background-image: url( ../close-red.svg );
+	}
+
+	.mw-ge-recommendedLinkAnnotation-icon-undecided {
+		/* @embed */
+		background-image: url( ../robot-black.svg );
+	}
+
+	&-desktop {
+		padding: 2px 8px;
+		.rel-line-height( @parentFontSize: 14px, @targetLineHeight: 20px );
+		// allow annotation to be selected on Safari, otherwise window.getSelection().focusNode is null
+		-webkit-user-select: auto;
+		user-select: auto;
+	}
+}
+
+.ve-init-mobileTarget .ve-ce-surface:not( .ve-ce-surface-deactivated ) {
+	.ve-ce-linkAnnotation.ve-ce-annotation-active {
+		background-color: @activeAnnotationBackgroundColor;
+		box-shadow: 0 0 0 2px @wmui-color-accent50;
+	}
+}
+
+.ltr.sitedir-rtl {
+	.mw-ge-recommendedLinkAnnotation {
+		.mw-ge-recommendedLinkAnnotation-iconContainer {
+			/* @noflip */
+			margin: 0 0.5em 0 0;
+		}
+	}
+}
+
+.rtl.sitedir-ltr {
+	.mw-ge-recommendedLinkAnnotation {
+		.mw-ge-recommendedLinkAnnotation-iconContainer {
+			/* @noflip */
+			margin: 0 0 0 0.5em;
+		}
+	}
+}
