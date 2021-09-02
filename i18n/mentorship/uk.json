@@ -49,5 +49,5 @@
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Ваші}} наставники з зірками",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Наставники, призначені {{GENDER:|вам}}, яких {{GENDER:|ви}} зіграли на інформаційній панелі наставника",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|Ваші}} наставники без зірок",
-	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Інше {{GENDER:|ваше}} наставництво"
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Інші {{GENDER:|ваші}} підопічні"
 }

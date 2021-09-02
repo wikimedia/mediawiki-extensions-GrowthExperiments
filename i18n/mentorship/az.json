@@ -7,6 +7,7 @@
 	"growthexperiments-mentor-dashboard-title": "Mentor idarəetmə paneli",
 	"growthexperiments-mentor-dashboard-disabled": "Mentor idarəetmə paneli bu vikidə aktivləşdirilməyib.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Mentor idarəetmə panelini aktivləşdirmək üçün [[$1|mentor olaraq qeydiyyatdan keçməlisiniz.]]",
+	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Mentor idarəetmə panelini istifadə etmək üçün ilk öncə mentor siyahısı quraşdırılmalıdır. İdarəçilərdən biri [[Special:EditGrowthConfig]] səhifəsində bunu edə bilər.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Tələbələriniz",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Cədvəl, tələbələrinizin vəziyyətini və gedişatını göstərir. Xüsusi nəticələri görmək üçün cədvəli filtrlər vasitəsilə fərdiləşdirin.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Cədvəl JavaScript tələb edir. Zəhmət olmasa JavaScript-i aktivləşdirin.",

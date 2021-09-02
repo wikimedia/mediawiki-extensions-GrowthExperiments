@@ -157,7 +157,7 @@
 	"growthexperiments-addlink-summary-submit": "ထည့်သွင်းရန်",
 	"growthexperiments-addlink-skip-accept": "အကုန်ကျော်သွားရန်",
 	"newcomertasksinfo": "လူသစ် လုပ်ငန်းဆောင်တာများ",
-	"newcomertasksinfo-no-data": "ဒေတာများ မရရှိနိုင်ပါ",
+	"newcomertasksinfo-no-data": "ဒေတာမရရှိနိုင်ပါ",
 	"newcomertasksinfo-config-form-info": "လူသစ် လုပ်ငန်းဆောင်တာများ၏ အစီစဉ်စနစ်များကို [[Special:EditGrowthConfig]] တွင် ကြည့်ရှုနိုင်ပါသည်။",
 	"newcomertasksinfo-table-header-task-type": "လုပ်ငန်းအမျိုးအစား",
 	"newcomertasksinfo-table-header-task-type-id": "အိုင်ဒီ",
