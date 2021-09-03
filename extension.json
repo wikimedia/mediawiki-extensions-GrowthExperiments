@@ -884,16 +884,16 @@
 			"packageFiles": [
 				"ext.growthExperiments.StructuredTask.mobile/index.js",
 				"ext.growthExperiments.StructuredTask.mobile/MachineSuggestionsPlaceholderTool.js",
+				"ext.growthExperiments.StructuredTask.mobile/MinimizedToolbarDialogButton.js",
 				"ext.growthExperiments.StructuredTask.mobile/StructuredTaskMobileArticleTarget.js",
 				"ext.growthExperiments.StructuredTask.mobile/SuggestionsMobileArticleTarget.js",
 				"ext.growthExperiments.StructuredTask.mobile/addlink/AddLinkMobileArticleTarget.js",
 				"ext.growthExperiments.StructuredTask.mobile/addlink/AddLinkMobileSaveDialog.js",
 				"ext.growthExperiments.StructuredTask.mobile/addlink/RecommendedLinkToolbarDialogMobile.js",
-				"ext.growthExperiments.StructuredTask.mobile/addlink/RecommendedLinkToolbarDialogButton.js",
 				"utils/ext.growthExperiments.Utils.js"
 			],
 			"styles": [
-				"ext.growthExperiments.StructuredTask.mobile/addlink/RecommendedLinkToolbarDialogButton.less"
+				"ext.growthExperiments.StructuredTask.mobile/MinimizedToolbarDialogButton.less"
 			],
 			"dependencies": [
 				"ext.growthExperiments.StructuredTask",
