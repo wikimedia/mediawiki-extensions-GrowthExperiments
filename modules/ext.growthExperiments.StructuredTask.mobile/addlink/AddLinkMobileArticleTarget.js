@@ -21,15 +21,4 @@ function AddLinkMobileArticleTarget() {
 OO.inheritClass( AddLinkMobileArticleTarget, StructuredTaskMobileArticleTarget );
 OO.mixinClass( AddLinkMobileArticleTarget, AddLinkArticleTarget );
 
-AddLinkMobileArticleTarget.prototype.loadSuccess = function ( response ) {
-	this.beforeLoadSuccess( response );
-	AddLinkMobileArticleTarget.super.prototype.loadSuccess.call( this, response );
-};
-
-AddLinkMobileArticleTarget.prototype.surfaceReady = function () {
-	this.beforeSurfaceReady();
-	AddLinkMobileArticleTarget.super.prototype.surfaceReady.apply( this, arguments );
-	this.afterSurfaceReady();
-};
-
 module.exports = AddLinkMobileArticleTarget;

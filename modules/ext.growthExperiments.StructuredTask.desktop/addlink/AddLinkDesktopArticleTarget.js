@@ -23,15 +23,4 @@ function AddLinkDesktopArticleTarget() {
 OO.inheritClass( AddLinkDesktopArticleTarget, StructuredTaskDesktopArticleTarget );
 OO.mixinClass( AddLinkDesktopArticleTarget, AddLinkArticleTarget );
 
-AddLinkDesktopArticleTarget.prototype.loadSuccess = function ( response ) {
-	this.beforeLoadSuccess( response );
-	AddLinkDesktopArticleTarget.super.prototype.loadSuccess.call( this, response );
-};
-
-AddLinkDesktopArticleTarget.prototype.surfaceReady = function () {
-	this.beforeSurfaceReady();
-	AddLinkDesktopArticleTarget.super.prototype.surfaceReady.apply( this, arguments );
-	this.afterSurfaceReady();
-};
-
 module.exports = AddLinkDesktopArticleTarget;
