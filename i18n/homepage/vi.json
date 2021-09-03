@@ -385,5 +385,6 @@
 	"growthexperiments-addlink-editmode-confirmation-dialog-title": "Rời gợi ý?",
 	"growthexperiments-addlink-editmode-confirmation-dialog-message": "Chuyển đổi chế độ sẽ cho phép {{GENDER:$1|bạn}} thực hiện các loại sửa đổi khác. Hãy xem lại để gửi tiến độ đến thời điểm hiện tại {{GENDER:$1|của bạn}}.",
 	"growthexperiments-addlink-editmode-confirmation-dialog-action-confirm": "Chuyển đổi mà không gửi",
-	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Hủy bỏ"
+	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Hủy bỏ",
+	"growthexperiments-addlink-suggestions-outdated": "Một người dùng khác đã sửa đổi bài viết này trong khi {{GENDER:|bạn}} đang xem lại nó, và thay đổi {{GENDER:|của bạn}} không thể được lưu lại."
 }
