@@ -109,22 +109,40 @@
 					$( '<tr>' ).append(
 						$( '<th>' )
 							.attr( 'data-field', 'username' )
-							.append( new OO.ui.IconWidget( { icon: 'userAvatar' } ).$element ),
+							.append( this.makeHeaderIcon(
+								'userAvatar',
+								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo' )
+							) ),
 						$( '<th>' )
 							.attr( 'data-field', 'reverted' )
-							.append( new OO.ui.IconWidget( { icon: 'editUndo' } ).$element ),
+							.append( this.makeHeaderIcon(
+								'editUndo',
+								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts' )
+							) ),
 						$( '<th>' )
 							.attr( 'data-field', 'blocks' )
-							.append( new OO.ui.IconWidget( { icon: 'block' } ).$element ),
+							.append( this.makeHeaderIcon(
+								'block',
+								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks' )
+							) ),
 						$( '<th>' )
 							.attr( 'data-field', 'questions' )
-							.append( new OO.ui.IconWidget( { icon: 'help' } ).$element ),
+							.append( this.makeHeaderIcon(
+								'help',
+								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions' )
+							) ),
 						$( '<th>' )
 							.attr( 'data-field', 'editcount' )
-							.append( new OO.ui.IconWidget( { icon: 'edit' } ).$element ),
+							.append( this.makeHeaderIcon(
+								'edit',
+								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount' )
+							) ),
 						$( '<th>' )
 							.attr( 'data-field', 'registration' )
-							.append( new OO.ui.IconWidget( { icon: 'clock' } ).$element )
+							.append( this.makeHeaderIcon(
+								'clock',
+								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration' )
+							) )
 					)
 				),
 				$( '<tbody>' )
@@ -165,6 +183,13 @@
 	}
 
 	OO.inheritClass( MenteeOverview, OO.ui.Widget );
+
+	MenteeOverview.prototype.makeHeaderIcon = function ( iconName, description ) {
+		return new OO.ui.IconWidget( {
+			icon: iconName,
+			title: description
+		} ).$element;
+	};
 
 	MenteeOverview.prototype.makeLegendIcon = function ( iconName, description ) {
 		return $( '<div>' )
