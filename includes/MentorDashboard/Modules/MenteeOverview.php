@@ -35,7 +35,11 @@ class MenteeOverview extends BaseModule {
 			[
 				'class' => 'growthexperiments-mentor-dashboard-module-mentee-overview-content'
 			],
-			$this->msg( 'growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback' )->text()
+			Html::element(
+				'p',
+				[ 'class' => 'growthexperiments-mentor-dashboard-no-js-fallback' ],
+				$this->msg( 'growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback' )->text()
+			)
 		);
 	}
 
