@@ -2,10 +2,10 @@
  * Mixin for a ve.init.mw.ArticleTarget instance. Used by StructuredTaskDesktopArticleTarget and
  * StructuredTaskMobileArticleTarget.
  *
- * @mixin mw.libs.ge.StructuredTaskArticleTargetMixin
+ * @mixin mw.libs.ge.StructuredTaskArticleTarget
  * @extends ve.init.mw.ArticleTarget
  */
-function StructuredTaskArticleTargetMixin() {
+function StructuredTaskArticleTarget() {
 	/**
 	 * Will be true when the user has switched to regular VE mode from suggestions mode.
 	 * This is used so that the behavior upon navigating away can be overridden if needed.
@@ -13,10 +13,44 @@ function StructuredTaskArticleTargetMixin() {
 	 * @type {boolean}
 	 */
 	this.hasSwitched = false;
+	/**
+	 * Will be true when the recommendations were submitted but no real edit happened.
+	 * For add link, no recommended link was accepted, or, less plausibly, the save conflicted with
+	 * (and got auto-merge with) another edit which added the same link.
+	 *
+	 * @type {boolean}
+	 */
+	this.madeNullEdit = false;
 	this.$element.addClass( 'mw-ge-structuredTaskArticleTarget' );
 }
 
-OO.initClass( StructuredTaskArticleTargetMixin );
+OO.initClass( StructuredTaskArticleTarget );
+
+/**
+ * Set machineSuggestions mode (as opposed to 'visual' or 'source')
+ *
+ * @inheritDoc
+ */
+StructuredTaskArticleTarget.prototype.getSurfaceConfig = function ( config ) {
+	config = config || {};
+	config.mode = 'machineSuggestions';
+	// Task-specific ArticleTarget -> StructuredTask ArticleTarget -> VE ArticleTarget
+	return this.constructor.parent.super.prototype.getSurfaceConfig.call( this, config );
+};
+
+/** @override */
+StructuredTaskArticleTarget.prototype.updateToolbarSaveButtonState = function () {
+	// T281452 no-op, we have our own custom logic for this in StructuredTaskSaveDialog
+};
+
+/**
+ * Don't save or restore edits
+ *
+ * @override
+ */
+StructuredTaskArticleTarget.prototype.initAutosave = function () {
+	// https://phabricator.wikimedia.org/T267690
+};
 
 /**
  * Show a dialog prompting the user to confirm whether to switch to visual editor without
@@ -25,7 +59,7 @@ OO.initClass( StructuredTaskArticleTargetMixin );
  * @param {string} editMode Editing mode to switch to (currently only 'visual' is supported)
  * @return {jQuery.Promise} Promise that resolves when the user has confirmed or cancelled
  */
-StructuredTaskArticleTargetMixin.prototype.confirmSwitchEditMode = function ( editMode ) {
+StructuredTaskArticleTarget.prototype.confirmSwitchEditMode = function ( editMode ) {
 	var promise = $.Deferred(),
 		confirmationDialogPromise = this.surface.dialogs.openWindow( 'editModeConfirmation' );
 
@@ -58,7 +92,7 @@ StructuredTaskArticleTargetMixin.prototype.confirmSwitchEditMode = function ( ed
  * then switch only if the user confirms leaving with unsaved changes.
  * If the user hasn't started, switch to regular VE right away.
  */
-StructuredTaskArticleTargetMixin.prototype.maybeSwitchToVisualWithSuggestions = function () {
+StructuredTaskArticleTarget.prototype.maybeSwitchToVisualWithSuggestions = function () {
 	if ( this.edited ) {
 		this.confirmSwitchEditMode( 'visual' ).then( function ( shouldSwitch ) {
 			if ( shouldSwitch ) {
@@ -74,7 +108,7 @@ StructuredTaskArticleTargetMixin.prototype.maybeSwitchToVisualWithSuggestions = 
  * Switch to regular Visual Editor mode with customized editMode tool that can only switch
  * between machine suggestions and regular VE modes
  */
-StructuredTaskArticleTargetMixin.prototype.switchToVisualWithSuggestions = function () {
+StructuredTaskArticleTarget.prototype.switchToVisualWithSuggestions = function () {
 	// Prevent default browser warning from being shown since we're showing a custom dialog.
 	// On desktop, this is done via DesktopArticleTarget's onBeforeUnload.
 	if ( OO.ui.isMobile() ) {
@@ -93,4 +127,4 @@ StructuredTaskArticleTargetMixin.prototype.switchToVisualWithSuggestions = funct
 	location.href = uri.toString() + ( fragment ? '#' + fragment : '' );
 };
 
-module.exports = StructuredTaskArticleTargetMixin;
+module.exports = StructuredTaskArticleTarget;

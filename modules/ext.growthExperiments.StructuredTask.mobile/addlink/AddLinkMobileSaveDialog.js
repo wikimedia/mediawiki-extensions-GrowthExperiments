@@ -1,6 +1,5 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
-	AddLinkSaveDialogMixin = StructuredTask.AddLinkSaveDialogMixin,
-	StructuredTaskSaveDialogMixin = StructuredTask.StructuredTaskSaveDialogMixin;
+	AddLinkSaveDialog = StructuredTask.AddLinkSaveDialog;
 
 /**
  * Replacement for the normal mobile VE Save / Publish dialog that replaces the freetext
@@ -8,20 +7,17 @@ var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
  *
  * @class mw.libs.ge.ui.AddLinkMobileSaveDialog
  * @extends ve.ui.MWMobileSaveDialog
- * @mixes mw.libs.ge.ui.StructuredTaskSaveDialogMixin
- * @mixes mw.libs.ge.ui.AddLinkSaveDialogMixin
+ * @mixes mw.libs.ge.ui.AddLinkSaveDialog
  *
  * @param {Object} [config] Config options
  * @constructor
  */
 function AddLinkMobileSaveDialog( config ) {
 	AddLinkMobileSaveDialog.super.call( this, config );
-	StructuredTaskSaveDialogMixin.call( this, config );
-	AddLinkSaveDialogMixin.call( this, config );
+	AddLinkSaveDialog.call( this, config );
 }
 
 OO.inheritClass( AddLinkMobileSaveDialog, ve.ui.MWMobileSaveDialog );
-OO.mixinClass( AddLinkMobileSaveDialog, StructuredTaskSaveDialogMixin );
-OO.mixinClass( AddLinkMobileSaveDialog, AddLinkSaveDialogMixin );
+OO.mixinClass( AddLinkMobileSaveDialog, AddLinkSaveDialog );
 
 module.exports = AddLinkMobileSaveDialog;

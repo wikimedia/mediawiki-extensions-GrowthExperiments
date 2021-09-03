@@ -777,8 +777,8 @@
 				"ext.growthExperiments.StructuredTask/EditModeConfirmationDialog.js",
 				"ext.growthExperiments.StructuredTask/SuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
-				"ext.growthExperiments.StructuredTask/StructuredTaskArticleTargetMixin.js",
-				"ext.growthExperiments.StructuredTask/StructuredTaskSaveDialogMixin.js",
+				"ext.growthExperiments.StructuredTask/StructuredTaskArticleTarget.js",
+				"ext.growthExperiments.StructuredTask/StructuredTaskSaveDialog.js",
 				"ext.growthExperiments.StructuredTask/addlink/AddLinkTargetInitializer.js",
 				"ext.growthExperiments.StructuredTask/addlink/AddLinkArticleTarget.js",
 				"ext.growthExperiments.StructuredTask/addlink/dmRecommendedLinkAnnotation.js",
@@ -786,7 +786,7 @@
 				"ext.growthExperiments.StructuredTask/addlink/dmRecommendedLinkErrorAnnotation.js",
 				"ext.growthExperiments.StructuredTask/addlink/ceRecommendedLinkErrorAnnotation.js",
 				"ext.growthExperiments.StructuredTask/addlink/RecommendedLinkRejectionDialog.js",
-				"ext.growthExperiments.StructuredTask/addlink/AddLinkSaveDialogMixin.js",
+				"ext.growthExperiments.StructuredTask/addlink/AddLinkSaveDialog.js",
 				"ext.growthExperiments.StructuredTask/addlink/RecommendedLinkToolbarDialog.js",
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
 				"utils/ext.growthExperiments.Utils.js",
@@ -865,7 +865,7 @@
 				"ext.growthExperiments.StructuredTask.desktop/StructuredTaskDesktopArticleTarget.js",
 				"ext.growthExperiments.StructuredTask.desktop/SuggestionsDesktopArticleTarget.js",
 				"ext.growthExperiments.StructuredTask.desktop/addlink/AddLinkDesktopArticleTarget.js",
-				"ext.growthExperiments.StructuredTask.desktop/addlink/AddLinkSaveDialog.js",
+				"ext.growthExperiments.StructuredTask.desktop/addlink/AddLinkDesktopSaveDialog.js",
 				"ext.growthExperiments.StructuredTask.desktop/addlink/RecommendedLinkToolbarDialogDesktop.js"
 			],
 			"dependencies": [

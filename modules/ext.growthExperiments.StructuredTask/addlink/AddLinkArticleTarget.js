@@ -21,14 +21,6 @@ var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession'
  * @extends ve.init.mw.ArticleTarget
  */
 function AddLinkArticleTarget() {
-	/**
-	 * Will be true when the recommendations were submitted but no real edit happened
-	 * (no recommended link was accepted, or, less plausibly, the save conflicted with
-	 * (and got auto-merge with) another edit which added the same link.
-	 *
-	 * @type {boolean}
-	 */
-	this.madeNullEdit = false;
 }
 
 /**
@@ -67,17 +59,6 @@ AddLinkArticleTarget.prototype.beforeSurfaceReady = function () {
 	this.getSurface().linkRecommendationFragments = this.findRecommendationFragments();
 };
 
-/**
- * Set machineSuggestions mode (as opposed to 'visual' or 'source')
- *
- * @inheritDoc
- */
-AddLinkArticleTarget.prototype.getSurfaceConfig = function ( config ) {
-	config = config || {};
-	config.mode = 'machineSuggestions';
-	return this.constructor.super.prototype.getSurfaceConfig.call( this, config );
-};
-
 AddLinkArticleTarget.prototype.afterSurfaceReady = function () {
 	// Select the first recommendation
 	// On mobile, the surface is not yet attached to the DOM when this runs, so wait for that to happen
@@ -103,15 +84,6 @@ AddLinkArticleTarget.prototype.selectFirstRecommendation = function () {
 AddLinkArticleTarget.prototype.restoreScrollPosition = function () {
 	// Don't restore the saved scroll position, because we've selected the first link recommendation
 	// and scrolled to it
-};
-
-/**
- * Don't save or restore edits
- *
- * @override
- */
-AddLinkArticleTarget.prototype.initAutosave = function () {
-	// https://phabricator.wikimedia.org/T267690
 };
 
 /**
@@ -389,10 +361,6 @@ AddLinkArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 				this.madeNullEdit = true;
 			}
 		}.bind( this ) );
-};
-
-AddLinkArticleTarget.prototype.updateToolbarSaveButtonState = function () {
-	// T281452 no-op, we have our own custom logic for this in AddLinkSaveDialogMixin
 };
 
 AddLinkArticleTarget.prototype.saveErrorHookAborted = function ( data ) {

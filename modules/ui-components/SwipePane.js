@@ -104,6 +104,7 @@ SwipePane.prototype.setToEndHandler = function ( handler ) {
  * the vertical difference is greater than the horizontal.
  *
  * @param {Object} event Touchmove event
+ * @return {boolean}
  */
 SwipePane.prototype.shouldHandleTouchMove = function ( event ) {
 	var touchEvent = event.touches.item( 0 ),

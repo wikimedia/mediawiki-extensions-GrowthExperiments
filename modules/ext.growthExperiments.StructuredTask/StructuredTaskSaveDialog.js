@@ -4,23 +4,23 @@ var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession'
 /**
  * Mixin for setting up save dialog for structured tasks
  *
- * @mixin mw.libs.ge.ui.StructuredTaskSaveDialogMixin
+ * @mixin mw.libs.ge.ui.StructuredTaskSaveDialog
  * @extends ve.ui.MWSaveDialog
  *
  * @constructor
  */
-function StructuredTaskSaveDialogMixin() {
+function StructuredTaskSaveDialog() {
 	this.$element.addClass( 'ge-structuredTask-mwSaveDialog' );
 }
 
-OO.initClass( StructuredTaskSaveDialogMixin );
+OO.initClass( StructuredTaskSaveDialog );
 
 /**
  * Return table header element for suggestion state
  *
  * @return {jQuery}
  */
-StructuredTaskSaveDialogMixin.prototype.getSuggestionStateHeader = function () {
+StructuredTaskSaveDialog.prototype.getSuggestionStateHeader = function () {
 	return $( '<th>' );
 };
 
@@ -29,7 +29,7 @@ StructuredTaskSaveDialogMixin.prototype.getSuggestionStateHeader = function () {
  *
  * @return {jQuery[]} Table header elements
  */
-StructuredTaskSaveDialogMixin.prototype.getSummaryTableHeader = function () {
+StructuredTaskSaveDialog.prototype.getSummaryTableHeader = function () {
 	var $suggestionCol = $( '<th>' ).append(
 		new OO.ui.IconWidget( { icon: 'robot-black' } ).$element,
 		$( '<span>' ).addClass( 'aligner' ).append(
@@ -40,7 +40,7 @@ StructuredTaskSaveDialogMixin.prototype.getSummaryTableHeader = function () {
 };
 
 /** @inheritDoc */
-StructuredTaskSaveDialogMixin.prototype.initialize = function () {
+StructuredTaskSaveDialog.prototype.initialize = function () {
 	this.constructor.super.prototype.initialize.call( this );
 
 	// Snapshot the homepage PV token. It will change during save, and we want the events
@@ -72,7 +72,7 @@ StructuredTaskSaveDialogMixin.prototype.initialize = function () {
 };
 
 /** @inheritDoc */
-StructuredTaskSaveDialogMixin.prototype.getTeardownProcess = function ( data ) {
+StructuredTaskSaveDialog.prototype.getTeardownProcess = function ( data ) {
 	return this.constructor.super.prototype.getTeardownProcess.call( this, data ).next( function () {
 		var suggestedEditSession = SuggestedEditSession.getInstance();
 
@@ -100,7 +100,7 @@ StructuredTaskSaveDialogMixin.prototype.getTeardownProcess = function ( data ) {
 };
 
 /** @inheritDoc */
-StructuredTaskSaveDialogMixin.prototype.getActionProcess = function ( action ) {
+StructuredTaskSaveDialog.prototype.getActionProcess = function ( action ) {
 	return this.constructor.super.prototype.getActionProcess.call( this, action ).next( function () {
 		if ( [ 'save', 'review', 'approve', 'report' ].indexOf( action ) >= 0 ) {
 			SuggestionInteractionLogger.log( 'editsummary_' + action, {}, {
@@ -122,9 +122,9 @@ StructuredTaskSaveDialogMixin.prototype.getActionProcess = function ( action ) {
 /**
  * Set a fake user preference for visual diffs to avoid T281924.
  */
-StructuredTaskSaveDialogMixin.prototype.setVisualDiffPreference = function () {
+StructuredTaskSaveDialog.prototype.setVisualDiffPreference = function () {
 	// The extra quote is needed because VE uses JSON preferences.
 	mw.user.options.set( 'visualeditor-diffmode-machineSuggestions', '"visual"' );
 };
 
-module.exports = StructuredTaskSaveDialogMixin;
+module.exports = StructuredTaskSaveDialog;

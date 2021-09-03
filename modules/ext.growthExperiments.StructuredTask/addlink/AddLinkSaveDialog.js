@@ -1,16 +1,19 @@
-var LinkSuggestionInteractionLogger = require( './LinkSuggestionInteractionLogger.js' );
+var LinkSuggestionInteractionLogger = require( './LinkSuggestionInteractionLogger.js' ),
+	StructuredTaskSaveDialog = require( '../StructuredTaskSaveDialog.js' );
 
 /**
- * Mixin for code sharing between AddLinkSaveDialog and AddLinkMobileSaveDialog.
+ * Mixin for code sharing between AddLinkDesktopSaveDialog and AddLinkMobileSaveDialog.
  * This is to solve the diamond inheritance problem of ve.ui.MWSaveDialog -->
- * AddLinkSaveDialog and ve.ui.MWSaveDialog --> ve.ui.MWMobileSaveDialog.
+ * AddLinkDesktopSaveDialog and ve.ui.MWSaveDialog --> ve.ui.MWMobileSaveDialog.
  *
- * @mixin mw.libs.ge.ui.AddLinkSaveDialogMixin
+ * @mixin mw.libs.ge.ui.AddLinkSaveDialog
  * @extends ve.ui.MWSaveDialog
+ * @mixes mw.libs.ge.ui.StructuredTaskSaveDialog
  *
  * @constructor
  */
-function AddLinkSaveDialogMixin() {
+function AddLinkSaveDialog() {
+	StructuredTaskSaveDialog.call( this );
 	this.$element.addClass( 'ge-addlink-mwSaveDialog' );
 	this.logger = new LinkSuggestionInteractionLogger( {
 		/* eslint-disable camelcase */
@@ -20,7 +23,8 @@ function AddLinkSaveDialogMixin() {
 	} );
 }
 
-OO.initClass( AddLinkSaveDialogMixin );
+OO.initClass( AddLinkSaveDialog );
+OO.mixinClass( AddLinkSaveDialog, StructuredTaskSaveDialog );
 
 /**
  * Return header for column showing whether the suggestion was linked
@@ -29,7 +33,7 @@ OO.initClass( AddLinkSaveDialogMixin );
  *
  * @return {jQuery}
  */
-AddLinkSaveDialogMixin.prototype.getSuggestionStateHeader = function () {
+AddLinkSaveDialog.prototype.getSuggestionStateHeader = function () {
 	return $( '<th>' ).append(
 		mw.message( 'growthexperiments-addlink-summary-column-header-linked' ).text()
 	);
@@ -40,7 +44,7 @@ AddLinkSaveDialogMixin.prototype.getSuggestionStateHeader = function () {
  *
  * @param {Object[]} annotationStates Suggestion states (acceptances/rejections/skips)
  */
-AddLinkSaveDialogMixin.prototype.updateSummary = function ( annotationStates ) {
+AddLinkSaveDialog.prototype.updateSummary = function ( annotationStates ) {
 	var $rows = annotationStates.map( function ( state ) {
 		var $icon;
 		if ( state.accepted ) {
@@ -66,7 +70,7 @@ AddLinkSaveDialogMixin.prototype.updateSummary = function ( annotationStates ) {
 };
 
 /** @inheritDoc */
-AddLinkSaveDialogMixin.prototype.getSetupProcess = function ( data ) {
+AddLinkSaveDialog.prototype.getSetupProcess = function ( data ) {
 	var annotationStates = ve.init.target.getAnnotationStates(),
 		hasAccepts = annotationStates.some( function ( state ) {
 			return state.accepted;
@@ -108,4 +112,4 @@ AddLinkSaveDialogMixin.prototype.getSetupProcess = function ( data ) {
 	}, this );
 };
 
-module.exports = AddLinkSaveDialogMixin;
+module.exports = AddLinkSaveDialog;
