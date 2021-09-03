@@ -51,7 +51,8 @@ class MentorDashboardDiscoveryHooks implements PersonalUrlsHook {
 				$newPersonalUrls['mentordashboard'] = [
 					'id' => 'pt-mentordashboard',
 					'text' => $skin->msg( 'growthexperiments-mentor-dashboard-pt-link' )->text(),
-					'href' => SpecialPage::getTitleFor( 'MentorDashboard' )->getLocalURL()
+					'href' => SpecialPage::getTitleFor( 'MentorDashboard' )->getLocalURL(),
+					'icon' => 'userGroup',
 				];
 			}
 			$newPersonalUrls[$key] = $link;
