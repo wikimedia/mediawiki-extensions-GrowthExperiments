@@ -51,6 +51,7 @@ class UpdateMenteeData extends Maintenance {
 		$this->requireExtension( 'GrowthExperiments' );
 
 		$this->addDescription( 'Update growthexperiments_mentee_data database table' );
+		$this->addOption( 'force', 'Do the update even if GEMentorDashboardBackendEnabled is false' );
 		$this->addOption( 'mentor', 'Username of the mentor to update the data for', false, true );
 		$this->addOption( 'statsd', 'Send timing information to statsd' );
 	}
@@ -69,7 +70,10 @@ class UpdateMenteeData extends Maintenance {
 	}
 
 	public function execute() {
-		if ( !$this->getConfig()->get( 'GEMentorDashboardBackendEnabled' ) ) {
+		if (
+			!$this->getConfig()->get( 'GEMentorDashboardBackendEnabled' ) &&
+			!$this->hasOption( 'force' )
+		) {
 			$this->output( "Mentor dashboard backend is disabled.\n" );
 			return;
 		}
