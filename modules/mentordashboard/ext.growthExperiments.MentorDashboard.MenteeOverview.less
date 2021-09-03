@@ -1,5 +1,6 @@
 @import 'mediawiki.ui/variables';
 @import 'resources/lib/ooui/wikimedia-ui-base.less';
+@import '../homepage/ext.growthExperiments.mixins.less';
 
 // .growthexperiments-mentor-dashboard-container is here only to make the resulting selector
 // specific enough for browsers to prefer rules that are here.
@@ -92,6 +93,28 @@
 				.growthexperiments-mentor-dashboard-module-mentee-overview-submit-btn {
 					float: right;
 					padding: 10px 0;
+				}
+			}
+
+			.growthexperiments-mentor-dashboard-mentee-overview-empty {
+				background-color: @wmui-color-base90;
+				border: 1px solid #c8ccd1;
+				border-radius: 2px;
+				text-align: center;
+				padding: 93px 40px 151px;
+
+				.oo-ui-iconWidget {
+					opacity: 0.2;
+					width: 100px;
+					height: 100px;
+				}
+
+				h3 {
+					.rel-font-size( @parentFontSize: 14px, @targetFontSize: 24px );
+				}
+
+				p {
+					font-weight: bold;
 				}
 			}
 

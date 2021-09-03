@@ -1373,7 +1373,11 @@
 				"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown",
 				"growthexperiments-mentor-dashboard-mentee-overview-show-entries",
 				"growthexperiments-mentor-dashboard-mentee-overview-page-counter",
-				"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder"
+				"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder",
+				"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline",
+				"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text",
+				"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline",
+				"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text"
 			],
 			"dependencies": [
 				"mediawiki.language",
