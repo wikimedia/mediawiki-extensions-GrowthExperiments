@@ -9,12 +9,9 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\Util;
 use GrowthExperiments\WikiConfigException;
-use MalformedTitleException;
-use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWiki\Page\ProperPageIdentity;
 use StatusValue;
-use TitleFactory;
 
 /**
  * Shared functionality for various classes that consume link recommendations.
@@ -30,43 +27,25 @@ class LinkRecommendationHelper {
 	/** @var LinkRecommendationStore */
 	private $linkRecommendationStore;
 
-	/** @var LinkBatchFactory */
-	private $linkBatchFactory;
-
-	/** @var TitleFactory */
-	private $titleFactory;
-
 	/** @var callable */
 	private $cirrusSearchFactory;
-
-	/** @var bool */
-	private $pruneRedLinks;
 
 	/**
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param LinkRecommendationProvider $linkRecommendationProvider
 	 * @param LinkRecommendationStore $linkRecommendationStore
-	 * @param LinkBatchFactory $linkBatchFactory
-	 * @param TitleFactory $titleFactory
 	 * @param callable $cirrusSearchFactory A factory method returning a CirrusSearch instance.
-	 * @param bool $pruneRedLinks Prune red links in pruneLinkRecommendation()?
 	 */
 	public function __construct(
 		ConfigurationLoader $configurationLoader,
 		LinkRecommendationProvider $linkRecommendationProvider,
 		LinkRecommendationStore $linkRecommendationStore,
-		LinkBatchFactory $linkBatchFactory,
-		TitleFactory $titleFactory,
-		callable $cirrusSearchFactory,
-		bool $pruneRedLinks
+		callable $cirrusSearchFactory
 	) {
 		$this->configurationLoader = $configurationLoader;
 		$this->linkRecommendationProvider = $linkRecommendationProvider;
 		$this->linkRecommendationStore = $linkRecommendationStore;
-		$this->linkBatchFactory = $linkBatchFactory;
-		$this->titleFactory = $titleFactory;
 		$this->cirrusSearchFactory = $cirrusSearchFactory;
-		$this->pruneRedLinks = $pruneRedLinks;
 	}
 
 	/**
@@ -75,7 +54,6 @@ class LinkRecommendationHelper {
 	 * @param LinkTarget $title
 	 * @return LinkRecommendation|null
 	 * @throws ErrorException
-	 * @throws MalformedTitleException
 	 */
 	public function getLinkRecommendation( LinkTarget $title ): ?LinkRecommendation {
 		$taskTypeId = LinkRecommendationTaskTypeHandler::TASK_TYPE_ID;

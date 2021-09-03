@@ -3,15 +3,17 @@
 namespace GrowthExperiments;
 
 use DeferredUpdates;
-use GrowthExperiments\NewcomerTasks\AddLink\AddLinkSubmissionHandler;
-use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\StructuredTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
-use IDBAccessObject;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPostSaveHook;
 use MediaWiki\Extension\VisualEditor\VisualEditorApiVisualEditorEditPreSaveHook;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\User\UserIdentity;
+use OutOfBoundsException;
+use Status;
 use TitleFactory;
 use UnexpectedValueException;
 
@@ -24,31 +26,34 @@ class VisualEditorHooks implements
 	VisualEditorApiVisualEditorEditPostSaveHook
 {
 
+	/** Prefix used for the VisualEditor API's plugin parameter. */
+	private const PLUGIN_PREFIX = 'ge-task-';
+
 	/** @var TitleFactory */
 	private $titleFactory;
+	/** @var ConfigurationLoader */
+	private $configurationLoader;
+	/** @var TaskTypeHandlerRegistry */
+	private $taskTypeHandlerRegistry;
 	/** @var TrackerFactory */
 	private $trackerFactory;
-	/** @var AddLinkSubmissionHandler */
-	private $addLinkSubmissionHandler;
-	/** @var LinkRecommendationStore */
-	private $linkRecommendationStore;
 
 	/**
 	 * @param TitleFactory $titleFactory
+	 * @param ConfigurationLoader $configurationLoader
+	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param TrackerFactory $trackerFactory
-	 * @param AddLinkSubmissionHandler $addLinkSubmissionHandler
-	 * @param LinkRecommendationStore $linkRecommendationStore
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
-		TrackerFactory $trackerFactory,
-		AddLinkSubmissionHandler $addLinkSubmissionHandler,
-		LinkRecommendationStore $linkRecommendationStore
+		ConfigurationLoader $configurationLoader,
+		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
+		TrackerFactory $trackerFactory
 	) {
 		$this->titleFactory = $titleFactory;
+		$this->configurationLoader = $configurationLoader;
+		$this->taskTypeHandlerRegistry = $taskTypeHandlerRegistry;
 		$this->trackerFactory = $trackerFactory;
-		$this->addLinkSubmissionHandler = $addLinkSubmissionHandler;
-		$this->linkRecommendationStore = $linkRecommendationStore;
 	}
 
 	/** @inheritDoc */
@@ -60,7 +65,8 @@ class VisualEditorHooks implements
 		array $pluginData,
 		array &$apiResponse
 	) {
-		$data = $pluginData['linkrecommendation'] ?? null;
+		/** @var ?StructuredTaskTypeHandler $taskTypeHandler */
+		list( $data, $taskTypeHandler ) = $this->getDataFromApiRequest( $pluginData );
 		if ( !$data ) {
 			// Not an edit we are interested in looking at.
 			return;
@@ -72,14 +78,14 @@ class VisualEditorHooks implements
 			// with by VisualEditor.
 			return;
 		}
-		if ( !$this->linkRecommendationStore->getByLinkTarget(
-			$title,
-			IDBAccessObject::READ_LATEST )
-		) {
-			// There's no link recommendation data stored for this page, so it must have been
-			// removed from the database during the time the user had the UI open. Don't allow
-			// the save to continue.
-			$apiResponse['message'] = [ 'growthexperiments-addlink-notinstore', $title->getPrefixedText() ];
+		$errorMessage = $taskTypeHandler->getSubmissionHandler()->validate(
+			$title->toPageIdentity(),
+			$user,
+			$params['oldid'],
+			$data
+		);
+		if ( $errorMessage ) {
+			$apiResponse['message'] = $errorMessage;
 			return false;
 		}
 	}
@@ -94,10 +100,11 @@ class VisualEditorHooks implements
 		array $saveResult,
 		array &$apiResponse
 	): void {
-		$data = $pluginData['linkrecommendation'] ?? null;
 		if ( $apiResponse['result'] !== 'success' ) {
 			return;
 		}
+		/** @var ?StructuredTaskTypeHandler $taskTypeHandler */
+		list( $data, $taskTypeHandler ) = $this->getDataFromApiRequest( $pluginData );
 		if ( !$data ) {
 			// This is going to run on every edit and not in a deferred update, so at least filter
 			// by authenticated users to make this slightly faster for anons.
@@ -114,24 +121,70 @@ class VisualEditorHooks implements
 			}
 			return;
 		}
-		$data = json_decode( $data, true ) ?? [];
 		$title = $this->titleFactory->castFromPageIdentity( $page );
 		if ( !$title ) {
 			throw new UnexpectedValueException( 'Unable to get Title from PageIdentity' );
 		}
-		$apiResponse['gelogId'] = $this->addLinkSubmissionHandler->run(
-			$title,
+
+		$status = $taskTypeHandler->getSubmissionHandler()->handle(
+			$title->toPageIdentity(),
 			$user,
 			$params['oldid'],
 			$saveResult['edit']['newrevid'] ?? null,
 			$data
 		);
+		if ( $status->isOK() ) {
+			$apiResponse['gelogid'] = $status->getValue()['logId'] ?? null;
+		}
+		// FIXME expose error formatter to hook so this can be handled better
+		list( $errorStatus, $warningStatus ) = $status->splitByErrorType();
+		if ( !$errorStatus->isGood() ) {
+			$apiResponse['errors'][] = Status::wrap( $errorStatus )->getWikiText();
+		}
+		if ( !$warningStatus->isGood() ) {
+			$apiResponse['warnings'][] = Status::wrap( $warningStatus )->getWikiText();
+		}
+
 		DeferredUpdates::addCallableUpdate( function () use ( $user, $page ) {
 			$tracker = $this->trackerFactory->getTracker( $user );
 			// Untrack the page so that future edits by the user are not tagged with
 			// the suggested link edit tag.
 			$tracker->untrack( $page->getId() );
 		} );
+	}
+
+	/**
+	 * Extract the data sent by the frontend structured task logic from the API request.
+	 * @param array $pluginData
+	 * @return array [ JSON data from frontend, TaskTypeHandler ] or [ null, null ]
+	 * @phan-return array{0:?array,1:?StructuredTaskTypeHandler}
+	 */
+	private function getDataFromApiRequest( array $pluginData ): array {
+		// Fast-track the common case of a non-Growth-related save - getTaskTypes() is not free.
+		if ( !$pluginData ) {
+			return [ null, null ];
+		}
+
+		$taskTypes = $this->configurationLoader->getTaskTypes();
+		foreach ( $taskTypes as $taskTypeId => $taskType ) {
+			$data = $pluginData[ self::PLUGIN_PREFIX . $taskTypeId ] ?? null;
+			if ( $data ) {
+				$data = json_decode( $data, true ) ?? [];
+				try {
+					$taskTypeHandler = $this->taskTypeHandlerRegistry->getByTaskType( $taskType );
+				} catch ( OutOfBoundsException $e ) {
+					// Probably some sort of hand-crafted fake API request. Ignore it.
+					continue;
+				}
+				if ( !( $taskTypeHandler instanceof StructuredTaskTypeHandler ) ) {
+					// This mechanism is for structured tasks only.
+					continue;
+				}
+
+				return [ $data, $taskTypeHandler ];
+			}
+		}
+		return [ null, null ];
 	}
 
 }

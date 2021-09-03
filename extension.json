@@ -216,9 +216,9 @@
 			"class": "GrowthExperiments\\VisualEditorHooks",
 			"services": [
 				"TitleFactory",
-				"GrowthExperimentsNewcomerTaskTrackerFactory",
-				"GrowthExperimentsAddLinkSubmissionHandler",
-				"GrowthExperimentsLinkRecommendationStore"
+				"GrowthExperimentsNewcomerTasksConfigurationLoader",
+				"GrowthExperimentsTaskTypeHandlerRegistry",
+				"GrowthExperimentsNewcomerTaskTrackerFactory"
 			]
 		}
 	},
@@ -1686,14 +1686,16 @@
 					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\LinkRecommendationTaskTypeHandler",
 					"services": [
 						"GrowthExperimentsNewcomerTasksConfigurationValidator",
-						"GrowthExperimentsLinkRecommendationProvider"
+						"GrowthExperimentsLinkRecommendationProvider",
+						"GrowthExperimentsAddLinkSubmissionHandler"
 					]
 				},
 				"image-recommendation": {
 					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\ImageRecommendationTaskTypeHandler",
 					"services": [
 						"GrowthExperimentsNewcomerTasksConfigurationValidator",
-						"GrowthExperimentsImageRecommendationProvider"
+						"GrowthExperimentsImageRecommendationProvider",
+						"GrowthExperimentsAddImageSubmissionHandler"
 					]
 				},
 				"null": {
@@ -1855,13 +1857,15 @@
 		"growthexperiments/claimmentee": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
 		"growthexperiments/setmentor-no-previous-mentor": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
 		"growthexperiments/claimmentee-no-previous-mentor": "GrowthExperiments\\Mentorship\\MentorChangeLogFormatter",
-		"growthexperiments/addlink": "LogFormatter"
+		"growthexperiments/addlink": "LogFormatter",
+		"growthexperiments/addimage": "GrowthExperiments\\NewcomerTasks\\AddImage\\AddImageLogFormatter"
 	},
 	"ActionFilteredLogs": {
 		"growthexperiments": {
 			"claimmentee": [ "claimmentee", "claimmentee-no-previous-mentor" ],
 			"setmentor": [ "setmentor", "setmentor-no-previous-mentor" ],
-			"addlink": [ "addlink" ]
+			"addlink": [ "addlink" ],
+			"addimage": [ "addimage" ]
 		}
 	},
 	"AvailableRights": [
