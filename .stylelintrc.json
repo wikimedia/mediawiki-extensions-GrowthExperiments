@@ -6,6 +6,7 @@
 		"function-comma-newline-after": "always-multi-line",
 		"function-comma-space-after": "always-single-line",
 		"function-parentheses-newline-inside": "always-multi-line",
-		"function-parentheses-space-inside": "always-single-line"
+		"function-parentheses-space-inside": "always-single-line",
+		"declaration-property-unit-disallowed-list": null
 	}
 }
