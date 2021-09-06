@@ -5,6 +5,7 @@
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Painel de mentor",
+	"growthexperiments-mentor-dashboard-pt-link": "Painel de mentor",
 	"growthexperiments-mentor-dashboard-disabled": "O painel do mentor não está habilitado nessa wiki.",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Antes que o painel do mentor possa ser usado, a lista de mentores primeiro precisa ser configurada. Um administrador pode usar [[Special:EditGrowthConfig]] para esse propósito.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Seus}} mentores",
@@ -30,6 +31,10 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "desconhecido",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Mostrar $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 de $2",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Informações do aprendizes não disponíveis.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Você pode não ter nenhum aprendiz designado ainda. Dados atualizados diariamente.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Nenhum aprendiz encontrado",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Mude seus filtros para encontrar aprendizes.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Recursos",
 	"growthexperiments-mentor-dashboard-resources-intro": "Os links abaixo ajudam você a navegar rapidamente para páginas relevantes relacionadas ao mentor.",
 	"growthexperiments-mentor-dashboard-resources-links-headline": "Páginas principais para mentoria",

@@ -13,6 +13,7 @@
 	"growthexperiments-config-validator-error": "Validace $1 selhala: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> by mělo být <code>$2</code>, ale je <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Model obsahu stránky se neshoduje: Konfigurace rozšíření GrowthExperiments musí mít model JSON, ale má $1",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Neplatné ID typu úkolu: <code>$1</code> není platná hodnota",
 	"growthexperiments-edit-config-disabled": "Komunitní konfigurace je momentálně zakázaná.",
 	"growthexperiments-edit-config-title": "Editujte konfiguraci Growth funkcí",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Naposledy upraveno {{GENDER:$1|uživatelem|uživatelkou}} [[User:$1|$1]] $2.",

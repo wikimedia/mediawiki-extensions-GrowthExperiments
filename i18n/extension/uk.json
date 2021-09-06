@@ -11,6 +11,7 @@
 	"growthexperiments-config-validator-error": "Валідація для $1 не вдалася: «$2»",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> має бути <code>$2</code>, а є <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Не співпадають моделі вмісту: файл конфігурації GrowthExperiments повинен мати модель JSON, а виявлено $1",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Недійсний ідентифікатор обробника типу завдання: <code>$1</code> недійсне значення",
 	"growthexperiments-edit-config-disabled": "Налаштування спільнотою наразі вимкнене.",
 	"growthexperiments-edit-config-title": "Редагувати конфігурацію функцій зростання",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Останнього разу оновлено [[User:$1|$1]] $2.",

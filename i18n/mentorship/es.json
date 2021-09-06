@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Warming Hearth"
+		]
+	},
+	"growthexperiments-mentor-dashboard-pt-link": "Tablón de mentores",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Información de aprendices no disponible.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Puede que no tengas asignado aprendices todavía. La información se actualiza a diario.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "No se encontraron aprendices.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Cambia tus filtros para encontrar aprendices."
+}

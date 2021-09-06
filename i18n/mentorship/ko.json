@@ -5,6 +5,8 @@
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "필터 추가",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "최근 수일",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "최근 수개월",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "검색",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "알 수 없음",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$2 중 $1"

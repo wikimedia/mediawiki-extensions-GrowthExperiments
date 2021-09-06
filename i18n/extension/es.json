@@ -6,6 +6,7 @@
 			"Khiari",
 			"LORDZRAWN",
 			"MarcoAurelio",
+			"Mnivar",
 			"ZebaX2010"
 		]
 	},
@@ -14,6 +15,7 @@
 	"growthexperiments-config-validator-error": "Falló la validación para $1 con: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "Se espera que <code>$1</code> sea <code>$2</code>, pero es <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Discrepancia del modelo de contenido: el archivo de configuración de GrowthExperiments debe tener un modelo de contenido JSON, se detectó $1",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID de controlador de tipo de tarea no válido: <code>$1</code> no es un valor válido",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Última actualización por [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Última actualización por usuario desconocido $1.",
 	"growthexperiments-edit-config-pretext": "Esta página te permite editar la configuración de las funciones del equipo [[:mw:Special:MyLanguage/Growth|Crecimiento]]. Editarás $1 con tu nombre. Puedes ver tus cambios en el historial de esa página.",

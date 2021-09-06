@@ -6,6 +6,7 @@
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Панель наставника",
+	"growthexperiments-mentor-dashboard-pt-link": "Панель підопічного",
 	"growthexperiments-mentor-dashboard-disabled": "Панель наставника не увімкнена в цій вікі.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Щоб увімкнути інформаційну панель наставника, спочатку потрібно [[$1|зареєструватися як наставник]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Перш ніж можна використовувати інформаційну панель наставника, спочатку потрібно налаштувати список наставників. Адміністратор може використовувати для цього [[Special:EditGrowthConfig]].",
@@ -38,6 +39,10 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "невідомо",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Показати $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 із $2",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Дані про підопічних недоступні",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Можливо, у вас ще не призначено жодного підопічного. Дані оновлюються щодня.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Підопічних не знайдено.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Змінити фільтри, щоб знайти підопічних.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Ресурси",
 	"growthexperiments-mentor-dashboard-resources-intro": "Посилання нижче допоможуть вам швидко перейти до важливих сторінок наставника.",
 	"growthexperiments-mentor-dashboard-resources-links-headline": "Найважливіші сторінки наставництва",

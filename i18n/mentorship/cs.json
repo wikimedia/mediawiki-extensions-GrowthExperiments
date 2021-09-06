@@ -6,6 +6,7 @@
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Nástěnka mentora",
+	"growthexperiments-mentor-dashboard-pt-link": "Nástěnka mentora",
 	"growthexperiments-mentor-dashboard-disabled": "Nástěnka mentora na tomto projektu zatím není aktivovaná.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Pro aktivování nástěnky mentorů se nejprve {{GENDER:|musíte}} [[$1|zapsat jako mentor]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Předtím, než můžete nástěnku mentorů použít, musí být nakonfigurován seznam mentorů. Správce může za tímto účelem využít stránky [[Special:EditGrowthConfig]].",
@@ -38,6 +39,10 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "neznámé",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Ukázat $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 z $2",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Data o nováčcích jsou nedostupná",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Možná ještě nemáte žádné nováčky přiřazené. Data jsou aktualizována denně.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Žádní nováčci nebyli nalezeni",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Změňte své filtry, abyste nějaké nováčky viděli.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Zdroje",
 	"growthexperiments-mentor-dashboard-resources-intro": "Odkazy níže uvedené vám umožní rychle se dostat ke všem důležitým informacím týkajícím se mentorství.",
 	"growthexperiments-mentor-dashboard-resources-links-headline": "Nejdůležitější stránky pro mentory",

@@ -1,14 +1,23 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kushared",
 			"ئارام بکر"
 		]
 	},
+	"growthexperiments-edit-config-feedback-cta": "فیدباکمان پێ بدە",
 	"growthexperiments-edit-config-edit-summary": "کورتەی دەستکاری",
+	"growthexperiments-edit-config-help-panel": "ڕێکخستنەکانی پانێلی یارمەتی",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "سەرەوەی پەڕە",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "خوارەوەی پەڕە",
+	"growthexperiments-edit-config-help-panel-ask-mentor-true": "پەڕەکانی لێدوانی مامۆستا",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "پرسگا",
+	"growthexperiments-edit-config-help-panel-links": "بەستەرەکانی پانێلی یارمەتی",
+	"growthexperiments-edit-config-homepage": "پەڕەی سەرەکیی تازەکار",
 	"growthexperiments-edit-config-mentorship-enabled-true": "بەڵێ",
 	"growthexperiments-edit-config-mentorship-enabled-false": "نەخێر",
-	"growthexperiments-edit-config-newcomertasks": "دەستکارییە پێشنیارکراوەکان"
+	"growthexperiments-edit-config-newcomertasks": "دەستکارییە پێشنیارکراوەکان",
+	"growthexperiments-edit-config-newcomer-tasks-links-learnmore": "پەڕەیەک بۆ فێربوونی زیاتر دەربارەی زیادکردنی بەستەرەکان",
+	"growthexperiments-edit-config-newcomer-tasks-references-templates": "سەرچاوەکان: داڕێژەکان بۆ دۆزینەوەی ئەو وتارانەی کە پێویستیان بە سەرچاوەی زیاترە.",
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "پەڕەیەک بۆ فێربوونی زیاتر دەربارەی نوێکردنەوەی وتارەکان"
 }

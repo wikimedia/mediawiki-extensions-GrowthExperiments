@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kyykaarme",
 			"MITO"
 		]
 	},
 	"growthexperiments-edit-config-feedback-headline": "Onko sinulla ideoita tai kysymyksiä tästä lomakkeesta?",
 	"growthexperiments-edit-config-feedback-cta": "Lähetä palautetta",
-	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Ohjekeskus"
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Neuvontapiste"
 }
