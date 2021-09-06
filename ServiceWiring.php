@@ -421,7 +421,7 @@ return [
 	): ConfigurationValidator {
 		return new ConfigurationValidator(
 			RequestContext::getMain(),
-			Collation::singleton(),
+			$services->getCollationFactory()->getCategoryCollation(),
 			$services->getTitleParser()
 		);
 	},
