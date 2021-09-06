@@ -38,7 +38,7 @@
 
 		// prepare submit button
 		this.filterDropdownSubmit = new OO.ui.ButtonWidget( {
-			label: mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter' ),
+			label: mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit' ),
 			classes: [ 'growthexperiments-mentor-dashboard-module-mentee-overview-submit-btn' ]
 		} );
 		this.filterDropdownSubmit.connect( this, {
@@ -79,9 +79,6 @@
 					} ).$element
 				),
 				$( '<hr>' ),
-				$( '<h3>' ).text(
-					mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-headline' )
-				),
 				new OO.ui.FieldLayout( this.filterDropdownOnlyStarred, {
 					align: 'inline',
 					label: mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred' )

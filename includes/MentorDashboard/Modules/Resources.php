@@ -50,20 +50,6 @@ class Resources extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getSubheader() {
-		return $this->msg( 'growthexperiments-mentor-dashboard-resources-intro' )->text();
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	protected function getSubheaderTag() {
-		return 'p';
-	}
-
-	/**
-	 * @inheritDoc
-	 */
 	protected function getBody() {
 		$links = [
 			// TODO: For now, links are hardcoded here. In the full version of the
@@ -89,18 +75,11 @@ class Resources extends BaseModule {
 				$this->msg( 'growthexperiments-mentor-dashboard-resources-link-mentors-list' )->text()
 			) );
 		}
-		return implode( "\n", [
-			Html::element(
-				'h3',
-				[],
-				$this->msg( 'growthexperiments-mentor-dashboard-resources-links-headline' )->text()
-			),
-			Html::rawElement(
-				'ul',
-				[],
-				implode( "\n", array_filter( $links ) )
-			)
-		] );
+		return Html::rawElement(
+			'ul',
+			[],
+			implode( "\n", array_filter( $links ) )
+		);
 	}
 
 	/**
