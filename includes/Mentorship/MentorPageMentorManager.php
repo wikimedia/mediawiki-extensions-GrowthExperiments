@@ -274,7 +274,12 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			return null;
 		}
 
-		return $this->titleFactory->newFromText( $this->mentorsPageName );
+		$title = $this->titleFactory->newFromText( $this->mentorsPageName );
+		if ( !$title ) {
+			// TitleFactory failed to construct a title object -- the configured list must be invalid
+			throw new WikiConfigException( 'wgGEHomepageMentorsList is invalid: ' . $this->mentorsPageName );
+		}
+		return $title;
 	}
 
 	/**
@@ -284,9 +289,18 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 */
 	private function getMentorsPage(): ?WikiPage {
 		$title = $this->getAutoMentorsListTitle();
-		if ( !$title || !$title->exists() ) {
-			throw new WikiConfigException( 'wgGEHomepageMentorsList is invalid: ' . $this->mentorsPageName );
+		if ( !$title ) {
+			// page was not configured -- configuration is valid, do not throw
+			return null;
 		}
+		if ( !$title->exists() ) {
+			// page does not exist, throw WikiConfigException
+			throw new WikiConfigException(
+				'Page defined by wgGEHomepageMentorsList does not exist: ' .
+				$this->mentorsPageName
+			);
+		}
+
 		return $this->wikiPageFactory->newFromTitle( $title );
 	}
 
