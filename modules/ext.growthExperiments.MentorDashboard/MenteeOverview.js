@@ -2,10 +2,10 @@
 ( function () {
 	'use strict';
 
-	var MenteeOverviewApi = require( './ext.growthExperiments.MentorDashboard.MenteeOverviewApi.js' ),
-		MenteeOverviewPagination = require( './ext.growthExperiments.MentorDashboard.MenteeOverview.Pagination.js' ),
-		MenteeOverviewFilterDropdown = require( './ext.growthExperiments.MentorDashboard.MenteeOverview.FilterDropdown.js' ),
-		MenteeSearchInputWidget = require( './ext.growthExperiments.MentorDashboard.MenteeOverview.MenteeSearchInputWidget.js' );
+	var MenteeOverviewApi = require( './MenteeOverviewApi.js' ),
+		MenteeOverviewPagination = require( './MenteeOverview.Pagination.js' ),
+		MenteeOverviewFilterDropdown = require( './MenteeOverview.FilterDropdown.js' ),
+		MenteeSearchInputWidget = require( './MenteeOverview.MenteeSearchInputWidget.js' );
 
 	/**
 	 * @class
