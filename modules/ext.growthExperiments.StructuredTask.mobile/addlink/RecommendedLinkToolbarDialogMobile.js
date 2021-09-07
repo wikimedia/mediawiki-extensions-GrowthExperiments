@@ -1,7 +1,7 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	RecommendedLinkToolbarDialog = StructuredTask.RecommendedLinkToolbarDialog,
 	LinkSuggestionInteractionLogger = StructuredTask.LinkSuggestionInteractionLogger,
-	RecommendedLinkToolbarDialogButton = require( './RecommendedLinkToolbarDialogButton.js' );
+	MinimizedToolbarDialogButton = require( '../MinimizedToolbarDialogButton.js' );
 
 /**
  * @class mw.libs.ge.RecommendedLinkToolbarDialogMobile
@@ -27,7 +27,7 @@ function RecommendedLinkToolbarDialogMobile() {
 	 */
 	this.isAnimating = false;
 	/**
-	 * @property {mw.libs.ge.RecommendedLinkToolbarDialogButton|null} toolbarDialogButton
+	 * @property {mw.libs.ge.MinimizedToolbarDialogButton|null} toolbarDialogButton
 	 */
 	this.toolbarDialogButton = null;
 	this.onDocumentNodeClick = this.hideDialog.bind( this );
@@ -325,7 +325,11 @@ RecommendedLinkToolbarDialogMobile.prototype.onToolbarDialogButtonClicked = func
  * Attach button for re-opening the dialog
  */
 RecommendedLinkToolbarDialogMobile.prototype.setUpToolbarDialogButton = function () {
-	this.toolbarDialogButton = new RecommendedLinkToolbarDialogButton();
+	this.toolbarDialogButton = new MinimizedToolbarDialogButton( {
+		label: mw.message(
+			'growthexperiments-addlink-context-button-show-suggestion'
+		).text()
+	} );
 	this.toolbarDialogButton.on( 'click', this.onToolbarDialogButtonClicked.bind( this ) );
 	this.surface.getGlobalOverlay().$element.append( this.toolbarDialogButton.$element );
 };
