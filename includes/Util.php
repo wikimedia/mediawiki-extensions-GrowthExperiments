@@ -36,6 +36,10 @@ class Util {
 	private const MONTH = 2592000;
 	private const YEAR = 31536000;
 
+	private const STATSD_INCREMENTABLE_ERROR_MESSAGES = [
+		'AddLink' => 'growthexperiments-addlink-notinstore'
+	];
+
 	/**
 	 * Helper method to check if a user can set their email.
 	 *
@@ -134,12 +138,26 @@ class Util {
 	 * @param Throwable $error Error object from the catch block
 	 * @param array $extraData
 	 * @param string $level Log-level on which WikiConfigException should be logged
+	 * @param StatusValue|null $statusValue If the StatusValue message key is in
+	 *  self::STATSD_INCREMENTABLE_ERROR_MESSAGES, then a statsd counter is incremented for the key/value in the
+	 *  relevant entry in self::STATSD_INCREMENTABLE_ERROR_MESSAGES.
 	 */
 	public static function logError(
 		Throwable $error,
 		array $extraData = [],
-		string $level = LogLevel::ERROR
+		string $level = LogLevel::ERROR,
+		?StatusValue $statusValue = null
 	) {
+		if ( $statusValue ) {
+			$statsdDataFactory = MediaWikiServices::getInstance()->getPerDbNameStatsdDataFactory();
+			foreach ( self::STATSD_INCREMENTABLE_ERROR_MESSAGES as $type => $message ) {
+				if ( $statusValue->hasMessage( $message ) ) {
+					$statsdDataFactory->increment( "GrowthExperiments.$type.$message" );
+					break;
+				}
+			}
+		}
+
 		// Special-handling for WikiConfigException
 		if ( $error instanceof WikiConfigException ) {
 			LoggerFactory::getInstance( 'GrowthExperiments' )
