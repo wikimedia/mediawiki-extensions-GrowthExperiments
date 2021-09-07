@@ -28,8 +28,13 @@
 	"growthexperiments-edit-config-help-panel-description": "ヘルプパネルは下記の設定により、どの名前空間でも、モードは閲覧でも編集でも利用可能にできます。含まれる機能にはヘルプの検索、ヘルプリンクを押す、ほかの指導役またはヘルプデスクに質問するなどがあります。",
 	"growthexperiments-edit-config-help-panel-reading-namespaces": "名前空間のヘルプパネルが閲覧モードで有効",
 	"growthexperiments-edit-config-help-panel-disabled-namespaces": "ヘルプパネル付きの名前空間を閲覧と編集のモードで無効にする",
+	"growthexperiments-edit-config-help-panel-helpdesk-title": "ヘルプパネルから質問を投稿すると、ヘルプデスクのページに届きます。",
+	"growthexperiments-edit-config-help-panel-post-on-top": "新しい質問はヘルプデスクのページの、どこに投稿すればよいですか？",
+	"growthexperiments-edit-config-help-panel-view-more": "「もっとヘルプの記事を読む」のボタンを押すと開くページ",
 	"growthexperiments-edit-config-help-panel-searched-namespaces": "名前空間のヘルプパネルで任意の文を記入してヘルプを検索できるようにする",
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "指導役のトークページ",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "ヘルプデスク",
+	"growthexperiments-edit-config-help-panel-links-description": "ヘルプパネルにはリンク5個と「もっと見る」リンクがあります。どのリンク元にするかウィキごとに設定できますが、下記から選ぶよう推奨します。",
 	"growthexperiments-edit-config-mentorship": "指導役",
 	"growthexperiments-edit-config-mentorship-description": "それぞれのウィキごとに指導役の名簿は2種類置けます。 片方の名簿では担当する新人編集者がランダムに決まる名簿、もう片方は割り当てを受ける代わりに、自分で相手を選べるようにします。後者の名簿は、指導の対象をイベント参加者や担当するクラスなど、特定の人たちに限定したい場合に使います。",
 	"growthexperiments-edit-config-mentorship-list-of-auto-assigned-mentors": "新人編集者を自動的に割り当てる指導役名簿のページ"

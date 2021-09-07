@@ -10,6 +10,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Visualizza il nome utente e la data dell'ultima attività",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Data registrazione {{SITENAME}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Aggiungi filtro",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Invia",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Da",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "A",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Periodo di ricerca",
