@@ -29,6 +29,12 @@
 	SuggestionInteractionLogger.log = function () {
 		if ( this.loggerInstance ) {
 			this.loggerInstance.log.apply( this.loggerInstance, arguments );
+		} else {
+			var error = new Error(
+				'SuggestionInteractionLogger.log called before logger instance is set'
+			);
+			mw.log.error( error );
+			mw.errorLogger.logError( error );
 		}
 	};
 
