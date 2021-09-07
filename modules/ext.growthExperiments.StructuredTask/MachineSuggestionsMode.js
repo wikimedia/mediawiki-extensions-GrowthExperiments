@@ -122,6 +122,39 @@ module.exports = ( function () {
 		}
 	}
 
+	/**
+	 * Disabling virtual keyboard and text selection on the editing surface (HACK)
+	 *
+	 * @param {ve.ui.Surface} surface
+	 */
+	function disableVirtualKeyboard( surface ) {
+		var $documentNode = surface.getView().$documentNode;
+		$documentNode.attr( 'contenteditable', false );
+		$documentNode.addClass( 'mw-ge-user-select-none' );
+	}
+
+	/**
+	 * Undo hack for disabling virtual keyboard and text selection on the editing surface
+	 *
+	 * @param {ve.ui.Surface} surface
+	 */
+	function enableVirtualKeyboard( surface ) {
+		var $documentNode = surface.getView().$documentNode;
+		$documentNode.attr( 'contenteditable', true );
+		$documentNode.removeClass( 'mw-ge-user-select-none' );
+	}
+
+	/**
+	 * Add a hook to allow save action to be triggered from outside the ArticleTarget
+	 *
+	 * @param {ve.ui.Surface} surface
+	 */
+	function addSaveHook( surface ) {
+		mw.hook( 'growthExperiments.contextItem.saveArticle' ).add( function () {
+			surface.executeCommand( 'showSave' );
+		} );
+	}
+
 	return {
 		toolbarHasTitleElement: toolbarHasTitleElement,
 		getTitleElement: getTitleElement,
@@ -132,7 +165,10 @@ module.exports = ( function () {
 		},
 		updateEditModeTool: updateEditModeTool,
 		getEditModeToolGroup: getEditModeToolGroup,
-		trackEditModeClick: trackEditModeClick
+		trackEditModeClick: trackEditModeClick,
+		disableVirtualKeyboard: disableVirtualKeyboard,
+		enableVirtualKeyboard: enableVirtualKeyboard,
+		addSaveHook: addSaveHook
 	};
 
 }() );

@@ -1,6 +1,7 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	RecommendedLinkToolbarDialog = StructuredTask.RecommendedLinkToolbarDialog,
 	LinkSuggestionInteractionLogger = StructuredTask.LinkSuggestionInteractionLogger,
+	MachineSuggestionsMode = StructuredTask.MachineSuggestionsMode,
 	MinimizedToolbarDialogButton = require( '../MinimizedToolbarDialogButton.js' );
 
 /**
@@ -58,12 +59,9 @@ RecommendedLinkToolbarDialogMobile.prototype.initialize = function () {
  * @inheritdoc
  */
 RecommendedLinkToolbarDialogMobile.prototype.afterSetupProcess = function () {
-	var ceSurface = this.surface.getView();
-	// HACK: Disable virtual keyboard, text edit menu on the surface
-	ceSurface.$documentNode.attr( 'contenteditable', false );
-	ceSurface.$documentNode.addClass( 'mw-ge-user-select-none' );
-	ceSurface.$documentNode.on( 'click', this.onDocumentNodeClick );
-	mw.hook( 'growthExperiments.addLinkOnboardingCompleted' ).add( function () {
+	MachineSuggestionsMode.disableVirtualKeyboard( this.surface );
+	this.surface.getView().$documentNode.on( 'click', this.onDocumentNodeClick );
+	mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add( function () {
 		// If onboarding is completed after selecting first recommendation, the selection needs to
 		// be scrolled into view since it wasn't in the viewport when onboarding was open.
 		this.surface.scrollSelectionIntoView();
@@ -200,10 +198,8 @@ RecommendedLinkToolbarDialogMobile.prototype.setupLinkPreview = function () {
  * @inheritdoc
  */
 RecommendedLinkToolbarDialogMobile.prototype.teardown = function () {
-	var ceSurface = this.surface.getView();
-	ceSurface.$documentNode.attr( 'contenteditable', true );
-	ceSurface.$documentNode.removeClass( 'mw-ge-user-select-none' );
-	ceSurface.$documentNode.off( 'click', this.onDocumentNodeClick );
+	MachineSuggestionsMode.enableVirtualKeyboard( this.surface );
+	this.surface.getView().$documentNode.off( 'click', this.onDocumentNodeClick );
 	this.toolbarDialogButton.$element.detach();
 	return RecommendedLinkToolbarDialogMobile.super.prototype.teardown.apply( this, arguments );
 };
