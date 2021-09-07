@@ -59,6 +59,9 @@ AddLinkArticleTarget.prototype.beforeSurfaceReady = function () {
 	this.getSurface().linkRecommendationFragments = this.findRecommendationFragments();
 };
 
+/**
+ * Implementations should call this in surfaceReady(), after calling the parent method.
+ */
 AddLinkArticleTarget.prototype.afterSurfaceReady = function () {
 	// Select the first recommendation
 	// On mobile, the surface is not yet attached to the DOM when this runs, so wait for that to happen
@@ -77,10 +80,27 @@ AddLinkArticleTarget.prototype.afterSurfaceReady = function () {
 	}.bind( this ) );
 };
 
+/** @inheritDoc */
+AddLinkArticleTarget.prototype.loadSuccess = function ( response ) {
+	this.beforeLoadSuccess( response );
+	this.constructor.super.prototype.loadSuccess.call( this, response );
+};
+
+/** @inheritDoc */
+AddLinkArticleTarget.prototype.surfaceReady = function () {
+	this.beforeSurfaceReady();
+	this.constructor.super.prototype.surfaceReady.apply( this, arguments );
+	this.afterSurfaceReady();
+};
+
+/**
+ * Open RecommendedLinkToolbarDialog with the first recommendation selected
+ */
 AddLinkArticleTarget.prototype.selectFirstRecommendation = function () {
 	this.getSurface().executeCommand( 'recommendedLink' );
 };
 
+/** @override **/
 AddLinkArticleTarget.prototype.restoreScrollPosition = function () {
 	// Don't restore the saved scroll position, because we've selected the first link recommendation
 	// and scrolled to it
@@ -363,6 +383,7 @@ AddLinkArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 		}.bind( this ) );
 };
 
+/** @inheritDoc **/
 AddLinkArticleTarget.prototype.saveErrorHookAborted = function ( data ) {
 	var errors = data.errors || [],
 		error = errors[ 0 ] || {},
