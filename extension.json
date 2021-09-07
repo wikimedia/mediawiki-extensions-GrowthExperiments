@@ -1394,6 +1394,7 @@
 				"oojs-ui-widgets",
 				"oojs-ui.styles.icons-movement",
 				"oojs-ui.styles.icons-editing-core",
+				"oojs-ui.styles.icons-editing-citation",
 				"oojs-ui.styles.icons-interactions",
 				"oojs-ui.styles.icons-user",
 				"oojs-ui.styles.icons-moderation",
@@ -1409,7 +1410,8 @@
 				"ext.growthExperiments.MentorDashboard/MentorDashboard.less",
 				"ext.growthExperiments.MentorDashboard/BaseModule.less",
 				"ext.growthExperiments.MentorDashboard/MenteeOverview.less",
-				"ext.growthExperiments.MentorDashboard/MenteeOverview.mobile.less"
+				"ext.growthExperiments.MentorDashboard/MenteeOverview.mobile.less",
+				"ext.growthExperiments.MentorDashboard/Resources.less"
 			],
 			"targets": [
 				"desktop",

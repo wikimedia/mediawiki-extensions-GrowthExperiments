@@ -50,6 +50,20 @@ class Resources extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
+	protected function getHeaderIconName() {
+		return 'references';
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function shouldHeaderIncludeIcon(): bool {
+		return true;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
 	protected function getBody() {
 		$links = [
 			// TODO: For now, links are hardcoded here. In the full version of the
