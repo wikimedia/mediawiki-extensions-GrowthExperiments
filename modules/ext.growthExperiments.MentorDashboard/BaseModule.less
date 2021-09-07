@@ -1,14 +1,13 @@
 @import 'mediawiki.ui/variables';
 @import 'resources/lib/ooui/wikimedia-ui-base.less';
 @import '../homepage/ext.growthExperiments.mixins.less';
-
-@mentorDashboardHeaderFont: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+@import 'variables.less';
 
 // .growthexperiments-mentor-dashboard-container is here only to make the resulting selector
 // specific enough for browsers to prefer rules that are here.
 .growthexperiments-mentor-dashboard-container .growthexperiments-mentor-dashboard-module {
 	border: @colorGray12 @border-width-base @border-style-base;
-	padding: 16px;
+	padding: @mentorDashboardModulePadding;
 	margin: 6px;
 	.rel-line-height( @parentFontSize: 14px, @targetLineHeight: 20px );
 
