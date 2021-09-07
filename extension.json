@@ -779,6 +779,7 @@
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskArticleTarget.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskSaveDialog.js",
+				"ext.growthExperiments.StructuredTask/RejectionReasonSelect.js",
 				"ext.growthExperiments.StructuredTask/addlink/AddLinkTargetInitializer.js",
 				"ext.growthExperiments.StructuredTask/addlink/AddLinkArticleTarget.js",
 				"ext.growthExperiments.StructuredTask/addlink/dmRecommendedLinkAnnotation.js",
