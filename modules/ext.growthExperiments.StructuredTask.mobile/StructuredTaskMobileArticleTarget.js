@@ -1,5 +1,5 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
-	StructuredTaskArticleTargetMixin = StructuredTask.StructuredTaskArticleTargetMixin,
+	StructuredTaskArticleTarget = StructuredTask.StructuredTaskArticleTarget,
 	MachineSuggestionsMode = StructuredTask.MachineSuggestionsMode,
 	router = require( 'mediawiki.router' );
 
@@ -8,16 +8,16 @@ var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
  *
  * @class mw.libs.ge.StructuredTaskMobileArticleTarget
  * @extends ve.init.mw.MobileArticleTarget
- * @mixes mw.libs.ge.StructuredTaskArticleTargetMixin
+ * @mixes mw.libs.ge.StructuredTaskArticleTarget
  * @constructor
  */
 function StructuredTaskMobileArticleTarget() {
 	StructuredTaskMobileArticleTarget.super.apply( this, arguments );
-	StructuredTaskArticleTargetMixin.apply( this, arguments );
+	StructuredTaskArticleTarget.apply( this, arguments );
 }
 
 OO.inheritClass( StructuredTaskMobileArticleTarget, ve.init.mw.MobileArticleTarget );
-OO.mixinClass( StructuredTaskMobileArticleTarget, StructuredTaskArticleTargetMixin );
+OO.mixinClass( StructuredTaskMobileArticleTarget, StructuredTaskArticleTarget );
 
 StructuredTaskMobileArticleTarget.static.toolbarGroups =
 	MachineSuggestionsMode.getMobileTools( StructuredTaskMobileArticleTarget.static.toolbarGroups );

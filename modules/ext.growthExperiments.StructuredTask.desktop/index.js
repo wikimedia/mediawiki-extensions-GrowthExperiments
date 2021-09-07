@@ -15,7 +15,7 @@ module.exports = ( function () {
 			var addLinkTargetInitializer = new AddLinkTargetInitializer( {
 				tools: [ MachineSuggestionsSaveTool ],
 				windows: [
-					require( './addlink/AddLinkSaveDialog.js' ),
+					require( './addlink/AddLinkDesktopSaveDialog.js' ),
 					require( './addlink/RecommendedLinkToolbarDialogDesktop.js' )
 				],
 				taskArticleTarget: require( './addlink/AddLinkDesktopArticleTarget.js' ),

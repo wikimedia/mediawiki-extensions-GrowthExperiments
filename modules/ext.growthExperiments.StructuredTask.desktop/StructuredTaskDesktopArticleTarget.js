@@ -1,5 +1,5 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
-	StructuredTaskArticleTargetMixin = StructuredTask.StructuredTaskArticleTargetMixin,
+	StructuredTaskArticleTarget = StructuredTask.StructuredTaskArticleTarget,
 	MachineSuggestionsMode = StructuredTask.MachineSuggestionsMode;
 
 /**
@@ -7,22 +7,23 @@ var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
  *
  * @class mw.libs.ge.StructuredTaskDesktopArticleTarget
  * @extends ve.init.mw.DesktopArticleTarget
- * @mixes mw.libs.ge.StructuredTaskArticleTargetMixin
+ * @mixes mw.libs.ge.StructuredTaskArticleTarget
  * @constructor
  */
 function StructuredTaskDesktopArticleTarget() {
 	StructuredTaskDesktopArticleTarget.super.apply( this, arguments );
-	StructuredTaskArticleTargetMixin.apply( this, arguments );
+	StructuredTaskArticleTarget.apply( this, arguments );
 	this.toolbarScrollOffset = 50;
 }
 
 OO.inheritClass( StructuredTaskDesktopArticleTarget, ve.init.mw.DesktopArticleTarget );
-OO.mixinClass( StructuredTaskDesktopArticleTarget, StructuredTaskArticleTargetMixin );
+OO.mixinClass( StructuredTaskDesktopArticleTarget, StructuredTaskArticleTarget );
 
 StructuredTaskDesktopArticleTarget.static.toolbarGroups = [];
 
-StructuredTaskDesktopArticleTarget.static.actionGroups =
-	MachineSuggestionsMode.getActionGroups( StructuredTaskDesktopArticleTarget.static.actionGroups );
+StructuredTaskDesktopArticleTarget.static.actionGroups = MachineSuggestionsMode.getActionGroups(
+	StructuredTaskDesktopArticleTarget.static.actionGroups
+);
 
 /**
  * @inheritdoc
