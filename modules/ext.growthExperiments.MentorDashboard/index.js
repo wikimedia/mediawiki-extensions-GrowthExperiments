@@ -5,5 +5,5 @@
 	'use strict';
 
 	// init mentee overview module
-	require( './ext.growthExperiments.MentorDashboard.MenteeOverview.js' );
+	require( './MenteeOverview.js' );
 }() );
