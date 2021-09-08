@@ -7,13 +7,17 @@ use ErrorPageError;
 use EventLogging;
 use ExtensionRegistry;
 use GrowthExperiments\DashboardModule\IDashboardModule;
+use GrowthExperiments\MentorDashboard\MentorDashboardDiscoveryHooks;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Util;
 use Html;
+use MediaWiki\JobQueue\JobQueueGroupFactory;
+use MediaWiki\User\UserOptionsLookup;
 use PermissionsError;
 use SpecialPage;
 use User;
+use UserOptionsUpdateJob;
 
 class SpecialMentorDashboard extends SpecialPage {
 
@@ -29,18 +33,30 @@ class SpecialMentorDashboard extends SpecialPage {
 	/** @var MentorManager */
 	private $mentorManager;
 
+	/** @var UserOptionsLookup */
+	private $userOptionsLookup;
+
+	/** @var JobQueueGroupFactory */
+	private $jobQueueGroupFactory;
+
 	/**
 	 * @param MentorDashboardModuleRegistry $mentorDashboardModuleRegistry
 	 * @param MentorManager $mentorManager
+	 * @param UserOptionsLookup $userOptionsLookup
+	 * @param JobQueueGroupFactory $jobQueueGroupFactory
 	 */
 	public function __construct(
 		MentorDashboardModuleRegistry $mentorDashboardModuleRegistry,
-		MentorManager $mentorManager
+		MentorManager $mentorManager,
+		UserOptionsLookup $userOptionsLookup,
+		JobQueueGroupFactory $jobQueueGroupFactory
 	) {
 		parent::__construct( 'MentorDashboard' );
 
 		$this->mentorDashboardModuleRegistry = $mentorDashboardModuleRegistry;
 		$this->mentorManager = $mentorManager;
+		$this->userOptionsLookup = $userOptionsLookup;
+		$this->jobQueueGroupFactory = $jobQueueGroupFactory;
 	}
 
 	/**
@@ -153,6 +169,7 @@ class SpecialMentorDashboard extends SpecialPage {
 		$out->addHTML( Html::closeElement( 'div' ) );
 
 		$this->maybeLogVisit();
+		$this->maybeSetSeenPreference();
 	}
 
 	/**
@@ -171,6 +188,36 @@ class SpecialMentorDashboard extends SpecialPage {
 				);
 			} );
 		}
+	}
+
+	/**
+	 * If applicable, record that the user seen the dashboard
+	 *
+	 * This is used by MentorDashboardDiscoveryHooks to decide whether or not
+	 * to add a blue dot informing the mentors about their dashboard.
+	 *
+	 * Happens via a DeferredUpdate, because it doesn't affect what the user
+	 * sees in their dashboard (and is not time-sensitive as it depends on a job).
+	 */
+	private function maybeSetSeenPreference(): void {
+		DeferredUpdates::addCallableUpdate( function () {
+			$user = $this->getUser();
+			if ( $this->userOptionsLookup->getBoolOption(
+				$user,
+				MentorDashboardDiscoveryHooks::MENTOR_DASHBOARD_SEEN_PREF
+			) ) {
+				// no need to set the option again
+				return;
+			}
+
+			// we're in a GET context, set the seen pref via a job rather than directly
+			$this->jobQueueGroupFactory->makeJobQueueGroup()->lazyPush( new UserOptionsUpdateJob( [
+				'userId' => $user->getId(),
+				'options' => [
+					MentorDashboardDiscoveryHooks::MENTOR_DASHBOARD_SEEN_PREF => 1
+				]
+			] ) );
+		} );
 	}
 
 	/**

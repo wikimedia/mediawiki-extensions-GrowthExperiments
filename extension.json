@@ -182,7 +182,8 @@
 			"class": "GrowthExperiments\\MentorDashboard\\MentorDashboardDiscoveryHooks",
 			"services": [
 				"GrowthExperimentsConfig",
-				"GrowthExperimentsMentorManager"
+				"GrowthExperimentsMentorManager",
+				"UserOptionsLookup"
 			]
 		},
 		"tour": {
@@ -261,7 +262,8 @@
 		"BeforePageDisplay": [
 			"GrowthExperiments\\HelpPanelHooks::onBeforePageDisplay",
 			"homepage",
-			"tour"
+			"tour",
+			"mentordashboarddiscovery"
 		],
 		"ConfirmEmailComplete": "homepage",
 		"SkinMinervaOptionsInit": [
@@ -1417,6 +1419,17 @@
 				"desktop",
 				"mobile"
 			]
+		},
+		"ext.growthExperiments.MentorDashboard.Discovery": {
+			"styles": [
+				"ext.growthExperiments.MentorDashboard/Discovery.less"
+			],
+			"scripts": [
+				"ext.growthExperiments.MentorDashboard/Discovery.js"
+			],
+			"dependencies": [
+				"mediawiki.pulsatingdot"
+			]
 		}
 	},
 	"QUnitTestModule": {
@@ -1799,7 +1812,9 @@
 			"class": "GrowthExperiments\\Specials\\SpecialMentorDashboard",
 			"services": [
 				"GrowthExperimentsMentorDashboardModuleRegistry",
-				"GrowthExperimentsMentorManager"
+				"GrowthExperimentsMentorManager",
+				"UserOptionsLookup",
+				"JobQueueGroupFactory"
 			]
 		},
 		"EditGrowthConfig": {

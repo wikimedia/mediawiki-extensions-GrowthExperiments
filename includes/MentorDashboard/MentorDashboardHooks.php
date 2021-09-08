@@ -14,6 +14,9 @@ class MentorDashboardHooks implements GetPreferencesHook, UserGetDefaultOptionsH
 		$preferences[ StarredMenteesStore::STARRED_MENTEES_PREFERENCE ] = [
 			'type' => 'api',
 		];
+		$preferences[ MentorDashboardDiscoveryHooks::MENTOR_DASHBOARD_SEEN_PREF ] = [
+			'type' => 'api',
+		];
 	}
 
 	/**
@@ -23,6 +26,7 @@ class MentorDashboardHooks implements GetPreferencesHook, UserGetDefaultOptionsH
 		// This is here to make use of the constant
 		$defaultOptions += [
 			StarredMenteesStore::STARRED_MENTEES_PREFERENCE => '',
+			MentorDashboardDiscoveryHooks::MENTOR_DASHBOARD_SEEN_PREF => 0,
 		];
 	}
 }
