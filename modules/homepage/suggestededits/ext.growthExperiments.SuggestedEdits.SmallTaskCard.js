@@ -112,8 +112,9 @@
 			// Distribute the flex growth to empty glue divs. This will center the
 			// title + description within the empty area above the metadata.
 			.append( $glue, $title, $description, $glue.clone(), $cardMetadataContainer );
+		// eslint-disable-next-line mediawiki/class-doc
 		this.$element
-			.addClass( 'mw-ge-small-task-card' )
+			.addClass( 'mw-ge-small-task-card mw-ge-tasktype-' + this.task.tasktype )
 			.addClass( OO.ui.isMobile() ?
 				'mw-ge-small-task-card-mobile' : 'mw-ge-small-task-card-desktop' )
 			.attr( 'href', this.taskUrl )
