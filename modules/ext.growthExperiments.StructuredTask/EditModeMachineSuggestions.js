@@ -15,9 +15,8 @@ OO.inheritClass( EditModeMachineSuggestions, mw.libs.ve.MWEditModeTool );
 
 EditModeMachineSuggestions.static.name = 'editModeMachineSuggestions';
 EditModeMachineSuggestions.static.icon = 'robot';
-// TODO: Rename key to be generic
 EditModeMachineSuggestions.static.title = mw.message(
-	'growthexperiments-addlink-editmode-selection-machine-suggestions' ).text();
+	'growthexperiments-structuredtask-editmode-selection-machine-suggestions' ).text();
 EditModeMachineSuggestions.static.editMode = 'machineSuggestions';
 
 /**

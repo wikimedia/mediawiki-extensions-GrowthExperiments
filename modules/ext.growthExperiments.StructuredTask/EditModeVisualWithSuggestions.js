@@ -16,9 +16,8 @@ function EditModeVisualWithSuggestions() {
 OO.inheritClass( EditModeVisualWithSuggestions, mw.libs.ve.MWEditModeVisualTool );
 
 EditModeVisualWithSuggestions.static.name = 'editModeVisualWithSuggestions';
-// TODO: Rename key to be generic
 EditModeVisualWithSuggestions.static.title = mw.message(
-	'growthexperiments-addlink-editmode-selection-visual' ).text();
+	'growthexperiments-structuredtask-editmode-selection-visual' ).text();
 EditModeVisualWithSuggestions.static.editMode = 'visual';
 
 /**

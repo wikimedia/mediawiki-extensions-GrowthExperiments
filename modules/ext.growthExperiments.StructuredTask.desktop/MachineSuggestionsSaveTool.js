@@ -22,7 +22,7 @@ MachineSuggestionsSaveTool.static.commandName = 'showSave';
 MachineSuggestionsSaveTool.prototype.updateSaveButtonTitle = function ( hasAcceptedSuggestions ) {
 	this.setTitle( hasAcceptedSuggestions ?
 		ve.init.target.getSaveButtonLabel( true ) :
-		mw.message( 'growthexperiments-addlink-ve-machine-suggestions-mode-submit-button' ).text()
+		mw.message( 'growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button' ).text()
 	);
 };
 

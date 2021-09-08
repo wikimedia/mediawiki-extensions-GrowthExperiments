@@ -25,7 +25,7 @@ module.exports = ( function () {
 		return $( '<div>' ).addClass( 'mw-ge-machine-suggestions-mode-title' ).append( [
 			config.includeIcon ? new OO.ui.IconWidget( { icon: 'robot' } ).$element : '',
 			$( '<span>' ).addClass( 'mw-ge-machine-suggestions-mode-title-text' ).text(
-				mw.message( 'growthexperiments-addlink-ve-machine-suggestions-mode-title' ).text()
+				mw.message( 'growthexperiments-structuredtask-ve-machine-suggestions-mode-title' ).text()
 			)
 		] );
 	}
@@ -41,8 +41,8 @@ module.exports = ( function () {
 			name: 'suggestionsEditMode',
 			type: 'list',
 			icon: 'edit',
-			title: mw.message( 'growthexperiments-addlink-editmode-selection-label' ).text(),
-			label: mw.message( 'growthexperiments-addlink-editmode-selection-label' ).text(),
+			title: mw.message( 'growthexperiments-structuredtask-editmode-selection-label' ).text(),
+			label: mw.message( 'growthexperiments-structuredtask-editmode-selection-label' ).text(),
 			invisibleLabel: true,
 			include: editModeToolNames
 		};

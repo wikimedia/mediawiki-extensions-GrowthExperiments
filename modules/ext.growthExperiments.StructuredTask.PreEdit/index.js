@@ -82,10 +82,10 @@ module.exports = ( function () {
 		// eslint-disable-next-line camelcase
 		logger.log( 'impression', '', { active_interface: 'nosuggestions_dialog' } );
 
-		OO.ui.alert( mw.message( 'growthexperiments-addlink-no-suggestions-found-dialog-message' ).text(), {
+		OO.ui.alert( mw.message( 'growthexperiments-structuredtask-no-suggestions-found-dialog-message' ).text(), {
 			actions: [ {
 				action: 'accept',
-				label: mw.message( 'growthexperiments-addlink-no-suggestions-found-dialog-button' ).text(),
+				label: mw.message( 'growthexperiments-structuredtask-no-suggestions-found-dialog-button' ).text(),
 				flags: 'primary'
 			} ]
 		} ).done( function () {
