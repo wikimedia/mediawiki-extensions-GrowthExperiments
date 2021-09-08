@@ -124,10 +124,15 @@
 				overflow: hidden;
 				border-spacing: 0;
 				width: 100%;
+				table-layout: fixed;
 
 				thead {
 					th {
 						border-bottom: 1px solid #c8ccd1;
+					}
+
+					th[ data-field='username' ] {
+						width: 30%;
 					}
 
 					tr {
