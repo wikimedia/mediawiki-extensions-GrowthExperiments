@@ -4,9 +4,11 @@
 			"Robby"
 		]
 	},
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Benotzernumm",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filter derbäisetzen",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Späicheren",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Vum",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Aktualiséieren",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Minimum",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Maximum",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Sichen",
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "aktiv viru(n) $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "onbekannt",

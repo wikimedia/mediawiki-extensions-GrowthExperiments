@@ -41,6 +41,7 @@
 	"growthexperiments-homepage-impact-contributions-link": "{{GENDER:$2|သင်သည်}} <strong>$1</strong> {{PLURAL:$1|တည်းဖြတ်မှု|တည်းဖြတ်မှုများ}}ကို ပြုလုပ်ခဲ့သည် (အကုန်ကြည့်ရန်)",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "{{GENDER:$1|သင်သည်}} မည်သည့်ဆောင်းပါးကိုမျှ မဖန်တီး သို့မဟုတ် မတည်းဖြတ်ရသေးပါ။",
 	"growthexperiments-homepage-impact-article-link-tooltip": "ဆောင်းပါးသို့သွားရန်",
+	"growthexperiments-homepage-impact-pageviews-link-tooltip": "စာမျက်နှာကြည့်ရှုမှုများကို အသေးစိတ်ကြည့်ရန်",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "ရပြီဟေ့",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "လတ်တလောတည်းဖြတ်မှုမှ ကြည့်ရှုသူများ (၆၀ ရက်အတွင်း)-",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "အကြံပြုထားသော ပြင်ဆင်မှုများကို ကြည့်ရန်",

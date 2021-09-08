@@ -4,11 +4,22 @@
 			"Ykhwong"
 		]
 	},
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "범례",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "사용자 이름",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "편집 수",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "등록일",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "필터 추가",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "제출",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "업데이트",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "편집 수",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "최소",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "최대",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "최근 수일",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "최근 수개월",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "검색",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "알 수 없음",
-	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$2 중 $1"
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$2 중 $1",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "멘티 데이터를 사용할 수 없음",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "아직 할당된 멘티가 없습니다. 데이터는 매일 업데이트됩니다.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "멘티가 없습니다",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "멘티를 찾으려면 필터를 변경하십시오."
 }

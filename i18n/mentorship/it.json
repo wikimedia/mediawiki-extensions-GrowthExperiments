@@ -2,18 +2,21 @@
 	"@metadata": {
 		"authors": [
 			"Ajeje Brazorf",
+			"Beta16",
 			"Stefano"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "La tabella richiede JavaScript. Abilita JavaScript per poter utilizzare questo modulo.",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legenda tabella",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Visualizza il nome utente e la data dell'ultima attività",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Data registrazione {{SITENAME}}",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legenda",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Nome utente",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Numero di blocchi",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Conteggio delle modifiche",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Data di registrazione",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Aggiungi filtro",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Invia",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Da",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "A",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Periodo di ricerca",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Aggiorna",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Minimo",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Massimo",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Modifiche più recenti",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Ultimi giorni",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Ultimi mesi",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Ricerca",

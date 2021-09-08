@@ -1,10 +1,27 @@
 {
 	"@metadata": {
 		"authors": [
+			"Danniel07",
 			"Warming Hearth"
 		]
 	},
 	"growthexperiments-mentor-dashboard-pt-link": "Tablón de mentores",
+	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Véase {{GENDER:|tus}} aprendices abajo. Usa los filtros para cambiar cuáles aprendices se muestran.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "¿Quién está en tu tabla?",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "La tabla sólo muestra tus aprendices quienes crearon su cuenta dentro de las dos semanas pasadas o quienes han editado en los últimos seis meses. Los datos se actualizan diariamente.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Leyenda",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Marcapáginas de aprendices",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Nombre de usuario",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Número de ediciones revertidas",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Número de bloques",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Preguntas de mentores",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Recuento de ediciones",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Fecha de registro",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Actualizar",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Recuento de ediciones",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Mínimo",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Máximo",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Edición más reciente",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Información de aprendices no disponible.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Puede que no tengas asignado aprendices todavía. La información se actualiza a diario.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "No se encontraron aprendices.",

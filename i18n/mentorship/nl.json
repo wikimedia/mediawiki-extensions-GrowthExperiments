@@ -1,0 +1,27 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Hieronder staan uw leerlingen. Met de filters kunt u bepalen welke leerlingen worden weergegeven.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Wie staat er in uw tabel?",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "De tabel toont alleen uw leerlingen die hun account in de afgelopen twee weken hebben aangemaakt of die in de afgelopen zes maanden iets hebben bewerkt. De gegevens worden dagelijks bijgewerkt.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legenda",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Bladwijzer maken voor leerlingen",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Gebruikersnaam",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Aantal teruggedraaide bewerkingen",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Aantal blokken",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Gestelde mentorvragen",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Aantal bewerkingen",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Inschrijfdatum",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Bijwerken",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Aantal bewerkingen",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Minimum",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Maximum",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Meest recente bewerking",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Leerlinggegevens niet beschikbaar",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "U hebt wellicht nog geen leerlingen toegewezen gekregen. De gegevens worden dagelijks bijgewerkt.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Geen leerlingen gevonden",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Wijzig uw filters om leerlingen te vinden."
+}

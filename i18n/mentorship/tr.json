@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hedda"
+			"Hedda",
+			"Melissadilara"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Danışman kontrol paneli",
+	"growthexperiments-mentor-dashboard-pt-link": "Danışman paneli",
 	"growthexperiments-mentor-dashboard-disabled": "Danışman kontrol paneli, bu wiki'de etkinleştirilmemiştir.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Danışman panosunu etkinleştirmek için önce [[$1|bir danışman olarak kaydolmanız]] gerekiyor.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Danışanlarınız",
@@ -14,17 +16,17 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Haftada bir, size atanan yüzlerce yeni kişi alıyorsunuz ancak her yeni gelen kişi Vikipedi'yi düzenlemekle ilgilenmiyor. 1) Kaydolduktan sonraki ilk iki haftasında düzenleme yapmamış, 2) 6 aydan uzun süredir düzenleme yapmamış yeni gelenler tablonuz görüntülenmeyecektir. Ancak, danışanınız yeni bir düzenleme yaptığı anda tabloda yeniden görünecektir. Tablo günlük olarak güncellenecektir.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Tablo lejandı",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Danışanlarınızı hızlı bir şekilde bulmanızı sağlar",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Kullanıcı adını ve en son aktif olduğu tarihi gösterir",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Geri alınan düzenlemeri",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Kullanıcı adı",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Geri alınan düzenleme sayısı",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Bir hesabın engellenme sayısı",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Sorulan sorular",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Toplam katkılar",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "{{SITENAME}} kayıt tarihi",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filtre ekle",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Gönder",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Toplam düzenlemeleriyle danışanları görün",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Şuradan",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Şuraya",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Güncelle",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Değişiklik sayısı",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Minimum",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Maksimum",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Arama dönemi",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Son günler",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Son aylar",
@@ -36,6 +38,8 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "bilinmiyor",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 göster",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1/$2",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Henüz size bir danışman atanmamış olabilir. Veriler günlük olarak güncellenmektedir.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Danışman bulunamadı",
 	"growthexperiments-mentor-dashboard-resources-headline": "Kaynaklar",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Danışman listesi",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Kendinizi bir danışman olarak nasıl tanıtabilirsiniz?",
