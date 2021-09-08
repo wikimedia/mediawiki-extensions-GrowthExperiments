@@ -89,7 +89,6 @@ class UpdateMenteeData extends Maintenance {
 				$mentors = $this->mentorManager->getMentors();
 			} catch ( WikiConfigException $e ) {
 				$this->fatalError( 'List of mentors cannot be fetched.' );
-				return;
 			}
 		}
 

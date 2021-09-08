@@ -32,9 +32,11 @@ class StaticLinkRecommendationProvider implements LinkRecommendationProvider {
 	public function get( LinkTarget $title, TaskType $taskType ) {
 		Assert::parameterType( LinkRecommendationTaskType::class, $taskType, '$taskType' );
 		$target = $title->getNamespace() . ':' . $title->getDBkey();
-		return $this->recommendations[$target] ?? $this->default ?? ( static function () use ( $target ) {
+		$ret = $this->recommendations[$target] ?? $this->default;
+		if ( $ret === null ) {
 			throw new OutOfBoundsException( "No recommendation for $target" );
-		} )();
+		}
+		return $ret;
 	}
 
 }

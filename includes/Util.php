@@ -288,6 +288,7 @@ class Util {
 			/** @var \IteratorAggregate $t */'@phan-var \IteratorAggregate $t';
 			$t = $t->getIterator();
 		}
+		// @phan-suppress-next-line PhanTypeMismatchReturnSuperType
 		return $t;
 	}
 

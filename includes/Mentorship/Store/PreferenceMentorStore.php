@@ -70,6 +70,7 @@ class PreferenceMentorStore extends MentorStore {
 
 	/**
 	 * @inheritDoc
+	 * @suppress PhanPluginNeverReturnMethod LSP violation.
 	 */
 	public function getMenteesByMentor(
 		UserIdentity $mentor,

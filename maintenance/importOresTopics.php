@@ -11,6 +11,7 @@ use LogicException;
 use Maintenance;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\MediaWikiServices;
+use RuntimeException;
 use Status;
 use StatusValue;
 use Title;
@@ -161,9 +162,9 @@ class ImportOresTopics extends Maintenance {
 			}
 			$pages = preg_split( '/\n/', $pages, -1, PREG_SPLIT_NO_EMPTY );
 			foreach ( array_chunk( $pages, $batchSize ) as $pageBatch ) {
-				$titleBatch = array_map( function ( string $page ) {
+				$titleBatch = array_filter( array_map( function ( string $page ): ?Title {
 					return $this->titleFactory->newFromText( $page );
-				}, $pageBatch );
+				}, $pageBatch ) );
 				$this->linkBatchFactory->newLinkBatch( $titleBatch )->execute();
 				yield $titleBatch;
 			}
@@ -217,6 +218,10 @@ class ImportOresTopics extends Maintenance {
 				if ( !$titleStrings ) {
 					return [];
 				}
+			}
+
+			if ( $apiUrl === null || $wikiId === null ) {
+				throw new RuntimeException( "No API URL ($apiUrl) or wiki ID ($wikiId)" );
 			}
 
 			$titleToRevId = $this->titlesToRevisionIds( $titleStrings, $apiUrl, $missingTitles );

@@ -83,6 +83,7 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess {
 	 * This method cannot be used.
 	 * @param mixed $offset
 	 * @param mixed $value
+	 * @suppress PhanPluginNeverReturnMethod LSP violation
 	 */
 	public function offsetSet( $offset, $value ) {
 		throw new BadMethodCallException( 'TaskSet is read-only' );
@@ -91,6 +92,7 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess {
 	/**
 	 * This method cannot be used.
 	 * @param mixed $offset
+	 * @suppress PhanPluginNeverReturnMethod LSP violation
 	 */
 	public function offsetUnset( $offset ) {
 		throw new BadMethodCallException( 'TaskSet is read-only' );

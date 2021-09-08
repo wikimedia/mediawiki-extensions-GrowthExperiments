@@ -62,7 +62,10 @@ class NullTaskTypeHandler extends TaskTypeHandler {
 		return [];
 	}
 
-	/** @inheritDoc */
+	/**
+	 * @inheritDoc
+	 * @suppress PhanPluginNeverReturnMethod LSP/ISP violation
+	 */
 	public function createTaskType( string $taskTypeId, array $config ): TaskType {
 		throw new LogicException( 'This should never be called' );
 	}

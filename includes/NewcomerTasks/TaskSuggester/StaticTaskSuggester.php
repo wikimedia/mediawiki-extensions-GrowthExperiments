@@ -58,7 +58,7 @@ class StaticTaskSuggester implements TaskSuggester {
 				return true;
 			}
 		);
-		return new TaskSet( array_slice( $filteredTasks, $offset, $limit ),
+		return new TaskSet( array_slice( $filteredTasks, $offset ?? 0, $limit ),
 			count( $filteredTasks ), $offset ?: 0, new TaskSetFilters() );
 	}
 

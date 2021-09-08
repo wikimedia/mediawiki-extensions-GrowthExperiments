@@ -57,7 +57,6 @@ class MigrateServerConfig extends LoggedUpdateMaintenance {
 		);
 		if ( $title === null ) {
 			$this->fatalError( "Invalid GEWikiConfigPageTitle!\n" );
-			return false;
 		}
 		$this->wikiPageConfigWriter = $this->wikiPageConfigWriterFactory
 			->newWikiPageConfigWriter(

@@ -95,7 +95,6 @@ class InitWikiConfig extends Maintenance {
 		$status = Util::getJsonUrl( $this->httpRequestFactory, $url );
 		if ( !$status->isOK() ) {
 			$this->fatalError( 'Failed to download ' . $url . "\n" );
-			return null;
 		}
 		return $status->getValue();
 	}
@@ -115,7 +114,6 @@ class InitWikiConfig extends Maintenance {
 			$data = $this->getWikidataData( $qid );
 			if ( $data == null ) {
 				$this->fatalError( "Wikidata returned an invalid JSON\n" );
-				return null;
 			}
 			$sitelinks = $data['entities'][$qid]['sitelinks'];
 			if ( array_key_exists( $this->getWikidataWikiId(), $sitelinks ) ) {
@@ -192,7 +190,6 @@ class InitWikiConfig extends Maintenance {
 			$validationRes = $this->validateGEConfigVariables( $variables );
 			if ( is_string( $validationRes ) ) {
 				$this->fatalError( $validationRes . "\n" );
-				return false;
 			}
 		}
 
@@ -359,7 +356,6 @@ class InitWikiConfig extends Maintenance {
 		);
 		if ( $title === null ) {
 			$this->fatalError( "Invalid GEWikiConfigPageTitle!\n" );
-			return false;
 		}
 		if (
 			!$this->hasOption( 'override' ) &&
@@ -370,13 +366,11 @@ class InitWikiConfig extends Maintenance {
 				"On-wiki config already exists ({$title->getPrefixedText()}). " .
 				"You can skip the validation using --override."
 			);
-			return false;
 		}
 
+		// @phan-suppress-next-next-line PhanTypeMismatchArgumentNullable Still T240141?
 		$wikiPageConfigWriter = $this->wikiPageConfigWriterFactory
-			->newWikiPageConfigWriter(
-				$title
-			);
+			->newWikiPageConfigWriter( $title );
 
 		$variables = $this->getGEConfigVariables();
 		if ( $variables === false ) {
@@ -408,7 +402,6 @@ class InitWikiConfig extends Maintenance {
 		);
 		if ( $title === null ) {
 			$this->fatalError( "Invalid GENewcomerTasksConfigTitle!\n" );
-			return false;
 		}
 		if (
 			!$this->hasOption( 'override' ) &&
@@ -419,13 +412,11 @@ class InitWikiConfig extends Maintenance {
 				"On-wiki config already exists ({$title->getPrefixedText()}). " .
 				"You can skip the validation using --override."
 			);
-			return false;
 		}
 
+		// @phan-suppress-next-next-line PhanTypeMismatchArgumentNullable Still T240141?
 		$wikiPageConfigWriter = $this->wikiPageConfigWriterFactory
-			->newWikiPageConfigWriter(
-				$title
-			);
+			->newWikiPageConfigWriter( $title );
 
 		$variables = $this->getSuggestedEditsVariables();
 

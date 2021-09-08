@@ -29,6 +29,7 @@ use OOUI\Exception;
 use OOUI\HtmlSnippet;
 use OOUI\IconWidget;
 use OOUI\Tag;
+use RuntimeException;
 use Status;
 use StatusValue;
 use TitleFactory;
@@ -549,7 +550,7 @@ class SuggestedEdits extends BaseModule {
 						$topicMessages[] = $topic->getName( $this->getContext() );
 					}
 				}
-				array_filter( $topicMessages );
+				$topicMessages = array_filter( $topicMessages );
 				if ( count( $topicMessages ) ) {
 					if ( count( $topicMessages ) < 3 ) {
 						$topicLabel =
@@ -654,6 +655,9 @@ class SuggestedEdits extends BaseModule {
 	 */
 	private function getTaskCard() {
 		$tasks = $this->getTaskSet();
+		if ( !$tasks instanceof TaskSet ) {
+			throw new RuntimeException( 'Expected to have tasks.' );
+		}
 		$task = $tasks[0];
 		$title = $this->titleFactory->newFromLinkTarget( $task->getTitle() );
 
