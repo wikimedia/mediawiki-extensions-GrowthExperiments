@@ -133,6 +133,7 @@
 	};
 
 	SuggestedEditsModule.prototype.restoreState = function () {
+		this.isFirstRender = true;
 		this.taskQueue = this.backup.taskQueue;
 		this.queuePosition = this.backup.queuePosition;
 		this.taskQueueLoading = false;
@@ -164,6 +165,7 @@
 	 * User has clicked "Done" in the dialog after selecting filters.
 	 */
 	SuggestedEditsModule.prototype.filterSelection = function () {
+		this.isFirstRender = true;
 		if ( !this.apiPromise ) {
 			this.apiPromise = this.api.fetchTasks( this.taskTypesQuery, this.topicsQuery, {
 				context: 'suggestedEditsModule.filterSelection'
