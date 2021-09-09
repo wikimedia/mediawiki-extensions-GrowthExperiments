@@ -2,49 +2,7 @@
 @import '../homepage/ext.growthExperiments.mixins.less';
 
 .ge-structuredTask-mwSaveDialog {
-	.ge-structuredTask-mwSaveDialog-summaryTable {
-		width: 100%;
-		border-collapse: collapse;
-
-		caption {
-			margin-top: 4px;
-			margin-bottom: 16px;
-			text-align: left;
-			font-weight: normal;
-			color: @wmui-color-base10;
-			.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 16px, @targetLineHeight: 23px );
-		}
-
-		tr {
-			border-bottom: 1px solid @wmui-color-base80;
-		}
-
-		th {
-			padding: 0 0 12px 0;
-			text-align: left;
-			font-weight: normal;
-			color: @wmui-color-base20;
-			.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 13px, @targetLineHeight: 20px );
-
-			&:last-child {
-				text-align: right;
-			}
-
-			.ve-ui-mwMobileSaveDialog& {
-				.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 20px );
-			}
-
-			.oo-ui-icon-robot-black {
-				margin-right: 10px;
-			}
-
-			.aligner {
-				vertical-align: middle;
-			}
-		}
-	}
-
-	.ge-addlink-copyrightwarning {
+	.ge-structuredTask-copyrightwarning {
 		margin: 16px 0 0;
 		color: @wmui-color-base20;
 		.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 12.4px, @targetLineHeight: 17px );

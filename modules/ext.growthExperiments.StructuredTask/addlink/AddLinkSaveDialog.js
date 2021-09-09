@@ -1,5 +1,6 @@
 var LinkSuggestionInteractionLogger = require( './LinkSuggestionInteractionLogger.js' ),
-	StructuredTaskSaveDialog = require( '../StructuredTaskSaveDialog.js' );
+	StructuredTaskSaveDialog = require( '../StructuredTaskSaveDialog.js' ),
+	SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' );
 
 /**
  * Mixin for code sharing between AddLinkDesktopSaveDialog and AddLinkMobileSaveDialog.
@@ -36,6 +37,55 @@ OO.mixinClass( AddLinkSaveDialog, StructuredTaskSaveDialog );
 AddLinkSaveDialog.prototype.getSuggestionStateHeader = function () {
 	return $( '<th>' ).append(
 		mw.message( 'growthexperiments-addlink-summary-column-header-linked' ).text()
+	);
+};
+
+/**
+ * Return table header elements for summary table
+ *
+ * @return {jQuery[]} Table header elements
+ */
+AddLinkSaveDialog.prototype.getSummaryTableHeader = function () {
+	var $suggestionCol = $( '<th>' ).append(
+		new OO.ui.IconWidget( { icon: 'robot-black' } ).$element,
+		$( '<span>' ).addClass( 'aligner' ).append(
+			mw.message( 'growthexperiments-addlink-summary-column-header-suggestion' ).text()
+		)
+	);
+	return [ $suggestionCol, this.getSuggestionStateHeader() ];
+};
+
+/** @inheritDoc */
+AddLinkSaveDialog.prototype.initialize = function () {
+	this.constructor.super.prototype.initialize.call( this );
+
+	// Snapshot the homepage PV token. It will change during save, and we want the events
+	// belonging to this dialog to be grouped together.
+	this.homepagePageviewToken = SuggestedEditSession.getInstance().clickId;
+
+	// Replace the save panel. The other panels are good as they are.
+	this.savePanel.$element.empty();
+	this.$summaryTableBody = $( '<tbody>' );
+	// Table content is set on dialog open as it needs to be dynamic.
+	this.$summaryTable = $( '<table>' ).addClass( 'ge-addlink-mwSaveDialog-summaryTable' );
+	this.$summaryTable.append(
+		$( '<caption>' ).append(
+			mw.message( 'growthexperiments-addlink-summary-title' ).text()
+		),
+		$( '<thead>' ).append(
+			$( '<tr>' ).append( this.getSummaryTableHeader() )
+		),
+		this.$summaryTableBody
+	);
+
+	this.$copyrightFooter = $( '<p>' ).addClass( 'ge-structuredTask-copyrightwarning' ).append(
+		mw.message( 'growthexperiments-addlink-summary-copyrightwarning' ).parse()
+	);
+	this.$copyrightFooter.find( 'a' ).attr( 'target', '_blank' );
+
+	this.savePanel.$element.append(
+		this.$summaryTable,
+		this.$copyrightFooter
 	);
 };
 
