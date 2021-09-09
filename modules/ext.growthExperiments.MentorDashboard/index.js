@@ -5,5 +5,5 @@
 	'use strict';
 
 	// init mentee overview module
-	require( './MenteeOverview.js' );
+	require( './MenteeOverview/MenteeOverview.js' );
 }() );

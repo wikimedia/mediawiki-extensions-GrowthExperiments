@@ -3,9 +3,9 @@
 	'use strict';
 
 	var MenteeOverviewApi = require( './MenteeOverviewApi.js' ),
-		MenteeOverviewPagination = require( './MenteeOverview.Pagination.js' ),
-		MenteeOverviewFilterDropdown = require( './MenteeOverview.FilterDropdown.js' ),
-		MenteeSearchInputWidget = require( './MenteeOverview.MenteeSearchInputWidget.js' );
+		Pagination = require( './Pagination.js' ),
+		FilterDropdown = require( './FilterDropdown.js' ),
+		MenteeSearchInputWidget = require( './MenteeSearchInputWidget.js' );
 
 	/**
 	 * @class
@@ -25,13 +25,13 @@
 		this.searchInput.connect( this, {
 			enter: [ 'onSearchInputEnter' ]
 		} );
-		this.filterDropdown = new MenteeOverviewFilterDropdown();
+		this.filterDropdown = new FilterDropdown();
 		this.filterDropdown.connect( this, {
 			submit: [ 'onFilterDropdownSubmit' ]
 		} );
 
 		// pagination widget
-		this.paginationWidget = new MenteeOverviewPagination();
+		this.paginationWidget = new Pagination();
 		this.apiClient.setLimit( this.paginationWidget.getPageSize() );
 		this.paginationWidget.connect( this, {
 			previousPage: [ 'onPreviousPage' ],

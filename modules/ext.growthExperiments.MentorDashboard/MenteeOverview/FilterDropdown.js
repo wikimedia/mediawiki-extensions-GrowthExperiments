@@ -1,8 +1,8 @@
 ( function () {
 	'use strict';
 
-	function MenteeOverviewFilterDropdown( config ) {
-		MenteeOverviewFilterDropdown.super.call( this, config );
+	function FilterDropdown( config ) {
+		FilterDropdown.super.call( this, config );
 
 		// prepare widgets that contain information we filter by
 		this.filterDropdownEditsFrom = new OO.ui.NumberInputWidget( {
@@ -102,9 +102,9 @@
 				this.filterBtn.$element
 			);
 	}
-	OO.inheritClass( MenteeOverviewFilterDropdown, OO.ui.Widget );
+	OO.inheritClass( FilterDropdown, OO.ui.Widget );
 
-	MenteeOverviewFilterDropdown.prototype.newFilterByDaysAgoOption = function ( daysAgo ) {
+	FilterDropdown.prototype.newFilterByDaysAgoOption = function ( daysAgo ) {
 		var btn = new OO.ui.ButtonOptionWidget( {
 			data: daysAgo,
 			label: mw.language.convertNumber( daysAgo ),
@@ -120,7 +120,7 @@
 		return btn;
 	};
 
-	MenteeOverviewFilterDropdown.prototype.onFilterByDaysAgoChanged = function () {
+	FilterDropdown.prototype.onFilterByDaysAgoChanged = function () {
 		var selectedItem = this.filterDropdownActiveDaysAgo.findSelectedItem(),
 			monthsSelectedItem = this.filterDropdownActiveMonthsAgo.findSelectedItem(),
 			selectedValue = selectedItem.getData();
@@ -139,7 +139,7 @@
 		}
 	};
 
-	MenteeOverviewFilterDropdown.prototype.newFilterByMonthsAgoOption = function ( monthsAgo ) {
+	FilterDropdown.prototype.newFilterByMonthsAgoOption = function ( monthsAgo ) {
 		var btn = new OO.ui.ButtonOptionWidget( {
 			data: monthsAgo * 30,
 			label: mw.language.convertNumber( monthsAgo ),
@@ -155,7 +155,7 @@
 		return btn;
 	};
 
-	MenteeOverviewFilterDropdown.prototype.onFilterByMonthsAgoChanged = function () {
+	FilterDropdown.prototype.onFilterByMonthsAgoChanged = function () {
 		var selectedItem = this.filterDropdownActiveMonthsAgo.findSelectedItem(),
 			daysSelectedItem = this.filterDropdownActiveDaysAgo.findSelectedItem(),
 			selectedValue = selectedItem.getData();
@@ -174,7 +174,7 @@
 		}
 	};
 
-	MenteeOverviewFilterDropdown.prototype.onFilterSubmitClicked = function () {
+	FilterDropdown.prototype.onFilterSubmitClicked = function () {
 		var rawFilters = {
 				minedits: parseInt( this.filterDropdownEditsFrom.getValue() ),
 				maxedits: parseInt( this.filterDropdownEditsTo.getValue() ),
@@ -203,5 +203,5 @@
 		}
 	};
 
-	module.exports = MenteeOverviewFilterDropdown;
+	module.exports = FilterDropdown;
 }() );
