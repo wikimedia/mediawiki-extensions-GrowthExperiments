@@ -1,4 +1,5 @@
-var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
+var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
+	MachineSuggestionsMode = require( '../MachineSuggestionsMode.js' );
 
 /**
  * @typedef LinkRecommendationLink
@@ -70,14 +71,14 @@ AddLinkArticleTarget.prototype.afterSurfaceReady = function () {
 		this.overlay.on( 'editor-loaded', this.selectFirstRecommendation.bind( this ) );
 	} else {
 		// On desktop, the recommendation is selected after onboarding has been completed
-		mw.hook( 'growthExperiments.addLinkOnboardingCompleted' ).add( this.selectFirstRecommendation.bind( this ) );
-		mw.hook( 'growthExperiments.showAddLinkOnboardingIfNeeded' ).fire();
+		mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add(
+			this.selectFirstRecommendation.bind( this )
+		);
+		mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).fire();
 	}
 
 	// Save can be triggered from RecommendedLinkToolbarDialog.
-	mw.hook( 'growthExperiments.contextItem.saveArticle' ).add( function () {
-		this.surface.executeCommand( 'showSave' );
-	}.bind( this ) );
+	MachineSuggestionsMode.addSaveHook( this.surface );
 };
 
 /** @inheritDoc */

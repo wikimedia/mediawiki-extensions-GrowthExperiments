@@ -35,7 +35,7 @@ module.exports = ( function () {
 		if ( shouldShowOnboarding && suggestedEditSession.onboardingNeedsToBeShown ) {
 			showDialogForSession();
 		} else {
-			mw.hook( 'growthExperiments.addLinkOnboardingCompleted' ).fire();
+			mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).fire();
 		}
 	}
 
@@ -45,7 +45,7 @@ module.exports = ( function () {
 	 */
 	function setupAddLinkOnboarding() {
 		// In case onboarding is invoked from a different module (add link on desktop)
-		mw.hook( 'growthExperiments.showAddLinkOnboardingIfNeeded' ).add(
+		mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).add(
 			showAddLinkOnboardingIfEligible
 		);
 

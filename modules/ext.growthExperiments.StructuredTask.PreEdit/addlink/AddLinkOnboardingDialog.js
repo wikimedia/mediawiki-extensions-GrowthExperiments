@@ -166,7 +166,7 @@ AddLinkOnboardingDialog.prototype.showPanelIndex = function ( index ) {
 AddLinkOnboardingDialog.prototype.closeDialog = function ( action ) {
 	this.logger.log( action, this.getLogActionData(), this.getLogMetadata() );
 	this.close();
-	mw.hook( 'growthExperiments.addLinkOnboardingCompleted' ).fire();
+	mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).fire();
 };
 
 /**
