@@ -220,6 +220,17 @@ StartEditingDialog.prototype.updateMatchCount = function () {
 			this.api.defaultTaskTypes;
 	this.articleCounter.setSearching();
 
+	/** Broadcast events so that in SuggestedEdits.js we can keep the unactivated/hidden
+	 * Suggested Edits module updated with the latest task type / topic state.
+	 *
+	 * @param {string[]} taskTypes List of active task type IDs in the task type selector
+	 * @param {string[]} topics List of selected topic IDs in the topic selector
+	 */
+	mw.hook( 'growthexperiments.StartEditingDialog.updateMatchCount' ).fire(
+		taskTypes,
+		topics
+	);
+
 	this.api.fetchTasks( taskTypes, topics ).then( function ( data ) {
 		var homepageModulesConfig = mw.config.get( 'homepagemodules' );
 		this.articleCounter.setCount( Number( data.count ) );
@@ -708,12 +719,12 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 	// FIXME needs to be kept in sync with the PHP code. Maybe the homepage layout
 	//   (module containers) should be templated and made available via an API or JSON config.
 	if ( this.mode === 'desktop' ) {
-		// Add SuggestedEdits after StartEditing (which will then be removed)
+		// Remove StartEditing module
 		$startEditingModule = $homepage.find( '.growthexperiments-homepage-module-start-startediting' );
-		$startEditingModule.after( moduleHtml );
 		$startEditingModule.remove();
 		// Mark suggested edits module as activated.
 		$homepage.find( '.growthexperiments-homepage-module-suggested-edits' )
+			.removeClass( 'unactivated' )
 			.addClass( 'activated' );
 		this.emit( 'activation', $homepage.find( '.growthexperiments-homepage-module-suggested-edits' ) );
 	} else if ( this.mode === 'mobile-overlay' ) {
