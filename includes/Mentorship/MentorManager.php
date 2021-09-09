@@ -107,11 +107,10 @@ abstract class MentorManager {
 	/**
 	 * Link to the list of mentors, if there is any
 	 *
-	 * @return Title|null
+	 * @return Title|null Null only if the page is not configured
+	 * @throws WikiConfigException If the mentor page cannot be fetched due to misconfiguration.
 	 */
-	public function getAutoMentorsListTitle(): ?Title {
-		return null;
-	}
+	abstract public function getAutoMentorsListTitle(): ?Title;
 
 	/**
 	 * Checks if mentorship is enabled

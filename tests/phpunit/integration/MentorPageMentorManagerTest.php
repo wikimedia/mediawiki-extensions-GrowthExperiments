@@ -27,25 +27,44 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 	/**
 	 * @dataProvider provideInvalidMentorsList
 	 * @param string $mentorsListConfig
+	 * @param string $exceptionMessage
 	 * @covers \GrowthExperiments\Mentorship\MentorPageMentorManager
 	 */
-	public function testGetMentorForUserInvalidMentorList( $mentorsListConfig ) {
+	public function testGetMentorForUserInvalidMentorList( $mentorsListConfig, $exceptionMessage ) {
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', $mentorsListConfig );
 		$mentorManager = $this->getMentorManager();
 
 		$this->expectException( WikiConfigException::class );
-		$this->expectExceptionMessage( 'wgGEHomepageMentorsList is invalid' );
+		$this->expectExceptionMessage( $exceptionMessage );
 
 		$mentorManager->getMentorForUser( $this->getTestUser()->getUser() );
 	}
 
 	public static function provideInvalidMentorsList() {
 		return [
-			[ null ],
+			[ '  ', 'wgGEHomepageMentorsList is invalid' ],
+			[ ':::', 'wgGEHomepageMentorsList is invalid' ],
+			[ 'Mentor|list', 'wgGEHomepageMentorsList is invalid' ],
+			[ 'NonExistentPage', 'Page defined by wgGEHomepageMentorsList does not exist' ],
+		];
+	}
+
+	/**
+	 * @covers ::getAutoAssignedMentors
+	 * @dataProvider provideEmptyMentorsList
+	 * @param string $mentorListConfig
+	 */
+	public function testGetAutoAssignedMentorsForEmptyMentorList( $mentorListConfig ) {
+		$this->setMwGlobals( 'wgGEHomepageMentorsList', $mentorListConfig );
+		$mentorManager = $this->getMentorManager();
+
+		$this->assertCount( 0, $mentorManager->getAutoAssignedMentors() );
+	}
+
+	public function provideEmptyMentorsList() {
+		return [
 			[ '' ],
-			[ '  ' ],
-			[ ':::' ],
-			[ 'NonExistentPage' ],
+			[ null ]
 		];
 	}
 
@@ -268,8 +287,8 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 			$coreServices->getUserOptionsLookup(),
 			$context,
 			$context->getLanguage(),
-			$growthServices->getConfig()->get( 'GEHomepageMentorsList' ) ?? '',
-			$growthServices->getConfig()->get( 'GEHomepageManualAssignmentMentorsList' ) ?? '',
+			$growthServices->getConfig()->get( 'GEHomepageMentorsList' ) ?: null,
+			$growthServices->getConfig()->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null,
 			$context->getRequest()->wasPosted()
 		);
 	}
