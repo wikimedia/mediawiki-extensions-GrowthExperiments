@@ -642,7 +642,6 @@
 	 */
 	SuggestedEditsModule.prototype.updateControls = function () {
 		this.setFilterQueriesFromDialogState();
-		this.filters.toggle( true );
 		this.filters.updateButtonLabelAndIcon( this.taskTypesQuery, this.topicsQuery );
 		this.updatePager();
 		this.updatePreviousNextButtons();
@@ -782,6 +781,8 @@
 
 		if ( taskPreviewData.title ) {
 			fetchTasksOptions = { firstTask: taskPreviewData };
+			suggestedEditsModule.taskQueue.push( taskPreviewData );
+			suggestedEditsModule.queuePosition = 0;
 		} else if ( taskPreviewData.noresults ) {
 			suggestedEditsModule.showCard(
 				new NoResultsWidget( { topicMatching: topicMatching } )
@@ -798,8 +799,13 @@
 			// Show an empty skeleton card, which will be overwritten once tasks are fetched.
 			suggestedEditsModule.showCard( new EditCardWidget( {} ) );
 		}
+		suggestedEditsModule.updateControls();
+		mw.track(
+			'timing.growthExperiments.specialHomepage.modules.suggestedEditsTimeToInteractive.' +
+			( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
+			mw.now() - initTime
+		);
 		return suggestedEditsModule.fetchTasksAndUpdateView( fetchTasksOptions ).then( function () {
-			suggestedEditsModule.filters.toggle( true );
 			if ( suggestedEditsModule.currentCard ) {
 				// currentCard was set by fetchTasksAndUpdateView, do not overwrite it
 				if ( fetchTasksOptions.firstTask ) {
