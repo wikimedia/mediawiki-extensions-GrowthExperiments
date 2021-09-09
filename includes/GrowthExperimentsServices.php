@@ -16,6 +16,7 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
+use GrowthExperiments\Mentorship\QuitMentorshipFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
@@ -180,6 +181,10 @@ class GrowthExperimentsServices {
 
 	public function getQuestionPosterFactory(): QuestionPosterFactory {
 		return $this->coreServices->get( 'GrowthExperimentsQuestionPosterFactory' );
+	}
+
+	public function getQuitMentorshipFactory(): QuitMentorshipFactory {
+		return $this->coreServices->get( 'GrowthExperimentsQuitMentorshipFactory' );
 	}
 
 	public function getSearchIndexUpdater(): SearchIndexUpdater {

@@ -53,5 +53,11 @@
 	"growthexperiments-rcfilters-mentorship-starred-label": "RecentChanges filter title for starred mentees filter",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "RecentChanges filter description for starred mentees filter",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "RecentChanges filter title for unstarred mentees filter",
-	"growthexperiments-rcfilters-mentorship-unstarred-desc": "RecentChanges filter description for unstarred mentees filter"
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "RecentChanges filter description for unstarred mentees filter",
+	"growthexperiments-quit-mentorship-title": "Label in Special:QuitMentorship\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "Label in Special:QuitMentorship\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Label in Special:QuitMentorship\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Label in Special:QuitMentorship\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-quit-mentorship-success": "Label in Special:QuitMentorship\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "Message sent to reassigned mentees when their mentor quits\n\n{{doc-growthexperiments-mentor-dashboard}}"
 }
