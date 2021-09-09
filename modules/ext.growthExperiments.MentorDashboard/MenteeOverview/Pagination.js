@@ -1,14 +1,14 @@
 ( function () {
 	'use strict';
 
-	function MenteeOverviewPagination( config ) {
+	function Pagination( config ) {
 		this.config = $.extend( {
 			pageSize: 10,
 			currentPage: 1,
 			totalPages: 1
 		}, config );
 
-		MenteeOverviewPagination.super.call( this, this.config );
+		Pagination.super.call( this, this.config );
 
 		this.prevBtn = new OO.ui.ButtonInputWidget( {
 			framed: false,
@@ -72,9 +72,9 @@
 		);
 	}
 
-	OO.inheritClass( MenteeOverviewPagination, mw.widgets.UserInputWidget );
+	OO.inheritClass( Pagination, mw.widgets.UserInputWidget );
 
-	MenteeOverviewPagination.prototype.updatePaginationState = function () {
+	Pagination.prototype.updatePaginationState = function () {
 		this.nextBtn.setDisabled( this.currentPage >= this.totalPages );
 		this.prevBtn.setDisabled( this.currentPage <= 1 );
 
@@ -87,52 +87,52 @@
 		);
 	};
 
-	MenteeOverviewPagination.prototype.setTotalPages = function ( value ) {
+	Pagination.prototype.setTotalPages = function ( value ) {
 		this.totalPages = value;
 		this.updatePaginationState();
 	};
 
-	MenteeOverviewPagination.prototype.getCurrentPage = function () {
+	Pagination.prototype.getCurrentPage = function () {
 		return this.currentPage;
 	};
 
-	MenteeOverviewPagination.prototype.setCurrentPage = function ( value ) {
+	Pagination.prototype.setCurrentPage = function ( value ) {
 		this.currentPage = value;
 		this.updatePaginationState();
 	};
 
-	MenteeOverviewPagination.prototype.getPageSize = function () {
+	Pagination.prototype.getPageSize = function () {
 		return this.pageSize;
 	};
 
-	MenteeOverviewPagination.prototype.setPageSize = function ( value ) {
+	Pagination.prototype.setPageSize = function ( value ) {
 		this.pageSize = value;
 		this.showEntriesBtn.setLabel(
 			mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-show-entries', mw.language.convertNumber( this.pageSize ) )
 		);
 	};
 
-	MenteeOverviewPagination.prototype.resetPagination = function () {
+	Pagination.prototype.resetPagination = function () {
 		this.currentPage = this.config.currentPage;
 		this.totalPages = this.config.totalPages;
 
 		this.updatePaginationState();
 	};
 
-	MenteeOverviewPagination.prototype.onPageSizeChanged = function ( menuOptions ) {
+	Pagination.prototype.onPageSizeChanged = function ( menuOptions ) {
 		this.setPageSize( menuOptions.getData() );
 		this.emit( 'pageSizeChanged', this.pageSize );
 	};
 
-	MenteeOverviewPagination.prototype.onPreviousButtonClicked = function () {
+	Pagination.prototype.onPreviousButtonClicked = function () {
 		this.emit( 'previousPage' );
 	};
 
-	MenteeOverviewPagination.prototype.onNextButtonClicked = function () {
+	Pagination.prototype.onNextButtonClicked = function () {
 		this.emit( 'nextPage' );
 	};
 
-	MenteeOverviewPagination.prototype.previousPage = function () {
+	Pagination.prototype.previousPage = function () {
 		if ( this.currentPage <= 1 ) {
 			return false;
 		}
@@ -141,7 +141,7 @@
 		return true;
 	};
 
-	MenteeOverviewPagination.prototype.nextPage = function () {
+	Pagination.prototype.nextPage = function () {
 		if ( this.currentPage >= this.totalPages ) {
 			return false;
 		}
@@ -150,6 +150,6 @@
 		return true;
 	};
 
-	module.exports = MenteeOverviewPagination;
+	module.exports = Pagination;
 
 }() );

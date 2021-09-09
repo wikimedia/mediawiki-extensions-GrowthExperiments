@@ -1351,11 +1351,11 @@
 		"ext.growthExperiments.MentorDashboard": {
 			"packageFiles": [
 				"ext.growthExperiments.MentorDashboard/index.js",
-				"ext.growthExperiments.MentorDashboard/MenteeOverview.js",
-				"ext.growthExperiments.MentorDashboard/MenteeOverviewApi.js",
-				"ext.growthExperiments.MentorDashboard/MenteeOverview.Pagination.js",
-				"ext.growthExperiments.MentorDashboard/MenteeOverview.FilterDropdown.js",
-				"ext.growthExperiments.MentorDashboard/MenteeOverview.MenteeSearchInputWidget.js"
+				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverview.js",
+				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewApi.js",
+				"ext.growthExperiments.MentorDashboard/MenteeOverview/Pagination.js",
+				"ext.growthExperiments.MentorDashboard/MenteeOverview/FilterDropdown.js",
+				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeSearchInputWidget.js"
 			],
 			"messages": [
 				"growthexperiments-mentor-dashboard-mentee-overview-info-headline",
@@ -1409,8 +1409,8 @@
 			"styles": [
 				"ext.growthExperiments.MentorDashboard/MentorDashboard.less",
 				"ext.growthExperiments.MentorDashboard/BaseModule.less",
-				"ext.growthExperiments.MentorDashboard/MenteeOverview.less",
-				"ext.growthExperiments.MentorDashboard/MenteeOverview.mobile.less",
+				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverview.less",
+				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverview.mobile.less",
 				"ext.growthExperiments.MentorDashboard/Resources.less"
 			],
 			"targets": [
