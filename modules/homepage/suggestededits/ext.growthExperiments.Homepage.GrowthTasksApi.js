@@ -164,6 +164,10 @@
 		finalPromise = actionApiPromise.then( function ( data ) {
 			var tasks = [];
 
+			/**
+			 * @param {Object} item Single item from query API resultset
+			 * @return mw.libs.ge.TaskData
+			 */
 			function cleanUpData( item ) {
 				var task;
 
