@@ -221,7 +221,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 */
 	protected function preText() {
 		if ( $this->errorMsgKey !== null ) {
-			return $this->msg( $this->errorMsgKey )->text();
+			return $this->msg( $this->errorMsgKey )->escaped();
 		}
 		return '';
 	}
