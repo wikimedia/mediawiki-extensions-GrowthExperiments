@@ -25,14 +25,6 @@ StructuredTaskMobileArticleTarget.static.toolbarGroups =
 /**
  * @inheritdoc
  */
-StructuredTaskMobileArticleTarget.prototype.surfaceReady = function () {
-	StructuredTaskMobileArticleTarget.super.prototype.surfaceReady.apply( this, arguments );
-	this.updateHistory();
-};
-
-/**
- * @inheritdoc
- */
 StructuredTaskMobileArticleTarget.prototype.setupToolbar = function () {
 	StructuredTaskMobileArticleTarget.super.prototype.setupToolbar.apply( this, arguments );
 	this.toolbar.$group.addClass( 'mw-ge-machine-suggestions-title-toolgroup' );
@@ -55,6 +47,8 @@ StructuredTaskMobileArticleTarget.prototype.setupToolbar = function () {
  * This allows the close button to take the user to the article's read mode
  * instead of Special:Homepage and for OO.Router to show abandonededit dialog
  * which relies on hashchange event.
+ *
+ * @override
  */
 StructuredTaskMobileArticleTarget.prototype.updateHistory = function () {
 	router.navigateTo( 'read', { path: location.pathname + location.search, useReplaceState: true } );

@@ -1,6 +1,7 @@
 module.exports = ( function () {
 	var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 		AddLinkTargetInitializer = StructuredTask.AddLinkTargetInitializer,
+		AddImageTargetInitializer = StructuredTask.AddImageTargetInitializer,
 		MachineSuggestionsPlaceholderTool = require( './MachineSuggestionsPlaceholderTool.js' ),
 		SuggestionsMobileArticleTarget = require( './SuggestionsMobileArticleTarget.js' );
 
@@ -23,6 +24,14 @@ module.exports = ( function () {
 			} );
 			addLinkTargetInitializer.disableDefaultEditModeToolsForRegularVeMode();
 			addLinkTargetInitializer.initialize();
+		} else if ( taskTypeId === 'image-recommendation' ) {
+			var addImageTargetInitializer = new AddImageTargetInitializer( {
+				tools: [ MachineSuggestionsPlaceholderTool ],
+				taskArticleTarget: require( './addimage/AddImageMobileArticleTarget.js' ),
+				suggestionsArticleTarget: SuggestionsMobileArticleTarget
+			} );
+			addImageTargetInitializer.disableDefaultEditModeToolsForRegularVeMode();
+			addImageTargetInitializer.initialize();
 		}
 	}
 

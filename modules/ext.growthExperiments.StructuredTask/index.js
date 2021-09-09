@@ -9,6 +9,8 @@ module.exports = {
 	AddLinkSaveDialog: require( './addlink/AddLinkSaveDialog.js' ),
 	RecommendedLinkToolbarDialog: require( './addlink/RecommendedLinkToolbarDialog.js' ),
 	AddLinkTargetInitializer: require( './addlink/AddLinkTargetInitializer.js' ),
+	AddImageTargetInitializer: require( './addimage/AddImageTargetInitializer.js' ),
+	AddImageArticleTarget: require( './addimage/AddImageArticleTarget.js' ),
 	StructuredTaskArticleTarget: require( './StructuredTaskArticleTarget.js' ),
 	StructuredTaskSaveDialog: require( './StructuredTaskSaveDialog.js' ),
 	MachineSuggestionsMode: require( './MachineSuggestionsMode.js' ),

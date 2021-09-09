@@ -1,3 +1,5 @@
+var MachineSuggestionsMode = require( './MachineSuggestionsMode.js' );
+
 /**
  * Mixin for a ve.init.mw.ArticleTarget instance. Used by StructuredTaskDesktopArticleTarget and
  * StructuredTaskMobileArticleTarget.
@@ -41,6 +43,38 @@ StructuredTaskArticleTarget.prototype.getSurfaceConfig = function ( config ) {
 /** @override */
 StructuredTaskArticleTarget.prototype.updateToolbarSaveButtonState = function () {
 	// T281452 no-op, we have our own custom logic for this in StructuredTaskSaveDialog
+};
+
+/**
+ * Actions that should occur before surfaceReady
+ * @abstract
+ */
+StructuredTaskArticleTarget.prototype.beforeSurfaceReady = function () {
+	throw new Error( 'beforeSurfaceReady must be implemented by subclass' );
+};
+
+/**
+ * Actions that should occur after surfaceReady
+ * @abstract
+ */
+StructuredTaskArticleTarget.prototype.afterSurfaceReady = function () {
+	throw new Error( 'afterSurfaceReady must be implemented by subclass' );
+};
+
+/** @inheritDoc */
+StructuredTaskArticleTarget.prototype.surfaceReady = function () {
+	// Put the surface in read-only mode
+	this.getSurface().setReadOnly( true );
+	// Remove any edit notices (T281960)
+	this.editNotices = [];
+
+	this.beforeSurfaceReady();
+	this.constructor.parent.super.prototype.surfaceReady.apply( this, arguments );
+	this.updateHistory();
+	this.afterSurfaceReady();
+
+	// Save can be triggered from ToolbarDialog.
+	MachineSuggestionsMode.addSaveHook( this.surface );
 };
 
 /**
@@ -155,6 +189,13 @@ StructuredTaskArticleTarget.prototype.switchToVisualWithSuggestions = function (
 	// uri.toString encodes fragment by default, breaking fragments such as "/editor/all".
 	uri.fragment = '';
 	location.href = uri.toString() + ( fragment ? '#' + fragment : '' );
+};
+
+/**
+ * Subclass may implement this if page history needs to be updated after the surface is ready.
+ */
+StructuredTaskArticleTarget.prototype.updateHistory = function () {
+	// Intentionally no-op
 };
 
 module.exports = StructuredTaskArticleTarget;
