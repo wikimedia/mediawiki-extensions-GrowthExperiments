@@ -9,6 +9,7 @@
 	"growthexperiments-config-validator-error": "$1 üçün olan təsdiqləmə uğursuz oldu: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code>, <code>$2</code> olmalıdır, amma <code>$3</code> olaraq qeyd olunub.",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Məzmun modeli xətası: GrowthExperiments konfiqurasiya faylı JSON məzmun modelinə sahib olmalıdır, $1 aşkar edildi.",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Səhv tapşırıq tipi idarəçisi nömrəsi: <code>$1</code> etibarlı dəyər deyil.",
 	"growthexperiments-edit-config-disabled": "İcma konfiqurasiyası hal-hazırda deaktivdir.",
 	"growthexperiments-edit-config-title": "İnkişaf konfiqurasiyasını redaktə edin",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Axırıncı dəfə [[User:$1|$1]] tərəfindən $2 tarixində yenilənib.",
