@@ -4,14 +4,11 @@ namespace GrowthExperiments\Specials;
 
 use Config;
 use FormSpecialPage;
-use GrowthExperiments\Mentorship\ChangeMentor;
+use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
-use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use Linker;
-use LogEventsList;
-use LogPager;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\User\UserIdentity;
 use Message;
@@ -38,25 +35,25 @@ class SpecialClaimMentee extends FormSpecialPage {
 	/** @var MentorManager */
 	private $mentorManager;
 
-	/** @var MentorStore */
-	private $mentorStore;
+	/** @var ChangeMentorFactory */
+	private $changeMentorFactory;
 
 	/** @var Config */
 	private $wikiConfig;
 
 	/**
 	 * @param MentorManager $mentorManager
-	 * @param MentorStore $mentorStore
+	 * @param ChangeMentorFactory $changeMentorFactory
 	 * @param Config $wikiConfig
 	 */
 	public function __construct(
 		MentorManager $mentorManager,
-		MentorStore $mentorStore,
+		ChangeMentorFactory $changeMentorFactory,
 		Config $wikiConfig
 	) {
 		parent::__construct( 'ClaimMentee' );
 		$this->mentorManager = $mentorManager;
-		$this->mentorStore = $mentorStore;
+		$this->changeMentorFactory = $changeMentorFactory;
 		$this->wikiConfig = $wikiConfig;
 	}
 
@@ -207,18 +204,10 @@ class SpecialClaimMentee extends FormSpecialPage {
 		$status = Status::newGood();
 		$logger = LoggerFactory::getInstance( 'GrowthExperiments' );
 		foreach ( $this->mentees as $mentee ) {
-			$changementor = new ChangeMentor(
+			$changementor = $this->changeMentorFactory->newChangeMentor(
 				$mentee,
 				$this->newMentor,
-				$logger,
-				$this->mentorManager->getMentorForUserIfExists( $mentee ),
-				new LogPager(
-					new LogEventsList( $this->getContext() ),
-					[ 'growthexperiments' ],
-					'',
-					$mentee->getUserPage()
-				),
-				$this->mentorStore
+				$this->getContext()
 			);
 
 			if (

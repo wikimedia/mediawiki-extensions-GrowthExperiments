@@ -241,7 +241,7 @@ class HomepageHooks implements
 				'class' => SpecialClaimMentee::class,
 				'services' => [
 					'GrowthExperimentsMentorManager',
-					'GrowthExperimentsMentorStore',
+					'GrowthExperimentsChangeMentorFactory',
 					'GrowthExperimentsMultiConfig'
 				]
 			];

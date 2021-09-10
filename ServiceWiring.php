@@ -19,6 +19,7 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
+use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
@@ -76,6 +77,18 @@ return [
 			$growthServices->getLinkSubmissionRecorder(),
 			$services->getLinkBatchFactory(),
 			$services->getTitleFactory()
+		);
+	},
+
+	'GrowthExperimentsChangeMentorFactory' => static function (
+		MediaWikiServices $services
+	): ChangeMentorFactory {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+		return new ChangeMentorFactory(
+			LoggerFactory::getInstance( 'GrowthExperiments' ),
+			$geServices->getMentorManager(),
+			$geServices->getMentorStore(),
+			$services->getUserFactory()
 		);
 	},
 

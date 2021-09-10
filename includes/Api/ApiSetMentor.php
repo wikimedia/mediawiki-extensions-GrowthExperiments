@@ -4,40 +4,36 @@ namespace GrowthExperiments\Api;
 
 use ApiBase;
 use ApiMain;
-use GrowthExperiments\Mentorship\ChangeMentor;
+use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorManager;
-use GrowthExperiments\Mentorship\Store\MentorStore;
-use LogEventsList;
-use LogPager;
-use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\ParamValidator\TypeDef\UserDef;
 use MediaWiki\User\UserIdentity;
-use Title;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class ApiSetMentor extends ApiBase {
 	/** @var MentorManager */
 	private $mentorManager;
 
-	/** @var MentorStore */
-	private $mentorStore;
+	/** @var ChangeMentorFactory */
+	private $changeMentorFactory;
 
 	/**
 	 * @param ApiMain $mainModule
 	 * @param string $moduleName
 	 * @param MentorManager $mentorManager
-	 * @param MentorStore $mentorStore
+	 * @param ChangeMentorFactory $changeMentorFactory
 	 */
 	public function __construct(
 		ApiMain $mainModule,
 		$moduleName,
 		MentorManager $mentorManager,
-		MentorStore $mentorStore
+		ChangeMentorFactory $changeMentorFactory
 	) {
 		parent::__construct( $mainModule, $moduleName );
+
 		$this->mentorManager = $mentorManager;
-		$this->mentorStore = $mentorStore;
+		$this->changeMentorFactory = $changeMentorFactory;
 	}
 
 	/**
@@ -55,7 +51,6 @@ class ApiSetMentor extends ApiBase {
 			// you must have setmentor rights.
 			$this->checkUserRightsAny( 'setmentor' );
 		}
-		$mentorObj = $this->mentorManager->getMentorForUserIfExists( $mentee );
 
 		if ( !$mentee->isRegistered() || !$mentor->isRegistered() ) {
 			// User doesn't exist
@@ -63,18 +58,12 @@ class ApiSetMentor extends ApiBase {
 			$this->dieWithError( [ 'nosuchusershort', $wrongUser->getName() ] );
 		}
 
-		$changeMentor = new ChangeMentor(
+		$oldMentorObj = $this->mentorManager->getMentorForUserIfExists( $mentee );
+
+		$changeMentor = $this->changeMentorFactory->newChangeMentor(
 			$mentee,
 			$this->getUser(),
-			LoggerFactory::getInstance( 'GrowthExperiments' ),
-			$mentorObj,
-			new LogPager(
-				new LogEventsList( $this->getContext() ),
-				[ 'growthexperiments' ],
-				'',
-				Title::makeTitle( NS_USER, $mentee->getName() )
-			),
-			$this->mentorStore
+			$this->getContext()
 		);
 		$status = $changeMentor->execute( $mentor, $params['reason'] );
 		if ( !$status->isOK() ) {
@@ -85,7 +74,7 @@ class ApiSetMentor extends ApiBase {
 			'status' => 'ok',
 			'mentee' => $mentee,
 			'newMentor' => $mentor,
-			'oldMentor' => $mentorObj instanceof Mentor ? $mentorObj->getMentorUser() : false,
+			'oldMentor' => $oldMentorObj instanceof Mentor ? $oldMentorObj->getMentorUser() : false,
 		] );
 	}
 

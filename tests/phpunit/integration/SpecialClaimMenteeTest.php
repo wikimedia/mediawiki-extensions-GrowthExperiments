@@ -23,7 +23,7 @@ class SpecialClaimMenteeTest extends SpecialPageTestBase {
 		return new SpecialClaimMentee(
 			new StaticMentorManager( [] ),
 			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
-				->getMentorStore(),
+				->getChangeMentorFactory(),
 			// This would normally be GrowthExperimentsMultiConfig, but there
 			// is no need to test the on-wiki config here
 			GlobalVarConfig::newInstance()
