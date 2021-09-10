@@ -334,7 +334,7 @@ return [
 			$services->getTitleFactory(),
 			$services->getWikiPageFactory(),
 			$services->getUserNameUtils(),
-			$services->getActorStore(),
+			$services->getUserIdentityLookup(),
 			$services->getUserOptionsLookup(),
 			RequestContext::getMain(),
 			RequestContext::getMain()->getLanguage(),
