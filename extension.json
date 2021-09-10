@@ -834,17 +834,15 @@
 				"growthexperiments-addlink-skip-body",
 				"growthexperiments-addlink-skip-accept",
 				"growthexperiments-addlink-skip-reject",
-				"growthexperiments-addlink-editmode-selection-label",
-				"growthexperiments-addlink-editmode-selection-machine-suggestions",
-				"growthexperiments-addlink-editmode-selection-visual",
-				"growthexperiments-addlink-editmode-confirmation-dialog-title",
-				"growthexperiments-addlink-editmode-confirmation-dialog-message",
-				"growthexperiments-addlink-editmode-confirmation-dialog-action-confirm",
-				"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel",
+				"growthexperiments-structuredtask-editmode-selection-label",
+				"growthexperiments-structuredtask-editmode-selection-machine-suggestions",
+				"growthexperiments-structuredtask-editmode-selection-visual",
+				"growthexperiments-structuredtask-editmode-confirmation-dialog-title",
+				"growthexperiments-structuredtask-editmode-confirmation-dialog-message",
+				"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm",
+				"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel",
 				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
 				"growthexperiments-addlink-suggestions-outdated",
-				"growthexperiments-addlink-no-suggestions-found-dialog-message",
-				"growthexperiments-addlink-no-suggestions-found-dialog-button",
 				"colon-separator"
 			],
 			"dependencies": [
@@ -876,8 +874,8 @@
 				"ext.visualEditor.desktopArticleTarget"
 			],
 			"messages": [
-				"growthexperiments-addlink-ve-machine-suggestions-mode-title",
-				"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button"
+				"growthexperiments-structuredtask-ve-machine-suggestions-mode-title",
+				"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button"
 			],
 			"targets": [
 				"desktop"
@@ -905,7 +903,7 @@
 				"oojs-ui-widgets"
 			],
 			"messages": [
-				"growthexperiments-addlink-ve-machine-suggestions-mode-title",
+				"growthexperiments-structuredtask-ve-machine-suggestions-mode-title",
 				"growthexperiments-addlink-context-button-show-suggestion"
 			],
 			"targets": [
@@ -954,8 +952,8 @@
 				"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text",
 				"growthexperiments-addlink-onboarding-content-linking-guidelines-title",
 				"growthexperiments-addlink-onboarding-content-linking-guidelines-body",
-				"growthexperiments-addlink-no-suggestions-found-dialog-message",
-				"growthexperiments-addlink-no-suggestions-found-dialog-button"
+				"growthexperiments-structuredtask-no-suggestions-found-dialog-message",
+				"growthexperiments-structuredtask-no-suggestions-found-dialog-button"
 			],
 			"dependencies": [
 				"mediawiki.jqueryMsg",

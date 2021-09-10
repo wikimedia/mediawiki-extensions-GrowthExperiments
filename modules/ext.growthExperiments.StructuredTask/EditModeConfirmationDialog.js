@@ -23,24 +23,24 @@ EditModeConfirmationDialog.static.name = 'editModeConfirmation';
 EditModeConfirmationDialog.static.size = 'small';
 
 EditModeConfirmationDialog.static.title = mw.message(
-	'growthexperiments-addlink-editmode-confirmation-dialog-title'
+	'growthexperiments-structuredtask-editmode-confirmation-dialog-title'
 ).text();
 
 EditModeConfirmationDialog.static.message = mw.message(
-	'growthexperiments-addlink-editmode-confirmation-dialog-message', mw.user.getName()
+	'growthexperiments-structuredtask-editmode-confirmation-dialog-message', mw.user.getName()
 ).text();
 
 EditModeConfirmationDialog.static.actions = [
 	{
 		action: 'confirm',
 		label: mw.message(
-			'growthexperiments-addlink-editmode-confirmation-dialog-action-confirm'
+			'growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm'
 		).text()
 	},
 	{
 		action: 'cancel',
 		label: mw.message(
-			'growthexperiments-addlink-editmode-confirmation-dialog-action-cancel'
+			'growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel'
 		).text()
 	}
 ];
