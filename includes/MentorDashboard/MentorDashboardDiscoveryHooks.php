@@ -4,10 +4,15 @@ namespace GrowthExperiments\MentorDashboard;
 
 use Config;
 use GrowthExperiments\Mentorship\MentorManager;
+use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\PersonalUrlsHook;
+use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserOptionsLookup;
 use SpecialPage;
 
-class MentorDashboardDiscoveryHooks implements PersonalUrlsHook {
+class MentorDashboardDiscoveryHooks implements PersonalUrlsHook, BeforePageDisplayHook {
+
+	public const MENTOR_DASHBOARD_SEEN_PREF = 'growthexperiments-mentor-dashboard-seen';
 
 	/** @var Config */
 	private $config;
@@ -15,33 +20,42 @@ class MentorDashboardDiscoveryHooks implements PersonalUrlsHook {
 	/** @var MentorManager */
 	private $mentorManager;
 
+	/** @var UserOptionsLookup */
+	private $userOptionsLookup;
+
 	/**
 	 * @param Config $config
 	 * @param MentorManager $mentorManager
+	 * @param UserOptionsLookup $userOptionsLookup
 	 */
 	public function __construct(
 		Config $config,
-		MentorManager $mentorManager
+		MentorManager $mentorManager,
+		UserOptionsLookup $userOptionsLookup
 	) {
 		$this->config = $config;
 		$this->mentorManager = $mentorManager;
+		$this->userOptionsLookup = $userOptionsLookup;
+	}
+
+	/**
+	 * Are mentor dashboard discovery features enabled?
+	 *
+	 * @param UserIdentity $user
+	 * @return bool
+	 */
+	private function isDiscoveryEnabled( UserIdentity $user ): bool {
+		return $this->config->get( 'GEMentorDashboardEnabled' ) &&
+			$this->config->get( 'GEMentorDashboardDiscoveryEnabled' ) &&
+			$user->isRegistered() &&
+			$this->mentorManager->isMentor( $user );
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function onPersonalUrls( &$personalUrls, &$title, $skin ): void {
-		if (
-			!$this->config->get( 'GEMentorDashboardEnabled' ) ||
-			!$this->config->get( 'GEMentorDashboardDiscoveryEnabled' ) ||
-			$skin->getUser()->isAnon() ||
-			!$this->mentorManager->isMentor( $skin->getUser() )
-		) {
-			// disable the link when:
-			//   a) the dashboard is disabled
-			//   b) the dashboard's discovery features are disabled
-			//	 c) user is not logged in
-			//   d) user is not a mentor
+		if ( !$this->isDiscoveryEnabled( $skin->getUser() ) ) {
 			return;
 		}
 
@@ -59,5 +73,24 @@ class MentorDashboardDiscoveryHooks implements PersonalUrlsHook {
 		}
 
 		$personalUrls = $newPersonalUrls;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onBeforePageDisplay( $out, $skin ): void {
+		$user = $skin->getUser();
+
+		if (
+			!$this->isDiscoveryEnabled( $user ) ||
+			// do not show the blue dot if the user ever visited their mentor dashboard
+			$this->userOptionsLookup->getBoolOption( $user, self::MENTOR_DASHBOARD_SEEN_PREF ) ||
+			// do not show the blue dot if the user is currently at their dashboard
+			$skin->getTitle()->equals( SpecialPage::getTitleFor( 'MentorDashboard' ) )
+		) {
+			return;
+		}
+
+		$out->addModules( 'ext.growthExperiments.MentorDashboard.Discovery' );
 	}
 }
