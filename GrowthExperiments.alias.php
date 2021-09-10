@@ -137,6 +137,9 @@ $specialPageAliases['he'] = [
 	'Homepage' => [ 'דף_הבית' ],
 	'Impact' => [ 'השפעה' ],
 	'ClaimMentee' => [ 'קליטת_חניך' ],
+	'NewcomerTasksInfo' => [ 'מידע_על_משימות_למתחילים' ],
+	'EditGrowthConfig' => [ 'עריכת_הגדרות_חונך' ],
+	'MentorDashboard' => [ 'לוח_בקרה_לחונכים' ],
 ];
 
 /** Hindi (हिन्द) */
