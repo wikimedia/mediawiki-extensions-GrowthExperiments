@@ -89,7 +89,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		// Hack: must be early enough for requireExtension to work but late enough for config
 		// to be available.
 		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
-		if ( $growthServices->getConfig()->get( 'GELinkRecommendationsUseEventGate' ) ) {
+		if ( $growthServices->getGrowthConfig()->get( 'GELinkRecommendationsUseEventGate' ) ) {
 			$this->requireExtension( 'EventBus' );
 		}
 		parent::checkRequiredExtensions();
@@ -187,7 +187,7 @@ class RefreshLinkRecommendations extends Maintenance {
 		// is missing.
 		$services = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$this->growthConfig = $growthServices->getConfig();
+		$this->growthConfig = $growthServices->getGrowthConfig();
 	}
 
 	protected function initServices(): void {

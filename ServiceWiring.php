@@ -341,7 +341,7 @@ return [
 			$geServices->getPreferenceMentorStore(),
 			$geServices->getDatabaseMentorStore(),
 			defined( 'MEDIAWIKI_JOB_RUNNER' ) ||
-				$geServices->getConfig()->get( 'CommandLineMode' ) ||
+				$geServices->getGrowthConfig()->get( 'CommandLineMode' ) ||
 				RequestContext::getMain()->getRequest()->wasPosted()
 		);
 	},
@@ -356,7 +356,7 @@ return [
 			$lb->getLazyConnectionRef( DB_REPLICA ),
 			$lb->getLazyConnectionRef( DB_PRIMARY ),
 			defined( 'MEDIAWIKI_JOB_RUNNER' ) ||
-				$geServices->getConfig()->get( 'CommandLineMode' ) ||
+				$geServices->getGrowthConfig()->get( 'CommandLineMode' ) ||
 				RequestContext::getMain()->getRequest()->wasPosted()
 		);
 		$databaseMentorStore->setCache(
@@ -371,7 +371,7 @@ return [
 			$services->getUserFactory(),
 			$services->getUserOptionsManager(),
 			defined( 'MEDIAWIKI_JOB_RUNNER' ) ||
-				GrowthExperimentsServices::wrap( $services )->getConfig()->get( 'CommandLineMode' ) ||
+				GrowthExperimentsServices::wrap( $services )->getGrowthConfig()->get( 'CommandLineMode' ) ||
 				RequestContext::getMain()->getRequest()->wasPosted()
 		);
 	},
@@ -380,7 +380,7 @@ return [
 		MediaWikiServices $services
 	): ConfigurationLoader {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$config = $growthServices->getConfig();
+		$config = $growthServices->getGrowthConfig();
 
 		$taskConfigTitle = $config->get( 'GENewcomerTasksConfigTitle' );
 		if ( !$taskConfigTitle ) {
@@ -472,7 +472,7 @@ return [
 		MediaWikiServices $services
 	): SearchIndexUpdater {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		if ( $growthServices->getConfig()->get( 'GELinkRecommendationsUseEventGate' ) ) {
+		if ( $growthServices->getGrowthConfig()->get( 'GELinkRecommendationsUseEventGate' ) ) {
 			/** @var EventBusFactory $eventBusFactory */
 			$eventBusFactory = $services->get( 'EventBus.EventBusFactory' );
 			return new EventGateSearchIndexUpdater( $eventBusFactory );
@@ -502,7 +502,7 @@ return [
 		MediaWikiServices $services
 	): TaskSuggesterFactory {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$config = $growthServices->getConfig();
+		$config = $growthServices->getGrowthConfig();
 
 		$taskTypeHandlerRegistry = $growthServices->getTaskTypeHandlerRegistry();
 		$configLoader = $growthServices->getNewcomerTasksConfigurationLoader();
@@ -557,7 +557,7 @@ return [
 	'GrowthExperimentsTaskTypeHandlerRegistry' => static function (
 		MediaWikiServices $services
 	): TaskTypeHandlerRegistry {
-		$extensionConfig = GrowthExperimentsServices::wrap( $services )->getConfig();
+		$extensionConfig = GrowthExperimentsServices::wrap( $services )->getGrowthConfig();
 		return new TaskTypeHandlerRegistry(
 			$services->getObjectFactory(),
 			$extensionConfig->get( 'GENewcomerTasksTaskTypeHandlers' )

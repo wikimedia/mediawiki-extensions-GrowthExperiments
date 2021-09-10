@@ -109,7 +109,7 @@ class ImportOresTopics extends Maintenance {
 	private function init() {
 		$services = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		if ( !$growthServices->getConfig()->get( 'GEDeveloperSetup' ) ) {
+		if ( !$growthServices->getGrowthConfig()->get( 'GEDeveloperSetup' ) ) {
 			$this->fatalError( 'This script cannot be safely run in production. (If the current '
 				. 'environment is not production, $wgGEDeveloperSetup should be set to true.)' );
 		}
