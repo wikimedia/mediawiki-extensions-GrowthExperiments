@@ -331,23 +331,52 @@ AddLinkArticleTarget.prototype.getTreeWalker = function ( doc ) {
 	);
 };
 
-/** @inheritDoc */
-AddLinkArticleTarget.prototype.isSaveable = function () {
-	// Call parent method just in case it has some side effect, but ignore its return value.
-	// The page is saveable if the user accepted or rejected recommendations.
-	// (If there are only rejections, the save will be a null edit but it's still a convenient
-	// way of handling various needed updates via the same mechanism, so we don't special-case it.)
-	this.constructor.super.prototype.isSaveable.call( this );
-
+/**
+ * Check whether any of the the annotation states meet the specified condition
+ *
+ * @param {Function} checkFn
+ * @return {boolean}
+ */
+AddLinkArticleTarget.prototype.checkAnnotationStates = function ( checkFn ) {
 	if ( !this.getSurface().linkRecommendationFragments ) {
 		// Too early; we can assume there are no changes to save.
 		// FIXME need to re-check this if we fix restoring abandoned edits.
 		return false;
 	}
-
 	return this.getAnnotationStates().some( function ( state ) {
-		return state.accepted || state.rejected;
+		return checkFn( state );
 	} );
+};
+
+/**
+ * Check whether the user has accepted any suggestions
+ *
+ * @override
+ */
+AddLinkArticleTarget.prototype.hasEdits = function () {
+	return this.checkAnnotationStates( function ( state ) {
+		return state.accepted;
+	} );
+};
+
+/**
+ * Check whether the user has rejected any suggestions
+ *
+ * @return {boolean}
+ */
+AddLinkArticleTarget.prototype.hasRejectedSuggestions = function () {
+	return this.checkAnnotationStates( function ( state ) {
+		return state.rejected;
+	} );
+};
+
+/**
+ * Check whether the user has accepted or rejected any suggestions
+ *
+ * @override
+ */
+AddLinkArticleTarget.prototype.hasReviewedSuggestions = function () {
+	return this.hasEdits() || this.hasRejectedSuggestions();
 };
 
 /** @inheritDoc */

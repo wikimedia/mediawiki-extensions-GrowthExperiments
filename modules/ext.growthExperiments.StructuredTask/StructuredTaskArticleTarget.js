@@ -44,6 +44,36 @@ StructuredTaskArticleTarget.prototype.updateToolbarSaveButtonState = function ()
 };
 
 /**
+ * Check whether the user has made changes to the article.
+ * @abstract
+ *
+ * @return {boolean}
+ */
+StructuredTaskArticleTarget.prototype.hasEdits = function () {
+	throw new Error( 'hasEdits must be implemented by subclass' );
+};
+
+/**
+ * Check whether the user has reviewed any suggestions.
+ * @abstract
+ *
+ * @return {boolean}
+ */
+StructuredTaskArticleTarget.prototype.hasReviewedSuggestions = function () {
+	throw new Error( 'hasReviewedSuggestions must be implemented by subclass' );
+};
+
+/** @inheritDoc */
+StructuredTaskArticleTarget.prototype.isSaveable = function () {
+	// Call parent method just in case it has some side effect, but ignore its return value.
+	this.constructor.parent.super.prototype.isSaveable.call( this );
+	// The page is saveable if the user accepted or rejected recommendations.
+	// (If there are only rejections, the save will be a null edit but it's still a convenient
+	// way of handling various needed updates via the same mechanism, so we don't special-case it.)
+	return this.hasEdits() || this.hasReviewedSuggestions();
+};
+
+/**
  * Don't save or restore edits
  *
  * @override

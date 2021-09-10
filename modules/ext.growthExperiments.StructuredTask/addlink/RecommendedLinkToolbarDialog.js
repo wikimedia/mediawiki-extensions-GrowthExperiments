@@ -218,13 +218,7 @@ RecommendedLinkToolbarDialog.prototype.onNoButtonClicked = function () {
  * This allows the publish button to be updated based on whether there are any acceptances.
  */
 RecommendedLinkToolbarDialog.prototype.onAcceptanceChanged = function () {
-	var linkRecommendationFragments = this.linkRecommendationFragments,
-		hasAcceptedRecommendations = linkRecommendationFragments.some( function ( recommendation ) {
-			var annotationSet = recommendation.fragment
-				.getAnnotations().getAnnotationsByName( 'mwGeRecommendedLink' );
-			return annotationSet.getLength() ? annotationSet.get( 0 ).isAccepted() : false;
-		} );
-	mw.hook( 'growthExperiments.suggestionAcceptanceChange' ).fire( hasAcceptedRecommendations );
+	mw.hook( 'growthExperiments.suggestionAcceptanceChange' ).fire();
 	this.updateButtonStates();
 	this.updateActionButtonsMode();
 	// Annotation element changes so it needs to be re-selected.
