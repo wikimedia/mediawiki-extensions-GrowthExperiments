@@ -182,7 +182,7 @@ abstract class MentorStore implements IDBAccessObject {
 	}
 
 	/**
-	 * Actual logic for
+	 * Actual logic for setting a mentor
 	 * @param UserIdentity $mentee
 	 * @param UserIdentity $mentor
 	 * @param string $mentorRole
