@@ -19,7 +19,6 @@ use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 use Title;
 use TitleFactory;
-use User;
 use Wikimedia\Rdbms\DBReadOnlyError;
 use WikiPage;
 use WikitextContent;
@@ -220,14 +219,9 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	}
 
 	/**
-	 * Randomly selects a mentor from the available mentors.
-	 *
-	 * @param UserIdentity $mentee
-	 * @param UserIdentity[] $excluded A list of users who should not be selected.
-	 * @return User The selected mentor.
-	 * @throws WikiConfigException When no mentors are available.
+	 * @inheritDoc
 	 */
-	private function getRandomAutoAssignedMentor(
+	public function getRandomAutoAssignedMentor(
 		UserIdentity $mentee, array $excluded = []
 	): UserIdentity {
 		$autoAssignedMentors = $this->getAutoAssignedMentors();
