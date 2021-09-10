@@ -1,8 +1,7 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	RecommendedLinkToolbarDialog = StructuredTask.RecommendedLinkToolbarDialog,
 	LinkSuggestionInteractionLogger = StructuredTask.LinkSuggestionInteractionLogger,
-	MachineSuggestionsMode = StructuredTask.MachineSuggestionsMode,
-	MinimizedToolbarDialogButton = require( '../MinimizedToolbarDialogButton.js' );
+	MachineSuggestionsMode = StructuredTask.MachineSuggestionsMode;
 
 /**
  * @class mw.libs.ge.RecommendedLinkToolbarDialogMobile
@@ -12,25 +11,12 @@ var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 function RecommendedLinkToolbarDialogMobile() {
 	RecommendedLinkToolbarDialogMobile.super.apply( this, arguments );
 	this.$element.addClass( [ 'mw-ge-recommendedLinkToolbarDialog-mobile', 'animate-below' ] );
-	this.topOffset = 25;
 	this.logger = new LinkSuggestionInteractionLogger( {
 		/* eslint-disable camelcase */
 		is_mobile: true,
 		active_interface: 'recommendedlinktoolbar_dialog'
 		/* eslint-enable camelcase */
 	} );
-	/**
-	 * @property {boolean} isHidden Whether the dialog is out of view
-	 */
-	this.isHidden = false;
-	/**
-	 * @property {boolean} isAdvancing Whether the animation to the next suggestions is in progress
-	 */
-	this.isAnimating = false;
-	/**
-	 * @property {mw.libs.ge.MinimizedToolbarDialogButton|null} toolbarDialogButton
-	 */
-	this.toolbarDialogButton = null;
 	this.onDocumentNodeClick = this.hideDialog.bind( this );
 }
 
@@ -273,36 +259,21 @@ RecommendedLinkToolbarDialogMobile.prototype.animateNewContent = function ( $con
 	return promise;
 };
 
-/**
- * Hide the dialog if it's not already hidden and if animation is not in progress
- * and show the re-open dialog button
- */
-RecommendedLinkToolbarDialogMobile.prototype.hideDialog = function () {
-	if ( this.isHidden || this.isAnimating ) {
-		return;
-	}
-	this.$element.addClass( 'animate-below' );
-	this.isHidden = true;
-	this.isFirstRender = true;
-	this.toolbarDialogButton.emit( 'dialogVisibilityChanged', false );
+/** @inheritDoc **/
+RecommendedLinkToolbarDialogMobile.prototype.showDialog = function () {
+	RecommendedLinkToolbarDialogMobile.super.prototype.showDialog.apply( this, arguments );
 	this.logger.log( 'close', this.suggestionLogMetadata() );
 };
 
-/**
- * Show the dialog and and hide the re-open dialog button
- **/
-RecommendedLinkToolbarDialogMobile.prototype.showDialog = function () {
-	if ( !this.isHidden ) {
-		return;
-	}
-	this.isHidden = false;
-	this.$element.removeClass( 'animate-below' );
-	this.toolbarDialogButton.emit( 'dialogVisibilityChanged', true );
+/** @inheritDoc **/
+RecommendedLinkToolbarDialogMobile.prototype.hideDialog = function () {
+	RecommendedLinkToolbarDialogMobile.super.prototype.hideDialog.apply( this, arguments );
 	this.logger.log( 'impression', this.suggestionLogMetadata() );
 };
 
 /**
  * Scroll to the suggestion and re-open the dialog
+ * @override
  */
 RecommendedLinkToolbarDialogMobile.prototype.onToolbarDialogButtonClicked = function () {
 	// When the dialog is re-opened with the same suggestion selected, there's no new render.
@@ -315,19 +286,6 @@ RecommendedLinkToolbarDialogMobile.prototype.onToolbarDialogButtonClicked = func
 		// eslint-disable-next-line camelcase
 		{ active_interface: 'machinesuggestions_mode' }
 	);
-};
-
-/**
- * Attach button for re-opening the dialog
- */
-RecommendedLinkToolbarDialogMobile.prototype.setUpToolbarDialogButton = function () {
-	this.toolbarDialogButton = new MinimizedToolbarDialogButton( {
-		label: mw.message(
-			'growthexperiments-addlink-context-button-show-suggestion'
-		).text()
-	} );
-	this.toolbarDialogButton.on( 'click', this.onToolbarDialogButtonClicked.bind( this ) );
-	this.surface.getGlobalOverlay().$element.append( this.toolbarDialogButton.$element );
 };
 
 module.exports = RecommendedLinkToolbarDialogMobile;

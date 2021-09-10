@@ -1,0 +1,32 @@
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
+@import '../homepage/ext.growthExperiments.variables.less';
+
+.mw-ge-structuredTaskToolbarDialog {
+	background: @wmui-color-base100;
+
+	&.ve-ui-toolbarDialog-position-below {
+		border-top: 1px solid @wmui-color-base70;
+		box-shadow: 0 -1px 1px 0 fade( @wmui-color-base0, 10% );
+		transition: transform 100ms;
+		transform: translateY( 0 );
+
+		&.animate-below {
+			transform: translateY( 100vh );
+		}
+	}
+
+	.oo-ui-window-head {
+		min-height: 32px;
+		padding: 0.5em;
+		display: flex;
+		align-items: center;
+		box-sizing: content-box;
+		background-color: @suggestedEditsBackgroundColor;
+		position: relative;
+
+		.mw-ge-structuredTaskToolbarDialog-head-robot-icon {
+			margin-left: 0.5em;
+			opacity: 0.65;
+		}
+	}
+}

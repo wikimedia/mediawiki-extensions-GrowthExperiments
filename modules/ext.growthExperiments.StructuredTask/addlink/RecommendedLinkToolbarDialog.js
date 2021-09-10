@@ -1,4 +1,5 @@
-var DmRecommendedLinkAnnotation = require( './dmRecommendedLinkAnnotation.js' ),
+var StructuredTaskToolbarDialog = require( '../StructuredTaskToolbarDialog.js' ),
+	DmRecommendedLinkAnnotation = require( './dmRecommendedLinkAnnotation.js' ),
 	CeRecommendedLinkAnnotation = require( './ceRecommendedLinkAnnotation.js' ),
 	AnnotationAnimation = require( '../AnnotationAnimation.js' ),
 	suggestedEditsConfig = require( '../../homepage/suggestededits/config.json' ),
@@ -6,7 +7,7 @@ var DmRecommendedLinkAnnotation = require( './dmRecommendedLinkAnnotation.js' ),
 
 /**
  * @class mw.libs.ge.RecommendedLinkToolbarDialog
- * @extends ve.ui.ToolbarDialog
+ * @extends mw.libs.ge.StructuredTaskToolbarDialog
  * @constructor
  */
 function RecommendedLinkToolbarDialog() {
@@ -20,25 +21,9 @@ function RecommendedLinkToolbarDialog() {
 	 */
 	this.currentIndex = 0;
 	/**
-	 * @property {ve.ui.Surface} surface VisualEditor UI surface
-	 */
-	this.surface = null;
-	/**
 	 * @property {boolean} isUpdatingCurrentRecommendation Whether UI updates should be rendered
 	 */
 	this.isUpdatingCurrentRecommendation = true;
-	/**
-	 * @property {number} scrollOffset Amount of space between the window and the annotation when scrolled
-	 */
-	this.scrollOffset = 100;
-	/**
-	 * @property {number} scrollTimeout Maximum time to spend in ms when scrolling to annotation
-	 */
-	this.scrollTimeout = 800;
-	/**
-	 * @property {number} minHeight Minimum value to use for window height (used in setting surface padding value)
-	 */
-	this.minHeight = 250;
 	/**
 	 * @property {boolean} isFirstRender Whether the first recommendation is being rendered
 	 */
@@ -54,7 +39,7 @@ function RecommendedLinkToolbarDialog() {
 	this.$element.addClass( 'mw-ge-recommendedLinkToolbarDialog' );
 }
 
-OO.inheritClass( RecommendedLinkToolbarDialog, ve.ui.ToolbarDialog );
+OO.inheritClass( RecommendedLinkToolbarDialog, StructuredTaskToolbarDialog );
 
 RecommendedLinkToolbarDialog.static.name = 'recommendedLink';
 
@@ -63,15 +48,9 @@ RecommendedLinkToolbarDialog.static.name = 'recommendedLink';
  */
 RecommendedLinkToolbarDialog.prototype.initialize = function () {
 	var introLabel = new OO.ui.LabelWidget( {
-			label: mw.msg( 'growthexperiments-addlink-context-intro' ),
-			classes: [ 'mw-ge-recommendedLinkToolbarDialog-introLabel' ]
-		} ),
-		robotIcon = new OO.ui.IconWidget( {
-			icon: 'robot',
-			label: mw.msg( 'growthexperiments-homepage-suggestededits-tasktype-machine-description' ),
-			invisibleLabel: true,
-			classes: [ 'mw-ge-recommendedLinkToolbarDialog-head-robot-icon' ]
-		} );
+		label: mw.msg( 'growthexperiments-addlink-context-intro' ),
+		classes: [ 'mw-ge-recommendedLinkToolbarDialog-introLabel' ]
+	} );
 	RecommendedLinkToolbarDialog.super.prototype.initialize.call( this );
 
 	// The following elements have to be set up when this.linkRecommendationFragments is set.
@@ -79,7 +58,7 @@ RecommendedLinkToolbarDialog.prototype.initialize = function () {
 	this.$progressTitle = $( '<span>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-progress-title' );
 	this.$buttons = $( '<div>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-buttons' );
 	this.setupButtons();
-	this.$head.append( [ robotIcon.$element, this.$progressTitle, this.$progress ] );
+	this.$head.append( [ this.getRobotIcon(), this.$progressTitle, this.$progress ] );
 	this.$body.append( [ introLabel.$element, this.setupLinkPreview(), this.$buttons ] );
 
 	// Used by other dialogs to return focus.
@@ -223,21 +202,6 @@ RecommendedLinkToolbarDialog.prototype.onAcceptanceChanged = function () {
 	this.updateActionButtonsMode();
 	// Annotation element changes so it needs to be re-selected.
 	this.selectAnnotationView();
-};
-
-/**
- * @inheritdoc
- */
-RecommendedLinkToolbarDialog.prototype.onDialogKeyDown = function ( e ) {
-	if ( e.which === OO.ui.Keys.ESCAPE ) {
-		// We want to behave as if the dialog were part of the editing surface, ie. on Esc
-		// close the editor instead of the dialog.
-		e.preventDefault();
-		e.stopPropagation();
-		ve.init.target.tryTeardown( false, 'navigate-read' );
-	} else {
-		return RecommendedLinkToolbarDialog.super.prototype.onDialogKeyDown.call( this, e );
-	}
 };
 
 /**

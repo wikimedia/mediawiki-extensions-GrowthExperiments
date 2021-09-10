@@ -8,46 +8,15 @@
 	@iconOpacity: 0.65;
 	@imageThumbnailSize: 56px;
 	@gutterSize: 12px;
-	background: @wmui-color-base100;
 	transition: opacity 250ms;
 
 	&.fade-out {
 		opacity: 0;
 	}
 
-	.oo-ui-window-head {
-		min-height: 32px;
-		padding: 0.5em;
-		display: flex;
-		align-items: center;
-		box-sizing: content-box;
-		background-color: @suggestedEditsBackgroundColor;
-		position: relative;
-
-		.mw-ge-recommendedLinkToolbarDialog-head-robot-icon {
-			margin-left: 0.5em;
-			opacity: 0.65;
-		}
-	}
-
 	.oo-ui-window-body {
 		position: relative;
 		padding: 0.5em 1em;
-	}
-
-	&.ve-ui-toolbarDialog-position-below {
-		position: fixed;
-		bottom: 0;
-		left: 0;
-		right: 0;
-		border-top: 1px solid @wmui-color-base70;
-		box-shadow: 0 -1px 1px 0 fade( @wmui-color-base0, 10% );
-		transition: transform 100ms;
-		transform: translateY( 0 );
-
-		&.animate-below {
-			transform: translateY( 100vh );
-		}
 	}
 
 	&.ve-ui-toolbarDialog-position-inline {
@@ -393,9 +362,4 @@
 			}
 		}
 	}
-}
-
-.mw-ge-user-select-none {
-	-webkit-user-select: none;
-	user-select: none;
 }

@@ -782,7 +782,9 @@
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskArticleTarget.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskSaveDialog.js",
+				"ext.growthExperiments.StructuredTask/StructuredTaskToolbarDialog.js",
 				"ext.growthExperiments.StructuredTask/RejectionReasonSelect.js",
+				"ext.growthExperiments.StructuredTask/MinimizedToolbarDialogButton.js",
 				"ext.growthExperiments.StructuredTask/addlink/AddLinkTargetInitializer.js",
 				"ext.growthExperiments.StructuredTask/addlink/AddLinkArticleTarget.js",
 				"ext.growthExperiments.StructuredTask/addlink/dmRecommendedLinkAnnotation.js",
@@ -805,6 +807,8 @@
 				"ext.growthExperiments.StructuredTask/MachineSuggestionsMode.less",
 				"ext.growthExperiments.StructuredTask/EditModeConfirmationDialog.less",
 				"ext.growthExperiments.StructuredTask/StructuredTaskSaveDialog.less",
+				"ext.growthExperiments.StructuredTask/StructuredTaskToolbarDialog.less",
+				"ext.growthExperiments.StructuredTask/MinimizedToolbarDialogButton.less",
 				"ext.growthExperiments.StructuredTask/addlink/ceRecommendedLinkAnnotation.less",
 				"ext.growthExperiments.StructuredTask/addlink/RecommendedLinkToolbarDialog.less",
 				"ext.growthExperiments.StructuredTask/addlink/RecommendedLinkRejectionDialog.less",
@@ -889,7 +893,6 @@
 			"packageFiles": [
 				"ext.growthExperiments.StructuredTask.mobile/index.js",
 				"ext.growthExperiments.StructuredTask.mobile/MachineSuggestionsPlaceholderTool.js",
-				"ext.growthExperiments.StructuredTask.mobile/MinimizedToolbarDialogButton.js",
 				"ext.growthExperiments.StructuredTask.mobile/StructuredTaskMobileArticleTarget.js",
 				"ext.growthExperiments.StructuredTask.mobile/SuggestionsMobileArticleTarget.js",
 				"ext.growthExperiments.StructuredTask.mobile/addlink/AddLinkMobileArticleTarget.js",
@@ -897,9 +900,6 @@
 				"ext.growthExperiments.StructuredTask.mobile/addlink/RecommendedLinkToolbarDialogMobile.js",
 				"ext.growthExperiments.StructuredTask.mobile/addimage/AddImageMobileArticleTarget.js",
 				"utils/ext.growthExperiments.Utils.js"
-			],
-			"styles": [
-				"ext.growthExperiments.StructuredTask.mobile/MinimizedToolbarDialogButton.less"
 			],
 			"dependencies": [
 				"ext.growthExperiments.StructuredTask",
