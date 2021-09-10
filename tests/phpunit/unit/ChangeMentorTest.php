@@ -5,7 +5,6 @@ namespace GrowthExperiments;
 use GrowthExperiments\Mentorship\ChangeMentor;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use IContextSource;
 use LogPager;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
@@ -29,7 +28,6 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 			new ChangeMentor(
 				$this->getUserMock( 'Mentee', 1 ),
 				$this->getUserMock( 'Performer', 2 ),
-				$this->getContextMock(),
 				new NullLogger(),
 				new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/' ),
 				$this->getLogPagerMock(),
@@ -50,7 +48,6 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 		$changeMentor = new ChangeMentor(
 			$this->getUserMock( 'Mentee', 1 ),
 			$this->getUserMock( 'Performer', 2 ),
-			$this->getContextMock(),
 			new NullLogger(),
 			new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/' ),
 			$logPagerMock,
@@ -66,7 +63,6 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 		$changeMentor = new ChangeMentor(
 			$this->getUserMock( 'Mentee', 0 ),
 			$this->getUserMock( 'Performer', 2 ),
-			$this->getContextMock(),
 			new NullLogger(),
 			new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/' ),
 			$this->getLogPagerMock(),
@@ -90,7 +86,6 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 		$changeMentor = new ChangeMentor(
 			$this->getUserMock( 'Mentee', 1 ),
 			$this->getUserMock( 'Performer', 2 ),
-			$this->getContextMock(),
 			new NullLogger(),
 			new Mentor( $this->getUserMock( 'OldMentor', 3 ), 'o/' ),
 			$this->getLogPagerMock(),
@@ -110,7 +105,6 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 		$changeMentor = new ChangeMentor(
 			$this->getUserMock( 'Mentee', 1 ),
 			$this->getUserMock( 'Performer', 2 ),
-			$this->getContextMock(),
 			new NullLogger(),
 			new Mentor( $this->getUserMock( 'SameMentor', 3 ), 'o/' ),
 			$this->getLogPagerMock(),
@@ -131,7 +125,6 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 		$changeMentor = new ChangeMentor(
 			$this->getUserMock( 'Mentee', 1 ),
 			$this->getUserMock( 'Performer', 2 ),
-			$this->getContextMock(),
 			new NullLogger(),
 			new Mentor( $this->getUserMock( 'SameMentor', 3 ), 'o/' ),
 			$this->getLogPagerMock(),
@@ -150,15 +143,6 @@ class ChangeMentorTest extends MediaWikiUnitTestCase {
 	 */
 	private function getUserMock( string $name, int $id ) {
 		return new UserIdentityValue( $id, $name );
-	}
-
-	/**
-	 * @return MockObject|IContextSource
-	 */
-	private function getContextMock() {
-		return $this->getMockBuilder( IContextSource::class )
-			->disableOriginalConstructor()
-			->getMock();
 	}
 
 	/**

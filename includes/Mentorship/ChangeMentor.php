@@ -4,7 +4,6 @@ namespace GrowthExperiments\Mentorship;
 
 use EchoEvent;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use IContextSource;
 use LogPager;
 use ManualLogEntry;
 use MediaWiki\User\UserIdentity;
@@ -30,10 +29,6 @@ class ChangeMentor {
 	 */
 	private $performer;
 	/**
-	 * @var IContextSource
-	 */
-	private $context;
-	/**
 	 * @var LoggerInterface
 	 */
 	private $logger;
@@ -49,7 +44,6 @@ class ChangeMentor {
 	/**
 	 * @param UserIdentity $mentee Mentee's user object
 	 * @param UserIdentity $performer Performer's user object
-	 * @param IContextSource $context Context
 	 * @param LoggerInterface $logger Logger
 	 * @param Mentor|null $mentor Old mentor
 	 * @param LogPager $logPager
@@ -58,7 +52,6 @@ class ChangeMentor {
 	public function __construct(
 		UserIdentity $mentee,
 		UserIdentity $performer,
-		IContextSource $context,
 		LoggerInterface $logger,
 		?Mentor $mentor,
 		LogPager $logPager,
@@ -67,7 +60,6 @@ class ChangeMentor {
 		$this->logger = $logger;
 
 		$this->performer = $performer;
-		$this->context = $context;
 		$this->mentee = $mentee;
 		$this->logPager = $logPager;
 		$this->mentorStore = $mentorStore;
