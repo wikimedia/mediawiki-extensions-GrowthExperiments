@@ -412,8 +412,13 @@
 			self.setTaskState( states.SAVED );
 			self.showPostEditDialog( { resetSession: true } );
 		} );
-		mw.hook( 'postEditMobile' ).add( function () {
-			self.setTaskState( states.SAVED );
+		/**
+		 * @param {Object} data
+		 * @param {number|null} [data.newRevId] ID of the newly created revision, or null if it was
+		 *  a null edit.
+		 */
+		mw.hook( 'postEditMobile' ).add( function ( data ) {
+			self.setTaskState( data.newRevId ? states.SAVED : states.SUBMITTED );
 			self.showPostEditDialog( { resetSession: true, nextRequest: true } );
 		} );
 	};
