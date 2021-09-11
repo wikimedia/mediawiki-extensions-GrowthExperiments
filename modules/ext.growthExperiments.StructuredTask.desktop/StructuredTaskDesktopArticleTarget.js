@@ -19,7 +19,7 @@ function StructuredTaskDesktopArticleTarget() {
 OO.inheritClass( StructuredTaskDesktopArticleTarget, ve.init.mw.DesktopArticleTarget );
 OO.mixinClass( StructuredTaskDesktopArticleTarget, StructuredTaskArticleTarget );
 
-StructuredTaskDesktopArticleTarget.static.toolbarGroups = [];
+StructuredTaskDesktopArticleTarget.static.toolbarGroups = [ 'suggestionsEditMode', 'save' ];
 
 StructuredTaskDesktopArticleTarget.static.actionGroups = MachineSuggestionsMode.getActionGroups(
 	StructuredTaskDesktopArticleTarget.static.actionGroups
