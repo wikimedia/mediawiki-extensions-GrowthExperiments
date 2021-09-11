@@ -71,6 +71,7 @@ class GrowthExperimentsServices {
 	 * @return Config
 	 */
 	public function getConfig(): Config {
+		wfDeprecated( __METHOD__, '1.36' );
 		return $this->coreServices->getConfigFactory()->makeConfig( 'GrowthExperiments' );
 	}
 
@@ -87,7 +88,7 @@ class GrowthExperimentsServices {
 	}
 
 	public function getLoadBalancer(): ILoadBalancer {
-		$databaseCluster = $this->getConfig()->get( 'GEDatabaseCluster' );
+		$databaseCluster = $this->getGrowthConfig()->get( 'GEDatabaseCluster' );
 		if ( $databaseCluster ) {
 			return $this->coreServices->getDBLoadBalancerFactory()->getExternalLB( $databaseCluster );
 		} else {
