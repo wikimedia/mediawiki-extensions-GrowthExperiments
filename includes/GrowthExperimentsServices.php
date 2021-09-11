@@ -14,6 +14,7 @@ use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
+use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
@@ -70,6 +71,10 @@ class GrowthExperimentsServices {
 	 */
 	public function getConfig(): Config {
 		return $this->coreServices->getConfigFactory()->makeConfig( 'GrowthExperiments' );
+	}
+
+	public function getChangeMentorFactory(): ChangeMentorFactory {
+		return $this->coreServices->get( 'GrowthExperimentsChangeMentorFactory' );
 	}
 
 	public function getGrowthConfig(): Config {
