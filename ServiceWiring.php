@@ -22,6 +22,7 @@ use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
+use GrowthExperiments\Mentorship\QuitMentorshipFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Mentorship\Store\MultiWriteMentorStore;
@@ -477,6 +478,19 @@ return [
 			$growthServices->getMentorManager(),
 			$services->getPermissionManager(),
 			$growthServices->getGrowthWikiConfig()->get( 'GEHelpPanelHelpDeskPostOnTop' )
+		);
+	},
+
+	'GrowthExperimentsQuitMentorshipFactory' => static function (
+		MediaWikiServices $services
+	): QuitMentorshipFactory {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		return new QuitMentorshipFactory(
+			$growthServices->getMentorManager(),
+			$growthServices->getMentorStore(),
+			$growthServices->getChangeMentorFactory(),
+			$services->getPermissionManager(),
+			$services->getJobQueueGroupFactory()
 		);
 	},
 

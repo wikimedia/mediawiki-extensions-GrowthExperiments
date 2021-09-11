@@ -50,7 +50,8 @@
 	},
 	"JobClasses": {
 		"newcomerTasksCacheRefreshJob": "GrowthExperiments\\NewcomerTasks\\TaskSuggester\\NewcomerTasksCacheRefreshJob",
-		"setUserMentorDatabaseJob": "GrowthExperiments\\Mentorship\\Store\\SetUserMentorDatabaseJob"
+		"setUserMentorDatabaseJob": "GrowthExperiments\\Mentorship\\Store\\SetUserMentorDatabaseJob",
+		"reassignMenteesJob": "GrowthExperiments\\Mentorship\\ReassignMenteesJob"
 	},
 	"APIModules": {
 		"helppanelquestionposter": {
@@ -1814,6 +1815,13 @@
 				"GrowthExperimentsMentorManager",
 				"UserOptionsLookup",
 				"JobQueueGroupFactory"
+			]
+		},
+		"QuitMentorship": {
+			"class": "GrowthExperiments\\Specials\\SpecialQuitMentorship",
+			"services": [
+				"GrowthExperimentsQuitMentorshipFactory",
+				"GrowthExperimentsMentorManager"
 			]
 		},
 		"EditGrowthConfig": {

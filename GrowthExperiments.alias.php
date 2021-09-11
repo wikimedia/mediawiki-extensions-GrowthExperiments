@@ -21,6 +21,7 @@ $specialPageAliases['en'] = [
 	'NewcomerTasksInfo' => [ 'NewcomerTasksInfo' ],
 	'EditGrowthConfig' => [ 'EditGrowthConfig' ],
 	'MentorDashboard' => [ 'MentorDashboard' ],
+	'QuitMentorship' => [ 'QuitMentorship' ],
 ];
 
 /** Arabic */
