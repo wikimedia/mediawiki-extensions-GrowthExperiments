@@ -76,4 +76,13 @@ class StaticMentorManager extends MentorManager {
 	public function isMentorshipEnabledForUser( UserIdentity $user ): bool {
 		return true;
 	}
+
+	/** @inheritDoc */
+	public function getRandomAutoAssignedMentor(
+		UserIdentity $mentee,
+		array $excluded = []
+	): UserIdentity {
+		$autoAssignedMentors = array_values( $this->mentors );
+		return $autoAssignedMentors[rand( 0, count( $autoAssignedMentors ) - 1 )]->getMentorUser();
+	}
 }

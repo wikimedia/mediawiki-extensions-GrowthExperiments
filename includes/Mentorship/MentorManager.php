@@ -120,4 +120,16 @@ abstract class MentorManager {
 	 * @return bool
 	 */
 	abstract public function isMentorshipEnabledForUser( UserIdentity $user ): bool;
+
+	/**
+	 * Randomly selects a mentor from the available mentors.
+	 *
+	 * @param UserIdentity $mentee
+	 * @param UserIdentity[] $excluded A list of users who should not be selected.
+	 * @return UserIdentity The selected mentor.
+	 * @throws WikiConfigException When no mentors are available.
+	 */
+	abstract public function getRandomAutoAssignedMentor(
+		UserIdentity $mentee, array $excluded = []
+	): UserIdentity;
 }
