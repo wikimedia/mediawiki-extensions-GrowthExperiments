@@ -66,7 +66,6 @@ class ApiSetMentor extends ApiBase {
 		$changeMentor = new ChangeMentor(
 			$mentee,
 			$this->getUser(),
-			$this->getContext(),
 			LoggerFactory::getInstance( 'GrowthExperiments' ),
 			$mentorObj,
 			new LogPager(

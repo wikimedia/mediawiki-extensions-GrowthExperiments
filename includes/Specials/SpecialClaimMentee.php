@@ -206,16 +206,14 @@ class SpecialClaimMentee extends FormSpecialPage {
 
 		$status = Status::newGood();
 		$logger = LoggerFactory::getInstance( 'GrowthExperiments' );
-		$context = $this->getContext();
 		foreach ( $this->mentees as $mentee ) {
 			$changementor = new ChangeMentor(
 				$mentee,
 				$this->newMentor,
-				$context,
 				$logger,
 				$this->mentorManager->getMentorForUserIfExists( $mentee ),
 				new LogPager(
-					new LogEventsList( $context ),
+					new LogEventsList( $this->getContext() ),
 					[ 'growthexperiments' ],
 					'',
 					$mentee->getUserPage()
