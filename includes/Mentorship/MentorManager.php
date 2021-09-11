@@ -87,7 +87,7 @@ abstract class MentorManager {
 	 * @return bool
 	 */
 	public function isMentor( UserIdentity $user ): bool {
-		return in_array( $user->getName(), $this->getMentorsSafe() );
+		return $user->isRegistered() && in_array( $user->getName(), $this->getMentorsSafe() );
 	}
 
 	/**
