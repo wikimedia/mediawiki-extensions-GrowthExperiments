@@ -281,7 +281,6 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 			$coreServices->getTitleFactory(),
 			$pages ? $this->getMockWikiPageFactory( $pages )
 				: $coreServices->getWikiPageFactory(),
-			$coreServices->getUserFactory(),
 			$coreServices->getUserNameUtils(),
 			$coreServices->getActorStore(),
 			$coreServices->getUserOptionsLookup(),

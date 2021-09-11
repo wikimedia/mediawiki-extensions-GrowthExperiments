@@ -333,7 +333,6 @@ return [
 			GrowthExperimentsServices::wrap( $services )->getMentorStore(),
 			$services->getTitleFactory(),
 			$services->getWikiPageFactory(),
-			$services->getUserFactory(),
 			$services->getUserNameUtils(),
 			$services->getActorStore(),
 			$services->getUserOptionsLookup(),

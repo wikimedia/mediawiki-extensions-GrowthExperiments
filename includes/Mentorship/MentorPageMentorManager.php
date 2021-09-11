@@ -7,7 +7,6 @@ use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
 use GrowthExperiments\WikiConfigException;
 use Language;
 use MediaWiki\Page\WikiPageFactory;
-use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserNameUtils;
@@ -45,9 +44,6 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	/** @var WikiPageFactory */
 	private $wikiPageFactory;
 
-	/** @var UserFactory */
-	private $userFactory;
-
 	/** @var UserNameUtils */
 	private $userNameUtils;
 
@@ -75,7 +71,6 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 * @param MentorStore $mentorStore
 	 * @param TitleFactory $titleFactory
 	 * @param WikiPageFactory $wikiPageFactory
-	 * @param UserFactory $userFactory
 	 * @param UserNameUtils $userNameUtils
 	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param UserOptionsLookup $userOptionsLookup
@@ -93,7 +88,6 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		MentorStore $mentorStore,
 		TitleFactory $titleFactory,
 		WikiPageFactory $wikiPageFactory,
-		UserFactory $userFactory,
 		UserNameUtils $userNameUtils,
 		UserIdentityLookup $userIdentityLookup,
 		UserOptionsLookup $userOptionsLookup,
@@ -106,7 +100,6 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$this->mentorStore = $mentorStore;
 		$this->titleFactory = $titleFactory;
 		$this->wikiPageFactory = $wikiPageFactory;
-		$this->userFactory = $userFactory;
 		$this->userNameUtils = $userNameUtils;
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->userOptionsLookup = $userOptionsLookup;
@@ -167,7 +160,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		?UserIdentity $menteeUser = null
 	): Mentor {
 		return new Mentor(
-			$this->userFactory->newFromUserIdentity( $mentorUser ),
+			$mentorUser,
 			$this->getMentorIntroText( $mentorUser, $menteeUser ?? $mentorUser )
 		);
 	}
@@ -250,7 +243,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		}
 
 		$selectedMentorName = $autoAssignedMentors[ rand( 0, count( $autoAssignedMentors ) - 1 ) ];
-		$result = $this->userFactory->newFromName( $selectedMentorName );
+		$result = $this->userIdentityLookup->getUserIdentityByName( $selectedMentorName );
 		if ( $result === null ) {
 			throw new WikiConfigException(
 				'Homepage Mentorship module: no mentor available'
