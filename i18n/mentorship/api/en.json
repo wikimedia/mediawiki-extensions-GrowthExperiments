@@ -5,5 +5,9 @@
 	"apihelp-growthstarmentee-summary": "Mark or unmark a mentee as starred by current user (stored privately and not logged)",
 	"apihelp-growthstarmentee-param-gesaction": "Action to take (<kbd>star</kbd> or <kbd>unstar</kbd>)",
 	"apihelp-growthstarmentee-param-gesmentee": "Mentee to (un)star",
-	"apihelp-query+growthstarredmentees-summary": "Get list of mentees starred by the currently logged in mentor"
+	"apihelp-query+growthstarredmentees-summary": "Get list of mentees starred by the currently logged in mentor",
+	"apihelp-growthsetmentorstatus-summary": "Set current user's mentor status to active/away",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "New status",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "When setting mentor as away, this must have length of the away status (in days)",
+	"apihelp-query+growthmentorstatus-summary": "Query current user's mentor status"
 }
