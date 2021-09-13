@@ -15,12 +15,15 @@ var TargetInitializer = require( '../TargetInitializer.js' );
  * @param {ve.ui.Tool[]} [platformConfig.tools]
  */
 function AddImageTargetInitializer( platformConfig ) {
-	var config = $.extend( {}, platformConfig );
-	config.safeCommands = [];
+	var config = $.extend( {}, platformConfig ),
+		toolbarDialogCommand = new ve.ui.Command(
+			'recommendedImage', 'window', 'toggle', { args: [ 'recommendedImage' ] }
+		);
+	config.safeCommands = [ toolbarDialogCommand.name ];
 	config.dataModels = [];
 	config.annotationViews = [];
 	config.windows = platformConfig.windows || [];
-	config.commands = [];
+	config.commands = [ toolbarDialogCommand ];
 	// TODO: initialize SuggestionInteractionLogger
 	AddImageTargetInitializer.super.call( this, config );
 }

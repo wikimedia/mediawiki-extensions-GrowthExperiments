@@ -1,0 +1,43 @@
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
+@import '../../homepage/ext.growthExperiments.variables.less';
+@import '../../homepage/ext.growthExperiments.mixins';
+
+.mw-ge-recommendedImageToolbarDialog {
+	color: @wmui-color-base10;
+
+	.mw-ge-recommendedImageToolbarDialog-title {
+		font-weight: bold;
+		margin-left: 9px;
+	}
+
+	.mw-ge-recommendedImageToolbarDialog-body {
+		padding: 16px;
+		position: relative;
+	}
+
+	.mw-ge-recommendedImageToolbarDialog-buttons {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.mw-ge-recommendedImageToolbarDialog-addImageCta {
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
+		color: @wmui-color-base20;
+		font-weight: bold;
+		margin: 16px 0;
+	}
+
+	.mw-ge-recommendedImageToolbarDialog-image-thumbnail {
+		width: 160px;
+		height: 120px;
+		background: @wmui-color-base80;
+		position: relative;
+	}
+
+	.mw-ge-recommendedImageToolbarDialog-fullscreen-button {
+		position: absolute;
+		right: 5px;
+		bottom: 6px;
+		background: rgba( 255, 255, 255, 0.5 );
+	}
+}

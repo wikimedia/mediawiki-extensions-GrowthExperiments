@@ -27,6 +27,7 @@ module.exports = ( function () {
 		} else if ( taskTypeId === 'image-recommendation' ) {
 			var addImageTargetInitializer = new AddImageTargetInitializer( {
 				tools: [ MachineSuggestionsPlaceholderTool ],
+				windows: [ StructuredTask.RecommendedImageToolbarDialog ],
 				taskArticleTarget: require( './addimage/AddImageMobileArticleTarget.js' ),
 				suggestionsArticleTarget: SuggestionsMobileArticleTarget
 			} );
