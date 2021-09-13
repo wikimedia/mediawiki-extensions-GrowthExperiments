@@ -1,5 +1,4 @@
-var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
-	MachineSuggestionsMode = require( '../MachineSuggestionsMode.js' );
+var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
 
 /**
  * @typedef LinkRecommendationLink
@@ -47,24 +46,20 @@ AddLinkArticleTarget.prototype.beforeLoadSuccess = function ( response ) {
 };
 
 /**
- * Implementations should call this in surfaceReady(), before calling the parent method.
+ * Set linkRecommendationFragments on the surface before it's ready
+ * @override
  */
 AddLinkArticleTarget.prototype.beforeSurfaceReady = function () {
-	// Put the surface in read-only mode
-	this.getSurface().setReadOnly( true );
-	// Remove any edit notices (T281960)
-	this.editNotices = [];
-
 	// HACK RecommendedLinkToolbarDialog doesn't have access to the target, so give it access to the
 	// link recommendation data by adding a property to the ui.Surface
 	this.getSurface().linkRecommendationFragments = this.findRecommendationFragments();
 };
 
 /**
- * Implementations should call this in surfaceReady(), after calling the parent method.
+ * Select the first recommendation after the surface is ready
+ * @override
  */
 AddLinkArticleTarget.prototype.afterSurfaceReady = function () {
-	// Select the first recommendation
 	// On mobile, the surface is not yet attached to the DOM when this runs, so wait for that to happen
 	// On desktop, the surface is already attached, and we can do this immediately
 	if ( OO.ui.isMobile() ) {
@@ -76,22 +71,12 @@ AddLinkArticleTarget.prototype.afterSurfaceReady = function () {
 		);
 		mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).fire();
 	}
-
-	// Save can be triggered from RecommendedLinkToolbarDialog.
-	MachineSuggestionsMode.addSaveHook( this.surface );
 };
 
 /** @inheritDoc */
 AddLinkArticleTarget.prototype.loadSuccess = function ( response ) {
 	this.beforeLoadSuccess( response );
 	this.constructor.super.prototype.loadSuccess.call( this, response );
-};
-
-/** @inheritDoc */
-AddLinkArticleTarget.prototype.surfaceReady = function () {
-	this.beforeSurfaceReady();
-	this.constructor.super.prototype.surfaceReady.apply( this, arguments );
-	this.afterSurfaceReady();
 };
 
 /**

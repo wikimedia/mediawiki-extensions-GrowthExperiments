@@ -5,6 +5,7 @@ module.exports = ( function () {
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		taskType = suggestedEditSession.taskType,
 		isAddLink = taskType === 'link-recommendation',
+		isAddImage = taskType === 'image-recommendation',
 		dialogName,
 		logger,
 		shouldShowOnboarding,
@@ -134,10 +135,11 @@ module.exports = ( function () {
 	 * @return {boolean}
 	 */
 	function shouldInitializeStructuredTask() {
-		// TODO: Add check for add image
-		return taskType === 'link-recommendation' &&
-			mw.config.get( 'wgGELinkRecommendationsFrontendEnabled' ) &&
-			suggestedEditSession.taskState === 'started';
+		if ( suggestedEditSession.taskState !== 'started' ) {
+			return false;
+		}
+		return isAddImage ||
+			( isAddLink && mw.config.get( 'wgGELinkRecommendationsFrontendEnabled' ) );
 	}
 
 	/**
