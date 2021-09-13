@@ -373,8 +373,8 @@
 	"growthexperiments-addlink-onboarding-dialog-label-next": "Следующий вводный шаг",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "Предыдущий вводный шаг",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Начать",
-	"growthexperiments-addlink-no-suggestions-found-dialog-message": "Предложения больше не доступны для этой статьи.",
-	"growthexperiments-addlink-no-suggestions-found-dialog-button": "Вернуться к предлагаемым правкам",
+	"growthexperiments-structuredtask-no-suggestions-found-dialog-message": "Предложения больше не доступны для этой статьи.",
+	"growthexperiments-structuredtask-no-suggestions-found-dialog-button": "Вернуться к предлагаемым правкам",
 	"growthexperiments-addlink-summary-title": "Описание",
 	"growthexperiments-addlink-summary-column-header-suggestion": "Предложение",
 	"growthexperiments-addlink-summary-column-header-linked": "Связано?",
@@ -392,7 +392,7 @@
 	"newcomertasksinfo-table-header-task-type-id": "Идентификатор",
 	"newcomertasksinfo-table-header-task-count": "Количество",
 	"newcomertasksinfo-table-header-topic-type": "Идентификатор темы",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Предложения",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Подтвердить…",
-	"growthexperiments-addlink-editmode-selection-machine-suggestions": "Предложения"
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-title": "Предложения",
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Подтвердить…",
+	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Предложения"
 }

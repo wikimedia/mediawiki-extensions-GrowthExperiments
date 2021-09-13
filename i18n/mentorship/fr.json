@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"DreZhsh",
 			"Gomoko",
 			"Wladek92"
 		]
@@ -23,7 +24,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Questions posées par le tuteur",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Nombre de modifications",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Date d’inscription",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Ajouter un filtre",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filtres",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Mettre à jour",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Total des modifications",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Minimum",
@@ -52,5 +53,11 @@
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Vos}} tutorés étoilés",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Tutorés qui {{GENDER:|vous}} ont été affectés et à que {{GENDER:|vous}} avez décoré sur {{GENDER:|votre}} tableau e bord du tuteur",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|Vos}} tutorés non étoilés",
-	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Autres tutorés qui {{GENDER:|vous}} sont affectés"
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Autres tutorés qui {{GENDER:|vous}} sont affectés",
+	"growthexperiments-quit-mentorship-title": "Abandonner le mentorat",
+	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "C'est triste de vous voir partir. Pour commencer le processus d'abandon du mentorat, vous devez d'abord retirer votre nom [[$1|de la liste des mentors]]. Une fois que vous l'avez fait, veuillez retourner sur cette page.",
+	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "L'étape suivante pour arrêter le mentorat est de réaffecter vos mentorés. Si vous êtes sûr de vouloir arrêter, veuillez appuyer sur le bouton ci-dessous.",
+	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Oui, réassigner mes mentorés",
+	"growthexperiments-quit-mentorship-success": "Vos mentorés seront réaffectés à d'autres mentors sous peu.",
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "Votre ancien mentor a quitté {{SITENAME}}. Nous vous avons assigné un nouveau mentor !"
 }

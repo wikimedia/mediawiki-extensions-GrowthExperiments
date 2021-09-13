@@ -312,5 +312,5 @@
 	"growthexperiments-addlink-skip-body": "Tem certeza de que {{GENDER: | você}} não deseja aceitar ou rejeitar nenhuma sugestão?",
 	"growthexperiments-addlink-skip-accept": "Pule tudo",
 	"growthexperiments-addlink-skip-reject": "Review again",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Enviar…"
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Enviar…"
 }

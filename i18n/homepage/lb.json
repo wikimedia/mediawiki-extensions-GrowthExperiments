@@ -138,7 +138,7 @@
 	"growthexperiments-addlink-summary-column-header-linked": "Verlinkt?",
 	"growthexperiments-addlink-summary-submit": "Schécken",
 	"growthexperiments-addlink-skip-accept": "All iwwersprangen",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Späicheren...",
-	"growthexperiments-addlink-editmode-selection-machine-suggestions": "Virschléi",
-	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Ofbriechen"
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Späicheren...",
+	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Virschléi",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Ofbriechen"
 }

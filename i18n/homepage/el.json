@@ -343,8 +343,8 @@
 	"growthexperiments-addlink-onboarding-dialog-label-next": "Επόμενο βήμα εισαγωγής",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "Προηγούμενο βήμα εισαγωγής",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Ξεκινήστε",
-	"growthexperiments-addlink-no-suggestions-found-dialog-message": "Οι προτάσεις δεν είναι πλέον διαθέσιμες για αυτό το λήμμα.",
-	"growthexperiments-addlink-no-suggestions-found-dialog-button": "Πίσω στις προτεινόμενες επεξεργασίες",
+	"growthexperiments-structuredtask-no-suggestions-found-dialog-message": "Οι προτάσεις δεν είναι πλέον διαθέσιμες για αυτό το λήμμα.",
+	"growthexperiments-structuredtask-no-suggestions-found-dialog-button": "Πίσω στις προτεινόμενες επεξεργασίες",
 	"growthexperiments-addlink-summary-title": "Σύνοψη",
 	"growthexperiments-addlink-summary-column-header-suggestion": "Πρόταση",
 	"growthexperiments-addlink-summary-column-header-linked": "Συνδεδεμένες;",
@@ -362,6 +362,6 @@
 	"newcomertasksinfo-table-header-task-type-id": "Αναγνωριστικό",
 	"newcomertasksinfo-table-header-task-count": "Αριθμός",
 	"newcomertasksinfo-table-header-topic-type": "Αναγνωριστικό Θέματος",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Προτάσεις",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Υποβολή..."
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-title": "Προτάσεις",
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Υποβολή..."
 }

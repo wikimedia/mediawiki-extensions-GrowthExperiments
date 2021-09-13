@@ -209,6 +209,6 @@
 	"newcomertasksinfo-table-header-task-type-id": "Идентификационен номер",
 	"newcomertasksinfo-table-header-task-count": "Брой",
 	"newcomertasksinfo-table-header-topic-type": "Идентификационен номер на темата",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Предложения",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Публикуване..."
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-title": "Предложения",
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Публикуване..."
 }

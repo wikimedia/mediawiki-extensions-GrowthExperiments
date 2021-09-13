@@ -27,13 +27,13 @@
 	"growthexperiments-addlink-onboarding-dialog-label-next": "Piligu din pahi soli",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "Dingari piligu soli",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Piligima",
-	"growthexperiments-addlink-no-suggestions-found-dialog-message": "Buɣisibunima lahi ka lahabali ŋɔ ni",
-	"growthexperiments-addlink-no-suggestions-found-dialog-button": "Labimi tiɛha zaŋ jɛndi mali sabi.",
+	"growthexperiments-structuredtask-no-suggestions-found-dialog-message": "Buɣisibunima lahi ka lahabali ŋɔ ni",
+	"growthexperiments-structuredtask-no-suggestions-found-dialog-button": "Labimi tiɛha zaŋ jɛndi mali sabi.",
 	"newcomertasksinfo": "Ninvuɣ' Palo tuma",
 	"newcomertasksinfo-no-data": "Lahabali sheli kani",
 	"newcomertasksinfo-table-header-task-type": "Tuma balibu",
 	"newcomertasksinfo-table-header-task-type-id": "ŋahan gbana",
 	"newcomertasksinfo-table-header-task-count": "Kali",
 	"newcomertasksinfo-table-header-topic-type": "Yaɣali ŋmahan gbana",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Zaŋ ti"
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Zaŋ ti"
 }

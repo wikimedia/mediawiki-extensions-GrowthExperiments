@@ -2,8 +2,28 @@
 	"@metadata": {
 		"authors": [
 			"BadDog",
+			"MaGa",
 			"Ponor"
 		]
 	},
-	"growthexperiments-desc": "Ovaj dodatak sadrži projekte Tima za razvoj."
+	"growthexperiments-desc": "Ovaj dodatak sadrži projekte Tima za razvoj.",
+	"growthexperiments-edit-config-title": "Postavke dodataka Tima za razvoj",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: {{GENDER:$1|Posljednji izmijenio suradnik|Posljednja izmijenila suradnica}} [[User:$1|$1]] $2.",
+	"growthexperiments-edit-config-pretext-unprivileged": "Ovaj obrazac omogućava povlaštenim suradnicima uređivanje konfiguracije dodataka [[:mw:Special:MyLanguage/Growth|Tima za razvoj]].",
+	"growthexperiments-edit-config-feedback-headline": "Imate li ideje ili pitanja o ovom obrascu?",
+	"growthexperiments-edit-config-feedback-cta": "Javite svoje dojmove",
+	"growthexperiments-edit-config-edit-summary": "Sažetak uređivanja",
+	"growthexperiments-edit-config-config-changed": "Postavke su izmijenjene. Ponekad treba pričekati nekoliko minuta do njihove pune primjene.",
+	"growthexperiments-edit-config-help-panel": "Postavke Pomoćnika za novake",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "Vrh stranice",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "Dno stranice",
+	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Stranice za razgovor mentorā",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Stranica za pomoć",
+	"growthexperiments-edit-config-help-panel-links": "Poveznice u Pomoćniku za novake",
+	"growthexperiments-edit-config-homepage": "Početna stranica za novake",
+	"growthexperiments-edit-config-homepage-intro-links-create": "Ciljna stranica za poveznicu o tome kako stvoriti novi članak",
+	"growthexperiments-edit-config-homepage-intro-links-image": "Ciljna stranica za poveznicu o tome kako dodati slike u vizualnom načinu uređivanja",
+	"growthexperiments-edit-config-mentorship": "Mentori",
+	"growthexperiments-edit-config-mentorship-enabled-true": "Da",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Ne"
 }

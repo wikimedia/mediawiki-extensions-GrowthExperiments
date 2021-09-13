@@ -4,5 +4,11 @@
 			"Dr Lotus Black"
 		]
 	},
-	"growthexperiments-edit-config-edit-summary": "အကျဉ်းချုပ်ကို တည်းဖြတ်ရန်"
+	"growthexperiments-edit-config-feedback-cta": "အကြံပေးရန်",
+	"growthexperiments-edit-config-edit-summary": "အကျဉ်းချုပ်ကို တည်းဖြတ်ရန်",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "စာမျက်နှာထိပ်",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "စာမျက်နှာအောက်ခြေ",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "အကူအညီပေးရာနေရာ",
+	"growthexperiments-edit-config-homepage": "အသစ်ရောက်လာသူ ဗဟိုစာမျက်နှာ",
+	"growthexperiments-edit-config-newcomertasks": "အကြံပြုထားသော ပြင်ဆင်မှုများ"
 }

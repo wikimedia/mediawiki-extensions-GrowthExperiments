@@ -316,9 +316,9 @@
 	"newcomertasksinfo-no-data": "Нема доступних података.",
 	"newcomertasksinfo-table-header-task-type": "Врста задатка",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Предлози",
-	"growthexperiments-addlink-editmode-selection-label": "Промени уређивач",
-	"growthexperiments-addlink-editmode-selection-machine-suggestions": "Предлози",
-	"growthexperiments-addlink-editmode-selection-visual": "Визуелно уређивање",
-	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Откажи"
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-title": "Предлози",
+	"growthexperiments-structuredtask-editmode-selection-label": "Промени уређивач",
+	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Предлози",
+	"growthexperiments-structuredtask-editmode-selection-visual": "Визуелно уређивање",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Откажи"
 }

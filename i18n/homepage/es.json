@@ -352,8 +352,8 @@
 	"growthexperiments-addlink-onboarding-dialog-label-next": "Siguiente paso",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "Paso anterior",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Empezar",
-	"growthexperiments-addlink-no-suggestions-found-dialog-message": "Ya no hay sugerencias disponibles en este artículo.",
-	"growthexperiments-addlink-no-suggestions-found-dialog-button": "Volver a las ediciones sugeridas",
+	"growthexperiments-structuredtask-no-suggestions-found-dialog-message": "Ya no hay sugerencias disponibles en este artículo.",
+	"growthexperiments-structuredtask-no-suggestions-found-dialog-button": "Volver a las ediciones sugeridas",
 	"growthexperiments-addlink-summary-title": "Resumen",
 	"growthexperiments-addlink-summary-column-header-suggestion": "Sugerencia",
 	"growthexperiments-addlink-summary-column-header-linked": "¿Enlazado?",
@@ -370,6 +370,6 @@
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Cantidad",
 	"newcomertasksinfo-table-header-topic-type": "ID de tema",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Sugerencias",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Enviar..."
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-title": "Sugerencias",
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Enviar..."
 }

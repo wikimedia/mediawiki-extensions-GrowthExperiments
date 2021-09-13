@@ -322,8 +322,8 @@
 	"growthexperiments-addlink-summary-summary": "Funzionalità collegamenti suggeriti: $1 {{PLURAL:$1|collegamento inserito|collegamenti inseriti}}.",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-topic-type": "ID argomento",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Invia...",
-	"growthexperiments-addlink-editmode-selection-machine-suggestions": "Suggerimenti",
-	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Annulla",
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Invia...",
+	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Suggerimenti",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Annulla",
 	"growthexperiments-addlink-suggestions-outdated": "Un altro utente ha modificato questo articolo mentre {{GENDER: | you}} lo stava esaminando e le modifiche di {{GENDER: | your}} non possono essere salvate."
 }

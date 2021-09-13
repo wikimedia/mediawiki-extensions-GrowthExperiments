@@ -103,7 +103,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|}}Vi odlučujete trebaju li riječi u jednome članku voditi na druge članke.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "Mjesec je jedini <mark class=\"positive\">prirodni satelit</mark> u <mark class=\"positive\">orbiti</mark> oko <mark class=\"positive\">Zemlje</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Nikakvo posebno znanje o članku nije potrebno da bi se obavila ova zadaća.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "Poveznice predlaže umjetna inteligencija (AI), a ona nekad može pogriješiti.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "Predložene poveznice stvara umjetna inteligencija (AI) pa mogu biti netočne.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "Algoritam umjetne inteligencije ponekad predloži poveznice za riječi koje ih ne trebaju ili poveznice na pogrešne članke. Sami procijenite jesu li preporuke točne.{{GENDER:$1|}}",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Saznajte više o prijedlozima umjetne inteligencije (AI)]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Smjernice",

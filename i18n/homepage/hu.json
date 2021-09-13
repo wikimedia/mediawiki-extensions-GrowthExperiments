@@ -348,8 +348,8 @@
 	"growthexperiments-addlink-onboarding-dialog-label-next": "Következő bevezetéslépés",
 	"growthexperiments-addlink-onboarding-dialog-label-previous": "Előző bevezetéslépés",
 	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Kezdés",
-	"growthexperiments-addlink-no-suggestions-found-dialog-message": "A javaslatok már nem állnak rendelkezésre ehhez a szócikkhez.",
-	"growthexperiments-addlink-no-suggestions-found-dialog-button": "Vissza a javasolt szerkesztésekhez",
+	"growthexperiments-structuredtask-no-suggestions-found-dialog-message": "A javaslatok már nem állnak rendelkezésre ehhez a szócikkhez.",
+	"growthexperiments-structuredtask-no-suggestions-found-dialog-button": "Vissza a javasolt szerkesztésekhez",
 	"growthexperiments-addlink-summary-title": "Összesítés",
 	"growthexperiments-addlink-summary-column-header-suggestion": "Javaslat",
 	"growthexperiments-addlink-summary-column-header-linked": "Linkelve?",
@@ -366,7 +366,7 @@
 	"newcomertasksinfo-table-header-task-type-id": "Azonosító",
 	"newcomertasksinfo-table-header-task-count": "Javaslatok száma",
 	"newcomertasksinfo-table-header-topic-type": "Témaazonosító",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-title": "Javaslatok",
-	"growthexperiments-addlink-ve-machine-suggestions-mode-submit-button": "Beküldés…",
-	"growthexperiments-addlink-editmode-confirmation-dialog-action-cancel": "Mégse"
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-title": "Javaslatok",
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Beküldés…",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Mégse"
 }

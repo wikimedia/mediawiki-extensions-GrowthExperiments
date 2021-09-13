@@ -13,5 +13,14 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "မွမ်းမံ",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "တည်းဖြတ်မှု အရေအတွက်",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "အနိမ့်ဆုံး",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "အမြင့်ဆုံး"
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "အမြင့်ဆုံး",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "လတ်တလောအဖြစ်ဆုံးတည်းဖြတ်မှု",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "မကြာသေးမီက ရက်များ",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "မကြာသေးမီက လများ",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "ရှာဖွေရန်",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "$1 အကြာက သက်ဝင်သည်",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "မသိရှိပါ",
+	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 ကိုပြရန်",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$2 ၏ $1",
+	"growthexperiments-mentor-dashboard-resources-headline": "အရင်းအမြစ်များ"
 }
