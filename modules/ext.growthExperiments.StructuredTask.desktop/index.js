@@ -30,7 +30,6 @@ module.exports = ( function () {
 				taskArticleTarget: require( './addimage/AddImageDesktopArticleTarget.js' ),
 				suggestionsArticleTarget: SuggestionsDesktopArticleTarget
 			} );
-			addImageTargetInitializer.disableDefaultEditModeToolsForRegularVeMode();
 			addImageTargetInitializer.initialize();
 		}
 	}
