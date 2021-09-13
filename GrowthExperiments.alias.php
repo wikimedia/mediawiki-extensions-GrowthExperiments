@@ -31,6 +31,8 @@ $specialPageAliases['ar'] = [
 	'Impact' => [ 'تأثير' ],
 	'ClaimMentee' => [ 'مطالبة_مرشد' ],
 	'EditGrowthConfig' => [ 'تعديل_إعداد_النمو' ],
+	'MentorDashboard' => [ 'لوحة_المرشدين' ],
+	'QuitMentorship' => [ 'مغادرة_الإرشاد' ],
 ];
 
 /** Azerbaijani (azərbaycanca) */
@@ -48,6 +50,8 @@ $specialPageAliases['bn'] = [
 	'Impact' => [ 'প্রভাব' ],
 	'ClaimMentee' => [ 'পরামর্শগ্রহীতা_দাবিকরণ' ],
 	'EditGrowthConfig' => [ 'গ্রোথ_কনফিগারেশন_সম্পাদনা' ],
+	'MentorDashboard' => [ 'মেন্টর_ড্যাশবোর্ড' ],
+	'QuitMentorship' => [ 'মেন্টরশিপ_পরিত্যাগ' ],
 ];
 
 /** Bulgarian (български) */
@@ -74,6 +78,7 @@ $specialPageAliases['cs'] = [
 	'NewcomerTasksInfo' => [ 'Informace_o_editačních_tipech' ],
 	'EditGrowthConfig' => [ 'Editovat_konfiguraci_Growth_funkcí' ],
 	'MentorDashboard' => [ 'Nástěnka_mentora' ],
+	'QuitMentorship' => [ 'Skončit_s_mentorstvím' ],
 ];
 
 /** Dansk (Danish) */
@@ -402,4 +407,6 @@ $specialPageAliases['vi'] = [
 	'Homepage' => [ 'Trang_nhà' ],
 	'ClaimMentee' => [ 'Nhận_Người_được_cố_vấn' ],
 	'EditGrowthConfig' => [ 'Sửa_đổi_cấu_hình_Tăng_Trưởng' ],
+	'MentorDashboard' => [ 'Bảng_điều_khiển_cố_vấn' ],
+	'QuitMentorship' => [ 'Ngừng_làm_cố_vấn' ],
 ];
