@@ -386,5 +386,12 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Switching modes will allow {{GENDER:$1|you}} to make other kinds of edits. Finish reviewing to submit {{GENDER:$1|your}} progress so far.",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Switch without submitting",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Cancel",
-	"growthexperiments-addlink-suggestions-outdated": "Another user edited this article while {{GENDER:|you}} were reviewing it, and {{GENDER:|your}} changes could not be saved."
+	"growthexperiments-addlink-suggestions-outdated": "Another user edited this article while {{GENDER:|you}} were reviewing it, and {{GENDER:|your}} changes could not be saved.",
+	"growthexperiments-addimage-inspector-title": "$1 {{PLURAL:$1|suggested image|suggested images}} found",
+	"growthexperiments-addimage-inspector-cta": "Add this image to the start of the article?",
+	"growthexperiments-addimage-inspector-yes-button": "Yes",
+	"growthexperiments-addimage-inspector-no-button": "No",
+	"growthexperiments-addimage-inspector-skip-button": "Skip",
+	"growthexperiments-addimage-inspector-show-button": "Show image suggestion",
+	"growthexperiments-addimage-inspector-help-button": "Get help with editing"
 }

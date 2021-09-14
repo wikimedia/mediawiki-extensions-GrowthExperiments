@@ -11,6 +11,7 @@ module.exports = {
 	AddLinkTargetInitializer: require( './addlink/AddLinkTargetInitializer.js' ),
 	AddImageTargetInitializer: require( './addimage/AddImageTargetInitializer.js' ),
 	AddImageArticleTarget: require( './addimage/AddImageArticleTarget.js' ),
+	RecommendedImageToolbarDialog: require( './addimage/RecommendedImageToolbarDialog.js' ),
 	StructuredTaskArticleTarget: require( './StructuredTaskArticleTarget.js' ),
 	StructuredTaskSaveDialog: require( './StructuredTaskSaveDialog.js' ),
 	MachineSuggestionsMode: require( './MachineSuggestionsMode.js' ),

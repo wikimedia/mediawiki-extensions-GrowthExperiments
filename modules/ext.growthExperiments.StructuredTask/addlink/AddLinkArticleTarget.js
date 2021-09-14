@@ -47,6 +47,7 @@ AddLinkArticleTarget.prototype.beforeLoadSuccess = function ( response ) {
 
 /**
  * Set linkRecommendationFragments on the surface before it's ready
+ *
  * @override
  */
 AddLinkArticleTarget.prototype.beforeSurfaceReady = function () {
@@ -57,6 +58,7 @@ AddLinkArticleTarget.prototype.beforeSurfaceReady = function () {
 
 /**
  * Select the first recommendation after the surface is ready
+ *
  * @override
  */
 AddLinkArticleTarget.prototype.afterSurfaceReady = function () {

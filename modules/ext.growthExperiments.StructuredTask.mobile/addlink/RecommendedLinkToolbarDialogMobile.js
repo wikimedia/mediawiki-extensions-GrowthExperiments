@@ -35,7 +35,9 @@ RecommendedLinkToolbarDialogMobile.prototype.initialize = function () {
 	);
 	this.setupLabelPreview();
 	this.$body.prepend( this.$labelPreview );
-	this.setupHelpButton();
+	this.setupHelpButton(
+		mw.message( 'growthexperiments-addlink-context-button-help' ).text()
+	);
 	this.$acceptanceButtonsContainer = this.setUpAnimationContainer(
 		this.$acceptanceButtonGroup, this.$buttons
 	);
@@ -52,7 +54,9 @@ RecommendedLinkToolbarDialogMobile.prototype.afterSetupProcess = function () {
 		// be scrolled into view since it wasn't in the viewport when onboarding was open.
 		this.surface.scrollSelectionIntoView();
 	}.bind( this ) );
-	this.setUpToolbarDialogButton();
+	this.setUpToolbarDialogButton(
+		mw.message( 'growthexperiments-addlink-context-button-show-suggestion' ).text()
+	);
 	RecommendedLinkToolbarDialogMobile.super.prototype.afterSetupProcess.call( this );
 };
 
@@ -148,25 +152,6 @@ RecommendedLinkToolbarDialogMobile.prototype.setupLabelPreview = function () {
 		),
 		this.$labelPreviewTextContainer
 	] );
-};
-
-/**
- * Set up button that opens help panel
- *
- * @private
- */
-RecommendedLinkToolbarDialogMobile.prototype.setupHelpButton = function () {
-	var helpButton = new OO.ui.ButtonWidget( {
-		classes: [ 'mw-ge-recommendedLinkToolbarDialog-help-button' ],
-		framed: false,
-		icon: 'helpNotice',
-		label: mw.message( 'growthexperiments-addlink-context-button-help' ).text(),
-		invisibleLabel: true
-	} );
-	helpButton.on( 'click', function () {
-		mw.hook( 'growthExperiments.contextItem.openHelpPanel' ).fire();
-	} );
-	this.$head.append( helpButton.$element );
 };
 
 /**
@@ -273,6 +258,7 @@ RecommendedLinkToolbarDialogMobile.prototype.hideDialog = function () {
 
 /**
  * Scroll to the suggestion and re-open the dialog
+ *
  * @override
  */
 RecommendedLinkToolbarDialogMobile.prototype.onToolbarDialogButtonClicked = function () {

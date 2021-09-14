@@ -26,6 +26,7 @@ module.exports = ( function () {
 		} else if ( taskTypeId === 'image-recommendation' ) {
 			var addImageTargetInitializer = new AddImageTargetInitializer( {
 				tools: [ MachineSuggestionsSaveTool ],
+				windows: [ StructuredTask.RecommendedImageToolbarDialog ],
 				taskArticleTarget: require( './addimage/AddImageDesktopArticleTarget.js' ),
 				suggestionsArticleTarget: SuggestionsDesktopArticleTarget
 			} );

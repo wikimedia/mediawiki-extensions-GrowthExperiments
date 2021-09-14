@@ -13,7 +13,7 @@ AddImageArticleTarget.prototype.beforeSurfaceReady = function () {
 };
 
 AddImageArticleTarget.prototype.afterSurfaceReady = function () {
-	// TODO: Open image inspector (T290045)
+	this.getSurface().executeCommand( 'recommendedImage' );
 };
 
 AddImageArticleTarget.prototype.hasEdits = function () {

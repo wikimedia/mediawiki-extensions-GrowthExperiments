@@ -784,6 +784,7 @@
 				"ext.growthExperiments.StructuredTask/StructuredTaskSaveDialog.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskToolbarDialog.js",
 				"ext.growthExperiments.StructuredTask/RejectionReasonSelect.js",
+				"ext.growthExperiments.StructuredTask/StructuredTaskToolbarDialog.js",
 				"ext.growthExperiments.StructuredTask/MinimizedToolbarDialogButton.js",
 				"ext.growthExperiments.StructuredTask/addlink/AddLinkTargetInitializer.js",
 				"ext.growthExperiments.StructuredTask/addlink/AddLinkArticleTarget.js",
@@ -797,6 +798,7 @@
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask/addimage/AddImageTargetInitializer.js",
 				"ext.growthExperiments.StructuredTask/addimage/AddImageArticleTarget.js",
+				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageToolbarDialog.js",
 				"utils/ext.growthExperiments.Utils.js",
 				{
 					"name": "homepage/suggestededits/config.json",
@@ -812,7 +814,8 @@
 				"ext.growthExperiments.StructuredTask/addlink/ceRecommendedLinkAnnotation.less",
 				"ext.growthExperiments.StructuredTask/addlink/RecommendedLinkToolbarDialog.less",
 				"ext.growthExperiments.StructuredTask/addlink/RecommendedLinkRejectionDialog.less",
-				"ext.growthExperiments.StructuredTask/addlink/AddLinkSaveDialog.less"
+				"ext.growthExperiments.StructuredTask/addlink/AddLinkSaveDialog.less",
+				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageToolbarDialog.less"
 			],
 			"messages": [
 				"growthexperiments-addlink-context-title",
@@ -850,6 +853,13 @@
 				"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel",
 				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
 				"growthexperiments-addlink-suggestions-outdated",
+				"growthexperiments-addimage-inspector-title",
+				"growthexperiments-addimage-inspector-cta",
+				"growthexperiments-addimage-inspector-yes-button",
+				"growthexperiments-addimage-inspector-no-button",
+				"growthexperiments-addimage-inspector-skip-button",
+				"growthexperiments-addimage-inspector-show-button",
+				"growthexperiments-addimage-inspector-help-button",
 				"colon-separator"
 			],
 			"dependencies": [
@@ -857,6 +867,7 @@
 				"oojs-ui-core",
 				"oojs-ui-windows",
 				"oojs-ui.styles.icons-editing-core",
+				"oojs-ui.styles.icons-media",
 				"ext.visualEditor.mwlink",
 				"ext.growthExperiments.icons",
 				"ext.growthExperiments.SuggestedEditSession"

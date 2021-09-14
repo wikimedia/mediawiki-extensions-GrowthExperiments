@@ -109,15 +109,34 @@ StructuredTaskToolbarDialog.prototype.onToolbarDialogButtonClicked = function ()
 
 /**
  * Attach button for re-opening the dialog
+ *
+ * @param {string} [label] Text to use for the button's invisible label
  */
-StructuredTaskToolbarDialog.prototype.setUpToolbarDialogButton = function () {
+StructuredTaskToolbarDialog.prototype.setUpToolbarDialogButton = function ( label ) {
 	this.toolbarDialogButton = new MinimizedToolbarDialogButton( {
-		label: mw.message(
-			'growthexperiments-addlink-context-button-show-suggestion'
-		).text()
+		label: label
 	} );
 	this.toolbarDialogButton.on( 'click', this.onToolbarDialogButtonClicked.bind( this ) );
 	this.surface.getGlobalOverlay().$element.append( this.toolbarDialogButton.$element );
+};
+
+/**
+ * Set up button that opens help panel
+ *
+ * @param {string} [label] Text to use for the button's invisible label
+ */
+StructuredTaskToolbarDialog.prototype.setupHelpButton = function ( label ) {
+	var helpButton = new OO.ui.ButtonWidget( {
+		classes: [ 'mw-ge-recommendedLinkToolbarDialog-help-button' ],
+		framed: false,
+		icon: 'helpNotice',
+		label: label,
+		invisibleLabel: true
+	} );
+	helpButton.on( 'click', function () {
+		mw.hook( 'growthExperiments.contextItem.openHelpPanel' ).fire();
+	} );
+	this.$head.append( helpButton.$element );
 };
 
 module.exports = StructuredTaskToolbarDialog;
