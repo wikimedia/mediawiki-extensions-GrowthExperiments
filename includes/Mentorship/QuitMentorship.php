@@ -82,13 +82,13 @@ class QuitMentorship {
 	 * If reassigning can happen without a job, you can use
 	 * doReassignMentees directly.
 	 *
-	 * @param string $reassignMessage
+	 * @param string $reassignMessageKey
 	 */
-	public function reassignMentees( string $reassignMessage ): void {
+	public function reassignMentees( string $reassignMessageKey ): void {
 		$this->jobQueueGroupFactory->makeJobQueueGroup()->lazyPush(
 			new ReassignMenteesJob( [
 				'mentorId' => $this->mentor->getId(),
-				'reassignMessage' => $reassignMessage
+				'reassignMessageKey' => $reassignMessageKey
 			] )
 		);
 	}
@@ -96,10 +96,11 @@ class QuitMentorship {
 	/**
 	 * Actually reassign all mentees currently assigned to the mentor
 	 *
-	 * @param string $reassignMessage Message that is logged in history of mentee changes
+	 * @param string $reassignMessageKey Message key used in in ChangeMentor notification; needs
+	 * to accept one parameter (username of the new mentor).
 	 */
 	public function doReassignMentees(
-		string $reassignMessage
+		string $reassignMessageKey
 	): void {
 		$guard = $this->permissionManager->addTemporaryUserRights( $this->mentor, 'bot' );
 
@@ -110,9 +111,11 @@ class QuitMentorship {
 				$this->mentor,
 				$this->context
 			);
+
+			$newMentor = $this->mentorManager->getRandomAutoAssignedMentor( $mentee );
 			$changeMentor->execute(
-				$this->mentorManager->getRandomAutoAssignedMentor( $mentee ),
-				$reassignMessage
+				$newMentor,
+				wfMessage( $reassignMessageKey, $newMentor->getName() )->text()
 			);
 		}
 

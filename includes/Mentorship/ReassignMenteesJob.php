@@ -14,7 +14,7 @@ use RequestContext;
  *
  * The following job parameters are required:
  *  - mentorId: user ID of the mentor to process
- *  - reassignMessage: Message to store in logs as well as in notifications to mentees
+ *  - reassignMessageKey: Message to store in logs as well as in notifications to mentees
  */
 class ReassignMenteesJob extends Job implements GenericParameterJob {
 
@@ -50,7 +50,7 @@ class ReassignMenteesJob extends Job implements GenericParameterJob {
 			$mentor,
 			RequestContext::getMain()
 		);
-		$quitMentorship->doReassignMentees( $this->params['reassignMessage'] );
+		$quitMentorship->doReassignMentees( $this->params['reassignMessageKey'] );
 
 		return true;
 	}
