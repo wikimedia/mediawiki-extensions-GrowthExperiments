@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "למסן חניך בכוכב או לבטל את הסימון הזה (שמור באופן פרטי ולא נרשם ביומן)",
+	"apihelp-growthstarmentee-param-gesaction": "איזו פעולה לעשות (<kbd>star</kbd> או <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "איזה חניך לסמן בכוכב (או מאיזה להסיר את הסימון)",
+	"apihelp-query+growthstarredmentees-summary": "קבלת רשימת חניכים שסומנו על־ידי חונך שמחובר עכשיו לחשבון"
+}

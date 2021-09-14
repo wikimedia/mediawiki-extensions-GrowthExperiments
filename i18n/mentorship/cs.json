@@ -52,5 +52,8 @@
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Vaši}} nováčci označení hvězdičkou",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Nováčci, které jste {{GENDER:|označil|označila|označili}} hvězdičkou na {{GENDER:|své}} nástěnce mentora",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|Vaši}} nováčci neoznačení hvězdičkou",
-	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Ostatní {{GENDER:|vám}} přidělení nováčci"
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Ostatní {{GENDER:|vám}} přidělení nováčci",
+	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Ano, převést mé nováčky.",
+	"growthexperiments-quit-mentorship-success": "Vaši nováčci budou během chvíle převedeni na ostatní mentory.",
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "Váš předchozí mentor z {{SITENAME}} odešel. Přiřadili jsme vám proto nového mentora!"
 }

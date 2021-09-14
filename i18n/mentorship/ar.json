@@ -22,7 +22,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "الأسئلة المطروحة على المرشد",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "عدد التعديلات",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "تاريخ التسجيل",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "إضافة مرشح",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "مرشحات",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "تحديث",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "عدد التعديلات",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "الحد الأدنى",
@@ -51,5 +51,11 @@
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|مرشَديكَ|مرشَديكِ}} المفضّلين",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "المرشَدون الموجّهون {{GENDER:|إليكَ|إليكِ}} الذين فضّلنهم في لوحة المرشدين",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|مرشَديكَ|مرشَديكِ}} الغير مفضّلين",
-	"growthexperiments-rcfilters-mentorship-unstarred-desc": "مرشَدون آخرون موجّهون {{GENDER:|إليكَ|إليكِ}}"
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "مرشَدون آخرون موجّهون {{GENDER:|إليكَ|إليكِ}}",
+	"growthexperiments-quit-mentorship-title": "مغادرة الإرشاد",
+	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "من المؤسف ملاحظة مغادرتك. للبدء في عمليّة المغادرة من الإرشاد، يجب عليك حذف اسمك من [[$1|قائمة المرشدين]]. عند الانتهاء من ذلك، فضلا، {{GNEDER:|عُدْ|عودي}} إلى هذه الصفحة مجدّدا.",
+	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "المرحلة التالية من مغلدرة الإرشاد هي إعادة توزيع مُرشَديك. لو كنت {{GENDER:|متأكّدا|متأكّدة}} من المغادرة، فضلا، {{GENDER:|اضغط|اضغطي}} على الزرّ أدناه.",
+	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "نعم، أعيدوا توزيع المرشَدين",
+	"growthexperiments-quit-mentorship-success": "ستتمّ إعادة توزيع المرشَدين إلى مُرشِدين آخرين قريبا.",
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "لقد غادر مشردك السابق {{SITENAME}}. قمنا بتعيين مرشد جديد لكم!"
 }
