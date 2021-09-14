@@ -2,9 +2,11 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
+use GrowthExperiments\NewcomerTasks\AddLink\AddLinkSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
+use GrowthExperiments\NewcomerTasks\RecommendationSubmissionHandler;
 use InvalidArgumentException;
 use Wikimedia\Assert\Assert;
 
@@ -22,18 +24,24 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	/** @var LinkRecommendationProvider */
 	private $recommendationProvider;
 
+	/** @var AddLinkSubmissionHandler */
+	private $submissionHandler;
+
 	/**
 	 * @param ConfigurationValidator $configurationValidator
 	 * @param RecommendationProvider $recommendationProvider
+	 * @param AddLinkSubmissionHandler $submissionHandler
 	 */
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
-		RecommendationProvider $recommendationProvider
+		RecommendationProvider $recommendationProvider,
+		AddLinkSubmissionHandler $submissionHandler
 	) {
 		Assert::parameterType( LinkRecommendationProvider::class, $recommendationProvider,
 			'$recommendationProvider' );
 		parent::__construct( $configurationValidator );
 		$this->recommendationProvider = $recommendationProvider;
+		$this->submissionHandler = $submissionHandler;
 	}
 
 	/** @inheritDoc */
@@ -47,6 +55,14 @@ class LinkRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	 */
 	public function getRecommendationProvider(): RecommendationProvider {
 		return $this->recommendationProvider;
+	}
+
+	/**
+	 * @inheritDoc
+	 * @return AddLinkSubmissionHandler
+	 */
+	public function getSubmissionHandler(): RecommendationSubmissionHandler {
+		return $this->submissionHandler;
 	}
 
 	/** @inheritDoc */

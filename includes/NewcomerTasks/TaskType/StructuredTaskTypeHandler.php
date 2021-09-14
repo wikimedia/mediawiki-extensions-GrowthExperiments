@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
+use GrowthExperiments\NewcomerTasks\RecommendationSubmissionHandler;
 
 /**
  * TaskTypeHandler subclass for structured tasks. Instead of freeform editing, structured tasks
@@ -17,5 +18,12 @@ abstract class StructuredTaskTypeHandler extends TaskTypeHandler {
 	 * @return RecommendationProvider
 	 */
 	abstract public function getRecommendationProvider(): RecommendationProvider;
+
+	/**
+	 * Returns the handler which can be used to process a user submission (such as a user
+	 * accepting or rejecting a recommendation).
+	 * @return RecommendationSubmissionHandler
+	 */
+	abstract public function getSubmissionHandler(): RecommendationSubmissionHandler;
 
 }

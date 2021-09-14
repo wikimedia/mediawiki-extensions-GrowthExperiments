@@ -2,13 +2,15 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
-use LogicException;
+use GrowthExperiments\NewcomerTasks\RecommendationSubmissionHandler;
+use IDBAccessObject;
 use MalformedTitleException;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\Storage\RevisionLookup;
 use MediaWiki\User\UserIdentity;
-use Status;
+use Message;
 use StatusValue;
 use TitleFactory;
 use UnexpectedValueException;
@@ -17,7 +19,7 @@ use Wikimedia\Rdbms\DBReadOnlyError;
 /**
  * Record the user's decision on the recommendations for a given page.
  */
-class AddLinkSubmissionHandler {
+class AddLinkSubmissionHandler implements RecommendationSubmissionHandler {
 
 	/** @var LinkRecommendationHelper */
 	private $linkRecommendationHelper;
@@ -51,19 +53,32 @@ class AddLinkSubmissionHandler {
 		$this->linkBatchFactory = $linkBatchFactory;
 	}
 
+	/** @inheritDoc */
+	public function validate(
+		ProperPageIdentity $page, UserIdentity $user, int $baseRevId, array $data
+	): ?array {
+		$title = $this->titleFactory->castFromPageIdentity( $page );
+		if ( !$title ) {
+			// Not really possible but makes phan happy.
+			throw new UnexpectedValueException( 'Invalid title: '
+				. $page->getNamespace() . ':' . $page->getDBkey() );
+		}
+		if ( !$this->linkRecommendationStore->getByLinkTarget( $title, IDBAccessObject::READ_LATEST ) ) {
+			// There's no link recommendation data stored for this page, so it must have been
+			// removed from the database during the time the user had the UI open. Don't allow
+			// the save to continue.
+			return [ 'growthexperiments-addlink-notinstore', $title->getPrefixedText() ];
+		}
+		return null;
+	}
+
 	/**
-	 * @param LinkTarget $title
-	 * @param UserIdentity $user
-	 * @param int $baseRevId
-	 * @param int|null $editRevId
-	 * @param array $data
-	 * @return int|null The log ID of the recorded submission; null indicates the database was in read only mode when
-	 *   the submission recording was attempted or that a link recommendation for the revision could not be found.
+	 * @inheritDoc
 	 * @throws MalformedTitleException
-	 * @throws UnexpectedValueException
-	 * @throws LogicException
 	 */
-	public function run( LinkTarget $title, UserIdentity $user, int $baseRevId, ?int $editRevId, array $data ): ?int {
+	public function handle(
+		ProperPageIdentity $page, UserIdentity $user, int $baseRevId, ?int $editRevId, array $data
+	): StatusValue {
 		// The latest revision is the saved edit, so we need to find the link recommendation based on the base
 		// revision ID.
 		$linkRecommendation = $this->linkRecommendationStore->getByRevId(
@@ -71,7 +86,7 @@ class AddLinkSubmissionHandler {
 			RevisionLookup::READ_LATEST
 		);
 		if ( !$linkRecommendation ) {
-			return null;
+			return StatusValue::newFatal( 'growthexperiments-addlink-handler-notfound' );
 		}
 		$links = $this->normalizeTargets( $linkRecommendation->getLinks() );
 
@@ -82,14 +97,13 @@ class AddLinkSubmissionHandler {
 		$allTargets = array_merge( $acceptedTargets, $rejectedTargets, $skippedTargets );
 		$unexpectedTargets = array_diff( $allTargets, $links );
 		if ( $unexpectedTargets ) {
-			throw new LogicException( 'Unexpected link targets: ' . implode( ', ', $unexpectedTargets ) );
+			return StatusValue::newFatal( 'growthexperiments-addlink-handler-wrongtargets',
+				Message::listParam( $unexpectedTargets, 'comma' ) );
 		}
 
-		$pageIdentity = $this->titleFactory->newFromLinkTarget( $title )->toPageIdentity();
-		$status = StatusValue::newGood();
 		try {
 			$this->linkRecommendationHelper->deleteLinkRecommendation(
-				$pageIdentity,
+				$page,
 				// FIXME T283606: In theory if $editRevId is set (this is a real edit, not a null edit that
 				//   happens when the user accepted nothing), we can leave search index updates to the
 				//   SearchDataForIndex hook. In practice that does not work because we delete the DB row
@@ -99,14 +113,10 @@ class AddLinkSubmissionHandler {
 			);
 			$status = $this->addLinkSubmissionRecorder->record( $user, $linkRecommendation, $acceptedTargets,
 				$rejectedTargets, $skippedTargets, $editRevId );
-			if ( !$status->isOK() ) {
-				throw new UnexpectedValueException( Status::wrap( $status )->getWikiText( null, null, 'en' ) );
-			}
 		} catch ( DBReadOnlyError $e ) {
-			// Leaving a dangling DB row behind doesn't cause any problems so just ignore this.
+			$status = StatusValue::newFatal( 'readonly' );
 		}
-		$result = $status->getValue();
-		return $result['logId'];
+		return $status;
 	}
 
 	/**

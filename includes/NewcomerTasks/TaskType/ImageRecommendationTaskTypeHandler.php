@@ -2,9 +2,11 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
+use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
+use GrowthExperiments\NewcomerTasks\RecommendationSubmissionHandler;
 use InvalidArgumentException;
 use Wikimedia\Assert\Assert;
 
@@ -22,18 +24,24 @@ class ImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	/** @var ImageRecommendationProvider */
 	private $recommendationProvider;
 
+	/** @var AddImageSubmissionHandler */
+	private $submissionHandler;
+
 	/**
 	 * @param ConfigurationValidator $configurationValidator
 	 * @param RecommendationProvider $recommendationProvider
+	 * @param AddImageSubmissionHandler $submissionHandler
 	 */
 	public function __construct(
 		ConfigurationValidator $configurationValidator,
-		RecommendationProvider $recommendationProvider
+		RecommendationProvider $recommendationProvider,
+		AddImageSubmissionHandler $submissionHandler
 	) {
 		parent::__construct( $configurationValidator );
 		Assert::parameterType( ImageRecommendationProvider::class, $recommendationProvider,
 			'$recommendationProvider' );
 		$this->recommendationProvider = $recommendationProvider;
+		$this->submissionHandler = $submissionHandler;
 	}
 
 	/** @inheritDoc */
@@ -47,6 +55,14 @@ class ImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	 */
 	public function getRecommendationProvider(): RecommendationProvider {
 		return $this->recommendationProvider;
+	}
+
+	/**
+	 * @inheritDoc
+	 * @return AddImageSubmissionHandler
+	 */
+	public function getSubmissionHandler(): RecommendationSubmissionHandler {
+		return $this->submissionHandler;
 	}
 
 	/** @inheritDoc */

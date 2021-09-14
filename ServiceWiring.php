@@ -27,6 +27,7 @@ use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Mentorship\Store\MultiWriteMentorStore;
 use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
+use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\AddLinkSubmissionHandler;
@@ -67,6 +68,17 @@ use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 
 return [
+
+	'GrowthExperimentsAddImageSubmissionHandler' => static function (
+		MediaWikiServices $services
+	): AddImageSubmissionHandler {
+		$cirrusSearchFactory = static function () {
+			return new CirrusSearch();
+		};
+		return new AddImageSubmissionHandler(
+			$cirrusSearchFactory
+		);
+	},
 
 	'GrowthExperimentsAddLinkSubmissionHandler' => static function (
 		MediaWikiServices $services
@@ -171,7 +183,6 @@ return [
 		MediaWikiServices $services
 	): LinkRecommendationHelper {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
-		$config = $growthServices->getGrowthConfig();
 		$cirrusSearchFactory = static function () {
 			return new CirrusSearch();
 		};
@@ -179,13 +190,7 @@ return [
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			$growthServices->getLinkRecommendationProvider(),
 			$growthServices->getLinkRecommendationStore(),
-			$services->getLinkBatchFactory(),
-			$services->getTitleFactory(),
-			$cirrusSearchFactory,
-			// In developer setups, the recommendation service is usually suggestion link targets
-			// from a different wiki, which might end up being red links locally. Allow these,
-			// otherwise we'd get mostly failures when trying to generate new tasks.
-			!$config->get( 'GEDeveloperSetup' )
+			$cirrusSearchFactory
 		);
 	},
 

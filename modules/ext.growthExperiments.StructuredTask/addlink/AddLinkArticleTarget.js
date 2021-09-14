@@ -382,13 +382,12 @@ AddLinkArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 		}
 	} );
 	// This data will be processed in HomepageHooks::onVisualEditorApiVisualEditorEditPostSaveHookj
-	options[ 'data-linkrecommendation' ] = JSON.stringify( {
+	options[ 'data-ge-task-link-recommendation' ] = JSON.stringify( {
 		acceptedTargets: acceptedTargets,
 		rejectedTargets: rejectedTargets,
-		skippedTargets: skippedTargets,
-		taskType: 'link-recommendation'
+		skippedTargets: skippedTargets
 	} );
-	options.plugins = 'linkrecommendation';
+	options.plugins = 'ge-task-link-recommendation';
 	return this.constructor.super.prototype.save.call( this, doc, options, isRetry )
 		.done( function () {
 			var hasAccepts = annotationStates.some( function ( state ) {
