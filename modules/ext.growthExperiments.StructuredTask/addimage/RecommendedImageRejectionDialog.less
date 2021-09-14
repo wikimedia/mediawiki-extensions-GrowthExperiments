@@ -1,0 +1,32 @@
+.mw-ge-recommendedLinkRejectionDialog {
+
+	// Only the isMobile selector filters anything here, the rest are just to increase specificity
+	// for the button rule.
+	&.oo-ui-isMobile.oo-ui-window.oo-ui-dialog.oo-ui-processDialog {
+		.oo-ui-processDialog-actions-primary {
+			font-size: 1.1em;
+
+			a.oo-ui-buttonElement-button {
+				// FIXME work around button sizing error - T291142
+				padding-bottom: 13px;
+			}
+		}
+	}
+
+	.oo-ui-window-body {
+		padding: 20px;
+	}
+
+	.mw-ge-recommendedLinkRejectionDialog-header {
+		font-weight: bold;
+		margin-bottom: 8px;
+	}
+
+	.mw-ge-recommendedLinkRejectionDialog-subheader {
+		margin-bottom: 16px;
+	}
+
+	.oo-ui-checkboxMultioptionWidget {
+		padding: 6px 0;
+	}
+}

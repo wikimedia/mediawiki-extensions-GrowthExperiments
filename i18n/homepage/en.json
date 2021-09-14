@@ -399,5 +399,16 @@
 	"growthexperiments-addimage-inspector-skip-button": "Skip",
 	"growthexperiments-addimage-inspector-show-button": "Show image suggestion",
 	"growthexperiments-addimage-inspector-help-button": "Get help with editing",
-	"growthexperiments-addimage-inspector-details-button": "View details"
+	"growthexperiments-addimage-inspector-details-button": "View details",
+	"growthexperiments-addimage-rejectiondialog-title": "Why not?",
+	"growthexperiments-addimage-rejectiondialog-header": "Why is this image not right for the article?",
+	"growthexperiments-addimage-rejectiondialog-subheader": "{{GENDER:|Your}} answers improve future suggestions.",
+	"growthexperiments-addimage-rejectiondialog-action-done": "Done",
+	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Image is not relevant",
+	"growthexperiments-addimage-rejectiondialog-reason-noinfo": "Not enough information to decide",
+	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Image is offensive",
+	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Image is low quality",
+	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "I don't know this subject",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "I can't read the language",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "Other"
 }
