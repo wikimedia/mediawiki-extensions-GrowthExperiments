@@ -41,6 +41,10 @@ function StructuredTaskToolbarDialog() {
 	 * @property {boolean} isAdvancing Whether there is animation in progress
 	 */
 	this.isAnimating = false;
+	/**
+	 * @property {number} currentIndex Zero-based index of the selected recommendation
+	 */
+	this.currentIndex = 0;
 }
 
 OO.inheritClass( StructuredTaskToolbarDialog, ve.ui.ToolbarDialog );

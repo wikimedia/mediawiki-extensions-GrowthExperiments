@@ -22,16 +22,21 @@ class ServiceImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 	use MockTitleTrait;
 
 	public function testGet() {
-		/** @var TitleFactory|MockObject $titleFactory */
-		$titleFactory = $this->createNoOpMock( TitleFactory::class, [ 'newFromLinkTarget' ] );
-		$titleFactory->method( 'newFromLinkTarget' )->willReturnCallback(
-			function ( LinkTarget $title ) {
-				// We need guessable IDs, so pass them as page name.
-				return $this->makeMockTitle( $title->getText(), [ 'id' => (int)$title->getText() ] );
-			} );
+		$titleFactory = $this->getTitleFactory();
 		$url = 'http://example.com';
 		$wikiProject = 'wikipedia';
 		$wikiLanguage = 'en';
+		$metadataProvider = $this->createMock(
+			ImageRecommendationMetadataProvider::class
+		);
+		$metadataProvider->method( 'getMetadata' )->willReturn( [
+				'description' => 'description',
+				'thumbUrl' => 'thumb url',
+				'fullUrl' => 'full url',
+				'descriptionUrl' => 'description url',
+				'originalWidth' => 1024,
+				'originalHeight' => 768,
+		] );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$provider = new ServiceImageRecommendationProvider( $titleFactory, $this->getHttpRequestFactory( [
 			'http://example.com/image-suggestions/v0/wikipedia/en/pages?id=10&source=ima' => [ 400, [] ],
@@ -55,7 +60,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 						'from' => 'wikipedia', 'found_on' => 'enwiki,dewiki', 'dataset_id' => 'x',
 					] ] ],
 				] ] ] ] ],
-		] ), $url, $wikiProject, $wikiLanguage, null );
+		] ), $url, $wikiProject, $wikiLanguage, $metadataProvider, null );
 
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertInstanceOf( StatusValue::class, $recommendation );
@@ -82,6 +87,39 @@ class ServiceImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 		$this->assertCount( 1, $recommendation->getImages() );
 		$this->assertSame( ImageRecommendationImage::SOURCE_WIKIPEDIA, $recommendation->getImages()[0]->getSource() );
 		$this->assertSame( [ 'enwiki', 'dewiki' ], $recommendation->getImages()[0]->getProjects() );
+	}
+
+	public function testMetadataError() {
+		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
+		$url = 'http://example.com';
+		$wikiProject = 'wikipedia';
+		$wikiLanguage = 'en';
+		$metadataProvider = $this->createMock(
+			ImageRecommendationMetadataProvider::class
+		);
+		$metadataProvider->method( 'getMetadata' )->willReturn(
+			StatusValue::newFatal( 'rawmessage', 'No metadata' )
+		);
+		$provider = new ServiceImageRecommendationProvider(
+			$this->getTitleFactory(), $this->getHttpRequestFactory( [
+				'http://example.com/image-suggestions/v0/wikipedia/en/pages?id=10&source=ima' => [ 400, [] ],
+			] ),
+			$url, $wikiProject, $wikiLanguage, $metadataProvider, null );
+		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
+		$this->assertTrue( $recommendation instanceof StatusValue );
+	}
+
+	/**
+	 * @return TitleFactory|MockObject
+	 */
+	private function getTitleFactory(): TitleFactory {
+		$titleFactory = $this->createNoOpMock( TitleFactory::class, [ 'newFromLinkTarget' ] );
+		$titleFactory->method( 'newFromLinkTarget' )->willReturnCallback(
+			function ( LinkTarget $title ) {
+				// We need guessable IDs, so pass them as page name.
+				return $this->makeMockTitle( $title->getText(), [ 'id' => (int)$title->getText() ] );
+			} );
+		return $titleFactory;
 	}
 
 	/**

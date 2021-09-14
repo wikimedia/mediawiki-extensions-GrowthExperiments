@@ -20,6 +20,11 @@
 		justify-content: space-between;
 	}
 
+	.mw-ge-recommendedImageToolbarDialog-addImageCta,
+	.mw-ge-recommendedImageToolbarDialog-reason {
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
+	}
+
 	.mw-ge-recommendedImageToolbarDialog-addImageCta {
 		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
 		color: @wmui-color-base20;
@@ -27,11 +32,23 @@
 		margin: 16px 0;
 	}
 
+	.mw-ge-recommendedImageToolbarDialog-reason {
+		margin-bottom: 16px;
+	}
+
+	.mw-ge-recommendedImageToolbarDialog-imagePreview {
+		display: flex;
+	}
+
 	.mw-ge-recommendedImageToolbarDialog-image-thumbnail {
-		width: 160px;
+		flex: 0 0 160px;
 		height: 120px;
-		background: @wmui-color-base80;
+		background-color: @wmui-color-base80;
 		position: relative;
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center;
+		margin-right: 12px;
 	}
 
 	.mw-ge-recommendedImageToolbarDialog-fullscreen-button {
@@ -39,5 +56,54 @@
 		right: 5px;
 		bottom: 6px;
 		background: rgba( 255, 255, 255, 0.5 );
+	}
+
+	.mw-ge-recommendedImageToolbarDialog-image-info {
+		width: 100%;
+		overflow: auto;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	.mw-ge-recommendedImageToolbarDialog-file-link {
+		.rel-line-height( @parentFontSize: 16px, @targetLineHeight: 19.5px );
+		font-weight: bold;
+		display: inline-block;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 86%;
+		color: @wmui-color-accent50;
+
+		&:before {
+			@iconDimension: unit( 12px / 14px, em );
+			/* @embed */
+			background-image: url( ../link-external-ltr.svg );
+			background-size: 100%;
+			content: '';
+			display: inline-block;
+			width: @iconDimension;
+			height: @iconDimension;
+			position: relative;
+			margin-left: 10px;
+			float: right;
+		}
+	}
+
+	.mw-ge-recommendedImageToolbarDialog-description {
+		.paragraph-ellipsis( @lines: 3, @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
+		white-space: normal;
+		margin-top: 4px;
+		color: @wmui-color-base30;
+	}
+
+	.mw-ge-recommendedImageToolbarDialog-details-button-container {
+		text-align: right;
+	}
+
+	.mw-ge-recommendedImageToolbarDialog-details-button {
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
+		color: @wmui-color-accent50;
+		text-decoration: underline;
 	}
 }
