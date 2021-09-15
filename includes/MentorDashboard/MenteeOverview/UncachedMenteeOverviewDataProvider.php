@@ -172,6 +172,10 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return int[]
 	 */
 	private function filterMenteesByLastEdit( array $allUserIds ): array {
+		if ( $allUserIds === [] ) {
+			return [];
+		}
+
 		$allLastEdits = $this->getLastEditTimestampForUsers( $allUserIds );
 		$userIds = [];
 		foreach ( $allLastEdits as $userId => $lastEdit ) {
