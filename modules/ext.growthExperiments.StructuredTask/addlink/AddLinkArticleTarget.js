@@ -418,7 +418,7 @@ AddLinkArticleTarget.prototype.saveErrorHookAborted = function ( data ) {
 	window.onbeforeunload = null;
 	$( window ).off( 'beforeunload' );
 	OO.ui.alert( mw.message( 'growthexperiments-addlink-suggestions-outdated' ).text(), {
-		actions: [ { action: 'accept', label: mw.message( 'growthexperiments-addlink-no-suggestions-found-dialog-button' ).text(), flags: 'primary' } ]
+		actions: [ { action: 'accept', label: mw.message( 'growthexperiments-structuredtask-no-suggestions-found-dialog-button' ).text(), flags: 'primary' } ]
 	} ).done( function () {
 		window.location.href = mw.Title.newFromText( 'Special:Homepage' ).getUrl();
 	} );
