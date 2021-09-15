@@ -128,6 +128,15 @@ TopicSelectionWidget.prototype.getSelectedTopics = function () {
 };
 
 /**
+ * @param {string[]} topics IDs of topics to mark as selected
+ */
+TopicSelectionWidget.prototype.setSelectedTopics = function ( topics ) {
+	this.suggestions.forEach( function ( suggestion ) {
+		suggestion.confirmed = topics.indexOf( suggestion.suggestionData.id ) !== -1;
+	} );
+};
+
+/**
  * @return {SuggestionWidget[]}
  */
 TopicSelectionWidget.prototype.getSuggestions = function () {

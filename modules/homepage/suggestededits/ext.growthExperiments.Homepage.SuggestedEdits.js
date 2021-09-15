@@ -22,7 +22,8 @@
 		aqsConfig = require( './AQSConfig.json' ),
 		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),
 		defaultTaskTypes = TaskTypesAbFilter.filterDefaultTaskTypes( require( './DefaultTaskTypes.json' ) ),
-		SwipePane = require( '../../ui-components/SwipePane.js' );
+		SwipePane = require( '../../ui-components/SwipePane.js' ),
+		suggestedEditsModule;
 
 	/**
 	 * @class
@@ -740,7 +741,6 @@
 	 */
 	function initSuggestedTasks( $container ) {
 		var initTime = mw.now(),
-			suggestedEditsModule,
 			api = new GrowthTasksApi( {
 				taskTypes: taskTypes,
 				defaultTaskTypes: defaultTaskTypes,
@@ -840,6 +840,30 @@
 	mw.hook( 'growthExperiments.mobileHomepageOverlayHtmlLoaded' ).add( function ( moduleName, $content ) {
 		if ( moduleName === 'suggested-edits' ) {
 			initSuggestedTasks( $content );
+		}
+	} );
+
+	/**
+	 * Subscribe to updateMatchCount events in the StartEditing dialog to update the hidden
+	 * Suggested Edits module state with topic/task type selection and result counts. That way,
+	 * when the StartEditing dialog is closed, we can unhide the Suggested Edits module
+	 * and show an accurate state to the user.
+	 *
+	 * @param {string[]} taskTypeSelection List of active task type IDs in the task type selector
+	 * @param {string[]} topicSelection List of selected topic IDs in the topic selector
+	 */
+	mw.hook( 'growthexperiments.StartEditingDialog.updateMatchCount' ).add( function ( taskTypeSelection, topicSelection ) {
+		if ( suggestedEditsModule ) {
+			suggestedEditsModule.filters.taskTypeFiltersDialog.taskTypeSelector
+				.setSelected( taskTypeSelection );
+			suggestedEditsModule.filters.taskTypeFiltersDialog.savePreferences();
+			suggestedEditsModule.filters.topicFiltersDialog.topicSelector
+				.setSelectedTopics( topicSelection );
+			suggestedEditsModule.filters.topicFiltersDialog.savePreferences();
+			suggestedEditsModule.fetchTasksAndUpdateView().then( function () {
+				suggestedEditsModule.updateControls();
+				suggestedEditsModule.showCard();
+			} );
 		}
 	} );
 

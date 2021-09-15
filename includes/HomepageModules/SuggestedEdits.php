@@ -388,21 +388,6 @@ class SuggestedEdits extends BaseModule {
 	}
 
 	/** @inheritDoc */
-	protected function shouldRender() {
-		// Always render for mobile.
-		if ( in_array( $this->getMode(), [
-			self::RENDER_MOBILE_SUMMARY,
-			self::RENDER_MOBILE_DETAILS,
-			self::RENDER_MOBILE_DETAILS_OVERLAY
-		] ) ) {
-			return $this->canRender();
-		}
-		// For desktop, we output a different module (start-startediting) in place of suggested edits, so SE
-		// should not render before the module is activated.
-		return $this->canRender() && self::isActivated( $this->getContext(), $this->userOptionsLookup );
-	}
-
-	/** @inheritDoc */
 	protected function getHeaderText() {
 		return $this->getContext()
 			->msg( 'growthexperiments-homepage-suggested-edits-header' )

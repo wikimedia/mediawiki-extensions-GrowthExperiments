@@ -84,7 +84,10 @@ DifficultyFiltersDialog.prototype.getEnabledFilters = function () {
  * @param {string[]} selected
  */
 DifficultyFiltersDialog.prototype.onTaskTypeSelect = function ( selected ) {
-	this.actions.get()[ 0 ].setDisabled( selected.length === 0 );
+	var actions = this.actions.get();
+	if ( actions.length && actions[ 0 ] ) {
+		actions[ 0 ].setDisabled( selected.length === 0 );
+	}
 	this.articleCounter.setSearching();
 	this.emit( 'search', selected );
 };
