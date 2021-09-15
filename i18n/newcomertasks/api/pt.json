@@ -10,6 +10,7 @@
 	"apihelp-query+growthtasks-param-tasktypes": "Tipos de tarefas aos quais limitar os resultados. Deixe em branco para receber todas as sugestões.",
 	"apihelp-query+growthtasks-param-topics": "Tópicos de artigos a serem preferidos nas sugestões de tarefas.",
 	"apihelp-query+growthtasks-param-limit": "Número máximo de sugestões de tarefas a devolver.",
+	"apihelp-query+growthtasks-param-excludepageids": "Identificadores das páginas a excluir da consulta.",
 	"apihelp-query+growthtasks-param-debug": "Adicionar dados de depuração à saída.",
 	"apihelp-query+growthtasks-example-1": "Obter recomendações para tarefas do tipo ''copyedit'' para o utilizador atual.",
 	"apihelp-query+growthtasks-example-2": "Obter recomendações de tarefas para o utilizador atual, com informações adicionais sobre as páginas."

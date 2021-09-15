@@ -12,5 +12,9 @@
 	"apihelp-query+growthtasks-param-excludepageids": "معرّفات الصفحات المُراد استبعادها من الاستعلام.",
 	"apihelp-query+growthtasks-param-debug": "أضف تصدير بيانات التصحيح.",
 	"apihelp-query+growthtasks-example-1": "{{GENDER:|تحصّل|تحصّلي}} على اقتراحات لمهام لتحرير النسخ للمستدخدم(ـة) الحالي(ـة).",
-	"apihelp-query+growthtasks-example-2": "{{GENDER:|تحصّل|تحصّلي}} على اقتراحات للمستدخدم(ـة) الحالي(ـة)، مع معلومات إضافيّة حول الصفحات."
+	"apihelp-query+growthtasks-example-2": "{{GENDER:|تحصّل|تحصّلي}} على اقتراحات للمستدخدم(ـة) الحالي(ـة)، مع معلومات إضافيّة حول الصفحات.",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "معلمة 'مقبولة' مفقودة من بيانات إضافة صورة",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "معلمة 'مقبولة' يجب أن تكون ذات قيمة منطقية في بيانات إضافة صورة، هي $1",
+	"apierror-growthexperiments-addlink-handler-notfound": "سجل توصية الروابط غير موجود",
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "أهداف توصية الروابط غير متوقعة: $1"
 }

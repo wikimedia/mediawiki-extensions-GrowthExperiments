@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Winston Sung"
+		]
+	},
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "圖例",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "使用者名稱",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "編輯次數",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "更新",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "編輯次數"
+}

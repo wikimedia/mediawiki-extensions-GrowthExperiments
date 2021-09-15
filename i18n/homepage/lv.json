@@ -377,5 +377,8 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "Pamest ieteikumus?",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Režīmu pārslēgšana ļaus {{GENDER:$1|tev}} veikt cita veida labojumus. Pabeidz pārskatīšanu, lai iesniegtu līdz šim padarīto.",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Pārslēgties bez iesniegšanas",
-	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Atcelt"
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Atcelt",
+	"growthexperiments-addimage-inspector-yes-button": "Jā",
+	"growthexperiments-addimage-inspector-no-button": "Nē",
+	"growthexperiments-addimage-inspector-skip-button": "Izlaist"
 }

@@ -302,10 +302,13 @@
 	"logentry-growthexperiments-setmentor": "{{GENDER:$2|قام|قامت}} $1 بتعيين {{GENDER:$5|$7}} {{GENDER:$5|كمرشِد|كمرشِدة}} لـ{{GENDER:$6|$3}} (سابقا {{GENDER:$4|كان|كانت}}: $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "{{GENDER:$2|قام|قامت}} $1 بتعيين {{GENDER:$5|$7}} {{GENDER:$5|كمرشد|كمرشدة}} لـ {{GENDER:$6|$3}} (لا مرشد قبل هذا)",
 	"logentry-growthexperiments-addlink": "{{GENDER:$2|راجع|راجعت}} $1 $4 اقتراحات روابط لـ $3: {{GENDER:$2|وافق|وافقت}} على $5، و{{GENDER:$2|رفض|رفضت}} $6، و{{GENDER:$2|تخطّى|تخطّت}} على $7",
+	"logentry-growthexperiments-addimage-accepted": "{{GENDER:$2|وافق|وافقت}} $1 على صورة مقترحة لـ$3",
+	"logentry-growthexperiments-addimage-rejected": "{{GENDER:$2|رفض|رفضت}} $1 على صورة مقترحة لـ$3",
 	"log-action-filter-growthexperiments": "نوع الحدث من GrowthExperiments:",
 	"log-action-filter-growthexperiments-claimmentee": "تغييرات المُرشَدين (المتعلمين)",
 	"log-action-filter-growthexperiments-setmentor": "تغييرلت المُرشِدين",
 	"log-action-filter-growthexperiments-addlink": "اقتراحات الروابط",
+	"log-action-filter-growthexperiments-addimage": "اقتراحات الصّور",
 	"growthexperiments-homepage-claimmentee-invalid-username": "اسم المستخدم المقدم للمرشَد غير صالح",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|هو مرشدك الجديد|هي مرشدتك الجديدة}} {{GENDER:$3|}}",
 	"growthexperiments-notification-body-mentor-change": "السبب: $1",
@@ -395,5 +398,12 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "تغيير المحرر سيمكّنك من القيام بأعمال تحريرية أخرى. {{GENDER:$1|أنه|أنهي}} المعاينة لتسجيل تقدّمك المنجز إلى حدّ الآن.",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "تغيير دون تسجيل",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "إلغاء",
-	"growthexperiments-addlink-suggestions-outdated": "عدّل مستخدم آخر هذه المقالة عندما كنت {{GENDER:|تراجعها|تراجعينها}}، لذلك لا يمكن حفظ تعديلاتك."
+	"growthexperiments-addlink-suggestions-outdated": "عدّل مستخدم آخر هذه المقالة عندما كنت {{GENDER:|تراجعها|تراجعينها}}، لذلك لا يمكن حفظ تعديلاتك.",
+	"growthexperiments-addimage-inspector-title": "{{PLURAL:|لم يتم العثور على صور|تمّ العثور على صورة واحدة|تمّ العثور على صورتين|تمّ العثور على $1 صور|تمّ العثور على $1 صورة}}",
+	"growthexperiments-addimage-inspector-cta": "إضافة هذه الصورة إلى أوّل المقالة؟",
+	"growthexperiments-addimage-inspector-yes-button": "نعم",
+	"growthexperiments-addimage-inspector-no-button": "لا",
+	"growthexperiments-addimage-inspector-skip-button": "تجاوز",
+	"growthexperiments-addimage-inspector-show-button": "إظهار اقتراح الصّور",
+	"growthexperiments-addimage-inspector-help-button": "{{GENDER:|احصل|احصلي}} على مساعدة في التحرير"
 }
