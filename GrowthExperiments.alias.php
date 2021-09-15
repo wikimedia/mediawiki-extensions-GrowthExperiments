@@ -141,6 +141,7 @@ $specialPageAliases['he'] = [
 	'NewcomerTasksInfo' => [ 'מידע_על_משימות_למתחילים' ],
 	'EditGrowthConfig' => [ 'עריכת_הגדרות_חונך' ],
 	'MentorDashboard' => [ 'לוח_בקרה_לחונכים' ],
+	'QuitMentorship' => [ 'פרישת_חונך' ],
 ];
 
 /** Hindi (हिन्द) */
