@@ -1388,7 +1388,9 @@
 				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverviewApi.js",
 				"ext.growthExperiments.MentorDashboard/MenteeOverview/Pagination.js",
 				"ext.growthExperiments.MentorDashboard/MenteeOverview/FilterDropdown.js",
-				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeSearchInputWidget.js"
+				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeSearchInputWidget.js",
+				"ext.growthExperiments.MentorDashboard/MentorTools/MentorTools.js",
+				"ext.growthExperiments.MentorDashboard/MentorTools/AwaySettingsDialog.js"
 			],
 			"messages": [
 				"growthexperiments-mentor-dashboard-mentee-overview-info-headline",
@@ -1420,17 +1422,33 @@
 				"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline",
 				"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text",
 				"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline",
-				"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text"
+				"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text",
+				"growthexperiments-mentor-dashboard-mentor-tools-info-headline",
+				"growthexperiments-mentor-dashboard-mentor-tools-info-text",
+				"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active",
+				"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away",
+				"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline",
+				"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit",
+				"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel",
+				"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text",
+				"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for",
+				"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label",
+				"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger",
+				"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown",
+				"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active",
+				"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away"
 			],
 			"dependencies": [
 				"mediawiki.language",
 				"oojs-ui-widgets",
+				"oojs-ui-windows",
 				"oojs-ui.styles.icons-movement",
 				"oojs-ui.styles.icons-editing-core",
 				"oojs-ui.styles.icons-editing-citation",
 				"oojs-ui.styles.icons-interactions",
 				"oojs-ui.styles.icons-user",
 				"oojs-ui.styles.icons-moderation",
+				"oojs-ui.styles.icons-content",
 				"mediawiki.widgets.UserInputWidget"
 			],
 			"targets": [
@@ -1444,7 +1462,8 @@
 				"ext.growthExperiments.MentorDashboard/BaseModule.less",
 				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverview.less",
 				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeOverview.mobile.less",
-				"ext.growthExperiments.MentorDashboard/Resources.less"
+				"ext.growthExperiments.MentorDashboard/Resources.less",
+				"ext.growthExperiments.MentorDashboard/MentorTools/MentorTools.less"
 			],
 			"targets": [
 				"desktop",
@@ -1649,6 +1668,10 @@
 		},
 		"GEMentorDashboardEnabled": {
 			"description": "Should users be allowed to access Special:MentorDashboard?",
+			"value": true
+		},
+		"GEMentorDashboardBetaMode": {
+			"description": "Enables beta features in Special:MentorDashboard (modules that are currently in development)",
 			"value": true
 		},
 		"GEMentorDashboardBackendEnabled": {
