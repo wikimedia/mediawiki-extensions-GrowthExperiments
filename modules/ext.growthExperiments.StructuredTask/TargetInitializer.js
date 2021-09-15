@@ -209,7 +209,11 @@ TargetInitializer.prototype.disableLinkHighlights = function () {
 
 /**
  * If regular VE mode should be shown, disable default edit mode tools.
- * This is used when custom edit mode tools are used instead of the default.
+ *
+ * This is used on mobile, when custom edit mode tools are used instead of the default.
+ * On desktop, the editMode toolgroup is replaced by suggestionsEditMode toolgroup. On mobile, the
+ * toolgroup can't be replaced by the subclass (see setupToolbar in ve.init.mw.MobileArticleTarget),
+ * so the tools are removed instead.
  */
 TargetInitializer.prototype.disableDefaultEditModeToolsForRegularVeMode = function () {
 	if ( this.shouldShowRegularVeMode() ) {
