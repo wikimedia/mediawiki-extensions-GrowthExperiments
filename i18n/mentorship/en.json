@@ -75,5 +75,5 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Next step in quitting mentorship is to reassign your mentees. If you are sure you want to quit, please press the button below.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Yes, reassign my mentees",
 	"growthexperiments-quit-mentorship-success": "Your mentees will be reassigned to other mentors shortly.",
-	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "Your previous mentor retired from {{SITENAME}}. We assigned you a new mentor!"
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|retired}} from mentorship."
 }
