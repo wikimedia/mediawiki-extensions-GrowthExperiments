@@ -27,7 +27,8 @@
 			showButtons: false,
 			min: 0,
 			label: mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label' ),
-			step: 1
+			step: 1,
+			required: true
 		} );
 
 		this.content = new OO.ui.PanelLayout( { padded: true, expanded: false } );
