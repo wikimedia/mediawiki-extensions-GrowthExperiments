@@ -4,6 +4,7 @@ namespace GrowthExperiments\Mentorship;
 
 use Config;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\MediaWikiServices;
@@ -30,6 +31,9 @@ class MentorHooks implements GetPreferencesHook, UserGetDefaultOptionsHook, Loca
 		];
 		$preferences[ MentorPageMentorManager::MENTORSHIP_ENABLED_PREF ] = [
 			'type' => 'api'
+		];
+		$preferences[ MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF ] = [
+			'type' => 'api',
 		];
 	}
 

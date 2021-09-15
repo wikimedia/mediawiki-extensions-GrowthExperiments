@@ -5,5 +5,9 @@
 	"apihelp-growthstarmentee-summary": "{{doc-apihelp-summary|growthstarmentee}}",
 	"apihelp-growthstarmentee-param-gesaction": "{{doc-apihelp-param|growthstarmentee|gesaction}}",
 	"apihelp-growthstarmentee-param-gesmentee": "{{doc-apihelp-param|growthstarmentee|gesmentee}}",
-	"apihelp-query+growthstarredmentees-summary": "{{doc-apihelp-summary|query+growthstarredmentees}}"
+	"apihelp-query+growthstarredmentees-summary": "{{doc-apihelp-summary|query+growthstarredmentees}}",
+	"apihelp-growthsetmentorstatus-summary": "{{doc-apihelp-summary|growthsetmentorstatus}}",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "{{doc-apihelp-param|growthsetmentorstatus|gesstatus}}",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "{{doc-apihelp-param|growthsetmentorstatus|gesbackindays}}",
+	"apihelp-query+growthmentorstatus-summary": "{{doc-apihelp-summary|query+growthmentorstatus}}"
 }

@@ -19,6 +19,7 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
+use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
@@ -350,6 +351,15 @@ return [
 		);
 		$manager->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $manager;
+	},
+
+	'GrowthExperimentsMentorStatusManager' => static function (
+		MediaWikiServices $services
+	): MentorStatusManager {
+		return new MentorStatusManager(
+			$services->getUserOptionsManager(),
+			$services->getUserFactory()
+		);
 	},
 
 	'GrowthExperimentsMentorStore' => static function ( MediaWikiServices $services ): MentorStore {

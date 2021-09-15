@@ -71,6 +71,13 @@
 			"services": [
 				"GrowthExperimentsStarredMenteesStore"
 			]
+		},
+		"growthsetmentorstatus": {
+			"class": "GrowthExperiments\\Api\\ApiSetMentorStatus",
+			"services": [
+				"GrowthExperimentsMentorManager",
+				"GrowthExperimentsMentorStatusManager"
+			]
 		}
 	},
 	"APIListModules": {
@@ -85,6 +92,15 @@
 			"class": "GrowthExperiments\\Api\\ApiQueryStarredMentees",
 			"services": [
 				"GrowthExperimentsStarredMenteesStore"
+			]
+		}
+	},
+	"APIMetaModules": {
+		"growthmentorstatus": {
+			"class": "GrowthExperiments\\Api\\ApiQueryMentorStatus",
+			"services": [
+				"GrowthExperimentsMentorManager",
+				"GrowthExperimentsMentorStatusManager"
 			]
 		}
 	},
