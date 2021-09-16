@@ -7,10 +7,10 @@ use EchoEvent;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use LogPager;
 use ManualLogEntry;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerInterface;
 use Status;
-use User;
 
 class ChangeMentor {
 	/**
@@ -42,6 +42,9 @@ class ChangeMentor {
 	/** @var MentorStore */
 	private $mentorStore;
 
+	/** @var UserFactory */
+	private $userFactory;
+
 	/**
 	 * @param UserIdentity $mentee Mentee's user object
 	 * @param UserIdentity $performer Performer's user object
@@ -49,6 +52,7 @@ class ChangeMentor {
 	 * @param Mentor|null $mentor Old mentor
 	 * @param LogPager $logPager
 	 * @param MentorStore $mentorStore
+	 * @param UserFactory $userFactory
 	 */
 	public function __construct(
 		UserIdentity $mentee,
@@ -56,7 +60,8 @@ class ChangeMentor {
 		LoggerInterface $logger,
 		?Mentor $mentor,
 		LogPager $logPager,
-		MentorStore $mentorStore
+		MentorStore $mentorStore,
+		UserFactory $userFactory
 	) {
 		$this->logger = $logger;
 
@@ -64,6 +69,7 @@ class ChangeMentor {
 		$this->mentee = $mentee;
 		$this->logPager = $logPager;
 		$this->mentorStore = $mentorStore;
+		$this->userFactory = $userFactory;
 		$this->mentor = $mentor ? $mentor->getMentorUser() : null;
 	}
 
@@ -103,7 +109,10 @@ class ChangeMentor {
 				"$primaryLogtype-no-previous-mentor"
 		);
 		$logEntry->setPerformer( $this->performer );
-		$logEntry->setTarget( User::newFromIdentity( $this->mentee )->getUserPage() );
+		$logEntry->setTarget(
+			$this->userFactory->newFromUserIdentity( $this->mentee )
+				->getUserPage()
+		);
 		$logEntry->setComment( $reason );
 		$parameters = [];
 		if ( $this->mentor ) {
@@ -170,7 +179,8 @@ class ChangeMentor {
 				] );
 				EchoEvent::create( [
 					'type' => 'mentor-changed',
-					'title' => User::newFromIdentity( $this->newMentor )->getUserPage(),
+					'title' => $this->userFactory->newFromUserIdentity( $this->newMentor )
+						->getUserPage(),
 					'extra' => [
 						'mentee' => $this->mentee->getId(),
 						'reason' => $reason

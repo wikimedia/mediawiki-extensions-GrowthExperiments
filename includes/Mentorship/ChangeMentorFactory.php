@@ -66,7 +66,8 @@ class ChangeMentorFactory {
 					$mentee
 				)->getUserPage()
 			),
-			$this->mentorStore
+			$this->mentorStore,
+			$this->userFactory
 		);
 	}
 }
