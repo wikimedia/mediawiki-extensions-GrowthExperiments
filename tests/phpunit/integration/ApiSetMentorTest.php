@@ -4,12 +4,13 @@ namespace GrowthExperiments\Tests;
 
 use ApiTestCase;
 use ApiUsageException;
-use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
+use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserOptionsManager;
+use MediaWiki\User\UserIdentityLookup;
 use PHPUnit\Framework\Constraint\Constraint;
 use User;
+use Wikimedia\Rdbms\IDatabase;
 
 /**
  * @group API
@@ -142,18 +143,23 @@ class ApiSetMentorTest extends ApiTestCase {
 
 	private function getMockMentorStore( UserIdentity $mentee, UserIdentity $mentor ) {
 		$oldMentor = $this->getMutableTestUser()->getUser();
-		return $this->getMockBuilder( PreferenceMentorStore::class )
+		$mock = $this->getMockBuilder( DatabaseMentorStore::class )
 			->setConstructorArgs( [
 				$this->getMockBuilder( UserFactory::class )
 					->disableOriginalConstructor()
 					->getMock(),
-				$this->getMockBuilder( UserOptionsManager::class )
+				$this->getMockBuilder( UserIdentityLookup::class )
 					->disableOriginalConstructor()
 					->getMock(),
-				false
+				$this->createNoOpMock( IDatabase::class ),
+				$this->createNoOpMock( IDatabase::class ),
+				true
 			] )
-			->onlyMethods( [ 'setMentorForUser' ] )
+			->onlyMethods( [ 'setMentorForUser', 'loadMentorUser' ] )
 			->getMock();
+		$mock->method( 'loadMentorUser' )
+			->willReturn( null );
+		return $mock;
 	}
 
 	private function ruleUserEquals( UserIdentity $user ) {
