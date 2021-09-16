@@ -289,10 +289,13 @@
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$6|$3}} adlı istifadəçinin mentorunu {{GENDER:$5|$7}} olaraq {{GENDER:$2|dəyişdi}} (əvvəlki {{GENDER:$4|mentor}}: $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$6|$3}} adlı istifadəçinin mentorunu {{GENDER:$5|$7}} olaraq {{GENDER:$2|dəyişdi}} (əvvəl mentor olmayıb)",
 	"logentry-growthexperiments-addlink": "$1 $3 üçün tövsiyə olunan $4 keçidi {{GENDER:$2|yoxladı}}: qəbul edilən: $5; rədd edilən: $6; atlanan: $7",
+	"logentry-growthexperiments-addimage-accepted": "$1 $3 üçün edilən şəkil tövsiyəsini {{GENDER:$2|qəbul etdi}}",
+	"logentry-growthexperiments-addimage-rejected": "$1 $3 üçün edilən şəkil tövsiyəsini {{GENDER:$2|rədd etdi}}",
 	"log-action-filter-growthexperiments": "İnkişafTəcrübələri hadisəsinin tipi",
 	"log-action-filter-growthexperiments-claimmentee": "Tələbə dəyişiklikləri",
 	"log-action-filter-growthexperiments-setmentor": "Mentor dəyişiklikləri",
 	"log-action-filter-growthexperiments-addlink": "Keçid tövsiyələri",
+	"log-action-filter-growthexperiments-addimage": "Şəkil tövsiyələri",
 	"growthexperiments-homepage-claimmentee-invalid-username": "İstifadəçinin adı səhv qeyd olunub",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$3|sənin}} yeni {{GENDER:$2|mentorundur}}.",
 	"growthexperiments-notification-body-mentor-change": "Səbəb: $1",
@@ -381,5 +384,12 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Redaktə rejimlərini dəyişmək {{GENDER:$1|sizə}} başqa cür redaktələr etmək imkanı verir. İndiyə qədər etdiyiniz irəliləyişi təsdiqləmək üçün yoxlanışı bitirin.",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Təsdiqləmədən dəyiş",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "İmtina",
-	"growthexperiments-addlink-suggestions-outdated": "Siz yoxlayarkən başqa bir istifadəçi onu redaktə edib. Buna görə də sizin redaktələriniz saxlanıla bilməz."
+	"growthexperiments-addlink-suggestions-outdated": "Siz yoxlayarkən başqa bir istifadəçi onu redaktə edib. Buna görə də sizin redaktələriniz saxlanıla bilməz.",
+	"growthexperiments-addimage-inspector-title": "$1 {{PLURAL:$1|tövsiyə edilən şəkil}} tapıldı",
+	"growthexperiments-addimage-inspector-cta": "Bu şəkil məqalənin başlanğıcına əlavə edilsin?",
+	"growthexperiments-addimage-inspector-yes-button": "Bəli",
+	"growthexperiments-addimage-inspector-no-button": "Xeyr",
+	"growthexperiments-addimage-inspector-skip-button": "Keç",
+	"growthexperiments-addimage-inspector-show-button": "Şəkil tövsiyəsini göstər",
+	"growthexperiments-addimage-inspector-help-button": "Redaktə üçün kömək al"
 }

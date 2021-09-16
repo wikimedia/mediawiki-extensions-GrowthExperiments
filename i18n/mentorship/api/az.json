@@ -7,5 +7,9 @@
 	"apihelp-growthstarmentee-summary": "İstifadəçini cari istifadəçi tərəfindən ulduzlanmış olaraq işarələyin və ya silin (şəxsi olaraq saxlanılır və jurnalda göstərilmir)",
 	"apihelp-growthstarmentee-param-gesaction": "Ediləcək fəaliyyət (<kbd>ulduzla</kbd> və ya <kbd>ulduzu sil</kbd>)",
 	"apihelp-growthstarmentee-param-gesmentee": "Ulduzlanacaq (və ya tərsi) istifadəçi",
-	"apihelp-query+growthstarredmentees-summary": "Hal-hazırki mentorun ulduzladığı mentorların siyahısını alın"
+	"apihelp-query+growthstarredmentees-summary": "Hal-hazırki mentorun ulduzladığı mentorların siyahısını alın",
+	"apihelp-growthsetmentorstatus-summary": "Mövcud istifadəçinin mentor statusunu aktiv/qeyri-aktiv olaraq təyin et",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Yeni status",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "Statusu qeyri-aktiv olaraq təyin edərkən, bu, statusun uzunluğu olmalıdır (günlərlə)",
+	"apihelp-query+growthmentorstatus-summary": "Mövcud istifadəçinin mentor statusunu soruşun"
 }

@@ -1,6 +1,8 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Amire80"
+		]
 	},
 	"apihelp-query+growthtasks-summary": "{{doc-apihelp-summary|query+growthtasks}}",
 	"apihelp-query+growthtasks-extended-description": "{{doc-apihelp-extended-description|query+growthtasks}}",
@@ -11,8 +13,8 @@
 	"apihelp-query+growthtasks-param-debug": "{{doc-apihelp-param|query+growthtasks|debug}}",
 	"apihelp-query+growthtasks-example-1": "{{doc-apihelp-example|query+growthtasks}}",
 	"apihelp-query+growthtasks-example-2": "{{doc-apihelp-example|query+growthtasks}}",
-	"apierror-growthexperiments-addimage-handler-accepted-missing": "API error message.\n{{doc-apierror}}",
-	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "API error message. $1 is the actual type.\n{{doc-apierror}}",
-	"apierror-growthexperiments-addlink-handler-notfound": "API error message.\n{{doc-apierror}}",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "{{doc-apierror}}",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "{{doc-apierror}}\n\n$1 is the actual type.",
+	"apierror-growthexperiments-addlink-handler-notfound": "{{doc-apierror}}",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "API error message. $1 is a comma-separated list of page titles.\n{{doc-apierror}}"
 }

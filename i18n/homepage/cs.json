@@ -302,10 +302,13 @@
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|nastavil|nastavila}} {{GENDER:$5|uživatele $7 jako mentora|uživatelku $7 jako mentorku}} {{GENDER:$6|uživatele|uživatelky}} $3 (předchozí {{GENDER:$4|mentor|mentorka}} $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|nastavil|nastavila}} {{GENDER:$5|uživatele $7 jako mentora|uživatelku $7 jako mentorku}} {{GENDER:$6|uživatele|uživatelky}} $3 (mentor nebyl nastaven)",
 	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|zkontroloval|zkontrolovala}} $4 {{PLURAL:$4|navržený odkaz|navržené odkazy|navržených odkazů}} pro stránku $3: schváleno $5, odmítnuto $6 a přeskočeno $7",
+	"logentry-growthexperiments-addimage-accepted": "$1 {{GENDER:$2|schválil|schválila}} návrh obrázku pro $3",
+	"logentry-growthexperiments-addimage-rejected": "$1 {{GENDER:$2|odmítl|odmítla}} návrh obrázku pro $3",
 	"log-action-filter-growthexperiments": "Druh události rozšíření GrowthExperiments:",
 	"log-action-filter-growthexperiments-claimmentee": "Změny mentorovaných",
 	"log-action-filter-growthexperiments-setmentor": "Změny mentora",
-	"log-action-filter-growthexperiments-addlink": "Navrhování odkazů",
+	"log-action-filter-growthexperiments-addlink": "Návrhy odkazů",
+	"log-action-filter-growthexperiments-addimage": "Návrhy obrázků",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Uživatelské jméno nováčka je neplatné",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|je}} {{GENDER:$3|váš}} nový mentor",
 	"growthexperiments-notification-body-mentor-change": "Důvod: $1",
@@ -394,5 +397,12 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Přepnutí editačního módu {{GENDER:$1|vám}} umožní uložit i další druhy editací. Dokončete kontrolu odkazů, abyste své změny {{GENDER:$1|uložil|uložila|uložili}}.",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Přepnout bez odeslání",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Zrušit",
-	"growthexperiments-addlink-suggestions-outdated": "Jiný uživatel editoval tento článek, zatímco jste {{GENDER:|posuzoval|posuzovala|posuzovali}} návrhy. {{GENDER:|Vaše}} změny proto nemohly být uloženy."
+	"growthexperiments-addlink-suggestions-outdated": "Jiný uživatel editoval tento článek, zatímco jste {{GENDER:|posuzoval|posuzovala|posuzovali}} návrhy. {{GENDER:|Vaše}} změny proto nemohly být uloženy.",
+	"growthexperiments-addimage-inspector-title": "{{PLURAL:$1|Nalezen|Nalezeny|Nalezeno}} $1 {{PLURAL:$1|navržený obrázek|navržené obrázky|navržených obrázků}}",
+	"growthexperiments-addimage-inspector-cta": "Přidat tento obrázek na začátek článku?",
+	"growthexperiments-addimage-inspector-yes-button": "Ano",
+	"growthexperiments-addimage-inspector-no-button": "Ne",
+	"growthexperiments-addimage-inspector-skip-button": "Přeskočit",
+	"growthexperiments-addimage-inspector-show-button": "Ukázat návrh obrázku",
+	"growthexperiments-addimage-inspector-help-button": "Získejte pomoc s editací"
 }

@@ -301,10 +301,13 @@
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|призначив|призначила}} {{GENDER:$5|$7}} {{GENDER:$5|наставником|наставницею}} для {{GENDER:$6|$3}} ({{GENDER:$4|попередній наставник|попередня наставниця}}: $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|призначив|призначила}} {{GENDER:$5|$7}} {{GENDER:$5|наставником|наставницею}} для {{GENDER:$6|$3}} (раніше наставника не було)",
 	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|переглянув|переглянула}} $4 {{PLURAL:$4|пропозицію|пропозиції|пропозицій}} посилань у $3: $5 прийнято, $6 відхилено і $7 пропущено",
+	"logentry-growthexperiments-addimage-accepted": "$1 {{GENDER:$2|прийняв}} пропозицію щодо зображення за $3",
+	"logentry-growthexperiments-addimage-rejected": "$1 {{GENDER:$2|відхилив}} пропозицію зображення за $3",
 	"log-action-filter-growthexperiments": "Тип події експериментів зростання:",
 	"log-action-filter-growthexperiments-claimmentee": "Зміни підопічного",
 	"log-action-filter-growthexperiments-setmentor": "Зміни наставника",
 	"log-action-filter-growthexperiments-addlink": "Пропозиції посилань",
+	"log-action-filter-growthexperiments-addimage": "Пропозиції щодо зображень",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Вказане ім'я користувача підопічного недійсне",
 	"growthexperiments-notification-header-mentor-change": "{{GENDER:$3|$1}} — {{GENDER:$2|Ваш новий наставник|Ваша нова наставниця}}",
 	"growthexperiments-notification-body-mentor-change": "Причина: $1",
@@ -394,5 +397,12 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Перемикання режимів дозволить {{GENDER:$1|Вам}} вносити інші види редагування. Завершіть перевірку, щоб надіслати {{GENDER:$1|свої}} досягнення.",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Переключити без відправки",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Скасувати",
-	"growthexperiments-addlink-suggestions-outdated": "Інший користувач редагував цю статтю, поки {{GENDER:|ви}} її переглядали, і {{GENDER:|ваші}} зміни не вдалося зберегти."
+	"growthexperiments-addlink-suggestions-outdated": "Інший користувач редагував цю статтю, поки {{GENDER:|ви}} її переглядали, і {{GENDER:|ваші}} зміни не вдалося зберегти.",
+	"growthexperiments-addimage-inspector-title": "Знайдено {{PLURAL:$1|запропоноване зображення|запропонованих зображень}} у розмірі $1",
+	"growthexperiments-addimage-inspector-cta": "Додати це зображення до початку статті?",
+	"growthexperiments-addimage-inspector-yes-button": "Так",
+	"growthexperiments-addimage-inspector-no-button": "Ні",
+	"growthexperiments-addimage-inspector-skip-button": "Пропустити",
+	"growthexperiments-addimage-inspector-show-button": "Показати пропозицію зображення",
+	"growthexperiments-addimage-inspector-help-button": "Отримайте допомогу з редагуванням"
 }

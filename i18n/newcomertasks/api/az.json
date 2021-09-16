@@ -12,5 +12,9 @@
 	"apihelp-query+growthtasks-param-excludepageids": "Sorğudan xaric ediləcək səhifə nömrələri.",
 	"apihelp-query+growthtasks-param-debug": "Çıxışa debug məlumatlarını əlavə edin.",
 	"apihelp-query+growthtasks-example-1": "Mövcud istifadəçi üçün korreksiya tipli tapşırıq tövsiyələri alın.",
-	"apihelp-query+growthtasks-example-2": "Səhifələr haqqında geniş məlumatla cari istifadəçi üçün tapşırıq tövsiyələrini alın."
+	"apihelp-query+growthtasks-example-2": "Səhifələr haqqında geniş məlumatla cari istifadəçi üçün tapşırıq tövsiyələrini alın.",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "Şəkil əlavə et plugininin məlumatlarında 'accepted' parametri yoxdur",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Şəkil əlavə et plugininin məlumatlarında 'accepted' parametri boolean olmalıdır, $1 yox",
+	"apierror-growthexperiments-addlink-handler-notfound": "Keçid tövsiyə qeydi tapılmadı",
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Gözlənilməyən keçid tövsiyə hədəfləri: $1"
 }

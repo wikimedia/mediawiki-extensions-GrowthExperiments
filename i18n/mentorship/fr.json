@@ -3,6 +3,7 @@
 		"authors": [
 			"DreZhsh",
 			"Gomoko",
+			"Trizek (WMF)",
 			"Wladek92"
 		]
 	},
@@ -49,11 +50,11 @@
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Comment vous présenter comme tuteur",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Comment demander un tutoré",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Outils de croissance",
-	"growthexperiments-rcfilters-mentorship-title": "Tutorat",
-	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Vos}} tutorés étoilés",
-	"growthexperiments-rcfilters-mentorship-starred-desc": "Tutorés qui {{GENDER:|vous}} ont été affectés et à que {{GENDER:|vous}} avez décoré sur {{GENDER:|votre}} tableau e bord du tuteur",
-	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|Vos}} tutorés non étoilés",
-	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Autres tutorés qui {{GENDER:|vous}} sont affectés",
+	"growthexperiments-rcfilters-mentorship-title": "Mentorat",
+	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Vos}} novices mis en favori",
+	"growthexperiments-rcfilters-mentorship-starred-desc": "Novices qui {{GENDER:|vous}} ont été affectés et à que {{GENDER:|vous}} avez mis en favori sur {{GENDER:|votre}} tableau de bord du tuteur",
+	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|Vos}} novices non mis en favori",
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Autres novices qui {{GENDER:|vous}} sont affectés",
 	"growthexperiments-quit-mentorship-title": "Abandonner le mentorat",
 	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "C'est triste de vous voir partir. Pour commencer le processus d'abandon du mentorat, vous devez d'abord retirer votre nom [[$1|de la liste des mentors]]. Une fois que vous l'avez fait, veuillez retourner sur cette page.",
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "L'étape suivante pour arrêter le mentorat est de réaffecter vos mentorés. Si vous êtes sûr de vouloir arrêter, veuillez appuyer sur le bouton ci-dessous.",

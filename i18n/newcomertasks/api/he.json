@@ -14,5 +14,9 @@
 	"apihelp-query+growthtasks-param-excludepageids": "מזהי דפים שצריך להוציא מהשאילתה.",
 	"apihelp-query+growthtasks-param-debug": "הוספת נתוני ניפוי שגיאות לפלט.",
 	"apihelp-query+growthtasks-example-1": "קבלת המלצות משימות למשימות מסוג הגהה עבור המשתמש הנוכחי.",
-	"apihelp-query+growthtasks-example-2": "קבלת המלצות משימות עבור המשתמש הנוכחי, עם מידע מורחב על הדפים."
+	"apihelp-query+growthtasks-example-2": "קבלת המלצות משימות עבור המשתמש הנוכחי, עם מידע מורחב על הדפים.",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "הפרמטר \"accepted\" חסר מהנתונים של התוסף Add Image",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "הפרמטר \"accepted\" חייב להיות בוליאני בנתונים של התוסף Add Image, ועכשיו הוא $1",
+	"apierror-growthexperiments-addlink-handler-notfound": "רישום המלצות קישורים לא נמצא",
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "יעדי המלצות קישור בלתי־צפויים: $1"
 }

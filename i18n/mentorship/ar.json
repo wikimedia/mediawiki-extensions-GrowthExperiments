@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dyolf77",
 			"Dyolf77 (WMF)"
 		]
 	},
@@ -47,6 +48,26 @@
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "كيف تقدّمون أنفسكم كمرشِدين",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "كيفيّة المطالبة بمرشَدين",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "أدوات النموّ",
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "الإعدادات",
+	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "معلومات عن الإرشاد",
+	"growthexperiments-mentor-dashboard-mentor-tools-info-text": "تحتوي هذه الوحدة على إعدادات وضعك كمرشد. إذا كانت لديكم رغبة في مغادرة نهائية للإرشاد، فإن التعليمات حول كيفية القيام بذلك موجودة في الصفحة التالية: [[Special:QuitMentorship|كيفية مغادرة التوجيه؟]]",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "وضعيّة الإرشاد",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "نشط",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "غير متوفّر",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "أعدّوا وضعيّتكم على 'غير متوفّر'",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "إلغاء",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "إيقاف مؤقت",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-text": "إذا كان من غير الممكن الإرشاد لفترة زمنية محددة (أكثر من أسبوع واحد)، فيمكنكم إعداد وضعكم على غير متوفّر. خلال هذه المدّة، سيتلقى مرشِد آخر أسئلة مرشَديك.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for": "ستتغيّبون مدّة:",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "أيام",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "قيمة «ستتغيبون لفترة» ليست بعدد صحيح. حاولوا مرة أخرى من فضلكم.",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "لقد حدث خطأ. كرر المحاولة لاحقا.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "تمّ تغيير وضعيّتكم إلى «نشط».",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "تمّ تغيير وضعيّتكم إلى «غير متوفّر».",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "رسالة إلى مرشَديك",
+	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-headline": "خيارات أخرى",
+	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-claim-mentee": "مطالبة بمرشَد أو بمرشَدة",
+	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-claim-mentee-footer": "يمكنك تغيير المرشد إلى نفسك.",
 	"growthexperiments-rcfilters-mentorship-title": "الإرشاد",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|مرشَديكَ|مرشَديكِ}} المفضّلين",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "المرشَدون الموجّهون {{GENDER:|إليكَ|إليكِ}} الذين فضّلنهم في لوحة المرشدين",
@@ -57,5 +78,5 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "المرحلة التالية من مغلدرة الإرشاد هي إعادة توزيع مُرشَديك. لو كنت {{GENDER:|متأكّدا|متأكّدة}} من المغادرة، فضلا، {{GENDER:|اضغط|اضغطي}} على الزرّ أدناه.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "نعم، أعيدوا توزيع المرشَدين",
 	"growthexperiments-quit-mentorship-success": "ستتمّ إعادة توزيع المرشَدين إلى مُرشِدين آخرين قريبا.",
-	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "لقد غادر مشردك السابق {{SITENAME}}. قمنا بتعيين مرشد جديد لكم!"
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "{{GENDER:$1|غادر|غادرت}} $1 الإرشاد."
 }

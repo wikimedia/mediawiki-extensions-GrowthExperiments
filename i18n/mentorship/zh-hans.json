@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"GuoPC",
+			"TsuyaMarisa",
 			"Zhang8569"
 		]
 	},
@@ -25,5 +26,10 @@
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "导师列表",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "如何作为一个导师来介绍你自己",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "如何认领一个学员",
-	"growthexperiments-mentor-dashboard-resources-link-tools": "成长工具"
+	"growthexperiments-mentor-dashboard-resources-link-tools": "成长工具",
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "设置",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "取消",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "暂停",
+	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-headline": "其他选项",
+	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-claim-mentee-footer": "你可以将一个终身的指导转变为自己的。"
 }
