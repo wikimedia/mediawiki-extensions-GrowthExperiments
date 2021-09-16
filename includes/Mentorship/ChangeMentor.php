@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Mentorship;
 
+use DeferredUpdates;
 use EchoEvent;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use LogPager;
@@ -162,19 +163,21 @@ class ChangeMentor {
 	 */
 	private function notify( $reason ) {
 		if ( \ExtensionRegistry::getInstance()->isLoaded( 'Echo' ) ) {
-			$this->logger->debug( 'Notify {mentee} about mentor change done by {performer}', [
-				'mentee' => $this->mentee,
-				'performer' => $this->performer
-			] );
-			EchoEvent::create( [
-				'type' => 'mentor-changed',
-				'title' => User::newFromIdentity( $this->newMentor )->getUserPage(),
-				'extra' => [
-					'mentee' => $this->mentee->getId(),
-					'reason' => $reason
-				],
-				'agent' => $this->newMentor,
-			] );
+			DeferredUpdates::addCallableUpdate( function () use ( $reason ) {
+				$this->logger->debug( 'Notify {mentee} about mentor change done by {performer}', [
+					'mentee' => $this->mentee,
+					'performer' => $this->performer
+				] );
+				EchoEvent::create( [
+					'type' => 'mentor-changed',
+					'title' => User::newFromIdentity( $this->newMentor )->getUserPage(),
+					'extra' => [
+						'mentee' => $this->mentee->getId(),
+						'reason' => $reason
+					],
+					'agent' => $this->newMentor,
+				] );
+			} );
 		}
 	}
 
