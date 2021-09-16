@@ -62,33 +62,27 @@ class MentorTools extends BaseModule {
 							->text()
 					),
 					// keep in sync with ext.growthExperiments.MentorDashboard/MentorTools.js
-					Html::rawElement(
-						'div',
-						[
-							'id' => 'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-dropdown-container',
-							'data-current-status' => $this->mentorStatusManager->getMentorStatus(
-								$this->getUser()
-							),
-						],
-						new DropdownInputWidget( [
-							'id' => 'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-dropdown',
-							'infusable' => true,
-							'options' => [
-								[
-									'data' => MentorStatusManager::STATUS_ACTIVE,
-									'label' => $this->msg(
-										'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active'
-									)->text(),
-								],
-								[
-									'data' => MentorStatusManager::STATUS_AWAY,
-									'label' => $this->msg(
-										'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away'
-									)->text(),
-								],
-							]
-						] )
-					)
+					new DropdownInputWidget( [
+						'id' => 'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-dropdown',
+						'infusable' => true,
+						'value' => $this->mentorStatusManager->getMentorStatus(
+							$this->getUser()
+						),
+						'options' => [
+							[
+								'data' => MentorStatusManager::STATUS_ACTIVE,
+								'label' => $this->msg(
+									'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active'
+								)->text(),
+							],
+							[
+								'data' => MentorStatusManager::STATUS_AWAY,
+								'label' => $this->msg(
+									'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away'
+								)->text(),
+							],
+						]
+					] )
 				] )
 			),
 			Html::rawElement(
