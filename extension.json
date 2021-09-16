@@ -1656,7 +1656,7 @@
 			"value": 100
 		},
 		"GEMentorshipMigrationStage": {
-			"description": "Migration stage of mentorship. Default value is a PHP constant, decoded in GrowthHooks",
+			"description": "Deprecated variable. Any other value than SCHEMA_COMPAT_NEW will cause a fatal. Was migration stage of mentorship. String is decoded in GrowthHooks.",
 			"value": "SCHEMA_COMPAT_NEW"
 		},
 		"GEHomepageMentorsList": {
