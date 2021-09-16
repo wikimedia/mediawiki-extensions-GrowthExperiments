@@ -62,11 +62,18 @@ class ApiSetMentorStatus extends ApiBase {
 				break;
 		}
 
-		$this->getResult()->addValue( null, $this->getModuleName(), [
+		$rawBackTs = $this->mentorStatusManager->getMentorBackTimestamp( $mentor );
+		$resp = [
 			'status' => 'ok',
 			'mentorstatus' => $params['gesstatus'],
-			'backintimestamp' => $this->mentorStatusManager->getMentorBackTimestamp( $mentor )
-		] );
+		];
+		if ( $rawBackTs !== null ) {
+			$resp['backintimestamp'] = [
+				'raw' => $rawBackTs,
+				'human' => $this->getContext()->getLanguage()->date( $rawBackTs, true )
+			];
+		}
+		$this->getResult()->addValue( null, $this->getModuleName(), $resp );
 	}
 
 	/**
