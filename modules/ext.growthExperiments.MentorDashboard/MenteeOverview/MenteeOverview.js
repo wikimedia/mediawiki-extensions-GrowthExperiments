@@ -114,16 +114,10 @@
 								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo' )
 							) ),
 						$( '<th>' )
-							.attr( 'data-field', 'reverted' )
+							.attr( 'data-field', 'registration' )
 							.append( this.makeHeaderIcon(
-								'editUndo',
-								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts' )
-							) ),
-						$( '<th>' )
-							.attr( 'data-field', 'blocks' )
-							.append( this.makeHeaderIcon(
-								'block',
-								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks' )
+								'clock',
+								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration' )
 							) ),
 						$( '<th>' )
 							.attr( 'data-field', 'questions' )
@@ -138,10 +132,16 @@
 								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount' )
 							) ),
 						$( '<th>' )
-							.attr( 'data-field', 'registration' )
+							.attr( 'data-field', 'reverted' )
 							.append( this.makeHeaderIcon(
-								'clock',
-								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration' )
+								'editUndo',
+								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts' )
+							) ),
+						$( '<th>' )
+							.attr( 'data-field', 'blocks' )
+							.append( this.makeHeaderIcon(
+								'block',
+								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks' )
 							) )
 					)
 				),
@@ -366,16 +366,16 @@
 										)
 								)
 						),
-						menteeOverview.makeValueTd( mw.language.convertNumber( userData.reverted ), 'reverted' ),
-						menteeOverview.makeValueTd( mw.language.convertNumber( userData.blocks ), 'blocks' ),
-						menteeOverview.makeValueTd( mw.language.convertNumber( userData.questions ), 'questions' ),
-						menteeOverview.makeValueTd( mw.language.convertNumber( userData.editcount ), 'editcount' ),
 						menteeOverview.makeValueTd(
 							userData.registration !== null ?
 								userData.registration.human :
 								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-registered-unknown' ),
 							'registration'
-						)
+						),
+						menteeOverview.makeValueTd( mw.language.convertNumber( userData.questions ), 'questions' ),
+						menteeOverview.makeValueTd( mw.language.convertNumber( userData.editcount ), 'editcount' ),
+						menteeOverview.makeValueTd( mw.language.convertNumber( userData.reverted ), 'reverted' ),
+						menteeOverview.makeValueTd( mw.language.convertNumber( userData.blocks ), 'blocks' )
 					)
 				);
 
