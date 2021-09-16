@@ -48,12 +48,18 @@
 			formatversion: 2
 		} )
 			.done( function ( data ) {
-				var questionStoreHtml = data.homepagequestionstore.html;
+				if ( !data.homepagequestionstore ) {
+					return;
+				}
+				var questionStoreHtml = data.homepagequestionstore.html || '';
 				if ( questionStoreHtml.length ) {
 					$container.find( questionsSelector )
 						.replaceWith( questionStoreHtml );
 				} else {
 					$container.find( questionsSelector ).remove();
+				}
+				if ( !data.homepagequestionstore.questions ) {
+					return;
 				}
 				data.homepagequestionstore.questions.forEach( function ( questionRecord ) {
 					if ( questionRecord.isArchived ) {
