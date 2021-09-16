@@ -51,6 +51,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Mentor status",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Active",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Away",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Since you are away until the $1, your mentees will be temporarily reassinged to a different mentor.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Set yourself as ‘away’",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Cancel",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Pause",

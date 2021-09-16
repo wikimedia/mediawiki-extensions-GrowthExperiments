@@ -6,6 +6,7 @@ use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\MentorManager;
 use Html;
 use IContextSource;
+use LogicException;
 use OOUI\ButtonWidget;
 use OOUI\DropdownInputWidget;
 use SpecialPage;
@@ -82,7 +83,14 @@ class MentorTools extends BaseModule {
 								)->text(),
 							],
 						]
-					] )
+					] ),
+					Html::element(
+						'p',
+						[
+							'id' => self::BASE_MODULE_CSS_CLASS . '-status-away-message'
+						],
+						$this->maybeGetAwayMessage()
+					)
 				] )
 			),
 			Html::rawElement(
@@ -161,6 +169,34 @@ class MentorTools extends BaseModule {
 				] )
 			)
 		] );
+	}
+
+	/**
+	 * @return string
+	 */
+	private function maybeGetAwayMessage(): string {
+		if (
+			$this->mentorStatusManager->getMentorStatus( $this->getUser() ) !== MentorStatusManager::STATUS_AWAY
+		) {
+			return '';
+		}
+
+		$rawTS = $this->mentorStatusManager->getMentorBackTimestamp( $this->getUser() );
+		if ( $rawTS === null ) {
+			// This should actually never happen
+			throw new LogicException(
+				'MentorStatusManager::getMentorBackTimestamp should not return null ' .
+				'if mentor status is away.'
+			);
+		}
+
+		return $this->msg(
+			'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message',
+			$this->getContext()->getLanguage()->date(
+				$rawTS,
+				true
+			)
+		)->text();
 	}
 
 	/**

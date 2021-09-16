@@ -61,10 +61,15 @@
 			this.mentorStatusDropdown.$element
 		);
 
+		this.$mentorAwayMessage = $( '#growthexperiments-mentor-dashboard-module-mentor-tools-status-away-message' );
+
 		this.windowManager = new OO.ui.WindowManager();
 		this.$body.append( this.windowManager.$element );
 
 		this.awaySettingsDialog = new AwaySettingsDialog();
+		this.awaySettingsDialog.connect( this, {
+			awayset: [ 'onMentorBackTimestampChanged' ]
+		} );
 		this.windowManager.addWindows( [ this.awaySettingsDialog ] );
 	}
 
@@ -75,6 +80,8 @@
 		if ( selectedItem.getData() === 'away' ) {
 			this.windowManager.openWindow( this.awaySettingsDialog );
 		} else if ( selectedItem.getData() === 'active' ) {
+			var mentorTools = this;
+
 			new mw.Api().postWithToken( 'csrf', {
 				action: 'growthsetmentorstatus',
 				gesstatus: 'active'
@@ -83,12 +90,24 @@
 					mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active' ),
 					{ type: 'info' }
 				);
+				mentorTools.onMentorBackTimestampChanged( null );
 			} ).catch( function () {
 				mw.notify(
 					mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown' ),
 					{ type: 'error' }
 				);
 			} );
+		}
+	};
+
+	MentorTools.prototype.onMentorBackTimestampChanged = function ( backtimestamp ) {
+		if ( backtimestamp === null ) {
+			this.$mentorAwayMessage.text( '' );
+		} else {
+			this.$mentorAwayMessage.text( mw.msg(
+				'growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message',
+				backtimestamp.human
+			) );
 		}
 	};
 
