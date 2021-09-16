@@ -13,6 +13,12 @@ use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
  */
 class PreferenceMentorStoreTest extends MentorStoreTestCase {
 
+	/** @inheritDoc */
+	public function testGetSet() {
+		$this->expectDeprecation();
+		parent::testGetSet();
+	}
+
 	protected function getStore( bool $wasPosted ): MentorStore {
 		return new PreferenceMentorStore( $this->getServiceContainer()->getUserFactory(),
 			$this->getServiceContainer()->getUserOptionsManager(), $wasPosted );
