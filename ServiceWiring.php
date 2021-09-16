@@ -26,7 +26,6 @@ use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\QuitMentorshipFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
@@ -386,18 +385,6 @@ return [
 			CachedBagOStuff::TTL_DAY
 		);
 		return $databaseMentorStore;
-	},
-
-	'GrowthExperimentsMentorStorePreference' => static function ( MediaWikiServices $services ): PreferenceMentorStore {
-		wfDeprecated( 'GrowthExperimentsMentorStorePreference service', '1.38' );
-
-		return new PreferenceMentorStore(
-			$services->getUserFactory(),
-			$services->getUserOptionsManager(),
-			defined( 'MEDIAWIKI_JOB_RUNNER' ) ||
-				GrowthExperimentsServices::wrap( $services )->getGrowthConfig()->get( 'CommandLineMode' ) ||
-				RequestContext::getMain()->getRequest()->wasPosted()
-		);
 	},
 
 	'GrowthExperimentsNewcomerTasksConfigurationLoader' => static function (

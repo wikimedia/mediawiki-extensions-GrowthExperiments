@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Mentorship;
 
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
 use GrowthExperiments\WikiConfigException;
 use Language;
 use MediaWiki\Page\WikiPageFactory;
@@ -24,12 +23,6 @@ use WikitextContent;
 
 class MentorPageMentorManager extends MentorManager implements LoggerAwareInterface {
 	use LoggerAwareTrait;
-
-	/**
-	 * @var string User preference for storing the mentor.
-	 * @deprecated since 1.36, use PreferenceMentorStore::MENTOR_PREF instead
-	 */
-	public const MENTOR_PREF = PreferenceMentorStore::MENTOR_PREF;
 
 	public const MENTORSHIP_ENABLED_PREF = 'growthexperiments-homepage-mentorship-enabled';
 

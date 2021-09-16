@@ -26,9 +26,6 @@ class MentorHooks implements GetPreferencesHook, UserGetDefaultOptionsHook, Loca
 
 	/** @inheritDoc */
 	public function onGetPreferences( $user, &$preferences ) {
-		$preferences[ MentorPageMentorManager::MENTOR_PREF ] = [
-			'type' => 'api',
-		];
 		$preferences[ MentorPageMentorManager::MENTORSHIP_ENABLED_PREF ] = [
 			'type' => 'api'
 		];

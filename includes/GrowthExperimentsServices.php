@@ -20,7 +20,6 @@ use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\QuitMentorshipFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
@@ -161,11 +160,6 @@ class GrowthExperimentsServices {
 
 	public function getDatabaseMentorStore(): DatabaseMentorStore {
 		return $this->coreServices->get( 'GrowthExperimentsMentorStoreDatabase' );
-	}
-
-	public function getPreferenceMentorStore(): PreferenceMentorStore {
-		wfDeprecated( __METHOD__, '1.38' );
-		return $this->coreServices->get( 'GrowthExperimentsMentorStorePreference' );
 	}
 
 	public function getNewcomerTasksConfigurationLoader(): ConfigurationLoader {

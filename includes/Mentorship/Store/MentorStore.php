@@ -125,13 +125,12 @@ abstract class MentorStore implements IDBAccessObject {
 	/**
 	 * Load mentor user with no cache
 	 *
-	 * @internal Only to be used from MultiWriteMentorStore
 	 * @param UserIdentity $mentee
 	 * @param string $mentorRole One of MentorStore::ROLE_* constants
 	 * @param int $flags bit field, see IDBAccessObject::READ_XXX
 	 * @return UserIdentity|null
 	 */
-	abstract public function loadMentorUserUncached(
+	abstract protected function loadMentorUserUncached(
 		UserIdentity $mentee,
 		string $mentorRole,
 		$flags
