@@ -33,6 +33,10 @@ function RecommendedLinkToolbarDialog() {
 	 */
 	this.shouldSkipAutoAdvance = false;
 	/**
+	 * @property {number} autoAdvanceDelay Delay in ms before auto-advancing
+	 */
+	this.autoAdvanceDelay = 600;
+	/**
 	 * @property {Object} extracts Article extracts that have been fetched
 	 */
 	this.extracts = {};
@@ -193,6 +197,20 @@ RecommendedLinkToolbarDialog.prototype.onNoButtonClicked = function () {
 };
 
 /**
+ * Auto-advance after animation for the current recommendation is done
+ */
+RecommendedLinkToolbarDialog.prototype.autoAdvance = function () {
+	var isLastRecommendationSelected = this.isLastRecommendationSelected();
+	setTimeout( function () {
+		if ( isLastRecommendationSelected ) {
+			mw.hook( 'growthExperiments.contextItem.saveArticle' ).fire();
+		} else {
+			this.showRecommendationAtIndex( this.currentIndex + 1 );
+		}
+	}.bind( this ), this.autoAdvanceDelay );
+};
+
+/**
  * Fire an event when a recommendation is accepted or rejected
  * This allows the publish button to be updated based on whether there are any acceptances.
  */
@@ -202,6 +220,11 @@ RecommendedLinkToolbarDialog.prototype.onAcceptanceChanged = function () {
 	this.updateActionButtonsMode();
 	// Annotation element changes so it needs to be re-selected.
 	this.selectAnnotationView();
+
+	if ( this.shouldSkipAutoAdvance ) {
+		return;
+	}
+	this.autoAdvance();
 };
 
 /**

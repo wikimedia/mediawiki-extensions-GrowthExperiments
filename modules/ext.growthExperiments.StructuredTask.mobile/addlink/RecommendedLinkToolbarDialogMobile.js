@@ -116,27 +116,6 @@ RecommendedLinkToolbarDialogMobile.prototype.updateContentForCurrentRecommendati
 };
 
 /**
- * Show the next recommendation or save the article (if the last recommendation is shown)
- */
-RecommendedLinkToolbarDialogMobile.prototype.onAcceptanceChanged = function () {
-	var isLastRecommendationSelected = this.isLastRecommendationSelected();
-	RecommendedLinkToolbarDialogMobile.super.prototype.onAcceptanceChanged.call( this );
-	if ( this.shouldSkipAutoAdvance ) {
-		return;
-	}
-	// Auto-advance after animation for the current recommendation is done
-	// TODO: Animation delay as a config in AnnotationAnimation
-	// Probably make sense to update this along with T283548 when auto-advance is enabled for desktop
-	setTimeout( function () {
-		if ( isLastRecommendationSelected ) {
-			mw.hook( 'growthExperiments.contextItem.saveArticle' ).fire();
-		} else if ( !isLastRecommendationSelected ) {
-			this.showRecommendationAtIndex( this.currentIndex + 1 );
-		}
-	}.bind( this ), 600 );
-};
-
-/**
  * Set up the template in which to show the text in the article the recommendation is for
  *
  * @private
