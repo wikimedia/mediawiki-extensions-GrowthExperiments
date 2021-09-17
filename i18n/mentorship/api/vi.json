@@ -7,5 +7,9 @@
 	"apihelp-growthstarmentee-summary": "Đánh dấu hoặc bỏ đánh dấu sao một người được cố vấn bởi người dùng hiện tại (lưu trữ riêng tư và không được ghi lại)",
 	"apihelp-growthstarmentee-param-gesaction": "Hành vi thực hiện (<kbd>star</kbd> hoặc <kbd>unstar</kbd>)",
 	"apihelp-growthstarmentee-param-gesmentee": "Người được cố vấn để (bỏ) đánh dấu sao",
-	"apihelp-query+growthstarredmentees-summary": "Lấy danh sách người được cố vấn được đánh dấu sao bởi cố vấn đã đăng nhập hiện tại"
+	"apihelp-query+growthstarredmentees-summary": "Lấy danh sách người được cố vấn được đánh dấu sao bởi cố vấn đã đăng nhập hiện tại",
+	"apihelp-growthsetmentorstatus-summary": "Đặt trạng thái cố vấn của người dùng hiện tại thành hoạt động/đi vắng",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Trạng thái mới",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "Khi cài đặt cố vấn là đi vắng, việc này phải có độ dài của trạng thái đi vắng (theo ngày)",
+	"apihelp-query+growthmentorstatus-summary": "Trạng thái cố vấn của người dùng hiện tại"
 }

@@ -13,5 +13,9 @@
 	"apihelp-query+growthtasks-param-excludepageids": "ID trang để loại trừ khỏi lệnh hỏi.",
 	"apihelp-query+growthtasks-param-debug": "Thêm dữ liệu debug vào đầu ra.",
 	"apihelp-query+growthtasks-example-1": "Nhận gợi ý nhiệm vụ cho nhiệm vụ loại biên tập cho người dùng hiện tại.",
-	"apihelp-query+growthtasks-example-2": "Nhận gợi ý nhiệm vụ cho người dùng hiện tại, với thông tin thêm về trang."
+	"apihelp-query+growthtasks-example-2": "Nhận gợi ý nhiệm vụ cho người dùng hiện tại, với thông tin thêm về trang.",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "Thiếu tham số 'được chấp nhận' từ dữ liệu mở rộng Thêm Hình ảnh",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Tham số 'được chấp nhận' phải là một luận lý trong dữ liệu mở rộng Thêm Hình ảnh, là $1",
+	"apierror-growthexperiments-addlink-handler-notfound": "Không tìm thấy bản ghi gợi ý liên kết",
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Mục tiêu gợi ý liên kết không ngờ tới: $1"
 }
