@@ -386,6 +386,8 @@ return [
 	},
 
 	'GrowthExperimentsMentorStorePreference' => static function ( MediaWikiServices $services ): PreferenceMentorStore {
+		wfDeprecated( 'GrowthExperimentsMentorStorePreference service', '1.38' );
+
 		return new PreferenceMentorStore(
 			$services->getUserFactory(),
 			$services->getUserOptionsManager(),

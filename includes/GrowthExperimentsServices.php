@@ -162,6 +162,7 @@ class GrowthExperimentsServices {
 	}
 
 	public function getPreferenceMentorStore(): PreferenceMentorStore {
+		wfDeprecated( __METHOD__, '1.38' );
 		return $this->coreServices->get( 'GrowthExperimentsMentorStorePreference' );
 	}
 
