@@ -26,7 +26,6 @@ use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\QuitMentorshipFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use GrowthExperiments\Mentorship\Store\MultiWriteMentorStore;
 use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
@@ -363,15 +362,7 @@ return [
 	},
 
 	'GrowthExperimentsMentorStore' => static function ( MediaWikiServices $services ): MentorStore {
-		$geServices = GrowthExperimentsServices::wrap( $services );
-		return new MultiWriteMentorStore(
-			(int)$geServices->getGrowthConfig()->get( 'GEMentorshipMigrationStage' ),
-			$geServices->getPreferenceMentorStore(),
-			$geServices->getDatabaseMentorStore(),
-			defined( 'MEDIAWIKI_JOB_RUNNER' ) ||
-				$geServices->getGrowthConfig()->get( 'CommandLineMode' ) ||
-				RequestContext::getMain()->getRequest()->wasPosted()
-		);
+		return GrowthExperimentsServices::wrap( $services )->getDatabaseMentorStore();
 	},
 
 	'GrowthExperimentsMentorStoreDatabase' => static function ( MediaWikiServices $services ): DatabaseMentorStore {
