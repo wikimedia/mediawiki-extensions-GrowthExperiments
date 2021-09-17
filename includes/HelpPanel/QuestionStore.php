@@ -266,6 +266,11 @@ class QuestionStore {
 		return $questionRecord;
 	}
 
+	/**
+	 * @suppress SecurityCheck-DoubleEscaped T291259
+	 * @param QuestionRecord $question
+	 * @return QuestionRecord
+	 */
 	private function trimQuestion( QuestionRecord $question ) {
 		$trimmedQuestionText = $this->language->truncateForVisual(
 			$question->getQuestionText(),
