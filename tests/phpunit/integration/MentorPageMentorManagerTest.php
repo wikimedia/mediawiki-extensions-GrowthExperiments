@@ -7,6 +7,7 @@ use DerivativeContext;
 use Exception;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
+use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
@@ -105,7 +106,7 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 		$user = $this->getMutableTestUser()->getUser();
 		GrowthExperimentsServices::wrap( $this->getServiceContainer() )
 			->getMentorStore()
-			->setMentorForUser( $user, $sysop );
+			->setMentorForUser( $user, $sysop, MentorStore::ROLE_PRIMARY );
 		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
 		$mentorManager = $this->getMentorManager( null, [
 			'MentorsList' => [ '* [[User:Mentor]]', [ 'Mentor' ] ],
@@ -177,7 +178,8 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 			->getMentorStore()
 			->setMentorForUser(
 				$mentee,
-				$mentorUser
+				$mentorUser,
+				MentorStore::ROLE_PRIMARY
 			);
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $mentee );
@@ -212,7 +214,8 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 			->getMentorStore()
 			->setMentorForUser(
 				$mentee,
-				$mentorUser
+				$mentorUser,
+				MentorStore::ROLE_PRIMARY
 			);
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $mentee );

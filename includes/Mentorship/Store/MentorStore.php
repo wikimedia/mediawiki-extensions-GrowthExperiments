@@ -90,15 +90,21 @@ abstract class MentorStore implements IDBAccessObject {
 	/**
 	 * Get the mentor assigned to this user, if it exists.
 	 * @param UserIdentity $mentee
-	 * @param string $mentorRole One of MentorStore::MENTOR_ constants
+	 * @param string|null $mentorRole One of MentorStore::ROLE_* constants; passing no value is
+	 * deprecated (results in using ROLE_PRIMARY).
 	 * @param int $flags bit field, see IDBAccessObject::READ_XXX
 	 * @return UserIdentity|null
 	 */
 	public function loadMentorUser(
 		UserIdentity $mentee,
-		string $mentorRole = self::ROLE_PRIMARY,
+		?string $mentorRole = null,
 		$flags = self::READ_NORMAL
 	): ?UserIdentity {
+		if ( $mentorRole === null ) {
+			wfDeprecated( __METHOD__ . ' with no role parameter', '1.38' );
+			$mentorRole = self::ROLE_PRIMARY;
+		}
+
 		if ( !$this->validateMentorRole( $mentorRole ) ) {
 			throw new InvalidArgumentException( "Invalid \$mentorRole passed: $mentorRole" );
 		}
@@ -121,7 +127,7 @@ abstract class MentorStore implements IDBAccessObject {
 	 *
 	 * @internal Only to be used from MultiWriteMentorStore
 	 * @param UserIdentity $mentee
-	 * @param string $mentorRole One of MentorStore::MENTOR_ constants
+	 * @param string $mentorRole One of MentorStore::ROLE_* constants
 	 * @param int $flags bit field, see IDBAccessObject::READ_XXX
 	 * @return UserIdentity|null
 	 */
@@ -157,13 +163,19 @@ abstract class MentorStore implements IDBAccessObject {
 	 *
 	 * @param UserIdentity $mentee
 	 * @param UserIdentity $mentor
-	 * @param string $mentorRole One of MentorStore::MENTOR_ constants
+	 * @param string|null $mentorRole One of MentorStore::ROLE_* constants; passing no value is
+	 * deprecated (results in ROLE_PRIMARY being used).
 	 */
 	public function setMentorForUser(
 		UserIdentity $mentee,
 		UserIdentity $mentor,
-		string $mentorRole = self::ROLE_PRIMARY
+		?string $mentorRole = null
 	): void {
+		if ( $mentorRole === null ) {
+			wfDeprecated( __METHOD__ . ' with no role parameter', '1.38' );
+			$mentorRole = self::ROLE_PRIMARY;
+		}
+
 		if ( !$this->validateMentorRole( $mentorRole ) ) {
 			throw new InvalidArgumentException( "Invalid \$mentorRole passed: $mentorRole" );
 		}
@@ -190,6 +202,6 @@ abstract class MentorStore implements IDBAccessObject {
 	abstract protected function setMentorForUserInternal(
 		UserIdentity $mentee,
 		UserIdentity $mentor,
-		string $mentorRole = self::ROLE_PRIMARY
+		string $mentorRole
 	): void;
 }

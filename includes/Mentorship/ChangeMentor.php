@@ -205,7 +205,7 @@ class ChangeMentor {
 			return $status;
 		}
 
-		$this->mentorStore->setMentorForUser( $this->mentee, $this->newMentor );
+		$this->mentorStore->setMentorForUser( $this->mentee, $this->newMentor, MentorStore::ROLE_PRIMARY );
 		$this->log( $reason );
 
 		// Notify mentee about the change

@@ -49,11 +49,11 @@ class DatabaseMentorStoreTest extends MentorStoreTestCase {
 		// before the job is instantiated.
 		define( 'MEDIAWIKI_JOB_RUNNER', true );
 
-		$this->assertNull( $store->loadMentorUser( $mentee ) );
-		$store->setMentorForUser( $mentee, $mentor );
+		$this->assertNull( $store->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY ) );
+		$store->setMentorForUser( $mentee, $mentor, MentorStore::ROLE_PRIMARY );
 
 		// read from in-process cache
-		$actualMentor = $store->loadMentorUser( $mentee );
+		$actualMentor = $store->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY );
 		$this->assertSameUser( $mentor, $actualMentor );
 
 		// read from disk
@@ -90,9 +90,9 @@ class DatabaseMentorStoreTest extends MentorStoreTestCase {
 		$mentorNoMentees = $this->getMutableTestUser()->getUser();
 
 		// Save mentor/mentee relationship
-		$store->setMentorForUser( $menteeOne, $mentor );
-		$store->setMentorForUser( $menteeTwo, $mentor );
-		$store->setMentorForUser( $menteeThree, $otherMentor );
+		$store->setMentorForUser( $menteeOne, $mentor, MentorStore::ROLE_PRIMARY );
+		$store->setMentorForUser( $menteeTwo, $mentor, MentorStore::ROLE_PRIMARY );
+		$store->setMentorForUser( $menteeThree, $otherMentor, MentorStore::ROLE_PRIMARY );
 
 		// Test mentees mentored by $mentor
 		$this->assertArrayEquals(

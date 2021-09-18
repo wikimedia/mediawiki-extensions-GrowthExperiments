@@ -114,7 +114,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 	/** @inheritDoc */
 	public function getMentorForUserIfExists( UserIdentity $user ): ?Mentor {
-		$mentorUser = $this->mentorStore->loadMentorUser( $user );
+		$mentorUser = $this->mentorStore->loadMentorUser( $user, MentorStore::ROLE_PRIMARY );
 		if ( !$mentorUser ) {
 			return null;
 		}
@@ -124,7 +124,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 	/** @inheritDoc */
 	public function getMentorForUser( UserIdentity $user ): Mentor {
-		$mentorUser = $this->mentorStore->loadMentorUser( $user );
+		$mentorUser = $this->mentorStore->loadMentorUser( $user, MentorStore::ROLE_PRIMARY );
 		if ( !$mentorUser ) {
 			$mentorUser = $this->getRandomAutoAssignedMentor( $user );
 			if ( !$mentorUser ) {
@@ -132,7 +132,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 				throw new WikiConfigException( 'Mentorship: No mentor available' );
 			}
 
-			$this->mentorStore->setMentorForUser( $user, $mentorUser );
+			$this->mentorStore->setMentorForUser( $user, $mentorUser, MentorStore::ROLE_PRIMARY );
 		}
 		return $this->newMentorFromUserIdentity( $mentorUser, $user );
 	}

@@ -31,7 +31,7 @@ class UncachedMenteeOverviewDataProviderTest extends MediaWikiIntegrationTestCas
 
 	private function createMentee( User $mentor ): User {
 		$mentee = $this->getMutableTestUser()->getUser();
-		$this->getMentorStore()->setMentorForUser( $mentee, $mentor );
+		$this->getMentorStore()->setMentorForUser( $mentee, $mentor, MentorStore::ROLE_PRIMARY );
 		return $mentee;
 	}
 
