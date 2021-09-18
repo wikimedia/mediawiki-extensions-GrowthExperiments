@@ -3,13 +3,16 @@
 namespace GrowthExperiments\Mentorship;
 
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use GrowthExperiments\WikiConfigException;
 use IContextSource;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\User\UserIdentity;
+use Psr\Log\LoggerAwareTrait;
 use Wikimedia\ScopedCallback;
 
 class QuitMentorship {
+	use LoggerAwareTrait;
 
 	public const STAGE_LISTED_AS_MENTOR = 1;
 	public const STAGE_NOT_LISTED_HAS_MENTEES = 2;
@@ -98,10 +101,11 @@ class QuitMentorship {
 	 *
 	 * @param string $reassignMessageKey Message key used in in ChangeMentor notification; needs
 	 * to accept one parameter (username of the new mentor).
+	 * @return bool True if successful, false otherwise.
 	 */
 	public function doReassignMentees(
 		string $reassignMessageKey
-	): void {
+	): bool {
 		$guard = $this->permissionManager->addTemporaryUserRights( $this->mentor, 'bot' );
 
 		$mentees = $this->mentorStore->getMenteesByMentor( $this->mentor );
@@ -112,7 +116,30 @@ class QuitMentorship {
 				$this->context
 			);
 
-			$newMentor = $this->mentorManager->getRandomAutoAssignedMentor( $mentee );
+			try {
+				$newMentor = $this->mentorManager->getRandomAutoAssignedMentor( $mentee );
+			} catch ( WikiConfigException $e ) {
+				ScopedCallback::consume( $guard );
+				$this->logger->warning(
+					'QuitMentorship failed to reassign mentees for {mentor}; mentor list is invalid',
+					[
+						'mentor' => $this->mentor->getName()
+					]
+				);
+				return false;
+			}
+
+			if ( !$newMentor ) {
+				ScopedCallback::consume( $guard );
+				$this->logger->warning(
+					'QuitMentorship failed to reassign mentees for {mentor}; no mentor is available',
+					[
+						'mentor' => $this->mentor->getName()
+					]
+				);
+				return false;
+			}
+
 			$changeMentor->execute(
 				$newMentor,
 				wfMessage( $reassignMessageKey, $newMentor->getName() )->text()
@@ -121,5 +148,6 @@ class QuitMentorship {
 
 		// Revoke temporary bot rights
 		ScopedCallback::consume( $guard );
+		return true;
 	}
 }
