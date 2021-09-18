@@ -6,11 +6,11 @@ use ApiTestCase;
 use ApiUsageException;
 use DerivativeContext;
 use FauxRequest;
+use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use GrowthExperiments\HelpPanel\QuestionPoster\HomepageMentorQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentorship\Mentor;
-use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\StaticMentorManager;
 
 /**
@@ -55,12 +55,11 @@ class ApiQuestionStoreTest extends ApiTestCase {
 		$user = $this->getMutableTestUser()->getUser();
 		$mentor = $this->getTestSysop()->getUser();
 		$services = $this->getServiceContainer();
-		$services->getUserOptionsManager()->setOption(
-			$user,
-			MentorPageMentorManager::MENTOR_PREF,
-			$mentor->getId()
-		);
-		$user->saveSettings();
+		GrowthExperimentsServices::wrap( $services )->getMentorStore()
+			->setMentorForUser(
+				$user,
+				$mentor
+			);
 		$request = new FauxRequest( [], true );
 		$context = new DerivativeContext( $this->apiContext );
 		$context->setRequest( $request );
