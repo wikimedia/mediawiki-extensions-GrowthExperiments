@@ -75,7 +75,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return int[] User IDs of the mentees
 	 */
 	private function getFilteredMenteesForMentor( UserIdentity $mentor ): array {
-		$mentees = $this->mentorStore->getMenteesByMentor( $mentor );
+		$mentees = $this->mentorStore->getMenteesByMentor( $mentor, MentorStore::ROLE_PRIMARY );
 		if ( $mentees === [] ) {
 			return [];
 		}
