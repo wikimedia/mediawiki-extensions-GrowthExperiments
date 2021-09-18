@@ -372,6 +372,7 @@ return [
 		$databaseMentorStore = new DatabaseMentorStore(
 			$services->getUserFactory(),
 			$services->getUserIdentityLookup(),
+			$services->getJobQueueGroup(),
 			$lb->getLazyConnectionRef( DB_REPLICA ),
 			$lb->getLazyConnectionRef( DB_PRIMARY ),
 			defined( 'MEDIAWIKI_JOB_RUNNER' ) ||

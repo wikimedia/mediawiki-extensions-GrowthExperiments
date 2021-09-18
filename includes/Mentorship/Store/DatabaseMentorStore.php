@@ -17,6 +17,9 @@ class DatabaseMentorStore extends MentorStore {
 	/** @var UserIdentityLookup */
 	private $userIdentityLookup;
 
+	/** @var JobQueueGroup */
+	private $jobQueueGroup;
+
 	/** @var IDatabase */
 	private $dbr;
 
@@ -26,6 +29,7 @@ class DatabaseMentorStore extends MentorStore {
 	/**
 	 * @param UserFactory $userFactory
 	 * @param UserIdentityLookup $userIdentityLookup
+	 * @param JobQueueGroup $jobQueueGroup
 	 * @param IDatabase $dbr
 	 * @param IDatabase $dbw
 	 * @param bool $wasPosted
@@ -33,6 +37,7 @@ class DatabaseMentorStore extends MentorStore {
 	public function __construct(
 		UserFactory $userFactory,
 		UserIdentityLookup $userIdentityLookup,
+		JobQueueGroup $jobQueueGroup,
 		IDatabase $dbr,
 		IDatabase $dbw,
 		bool $wasPosted
@@ -41,6 +46,7 @@ class DatabaseMentorStore extends MentorStore {
 
 		$this->userFactory = $userFactory;
 		$this->userIdentityLookup = $userIdentityLookup;
+		$this->jobQueueGroup = $jobQueueGroup;
 		$this->dbr = $dbr;
 		$this->dbw = $dbw;
 	}
@@ -161,7 +167,7 @@ class DatabaseMentorStore extends MentorStore {
 				$mentorRole
 			);
 		} else {
-			JobQueueGroup::singleton()->lazyPush( new SetUserMentorDatabaseJob( [
+			$this->jobQueueGroup->lazyPush( new SetUserMentorDatabaseJob( [
 				'menteeId' => $mentee->getId(),
 				'mentorId' => $mentor->getId(),
 				'roleId' => $mentorRole,

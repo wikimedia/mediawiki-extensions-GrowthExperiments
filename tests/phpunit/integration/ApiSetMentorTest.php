@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests;
 use ApiTestCase;
 use ApiUsageException;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
+use JobQueueGroup;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
@@ -148,6 +149,9 @@ class ApiSetMentorTest extends ApiTestCase {
 					->disableOriginalConstructor()
 					->getMock(),
 				$this->getMockBuilder( UserIdentityLookup::class )
+					->disableOriginalConstructor()
+					->getMock(),
+				$this->getMockBuilder( JobQueueGroup::class )
 					->disableOriginalConstructor()
 					->getMock(),
 				$this->createNoOpMock( IDatabase::class ),

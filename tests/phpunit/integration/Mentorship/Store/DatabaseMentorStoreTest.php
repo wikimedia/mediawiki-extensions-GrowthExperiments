@@ -21,6 +21,7 @@ class DatabaseMentorStoreTest extends MentorStoreTestCase {
 		return new DatabaseMentorStore(
 			$this->getServiceContainer()->getUserFactory(),
 			$this->getServiceContainer()->getUserIdentityLookup(),
+			$this->getServiceContainer()->getJobQueueGroup(),
 			$this->db,
 			$this->db,
 			$wasPosted
