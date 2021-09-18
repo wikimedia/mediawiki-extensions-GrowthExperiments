@@ -337,7 +337,7 @@ class LinkRecommendationStore {
 					'gels_target' => $targetId,
 					'gels_feedback' => $feedback,
 					'gels_anchor_offset' => $link->getWikitextOffset(),
-					'gels_anchor_length' => (int)mb_strlen( $link->getText(), 'UTF-8' ),
+					'gels_anchor_length' => mb_strlen( $link->getText(), 'UTF-8' ),
 				];
 			}
 		}
