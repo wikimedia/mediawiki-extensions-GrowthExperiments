@@ -490,6 +490,7 @@ return [
 		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new QuestionPosterFactory(
 			$services->getWikiPageFactory(),
+			$services->getTitleFactory(),
 			$growthServices->getMentorManager(),
 			$services->getPermissionManager(),
 			$growthServices->getGrowthWikiConfig()->get( 'GEHelpPanelHelpDeskPostOnTop' )

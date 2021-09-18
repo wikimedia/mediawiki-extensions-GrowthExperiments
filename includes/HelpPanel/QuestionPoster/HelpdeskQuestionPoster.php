@@ -25,10 +25,10 @@ class HelpdeskQuestionPoster extends QuestionPoster {
 	 * @inheritDoc
 	 */
 	protected function getSectionHeaderTemplate() {
-		return $this->relevantTitle ?
+		return $this->getWikitextLinkTarget() ?
 			$this->getContext()
 				->msg( 'growthexperiments-help-panel-question-subject-template-with-title' )
-				->params( $this->relevantTitle )
+				->params( $this->getWikitextLinkTarget() )
 				->inContentLanguage()->text() :
 			$this->getContext()
 				->msg( 'growthexperiments-help-panel-question-subject-template' )

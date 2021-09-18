@@ -21,6 +21,7 @@ use MediaWiki\Storage\PageUpdater;
 use MWException;
 use Status;
 use Title;
+use TitleFactory;
 use UserNotLoggedIn;
 use WikiPage;
 use WikitextContent;
@@ -34,6 +35,11 @@ abstract class QuestionPoster {
 	 * @var WikiPageFactory
 	 */
 	private $wikiPageFactory;
+
+	/**
+	 * @var TitleFactory
+	 */
+	private $titleFactory;
 
 	/**
 	 * @var PermissionManager
@@ -83,7 +89,12 @@ abstract class QuestionPoster {
 	/**
 	 * @var string
 	 */
-	protected $relevantTitle;
+	private $relevantTitleRaw;
+
+	/**
+	 * @var Title|null
+	 */
+	private $relevantTitle;
 
 	/**
 	 * @var string
@@ -107,23 +118,26 @@ abstract class QuestionPoster {
 
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
+	 * @param TitleFactory $titleFactory
 	 * @param PermissionManager $permissionManager
 	 * @param IContextSource $context
 	 * @param string $body
-	 * @param string $relevantTitle
+	 * @param string $relevantTitleRaw
 	 * @throws UserNotLoggedIn
 	 */
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
+		TitleFactory $titleFactory,
 		PermissionManager $permissionManager,
 		IContextSource $context,
 		$body,
-		$relevantTitle = ''
+		$relevantTitleRaw = ''
 	) {
 		$this->wikiPageFactory = $wikiPageFactory;
+		$this->titleFactory = $titleFactory;
 		$this->permissionManager = $permissionManager;
 		$this->context = $context;
-		$this->relevantTitle = $relevantTitle;
+		$this->relevantTitleRaw = $relevantTitleRaw;
 		if ( !$this->getContext()->getUser()->isRegistered() ) {
 			throw new UserNotLoggedIn();
 		}
@@ -142,6 +156,44 @@ abstract class QuestionPoster {
 	 */
 	public function setPostOnTop( bool $postOnTop ): void {
 		$this->postOnTop = $postOnTop;
+	}
+
+	/**
+	 * Return relevant title, if it exists.
+	 * @return Title|null
+	 */
+	public function getRelevantTitle(): ?Title {
+		if ( !$this->relevantTitleRaw ) {
+			return null;
+		}
+
+		if ( $this->relevantTitle === null ) {
+			$this->relevantTitle = $this->titleFactory->newFromText(
+				$this->relevantTitleRaw
+			);
+		}
+		return $this->relevantTitle;
+	}
+
+	/**
+	 * Return wikitext link target suitable for usage in [[internal linking]]
+	 *
+	 * This returns [[$title->getPrefixedText()]] for most pages, and
+	 * [[:$title->getPrefixedText()]] for files and categories.
+	 *
+	 * @return string
+	 */
+	public function getWikitextLinkTarget(): string {
+		$title = $this->getRelevantTitle();
+		if ( !$title ) {
+			return '';
+		}
+
+		if ( in_array( $title->getNamespace(), [ NS_FILE, NS_CATEGORY ], true ) ) {
+			return ':' . $title->getPrefixedText();
+		} else {
+			return $title->getPrefixedText();
+		}
 	}
 
 	/**
@@ -394,7 +446,7 @@ abstract class QuestionPoster {
 	 * @return Status
 	 */
 	public function validateRelevantTitle() {
-		$title = Title::newFromText( $this->relevantTitle );
+		$title = $this->getRelevantTitle();
 		return $title && $title->isValid() ?
 			Status::newGood() :
 			Status::newFatal( 'growthexperiments-help-panel-questionposter-invalid-title' );
