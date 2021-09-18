@@ -7,6 +7,7 @@ use EchoAttributeManager;
 use EchoUserLocator;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
+use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\MediaWikiServices;
@@ -53,10 +54,13 @@ class MentorHooks implements GetPreferencesHook, UserGetDefaultOptionsHook, Loca
 		}
 		if ( $this->wikiConfig->get( 'GEMentorshipEnabled' ) ) {
 			try {
-				// Select a mentor. FIXME Not really necessary, but avoids a change in functionality
-				//   after introducing MentorManager, making debugging easier.
-				GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
-					->getMentorManager()->getMentorForUser( $user );
+				// Select a primary & backup mentor. FIXME Not really necessary, but avoids a
+				// change in functionality after introducing MentorManager, making debugging easier.
+				$mentorManager = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
+					->getMentorManager();
+
+				$mentorManager->getMentorForUser( $user, MentorStore::ROLE_PRIMARY );
+				$mentorManager->getMentorForUser( $user, MentorStore::ROLE_BACKUP );
 			} catch ( Throwable $throwable ) {
 				Util::logException( $throwable, [
 					'user' => $user->getId(),

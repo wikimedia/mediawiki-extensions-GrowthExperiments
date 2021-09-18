@@ -281,6 +281,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$context = $context ?? RequestContext::getMain();
 		return new MentorPageMentorManager(
 			$growthServices->getMentorStore(),
+			$growthServices->getMentorStatusManager(),
 			$coreServices->getTitleFactory(),
 			$pages ? $this->getMockWikiPageFactory( $pages )
 				: $coreServices->getWikiPageFactory(),
