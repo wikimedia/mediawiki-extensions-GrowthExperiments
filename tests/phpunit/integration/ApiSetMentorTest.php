@@ -142,7 +142,6 @@ class ApiSetMentorTest extends ApiTestCase {
 	}
 
 	private function getMockMentorStore( UserIdentity $mentee, UserIdentity $mentor ) {
-		$oldMentor = $this->getMutableTestUser()->getUser();
 		$mock = $this->getMockBuilder( DatabaseMentorStore::class )
 			->setConstructorArgs( [
 				$this->getMockBuilder( UserFactory::class )
