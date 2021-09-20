@@ -173,12 +173,12 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 		$mentorUser = $this->getTestUser( 'sysop' )->getUser();
 		$mentee = $this->getMutableTestUser()->getUser();
 		$this->insertPage( 'MentorsList', str_replace( '$1', $mentorUser->getName(), $mentorsList ) );
-		$this->getServiceContainer()->getUserOptionsManager()->setOption(
-			$mentee,
-			MentorPageMentorManager::MENTOR_PREF,
-			$mentorUser->getId()
-		);
-		$mentee->saveSettings();
+		GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorStore()
+			->setMentorForUser(
+				$mentee,
+				$mentorUser
+			);
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $mentee );
 		$mentorManager = $this->getMentorManager( $context );
@@ -208,12 +208,12 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 		$mentorUser = $this->getTestUser( 'sysop' )->getUser();
 		$mentee = $this->getMutableTestUser()->getUser();
 		$this->insertPage( 'MentorsList', '[[User:' . $mentorUser->getName() . ']]' );
-		$this->getServiceContainer()->getUserOptionsManager()->setOption(
-			$mentee,
-			MentorPageMentorManager::MENTOR_PREF,
-			$mentorUser->getId()
-		);
-		$mentee->saveSettings();
+		GrowthExperimentsServices::wrap( $this->getServiceContainer() )
+			->getMentorStore()
+			->setMentorForUser(
+				$mentee,
+				$mentorUser
+			);
 		$context = new DerivativeContext( RequestContext::getMain() );
 		$context->setUser( $mentee );
 		$mentorManager = $this->getMentorManager( $context );
