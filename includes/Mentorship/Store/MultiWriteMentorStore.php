@@ -6,6 +6,9 @@ use DBAccessObjectUtils;
 use LogicException;
 use MediaWiki\User\UserIdentity;
 
+/**
+ * @deprecated since 1.38, use DatabaseMentorStore directly instead
+ */
 class MultiWriteMentorStore extends MentorStore {
 	/** @var int */
 	private $migrationStage;
@@ -29,6 +32,7 @@ class MultiWriteMentorStore extends MentorStore {
 		bool $wasPosted
 	) {
 		parent::__construct( $wasPosted );
+		wfDeprecated( __METHOD__, '1.38' );
 
 		$this->migrationStage = $migrationStage;
 		$this->preferenceMentorStore = $preferenceMentorStore;
@@ -43,6 +47,8 @@ class MultiWriteMentorStore extends MentorStore {
 		string $mentorRole,
 		$flags
 	): ?UserIdentity {
+		wfDeprecated( __METHOD__, '1.38' );
+
 		if ( $this->migrationStage & SCHEMA_COMPAT_READ_OLD ) {
 			return $this->preferenceMentorStore
 				->loadMentorUserUncached( $mentee, $mentorRole, $flags );
@@ -73,6 +79,7 @@ class MultiWriteMentorStore extends MentorStore {
 			);
 		}
 
+		wfDeprecated( __METHOD__, '1.38' );
 		return $this->databaseMentorStore->getMenteesByMentor(
 			$mentor,
 			$mentorRole,
@@ -88,6 +95,8 @@ class MultiWriteMentorStore extends MentorStore {
 		UserIdentity $mentor,
 		string $mentorRole = self::ROLE_PRIMARY
 	): void {
+		wfDeprecated( __METHOD__, '1.38' );
+
 		if ( $this->migrationStage & SCHEMA_COMPAT_WRITE_OLD ) {
 			$this->preferenceMentorStore->setMentorForUser( $mentee, $mentor, $mentorRole );
 		}
