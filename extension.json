@@ -1502,6 +1502,11 @@
 			"tests/qunit/homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditPagerWidget.test.js",
 			"modules/homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.ErrorCardWidget.js",
 			"tests/qunit/homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.ErrorCardWidget.test.js",
+			"modules/ext.growthExperiments.StructuredTask/addlink/AddLinkArticleTarget.js",
+			"modules/ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
+			"modules/ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
+			"tests/qunit/ext.growthExperiments.StructuredTask/addlink/AddLinkArticleTarget.test.js",
+			"tests/qunit/ext.growthExperiments.StructuredTask/addlink/dataprovider.json",
 			{
 				"name": "modules/help/data.json",
 				"file": "tests/qunit/help/configData.json"
@@ -1531,6 +1536,7 @@
 			"oojs-ui",
 			"mediawiki.qunit-testrunner",
 			"mediawiki.base",
+			"ext.growthExperiments.SuggestedEditSession",
 			"sinonjs"
 		]
 	},

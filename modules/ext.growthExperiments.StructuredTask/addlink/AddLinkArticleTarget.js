@@ -17,10 +17,13 @@ var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession'
  * Mixin for a ve.init.mw.ArticleTarget instance. Used by AddLinkDesktopArticleTarget and
  * AddLinkMobileArticleTarget.
  *
+ * @param logger LinkSuggestionInteractionLogger For testing purposes; desktop/mobile version of
+ *  this class have a logger injected already.
  * @mixin mw.libs.ge.AddLinkArticleTarget
  * @extends ve.init.mw.ArticleTarget
  */
-function AddLinkArticleTarget() {
+function AddLinkArticleTarget( logger ) {
+	this.logger = logger;
 }
 
 /**

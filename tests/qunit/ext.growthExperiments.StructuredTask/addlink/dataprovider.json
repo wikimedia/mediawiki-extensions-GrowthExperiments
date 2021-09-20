@@ -1,0 +1,25 @@
+[
+	{
+		"articleContent": [
+			{
+				"element": "h2",
+				"content": "Time"
+			},
+			{
+				"element": "p",
+				"content": "It is Time for this test to work."
+			}
+		],
+		"body": "<h2>Time</h2><p>It is Time for this test to work.</p>",
+		"annotatedBody": "<h2>Time</h2><p>It is <span typeof=\"mw:RecommendedLink\" data-target=\"Time\" data-text=\"Time\" data-wikitext-offset=\"123\" data-score=\"0.5\">Time</span> for this test to work.</p>",
+		"suggestions": [
+			{
+				"link_text": "Time",
+				"link_target": "Time",
+				"match_index": 0,
+				"wikitext_offset": 123,
+				"score": 0.5
+			}
+		]
+	}
+]
