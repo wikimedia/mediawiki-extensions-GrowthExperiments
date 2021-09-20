@@ -838,7 +838,7 @@ class HomepageHooks implements
 			$homeMenuEntry = $group->getEntryByName( 'home' );
 			// @phan-suppress-next-line PhanUndeclaredMethod
 			$homeMenuEntry->overrideText( $context->msg( 'mainpage-nstab' )->text() )
-				->overrideCssClass( \MinervaUI::iconClass( 'newspaper', 'before' ) );
+				->overrideIcon( 'minerva-newspaper' );
 		}
 		catch ( DomainException $exception ) {
 			return;
