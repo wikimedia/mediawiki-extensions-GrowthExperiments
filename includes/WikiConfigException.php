@@ -2,7 +2,8 @@
 
 namespace GrowthExperiments;
 
-use Exception;
+use Throwable;
+use Wikimedia\NormalizedException\NormalizedException;
 
 /**
  * Used to signal configuration errors which are within the purview of the wiki community
@@ -11,5 +12,16 @@ use Exception;
  * about them, and important for debugging, but they are not relevant for site reliability
  * engineering.
  */
-class WikiConfigException extends Exception {
+class WikiConfigException extends NormalizedException {
+
+	/** @inheritDoc */
+	public function __construct(
+		string $normalizedMessage,
+		array $messageContext = [],
+		int $code = 0,
+		Throwable $previous = null
+	) {
+		parent::__construct( $normalizedMessage, $messageContext, $code, $previous );
+	}
+
 }
