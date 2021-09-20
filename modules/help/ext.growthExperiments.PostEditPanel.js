@@ -178,6 +178,10 @@
 		} else {
 			url = new mw.Title( task.title ).getUrl( params );
 		}
+		// Pageviews should never been shown in the post edit dialog.
+		if ( task.pageviews ) {
+			delete task.pageviews;
+		}
 		taskCard = new SmallTaskCard( {
 			task: task,
 			taskTypes: this.taskTypes,
