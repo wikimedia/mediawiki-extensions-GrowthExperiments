@@ -39,12 +39,15 @@ class PreferenceMentorStore extends MentorStore {
 
 	/**
 	 * @inheritDoc
+	 * @deprecated since 1.38, use DatabaseMentorStore instead
 	 */
 	public function loadMentorUserUncached(
 		UserIdentity $mentee,
 		string $mentorRole,
 		$flags
 	): ?UserIdentity {
+		wfDeprecated( __METHOD__, '1.38' );
+
 		// As of now, we don't have non-primary mentors, and by the time T227876 is worked on,
 		// we will use DatabaseMentorStore. Make sure we throw if mentor is not primary for safety.
 		// This should never actually happen.
@@ -84,12 +87,15 @@ class PreferenceMentorStore extends MentorStore {
 
 	/**
 	 * @inheritDoc
+	 * @deprecated since 1.38, use DatabaseMentorStore instead
 	 */
 	protected function setMentorForUserInternal(
 		UserIdentity $mentee,
 		UserIdentity $mentor,
 		string $mentorRole = self::ROLE_PRIMARY
 	): void {
+		wfDeprecated( __METHOD__, '1.38' );
+
 		// As of now, we don't have non-primary mentors, and by the time T227876 is worked on,
 		// we will use DatabaseMentorStore. Make sure we throw if mentor is not primary for safety.
 		// This should never actually happen.
