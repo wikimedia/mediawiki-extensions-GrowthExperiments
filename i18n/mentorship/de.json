@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Reinhard Kraasch",
+			"Umlaut",
 			"Zabe"
 		]
 	},
@@ -10,9 +11,13 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Deine}} Mentees",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Die Tabelle zeigt den Status und den Fortschritt {{GENDER:|deiner}} aktuellen Mentees. Passe die Tabelle mit Hilfe von Filtern an, um genauere Ergebnisse zu erhalten.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Die Tabelle erfordert JavaScript. Bitte aktiviere JavaScript, um dieses Modul nutzen zu können.",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filter hinzufügen",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Senden",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Mentees mit Gesamtzahl der Bearbeitungen anzeigen",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legende",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Benutzername",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Bearbeitungszähler",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Registrierungsdatum",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filter",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Aktualisieren",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Bearbeitungszähler",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Von",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Bis",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "Nur markierte Mentees anzeigen",
@@ -25,5 +30,11 @@
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "Liste der Lotsinnen/Lotsen",
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Wie du dich als Lotsin/Lotse vorstellen möchtest",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Wie du einen Mentee zugeteilt bekommen möchtest",
-	"growthexperiments-mentor-dashboard-resources-link-tools": "Werkzeuge zur Neulings-Startseite"
+	"growthexperiments-mentor-dashboard-resources-link-tools": "Werkzeuge zur Neulings-Startseite",
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Einstellungen",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktiv",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Abbrechen",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Pause",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "Tage",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Ein unbekannter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
 }

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Omotecho"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "表示された利用者を指導するなら星マークを付け、しないなら外します (非公開で保存されログ記録は残りません)",
+	"apihelp-growthstarmentee-param-gesaction": "どの操作をするか (<kbd>星を付ける</kbd> または <kbd>星を外す</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "星マークを付ける (外す) 生徒",
+	"apihelp-query+growthstarredmentees-summary": "現在、ログイン中の指導役ごとに、星マークを付けた生徒の一覧を表示する",
+	"apihelp-growthsetmentorstatus-summary": "表示してある利用者の指導役の状況を活動中／不在に切り替える",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "状況の更新",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "指導役を不在に指定した場合、その期間も示す必要があります (単位は日数)",
+	"apihelp-query+growthmentorstatus-summary": "現在の指導役の状況をクエリで問い合わせる"
+}

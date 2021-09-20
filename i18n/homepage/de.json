@@ -22,6 +22,7 @@
 			"Tkarcher",
 			"Tobi 406",
 			"Umherirrender",
+			"Umlaut",
 			"Wikipeter-HH",
 			"Wolfdietmann"
 		]
@@ -228,6 +229,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Erweitere kurze Artikel",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Verlinke Artikel",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Artikel verlinken",
+	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Ein Bild hinzufügen",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Maschinelle Vorschläge",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biografie (alle)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biografie (Frauen)",
@@ -309,6 +311,7 @@
 	"log-action-filter-growthexperiments-claimmentee": "Betreuten-Änderungen",
 	"log-action-filter-growthexperiments-setmentor": "Lotsen/Lotsinnen-Änderungen",
 	"log-action-filter-growthexperiments-addlink": "Linkvorschläge",
+	"log-action-filter-growthexperiments-addimage": "Hast du Vorschläge?",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Der angegebene Benutzername ist ungültig",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|ist}} {{GENDER:$3|dein}} neuer {{GENDER:$2|Lotse|Lotsin}}",
 	"growthexperiments-notification-body-mentor-change": "Grund: $1",
@@ -396,5 +399,9 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "Hast du Vorschläge?",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Wenn du den Modus wechselst, kannst {{GENDER:$1|du}} andere Bearbeitungen vornehmen. Beende die Überprüfung, um {{GENDER:$1|deine}} bisherigen Bearbeitungen zu speichern.",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Wechsle den Modus ohne Speicherung",
-	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Abbrechen"
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Abbrechen",
+	"growthexperiments-addimage-inspector-yes-button": "Ja",
+	"growthexperiments-addimage-inspector-no-button": "Nein",
+	"growthexperiments-addimage-inspector-skip-button": "Überspringen",
+	"growthexperiments-addimage-inspector-help-button": "Hilfe bei der Bearbeitung erhalten"
 }

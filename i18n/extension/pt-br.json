@@ -11,6 +11,7 @@
 	"growthexperiments-config-validator-error": "A validação de $1 falhou com: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> espera-se que seja <code>$2</code>, mas é <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Incompatibilidade de modelo de conteúdo: O arquivo de configuração do GrowthExperiments deve ter um modelo de conteúdo JSON, $1 detectado",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID de manipulador de tipo de tarefa inválida: <code>$1</code> não é um valor válido",
 	"growthexperiments-edit-config-disabled": "A configuração da comunidade está desativada no momento.",
 	"growthexperiments-edit-config-title": "Editar configuração de Growth",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Última atualização por [[User:$1|$1]] $2.",

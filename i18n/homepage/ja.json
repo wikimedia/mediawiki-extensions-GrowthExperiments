@@ -190,6 +190,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-description-expand": "ウィキペディアの記事の多くは1文か2文です。記事をより完璧にするために、より多くの情報を見つけて追加してください。",
 	"growthexperiments-homepage-suggestededits-tasktype-description-links": "リンクを追加するのが最も簡単な編集です。リンクは、読者が記事間を移動してより迅速に学ぶことに役立ちます。",
 	"growthexperiments-homepage-suggestededits-tasktype-description-link-recommendation": "リンクを追加するのが最も簡単な編集方法です。リンクをクリックすると、読者がもっと知りたいものを選べます。<br />リンクはマシンによって提案され、 {{GENDER:$1|皆さん}}にはそれらを記事に追加するかどうかを決めてもらいます。",
+	"growthexperiments-homepage-suggestededits-tasktype-description-image-recommendation": "画像は、記事の主題を理解するのに役立ちます。<br />機械的に画像を選んで表示するので、{{GENDER:$1|皆さんは}}その画像が記事にあっているかどうか判断してください。画像の説明文（キャプション）も書いてもらえます。",
 	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "校正（誤字や文法、文体の修正）",
 	"growthexperiments-homepage-suggestededits-tasktype-label-references": "出典を探す（既存の記事への情報源の追加）",
 	"growthexperiments-homepage-suggestededits-tasktype-label-update": "記事を更新する（既存の記事を最新のものにする）",
@@ -375,5 +376,6 @@
 	"growthexperiments-structuredtask-editmode-selection-label": "エディターを切り替え",
 	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "提案",
 	"growthexperiments-structuredtask-editmode-selection-visual": "ビジュアル編集",
-	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "キャンセル"
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "キャンセル",
+	"growthexperiments-addimage-inspector-help-button": "編集についてヘルプしてもらう"
 }

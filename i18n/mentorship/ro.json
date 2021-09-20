@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"NGC 54"
+		]
+	},
+	"growthexperiments-mentor-dashboard-title": "Pagina mentorului",
+	"growthexperiments-mentor-dashboard-pt-link": "Pagina mentorului",
+	"growthexperiments-mentor-dashboard-disabled": "Pagina mentorului nu este activată la acest wiki.",
+	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Ucenicii {{GENDER:|dvs.}}",
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Setări"
+}

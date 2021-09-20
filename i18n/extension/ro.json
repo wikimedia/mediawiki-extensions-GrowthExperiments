@@ -9,6 +9,7 @@
 	"growthexperiments-config-validator-error": "Validarea pentru $1 a eșuat cu: „$2”",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> este de așteptat să fie <code>$2</code>, dar este <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Nepotrivire model de conținut: fișierul de configurare GrowthExperiments trebuie să aibă JSON ca model de conținut, $1 detectat",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Tipul sarcinii ID-ului handler-ului invalid: <code>$1</code> nu este o valoare validă",
 	"growthexperiments-edit-config-disabled": "Configurația comunității este în acest moment dezactivată.",
 	"growthexperiments-edit-config-title": "Editare configurare Growth",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Ultima actualizare de [[User:$1|$1]] $2.",

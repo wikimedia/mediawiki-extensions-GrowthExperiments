@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Hanna Tardos",
-			"Misibacsi"
+			"Misibacsi",
+			"Tgr"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Felhasználónév",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Küldés",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Frissítés",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Keresés"
 }

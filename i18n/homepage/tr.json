@@ -8,6 +8,7 @@
 			"Hedda",
 			"Jelican9",
 			"Joseph",
+			"Melissadilara",
 			"Mirzali",
 			"MuratTheTurkish",
 			"SaldırganSincap",
@@ -201,6 +202,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-time-expand": "20-30 dakika",
 	"growthexperiments-homepage-suggestededits-tasktype-time-update": "20-30 dakika",
 	"growthexperiments-homepage-suggestededits-tasktype-time-link-recommendation": "3-5 dakika",
+	"growthexperiments-homepage-suggestededits-tasktype-time-image-recommendation": "3-5 dakika",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "$1 düzenleme",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "Kolay",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "Orta",
@@ -219,6 +221,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Kısa maddeleri genişletin",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Maddeler arasına bağlantılar ekleyin",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Maddeler arasına bağlantılar ekleyin",
+	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Resim ekle",
 	"growthexperiments-homepage-suggestededits-tasktype-machine-description": "Makine önerileri",
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biyografi (tümü)",
 	"growthexperiments-homepage-suggestededits-topic-name-women": "Biyografi (kadın)",
@@ -387,5 +390,9 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "Öneri bırakın?",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Göndermeden değiştir",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "İptal",
-	"growthexperiments-addlink-suggestions-outdated": "{{GENDER:|Siz}} incelerken bu maddeyi başka bir kullanıcı düzenledi ve bu yüzden değişiklikleriniz kaydedilemedi."
+	"growthexperiments-addlink-suggestions-outdated": "{{GENDER:|Siz}} incelerken bu maddeyi başka bir kullanıcı düzenledi ve bu yüzden değişiklikleriniz kaydedilemedi.",
+	"growthexperiments-addimage-inspector-yes-button": "Evet",
+	"growthexperiments-addimage-inspector-no-button": "Hayır",
+	"growthexperiments-addimage-inspector-skip-button": "Atla",
+	"growthexperiments-addimage-inspector-show-button": "Resim önerisi gör"
 }

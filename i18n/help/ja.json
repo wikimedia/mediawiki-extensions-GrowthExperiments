@@ -102,6 +102,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-main-publish": "{{GENDER:|}}記事の補足が終わったら、「$1」を押して{{GENDER:|自分}}の編集を保存しましょう!",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-publish": "{{GENDER:|}}記事の補足が終わったら、青い箱の矢印を押して{{GENDER:|自分}}の編集を保存しましょう！",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|記事の補足についてもっと詳しく知りたい]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "リンクの追加は、利用者が早く習熟する助けになります。",
 	"growthexperiments-help-panel-questioncomplete-title": "質問をしてみる",
 	"growthexperiments-help-panel-questioncomplete-header": "質問の投稿が完了しました。",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "投稿した質問は利用案内に表示され、他の編集者がボランティアで寄せる回答待ちです。",

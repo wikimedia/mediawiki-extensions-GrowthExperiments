@@ -1,11 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"DreZhsh",
 			"Gomoko"
 		]
 	},
 	"apihelp-growthstarmentee-summary": "Marquer ou supprimer le marquage d’un tutoré tel que signalé par l’utilisateur courant (stocké de façon confidentielle et non tracé)",
 	"apihelp-growthstarmentee-param-gesaction": "Action à entreprendre (<kbd>star</kbd> ou <kbd>unstar</kbd>)",
 	"apihelp-growthstarmentee-param-gesmentee": "Tutoré à (ne plus) marquer",
-	"apihelp-query+growthstarredmentees-summary": "Obtenir une liste des tutorés marqués par le tuteur actuellement connecté"
+	"apihelp-query+growthstarredmentees-summary": "Obtenir une liste des tutorés marqués par le tuteur actuellement connecté",
+	"apihelp-growthsetmentorstatus-summary": "Définir le statut de mentor de l'utilisateur actuel comme actif/absent.",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Nouvel état"
 }

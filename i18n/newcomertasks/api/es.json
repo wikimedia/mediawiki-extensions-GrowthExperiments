@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"LORDZRAWN"
+			"LORDZRAWN",
+			"Reverse88"
 		]
 	},
-	"apihelp-query+growthtasks-param-topics": "Temas del artículo a preferir en las sugerencias de tareas."
+	"apihelp-query+growthtasks-param-topics": "Temas del artículo a preferir en las sugerencias de tareas.",
+	"apierror-growthexperiments-addlink-handler-notfound": "Recomendación de enlace graba no encontrada"
 }

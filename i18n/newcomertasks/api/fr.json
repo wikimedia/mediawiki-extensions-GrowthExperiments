@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"DreZhsh",
 			"Gomoko",
 			"Wladek92"
 		]
@@ -13,5 +14,6 @@
 	"apihelp-query+growthtasks-param-excludepageids": "ID de page à exclure de la requête.",
 	"apihelp-query+growthtasks-param-debug": "Ajouter des données de débogage à la sortie.",
 	"apihelp-query+growthtasks-example-1": "Obtenir des recommandations de tâche pour des tâches de type copie-modification pour l’utilisateur actuel.",
-	"apihelp-query+growthtasks-example-2": "Obtenir des recommandations de tâche pour l’utilisateur actuel, avec des informations supplémentaires sur les pages."
+	"apihelp-query+growthtasks-example-2": "Obtenir des recommandations de tâche pour l’utilisateur actuel, avec des informations supplémentaires sur les pages.",
+	"apierror-growthexperiments-addlink-handler-notfound": "Enregistrement de la suggestion de lien non trouvé"
 }

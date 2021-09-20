@@ -1,11 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Reinhard Kraasch"
+			"Reinhard Kraasch",
+			"Umlaut"
 		]
 	},
 	"apihelp-growthstarmentee-summary": "Setzen oder Aufheben der Sternchen-Markierung eines Mentees durch den aktuellen Benutzer (privat gespeichert und nicht protokolliert)",
 	"apihelp-growthstarmentee-param-gesaction": "Zu ergreifende Maßnahmen (<kbd>star</kbd> oder <kbd>unstar</kbd>)",
 	"apihelp-growthstarmentee-param-gesmentee": "Mentee, bei dem die Sternchen-Markierung gesetzt oder entfernt werden soll.",
-	"apihelp-query+growthstarredmentees-summary": "Liste der Mentees mit Sternchen-Markierung für {{GENDER:|den aktuellen Lotsen|die aktuelle Lotsin}}."
+	"apihelp-query+growthstarredmentees-summary": "Liste der Mentees mit Sternchen-Markierung für {{GENDER:|den aktuellen Lotsen|die aktuelle Lotsin}}.",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Neuer Status"
 }

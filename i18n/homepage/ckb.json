@@ -64,7 +64,7 @@
 	"growthexperiments-homepage-suggested-edits-header": "دەستکارییە پێشنیارکراوەکان",
 	"growthexperiments-homepage-impact-header": "{{GENDER:$1|کاریگەرییەکەت}}",
 	"growthexperiments-homepage-impact-subheader-text": "خەڵک سەیری ئەو وتارانە دەکەن کە {{GENDER:$1|تۆ}} دەستکاریت کردووە!",
-	"growthexperiments-homepage-impact-subheader-subtext": "دەستکارییە بینراوەکانی {{GENDER:$1|تۆ}} (لە دوایین ٦٠ ڕۆژژدا):",
+	"growthexperiments-homepage-impact-subheader-subtext": "دەستکارییە بینراوەکانی {{GENDER:$1|تۆ}} (لە دوایین ٦٠ ڕۆژدا):",
 	"growthexperiments-homepage-impact-subheader-text-no-edit": "هێشتا {{GENDER:$1|تۆ}} هیچ دەستکارییەکت لە وتارەکان نەکردووە.",
 	"growthexperiments-homepage-impact-body-no-edit": "<strong>0</strong> دەستکاری بۆ وتارەکان",
 	"growthexperiments-homepage-impact-article-link-tooltip": "بڕۆ بۆ وتارەکە",

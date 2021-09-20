@@ -13,5 +13,9 @@
 	"apihelp-query+growthtasks-param-excludepageids": "Ідентифікатори сторінок, які слід виключити із запиту.",
 	"apihelp-query+growthtasks-param-debug": "Додати дані зневадження у вивід.",
 	"apihelp-query+growthtasks-example-1": "Отримати рекомендації для завдань коригування для поточного користувача.",
-	"apihelp-query+growthtasks-example-2": "Отримати рекомендації для поточного користувача з розширеною інформацією про сторінки."
+	"apihelp-query+growthtasks-example-2": "Отримати рекомендації для поточного користувача з розширеною інформацією про сторінки.",
+	"apierror-growthexperiments-addimage-handler-accepted-missing": "Параметр «прийнято» відсутній у даних плагіна «Додати зображення»",
+	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Параметр «прийнято» має бути логічним у даних плагіна «Додати зображення», це $1",
+	"apierror-growthexperiments-addlink-handler-notfound": "Історію рекомендацій посилань не знайдено",
+	"apierror-growthexperiments-addlink-handler-wrongtargets": "Неочікувані цілі рекомендацій посилань: $1"
 }

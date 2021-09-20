@@ -3,6 +3,7 @@
 		"authors": [
 			"Bluetpp",
 			"Leducthn",
+			"Minh Nguyen",
 			"Trizek (WMF)",
 			"Tuanminh01",
 			"Vinhtantran"
@@ -120,11 +121,11 @@
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Xem câu hỏi của bạn tại Bàn giúp đỡ",
 	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "Các thông báo cho câu hỏi của bạn:",
 	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Bạn sẽ nhận được một thông báo tại đây trên {{SITENAME}} ngay khi có hồi đáp.",
-	"growthexperiments-help-panel-questioncomplete-notifications-email": "Bạn cũng sẽ nhận được một email gửi tới $1 ($2)",
+	"growthexperiments-help-panel-questioncomplete-notifications-email": "Bạn cũng sẽ nhận được bức thư điện tử gửi tới $1 ($2)",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "thay đổi",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Nếu {{GENDER:$2|bạn}} cũng muốn được thông báo bằng email, hãy xác nhận địa chỉ email của bạn: $1",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Nếu {{GENDER:$2}}bạn cũng muốn được thông báo qua thư điện tử, hãy xác nhận địa chỉ thư điện tử của bạn: $1",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Xác nhận thư điện tử",
-	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Nếu {{GENDER:$1|bạn}} cũng muốn được thông báo qua email, hãy thêm địa chỉ email của bạn.",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Nếu {{GENDER:$1}}bạn cũng muốn được thông báo qua thư điện tử, hãy thêm địa chỉ thư điện tử của bạn.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Thêm email",
 	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Về bảng trợ giúp",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "Bạn có biết với việc đăng câu hỏi này, bạn đã vừa thực hiện sửa đổi đầu tiên của mình không? Chúc mừng bạn!",
