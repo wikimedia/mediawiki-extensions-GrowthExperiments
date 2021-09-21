@@ -50,8 +50,7 @@
 			}
 		} );
 		var itemToSelect = this.mentorStatusDropdown.getMenu().findItemFromData(
-			$( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-status-dropdown-container' )
-				.attr( 'data-current-status' )
+			$( '#growthexperiments-mentor-dashboard-mentor-tools-mentor-status-dropdown select' ).val()
 		);
 		this.mentorStatusDropdown.getMenu().selectItem( itemToSelect );
 		this.mentorStatusDropdown.setIcon( itemToSelect.getIcon() );
