@@ -180,7 +180,7 @@
 		}
 		// Pageviews should never been shown in the post edit dialog.
 		if ( task.pageviews ) {
-			delete task.pageviews;
+			task.pageviews = null;
 		}
 		taskCard = new SmallTaskCard( {
 			task: task,
