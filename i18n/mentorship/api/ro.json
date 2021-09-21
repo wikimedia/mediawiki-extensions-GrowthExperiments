@@ -7,5 +7,9 @@
 	"apihelp-growthstarmentee-summary": "Marcați sau demarcați un ucenic ca fiind cu stea de utilizatorul actual (stocat privat și nu în jurnal)",
 	"apihelp-growthstarmentee-param-gesaction": "Acțiunea de luat (<kbd>marcare</kbd> or <kbd>demarcare/kbd>)",
 	"apihelp-growthstarmentee-param-gesmentee": "Ucenic de (de)marcat",
-	"apihelp-query+growthstarredmentees-summary": "Obțineți lista ucenicilor marcați de către mentorul momentan autentificat"
+	"apihelp-query+growthstarredmentees-summary": "Obțineți lista ucenicilor marcați de către mentorul momentan autentificat",
+	"apihelp-growthsetmentorstatus-summary": "Setează starea curentă de mentor a utilizatorului ca activă/indisponibilă",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Stare nouă",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "Când se setează mentorul ca indisponibil(ă), trebuie să aibă lungimea stării de indisponibilitate (în zile)",
+	"apihelp-query+growthmentorstatus-summary": "Interoghează starea curentă de mentor a utilizatorului"
 }

@@ -7,12 +7,15 @@
 			"Silvonen"
 		]
 	},
+	"welcomesurvey": "{{GENDER:$1|Tervetuloa}}, $1!",
 	"welcomesurvey-save-confirmation-title": "Kiitos! Vastauksesi on tallennettu.",
+	"welcomesurvey-save-confirmation-text": "Vastauksesi auttavat meitä tarjoamaan sinulle hyödyllisiä tapoja Wikipedian muokkaamisen aloittamiseen.",
 	"welcomesurvey-subtitle": "Auta meitä parantamaan Wikipedia-kokemustasi vastaamalla muutamaan vapaaehtoiseen kysymykseen.",
 	"welcomesurvey-save-btn": "Valmis",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Ohita}} tämä kysely",
 	"welcomesurvey-close-btn": "Sulje ja palaa sivulle $1",
 	"welcomesurvey-sidebar-privacy-title": "Arvostamme yksityisyyttäsi",
+	"welcomesurvey-sidebar-privacy-text": "Wikimedia-säätiö käyttää {{GENDER:$2|vastauksiasi}} auttaakseen sinua aloittamaan {{SITENAME}}n muokkaamisen. $1.",
 	"welcomesurvey-sidebar-editing-title": "Muokkaamisen aloittaminen",
 	"welcomesurvey-question-reason-label": "Miksi loit tänään käyttäjätunnuksesi?",
 	"welcomesurvey-dropdown-option-select-label": "Valitse...",
