@@ -383,6 +383,8 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Comutarea modurilor {{GENDER:$1|vă}} va permite să faceți alte feluri de editări. Terminați de revizuiți pentru a {{GENDER:$1|vă}} trimite progresul de până acum.",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Comutați fără a trimite",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Anulare",
+	"growthexperiments-addlink-suggestions-outdated": "Alt utilizator a editat acest articol în timp ce {{GENDER:|dvs.}} îl revizuiați, iar schimbările {{GENDER:|voastre}} nu au putut fi salvate.",
+	"growthexperiments-addimage-inspector-title": "$1 {{PLURAL:$1|imagine sugerată găsită|imagini sugerate găsite}}",
 	"growthexperiments-addimage-inspector-cta": "Adăugați această imagine la începutul articolului?",
 	"growthexperiments-addimage-inspector-yes-button": "Da",
 	"growthexperiments-addimage-inspector-no-button": "Nu",
