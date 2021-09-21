@@ -77,7 +77,7 @@ class MentorPageMentorManagerTest extends MediaWikiTestCase {
 		$mentorManager = $this->getMentorManager();
 
 		$this->expectException( Exception::class );
-		$this->expectExceptionMessage( 'no mentor available' );
+		$this->expectExceptionMessage( 'No mentor available' );
 
 		$mentorManager->getMentorForUser( $this->getTestUser()->getUser() );
 	}

@@ -127,6 +127,11 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$mentorUser = $this->mentorStore->loadMentorUser( $user );
 		if ( !$mentorUser ) {
 			$mentorUser = $this->getRandomAutoAssignedMentor( $user );
+			if ( !$mentorUser ) {
+				// TODO: Remove this call (T290371)
+				throw new WikiConfigException( 'Mentorship: No mentor available' );
+			}
+
 			$this->mentorStore->setMentorForUser( $user, $mentorUser );
 		}
 		return $this->newMentorFromUserIdentity( $mentorUser, $user );
@@ -216,12 +221,16 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 */
 	public function getRandomAutoAssignedMentor(
 		UserIdentity $mentee, array $excluded = []
-	): UserIdentity {
+	): ?UserIdentity {
 		$autoAssignedMentors = $this->getAutoAssignedMentors();
 		if ( count( $autoAssignedMentors ) === 0 ) {
-			throw new WikiConfigException(
-				'Mentorship: no mentor available for user ' . $mentee->getName()
+			$this->logger->debug(
+				'Mentorship: No mentor available for user {user}',
+				[
+					'user' => $mentee->getName()
+				]
 			);
+			return null;
 		}
 		$autoAssignedMentors = array_values( array_diff( $autoAssignedMentors,
 			array_map( static function ( UserIdentity $excludedUser ) {
@@ -229,24 +238,30 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			}, $excluded )
 		) );
 		if ( count( $autoAssignedMentors ) === 0 ) {
-			throw new WikiConfigException(
-				'Homepage Mentorship module: no mentor available' .
-				' but excluded users'
+			$this->logger->debug(
+				'Mentorship: No mentor available for {user} but excluded users',
+				[
+					'user' => $mentee->getName()
+				]
 			);
+			return null;
 		}
 		$autoAssignedMentors = array_values( array_diff( $autoAssignedMentors, [ $mentee->getName() ] ) );
 		if ( count( $autoAssignedMentors ) === 0 ) {
-			throw new WikiConfigException(
-				'Homepage Mentorship module: no mentor available for a user' .
-				' but themselves'
+			$this->logger->debug(
+				'Mentorship: No mentor available for {user} but themselves',
+				[
+					'user' => $mentee->getName()
+				]
 			);
+			return null;
 		}
 
 		$selectedMentorName = $autoAssignedMentors[ rand( 0, count( $autoAssignedMentors ) - 1 ) ];
 		$result = $this->userIdentityLookup->getUserIdentityByName( $selectedMentorName );
 		if ( $result === null ) {
 			throw new WikiConfigException(
-				'Homepage Mentorship module: no mentor available'
+				'Mentorship: Mentor ' . $selectedMentorName . ' does not have a valid username'
 			);
 		}
 

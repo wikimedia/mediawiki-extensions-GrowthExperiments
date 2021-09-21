@@ -126,10 +126,10 @@ abstract class MentorManager {
 	 *
 	 * @param UserIdentity $mentee
 	 * @param UserIdentity[] $excluded A list of users who should not be selected.
-	 * @return UserIdentity The selected mentor.
-	 * @throws WikiConfigException When no mentors are available.
+	 * @return UserIdentity|null The selected mentor; null if none available.
+	 * @throws WikiConfigException If the mentor list is invalid.
 	 */
 	abstract public function getRandomAutoAssignedMentor(
 		UserIdentity $mentee, array $excluded = []
-	): UserIdentity;
+	): ?UserIdentity;
 }
