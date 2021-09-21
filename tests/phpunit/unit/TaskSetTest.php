@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests;
+namespace GrowthExperiments\Tests\Unit;
 
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
@@ -11,17 +11,17 @@ use MediaWikiUnitTestCase;
 use TitleValue;
 
 /**
- * @covers \GrowthExperiments\NewcomerTasks\Task\TaskSet
+ * @coversDefaultClass \GrowthExperiments\NewcomerTasks\Task\TaskSet
  */
 class TaskSetTest extends MediaWikiUnitTestCase {
 
+	/**
+	 * @covers ::getIterator
+	 * @covers ::getOffset
+	 * @covers ::getTotalCount
+	 */
 	public function testTaskType() {
-		$taskType = new TaskType( 'foo', TaskType::DIFFICULTY_EASY );
-		$taskSet = new TaskSet( [
-			new Task( $taskType, new TitleValue( NS_MAIN, 'Foo' ) ),
-			new Task( $taskType, new TitleValue( NS_MAIN, 'Bar' ) ),
-			new Task( $taskType, new TitleValue( NS_MAIN, 'Baz' ) ),
-		], 3, 1, new TaskSetFilters() );
+		$taskSet = $this->getTaskSet();
 		$pages = array_map( static function ( Task $task ) {
 			return $task->getTitle()->getText();
 		}, iterator_to_array( $taskSet ) );
@@ -31,10 +31,22 @@ class TaskSetTest extends MediaWikiUnitTestCase {
 		$this->assertSame( 1, $taskSet->getOffset() );
 	}
 
+	/**
+	 * @covers ::__construct
+	 */
 	public function testInvalidParameter() {
 		$this->expectException( InvalidArgumentException::class );
 
 		new TaskSet( [ new TitleValue( NS_MAIN, 'Foo' ) ], 1, 0, new TaskSetFilters() );
+	}
+
+	private function getTaskSet(): TaskSet {
+		$taskType = new TaskType( 'foo', TaskType::DIFFICULTY_EASY );
+		return new TaskSet( [
+			new Task( $taskType, new TitleValue( NS_MAIN, 'Foo' ) ),
+			new Task( $taskType, new TitleValue( NS_MAIN, 'Bar' ) ),
+			new Task( $taskType, new TitleValue( NS_MAIN, 'Baz' ) ),
+		], 3, 1, new TaskSetFilters() );
 	}
 
 }

@@ -6,8 +6,9 @@ use GlobalVarConfig;
 use GrowthExperiments\EditInfoService;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
-use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationSubmissionLogFactory;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\Task\Task;
@@ -132,6 +133,11 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 			$titleFactoryMock,
 			$linkBatchFactoryMock
 		);
+		$linkRecommendationFilter = new LinkRecommendationFilter(
+			$this->getMockBuilder( LinkRecommendationStore::class )
+				->disableOriginalConstructor()
+				->getMock()
+		);
 		return new SuggestedEdits(
 			$contextMock,
 			GlobalVarConfig::newInstance(),
@@ -144,9 +150,7 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 			$titleFactoryMock,
 			$protectionFilter,
 			$userOptionsLookupMock,
-			$this->getMockBuilder( ImageRecommendationSubmissionLogFactory::class )
-				->disableOriginalConstructor()
-				->getMock()
+			$linkRecommendationFilter
 		);
 	}
 }

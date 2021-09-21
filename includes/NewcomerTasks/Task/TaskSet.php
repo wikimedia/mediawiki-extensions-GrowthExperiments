@@ -36,16 +36,23 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess {
 	/** @var array */
 	private $qualityGateConfig = [];
 
+	/** @var array Invalid tasks that are part of this task set. */
+	private $invalidTasks = [];
+
 	/**
 	 * @param Task[] $tasks
 	 * @param int $totalCount Size of the full result set
 	 *   (can be larger than the size of this result set).
 	 * @param int $offset Offset within the full result set.
 	 * @param TaskSetFilters $filters
+	 * @param Task[] $invalidTasks Tasks that were part of the TaskSet, but are not considered valid.
 	 */
-	public function __construct( array $tasks, $totalCount, $offset, TaskSetFilters $filters ) {
+	public function __construct(
+		array $tasks, $totalCount, $offset, TaskSetFilters $filters, array $invalidTasks = []
+	) {
 		Assert::parameterElementType( Task::class, $tasks, '$tasks' );
 		$this->tasks = array_values( $tasks );
+		$this->invalidTasks = array_values( $invalidTasks );
 		$this->totalCount = $totalCount;
 		$this->offset = $offset;
 		$this->filters = $filters;
@@ -102,14 +109,16 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess {
 	}
 
 	/**
-	 * Size of the full result set (can be larger than the size of this result set).
+	 * Size of the full result set (can be larger than the size of this result set), minus any invalidated
+	 * tasks in the task set.
+	 *
 	 * In other words, getTotalCount is the number of suggestions matching some set of conditions
 	 * while the suggestions returned by iterating the TaskSet are the result of
 	 * further restricting that set with some limit/offset.
 	 * @return int
 	 */
 	public function getTotalCount() {
-		return $this->totalCount;
+		return $this->totalCount - count( $this->invalidTasks );
 	}
 
 	/**
@@ -196,6 +205,13 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess {
 	 */
 	public function setQualityGateConfig( array $config ): void {
 		$this->qualityGateConfig = $config;
+	}
+
+	/**
+	 * @return Task[]
+	 */
+	public function getInvalidTasks(): array {
+		return $this->invalidTasks;
 	}
 
 }

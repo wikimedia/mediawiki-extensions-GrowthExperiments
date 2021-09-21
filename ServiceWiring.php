@@ -50,6 +50,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
@@ -496,6 +497,14 @@ return [
 		return new ProtectionFilter(
 			$services->getTitleFactory(),
 			$services->getLinkBatchFactory()
+		);
+	},
+
+	'GrowthExperimentsLinkRecommendationFilter' => static function (
+		MediaWikiServices $services
+	): LinkRecommendationFilter {
+		return new LinkRecommendationFilter(
+			GrowthExperimentsServices::wrap( $services )->getLinkRecommendationStore()
 		);
 	},
 
