@@ -25,14 +25,15 @@ exports.config = { ...config,
 			await Api.createAccount( bot, username, password );
 		} );
 		UserLoginPage.login( username, password );
-		Util.waitForModuleState( 'mediawiki.api', 'ready', 5000 );
-		browser.execute( async () => {
-			return new mw.Api().saveOptions( {
-				'growthexperiments-homepage-suggestededits-activated': 1,
-				'growthexperiments-tour-homepage-discovery': 1,
-				'growthexperiments-tour-homepage-welcome': 1
-			} );
-		} );
+		browser.executeAsync( ( done ) =>
+			mw.loader.using( 'mediawiki.api' ).then( () =>
+				new mw.Api().saveOptions( {
+					'growthexperiments-homepage-suggestededits-activated': 1,
+					'growthexperiments-tour-homepage-discovery': 1,
+					'growthexperiments-tour-homepage-welcome': 1
+				} ).done( () => done() )
+			)
+		);
 	},
 	onPrepare: function () {
 		fs.writeFileSync( path.resolve( ip + '/LocalSettings.php' ),
