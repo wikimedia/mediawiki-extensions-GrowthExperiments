@@ -713,11 +713,10 @@
 		var $editButton = $container.find( '.suggested-edits-footer-navigation-edit-button' );
 		$editButton.html( this.editWidget.$element );
 
-		this.editWidget.on( 'click', function () {
+		// OO.ui.mixin.ButtonElement.onClick prevents the default action when the 'click'
+		// event handler is set via OOJS, use the jQuery event handling mechanism instead.
+		this.editWidget.$button.on( 'click', function () {
 			this.logEditTaskClick( 'se-edit-button-click' );
-			// OO.ui.mixin.ButtonElement.onClick prevents default when clicked
-			// so the href needs to be navigated to manually.
-			location.href = this.editWidget.getHref();
 		}.bind( this ) );
 	};
 
