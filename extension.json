@@ -813,6 +813,7 @@
 				"ext.growthExperiments.StructuredTask/addimage/AddImageArticleTarget.js",
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageToolbarDialog.js",
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageRejectionDialog.js",
+				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageViewer.js",
 				"utils/ext.growthExperiments.Utils.js",
 				{
 					"name": "homepage/suggestededits/config.json",
@@ -830,7 +831,8 @@
 				"ext.growthExperiments.StructuredTask/addlink/RecommendedLinkRejectionDialog.less",
 				"ext.growthExperiments.StructuredTask/addlink/AddLinkSaveDialog.less",
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageToolbarDialog.less",
-				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageRejectionDialog.less"
+				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageRejectionDialog.less",
+				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageViewer.less"
 			],
 			"messages": [
 				"growthexperiments-addlink-context-title",
@@ -888,10 +890,12 @@
 				"growthexperiments-addimage-rejectiondialog-reason-unfamiliar",
 				"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage",
 				"growthexperiments-addimage-rejectiondialog-reason-other",
+				"growthexperiments-addimage-viewer-close-button",
 				"colon-separator"
 			],
 			"dependencies": [
 				"mediawiki.language",
+				"mediawiki.util",
 				"oojs-ui-core",
 				"oojs-ui-windows",
 				"oojs-ui.styles.icons-editing-core",
@@ -1352,6 +1356,9 @@
 				"close-destructive": {
 					"file": "../images/close-destructive.svg"
 				},
+				"close-shadow": {
+					"file": "../images/close-shadow.svg"
+				},
 				"difficulty-outline": {
 					"file": {
 						"ltr": "../images/levels-outline-ltr.svg",
@@ -1520,6 +1527,8 @@
 			"modules/ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 			"tests/qunit/ext.growthExperiments.StructuredTask/addlink/AddLinkArticleTarget.test.js",
 			"tests/qunit/ext.growthExperiments.StructuredTask/addlink/dataprovider.json",
+			"modules/ext.growthExperiments.StructuredTask/addimage/RecommendedImageViewer.js",
+			"tests/qunit/ext.growthExperiments.StructuredTask/addimage/RecommendedImageViewer.test.js",
 			{
 				"name": "modules/help/data.json",
 				"file": "tests/qunit/help/configData.json"

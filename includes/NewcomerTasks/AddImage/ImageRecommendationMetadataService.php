@@ -56,6 +56,8 @@ class ImageRecommendationMetadataService {
 				'fullUrl' => $file->getUrl(),
 				'originalWidth' => $file->getWidth(),
 				'originalHeight' => $file->getHeight(),
+				'mustRender' => $file->mustRender(),
+				'isVectorized' => $file->isVectorized(),
 			];
 		}
 		return StatusValue::newFatal( 'rawmessage', 'Image file not found' );
