@@ -48,11 +48,12 @@
 					action: 'growthsetmentorstatus',
 					gesstatus: 'away',
 					gesbackindays: dialog.awayForDays.getValue()
-				} ).then( function () {
+				} ).then( function ( data ) {
 					mw.notify(
 						mw.msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away' ),
 						{ type: 'info' }
 					);
+					dialog.emit( 'awayset', data.growthsetmentorstatus.backintimestamp );
 					dialog.close( { action: action } );
 				} ).catch( function ( errorCode ) {
 					var msgCode = 'growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown';

@@ -1437,7 +1437,8 @@
 				"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger",
 				"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown",
 				"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active",
-				"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away"
+				"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away",
+				"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message"
 			],
 			"dependencies": [
 				"mediawiki.language",
