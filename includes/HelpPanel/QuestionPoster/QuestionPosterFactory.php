@@ -6,6 +6,7 @@ use GrowthExperiments\Mentorship\MentorManager;
 use IContextSource;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
+use TitleFactory;
 use UserNotLoggedIn;
 use Wikimedia\Assert\Assert;
 
@@ -28,6 +29,9 @@ class QuestionPosterFactory {
 	/** @var WikiPageFactory */
 	private $wikiPageFactory;
 
+	/** @var TitleFactory */
+	private $titleFactory;
+
 	/** @var MentorManager */
 	private $mentorManager;
 
@@ -39,6 +43,7 @@ class QuestionPosterFactory {
 
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
+	 * @param TitleFactory $titleFactory
 	 * @param MentorManager $mentorManager
 	 * @param PermissionManager $permissionManager
 	 * @param bool $helpDeskPostOnTop Whether to post on top of the help desk
@@ -46,11 +51,13 @@ class QuestionPosterFactory {
 	 */
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
+		TitleFactory $titleFactory,
 		MentorManager $mentorManager,
 		PermissionManager $permissionManager,
 		bool $helpDeskPostOnTop
 	) {
 		$this->wikiPageFactory = $wikiPageFactory;
+		$this->titleFactory = $titleFactory;
 		$this->mentorManager = $mentorManager;
 		$this->permissionManager = $permissionManager;
 		$this->helpDeskPostOnTop = $helpDeskPostOnTop;
@@ -82,6 +89,7 @@ class QuestionPosterFactory {
 		if ( $target === self::TARGET_HELPDESK ) {
 			$questionPoster = new HelpdeskQuestionPoster(
 				$this->wikiPageFactory,
+				$this->titleFactory,
 				$this->permissionManager,
 				$context,
 				$body,
@@ -92,6 +100,7 @@ class QuestionPosterFactory {
 		} elseif ( $source === self::SOURCE_HELP_PANEL ) {
 			return new HelppanelMentorQuestionPoster(
 				$this->wikiPageFactory,
+				$this->titleFactory,
 				$this->mentorManager,
 				$this->permissionManager,
 				$context,
@@ -101,6 +110,7 @@ class QuestionPosterFactory {
 		} else {
 			return new HomepageMentorQuestionPoster(
 				$this->wikiPageFactory,
+				$this->titleFactory,
 				$this->mentorManager,
 				$this->permissionManager,
 				$context,

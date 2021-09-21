@@ -5,7 +5,6 @@ namespace GrowthExperiments\Tests;
 use DerivativeContext;
 use FauxRequest;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
-use MediaWiki\MediaWikiServices;
 use MediaWikiTestCase;
 use RequestContext;
 use Status;
@@ -36,8 +35,9 @@ class HelpdeskQuestionPosterTest extends MediaWikiTestCase {
 		$this->expectException( \UserNotLoggedIn::class );
 
 		new HelpdeskQuestionPoster(
-			$this->getWikiPageFactory(),
-			MediaWikiServices::getInstance()->getPermissionManager(),
+			$this->getServiceContainer()->getWikiPageFactory(),
+			$this->getServiceContainer()->getTitleFactory(),
+			$this->getServiceContainer()->getPermissionManager(),
 			$context,
 			'foo'
 		);
@@ -52,8 +52,9 @@ class HelpdeskQuestionPosterTest extends MediaWikiTestCase {
 		$this->setMwGlobals( 'wgGEHelpPanelHelpDeskTitle', 'HelpDeskTest' );
 		$this->insertPage( 'HelpDeskTest', '' );
 		$questionPoster = new HelpdeskQuestionPoster(
-			$this->getWikiPageFactory(),
-			MediaWikiServices::getInstance()->getPermissionManager(),
+			$this->getServiceContainer()->getWikiPageFactory(),
+			$this->getServiceContainer()->getTitleFactory(),
+			$this->getServiceContainer()->getPermissionManager(),
 			$this->buildContext(),
 			'a great question'
 		);
@@ -76,8 +77,9 @@ class HelpdeskQuestionPosterTest extends MediaWikiTestCase {
 		$title = $this->getNonexistingTestPage()->getTitle();
 		$this->setMwGlobals( 'wgGEHelpPanelHelpDeskTitle', $title->getPrefixedDBkey() );
 		$questionPoster = new HelpdeskQuestionPoster(
-			$this->getWikiPageFactory(),
-			MediaWikiServices::getInstance()->getPermissionManager(),
+			$this->getServiceContainer()->getWikiPageFactory(),
+			$this->getServiceContainer()->getTitleFactory(),
+			$this->getServiceContainer()->getPermissionManager(),
 			$this->buildContext(),
 			'a great question'
 		);
@@ -98,8 +100,9 @@ class HelpdeskQuestionPosterTest extends MediaWikiTestCase {
 	public function testValidateRelevantTitle() {
 		$this->insertPage( 'sample' );
 		$questionPoster = new HelpdeskQuestionPoster(
-			$this->getWikiPageFactory(),
-			MediaWikiServices::getInstance()->getPermissionManager(),
+			$this->getServiceContainer()->getWikiPageFactory(),
+			$this->getServiceContainer()->getTitleFactory(),
+			$this->getServiceContainer()->getPermissionManager(),
 			$this->buildContext(),
 			'blah',
 			'sample'
@@ -109,8 +112,9 @@ class HelpdeskQuestionPosterTest extends MediaWikiTestCase {
 			$questionPoster->validateRelevantTitle()
 		);
 		$questionPoster = new HelpdeskQuestionPoster(
-			$this->getWikiPageFactory(),
-			MediaWikiServices::getInstance()->getPermissionManager(),
+			$this->getServiceContainer()->getWikiPageFactory(),
+			$this->getServiceContainer()->getTitleFactory(),
+			$this->getServiceContainer()->getPermissionManager(),
 			$this->buildContext(),
 			'blah',
 			'>123'
@@ -129,10 +133,6 @@ class HelpdeskQuestionPosterTest extends MediaWikiTestCase {
 		$context->setRequest( new FauxRequest( [], true ) );
 		$context->setUser( $this->mutableTestUser->getInstanceForUpdate() );
 		return $context;
-	}
-
-	private function getWikiPageFactory() {
-		return MediaWikiServices::getInstance()->getWikiPageFactory();
 	}
 
 }

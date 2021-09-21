@@ -67,6 +67,7 @@ class ApiQuestionStoreTest extends ApiTestCase {
 
 		$questionPoster = new HomepageMentorQuestionPoster(
 			$services->getWikiPageFactory(),
+			$services->getTitleFactory(),
 			new StaticMentorManager( [
 				$user->getName() => new Mentor( $mentor, '' ),
 			] ),

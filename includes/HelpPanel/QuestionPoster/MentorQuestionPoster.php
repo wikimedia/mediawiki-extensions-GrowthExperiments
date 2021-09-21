@@ -8,6 +8,7 @@ use GrowthExperiments\WikiConfigException;
 use IContextSource;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
+use TitleFactory;
 use User;
 use UserNotLoggedIn;
 
@@ -21,34 +22,43 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
+	 * @param TitleFactory $titleFactory
 	 * @param MentorManager $mentorManager
 	 * @param PermissionManager $permissionManager
 	 * @param IContextSource $context
 	 * @param string $body
-	 * @param string $relevantTitle
+	 * @param string $relevantTitleRaw
 	 * @throws UserNotLoggedIn
 	 */
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
+		TitleFactory $titleFactory,
 		MentorManager $mentorManager,
 		PermissionManager $permissionManager,
 		IContextSource $context,
 		$body,
-		$relevantTitle = ''
+		$relevantTitleRaw = ''
 	) {
 		$this->mentorManager = $mentorManager;
-		parent::__construct( $wikiPageFactory, $permissionManager, $context, $body, $relevantTitle );
+		parent::__construct(
+			$wikiPageFactory,
+			$titleFactory,
+			$permissionManager,
+			$context,
+			$body,
+			$relevantTitleRaw
+		);
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	protected function getSectionHeaderTemplate() {
-		return $this->relevantTitle ?
+		return $this->getWikitextLinkTarget() ?
 			$this->getContext()
 				->msg( 'growthexperiments-homepage-mentorship-question-subject-with-title' )
 				->plaintextParams( $this->getContext()->getUser()->getName() )
-				->params( $this->relevantTitle )
+				->params( $this->getWikitextLinkTarget() )
 				->inContentLanguage()->text() :
 			$this->getContext()
 				->msg( 'growthexperiments-homepage-mentorship-question-subject' )

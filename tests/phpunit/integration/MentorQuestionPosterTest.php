@@ -24,6 +24,7 @@ class MentorQuestionPosterTest extends MediaWikiTestCase {
 	 */
 	public function testConstruct() {
 		$wikiPageFactory = MediaWikiServices::getInstance()->getWikiPageFactory();
+		$titleFactory = MediaWikiServices::getInstance()->getTitleFactory();
 		$permissionManager = MediaWikiServices::getInstance()->getPermissionManager();
 		$mentorManager = $this->getMockMentorManager();
 		$mentorUser = $this->getTestSysop()->getUser();
@@ -36,6 +37,7 @@ class MentorQuestionPosterTest extends MediaWikiTestCase {
 		$module = $this->getMockBuilder( MentorQuestionPoster::class )
 			->setConstructorArgs( [
 				$wikiPageFactory,
+				$titleFactory,
 				$mentorManager,
 				$permissionManager,
 				$context,
