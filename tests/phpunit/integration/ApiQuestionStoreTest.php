@@ -12,6 +12,7 @@ use GrowthExperiments\HelpPanel\QuestionPoster\HomepageMentorQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\StaticMentorManager;
+use GrowthExperiments\Mentorship\Store\MentorStore;
 
 /**
  * @group API
@@ -58,7 +59,8 @@ class ApiQuestionStoreTest extends ApiTestCase {
 		GrowthExperimentsServices::wrap( $services )->getMentorStore()
 			->setMentorForUser(
 				$user,
-				$mentor
+				$mentor,
+				MentorStore::ROLE_PRIMARY
 			);
 		$request = new FauxRequest( [], true );
 		$context = new DerivativeContext( $this->apiContext );

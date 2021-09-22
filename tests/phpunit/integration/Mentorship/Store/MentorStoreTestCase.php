@@ -23,22 +23,22 @@ abstract class MentorStoreTestCase extends MediaWikiIntegrationTestCase {
 		/** @var HashBagOStuff $inProcessCache */
 		$inProcessCache = TestingAccessWrapper::newFromObject( $multiCache )->procCache;
 
-		$this->assertNull( $store->loadMentorUser( $mentee ) );
-		$store->setMentorForUser( $mentee, $mentor );
+		$this->assertNull( $store->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY ) );
+		$store->setMentorForUser( $mentee, $mentor, MentorStore::ROLE_PRIMARY );
 
 		// read from in-process cache
-		$actualMentor = $store->loadMentorUser( $mentee );
+		$actualMentor = $store->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY );
 		$this->assertSameUser( $mentor, $actualMentor );
 
 		// read from external cache
 		$inProcessCache->clear();
-		$actualMentor = $store->loadMentorUser( $mentee );
+		$actualMentor = $store->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY );
 		$this->assertSameUser( $mentor, $actualMentor );
 
 		// read from disk
 		$inProcessCache->clear();
 		$cache->clear();
-		$actualMentor = $store->loadMentorUser( $mentee );
+		$actualMentor = $store->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY );
 		$this->assertSameUser( $mentor, $actualMentor );
 	}
 

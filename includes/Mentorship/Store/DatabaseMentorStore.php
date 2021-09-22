@@ -158,7 +158,7 @@ class DatabaseMentorStore extends MentorStore {
 	protected function setMentorForUserInternal(
 		UserIdentity $mentee,
 		UserIdentity $mentor,
-		string $mentorRole = self::ROLE_PRIMARY
+		string $mentorRole
 	): void {
 		if ( $this->wasPosted ) {
 			$this->setMentorForUserReal(
