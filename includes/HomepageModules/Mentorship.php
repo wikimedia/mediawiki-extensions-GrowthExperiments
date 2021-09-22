@@ -184,10 +184,15 @@ class Mentorship extends BaseModule {
 	 */
 	protected function getJsConfigVars() {
 		$mentor = $this->getMentor();
+		$effectiveMentor = $this->mentorManager->getEffectiveMentorForUserSafe(
+			$this->getUser()
+		)->getMentorUser();
 		$genderCache = MediaWikiServices::getInstance()->getGenderCache();
 		return [
 			'GEHomepageMentorshipMentorName' => $mentor->getName(),
-			'GEHomepageMentorshipMentorGender' => $genderCache->getGenderOf( $mentor, __METHOD__ )
+			'GEHomepageMentorshipMentorGender' => $genderCache->getGenderOf( $mentor, __METHOD__ ),
+			'GEHomepageMentorshipEffectiveMentorName' => $effectiveMentor->getName(),
+			'GEHomepageMentorshipEffectiveMentorGender' => $genderCache->getGenderOf( $effectiveMentor, __METHOD__ ),
 		] + HelpPanel::getUserEmailConfigVars( $this->getContext()->getUser() );
 	}
 
@@ -221,8 +226,8 @@ class Mentorship extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function canRender() {
-		return $this->mentorManager->isMentorshipEnabledForUser( $this->getContext()->getUser() ) &&
-			(bool)$this->getMentor();
+		return $this->mentorManager->isMentorshipEnabledForUser( $this->getUser() ) &&
+			$this->mentorManager->getEffectiveMentorForUserSafe( $this->getUser() ) !== null;
 	}
 
 	private function getMentorUsernameElement( $link ) {
