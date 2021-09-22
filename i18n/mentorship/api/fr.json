@@ -10,5 +10,7 @@
 	"apihelp-growthstarmentee-param-gesmentee": "Tutoré à (ne plus) marquer",
 	"apihelp-query+growthstarredmentees-summary": "Obtenir une liste des tutorés marqués par le tuteur actuellement connecté",
 	"apihelp-growthsetmentorstatus-summary": "Définir le statut de mentor de l'utilisateur actuel comme actif/absent.",
-	"apihelp-growthsetmentorstatus-param-gesstatus": "Nouvel état"
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Nouvel état",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "En déclarant un tuteur comme absent, il faut avoir la durée de son état d’absence (en jours)",
+	"apihelp-query+growthmentorstatus-summary": "Demander l’état du tuteur de l’utilisateur actuel"
 }

@@ -53,6 +53,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Starea de mentor",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "{{GENDER:|Activ|Activă}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "{{GENDER:|Indisponibil|Indisponibilă}}",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Din moment ce sunteți {{GENDER:$1|plecat|plecată}} până în $1, ucenicii dvs. vor fi reatribuiți temporar unui mentor diferit.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Setați-vă ca „{{GENDER:|indisponibil|indisponibilă}}”",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Anulare",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Pauză",

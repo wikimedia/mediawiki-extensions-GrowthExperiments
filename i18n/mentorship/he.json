@@ -53,6 +53,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "מצב חונך",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "{{GENDER:|פעיל|פעילה}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "לא בסביבה",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "מכיוון שלא {{GENDER:|תהיה|תהיי}} בסביבה עד $1, החניכים שלך ישויכו זמינות לחונך אחר.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "להגדיר את עצמך \"לא בסביבה\"",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "ביטול",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "השהיה",

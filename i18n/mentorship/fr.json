@@ -56,6 +56,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Statut du mentor",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Actif",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Parti",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Comme vous êtes absent jusqu’au $1, vos tutorés seront temporairement réaffectés à un autre tuteur.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Définissez-vous comme ‘absent’.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Annuler",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Suspendre",

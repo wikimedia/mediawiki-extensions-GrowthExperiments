@@ -54,6 +54,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "وضعيّة الإرشاد",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "نشط",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "غير متوفّر",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "خلال فترة غيابك حتّى $1، سيتمّ تعيين مرشِدين آخرين وقتيّين إلى مرشَديك.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "أعدّوا وضعيّتكم على 'غير متوفّر'",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "إلغاء",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "إيقاف مؤقت",
