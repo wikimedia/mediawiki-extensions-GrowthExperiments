@@ -31,6 +31,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\StructuredTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use GrowthExperiments\Specials\SpecialClaimMentee;
@@ -97,6 +98,8 @@ class HomepageHooks implements
 	/** @var string User options key for storing whether the user has seen the notice. */
 	public const HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN = 'homepage_mobile_discovery_notice_seen';
 	public const CONFIRMEMAIL_QUERY_PARAM = 'specialconfirmemail';
+	private const VE_PREF_DISABLE_BETA = 'visualeditor-betatempdisable';
+	private const VE_PREF_EDITOR = 'visualeditor-editor';
 
 	public const GROWTH_FORCE_OPTIN = 1;
 	public const GROWTH_FORCE_OPTOUT = 2;
@@ -362,6 +365,10 @@ class HomepageHooks implements
 				$out->addJsConfigVars( [
 					'wgGESuggestedEditData' => $serializedRecommendation,
 				] );
+			}
+
+			if ( $taskType ) {
+				$this->maybeOverridePreferredEditorWithVE( $taskType, $skin->getUser() );
 			}
 		}
 	}
@@ -1179,6 +1186,34 @@ class HomepageHooks implements
 	}
 
 	/**
+	 * Check whether the user has disabled VisualEditor while it's in beta
+	 *
+	 * @param UserIdentity $user
+	 * @param UserOptionsLookup $userOptionsLookup
+	 * @return bool
+	 */
+	private static function userHasDisabledVe(
+		UserIdentity $user,
+		UserOptionsLookup $userOptionsLookup
+	) {
+		return $userOptionsLookup->getBoolOption( $user, self::VE_PREF_DISABLE_BETA );
+	}
+
+	/**
+	 * Check whether the user prefers source editor
+	 *
+	 * @param UserIdentity $user
+	 * @param UserOptionsLookup $userOptionsLookup
+	 * @return bool
+	 */
+	private static function userPrefersSourceEditor(
+		UserIdentity $user,
+		UserOptionsLookup $userOptionsLookup
+	) {
+		return $userOptionsLookup->getOption( $user, self::VE_PREF_EDITOR ) === 'prefer-wt';
+	}
+
+	/**
 	 * Get URL to Special:Homepage with query parameters appended for EventLogging.
 	 * @param int $namespace
 	 * @return string
@@ -1240,6 +1275,33 @@ class HomepageHooks implements
 					->parse();
 			}
 		}
+	}
+
+	/**
+	 * Update the user's editor preference based on the given task type and whether the user prefers
+	 * the source editor. The preference is not saved so the override doesn't persist beyond
+	 * the suggested edit session.
+	 *
+	 * @param TaskType $taskType
+	 * @param UserIdentity $user
+	 */
+	private function maybeOverridePreferredEditorWithVE( TaskType $taskType, UserIdentity $user ) {
+		if ( $taskType->shouldOpenInEditMode() ) {
+			return;
+		}
+
+		if ( self::userPrefersSourceEditor( $user, $this->userOptionsManager ) ) {
+			return;
+		}
+
+		if ( self::userHasDisabledVe( $user, $this->userOptionsManager ) ) {
+			return;
+		}
+
+		$this->userOptionsManager->setOption(
+			$user,
+			self::VE_PREF_EDITOR, 'visualeditor'
+		);
 	}
 
 }
