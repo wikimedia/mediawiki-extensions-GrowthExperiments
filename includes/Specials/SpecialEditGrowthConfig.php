@@ -7,6 +7,7 @@ use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
 use GrowthExperiments\Config\Validation\NewcomerTasksValidator;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
+use GrowthExperiments\HomepageModules\Banner;
 use Html;
 use HTMLForm;
 use MediaWiki\Revision\RevisionLookup;
@@ -247,6 +248,13 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				\Message::listParam( array_map( static function ( Title $title ) {
 					return '[[' . $title->getPrefixedText() . ']]';
 				}, array_values( $this->configPages ) ) )
+			)->parseAsBlock() );
+			$form->addPreText( $this->msg(
+				'growthexperiments-edit-config-pretext-banner',
+				$this->titleFactory->newFromText(
+					Banner::MESSAGE_KEY,
+					NS_MEDIAWIKI
+				)->getPrefixedText()
 			)->parseAsBlock() );
 		} else {
 			$form->addPreText( $this->msg( 'growthexperiments-edit-config-pretext-unprivileged' ) );

@@ -13,6 +13,7 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Last updated by [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Last updated by unknown user $1.",
 	"growthexperiments-edit-config-pretext": "This page allows you to edit configuration of [[:mw:Special:MyLanguage/Growth|Growth]] team features. It will edit $1 on your behalf. You can see your changes in the page history of that page.",
+	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|You}} can also display a banner on the newcomer homepage, to include announcement about events important to newcomers. If {{GENDER:|you}} want to do so, {{GENDER:|you}} need to add it to [[$1]] manually. Any content added there will be displayed in a yellow banner at the top of [[Special:Homepage]].",
 	"growthexperiments-edit-config-pretext-unprivileged": "This form allows privileged users to edit configuration of [[:mw:Special:MyLanguage/Growth|Growth]] team features.",
 	"growthexperiments-edit-config-feedback-headline": "Do you have ideas or questions about this form?",
 	"growthexperiments-edit-config-feedback-cta": "Give feedback",
