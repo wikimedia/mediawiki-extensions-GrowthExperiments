@@ -4,7 +4,6 @@ namespace GrowthExperiments\NewcomerTasks\ConfigurationLoader;
 
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
-use MediaWiki\Linker\LinkTarget;
 use StatusValue;
 
 /**
@@ -20,25 +19,13 @@ class StaticConfigurationLoader implements ConfigurationLoader {
 	/** @var Topic[]|StatusValue */
 	private $topics;
 
-	/** @var LinkTarget[]|StatusValue */
-	private $excludedTemplates;
-
-	/** @var LinkTarget[]|StatusValue */
-	private $excludedCategories;
-
 	/**
 	 * @param TaskType[]|StatusValue $taskTypes
 	 * @param Topic[]|StatusValue $topics
-	 * @param LinkTarget[]|StatusValue $excludedTemplates
-	 * @param LinkTarget[]|StatusValue $excludedCategories
 	 */
-	public function __construct(
-		$taskTypes, $topics = [], $excludedTemplates = [], $excludedCategories = []
-	) {
+	public function __construct( $taskTypes, $topics = [] ) {
 		$this->taskTypes = $taskTypes;
 		$this->topics = $topics;
-		$this->excludedTemplates = $excludedTemplates;
-		$this->excludedCategories = $excludedCategories;
 	}
 
 	/** @inheritDoc */
@@ -49,16 +36,6 @@ class StaticConfigurationLoader implements ConfigurationLoader {
 	/** @inheritDoc */
 	public function loadTopics() {
 		return $this->topics;
-	}
-
-	/** @inheritDoc */
-	public function loadExcludedTemplates() {
-		return $this->excludedTemplates;
-	}
-
-	/** @inheritDoc */
-	public function loadExcludedCategories() {
-		return $this->excludedCategories;
 	}
 
 }

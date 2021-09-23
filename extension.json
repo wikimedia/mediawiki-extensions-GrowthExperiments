@@ -1741,6 +1741,7 @@
 					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\LinkRecommendationTaskTypeHandler",
 					"services": [
 						"GrowthExperimentsNewcomerTasksConfigurationValidator",
+						"TitleParser",
 						"GrowthExperimentsLinkRecommendationProvider",
 						"GrowthExperimentsAddLinkSubmissionHandler"
 					]
@@ -1749,6 +1750,7 @@
 					"class": "GrowthExperiments\\NewcomerTasks\\TaskType\\ImageRecommendationTaskTypeHandler",
 					"services": [
 						"GrowthExperimentsNewcomerTasksConfigurationValidator",
+						"TitleParser",
 						"GrowthExperimentsImageRecommendationProvider",
 						"GrowthExperimentsAddImageSubmissionHandler"
 					]

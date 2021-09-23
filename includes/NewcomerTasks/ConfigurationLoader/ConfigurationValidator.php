@@ -101,6 +101,27 @@ class ConfigurationValidator {
 	}
 
 	/**
+	 * Verify that a field exists and is an array.
+	 *
+	 * @param string $field Configuration field name
+	 * @param array $config Configuration
+	 * @param string $taskTypeId Task type ID, for better error reporting.
+	 * @return StatusValue
+	 */
+	public function validateFieldIsArray( string $field, array $config, string $taskTypeId ): StatusValue {
+		$status = StatusValue::newGood();
+		$status->merge( $this->validateRequiredField( $field, $config, $taskTypeId ) );
+		if ( $status->isOK() ) {
+			if ( !is_array( $config[$field] ) ) {
+				$status->fatal(
+					'growthexperiments-homepage-suggestededits-config-fieldarray', $taskTypeId, $field
+				);
+			}
+		}
+		return $status;
+	}
+
+	/**
 	 * For a given list of messages, verifies that they all exist.
 	 * @param Message[] $messages
 	 * @param string $field Field name where the missing message was defined (e.g. ID of the task).

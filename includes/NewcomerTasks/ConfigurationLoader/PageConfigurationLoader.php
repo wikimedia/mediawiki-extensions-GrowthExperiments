@@ -67,12 +67,6 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 	/** @var Topic[]|StatusValue|null Cached topic set (or an error). */
 	private $topics;
 
-	/** @var LinkTarget[]|StatusValue|null Cached excluded template set (or an error). */
-	private $excludedTemplates;
-
-	/** @var LinkTarget[]|StatusValue|null Cached excluded category set (or an error). */
-	private $excludedCategories;
-
 	/**
 	 * @var string One of the PageConfigurationLoader::CONFIGURATION_TYPE constants.
 	 */
@@ -164,42 +158,6 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 		return $topics;
 	}
 
-	/** @inheritDoc */
-	public function loadExcludedTemplates() {
-		if ( $this->excludedTemplates !== null ) {
-			return $this->excludedTemplates;
-		}
-
-		$config = $this->configLoader->load( $this->makeTitle( $this->taskConfigurationPage ) );
-		if ( $config instanceof StatusValue ) {
-			$excludedTemplates = $config;
-		} else {
-			$excludedTemplates = $this->parseTitleListFromConfig( $config,
-				'#excludedTemplates', NS_TEMPLATE );
-		}
-
-		$this->excludedTemplates = $excludedTemplates;
-		return $excludedTemplates;
-	}
-
-	/** @inheritDoc */
-	public function loadExcludedCategories() {
-		if ( $this->excludedCategories !== null ) {
-			return $this->excludedCategories;
-		}
-
-		$config = $this->configLoader->load( $this->makeTitle( $this->taskConfigurationPage ) );
-		if ( $config instanceof StatusValue ) {
-			$excludedCategories = $config;
-		} else {
-			$excludedCategories = $this->parseTitleListFromConfig( $config,
-				'#excludedCategories', NS_CATEGORY );
-		}
-
-		$this->excludedCategories = $excludedCategories;
-		return $excludedCategories;
-	}
-
 	/**
 	 * @param string|LinkTarget|null $target
 	 * @return LinkTarget|null
@@ -228,11 +186,6 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 				'growthexperiments-homepage-suggestededits-config-wrongstructure' );
 		}
 		foreach ( $config as $taskTypeId => $taskTypeData ) {
-			if ( $taskTypeId[0] === '#' ) {
-				// Special configuration field, not a task.
-				continue;
-			}
-
 			// Fall back to legacy handler if not specified.
 			$handlerId = $taskTypeData['type'] ?? TemplateBasedTaskTypeHandler::ID;
 			if ( !$this->taskTypeHandlerRegistry->has( $handlerId ) ) {
@@ -321,38 +274,6 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 		}
 
 		return $status->isGood() ? $topics : $status;
-	}
-
-	/**
-	 * Helper function for the loadExcluded* methods.
-	 * @param mixed $config A JSON value.
-	 * @param string $fieldName Name of the top-level field holding the title list.
-	 * @param int $defaultNamespace Default namespace of list items.
-	 * @return LinkTarget[]|StatusValue
-	 */
-	private function parseTitleListFromConfig(
-		$config, string $fieldName, int $defaultNamespace
-	) {
-		$status = StatusValue::newGood();
-		$titleList = [];
-
-		if ( !is_array( $config ) || array_filter( $config, 'is_array' ) !== $config ) {
-			return StatusValue::newFatal(
-				'growthexperiments-homepage-suggestededits-config-wrongstructure' );
-		}
-		$fieldData = $config[$fieldName] ?? [];
-		foreach ( $fieldData as $entry ) {
-			if ( !is_string( $entry ) ) {
-				return StatusValue::newFatal(
-					'growthexperiments-homepage-suggestededits-config-wrongstructure' );
-			}
-			$status->merge( $this->configurationValidator->validateTitle( $entry ) );
-			if ( $status->isOK() ) {
-				$titleList[] = $this->titleFactory->newFromText( $entry, $defaultNamespace );
-			}
-
-		}
-		return $status->isOK() ? $titleList : $status;
 	}
 
 	/**

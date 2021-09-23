@@ -2,6 +2,8 @@
 
 namespace GrowthExperiments\Config\Validation;
 
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use StatusValue;
@@ -9,11 +11,46 @@ use StatusValue;
 class NewcomerTasksValidator implements IConfigValidator {
 	/** @var string[] */
 	public const SUGGESTED_EDITS_TASK_TYPES = [
-		'copyedit' => 'easy',
-		'links' => 'easy',
-		'references' => 'medium',
-		'update' => 'medium',
-		'expand' => 'hard'
+		'copyedit' => [
+			'difficulty' => 'easy',
+			'handler-id' => TemplateBasedTaskTypeHandler::ID,
+			'icon' => 'article',
+		],
+		'links' => [
+			'difficulty' => 'easy',
+			'handler-id' => TemplateBasedTaskTypeHandler::ID,
+			'icon' => 'article',
+		],
+		'link-recommendation' => [
+			'difficulty' => 'easy',
+			'handler-id' => LinkRecommendationTaskTypeHandler::ID,
+			'icon' => 'robot',
+		],
+		'image-recommendation' => [
+			'difficulty' => 'medium',
+			'handler-id' => ImageRecommendationTaskTypeHandler::ID,
+			'icon' => 'robot',
+		],
+		'references' => [
+			'difficulty' => 'medium',
+			'handler-id' => TemplateBasedTaskTypeHandler::ID,
+			'icon' => 'article',
+		],
+		'update' => [
+			'difficulty' => 'medium',
+			'handler-id' => TemplateBasedTaskTypeHandler::ID,
+			'icon' => 'article',
+		],
+		'expand' => [
+			'difficulty' => 'hard',
+			'handler-id' => TemplateBasedTaskTypeHandler::ID,
+			'icon' => 'article',
+		]
+	];
+
+	public const SUGGESTED_EDITS_MACHINE_SUGGESTIONS_TASK_TYPES = [
+		'link-recommendation',
+		'image-recommendation'
 	];
 
 	/** @var TaskTypeHandlerRegistry */

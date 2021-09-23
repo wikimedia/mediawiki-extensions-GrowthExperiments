@@ -5,8 +5,11 @@ namespace GrowthExperiments\NewcomerTasks\TaskType;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchQuery;
+use MalformedTitleException;
+use MediaWiki\Linker\LinkTarget;
 use SearchResult;
 use StatusValue;
+use TitleParser;
 
 /**
  * A TaskTypeHandler is responsible for all the type-specific behavior of some TaskType
@@ -25,12 +28,16 @@ abstract class TaskTypeHandler {
 
 	/** @var ConfigurationValidator */
 	protected $configurationValidator;
+	/** @var TitleParser */
+	private $titleParser;
 
 	/**
 	 * @param ConfigurationValidator $configurationValidator
+	 * @param TitleParser $titleParser
 	 */
-	public function __construct( ConfigurationValidator $configurationValidator ) {
+	public function __construct( ConfigurationValidator $configurationValidator, TitleParser $titleParser ) {
 		$this->configurationValidator = $configurationValidator;
+		$this->titleParser = $titleParser;
 	}
 
 	/**
@@ -60,6 +67,76 @@ abstract class TaskTypeHandler {
 				$config['group'], $taskTypeId );
 		}
 
+		if ( $status->isOK() ) {
+			if ( !isset( $config['excludedTemplates'] ) ) {
+				$config['excludedTemplates'] = [];
+			}
+			$status->merge(
+				$this->configurationValidator->validateFieldIsArray( 'excludedTemplates', $config, $taskTypeId )
+			);
+			if ( $status->isOK() ) {
+				foreach ( $config['excludedTemplates'] as $template ) {
+					$this->validateTemplate( $template, $taskTypeId, $status );
+				}
+			}
+		}
+
+		if ( $status->isOK() ) {
+			if ( !isset( $config['excludedCategories'] ) ) {
+				$config['excludedCategories'] = [];
+			}
+			$status->merge(
+				$this->configurationValidator->validateFieldIsArray( 'excludedCategories', $config, $taskTypeId )
+			);
+			if ( $status->isOK() ) {
+				foreach ( $config['excludedCategories'] as $category ) {
+					$this->validateCategory( $category, $taskTypeId, $status );
+				}
+			}
+		}
+
+		return $status;
+	}
+
+	/**
+	 * Attempt to parse a template title, return a failed status value on MalformedTitleException.
+	 *
+	 * @param mixed $template
+	 * @param string $taskTypeId
+	 * @param StatusValue $status
+	 * @return StatusValue
+	 */
+	protected function validateTemplate( $template, string $taskTypeId, StatusValue $status ): StatusValue {
+		if ( !is_string( $template ) ) {
+			$status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidtemplatetitle',
+				// Coerce to string for the message, which will look OK for integer values but not so for e.g.
+				// `[[]]`
+				(string)$template, $taskTypeId );
+		}
+		try {
+			$this->titleParser->parseTitle( $template, NS_TEMPLATE );
+		} catch ( MalformedTitleException $e ) {
+			$status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidtemplatetitle',
+				$template, $taskTypeId );
+		}
+		return $status;
+	}
+
+	/**
+	 * Attempt to parse a category title, return a failed status value on MalformedTitleException.
+	 *
+	 * @param string $category
+	 * @param string $taskTypeId
+	 * @param StatusValue $status
+	 * @return StatusValue
+	 */
+	protected function validateCategory( string $category, string $taskTypeId, StatusValue $status ): StatusValue {
+		try {
+			$this->titleParser->parseTitle( $category, NS_CATEGORY );
+		} catch ( MalformedTitleException $e ) {
+			$status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidcategorytitle',
+				$category, $taskTypeId );
+		}
 		return $status;
 	}
 
@@ -91,10 +168,26 @@ abstract class TaskTypeHandler {
 
 	/**
 	 * Get a CirrusSearch search term corresponding to this task.
+	 *
+	 * Task types extending this one must call this parent method to get exclusion search strings.
+	 *
 	 * @param TaskType $taskType
 	 * @return string
 	 */
-	abstract public function getSearchTerm( TaskType $taskType ): string;
+	public function getSearchTerm( TaskType $taskType ): string {
+		$searchTerm = '';
+		$excludedTemplates = $taskType->getExcludedTemplates();
+		if ( $excludedTemplates ) {
+			// extra space added to facilitate concatenation
+			$searchTerm .= '-hastemplate:' . Util::escapeSearchTitleList( $excludedTemplates ) . ' ';
+		}
+		$excludedCategories = $taskType->getExcludedCategories();
+		if ( $excludedCategories ) {
+			// extra space added to facilitate concatenation
+			$searchTerm .= '-incategory:' . Util::escapeSearchTitleList( $excludedCategories ) . ' ';
+		}
+		return $searchTerm;
+	}
 
 	/**
 	 * @param SearchQuery $query
@@ -124,6 +217,32 @@ abstract class TaskTypeHandler {
 	 */
 	public function getChangeTags(): array {
 		return [ self::NEWCOMER_TASK_TAG ];
+	}
+
+	/**
+	 * @param array $config
+	 * @return LinkTarget[]
+	 * @throws MalformedTitleException
+	 */
+	protected function parseExcludedTemplates( array $config ): array {
+		$excludedTemplates = [];
+		foreach ( $config['excludedTemplates'] ?? [] as $excludedTemplate ) {
+			$excludedTemplates[] = $this->titleParser->parseTitle( $excludedTemplate, NS_TEMPLATE );
+		}
+		return $excludedTemplates;
+	}
+
+	/**
+	 * @param array $config
+	 * @return LinkTarget[]
+	 * @throws MalformedTitleException
+	 */
+	protected function parseExcludedCategories( array $config ): array {
+		$excludedCategories = [];
+		foreach ( $config['excludedCategories'] ?? [] as $excludedCategory ) {
+			$excludedCategories[] = $this->titleParser->parseTitle( $excludedCategory, NS_CATEGORY );
+		}
+		return $excludedCategories;
 	}
 
 }

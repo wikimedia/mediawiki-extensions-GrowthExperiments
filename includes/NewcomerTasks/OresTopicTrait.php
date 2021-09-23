@@ -87,15 +87,6 @@ trait OresTopicTrait {
 						return $this->topics ?? $this->realConfigurationLoader->loadTopics();
 					}
 
-					/** @inheritDoc */
-					public function loadExcludedTemplates() {
-						return $this->realConfigurationLoader->loadExcludedTemplates();
-					}
-
-					/** @inheritDoc */
-					public function loadExcludedCategories() {
-						return $this->realConfigurationLoader->loadExcludedCategories();
-					}
 				};
 			} );
 	}
