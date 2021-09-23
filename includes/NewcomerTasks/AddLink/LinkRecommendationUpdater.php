@@ -54,9 +54,6 @@ class LinkRecommendationUpdater {
 	/** @var LinkRecommendationProvider */
 	private $linkRecommendationProvider;
 
-	/** @var LinkRecommendationHelper */
-	private $linkRecommendationHelper;
-
 	/** @var LinkRecommendationTaskType */
 	private $linkRecommendationTaskType;
 
@@ -70,7 +67,6 @@ class LinkRecommendationUpdater {
 	 * @param LinkRecommendationProvider $linkRecommendationProvider Note that this needs to be
 	 *   the uncached provider, as caching is done by LinkRecommendationUpdater.
 	 * @param LinkRecommendationStore $linkRecommendationStore
-	 * @param LinkRecommendationHelper $linkRecommendationHelper
 	 */
 	public function __construct(
 		IDatabase $dbr,
@@ -80,8 +76,7 @@ class LinkRecommendationUpdater {
 		ConfigurationLoader $configurationLoader,
 		SearchIndexUpdater $searchIndexUpdater,
 		LinkRecommendationProvider $linkRecommendationProvider,
-		LinkRecommendationStore $linkRecommendationStore,
-		LinkRecommendationHelper $linkRecommendationHelper
+		LinkRecommendationStore $linkRecommendationStore
 	) {
 		$this->dbr = $dbr;
 		$this->revisionStore = $revisionStore;
@@ -91,7 +86,6 @@ class LinkRecommendationUpdater {
 		$this->searchIndexUpdater = $searchIndexUpdater;
 		$this->linkRecommendationStore = $linkRecommendationStore;
 		$this->linkRecommendationProvider = $linkRecommendationProvider;
-		$this->linkRecommendationHelper = $linkRecommendationHelper;
 	}
 
 	/**
@@ -241,6 +235,12 @@ class LinkRecommendationUpdater {
 			// Some kind of race condition? Generating another task is easy so just discard this.
 			return $this->failure( 'revision ID mismatch' );
 		}
+
+		// T291253
+		if ( $this->linkRecommendationStore->hasSubmission( $recommendation, IDBAccessObject::READ_LATEST ) ) {
+			return $this->failure( 'submission already exists for revision ' . $revision->getId() );
+		}
+
 		// We could check here for more race conditions, ie. whether the revision in the
 		// recommendation matches the live revision. But there are plenty of other ways for race
 		// conditions to happen, so we'll have to deal with them on the client side anyway. No
