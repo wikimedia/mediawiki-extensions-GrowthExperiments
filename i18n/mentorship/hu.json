@@ -8,5 +8,10 @@
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Felhasználónév",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Frissítés",
-	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Keresés"
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Keresés",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Mentor státusz",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktív",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Mégse",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Szünet",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "napok"
 }

@@ -53,6 +53,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Mentor statusu",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktiv",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Qeyri-aktiv",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "$1 tarixinə qədər qeyri-aktiv olacağınız üçün istifadəçiləriniz müvəqqəti olaraq başqa bir mentora təyin ediləcək.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Özünüzü \"qeyri-aktiv\" olaraq təyin edin",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "İmtina",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Dayandır",

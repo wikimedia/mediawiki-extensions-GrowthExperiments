@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gwanki"
+		]
+	},
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months-title": "Tace mentees aiki a ƙarshe $2 {{PLURAL:$1|month|months}}",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Tun da ba ku nan har zuwa $1, za a sake ba da shawarar ku ga wani mai ba da shawara na ɗan lokaci."
+}

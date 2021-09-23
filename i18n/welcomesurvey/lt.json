@@ -23,5 +23,6 @@
 	"welcomesurvey-question-edited-option-no-other-label": "Ne, dėl kitų priežasčių",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Neprisimenu",
 	"welcomesurvey-question-email-label": "El. pašto adresas (neprivaloma)",
-	"welcomesurvey-question-email-placeholder": "Įveskite savo elektroninio pašto adresą..."
+	"welcomesurvey-question-email-placeholder": "Įveskite savo elektroninio pašto adresą...",
+	"welcomesurvey-question-languages-maximum": "Pridėjote maksimalų kalbų skaičių."
 }
