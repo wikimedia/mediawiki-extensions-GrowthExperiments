@@ -102,11 +102,60 @@ class ServiceImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 		);
 		$provider = new ServiceImageRecommendationProvider(
 			$this->getTitleFactory(), $this->getHttpRequestFactory( [
-				'http://example.com/image-suggestions/v0/wikipedia/en/pages?id=10&source=ima' => [ 400, [] ],
+				'http://example.com/image-suggestions/v0/wikipedia/en/pages?id=10&source=ima' => [ 200,
+					[ 'pages' => [ [ 'suggestions' => [
+						[ 'filename' => '1.png', 'source' => [ 'name' => 'ima', 'details' => [
+							'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
+					] ] ],
+						[ 'filename' => '2.png', 'source' => [ 'name' => 'ima', 'details' => [
+							'from' => 'commons', 'found_on' => '', 'dataset_id' => 'x',
+						] ] ],
+					] ] ] ] ],
 			] ),
 			$url, $wikiProject, $wikiLanguage, $metadataProvider, null );
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertTrue( $recommendation instanceof StatusValue );
+	}
+
+	public function testPartialMetadataError() {
+		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
+		$url = 'http://example.com';
+		$wikiProject = 'wikipedia';
+		$wikiLanguage = 'en';
+		$metadataProvider = $this->createMock(
+			ImageRecommendationMetadataProvider::class
+		);
+		$metadataProvider->method( 'getMetadata' )->willReturnCallback( static function ( $filename ) {
+			if ( $filename === 'Bad.png' ) {
+				return StatusValue::newFatal( 'rawmessage', 'No metadata' );
+			} else {
+				return [
+					'description' => 'description',
+					'thumbUrl' => 'thumb url',
+					'fullUrl' => 'full url',
+					'descriptionUrl' => 'description url',
+					'originalWidth' => 1024,
+					'originalHeight' => 768,
+				];
+			}
+		} );
+		$provider = new ServiceImageRecommendationProvider(
+			$this->getTitleFactory(), $this->getHttpRequestFactory( [
+				'http://example.com/image-suggestions/v0/wikipedia/en/pages?id=10&source=ima' => [ 200,
+					[ 'pages' => [ [ 'suggestions' => [
+						[ 'filename' => 'Bad.png', 'source' => [ 'name' => 'ima', 'details' => [
+							'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
+						] ] ],
+						[ 'filename' => 'Good.png', 'source' => [ 'name' => 'ima', 'details' => [
+							'from' => 'commons', 'found_on' => '', 'dataset_id' => 'x',
+						] ] ],
+					] ] ] ] ],
+			] ),
+			$url, $wikiProject, $wikiLanguage, $metadataProvider, null );
+		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
+		$this->assertTrue( $recommendation instanceof ImageRecommendation );
+		$this->assertCount( 1, $recommendation->getImages() );
+		$this->assertSame( 'Good.png', $recommendation->getImages()[0]->getImageTitle()->getDBkey() );
 	}
 
 	/**

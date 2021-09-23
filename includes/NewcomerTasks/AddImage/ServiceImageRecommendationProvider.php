@@ -138,6 +138,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		}
 		$images = [];
 		$datasetId = '';
+		$status = StatusValue::newGood();
 		foreach ( $data['pages'][0]['suggestions'] as $suggestion ) {
 			$source = $suggestion['source']['details']['from'];
 			$projects = $suggestion['source']['details']['found_on'];
@@ -159,13 +160,20 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 					$projects ? explode( ',', $projects ) : [],
 					$imageMetadata
 				);
+			} else {
+				$status->merge( $imageMetadata );
 			}
 		}
 
 		if ( !$images ) {
-			return StatusValue::newFatal( 'rawmessage',
-				'No recommendation found for page: ' . $titleText );
+			if ( $status->isGood() ) {
+				// $data['pages'][0]['suggestions'] was empty. This shouldn't happen.
+				$status->fatal( 'rawmessage', 'No recommendation found for page: ' . $titleText );
+			}
+			return $status;
 		}
+		// If $status is bad but $images is not empty (fetching some but not all images failed),
+		// we can just ignore the errors, they won't be a problem for the recommendation workflow.
 		return new ImageRecommendation( $title, $images, $datasetId );
 	}
 
