@@ -1195,7 +1195,7 @@ class HomepageHooks implements
 	private static function userHasDisabledVe(
 		UserIdentity $user,
 		UserOptionsLookup $userOptionsLookup
-	) {
+	): bool {
 		return $userOptionsLookup->getBoolOption( $user, self::VE_PREF_DISABLE_BETA );
 	}
 
@@ -1209,7 +1209,7 @@ class HomepageHooks implements
 	private static function userPrefersSourceEditor(
 		UserIdentity $user,
 		UserOptionsLookup $userOptionsLookup
-	) {
+	): bool {
 		return $userOptionsLookup->getOption( $user, self::VE_PREF_EDITOR ) === 'prefer-wt';
 	}
 
@@ -1285,7 +1285,9 @@ class HomepageHooks implements
 	 * @param TaskType $taskType
 	 * @param UserIdentity $user
 	 */
-	private function maybeOverridePreferredEditorWithVE( TaskType $taskType, UserIdentity $user ) {
+	private function maybeOverridePreferredEditorWithVE(
+		TaskType $taskType, UserIdentity $user
+	): void {
 		if ( $taskType->shouldOpenInEditMode() ) {
 			return;
 		}
