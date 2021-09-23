@@ -34,6 +34,9 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	/** @var IDatabase */
 	private $mainDbr;
 
+	/** @var array Cache used by getLastEditTimestampForUsers */
+	private $lastTimestampCache = [];
+
 	/**
 	 * @param MentorStore $mentorStore
 	 * @param NameTableStore $changeTagDefStore
@@ -141,7 +144,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @param int[] $userIds
 	 * @return array
 	 */
-	private function getLastEditTimestampForUsers( array $userIds ): array {
+	private function getLastEditTimestampForUsersInternal( array $userIds ): array {
 		$queryInfo = $this->actorMigration->getJoin( 'rev_user' );
 		$rows = $this->mainDbr->select(
 			[ 'revision' ] + $queryInfo['tables'],
@@ -163,6 +166,25 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			$res[$row->rev_user] = $row->last_edit;
 		}
 		return $res;
+	}
+
+	/**
+	 * @param int[] $userIds
+	 * @return array
+	 */
+	private function getLastEditTimestampForUsers( array $userIds ): array {
+		if ( $userIds === [] ) {
+			return [];
+		}
+
+		$data = array_intersect_key( $this->lastTimestampCache, array_fill_keys( $userIds, true ) );
+		$notInCache = array_diff( $userIds, array_keys( $this->lastTimestampCache ) );
+		if ( $notInCache ) {
+			$new = $this->getLastEditTimestampForUsersInternal( $notInCache );
+			$data += $new;
+			$this->lastTimestampCache += $new;
+		}
+		return $data;
 	}
 
 	/**
