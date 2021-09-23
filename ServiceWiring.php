@@ -284,8 +284,7 @@ return [
 			$growthServices->getNewcomerTasksConfigurationLoader(),
 			$growthServices->getSearchIndexUpdater(),
 			$services->get( 'GrowthExperimentsLinkRecommendationProviderUncached' ),
-			$growthServices->getLinkRecommendationStore(),
-			$growthServices->getLinkRecommendationHelper()
+			$growthServices->getLinkRecommendationStore()
 		);
 	},
 
