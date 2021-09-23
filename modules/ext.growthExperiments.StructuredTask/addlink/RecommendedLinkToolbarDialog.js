@@ -17,10 +17,6 @@ function RecommendedLinkToolbarDialog() {
 	 */
 	this.linkRecommendationFragments = [];
 	/**
-	 * @property {number} currentIndex Zero-based index of the selected recommendation
-	 */
-	this.currentIndex = 0;
-	/**
 	 * @property {boolean} isUpdatingCurrentRecommendation Whether UI updates should be rendered
 	 */
 	this.isUpdatingCurrentRecommendation = true;

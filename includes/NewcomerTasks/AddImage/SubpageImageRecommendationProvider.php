@@ -2,9 +2,13 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
+use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\NewcomerTasks\Recommendation;
+use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SubpageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
+use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\WikiPageFactory;
 use Title;
 
 /**
@@ -19,6 +23,23 @@ class SubpageImageRecommendationProvider
 	extends SubpageRecommendationProvider
 	implements ImageRecommendationProvider
 {
+
+	/** @var ImageRecommendationMetadataProvider */
+	private $metadataProvider;
+
+	/**
+	 * @param WikiPageFactory $wikiPageFactory
+	 * @param RecommendationProvider $fallbackRecommendationProvider
+	 * @param ImageRecommendationMetadataProvider $metadataProvider
+	 */
+	public function __construct(
+		WikiPageFactory $wikiPageFactory,
+		RecommendationProvider $fallbackRecommendationProvider,
+		ImageRecommendationMetadataProvider $metadataProvider
+	) {
+		parent::__construct( $wikiPageFactory, $fallbackRecommendationProvider );
+		$this->metadataProvider = $metadataProvider;
+	}
 
 	/** @inheritDoc */
 	protected static $subpageName = 'addimage';
@@ -39,10 +60,27 @@ class SubpageImageRecommendationProvider
 			// as a serialization format but easy to obtain for actual wiki pages so allow it
 			// as a convenience.
 			return ServiceImageRecommendationProvider::processApiResponseData( $title,
-				$title->getPrefixedText(), $data );
+				$title->getPrefixedText(), $data, $this->metadataProvider );
 		} else {
 			return ImageRecommendation::fromArray( $data );
 		}
+	}
+
+	/** @inheritDoc */
+	public static function onMediaWikiServices( MediaWikiServices $services ) {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		$services->addServiceManipulator( static::$serviceName,
+			static function (
+				RecommendationProvider $recommendationProvider,
+				MediaWikiServices $services
+			) use ( $growthServices ) {
+				return new static(
+					$services->getWikiPageFactory(),
+					$recommendationProvider,
+					$growthServices->getImageRecommendationMetadataProvider()
+				);
+			}
+		);
 	}
 
 }

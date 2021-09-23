@@ -37,12 +37,16 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	/** @var int|null */
 	private $requestTimeout;
 
+	/** @var ImageRecommendationMetadataProvider */
+	private $metadataProvider;
+
 	/**
 	 * @param TitleFactory $titleFactory
 	 * @param HttpRequestFactory $httpRequestFactory
 	 * @param string $url Image recommendation service root URL
 	 * @param string $wikiProject Wiki project (e.g. 'wikipedia')
 	 * @param string $wikiLanguage Wiki language code
+	 * @param ImageRecommendationMetadataProvider $metadataProvider Image metadata provider
 	 * @param int|null $requestTimeout Service request timeout in seconds.
 	 */
 	public function __construct(
@@ -51,6 +55,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		string $url,
 		string $wikiProject,
 		string $wikiLanguage,
+		ImageRecommendationMetadataProvider $metadataProvider,
 		?int $requestTimeout
 	) {
 		$this->titleFactory = $titleFactory;
@@ -59,6 +64,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		$this->wikiProject = $wikiProject;
 		$this->wikiLanguage = $wikiLanguage;
 		$this->requestTimeout = $requestTimeout;
+		$this->metadataProvider = $metadataProvider;
 	}
 
 	/** @inheritDoc */
@@ -107,7 +113,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 				. $titleText . ': ' . ( $data['detail'] ?? '<no reason given>' ) );
 		}
 
-		return self::processApiResponseData( $title, $titleText, $data );
+		return self::processApiResponseData( $title, $titleText, $data, $this->metadataProvider );
 	}
 
 	/**
@@ -117,9 +123,15 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	 *   The title in the API response will be ignored.
 	 * @param string $titleText Title text, for logging.
 	 * @param array $data API response body
+	 * @param ImageRecommendationMetadataProvider $metadataProvider
 	 * @return ImageRecommendation|StatusValue
 	 */
-	public static function processApiResponseData( LinkTarget $title, string $titleText, array $data ) {
+	public static function processApiResponseData(
+		LinkTarget $title,
+		string $titleText,
+		array $data,
+		ImageRecommendationMetadataProvider $metadataProvider
+	) {
 		if ( !$data['pages'] ) {
 			return StatusValue::newFatal( 'rawmessage',
 				'No recommendation found for page: ' . $titleText );
@@ -139,12 +151,17 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 					'Invalid source type for ' . $titleText . ': ' . $source );
 			}
 
-			$images[] = new ImageRecommendationImage(
-				new TitleValue( NS_FILE, $suggestion['filename'] ),
-				$source,
-				$projects ? explode( ',', $projects ) : []
-			);
+			$imageMetadata = $metadataProvider->getMetadata( $suggestion['filename'] );
+			if ( is_array( $imageMetadata ) ) {
+				$images[] = new ImageRecommendationImage(
+					new TitleValue( NS_FILE, $suggestion['filename'] ),
+					$source,
+					$projects ? explode( ',', $projects ) : [],
+					$imageMetadata
+				);
+			}
 		}
+
 		if ( !$images ) {
 			return StatusValue::newFatal( 'rawmessage',
 				'No recommendation found for page: ' . $titleText );

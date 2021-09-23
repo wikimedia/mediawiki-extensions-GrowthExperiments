@@ -21,6 +21,8 @@ use GrowthExperiments\Mentorship\QuitMentorshipFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
@@ -240,6 +242,14 @@ class GrowthExperimentsServices {
 
 	public function getWikiPageConfigWriterFactory(): WikiPageConfigWriterFactory {
 		return $this->coreServices->get( 'GrowthExperimentsWikiPageConfigWriterFactory' );
+	}
+
+	public function getImageRecommendationMetadataService(): ImageRecommendationMetadataService {
+		return $this->coreServices->get( 'GrowthExperimentsImageRecommendationMetadataService' );
+	}
+
+	public function getImageRecommendationMetadataProvider(): ImageRecommendationMetadataProvider {
+		return $this->coreServices->get( 'GrowthExperimentsImageRecommendationMetadataProvider' );
 	}
 
 }

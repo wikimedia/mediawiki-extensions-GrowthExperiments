@@ -28,6 +28,8 @@ use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Mentorship\Store\PreferenceMentorStore;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\AddLinkSubmissionHandler;
@@ -175,6 +177,7 @@ return [
 			$config->get( 'GEImageRecommendationServiceUrl' ),
 			'wikipedia',
 			$services->getContentLanguage()->getCode(),
+			$growthServices->getImageRecommendationMetadataProvider(),
 			null
 		);
 	},
@@ -676,4 +679,22 @@ return [
 		// MediaWikiServices insists on service factories returning an object, so wrap it into one
 		return (object)[ 'project' => $project ];
 	},
+
+	'GrowthExperimentsImageRecommendationMetadataService' => static function (
+		MediaWikiServices $services
+	): ImageRecommendationMetadataService {
+		return new ImageRecommendationMetadataService( $services->getRepoGroup() );
+	},
+
+	'GrowthExperimentsImageRecommendationMetadataProvider' => static function (
+		MediaWikiServices $services
+	): ImageRecommendationMetadataProvider {
+		$growthExperimentsServices = GrowthExperimentsServices::wrap( $services );
+		return new ImageRecommendationMetadataProvider(
+			$growthExperimentsServices->getImageRecommendationMetadataService(),
+			$services->getContentLanguage()->getCode(),
+			$services->getContentLanguage()->getFallbackLanguages()
+		);
+	}
+
 ];

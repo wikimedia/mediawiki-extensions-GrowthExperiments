@@ -34,6 +34,9 @@ class ImageRecommendationImage {
 	/** @var string[] */
 	private $projects;
 
+	/** @var array */
+	private $metadata;
+
 	/**
 	 * Create an ImageRecommendationImage object from an array representation.
 	 * This is the inverse of toArray().
@@ -44,7 +47,8 @@ class ImageRecommendationImage {
 		return new ImageRecommendationImage(
 			new TitleValue( NS_FILE, $imageData['image'] ),
 			$imageData['source'],
-			$imageData['projects'] ?? []
+			$imageData['projects'] ?? [],
+			$imageData['metadata'] ?? []
 		);
 	}
 
@@ -53,15 +57,18 @@ class ImageRecommendationImage {
 	 * @param string $source One of the SOURCE_* constants.
 	 * @param string[] $projects List of projects (as wiki IDs) the recommendation was based on.
 	 *   Only for SOURCE_INTERWIKI.
+	 * @param array $metadata Metadata for the recommended image.
 	 */
 	public function __construct(
 		LinkTarget $imageTitle,
 		string $source,
-		array $projects = []
+		array $projects = [],
+		array $metadata = []
 	) {
 		$this->imageTitle = $imageTitle;
 		$this->source = $source;
 		$this->projects = $projects;
+		$this->metadata = $metadata;
 	}
 
 	/**
@@ -97,6 +104,7 @@ class ImageRecommendationImage {
 			'image' => $this->imageTitle->getDBkey(),
 			'source' => $this->source,
 			'projects' => $this->projects,
+			'metadata' => $this->metadata,
 		];
 		return $data;
 	}
