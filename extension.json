@@ -938,7 +938,8 @@
 				"ext.growthExperiments.StructuredTask.mobile/addlink/AddLinkMobileSaveDialog.js",
 				"ext.growthExperiments.StructuredTask.mobile/addlink/RecommendedLinkToolbarDialogMobile.js",
 				"ext.growthExperiments.StructuredTask.mobile/addimage/AddImageMobileArticleTarget.js",
-				"utils/ext.growthExperiments.Utils.js"
+				"utils/ext.growthExperiments.Utils.js",
+				"ui-components/SwipePane.js"
 			],
 			"dependencies": [
 				"ext.growthExperiments.StructuredTask",

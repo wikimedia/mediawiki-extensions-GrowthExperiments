@@ -29,6 +29,7 @@ RecommendedLinkToolbarDialogDesktop.static.position = 'inline';
  */
 RecommendedLinkToolbarDialogDesktop.prototype.initialize = function () {
 	RecommendedLinkToolbarDialogDesktop.super.prototype.initialize.call( this );
+	this.$body.append( this.$buttons );
 	this.$anchor = $( '<div>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-desktop-anchor' );
 	this.$element.prepend( this.$anchor );
 	this.$element.detach();

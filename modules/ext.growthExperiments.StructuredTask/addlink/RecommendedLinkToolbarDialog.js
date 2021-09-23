@@ -59,7 +59,7 @@ RecommendedLinkToolbarDialog.prototype.initialize = function () {
 	this.$buttons = $( '<div>' ).addClass( 'mw-ge-recommendedLinkToolbarDialog-buttons' );
 	this.setupButtons();
 	this.$head.append( [ this.getRobotIcon(), this.$progressTitle, this.$progress ] );
-	this.$body.append( [ introLabel.$element, this.setupLinkPreview(), this.$buttons ] );
+	this.$body.append( [ introLabel.$element, this.setupLinkPreview() ] );
 
 	// Used by other dialogs to return focus.
 	mw.hook( 'inspector-regainfocus' ).add( function () {
@@ -116,9 +116,14 @@ RecommendedLinkToolbarDialog.prototype.afterSetupProcess = function () {
 /**
  * Show the previous suggestion if it exists
  * Do nothing if the user is on the first recommendation
+ *
+ * @param {boolean} [isSwipe] Whether the action is triggered via swipe gesture
  */
-RecommendedLinkToolbarDialog.prototype.onPrevButtonClicked = function () {
-	this.logger.log( 'back', this.suggestionLogMetadata() );
+RecommendedLinkToolbarDialog.prototype.onPrevButtonClicked = function ( isSwipe ) {
+	this.logger.log( 'back', $.extend(
+		/* eslint-disable-next-line camelcase */
+		this.suggestionLogMetadata(), { navigation_type: isSwipe ? 'swipe' : 'click' }
+	) );
 	if ( this.currentIndex === 0 ) {
 		return;
 	}
@@ -129,9 +134,14 @@ RecommendedLinkToolbarDialog.prototype.onPrevButtonClicked = function () {
  * Show the next suggestion if it exists, if the user is on the last recommendation:
  * fire an event to save the article if user decided on any of the recommendations
  * show skipped all suggestions dialog if user didn't decide on any of the recommendations
+ *
+ * @param {boolean} [isSwipe] Whether the action is triggered via swipe gesture
  */
-RecommendedLinkToolbarDialog.prototype.onNextButtonClicked = function () {
-	this.logger.log( 'next', this.suggestionLogMetadata() );
+RecommendedLinkToolbarDialog.prototype.onNextButtonClicked = function ( isSwipe ) {
+	this.logger.log( 'next', $.extend(
+		/* eslint-disable-next-line camelcase */
+		this.suggestionLogMetadata(), { navigation_type: isSwipe ? 'swipe' : 'click' }
+	) );
 	if ( this.currentDataModel.isUndecided() ) {
 		this.logger.log( 'suggestion_skip', this.suggestionLogMetadata() );
 	}

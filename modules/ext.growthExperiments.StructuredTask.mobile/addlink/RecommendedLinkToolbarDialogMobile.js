@@ -1,7 +1,8 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	RecommendedLinkToolbarDialog = StructuredTask.RecommendedLinkToolbarDialog,
 	LinkSuggestionInteractionLogger = StructuredTask.LinkSuggestionInteractionLogger,
-	MachineSuggestionsMode = StructuredTask.MachineSuggestionsMode;
+	MachineSuggestionsMode = StructuredTask.MachineSuggestionsMode,
+	SwipePane = require( '../../ui-components/SwipePane.js' );
 
 /**
  * @class mw.libs.ge.RecommendedLinkToolbarDialogMobile
@@ -35,6 +36,8 @@ RecommendedLinkToolbarDialogMobile.prototype.initialize = function () {
 	);
 	this.setupLabelPreview();
 	this.$body.prepend( this.$labelPreview );
+	this.$foot.append( this.$buttons );
+	this.setupSwipeNavigation();
 	this.setupHelpButton(
 		mw.message( 'growthexperiments-addlink-context-button-help' ).text()
 	);
@@ -221,6 +224,22 @@ RecommendedLinkToolbarDialogMobile.prototype.animateNewContent = function ( $con
 	$fakeCurrent.addClass( this.isGoingBack ? 'animate-from-end' : 'animate-from-start' );
 	$realCurrent.removeClass( [ 'animate-from-end', 'animate-from-start' ] );
 	return promise;
+};
+
+/**
+ * Enable navigation via swipe gestures
+ */
+RecommendedLinkToolbarDialogMobile.prototype.setupSwipeNavigation = function () {
+	var swipePane = new SwipePane( this.$body, {
+		isRtl: document.documentElement.dir === 'rtl',
+		isHorizontal: true
+	} );
+	swipePane.setToStartHandler( function () {
+		this.onNextButtonClicked( true );
+	}.bind( this ) );
+	swipePane.setToEndHandler( function () {
+		this.onPrevButtonClicked( true );
+	}.bind( this ) );
 };
 
 /** @inheritDoc **/
