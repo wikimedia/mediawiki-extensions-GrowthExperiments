@@ -754,34 +754,22 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	private function normalizeSuggestedEditsConfig( array $data ): array {
 		$normalizedData = [];
 		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $taskTypeData ) {
-			$templates = array_values( array_filter( array_map( function ( string $template ) {
-				$title = $this->titleFactory->newFromText( $template );
-				if ( $title === null ) {
-					return null;
-				}
+			$templates = array_map( static function ( Title $title ) {
 				return $title->getText();
-			}, explode( "\n", $data["${taskType}Templates"] ?? '' ) ) ) );
+			}, $this->normalizeTitleList( $data["${taskType}Templates"] ?? null ) );
 			if ( $templates === [] &&
 				!in_array( $taskType, NewcomerTasksValidator::SUGGESTED_EDITS_MACHINE_SUGGESTIONS_TASK_TYPES )
 			) {
 				// Do not save template-based tasks with no templates
 				continue;
 			}
-			$excludedTemplates = array_values( array_filter( array_map( function ( string $template ) {
-				$title = $this->titleFactory->newFromText( $template );
-				if ( $title === null ) {
-					return null;
-				}
+			$excludedTemplates = array_map( static function ( Title $title ) {
 				return $title->getText();
-			}, explode( "\n", $data["${taskType}ExcludedTemplates"] ?? '' ) ) ) );
+			}, $this->normalizeTitleList( $data["${taskType}ExcludedTemplates"] ?? null ) );
 
-			$excludedCategories = array_values( array_filter( array_map( function ( string $category ) {
-				$title = $this->titleFactory->newFromText( $category );
-				if ( $title === null ) {
-					return null;
-				}
+			$excludedCategories = array_map( static function ( Title $title ) {
 				return $title->getText();
-			}, explode( "\n", $data["${taskType}ExcludedCategories"] ?? '' ) ) ) );
+			}, $this->normalizeTitleList( $data["${taskType}ExcludedCategories"] ?? null ) );
 
 			$normalizedData[$taskType] = [
 				'group' => $taskTypeData['difficulty'],
@@ -797,6 +785,24 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			}
 		}
 		return $normalizedData;
+	}
+
+	/**
+	 * Helper method for normalizeSuggestedEditsConfig()
+	 * @param string|null $list
+	 * @return Title[] List of valid titles
+	 */
+	private function normalizeTitleList( ?string $list ) {
+		if ( $list === null || $list === '' ) {
+			return [];
+		}
+		return array_values( array_filter( array_map( function ( string $titleText ) {
+			$title = $this->titleFactory->newFromText( $titleText );
+			if ( $title === null ) {
+				return null;
+			}
+			return $title;
+		}, explode( "\n", $list ) ) ) );
 	}
 
 	/**

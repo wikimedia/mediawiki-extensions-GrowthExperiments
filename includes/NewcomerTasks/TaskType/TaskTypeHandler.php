@@ -108,10 +108,11 @@ abstract class TaskTypeHandler {
 	 */
 	protected function validateTemplate( $template, string $taskTypeId, StatusValue $status ): StatusValue {
 		if ( !is_string( $template ) ) {
+			if ( !is_scalar( $template ) ) {
+				$template = '[' . gettype( $template ) . ']';
+			}
 			$status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidtemplatetitle',
-				// Coerce to string for the message, which will look OK for integer values but not so for e.g.
-				// `[[]]`
-				(string)$template, $taskTypeId );
+				$template, $taskTypeId );
 		}
 		try {
 			$this->titleParser->parseTitle( $template, NS_TEMPLATE );
@@ -125,12 +126,19 @@ abstract class TaskTypeHandler {
 	/**
 	 * Attempt to parse a category title, return a failed status value on MalformedTitleException.
 	 *
-	 * @param string $category
+	 * @param mixed $category
 	 * @param string $taskTypeId
 	 * @param StatusValue $status
 	 * @return StatusValue
 	 */
-	protected function validateCategory( string $category, string $taskTypeId, StatusValue $status ): StatusValue {
+	protected function validateCategory( $category, string $taskTypeId, StatusValue $status ): StatusValue {
+		if ( !is_string( $category ) ) {
+			if ( !is_scalar( $category ) ) {
+				$category = '[' . gettype( $category ) . ']';
+			}
+			$status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidcategorytitle',
+				$category, $taskTypeId );
+		}
 		try {
 			$this->titleParser->parseTitle( $category, NS_CATEGORY );
 		} catch ( MalformedTitleException $e ) {
