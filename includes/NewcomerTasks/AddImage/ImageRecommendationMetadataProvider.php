@@ -61,11 +61,6 @@ class ImageRecommendationMetadataProvider {
 		}
 		return [
 			'description' => $this->getDescriptionValue( $extendedMetadata ),
-			'descriptionUrl' => $fileMetadata['descriptionUrl'],
-			'thumbUrl' => $fileMetadata['thumbUrl'],
-			'fullUrl' => $fileMetadata['fullUrl'],
-			'originalWidth' => $fileMetadata['originalWidth'],
-			'originalHeight' => $fileMetadata['originalHeight'],
-		];
+		] + $fileMetadata;
 	}
 }
