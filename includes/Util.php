@@ -37,7 +37,8 @@ class Util {
 	private const YEAR = 31536000;
 
 	private const STATSD_INCREMENTABLE_ERROR_MESSAGES = [
-		'AddLink' => 'growthexperiments-addlink-notinstore'
+		'AddLink' => 'growthexperiments-addlink-notinstore',
+		'AddLinkDuplicate' => 'growthexperiments-addlink-duplicatesubmission',
 	];
 
 	/**

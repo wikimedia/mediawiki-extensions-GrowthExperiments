@@ -30,8 +30,8 @@ class AddImageSubmissionHandler implements RecommendationSubmissionHandler {
 	/** @inheritDoc */
 	public function validate(
 		ProperPageIdentity $page, UserIdentity $user, int $baseRevId, array $data
-	): ?array {
-		return null;
+	): StatusValue {
+		return StatusValue::newGood();
 	}
 
 	/** @inheritDoc */
