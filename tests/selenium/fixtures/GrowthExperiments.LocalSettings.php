@@ -50,3 +50,7 @@ $wgHooks['ContentHandlerDefaultModelFor'][] =
 $wgHooks['MediaWikiServices'][] = SubpageImageRecommendationProvider::class . '::onMediaWikiServices';
 $wgHooks['ContentHandlerDefaultModelFor'][] =
 	SubpageImageRecommendationProvider::class . '::onContentHandlerDefaultModelFor';
+// Set up service URL for images.
+$wgGEImageRecommendationServiceUrl = 'https://image-suggestion-api.wmcloud.org';
+// Use Commons as a foreign file repository.
+$wgUseInstantCommons = true;
