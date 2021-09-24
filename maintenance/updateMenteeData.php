@@ -96,6 +96,7 @@ class UpdateMenteeData extends Maintenance {
 		$batchSize = $this->getBatchSize();
 		$allUpdatedMenteeIds = [];
 		$dbw = $this->growthLoadBalancer->getConnection( DB_PRIMARY );
+		$dbr = $this->growthLoadBalancer->getConnection( DB_REPLICA );
 		foreach ( $mentors as $mentorRaw ) {
 			$mentor = $this->userFactory->newFromName( $mentorRaw );
 			if ( $mentor === null ) {
@@ -107,22 +108,34 @@ class UpdateMenteeData extends Maintenance {
 			$updatedMenteeIds = [];
 			foreach ( $data as $menteeId => $menteeData ) {
 				$encodedData = FormatJson::encode( $menteeData );
-				$dbw->begin( __METHOD__ );
-				$dbw->upsert(
+				$storedEncodedData = $dbr->selectField(
 					'growthexperiments_mentee_data',
-					[
-						'mentee_id' => $menteeId,
-						'mentee_data' => $encodedData
-					],
-					[ [ 'mentee_id' ] ],
-					[
-						'mentee_data' => $encodedData
-					],
-					__METHOD__
+					'mentee_data',
+					[ 'mentee_id' => $menteeId ]
 				);
-				$dbw->commit( __METHOD__ );
-				$thisBatch++;
+				if ( $storedEncodedData === false ) {
+					// Row doesn't exist yet, insert it
+					$dbw->insert(
+						'growthexperiments_mentee_data',
+						[
+							'mentee_id' => $menteeId,
+							'mentee_data' => $encodedData
+						],
+						__METHOD__
+					);
+				} else {
+					// Row exists, if anything changed, update
+					if ( FormatJson::decode( $storedEncodedData, true ) !== $menteeData ) {
+						$dbw->update(
+							'growthexperiments_mentee_data',
+							[ 'mentee_data' => $encodedData ],
+							[ 'mentee_id' => $menteeId ],
+							__METHOD__
+						);
+					}
+				}
 
+				$thisBatch++;
 				$updatedMenteeIds[] = $menteeId;
 				$allUpdatedMenteeIds[] = $menteeId;
 
