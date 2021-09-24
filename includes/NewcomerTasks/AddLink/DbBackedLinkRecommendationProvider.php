@@ -46,14 +46,18 @@ class DbBackedLinkRecommendationProvider implements LinkRecommendationProvider {
 	public function get( LinkTarget $title, TaskType $taskType ) {
 		Assert::parameterType( LinkRecommendationTaskType::class, $taskType, '$taskType' );
 		// Task type parameters are assumed to be mostly static. Invalidating the recommendations
-		// stored in the DB when the task type parameters change is left to some (as of yet
-		// unimplemented) manual mechanism.
+		// stored in the DB when the task type parameters change should be done manually
+		// via revalidateLinkRecommendations.php.
 		$linkRecommendation = $this->linkRecommendationStore->getByLinkTarget( $title );
 		if ( !$linkRecommendation ) {
 			if ( $this->fallbackProvider ) {
 				$linkRecommendation = $this->fallbackProvider->get( $title, $taskType );
 			} else {
-				$linkRecommendation = StatusValue::newFatal( 'growthexperiments-addlink-notinstore',
+				// This can happen due to race conditions - the search index update is late so the
+				// user is sent to a task which has just been deleted from the DB. It could also be
+				// caused by errors in updating the index, which are important to monitor. So make
+				// this error non-fatal but track it via Util::STATSD_INCREMENTABLE_ERROR_MESSAGES.
+				$linkRecommendation = StatusValue::newGood()->error( 'growthexperiments-addlink-notinstore',
 					$this->titleFormatter->getPrefixedText( $title ) );
 			}
 		}
