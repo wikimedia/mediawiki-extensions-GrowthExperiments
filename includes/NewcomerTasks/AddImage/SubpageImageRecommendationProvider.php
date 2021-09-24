@@ -3,12 +3,12 @@
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\NewcomerTasks\Recommendation;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\SubpageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\WikiPageFactory;
+use StatusValue;
 use Title;
 
 /**
@@ -52,9 +52,9 @@ class SubpageImageRecommendationProvider
 
 	/**
 	 * @inheritDoc
-	 * @return ImageRecommendation
+	 * @return ImageRecommendation|StatusValue
 	 */
-	public function createRecommendation( Title $title, array $data ): Recommendation {
+	public function createRecommendation( Title $title, array $data ) {
 		if ( isset( $data['pages'] ) ) {
 			// This is the format used by the Image Suggestions API. It is not really useful
 			// as a serialization format but easy to obtain for actual wiki pages so allow it
