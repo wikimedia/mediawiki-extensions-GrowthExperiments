@@ -54,6 +54,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Stav mentora",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Aktivní",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Pryč",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Jelikož jste do $1 pryč, vaši mentorovaní budou dočasně přiřazeni jinému mentorovi.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Změnit svůj stav na „Pryč“",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Zrušit",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Pozastavit",

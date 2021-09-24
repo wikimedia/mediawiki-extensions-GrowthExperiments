@@ -60,7 +60,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-header": "După ce {{GENDER:$1|ați}} efectuat niște editări simple.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-header": "Când {{GENDER:$1|ați}} învățat despre cele mai bune practici ale Wikipediei.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-description-body": "Corectare și adăugare de legături spre alte articole.",
-	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Adăugare de surse de încredere și actualizare de articole care sunt inactuale",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-description-body": "Adăugare de surse de încredere și actualizare de articole care sunt inactuale.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-description-body": "Creare de articole noi și extindere de articole scurte.",
 	"growthexperiments-homepage-suggested-edits-header": "Editări sugerate",
 	"growthexperiments-homepage-impact-header": "Impactul {{GENDER:$1|dvs.}}",
@@ -256,12 +256,14 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Cultură",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Religie",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Configurare a editărilor sugerate invalidă: structură defectă",
+	"growthexperiments-homepage-suggestededits-config-fieldarray": "Configurație invalidă de editări sugerate pentru tipul de sarcină „$1”: „$2” trebuie să fie un matrice",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Configurare a editărilor sugerate invalidă: id-ul „$1” invalid - trebuie să conțină doar a-z, 0-9, - (minus)",
 	"growthexperiments-homepage-suggestededits-config-invalidhandlerid": "Configurare a editărilor sugerate invalidă: invalid <code>tipul</code> parametrului $1 pentru tipul sarcinii $2 - trebuie să fie unul dintre $3",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Configurare a editărilor sugerate invalidă: lipsește câmpul $1 pentru tipul sau subiectul sarcinii $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtitle": "Configurare a editărilor sugerate invalidă: titlul „$1” invalid",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Configurare a editărilor sugerate invalidă: grupul $1 invalid pentru tipul sarcinii $2",
 	"growthexperiments-homepage-suggestededits-config-invalidtemplatetitle": "Configurare a editărilor sugerate invalidă: numele formatului $1 invalid pentru tipul sarcinii $2",
+	"growthexperiments-homepage-suggestededits-config-invalidcategorytitle": "Configurare a editărilor sugerate invalidă: numele categoriei $1 invalid pentru tipul sarcinii $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Configurare a editărilor sugerate invalidă: lipsește mesajul $1 pentru câmpul $2",
 	"growthexperiments-homepage-suggestededits-create-article-additional-message": "Pentru a crea cu succes un articol nou, {{GENDER:$1|va}} trebui să utilizați multe dintre iscusințele pe care le puteți învăța prin completarea unor sarcini mai ușoare. Pentru a afla mai multe despre cum să creați un articol nou, [$2 apăsați aici].",
 	"growthexperiments-homepage-suggestededits-error-title": "Nu este disponibilă vreo editare sugerată în acest moment.",
@@ -390,5 +392,6 @@
 	"growthexperiments-addimage-inspector-no-button": "Nu",
 	"growthexperiments-addimage-inspector-skip-button": "Omite",
 	"growthexperiments-addimage-inspector-show-button": "Arată sugestie de imagine",
-	"growthexperiments-addimage-inspector-help-button": "Primiți ajutor cu editarea"
+	"growthexperiments-addimage-inspector-help-button": "Primiți ajutor cu editarea",
+	"growthexperiments-addimage-inspector-details-button": "Vezi detalii"
 }

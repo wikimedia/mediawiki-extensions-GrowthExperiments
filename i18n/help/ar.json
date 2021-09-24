@@ -114,7 +114,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "يمكن للاقتراحات أن تربط إلى كلمات لا تحتاج إليها، أو ربّما إلى المقال الخاطئ. {{GENDER:$1|استخدم|استخدمي}} تقديرك الخاص لتقرير ما إذا كان الرابط سليما أم خاطئا.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|تعلّم المزيد حول الاقتراحات الآلية]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "القواعد الإرشادية",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* {{GENDER:$1|اربط|اربطي}} المفاهيم التي يمكن للقارئ أن يريد تعلّم المزيد حولها.\n* {{GENDER:$1|تأكّد|تأكّدي}} من أنّ الرابط سيصل إلى المقالة الصحيحة.\n* عدم ربط الكلمات الشائعة، أو السنوات، أو التواريخ.\n* لو كنت غير {{GENDER:$1|واثقا، تخطّ|واثقة، تخطّيْ}} الاقتراح.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* {{GENDER:$1|اربط|اربطي}} المفاهيم التي يمكن للقارئ أن يريد تعلّم المزيد حولها.\n* {{GENDER:$1|تأكّد|تأكّدي}} من أنّ الرابط سيصل إلى المقالة الصحيحة.\n* عدم ربط الكلمات الشائعة، أو السنوات، أو التواريخ.\n* لو كنت غير {{GENDER:$1|واثق، تخطّ|واثقة، تخطّيْ}} الاقتراح.",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "جملة كمثال",
 	"growthexperiments-help-panel-questioncomplete-title": "{{GENDER:|اِطرح|اِطرحي}} سؤالا",
 	"growthexperiments-help-panel-questioncomplete-header": "تم نشر سؤالك!",

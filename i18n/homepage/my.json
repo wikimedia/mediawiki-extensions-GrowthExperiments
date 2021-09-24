@@ -105,7 +105,7 @@
 	"growthexperiments-homepage-discovery-thanks-header": "{{GENDER:$1|သင်၏}}အကောင့်ကို ဖန်တီးမှုအတွက် ကျေးဇူးတင်ရှိပါသည်",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-header": "{{GENDER:$1|သင်၏}} ဗဟိုစာမျက်နှာမှ ကြိုဆိုပါသည်",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "ဤနေရာတွင် စတင်ပါ",
-	"growthexperiments-homepage-suggestededits-pager": "<strong>$2</strong> {{PLURAL:$2|အကြံပြုချက်|အကြံပြုချက်များ}} ၏ <strong>$1</strong>",
+	"growthexperiments-homepage-suggestededits-pager": "<strong>$2</strong> {{PLURAL:$2|အကြံပြုချက်|အကြံပြုချက်များ}}၏ <strong>$1</strong>",
 	"growthexperiments-homepage-suggestededits-pager-end": "အဆုံး",
 	"growthexperiments-homepage-suggestededits-pageviews": "$1 လည်ပတ်မှုများ (လွန်ခဲ့သော ၆၀ ရက်)",
 	"growthexperiments-homepage-suggestededits-previous-card": "ယခင် အကြံပြုတည်းဖြတ်မှု",

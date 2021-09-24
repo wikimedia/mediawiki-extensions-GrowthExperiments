@@ -5,6 +5,7 @@
 			"Andru1013",
 			"Canaan9801",
 			"DannyS712",
+			"Destinid10 2",
 			"Fitoschido",
 			"Hasley",
 			"Ihojose",
@@ -371,5 +372,6 @@
 	"newcomertasksinfo-table-header-task-count": "Cantidad",
 	"newcomertasksinfo-table-header-topic-type": "ID de tema",
 	"growthexperiments-structuredtask-ve-machine-suggestions-mode-title": "Sugerencias",
-	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Enviar..."
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Enviar...",
+	"growthexperiments-addimage-inspector-details-button": "Ver detalles"
 }
