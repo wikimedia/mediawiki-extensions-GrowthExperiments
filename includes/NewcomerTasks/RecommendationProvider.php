@@ -19,12 +19,14 @@ interface RecommendationProvider {
 	 * to a wikitext or Parsoid HTML change.
 	 * Recommendations are not guaranteed to exist for all pages; typically you should only try to
 	 * fetch one for pages returned by TaskSuggester for the appropriate task type. Some task types
-	 * don't have recmmendations at all.
-	 * A warning status should be returned when the title had no recommendations, and a fatal
-	 * status when there was some unexpected error.
+	 * don't have recommendations at all.
+	 *
 	 * @param LinkTarget $title
 	 * @param TaskType $taskType This must be the task type matching the recommendation provider.
-	 * @return Recommendation|StatusValue
+	 * @return Recommendation|StatusValue The recommendation, or a StatusValue on error.
+	 *   The StatusValue's OK flag will determine whether this is an unexpected error that
+	 *   should be sent to the production error logs, or something that can happen under normal
+	 *   circumstances (e.g. the given article simply not having any recommendations).
 	 */
 	public function get( LinkTarget $title, TaskType $taskType );
 
