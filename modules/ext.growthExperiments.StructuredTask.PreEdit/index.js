@@ -74,11 +74,9 @@ module.exports = ( function () {
 	 * @param {string|Error} error Error code.
 	 */
 	function showErrorDialogOnFailure( error ) {
-		var wiki = mw.config.get( 'wgDBname' );
-
 		mw.log.error( error );
-		mw.errorLogger.logError( new Error( error ), 'error.growthexperiments' );
-		mw.track( 'counter.MediaWiki.GrowthExperiments.AddLink.nosuggestions.' + wiki, 1 );
+		// Do not send to mw.errorLogger. The error message comes from the BeforePageDisplay
+		// hook and was already logged there.
 
 		// eslint-disable-next-line camelcase
 		logger.log( 'impression', '', { active_interface: 'nosuggestions_dialog' } );
