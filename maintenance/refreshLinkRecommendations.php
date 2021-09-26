@@ -254,7 +254,7 @@ class RefreshLinkRecommendations extends Maintenance {
 				// FIXME exiting will make the cronjob unreliable. Not exiting might result
 				//  in an infinite error loop. Neither looks like a great option.
 				throw new RuntimeException( 'Search error: '
-					. Status::wrap( $candidates )->getWikiText( null, null, 'en' ) );
+					. Status::wrap( $candidates )->getWikiText( false, false, 'en' ) );
 			}
 
 			$linkTargets = $titles = [];

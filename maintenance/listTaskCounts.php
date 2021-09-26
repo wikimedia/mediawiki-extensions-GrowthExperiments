@@ -140,7 +140,7 @@ class ListTaskCounts extends Maintenance {
 		}
 		$tasks = $this->taskSuggester->suggest( new User, $taskTypes, $topics, 0, null, [ 'useCache' => false ] );
 		if ( $tasks instanceof StatusValue ) {
-			$this->fatalError( Status::wrap( $tasks )->getWikiText( null, null, 'en' ) );
+			$this->fatalError( Status::wrap( $tasks )->getWikiText( false, false, 'en' ) );
 		}
 		return $tasks->getTotalCount();
 	}
