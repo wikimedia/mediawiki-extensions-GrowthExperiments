@@ -545,11 +545,7 @@ class SuggestedEdits extends BaseModule {
 						$topicLabel =
 							$this->getContext()
 								->msg( 'growthexperiments-homepage-suggestededits-topics-button-topic-count' )
-								->numParams( [
-										$this->getContext()
-											->getLanguage()
-											->parseFormattedNumber( count( $topicMessages ) )
-									] )
+								->numParams( count( $topicMessages ) )
 								->text();
 					}
 				}
