@@ -11,7 +11,6 @@ use DeferredUpdates;
 use DomainException;
 use EchoAttributeManager;
 use EchoUserLocator;
-use Exception;
 use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
@@ -53,7 +52,6 @@ use MediaWiki\User\UserOptionsManager;
 use NamespaceInfo;
 use OOUI\ButtonWidget;
 use OutputPage;
-use Psr\Log\LogLevel;
 use RecentChange;
 use RequestContext;
 use ResourceLoaderContext;
@@ -337,11 +335,13 @@ class HomepageHooks implements
 			$recommendationProvider = $taskType = null;
 			$taskTypeId = $context->getRequest()->getVal( 'getasktype' );
 			if ( !$taskTypeId ) {
-				Util::logError( new WikiConfigException( 'Click ID present but task type ID missing' ) );
+				Util::logMessage( 'Click ID present but task type ID missing' );
 			} else {
 				$taskType = $this->configurationLoader->getTaskTypes()[$taskTypeId] ?? null;
 				if ( !$taskType ) {
-					Util::logError( new WikiConfigException( "No such task type: $taskTypeId" ) );
+					Util::logMessage( "No such task type: {taskTypeId}", [
+						'taskTypeId' => $taskTypeId,
+					] );
 				} else {
 					$taskTypeHandler = $this->taskTypeHandlerRegistry->getByTaskType( $taskType );
 					if ( $taskTypeHandler instanceof StructuredTaskTypeHandler ) {
@@ -355,12 +355,10 @@ class HomepageHooks implements
 				if ( $recommendation instanceof Recommendation ) {
 					$serializedRecommendation = $recommendation->toArray();
 				} else {
-					$errorMessage = Status::wrap( $recommendation )->getWikiText( false, false, 'en' );
-					Util::logError( $recommendation->isOK()
-						? new WikiConfigException( $errorMessage )
-						: new Exception( $errorMessage ),
-						[], LogLevel::ERROR, $recommendation );
-					$serializedRecommendation = [ 'error' => $errorMessage ];
+					Util::logStatus( $recommendation );
+					$serializedRecommendation = [
+						'error' => Status::wrap( $recommendation )->getWikiText( false, false, 'en' ),
+					];
 				}
 				$out->addJsConfigVars( [
 					'wgGESuggestedEditData' => $serializedRecommendation,
