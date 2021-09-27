@@ -219,6 +219,9 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 				$res[$userId][$key] = $value;
 			}
 		}
+		foreach ( $res as $userId => $userData ) {
+			$res[$userId]['last_active'] = $userData['last_edit'] ?? $userData['registration'];
+		}
 		return $res;
 	}
 
