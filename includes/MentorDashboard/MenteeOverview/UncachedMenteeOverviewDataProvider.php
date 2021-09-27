@@ -116,7 +116,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 					'user_editcount > 0',
 					'user_registration > ' . $this->mainDbr->addQuotes(
 						$this->mainDbr->timestamp(
-							wfTimestamp( TS_UNIX ) - 2 * 7 * self::SECONDS_DAY
+							(int)wfTimestamp( TS_UNIX ) - 2 * 7 * self::SECONDS_DAY
 						)
 					)
 				], IDatabase::LIST_OR ),
@@ -201,7 +201,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		$allLastEdits = $this->getLastEditTimestampForUsers( $allUserIds );
 		$userIds = [];
 		foreach ( $allLastEdits as $userId => $lastEdit ) {
-			$secondsSinceLastEdit = wfTimestamp( TS_UNIX ) -
+			$secondsSinceLastEdit = (int)wfTimestamp( TS_UNIX ) -
 				(int)ConvertibleTimestamp::convert(
 					TS_UNIX,
 					$lastEdit

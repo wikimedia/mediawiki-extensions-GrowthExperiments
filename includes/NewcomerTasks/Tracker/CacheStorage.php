@@ -37,7 +37,7 @@ class CacheStorage {
 			$this->getCacheKey(),
 			function ( BagOStuff $cache, $key, $oldVal ) use( $pageId, $taskTypeId ) {
 				$oldVal = $this->normalizeCacheData( $oldVal );
-				$expires = MWTimestamp::now( TS_UNIX ) + $this->cache::TTL_WEEK;
+				$expires = (int)MWTimestamp::now( TS_UNIX ) + $this->cache::TTL_WEEK;
 				$oldVal[$pageId] = [ 'type' => $taskTypeId, 'expires' => $expires ];
 				return $oldVal;
 			},

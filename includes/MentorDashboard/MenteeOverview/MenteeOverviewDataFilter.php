@@ -301,7 +301,7 @@ class MenteeOverviewDataFilter {
 			}
 
 			if ( $this->activeDaysAgo !== null && $menteeData['last_active'] !== null ) {
-				$secondsSinceLastActivity = wfTimestamp( TS_UNIX ) -
+				$secondsSinceLastActivity = (int)wfTimestamp( TS_UNIX ) -
 					(int)ConvertibleTimestamp::convert(
 						TS_UNIX,
 						$menteeData['last_active']

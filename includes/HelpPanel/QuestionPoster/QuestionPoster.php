@@ -641,7 +641,7 @@ abstract class QuestionPoster {
 			$this->getBody(),
 			$this->getSectionHeader(),
 			$this->revisionId,
-			$this->getPostedOnTimestamp(),
+			(int)$this->getPostedOnTimestamp(),
 			$this->getResultUrl(),
 			$this->getTargetContentModel()
 		);

@@ -130,7 +130,7 @@ class QuestionStore {
 				if ( !$checkedRecord->getTimestamp() ) {
 					// Some records did not have timestamps (T223338); backfill the
 					// timestamp if it's not set.
-					$checkedRecord->setTimestamp( wfTimestamp() );
+					$checkedRecord->setTimestamp( (int)wfTimestamp( TS_UNIX ) );
 				}
 			} elseif ( \ExtensionRegistry::getInstance()->isLoaded( 'Flow' ) &&
 				$questionRecord->getContentModel() === CONTENT_MODEL_FLOW_BOARD ) {

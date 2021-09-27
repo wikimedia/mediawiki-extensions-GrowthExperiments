@@ -98,16 +98,16 @@ class MenteesHandler extends SimpleHandler {
 
 		$data = $dataFilter->filter();
 		$context = RequestContext::getMain();
-		$nowUnix = MWTimestamp::now( TS_UNIX );
+		$nowUnix = (int)MWTimestamp::now( TS_UNIX );
 		array_walk( $data, static function ( &$menteeData ) use ( $context, $nowUnix ) {
 			if ( isset( $menteeData['last_active'] ) ) {
 				$menteeData['last_active'] = [
 					'raw' => $menteeData['last_active'],
 					'human' => Util::getRelativeTime(
 						$context,
-						$nowUnix - MWTimestamp::getInstance(
+						$nowUnix - (int)MWTimestamp::getInstance(
 							$menteeData['last_active']
-						)->getTimestamp()
+						)->getTimestamp( TS_UNIX )
 					)
 				];
 			}

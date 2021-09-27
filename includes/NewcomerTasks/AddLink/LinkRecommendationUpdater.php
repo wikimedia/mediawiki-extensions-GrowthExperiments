@@ -178,7 +178,7 @@ class LinkRecommendationUpdater {
 		}
 
 		// 3. exclude articles which have been edited very recently.
-		$revisionTime = MWTimestamp::convert( TS_UNIX, $revision->getTimestamp() );
+		$revisionTime = (int)MWTimestamp::convert( TS_UNIX, $revision->getTimestamp() );
 		if ( time() - $revisionTime < $this->getLinkRecommendationTaskType()->getMinimumTimeSinceLastEdit() ) {
 			return $this->failure( 'minimum time since last edit did not pass' );
 		}

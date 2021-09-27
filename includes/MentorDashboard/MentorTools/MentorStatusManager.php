@@ -69,7 +69,7 @@ class MentorStatusManager {
 		);
 		if (
 			$rawTs === null ||
-			ConvertibleTimestamp::convert( TS_UNIX, $rawTs ) < wfTimestamp( TS_UNIX )
+			(int)ConvertibleTimestamp::convert( TS_UNIX, $rawTs ) < (int)wfTimestamp( TS_UNIX )
 		) {
 			return null;
 		}
@@ -89,7 +89,7 @@ class MentorStatusManager {
 			self::MENTOR_AWAY_TIMESTAMP_PREF,
 			ConvertibleTimestamp::convert(
 				TS_MW,
-				wfTimestamp( TS_UNIX ) + self::SECONDS_DAY * $backInDays
+				(int)wfTimestamp( TS_UNIX ) + self::SECONDS_DAY * $backInDays
 			)
 		);
 		$this->userFactory->newFromUserIdentity( $mentor )->saveSettings();
