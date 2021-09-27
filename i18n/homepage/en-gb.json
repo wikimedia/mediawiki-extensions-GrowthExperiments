@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Abdulfatawu18",
-			"Alhassan Mohammed Awal"
+			"Alhassan Mohammed Awal",
+			"ಮಲ್ನಾಡಾಚ್ ಕೊಂಕ್ಣೊ"
 		]
 	},
 	"newcomertasksinfo": "Ninpalo Tuma",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
-	"newcomertasksinfo-table-header-task-count": "Kalinli",
-	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Zaŋtahi"
+	"newcomertasksinfo-table-header-task-count": "Count",
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Submit..."
 }

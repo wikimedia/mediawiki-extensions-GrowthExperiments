@@ -18,6 +18,7 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: آخر تحديث من [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: آخر تحديث من مستخدم مجهول $1.",
 	"growthexperiments-edit-config-pretext": "تتيح لك هذه الصفحة، ضبط إعدادات مزايا فريق [[:mw:Special:MyLanguage/Growth|النموّ]]. ستعدّل $1 نيابة عنك. يمكنك مشاهدة تغييراتك على تاريخ الصفحة.",
+	"growthexperiments-edit-config-pretext-banner": "يمكنك عرض لافتة على لوحة المستخدمين، للإعلان عن أحداث هامة تخصّ الوافدين الجدد. لو أردت ذلك، يلزمك إضافة ذلك يدويّا على [[$1]]. أيّ إضافة في تلك الصّفحة، ستظهر داخل لافتة ذات خلفيّة صفراء أعلى صفحة [[Special:Homepage]].",
 	"growthexperiments-edit-config-pretext-unprivileged": "تمكّن هذه الاستمارة المستخدمين من ضبط الإعدادات الخاصة بمزايا فريق[[:mw:Special:MyLanguage/Growth|النموّ]].",
 	"growthexperiments-edit-config-feedback-headline": "هل لديكم أفكار أو أسئلة حول هذه الاستمارة؟",
 	"growthexperiments-edit-config-feedback-cta": "أرسلوا لنا ملاحظاتكم",

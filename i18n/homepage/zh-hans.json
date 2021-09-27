@@ -407,5 +407,6 @@
 	"growthexperiments-addimage-inspector-no-button": "否",
 	"growthexperiments-addimage-inspector-skip-button": "跳过",
 	"growthexperiments-addimage-inspector-show-button": "展示链接建议",
-	"growthexperiments-addimage-inspector-help-button": "获取编辑帮助"
+	"growthexperiments-addimage-inspector-help-button": "获取编辑帮助",
+	"growthexperiments-addimage-inspector-details-button": "查看详情"
 }

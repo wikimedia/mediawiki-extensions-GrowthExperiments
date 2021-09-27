@@ -4,5 +4,7 @@
 			"Ykhwong"
 		]
 	},
-	"apihelp-growthstarmentee-summary": "현재 사용자가 지정한 멘티를 표시하거나 표시를 해제합니다 (비공개 상태로 저장되며 기록에 남지 않습니다)"
+	"apihelp-growthstarmentee-summary": "현재 사용자가 지정한 멘티를 표시하거나 표시를 해제합니다 (비공개 상태로 저장되며 기록에 남지 않습니다)",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "새 상태",
+	"apihelp-query+growthmentorstatus-summary": "현재 사용자의 멘토 상태를 조회합니다"
 }

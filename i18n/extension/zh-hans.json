@@ -6,6 +6,7 @@
 			"GuoPC",
 			"Shizhao",
 			"Sunny00217",
+			"TsuyaMarisa",
 			"VulpesVulpes825",
 			"Yining Chen",
 			"Zhang8569",
@@ -75,5 +76,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-references-templates": "参考文献：查找需要更多参考文献的条目的模板。",
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "用于了解有关添加参考文献的更多信息的目标页面",
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "更新：用于查找需要使用当前信息更新的文章的模板。",
-	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "用于了解有关更新文章的更多信息的目标页面。"
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "用于了解有关更新文章的更多信息的目标页面。",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "包含此处定义的模板的文章将不会显示为用户作为任务类型的任务。"
 }

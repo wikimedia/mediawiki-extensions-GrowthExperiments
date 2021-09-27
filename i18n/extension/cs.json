@@ -19,6 +19,7 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Naposledy upraveno {{GENDER:$1|uživatelem|uživatelkou}} [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Naposledy upraveno neznámým uživatelem $1.",
 	"growthexperiments-edit-config-pretext": "Tato stránka vám umožňuje editovat konfiguraci funkcí vyvinutých týmem [[:mw:Special:MyLanguage/Growth|Growth]]. Vaším jménem bude editovat konfigurační stránku $1. Výsledek vašich změn můžete vidět na této stránce.",
+	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|Můžete}} také zobrazit banner na domovské stránce nováčka. Tento banner může například obsahovat oznámení o důležitých událostech týkající se nováčků. Pokud {{GENDER:|chcete}} takový banner aktivovat, {{GENDER:|musíte}} jej ručně přidat na stránku [[$1]]. Jakýkoli obsah, který tam přidáte, bude zobrazen ve žlutém banneru v horní části [[Special:Homepage|Domovské stránky nováčka]].",
 	"growthexperiments-edit-config-pretext-unprivileged": "Tento formulář umožňuje uživatelům s dostatečnými právy měnit konfiguraci [[:mw:Special:MyLanguage/Growth|funkcí týmu Growth]].",
 	"growthexperiments-edit-config-feedback-headline": "Máte nějaké nápady či otázky týkající se tohoto formuláře?",
 	"growthexperiments-edit-config-feedback-cta": "Dát zpětnou vazbu",
@@ -72,5 +73,8 @@
 	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Reference: šablony používané k nalezení článků, které potřebují více referencí.",
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Stránka, na které se nováčci mohou dozvědět více o referencích",
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Aktualizace: šablony používané k nalezení článků, které je třeba aktualizovat.",
-	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Stránka, na které se nováčci mohou dozvědět více o aktualizování článků"
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Stránka, na které se nováčci mohou dozvědět více o aktualizování článků",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Název stránky, na které se nováčci mohou dozvědět více informací o nástroji pro přidávání odkazů.",
+	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Název stránky, na které se nováčci mohou dozvědět více informací o nástroji pro přidávání obrázků.",
+	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Editační tipy tohoto druhu jsou označené jako generované strojem, proto nepoužívají šablony pro vygenerování seznamu článků."
 }

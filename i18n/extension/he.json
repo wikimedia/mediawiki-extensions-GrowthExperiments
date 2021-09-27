@@ -15,6 +15,7 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: עדכון אחרון על־ידי [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: עדכון אחרון על־ידי משתמש לא ידוע $1.",
 	"growthexperiments-edit-config-pretext": "הדף הזה מאפשר לך לערוך את ההגדרות של האפשרויות של צוות [[:mw:Special:MyLanguage/Growth|צמיחה]]. הוא יערוך את $1 בשמך. אפשר לראות את השינויים שלך בדף ההיסטוריה של הדף ההוא.",
+	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|אתה יכול|את יכולה}} גם להציג כרזה בדף הבית למתחילים, כדי לכלול הודעות על אירועים שחשובים למתחילים. אם {{GENDER:|אתה|את}} רוצה לעשות את זה, {{GENDER:|אתה צריך|את צריכה}} להוסיף אותה לדף [[$1]] ידנית. כל תוכן שיתווסף לשם, יוצג בכרזה צהובה בראש הדף [[Special:Homepage]].",
 	"growthexperiments-edit-config-pretext-unprivileged": "הטופס הזה מאפשר למשתמשים עם הרשאות לערוך את ההגדרות של האפשרויות שבונה צוות [[:mw:Special:MyLanguage/Growth|צמיחה]].",
 	"growthexperiments-edit-config-feedback-headline": "האם יש לך רעיונות או שאלות בנוגע לטופס הזה?",
 	"growthexperiments-edit-config-feedback-cta": "שליחת משוב",

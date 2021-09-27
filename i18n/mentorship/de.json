@@ -36,5 +36,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Abbrechen",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Pause",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "Tage",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Ein unbekannter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Ein unbekannter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.",
+	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-headline": "Andere Aktionen"
 }

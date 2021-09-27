@@ -17,6 +17,7 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Останнього разу оновлено [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Останнього разу оновлено невідомим користувачем $1.",
 	"growthexperiments-edit-config-pretext": "Ця сторінка дозволяє вам редагувати конфігурацію функцій Команди [[:mw:Special:MyLanguage/Growth|зростання]]. Від вашого імені вона редагуватиме $1. Ви можете переглянути свої зміни в історії відповідної сторінки.",
+	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|Ви}} також можете розмістити банер на домашній сторінці новачка, щоб включити оголошення про події, важливі для новачків. Щоб зробити це, потрібно додати його до [[$1]] вручну. Будь-який доданий там вміст буде відображатися жовтим банером у верхній частині [[Special:Homepage]].",
 	"growthexperiments-edit-config-pretext-unprivileged": "Ця форма дозволяє привілейованим користувачам редагувати конфігурацію функцій команди [[:mw:Special:MyLanguage/Growth|Growth]].",
 	"growthexperiments-edit-config-feedback-headline": "У вас є ідеї чи запитання щодо цієї форми?",
 	"growthexperiments-edit-config-feedback-cta": "Надішліть відгук",
@@ -70,5 +71,10 @@
 	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Примітки: шаблони для пошуку статей, які потребують додаткових посилань.",
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Сторінка призначення, щоб дізнатися більше про додавання джерел.",
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Оновлення: шаблони для пошуку статей, які потрібно оновити актуальною інформацією.",
-	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Цільова сторінка, де можна дізнатися більше про оновлення статей"
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Цільова сторінка, де можна дізнатися більше про оновлення статей",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Сторінка призначення, де можна дізнатися більше про тип завдання щодо рекомендацій щодо посилань.",
+	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Цільова сторінка, де можна дізнатися більше про тип завдання щодо рекомендації зображення.",
+	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Цей тип завдань пов’язаний із машинними пропозиціями та не використовує шаблони для створення пулу завдань.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Статті, що містять визначені тут шаблони, не показуватимуться користувачам як завдання для цього типу завдань.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Статті, що містять визначені тут категорії, не показуватимуться користувачам як завдання для цього типу завдань."
 }

@@ -3,11 +3,12 @@
 		"authors": [
 			"Bluetpp",
 			"Minh Nguyen",
+			"NguoiDungKhongDinhDanh",
 			"Tuanminh01"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "\n([[Special:Captcha/help|Đây là cái gì?]])",
-	"growthexperiments-confirmemail-emailhelp": "Email là cần thiết để khôi phục tài khoản của bạn nếu bạn mất mật khẩu.",
+	"growthexperiments-confirmemail-emailhelp": "Bạn cần có email để khôi phục tài khoản nếu bị mất mật khẩu.",
 	"growthexperiments-confirmemail-emailrecommended": "Địa chỉ email (được khuyến nghị)",
 	"growthexperiments-confirmemail-emailwarning": "Vui lòng chờ email từ chúng tôi để xác minh địa chỉ của bạn.",
 	"growthexperiments-confirmemail-confirm-subject": "Chào mừng bạn đến với {{SITENAME}}: Vui lòng xác nhận địa chỉ thư điện tử của bạn",

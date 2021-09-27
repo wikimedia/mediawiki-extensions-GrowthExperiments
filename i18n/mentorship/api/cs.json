@@ -7,5 +7,9 @@
 	"apihelp-growthstarmentee-summary": "Nastavit nováčka jako označeného hvězdičkou (uloženo soukromě a nelogováno)",
 	"apihelp-growthstarmentee-param-gesaction": "Akce k provedení (<kbd>star</kbd> nebo <kbd>unstar</kbd>)",
 	"apihelp-growthstarmentee-param-gesmentee": "Nováček k (od)hvězdičkování",
-	"apihelp-query+growthstarredmentees-summary": "Získat seznam uživatelů mentorovaných uživatelem, který je v tuto chvíli přihlášen"
+	"apihelp-query+growthstarredmentees-summary": "Získat seznam uživatelů mentorovaných uživatelem, který je v tuto chvíli přihlášen",
+	"apihelp-growthsetmentorstatus-summary": "Nastavit stav současného uživatele na aktivní/pryč",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Nový stav",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "Pokud nastavujete stav mentora na \"pryč\", zde musí být délka ve dnech, po kterou má být aplikován.",
+	"apihelp-query+growthmentorstatus-summary": "Zjistit stav současného uživatele"
 }

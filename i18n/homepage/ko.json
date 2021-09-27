@@ -290,9 +290,11 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 님이 {{GENDER:$6|$3}} 님을 자신의 멘티로 {{GENDER:$2|설정했습니다}} (이전 멘토 없음)",
 	"logentry-growthexperiments-setmentor": "$1 님이 {{GENDER:$5|$7}} 님을 {{GENDER:$6|$3}} 님의 멘토로 {{GENDER:$2|설정했습니다}} (이전 {{GENDER:$4|멘토}}는 $8 님)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 님이 {{GENDER:$5|$7}} 님을 {{GENDER:$6|$3}} 님의 멘토로 {{GENDER:$2|설정했습니다}} (이전 멘토 없음)",
+	"logentry-growthexperiments-addimage-accepted": "$1님이 $3 문서의 이미지 제안을 {{GENDER:$2|수용했습니다}}",
 	"log-action-filter-growthexperiments-claimmentee": "멘티 변경",
 	"log-action-filter-growthexperiments-setmentor": "멘토 변경",
 	"log-action-filter-growthexperiments-addlink": "링크 제안",
+	"log-action-filter-growthexperiments-addimage": "이미지 제안",
 	"growthexperiments-homepage-claimmentee-invalid-username": "제공된 멘티의 사용자 이름이 유효하지 않습니다",
 	"growthexperiments-notification-header-mentor-change": "$1님{{GENDER:$2|은}} {{GENDER:$3|내}} 새 멘토입니다",
 	"growthexperiments-notification-body-mentor-change": "이유: $1",
@@ -365,5 +367,12 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "모드를 전환하면 다른 유형의 편집을 할 수 있게 됩니다. 지금까지의 진행한 내용을 제출하려면 검토를 마치십시오.",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "제출 없이 전환",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "취소",
-	"growthexperiments-addlink-suggestions-outdated": "{{GENDER:|당신}}이 검토하는 중에 다른 사용자가 이 문서를 편집하였으며 {{GENDER:|당신의}} 변경 내용은 저장되지 못했습니다."
+	"growthexperiments-addlink-suggestions-outdated": "{{GENDER:|당신}}이 검토하는 중에 다른 사용자가 이 문서를 편집하였으며 {{GENDER:|당신의}} 변경 내용은 저장되지 못했습니다.",
+	"growthexperiments-addimage-inspector-cta": "이 이미지를 문서의 시작부에 추가합니까?",
+	"growthexperiments-addimage-inspector-yes-button": "예",
+	"growthexperiments-addimage-inspector-no-button": "아니오",
+	"growthexperiments-addimage-inspector-skip-button": "건너뛰기",
+	"growthexperiments-addimage-inspector-show-button": "이미지 제안 표시",
+	"growthexperiments-addimage-inspector-help-button": "편집 도움 받기",
+	"growthexperiments-addimage-inspector-details-button": "자세한 정보 보기"
 }
