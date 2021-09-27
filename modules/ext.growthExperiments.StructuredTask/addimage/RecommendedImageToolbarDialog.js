@@ -136,11 +136,16 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 
 RecommendedImageToolbarDialog.prototype.onYesButtonClicked = function () {
 	// TODO: Caption (T290781)
+	this.setState( true );
 };
 
 RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
-	// TODO: handle state
-	this.surface.dialogs.openWindow( 'recommendedImageRejection' );
+	this.surface.dialogs.openWindow( 'recommendedImageRejection', this.rejectionReasons )
+		.closed.then( function ( data ) {
+			if ( data && data.action === 'done' ) {
+				this.setState( false, data.reasons );
+			}
+		}.bind( this ) );
 };
 
 RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
@@ -254,6 +259,20 @@ RecommendedImageToolbarDialog.prototype.updateSuggestionContent = function () {
 		$( '<div>' ).addClass( 'mw-ge-recommendedImageToolbarDialog-details-button-container' )
 			.append( this.$detailsButton )
 	] );
+};
+
+/**
+ * Change recommendation state (accepted/rejected).
+ *
+ * @param {boolean} accepted True for accepted, false for rejected.
+ * @param {String[]} [reasons] List of reasons (RecommendedImageRejectionDialog option IDs
+ *   such as 'no-info'), only when the recommendation was rejected.
+ */
+RecommendedImageToolbarDialog.prototype.setState = function ( accepted, reasons ) {
+	// FIXME this isn't the final behavior but useful now for testing.
+	this.surface.geRecommendationAccepted = accepted;
+	this.surface.geRecommendationRejectionReasons = reasons;
+	this.surface.executeCommand( 'showSave' );
 };
 
 module.exports = RecommendedImageToolbarDialog;
