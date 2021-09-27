@@ -105,6 +105,7 @@ class UpdateMenteeData extends Maintenance {
 			}
 
 			$data = $this->uncachedMenteeOverviewDataProvider->getFormattedDataForMentor( $mentor );
+			$mentees = $this->mentorStore->getMenteesByMentor( $mentor, MentorStore::ROLE_PRIMARY );
 			$updatedMenteeIds = [];
 			foreach ( $data as $menteeId => $menteeData ) {
 				$encodedData = FormatJson::encode( $menteeData );
@@ -151,7 +152,7 @@ class UpdateMenteeData extends Maintenance {
 					static function ( $mentee ) {
 						return $mentee->getId();
 					},
-					$this->mentorStore->getMenteesByMentor( $mentor )
+					$mentees
 				),
 				$updatedMenteeIds
 			);
