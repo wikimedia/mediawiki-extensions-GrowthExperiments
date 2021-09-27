@@ -812,6 +812,7 @@
 				"ext.growthExperiments.StructuredTask/addimage/AddImageTargetInitializer.js",
 				"ext.growthExperiments.StructuredTask/addimage/AddImageArticleTarget.js",
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageToolbarDialog.js",
+				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageRejectionDialog.js",
 				"utils/ext.growthExperiments.Utils.js",
 				{
 					"name": "homepage/suggestededits/config.json",
@@ -828,7 +829,8 @@
 				"ext.growthExperiments.StructuredTask/addlink/RecommendedLinkToolbarDialog.less",
 				"ext.growthExperiments.StructuredTask/addlink/RecommendedLinkRejectionDialog.less",
 				"ext.growthExperiments.StructuredTask/addlink/AddLinkSaveDialog.less",
-				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageToolbarDialog.less"
+				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageToolbarDialog.less",
+				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageRejectionDialog.less"
 			],
 			"messages": [
 				"growthexperiments-addlink-context-title",
@@ -875,6 +877,17 @@
 				"growthexperiments-addimage-inspector-show-button",
 				"growthexperiments-addimage-inspector-help-button",
 				"growthexperiments-addimage-inspector-details-button",
+				"growthexperiments-addimage-rejectiondialog-title",
+				"growthexperiments-addimage-rejectiondialog-header",
+				"growthexperiments-addimage-rejectiondialog-subheader",
+				"growthexperiments-addimage-rejectiondialog-action-done",
+				"growthexperiments-addimage-rejectiondialog-reason-notrelevant",
+				"growthexperiments-addimage-rejectiondialog-reason-noinfo",
+				"growthexperiments-addimage-rejectiondialog-reason-offensive",
+				"growthexperiments-addimage-rejectiondialog-reason-lowquality",
+				"growthexperiments-addimage-rejectiondialog-reason-unfamiliar",
+				"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage",
+				"growthexperiments-addimage-rejectiondialog-reason-other",
 				"colon-separator"
 			],
 			"dependencies": [

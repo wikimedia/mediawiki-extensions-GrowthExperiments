@@ -139,7 +139,8 @@ RecommendedImageToolbarDialog.prototype.onYesButtonClicked = function () {
 };
 
 RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
-	// TODO: Rejection (T290046)
+	// TODO: handle state
+	this.surface.dialogs.openWindow( 'recommendedImageRejection' );
 };
 
 RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {

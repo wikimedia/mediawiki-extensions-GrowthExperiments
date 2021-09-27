@@ -414,5 +414,16 @@
 	"growthexperiments-addimage-inspector-skip-button": "Label of the button that loads the next suggested edit, in the dialog displayed when an image suggestion is selected. Please make this text as short as possible.\n\n{{doc-growthexperiments-imagesuggestions}}",
 	"growthexperiments-addimage-inspector-show-button": "Text to use in the invisible label for the button that re-opens the dialog for the selected image suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
 	"growthexperiments-addimage-inspector-help-button": "Label of the button that opens up help panel, in the dialog displayed when an image suggestion is selected. Same as {{msg-mw|growthexperiments-help-panel-cta-button-text}}.\n\n{{doc-growthexperiments-imagesuggestions}}",
-	"growthexperiments-addimage-inspector-details-button": "Text to use in the button that opens a dialog with the details of the image suggestion, in the dialog displayed when an image suggestion is selected.\n\n{{doc-growthexperiments-imagesuggestions}}"
+	"growthexperiments-addimage-inspector-details-button": "Text to use in the button that opens a dialog with the details of the image suggestion, in the dialog displayed when an image suggestion is selected.\n\n{{doc-growthexperiments-imagesuggestions}}",
+	"growthexperiments-addimage-rejectiondialog-title": "Title of the dialog asking the user for the reason for rejecting the suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
+	"growthexperiments-addimage-rejectiondialog-header": "Header of the dialog asking the user for the reason for rejecting the suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
+	"growthexperiments-addimage-rejectiondialog-subheader": "Subheader of the dialog asking the user for the reason for rejecting the suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
+	"growthexperiments-addimage-rejectiondialog-action-done": "Text of accept button in the dialog asking the user for the reason for rejecting the suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
+	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "One of the choices in the dialog asking the user for the reason for rejecting the suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
+	"growthexperiments-addimage-rejectiondialog-reason-noinfo": "One of the choices in the dialog asking the user for the reason for rejecting the suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
+	"growthexperiments-addimage-rejectiondialog-reason-offensive": "One of the choices in the dialog asking the user for the reason for rejecting the suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
+	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "One of the choices in the dialog asking the user for the reason for rejecting the suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
+	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "One of the choices in the dialog asking the user for the reason for rejecting the suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "One of the choices in the dialog asking the user for the reason for rejecting the suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "One of the choices in the dialog asking the user for the reason for rejecting the suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}"
 }
