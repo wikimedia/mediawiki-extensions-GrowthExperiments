@@ -147,11 +147,11 @@ class UpdateMenteeData extends Maintenance {
 
 			// Delete all mentees of $mentor we did not update
 			$menteeIdsToDelete = array_diff(
-				array_filter(
-					$this->mentorStore->getMenteesByMentor( $mentor ),
+				array_map(
 					static function ( $mentee ) {
 						return $mentee->getId();
-					}
+					},
+					$this->mentorStore->getMenteesByMentor( $mentor )
 				),
 				$updatedMenteeIds
 			);
