@@ -198,7 +198,7 @@ class ListTaskCounts extends Maintenance {
 		foreach ( $topics as $topic ) {
 			$this->output( str_pad( $topic, 25, ' ' ) . ' ' );
 			foreach ( $taskTypes as $taskType ) {
-				$this->output( str_pad( $taskCounts[$taskType][$topic], 3, ' ', STR_PAD_RIGHT )
+				$this->output( str_pad( (string)$taskCounts[$taskType][$topic], 3, ' ', STR_PAD_RIGHT )
 							   . str_repeat( ' ', 8 ) );
 			}
 			$this->output( "\n" );

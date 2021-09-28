@@ -132,7 +132,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		// If we finished (reached $limit) then $i points to the last task we successfully added.
 		if ( !$fits || $tasks->getTotalCount() > $offset + $i + 1 ) {
 			// $i is 0-based and will point to the first record not added, so the offset must be one larger.
-			$this->setContinueEnumParameter( 'offset', $offset + $i + $fits );
+			$this->setContinueEnumParameter( 'offset', $offset + $i + (int)$fits );
 		}
 
 		if ( $resultPageSet ) {

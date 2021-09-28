@@ -744,7 +744,7 @@ class SuggestedEdits extends BaseModule {
 	 */
 	protected function formatSiteViews( int $siteViewsCount ) {
 		// We only get here when $siteViewsCount is not 0 so log is safe.
-		$siteViewsCount = (int)round( $siteViewsCount, -floor( log10( $siteViewsCount ) ) );
+		$siteViewsCount = (int)round( $siteViewsCount, (int)-floor( log10( $siteViewsCount ) ) );
 		$language = $this->getContext()->getLanguage();
 		if ( $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-footer-suffix' )
 			->isDisabled()

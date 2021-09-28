@@ -255,7 +255,7 @@ class ImportOresTopics extends Maintenance {
 	/**
 	 * For a set of titles, set random ORES data.
 	 * @param Title[] $titles
-	 * @return float[][] title => topic => score
+	 * @return int[][] title => topic => score
 	 */
 	private function getTopicsByRandom( array $titles ): array {
 		$topicScores = [];
@@ -306,7 +306,7 @@ class ImportOresTopics extends Maintenance {
 	 * from a Wikimedia production wiki.
 	 * @param int[] $revIds revision IDs (keys will be preserved and used in the return value).
 	 * @param string $wikiId Wiki ID to use for the ORES queries.
-	 * @return float[][] key => topic => score.
+	 * @return int[][] key => topic => score.
 	 */
 	private function getTopicsFromOres( array $revIds, string $wikiId ): array {
 		$oresApiUrl = "https://ores.wikimedia.org/v3/scores/$wikiId";

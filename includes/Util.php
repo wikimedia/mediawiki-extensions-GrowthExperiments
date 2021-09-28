@@ -211,7 +211,7 @@ class Util {
 	 * Much like getJsonUrl but also handles API errors. GET requests only.
 	 * @param HttpRequestFactory $requestFactory
 	 * @param string $apiUrl URL of the remote API (should end with 'api.php')
-	 * @param string[] $parameters API parameters. Response formatting parameters will be added.
+	 * @param (int|string)[] $parameters API parameters. Response formatting parameters will be added.
 	 * @param bool $isSameFarm Is the URL on the same wiki farm we are making the request from?
 	 * @return StatusValue A status object with the parsed JSON response, or any errors.
 	 *   (Warnings will be logged and not included here.)
