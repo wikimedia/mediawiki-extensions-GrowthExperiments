@@ -393,5 +393,16 @@
 	"growthexperiments-addimage-inspector-skip-button": "Omite",
 	"growthexperiments-addimage-inspector-show-button": "Arată sugestie de imagine",
 	"growthexperiments-addimage-inspector-help-button": "Primiți ajutor cu editarea",
-	"growthexperiments-addimage-inspector-details-button": "Vezi detalii"
+	"growthexperiments-addimage-inspector-details-button": "Vezi detalii",
+	"growthexperiments-addimage-rejectiondialog-title": "De ce nu?",
+	"growthexperiments-addimage-rejectiondialog-header": "De ce această imagine nu este potrivită articolului?",
+	"growthexperiments-addimage-rejectiondialog-subheader": "Răspunsurile {{GENDER:|dvs.}} îmbunătățesc sugestiile viitoare.",
+	"growthexperiments-addimage-rejectiondialog-action-done": "Realizat",
+	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Imaginea nu este relevantă",
+	"growthexperiments-addimage-rejectiondialog-reason-noinfo": "Insuficientă informație pentru a decide",
+	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Imaginea este ofensivă",
+	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Imaginea are calitate joasă",
+	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Nu cunosc acest subiect",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Nu pot citi limba",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "Altceva"
 }

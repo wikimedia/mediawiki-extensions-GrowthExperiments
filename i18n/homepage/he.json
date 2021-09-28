@@ -402,5 +402,16 @@
 	"growthexperiments-addimage-inspector-skip-button": "לדלג",
 	"growthexperiments-addimage-inspector-show-button": "להציג את הצעת התמונה",
 	"growthexperiments-addimage-inspector-help-button": "קבלת עזרה עם עריכה",
-	"growthexperiments-addimage-inspector-details-button": "הצגת פרטים"
+	"growthexperiments-addimage-inspector-details-button": "הצגת פרטים",
+	"growthexperiments-addimage-rejectiondialog-title": "למה לא?",
+	"growthexperiments-addimage-rejectiondialog-header": "למה התמונה הזאת לא מתאימה לערך?",
+	"growthexperiments-addimage-rejectiondialog-subheader": "התשובות {{GENDER:|שלך}} משפרות הצעות עתידיות.",
+	"growthexperiments-addimage-rejectiondialog-action-done": "סיום",
+	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "התמונה אינה רלוונטית",
+	"growthexperiments-addimage-rejectiondialog-reason-noinfo": "אין מספיק מידע בשביל להחליט",
+	"growthexperiments-addimage-rejectiondialog-reason-offensive": "התמונה פוגענית",
+	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "התמונה באיכות נמוכה",
+	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "הנושא לא מוכר לי",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "לא הצלחתי לקרוא בשפה הזאת",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "אחר"
 }

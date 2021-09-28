@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Gwanki"
+		]
+	},
+	"growthexperiments-addimage-rejectiondialog-title": "Me yasa?",
+	"growthexperiments-addimage-rejectiondialog-header": "Me yasa wannan hoton bashi da damar maƙala?",
+	"growthexperiments-addimage-rejectiondialog-subheader": "Inganta amsoshin shawarwarin {{GENDER:|Ka}} na gaba.",
+	"growthexperiments-addimage-rejectiondialog-action-done": "Anyi",
+	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Hoton bashi da dangantaka",
+	"growthexperiments-addimage-rejectiondialog-reason-noinfo": "Babu isasshen bayanin da za'a yanke shawara",
+	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Hoton na da laifi",
+	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Hoton naga ƙarancin inganci",
+	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Ban san wannan aikin ba",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Ba zan iya karanta harshen ba",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "Wasu"
+}

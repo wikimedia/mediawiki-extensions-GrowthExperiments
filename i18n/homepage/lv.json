@@ -291,6 +291,7 @@
 	"log-action-filter-growthexperiments-claimmentee": "Audzēkņu izmaiņas",
 	"log-action-filter-growthexperiments-setmentor": "Mentora izmaiņas",
 	"log-action-filter-growthexperiments-addlink": "Saišu ieteikumi",
+	"log-action-filter-growthexperiments-addimage": "Attēlu ieteikumi",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Norādītais audzēkņa lietotājvārds ir nederīgs",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$3|ir}} {{GENDER:$2|tavs jaunais mentors|tava jaunā mentore}}",
 	"growthexperiments-notification-body-mentor-change": "Iemesls: $1",
@@ -378,6 +379,7 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Režīmu pārslēgšana ļaus {{GENDER:$1|tev}} veikt cita veida labojumus. Pabeidz pārskatīšanu, lai iesniegtu līdz šim padarīto.",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Pārslēgties bez iesniegšanas",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Atcelt",
+	"growthexperiments-addimage-inspector-cta": "Pievienot šo attēlu raksta sākumam?",
 	"growthexperiments-addimage-inspector-yes-button": "Jā",
 	"growthexperiments-addimage-inspector-no-button": "Nē",
 	"growthexperiments-addimage-inspector-skip-button": "Izlaist"

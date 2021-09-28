@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dr Lotus Black"
+			"Dr Lotus Black",
+			"ခွန်ပညာႏ(တောင်ႏကီꩻ)"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "အညွှန်း",
@@ -22,5 +23,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "မသိရှိပါ",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 ကိုပြရန်",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$2 ၏ $1",
-	"growthexperiments-mentor-dashboard-resources-headline": "အရင်းအမြစ်များ"
+	"growthexperiments-mentor-dashboard-resources-headline": "အရင်းအမြစ်များ",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "အညာꩻ",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "မွူးနီꩻဖုံႏ"
 }

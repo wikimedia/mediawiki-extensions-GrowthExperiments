@@ -10,5 +10,17 @@
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-update": "Actualisar le articulos existente",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Difficile",
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Seliger toto",
-	"growthexperiments-homepage-suggestededits-topics-unselectall": "Remover toto"
+	"growthexperiments-homepage-suggestededits-topics-unselectall": "Remover toto",
+	"growthexperiments-addimage-inspector-details-button": "Vider detalios",
+	"growthexperiments-addimage-rejectiondialog-title": "Proque non?",
+	"growthexperiments-addimage-rejectiondialog-header": "Proque non conveni iste imagine al articulo?",
+	"growthexperiments-addimage-rejectiondialog-subheader": "{{GENDER:|Tu}} responsas meliora futur suggestiones.",
+	"growthexperiments-addimage-rejectiondialog-action-done": "Facite",
+	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Imagine non es relevante",
+	"growthexperiments-addimage-rejectiondialog-reason-noinfo": "Non bastante information pro decider",
+	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Imagine es offensive",
+	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Imagine es de basse qualitate",
+	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Io non cognosce iste subjecto",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Io non pote leger le lingua",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "Altere"
 }

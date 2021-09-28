@@ -10,6 +10,7 @@
 			"Dnshitobu",
 			"Hasslaebetch",
 			"Hidrash",
+			"Jahinfo",
 			"Ruky Wunpini",
 			"Sir Amugi",
 			"Yakubu Fadilatu"
@@ -35,5 +36,15 @@
 	"newcomertasksinfo-table-header-task-type-id": "ŋahan gbana",
 	"newcomertasksinfo-table-header-task-count": "Kali",
 	"newcomertasksinfo-table-header-topic-type": "Yaɣali ŋmahan gbana",
-	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Zaŋ ti"
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Zaŋ ti",
+	"growthexperiments-addimage-rejectiondialog-title": "Wula ka laa?",
+	"growthexperiments-addimage-rejectiondialog-header": "Bɔ n-lee chɛ ka anfɔɔni maa bɛ lu n zahim lahibali ŋɔ?",
+	"growthexperiments-addimage-rejectiondialog-action-done": "Naabu",
+	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Anfɔɔni bɛ tuhi",
+	"growthexperiments-addimage-rejectiondialog-reason-noinfo": "Lahabali kani din yan gbaai",
+	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Anfɔɔni nyɛla taali",
+	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Anfɔɔni maa bɛ niɛ",
+	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "M bɛ lala bohimbu yaɣili ŋɔ",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "N ku tɔi karim balli maa",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "Sheli"
 }

@@ -15,6 +15,7 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Ultima actualizare de [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Ultima actualizare de utilizator necunoscut $1.",
 	"growthexperiments-edit-config-pretext": "Această pagină vă permite să editați configurația funcțiilor echipei [[:mw:Special:MyLanguage/Growth|Growth]]. Va edita $1 în numele dvs. Puteți să vă vedeți schimbările în pagina istoricului acelei pagini.",
+	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|Puteți}} afișa de asemenea un banner pe pagina acasă a nou-veniților, care să includă un anunț despre evenimente importante nou-veniților. Dacă {{GENDER:|doriți}} să faceți asta, {{GENDER:|trebuie}} să îl adăugați manual la [[$1]]. Orice conținut adăugat acolo va fi afișat într-un banner galben în partea de sus a paginii [[Special:Homepage|Special:Pagina acasă]].",
 	"growthexperiments-edit-config-pretext-unprivileged": "acest formular permite utilizatorilor privilegiați să editeze configurația funcțiilor echipei [[:mw:Special:MyLanguage/Growth|Growth]].",
 	"growthexperiments-edit-config-feedback-headline": "Aveți idei sau întrebări despre acest formular?",
 	"growthexperiments-edit-config-feedback-cta": "Oferiți feedback",
