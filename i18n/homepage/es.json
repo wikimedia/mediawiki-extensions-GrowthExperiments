@@ -373,5 +373,15 @@
 	"newcomertasksinfo-table-header-topic-type": "ID de tema",
 	"growthexperiments-structuredtask-ve-machine-suggestions-mode-title": "Sugerencias",
 	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Enviar...",
-	"growthexperiments-addimage-inspector-details-button": "Ver detalles"
+	"growthexperiments-addimage-inspector-details-button": "Ver detalles",
+	"growthexperiments-addimage-rejectiondialog-title": "¿Por qué no?",
+	"growthexperiments-addimage-rejectiondialog-header": "¿Por qué esta imagen no es apta para el artículo?",
+	"growthexperiments-addimage-rejectiondialog-action-done": "Hecho",
+	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "La imagen no es relevante",
+	"growthexperiments-addimage-rejectiondialog-reason-noinfo": "No hay suficiente información para decidir",
+	"growthexperiments-addimage-rejectiondialog-reason-offensive": "La imagen es ofensiva",
+	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "La imagen es de baja calidad",
+	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Yo no conozco este tema",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Yo no puedo leer el lenguaje.",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "Otro"
 }

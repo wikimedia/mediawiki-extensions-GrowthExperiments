@@ -356,7 +356,7 @@
 	"growthexperiments-addlink-rejectiondialog-action-done": "Fertig",
 	"growthexperiments-addlink-rejectiondialog-reopen-button-title": "Wähle den Grund aus, weshalb dies kein guter Link ist",
 	"growthexperiments-addlink-onboarding-content-intro-title": "Das Hinzufügen von Links hilft Lesenden, ganz einfach mehr zusätzliche Informationen rund um den gelesenen Artikel zu finden.",
-	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|Du}} wirst entscheiden, ob Wörter in einem  Artikel {{SITENAME}} auf andere Artikel {{SITENAME}} verlinken sollen.",
+	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|Du}} wirst entscheiden, ob Wörter in einem {{SITENAME}}-Artikel auf andere {{SITENAME}}-Artikel verlinken sollen.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Beispielsatz",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "Der Mond ist der einzige <mark class=\"positive\">natürliche</mark> Satellit, der sich um die <mark class=\"positive\">Erde</mark> <mark class=\"positive\">bewegt</mark>.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "Es ist kein besonderes Wissen über den Artikel nötig, um diese Aufgabe zu erledigen.",

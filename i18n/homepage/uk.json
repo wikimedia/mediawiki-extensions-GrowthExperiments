@@ -407,5 +407,8 @@
 	"growthexperiments-addimage-inspector-skip-button": "Пропустити",
 	"growthexperiments-addimage-inspector-show-button": "Показати пропозицію зображення",
 	"growthexperiments-addimage-inspector-help-button": "Отримайте допомогу з редагуванням",
-	"growthexperiments-addimage-inspector-details-button": "Показати деталі"
+	"growthexperiments-addimage-inspector-details-button": "Показати деталі",
+	"growthexperiments-addimage-rejectiondialog-title": "Чому ні?",
+	"growthexperiments-addimage-rejectiondialog-action-done": "Готово",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "Інше"
 }

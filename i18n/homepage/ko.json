@@ -374,5 +374,15 @@
 	"growthexperiments-addimage-inspector-skip-button": "건너뛰기",
 	"growthexperiments-addimage-inspector-show-button": "이미지 제안 표시",
 	"growthexperiments-addimage-inspector-help-button": "편집 도움 받기",
-	"growthexperiments-addimage-inspector-details-button": "자세한 정보 보기"
+	"growthexperiments-addimage-inspector-details-button": "자세한 정보 보기",
+	"growthexperiments-addimage-rejectiondialog-title": "왜 안 됩니까?",
+	"growthexperiments-addimage-rejectiondialog-header": "왜 이미지가 이 문서에 적절하지 않습니까?",
+	"growthexperiments-addimage-rejectiondialog-action-done": "완료",
+	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "이미지가 적절하지 않습니다",
+	"growthexperiments-addimage-rejectiondialog-reason-noinfo": "결정할 정보가 충분하지 않습니다",
+	"growthexperiments-addimage-rejectiondialog-reason-offensive": "이미지가 공격적입니다",
+	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "이미지가 저품질입니다",
+	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "이 주제를 모릅니다",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "언어를 읽을 수 없습니다",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "기타"
 }

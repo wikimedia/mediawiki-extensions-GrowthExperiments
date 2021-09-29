@@ -111,7 +111,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-expand-main-publish": "Gehe weiter und klicke auf den blauen Pfeil, um deine Bearbeitung zu speichern, wenn {{GENDER:|du}} mit dem Erweitern des Artikels fertig bist!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|Lerne mehr über das Erweitern von Artikeln]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Das Hinzufügen von Links hilft Personen, schneller zu lernen.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|Du}} wirst entscheiden, ob Wörter in einem  Artikel {{SITENAME}} auf andere Artikel {{SITENAME}} verlinken sollen.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|Du}} wirst entscheiden, ob Wörter in einem {{SITENAME}}-Artikel auf andere {{SITENAME}}-Artikel verlinken sollen.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "Der Mond ist der einzige <mark class=\"positive\">natürliche</mark> Satelit, der sich um die <mark class=\"positive\">Erde</mark> <mark class=\"positive\">bewegt</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Es ist kein besonderes Wissen über den Artikel nötig, um diese Aufgabe zu erledigen.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "Die vorgeschlagenen Links werden maschinell generiert und können falsch sein.",

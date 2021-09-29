@@ -400,5 +400,16 @@
 	"growthexperiments-addimage-inspector-skip-button": "Pular",
 	"growthexperiments-addimage-inspector-show-button": "Mostrar sugestão de imagem",
 	"growthexperiments-addimage-inspector-help-button": "Obtenha ajuda para editar",
-	"growthexperiments-addimage-inspector-details-button": "Ver detalhes"
+	"growthexperiments-addimage-inspector-details-button": "Ver detalhes",
+	"growthexperiments-addimage-rejectiondialog-title": "Por que não?",
+	"growthexperiments-addimage-rejectiondialog-header": "Por que esta imagem não é adequada para o artigo?",
+	"growthexperiments-addimage-rejectiondialog-subheader": "{{GENDER:|Suas}} respostas melhoram sugestões futuras.",
+	"growthexperiments-addimage-rejectiondialog-action-done": "Feito",
+	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "A imagem não é relevante",
+	"growthexperiments-addimage-rejectiondialog-reason-noinfo": "Não há informações suficientes para decidir",
+	"growthexperiments-addimage-rejectiondialog-reason-offensive": "A imagem é ofensiva",
+	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "A imagem é de baixa qualidade",
+	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Eu não sei esse assunto",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Não consigo ler o idioma",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "Outros"
 }

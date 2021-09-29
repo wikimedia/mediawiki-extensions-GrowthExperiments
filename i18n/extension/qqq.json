@@ -7,7 +7,8 @@
 			"Martin Urbanec (WMF)",
 			"Pikne",
 			"Robby",
-			"Tgr"
+			"Tgr",
+			"Umherirrender"
 		]
 	},
 	"growthexperiments-desc": "{{desc|name=GrowthExperiments|url=https://www.mediawiki.org/wiki/Extension:GrowthExperiments}}",
@@ -78,7 +79,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Description of a form field in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Description of a form field in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Description of a form field in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
-	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Description of a form field in Special:EditGrowthConfig\\n\\n{{doc-growthexperiments-community-configuration}}",
+	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Description of a form field in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Description of the excluded templates form field in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Description of the excluded categories form field in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}"
 }
