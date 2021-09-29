@@ -161,11 +161,16 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 	protected function getAllowedParams() {
 		$taskTypes = $this->configurationLoader->getTaskTypes();
 		$topics = $this->getTopics();
+		// Ensure valid values, tasks/topics might be empty during tests.
+		$taskLimit = max( count( $taskTypes ), 1 );
+		$topicsLimit = max( count( $topics ), 1 );
 
 		return [
 			'tasktypes' => [
 				ApiBase::PARAM_TYPE => array_keys( $taskTypes ),
 				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_ISMULTI_LIMIT1 => $taskLimit,
+				ApiBase::PARAM_ISMULTI_LIMIT2 => $taskLimit,
 				ParamValidator::PARAM_DEFAULT => [],
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => array_map( function ( TaskType $taskType ) {
 					return $taskType->getName( $this->getContext() );
@@ -174,6 +179,8 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 			'topics' => [
 				ApiBase::PARAM_TYPE => array_keys( $topics ),
 				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_ISMULTI_LIMIT1 => $topicsLimit,
+				ApiBase::PARAM_ISMULTI_LIMIT2 => $topicsLimit,
 				ParamValidator::PARAM_DEFAULT => [],
 				ApiBase::PARAM_HELP_MSG_PER_VALUE => array_map( function ( Topic $topic ) {
 					return $topic->getName( $this->getContext() );
@@ -197,6 +204,8 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 			'excludepageids' => [
 				ApiBase::PARAM_TYPE => 'integer',
 				ApiBase::PARAM_ISMULTI => true,
+				ApiBase::PARAM_ISMULTI_LIMIT1 => 1000,
+				ApiBase::PARAM_ISMULTI_LIMIT2 => 1000,
 			]
 		];
 	}
