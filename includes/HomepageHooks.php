@@ -599,7 +599,9 @@ class HomepageHooks implements
 					LinkRecommendationTaskTypeHandler::ID => true,
 					ImageRecommendationTaskTypeHandler::ID => true,
 				]
-			] )
+			] ),
+			self::HOMEPAGE_PREF_ENABLE => false,
+			self::HOMEPAGE_PREF_PT_LINK => false,
 		];
 	}
 
