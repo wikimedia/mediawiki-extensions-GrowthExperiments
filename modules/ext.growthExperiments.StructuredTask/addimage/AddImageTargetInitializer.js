@@ -1,5 +1,6 @@
 var TargetInitializer = require( '../TargetInitializer.js' ),
-	RecommendedImageRejectionDialog = require( './RecommendedImageRejectionDialog.js' );
+	RecommendedImageRejectionDialog = require( './RecommendedImageRejectionDialog.js' ),
+	RecommendedImageViewer = require( './RecommendedImageViewer.js' );
 
 /**
  * Handle registrations and de-registrations of VE classes for Add Image structured task
@@ -23,7 +24,9 @@ function AddImageTargetInitializer( platformConfig ) {
 	config.safeCommands = [ toolbarDialogCommand.name ];
 	config.dataModels = [];
 	config.annotationViews = [];
-	config.windows = ( platformConfig.windows || [] ).concat( [ RecommendedImageRejectionDialog ] );
+	config.windows = ( platformConfig.windows || [] ).concat( [
+		RecommendedImageRejectionDialog, RecommendedImageViewer
+	] );
 	config.commands = [ toolbarDialogCommand ];
 	// TODO: initialize SuggestionInteractionLogger
 	AddImageTargetInitializer.super.call( this, config );

@@ -40,6 +40,8 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 				'descriptionUrl' => $mockFileMetadata['descriptionUrl'],
 				'originalWidth' => $mockFileMetadata['originalWidth'],
 				'originalHeight' => $mockFileMetadata['originalHeight'],
+				'mustRender' => true,
+				'isVectorized' => false,
 			],
 			$metadataProvider->getMetadata( 'Image.jpg' )
 		);
@@ -65,6 +67,8 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 				'descriptionUrl' => $mockFileMetadata['descriptionUrl'],
 				'originalWidth' => $mockFileMetadata['originalWidth'],
 				'originalHeight' => $mockFileMetadata['originalHeight'],
+				'mustRender' => true,
+				'isVectorized' => false,
 			],
 			$metadataProvider->getMetadata( 'Image.jpg' )
 		);
@@ -90,6 +94,8 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 				'descriptionUrl' => $mockFileMetadata['descriptionUrl'],
 				'originalWidth' => $mockFileMetadata['originalWidth'],
 				'originalHeight' => $mockFileMetadata['originalHeight'],
+				'mustRender' => true,
+				'isVectorized' => false,
 			],
 			$metadataProvider->getMetadata( 'Image.jpg' )
 		);
@@ -116,6 +122,8 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 				'descriptionUrl' => $mockFileMetadata['descriptionUrl'],
 				'originalWidth' => $mockFileMetadata['originalWidth'],
 				'originalHeight' => $mockFileMetadata['originalHeight'],
+				'mustRender' => true,
+				'isVectorized' => false,
 			],
 			$metadataProvider->getMetadata( 'HMS_Pandora.jpg' )
 		);
@@ -137,6 +145,8 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 			'fullUrl' => 'https://upload.wikimedia.org/wikipedia/commons/3/3d/HMS_Pandora.jpg',
 			'originalWidth' => 1024,
 			'originalHeight' => 768,
+			'mustRender' => true,
+			'isVectorized' => false,
 		];
 	}
 

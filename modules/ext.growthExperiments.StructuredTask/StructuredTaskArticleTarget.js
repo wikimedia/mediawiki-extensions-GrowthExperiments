@@ -47,6 +47,7 @@ StructuredTaskArticleTarget.prototype.updateToolbarSaveButtonState = function ()
 
 /**
  * Actions that should occur before surfaceReady
+ *
  * @abstract
  */
 StructuredTaskArticleTarget.prototype.beforeSurfaceReady = function () {
@@ -55,6 +56,7 @@ StructuredTaskArticleTarget.prototype.beforeSurfaceReady = function () {
 
 /**
  * Actions that should occur after surfaceReady
+ *
  * @abstract
  */
 StructuredTaskArticleTarget.prototype.afterSurfaceReady = function () {
@@ -79,6 +81,7 @@ StructuredTaskArticleTarget.prototype.surfaceReady = function () {
 
 /**
  * Check whether the user has made changes to the article.
+ *
  * @abstract
  *
  * @return {boolean}
@@ -89,6 +92,7 @@ StructuredTaskArticleTarget.prototype.hasEdits = function () {
 
 /**
  * Check whether the user has reviewed any suggestions.
+ *
  * @abstract
  *
  * @return {boolean}

@@ -410,5 +410,6 @@
 	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Image is low quality",
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "I don't know this subject",
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "I can't read the language",
-	"growthexperiments-addimage-rejectiondialog-reason-other": "Other"
+	"growthexperiments-addimage-rejectiondialog-reason-other": "Other",
+	"growthexperiments-addimage-viewer-close-button": "Close"
 }

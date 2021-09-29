@@ -3,6 +3,19 @@ var StructuredTaskToolbarDialog = require( '../StructuredTaskToolbarDialog.js' )
 	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
 
 /**
+ * @typedef {Object} mw.libs.ge.RecommendedImageMetadata
+ *
+ * @property {string} description HTML string of the image description from Commons
+ * @property {string} descriptionUrl URL of the image description on Commons
+ * @property {string} thumbUrl URL of the image thumbnail
+ * @property {string} fullUrl URL of the original image
+ * @property {number} originalWidth Width of the image (in px)
+ * @property {number} originalHeight Height of the image (in px)
+ * @property {boolean} mustRender Whether the image file needs to be re-rasterized
+ * @property {boolean} isVectorized Whether the image file is a vector
+ */
+
+/**
  * @class mw.libs.ge.RecommendedImageToolbarDialog
  * @extends  mw.libs.ge.StructuredTaskToolbarDialog
  * @constructor
@@ -151,11 +164,12 @@ RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 };
 
 RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
-	// TODO: Go to next suggested edit (T290910)
+	// TODO: Skip functionality (T290910)
 };
 
 RecommendedImageToolbarDialog.prototype.onFullscreenButtonClicked = function () {
-	// TODO: Image viewer (T290540)
+	var imageData = this.images[ this.currentIndex ];
+	this.surface.dialogs.openWindow( 'recommendedImageViewer', imageData.metadata );
 };
 
 RecommendedImageToolbarDialog.prototype.onDetailsButtonClicked = function ( e ) {
