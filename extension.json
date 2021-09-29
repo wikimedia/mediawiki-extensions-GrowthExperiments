@@ -895,6 +895,7 @@
 			],
 			"dependencies": [
 				"mediawiki.language",
+				"mediawiki.router",
 				"mediawiki.util",
 				"oojs-ui-core",
 				"oojs-ui-windows",

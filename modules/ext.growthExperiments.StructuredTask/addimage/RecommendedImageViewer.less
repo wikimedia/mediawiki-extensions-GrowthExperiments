@@ -20,5 +20,13 @@
 	.mw-ge-recommendedImageViewer-image {
 		width: 100%;
 		margin: 0 auto;
+		background: url( ../../../images/checker.png ) repeat;
+	}
+}
+
+// Override default (slide from top) dialog animation
+.ve-ui-overlay-global-mobile > .oo-ui-windowManager-modal > .oo-ui-dialog {
+	&.mw-ge-recommendedImageViewer {
+		transition: unset;
 	}
 }

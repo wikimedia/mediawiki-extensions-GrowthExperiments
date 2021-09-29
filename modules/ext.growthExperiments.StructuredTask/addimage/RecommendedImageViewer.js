@@ -1,3 +1,5 @@
+var router = require( 'mediawiki.router' );
+
 /**
  * Dialog for viewing the recommended image in full screen
  *
@@ -27,8 +29,8 @@ RecommendedImageViewer.prototype.initialize = function () {
 		classes: [ 'mw-ge-recommendedImageViewer-image-close-button' ]
 	} );
 	this.closeButton.on( 'click', function () {
-		this.close();
-	}.bind( this ) );
+		router.back();
+	} );
 	this.$head.append( this.closeButton.$element );
 	this.$body.append( this.$image );
 };
