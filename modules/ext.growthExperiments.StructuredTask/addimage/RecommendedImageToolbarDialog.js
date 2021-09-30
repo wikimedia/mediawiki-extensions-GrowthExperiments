@@ -1,6 +1,7 @@
 var StructuredTaskToolbarDialog = require( '../StructuredTaskToolbarDialog.js' ),
 	MachineSuggestionsMode = require( '../MachineSuggestionsMode.js' ),
-	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
+	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
+	router = require( 'mediawiki.router' );
 
 /**
  * @typedef {Object} mw.libs.ge.RecommendedImageMetadata
@@ -167,9 +168,29 @@ RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
 	// TODO: Skip functionality (T290910)
 };
 
+/**
+ * Open the image viewer dialog
+ */
 RecommendedImageToolbarDialog.prototype.onFullscreenButtonClicked = function () {
-	var imageData = this.images[ this.currentIndex ];
-	this.surface.dialogs.openWindow( 'recommendedImageViewer', imageData.metadata );
+	var imageData = this.images[ this.currentIndex ],
+		surface = this.surface,
+		hash = OO.ui.isMobile() ? '#/editor/all' : '#imageviewer';
+
+	surface.dialogs.openWindow( 'recommendedImageViewer', imageData.metadata );
+	// On mobile, hashchange event with #/editor hash loads the editor. When opening the dialog,
+	// add another history entry so that going back (via browser) doesn't load the editor again
+	router.navigateTo( 'imageviewer', {
+		path: location.pathname + location.search + hash,
+		useReplaceState: false
+	} );
+	var popStateListener = function popStateListener() {
+		var currentWindow = surface.dialogs.currentWindow;
+		if ( currentWindow ) {
+			currentWindow.close();
+		}
+		router.off( 'popstate', popStateListener );
+	};
+	router.on( 'popstate', popStateListener );
 };
 
 RecommendedImageToolbarDialog.prototype.onDetailsButtonClicked = function ( e ) {
@@ -208,17 +229,15 @@ RecommendedImageToolbarDialog.prototype.getBodyContent = function () {
 RecommendedImageToolbarDialog.prototype.setupImagePreview = function () {
 	this.$imageThumbnail = $( '<div>' ).addClass(
 		'mw-ge-recommendedImageToolbarDialog-image-thumbnail'
-	);
+	).attr( 'role', 'button' );
 	this.$imageInfo = $( '<div>' ).addClass(
 		'mw-ge-recommendedImageToolbarDialog-image-info'
 	);
-	this.fullscreenButton = new OO.ui.ButtonWidget( {
+	this.$imageThumbnail.append( new OO.ui.IconWidget( {
 		icon: 'fullScreen',
-		framed: false,
-		classes: [ 'mw-ge-recommendedImageToolbarDialog-fullscreen-button' ]
-	} );
-	this.fullscreenButton.connect( this, { click: 'onFullscreenButtonClicked' } );
-	this.$imageThumbnail.append( this.fullscreenButton.$element );
+		classes: [ 'mw-ge-recommendedImageToolbarDialog-fullScreen-icon' ]
+	} ).$element );
+	this.$imageThumbnail.on( 'click', this.onFullscreenButtonClicked.bind( this ) );
 	this.$imagePreview.append( this.$imageThumbnail, this.$imageInfo );
 };
 
