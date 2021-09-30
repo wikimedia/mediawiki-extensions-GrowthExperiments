@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
+use GrowthExperiments\NewcomerTasks\AbstractSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\RecommendationSubmissionHandler;
 use IDBAccessObject;
 use MalformedTitleException;
@@ -19,7 +20,7 @@ use Wikimedia\Rdbms\DBReadOnlyError;
 /**
  * Record the user's decision on the recommendations for a given page.
  */
-class AddLinkSubmissionHandler implements RecommendationSubmissionHandler {
+class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements RecommendationSubmissionHandler {
 
 	/** @var LinkRecommendationHelper */
 	private $linkRecommendationHelper;
@@ -69,6 +70,10 @@ class AddLinkSubmissionHandler implements RecommendationSubmissionHandler {
 			// the save to continue.
 			return StatusValue::newGood()->error( 'growthexperiments-addlink-notinstore',
 				$title->getPrefixedText() );
+		}
+		$userErrorMessage = $this->getUserErrorMessage( $user );
+		if ( $userErrorMessage ) {
+			return StatusValue::newGood()->error( $userErrorMessage );
 		}
 		return StatusValue::newGood();
 	}

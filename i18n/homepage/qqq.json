@@ -448,5 +448,8 @@
 	"growthexperiments-addimage-skip-dialog-confirm": "\"Leave\" option of the dialog shown when the user has skipped the image suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
 	"growthexperiments-addimage-skip-dialog-cancel": "\"Stay\" option of the dialog shown when the user has skipped the image suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
 	"growthexperiments-newcomertasks-invalid-tasktype": "Error message to show if the requested task type is not valid. Parameters:\n* $1 - Name of the task type.\n\n{{doc-growthexperiments-homepage}}",
-	"growthexperiments-addimage-caption-title": "Text shown on VisualEditor toolbar indicating that the user is adding a caption for the image suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}"
+	"growthexperiments-addimage-caption-title": "Text shown on VisualEditor toolbar indicating that the user is adding a caption for the image suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
+	"growthexperiments-structuredtask-user-error": "Text to show in an error dialog shown when the user's attempt to save structured task edits fails because the user is no longer logged in.\n\n{{doc-growthexperiments-structuredtask}}",
+	"growthexperiments-structuredtask-user-error-login-cta": "Text to use in the button that takes the user to Special:Login, in the error dialog shown when the user's attempt to save structured task edits fails because the user is no longer logged in. Same as {{msg-mw|pt-login}}.\n\n{{doc-growthexperiments-structuredtask}}",
+	"growthexperiments-structuredtask-anonuser": "Error message shown when the user tries to save a structured task edit but is no longer logged in.\n\n{{doc-growthexperiments-structuredtask}}"
 }

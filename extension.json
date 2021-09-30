@@ -906,11 +906,14 @@
 				"growthexperiments-addimage-skip-dialog-confirm",
 				"growthexperiments-addimage-skip-dialog-cancel",
 				"growthexperiments-addimage-caption-title",
+				"growthexperiments-structuredtask-user-error",
+				"growthexperiments-structuredtask-user-error-login-cta",
 				"colon-separator"
 			],
 			"dependencies": [
 				"mediawiki.language",
 				"mediawiki.router",
+				"mediawiki.Title",
 				"mediawiki.user",
 				"mediawiki.util",
 				"oojs-ui-core",

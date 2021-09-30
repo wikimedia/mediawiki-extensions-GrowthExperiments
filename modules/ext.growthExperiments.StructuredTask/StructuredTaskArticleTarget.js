@@ -203,6 +203,7 @@ StructuredTaskArticleTarget.prototype.updateHistory = function () {
 };
 
 /**
+<<<<<<< HEAD
  * Get MachineSuggestionsPlaceholder tool
  *
  * @return {mw.libs.ge.MachineSuggestionsPlaceholder|undefined}
@@ -245,6 +246,19 @@ StructuredTaskArticleTarget.prototype.toggleInternalRouting = function ( isInter
 	if ( backTool && typeof backTool.toggleInternalRouting === 'function' ) {
 		backTool.toggleInternalRouting( isInternalRoutingEnabled );
 	}
+};
+
+/**
+ * Show custom error when the user is logged out during editing
+ *
+ * @override
+ */
+StructuredTaskArticleTarget.prototype.saveErrorNewUser = function ( username ) {
+	var saveDialog = this.surface.getDialogs().currentWindow;
+	saveDialog.showUserError( username );
+	// HACK: Resolve in order to stop the ProcessDialog's loading state instead of rejecting
+	// with an error in order to show a custom message instead
+	this.saveDeferred.resolve();
 };
 
 module.exports = StructuredTaskArticleTarget;

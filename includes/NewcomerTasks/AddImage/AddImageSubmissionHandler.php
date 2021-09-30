@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use CirrusSearch\CirrusSearch;
+use GrowthExperiments\NewcomerTasks\AbstractSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\RecommendationSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use ManualLogEntry;
@@ -13,7 +14,7 @@ use StatusValue;
 /**
  * Record the user's decision on the recommendations for a given page.
  */
-class AddImageSubmissionHandler implements RecommendationSubmissionHandler {
+class AddImageSubmissionHandler extends AbstractSubmissionHandler implements RecommendationSubmissionHandler {
 
 	/** @var callable */
 	private $cirrusSearchFactory;
@@ -31,6 +32,10 @@ class AddImageSubmissionHandler implements RecommendationSubmissionHandler {
 	public function validate(
 		ProperPageIdentity $page, UserIdentity $user, int $baseRevId, array $data
 	): StatusValue {
+		$userErrorMessage = $this->getUserErrorMessage( $user );
+		if ( $userErrorMessage ) {
+			return StatusValue::newGood()->error( $userErrorMessage );
+		}
 		return StatusValue::newGood();
 	}
 

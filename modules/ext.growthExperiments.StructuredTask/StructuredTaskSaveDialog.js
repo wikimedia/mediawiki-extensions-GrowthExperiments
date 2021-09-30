@@ -11,6 +11,7 @@ var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession'
  */
 function StructuredTaskSaveDialog() {
 	this.$element.addClass( 'ge-structuredTask-mwSaveDialog' );
+	this.alreadySetupUserErrorContent = false;
 }
 
 OO.initClass( StructuredTaskSaveDialog );
@@ -102,6 +103,56 @@ StructuredTaskSaveDialog.prototype.getActionProcess = function ( action ) {
 StructuredTaskSaveDialog.prototype.setVisualDiffPreference = function () {
 	// The extra quote is needed because VE uses JSON preferences.
 	mw.user.options.set( 'visualeditor-diffmode-machineSuggestions', '"visual"' );
+};
+
+/**
+ * Set up error message and button for when the user is logged out during editing.
+ *
+ * @param {string|null} username Name of newly logged-in user, or null if anonymous
+ */
+StructuredTaskSaveDialog.prototype.setupUserErrorContent = function ( username ) {
+	var errorMessage = new OO.ui.MessageWidget( {
+			type: 'error',
+			label: mw.message( 'growthexperiments-structuredtask-user-error' )
+				.params( [ username ] ).escaped()
+		} ),
+		loginButton = new OO.ui.ButtonWidget( {
+			label: mw.message(
+				'growthexperiments-structuredtask-user-error-login-cta'
+			).escaped(),
+			flags: [ 'primary', 'progressive' ]
+		} );
+	loginButton.connect( this, { click: 'onLoginButtonClicked' } );
+	this.$element.find( '.oo-ui-processDialog-errors-title' ).after( errorMessage.$element );
+	this.$element.find( '.oo-ui-processDialog-errors-actions' ).append( loginButton.$element );
+	this.alreadySetupUserErrorContent = true;
+};
+
+/**
+ * Show an error when the user is logged out during editing
+ *
+ * @param {string|null} username Name of newly logged-in user, or null if anonymous
+ */
+StructuredTaskSaveDialog.prototype.showUserError = function ( username ) {
+	if ( !this.alreadySetupUserErrorContent ) {
+		this.setupUserErrorContent( username );
+	}
+	this.$element.find( '.oo-ui-processDialog-errors' ).removeClass( 'oo-ui-element-hidden' );
+	if ( this.retryButton ) {
+		this.retryButton.toggle( false );
+	}
+};
+
+/**
+ * Go to Special:UserLogin
+ */
+StructuredTaskSaveDialog.prototype.onLoginButtonClicked = function () {
+	// Suppress default unsaved changes warning since it's in the error message
+	$( window ).off( 'beforeunload' );
+	window.onbeforeunload = null;
+	location.href = new mw.Title( 'Special:UserLogin' ).getUrl( {
+		returnto: 'Special:Homepage'
+	} );
 };
 
 module.exports = StructuredTaskSaveDialog;

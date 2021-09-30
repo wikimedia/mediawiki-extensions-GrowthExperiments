@@ -413,8 +413,12 @@ AddLinkArticleTarget.prototype.saveErrorHookAborted = function ( data ) {
 		errorData = error.data || '',
 		errorMessage = errorData.message || [],
 		errorMessageKey = errorMessage[ 0 ] || '';
-	// For the not-in-store path, handle the errors ourselves, otherwise
+	// For the not-in-store & anonymous user paths, handle the errors ourselves, otherwise
 	// let VE do the error handling.
+	if ( errorMessageKey === 'growthexperiments-structuredtask-anonuser' ) {
+		this.saveErrorNewUser();
+		return;
+	}
 	if ( errorMessageKey !== 'growthexperiments-addlink-notinstore' ) {
 		return this.constructor.super.prototype.saveErrorHookAborted.call( this, data );
 	}
