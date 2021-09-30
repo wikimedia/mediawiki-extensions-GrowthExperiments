@@ -649,8 +649,12 @@ class SuggestedEdits extends BaseModule {
 		$taskTypeId = $task->getTaskType()->getId();
 		$title = $this->titleFactory->newFromLinkTarget( $task->getTitle() );
 
-		$image = Html::element( 'div',
-			[ 'class' => 'mw-ge-small-task-card-image mw-ge-small-task-card-image-skeleton' ] );
+		$imageClasses = array_merge(
+			[ 'mw-ge-small-task-card-image' ],
+			$task->getTaskType()->getSmallTaskCardImageCssClasses()
+		);
+		$image = Html::element( 'div', [ 'class' =>
+			implode( " ", $imageClasses ) ] );
 		$title = Html::element( 'span',
 			[ 'class' => 'mw-ge-small-task-card-title' ],
 			$title->getPrefixedText() );
