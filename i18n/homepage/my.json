@@ -272,5 +272,8 @@
 	"growthexperiments-addimage-inspector-no-button": "မလုပ်ပါ",
 	"growthexperiments-addimage-inspector-skip-button": "ကျော်ရန်",
 	"growthexperiments-addimage-inspector-show-button": "ပုံအကြံပြုချက်ကိုပြရန်",
-	"growthexperiments-addimage-inspector-help-button": "တည်းဖြတ်ခြင်းနှင့်ပတ်သက်၍ အကူညီရယူမည်"
+	"growthexperiments-addimage-inspector-help-button": "တည်းဖြတ်ခြင်းနှင့်ပတ်သက်၍ အကူညီရယူမည်",
+	"growthexperiments-addimage-rejectiondialog-action-done": "ပြီးပြီ",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "အခြား",
+	"growthexperiments-addimage-viewer-close-button": "ပိတ်ရန်"
 }

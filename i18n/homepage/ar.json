@@ -419,5 +419,6 @@
 	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "صورة رديئة الجودة",
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "لا أعرف هذا الموضوع",
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "لا أستطيع فهم اللغة",
-	"growthexperiments-addimage-rejectiondialog-reason-other": "أخرى"
+	"growthexperiments-addimage-rejectiondialog-reason-other": "أخرى",
+	"growthexperiments-addimage-viewer-close-button": "أغلق"
 }

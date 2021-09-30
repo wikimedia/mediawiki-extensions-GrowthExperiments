@@ -404,5 +404,6 @@
 	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Imaginea are calitate joasă",
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Nu cunosc acest subiect",
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Nu pot citi limba",
-	"growthexperiments-addimage-rejectiondialog-reason-other": "Altceva"
+	"growthexperiments-addimage-rejectiondialog-reason-other": "Altceva",
+	"growthexperiments-addimage-viewer-close-button": "Închide"
 }
