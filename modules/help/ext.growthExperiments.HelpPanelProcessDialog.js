@@ -660,9 +660,26 @@
 		this.swapPanel(
 			this.getDefaultPanelForSuggestedEditSession() ||
 			getPanelFromSession( this.suggestedEditSession, this.logger.isEditing() ) );
-		if ( !this.suggestedEditSession.helpPanelSuggestedEditsInteractionHappened ) {
+
+		if ( this.shouldAutoAdvanceUponInit() ) {
 			this.setGuidanceAutoAdvance( true );
 		}
+	};
+
+	/**
+	 * Check whether the guidance panel should auto-advance upon initialization
+	 *
+	 * @return {boolean}
+	 */
+	HelpPanelProcessDialog.prototype.shouldAutoAdvanceUponInit = function () {
+		// Only auto advance if the help panel is open and the user hasn't interacted with it
+		var helpPanelShouldOpen = this.suggestedEditSession.helpPanelShouldOpen;
+		if ( OO.ui.isMobile() ) {
+			// If mobile peek needs to be shown, the help panel shouldn't open.
+			helpPanelShouldOpen = helpPanelShouldOpen && this.suggestedEditSession.mobilePeekShown;
+		}
+		return helpPanelShouldOpen &&
+			!this.suggestedEditSession.helpPanelSuggestedEditsInteractionHappened;
 	};
 
 	/**
