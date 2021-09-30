@@ -279,4 +279,13 @@ class TaskType implements JsonUnserializable {
 	public function getDefaultEditSection(): string {
 		return '';
 	}
+
+	/**
+	 * Get CSS classes to add to the small task card image element.
+	 *
+	 * @return array
+	 */
+	public function getSmallTaskCardImageCssClasses(): array {
+		return [ 'mw-ge-small-task-card-image-skeleton' ];
+	}
 }

@@ -17,4 +17,9 @@ class ImageRecommendationTaskType extends TaskType {
 		return 'all';
 	}
 
+	/** @inheritDoc */
+	public function getSmallTaskCardImageCssClasses(): array {
+		return [ 'mw-ge-small-task-card-image-placeholder' ];
+	}
+
 }
