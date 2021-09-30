@@ -3,7 +3,8 @@ var StructuredTaskToolbarDialog = require( '../StructuredTaskToolbarDialog.js' )
 	CeRecommendedLinkAnnotation = require( './ceRecommendedLinkAnnotation.js' ),
 	AnnotationAnimation = require( '../AnnotationAnimation.js' ),
 	suggestedEditsConfig = require( '../../homepage/suggestededits/config.json' ),
-	formatTitle = require( '../../utils/ext.growthExperiments.Utils.js' ).formatTitle;
+	formatTitle = require( '../../utils/ext.growthExperiments.Utils.js' ).formatTitle,
+	StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEdit' );
 
 /**
  * @class mw.libs.ge.RecommendedLinkToolbarDialog
@@ -423,8 +424,13 @@ RecommendedLinkToolbarDialog.prototype.showRecommendationAtIndex = function (
  * @return {jQuery.Promise} Promise which resolves when the link inspector is shown
  */
 RecommendedLinkToolbarDialog.prototype.showFirstRecommendation = function () {
-	var promise = $.Deferred();
-	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( 0 ) ).then( function () {
+	var promise = $.Deferred(),
+		annotationView = this.getAnnotationViewAtIndex( 0 );
+	if ( !annotationView ) {
+		this.toggle( false );
+		return promise.reject();
+	}
+	this.scrollToAnnotationView( annotationView ).then( function () {
 		this.showRecommendationAtIndex( 0 );
 		this.$element.removeClass( 'animate-below' );
 		promise.resolve();
@@ -443,7 +449,7 @@ RecommendedLinkToolbarDialog.prototype.getAnnotationViewAtIndex = function ( ind
 	var annotationView = this.surface.getView().$documentNode
 		.find( '.mw-ge-recommendedLinkAnnotation' )[ index ];
 	if ( !annotationView ) {
-		throw new Error( 'No annotation view found' );
+		StructuredTaskPreEdit.showErrorDialogOnFailure( 'Unable to find any expected phrase in document.' );
 	}
 	return annotationView;
 };

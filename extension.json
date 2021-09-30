@@ -1046,7 +1046,8 @@
 				"oojs-ui.styles.icons-movement",
 				"ext.visualEditor.mwlink",
 				"ext.growthExperiments.icons",
-				"ext.growthExperiments.SuggestedEditSession"
+				"ext.growthExperiments.SuggestedEditSession",
+				"ext.growthExperiments.StructuredTask.PreEdit"
 			],
 			"targets": [
 				"desktop",
