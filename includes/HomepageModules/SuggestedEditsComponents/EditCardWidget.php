@@ -43,7 +43,8 @@ class EditCardWidget extends Widget {
 
 	/** @return Tag */
 	private function getImageContent(): Tag {
-		return ( new Tag( 'div' ) )->addClasses( [ 'se-card-image no-image skeleton' ] );
+		return ( new Tag( 'div' ) )->addClasses( [ 'se-card-image', 'no-image', 'skeleton',
+			'mw-ge-tasktype-' . $this->task->getTaskType()->getId() ] );
 	}
 
 	/** @return Tag */

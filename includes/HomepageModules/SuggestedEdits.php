@@ -14,6 +14,7 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
 use Html;
@@ -310,8 +311,13 @@ class SuggestedEdits extends BaseModule {
 					'topics' => $task->getTopicScores(),
 					// The front-end code for constructing SuggestedEditCardWidget checks
 					// to see if pageId is set in order to construct a tracking URL.
-					'pageId' => $title->getArticleID()
+					'pageId' => $title->getArticleID(),
 				];
+				// Prevent loading of thumbnail for image recommendation tasks.
+				// FIXME find a better place for this
+				if ( $task->getTaskType()->getId() === ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ) {
+					$data['task-preview']['thumbnailSource'] = null;
+				}
 			}
 		}
 
@@ -640,6 +646,7 @@ class SuggestedEdits extends BaseModule {
 			throw new RuntimeException( 'Expected to have tasks.' );
 		}
 		$task = $tasks[0];
+		$taskTypeId = $task->getTaskType()->getId();
 		$title = $this->titleFactory->newFromLinkTarget( $task->getTitle() );
 
 		$image = Html::element( 'div',
@@ -675,7 +682,8 @@ class SuggestedEdits extends BaseModule {
 			$title . $description . $glue . $cardMetadataContainer );
 		return Html::rawElement( 'div',
 			// only called for mobile views
-			[ 'class' => 'mw-ge-small-task-card mw-ge-small-task-card-mobile' ],
+			[ 'class' => 'mw-ge-small-task-card mw-ge-small-task-card-mobile '
+				. "mw-ge-small-task-card mw-ge-tasktype-$taskTypeId" ],
 		$image . $cardTextContainer );
 	}
 

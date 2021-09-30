@@ -45,8 +45,11 @@
 	OO.inheritClass( SuggestedEditCardWidget, OO.ui.Widget );
 
 	SuggestedEditCardWidget.prototype.getImageContent = function () {
+		// eslint-disable-next-line mediawiki/class-doc
 		var $imageContent = $( '<div>' )
-				.addClass( 'se-card-image no-image' ),
+				// FIXME it would be nicer to place the task type class on the card wrapper div,
+				//   but with the current structure of the LESS file that wouldn't be useful.
+				.addClass( 'se-card-image no-image mw-ge-tasktype-' + this.getTaskType() ),
 			$imageForCaching = $( '<img>' );
 		if ( this.data.thumbnailSource !== null ) {
 			$imageContent.addClass( 'skeleton' );
