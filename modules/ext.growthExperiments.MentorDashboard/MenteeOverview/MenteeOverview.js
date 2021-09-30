@@ -108,7 +108,7 @@
 				$( '<thead>' ).append(
 					$( '<tr>' ).append(
 						$( '<th>' )
-							.attr( 'data-field', 'username' )
+							.attr( 'data-field', 'last_active' )
 							.append( this.makeHeaderIcon(
 								'userAvatar',
 								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo' )
@@ -340,7 +340,7 @@
 					.addClass( 'growthexperiments-mentor-dashboard-module-mentee-overview-userinfo-star' );
 				$menteeTable.append(
 					$( '<tr>' ).attr( 'data-user-id', userId ).append(
-						$( '<td>' ).attr( 'data-field', 'username' ).append(
+						$( '<td>' ).attr( 'data-field', 'last_active' ).append(
 							$( '<div>' )
 								.addClass( 'growthexperiments-mentor-dashboard-module-mentee-overview-userinfo-outer-container' )
 								.append(
