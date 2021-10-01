@@ -333,5 +333,6 @@
 	"growthexperiments-addimage-inspector-help-button": "Ricevi aiuto nella modifica",
 	"growthexperiments-addimage-inspector-details-button": "Vedi dettagli",
 	"growthexperiments-addimage-rejectiondialog-action-done": "Fatto",
-	"growthexperiments-addimage-rejectiondialog-reason-other": "Altro"
+	"growthexperiments-addimage-rejectiondialog-reason-other": "Altro",
+	"growthexperiments-addimage-viewer-close-button": "Chiudi"
 }

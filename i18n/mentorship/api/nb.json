@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Merk eller fjern stjernemerking av et fadderbarn av den gjeldende brukeren (lagres privat og logges ikke)",
+	"apihelp-growthstarmentee-param-gesaction": "Handling som skal utføres (<kbd>star</kbd> eller <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Fadderbarn som skal (av)stjernemerkes",
+	"apihelp-query+growthstarredmentees-summary": "Hent liste over fadderbarn som er stjernemerka av den for tiden innloggede fadderen",
+	"apihelp-growthsetmentorstatus-summary": "Sett den gjeldende brukerens fadderstatus til aktiv/borte",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Ny status",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "Når fadderstatus endres til borte må man ha med varigheten på bortestatusen (i dager)",
+	"apihelp-query+growthmentorstatus-summary": "Avslutt den gjeldende brukerens fadderskap"
+}

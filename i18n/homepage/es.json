@@ -6,6 +6,7 @@
 			"Canaan9801",
 			"DannyS712",
 			"Destinid10 2",
+			"Fewasser Traduce",
 			"Fitoschido",
 			"Hasley",
 			"Ihojose",
@@ -373,6 +374,9 @@
 	"newcomertasksinfo-table-header-topic-type": "ID de tema",
 	"growthexperiments-structuredtask-ve-machine-suggestions-mode-title": "Sugerencias",
 	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Enviar...",
+	"growthexperiments-addimage-inspector-yes-button": "Si",
+	"growthexperiments-addimage-inspector-no-button": "No",
+	"growthexperiments-addimage-inspector-skip-button": "Omitir",
 	"growthexperiments-addimage-inspector-details-button": "Ver detalles",
 	"growthexperiments-addimage-rejectiondialog-title": "¿Por qué no?",
 	"growthexperiments-addimage-rejectiondialog-header": "¿Por qué esta imagen no es apta para el artículo?",
@@ -383,5 +387,6 @@
 	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "La imagen es de baja calidad",
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Yo no conozco este tema",
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Yo no puedo leer el lenguaje.",
-	"growthexperiments-addimage-rejectiondialog-reason-other": "Otro"
+	"growthexperiments-addimage-rejectiondialog-reason-other": "Otro",
+	"growthexperiments-addimage-viewer-close-button": "Cerrar"
 }

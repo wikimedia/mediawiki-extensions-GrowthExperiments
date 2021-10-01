@@ -413,5 +413,6 @@
 	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "התמונה באיכות נמוכה",
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "הנושא לא מוכר לי",
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "לא הצלחתי לקרוא בשפה הזאת",
-	"growthexperiments-addimage-rejectiondialog-reason-other": "אחר"
+	"growthexperiments-addimage-rejectiondialog-reason-other": "אחר",
+	"growthexperiments-addimage-viewer-close-button": "סגירה"
 }

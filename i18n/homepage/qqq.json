@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"Amire80",
 			"Jeeputer",
 			"Jon Harald Søby",
@@ -426,5 +427,5 @@
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "One of the choices in the dialog asking the user for the reason for rejecting the suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "One of the choices in the dialog asking the user for the reason for rejecting the suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "One of the choices in the dialog asking the user for the reason for rejecting the suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
-	"growthexperiments-addimage-viewer-close-button": "Text to use in the invisible label for the button that closes the dialog for viewing the selected image suggestion in full screen.\n\n{{doc-growthexperiments-imagesuggestions}}"
+	"growthexperiments-addimage-viewer-close-button": "Text to use in the invisible label for the button that closes the dialog for viewing the selected image suggestion in full screen.\n\n{{doc-growthexperiments-imagesuggestions}}\n\n{{Identical|Close}}"
 }

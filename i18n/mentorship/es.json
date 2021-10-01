@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Danniel07",
+			"Fewasser Traduce",
 			"Warming Hearth"
 		]
 	},
@@ -25,5 +26,9 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Información de aprendices no disponible.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Puede que no tengas asignado aprendices todavía. La información se actualiza a diario.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "No se encontraron aprendices.",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Cambia tus filtros para encontrar aprendices."
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Cambia tus filtros para encontrar aprendices.",
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Ajustes",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Activo",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Fuera",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Cancelar"
 }
