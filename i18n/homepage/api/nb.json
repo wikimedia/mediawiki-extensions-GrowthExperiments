@@ -10,7 +10,7 @@
 	"apihelp-homepagequestionstore-param-userid": "Bruker-ID-en spørsmål skal hentes for.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Ingen spørsmål funnet.",
 	"apihelp-growthsetmentor-summary": "Sett brukerens fadder. Endringen blir logget offentlig.",
-	"apihelp-growthsetmentor-param-mentee": "Nybegynnerens brukernavn",
+	"apihelp-growthsetmentor-param-mentee": "Fadderbarnets brukernavn",
 	"apihelp-growthsetmentor-param-mentor": "Fadderens brukernavn",
 	"apihelp-growthsetmentor-param-reason": "Årsak for endringen"
 }

@@ -9,11 +9,13 @@
 	"growthexperiments-config-validator-error": "Validering for $1 feilet med: «$2»",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> er forventet å være <code>$2</code>, men er <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Innholdsmodellen matcher ikke: GrowthExperiments' konfigurasjonsfil må ha innholdsmodellen JSON, men $1 ble returnert",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Ugyldig oppgavetype-ID: <code>$1</code> er ikke en gyldig verdi",
 	"growthexperiments-edit-config-disabled": "Konfigurasjon av nettsamfunnet er for tiden slått av.",
 	"growthexperiments-edit-config-title": "Rediger Growth-konfigurasjon",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Sist oppdatert av [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Sist oppdatert av en ukjent bruker $1.",
 	"growthexperiments-edit-config-pretext": "Denne siden lar deg redigere konfigurasjonen til [[:mw:Special:MyLanguage/Growth|Growth]]-funksjonene. Den vil redigere $1 på dine vegne. Du kan se endringene dine i den sidens historikk.",
+	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|Du}} kan også vise et banner på nybegynnerforsida for å inkludere kunngjøringer om viktige hendelser for nybegynnere. Hvis du ønsker å gjøre det må du legge det til i [[$1]] manuelt. Innhold som legges inn der vises i et gult banner øverst på [[Special:Homepage]].",
 	"growthexperiments-edit-config-pretext-unprivileged": "Dette skjemaet lar brukere med rettighet til det å redigere konfigurasjonen til [[:mw:Special:MyLanguage/Growth|Growth]]-funksjonene.",
 	"growthexperiments-edit-config-feedback-headline": "Har du forbedringsforslag eller spørsmål om dette skjemaet?",
 	"growthexperiments-edit-config-feedback-cta": "Gi tilbakemelding",
@@ -67,5 +69,10 @@
 	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Referanser: maler som finner artikler som trenger flere referanser.",
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Målside for å lære mer om å legge til referanser.",
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Oppdater: maler som finner artikler som trenger oppdatert informasjon.",
-	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Målside for å lære mer om oppdatering av artikler."
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Målside for å lære mer om oppdatering av artikler.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Målside for å lære mer om oppgavetypen foreslåtte lenker.",
+	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Målside for å lære mer om oppgavetypen legg til bilde.",
+	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Denne oppgavetypen assosieres med maskinforslag, og bruker ikke maler for å generere mulige oppgaver.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Artikler som inneholder disse malene vises ikke til brukerne som oppgaver for denne oppgavetypen.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Artikler som inneholder disse kategoriene blir ikke vist til brukerne som oppgaver for denne oppgavetypen."
 }
