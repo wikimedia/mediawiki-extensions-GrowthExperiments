@@ -1,6 +1,8 @@
 var TargetInitializer = require( '../TargetInitializer.js' ),
 	RecommendedImageRejectionDialog = require( './RecommendedImageRejectionDialog.js' ),
-	RecommendedImageViewer = require( './RecommendedImageViewer.js' );
+	RecommendedImageViewer = require( './RecommendedImageViewer.js' ),
+	ImageSuggestionInteractionLogger = require( './ImageSuggestionInteractionLogger.js' ),
+	SuggestionInteractionLogger = require( '../SuggestionInteractionLogger.js' );
 
 /**
  * Handle registrations and de-registrations of VE classes for Add Image structured task
@@ -28,7 +30,12 @@ function AddImageTargetInitializer( platformConfig ) {
 		RecommendedImageRejectionDialog, RecommendedImageViewer
 	] );
 	config.commands = [ toolbarDialogCommand ];
-	// TODO: initialize SuggestionInteractionLogger
+	SuggestionInteractionLogger.initialize( new ImageSuggestionInteractionLogger( {
+		/* eslint-disable camelcase */
+		is_mobile: OO.ui.isMobile(),
+		active_interface: 'machinesuggestions_mode'
+		/* eslint-enable camelcase */
+	} ) );
 	AddImageTargetInitializer.super.call( this, config );
 }
 

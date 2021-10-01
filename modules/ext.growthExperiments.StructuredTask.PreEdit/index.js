@@ -11,6 +11,7 @@ module.exports = ( function () {
 		shouldShowOnboarding,
 		AddLinkOnboardingDialog,
 		LinkSuggestionInteractionLogger,
+		ImageSuggestionInteractionLogger,
 		windows = {},
 		windowManager;
 
@@ -169,6 +170,14 @@ module.exports = ( function () {
 		} );
 		shouldShowOnboarding = !mw.user.options.get( addLinkOnboardingPrefName );
 		setupAddLinkOnboarding();
+	} else if ( isAddImage ) {
+		ImageSuggestionInteractionLogger = require(
+			'../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js'
+		);
+		logger = new ImageSuggestionInteractionLogger( {
+			// eslint-disable-next-line camelcase
+			is_mobile: OO.ui.isMobile()
+		} );
 	}
 
 	return {
