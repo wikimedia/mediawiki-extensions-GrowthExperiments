@@ -43,6 +43,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksTopicType' => PageConfigurationLoader::CONFIGURATION_TYPE_ORES,
 			'GENewcomerTasksLinkRecommendationsEnabled' => false,
 			'GELinkRecommendationsFrontendEnabled' => false,
+			'GENewcomerTasksImageRecommendationsEnabled' => false,
 		] );
 		$experimentUserManager = $this->createPartialMock( ExperimentUserManager::class,
 			[ 'isUserInVariant' ] );
@@ -68,7 +69,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 	 * @covers ::areLinkRecommendationsEnabled
 	 * @covers ::filterTaskTypes
 	 */
-	public function testT278123() {
+	public function testLinkRecommendationAbTest() {
 		$user1 = new UserIdentityValue( 1, 'User1' );
 		$user2 = new UserIdentityValue( 2, 'User2' );
 		$user3 = new UserIdentityValue( 3, 'User3' );
@@ -87,12 +88,17 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			'GENewcomerTasksTopicType' => PageConfigurationLoader::CONFIGURATION_TYPE_ORES,
 			'GENewcomerTasksLinkRecommendationsEnabled' => true,
 			'GELinkRecommendationsFrontendEnabled' => false,
+			'GENewcomerTasksImageRecommendationsEnabled' => false,
 		] );
 		$experimentUserManager = $this->createPartialMock( ExperimentUserManager::class,
 			[ 'isUserInVariant' ] );
 		$experimentUserManager->method( 'isUserInVariant' )
-			->with( $this->anything(), VariantHooks::VARIANT_LINK_RECOMMENDATION_ENABLED )
+			->with( $this->anything(), $this->logicalOr( VariantHooks::VARIANT_LINK_RECOMMENDATION_ENABLED,
+				VariantHooks::VARIANT_IMAGE_RECOMMENDATION_ENABLED ) )
 			->willReturnCallback( static function ( UserIdentity $user, string $variant ) {
+				if ( $variant === VariantHooks::VARIANT_IMAGE_RECOMMENDATION_ENABLED ) {
+					return false;
+				}
 				return [
 					'User1' => false,
 					'User2' => false,
@@ -114,6 +120,64 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$this->assertSame( [ 'links' ], $lookup->getTaskTypeFilter( $user2 ) );
 		$this->assertSame( [ 'link-recommendation' ], $lookup->getTaskTypeFilter( $user3 ) );
 		$this->assertSame( [ 'link-recommendation' ], $lookup->getTaskTypeFilter( $user4 ) );
+	}
+
+	/**
+	 * @covers ::getTaskTypeFilter
+	 * @covers ::areImageRecommendationsEnabled
+	 * @covers ::filterTaskTypes
+	 */
+	public function testImageRecommendationAbTest() {
+		$user1 = new UserIdentityValue( 1, 'User1' );
+		$user2 = new UserIdentityValue( 2, 'User2' );
+		$user3 = new UserIdentityValue( 3, 'User3' );
+		$user4 = new UserIdentityValue( 4, 'User4' );
+		$userOptionsLookup = new StaticUserOptionsLookup( [
+			'User1' => [],
+			'User2' => [
+				SuggestedEdits::TASKTYPES_PREF => '[ "copyedit", "image-recommendation" ]',
+			],
+			'User3' => [],
+			'User4' => [
+				SuggestedEdits::TASKTYPES_PREF => '[ "copyedit", "image-recommendation" ]',
+			],
+		] );
+		$config = new HashConfig( [
+			'GENewcomerTasksTopicType' => PageConfigurationLoader::CONFIGURATION_TYPE_ORES,
+			'GENewcomerTasksLinkRecommendationsEnabled' => false,
+			'GELinkRecommendationsFrontendEnabled' => false,
+			'GENewcomerTasksImageRecommendationsEnabled' => false,
+		] );
+		$experimentUserManager = $this->createPartialMock( ExperimentUserManager::class,
+			[ 'isUserInVariant' ] );
+		$experimentUserManager->method( 'isUserInVariant' )
+			->with( $this->anything(), $this->logicalOr( VariantHooks::VARIANT_LINK_RECOMMENDATION_ENABLED,
+				VariantHooks::VARIANT_IMAGE_RECOMMENDATION_ENABLED ) )
+			->willReturnCallback( static function ( UserIdentity $user, string $variant ) {
+				if ( $variant === VariantHooks::VARIANT_LINK_RECOMMENDATION_ENABLED ) {
+					return false;
+				}
+				return [
+						   'User1' => false,
+						   'User2' => false,
+						   'User3' => true,
+						   'User4' => true,
+					   ][$user->getName()];
+			} );
+
+		$lookup = new NewcomerTasksUserOptionsLookup( $experimentUserManager, $userOptionsLookup, $config );
+		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
+		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user2 ) );
+		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user3 ) );
+		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user4 ) );
+
+		$config->set( 'GENewcomerTasksImageRecommendationsEnabled', true );
+
+		$lookup = new NewcomerTasksUserOptionsLookup( $experimentUserManager, $userOptionsLookup, $config );
+		$this->assertSame( [ 'copyedit', 'links' ], $lookup->getTaskTypeFilter( $user1 ) );
+		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user2 ) );
+		$this->assertSame( [ 'image-recommendation' ], $lookup->getTaskTypeFilter( $user3 ) );
+		$this->assertSame( [ 'copyedit', 'image-recommendation' ], $lookup->getTaskTypeFilter( $user4 ) );
 	}
 
 }

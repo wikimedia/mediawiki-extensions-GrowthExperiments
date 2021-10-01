@@ -20,6 +20,20 @@
 	}
 
 	/**
+	 * Check whether image recommendations are enabled for the current user.
+	 *
+	 * This is the equivalent of NewcomerTasksUserOptionsLookup::areImageRecommendationsEnabled().
+	 *
+	 * @return {boolean}
+	 */
+	function areImageRecommendationsEnabled() {
+		var config = require( './config.json' ),
+			Utils = require( '../../utils/ext.growthExperiments.Utils.js' );
+		return config.GEImageRecommendationsEnabled &&
+			Utils.isUserInVariant( [ 'imagerecommendation' ] );
+	}
+
+	/**
 	 * Remove task types the current user should not see.
 	 *
 	 * @param {Object} taskTypes Task type ID => task data, typically from loading TaskTypes.json
@@ -37,30 +51,36 @@
 		} else {
 			delete taskTypes[ 'link-recommendation' ];
 		}
+		if ( !areImageRecommendationsEnabled() ) {
+			delete taskTypes[ 'image-recommendation' ];
+		}
 		return taskTypes;
 	}
 
 	/**
-	 * Convert task types which the user is not supposed to see, given the link recommendation
+	 * Convert task types which the user is not supposed to see, given the user variant
 	 * configuration, to the closest task type available to them.
 	 *
 	 * @param {Array<string>} taskTypes
 	 * @return {Array<string>}
 	 */
 	function convertTaskTypes( taskTypes ) {
-		var linkRecommendationsEnabled = areLinkRecommendationsEnabled();
+		var linkRecommendationsEnabled = areLinkRecommendationsEnabled(),
+			imageRecommendationsEnabled = areImageRecommendationsEnabled();
 		taskTypes = taskTypes.map( function ( taskType ) {
 			if ( linkRecommendationsEnabled && taskType === 'links' ) {
 				return 'link-recommendation';
 			} else if ( !linkRecommendationsEnabled && taskType === 'link-recommendation' ) {
 				return 'links';
+			} else if ( !imageRecommendationsEnabled && taskType === 'image-recommendation' ) {
+				return null;
 			} else {
 				return taskType;
 			}
 		} );
-		// filter duplicates
+		// filter duplicates and null
 		taskTypes = taskTypes.filter( function ( element, index, self ) {
-			return index === self.indexOf( element );
+			return element !== null && index === self.indexOf( element );
 		} );
 		return taskTypes;
 	}
@@ -75,6 +95,8 @@
 	function filterDefaultTaskTypes( defaultDefaultTaskTypes ) {
 		if ( areLinkRecommendationsEnabled() ) {
 			return [ 'link-recommendation' ];
+		} else if ( areImageRecommendationsEnabled() ) {
+			return [ 'image-recommendation' ];
 		} else {
 			return defaultDefaultTaskTypes;
 		}

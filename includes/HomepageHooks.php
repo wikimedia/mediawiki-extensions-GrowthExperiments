@@ -1170,6 +1170,7 @@ class HomepageHooks implements
 			'GENewcomerTasksTopicFiltersPref' => SuggestedEdits::getTopicFiltersPref( $config ),
 			'GELinkRecommendationsEnabled' => $config->get( 'GENewcomerTasksLinkRecommendationsEnabled' )
 				&& $config->get( 'GELinkRecommendationsFrontendEnabled' ),
+			'GEImageRecommendationsEnabled' => $config->get( 'GENewcomerTasksImageRecommendationsEnabled' ),
 		];
 	}
 

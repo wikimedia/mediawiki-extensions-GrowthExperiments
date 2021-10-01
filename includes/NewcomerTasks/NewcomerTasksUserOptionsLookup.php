@@ -5,6 +5,7 @@ namespace GrowthExperiments\NewcomerTasks;
 use Config;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\VariantHooks;
 use MediaWiki\User\UserIdentity;
@@ -52,10 +53,8 @@ class NewcomerTasksUserOptionsLookup {
 		// This will be removed once A/B testing is over (T278123).
 		if ( $taskTypes !== null ) {
 			return $this->convertTaskTypes( $taskTypes, $user );
-		} elseif ( $this->areLinkRecommendationsEnabled( $user ) ) {
-			return [ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ];
 		} else {
-			return SuggestedEdits::DEFAULT_TASK_TYPES;
+			return $this->getDefaultTaskTypes( $user );
 		}
 	}
 
@@ -84,8 +83,8 @@ class NewcomerTasksUserOptionsLookup {
 	/**
 	 * Check if link recommendations are enabled. When true, the link-recommendation task type
 	 * should be made available to the user and the links task type hidden.
-	 * This is a temporary hack that is expected to be removed when the link recommendation A/B
-	 * test is over (T278123).
+	 * This is a temporary hack that is expected to be removed when A/B tests are over (T278123,
+	 * T290403).
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
@@ -99,8 +98,8 @@ class NewcomerTasksUserOptionsLookup {
 	/**
 	 * Check if link recommendations are enabled. When true, the link-recommendation task type
 	 * should be made available to the user.
-	 * This is a temporary hack that is expected to be removed when the image recommendation A/B
-	 * test is over.
+	 * This is a temporary hack that is expected to be removed when A/B tests are over (T290403,
+	 * T290403).
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
@@ -113,7 +112,7 @@ class NewcomerTasksUserOptionsLookup {
 	/**
 	 * Remove task types which the user is not supposed to see, given the link recommendation
 	 * configuration.
-	 * This is a hack that should be removed when the link recommendation A/B test is over (T278123).
+	 * This is a hack that should be removed when the link A/B tests are over (T278123, T290403).
 	 * @param string[] $taskTypes Task types IDs.
 	 * @param UserIdentity $user
 	 * @return string[] Filtered task types IDs. Array keys are not preserved.
@@ -124,13 +123,31 @@ class NewcomerTasksUserOptionsLookup {
 		} else {
 			$taskTypes = array_diff( $taskTypes, [ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ] );
 		}
+		if ( !$this->areImageRecommendationsEnabled( $user ) ) {
+			$taskTypes = array_diff( $taskTypes, [ ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ] );
+		}
 		return array_values( $taskTypes );
+	}
+
+	/**
+	 * Get default task types when the user has no stored preference.
+	 * @param UserIdentity $user
+	 * @return string[]
+	 */
+	private function getDefaultTaskTypes( UserIdentity $user ): array {
+		if ( $this->areLinkRecommendationsEnabled( $user ) ) {
+			return [ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ];
+		} elseif ( $this->areImageRecommendationsEnabled( $user ) ) {
+			return [ ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ];
+		} else {
+			return SuggestedEdits::DEFAULT_TASK_TYPES;
+		}
 	}
 
 	/**
 	 * Convert task types which the user is not supposed to see, given the link recommendation
 	 * configuration, to the closest task type available to them.
-	 * This is a hack that should be removed when the link recommendation A/B test is over (T278123).
+	 * This is a hack that should be removed when A/B tests are over (T278123, T290403).
 	 * @param string[] $taskTypes Task types IDs.
 	 * @param UserIdentity $user
 	 * @return string[] Converted task types IDs. Array keys are not preserved.
@@ -141,10 +158,14 @@ class NewcomerTasksUserOptionsLookup {
 		} else {
 			$map = [ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => 'links' ];
 		}
+		if ( !$this->areImageRecommendationsEnabled( $user ) ) {
+			$map += [ ImageRecommendationTaskTypeHandler::TASK_TYPE_ID => false ];
+		}
+
 		$taskTypes = array_map( static function ( string $taskType ) use ( $map ) {
 			return $map[$taskType] ?? $taskType;
 		}, $taskTypes );
-		return array_unique( $taskTypes );
+		return array_unique( array_filter( $taskTypes ) );
 	}
 
 	/**
