@@ -85,6 +85,7 @@
 
 	&-metadata-container {
 		display: flex;
+		justify-content: flex-end;
 	}
 
 	&-pageviews {
@@ -108,9 +109,8 @@
 	}
 
 	&-tasktype {
-		flex: 1 0 0;
-		justify-self: flex-end;
-		text-align: right;
+		display: flex;
+		align-items: center;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		white-space: nowrap;
@@ -131,8 +131,10 @@
 			margin-right: 8px;
 			// Undoing parent's text-align:right which causes OOUI's invisible icon to be visible
 			text-align: initial;
-			min-width: 16px;
-			min-height: 16px;
+			// OOUI icons has 20px min width & height.
+			min-width: unset;
+			min-height: unset;
+			width: 16px;
 		}
 	}
 
