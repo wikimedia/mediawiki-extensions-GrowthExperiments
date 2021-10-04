@@ -15,6 +15,35 @@ function StructuredTaskSaveDialog() {
 
 OO.initClass( StructuredTaskSaveDialog );
 
+/**
+ * @inheritDoc
+ * @note Classes using the mixin should call this method instead of their parent method.
+ */
+StructuredTaskSaveDialog.prototype.initialize = function () {
+	this.constructor.super.prototype.initialize.call( this );
+
+	// Snapshot the homepage PV token. It will change during save, and we want the events
+	// belonging to this dialog to be grouped together.
+	this.homepagePageviewToken = SuggestedEditSession.getInstance().clickId;
+};
+
+/**
+ * @inheritDoc
+ * @note Classes using the mixin should call this method instead of their parent method.
+ */
+StructuredTaskSaveDialog.prototype.getSetupProcess = function ( data ) {
+	return this.constructor.super.prototype.getSetupProcess.call( this, data ).first( function () {
+		// Hide the preview and diff views if the user did not accept anything, and so submitting
+		// will cause no change to the article.
+		if ( !ve.init.target.hasEdits() ) {
+			data.canPreview = data.canReview = false;
+			data.saveButtonLabel = mw.message( 'growthexperiments-structuredtask-summary-submit' ).text();
+		}
+
+		this.setVisualDiffPreference();
+	}, this );
+};
+
 /** @inheritDoc */
 StructuredTaskSaveDialog.prototype.getTeardownProcess = function ( data ) {
 	return this.constructor.super.prototype.getTeardownProcess.call( this, data ).next( function () {

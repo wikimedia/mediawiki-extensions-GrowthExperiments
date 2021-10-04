@@ -1,6 +1,5 @@
 var LinkSuggestionInteractionLogger = require( './LinkSuggestionInteractionLogger.js' ),
-	StructuredTaskSaveDialog = require( '../StructuredTaskSaveDialog.js' ),
-	SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' );
+	StructuredTaskSaveDialog = require( '../StructuredTaskSaveDialog.js' );
 
 /**
  * Mixin for code sharing between AddLinkDesktopSaveDialog and AddLinkMobileSaveDialog.
@@ -57,11 +56,7 @@ AddLinkSaveDialog.prototype.getSummaryTableHeader = function () {
 
 /** @inheritDoc */
 AddLinkSaveDialog.prototype.initialize = function () {
-	this.constructor.super.prototype.initialize.call( this );
-
-	// Snapshot the homepage PV token. It will change during save, and we want the events
-	// belonging to this dialog to be grouped together.
-	this.homepagePageviewToken = SuggestedEditSession.getInstance().clickId;
+	StructuredTaskSaveDialog.prototype.initialize.call( this );
 
 	// Replace the save panel. The other panels are good as they are.
 	this.savePanel.$element.empty();
@@ -121,20 +116,9 @@ AddLinkSaveDialog.prototype.updateSummary = function ( annotationStates ) {
 
 /** @inheritDoc */
 AddLinkSaveDialog.prototype.getSetupProcess = function ( data ) {
-	var annotationStates = ve.init.target.getAnnotationStates(),
-		hasAccepts = annotationStates.some( function ( state ) {
-			return state.accepted;
-		} );
-	if ( !hasAccepts ) {
-		// Hide the preview and diff views if the user did not accept anything, and so submitting
-		// will cause no change to the article.
-		data.canPreview = data.canReview = false;
-		data.saveButtonLabel = mw.message( 'growthexperiments-addlink-summary-submit' ).text();
-	}
-	return this.constructor.super.prototype.getSetupProcess.call( this, data ).first(
-		this.setVisualDiffPreference.bind( this )
-	).next( function () {
-		var acceptedCount, rejectedCount, skippedCount;
+	return StructuredTaskSaveDialog.prototype.getSetupProcess.call( this, data ).next( function () {
+		var acceptedCount, rejectedCount, skippedCount,
+			annotationStates = ve.init.target.getAnnotationStates();
 		acceptedCount = rejectedCount = skippedCount = 0;
 		annotationStates.forEach( function ( state ) {
 			// convert to  boolean to avoid NaNs
