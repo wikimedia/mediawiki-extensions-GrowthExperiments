@@ -26,4 +26,14 @@ function AddImageSaveDialog() {
 OO.initClass( AddImageSaveDialog );
 OO.mixinClass( AddImageSaveDialog, StructuredTaskSaveDialog );
 
+/** @inheritDoc */
+AddImageSaveDialog.prototype.getActionProcess = function ( action ) {
+	return StructuredTaskSaveDialog.prototype.getActionProcess.call( this, action ).next( function () {
+		// When the save is cancelled, also cancel adding the image.
+		if ( action === '' ) {
+			ve.init.target.rollback();
+		}
+	}, this );
+};
+
 module.exports = AddImageSaveDialog;

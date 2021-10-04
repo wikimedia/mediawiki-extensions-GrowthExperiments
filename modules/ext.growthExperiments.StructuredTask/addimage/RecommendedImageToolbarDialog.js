@@ -47,9 +47,9 @@ function RecommendedImageToolbarDialog() {
 		'mw-ge-recommendedImageToolbarDialog-imagePreview'
 	);
 	/**
-	 * @property {OO.ui.ToggleButtonWidget} yesButton
+	 * @property {OO.ui.ButtonWidget} yesButton
 	 */
-	this.yesButton = new OO.ui.ToggleButtonWidget( {
+	this.yesButton = new OO.ui.ButtonWidget( {
 		icon: 'check',
 		label: mw.message( 'growthexperiments-addimage-inspector-yes-button' ).text(),
 		classes: [ 'mw-ge-recommendedImageToolbarDialog-buttons-yes' ]
@@ -57,9 +57,9 @@ function RecommendedImageToolbarDialog() {
 	this.yesButton.connect( this, { click: [ 'onYesButtonClicked' ] } );
 
 	/**
-	 * @property {OO.ui.ToggleButtonWidget} noButton
+	 * @property {OO.ui.ButtonWidget} noButton
 	 */
-	this.noButton = new OO.ui.ToggleButtonWidget( {
+	this.noButton = new OO.ui.ButtonWidget( {
 		icon: 'close',
 		label: mw.message( 'growthexperiments-addimage-inspector-no-button' ).text(),
 		classes: [ 'mw-ge-recommendedImageToolbarDialog-buttons-no' ]

@@ -180,6 +180,16 @@ AddImageArticleTarget.prototype.isEndOfMetadata = function ( data, offset ) {
 	return true;
 };
 
+/**
+ * Undo the last change. Can be used to undo insertImage().
+ */
+AddImageArticleTarget.prototype.rollback = function () {
+	var surfaceModel = this.getSurface().getModel();
+	surfaceModel.setReadOnly( false );
+	surfaceModel.undo();
+	surfaceModel.setReadOnly( true );
+};
+
 /** @inheritDoc **/
 AddImageArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 	/** @var {mw.libs.ge.ImageRecommendation} taskData */
