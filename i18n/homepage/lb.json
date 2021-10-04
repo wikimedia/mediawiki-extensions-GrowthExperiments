@@ -145,5 +145,10 @@
 	"growthexperiments-addimage-inspector-yes-button": "Jo",
 	"growthexperiments-addimage-inspector-no-button": "Neen",
 	"growthexperiments-addimage-inspector-skip-button": "Iwwersprangen",
-	"growthexperiments-addimage-inspector-details-button": "Detailer weisen"
+	"growthexperiments-addimage-inspector-details-button": "Detailer weisen",
+	"growthexperiments-addimage-rejectiondialog-title": "Firwat net?",
+	"growthexperiments-addimage-rejectiondialog-action-done": "Fäerdeg",
+	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Bild ass net relevant",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "Anerer",
+	"growthexperiments-addimage-viewer-close-button": "Zoumaachen"
 }

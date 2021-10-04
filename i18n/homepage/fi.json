@@ -6,7 +6,8 @@
 			"MITO",
 			"Mediawikitranslator",
 			"Nike",
-			"Pyscowicz"
+			"Pyscowicz",
+			"Rönttönen"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hei}}, {{bidi:$1}}!",
@@ -93,7 +94,8 @@
 	"tag-mentorship_module_question": "Kysymys mentorimodulista",
 	"tag-newcomer_task": "Uuden tulokkaan tehtävä",
 	"growthexperiments-homepage-help-dialog-title": "Kysy Neuvonta-kahvihuoneesta",
-	"growthexperiments-homepage-help-subheader": "Ohjeita muokkaamiseen",
+	"growthexperiments-homepage-help-header": "Apua muokkaamiseen",
+	"growthexperiments-homepage-help-subheader": "Ohjesivuja",
 	"growthexperiments-homepage-help-mobilebody": "Kysy neuvonnasta tai lue ohjesivuja.",
 	"growthexperiments-homepage-recent-questions-header": "{{GENDER:$1|Viimeaikaiset}} kysymyksesi",
 	"growthexperiments-homepage-recent-questions-posted-on": "Lähetetty $1 sitten",
@@ -296,5 +298,15 @@
 	"growthexperiments-addimage-inspector-no-button": "Ei",
 	"growthexperiments-addimage-inspector-skip-button": "Ohita",
 	"growthexperiments-addimage-inspector-show-button": "Näytä ehdotettu kuva",
-	"growthexperiments-addimage-inspector-help-button": "Hanki apua muokkaamisessa"
+	"growthexperiments-addimage-inspector-help-button": "Hanki apua muokkaamisessa",
+	"growthexperiments-addimage-rejectiondialog-title": "Miksi ei?",
+	"growthexperiments-addimage-rejectiondialog-header": "Miksi tämä kuva ei ole oikea artikkelille?",
+	"growthexperiments-addimage-rejectiondialog-subheader": "{{GENDER:|Vastauksesi}} auttaa parantamaan ehdotuksia.",
+	"growthexperiments-addimage-rejectiondialog-action-done": "Valmis",
+	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Kuva ei ole asiaankuuluva",
+	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Kuva on heikkolaatuinen",
+	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "En ymmärrä tätä aihetta",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "En ymmärrä kieltä",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "Muu",
+	"growthexperiments-addimage-viewer-close-button": "Sulje"
 }

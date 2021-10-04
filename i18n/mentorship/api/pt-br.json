@@ -5,5 +5,7 @@
 		]
 	},
 	"apihelp-growthstarmentee-param-gesaction": "Ação a ser tomada (<kbd>star</kbd> ou <kbd>unstar</kbd>)",
-	"apihelp-query+growthstarredmentees-summary": "Obtenha uma lista de pupilos estrelados pelo mentor conectado no momento"
+	"apihelp-query+growthstarredmentees-summary": "Obtenha uma lista de pupilos estrelados pelo mentor conectado no momento",
+	"apihelp-growthsetmentorstatus-summary": "Defina o status de mentor do usuário atual para ativo/ausente",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Novo status"
 }

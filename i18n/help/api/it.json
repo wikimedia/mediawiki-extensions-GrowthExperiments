@@ -10,10 +10,10 @@
 	"apihelp-helppanelquestionposter-param-body": "Il testo della domanda posta dall'utente.",
 	"apihelp-helppanelquestionposter-param-source": "Il metodo con cui la domanda è stata posta.",
 	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Il pannello \"Chiedi allo sportello informazioni\"",
-	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Il pannello \"Chiedi al tuo tutor\" sulla pagina iniziale",
-	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "La schermata \"Chiedi al tuo tutor\" nel pannello introduttivo",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Il pannello \"Chiedi al tuo mentore\" sulla pagina iniziale",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "La schermata \"Chiedi al tuo mentore\" nel pannello introduttivo",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Il pannello \"Chiedi allo sportello informazioni\" (nomenclatura precedente)",
-	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Il pannello \"Chiedi al tuo tutor\" sulla pagina iniziale (nomenclatura precedente)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Il pannello \"Chiedi al tuo mentore\" sulla pagina iniziale (nomenclatura precedente)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Il titolo pertinente, se selezionato, da includere nella domanda.",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Devi effettuare l'accesso per fare una domanda."
 }

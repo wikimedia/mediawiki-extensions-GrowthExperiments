@@ -10,7 +10,9 @@
 	"apihelp-query+growthtasks-param-tasktypes": "Tipos de tarefas aos quais limitar os resultados. Deixe em branco para receber todas as sugestões.",
 	"apihelp-query+growthtasks-param-topics": "Tópicos do artigo a serem preferidos nas sugestões de tarefas.",
 	"apihelp-query+growthtasks-param-limit": "Número máximo de sugestões de tarefas a serem retornadas.",
+	"apihelp-query+growthtasks-param-excludepageids": "Identificadores das páginas a excluir da consulta.",
 	"apihelp-query+growthtasks-param-debug": "Adicione dados de depuração à saída.",
 	"apihelp-query+growthtasks-example-1": "Obtenha recomendações de tarefas para tarefas do tipo edição de cópia para o usuário atual.",
-	"apihelp-query+growthtasks-example-2": "Obtenha recomendações de tarefas para o usuário atual, com informações estendidas sobre as páginas."
+	"apihelp-query+growthtasks-example-2": "Obtenha recomendações de tarefas para o usuário atual, com informações estendidas sobre as páginas.",
+	"apierror-growthexperiments-addlink-handler-notfound": "Registro de recomendação de link não encontrado"
 }

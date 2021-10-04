@@ -382,5 +382,6 @@
 	"growthexperiments-addimage-inspector-cta": "Pievienot šo attēlu raksta sākumam?",
 	"growthexperiments-addimage-inspector-yes-button": "Jā",
 	"growthexperiments-addimage-inspector-no-button": "Nē",
-	"growthexperiments-addimage-inspector-skip-button": "Izlaist"
+	"growthexperiments-addimage-inspector-skip-button": "Izlaist",
+	"growthexperiments-addimage-viewer-close-button": "Aizvērt"
 }

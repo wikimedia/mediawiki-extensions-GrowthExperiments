@@ -17,6 +17,7 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Última atualização por [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Última atualização pelo usuário desconhecido $1.",
 	"growthexperiments-edit-config-pretext": "Esta página permite que você edite a configuração de recursos da equipe [[:mw:Special:MyLanguage/Growth|Growth]]. Esse recurso editará $1 em seu nome. Você pode ver suas alterações no histórico dessa página.",
+	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|Você}} também pode exibir um banner na página inicial do novato, para incluir anúncios sobre eventos importantes para os novatos. Se {{GENDER:|você}} quer fazer isso, {{GENDER:|você}} precisa adicionar isso para [[$1]] manualmente. Qualquer conteúdo adicionado será exibido em um banner amarelo na parte superior da [[Special:Homepage|página inicial]].",
 	"growthexperiments-edit-config-pretext-unprivileged": "Este formulário permite que os usuários privilegiados editem a configuração de recursos da equipe de [[:mw:Special:MyLanguage/Growth|crescimento]].",
 	"growthexperiments-edit-config-feedback-headline": "Você tem idéias ou perguntas sobre este formulário?",
 	"growthexperiments-edit-config-feedback-cta": "Dê sua opinião!",
@@ -70,5 +71,10 @@
 	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Referências: predefinições para encontrar artigos que precisam de mais referências.",
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Página de destino para aprender mais sobre como adicionar referências.",
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Atualize: predefinições para encontrar artigos que precisam ser atualizados com as informações atuais.",
-	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Página de destino para aprender mais sobre como atualizar artigos."
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Página de destino para aprender mais sobre como atualizar artigos.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Página de destino para aprender mais sobre o tipo de tarefa de recomendação de link.",
+	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Página de destino para aprender mais sobre o tipo de tarefa de recomendação de imagem.",
+	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Este tipo de tarefa está associado a sugestões de máquina e não usa modelos para gerar um conjunto de tarefas.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Os artigos que contêm predefinições definidas aqui não serão mostradas aos usuários como tarefas para este tipo de tarefa.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Os artigos que contêm categorias definidas aqui não serão mostrados aos usuários como tarefas para este tipo de tarefa."
 }
