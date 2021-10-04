@@ -107,7 +107,7 @@ module.exports = ( function () {
 		if ( messages.learnMoreLinkText && messages.learnMoreLinkUrl ) {
 			$content.append( $( '<a>' ).text( messages.learnMoreLinkText ).attr( {
 				href: messages.learnMoreLinkUrl,
-				class: 'addlink-onboarding-content-link',
+				class: 'addlink-onboarding-content-link onboarding-content-link',
 				target: '_blank'
 			} ) );
 		}

@@ -967,7 +967,7 @@
 		"ext.growthExperiments.StructuredTask.PreEdit": {
 			"packageFiles": [
 				"ext.growthExperiments.StructuredTask.PreEdit/index.js",
-				"ext.growthExperiments.StructuredTask.PreEdit/addlink/AddLinkOnboardingDialog.js",
+				"ext.growthExperiments.StructuredTask.PreEdit/StructuredTaskOnboardingDialog.js",
 				"ext.growthExperiments.StructuredTask.PreEdit/addlink/AddLinkOnboardingContent.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
@@ -985,7 +985,7 @@
 				}
 			],
 			"styles": [
-				"ext.growthExperiments.StructuredTask.PreEdit/addlink/AddLinkOnboardingDialog.less",
+				"ext.growthExperiments.StructuredTask.PreEdit/StructuredTaskOnboardingDialog.less",
 				"ext.growthExperiments.StructuredTask.PreEdit/addlink/AddLinkOnboardingContent.less",
 				"ui-components/MultiPaneDialog.less"
 			],

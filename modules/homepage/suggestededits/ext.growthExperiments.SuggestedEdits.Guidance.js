@@ -22,7 +22,7 @@
 	if ( StructuredTaskPreEdit.shouldInitializeStructuredTask() ) {
 		StructuredTaskPreEdit.checkTaskData().then( function () {
 			if ( OO.ui.isMobile() ) {
-				StructuredTaskPreEdit.showAddLinkOnboardingIfEligible();
+				StructuredTaskPreEdit.showOnboardingIfEligible();
 				// If we're on mobile and can add link recommendations, then rewrite the main
 				// edit link on read mode to open "section=all", and hide section edit buttons.
 				// The AddLink plugin only works when section=all is used.

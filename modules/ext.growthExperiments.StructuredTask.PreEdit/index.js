@@ -9,7 +9,7 @@ module.exports = ( function () {
 		dialogName,
 		logger,
 		shouldShowOnboarding,
-		AddLinkOnboardingDialog,
+		StructuredTaskOnboardingDialog,
 		LinkSuggestionInteractionLogger,
 		ImageSuggestionInteractionLogger,
 		windows = {},
@@ -33,7 +33,7 @@ module.exports = ( function () {
 	 * If the user has completed onboarding, fire an event so that actions
 	 * that need to happen after onboarding can be invoked.
 	 */
-	function showAddLinkOnboardingIfEligible() {
+	function showOnboardingIfEligible() {
 		if ( shouldShowOnboarding && suggestedEditSession.onboardingNeedsToBeShown ) {
 			showDialogForSession();
 		} else {
@@ -42,29 +42,33 @@ module.exports = ( function () {
 	}
 
 	/**
-	 * Attach the window manager and set up dialogs and hooks for showing add link onboarding
+	 * Attach the window manager and set up dialogs and hooks for showing onboarding for the task
 	 * if it needs to be shown
+	 *
+	 * @param {Object} config
+	 * @param {OO.ui.PanelLayout[]} config.panels Onboarding panels to show
+	 * @param {string} [config.prefName] Onboarding preference name
 	 */
-	function setupAddLinkOnboarding() {
+	function setupOnboarding( config ) {
 		// In case onboarding is invoked from a different module (add link on desktop)
 		mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).add(
-			showAddLinkOnboardingIfEligible
+			showOnboardingIfEligible
 		);
 
 		if ( !shouldShowOnboarding ) {
 			return;
 		}
 		// Only append window manager & construct dialog if onboarding should be shown
-		AddLinkOnboardingDialog = require( './addlink/AddLinkOnboardingDialog.js' );
+		StructuredTaskOnboardingDialog = require( './StructuredTaskOnboardingDialog.js' );
 		windowManager = new OO.ui.WindowManager( { modal: true } );
 		$( document.body ).append( windowManager.$element );
 
-		windows[ dialogName ] = new AddLinkOnboardingDialog(
+		windows[ dialogName ] = new StructuredTaskOnboardingDialog(
 			{
 				hasSlideTransition: true,
 				logger: logger
 			},
-			{ prefName: addLinkOnboardingPrefName }
+			config
 		);
 		windowManager.addWindows( windows );
 	}
@@ -169,7 +173,12 @@ module.exports = ( function () {
 			is_mobile: OO.ui.isMobile()
 		} );
 		shouldShowOnboarding = !mw.user.options.get( addLinkOnboardingPrefName );
-		setupAddLinkOnboarding();
+		setupOnboarding( {
+			prefName: addLinkOnboardingPrefName,
+			panels: require( './addlink/AddLinkOnboardingContent.js' ).getPanels( {
+				includeImage: true
+			} )
+		} );
 	} else if ( isAddImage ) {
 		ImageSuggestionInteractionLogger = require(
 			'../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js'
@@ -181,7 +190,7 @@ module.exports = ( function () {
 	}
 
 	return {
-		showAddLinkOnboardingIfEligible: showAddLinkOnboardingIfEligible,
+		showOnboardingIfEligible: showOnboardingIfEligible,
 		showErrorDialogOnFailure: showErrorDialogOnFailure,
 		updateEditLinkSection: updateEditLinkSection,
 		loadEditModule: loadEditModule,
