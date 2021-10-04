@@ -813,6 +813,7 @@
 				"ext.growthExperiments.StructuredTask/addimage/AddImageArticleTarget.js",
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageToolbarDialog.js",
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageRejectionDialog.js",
+				"ext.growthExperiments.StructuredTask/addimage/AddImageSaveDialog.js",
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageViewer.js",
 				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
 				"utils/ext.growthExperiments.Utils.js",
@@ -920,7 +921,8 @@
 				"ext.growthExperiments.StructuredTask.desktop/addlink/AddLinkDesktopArticleTarget.js",
 				"ext.growthExperiments.StructuredTask.desktop/addlink/AddLinkDesktopSaveDialog.js",
 				"ext.growthExperiments.StructuredTask.desktop/addlink/RecommendedLinkToolbarDialogDesktop.js",
-				"ext.growthExperiments.StructuredTask.desktop/addimage/AddImageDesktopArticleTarget.js"
+				"ext.growthExperiments.StructuredTask.desktop/addimage/AddImageDesktopArticleTarget.js",
+				"ext.growthExperiments.StructuredTask.desktop/addimage/AddImageDesktopSaveDialog.js"
 			],
 			"dependencies": [
 				"ext.growthExperiments.StructuredTask",
@@ -944,6 +946,7 @@
 				"ext.growthExperiments.StructuredTask.mobile/addlink/AddLinkMobileSaveDialog.js",
 				"ext.growthExperiments.StructuredTask.mobile/addlink/RecommendedLinkToolbarDialogMobile.js",
 				"ext.growthExperiments.StructuredTask.mobile/addimage/AddImageMobileArticleTarget.js",
+				"ext.growthExperiments.StructuredTask.mobile/addimage/AddImageMobileSaveDialog.js",
 				"utils/ext.growthExperiments.Utils.js",
 				"ui-components/SwipePane.js"
 			],
