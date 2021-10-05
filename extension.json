@@ -814,6 +814,7 @@
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageToolbarDialog.js",
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageRejectionDialog.js",
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageViewer.js",
+				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
 				"utils/ext.growthExperiments.Utils.js",
 				{
 					"name": "homepage/suggestededits/config.json",
@@ -967,6 +968,7 @@
 				"ext.growthExperiments.StructuredTask.PreEdit/addlink/AddLinkOnboardingContent.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
+				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
 				"homepage/suggestededits/TaskTypesAbFilter.js",
 				"ui-components/MultiPaneDialog.js",
 				"utils/ext.growthExperiments.Utils.js",
@@ -1185,6 +1187,7 @@
 				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
+				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
 				"homepage/suggestededits/TaskTypesAbFilter.js",
 				"utils/ext.growthExperiments.Utils.js",
 				"utils/ext.growthExperiments.IconUtils.js",
@@ -1530,6 +1533,7 @@
 			"tests/qunit/ext.growthExperiments.StructuredTask/addlink/dataprovider.json",
 			"modules/ext.growthExperiments.StructuredTask/addimage/RecommendedImageViewer.js",
 			"tests/qunit/ext.growthExperiments.StructuredTask/addimage/RecommendedImageViewer.test.js",
+			"modules/ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
 			{
 				"name": "modules/help/data.json",
 				"file": "tests/qunit/help/configData.json"

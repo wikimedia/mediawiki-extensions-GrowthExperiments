@@ -17,7 +17,8 @@
 	/**
 	 * Set logger instance
 	 *
-	 * @param {mw.libs.ge.LinkSuggestionInteractionLogger} logger
+	 * @param {mw.libs.ge.StructuredTaskLogger} logger
+	 * @static
 	 */
 	SuggestionInteractionLogger.initialize = function ( logger ) {
 		this.loggerInstance = logger;
@@ -25,6 +26,7 @@
 
 	/**
 	 * Call log method on the logger instance (if the instance has been set)
+	 * @static
 	 */
 	SuggestionInteractionLogger.log = function () {
 		if ( this.loggerInstance ) {
