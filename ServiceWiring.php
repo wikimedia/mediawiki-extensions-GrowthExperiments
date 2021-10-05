@@ -322,6 +322,7 @@ return [
 			$geServices->getMentorStore(),
 			$services->getChangeTagDefStore(),
 			$services->getActorMigration(),
+			$services->getUserIdentityLookup(),
 			$services->getDBLoadBalancer()->getConnection( DB_REPLICA, 'vslow' )
 		);
 	},
