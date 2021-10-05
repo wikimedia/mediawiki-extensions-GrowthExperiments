@@ -799,10 +799,18 @@
 			suggestedEditsModule.showCard( new EditCardWidget( {} ) );
 		}
 		suggestedEditsModule.updateControls();
+		// Track the TTI on client-side.
 		mw.track(
 			'timing.growthExperiments.specialHomepage.modules.suggestedEditsTimeToInteractive.' +
 			( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
 			mw.now() - initTime
+		);
+		// Track the server side render start time (first line in SpecialHomepage#execute()) to
+		// TTI on client-side.
+		mw.track(
+			'timing.growthExperiments.specialHomepage.modules.suggestedEditsTimeToInteractive.serverSideStartInclusive.' +
+			( OO.ui.isMobile() ? 'mobile' : 'desktop' ),
+			mw.now() - mw.config.get( 'GEHomepageStartTime' )
 		);
 		return suggestedEditsModule.fetchTasksAndUpdateView( fetchTasksOptions ).then( function () {
 			if ( suggestedEditsModule.currentCard ) {
