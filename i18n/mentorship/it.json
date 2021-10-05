@@ -8,7 +8,7 @@
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Pannello del mentore",
-	"growthexperiments-mentor-dashboard-pt-link": "Pannello del mentore",
+	"growthexperiments-mentor-dashboard-pt-link": "pannello del mentore",
 	"growthexperiments-mentor-dashboard-disabled": "Il pannello del mentore non è abilitato su questa wiki.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Per abilitare il pannello del mentore, prima {{GENDER:|devi}} [[$1|essere un mentore]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Prima che il pannello del mentore possa essere utilizzato, la lista dei mentori deve venire configurata. Un amministratore d'interfaccia può usare [[Special:EditGrowthConfig|la pagina speciale apposita]] per questo scopo.",

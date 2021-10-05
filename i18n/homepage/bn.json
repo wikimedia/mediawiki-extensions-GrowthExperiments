@@ -382,5 +382,7 @@
 	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "জমা দিন...",
 	"growthexperiments-structuredtask-editmode-selection-label": "সম্পাদক পরিবর্তন করুন",
 	"growthexperiments-structuredtask-editmode-selection-visual": "দৃশ্যমান সম্পাদনা",
-	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "বাতিল"
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "বাতিল",
+	"growthexperiments-addimage-rejectiondialog-action-done": "সম্পন্ন",
+	"growthexperiments-addimage-viewer-close-button": "বন্ধ করুন"
 }

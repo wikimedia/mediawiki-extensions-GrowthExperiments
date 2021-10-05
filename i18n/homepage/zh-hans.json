@@ -409,5 +409,8 @@
 	"growthexperiments-addimage-inspector-show-button": "展示链接建议",
 	"growthexperiments-addimage-inspector-help-button": "获取编辑帮助",
 	"growthexperiments-addimage-inspector-details-button": "查看详情",
+	"growthexperiments-addimage-rejectiondialog-action-done": "完成",
+	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "我不了解这个主题",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "其他",
 	"growthexperiments-addimage-viewer-close-button": "关闭"
 }

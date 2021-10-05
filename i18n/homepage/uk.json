@@ -409,6 +409,7 @@
 	"growthexperiments-addimage-inspector-help-button": "Отримайте допомогу з редагуванням",
 	"growthexperiments-addimage-inspector-details-button": "Показати деталі",
 	"growthexperiments-addimage-rejectiondialog-title": "Чому ні?",
+	"growthexperiments-addimage-rejectiondialog-header": "Чому це зображення не підходить для статті?",
 	"growthexperiments-addimage-rejectiondialog-action-done": "Готово",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Інше",
 	"growthexperiments-addimage-viewer-close-button": "Закрити"
