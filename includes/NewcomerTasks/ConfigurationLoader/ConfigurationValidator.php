@@ -74,6 +74,9 @@ class ConfigurationValidator {
 	 */
 	public function validateTitle( $title ) {
 		if ( !is_string( $title ) ) {
+			if ( !settype( $title, 'string' ) ) {
+				$title = '[' . gettype( $title ) . ']';
+			}
 			return StatusValue::newFatal( 'growthexperiments-homepage-suggestededits-config-invalidtitle',
 				$title );
 		}
@@ -101,7 +104,7 @@ class ConfigurationValidator {
 	}
 
 	/**
-	 * Verify that a field exists and is an array.
+	 * Verify that a field exists and is a non-associative array.
 	 *
 	 * @param string $field Configuration field name
 	 * @param array $config Configuration
@@ -112,7 +115,7 @@ class ConfigurationValidator {
 		$status = StatusValue::newGood();
 		$status->merge( $this->validateRequiredField( $field, $config, $taskTypeId ) );
 		if ( $status->isOK() ) {
-			if ( !is_array( $config[$field] ) ) {
+			if ( !is_array( $config[$field] ) || array_values( $config[$field] ) !== $config[$field] ) {
 				$status->fatal(
 					'growthexperiments-homepage-suggestededits-config-fieldarray', $taskTypeId, $field
 				);
