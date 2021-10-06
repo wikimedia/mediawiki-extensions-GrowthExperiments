@@ -18,7 +18,7 @@ var MultiPaneDialog = require( '../ui-components/MultiPaneDialog.js' );
  */
 function StructuredTaskOnboardingDialog( dialogConfig, onboardingConfig ) {
 	dialogConfig = dialogConfig || {};
-	dialogConfig.progressMessageKey = dialogConfig.progressMessageKey || 'growthexperiments-addlink-onboarding-dialog-progress';
+	dialogConfig.progressMessageKey = dialogConfig.progressMessageKey || 'growthexperiments-structuredtask-onboarding-dialog-progress';
 	this.logger = dialogConfig.logger;
 	if ( !Array.isArray( dialogConfig.classes ) ) {
 		dialogConfig.classes = [];
@@ -36,11 +36,11 @@ OO.inheritClass( StructuredTaskOnboardingDialog, MultiPaneDialog );
 
 StructuredTaskOnboardingDialog.static.name = 'StructuredTaskOnboardingDialog';
 StructuredTaskOnboardingDialog.static.size = 'medium';
-StructuredTaskOnboardingDialog.static.title = mw.msg( 'growthexperiments-addlink-onboarding-dialog-title' );
+StructuredTaskOnboardingDialog.static.title = mw.msg( 'growthexperiments-structuredtask-onboarding-dialog-title' );
 StructuredTaskOnboardingDialog.static.actions = [
 	{
 		action: 'cancel',
-		label: mw.message( 'growthexperiments-addlink-onboarding-dialog-label-skip-all' ).text(),
+		label: mw.message( 'growthexperiments-structuredtask-onboarding-dialog-label-skip-all' ).text(),
 		framed: false,
 		flags: [ 'primary' ],
 		classes: [ 'structuredtask-onboarding-dialog-skip-button' ]
@@ -61,13 +61,13 @@ StructuredTaskOnboardingDialog.prototype.getFooterElement = function () {
 	}
 
 	this.$dismissField = new OO.ui.FieldLayout( this.checkBoxInput, {
-		label: mw.message( 'growthexperiments-addlink-onboarding-dialog-dismiss-checkbox' ).text(),
+		label: mw.message( 'growthexperiments-structuredtask-onboarding-dialog-dismiss-checkbox' ).text(),
 		align: 'inline',
 		classes: [ 'structuredtask-onboarding-dialog-footer-widget' ]
 	} ).$element;
 
 	this.$prevButton = new OO.ui.ButtonWidget( {
-		label: mw.message( 'growthexperiments-addlink-onboarding-dialog-label-previous' ).text(),
+		label: mw.message( 'growthexperiments-structuredtask-onboarding-dialog-label-previous' ).text(),
 		icon: 'previous',
 		invisibleLabel: true,
 		classes: [ 'structuredtask-onboarding-dialog-footer-widget' ]
@@ -77,7 +77,7 @@ StructuredTaskOnboardingDialog.prototype.getFooterElement = function () {
 	}.bind( this ) );
 
 	this.$nextButton = new OO.ui.ButtonWidget( {
-		label: mw.message( 'growthexperiments-addlink-onboarding-dialog-label-next' ).text(),
+		label: mw.message( 'growthexperiments-structuredtask-onboarding-dialog-label-next' ).text(),
 		icon: 'next',
 		invisibleLabel: true,
 		flags: [ 'progressive', 'primary' ],
@@ -88,7 +88,7 @@ StructuredTaskOnboardingDialog.prototype.getFooterElement = function () {
 	}.bind( this ) );
 
 	this.$getStartedButton = new OO.ui.ButtonWidget( {
-		label: mw.message( 'growthexperiments-addlink-onboarding-dialog-get-started-button' ).text(),
+		label: mw.message( 'growthexperiments-structuredtask-onboarding-dialog-get-started-button' ).text(),
 		flags: [ 'progressive', 'primary' ],
 		classes: [ 'structuredtask-onboarding-dialog-footer-widget', 'align-end' ]
 	} ).$element;
