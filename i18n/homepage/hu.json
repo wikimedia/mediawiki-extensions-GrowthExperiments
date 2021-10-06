@@ -358,7 +358,6 @@
 	"growthexperiments-addlink-summary-column-header-suggestion": "Javaslat",
 	"growthexperiments-addlink-summary-column-header-linked": "Linkelve?",
 	"growthexperiments-addlink-summary-copyrightwarning": "A változtatások közzétételével elfogadod a [https://meta.wikimedia.org/wiki/Terms_of_use/hu felhasználási feltételeket], és hozzájárulsz a közreműködésed közzétételéhez a [https://creativecommons.org/licenses/by-sa/3.0/deed.hu CC BY-SA 3.0] és a [https://www.gnu.org/licenses/fdl-1.3.html GFDL] licencek feltételei szerint.",
-	"growthexperiments-addlink-summary-submit": "Beküldés",
 	"growthexperiments-addlink-summary-summary": "Hivatkozásjavaslatok funkció: $1 {{PLURAL:$1|hivatkozás}} hozzáadva.",
 	"growthexperiments-addlink-skip-title": "Az összes javaslatot kihagytad ebben a szócikkben.",
 	"growthexperiments-addlink-skip-body": "Biztosan nem akarsz elfogadni vagy elutasítani egyetlen javaslatot sem?",
@@ -377,5 +376,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "Javaslatok elhagyása?",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Ha szerkesztőmódot {{GENDER:$1|váltasz}}, tudsz másfajta szerkesztéseket végezni, de az el nem mentett válaszaid elvesznek.",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Váltás mentés nélkül",
-	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Mégse"
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Mégse",
+	"growthexperiments-structuredtask-summary-submit": "Beküldés"
 }

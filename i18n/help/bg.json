@@ -72,6 +72,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-value": "Статията става неактуална колкото повече време минава. Случват се и нови събития. {{GENDER:|Вие}} можете да обновите текста, като добавите правилните детайли, така че {{SITENAME}} винаги да съдържа най-добрата информация.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-example-value": "Сондата <mark class=\"negative\">ще</mark> кацне на Марс <mark class=\"negative\">през 2018 година</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-text-publish": "[[$1|Научете повече за актуализирането]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-expand-text-publish": "[[$1|Научете повече за разширяването на статии]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "За изпълнението на тази задача не са необходими специални познания за статията.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "Предложените препратки са машинногенерирани и могат да бъдат неправилни.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "Предложенията може да са за думи, които нямат нужда да бъдат форматирани като препратки или може да сочат към грешна статия. {{GENDER:$1|Вие}} преценете дали са правилни или грешни.",

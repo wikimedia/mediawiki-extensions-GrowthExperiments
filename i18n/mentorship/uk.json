@@ -54,6 +54,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Статус наставника",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Активний",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Не на місці",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Оскільки ви не на місці до $1, ваші підопічні тимчасово отримають іншого наставника.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Встановити собі статус «не на місці»",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Скасувати",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Пауза",

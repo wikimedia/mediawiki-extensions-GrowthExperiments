@@ -14,7 +14,7 @@
 	"growthexperiments-edit-config-disabled": "La configurazione comunitaria è attualmente disabilitata.",
 	"growthexperiments-edit-config-title": "Modifica configurazione Growth",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Ultimo aggiornamento di [[User:$1|$1]] $2.",
-	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Ultimo aggiornamento di utente sconosciuto $1.",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Ultimo aggiornamento di un utente sconosciuto $1.",
 	"growthexperiments-edit-config-pretext": "Questa pagina ti permette modificare la configurazione delle funzioni [[:mw:Special:MyLanguage/Growth|Growth]]. Modificherai $1 con il tuo nome. Puoi vedere le tue modifiche nella cronologia di quella pagina.",
 	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|Puoi}} anche mostrare un banner sulla pagina iniziale, per includere avvisi su eventi importanti che riguardano i nuovi utenti. Se {{GENDER:|desideri}} farlo, {{GENDER:|devi}} aggiungerlo a [[$1]] manualmente. Ogni contenuto aggiunto sarà mostrato in un banner giallo in cima alla [[Special:Homepage|pagina iniziale]].",
 	"growthexperiments-edit-config-pretext-unprivileged": "Questo modulo permette agli utenti con privilegi elevati di modificare la configurazione delle funzionalità [[:mw:Special:MyLanguage/Growth|Growth]].",
@@ -70,5 +70,10 @@
 	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Fonti: template per trovare  voci che hanno bisogno di più fonti.",
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Pagina di destinazione per sapere di più sull'aggiungere fonti.",
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Aggiornare: template per trovare voci che hanno bisogno di venire aggiornate con informazioni attuali.",
-	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Pagina di destinazione per sapere di più sull'aggiornare voci."
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Pagina di destinazione per sapere di più sull'aggiornare voci.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Pagina di destinazione per saperne di più sulle tipologie di attività sui collegamenti consigliati.",
+	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Pagina di destinazione per saperne di più sulle tipologie di attività sulle immagini consigliate.",
+	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Questo tipo di attività è associato con dei suggerimenti automatici, e non usa template per generare una serie di attività.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Le voci contenenti i template qui definiti non saranno mostrate agli utenti come attività per questo tipo di attività.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Le voci contenenti le categorie qui definiti non saranno mostrate agli utenti come attività per questo tipo di attività."
 }

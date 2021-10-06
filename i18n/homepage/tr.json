@@ -4,6 +4,7 @@
 			"Aferinamca",
 			"Agaafd",
 			"BaRaN6161 TURK",
+			"Erdemkose",
 			"Grkn gll",
 			"Hedda",
 			"Jelican9",
@@ -368,7 +369,6 @@
 	"growthexperiments-addlink-summary-column-header-suggestion": "Öneri",
 	"growthexperiments-addlink-summary-column-header-linked": "Bağlı mı?",
 	"growthexperiments-addlink-summary-copyrightwarning": "Değişiklikleri kaydederek, [https://foundation.wikimedia.org/wiki/Terms_of_Use Kullanım Şartlarını] kabul {{GENDER:|eder}} ve katkınızı [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] ve  [https://www.gnu.org/licenses/fdl-1.3.html GFDL] lisanslarıyla yayınlamayı kabul edersiniz.",
-	"growthexperiments-addlink-summary-submit": "Gönder",
 	"growthexperiments-addlink-summary-summary": "Bağlantı önerileri özelliği: $1 {{PLURAL:$1|bağlantı}} eklendi.",
 	"growthexperiments-addlink-skip-title": "Bu sayfa için tüm önerileri {{GENDER:|atladınız}}.",
 	"growthexperiments-addlink-skip-body": "Herhangi bir öneriyi kabul etmek ya da reddetmek {{GENDER:|istemediğinizden emin misiniz?}}",
@@ -390,9 +390,10 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "Öneri bırakın?",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Göndermeden değiştir",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "İptal",
+	"growthexperiments-structuredtask-summary-submit": "Gönder",
 	"growthexperiments-addlink-suggestions-outdated": "{{GENDER:|Siz}} incelerken bu maddeyi başka bir kullanıcı düzenledi ve bu yüzden değişiklikleriniz kaydedilemedi.",
 	"growthexperiments-addimage-inspector-yes-button": "Evet",
 	"growthexperiments-addimage-inspector-no-button": "Hayır",
 	"growthexperiments-addimage-inspector-skip-button": "Atla",
-	"growthexperiments-addimage-inspector-show-button": "Resim önerisi gör"
+	"growthexperiments-addimage-inspector-show-button": "Resim önerisi göster"
 }

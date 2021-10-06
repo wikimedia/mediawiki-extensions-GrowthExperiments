@@ -362,7 +362,6 @@
 	"growthexperiments-addlink-summary-column-header-suggestion": "Förslag",
 	"growthexperiments-addlink-summary-column-header-linked": "Länkad?",
 	"growthexperiments-addlink-summary-copyrightwarning": "När du sparar ändringar godkänner du [https://foundation.wikimedia.org/wiki/Terms_of_Use användarvillkoren] och godkänner att släppa dina bidrag under licenserna [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] och [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
-	"growthexperiments-addlink-summary-submit": "Skicka in",
 	"growthexperiments-addlink-summary-summary": "Länkförslagsfunktion: la till $1 {{PLURAL:$1|länk|länkar}}.",
 	"growthexperiments-addlink-skip-title": "{{GENDER:|Du har}} hoppat över alla förslag för den här artikeln.",
 	"growthexperiments-addlink-skip-body": "Vill du verkligen inte godkänna eller avvisa några förslag?",
@@ -383,5 +382,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "Lämna förslag?",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Att byta läge låter dig göra alla andra sorters redigeringar. Granska färdigt för att spara dina framsteg.{{GENDER:$1|}}",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Byt utan att spara",
-	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Avbryt"
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Avbryt",
+	"growthexperiments-structuredtask-summary-submit": "Skicka in"
 }

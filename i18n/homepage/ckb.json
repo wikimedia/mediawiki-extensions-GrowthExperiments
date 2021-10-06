@@ -289,7 +289,6 @@
 	"growthexperiments-addlink-summary-column-header-suggestion": "پێشنیار",
 	"growthexperiments-addlink-summary-column-header-linked": "بەسترا؟",
 	"growthexperiments-addlink-summary-copyrightwarning": "بە پاشەکەوتکردنی گۆڕانکارییەکان، {{GENDER:|تۆ}} ڕازیت بە [https://foundation.wikimedia.org/wiki/Terms_of_Use مەرجەکانی بەکارھێنان] و ڕازیت بەشدارییەکەت بڵاوبکرێتەوە لەژێر مۆڵەتەکانی «[https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0]» و «[https://www.gnu.org/licenses/fdl-1.3.html GFDL]».",
-	"growthexperiments-addlink-summary-submit": "ناردن",
 	"growthexperiments-addlink-summary-summary": "تایبەتمەندی پێشنیارکردنی بەستەردان: {{PLURAL:$1|link|بەستەرەکان}} زۆرکرا.",
 	"growthexperiments-addlink-skip-title": "{{GENDER:|تۆ}} ھەموو پێشنیارەکانت بۆ ئەم وتارە پەڕاند.",
 	"growthexperiments-addlink-skip-body": "ئایا {{GENDER:|تۆ}} دڵنیاییت کە ناتەوێت هیچ یەکێک لەم پێشنیارانە قبووڵ بکەیت یان ڕەتی بکەیتەوە؟",
@@ -311,5 +310,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "پێشنیارەکان بەجێ دەھێڵیت؟",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "گۆڕین بەبێ ناردن",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "ھەڵوەشاندنەوە",
+	"growthexperiments-structuredtask-summary-submit": "ناردن",
 	"growthexperiments-addlink-suggestions-outdated": "بەکارهێنەرێکی دەستکاری ئەم بابەتەی دەکرد کاتێک {{GENDER:|تۆ}} خەریکی پێداچوونەوە بوویت، هەر بۆیە {{GENDER:|دەستکارییەکانت}} پاشەکەوت نەکران."
 }
