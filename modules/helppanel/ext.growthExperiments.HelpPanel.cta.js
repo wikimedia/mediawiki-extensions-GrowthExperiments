@@ -284,6 +284,11 @@
 				logger.log( 'peek-tap' );
 				mobilePeek.hide();
 				openHelpPanel( suggestedEditSession.helpPanelCurrentPanel || 'suggested-edits' );
+				// When the mobile peek is shown, the help panel is considered "opened", so the
+				// auto-advance behavior is treated as if the help panel started out opened.
+				helpPanelProcessDialog.setGuidanceAutoAdvance(
+					helpPanelProcessDialog.shouldAutoAdvanceUponInit()
+				);
 			} );
 			document.body.appendChild( mobilePeek.$el[ 0 ] );
 			helpCtaButton.toggle( false );
