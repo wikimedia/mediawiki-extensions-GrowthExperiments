@@ -150,8 +150,8 @@ class Util {
 			LoggerFactory::getInstance( 'GrowthExperiments' )
 				->log(
 					$level,
-					$error->getMessage(),
-					$extraData + [ 'exception' => $error ]
+					$error->getNormalizedMessage(),
+					$extraData + [ 'exception' => $error ] + $error->getMessageContext()
 				);
 		} else {
 			// Normal exception handling

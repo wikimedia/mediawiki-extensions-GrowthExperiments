@@ -32,7 +32,8 @@ class StaticMentorManager extends MentorManager {
 	public function getMentorForUser( UserIdentity $user ): Mentor {
 		$mentor = $this->getMentorForUserSafe( $user );
 		if ( !$mentor ) {
-			throw new WikiConfigException( __METHOD__ . ': No mentor for ' . $user->getName() );
+			throw new WikiConfigException( __METHOD__ . ': No mentor for {user}',
+				[ 'user' => $user->getName() ] );
 		}
 		return $mentor;
 	}

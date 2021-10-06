@@ -254,7 +254,8 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$result = $this->userIdentityLookup->getUserIdentityByName( $selectedMentorName );
 		if ( $result === null ) {
 			throw new WikiConfigException(
-				'Mentorship: Mentor ' . $selectedMentorName . ' does not have a valid username'
+				'Mentorship: Mentor {user} does not have a valid username',
+				[ 'user' => $selectedMentorName ]
 			);
 		}
 
@@ -272,7 +273,8 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$title = $this->titleFactory->newFromText( $this->mentorsPageName );
 		if ( !$title ) {
 			// TitleFactory failed to construct a title object -- the configured list must be invalid
-			throw new WikiConfigException( 'wgGEHomepageMentorsList is invalid: ' . $this->mentorsPageName );
+			throw new WikiConfigException( 'wgGEHomepageMentorsList is invalid: {page}',
+				[ 'page' => $this->mentorsPageName ] );
 		}
 		return $title;
 	}
@@ -291,8 +293,8 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		if ( !$title->exists() ) {
 			// page does not exist, throw WikiConfigException
 			throw new WikiConfigException(
-				'Page defined by wgGEHomepageMentorsList does not exist: ' .
-				$this->mentorsPageName
+				'Page defined by wgGEHomepageMentorsList does not exist: {page}',
+				[ 'page' => $this->mentorsPageName ]
 			);
 		}
 
@@ -313,7 +315,8 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 		if ( !$title || !$title->exists() ) {
 			throw new WikiConfigException(
-				'wgGEHomepageManualAssignmentMentorsList is invalid: ' . $this->manuallyAssignedMentorsPageName
+				'wgGEHomepageManualAssignmentMentorsList is invalid: {page}',
+				[ 'page' => $this->manuallyAssignedMentorsPageName ]
 			);
 		}
 
