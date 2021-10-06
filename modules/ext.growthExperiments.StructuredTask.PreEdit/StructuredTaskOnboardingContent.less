@@ -2,29 +2,6 @@
 @import '../homepage/ext.growthExperiments.variables.less';
 @import '../homepage/ext.growthExperiments.mixins.less';
 
-.structuredtask-onboarding-dialog {
-
-	// Additional specificity to override OO UI ActionWidget button style
-	.oo-ui-actionWidget.structuredtask-onboarding-dialog-skip-button > .oo-ui-buttonElement-button {
-		border: unset;
-	}
-
-	&-footer {
-		display: flex;
-		align-items: center;
-	}
-
-	&-footer-widget {
-		flex-grow: 1;
-
-		&.align-end {
-			text-align: right;
-			margin-right: 0;
-		}
-	}
-}
-
-.addlink-onboarding-content,
 .structuredtask-onboarding-content {
 	@mobileFontSize: 16px;
 
@@ -70,19 +47,12 @@
 	&-desktop {
 		@desktopFontSize: 14px;
 
-		.addlink-onboarding-content-title,
-		.addimage-onboarding-content-title {
+		.structuredtask-onboarding-content-title {
 			.rel-font-size-and-line-height( @parentFontSize: @desktopFontSize, @targetFontSize: 16px, @targetLineHeight: 22.8px );
 		}
 
-		.addlink-onboarding-content-body,
-		.addimage-onboarding-content-body {
+		.structuredtask-onboarding-content-body {
 			.rel-line-height( @parentFontSize: @desktopFontSize, @targetLineHeight: 20px );
-		}
-
-		.addlink-onboarding-content-example-label,
-		.addimage-onboarding-content-example-label {
-			.rel-font-size-and-line-height( @parentFontSize: @desktopFontSize, @targetFontSize: 13px, @targetLineHeight: 19px );
 		}
 	}
 }

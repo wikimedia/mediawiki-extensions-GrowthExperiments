@@ -2,13 +2,14 @@ module.exports = ( function () {
 	'use strict';
 
 	var addLinkOnboardingPrefName = 'growthexperiments-addlink-onboarding',
+		addImageOnboardingPrefName = 'growthexperiments-addimage-onboarding',
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		taskType = suggestedEditSession.taskType,
 		isAddLink = taskType === 'link-recommendation',
 		isAddImage = taskType === 'image-recommendation',
 		dialogName,
 		logger,
-		shouldShowOnboarding,
+		shouldShowOnboarding = !mw.user.options.get( addLinkOnboardingPrefName ),
 		StructuredTaskOnboardingDialog,
 		LinkSuggestionInteractionLogger,
 		ImageSuggestionInteractionLogger,
@@ -186,6 +187,14 @@ module.exports = ( function () {
 		logger = new ImageSuggestionInteractionLogger( {
 			// eslint-disable-next-line camelcase
 			is_mobile: OO.ui.isMobile()
+		} );
+		dialogName = 'addImageOnboardingDialog';
+		shouldShowOnboarding = !mw.user.options.get( addImageOnboardingPrefName );
+		setupOnboarding( {
+			prefName: addImageOnboardingPrefName,
+			panels: require( './addimage/AddImageOnboardingContent.js' ).getPanels( {
+				includeImage: true
+			} )
 		} );
 	}
 

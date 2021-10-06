@@ -81,6 +81,11 @@ class SuggestedEdits extends BaseModule {
 	public const ADD_LINK_ONBOARDING_PREF = 'growthexperiments-addlink-onboarding';
 
 	/**
+	 * Used to keep track of the whether the user has opted out of seeing Add an Image onboarding
+	 */
+	public const ADD_IMAGE_ONBOARDING_PREF = 'growthexperiments-addimage-onboarding';
+
+	/**
 	 * Change tag used to track edits made via the suggested edits interface. Some edits get a
 	 * more specific tag instead.
 	 */
