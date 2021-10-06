@@ -25,10 +25,12 @@ interface RecommendationSubmissionHandler {
 	 * @param int $baseRevId Revision that the recommendation was for.
 	 * @param array $data Tasktype-specific data. Typically, this is the data returned via
 	 *   the visualeditoredit API's plugin mechanism.
-	 * @return array|null Null on success, a message descriptor array on failure.
+	 * @return StatusValue Success status. A good status is required to pass. When there are
+	 *   errors, the OK flag determines whether those should be logged as production errors.
+	 *   The StatusValue should always contain a single error.
 	 */
 	public function validate( ProperPageIdentity $page, UserIdentity $user, int $baseRevId,
-		array $data ): ?array;
+		array $data ): StatusValue;
 
 	/**
 	 * Handle a recommendation submission. This is called after validation was successful
@@ -42,7 +44,9 @@ interface RecommendationSubmissionHandler {
 	 *   or partially accepted).
 	 * @param array $data Tasktype-specific data. Typically, this is the data returned via
 	 *   the visualeditoredit API's plugin mechanism.
-	 * @return StatusValue A success status. On success, it holds an array with the following fields:
+	 * @return StatusValue A success status. When it contains errors, its OK flag determines
+	 *   whether those should be logged as production errors. When it does not contain errors,
+	 *   it holds an array with the following fields:
 	 *   - logId (int, optional): ID of the log entry that was created.
 	 */
 	public function handle( ProperPageIdentity $page, UserIdentity $user, int $baseRevId, ?int $editRevId,

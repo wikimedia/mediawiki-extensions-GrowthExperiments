@@ -78,14 +78,16 @@ class VisualEditorHooks implements
 			// with by VisualEditor.
 			return;
 		}
-		$errorMessage = $taskTypeHandler->getSubmissionHandler()->validate(
+		$status = $taskTypeHandler->getSubmissionHandler()->validate(
 			$title->toPageIdentity(),
 			$user,
 			$params['oldid'],
 			$data
 		);
-		if ( $errorMessage ) {
-			$apiResponse['message'] = $errorMessage;
+		if ( !$status->isGood() ) {
+			$message = Status::wrap( $status )->getMessage();
+			$apiResponse['message'] = array_merge( [ $message->getKey() ], $message->getParams() );
+			Util::logStatus( $status );
 			return false;
 		}
 	}
@@ -133,16 +135,13 @@ class VisualEditorHooks implements
 			$saveResult['edit']['newrevid'] ?? null,
 			$data
 		);
-		if ( $status->isOK() ) {
+		if ( $status->isGood() ) {
 			$apiResponse['gelogid'] = $status->getValue()['logId'] ?? null;
-		}
-		// FIXME expose error formatter to hook so this can be handled better
-		list( $errorStatus, $warningStatus ) = $status->splitByErrorType();
-		if ( !$errorStatus->isGood() ) {
-			$apiResponse['errors'][] = Status::wrap( $errorStatus )->getWikiText();
-		}
-		if ( !$warningStatus->isGood() ) {
-			$apiResponse['warnings'][] = Status::wrap( $warningStatus )->getWikiText();
+		} else {
+			// FIXME expose error formatter to hook so this can be handled better
+			$errorMessage = Status::wrap( $status )->getWikiText();
+			$apiResponse['errors'][] = $errorMessage;
+			Util::logStatus( $status );
 		}
 
 		DeferredUpdates::addCallableUpdate( function () use ( $user, $page ) {

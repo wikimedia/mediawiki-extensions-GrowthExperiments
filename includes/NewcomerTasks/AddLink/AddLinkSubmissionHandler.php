@@ -56,7 +56,7 @@ class AddLinkSubmissionHandler implements RecommendationSubmissionHandler {
 	/** @inheritDoc */
 	public function validate(
 		ProperPageIdentity $page, UserIdentity $user, int $baseRevId, array $data
-	): ?array {
+	): StatusValue {
 		$title = $this->titleFactory->castFromPageIdentity( $page );
 		if ( !$title ) {
 			// Not really possible but makes phan happy.
@@ -67,9 +67,10 @@ class AddLinkSubmissionHandler implements RecommendationSubmissionHandler {
 			// There's no link recommendation data stored for this page, so it must have been
 			// removed from the database during the time the user had the UI open. Don't allow
 			// the save to continue.
-			return [ 'growthexperiments-addlink-notinstore', $title->getPrefixedText() ];
+			return StatusValue::newGood()->error( 'growthexperiments-addlink-notinstore',
+				$title->getPrefixedText() );
 		}
-		return null;
+		return StatusValue::newGood();
 	}
 
 	/**

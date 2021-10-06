@@ -61,7 +61,9 @@ class LinkSubmissionRecorder {
 		if ( $this->linkRecommendationStore->hasSubmission( $linkRecommendation,
 			IDBAccessObject::READ_LOCKING )
 		) {
-			return StatusValue::newFatal( 'growthexperiments-addlink-duplicatesubmission',
+			// There's already a review for this revision. Possibly a race condition where two
+			// users reviewed the same task at the same time.
+			return StatusValue::newGood()->error( 'growthexperiments-addlink-duplicatesubmission',
 				$linkRecommendation->getRevisionId() );
 		}
 		// @phan-suppress-next-line SecurityCheck-SQLInjection T290563
