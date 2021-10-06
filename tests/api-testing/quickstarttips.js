@@ -6,7 +6,7 @@ const { assert, REST } = require( 'api-testing' );
 
 describe( 'GET quickstarttips', () => {
 	const client = new REST( 'rest.php/growthexperiments/v0/quickstarttips' );
-	const taskTypeIds = [ 'copyedit', 'update', 'links', 'expand', 'references' ];
+	const taskTypeIds = [ 'copyedit', 'update', 'expand', 'references' ];
 	const skins = [ 'minerva', 'vector' ];
 	const editors = [ 'visualeditor', 'wikitext', 'wikitext-2017' ];
 
