@@ -120,6 +120,15 @@ StructuredTaskOnboardingDialog.prototype.getActionProcess = function ( action ) 
 };
 
 /** @inheritdoc */
+StructuredTaskOnboardingDialog.prototype.getTeardownProcess = function ( data ) {
+	return StructuredTaskOnboardingDialog.super.prototype.getTeardownProcess.call( this, data )
+		.next( function () {
+			// The window is now closed.
+			mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).fire();
+		}, this );
+};
+
+/** @inheritdoc */
 StructuredTaskOnboardingDialog.prototype.updateViewState = function () {
 	var $skipButton = this.$head.find( '.structuredtask-onboarding-dialog-skip-button' );
 
@@ -166,7 +175,6 @@ StructuredTaskOnboardingDialog.prototype.showPanelIndex = function ( index ) {
 StructuredTaskOnboardingDialog.prototype.closeDialog = function ( action ) {
 	this.logger.log( action, this.getLogActionData(), this.getLogMetadata() );
 	this.close();
-	mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).fire();
 };
 
 /**
