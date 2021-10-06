@@ -138,26 +138,12 @@ class Util {
 	 * @param Throwable $error Error object from the catch block
 	 * @param array $extraData
 	 * @param string $level Log-level on which WikiConfigException should be logged
-	 * @param StatusValue|null $statusValue If the StatusValue message key is in
-	 *  self::STATSD_INCREMENTABLE_ERROR_MESSAGES, then a statsd counter is incremented for the key/value in the
-	 *  relevant entry in self::STATSD_INCREMENTABLE_ERROR_MESSAGES.
 	 */
 	public static function logError(
 		Throwable $error,
 		array $extraData = [],
-		string $level = LogLevel::ERROR,
-		?StatusValue $statusValue = null
+		string $level = LogLevel::ERROR
 	) {
-		if ( $statusValue ) {
-			$statsdDataFactory = MediaWikiServices::getInstance()->getPerDbNameStatsdDataFactory();
-			foreach ( self::STATSD_INCREMENTABLE_ERROR_MESSAGES as $type => $message ) {
-				if ( $statusValue->hasMessage( $message ) ) {
-					$statsdDataFactory->increment( "GrowthExperiments.$type.$message" );
-					break;
-				}
-			}
-		}
-
 		// Special-handling for WikiConfigException
 		if ( $error instanceof WikiConfigException ) {
 			LoggerFactory::getInstance( 'GrowthExperiments' )
@@ -170,6 +156,41 @@ class Util {
 			// Normal exception handling
 			MWExceptionHandler::logException( $error, MWExceptionHandler::CAUGHT_BY_OTHER, $extraData );
 		}
+	}
+
+	/**
+	 * Log a StatusValue object, either as a production error or in the GrowthExperiments channel,
+	 * depending on its OK flag. Certain errors are also reported to statsd.
+	 * @param StatusValue $status
+	 * @see ::STATSD_INCREMENTABLE_ERROR_MESSAGES
+	 */
+	public static function logStatus( StatusValue $status ) {
+		$statsdDataFactory = MediaWikiServices::getInstance()->getPerDbNameStatsdDataFactory();
+		foreach ( self::STATSD_INCREMENTABLE_ERROR_MESSAGES as $type => $message ) {
+			if ( $status->hasMessage( $message ) ) {
+				$statsdDataFactory->increment( "GrowthExperiments.$type.$message" );
+				break;
+			}
+		}
+
+		$errorMessage = Status::wrap( $status )->getWikiText( false, false, 'en' );
+		if ( $status->isOK() ) {
+			LoggerFactory::getInstance( 'GrowthExperiments' )->error( $errorMessage );
+		} else {
+			MWExceptionHandler::logException( new Exception( $errorMessage ),
+				MWExceptionHandler::CAUGHT_BY_OTHER );
+		}
+	}
+
+	/**
+	 * Log a string in the GrowthExperiments channel.
+	 * @param string $message
+	 * @param array $context
+	 */
+	public static function logMessage( string $message, array $context = [] ) {
+		LoggerFactory::getInstance( 'GrowthExperiments' )->error( $message, $context + [
+			'exception' => new Exception( $message ),
+		] );
 	}
 
 	/**
