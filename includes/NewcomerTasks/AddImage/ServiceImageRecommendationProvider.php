@@ -78,7 +78,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 			// they are merely there to support debugging. So we keep them English-only to
 			// to reduce the translator burden.
 			return StatusValue::newFatal( 'rawmessage',
-				'No recommendation found for page: ' . $titleText );
+				'Recommendation could not be loaded for non-existing page: ' . $titleText );
 		}
 		if ( !$this->url ) {
 			return StatusValue::newFatal( 'rawmessage',
