@@ -12,10 +12,12 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use Maintenance;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Page\PageRecord;
+use MediaWiki\Page\PageStore;
 use Status;
 use StatusValue;
 use Title;
-use TitleFactory;
+use TitleFormatter;
 
 $path = dirname( dirname( dirname( __DIR__ ) ) );
 
@@ -47,8 +49,11 @@ class FixLinkRecommendationData extends Maintenance {
 	/** @var LinkBatchFactory */
 	private $linkBatchFactory;
 
-	/** @var TitleFactory */
-	private $titleFactory;
+	/** @var PageStore */
+	private $pageStore;
+
+	/** @var TitleFormatter */
+	private $titleFormatter;
 
 	/** @var int|null */
 	private $randomSeed;
@@ -108,7 +113,8 @@ class FixLinkRecommendationData extends Maintenance {
 		$this->linkRecommendationStore = $growthServices->getLinkRecommendationStore();
 		$this->cirrusSearch = new CirrusSearch();
 		$this->linkBatchFactory = $services->getLinkBatchFactory();
-		$this->titleFactory = $services->getTitleFactory();
+		$this->pageStore = $services->getPageStore();
+		$this->titleFormatter = $services->getTitleFormatter();
 
 		$taskTypes = $this->configurationLoader->getTaskTypes();
 		$linkRecommendationTaskType = $taskTypes[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
@@ -139,11 +145,14 @@ class FixLinkRecommendationData extends Maintenance {
 				$pageIdsToCheck = $this->titlesToPageIds( $titles );
 				$pageIdsToFix = array_diff( $pageIdsToCheck,
 					$this->linkRecommendationStore->filterPageIds( $pageIdsToCheck ) );
-				$titlesToFix = $this->pageIdsToTitles( $pageIdsToFix );
-				foreach ( $titlesToFix as $title ) {
-					$this->verboseOutput( "    $fixing " . $title->getPrefixedText() . "\n" );
+				$pagesToFix = $this->pageIdsToPageRecords( $pageIdsToFix );
+
+				foreach ( $pagesToFix as $pageRecord ) {
+					$this->verboseOutput(
+						"    $fixing " . $this->titleFormatter->getPrefixedText( $pageRecord ) . "\n"
+					);
 					if ( !$this->hasOption( 'dry-run' ) ) {
-						$this->cirrusSearch->resetWeightedTags( $title->toPageIdentity(), 'recommendation.link' );
+						$this->cirrusSearch->resetWeightedTags( $pageRecord, 'recommendation.link' );
 					}
 				}
 				if ( $from === 10000 ) {
@@ -151,7 +160,7 @@ class FixLinkRecommendationData extends Maintenance {
 					break;
 				}
 				$from = min( 10000, $batchSize + $from );
-				$fixedCount += count( $titlesToFix );
+				$fixedCount += count( $pagesToFix );
 			}
 		}
 		$this->maybeReportFixedCount( $fixedCount, 'search-index' );
@@ -233,10 +242,15 @@ class FixLinkRecommendationData extends Maintenance {
 
 	/**
 	 * @param int[] $pageIds
-	 * @return Title[]
+	 * @return PageRecord[]
 	 */
-	private function pageIdsToTitles( array $pageIds ): array {
-		return $this->titleFactory->newFromIDs( $pageIds );
+	private function pageIdsToPageRecords( array $pageIds ): array {
+		$pageRecords = $this->pageStore
+			->newSelectQueryBuilder()
+			->wherePageIds( $pageIds )
+			->caller( __METHOD__ )
+			->fetchPageRecords();
+		return iterator_to_array( $pageRecords );
 	}
 
 	private function verboseOutput( string $output ): void {

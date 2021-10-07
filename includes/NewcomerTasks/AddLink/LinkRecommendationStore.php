@@ -8,10 +8,13 @@ use GrowthExperiments\Util;
 use IDBAccessObject;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Linker\LinkTarget;
+use MediaWiki\Page\PageRecord;
+use MediaWiki\Page\PageStore;
 use MediaWiki\User\UserIdentity;
 use RuntimeException;
 use stdClass;
 use TitleFactory;
+use TitleValue;
 use Wikimedia\Rdbms\IDatabase;
 
 /**
@@ -31,22 +34,28 @@ class LinkRecommendationStore {
 	/** @var LinkBatchFactory */
 	private $linkBatchFactory;
 
+	/** @var PageStore */
+	private $pageStore;
+
 	/**
 	 * @param IDatabase $dbr
 	 * @param IDatabase $dbw
 	 * @param TitleFactory $titleFactory
 	 * @param LinkBatchFactory $linkBatchFactory
+	 * @param PageStore $pageStore
 	 */
 	public function __construct(
 		IDatabase $dbr,
 		IDatabase $dbw,
 		TitleFactory $titleFactory,
-		LinkBatchFactory $linkBatchFactory
+		LinkBatchFactory $linkBatchFactory,
+		PageStore $pageStore
 	) {
 		$this->dbr = $dbr;
 		$this->dbw = $dbw;
 		$this->titleFactory = $titleFactory;
 		$this->linkBatchFactory = $linkBatchFactory;
+		$this->pageStore = $pageStore;
 	}
 
 	// growthexperiments_link_recommendations
@@ -157,13 +166,19 @@ class LinkRecommendationStore {
 	 * @return int[]
 	 */
 	public function filterPageIds( array $pageIds ): array {
-		$titles = $this->titleFactory->newFromIDs( $pageIds );
+		$pageRecords = $this->pageStore
+			->newSelectQueryBuilder()
+			->wherePageIds( $pageIds )
+			->caller( __METHOD__ )
+			->fetchPageRecords();
+
 		$conds = [];
-		foreach ( $titles as $title ) {
+		/** @var PageRecord $pageRecord */
+		foreach ( $pageRecords as $pageRecord ) {
 			// Making it obvious there's no SQL injection risk is nice, but Phan disagrees.
 			// @phan-suppress-next-line PhanRedundantConditionInLoop
-			$pageId = (int)$title->getId();
-			$revId = (int)$title->getLatestRevID();
+			$pageId = (int)$pageRecord->getId();
+			$revId = (int)$pageRecord->getLatest();
 			if ( !$pageId || !$revId ) {
 				continue;
 			}
@@ -388,19 +403,21 @@ class LinkRecommendationStore {
 			return [];
 		}
 
-		$pageIds = $titles = [];
+		$pageIds = $linkTargets = [];
 		foreach ( $rows as $row ) {
 			$pageIds[] = $row->gelr_page;
 		}
-		if ( $flags ) {
-			foreach ( $pageIds as $pageId ) {
-				$titles[$pageId] = $this->titleFactory->newFromID( $pageId, $flags );
-			}
-			$titles = array_filter( $titles );
-		} else {
-			foreach ( $this->titleFactory->newFromIDs( $pageIds ) as $title ) {
-				$titles[$title->getArticleID()] = $title;
-			}
+
+		$pageRecords = $this->pageStore
+			->newSelectQueryBuilder( $flags )
+			->wherePageIds( $pageIds )
+			->caller( __METHOD__ )
+			->fetchPageRecords();
+
+		/** @var PageRecord $pageRecord */
+		foreach ( $pageRecords as $pageRecord ) {
+			$linkTarget = TitleValue::castPageToLinkTarget( $pageRecord );
+			$linkTargets[$pageRecord->getId()] = $linkTarget;
 		}
 
 		$linkRecommendations = [];
@@ -410,12 +427,13 @@ class LinkRecommendationStore {
 			if ( $data === null ) {
 				throw new DomainException( 'Invalid JSON: ' . json_last_error_msg() );
 			}
-			$title = $titles[$row->gelr_page] ?? null;
-			if ( !$title ) {
+			$linkTarget = $linkTargets[$row->gelr_page] ?? null;
+			if ( !$linkTarget ) {
 				continue;
 			}
+
 			$linkRecommendations[] = new LinkRecommendation(
-				$title,
+				$linkTarget,
 				$row->gelr_page,
 				$row->gelr_revision,
 				LinkRecommendation::getLinksFromArray( $data['links'] ),
