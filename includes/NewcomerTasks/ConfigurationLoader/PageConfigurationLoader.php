@@ -167,7 +167,7 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 			$target = $this->titleFactory->newFromText( $target );
 		}
 		if ( $target && !$target->isExternal() && !$target->inNamespace( NS_MEDIAWIKI ) ) {
-			Util::logError( new LogicException( 'Configuration page not in NS_MEDIAWIKI' ),
+			Util::logException( new LogicException( 'Configuration page not in NS_MEDIAWIKI' ),
 				[ 'title' => $target->__toString() ] );
 		}
 		return $target;

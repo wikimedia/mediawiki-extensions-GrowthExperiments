@@ -335,11 +335,11 @@ class HomepageHooks implements
 			$recommendationProvider = $taskType = null;
 			$taskTypeId = $context->getRequest()->getVal( 'getasktype' );
 			if ( !$taskTypeId ) {
-				Util::logMessage( 'Click ID present but task type ID missing' );
+				Util::logText( 'Click ID present but task type ID missing' );
 			} else {
 				$taskType = $this->configurationLoader->getTaskTypes()[$taskTypeId] ?? null;
 				if ( !$taskType ) {
-					Util::logMessage( "No such task type: {taskTypeId}", [
+					Util::logText( "No such task type: {taskTypeId}", [
 						'taskTypeId' => $taskTypeId,
 					] );
 				} else {

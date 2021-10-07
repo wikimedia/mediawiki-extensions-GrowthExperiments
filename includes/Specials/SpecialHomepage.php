@@ -277,7 +277,7 @@ class SpecialHomepage extends SpecialPage {
 						$out->addHTML( $module->render( IDashboardModule::RENDER_DESKTOP ) );
 					}
 					catch ( Throwable $throwable ) {
-						Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
+						Util::logException( $throwable, [ 'origin' => __METHOD__ ] );
 					}
 				}
 				$out->addHTML( Html::closeElement( 'div' ) );
@@ -296,7 +296,7 @@ class SpecialHomepage extends SpecialPage {
 		try {
 			$out->addHTML( $module->render( IDashboardModule::RENDER_MOBILE_DETAILS ) );
 		} catch ( Throwable $throwable ) {
-			Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
+			Util::logException( $throwable, [ 'origin' => __METHOD__ ] );
 		}
 	}
 
@@ -326,7 +326,7 @@ class SpecialHomepage extends SpecialPage {
 				}
 				$out->addHTML( $mobileSummary );
 			} catch ( Throwable $throwable ) {
-				Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
+				Util::logException( $throwable, [ 'origin' => __METHOD__ ] );
 			}
 		}
 	}
@@ -356,7 +356,7 @@ class SpecialHomepage extends SpecialPage {
 					unset( $data[$moduleName]['overlay'] );
 				}
 			} catch ( Throwable $throwable ) {
-				Util::logError( $throwable, [ 'origin' => __METHOD__ ] );
+				Util::logException( $throwable, [ 'origin' => __METHOD__ ] );
 			}
 		}
 		$out->addJsConfigVars( 'homepagemodules', $data );
