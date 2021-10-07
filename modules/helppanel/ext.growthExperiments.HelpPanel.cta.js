@@ -218,6 +218,7 @@
 					attachHelpButton( helpPanelProcessDialog.logger.getEditor() );
 				}
 				$buttonWrapper.removeClass( 'mw-ge-help-panel-opened' );
+				helpPanelProcessDialog.setGuidanceAutoAdvance( false );
 			} );
 			return lifecycle;
 		}
