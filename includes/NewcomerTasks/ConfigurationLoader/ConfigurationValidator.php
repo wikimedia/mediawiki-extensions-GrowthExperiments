@@ -69,12 +69,13 @@ class ConfigurationValidator {
 	}
 
 	/**
-	 * @param string $title
+	 * @param mixed $title Page title. Must be a string (but at the PHP level we need to allow
+	 *   any type, so we can handle errors via status objects).
 	 * @return StatusValue
 	 */
 	public function validateTitle( $title ) {
 		if ( !is_string( $title ) ) {
-			if ( !settype( $title, 'string' ) ) {
+			if ( !is_scalar( $title ) ) {
 				$title = '[' . gettype( $title ) . ']';
 			}
 			return StatusValue::newFatal( 'growthexperiments-homepage-suggestededits-config-invalidtitle',
