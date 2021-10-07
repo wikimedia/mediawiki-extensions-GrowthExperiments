@@ -399,7 +399,7 @@
 	"growthexperiments-addimage-inspector-skip-button": "Skip",
 	"growthexperiments-addimage-inspector-show-button": "Show image suggestion",
 	"growthexperiments-addimage-inspector-help-button": "Get help with editing",
-	"growthexperiments-addimage-inspector-details-button": "View details",
+	"growthexperiments-addimage-inspector-details-button": "View image details",
 	"growthexperiments-addimage-rejectiondialog-title": "Why not?",
 	"growthexperiments-addimage-rejectiondialog-header": "Why is this image not right for the article?",
 	"growthexperiments-addimage-rejectiondialog-subheader": "{{GENDER:|Your}} answers improve future suggestions.",

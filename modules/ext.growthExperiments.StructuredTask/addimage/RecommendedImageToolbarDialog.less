@@ -18,6 +18,7 @@
 	.mw-ge-recommendedImageToolbarDialog-buttons {
 		display: flex;
 		justify-content: space-between;
+		margin-top: 16px;
 	}
 
 	.mw-ge-recommendedImageToolbarDialog-addImageCta,
@@ -29,7 +30,7 @@
 		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
 		color: @wmui-color-base20;
 		font-weight: bold;
-		margin: 16px 0;
+		margin: 16px 0 0;
 	}
 
 	.mw-ge-recommendedImageToolbarDialog-reason {
@@ -74,28 +75,15 @@
 		justify-content: space-between;
 	}
 
-	.mw-ge-recommendedImageToolbarDialog-file-link {
+	.mw-ge-recommendedImageToolbarDialog-filename {
 		.rel-line-height( @parentFontSize: 16px, @targetLineHeight: 19.5px );
 		font-weight: bold;
 		display: inline-block;
 		overflow: hidden;
 		text-overflow: ellipsis;
-		max-width: 86%;
-		color: @wmui-color-accent50;
-
-		&:before {
-			@iconDimension: unit( 12px / 14px, em );
-			/* @embed */
-			background-image: url( ../link-external-ltr.svg );
-			background-size: 100%;
-			content: '';
-			display: inline-block;
-			width: @iconDimension;
-			height: @iconDimension;
-			position: relative;
-			margin-left: 10px;
-			float: right;
-		}
+		max-width: 100%;
+		color: @wmui-color-base10;
+		white-space: nowrap;
 	}
 
 	.mw-ge-recommendedImageToolbarDialog-description {
@@ -105,13 +93,39 @@
 		color: @wmui-color-base30;
 	}
 
-	.mw-ge-recommendedImageToolbarDialog-details-button-container {
-		text-align: right;
-	}
-
 	.mw-ge-recommendedImageToolbarDialog-details-button {
 		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
-		color: @wmui-color-accent50;
-		text-decoration: underline;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+
+		.oo-ui-buttonElement-button {
+			text-overflow: ellipsis;
+			overflow: hidden;
+			max-width: 100%;
+		}
+
+		.oo-ui-buttonElement-button,
+		.oo-ui-labelElement-label {
+			color: @wmui-color-accent50;
+			font-weight: normal;
+		}
+	}
+
+	@compactViewBreakpoint: 360px;
+
+	@media screen and ( max-device-width: @compactViewBreakpoint ) {
+		.mw-ge-recommendedImageToolbarDialog-addImageCta {
+			display: none;
+		}
+
+		.mw-ge-recommendedImageToolbarDialog-image-thumbnail {
+			flex: 0 0 120px;
+			height: 90px;
+		}
+
+		.mw-ge-recommendedImageToolbarDialog-description {
+			.paragraph-ellipsis( @lines: 2, @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
+		}
 	}
 }

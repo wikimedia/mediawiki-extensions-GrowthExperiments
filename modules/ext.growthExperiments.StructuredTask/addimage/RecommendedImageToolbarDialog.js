@@ -18,7 +18,7 @@ var StructuredTaskToolbarDialog = require( '../StructuredTaskToolbarDialog.js' )
 
 /**
  * @class mw.libs.ge.RecommendedImageToolbarDialog
- * @extends  mw.libs.ge.StructuredTaskToolbarDialog
+ * @extends mw.libs.ge.StructuredTaskToolbarDialog
  * @constructor
  */
 function RecommendedImageToolbarDialog() {
@@ -77,13 +77,15 @@ function RecommendedImageToolbarDialog() {
 	this.skipButton.connect( this, { click: [ 'onSkipButtonClicked' ] } );
 
 	/**
-	 * @property {jQuery} $detailsButton
+	 * @property {OO.ui.ButtonWidget} detailsButton
 	 */
-	this.$detailsButton = $( '<a>' )
-		.attr( 'href', '#' )
-		.addClass( 'mw-ge-recommendedImageToolbarDialog-details-button' )
-		.text( mw.message( 'growthexperiments-addimage-inspector-details-button' ).text() );
-	this.$detailsButton.on( 'click', this.onDetailsButtonClicked.bind( this ) );
+	this.detailsButton = new OO.ui.ButtonWidget( {
+		framed: false,
+		label: mw.message( 'growthexperiments-addimage-inspector-details-button' ).text(),
+		classes: [ 'mw-ge-recommendedImageToolbarDialog-details-button' ],
+		icon: 'info-filled'
+	} );
+	this.detailsButton.connect( this, { click: [ 'onDetailsButtonClicked' ] } );
 
 	/**
 	 * @property {Function} onDocumentNodeClick
@@ -146,6 +148,9 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 		);
 	}
 	this.showRecommendationAtIndex( 0 );
+	$( window ).on( 'resize',
+		OO.ui.debounce( this.updateSize.bind( this ), 250 )
+	);
 };
 
 RecommendedImageToolbarDialog.prototype.onYesButtonClicked = function () {
@@ -193,9 +198,8 @@ RecommendedImageToolbarDialog.prototype.onFullscreenButtonClicked = function () 
 	router.on( 'popstate', popStateListener );
 };
 
-RecommendedImageToolbarDialog.prototype.onDetailsButtonClicked = function ( e ) {
-	e.preventDefault();
-	// TODO: Show image details dialog
+RecommendedImageToolbarDialog.prototype.onDetailsButtonClicked = function () {
+	// TODO: Show image details dialog (T290782)
 };
 
 /**
@@ -252,16 +256,14 @@ RecommendedImageToolbarDialog.prototype.showRecommendationAtIndex = function ( i
 };
 
 /**
- * Construct link element
+ * Construct filename element
  *
  * @param {string} title Link title
- * @param {string} url Link target
  * @return {jQuery}
  */
-RecommendedImageToolbarDialog.prototype.getFileLinkElement = function ( title, url ) {
-	return $( '<a>' )
-		.addClass( 'mw-ge-recommendedImageToolbarDialog-file-link' )
-		.attr( { href: url, target: '_blank' } ).text( title );
+RecommendedImageToolbarDialog.prototype.getFilenameElement = function ( title ) {
+	return $( '<div>' ).addClass( 'mw-ge-recommendedImageToolbarDialog-filename' )
+		.text( title );
 };
 
 /**
@@ -283,16 +285,15 @@ RecommendedImageToolbarDialog.prototype.getDescriptionElement = function ( descr
 RecommendedImageToolbarDialog.prototype.updateSuggestionContent = function () {
 	var imageData = this.images[ this.currentIndex ],
 		metadata = imageData.metadata;
-	// TODO: format reason
+	// TODO: format reason (T292467)
 	this.$reason.text( imageData.projects );
 	this.$imageThumbnail.css( 'background-image', 'url(' + metadata.thumbUrl + ')' );
 	this.$imageInfo.append( [
 		$( '<div>' ).append( [
-			this.getFileLinkElement( imageData.image, metadata.descriptionUrl ),
+			this.getFilenameElement( imageData.image ),
 			this.getDescriptionElement( metadata.description )
 		] ),
-		$( '<div>' ).addClass( 'mw-ge-recommendedImageToolbarDialog-details-button-container' )
-			.append( this.$detailsButton )
+		this.detailsButton.$element
 	] );
 };
 
