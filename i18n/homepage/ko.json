@@ -336,13 +336,13 @@
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "링크 제안은 기계가 생성하므로 틀릴 수 있습니다.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "기계 제안에 대해 더 알아보기",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "가이드라인",
-	"growthexperiments-addlink-onboarding-dialog-label-skip-all": "모두 건너뛰기",
-	"growthexperiments-addlink-onboarding-dialog-title": "소개",
-	"growthexperiments-addlink-onboarding-dialog-progress": "$2 중 $1",
-	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "다시 보지 않음",
-	"growthexperiments-addlink-onboarding-dialog-label-next": "다음 소개 단계",
-	"growthexperiments-addlink-onboarding-dialog-label-previous": "이전 소개 단계",
-	"growthexperiments-addlink-onboarding-dialog-get-started-button": "시작하기",
+	"growthexperiments-structuredtask-onboarding-dialog-label-skip-all": "모두 건너뛰기",
+	"growthexperiments-structuredtask-onboarding-dialog-title": "소개",
+	"growthexperiments-structuredtask-onboarding-dialog-progress": "$2 중 $1",
+	"growthexperiments-structuredtask-onboarding-dialog-dismiss-checkbox": "다시 보지 않음",
+	"growthexperiments-structuredtask-onboarding-dialog-label-next": "다음 소개 단계",
+	"growthexperiments-structuredtask-onboarding-dialog-label-previous": "이전 소개 단계",
+	"growthexperiments-structuredtask-onboarding-dialog-get-started-button": "시작하기",
 	"growthexperiments-structuredtask-no-suggestions-found-dialog-message": "이 문서에 사용 가능한 제안이 더 이상 없습니다.",
 	"growthexperiments-structuredtask-no-suggestions-found-dialog-button": "편집 제안으로 돌아가기",
 	"growthexperiments-addlink-summary-title": "요약",
@@ -384,5 +384,6 @@
 	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "이미지가 저품질입니다",
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "이 주제를 모릅니다",
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "언어를 읽을 수 없습니다",
-	"growthexperiments-addimage-rejectiondialog-reason-other": "기타"
+	"growthexperiments-addimage-rejectiondialog-reason-other": "기타",
+	"growthexperiments-addimage-viewer-close-button": "닫기"
 }

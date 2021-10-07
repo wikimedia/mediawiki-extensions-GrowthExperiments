@@ -329,8 +329,12 @@
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Andet",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Færdig",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Retningslinjer",
-	"growthexperiments-addlink-onboarding-dialog-get-started-button": "Kom igang",
+	"growthexperiments-structuredtask-onboarding-dialog-get-started-button": "Kom igang",
 	"grant-managementorship": "Administrer mentorskab",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
-	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Forslag"
+	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Forslag",
+	"growthexperiments-addimage-rejectiondialog-title": "Hvorfor ikke?",
+	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Billedet er ikke relevant",
+	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Billedet er stødende",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Jeg kan ikke læse sproget"
 }

@@ -326,7 +326,7 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Dotknij ikonkę ołówka $1 obok linka aby zmienić jego cel",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Inne",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Gotowe",
-	"growthexperiments-addlink-onboarding-dialog-title": "Wprowadzenie",
+	"growthexperiments-structuredtask-onboarding-dialog-title": "Wprowadzenie",
 	"growthexperiments-addlink-summary-title": "Podsumowanie",
 	"growthexperiments-addlink-summary-summary": "Funkcja sugerowania linków: {{PLURAL:$1|dodany $1 link|dodane $1 linki|dodane $1 linków}}."
 }

@@ -7,6 +7,6 @@
 	},
 	"growthexperiments-tour-welcome-description-c": "{{GENDER:$1|سىز}} دائىم بۇنى چىكەلەيسىز{{GENDER:$1|سىزنىڭ}} ئابۇنت ئىسمى بۇ يەردە قايتىدۇ. {{GENDER: $ 1 | سىزنىڭ}} باش بېتىڭىزدىكى '' 'تەۋسىيە قىلىنغان تەھرىرلەش' '' نى داۋاملىق ئۆگىنىۋېلىڭ.",
 	"growthexperiments-tour-welcome-description-d": "{{GENDER:$1|سىز}} دائىم بۇنى چىكەلەيسىز{{GENDER:$1|سىزنىڭ}} ئابۇنت ئىسمى بۇ يەردە قايتىدۇ. {{GENDER:$1|سزنىڭ}} بۇ بەتتە، {{GENDER:$1|سىز}} تەۋسىيە قىلىنغان تەھرىرلەرنى تاپالايسىز، يېتەكچى {{GENDER:$1|سىزنىڭ}} دىن سۇئال سوراڭ، ھەمدە {{GENDER:$1|سىزنىڭ}} تەسىر نى كۆرۈڭ.",
-	"growthexperiments-addlink-onboarding-dialog-dismiss-checkbox": "قايتا كۆرسەتمە",
-	"growthexperiments-addlink-onboarding-dialog-label-next": "كېيىنكى تونۇشتۇرۇش"
+	"growthexperiments-structuredtask-onboarding-dialog-dismiss-checkbox": "قايتا كۆرسەتمە",
+	"growthexperiments-structuredtask-onboarding-dialog-label-next": "كېيىنكى تونۇشتۇرۇش"
 }

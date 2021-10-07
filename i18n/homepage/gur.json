@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Adignyoke",
+			"Akoonaba",
 			"Dnshitobu",
 			"Uprising Man"
 		]
@@ -16,6 +17,7 @@
 	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Yiliyisigo ka tarı voorɛ",
 	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Zɛɛsiŋɔ yiliyisigo",
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Ma ka me yelebi-ena",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "N kanyaŋe kaale yetɔgum la",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Basɛba",
 	"growthexperiments-addimage-viewer-close-button": "Yu"
 }
