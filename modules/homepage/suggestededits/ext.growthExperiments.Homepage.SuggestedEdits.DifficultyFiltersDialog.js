@@ -98,9 +98,11 @@ DifficultyFiltersDialog.prototype.updateMatchCount = function ( count ) {
 };
 
 DifficultyFiltersDialog.prototype.savePreferences = function () {
+	var enabledFilters = this.getEnabledFilters();
+	this.config.presets = enabledFilters;
 	return new mw.Api().saveOption(
 		'growthexperiments-homepage-se-filters',
-		JSON.stringify( this.getEnabledFilters() )
+		JSON.stringify( enabledFilters )
 	);
 };
 

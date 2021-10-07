@@ -166,6 +166,7 @@ TopicFiltersDialog.prototype.savePreferences = function () {
 	} else {
 		prefValue = JSON.stringify( this.getEnabledFilters() );
 	}
+	this.config.presets = prefValue;
 	mw.user.options.set( prefName, prefValue );
 	return new mw.Api().saveOption( prefName, prefValue );
 };
