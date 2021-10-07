@@ -55,7 +55,8 @@ abstract class TaskTypeHandler {
 	 * @see ::validateTaskTypeObject
 	 */
 	public function validateTaskTypeConfiguration( string $taskTypeId, array $config ): StatusValue {
-		$status = $this->configurationValidator->validateIdentifier( $taskTypeId );
+		$status = StatusValue::newGood();
+		$status->merge( $this->configurationValidator->validateIdentifier( $taskTypeId ) );
 
 		$groupFieldStatus = $this->configurationValidator->validateRequiredField( 'group',
 			$config, $taskTypeId );
@@ -111,7 +112,7 @@ abstract class TaskTypeHandler {
 			if ( !is_scalar( $template ) ) {
 				$template = '[' . gettype( $template ) . ']';
 			}
-			$status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidtemplatetitle',
+			return $status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidtemplatetitle',
 				$template, $taskTypeId );
 		}
 		try {
@@ -136,7 +137,7 @@ abstract class TaskTypeHandler {
 			if ( !is_scalar( $category ) ) {
 				$category = '[' . gettype( $category ) . ']';
 			}
-			$status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidcategorytitle',
+			return $status->fatal( 'growthexperiments-homepage-suggestededits-config-invalidcategorytitle',
 				$category, $taskTypeId );
 		}
 		try {
