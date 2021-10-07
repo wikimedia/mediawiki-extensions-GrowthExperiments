@@ -136,26 +136,26 @@ class Util {
 	/**
 	 * Log an error. Configuration errors are logged to the GrowthExperiments channel,
 	 * internal errors are logged to the exception channel.
-	 * @param Throwable $error Error object from the catch block
+	 * @param Throwable $exception Error object from the catch block
 	 * @param array $extraData
 	 * @param string $level Log-level on which WikiConfigException should be logged
 	 */
-	public static function logError(
-		Throwable $error,
+	public static function logException(
+		Throwable $exception,
 		array $extraData = [],
 		string $level = LogLevel::ERROR
 	) {
 		// Special-handling for WikiConfigException
-		if ( $error instanceof WikiConfigException ) {
+		if ( $exception instanceof WikiConfigException ) {
 			LoggerFactory::getInstance( 'GrowthExperiments' )
 				->log(
 					$level,
-					$error->getNormalizedMessage(),
-					$extraData + [ 'exception' => $error ] + $error->getMessageContext()
+					$exception->getNormalizedMessage(),
+					$extraData + [ 'exception' => $exception ] + $exception->getMessageContext()
 				);
 		} else {
 			// Normal exception handling
-			MWExceptionHandler::logException( $error, MWExceptionHandler::CAUGHT_BY_OTHER, $extraData );
+			MWExceptionHandler::logException( $exception, MWExceptionHandler::CAUGHT_BY_OTHER, $extraData );
 		}
 	}
 
@@ -188,7 +188,7 @@ class Util {
 	 * @param string $message
 	 * @param array $context
 	 */
-	public static function logMessage( string $message, array $context = [] ) {
+	public static function logText( string $message, array $context = [] ) {
 		LoggerFactory::getInstance( 'GrowthExperiments' )->error( $message, $context + [
 			'exception' => new Exception( $message ),
 		] );

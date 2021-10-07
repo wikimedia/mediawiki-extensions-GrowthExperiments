@@ -56,7 +56,7 @@ class MentorHooks implements GetPreferencesHook, UserGetDefaultOptionsHook, Loca
 				GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
 					->getMentorManager()->getMentorForUser( $user );
 			} catch ( Throwable $throwable ) {
-				Util::logError( $throwable, [
+				Util::logException( $throwable, [
 					'user' => $user->getId(),
 					'impact' => 'Failed to assign mentor for user',
 					'origin' => __METHOD__,

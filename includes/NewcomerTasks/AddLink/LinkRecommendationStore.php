@@ -312,7 +312,7 @@ class LinkRecommendationStore {
 			$titleText = $pageIdToTitleText[$targetId] ?? null;
 			if ( $titleText === null ) {
 				// User-submitted page ID does not exist. Could be some kind of race condition.
-				Util::logError( new RuntimeException( 'Page ID does not exist ' ), [
+				Util::logException( new RuntimeException( 'Page ID does not exist ' ), [
 					'pageID' => $targetId,
 				] );
 				continue;

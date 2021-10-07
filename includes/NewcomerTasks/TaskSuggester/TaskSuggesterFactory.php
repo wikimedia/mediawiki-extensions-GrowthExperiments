@@ -25,7 +25,7 @@ abstract class TaskSuggesterFactory implements LoggerAwareInterface {
 	 */
 	protected function createError( StatusValue $status ) {
 		$msg = Status::wrap( $status )->getWikiText( false, false, 'en' );
-		Util::logError( new WikiConfigException( $msg ) );
+		Util::logException( new WikiConfigException( $msg ) );
 		return new ErrorForwardingTaskSuggester( $status );
 	}
 
