@@ -9,6 +9,7 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Storage\NameTableAccessException;
 use MediaWiki\Storage\NameTableStore;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityLookup;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
@@ -31,6 +32,9 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	/** @var ActorMigration */
 	private $actorMigration;
 
+	/** @var UserIdentityLookup */
+	private $userIdentityLookup;
+
 	/** @var IDatabase */
 	private $mainDbr;
 
@@ -41,17 +45,20 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @param MentorStore $mentorStore
 	 * @param NameTableStore $changeTagDefStore
 	 * @param ActorMigration $actorMigration
+	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param IDatabase $mainDbr
 	 */
 	public function __construct(
 		MentorStore $mentorStore,
 		NameTableStore $changeTagDefStore,
 		ActorMigration $actorMigration,
+		UserIdentityLookup $userIdentityLookup,
 		IDatabase $mainDbr
 	) {
 		$this->mentorStore = $mentorStore;
 		$this->changeTagDefStore = $changeTagDefStore;
 		$this->actorMigration = $actorMigration;
+		$this->userIdentityLookup = $userIdentityLookup;
 		$this->mainDbr = $mainDbr;
 	}
 
@@ -369,38 +376,49 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return int[]
 	 */
 	private function getBlocksForUsers( array $userIds ): array {
-		$blocksMade = $this->mainDbr->buildSelectSubquery(
-			[ 'logging', 'user' ],
-			[ 'blocked_user' => 'user_id', 'log_id' ],
+		if ( $userIds === [] ) {
+			return [];
+		}
+
+		// fetch usernames (assoc. array; username => user ID)
+		// NOTE: username has underscores, not spaces
+		$users = [];
+		$userIdentities = iterator_to_array( $this->userIdentityLookup->newSelectQueryBuilder()
+			->whereUserIds( $userIds )
+			->fetchUserIdentities() );
+		array_walk(
+			$userIdentities,
+			static function ( UserIdentity $value, $key ) use ( &$users ) {
+				$users[str_replace( ' ', '_', $value->getName() )] = $value->getId();
+			}
+		);
+
+		$rows = $this->mainDbr->select(
+			[ 'logging' ],
+			[ 'log_title', 'blocks' => 'COUNT(log_id)' ],
 			[
 				'log_type' => 'block',
 				'log_action' => 'block',
-				'user_id' => $userIds,
-			],
-			__METHOD__,
-			[],
-			[
-				'user' => [ 'JOIN', 'REPLACE(log_title, "_", " ")=user_name' ]
-			]
-		);
-		$rows = $this->mainDbr->select(
-			[ 'user', 'blocks_made' => $blocksMade ],
-			[ 'user_id', 'blocks' => 'COUNT(log_id)' ],
-			[
-				'user_id' => $userIds
+				'log_namespace' => 2,
+				'log_title' => array_keys( $users )
 			],
 			__METHOD__,
 			[
-				'GROUP BY' => 'user_id',
-			],
-			[
-				'blocks_made' => [ 'LEFT JOIN', 'user_id=blocked_user' ]
+				'GROUP BY' => 'log_title',
 			]
 		);
+
 		$res = [];
 		foreach ( $rows as $row ) {
-			$res[$row->user_id] = (int)$row->blocks;
+			$res[$users[$row->log_title]] = (int)$row->blocks;
 		}
+
+		// fill missing IDs with zeros
+		$missingIds = array_diff( $userIds, array_keys( $res ) );
+		foreach ( $missingIds as $id ) {
+			$res[$id] = 0;
+		}
+
 		return $res;
 	}
 

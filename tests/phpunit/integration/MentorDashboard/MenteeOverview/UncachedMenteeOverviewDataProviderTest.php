@@ -21,6 +21,7 @@ class UncachedMenteeOverviewDataProviderTest extends MediaWikiIntegrationTestCas
 			$geServices->getMentorStore(),
 			$this->getServiceContainer()->getChangeTagDefStore(),
 			$this->getServiceContainer()->getActorMigration(),
+			$this->getServiceContainer()->getUserIdentityLookup(),
 			$this->db
 		);
 	}
