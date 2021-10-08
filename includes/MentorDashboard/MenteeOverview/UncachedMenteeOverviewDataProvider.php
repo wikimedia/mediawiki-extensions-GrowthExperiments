@@ -42,6 +42,14 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	private $lastTimestampCache = [];
 
 	/**
+	 * @var array Profiling information
+	 *
+	 * Stored by storeProfilingData, can be printed from
+	 * updateMenteeData.php maintenance script.
+	 */
+	private $profilingInfo = [];
+
+	/**
 	 * @param MentorStore $mentorStore
 	 * @param NameTableStore $changeTagDefStore
 	 * @param ActorMigration $actorMigration
@@ -60,6 +68,24 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		$this->actorMigration = $actorMigration;
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->mainDbr = $mainDbr;
+	}
+
+	/**
+	 * Get profiling information
+	 *
+	 * @internal Only use from updateMenteeData.php
+	 * @return array
+	 */
+	public function getProfilingInfo(): array {
+		return $this->profilingInfo;
+	}
+
+	/**
+	 * @param string $section
+	 * @param int $seconds
+	 */
+	private function storeProfilingData( string $section, int $seconds ): void {
+		$this->profilingInfo[$section] = $seconds;
 	}
 
 	/**
@@ -85,6 +111,8 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return int[] User IDs of the mentees
 	 */
 	private function getFilteredMenteesForMentor( UserIdentity $mentor ): array {
+		$startTime = time();
+
 		$mentees = $this->mentorStore->getMenteesByMentor( $mentor, MentorStore::ROLE_PRIMARY );
 		if ( $mentees === [] ) {
 			return [];
@@ -141,6 +169,8 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			}
 		}
 
+		$this->storeProfilingData( 'filtermentees', time() - $startTime );
+
 		return array_merge(
 			$notEditingUsers,
 			$this->filterMenteesByLastEdit( $editingUsers )
@@ -152,6 +182,8 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return array
 	 */
 	private function getLastEditTimestampForUsersInternal( array $userIds ): array {
+		$startTime = time();
+
 		$queryInfo = $this->actorMigration->getJoin( 'rev_user' );
 		$rows = $this->mainDbr->select(
 			[ 'revision' ] + $queryInfo['tables'],
@@ -172,6 +204,11 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		foreach ( $rows as $row ) {
 			$res[$row->rev_user] = $row->last_edit;
 		}
+
+		$this->storeProfilingData(
+			'edittimestampinternal',
+			time() - $startTime
+		);
 		return $res;
 	}
 
@@ -256,6 +293,8 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return array
 	 */
 	private function getUsernames( array $userIds ): array {
+		$startTime = time();
+
 		$rows = $this->mainDbr->select(
 			'user',
 			[ 'user_id', 'user_name' ],
@@ -268,6 +307,9 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		foreach ( $rows as $row ) {
 			$res[$row->user_id] = $row->user_name;
 		}
+
+		$this->storeProfilingData( 'usernames', time() - $startTime );
+
 		return $res;
 	}
 
@@ -276,10 +318,13 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return array
 	 */
 	private function getRevertedEditsForUsers( array $userIds ): array {
-		return $this->getTaggedEditsForUsers(
+		$startTime = time();
+		$res = $this->getTaggedEditsForUsers(
 			[ ChangeTags::TAG_REVERTED ],
 			$userIds
 		);
+		$this->storeProfilingData( 'reverted', time() - $startTime );
+		return $res;
 	}
 
 	/**
@@ -287,13 +332,16 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return array
 	 */
 	private function getQuestionsAskedForUsers( array $userIds ): array {
-		return $this->getTaggedEditsForUsers(
+		$startTime = time();
+		$res = $this->getTaggedEditsForUsers(
 			[
 				Mentorship::MENTORSHIP_HELPPANEL_QUESTION_TAG,
 				Mentorship::MENTORSHIP_MODULE_QUESTION_TAG
 			],
 			$userIds
 		);
+		$this->storeProfilingData( 'questions', time() - $startTime );
+		return $res;
 	}
 
 	/**
@@ -356,6 +404,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return array
 	 */
 	private function getRegistrationTimestampForUsers( array $userIds ): array {
+		$startTime = time();
 		$rows = $this->mainDbr->select(
 			'user',
 			[ 'user_id', 'user_registration' ],
@@ -366,6 +415,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		foreach ( $rows as $row ) {
 			$res[$row->user_id] = $row->user_registration;
 		}
+		$this->storeProfilingData( 'registration', time() - $startTime );
 		return $res;
 	}
 
@@ -379,6 +429,8 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		if ( $userIds === [] ) {
 			return [];
 		}
+
+		$startTime = time();
 
 		// fetch usernames (assoc. array; username => user ID)
 		// NOTE: username has underscores, not spaces
@@ -419,6 +471,8 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			$res[$id] = 0;
 		}
 
+		$this->storeProfilingData( 'blocks', time() - $startTime );
+
 		return $res;
 	}
 
@@ -427,6 +481,8 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return int[]
 	 */
 	private function getEditCountsForUsers( array $userIds ): array {
+		$startTime = time();
+
 		$rows = $this->mainDbr->select(
 			'user',
 			[ 'user_id', 'user_editcount' ],
@@ -439,6 +495,9 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		foreach ( $rows as $row ) {
 			$res[$row->user_id] = (int)$row->user_editcount;
 		}
+
+		$this->storeProfilingData( 'editcount', time() - $startTime );
+
 		return $res;
 	}
 }
