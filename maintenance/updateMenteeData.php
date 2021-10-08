@@ -6,6 +6,7 @@ use FormatJson;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MenteeOverview\DatabaseMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
+use GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
@@ -24,7 +25,7 @@ if ( getenv( 'MW_INSTALL_PATH' ) !== false ) {
 require_once $path . '/maintenance/Maintenance.php';
 
 class UpdateMenteeData extends Maintenance {
-	/** @var MenteeOverviewDataProvider */
+	/** @var UncachedMenteeOverviewDataProvider */
 	private $uncachedMenteeOverviewDataProvider;
 
 	/** @var MenteeOverviewDataProvider */
@@ -54,6 +55,13 @@ class UpdateMenteeData extends Maintenance {
 		$this->addOption( 'force', 'Do the update even if GEMentorDashboardBackendEnabled is false' );
 		$this->addOption( 'mentor', 'Username of the mentor to update the data for', false, true );
 		$this->addOption( 'statsd', 'Send timing information to statsd' );
+		$this->addOption( 'verbose', 'Output detailed profiling information' );
+		$this->addOption(
+			'dbshard',
+			'ID of the DB shard this script runs at',
+			false,
+			true
+		);
 	}
 
 	private function initServices() {
@@ -66,7 +74,7 @@ class UpdateMenteeData extends Maintenance {
 		$this->mentorStore = $geServices->getMentorStore();
 		$this->userFactory = $services->getUserFactory();
 		$this->growthLoadBalancer = $geServices->getLoadBalancer();
-		$this->dataFactory = $services->getPerDbNameStatsdDataFactory();
+		$this->dataFactory = $services->getStatsdDataFactory();
 	}
 
 	public function execute() {
@@ -202,11 +210,34 @@ class UpdateMenteeData extends Maintenance {
 		}
 
 		$totalTime = time() - $startTime;
-		$this->output( "Done. Took {$totalTime} seconds.\n" );
+		$detailedProfilingInfo = $this->uncachedMenteeOverviewDataProvider->getProfilingInfo();
 
-		if ( $this->hasOption( 'statsd' ) ) {
-			$this->dataFactory->timing( 'timing.growthExperiments.updateMenteeData', $totalTime );
+		if ( $this->hasOption( 'verbose' ) ) {
+			$this->output( "Profiling data:\n" );
+			foreach ( $detailedProfilingInfo as $section => $seconds ) {
+				$this->output( "  * {$section}: {$seconds} seconds\n" );
+			}
+			$this->output( "===============\n" );
 		}
+
+		if ( $this->hasOption( 'statsd' ) && $this->hasOption( 'dbshard' ) ) {
+			$this->dataFactory->timing(
+				'timing.growthExperiments.updateMenteeData.' . $this->getOption( 'dbshard' ) . '.total',
+				$totalTime
+			);
+
+			foreach ( $detailedProfilingInfo as $section => $seconds ) {
+				$this->dataFactory->timing(
+					'timing.growthExperiments.updateMenteeData.' .
+					$this->getOption( 'dbshard' ) .
+					'.' .
+					$section,
+					$seconds
+				);
+			}
+		}
+
+		$this->output( "Done. Took {$totalTime} seconds.\n" );
 	}
 }
 
