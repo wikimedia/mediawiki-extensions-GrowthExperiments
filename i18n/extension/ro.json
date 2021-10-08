@@ -4,7 +4,7 @@
 			"NGC 54"
 		]
 	},
-	"growthexperiments-desc": "Această extensie conține experimente realizate de Growth team.",
+	"growthexperiments-desc": "Această extensie conține experimente realizate de echipa Growth.",
 	"growthexperiments-config-validator-additional-fields": "Noua configurare are chei de configurare care nu pot fi personalizate aici.",
 	"growthexperiments-config-validator-error": "Validarea pentru $1 a eșuat cu: „$2”",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> este de așteptat să fie <code>$2</code>, dar este <code>$3</code>",
@@ -12,8 +12,8 @@
 	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Tipul sarcinii ID-ului handler-ului invalid: <code>$1</code> nu este o valoare validă",
 	"growthexperiments-edit-config-disabled": "Configurația comunității este în acest moment dezactivată.",
 	"growthexperiments-edit-config-title": "Editare configurare Growth",
-	"growthexperiments-edit-config-last-edit": "[[$3]]: Ultima actualizare de [[User:$1|$1]] $2.",
-	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Ultima actualizare de utilizator necunoscut $1.",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Ultima actualizare de [[User:$1|$1]] acum $2.",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Ultima actualizare de utilizator necunoscut acum $1.",
 	"growthexperiments-edit-config-pretext": "Această pagină vă permite să editați configurația funcțiilor echipei [[:mw:Special:MyLanguage/Growth|Growth]]. Va edita $1 în numele dvs. Puteți să vă vedeți schimbările în pagina istoricului acelei pagini.",
 	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|Puteți}} afișa de asemenea un banner pe pagina acasă a nou-veniților, care să includă un anunț despre evenimente importante nou-veniților. Dacă {{GENDER:|doriți}} să faceți asta, {{GENDER:|trebuie}} să îl adăugați manual la [[$1]]. Orice conținut adăugat acolo va fi afișat într-un banner galben în partea de sus a paginii [[Special:Homepage|Special:Pagina acasă]].",
 	"growthexperiments-edit-config-pretext-unprivileged": "acest formular permite utilizatorilor privilegiați să editeze configurația funcțiilor echipei [[:mw:Special:MyLanguage/Growth|Growth]].",

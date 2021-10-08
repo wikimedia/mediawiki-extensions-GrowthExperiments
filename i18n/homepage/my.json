@@ -216,6 +216,8 @@
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "အကုန်ဖယ်ရှားရန်",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "{{GENDER:$1|သင်}}တည်းဖြတ်ရန်စိတ်ဝင်စားသော အကြောင်းအရာအချို့ရွေးချယ်ပါ",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "{{GENDER:$1|your}}စိတ်ဝင်စားမှုများနှင့် ကိုက်ညီသည့်ဆောင်းပါးများကို အကြံပြုရန် မိမိတို့ကြိုးစားပါမည်။",
+	"log-action-filter-growthexperiments-addlink": "လင့်ခ် အကြံပြုချက်များ",
+	"log-action-filter-growthexperiments-addimage": "ရုပ်ပုံ အကြံပြုချက်များ",
 	"growthexperiments-notification-body-mentor-change": "အကြောင်းပြချက်: $1",
 	"growthexperiments-homepage-welcome-notice-header": "{{GENDER:$1|သင်၏}}ဗဟိုစာမျက်နှာမှ ကြိုဆိုပါသည်",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "ဆက်လက်",
@@ -273,6 +275,7 @@
 	"growthexperiments-addimage-inspector-skip-button": "ကျော်ရန်",
 	"growthexperiments-addimage-inspector-show-button": "ပုံအကြံပြုချက်ကိုပြရန်",
 	"growthexperiments-addimage-inspector-help-button": "တည်းဖြတ်ခြင်းနှင့်ပတ်သက်၍ အကူညီရယူမည်",
+	"growthexperiments-addimage-inspector-details-button": "အသေးစိတ် ပြရန်",
 	"growthexperiments-addimage-rejectiondialog-action-done": "ပြီးပြီ",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "အခြား",
 	"growthexperiments-addimage-viewer-close-button": "ပိတ်ရန်"
