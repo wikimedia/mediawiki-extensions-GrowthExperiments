@@ -135,9 +135,9 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		$notEditingUsers = [];
 		foreach ( $res as $row ) {
 			if ( $row->has_edits ) {
-				$editingUsers[] = $row->user_id;
+				$editingUsers[] = (int)$row->user_id;
 			} else {
-				$notEditingUsers[] = $row->user_id;
+				$notEditingUsers[] = (int)$row->user_id;
 			}
 		}
 
