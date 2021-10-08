@@ -3,6 +3,7 @@
 		"authors": [
 			"Ebraminio",
 			"Huji",
+			"Jeeputer",
 			"Mardetanha",
 			"Reza1615"
 		]
@@ -12,7 +13,9 @@
 	"apihelp-helppanelquestionposter-param-source": "شیوه‌ای که پرسش ارسال شده است.",
 	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "پنل «پرسش میز کمک»",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "پنل «پرسش از راهنمایتان» در صفحهٔ اصلی تازه‌واردان",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "صفحهٔ «از مربی خود بپرسید» در پنل راهنما",
 	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "پنل «پرسش میز کمک» (نام قدیم)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "پنل «پرسش از راهنمایتان» در صفحهٔ اصلی تازه‌واردان (نام قدیم)",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "عنوان مرتبطی که، چنانچه انتخاب شده باشد، باید همراه پرسش ذکر شود."
+	"apihelp-helppanelquestionposter-param-relevanttitle": "عنوان مرتبطی که، چنانچه انتخاب شده باشد، باید همراه پرسش ذکر شود.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "برای پرسیدن سؤال باید وارد سامانه شوید."
 }
