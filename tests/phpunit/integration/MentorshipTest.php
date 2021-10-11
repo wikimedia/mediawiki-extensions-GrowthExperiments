@@ -8,14 +8,14 @@ use GrowthExperiments\DashboardModule\IDashboardModule;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\HomepageModules\Mentorship;
 use MediaWiki\MediaWikiServices;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 use RequestContext;
 
 /**
  * @group medium
  * @group Database
  */
-class MentorshipTest extends MediaWikiTestCase {
+class MentorshipTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers \GrowthExperiments\HomepageModules\Mentorship::render

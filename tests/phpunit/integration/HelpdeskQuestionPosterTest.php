@@ -5,7 +5,7 @@ namespace GrowthExperiments\Tests;
 use DerivativeContext;
 use FauxRequest;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 use RequestContext;
 use Status;
 use Title;
@@ -16,7 +16,7 @@ use WikiPage;
  * @group medium
  * @group Database
  */
-class HelpdeskQuestionPosterTest extends MediaWikiTestCase {
+class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @var User|null

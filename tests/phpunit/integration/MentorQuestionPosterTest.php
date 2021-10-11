@@ -7,7 +7,7 @@ use GrowthExperiments\HelpPanel\QuestionPoster\MentorQuestionPoster;
 use GrowthExperiments\Mentorship\Mentor;
 use GrowthExperiments\Mentorship\MentorManager;
 use MediaWiki\MediaWikiServices;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 use PHPUnit\Framework\MockObject\MockObject;
 use RequestContext;
 use Wikimedia\TestingAccessWrapper;
@@ -16,7 +16,7 @@ use Wikimedia\TestingAccessWrapper;
  * @group medium
  * @group Database
  */
-class MentorQuestionPosterTest extends MediaWikiTestCase {
+class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @throws \MWException

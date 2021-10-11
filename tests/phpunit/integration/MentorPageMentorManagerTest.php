@@ -12,7 +12,7 @@ use GrowthExperiments\WikiConfigException;
 use IContextSource;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\WikiPageFactory;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 use ParserOutput;
 use PHPUnit\Framework\MockObject\MockObject;
 use RequestContext;
@@ -23,7 +23,7 @@ use WikiPage;
  * @coversDefaultClass \GrowthExperiments\Mentorship\MentorPageMentorManager
  * @group Database
  */
-class MentorPageMentorManagerTest extends MediaWikiTestCase {
+class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @dataProvider provideInvalidMentorsList

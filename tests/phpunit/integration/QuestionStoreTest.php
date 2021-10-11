@@ -9,14 +9,14 @@ use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStore;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use MediaWiki\MediaWikiServices;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 use RequestContext;
 
 /**
  * @group Database
  * @group medium
  */
-class QuestionStoreTest extends MediaWikiTestCase {
+class QuestionStoreTest extends MediaWikiIntegrationTestCase {
 
 	/** @inheritDoc */
 	protected $tablesUsed = [ 'user_properties' ];

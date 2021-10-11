@@ -5,12 +5,12 @@ namespace GrowthExperiments\Tests;
 use GrowthExperiments\HelpPanel;
 use HashConfig;
 use MediaWiki\MediaWikiServices;
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 
 /**
  * @group medium
  */
-class HelpPanelTest extends MediaWikiTestCase {
+class HelpPanelTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @covers \GrowthExperiments\HelpPanel::getHelpDeskTitle
