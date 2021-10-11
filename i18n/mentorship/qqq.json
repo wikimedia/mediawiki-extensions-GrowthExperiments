@@ -80,5 +80,5 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Label in Special:QuitMentorship\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Label in Special:QuitMentorship\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-quit-mentorship-success": "Label in Special:QuitMentorship\n\n{{doc-growthexperiments-mentor-dashboard}}",
-	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "Message sent to reassigned mentees when their mentor quits\n\nParameters:\n* $1 - username of the new mentor\n\n{{doc-growthexperiments-mentor-dashboard}}"
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "Message sent to reassigned mentees when their mentor quits\n\nParameters:\n* $1 - username of the previous mentor\n\n{{doc-growthexperiments-mentor-dashboard}}"
 }

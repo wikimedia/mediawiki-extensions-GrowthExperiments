@@ -100,7 +100,7 @@ class QuitMentorship {
 	 * Actually reassign all mentees currently assigned to the mentor
 	 *
 	 * @param string $reassignMessageKey Message key used in in ChangeMentor notification; needs
-	 * to accept one parameter (username of the new mentor).
+	 * to accept one parameter (username of the previous mentor).
 	 * @return bool True if successful, false otherwise.
 	 */
 	public function doReassignMentees(
@@ -142,7 +142,7 @@ class QuitMentorship {
 
 			$changeMentor->execute(
 				$newMentor,
-				wfMessage( $reassignMessageKey, $newMentor->getName() )->text()
+				wfMessage( $reassignMessageKey, $this->mentor->getName() )->text()
 			);
 		}
 
