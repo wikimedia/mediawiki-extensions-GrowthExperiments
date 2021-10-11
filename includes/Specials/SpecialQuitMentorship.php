@@ -156,7 +156,7 @@ class SpecialQuitMentorship extends FormSpecialPage {
 	 */
 	public function onSubmit( array $data ) {
 		$this->quitMentorship->reassignMentees(
-			$this->msg( 'growthexperiments-quit-mentorship-reassign-mentees-log-message' )->text()
+			'growthexperiments-quit-mentorship-reassign-mentees-log-message'
 		);
 
 		return Status::newGood();
