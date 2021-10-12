@@ -46,6 +46,9 @@ class UpdateMenteeData extends Maintenance {
 	/** @var StatsdDataFactoryInterface */
 	private $dataFactory;
 
+	/** @var array */
+	private $detailedProfilingInfo = [];
+
 	public function __construct() {
 		parent::__construct();
 		$this->setBatchSize( 200 );
@@ -75,6 +78,16 @@ class UpdateMenteeData extends Maintenance {
 		$this->userFactory = $services->getUserFactory();
 		$this->growthLoadBalancer = $geServices->getLoadBalancer();
 		$this->dataFactory = $services->getStatsdDataFactory();
+	}
+
+	private function addProfilingInfoForMentor( array $mentorProfilingInfo ): void {
+		foreach ( $mentorProfilingInfo as $section => $seconds ) {
+			if ( !array_key_exists( $section, $this->detailedProfilingInfo ) ) {
+				$this->detailedProfilingInfo[$section] = 0;
+			}
+
+			$this->detailedProfilingInfo[$section] += $seconds;
+		}
 	}
 
 	public function execute() {
@@ -177,6 +190,10 @@ class UpdateMenteeData extends Maintenance {
 				$this->waitForReplication();
 			}
 
+			$this->addProfilingInfoForMentor(
+				$this->uncachedMenteeOverviewDataProvider->getProfilingInfo()
+			);
+
 			// if applicable, clear cache for the mentor we just updated
 			if ( $this->databaseMenteeOverviewDataProvider instanceof DatabaseMenteeOverviewDataProvider ) {
 				$this->databaseMenteeOverviewDataProvider->invalidateCacheForMentor( $mentor );
@@ -210,11 +227,10 @@ class UpdateMenteeData extends Maintenance {
 		}
 
 		$totalTime = time() - $startTime;
-		$detailedProfilingInfo = $this->uncachedMenteeOverviewDataProvider->getProfilingInfo();
 
 		if ( $this->hasOption( 'verbose' ) ) {
 			$this->output( "Profiling data:\n" );
-			foreach ( $detailedProfilingInfo as $section => $seconds ) {
+			foreach ( $this->detailedProfilingInfo as $section => $seconds ) {
 				$this->output( "  * {$section}: {$seconds} seconds\n" );
 			}
 			$this->output( "===============\n" );
@@ -226,7 +242,7 @@ class UpdateMenteeData extends Maintenance {
 				$totalTime
 			);
 
-			foreach ( $detailedProfilingInfo as $section => $seconds ) {
+			foreach ( $this->detailedProfilingInfo as $section => $seconds ) {
 				$this->dataFactory->timing(
 					'timing.growthExperiments.updateMenteeData.' .
 					$this->getOption( 'dbshard' ) .
