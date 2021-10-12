@@ -154,7 +154,6 @@ RecommendedLinkToolbarDialogMobile.prototype.setupLinkPreview = function () {
 RecommendedLinkToolbarDialogMobile.prototype.teardown = function () {
 	MachineSuggestionsMode.enableVirtualKeyboard( this.surface );
 	this.surface.getView().$documentNode.off( 'click', this.onDocumentNodeClick );
-	this.toolbarDialogButton.$element.detach();
 	return RecommendedLinkToolbarDialogMobile.super.prototype.teardown.apply( this, arguments );
 };
 
@@ -253,24 +252,6 @@ RecommendedLinkToolbarDialogMobile.prototype.showDialog = function () {
 RecommendedLinkToolbarDialogMobile.prototype.hideDialog = function () {
 	RecommendedLinkToolbarDialogMobile.super.prototype.hideDialog.apply( this, arguments );
 	this.logger.log( 'impression', this.suggestionLogMetadata() );
-};
-
-/**
- * Scroll to the suggestion and re-open the dialog
- *
- * @override
- */
-RecommendedLinkToolbarDialogMobile.prototype.onToolbarDialogButtonClicked = function () {
-	// When the dialog is re-opened with the same suggestion selected, there's no new render.
-	this.isFirstRender = false;
-	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( this.currentIndex ) )
-		.always( this.showDialog.bind( this ) );
-	this.logger.log(
-		'reopen_dialog_click',
-		{},
-		// eslint-disable-next-line camelcase
-		{ active_interface: 'machinesuggestions_mode' }
-	);
 };
 
 module.exports = RecommendedLinkToolbarDialogMobile;

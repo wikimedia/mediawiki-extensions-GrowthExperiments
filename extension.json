@@ -814,7 +814,6 @@
 				"ext.growthExperiments.StructuredTask/StructuredTaskToolbarDialog.js",
 				"ext.growthExperiments.StructuredTask/RejectionReasonSelect.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskToolbarDialog.js",
-				"ext.growthExperiments.StructuredTask/MinimizedToolbarDialogButton.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskMessageDialog.js",
 				"ext.growthExperiments.StructuredTask/MachineSuggestionsBack.js",
 				"ext.growthExperiments.StructuredTask/addlink/AddLinkTargetInitializer.js",
@@ -841,6 +840,7 @@
 				"ext.growthExperiments.StructuredTask/addimage/AddImageLinearDeleteKeyDownHandler.js",
 				"ext.growthExperiments.StructuredTask/addimage/AddImageCaptionInfoDialog.js",
 				"utils/ext.growthExperiments.Utils.js",
+				"ui-components/HelpPanelButton.js",
 				{
 					"name": "homepage/suggestededits/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
@@ -851,7 +851,6 @@
 				"ext.growthExperiments.StructuredTask/EditModeConfirmationDialog.less",
 				"ext.growthExperiments.StructuredTask/StructuredTaskSaveDialog.less",
 				"ext.growthExperiments.StructuredTask/StructuredTaskToolbarDialog.less",
-				"ext.growthExperiments.StructuredTask/MinimizedToolbarDialogButton.less",
 				"ext.growthExperiments.StructuredTask/StructuredTaskMessageDialog.less",
 				"ext.growthExperiments.StructuredTask/addlink/ceRecommendedLinkAnnotation.less",
 				"ext.growthExperiments.StructuredTask/addlink/RecommendedLinkToolbarDialog.less",
@@ -863,7 +862,8 @@
 				"ext.growthExperiments.StructuredTask/addimage/ceRecommendedImageNode.less",
 				"ext.growthExperiments.StructuredTask/addimage/ceRecommendedImageCaptionNode.less",
 				"ext.growthExperiments.StructuredTask/addimage/AddImageSaveDialog.less",
-				"ext.growthExperiments.StructuredTask/addimage/AddImageCaptionInfoDialog.less"
+				"ext.growthExperiments.StructuredTask/addimage/AddImageCaptionInfoDialog.less",
+				"ui-components/HelpPanelButton.less"
 			],
 			"messages": [
 				"growthexperiments-addlink-context-title",
@@ -954,6 +954,7 @@
 				"oojs-ui.styles.icons-content",
 				"oojs-ui.styles.icons-editing-core",
 				"oojs-ui.styles.icons-media",
+				"oojs-ui.styles.icons-movement",
 				"ext.visualEditor.mwlink",
 				"ext.growthExperiments.icons",
 				"ext.growthExperiments.SuggestedEditSession"

@@ -3,21 +3,41 @@
 
 .mw-ge-structuredTaskToolbarDialog {
 	background: @wmui-color-base100;
+	@navHeight: 48px;
 
 	&.ve-ui-toolbarDialog-position-below {
 		border-top: 1px solid @wmui-color-base70;
 		box-shadow: 0 -1px 1px 0 fade( @wmui-color-base0, 10% );
-		transition: transform 100ms;
+		transition: transform 500ms;
 		transform: translateY( 0 );
 
 		&.animate-below {
 			transform: translateY( 100vh );
 		}
+
+		&.collapsed {
+			transform: translateY( ~'calc(100% - @{navHeight})' );
+		}
+
+		.oo-ui-window-head {
+			height: @navHeight;
+		}
+	}
+
+	.mw-ge-help-panel-button {
+		position: absolute;
+		// button is always above the header
+		top: ~'calc(-1 * ( @{navHeight} + 16px) )';
+		right: 8px;
+	}
+
+	&-chevron {
+		margin-left: auto;
 	}
 
 	.oo-ui-window-head {
 		min-height: 32px;
-		padding: 0.5em;
+		padding: 0 0.5em;
 		display: flex;
 		align-items: center;
 		box-sizing: content-box;

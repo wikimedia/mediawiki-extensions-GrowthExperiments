@@ -1,4 +1,4 @@
-var MinimizedToolbarDialogButton = require( './MinimizedToolbarDialogButton.js' );
+var HelpPanelButton = require( '../ui-components/HelpPanelButton.js' );
 
 /**
  * @class mw.libs.ge.StructuredTaskToolbarDialog
@@ -36,10 +36,6 @@ function StructuredTaskToolbarDialog() {
 	 */
 	this.isHidden = false;
 	/**
-	 * @property {mw.libs.ge.MinimizedToolbarDialogButton|null} toolbarDialogButton
-	 */
-	this.toolbarDialogButton = null;
-	/**
 	 * @property {boolean} isAdvancing Whether there is animation in progress
 	 */
 	this.isAnimating = false;
@@ -47,6 +43,10 @@ function StructuredTaskToolbarDialog() {
 	 * @property {number} currentIndex Zero-based index of the selected recommendation
 	 */
 	this.currentIndex = 0;
+	/**
+	 * @property {OO.ui.ButtonWidget|null} helpButton Button for opening the help panel
+	 */
+	this.helpButton = null;
 }
 
 OO.inheritClass( StructuredTaskToolbarDialog, ve.ui.ToolbarDialog );
@@ -88,10 +88,10 @@ StructuredTaskToolbarDialog.prototype.hideDialog = function () {
 	if ( this.isHidden || this.isAnimating ) {
 		return;
 	}
-	this.$element.addClass( 'animate-below' );
+	this.$element.addClass( 'collapsed' );
 	this.isHidden = true;
-	this.isFirstRender = true;
-	this.toolbarDialogButton.emit( 'dialogVisibilityChanged', false );
+	this.chevronIcon.setIcon( 'collapse' );
+	this.logger.log( 'collapse', this.suggestionLogMetadata() );
 };
 
 /**
@@ -102,28 +102,38 @@ StructuredTaskToolbarDialog.prototype.showDialog = function () {
 		return;
 	}
 	this.isHidden = false;
-	this.$element.removeClass( 'animate-below' );
-	this.toolbarDialogButton.emit( 'dialogVisibilityChanged', true );
+	this.$element.removeClass( 'collapsed' );
+	this.chevronIcon.setIcon( 'expand' );
+	this.logger.log( 'expand', this.suggestionLogMetadata() );
 };
 
 /**
- * Show dialog upon click on toolbar dialog button
- */
-StructuredTaskToolbarDialog.prototype.onToolbarDialogButtonClicked = function () {
-	this.showDialog();
-};
-
-/**
- * Attach button for re-opening the dialog
+ * Attach button for collapsing and expanding the dialog
  *
  * @param {string} [label] Text to use for the button's invisible label
  */
 StructuredTaskToolbarDialog.prototype.setUpToolbarDialogButton = function ( label ) {
-	this.toolbarDialogButton = new MinimizedToolbarDialogButton( {
-		label: label
+	var $header = this.$head;
+	this.chevronIcon = new OO.ui.IconWidget( {
+		classes: [ 'mw-ge-structuredTaskToolbarDialog-chevron' ],
+		framed: false,
+		icon: 'expand',
+		label: label,
+		invisibleLabel: true
 	} );
-	this.toolbarDialogButton.on( 'click', this.onToolbarDialogButtonClicked.bind( this ) );
-	this.surface.getGlobalOverlay().$element.append( this.toolbarDialogButton.$element );
+	$header.on( 'click', this.toggleDisplayState.bind( this ) );
+	$header.append( this.chevronIcon.$element );
+};
+
+/**
+ * Expand the dialog if it's hidden, collapse the dialog if it's shown
+ */
+StructuredTaskToolbarDialog.prototype.toggleDisplayState = function () {
+	if ( this.isHidden ) {
+		this.showDialog();
+	} else {
+		this.hideDialog();
+	}
 };
 
 /**
@@ -132,17 +142,13 @@ StructuredTaskToolbarDialog.prototype.setUpToolbarDialogButton = function ( labe
  * @param {string} [label] Text to use for the button's invisible label
  */
 StructuredTaskToolbarDialog.prototype.setupHelpButton = function ( label ) {
-	var helpButton = new OO.ui.ButtonWidget( {
-		classes: [ 'mw-ge-recommendedLinkToolbarDialog-help-button' ],
-		framed: false,
-		icon: 'helpNotice',
-		label: label,
-		invisibleLabel: true
+	this.helpButton = new HelpPanelButton( {
+		label: label
 	} );
-	helpButton.on( 'click', function () {
-		mw.hook( 'growthExperiments.contextItem.openHelpPanel' ).fire();
-	} );
-	this.$head.append( helpButton.$element );
+	this.helpButton.on( 'click', function () {
+		mw.hook( 'growthExperiments.contextItem.openHelpPanel' ).fire( this.helpButton );
+	}.bind( this ) );
+	this.$element.append( this.helpButton.$element );
 };
 
 /**
@@ -179,6 +185,15 @@ StructuredTaskToolbarDialog.prototype.addArticleTitle = function () {
 	this.surface.getView().$documentNode.prepend( $( '<h1>' ).text(
 		SuggestedEditSession.getInstance().getCurrentTitle().getNameText()
 	) );
+};
+
+/**
+ * Get the suggestion-specific metadata to pass to StructuredTaskLogger.
+ *
+ * @return {Object}
+ */
+StructuredTaskToolbarDialog.prototype.suggestionLogMetadata = function () {
+	return {};
 };
 
 module.exports = StructuredTaskToolbarDialog;

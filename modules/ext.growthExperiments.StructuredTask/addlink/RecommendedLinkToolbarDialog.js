@@ -879,6 +879,7 @@ RecommendedLinkToolbarDialog.prototype.isLastRecommendationSelected = function (
 /**
  * Get metadata to pass to the LinkSuggestionInteractionLogger.
  *
+ * @override
  * @return {{
  * acceptance_state: string,
  * probability_score: number,

@@ -337,12 +337,15 @@
 				 */
 				$buttonWrapper.addClass( 'oo-ui-element-hidden' );
 				mw.hook( 'growthExperiments.contextItem.openHelpPanel' ).add(
-					function () {
+					function ( helpPanelButton ) {
 						var prevScrollPosition = $( document ).scrollTop();
 						openHelpPanel( 'suggested-edits' ).closing.done( function () {
 							// When help panel closes, article is scrolled to 0.
 							// Make sure annotation is visible.
 							$( document ).scrollTop( prevScrollPosition );
+							if ( helpPanelButton ) {
+								helpPanelButton.setOpen( false );
+							}
 						} );
 					}
 				);
