@@ -52,7 +52,11 @@
 		flex-grow: 1;
 		justify-items: flex-start;
 		overflow: hidden;
-		padding: 8px 0 0 16px;
+		padding: 0 0 0 16px;
+
+		.mw-ge-small-task-card-glue:first-of-type {
+			display: none;
+		}
 	}
 
 	&-title {
@@ -178,10 +182,6 @@
 	}
 
 	.mw-ge-small-task-card-mobile & {
-		&-text-container {
-			padding-top: 0;
-		}
-
 		&-title {
 			// Show two lines of text, with an ellipsis, with 16px font size.
 			// See &-description for desktop for explanation.
