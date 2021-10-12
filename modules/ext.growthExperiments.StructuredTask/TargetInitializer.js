@@ -2,6 +2,7 @@ var MachineSuggestionsMode = require( './MachineSuggestionsMode.js' ),
 	EditModeMachineSuggestions = require( './EditModeMachineSuggestions.js' ),
 	EditModeVisualWithSuggestions = require( './EditModeVisualWithSuggestions.js' ),
 	EditModeConfirmationDialog = require( './EditModeConfirmationDialog.js' ),
+	StructuredTaskMessageDialog = require( './StructuredTaskMessageDialog.js' ),
 	allowedTools = [
 		'machineSuggestionsSave',
 		'machineSuggestionsPlaceholder',
@@ -42,7 +43,10 @@ function TargetInitializer( config ) {
 	this.safeCommands = allowedCommands.concat( safeCommands );
 	this.dataModels = config.dataModels || [];
 	this.annotationViews = config.annotationViews || [];
-	this.windows = [ EditModeConfirmationDialog ].concat( customWindows );
+	this.windows = [
+		EditModeConfirmationDialog,
+		StructuredTaskMessageDialog
+	].concat( customWindows );
 	this.commands = config.commands || [];
 	this.tools = config.tools || [];
 }

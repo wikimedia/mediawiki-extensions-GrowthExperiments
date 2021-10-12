@@ -398,7 +398,7 @@
 	"growthexperiments-addimage-inspector-cta": "Add this image to the start of the article?",
 	"growthexperiments-addimage-inspector-yes-button": "Yes",
 	"growthexperiments-addimage-inspector-no-button": "No",
-	"growthexperiments-addimage-inspector-skip-button": "Skip",
+	"growthexperiments-addimage-inspector-skip-button": "Not sure",
 	"growthexperiments-addimage-inspector-show-button": "Show image suggestion",
 	"growthexperiments-addimage-inspector-help-button": "Get help with editing",
 	"growthexperiments-addimage-inspector-details-button": "View image details",
@@ -426,5 +426,9 @@
 	"growthexperiments-addimage-onboarding-content-decision-title": "Decide if it belongs on the article.",
 	"growthexperiments-addimage-onboarding-content-decision-body-paragraph1": "The image might be for the wrong subject, or too low quality. Use {{GENDER:$1|your}} judgment to decide.",
 	"growthexperiments-addimage-onboarding-content-decision-body-paragraph2": "Reject bad machine suggestions, or skip it if {{GENDER:$1|you’re}} unsure.",
-	"growthexperiments-addimage-onboarding-content-decision-body-paragraph3": "For images {{GENDER:$1|you}} do accept, provide a short caption that helps explain how it belongs."
+	"growthexperiments-addimage-onboarding-content-decision-body-paragraph3": "For images {{GENDER:$1|you}} do accept, provide a short caption that helps explain how it belongs.",
+	"growthexperiments-addimage-skip-dialog-title": "Not sure about this image?",
+	"growthexperiments-addimage-skip-dialog-body": "Confirm that {{GENDER:|you'd}} like to skip this suggestion.",
+	"growthexperiments-addimage-skip-dialog-confirm": "Skip suggestion",
+	"growthexperiments-addimage-skip-dialog-cancel": "Cancel"
 }

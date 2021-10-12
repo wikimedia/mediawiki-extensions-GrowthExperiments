@@ -795,29 +795,6 @@ RecommendedLinkToolbarDialog.prototype.updateDimensions = function () {
 };
 
 /**
- * Return focus to the dialog, so that navigation with tab, Esc etc. works.
- */
-RecommendedLinkToolbarDialog.prototype.regainFocus = function () {
-	this.$content.get( 0 ).focus( { preventScroll: true } );
-};
-
-/**
- * Tear down VE and show post-edit dialog
- *
- * Called when the user has skipped all suggestions
- */
-RecommendedLinkToolbarDialog.prototype.endSession = function () {
-	// FIXME: Implement a fix in VisualEditor T282546
-	( ve.init.target.tryTeardown( true, 'navigate-read' ) || $.Deferred().resolve() ).then( function () {
-		var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
-			suggestedEditSession = SuggestedEditSession.getInstance();
-
-		suggestedEditSession.setTaskState( SuggestedEditSession.static.STATES.CANCELLED );
-		suggestedEditSession.showPostEditDialog( { resetSession: true } );
-	} );
-};
-
-/**
  * Show a dialog informing the user that they skipped all recommendations and
  * offering them to stay or leave.
  */
@@ -825,7 +802,7 @@ RecommendedLinkToolbarDialog.prototype.showSkippedAllDialog = function () {
 	// eslint-disable-next-line camelcase
 	var logMetadata = { active_interface: 'skipall_dialog' };
 	this.logger.log( 'impression', {}, logMetadata );
-	this.surface.dialogs.openWindow( 'message', {
+	this.surface.dialogs.openWindow( 'structuredTaskMessage', {
 		title: mw.message( 'growthexperiments-addlink-skip-title' ).text(),
 		message: mw.message( 'growthexperiments-addlink-skip-body' ).text(),
 		actions: [

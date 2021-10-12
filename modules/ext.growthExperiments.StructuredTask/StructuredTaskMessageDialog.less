@@ -1,0 +1,32 @@
+@import '../homepage/ext.growthExperiments.mixins.less';
+
+.mw-ge-structuredTaskMessageDialog {
+	.oo-ui-messageDialog-title {
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 18.28px, @targetLineHeight: 26px );
+		margin-bottom: 16px;
+		text-align: left;
+		font-weight: bold;
+	}
+
+	.oo-ui-messageDialog-message {
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 16px, @targetLineHeight: 26px );
+	}
+
+	&-desktop {
+		.oo-ui-messageDialog-title {
+			.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 16px, @targetLineHeight: 23px );
+		}
+
+		.oo-ui-messageDialog-message {
+			.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 14px, @targetLineHeight: 22px );
+		}
+	}
+}
+
+// Dialog fades in from middle instead of animating down
+.ve-ui-overlay-global-mobile > .oo-ui-windowManager-modal > .oo-ui-dialog {
+	&.mw-ge-structuredTaskMessageDialog {
+		transition: opacity ease-out 250ms;
+		transform: unset;
+	}
+}

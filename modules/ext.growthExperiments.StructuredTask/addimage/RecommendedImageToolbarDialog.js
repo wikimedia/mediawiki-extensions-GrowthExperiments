@@ -169,8 +169,33 @@ RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 		}.bind( this ) );
 };
 
+/**
+ * Show a dialog confirming whether the user would like to leave without accepting or rejecting
+ * the image suggestion
+ */
 RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
-	// TODO: Skip functionality (T290910)
+	this.surface.dialogs.openWindow( 'structuredTaskMessage', {
+		title: mw.message( 'growthexperiments-addimage-skip-dialog-title' ).text(),
+		message: mw.message( 'growthexperiments-addimage-skip-dialog-body' ).text(),
+		actions: [
+			{
+				action: 'confirm',
+				label: mw.message(
+					'growthexperiments-addimage-skip-dialog-confirm'
+				).text()
+			},
+			{
+				action: 'cancel',
+				label: mw.message( 'growthexperiments-addimage-skip-dialog-cancel' ).text()
+			}
+		]
+	} ).closed.then( function ( data ) {
+		if ( data && data.action === 'confirm' ) {
+			this.endSession();
+		} else {
+			this.regainFocus();
+		}
+	}.bind( this ) );
 };
 
 /**

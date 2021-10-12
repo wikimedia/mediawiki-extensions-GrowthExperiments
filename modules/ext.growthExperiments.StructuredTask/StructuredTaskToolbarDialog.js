@@ -143,4 +143,29 @@ StructuredTaskToolbarDialog.prototype.setupHelpButton = function ( label ) {
 	this.$head.append( helpButton.$element );
 };
 
+/**
+ * Tear down VE and show post-edit dialog
+ *
+ * Called when the user has skipped all suggestions
+ */
+StructuredTaskToolbarDialog.prototype.endSession = function () {
+	// FIXME: Implement a fix in VisualEditor T282546
+	( ve.init.target.tryTeardown( true, 'navigate-read' ) || $.Deferred().resolve() ).then(
+		function () {
+			var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
+				suggestedEditSession = SuggestedEditSession.getInstance();
+
+			suggestedEditSession.setTaskState( SuggestedEditSession.static.STATES.CANCELLED );
+			suggestedEditSession.showPostEditDialog( { resetSession: true } );
+		}
+	);
+};
+
+/**
+ * Return focus to the dialog, so that navigation with tab, Esc etc. works.
+ */
+StructuredTaskToolbarDialog.prototype.regainFocus = function () {
+	this.$content.get( 0 ).focus( { preventScroll: true } );
+};
+
 module.exports = StructuredTaskToolbarDialog;
