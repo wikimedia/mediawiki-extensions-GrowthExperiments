@@ -71,6 +71,14 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	}
 
 	/**
+	 * Do stuff that needs to happen before calculating the data
+	 */
+	private function resetService(): void {
+		$this->lastTimestampCache = [];
+		$this->profilingInfo = [];
+	}
+
+	/**
 	 * Get profiling information
 	 *
 	 * @internal Only use from updateMenteeData.php
@@ -264,6 +272,8 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return array
 	 */
 	public function getFormattedDataForMentor( UserIdentity $mentor ): array {
+		$this->resetService();
+
 		$userIds = $this->getFilteredMenteesForMentor( $mentor );
 		if ( $userIds === [] ) {
 			return [];
