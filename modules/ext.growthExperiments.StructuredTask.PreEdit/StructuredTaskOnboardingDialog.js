@@ -140,7 +140,7 @@ StructuredTaskOnboardingDialog.prototype.updateViewState = function () {
 	$skipButton.show();
 
 	var $learnMoreLink = this.panels[ this.currentPanelIndex ].$element.find(
-		'.onboarding-content-link'
+		'.structuredtask-onboarding-content-link'
 	);
 	if ( $learnMoreLink ) {
 		$learnMoreLink.on( 'click', function () {

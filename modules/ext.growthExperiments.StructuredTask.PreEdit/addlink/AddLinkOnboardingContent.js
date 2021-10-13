@@ -5,36 +5,9 @@ module.exports = ( function () {
 		userName = mw.user.getName(),
 		TaskTypesAbFilter = require( '../../homepage/suggestededits/TaskTypesAbFilter.js' ),
 		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( '../TaskTypes.json' ) ),
-		taskTypeData = taskTypes[ 'link-recommendation' ] || {};
-
-	/**
-	 * Create an OOUI PanelLayout with the specified title and content
-	 *
-	 * @param {string} title Localized text for panel title
-	 * @param {jQuery} $content Content for the panel
-	 * @param {string} [heroImageClassName] Class name for the image to be shown with the panel
-	 * @return {OO.ui.PanelLayout}
-	 */
-	function createPanel( title, $content, heroImageClassName ) {
-		// The following classes are used here:
-		// * addlink-onboarding-content-image1
-		// * addlink-onboarding-content-image2
-		// * addlink-onboarding-content-image3
-		var $heroElement = hasHeroImage && heroImageClassName ? $( '<div>' ).addClass( heroImageClassName ) : '';
-		return new OO.ui.PanelLayout( {
-			content: [
-				$heroElement,
-				$( '<div>' ).attr( 'class', 'addlink-onboarding-content-title' ).text( title ),
-				$content.addClass( 'addlink-onboarding-content-body' )
-			],
-			padded: true,
-			classes: [
-				'addlink-onboarding-content',
-				OO.ui.isMobile() ? 'addlink-onboarding-content-mobile' : 'addlink-onboarding-content-desktop'
-			],
-			data: {}
-		} );
-	}
+		taskTypeData = taskTypes[ 'link-recommendation' ] || {},
+		StructurtedTaskOnboardingContent = require( '../StructuredTaskOnboardingContent.js' ),
+		content = new StructurtedTaskOnboardingContent( 'addlink-onboarding-content' );
 
 	/**
 	 * Get the class name for the corresponding hero image for the specified panel
@@ -43,6 +16,9 @@ module.exports = ( function () {
 	 * @return {string}
 	 */
 	function getHeroClass( panelNumber ) {
+		if ( !hasHeroImage ) {
+			return '';
+		}
 		// The following classes are used here:
 		// * addlink-onboarding-content-image1
 		// * addlink-onboarding-content-image2
@@ -78,7 +54,7 @@ module.exports = ( function () {
 				$( '<div>' ).attr( 'class', 'addlink-onboarding-content-example' ).html( messages.exampleHtml ),
 				$( '<p>' ).text( messages.paragraph2 )
 			] );
-		return createPanel( messages.title, $content, getHeroClass( 1 ) );
+		return content.createPanel( messages.title, $content, getHeroClass( 1 ) );
 	}
 
 	/**
@@ -107,11 +83,11 @@ module.exports = ( function () {
 		if ( messages.learnMoreLinkText && messages.learnMoreLinkUrl ) {
 			$content.append( $( '<a>' ).text( messages.learnMoreLinkText ).attr( {
 				href: messages.learnMoreLinkUrl,
-				class: 'addlink-onboarding-content-link onboarding-content-link',
+				class: 'addlink-onboarding-content-link structuredtask-onboarding-content-link',
 				target: '_blank'
 			} ) );
 		}
-		return createPanel( messages.title, $content, getHeroClass( 2 ) );
+		return content.createPanel( messages.title, $content, getHeroClass( 2 ) );
 	}
 
 	/**
@@ -141,7 +117,7 @@ module.exports = ( function () {
 		$list = $( '<ul>' ).html( messages.body ).addClass( 'addlink-onboarding-content-list' );
 		$list.find( 'li' ).addClass( 'addlink-onboarding-content-list-item' );
 		$content.append( $list );
-		return createPanel( messages.title, $content, getHeroClass( 3 ) );
+		return content.createPanel( messages.title, $content, getHeroClass( 3 ) );
 	}
 
 	return {

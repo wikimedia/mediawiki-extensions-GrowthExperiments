@@ -1,38 +1,8 @@
 @import 'resources/lib/ooui/wikimedia-ui-base.less';
-@import '../../homepage/ext.growthExperiments.variables.less';
 @import '../../homepage/ext.growthExperiments.mixins.less';
 
 .addlink-onboarding-content {
 	@mobileFontSize: 16px;
-
-	&-title {
-		font-weight: bold;
-		.rel-font-size-and-line-height( @parentFontSize: @mobileFontSize, @targetFontSize: 18.28px, @targetLineHeight: 26px );
-	}
-
-	&-body {
-		.rel-line-height( @parentFontSize: @mobileFontSize, @targetLineHeight: 22.8px );
-		margin: 8px 0;
-		padding-bottom: 8px;
-	}
-
-	&-link {
-		margin-top: 1em;
-		color: @wmui-color-accent50;
-
-		&:visited {
-			color: @wmui-color-accent50;
-		}
-	}
-
-	&-list {
-		list-style: inside;
-		margin-left: 8px;
-	}
-
-	&-list-item {
-		margin-top: 8px;
-	}
 
 	&-example-label {
 		.rel-font-size-and-line-height( @parentFontSize: @mobileFontSize, @targetFontSize: 14.8px, @targetLineHeight: 22px );
@@ -68,31 +38,9 @@
 		background-image: url( ../../../images/addlink/onboarding-image3-ltr.svg );
 	}
 
-	&-image1,
-	&-image2,
-	&-image3 {
-		box-shadow: inset 0 -1px 0 @wmui-color-base80;
-		height: 216px;
-		background-position: center;
-		background-repeat: no-repeat;
-		background-color: @suggestedEditsBackgroundColor;
-		// Extend background beyond padding
-		margin: -12px -16px 16px -16px;
-	}
-
 	&-desktop {
-		@desktopFontSize: 14px;
-
-		.addlink-onboarding-content-title {
-			.rel-font-size-and-line-height( @parentFontSize: @desktopFontSize, @targetFontSize: 16px, @targetLineHeight: 22.8px );
-		}
-
-		.addlink-onboarding-content-body {
-			.rel-line-height( @parentFontSize: @desktopFontSize, @targetLineHeight: 20px );
-		}
-
 		.addlink-onboarding-content-example-label {
-			.rel-font-size-and-line-height( @parentFontSize: @desktopFontSize, @targetFontSize: 13px, @targetLineHeight: 19px );
+			.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 13px, @targetLineHeight: 19px );
 		}
 	}
 }
