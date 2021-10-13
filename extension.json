@@ -1413,6 +1413,7 @@
 						"rtl": "../images/difficulty-easy-bw-rtl.svg"
 					}
 				},
+				"info-filled": "../images/info-filled.svg",
 				"info-unpadded": "../images/info-unpadded.svg",
 				"live-broadcast": "../images/live-broadcast.svg",
 				"live-broadcast-anim": "../images/live-broadcast-anim.svg",
