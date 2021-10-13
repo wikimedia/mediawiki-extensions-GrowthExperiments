@@ -275,12 +275,8 @@ class SpecialHomepage extends SpecialPage {
 					if ( !$module ) {
 						continue;
 					}
-					try {
-						$out->addHTML( $module->render( IDashboardModule::RENDER_DESKTOP ) );
-					}
-					catch ( Throwable $throwable ) {
-						Util::logException( $throwable, [ 'origin' => __METHOD__ ] );
-					}
+					$html = $this->getModuleRenderHtmlSafe( $module, IDashboardModule::RENDER_DESKTOP );
+					$out->addHTML( $html );
 				}
 				$out->addHTML( Html::closeElement( 'div' ) );
 			}
@@ -294,12 +290,8 @@ class SpecialHomepage extends SpecialPage {
 	private function renderMobileDetails( IDashboardModule $module ) {
 		$out = $this->getContext()->getOutput();
 		$out->addBodyClasses( 'growthexperiments-homepage-mobile-details' );
-
-		try {
-			$out->addHTML( $module->render( IDashboardModule::RENDER_MOBILE_DETAILS ) );
-		} catch ( Throwable $throwable ) {
-			Util::logException( $throwable, [ 'origin' => __METHOD__ ] );
-		}
+		$html = $this->getModuleRenderHtmlSafe( $module, IDashboardModule::RENDER_MOBILE_DETAILS );
+		$this->getOutput()->addHTML( $html );
 	}
 
 	/**
@@ -321,16 +313,34 @@ class SpecialHomepage extends SpecialPage {
 		$modules = $this->getModules( true );
 		$out->addBodyClasses( 'growthexperiments-homepage-mobile-summary' );
 		foreach ( $modules as $moduleName => $module ) {
-			try {
-				$mobileSummary = $module->render( IDashboardModule::RENDER_MOBILE_SUMMARY );
-				if ( $module->supports( IDashboardModule::RENDER_MOBILE_DETAILS ) ) {
-					$mobileSummary = $this->wrapMobileSummaryWithLink( $moduleName, $mobileSummary );
-				}
-				$out->addHTML( $mobileSummary );
-			} catch ( Throwable $throwable ) {
-				Util::logException( $throwable, [ 'origin' => __METHOD__ ] );
+			$html = $this->getModuleRenderHtmlSafe( $module, IDashboardModule::RENDER_MOBILE_SUMMARY );
+			if ( $module->supports( IDashboardModule::RENDER_MOBILE_DETAILS ) ) {
+				$html = $this->wrapMobileSummaryWithLink( $moduleName, $html );
 			}
+			$this->getOutput()->addHTML( $html );
 		}
+	}
+
+	/**
+	 * Get the module render HTML for a particular mode, catching exceptions by default.
+	 *
+	 * If GEDeveloperSetup is on, then throw the exceptions.
+	 * @param IDashboardModule $module
+	 * @param string $mode
+	 * @throws Throwable
+	 * @return string
+	 */
+	private function getModuleRenderHtmlSafe( IDashboardModule $module, string $mode ): string {
+		$html = '';
+		try {
+			$html = $module->render( $mode );
+		} catch ( Throwable $throwable ) {
+			if ( $this->getConfig()->get( 'GEDeveloperSetup' ) ) {
+				throw $throwable;
+			}
+			Util::logException( $throwable, [ 'origin' => __METHOD__ ] );
+		}
+		return $html;
 	}
 
 	/**
@@ -358,6 +368,9 @@ class SpecialHomepage extends SpecialPage {
 					unset( $data[$moduleName]['overlay'] );
 				}
 			} catch ( Throwable $throwable ) {
+				if ( $this->getConfig()->get( 'GEDeveloperSetup' ) ) {
+					throw $throwable;
+				}
 				Util::logException( $throwable, [ 'origin' => __METHOD__ ] );
 			}
 		}
