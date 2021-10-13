@@ -286,7 +286,7 @@ class InitWikiConfig extends Maintenance {
 		];
 
 		$variables = [];
-		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $group ) {
+		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $taskData ) {
 			if (
 				!array_key_exists( $taskType, $taskTemplatesQIDs ) ||
 				!array_key_exists( $taskType, $taskLearnMoreQIDs )
@@ -308,7 +308,7 @@ class InitWikiConfig extends Maintenance {
 			}
 
 			$variables[$taskType] = [
-				'group' => $group,
+				'group' => $taskData['difficulty'],
 				'templates' => $templates,
 			];
 
