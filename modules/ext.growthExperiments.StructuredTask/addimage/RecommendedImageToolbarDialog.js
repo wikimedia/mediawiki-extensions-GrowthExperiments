@@ -156,18 +156,19 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 RecommendedImageToolbarDialog.prototype.onYesButtonClicked = function () {
 	// TODO: Caption (T290781)
 	ve.init.target.insertImage( this.images[ 0 ] );
-	this.setState( true );
+	this.setState( true, [] );
 	this.setUpCaptionStep();
 };
 
 RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
-	this.surface.dialogs.openWindow( 'recommendedImageRejection', this.rejectionReasons )
-		.closed.then( function ( data ) {
-			if ( data && data.action === 'done' ) {
-				this.setState( false, data.reasons );
-			}
-			mw.hook( 'growthExperiments.contextItem.saveArticle' ).fire();
-		}.bind( this ) );
+	this.surface.dialogs.openWindow( 'recommendedImageRejection',
+		ve.init.target.recommendationRejectionReasons
+	).closed.then( function ( data ) {
+		if ( data && data.action === 'done' ) {
+			this.setState( false, data.reasons );
+		}
+		mw.hook( 'growthExperiments.contextItem.saveArticle' ).fire();
+	}.bind( this ) );
 };
 
 /**
