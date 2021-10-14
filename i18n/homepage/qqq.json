@@ -447,5 +447,6 @@
 	"growthexperiments-addimage-skip-dialog-body": "Body of the dialog shown when the user has skipped the image suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
 	"growthexperiments-addimage-skip-dialog-confirm": "\"Leave\" option of the dialog shown when the user has skipped the image suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
 	"growthexperiments-addimage-skip-dialog-cancel": "\"Stay\" option of the dialog shown when the user has skipped the image suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}",
-	"growthexperiments-newcomertasks-invalid-tasktype": "Error message to show if the requested task type is not valid. Parameters:\n* $1 - Name of the task type.\n\n{{doc-growthexperiments-homepage}}"
+	"growthexperiments-newcomertasks-invalid-tasktype": "Error message to show if the requested task type is not valid. Parameters:\n* $1 - Name of the task type.\n\n{{doc-growthexperiments-homepage}}",
+	"growthexperiments-addimage-caption-title": "Text shown on VisualEditor toolbar indicating that the user is adding a caption for the image suggestion.\n\n{{doc-growthexperiments-imagesuggestions}}"
 }

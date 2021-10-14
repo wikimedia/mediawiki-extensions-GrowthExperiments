@@ -30,6 +30,8 @@ var MachineSuggestionsMode = require( './MachineSuggestionsMode.js' ),
  * @param {OO.ui.Window[]} [config.windows] Windows that can be invoked during the editing flow
  * @param {ve.ui.Command[]} [config.commands] Commands that can be invoked during the editing flow
  * @param {ve.ui.Tool[]} [config.tools] Tools for the task type
+ * @param {ve.ce.Node[]} [config.nodes] Nodes for the task type
+ * @param {boolean} [config.shouldOverrideBackTool] Whether MachineSuggestionsBack tool should be used
  */
 function TargetInitializer( config ) {
 	var safeTools = config.safeTools || [],
@@ -49,6 +51,8 @@ function TargetInitializer( config ) {
 	].concat( customWindows );
 	this.commands = config.commands || [];
 	this.tools = config.tools || [];
+	this.nodes = config.nodes || [];
+	this.shouldOverrideBackTool = config.shouldOverrideBackTool;
 }
 
 /**
@@ -68,6 +72,10 @@ TargetInitializer.prototype.initialize = function () {
 	this.registerWindows();
 	this.registerCommands();
 	this.registerTools();
+	this.registerNodes();
+	if ( this.shouldOverrideBackTool ) {
+		this.overrideBackTool();
+	}
 
 	this.disableContextItems();
 	this.disableTools( this.getToolsToDisable() );
@@ -154,6 +162,22 @@ TargetInitializer.prototype.registerCommands = function () {
 TargetInitializer.prototype.registerTools = function () {
 	this.tools.forEach( function ( tool ) {
 		ve.ui.toolFactory.register( tool );
+	} );
+};
+
+/**
+ * Override default 'back' tool
+ */
+TargetInitializer.prototype.overrideBackTool = function () {
+	ve.ui.toolFactory.register( require( './MachineSuggestionsBack.js' ) );
+};
+
+/**
+ * Register nodes specific to the structured task
+ */
+TargetInitializer.prototype.registerNodes = function () {
+	this.nodes.forEach( function ( node ) {
+		ve.ce.nodeFactory.register( node );
 	} );
 };
 

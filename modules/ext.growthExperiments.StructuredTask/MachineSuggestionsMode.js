@@ -9,7 +9,7 @@ module.exports = ( function () {
 	 * @param {jQuery} $toolbarElement
 	 * @return {boolean}
 	 */
-	function toolbarHasTitleElement( $toolbarElement ) {
+	function canAddToolbarTitle( $toolbarElement ) {
 		return $toolbarElement.has( '.mw-ge-machine-suggestions-mode-title' ).length === 0;
 	}
 
@@ -137,10 +137,13 @@ module.exports = ( function () {
 	 * Undo hack for disabling virtual keyboard and text selection on the editing surface
 	 *
 	 * @param {ve.ui.Surface} surface
+	 * @param {boolean} [disableDocumentEdit] Whether the keyboard should be enabled but the
+	 * document should not be editable. This is used when only certain parts of the document should
+	 * be editable (ex: caption during add image task)
 	 */
-	function enableVirtualKeyboard( surface ) {
+	function enableVirtualKeyboard( surface, disableDocumentEdit ) {
 		var $documentNode = surface.getView().$documentNode;
-		$documentNode.attr( 'contenteditable', true );
+		$documentNode.attr( 'contenteditable', !disableDocumentEdit );
 		$documentNode.removeClass( 'mw-ge-user-select-none' );
 	}
 
@@ -156,7 +159,7 @@ module.exports = ( function () {
 	}
 
 	return {
-		toolbarHasTitleElement: toolbarHasTitleElement,
+		canAddToolbarTitle: canAddToolbarTitle,
 		getTitleElement: getTitleElement,
 		getMobileTools: getMobileTools,
 		getActionGroups: getActionGroups,

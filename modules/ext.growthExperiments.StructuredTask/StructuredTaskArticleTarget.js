@@ -202,4 +202,49 @@ StructuredTaskArticleTarget.prototype.updateHistory = function () {
 	// Intentionally no-op
 };
 
+/**
+ * Get MachineSuggestionsPlaceholder tool
+ *
+ * @return {mw.libs.ge.MachineSuggestionsPlaceholder|undefined}
+ */
+StructuredTaskArticleTarget.prototype.getPlaceholderTool = function () {
+	return this.getToolbar().tools.machineSuggestionsPlaceholder;
+};
+
+/**
+ * Update the title text in the MachineSuggestionsPlaceholder tool
+ *
+ * @param {string} title
+ */
+StructuredTaskArticleTarget.prototype.updatePlaceholderTitle = function ( title ) {
+	var placeholderTool = this.getPlaceholderTool();
+	if ( placeholderTool ) {
+		placeholderTool.updateTitleText( title );
+	}
+};
+
+/**
+ * Restore the original title text in the MachineSuggestionsPlaceholder tool
+ */
+StructuredTaskArticleTarget.prototype.restorePlaceholderTitle = function () {
+	var placeholderTool = this.getPlaceholderTool();
+	if ( placeholderTool ) {
+		placeholderTool.restoreOriginalTitleText();
+	}
+};
+
+/**
+ * Toggle internal routing mode for the back tool.
+ * This is used when the back button is used to navigation between different steps in
+ * the editing flow.
+ *
+ * @param {boolean} isInternalRoutingEnabled
+ */
+StructuredTaskArticleTarget.prototype.toggleInternalRouting = function ( isInternalRoutingEnabled ) {
+	var backTool = this.getToolbar().tools.back;
+	if ( backTool && typeof backTool.toggleInternalRouting === 'function' ) {
+		backTool.toggleInternalRouting( isInternalRoutingEnabled );
+	}
+};
+
 module.exports = StructuredTaskArticleTarget;

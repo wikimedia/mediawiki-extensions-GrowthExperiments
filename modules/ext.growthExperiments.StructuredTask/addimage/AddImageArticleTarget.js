@@ -26,6 +26,7 @@ var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession'
  *
  * @mixin mw.libs.ge.AddImageArticleTarget
  * @extends ve.init.mw.ArticleTarget
+ * @extends mw.libs.ge.StructuredTaskArticleTarget
  */
 function AddImageArticleTarget() {
 	/**
@@ -69,9 +70,7 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 		data = surfaceModel.getDocument().data,
 		NS_FILE = mw.config.get( 'wgNamespaceIds' ).file,
 		imageTitle = new mw.Title( imageData.image, NS_FILE ),
-		thumb = mw.util.parseImageUrl( imageData.metadata.thumbUrl ),
-		// FIXME placeholder
-		caption = imageTitle.getNameText();
+		thumb = mw.util.parseImageUrl( imageData.metadata.thumbUrl );
 
 	// Define the image to be inserted.
 	// This will eventually be passed as the data parameter to MWBlockImageNode.toDomElements.
@@ -83,7 +82,7 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 	} );
 	linearModel = [
 		{
-			type: 'mwBlockImage',
+			type: 'mwGeRecommendedImage',
 			attributes: {
 				mediaClass: 'Image',
 				// This is a Commons image so the link needs to use the English namespace name
@@ -113,14 +112,13 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 				whitespace: [ '\n', undefined, undefined, '\n' ]
 			}
 		},
-		{ type: 'mwImageCaption' },
+		{ type: 'mwGeRecommendedImageCaption' },
 		{ type: 'paragraph', internal: { generated: 'wrapper' } },
 		// Caption will be spliced in here. In the linear model each character is a separate item.
 		{ type: '/paragraph' },
-		{ type: '/mwImageCaption' },
-		{ type: '/mwBlockImage' }
+		{ type: '/mwGeRecommendedImageCaption' },
+		{ type: '/mwGeRecommendedImage' }
 	];
-	Array.prototype.splice.apply( linearModel, [ 3, 0 ].concat( caption.split( '' ) ) );
 
 	// Find the position between the initial templates and text.
 	insertOffset = data.getRelativeOffset( 0, 1, function ( offset ) {
@@ -184,9 +182,12 @@ AddImageArticleTarget.prototype.isEndOfMetadata = function ( data, offset ) {
  * Undo the last change. Can be used to undo insertImage().
  */
 AddImageArticleTarget.prototype.rollback = function () {
-	var surfaceModel = this.getSurface().getModel();
+	var surfaceModel = this.getSurface().getModel(), recommendedImageNodes;
 	surfaceModel.setReadOnly( false );
-	surfaceModel.undo();
+	recommendedImageNodes = surfaceModel.getDocument().getNodesByType( 'mwGeRecommendedImage' );
+	if ( recommendedImageNodes.length ) {
+		surfaceModel.getLinearFragment( recommendedImageNodes[ 0 ].getOuterRange() ).delete();
+	}
 	surfaceModel.setReadOnly( true );
 };
 
