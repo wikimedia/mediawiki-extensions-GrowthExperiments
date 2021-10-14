@@ -9,15 +9,12 @@ use Config;
 use ConfigException;
 use DeferredUpdates;
 use DomainException;
-use EchoAttributeManager;
-use EchoUserLocator;
 use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageModules\Help;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
-use GrowthExperiments\Mentorship\EchoMentorChangePresentationModel;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
@@ -1228,36 +1225,6 @@ class HomepageHooks implements
 		return SpecialPage::getTitleFor( 'Homepage' )->getLinkURL(
 			'source=personaltoolslink&namespace=' . $namespace
 		);
-	}
-
-	/**
-	 * Add GrowthExperiments events to Echo
-	 *
-	 * @param array &$notifications array of Echo notifications
-	 * @param array &$notificationCategories array of Echo notification categories
-	 * @param array &$icons array of icon details
-	 */
-	public static function onBeforeCreateEchoEvent(
-		&$notifications, &$notificationCategories, &$icons
-	) {
-		$notifications['mentor-changed'] = [
-			'category' => 'system',
-			'group' => 'positive',
-			'section' => 'alert',
-			'presentation-model' => EchoMentorChangePresentationModel::class,
-			EchoAttributeManager::ATTR_LOCATORS => [
-				[
-					EchoUserLocator::class . '::locateFromEventExtra',
-					[ 'mentee' ]
-				],
-			],
-		];
-		$icons['growthexperiments-menteeclaimed'] = [
-			'path' => [
-				'ltr' => 'GrowthExperiments/images/mentor-ltr.svg',
-				'rtl' => 'GrowthExperiments/images/mentor-rtl.svg'
-			]
-		];
 	}
 
 	/**
