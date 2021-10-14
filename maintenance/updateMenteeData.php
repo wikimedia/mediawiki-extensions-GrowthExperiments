@@ -90,6 +90,14 @@ class UpdateMenteeData extends Maintenance {
 		}
 	}
 
+	private function getSummarizedProfilingInfoInSeconds(): array {
+		$res = [];
+		foreach ( $this->detailedProfilingInfo as $section => $seconds ) {
+			$res[$section] = round( $seconds, 2 );
+		}
+		return $res;
+	}
+
 	public function execute() {
 		if (
 			!$this->getConfig()->get( 'GEMentorDashboardBackendEnabled' ) &&
@@ -227,10 +235,11 @@ class UpdateMenteeData extends Maintenance {
 		}
 
 		$totalTime = time() - $startTime;
+		$profilingInfo = $this->getSummarizedProfilingInfoInSeconds();
 
 		if ( $this->hasOption( 'verbose' ) ) {
 			$this->output( "Profiling data:\n" );
-			foreach ( $this->detailedProfilingInfo as $section => $seconds ) {
+			foreach ( $profilingInfo as $section => $seconds ) {
 				$this->output( "  * {$section}: {$seconds} seconds\n" );
 			}
 			$this->output( "===============\n" );
@@ -242,7 +251,7 @@ class UpdateMenteeData extends Maintenance {
 				$totalTime
 			);
 
-			foreach ( $this->detailedProfilingInfo as $section => $seconds ) {
+			foreach ( $profilingInfo as $section => $seconds ) {
 				$this->dataFactory->timing(
 					'timing.growthExperiments.updateMenteeData.' .
 					$this->getOption( 'dbshard' ) .

@@ -90,9 +90,9 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 
 	/**
 	 * @param string $section
-	 * @param int $seconds
+	 * @param float $seconds
 	 */
-	private function storeProfilingData( string $section, int $seconds ): void {
+	private function storeProfilingData( string $section, float $seconds ): void {
 		$this->profilingInfo[$section] = $seconds;
 	}
 
@@ -119,7 +119,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return int[] User IDs of the mentees
 	 */
 	private function getFilteredMenteesForMentor( UserIdentity $mentor ): array {
-		$startTime = time();
+		$startTime = microtime( true );
 
 		$mentees = $this->mentorStore->getMenteesByMentor( $mentor, MentorStore::ROLE_PRIMARY );
 		if ( $mentees === [] ) {
@@ -177,7 +177,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			}
 		}
 
-		$this->storeProfilingData( 'filtermentees', time() - $startTime );
+		$this->storeProfilingData( 'filtermentees', microtime( true ) - $startTime );
 
 		return array_merge(
 			$notEditingUsers,
@@ -190,7 +190,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return array
 	 */
 	private function getLastEditTimestampForUsersInternal( array $userIds ): array {
-		$startTime = time();
+		$startTime = microtime( true );
 
 		$queryInfo = $this->actorMigration->getJoin( 'rev_user' );
 		$rows = $this->mainDbr->select(
@@ -215,7 +215,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 
 		$this->storeProfilingData(
 			'edittimestampinternal',
-			time() - $startTime
+			microtime( true ) - $startTime
 		);
 		return $res;
 	}
@@ -303,7 +303,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return array
 	 */
 	private function getUsernames( array $userIds ): array {
-		$startTime = time();
+		$startTime = microtime( true );
 
 		$rows = $this->mainDbr->select(
 			'user',
@@ -318,7 +318,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			$res[$row->user_id] = $row->user_name;
 		}
 
-		$this->storeProfilingData( 'usernames', time() - $startTime );
+		$this->storeProfilingData( 'usernames', microtime( true ) - $startTime );
 
 		return $res;
 	}
@@ -328,12 +328,12 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return array
 	 */
 	private function getRevertedEditsForUsers( array $userIds ): array {
-		$startTime = time();
+		$startTime = microtime( true );
 		$res = $this->getTaggedEditsForUsers(
 			[ ChangeTags::TAG_REVERTED ],
 			$userIds
 		);
-		$this->storeProfilingData( 'reverted', time() - $startTime );
+		$this->storeProfilingData( 'reverted', microtime( true ) - $startTime );
 		return $res;
 	}
 
@@ -342,7 +342,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return array
 	 */
 	private function getQuestionsAskedForUsers( array $userIds ): array {
-		$startTime = time();
+		$startTime = microtime( true );
 		$res = $this->getTaggedEditsForUsers(
 			[
 				Mentorship::MENTORSHIP_HELPPANEL_QUESTION_TAG,
@@ -350,7 +350,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			],
 			$userIds
 		);
-		$this->storeProfilingData( 'questions', time() - $startTime );
+		$this->storeProfilingData( 'questions', microtime( true ) - $startTime );
 		return $res;
 	}
 
@@ -414,7 +414,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return array
 	 */
 	private function getRegistrationTimestampForUsers( array $userIds ): array {
-		$startTime = time();
+		$startTime = microtime( true );
 		$rows = $this->mainDbr->select(
 			'user',
 			[ 'user_id', 'user_registration' ],
@@ -425,7 +425,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 		foreach ( $rows as $row ) {
 			$res[$row->user_id] = $row->user_registration;
 		}
-		$this->storeProfilingData( 'registration', time() - $startTime );
+		$this->storeProfilingData( 'registration', microtime( true ) - $startTime );
 		return $res;
 	}
 
@@ -440,7 +440,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			return [];
 		}
 
-		$startTime = time();
+		$startTime = microtime( true );
 
 		// fetch usernames (assoc. array; username => user ID)
 		// NOTE: username has underscores, not spaces
@@ -481,7 +481,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			$res[$id] = 0;
 		}
 
-		$this->storeProfilingData( 'blocks', time() - $startTime );
+		$this->storeProfilingData( 'blocks', microtime( true ) - $startTime );
 
 		return $res;
 	}
@@ -491,7 +491,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return int[]
 	 */
 	private function getEditCountsForUsers( array $userIds ): array {
-		$startTime = time();
+		$startTime = microtime( true );
 
 		$rows = $this->mainDbr->select(
 			'user',
@@ -506,7 +506,7 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			$res[$row->user_id] = (int)$row->user_editcount;
 		}
 
-		$this->storeProfilingData( 'editcount', time() - $startTime );
+		$this->storeProfilingData( 'editcount', microtime( true ) - $startTime );
 
 		return $res;
 	}
