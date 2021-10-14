@@ -89,7 +89,7 @@ class MentorHooks implements GetPreferencesHook, UserGetDefaultOptionsHook, Loca
 				],
 			],
 		];
-		$icons['growthexperiments-menteeclaimed'] = [
+		$icons['growthexperiments-mentor'] = [
 			'path' => [
 				'ltr' => 'GrowthExperiments/images/mentor-ltr.svg',
 				'rtl' => 'GrowthExperiments/images/mentor-rtl.svg'
