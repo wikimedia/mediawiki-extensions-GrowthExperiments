@@ -118,7 +118,7 @@ class HelpPanel {
 	 * @return bool
 	 * @throws ConfigException
 	 */
-	public static function shouldShowHelpPanel( OutputPage $out, $checkAction = true ) {
+	public static function shouldShowHelpPanel( OutputPage $out, $checkAction = true ): bool {
 		if ( !self::isHelpPanelEnabled() ) {
 			return false;
 		}
