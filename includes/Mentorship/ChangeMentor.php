@@ -187,6 +187,23 @@ class ChangeMentor {
 					],
 					'agent' => $this->newMentor,
 				] );
+
+				if (
+					$this->performer->equals( $this->newMentor ) &&
+					$this->mentor !== null
+				) {
+					// mentee was claimed, notify old mentor as well
+					EchoEvent::create( [
+						'type' => 'mentee-claimed',
+						'title' => $this->userFactory->newFromUserIdentity( $this->mentee )
+							->getUserPage(),
+						'extra' => [
+							'mentor' => $this->mentor->getId(),
+							'reason' => $reason
+						],
+						'agent' => $this->performer
+					] );
+				}
 			} );
 		}
 	}
