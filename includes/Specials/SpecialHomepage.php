@@ -406,7 +406,10 @@ class SpecialHomepage extends SpecialPage {
 		}
 		$suggestedEdits = $this->getModules( Util::isMobile( $this->getSkin() ) )[ 'suggested-edits' ];
 		$redirectParams = array_merge(
-			[ 'getasktype' => $request->getVal( 'getasktype' ) ],
+			[ 'getasktype' => $request->getVal( 'getasktype' ),
+				// This query parameter allows us to load the help panel for the suggested edit session,
+				// even if the user has the preference (probably unknowingly) disabled.
+				'gesuggestededit' => 1 ],
 			$suggestedEdits instanceof SuggestedEdits ? $suggestedEdits->getRedirectParams( $taskTypeId ) : []
 		);
 		$this->getOutput()->redirect(

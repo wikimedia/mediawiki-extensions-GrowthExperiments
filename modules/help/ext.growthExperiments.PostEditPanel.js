@@ -170,7 +170,8 @@
 		params = {
 			geclickid: this.helpPanelLogger.helpPanelSessionId,
 			getasktype: task.tasktype,
-			genewcomertasktoken: this.newcomerTaskToken
+			genewcomertasktoken: this.newcomerTaskToken,
+			gesuggestededit: 1
 		};
 		if ( task.url ) {
 			// Override for developer setups
