@@ -14,28 +14,31 @@ function RecommendedImageRejectionDialog( config ) {
 	this.$element.addClass( 'mw-ge-recommendedLinkRejectionDialog' );
 }
 
-OO.inheritClass( RecommendedImageRejectionDialog, OO.ui.ProcessDialog );
+OO.inheritClass( RecommendedImageRejectionDialog, OO.ui.MessageDialog );
 
 RecommendedImageRejectionDialog.static.name = 'recommendedImageRejection';
-RecommendedImageRejectionDialog.static.size = OO.ui.isMobile() ? 'full' : 'medium';
+RecommendedImageRejectionDialog.static.size = OO.ui.isMobile() ? 'small' : 'medium';
 RecommendedImageRejectionDialog.static.title =
-	mw.message( 'growthexperiments-addimage-rejectiondialog-title' ).text();
+	mw.message( 'growthexperiments-addimage-rejectiondialog-header' ).text();
+RecommendedImageRejectionDialog.static.message =
+	mw.message( 'growthexperiments-addimage-rejectiondialog-subheader' ).text();
 RecommendedImageRejectionDialog.static.actions = [
+	{
+		flags: 'safe',
+		label: mw.message( 'growthexperiments-addimage-rejectiondialog-action-cancel' ).text(),
+		action: 'cancel'
+	},
 	{
 		flags: [ 'primary', 'progressive' ],
 		label: mw.message( 'growthexperiments-addimage-rejectiondialog-action-done' ).text(),
 		action: 'done'
-	},
-	{
-		icon: OO.ui.isMobile() ? 'arrowPrevious' : 'close',
-		flags: 'safe',
-		action: 'cancel'
 	}
 ];
 
 /** @inheritDoc **/
 RecommendedImageRejectionDialog.prototype.initialize = function () {
 	RecommendedImageRejectionDialog.super.prototype.initialize.call( this );
+	this.message.$element.addClass( 'oo-ui-inline-help' );
 	var selectOptions = [ {
 		data: 'not-relevant',
 		label: mw.message( 'growthexperiments-addimage-rejectiondialog-reason-notrelevant' ).text()
@@ -62,13 +65,7 @@ RecommendedImageRejectionDialog.prototype.initialize = function () {
 		options: selectOptions,
 		isMultiSelect: true
 	} );
-	this.$body.append(
-		$( '<div>' ).addClass( 'mw-ge-recommendedLinkRejectionDialog-header' )
-			.text( mw.message( 'growthexperiments-addimage-rejectiondialog-header' ).text() ),
-		$( '<div>' ).addClass( 'mw-ge-recommendedLinkRejectionDialog-subheader' )
-			.text( mw.message( 'growthexperiments-addimage-rejectiondialog-subheader' ).text() ),
-		this.reasonSelect.getElement()
-	);
+	this.text.$element.append( this.reasonSelect.getElement() );
 };
 
 /** @inheritDoc **/
