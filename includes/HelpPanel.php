@@ -107,8 +107,7 @@ class HelpPanel {
 	 * @return bool
 	 */
 	private static function shouldShowHelpPanelToUser( User $user ) {
-		return $user->isRegistered() &&
-			   $user->getOption( HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE );
+		return $user->getOption( HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE );
 	}
 
 	/**
@@ -123,6 +122,11 @@ class HelpPanel {
 		if ( !self::isHelpPanelEnabled() ) {
 			return false;
 		}
+
+		if ( $out->getUser()->isAnon() ) {
+			return false;
+		}
+
 		if ( in_array( $out->getTitle()->getNamespace(),
 			self::getGrowthWikiConfig()->get( 'GEHelpPanelExcludedNamespaces' ) ) ) {
 			return false;
