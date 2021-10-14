@@ -22,7 +22,6 @@ use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Recommendation;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
@@ -81,7 +80,6 @@ class HomepageHooks implements
 	\MediaWiki\ChangeTags\Hook\ListDefinedTagsHook,
 	\MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook,
 	\MediaWiki\Hook\RecentChange_saveHook,
-	\MediaWiki\Storage\Hook\PageSaveCompleteHook,
 	\MediaWiki\Hook\SpecialContributionsBeforeMainOutputHook,
 	\MediaWiki\SpecialPage\Hook\SpecialPageAfterExecuteHook,
 	\MediaWiki\User\Hook\ConfirmEmailCompleteHook,
@@ -798,21 +796,6 @@ class HomepageHooks implements
 				$taskTypeHandler = $this->taskTypeHandlerRegistry->getByTaskType( $taskType );
 				$rc->addTags( $taskTypeHandler->getChangeTags() );
 			}
-		}
-	}
-
-	/**
-	 * Invalidate configuration cache when needed.
-	 * {@inheritDoc}
-	 * @inheritDoc
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageSaveComplete
-	 */
-	public function onPageSaveComplete(
-		$wikiPage, $user, $summary, $flags, $revisionRecord, $editResult
-	) {
-		if ( $this->configurationLoader instanceof PageConfigurationLoader ) {
-			$this->configurationLoader->onPageSaveComplete( $wikiPage, $user, $summary, $flags,
-				$revisionRecord, $editResult );
 		}
 	}
 
