@@ -18,7 +18,8 @@ function StructuredTaskToolbarDialog() {
 	 */
 	this.surface = null;
 	/**
-	 * @property {number} scrollOffset Amount of space between the window and the annotation when scrolled
+	 * @property {number} scrollOffset Amount of space between the window and the annotation
+	 *   when scrolled
 	 */
 	this.scrollOffset = 100;
 	/**
@@ -26,7 +27,8 @@ function StructuredTaskToolbarDialog() {
 	 */
 	this.scrollTimeout = 800;
 	/**
-	 * @property {number} minHeight Minimum value to use for window height (used in setting surface padding value)
+	 * @property {number} minHeight Minimum value to use for window height (used in setting
+	 *   surface padding value)
 	 */
 	this.minHeight = 250;
 	/**

@@ -68,8 +68,8 @@
 	/**
 	 * Fetch the next task.
 	 *
-	 * @return {jQuery.Promise<mw.libs.ge.TaskData|null>} A promise that will resolve to a task data object,
-	 *   or fail with an error message if fetching the task failed.
+	 * @return {jQuery.Promise<mw.libs.ge.TaskData|null>} A promise that will resolve to a task
+	 *   data object, or fail with an error message if fetching the task failed.
 	 */
 	function getNextTask() {
 		return fetchOtherTasks().then( function () {
@@ -200,7 +200,8 @@
 	 *   - closePromise: A promise that resolves when the dialog has been closed.
 	 */
 	function setup( task, errorMessage ) {
-		var postEditPanel, displayPanelPromises, openPromise, closePromise, extraDataPromise, result;
+		var postEditPanel, displayPanelPromises, openPromise, closePromise, extraDataPromise,
+			result;
 
 		if ( errorMessage ) {
 			mw.log.error( errorMessage );

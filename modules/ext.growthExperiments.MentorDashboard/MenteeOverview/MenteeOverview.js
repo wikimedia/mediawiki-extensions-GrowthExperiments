@@ -59,7 +59,8 @@
 					head: true,
 					align: 'backwards',
 					width: null,
-					// HACK: setting label should not be necessary in theory, but the label doesn't appear without it
+					// HACK: setting label should not be necessary in theory, but the label doesn't
+					//   appear without it
 					label: mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-headline' ),
 					$label: $( '<h3>' ).text( mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-headline' ) ),
 					$content: $( '<div>' ).addClass( 'growthexperiments-mentor-dashboard-module-mentee-overview-info-content' ).append(
@@ -220,7 +221,8 @@
 			.addClass( 'growthexperiments-mentor-dashboard-module-mentee-overview-table-sort-neutral' );
 
 		// Now, add right sorting class to right field
-		// Ad eslint disable: false positive, variable is in selector, but not a class (comes from line 52 and below)
+		// Ad eslint disable: false positive, variable is in selector, but not a class
+		// (comes from line 52 and below)
 		// eslint-disable-next-line mediawiki/class-doc
 		this.$element.find( 'table > thead th[data-field="' + field + '"]' )
 			.attr( 'data-order', dir )
@@ -353,7 +355,8 @@
 													$( '<a>' )
 														.attr(
 															'href',
-															( new mw.Title( userData.username, 2 ) ).getUrl()
+															( new mw.Title( userData.username, 2 ) )
+																.getUrl()
 														)
 														.text( userData.username )
 												),
@@ -379,11 +382,13 @@
 					)
 				);
 
-				menteeOverview.newStarButtonWidget( userId ).then( function ( inner$starMenteeDiv ) {
-					return function ( widget ) {
-						inner$starMenteeDiv.append( widget.$element );
-					};
-				}( $starMenteeDiv ) );
+				menteeOverview.newStarButtonWidget( userId ).then(
+					function ( inner$starMenteeDiv ) {
+						return function ( widget ) {
+							inner$starMenteeDiv.append( widget.$element );
+						};
+					}( $starMenteeDiv )
+				);
 			} );
 
 			// update the table itself
@@ -391,7 +396,9 @@
 			menteeOverview.updateNoResultsScreen( true );
 
 			// update pagination info
-			menteeOverview.paginationWidget.setTotalPages( menteeOverview.apiClient.getTotalPages() );
+			menteeOverview.paginationWidget.setTotalPages(
+				menteeOverview.apiClient.getTotalPages()
+			);
 		} );
 	};
 

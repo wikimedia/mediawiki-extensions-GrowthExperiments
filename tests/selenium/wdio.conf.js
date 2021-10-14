@@ -46,7 +46,8 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/Grow
 		// This is needed in Quibble + Apache (T225218) because we use supervisord to control
 		// the php-fpm service, and with supervisord you need to restart the php-fpm service
 		// in order to load updated php code.
-		// TODO: Add a conditional so that this only executes when we're in the quibble + apache environment.
+		// TODO: Add a conditional so that this only executes when we're in the quibble + apache
+		//   environment.
 		childProcess.spawnSync(
 			'service',
 			[ 'php7.2-fpm', 'restart' ]

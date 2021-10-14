@@ -395,7 +395,11 @@
 					taskTypeId: this.taskTypeId,
 					customSubheader: ( buttonId === 'ask-help-mentor' ) ?
 						mw.message( 'growthexperiments-help-panel-button-subsubheader-ask-help-mentor' )
-							.params( [ mw.language.convertNumber( mentorData.editCount ), mentorData.lastActive ] ).text() : null,
+							.params( [
+								mw.language.convertNumber( mentorData.editCount ),
+								mentorData.lastActive
+							] ).text() :
+						null,
 					subsubheader: ( buttonId === 'ask-help-mentor' ) ? mentorData.name : null
 				} ).$element
 					.on( 'click', function () {
@@ -452,7 +456,9 @@
 			editorInterface: this.logger.getEditor(),
 			currentTip: this.suggestedEditSession.helpPanelCurrentTip,
 			parentWindow: this,
-			preferredEditor: configData.GEHelpPanelSuggestedEditsPreferredEditor[ this.suggestedEditSession.taskType ]
+			preferredEditor: configData.GEHelpPanelSuggestedEditsPreferredEditor[
+				this.suggestedEditSession.taskType
+			]
 		} );
 		guidanceTipsPromise = this.suggestededitsPanel.build();
 
@@ -1023,7 +1029,9 @@
 				tabIndexLayout = self.suggestededitsPanel.tipsPanel.tabIndexLayout;
 				tabs = tabIndexLayout.getTabs();
 				currentTab = tabs.findItemFromData( tabIndexLayout.getCurrentTabPanelName() );
-				nextTab = tabs.getItems()[ ( tabs.getItemIndex( currentTab ) + 1 ) % tabs.getItemCount() ];
+				nextTab = tabs.getItems()[
+					( tabs.getItemIndex( currentTab ) + 1 ) % tabs.getItemCount()
+				];
 				if ( nextTab ) {
 					tabIndexLayout.setTabPanel( nextTab.data );
 				}

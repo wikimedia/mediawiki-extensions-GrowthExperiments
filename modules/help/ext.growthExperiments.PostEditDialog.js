@@ -41,11 +41,12 @@
 	};
 
 	PostEditDialog.prototype.getActionProcess = function ( action ) {
-		return PostEditDialog.super.prototype.getActionProcess.call( this, action ).next( function () {
-			if ( action === 'cancel' ) {
-				this.close( { action: 'cancel' } );
-			}
-		}, this );
+		return PostEditDialog.super.prototype.getActionProcess.call( this, action )
+			.next( function () {
+				if ( action === 'cancel' ) {
+					this.close( { action: 'cancel' } );
+				}
+			}, this );
 	};
 
 	module.exports = PostEditDialog;

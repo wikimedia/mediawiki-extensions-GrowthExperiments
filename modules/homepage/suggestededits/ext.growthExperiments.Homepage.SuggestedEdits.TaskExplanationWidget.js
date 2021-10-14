@@ -34,7 +34,9 @@
 				.append(
 					this.getInfoRow(),
 					suggestedEditsPeek.getDifficultyAndTime(
-						this.taskTypeData.difficulty, this.taskTypeData.messages.timeestimate, this.getIcon()
+						this.taskTypeData.difficulty,
+						this.taskTypeData.messages.timeestimate,
+						this.getIcon()
 					),
 					this.getDescriptionRow()
 				)

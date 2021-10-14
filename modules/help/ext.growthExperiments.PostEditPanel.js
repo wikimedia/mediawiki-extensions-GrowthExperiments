@@ -12,9 +12,11 @@
 	 * @constructor
 	 * @param {Object} config
 	 * @param {string} config.taskType Task type of the current task.
-	 * @param {string} config.taskState State of the current task, as in SuggestedEditSession.taskState.
-	 * @param {mw.libs.ge.TaskData|null} config.nextTask Data for the next suggested edit, as returned by
-	 *   GrowthTasksApi, or null if there are no available tasks or fetching tasks failed.
+	 * @param {string} config.taskState State of the current task, as in
+	 *   SuggestedEditSession.taskState.
+	 * @param {mw.libs.ge.TaskData|null} config.nextTask Data for the next suggested edit,
+	 *   as returned by GrowthTasksApi, or null if there are no available tasks or fetching
+	 *   tasks failed.
 	 * @param {Object} config.taskTypes Task type data, as returned by
 	 *   HomepageHooks::getTaskTypesJson.
 	 * @param {mw.libs.ge.NewcomerTaskLogger} config.newcomerTaskLogger
@@ -209,7 +211,8 @@
 	 *
 	 * @param {Object} extraData
 	 * @param {string} extraData.savedTaskType Type of the task for which the edit was just saved.
-	 * @param {string} [extraData.errorMessage] Error message, only if there was a task loading error.
+	 * @param {string} [extraData.errorMessage] Error message, only if there was a task loading
+	 *   error.
 	 * @param {Array<string>} [extraData.userTaskTypes] User's task type filter settings,
 	 *   only if the impression involved showing a task
 	 * @param {Array<string>} [extraData.userTopics] User's topic filter settings,

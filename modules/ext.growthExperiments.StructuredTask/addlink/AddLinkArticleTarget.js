@@ -65,8 +65,8 @@ AddLinkArticleTarget.prototype.beforeSurfaceReady = function () {
  * @override
  */
 AddLinkArticleTarget.prototype.afterSurfaceReady = function () {
-	// On mobile, the surface is not yet attached to the DOM when this runs, so wait for that to happen
-	// On desktop, the surface is already attached, and we can do this immediately
+	// On mobile, the surface is not yet attached to the DOM when this runs, so wait for that
+	// to happen. On desktop, the surface is already attached, and we can do this immediately.
 	if ( OO.ui.isMobile() ) {
 		this.overlay.on( 'editor-loaded', this.selectFirstRecommendation.bind( this ) );
 	} else {
@@ -189,10 +189,13 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 	// If suggestions contains { text: 'foo', index: 2, target: 'bar' }, then
 	// phraseMap will contain { 'foo': { occurrencesSeen: 0, linkTargets: { 2: 'bar' } } }
 	for ( i = 0; i < suggestions.length; i++ ) {
-		phrase = phraseMap[ suggestions[ i ].link_text ] = phraseMap[ suggestions[ i ].link_text ] || {
-			occurrencesSeen: 0,
-			suggestions: {}
-		};
+		if ( !phraseMap[ suggestions[ i ].link_text ] ) {
+			phraseMap[ suggestions[ i ].link_text ] = {
+				occurrencesSeen: 0,
+				suggestions: {}
+			};
+		}
+		phrase = phraseMap[ suggestions[ i ].link_text ];
 		phrase.suggestions[ suggestions[ i ].match_index ] = suggestions[ i ];
 	}
 
@@ -201,7 +204,8 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
 	regex = buildRegex( Object.keys( phraseMap ) );
 	anythingLeft = Object.keys( phraseMap ).length > 0;
 	textNode = treeWalker.nextNode();
-	// TODO: deal with span-wrapped entities, and possibly with partially-annotated phrases (T267695)
+	// TODO: deal with span-wrapped entities, and possibly with partially-annotated phrases
+	//   (T267695)
 	while ( anythingLeft && textNode ) {
 		// Move the TreeWalker forward before we do anything. This avoids the need for confusing
 		// trickery later if we change the DOM to add a wrapper
@@ -462,9 +466,10 @@ AddLinkArticleTarget.prototype.getAnnotationStates = function () {
 		// Despite the name, getDisplayTitle() is the title, not the display title.
 		state = {
 			title: annotation.getDisplayTitle(),
-			text: annotation.getOriginalDomElements( annotation.getStore() ).map( function ( element ) {
-				return element.textContent;
-			} ).join( '' )
+			text: annotation.getOriginalDomElements( annotation.getStore() )
+				.map( function ( element ) {
+					return element.textContent;
+				} ).join( '' )
 		};
 		if ( annotation.isAccepted() ) {
 			state.accepted = true;

@@ -303,7 +303,8 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 		}.bind( this ) );
 
 		acceptancePromise = openRejectionDialogWindowPromise.closed.then( function ( closedData ) {
-			var rejectionReason = closedData && closedData.reason || this.currentDataModel.getRejectionReason();
+			var rejectionReason = closedData && closedData.reason ||
+				this.currentDataModel.getRejectionReason();
 			this.logger.log(
 				'close',
 				$.extend( this.suggestionLogMetadata(), {

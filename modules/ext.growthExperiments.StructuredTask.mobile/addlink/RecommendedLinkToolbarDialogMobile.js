@@ -98,7 +98,8 @@ RecommendedLinkToolbarDialogMobile.prototype.updateContentForCurrentRecommendati
 		this.prepareAnimatedContent( this.$acceptanceButtonsContainer, true );
 	}
 
-	RecommendedLinkToolbarDialogMobile.super.prototype.updateContentForCurrentRecommendation.call( this );
+	RecommendedLinkToolbarDialogMobile.super.prototype.updateContentForCurrentRecommendation
+		.call( this );
 
 	if ( this.annotationView ) {
 		this.$labelPreviewText.text( this.annotationView.$element.text() );

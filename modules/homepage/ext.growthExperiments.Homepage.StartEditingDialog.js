@@ -17,8 +17,10 @@ var TopicSelectionWidget = require( './ext.growthExperiments.Homepage.TopicSelec
  *   part of the page from the start), 'welcome' (launched from the homepage welcome dialog),
  *   'info-icon' (launched via the info icon in the suggested edits module header)
  * @param {boolean} config.useTopicSelector Whether to show the topic selector in the intro panel
- * @param {boolean} config.useTaskTypeSelector Whether to show the task type selector in the difficulty panel
- * @param {boolean} config.activateWhenDone Whether to activate suggested edits when the user finishes the dialog
+ * @param {boolean} config.useTaskTypeSelector Whether to show the task type selector in the
+ *   difficulty panel
+ * @param {boolean} config.activateWhenDone Whether to activate suggested edits when the user
+ *   finishes the dialog
  * @param {HomepageModuleLogger} logger
  * @param {mw.libs.ge.GrowthTasksApi} api
  * @constructor
@@ -322,7 +324,8 @@ StartEditingDialog.prototype.getSize = function () {
 };
 
 StartEditingDialog.prototype.getSizeProperties = function () {
-	var parentResult = StartEditingDialog.super.prototype.getSizeProperties.apply( this, arguments );
+	var parentResult = StartEditingDialog.super.prototype.getSizeProperties
+		.apply( this, arguments );
 	// Custom width: 640px instead of 700px when not full size (T258016#6495190)
 	return this.getSize() === 'full' ? parentResult : { width: 640 };
 };
@@ -351,8 +354,9 @@ StartEditingDialog.prototype.getBodyHeight = function () {
 };
 
 StartEditingDialog.prototype.buildIntroPanel = function () {
-	var $generalIntro, $generalImage, $responseIntro, surveyData, responseData, imageData, imageUrl, generalImageUrl,
-		$topicIntro, $topicMessage, $topicSelectorWrapper, $topicDescription, descriptionImage,
+	var $generalIntro, $generalImage, $responseIntro, surveyData, responseData, imageData,
+		imageUrl, generalImageUrl, $topicIntro, $topicMessage, $topicSelectorWrapper,
+		$topicDescription, descriptionImage,
 		imagePath = mw.config.get( 'wgExtensionAssetsPath' ) + '/GrowthExperiments/images',
 		config = require( './suggestededits/config.json' ),
 		introLinks = config.GEHomepageSuggestedEditsIntroLinks,
@@ -477,7 +481,8 @@ StartEditingDialog.prototype.buildIntroPanel = function () {
 						topicGroup: groupId
 					} );
 				},
-				// The "select all" buttons fire many toggleSelection events at once, so debounce them
+				// The "select all" buttons fire many toggleSelection events at once, so
+				// debounce them.
 				toggleSelection: 'updateMatchCountDebounced'
 			} );
 			$topicSelectorWrapper = $( '<div>' )
@@ -762,9 +767,9 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 
 	return mw.loader.using( moduleDependencies ).then( function ( require ) {
 		if ( this.mode === 'mobile-overlay' ) {
-			// Replace the current URL, so that when the user exits the overlay or hits the back button,
-			// they go to the main page. If we used router.navigate() here, they'd go back to the
-			// start module overlay instead.
+			// Replace the current URL, so that when the user exits the overlay or hits the
+			// back button, they go to the main page. If we used router.navigate() here,
+			// they'd go back to the start module overlay instead.
 			window.history.replaceState( null, null, '#/homepage/suggested-edits' );
 			window.dispatchEvent( new HashChangeEvent( 'hashchange' ) );
 		} else if ( this.mode === 'mobile-summary' ) {

@@ -42,10 +42,10 @@
 			$overlay = $( '<div>' ).addClass( 'mw-ge-help-panel-widget-overlay' ),
 			logger = new HelpPanelLogger( configData.GEHelpPanelLoggingEnabled, {
 				previousEditorInterface: suggestedEditSession.editorInterface,
-				// If the user is following a link in a suggested edit task card (which has a click ID,
-				// which causes wgGEHomepagePageviewToken to be set on the server side), inherit
-				// the session ID of the source page. Otherwise, preserve the suggested edit session's
-				// ID, if we are in one.
+				// If the user is following a link in a suggested edit task card (which has a
+				// click ID, which causes wgGEHomepagePageviewToken to be set on the server side),
+				// inherit the session ID of the source page. Otherwise, preserve the suggested
+				// edit session's ID, if we are in one.
 				sessionId: mw.config.get( 'wgGEHomepagePageviewToken' ) ||
 					suggestedEditSession.active && suggestedEditSession.clickId,
 				isSuggestedTask: suggestedEditSession.active
@@ -310,8 +310,9 @@
 				attachHelpButton( helpPanelProcessDialog.logger.getEditor() );
 
 				if ( suggestedEditSession.helpPanelShouldOpen ) {
-					// Open the help panel to the suggested-edits panel, animating it in from the bottom
-					// Perform this special animation only once, the first time the help panel opens
+					// Open the help panel to the suggested-edits panel, animating it in from
+					// the bottom. Perform this special animation only once, the first time the
+					// help panel opens.
 					$overlay.addClass( 'mw-ge-help-panel-popup-guidance' );
 					openHelpPanel( suggestedEditSession.helpPanelCurrentPanel || 'suggested-edits' ).closing
 						.done( function () {

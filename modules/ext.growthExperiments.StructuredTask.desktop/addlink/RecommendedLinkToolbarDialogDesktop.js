@@ -59,7 +59,8 @@ RecommendedLinkToolbarDialogDesktop.prototype.afterSetupProcess = function () {
  * @inheritdoc
  */
 RecommendedLinkToolbarDialogDesktop.prototype.updateContentForCurrentRecommendation = function () {
-	RecommendedLinkToolbarDialogDesktop.super.prototype.updateContentForCurrentRecommendation.call( this );
+	RecommendedLinkToolbarDialogDesktop.super.prototype.updateContentForCurrentRecommendation
+		.call( this );
 	this.updatePosition();
 	this.updateActionButtonsMode();
 };
@@ -87,7 +88,8 @@ RecommendedLinkToolbarDialogDesktop.prototype.updatePosition = function () {
 
 	if ( isRtl ) {
 		// Offset is the surface's right edge and the annotation's right edge.
-		startPosition = surfaceOffset.left + surfaceWidth - ( annotationOffset.left + annotationWidth );
+		startPosition = surfaceOffset.left + surfaceWidth -
+			( annotationOffset.left + annotationWidth );
 	} else {
 		startPosition = annotationOffset.left - surfaceOffset.left;
 	}

@@ -23,8 +23,8 @@
 		}
 
 		// The guider tip block is 42px wide and 21px away from the edge of the guider. Shift it
-		// 21+(42/2) px to the right so the tip points at the right edge of the target, then shift back
-		// <target width>/2.
+		// 21+(42/2) px to the right so the tip points at the right edge of the target, then
+		// shift back <target width>/2.
 		offset = Math.floor( 42 - $targetSelector.width() / 2 );
 
 		// Avoid offsetting beyond right viewport edge and causing a horizontal scrollbar.
@@ -51,25 +51,25 @@
 				targetSelector = tourStep.attachTo;
 
 			if ( tourStep.position === 'bottom' && isVectorCompactPersonalToolbar ) {
-				// The guider library does not support different guider positioning and tip positioning.
-				// 'bottom' will align the middle of the guider with the middle of the target element,
-				// which makes the guider extend beyond the right edge of the page in modern Vector with
-				// a compact personal bar. 'bottomRight' aligns the right edge of the guider with the
-				// right edge of the target element (left/left on RTL pages), which is more reasonable
-				// in theory when close to the screen edge but handled poorly by the library.
-				// That will be fixed below.
+				// The guider library does not support different guider positioning and tip
+				// positioning. 'bottom' will align the middle of the guider with the middle of
+				// the target element, which makes the guider extend beyond the right edge of the
+				// page in modern Vector with a compact personal bar. 'bottomRight' aligns the
+				// right edge of the guider with the right edge of the target element (left/left
+				// on RTL pages), which is more reasonable in theory when close to the screen
+				// edge but handled poorly by the library. That will be fixed below.
 				tourStep.position = 'bottomRight';
 			}
 
 			tourStep.offset = {
-				// The compact personal toolbar has lots of whitespace, making the guider feel detached.
-				// Compensate for it somewhat.
+				// The compact personal toolbar has lots of whitespace, making the guider feel
+				// detached. Compensate for it somewhat.
 				top: isVectorCompactPersonalToolbar ? -10 : null,
 				// The guider library has crude tip positioning logic. With 'bottomRight' the right
-				// edge of the guider and the target will be aligned, and the tip will just be placed
-				// some hardcoded number of pixels away from the edge. For a small target like the
-				// notification icon, it's not even pointing to the right icon. Use an offset to
-				// center it on the icon.
+				// edge of the guider and the target will be aligned, and the tip will just be
+				// placed some hardcoded number of pixels away from the edge. For a small target
+				// like the notification icon, it's not even pointing to the right icon. Use an
+				// offset to center it on the icon.
 				left: isVectorCompactPersonalToolbar ? getLeftOffset( targetSelector ) : null
 			};
 

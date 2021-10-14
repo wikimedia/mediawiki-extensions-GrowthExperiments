@@ -26,6 +26,7 @@
 
 	/**
 	 * Call log method on the logger instance (if the instance has been set)
+	 *
 	 * @static
 	 */
 	SuggestionInteractionLogger.log = function () {

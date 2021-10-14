@@ -11,12 +11,12 @@ var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession'
  * @property {string} metadata.descriptionUrl File description page URL.
  * @property {string} metadata.fullUrl URL of full-sized image.
  * @property {string} metadata.thumbUrl URL of image thumbnail used in the toolbar dialog.
- * @property {int} metadata.originalWidth Width of original image in pixels.
- * @property {int} metadata.originalHeight Height of original image in pixels.
+ * @property {number} metadata.originalWidth Width of original image in pixels.
+ * @property {number} metadata.originalHeight Height of original image in pixels.
  */
 /**
  * @typedef mw.libs.ge.ImageRecommendation
- * @property {ImageRecommendationImage[]} images Recommended images.
+ * @property {mw.libs.ge.ImageRecommendationImage[]} images Recommended images.
  * @property {string} datasetId Dataset version ID.
  */
 
@@ -192,7 +192,7 @@ AddImageArticleTarget.prototype.rollback = function () {
 
 /** @inheritDoc **/
 AddImageArticleTarget.prototype.save = function ( doc, options, isRetry ) {
-	/** @var {mw.libs.ge.ImageRecommendation} taskData */
+	/** @type {mw.libs.ge.ImageRecommendation} */
 	var taskData = suggestedEditSession.taskData;
 
 	options.plugins = 'ge-task-image-recommendation';

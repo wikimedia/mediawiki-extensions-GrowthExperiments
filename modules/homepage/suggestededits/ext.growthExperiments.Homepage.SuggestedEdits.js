@@ -288,8 +288,10 @@
 			hasNext = !this.taskQueueLoading && this.queuePosition < this.taskQueue.length;
 		this.previousWidget.setDisabled( !hasPrevious );
 		this.nextWidget.setDisabled( !hasNext );
-		this.previousWidget.toggle( this.currentCard instanceof EditCardWidget || this.taskQueue.length );
-		this.nextWidget.toggle( this.currentCard instanceof EditCardWidget || this.taskQueue.length );
+		this.previousWidget.toggle( this.currentCard instanceof EditCardWidget ||
+			this.taskQueue.length );
+		this.nextWidget.toggle( this.currentCard instanceof EditCardWidget ||
+			this.taskQueue.length );
 	};
 
 	/**
