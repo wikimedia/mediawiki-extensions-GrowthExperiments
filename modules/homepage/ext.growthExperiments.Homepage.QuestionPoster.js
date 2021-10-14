@@ -77,7 +77,8 @@
 			questionPosterAllowIncludingTitle: false,
 			suggestedEditSession: suggestedEditSession,
 			showCogMenu: false,
-			askSource: 'mentor-homepage'
+			askSource: 'mentor-homepage',
+			isQuestionPoster: true
 		}, config.dialog ) );
 		ctaButton = OO.ui.ButtonWidget.static.infuse( $container.find( config.buttonSelector ) );
 
