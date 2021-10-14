@@ -15,6 +15,7 @@ use OutputPage;
 use RawMessage;
 use Title;
 use User;
+use WebRequest;
 
 class HelpPanel {
 	use GrowthConfigLoaderStaticTrait;
@@ -133,6 +134,9 @@ class HelpPanel {
 				return false;
 			}
 		}
+		if ( self::isSuggestedEditRequest( $out->getRequest() ) ) {
+			return true;
+		}
 		return self::shouldShowHelpPanelToUser( $out->getUser() );
 	}
 
@@ -204,5 +208,14 @@ class HelpPanel {
 			'wgGEHelpPanelUserEmail' => $user->getEmail(),
 			'wgGEHelpPanelUserEmailConfirmed' => $user->isEmailConfirmed(),
 		];
+	}
+
+	/** Check if the request is from Special:Homepage to a Suggested Edit article.
+	 *
+	 * @param WebRequest $request
+	 * @return bool
+	 */
+	private static function isSuggestedEditRequest( WebRequest $request ): bool {
+		return $request->getBool( 'gesuggestededit' );
 	}
 }

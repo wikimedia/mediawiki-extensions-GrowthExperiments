@@ -670,7 +670,8 @@
 			newUrl = $link.attr( 'href' ) ?
 				new mw.Uri( $link.attr( 'href' ) ).extend( {
 					geclickid: clickId,
-					genewcomertasktoken: this.newcomerTaskToken
+					genewcomertasktoken: this.newcomerTaskToken,
+					gesuggestededit: 1
 				} ).toString() :
 				'';
 		$link

@@ -239,6 +239,10 @@
 			Utils.removeQueryParam( url, 'genewcomertasktoken' );
 		}
 
+		// url.query.gesuggestededit is not removed from the URL, because we need it to survive
+		// page reloads for any code that depends on its presence (e.g. loading the help panel
+		// when the preference is switched off T284088)
+
 		// Don't show help panel & mobile peek if the article is in edit mode
 		this.shouldOpenArticleInEditMode = url.query.veaction === 'edit';
 		this.helpPanelShouldOpen = !this.shouldOpenArticleInEditMode;
