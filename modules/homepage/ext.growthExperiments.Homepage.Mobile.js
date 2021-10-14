@@ -14,9 +14,9 @@
 
 	/**
 	 * @param {Element} suggestedEditsModuleNode DOM node of the suggested edits module.
-	 * @param {boolean} shouldLog If event logging should be used. Set to false when this method is called from
-	 * fetchTasksAndUpdateView, where the mobile summary HTML is updated when users interact with
-	 * task / topic filters.
+	 * @param {boolean} shouldLog If event logging should be used. Set to false when this method
+	 *   is called from fetchTasksAndUpdateView, where the mobile summary HTML is updated when
+	 *   users interact with task / topic filters.
 	 */
 	function loadExtraDataForSuggestedEdits( suggestedEditsModuleNode, shouldLog ) {
 		// FIXME doesn't belong here; not sure what the right place would be though.
@@ -187,8 +187,8 @@
 					markAsSeen = function () {
 						new mw.Api().saveOption( welcomeNoticeSeenPreference, 1 );
 					},
-					// FIXME: in a follow-up, convert these messages to something besides variant C/D,
-					// e.g. "se-activated" / "se-unactivated"
+					// FIXME: in a follow-up, convert these messages to something besides variant
+					//   C/D, e.g. "se-activated" / "se-unactivated"
 					variantKey = isSuggestedEditsActivated ? 'd' : 'c',
 					welcomeDrawer;
 
@@ -213,7 +213,8 @@
 									variantKey
 								).params( [ mw.user ] )
 									.parse() ),
-								$( '<footer>' ).addClass( 'growthexperiments-homepage-welcome-notice-footer' )
+								$( '<footer>' )
+									.addClass( 'growthexperiments-homepage-welcome-notice-footer' )
 									.append(
 										new Anchor( {
 											href: '#',
@@ -242,9 +243,12 @@
 				welcomeDrawer.$el.find( '.homepage-welcome-notice' ).on( 'click', function () {
 					buttonClicked = true;
 					markAsSeen();
-					homepageModuleLogger.log( 'generic', 'mobile-summary', 'welcome-close', { type: 'button' } );
-					// Launch the start editing dialog for mobile users who haven't activated the module yet.
-					// TODO: We should probably use mw.hook instead of mw.track/trackSubscribe here
+					homepageModuleLogger.log( 'generic', 'mobile-summary', 'welcome-close', {
+						type: 'button'
+					} );
+					// Launch the start editing dialog for mobile users who haven't activated
+					// the module yet.
+					// TODO: We should probably use mw.hook instead of mw.track/trackSubscribe
 					if ( isMobile && !isSuggestedEditsActivated ) {
 						mw.track( 'growthexperiments.startediting', {
 							// The welcome drawer doesn't belong to any module

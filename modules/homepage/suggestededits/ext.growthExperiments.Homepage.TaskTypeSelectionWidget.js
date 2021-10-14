@@ -143,7 +143,10 @@ TaskTypeSelectionWidget.prototype.makeHeadersForDifficulty = function ( difficul
  * @param {string[]} selectedTaskTypes Pre-selected task types
  * @return {OO.ui.CheckboxMultioptionWidget[]}
  */
-TaskTypeSelectionWidget.prototype.makeCheckboxesForDifficulty = function ( difficulty, selectedTaskTypes ) {
+TaskTypeSelectionWidget.prototype.makeCheckboxesForDifficulty = function (
+	difficulty,
+	selectedTaskTypes
+) {
 	var taskType,
 		TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
 		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),

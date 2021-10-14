@@ -22,13 +22,13 @@
 	 * @property {string} title Article title
 	 * @property {string} tasktype Task type ID.
 	 * @property {string} difficulty Task difficulty ('easy', 'medium' or 'hard').
-	 * @property {((string|number)[][])|null} Topics the task is in. Empty array when the user is not
-	 *   filtering for any topics, null with topic matching disabled entirely, otherwise an array
-	 *   of (topic ID, score) pairs.
-	 * @property {number|null|undefined} pageId Article page ID. Null when the article does not exist,
-	 *   which is common in some test/development setups where the returned titles are not local,
-	 *   and also in edge cases where the search index has not caught up with a page deletion yet.
-	 *   Can be undefined due to lazy-loading.
+	 * @property {((string|number)[][])|null} Topics the task is in. Empty array when the user
+	 *   is not filtering for any topics, null with topic matching disabled entirely, otherwise
+	 *   an array of (topic ID, score) pairs.
+	 * @property {number|null|undefined} pageId Article page ID. Null when the article does not
+	 *   exist, which is common in some test/development setups where the returned titles are not
+	 *   local, and also in edge cases where the search index has not caught up with a page
+	 *   deletion yet. Can be undefined due to lazy-loading.
 	 * @property {number|null|undefined} revisionId ID of last revision. Null when the article does
 	 *   not exist. Can be undefined due to lazy-loading.
 	 * @property {string|null} url Custom article URL. This is used in some development setups
@@ -43,13 +43,13 @@
 	 *   Null when the wiki or article is not connected to Wikidata or there is no description
 	 *   in the user's language, or the article does not exist, or when the GrowthTasksApi flag for
 	 *   including descriptions has not been set. Can be undefined due to lazy-loading.
-	 * @property {string|null|undefined} extract Article summary (from the RESTBase summary endpoint).
-	 *   Null when the article does not exist. Can be undefined due to lazy-loading, or when the
-	 *   wiki does not provide article summary information.
-	 * @property {number|null|undefined} pageviews Approximate number of page views in the last 60 days.
-	 *   Null when the article does not exist, or when no views have been processed for that article
-	 *   yet. Can be undefined due to lazy-loading, or when the wiki does not provide pageview
-	 *   information.
+	 * @property {string|null|undefined} extract Article summary (from the RESTBase summary
+	 *   endpoint). Null when the article does not exist. Can be undefined due to lazy-loading, or
+	 *   when the wiki does not provide article summary information.
+	 * @property {number|null|undefined} pageviews Approximate number of page views in the last
+	 *   60 days. Null when the article does not exist, or when no views have been processed for
+	 *   that article yet. Can be undefined due to lazy-loading, or when the wiki does not provide
+	 *   pageview information.
 	 */
 
 	/**
@@ -166,7 +166,7 @@
 
 			/**
 			 * @param {Object} item Single item from query API resultset
-			 * @return mw.libs.ge.TaskData
+			 * @return {mw.libs.ge.TaskData}
 			 */
 			function cleanUpData( item ) {
 				var task;
@@ -231,7 +231,8 @@
 	 * Can be customized via $wgGERestbaseUrl (by default will be assumed to be local;
 	 * setting it to null will disable querying PCS make this method a no-op).
 	 *
-	 * @param {mw.libs.ge.TaskData} task A task object returned by fetchTasks. It will be extended with new data:
+	 * @param {mw.libs.ge.TaskData} task A task object returned by fetchTasks. It will be extended
+	 *   with new data:
 	 *   - extract: the page summary
 	 *   - thumbnailSource: URL to the thumbnail of the page image (if one exists)
 	 * @param {Object} [config] Additional configuration. The object passed to fetchTasks() can be
@@ -239,7 +240,8 @@
 	 * @param {number} [config.thumbnailWidth] Ideal thumbnail width. The actual width might be
 	 *   smaller if the original image itself is smaller.
 	 * @param {string} [config.context] The context in which this function was
-	 *   called, used for performance instrumentation. Overrides the context given in the constructor.
+	 *   called, used for performance instrumentation. Overrides the context given in the
+	 *   constructor.
 	 * @return {jQuery.Promise<mw.libs.ge.TaskData>} A promise with the task object.
 	 * @see https://www.mediawiki.org/wiki/Page_Content_Service#/page/summary
 	 * @see https://en.wikipedia.org/api/rest_v1/#/Page%20content/get_page_summary__title_
@@ -293,13 +295,16 @@
 	 * Can be customized via $wgPageViewInfoWikimediaDomain (by default will use
 	 * the Wikimedia instance).
 	 *
-	 * @param {mw.libs.ge.TaskData} task A task object returned by fetchTasks. It will be extended with new data:
+	 * @param {mw.libs.ge.TaskData} task A task object returned by fetchTasks. It will be extended
+	 *   with new data:
 	 *   - pageviews: number of views to the task's page in the last two months
 	 * @param {Object} [config] Additional configuration. The object passed to fetchTasks() can be
 	 *   reused here.
 	 * @param {string} [config.context] The context in which this function was
-	 *   called, used for performance instrumentation. Overrides the context given in the constructor.
-	 * @return {jQuery.Promise<mw.libs.ge.TaskData>} A promise with extra data to extend the task object with.
+	 *   called, used for performance instrumentation. Overrides the context given in the
+	 *   constructor.
+	 * @return {jQuery.Promise<mw.libs.ge.TaskData>} A promise with extra data to extend the task
+	 *   object with.
 	 * @see https://wikitech.wikimedia.org/wiki/Analytics/AQS/Pageviews
 	 * @see https://w.wiki/J8K
 	 */
@@ -359,8 +364,9 @@
 	 * @return {{taskTypes: Array<string>, topics: Array<string>|null}}
 	 */
 	GrowthTasksApi.prototype.getPreferences = function () {
-		var savedTaskTypes = mw.user.options.get( 'growthexperiments-homepage-se-filters' ),
-			savedTopics = mw.user.options.get( this.suggestedEditsConfig.GENewcomerTasksTopicFiltersPref ),
+		var topicFiltersPref = this.suggestedEditsConfig.GENewcomerTasksTopicFiltersPref,
+			savedTaskTypes = mw.user.options.get( 'growthexperiments-homepage-se-filters' ),
+			savedTopics = mw.user.options.get( topicFiltersPref ),
 			taskTypes = savedTaskTypes ? JSON.parse( savedTaskTypes ) : this.defaultTaskTypes,
 			topics = savedTopics ? JSON.parse( savedTopics ) : null;
 

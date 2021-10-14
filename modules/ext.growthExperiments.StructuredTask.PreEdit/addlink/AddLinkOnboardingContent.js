@@ -67,7 +67,9 @@ module.exports = ( function () {
 			title: mw.message( 'growthexperiments-addlink-onboarding-content-about-suggested-links-title' ).text(),
 			paragraph1: mw.message( 'growthexperiments-addlink-onboarding-content-about-suggested-links-body', userName ).text(),
 			learnMoreLinkText: mw.message( 'growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text' ).text(),
-			learnMoreLinkUrl: taskTypeData.learnMoreLink ? mw.util.getUrl( taskTypeData.learnMoreLink ) : null
+			learnMoreLinkUrl: taskTypeData.learnMoreLink ?
+				mw.util.getUrl( taskTypeData.learnMoreLink ) :
+				null
 		};
 	}
 

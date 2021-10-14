@@ -55,7 +55,8 @@
 					// ext.growthExperiments.Homepage.StartEditing.js
 					infoButton.$element.data( 'module-name', options.moduleName );
 					infoButton.$element.data( 'mode', 'mobile-overlay' );
-					// HACK: make infusing this button (pretend to) work, even though it was created in JS
+					// HACK: make infusing this button (pretend to) work, even though
+					//   it was created in JS
 					infoButton.$element.data( 'ooui-infused', infoButton );
 					return View.make(
 						{ class: 'homepage-module-overlay-info' },

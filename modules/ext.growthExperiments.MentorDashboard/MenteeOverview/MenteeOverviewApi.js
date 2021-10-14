@@ -146,9 +146,11 @@
 			menteeOverviewApi.getStarredMentees().then( function () {
 				// Remove mentee ID from list of starred mentees; In case GetStarredMentees
 				// fallbacked to API, this is actually not necessary, but it shouldn't hurt.
-				menteeOverviewApi.starredMentees = menteeOverviewApi.starredMentees.filter( function ( el ) {
-					return el !== Number( userId );
-				} );
+				menteeOverviewApi.starredMentees = menteeOverviewApi.starredMentees.filter(
+					function ( el ) {
+						return el !== Number( userId );
+					}
+				);
 			} );
 		} );
 	};

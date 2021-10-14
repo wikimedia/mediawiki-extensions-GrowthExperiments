@@ -57,8 +57,8 @@
 			logData.match_score = task.topics[ 0 ][ 1 ];
 		}
 		if ( task.pageviews || task.pageviews === 0 ) {
-			// This field can be null in the task object but is required by the eventgate schema to have an
-			// integer value, so conditionally add it to logData here.
+			// This field can be null in the task object but is required by the eventgate schema
+			// to have an integer value, so conditionally add it to logData here.
 			logData.pageviews = task.pageviews;
 		}
 		return logData;

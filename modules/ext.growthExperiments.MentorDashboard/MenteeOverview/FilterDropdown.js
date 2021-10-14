@@ -130,7 +130,8 @@
 		}
 
 		if ( selectedValue !== this.filterDropdownActiveDaysAgoValue ) {
-			// user either clicked for the first time, or clicked a different option; store their selection
+			// user either clicked for the first time, or clicked a different option; store
+			// their selection
 			this.filterDropdownActiveDaysAgoValue = selectedValue;
 		} else {
 			// user clicked same item for the second time, reset selection
@@ -165,7 +166,8 @@
 		}
 
 		if ( selectedValue !== this.filterDropdownActiveDaysAgoValue ) {
-			// user either clicked for the first time, or clicked a different option; store their selection
+			// user either clicked for the first time, or clicked a different option; store
+			// their selection
 			this.filterDropdownActiveDaysAgoValue = selectedValue;
 		} else {
 			// user clicked same item for the second time, reset selection

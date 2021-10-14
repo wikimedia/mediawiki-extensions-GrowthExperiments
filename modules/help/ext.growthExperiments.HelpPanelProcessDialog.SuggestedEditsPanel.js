@@ -82,7 +82,8 @@
 		return quickStartTips.getTips(
 			this.taskTypeData.id, this.editorInterface, this.currentTip
 		).then( function ( tipsPanel ) {
-			this.headerAndTipsPanel.addItems( [ this.headerPanel, this.switchEditorPanel, tipsPanel ] );
+			this.headerAndTipsPanel.addItems( [ this.headerPanel, this.switchEditorPanel,
+				tipsPanel ] );
 			this.addItems( [ this.headerAndTipsPanel, this.footerPanel ] );
 			// Used by the auto-advance logic in HelpPanelProcessDialog
 			this.tipsPanel = tipsPanel;

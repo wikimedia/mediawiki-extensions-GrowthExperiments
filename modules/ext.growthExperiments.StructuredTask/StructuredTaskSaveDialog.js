@@ -46,7 +46,9 @@ StructuredTaskSaveDialog.prototype.getSetupProcess = function ( data ) {
 
 /** @inheritDoc */
 StructuredTaskSaveDialog.prototype.getTeardownProcess = function ( data ) {
-	return this.constructor.super.prototype.getTeardownProcess.call( this, data ).next( function () {
+	return this.constructor.super.prototype.getTeardownProcess.call(
+		this, data
+	).next( function () {
 		var suggestedEditSession = SuggestedEditSession.getInstance();
 
 		// T283765: use the stored pageview token. The real one might have been reset at
@@ -74,7 +76,9 @@ StructuredTaskSaveDialog.prototype.getTeardownProcess = function ( data ) {
 
 /** @inheritDoc */
 StructuredTaskSaveDialog.prototype.getActionProcess = function ( action ) {
-	return this.constructor.super.prototype.getActionProcess.call( this, action ).next( function () {
+	return this.constructor.super.prototype.getActionProcess.call(
+		this, action
+	).next( function () {
 		if ( [ 'save', 'review', 'approve', 'report' ].indexOf( action ) >= 0 ) {
 			SuggestionInteractionLogger.log( 'editsummary_' + action, {}, {
 				/* eslint-disable camelcase */

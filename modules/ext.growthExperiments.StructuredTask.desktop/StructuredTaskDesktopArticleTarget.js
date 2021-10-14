@@ -60,7 +60,9 @@ StructuredTaskDesktopArticleTarget.prototype.onBeforeUnload = function () {
 		// Custom confirmation dialog is shown so default warning should be skipped.
 		return;
 	}
-	return StructuredTaskDesktopArticleTarget.super.prototype.onBeforeUnload.apply( this, arguments );
+	return StructuredTaskDesktopArticleTarget.super.prototype.onBeforeUnload.apply(
+		this, arguments
+	);
 };
 
 module.exports = StructuredTaskDesktopArticleTarget;
