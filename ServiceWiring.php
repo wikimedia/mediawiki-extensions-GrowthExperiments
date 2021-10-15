@@ -16,6 +16,7 @@ use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\MentorDashboard\MenteeOverview\DatabaseMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
+use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
@@ -324,6 +325,19 @@ return [
 			$services->getActorMigration(),
 			$services->getUserIdentityLookup(),
 			$services->getDBLoadBalancer()->getConnection( DB_REPLICA, 'vslow' )
+		);
+	},
+
+	'GrowthExperimentsMenteeOverviewDataUpdater' => static function (
+		MediaWikiServices $services
+	) {
+		$geServices = GrowthExperimentsServices::wrap( $services );
+		return new MenteeOverviewDataUpdater(
+			$geServices->getUncachedMenteeOverviewDataProvider(),
+			$geServices->getMenteeOverviewDataProvider(),
+			$geServices->getMentorStore(),
+			$services->getDBLoadBalancerFactory(),
+			$geServices->getLoadBalancer()
 		);
 	},
 
