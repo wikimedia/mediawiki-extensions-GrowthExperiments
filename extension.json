@@ -48,7 +48,8 @@
 	"JobClasses": {
 		"newcomerTasksCacheRefreshJob": "GrowthExperiments\\NewcomerTasks\\TaskSuggester\\NewcomerTasksCacheRefreshJob",
 		"setUserMentorDatabaseJob": "GrowthExperiments\\Mentorship\\Store\\SetUserMentorDatabaseJob",
-		"reassignMenteesJob": "GrowthExperiments\\Mentorship\\ReassignMenteesJob"
+		"reassignMenteesJob": "GrowthExperiments\\Mentorship\\ReassignMenteesJob",
+		"menteeOverviewUpdateDataForMentor": "GrowthExperiments\\MentorDashboard\\MenteeOverview\\MenteeOverviewUpdateDataForMentorJob"
 	},
 	"APIModules": {
 		"helppanelquestionposter": {
@@ -74,6 +75,13 @@
 			"services": [
 				"GrowthExperimentsMentorManager",
 				"GrowthExperimentsMentorStatusManager"
+			]
+		},
+		"growthmentordashboardupdatedata": {
+			"class": "GrowthExperiments\\Api\\ApiMentorDashboardUpdateData",
+			"services": [
+				"GrowthExperimentsMentorManager",
+				"JobQueueGroup"
 			]
 		}
 	},
@@ -2008,6 +2016,12 @@
 	},
 	"GrantPermissionGroups": {
 		"managementorship": "administration"
+	},
+	"RateLimits": {
+		"growthmentordashboardupdatedata": {
+			"&can-bypass": false,
+			"user": [ 1, 7200 ]
+		}
 	},
 	"manifest_version": 2
 }
