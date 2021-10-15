@@ -1235,7 +1235,8 @@
 		"ext.growthExperiments.HelpPanel": {
 			"styles": [
 				"helppanel/ext.growthExperiments.HelpPanelPopup.less",
-				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.TaskExplanation.less"
+				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.TaskExplanation.less",
+				"ui-components/HelpPanelButton.less"
 			],
 			"packageFiles": [
 				"helppanel/ext.growthExperiments.HelpPanel.cta.js",
@@ -1247,6 +1248,7 @@
 				"homepage/suggestededits/TaskTypesAbFilter.js",
 				"utils/ext.growthExperiments.Utils.js",
 				"utils/ext.growthExperiments.IconUtils.js",
+				"ui-components/HelpPanelButton.js",
 				{
 					"name": "homepage/suggestededits/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
@@ -1413,6 +1415,9 @@
 					"file": "../images/suggestededits/Topic-general-64w.svg"
 				},
 				"robot-black": "ext.growthExperiments.StructuredTask/robot-black.svg",
+				"chevron-down": {
+					"file": "../images/chevron-down.svg"
+				},
 				"close-destructive": {
 					"file": "../images/close-destructive.svg"
 				},

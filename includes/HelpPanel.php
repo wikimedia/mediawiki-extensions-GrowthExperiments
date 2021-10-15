@@ -5,11 +5,11 @@ namespace GrowthExperiments;
 use Config;
 use ConfigException;
 use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
+use GrowthExperiments\HelpPanel\HelpPanelButton;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use Html;
 use MediaWiki\MediaWikiServices;
 use MessageLocalizer;
-use OOUI\ButtonWidget;
 use OOUI\Tag;
 use OutputPage;
 use RawMessage;
@@ -23,30 +23,22 @@ class HelpPanel {
 	public const HELPDESK_QUESTION_TAG = 'help panel question';
 
 	/**
-	 * @param bool $mobile
 	 * @return Tag
 	 * @throws ConfigException
 	 */
-	public static function getHelpPanelCtaButton( $mobile ) {
+	public static function getHelpPanelCtaButton() {
 		$helpdeskTitle = self::getHelpDeskTitle(
 			GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )->getGrowthWikiConfig()
 		);
 		$btnWidgetArr = [
-			'id' => 'mw-ge-help-panel-cta-button',
-			'target' => '_blank',
 			'label' => wfMessage( 'growthexperiments-help-panel-cta-button-text' )->text(),
-			'invisibleLabel' => true,
-			'infusable' => true,
-			'icon' => 'help',
-			'indicator' => 'up',
-			'flags' => [ 'primary', 'progressive' ],
 		];
 		if ( $helpdeskTitle ) {
 			$btnWidgetArr['href'] = $helpdeskTitle->getLinkURL();
 		}
 		return ( new Tag( 'div' ) )
-			->addClasses( [ 'mw-ge-help-panel-cta', $mobile ? 'mw-ge-help-panel-cta-mobile' : '' ] )
-			->appendContent( new ButtonWidget( $btnWidgetArr ) );
+			->addClasses( [ 'mw-ge-help-panel-cta' ] )
+			->appendContent( new HelpPanelButton( $btnWidgetArr ) );
 	}
 
 	/**
