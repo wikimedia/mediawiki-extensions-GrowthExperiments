@@ -4,7 +4,9 @@ namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
 use FormatJson;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserOptionsManager;
 use Wikimedia\Rdbms\ILoadBalancer;
 use Wikimedia\Rdbms\LBFactory;
 
@@ -15,6 +17,8 @@ use Wikimedia\Rdbms\LBFactory;
  * to complete. It may only be used from CLI scripts or MediaWiki jobs.
  */
 class MenteeOverviewDataUpdater {
+	public const LAST_UPDATE_PREFERENCE = 'growthexperiments-mentor-dashboard-last-update';
+
 	/** @var UncachedMenteeOverviewDataProvider */
 	private $uncachedMenteeOverviewDataProvider;
 
@@ -23,6 +27,12 @@ class MenteeOverviewDataUpdater {
 
 	/** @var MentorStore */
 	private $mentorStore;
+
+	/** @var UserOptionsManager */
+	private $userOptionsManager;
+
+	/** @var UserFactory */
+	private $userFactory;
 
 	/** @var LBFactory */
 	private $lbFactory;
@@ -40,6 +50,8 @@ class MenteeOverviewDataUpdater {
 	 * @param UncachedMenteeOverviewDataProvider $uncachedMenteeOverviewDataProvider
 	 * @param MenteeOverviewDataProvider $menteeOverviewDataProvider
 	 * @param MentorStore $mentorStore
+	 * @param UserOptionsManager $userOptionsManager
+	 * @param UserFactory $userFactory
 	 * @param LBFactory $lbFactory
 	 * @param ILoadBalancer $growthLoadBalancer
 	 */
@@ -47,12 +59,16 @@ class MenteeOverviewDataUpdater {
 		UncachedMenteeOverviewDataProvider $uncachedMenteeOverviewDataProvider,
 		MenteeOverviewDataProvider $menteeOverviewDataProvider,
 		MentorStore $mentorStore,
+		UserOptionsManager $userOptionsManager,
+		UserFactory $userFactory,
 		LBFactory $lbFactory,
 		ILoadBalancer $growthLoadBalancer
 	) {
 		$this->uncachedMenteeOverviewDataProvider = $uncachedMenteeOverviewDataProvider;
 		$this->menteeOverviewDataProvider = $menteeOverviewDataProvider;
 		$this->mentorStore = $mentorStore;
+		$this->userOptionsManager = $userOptionsManager;
+		$this->userFactory = $userFactory;
 		$this->lbFactory = $lbFactory;
 		$this->growthLoadBalancer = $growthLoadBalancer;
 	}
@@ -153,6 +169,14 @@ class MenteeOverviewDataUpdater {
 		if ( $this->menteeOverviewDataProvider instanceof DatabaseMenteeOverviewDataProvider ) {
 			$this->menteeOverviewDataProvider->invalidateCacheForMentor( $mentor );
 		}
+
+		// update the last update timestamp
+		$this->userOptionsManager->setOption(
+			$mentor,
+			self::LAST_UPDATE_PREFERENCE,
+			wfTimestamp( TS_MW )
+		);
+		$this->userFactory->newFromUserIdentity( $mentor )->saveSettings();
 
 		return $updatedMenteeIds;
 	}

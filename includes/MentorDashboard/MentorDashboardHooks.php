@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\MentorDashboard;
 
+use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
@@ -17,6 +18,9 @@ class MentorDashboardHooks implements GetPreferencesHook, UserGetDefaultOptionsH
 		$preferences[ MentorDashboardDiscoveryHooks::MENTOR_DASHBOARD_SEEN_PREF ] = [
 			'type' => 'api',
 		];
+		$preferences[ MenteeOverviewDataUpdater::LAST_UPDATE_PREFERENCE ] = [
+			'type' => 'api',
+		];
 	}
 
 	/**
@@ -27,6 +31,7 @@ class MentorDashboardHooks implements GetPreferencesHook, UserGetDefaultOptionsH
 		$defaultOptions += [
 			StarredMenteesStore::STARRED_MENTEES_PREFERENCE => '',
 			MentorDashboardDiscoveryHooks::MENTOR_DASHBOARD_SEEN_PREF => 0,
+			MenteeOverviewDataUpdater::LAST_UPDATE_PREFERENCE => null,
 		];
 	}
 }
