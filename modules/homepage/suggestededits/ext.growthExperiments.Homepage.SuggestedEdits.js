@@ -1,11 +1,3 @@
-/**
- * @external HomepageModuleLogger
- * @external mw.libs.ge.GrowthTasksApi
- * @external SuggestedEditCardWidget
- * @external ErrorCardWidget
- * @external NoResultsWidget
- * @external EndOfQueueWidget
- */
 ( function () {
 	var EditCardWidget = require( './ext.growthExperiments.Homepage.SuggestedEditCardWidget.js' ),
 		EndOfQueueWidget = require( './ext.growthExperiments.Homepage.SuggestedEdits.EndOfQueueWidget.js' ),

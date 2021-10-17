@@ -1,6 +1,3 @@
-/**
- * @external HomepageModuleLogger
- */
 ( function () {
 	'use strict';
 

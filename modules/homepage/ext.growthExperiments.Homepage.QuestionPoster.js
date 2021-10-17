@@ -1,7 +1,3 @@
-/**
- * @external QuestionPosterDialog
- * @external Help
- */
 ( function () {
 	var attachButton = function ( config, $container ) {
 		var appendWindowManagerToBody = function ( windowManager, dialog ) {

@@ -1,7 +1,3 @@
-/**
- * @external PostEditPanel
- */
-
 'use strict';
 
 ( function () {
