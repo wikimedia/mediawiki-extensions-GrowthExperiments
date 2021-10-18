@@ -267,7 +267,8 @@ return [
 			$loadBalancer->getLazyConnectionRef( DB_REPLICA ),
 			$loadBalancer->getLazyConnectionRef( DB_PRIMARY ),
 			$services->getTitleFactory(),
-			$services->getLinkBatchFactory()
+			$services->getLinkBatchFactory(),
+			$services->getPageStore()
 		);
 	},
 

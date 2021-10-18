@@ -30,7 +30,8 @@ class LinkRecommendationStoreTest extends MediaWikiIntegrationTestCase {
 			$this->db,
 			$this->db,
 			$this->getServiceContainer()->getTitleFactory(),
-			$this->getServiceContainer()->getLinkBatchFactory()
+			$this->getServiceContainer()->getLinkBatchFactory(),
+			$this->getServiceContainer()->getPageStore()
 		);
 
 		$pageIds = [];
