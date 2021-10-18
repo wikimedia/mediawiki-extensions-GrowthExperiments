@@ -116,6 +116,7 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Vahvista sähköpostiosoitteesi",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "Jos {{GENDER:$1|haluaisit}} saada ilmoitukset myös sähköpostiisi, lisää sähköpostiosoite nyt.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "Lisää sähköpostiosoite",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Tietoa neuvontapaneelista",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "Muuten, lähettämällä tämän kysymyksen teit juuri ensimmäisen muokkauksesi. Onneksi olkoon!",
 	"growthexperiments-help-panel-settings-cog-preferences-link": "Ota neuvontapaneeli pois käytöstä",
 	"growthexperiments-help-panel-questionposter-invalid-title": "Virheellinen otsikko.",

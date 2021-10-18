@@ -408,7 +408,6 @@
 	"growthexperiments-addimage-inspector-show-button": "Показати пропозицію зображення",
 	"growthexperiments-addimage-inspector-help-button": "Отримайте допомогу з редагуванням",
 	"growthexperiments-addimage-inspector-details-button": "Показати деталі",
-	"growthexperiments-addimage-rejectiondialog-title": "Чому ні?",
 	"growthexperiments-addimage-rejectiondialog-header": "Чому це зображення не підходить для статті?",
 	"growthexperiments-addimage-rejectiondialog-subheader": "{{GENDER:|Ваші}} відповіді покращують якість майбутніх підказок.",
 	"growthexperiments-addimage-rejectiondialog-action-done": "Готово",
@@ -419,5 +418,8 @@
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Не знаю цієї теми",
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Не вмію читати цією мовою",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Інше",
-	"growthexperiments-addimage-viewer-close-button": "Закрити"
+	"growthexperiments-addimage-viewer-close-button": "Закрити",
+	"growthexperiments-addimage-onboarding-content-intro-title": "Зображення можуть допомогти людям дізнатися про тему, але в багатьох статтях немає зображень.",
+	"growthexperiments-addimage-onboarding-content-intro-body-paragraph1": "У цьому завданні {{GENDER:$1|ви}} вирішите, чи підходить зображення зі Вікісховища (база даних безкоштовних ліцензійних зображень) для статті у Вікіпедії, у якої ще немає зображення.",
+	"growthexperiments-addimage-onboarding-content-intro-body-paragraph2": "Зображення пропонуються машинами, що може бути неправильним. Ось чому для прийняття рішення потрібно {{GENDER:$1|ваше}} судження."
 }

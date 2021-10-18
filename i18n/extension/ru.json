@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Ailbeve",
+			"DDPAT",
 			"Kareyac",
 			"Kylaix",
 			"Nastua Buldakova",
@@ -13,11 +14,13 @@
 	"growthexperiments-config-validator-error": "Проверка $1 завершилась неудачно: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "Ожидается, что <code>$1</code> это <code>$2</code>, а это <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Несоответствие модели содержимого: файл конфигурации GrowthExperiments должен иметь модель содержимого JSON, обнаружено $1",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Недействителен идентификатор обработчика типа задачи: <code>$1</code> недопустимое значение",
 	"growthexperiments-edit-config-disabled": "Конфигурация в настоящее время отключена.",
 	"growthexperiments-edit-config-title": "Изменить конфигурацию \"Роста\"",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Последнее обновление [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Последнее обновление неизвестным участником $1.",
 	"growthexperiments-edit-config-pretext": "Эта страница позволяет редактировать конфигурацию для инструментов Команды [[:mw:Special:MyLanguage/Growth|\"Роста\"]]. Оно будет редактировать $1 от вашего имени. Изменения можно просмотреть в истории страницы.",
+	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|Вы}} также можете разместить баннер на главной странице новичка, чтобы включить объявления о событиях, важных для новичков. Чтобы сделать это, нужно добавить его в [[$1]] вручную. Любой добавлен там содержание будет отображаться желтым баннером в верхней части [[Special:Homepage]].",
 	"growthexperiments-edit-config-pretext-unprivileged": "Эта форма позволяет доверенным редакторам редактировать конфигурацию инструментов Команды [[:mw:Special:MyLanguage/Growth|\"Роста\"]].",
 	"growthexperiments-edit-config-feedback-headline": "У вас есть идеи или вопросы по этой форме?",
 	"growthexperiments-edit-config-feedback-cta": "Оставить отзыв!",
@@ -71,5 +74,10 @@
 	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Примечание: шаблоны для поиска статей, на которые нужно больше источников.",
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Целевая страница для получения дополнительных сведений о добавлении источников.",
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Обновление: шаблоны для поиска статей, информацию в которых нужно обновить.",
-	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Целевая страница для получения дополнительных сведений об обновлении информации в статьях."
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Целевая страница для получения дополнительных сведений об обновлении информации в статьях.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Страница назначения, где можно узнать больше о типе задачи по рекомендаций по ссылок.",
+	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Целевая страница, где можно узнать больше о типе задачи по рекомендации изображения.",
+	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Этот тип задач связан с машинными предложениями и не использует шаблоны для создания пула задач.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Статьи, содержащие определенные здесь шаблоны, а не показываться пользователям как задача для этого типа задач.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Статьи, содержащие определенные здесь категории, а не показываться участникам как задача для этого типа задач."
 }

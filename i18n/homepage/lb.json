@@ -146,9 +146,14 @@
 	"growthexperiments-addimage-inspector-no-button": "Neen",
 	"growthexperiments-addimage-inspector-skip-button": "Iwwersprangen",
 	"growthexperiments-addimage-inspector-details-button": "Detailer weisen",
-	"growthexperiments-addimage-rejectiondialog-title": "Firwat net?",
+	"growthexperiments-addimage-rejectiondialog-header": "Firwat ass dëst Bild net adequat fir den Artikel?",
 	"growthexperiments-addimage-rejectiondialog-action-done": "Fäerdeg",
 	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Bild ass net relevant",
+	"growthexperiments-addimage-rejectiondialog-reason-noinfo": "Net genuch Informatioune fir ze decidéieren",
+	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Bild ass verletzend",
+	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Bild huet eng niddreg Qualitéit",
+	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Ech kennen dëse Sujet net",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Ech kann d'Sprooch net liesen",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Anerer",
 	"growthexperiments-addimage-viewer-close-button": "Zoumaachen"
 }

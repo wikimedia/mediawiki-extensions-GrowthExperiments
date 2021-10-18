@@ -195,6 +195,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-label-expand": "Kısa maddeleri genişletin",
 	"growthexperiments-homepage-suggestededits-tasktype-label-links": "Maddeler arasına bağlantılar ekleyin",
 	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "Maddeler arasına bağlantılar ekleyin",
+	"growthexperiments-homepage-suggestededits-tasktype-label-image-recommendation": "Maddelere resim ekle",
 	"growthexperiments-homepage-suggestededits-tasktype-label-create": "Yeni bir madde oluştur",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Daha fazla bilgi edin",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3-5 dakika",
@@ -304,6 +305,7 @@
 	"log-action-filter-growthexperiments-claimmentee": "Danışan değişiklikleri",
 	"log-action-filter-growthexperiments-setmentor": "Danışman değişiklikleri",
 	"log-action-filter-growthexperiments-addlink": "Bağlantı önerileri",
+	"log-action-filter-growthexperiments-addimage": "Resim önerileri",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Belirtilen danışmanlık edinen kullanıcının kullanıcı adı geçersiz",
 	"growthexperiments-notification-header-mentor-change": "$1, sizin yeni {{GENDER:$2|danışman}}{{GENDER:$3|ınız}}",
 	"growthexperiments-notification-body-mentor-change": "Gerekçe: $1",
@@ -395,5 +397,16 @@
 	"growthexperiments-addimage-inspector-yes-button": "Evet",
 	"growthexperiments-addimage-inspector-no-button": "Hayır",
 	"growthexperiments-addimage-inspector-skip-button": "Atla",
-	"growthexperiments-addimage-inspector-show-button": "Resim önerisi göster"
+	"growthexperiments-addimage-inspector-show-button": "Resim önerisi göster",
+	"growthexperiments-addimage-inspector-details-button": "Ayrıntıları görüntüle",
+	"growthexperiments-addimage-rejectiondialog-header": "Bu resim bu madde için neden uygun değil?",
+	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Alakasız resim",
+	"growthexperiments-addimage-rejectiondialog-reason-noinfo": "Karar vermek için yeterli bilgi bulunmuyor",
+	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Düşük kaliteli resim",
+	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Bu konuyu bilmiyorum",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Dili bilmiyorum",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "Diğer",
+	"growthexperiments-addimage-viewer-close-button": "Kapat",
+	"growthexperiments-addimage-onboarding-content-article-title": "Bu madde için bu uygun mu?",
+	"growthexperiments-addimage-onboarding-content-decision-title": "Maddeye uygunluğuna karar verin."
 }

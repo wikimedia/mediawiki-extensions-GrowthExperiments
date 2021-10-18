@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Abayeta",
 			"Adignyoke",
+			"Akandee1",
 			"Akoonaba",
+			"Amoramah",
 			"Dnshitobu",
 			"Uprising Man"
 		]
@@ -12,10 +15,13 @@
 	"growthexperiments-addimage-inspector-yes-button": "Ɛ̃ɛ",
 	"growthexperiments-addimage-inspector-no-button": "Aayi",
 	"growthexperiments-addimage-inspector-details-button": "Besɛ welisigo",
-	"growthexperiments-addimage-rejectiondialog-title": "Bɛ'iŋɛ?",
+	"growthexperiments-addimage-rejectiondialog-header": "Beni n sɔi ti foote wa ka Nara bo gulesego la?",
+	"growthexperiments-addimage-rejectiondialog-subheader": "{{GENDER:|Fum}} lebeseko suŋeri putɛi se'esi nkina",
 	"growthexperiments-addimage-rejectiondialog-action-done": "Ba'asɛ",
 	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Yiliyisigo ka tarı voorɛ",
+	"growthexperiments-addimage-rejectiondialog-reason-noinfo": "Lasebaare ka zo'e ti fu loe",
 	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Zɛɛsiŋɔ yiliyisigo",
+	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Fɔɔre la suŋa ka zo'e",
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Ma ka me yelebi-ena",
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "N kanyaŋe kaale yetɔgum la",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Basɛba",

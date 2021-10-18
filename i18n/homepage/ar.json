@@ -4,6 +4,7 @@
 			"Dr. Mohammed",
 			"Dyolf77",
 			"Dyolf77 (WMF)",
+			"Haajer",
 			"Meno25",
 			"Mr. Ibrahem",
 			"NEHAOUA",
@@ -409,7 +410,6 @@
 	"growthexperiments-addimage-inspector-show-button": "إظهار اقتراح الصّور",
 	"growthexperiments-addimage-inspector-help-button": "{{GENDER:|احصل|احصلي}} على مساعدة في التحرير",
 	"growthexperiments-addimage-inspector-details-button": "أظهر التفاصيل",
-	"growthexperiments-addimage-rejectiondialog-title": "لم لا؟",
 	"growthexperiments-addimage-rejectiondialog-header": "لم هذه الصّورة غير مناسبة للمقالة؟",
 	"growthexperiments-addimage-rejectiondialog-subheader": "{{GENDER:|إجاباتك}} ستُحسّن الاقتراحات المستقبلية.",
 	"growthexperiments-addimage-rejectiondialog-action-done": "تم",
@@ -418,7 +418,7 @@
 	"growthexperiments-addimage-rejectiondialog-reason-offensive": "صورة فيها تهجّم",
 	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "صورة رديئة الجودة",
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "لا أعرف هذا الموضوع",
-	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "لا أستطيع فهم اللغة",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "لا يمكنني قراءة اللغة",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "أخرى",
 	"growthexperiments-addimage-viewer-close-button": "أغلق"
 }

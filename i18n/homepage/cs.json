@@ -409,7 +409,6 @@
 	"growthexperiments-addimage-inspector-show-button": "Ukázat návrh obrázku",
 	"growthexperiments-addimage-inspector-help-button": "Získejte pomoc s editací",
 	"growthexperiments-addimage-inspector-details-button": "Zobrazit detaily",
-	"growthexperiments-addimage-rejectiondialog-title": "Proč ne?",
 	"growthexperiments-addimage-rejectiondialog-header": "Proč není tento obrázek vhodný pro tento článek?",
 	"growthexperiments-addimage-rejectiondialog-subheader": "{{GENDER:|Vaše}} odpovědi budou využity k vylepšení návrhů.",
 	"growthexperiments-addimage-rejectiondialog-action-done": "Hotovo",
@@ -420,5 +419,8 @@
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Tento předmět neznám.",
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Nemohu přečíst tento jazyk",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Ostatní",
-	"growthexperiments-addimage-viewer-close-button": "Zavřít"
+	"growthexperiments-addimage-viewer-close-button": "Zavřít",
+	"growthexperiments-addimage-onboarding-content-intro-learn-more-link-text": "Zjistit více o strojových návrzích",
+	"growthexperiments-addimage-onboarding-content-decision-title": "Rozhodněte se, zda obrázek patří do tohoto článku.",
+	"growthexperiments-addimage-onboarding-content-decision-body-paragraph2": "Odmítněte nesprávné návrhy. Návrhy, u kterých si nejste {{GENDER:$1|jist|jista|jisti}}, můžete přeskočit."
 }

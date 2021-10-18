@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"JSantos",
 			"Joao Xavier"
 		]
 	},
@@ -15,5 +16,15 @@
 	"growthexperiments-homepage-suggestededits-tasktype-time-image-recommendation": "3 til 5 minuti",
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy": "Facila",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Referi",
-	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Aktualigar"
+	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Aktualigar",
+	"growthexperiments-addimage-inspector-yes-button": "Yes",
+	"growthexperiments-addimage-inspector-no-button": "No",
+	"growthexperiments-addimage-viewer-close-button": "Klozar",
+	"growthexperiments-addimage-onboarding-content-intro-body-paragraph2": "Automatala mashini sugestis ca imaji, e to povas esar nekorekta. Pro to {{GENDER:$1|vua}} opiniono bezonesas por decidar.",
+	"growthexperiments-addimage-onboarding-content-intro-learn-more-link-text": "Lektez pluse pri automatala sugesti",
+	"growthexperiments-addimage-onboarding-content-imagedetails-title": "Videz l'imajo sugetita, e revizez ilua detali.",
+	"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph1": "Por helpar en la decido se ol esas korekta, videz l'imajo, ilua nomo, deskripto e la motivo pro quon ol propozesis. Kad ol konvenas l'artiklo?",
+	"growthexperiments-addimage-onboarding-content-article-title": "Ca to esas korekta por ca artiklo?",
+	"growthexperiments-addimage-onboarding-content-decision-body-paragraph2": "Refuzez mala tradukuri automatala, o saltez li, se {{GENDER:$1|vu}} esas necerta.",
+	"growthexperiments-addimage-onboarding-content-decision-body-paragraph3": "Por l'imaji quin {{GENDER:$1|vu}} aceptos, furnisez kurta informo qua helpos savar quale ol apartenas."
 }

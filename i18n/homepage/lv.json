@@ -383,5 +383,12 @@
 	"growthexperiments-addimage-inspector-yes-button": "Jā",
 	"growthexperiments-addimage-inspector-no-button": "Nē",
 	"growthexperiments-addimage-inspector-skip-button": "Izlaist",
+	"growthexperiments-addimage-inspector-show-button": "Rādīt attēla ieteikumu",
+	"growthexperiments-addimage-inspector-help-button": "Saņem palīdzību labošanā",
+	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Attēls nav atbilstošs",
+	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Attēls ir aizvainojošs",
+	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Attēls ir zemas kvalitātes",
+	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Es nepārzinu šo tēmu",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "Cits",
 	"growthexperiments-addimage-viewer-close-button": "Aizvērt"
 }

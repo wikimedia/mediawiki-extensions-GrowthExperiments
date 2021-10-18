@@ -403,7 +403,6 @@
 	"growthexperiments-addimage-inspector-show-button": "Mostrar sugestão de imagem",
 	"growthexperiments-addimage-inspector-help-button": "Obtenha ajuda para editar",
 	"growthexperiments-addimage-inspector-details-button": "Ver detalhes",
-	"growthexperiments-addimage-rejectiondialog-title": "Por que não?",
 	"growthexperiments-addimage-rejectiondialog-header": "Por que esta imagem não é adequada para o artigo?",
 	"growthexperiments-addimage-rejectiondialog-subheader": "{{GENDER:|Suas}} respostas melhoram sugestões futuras.",
 	"growthexperiments-addimage-rejectiondialog-action-done": "Feito",
@@ -414,5 +413,18 @@
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Eu não sei esse assunto",
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Não consigo ler o idioma",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Outros",
-	"growthexperiments-addimage-viewer-close-button": "Fechar"
+	"growthexperiments-addimage-viewer-close-button": "Fechar",
+	"growthexperiments-addimage-onboarding-content-intro-title": "As imagens podem ajudar as pessoas a aprender sobre um tópico, mas muitos artigos não têm imagens.",
+	"growthexperiments-addimage-onboarding-content-intro-body-paragraph1": "Nesta tarefa, {{GENDER:$1|você}} decidirá se uma imagem do Wikimedia Commons (um banco de dados de imagens gratuitas de licença) é adequada para um artigo de Wikipédia que ainda não tenha uma imagem.",
+	"growthexperiments-addimage-onboarding-content-intro-body-paragraph2": "As imagens são sugeridas por máquinas, que podem ser incorretas. É por isso que {{GENDER:$1|seu}} julgamento é necessário para decidir.",
+	"growthexperiments-addimage-onboarding-content-intro-learn-more-link-text": "Saiba mais sobre sugestões de máquinas",
+	"growthexperiments-addimage-onboarding-content-imagedetails-title": "Olhe para a imagem sugerida e revise seus detalhes.",
+	"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph1": "Para ajudar a decidir se é adequado, olhe para a imagem, seu nome de arquivo, descrição e a razão pela qual foi sugerido. Ele corresponde ao artigo?",
+	"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph2": "{{GENDER:$1|Você}} pode também aumentar o zoom para a imagem para ver mais detalhes.",
+	"growthexperiments-addimage-onboarding-content-article-title": "É certo para este artigo?",
+	"growthexperiments-addimage-onboarding-content-article-body": "Leia sobre o artigo que precisa de uma imagem. A imagem sugerida é apropriada para ser exibida no artigo? Isso ajudará os leitores a entender o tópico?",
+	"growthexperiments-addimage-onboarding-content-decision-title": "Decida se pertence ao artigo.",
+	"growthexperiments-addimage-onboarding-content-decision-body-paragraph1": "A imagem pode ser para o assunto errado ou de baixa qualidade. Use {{GENDER:$1|seu}} julgamento para decidir.",
+	"growthexperiments-addimage-onboarding-content-decision-body-paragraph2": "Rejeite as sugestões má da máquina, ou pule se {{GENDER:$1|você}} não tiver certeza.",
+	"growthexperiments-addimage-onboarding-content-decision-body-paragraph3": "Para imagens que não aceitam, fornecem uma pequena legenda que ajuda a explicar como ela pertence."
 }

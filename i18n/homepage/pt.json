@@ -306,11 +306,6 @@
 	"growthexperiments-addlink-serviceerror": "O serviço de recomendação de hiperligações respondeu com um erro para \"$1\": $2",
 	"growthexperiments-addlink-notinstore": "Sugestão de hiperligação não encontrada para \"$1\"",
 	"growthexperiments-addlink-duplicatesubmission": "Tentou enviar revisões de sugestões de hiperligações para a revisão \"$1\" que já foi revista.",
-	"growthexperiments-addlink-context-text-label": "Texto",
 	"growthexperiments-addlink-context-intro": "Este texto deve ter uma hiperligação para o seguinte artigo?",
-	"growthexperiments-addlink-skip-title": "{{GENDER: | Você}} ignorou todas as sugestões para este artigo.",
-	"growthexperiments-addlink-skip-body": "Tem certeza de que {{GENDER: | você}} não deseja aceitar ou rejeitar nenhuma sugestão?",
-	"growthexperiments-addlink-skip-accept": "Pule tudo",
-	"growthexperiments-addlink-skip-reject": "Review again",
 	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Enviar…"
 }

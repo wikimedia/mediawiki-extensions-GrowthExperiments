@@ -8,7 +8,8 @@
 			"Karit",
 			"MOphaswongse (WMF)",
 			"Patsagorn Y.",
-			"Prame Tan"
+			"Prame Tan",
+			"Thas Tayapongsak"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|สวัสดี}} {{bidi:$1}}!",
@@ -263,5 +264,8 @@
 	"growthexperiments-structuredtask-onboarding-dialog-dismiss-checkbox": "ไม่ต้องแสดงอีก",
 	"growthexperiments-structuredtask-onboarding-dialog-get-started-button": "เริ่มต้นใช้งาน",
 	"grant-managementorship": "จัดการระบบเมนเทอร์",
-	"newcomertasksinfo-no-data": "ไม่มีข้อมูล"
+	"newcomertasksinfo-no-data": "ไม่มีข้อมูล",
+	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "ภาพไม่เกี่ยวข้อง",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "อื่น ๆ",
+	"growthexperiments-addimage-viewer-close-button": "ปิด"
 }

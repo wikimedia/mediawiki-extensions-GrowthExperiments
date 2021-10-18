@@ -405,12 +405,15 @@
 	"growthexperiments-addlink-suggestions-outdated": "{{GENDER:|您}}预览此条目时其他用户进行了编辑，{{GENDER:|您}}作出的更改无法保存。",
 	"growthexperiments-addimage-inspector-yes-button": "是",
 	"growthexperiments-addimage-inspector-no-button": "否",
-	"growthexperiments-addimage-inspector-skip-button": "跳过",
+	"growthexperiments-addimage-inspector-skip-button": "不确定",
 	"growthexperiments-addimage-inspector-show-button": "展示链接建议",
 	"growthexperiments-addimage-inspector-help-button": "获取编辑帮助",
-	"growthexperiments-addimage-inspector-details-button": "查看详情",
-	"growthexperiments-addimage-rejectiondialog-action-done": "完成",
+	"growthexperiments-addimage-inspector-details-button": "查看图像详情",
+	"growthexperiments-addimage-rejectiondialog-action-done": "提交",
+	"growthexperiments-addimage-rejectiondialog-action-cancel": "取消",
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "我不了解这个主题",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "其他",
-	"growthexperiments-addimage-viewer-close-button": "关闭"
+	"growthexperiments-addimage-viewer-close-button": "关闭",
+	"growthexperiments-addimage-skip-dialog-title": "对此图像不确定？",
+	"growthexperiments-addimage-skip-dialog-cancel": "取消"
 }

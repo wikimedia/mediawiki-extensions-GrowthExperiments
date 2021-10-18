@@ -7,5 +7,9 @@
 	"apihelp-growthstarmentee-summary": "Signe o lìve 'nu tirocinande cumme signate da l'utende de mò (reggistrate privatamende e non collegate)",
 	"apihelp-growthstarmentee-param-gesaction": "Azione fà (<kbd>star</kbd> o <kbd>unstar</kbd>)",
 	"apihelp-growthstarmentee-param-gesmentee": "Tirocinande da mettere (o luà)",
-	"apihelp-query+growthstarredmentees-summary": "Pigghie l'elenghe de le tirocinande signate da l'utende trasute de mò cumme tutor"
+	"apihelp-query+growthstarredmentees-summary": "Pigghie l'elenghe de le tirocinande signate da l'utende trasute de mò cumme tutor",
+	"apihelp-growthsetmentorstatus-summary": "'Mboste 'u state de mendore d'u cunde utende de mò a attive/occupate",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "State nuève",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "Quanne se 'mboste 'u state cumme occupate, queste adda essere 'a lunghezze d'a pause ca se pigghie (jndr'à sciurne)",
+	"apihelp-query+growthmentorstatus-summary": "Cirche 'u state de mendore d'u cunde utende de mò"
 }

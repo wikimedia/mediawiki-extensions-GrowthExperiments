@@ -10,6 +10,7 @@
 			"Mainframe98",
 			"Mar(c)",
 			"McDutchie",
+			"Robin van der Vliet",
 			"Romaine",
 			"Rots61"
 		]
@@ -383,5 +384,7 @@
 	"growthexperiments-addimage-inspector-no-button": "Nee",
 	"growthexperiments-addimage-inspector-skip-button": "Overslaan",
 	"growthexperiments-addimage-inspector-show-button": "Toon afbeeldingssuggestie",
-	"growthexperiments-addimage-inspector-help-button": "Krijg hulp bij bewerken"
+	"growthexperiments-addimage-inspector-help-button": "Krijg hulp bij bewerken",
+	"growthexperiments-addimage-rejectiondialog-reason-offensive": "De afbeelding is aanstootgevend",
+	"growthexperiments-addimage-viewer-close-button": "Sluiten"
 }

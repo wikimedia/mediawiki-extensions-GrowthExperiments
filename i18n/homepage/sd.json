@@ -55,5 +55,7 @@
 	"growthexperiments-tour-discovery-title": "ھتان شروع ڪريو!",
 	"growthexperiments-homepage-welcomesurvey-default-close": "{{GENDER:$1|پنھنجي}} گھرصفحي ڏانھن وڃو",
 	"growthexperiments-homepage-discovery-thanks-header": "{{GENDER:$1|پنھنجو}} کاتو کولڻ لاءِ مھربانيون!",
-	"growthexperiments-homepage-suggestededits-error-description": "مھرباني ڪري بعد ۾ ٻيھر ڪوشش ڪريو."
+	"growthexperiments-homepage-suggestededits-error-description": "مھرباني ڪري بعد ۾ ٻيھر ڪوشش ڪريو.",
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-title": "صلاحون",
+	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "صلاحون"
 }
