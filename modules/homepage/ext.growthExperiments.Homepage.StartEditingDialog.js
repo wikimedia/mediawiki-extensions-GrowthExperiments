@@ -731,7 +731,7 @@ StartEditingDialog.prototype.setupSuggestedEditsModule = function () {
 		$homepage.find( '.growthexperiments-homepage-module-suggested-edits' )
 			.removeClass( 'unactivated' )
 			.addClass( 'activated' );
-		this.emit( 'activation', $homepage.find( '.growthexperiments-homepage-module-suggested-edits' ) );
+		this.emit( 'activation' );
 	} else if ( this.mode === 'mobile-overlay' ) {
 		// Update StartEditing module icon.
 		$homepage.add( $homepageOverlay )

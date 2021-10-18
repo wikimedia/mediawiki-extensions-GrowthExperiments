@@ -17,7 +17,8 @@
 			defaultTaskTypes: defaultTaskTypes,
 			isMobile: OO.ui.isMobile(),
 			context: 'startEditingDialog'
-		} );
+		} ),
+		modalWindowManager;
 
 	/**
 	 * Launch the suggested edits initiation dialog.
@@ -32,7 +33,7 @@
 	 *   initiation was successful or cancelled.
 	 */
 	function launchCta( module, mode, trigger ) {
-		var lifecycle, dialog, windowManager;
+		var lifecycle, dialog;
 
 		dialog = new StartEditingDialog( {
 			module: module,
@@ -42,16 +43,18 @@
 			useTaskTypeSelector: !shouldSuggestedEditsAppearActivated,
 			activateWhenDone: !isSuggestedEditsActivated
 		}, logger, api );
-		windowManager = new OO.ui.WindowManager( {
-			modal: true
-		} );
+		if ( !modalWindowManager ) {
+			modalWindowManager = new OO.ui.WindowManager( {
+				modal: true
+			} );
+			// eslint-disable-next-line no-jquery/no-global-selector
+			$( 'body' ).append( modalWindowManager.$element );
+		}
 
 		logger.log( module, mode, 'se-cta-click', { trigger: trigger } );
 
-		// eslint-disable-next-line no-jquery/no-global-selector
-		$( 'body' ).append( windowManager.$element );
-		windowManager.addWindows( [ dialog ] );
-		lifecycle = windowManager.openWindow( dialog );
+		modalWindowManager.addWindows( [ dialog ] );
+		lifecycle = modalWindowManager.openWindow( dialog );
 		return lifecycle.closing.then( function ( data ) {
 			return ( data && data.action === 'activate' );
 		} );
@@ -138,11 +141,9 @@
 			activateWhenDone: true
 		}, logger, api );
 
-		dialog.on( 'activation', function ( $activatedModuleContainer ) {
+		dialog.on( 'activation', function () {
 			isSuggestedEditsActivated = true;
 			shouldSuggestedEditsAppearActivated = true;
-			// Setup the info icon to launch dialogs.
-			setupCtaButton( $activatedModuleContainer );
 		} );
 		windowManager = new OO.ui.WindowManager( { modal: false } );
 		$startEditingModule.append( windowManager.$element );
