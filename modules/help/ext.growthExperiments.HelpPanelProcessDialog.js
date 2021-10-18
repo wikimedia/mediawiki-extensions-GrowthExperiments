@@ -16,6 +16,7 @@
 	 * @cfg {boolean} guidanceEnabled Whether guidance feature is enabled.
 	 * @cfg {SuggestedEditSession} suggestedEditSession The suggested edit session
 	 * @cfg {string} taskTypeId The ID of the suggested edit task type.
+	 * @cfg {boolean} [isQuestionPoster] Whether the dialog from QuestionPoster (Special:Homepage)
 	 * @constructor
 	 */
 	var configData = require( './data.json' ),
@@ -40,10 +41,12 @@
 				'general-help': mw.message( 'growthexperiments-help-panel-general-help-title' ).text(),
 				'suggested-edits': mw.message( 'growthexperiments-help-panel-suggestededits-title' ).text()
 			};
+			this.isQuestionPoster = config.isQuestionPoster;
 			this.configureAskScreen( config );
 		},
 		HelpPanelSearchWidget = require( './ext.growthExperiments.HelpPanelSearchWidget.js' ),
-		HelpPanelHomeButtonWidget = require( './ext.growthExperiments.HelpPanelHomeButtonWidget.js' );
+		HelpPanelHomeButtonWidget = require( './ext.growthExperiments.HelpPanelHomeButtonWidget.js' ),
+		MIN_DIALOG_HEIGHT = 368;
 
 	OO.inheritClass( HelpPanelProcessDialog, OO.ui.ProcessDialog );
 
@@ -979,11 +982,22 @@
 	 * The idea is that the height should remain uniform across panels. This is important
 	 * for the animation effects.
 	 *
+	 * @override
 	 * @return {number}
 	 */
 	HelpPanelProcessDialog.prototype.getBodyHeight = function () {
 		if ( !this.homeHeight ) {
-			this.homeHeight = this.homePanel.$element.outerHeight( true );
+			var homePanelHeight = this.homePanel.$element.outerHeight( true );
+			// HACK: If the dialog is used in the context of QuestionPoster, the home panel is never
+			// shown but its height is still used to determine the dialog height since the subpanels
+			// are absolutely positioned and thus don't have a natural height. Ideally the dialog
+			// height would be that of the askHelpPanel or the questioncompletePanel (whichever is
+			// higher), but these PanelLayouts are absolutely positioned.
+			if ( this.isQuestionPoster ) {
+				this.homeHeight = Math.max( homePanelHeight, MIN_DIALOG_HEIGHT );
+			} else {
+				this.homeHeight = homePanelHeight;
+			}
 		}
 
 		return this.homeHeight;
