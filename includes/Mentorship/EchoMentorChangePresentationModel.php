@@ -10,7 +10,7 @@ class EchoMentorChangePresentationModel extends EchoEventPresentationModel {
 	 * @inheritDoc
 	 */
 	public function getIconType() {
-		return 'growthexperiments-menteeclaimed';
+		return 'growthexperiments-mentor';
 	}
 
 	/**
