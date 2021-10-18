@@ -3,6 +3,8 @@
 namespace GrowthExperiments\Mentorship;
 
 use Config;
+use EchoAttributeManager;
+use EchoUserLocator;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Util;
@@ -65,4 +67,33 @@ class MentorHooks implements GetPreferencesHook, UserGetDefaultOptionsHook, Loca
 		}
 	}
 
+	/**
+	 * Add GrowthExperiments events to Echo
+	 *
+	 * @param array &$notifications array of Echo notifications
+	 * @param array &$notificationCategories array of Echo notification categories
+	 * @param array &$icons array of icon details
+	 */
+	public static function onBeforeCreateEchoEvent(
+		&$notifications, &$notificationCategories, &$icons
+	) {
+		$notifications['mentor-changed'] = [
+			'category' => 'system',
+			'group' => 'positive',
+			'section' => 'alert',
+			'presentation-model' => EchoMentorChangePresentationModel::class,
+			EchoAttributeManager::ATTR_LOCATORS => [
+				[
+					EchoUserLocator::class . '::locateFromEventExtra',
+					[ 'mentee' ]
+				],
+			],
+		];
+		$icons['growthexperiments-menteeclaimed'] = [
+			'path' => [
+				'ltr' => 'GrowthExperiments/images/mentor-ltr.svg',
+				'rtl' => 'GrowthExperiments/images/mentor-rtl.svg'
+			]
+		];
+	}
 }

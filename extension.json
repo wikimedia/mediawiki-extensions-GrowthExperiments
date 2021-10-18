@@ -314,7 +314,7 @@
 			"GrowthExperiments\\HomepageHooks::onWikimediaEventsShouldSchemaEditAttemptStepOversample"
 		],
 		"BeforeCreateEchoEvent": [
-			"GrowthExperiments\\HomepageHooks::onBeforeCreateEchoEvent"
+			"GrowthExperiments\\Mentorship\\MentorHooks::onBeforeCreateEchoEvent"
 		],
 		"FormatAutocomments": "homepage",
 		"ParserFirstCallInit": "parserfunctions",
