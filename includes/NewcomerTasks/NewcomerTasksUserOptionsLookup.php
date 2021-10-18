@@ -5,6 +5,7 @@ namespace GrowthExperiments\NewcomerTasks;
 use Config;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\VariantHooks;
@@ -25,19 +26,25 @@ class NewcomerTasksUserOptionsLookup {
 	/** @var Config */
 	private $config;
 
+	/** @var ConfigurationLoader */
+	private $configurationLoader;
+
 	/**
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param Config $config
+	 * @param ConfigurationLoader $configurationLoader
 	 */
 	public function __construct(
 		ExperimentUserManager $experimentUserManager,
 		UserOptionsLookup $userOptionsLookup,
-		Config $config
+		Config $config,
+		ConfigurationLoader $configurationLoader
 	) {
 		$this->experimentUserManager = $experimentUserManager;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->config = $config;
+		$this->configurationLoader = $configurationLoader;
 	}
 
 	/**
@@ -140,7 +147,12 @@ class NewcomerTasksUserOptionsLookup {
 		} elseif ( $this->areImageRecommendationsEnabled( $user ) ) {
 			return [ ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ];
 		} else {
-			return SuggestedEdits::DEFAULT_TASK_TYPES;
+			$taskTypes = $this->configurationLoader->getTaskTypes();
+			return array_filter( SuggestedEdits::DEFAULT_TASK_TYPES,
+				static function ( $taskTypeId ) use ( $taskTypes ) {
+					return array_key_exists( $taskTypeId, $taskTypes );
+				}
+			);
 		}
 	}
 

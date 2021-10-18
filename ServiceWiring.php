@@ -452,10 +452,12 @@ return [
 	'GrowthExperimentsNewcomerTasksUserOptionsLookup' => static function (
 		MediaWikiServices $services
 	): NewcomerTasksUserOptionsLookup {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
 		return new NewcomerTasksUserOptionsLookup(
-			GrowthExperimentsServices::wrap( $services )->getExperimentUserManager(),
+			$growthServices->getExperimentUserManager(),
 			$services->getUserOptionsLookup(),
-			$services->getMainConfig()
+			$services->getMainConfig(),
+			$growthServices->getNewcomerTasksConfigurationLoader()
 		);
 	},
 
