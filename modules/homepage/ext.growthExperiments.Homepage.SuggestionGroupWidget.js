@@ -1,8 +1,4 @@
 /**
- * @external SuggestionWidget
- */
-
-/**
  * GroupWidget that groups SuggestionWidgets
  *
  * @param {Object} config

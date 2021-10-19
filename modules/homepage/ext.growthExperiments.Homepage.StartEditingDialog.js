@@ -1,7 +1,3 @@
-/**
- * @external HomepageModuleLogger
- * @external mw.libs.ge.GrowthTasksApi
- */
 var TopicSelectionWidget = require( './ext.growthExperiments.Homepage.TopicSelectionWidget.js' ),
 	TaskTypeSelectionWidget = require( './suggestededits/ext.growthExperiments.Homepage.TaskTypeSelectionWidget.js' ),
 	ArticleCountWidget = require( './suggestededits/ext.growthExperiments.Homepage.ArticleCountWidget.js' ),
