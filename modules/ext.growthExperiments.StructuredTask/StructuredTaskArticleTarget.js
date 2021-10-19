@@ -215,12 +215,13 @@ StructuredTaskArticleTarget.prototype.getPlaceholderTool = function () {
 /**
  * Update the title text in the MachineSuggestionsPlaceholder tool
  *
- * @param {string} title
+ * @param {string} title Title text to use
+ * @param {boolean} [isLoading] Whether the toolbar is in a loading state
  */
-StructuredTaskArticleTarget.prototype.updatePlaceholderTitle = function ( title ) {
+StructuredTaskArticleTarget.prototype.updatePlaceholderTitle = function ( title, isLoading ) {
 	var placeholderTool = this.getPlaceholderTool();
 	if ( placeholderTool ) {
-		placeholderTool.updateTitleText( title );
+		placeholderTool.updateTitleText( title, isLoading );
 	}
 };
 

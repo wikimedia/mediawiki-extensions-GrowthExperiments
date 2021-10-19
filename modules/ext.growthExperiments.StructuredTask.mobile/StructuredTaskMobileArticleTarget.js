@@ -14,6 +14,7 @@ var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 function StructuredTaskMobileArticleTarget() {
 	StructuredTaskMobileArticleTarget.super.apply( this, arguments );
 	StructuredTaskArticleTarget.apply( this, arguments );
+	this.$element.addClass( 'mw-ge-structuredTaskMobileArticleTarget' );
 }
 
 OO.inheritClass( StructuredTaskMobileArticleTarget, ve.init.mw.MobileArticleTarget );

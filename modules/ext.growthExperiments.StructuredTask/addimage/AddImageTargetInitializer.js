@@ -28,7 +28,9 @@ function AddImageTargetInitializer( platformConfig ) {
 		toolbarDialogCommand = new ve.ui.Command(
 			'recommendedImage', 'window', 'toggle', { args: [ 'recommendedImage' ] }
 		);
-	config.safeCommands = [ toolbarDialogCommand.name ];
+	// selectAll command keeps the focus on the field when selecting all
+	// This is used in the caption step.
+	config.safeCommands = [ toolbarDialogCommand.name, 'selectAll' ];
 	config.dataModels = [ DMRecommendedImageNode, DMRecommendedImageCaptionNode ];
 	config.annotationViews = [];
 	config.windows = ( platformConfig.windows || [] ).concat( [

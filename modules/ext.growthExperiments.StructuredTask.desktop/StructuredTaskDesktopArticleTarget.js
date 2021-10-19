@@ -14,6 +14,7 @@ function StructuredTaskDesktopArticleTarget() {
 	StructuredTaskDesktopArticleTarget.super.apply( this, arguments );
 	StructuredTaskArticleTarget.apply( this, arguments );
 	this.toolbarScrollOffset = 50;
+	this.$element.addClass( 'mw-ge-structuredTaskDesktopArticleTarget' );
 }
 
 OO.inheritClass( StructuredTaskDesktopArticleTarget, ve.init.mw.DesktopArticleTarget );
