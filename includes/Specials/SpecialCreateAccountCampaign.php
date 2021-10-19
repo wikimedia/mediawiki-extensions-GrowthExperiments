@@ -25,7 +25,10 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 		$signupStart = ( $this->isSignup() && !$signupStartMsg->isDisabled() )
 			? Html::rawElement( 'div', [ 'id' => 'signupstart' ], $signupStartMsg->parseAsBlock() ) : '';
 
-		$donorHtml = $this->getDonorHtml();
+		// The campaign field should always be set if this special page is loaded (see onSpecialPage_initList
+		// in VariantHooks), but adding this check for additional safety in case the SpecialPge_initList is moved
+		// around in the future.
+		$donorHtml = $this->isCampaign() ? $this->getDonorHtml() : '';
 		$formBlock = Html::rawElement( 'div', [ 'id' => 'userloginForm' ],
 			$formHtml
 		);
@@ -54,6 +57,9 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 		parent::load( $subPage );
 	}
 
+	/**
+	 * @return string HTML to render in the CreateAccount form.
+	 */
 	private function getDonorHtml(): string {
 		if ( !$this->showExtraInformation() ) {
 			return '';
@@ -66,28 +72,67 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 			'ext.growthExperiments.donorSignupCampaign.styles',
 		] );
 
+		$msgKey = $this->isRecurringDonorCampaign() ? 'recurringcampaign' : 'signupcampaign';
 		$list = '';
 		foreach ( [ 'lightbulb', 'mentor', 'difficulty-easy-bw' ] as $i => $icon ) {
 			$index = $i + 1;
-			$list .= Html::rawElement( 'li', [],
-				new IconWidget( [ 'icon' => $icon ] )
-				. Html::element( 'span', [],
-					$this->msg( "growthexperiments-signupcampaign-bullet$index" )->text()
-				)
-			);
+			if ( $this->msg( "growthexperiments-$msgKey-bullet$index" )->exists() ) {
+				$list .= Html::rawElement( 'li', [],
+					new IconWidget( [ 'icon' => $icon ] )
+					. Html::element( 'span', [],
+						// The following message keys are used here:
+						// * growthexperiments-recurringcampaign-bulletlightbulb
+						// * growthexperiments-recurringcampaign-bulletmentor
+						// * growthexperiments-recurringcampaign-bulletdifficulty-easy-bw
+						// * growthexperiments-signupcampaign-bulletlightbulb
+						// * growthexperiments-signupcampaign-bulletmentor
+						// * growthexperiments-signupcampaign-bulletdifficulty-easy-bw
+						$this->msg( "growthexperiments-$msgKey-bullet$index" )->text()
+					)
+				);
+			}
 		}
 
 		return Html::rawElement( 'div', [ 'class' => 'mw-createacct-benefits-container' ],
 			Html::rawElement( 'div', [ 'class' => 'mw-ge-donorsignup-block' ],
 				Html::element( 'h1', [ 'class' => 'mw-ge-donorsignup-title' ],
-					$this->msg( 'growthexperiments-signupcampaign-title' )->text()
+					// The following message keys are used here:
+					// * growthexperiments-recurringcampaign-title
+					// * growthexperiments-signupcampaign-title
+					$this->msg( "growthexperiments-$msgKey-title" )->text()
 				)
 				. Html::element( 'p', [ 'class' => 'mw-ge-donorsignup-body' ],
-					$this->msg( 'growthexperiments-signupcampaign-body' )->text()
+					// The following message keys are used here:
+					// * growthexperiments-recurringcampaign-body
+					// * growthexperiments-signupcampaign-body
+					$this->msg( "growthexperiments-$msgKey-body" )->text()
 				)
 				. Html::rawElement( 'ul', [ 'class' => 'mw-ge-donorsignup-list' ], $list )
 			)
 		);
+	}
+
+	/**
+	 * Check if the campaign field contains "recurring".
+	 *
+	 * @return bool
+	 */
+	private function isRecurringDonorCampaign(): bool {
+		$campaign = $this->authForm->getField( 'campaign' )->getDefault();
+		return strpos( $campaign, 'recurring' ) !== false;
+	}
+
+	/**
+	 * Check if the campaign field is set.
+	 *
+	 * @return bool
+	 */
+	private function isCampaign(): bool {
+		try {
+			return (bool)$this->authForm->getField( 'campaign' )->getDefault();
+		} catch ( \DomainException $exception ) {
+			return false;
+		}
 	}
 
 }
