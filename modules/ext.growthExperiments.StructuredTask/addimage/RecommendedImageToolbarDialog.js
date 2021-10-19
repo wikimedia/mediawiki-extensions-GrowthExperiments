@@ -203,24 +203,15 @@ RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
  */
 RecommendedImageToolbarDialog.prototype.onFullscreenButtonClicked = function () {
 	var imageData = this.images[ this.currentIndex ],
-		surface = this.surface,
-		hash = OO.ui.isMobile() ? '#/editor/all' : '#imageviewer';
+		surface = this.surface;
 
 	surface.dialogs.openWindow( 'recommendedImageViewer', imageData.metadata );
-	// On mobile, hashchange event with #/editor hash loads the editor. When opening the dialog,
-	// add another history entry so that going back (via browser) doesn't load the editor again
-	router.navigateTo( 'imageviewer', {
-		path: location.pathname + location.search + hash,
-		useReplaceState: false
-	} );
-	var popStateListener = function popStateListener() {
+	this.showInternalRoute( 'imageviewer', function () {
 		var currentWindow = surface.dialogs.currentWindow;
 		if ( currentWindow ) {
 			currentWindow.close();
 		}
-		router.off( 'popstate', popStateListener );
-	};
-	router.on( 'popstate', popStateListener );
+	} );
 };
 
 RecommendedImageToolbarDialog.prototype.onDetailsButtonClicked = function () {
@@ -333,7 +324,77 @@ RecommendedImageToolbarDialog.prototype.setState = function ( accepted, reasons 
 	// FIXME this isn't the final behavior but useful now for testing.
 	ve.init.target.recommendationAccepted = accepted;
 	ve.init.target.recommendationRejectionReasons = reasons;
-	this.surface.executeCommand( 'showSave' );
+	this.setUpCaptionStep();
+};
+
+/**
+ * @return {mw.libs.ge.AddImageArticleTarget}
+ */
+RecommendedImageToolbarDialog.prototype.getArticleTarget = function () {
+	return ve.init.target;
+};
+
+/**
+ * Hide the inspector, update surface & toolbar states for caption step
+ */
+RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
+	var articleTarget = this.getArticleTarget(),
+		surface = this.surface,
+		toolbarDialogButton = this.toolbarDialogButton,
+		$inspector = this.$element,
+		$documentNode = surface.getView().$documentNode;
+
+	MachineSuggestionsMode.enableVirtualKeyboard( surface, true );
+	surface.setReadOnly( false );
+	// At this point, the rest of the surface (apart from the inserted image nodes, which have
+	// contenteditable explicitly set to true) is not editable due to contenteditable being false
+	// on the document node.
+	toolbarDialogButton.toggle( false );
+	articleTarget.updatePlaceholderTitle(
+		mw.message( 'growthexperiments-addimage-caption-title' ).escaped()
+	);
+	articleTarget.toggleInternalRouting( true );
+	$documentNode.off( 'click', this.onDocumentNodeClick );
+	$documentNode.addClass( 'mw-ge-recommendedImageToolbarDialog-caption' );
+	$inspector.addClass( 'animate-below' );
+
+	this.showInternalRoute( 'caption', function () {
+		MachineSuggestionsMode.disableVirtualKeyboard( this.surface );
+		surface.setReadOnly( true );
+		toolbarDialogButton.toggle( true );
+		articleTarget.rollback();
+		articleTarget.restorePlaceholderTitle();
+		articleTarget.toggleInternalRouting( false );
+		$documentNode.on( 'click', this.onDocumentNodeClick );
+		$documentNode.removeClass( 'mw-ge-recommendedImageToolbarDialog-caption' );
+		$inspector.removeClass( 'animate-below' );
+	}.bind( this ) );
+};
+
+/**
+ * Show the specified step in the editing flow and allow the user to navigate back to prior step
+ * using the browser's back mechanism.
+ *
+ * @param {string} routeName Name of the internal route to show
+ * @param {Function} popstateHandler Handler to call when the user navigates back from the route
+ */
+RecommendedImageToolbarDialog.prototype.showInternalRoute = function (
+	routeName, popstateHandler
+) {
+	// On mobile, hashchange event with #/editor hash loads the editor. When opening the dialog,
+	// add another history entry with the same hash so that going back (via browser) doesn't load
+	// the editor again (since the hashchange event isn't triggered).
+	var hash = OO.ui.isMobile() ? '#/editor/all' : '#' + routeName;
+	router.navigateTo( routeName, {
+		path: location.pathname + location.search + hash,
+		useReplaceState: false
+	} );
+
+	var onPopstate = function onPopstate() {
+		popstateHandler();
+		router.off( 'popstate', onPopstate );
+	};
+	router.on( 'popstate', onPopstate );
 };
 
 module.exports = RecommendedImageToolbarDialog;

@@ -29,13 +29,18 @@ StructuredTaskMobileArticleTarget.prototype.setupToolbar = function () {
 	StructuredTaskMobileArticleTarget.super.prototype.setupToolbar.apply( this, arguments );
 	this.toolbar.$group.addClass( 'mw-ge-machine-suggestions-title-toolgroup' );
 
-	if ( MachineSuggestionsMode.toolbarHasTitleElement( this.toolbar.$element ) ) {
+	if ( MachineSuggestionsMode.canAddToolbarTitle( this.toolbar.$element ) ) {
 		/* Replace placeholder tool with title content
 		 * Using a placeholder tool instead of appending to this.$element like desktop
 		 * so that the position of the existing tools can be taken into account
 		 */
+		var $newElement = MachineSuggestionsMode.getTitleElement(),
+			placeholderTool = this.toolbar.tools.machineSuggestionsPlaceholder;
+		if ( placeholderTool ) {
+			placeholderTool.$element = $newElement;
+		}
 		this.toolbar.$group.find( '.ve-ui-toolbar-group-machineSuggestionsPlaceholder' ).html(
-			MachineSuggestionsMode.getTitleElement()
+			$newElement
 		);
 	}
 	MachineSuggestionsMode.trackEditModeClick( this.toolbar.$group );

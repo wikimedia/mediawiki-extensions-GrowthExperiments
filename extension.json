@@ -800,6 +800,7 @@
 				"ext.growthExperiments.StructuredTask/StructuredTaskToolbarDialog.js",
 				"ext.growthExperiments.StructuredTask/MinimizedToolbarDialogButton.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskMessageDialog.js",
+				"ext.growthExperiments.StructuredTask/MachineSuggestionsBack.js",
 				"ext.growthExperiments.StructuredTask/addlink/AddLinkTargetInitializer.js",
 				"ext.growthExperiments.StructuredTask/addlink/AddLinkArticleTarget.js",
 				"ext.growthExperiments.StructuredTask/addlink/dmRecommendedLinkAnnotation.js",
@@ -817,6 +818,10 @@
 				"ext.growthExperiments.StructuredTask/addimage/AddImageSaveDialog.js",
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageViewer.js",
 				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
+				"ext.growthExperiments.StructuredTask/addimage/ceRecommendedImageNode.js",
+				"ext.growthExperiments.StructuredTask/addimage/dmRecommendedImageNode.js",
+				"ext.growthExperiments.StructuredTask/addimage/ceRecommendedImageCaptionNode.js",
+				"ext.growthExperiments.StructuredTask/addimage/dmRecommendedImageCaptionNode.js",
 				"utils/ext.growthExperiments.Utils.js",
 				{
 					"name": "homepage/suggestededits/config.json",
@@ -836,7 +841,8 @@
 				"ext.growthExperiments.StructuredTask/addlink/AddLinkSaveDialog.less",
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageToolbarDialog.less",
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageRejectionDialog.less",
-				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageViewer.less"
+				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageViewer.less",
+				"ext.growthExperiments.StructuredTask/addimage/ceRecommendedImageCaptionNode.less"
 			],
 			"messages": [
 				"growthexperiments-addlink-context-title",
@@ -899,6 +905,7 @@
 				"growthexperiments-addimage-skip-dialog-body",
 				"growthexperiments-addimage-skip-dialog-confirm",
 				"growthexperiments-addimage-skip-dialog-cancel",
+				"growthexperiments-addimage-caption-title",
 				"colon-separator"
 			],
 			"dependencies": [

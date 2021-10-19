@@ -28,7 +28,7 @@ StructuredTaskDesktopArticleTarget.static.actionGroups = MachineSuggestionsMode.
  */
 StructuredTaskDesktopArticleTarget.prototype.setupToolbar = function () {
 	StructuredTaskDesktopArticleTarget.super.prototype.setupToolbar.apply( this, arguments );
-	if ( MachineSuggestionsMode.toolbarHasTitleElement( this.toolbar.$element ) ) {
+	if ( MachineSuggestionsMode.canAddToolbarTitle( this.toolbar.$element ) ) {
 		this.toolbar.$element.find( '.oo-ui-toolbar-bar' ).first().prepend(
 			MachineSuggestionsMode.getTitleElement( { includeIcon: true } )
 		);

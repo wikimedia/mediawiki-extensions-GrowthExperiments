@@ -2,7 +2,11 @@ var TargetInitializer = require( '../TargetInitializer.js' ),
 	RecommendedImageRejectionDialog = require( './RecommendedImageRejectionDialog.js' ),
 	RecommendedImageViewer = require( './RecommendedImageViewer.js' ),
 	ImageSuggestionInteractionLogger = require( './ImageSuggestionInteractionLogger.js' ),
-	SuggestionInteractionLogger = require( '../SuggestionInteractionLogger.js' );
+	SuggestionInteractionLogger = require( '../SuggestionInteractionLogger.js' ),
+	CERecommendedImageNode = require( './ceRecommendedImageNode.js' ),
+	DMRecommendedImageNode = require( './dmRecommendedImageNode.js' ),
+	CERecommendedImageCaptionNode = require( './ceRecommendedImageCaptionNode.js' ),
+	DMRecommendedImageCaptionNode = require( './dmRecommendedImageCaptionNode.js' );
 
 /**
  * Handle registrations and de-registrations of VE classes for Add Image structured task
@@ -24,18 +28,21 @@ function AddImageTargetInitializer( platformConfig ) {
 			'recommendedImage', 'window', 'toggle', { args: [ 'recommendedImage' ] }
 		);
 	config.safeCommands = [ toolbarDialogCommand.name ];
-	config.dataModels = [];
+	config.dataModels = [ DMRecommendedImageNode, DMRecommendedImageCaptionNode ];
 	config.annotationViews = [];
 	config.windows = ( platformConfig.windows || [] ).concat( [
 		RecommendedImageRejectionDialog, RecommendedImageViewer
 	] );
 	config.commands = [ toolbarDialogCommand ];
+	config.nodes = [ CERecommendedImageNode, CERecommendedImageCaptionNode ];
 	SuggestionInteractionLogger.initialize( new ImageSuggestionInteractionLogger( {
 		/* eslint-disable camelcase */
 		is_mobile: OO.ui.isMobile(),
 		active_interface: 'machinesuggestions_mode'
 		/* eslint-enable camelcase */
 	} ) );
+	// Desktop doesn't have a back button in the toolbar.
+	config.shouldOverrideBackTool = OO.ui.isMobile();
 	AddImageTargetInitializer.super.call( this, config );
 }
 
