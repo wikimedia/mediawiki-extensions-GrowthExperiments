@@ -8,12 +8,14 @@ use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\CardWrapper;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\NavigationWidgetFactory;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\TaskExplanationWidget;
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
@@ -139,6 +141,9 @@ class SuggestedEdits extends BaseModule {
 	/** @var NavigationWidgetFactory */
 	private $navigationWidgetFactory;
 
+	/** @var ImageRecommendationSubmissionLogFactory */
+	private $imageRecommendationSubmissionLogFactory;
+
 	/**
 	 * @param IContextSource $context
 	 * @param Config $wikiConfig
@@ -151,6 +156,7 @@ class SuggestedEdits extends BaseModule {
 	 * @param TitleFactory $titleFactory
 	 * @param ProtectionFilter $protectionFilter
 	 * @param UserOptionsLookup $userOptionsLookup
+	 * @param ImageRecommendationSubmissionLogFactory $imageRecommendationSubmissionLogFactory
 	 */
 	public function __construct(
 		IContextSource $context,
@@ -163,7 +169,8 @@ class SuggestedEdits extends BaseModule {
 		TaskSuggester $taskSuggester,
 		TitleFactory $titleFactory,
 		ProtectionFilter $protectionFilter,
-		UserOptionsLookup $userOptionsLookup
+		UserOptionsLookup $userOptionsLookup,
+		ImageRecommendationSubmissionLogFactory $imageRecommendationSubmissionLogFactory
 	) {
 		parent::__construct( 'suggested-edits', $context, $wikiConfig, $experimentUserManager );
 		$this->editInfoService = $editInfoService;
@@ -179,6 +186,7 @@ class SuggestedEdits extends BaseModule {
 			$this->getContext(),
 			$this->getTaskSet()
 		);
+		$this->imageRecommendationSubmissionLogFactory = $imageRecommendationSubmissionLogFactory;
 	}
 
 	/** @inheritDoc */
@@ -804,11 +812,24 @@ class SuggestedEdits extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getJsConfigVars() {
+		$imageRecommendationDailyTasksExceeded = false;
+		$imageRecommendationSubmissionLog = $this->imageRecommendationSubmissionLogFactory
+			->newImageRecommendationSubmissionLog( $this->getUser(), $this->getContext() );
+		/** @var ImageRecommendationTaskType $imageRecommendationTaskType */
+		$imageRecommendationTaskType =
+			$this->configurationLoader->getTaskTypes()[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
+		if ( $imageRecommendationTaskType &&
+			$imageRecommendationSubmissionLog->count() >=
+			// @phan-suppress-next-line PhanUndeclaredMethod
+			$imageRecommendationTaskType->getMaxTasksPerDay() ) {
+			$imageRecommendationDailyTasksExceeded = true;
+		}
 		return [
 			'GEHomepageSuggestedEditsEnableTopics' => self::isTopicMatchingEnabled(
 				$this->getContext(),
 				$this->userOptionsLookup
-			)
+			),
+			'GEImageRecommendationDailyTasksExceeded' => $imageRecommendationDailyTasksExceeded
 		];
 	}
 

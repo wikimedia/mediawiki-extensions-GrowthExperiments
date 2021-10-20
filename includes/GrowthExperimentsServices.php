@@ -24,6 +24,7 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
@@ -249,6 +250,10 @@ class GrowthExperimentsServices {
 
 	public function getImageRecommendationMetadataProvider(): ImageRecommendationMetadataProvider {
 		return $this->coreServices->get( 'GrowthExperimentsImageRecommendationMetadataProvider' );
+	}
+
+	public function getImageRecommendationSubmissionLogFactory(): ImageRecommendationSubmissionLogFactory {
+		return $this->coreServices->get( 'GrowthExperimentsImageRecommendationSubmissionLogFactory' );
 	}
 
 }

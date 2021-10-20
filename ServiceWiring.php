@@ -31,6 +31,7 @@ use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\AddLinkSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddLink\DbBackedLinkRecommendationProvider;
@@ -710,6 +711,14 @@ return [
 			new DerivativeContext( RequestContext::getMain() ),
 			$services->getSiteStore()
 		);
-	}
+	},
+
+	'GrowthExperimentsImageRecommendationSubmissionLogFactory' => static function (
+		MediaWikiServices $services
+	): ImageRecommendationSubmissionLogFactory {
+		return new ImageRecommendationSubmissionLogFactory(
+			$services->getUserOptionsLookup()
+		);
+	},
 
 ];

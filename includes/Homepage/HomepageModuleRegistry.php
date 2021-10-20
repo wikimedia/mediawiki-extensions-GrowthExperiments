@@ -113,7 +113,8 @@ class HomepageModuleRegistry {
 					$growthServices->getTaskSuggesterFactory()->create(),
 					$services->getTitleFactory(),
 					$growthServices->getProtectionFilter(),
-					$services->getUserOptionsLookup()
+					$services->getUserOptionsLookup(),
+					$growthServices->getImageRecommendationSubmissionLogFactory()
 				);
 			},
 
