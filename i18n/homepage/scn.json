@@ -13,7 +13,10 @@
 	"growthexperiments-structuredtask-onboarding-dialog-progress": "$1 di $2",
 	"growthexperiments-addimage-inspector-yes-button": "Sì",
 	"growthexperiments-addimage-inspector-no-button": "No",
-	"growthexperiments-addimage-inspector-details-button": "Talìa li dittagghî",
+	"growthexperiments-addimage-inspector-skip-button": "Nun sicuru",
+	"growthexperiments-addimage-inspector-details-button": "Talìa li dittagghî dâ mmàggini",
+	"growthexperiments-addimage-rejectiondialog-action-cancel": "Annulla",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Àutru",
-	"growthexperiments-addimage-viewer-close-button": "Chiudi"
+	"growthexperiments-addimage-viewer-close-button": "Chiudi",
+	"growthexperiments-addimage-skip-dialog-cancel": "Annulla"
 }

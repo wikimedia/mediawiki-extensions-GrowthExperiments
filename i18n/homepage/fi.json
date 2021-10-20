@@ -300,9 +300,11 @@
 	"growthexperiments-addimage-inspector-skip-button": "Ohita",
 	"growthexperiments-addimage-inspector-show-button": "Näytä ehdotettu kuva",
 	"growthexperiments-addimage-inspector-help-button": "Hanki apua muokkaamisessa",
+	"growthexperiments-addimage-inspector-details-button": "Näytä kuvan tiedot",
 	"growthexperiments-addimage-rejectiondialog-header": "Miksi tämä kuva ei ole oikea artikkelille?",
 	"growthexperiments-addimage-rejectiondialog-subheader": "{{GENDER:|Vastauksesi}} auttaa parantamaan ehdotuksia.",
-	"growthexperiments-addimage-rejectiondialog-action-done": "Valmis",
+	"growthexperiments-addimage-rejectiondialog-action-done": "Lähetä",
+	"growthexperiments-addimage-rejectiondialog-action-cancel": "Peruuta",
 	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Kuva ei ole asiaankuuluva",
 	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Kuva on loukkaava",
 	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Kuva on heikkolaatuinen",
@@ -313,5 +315,7 @@
 	"growthexperiments-addimage-onboarding-content-intro-title": "Kuvat voivat auttaa lukijoita ymmärtämään aihetta, mutta monista artikkeleista puuttuu kuvia.",
 	"growthexperiments-addimage-onboarding-content-imagedetails-title": "Katso ehdotettua kuvaa ja käy läpi sen yksityiskohdat.",
 	"growthexperiments-addimage-onboarding-content-article-title": "Onko se oikea tähän artikkeliin?",
-	"growthexperiments-addimage-onboarding-content-decision-title": "Päätä, kuuluuko se artikkeliin vai ei."
+	"growthexperiments-addimage-onboarding-content-decision-title": "Päätä, kuuluuko se artikkeliin vai ei.",
+	"growthexperiments-addimage-skip-dialog-confirm": "Ohita ehdotus",
+	"growthexperiments-addimage-skip-dialog-cancel": "Peruuta"
 }

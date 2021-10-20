@@ -220,6 +220,7 @@
 	"log-action-filter-growthexperiments-addlink": "လင့်ခ် အကြံပြုချက်များ",
 	"log-action-filter-growthexperiments-addimage": "ရုပ်ပုံ အကြံပြုချက်များ",
 	"growthexperiments-notification-body-mentor-change": "အကြောင်းပြချက်: $1",
+	"growthexperiments-homepage-suggestededits-more-info": "အကြံပေးထားသောတည်းဖြတ်မှုများနှင့်ပတ်သက်၍ ပိုမိုသည့်သတင်းအချက်အလက်",
 	"growthexperiments-homepage-welcome-notice-header": "{{GENDER:$1|သင်၏}}ဗဟိုစာမျက်နှာမှ ကြိုဆိုပါသည်",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "ဆက်လက်",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "သဘောပေါက်ပြီ",

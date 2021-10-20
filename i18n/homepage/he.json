@@ -433,5 +433,10 @@
 	"growthexperiments-addimage-skip-dialog-title": "לא {{GENDER:|בטוח|בטוחה}} בקשר לתמונה הזאת?",
 	"growthexperiments-addimage-skip-dialog-body": "נא לוודא {{GENDER:|שאתה רוצה|שאת רוצה}} לדלג על ההצעה הזאת.",
 	"growthexperiments-addimage-skip-dialog-confirm": "לדלג על ההצעה",
-	"growthexperiments-addimage-skip-dialog-cancel": "ביטול"
+	"growthexperiments-addimage-skip-dialog-cancel": "ביטול",
+	"growthexperiments-newcomertasks-invalid-tasktype": "$1 הוא לא סוג משימה תקין",
+	"growthexperiments-addimage-caption-title": "הוספת כיתוב",
+	"growthexperiments-structuredtask-user-error": "לא הצלחנו לשמור את העריכה שלך כי {{GENDER:|אתה|את}} כבר לא בחשבון. נא להיכנס ולנסות שוב.",
+	"growthexperiments-structuredtask-user-error-login-cta": "כניסה לחשבון",
+	"growthexperiments-structuredtask-anonuser": "המשתמש כבר לא בחשבון."
 }

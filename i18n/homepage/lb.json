@@ -144,10 +144,11 @@
 	"growthexperiments-structuredtask-summary-submit": "Schécken",
 	"growthexperiments-addimage-inspector-yes-button": "Jo",
 	"growthexperiments-addimage-inspector-no-button": "Neen",
-	"growthexperiments-addimage-inspector-skip-button": "Iwwersprangen",
-	"growthexperiments-addimage-inspector-details-button": "Detailer weisen",
+	"growthexperiments-addimage-inspector-skip-button": "Net sécher",
+	"growthexperiments-addimage-inspector-details-button": "Detailer vum Bild weisen",
 	"growthexperiments-addimage-rejectiondialog-header": "Firwat ass dëst Bild net adequat fir den Artikel?",
-	"growthexperiments-addimage-rejectiondialog-action-done": "Fäerdeg",
+	"growthexperiments-addimage-rejectiondialog-action-done": "Schécken",
+	"growthexperiments-addimage-rejectiondialog-action-cancel": "Ofbriechen",
 	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Bild ass net relevant",
 	"growthexperiments-addimage-rejectiondialog-reason-noinfo": "Net genuch Informatioune fir ze decidéieren",
 	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Bild ass verletzend",
@@ -155,5 +156,9 @@
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Ech kennen dëse Sujet net",
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Ech kann d'Sprooch net liesen",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Anerer",
-	"growthexperiments-addimage-viewer-close-button": "Zoumaachen"
+	"growthexperiments-addimage-viewer-close-button": "Zoumaachen",
+	"growthexperiments-addimage-onboarding-content-article-title": "Ass et richteg fir dësen Artikel?",
+	"growthexperiments-addimage-skip-dialog-title": "Net sécher bei dësem Bild?",
+	"growthexperiments-addimage-skip-dialog-confirm": "Propos iwwersprangen",
+	"growthexperiments-addimage-skip-dialog-cancel": "Ofbriechen"
 }
