@@ -832,6 +832,7 @@
 				"ext.growthExperiments.StructuredTask/addimage/ceRecommendedImageCaptionNode.js",
 				"ext.growthExperiments.StructuredTask/addimage/dmRecommendedImageCaptionNode.js",
 				"ext.growthExperiments.StructuredTask/addimage/AddImageLinearDeleteKeyDownHandler.js",
+				"ext.growthExperiments.StructuredTask/addimage/AddImageCaptionInfoDialog.js",
 				"utils/ext.growthExperiments.Utils.js",
 				{
 					"name": "homepage/suggestededits/config.json",
@@ -854,7 +855,8 @@
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageViewer.less",
 				"ext.growthExperiments.StructuredTask/addimage/ceRecommendedImageNode.less",
 				"ext.growthExperiments.StructuredTask/addimage/ceRecommendedImageCaptionNode.less",
-				"ext.growthExperiments.StructuredTask/addimage/AddImageSaveDialog.less"
+				"ext.growthExperiments.StructuredTask/addimage/AddImageSaveDialog.less",
+				"ext.growthExperiments.StructuredTask/addimage/AddImageCaptionInfoDialog.less"
 			],
 			"messages": [
 				"growthexperiments-addlink-context-title",
@@ -920,6 +922,10 @@
 				"growthexperiments-addimage-caption-title",
 				"growthexperiments-addimage-loading-title",
 				"growthexperiments-addimage-caption-placeholder",
+				"growthexperiments-addimage-caption-info-dialog-title",
+				"growthexperiments-addimage-caption-info-dialog-message",
+				"growthexperiments-addimage-caption-info-dialog-guidelines",
+				"growthexperiments-addimage-caption-info-dialog-confirm",
 				"growthexperiments-structuredtask-user-error",
 				"growthexperiments-structuredtask-user-error-login-cta",
 				"growthexperiments-addimage-summary-label",

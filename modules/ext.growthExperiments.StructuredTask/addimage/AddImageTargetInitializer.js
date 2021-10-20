@@ -7,7 +7,8 @@ var TargetInitializer = require( '../TargetInitializer.js' ),
 	DMRecommendedImageNode = require( './dmRecommendedImageNode.js' ),
 	CERecommendedImageCaptionNode = require( './ceRecommendedImageCaptionNode.js' ),
 	DMRecommendedImageCaptionNode = require( './dmRecommendedImageCaptionNode.js' ),
-	AddImageLinearDeleteKeyDownHandler = require( './AddImageLinearDeleteKeyDownHandler.js' );
+	AddImageLinearDeleteKeyDownHandler = require( './AddImageLinearDeleteKeyDownHandler.js' ),
+	AddImageCaptionInfoDialog = require( './AddImageCaptionInfoDialog.js' );
 
 /**
  * Handle registrations and de-registrations of VE classes for Add Image structured task
@@ -34,7 +35,7 @@ function AddImageTargetInitializer( platformConfig ) {
 	config.dataModels = [ DMRecommendedImageNode, DMRecommendedImageCaptionNode ];
 	config.annotationViews = [];
 	config.windows = ( platformConfig.windows || [] ).concat( [
-		RecommendedImageRejectionDialog, RecommendedImageViewer
+		RecommendedImageRejectionDialog, RecommendedImageViewer, AddImageCaptionInfoDialog
 	] );
 	config.commands = [ toolbarDialogCommand ];
 	config.nodes = [ CERecommendedImageNode, CERecommendedImageCaptionNode ];

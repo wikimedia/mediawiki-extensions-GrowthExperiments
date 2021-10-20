@@ -398,6 +398,7 @@ RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
 	$documentNode.addClass( 'mw-ge-recommendedImageToolbarDialog-caption' );
 	$inspector.addClass( 'animate-below' );
 	this.canShowCaption = true;
+	articleTarget.showCaptionInfoDialog( true );
 
 	this.showInternalRoute( 'caption', function () {
 		MachineSuggestionsMode.disableVirtualKeyboard( this.surface );

@@ -1,5 +1,6 @@
 var StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEdit' ),
-	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
+	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
+	ADD_IMAGE_CAPTION_ONBOARDING_PREF = 'growthexperiments-addimage-caption-onboarding';
 
 /**
  * @typedef mw.libs.ge.ImageRecommendationImage
@@ -60,13 +61,12 @@ AddImageArticleTarget.prototype.beforeSurfaceReady = function () {
  * Show the image inspector, hide save button
  */
 AddImageArticleTarget.prototype.afterSurfaceReady = function () {
-	// Set a reference to the toolbar up front so that it's available in subsequent calls
-	// (since VeUiTargetToolbar is constructed upon these method calls if it's not there)
-	this.targetToolbar = OO.ui.isMobile() ? this.getToolbar() : this.getActions();
-	// Save button will be shown during caption step
-	this.toggleSaveTool( false );
-
 	if ( this.isValidTask() ) {
+		// Set a reference to the toolbar up front so that it's available in subsequent calls
+		// (since VeUiTargetToolbar is constructed upon these method calls if it's not there)
+		this.targetToolbar = OO.ui.isMobile() ? this.getToolbar() : this.getActions();
+		// Save button will be shown during caption step
+		this.toggleSaveTool( false );
 		this.getSurface().executeCommand( 'recommendedImage' );
 	} else {
 		// Ideally, this error would happen sooner so the user doesn't have to wait for VE
@@ -326,6 +326,36 @@ AddImageArticleTarget.prototype.toggleEditModeTool = function ( shouldShow ) {
 	var editModeToolGroup = this.getEditModeToolGroup();
 	if ( editModeToolGroup ) {
 		editModeToolGroup.toggle( shouldShow );
+	}
+};
+
+/**
+ * Show the caption info dialog.
+ *
+ * When the dialog is opened automatically (when the user accepts a suggestion and hasn't dismissed
+ * the caption onboarding dialog), the user preference should be checked to determine if the user
+ * has opted out of seeing the dialog. When the dialog is opened via a click on the help button
+ * during caption step, the preference doesn't need to be checked.
+ *
+ * By default, the dialog is opened without checking the user's preference.
+ *
+ * @param {boolean} [shouldCheckPref] Whether the dialog preference should be taken into account
+ */
+AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPref ) {
+	var dialogName = 'addImageCaptionInfo';
+	if ( !shouldCheckPref ) {
+		this.surface.dialogs.openWindow( dialogName );
+		return;
+	}
+
+	// The dialog was shown already during the session (the user went back from caption step)
+	if ( this.hasShownCaptionOnboarding ) {
+		return;
+	}
+
+	if ( !mw.user.options.get( ADD_IMAGE_CAPTION_ONBOARDING_PREF ) ) {
+		this.hasShownCaptionOnboarding = true;
+		this.surface.dialogs.openWindow( dialogName, { shouldShowDismissField: true } );
 	}
 };
 

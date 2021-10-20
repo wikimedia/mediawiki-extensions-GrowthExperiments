@@ -203,7 +203,6 @@ StructuredTaskArticleTarget.prototype.updateHistory = function () {
 };
 
 /**
-<<<<<<< HEAD
  * Get MachineSuggestionsPlaceholder tool
  *
  * @return {mw.libs.ge.MachineSuggestionsPlaceholder|undefined}

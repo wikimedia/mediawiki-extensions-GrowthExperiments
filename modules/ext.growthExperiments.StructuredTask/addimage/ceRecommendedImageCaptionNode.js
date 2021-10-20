@@ -82,7 +82,7 @@ CERecommendedImageCaptionNode.prototype.setupHelpButton = function () {
 		lable: mw.message( 'growthexperiments-addimage-inspector-help-button' ).text()
 	} );
 	this.helpButton.on( 'click', function () {
-		// TODO: Re-open caption onboarding (T292887)
+		ve.init.target.showCaptionInfoDialog();
 	} );
 };
 
