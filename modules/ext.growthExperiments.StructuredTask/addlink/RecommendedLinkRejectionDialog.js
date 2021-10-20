@@ -53,7 +53,10 @@ RecommendedLinkRejectionDialog.prototype.initialize = function () {
 		data: 'other',
 		label: mw.msg( 'growthexperiments-addlink-rejectiondialog-reason-other' )
 	} ];
-	this.reasonSelect = new RejectionReasonSelect( { options: selectOptions } );
+	this.reasonSelect = new RejectionReasonSelect( {
+		options: selectOptions,
+		isMultiSelect: true
+	} );
 	this.text.$element.append( this.reasonSelect.getElement() );
 };
 
@@ -66,10 +69,15 @@ RecommendedLinkRejectionDialog.prototype.getSetupProcess = function ( data ) {
 };
 
 /** @inheritDoc **/
-RecommendedLinkRejectionDialog.prototype.getActionProcess = function () {
+RecommendedLinkRejectionDialog.prototype.getActionProcess = function ( action ) {
+	// Handle Esc key + anything unforeseen.
+	if ( action !== 'done' ) {
+		action = 'cancel';
+	}
+
 	return new OO.ui.Process( function () {
-		var selectedItemData = this.reasonSelect.findSelection()[ 0 ];
-		this.close( { action: 'done', reason: selectedItemData } );
+		var selectedItems = this.reasonSelect.findSelection();
+		this.close( { action: action, reason: selectedItems } );
 	}, this );
 };
 
