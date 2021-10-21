@@ -21,5 +21,9 @@
 	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Imagine es de basse qualitate",
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Io non cognosce iste subjecto",
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Io non pote leger le lingua",
-	"growthexperiments-addimage-rejectiondialog-reason-other": "Altere"
+	"growthexperiments-addimage-rejectiondialog-reason-other": "Altere",
+	"growthexperiments-addimage-caption-title": "Adder un legenda",
+	"growthexperiments-structuredtask-user-error": "Non esseva possibile salveguardar tu modification perque tu session ha essite claudite. Per favor reaperi session e tenta lo de novo.",
+	"growthexperiments-structuredtask-user-error-login-cta": "Aperir session",
+	"growthexperiments-structuredtask-anonuser": "Le session del usator ha essite claudite."
 }

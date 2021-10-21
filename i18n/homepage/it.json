@@ -419,5 +419,7 @@
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Impossibile capire la lingua",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Altro",
 	"growthexperiments-addimage-viewer-close-button": "Chiudi",
-	"growthexperiments-addimage-skip-dialog-cancel": "Annulla"
+	"growthexperiments-addimage-skip-dialog-cancel": "Annulla",
+	"growthexperiments-addimage-caption-title": "Aggiungi una didascalia",
+	"growthexperiments-structuredtask-user-error-login-cta": "Entra"
 }

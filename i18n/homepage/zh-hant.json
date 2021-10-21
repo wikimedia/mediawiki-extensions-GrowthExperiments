@@ -9,6 +9,7 @@
 			"Pseudo Classes",
 			"SiderealArt",
 			"Sunny00217",
+			"Weather Top Wizard",
 			"Winston Sung",
 			"羊羊32521"
 		]
@@ -101,8 +102,8 @@
 	"growthexperiments-tour-response-button-okay": "了解",
 	"tag-help_module_question": "協助模組問題",
 	"tag-help_module_question-description": "由首頁協助模組的「詢問問題」功能所做出編輯",
-	"tag-mentorship_module_question": "導師模組問題",
-	"tag-mentorship_module_question-description": "由首頁導師模組的「詢問您的導師」功能所做出編輯",
+	"tag-mentorship_module_question": "導師計畫模組問題",
+	"tag-mentorship_module_question-description": "由首頁導師計畫模組的「詢問您的導師」功能所做出編輯",
 	"tag-mentorship_panel_question": "導師面板問題",
 	"tag-mentorship_panel_question-description": "由協助面板的「詢問您的導師」功能所做出編輯",
 	"tag-newcomer_task": "新手任務",
@@ -366,7 +367,7 @@
 	"growthexperiments-addlink-skip-body": "{{GENDER:|你}}確定你不要接受或拒絕一些推薦嗎？",
 	"growthexperiments-addlink-skip-accept": "全部跳過",
 	"growthexperiments-addlink-skip-reject": "再回顧",
-	"grant-managementorship": "管理導師",
+	"grant-managementorship": "管理導師計畫",
 	"newcomertasksinfo": "新手任務",
 	"newcomertasksinfo-no-data": "沒有可用資料。",
 	"newcomertasksinfo-table-header-task-type": "任務類型",
@@ -382,5 +383,17 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "{{GENDER:$1|您}}可以切換模式去做其他編輯。完成審核以提交{{GENDER:$1|您}}到目前為止的進度。",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "切換但不提交編輯",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "取消",
-	"growthexperiments-structuredtask-summary-submit": "提交"
+	"growthexperiments-structuredtask-summary-submit": "提交",
+	"growthexperiments-addimage-inspector-skip-button": "不確定",
+	"growthexperiments-addimage-inspector-details-button": "查看圖像詳情",
+	"growthexperiments-addimage-rejectiondialog-action-done": "提交",
+	"growthexperiments-addimage-rejectiondialog-action-cancel": "取消",
+	"growthexperiments-addimage-rejectiondialog-reason-other": "其它",
+	"growthexperiments-addimage-skip-dialog-title": "不確定關於這圖像？",
+	"growthexperiments-addimage-skip-dialog-confirm": "跳過建議",
+	"growthexperiments-addimage-skip-dialog-cancel": "取消",
+	"growthexperiments-newcomertasks-invalid-tasktype": "$1 不是有效的作業類型",
+	"growthexperiments-addimage-caption-title": "新增說明",
+	"growthexperiments-structuredtask-user-error-login-cta": "登入",
+	"growthexperiments-structuredtask-anonuser": "該用戶未登錄。"
 }

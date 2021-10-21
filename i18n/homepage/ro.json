@@ -427,5 +427,8 @@
 	"growthexperiments-addimage-skip-dialog-confirm": "Omite sugestia",
 	"growthexperiments-addimage-skip-dialog-cancel": "Renunțare",
 	"growthexperiments-newcomertasks-invalid-tasktype": "$1 nu este un tip de sarcină valid",
-	"growthexperiments-addimage-caption-title": "Adaugă descriere"
+	"growthexperiments-addimage-caption-title": "Adaugă descriere",
+	"growthexperiments-structuredtask-user-error": "Nu v-am putut {{GENDER:|salva}} modificarea pentru că nu mai sunteți {{GENDER:|autentificat|autentificată}}. Vă rugăm să vă autentificați și să încercați din nou.",
+	"growthexperiments-structuredtask-user-error-login-cta": "Autentificare",
+	"growthexperiments-structuredtask-anonuser": "Utilizatorul nu mai este autentificat."
 }

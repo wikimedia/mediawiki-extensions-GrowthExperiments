@@ -426,5 +426,6 @@
 	"growthexperiments-addimage-onboarding-content-intro-body-paragraph1": "У цьому завданні {{GENDER:$1|ви}} вирішите, чи підходить зображення зі Вікісховища (база даних безкоштовних ліцензійних зображень) для статті у Вікіпедії, у якої ще немає зображення.",
 	"growthexperiments-addimage-onboarding-content-intro-body-paragraph2": "Зображення пропонуються машинами, що може бути неправильним. Ось чому для прийняття рішення потрібно {{GENDER:$1|ваше}} судження.",
 	"growthexperiments-addimage-skip-dialog-confirm": "Пропустити пропозицію",
-	"growthexperiments-addimage-skip-dialog-cancel": "Скасувати"
+	"growthexperiments-addimage-skip-dialog-cancel": "Скасувати",
+	"growthexperiments-structuredtask-user-error-login-cta": "Увійти"
 }

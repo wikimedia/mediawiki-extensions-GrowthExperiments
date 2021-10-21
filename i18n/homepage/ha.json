@@ -2,16 +2,19 @@
 	"@metadata": {
 		"authors": [
 			"Abbaty",
+			"Bashir Gwanki",
 			"Gwanki",
 			"Hamxo",
 			"Salihu aliyu",
 			"Umar-askirason"
 		]
 	},
-	"growthexperiments-addimage-inspector-details-button": "Duba bayanai",
+	"growthexperiments-addimage-inspector-skip-button": "Babu tabbas",
+	"growthexperiments-addimage-inspector-details-button": "Duba bayanan Hoton",
 	"growthexperiments-addimage-rejectiondialog-header": "Me yasa wannan hoton bashi da damar maƙala?",
 	"growthexperiments-addimage-rejectiondialog-subheader": "Inganta amsoshin shawarwarin {{GENDER:|Ka}} na gaba.",
-	"growthexperiments-addimage-rejectiondialog-action-done": "Anyi",
+	"growthexperiments-addimage-rejectiondialog-action-done": "Miƙa",
+	"growthexperiments-addimage-rejectiondialog-action-cancel": "Soke",
 	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Hoton bashi da dangantaka",
 	"growthexperiments-addimage-rejectiondialog-reason-noinfo": "Babu isasshen bayanin da za'a yanke shawara",
 	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Hoton na da laifi",
@@ -32,5 +35,10 @@
 	"growthexperiments-addimage-onboarding-content-decision-title": "ta\n\nJaddada idan ya cancanta da mukalar",
 	"growthexperiments-addimage-onboarding-content-decision-body-paragraph1": "Hoton na iya kasancewa daga maudu'i mai kuskure, ko mai karancin kwaliti. Yi amfani da {{GENDER:$1|your}} domin tantance shi.",
 	"growthexperiments-addimage-onboarding-content-decision-body-paragraph2": "Rabi da shawarwarin mashin marasa kyaw ko ka tsallake in\n{{GENDER:$1|you’re}} rashin tabbaci.",
-	"growthexperiments-addimage-onboarding-content-decision-body-paragraph3": "Hotuna na {{GENDER:$1|you}} sun amintu, kawo yan gajerun alamu wa'inda ke iya bayanin yanda ya mallaka"
+	"growthexperiments-addimage-onboarding-content-decision-body-paragraph3": "Hotuna na {{GENDER:$1|you}} sun amintu, kawo yan gajerun alamu wa'inda ke iya bayanin yanda ya mallaka",
+	"growthexperiments-addimage-skip-dialog-cancel": "Soke",
+	"growthexperiments-addimage-caption-title": "Ƙara take",
+	"growthexperiments-structuredtask-user-error": "Ba za mu iya ajiye {{GENDER: | your}} gyara ba saboda {{GENDER: | you}} ba a sake shiga ba. Da fatan za a shiga kuma a sake gwadawa.",
+	"growthexperiments-structuredtask-user-error-login-cta": "Shiga",
+	"growthexperiments-structuredtask-anonuser": "An daina amfani da mai amfani."
 }

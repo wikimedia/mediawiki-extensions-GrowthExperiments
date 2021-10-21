@@ -389,5 +389,7 @@
 	"growthexperiments-addimage-onboarding-content-intro-learn-more-link-text": "기계 제안에 대해 더 알아보기",
 	"growthexperiments-addimage-skip-dialog-title": "이 이미지가 무엇인지 확실치 않나요?",
 	"growthexperiments-addimage-skip-dialog-confirm": "제안 건너뛰기",
-	"growthexperiments-addimage-skip-dialog-cancel": "취소"
+	"growthexperiments-addimage-skip-dialog-cancel": "취소",
+	"growthexperiments-structuredtask-user-error-login-cta": "로그인",
+	"growthexperiments-structuredtask-anonuser": "사용자는 더 이상 로그인되어 있지 않습니다."
 }

@@ -377,5 +377,6 @@
 	"growthexperiments-structuredtask-editmode-selection-visual": "ビジュアル編集",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "キャンセル",
 	"growthexperiments-structuredtask-summary-submit": "送信する",
-	"growthexperiments-addimage-inspector-help-button": "編集についてヘルプしてもらう"
+	"growthexperiments-addimage-inspector-help-button": "編集についてヘルプしてもらう",
+	"growthexperiments-structuredtask-user-error-login-cta": "ログイン"
 }

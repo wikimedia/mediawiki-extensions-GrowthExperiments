@@ -459,5 +459,8 @@
 	"growthexperiments-addimage-skip-dialog-confirm": "Passer la suggestion",
 	"growthexperiments-addimage-skip-dialog-cancel": "Annuler",
 	"growthexperiments-newcomertasks-invalid-tasktype": "$1 n'est pas un type de tâche valide",
-	"growthexperiments-addimage-caption-title": "Ajouter une légende"
+	"growthexperiments-addimage-caption-title": "Ajouter une légende",
+	"growthexperiments-structuredtask-user-error": "Nous ne pouvons pas enregistrer {{GENDER:|votre}} modification parce que {{GENDER:|vous}} n’êtes plus connecté. Veuillez vous connecter et réessayer.",
+	"growthexperiments-structuredtask-user-error-login-cta": "Se connecter",
+	"growthexperiments-structuredtask-anonuser": "L’utilisateur n’est plus connecté."
 }
