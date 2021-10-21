@@ -89,7 +89,7 @@ class ImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 		if ( $taskType->getHandlerId() !== self::ID ) {
 			throw new InvalidArgumentException( '$taskType must be an image recommendation task type' );
 		}
-		return parent::getSearchTerm( $taskType ) . 'hasrecommendation:image';
+		return parent::getSearchTerm( $taskType ) . 'hasrecommendation:image' . ' ' . '-hastemplatecollection:infobox';
 	}
 
 	/** @inheritDoc */
