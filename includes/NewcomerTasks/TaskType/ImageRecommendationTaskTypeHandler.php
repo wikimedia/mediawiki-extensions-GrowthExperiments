@@ -71,9 +71,11 @@ class ImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 	/** @inheritDoc */
 	public function createTaskType( string $taskTypeId, array $config ): TaskType {
 		$extraData = [ 'learnMoreLink' => $config['learnmore'] ?? null ];
+		$settings = array_intersect_key( $config, ImageRecommendationTaskType::DEFAULT_SETTINGS );
 		$taskType = new ImageRecommendationTaskType(
 			$taskTypeId,
 			$config['group'],
+			$settings,
 			$extraData,
 			$this->parseExcludedTemplates( $config ),
 			$this->parseExcludedCategories( $config )
