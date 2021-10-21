@@ -51,6 +51,9 @@ class GrowthConfigValidation implements IConfigValidator {
 			],
 			'GEHomepageSuggestedEditsIntroLinks' => [
 				'type' => 'array<string,string>',
+			],
+			'GEInfoboxTemplates' => [
+				'type' => '?array'
 			]
 		];
 	}
@@ -85,6 +88,8 @@ class GrowthConfigValidation implements IConfigValidator {
 					}
 				}
 				return true;
+			case '?array':
+				return $value === null || is_array( $value );
 			case 'array<string,string>':
 				if ( !is_array( $value ) ) {
 					// If it is not an array, it cannot be an array of the intended format

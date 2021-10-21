@@ -350,6 +350,24 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			],
 		];
 
+		$descriptors = array_merge( $descriptors, [
+			'geconfig-GEInfoboxTemplates' => [
+				'type' => 'titlesmultiselect',
+				'exists' => $pagesMustExist,
+				'placeholder' => $this->msg( 'nstab-template' )->text() . ':Infobox',
+				'namespace' => NS_TEMPLATE,
+				// TODO: This should be relative => true in an ideal world, see T285750 and
+				// T285748 for blockers
+				'relative' => false,
+				'label-message' => $this->msg(
+					'growthexperiments-edit-config-newcomer-tasks-infobox-templates'
+				),
+				'help' => $this->msg( 'growthexperiments-edit-config-newcomer-tasks-infobox-templates-help' )->parse(),
+				'required' => false,
+				'section' => 'newcomertasks'
+			]
+		] );
+
 		// Add fields for suggested edits config (stored in MediaWiki:NewcomerTasks.json)
 		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $taskTypeData ) {
 			$isMachineSuggestionTaskType = in_array(
@@ -792,6 +810,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				$normalizedData[$taskType]['learnmore'] = $data["${taskType}Learnmore"];
 			}
 		}
+
 		return $normalizedData;
 	}
 
@@ -828,6 +847,9 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		$dataToSave['geconfig']['GEHomepageSuggestedEditsIntroLinks'] =
 			$this->normalizeSuggestedEditsIntroLinks( $data );
 		$dataToSave['geconfig']['GEHelpPanelLinks'] = $this->normalizeHelpPanelLinks( $data );
+		$dataToSave['geconfig']['GEInfoboxTemplates'] = array_map( static function ( Title $title ) {
+			return $title->getText();
+		}, $this->normalizeTitleList( $data['geconfig-GEInfoboxTemplates'] ?? null ) );
 
 		// Normalize suggested edits configuration
 		$dataToSave['newcomertasks'] = $this->normalizeSuggestedEditsConfig( $dataToSave['newcomertasks'] );
