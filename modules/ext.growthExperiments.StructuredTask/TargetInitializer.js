@@ -31,6 +31,7 @@ var MachineSuggestionsMode = require( './MachineSuggestionsMode.js' ),
  * @param {ve.ui.Command[]} [config.commands] Commands that can be invoked during the editing flow
  * @param {ve.ui.Tool[]} [config.tools] Tools for the task type
  * @param {ve.ce.Node[]} [config.nodes] Nodes for the task type
+ * @param {ve.ce.KeyDownHandler} [config.keyDownHandlers] Keydown handlers for the task type
  * @param {boolean} [config.shouldOverrideBackTool] Whether MachineSuggestionsBack tool should be used
  */
 function TargetInitializer( config ) {
@@ -52,6 +53,7 @@ function TargetInitializer( config ) {
 	this.commands = config.commands || [];
 	this.tools = config.tools || [];
 	this.nodes = config.nodes || [];
+	this.keyDownHandlers = config.keyDownHandlers || [];
 	this.shouldOverrideBackTool = config.shouldOverrideBackTool;
 }
 
@@ -73,6 +75,7 @@ TargetInitializer.prototype.initialize = function () {
 	this.registerCommands();
 	this.registerTools();
 	this.registerNodes();
+	this.registerKeyDownHandlers();
 	if ( this.shouldOverrideBackTool ) {
 		this.overrideBackTool();
 	}
@@ -247,6 +250,15 @@ TargetInitializer.prototype.disableDefaultEditModeToolsForRegularVeMode = functi
 	if ( this.shouldShowRegularVeMode() ) {
 		this.disableTools( [ 'editModeVisual', 'editModeSource' ] );
 	}
+};
+
+/**
+ * Register custom keydown handlers
+ */
+TargetInitializer.prototype.registerKeyDownHandlers = function () {
+	this.keyDownHandlers.forEach( function ( handler ) {
+		ve.ce.keyDownHandlerFactory.register( handler );
+	} );
 };
 
 module.exports = TargetInitializer;
