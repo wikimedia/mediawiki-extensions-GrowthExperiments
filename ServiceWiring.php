@@ -177,7 +177,8 @@ return [
 			'wikipedia',
 			$services->getContentLanguage()->getCode(),
 			$growthServices->getImageRecommendationMetadataProvider(),
-			null
+			null,
+			$config->get( 'GEImageRecommendationServiceUseTitles' )
 		);
 	},
 
