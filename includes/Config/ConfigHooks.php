@@ -4,20 +4,29 @@ namespace GrowthExperiments\Config;
 
 use Config;
 use Content;
+use DeferredUpdates;
 use FormatJson;
 use GrowthExperiments\Config\Validation\ConfigValidatorFactory;
 use IContextSource;
 use MediaWiki\Hook\EditFilterMergedContentHook;
 use MediaWiki\Hook\SkinTemplateNavigationHook;
+use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use SpecialPage;
 use Status;
 use TextContent;
 use TitleFactory;
 use User;
 
-class ConfigHooks implements EditFilterMergedContentHook, SkinTemplateNavigationHook {
+class ConfigHooks implements
+	EditFilterMergedContentHook,
+	PageSaveCompleteHook,
+	SkinTemplateNavigationHook
+{
 	/** @var ConfigValidatorFactory */
 	private $configValidatorFactory;
+
+	/** @var WikiPageConfigLoader */
+	private $configLoader;
 
 	/** @var TitleFactory */
 	private $titleFactory;
@@ -27,15 +36,18 @@ class ConfigHooks implements EditFilterMergedContentHook, SkinTemplateNavigation
 
 	/**
 	 * @param ConfigValidatorFactory $configValidatorFactory
+	 * @param WikiPageConfigLoader $configLoader
 	 * @param TitleFactory $titleFactory
 	 * @param Config $config
 	 */
 	public function __construct(
 		ConfigValidatorFactory $configValidatorFactory,
+		WikiPageConfigLoader $configLoader,
 		TitleFactory $titleFactory,
 		Config $config
 	) {
 		$this->configValidatorFactory = $configValidatorFactory;
+		$this->configLoader = $configLoader;
 		$this->titleFactory = $titleFactory;
 		$this->config = $config;
 	}
@@ -83,6 +95,24 @@ class ConfigHooks implements EditFilterMergedContentHook, SkinTemplateNavigation
 			}
 		}
 		return true;
+	}
+
+	/**
+	 * Invalidate configuration cache when needed.
+	 * @inheritDoc
+	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageSaveComplete
+	 */
+	public function onPageSaveComplete(
+		$wikiPage, $user, $summary, $flags, $revisionRecord, $editResult
+	) {
+		DeferredUpdates::addCallableUpdate( function () use ( $wikiPage ) {
+			$title = $wikiPage->getTitle();
+			foreach ( $this->configValidatorFactory->getSupportedConfigPages() as $configTitle ) {
+				if ( $title->equals( $configTitle ) ) {
+					$this->configLoader->invalidate( $configTitle );
+				}
+			}
+		} );
 	}
 
 	/**

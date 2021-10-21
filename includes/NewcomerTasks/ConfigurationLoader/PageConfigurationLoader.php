@@ -13,7 +13,6 @@ use GrowthExperiments\Util;
 use InvalidArgumentException;
 use LogicException;
 use MediaWiki\Linker\LinkTarget;
-use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use Message;
 use StatusValue;
 use TitleFactory;
@@ -26,7 +25,7 @@ use TitleValue;
  * https://cs.wikipedia.org/wiki/MediaWiki:NewcomerTopics.json
  * https://www.mediawiki.org/wiki/MediaWiki:NewcomerTopicsOres.json
  */
-class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHook {
+class PageConfigurationLoader implements ConfigurationLoader {
 
 	use ConfigurationLoaderTrait;
 
@@ -274,29 +273,6 @@ class PageConfigurationLoader implements ConfigurationLoader, PageSaveCompleteHo
 		}
 
 		return $status->isGood() ? $topics : $status;
-	}
-
-	/**
-	 * Invalidate configuration cache when needed.
-	 * {@inheritDoc}
-	 * @inheritDoc
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/PageSaveComplete
-	 */
-	public function onPageSaveComplete(
-		$wikiPage, $user, $summary, $flags, $revisionRecord, $editResult
-	) {
-		$title = $wikiPage->getTitle();
-		if ( !$title->inNamespace( NS_MEDIAWIKI ) ) {
-			return;
-		}
-
-		$taskConfigurationTitle = $this->makeTitle( $this->taskConfigurationPage );
-		$topicConfigurationTitle = $this->makeTitle( $this->topicConfigurationPage );
-		if ( $title->equals( $taskConfigurationTitle ) ) {
-			$this->configLoader->invalidate( $taskConfigurationTitle );
-		} elseif ( $topicConfigurationTitle && $title->equals( $topicConfigurationTitle ) ) {
-			$this->configLoader->invalidate( $topicConfigurationTitle );
-		}
 	}
 
 }

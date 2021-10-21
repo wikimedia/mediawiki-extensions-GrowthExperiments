@@ -631,7 +631,7 @@ return [
 			$services->getTitleFactory()
 		);
 
-		// Cache config for a day; cache is invalidated by PageConfigurationLoader::onPageSaveComplete
+		// Cache config for a day; cache is invalidated by ConfigHooks::onPageSaveComplete
 		// and WikiPageConfigWriter::save when config files are changed.
 		$wikiPageConfigLoader->setCache(
 			new CachedBagOStuff( ObjectCache::getLocalClusterInstance() ),

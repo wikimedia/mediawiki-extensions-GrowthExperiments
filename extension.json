@@ -214,6 +214,7 @@
 			"class": "GrowthExperiments\\Config\\ConfigHooks",
 			"services": [
 				"GrowthExperimentsConfigValidatorFactory",
+				"GrowthExperimentsWikiPageConfigLoader",
 				"TitleFactory",
 				"MainConfig"
 			]
@@ -292,7 +293,7 @@
 			"homepage"
 		],
 		"RecentChange_save": "homepage",
-		"PageSaveComplete": "homepage",
+		"PageSaveComplete": "config",
 		"SkinTemplateNavigation::Universal": "homepage",
 		"PersonalUrls": [
 			"homepage",
