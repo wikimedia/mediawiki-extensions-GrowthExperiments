@@ -6,7 +6,8 @@ var TargetInitializer = require( '../TargetInitializer.js' ),
 	CERecommendedImageNode = require( './ceRecommendedImageNode.js' ),
 	DMRecommendedImageNode = require( './dmRecommendedImageNode.js' ),
 	CERecommendedImageCaptionNode = require( './ceRecommendedImageCaptionNode.js' ),
-	DMRecommendedImageCaptionNode = require( './dmRecommendedImageCaptionNode.js' );
+	DMRecommendedImageCaptionNode = require( './dmRecommendedImageCaptionNode.js' ),
+	AddImageLinearDeleteKeyDownHandler = require( './AddImageLinearDeleteKeyDownHandler.js' );
 
 /**
  * Handle registrations and de-registrations of VE classes for Add Image structured task
@@ -43,6 +44,7 @@ function AddImageTargetInitializer( platformConfig ) {
 	} ) );
 	// Desktop doesn't have a back button in the toolbar.
 	config.shouldOverrideBackTool = OO.ui.isMobile();
+	config.keyDownHandlers = [ AddImageLinearDeleteKeyDownHandler ];
 	AddImageTargetInitializer.super.call( this, config );
 }
 

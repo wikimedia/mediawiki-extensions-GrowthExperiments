@@ -823,6 +823,7 @@
 				"ext.growthExperiments.StructuredTask/addimage/dmRecommendedImageNode.js",
 				"ext.growthExperiments.StructuredTask/addimage/ceRecommendedImageCaptionNode.js",
 				"ext.growthExperiments.StructuredTask/addimage/dmRecommendedImageCaptionNode.js",
+				"ext.growthExperiments.StructuredTask/addimage/AddImageLinearDeleteKeyDownHandler.js",
 				"utils/ext.growthExperiments.Utils.js",
 				{
 					"name": "homepage/suggestededits/config.json",
