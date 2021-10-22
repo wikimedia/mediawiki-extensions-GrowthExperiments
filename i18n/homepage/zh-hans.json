@@ -28,7 +28,8 @@
 			"沈澄心",
 			"神樂坂秀吉",
 			"科劳",
-			"羊羊32521"
+			"羊羊32521",
+			"落花有意12138"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
@@ -125,7 +126,7 @@
 	"tag-mentorship_panel_question-description": "通过帮助面板的“询问您的导师”功能进行的编辑",
 	"tag-newcomer_task": "新手任务",
 	"tag-newcomer_task-description": "新人主页的建议编辑模块的编辑建议",
-	"tag-newcomer_task_add_link": "[[mw:Growth/Personalized first day/Structured tasks/Add a link|建议：添加链接]]",
+	"tag-newcomer_task_add_link": "[[mw:Special:MyLanguage/Growth/Personalized first day/Structured tasks/Add a link|建议：添加链接]]",
 	"tag-newcomer_task_add_link-description": "新手主页的编辑建议模块建议的“添加链接”编辑",
 	"growthexperiments-homepage-help-dialog-title": "询问咨询台",
 	"growthexperiments-homepage-help-header": "获取编辑帮助",
@@ -405,7 +406,7 @@
 	"growthexperiments-addlink-suggestions-outdated": "{{GENDER:|您}}预览此条目时其他用户进行了编辑，{{GENDER:|您}}作出的更改无法保存。",
 	"growthexperiments-addimage-inspector-yes-button": "是",
 	"growthexperiments-addimage-inspector-no-button": "否",
-	"growthexperiments-addimage-inspector-skip-button": "不确定",
+	"growthexperiments-addimage-inspector-skip-button": "{{GENDER:|不确定}}",
 	"growthexperiments-addimage-inspector-show-button": "展示链接建议",
 	"growthexperiments-addimage-inspector-help-button": "获取编辑帮助",
 	"growthexperiments-addimage-inspector-details-button": "查看图像详情",

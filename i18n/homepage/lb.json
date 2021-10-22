@@ -144,7 +144,7 @@
 	"growthexperiments-structuredtask-summary-submit": "Schécken",
 	"growthexperiments-addimage-inspector-yes-button": "Jo",
 	"growthexperiments-addimage-inspector-no-button": "Neen",
-	"growthexperiments-addimage-inspector-skip-button": "Net sécher",
+	"growthexperiments-addimage-inspector-skip-button": "{{GENDER:|Net sécher}}",
 	"growthexperiments-addimage-inspector-details-button": "Detailer vum Bild weisen",
 	"growthexperiments-addimage-rejectiondialog-header": "Firwat ass dëst Bild net adequat fir den Artikel?",
 	"growthexperiments-addimage-rejectiondialog-action-done": "Schécken",
@@ -160,5 +160,6 @@
 	"growthexperiments-addimage-onboarding-content-article-title": "Ass et richteg fir dësen Artikel?",
 	"growthexperiments-addimage-skip-dialog-title": "Net sécher bei dësem Bild?",
 	"growthexperiments-addimage-skip-dialog-confirm": "Propos iwwersprangen",
-	"growthexperiments-addimage-skip-dialog-cancel": "Ofbriechen"
+	"growthexperiments-addimage-skip-dialog-cancel": "Ofbriechen",
+	"growthexperiments-structuredtask-user-error-login-cta": "Aloggen"
 }

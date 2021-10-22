@@ -297,7 +297,7 @@
 	"growthexperiments-addimage-inspector-cta": "Lisää tämä kuva artikkelin alkuun?",
 	"growthexperiments-addimage-inspector-yes-button": "Kyllä",
 	"growthexperiments-addimage-inspector-no-button": "Ei",
-	"growthexperiments-addimage-inspector-skip-button": "Epävarma",
+	"growthexperiments-addimage-inspector-skip-button": "{{GENDER:|Epävarma}}",
 	"growthexperiments-addimage-inspector-show-button": "Näytä ehdotettu kuva",
 	"growthexperiments-addimage-inspector-help-button": "Hanki apua muokkaamisessa",
 	"growthexperiments-addimage-inspector-details-button": "Näytä kuvan tiedot",
@@ -317,5 +317,7 @@
 	"growthexperiments-addimage-onboarding-content-article-title": "Onko se oikea tähän artikkeliin?",
 	"growthexperiments-addimage-onboarding-content-decision-title": "Päätä, kuuluuko se artikkeliin vai ei.",
 	"growthexperiments-addimage-skip-dialog-confirm": "Ohita ehdotus",
-	"growthexperiments-addimage-skip-dialog-cancel": "Peruuta"
+	"growthexperiments-addimage-skip-dialog-cancel": "Peruuta",
+	"growthexperiments-addimage-caption-title": "Lisää kuvateksti",
+	"growthexperiments-structuredtask-user-error-login-cta": "Kirjaudu sisään"
 }
