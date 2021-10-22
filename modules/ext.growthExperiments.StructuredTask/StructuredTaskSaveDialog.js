@@ -155,4 +155,13 @@ StructuredTaskSaveDialog.prototype.onLoginButtonClicked = function () {
 	} );
 };
 
+/**
+ * Automatically add the page to the user's watchlist
+ */
+StructuredTaskSaveDialog.prototype.addToWatchlist = function () {
+	if ( this.checkboxesByName.wpWatchthis ) {
+		this.checkboxesByName.wpWatchthis.setSelected( true );
+	}
+};
+
 module.exports = StructuredTaskSaveDialog;

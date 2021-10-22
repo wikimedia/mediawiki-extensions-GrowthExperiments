@@ -14,10 +14,20 @@ var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession'
  * @property {number} metadata.originalWidth Width of original image in pixels.
  * @property {number} metadata.originalHeight Height of original image in pixels.
  */
+
 /**
  * @typedef mw.libs.ge.ImageRecommendation
  * @property {mw.libs.ge.ImageRecommendationImage[]} images Recommended images.
  * @property {string} datasetId Dataset version ID.
+ */
+
+/**
+ * @typedef mw.libs.ge.ImageRecommendationSummary
+ * @property {boolean} accepted Whether the image was accepted
+ * @property {string} filename Image file name
+ * @property {string} thumbUrl URL of the image thumbnail
+ * @property {string} caption Entered value for the image caption
+ *
  */
 
 /**
@@ -104,6 +114,7 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 						imageData.metadata.originalWidth - 1 ) ) :
 					imageData.metadata.thumbUrl,
 				align: 'default',
+				filename: imageData.image,
 				originalClasses: [ 'mw-default-size' ],
 				isError: false,
 				mw: {}
@@ -204,6 +215,30 @@ AddImageArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 		reasons: this.recommendationRejectionReasons
 	} );
 	return this.constructor.super.prototype.save.call( this, doc, options, isRetry );
+};
+
+/**
+ * Get the image and its acceptance data to be used in the save dialog
+ *
+ * @return {mw.libs.ge.ImageRecommendationSummary}
+ */
+AddImageArticleTarget.prototype.getSummaryData = function () {
+	var imageData = suggestedEditSession.taskData.images[ 0 ],
+		surfaceModel = this.getSurface().getModel(),
+		/** @type {mw.libs.ge.ImageRecommendationSummary} */
+		summaryData = {
+			filename: imageData.image,
+			accepted: this.recommendationAccepted,
+			thumbUrl: imageData.metadata.thumbUrl,
+			caption: ''
+		};
+	if ( this.recommendationAccepted ) {
+		var documentDataModel = surfaceModel.getDocument(),
+			captionNode = documentDataModel.getNodesByType( 'mwGeRecommendedImageCaption' )[ 0 ],
+			caption = surfaceModel.getLinearFragment( captionNode.getRange() ).getText();
+		summaryData.caption = caption;
+	}
+	return summaryData;
 };
 
 module.exports = AddImageArticleTarget;

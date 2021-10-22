@@ -435,5 +435,9 @@
 	"growthexperiments-addimage-caption-title": "Add a caption",
 	"growthexperiments-structuredtask-user-error": "We could not save {{GENDER:|your}} edit because {{GENDER:|you}} are no longer logged in. Please log in and try again.",
 	"growthexperiments-structuredtask-user-error-login-cta": "Log in",
-	"growthexperiments-structuredtask-anonuser": "User is no longer logged in."
+	"growthexperiments-structuredtask-anonuser": "User is no longer logged in.",
+	"growthexperiments-addimage-summary-label": "Summary",
+	"growthexperiments-addimage-summary-copyrightwarning": "By saving changes, {{GENDER:|you}} agree to the [https://foundation.wikimedia.org/wiki/Terms_of_Use Terms of Use] and agree to release your contribution under the [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] and [https://www.gnu.org/licenses/fdl-1.3.html GFDL] licenses.",
+	"growthexperiments-addimage-summary-reject-description": "This image suggestion was rejected.",
+	"growthexperiments-addimage-summary-summary": "Image suggestions feature: $1 {{PLURAL:$1|image|images}} added."
 }

@@ -155,9 +155,9 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 
 RecommendedImageToolbarDialog.prototype.onYesButtonClicked = function () {
 	// TODO: Caption (T290781)
-
 	ve.init.target.insertImage( this.images[ 0 ] );
 	this.setState( true );
+	this.setUpCaptionStep();
 };
 
 RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
@@ -166,6 +166,7 @@ RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 			if ( data && data.action === 'done' ) {
 				this.setState( false, data.reasons );
 			}
+			mw.hook( 'growthExperiments.contextItem.saveArticle' ).fire();
 		}.bind( this ) );
 };
 
@@ -324,7 +325,6 @@ RecommendedImageToolbarDialog.prototype.setState = function ( accepted, reasons 
 	// FIXME this isn't the final behavior but useful now for testing.
 	ve.init.target.recommendationAccepted = accepted;
 	ve.init.target.recommendationRejectionReasons = reasons;
-	this.setUpCaptionStep();
 };
 
 /**
