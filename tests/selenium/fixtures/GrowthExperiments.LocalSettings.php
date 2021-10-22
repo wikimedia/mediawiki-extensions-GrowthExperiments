@@ -32,6 +32,7 @@ $wgHooks['MediaWikiServices'][] = static function ( MediaWikiServices $services 
 		): TaskSuggesterFactory {
 			return new StaticTaskSuggesterFactory( [
 				new Task( $imageRecommendationTaskType, new TitleValue( NS_MAIN, "Ma'amoul" ) ),
+				new Task( $imageRecommendationTaskType, new TitleValue( NS_MAIN, "1886_in_Chile" ) ),
 				new Task( $linkRecommendationTaskType, new TitleValue( NS_MAIN, 'Douglas Adams' ) ),
 				new Task(
 					$linkRecommendationTaskType, new TitleValue( NS_MAIN, "The_Hitchhiker's_Guide_to_the_Galaxy" )

@@ -1,59 +1,59 @@
 <mediawiki xmlns="http://www.mediawiki.org/xml/export-0.10/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.10/ http://www.mediawiki.org/xml/export-0.10.xsd" version="0.10" xml:lang="en">
-  <siteinfo>
-    <sitename>Wikipedia</sitename>
-    <dbname>enwiki</dbname>
-    <base>https://en.wikipedia.org/wiki/Main_Page</base>
-    <generator>MediaWiki 1.37.0-wmf.19</generator>
-    <case>first-letter</case>
-    <namespaces>
-      <namespace key="-2" case="first-letter">Media</namespace>
-      <namespace key="-1" case="first-letter">Special</namespace>
-      <namespace key="0" case="first-letter" />
-      <namespace key="1" case="first-letter">Talk</namespace>
-      <namespace key="2" case="first-letter">User</namespace>
-      <namespace key="3" case="first-letter">User talk</namespace>
-      <namespace key="4" case="first-letter">Wikipedia</namespace>
-      <namespace key="5" case="first-letter">Wikipedia talk</namespace>
-      <namespace key="6" case="first-letter">File</namespace>
-      <namespace key="7" case="first-letter">File talk</namespace>
-      <namespace key="8" case="first-letter">MediaWiki</namespace>
-      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
-      <namespace key="10" case="first-letter">Template</namespace>
-      <namespace key="11" case="first-letter">Template talk</namespace>
-      <namespace key="12" case="first-letter">Help</namespace>
-      <namespace key="13" case="first-letter">Help talk</namespace>
-      <namespace key="14" case="first-letter">Category</namespace>
-      <namespace key="15" case="first-letter">Category talk</namespace>
-      <namespace key="100" case="first-letter">Portal</namespace>
-      <namespace key="101" case="first-letter">Portal talk</namespace>
-      <namespace key="118" case="first-letter">Draft</namespace>
-      <namespace key="119" case="first-letter">Draft talk</namespace>
-      <namespace key="710" case="first-letter">TimedText</namespace>
-      <namespace key="711" case="first-letter">TimedText talk</namespace>
-      <namespace key="828" case="first-letter">Module</namespace>
-      <namespace key="829" case="first-letter">Module talk</namespace>
-      <namespace key="2300" case="first-letter">Gadget</namespace>
-      <namespace key="2301" case="first-letter">Gadget talk</namespace>
-      <namespace key="2302" case="case-sensitive">Gadget definition</namespace>
-      <namespace key="2303" case="case-sensitive">Gadget definition talk</namespace>
-    </namespaces>
-  </siteinfo>
-  <page>
-    <title>The Hitchhiker's Guide to the Galaxy</title>
-    <ns>0</ns>
-    <id>31353</id>
-    <revision>
-      <id>1039981004</id>
-      <parentid>1039980389</parentid>
-      <timestamp>2021-08-21T23:43:14Z</timestamp>
-      <contributor>
-        <username>Llammakey</username>
-        <id>21878292</id>
-      </contributor>
-      <comment>/* Stage shows */ fixed bareurl</comment>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
-      <text bytes="97464" xml:space="preserve">{{short description|Science fiction series}}
+	<siteinfo>
+		<sitename>Wikipedia</sitename>
+		<dbname>enwiki</dbname>
+		<base>https://en.wikipedia.org/wiki/Main_Page</base>
+		<generator>MediaWiki 1.37.0-wmf.19</generator>
+		<case>first-letter</case>
+		<namespaces>
+			<namespace key="-2" case="first-letter">Media</namespace>
+			<namespace key="-1" case="first-letter">Special</namespace>
+			<namespace key="0" case="first-letter" />
+			<namespace key="1" case="first-letter">Talk</namespace>
+			<namespace key="2" case="first-letter">User</namespace>
+			<namespace key="3" case="first-letter">User talk</namespace>
+			<namespace key="4" case="first-letter">Wikipedia</namespace>
+			<namespace key="5" case="first-letter">Wikipedia talk</namespace>
+			<namespace key="6" case="first-letter">File</namespace>
+			<namespace key="7" case="first-letter">File talk</namespace>
+			<namespace key="8" case="first-letter">MediaWiki</namespace>
+			<namespace key="9" case="first-letter">MediaWiki talk</namespace>
+			<namespace key="10" case="first-letter">Template</namespace>
+			<namespace key="11" case="first-letter">Template talk</namespace>
+			<namespace key="12" case="first-letter">Help</namespace>
+			<namespace key="13" case="first-letter">Help talk</namespace>
+			<namespace key="14" case="first-letter">Category</namespace>
+			<namespace key="15" case="first-letter">Category talk</namespace>
+			<namespace key="100" case="first-letter">Portal</namespace>
+			<namespace key="101" case="first-letter">Portal talk</namespace>
+			<namespace key="118" case="first-letter">Draft</namespace>
+			<namespace key="119" case="first-letter">Draft talk</namespace>
+			<namespace key="710" case="first-letter">TimedText</namespace>
+			<namespace key="711" case="first-letter">TimedText talk</namespace>
+			<namespace key="828" case="first-letter">Module</namespace>
+			<namespace key="829" case="first-letter">Module talk</namespace>
+			<namespace key="2300" case="first-letter">Gadget</namespace>
+			<namespace key="2301" case="first-letter">Gadget talk</namespace>
+			<namespace key="2302" case="case-sensitive">Gadget definition</namespace>
+			<namespace key="2303" case="case-sensitive">Gadget definition talk</namespace>
+		</namespaces>
+	</siteinfo>
+	<page>
+		<title>The Hitchhiker's Guide to the Galaxy</title>
+		<ns>0</ns>
+		<id>31353</id>
+		<revision>
+			<id>1039981004</id>
+			<parentid>1039980389</parentid>
+			<timestamp>2021-08-21T23:43:14Z</timestamp>
+			<contributor>
+				<username>Llammakey</username>
+				<id>21878292</id>
+			</contributor>
+			<comment>/* Stage shows */ fixed bareurl</comment>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="97464" xml:space="preserve">{{short description|Science fiction series}}
 {{other uses|The Hitchhiker's Guide to the Galaxy (disambiguation)|Hitchhiker's Guide (disambiguation)}}
 {{italic title}}
 {{EngvarB|date=August 2021}}
@@ -68,10 +68,10 @@
 | origin  = ''[[The Hitchhiker's Guide to the Galaxy Primary and Secondary Phases]]'' (1978–1980)
 | books   = {{ubl|''[[The Hitchhiker's Guide to the Galaxy: The Original Radio Scripts]]'' (1985)}}
 | novels  = {{ubl|''[[The Hitchhiker's Guide to the Galaxy (novel)|The Hitchhiker's Guide to the Galaxy]]'' (1979)|''[[The Restaurant at the End of the Universe]]'' (1980)|''[[Life, the Universe and Everything]]'' (1982)|''[[So Long, and Thanks for All the Fish]]'' (1984)|''[[Mostly Harmless]]'' (1992)|''[[And Another Thing... (novel)|And Another Thing...]]'' (2009)}}
-| comics  = 
+| comics  =
 | films   = ''[[The Hitchhiker's Guide to the Galaxy (film)|The Hitchhiker's Guide to the Galaxy]]'' (2005)
 | tv      = ''[[The Hitchhiker's Guide to the Galaxy (TV series)|The Hitchhiker's Guide to the Galaxy]]'' (1981)
-| plays   = 
+| plays   =
 | vgs     =  ''[[The Hitchhiker's Guide to the Galaxy (video game)|The Hitchhiker's Guide to the Galaxy]]'' (1984)&lt;br /&gt;''[[Starship Titanic]]'' (1997)
 | radio   = {{ubl|''[[The Hitchhiker's Guide to the Galaxy Primary and Secondary Phases]]'' (1978–1980)|''[[The Hitchhiker's Guide to the Galaxy Tertiary to Quintessential Phases]]'' (2004–05)|''The Hitchhiker's Guide to the Galaxy Hexagonal Phase'' (2018)}}
 }}
@@ -402,7 +402,7 @@ References to the series can be seen on websites, within TV and radio programmes
 * Coldplay named a song "[[Don't Panic (song)|Don't Panic]]": "the opening track to Parachutes and is a guitar-based song. It was originally called 'Panic' and was one of six songs played at Coldplay's first concert in 1998. Eventually, the title became 'Don't Panic', taken from Douglas Adams's ''The Hitchhiker's Guide to the Galaxy''." Also on their album ''Viva La Vida'' there is a song called "42".
 * The video game ''[[Fallout]]'', the pre-rendered scenery in one location features a dead whale and a broken flowerpot, parodying a scene from [[The Hitchhiker's Guide to the Galaxy (book)|the first book]].
 * In the video game ''[[Spore]]'', at the centre of the universe the player may receive a [[Project Genesis|Genesis Device]] known as the "Staff of Life". The device has 42 charges as well as an icon which reads "42."
-* The rock band [[Perpetual Groove]] has an album entitled ''All This Everything'' in which many of the tracks are related to ''The Hitchhiker's Guide to the Galaxy''. The first track is entitled "Life," the eighth "The Universe," and the last "And Everything". Other ''Hitchhiker's''-related titles include "53 More Things to Do in Zero Gravity" and "Andromeda." 
+* The rock band [[Perpetual Groove]] has an album entitled ''All This Everything'' in which many of the tracks are related to ''The Hitchhiker's Guide to the Galaxy''. The first track is entitled "Life," the eighth "The Universe," and the last "And Everything". Other ''Hitchhiker's''-related titles include "53 More Things to Do in Zero Gravity" and "Andromeda."
 --&gt;
 
 == Other ''Hitchhiker's''-related books and stories ==
@@ -492,26 +492,26 @@ The 2004 series was produced by Above The Title Productions and the scripts were
 [[Category:Radio programs adapted into video games]]
 [[Category:Radio programs adapted into television shows]]
 [[Category:Post-apocalyptic fiction]]</text>
-      <sha1>rvx1k44zyvoho0noe83h8km56gjiqms</sha1>
-    </revision>
-  </page>
-  <page>
-    <title>Douglas Adams</title>
-    <ns>0</ns>
-    <id>8091</id>
-    <revision>
-      <id>1038466557</id>
-      <parentid>1038452774</parentid>
-      <timestamp>2021-08-12T18:39:23Z</timestamp>
-      <contributor>
-        <username>JeffUK</username>
-        <id>179090</id>
-      </contributor>
-      <minor/>
-      <comment>Removing another wikilink from the lead.</comment>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
-      <text bytes="64086" xml:space="preserve">{{short description|English author and humourist}}
+			<sha1>rvx1k44zyvoho0noe83h8km56gjiqms</sha1>
+		</revision>
+	</page>
+	<page>
+		<title>Douglas Adams</title>
+		<ns>0</ns>
+		<id>8091</id>
+		<revision>
+			<id>1038466557</id>
+			<parentid>1038452774</parentid>
+			<timestamp>2021-08-12T18:39:23Z</timestamp>
+			<contributor>
+				<username>JeffUK</username>
+				<id>179090</id>
+			</contributor>
+			<minor/>
+			<comment>Removing another wikilink from the lead.</comment>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="64086" xml:space="preserve">{{short description|English author and humourist}}
 {{other people}}
 {{Use British English|date=March 2021}}
 {{Use dmy dates|date=May 2021}}
@@ -707,7 +707,7 @@ A street&lt;ref&gt;{{Coord|-27.5893269|-48.662225|type:landmark_region:BR|name=T
 In March 2021 [[Unbound (publisher)|Unbound]] announced a [[crowdfunding|crowdfunder]] for ''42: the wildly improbable ideas of Douglas Adams'', a book based on Adams' papers, edited by [[Kevin Jon Davies]].&lt;ref name="brown"&gt;{{cite news |last1=Brown |first1=Mark |title=Douglas Adams' note to self reveals author found writing torture |url=https://www.theguardian.com/books/2021/mar/22/douglas-adams-note-to-self-reveals-author-found-writing-torture |access-date=22 March 2021 |work=The Guardian |date=22 March 2021 |language=en}}&lt;/ref&gt;
 
 ==Awards and nominations==
-{| class="wikitable" 
+{| class="wikitable"
 |- style="text-align:center;"
 ! style="background:#B0C4DE;" scope=col| Year
 ! style="background:#B0C4DE;" scope=col| Award
@@ -784,7 +784,7 @@ In March 2021 [[Unbound (publisher)|Unbound]] announced a [[crowdfunding|crowdfu
 |-
 |''[[Doctor Who]]''
 |
-4 stories with 13 episodes (1978-1979, 1983): 
+4 stories with 13 episodes (1978-1979, 1983):
 *"[[The Pirate Planet]]" (1978, 4 episodes)
 *"[[Destiny of the Daleks]]" (1979, 4 episodes) (co-written with [[Terry Nation]], uncredited)
 *"[[City of Death]]" (co-written with [[Graham Williams (television producer)|Graham Williams]], 1979, credited as "[[David Agnew]]", 4 episodes)
@@ -927,8 +927,8 @@ In March 2021 [[Unbound (publisher)|Unbound]] announced a [[crowdfunding|crowdfu
 * {{British Comedy Guide|people|douglas_adams}}
 
 {{s-start}}
-{{s-bef|before= [[Anthony Read]]}} 
-{{s-ttl|title=''[[Doctor Who]]'' script editor|years=1979–80}} 
+{{s-bef|before= [[Anthony Read]]}}
+{{s-ttl|title=''[[Doctor Who]]'' script editor|years=1979–80}}
 {{s-aft|after= [[Christopher H. Bidmead]]}}
 {{s-end}}
 {{Douglas Adams}}
@@ -973,25 +973,25 @@ In March 2021 [[Unbound (publisher)|Unbound]] announced a [[crowdfunding|crowdfu
 [[Category:Usenet people]]
 [[Category:Weird fiction writers]]
 [[Category:20th-century British screenwriters]]</text>
-      <sha1>m4xgfoz0eahasa82lknm71oz22r3c3f</sha1>
-    </revision>
-  </page>
-  <page>
-    <title>Ma'amoul</title>
-    <ns>0</ns>
-    <id>9211559</id>
-    <revision>
-      <id>1038491098</id>
-      <parentid>1034527476</parentid>
-      <timestamp>2021-08-12T21:39:47Z</timestamp>
-      <contributor>
-        <username>Filedelinkerbot</username>
-        <id>20611691</id>
-      </contributor>
-      <comment>Bot: Removing [[Commons:File:Maamoul ar.ogg]] ([[:File:Maamoul ar.ogg|en]]). It was deleted on Commons by [[:Commons:User:Infrogmation|Infrogmation]] (per del req.).</comment>
-      <model>wikitext</model>
-      <format>text/x-wiki</format>
-      <text bytes="6558" xml:space="preserve">{{short description|Cookie with sweet filling}}
+			<sha1>m4xgfoz0eahasa82lknm71oz22r3c3f</sha1>
+		</revision>
+	</page>
+	<page>
+		<title>Ma'amoul</title>
+		<ns>0</ns>
+		<id>9211559</id>
+		<revision>
+			<id>1038491098</id>
+			<parentid>1034527476</parentid>
+			<timestamp>2021-08-12T21:39:47Z</timestamp>
+			<contributor>
+				<username>Filedelinkerbot</username>
+				<id>20611691</id>
+			</contributor>
+			<comment>Bot: Removing [[Commons:File:Maamoul ar.ogg]] ([[:File:Maamoul ar.ogg|en]]). It was deleted on Commons by [[:Commons:User:Infrogmation|Infrogmation]] (per del req.).</comment>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="6558" xml:space="preserve">{{short description|Cookie with sweet filling}}
 {{More citations needed|date=September 2020}}
 {{Infobox prepared food
 | name             = Ma'amoul
@@ -1002,11 +1002,11 @@ In March 2021 [[Unbound (publisher)|Unbound]] announced a [[crowdfunding|crowdfu
 | main_ingredient  = Semolina, [[Phoenix dactylifera|dates]], [[pistachios]] or [[walnuts]]
 }}
 [[File:Naschmarkt Wien 2009 PD 20091008 065.JPG|thumb|upright|Ma'amoul at Vienna Naschmarkt]]
-'''Ma'amoul''' ({{lang-ar|معمول}} {{IPA-ar|mɑʕmuːl||}}, also spelled ''m'aamoul'', ''m'amul'', ''m'aamul'') is a filled [[butter cookie]] made with [[semolina]] flour. The filling can be made with dried fruits like figs or [[Phoenix dactylifera|dates]] or [[Nut (fruit)|nuts]] such as [[pistachios]] or [[walnut]]s and occasionally [[almonds]].&lt;ref name=":0"&gt;{{Cite news|url=https://www.npr.org/sections/thesalt/2017/04/11/522771745/maamoul-an-ancient-cookie-that-ushers-in-easter-and-eid-in-the-middle-east|title=Maamoul: An Ancient Cookie That Ushers In Easter And Eid In The Middle East|work=NPR.org|access-date=2017-11-10|language=en}}&lt;/ref&gt; 
+'''Ma'amoul''' ({{lang-ar|معمول}} {{IPA-ar|mɑʕmuːl||}}, also spelled ''m'aamoul'', ''m'amul'', ''m'aamul'') is a filled [[butter cookie]] made with [[semolina]] flour. The filling can be made with dried fruits like figs or [[Phoenix dactylifera|dates]] or [[Nut (fruit)|nuts]] such as [[pistachios]] or [[walnut]]s and occasionally [[almonds]].&lt;ref name=":0"&gt;{{Cite news|url=https://www.npr.org/sections/thesalt/2017/04/11/522771745/maamoul-an-ancient-cookie-that-ushers-in-easter-and-eid-in-the-middle-east|title=Maamoul: An Ancient Cookie That Ushers In Easter And Eid In The Middle East|work=NPR.org|access-date=2017-11-10|language=en}}&lt;/ref&gt;
 
 Ma'amoul are usually made during the Easter holiday, and a few days before [[Eid al-Fitr|Eid]] (then stored to be served with [[Arabic coffee]] and chocolate to guests who come during the holiday).&lt;ref name=":0" /&gt;&lt;ref&gt;{{cite web|date=7 September 2016|title=Maamoul: The Sweet Tradition of Eid|url=http://irresistible.alrifai.com/2016/09/07/maamoul-the-sweet-tradition-of-eid/|website=The Irresistible Magazine by Al Rifai}}&lt;/ref&gt; It is popular throughout the [[Arab world]],&lt;ref&gt;{{cite book|last1=Obayda|first1=Gloria|url=https://books.google.com/books?id=AOz-Lb59fUEC&amp;pg=PT22|title=Sweets And Desserts Of The Middle East|publisher=101 Middle Eastern Delights|language=en}}&lt;/ref&gt; especially in the [[Arabian peninsula]].&lt;ref&gt;{{cite web|date=3 February 2014|title=At the Immigrant's Table: Jewish ma'amoul pie|url=http://immigrantstable.com/2014/02/03/maamoul-pie/|website=At the Immigrant's Table}}&lt;/ref&gt;
 
-They may be in the shape of balls, domed or flattened cookies. They can either be decorated by hand or be made in special wooden moulds called ''tabe''.&lt;ref name=helou/&gt; 
+They may be in the shape of balls, domed or flattened cookies. They can either be decorated by hand or be made in special wooden moulds called ''tabe''.&lt;ref name=helou/&gt;
 
 ==Variations==
 
@@ -1021,7 +1021,7 @@ The [[Arabic]] word Ma'amoul ({{lang-ar|معمول}}) is derived from the Arabic
 
 The cookies are associated with [[Eid Al-Fitr]] or [[iftar]] meals during [[Ramadan]] for Muslims.&lt;ref&gt;{{cite book |title=Holidays of the World Cookbook for Students, 2nd Edition |publisher=ABC-CLIO |date=2011 |url=https://www.google.com/books/edition/Holidays_of_the_World_Cookbook_for_Stude/-118yWNeeskC?hl=en&amp;gbpv=1&amp;bsq=maamoul |page=383}}&lt;/ref&gt; For Christians, ma'amoul is part of the [[Easter]] celebrations.&lt;ref name=helou&gt;{{cite book |last=Helou |first=Anissa |title=Sweet Middle East: Classic Recipes, from Baklava to Fig Ice Cream |date=2015}}&lt;/ref&gt;
 
-They are also popular among [[Syrian Jews|Syrian]], [[Lebanese Jews|Lebanese]] and [[History of the Jews in Egypt|Egyptian]] [[Jew]]ish communities, where ma'amouls with nut fillings are eaten on [[Purim]], and ma'amouls with date fillings are eaten on [[Rosh Hashanah]] and [[Hanukkah]]. 
+They are also popular among [[Syrian Jews|Syrian]], [[Lebanese Jews|Lebanese]] and [[History of the Jews in Egypt|Egyptian]] [[Jew]]ish communities, where ma'amouls with nut fillings are eaten on [[Purim]], and ma'amouls with date fillings are eaten on [[Rosh Hashanah]] and [[Hanukkah]].
 
 [[Sephardic Jews]] call the pastries ''menenas''.&lt;ref name=goldstein&gt;{{cite book |last=Goldstein |first=Joyce |title=Saffron Shores: Jewish Cooking of the Southern Mediterranean |date=2002 |page=169 |url=https://www.google.com/books/edition/Saffron_Shores/vsbT9xftSaEC?hl=en&amp;gbpv=1&amp;dq=menenas&amp;pg=PA169&amp;printsec=frontcover}}&lt;/ref&gt;
 
@@ -1080,7 +1080,101 @@ A more elaborate version known as ''Karabij'' (''Kerebiç'' in Turkish) is used 
 [[Category:Easter food]]
 [[Category:Semolina dishes]]
 [[Category:Lenten foods]]</text>
-      <sha1>dj3m7heee07hyqpdyoa4t1870hjv79f</sha1>
-    </revision>
-  </page>
+			<sha1>dj3m7heee07hyqpdyoa4t1870hjv79f</sha1>
+		</revision>
+	</page>
+	<page>
+		<title>1886 in Chile</title>
+		<ns>0</ns>
+		<id>2503</id>
+		<revision>
+			<id>3048</id>
+			<timestamp>2021-10-22T10:59:08Z</timestamp>
+			<contributor>
+				<username>Admin</username>
+				<id>1</id>
+			</contributor>
+			<origin>3048</origin>
+			<model>wikitext</model>
+			<format>text/x-wiki</format>
+			<text bytes="1206" sha1="pqfgz6uvcnls847dani563sgsn7ef2p" xml:space="preserve">
+{{One source|date=May 2021}}
+{{Year in Chile|1886}}
+
+The following lists events that happened during '''[[1886]] in [[Chile]]'''.
+
+==Incumbents==
+*[[President of Chile]]: [[Domingo Santa María]] (until September 18), [[José Manuel Balmaceda]]<ref>{{cite book |last1=Martin |first1=Frederick |last2=Keltie |first2=Sir John Scott |last3=Renwick |first3=Isaac Parker Anderson |last4=Epstein |first4=Mortimer |last5=Steinberg |first5=Sigfrid Henry |last6=Paxton |first6=John |last7=Hunter |first7=Brian |title=The Statesman's Year-book |date=1891 |publisher=St. Martin's Press |page=404 |url=https://books.google.co.uk/books?id=xMQ-AAAAYAAJ&amp;pg=PA404 |language=en}}</ref>
+
+== Events ==
+===June===
+*15 June - [[Chilean presidential election, 1886]]
+
+==Births==
+*date unknown - [[Oscar Novoa]]
+*21 August - [[Max Jara]]
+
+==Deaths==
+*25 January - [[Benjamín Vicuña Mackenna]]
+*13 May - [[Patricio Lynch]]
+*5 June - [[Antonio Varas]]
+*3 September - [[José Miguel Barriga Castro]]
+*6 September - [[Vicente Pérez Rosales]]
+
+== References ==
+{{Reflist}}
+
+{{Years in Chile}}
+{{South America topic|1886 in}}
+
+[[Category:1886 in Chile| ]]
+[[Category:Years of the 19th century in Chile]]
+[[Category:1886 by country]]
+			</text>
+			<sha1>pqfgz6uvcnls847dani563sgsn7ef2p</sha1>
+		</revision>
+	</page>
+	<page>
+		<title>1886 in Chile/addimage.json</title>
+		<ns>0</ns>
+		<id>2504</id>
+		<revision>
+			<id>3049</id>
+			<timestamp>2021-10-22T11:00:10Z</timestamp>
+			<contributor>
+				<username>Admin</username>
+				<id>1</id>
+			</contributor>
+			<origin>3049</origin>
+			<model>json</model>
+			<format>application/json</format>
+			<text bytes="691" sha1="ad2voqoq5hzzk819xkr48t76eg17r67" xml:space="preserve">
+{
+	"seed": "",
+	"pages": [
+		{
+			"project": "enwiki",
+			"page": "1886_in_Chile",
+			"page_id": 45232173,
+			"suggestions": [
+				{
+					"filename": "Teatro_Victoria,_Valparaíso_1886.jpg",
+					"confidence_rating": "low",
+					"source": {
+						"name": "ima",
+						"details": {
+							"from": "commons",
+							"found_on": "",
+							"dataset_id": "0f256bbe-8100-4e7e-acef-a3a5f1407cc2"
+						}
+					}
+				}
+			]
+		}
+	]
+}
+			</text>
+			<sha1>ad2voqoq5hzzk819xkr48t76eg17r67</sha1>
+		</revision>
+	</page>
 </mediawiki>
