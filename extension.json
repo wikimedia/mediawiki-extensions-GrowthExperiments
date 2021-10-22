@@ -1441,7 +1441,8 @@
 						"rtl": "../images/mentor-rtl.svg"
 					}
 				},
-				"robot-task-type": "../images/suggestededits/robot-green.svg"
+				"robot-task-type-easy": "../images/suggestededits/robot-easy.svg",
+				"robot-task-type-medium": "../images/suggestededits/robot-medium.svg"
 			}
 		},
 		"ext.growthExperiments.MentorDashboard": {

@@ -204,7 +204,10 @@ class TaskType implements JsonUnserializable {
 	public function getIconData(): array {
 		if ( $this->isMachineSuggestion ) {
 			return [
-				'icon' => 'robot-task-type',
+				// The following classes are used here:
+				// * robot-task-type-easy
+				// * robot-task-type-medium
+				'icon' => 'robot-task-type-' . $this->getDifficulty(),
 				'filterIcon' => 'robot',
 				'descriptionMessageKey' => 'growthexperiments-homepage-suggestededits-tasktype-machine-description'
 			];
