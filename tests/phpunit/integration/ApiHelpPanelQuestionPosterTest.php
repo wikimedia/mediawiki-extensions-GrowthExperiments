@@ -124,7 +124,7 @@ class ApiHelpPanelQuestionPosterTest extends ApiTestCase {
 		$revision = MediaWikiServices::getInstance()->getRevisionLookup()->getRevisionById(
 			$revisionId, IDBAccessObject::READ_LATEST );
 		$this->assertInstanceOf( RevisionRecord::class, $revision );
-		$this->assertSame( $revision->getPageAsLinkTarget()->getDBkey(), 'HelpDeskTest2' );
+		$this->assertSame( 'HelpDeskTest2', $revision->getPageAsLinkTarget()->getDBkey() );
 	}
 
 }

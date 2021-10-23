@@ -93,7 +93,7 @@ class ApiSetMentorTest extends ApiTestCase {
 			null,
 			$this->getTestSysop()->getUser()
 		);
-		$this->assertEquals( $response[0]['growthsetmentor']['status'], 'ok' );
+		$this->assertEquals( 'ok', $response[0]['growthsetmentor']['status'] );
 	}
 
 	/**
@@ -116,7 +116,7 @@ class ApiSetMentorTest extends ApiTestCase {
 			null,
 			$mentee
 		);
-		$this->assertEquals( $response[0]['growthsetmentor']['status'], 'ok' );
+		$this->assertEquals( 'ok', $response[0]['growthsetmentor']['status'] );
 	}
 
 	/**
@@ -139,7 +139,7 @@ class ApiSetMentorTest extends ApiTestCase {
 			null,
 			$mentor
 		);
-		$this->assertEquals( $response[0]['growthsetmentor']['status'], 'ok' );
+		$this->assertEquals( 'ok', $response[0]['growthsetmentor']['status'] );
 	}
 
 	private function getMockMentorStore( UserIdentity $mentee, UserIdentity $mentor ) {
