@@ -1,0 +1,53 @@
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
+@import '../../homepage/ext.growthExperiments.mixins.less';
+
+.mw-ge-addImageSaveDialog {
+	color: @wmui-color-base10;
+
+	&-summaryLabel {
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 16px, @targetLineHeight: 22.8px );
+		padding-bottom: 7px;
+		border-bottom: 1px solid @wmui-color-base80;
+	}
+
+	&-imageSummary {
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 0 15px 0;
+	}
+
+	&-imageInfo {
+		.oo-ui-iconElement {
+			margin-right: 8px;
+		}
+		font-weight: bold;
+		display: flex;
+		align-items: center;
+	}
+
+	&-imagePreview {
+		height: 180px;
+		background-repeat: no-repeat;
+		background-position: center;
+		background-color: @wmui-color-base80;
+		background-size: contain;
+		margin-bottom: 8px;
+	}
+
+	&-bodyContent,
+	&-copyrightWarning {
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
+		padding-bottom: 12px;
+		border-bottom: 1px solid @wmui-color-base80;
+	}
+
+	&-copyrightWarning {
+		padding: 16px 0;
+		color: @wmui-color-base20;
+	}
+
+	.mw-ge-structuredTaskSaveDialog-copyrightwarning {
+		padding-bottom: 16px;
+		border-bottom: 1px solid @wmui-color-base80;
+	}
+}

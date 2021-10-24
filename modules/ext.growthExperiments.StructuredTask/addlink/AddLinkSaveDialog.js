@@ -133,9 +133,7 @@ AddLinkSaveDialog.prototype.getSetupProcess = function ( data ) {
 			'/* growthexperiments-addlink-summary-summary:' +
 			acceptedCount + '|' + rejectedCount + '|' + skippedCount + ' */'
 		);
-		if ( this.checkboxesByName.wpWatchthis ) {
-			this.checkboxesByName.wpWatchthis.setSelected( true );
-		}
+		this.addToWatchlist();
 		this.logger.log( 'impression', {
 			/* eslint-disable camelcase */
 			accepted_count: acceptedCount,

@@ -844,7 +844,8 @@
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageToolbarDialog.less",
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageRejectionDialog.less",
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageViewer.less",
-				"ext.growthExperiments.StructuredTask/addimage/ceRecommendedImageCaptionNode.less"
+				"ext.growthExperiments.StructuredTask/addimage/ceRecommendedImageCaptionNode.less",
+				"ext.growthExperiments.StructuredTask/addimage/AddImageSaveDialog.less"
 			],
 			"messages": [
 				"growthexperiments-addlink-context-title",
@@ -910,6 +911,9 @@
 				"growthexperiments-addimage-caption-title",
 				"growthexperiments-structuredtask-user-error",
 				"growthexperiments-structuredtask-user-error-login-cta",
+				"growthexperiments-addimage-summary-label",
+				"growthexperiments-addimage-summary-copyrightwarning",
+				"growthexperiments-addimage-summary-reject-description",
 				"colon-separator"
 			],
 			"dependencies": [

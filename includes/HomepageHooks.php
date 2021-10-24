@@ -1214,15 +1214,17 @@ class HomepageHooks implements
 	 * @inheritDoc
 	 * This gets called when the autocomment is rendered.
 	 *
-	 * For add link tasks, localize the edit summary in the viewer's language.
+	 * For add link and add image tasks, localize the edit summary in the viewer's language.
 	 */
 	public function onFormatAutocomments( &$comment, $pre, $auto, $post, $title,
 										  $local, $wikiId
 	) {
 		$allowedMessageKeys = [
-			'growthexperiments-addlink-summary-summary'
+			'growthexperiments-addlink-summary-summary',
+			'growthexperiments-addimage-summary-summary'
 		];
-		if ( strpos( $auto, 'growthexperiments-addlink' ) === 0 ) {
+		if ( strpos( $auto, 'growthexperiments-addlink' ) === 0 ||
+			strpos( $auto, 'growthexperiments-addimage' ) === 0 ) {
 			[ $messageKey, $messageParamsStr ] = explode( ':', $auto );
 			if ( in_array( $messageKey, $allowedMessageKeys ) ) {
 				$comment = wfMessage( $messageKey )
