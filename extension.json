@@ -1467,7 +1467,11 @@
 				"ext.growthExperiments.MentorDashboard/MenteeOverview/FilterDropdown.js",
 				"ext.growthExperiments.MentorDashboard/MenteeOverview/MenteeSearchInputWidget.js",
 				"ext.growthExperiments.MentorDashboard/MentorTools/MentorTools.js",
-				"ext.growthExperiments.MentorDashboard/MentorTools/AwaySettingsDialog.js"
+				"ext.growthExperiments.MentorDashboard/MentorTools/AwaySettingsDialog.js",
+				{
+					"name": "ext.growthExperiments.MentorDashboard/MenteeOverview/Tags.json",
+					"callback": [ "GrowthExperiments\\MentorDashboard\\MentorDashboardHooks", "getTagsToFilterBy" ]
+				}
 			],
 			"messages": [
 				"growthexperiments-mentor-dashboard-mentee-overview-info-headline",

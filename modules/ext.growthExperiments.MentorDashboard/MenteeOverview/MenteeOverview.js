@@ -5,7 +5,8 @@
 	var MenteeOverviewApi = require( './MenteeOverviewApi.js' ),
 		Pagination = require( './Pagination.js' ),
 		FilterDropdown = require( './FilterDropdown.js' ),
-		MenteeSearchInputWidget = require( './MenteeSearchInputWidget.js' );
+		MenteeSearchInputWidget = require( './MenteeSearchInputWidget.js' ),
+		TagsToFilterBy = require( './Tags.json' );
 
 	/**
 	 * @class
@@ -205,11 +206,19 @@
 		return this.apiClient.getMenteeData();
 	};
 
-	MenteeOverview.prototype.makeValueTd = function ( value, fieldName ) {
-		return $( '<td>' )
+	MenteeOverview.prototype.makeValueTd = function ( value, fieldName, link ) {
+		var $td = $( '<td>' )
 			.attr( 'data-field', fieldName )
-			.addClass( 'growthexperiments-mentor-dashboard-module-mentee-overview-table-value' )
-			.text( value );
+			.addClass( 'growthexperiments-mentor-dashboard-module-mentee-overview-table-value' );
+		if ( link === undefined ) {
+			return $td.text( value );
+		} else {
+			return $td.html(
+				$( '<a>' )
+					.attr( 'href', link )
+					.text( value )
+			);
+		}
 	};
 
 	MenteeOverview.prototype.sortTable = function ( field, dir ) {
@@ -375,10 +384,35 @@
 								mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-registered-unknown' ),
 							'registration'
 						),
-						menteeOverview.makeValueTd( mw.language.convertNumber( userData.questions ), 'questions' ),
-						menteeOverview.makeValueTd( mw.language.convertNumber( userData.editcount ), 'editcount' ),
-						menteeOverview.makeValueTd( mw.language.convertNumber( userData.reverted ), 'reverted' ),
-						menteeOverview.makeValueTd( mw.language.convertNumber( userData.blocks ), 'blocks' )
+						menteeOverview.makeValueTd(
+							mw.language.convertNumber( userData.questions ),
+							'questions'
+						),
+						menteeOverview.makeValueTd(
+							mw.language.convertNumber( userData.editcount ),
+							'editcount',
+							mw.util.getUrl( 'Special:Contributions/' + userData.username )
+						),
+						menteeOverview.makeValueTd(
+							mw.language.convertNumber( userData.reverted ),
+							'reverted',
+							mw.util.getUrl(
+								'Special:Contributions/' + userData.username,
+								{
+									tagfilter: TagsToFilterBy.reverted.join( '|' )
+								}
+							)
+						),
+						menteeOverview.makeValueTd(
+							mw.language.convertNumber( userData.blocks ),
+							'blocks',
+							mw.util.getUrl(
+								'Special:Log/block',
+								{
+									page: 'User:' + userData.username
+								}
+							)
+						)
 					)
 				);
 
