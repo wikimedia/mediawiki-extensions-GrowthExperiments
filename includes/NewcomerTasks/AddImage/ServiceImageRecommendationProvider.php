@@ -34,11 +34,14 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	/** @var string */
 	private $wikiLanguage;
 
+	/** @var ImageRecommendationMetadataProvider */
+	private $metadataProvider;
+
 	/** @var int|null */
 	private $requestTimeout;
 
-	/** @var ImageRecommendationMetadataProvider */
-	private $metadataProvider;
+	/** @var bool */
+	private $useTitles;
 
 	/**
 	 * @param TitleFactory $titleFactory
@@ -48,6 +51,8 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	 * @param string $wikiLanguage Wiki language code
 	 * @param ImageRecommendationMetadataProvider $metadataProvider Image metadata provider
 	 * @param int|null $requestTimeout Service request timeout in seconds.
+	 * @param bool $useTitles Use titles (the /:wiki/:lang/pages/:title API endpoint)
+	 *   instead of IDs (the /:wiki/:lang/pages endpoint)?
 	 */
 	public function __construct(
 		TitleFactory $titleFactory,
@@ -56,24 +61,25 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		string $wikiProject,
 		string $wikiLanguage,
 		ImageRecommendationMetadataProvider $metadataProvider,
-		?int $requestTimeout
+		?int $requestTimeout,
+		bool $useTitles = false
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->httpRequestFactory = $httpRequestFactory;
 		$this->url = $url;
 		$this->wikiProject = $wikiProject;
 		$this->wikiLanguage = $wikiLanguage;
-		$this->requestTimeout = $requestTimeout;
 		$this->metadataProvider = $metadataProvider;
+		$this->requestTimeout = $requestTimeout;
+		$this->useTitles = $useTitles;
 	}
 
 	/** @inheritDoc */
 	public function get( LinkTarget $title, TaskType $taskType ) {
 		Assert::parameterType( ImageRecommendationTaskType::class, $taskType, '$taskType' );
 		$title = $this->titleFactory->newFromLinkTarget( $title );
-		$pageId = $title->getArticleID();
 		$titleText = $title->getPrefixedDBkey();
-		if ( !$pageId ) {
+		if ( !$title->exists() ) {
 			// These errors might show up to the end user, but provide no useful information;
 			// they are merely there to support debugging. So we keep them English-only to
 			// to reduce the translator burden.
@@ -85,10 +91,27 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 				'Image Suggestions API is not configured' );
 		}
 
-		$pathArgs = [ 'image-suggestions', 'v0', $this->wikiProject, $this->wikiLanguage, 'pages' ];
-		$queryArgs = [ 'id' => $pageId, 'source' => 'ima' ];
+		$pathArgs = [
+			'image-suggestions',
+			'v0',
+			$this->wikiProject,
+			$this->wikiLanguage,
+			'pages',
+		];
+		$queryArgs = [
+			'source' => 'ima',
+		];
+
+		if ( $this->useTitles ) {
+			$pathArgs[] = $titleText;
+		} else {
+			$queryArgs['id'] = $title->getArticleID();
+		}
+
 		$request = $this->httpRequestFactory->create(
-			wfAppendQuery( $this->url . '/' . implode( '/', $pathArgs ), $queryArgs ),
+			wfAppendQuery( $this->url . '/' . implode( '/', array_map( static function ( $arg ) {
+					return rawurlencode( $arg );
+			}, $pathArgs ) ), $queryArgs ),
 			[
 				'method' => 'GET',
 				'originalRequest' => RequestContext::getMain()->getRequest(),
