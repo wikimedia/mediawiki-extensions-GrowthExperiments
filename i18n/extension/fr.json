@@ -83,5 +83,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Page de destination pour en savoir plus sur le type de tâche de recommandation d'image.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Ce type de tâche est associé à des suggestions de la machine, et n'utilise pas de modèles pour générer une réserve de tâches.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Les articles contenant des modèles définis ici ne seront pas présentés aux utilisateurs comme des tâches pour ce type de tâche.",
-	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Les articles contenant des catégories définies ici ne seront pas montrés aux utilisateurs comme des tâches pour ce type de tâche."
+	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Les articles contenant des catégories définies ici ne seront pas montrés aux utilisateurs comme des tâches pour ce type de tâche.",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Modèles d'infobox",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Ces modèles sont nécessaires pour la fonction de tâche des nouveaux arrivants [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|suggestions d'images]]. Les articles contenant ces modèles ne seront pas répertoriés comme des tâches de suggestion d'image."
 }

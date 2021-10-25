@@ -11,6 +11,7 @@
 			"Hasley",
 			"Ihojose",
 			"Jackiezelaya",
+			"Jakeukalane",
 			"Joanmp17",
 			"Johny Weissmuller Jr",
 			"Jorge Ubilla",
@@ -383,6 +384,7 @@
 	"growthexperiments-addimage-inspector-details-button": "Ver detalles",
 	"growthexperiments-addimage-rejectiondialog-header": "¿Por qué esta imagen no es apta para el artículo?",
 	"growthexperiments-addimage-rejectiondialog-action-done": "Enviar",
+	"growthexperiments-addimage-rejectiondialog-action-cancel": "Cancelar",
 	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "La imagen no es relevante",
 	"growthexperiments-addimage-rejectiondialog-reason-noinfo": "No hay suficiente información para decidir",
 	"growthexperiments-addimage-rejectiondialog-reason-offensive": "La imagen es ofensiva",
@@ -390,5 +392,7 @@
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Yo no conozco este tema",
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Yo no puedo leer el lenguaje.",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Otro",
-	"growthexperiments-addimage-viewer-close-button": "Cerrar"
+	"growthexperiments-addimage-viewer-close-button": "Cerrar",
+	"growthexperiments-addimage-skip-dialog-cancel": "Cancelar",
+	"growthexperiments-addimage-caption-title": "Añadir una leyenda"
 }

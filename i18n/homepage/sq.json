@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eraldkerciku"
+			"Eraldkerciku",
+			"Klein Muçi"
 		]
 	},
 	"growthexperiments-homepage-impact-unactivated-subheader-text": "0 redaktime deri më tani",
 	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Ndihmoni në shtrirjen e njohurive falas në botë duke redaktuar temat që kanë më shumë rëndësi për {{GENDER: $1 | ju}}.",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Shikoni redaktimet e sugjeruara",
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Filloni me disa <strong> redaktime të sugjeruara </strong> dhe më pas shikoni se sa njerëz po shikojnë kontributet e {{GENDER: $1 | tuaj}} këtu.",
+	"growthexperiments-homepage-mentorship-question-subject": "Pyetje nga [[User:$1|$1]] nëpërmjet procesit panelit të ndihmës",
 	"grant-managementorship": "Menaxho mësimdhënien"
 }

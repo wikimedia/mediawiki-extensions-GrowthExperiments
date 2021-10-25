@@ -18,7 +18,7 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Ultimo aggiornamento di [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Ultimo aggiornamento da parte di un utente sconosciuto $1.",
 	"growthexperiments-edit-config-pretext": "Questa pagina ti permette modificare la configurazione delle funzioni [[:mw:Special:MyLanguage/Growth|Growth]]. Modificherai $1 con il tuo nome. Puoi vedere le tue modifiche nella cronologia della pagina.",
-	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|Puoi}} anche mostrare un avviso sulla pagina del nuovo utente per includere avvisi su eventi importanti che riguardano i nuovi utenti. Se {{GENDER:|desideri}} farlo, {{GENDER:|devi}} aggiungerlo [[$1|qui]] manualmente. Ogni contenuto aggiunto sarà mostrato in un banner giallo in cima alla [[Special:Homepage|pagina iniziale]].",
+	"growthexperiments-edit-config-pretext-banner": "Puoi anche mostrare un avviso sulla pagina del nuovo utente per includere avvisi su eventi importanti che riguardano i nuovi utenti. Se desideri farlo, devi aggiungerlo [[$1|qui]] manualmente. Ogni contenuto aggiunto sarà mostrato in un banner giallo in cima alla [[Special:Homepage|pagina iniziale]].",
 	"growthexperiments-edit-config-pretext-unprivileged": "Questo modulo permette agli utenti con privilegi elevati di modificare la configurazione delle funzionalità [[:mw:Special:MyLanguage/Growth|Growth]].",
 	"growthexperiments-edit-config-feedback-headline": "Hai idee o domande su questo modulo?",
 	"growthexperiments-edit-config-feedback-cta": "Lascia un commento",

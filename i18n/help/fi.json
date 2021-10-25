@@ -110,6 +110,7 @@
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Kysymyksesi on nyt näkyvissä yhteisön neuvontapalstalla, jossa toinen vapaaehtoinen muokkaaja voi vastata siihen.",
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Katso kysymystäsi neuvontapalstalla.",
 	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "Kysymyksesi ilmoitukset:",
+	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Saat ilmoituksen täällä {{SITENAME}}ssa, kun kommenttiisi on vastattu.",
 	"growthexperiments-help-panel-questioncomplete-notifications-email": "Saat myös sähköpostin osoitteeseen $1 ($2)",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "vaihda",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Jos {{GENDER:$2|haluaisit}} saada ilmoituksen myös sähköpostiisi, vahvista sähköpostiosoitteesi nyt: $1",

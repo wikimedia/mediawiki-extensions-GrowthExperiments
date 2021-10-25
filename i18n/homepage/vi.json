@@ -4,6 +4,7 @@
 			"Bluetpp",
 			"Ioe2015",
 			"Minh Nguyen",
+			"NguyenHung",
 			"Nguyễn Mạnh An",
 			"Trizek (WMF)",
 			"Tuanminh01",
@@ -402,5 +403,6 @@
 	"growthexperiments-addimage-inspector-no-button": "Không",
 	"growthexperiments-addimage-inspector-skip-button": "Bỏ qua",
 	"growthexperiments-addimage-inspector-show-button": "Hiển thị gợi ý hình ảnh",
-	"growthexperiments-addimage-inspector-help-button": "Yêu cầu trợ giúp sửa đổi"
+	"growthexperiments-addimage-inspector-help-button": "Yêu cầu trợ giúp sửa đổi",
+	"growthexperiments-addimage-skip-dialog-cancel": "Hủy bỏ"
 }

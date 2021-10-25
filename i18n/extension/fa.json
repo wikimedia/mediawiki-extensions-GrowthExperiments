@@ -8,6 +8,10 @@
 		]
 	},
 	"growthexperiments-desc": "این افزونه شامل تجربیاتی است که توسط تیم رشد انجام شده.",
+	"growthexperiments-config-validator-additional-fields": "پیکربندی جدید دارای کلیدهای پیکربندی است که نمی‌توان آن‌ها را در اینجا سفارشی‌سازی کرد.",
+	"growthexperiments-config-validator-error": "اعتبارسنجی $1 ناموفق بود: $2",
+	"growthexperiments-config-validator-datatype-mismatch": "انتظار می‌رفت که <code>$1</code> برابر <code>$2</code> باشد، اما <code>$3</code> بود",
+	"growthexperiments-config-validator-contentmodel-mismatch": "عدم تطابق مدل محتوا: فایل پیکربندی GrowthExperiments باید دارای مدل محتوای جی‌سان باشد، اما $1 شناسایی شد",
 	"growthexperiments-edit-config-disabled": "تنظیمات اجتماع اکنون غیرفعال شده‌است.",
 	"growthexperiments-edit-config-title": "ویرایش پیکربندی رشد",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: آخرین بار در $2 توسط [[User:$1|$1]] به‌روز شده‌است.",
@@ -16,8 +20,10 @@
 	"growthexperiments-edit-config-pretext-banner": "همچنین {{GENDER:|می‌توانید}} یک بنر را در صفحهٔ اصلی تازه‌واردان نمایش دهید تا اعلانی پیرامون رویدادهایی که برای تازه‌واردان مهم است در آن صفحه گنجانده شود. اگر {{GENDER:|می‌خواهید}} این کار را انجام دهید، لازم است که آن را به‌صورت دستی به [[$1]] {{GENDER:|بیافزایید}} هر محتوایی که به آن صفحه افزوده شود، در یک بنر زرد رنگ در بالای [[Special:Homepage|ویژه:خانه]] نمایش خواهد یافت.",
 	"growthexperiments-edit-config-feedback-headline": "آیا در مورد این فرم ایده یا پرسشی دارید؟",
 	"growthexperiments-edit-config-feedback-cta": "ارائهٔ بازخورد",
+	"growthexperiments-edit-config-error-invalid-title": "صفحهٔ پیکربندی به‌درستی پیکربندی نشده‌است",
 	"growthexperiments-edit-config-edit-summary": "خلاصه ویرایش",
 	"growthexperiments-edit-config-config-changed": "تنظیمات تغییر یافت. شاید لازم باشد برای تأثیرگذاری این تغییرات چند دقیقه صبر کنید.",
+	"growthexperiments-edit-config-return-to-form": "می‌توانید به فرم ویرایش [[Special:EditGrowthConfig|برگردید]].",
 	"growthexperiments-edit-config-help-panel": "تنظیمات پنل راهنما",
 	"growthexperiments-edit-config-help-panel-description": "پنل راهنما از هر فضای نامی، در حالت مطالعه یا ویرایش می‌تواند بر پایه پیکربندی زیر در دسترسی باشد. این پنل حاوی قابلیت جستجو برای کمک، کلیک بر روی پیوندهای راهنما و پرسش از مربی‌ها یا طرح پرسش در صفحهٔ درخواست راهنمایی است.",
 	"growthexperiments-edit-config-help-panel-reading-namespaces": "فضاهای نامی که پنل راهنما در آن‌ها در حالت مطالعه در دسترس است",
@@ -65,8 +71,11 @@
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "صفحهٔ هدف برای کسب اطلاعات بیشتر پیرامون افزودن ارجاع.",
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "به‌روزرسانی: الگوهای مورد استفاده برای یافتن مقاله‌های نیازمند به‌روزرسانی با اطلاعات جدید و به‌روز.",
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "صفحهٔ هدف برای کسب اطلاعات بیشتر پیرامون به‌روزرسانی مقاله‌ها.",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "صفحهٔ هدف برای کسب اطلاعات بیشتر پیرامون نوع وظیفهٔ پیشنهاد پیوند.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "صفحهٔ هدف برای کسب اطلاعات بیشتر پیرامون نوع وظایف پیشنهاد تصویر.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "این نوع از وظایف با پیشنهادهای ماشینی مرتبط است و برای تولید مخزنی از وظایف از الگوها استفاده نمی‌کند.",
-	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "مقاله‌هایی که حاوی الگوهای مشخص‌شدی در اینجا باشند، به‌عنوان وظیفه برای این نوع از وظایف به کاربران نمایش داده نخواهند شد.",
-	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "مقاله‌هایی که حاوی رده‌های مشخص‌شده در اینجا باشند، به‌عنوان وظیفه برای این نوع از وظیفه به کاربران نمایش داده نخواهند شد."
+	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "مقاله‌هایی که حاوی الگوهای مشخص‌شده در اینجا باشند، به‌عنوان وظیفه برای این نوع از وظایف به کاربران نمایش داده نخواهند شد.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "مقاله‌هایی که حاوی رده‌های مشخص‌شده در اینجا باشند، به‌عنوان وظیفه برای این نوع از وظیفه به کاربران نمایش داده نخواهند شد.",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "الگوهای جعبه اطلاعات",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "این الگوها برای ویژگی وظیفهٔ تازه‌وارد برای [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|تصویرهای پیشنهاد]] لازم هستند. مقاله‌هایی که حاوی این الگوها باشند به‌عنوان وظایف تصویرهای پیشنهادی فهرست نخواهند شد."
 }
