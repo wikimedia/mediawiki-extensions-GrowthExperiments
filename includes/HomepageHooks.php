@@ -1223,14 +1223,13 @@ class HomepageHooks implements
 			'growthexperiments-addlink-summary-summary',
 			'growthexperiments-addimage-summary-summary'
 		];
-		if ( strpos( $auto, 'growthexperiments-addlink' ) === 0 ||
-			strpos( $auto, 'growthexperiments-addimage' ) === 0 ) {
-			[ $messageKey, $messageParamsStr ] = explode( ':', $auto );
-			if ( in_array( $messageKey, $allowedMessageKeys ) ) {
-				$comment = wfMessage( $messageKey )
-					->numParams( ...explode( '|', $messageParamsStr ) )
-					->parse();
-			}
+		$messageParts = explode( ':', $auto );
+		$messageKey = $messageParts[ 0 ];
+		if ( in_array( $messageKey, $allowedMessageKeys ) ) {
+			$messageParamsStr = $messageParts[ 1 ] ?? '';
+			$comment = wfMessage( $messageKey )
+				->numParams( ...explode( '|', $messageParamsStr ) )
+				->parse();
 		}
 	}
 
