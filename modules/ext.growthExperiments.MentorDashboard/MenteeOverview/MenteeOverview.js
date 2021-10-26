@@ -362,6 +362,9 @@
 											$( '<span>' )
 												.append(
 													$( '<a>' )
+														.addClass(
+															userData.userpage_exists === false ? 'new' : ''
+														)
 														.attr(
 															'href',
 															( new mw.Title( userData.username, 2 ) )
