@@ -16,7 +16,9 @@
 	"welcomesurvey-close-btn": "Sulje ja palaa sivulle $1",
 	"welcomesurvey-sidebar-privacy-title": "Arvostamme yksityisyyttäsi",
 	"welcomesurvey-sidebar-privacy-text": "Wikimedia-säätiö käyttää {{GENDER:$2|vastauksiasi}} auttaakseen sinua aloittamaan {{SITENAME}}n muokkaamisen. $1.",
+	"welcomesurvey-privacy-policy-link-text": "Lue lisää uusien käyttäjien datasta",
 	"welcomesurvey-sidebar-editing-title": "Muokkaamisen aloittaminen",
+	"welcomesurvey-sidebar-editing-text": "Lähes kaikkia sivuja voi kuka tahansa muokata, ja joka tunti tehdään satoja muutoksia, joilla lisätään sisältöä, korjataan virheitä ja parannetaan luettavuutta. Seuraavista sivuista voi olla apua, jos {{GENDER:$1|olet kiinnostunut}} osallistumaan.",
 	"welcomesurvey-question-reason-label": "Miksi loit tänään käyttäjätunnuksesi?",
 	"welcomesurvey-dropdown-option-select-label": "Valitse...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "Korjatakseni kirjoitus- tai muun virheen Wikipedia-artikkelissa",
@@ -36,7 +38,8 @@
 	"welcomesurvey-question-edited-option-dont-remember-label": "En muista",
 	"welcomesurvey-question-email-label": "Sähköpostiosoite (vapaaehtoinen)",
 	"welcomesurvey-question-email-placeholder": "Kirjoita sähköpostiosoitteesi...",
-	"welcomesurvey-question-email-help": "Huomasimme, että et lisännyt sähköpostiosoitetta luodessasi käyttäjätilisi. Osoitteen lisääminen on <strong>erittäin suositeltavaa</strong>, koska sitä tarvitaan, jos unohdat salasanasi.´HUOM: sähköpostiosoitettasi ei paljasteta, kun muut käyttäjät ottavat sinuun yhteyttä.",
+	"welcomesurvey-question-email-help": "Huomasimme, että et lisännyt sähköpostiosoitetta luodessasi käyttäjätilisi. Osoitteen lisääminen on <strong>erittäin suositeltavaa</strong>, koska sitä tarvitaan, jos unohdat salasanasi. HUOM: sähköpostiosoitettasi ei paljasteta, kun muut käyttäjät ottavat sinuun yhteyttä.",
 	"welcomesurvey-question-languages-label": "{{SITENAME}} on saatavana lähes 300 kielellä. Onko muita kieliä, joita luet ja kirjoitat?",
+	"welcomesurvey-question-languages-placeholder": "Lisää enintään {{PLURAL:$1|yksi kieli|$1 kieltä}}...",
 	"welcomesurvey-question-languages-maximum": "Olet lisännyt maksimimäärän kieliä."
 }

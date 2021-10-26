@@ -178,7 +178,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-description-expand": "Lungimea multor articole Wikipedia este de doar una sau două propoziții. Găsiți mai multă informație și adăugați-o pentru a face articolul mai cuprinzător.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-links": "Adăugarea legăturilor este cel mai ușor mod de a edita. Legăturile ajută cititorii să se mute între articole pentru a învăța mai rapid.",
 	"growthexperiments-homepage-suggestededits-tasktype-description-link-recommendation": "Adăugarea legătorilor este cel mai simplu mod de a edita. Legăturile permit cititorilor să apese pe ceva despre care vor să afle mai multe.<br />Legăturile sunt sugerate automat, iar {{GENDER:$1|dvs}}. veți decide dacă le adăugați în articol sau nu.",
-	"growthexperiments-homepage-suggestededits-tasktype-description-image-recommendation": "Imaginile pot ajuta cititorii să înțeleagă un subiect.<br />Imaginile sunt sugerate automat, iar {{GENDER:$1|dvs.}} veți decide dacă le adăugați sau nu articolului. Veți scrie de asemenea o legendă pentru acestea.",
+	"growthexperiments-homepage-suggestededits-tasktype-description-image-recommendation": "Imaginile pot ajuta cititorii să înțeleagă un subiect.<br />Imaginile sunt sugerate automat, iar {{GENDER:$1|dvs.}} veți decide dacă le adăugați sau nu articolului. Veți scrie de asemenea o descriere scurtă pentru acestea.",
 	"growthexperiments-homepage-suggestededits-tasktype-label-copyedit": "Corectare (corectarea ortografiei, gramaticii și tonului)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-references": "Găsire de referințe (surse pentru articole existente)",
 	"growthexperiments-homepage-suggestededits-tasktype-label-update": "Actualizare de articole (aduceți articole existente la zi)",
@@ -430,5 +430,9 @@
 	"growthexperiments-addimage-caption-title": "Adaugă descriere",
 	"growthexperiments-structuredtask-user-error": "Nu v-am putut {{GENDER:|salva}} modificarea pentru că nu mai sunteți {{GENDER:|autentificat|autentificată}}. Vă rugăm să vă autentificați și să încercați din nou.",
 	"growthexperiments-structuredtask-user-error-login-cta": "Autentificare",
-	"growthexperiments-structuredtask-anonuser": "Utilizatorul nu mai este autentificat."
+	"growthexperiments-structuredtask-anonuser": "Utilizatorul nu mai este autentificat.",
+	"growthexperiments-addimage-summary-label": "Rezumat",
+	"growthexperiments-addimage-summary-copyrightwarning": "Salvând schimbările, {{GENDER:|sunteți}} de acord cu [https://foundation.wikimedia.org/wiki/Terms_of_Use termenii de utilizare] și sunteți de acord să vă publicați contribuția sub licențele [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] și [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
+	"growthexperiments-addimage-summary-reject-description": "Această sugestie de imagine a fost respinsă.",
+	"growthexperiments-addimage-summary-summary": "Funcția de sugestii de imagini: $1 {{PLURAL:$1|imagine adăugată|imagini adăugate}}."
 }

@@ -443,5 +443,7 @@
 	"growthexperiments-addimage-caption-title": "Додати підпис",
 	"growthexperiments-structuredtask-user-error": "Нам не вдалося зберегти {{GENDER:|ваше}} редагування, бо {{GENDER:|ви}} більше не в системі. Будь ласка, увійдіть і спробуйте ще раз.",
 	"growthexperiments-structuredtask-user-error-login-cta": "Увійти",
-	"growthexperiments-structuredtask-anonuser": "Користувач більше не в системі."
+	"growthexperiments-structuredtask-anonuser": "Користувач більше не в системі.",
+	"growthexperiments-addimage-summary-label": "Опис",
+	"growthexperiments-addimage-summary-summary": "Функція пропозицій зображень: додано $1 {{PLURAL:$1|зображення|зображень}}."
 }

@@ -77,5 +77,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "صفحة الوصول لمعرفة المزيد حول نوع مهمّة اقتراح الصور.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "هذا النوع من المهام مقترن باقتراحات الآلة، ولا يستخدم القوالب لتوليد مجموعة من المهام.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "المقالات التي تحتوي على قوالب محدّدة هنا، لن تظهر لدى المستخدمين كمهام لهذا النوع من المهام.",
-	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "المقالات التي تحتوي على تصنيفات محدّدة هنا، لن تظهر لدى المستخدمين كمهام لهذا النوع من المهام."
+	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "المقالات التي تحتوي على تصنيفات محدّدة هنا، لن تظهر لدى المستخدمين كمهام لهذا النوع من المهام.",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "قوالب صندوق المعلومات",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "نحتاج إلى هذه القوالب لميزة مهمة [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|اقتراح الصور]] للوافدين الجدد. لن يتم سرد المقالات التي تحتوي على هذه القوالب كمهام اقتراح الصور."
 }

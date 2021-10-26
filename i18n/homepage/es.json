@@ -3,6 +3,7 @@
 		"authors": [
 			"Agabi10",
 			"Andru1013",
+			"Avengium",
 			"Canaan9801",
 			"DannyS712",
 			"Destinid10 2",
@@ -123,6 +124,7 @@
 	"tag-newcomer_task-description": "Edición sugerida por el módulo de ediciones sugeridas de la página de inicio para usuarios nuevos",
 	"tag-newcomer_task_add_link": "[[mw:Growth/Personalized first day/Structured tasks/Add a link|Sugerencia: añadir enlaces]]",
 	"tag-newcomer_task_add_link-description": "Edición de tipo \"Añadir enlace\" sugerida por el módulo de ediciones sugeridas de la página de inicio para usuarios nuevos",
+	"tag-newcomer_task_image_suggestion-description": "Edición \"Agregar imágenes\" sugerida por el módulo de ediciones sugeridas de la página de inicio para recién llegados",
 	"growthexperiments-homepage-help-dialog-title": "Preguntar en el café de ayuda",
 	"growthexperiments-homepage-help-header": "Obtén ayuda para editar",
 	"growthexperiments-homepage-help-subheader": "Páginas principales de ayuda sobre la edición",
@@ -304,6 +306,7 @@
 	"growthexperiments-log-header": "Esto es un registro de los cambios hechos en la extensión GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|reclamó}} a {{GENDER:$6|$3}} como su aprendiz (anterior {{GENDER:$4|mentor|mentora}}: $5)",
 	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|revisó}} $4 recomendaciones de enlaces para $3: se aceptaron $5, se rechazaron $6 y se omitieron $7",
+	"logentry-growthexperiments-addimage-accepted": "$1 {{GENDER:$2|revisó}} una sugerencia de imagen por $3: aceptado",
 	"log-action-filter-growthexperiments-addlink": "Recomendaciones de enlaces",
 	"growthexperiments-homepage-claimmentee-invalid-username": "El nombre de usuario del aprendiz proporcionado es inválido",
 	"growthexperiments-notification-header-mentor-change": "$1 es {{GENDER:$3|tu}} nuevo {{GENDER:$2|mentor|mentora}}",
@@ -381,7 +384,7 @@
 	"growthexperiments-addimage-inspector-yes-button": "Sí",
 	"growthexperiments-addimage-inspector-no-button": "No",
 	"growthexperiments-addimage-inspector-skip-button": "{{GENDER:|No seguro}}",
-	"growthexperiments-addimage-inspector-details-button": "Ver detalles",
+	"growthexperiments-addimage-inspector-details-button": "Ver detalles de la imagen",
 	"growthexperiments-addimage-rejectiondialog-header": "¿Por qué esta imagen no es apta para el artículo?",
 	"growthexperiments-addimage-rejectiondialog-action-done": "Enviar",
 	"growthexperiments-addimage-rejectiondialog-action-cancel": "Cancelar",
@@ -393,6 +396,13 @@
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Yo no puedo leer el lenguaje.",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Otro",
 	"growthexperiments-addimage-viewer-close-button": "Cerrar",
+	"growthexperiments-addimage-skip-dialog-title": "¿No estás {{GENDER:|seguro|segura}} de esta imagen?",
+	"growthexperiments-addimage-skip-dialog-confirm": "Saltar sugerencia",
 	"growthexperiments-addimage-skip-dialog-cancel": "Cancelar",
-	"growthexperiments-addimage-caption-title": "Añadir una leyenda"
+	"growthexperiments-addimage-caption-title": "Añadir una leyenda",
+	"growthexperiments-structuredtask-user-error-login-cta": "Iniciar sesión",
+	"growthexperiments-structuredtask-anonuser": "El {{GENDER:|usuario|usuaria}} ya no está {{GENDER:|conectado|conectada}}.",
+	"growthexperiments-addimage-summary-label": "Resumen",
+	"growthexperiments-addimage-summary-reject-description": "Esta sugerencia de imagen fue rechazada.",
+	"growthexperiments-addimage-summary-summary": "Función de sugerencias de imágenes: $1 {{PLURAL:$1|imagen|imágenes}} {{PLURAL:$1|agregada|agregadas}}."
 }

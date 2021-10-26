@@ -132,8 +132,13 @@
 	"growthexperiments-homepage-mentorship-question-subject-with-title": "Kysymys käyttäjältä [[User:$1|$1]] sivusta [[$2]]",
 	"growthexperiments-specialimpact-title": "Vaikutus",
 	"growthexperiments-specialimpact-invalid-username": "Puuttuva tai virheellinen käyttäjänimi.",
+	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|Sinä}} olet jo käyttäjän {{GENDER:$1|$1}} mentori",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|Sinä}} et ole vielä tehnyt yhtään muokkausta.",
+	"growthexperiments-tour-welcome-title": "Tervetuloa {{GENDER:$1|omalle}} aloitussivullesi!",
+	"growthexperiments-tour-welcome-description": "{{GENDER:$1|Voit}} aina palata tänne klikkaamalla {{GENDER:$1|käyttäjänimeäsi}}.",
 	"growthexperiments-tour-discovery-title": "Aloita täältä!",
+	"growthexperiments-tour-discovery-description": "Klikkaa {{GENDER:$1|käyttäjänimeäsi}} mennäksesi {{GENDER:$1|omalle}} aloitussivullesi.",
+	"growthexperiments-homepage-welcomesurvey-default-close": "Mene {{GENDER:$1|aloitussivullesi}}",
 	"growthexperiments-homepage-discovery-thanks-header": "Kiitos, että {{GENDER:$1|loit}} käyttäjätilin!",
 	"growthexperiments-homepage-discovery-mobile-homepage-banner-text": "{{GENDER:$1|Voit}} aina avata sivuvalikon ja klikata $2 palataksesi tänne.",
 	"growthexperiments-homepage-discovery-mobile-nonhomepage-banner-header": "Aloita täältä!",
@@ -340,5 +345,6 @@
 	"growthexperiments-addimage-skip-dialog-cancel": "Peruuta",
 	"growthexperiments-addimage-caption-title": "Lisää kuvateksti",
 	"growthexperiments-structuredtask-user-error": "Emme voineet tallentaa {{GENDER:|muutoksiasi}} koska {{GENDER:|et}} ole kirjautuneena sisään. Kirjaudu sisään ja yritä uudestaan.",
-	"growthexperiments-structuredtask-user-error-login-cta": "Kirjaudu sisään"
+	"growthexperiments-structuredtask-user-error-login-cta": "Kirjaudu sisään",
+	"growthexperiments-addimage-summary-label": "Yhteenveto"
 }
