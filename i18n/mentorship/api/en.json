@@ -9,5 +9,6 @@
 	"apihelp-growthsetmentorstatus-summary": "Set current user's mentor status to active/away",
 	"apihelp-growthsetmentorstatus-param-gesstatus": "New status",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "When setting mentor as away, this must have length of the away status (in days)",
-	"apihelp-query+growthmentorstatus-summary": "Query current user's mentor status"
+	"apihelp-query+growthmentorstatus-summary": "Query current user's mentor status",
+	"apihelp-growthmentordashboardupdatedata-summary": "Schedule an extraordinary update of the mentee overview module in the mentor dashboard. You can only schedule one update per two hours for performance reasons."
 }
