@@ -705,7 +705,10 @@ return [
 		return new ImageRecommendationMetadataProvider(
 			$growthExperimentsServices->getImageRecommendationMetadataService(),
 			$services->getContentLanguage()->getCode(),
-			$services->getContentLanguage()->getFallbackLanguages()
+			$services->getContentLanguage()->getFallbackLanguages(),
+			$services->getLanguageNameUtils(),
+			new DerivativeContext( RequestContext::getMain() ),
+			$services->getSiteStore()
 		);
 	}
 

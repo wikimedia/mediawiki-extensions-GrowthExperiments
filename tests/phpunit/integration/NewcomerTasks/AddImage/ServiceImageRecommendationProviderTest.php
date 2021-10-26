@@ -158,8 +158,8 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$metadataProvider = $this->createMock(
 			ImageRecommendationMetadataProvider::class
 		);
-		$metadataProvider->method( 'getMetadata' )->willReturnCallback( static function ( $filename ) {
-			if ( $filename === 'Bad.png' ) {
+		$metadataProvider->method( 'getMetadata' )->willReturnCallback( static function ( $suggestion ) {
+			if ( $suggestion['filename'] === 'Bad.png' ) {
 				return StatusValue::newFatal( 'rawmessage', 'No metadata' );
 			} else {
 				return [

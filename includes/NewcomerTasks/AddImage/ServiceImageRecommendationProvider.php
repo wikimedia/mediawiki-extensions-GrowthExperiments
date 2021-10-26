@@ -144,7 +144,6 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 				'API returned HTTP code ' . $request->getStatus() . ' for page '
 				. $titleTextSafe . ': ' . ( strip_tags( $data['detail'] ?? '(no reason given)' ) ) );
 		}
-
 		return self::processApiResponseData( $title, $titleText, $data, $this->metadataProvider );
 	}
 
@@ -206,7 +205,11 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 					'Invalid datasetId format for ' . $titleTextSafe );
 			}
 
-			$imageMetadata = $metadataProvider->getMetadata( $filename );
+			$imageMetadata = $metadataProvider->getMetadata( [
+				'filename' => $suggestion['filename'],
+				'projects' => $projects,
+				'source' => $source,
+			] );
 			if ( is_array( $imageMetadata ) ) {
 				$images[] = new ImageRecommendationImage(
 					new TitleValue( NS_FILE, $filename ),

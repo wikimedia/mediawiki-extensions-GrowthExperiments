@@ -14,6 +14,7 @@ var StructuredTaskToolbarDialog = require( '../StructuredTaskToolbarDialog.js' )
  * @property {number} originalHeight Height of the image (in px)
  * @property {boolean} mustRender Whether the image file needs to be re-rasterized
  * @property {boolean} isVectorized Whether the image file is a vector
+ * @property {string} reason Text explaning why the image was suggested
  */
 
 /**
@@ -317,8 +318,7 @@ RecommendedImageToolbarDialog.prototype.getDescriptionElement = function ( descr
 RecommendedImageToolbarDialog.prototype.updateSuggestionContent = function () {
 	var imageData = this.images[ this.currentIndex ],
 		metadata = imageData.metadata;
-	// TODO: format reason (T292467)
-	this.$reason.text( imageData.projects );
+	this.$reason.text( metadata.reason );
 	this.$imageThumbnail.css( 'background-image', 'url(' + metadata.thumbUrl + ')' );
 	this.$imageInfo.append( [
 		$( '<div>' ).append( [
