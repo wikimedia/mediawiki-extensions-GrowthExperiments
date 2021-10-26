@@ -16,8 +16,8 @@ use Wikimedia\Timestamp\ConvertibleTimestamp;
 /**
  * Provides data about interesting mentees mentored by a particular mentor
  *
- * WARNING: This class implements no caching, and it may not be used outside
- * of CLI scripts.
+ * WARNING: This class implements no caching, and it may be only used from CLI
+ * scripts or jobs.
  */
 class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	/** @var int Number of seconds in a day */

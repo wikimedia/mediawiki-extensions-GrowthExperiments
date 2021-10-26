@@ -12,6 +12,7 @@ use GrowthExperiments\HelpPanel\Tips\TipNodeRenderer;
 use GrowthExperiments\HelpPanel\Tips\TipsAssembler;
 use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
+use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
@@ -136,6 +137,10 @@ class GrowthExperimentsServices {
 
 	public function getMenteeOverviewDataProvider(): MenteeOverviewDataProvider {
 		return $this->coreServices->get( 'GrowthExperimentsMenteeOverviewDataProvider' );
+	}
+
+	public function getMenteeOverviewDataUpdater(): MenteeOverviewDataUpdater {
+		return $this->coreServices->get( 'GrowthExperimentsMenteeOverviewDataUpdater' );
 	}
 
 	public function getUncachedMenteeOverviewDataProvider(): MenteeOverviewDataProvider {

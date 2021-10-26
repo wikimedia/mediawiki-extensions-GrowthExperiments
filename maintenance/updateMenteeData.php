@@ -2,13 +2,9 @@
 
 namespace GrowthExperiments\Maintenance;
 
-use FormatJson;
 use GrowthExperiments\GrowthExperimentsServices;
-use GrowthExperiments\MentorDashboard\MenteeOverview\DatabaseMenteeOverviewDataProvider;
-use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
-use GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider;
+use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\Mentorship\MentorManager;
-use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
 use Maintenance;
@@ -25,17 +21,12 @@ if ( getenv( 'MW_INSTALL_PATH' ) !== false ) {
 require_once $path . '/maintenance/Maintenance.php';
 
 class UpdateMenteeData extends Maintenance {
-	/** @var UncachedMenteeOverviewDataProvider */
-	private $uncachedMenteeOverviewDataProvider;
 
-	/** @var MenteeOverviewDataProvider */
-	private $databaseMenteeOverviewDataProvider;
+	/** @var MenteeOverviewDataUpdater */
+	private $menteeOverviewDataUpdater;
 
 	/** @var MentorManager */
 	private $mentorManager;
-
-	/** @var MentorStore */
-	private $mentorStore;
 
 	/** @var UserFactory */
 	private $userFactory;
@@ -71,10 +62,9 @@ class UpdateMenteeData extends Maintenance {
 		$services = MediaWikiServices::getInstance();
 		$geServices = GrowthExperimentsServices::wrap( $services );
 
-		$this->uncachedMenteeOverviewDataProvider = $geServices->getUncachedMenteeOverviewDataProvider();
-		$this->databaseMenteeOverviewDataProvider = $geServices->getMenteeOverviewDataProvider();
+		$this->menteeOverviewDataUpdater = $geServices->getMenteeOverviewDataUpdater();
+		$this->menteeOverviewDataUpdater->setBatchSize( $this->getBatchSize() );
 		$this->mentorManager = $geServices->getMentorManager();
-		$this->mentorStore = $geServices->getMentorStore();
 		$this->userFactory = $services->getUserFactory();
 		$this->growthLoadBalancer = $geServices->getLoadBalancer();
 		$this->dataFactory = $services->getStatsdDataFactory();
@@ -121,11 +111,8 @@ class UpdateMenteeData extends Maintenance {
 			}
 		}
 
-		$thisBatch = 0;
-		$batchSize = $this->getBatchSize();
 		$allUpdatedMenteeIds = [];
 		$dbw = $this->growthLoadBalancer->getConnection( DB_PRIMARY );
-		$dbr = $this->growthLoadBalancer->getConnection( DB_REPLICA );
 		foreach ( $mentors as $mentorRaw ) {
 			$mentor = $this->userFactory->newFromName( $mentorRaw );
 			if ( $mentor === null ) {
@@ -133,79 +120,11 @@ class UpdateMenteeData extends Maintenance {
 				continue;
 			}
 
-			$data = $this->uncachedMenteeOverviewDataProvider->getFormattedDataForMentor( $mentor );
-			$mentees = $this->mentorStore->getMenteesByMentor( $mentor, MentorStore::ROLE_PRIMARY );
-			$updatedMenteeIds = [];
-			foreach ( $data as $menteeId => $menteeData ) {
-				$encodedData = FormatJson::encode( $menteeData );
-				$storedEncodedData = $dbr->selectField(
-					'growthexperiments_mentee_data',
-					'mentee_data',
-					[ 'mentee_id' => $menteeId ]
-				);
-				if ( $storedEncodedData === false ) {
-					// Row doesn't exist yet, insert it
-					$dbw->insert(
-						'growthexperiments_mentee_data',
-						[
-							'mentee_id' => $menteeId,
-							'mentee_data' => $encodedData
-						],
-						__METHOD__
-					);
-				} else {
-					// Row exists, if anything changed, update
-					if ( FormatJson::decode( $storedEncodedData, true ) !== $menteeData ) {
-						$dbw->update(
-							'growthexperiments_mentee_data',
-							[ 'mentee_data' => $encodedData ],
-							[ 'mentee_id' => $menteeId ],
-							__METHOD__
-						);
-					}
-				}
-
-				$thisBatch++;
-				$updatedMenteeIds[] = $menteeId;
-				$allUpdatedMenteeIds[] = $menteeId;
-
-				if ( $thisBatch >= $batchSize ) {
-					$thisBatch = 0;
-					$this->waitForReplication();
-				}
-			}
-
-			// Delete all mentees of $mentor we did not update
-			$menteeIdsToDelete = array_diff(
-				array_map(
-					static function ( $mentee ) {
-						return $mentee->getId();
-					},
-					$mentees
-				),
-				$updatedMenteeIds
-			);
-			if ( $menteeIdsToDelete !== [] ) {
-				$dbw->begin( __METHOD__ );
-				$dbw->delete(
-					'growthexperiments_mentee_data',
-					[
-						'mentee_id' => $menteeIdsToDelete
-					],
-					__METHOD__
-				);
-				$dbw->commit( __METHOD__ );
-				$this->waitForReplication();
-			}
-
+			$updatedMenteeIds = $this->menteeOverviewDataUpdater->updateDataForMentor( $mentor );
+			$allUpdatedMenteeIds = array_merge( $allUpdatedMenteeIds, $updatedMenteeIds );
 			$this->addProfilingInfoForMentor(
-				$this->uncachedMenteeOverviewDataProvider->getProfilingInfo()
+				$this->menteeOverviewDataUpdater->getMentorProfilingInfo()
 			);
-
-			// if applicable, clear cache for the mentor we just updated
-			if ( $this->databaseMenteeOverviewDataProvider instanceof DatabaseMenteeOverviewDataProvider ) {
-				$this->databaseMenteeOverviewDataProvider->invalidateCacheForMentor( $mentor );
-			}
 		}
 
 		// Delete all mentees recorded in the table which were not updated
