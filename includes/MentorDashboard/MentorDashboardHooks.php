@@ -2,10 +2,13 @@
 
 namespace GrowthExperiments\MentorDashboard;
 
+use ChangeTags;
+use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataUpdater;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use MediaWiki\Preferences\Hook\GetPreferencesHook;
 use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
+use ResourceLoaderContext;
 
 class MentorDashboardHooks implements GetPreferencesHook, UserGetDefaultOptionsHook {
 	/**
@@ -32,6 +35,22 @@ class MentorDashboardHooks implements GetPreferencesHook, UserGetDefaultOptionsH
 			StarredMenteesStore::STARRED_MENTEES_PREFERENCE => '',
 			MentorDashboardDiscoveryHooks::MENTOR_DASHBOARD_SEEN_PREF => 0,
 			MenteeOverviewDataUpdater::LAST_UPDATE_PREFERENCE => null,
+		];
+	}
+
+	/**
+	 * Tags mentee overview module uses to filter edits made by mentees
+	 *
+	 * @param ResourceLoaderContext $context
+	 * @return array[]
+	 */
+	public static function getTagsToFilterBy( ResourceLoaderContext $context ) {
+		return [
+			'reverted' => [ ChangeTags::TAG_REVERTED ],
+			'questions' => [
+				Mentorship::MENTORSHIP_HELPPANEL_QUESTION_TAG,
+				Mentorship::MENTORSHIP_MODULE_QUESTION_TAG
+			]
 		];
 	}
 }
