@@ -100,7 +100,10 @@ class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 				$rcUserField = RecentChange::getQueryInfo()['fields']['rc_user'];
 				// The query is shared with other hook handlers, so with the associative array format
 				// there is a risk of key conflict. Convert into non-associate instead.
-				$conds[] = $dbr->makeList( [ $rcUserField => $targetIds ], IDatabase::LIST_AND );
+				// Only apply when $targetIds has at least one ID
+				if ( $targetIds !== [] ) {
+					$conds[] = $dbr->makeList( [ $rcUserField => $targetIds ], IDatabase::LIST_AND );
+				}
 			},
 		] );
 		$special->registerFilterGroup( $group );
