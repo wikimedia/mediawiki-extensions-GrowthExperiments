@@ -5,9 +5,11 @@ namespace GrowthExperiments\Tests;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserIdentityValue;
 use MediaWiki\User\UserOptionsManager;
 use MediaWikiUnitTestCase;
+use Wikimedia\Rdbms\IDatabase;
 
 /**
  * @coversDefaultClass \GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager
@@ -20,10 +22,22 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 			->getMock();
 	}
 
+	private function getMockUserIdentityLookup() {
+		return $this->getMockBuilder( UserIdentityLookup::class )
+			->disableOriginalConstructor()
+			->getMock();
+	}
+
 	private function getMockUserFactory() {
 		return $this->getMockBuilder( UserFactory::class )
 			->disableOriginalConstructor()
 			->getMock();
+	}
+
+	private function getMockDB() {
+		return $this->getMockBuilder( IDatabase::class )
+			->disableOriginalConstructor()
+			->getMockForAbstractClass();
 	}
 
 	private function getTestMentor(): UserIdentity {
@@ -41,12 +55,19 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 		$mentor = $this->getTestMentor();
 
 		$userOptionsManager = $this->getMockUserOptionsManager();
+		$userIdentityLookup = $this->getMockUserIdentityLookup();
+		$dbr = $this->getMockDB();
 		$userOptionsManager->expects( $this->once() )
 			->method( 'getOption' )
 			->with( $mentor, MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF )
 			->willReturn( $rawTS );
 		$userFactory = $this->getMockUserFactory();
-		$manager = new MentorStatusManager( $userOptionsManager, $userFactory );
+		$manager = new MentorStatusManager(
+			$userOptionsManager,
+			$userIdentityLookup,
+			$userFactory,
+			$dbr
+		);
 
 		$this->assertEquals(
 			$expectedTS,
@@ -70,12 +91,19 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 		$mentor = $this->getTestMentor();
 
 		$userOptionsManager = $this->getMockUserOptionsManager();
+		$userIdentityLookup = $this->getMockUserIdentityLookup();
 		$userOptionsManager->expects( $this->once() )
 			->method( 'getOption' )
 			->with( $mentor, MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF )
 			->willReturn( $rawTS );
 		$userFactory = $this->getMockUserFactory();
-		$manager = new MentorStatusManager( $userOptionsManager, $userFactory );
+		$dbr = $this->getMockDB();
+		$manager = new MentorStatusManager(
+			$userOptionsManager,
+			$userIdentityLookup,
+			$userFactory,
+			$dbr
+		);
 
 		$this->assertEquals(
 			$expectedStatus,
@@ -98,12 +126,19 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 		$mentor = $this->getTestMentor();
 
 		$userOptionsManager = $this->getMockUserOptionsManager();
+		$userIdentityLookup = $this->getMockUserIdentityLookup();
 		$userOptionsManager->expects( $this->once() )
 			->method( 'setOption' )
 			->with( $mentor, MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF, null );
 		$userFactory = $this->getMockUserFactory();
+		$dbr = $this->getMockDB();
 
-		$manager = new MentorStatusManager( $userOptionsManager, $userFactory );
+		$manager = new MentorStatusManager(
+			$userOptionsManager,
+			$userIdentityLookup,
+			$userFactory,
+			$dbr
+		);
 		$manager->markMentorAsActive( $mentor );
 	}
 }

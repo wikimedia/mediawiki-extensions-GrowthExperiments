@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Mentorship;
 
+use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use Language;
@@ -30,6 +31,9 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	private const INTRO_TEXT_LENGTH = 240;
 
 	private $mentorStore;
+
+	/** @var MentorStatusManager */
+	private $mentorStatusManager;
 
 	/** @var TitleFactory */
 	private $titleFactory;
@@ -62,6 +66,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 	/**
 	 * @param MentorStore $mentorStore
+	 * @param MentorStatusManager $mentorStatusManager
 	 * @param TitleFactory $titleFactory
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param UserNameUtils $userNameUtils
@@ -79,6 +84,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 */
 	public function __construct(
 		MentorStore $mentorStore,
+		MentorStatusManager $mentorStatusManager,
 		TitleFactory $titleFactory,
 		WikiPageFactory $wikiPageFactory,
 		UserNameUtils $userNameUtils,
@@ -91,6 +97,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$wasPosted
 	) {
 		$this->mentorStore = $mentorStore;
+		$this->mentorStatusManager = $mentorStatusManager;
 		$this->titleFactory = $titleFactory;
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->userNameUtils = $userNameUtils;
@@ -106,8 +113,11 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	}
 
 	/** @inheritDoc */
-	public function getMentorForUserIfExists( UserIdentity $user ): ?Mentor {
-		$mentorUser = $this->mentorStore->loadMentorUser( $user, MentorStore::ROLE_PRIMARY );
+	public function getMentorForUserIfExists(
+		UserIdentity $user,
+		string $role = MentorStore::ROLE_PRIMARY
+	): ?Mentor {
+		$mentorUser = $this->mentorStore->loadMentorUser( $user, $role );
 		if ( !$mentorUser ) {
 			return null;
 		}
@@ -116,30 +126,88 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	}
 
 	/** @inheritDoc */
-	public function getMentorForUser( UserIdentity $user ): Mentor {
-		$mentorUser = $this->mentorStore->loadMentorUser( $user, MentorStore::ROLE_PRIMARY );
+	public function getMentorForUser(
+		UserIdentity $user,
+		string $role = MentorStore::ROLE_PRIMARY
+	): Mentor {
+		$mentorUser = $this->mentorStore->loadMentorUser( $user, $role );
+
+		if (
+			$mentorUser !== null &&
+			$role === MentorStore::ROLE_BACKUP &&
+			$this->mentorStatusManager->getMentorStatus( $mentorUser ) === MentorStatusManager::STATUS_AWAY
+		) {
+			// Do not let backup mentors to be away. If they are, drop the relationship and set
+			// it again. Logic in getRandomAutoAssignedMentorForUserAndRole will prevent us from
+			// getting $mentorUser again, so no need to remember it and exclude manually.
+			$mentorUser = null;
+		}
+
 		if ( !$mentorUser ) {
-			$mentorUser = $this->getRandomAutoAssignedMentor( $user );
+			$mentorUser = $this->getRandomAutoAssignedMentorForUserAndRole( $user, $role );
 			if ( !$mentorUser ) {
 				// TODO: Remove this call (T290371)
 				throw new WikiConfigException( 'Mentorship: No mentor available' );
 			}
-
-			$this->mentorStore->setMentorForUser( $user, $mentorUser, MentorStore::ROLE_PRIMARY );
+			$this->mentorStore->setMentorForUser( $user, $mentorUser, $role );
 		}
 		return $this->newMentorFromUserIdentity( $mentorUser, $user );
 	}
 
+	/**
+	 * Wrapper for getRandomAutoAssignedMentor
+	 *
+	 * In addition to getRandomAutoAssignedMentor, this is mentor role-aware,
+	 * and automatically excludes the primary mentor if generating a mentor
+	 * for a non-primary role.
+	 *
+	 * If $role is ROLE_BACKUP, it also makes sure to not generate a mentor that's away.
+	 *
+	 * @param UserIdentity $mentee
+	 * @param string $role One of MentorStore::ROLE_* roles
+	 * @return UserIdentity|null Mentor that can be assigned to the mentee
+	 * @throws WikiConfigException if mentor list configuration is invalid
+	 */
+	private function getRandomAutoAssignedMentorForUserAndRole(
+		UserIdentity $mentee,
+		string $role
+	): ?UserIdentity {
+		$excludedUsers = [];
+		if ( $role !== MentorStore::ROLE_PRIMARY ) {
+			$primaryMentor = $this->mentorStore->loadMentorUser(
+				$mentee,
+				MentorStore::ROLE_PRIMARY
+			);
+			if ( $primaryMentor ) {
+				$excludedUsers[] = $primaryMentor;
+			}
+		}
+		if ( $role === MentorStore::ROLE_BACKUP ) {
+			$excludedUsers += array_map(
+				static function ( $mentor ) {
+					return $mentor->getId();
+				},
+				$this->mentorStatusManager->getAwayMentors()
+			);
+		}
+
+		return $this->getRandomAutoAssignedMentor( $mentee, $excludedUsers );
+	}
+
 	/** @inheritDoc */
-	public function getMentorForUserSafe( UserIdentity $user ): ?Mentor {
+	public function getMentorForUserSafe(
+		UserIdentity $user,
+		string $role = MentorStore::ROLE_PRIMARY
+	): ?Mentor {
 		try {
-			return $this->getMentorForUser( $user );
+			return $this->getMentorForUser( $user, $role );
 		} catch ( WikiConfigException $e ) {
 			// WikiConfigException is thrown when no mentor is available
 			// Log as info level, as not-yet-developed wikis may have
 			// zero mentors for long period of time (T274035)
-			$this->logger->info( 'No mentor available for {user}', [
+			$this->logger->info( 'No {role} mentor available for {user}', [
 				'user' => $user->getName(),
+				'role' => $role,
 				'exception' => $e
 			] );
 		} catch ( DBReadOnlyError $e ) {
@@ -148,6 +216,38 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			// related, such as the homepage, so it's better than erroring out.
 		}
 		return null;
+	}
+
+	/** @inheritDoc */
+	public function getEffectiveMentorForUser( UserIdentity $menteeUser ): Mentor {
+		$primaryMentor = $this->getMentorForUser( $menteeUser, MentorStore::ROLE_PRIMARY );
+		if (
+			$this->mentorStatusManager
+				->getMentorStatus( $primaryMentor->getMentorUser() ) === MentorStatusManager::STATUS_ACTIVE
+		) {
+			return $primaryMentor;
+		} else {
+			return $this->getMentorForUser( $menteeUser, MentorStore::ROLE_BACKUP );
+		}
+	}
+
+	/** @inheritDoc */
+	public function getEffectiveMentorForUserSafe( UserIdentity $menteeUser ): ?Mentor {
+		$primaryMentor = $this->getMentorForUserSafe( $menteeUser, MentorStore::ROLE_PRIMARY );
+		if ( $primaryMentor === null ) {
+			// If primary mentor cannot be assigned, there's zero chance to successfully assign any
+			// mentor.
+			return null;
+		}
+
+		if (
+			$this->mentorStatusManager
+				->getMentorStatus( $primaryMentor->getMentorUser() ) === MentorStatusManager::STATUS_ACTIVE
+		) {
+			return $primaryMentor;
+		} else {
+			return $this->getMentorForUserSafe( $menteeUser, MentorStore::ROLE_BACKUP );
+		}
 	}
 
 	/**

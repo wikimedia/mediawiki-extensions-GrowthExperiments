@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Mentorship;
 
+use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use MediaWiki\User\UserIdentity;
 use Title;
@@ -14,26 +15,61 @@ abstract class MentorManager {
 	/**
 	 * Get the mentor assigned to this user, if it exists.
 	 * @param UserIdentity $user
+	 * @param string $role MentorStore::ROLE_* constant
 	 * @return Mentor|null
 	 */
-	abstract public function getMentorForUserIfExists( UserIdentity $user ): ?Mentor;
+	abstract public function getMentorForUserIfExists(
+		UserIdentity $user,
+		string $role = MentorStore::ROLE_PRIMARY
+	): ?Mentor;
 
 	/**
 	 * Get the mentor assigned to this user.
 	 * If the user did not have a mentor before, this will assign one on the fly.
 	 * @param UserIdentity $user
+	 * @param string $role MentorStore::ROLE_* constant
 	 * @return Mentor
 	 * @throws WikiConfigException If it is not possible to obtain a mentor due to misconfiguration.
 	 */
-	abstract public function getMentorForUser( UserIdentity $user ): Mentor;
+	abstract public function getMentorForUser(
+		UserIdentity $user,
+		string $role = MentorStore::ROLE_PRIMARY
+	): Mentor;
 
 	/**
 	 * Get the mentor assigned to this user. Suppress configuration errors and return null
 	 * if a mentor cannot be assigned.
 	 * @param UserIdentity $user
+	 * @param string $role MentorStore::ROLE_* constant
 	 * @return Mentor|null
 	 */
-	abstract public function getMentorForUserSafe( UserIdentity $user ): ?Mentor;
+	abstract public function getMentorForUserSafe(
+		UserIdentity $user,
+		string $role = MentorStore::ROLE_PRIMARY
+	): ?Mentor;
+
+	/**
+	 * Get the effective mentor assigned to this user.
+	 *
+	 * This returns the primary mentor if they're active, otherwise,
+	 * it returns the backup mentor.
+	 *
+	 * @param UserIdentity $menteeUser
+	 * @return Mentor
+	 * @throws WikiConfigException If it is not possible to obtain a mentor due to misconfiguration.
+	 */
+	abstract public function getEffectiveMentorForUser( UserIdentity $menteeUser ): Mentor;
+
+	/**
+	 * Get the effective mentor assigned to this user, suppressing configuration errors.
+	 *
+	 * This returns the primary mentor if they're active, otherwise,
+	 * it returns the backup mentor.
+	 *
+	 * @param UserIdentity $menteeUser
+	 * @return Mentor|null
+	 */
+	abstract public function getEffectiveMentorForUserSafe( UserIdentity $menteeUser ): ?Mentor;
 
 	/**
 	 * Construct a Mentor object for given UserIdentity

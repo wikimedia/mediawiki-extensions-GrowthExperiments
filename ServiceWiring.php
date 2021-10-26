@@ -337,10 +337,12 @@ return [
 	'GrowthExperimentsMentorManager' => static function (
 		MediaWikiServices $services
 	): MentorManager {
-		$wikiConfig = GrowthExperimentsServices::wrap( $services )->getGrowthWikiConfig();
+		$geServices = GrowthExperimentsServices::wrap( $services );
+		$wikiConfig = $geServices->getGrowthWikiConfig();
 
 		$manager = new MentorPageMentorManager(
-			GrowthExperimentsServices::wrap( $services )->getMentorStore(),
+			$geServices->getMentorStore(),
+			$geServices->getMentorStatusManager(),
 			$services->getTitleFactory(),
 			$services->getWikiPageFactory(),
 			$services->getUserNameUtils(),
@@ -361,7 +363,9 @@ return [
 	): MentorStatusManager {
 		return new MentorStatusManager(
 			$services->getUserOptionsManager(),
-			$services->getUserFactory()
+			$services->getUserIdentityLookup(),
+			$services->getUserFactory(),
+			$services->getDBLoadBalancer()->getConnection( DB_REPLICA )
 		);
 	},
 

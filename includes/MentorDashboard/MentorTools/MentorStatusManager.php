@@ -4,7 +4,9 @@ namespace GrowthExperiments\MentorDashboard\MentorTools;
 
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserOptionsManager;
+use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
 class MentorStatusManager {
@@ -29,19 +31,31 @@ class MentorStatusManager {
 	/** @var UserOptionsManager */
 	private $userOptionsManager;
 
+	/** @var UserIdentityLookup */
+	private $userIdentityLookup;
+
 	/** @var UserFactory */
 	private $userFactory;
 
+	/** @var IDatabase */
+	private $dbr;
+
 	/**
 	 * @param UserOptionsManager $userOptionsManager
+	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param UserFactory $userFactory
+	 * @param IDatabase $dbr
 	 */
 	public function __construct(
 		UserOptionsManager $userOptionsManager,
-		UserFactory $userFactory
+		UserIdentityLookup $userIdentityLookup,
+		UserFactory $userFactory,
+		IDatabase $dbr
 	) {
 		$this->userOptionsManager = $userOptionsManager;
+		$this->userIdentityLookup = $userIdentityLookup;
 		$this->userFactory = $userFactory;
+		$this->dbr = $dbr;
 	}
 
 	/**
@@ -63,10 +77,17 @@ class MentorStatusManager {
 	 * @return string|null Null if mentor is currently active
 	 */
 	public function getMentorBackTimestamp( UserIdentity $mentor ): ?string {
-		$rawTs = $this->userOptionsManager->getOption(
+		return $this->parseBackTimestamp( $this->userOptionsManager->getOption(
 			$mentor,
 			self::MENTOR_AWAY_TIMESTAMP_PREF
-		);
+		) );
+	}
+
+	/**
+	 * @param string|null $rawTs
+	 * @return string|null
+	 */
+	private function parseBackTimestamp( ?string $rawTs ): ?string {
 		if (
 			$rawTs === null ||
 			(int)ConvertibleTimestamp::convert( TS_UNIX, $rawTs ) < (int)wfTimestamp( TS_UNIX )
@@ -75,6 +96,39 @@ class MentorStatusManager {
 		}
 
 		return $rawTs;
+	}
+
+	/**
+	 * Get mentors marked as away
+	 *
+	 * @return UserIdentity[]
+	 */
+	public function getAwayMentors(): array {
+		// This should be okay, as up_property is an index, and we won't
+		// get a lot of rows to process.
+		$awayMentorIds = $this->dbr->selectFieldValues(
+			'user_properties',
+			'up_user',
+			[
+				'up_property' => self::MENTOR_AWAY_TIMESTAMP_PREF,
+				'up_value IS NOT NULL',
+				'up_value > ' . $this->dbr->addQuotes(
+					$this->dbr->timestamp()
+				)
+			],
+			__METHOD__
+		);
+
+		if ( $awayMentorIds === [] ) {
+			return [];
+		}
+
+		return iterator_to_array(
+			$this->userIdentityLookup
+				->newSelectQueryBuilder()
+				->whereUserIds( $awayMentorIds )
+				->fetchUserIdentities()
+		);
 	}
 
 	/**

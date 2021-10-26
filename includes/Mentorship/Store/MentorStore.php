@@ -12,12 +12,11 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityValue;
 
 abstract class MentorStore implements IDBAccessObject {
-	/**
-	 * @var string
-	 * As of now, we have only primary mentors, but this is done in anticipation of T227876 being
-	 * done.
-	 */
+	/** @var string */
 	public const ROLE_PRIMARY = 'primary';
+
+	/** @var string */
+	public const ROLE_BACKUP = 'backup';
 
 	/** @var BagOStuff */
 	protected $cache;
@@ -77,14 +76,11 @@ abstract class MentorStore implements IDBAccessObject {
 	/**
 	 * Code helper for validating mentor type
 	 *
-	 * As of now, the only allowed constant is MentorStore::MENTOR_PRIMARY;
-	 * this will be more useful when T227876 is done.
-	 *
 	 * @param string $mentorRole
 	 * @return bool True when valid, false otherwise
 	 */
 	private function validateMentorRole( string $mentorRole ): bool {
-		return in_array( $mentorRole, [ self::ROLE_PRIMARY ] );
+		return in_array( $mentorRole, [ self::ROLE_PRIMARY, self::ROLE_BACKUP ] );
 	}
 
 	/**
