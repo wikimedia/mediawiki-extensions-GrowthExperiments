@@ -136,13 +136,13 @@ RecommendedImageToolbarDialog.prototype.getSetupProcess = function ( data ) {
  * Initialize elements after this.surface is set
  */
 RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
-	MachineSuggestionsMode.disableVirtualKeyboard( this.surface );
 	this.surface.getView().$documentNode.on( 'click', this.onDocumentNodeClick );
 	this.setUpToolbarDialogButton(
 		mw.message( 'growthexperiments-addimage-inspector-show-button' ).text()
 	);
 	// TBD: Desktop UI (help panel CTA button is shown by default)
 	if ( OO.ui.isMobile() ) {
+		MachineSuggestionsMode.disableVirtualKeyboard( this.surface );
 		this.setupHelpButton(
 			mw.message( 'growthexperiments-addimage-inspector-help-button' ).text()
 		);
