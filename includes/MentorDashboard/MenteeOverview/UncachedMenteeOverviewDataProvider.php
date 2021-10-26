@@ -4,7 +4,9 @@ namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
 use ActorMigration;
 use ChangeTags;
+use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\Mentorship;
+use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use MediaWiki\Storage\NameTableAccessException;
 use MediaWiki\Storage\NameTableStore;
@@ -135,6 +137,27 @@ class UncachedMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			[
 				// filter to mentees only
 				'user_id' => $this->getIds( $mentees ),
+
+				// ensure mentees have homepage enabled
+				'user_id IN (' . $this->mainDbr->selectSQLText(
+					'user_properties',
+					'up_user',
+					[
+						'up_property' => HomepageHooks::HOMEPAGE_PREF_ENABLE,
+						'up_value' => 1
+					]
+				) . ')',
+
+				// ensure mentees do not have mentorship disabled
+				'user_id NOT IN (' . $this->mainDbr->selectSQLText(
+					'user_properties',
+					'up_user',
+					[
+						'up_property' => MentorPageMentorManager::MENTORSHIP_ENABLED_PREF,
+						// sanity check, should never match (1 is the default value)
+						'up_value != 1',
+					]
+				) . ')',
 
 				// user is not a bot,
 				'user_id NOT IN (' . $this->mainDbr->selectSQLText(
