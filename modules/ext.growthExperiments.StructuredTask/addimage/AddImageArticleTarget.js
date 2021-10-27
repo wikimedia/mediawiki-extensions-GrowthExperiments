@@ -55,7 +55,15 @@ AddImageArticleTarget.prototype.beforeSurfaceReady = function () {
 	// TODO: Set fragments on surface
 };
 
+/**
+ * Show the image inspector, hide save button
+ */
 AddImageArticleTarget.prototype.afterSurfaceReady = function () {
+	// Set a reference to the toolbar up front so that it's available in subsequent calls
+	// (since VeUiTargetToolbar is constructed upon these method calls if it's not there)
+	this.targetToolbar = OO.ui.isMobile() ? this.getToolbar() : this.getActions();
+	// Save button will be shown during caption step
+	this.toggleSaveTool( false );
 	this.getSurface().executeCommand( 'recommendedImage' );
 };
 
@@ -147,6 +155,7 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 	surfaceModel.setReadOnly( false );
 	surfaceModel.getLinearFragment( new ve.Range( insertOffset ) ).insertContent( linearModel );
 	surfaceModel.setReadOnly( true );
+	this.hasStartedCaption = true;
 };
 
 /**
@@ -196,9 +205,9 @@ AddImageArticleTarget.prototype.rollback = function () {
 	var surfaceModel = this.getSurface().getModel(), recommendedImageNodes;
 	surfaceModel.setReadOnly( false );
 	recommendedImageNodes = surfaceModel.getDocument().getNodesByType( 'mwGeRecommendedImage' );
-	if ( recommendedImageNodes.length ) {
-		surfaceModel.getLinearFragment( recommendedImageNodes[ 0 ].getOuterRange() ).delete();
-	}
+	recommendedImageNodes.forEach( function ( node ) {
+		surfaceModel.getLinearFragment( node.getOuterRange() ).delete();
+	} );
 	surfaceModel.setReadOnly( true );
 };
 
@@ -239,6 +248,60 @@ AddImageArticleTarget.prototype.getSummaryData = function () {
 		summaryData.caption = caption;
 	}
 	return summaryData;
+};
+
+/**
+ * Get the save tool group
+ *
+ * @return {OO.ui.ToolGroup}
+ */
+AddImageArticleTarget.prototype.getSaveToolGroup = function () {
+	return this.targetToolbar.getToolGroupByName( 'save' );
+};
+
+/**
+ * Get the edit mode tool group
+ *
+ * @return {OO.ui.ToolGroup}
+ */
+AddImageArticleTarget.prototype.getEditModeToolGroup = function () {
+	return this.targetToolbar.getToolGroupByName( 'suggestionsEditMode' );
+};
+
+/**
+ * Toggle the visibility of the save tool
+ *
+ * @param {boolean} shouldShow Whether the save tool should be shown
+ */
+AddImageArticleTarget.prototype.toggleSaveTool = function ( shouldShow ) {
+	var saveToolGroup = this.getSaveToolGroup();
+	if ( saveToolGroup ) {
+		saveToolGroup.toggle( shouldShow );
+	}
+};
+
+/**
+ * Set the disabled state of the save tool
+ *
+ * @param {boolean} shouldDisable Whether the save tool should be disabled
+ */
+AddImageArticleTarget.prototype.setDisabledSaveTool = function ( shouldDisable ) {
+	var saveToolGroup = this.getSaveToolGroup();
+	if ( saveToolGroup ) {
+		saveToolGroup.setDisabled( shouldDisable );
+	}
+};
+
+/**
+ * Toggle the visibility of the edit mode tool
+ *
+ * @param {boolean} shouldShow Whether the edit mode tool should be shown
+ */
+AddImageArticleTarget.prototype.toggleEditModeTool = function ( shouldShow ) {
+	var editModeToolGroup = this.getEditModeToolGroup();
+	if ( editModeToolGroup ) {
+		editModeToolGroup.toggle( shouldShow );
+	}
 };
 
 module.exports = AddImageArticleTarget;

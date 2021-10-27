@@ -83,7 +83,8 @@ function RecommendedImageToolbarDialog() {
 		framed: false,
 		label: mw.message( 'growthexperiments-addimage-inspector-details-button' ).text(),
 		classes: [ 'mw-ge-recommendedImageToolbarDialog-details-button' ],
-		icon: 'info-filled'
+		icon: 'infoFilled',
+		flags: [ 'progressive' ]
 	} );
 	this.detailsButton.connect( this, { click: [ 'onDetailsButtonClicked' ] } );
 
@@ -96,6 +97,10 @@ function RecommendedImageToolbarDialog() {
 	 * @property {mw.libs.ge.ImageRecommendationImage[]} images
 	 */
 	this.images = suggestedEditSession.taskData.images;
+	/**
+	 * @property {Function} onImageCaptionReady
+	 */
+	this.onImageCaptionReady = this.imageCaptionReadyHandler.bind( this );
 }
 
 OO.inheritClass( RecommendedImageToolbarDialog, StructuredTaskToolbarDialog );
@@ -151,15 +156,23 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 	$( window ).on( 'resize',
 		OO.ui.debounce( this.updateSize.bind( this ), 250 )
 	);
+	mw.hook( 'growthExperiments.imageSuggestions.onImageCaptionReady' ).add(
+		this.onImageCaptionReady
+	);
 };
 
+/**
+ * Insert the image and start caption step
+ */
 RecommendedImageToolbarDialog.prototype.onYesButtonClicked = function () {
-	// TODO: Caption (T290781)
 	ve.init.target.insertImage( this.images[ 0 ] );
 	this.setState( true );
 	this.setUpCaptionStep();
 };
 
+/**
+ * Show the rejection dialog
+ */
 RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 	this.surface.dialogs.openWindow( 'recommendedImageRejection', this.rejectionReasons )
 		.closed.then( function ( data ) {
@@ -335,7 +348,32 @@ RecommendedImageToolbarDialog.prototype.getArticleTarget = function () {
 };
 
 /**
- * Hide the inspector, update surface & toolbar states for caption step
+ * Update the editing surface and toolbar for caption step.
+ * This gets called when the image preview is done loading.
+ */
+RecommendedImageToolbarDialog.prototype.imageCaptionReadyHandler = function () {
+	if ( !this.canShowCaption ) {
+		return;
+	}
+	var articleTarget = this.getArticleTarget(),
+		surface = this.surface;
+	MachineSuggestionsMode.enableVirtualKeyboard( surface, true );
+	surface.setReadOnly( false );
+	// At this point, the rest of the surface (apart from the inserted image nodes, which have
+	// contenteditable explicitly set to true) is not editable due to contenteditable being
+	// false on the document node.
+	articleTarget.toggleInternalRouting( true );
+	articleTarget.updatePlaceholderTitle(
+		mw.message( 'growthexperiments-addimage-caption-title' ).text()
+	);
+	articleTarget.toggleEditModeTool( true );
+	articleTarget.toggleSaveTool( true );
+	// Hide the inspector after it's animated down to prevent it from showing up when adding caption
+	this.$element.addClass( 'oo-ui-element-hidden' );
+};
+
+/**
+ * Set up loading states for the caption step & handler when returning from the step
  */
 RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
 	var articleTarget = this.getArticleTarget(),
@@ -344,30 +382,38 @@ RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
 		$inspector = this.$element,
 		$documentNode = surface.getView().$documentNode;
 
-	MachineSuggestionsMode.enableVirtualKeyboard( surface, true );
-	surface.setReadOnly( false );
-	// At this point, the rest of the surface (apart from the inserted image nodes, which have
-	// contenteditable explicitly set to true) is not editable due to contenteditable being false
-	// on the document node.
 	toolbarDialogButton.toggle( false );
-	articleTarget.updatePlaceholderTitle(
-		mw.message( 'growthexperiments-addimage-caption-title' ).escaped()
-	);
-	articleTarget.toggleInternalRouting( true );
 	$documentNode.off( 'click', this.onDocumentNodeClick );
+	articleTarget.updatePlaceholderTitle(
+		mw.message( 'growthexperiments-addimage-loading-title' ).text(),
+		true
+	);
+	// Loading states haven't been implemented on desktop. This might need to be updated once
+	// we have desktop specs.
+	if ( OO.ui.isMobile() ) {
+		articleTarget.toggleEditModeTool( false );
+		articleTarget.toggleSaveTool( false );
+	}
 	$documentNode.addClass( 'mw-ge-recommendedImageToolbarDialog-caption' );
 	$inspector.addClass( 'animate-below' );
+	this.canShowCaption = true;
 
 	this.showInternalRoute( 'caption', function () {
 		MachineSuggestionsMode.disableVirtualKeyboard( this.surface );
 		surface.setReadOnly( true );
 		toolbarDialogButton.toggle( true );
+		$documentNode.on( 'click', this.onDocumentNodeClick );
 		articleTarget.rollback();
 		articleTarget.restorePlaceholderTitle();
 		articleTarget.toggleInternalRouting( false );
-		$documentNode.on( 'click', this.onDocumentNodeClick );
+		articleTarget.toggleEditModeTool( true );
+		articleTarget.toggleSaveTool( false );
 		$documentNode.removeClass( 'mw-ge-recommendedImageToolbarDialog-caption' );
-		$inspector.removeClass( 'animate-below' );
+		$inspector.removeClass( 'oo-ui-element-hidden' );
+		setTimeout( function () {
+			$inspector.removeClass( 'animate-below' );
+		}, 300 );
+		this.canShowCaption = false;
 	}.bind( this ) );
 };
 

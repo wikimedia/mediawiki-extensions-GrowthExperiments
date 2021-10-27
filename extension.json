@@ -852,6 +852,7 @@
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageToolbarDialog.less",
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageRejectionDialog.less",
 				"ext.growthExperiments.StructuredTask/addimage/RecommendedImageViewer.less",
+				"ext.growthExperiments.StructuredTask/addimage/ceRecommendedImageNode.less",
 				"ext.growthExperiments.StructuredTask/addimage/ceRecommendedImageCaptionNode.less",
 				"ext.growthExperiments.StructuredTask/addimage/AddImageSaveDialog.less"
 			],
@@ -917,6 +918,8 @@
 				"growthexperiments-addimage-skip-dialog-confirm",
 				"growthexperiments-addimage-skip-dialog-cancel",
 				"growthexperiments-addimage-caption-title",
+				"growthexperiments-addimage-loading-title",
+				"growthexperiments-addimage-caption-placeholder",
 				"growthexperiments-structuredtask-user-error",
 				"growthexperiments-structuredtask-user-error-login-cta",
 				"growthexperiments-addimage-summary-label",
@@ -932,6 +935,7 @@
 				"mediawiki.util",
 				"oojs-ui-core",
 				"oojs-ui-windows",
+				"oojs-ui.styles.icons-content",
 				"oojs-ui.styles.icons-editing-core",
 				"oojs-ui.styles.icons-media",
 				"ext.visualEditor.mwlink",
@@ -1445,7 +1449,6 @@
 						"rtl": "../images/difficulty-easy-bw-rtl.svg"
 					}
 				},
-				"info-filled": "../images/info-filled.svg",
 				"info-unpadded": "../images/info-unpadded.svg",
 				"live-broadcast": "../images/live-broadcast.svg",
 				"live-broadcast-anim": "../images/live-broadcast-anim.svg",

@@ -434,6 +434,8 @@
 	"growthexperiments-addimage-skip-dialog-cancel": "Cancel",
 	"growthexperiments-newcomertasks-invalid-tasktype": "$1 is not a valid task type",
 	"growthexperiments-addimage-caption-title": "Add a caption",
+	"growthexperiments-addimage-loading-title": "Loading image preview…",
+	"growthexperiments-addimage-caption-placeholder": "Write a short caption describing how this image is relevant to “$1”",
 	"growthexperiments-structuredtask-user-error": "We could not save {{GENDER:|your}} edit because {{GENDER:|you}} are no longer logged in. Please log in and try again.",
 	"growthexperiments-structuredtask-user-error-login-cta": "Log in",
 	"growthexperiments-structuredtask-anonuser": "User is no longer logged in.",

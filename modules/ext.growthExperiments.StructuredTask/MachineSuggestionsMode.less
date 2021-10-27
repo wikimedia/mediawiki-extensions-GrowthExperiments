@@ -27,6 +27,21 @@
 	.mw-ge-machine-suggestions-mode-title-text {
 		font-weight: bold;
 		color: @wmui-color-base10;
+
+		&--is-loading {
+			font-weight: normal;
+			display: flex;
+			align-items: center;
+
+			&:before {
+				content: '';
+				display: inline-block;
+				background: url( ../../images/spinner.gif ) no-repeat center;
+				width: 20px;
+				height: 20px;
+				margin-right: 8px;
+			}
+		}
 	}
 }
 
