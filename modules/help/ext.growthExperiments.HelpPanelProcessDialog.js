@@ -101,8 +101,8 @@
 	 * @param {Object} config Config object passed to the constructor
 	 */
 	HelpPanelProcessDialog.prototype.configureAskScreen = function ( config ) {
-		var askFromMentor, mentorName, mentorTalkLinkText, $mentorTalkLink,
-			userName = mw.user.getName();
+		var askFromMentor, mentorName, mentorGender, primaryMentorName, primaryMentorGender,
+			mentorTalkLinkText, $mentorTalkLink, userName = mw.user.getName();
 
 		// mentor-homepage, mentor-helppanel or helpdesk
 		this.askSource = config.askSource || ( mw.config.get( 'wgGEHelpPanelAskMentor' ) ? 'mentor-helppanel' : 'helpdesk' );
@@ -115,8 +115,10 @@
 		if ( this.askSource === 'helpdesk' ) {
 			this.panelTitleMessages[ 'ask-help' ] =
 				mw.message( 'growthexperiments-help-panel-questionreview-title' ).text();
-			this.askhelpHeader = mw.message( 'growthexperiments-help-panel-questionreview-header',
-				$( linksConfig.helpDeskLink ), userName ).parse();
+			this.$askhelpHeader = $( '<p>' ).append(
+				mw.message( 'growthexperiments-help-panel-questionreview-header',
+					$( linksConfig.helpDeskLink ), userName ).parse()
+			);
 			this.questionCompleteConfirmationText =
 				mw.message( 'growthexperiments-help-panel-questioncomplete-confirmation-text' ).text();
 			this.viewQuestionText =
@@ -125,9 +127,16 @@
 				'growthexperiments-help-panel-question-post-error', linksConfig.helpDeskLink ).parse();
 		} else {
 			if ( this.askSource === 'mentor-homepage' ) {
-				mentorName = mw.config.get( 'GEHomepageMentorshipMentorName' );
+				mentorName = mw.config.get( 'GEHomepageMentorshipEffectiveMentorName' );
+				mentorGender = mw.config.get( 'GEHomepageMentorshipEffectiveMentorGender' );
+				primaryMentorName = mw.config.get( 'GEHomepageMentorshipMentorName' );
+				primaryMentorGender = mw.config.get( 'GEHomepageMentorshipMentorGender' );
 			} else { // mentor-helppanel
-				mentorName = mw.config.get( 'wgGEHelpPanelMentorData' ).name;
+				var mentorData = mw.config.get( 'wgGEHelpPanelMentorData' );
+				mentorName = mentorData.effectiveName;
+				mentorGender = mentorData.effectiveGender;
+				primaryMentorName = mentorData.name;
+				primaryMentorGender = mentorData.gender;
 			}
 			mentorTalkLinkText = mw.message(
 				'growthexperiments-homepage-mentorship-questionreview-header-mentor-talk-link-text',
@@ -144,8 +153,22 @@
 				mw.message( 'growthexperiments-homepage-mentorship-dialog-title', mentorName, userName ).text();
 			this.panelTitleMessages.questioncomplete =
 				mw.message( 'growthexperiments-help-panel-questioncomplete-title' ).text();
-			this.askhelpHeader = mw.message( 'growthexperiments-homepage-mentorship-questionreview-header',
-				mentorName, userName, $mentorTalkLink ).parse();
+			this.$askhelpHeader = $( '<div>' );
+			if ( mentorName !== primaryMentorName ) {
+				// effective mentor name is not same as primary => mentor must be away
+				this.$askhelpHeader.append(
+					$( '<p>' ).append(
+						$( '<strong>' ).text(
+							mw.message( 'growthexperiments-homepage-mentorship-questionreview-header-away',
+								primaryMentorName, primaryMentorGender, mentorName, mentorGender ).text()
+						)
+					)
+				);
+			}
+			this.$askhelpHeader.append( $( '<p>' ).append(
+				mw.message( 'growthexperiments-homepage-mentorship-questionreview-header',
+					mentorName, userName, $mentorTalkLink ).parse()
+			) );
 			this.questionCompleteConfirmationText = mw.message(
 				'growthexperiments-homepage-mentorship-confirmation-text', mentorName, userName ).text();
 			this.viewQuestionText = mw.message(
@@ -547,7 +570,7 @@
 
 		this.askhelpContent.addItems( [
 			new OO.ui.LabelWidget( {
-				label: $( '<p>' ).append( this.askhelpHeader )
+				label: this.$askhelpHeader
 			} )
 		] );
 

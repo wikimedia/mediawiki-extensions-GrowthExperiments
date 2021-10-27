@@ -147,7 +147,7 @@ class HelpPanelHooks {
 					$wikiConfig->get( 'GEMentorshipEnabled' ) &&
 					$wikiConfig->get( 'GEHelpPanelAskMentor' ) &&
 					$mentorManager->isMentorshipEnabledForUser( $out->getUser() ) &&
-					$mentorManager->getMentorForUserSafe( $out->getUser() ) !== null,
+					$mentorManager->getEffectiveMentorForUserSafe( $out->getUser() ) !== null,
 			] + HelpPanel::getUserEmailConfigVars( $out->getUser() ) );
 
 			if ( !$definitelyShow ) {
@@ -203,13 +203,25 @@ class HelpPanelHooks {
 		if ( !$wikiConfig->get( 'GEHelpPanelAskMentor' ) || !$wikiConfig->get( 'GEMentorshipEnabled' ) ) {
 			return [];
 		}
-		$mentor = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
-			->getMentorManager()->getMentorForUserSafe( $user );
+		$genderCache = MediaWikiServices::getInstance()->getGenderCache();
+		$mentorManager = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() )
+			->getMentorManager();
+		$mentor = $mentorManager->getMentorForUserSafe( $user );
+		$effectiveMentor = $mentorManager->getEffectiveMentorForUserSafe( $user );
 		if ( !$mentor ) {
 			return [];
 		}
 		return [
 			'name' => $mentor->getMentorUser()->getName(),
+			'gender' => $genderCache->getGenderOf(
+				$mentor->getMentorUser(),
+				__METHOD__
+			),
+			'effectiveName' => $effectiveMentor->getMentorUser()->getName(),
+			'effectiveGender' => $genderCache->getGenderOf(
+				$effectiveMentor->getMentorUser(),
+				__METHOD__
+			),
 			'editCount' => MediaWikiServices::getInstance()->getUserEditTracker()
 				->getUserEditCount( $mentor->getMentorUser() ),
 			'lastActive' => Mentorship::getMentorLastActive( $mentor->getMentorUser(), $user, $localizer ),

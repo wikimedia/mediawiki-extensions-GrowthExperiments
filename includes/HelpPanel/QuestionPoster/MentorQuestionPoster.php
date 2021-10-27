@@ -71,7 +71,7 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 	 * @throws WikiConfigException If there's anything wrong with the current user's mentor
 	 */
 	protected function getDirectTargetTitle() {
-		$mentor = $this->mentorManager->getMentorForUser( $this->getContext()->getUser() );
+		$mentor = $this->mentorManager->getEffectiveMentorForUser( $this->getContext()->getUser() );
 		return User::newFromIdentity( $mentor->getMentorUser() )->getTalkPage();
 	}
 
