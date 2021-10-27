@@ -34,33 +34,34 @@ RecommendedImageRejectionDialog.static.actions = [
 		action: 'done'
 	}
 ];
+/**
+ * List of valid reasons for rejecting an image. Keep in sync with
+ * AddImageSubmissionHandler::REJECTION_REASONS.
+ *
+ * @type {string[]}
+ */
+RecommendedImageRejectionDialog.static.rejectionReasons = [
+	'notrelevant', 'noinfo', 'offensive', 'lowquality', 'unfamiliar', 'foreignlanguage', 'other'
+];
 
 /** @inheritDoc **/
 RecommendedImageRejectionDialog.prototype.initialize = function () {
 	RecommendedImageRejectionDialog.super.prototype.initialize.call( this );
 	this.message.$element.addClass( 'oo-ui-inline-help' );
-	var selectOptions = [ {
-		data: 'not-relevant',
-		label: mw.message( 'growthexperiments-addimage-rejectiondialog-reason-notrelevant' ).text()
-	}, {
-		data: 'no-info',
-		label: mw.message( 'growthexperiments-addimage-rejectiondialog-reason-noinfo' ).text()
-	}, {
-		data: 'offensive',
-		label: mw.message( 'growthexperiments-addimage-rejectiondialog-reason-offensive' ).text()
-	}, {
-		data: 'low-quality',
-		label: mw.message( 'growthexperiments-addimage-rejectiondialog-reason-lowquality' ).text()
-	}, {
-		data: 'unfamiliar',
-		label: mw.message( 'growthexperiments-addimage-rejectiondialog-reason-unfamiliar' ).text()
-	}, {
-		data: 'foreign-language',
-		label: mw.message( 'growthexperiments-addimage-rejectiondialog-reason-foreignlanguage' ).text()
-	}, {
-		data: 'other',
-		label: mw.message( 'growthexperiments-addimage-rejectiondialog-reason-other' ).text()
-	} ];
+	var selectOptions = this.constructor.static.rejectionReasons.map( function ( reason ) {
+		return {
+			data: reason,
+			// Messages used:
+			// * growthexperiments-addimage-rejectiondialog-reason-notrelevant
+			// * growthexperiments-addimage-rejectiondialog-reason-noinfo
+			// * growthexperiments-addimage-rejectiondialog-reason-offensive
+			// * growthexperiments-addimage-rejectiondialog-reason-lowquality
+			// * growthexperiments-addimage-rejectiondialog-reason-unfamiliar
+			// * growthexperiments-addimage-rejectiondialog-reason-foreignlanguage
+			// * growthexperiments-addimage-rejectiondialog-reason-other
+			label: mw.message( 'growthexperiments-addimage-rejectiondialog-reason-' + reason ).text()
+		};
+	} );
 	this.reasonSelect = new RejectionReasonSelect( {
 		options: selectOptions,
 		isMultiSelect: true
@@ -84,8 +85,8 @@ RecommendedImageRejectionDialog.prototype.getActionProcess = function ( action )
 	}
 
 	return new OO.ui.Process( function () {
-		var selectedItems = this.reasonSelect.findSelection();
-		this.close( { action: action, reason: selectedItems } );
+		var selectedItems = ( action === 'cancel' ) ? [] : this.reasonSelect.findSelection();
+		this.close( { action: action, reasons: selectedItems } );
 	}, this );
 };
 
