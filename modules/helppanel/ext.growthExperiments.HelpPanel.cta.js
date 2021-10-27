@@ -1,5 +1,6 @@
 ( function () {
 	var Help = require( 'ext.growthExperiments.Help' ),
+		HelpPanelButton = require( '../ui-components/HelpPanelButton.js' ),
 		Utils = require( '../utils/ext.growthExperiments.Utils.js' ),
 		TaskTypesAbFilter = require( '../homepage/suggestededits/TaskTypesAbFilter.js' ),
 		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),
@@ -152,28 +153,18 @@
 		windowManager.addWindows( [ helpPanelProcessDialog ] );
 
 		if ( $buttonToInfuse.length ) {
-			helpCtaButton = OO.ui.ButtonWidget.static.infuse( $buttonToInfuse );
+			helpCtaButton = mw.libs.ge.HelpPanelButton.static.infuse( $buttonToInfuse );
 			// The button is already on the page, but it won't be visible until we add the -ready
 			// class to $buttonWrapper. While it's not yet visible, relocate it into the overlay.
 			$overlay.append( $buttonWrapper );
 		} else {
-			helpCtaButton = new OO.ui.ButtonWidget( {
-				id: 'mw-ge-help-panel-cta-button',
-				href: mw.util.getUrl( configData.GEHelpPanelHelpDeskTitle ),
+			helpCtaButton = new HelpPanelButton( {
 				label: mw.msg( 'growthexperiments-help-panel-cta-button-text' ),
-				invisibleLabel: true,
-				flags: [ 'primary', 'progressive' ],
-				// Only one of these two is visible at a time, with a transition between them
-				// See ext.growthExperiments.HelpPanelCta.less
-				icon: 'help',
-				indicator: 'up'
+				href: mw.util.getUrl( configData.GEHelpPanelHelpDeskTitle )
 			} );
 			$buttonWrapper = $( '<div>' )
 				.addClass( 'mw-ge-help-panel-cta' )
 				.append( helpCtaButton.$element );
-			if ( OO.ui.isMobile() ) {
-				$buttonWrapper.addClass( 'mw-ge-help-panel-cta-mobile' );
-			}
 		}
 		// Make the button visible (with slide up animation) if it's already on the page
 		$buttonWrapper.addClass( 'mw-ge-help-panel-ready' );
@@ -208,6 +199,7 @@
 					helpPanelShouldOpen: true
 				} );
 				helpPanelProcessDialog.updateEditMode();
+				helpCtaButton.setOpen( true );
 			} );
 			lifecycle.closing.done( function () {
 				if ( OO.ui.isMobile() ) {
@@ -219,6 +211,7 @@
 				}
 				$buttonWrapper.removeClass( 'mw-ge-help-panel-opened' );
 				helpPanelProcessDialog.setGuidanceAutoAdvance( false );
+				helpCtaButton.setOpen( false );
 			} );
 			return lifecycle;
 		}

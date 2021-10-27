@@ -12,7 +12,6 @@ use MessageLocalizer;
 use OutputPage;
 use RequestContext;
 use ResourceLoaderContext;
-use Skin;
 use User;
 
 class HelpPanelHooks {
@@ -103,10 +102,9 @@ class HelpPanelHooks {
 
 	/**
 	 * @param OutputPage $out
-	 * @param Skin $skin
 	 * @throws \ConfigException
 	 */
-	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
+	public static function onBeforePageDisplay( OutputPage $out ) {
 		$geServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		$wikiConfig = $geServices->getGrowthWikiConfig();
 
@@ -119,7 +117,7 @@ class HelpPanelHooks {
 			$out->addModuleStyles( 'ext.growthExperiments.icons' );
 			$out->addModules( 'ext.growthExperiments.HelpPanel' );
 
-			$out->addHTML( HelpPanel::getHelpPanelCtaButton( Util::isMobile( $skin ) ) );
+			$out->addHTML( HelpPanel::getHelpPanelCtaButton() );
 		}
 
 		if ( SuggestedEdits::isGuidanceEnabled( $out->getContext() ) ) {
