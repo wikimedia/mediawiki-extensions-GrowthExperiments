@@ -76,5 +76,9 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Next step in quitting mentorship is to reassign your mentees. If you are sure you want to quit, please press the button below.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Yes, reassign my mentees",
 	"growthexperiments-quit-mentorship-success": "Your mentees will be reassigned to other mentors shortly.",
-	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|retired}} from mentorship."
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|retired}} from mentorship.",
+	"echo-category-title-ge-mentorship": "Mentorship",
+	"echo-pref-tooltip-ge-mentorship": "Notifications related to mentorship features maintained by the Growth team. This notification lets you know that you were claimed as a mentee, or that one of your mentees was claimed by someone else.",
+	"growthexperiments-notification-header-mentee-claimed": "Your {{GENDER:$3|mentee}}, $3, was {{GENDER:$2|claimed}} by $1.",
+	"growthexperiments-notification-body-mentee-claimed": "Reason: $1"
 }

@@ -81,6 +81,10 @@ class MentorHooks implements GetPreferencesHook, UserGetDefaultOptionsHook, Loca
 	public static function onBeforeCreateEchoEvent(
 		&$notifications, &$notificationCategories, &$icons
 	) {
+		$notificationCategories['ge-mentorship'] = [
+			'tooltip' => 'echo-pref-tooltip-ge-mentorship',
+		];
+
 		$notifications['mentor-changed'] = [
 			'category' => 'system',
 			'group' => 'positive',
@@ -93,6 +97,19 @@ class MentorHooks implements GetPreferencesHook, UserGetDefaultOptionsHook, Loca
 				],
 			],
 		];
+		$notifications['mentee-claimed'] = [
+			'category' => 'ge-mentorship',
+			'group' => 'positive',
+			'section' => 'message',
+			'presentation-model' => EchoMenteeClaimPresentationModel::class,
+			EchoAttributeManager::ATTR_LOCATORS => [
+				[
+					EchoUserLocator::class . '::locateFromEventExtra',
+					[ 'mentor' ]
+				]
+			]
+		];
+
 		$icons['growthexperiments-mentor'] = [
 			'path' => [
 				'ltr' => 'GrowthExperiments/images/mentor-ltr.svg',
