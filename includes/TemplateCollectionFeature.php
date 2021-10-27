@@ -11,7 +11,9 @@ use CirrusSearch\Search\Filters;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\WarningCollector;
 use Elastica\Query\AbstractQuery;
+use MediaWiki\Linker\LinkTarget;
 use TitleFactory;
+use TitleValue;
 use Wikimedia\Assert\Assert;
 
 /**
@@ -36,7 +38,7 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 
 	/**
 	 * @param string $collectionName
-	 * @param string[] $templates
+	 * @param string[]|LinkTarget[] $templates
 	 * @param TitleFactory $titleFactory
 	 */
 	public function __construct( string $collectionName, array $templates, TitleFactory $titleFactory ) {
@@ -49,6 +51,14 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 		$this->titleFactory = $titleFactory;
 	}
 
+	/**
+	 * @param string $collectionName
+	 * @param array $templates
+	 */
+	public function addCollection( string $collectionName, array $templates ): void {
+		$this->templates[$collectionName] = $templates;
+	}
+
 	/** @inheritDoc */
 	public function parseValue(
 		$key, $value, $quotedValue, $valueDelimiter, $suffix, WarningCollector $warningCollector
@@ -59,7 +69,11 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 		}
 		$templates = [];
 		foreach ( $this->templates[$value] as $template ) {
-			$title = $this->titleFactory->newFromText( $template, NS_TEMPLATE );
+			if ( $template instanceof TitleValue ) {
+				$title = $this->titleFactory->newFromLinkTarget( $template );
+			} else {
+				$title = $this->titleFactory->newFromText( $template, NS_TEMPLATE );
+			}
 			$templates[] = $title->getPrefixedText();
 		}
 		return [ 'templates' => $templates, 'case_sensitive' => true ];
