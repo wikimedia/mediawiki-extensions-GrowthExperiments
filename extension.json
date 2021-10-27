@@ -157,6 +157,9 @@
 			"class": "GrowthExperiments\\WelcomeSurveyHooks",
 			"services": [ "MainConfig", "GrowthExperimentsWelcomeSurveyFactory" ]
 		},
+		"helppanel": {
+			"class": "GrowthExperiments\\HelpPanelHooks"
+		},
 		"homepage": {
 			"class": "GrowthExperiments\\HomepageHooks",
 			"services": [
@@ -254,21 +257,21 @@
 			"variant"
 		],
 		"UserGetDefaultOptions": [
-			"GrowthExperiments\\HelpPanelHooks::onUserGetDefaultOptions",
+			"helppanel",
 			"homepage",
 			"tour",
 			"mentordashboard",
 			"mentor"
 		],
 		"LocalUserCreated": [
-			"GrowthExperiments\\HelpPanelHooks::onLocalUserCreated",
+			"helppanel",
 			"homepage",
 			"mentor",
 			"variant"
 		],
 		"GetPreferences": [
 			"welcomeSurvey",
-			"GrowthExperiments\\HelpPanelHooks::onGetPreferences",
+			"helppanel",
 			"homepage",
 			"tour",
 			"mentor",
@@ -283,7 +286,7 @@
 		"SpecialContributionsBeforeMainOutput": "homepage",
 		"SpecialPageAfterExecute": "homepage",
 		"BeforePageDisplay": [
-			"GrowthExperiments\\HelpPanelHooks::onBeforePageDisplay",
+			"helppanel",
 			"homepage",
 			"tour",
 			"mentordashboarddiscovery"
@@ -293,11 +296,11 @@
 			"GrowthExperiments\\HomepageHooks::onSkinMinervaOptionsInit"
 		],
 		"ListDefinedTags": [
-			"GrowthExperiments\\HelpPanelHooks::onListDefinedTags",
+			"helppanel",
 			"homepage"
 		],
 		"ChangeTagsListActive": [
-			"GrowthExperiments\\HelpPanelHooks::onListDefinedTags",
+			"helppanel",
 			"homepage"
 		],
 		"RecentChange_save": "homepage",

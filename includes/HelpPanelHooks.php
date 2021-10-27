@@ -7,15 +7,26 @@ use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use MediaWiki\Auth\Hook\LocalUserCreatedHook;
+use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
+use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
+use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\User\Hook\UserGetDefaultOptionsHook;
 use MessageLocalizer;
-use OutputPage;
 use RequestContext;
 use ResourceLoaderContext;
-use Skin;
 use User;
 
-class HelpPanelHooks {
+class HelpPanelHooks implements
+	GetPreferencesHook,
+	UserGetDefaultOptionsHook,
+	LocalUserCreatedHook,
+	BeforePageDisplayHook,
+	ListDefinedTagsHook,
+	ChangeTagsListActiveHook
+{
 	use GrowthConfigLoaderStaticTrait;
 
 	public const HELP_PANEL_PREFERENCES_TOGGLE = 'growthexperiments-help-panel-tog-help-panel';
@@ -26,7 +37,7 @@ class HelpPanelHooks {
 	 * @param User $user
 	 * @param array &$preferences Preferences object
 	 */
-	public static function onGetPreferences( $user, &$preferences ) {
+	public function onGetPreferences( $user, &$preferences ) {
 		if ( HelpPanel::isHelpPanelEnabled() ) {
 			$preferences[self::HELP_PANEL_PREFERENCES_TOGGLE] = [
 				'type' => 'toggle',
@@ -54,7 +65,7 @@ class HelpPanelHooks {
 	 *
 	 * @param array &$defaultOptions
 	 */
-	public static function onUserGetDefaultOptions( &$defaultOptions ) {
+	public function onUserGetDefaultOptions( &$defaultOptions ) {
 		if ( HelpPanel::isHelpPanelEnabled() ) {
 			$defaultOptions += [
 				self::HELP_PANEL_PREFERENCES_TOGGLE => false
@@ -62,14 +73,8 @@ class HelpPanelHooks {
 		}
 	}
 
-	/**
-	 * LocalUserCreated hook handler.
-	 *
-	 * @param User $user
-	 * @param bool $autocreated
-	 * @throws \ConfigException
-	 */
-	public static function onLocalUserCreated( User $user, $autocreated ) {
+	/** @inheritDoc */
+	public function onLocalUserCreated( $user, $autocreated ) {
 		if ( !HelpPanel::isHelpPanelEnabled() ) {
 			return;
 		}
@@ -101,12 +106,8 @@ class HelpPanelHooks {
 		}
 	}
 
-	/**
-	 * @param OutputPage $out
-	 * @param Skin $skin
-	 * @throws \ConfigException
-	 */
-	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
+	/** @inheritDoc */
+	public function onBeforePageDisplay( $out, $skin ): void {
 		$geServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		$wikiConfig = $geServices->getGrowthWikiConfig();
 
@@ -140,7 +141,7 @@ class HelpPanelHooks {
 				// We know the help panel is enabled, otherwise we wouldn't get here
 				'wgGEHelpPanelEnabled' => true,
 				'wgGEHelpPanelMentorData'
-					=> self::getMentorData( $wikiConfig, $out->getUser(), $out->getContext() ),
+					=> $this->getMentorData( $wikiConfig, $out->getUser(), $out->getContext() ),
 				// wgGEHelpPanelAskMentor needs to be here and not in getModuleData,
 				// because getting current user is not possible within ResourceLoader context
 				'wgGEHelpPanelAskMentor' =>
@@ -181,25 +182,31 @@ class HelpPanelHooks {
 		];
 	}
 
-	/**
-	 * ListDefinedTags and ChangeTagsListActive hook handler
-	 *
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ListDefinedTags
-	 * @see https://www.mediawiki.org/wiki/Manual:Hooks/ChangeTagsListActive
-	 *
-	 * @param array &$tags The list of tags. Add your extension's tags to this array.
-	 */
-	public static function onListDefinedTags( &$tags ) {
+	/** @inheritDoc */
+	public function onListDefinedTags( &$tags ) {
 		if ( HelpPanel::isHelpPanelEnabled() ) {
 			$tags[] = HelpPanel::HELPDESK_QUESTION_TAG;
 		}
 	}
 
-	private static function getMentorData(
+	/** @inheritDoc */
+	public function onChangeTagsListActive( &$tags ) {
+		if ( HelpPanel::isHelpPanelEnabled() ) {
+			$tags[] = HelpPanel::HELPDESK_QUESTION_TAG;
+		}
+	}
+
+	/**
+	 * @param Config $wikiConfig
+	 * @param User $user
+	 * @param MessageLocalizer $localizer
+	 * @return array
+	 */
+	private function getMentorData(
 		Config $wikiConfig,
 		User $user,
 		MessageLocalizer $localizer
-	) {
+	): array {
 		if ( !$wikiConfig->get( 'GEHelpPanelAskMentor' ) || !$wikiConfig->get( 'GEMentorshipEnabled' ) ) {
 			return [];
 		}
