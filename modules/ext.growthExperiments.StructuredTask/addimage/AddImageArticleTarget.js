@@ -1,4 +1,5 @@
-var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
+var StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEdit' ),
+	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance();
 
 /**
  * @typedef mw.libs.ge.ImageRecommendationImage
@@ -64,7 +65,15 @@ AddImageArticleTarget.prototype.afterSurfaceReady = function () {
 	this.targetToolbar = OO.ui.isMobile() ? this.getToolbar() : this.getActions();
 	// Save button will be shown during caption step
 	this.toggleSaveTool( false );
-	this.getSurface().executeCommand( 'recommendedImage' );
+
+	if ( this.isValidTask() ) {
+		this.getSurface().executeCommand( 'recommendedImage' );
+	} else {
+		// Ideally, this error would happen sooner so the user doesn't have to wait for VE
+		// to load. There isn't really a way to differentiate between images in the article
+		// and transcluded images without loading VE and loading the parsoid HTML, though.
+		StructuredTaskPreEdit.showErrorDialogOnFailure();
+	}
 };
 
 /** @inheritDoc **/
@@ -75,6 +84,22 @@ AddImageArticleTarget.prototype.hasEdits = function () {
 /** @inheritDoc **/
 AddImageArticleTarget.prototype.hasReviewedSuggestions = function () {
 	return this.recommendationAccepted === true || this.recommendationAccepted === false;
+};
+
+/**
+ * Check if the current article is a valid Add Image task (does not have any image yet).
+ * @return {boolean}
+ */
+AddImageArticleTarget.prototype.isValidTask = function () {
+	var surfaceModel = this.getSurface().getModel();
+
+	if ( surfaceModel.getDocument().getNodesByType( 'mwBlockImage' ).length ||
+		surfaceModel.getDocument().getNodesByType( 'mwInlineImage' ).length
+	) {
+		return false;
+	}
+	// TODO check for images in infoboxes, once we support articles with infoboxes.
+	return true;
 };
 
 /**
