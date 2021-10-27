@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aced",
 			"DDPAT",
 			"Movses",
 			"Piramidion",
@@ -22,7 +23,7 @@
 	"welcomesurvey-sidebar-editing-text": "Майже будь-яку сторінку може редагувати кожен, і щогодини здійснюються зміни з метою додавання вмісту, виправлення помилок та покращення загальної читабельності. Подані сторінки можуть Вам допомогти, якщо {{GENDER:$1|Ви зацікавлені}} в тому, щоб зробити свій внесок.",
 	"welcomesurvey-sidebar-editing-link1-text": "Посібник",
 	"welcomesurvey-sidebar-editing-link1-title": "Вікіпедія:Ознайомлення",
-	"welcomesurvey-sidebar-editing-link2-text": "Служба підтримки",
+	"welcomesurvey-sidebar-editing-link2-text": "Поставити запитання",
 	"welcomesurvey-sidebar-editing-link2-title": "Вікіпедія:Кнайпа (допомога)",
 	"welcomesurvey-question-reason-label": "Чому Ви створили свій обліковий запис сьогодні?",
 	"welcomesurvey-dropdown-option-select-label": "Будь ласка, виберіть…",

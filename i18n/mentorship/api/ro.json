@@ -11,5 +11,6 @@
 	"apihelp-growthsetmentorstatus-summary": "Setează starea curentă de mentor a utilizatorului ca activă/indisponibilă",
 	"apihelp-growthsetmentorstatus-param-gesstatus": "Stare nouă",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "Când se setează mentorul ca indisponibil(ă), trebuie să aibă lungimea stării de indisponibilitate (în zile)",
-	"apihelp-query+growthmentorstatus-summary": "Interoghează starea curentă de mentor a utilizatorului"
+	"apihelp-query+growthmentorstatus-summary": "Interoghează starea curentă de mentor a utilizatorului",
+	"apihelp-growthmentordashboardupdatedata-summary": "Programați o actualizare extraordinară a modulului de prezentare generală a ucenicilor pe pagina mentorului. Puteți programa numai o actualizare odată la două ore din motive de performanță."
 }

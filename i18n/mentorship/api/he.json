@@ -11,5 +11,6 @@
 	"apihelp-growthsetmentorstatus-summary": "להגדיר את המצב של החונך של המשתמש בתור פעיל או לא בסביבה",
 	"apihelp-growthsetmentorstatus-param-gesstatus": "מצב חדש",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "בעת הגדרת חונך בתור לא בסביבה, זה חייב להיות אורך המצב הזה (בימים)",
-	"apihelp-query+growthmentorstatus-summary": "שאילתת מצב החונכות של המשתמש הנוכחי"
+	"apihelp-query+growthmentorstatus-summary": "שאילתת מצב החונכות של המשתמש הנוכחי",
+	"apihelp-growthmentordashboardupdatedata-summary": "לתזמן עדכון מיוחד של מודול סקירת החניכים בלוח הבקרה של החונכים. אפשר לתזמן רק עדכון אחד לשעתיים מסיבות של ביצועים."
 }

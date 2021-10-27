@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Aced",
 			"DDPAT",
 			"Vlad5250",
 			"Ата"
@@ -37,7 +38,7 @@
 	"growthexperiments-edit-config-help-panel-searched-namespaces": "Простори назв для включення у вільний текстовий пошук довідкової панелі за допомогою",
 	"growthexperiments-edit-config-help-panel-ask-mentor": "Куди слід направити запитання з довідкової панелі?",
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Сторінки розмов наставників",
-	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Довідкова служба",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Поставити запитання",
 	"growthexperiments-edit-config-help-panel-links": "Посилання довідкової панелі",
 	"growthexperiments-edit-config-help-panel-links-description": "На панелі довідки відображається п’ять посилань та одне посилання «переглянути більше». Вони можуть бути налаштовані як будь-які посилання у вікі, але рекомендації наведені нижче.",
 	"growthexperiments-edit-config-help-panel-links-mos-title": "1) Назва сторінки для першого посилання на довідковій панелі (рекомендація: довідник стилю)",

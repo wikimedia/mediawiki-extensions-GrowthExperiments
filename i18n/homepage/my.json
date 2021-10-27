@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Dr Lotus Black"
+			"Dr Lotus Black",
+			"Ninjastrikers"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|မင်္ဂလာပါ}}၊ {{bidi:$1}}။",
@@ -89,7 +90,7 @@
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|တည်းဖြတ်မှု|တည်းဖြတ်မှုများ}}",
 	"growthexperiments-homepage-mentorship-mentor-active-today": "ဤနေ့ {{GENDER:$1|ရှိခဲ့သည်}}",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "မနေ့က {{GENDER:$1|ရှိခဲ့သည်}}",
-	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "$2 {{PLURAL:$2|ရက်|ရက်}} အကြာက {{GENDER:$1|ရှိခဲ့သည်}}",
+	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "$2 {{PLURAL:$2|ရက်}} အကြာက {{GENDER:$1|ရှိခဲ့သည်}}",
 	"growthexperiments-specialimpact-title": "သက်ရောက်မှု",
 	"growthexperiments-specialimpact-showing-for-other-user": "$1အတွက် သက်ရောက်မှုဒေတာအား ပြသနေသည်",
 	"growthexperiments-homepage-enable-preference": "အသစ်ရောက်လာသူဗဟိုစာမျက်နှာကိုခွင့်ပြုရန် [[Special:Preferences#mw-prefsection-personal-homepage|ရွေးချယ်စရာများ]]ရှိ သင်၏ ''အသစ်ရောက်လာသူ ဗဟိုစာမျက်နှာ'' အပြင်အဆင်များတွင် အလည်သွားပါ။",
@@ -274,11 +275,11 @@
 	"growthexperiments-addimage-inspector-cta": "ဤပုံကို ဆောင်းပါး၏အစတွင် ထည့်မှာလား",
 	"growthexperiments-addimage-inspector-yes-button": "လုပ်မည်",
 	"growthexperiments-addimage-inspector-no-button": "မလုပ်ပါ",
-	"growthexperiments-addimage-inspector-skip-button": "ကျော်ရန်",
+	"growthexperiments-addimage-inspector-skip-button": "{{GENDER:|မရေရာပါ}}",
 	"growthexperiments-addimage-inspector-show-button": "ပုံအကြံပြုချက်ကိုပြရန်",
 	"growthexperiments-addimage-inspector-help-button": "တည်းဖြတ်ခြင်းနှင့်ပတ်သက်၍ အကူညီရယူမည်",
-	"growthexperiments-addimage-inspector-details-button": "အသေးစိတ် ပြရန်",
-	"growthexperiments-addimage-rejectiondialog-action-done": "ပြီးပြီ",
+	"growthexperiments-addimage-inspector-details-button": "ပုံအသေးစိတ်များ ကြည့်ရန်",
+	"growthexperiments-addimage-rejectiondialog-action-done": "ထည့်သွင်းရန်",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "အခြား",
 	"growthexperiments-addimage-viewer-close-button": "ပိတ်ရန်"
 }
