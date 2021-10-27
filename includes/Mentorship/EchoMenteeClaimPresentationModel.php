@@ -39,4 +39,18 @@ class EchoMenteeClaimPresentationModel extends \EchoEventPresentationModel {
 			'label' => $this->event->getTitle()->getText(),
 		];
 	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getSecondaryLinks() {
+		return [
+			[
+				'url' => 'https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Growth/Tools/How_to_claim_a_mentee',
+				'label' => $this->msg(
+					'growthexperiments-notification-secondary-link-label-mentee-claimed'
+				)->text()
+			]
+		];
+	}
 }
