@@ -21,7 +21,6 @@ function AddImageSaveDialog() {
 		active_interface: 'editsummary_dialog'
 		/* eslint-enable camelcase */
 	} );
-	mw.config.set( 'wgEditSubmitButtonLabelPublish', true );
 }
 
 OO.initClass( AddImageSaveDialog );
