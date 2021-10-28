@@ -89,8 +89,8 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 	) {
 		// Terrible hack to get around CirrusSearch not being installed in CI
 		if ( !class_exists( WeightedTagsHooks::class ) ) {
-			require_once __DIR__ . '/../../../.phan/stubs/WeightedTagsHooks.php';
-			require_once __DIR__ . '/../../../.phan/stubs/CirrusIndexField.php';
+			require_once __DIR__ . '/../../../tests/phpunit/helpers/WeightedTagsHooks.php';
+			require_once __DIR__ . '/../../../tests/phpunit/helpers/CirrusIndexField.php';
 		}
 
 		// hack - phpunit refuses to proxy calls if the constructor is disabled, and the constructor
