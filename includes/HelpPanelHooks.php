@@ -12,6 +12,7 @@ use MessageLocalizer;
 use OutputPage;
 use RequestContext;
 use ResourceLoaderContext;
+use Skin;
 use User;
 
 class HelpPanelHooks {
@@ -102,9 +103,10 @@ class HelpPanelHooks {
 
 	/**
 	 * @param OutputPage $out
+	 * @param Skin $skin
 	 * @throws \ConfigException
 	 */
-	public static function onBeforePageDisplay( OutputPage $out ) {
+	public static function onBeforePageDisplay( OutputPage $out, Skin $skin ) {
 		$geServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 		$wikiConfig = $geServices->getGrowthWikiConfig();
 
