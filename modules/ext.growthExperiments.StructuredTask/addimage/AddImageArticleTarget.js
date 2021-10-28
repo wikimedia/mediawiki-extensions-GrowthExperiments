@@ -68,6 +68,10 @@ AddImageArticleTarget.prototype.afterSurfaceReady = function () {
 		// Save button will be shown during caption step
 		this.toggleSaveTool( false );
 		this.getSurface().executeCommand( 'recommendedImage' );
+		// On desktop, onboarding is shown after the editor loads.
+		if ( !OO.ui.isMobile() ) {
+			mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).fire();
+		}
 	} else {
 		// Ideally, this error would happen sooner so the user doesn't have to wait for VE
 		// to load. There isn't really a way to differentiate between images in the article
