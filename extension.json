@@ -335,7 +335,8 @@
 		"ResourceLoaderGetConfigVars": "variant",
 		"VisualEditorApiVisualEditorEditPreSave": "visualeditor",
 		"VisualEditorApiVisualEditorEditPostSave": "visualeditor",
-		"ChangesListSpecialPageStructuredFilters": "mentorfilters"
+		"ChangesListSpecialPageStructuredFilters": "mentorfilters",
+		"CirrusSearchAddQueryFeatures": "GrowthExperiments\\HomepageHooks::onCirrusSearchAddQueryFeatures"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",

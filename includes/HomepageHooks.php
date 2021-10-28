@@ -4,6 +4,7 @@
 namespace GrowthExperiments;
 
 use CirrusSearch\Search\CirrusIndexField;
+use CirrusSearch\SearchConfig;
 use CirrusSearch\Wikimedia\WeightedTagsHooks;
 use Config;
 use ConfigException;
@@ -1263,6 +1264,19 @@ class HomepageHooks implements
 		$this->userOptionsManager->setOption(
 			$user,
 			self::VE_PREF_EDITOR, 'visualeditor'
+		);
+	}
+
+	/**
+	 * @param SearchConfig $config
+	 * @param array &$extraFeatures Array holding KeywordFeature objects
+	 */
+	public static function onCirrusSearchAddQueryFeatures( SearchConfig $config, array &$extraFeatures ) {
+		$mwServices = MediaWikiServices::getInstance();
+		$growthServices = GrowthExperimentsServices::wrap( $mwServices );
+		$infoboxTemplates = $growthServices->getGrowthWikiConfig()->get( 'GEInfoboxTemplates' );
+		$extraFeatures[] = new TemplateCollectionFeature(
+			'infobox', $infoboxTemplates, $mwServices->getTitleFactory()
 		);
 	}
 
