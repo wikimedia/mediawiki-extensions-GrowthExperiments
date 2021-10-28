@@ -19,5 +19,6 @@
 	"growthexperiments-addimage-rejectiondialog-reason-other": "अन्य",
 	"growthexperiments-addimage-viewer-close-button": "बंद करें",
 	"growthexperiments-addimage-skip-dialog-cancel": "रद्द करें",
-	"growthexperiments-structuredtask-user-error-login-cta": "लॉग इन"
+	"growthexperiments-structuredtask-user-error-login-cta": "लॉग इन",
+	"growthexperiments-addimage-summary-label": "सारांश"
 }

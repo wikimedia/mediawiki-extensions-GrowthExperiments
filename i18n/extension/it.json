@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
+			"Fringio",
 			"Ruthven",
 			"Sannita",
 			"ValeJappo"
@@ -77,5 +78,7 @@
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Pagina di destinazione per saperne di più sulle tipologie di attività sulle immagini consigliate.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Questo tipo di attività prevede suggerimenti automatici e non usa template per generare le attività.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Le voci contenenti i template qui definiti non saranno mostrate agli utenti per questo tipo di attività.",
-	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Le voci contenenti le categorie qui definite non saranno mostrate agli utenti per questo tipo di attività."
+	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Le voci contenenti le categorie qui definite non saranno mostrate agli utenti per questo tipo di attività.",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Template sinottici",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Questi template sono utilizzati per il [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|suggerimento delle immagini]] ai nuovi utenti. Le pagine contenenti questi template non saranno indicate come elementi che necessitano di immagini."
 }

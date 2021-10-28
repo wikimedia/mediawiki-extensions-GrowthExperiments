@@ -9,6 +9,7 @@
 	"apihelp-query+growthtasks-param-tasktypes": "Uzdevumu veidi, ar ko ierobežot rezultātus. Atstāj tukšu, lai saņemtu visus ieteikumus.",
 	"apihelp-query+growthtasks-param-topics": "Rakstu tēmas, kam dot priekšroku uzdevumu ieteikumos.",
 	"apihelp-query+growthtasks-param-limit": "Maksimālais atgriežamo uzdevumu skaits.",
+	"apihelp-query+growthtasks-param-excludepageids": "Lapu ID, ko izslēgt no vaicājuma.",
 	"apihelp-query+growthtasks-param-debug": "Pievienot izvadam atkļūdošanas informāciju.",
 	"apihelp-query+growthtasks-example-1": "Iegūt teksta uzlabošanas uzdevumu ieteikumus pašreizējam dalībniekam.",
 	"apihelp-query+growthtasks-example-2": "Iegūt uzdevumu ieteikumus pašreizējam dalībniekam ar paplašinātu informāciju par lapām."

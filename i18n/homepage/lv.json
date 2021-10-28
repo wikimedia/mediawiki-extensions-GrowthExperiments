@@ -385,10 +385,15 @@
 	"growthexperiments-addimage-inspector-skip-button": "Izlaist",
 	"growthexperiments-addimage-inspector-show-button": "Rādīt attēla ieteikumu",
 	"growthexperiments-addimage-inspector-help-button": "Saņem palīdzību labošanā",
+	"growthexperiments-addimage-rejectiondialog-header": "Kāpēc šis attēls nederēja rakstam?",
+	"growthexperiments-addimage-rejectiondialog-subheader": "{{GENDER:|Tavas}} atbildes uzlabos nākotnes ieteikumus.",
+	"growthexperiments-addimage-rejectiondialog-action-done": "Iesniegt",
+	"growthexperiments-addimage-rejectiondialog-action-cancel": "Atcelt",
 	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Attēls nav atbilstošs",
 	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Attēls ir aizvainojošs",
 	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Attēls ir zemas kvalitātes",
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Es nepārzinu šo tēmu",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Cits",
-	"growthexperiments-addimage-viewer-close-button": "Aizvērt"
+	"growthexperiments-addimage-viewer-close-button": "Aizvērt",
+	"growthexperiments-addimage-skip-dialog-confirm": "Izlaist ieteikumu"
 }

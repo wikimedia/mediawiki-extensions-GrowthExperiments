@@ -37,5 +37,18 @@
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Paginas de discussion de mentores",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Servicio de adjuta",
 	"growthexperiments-edit-config-help-panel-links": "Ligamines del pannello de adjuta",
-	"growthexperiments-edit-config-help-panel-links-description": "Le pannello de adjuta monstra cinque ligamines e un ligamine \"vider plus\". Istes pote esser configurate pro esser qualcunque ligamines in le wiki, ma hic infra se trova alcun recommendationes."
+	"growthexperiments-edit-config-help-panel-links-description": "Le pannello de adjuta monstra cinque ligamines e un ligamine \"vider plus\". Istes pote esser configurate pro esser qualcunque ligamines in le wiki, ma hic infra se trova alcun recommendationes.",
+	"growthexperiments-edit-config-help-panel-links-mos-title": "1) Pagina de destination pro le prime ligamine del pannello de adjuta (recommendate: manual de stilo)",
+	"growthexperiments-edit-config-help-panel-links-mos-label": "1) Etiquetta del prime pannello de adjuta (recommendate: \"Manual de stilo\")",
+	"growthexperiments-edit-config-help-panel-links-editing-title": "2) Pagina de destination pro le secunde ligamine del pannello de adjuta (recommendate: guida del editor visual)",
+	"growthexperiments-edit-config-help-panel-links-editing-label": "2) Etiquetta del secunde ligamine del pannello de adjuta (recommendate: \"Como modificar\")",
+	"growthexperiments-edit-config-help-panel-links-images-title": "3) Pagina de destination pro le tertie ligamine del pannello de adjuta (recommendate: inserer imagines con editor visual)",
+	"growthexperiments-edit-config-help-panel-links-images-label": "3) Etiquetta del tertie ligamine del pannello de adjuta (recommendate: \"Como inserer imagines\")",
+	"growthexperiments-edit-config-help-panel-links-references-title": "4) Pagina de destination pro le quarte ligamine del pannello de adjuta (recommendate: inserer referentias con editor visual)",
+	"growthexperiments-edit-config-help-panel-links-references-label": "4) Etiquetta del quarte ligamine del pannello de adjuta (recommendate: \"Como adder un referentia\")",
+	"growthexperiments-edit-config-help-panel-links-articlewizard-title": "5) Pagina de destination pro le quinte ligamine del pannello de adjuta (recommendate: assistente de articulos)",
+	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "5) Etiquetta del quinte ligamine del pannello de adjuta (recommendate: \"Como crear un articulo\")",
+	"growthexperiments-edit-config-homepage": "Pagina de initio pro novicios",
+	"growthexperiments-edit-config-homepage-intro-links-create": "Pagina de destination pro un ligamine sur como crear un nove articulo",
+	"growthexperiments-edit-config-homepage-intro-links-image": "Pagina de destination pro un ligamine sur como adder imagines in le editor visual"
 }

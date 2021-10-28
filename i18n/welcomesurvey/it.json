@@ -10,7 +10,7 @@
 			"ValeJappo"
 		]
 	},
-	"welcomesurvey": "{{GENDER:$1|Benvenuto|Benvenuta|Benvenuto/a}}, $1!",
+	"welcomesurvey": "Ciao, $1!",
 	"welcomesurvey-save-confirmation-title": "Grazie! Le tue risposte sono state salvate.",
 	"welcomesurvey-save-confirmation-text": "Le tue risposte ci aiuteranno a rendere più semplice il tuo inizio su Wikipedia.",
 	"welcomesurvey-subtitle": "Aiutaci a migliorare la tua esperienza su Wikipedia rispondendo ad alcune domande facoltative.",

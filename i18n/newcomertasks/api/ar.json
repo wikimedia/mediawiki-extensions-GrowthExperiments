@@ -15,6 +15,7 @@
 	"apihelp-query+growthtasks-example-2": "{{GENDER:|تحصّل|تحصّلي}} على اقتراحات للمستدخدم(ـة) الحالي(ـة)، مع معلومات إضافيّة حول الصفحات.",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "معلمة 'مقبولة' مفقودة من بيانات إضافة صورة",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "معلمة 'مقبولة' يجب أن تكون ذات قيمة منطقية في بيانات إضافة صورة، هي $1",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "معلمة 'سبب' مفقودة من بيانات إضافة صورة",
 	"apierror-growthexperiments-addlink-handler-notfound": "سجل توصية الروابط غير موجود",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "أهداف توصية الروابط غير متوقعة: $1"
 }

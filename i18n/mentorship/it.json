@@ -81,5 +81,6 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Il prossimo passaggio per smettere di essere un mentore è quello di riassegnare i tuoi allievi. Se sei sicuro di voler uscire, premi il pulsante qui sotto.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Sì, riassegna i miei allievi",
 	"growthexperiments-quit-mentorship-success": "I tuoi allievi saranno riassegnati ad un altro mentore a breve.",
-	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 si è {{GENDER:$1|ritirato|ritirata|ritirato/a}} dal ruolo di mentore."
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 si è {{GENDER:$1|ritirato|ritirata|ritirato/a}} dal ruolo di mentore.",
+	"growthexperiments-notification-body-mentee-claimed": "Motivo: $1"
 }

@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"growthexperiments-edit-config-title": "\"Кхиаран\" конфигураци хийца",
+	"growthexperiments-edit-config-feedback-cta": "Йазде хьайна хетарг!",
+	"growthexperiments-edit-config-edit-summary": "Хийцамах лаьцна",
+	"growthexperiments-edit-config-help-panel": "Нисдаран гӀирс",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "АгӀона лакха",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "АгӀона лаха",
+	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Хьехамхойн дийцарийн агӀонаш",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Википеди:Форум",
+	"growthexperiments-edit-config-help-panel-links": "Нисдаран панель тӀе хьажоргаш",
+	"growthexperiments-edit-config-mentorship": "Хьехамалла",
+	"growthexperiments-edit-config-mentorship-enabled": "Латина йуьй хьехамаллин функцеш?",
+	"growthexperiments-edit-config-mentorship-enabled-true": "ХӀаъ",
+	"growthexperiments-edit-config-mentorship-enabled-false": "ХӀан-хӀа",
+	"growthexperiments-edit-config-newcomertasks": "Кховдийна нисдарш",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Инфобокс кепаш"
+}

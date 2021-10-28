@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Base",
 			"DDPAT",
 			"Ата"
 		]
@@ -16,7 +17,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Хто у вашій таблиці?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "У таблиці наведено лише ваших підопічних, які створили свій обліковий запис протягом останніх двох тижнів або редагували протягом останніх шести місяців. Дані оновлюються щодня.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Легенда",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Закладка підопічних",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Позначити підопічних",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Ім'я користувача",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Кількість скасованих зміни",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Кількість блоків",
@@ -25,7 +26,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Дата реєстрації",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Фільтри",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Оновити",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Редагувати лічильник",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Число редагувань",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Мінімум",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Максимум",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Остання зміна",
@@ -79,5 +80,9 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Наступний крок — перепризначення ваших підопічних. Якщо ви впевнені, що хочете покинути наставництво, будь ласка, натисніть кнопку нижче.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Так, призначити моїм підопічним іншого наставника",
 	"growthexperiments-quit-mentorship-success": "Невдовзі вашим підопічним буде призначено інших наставників.",
-	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|покинув|покинула}} наставництво."
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|покинув|покинула}} наставництво.",
+	"echo-category-title-ge-mentorship": "Наставництво",
+	"echo-pref-tooltip-ge-mentorship": "Сповіщення, пов'язані з функціями наставництва, які розробляє команда Зростання. Це сповіщення про те, що вас взяли собі за підопічного, або що одного з ваших підопічних узяв собі хтось інший.",
+	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|Вашого підопічного|Вашу підопічну}} $3 {{GENDER:$2|взяв|взяла}} собі $1.",
+	"growthexperiments-notification-body-mentee-claimed": "Причина: $1"
 }

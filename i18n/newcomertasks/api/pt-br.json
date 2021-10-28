@@ -14,5 +14,6 @@
 	"apihelp-query+growthtasks-param-debug": "Adicione dados de depuração à saída.",
 	"apihelp-query+growthtasks-example-1": "Obtenha recomendações de tarefas para tarefas do tipo edição de cópia para o usuário atual.",
 	"apihelp-query+growthtasks-example-2": "Obtenha recomendações de tarefas para o usuário atual, com informações estendidas sobre as páginas.",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "O parâmetro 'Motivo' deve ser uma matriz em Adicionar dados de plug-in de imagem, é de $1",
 	"apierror-growthexperiments-addlink-handler-notfound": "Registro de recomendação de link não encontrado"
 }

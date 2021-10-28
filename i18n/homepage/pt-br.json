@@ -435,7 +435,11 @@
 	"growthexperiments-addimage-skip-dialog-cancel": "Cancelar",
 	"growthexperiments-newcomertasks-invalid-tasktype": "$1 não é um tipo de tarefa válido",
 	"growthexperiments-addimage-caption-title": "Adicionar uma legenda",
+	"growthexperiments-addimage-loading-title": "Carregando a pré-visualização da imagem…",
+	"growthexperiments-addimage-caption-placeholder": "Escreva uma legenda curta descrevendo como esta imagem é relevante para \"$1\"",
 	"growthexperiments-structuredtask-user-error": "Não foi possível salvar sua edição porque\nvocê não está mais entrado. Entre e tente novamente.",
 	"growthexperiments-structuredtask-user-error-login-cta": "Entrar",
-	"growthexperiments-structuredtask-anonuser": "O usuário não está mais entrado."
+	"growthexperiments-structuredtask-anonuser": "O usuário não está mais entrado.",
+	"growthexperiments-addimage-summary-label": "Sumário",
+	"growthexperiments-addimage-summary-reject-description": "Esta sugestão de imagem foi rejeitada."
 }
