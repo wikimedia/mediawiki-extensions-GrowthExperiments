@@ -1906,6 +1906,10 @@
 			"description": "Root URL of the image recommendation service (no trailing slash).",
 			"value": false
 		},
+		"GEImageRecommendationServiceHttpProxy": {
+			"description": "HTTP proxy for the service specified via GEImageRecommendationServiceUrl.",
+			"value": null
+		},
 		"GEImageRecommendationServiceUseTitles": {
 			"description": "Use titles instead of page IDs when calling the service. Less ideal but allows setting up test environments to use the production service.",
 			"value": true
