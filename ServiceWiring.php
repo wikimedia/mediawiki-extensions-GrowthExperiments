@@ -174,6 +174,7 @@ return [
 			$services->getTitleFactory(),
 			$services->getHttpRequestFactory(),
 			$config->get( 'GEImageRecommendationServiceUrl' ),
+			$config->get( 'GEImageRecommendationServiceHttpProxy' ),
 			'wikipedia',
 			$services->getContentLanguage()->getCode(),
 			$growthServices->getImageRecommendationMetadataProvider(),
