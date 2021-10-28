@@ -53,7 +53,7 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 
 	/**
 	 * @param string $collectionName
-	 * @param array $templates
+	 * @param string[]|LinkTarget[] $templates
 	 */
 	public function addCollection( string $collectionName, array $templates ): void {
 		$this->templates[$collectionName] = $templates;
@@ -65,6 +65,8 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 	) {
 		// If an undefined collection name is used in the user-provided input, then just return no results.
 		if ( !isset( $this->templates[$value] ) ) {
+			$warningCollector->addWarning( 'growthexperiments-templatecollectionfeature-invalid-collection',
+				$value );
 			return [ 'templates' => [ '' ] ];
 		}
 		$templates = [];
@@ -76,7 +78,7 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 			}
 			$templates[] = $title->getPrefixedText();
 		}
-		return [ 'templates' => $templates, 'case_sensitive' => true ];
+		return [ 'templates' => $templates ];
 	}
 
 	/**

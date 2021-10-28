@@ -323,6 +323,7 @@
 	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1|You}} can learn to edit, contact {{GENDER:$1|your}} mentor, and see the impact of {{GENDER:$1|your}} work.",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Continue",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Got it",
+	"growthexperiments-templatecollectionfeature-invalid-collection": "Invalid template collection \"$1\".",
 	"growthexperiments-addlink-pagenotfound": "Page \"$1\" does not exist",
 	"growthexperiments-addlink-revdeleted": "Revision $1 of \"$2\" is inaccessible",
 	"growthexperiments-addlink-wrongmodel": "Revision $1 of \"$2\" is not wikitext",
