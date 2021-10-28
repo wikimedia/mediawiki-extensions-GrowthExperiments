@@ -29,6 +29,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\StructuredTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use GrowthExperiments\Specials\SpecialClaimMentee;
 use GrowthExperiments\Specials\SpecialHomepage;
@@ -1274,10 +1275,18 @@ class HomepageHooks implements
 	public static function onCirrusSearchAddQueryFeatures( SearchConfig $config, array &$extraFeatures ) {
 		$mwServices = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $mwServices );
+		$configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
+		$taskTypes = $configurationLoader->getTaskTypes();
 		$infoboxTemplates = $growthServices->getGrowthWikiConfig()->get( 'GEInfoboxTemplates' );
-		$extraFeatures[] = new TemplateCollectionFeature(
+		$templateCollectionFeature = new TemplateCollectionFeature(
 			'infobox', $infoboxTemplates, $mwServices->getTitleFactory()
 		);
+		foreach ( $taskTypes as $taskType ) {
+			if ( $taskType instanceof TemplateBasedTaskType ) {
+				$templateCollectionFeature->addCollection( $taskType->getId(), $taskType->getTemplates() );
+			}
+		}
+		$extraFeatures[] = $templateCollectionFeature;
 	}
 
 }
