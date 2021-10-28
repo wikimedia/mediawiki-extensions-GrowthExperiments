@@ -61,7 +61,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 						'from' => 'wikipedia', 'found_on' => 'enwiki,dewiki', 'dataset_id' => 'x',
 					] ] ],
 				] ] ] ] ],
-		] ), $url, $wikiProject, $wikiLanguage, $metadataProvider, null, $useTitle );
+		] ), $url, null, $wikiProject, $wikiLanguage, $metadataProvider, null, $useTitle );
 
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertInstanceOf( StatusValue::class, $recommendation );
@@ -111,7 +111,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 		$provider = new ServiceImageRecommendationProvider( $titleFactory, $this->getHttpRequestFactory( [
 			'http://example.com/image-suggestions/v0/wikipedia/en/pages?source=ima&id=10' => [ 200,
 				[ 'pages' => [] ] ],
-		] ), $url, $wikiProject, $wikiLanguage, $metadataProvider, null, $useTitle );
+		] ), $url, null, $wikiProject, $wikiLanguage, $metadataProvider, null, $useTitle );
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertInstanceOf( StatusValue::class, $recommendation );
 	}
@@ -140,7 +140,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 						] ] ],
 					] ] ] ] ],
 			] ),
-			$url, $wikiProject, $wikiLanguage, $metadataProvider, null, $useTitle );
+			$url, null, $wikiProject, $wikiLanguage, $metadataProvider, null, $useTitle );
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertTrue( $recommendation instanceof StatusValue );
 	}
@@ -180,7 +180,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 						] ] ],
 					] ] ] ] ],
 			] ),
-			$url, $wikiProject, $wikiLanguage, $metadataProvider, null, $useTitle );
+			$url, null, $wikiProject, $wikiLanguage, $metadataProvider, null, $useTitle );
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertTrue( $recommendation instanceof ImageRecommendation );
 		$this->assertCount( 1, $recommendation->getImages() );

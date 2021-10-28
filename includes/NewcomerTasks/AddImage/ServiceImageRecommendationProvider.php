@@ -28,6 +28,9 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	/** @var string */
 	private $url;
 
+	/** @var string|null */
+	private $proxyUrl;
+
 	/** @var string */
 	private $wikiProject;
 
@@ -47,6 +50,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	 * @param TitleFactory $titleFactory
 	 * @param HttpRequestFactory $httpRequestFactory
 	 * @param string $url Image recommendation service root URL
+	 * @param string|null $proxyUrl HTTP proxy to use for $url
 	 * @param string $wikiProject Wiki project (e.g. 'wikipedia')
 	 * @param string $wikiLanguage Wiki language code
 	 * @param ImageRecommendationMetadataProvider $metadataProvider Image metadata provider
@@ -58,6 +62,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		TitleFactory $titleFactory,
 		HttpRequestFactory $httpRequestFactory,
 		string $url,
+		?string $proxyUrl,
 		string $wikiProject,
 		string $wikiLanguage,
 		ImageRecommendationMetadataProvider $metadataProvider,
@@ -67,6 +72,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		$this->titleFactory = $titleFactory;
 		$this->httpRequestFactory = $httpRequestFactory;
 		$this->url = $url;
+		$this->proxyUrl = $proxyUrl;
 		$this->wikiProject = $wikiProject;
 		$this->wikiLanguage = $wikiLanguage;
 		$this->metadataProvider = $metadataProvider;
@@ -114,6 +120,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 			}, $pathArgs ) ), $queryArgs ),
 			[
 				'method' => 'GET',
+				'proxy' => $this->proxyUrl,
 				'originalRequest' => RequestContext::getMain()->getRequest(),
 				'timeout' => $this->requestTimeout,
 			],
