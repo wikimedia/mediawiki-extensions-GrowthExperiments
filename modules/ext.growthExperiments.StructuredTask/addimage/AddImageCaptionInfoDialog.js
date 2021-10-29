@@ -27,11 +27,27 @@ AddImageCaptionInfoDialog.static.title = mw.message(
 ).text();
 
 AddImageCaptionInfoDialog.static.message = function () {
+	var $guidelines = $( '<ul>' ).addClass( 'mw-ge-addImageCaptionInfoDialog-list' ),
+		guidelineItems = [
+			mw.message(
+				'growthexperiments-addimage-caption-info-dialog-guidelines-describe'
+			).text(),
+			mw.message(
+				'growthexperiments-addimage-caption-info-dialog-guidelines-review'
+			).text(),
+			mw.message(
+				'growthexperiments-addimage-caption-info-dialog-guidelines-neutral'
+			).text(),
+			mw.message(
+				'growthexperiments-addimage-caption-info-dialog-guidelines-language'
+			).text()
+		];
+	guidelineItems.forEach( function ( guidelineItemText ) {
+		$guidelines.append( $( '<li>' ).text( guidelineItemText ) );
+	} );
 	return $( '<div>' ).append( [
 		mw.message( 'growthexperiments-addimage-caption-info-dialog-message' ).escaped(),
-		$( '<ul>' ).addClass( 'mw-ge-addImageCaptionInfoDialog-list' ).html(
-			mw.message( 'growthexperiments-addimage-caption-info-dialog-guidelines' ).parse()
-		)
+		$guidelines
 	] );
 };
 
