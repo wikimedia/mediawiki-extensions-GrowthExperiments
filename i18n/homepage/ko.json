@@ -395,6 +395,8 @@
 	"growthexperiments-addimage-skip-dialog-confirm": "제안 건너뛰기",
 	"growthexperiments-addimage-skip-dialog-cancel": "취소",
 	"growthexperiments-addimage-caption-title": "캡션 추가",
+	"growthexperiments-addimage-loading-title": "이미지 미리 보기를 불러오는 중…",
+	"growthexperiments-addimage-caption-info-dialog-confirm": "알겠습니다",
 	"growthexperiments-structuredtask-user-error-login-cta": "로그인",
 	"growthexperiments-structuredtask-anonuser": "사용자는 더 이상 로그인되어 있지 않습니다.",
 	"growthexperiments-addimage-summary-label": "요약",

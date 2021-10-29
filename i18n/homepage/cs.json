@@ -442,6 +442,8 @@
 	"growthexperiments-addimage-skip-dialog-cancel": "Zrušit",
 	"growthexperiments-newcomertasks-invalid-tasktype": "$1 není platný typ úkolu.",
 	"growthexperiments-addimage-caption-title": "Přidat popisek",
+	"growthexperiments-addimage-loading-title": "Obrázek se načítá...",
+	"growthexperiments-addimage-caption-info-dialog-confirm": "Rozumím",
 	"growthexperiments-structuredtask-user-error": "Vaši editaci jsme nemohli uložit, protože již nejste {{GENDER:|přihlášen|přihlášena|přihlášeni}}. Prosím, přihlaste se a zkuste to znovu.",
 	"growthexperiments-structuredtask-user-error-login-cta": "Přihlásit se",
 	"growthexperiments-structuredtask-anonuser": "Uživatel již není přihlášen.",

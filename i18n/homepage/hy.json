@@ -237,5 +237,9 @@
 	"growthexperiments-addlink-context-button-accept": "Այո",
 	"growthexperiments-addlink-context-button-reject": "Ոչ",
 	"growthexperiments-addlink-context-button-next": "Հաջորդ",
-	"growthexperiments-addlink-rejectiondialog-reason-other": "Այլ"
+	"growthexperiments-addlink-rejectiondialog-reason-other": "Այլ",
+	"growthexperiments-addimage-rejectiondialog-action-done": "Ուղարկել",
+	"growthexperiments-addimage-rejectiondialog-action-cancel": "Չեղարկել",
+	"growthexperiments-addimage-skip-dialog-cancel": "Չեղարկել",
+	"growthexperiments-addimage-caption-info-dialog-confirm": "Հասկանալի է"
 }

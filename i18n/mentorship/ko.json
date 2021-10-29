@@ -53,5 +53,7 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "멘토십을 그만두는 다음 단계는 새 멘티를 재할당하는 것입니다. 그만두는 것이 확실하다면 아래 버튼을 눌러 주십시오.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "예, 제 멘티를 다시 할당합니다",
 	"growthexperiments-quit-mentorship-success": "당신의 멘티가 다른 멘토에 바로 재할당됩니다.",
-	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1님이 멘토십에서 {{GENDER:$1|물러났습니다}}."
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1님이 멘토십에서 {{GENDER:$1|물러났습니다}}.",
+	"echo-category-title-ge-mentorship": "멘토",
+	"growthexperiments-notification-body-mentee-claimed": "이유: $1"
 }

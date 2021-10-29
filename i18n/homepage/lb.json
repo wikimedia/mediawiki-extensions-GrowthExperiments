@@ -161,5 +161,7 @@
 	"growthexperiments-addimage-skip-dialog-title": "Net sécher bei dësem Bild?",
 	"growthexperiments-addimage-skip-dialog-confirm": "Propos iwwersprangen",
 	"growthexperiments-addimage-skip-dialog-cancel": "Ofbriechen",
-	"growthexperiments-structuredtask-user-error-login-cta": "Aloggen"
+	"growthexperiments-addimage-caption-info-dialog-confirm": "Verstanen",
+	"growthexperiments-structuredtask-user-error-login-cta": "Aloggen",
+	"growthexperiments-addimage-summary-label": "Resumé"
 }

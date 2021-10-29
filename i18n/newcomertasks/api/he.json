@@ -17,6 +17,9 @@
 	"apihelp-query+growthtasks-example-2": "קבלת המלצות משימות עבור המשתמש הנוכחי, עם מידע מורחב על הדפים.",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "הפרמטר \"accepted\" חסר מהנתונים של התוסף Add Image",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "הפרמטר \"accepted\" חייב להיות בוליאני בנתונים של התוסף Add Image, ועכשיו הוא $1",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "הפרמטר \"reason\" חסר בנתוני תוסף Add Image",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "הפרמטר \"reason\" חייב להיות מערך בנתוני תוסף Add Image, כעת הוא $1",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "פריט בלתי־תקין \"$1\" עבור הפרמטר \"סיבה\", חייב להיות אחד מתוך: $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "רישום המלצות קישורים לא נמצא",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "יעדי המלצות קישור בלתי־צפויים: $1"
 }

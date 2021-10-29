@@ -17,6 +17,9 @@
 	"apihelp-query+growthtasks-example-2": "Obtenir des recommandations de tâche pour l’utilisateur actuel, avec des informations supplémentaires sur les pages.",
 	"apierror-growthexperiments-addimage-handler-accepted-missing": "Le paramètre 'accepted' est absent des données du module d’Ajout d’image",
 	"apierror-growthexperiments-addimage-handler-accepted-wrongtype": "Le paramètre 'accepted' doit être un booléen dans les données du module d’Ajout d’image, et il vaut $1",
+	"apierror-growthexperiments-addimage-handler-reason-missing": "Le paramètre 'reason' manque dans les données du plugin Ajouter une image",
+	"apierror-growthexperiments-addimage-handler-reason-wrongtype": "Le paramètre 'reason' doit être un tableau dans les données du plugin Ajouter une image, c'est $1.",
+	"apierror-growthexperiments-addimage-handler-reason-invaliditem": "L'élément '$1' est invalide pour le paramètre 'reason', il doit être l'un des suivants : $2",
 	"apierror-growthexperiments-addlink-handler-notfound": "Enregistrement de la suggestion de lien non trouvé",
 	"apierror-growthexperiments-addlink-handler-wrongtargets": "Cibles de recommandation de lien inattendues : $1"
 }

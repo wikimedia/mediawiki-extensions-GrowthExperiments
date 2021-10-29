@@ -14,7 +14,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Seznam {{GENDER:|vašich}} současných nováčků vidíte níže. Pomocí filtrů můžete určit, kteří konkrétní uživatelé se budou zobrazovat.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Tato tabulka vyžaduje zapnutý JavaScript. Prosím, aktivujte JavaScript, abyste tento modul {{GENDER:|mohl|mohla|mohli}} využívat.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Kdo je v této tabulce zobrazen?",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "V této tabulce jsou zahrnuti pouze ti nováčci, kteří se zaregistrovali během posledních dvou týdnů, anebo během posledního půl roku uložili alespoň jednu editaci. Data se aktualizují každý den.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "V této tabulce jsou zahrnuti pouze ti nováčci, kteří se zaregistrovali během posledních dvou týdnů, anebo během posledního půl roku uložili alespoň jednu editaci. Data se aktualizují každé tři hodiny.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legenda",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Ohvězdičkovat nováčka",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Uživatelské jméno",
@@ -79,5 +79,9 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Dalším krokem je přeřadit vaše nováčky někomu jinému. Pokud jste si {{GENDER:|jist|jista|jisti}}, že již mentorem být nechcete, stiskněte tlačítko níže.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Ano, převést mé nováčky.",
 	"growthexperiments-quit-mentorship-success": "Vaši nováčci budou během chvíle převedeni na ostatní mentory.",
-	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 již není {{GENDER:$1|mentorem|mentorkou}}."
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 již není {{GENDER:$1|mentorem|mentorkou}}.",
+	"echo-category-title-ge-mentorship": "Mentorství",
+	"echo-pref-tooltip-ge-mentorship": "Notifikace týkající se mentorství vytvořeného týmem Growth. Po zaškrtnutí této možnosti vám dáme vědět, že jste jako nováček byl převzat někým jiným, anebo že některý z vašich nováčků byl převzat jiným mentorem.",
+	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|Váš nováček}}, $3, {{GENDER:$3|byl převzat|byla převzata}} {{GENDER:$2|mentorem|mentorkou}} $1.",
+	"growthexperiments-notification-body-mentee-claimed": "Důvod: $1"
 }

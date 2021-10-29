@@ -78,5 +78,8 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Neste steg for å slutte å være fadder er å tildele andre faddere fadderbarna dine. Trykk på knappen nedenfor hvis du er sikker på at du vil slutte.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Ja, omfordel fadderbarna mine",
 	"growthexperiments-quit-mentorship-success": "Fadderbarna dine blir omfordelt til andre faddere snart.",
-	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|sluttet}} å være fadder"
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|sluttet}} å være fadder",
+	"echo-category-title-ge-mentorship": "Fadderskap",
+	"growthexperiments-notification-header-mentee-claimed": "Ditt {{GENDER:$3|fadderbarn}}, $3, ble {{GENDER:$2|tatt opp}} av $1.",
+	"growthexperiments-notification-body-mentee-claimed": "Årsak: $1"
 }

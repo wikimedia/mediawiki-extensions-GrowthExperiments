@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"DDPAT",
+			"Kareyac",
 			"Okras"
 		]
 	},
@@ -79,5 +80,9 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Следующий шаг — переназначение ваших подопечных. Если вы уверены, что хотите покинуть наставничество, пожалуйста, нажмите кнопку ниже.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Да, назначить моим подопечным другого наставника",
 	"growthexperiments-quit-mentorship-success": "Вскоре вашим подопечным будет назначен других наставников.",
-	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|покинул|покинула}} наставничество."
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|покинул|покинула}} наставничество.",
+	"echo-category-title-ge-mentorship": "Наставничество",
+	"echo-pref-tooltip-ge-mentorship": "Уведомления, связанные с функциями наставничества, разрабатываемыми командой Роста. Это уведомление о том, что вас взяли себе за подопечного или что одного из ваших подопечных взял себе кто-то другой.",
+	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|Вашего подопечного|Вашу подопечную}} $3 {{GENDER:$2|взял|взяла}} себе $1.",
+	"growthexperiments-notification-body-mentee-claimed": "Причина: $1"
 }

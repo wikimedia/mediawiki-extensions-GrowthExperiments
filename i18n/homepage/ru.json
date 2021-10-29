@@ -456,6 +456,7 @@
 	"growthexperiments-addimage-skip-dialog-cancel": "Отмена",
 	"growthexperiments-newcomertasks-invalid-tasktype": "«$1» не является допустимым типом задачи.",
 	"growthexperiments-addimage-caption-title": "Добавить краткую подпись",
+	"growthexperiments-addimage-caption-info-dialog-confirm": "Понятно",
 	"growthexperiments-structuredtask-user-error": "Нам не удалось сохранить {{GENDER:|ваши}} правки, так {{GENDER:|вы}} больше не в системе. Пожалуйста, войдите и попробуйте еще раз.",
 	"growthexperiments-structuredtask-user-error-login-cta": "Войти",
 	"growthexperiments-structuredtask-anonuser": "Участник больше не в системе."

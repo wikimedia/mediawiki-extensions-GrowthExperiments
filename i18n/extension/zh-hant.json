@@ -7,6 +7,7 @@
 			"Neetp7k9",
 			"Pseudo Classes",
 			"Sunny00217",
+			"Xiplus",
 			"羊羊32521"
 		]
 	},
@@ -15,6 +16,7 @@
 	"growthexperiments-config-validator-error": "驗證 $1 失敗：「$2」",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code>應該是<code>$2</code>，但是<code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "內容模型不匹配：GrowthExperiments 的配置檔案必須是 JSON 內容模型，但是目前配置檔案的內容模型是 $1",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "無效的任務類型處理程序ID：<code>$1</code>不是有效的數值。",
 	"growthexperiments-edit-config-disabled": "社群配置目前已禁用。",
 	"growthexperiments-edit-config-title": "編輯 Growth 配置",
 	"growthexperiments-edit-config-last-edit": "[[$3]]：最近更新由 [[User:$1|$1]] 於 $2。",
@@ -22,7 +24,7 @@
 	"growthexperiments-edit-config-pretext": "此頁面允許您編輯 [[:mw:Special:MyLanguage/Growth|Growth]] 團隊功能的配置。它將代表您編輯 $1。您可以在該頁面的頁面歷史記錄中看到您的變更。",
 	"growthexperiments-edit-config-pretext-unprivileged": "這讓一些有權限的使用者來編輯 [[:mw:Special:MyLanguage/Growth|Growth]] 的團隊功能參數。",
 	"growthexperiments-edit-config-feedback-headline": "關於此表單的問題與想法：",
-	"growthexperiments-edit-config-feedback-cta": "回饋意見",
+	"growthexperiments-edit-config-feedback-cta": "提供回饋",
 	"growthexperiments-edit-config-error-invalid-title": "配置頁面沒有被正確配置",
 	"growthexperiments-edit-config-edit-summary": "編輯摘要",
 	"growthexperiments-edit-config-config-changed": "配置已更改。您可能需要等待幾分鐘來完成更改。",
@@ -73,5 +75,9 @@
 	"growthexperiments-edit-config-newcomer-tasks-references-templates": "參考文獻：尋找需要更多參考文獻的條目的模板。",
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "用於了解有關添加參考文獻的更多資訊的目標頁面",
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "更新：用於尋找需要使用當前資訊更新的文章的模板。",
-	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "用於了解有關更新文章的更多訊息的目標頁面。"
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "用於了解有關更新文章的更多訊息的目標頁面。",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "了解連結建議任務類型更多資訊的目標頁面。",
+	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "此任務類型與機器建議關聯，並且不使用模板來產生任務池。",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "包含此處定義模板的條目將不會以此任務類型向使用者顯示為任務。",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "資訊框模板"
 }
