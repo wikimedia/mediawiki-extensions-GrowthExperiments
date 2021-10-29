@@ -9,6 +9,7 @@ use MediaWiki\JobQueue\JobQueueGroupFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerAwareTrait;
+use Psr\Log\NullLogger;
 use Wikimedia\ScopedCallback;
 
 class QuitMentorship {
@@ -64,6 +65,7 @@ class QuitMentorship {
 		$this->jobQueueGroupFactory = $jobQueueGroupFactory;
 		$this->mentor = $mentor;
 		$this->context = $context;
+		$this->logger = new NullLogger();
 	}
 
 	/**
