@@ -11,6 +11,7 @@ use CirrusSearch\Search\Filters;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\WarningCollector;
 use Elastica\Query\AbstractQuery;
+use Elastica\Query\MatchNone;
 use MediaWiki\Linker\LinkTarget;
 use TitleFactory;
 use TitleValue;
@@ -24,14 +25,18 @@ use Wikimedia\Assert\Assert;
  */
 class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQueryFeature {
 
+	/**
+	 * ElasticSearch doesn't allow more than 1024 clauses in a boolean query. Limit at 800
+	 * to leave some space to combine hastemplatecollection with other search terms.
+	 */
+	private const MAX_TEMPLATES_IN_COLLECTION = 800;
+
 	/** @var array */
 	private $templates;
 	/** @var TitleFactory */
 	private $titleFactory;
 
-	/**
-	 * @return string[]
-	 */
+	/** @inheritDoc */
 	protected function getKeywords() {
 		return [ 'hastemplatecollection' ];
 	}
@@ -42,13 +47,8 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 	 * @param TitleFactory $titleFactory
 	 */
 	public function __construct( string $collectionName, array $templates, TitleFactory $titleFactory ) {
-		Assert::parameter(
-			count( $templates ) <= 800,
-			'$templates',
-			'Maximum number of templates allowed in collection.'
-		);
-		$this->templates[$collectionName] = $templates;
 		$this->titleFactory = $titleFactory;
+		$this->addCollection( $collectionName, $templates );
 	}
 
 	/**
@@ -56,6 +56,11 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 	 * @param string[]|LinkTarget[] $templates
 	 */
 	public function addCollection( string $collectionName, array $templates ): void {
+		Assert::parameter(
+			count( $templates ) <= self::MAX_TEMPLATES_IN_COLLECTION,
+			'$templates',
+			'Maximum ' . self::MAX_TEMPLATES_IN_COLLECTION . ' templates allowed in collection.'
+		);
 		$this->templates[$collectionName] = $templates;
 	}
 
@@ -67,7 +72,7 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 		if ( !isset( $this->templates[$value] ) ) {
 			$warningCollector->addWarning( 'growthexperiments-templatecollectionfeature-invalid-collection',
 				$value );
-			return [ 'templates' => [ '' ] ];
+			return [ 'templates' => [] ];
 		}
 		$templates = [];
 		foreach ( $this->templates[$value] as $template ) {
@@ -81,32 +86,14 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 		return [ 'templates' => $templates ];
 	}
 
-	/**
-	 * Applies the detected keyword from the search term. May apply changes
-	 * either to $context directly, or return a filter to be added.
-	 *
-	 * @param SearchContext $context
-	 * @param string $key The keyword
-	 * @param string $value The value attached to the keyword with quotes stripped and escaped
-	 *  quotes un-escaped.
-	 * @param string $quotedValue The original value in the search string, including quotes if used
-	 * @param bool $negated Is the search negated? Not used to generate the returned AbstractQuery,
-	 *  that will be negated as necessary. Used for any other building/context necessary.
-	 * @return array Two element array, first an AbstractQuery or null to apply to the
-	 *  query. Second a boolean indicating if the quotedValue should be kept in the search
-	 *  string.
-	 */
+	/** @inheritDoc */
 	protected function doApply( SearchContext $context, $key, $value, $quotedValue, $negated ) {
 		$filter = $this->doGetFilterQuery(
 			$this->parseValue( $key, $value, $quotedValue, '', '', $context ) );
 		return [ $filter, false ];
 	}
 
-	/**
-	 * @param KeywordFeatureNode $node
-	 * @param QueryBuildingContext $context
-	 * @return AbstractQuery|null
-	 */
+	/** @inheritDoc */
 	public function getFilterQuery( KeywordFeatureNode $node, QueryBuildingContext $context ) {
 		return $this->doGetFilterQuery( $node->getParsedValue() );
 	}
@@ -116,6 +103,12 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 	 * @return AbstractQuery
 	 */
 	protected function doGetFilterQuery( array $parsedValue ) {
+		if ( !$parsedValue['templates'] ) {
+			// If there are no templates in a collection, it shouldn't match.
+			// The weird syntax is a workaround for T294601
+			return Filters::booleanOr( [ new MatchNone(), new MatchNone() ] );
+		}
+
 		return Filters::booleanOr( array_map(
 			static function ( $v )  {
 				return QueryHelper::matchPage( 'template.keyword', $v );
