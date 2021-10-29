@@ -6,11 +6,14 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataFilter;
 use GrowthExperiments\MentorDashboard\MenteeOverview\MenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\Util;
+use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\Rest\HttpException;
 use MediaWiki\Rest\SimpleHandler;
 use MediaWiki\User\UserIdentity;
 use MWTimestamp;
 use RequestContext;
+use TitleFactory;
+use TitleParser;
 use Wikimedia\Assert\ParameterAssertionException;
 use Wikimedia\ParamValidator\ParamValidator;
 
@@ -28,16 +31,34 @@ class MenteesHandler extends SimpleHandler {
 	/** @var StarredMenteesStore */
 	private $starredMenteesStore;
 
+	/** @var TitleFactory */
+	private $titleFactory;
+
+	/** @var TitleParser */
+	private $titleParser;
+
+	/** @var LinkBatchFactory */
+	private $linkBatchFactory;
+
 	/**
 	 * @param MenteeOverviewDataProvider $dataProvider
 	 * @param StarredMenteesStore $starredMenteesStore
+	 * @param TitleFactory $titleFactory
+	 * @param TitleParser $titleParser
+	 * @param LinkBatchFactory $linkBatchFactory
 	 */
 	public function __construct(
 		MenteeOverviewDataProvider $dataProvider,
-		StarredMenteesStore $starredMenteesStore
+		StarredMenteesStore $starredMenteesStore,
+		TitleFactory $titleFactory,
+		TitleParser $titleParser,
+		LinkBatchFactory $linkBatchFactory
 	) {
 		$this->dataProvider = $dataProvider;
 		$this->starredMenteesStore = $starredMenteesStore;
+		$this->titleFactory = $titleFactory;
+		$this->titleParser = $titleParser;
+		$this->linkBatchFactory = $linkBatchFactory;
 	}
 
 	/**
@@ -99,7 +120,9 @@ class MenteesHandler extends SimpleHandler {
 		$data = $dataFilter->filter();
 		$context = RequestContext::getMain();
 		$nowUnix = (int)MWTimestamp::now( TS_UNIX );
-		array_walk( $data, static function ( &$menteeData ) use ( $context, $nowUnix ) {
+		$batch = $this->linkBatchFactory->newLinkBatch();
+		$batch->setCaller( __METHOD__ );
+		array_walk( $data, function ( &$menteeData ) use ( $context, $nowUnix, $batch ) {
 			if ( isset( $menteeData['last_active'] ) ) {
 				$menteeData['last_active'] = [
 					'raw' => $menteeData['last_active'],
@@ -119,6 +142,23 @@ class MenteesHandler extends SimpleHandler {
 						$menteeData['registration']
 					)->format( 'Y-m-d' )
 				];
+			}
+
+			if ( $menteeData['username'] ) {
+				$batch->addObj( $this->titleParser->parseTitle(
+					$menteeData['username'],
+					NS_USER
+				) );
+			}
+		} );
+
+		$batch->execute();
+		array_walk( $data, function ( &$menteeData ) {
+			if ( $menteeData['username'] ) {
+				$menteeData['userpage_exists'] = $this->titleFactory->newFromText(
+					$menteeData['username'],
+					NS_USER
+				)->exists();
 			}
 		} );
 
