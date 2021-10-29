@@ -151,6 +151,7 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 		this.setupHelpButton(
 			mw.message( 'growthexperiments-addimage-inspector-help-button' ).text()
 		);
+		this.addArticleTitle();
 	}
 	this.showRecommendationAtIndex( 0 );
 	$( window ).on( 'resize',

@@ -170,4 +170,15 @@ StructuredTaskToolbarDialog.prototype.regainFocus = function () {
 	this.$content.get( 0 ).focus( { preventScroll: true } );
 };
 
+/**
+ * Add the article title to the document.
+ * This can be used when the editing mode doesn't show the title by default.
+ */
+StructuredTaskToolbarDialog.prototype.addArticleTitle = function () {
+	var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' );
+	this.surface.getView().$documentNode.prepend( $( '<h1>' ).text(
+		SuggestedEditSession.getInstance().getCurrentTitle().getNameText()
+	) );
+};
+
 module.exports = StructuredTaskToolbarDialog;
