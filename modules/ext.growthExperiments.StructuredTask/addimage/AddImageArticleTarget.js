@@ -54,7 +54,7 @@ function AddImageArticleTarget() {
 }
 
 AddImageArticleTarget.prototype.beforeSurfaceReady = function () {
-	// TODO: Set fragments on surface
+	// No-op
 };
 
 /**
@@ -72,6 +72,10 @@ AddImageArticleTarget.prototype.afterSurfaceReady = function () {
 		if ( !OO.ui.isMobile() ) {
 			mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).fire();
 		}
+		this.logger.log( 'impression', {}, {
+			// eslint-disable-next-line camelcase
+			active_interface: 'machinesuggestions_mode'
+		} );
 	} else {
 		// Ideally, this error would happen sooner so the user doesn't have to wait for VE
 		// to load. There isn't really a way to differentiate between images in the article

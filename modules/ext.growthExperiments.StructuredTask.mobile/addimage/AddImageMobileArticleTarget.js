@@ -1,6 +1,7 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	StructuredTaskMobileArticleTarget = require( '../StructuredTaskMobileArticleTarget.js' ),
-	AddImageArticleTarget = StructuredTask.AddImageArticleTarget;
+	AddImageArticleTarget = StructuredTask.AddImageArticleTarget,
+	ImageSuggestionInteractionLogger = StructuredTask.ImageSuggestionInteractionLogger;
 
 /**
  * Mobile version of AddLinkArticleTarget
@@ -13,7 +14,8 @@ var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 function AddImageMobileArticleTarget() {
 	AddImageMobileArticleTarget.super.apply( this, arguments );
 	this.$element.addClass( 've-init-mw-addImageArticleTarget' );
-	// TODO: Set this.logger
+	// eslint-disable-next-line camelcase
+	this.logger = new ImageSuggestionInteractionLogger( { is_mobile: true } );
 }
 
 OO.inheritClass( AddImageMobileArticleTarget, StructuredTaskMobileArticleTarget );
