@@ -113,7 +113,7 @@
 		if ( this.active ) {
 			this.suppressNotices();
 			this.updateEditorInterface();
-			this.updateEditingStatsConfig();
+			this.updateEditLinkUrls();
 			this.maybeShowPostEditDialog();
 		}
 	};
@@ -310,9 +310,10 @@
 	};
 
 	/**
-	 * Change the URL of edit links to propagate the editing session ID to certain log records.
+	 * Change the URL of edit links to propagate the editing session ID to certain log records,
+	 * as well as the 'gesuggestededit' parameter that indicates the user is doing a suggested edit.
 	 */
-	SuggestedEditSession.prototype.updateEditingStatsConfig = function () {
+	SuggestedEditSession.prototype.updateEditLinkUrls = function () {
 		var self = this,
 			linkSelector = '#ca-edit a[href], a#ca-edit[href], #ca-ve-edit a[href], ' +
 				'a#ca-ve-edit[href], .mw-editsection a[href]';
@@ -323,7 +324,8 @@
 				var linkUrl = new mw.Uri( this.href );
 				linkUrl.extend( {
 					editingStatsId: self.clickId,
-					editingStatsOversample: 1
+					editingStatsOversample: 1,
+					gesuggestededit: 1
 				} );
 				$( this ).attr( 'href', linkUrl.toString() );
 			} );
@@ -356,7 +358,7 @@
 		if ( config.resetSession ) {
 			self.clickId = mw.user.generateRandomSessionId();
 			// Need to update the click ID in edit links as well.
-			self.updateEditingStatsConfig();
+			self.updateEditLinkUrls();
 		}
 
 		// The mobile editor and in some configurations the visual editor immediately reloads
