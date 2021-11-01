@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Gerer questiones ponite via le pannello de adjuta pro le usator actual.",
+	"apihelp-helppanelquestionposter-param-body": "Le texto del question fornite per le usator.",
+	"apihelp-helppanelquestionposter-param-source": "Le methodo per le qual le question ha essite publicate.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Le pannello \"Demandar al servicio de adjuta\"",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Le pannello \"Demandar a tu mentor\" sur le pagina initial de novicios",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Le schermo \"Demandar a tu mentor\" sur le pannello de adjuta",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Le pannello \"Demandar al servicio de adjuta\" (nomine ancian)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Le pannello \"Demandar a tu mentor\" sur le pagina initial de novicios (nomine ancian)",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Le titulo relevante, si es seligite, pro includer con le question.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Tu debe aperir session pro poner un question."
+}

@@ -16,7 +16,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Voir {{GENDER:|vos}} tutorés ci-dessous. Utiliser les filtres pour modifier quels tutorés sont affichés.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Le tableau nécessite JavaScript. Veuillez l’activer pour pouvoir utiliser ce module.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Qui est dans votre tableau ?",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Le tableau montre seulement vos tutorés qui ont créé leur compte dans les deux semaines passées, ou qui ont édité dans les six derniers mois. Les données sont mises à jour quotidiennement.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Le tableau montre seulement {{GENDER:|vos}} tutorés qui ont créé un compte dans les deux semaines passées, ou qui ont édité dans les six derniers mois. Les données sont mises à jour toutes les trois heures.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Légende",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Mettre en favori les tutorés",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Nom d’utilisateur",
@@ -85,5 +85,6 @@
 	"echo-category-title-ge-mentorship": "Tutorat",
 	"echo-pref-tooltip-ge-mentorship": "Notifications relatives aux fonctionnalités de tutorat maintenues par l’équipe Growth. Cette notification vous fait savoir que vous êtes demandé comme tutoré, ou qu’un de vos tutorés a été demandé par quelqu’un d’autre.",
 	"growthexperiments-notification-header-mentee-claimed": "Votre {{GENDER:$3|tutoré|tutorée}}, $3, a été {{GENDER:$2|réclamé|réclamée}} par $1.",
-	"growthexperiments-notification-body-mentee-claimed": "Motif : $1"
+	"growthexperiments-notification-body-mentee-claimed": "Motif : $1",
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Qu'est-ce que « Demander un mentoré » ?"
 }

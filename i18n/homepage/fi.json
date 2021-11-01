@@ -280,6 +280,7 @@
 	"growthexperiments-homepage-suggestededits-more-info": "Lisätietoa ehdotetuista muokkauksista",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Jatka",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Selvä",
+	"growthexperiments-templatecollectionfeature-invalid-collection": "Virheellinen mallinekokoelma \"$1\".",
 	"growthexperiments-addlink-pagenotfound": "Sivua \"$1\" ei ole olemassa",
 	"growthexperiments-addlink-context-button-accept": "Kyllä",
 	"growthexperiments-addlink-context-button-reject": "Ei",
@@ -344,7 +345,11 @@
 	"growthexperiments-addimage-skip-dialog-confirm": "Ohita ehdotus",
 	"growthexperiments-addimage-skip-dialog-cancel": "Peruuta",
 	"growthexperiments-addimage-caption-title": "Lisää kuvateksti",
+	"growthexperiments-addimage-loading-title": "Ladataan kuvan esikatselua...",
+	"growthexperiments-addimage-caption-info-dialog-message": "Artikkelin lukijat näkevät kuvan yhteydessä kuvatekstin. Muutama ohje:",
+	"growthexperiments-addimage-caption-info-dialog-confirm": "Selvä",
 	"growthexperiments-structuredtask-user-error": "Emme voineet tallentaa {{GENDER:|muutoksiasi}} koska {{GENDER:|et}} ole kirjautuneena sisään. Kirjaudu sisään ja yritä uudestaan.",
 	"growthexperiments-structuredtask-user-error-login-cta": "Kirjaudu sisään",
-	"growthexperiments-addimage-summary-label": "Yhteenveto"
+	"growthexperiments-addimage-summary-label": "Yhteenveto",
+	"growthexperiments-addimage-summary-reject-description": "Tämä kuvaehdotus on hylätty."
 }

@@ -5,16 +5,17 @@
 			"Dyolf77",
 			"Dyolf77 (WMF)",
 			"Meno25",
+			"Michel Bakni",
 			"ديفيد"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|مرحبا}}، $1!",
-	"welcomesurvey-save-confirmation-title": "شكر! تم حفظ ردودك.",
+	"welcomesurvey-save-confirmation-title": "شكر! حفظت ردودك.",
 	"welcomesurvey-save-confirmation-text": "ستساعدنا إجاباتك في إعطائك طرقًا مفيدة للبدء في ويكيبيديا.",
 	"welcomesurvey-subtitle": "{{GENDER:|ساعدنا|ساعدينا}} في تحسين تجربتك لويكيبيديا من خلال الإجابة على بعض الأسئلة الاختيارية.",
-	"welcomesurvey-save-btn": "{{GENDER:|أنه|أنهي}}",
+	"welcomesurvey-save-btn": "{{GENDER:|أنهِ|أنهي}}",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|تخطَّ|تخطي}} هذا الاستطلاع",
-	"welcomesurvey-close-btn": "{{GENDER:|أغلق|أغلقي}} و{{GENDER:|عد|عودي}} إلى $1",
+	"welcomesurvey-close-btn": "{{GENDER:|أغلق|أغلقي}} و{{GENDER:|عُد|عودي}} إلى $1",
 	"welcomesurvey-sidebar-privacy-title": "نحن نقدر خصوصيتك",
 	"welcomesurvey-sidebar-privacy-text": "ستستخدم مؤسّسة ويكيميديا {{GENDER:$2|إجابتكَ|إجاباتكِ}} لمساعدتك عند الشروع في تعديل {{SITENAME}}. $1",
 	"welcomesurvey-privacy-policy-link-text": "{{GENDER:|تعلّم|تعلّمي}} المزيد حول البيانات والمحررين الجدد",
@@ -28,7 +29,7 @@
 	"welcomesurvey-dropdown-option-select-label": "يُرجَى الاختيار...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "لإصلاح خطأ املائي أو خطأ في مقالة ويكيبيديا",
 	"welcomesurvey-question-reason-option-edit-info-add-change-label": "لإضافة أو لتغيير معلومة في مقالة على ويكيبيديا",
-	"welcomesurvey-question-reason-option-add-image-label": "لإضافة صورة فوتوغرافية أو رسم لمقالة على ويكيبيديا",
+	"welcomesurvey-question-reason-option-add-image-label": "لإضافة صورة ضوئية أو رسم لمقالة على ويكيبيديا",
 	"welcomesurvey-question-reason-option-new-page-label": "لإنشاء مقالة ويكيبيديا جديدة",
 	"welcomesurvey-question-reason-option-program-participant-label": "أشارك في برنامج أو فصل أو حدث",
 	"welcomesurvey-question-reason-option-read-label": "لقراءة ويكيبيديا",
@@ -48,5 +49,5 @@
 	"welcomesurvey-question-email-help": "لاحظنا أنك لم {{GENDER:|تدخل|تدخلي}} بريدا إلكترونيا عند إنشاء هذا الحساب، إنه <strong>موصى به بشدة</strong>; لأن هناك حاجة إلى بريد إلكتروني لاسترداد الحساب إذا فقدت كلمة مرورك، ملاحظة: لا يتم كشف عنوان بريدك الإلكتروني عندما يتصل بك مستخدمون آخرون.",
 	"welcomesurvey-question-languages-label": "تتوفّر {{SITENAME}} في ما يقارب 300 لغة. هل يُمكنكم القراءة والكتابة بلغات أخرى؟",
 	"welcomesurvey-question-languages-placeholder": "أضف ما يصل إلى {{PLURAL:$1|لا لغات|لغة واحدة أخرى|لغتين أخرتين|$1 لغات أخرى|$1 لغة أخرى}}...",
-	"welcomesurvey-question-languages-maximum": "قمتم بإضافة العدد الأقصى من اللغات."
+	"welcomesurvey-question-languages-maximum": "أضفتم العدد الأقصى من اللغات."
 }

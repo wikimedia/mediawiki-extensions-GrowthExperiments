@@ -83,5 +83,6 @@
 	"echo-category-title-ge-mentorship": "Mentorství",
 	"echo-pref-tooltip-ge-mentorship": "Notifikace týkající se mentorství vytvořeného týmem Growth. Po zaškrtnutí této možnosti vám dáme vědět, že jste jako nováček byl převzat někým jiným, anebo že některý z vašich nováčků byl převzat jiným mentorem.",
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|Váš nováček}}, $3, {{GENDER:$3|byl převzat|byla převzata}} {{GENDER:$2|mentorem|mentorkou}} $1.",
-	"growthexperiments-notification-body-mentee-claimed": "Důvod: $1"
+	"growthexperiments-notification-body-mentee-claimed": "Důvod: $1",
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Co je to \"Převzetí nováčka\"?"
 }

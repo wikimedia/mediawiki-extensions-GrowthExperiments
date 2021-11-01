@@ -9,6 +9,7 @@
 			"Klaas van Buiten",
 			"Mainframe98",
 			"Mar(c)",
+			"McDutchie",
 			"RadioAzureus",
 			"Siebrand"
 		]
@@ -93,7 +94,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-rules1": "Volg deze richtlijnen bij het bijwerken van het artikel:\n* Zoek naar zinnen die gebeurtenissen uit het verleden beschrijven als in de toekomst.\n* Zoek naar cijfers die mogelijk verouderd zijn, zoals de bevolking van een land.\n* Zoek naar situaties die zijn veranderd onder de huidige gebeurtenissen, zoals de burgemeester van een stad.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-step1": "Wanneer {{GENDER:|je}} informatie ziet die moet worden bijgewerkt, klik dan op \"$1\" om te beginnen.",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-update-main-step1": "Als {{GENDER:|je}} informatie ziet die moet worden bijgewerkt, tik je op het bewerkingspotlood om aan de slag te gaan.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-step2": "Werk het artikel bij door het te verwijderen en te typen. Als {{GENDER:|je}} nieuwe informatie wijzigt of toevoegt, moet {{GENDER:|je}} [[$1|een referentie toevoegen]] voor de bron van die informatie.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-step2": "Werk het artikel bij door tekst te verwijderen en te typen. Als {{GENDER:|je}} nieuwe informatie wijzigt of toevoegt, moet {{GENDER:|je}} [[$1|een referentie toevoegen]] voor de bron van die informatie.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-step2-no-link": "Werk het artikel bij door het te verwijderen en te typen. Als {{GENDER:|je}} nieuwe informatie wijzigt of toevoegt, moet {{GENDER:|je}} een verwijzing naar de bron van die informatie toevoegen.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-publish": "Ga door met het bijwerken van het artikel of klik op \"$1\" om {{GENDER:|je}} bewerking op te slaan!",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-update-main-publish": "Ga door met het bijwerken van het artikel of tik op de blauwe pijlknop om {{GENDER:|je}} bewerking op te slaan!",
@@ -124,7 +125,7 @@
 	"growthexperiments-help-panel-questioncomplete-view-link-text": "Bekijk uw vraag op de helpdesk",
 	"growthexperiments-help-panel-questioncomplete-notifications-section-header": "Meldingen voor uw vraag:",
 	"growthexperiments-help-panel-questioncomplete-notifications-wiki": "Je ontvangt een melding hier op {{SITENAME}} zodra er een reactie is.",
-	"growthexperiments-help-panel-questioncomplete-notifications-email": "Je ontvangt ook een e-mail naar $1 ($2)",
+	"growthexperiments-help-panel-questioncomplete-notifications-email": "Je ontvangt ook een e-mail op $1 ($2)",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "wijzigen",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed": "Als {{GENDER:$2|je}} ook per e-mail op de hoogte wily worden gesteld, bevestig dan nu je e-mailadres: $1",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "Bevestig uw e-mail",

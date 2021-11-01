@@ -384,5 +384,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "বাতিল",
 	"growthexperiments-structuredtask-summary-submit": "জমা দিন",
 	"growthexperiments-addimage-rejectiondialog-action-done": "জমা দিন",
-	"growthexperiments-addimage-viewer-close-button": "বন্ধ করুন"
+	"growthexperiments-addimage-viewer-close-button": "বন্ধ করুন",
+	"growthexperiments-addimage-caption-info-dialog-confirm": "বুঝেছি"
 }

@@ -11,6 +11,6 @@
 	"growthexperiments-homepage-suggestededits-topic-name-biography": "နမ်းခြောင်ꩻခရာႏ (ကားကအဝ်ႏ)",
 	"growthexperiments-addimage-inspector-yes-button": "မွေး",
 	"growthexperiments-addimage-inspector-no-button": "မွေးတဝ်း",
-	"growthexperiments-addimage-inspector-skip-button": "ကာႏထိုꩻ",
-	"growthexperiments-addimage-inspector-details-button": "ထွားစဲင်းလို့"
+	"growthexperiments-addimage-inspector-skip-button": "{{GENDER:|တသေႏချာႏတဝ်း}}",
+	"growthexperiments-addimage-inspector-details-button": "ထွားစဲင်းသေႏချာႏလို့ပူင်ႏ"
 }

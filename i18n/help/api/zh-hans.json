@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"VulpesVulpes825",
+			"Xiplus",
 			"Yining Chen",
 			"列维劳德",
 			"羊羊32521"
@@ -13,5 +14,8 @@
 	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "“咨询台”面板",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "新手主页上的 \"询问您的导师 \"面板",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "帮助面板上“询问您的导师”界面",
-	"apihelp-helppanelquestionposter-param-relevanttitle": "相关标题 (如果已选择) 将包含在问题中。"
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "“询问咨询台”面板（旧名称）",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "在新手主页的“询问您的导师”面板（旧名称）",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "相关标题 (如果已选择) 将包含在问题中。",
+	"apierror-mustbeloggedin-helppanelquestionposter": "您必须登录才能发问。"
 }

@@ -80,7 +80,8 @@
 	"growthexperiments-quit-mentorship-success": "החניכים שלך ישויכו לחונכים אחרים בעוד זמן קצר.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "{{GENDER:$1|החונך הקודם שלך פרש|החונכת הקודמת שלך פרשה}} מאתר {{SITENAME}}.",
 	"echo-category-title-ge-mentorship": "חונכוּת",
-	"echo-pref-tooltip-ge-mentorship": "התראות ששייכות לאפשרויות החונכוּת שמתוחזקות על־ידי צוות הצמיחה. ההתראה הזאת מודיעה לך ששויכת בתור חניך או שאחד מהחניכים שלך שויך למישהו אחר.",
+	"echo-pref-tooltip-ge-mentorship": "התראות ששייכות לאפשרויות החונכוּת שמתוחזקות על־ידי צוות הצמיחה. ההתראה הזאת מודיעה לך שנקלטת בתור חניך או שאחד מהחניכים שלך נקלט על־ידי מישהו אחר.",
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|החניך|החניכה}} שלך, $3, שויך {{GENDER:$2|למשתמש|למשתמשת}} $1.",
-	"growthexperiments-notification-body-mentee-claimed": "סיבה: $1"
+	"growthexperiments-notification-body-mentee-claimed": "סיבה: $1",
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "מה זה \"לקלוט חניך\"?"
 }

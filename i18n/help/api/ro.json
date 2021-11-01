@@ -7,10 +7,10 @@
 	"apihelp-helppanelquestionposter-summary": "Mânuiți întrebări publicate prin intermediul panoului de ajutor pentru utilizatorul actual.",
 	"apihelp-helppanelquestionposter-param-body": "Textul întrebării oferit de utilizator.",
 	"apihelp-helppanelquestionposter-param-source": "Metoda prin care a fost publicată întrebarea.",
-	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Panoul „Întrebați la zona de ajutor”",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Panoul „Întrebați la biroul de ajutor”",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Panoul „Întrebați-vă mentorul” pe pagina acasă a nou-venitului",
 	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Ecranul „Întrebați-vă mentorul” pe panoul de ajutor",
-	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Panoul „Întrebați la zona de ajutor” (numele vechi)",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "Panoul „Întrebați la biroul de ajutor” (numele vechi)",
 	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Panoul „Întrebați-vă mentorul” pe pagina acasă a nou-venitului (numele vechi)",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Titlul relevant, dacă este selectat, cară se fie inclus cu întrebarea.",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Contul dvs. trebuie să fie autentificat pentru a pune o întrebare."

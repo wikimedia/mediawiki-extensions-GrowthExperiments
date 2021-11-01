@@ -3,6 +3,7 @@
 		"authors": [
 			"Martin Urbanec (WMF)",
 			"Robby",
+			"Xiplus",
 			"Ата"
 		]
 	},
@@ -55,7 +56,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Subheader in the \"Mentor tools\" mentor dashboard module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Label in the \"Mentor tools\" mentor dashboard module\n\n{{doc-growthexperiments-mentor-dashboard}}\n\n{{identical|Active}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Label in the \"Mentor tools\" mentor dashboard module\n\n{{doc-growthexperiments-mentor-dashboard}}",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Message shown in the \"Mentor tools\" mentor dashboard module if the mentor is currently away.\n\n{{doc-growthexperiments-mentor-dashboard}}",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "Message shown in the \"Mentor tools\" mentor dashboard module if the mentor is currently away.\n\nParameters:\n* $1 - date of the mentor came back\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Label in the \"Pause mentoring\" dialog in mentor dashboard's mentor tools module\n\n{{doc-growthexperiments-mentor-dashboard}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Label in the \"Pause mentoring\" dialog in mentor dashboard's mentor tools module\n\n{{doc-growthexperiments-mentor-dashboard}}\n\n{{identical|Cancel}}",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Label in the \"Pause mentoring\" dialog in mentor dashboard's mentor tools module\n\n{{doc-growthexperiments-mentor-dashboard}}",

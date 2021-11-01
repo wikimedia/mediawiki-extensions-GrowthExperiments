@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"AYZ04",
+			"Cosine02",
 			"Grace03",
 			"GuoPC",
 			"NACHOgao3",
@@ -16,15 +17,17 @@
 		]
 	},
 	"growthexperiments-desc": "这个扩展包括了 Growth 团队的试验性功能。",
-	"growthexperiments-config-validator-additional-fields": "新配置具有无法在此处自定义的配置键。",
+	"growthexperiments-config-validator-additional-fields": "新配置含有无法在此处自定义的配置键。",
 	"growthexperiments-config-validator-error": "验证$1失败：“$2”",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code>应该是<code>$2</code>，但是<code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "内容模型不匹配：GrowthExperiments配置档案内容模型必须为JSON，但配置档案的内容模型为$1",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "无效的任务类型进程ID：<code>$1</code>不是有效的数值。",
 	"growthexperiments-edit-config-disabled": "社区配置当前已禁用。",
 	"growthexperiments-edit-config-title": "编辑 Growth 配置",
 	"growthexperiments-edit-config-last-edit": "[[$3]]：由[[User:$1|$1]]最近更新于$2。",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]：由未知用户最近更新于$1。",
 	"growthexperiments-edit-config-pretext": "此页面允许您编辑[[:mw:Special:MyLanguage/Growth|Growth]]团队功能的配置。它将代表您编辑 $1。您可以在该页面的页面历史记录中看到您的更改。",
+	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|您}}还可以在新手主页展示横幅以包括对新手重要的活动，如果{{GENDER:|您}}想要这么做，{{GENDER:|您}}需要手动在[[$1]]加入，任何在此加入的内容将会在[[Special:Homepage]]的顶端以黄色横幅显示。",
 	"growthexperiments-edit-config-pretext-unprivileged": "这让一些有权限的用户来编辑[[:mw:Special:MyLanguage/Growth|Growth]] 的团队功能参数。",
 	"growthexperiments-edit-config-feedback-headline": "关于此表单的问题与想法：",
 	"growthexperiments-edit-config-feedback-cta": "提供反馈",
@@ -40,7 +43,7 @@
 	"growthexperiments-edit-config-help-panel-post-on-top": "新问题应该发布在咨询台页面的哪个位置？",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "页面顶部",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "页面底部",
-	"growthexperiments-edit-config-help-panel-view-more": "“查看更多帮助文章”的目标页面",
+	"growthexperiments-edit-config-help-panel-view-more": "“更多帮助页面”的目标页面",
 	"growthexperiments-edit-config-help-panel-searched-namespaces": "要包含在帮助面板的自由文本搜索帮助中的命名空间",
 	"growthexperiments-edit-config-help-panel-ask-mentor": "来自帮助面板的问题应该指向哪里？",
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "导师讨论页",
@@ -79,6 +82,11 @@
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "用于了解有关添加参考文献的更多信息的目标页面",
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "更新：用于查找需要使用当前信息更新的文章的模板。",
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "用于了解有关更新文章的更多信息的目标页面。",
+	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "了解链接建议任务类型更多信息的目标页面。",
+	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "了解图片建议任务类型更多信息的目标页面。",
+	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "此任务类型与机器建议关系，并且不使用模板来产生任务池。",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "包含此处定义的模板的文章将不会显示为用户作为任务类型的任务。",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "信息框模版"
+	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "包含此处定义分类的条目将不会以此任务类型向用户显示为任务。",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "信息框模版",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|图片建议]]新手任务功能需要这些模板，包含这些模板的条目将不会列在图片建议任务。"
 }

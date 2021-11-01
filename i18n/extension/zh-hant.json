@@ -22,7 +22,8 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]：最近更新由 [[User:$1|$1]] 於 $2。",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]：最近更新由 未知使用者 於 $1。",
 	"growthexperiments-edit-config-pretext": "此頁面允許您編輯 [[:mw:Special:MyLanguage/Growth|Growth]] 團隊功能的配置。它將代表您編輯 $1。您可以在該頁面的頁面歷史記錄中看到您的變更。",
-	"growthexperiments-edit-config-pretext-unprivileged": "這讓一些有權限的使用者來編輯 [[:mw:Special:MyLanguage/Growth|Growth]] 的團隊功能參數。",
+	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|您}}還可以在新手首頁展示橫幅以包括對新手重要的活動，如果{{GENDER:|您}}想要這麼做，{{GENDER:|您}}需要手動在[[$1]]加入，任何在此加入的內容將會在[[Special:Homepage]]的頂端以黃色橫幅顯示。",
+	"growthexperiments-edit-config-pretext-unprivileged": "這讓一些有權限的使用者來編輯[[:mw:Special:MyLanguage/Growth|Growth]]團隊功能的參數。",
 	"growthexperiments-edit-config-feedback-headline": "關於此表單的問題與想法：",
 	"growthexperiments-edit-config-feedback-cta": "提供回饋",
 	"growthexperiments-edit-config-error-invalid-title": "配置頁面沒有被正確配置",
@@ -37,7 +38,7 @@
 	"growthexperiments-edit-config-help-panel-post-on-top": "新問題應發布在諮詢臺頁面的哪個位置？",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "頁面頂部",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "頁面底部",
-	"growthexperiments-edit-config-help-panel-view-more": "「檢視更多幫助文章」的目標頁面",
+	"growthexperiments-edit-config-help-panel-view-more": "「更多幫助頁面」的目標頁面",
 	"growthexperiments-edit-config-help-panel-searched-namespaces": "要包含在幫助面板的自由文字搜尋幫助中的命名空間",
 	"growthexperiments-edit-config-help-panel-ask-mentor": "來自幫助面板的問題應該指向哪裡？",
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "導師討論頁",
@@ -77,7 +78,10 @@
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "更新：用於尋找需要使用當前資訊更新的文章的模板。",
 	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "用於了解有關更新文章的更多訊息的目標頁面。",
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "了解連結建議任務類型更多資訊的目標頁面。",
+	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "了解圖片建議任務類型更多資訊的目標頁面。",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "此任務類型與機器建議關聯，並且不使用模板來產生任務池。",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "包含此處定義模板的條目將不會以此任務類型向使用者顯示為任務。",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "資訊框模板"
+	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "包含此處定義分類的條目將不會以此任務類型向使用者顯示為任務。",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "資訊框模板",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "[[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|圖片建議]]新手任務功能需要這些模板，包含這些模板的條目將不會列在圖片建議任務。"
 }

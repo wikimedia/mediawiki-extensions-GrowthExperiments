@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xiplus"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "由目前用户将学员标记或取消标记星号（私密存储且不记录）",
+	"apihelp-growthstarmentee-param-gesaction": "要采取的行动（<kbd>加上标记</kbd>或<kbd>移除标记</kbd>）",
+	"apihelp-growthstarmentee-param-gesmentee": "（取消）标记学员",
+	"apihelp-query+growthstarredmentees-summary": "获取当前登录导师标记星号的学员名单",
+	"apihelp-growthsetmentorstatus-summary": "设置目前用户的导师状态为活跃/离开",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "新状态",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "当导师设置成离开时，必须要有以日为单位的离开状态长度",
+	"apihelp-query+growthmentorstatus-summary": "查询目前用户的导师状态",
+	"apihelp-growthmentordashboardupdatedata-summary": "安排导师面板中学员总览的特别更新。由于性能原因您每两个小时只能安排一次更新。"
+}

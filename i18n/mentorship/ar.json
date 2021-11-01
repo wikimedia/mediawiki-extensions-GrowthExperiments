@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Dyolf77",
-			"Dyolf77 (WMF)"
+			"Dyolf77 (WMF)",
+			"Michel Bakni"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "لوحة المرشدين",
@@ -13,8 +14,8 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|مرشَديكَ|مرشَديكِ}}",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "{{GENDER:|شاهد|شاهدي}} مرشَديك أدناه. {{GENDER:|استخدم|استخدمي}} المرشحات لتغيير عرض المرشَدين.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "يتطلّب الجدول الجافاسكريبت. فضلا قوموا بتفعيل جافاسكريبت للتمكّن من استخدام هذه الوحدة.",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "من يُعرض على قائمتك؟",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "تعرض القائمة فقط المرشَدين الذين أنشؤوا حساباتهم خلال الأسبوعين الماضيين أو الذين أجروا تعديلات في الأشهر الستة الماضية. يتم تحديث البيانات يوميا.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "مَن يُعرَض على قائمتك؟",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "تعرض القائمة فقط المرشَدين الذين أنشؤوا حساباتهم خلال الأسبوعين الماضيين أو الذين أجروا تعديلات في الأشهر الستة الماضية. تُحدَّث البيانات يومياً.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "الدليل",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "التّعليم على المرشَدين",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "اسم المستخدم",
@@ -63,8 +64,8 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "أيام",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-badinteger": "قيمة «ستتغيبون لفترة» ليست بعدد صحيح. حاولوا مرة أخرى من فضلكم.",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "لقد حدث خطأ. كرر المحاولة لاحقا.",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "تمّ تغيير وضعكم إلى «نشط».",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "تمّ تغيير وضعكم إلى «غير متوفّر».",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "غُيِّر وضعكم إلى «نشط».",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "غُيِّر وضعكم إلى «غير متوفّر».",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-message-headline": "رسالة إلى مرشَديك",
 	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-headline": "خيارات أخرى",
 	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-claim-mentee": "مطالبة بمرشَد أو بمرشَدة",

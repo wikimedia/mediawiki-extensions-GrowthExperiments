@@ -13,5 +13,6 @@
 	"apihelp-growthsetmentorstatus-summary": "Установить текущему участнику статус наставника как активный/не в месте",
 	"apihelp-growthsetmentorstatus-param-gesstatus": "Новый статус",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "При обозначении наставника как неактивного, надо указать продолжительность статуса «не на месте» (в днях)",
-	"apihelp-query+growthmentorstatus-summary": "Запрос на то, какой у текущего участника статус наставника"
+	"apihelp-query+growthmentorstatus-summary": "Запрос на то, какой у текущего участника статус наставника",
+	"apihelp-growthmentordashboardupdatedata-summary": "Запланировать внеочередное обновление модуля обзора подопечных на панели наставника. По рабочим соображениям вы можете запланировать не более одного обновления в течение двух часов."
 }

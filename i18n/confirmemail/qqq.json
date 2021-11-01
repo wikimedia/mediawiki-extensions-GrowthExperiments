@@ -3,7 +3,8 @@
 		"authors": [
 			"Jeeputer",
 			"Pikne",
-			"Roan Kattouw"
+			"Roan Kattouw",
+			"Xiplus"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "Help link in the CAPTCHA label. Shown next to {{msg-mw|fancycaptcha-captcha}}. Replaces part of {{msg-mw|fancycaptcha-accountcreate}}.",
@@ -19,6 +20,6 @@
 	"growthexperiments-signupcampaign-bullet1": "First highlight of the Special:CreateAccount block that's shown to Wikimedia donors. (This is for a one-off experiment and will be removed soon. Only needs to be translated into es and pt.)",
 	"growthexperiments-signupcampaign-bullet2": "Second highlight of the Special:CreateAccount block that's shown to Wikimedia donors. (This is for a one-off experiment and will be removed soon. Only needs to be translated into es and pt.)",
 	"growthexperiments-signupcampaign-bullet3": "Third highlight of the Special:CreateAccount block that's shown to Wikimedia donors. (This is for a one-off experiment and will be removed soon. Only needs to be translated into es and pt.)",
-	"growthexperiments-recurringcampaign-title": "Title of the Special:CreateAccount block that is shown to recurring Wikimedia donors. (This is for a one-off experiment and will be removed soon. Does not need to be translated.)",
-	"growthexperiments-recurringcampaign-body": "Body of the Special:CreateAccount block that is shown to recurring Wikimedia donors. (This is for a one-off experiment and will be removed soon. Does not need to be translated.)"
+	"growthexperiments-recurringcampaign-title": "{{Notranslate}}\nThis is for a one-off experiment and will be removed soon. Does not need to be translated.\n\nTitle of the Special:CreateAccount block that is shown to recurring Wikimedia donors.",
+	"growthexperiments-recurringcampaign-body": "{{Notranslate}}\nThis is for a one-off experiment and will be removed soon. Does not need to be translated.\n\nBody of the Special:CreateAccount block that is shown to recurring Wikimedia donors."
 }
