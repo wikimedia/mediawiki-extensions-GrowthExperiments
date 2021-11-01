@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
+use File;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Http\HttpRequestFactory;
@@ -85,12 +86,13 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		Assert::parameterType( ImageRecommendationTaskType::class, $taskType, '$taskType' );
 		$title = $this->titleFactory->newFromLinkTarget( $title );
 		$titleText = $title->getPrefixedDBkey();
+		$titleTextSafe = strip_tags( $titleText );
 		if ( !$title->exists() ) {
 			// These errors might show up to the end user, but provide no useful information;
 			// they are merely there to support debugging. So we keep them English-only to
 			// to reduce the translator burden.
 			return StatusValue::newFatal( 'rawmessage',
-				'Recommendation could not be loaded for non-existing page: ' . $titleText );
+				'Recommendation could not be loaded for non-existing page: ' . $titleTextSafe );
 		}
 		if ( !$this->url ) {
 			return StatusValue::newFatal( 'rawmessage',
@@ -136,11 +138,11 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		$data = json_decode( $response, true );
 		if ( $data === null ) {
 			return StatusValue::newFatal( 'rawmessage',
-				'Invalid JSON response for page: ' . $titleText );
+				'Invalid JSON response for page: ' . $titleTextSafe );
 		} elseif ( $request->getStatus() >= 400 ) {
 			return StatusValue::newFatal( 'rawmessage',
 				'API returned HTTP code ' . $request->getStatus() . ' for page '
-				. $titleText . ': ' . ( $data['detail'] ?? '<no reason given>' ) );
+				. $titleTextSafe . ': ' . ( strip_tags( $data['detail'] ?? '(no reason given)' ) ) );
 		}
 
 		return self::processApiResponseData( $title, $titleText, $data, $this->metadataProvider );
@@ -162,32 +164,54 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		array $data,
 		ImageRecommendationMetadataProvider $metadataProvider
 	) {
+		$titleTextSafe = strip_tags( $titleText );
 		if ( !$data['pages'] ) {
 			return StatusValue::newFatal( 'rawmessage',
-				'No recommendation found for page: ' . $titleText );
+				'No recommendation found for page: ' . $titleTextSafe );
 		}
 		$images = [];
 		$datasetId = '';
 		$status = StatusValue::newGood();
 		foreach ( $data['pages'][0]['suggestions'] as $suggestion ) {
+			$filename = $suggestion['filename'];
 			$source = $suggestion['source']['details']['from'];
 			$projects = $suggestion['source']['details']['found_on'];
 			$datasetId = $suggestion['source']['details']['dataset_id'];
+			if ( !is_string( $filename ) || !File::normalizeTitle( $filename ) ) {
+				return StatusValue::newFatal( 'rawmessage',
+					'Invalid filename format for ' . $titleTextSafe . ': ' . strip_tags( $source ) );
+			} else {
+				$filename = File::normalizeTitle( $filename )->getDBkey();
+			}
 			if ( !in_array( $source, [
 				ImageRecommendationImage::SOURCE_WIKIDATA,
 				ImageRecommendationImage::SOURCE_WIKIPEDIA,
 				ImageRecommendationImage::SOURCE_COMMONS,
 			], true ) ) {
 				return StatusValue::newFatal( 'rawmessage',
-					'Invalid source type for ' . $titleText . ': ' . $source );
+					'Invalid source type for ' . $titleTextSafe . ': ' . strip_tags( $source ) );
+			}
+			if ( !is_string( $projects ) ) {
+				return StatusValue::newFatal( 'rawmessage',
+					'Invalid projects format for ' . $titleTextSafe );
+			} elseif ( $projects ) {
+				$projects = array_map( static function ( $project ) {
+					return preg_replace( '/[^a-zA-Z0-9_-]/', '', $project );
+				}, explode( ',', $projects ) );
+			} else {
+				$projects = [];
+			}
+			if ( !is_string( $datasetId ) ) {
+				return StatusValue::newFatal( 'rawmessage',
+					'Invalid datasetId format for ' . $titleTextSafe );
 			}
 
-			$imageMetadata = $metadataProvider->getMetadata( $suggestion['filename'] );
+			$imageMetadata = $metadataProvider->getMetadata( $filename );
 			if ( is_array( $imageMetadata ) ) {
 				$images[] = new ImageRecommendationImage(
-					new TitleValue( NS_FILE, $suggestion['filename'] ),
+					new TitleValue( NS_FILE, $filename ),
 					$source,
-					$projects ? explode( ',', $projects ) : [],
+					$projects,
 					$imageMetadata
 				);
 			} else {
@@ -198,7 +222,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		if ( !$images ) {
 			if ( $status->isGood() ) {
 				// $data['pages'][0]['suggestions'] was empty. This shouldn't happen.
-				$status->fatal( 'rawmessage', 'No recommendation found for page: ' . $titleText );
+				$status->fatal( 'rawmessage', 'No recommendation found for page: ' . $titleTextSafe );
 			}
 			return $status;
 		}

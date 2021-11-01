@@ -1,12 +1,16 @@
 <?php
 
-namespace GrowthExperiments\NewcomerTasks\AddImage;
+namespace GrowthExperiments\Tests;
 
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendation;
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationImage;
+use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
+use GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
-use MediaWikiUnitTestCase;
+use MediaWikiIntegrationTestCase;
 use MockTitleTrait;
 use MWHttpRequest;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -17,7 +21,9 @@ use TitleValue;
 /**
  * @covers \GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider
  */
-class ServiceImageRecommendationProviderTest extends MediaWikiUnitTestCase {
+class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCase {
+	// These should really be unit tests but must be declared as integration tests because
+	// File::normalizeTitle() cannot be mocked and has all kinds of dependencies :(
 
 	use MockTitleTrait;
 
@@ -30,12 +36,12 @@ class ServiceImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 			ImageRecommendationMetadataProvider::class
 		);
 		$metadataProvider->method( 'getMetadata' )->willReturn( [
-				'description' => 'description',
-				'thumbUrl' => 'thumb url',
-				'fullUrl' => 'full url',
-				'descriptionUrl' => 'description url',
-				'originalWidth' => 1024,
-				'originalHeight' => 768,
+			'description' => 'description',
+			'thumbUrl' => 'thumb url',
+			'fullUrl' => 'full url',
+			'descriptionUrl' => 'description url',
+			'originalWidth' => 1024,
+			'originalHeight' => 768,
 		] );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$useTitle = true;
@@ -51,9 +57,9 @@ class ServiceImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 					[ 'filename' => '14_1.png', 'source' => [ 'name' => 'ima', 'details' => [
 						'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
 					] ] ],
-				   [ 'filename' => '14_2.png', 'source' => [ 'name' => 'ima', 'details' => [
-					   'from' => 'commons', 'found_on' => '', 'dataset_id' => 'x',
-				   ] ] ],
+					[ 'filename' => '14_2.png', 'source' => [ 'name' => 'ima', 'details' => [
+						'from' => 'commons', 'found_on' => '', 'dataset_id' => 'x',
+					] ] ],
 				] ] ] ] ],
 			'http://example.com/image-suggestions/v0/wikipedia/en/pages/15?source=ima' => [ 200,
 				[ 'pages' => [ [ 'suggestions' => [
@@ -110,7 +116,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 		$useTitle = false;
 		$provider = new ServiceImageRecommendationProvider( $titleFactory, $this->getHttpRequestFactory( [
 			'http://example.com/image-suggestions/v0/wikipedia/en/pages?source=ima&id=10' => [ 200,
-				[ 'pages' => [] ] ],
+			   [ 'pages' => [] ] ],
 		] ), $url, null, $wikiProject, $wikiLanguage, $metadataProvider, null, $useTitle );
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertInstanceOf( StatusValue::class, $recommendation );
@@ -130,17 +136,16 @@ class ServiceImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 		$useTitle = true;
 		$provider = new ServiceImageRecommendationProvider(
 			$this->getTitleFactory(), $this->getHttpRequestFactory( [
-				'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 200,
-					[ 'pages' => [ [ 'suggestions' => [
-						[ 'filename' => '1.png', 'source' => [ 'name' => 'ima', 'details' => [
-							'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
+			'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 200,
+				[ 'pages' => [ [ 'suggestions' => [
+					[ 'filename' => '1.png', 'source' => [ 'name' => 'ima', 'details' => [
+						'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
 					] ] ],
-						[ 'filename' => '2.png', 'source' => [ 'name' => 'ima', 'details' => [
-							'from' => 'commons', 'found_on' => '', 'dataset_id' => 'x',
-						] ] ],
-					] ] ] ] ],
-			] ),
-			$url, null, $wikiProject, $wikiLanguage, $metadataProvider, null, $useTitle );
+					[ 'filename' => '2.png', 'source' => [ 'name' => 'ima', 'details' => [
+						'from' => 'commons', 'found_on' => '', 'dataset_id' => 'x',
+					] ] ],
+				] ] ] ] ],
+		] ), $url, null, $wikiProject, $wikiLanguage, $metadataProvider, null, $useTitle );
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertTrue( $recommendation instanceof StatusValue );
 	}
@@ -170,21 +175,102 @@ class ServiceImageRecommendationProviderTest extends MediaWikiUnitTestCase {
 		$useTitle = true;
 		$provider = new ServiceImageRecommendationProvider(
 			$this->getTitleFactory(), $this->getHttpRequestFactory( [
-				'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 200,
-					[ 'pages' => [ [ 'suggestions' => [
-						[ 'filename' => 'Bad.png', 'source' => [ 'name' => 'ima', 'details' => [
-							'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
-						] ] ],
-						[ 'filename' => 'Good.png', 'source' => [ 'name' => 'ima', 'details' => [
-							'from' => 'commons', 'found_on' => '', 'dataset_id' => 'x',
-						] ] ],
-					] ] ] ] ],
-			] ),
-			$url, null, $wikiProject, $wikiLanguage, $metadataProvider, null, $useTitle );
+			'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 200,
+				[ 'pages' => [ [ 'suggestions' => [
+					[ 'filename' => 'Bad.png', 'source' => [ 'name' => 'ima', 'details' => [
+						'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
+					] ] ],
+					[ 'filename' => 'Good.png', 'source' => [ 'name' => 'ima', 'details' => [
+						'from' => 'commons', 'found_on' => '', 'dataset_id' => 'x',
+					] ] ],
+				] ] ] ] ],
+		] ), $url, null, $wikiProject, $wikiLanguage, $metadataProvider, null, $useTitle );
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertTrue( $recommendation instanceof ImageRecommendation );
 		$this->assertCount( 1, $recommendation->getImages() );
 		$this->assertSame( 'Good.png', $recommendation->getImages()[0]->getImageTitle()->getDBkey() );
+	}
+
+	/**
+	 * @dataProvider provideProcessApiResponseData
+	 * @param array $data API response data.
+	 * @param array|null $expectedResult Expected result of ImageRecommendation::toArray, or null
+	 *   on error.
+	 */
+	public function testProcessApiResponseData( array $data, ?array $expectedResult ) {
+		$mockMetadataProvider = $this->createNoOpMock(
+			ImageRecommendationMetadataProvider::class, [ 'getMetadata' ] );
+		$mockMetadataProvider->method( 'getMetadata' )->willReturn( [] );
+		$result = ServiceImageRecommendationProvider::processApiResponseData(
+			new TitleValue( 0, 'Foo' ), 'Foo', $data, $mockMetadataProvider );
+		if ( $expectedResult !== null ) {
+			$this->assertInstanceOf( ImageRecommendation::class, $result );
+			$this->assertSame( $expectedResult, $result->toArray() );
+		} else {
+			$this->assertInstanceOf( StatusValue::class, $result );
+		}
+	}
+
+	public function provideProcessApiResponseData() {
+		$validSource = [
+			'from' => 'wikipedia',
+			'found_on' => 'enwiki,dewiki',
+			'dataset_id' => '1.23',
+		];
+		$validSuggestion = [
+			'filename' => 'Foo.png',
+			'source' => [ 'details' => $validSource ],
+		];
+
+		return [
+			'no page' => [ [ 'pages' => [] ], null ],
+			'no suggestions' => [ [ 'pages' => [
+				[ 'suggestions' => [] ],
+			] ], null ],
+			'invalid filename' => [ [ 'pages' => [
+				[ 'suggestions' => [
+					[ 'filename' => [] ] + $validSuggestion,
+				] ],
+			] ], null ],
+			'invalid filename #2' => [ [ 'pages' => [
+				[ 'suggestions' => [
+					[ 'filename' => 'Foo<script>.png' ] + $validSuggestion,
+				] ],
+			] ], null ],
+			'invalid from' => [ [ 'pages' => [
+				[ 'suggestions' => [
+					[ 'source' => [ 'details' => [ 'from' => true ] + $validSource ] ] + $validSuggestion,
+				] ],
+			] ], null ],
+			'invalid from #2' => [ [ 'pages' => [
+				[ 'suggestions' => [
+					[ 'source' => [ 'details' => [ 'from' => 'foo' ] + $validSource ] ] + $validSuggestion,
+				] ],
+			] ], null ],
+			'invalid found_on' => [ [ 'pages' => [
+				[ 'suggestions' => [
+					[ 'source' => [ 'details' => [ 'found_on' => true ] + $validSource ] ] + $validSuggestion,
+				] ],
+			] ], null ],
+			'invalid dataset_id' => [ [ 'pages' => [
+				[ 'suggestions' => [
+					[ 'source' => [ 'details' => [ 'dataset_id' => true ] + $validSource ] ] + $validSuggestion,
+				] ],
+			] ], null ],
+			'valid' => [ [ 'pages' => [ [ 'suggestions' => [ $validSuggestion ] ] ] ], [
+				'titleNamespace' => 0,
+				'titleText' => 'Foo',
+				'images' => [
+					[
+						'image' => 'Foo.png',
+						'source' => 'wikipedia',
+						'projects' => [ 'enwiki', 'dewiki' ],
+						'metadata' => [],
+					],
+				],
+				'datasetId' => '1.23',
+			] ],
+		];
 	}
 
 	/**
