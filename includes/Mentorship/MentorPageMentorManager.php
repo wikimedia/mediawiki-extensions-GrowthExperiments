@@ -183,10 +183,8 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			}
 		}
 		if ( $role === MentorStore::ROLE_BACKUP ) {
-			$excludedUsers += array_map(
-				static function ( $mentor ) {
-					return $mentor->getId();
-				},
+			$excludedUsers = array_merge(
+				$excludedUsers,
 				$this->mentorStatusManager->getAwayMentors()
 			);
 		}
