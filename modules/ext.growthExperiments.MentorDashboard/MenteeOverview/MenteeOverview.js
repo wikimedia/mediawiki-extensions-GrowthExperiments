@@ -389,7 +389,13 @@
 						),
 						menteeOverview.makeValueTd(
 							mw.language.convertNumber( userData.questions ),
-							'questions'
+							'questions',
+							mw.util.getUrl(
+								'Special:Contributions/' + userData.username,
+								{
+									tagfilter: TagsToFilterBy.questions.join( '|' )
+								}
+							)
 						),
 						menteeOverview.makeValueTd(
 							mw.language.convertNumber( userData.editcount ),
