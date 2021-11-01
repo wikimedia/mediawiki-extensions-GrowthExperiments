@@ -5,6 +5,7 @@ namespace GrowthExperiments\Mentorship;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use IContextSource;
 use MediaWiki\JobQueue\JobQueueGroupFactory;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\User\UserIdentity;
 
@@ -54,7 +55,7 @@ class QuitMentorshipFactory {
 		UserIdentity $mentor,
 		IContextSource $context
 	): QuitMentorship {
-		return new QuitMentorship(
+		$quitMentorship = new QuitMentorship(
 			$this->mentorManager,
 			$this->mentorStore,
 			$this->changeMentorFactory,
@@ -63,5 +64,7 @@ class QuitMentorshipFactory {
 			$mentor,
 			$context
 		);
+		$quitMentorship->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
+		return $quitMentorship;
 	}
 }
