@@ -81,6 +81,7 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "退出導師計畫的下一步是重新分配您的學員，如果您確定要離開，請按下下面的按鈕。",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "是的，重新分配我的學生",
 	"growthexperiments-quit-mentorship-success": "您的學員將很快地重新分配給其他導師。",
+	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|您}}目前沒有任何學員。",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1從導師計畫{{GENDER:$1|退休}}。",
 	"echo-category-title-ge-mentorship": "導師計畫",
 	"echo-pref-tooltip-ge-mentorship": "關於Growth團隊維護的導師計畫功能的通知，此通知讓您知道您已被認領為學員或您的學員被其他人認領。",

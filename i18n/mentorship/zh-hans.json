@@ -81,6 +81,7 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "退出导师项目的下一步是重新分配您的学员，如果您确定要离开，请按下下面的按钮。",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "是的，重新分配我的学生",
 	"growthexperiments-quit-mentorship-success": "您的学员将很快地重新分配给其他导师。",
+	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|您}}目前没有任何学员。",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1从导师项目{{GENDER:$1|退休}}。",
 	"echo-category-title-ge-mentorship": "导师计画",
 	"echo-pref-tooltip-ge-mentorship": "关于Growth团队维护的导师项目功能的通知，此通知让您知道您已被认领为学员或您的学员被其他人认领。",

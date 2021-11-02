@@ -11,5 +11,6 @@
 	"apihelp-growthsetmentorstatus-summary": "Nastavit stav současného uživatele na aktivní/pryč",
 	"apihelp-growthsetmentorstatus-param-gesstatus": "Nový stav",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "Pokud nastavujete stav mentora na \"pryč\", zde musí být délka ve dnech, po kterou má být aplikován.",
-	"apihelp-query+growthmentorstatus-summary": "Zjistit stav současného uživatele"
+	"apihelp-query+growthmentorstatus-summary": "Zjistit stav současného uživatele",
+	"apihelp-growthmentordashboardupdatedata-summary": "Naplánovat mimořádnou aktualizaci modulu \"Vaši nováčci\". Z výkonnostních důvodů můžete naplánovat maximálně jednu aktualizaci každé dvě hodiny."
 }

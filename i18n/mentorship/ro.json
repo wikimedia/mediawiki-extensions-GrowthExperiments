@@ -78,6 +78,7 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Următorul pas în renunțarea la statutul de mentor este să vă reatribuiți ucenicii. Dacă sunteți {{GENDER:|sigur|sigură}} că vreți să renunțați să fiți mentor, vă rugăm să apăsați butonul de mai jos.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Da, reatribuie-mi ucenicii",
 	"growthexperiments-quit-mentorship-success": "Ucenicii dvs. vor fi reatribuiți altor mentori în scurt timp.",
+	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|Momentan}} nu aveți niciun ucenic.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 a {{GENDER:$1|renunțat}} să fie mentor.",
 	"echo-category-title-ge-mentorship": "Activitate de mentor",
 	"echo-pref-tooltip-ge-mentorship": "Notificări legate de funcțiile activității de mentor întreținute de echipa Growth. Această notificare vă înștiințează că ați fost {{GENDER:|revendicat|revendicată}} ca ucenic sau că unul dintre ucenicii dvs. a fost revendicat de către altcineva.",

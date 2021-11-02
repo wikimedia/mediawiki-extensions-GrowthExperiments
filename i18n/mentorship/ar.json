@@ -84,5 +84,6 @@
 	"echo-category-title-ge-mentorship": "الإرشاد",
 	"echo-pref-tooltip-ge-mentorship": "الإشعارات المتعلقة بمزايا الإرشاد يهتمّ بها فريق النموّ. يتيح لك هذا الإشعار معرفة أنه تمت مطالبتك كمُرشَد، أو أن أحد مُرشَديك قد طالب به شخص آخر.",
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|مرشَدك|مرشَدتك}}، $3، تمّت {{GENDER:$2|مطالبته|مطالبتها}} من قبل $1.",
-	"growthexperiments-notification-body-mentee-claimed": "السبب: $1"
+	"growthexperiments-notification-body-mentee-claimed": "السبب: $1",
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "ما معنى «المُطالبة بمرشَد»؟"
 }

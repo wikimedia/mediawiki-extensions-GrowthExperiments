@@ -78,5 +78,6 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "মেন্টরশিপ প্রস্থানের পরবর্তী ধাপ হলো আপনার পরামর্শগ্রহীতাদের পুনরায় অন্য মেন্টর নিয়োগ করা। আপনি যদি নিশ্চিতভাবে প্রস্থান করতে চান, তবে নিচের বাটনে চাপ দিন।",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "হ্যাঁ, আমার পরামর্শগ্রহীতাদের নতুনভাবে যুক্ত করো",
 	"growthexperiments-quit-mentorship-success": "আপনার পরামর্শগ্রহীতারা দ্রুতই অন্য মেন্টরের কাছে সমর্পিত হবে।",
-	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 মেন্টরশিপ থেকে {{GENDER:$1|অবসর নিয়েছেন}}।"
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 মেন্টরশিপ থেকে {{GENDER:$1|অবসর নিয়েছেন}}।",
+	"growthexperiments-notification-body-mentee-claimed": "কারণ: $1"
 }

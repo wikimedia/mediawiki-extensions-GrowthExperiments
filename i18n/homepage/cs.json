@@ -449,6 +449,7 @@
 	"growthexperiments-addimage-caption-info-dialog-title": "Napište krátký popisek, který se v článku zobrazí spolu s obrázkem.",
 	"growthexperiments-addimage-caption-info-dialog-message": "Čtenáři tohoto článku uvidí váš popisek spolu s obrázkem. Níže nabízíme několik rad:",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-describe": "Popište tento obrázek tak, aby bylo jasné, jak se tohoto článku týká.",
+	"growthexperiments-addimage-caption-info-dialog-guidelines-review": "Prohlédněte si detaily o navrženém obrázku znovu, a zjistěte, jaké informace jsou relevantní.",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-neutral": "Buďte neutrální tím, že se vyhnete hodnotícím slovům jako je „dobrý“, „ošklivý“ nebo „nádherný“.",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-language": "Pište v jazyce Wikipedie, na které právě {{GENDER:|jste}}.",
 	"growthexperiments-addimage-caption-info-dialog-confirm": "Rozumím",
