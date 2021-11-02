@@ -29,8 +29,6 @@ class ImageRecommendationMetadataProvider {
 	private const SUGGESTION_REASON_PROJECTS_SHOWN = 2;
 
 	/**
-	 * ImageRecommendationMetadataProvider constructor.
-	 *
 	 * @param ImageRecommendationMetadataService $service
 	 * @param string $wikiLanguage
 	 * @param string[] $fallbackLanguages
@@ -54,20 +52,49 @@ class ImageRecommendationMetadataProvider {
 	}
 
 	/**
-	 * Get the description string from the specified description metadata in the content language,
-	 * or in one of the fallback languages. Return null if the description is not available
+	 * Returns an array with fields extracted from extended metadata fields. See
+	 * {@see ImageRecommendationMetadataProvider::getMetadata()} for details.
 	 *
 	 * @param array $extendedMetadata
+	 * @return array
+	 */
+	private function filterExtendedMetadata( array $extendedMetadata ): array {
+		return [
+			// description field of {{information}} template - see
+			// https://commons.wikimedia.org/wiki/Template:Information
+			'description' => $this->getExtendedMetadataField( $extendedMetadata, 'ImageDescription' ),
+			// author field of {{information}} template
+			'author' => $this->getExtendedMetadataField( $extendedMetadata, 'Artist' ),
+			// short name like 'CC BY-SA 3.0',  typically parsed from the first license template on the page
+			'license' => $this->getExtendedMetadataField( $extendedMetadata, 'LicenseShortName' ),
+			// DateTimeOriginal is the date field of {{information}} template.
+			// DateTime is image creation date from EXIF or similar embedded metadata, with fallback
+			// to the file upload date.
+			'date' => $this->getExtendedMetadataField( $extendedMetadata, 'DateTimeOriginal' )
+				?? $this->getExtendedMetadataField( $extendedMetadata, 'DateTime' ),
+		];
+	}
+
+	/**
+	 * @param array $extendedMetadata
+	 * @param string $fieldName
 	 * @return string|null
 	 */
-	private function getDescriptionValue( array $extendedMetadata ): ?string {
-		if ( isset( $extendedMetadata['ImageDescription']['value'] ) ) {
-			$descriptionData = $extendedMetadata['ImageDescription']['value'];
+	private function getExtendedMetadataField( array $extendedMetadata, string $fieldName ) {
+		if ( isset( $extendedMetadata[$fieldName]['value'] ) ) {
+			$value = $extendedMetadata[$fieldName]['value'];
+			if ( !is_array( $value ) ) {
+				return $value;
+			}
+			// Array means the field is multilingual, we need to select the best language.
 			foreach ( $this->languages as $language ) {
-				if ( isset( $descriptionData[$language] ) ) {
-					return $descriptionData[$language];
+				if ( isset( $value[$language] ) ) {
+					return $value[$language];
 				}
 			}
+			// None of the languages are relevant to the user, we can't really rank them.
+			// Just pick the first one.
+			return $value ? reset( $value ) : null;
 		}
 		return null;
 	}
@@ -219,19 +246,42 @@ class ImageRecommendationMetadataProvider {
 	/**
 	 * Get metadata for the specified image file name
 	 *
-	 * @param array $suggestion
-	 * @return array|StatusValue
+	 * @param array $suggestion Suggestion data, as returned by the API.
+	 * @return array|StatusValue On success, an array with the following fields:
+	 *   Image metadata:
+	 *   - descriptionUrl: image description page URL
+	 *   - thumbUrl: URL to image scaled to THUMB_WIDTH
+	 *   - fullUrl: URL to original image
+	 *   - originalWidth: full image width
+	 *   - originalHeight: full image height
+	 *   - mustRender: true if the original image wouldn't display correctly in a browser
+	 *   - isVectorized: whether the image is a vector image (ie. has no max size)
+	 *   Extended metadata:
+	 *   - description: image description in content language, or null. Might contain HTML.
+	 *   - author: original author of image, in content language, or null. Might contain HTML.
+	 *   - license: short license name, in content language, or null. Might contain HTML.
+	 *   - date: date of original image creation. Can be pretty much any format - ISO timestamp,
+	 *     text in any language, HTML. Always present.
+	 *   Metadata from the API of the image host:
+	 *   - caption: MediaInfo caption as a plaintext string in the current wiki's content language,
+	 *     or null.
+	 *   - categories: non-hidden categories of the image as an array of unprefixed title strings
+	 *     with spaces.
+	 *   Other:
+	 *   - reason: a human-readable representation of the suggestion's 'source' and 'project' fields.
 	 */
 	public function getMetadata( array $suggestion ) {
 		$filename = $suggestion['filename'];
-		$extendedMetadata = $this->service->getExtendedMetadata( $filename );
 		$fileMetadata = $this->service->getFileMetadata( $filename );
-		if ( $fileMetadata instanceof StatusValue ) {
-			return $fileMetadata;
+		$extendedMetadata = $this->service->getExtendedMetadata( $filename );
+		$apiMetadata = $this->service->getApiMetadata( $filename );
+		foreach ( [ $fileMetadata, $extendedMetadata, $apiMetadata ] as $metadata ) {
+			if ( $metadata instanceof StatusValue ) {
+				return $metadata;
+			}
 		}
-		return [
-			'description' => $this->getDescriptionValue( $extendedMetadata ),
-			'reason' => $this->getSuggestionReason( $suggestion ),
-		] + $fileMetadata;
+		return $fileMetadata + $this->filterExtendedMetadata( $extendedMetadata ) + $apiMetadata + [
+				'reason' => $this->getSuggestionReason( $suggestion ),
+		];
 	}
 }
