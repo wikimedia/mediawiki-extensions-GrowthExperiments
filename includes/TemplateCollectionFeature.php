@@ -11,7 +11,6 @@ use CirrusSearch\Search\Filters;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\WarningCollector;
 use Elastica\Query\AbstractQuery;
-use Elastica\Query\MatchNone;
 use MediaWiki\Linker\LinkTarget;
 use TitleFactory;
 use TitleValue;
@@ -90,31 +89,30 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 	protected function doApply( SearchContext $context, $key, $value, $quotedValue, $negated ) {
 		$filter = $this->doGetFilterQuery(
 			$this->parseValue( $key, $value, $quotedValue, '', '', $context ) );
+		if ( $filter === null ) {
+			// If there are no templates in a collection, it shouldn't match.
+			$context->setResultsPossible( false );
+		}
 		return [ $filter, false ];
 	}
 
 	/** @inheritDoc */
 	public function getFilterQuery( KeywordFeatureNode $node, QueryBuildingContext $context ) {
+		// TODO handle the null case once CirrusSearch starts using this method.
 		return $this->doGetFilterQuery( $node->getParsedValue() );
 	}
 
 	/**
 	 * @param string[][] $parsedValue
-	 * @return AbstractQuery
+	 * @return AbstractQuery|null
 	 */
 	protected function doGetFilterQuery( array $parsedValue ) {
-		if ( !$parsedValue['templates'] ) {
-			// If there are no templates in a collection, it shouldn't match.
-			// The weird syntax is a workaround for T294601
-			return Filters::booleanOr( [ new MatchNone(), new MatchNone() ] );
-		}
-
 		return Filters::booleanOr( array_map(
 			static function ( $v )  {
 				return QueryHelper::matchPage( 'template.keyword', $v );
 			},
 			$parsedValue['templates']
-		) );
+		), false );
 	}
 
 }
