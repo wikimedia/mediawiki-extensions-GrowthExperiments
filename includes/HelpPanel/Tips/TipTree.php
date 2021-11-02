@@ -5,9 +5,11 @@ namespace GrowthExperiments\HelpPanel\Tips;
 abstract class TipTree {
 
 	public const TIP_DATA_TYPE_PLAIN_MESSAGE = 'message';
+	public const TIP_DATA_TYPE_TEXT_VARIANT = 'text-variant';
 	public const TIP_DATA_TYPE_IMAGE = 'image';
 	public const TIP_DATA_TYPE_OOUI_ICON = 'icon';
 	public const TIP_DATA_TYPE_TITLE = 'title';
+	public const TIP_TYPE_MAIN_MULTIPLE_MAX_NODES = 3;
 
 	// The tip step names to use for constructing guidance tips in the help
 	// panel's suggested edit screen. Hard-coded for now.
@@ -24,7 +26,12 @@ abstract class TipTree {
 
 	// The types of tips that can be shown for a task type. Hard-coded for now.
 	private const TIP_TYPES = [
-		'header', 'main', 'example', 'graphic', 'text'
+		'header',
+		'main',
+		'main-multiple',
+		'example',
+		'graphic',
+		'text'
 	];
 	/**
 	 * @var string|null
