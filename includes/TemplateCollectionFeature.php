@@ -89,8 +89,9 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 	protected function doApply( SearchContext $context, $key, $value, $quotedValue, $negated ) {
 		$filter = $this->doGetFilterQuery(
 			$this->parseValue( $key, $value, $quotedValue, '', '', $context ) );
-		if ( $filter === null ) {
-			// If there are no templates in a collection, it shouldn't match.
+		if ( $filter === null && !$negated ) {
+			// If there are no templates in a collection, it shouldn't match anything. If the
+			// keyword is negated, it should be a no-op, so returning null works.
 			$context->setResultsPossible( false );
 		}
 		return [ $filter, false ];
