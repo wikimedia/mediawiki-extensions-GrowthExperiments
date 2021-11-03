@@ -8,6 +8,7 @@ var AnnotationAnimation = require( '../AnnotationAnimation.js' );
 function CERecommendedLinkAnnotation() {
 	// Parent constructor
 	CERecommendedLinkAnnotation.super.apply( this, arguments );
+	this.isActive = false;
 
 	this.$element.addClass( [
 		'mw-ge-recommendedLinkAnnotation',
@@ -43,6 +44,7 @@ CERecommendedLinkAnnotation.prototype.updateClasses = function () {
  * @param {boolean} isActive
  */
 CERecommendedLinkAnnotation.prototype.updateActiveClass = function ( isActive ) {
+	this.isActive = isActive;
 	this.$element.toggleClass( 'mw-ge-recommendedLinkAnnotation-active', isActive );
 };
 
@@ -50,6 +52,10 @@ CERecommendedLinkAnnotation.prototype.updateActiveClass = function ( isActive ) 
  * @inheritdoc
  */
 CERecommendedLinkAnnotation.prototype.onClick = function ( e ) {
+	// Prevent de-selection via clicking on the annotation view on desktop
+	if ( this.isActive && !OO.ui.isMobile() ) {
+		return;
+	}
 	CERecommendedLinkAnnotation.super.prototype.onClick.apply( this, arguments );
 	e.preventDefault();
 	e.stopPropagation();
