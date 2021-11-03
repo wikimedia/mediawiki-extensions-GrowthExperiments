@@ -66,7 +66,6 @@ class LinkSubmissionRecorder {
 			return StatusValue::newGood()->error( 'growthexperiments-addlink-duplicatesubmission',
 				$linkRecommendation->getRevisionId() );
 		}
-		// @phan-suppress-next-line SecurityCheck-SQLInjection T290563
 		$this->linkRecommendationStore->recordSubmission(
 			$user,
 			$linkRecommendation,
