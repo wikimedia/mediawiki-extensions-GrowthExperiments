@@ -350,9 +350,26 @@ AddImageArticleTarget.prototype.toggleEditModeTool = function ( shouldShow ) {
  * @param {boolean} [shouldCheckPref] Whether the dialog preference should be taken into account
  */
 AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPref ) {
-	var dialogName = 'addImageCaptionInfo';
+	var dialogName = 'addImageCaptionInfo',
+		logCaptionInfoDialog = function ( action, context, closeData ) {
+			/* eslint-disable camelcase */
+			var actionData = { dialog_context: context };
+			if ( closeData ) {
+				actionData.dont_show_again = closeData.dialogDismissed;
+			}
+			this.logger.log( action, actionData, { active_interface: 'captioninfo_dialog' } );
+			/* eslint-enable camelcase */
+		}.bind( this ),
+		openDialogPromise;
+
 	if ( !shouldCheckPref ) {
-		this.surface.dialogs.openWindow( dialogName );
+		openDialogPromise = this.surface.dialogs.openWindow( dialogName );
+		openDialogPromise.opening.then( function () {
+			logCaptionInfoDialog( 'impression', 'help' );
+		} );
+		openDialogPromise.closed.then( function () {
+			logCaptionInfoDialog( 'close', 'help' );
+		} );
 		return;
 	}
 
@@ -363,7 +380,16 @@ AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPr
 
 	if ( !mw.user.options.get( ADD_IMAGE_CAPTION_ONBOARDING_PREF ) ) {
 		this.hasShownCaptionOnboarding = true;
-		this.surface.dialogs.openWindow( dialogName, { shouldShowDismissField: true } );
+		openDialogPromise = this.surface.dialogs.openWindow(
+			dialogName,
+			{ shouldShowDismissField: true }
+		);
+		openDialogPromise.opening.then( function () {
+			logCaptionInfoDialog( 'impression', 'onboarding' );
+		} );
+		openDialogPromise.closed.then( function ( closeData ) {
+			logCaptionInfoDialog( 'close', 'onboarding', closeData );
+		} );
 	}
 };
 
