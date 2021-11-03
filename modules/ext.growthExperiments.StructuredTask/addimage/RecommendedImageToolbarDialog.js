@@ -165,6 +165,7 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 		this.addArticleTitle();
 	}
 	this.showRecommendationAtIndex( 0 );
+	this.logger.log( 'impression', this.suggestionLogMetadata() );
 	$( window ).on( 'resize',
 		OO.ui.debounce( this.updateSize.bind( this ), 250 )
 	);
@@ -248,14 +249,16 @@ RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
 		} );
 
 	openSkipDialogPromise.opening.then( function () {
-		this.logger.log( 'impression', {}, logMetadata );
+		this.logger.log( 'impression', this.suggestionLogMetadata(), logMetadata );
 	}.bind( this ) );
 
 	openSkipDialogPromise.closed.then( function ( data ) {
-		this.logger.log( 'confirm_skip_suggestion', {}, logMetadata );
+		var actionData = this.suggestionLogMetadata();
 		if ( data && data.action === 'confirm' ) {
+			this.logger.log( 'confirm_skip_suggestion', actionData, logMetadata );
 			this.endSession();
 		} else {
+			this.logger.log( 'close', actionData, logMetadata );
 			this.regainFocus();
 		}
 	}.bind( this ) );
@@ -266,9 +269,24 @@ RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
  */
 RecommendedImageToolbarDialog.prototype.onFullscreenButtonClicked = function () {
 	var imageData = this.images[ this.currentIndex ],
-		surface = this.surface;
+		surface = this.surface,
+		// eslint-disable-next-line camelcase
+		logMetadata = { active_interface: 'imageviewer_dialog' },
+		actionData = this.suggestionLogMetadata(),
+		openImageViewerDialogPromise;
 
-	surface.dialogs.openWindow( 'recommendedImageViewer', imageData.metadata );
+	openImageViewerDialogPromise = surface.dialogs.openWindow(
+		'recommendedImageViewer',
+		imageData.metadata
+	);
+	openImageViewerDialogPromise.opening.then( function () {
+		this.logger.log( 'impression', actionData, logMetadata );
+	}.bind( this ) );
+
+	openImageViewerDialogPromise.closed.then( function () {
+		this.logger.log( 'close', actionData, logMetadata );
+	}.bind( this ) );
+
 	this.showInternalRoute( 'imageviewer', function () {
 		var currentWindow = surface.dialogs.currentWindow;
 		if ( currentWindow ) {
@@ -279,6 +297,9 @@ RecommendedImageToolbarDialog.prototype.onFullscreenButtonClicked = function () 
 
 RecommendedImageToolbarDialog.prototype.onDetailsButtonClicked = function () {
 	// TODO: Show image details dialog (T290782)
+	// eslint-disable-next-line camelcase
+	var logMetadata = { active_interface: 'imagedetails_dialog' };
+	this.logger.log( 'impression', this.suggestionLogMetadata(), logMetadata );
 };
 
 /**
