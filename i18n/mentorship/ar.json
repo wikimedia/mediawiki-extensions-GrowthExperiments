@@ -80,6 +80,7 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "المرحلة التالية من مغلدرة الإرشاد هي إعادة توزيع مُرشَديك. لو كنت {{GENDER:|متأكّدا|متأكّدة}} من المغادرة، فضلا، {{GENDER:|اضغط|اضغطي}} على الزرّ أدناه.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "نعم، أعيدوا توزيع المرشَدين",
 	"growthexperiments-quit-mentorship-success": "ستتمّ إعادة توزيع المرشَدين إلى مُرشِدين آخرين قريبا.",
+	"growthexperiments-quit-mentorship-no-mentees": "حاليا، لا يوجد لديك مرشَدين.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "{{GENDER:$1|غادر|غادرت}} $1 الإرشاد.",
 	"echo-category-title-ge-mentorship": "الإرشاد",
 	"echo-pref-tooltip-ge-mentorship": "الإشعارات المتعلقة بمزايا الإرشاد يهتمّ بها فريق النموّ. يتيح لك هذا الإشعار معرفة أنه تمت مطالبتك كمُرشَد، أو أن أحد مُرشَديك قد طالب به شخص آخر.",
