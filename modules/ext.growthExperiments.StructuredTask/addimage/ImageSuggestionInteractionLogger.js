@@ -13,6 +13,7 @@
 	 * @param {boolean} config.is_mobile If the interaction occurred in a mobile site context.
 	 * @param {string} config.active_interface The active interface associated with the event.
 	 * @class mw.libs.ge.ImageSuggestionInteractionLogger
+	 * @extends mw.libs.ge.StructuredTaskLogger
 	 * @constructor
 	 */
 	function ImageSuggestionInteractionLogger( config ) {
