@@ -97,8 +97,15 @@ CERecommendedImageNode.prototype.setupDetailsButton = function ( $container ) {
 			mw.message( 'growthexperiments-addimage-inspector-details-button' ).escaped()
 		] );
 	$detailsButton.on( 'click', function () {
-		// TODO: Show image details dialog (T290782)
-	} );
+		var surface = this.getRoot().getSurface().getSurface(),
+			recommendation = this.getModel().getAttribute( 'recommendation' ),
+			recommendationIndex = this.getModel().getAttribute( 'recommendationIndex' );
+		surface.dialogs.openWindow( 'addImageDetails', {
+			recommendation: recommendation,
+			logSource: 'caption',
+			imageIndex: recommendationIndex
+		} );
+	}.bind( this ) );
 	$container.append( $detailsButton );
 };
 

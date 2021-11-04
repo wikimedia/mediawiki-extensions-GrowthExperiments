@@ -178,7 +178,10 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 				filename: imageData.image,
 				originalClasses: [ 'mw-default-size' ],
 				isError: false,
-				mw: {}
+				mw: {},
+				// Pass image recommendation metadata to CERecommendedImageNode
+				recommendation: imageData,
+				recommendationIndex: this.selectedImageIndex
 			},
 			internal: {
 				whitespace: [ '\n', undefined, undefined, '\n' ]

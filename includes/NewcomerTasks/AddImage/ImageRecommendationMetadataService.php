@@ -4,6 +4,7 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use FormatMetadata;
 use GrowthExperiments\Util;
+use MediaTransformError;
 use MediaWiki\Http\HttpRequestFactory;
 use RepoGroup;
 use StatusValue;
@@ -71,18 +72,26 @@ class ImageRecommendationMetadataService {
 	 */
 	public function getFileMetadata( string $fileName ) {
 		$file = $this->repoGroup->findFile( $fileName );
-		if ( $file ) {
-			return [
-				'descriptionUrl' => $file->getDescriptionUrl(),
-				'thumbUrl' => $file->transform( [ 'width' => self::THUMB_WIDTH ] )->getUrl(),
-				'fullUrl' => $file->getUrl(),
-				'originalWidth' => $file->getWidth(),
-				'originalHeight' => $file->getHeight(),
-				'mustRender' => $file->mustRender(),
-				'isVectorized' => $file->isVectorized(),
-			];
+		if ( !$file ) {
+			return StatusValue::newFatal( 'rawmessage', 'Image file not found' );
+		} else {
+			$thumb = $file->transform( [ 'width' => self::THUMB_WIDTH ] );
+			if ( !$thumb ) {
+				return StatusValue::newFatal( 'rawmessage', 'Thumbnailing error' );
+			} elseif ( $thumb instanceof MediaTransformError ) {
+				return StatusValue::newFatal( 'rawmessage', 'Thumbnailing error: '
+					. $thumb->toText() );
+			}
 		}
-		return StatusValue::newFatal( 'rawmessage', 'Image file not found' );
+		return [
+			'descriptionUrl' => $file->getDescriptionUrl(),
+			'thumbUrl' => $thumb->getUrl(),
+			'fullUrl' => $file->getUrl(),
+			'originalWidth' => $file->getWidth(),
+			'originalHeight' => $file->getHeight(),
+			'mustRender' => $file->mustRender(),
+			'isVectorized' => $file->isVectorized(),
+		];
 	}
 
 	/**
