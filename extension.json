@@ -703,7 +703,9 @@
 				"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header",
 				"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader",
 				"growthexperiments-addimage-daily-task-limit-exceeded",
-				"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button"
+				"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button",
+				"growthexperiments-addimage-mobile-only",
+				"growthexperiments-addimage-mobile-only-dialog-button"
 			]
 		},
 		"ext.growthExperiments.Homepage.StartEditing": {
