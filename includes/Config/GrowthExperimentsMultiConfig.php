@@ -39,7 +39,6 @@ class GrowthExperimentsMultiConfig implements Config, IDBAccessObject, ICustomRe
 		'GEMentorshipEnabled',
 		'GEHomepageMentorsList',
 		'GEHomepageManualAssignmentMentorsList',
-		'GEHelpPanelSuggestedEditsPreferredEditor',
 		'GEHomepageSuggestedEditsIntroLinks',
 		'GEInfoboxTemplates'
 	];
