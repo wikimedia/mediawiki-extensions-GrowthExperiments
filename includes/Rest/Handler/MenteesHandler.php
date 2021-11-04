@@ -138,9 +138,10 @@ class MenteesHandler extends SimpleHandler {
 			if ( $menteeData['registration'] ) {
 				$menteeData['registration'] = [
 					'raw' => $menteeData['registration'],
-					'human' => MWTimestamp::getInstance(
+					'human' => $context->getLanguage()->sprintfDate(
+						'Y-m-d',
 						$menteeData['registration']
-					)->format( 'Y-m-d' )
+					)
 				];
 			}
 
