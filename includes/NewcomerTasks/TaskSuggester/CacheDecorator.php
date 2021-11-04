@@ -4,11 +4,13 @@ namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
+use GrowthExperiments\NewcomerTasks\TaskSetListener;
 use JobQueueGroup;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
+use StatusValue;
 use WANObjectCache;
 
 /**
@@ -29,20 +31,26 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 	/** @var JobQueueGroup */
 	private $jobQueueGroup;
 
+	/** @var TaskSetListener */
+	private $taskSetListener;
+
 	/**
 	 * @param TaskSuggester $taskSuggester
 	 * @param JobQueueGroup $jobQueueGroup
 	 * @param WANObjectCache $cache
+	 * @param TaskSetListener $taskSetListener
 	 */
 	public function __construct(
 		TaskSuggester $taskSuggester,
 		JobQueueGroup $jobQueueGroup,
-		WANObjectCache $cache
+		WANObjectCache $cache,
+		TaskSetListener $taskSetListener
 	) {
 		$this->taskSuggester = $taskSuggester;
 		$this->cache = $cache;
 		$this->jobQueueGroup = $jobQueueGroup;
 		$this->logger = new NullLogger();
+		$this->taskSetListener = $taskSetListener;
 	}
 
 	/** @inheritDoc */
@@ -114,6 +122,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 						// cache) and return only the subset of tasks that the requester asked for.
 						$newValue->randomSort();
 						$newValue->truncate( $limit );
+						$this->runTaskSetListener( $newValue );
 					}
 					return $newValue;
 				}
@@ -150,6 +159,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 							// Ignore jobqueue errors.
 						}
 					}
+					$this->runTaskSetListener( $result );
 				}
 				if ( !$useCache && !$resetCache ) {
 					$ttl = $this->cache::TTL_UNCACHEABLE;
@@ -175,6 +185,17 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 	/** @inheritDoc */
 	public function filter( UserIdentity $user, TaskSet $taskSet ) {
 		return $this->taskSuggester->filter( $user, $taskSet );
+	}
+
+	/**
+	 *
+	 * @param TaskSet|StatusValue $taskSet
+	 */
+	private function runTaskSetListener( $taskSet ) {
+		if ( $taskSet instanceof StatusValue ) {
+			return;
+		}
+		$this->taskSetListener->run( $taskSet );
 	}
 
 }
