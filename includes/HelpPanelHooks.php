@@ -177,7 +177,7 @@ class HelpPanelHooks implements
 			'GEHelpPanelLinks' => HelpPanel::getHelpPanelLinks(
 				$context, self::getGrowthWikiConfig()
 			),
-			'GEHelpPanelSuggestedEditsPreferredEditor' => self::getPreferredEditor( $context ),
+			'GEHelpPanelSuggestedEditsPreferredEditor' => self::getPreferredEditor( $context, $config ),
 			'GEHelpPanelHelpDeskTitle' => $helpdeskTitle ? $helpdeskTitle->getPrefixedText() : null,
 		];
 	}
@@ -239,9 +239,10 @@ class HelpPanelHooks implements
 	 * Return preferred editor for each task type based on task type handler
 	 *
 	 * @param ResourceLoaderContext $context
+	 * @param Config $config
 	 * @return array
 	 */
-	private static function getPreferredEditor( ResourceLoaderContext $context ): array {
+	private static function getPreferredEditor( ResourceLoaderContext $context, Config $config ): array {
 		$geServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
 
 		// Hack - ResourceLoaderContext is not exposed to services initialization
@@ -249,7 +250,7 @@ class HelpPanelHooks implements
 		$validator->setMessageLocalizer( $context );
 
 		$taskTypes = $geServices->getNewcomerTasksConfigurationLoader()->getTaskTypes();
-		$preferredEditorPerHandlerId = self::getGrowthWikiConfig()->get( 'GEHelpPanelSuggestedEditsPreferredEditor' );
+		$preferredEditorPerHandlerId = $config->get( 'GEHelpPanelSuggestedEditsPreferredEditor' );
 		$preferredEditorPerTaskType = [];
 		foreach ( $taskTypes as $taskTypeId => $taskType ) {
 			$preferredEditorPerTaskType[ $taskTypeId ] = $preferredEditorPerHandlerId[ $taskType->getHandlerId() ];
