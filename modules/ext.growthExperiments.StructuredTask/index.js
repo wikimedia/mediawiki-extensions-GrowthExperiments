@@ -21,5 +21,6 @@ module.exports = {
 	AddImageTargetInitializer: require( './addimage/AddImageTargetInitializer.js' ),
 	AddImageArticleTarget: require( './addimage/AddImageArticleTarget.js' ),
 	RecommendedImageToolbarDialog: require( './addimage/RecommendedImageToolbarDialog.js' ),
-	AddImageSaveDialog: require( './addimage/AddImageSaveDialog.js' )
+	AddImageSaveDialog: require( './addimage/AddImageSaveDialog.js' ),
+	ImageSuggestionInteractionLogger: require( './addimage/ImageSuggestionInteractionLogger.js' )
 };

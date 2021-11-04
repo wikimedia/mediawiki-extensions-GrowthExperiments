@@ -1,6 +1,7 @@
 var StructuredTaskToolbarDialog = require( '../StructuredTaskToolbarDialog.js' ),
 	MachineSuggestionsMode = require( '../MachineSuggestionsMode.js' ),
 	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
+	ImageSuggestionInteractionLogger = require( './ImageSuggestionInteractionLogger.js' ),
 	router = require( 'mediawiki.router' );
 
 /**
@@ -102,6 +103,15 @@ function RecommendedImageToolbarDialog() {
 	 * @property {Function} onImageCaptionReady
 	 */
 	this.onImageCaptionReady = this.imageCaptionReadyHandler.bind( this );
+	/**
+	 * @property {mw.libs.ge.ImageSuggestionInteractionLogger} logger
+	 */
+	this.logger = new ImageSuggestionInteractionLogger( {
+		/* eslint-disable camelcase */
+		is_mobile: OO.ui.isMobile(),
+		active_interface: 'recommendedimagetoolbar_dialog'
+		/* eslint-enable camelcase */
+	} );
 }
 
 OO.inheritClass( RecommendedImageToolbarDialog, StructuredTaskToolbarDialog );
@@ -169,6 +179,7 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 RecommendedImageToolbarDialog.prototype.onYesButtonClicked = function () {
 	ve.init.target.insertImage( this.images[ 0 ] );
 	this.setState( true, [] );
+	this.logger.log( 'suggestion_accept', this.suggestionLogMetadata() );
 	this.setUpCaptionStep();
 };
 
@@ -176,12 +187,37 @@ RecommendedImageToolbarDialog.prototype.onYesButtonClicked = function () {
  * Show the rejection dialog
  */
 RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
-	this.surface.dialogs.openWindow( 'recommendedImageRejection',
-		ve.init.target.recommendationRejectionReasons
-	).closed.then( function ( data ) {
+	var rejectionReasons = ve.init.target.recommendationRejectionReasons,
+		openRejectionDialogWindowPromise = this.surface.dialogs.openWindow(
+			'recommendedImageRejection', rejectionReasons );
+
+	this.logger.log( 'suggestion_reject', this.suggestionLogMetadata() );
+
+	openRejectionDialogWindowPromise.opening.then( function () {
+		this.logger.log(
+			'impression',
+			$.extend( this.suggestionLogMetadata(), {
+				// eslint-disable-next-line camelcase
+				rejection_reason: rejectionReasons
+			} ),
+			// eslint-disable-next-line camelcase
+			{ active_interface: 'rejection_dialog' }
+		);
+	}.bind( this ) );
+
+	openRejectionDialogWindowPromise.closed.then( function ( data ) {
 		if ( data && data.action === 'done' ) {
 			this.setState( false, data.reasons );
 		}
+		this.logger.log(
+			'close',
+			$.extend( this.suggestionLogMetadata(), {
+				// eslint-disable-next-line camelcase
+				rejection_reason: ve.init.target.recommendationRejectionReasons
+			} ),
+			// eslint-disable-next-line camelcase
+			{ active_interface: 'rejection_dialog' }
+		);
 		mw.hook( 'growthExperiments.contextItem.saveArticle' ).fire();
 	}.bind( this ) );
 };
@@ -191,22 +227,32 @@ RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
  * the image suggestion
  */
 RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
-	this.surface.dialogs.openWindow( 'structuredTaskMessage', {
-		title: mw.message( 'growthexperiments-addimage-skip-dialog-title' ).text(),
-		message: mw.message( 'growthexperiments-addimage-skip-dialog-body' ).text(),
-		actions: [
-			{
-				action: 'confirm',
-				label: mw.message(
-					'growthexperiments-addimage-skip-dialog-confirm'
-				).text()
-			},
-			{
-				action: 'cancel',
-				label: mw.message( 'growthexperiments-addimage-skip-dialog-cancel' ).text()
-			}
-		]
-	} ).closed.then( function ( data ) {
+	this.logger.log( 'suggestion_skip', this.suggestionLogMetadata() );
+	// eslint-disable-next-line camelcase
+	var logMetadata = { active_interface: 'skip_dialog' },
+		openSkipDialogPromise = this.surface.dialogs.openWindow( 'structuredTaskMessage', {
+			title: mw.message( 'growthexperiments-addimage-skip-dialog-title' ).text(),
+			message: mw.message( 'growthexperiments-addimage-skip-dialog-body' ).text(),
+			actions: [
+				{
+					action: 'confirm',
+					label: mw.message(
+						'growthexperiments-addimage-skip-dialog-confirm'
+					).text()
+				},
+				{
+					action: 'cancel',
+					label: mw.message( 'growthexperiments-addimage-skip-dialog-cancel' ).text()
+				}
+			]
+		} );
+
+	openSkipDialogPromise.opening.then( function () {
+		this.logger.log( 'impression', {}, logMetadata );
+	}.bind( this ) );
+
+	openSkipDialogPromise.closed.then( function ( data ) {
+		this.logger.log( 'confirm_skip_suggestion', {}, logMetadata );
 		if ( data && data.action === 'confirm' ) {
 			this.endSession();
 		} else {
@@ -444,6 +490,29 @@ RecommendedImageToolbarDialog.prototype.showInternalRoute = function (
 		router.off( 'popstate', onPopstate );
 	};
 	router.on( 'popstate', onPopstate );
+};
+
+/**
+ * Get metadata to pass to the ImageSuggestionInteractionLogger.
+ *
+ * @return {Object}
+ */
+RecommendedImageToolbarDialog.prototype.suggestionLogMetadata = function () {
+	var imageData = this.images[ this.currentIndex ],
+		articleTarget = this.getArticleTarget(),
+		isUndecided = typeof articleTarget.recommendationAccepted !== 'boolean',
+		acceptanceState = articleTarget.recommendationAccepted ? 'accepted' : 'rejected';
+	return {
+		/* eslint-disable camelcase */
+		filename: imageData.image,
+		recommendation_source: imageData.source,
+		recommendation_source_projects: imageData.projects,
+		series_number: this.currentIndex + 1,
+		total_suggestions: this.images.length,
+		rejection_reasons: articleTarget.recommendationRejectionReasons,
+		acceptance_state: isUndecided ? 'undecided' : acceptanceState
+		/* eslint-enable camelcase */
+	};
 };
 
 module.exports = RecommendedImageToolbarDialog;
