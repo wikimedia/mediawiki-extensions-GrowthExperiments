@@ -73,16 +73,16 @@ AddImageCaptionInfoDialog.prototype.setupDismissField = function ( data ) {
 		return;
 	}
 
-	var checkBoxInput = new OO.ui.CheckboxInputWidget( {
+	this.checkBoxInput = new OO.ui.CheckboxInputWidget( {
 		selected: false,
 		value: 'dismissCaptionOnboarding'
 	} );
-	checkBoxInput.on( 'change', function ( isSelected ) {
+	this.checkBoxInput.on( 'change', function ( isSelected ) {
 		new mw.Api().saveOption( ADD_IMAGE_CAPTION_ONBOARDING_PREF, isSelected ? '1' : '0' );
 	} );
 	// Set up the FieldLayout here instead of during initialization so that if the field doesn't
 	// need to be shown at all during the flow, it's not set up
-	this.dismissField = new OO.ui.FieldLayout( checkBoxInput, {
+	this.dismissField = new OO.ui.FieldLayout( this.checkBoxInput, {
 		label: mw.message(
 			'growthexperiments-structuredtask-onboarding-dialog-dismiss-checkbox'
 		).text(),
@@ -99,6 +99,17 @@ AddImageCaptionInfoDialog.prototype.getSetupProcess = function ( data ) {
 		.next( function () {
 			this.setupDismissField( data || {} );
 		}, this );
+};
+
+/** @inheritDoc **/
+AddImageCaptionInfoDialog.prototype.getActionProcess = function () {
+	return new OO.ui.Process( function () {
+		var closeData = {};
+		if ( this.checkBoxInput ) {
+			closeData.dialogDismissed = this.checkBoxInput.isSelected();
+		}
+		this.close( closeData );
+	}, this );
 };
 
 module.exports = AddImageCaptionInfoDialog;
