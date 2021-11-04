@@ -11,9 +11,8 @@ use StatusValue;
  */
 class ImageRecommendationMetadataService {
 
-	// TODO: Figure out the right value once image inspector design is final
 	/** @var int */
-	private const THUMB_WIDTH = 300;
+	private const THUMB_WIDTH = 120;
 
 	/** @var RepoGroup */
 	private $repoGroup;
