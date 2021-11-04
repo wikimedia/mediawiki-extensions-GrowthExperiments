@@ -1,6 +1,5 @@
 var StructuredTaskToolbarDialog = require( '../StructuredTaskToolbarDialog.js' ),
 	MachineSuggestionsMode = require( '../MachineSuggestionsMode.js' ),
-	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 	ImageSuggestionInteractionLogger = require( './ImageSuggestionInteractionLogger.js' ),
 	router = require( 'mediawiki.router' );
 
@@ -98,7 +97,7 @@ function RecommendedImageToolbarDialog() {
 	/**
 	 * @property {mw.libs.ge.ImageRecommendationImage[]} images
 	 */
-	this.images = suggestedEditSession.taskData.images;
+	this.images = [];
 	/**
 	 * @property {Function} onImageCaptionReady
 	 */
@@ -152,6 +151,7 @@ RecommendedImageToolbarDialog.prototype.getSetupProcess = function ( data ) {
  * Initialize elements after this.surface is set
  */
 RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
+	this.images = this.getArticleTarget().images;
 	this.surface.getView().$documentNode.on( 'click', this.onDocumentNodeClick );
 	this.setUpToolbarDialogButton(
 		mw.message( 'growthexperiments-addimage-inspector-show-button' ).text()
@@ -383,9 +383,7 @@ RecommendedImageToolbarDialog.prototype.updateSuggestionContent = function () {
  *   such as 'no-info'), only when the recommendation was rejected.
  */
 RecommendedImageToolbarDialog.prototype.setState = function ( accepted, reasons ) {
-	// FIXME this isn't the final behavior but useful now for testing.
-	ve.init.target.recommendationAccepted = accepted;
-	ve.init.target.recommendationRejectionReasons = reasons;
+	this.getArticleTarget().updateSuggestionState( this.currentIndex, accepted, reasons );
 };
 
 /**
@@ -418,6 +416,7 @@ RecommendedImageToolbarDialog.prototype.imageCaptionReadyHandler = function () {
 	articleTarget.toggleSaveTool( true );
 	// Hide the inspector after it's animated down to prevent it from showing up when adding caption
 	this.$element.addClass( 'oo-ui-element-hidden' );
+	articleTarget.logSuggestionInteraction( 'impression', 'caption_entry' );
 };
 
 /**
@@ -448,6 +447,7 @@ RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
 	articleTarget.showCaptionInfoDialog( true );
 
 	this.showInternalRoute( 'caption', function () {
+		articleTarget.logSuggestionInteraction( 'back', 'caption_entry' );
 		MachineSuggestionsMode.disableVirtualKeyboard( this.surface );
 		surface.setReadOnly( true );
 		toolbarDialogButton.toggle( true );
@@ -460,8 +460,10 @@ RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
 		$documentNode.removeClass( 'mw-ge-recommendedImageToolbarDialog-caption' );
 		$inspector.removeClass( 'oo-ui-element-hidden' );
 		setTimeout( function () {
+			// Image inspector is shown again.
 			$inspector.removeClass( 'animate-below' );
-		}, 300 );
+			this.logger.log( 'impression', this.suggestionLogMetadata() );
+		}.bind( this ), 300 );
 		this.canShowCaption = false;
 	}.bind( this ) );
 };
@@ -498,21 +500,7 @@ RecommendedImageToolbarDialog.prototype.showInternalRoute = function (
  * @return {Object}
  */
 RecommendedImageToolbarDialog.prototype.suggestionLogMetadata = function () {
-	var imageData = this.images[ this.currentIndex ],
-		articleTarget = this.getArticleTarget(),
-		isUndecided = typeof articleTarget.recommendationAccepted !== 'boolean',
-		acceptanceState = articleTarget.recommendationAccepted ? 'accepted' : 'rejected';
-	return {
-		/* eslint-disable camelcase */
-		filename: imageData.image,
-		recommendation_source: imageData.source,
-		recommendation_source_projects: imageData.projects,
-		series_number: this.currentIndex + 1,
-		total_suggestions: this.images.length,
-		rejection_reasons: articleTarget.recommendationRejectionReasons,
-		acceptance_state: isUndecided ? 'undecided' : acceptanceState
-		/* eslint-enable camelcase */
-	};
+	return this.getArticleTarget().getSuggestionLogMetadata( this.currentIndex );
 };
 
 module.exports = RecommendedImageToolbarDialog;

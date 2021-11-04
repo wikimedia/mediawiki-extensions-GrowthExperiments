@@ -51,10 +51,18 @@ function AddImageArticleTarget() {
 	 * @property {string[]} recommendationRejectionReasons List of rejection reason IDs.
 	 */
 	this.recommendationRejectionReasons = [];
+
+	/**
+	 * @property {number} selectedImageIndex Zero-based index of the selected image suggestion.
+	 */
+	this.selectedImageIndex = 0;
 }
 
 AddImageArticleTarget.prototype.beforeSurfaceReady = function () {
-	// No-op
+	/**
+	 * @property {mw.libs.ge.ImageRecommendationImage[]} images
+	 */
+	this.images = suggestedEditSession.taskData.images;
 };
 
 /**
@@ -242,17 +250,15 @@ AddImageArticleTarget.prototype.rollback = function () {
 		surfaceModel.getLinearFragment( node.getOuterRange() ).delete();
 	} );
 	surfaceModel.setReadOnly( true );
+	this.updateSuggestionState( this.selectedImageIndex, undefined, [] );
 };
 
 /** @inheritDoc **/
 AddImageArticleTarget.prototype.save = function ( doc, options, isRetry ) {
-	/** @type {mw.libs.ge.ImageRecommendation} */
-	var taskData = suggestedEditSession.taskData;
-
 	options.plugins = 'ge-task-image-recommendation';
 	// This data will be processed in HomepageHooks::onVisualEditorApiVisualEditorEditPostSaveHook
 	options[ 'data-ge-task-image-recommendation' ] = JSON.stringify( {
-		filename: taskData.images[ 0 ].image,
+		filename: this.getSelectedSuggestion().image,
 		accepted: this.recommendationAccepted,
 		reasons: this.recommendationRejectionReasons
 	} );
@@ -265,7 +271,7 @@ AddImageArticleTarget.prototype.save = function ( doc, options, isRetry ) {
  * @return {mw.libs.ge.ImageRecommendationSummary}
  */
 AddImageArticleTarget.prototype.getSummaryData = function () {
-	var imageData = suggestedEditSession.taskData.images[ 0 ],
+	var imageData = this.getSelectedSuggestion(),
 		surfaceModel = this.getSurface().getModel(),
 		/** @type {mw.libs.ge.ImageRecommendationSummary} */
 		summaryData = {
@@ -353,7 +359,10 @@ AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPr
 	var dialogName = 'addImageCaptionInfo',
 		logCaptionInfoDialog = function ( action, context, closeData ) {
 			/* eslint-disable camelcase */
-			var actionData = { dialog_context: context };
+			var actionData = $.extend(
+				this.getSuggestionLogMetadata(),
+				{ dialog_context: context }
+			);
 			if ( closeData ) {
 				actionData.dont_show_again = closeData.dialogDismissed;
 			}
@@ -391,6 +400,69 @@ AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPr
 			logCaptionInfoDialog( 'close', 'onboarding', closeData );
 		} );
 	}
+};
+
+/**
+ * Get data for the suggestion at the specified index (if any) or the selected suggestion
+ * to pass to ImageSuggestionInteractionLogger.
+ *
+ * @param {number} [index] Zero-based index of the image suggestion for which to return data
+ * @return {Object}
+ */
+AddImageArticleTarget.prototype.getSuggestionLogMetadata = function ( index ) {
+	var imageIndex = typeof index === 'number' ? index : this.selectedImageIndex,
+		imageData = this.images[ imageIndex ],
+		isUndecided = typeof this.recommendationAccepted !== 'boolean',
+		acceptanceState = this.recommendationAccepted ? 'accepted' : 'rejected';
+	return {
+		/* eslint-disable camelcase */
+		filename: imageData.image,
+		recommendation_source: imageData.source,
+		recommendation_source_projects: imageData.projects,
+		series_number: imageIndex + 1,
+		total_suggestions: this.images.length,
+		rejection_reasons: this.recommendationRejectionReasons,
+		acceptance_state: isUndecided ? 'undecided' : acceptanceState
+		/* eslint-enable camelcase */
+	};
+};
+
+/**
+ * Log actions specific to the current suggestion
+ *
+ * @param {string} action
+ * @param {string} activeInterface
+ */
+AddImageArticleTarget.prototype.logSuggestionInteraction = function ( action, activeInterface ) {
+	this.logger.log(
+		action,
+		this.getSuggestionLogMetadata(),
+		// eslint-disable-next-line camelcase
+		{ active_interface: activeInterface }
+	);
+};
+
+/**
+ * Update the state of the image suggestion at the specified index
+ *
+ * @param {number} index Zero-based index of the image suggestion being updated
+ * @param {boolean|undefined} accepted Whether the image suggestion is accepted;
+ *  Undefined indicates that the user hasn't decided.
+ * @param {string[]} reasons List of rejection reason IDs (when accepted is false)
+ */
+AddImageArticleTarget.prototype.updateSuggestionState = function ( index, accepted, reasons ) {
+	this.selectedImageIndex = index;
+	this.recommendationAccepted = accepted;
+	this.recommendationRejectionReasons = reasons;
+};
+
+/**
+ * Return the selected image suggestion data
+ *
+ * @return {mw.libs.ge.ImageRecommendationImage}
+ */
+AddImageArticleTarget.prototype.getSelectedSuggestion = function () {
+	return this.images[ this.selectedImageIndex ];
 };
 
 module.exports = AddImageArticleTarget;
