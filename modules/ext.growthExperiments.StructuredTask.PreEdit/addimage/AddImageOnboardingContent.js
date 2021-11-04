@@ -2,7 +2,6 @@ module.exports = ( function () {
 	'use strict';
 
 	var hasHeroImage = false,
-		userName = mw.user.getName(),
 		TaskTypesAbFilter = require( '../../homepage/suggestededits/TaskTypesAbFilter.js' ),
 		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( '../TaskTypes.json' ) ),
 		taskTypeData = taskTypes[ 'image-recommendation' ] || {},
@@ -35,10 +34,10 @@ module.exports = ( function () {
 		var paragraphs = [
 			makeParagraph( mw.message(
 				'growthexperiments-addimage-onboarding-content-intro-body-paragraph1'
-			).params( [ userName ] ).text() ),
+			).text() ),
 			makeParagraph( mw.message(
 				'growthexperiments-addimage-onboarding-content-intro-body-paragraph2'
-			).params( [ userName ] ).text() )
+			).text() )
 		];
 		var learnMoreLinkUrl = taskTypeData.learnMoreLink ?
 			mw.util.getUrl( taskTypeData.learnMoreLink ) :
@@ -73,7 +72,7 @@ module.exports = ( function () {
 			),
 			makeParagraph( mw.message(
 				'growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph2' )
-				.params( [ userName ] ).text()
+				.text()
 			)
 		] );
 	}
@@ -100,15 +99,15 @@ module.exports = ( function () {
 		return $( '<div>' ).append( [
 			makeParagraph( mw.message(
 				'growthexperiments-addimage-onboarding-content-decision-body-paragraph1' )
-				.params( [ userName ] ).text()
+				.text()
 			),
 			makeParagraph( mw.message(
 				'growthexperiments-addimage-onboarding-content-decision-body-paragraph2' )
-				.params( [ userName ] ).text()
+				.text()
 			),
 			makeParagraph( mw.message(
 				'growthexperiments-addimage-onboarding-content-decision-body-paragraph3' )
-				.params( [ userName ] ).text()
+				.text()
 			)
 		] );
 	}
