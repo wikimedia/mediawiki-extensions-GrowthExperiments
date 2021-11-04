@@ -445,5 +445,11 @@
 	"growthexperiments-addimage-summary-label": "Rezumat",
 	"growthexperiments-addimage-summary-copyrightwarning": "Salvând schimbările, {{GENDER:|sunteți}} de acord cu [https://foundation.wikimedia.org/wiki/Terms_of_Use termenii de utilizare] și sunteți de acord să vă publicați contribuția sub licențele [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] și [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
 	"growthexperiments-addimage-summary-reject-description": "Această sugestie de imagine a fost respinsă.",
-	"growthexperiments-addimage-summary-summary": "Funcția de sugestii de imagini: $1 {{PLURAL:$1|imagine adăugată|imagini adăugate}}."
+	"growthexperiments-addimage-summary-summary": "Funcția de sugestii de imagini: $1 {{PLURAL:$1|imagine adăugată|imagini adăugate}}.",
+	"growthexperiments-addimage-reason-wikipedia": "Utilizată în același articol în $1 {{PLURAL:$1|altă limbă|alte limbi}}.",
+	"growthexperiments-addimage-reason-wikipedia-languages": "Used in the same article in $1 {{PLURAL:$1|other language|other languages}}: $2.",
+	"growthexperiments-addimage-reason-wikipedia-languages-others": "{{PLURAL:$1|încă}} $1",
+	"growthexperiments-addimage-reason-wikipedia-project": "Utilizată în același articol în $1.",
+	"growthexperiments-addimage-reason-wikidata": "Găsită în elementul Wikidata pentru acest articol (potrivire calitativă).",
+	"growthexperiments-addimage-reason-commons": "Una dintre cele câteva imagini legate de elementul Wikidata pentru acest articol."
 }

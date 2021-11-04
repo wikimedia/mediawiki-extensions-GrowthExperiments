@@ -81,6 +81,7 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "L'étape suivante pour arrêter le mentorat est de réaffecter vos mentorés. Si vous êtes sûr de vouloir arrêter, veuillez appuyer sur le bouton ci-dessous.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Oui, réassigner mes mentorés",
 	"growthexperiments-quit-mentorship-success": "Vos mentorés seront réaffectés à d'autres mentors sous peu.",
+	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|Vous}} n’avez actuellement aucun tutoré.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|s'est retiré}} du mentorat.",
 	"echo-category-title-ge-mentorship": "Tutorat",
 	"echo-pref-tooltip-ge-mentorship": "Notifications relatives aux fonctionnalités de tutorat maintenues par l’équipe Growth. Cette notification vous fait savoir que vous êtes demandé comme tutoré, ou qu’un de vos tutorés a été demandé par quelqu’un d’autre.",

@@ -467,5 +467,11 @@
 	"growthexperiments-addimage-summary-label": "Zusammenfassung",
 	"growthexperiments-addimage-summary-copyrightwarning": "Mit dem Speichern von Änderungen stimmst {{GENDER:|du}} den [https://foundation.wikimedia.org/wiki/Terms_of_Use Nutzungsbedingungen] zu und erklärst dich damit einverstanden, deine Beitrag unter den Lizenzen [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] und [https://www.gnu.org/licenses/fdl-1.3.html GFDL] zu veröffentlichen.",
 	"growthexperiments-addimage-summary-reject-description": "Dieser Bildvorschlag wurde abgelehnt.",
-	"growthexperiments-addimage-summary-summary": "Funktion Bildvorschläge: $1 {{PLURAL:$1|Bild|Bilder}} hinzugefügt."
+	"growthexperiments-addimage-summary-summary": "Funktion Bildvorschläge: $1 {{PLURAL:$1|Bild|Bilder}} hinzugefügt.",
+	"growthexperiments-addimage-reason-wikipedia": "Wird im selben Artikel in $1 {{PLURAL:$1|einer andere Sprache|anderen Sprachen}} verwendet.",
+	"growthexperiments-addimage-reason-wikipedia-languages": "Wird im selben Artikel in $1 {{PLURAL:$1|einer andere Sprache|anderen Sprachen}} verwendet: $2",
+	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|anderer|andere}}",
+	"growthexperiments-addimage-reason-wikipedia-project": "Verwendet im selben Artikel in $1.",
+	"growthexperiments-addimage-reason-wikidata": "Gefunden in dem Wikidata-Eintrag zu diesem Artikel (starke Übereinstimmung).",
+	"growthexperiments-addimage-reason-commons": "Eines von mehreren Bildern, die mit dem Wikidata-Eintrag zu diesem Artikel verlinkt sind."
 }
