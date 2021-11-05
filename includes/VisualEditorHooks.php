@@ -137,6 +137,7 @@ class VisualEditorHooks implements
 		);
 		if ( $status->isGood() ) {
 			$apiResponse['gelogid'] = $status->getValue()['logId'] ?? null;
+			$apiResponse['gewarnings'][] = $status->getValue()['warnings'] ?? '';
 		} else {
 			// FIXME expose error formatter to hook so this can be handled better
 			$errorMessage = Status::wrap( $status )->getWikiText();

@@ -67,6 +67,7 @@ class ProtectionFilter {
 			$taskSet->getFilters()
 		);
 		$filteredTaskSet->setDebugData( $taskSet->getDebugData() );
+		$filteredTaskSet->setQualityGateConfig( $taskSet->getQualityGateConfig() );
 		return $filteredTaskSet;
 	}
 

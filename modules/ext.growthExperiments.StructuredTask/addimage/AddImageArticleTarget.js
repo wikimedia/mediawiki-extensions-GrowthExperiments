@@ -104,6 +104,7 @@ AddImageArticleTarget.prototype.hasReviewedSuggestions = function () {
 
 /**
  * Check if the current article is a valid Add Image task (does not have any image yet).
+ *
  * @return {boolean}
  */
 AddImageArticleTarget.prototype.isValidTask = function () {
@@ -463,6 +464,19 @@ AddImageArticleTarget.prototype.updateSuggestionState = function ( index, accept
  */
 AddImageArticleTarget.prototype.getSelectedSuggestion = function () {
 	return this.images[ this.selectedImageIndex ];
+};
+
+/** @inheritDoc **/
+AddImageArticleTarget.prototype.onSaveComplete = function ( data ) {
+	var imageRecWarningKey = 'geimagerecommendationdailytasksexceeded',
+		geWarnings = data.gewarnings || [];
+
+	geWarnings.forEach( function ( warning ) {
+		if ( warning[ imageRecWarningKey ] ) {
+			suggestedEditSession.qualityGateConfig[ 'image-recommendation' ] = { dailyLimit: true };
+			suggestedEditSession.save();
+		}
+	} );
 };
 
 module.exports = AddImageArticleTarget;

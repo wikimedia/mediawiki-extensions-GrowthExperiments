@@ -87,6 +87,13 @@
 		/** @member {string|null} The newcomer task token set from NewcomerTaskLogger#log. */
 		this.newcomerTaskToken = null;
 
+		/**
+		 * @member {Object} Persist data related to quality gates as the user interacts with the
+		 * suggested edit. Used currently for keeping track of the daily limit gate for image
+		 * recommendation on Minerva.
+		 */
+		this.qualityGateConfig = {};
+
 		// These variables are not persisted and only used for immediate state management.
 
 		/** @member {boolean} Flag to prevent double-opening of the post-edit dialog (T283120) */
@@ -148,7 +155,8 @@
 				this.helpPanelSuggestedEditsInteractionHappened,
 			onboardingNeedsToBeShown: this.onboardingNeedsToBeShown,
 			newcomerTaskToken: this.newcomerTaskToken,
-			shouldOpenArticleInEditMode: this.shouldOpenArticleInEditMode
+			shouldOpenArticleInEditMode: this.shouldOpenArticleInEditMode,
+			qualityGateConfig: this.qualityGateConfig
 		};
 		if ( !this.active ) {
 			throw new Error( 'Trying to save an inactive suggested edit session' );
@@ -200,6 +208,7 @@
 				this.onboardingNeedsToBeShown = data.onboardingNeedsToBeShown;
 				this.newcomerTaskToken = data.newcomerTaskToken;
 				this.shouldOpenArticleInEditMode = data.shouldOpenArticleInEditMode;
+				this.qualityGateConfig = data.qualityGateConfig;
 			} else {
 				mw.storage.session.remove( 'ge-suggestededit-session' );
 			}

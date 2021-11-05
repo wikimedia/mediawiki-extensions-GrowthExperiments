@@ -4,7 +4,12 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use CirrusSearch\CirrusSearch;
 use GrowthExperiments\NewcomerTasks\AbstractSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\RecommendationSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use ManualLogEntry;
 use MediaWiki\Page\ProperPageIdentity;
@@ -34,13 +39,33 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 	/** @var callable */
 	private $cirrusSearchFactory;
 
+	/** @var TaskSuggesterFactory */
+	private $taskSuggesterFactory;
+	/**
+	 * @var NewcomerTasksUserOptionsLookup
+	 */
+	private $newcomerTasksUserOptionsLookup;
+	/**
+	 * @var ConfigurationLoader
+	 */
+	private $configurationLoader;
+
 	/**
 	 * @param callable $cirrusSearchFactory A factory method returning a CirrusSearch instance.
+	 * @param TaskSuggesterFactory $taskSuggesterFactory
+	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
+	 * @param ConfigurationLoader $configurationLoader
 	 */
 	public function __construct(
-		callable $cirrusSearchFactory
+		callable $cirrusSearchFactory,
+		TaskSuggesterFactory $taskSuggesterFactory,
+		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
+		ConfigurationLoader $configurationLoader
 	) {
 		$this->cirrusSearchFactory = $cirrusSearchFactory;
+		$this->taskSuggesterFactory = $taskSuggesterFactory;
+		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
+		$this->configurationLoader = $configurationLoader;
 	}
 
 	/** @inheritDoc */
@@ -73,6 +98,24 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 				ImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX );
 		}
 
+		$warnings = [];
+		$taskSet = $this->taskSuggesterFactory->create()->suggest(
+			$user,
+			$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
+			$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
+		);
+		if ( $taskSet instanceof TaskSet ) {
+			/** @var ImageRecommendationTaskType $imageRecommendation */
+			$imageRecommendation = $this->configurationLoader->getTaskTypes()['image-recommendation'];
+			$qualityGateConfig = $taskSet->getQualityGateConfig();
+			if ( isset( $qualityGateConfig[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount'] ) &&
+				$qualityGateConfig[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount'] >=
+				// @phan-suppress-next-line PhanUndeclaredMethod
+				$imageRecommendation->getMaxTasksPerDay() - 1 ) {
+				$warnings['geimagerecommendationdailytasksexceeded'] = true;
+			}
+		}
+
 		$logEntry = new ManualLogEntry( 'growthexperiments', 'addimage' );
 		$logEntry->setTarget( $page );
 		$logEntry->setPerformer( $user );
@@ -86,7 +129,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 		// Do not publish to recent changes, it would be pointless as this action cannot
 		// be inspected or patrolled.
 		$logEntry->publish( $logId, 'udp' );
-		return StatusValue::newGood( [ 'logId' => $logId ] );
+		return StatusValue::newGood( [ 'logId' => $logId, 'warnings' => $warnings ] );
 	}
 
 	/**

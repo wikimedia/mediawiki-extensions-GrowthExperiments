@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
+use GrowthExperiments\NewcomerTasks\TaskSuggester\QualityGateDecorator;
 use MediaWiki\Json\JsonUnserializable;
 use MediaWiki\Json\JsonUnserializableTrait;
 use MediaWiki\Json\JsonUnserializer;
@@ -290,5 +291,15 @@ class TaskType implements JsonUnserializable {
 	 */
 	public function getSmallTaskCardImageCssClasses(): array {
 		return [ 'mw-ge-small-task-card-image-skeleton' ];
+	}
+
+	/**
+	 * The quality gate data for this task type.
+	 *
+	 * @see QualityGateDecorator and modules/homepage/suggestededits/QualityGate.js
+	 * @return string[] An array of quality gate names that will be applied for the task type.
+	 */
+	public function getQualityGateIds(): array {
+		return [];
 	}
 }

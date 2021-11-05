@@ -56,6 +56,7 @@ use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\DecoratingTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\QualityGateDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
@@ -78,8 +79,12 @@ return [
 		$cirrusSearchFactory = static function () {
 			return new CirrusSearch();
 		};
+		$geServices = GrowthExperimentsServices::wrap( $services );
 		return new AddImageSubmissionHandler(
-			$cirrusSearchFactory
+			$cirrusSearchFactory,
+			$geServices->getTaskSuggesterFactory(),
+			$geServices->getNewcomerTasksUserOptionsLookup(),
+			$geServices->getNewcomerTasksConfigurationLoader()
 		);
 	},
 
@@ -582,13 +587,22 @@ return [
 			$taskSuggesterFactory = new DecoratingTaskSuggesterFactory(
 				$taskSuggesterFactory,
 				$services->getObjectFactory(),
-				[ [
-					  'class' => CacheDecorator::class,
-					  'args' => [
-						  JobQueueGroup::singleton(),
-						  $services->getMainWANObjectCache()
-					  ],
-				  ] ]
+				[
+					[
+						'class' => CacheDecorator::class,
+						'args' => [
+							JobQueueGroup::singleton(),
+							$services->getMainWANObjectCache()
+						],
+					],
+					[
+						'class' => QualityGateDecorator::class,
+						'args' => [
+							$growthServices->getNewcomerTasksConfigurationLoader(),
+							$growthServices->getImageRecommendationSubmissionLogFactory()
+						]
+					],
+				]
 			);
 		}
 		$taskSuggesterFactory->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );

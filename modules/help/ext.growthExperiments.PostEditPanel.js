@@ -19,6 +19,8 @@
 	 *   tasks failed.
 	 * @param {Object} config.taskTypes Task type data, as returned by
 	 *   HomepageHooks::getTaskTypesJson.
+	 * @param {boolean} config.imageRecommendationDailyTasksExceeded If the
+	 *   user has exceeded their daily limit for image recommendation tasks.
 	 * @param {mw.libs.ge.NewcomerTaskLogger} config.newcomerTaskLogger
 	 * @param {mw.libs.ge.HelpPanelLogger} config.helpPanelLogger
 	 */
@@ -32,6 +34,7 @@
 		this.helpPanelLogger = config.helpPanelLogger;
 		this.newcomerTaskToken = null;
 		this.$taskCard = null;
+		this.imageRecommendationDailyTasksExceeded = config.imageRecommendationDailyTasksExceeded;
 	}
 	OO.initClass( PostEditPanel );
 	OO.mixinClass( PostEditPanel, OO.EventEmitter );
@@ -42,7 +45,9 @@
 	 * @return {OO.ui.MessageWidget}
 	 */
 	PostEditPanel.prototype.getSuccessMessage = function () {
-		var type;
+		var type,
+			messageKey,
+			$label;
 
 		if ( this.taskState === SuggestedEditSession.static.STATES.SAVED ) {
 			type = mw.config.get( 'wgEditSubmitButtonLabelPublish' ) ? 'published' : 'saved';
@@ -56,14 +61,21 @@
 			type = 'notsaved';
 		}
 
+		messageKey = 'growthexperiments-help-panel-postedit-success-message-' + type;
+		if ( this.taskType === 'image-recommendation' && this.imageRecommendationDailyTasksExceeded ) {
+			messageKey = 'growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation';
+		}
+		// The following messages are used here:
+		// * growthexperiments-help-panel-postedit-success-message-published
+		// * growthexperiments-help-panel-postedit-success-message-saved
+		// * growthexperiments-help-panel-postedit-success-message-notsaved
+		// * growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation
+		$label = $( '<span>' ).append( mw.message( messageKey ).parse() );
 		return new OO.ui.MessageWidget( {
-			type: 'success',
+			icon: 'check',
+			type: type === 'saved' ? 'success' : 'notice',
 			classes: [ 'mw-ge-help-panel-postedit-message' ],
-			// The following messages are used here:
-			// * growthexperiments-help-panel-postedit-success-message-published
-			// * growthexperiments-help-panel-postedit-success-message-saved
-			// * growthexperiments-help-panel-postedit-success-message-notsaved
-			label: mw.message( 'growthexperiments-help-panel-postedit-success-message-' + type ).text()
+			label: $label
 		} );
 	};
 
@@ -116,13 +128,22 @@
 	 */
 	PostEditPanel.prototype.getMainArea = function () {
 		var subheaderMessage = ( this.taskState === SuggestedEditSession.static.STATES.SAVED ) ?
-			mw.message( 'growthexperiments-help-panel-postedit-subheader' ).text() :
-			mw.message( 'growthexperiments-help-panel-postedit-subheader-notsaved' ).text();
+				mw.message( 'growthexperiments-help-panel-postedit-subheader' ).text() :
+				mw.message( 'growthexperiments-help-panel-postedit-subheader-notsaved' ).text(),
+			$subHeader2 = null;
+
+		if ( this.taskType === 'image-recommendation' && this.imageRecommendationDailyTasksExceeded ) {
+			subheaderMessage = mw.message( 'growthexperiments-help-panel-postedit-subheader-image-recommendation' ).text();
+			$subHeader2 = $( '<div>' )
+				.addClass( 'mw-ge-help-panel-postedit-subheader2' )
+				.text( mw.message( 'growthexperiments-help-panel-postedit-subheader2-image-recommendation' ).text() );
+		}
 
 		if ( !this.nextTask ) {
 			return null;
 		}
 		this.$taskCard = this.getCard( this.nextTask );
+
 		return $( '<div>' )
 			.addClass( 'mw-ge-help-panel-postedit-main' )
 			.append(
@@ -130,6 +151,7 @@
 					.addClass( 'mw-ge-help-panel-postedit-subheader' )
 					.text( subheaderMessage )
 					.append( this.getRefreshButton() ),
+				$subHeader2,
 				this.$taskCard
 			);
 	};

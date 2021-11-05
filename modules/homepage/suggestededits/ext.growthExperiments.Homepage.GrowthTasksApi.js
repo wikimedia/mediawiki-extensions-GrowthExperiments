@@ -50,6 +50,8 @@
 	 *   60 days. Null when the article does not exist, or when no views have been processed for
 	 *   that article yet. Can be undefined due to lazy-loading, or when the wiki does not provide
 	 *   pageview information.
+	 * @property {string[]} [qualityGateIds] IDs of quality gates associated with this task type.
+	 * @property {Object} [qualityGateConfig] Quality gate related configuration, see QualityGate.js
 	 */
 
 	/**
@@ -188,7 +190,8 @@
 					tasktype: item.tasktype,
 					difficulty: item.difficulty,
 					topics: item.topics || null,
-					description: item.description || null
+					description: item.description || null,
+					qualityGateIds: item.qualityGateIds || []
 				};
 				self.fixThumbnailWidth( task, config.thumbnailWidth );
 				self.setUrlOverride( task );

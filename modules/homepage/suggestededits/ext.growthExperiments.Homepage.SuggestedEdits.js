@@ -15,6 +15,7 @@
 		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),
 		defaultTaskTypes = TaskTypesAbFilter.filterDefaultTaskTypes( require( './DefaultTaskTypes.json' ) ),
 		SwipePane = require( '../../ui-components/SwipePane.js' ),
+		QualityGate = require( './QualityGate.js' ),
 		suggestedEditsModule;
 
 	/**
@@ -30,6 +31,7 @@
 	 * @param {Array<string>|null} config.topicPresets Lists of IDs of enabled topic filters.
 	 * @param {boolean} config.topicMatching If topic matching feature is enabled in the UI
 	 * @param {string} config.mode Rendering mode. See constants in IDashboardModule.php
+	 * @param {Object} config.qualityGateConfig Quality gate configuration exported from TaskSet.php
 	 * @param {HomepageModuleLogger} logger
 	 * @param {mw.libs.ge.GrowthTasksApi} api
 	 */
@@ -52,6 +54,7 @@
 		this.editWidget = null;
 		this.isFirstRender = true;
 		this.isShowingPseudoCard = true;
+		this.qualityGateConfig = config.qualityGateConfig;
 		// Allow restoring on cancel.
 		this.backup = {};
 		this.backup.taskQueue = [];
@@ -93,7 +96,13 @@
 		if ( this.config.$nav.length ) {
 			$navContainer = this.config.$nav;
 			this.setupEditWidget( $navContainer );
+			this.setupQualityGateClickHandling( this.editWidget.$button );
 		}
+		var cardWrapperSelector = '.suggested-edits-card-wrapper',
+			$cardWrapperElement = $( cardWrapperSelector );
+		this.setupQualityGateClickHandling(
+			$cardWrapperElement
+		);
 		$previous = $navContainer.find( '.suggested-edits-previous' );
 		$next = $navContainer.find( '.suggested-edits-next' );
 
@@ -196,6 +205,7 @@
 		this.taskQueue = [];
 		this.queuePosition = 0;
 		this.taskQueueLoading = true;
+
 		if ( options.firstTask ) {
 			// The first card is already available (preloaded on the server side), display it
 			// to reduce wait time.
@@ -449,7 +459,9 @@
 				{ type: 'end' } );
 			this.currentCard = new EndOfQueueWidget( { topicMatching: this.config.topicMatching } );
 		} else {
-			this.currentCard = new EditCardWidget( this.taskQueue[ queuePosition ] );
+			this.currentCard = new EditCardWidget(
+				$.extend( { qualityGateConfig: this.qualityGateConfig }, this.taskQueue[ queuePosition ] )
+			);
 		}
 		if ( this.currentCard instanceof EditCardWidget ) {
 			this.logger.log(
@@ -472,7 +484,7 @@
 				return;
 			}
 			this.currentCard = new EditCardWidget(
-				$.extend( { extraDataLoaded: true }, this.taskQueue[ queuePosition ] )
+				$.extend( { extraDataLoaded: true, qualityGateConfig: this.qualityGateConfig }, this.taskQueue[ queuePosition ] )
 			);
 			this.updateCardElement();
 		}.bind( this ) );
@@ -610,6 +622,7 @@
 		this.setupClickLogging();
 		if ( isShowingEditCardWidget ) {
 			this.setupEditTypeTracking();
+
 		}
 		return promise;
 	};
@@ -694,6 +707,27 @@
 	};
 
 	/**
+	 * Set up quality gate click handling for an element.
+	 *
+	 * @param {jQuery} $element The element to bind click handling to.
+	 */
+	SuggestedEditsModule.prototype.setupQualityGateClickHandling = function ( $element ) {
+		$element.on( 'click', function ( event ) {
+			var qualityGate = new QualityGate( {
+				gates: this.currentCard.data.qualityGateIds || [],
+				gateConfig: this.qualityGateConfig
+			} );
+			event.preventDefault();
+			event.stopPropagation();
+			qualityGate.checkAll( this.currentCard.data.tasktype ).done( function () {
+				window.location = this.currentCard.$element.find( '.se-card-content' ).attr( 'href' );
+			}.bind( this ) ).fail( function ( gate ) {
+				qualityGate.handleGateFailure( this.currentCard.data.tasktype, gate );
+			}.bind( this ) );
+		}.bind( this ) );
+	};
+
+	/**
 	 * Replace edit button HTML with ButtonWidget so that OOUI methods can be used
 	 *
 	 * @param {jQuery} $container
@@ -765,7 +799,8 @@
 				taskTypePresets: preferences.taskTypes,
 				topicPresets: preferences.topics,
 				topicMatching: topicMatching,
-				mode: mode
+				mode: mode,
+				qualityGateConfig: taskPreviewData.qualityGateConfig || {}
 			},
 			new Logger(
 				mw.config.get( 'wgGEHomepageLoggingEnabled' ),

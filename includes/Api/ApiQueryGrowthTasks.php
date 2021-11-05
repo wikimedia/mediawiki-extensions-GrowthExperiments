@@ -105,6 +105,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				'tasktype' => $task->getTaskType()->getId(),
 				'difficulty' => $task->getTaskType()->getDifficulty(),
 				'order' => $i,
+				'qualityGateIds' => $task->getTaskType()->getQualityGateIds()
 			];
 			if ( $task->getTopics() ) {
 				foreach ( $task->getTopicScores() as $id => $score ) {
@@ -138,11 +139,13 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		if ( $resultPageSet ) {
 			$resultPageSet->populateFromTitles( $titles );
 			$result->addValue( $this->getModuleName(), 'totalCount', $tasks->getTotalCount() );
+			$result->addValue( $this->getModuleName(), 'qualityGateConfig', $tasks->getQualityGateConfig() );
 			if ( $debug ) {
 				$result->addValue( $this->getModuleName(), 'debug', $tasks->getDebugData() );
 			}
 		} else {
 			$result->addValue( $basePath, 'totalCount', $tasks->getTotalCount() );
+			$result->addValue( $basePath, 'qualityGateConfig', $tasks->getQualityGateConfig() );
 			$result->addIndexedTagName( array_merge( $basePath, [ 'suggestions' ] ), 'suggestion' );
 			if ( $debug ) {
 				$result->addValue( $basePath, 'debug', $tasks->getDebugData() );

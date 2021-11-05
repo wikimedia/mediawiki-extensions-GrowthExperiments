@@ -58,4 +58,9 @@ class ImageRecommendationTaskType extends TaskType {
 		return [ 'mw-ge-small-task-card-image-placeholder' ];
 	}
 
+	/** @inheritDoc */
+	public function getQualityGateIds(): array {
+		return [ 'dailyLimit' ];
+	}
+
 }

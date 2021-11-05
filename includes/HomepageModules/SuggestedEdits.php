@@ -15,7 +15,6 @@ use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
-use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use GrowthExperiments\NewcomerTasks\Topic\Topic;
@@ -326,6 +325,8 @@ class SuggestedEdits extends BaseModule {
 				$data['task-preview'] = [
 					'tasktype' => $task->getTaskType()->getId(),
 					'difficulty' => $task->getTaskType()->getDifficulty(),
+					'qualityGateIds' => $task->getTaskType()->getQualityGateIds(),
+					'qualityGateConfig' => $tasks->getQualityGateConfig(),
 					'title' => $title->getPrefixedText(),
 					'topics' => $task->getTopicScores(),
 					// The front-end code for constructing SuggestedEditCardWidget checks
@@ -812,24 +813,11 @@ class SuggestedEdits extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function getJsConfigVars() {
-		$imageRecommendationDailyTasksExceeded = false;
-		$imageRecommendationSubmissionLog = $this->imageRecommendationSubmissionLogFactory
-			->newImageRecommendationSubmissionLog( $this->getUser(), $this->getContext() );
-		/** @var ImageRecommendationTaskType $imageRecommendationTaskType */
-		$imageRecommendationTaskType =
-			$this->configurationLoader->getTaskTypes()[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
-		if ( $imageRecommendationTaskType &&
-			$imageRecommendationSubmissionLog->count() >=
-			// @phan-suppress-next-line PhanUndeclaredMethod
-			$imageRecommendationTaskType->getMaxTasksPerDay() ) {
-			$imageRecommendationDailyTasksExceeded = true;
-		}
 		return [
 			'GEHomepageSuggestedEditsEnableTopics' => self::isTopicMatchingEnabled(
 				$this->getContext(),
 				$this->userOptionsLookup
-			),
-			'GEImageRecommendationDailyTasksExceeded' => $imageRecommendationDailyTasksExceeded
+			)
 		];
 	}
 

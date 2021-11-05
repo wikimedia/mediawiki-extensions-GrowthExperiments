@@ -16,6 +16,8 @@ function AddImageMobileArticleTarget() {
 	this.$element.addClass( 've-init-mw-addImageArticleTarget' );
 	// eslint-disable-next-line camelcase
 	this.logger = new ImageSuggestionInteractionLogger( { is_mobile: true } );
+	// TODO: Set this.logger
+	this.connect( this, { save: 'onSaveComplete' } );
 }
 
 OO.inheritClass( AddImageMobileArticleTarget, StructuredTaskMobileArticleTarget );

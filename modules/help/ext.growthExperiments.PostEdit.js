@@ -29,6 +29,7 @@
 		preferences = api.getPreferences(),
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		isLinkRecommendationTask = ( suggestedEditSession.taskType === 'link-recommendation' ),
+		isImageRecommendationTask = ( suggestedEditSession.taskType === 'image-recommendation' ),
 		newcomerTaskLogger = new NewcomerTaskLogger(),
 		helpPanelLogger = new HelpPanelLogger( helpConfig.GEHelpPanelLoggingEnabled, {
 			context: 'postedit',
@@ -46,9 +47,31 @@
 	 *   additional tasks have been fetched
 	 */
 	function fetchOtherTasks() {
-		var taskTypesToFetch = isLinkRecommendationTask ?
-			[ 'link-recommendation' ] :
-			preferences.taskTypes;
+		var taskTypesToFetch,
+			imageRecommendationQualityGates = suggestedEditSession.qualityGateConfig[ 'image-recommendation' ] || {},
+			imageRecommendationDailyTasksExceeded =
+				imageRecommendationQualityGates.dailyLimit || false;
+		if ( isLinkRecommendationTask ) {
+			taskTypesToFetch = [ 'link-recommendation' ];
+		} else if ( isImageRecommendationTask ) {
+			taskTypesToFetch = [ 'image-recommendation' ];
+		} else {
+			taskTypesToFetch = preferences.taskTypes;
+		}
+		if ( isImageRecommendationTask && imageRecommendationDailyTasksExceeded ) {
+			// If user has done an image recommendation task and the limit is exceeded, we want to
+			// fetch all possible task types. We'll filter 'image-recommendation' out later.
+			taskTypesToFetch = preferences.taskTypes;
+		}
+		if ( imageRecommendationDailyTasksExceeded ) {
+			// Filter out image-recommendation if the limit is exceeded, whether or not this is a
+			// image recommendation task.
+			// If this yields an empty array the post edit dialog will just not show a card,
+			// which is OK.
+			taskTypesToFetch = taskTypesToFetch.filter( function ( taskType ) {
+				return taskType !== 'image-recommendation';
+			} );
+		}
 		// 10 tasks are hopefully enough to find one that's not protected.
 		return api.fetchTasks(
 			taskTypesToFetch,
@@ -197,8 +220,11 @@
 	 *   - closePromise: A promise that resolves when the dialog has been closed.
 	 */
 	function setup( task, errorMessage ) {
-		var postEditPanel, displayPanelPromises, openPromise, closePromise, extraDataPromise,
-			result;
+		var postEditPanel, displayPanelPromises, openPromise, closePromise, extraDataPromise, result,
+			imageRecommendationQualityGates =
+				suggestedEditSession.qualityGateConfig[ 'image-recommendation' ] || {},
+			imageRecommendationDailyTasksExceeded =
+				imageRecommendationQualityGates.dailyLimit || false;
 
 		if ( errorMessage ) {
 			mw.log.error( errorMessage );
@@ -211,7 +237,8 @@
 			nextTask: task,
 			taskTypes: task ? taskTypes : {},
 			newcomerTaskLogger: newcomerTaskLogger,
-			helpPanelLogger: helpPanelLogger
+			helpPanelLogger: helpPanelLogger,
+			imageRecommendationDailyTasksExceeded: imageRecommendationDailyTasksExceeded
 		} );
 		displayPanelPromises = displayPanel( postEditPanel );
 		openPromise = displayPanelPromises.openPromise;

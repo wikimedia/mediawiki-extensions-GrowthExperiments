@@ -33,6 +33,9 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess {
 	/** @var TaskSetFilters The task and topic filters used to generate this task set. */
 	private $filters;
 
+	/** @var array */
+	private $qualityGateConfig = [];
+
 	/**
 	 * @param Task[] $tasks
 	 * @param int $totalCount Size of the full result set
@@ -165,6 +168,34 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess {
 	 */
 	public function filtersEqual( TaskSetFilters $filters ): bool {
 		return json_encode( $this->filters ) === json_encode( $filters );
+	}
+
+	/**
+	 * An array of data to be used in controllers (for now, just client-side in QualityGate.js) for enforcing
+	 * quality gates.
+	 *
+	 * @see modules/homepage/suggestededits/QualityGate.js
+	 * @return array Keys are task type IDs, values are arbitrary data to be used by controllers.
+	 */
+	public function getQualityGateConfig(): array {
+		return $this->qualityGateConfig;
+	}
+
+	/**
+	 * @param string $taskTypeId
+	 * @param array $config
+	 */
+	public function setQualityGateConfigForTaskType( string $taskTypeId, array $config ): void {
+		$this->qualityGateConfig[$taskTypeId] = $config;
+	}
+
+	/**
+	 * Set the quality gate data for a TaskSet. Useful when constructing a new TaskSet from an old one.
+	 *
+	 * @param array $config
+	 */
+	public function setQualityGateConfig( array $config ): void {
+		$this->qualityGateConfig = $config;
 	}
 
 }
