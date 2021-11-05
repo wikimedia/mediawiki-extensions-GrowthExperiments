@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Biancailin",
+			"Bruno44101",
 			"Danniel07",
 			"Fewasser Traduce",
 			"Warming Hearth"
@@ -32,5 +33,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Activo",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Fuera",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Cancelar",
-	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|You}} por el momento no tiene ningún mentor."
+	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|You}} por el momento no tiene ningún mentor.",
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "¿Qué es \"Reclamar mentoreado\"?"
 }

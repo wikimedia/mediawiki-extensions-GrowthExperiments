@@ -80,5 +80,6 @@
 	"growthexperiments-addimage-skip-dialog-cancel": "رد ڪريو",
 	"growthexperiments-addimage-caption-title": "ڪو عنوان ڏيو",
 	"growthexperiments-structuredtask-user-error-login-cta": "داخل ٿيو",
-	"growthexperiments-structuredtask-anonuser": "واپرائيندڙ ھاڻي وڌيڪ داخل ٿيل نہ آھي."
+	"growthexperiments-structuredtask-anonuser": "واپرائيندڙ ھاڻي وڌيڪ داخل ٿيل نہ آھي.",
+	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|ٻيو|ٻيا}}"
 }

@@ -164,5 +164,7 @@
 	"growthexperiments-addimage-caption-info-dialog-confirm": "Verstanen",
 	"growthexperiments-structuredtask-user-error-login-cta": "Aloggen",
 	"growthexperiments-structuredtask-anonuser": "De Benotzer ass net méi ageloggt.",
-	"growthexperiments-addimage-summary-label": "Resumé"
+	"growthexperiments-addimage-summary-label": "Resumé",
+	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|aneren|anerer}}",
+	"growthexperiments-addimage-reason-wikipedia-project": "Benotz am selwechten Artikel op $1"
 }
