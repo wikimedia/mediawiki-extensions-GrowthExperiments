@@ -21,6 +21,8 @@ function AddImageSaveDialog() {
 		active_interface: 'editsummary_dialog'
 		/* eslint-enable camelcase */
 	} );
+	/** @property {mw.libs.ge.ImageRecommendationSummary} summaryData **/
+	this.summaryData = {};
 }
 
 OO.initClass( AddImageSaveDialog );
@@ -63,15 +65,13 @@ AddImageSaveDialog.prototype.getSummaryHeader = function () {
 };
 
 /**
- * Update the summary body based on the specified data
- *
- * @param {mw.libs.ge.ImageRecommendationSummary} summaryData
+ * Update the summary body based on the summary data
  */
-AddImageSaveDialog.prototype.updateSummaryBody = function ( summaryData ) {
-	var accepted = summaryData.accepted;
+AddImageSaveDialog.prototype.updateSummaryBody = function () {
+	var accepted = this.summaryData.accepted;
 	this.$summaryBody.empty().append( [
-		this.getImageSummary( summaryData.filename, accepted ),
-		accepted ? this.getAcceptedContent( summaryData ) : this.getRejectedContent()
+		this.getImageSummary( this.summaryData.filename, accepted ),
+		accepted ? this.getAcceptedContent( this.summaryData ) : this.getRejectedContent()
 	] );
 };
 
@@ -123,11 +123,27 @@ AddImageSaveDialog.prototype.getAcceptedContent = function ( summaryData ) {
 /** @inheritDoc */
 AddImageSaveDialog.prototype.getSetupProcess = function ( data ) {
 	return StructuredTaskSaveDialog.prototype.getSetupProcess.call( this, data ).next( function () {
-		this.updateSummaryBody( ve.init.target.getSummaryData() );
+		this.summaryData = ve.init.target.getSummaryData();
+		this.updateSummaryBody();
 		// Edit summary will be localized in the content language via FormatAutocomments hook
 		this.editSummaryInput.setValue( '/* growthexperiments-addimage-summary-summary: 1 */' );
 		this.addToWatchlist();
+		this.logger.log( 'impression', this.getLogMetadata() );
 	}, this );
+};
+
+/** @override **/
+AddImageSaveDialog.prototype.getLogMetadata = function () {
+	var summaryData = this.summaryData,
+		actionData = {
+			// eslint-disable-next-line camelcase
+			acceptance_state: summaryData.accepted ? 'accepted' : 'rejected'
+		};
+	if ( summaryData.accepted ) {
+		// eslint-disable-next-line camelcase
+		actionData.caption_length = summaryData.caption.length;
+	}
+	return actionData;
 };
 
 module.exports = AddImageSaveDialog;
