@@ -578,6 +578,8 @@
 				"homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js",
 				"homepage/suggestededits/TaskTypesAbFilter.js",
 				"homepage/suggestededits/QualityGate.js",
+				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
+				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"homepage/ext.growthExperiments.Homepage.TopicSelectionWidget.js",
 				"homepage/ext.growthExperiments.Homepage.SuggestionWidget.js",
 				"homepage/ext.growthExperiments.Homepage.SuggestionGroupWidget.js",
