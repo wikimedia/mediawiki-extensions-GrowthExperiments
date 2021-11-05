@@ -7,16 +7,16 @@ var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession'
  */
 function CERecommendedImageCaptionNode() {
 	CERecommendedImageCaptionNode.super.apply( this, arguments );
+	/**
+	 * @property {mw.libs.ge.AddImageArticleTarget} articleTarget
+	 */
+	this.articleTarget = ve.init.target;
 	this.setupPlaceholder();
 	this.setupHelpButton();
 	this.$element.addClass( [
 		'mw-ge-recommendedImageCaption',
 		'mw-ge-recommendedImageCaption--with-placeholder'
 	] ).append( this.helpButton.$element );
-	/**
-	 * @property {mw.libs.ge.AddImageArticleTarget} articleTarget
-	 */
-	this.articleTarget = ve.init.target;
 	this.model.on( 'update', this.onModelUpdate.bind( this ) );
 	/**
 	 * FIXME: Bring up virtual keyboard if there's no onboarding
@@ -67,6 +67,7 @@ CERecommendedImageCaptionNode.prototype.setupPlaceholder = function () {
 	this.$element.on( 'click', function () {
 		this.$element.removeClass( 'mw-ge-recommendedImageCaption--with-placeholder' );
 		this.articleTarget.getSurface().getView().setActiveNode( this );
+		this.articleTarget.logSuggestionInteraction( 'focus', 'caption_entry' );
 	}.bind( this ) );
 };
 
@@ -74,6 +75,7 @@ CERecommendedImageCaptionNode.prototype.setupPlaceholder = function () {
  * Set up button for re-opening caption onboarding dialog
  */
 CERecommendedImageCaptionNode.prototype.setupHelpButton = function () {
+	var articleTarget = this.articleTarget;
 	this.helpButton = new OO.ui.ButtonWidget( {
 		icon: 'helpNotice',
 		framed: false,
@@ -82,7 +84,8 @@ CERecommendedImageCaptionNode.prototype.setupHelpButton = function () {
 		lable: mw.message( 'growthexperiments-addimage-inspector-help-button' ).text()
 	} );
 	this.helpButton.on( 'click', function () {
-		ve.init.target.showCaptionInfoDialog();
+		articleTarget.logSuggestionInteraction( 'view_help', 'caption_entry' );
+		articleTarget.showCaptionInfoDialog();
 	} );
 };
 
