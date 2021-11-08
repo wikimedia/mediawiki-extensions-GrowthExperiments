@@ -3,10 +3,13 @@
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationSubmissionLogFactory;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\Util;
 use IContextSource;
 use MediaWiki\User\UserIdentity;
@@ -24,25 +27,34 @@ class QualityGateDecorator implements TaskSuggester {
 	/** @var ImageRecommendationSubmissionLogFactory */
 	private $imageRecommendationSubmissionLogFactory;
 
+	/** @var LinkRecommendationSubmissionLogFactory */
+	private $linkRecommendationSubmissionLogFactory;
+
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
 
 	/** @var int */
 	private $imageRecommendationCountForUser;
 
+	/** @var int */
+	private $linkRecommendationCountForUser;
+
 	/**
 	 * @param TaskSuggester $taskSuggester
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param ImageRecommendationSubmissionLogFactory $imageRecommendationSubmissionLogFactory
+	 * @param LinkRecommendationSubmissionLogFactory $linkRecommendationSubmissionLogFactory
 	 */
 	public function __construct(
 		TaskSuggester $taskSuggester,
 		ConfigurationLoader $configurationLoader,
-		ImageRecommendationSubmissionLogFactory $imageRecommendationSubmissionLogFactory
+		ImageRecommendationSubmissionLogFactory $imageRecommendationSubmissionLogFactory,
+		LinkRecommendationSubmissionLogFactory $linkRecommendationSubmissionLogFactory
 	) {
 		$this->taskSuggester = $taskSuggester;
 		$this->imageRecommendationSubmissionLogFactory = $imageRecommendationSubmissionLogFactory;
 		$this->configurationLoader = $configurationLoader;
+		$this->linkRecommendationSubmissionLogFactory = $linkRecommendationSubmissionLogFactory;
 	}
 
 	/** @inheritDoc */
@@ -74,6 +86,20 @@ class QualityGateDecorator implements TaskSuggester {
 					'mobileOnly' => Util::isMobile( $context->getSkin() ),
 					'minimumCaptionCharacterLength' => $imageRecommendationTaskType->getMinimumCaptionCharacterLength()
 				] );
+			}
+			$linkRecommendationTaskType =
+				$this->configurationLoader->getTaskTypes()[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
+			if ( $linkRecommendationTaskType instanceof LinkRecommendationTaskType ) {
+				$tasks->setQualityGateConfigForTaskType( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID,
+					[
+						'dailyLimit' => $this->isLinkRecommendationDailyTaskLimitExceeded(
+							$user,
+							$context,
+							$linkRecommendationTaskType
+						),
+						'dailyCount' => $this->getLinkRecommendationTasksDoneByUserForCurrentDay( $user,
+							$context )
+					] );
 			}
 		}
 		return $tasks;
@@ -125,5 +151,48 @@ class QualityGateDecorator implements TaskSuggester {
 			);
 		$this->imageRecommendationCountForUser = $imageRecommendationSubmissionLog->count();
 		return $this->imageRecommendationCountForUser;
+	}
+
+	/**
+	 * Check if daily limit of link recommendation is exceeded for a user.
+	 *
+	 * TODO: Move this into a link-recommendation specific class.
+	 *
+	 * @param UserIdentity $user
+	 * @param IContextSource $contextSource
+	 * @param LinkRecommendationTaskType $linkRecommendationTaskType
+	 * @return bool|null
+	 */
+	private function isLinkRecommendationDailyTaskLimitExceeded(
+		UserIdentity $user,
+		IContextSource $contextSource,
+		LinkRecommendationTaskType $linkRecommendationTaskType
+	): ?bool {
+		return $this->getLinkRecommendationTasksDoneByUserForCurrentDay(
+				$user,
+				$contextSource
+			) >=
+			$linkRecommendationTaskType->getMaxTasksPerDay();
+	}
+
+	/**
+	 * @param UserIdentity $user
+	 * @param IContextSource $contextSource
+	 * @return int
+	 */
+	private function getLinkRecommendationTasksDoneByUserForCurrentDay(
+		UserIdentity $user,
+		IContextSource $contextSource
+	): int {
+		if ( $this->linkRecommendationCountForUser ) {
+			return $this->linkRecommendationCountForUser;
+		}
+		$linkRecommendationSubmissionLog =
+			$this->linkRecommendationSubmissionLogFactory->newLinkRecommendationSubmissionLog(
+				$user,
+				$contextSource
+			);
+		$this->linkRecommendationCountForUser = $linkRecommendationSubmissionLog->count();
+		return $this->linkRecommendationCountForUser;
 	}
 }

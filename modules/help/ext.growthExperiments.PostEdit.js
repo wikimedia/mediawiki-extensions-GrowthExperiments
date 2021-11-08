@@ -49,17 +49,23 @@
 		var taskTypesToFetch,
 			imageRecommendationQualityGates = suggestedEditSession.qualityGateConfig[ 'image-recommendation' ] || {},
 			imageRecommendationDailyTasksExceeded =
-				imageRecommendationQualityGates.dailyLimit || false;
+				imageRecommendationQualityGates.dailyLimit || false,
+			linkRecommendationQualityGates = suggestedEditSession.qualityGateConfig[ 'link-recommendation' ] || {},
+			linkRecommendationDailyTasksExceeded =
+				linkRecommendationQualityGates.dailyLimit || false;
 		if ( isImageRecommendationTask ) {
 			taskTypesToFetch = [ 'image-recommendation' ];
 		} else {
 			taskTypesToFetch = preferences.taskTypes;
 		}
-		if ( isImageRecommendationTask && imageRecommendationDailyTasksExceeded ) {
-			// If user has done an image recommendation task and the limit is exceeded, we want to
-			// fetch all possible task types. We'll filter 'image-recommendation' out later.
+		if ( ( isImageRecommendationTask && imageRecommendationDailyTasksExceeded ) ||
+			( isLinkRecommendationTask && linkRecommendationDailyTasksExceeded ) ) {
+			// If user has done an image or link recommendation task and the limit is exceeded,
+			// we want to fetch all possible task types. We'll filter out
+			// 'image-recommendation' or 'link-recommendation' out later.
 			taskTypesToFetch = preferences.taskTypes;
 		}
+
 		if ( imageRecommendationDailyTasksExceeded ) {
 			// Filter out image-recommendation if the limit is exceeded, whether or not this is a
 			// image recommendation task.
@@ -67,6 +73,15 @@
 			// which is OK.
 			taskTypesToFetch = taskTypesToFetch.filter( function ( taskType ) {
 				return taskType !== 'image-recommendation';
+			} );
+		}
+		if ( linkRecommendationDailyTasksExceeded ) {
+			// Filter out link-recommendation if the limit is exceeded, whether or not this is a
+			// link recommendation task.
+			// If this yields an empty array the post edit dialog will just not show a card,
+			// which is OK.
+			taskTypesToFetch = taskTypesToFetch.filter( function ( taskType ) {
+				return taskType !== 'link-recommendation';
 			} );
 		}
 		// 10 tasks are hopefully enough to find one that's not protected.
@@ -221,7 +236,11 @@
 			imageRecommendationQualityGates =
 				suggestedEditSession.qualityGateConfig[ 'image-recommendation' ] || {},
 			imageRecommendationDailyTasksExceeded =
-				imageRecommendationQualityGates.dailyLimit || false;
+				imageRecommendationQualityGates.dailyLimit || false,
+			linkRecommendationQualityGates =
+				suggestedEditSession.qualityGateConfig[ 'link-recommendation' ] || {},
+			linkRecommendationDailyTasksExceeded =
+				linkRecommendationQualityGates.dailyLimit || false;
 
 		if ( errorMessage ) {
 			mw.log.error( errorMessage );
@@ -235,7 +254,8 @@
 			taskTypes: task ? taskTypes : {},
 			newcomerTaskLogger: newcomerTaskLogger,
 			helpPanelLogger: helpPanelLogger,
-			imageRecommendationDailyTasksExceeded: imageRecommendationDailyTasksExceeded
+			imageRecommendationDailyTasksExceeded: imageRecommendationDailyTasksExceeded,
+			linkRecommendationDailyTasksExceeded: linkRecommendationDailyTasksExceeded
 		} );
 		displayPanelPromises = displayPanel( postEditPanel );
 		openPromise = displayPanelPromises.openPromise;

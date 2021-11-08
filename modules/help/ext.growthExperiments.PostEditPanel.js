@@ -21,6 +21,8 @@
 	 *   HomepageHooks::getTaskTypesJson.
 	 * @param {boolean} config.imageRecommendationDailyTasksExceeded If the
 	 *   user has exceeded their daily limit for image recommendation tasks.
+	 * @param {boolean} config.linkRecommendationDailyTasksExceeded If the
+	 *   user has exceeded their daily limit for link recommendation tasks.
 	 * @param {mw.libs.ge.NewcomerTaskLogger} config.newcomerTaskLogger
 	 * @param {mw.libs.ge.HelpPanelLogger} config.helpPanelLogger
 	 */
@@ -35,6 +37,7 @@
 		this.newcomerTaskToken = null;
 		this.$taskCard = null;
 		this.imageRecommendationDailyTasksExceeded = config.imageRecommendationDailyTasksExceeded;
+		this.linkRecommendationDailyTasksExceeded = config.linkRecommendationDailyTasksExceeded;
 	}
 	OO.initClass( PostEditPanel );
 	OO.mixinClass( PostEditPanel, OO.EventEmitter );
@@ -64,6 +67,8 @@
 		messageKey = 'growthexperiments-help-panel-postedit-success-message-' + type;
 		if ( this.taskType === 'image-recommendation' && this.imageRecommendationDailyTasksExceeded ) {
 			messageKey = 'growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation';
+		} else if ( this.taskType === 'link-recommendation' && this.linkRecommendationDailyTasksExceeded ) {
+			messageKey = 'growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation';
 		}
 		// The following messages are used here:
 		// * growthexperiments-help-panel-postedit-success-message-published
@@ -137,6 +142,11 @@
 			$subHeader2 = $( '<div>' )
 				.addClass( 'mw-ge-help-panel-postedit-subheader2' )
 				.text( mw.message( 'growthexperiments-help-panel-postedit-subheader2-image-recommendation' ).text() );
+		} else if ( this.taskType === 'link-recommendation' && this.linkRecommendationDailyTasksExceeded ) {
+			subheaderMessage = mw.message( 'growthexperiments-help-panel-postedit-subheader-link-recommendation' ).text();
+			$subHeader2 = $( '<div>' )
+				.addClass( 'mw-ge-help-panel-postedit-subheader2' )
+				.text( mw.message( 'growthexperiments-help-panel-postedit-subheader2-link-recommendation' ).text() );
 		}
 
 		if ( !this.nextTask ) {

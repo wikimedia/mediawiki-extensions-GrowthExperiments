@@ -488,4 +488,17 @@ AddLinkArticleTarget.prototype.getAnnotationStates = function () {
 	return states;
 };
 
+/** @inheritDoc **/
+AddLinkArticleTarget.prototype.onSaveComplete = function ( data ) {
+	var linkRecWarningKey = 'gelinkrecommendationdailytasksexceeded',
+		geWarnings = data.gewarnings || [];
+
+	geWarnings.forEach( function ( warning ) {
+		if ( warning[ linkRecWarningKey ] ) {
+			suggestedEditSession.qualityGateConfig[ 'link-recommendation' ] = { dailyLimit: true };
+			suggestedEditSession.save();
+		}
+	} );
+};
+
 module.exports = AddLinkArticleTarget;

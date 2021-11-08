@@ -28,6 +28,7 @@ use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationSubmissionLogFac
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkSubmissionRecorder;
 use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdater;
@@ -263,6 +264,10 @@ class GrowthExperimentsServices {
 
 	public function getImageRecommendationSubmissionLogFactory(): ImageRecommendationSubmissionLogFactory {
 		return $this->coreServices->get( 'GrowthExperimentsImageRecommendationSubmissionLogFactory' );
+	}
+
+	public function getLinkRecommendationSubmissionLogFactory(): LinkRecommendationSubmissionLogFactory {
+		return $this->coreServices->get( 'GrowthExperimentsLinkRecommendationSubmissionLogFactory' );
 	}
 
 }
