@@ -57,6 +57,7 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 		$userOptionsManager = $this->getMockUserOptionsManager();
 		$userIdentityLookup = $this->getMockUserIdentityLookup();
 		$dbr = $this->getMockDB();
+		$dbw = $this->getMockDB();
 		$userOptionsManager->expects( $this->once() )
 			->method( 'getOption' )
 			->with( $mentor, MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF )
@@ -66,7 +67,8 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 			$userOptionsManager,
 			$userIdentityLookup,
 			$userFactory,
-			$dbr
+			$dbr,
+			$dbw
 		);
 
 		$this->assertEquals(
@@ -98,11 +100,13 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 			->willReturn( $rawTS );
 		$userFactory = $this->getMockUserFactory();
 		$dbr = $this->getMockDB();
+		$dbw = $this->getMockDB();
 		$manager = new MentorStatusManager(
 			$userOptionsManager,
 			$userIdentityLookup,
 			$userFactory,
-			$dbr
+			$dbr,
+			$dbw
 		);
 
 		$this->assertEquals(
@@ -132,12 +136,14 @@ class MentorStatusManagerTest extends MediaWikiUnitTestCase {
 			->with( $mentor, MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF, null );
 		$userFactory = $this->getMockUserFactory();
 		$dbr = $this->getMockDB();
+		$dbw = $this->getMockDB();
 
 		$manager = new MentorStatusManager(
 			$userOptionsManager,
 			$userIdentityLookup,
 			$userFactory,
-			$dbr
+			$dbr,
+			$dbw
 		);
 		$manager->markMentorAsActive( $mentor );
 	}
