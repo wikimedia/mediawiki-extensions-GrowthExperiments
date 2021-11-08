@@ -3,7 +3,7 @@
 ( function () {
 
 	var StructuredTaskLogger = require( '../StructuredTaskLogger.js' ),
-		schema = '/analytics/mediawiki/structured_task/article/image_suggestion_interaction/1.1.0',
+		schema = '/analytics/mediawiki/structured_task/article/image_suggestion_interaction/1.1.1',
 		streamName = 'mediawiki.structured_task.article.image_suggestion_interaction';
 
 	/**

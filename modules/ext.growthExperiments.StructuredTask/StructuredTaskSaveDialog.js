@@ -54,7 +54,7 @@ StructuredTaskSaveDialog.prototype.getTeardownProcess = function ( data ) {
 
 		// T283765: use the stored pageview token. The real one might have been reset at
 		// this point by a showPostEditDialog call from the postEdit hook.
-		SuggestionInteractionLogger.log( 'close', {}, {
+		SuggestionInteractionLogger.log( 'close', this.getLogMetadata(), {
 			/* eslint-disable camelcase */
 			homepage_pageview_token: this.homepagePageviewToken,
 			active_interface: 'editsummary_dialog'
@@ -80,8 +80,13 @@ StructuredTaskSaveDialog.prototype.getActionProcess = function ( action ) {
 	return this.constructor.super.prototype.getActionProcess.call(
 		this, action
 	).next( function () {
+		// The following actions are used here:
+		// * editsummary_save
+		// * editsummary_review
+		// * editsummary_approve
+		// * editsummary_report
 		if ( [ 'save', 'review', 'approve', 'report' ].indexOf( action ) >= 0 ) {
-			SuggestionInteractionLogger.log( 'editsummary_' + action, {}, {
+			SuggestionInteractionLogger.log( 'editsummary_' + action, this.getLogMetadata(), {
 				/* eslint-disable camelcase */
 				homepage_pageview_token: this.homepagePageviewToken,
 				active_interface: 'editsummary_dialog'
@@ -162,6 +167,15 @@ StructuredTaskSaveDialog.prototype.addToWatchlist = function () {
 	if ( this.checkboxesByName.wpWatchthis ) {
 		this.checkboxesByName.wpWatchthis.setSelected( true );
 	}
+};
+
+/**
+ * Get action data for StructuredTaskLogger
+ *
+ * @return {Object}
+ */
+StructuredTaskSaveDialog.prototype.getLogMetadata = function () {
+	return {};
 };
 
 module.exports = StructuredTaskSaveDialog;
