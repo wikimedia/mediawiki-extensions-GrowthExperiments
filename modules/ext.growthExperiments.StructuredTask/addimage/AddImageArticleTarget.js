@@ -8,13 +8,24 @@ var StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEd
  * @property {string} source Recommendation source; one of 'wikidata', 'wikipedia', 'commons'.
  * @property {string[]} projects Lists of projects (as wiki IDs) the recommendation is from.
  *   Only used when the source is 'wikipedia'.
- * @property {Object} metadata
- * @property {string} metadata.description Image description (sanitized HTML).
+ * @property {Object} metadata See ImageRecommendationMetadataProvider::getMetadata()
  * @property {string} metadata.descriptionUrl File description page URL.
  * @property {string} metadata.fullUrl URL of full-sized image.
  * @property {string} metadata.thumbUrl URL of image thumbnail used in the toolbar dialog.
  * @property {number} metadata.originalWidth Width of original image in pixels.
  * @property {number} metadata.originalHeight Height of original image in pixels.
+ * @property {bool} metadata.mustRender True if the original image wouldn't display correctly
+ *   in a browser.
+ * @property {bool} metadata.isVectorized Whether the image is a vector image (ie. has no max size).
+ * @property {string|null} metadata.description Image description (sanitized HTML).
+ * @property {string|null} metadata.author Original author of image (sanitized HTML).
+ * @property {string|null} metadata.license Short license name (sanitized HTML).
+ * @property {string} metadata.date Date of original image creation (sanitized HTML).
+ * @property {string|null} metadata.caption MediaInfo caption (plain text).
+ * @property {string[]} metadata.categories Non-hidden categories of the image, in
+
+ *   mw.Title.getMainText() format.
+ * @property {string} metadata.reason Description of why the image is being recommended (plain text).
  */
 
 /**

@@ -13,14 +13,47 @@ use SiteStore;
 use StatusValue;
 
 /**
- * @coversDefaultClass \GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider
+ * @covers \GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider
  */
 class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 
-	/**
-	 * @covers ::getMetadata
-	 */
-	public function testGetMetadataFileNotFound() {
+	public function testGetMetadata() {
+		$mockFileMetadata = $this->getMockFileMetadata();
+		$metadataService = $this->getMockService(
+			$mockFileMetadata,
+			$this->getImageDescription( [] ),
+			[ 'categories' => [ 'A', 'B' ] ]
+		);
+		$metadataProvider = new ImageRecommendationMetadataProvider(
+			$metadataService,
+			'en',
+			[],
+			$this->getMockLanguageNameUtils(),
+			$this->getMockMessageLocalizer(),
+			$this->getMockSiteLookup()
+		);
+		$metadata = $metadataProvider->getMetadata( $this->getSuggestionData( 'HMS_Pandora.jpg' ) );
+		$this->assertArrayEquals(
+			[
+				'description' => null,
+				'author' => null,
+				'license' => null,
+				'date' => null,
+				'categories' => [ 'A', 'B' ],
+				'thumbUrl' => $mockFileMetadata['thumbUrl'],
+				'fullUrl' => $mockFileMetadata['fullUrl'],
+				'descriptionUrl' => $mockFileMetadata['descriptionUrl'],
+				'originalWidth' => $mockFileMetadata['originalWidth'],
+				'originalHeight' => $mockFileMetadata['originalHeight'],
+				'mustRender' => true,
+				'isVectorized' => false,
+				'reason' => 'growthexperiments-addimage-reason-wikipedia-languages',
+			],
+			$metadata
+		);
+	}
+
+	public function testGetMetadata_FileNotFound() {
 		$metadataProvider = new ImageRecommendationMetadataProvider(
 			$this->getMockServiceError(),
 			'en',
@@ -29,253 +62,116 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 			$this->getMockMessageLocalizer(),
 			$this->getMockSiteLookup()
 		);
-		$this->assertTrue(
-			$metadataProvider->getMetadata(
-				$this->getSuggestionData( 'Image.jpg' )
-			) instanceof StatusValue
-		);
+		$metadata = $metadataProvider->getMetadata( $this->getSuggestionData( 'Image.jpg' ) );
+		$this->assertInstanceOf( StatusValue::class, $metadata );
 	}
 
 	/**
-	 * @covers ::getMetadata
+	 * @dataProvider provideGetMetadata_Language
 	 */
-	public function testGetMetadataContentLanguage() {
-		$enDescription = 'English';
-		$mockFileMetadata = $this->getMockFileMetadata();
-		$metadataService = $this->getMockService( $mockFileMetadata, $this->getImageDescription( [
-			'en' => $enDescription
-		] ) );
+	public function testGetMetadata_Language(
+		string $wikiLanguage,
+		array $fallbackChain,
+		array $imageDescription,
+		string $expectedDescription
+	) {
+		$metadataService = $this->getMockService( [], $this->getImageDescription( $imageDescription ) );
 		$metadataProvider = new ImageRecommendationMetadataProvider(
 			$metadataService,
-			'en',
-			[],
+			$wikiLanguage,
+			$fallbackChain,
 			$this->getMockLanguageNameUtils(),
 			$this->getMockMessageLocalizer(),
 			$this->getMockSiteLookup()
 		);
 		$metadata = $metadataProvider->getMetadata( $this->getSuggestionData( 'Image.jpg' ) );
-		$this->assertArrayEquals(
-			[
-				'description' => $enDescription,
-				'thumbUrl' => $mockFileMetadata['thumbUrl'],
-				'fullUrl' => $mockFileMetadata['fullUrl'],
-				'descriptionUrl' => $mockFileMetadata['descriptionUrl'],
-				'originalWidth' => $mockFileMetadata['originalWidth'],
-				'originalHeight' => $mockFileMetadata['originalHeight'],
-				'mustRender' => true,
-				'isVectorized' => false,
-				'reason' => 'growthexperiments-addimage-reason-wikipedia-languages'
+		$this->assertArrayHasKey( 'description', $metadata );
+		$this->assertSame( $expectedDescription, $metadata['description'] );
+	}
+
+	public function provideGetMetadata_Language() {
+		return [
+			'primary language available' => [
+				'wikiLanguage' => 'cs',
+				'fallbackChain' => [ 'sk', 'en' ],
+				'imageDescription' => [
+					'en' => 'English',
+					'sk' => 'Slovensko',
+					'cs' => 'Čeština',
+				],
+				'expectedDescription' => 'Čeština',
 			],
-			$metadata
-		);
+			'fallback chain language available' => [
+				'wikiLanguage' => 'cs',
+				'fallbackChain' => [ 'sk', 'en' ],
+				'imageDescription' => [
+					'en' => 'English',
+					'sk' => 'Slovensko',
+				],
+				'expectedDescription' => 'Slovensko',
+			],
+			'fallback chain language available #2' => [
+				'wikiLanguage' => 'cs',
+				'fallbackChain' => [ 'sk', 'en' ],
+				'imageDescription' => [
+					'en' => 'English',
+				],
+				'expectedDescription' => 'English',
+			],
+			'no relevant language available' => [
+				'wikiLanguage' => 'cs',
+				'fallbackChain' => [ 'sk', 'en' ],
+				'imageDescription' => [
+					'pt' => 'Português',
+					'sr' => 'Српски',
+				],
+				'expectedDescription' => 'Português',
+			],
+		];
 	}
 
 	/**
-	 * @covers ::getMetadata
+	 * @dataProvider provideGetMetadata_Reason
 	 */
-	public function testGetMetadataFallbackLanguage() {
-		$skDescription = 'Slovensko';
-		$mockFileMetadata = $this->getMockFileMetadata();
-		$metadataService = $this->getMockService( $mockFileMetadata, $this->getImageDescription( [
-			'en' => 'English',
-			'sk' => $skDescription
-		] ) );
-		$metadataProvider = new ImageRecommendationMetadataProvider(
-			$metadataService,
-			'cs',
-			[ 'sk', 'en' ],
-			$this->getMockLanguageNameUtils(),
-			$this->getMockMessageLocalizer(),
-			$this->getMockSiteLookup()
-		);
-		$this->assertArrayEquals(
-			[
-				'description' => $skDescription,
-				'thumbUrl' => $mockFileMetadata['thumbUrl'],
-				'fullUrl' => $mockFileMetadata['fullUrl'],
-				'descriptionUrl' => $mockFileMetadata['descriptionUrl'],
-				'originalWidth' => $mockFileMetadata['originalWidth'],
-				'originalHeight' => $mockFileMetadata['originalHeight'],
-				'mustRender' => true,
-				'isVectorized' => false,
-				'reason' => 'growthexperiments-addimage-reason-wikipedia-languages'
-			],
-			$metadataProvider->getMetadata( $this->getSuggestionData( 'Image.jpg' ) )
-		);
-	}
-
-	/**
-	 * @covers ::getMetadata
-	 */
-	public function testGetMetadataFallbackLanguageOrder() {
-		$enDescription = 'English';
-		$mockFileMetadata = $this->getMockFileMetadata();
-		$metadataService = $this->getMockService( $mockFileMetadata, $this->getImageDescription( [
-			'en' => $enDescription,
-			'sk' => 'Slovensko'
-		] ) );
-		$metadataProvider = new ImageRecommendationMetadataProvider(
-			$metadataService,
-			'cs',
-			[ 'en', 'sk' ],
-			$this->getMockLanguageNameUtils(),
-			$this->getMockMessageLocalizer(),
-			$this->getMockSiteLookup()
-		);
-		$this->assertArrayEquals(
-			[
-				'description' => $enDescription,
-				'thumbUrl' => $mockFileMetadata['thumbUrl'],
-				'fullUrl' => $mockFileMetadata['fullUrl'],
-				'descriptionUrl' => $mockFileMetadata['descriptionUrl'],
-				'originalWidth' => $mockFileMetadata['originalWidth'],
-				'originalHeight' => $mockFileMetadata['originalHeight'],
-				'mustRender' => true,
-				'isVectorized' => false,
-				'reason' => 'growthexperiments-addimage-reason-wikipedia-languages'
-			],
-			$metadataProvider->getMetadata( $this->getSuggestionData( 'Image.jpg' ) )
-		);
-	}
-
-	/**
-	 * @covers ::getMetadata
-	 */
-	public function testGetMetadata() {
-		$enDescription = 'English';
+	public function testGetMetadata_Reason(
+		array $suggestionOverrides,
+		string $expectedReason,
+		bool $expectedReasonIsMessageKey
+	) {
 		$mockFileMetadata = $this->getMockFileMetadata();
 		$metadataService = $this->getMockService(
 			$mockFileMetadata,
 			$this->getImageDescription( [
-			'en' => $enDescription
-		] ) );
-		$metadataProvider = new ImageRecommendationMetadataProvider(
-			$metadataService,
-			'en',
-			[ 'en' ],
-			$this->getMockLanguageNameUtils(),
-			$this->getMockMessageLocalizer(),
-			$this->getMockSiteLookup()
-		);
-		$this->assertArrayEquals(
-			[
-				'description' => $enDescription,
-				'thumbUrl' => $mockFileMetadata['thumbUrl'],
-				'fullUrl' => $mockFileMetadata['fullUrl'],
-				'descriptionUrl' => $mockFileMetadata['descriptionUrl'],
-				'originalWidth' => $mockFileMetadata['originalWidth'],
-				'originalHeight' => $mockFileMetadata['originalHeight'],
-				'mustRender' => true,
-				'isVectorized' => false,
-				'reason' => 'growthexperiments-addimage-reason-wikipedia-languages'
-			],
-			$metadataProvider->getMetadata( $this->getSuggestionData( 'HMS_Pandora.jpg' ) )
-		);
-	}
-
-	/**
-	 * @covers ::getMetadata
-	 */
-	public function testWikidataSuggestionReason() {
-		$mockFileMetadata = $this->getMockFileMetadata();
-		$metadataService = $this->getMockService(
-			$mockFileMetadata,
-			$this->getImageDescription( [
-				'en' => 'Description'
+				'en' => 'Description',
 			] ) );
 		$metadataProvider = new ImageRecommendationMetadataProvider(
 			$metadataService,
 			'en',
 			[ 'en' ],
 			$this->getMockLanguageNameUtils(),
-			$this->getMockMessageLocalizer(),
+			$this->getMockMessageLocalizer( $expectedReasonIsMessageKey ),
 			$this->getMockSiteLookup()
 		);
 		$actualReason = $metadataProvider->getMetadata(
-			$this->getSuggestionData( 'Image.jpg', [ 'source' => 'wikidata' ] )
+			$this->getSuggestionData( 'Image.jpg', $suggestionOverrides )
 		)['reason'];
-		$this->assertEquals( 'growthexperiments-addimage-reason-wikidata', $actualReason );
+		$this->assertEquals( $expectedReason, $actualReason );
 	}
 
-	/**
-	 * @covers ::getMetadata
-	 */
-	public function testCommonsSuggestionReason() {
-		$mockFileMetadata = $this->getMockFileMetadata();
-		$metadataService = $this->getMockService(
-			$mockFileMetadata,
-			$this->getImageDescription( [
-				'en' => 'Description'
-			] ) );
-		$metadataProvider = new ImageRecommendationMetadataProvider(
-			$metadataService,
-			'en',
-			[ 'en' ],
-			$this->getMockLanguageNameUtils(),
-			$this->getMockMessageLocalizer(),
-			$this->getMockSiteLookup()
-		);
-		$actualReason = $metadataProvider->getMetadata(
-			$this->getSuggestionData( 'Image.jpg', [ 'source' => 'commons' ] )
-		)['reason'];
-		$this->assertEquals( 'growthexperiments-addimage-reason-commons', $actualReason );
+	public function provideGetMetadata_Reason() {
+		return [
+			// suggestion data, expected message, assert as message key (vs. actual message)?
+			[ [ 'source' => 'wikidata' ], 'growthexperiments-addimage-reason-wikidata', true ],
+			[ [ 'source' => 'commons' ], 'growthexperiments-addimage-reason-commons', true ],
+			[ [ 'source' => 'wikipedia', 'projects' => [ 'cswiki' ] ],
+			  'Used in the same article in Czech Wikipedia', false ],
+			[ [ 'source' => 'wikipedia', 'projects' => [ 'cswiki' ] ],
+			  'Used in the same article in Czech Wikipedia', false ],
+			[ [ 'source' => 'wikipedia', 'projects' => [ 'cswiki', 'frwiki' ] ],
+			  'Used in the same article in 2 other languages', false ],
+		];
 	}
 
-	/**
-	 * @covers ::getMetadata
-	 */
-	public function testWikipediaSingleProjectSuggestionReason() {
-		$mockFileMetadata = $this->getMockFileMetadata();
-		$metadataService = $this->getMockService(
-			$mockFileMetadata,
-			$this->getImageDescription( [
-				'en' => 'Description'
-			] ) );
-		$metadataProvider = new ImageRecommendationMetadataProvider(
-			$metadataService,
-			'en',
-			[ 'en' ],
-			$this->getMockLanguageNameUtils(),
-			$this->getMockMessageLocalizer( false ),
-			$this->getMockSiteLookup()
-		);
-		$actualReason = $metadataProvider->getMetadata(
-			$this->getSuggestionData( 'Image.jpg', [ 'projects' => [ 'cswiki' ] ] )
-		)['reason'];
-		$this->assertEquals( 'Used in the same article in Czech Wikipedia', $actualReason );
-	}
-
-	/**
-	 * @covers ::getMetadata
-	 */
-	public function testWikipediaMultipleProjectsSuggestionReason() {
-		$mockFileMetadata = $this->getMockFileMetadata();
-		$metadataService = $this->getMockService(
-			$mockFileMetadata,
-			$this->getImageDescription( [
-				'en' => 'Description'
-			] ) );
-		$metadataProvider = new ImageRecommendationMetadataProvider(
-			$metadataService,
-			'en',
-			[ 'en' ],
-			$this->getMockLanguageNameUtils(),
-			$this->getMockMessageLocalizer( false ),
-			$this->getMockSiteLookup()
-		);
-		$metadata = $metadataProvider->getMetadata( $this->getSuggestionData(
-			'Image.jpg',
-				[ 'projects' => [ 'cswiki', 'frwiki' ] ]
-		) );
-		$this->assertEquals(
-			'Used in the same article in 2 other languages',
-			$metadata['reason']
-		);
-	}
-
-	/**
-	 * @covers ::getMetadata
-	 */
 	public function testWikipediaMultipleProjectsFallbackSuggestionReason() {
 		$mockFileMetadata = $this->getMockFileMetadata();
 		$metadataService = $this->getMockService(
@@ -304,75 +200,41 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
-	 * @covers ::getShownLanguageCodes
+	 * @dataProvider provideGetShownLanguageCodes
 	 */
-	public function testSuggestionReasonShownLanguages() {
+	public function testGetShownLanguageCodes(
+		$languageFallbackChain,
+		$suggestionLanguageCodes,
+		$targetCount,
+		$expectedShownLanguageCodes
+	) {
 		$mockFileMetadata = $this->getMockFileMetadata();
 		$metadataService = $this->getMockService(
 			$mockFileMetadata,
 			$this->getImageDescription( [
-				'en' => 'Description'
+				'en' => 'Description',
 			] ) );
 		$metadataProvider = new ImageRecommendationMetadataProvider(
 			$metadataService,
-			'en',
-			[ 'en', 'cs', 'sk' ],
+			$languageFallbackChain[0],
+			array_slice( $languageFallbackChain, 1 ),
 			$this->getMockLanguageNameUtils(),
 			$this->getMockMessageLocalizer( false ),
 			$this->getMockSiteLookup()
 		);
 		$this->assertArrayEquals(
-			[ 'cs', 'sk' ],
-			$metadataProvider->getShownLanguageCodes( [ 'cs', 'fr', 'sk', 'ar' ], 2 )
+			$expectedShownLanguageCodes,
+			$metadataProvider->getShownLanguageCodes( $suggestionLanguageCodes, $targetCount )
 		);
 	}
 
-	/**
-	 * @covers ::getShownLanguageCodes
-	 */
-	public function testSuggestionReasonShownLanguagesNoFallback() {
-		$mockFileMetadata = $this->getMockFileMetadata();
-		$metadataService = $this->getMockService(
-			$mockFileMetadata,
-			$this->getImageDescription( [
-				'en' => 'Description'
-			] ) );
-		$metadataProvider = new ImageRecommendationMetadataProvider(
-			$metadataService,
-			'en',
-			[],
-			$this->getMockLanguageNameUtils(),
-			$this->getMockMessageLocalizer( false ),
-			$this->getMockSiteLookup()
-		);
-		$this->assertArrayEquals(
-			[ 'cs', 'fr' ],
-			$metadataProvider->getShownLanguageCodes( [ 'cs', 'fr', 'sk', 'ar' ], 2 )
-		);
-	}
-
-	/**
-	 * @covers ::getShownLanguageCodes
-	 */
-	public function testSuggestionReasonShownLanguagesFallback() {
-		$mockFileMetadata = $this->getMockFileMetadata();
-		$metadataService = $this->getMockService(
-			$mockFileMetadata,
-			$this->getImageDescription( [
-				'en' => 'Description'
-			] ) );
-		$metadataProvider = new ImageRecommendationMetadataProvider(
-			$metadataService,
-			'en',
-			[ 'cs', 'sk' ],
-			$this->getMockLanguageNameUtils(),
-			$this->getMockMessageLocalizer( false ),
-			$this->getMockSiteLookup()
-		);
-		$this->assertArrayEquals(
-			[ 'cs', 'sk', 'fr' ],
-			$metadataProvider->getShownLanguageCodes( [ 'cs', 'fr', 'sk', 'ar' ], 3 )
-		);
+	public function provideGetShownLanguageCodes() {
+		return [
+			// language chain, suggestion languages, shown language target count, expected shown languages
+			[ [ 'en' ], [ 'cs', 'fr', 'sk', 'ar' ], 2, [ 'cs', 'fr' ] ],
+			[ [ 'en', 'cs', 'sk' ], [ 'cs', 'fr', 'sk', 'ar' ], 2, [ 'cs', 'sk' ] ],
+			[ [ 'en', 'cs', 'sk' ], [ 'cs', 'fr', 'sk', 'ar' ], 3, [ 'cs', 'sk', 'fr' ] ],
+		];
 	}
 
 	private function getImageDescription( array $description = [] ): array {
@@ -398,13 +260,16 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 
 	private function getMockService(
 		array $fileMetadata = [],
-		array $extendedMetadata = []
+		array $extendedMetadata = [],
+		array $apiMetadata = []
 	): ImageRecommendationMetadataService {
-		$metadataService = $this->createMock(
-			ImageRecommendationMetadataService::class
+		$metadataService = $this->createNoOpMock(
+			ImageRecommendationMetadataService::class,
+			[ 'getFileMetadata', 'getExtendedMetadata', 'getApiMetadata' ]
 		);
 		$metadataService->method( 'getFileMetadata' )->willReturn( $fileMetadata );
 		$metadataService->method( 'getExtendedMetadata' )->willReturn( $extendedMetadata );
+		$metadataService->method( 'getApiMetadata' )->willReturn( $apiMetadata );
 		return $metadataService;
 	}
 

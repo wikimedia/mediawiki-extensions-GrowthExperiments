@@ -710,7 +710,13 @@ return [
 	'GrowthExperimentsImageRecommendationMetadataService' => static function (
 		MediaWikiServices $services
 	): ImageRecommendationMetadataService {
-		return new ImageRecommendationMetadataService( $services->getRepoGroup() );
+		$growthExperimentsServices = GrowthExperimentsServices::wrap( $services );
+		return new ImageRecommendationMetadataService(
+			$services->getHttpRequestFactory(),
+			$services->getRepoGroup(),
+			$growthExperimentsServices->getGrowthConfig()->get( 'GEMediaInfoRepos' ),
+			$services->getContentLanguage()->getCode()
+		);
 	},
 
 	'GrowthExperimentsImageRecommendationMetadataProvider' => static function (
