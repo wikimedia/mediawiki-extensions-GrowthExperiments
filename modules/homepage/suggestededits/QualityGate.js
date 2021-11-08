@@ -4,6 +4,8 @@
  * @param {Object} config
  * @param {string[]} config.gates
  * @param {Object} config.gateConfig
+ * @param {Object} config.loggers Loggers for each task type.
+ * @param {Object} config.loggerMetadataOverrides Overrides to pass to the logger.log() call.
  * @constructor
  */
 function QualityGate( config ) {
@@ -28,6 +30,7 @@ function QualityGate( config ) {
 			}.bind( this )
 		}
 	};
+	this.loggers = config.loggers;
 }
 
 /**
@@ -99,7 +102,8 @@ QualityGate.prototype.handleGateFailure = function ( taskType, gate ) {
  * Show an alert dialog for dailyLimit gate for image-recommendation task type.
  */
 QualityGate.prototype.showImageRecommendationDailyLimitAlertDialog = function () {
-	// TODO: Instrument the dialog.
+	this.loggers[ 'image-recommendation' ].log( 'impression', 'dailyLimit', this.config.loggerMetadataOverrides );
+
 	OO.ui.alert( mw.message( 'growthexperiments-addimage-daily-task-limit-exceeded' ).parse(), {
 		actions: [ {
 			action: 'accept', label: mw.message( 'growthexperiments-addimage-daily-task-limit-exceeded-dialog-button' ).text(), flags: 'primary'
@@ -111,6 +115,8 @@ QualityGate.prototype.showImageRecommendationDailyLimitAlertDialog = function ()
  * Show an alert dialog for the mobileOnly gate for image-recommendation task type.
  */
 QualityGate.prototype.showImageRecommendationMobileOnlyDialog = function () {
+	this.loggers[ 'image-recommendation' ].log( 'impression', 'mobileOnly', this.config.loggerMetadataOverrides );
+
 	OO.ui.alert( mw.message( 'growthexperiments-addimage-mobile-only' ).parse(), {
 		actions: [ {
 			action: 'accept', label: mw.message( 'growthexperiments-addimage-mobile-only-dialog-button' ).text(), flags: 'primary'

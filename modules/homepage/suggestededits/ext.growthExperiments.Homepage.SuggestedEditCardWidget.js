@@ -99,8 +99,25 @@
 		return $textContent;
 	};
 
+	/**
+	 * @return {string}
+	 */
 	SuggestedEditCardWidget.prototype.getTaskType = function () {
 		return this.data.tasktype;
+	};
+
+	/**
+	 * @return {number}
+	 */
+	SuggestedEditCardWidget.prototype.getPageId = function () {
+		return this.data.pageId;
+	};
+
+	/**
+	 * @return {string}
+	 */
+	SuggestedEditCardWidget.prototype.getDbKey = function () {
+		return this.data.title;
 	};
 
 	module.exports = SuggestedEditCardWidget;

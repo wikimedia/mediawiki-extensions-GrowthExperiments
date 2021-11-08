@@ -16,6 +16,7 @@
 		defaultTaskTypes = TaskTypesAbFilter.filterDefaultTaskTypes( require( './DefaultTaskTypes.json' ) ),
 		SwipePane = require( '../../ui-components/SwipePane.js' ),
 		QualityGate = require( './QualityGate.js' ),
+		ImageSuggestionInteractionLogger = require( './../../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js' ),
 		suggestedEditsModule;
 
 	/**
@@ -715,14 +716,28 @@
 		$element.on( 'click', function ( event ) {
 			var qualityGate = new QualityGate( {
 				gates: this.currentCard.data.qualityGateIds || [],
-				gateConfig: this.qualityGateConfig
+				gateConfig: this.qualityGateConfig,
+				/* eslint-disable camelcase */
+				loggers: {
+					'image-recommendation': new ImageSuggestionInteractionLogger( {
+						is_mobile: OO.ui.isMobile(),
+						active_interface: 'qualitygate_dialog'
+					} )
+				},
+				loggerMetadataOverrides: {
+					newcomer_task_token: this.currentCard.data.token,
+					homepage_pageview_token: mw.config.get( 'wgGEHomepagePageviewToken' ),
+					page_id: this.currentCard.getPageId(),
+					page_title: this.currentCard.getDbKey()
+				}
+				/* eslint-enable camelcase */
 			} );
 			event.preventDefault();
 			event.stopPropagation();
 			qualityGate.checkAll( this.currentCard.data.tasktype ).done( function () {
 				window.location = this.currentCard.$element.find( '.se-card-content' ).attr( 'href' );
 			}.bind( this ) ).fail( function ( gate ) {
-				qualityGate.handleGateFailure( this.currentCard.data.tasktype, gate );
+				qualityGate.handleGateFailure( this.currentCard.getTaskType(), gate );
 			}.bind( this ) );
 		}.bind( this ) );
 	};
