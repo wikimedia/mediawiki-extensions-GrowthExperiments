@@ -90,11 +90,6 @@ function RecommendedImageToolbarDialog() {
 	this.detailsButton.connect( this, { click: [ 'onDetailsButtonClicked' ] } );
 
 	/**
-	 * @property {Function} onDocumentNodeClick
-	 */
-	this.onDocumentNodeClick = this.hideDialog.bind( this );
-
-	/**
 	 * @property {mw.libs.ge.ImageRecommendationImage[]} images
 	 */
 	this.images = [];
@@ -152,7 +147,6 @@ RecommendedImageToolbarDialog.prototype.getSetupProcess = function ( data ) {
  */
 RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 	this.images = this.getArticleTarget().images;
-	this.surface.getView().$documentNode.on( 'click', this.onDocumentNodeClick );
 	this.setUpToolbarDialogButton(
 		mw.message( 'growthexperiments-addimage-inspector-show-button' ).text()
 	);
@@ -446,12 +440,9 @@ RecommendedImageToolbarDialog.prototype.imageCaptionReadyHandler = function () {
 RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
 	var articleTarget = this.getArticleTarget(),
 		surface = this.surface,
-		toolbarDialogButton = this.toolbarDialogButton,
 		$inspector = this.$element,
 		$documentNode = surface.getView().$documentNode;
 
-	toolbarDialogButton.toggle( false );
-	$documentNode.off( 'click', this.onDocumentNodeClick );
 	articleTarget.updatePlaceholderTitle(
 		mw.message( 'growthexperiments-addimage-loading-title' ).text(),
 		true
@@ -471,8 +462,6 @@ RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
 		articleTarget.logSuggestionInteraction( 'back', 'caption_entry' );
 		MachineSuggestionsMode.disableVirtualKeyboard( this.surface );
 		surface.setReadOnly( true );
-		toolbarDialogButton.toggle( true );
-		$documentNode.on( 'click', this.onDocumentNodeClick );
 		articleTarget.rollback();
 		articleTarget.restorePlaceholderTitle();
 		articleTarget.toggleInternalRouting( false );
@@ -518,6 +507,7 @@ RecommendedImageToolbarDialog.prototype.showInternalRoute = function (
 /**
  * Get metadata to pass to the ImageSuggestionInteractionLogger.
  *
+ * @override
  * @return {Object}
  */
 RecommendedImageToolbarDialog.prototype.suggestionLogMetadata = function () {
