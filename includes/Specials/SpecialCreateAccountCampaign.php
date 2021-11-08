@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Specials;
 
+use GrowthExperiments\HomepageHooks;
 use Html;
 use OOUI\IconWidget;
 use SkinMinerva;
@@ -25,30 +26,30 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 		$signupStart = ( $this->isSignup() && !$signupStartMsg->isDisabled() )
 			? Html::rawElement( 'div', [ 'id' => 'signupstart' ], $signupStartMsg->parseAsBlock() ) : '';
 
-		// The campaign field should always be set if this special page is loaded (see onSpecialPage_initList
-		// in VariantHooks), but adding this check for additional safety in case the SpecialPge_initList is moved
-		// around in the future.
-		$donorHtml = $this->isCampaign() ? $this->getDonorHtml() : '';
+		$benefitsContainerHtml = $this->getBenefitsContainerHtml();
 		$formBlock = Html::rawElement( 'div', [ 'id' => 'userloginForm' ],
 			$formHtml
 		);
 		$isMobile = $this->getSkin() instanceof SkinMinerva;
-		$formAndDonor = $isMobile ? ( $donorHtml . $formBlock ) : ( $formBlock . $donorHtml );
+		$formAndDonor = $isMobile ? ( $benefitsContainerHtml . $formBlock ) : ( $formBlock . $benefitsContainerHtml );
 
-		$html = Html::rawElement( 'div', [ 'class' => 'mw-ui-container' ],
+		return Html::rawElement( 'div', [ 'class' => 'mw-ui-container' ],
 			$loginPrompt
 			. $signupStart
 			. $formAndDonor
 		);
+	}
 
-		return $html;
+	/** @inheritDoc */
+	protected function getBenefitsContainerHtml(): string {
+		return $this->shouldShowNewLandingPageHtml() ? $this->getDonorHtml() : parent::getBenefitsContainerHtml();
 	}
 
 	/** @inheritDoc */
 	protected function load( $subPage ) {
 		// Remove the default Minerva "warning" that only serves aesthetic purposes but
 		// do not remove real warnings.
-		if ( $this->getSkin() instanceof SkinMinerva
+		if ( $this->shouldShowNewLandingPageHtml() && $this->getSkin() instanceof SkinMinerva
 			 && $this->getRequest()->getVal( 'warning' ) === 'mobile-frontend-generic-login-new'
 		) {
 			$this->getRequest()->setVal( 'warning', null );
@@ -123,16 +124,14 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 	}
 
 	/**
-	 * Check if the campaign field is set.
+	 * Check if the campaign field is set and if the geNewLandingHtml field is true.
 	 *
 	 * @return bool
 	 */
-	private function isCampaign(): bool {
-		try {
-			return (bool)$this->authForm->getField( 'campaign' )->getDefault();
-		} catch ( \DomainException $exception ) {
-			return false;
-		}
+	private function shouldShowNewLandingPageHtml(): bool {
+		$request = $this->getRequest();
+		return $request->getCheck( 'campaign' )
+			&& $request->getInt( HomepageHooks::REGISTRATION_GROWTHEXPERIMENTS_NEW_LANDING_HTML ) > 0;
 	}
 
 }
