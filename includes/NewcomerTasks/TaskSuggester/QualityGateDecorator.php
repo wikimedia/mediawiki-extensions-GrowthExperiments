@@ -7,6 +7,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
+use GrowthExperiments\Util;
 use IContextSource;
 use MediaWiki\User\UserIdentity;
 use RequestContext;
@@ -57,14 +58,17 @@ class QualityGateDecorator implements TaskSuggester {
 		// TODO: Split out QualityGates methods into separate classes per task type.
 		if ( $tasks instanceof TaskSet ) {
 			$context = RequestContext::getMain();
-			$tasks->setQualityGateConfigForTaskType( ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
-				[ 'dailyLimit' => $this->isImageRecommendationDailyTaskLimitExceeded(
+			$tasks->setQualityGateConfigForTaskType( ImageRecommendationTaskTypeHandler::TASK_TYPE_ID, [
+				'dailyLimit' => $this->isImageRecommendationDailyTaskLimitExceeded(
 					$user,
 					$context
-				), 'dailyCount' => $this->getImageRecommendationTasksDoneByUserForCurrentDay(
+				),
+				'dailyCount' => $this->getImageRecommendationTasksDoneByUserForCurrentDay(
 					$user,
 					$context
-				) ] );
+				),
+				'mobileOnly' => Util::isMobile( $context->getSkin() )
+			] );
 		}
 		return $tasks;
 	}

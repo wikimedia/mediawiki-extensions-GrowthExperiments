@@ -12,6 +12,9 @@ function QualityGate( config ) {
 		'image-recommendation': {
 			dailyLimit: function () {
 				return this.checkDailyLimitForTaskType( 'image-recommendation' );
+			}.bind( this ),
+			mobileOnly: function () {
+				return this.checkMobileOnlyGate( 'image-recommendation' );
 			}.bind( this )
 		}
 	};
@@ -19,6 +22,9 @@ function QualityGate( config ) {
 		'image-recommendation': {
 			dailyLimit: function () {
 				return this.showImageRecommendationDailyLimitAlertDialog();
+			}.bind( this ),
+			mobileOnly: function () {
+				return this.showImageRecommendationMobileOnlyDialog();
 			}.bind( this )
 		}
 	};
@@ -48,6 +54,10 @@ QualityGate.prototype.checkAll = function ( taskType ) {
 /**
  * Check if the task type passes the daily limit gate.
  *
+ * "dailyLimit" is set to true if the user has exceeded the maxTasksPerDay value in
+ * NewcomerTasks.json. The value
+ * is exported in QualityGateDecorator.php
+ *
  * @param {string} taskType
  * @return {jQuery.Promise} A rejected or resolved promise depending on whether the gate is passed
  *   otherwise.
@@ -57,6 +67,21 @@ QualityGate.prototype.checkDailyLimitForTaskType = function ( taskType ) {
 		return $.Deferred().reject( 'dailyLimit' ).promise();
 	}
 	return $.Deferred().resolve().promise();
+};
+
+/**
+ * Check if the user is on desktop or mobile.
+ *
+ * "mobileOnly" is set to true if the user is on a mobile skin. This is exported in
+ * QualityGateDecorator.php.
+ *
+ * @param {string} taskType
+ * @return {jQuery.Promise} A resolved promise if the gate is passed, a rejected promise if not.
+ */
+QualityGate.prototype.checkMobileOnlyGate = function ( taskType ) {
+	return this.config.gateConfig[ taskType ].mobileOnly ?
+		$.Deferred().resolve().promise() :
+		$.Deferred().reject( 'mobileOnly' ).promise();
 };
 
 /**
@@ -78,6 +103,17 @@ QualityGate.prototype.showImageRecommendationDailyLimitAlertDialog = function ()
 	OO.ui.alert( mw.message( 'growthexperiments-addimage-daily-task-limit-exceeded' ).parse(), {
 		actions: [ {
 			action: 'accept', label: mw.message( 'growthexperiments-addimage-daily-task-limit-exceeded-dialog-button' ).text(), flags: 'primary'
+		} ]
+	} );
+};
+
+/**
+ * Show an alert dialog for the mobileOnly gate for image-recommendation task type.
+ */
+QualityGate.prototype.showImageRecommendationMobileOnlyDialog = function () {
+	OO.ui.alert( mw.message( 'growthexperiments-addimage-mobile-only' ).parse(), {
+		actions: [ {
+			action: 'accept', label: mw.message( 'growthexperiments-addimage-mobile-only-dialog-button' ).text(), flags: 'primary'
 		} ]
 	} );
 };
