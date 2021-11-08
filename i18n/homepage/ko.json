@@ -107,6 +107,8 @@
 	"tag-newcomer_task-description": "새 사용자가 새 사용자 홈페이지의 편집 추천 기능을 통해 추천받아 작업한 편집입니다.",
 	"tag-newcomer_task_add_link": "[[mw:Special:MyLanguage/Growth/Personalized first day/Structured tasks/Add a link|제안됨: 링크 추가]]",
 	"tag-newcomer_task_add_link-description": "새 사용자 홈페이지의 편집 제안 모듈을 통해 제안된 \"링크 추가\" 편집",
+	"tag-newcomer_task_image_suggestion": "[[mw:Special:MyLanguage/Growth/Personalized_first_day/Structured_tasks/Add_an_image|제안됨: 이미지 추가]]",
+	"tag-newcomer_task_image_suggestion-description": "새 사용자 홈페이지의 편집 제안 모듈에 의해 제안된 \"이미지 추가\" 편집",
 	"growthexperiments-homepage-help-dialog-title": "질문방에 도움 요청하기",
 	"growthexperiments-homepage-help-header": "편집에 도움 받기",
 	"growthexperiments-homepage-help-subheader": "편집에 관한 유용한 도움말 문서",
@@ -407,5 +409,6 @@
 	"growthexperiments-addimage-reason-wikipedia-languages-others": "{{PLURAL:$1|기타}} $1개",
 	"growthexperiments-addimage-reason-wikipedia-project": "$1에서 동일 문서에 사용됩니다.",
 	"growthexperiments-addimage-reason-wikidata": "이 문서에 대해 위키데이터 항목에서 발견됩니다. (강력한 일치)",
-	"growthexperiments-addimage-reason-commons": "이 문서에 대해 위키데이터 항목에 연결된 여러 이미지 중 하나입니다."
+	"growthexperiments-addimage-reason-commons": "이 문서에 대해 위키데이터 항목에 연결된 여러 이미지 중 하나입니다.",
+	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "알겠습니다"
 }

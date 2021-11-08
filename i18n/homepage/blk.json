@@ -12,5 +12,6 @@
 	"growthexperiments-addimage-inspector-yes-button": "မွေး",
 	"growthexperiments-addimage-inspector-no-button": "မွေးတဝ်း",
 	"growthexperiments-addimage-inspector-skip-button": "{{GENDER:|တသေႏချာႏတဝ်း}}",
-	"growthexperiments-addimage-inspector-details-button": "ထွားစဲင်းသေႏချာႏလို့ပူင်ႏ"
+	"growthexperiments-addimage-inspector-details-button": "ထွားစဲင်းသေႏချာႏလို့ပူင်ႏ",
+	"growthexperiments-addimage-summary-label": "အအဲဉ်ႏချုတ်"
 }
