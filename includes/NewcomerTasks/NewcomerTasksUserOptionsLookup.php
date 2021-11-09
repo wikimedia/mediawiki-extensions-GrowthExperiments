@@ -60,7 +60,7 @@ class NewcomerTasksUserOptionsLookup {
 		if ( $taskTypes !== null ) {
 			return $this->filterNonExistentTaskTypes( $this->convertTaskTypes( $taskTypes, $user ) );
 		} else {
-			return $this->getDefaultTaskTypes( $user );
+			return $this->convertTaskTypes( $this->getDefaultTaskTypes( $user ), $user );
 		}
 	}
 
@@ -89,16 +89,13 @@ class NewcomerTasksUserOptionsLookup {
 	/**
 	 * Check if link recommendations are enabled. When true, the link-recommendation task type
 	 * should be made available to the user and the links task type hidden.
-	 * @param UserIdentity $user
 	 * @return bool
 	 */
-	public function areLinkRecommendationsEnabled( UserIdentity $user ): bool {
+	public function areLinkRecommendationsEnabled(): bool {
 		return $this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' )
-			&& $this->config->get( 'GELinkRecommendationsFrontendEnabled' )
-			&& array_key_exists( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID,
-				$this->configurationLoader->getTaskTypes() )
-			&& $this->experimentUserManager->isUserInVariant( $user,
-				VariantHooks::VARIANT_LINK_RECOMMENDATION_ENABLED );
+			   && $this->config->get( 'GELinkRecommendationsFrontendEnabled' )
+			   && array_key_exists( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID,
+				   $this->configurationLoader->getTaskTypes() );
 	}
 
 	/**
@@ -123,7 +120,7 @@ class NewcomerTasksUserOptionsLookup {
 	 * @return string[] Filtered task types IDs. Array keys are not preserved.
 	 */
 	public function filterTaskTypes( array $taskTypes, UserIdentity $user ): array {
-		if ( $this->areLinkRecommendationsEnabled( $user ) ) {
+		if ( $this->areLinkRecommendationsEnabled() ) {
 			$taskTypes = array_diff( $taskTypes, [ 'links' ] );
 		} else {
 			$taskTypes = array_diff( $taskTypes, [ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ] );
@@ -140,9 +137,7 @@ class NewcomerTasksUserOptionsLookup {
 	 * @return string[]
 	 */
 	private function getDefaultTaskTypes( UserIdentity $user ): array {
-		if ( $this->areLinkRecommendationsEnabled( $user ) ) {
-			return [ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ];
-		} elseif ( $this->areImageRecommendationsEnabled( $user ) ) {
+		if ( $this->areImageRecommendationsEnabled( $user ) ) {
 			return [ ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ];
 		} else {
 			return $this->filterNonExistentTaskTypes( SuggestedEdits::DEFAULT_TASK_TYPES );
@@ -158,7 +153,7 @@ class NewcomerTasksUserOptionsLookup {
 	 * @return string[] Converted task types IDs. Array keys are not preserved.
 	 */
 	private function convertTaskTypes( array $taskTypes, UserIdentity $user ): array {
-		if ( $this->areLinkRecommendationsEnabled( $user ) ) {
+		if ( $this->areLinkRecommendationsEnabled() ) {
 			$map = [ 'links' => LinkRecommendationTaskTypeHandler::TASK_TYPE_ID ];
 		} else {
 			$map = [ LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => 'links' ];

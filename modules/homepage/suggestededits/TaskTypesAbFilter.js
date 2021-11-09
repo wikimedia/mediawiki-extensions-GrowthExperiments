@@ -10,7 +10,6 @@
 	var OLD_LINK_TASK_TYPE = 'links',
 		LINK_RECOMMENDATION_TASK_TYPE = 'link-recommendation',
 		IMAGE_RECOMMENDATION_TASK_TYPE = 'image-recommendation',
-		LINK_RECOMMENDATION_VARIANT = 'linkrecommendation',
 		IMAGE_RECOMMENDATION_VARIANT = 'imagerecommendation';
 
 	/**
@@ -34,11 +33,9 @@
 	 */
 	function areLinkRecommendationsEnabled() {
 		var config = require( './config.json' ),
-			taskTypes = require( './TaskTypes.json' ),
-			Utils = require( '../../utils/ext.growthExperiments.Utils.js' );
+			taskTypes = require( './TaskTypes.json' );
 		return config.GELinkRecommendationsEnabled &&
-			LINK_RECOMMENDATION_TASK_TYPE in taskTypes &&
-			Utils.isUserInVariant( [ LINK_RECOMMENDATION_VARIANT ] );
+			LINK_RECOMMENDATION_TASK_TYPE in taskTypes;
 	}
 
 	/**
@@ -117,10 +114,7 @@
 	 */
 	function getDefaultTaskTypes() {
 		var defaultDefaultTaskTypes = require( './DefaultTaskTypes.json' );
-
-		if ( areLinkRecommendationsEnabled() ) {
-			return [ LINK_RECOMMENDATION_TASK_TYPE ];
-		} else if ( areImageRecommendationsEnabled() ) {
+		if ( areImageRecommendationsEnabled() ) {
 			return [ IMAGE_RECOMMENDATION_TASK_TYPE ];
 		} else {
 			return defaultDefaultTaskTypes;

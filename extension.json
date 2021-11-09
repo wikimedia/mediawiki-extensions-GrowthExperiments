@@ -1806,13 +1806,12 @@
 		"GEHomepageNewAccountVariants": {
 			"description": "Which percentage of new accounts to assign which A/B testing variant. For legacy reasons this has 'Homepage' in the name and is only applied to new accounts for whom the homepage got enabled. Percentages must be whole numbers. If the percentages don't add up to 100, some new accounts will not be assigned a variant. Those accounts will fall back on GEHomepageDefaultVariant. The random choice can be overridden with the geForceVariant query parameter.",
 			"value": {
-				"control": 0,
-				"linkrecommendation": 100
+				"control": 100
 			}
 		},
 		"GEHomepageDefaultVariant": {
-			"description": "GEHomepageNewAccountVariants variant to use for users who weren't assigned a variant at account creation time, or the variant they got is not valid anymore. Must be one of control, linkrecommendation",
-			"value": "linkrecommendation"
+			"description": "GEHomepageNewAccountVariants variant to use for users who weren't assigned a variant at account creation time, or the variant they got is not valid anymore. Must be one of control, imagerecommendation",
+			"value": "control"
 		},
 		"GEHomepageLoggingEnabled": {
 			"description": "ON/OFF switch for the homepage event logging feature.",
