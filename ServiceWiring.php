@@ -345,7 +345,6 @@ return [
 			$geServices->getMenteeOverviewDataProvider(),
 			$geServices->getMentorStore(),
 			$services->getUserOptionsManager(),
-			$services->getUserFactory(),
 			$services->getDBLoadBalancerFactory(),
 			$geServices->getLoadBalancer()
 		);
