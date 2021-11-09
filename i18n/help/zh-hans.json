@@ -30,7 +30,7 @@
 	"growthexperiments-help-panel-back-home": "返回",
 	"growthexperiments-help-panel-close": "完成",
 	"growthexperiments-help-panel-home-title": "获取编辑帮助",
-	"growthexperiments-help-panel-postedit-success-message-published": "谢谢您，{{GENDER:|您}}发布了一笔编辑。继续加油！",
+	"growthexperiments-help-panel-postedit-success-message-published": "{{GENDER:|您}}发布了一笔编辑。谢谢您，继续加油喔！",
 	"growthexperiments-help-panel-postedit-success-message-saved": "谢谢您，{{GENDER:|您}}保存了一笔编辑。继续加油！",
 	"growthexperiments-help-panel-postedit-success-message-notsaved": "感谢您查看编辑提议。",
 	"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation": "今天所有加入图片的条目都已经完成了，做得好！",

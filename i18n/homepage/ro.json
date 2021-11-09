@@ -453,5 +453,7 @@
 	"growthexperiments-addimage-reason-wikidata": "Găsită în elementul Wikidata pentru acest articol (potrivire calitativă).",
 	"growthexperiments-addimage-reason-commons": "Una dintre cele câteva imagini legate de elementul Wikidata pentru acest articol.",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|Ați}} finalizat toate sugestiile de imagine pentru astăzi. {{GENDER:|Ajustați-vă}} nivelurile de dificultate pentru a vedea alte tipuri de editări sau reveniți mâine pentru mai multe sugestii de imagine.",
-	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Am înțeles"
+	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Am înțeles",
+	"growthexperiments-addimage-mobile-only": "Sugestiile de imagine sunt disponibile numai pe mobil. {{GENDER:|Ajustați-vă}} nivelurile de dificultate pentru a vedea alte tipuri de editări sau {{GENDER:|utilizați-vă}} dispozitivul mobil pentru a lucra la sugestii de imagine.",
+	"growthexperiments-addimage-mobile-only-dialog-button": "Am înțeles"
 }
