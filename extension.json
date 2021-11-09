@@ -629,7 +629,8 @@
 				"oojs-ui.styles.icons-content",
 				"oojs-ui.styles.icons-editing-core",
 				"oojs-ui-windows",
-				"ext.growthExperiments.Homepage.Logger"
+				"ext.growthExperiments.Homepage.Logger",
+				"ext.growthExperiments.SuggestedEditSession"
 			],
 			"messages": [
 				"comma-separator",
@@ -1093,7 +1094,8 @@
 				"mediawiki.Uri",
 				"mediawiki.util",
 				"oojs-ui-widgets",
-				"oojs-ui-windows"
+				"oojs-ui-windows",
+				"ext.growthExperiments.SuggestedEditSession"
 			],
 			"targets": [
 				"desktop",
