@@ -28,8 +28,12 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 			->willReturn( '' );
 		$this->assertEquals( 'Foo', $this->getExperimentUserManager(
 			new ServiceOptions(
-				[ 'GEHomepageDefaultVariant' ],
-				[ 'GEHomepageDefaultVariant' => 'Foo' ]
+				ExperimentUserManager::CONSTRUCTOR_OPTIONS,
+				[
+					'GEHomepageDefaultVariant' => 'Foo',
+					'GEHomepageNewAccountVariants' => [],
+					'GEHomepageNewAccountVariantsByPlatform' => []
+				]
 			),
 			$userOptionsLookupMock
 		)->getVariant( $user ) );
@@ -54,8 +58,12 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 			} );
 		$experimentUserManager = $this->getExperimentUserManager(
 			new ServiceOptions(
-				[ 'GEHomepageDefaultVariant' ],
-				[ 'GEHomepageDefaultVariant' => 'Foo' ]
+				ExperimentUserManager::CONSTRUCTOR_OPTIONS,
+				[
+					'GEHomepageDefaultVariant' => 'Foo',
+					'GEHomepageNewAccountVariants' => [],
+					'GEHomepageNewAccountVariantsByPlatform' => []
+				]
 			),
 			$userOptionsLookupMock
 		);
@@ -66,15 +74,109 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 			$experimentUserManager->getVariant( $user2 ) );
 	}
 
+	/**
+	 * @covers ::getRandomVariant
+	 * @dataProvider variantAssignmentByPlatformProvider
+	 */
+	public function testVariantAssignmentByPlatform(
+		string $message, string $expectedVariant, array $serviceOptions, ?string $platform = null
+	) {
+		$userOptionsLookupMock = $this->getMockBuilder( UserOptionsLookup::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$userOptionsLookupMock->method( 'getOption' )
+			->willReturn( '' );
+		$this->assertEquals(
+			$expectedVariant,
+			$this->getExperimentUserManager(
+				new ServiceOptions(
+					ExperimentUserManager::CONSTRUCTOR_OPTIONS,
+					$serviceOptions
+				),
+				$userOptionsLookupMock,
+				$platform
+			)->getRandomVariant(),
+			$message
+		);
+	}
+
+	/**
+	 * @see ::testVariantAssignmentByPlatform
+	 * @return array[]
+	 */
+	public function variantAssignmentByPlatformProvider(): array {
+		return [
+			[
+				'(Deprecated) GEHomepageNewAccountVariants with 100% assigns user to control, not default variant',
+				'control',
+				[
+					'GEHomepageDefaultVariant' => 'Foo',
+					'GEHomepageNewAccountVariants' => [ 'control' => 100 ],
+					'GEHomepageNewAccountVariantsByPlatform' => []
+				],
+				null
+			],
+			[
+				'(Deprecated) GEHomepageNewAccountVariants with 0% assigns user to default variant',
+				'Foo',
+				[
+					'GEHomepageDefaultVariant' => 'Foo',
+					'GEHomepageNewAccountVariants' => [ 'control' => 0 ],
+					'GEHomepageNewAccountVariantsByPlatform' => []
+				],
+				null
+			],
+			[
+				'mobile: GEHomepageNewAccountVariantsByPlatform with 100% mobile assigns user to imagerecommendation',
+				'imagerecommendation',
+				[
+					'GEHomepageDefaultVariant' => 'control',
+					'GEHomepageNewAccountVariants' => [ 'control' => 100 ],
+					'GEHomepageNewAccountVariantsByPlatform' => [
+						'imagerecommendation' => [
+							'desktop' => 0,
+							'mobile' => 100
+						],
+						'control' => [
+							'desktop' => 100,
+							'mobile' => 0
+						]
+					]
+				],
+				'mobile'
+			],
+			[
+				'desktop: GEHomepageNewAccountVariantsByPlatform with 100% mobile assigns user to control',
+				'control',
+				[
+					'GEHomepageDefaultVariant' => 'control',
+					'GEHomepageNewAccountVariants' => [ 'control' => 100 ],
+					'GEHomepageNewAccountVariantsByPlatform' => [
+						'imagerecommendation' => [
+							'desktop' => 0,
+							'mobile' => 100
+						],
+						'control' => [
+							'desktop' => 100,
+							'mobile' => 0
+						]
+					]
+				],
+				'desktop'
+			],
+		];
+	}
+
 	private function getExperimentUserManager(
-		ServiceOptions $options, UserOptionsLookup $lookup
+		ServiceOptions $options, UserOptionsLookup $lookup, ?string $platform = null
 	): ExperimentUserManager {
 		return new ExperimentUserManager(
 			$options,
 			$this->getMockBuilder( UserOptionsManager::class )
 				->disableOriginalConstructor()
 				->getMock(),
-			$lookup
+			$lookup,
+			$platform
 		);
 	}
 }

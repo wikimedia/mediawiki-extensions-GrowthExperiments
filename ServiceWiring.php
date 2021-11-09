@@ -157,10 +157,10 @@ return [
 		MediaWikiServices $services
 	): ExperimentUserManager {
 		return new ExperimentUserManager(
-			new ServiceOptions( [
-				'GEHomepageNewAccountVariants',
-				'GEHomepageDefaultVariant',
-			], $services->getMainConfig() ),
+			new ServiceOptions(
+				ExperimentUserManager::CONSTRUCTOR_OPTIONS,
+				$services->getMainConfig()
+			),
 			$services->getUserOptionsManager(),
 			$services->getUserOptionsLookup()
 		);

@@ -25,19 +25,43 @@ class ExperimentUserManager {
 	 */
 	private $userOptionsManager;
 
+	/** @var string One of 'mobile' or 'desktop' */
+	private $platform;
+
+	public const CONSTRUCTOR_OPTIONS = [
+		'GEHomepageDefaultVariant',
+		'GEHomepageNewAccountVariantsByPlatform',
+		// Deprecated; can be removed two trains after
+		// I41d96b4ea98d6bae5674440512ef371d33cce39c is in production
+		'GEHomepageNewAccountVariants',
+	];
+
 	/**
 	 * @param ServiceOptions $options
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param UserOptionsLookup $userOptionsLookup
+	 * @param string|null $platform
 	 */
 	public function __construct(
 		ServiceOptions $options,
 		UserOptionsManager $userOptionsManager,
-		UserOptionsLookup $userOptionsLookup
+		UserOptionsLookup $userOptionsLookup,
+		?string $platform = null
 	) {
+		$options->assertRequiredOptions( self::CONSTRUCTOR_OPTIONS );
 		$this->options = $options;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->userOptionsManager = $userOptionsManager;
+		$this->platform = $platform;
+	}
+
+	/**
+	 * Specify if the experiment manager is in a desktop/mobile platform context.
+	 *
+	 * @param string $platform One of "mobile" or "desktop"
+	 */
+	public function setPlatform( string $platform ): void {
+		$this->platform = $platform;
 	}
 
 	/**
@@ -87,24 +111,41 @@ class ExperimentUserManager {
 	}
 
 	/**
-	 * Get a random variant according to the distribution defined in $wgGEHomepageNewAccountVariants.
+	 * Get a random variant according to the distribution defined in $wgGEHomepageNewAccountVariantsByPlatform.
 	 *
 	 * @return string
 	 */
 	public function getRandomVariant(): string {
-		$variantProbabilities = $this->options->get( 'GEHomepageNewAccountVariants' );
+		$variantProbabilities = $this->options->get( 'GEHomepageNewAccountVariantsByPlatform' );
+		// B/C, can be removed two trains after I41d96b4ea98d6bae5674440512ef371d33cce39c is in
+		// production
+		if ( !$variantProbabilities ) {
+			$variantProbabilities = $this->options->get( 'GEHomepageNewAccountVariants' );
+		}
 		$random = rand( 0, 99 );
 
 		$variant = $this->options->get( 'GEHomepageDefaultVariant' );
-		foreach ( $variantProbabilities as $candidateVariant => $percentage ) {
+		foreach ( $variantProbabilities as $candidateVariant => $percentageForVariant ) {
 			if ( !$this->isValidVariant( $candidateVariant ) ) {
 				continue;
 			}
-			if ( $random < $percentage ) {
-				$variant = $candidateVariant;
-				break;
+			// B/C, remove when GEHomepageNewAccountVariants is gone from config.
+			if ( is_int( $percentageForVariant ) ) {
+				if ( $random < $percentageForVariant ) {
+					$variant = $candidateVariant;
+					break;
+				}
+			} else {
+				if ( $random < $percentageForVariant[$this->platform] ) {
+					$variant = $candidateVariant;
+					break;
+				}
 			}
-			$random -= $percentage;
+
+			// B/C, simplify when GEHomepageNewAccountVariants is gone.
+			$random -= is_int( $percentageForVariant ) ?
+				$percentageForVariant :
+				$percentageForVariant[$this->platform];
 		}
 		return $variant;
 	}
