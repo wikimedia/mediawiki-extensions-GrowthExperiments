@@ -68,7 +68,8 @@
 
 		this.awaySettingsDialog = new AwaySettingsDialog();
 		this.awaySettingsDialog.connect( this, {
-			awayset: [ 'onMentorBackTimestampChanged' ]
+			awayset: [ 'onMentorBackTimestampChanged' ],
+			cancel: [ 'onAwaySettingsDialogCancelled' ]
 		} );
 		this.windowManager.addWindows( [ this.awaySettingsDialog ] );
 	}
@@ -98,6 +99,12 @@
 				);
 			} );
 		}
+	};
+
+	MentorTools.prototype.onAwaySettingsDialogCancelled = function () {
+		var itemToSelect = this.mentorStatusDropdown.getMenu().findItemFromData( 'active' );
+		this.mentorStatusDropdown.getMenu().selectItem( itemToSelect );
+		this.mentorStatusDropdown.setIcon( itemToSelect.getIcon() );
 	};
 
 	MentorTools.prototype.onMentorBackTimestampChanged = function ( backtimestamp ) {
