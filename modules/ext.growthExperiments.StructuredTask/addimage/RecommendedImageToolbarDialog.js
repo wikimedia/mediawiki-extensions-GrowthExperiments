@@ -14,7 +14,7 @@ var StructuredTaskToolbarDialog = require( '../StructuredTaskToolbarDialog.js' )
  * @property {number} originalHeight Height of the image (in px)
  * @property {boolean} mustRender Whether the image file needs to be re-rasterized
  * @property {boolean} isVectorized Whether the image file is a vector
- * @property {string} reason Text explaning why the image was suggested
+ * @property {string} reason Text explaining why the image was suggested
  */
 
 /**

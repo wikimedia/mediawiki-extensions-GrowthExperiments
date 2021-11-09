@@ -4,6 +4,10 @@
 .mw-ge-recommendedImage {
 	position: relative;
 
+	&.ve-ce-mwBlockImageNode {
+		margin-bottom: 16px;
+	}
+
 	.mw-ge-recommendedImage-loading-overlay {
 		position: absolute;
 		top: 0;
@@ -47,6 +51,12 @@
 		// Invert icon color from black to white
 		-webkit-filter: invert( 100% );
 		filter: invert( 100% );
+	}
+
+	.mw-ge-recommendedImageCaption-warning {
+		margin-top: 4px;
+		margin-bottom: 38px;
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 14.8px, @targetLineHeight: 22px );
 	}
 }
 

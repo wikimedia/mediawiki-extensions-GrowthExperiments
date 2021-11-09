@@ -14,16 +14,15 @@ var StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEd
  * @property {string} metadata.thumbUrl URL of image thumbnail used in the toolbar dialog.
  * @property {number} metadata.originalWidth Width of original image in pixels.
  * @property {number} metadata.originalHeight Height of original image in pixels.
- * @property {bool} metadata.mustRender True if the original image wouldn't display correctly
+ * @property {boolean} metadata.mustRender True if the original image wouldn't display correctly
  *   in a browser.
- * @property {bool} metadata.isVectorized Whether the image is a vector image (ie. has no max size).
+ * @property {boolean} metadata.isVectorized Whether the image is a vector image (ie. has no max size).
  * @property {string|null} metadata.description Image description (sanitized HTML).
  * @property {string|null} metadata.author Original author of image (sanitized HTML).
  * @property {string|null} metadata.license Short license name (sanitized HTML).
  * @property {string} metadata.date Date of original image creation (sanitized HTML).
  * @property {string|null} metadata.caption MediaInfo caption (plain text).
  * @property {string[]} metadata.categories Non-hidden categories of the image, in
-
  *   mw.Title.getMainText() format.
  * @property {string} metadata.reason Description of why the image is being recommended (plain text).
  */
@@ -445,13 +444,15 @@ AddImageArticleTarget.prototype.getSuggestionLogMetadata = function ( index ) {
 /**
  * Log actions specific to the current suggestion
  *
- * @param {string} action
- * @param {string} activeInterface
+ * @param {string} action Name of the action the user took
+ * @param {string} activeInterface Name of the current interface
+ * @param {Object} [actionData] Additional action data
  */
-AddImageArticleTarget.prototype.logSuggestionInteraction = function ( action, activeInterface ) {
+AddImageArticleTarget.prototype.logSuggestionInteraction = function (
+	action, activeInterface, actionData ) {
 	this.logger.log(
 		action,
-		this.getSuggestionLogMetadata(),
+		$.extend( actionData || {}, this.getSuggestionLogMetadata() ),
 		// eslint-disable-next-line camelcase
 		{ active_interface: activeInterface }
 	);

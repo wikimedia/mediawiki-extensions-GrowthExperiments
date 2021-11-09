@@ -962,7 +962,8 @@
 				"growthexperiments-addimage-summary-copyrightwarning",
 				"growthexperiments-addimage-summary-reject-description",
 				"colon-separator",
-				"comma-separator"
+				"comma-separator",
+				"growthexperiments-addimage-caption-warning-tooshort"
 			],
 			"dependencies": [
 				"mediawiki.language",

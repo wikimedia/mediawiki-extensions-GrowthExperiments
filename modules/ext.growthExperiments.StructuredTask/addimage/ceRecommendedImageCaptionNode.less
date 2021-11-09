@@ -1,8 +1,8 @@
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
 @paragraphPadding: 7px 8px 27px 8px; // adding bottom padding for help button
 
 .mw-ge-recommendedImageCaption {
-	border: 2px solid #36c;
-	background: #eaf3ff;
+	border: 2px solid @wmui-color-base50;
 	position: relative;
 
 	.ve-ce-paragraphNode {
@@ -10,6 +10,9 @@
 	}
 
 	&--with-placeholder {
+		border-color: @wmui-color-accent50;
+		background-color: @wmui-color-accent90;
+
 		&:before {
 			content: attr( placeholder );
 			padding: 7px 8px 0 7px;
@@ -19,6 +22,10 @@
 		.ve-ce-paragraphNode {
 			padding: 0;
 		}
+	}
+
+	&--with-warning {
+		border-color: @wmui-color-red50;
 	}
 
 	.mw-ge-recommendedImageCaption-help-button {
