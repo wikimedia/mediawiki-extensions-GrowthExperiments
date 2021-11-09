@@ -23,6 +23,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\Recommendation;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
+use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
@@ -359,6 +360,16 @@ class HomepageHooks implements
 				}
 				$out->addJsConfigVars( [
 					'wgGESuggestedEditData' => $serializedRecommendation,
+				] );
+				$taskSet = $this->taskSuggesterFactory->create()->suggest(
+					$context->getUser(),
+					$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $context->getUser() ),
+					$this->newcomerTasksUserOptionsLookup->getTopicFilter( $context->getUser() ),
+					1
+				);
+				$out->addJsConfigVars( [
+					'wgGESuggestedEditQualityGateConfig' =>
+						$taskSet instanceof TaskSet ? $taskSet->getQualityGateConfig() : []
 				] );
 			}
 

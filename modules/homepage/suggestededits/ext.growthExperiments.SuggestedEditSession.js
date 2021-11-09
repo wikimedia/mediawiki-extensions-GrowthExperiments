@@ -235,6 +235,7 @@
 			this.title = this.getCurrentTitle();
 			this.taskType = url.query.getasktype || null;
 			this.taskData = mw.config.get( 'wgGESuggestedEditData' );
+			this.qualityGateConfig = mw.config.get( 'wgGESuggestedEditQualityGateConfig' ) || {};
 			this.taskState = states.STARTED;
 
 			Utils.removeQueryParam( url, 'geclickid' );
