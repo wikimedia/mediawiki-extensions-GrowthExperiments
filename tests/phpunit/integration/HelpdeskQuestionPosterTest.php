@@ -98,6 +98,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 	 * @throws \MWException
 	 */
 	public function testValidateRelevantTitle() {
+		$this->setMwGlobals( 'wgGEHelpPanelHelpDeskTitle', 'sample' );
 		$this->insertPage( 'sample' );
 		$questionPoster = new HelpdeskQuestionPoster(
 			$this->getServiceContainer()->getWikiPageFactory(),
