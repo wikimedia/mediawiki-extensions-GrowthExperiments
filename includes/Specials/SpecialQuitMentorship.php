@@ -12,6 +12,9 @@ use Status;
 
 class SpecialQuitMentorship extends FormSpecialPage {
 
+	/** @var QuitMentorshipFactory */
+	private $quitMentorshipFactory;
+
 	/** @var QuitMentorship */
 	private $quitMentorship;
 
@@ -30,11 +33,7 @@ class SpecialQuitMentorship extends FormSpecialPage {
 		MentorManager $mentorManager
 	) {
 		parent::__construct( 'QuitMentorship', '', false );
-
-		$this->quitMentorship = $quitMentorshipFactory->newQuitMentorship(
-			$this->getUser(),
-			$this->getContext()
-		);
+		$this->quitMentorshipFactory = $quitMentorshipFactory;
 		$this->mentorManager = $mentorManager;
 	}
 
@@ -105,6 +104,10 @@ class SpecialQuitMentorship extends FormSpecialPage {
 		$this->requireMentorList();
 		$this->requireLogin();
 
+		$this->quitMentorship = $this->quitMentorshipFactory->newQuitMentorship(
+			$this->getUser(),
+			$this->getContext()
+		);
 		$this->quitMentorshipStage = $this->quitMentorship->getStage();
 		parent::execute( $par );
 	}
