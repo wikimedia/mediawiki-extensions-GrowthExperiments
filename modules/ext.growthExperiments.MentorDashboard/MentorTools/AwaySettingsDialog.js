@@ -30,6 +30,9 @@
 			step: 1,
 			required: true
 		} );
+		this.awayForDays.connect( this, {
+			change: [ 'onAwayForDaysChanged' ]
+		} );
 
 		this.content = new OO.ui.PanelLayout( { padded: true, expanded: false } );
 		this.content.$element.append(
@@ -38,6 +41,23 @@
 			this.awayForDays.$element
 		);
 		this.$body.append( this.content.$element );
+	};
+
+	AwaySettingsDialog.prototype.getSetupProcess = function ( data ) {
+		var dialog = this;
+		return AwaySettingsDialog.super.prototype.getSetupProcess.call( this, data )
+			.next( function () {
+				dialog.getActions().setAbilities( {
+					save: false
+				} );
+			} );
+	};
+
+	AwaySettingsDialog.prototype.onAwayForDaysChanged = function () {
+		var awayDaysNum = parseInt( this.awayForDays.getValue() );
+		this.getActions().setAbilities( {
+			save: !isNaN( awayDaysNum )
+		} );
 	};
 
 	AwaySettingsDialog.prototype.getActionProcess = function ( action ) {
