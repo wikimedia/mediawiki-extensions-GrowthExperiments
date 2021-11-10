@@ -1,0 +1,74 @@
+@import 'mediawiki.ui/variables.less';
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
+@import '../../homepage/ext.growthExperiments.mixins.less';
+
+.mw-ge-addImageDetailsDialog {
+	.oo-ui-messageDialog-title {
+		margin-top: 4px;
+		padding-bottom: 8px;
+		border-bottom: 1px solid @wmui-color-base70;
+		margin-bottom: 0;
+		text-align: center;
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 15.4px, @targetLineHeight: 22px );
+	}
+
+	// everything except the title and action button
+	.oo-ui-messageDialog-message {
+		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
+		overflow-wrap: break-word;
+	}
+
+	.mw-ge-addImageDetailsDialog-reason {
+		border-bottom: 1px solid @wmui-color-base70;
+		padding: 8px 0 8px;
+		font-style: italic;
+	}
+
+	ul {
+		margin: 8px 0 0;
+		padding: 0;
+		list-style: none;
+
+		li {
+			display: block;
+
+			&.mw-ge-spacer {
+				margin-bottom: 8px;
+			}
+
+			span {
+				font-weight: bold;
+
+				&:after {
+					content: ' ';
+				}
+			}
+		}
+	}
+
+	.mw-ge-filelink {
+		display: inline-block;
+		margin: 8px 0 0;
+		text-decoration: none;
+		color: @colorProgressive;
+
+		&:visited {
+			color: @colorProgressive;
+		}
+
+		.oo-ui-iconElement-icon {
+			width: 10px;
+			height: 10px;
+			min-width: 10px;
+			min-height: 10px;
+			margin-left: 8px;
+		}
+	}
+
+	// Needs some extra specificity to ovrride OOUI defaults.
+	.mw-ge-filelink.oo-ui-buttonElement.oo-ui-buttonWidget > .oo-ui-buttonElement-button {
+		padding: 0;
+		border: 0;
+		margin: 8px 0 0;
+	}
+}

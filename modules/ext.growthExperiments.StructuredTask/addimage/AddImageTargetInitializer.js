@@ -1,6 +1,7 @@
 var TargetInitializer = require( '../TargetInitializer.js' ),
 	RecommendedImageRejectionDialog = require( './RecommendedImageRejectionDialog.js' ),
 	RecommendedImageViewer = require( './RecommendedImageViewer.js' ),
+	AddImageDetailsDialog = require( './AddImageDetailsDialog.js' ),
 	ImageSuggestionInteractionLogger = require( './ImageSuggestionInteractionLogger.js' ),
 	SuggestionInteractionLogger = require( '../SuggestionInteractionLogger.js' ),
 	CERecommendedImageNode = require( './ceRecommendedImageNode.js' ),
@@ -35,7 +36,10 @@ function AddImageTargetInitializer( platformConfig ) {
 	config.dataModels = [ DMRecommendedImageNode, DMRecommendedImageCaptionNode ];
 	config.annotationViews = [];
 	config.windows = ( platformConfig.windows || [] ).concat( [
-		RecommendedImageRejectionDialog, RecommendedImageViewer, AddImageCaptionInfoDialog
+		RecommendedImageRejectionDialog,
+		RecommendedImageViewer,
+		AddImageDetailsDialog,
+		AddImageCaptionInfoDialog
 	] );
 	config.commands = [ toolbarDialogCommand ];
 	config.nodes = [ CERecommendedImageNode, CERecommendedImageCaptionNode ];

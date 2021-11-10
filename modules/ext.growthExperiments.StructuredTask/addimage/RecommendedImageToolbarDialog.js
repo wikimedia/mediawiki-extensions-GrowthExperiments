@@ -290,10 +290,13 @@ RecommendedImageToolbarDialog.prototype.onFullscreenButtonClicked = function () 
 };
 
 RecommendedImageToolbarDialog.prototype.onDetailsButtonClicked = function () {
-	// TODO: Show image details dialog (T290782)
-	// eslint-disable-next-line camelcase
-	var logMetadata = { active_interface: 'imagedetails_dialog' };
-	this.logger.log( 'impression', this.suggestionLogMetadata(), logMetadata );
+	var surface = this.surface,
+		imageData = this.images[ this.currentIndex ];
+	surface.dialogs.openWindow( 'addImageDetails', {
+		recommendation: imageData,
+		logSource: 'toolbar_dialog',
+		imageIndex: this.currentIndex
+	} );
 };
 
 /**
