@@ -25,6 +25,7 @@ var StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEd
  * @property {string[]} metadata.categories Non-hidden categories of the image, in
  *   mw.Title.getMainText() format.
  * @property {string} metadata.reason Description of why the image is being recommended (plain text).
+ * @property {string} metadata.contentLanguageName Name of the content language (plain text).
  */
 
 /**

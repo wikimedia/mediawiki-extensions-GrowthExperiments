@@ -48,6 +48,7 @@ class ImageRecommendationMetadataProviderTest extends MediaWikiUnitTestCase {
 				'mustRender' => true,
 				'isVectorized' => false,
 				'reason' => 'growthexperiments-addimage-reason-wikipedia-languages',
+				'contentLanguageName' => 'English'
 			],
 			$metadata
 		);

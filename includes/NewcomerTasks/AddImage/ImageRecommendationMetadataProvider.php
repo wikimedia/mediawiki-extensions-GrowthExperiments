@@ -25,6 +25,9 @@ class ImageRecommendationMetadataProvider {
 	/** @var SiteLookup */
 	private $siteLookup;
 
+	/** @var string */
+	private $contentLanguage;
+
 	/** @var int Number of languages to show in the suggestion reason */
 	private const SUGGESTION_REASON_PROJECTS_SHOWN = 2;
 
@@ -49,6 +52,7 @@ class ImageRecommendationMetadataProvider {
 		$this->languageNameUtils = $languageNameUtils;
 		$this->localizer = $localizer;
 		$this->siteLookup = $siteLookup;
+		$this->contentLanguage = $wikiLanguage;
 	}
 
 	/**
@@ -244,6 +248,16 @@ class ImageRecommendationMetadataProvider {
 	}
 
 	/**
+	 * Get the name of the content language localized in the user's language
+	 *
+	 * @return string
+	 */
+	private function getLocalizedContentLanguage(): string {
+		$inLanguage = $this->localizer->getLanguage()->getCode();
+		return $this->languageNameUtils->getLanguageName( $this->contentLanguage, $inLanguage );
+	}
+
+	/**
 	 * Get metadata for the specified image file name
 	 *
 	 * @param array $suggestion Suggestion data, as returned by the API.
@@ -282,6 +296,7 @@ class ImageRecommendationMetadataProvider {
 		}
 		return $fileMetadata + $this->filterExtendedMetadata( $extendedMetadata ) + $apiMetadata + [
 				'reason' => $this->getSuggestionReason( $suggestion ),
+				'contentLanguageName' => $this->getLocalizedContentLanguage(),
 		];
 	}
 }

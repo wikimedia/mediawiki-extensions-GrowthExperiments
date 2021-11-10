@@ -1,4 +1,5 @@
 var StructuredTaskMessageDialog = require( '../StructuredTaskMessageDialog.js' ),
+	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 	// This needs to stay in sync with the one defined in SuggestedEdits.php
 	ADD_IMAGE_CAPTION_ONBOARDING_PREF = 'growthexperiments-addimage-caption-onboarding';
 
@@ -27,26 +28,40 @@ AddImageCaptionInfoDialog.static.title = mw.message(
 ).text();
 
 AddImageCaptionInfoDialog.static.message = function () {
-	var $guidelines = $( '<ul>' ).addClass( 'mw-ge-addImageCaptionInfoDialog-list' ),
+	var articleTitle = suggestedEditSession.getCurrentTitle().getNameText(),
+		/** @type {mw.libs.ge.AddImageArticleTarget} **/
+		articleTarget = ve.init.target,
+		contentLanguageName = articleTarget.getSelectedSuggestion().metadata.contentLanguageName,
+		$guidelines = $( '<ul>' ).addClass( 'mw-ge-addImageCaptionInfoDialog-list' ),
 		guidelineItems = [
 			mw.message(
-				'growthexperiments-addimage-caption-info-dialog-guidelines-describe'
-			).text(),
-			mw.message(
 				'growthexperiments-addimage-caption-info-dialog-guidelines-review'
-			).text(),
+			).parse(),
+			mw.message(
+				'growthexperiments-addimage-caption-info-dialog-guidelines-describe'
+			).params( [ articleTitle ] ).parse(),
 			mw.message(
 				'growthexperiments-addimage-caption-info-dialog-guidelines-neutral'
-			).text(),
-			mw.message(
-				'growthexperiments-addimage-caption-info-dialog-guidelines-language'
-			).text()
-		];
+			).parse()
+		],
+		languageGuideline;
+	if ( contentLanguageName ) {
+		languageGuideline = mw.message(
+			'growthexperiments-addimage-caption-info-dialog-guidelines-language'
+		).params( [ contentLanguageName ] ).parse();
+	} else {
+		languageGuideline = mw.message(
+			'growthexperiments-addimage-caption-info-dialog-guidelines-language-generic'
+		).parse();
+	}
+	guidelineItems.push( languageGuideline );
 	guidelineItems.forEach( function ( guidelineItemText ) {
-		$guidelines.append( $( '<li>' ).text( guidelineItemText ) );
+		$guidelines.append( $( '<li>' ).html( guidelineItemText ) );
 	} );
 	return $( '<div>' ).append( [
-		mw.message( 'growthexperiments-addimage-caption-info-dialog-message' ).escaped(),
+		mw.message( 'growthexperiments-addimage-caption-info-dialog-message' ).params(
+			[ articleTitle ]
+		).parse(),
 		$guidelines
 	] );
 };
