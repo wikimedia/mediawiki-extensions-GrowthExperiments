@@ -5,6 +5,7 @@
 	border: 2px solid @wmui-color-base50;
 	position: relative;
 
+	.mw-ge-recommendedImageCaption-placeholder,
 	.ve-ce-paragraphNode {
 		padding: 7px 8px 27px 8px; // adding bottom padding for help button
 	}
@@ -13,14 +14,8 @@
 		border-color: @wmui-color-accent50;
 		background-color: @wmui-color-accent90;
 
-		&:before {
-			content: attr( placeholder );
-			padding: 7px 8px 0 7px;
-			display: block;
-		}
-
 		.ve-ce-paragraphNode {
-			padding: 0;
+			display: none;
 		}
 	}
 
