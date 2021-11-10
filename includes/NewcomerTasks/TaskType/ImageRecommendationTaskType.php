@@ -81,4 +81,9 @@ class ImageRecommendationTaskType extends TaskType {
 		return [ 'mobileOnly', 'dailyLimit' ];
 	}
 
+	/** @inheritDoc */
+	public function getLearnMoreLink(): ?string {
+		return null;
+	}
+
 }
