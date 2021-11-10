@@ -14,7 +14,6 @@ use GrowthExperiments\Homepage\HomepageModuleRegistry;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\HomepageModules\BaseModule;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
-use GrowthExperiments\NewcomerTasks\Tracker\Tracker;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use GrowthExperiments\TourHooks;
 use GrowthExperiments\Util;
@@ -31,8 +30,8 @@ class SpecialHomepage extends SpecialPage {
 	/** @var HomepageModuleRegistry */
 	private $moduleRegistry;
 
-	/** @var Tracker */
-	private $tracker;
+	/** @var TrackerFactory */
+	private $trackerFactory;
 
 	/** @var IBufferingStatsdDataFactory */
 	private $statsdDataFactory;
@@ -70,7 +69,7 @@ class SpecialHomepage extends SpecialPage {
 	) {
 		parent::__construct( 'Homepage', '', false );
 		$this->moduleRegistry = $moduleRegistry;
-		$this->tracker = $trackerFactory->getTracker( $this->getUser() );
+		$this->trackerFactory = $trackerFactory;
 		$this->statsdDataFactory = $statsdDataFactory;
 		$this->pageviewToken = $this->generatePageviewToken();
 
@@ -398,7 +397,8 @@ class SpecialHomepage extends SpecialPage {
 		$newcomerTaskToken = $request->getVal( 'genewcomertasktoken' );
 		$taskTypeId = $request->getVal( 'getasktype', '' );
 
-		if ( $this->tracker->track( $titleId, $taskTypeId, $clickId, $newcomerTaskToken ) instanceof StatusValue ) {
+		$tracker = $this->trackerFactory->getTracker( $this->getUser() );
+		if ( $tracker->track( $titleId, $taskTypeId, $clickId, $newcomerTaskToken ) instanceof StatusValue ) {
 			// If a StatusValue is returned from ->track(), it's because loading the task type or
 			//  title failed, so don't attempt to redirect the user. If track returns false
 			// (storing the value in cache failed) then we are not going to prevent redirection.
@@ -413,7 +413,7 @@ class SpecialHomepage extends SpecialPage {
 			$suggestedEdits instanceof SuggestedEdits ? $suggestedEdits->getRedirectParams( $taskTypeId ) : []
 		);
 		$this->getOutput()->redirect(
-			$this->tracker->getTitleUrl( $redirectParams )
+			$tracker->getTitleUrl( $redirectParams )
 		);
 		return true;
 	}
