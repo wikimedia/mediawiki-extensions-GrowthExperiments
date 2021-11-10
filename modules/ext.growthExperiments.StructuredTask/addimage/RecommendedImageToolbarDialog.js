@@ -159,7 +159,7 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 		this.addArticleTitle();
 	}
 	this.showRecommendationAtIndex( 0 );
-	this.logger.log( 'impression', this.suggestionLogMetadata() );
+	this.logger.log( 'impression', this.getSuggestionLogActionData() );
 	$( window ).on( 'resize',
 		OO.ui.debounce( this.updateSize.bind( this ), 250 )
 	);
@@ -174,7 +174,7 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 RecommendedImageToolbarDialog.prototype.onYesButtonClicked = function () {
 	ve.init.target.insertImage( this.images[ 0 ] );
 	this.setState( true, [] );
-	this.logger.log( 'suggestion_accept', this.suggestionLogMetadata() );
+	this.logger.log( 'suggestion_accept', this.getSuggestionLogActionData() );
 	this.setUpCaptionStep();
 };
 
@@ -186,12 +186,12 @@ RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 		openRejectionDialogWindowPromise = this.surface.dialogs.openWindow(
 			'recommendedImageRejection', rejectionReasons );
 
-	this.logger.log( 'suggestion_reject', this.suggestionLogMetadata() );
+	this.logger.log( 'suggestion_reject', this.getSuggestionLogActionData() );
 
 	openRejectionDialogWindowPromise.opening.then( function () {
 		this.logger.log(
 			'impression',
-			$.extend( this.suggestionLogMetadata(), {
+			$.extend( this.getSuggestionLogActionData(), {
 				// eslint-disable-next-line camelcase
 				rejection_reason: rejectionReasons
 			} ),
@@ -206,7 +206,7 @@ RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 		}
 		this.logger.log(
 			'close',
-			$.extend( this.suggestionLogMetadata(), {
+			$.extend( this.getSuggestionLogActionData(), {
 				// eslint-disable-next-line camelcase
 				rejection_reason: ve.init.target.recommendationRejectionReasons
 			} ),
@@ -222,7 +222,7 @@ RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
  * the image suggestion
  */
 RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
-	this.logger.log( 'suggestion_skip', this.suggestionLogMetadata() );
+	this.logger.log( 'suggestion_skip', this.getSuggestionLogActionData() );
 	// eslint-disable-next-line camelcase
 	var logMetadata = { active_interface: 'skip_dialog' },
 		openSkipDialogPromise = this.surface.dialogs.openWindow( 'structuredTaskMessage', {
@@ -243,11 +243,11 @@ RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
 		} );
 
 	openSkipDialogPromise.opening.then( function () {
-		this.logger.log( 'impression', this.suggestionLogMetadata(), logMetadata );
+		this.logger.log( 'impression', this.getSuggestionLogActionData(), logMetadata );
 	}.bind( this ) );
 
 	openSkipDialogPromise.closed.then( function ( data ) {
-		var actionData = this.suggestionLogMetadata();
+		var actionData = this.getSuggestionLogActionData();
 		if ( data && data.action === 'confirm' ) {
 			this.logger.log( 'confirm_skip_suggestion', actionData, logMetadata );
 			this.endSession();
@@ -266,7 +266,7 @@ RecommendedImageToolbarDialog.prototype.onFullscreenButtonClicked = function () 
 		surface = this.surface,
 		// eslint-disable-next-line camelcase
 		logMetadata = { active_interface: 'imageviewer_dialog' },
-		actionData = this.suggestionLogMetadata(),
+		actionData = this.getSuggestionLogActionData(),
 		openImageViewerDialogPromise;
 
 	openImageViewerDialogPromise = surface.dialogs.openWindow(
@@ -479,7 +479,7 @@ RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
 		setTimeout( function () {
 			// Image inspector is shown again.
 			$inspector.removeClass( 'animate-below' );
-			this.logger.log( 'impression', this.suggestionLogMetadata() );
+			this.logger.log( 'impression', this.getSuggestionLogActionData() );
 		}.bind( this ), 300 );
 		this.canShowCaption = false;
 	}.bind( this ) );
@@ -517,8 +517,8 @@ RecommendedImageToolbarDialog.prototype.showInternalRoute = function (
  * @override
  * @return {Object}
  */
-RecommendedImageToolbarDialog.prototype.suggestionLogMetadata = function () {
-	return this.getArticleTarget().getSuggestionLogMetadata( this.currentIndex );
+RecommendedImageToolbarDialog.prototype.getSuggestionLogActionData = function () {
+	return this.getArticleTarget().getSuggestionLogActionData( this.currentIndex );
 };
 
 module.exports = RecommendedImageToolbarDialog;

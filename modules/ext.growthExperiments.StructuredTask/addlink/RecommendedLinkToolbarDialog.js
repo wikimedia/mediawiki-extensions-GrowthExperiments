@@ -104,7 +104,7 @@ RecommendedLinkToolbarDialog.prototype.afterSetupProcess = function () {
 	this.setupProgressIndicators( this.linkRecommendationFragments.length );
 	this.showFirstRecommendation().then( function () {
 		this.updateActionButtonsMode();
-		this.logger.log( 'impression', this.suggestionLogMetadata() );
+		this.logger.log( 'impression', this.getSuggestionLogActionData() );
 	}.bind( this ) );
 
 	$( window ).on( 'resize',
@@ -122,7 +122,7 @@ RecommendedLinkToolbarDialog.prototype.afterSetupProcess = function () {
 RecommendedLinkToolbarDialog.prototype.onPrevButtonClicked = function ( isSwipe ) {
 	this.logger.log( 'back', $.extend(
 		/* eslint-disable-next-line camelcase */
-		this.suggestionLogMetadata(), { navigation_type: isSwipe ? 'swipe' : 'click' }
+		this.getSuggestionLogActionData(), { navigation_type: isSwipe ? 'swipe' : 'click' }
 	) );
 	if ( this.currentIndex === 0 ) {
 		return;
@@ -140,10 +140,10 @@ RecommendedLinkToolbarDialog.prototype.onPrevButtonClicked = function ( isSwipe 
 RecommendedLinkToolbarDialog.prototype.onNextButtonClicked = function ( isSwipe ) {
 	this.logger.log( 'next', $.extend(
 		/* eslint-disable-next-line camelcase */
-		this.suggestionLogMetadata(), { navigation_type: isSwipe ? 'swipe' : 'click' }
+		this.getSuggestionLogActionData(), { navigation_type: isSwipe ? 'swipe' : 'click' }
 	) );
 	if ( this.currentDataModel.isUndecided() ) {
-		this.logger.log( 'suggestion_skip', this.suggestionLogMetadata() );
+		this.logger.log( 'suggestion_skip', this.getSuggestionLogActionData() );
 	}
 	if ( this.isLastRecommendationSelected() ) {
 		if ( this.allRecommendationsSkipped() ) {
@@ -169,13 +169,13 @@ RecommendedLinkToolbarDialog.prototype.onYesButtonClicked = function () {
 		this.resetAcceptanceButtonStates();
 	}
 	if ( this.currentDataModel.isAccepted() ) {
-		this.logger.log( 'suggestion_mark_undecided', $.extend( this.suggestionLogMetadata(), {
+		this.logger.log( 'suggestion_mark_undecided', $.extend( this.getSuggestionLogActionData(), {
 			// eslint-disable-next-line camelcase
 			previous_acceptance_state: 'accepted'
 		} ) );
 		this.setLastAnnotationState( true );
 	} else {
-		this.logger.log( 'suggestion_accept', this.suggestionLogMetadata() );
+		this.logger.log( 'suggestion_accept', this.getSuggestionLogActionData() );
 		this.setLastAnnotationState();
 	}
 	this.setAccepted( this.currentDataModel.isAccepted() ? null : true );
@@ -190,13 +190,13 @@ RecommendedLinkToolbarDialog.prototype.onNoButtonClicked = function () {
 		this.resetAcceptanceButtonStates();
 	}
 	if ( this.currentDataModel.isRejected() ) {
-		this.logger.log( 'suggestion_mark_undecided', $.extend( this.suggestionLogMetadata(), {
+		this.logger.log( 'suggestion_mark_undecided', $.extend( this.getSuggestionLogActionData(), {
 			// eslint-disable-next-line camelcase
 			previous_acceptance_state: 'rejected'
 		} ) );
 		this.setLastAnnotationState( true );
 	} else {
-		this.logger.log( 'suggestion_reject', this.suggestionLogMetadata() );
+		this.logger.log( 'suggestion_reject', this.getSuggestionLogActionData() );
 		this.setLastAnnotationState();
 	}
 	this.setAccepted( this.currentDataModel.isRejected() ? null : false );
@@ -251,7 +251,7 @@ RecommendedLinkToolbarDialog.prototype.teardown = function () {
  * Reopen the rejection dialog.
  */
 RecommendedLinkToolbarDialog.prototype.reopenRejectionDialog = function () {
-	this.logger.log( 'suggestion_view_rejection_reasons', this.suggestionLogMetadata() );
+	this.logger.log( 'suggestion_view_rejection_reasons', this.getSuggestionLogActionData() );
 	this.setAccepted( false );
 	this.shouldSkipAutoAdvance = true;
 };
@@ -293,7 +293,7 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 		openRejectionDialogWindowPromise.opening.then( function () {
 			this.logger.log(
 				'impression',
-				$.extend( this.suggestionLogMetadata(), {
+				$.extend( this.getSuggestionLogActionData(), {
 					// eslint-disable-next-line camelcase
 					rejection_reason: this.currentDataModel.getRejectionReason()
 				} ),
@@ -307,7 +307,7 @@ RecommendedLinkToolbarDialog.prototype.setAccepted = function ( accepted ) {
 				this.currentDataModel.getRejectionReason();
 			this.logger.log(
 				'close',
-				$.extend( this.suggestionLogMetadata(), {
+				$.extend( this.getSuggestionLogActionData(), {
 					// eslint-disable-next-line camelcase
 					rejection_reason: rejectionReason
 				} ),
@@ -405,7 +405,7 @@ RecommendedLinkToolbarDialog.prototype.showRecommendationAtIndex = function (
 	this.logger.log(
 		'suggestion_focus',
 		// eslint-disable-next-line camelcase
-		$.extend( this.suggestionLogMetadata(), { manual_focus: manualFocus || false } )
+		$.extend( this.getSuggestionLogActionData(), { manual_focus: manualFocus || false } )
 	);
 };
 
@@ -621,7 +621,7 @@ RecommendedLinkToolbarDialog.prototype.getLinkForPreview = function () {
 	linkCache.styleElement( title, $link, this.currentDataModel.getFragment() );
 	$link.removeClass( 'mw-selflink' );
 	$link.on( 'click', function () {
-		this.logger.log( 'link_click', this.suggestionLogMetadata() );
+		this.logger.log( 'link_click', this.getSuggestionLogActionData() );
 	}.bind( this ) );
 	return $link;
 };
@@ -877,7 +877,7 @@ RecommendedLinkToolbarDialog.prototype.isLastRecommendationSelected = function (
 };
 
 /**
- * Get metadata to pass to the LinkSuggestionInteractionLogger.
+ * Get action data to pass to the LinkSuggestionInteractionLogger.
  *
  * @override
  * @return {{
@@ -889,7 +889,7 @@ RecommendedLinkToolbarDialog.prototype.isLastRecommendationSelected = function (
  * link_text: string
  * }}
  */
-RecommendedLinkToolbarDialog.prototype.suggestionLogMetadata = function () {
+RecommendedLinkToolbarDialog.prototype.getSuggestionLogActionData = function () {
 	var suggestion = this.getCurrentDataModel().element.attributes,
 		acceptanceState = 'undecided';
 	if ( this.getCurrentDataModel().isAccepted() ) {

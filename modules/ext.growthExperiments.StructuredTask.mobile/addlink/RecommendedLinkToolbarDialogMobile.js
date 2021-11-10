@@ -245,13 +245,13 @@ RecommendedLinkToolbarDialogMobile.prototype.setupSwipeNavigation = function () 
 /** @inheritDoc **/
 RecommendedLinkToolbarDialogMobile.prototype.showDialog = function () {
 	RecommendedLinkToolbarDialogMobile.super.prototype.showDialog.apply( this, arguments );
-	this.logger.log( 'close', this.suggestionLogMetadata() );
+	this.logger.log( 'close', this.getSuggestionLogActionData() );
 };
 
 /** @inheritDoc **/
 RecommendedLinkToolbarDialogMobile.prototype.hideDialog = function () {
 	RecommendedLinkToolbarDialogMobile.super.prototype.hideDialog.apply( this, arguments );
-	this.logger.log( 'impression', this.suggestionLogMetadata() );
+	this.logger.log( 'impression', this.getSuggestionLogActionData() );
 };
 
 module.exports = RecommendedLinkToolbarDialogMobile;

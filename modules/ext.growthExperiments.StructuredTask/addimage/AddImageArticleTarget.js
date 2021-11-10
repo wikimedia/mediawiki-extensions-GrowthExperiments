@@ -374,7 +374,7 @@ AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPr
 		logCaptionInfoDialog = function ( action, context, closeData ) {
 			/* eslint-disable camelcase */
 			var actionData = $.extend(
-				this.getSuggestionLogMetadata(),
+				this.getSuggestionLogActionData(),
 				{ dialog_context: context }
 			);
 			if ( closeData ) {
@@ -423,7 +423,7 @@ AddImageArticleTarget.prototype.showCaptionInfoDialog = function ( shouldCheckPr
  * @param {number} [index] Zero-based index of the image suggestion for which to return data
  * @return {Object}
  */
-AddImageArticleTarget.prototype.getSuggestionLogMetadata = function ( index ) {
+AddImageArticleTarget.prototype.getSuggestionLogActionData = function ( index ) {
 	var imageIndex = typeof index === 'number' ? index : this.selectedImageIndex,
 		imageData = this.images[ imageIndex ],
 		isUndecided = typeof this.recommendationAccepted !== 'boolean',
@@ -452,7 +452,7 @@ AddImageArticleTarget.prototype.logSuggestionInteraction = function (
 	action, activeInterface, actionData ) {
 	this.logger.log(
 		action,
-		$.extend( actionData || {}, this.getSuggestionLogMetadata() ),
+		$.extend( actionData || {}, this.getSuggestionLogActionData() ),
 		// eslint-disable-next-line camelcase
 		{ active_interface: activeInterface }
 	);
