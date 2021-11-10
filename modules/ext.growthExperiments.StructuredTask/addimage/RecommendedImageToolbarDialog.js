@@ -462,6 +462,10 @@ RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
 	articleTarget.showCaptionInfoDialog( true );
 
 	this.showInternalRoute( 'caption', function () {
+		// The taskState is saved; the user pressed publish
+		if ( ge.suggestedEditSession.taskState === 'saved' ) {
+			return;
+		}
 		articleTarget.logSuggestionInteraction( 'back', 'caption_entry' );
 		MachineSuggestionsMode.disableVirtualKeyboard( this.surface );
 		surface.setReadOnly( true );
