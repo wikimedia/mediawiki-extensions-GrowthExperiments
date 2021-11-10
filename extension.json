@@ -451,7 +451,8 @@
 				"growthexperiments-homepage-welcome-notice-body-variant-d",
 				"growthexperiments-homepage-welcome-notice-button-text-variant-c",
 				"growthexperiments-homepage-welcome-notice-button-text-variant-d",
-				"growthexperiments-homepage-suggestededits-tasktype-machine-description"
+				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
+				"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description"
 			],
 			"targets": [
 				"mobile"
@@ -676,6 +677,7 @@
 				"growthexperiments-homepage-suggestededits-tasktype-label-links",
 				"growthexperiments-homepage-suggestededits-tasktype-label-create",
 				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
+				"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description",
 				"growthexperiments-homepage-suggestededits-topics-more",
 				"growthexperiments-homepage-suggestededits-topics-selectall",
 				"growthexperiments-homepage-suggestededits-topics-unselectall",
@@ -1240,6 +1242,7 @@
 				"growthexperiments-help-panel-search-no-results",
 				"ellipsis",
 				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
+				"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description",
 				"growthexperiments-homepage-suggestededits-tasktype-name-copyedit",
 				"growthexperiments-homepage-suggestededits-tasktype-name-references",
 				"growthexperiments-homepage-suggestededits-tasktype-name-update",
@@ -1315,7 +1318,8 @@
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy",
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium",
 				"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard",
-				"growthexperiments-homepage-suggestededits-tasktype-machine-description"
+				"growthexperiments-homepage-suggestededits-tasktype-machine-description",
+				"growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description"
 			],
 			"targets": [
 				"desktop",

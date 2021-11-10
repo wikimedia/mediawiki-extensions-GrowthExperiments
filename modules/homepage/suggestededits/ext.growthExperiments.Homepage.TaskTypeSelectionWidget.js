@@ -172,7 +172,7 @@ TaskTypeSelectionWidget.prototype.makeCheckbox = function ( taskTypeData, select
 	if ( 'filterIcon' in taskTypeData.iconData ) {
 		// Messages that can be used here:
 		// * growthexperiments-homepage-suggestededits-tasktype-machine-description
-		// * FORMAT growthexperiments-homepage-suggestededits-tasktype-{other}-description
+		// * growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description
 		descriptionMessage = mw.message( taskTypeData.iconData.descriptionMessageKey ).text();
 		$additionalMessage = new OO.ui.Element( { classes: [
 			'mw-ge-homepage-taskTypeSelectionWidget-additional-msg',
