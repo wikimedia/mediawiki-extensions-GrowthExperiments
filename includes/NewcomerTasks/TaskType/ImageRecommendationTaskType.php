@@ -6,13 +6,18 @@ class ImageRecommendationTaskType extends TaskType {
 
 	/** @see ::getMaxTasksPerDay */
 	public const FIELD_MAX_TASKS_PER_DAY = 'maxTasksPerDay';
+	/** @see ::getMinimumCaptionCharacterLength */
+	public const FIELD_MINIMUM_CAPTION_CHARACTER_LENGTH = 'minimumCaptionCharacterLength';
 
 	public const DEFAULT_SETTINGS = [
-		self::FIELD_MAX_TASKS_PER_DAY => 25
+		self::FIELD_MAX_TASKS_PER_DAY => 25,
+		self::FIELD_MINIMUM_CAPTION_CHARACTER_LENGTH => 5
 	];
 
 	/** @var int */
 	protected $maxTasksPerDay;
+	/** @var int */
+	protected $minimumCaptionCharacterLength;
 
 	/** @var bool */
 	protected $isMachineSuggestion = true;
@@ -32,6 +37,7 @@ class ImageRecommendationTaskType extends TaskType {
 		parent::__construct( $id, $difficulty, $extraData, $excludedTemplates, $excludedCategories );
 		$settings += self::DEFAULT_SETTINGS;
 		$this->maxTasksPerDay = $settings[self::FIELD_MAX_TASKS_PER_DAY];
+		$this->minimumCaptionCharacterLength = $settings[self::FIELD_MINIMUM_CAPTION_CHARACTER_LENGTH];
 	}
 
 	/**
@@ -41,6 +47,15 @@ class ImageRecommendationTaskType extends TaskType {
 	 */
 	public function getMaxTasksPerDay(): int {
 		return $this->maxTasksPerDay;
+	}
+
+	/**
+	 * The minimum number of characters needed for a caption to be submittable.
+	 *
+	 * @return int
+	 */
+	public function getMinimumCaptionCharacterLength(): int {
+		return $this->minimumCaptionCharacterLength;
 	}
 
 	/** @inheritDoc */

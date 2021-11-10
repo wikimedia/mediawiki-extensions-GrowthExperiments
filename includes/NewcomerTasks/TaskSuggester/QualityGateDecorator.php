@@ -58,17 +58,23 @@ class QualityGateDecorator implements TaskSuggester {
 		// TODO: Split out QualityGates methods into separate classes per task type.
 		if ( $tasks instanceof TaskSet ) {
 			$context = RequestContext::getMain();
-			$tasks->setQualityGateConfigForTaskType( ImageRecommendationTaskTypeHandler::TASK_TYPE_ID, [
-				'dailyLimit' => $this->isImageRecommendationDailyTaskLimitExceeded(
-					$user,
-					$context
-				),
-				'dailyCount' => $this->getImageRecommendationTasksDoneByUserForCurrentDay(
-					$user,
-					$context
-				),
-				'mobileOnly' => Util::isMobile( $context->getSkin() )
-			] );
+			$imageRecommendationTaskType =
+				$this->configurationLoader->getTaskTypes()[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
+			if ( $imageRecommendationTaskType instanceof ImageRecommendationTaskType ) {
+				$tasks->setQualityGateConfigForTaskType( ImageRecommendationTaskTypeHandler::TASK_TYPE_ID, [
+					'dailyLimit' => $this->isImageRecommendationDailyTaskLimitExceeded(
+						$user,
+						$context,
+						$imageRecommendationTaskType
+					),
+					'dailyCount' => $this->getImageRecommendationTasksDoneByUserForCurrentDay(
+						$user,
+						$context
+					),
+					'mobileOnly' => Util::isMobile( $context->getSkin() ),
+					'minimumCaptionCharacterLength' => $imageRecommendationTaskType->getMinimumCaptionCharacterLength()
+				] );
+			}
 		}
 		return $tasks;
 	}
@@ -85,23 +91,18 @@ class QualityGateDecorator implements TaskSuggester {
 	 *
 	 * @param UserIdentity $user
 	 * @param IContextSource $contextSource
+	 * @param ImageRecommendationTaskType $imageRecommendationTaskType
 	 * @return bool|null
 	 */
 	private function isImageRecommendationDailyTaskLimitExceeded(
 		UserIdentity $user,
-		IContextSource $contextSource
+		IContextSource $contextSource,
+		ImageRecommendationTaskType $imageRecommendationTaskType
 	): ?bool {
-		/** @var ImageRecommendationTaskType $imageRecommendationTaskType */
-		$imageRecommendationTaskType =
-			$this->configurationLoader->getTaskTypes()[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
-		if ( !$imageRecommendationTaskType ) {
-			return null;
-		}
 		return $this->getImageRecommendationTasksDoneByUserForCurrentDay(
 				$user,
 				$contextSource
 			) >=
-			// @phan-suppress-next-line PhanUndeclaredMethod
 			$imageRecommendationTaskType->getMaxTasksPerDay();
 	}
 
