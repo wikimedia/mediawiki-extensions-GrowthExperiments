@@ -102,7 +102,7 @@ CERecommendedImageNode.prototype.setupDetailsButton = function ( $container ) {
 			recommendationIndex = this.getModel().getAttribute( 'recommendationIndex' );
 		surface.dialogs.openWindow( 'addImageDetails', {
 			recommendation: recommendation,
-			logSource: 'caption',
+			logSource: 'caption_entry',
 			imageIndex: recommendationIndex
 		} );
 	}.bind( this ) );
