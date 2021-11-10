@@ -103,6 +103,8 @@ class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 				// Only apply when $targetIds has at least one ID
 				if ( $targetIds !== [] ) {
 					$conds[] = $dbr->makeList( [ $rcUserField => $targetIds ], IDatabase::LIST_AND );
+				} else {
+					$conds[] = '0=1';
 				}
 			},
 		] );
