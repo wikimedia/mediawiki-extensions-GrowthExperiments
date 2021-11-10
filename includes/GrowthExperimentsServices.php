@@ -33,6 +33,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkSubmissionRecorder;
 use GrowthExperiments\NewcomerTasks\AddLink\SearchIndexUpdater\SearchIndexUpdater;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
+use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
@@ -195,6 +196,10 @@ class GrowthExperimentsServices {
 
 	public function getLinkRecommendationFilter(): LinkRecommendationFilter {
 		return $this->coreServices->get( 'GrowthExperimentsLinkRecommendationFilter' );
+	}
+
+	public function getImageRecommendationFilter(): ImageRecommendationFilter {
+		return $this->coreServices->get( 'GrowthExperimentsImageRecommendationFilter' );
 	}
 
 	public function getQuestionPosterFactory(): QuestionPosterFactory {

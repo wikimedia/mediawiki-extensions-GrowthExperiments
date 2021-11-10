@@ -91,7 +91,8 @@
 			"services": [
 				"GrowthExperimentsTaskSuggesterFactory",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
-				"GrowthExperimentsLinkRecommendationFilter"
+				"GrowthExperimentsLinkRecommendationFilter",
+				"GrowthExperimentsImageRecommendationFilter"
 			]
 		},
 		"growthstarredmentees": {

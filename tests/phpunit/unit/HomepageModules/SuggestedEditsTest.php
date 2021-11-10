@@ -8,6 +8,7 @@ use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\StaticConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
@@ -21,6 +22,7 @@ use MediaWiki\User\UserOptionsLookup;
 use OOUI\BlankTheme;
 use OOUI\Theme;
 use OutputPage;
+use WANObjectCache;
 use WebRequest;
 use Wikimedia\TestingAccessWrapper;
 
@@ -138,6 +140,11 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 				->disableOriginalConstructor()
 				->getMock()
 		);
+		$imageRecommendationFilter = new ImageRecommendationFilter(
+			$this->getMockBuilder( WANObjectCache::class )
+				->disableOriginalConstructor()
+				->getMock()
+		);
 		return new SuggestedEdits(
 			$contextMock,
 			GlobalVarConfig::newInstance(),
@@ -150,7 +157,8 @@ class SuggestedEditsTest extends \MediaWikiUnitTestCase {
 			$titleFactoryMock,
 			$protectionFilter,
 			$userOptionsLookupMock,
-			$linkRecommendationFilter
+			$linkRecommendationFilter,
+			$imageRecommendationFilter
 		);
 	}
 }

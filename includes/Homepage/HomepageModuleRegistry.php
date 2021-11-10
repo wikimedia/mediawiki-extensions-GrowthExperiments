@@ -114,7 +114,8 @@ class HomepageModuleRegistry {
 					$services->getTitleFactory(),
 					$growthServices->getProtectionFilter(),
 					$services->getUserOptionsLookup(),
-					$growthServices->getLinkRecommendationFilter()
+					$growthServices->getLinkRecommendationFilter(),
+					$growthServices->getImageRecommendationFilter()
 				);
 			},
 

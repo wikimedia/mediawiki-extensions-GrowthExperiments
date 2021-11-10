@@ -7,6 +7,7 @@ use ApiPageSet;
 use ApiQuery;
 use ApiQueryGeneratorBase;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
@@ -27,8 +28,12 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
+
 	/** @var LinkRecommendationFilter */
 	private $linkRecommendationFilter;
+
+	/** @var ImageRecommendationFilter */
+	private $imageRecommendationFilter;
 
 	/**
 	 * @param ApiQuery $queryModule
@@ -36,18 +41,21 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param LinkRecommendationFilter $linkRecommendationFilter
+	 * @param ImageRecommendationFilter $imageRecommendationFilter
 	 */
 	public function __construct(
 		ApiQuery $queryModule,
 		$moduleName,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		ConfigurationLoader $configurationLoader,
-		LinkRecommendationFilter $linkRecommendationFilter
+		LinkRecommendationFilter $linkRecommendationFilter,
+		ImageRecommendationFilter $imageRecommendationFilter
 	) {
 		parent::__construct( $queryModule, $moduleName, 'gt' );
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->configurationLoader = $configurationLoader;
 		$this->linkRecommendationFilter = $linkRecommendationFilter;
+		$this->imageRecommendationFilter = $imageRecommendationFilter;
 	}
 
 	/** @inheritDoc */
@@ -97,6 +105,7 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		// If there are link recommendation tasks without corresponding DB entries, these will be removed
 		// from the TaskSet.
 		$tasks = $this->linkRecommendationFilter->filter( $tasks );
+		$tasks = $this->imageRecommendationFilter->filter( $tasks );
 
 		$result = $this->getResult();
 		$basePath = [ 'query', $this->getModuleName() ];
