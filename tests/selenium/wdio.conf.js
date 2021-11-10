@@ -34,6 +34,11 @@ exports.config = { ...config,
 				} ).done( () => done() )
 			)
 		);
+		browser.executeAsync( ( done ) =>
+			mw.loader.using( 'ext.growthExperiments.SuggestedEditSession' ).then( () =>
+				ge.utils.setUserVariant( 'control' )
+			).done( () => done() )
+		);
 	},
 	onPrepare: function () {
 		fs.writeFileSync( path.resolve( ip + '/LocalSettings.php' ),

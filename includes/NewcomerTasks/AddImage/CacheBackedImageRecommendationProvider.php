@@ -5,6 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use MediaWiki\Linker\LinkTarget;
+use StatusValue;
 use WANObjectCache;
 use Wikimedia\Assert\Assert;
 
@@ -58,8 +59,12 @@ class CacheBackedImageRecommendationProvider implements ImageRecommendationProvi
 			// The recommendation won't change, but other metadata might and caching for longer might be
 			// problematic if e.g. the image got vandalized.
 			$cache::TTL_MINUTE * 5,
-			static function () use ( $title, $taskType, $imageRecommendationProvider ) {
-				return $imageRecommendationProvider->get( $title, $taskType );
+			static function ( $oldValue, &$ttl ) use ( $title, $taskType, $imageRecommendationProvider, $cache ) {
+				$response = $imageRecommendationProvider->get( $title, $taskType );
+				if ( $response instanceof StatusValue ) {
+					$ttl = $cache::TTL_UNCACHEABLE;
+				}
+				return $response;
 			}
 		);
 	}
