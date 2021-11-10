@@ -31,6 +31,9 @@ function QualityGate( config ) {
 		}
 	};
 	this.loggers = config.loggers;
+	// Used for alert dialogs.
+	this.windowManager = new OO.ui.WindowManager();
+	$( document.body ).append( this.windowManager.$element );
 }
 
 /**
@@ -103,12 +106,15 @@ QualityGate.prototype.handleGateFailure = function ( taskType, gate ) {
  */
 QualityGate.prototype.showImageRecommendationDailyLimitAlertDialog = function () {
 	this.loggers[ 'image-recommendation' ].log( 'impression', 'dailyLimit', this.config.loggerMetadataOverrides );
-
-	OO.ui.alert( mw.message( 'growthexperiments-addimage-daily-task-limit-exceeded' ).parse(), {
-		actions: [ {
-			action: 'accept', label: mw.message( 'growthexperiments-addimage-daily-task-limit-exceeded-dialog-button' ).text(), flags: 'primary'
-		} ]
-	} );
+	this.showAlertDialog(
+		'dailyLimit',
+		mw.message( 'growthexperiments-addimage-daily-task-limit-exceeded' ).parse(),
+		{
+			action: 'accept',
+			label: mw.message( 'growthexperiments-addimage-daily-task-limit-exceeded-dialog-button' ).text(),
+			flags: 'primary'
+		}
+	);
 };
 
 /**
@@ -116,11 +122,40 @@ QualityGate.prototype.showImageRecommendationDailyLimitAlertDialog = function ()
  */
 QualityGate.prototype.showImageRecommendationMobileOnlyDialog = function () {
 	this.loggers[ 'image-recommendation' ].log( 'impression', 'mobileOnly', this.config.loggerMetadataOverrides );
+	this.showAlertDialog(
+		'mobileOnly',
+		mw.message( 'growthexperiments-addimage-mobile-only' ).parse(),
+		{
+			action: 'accept',
+			label: mw.message( 'growthexperiments-addimage-mobile-only-dialog-button' ).text(),
+			flags: 'primary'
+		}
+	);
+};
 
-	OO.ui.alert( mw.message( 'growthexperiments-addimage-mobile-only' ).parse(), {
-		actions: [ {
-			action: 'accept', label: mw.message( 'growthexperiments-addimage-mobile-only-dialog-button' ).text(), flags: 'primary'
-		} ]
+/**
+ * Show an alert dialog.
+ *
+ * @param {string} qualityGateId The dialog identifier
+ * @param {string} message
+ * @param {Object} action
+ * @param {string} action.action The type of action to show, e.g. "accept" or "reject".
+ * @param {string} action.label The label to show with the action button
+ * @param {string|Array} action.flags The flags to use with the action, e.g. 'primary'
+ * @return {OO.ui.WindowInstance}
+ */
+QualityGate.prototype.showAlertDialog = function ( qualityGateId, message, action ) {
+	var messageDialog = new OO.ui.MessageDialog();
+	messageDialog.$element
+		.addClass( 'ge-qualitygate-alert-dialog' )
+		// The following classes are used here:
+		// * ge-qualitygate-alert-dialog-dailyLimit
+		// * ge-qualitygate-alert-dialog-mobileOnly
+		.addClass( 'ge-qualitygate-alert-dialog-' + qualityGateId );
+	this.windowManager.addWindows( [ messageDialog ] );
+	return this.windowManager.openWindow( messageDialog, {
+		message: message,
+		actions: [ action ]
 	} );
 };
 

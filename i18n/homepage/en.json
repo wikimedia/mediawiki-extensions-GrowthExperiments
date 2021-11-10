@@ -467,7 +467,7 @@
 	"growthexperiments-addimage-reason-wikipedia-project": "Used in the same article in $1.",
 	"growthexperiments-addimage-reason-wikidata": "Found in the Wikidata item for this article (strong match).",
 	"growthexperiments-addimage-reason-commons": "One of several images linked to the Wikidata item for this article.",
-	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|You}} have completed all of today's image suggestions. Adjust {{GENDER:|your}} difficulty levels to see other types of edits or come back tomorrow for more image suggestions.",
+	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|You}} have completed all of today's image suggestions.\n\nAdjust {{GENDER:|your}} difficulty levels to see other types of edits or come back tomorrow for more image suggestions.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Got it",
 	"growthexperiments-addimage-mobile-only": "Image suggestions are only available on mobile devices. Adjust {{GENDER:|your}} difficulty levels to see other types of edits or use {{GENDER:|your}} mobile device to work on image suggestions.",
 	"growthexperiments-addimage-mobile-only-dialog-button": "Got it",
