@@ -22,6 +22,9 @@ class ImageRecommendationTaskType extends TaskType {
 	/** @var bool */
 	protected $isMachineSuggestion = true;
 
+	/** @var bool */
+	protected $isMobileOnly = true;
+
 	/**
 	 * @inheritDoc
 	 * @param array $settings A settings array matching ImageRecommendationTaskType::DEFAULT_SETTINGS
