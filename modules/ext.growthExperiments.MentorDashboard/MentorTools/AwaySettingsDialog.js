@@ -46,7 +46,7 @@
 			this.emit( 'cancel' );
 		} else if ( action === 'save' ) {
 			return new OO.ui.Process( function () {
-				new mw.Api().postWithToken( 'csrf', {
+				return new mw.Api().postWithToken( 'csrf', {
 					action: 'growthsetmentorstatus',
 					gesstatus: 'away',
 					gesbackindays: dialog.awayForDays.getValue()
