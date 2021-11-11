@@ -4,6 +4,7 @@ var HelpPanelButton = require( '../ui-components/HelpPanelButton.js' );
  * @class mw.libs.ge.StructuredTaskToolbarDialog
  * @extends ve.ui.ToolbarDialog
  * @constructor
+ * @property {mw.libs.ge.StructuredTaskLogger} logger
  */
 function StructuredTaskToolbarDialog() {
 	StructuredTaskToolbarDialog.super.apply( this, arguments );
@@ -91,7 +92,7 @@ StructuredTaskToolbarDialog.prototype.hideDialog = function () {
 	this.$element.addClass( 'collapsed' );
 	this.isHidden = true;
 	this.chevronIcon.setIcon( 'collapse' );
-	this.logger.log( 'collapse', this.suggestionLogMetadata() );
+	this.logger.log( 'collapse', this.getSuggestionLogActionData() );
 };
 
 /**
@@ -104,7 +105,7 @@ StructuredTaskToolbarDialog.prototype.showDialog = function () {
 	this.isHidden = false;
 	this.$element.removeClass( 'collapsed' );
 	this.chevronIcon.setIcon( 'expand' );
-	this.logger.log( 'expand', this.suggestionLogMetadata() );
+	this.logger.log( 'expand', this.getSuggestionLogActionData() );
 };
 
 /**
@@ -188,11 +189,11 @@ StructuredTaskToolbarDialog.prototype.addArticleTitle = function () {
 };
 
 /**
- * Get the suggestion-specific metadata to pass to StructuredTaskLogger.
+ * Get the suggestion-specific action data to pass to StructuredTaskLogger.
  *
  * @return {Object}
  */
-StructuredTaskToolbarDialog.prototype.suggestionLogMetadata = function () {
+StructuredTaskToolbarDialog.prototype.getSuggestionLogActionData = function () {
 	return {};
 };
 

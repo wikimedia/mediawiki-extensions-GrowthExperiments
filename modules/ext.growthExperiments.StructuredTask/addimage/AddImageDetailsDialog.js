@@ -184,7 +184,7 @@ AddImageDetailsDialog.prototype.makeSpacer = function () {
  * @param {string} event
  */
 AddImageDetailsDialog.prototype.logEvent = function ( event ) {
-	var actionData = ve.init.target.getSuggestionLogMetadata( this.imageIndex );
+	var actionData = ve.init.target.getSuggestionLogActionData( this.imageIndex );
 	actionData.source = this.logSource;
 	// eslint-disable-next-line camelcase
 	SuggestionInteractionLogger.log( event, actionData, { active_interface: 'imagedetails_dialog' } );
