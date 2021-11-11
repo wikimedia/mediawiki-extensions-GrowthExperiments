@@ -101,6 +101,11 @@ class HomepageHooks implements
 	public const GROWTH_FORCE_OPTOUT = 2;
 	public const GROWTH_FORCE_NONE = 3;
 
+	/** @var string Query string used on Special:CreateAccount to force enable/disable Growth features */
+	public const REGISTRATION_GROWTHEXPERIMENTS_ENABLED = 'geEnabled';
+	/** @var string Query string used on Special:CreateAccount to force show/hide new landing page HTML */
+	public const REGISTRATION_GROWTHEXPERIMENTS_NEW_LANDING_HTML = 'geNewLandingHtml';
+
 	/** @var Config */
 	private $config;
 	/** @var Config */
@@ -635,25 +640,33 @@ class HomepageHooks implements
 			];
 		}
 
-		$geEnabled = $request->getInt( 'geEnabled', -1 );
+		$geEnabled = $request->getInt( self::REGISTRATION_GROWTHEXPERIMENTS_ENABLED, -1 );
 		if ( $geEnabled !== null ) {
-			$formDescriptor['geEnabled'] = [
+			$formDescriptor[self::REGISTRATION_GROWTHEXPERIMENTS_ENABLED] = [
 				'type' => 'hidden',
-				'name' => 'geEnabled',
+				'name' => self::REGISTRATION_GROWTHEXPERIMENTS_ENABLED,
 				'default' => $geEnabled
+			];
+		}
+		$newLandingHtml = $request->getInt( self::REGISTRATION_GROWTHEXPERIMENTS_NEW_LANDING_HTML, -1 );
+		if ( $newLandingHtml !== null ) {
+			$formDescriptor[self::REGISTRATION_GROWTHEXPERIMENTS_NEW_LANDING_HTML] = [
+				'type' => 'hidden',
+				'name' => self::REGISTRATION_GROWTHEXPERIMENTS_NEW_LANDING_HTML,
+				'default' => $newLandingHtml
 			];
 		}
 	}
 
 	/**
-	 * Check if an user opted-in or opted-out from Growth features
+	 * Check if a user opted-in or opted-out from Growth features
 	 *
 	 * @return int One of GROWTH_FORCE_* constants
 	 */
 	public static function getGrowthFeaturesOptInOptOutOverride(): int {
 		$enableGrowthFeatures = RequestContext::getMain()
 			->getRequest()
-			->getInt( 'geEnabled', -1 );
+			->getInt( self::REGISTRATION_GROWTHEXPERIMENTS_ENABLED, -1 );
 		if ( $enableGrowthFeatures === 1 ) {
 			return self::GROWTH_FORCE_OPTIN;
 		} elseif ( $enableGrowthFeatures === 0 ) {
