@@ -22,6 +22,15 @@ function CERecommendedImageNode() {
 	 * This is so that the loading state doesn't abruptly disappear if the image loads quickly.
 	 */
 	this.loadingDelay = 500;
+	/**
+	 * Offset value to use when scrolling to the caption field
+	 * @property {number}
+	 */
+	this.scrollOffset = 100;
+	/**
+	 * @property {mw.libs.ge.AddImageArticleTarget} articleTarget
+	 */
+	this.articleTarget = ve.init.target;
 	this.setupLoadingOverlay();
 	this.showImageLoadingState();
 	setTimeout( function () {
@@ -78,6 +87,12 @@ CERecommendedImageNode.prototype.showImage = function () {
 	this.$loadingOverlay.addClass( 'mw-ge-recommendedImage-loading-overlay--image-shown' );
 	this.isImageShown = true;
 	this.setupDetailsButton( this.$element.find( '.image' ) );
+	// Scroll relative to the details button
+	setTimeout( function () {
+		this.articleTarget.surface.$scrollContainer.animate( {
+			scrollTop: this.$detailsButton.offset().top - this.scrollOffset
+		} );
+	}.bind( this ), 300 );
 };
 
 /**
@@ -86,7 +101,7 @@ CERecommendedImageNode.prototype.showImage = function () {
  * @param {jQuery} $container Container in which to append the details button
  */
 CERecommendedImageNode.prototype.setupDetailsButton = function ( $container ) {
-	var $detailsButton = $( '<div>' ).addClass( 'mw-ge-recommendedImage-details-button' )
+	this.$detailsButton = $( '<div>' ).addClass( 'mw-ge-recommendedImage-details-button' )
 		.attr( 'role', 'button' )
 		.append( [
 			new OO.ui.IconWidget( {
@@ -96,7 +111,7 @@ CERecommendedImageNode.prototype.setupDetailsButton = function ( $container ) {
 			} ).$element,
 			mw.message( 'growthexperiments-addimage-inspector-details-button' ).escaped()
 		] );
-	$detailsButton.on( 'click', function () {
+	this.$detailsButton.on( 'click', function () {
 		var surface = this.getRoot().getSurface().getSurface(),
 			recommendation = this.getModel().getAttribute( 'recommendation' ),
 			recommendationIndex = this.getModel().getAttribute( 'recommendationIndex' );
@@ -106,7 +121,7 @@ CERecommendedImageNode.prototype.setupDetailsButton = function ( $container ) {
 			imageIndex: recommendationIndex
 		} );
 	}.bind( this ) );
-	$container.append( $detailsButton );
+	$container.append( this.$detailsButton );
 };
 
 /**

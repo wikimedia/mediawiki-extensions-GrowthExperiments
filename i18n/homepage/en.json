@@ -445,7 +445,7 @@
 	"growthexperiments-newcomertasks-invalid-tasktype": "$1 is not a valid task type",
 	"growthexperiments-addimage-caption-title": "Add a caption",
 	"growthexperiments-addimage-loading-title": "Loading image preview…",
-	"growthexperiments-addimage-caption-placeholder": "Write a short caption describing how this image is relevant to “$1”",
+	"growthexperiments-addimage-caption-placeholder": "Write a short caption describing how this image is relevant to <strong>$1</strong>",
 	"growthexperiments-addimage-caption-info-dialog-title": "Write a caption to go with the image in the article",
 	"growthexperiments-addimage-caption-info-dialog-message": "Readers of the article will see the caption displayed with the image. A few guidelines:",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-describe": "Describe the image so it’s clear how it relates to the article.",

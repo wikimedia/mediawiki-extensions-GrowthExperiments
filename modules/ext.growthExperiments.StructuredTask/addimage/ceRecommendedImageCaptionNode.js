@@ -79,24 +79,29 @@ CERecommendedImageCaptionNode.prototype.isValid = function () {
  *
  * @return {string}
  */
-CERecommendedImageCaptionNode.prototype.getPlaceholderText = function () {
+CERecommendedImageCaptionNode.prototype.getPlaceholderHtml = function () {
 	return mw.message( 'growthexperiments-addimage-caption-placeholder' ).params( [
 		suggestedEditSession.getCurrentTitle().getNameText()
-	] ).text();
+	] ).parse();
 };
 
 /**
  * Set up placeholder text (make contenteditable element behave like an input field)
  */
 CERecommendedImageCaptionNode.prototype.setupPlaceholder = function () {
-	// Placeholder will be rendered via a pseudo-element so that the text appears in the
-	// contenteditable element but doesn't get included as the actual content changed.
-	this.$element.attr( 'placeholder', this.getPlaceholderText() );
+	var $placeholder = $( '<p>' )
+		.addClass( 'mw-ge-recommendedImageCaption-placeholder' )
+		.html( this.getPlaceholderHtml() );
 	this.$element.on( 'click', function () {
+		// Prevent the field height from changing when the placeholder node is removed
+		this.$element.css( 'min-height', this.$element.height() );
+		$placeholder.detach();
+		// This programmatic focus works on iOS because it's inside a click event listener.
+		this.$element.focus();
 		this.$element.removeClass( 'mw-ge-recommendedImageCaption--with-placeholder' );
-		this.articleTarget.getSurface().getView().setActiveNode( this );
 		this.articleTarget.logSuggestionInteraction( 'focus', 'caption_entry' );
 	}.bind( this ) );
+	this.$element.prepend( $placeholder );
 };
 
 /**
