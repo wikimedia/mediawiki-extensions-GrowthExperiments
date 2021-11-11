@@ -158,6 +158,27 @@ module.exports = ( function () {
 		} );
 	}
 
+	/**
+	 * Prevent pasting into the article surface
+	 * This is used when the surface is not read-only but it still should not be editable
+	 * (for example, during caption step of add image).
+	 *
+	 * @param {ve.ui.Surface} surface
+	 */
+	function disableSurfacePaste( surface ) {
+		surface.getView().$attachedRootNode.off( 'paste' );
+	}
+
+	/**
+	 * Enable pasting into the article surface
+	 *
+	 * @param {ve.ui.Surface} surface
+	 */
+	function enableSurfacePaste( surface ) {
+		var surfaceView = surface.getView();
+		surfaceView.$attachedRootNode.on( 'paste', surfaceView.onPaste.bind( surfaceView ) );
+	}
+
 	return {
 		canAddToolbarTitle: canAddToolbarTitle,
 		getTitleElement: getTitleElement,
@@ -171,7 +192,9 @@ module.exports = ( function () {
 		trackEditModeClick: trackEditModeClick,
 		disableVirtualKeyboard: disableVirtualKeyboard,
 		enableVirtualKeyboard: enableVirtualKeyboard,
-		addSaveHook: addSaveHook
+		addSaveHook: addSaveHook,
+		disableSurfacePaste: disableSurfacePaste,
+		enableSurfacePaste: enableSurfacePaste
 	};
 
 }() );

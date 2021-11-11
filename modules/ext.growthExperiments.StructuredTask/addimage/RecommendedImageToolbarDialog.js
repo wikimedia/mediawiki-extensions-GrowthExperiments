@@ -422,6 +422,7 @@ RecommendedImageToolbarDialog.prototype.imageCaptionReadyHandler = function () {
 	var articleTarget = this.getArticleTarget(),
 		surface = this.surface;
 	MachineSuggestionsMode.enableVirtualKeyboard( surface, true );
+	MachineSuggestionsMode.disableSurfacePaste( surface );
 	surface.setReadOnly( false );
 	// At this point, the rest of the surface (apart from the inserted image nodes, which have
 	// contenteditable explicitly set to true) is not editable due to contenteditable being
@@ -468,6 +469,7 @@ RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
 		}
 		articleTarget.logSuggestionInteraction( 'back', 'caption_entry' );
 		MachineSuggestionsMode.disableVirtualKeyboard( this.surface );
+		MachineSuggestionsMode.enableSurfacePaste( this.surface );
 		surface.setReadOnly( true );
 		articleTarget.rollback();
 		articleTarget.restorePlaceholderTitle();
