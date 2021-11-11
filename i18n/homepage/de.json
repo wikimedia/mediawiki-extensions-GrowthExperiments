@@ -421,6 +421,16 @@
 	"growthexperiments-addimage-inspector-show-button": "Bildvorschlag anzeigen",
 	"growthexperiments-addimage-inspector-help-button": "Hilfe bei der Bearbeitung erhalten",
 	"growthexperiments-addimage-inspector-details-button": "Bilddetails anzeigen",
+	"growthexperiments-addimage-detailsdialog-header": "Details zum Bild",
+	"growthexperiments-addimage-detailsdialog-image": "Dateiname:",
+	"growthexperiments-addimage-detailsdialog-description": "Beschreibung:",
+	"growthexperiments-addimage-detailsdialog-caption": "Legende:",
+	"growthexperiments-addimage-detailsdialog-license": "Lizenz:",
+	"growthexperiments-addimage-detailsdialog-date": "Datum:",
+	"growthexperiments-addimage-detailsdialog-author": "Autor:",
+	"growthexperiments-addimage-detailsdialog-categories": "Kategorien:",
+	"growthexperiments-addimage-detailsdialog-link": "Bilddatei auf Commons",
+	"growthexperiments-addimage-detailsdialog-close": "Schließen",
 	"growthexperiments-addimage-rejectiondialog-header": "Warum passt dieses Bild nicht zu dem Artikel?",
 	"growthexperiments-addimage-rejectiondialog-subheader": "{{GENDER:|Deine}} Antworten können zukünftige Vorschläge verbessern.",
 	"growthexperiments-addimage-rejectiondialog-action-done": "Übermitteln",
@@ -477,5 +487,6 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|Du}} hast alle Bildvorschläge von heute erledigt. Passe {{GENDER:|deinen}} Schwierigkeitsgrad an, um andere Arten von Bearbeitungen zu sehen oder komme morgen für weitere Bildvorschläge wieder.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Verstanden",
 	"growthexperiments-addimage-mobile-only": "Bildvorschläge sind nur auf mobilen Geräten verfügbar. Passe den Schwierigkeitsgrad an, um andere Bearbeitungsarten zu sehen, oder verwende {{GENDER:|dein}} Mobilgerät, um Bildvorschläge zu bearbeiten.",
-	"growthexperiments-addimage-mobile-only-dialog-button": "Verstanden"
+	"growthexperiments-addimage-mobile-only-dialog-button": "Verstanden",
+	"growthexperiments-addimage-caption-warning-tooshort": "Bildunterschriften müssen $1 {{PLURAL:$1|Zeichen}} oder länger sein."
 }

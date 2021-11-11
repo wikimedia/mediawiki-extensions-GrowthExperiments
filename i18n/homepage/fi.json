@@ -327,6 +327,16 @@
 	"growthexperiments-addimage-inspector-show-button": "Näytä ehdotettu kuva",
 	"growthexperiments-addimage-inspector-help-button": "Hanki apua muokkaamisessa",
 	"growthexperiments-addimage-inspector-details-button": "Näytä kuvan tiedot",
+	"growthexperiments-addimage-detailsdialog-header": "Kuvan tiedot",
+	"growthexperiments-addimage-detailsdialog-image": "Tiedostonimi:",
+	"growthexperiments-addimage-detailsdialog-description": "Kuvaus:",
+	"growthexperiments-addimage-detailsdialog-caption": "Kuvaus:",
+	"growthexperiments-addimage-detailsdialog-license": "Lisenssi:",
+	"growthexperiments-addimage-detailsdialog-date": "Päiväys:",
+	"growthexperiments-addimage-detailsdialog-author": "Tekijä:",
+	"growthexperiments-addimage-detailsdialog-categories": "Luokat:",
+	"growthexperiments-addimage-detailsdialog-link": "Kuvatiedosto Commonsissa",
+	"growthexperiments-addimage-detailsdialog-close": "Sulje",
 	"growthexperiments-addimage-rejectiondialog-header": "Miksi tämä kuva ei ole oikea artikkelille?",
 	"growthexperiments-addimage-rejectiondialog-subheader": "{{GENDER:|Vastauksesi}} auttaa parantamaan ehdotuksia.",
 	"growthexperiments-addimage-rejectiondialog-action-done": "Lähetä",
@@ -352,5 +362,6 @@
 	"growthexperiments-structuredtask-user-error-login-cta": "Kirjaudu sisään",
 	"growthexperiments-addimage-summary-label": "Yhteenveto",
 	"growthexperiments-addimage-summary-reject-description": "Tämä kuvaehdotus on hylätty.",
-	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Selvä"
+	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Selvä",
+	"growthexperiments-addimage-mobile-only-dialog-button": "Selvä"
 }

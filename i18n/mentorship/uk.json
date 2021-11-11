@@ -80,6 +80,7 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Наступний крок — перепризначення ваших підопічних. Якщо ви впевнені, що хочете покинути наставництво, будь ласка, натисніть кнопку нижче.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Так, призначити моїм підопічним іншого наставника",
 	"growthexperiments-quit-mentorship-success": "Невдовзі вашим підопічним буде призначено інших наставників.",
+	"growthexperiments-quit-mentorship-no-mentees": "У {{GENDER:|вас}} наразі немає підопічних.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|покинув|покинула}} наставництво.",
 	"echo-category-title-ge-mentorship": "Наставництво",
 	"echo-pref-tooltip-ge-mentorship": "Сповіщення, пов'язані з функціями наставництва, які розробляє команда Зростання. Це сповіщення про те, що вас взяли собі за підопічного, або що одного з ваших підопічних узяв собі хтось інший.",

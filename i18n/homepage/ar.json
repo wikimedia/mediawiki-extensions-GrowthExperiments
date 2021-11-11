@@ -470,5 +470,6 @@
 	"growthexperiments-addimage-reason-commons": "واحدة من عدة صور مرتبطة بعنصر ويكي بيانات لهذه المقالة.",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "لقد انتهيت من كلّ اقتراحات الصور اليوميّة. {{GENDER:|عدّل|عدّلي}} من مستوى الصعوبة للحصول على أنواع أخرى من التعديلات أو {{GENDER:|ارجع|ارجعي}} غداً للمزيد من اقتراحات الصّور.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "عُلم",
+	"growthexperiments-addimage-mobile-only": "تتوفّر اقتراحات الصور حصريا على الأجهزة الجوالة. {{GENDER:|عدّل|عدّلي}} مستوى الصعوبة الخاص بك للحصول على اقتراحات من نوع آخر أو {{GENDER:|استخدم|استخدمي}} جهازك الجوال للعمل على اقتراحات الصور.",
 	"growthexperiments-addimage-mobile-only-dialog-button": "فهمت!"
 }

@@ -485,5 +485,7 @@
 	"growthexperiments-addimage-reason-wikidata": "Trouvé dans l’élément Wikidata pour cet article (correspondance forte).",
 	"growthexperiments-addimage-reason-commons": "Une des images liées à l’élément Wikidata pour cet article.",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|Vous}} avez terminé toutes les suggestions d’image pour aujourd’hui. Ajuster {{GENDER:|vos}} niveaux de difficulté pour voir d’autres types de modification ou revenir demain pour plus de suggestions d’image.",
-	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "C’est bon"
+	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "C’est bon",
+	"growthexperiments-addimage-mobile-only": "Les suggestions d’image ne sont disponibles que sur les appareils mobiles. Ajuster {{GENDER:|vos}} niveaux de difficulté pour voir d’autres types de modifications, ou utiliser {{GENDER:|votre}} appareil mobile pour travailler sur les suggestions d’image.",
+	"growthexperiments-addimage-mobile-only-dialog-button": "C’est bon"
 }

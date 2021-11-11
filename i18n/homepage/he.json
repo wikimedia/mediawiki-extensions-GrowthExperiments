@@ -407,6 +407,16 @@
 	"growthexperiments-addimage-inspector-show-button": "להציג את הצעת התמונה",
 	"growthexperiments-addimage-inspector-help-button": "קבלת עזרה עם עריכה",
 	"growthexperiments-addimage-inspector-details-button": "הצגת פרטי תמונה",
+	"growthexperiments-addimage-detailsdialog-header": "פרטי התמונה",
+	"growthexperiments-addimage-detailsdialog-image": "שם הקובץ:",
+	"growthexperiments-addimage-detailsdialog-description": "תיאור:",
+	"growthexperiments-addimage-detailsdialog-caption": "כיתוב:",
+	"growthexperiments-addimage-detailsdialog-license": "רישיון:",
+	"growthexperiments-addimage-detailsdialog-date": "תאריך:",
+	"growthexperiments-addimage-detailsdialog-author": "יוצר:",
+	"growthexperiments-addimage-detailsdialog-categories": "קטגוריות:",
+	"growthexperiments-addimage-detailsdialog-link": "קובץ תמונה בוויקישיתוף",
+	"growthexperiments-addimage-detailsdialog-close": "סגירה",
 	"growthexperiments-addimage-rejectiondialog-header": "למה התמונה הזאת לא מתאימה לערך?",
 	"growthexperiments-addimage-rejectiondialog-subheader": "התשובות {{GENDER:|שלך}} משפרות הצעות עתידיות.",
 	"growthexperiments-addimage-rejectiondialog-action-done": "שליחה",
@@ -463,5 +473,6 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded": "השלמת את כל הוספות הצעות התמונות להיום. {{GENDER:|כוונן|כוונני}} את רמות הקושי שלך כדי לראות סוגים אחרים של עריכה או {{GENDER:|חזור|חזרי}} מחר בשביל עוד הצעות תמונה.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "הבנתי",
 	"growthexperiments-addimage-mobile-only": "הצעות תמונות זמינות רק במכשירים ניידים. {{GENDER:|התאם|התאימי}} את רמת הקושי שלך כדי לראות סוגי עריכות אחרים או {{GENDER:|השתמש|השתמשי}} במכשיר הנייד שלך כדי לעבוד על הצעות תמונות.",
-	"growthexperiments-addimage-mobile-only-dialog-button": "הבנתי"
+	"growthexperiments-addimage-mobile-only-dialog-button": "הבנתי",
+	"growthexperiments-addimage-caption-warning-tooshort": "כיתובים צריכים להיות באורך {{PLURAL:$1|תו אחד|$1 תווים}} או יותר."
 }

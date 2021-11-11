@@ -425,5 +425,6 @@
 	"growthexperiments-addimage-caption-title": "Aggiungi una didascalia",
 	"growthexperiments-addimage-caption-info-dialog-confirm": "Capito",
 	"growthexperiments-structuredtask-user-error-login-cta": "Entra",
-	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|altro|altri}}"
+	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|altro|altri}}",
+	"growthexperiments-addimage-mobile-only-dialog-button": "Capito"
 }

@@ -428,6 +428,16 @@
 	"growthexperiments-addimage-inspector-show-button": "展示链接建议",
 	"growthexperiments-addimage-inspector-help-button": "获取编辑帮助",
 	"growthexperiments-addimage-inspector-details-button": "查看图像详情",
+	"growthexperiments-addimage-detailsdialog-header": "图片详细资料",
+	"growthexperiments-addimage-detailsdialog-image": "文件名称：",
+	"growthexperiments-addimage-detailsdialog-description": "描述：",
+	"growthexperiments-addimage-detailsdialog-caption": "说明：",
+	"growthexperiments-addimage-detailsdialog-license": "许可协议：",
+	"growthexperiments-addimage-detailsdialog-date": "日期：",
+	"growthexperiments-addimage-detailsdialog-author": "作者：",
+	"growthexperiments-addimage-detailsdialog-categories": "分类：",
+	"growthexperiments-addimage-detailsdialog-link": "在维基共享资源的图片文件",
+	"growthexperiments-addimage-detailsdialog-close": "关闭",
 	"growthexperiments-addimage-rejectiondialog-header": "为什么这张图片不适合这篇条目？",
 	"growthexperiments-addimage-rejectiondialog-subheader": "{{GENDER:|您}}的回答可以改善未来的建议。",
 	"growthexperiments-addimage-rejectiondialog-action-done": "提交",
@@ -482,5 +492,8 @@
 	"growthexperiments-addimage-reason-wikidata": "存在于此条目的维基数据项目（强烈匹配）。",
 	"growthexperiments-addimage-reason-commons": "链接到此条目的维基数据项目的图片之一。",
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|您}}已经完成今天所有的图片建议，调整{{GENDER:|您的}}难度等级以看到其他类型的编辑或是在明天回来以获得更多图片建议。",
-	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "明白了"
+	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "明白了",
+	"growthexperiments-addimage-mobile-only": "图片建议仅能在移动版设备上使用。调整{{GENDER:|您的}}难度等级以看到其他类型的编辑或使用{{GENDER:|您的}}移动版设备来处理图片建议。",
+	"growthexperiments-addimage-mobile-only-dialog-button": "明白了",
+	"growthexperiments-addimage-caption-warning-tooshort": "说明应该至少要$1{{PLURAL:$1|个字}}。"
 }

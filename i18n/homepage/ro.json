@@ -399,6 +399,16 @@
 	"growthexperiments-addimage-inspector-show-button": "Arată sugestie de imagine",
 	"growthexperiments-addimage-inspector-help-button": "Primiți ajutor cu editarea",
 	"growthexperiments-addimage-inspector-details-button": "Vezi detaliile imaginii",
+	"growthexperiments-addimage-detailsdialog-header": "Detaliile imaginii",
+	"growthexperiments-addimage-detailsdialog-image": "Numele fișierului:",
+	"growthexperiments-addimage-detailsdialog-description": "Descriere:",
+	"growthexperiments-addimage-detailsdialog-caption": "Legendă:",
+	"growthexperiments-addimage-detailsdialog-license": "Licență:",
+	"growthexperiments-addimage-detailsdialog-date": "Dată:",
+	"growthexperiments-addimage-detailsdialog-author": "Autor:",
+	"growthexperiments-addimage-detailsdialog-categories": "Categorii:",
+	"growthexperiments-addimage-detailsdialog-link": "Fișierul imaginii la Commons",
+	"growthexperiments-addimage-detailsdialog-close": "Închide",
 	"growthexperiments-addimage-rejectiondialog-header": "De ce această imagine nu este potrivită articolului?",
 	"growthexperiments-addimage-rejectiondialog-subheader": "Răspunsurile {{GENDER:|dvs.}} îmbunătățesc sugestiile viitoare.",
 	"growthexperiments-addimage-rejectiondialog-action-done": "Trimite",
@@ -455,5 +465,6 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|Ați}} finalizat toate sugestiile de imagine pentru astăzi. {{GENDER:|Ajustați-vă}} nivelurile de dificultate pentru a vedea alte tipuri de editări sau reveniți mâine pentru mai multe sugestii de imagine.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Am înțeles",
 	"growthexperiments-addimage-mobile-only": "Sugestiile de imagine sunt disponibile numai pe mobil. {{GENDER:|Ajustați-vă}} nivelurile de dificultate pentru a vedea alte tipuri de editări sau {{GENDER:|utilizați-vă}} dispozitivul mobil pentru a lucra la sugestii de imagine.",
-	"growthexperiments-addimage-mobile-only-dialog-button": "Am înțeles"
+	"growthexperiments-addimage-mobile-only-dialog-button": "Am înțeles",
+	"growthexperiments-addimage-caption-warning-tooshort": "Descrierile scurte (legendele) trebuie să aibă $1 {{PLURAL:$1|caracter|caractere}} sau mai mult."
 }
