@@ -42,7 +42,9 @@
 
 	AwaySettingsDialog.prototype.getActionProcess = function ( action ) {
 		var dialog = this;
-		if ( action === 'save' ) {
+		if ( action === '' ) {
+			this.emit( 'cancel' );
+		} else if ( action === 'save' ) {
 			return new OO.ui.Process( function () {
 				new mw.Api().postWithToken( 'csrf', {
 					action: 'growthsetmentorstatus',
