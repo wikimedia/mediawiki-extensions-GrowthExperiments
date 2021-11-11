@@ -713,7 +713,7 @@
 	 * @param {jQuery} $element The element to bind click handling to.
 	 */
 	SuggestedEditsModule.prototype.setupQualityGateClickHandling = function ( $element ) {
-		$element.on( 'click', function ( event ) {
+		$element.on( 'click', function () {
 			var qualityGate = new QualityGate( {
 				gates: this.currentCard.data.qualityGateIds || [],
 				gateConfig: this.qualityGateConfig,
@@ -732,13 +732,7 @@
 				}
 				/* eslint-enable camelcase */
 			} );
-			event.preventDefault();
-			event.stopPropagation();
-			qualityGate.checkAll( this.currentCard.data.tasktype ).done( function () {
-				window.location = this.currentCard.$element.find( '.se-card-content' ).attr( 'href' );
-			}.bind( this ) ).fail( function ( gate ) {
-				qualityGate.handleGateFailure( this.currentCard.getTaskType(), gate );
-			}.bind( this ) );
+			return qualityGate.checkAll( this.currentCard.data.tasktype );
 		}.bind( this ) );
 	};
 
