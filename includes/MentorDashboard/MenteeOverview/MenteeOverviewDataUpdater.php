@@ -4,7 +4,6 @@ namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
 use FormatJson;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsManager;
 use Wikimedia\Rdbms\ILoadBalancer;
@@ -31,9 +30,6 @@ class MenteeOverviewDataUpdater {
 	/** @var UserOptionsManager */
 	private $userOptionsManager;
 
-	/** @var UserFactory */
-	private $userFactory;
-
 	/** @var LBFactory */
 	private $lbFactory;
 
@@ -51,7 +47,6 @@ class MenteeOverviewDataUpdater {
 	 * @param MenteeOverviewDataProvider $menteeOverviewDataProvider
 	 * @param MentorStore $mentorStore
 	 * @param UserOptionsManager $userOptionsManager
-	 * @param UserFactory $userFactory
 	 * @param LBFactory $lbFactory
 	 * @param ILoadBalancer $growthLoadBalancer
 	 */
@@ -60,7 +55,6 @@ class MenteeOverviewDataUpdater {
 		MenteeOverviewDataProvider $menteeOverviewDataProvider,
 		MentorStore $mentorStore,
 		UserOptionsManager $userOptionsManager,
-		UserFactory $userFactory,
 		LBFactory $lbFactory,
 		ILoadBalancer $growthLoadBalancer
 	) {
@@ -68,7 +62,6 @@ class MenteeOverviewDataUpdater {
 		$this->menteeOverviewDataProvider = $menteeOverviewDataProvider;
 		$this->mentorStore = $mentorStore;
 		$this->userOptionsManager = $userOptionsManager;
-		$this->userFactory = $userFactory;
 		$this->lbFactory = $lbFactory;
 		$this->growthLoadBalancer = $growthLoadBalancer;
 	}
@@ -176,7 +169,7 @@ class MenteeOverviewDataUpdater {
 			self::LAST_UPDATE_PREFERENCE,
 			wfTimestamp( TS_MW )
 		);
-		$this->userFactory->newFromUserIdentity( $mentor )->saveSettings();
+		$this->userOptionsManager->saveOptions( $mentor );
 
 		return $updatedMenteeIds;
 	}
