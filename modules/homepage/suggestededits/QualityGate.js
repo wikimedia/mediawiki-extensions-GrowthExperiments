@@ -40,18 +40,18 @@ function QualityGate( config ) {
  * type (see TaskType.php getQualityGateIds() )
  *
  * @param {string} taskType
- * @return {jQuery.Promise}
+ * @return {boolean} Whether the task passed the gates.
  */
 QualityGate.prototype.checkAll = function ( taskType ) {
-	var promises = [];
-
-	this.config.gates.forEach( function ( gate ) {
+	return this.config.gates.every( function ( gate ) {
 		if ( this.checkHandlers[ taskType ][ gate ] ) {
-			promises.push( this.checkHandlers[ taskType ][ gate ]() );
+			if ( !this.checkHandlers[ taskType ][ gate ]() ) {
+				this.handleGateFailure( taskType, gate );
+				return false;
+			}
 		}
+		return true;
 	}.bind( this ) );
-
-	return $.when.apply( $, promises );
 };
 
 /**
@@ -62,14 +62,10 @@ QualityGate.prototype.checkAll = function ( taskType ) {
  * is exported in QualityGateDecorator.php
  *
  * @param {string} taskType
- * @return {jQuery.Promise} A rejected or resolved promise depending on whether the gate is passed
- *   otherwise.
+ * @return {boolean} Whether the task passed the gate.
  */
 QualityGate.prototype.checkDailyLimitForTaskType = function ( taskType ) {
-	if ( this.config.gateConfig[ taskType ].dailyLimit ) {
-		return $.Deferred().reject( 'dailyLimit' ).promise();
-	}
-	return $.Deferred().resolve().promise();
+	return !this.config.gateConfig[ taskType ].dailyLimit;
 };
 
 /**
@@ -79,12 +75,10 @@ QualityGate.prototype.checkDailyLimitForTaskType = function ( taskType ) {
  * QualityGateDecorator.php.
  *
  * @param {string} taskType
- * @return {jQuery.Promise} A resolved promise if the gate is passed, a rejected promise if not.
+ * @return {boolean} Whether the task passed the gate.
  */
 QualityGate.prototype.checkMobileOnlyGate = function ( taskType ) {
-	return this.config.gateConfig[ taskType ].mobileOnly ?
-		$.Deferred().resolve().promise() :
-		$.Deferred().reject( 'mobileOnly' ).promise();
+	return this.config.gateConfig[ taskType ].mobileOnly;
 };
 
 /**
