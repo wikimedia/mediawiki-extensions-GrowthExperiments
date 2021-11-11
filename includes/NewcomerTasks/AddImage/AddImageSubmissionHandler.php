@@ -105,12 +105,11 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 			$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
 		);
 		if ( $taskSet instanceof TaskSet ) {
-			/** @var ImageRecommendationTaskType $imageRecommendation */
-			$imageRecommendation = $this->configurationLoader->getTaskTypes()['image-recommendation'];
+			$imageRecommendation = $this->configurationLoader->getTaskTypes()['image-recommendation'] ?? null;
 			$qualityGateConfig = $taskSet->getQualityGateConfig();
-			if ( isset( $qualityGateConfig[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount'] ) &&
+			if ( $imageRecommendation instanceof ImageRecommendationTaskType &&
+				isset( $qualityGateConfig[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount'] ) &&
 				$qualityGateConfig[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount'] >=
-				// @phan-suppress-next-line PhanUndeclaredMethod
 				$imageRecommendation->getMaxTasksPerDay() - 1 ) {
 				$warnings['geimagerecommendationdailytasksexceeded'] = true;
 			}
