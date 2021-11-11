@@ -183,12 +183,17 @@ RecommendedImageToolbarDialog.prototype.onYesButtonClicked = function () {
  */
 RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 	var rejectionReasons = ve.init.target.recommendationRejectionReasons,
-		openRejectionDialogWindowPromise = this.surface.dialogs.openWindow(
+		rejectionDialogLifecycle = this.surface.dialogs.openWindow(
 			'recommendedImageRejection', rejectionReasons );
 
 	this.logger.log( 'suggestion_reject', this.getSuggestionLogActionData() );
 
-	openRejectionDialogWindowPromise.opening.then( function () {
+	// Avoid showing an outline on the element if we cancel out of the rejection dialog.
+	this.$element.find(
+		'.mw-ge-recommendedImageToolbarDialog-buttons-no .oo-ui-buttonElement-button'
+	).blur();
+
+	rejectionDialogLifecycle.opening.then( function () {
 		this.logger.log(
 			'impression',
 			$.extend( this.getSuggestionLogActionData(), {
@@ -200,7 +205,7 @@ RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 		);
 	}.bind( this ) );
 
-	openRejectionDialogWindowPromise.closed.then( function ( data ) {
+	rejectionDialogLifecycle.closed.then( function ( data ) {
 		if ( data && data.action === 'done' ) {
 			this.setState( false, data.reasons );
 		}
