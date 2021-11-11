@@ -2,9 +2,6 @@ module.exports = ( function () {
 	'use strict';
 
 	var hasHeroImage = false,
-		TaskTypesAbFilter = require( '../../homepage/suggestededits/TaskTypesAbFilter.js' ),
-		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( '../TaskTypes.json' ) ),
-		taskTypeData = taskTypes[ 'image-recommendation' ] || {},
 		StructuredTaskOnboardingContent = require( '../StructuredTaskOnboardingContent.js' ),
 		content = new StructuredTaskOnboardingContent( 'addimage-onboarding-content' ),
 		panelData = {};
@@ -13,10 +10,15 @@ module.exports = ( function () {
 	 * Make a paragraph element
 	 *
 	 * @param {string|jQuery} text Text or element with with to make a paragraph
+	 * @param {string[]} extraClasses
 	 * @return {jQuery}
 	 */
-	function makeParagraph( text ) {
-		var $paragraph = $( '<p>' ).addClass( 'addimage-onboarding-content-paragraph' );
+	function makeParagraph( text, extraClasses ) {
+		extraClasses = extraClasses || [];
+		// The following classes are used here:
+		// * addimage-onboarding-content-paragraph
+		// * addimage-onboarding-content-paragraph--italic
+		var $paragraph = $( '<p>' ).addClass( [ 'addimage-onboarding-content-paragraph' ].concat( extraClasses ) );
 		if ( typeof text === 'string' ) {
 			$paragraph.text( text );
 		} else {
@@ -37,25 +39,11 @@ module.exports = ( function () {
 			).text() ),
 			makeParagraph( mw.message(
 				'growthexperiments-addimage-onboarding-content-intro-body-paragraph2'
-			).text() )
+			).text() ),
+			makeParagraph( mw.message(
+				'growthexperiments-addimage-onboarding-content-intro-body-paragraph3'
+			).text(), [ 'addimage-onboarding-content-paragraph--italic' ] )
 		];
-		var learnMoreLinkUrl = taskTypeData.learnMoreLink ?
-			mw.util.getUrl( taskTypeData.learnMoreLink ) :
-			null;
-		if ( learnMoreLinkUrl ) {
-			var linkText = mw.message(
-				'growthexperiments-addimage-onboarding-content-intro-learn-more-link-text'
-			).text();
-			paragraphs.push(
-				makeParagraph(
-					$( '<a>' ).text( linkText ).attr( {
-						href: learnMoreLinkUrl,
-						class: 'structuredtask-onboarding-content-link',
-						target: '_blank'
-					} )
-				)
-			);
-		}
 		return $( '<div>' ).append( paragraphs );
 	}
 
@@ -103,10 +91,6 @@ module.exports = ( function () {
 			),
 			makeParagraph( mw.message(
 				'growthexperiments-addimage-onboarding-content-decision-body-paragraph2' )
-				.text()
-			),
-			makeParagraph( mw.message(
-				'growthexperiments-addimage-onboarding-content-decision-body-paragraph3' )
 				.text()
 			)
 		] );

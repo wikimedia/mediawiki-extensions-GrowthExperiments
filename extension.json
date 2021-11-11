@@ -1090,7 +1090,7 @@
 				"growthexperiments-addimage-onboarding-content-intro-title",
 				"growthexperiments-addimage-onboarding-content-intro-body-paragraph1",
 				"growthexperiments-addimage-onboarding-content-intro-body-paragraph2",
-				"growthexperiments-addimage-onboarding-content-intro-learn-more-link-text",
+				"growthexperiments-addimage-onboarding-content-intro-body-paragraph3",
 				"growthexperiments-addimage-onboarding-content-imagedetails-title",
 				"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph1",
 				"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph2",
@@ -1098,8 +1098,7 @@
 				"growthexperiments-addimage-onboarding-content-article-body",
 				"growthexperiments-addimage-onboarding-content-decision-title",
 				"growthexperiments-addimage-onboarding-content-decision-body-paragraph1",
-				"growthexperiments-addimage-onboarding-content-decision-body-paragraph2",
-				"growthexperiments-addimage-onboarding-content-decision-body-paragraph3"
+				"growthexperiments-addimage-onboarding-content-decision-body-paragraph2"
 			],
 			"dependencies": [
 				"mediawiki.jqueryMsg",
