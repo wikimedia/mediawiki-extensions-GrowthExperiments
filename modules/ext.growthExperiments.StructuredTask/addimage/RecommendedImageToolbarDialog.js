@@ -161,11 +161,23 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 	this.showRecommendationAtIndex( 0 );
 	this.logger.log( 'impression', this.getSuggestionLogActionData() );
 	$( window ).on( 'resize',
-		OO.ui.debounce( this.updateSize.bind( this ), 250 )
+		OO.ui.debounce( this.onResize.bind( this ), 250 )
 	);
 	mw.hook( 'growthExperiments.imageSuggestions.onImageCaptionReady' ).add(
 		this.onImageCaptionReady
 	);
+};
+
+/**
+ * Resize the inspector if it's shown
+ *
+ * On some devices, the resize event is fired when the virtual keyboard appears (during caption).
+ * Since the inspector is hidden, the new height would be 0.
+ */
+RecommendedImageToolbarDialog.prototype.onResize = function () {
+	if ( this.isVisible() ) {
+		this.updateSize();
+	}
 };
 
 /**
@@ -439,7 +451,7 @@ RecommendedImageToolbarDialog.prototype.imageCaptionReadyHandler = function () {
 	articleTarget.toggleEditModeTool( true );
 	articleTarget.toggleSaveTool( true );
 	// Hide the inspector after it's animated down to prevent it from showing up when adding caption
-	this.$element.addClass( 'oo-ui-element-hidden' );
+	this.toggle( false );
 	articleTarget.logSuggestionInteraction( 'impression', 'caption_entry' );
 };
 
@@ -482,7 +494,8 @@ RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
 		articleTarget.toggleEditModeTool( true );
 		articleTarget.toggleSaveTool( false );
 		$documentNode.removeClass( 'mw-ge-recommendedImageToolbarDialog-caption' );
-		$inspector.removeClass( 'oo-ui-element-hidden' );
+		this.toggle( true );
+
 		setTimeout( function () {
 			// Image inspector is shown again.
 			$inspector.removeClass( 'animate-below' );
