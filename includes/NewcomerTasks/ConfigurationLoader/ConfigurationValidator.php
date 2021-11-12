@@ -126,6 +126,24 @@ class ConfigurationValidator {
 	}
 
 	/**
+	 * Verify that an array doesn't exceed an allowed maximum size.
+	 *
+	 * @param int $maxSize
+	 * @param array $config Configuration
+	 * @param string $taskTypeId Task type ID, for better error reporting.
+	 * @param string $field Configuration field name, for better error reporting.
+	 * @return StatusValue
+	 */
+	public function validateArrayMaxSize( int $maxSize, array $config, string $taskTypeId, string $field ) {
+		$status = StatusValue::newGood();
+		if ( count( $config ) > $maxSize ) {
+			$status->fatal( 'growthexperiments-homepage-suggestededits-config-arraymaxsize',
+				$taskTypeId, $field, Message::numParam( $maxSize ) );
+		}
+		return $status;
+	}
+
+	/**
 	 * For a given list of messages, verifies that they all exist.
 	 * @param Message[] $messages
 	 * @param string $field Field name where the missing message was defined (e.g. ID of the task).

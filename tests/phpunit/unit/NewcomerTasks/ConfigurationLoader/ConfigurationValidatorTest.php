@@ -52,6 +52,14 @@ class ConfigurationValidatorTest extends MediaWikiUnitTestCase {
 		$this->assertGood( $validator->validateFieldIsArray( 'foo', [ 'foo' => [ 'x', 'y' ] ], 'x' ) );
 	}
 
+	public function testValidateArrayMaxSize() {
+		$validator = $this->getValidator();
+		$this->assertGood( $validator->validateArrayMaxSize( 3, [ 'x' ], 'x', 'y' ) );
+		$this->assertGood( $validator->validateArrayMaxSize( 3, [ 'x', 'y', 'z' ], 'x', 'y' ) );
+		$this->assertHasError( 'growthexperiments-homepage-suggestededits-config-arraymaxsize',
+			$validator->validateArrayMaxSize( 3, [ 'w', 'x', 'y', 'z' ], 'x', 'y' ) );
+	}
+
 	/**
 	 * @return ConfigurationValidator
 	 */
