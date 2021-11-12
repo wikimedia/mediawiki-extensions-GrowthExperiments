@@ -122,6 +122,9 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 			'accepted' => $accepted,
 		] );
 		if ( $editRevId ) {
+			// This has the side effect of the log entry getting tagged with all the change tags
+			// the revision is getting tagged with. Overall, still preferable - the log entry is
+			// not published to recent changes so its tags don't matter much.
 			$logEntry->setAssociatedRevId( $editRevId );
 		}
 		$logId = $logEntry->insert();
