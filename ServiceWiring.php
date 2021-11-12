@@ -180,6 +180,7 @@ return [
 		return new ServiceImageRecommendationProvider(
 			$services->getTitleFactory(),
 			$services->getHttpRequestFactory(),
+			$services->getStatsdDataFactory(),
 			$config->get( 'GEImageRecommendationServiceUrl' ),
 			$config->get( 'GEImageRecommendationServiceHttpProxy' ),
 			'wikipedia',

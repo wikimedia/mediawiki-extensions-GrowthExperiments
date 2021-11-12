@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider
 use GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use IBufferingStatsdDataFactory;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
 use MediaWikiIntegrationTestCase;
@@ -45,29 +46,40 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		] );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$useTitle = true;
-		$provider = new ServiceImageRecommendationProvider( $titleFactory, $this->getHttpRequestFactory( [
-			'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 400, [] ],
-			'http://example.com/image-suggestions/v0/wikipedia/en/pages/11?source=ima' => [ 200, '{{{' ],
-			'http://example.com/image-suggestions/v0/wikipedia/en/pages/12?source=ima' => [ 200,
-				[ 'pages' => [] ] ],
-			'http://example.com/image-suggestions/v0/wikipedia/en/pages/13?source=ima' => [ 200,
-				[ 'pages' => [ [ 'suggestions' => [] ] ] ] ],
-			'http://example.com/image-suggestions/v0/wikipedia/en/pages/14?source=ima' => [ 200,
-				[ 'pages' => [ [ 'suggestions' => [
-					[ 'filename' => '14_1.png', 'source' => [ 'name' => 'ima', 'details' => [
-						'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
-					] ] ],
-					[ 'filename' => '14_2.png', 'source' => [ 'name' => 'ima', 'details' => [
-						'from' => 'commons', 'found_on' => '', 'dataset_id' => 'x',
-					] ] ],
-				] ] ] ] ],
-			'http://example.com/image-suggestions/v0/wikipedia/en/pages/15?source=ima' => [ 200,
-				[ 'pages' => [ [ 'suggestions' => [
-					[ 'filename' => '15.png', 'source' => [ 'name' => 'ima', 'details' => [
-						'from' => 'wikipedia', 'found_on' => 'enwiki,dewiki', 'dataset_id' => 'x',
-					] ] ],
-				] ] ] ] ],
-		] ), $url, null, $wikiProject, $wikiLanguage, $metadataProvider, null, $useTitle );
+		$provider = new ServiceImageRecommendationProvider(
+			$titleFactory,
+			$this->getHttpRequestFactory( [
+				'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 400, [] ],
+				'http://example.com/image-suggestions/v0/wikipedia/en/pages/11?source=ima' => [ 200, '{{{' ],
+				'http://example.com/image-suggestions/v0/wikipedia/en/pages/12?source=ima' => [ 200,
+					[ 'pages' => [] ] ],
+				'http://example.com/image-suggestions/v0/wikipedia/en/pages/13?source=ima' => [ 200,
+					[ 'pages' => [ [ 'suggestions' => [] ] ] ] ],
+				'http://example.com/image-suggestions/v0/wikipedia/en/pages/14?source=ima' => [ 200,
+					[ 'pages' => [ [ 'suggestions' => [
+						[ 'filename' => '14_1.png', 'source' => [ 'name' => 'ima', 'details' => [
+							'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
+						] ] ],
+						[ 'filename' => '14_2.png', 'source' => [ 'name' => 'ima', 'details' => [
+							'from' => 'commons', 'found_on' => '', 'dataset_id' => 'x',
+						] ] ],
+					] ] ] ] ],
+				'http://example.com/image-suggestions/v0/wikipedia/en/pages/15?source=ima' => [ 200,
+					[ 'pages' => [ [ 'suggestions' => [
+						[ 'filename' => '15.png', 'source' => [ 'name' => 'ima', 'details' => [
+							'from' => 'wikipedia', 'found_on' => 'enwiki,dewiki', 'dataset_id' => 'x',
+						] ] ],
+					] ] ] ] ],
+			] ),
+			$this->createMock( IBufferingStatsdDataFactory::class ),
+			$url,
+			null,
+			$wikiProject,
+			$wikiLanguage,
+			$metadataProvider,
+			null,
+			$useTitle
+		);
 
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertInstanceOf( StatusValue::class, $recommendation );
@@ -96,6 +108,59 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$this->assertSame( [ 'enwiki', 'dewiki' ], $recommendation->getImages()[0]->getProjects() );
 	}
 
+	public function testGet_instrumentation() {
+		$titleFactory = $this->getTitleFactory();
+		$url = 'http://example.com';
+		$wikiProject = 'wikipedia';
+		$wikiLanguage = 'en';
+		$metadataProvider = $this->createMock(
+			ImageRecommendationMetadataProvider::class
+		);
+		$statsDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
+		$metadataProvider->method( 'getMetadata' )->willReturn( [
+			'description' => 'description',
+			'thumbUrl' => 'thumb url',
+			'fullUrl' => 'full url',
+			'descriptionUrl' => 'description url',
+			'originalWidth' => 1024,
+			'originalHeight' => 768,
+		] );
+		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
+		$useTitle = true;
+		$provider = new ServiceImageRecommendationProvider(
+			$titleFactory,
+			$this->getHttpRequestFactory( [
+				'http://example.com/image-suggestions/v0/wikipedia/en/pages/15?source=ima' => [ 200,
+					[ 'pages' => [ [ 'suggestions' => [
+						[ 'filename' => '15.png', 'source' => [ 'name' => 'ima', 'details' => [
+							'from' => 'wikipedia', 'found_on' => 'enwiki,dewiki', 'dataset_id' => 'x',
+						] ] ],
+					] ] ] ] ],
+			] ),
+			$statsDataFactory,
+			$url,
+			null,
+			$wikiProject,
+			$wikiLanguage,
+			$metadataProvider,
+			null,
+			$useTitle
+		);
+
+		$statsDataFactory->expects( $this->exactly( 2 ) )
+			->method( 'timing' )
+			->withConsecutive(
+				[ $this->equalTo(
+					'timing.growthExperiments.imageRecommendationProvider.get'
+				) ],
+				[ $this->equalTo(
+					'timing.growthExperiments.imageRecommendationProvider.processApiResponseData'
+				) ]
+			);
+
+		$provider->get( new TitleValue( NS_MAIN, '15' ), $taskType );
+	}
+
 	public function testGet_Id() {
 		$titleFactory = $this->getTitleFactory();
 		$url = 'http://example.com';
@@ -114,10 +179,21 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		] );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$useTitle = false;
-		$provider = new ServiceImageRecommendationProvider( $titleFactory, $this->getHttpRequestFactory( [
-			'http://example.com/image-suggestions/v0/wikipedia/en/pages?source=ima&id=10' => [ 200,
-			   [ 'pages' => [] ] ],
-		] ), $url, null, $wikiProject, $wikiLanguage, $metadataProvider, null, $useTitle );
+		$provider = new ServiceImageRecommendationProvider(
+			$titleFactory,
+			$this->getHttpRequestFactory( [
+				'http://example.com/image-suggestions/v0/wikipedia/en/pages?source=ima&id=10' => [ 200,
+				   [ 'pages' => [] ] ],
+			] ),
+			$this->createMock( IBufferingStatsdDataFactory::class ),
+			$url,
+			null,
+			$wikiProject,
+			$wikiLanguage,
+			$metadataProvider,
+			null,
+			$useTitle
+		);
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertInstanceOf( StatusValue::class, $recommendation );
 	}
@@ -135,17 +211,27 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		);
 		$useTitle = true;
 		$provider = new ServiceImageRecommendationProvider(
-			$this->getTitleFactory(), $this->getHttpRequestFactory( [
-			'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 200,
-				[ 'pages' => [ [ 'suggestions' => [
-					[ 'filename' => '1.png', 'source' => [ 'name' => 'ima', 'details' => [
-						'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
-					] ] ],
-					[ 'filename' => '2.png', 'source' => [ 'name' => 'ima', 'details' => [
-						'from' => 'commons', 'found_on' => '', 'dataset_id' => 'x',
-					] ] ],
-				] ] ] ] ],
-		] ), $url, null, $wikiProject, $wikiLanguage, $metadataProvider, null, $useTitle );
+			$this->getTitleFactory(),
+			$this->getHttpRequestFactory( [
+				'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 200,
+					[ 'pages' => [ [ 'suggestions' => [
+						[ 'filename' => '1.png', 'source' => [ 'name' => 'ima', 'details' => [
+							'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
+						] ] ],
+						[ 'filename' => '2.png', 'source' => [ 'name' => 'ima', 'details' => [
+							'from' => 'commons', 'found_on' => '', 'dataset_id' => 'x',
+						] ] ],
+					] ] ] ] ],
+			] ),
+			$this->createMock( IBufferingStatsdDataFactory::class ),
+			$url,
+			null,
+			$wikiProject,
+			$wikiLanguage,
+			$metadataProvider,
+			null,
+			$useTitle
+		);
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertTrue( $recommendation instanceof StatusValue );
 	}
@@ -174,17 +260,27 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		} );
 		$useTitle = true;
 		$provider = new ServiceImageRecommendationProvider(
-			$this->getTitleFactory(), $this->getHttpRequestFactory( [
-			'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 200,
-				[ 'pages' => [ [ 'suggestions' => [
-					[ 'filename' => 'Bad.png', 'source' => [ 'name' => 'ima', 'details' => [
-						'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
-					] ] ],
-					[ 'filename' => 'Good.png', 'source' => [ 'name' => 'ima', 'details' => [
-						'from' => 'commons', 'found_on' => '', 'dataset_id' => 'x',
-					] ] ],
-				] ] ] ] ],
-		] ), $url, null, $wikiProject, $wikiLanguage, $metadataProvider, null, $useTitle );
+			$this->getTitleFactory(),
+			$this->getHttpRequestFactory( [
+				'http://example.com/image-suggestions/v0/wikipedia/en/pages/10?source=ima' => [ 200,
+					[ 'pages' => [ [ 'suggestions' => [
+						[ 'filename' => 'Bad.png', 'source' => [ 'name' => 'ima', 'details' => [
+							'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
+						] ] ],
+						[ 'filename' => 'Good.png', 'source' => [ 'name' => 'ima', 'details' => [
+							'from' => 'commons', 'found_on' => '', 'dataset_id' => 'x',
+						] ] ],
+					] ] ] ] ],
+			] ),
+			$this->createMock( IBufferingStatsdDataFactory::class ),
+			$url,
+			null,
+			$wikiProject,
+			$wikiLanguage,
+			$metadataProvider,
+			null,
+			$useTitle
+		);
 		$recommendation = $provider->get( new TitleValue( NS_MAIN, '10' ), $taskType );
 		$this->assertTrue( $recommendation instanceof ImageRecommendation );
 		$this->assertCount( 1, $recommendation->getImages() );
@@ -202,7 +298,11 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			ImageRecommendationMetadataProvider::class, [ 'getMetadata' ] );
 		$mockMetadataProvider->method( 'getMetadata' )->willReturn( [] );
 		$result = ServiceImageRecommendationProvider::processApiResponseData(
-			new TitleValue( 0, 'Foo' ), 'Foo', $data, $mockMetadataProvider );
+			new TitleValue( 0, 'Foo' ),
+			'Foo',
+			$data,
+			$mockMetadataProvider
+		);
 		if ( $expectedResult !== null ) {
 			$this->assertInstanceOf( ImageRecommendation::class, $result );
 			$this->assertSame( $expectedResult, $result->toArray() );

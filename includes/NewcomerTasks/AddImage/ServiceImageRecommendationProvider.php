@@ -5,6 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 use File;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use IBufferingStatsdDataFactory;
 use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
 use RequestContext;
@@ -25,6 +26,9 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 
 	/** @var HttpRequestFactory */
 	private $httpRequestFactory;
+
+	/** @var IBufferingStatsdDataFactory */
+	private $statsdDataFactory;
 
 	/** @var string */
 	private $url;
@@ -50,6 +54,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	/**
 	 * @param TitleFactory $titleFactory
 	 * @param HttpRequestFactory $httpRequestFactory
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 * @param string $url Image recommendation service root URL
 	 * @param string|null $proxyUrl HTTP proxy to use for $url
 	 * @param string $wikiProject Wiki project (e.g. 'wikipedia')
@@ -62,6 +67,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	public function __construct(
 		TitleFactory $titleFactory,
 		HttpRequestFactory $httpRequestFactory,
+		IBufferingStatsdDataFactory $statsdDataFactory,
 		string $url,
 		?string $proxyUrl,
 		string $wikiProject,
@@ -72,6 +78,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	) {
 		$this->titleFactory = $titleFactory;
 		$this->httpRequestFactory = $httpRequestFactory;
+		$this->statsdDataFactory = $statsdDataFactory;
 		$this->url = $url;
 		$this->proxyUrl = $proxyUrl;
 		$this->wikiProject = $wikiProject;
@@ -130,12 +137,20 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		);
 		$request->setHeader( 'Accept', 'application/json' );
 
+		$startTime = microtime( true );
 		$status = $request->execute();
+
+		$this->statsdDataFactory->timing(
+			'timing.growthExperiments.imageRecommendationProvider.get',
+			microtime( true ) - $startTime
+		);
+
 		if ( !$status->isOK() && $request->getStatus() < 400 ) {
 			return $status;
 		}
 		$response = $request->getContent();
 		$data = json_decode( $response, true );
+
 		if ( $data === null ) {
 			return StatusValue::newFatal( 'rawmessage',
 				'Invalid JSON response for page: ' . $titleTextSafe );
@@ -144,7 +159,18 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 				'API returned HTTP code ' . $request->getStatus() . ' for page '
 				. $titleTextSafe . ': ' . ( strip_tags( $data['detail'] ?? '(no reason given)' ) ) );
 		}
-		return self::processApiResponseData( $title, $titleText, $data, $this->metadataProvider );
+
+		$startTime = microtime( true );
+		$responseData = self::processApiResponseData(
+			$title, $titleText, $data, $this->metadataProvider
+		);
+
+		$this->statsdDataFactory->timing(
+			'timing.growthExperiments.imageRecommendationProvider.processApiResponseData',
+			microtime( true ) - $startTime
+		);
+
+		return $responseData;
 	}
 
 	/**
