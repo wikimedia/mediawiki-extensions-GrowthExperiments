@@ -23,7 +23,7 @@
 	"tag-mentorship_panel_question-description": "Urejanje, opravljeno z možnostjo »Vprašajte mentorja« podokna za pomoč",
 	"tag-newcomer_task": "naloga novinca",
 	"tag-newcomer_task-description": "Urejanje, ki ga je predlagal modul za urejanja na začetni strani za novince",
-	"tag-newcomer_task_add_link": "[[mw:Growth/Personalized first day/Structured tasks/Add a link|Predlagano: dodaj povezave]]",
+	"tag-newcomer_task_add_link": "[[mw:Special:MyLanguage/Growth/Personalized first day/Structured tasks/Add a link|Predlagano: dodaj povezave]]",
 	"tag-newcomer_task_add_link-description": "Urejanje »Dodaj povezavo«, ki ga je predlagal modul za urejanja na glavni strani za začetnike",
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$2|Vprašajte}} {{GENDER:$1|svojega mentorja|svojo mentorico|svojega mentorja/svojo mentorico}}",
 	"growthexperiments-homepage-enable-preference": "Da omogočite glavno stran za začetnike, pojdite na nastavitve »Glavna stran za začetnike« v [[Special:Preferences#mw-prefsection-personal-homepage|nastavitvah]].",

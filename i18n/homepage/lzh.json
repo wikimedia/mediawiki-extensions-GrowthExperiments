@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Rowingbohe"
+			"Rowingbohe",
+			"列维劳德"
 		]
 	},
+	"growthexperiments-homepage-suggestededits-tasktype-label-image-recommendation": "入建議之圖",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "易",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-hard": "難",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "畢"
