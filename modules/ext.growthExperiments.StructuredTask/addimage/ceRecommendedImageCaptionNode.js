@@ -114,7 +114,7 @@ CERecommendedImageCaptionNode.prototype.setupHelpButton = function () {
 		framed: false,
 		classes: [ 'mw-ge-recommendedImageCaption-help-button' ],
 		invisibleLabel: true,
-		label: mw.message( 'growthexperiments-addimage-inspector-help-button' ).text()
+		label: mw.message( 'growthexperiments-addimage-caption-help-button' ).text()
 	} );
 	this.helpButton.on( 'click', function () {
 		articleTarget.logSuggestionInteraction( 'view_help', 'caption_entry' );
