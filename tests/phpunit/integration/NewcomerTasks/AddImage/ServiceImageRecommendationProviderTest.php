@@ -1,6 +1,6 @@
 <?php
 
-namespace GrowthExperiments\Tests;
+namespace GrowthExperiments\Tests\Integration;
 
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendation;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationImage;
@@ -20,7 +20,7 @@ use TitleFactory;
 use TitleValue;
 
 /**
- * @covers \GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider
+ * @coversDefaultClass \GrowthExperiments\NewcomerTasks\AddImage\ServiceImageRecommendationProvider
  */
 class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCase {
 	// These should really be unit tests but must be declared as integration tests because
@@ -28,6 +28,10 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 
 	use MockTitleTrait;
 
+	/**
+	 * @covers ::get
+	 * @covers ::processApiResponseData
+	 */
 	public function testGet() {
 		$titleFactory = $this->getTitleFactory();
 		$url = 'http://example.com';
@@ -108,6 +112,9 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$this->assertSame( [ 'enwiki', 'dewiki' ], $recommendation->getImages()[0]->getProjects() );
 	}
 
+	/**
+	 * @covers ::get
+	 */
 	public function testGet_instrumentation() {
 		$titleFactory = $this->getTitleFactory();
 		$url = 'http://example.com';
@@ -161,6 +168,9 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$provider->get( new TitleValue( NS_MAIN, '15' ), $taskType );
 	}
 
+	/**
+	 * @covers ::get
+	 */
 	public function testGet_Id() {
 		$titleFactory = $this->getTitleFactory();
 		$url = 'http://example.com';
@@ -198,6 +208,9 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$this->assertInstanceOf( StatusValue::class, $recommendation );
 	}
 
+	/**
+	 * @covers ::processApiResponseData
+	 */
 	public function testMetadataError() {
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$url = 'http://example.com';
@@ -236,6 +249,9 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$this->assertTrue( $recommendation instanceof StatusValue );
 	}
 
+	/**
+	 * @covers ::processApiResponseData
+	 */
 	public function testPartialMetadataError() {
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$url = 'http://example.com';
@@ -292,6 +308,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 	 * @param array $data API response data.
 	 * @param array|null $expectedResult Expected result of ImageRecommendation::toArray, or null
 	 *   on error.
+	 * @covers ::processApiResponseData
 	 */
 	public function testProcessApiResponseData( array $data, ?array $expectedResult ) {
 		$mockMetadataProvider = $this->createNoOpMock(
