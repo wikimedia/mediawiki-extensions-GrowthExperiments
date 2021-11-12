@@ -3,8 +3,10 @@
 namespace GrowthExperiments\Config\Validation;
 
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
+use GrowthExperiments\TemplateCollectionFeature;
 use InvalidArgumentException;
 use LogicException;
+use Message;
 use StatusValue;
 
 /**
@@ -50,7 +52,8 @@ class GrowthConfigValidation implements IConfigValidator {
 				'type' => 'array<string,string>',
 			],
 			'GEInfoboxTemplates' => [
-				'type' => '?array'
+				'type' => 'array',
+				'maxSize' => TemplateCollectionFeature::MAX_TEMPLATES_IN_COLLECTION,
 			]
 		];
 	}
@@ -85,6 +88,8 @@ class GrowthConfigValidation implements IConfigValidator {
 					}
 				}
 				return true;
+			case 'array':
+				return is_array( $value );
 			case '?array':
 				return $value === null || is_array( $value );
 			case 'array<string,string>':
@@ -137,7 +142,6 @@ class GrowthConfigValidation implements IConfigValidator {
 		// so this should not throw key errors.
 		$value = $data[$fieldName];
 
-		// Check only the datatype for now
 		$expectedType = $descriptor['type'];
 		if ( !$this->validateFieldDatatype( $expectedType, $value ) ) {
 			return StatusValue::newFatal(
@@ -145,6 +149,14 @@ class GrowthConfigValidation implements IConfigValidator {
 				$fieldName,
 				$expectedType,
 				gettype( $value )
+			);
+		}
+
+		if ( isset( $descriptor['maxSize'] ) && count( $value ) > $descriptor['maxSize'] ) {
+			return StatusValue::newFatal(
+				'growthexperiments-config-validator-array-toobig',
+				$fieldName,
+				Message::numParam( $descriptor['maxSize'] )
 			);
 		}
 

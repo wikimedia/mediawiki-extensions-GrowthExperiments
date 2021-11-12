@@ -8,6 +8,7 @@
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> is expected to be <code>$2</code>, but is <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Content-model mismatch: GrowthExperiments config file must have JSON content model, $1 detected",
 	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Invalid task type handler ID: <code>$1</code> is not a valid value",
+	"growthexperiments-config-validator-array-toobig": "$1 has too many items (maximum $2 allowed)",
 	"growthexperiments-edit-config-disabled": "Community configuration is currently disabled.",
 	"growthexperiments-edit-config-title": "Edit Growth configuration",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Last updated by [[User:$1|$1]] $2 ([$4 diff]).",
