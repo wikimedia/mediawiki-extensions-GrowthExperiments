@@ -23,7 +23,7 @@ QUnit.module( 'ext.growthExperiments.HelpPanelProcessDialog.js', QUnit.newMwEnvi
 		HelpPanelProcessDialog = require( '../../../modules/help/ext.growthExperiments.HelpPanelProcessDialog.js' );
 		TaskTypesAbFilter = require( '../../../modules/homepage/suggestededits/TaskTypesAbFilter.js' );
 		sandbox = sinon.sandbox.create();
-		sandbox.stub( TaskTypesAbFilter, 'filterTaskTypes' ).returns( {} );
+		sandbox.stub( TaskTypesAbFilter, 'getTaskTypes' ).returns( {} );
 	},
 
 	afterEach: function () {

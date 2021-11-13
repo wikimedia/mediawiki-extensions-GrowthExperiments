@@ -2,8 +2,7 @@
 	var StartEditingDialog = require( './ext.growthExperiments.Homepage.StartEditingDialog.js' ),
 		Logger = require( 'ext.growthExperiments.Homepage.Logger' ),
 		TaskTypesAbFilter = require( './suggestededits/TaskTypesAbFilter.js' ),
-		defaultTaskTypes = TaskTypesAbFilter.filterDefaultTaskTypes(
-			require( './suggestededits/DefaultTaskTypes.json' ) ),
+		defaultTaskTypes = TaskTypesAbFilter.getDefaultTaskTypes(),
 		logger = new Logger(
 			mw.config.get( 'wgGEHomepageLoggingEnabled' ),
 			mw.config.get( 'wgGEHomepagePageviewToken' )

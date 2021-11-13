@@ -149,7 +149,7 @@ TaskTypeSelectionWidget.prototype.makeCheckboxesForDifficulty = function (
 ) {
 	var taskType,
 		TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
-		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),
+		taskTypes = TaskTypesAbFilter.getTaskTypes(),
 		checkboxes = [];
 	for ( taskType in taskTypes ) {
 		if ( taskTypes[ taskType ].difficulty === difficulty ) {

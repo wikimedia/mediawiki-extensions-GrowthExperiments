@@ -8,9 +8,8 @@
 		HelpPanelLogger = require( './ext.growthExperiments.HelpPanelLogger.js' ),
 		NewcomerTaskLogger = require( '../homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js' ),
 		TaskTypesAbFilter = require( '../homepage/suggestededits/TaskTypesAbFilter.js' ),
-		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( '../homepage/suggestededits/TaskTypes.json' ) ),
-		defaultTaskTypes = TaskTypesAbFilter.filterDefaultTaskTypes(
-			require( '../homepage/suggestededits/DefaultTaskTypes.json' ) ),
+		taskTypes = TaskTypesAbFilter.getTaskTypes(),
+		defaultTaskTypes = TaskTypesAbFilter.getDefaultTaskTypes(),
 		suggestedEditsConfig = require( '../homepage/suggestededits/config.json' ),
 		aqsConfig = require( '../homepage/suggestededits/AQSConfig.json' ),
 		helpConfig = require( './data.json' ),

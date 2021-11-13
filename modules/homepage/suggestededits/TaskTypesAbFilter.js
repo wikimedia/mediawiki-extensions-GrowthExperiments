@@ -3,8 +3,16 @@
  * This file is shared between multiple modules that handle task types. Dependencies:
  * - ext.growthExperiments.Util.js
  * - HomepageHooks::getSuggestedEditsConfigJson() as ./config.json
+ * - HomepageHooks::getTaskTypesJson() as ./TaskTypes.json
+ * - HomepageHooks::getDefaultTaskTypesJson() as ./DefaultTaskTypes.json
  */
 ( function () {
+	var OLD_LINK_TASK_TYPE = 'links',
+		LINK_RECOMMENDATION_TASK_TYPE = 'link-recommendation',
+		IMAGE_RECOMMENDATION_TASK_TYPE = 'image-recommendation',
+		LINK_RECOMMENDATION_VARIANT = 'linkrecommendation',
+		IMAGE_RECOMMENDATION_VARIANT = 'imagerecommendation';
+
 	/**
 	 * Check whether link recommendations are enabled for the current user.
 	 *
@@ -16,7 +24,7 @@
 		var config = require( './config.json' ),
 			Utils = require( '../../utils/ext.growthExperiments.Utils.js' );
 		return config.GELinkRecommendationsEnabled &&
-			Utils.isUserInVariant( [ 'linkrecommendation' ] );
+			Utils.isUserInVariant( [ LINK_RECOMMENDATION_VARIANT ] );
 	}
 
 	/**
@@ -30,16 +38,17 @@
 		var config = require( './config.json' ),
 			Utils = require( '../../utils/ext.growthExperiments.Utils.js' );
 		return config.GEImageRecommendationsEnabled &&
-			Utils.isUserInVariant( [ 'imagerecommendation' ] );
+			Utils.isUserInVariant( [ IMAGE_RECOMMENDATION_VARIANT ] );
 	}
 
 	/**
-	 * Remove task types the current user should not see.
+	 * Get all task types, removing the ones the current user should not see.
 	 *
-	 * @param {Object} taskTypes Task type ID => task data, typically from loading TaskTypes.json
 	 * @return {Object} The same task type data, without the task types the user shouldn't see.
 	 */
-	function filterTaskTypes( taskTypes ) {
+	function getTaskTypes() {
+		var taskTypes = require( './TaskTypes.json' );
+
 		// Abort if task types couldn't be loaded.
 		if ( !( taskTypes instanceof Object ) || '_error' in taskTypes ) {
 			return taskTypes;
@@ -47,12 +56,12 @@
 
 		taskTypes = $.extend( {}, taskTypes );
 		if ( areLinkRecommendationsEnabled() ) {
-			delete taskTypes.links;
+			delete taskTypes[ OLD_LINK_TASK_TYPE ];
 		} else {
-			delete taskTypes[ 'link-recommendation' ];
+			delete taskTypes[ LINK_RECOMMENDATION_TASK_TYPE ];
 		}
 		if ( !areImageRecommendationsEnabled() ) {
-			delete taskTypes[ 'image-recommendation' ];
+			delete taskTypes[ IMAGE_RECOMMENDATION_TASK_TYPE ];
 		}
 		return taskTypes;
 	}
@@ -68,11 +77,11 @@
 		var linkRecommendationsEnabled = areLinkRecommendationsEnabled(),
 			imageRecommendationsEnabled = areImageRecommendationsEnabled();
 		taskTypes = taskTypes.map( function ( taskType ) {
-			if ( linkRecommendationsEnabled && taskType === 'links' ) {
-				return 'link-recommendation';
-			} else if ( !linkRecommendationsEnabled && taskType === 'link-recommendation' ) {
-				return 'links';
-			} else if ( !imageRecommendationsEnabled && taskType === 'image-recommendation' ) {
+			if ( linkRecommendationsEnabled && taskType === OLD_LINK_TASK_TYPE ) {
+				return LINK_RECOMMENDATION_TASK_TYPE;
+			} else if ( !linkRecommendationsEnabled && taskType === LINK_RECOMMENDATION_TASK_TYPE ) {
+				return OLD_LINK_TASK_TYPE;
+			} else if ( !imageRecommendationsEnabled && taskType === IMAGE_RECOMMENDATION_TASK_TYPE ) {
 				return null;
 			} else {
 				return taskType;
@@ -88,23 +97,23 @@
 	/**
 	 * Get the default task types for the current user, overriding the global default as needed.
 	 *
-	 * @param {string[]} defaultDefaultTaskTypes "Normal" default task types from
-	 *   DefaultTaskTypes.json.
 	 * @return {string[]}
 	 */
-	function filterDefaultTaskTypes( defaultDefaultTaskTypes ) {
+	function getDefaultTaskTypes() {
+		var defaultDefaultTaskTypes = require( './DefaultTaskTypes.json' );
+
 		if ( areLinkRecommendationsEnabled() ) {
-			return [ 'link-recommendation' ];
+			return [ LINK_RECOMMENDATION_TASK_TYPE ];
 		} else if ( areImageRecommendationsEnabled() ) {
-			return [ 'image-recommendation' ];
+			return [ IMAGE_RECOMMENDATION_TASK_TYPE ];
 		} else {
 			return defaultDefaultTaskTypes;
 		}
 	}
 
 	module.exports = {
-		filterTaskTypes: filterTaskTypes,
+		getTaskTypes: getTaskTypes,
 		convertTaskTypes: convertTaskTypes,
-		filterDefaultTaskTypes: filterDefaultTaskTypes
+		getDefaultTaskTypes: getDefaultTaskTypes
 	};
 }() );

@@ -1,7 +1,7 @@
 ( function () {
 	'use strict';
 	var TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
-		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),
+		taskTypes = TaskTypesAbFilter.getTaskTypes(),
 		topicData = require( '../Topics.json' );
 
 	/**
