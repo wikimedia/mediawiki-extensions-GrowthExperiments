@@ -233,7 +233,7 @@
 			this.active = true;
 			this.clickId = url.query.geclickid;
 			this.title = this.getCurrentTitle();
-			this.taskType = url.query.getasktype || null;
+			this.taskType = mw.config.get( 'wgGESuggestedEditTaskType' );
 			this.taskData = mw.config.get( 'wgGESuggestedEditData' );
 			this.qualityGateConfig = mw.config.get( 'wgGESuggestedEditQualityGateConfig' ) || {};
 			this.taskState = states.STARTED;

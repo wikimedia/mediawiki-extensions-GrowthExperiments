@@ -88,6 +88,16 @@ class PageConfigurationLoaderTest extends MediaWikiUnitTestCase {
 		$this->assertArrayEquals( [], array_map( static function ( TaskType $tt ) {
 			return $tt->getId();
 		}, $configurationLoader->loadTaskTypes() ) );
+
+		$disabledConfig = $this->getTaskConfig();
+		$disabledConfig['copyedit']['disabled'] = true;
+		$configurationLoader = $this->getNewcomerTasksConfigurationLoader( $disabledConfig, [],
+			PageConfigurationLoader::CONFIGURATION_TYPE_ORES );
+		$this->assertArrayEquals( [ 'references', 'update' ],
+			array_map( static function ( TaskType $tt ) {
+				return $tt->getId();
+			}, $configurationLoader->loadTaskTypes() )
+		);
 	}
 
 	/**

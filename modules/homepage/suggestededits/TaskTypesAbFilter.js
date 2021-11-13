@@ -14,6 +14,18 @@
 		IMAGE_RECOMMENDATION_VARIANT = 'imagerecommendation';
 
 	/**
+	 * Check whether the old (non-structured) link task type is available.
+	 * Note that this doesn't check whether the user should see it, just that it exists
+	 * on the wiki.
+	 *
+	 * @return {boolean}
+	 */
+	function doesOldLinkTaskTypeExist() {
+		var taskTypes = require( './TaskTypes.json' );
+		return ( OLD_LINK_TASK_TYPE in taskTypes );
+	}
+
+	/**
 	 * Check whether link recommendations are enabled for the current user.
 	 *
 	 * This is the equivalent of NewcomerTasksUserOptionsLookup::areLinkRecommendationsEnabled().
@@ -22,8 +34,10 @@
 	 */
 	function areLinkRecommendationsEnabled() {
 		var config = require( './config.json' ),
+			taskTypes = require( './TaskTypes.json' ),
 			Utils = require( '../../utils/ext.growthExperiments.Utils.js' );
 		return config.GELinkRecommendationsEnabled &&
+			LINK_RECOMMENDATION_TASK_TYPE in taskTypes &&
 			Utils.isUserInVariant( [ LINK_RECOMMENDATION_VARIANT ] );
 	}
 
@@ -36,8 +50,10 @@
 	 */
 	function areImageRecommendationsEnabled() {
 		var config = require( './config.json' ),
+			taskTypes = require( './TaskTypes.json' ),
 			Utils = require( '../../utils/ext.growthExperiments.Utils.js' );
 		return config.GEImageRecommendationsEnabled &&
+			IMAGE_RECOMMENDATION_TASK_TYPE in taskTypes &&
 			Utils.isUserInVariant( [ IMAGE_RECOMMENDATION_VARIANT ] );
 	}
 
@@ -80,7 +96,7 @@
 			if ( linkRecommendationsEnabled && taskType === OLD_LINK_TASK_TYPE ) {
 				return LINK_RECOMMENDATION_TASK_TYPE;
 			} else if ( !linkRecommendationsEnabled && taskType === LINK_RECOMMENDATION_TASK_TYPE ) {
-				return OLD_LINK_TASK_TYPE;
+				return doesOldLinkTaskTypeExist() ? OLD_LINK_TASK_TYPE : null;
 			} else if ( !imageRecommendationsEnabled && taskType === IMAGE_RECOMMENDATION_TASK_TYPE ) {
 				return null;
 			} else {

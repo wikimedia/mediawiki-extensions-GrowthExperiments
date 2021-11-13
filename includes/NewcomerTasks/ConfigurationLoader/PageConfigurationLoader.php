@@ -198,8 +198,12 @@ class PageConfigurationLoader implements ConfigurationLoader {
 
 			if ( $status->isGood() ) {
 				$taskType = $taskTypeHandler->createTaskType( $taskTypeId, $taskTypeData );
-				$taskTypes[] = $taskType;
 				$status->merge( $taskTypeHandler->validateTaskTypeObject( $taskType ) );
+				// Leave the disabled check to the end; it seems nicer to validate entries
+				// even when they are disabled.
+				if ( empty( $taskTypeData['disabled'] ) ) {
+					$taskTypes[] = $taskType;
+				}
 			}
 		}
 		return $status->isGood() ? $taskTypes : $status;
