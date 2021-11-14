@@ -429,7 +429,7 @@
 	"growthexperiments-addimage-viewer-close-button": "Close",
 	"growthexperiments-addimage-onboarding-content-intro-title": "Images help people learn, but many articles don't have one.",
 	"growthexperiments-addimage-onboarding-content-intro-body-paragraph1": "{{GENDER:|You}} will decide whether a suggested image should be put in a Wikipedia article.",
-	"growthexperiments-addimage-onboarding-content-intro-body-paragraph2": "Suggestions are machine-generated, and {{GENDER:|you'll}} use {{GENDER:|your}} judgment to decide whether to accept or reject it.",
+	"growthexperiments-addimage-onboarding-content-intro-body-paragraph2": "Suggestions are machine-generated, and {{GENDER:|you'll use your}} judgment to decide whether to accept or reject them.",
 	"growthexperiments-addimage-onboarding-content-intro-body-paragraph3": "Images come from Wikimedia Commons, a collection of freely licensed images used by Wikipedia.",
 	"growthexperiments-addimage-onboarding-content-imagedetails-title": "Look at the suggested image",
 	"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph1": "Use the filename, description, and the reason it was suggested to help {{GENDER:|you}} decide if it should be placed in the article.",
