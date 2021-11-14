@@ -64,6 +64,7 @@ class TipNodeRenderer {
 		switch ( $node->getType() ) {
 			case 'header':
 			case 'main':
+			case 'main-multiple':
 			case 'text':
 				return $this->mainAndTextRender( $node, $skin );
 			case 'graphic':
@@ -77,13 +78,17 @@ class TipNodeRenderer {
 
 	/**
 	 * @param string $tipTypeId
+	 * @param array $textVariants
 	 * @return array|string[]
 	 */
-	private function getBaseCssClasses( string $tipTypeId ): array {
-		return [
+	private function getBaseCssClasses( string $tipTypeId, array $textVariants = [] ): array {
+		$variants = array_map( static function ( $variant ) {
+			return 'growthexperiments-quickstart-tips-tip--' . $variant;
+		}, $textVariants );
+		return array_merge( [
 			'growthexperiments-quickstart-tips-tip',
 			'growthexperiments-quickstart-tips-tip-' . $tipTypeId
-		];
+		], $variants );
 	}
 
 	/**
@@ -92,8 +97,15 @@ class TipNodeRenderer {
 	 * @return string
 	 */
 	private function mainAndTextRender( TipNode $node, string $skinName ): string {
+		$tipTextVariants = array_values( array_map( static function ( $item ) {
+			if ( $item['type'] == TipTree::TIP_DATA_TYPE_TEXT_VARIANT ) {
+				return $item['data'];
+			}
+			return null;
+		},  $node->getData() ) );
+
 		return Html::rawElement( 'div', [
-			'class' => $this->getBaseCssClasses( $node->getType() )
+			'class' => $this->getBaseCssClasses( $node->getType(), $tipTextVariants )
 		], $this->messageLocalizer->msg(
 			$this->getMessageKeyWithVariantFallback( $node ), $this->getMessageParameters( $node, $skinName )
 		)->parse() );
@@ -206,6 +218,8 @@ class TipNodeRenderer {
 					return new IconWidget( $iconConfig );
 				case TipTree::TIP_DATA_TYPE_TITLE:
 					return $nodeConfig['data']['title'];
+				case TipTree::TIP_DATA_TYPE_TEXT_VARIANT:
+					return null;
 				default:
 					throw new LogicException( $nodeConfig['type'] . ' is not supported' );
 			}

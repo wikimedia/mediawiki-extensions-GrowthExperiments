@@ -112,12 +112,31 @@ class TipLoader {
 	private function getTipNodesForStep(
 		string $stepName, string $skinName, string $editor, string $taskTypeId, TipTree $tipSteps
 	): array {
-		return array_filter( array_map( function ( $tipTypeId ) use (
+		$nodesPerTip = array_filter( array_map( function ( $tipTypeId ) use (
 			$tipSteps, $stepName, $editor, $taskTypeId, $skinName
 		) {
+			$messageKey = null;
 			$steps = $tipSteps->getTree();
 			if ( !isset( $steps[$stepName][$tipTypeId] ) ) {
 				return null;
+			}
+			if ( $tipTypeId === "main-multiple" ) {
+				$nodes = [];
+				$i = 1;
+				while ( $messageKey !== "" && $i <= TipTree::TIP_TYPE_MAIN_MULTIPLE_MAX_NODES ) {
+					$messageKey = $this->getMessageKeyWithFallback(
+						$skinName,
+						$editor,
+						$taskTypeId,
+						$tipTypeId . "-" . $i,
+						$stepName
+					);
+					if ( $messageKey ) {
+						$nodes[] = new TipNode( $tipTypeId, $messageKey, $steps[$stepName][$tipTypeId] ?? [] );
+					}
+					$i++;
+				}
+				return $nodes;
 			}
 			$messageKey = $this->getMessageKeyWithFallback(
 				$skinName,
@@ -129,8 +148,10 @@ class TipLoader {
 			if ( !$messageKey ) {
 				return null;
 			}
-			return new TipNode( $tipTypeId, $messageKey, $steps[$stepName][$tipTypeId] ?? [] );
+			return [ new TipNode( $tipTypeId, $messageKey, $steps[$stepName][$tipTypeId] ?? [] ) ];
 		}, $tipSteps->getTipTypes() ) );
+
+		return array_merge( [], ...array_values( $nodesPerTip ) );
 	}
 
 	/**

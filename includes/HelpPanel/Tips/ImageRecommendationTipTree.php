@@ -8,14 +8,30 @@ class ImageRecommendationTipTree extends TipTree {
 
 	/** @inheritDoc */
 	public function getTree(): array {
-		// TODO: This is all placeholder material; update in a later patch.
-		$steps = [
-			'onboarding' => [
+		return [
+			'value' => [
+				'header' => [],
+				'main-multiple' => [],
+				'text' => [
+					[
+						'type' => self::TIP_DATA_TYPE_TEXT_VARIANT,
+						'data' => 'italic',
+					]
+				]
+			],
+			'step1' => [
+				'header' => [],
+				'main-multiple' => []
+			],
+			'step2' => [
 				'header' => [],
 				'main' => []
+			],
+			'step3' => [
+				'header' => [],
+				'main-multiple' => []
 			]
 		];
-		return $this->maybeAddLearnMoreLinkTipNode( $steps, 'onboarding' );
 	}
 
 	/** @inheritDoc */
