@@ -265,20 +265,23 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			$revision = $this->revisionLookup->getRevisionByTitle( $configTitle );
 			if ( $revision !== null ) {
 				$lastRevisionUser = $revision->getUser();
+				$diffLink = $configTitle->getFullURL( [ 'oldid' => $revision->getId(), 'diff' => 'prev' ] );
 				if ( $lastRevisionUser !== null ) {
 					$form->addPreText( $this->msg(
 						'growthexperiments-edit-config-last-edit',
 						$lastRevisionUser,
 						MWTimestamp::getInstance( $revision->getTimestamp() )
 							->getRelativeTimestamp(),
-						$configTitle->getPrefixedText()
+						$configTitle->getPrefixedText(),
+						$diffLink
 					)->parseAsBlock() );
 				} else {
 					$form->addPreText( $this->msg(
 						'growthexperiments-edit-config-last-edit-unknown-user',
 						MWTimestamp::getInstance( $revision->getTimestamp() )
 							->getRelativeTimestamp(),
-						$configTitle->getPrefixedText()
+						$configTitle->getPrefixedText(),
+						$diffLink
 					)->parseAsBlock() );
 				}
 			}
