@@ -85,7 +85,9 @@ AddImageSaveDialog.prototype.updateSummaryBody = function () {
 AddImageSaveDialog.prototype.getImageSummary = function ( fileName, accepted ) {
 	var $imageInfo = $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-imageInfo' ).append( [
 		new OO.ui.IconWidget( { icon: 'image' } ).$element,
-		$( '<span>' ).text( fileName )
+		$( '<span>' )
+			.addClass( 'mw-ge-addImageSaveDialog-imageInfo-filename' )
+			.text( fileName )
 	] );
 	return $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-imageSummary' ).append( [
 		$imageInfo,
