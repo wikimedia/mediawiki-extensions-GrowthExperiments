@@ -30,9 +30,6 @@ class VariantHooks implements
 	/** Default A/B testing variant (control group). */
 	public const VARIANT_CONTROL = 'control';
 
-	/** A/B testing variant with link recommendations enabled. */
-	public const VARIANT_LINK_RECOMMENDATION_ENABLED = 'linkrecommendation';
-
 	/** A/B testing variant with image recommendations enabled. */
 	public const VARIANT_IMAGE_RECOMMENDATION_ENABLED = 'imagerecommendation';
 
@@ -48,8 +45,9 @@ class VariantHooks implements
 		//     smaller start module
 		// 'D' doesn't exist anymore; was not pre-initiated, onboarding embedded in suggested
 		//     edits module, otherwise like C
+		// 'linkrecommendation' Doesn't exist anymore. Opted users into the link-recommendation task type
+		//     experiment; this is now default behavior for the control group.
 		self::VARIANT_CONTROL,
-		self::VARIANT_LINK_RECOMMENDATION_ENABLED,
 		self::VARIANT_IMAGE_RECOMMENDATION_ENABLED,
 	];
 

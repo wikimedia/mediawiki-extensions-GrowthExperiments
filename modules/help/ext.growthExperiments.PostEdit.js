@@ -50,9 +50,7 @@
 			imageRecommendationQualityGates = suggestedEditSession.qualityGateConfig[ 'image-recommendation' ] || {},
 			imageRecommendationDailyTasksExceeded =
 				imageRecommendationQualityGates.dailyLimit || false;
-		if ( isLinkRecommendationTask ) {
-			taskTypesToFetch = [ 'link-recommendation' ];
-		} else if ( isImageRecommendationTask ) {
+		if ( isImageRecommendationTask ) {
 			taskTypesToFetch = [ 'image-recommendation' ];
 		} else {
 			taskTypesToFetch = preferences.taskTypes;

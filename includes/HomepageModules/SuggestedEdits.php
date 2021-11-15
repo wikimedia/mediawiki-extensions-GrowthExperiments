@@ -64,10 +64,12 @@ class SuggestedEdits extends BaseModule {
 	/** User preference for opting into guidance, when $wgGENewcomerTasksGuidanceRequiresOptIn is true. */
 	public const GUIDANCE_ENABLED_PREF = 'growthexperiments-guidance-enabled';
 	/**
-	 * Default value for TASKTYPES_PREF. While link recommendations are being A/B tested (T278123),
-	 * these might be overridden, see NewcomerTasksUserOptionsLookup::getTaskTypeFilter().
+	 * Default value for TASKTYPES_PREF.
+	 *
+	 * Depending on whether link recommendations are available for the wiki, either 'links' or 'link-recommendation'
+	 * will be shown, see NewcomerTasksUserOptionsLookup::getTaskTypeFilter().
 	 */
-	public const DEFAULT_TASK_TYPES = [ 'copyedit', 'links' ];
+	public const DEFAULT_TASK_TYPES = [ 'copyedit', 'links', 'link-recommendation' ];
 
 	/**
 	 * Used to keep track of the state of user interactions with suggested edits per type per skin.

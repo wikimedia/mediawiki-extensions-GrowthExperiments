@@ -49,7 +49,7 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 			->willReturnCallback( static function ( UserIdentity $user, string $optionName ) {
 				return [
 					1 => VariantHooks::VARIANT_CONTROL,
-					2 => VariantHooks::VARIANT_LINK_RECOMMENDATION_ENABLED,
+					2 => VariantHooks::VARIANT_IMAGE_RECOMMENDATION_ENABLED
 				][$user->getId()];
 			} );
 		$experimentUserManager = $this->getExperimentUserManager(
@@ -62,7 +62,7 @@ class ExperimentUserManagerTest extends MediaWikiUnitTestCase {
 
 		$this->assertEquals( VariantHooks::VARIANT_CONTROL,
 			$experimentUserManager->getVariant( $user1 ) );
-		$this->assertEquals( VariantHooks::VARIANT_LINK_RECOMMENDATION_ENABLED,
+		$this->assertEquals( VariantHooks::VARIANT_IMAGE_RECOMMENDATION_ENABLED,
 			$experimentUserManager->getVariant( $user2 ) );
 	}
 
