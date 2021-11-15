@@ -226,7 +226,9 @@ class Mentorship extends BaseModule {
 	 * @inheritDoc
 	 */
 	protected function canRender() {
-		return $this->mentorManager->isMentorshipEnabledForUser( $this->getUser() ) &&
+		return $this->mentorManager->getMentorshipStateForUser(
+			$this->getUser()
+		) === MentorManager::MENTORSHIP_ENABLED &&
 			$this->mentorManager->getEffectiveMentorForUserSafe( $this->getUser() ) !== null;
 	}
 

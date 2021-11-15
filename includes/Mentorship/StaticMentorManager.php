@@ -110,8 +110,8 @@ class StaticMentorManager extends MentorManager {
 	}
 
 	/** @inheritDoc */
-	public function isMentorshipEnabledForUser( UserIdentity $user ): bool {
-		return true;
+	public function getMentorshipStateForUser( UserIdentity $user ): int {
+		return MentorManager::MENTORSHIP_ENABLED;
 	}
 
 	/** @inheritDoc */

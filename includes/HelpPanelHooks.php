@@ -7,6 +7,7 @@ use GrowthExperiments\Config\GrowthConfigLoaderStaticTrait;
 use GrowthExperiments\HelpPanel\QuestionPoster\HelpdeskQuestionPoster;
 use GrowthExperiments\HomepageModules\Mentorship;
 use GrowthExperiments\HomepageModules\SuggestedEdits;
+use GrowthExperiments\Mentorship\MentorManager;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\ChangeTags\Hook\ChangeTagsListActiveHook;
 use MediaWiki\ChangeTags\Hook\ListDefinedTagsHook;
@@ -150,7 +151,9 @@ class HelpPanelHooks implements
 				'wgGEHelpPanelAskMentor' =>
 					$wikiConfig->get( 'GEMentorshipEnabled' ) &&
 					$wikiConfig->get( 'GEHelpPanelAskMentor' ) &&
-					$mentorManager->isMentorshipEnabledForUser( $out->getUser() ) &&
+					$mentorManager->getMentorshipStateForUser(
+						$out->getUser()
+					) === MentorManager::MENTORSHIP_ENABLED &&
 					$mentorManager->getEffectiveMentorForUserSafe( $out->getUser() ) !== null,
 			] + HelpPanel::getUserEmailConfigVars( $out->getUser() ) );
 

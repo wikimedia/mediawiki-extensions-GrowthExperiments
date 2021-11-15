@@ -552,7 +552,21 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	/**
 	 * @inheritDoc
 	 */
-	public function isMentorshipEnabledForUser( UserIdentity $user ): bool {
-		return $this->userOptionsLookup->getBoolOption( $user, self::MENTORSHIP_ENABLED_PREF );
+	public function getMentorshipStateForUser( UserIdentity $user ): int {
+		$state = $this->userOptionsLookup->getIntOption( $user, self::MENTORSHIP_ENABLED_PREF );
+		if ( !in_array( $state, self::MENTORSHIP_STATES ) ) {
+			// default to MENTORSHIP_DISABLED and log an error
+			$this->logger->error(
+				'User {user} has invalid value of {property} user property',
+				[
+					'user' => $user->getName(),
+					'property' => self::MENTORSHIP_ENABLED_PREF,
+					'impact' => 'defaulting to MENTORSHIP_DISABLED'
+				]
+			);
+			return self::MENTORSHIP_DISABLED;
+		}
+
+		return $state;
 	}
 }

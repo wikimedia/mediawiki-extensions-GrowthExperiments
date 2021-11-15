@@ -8,6 +8,7 @@ use EmptyBagOStuff;
 use Exception;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
+use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
@@ -274,23 +275,68 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
-	 * @covers ::isMentorshipEnabledForUser
+	 * @covers ::getMentorshipStateForUser
 	 */
-	public function testIsMentorshipEnabled() {
+	public function testGetMentorshipStateForUser() {
 		$optionManager = $this->getServiceContainer()->getUserOptionsManager();
 
 		$enabledUser = $this->getMutableTestUser()->getUser();
-		$disabledUser = $this->getMutableTestUser()->getUser();
-		$defaultUser = $this->getMutableTestUser()->getUser();
-		$optionManager->setOption( $enabledUser, MentorPageMentorManager::MENTORSHIP_ENABLED_PREF, 1 );
-		$enabledUser->saveSettings();
-		$optionManager->setOption( $disabledUser, MentorPageMentorManager::MENTORSHIP_ENABLED_PREF, 0 );
-		$disabledUser->saveSettings();
+		$optionManager->setOption(
+			$enabledUser,
+			MentorPageMentorManager::MENTORSHIP_ENABLED_PREF,
+			1
+		);
+		$optionManager->saveOptions( $enabledUser );
 
-		$manager = $this->getMentorManager();
-		$this->assertTrue( $manager->isMentorshipEnabledForUser( $enabledUser ) );
-		$this->assertFalse( $manager->isMentorshipEnabledForUser( $disabledUser ) );
-		$this->assertTrue( $manager->isMentorshipEnabledForUser( $defaultUser ) );
+		$disabledUser = $this->getMutableTestUser()->getUser();
+		$optionManager->setOption(
+			$disabledUser,
+			MentorPageMentorManager::MENTORSHIP_ENABLED_PREF,
+			0
+		);
+		$optionManager->saveOptions( $disabledUser );
+
+		$optedOutUser = $this->getMutableTestUser()->getUser();
+		$optionManager->setOption(
+			$optedOutUser,
+			MentorPageMentorManager::MENTORSHIP_ENABLED_PREF,
+			2
+		);
+		$optionManager->saveOptions( $optedOutUser );
+
+		$mentorManager = $this->getMentorManager();
+		$this->assertEquals(
+			MentorManager::MENTORSHIP_ENABLED,
+			$mentorManager->getMentorshipStateForUser( $enabledUser )
+		);
+		$this->assertEquals(
+			MentorManager::MENTORSHIP_DISABLED,
+			$mentorManager->getMentorshipStateForUser( $disabledUser )
+		);
+		$this->assertEquals(
+			MentorManager::MENTORSHIP_OPTED_OUT,
+			$mentorManager->getMentorshipStateForUser( $optedOutUser )
+		);
+	}
+
+	/**
+	 * @covers ::getMentorshipStateForUser
+	 */
+	public function testGetMentorshipStateForUserBroken() {
+		$optionManager = $this->getServiceContainer()->getUserOptionsManager();
+		$brokenUser = $this->getMutableTestUser()->getUser();
+
+		$optionManager->setOption(
+			$brokenUser,
+			MentorPageMentorManager::MENTORSHIP_ENABLED_PREF,
+			123
+		);
+		$optionManager->saveOptions( $brokenUser );
+
+		$this->assertEquals(
+			MentorManager::MENTORSHIP_DISABLED,
+			$this->getMentorManager()->getMentorshipStateForUser( $brokenUser )
+		);
 	}
 
 	/**
