@@ -2,7 +2,6 @@
 
 namespace GrowthExperiments\Tests;
 
-use CirrusSearch\Wikimedia\WeightedTagsHooks;
 use ContentHandler;
 use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendation;
@@ -31,6 +30,8 @@ use WikiPage;
  * @coversDefaultClass \GrowthExperiments\HomepageHooks
  */
 class HomepageHooksTest extends MediaWikiIntegrationTestCase {
+
+	use MockCirrusClassesTrait;
 
 	/**
 	 * @covers ::getTaskTypesJson
@@ -87,12 +88,6 @@ class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 		bool $expectPrimaryRead,
 		bool $expectDeleted
 	) {
-		// Terrible hack to get around CirrusSearch not being installed in CI
-		if ( !class_exists( WeightedTagsHooks::class ) ) {
-			require_once __DIR__ . '/../../../tests/phpunit/helpers/WeightedTagsHooks.php';
-			require_once __DIR__ . '/../../../tests/phpunit/helpers/CirrusIndexField.php';
-		}
-
 		// hack - phpunit refuses to proxy calls if the constructor is disabled, and the constructor
 		// has way too many parameters
 		$homepageHooks = new class extends HomepageHooks {
