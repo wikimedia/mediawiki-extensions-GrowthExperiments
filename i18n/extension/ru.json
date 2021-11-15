@@ -6,7 +6,8 @@
 			"Kareyac",
 			"Kylaix",
 			"Nastua Buldakova",
-			"Vlad5250"
+			"Vlad5250",
+			"Умар"
 		]
 	},
 	"growthexperiments-desc": "Данное расширение является результатом исследований Команды «Роста».",
@@ -81,5 +82,5 @@
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Статьи, содержащие определенные здесь шаблоны, а не показываться пользователям как задача для этого типа задач.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Статьи, содержащие определенные здесь категории, а не показываться участникам как задача для этого типа задач.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Шаблоны-карточки",
-	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Эти шаблоны нужны для функции задания для новичков из [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|предложений изображений]]. Статьи, содержащие эти шаблоны, не будут перечислены в задании с предложениеv изображений."
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Эти шаблоны нужны для функции задания для новичков из [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|предложений изображений]]. Статьи, содержащие эти шаблоны, не будут перечислены в задании с предложением изображений."
 }

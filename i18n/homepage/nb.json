@@ -398,7 +398,7 @@
 	"growthexperiments-addimage-inspector-show-button": "Vis bildeforslag",
 	"growthexperiments-addimage-inspector-help-button": "Få hjelp med redigering",
 	"growthexperiments-addimage-inspector-details-button": "Vis detaljer",
-	"growthexperiments-addimage-rejectiondialog-header": "Hvorfor er ikke dette bildet riktig for artikkelen?",
+	"growthexperiments-addimage-rejectiondialog-header": "Hvorfor ikke?",
 	"growthexperiments-addimage-rejectiondialog-subheader": "Svarene {{GENDER:|dine}} vil forbedre framtidige forslag.",
 	"growthexperiments-addimage-rejectiondialog-action-done": "Ferdig",
 	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Bildet er ikke relevant",
@@ -406,7 +406,7 @@
 	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Bildet er upassende",
 	"growthexperiments-addimage-rejectiondialog-reason-lowquality": "Bildet har lav kvalitet",
 	"growthexperiments-addimage-rejectiondialog-reason-unfamiliar": "Jeg kan ikke nok om dette emnet",
-	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Jeg kan ikke språket",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Jeg kan ikke lese språket fra bildedetaljene",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Annet",
 	"growthexperiments-addimage-viewer-close-button": "Lukk",
 	"growthexperiments-addimage-loading-title": "Laster bildeforhåndsvisning."
