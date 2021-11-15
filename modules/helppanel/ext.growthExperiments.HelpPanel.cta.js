@@ -3,7 +3,7 @@
 		HelpPanelButton = require( '../ui-components/HelpPanelButton.js' ),
 		Utils = require( '../utils/ext.growthExperiments.Utils.js' ),
 		TaskTypesAbFilter = require( '../homepage/suggestededits/TaskTypesAbFilter.js' ),
-		taskTypes = TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),
+		taskTypes = TaskTypesAbFilter.getTaskTypes(),
 		HelpPanelLogger = Help.HelpPanelLogger,
 		HelpPanelProcessDialog = Help.HelpPanelProcessDialog,
 		mobileFrontend = mw.mobileFrontend,

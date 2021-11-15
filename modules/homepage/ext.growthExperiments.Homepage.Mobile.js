@@ -52,7 +52,7 @@
 				previewTask.pageviews = null;
 				taskCard = new SmallTaskCard( {
 					task: previewTask,
-					taskTypes: TaskTypesAbFilter.filterTaskTypes( require( './TaskTypes.json' ) ),
+					taskTypes: TaskTypesAbFilter.getTaskTypes(),
 					taskUrl: null
 				} );
 				$( suggestedEditsModuleNode ).find( '.mw-ge-small-task-card' )

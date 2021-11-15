@@ -437,8 +437,12 @@
 				"utils/ext.growthExperiments.Utils.js",
 				"utils/ext.growthExperiments.IconUtils.js",
 				{
-					"name": "homepage/TaskTypes.json",
+					"name": "homepage/suggestededits/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
+				},
+				{
+					"name": "homepage/suggestededits/DefaultTaskTypes.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
 				},
 				{
 					"name": "homepage/suggestededits/config.json",
@@ -594,16 +598,16 @@
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
 				},
 				{
+					"name": "homepage/suggestededits/DefaultTaskTypes.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
+				},
+				{
 					"name": "homepage/suggestededits/AQSConfig.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getAQSConfigJson" ]
 				},
 				{
 					"name": "homepage/suggestededits/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
-				},
-				{
-					"name": "homepage/suggestededits/DefaultTaskTypes.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
 				},
 				{
 					"name": "homepage/Topics.json",
@@ -1060,8 +1064,12 @@
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
 				},
 				{
-					"name": "ext.growthExperiments.StructuredTask.PreEdit/TaskTypes.json",
+					"name": "homepage/suggestededits/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
+				},
+				{
+					"name": "homepage/suggestededits/DefaultTaskTypes.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
 				}
 			],
 			"styles": [
@@ -1176,8 +1184,12 @@
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
 				},
 				{
-					"name": "help/TaskTypes.json",
+					"name": "homepage/suggestededits/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
+				},
+				{
+					"name": "homepage/suggestededits/DefaultTaskTypes.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
 				}
 			],
 			"dependencies": [
@@ -1298,8 +1310,12 @@
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
 				},
 				{
-					"name": "helppanel/TaskTypes.json",
+					"name": "homepage/suggestededits/TaskTypes.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
+				},
+				{
+					"name": "homepage/suggestededits/DefaultTaskTypes.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
 				}
 			],
 			"dependencies": [
@@ -1358,6 +1374,10 @@
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
 				},
 				{
+					"name": "homepage/suggestededits/DefaultTaskTypes.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
+				},
+				{
 					"name": "homepage/suggestededits/AQSConfig.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getAQSConfigJson" ]
 				},
@@ -1368,10 +1388,6 @@
 				{
 					"name": "help/data.json",
 					"callback": [ "GrowthExperiments\\HelpPanelHooks", "getModuleData" ]
-				},
-				{
-					"name": "homepage/suggestededits/DefaultTaskTypes.json",
-					"callback": [ "GrowthExperiments\\HomepageHooks", "getDefaultTaskTypesJson" ]
 				}
 			],
 			"dependencies": [
@@ -1661,7 +1677,11 @@
 				"file": "tests/qunit/help/mocks.js"
 			},
 			{
-				"name": "modules/help/TaskTypes.json",
+				"name": "homepage/suggestededits/TaskTypes.json",
+				"file": "tests/qunit/help/mocks.js"
+			},
+			{
+				"name": "homepage/suggestededits/DefaultTaskTypes.json",
 				"file": "tests/qunit/help/mocks.js"
 			},
 			{

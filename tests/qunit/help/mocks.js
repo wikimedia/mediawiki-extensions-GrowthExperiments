@@ -1,5 +1,5 @@
 'use strict';
 module.exports = {
-	filterTaskTypes: function () {},
+	getTaskTypes: function () {},
 	SuggestedEditsPanel: function () {}
 };

@@ -602,8 +602,7 @@ StartEditingDialog.prototype.buildDifficultyPanel = function () {
 
 	if ( this.useTaskTypeSelector ) {
 		this.taskTypeSelector = new TaskTypeSelectionWidget( {
-			selectedTaskTypes: TaskTypesAbFilter.filterDefaultTaskTypes(
-				require( './suggestededits/DefaultTaskTypes.json' ) ),
+			selectedTaskTypes: TaskTypesAbFilter.getDefaultTaskTypes(),
 			introLinks: require( './suggestededits/config.json' ).GEHomepageSuggestedEditsIntroLinks,
 			classes: [ 'mw-ge-startediting-dialog-difficulty-taskTypeSelector' ]
 		} )
