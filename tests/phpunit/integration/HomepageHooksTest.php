@@ -31,8 +31,6 @@ use WikiPage;
  */
 class HomepageHooksTest extends MediaWikiIntegrationTestCase {
 
-	use MockCirrusClassesTrait;
-
 	/**
 	 * @covers ::getTaskTypesJson
 	 */
