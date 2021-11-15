@@ -48,7 +48,7 @@ class NewcomerTasksUserOptionsLookup {
 	}
 
 	/**
-	 * Get the given user's task type preferences.
+	 * Get user's task types given their preferences and community configuration.
 	 * @param UserIdentity $user
 	 * @return string[] A list of task type IDs, or the default task types when the user
 	 * has no preference set.
@@ -57,9 +57,8 @@ class NewcomerTasksUserOptionsLookup {
 	public function getTaskTypeFilter( UserIdentity $user ): array {
 		$taskTypes = $this->getJsonListOption( $user, SuggestedEdits::TASKTYPES_PREF );
 		// Filter out invalid task types for the user and use defaults based on user options.
-		// This will be removed once A/B testing is over (T278123).
 		if ( $taskTypes !== null ) {
-			return $this->convertTaskTypes( $taskTypes, $user );
+			return $this->filterNonExistentTaskTypes( $this->convertTaskTypes( $taskTypes, $user ) );
 		} else {
 			return $this->getDefaultTaskTypes( $user );
 		}
@@ -90,36 +89,35 @@ class NewcomerTasksUserOptionsLookup {
 	/**
 	 * Check if link recommendations are enabled. When true, the link-recommendation task type
 	 * should be made available to the user and the links task type hidden.
-	 * This is a temporary hack that is expected to be removed when A/B tests are over (T278123,
-	 * T290403).
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
 	public function areLinkRecommendationsEnabled( UserIdentity $user ): bool {
 		return $this->config->get( 'GENewcomerTasksLinkRecommendationsEnabled' )
 			&& $this->config->get( 'GELinkRecommendationsFrontendEnabled' )
+			&& array_key_exists( LinkRecommendationTaskTypeHandler::TASK_TYPE_ID,
+				$this->configurationLoader->getTaskTypes() )
 			&& $this->experimentUserManager->isUserInVariant( $user,
 				VariantHooks::VARIANT_LINK_RECOMMENDATION_ENABLED );
 	}
 
 	/**
-	 * Check if link recommendations are enabled. When true, the link-recommendation task type
+	 * Check if image recommendations are enabled. When true, the image-recommendation task type
 	 * should be made available to the user.
-	 * This is a temporary hack that is expected to be removed when A/B tests are over (T290403,
-	 * T290403).
 	 * @param UserIdentity $user
 	 * @return bool
 	 */
 	public function areImageRecommendationsEnabled( UserIdentity $user ): bool {
 		return $this->config->get( 'GENewcomerTasksImageRecommendationsEnabled' )
+			&& array_key_exists( ImageRecommendationTaskTypeHandler::TASK_TYPE_ID,
+				$this->configurationLoader->getTaskTypes() )
 			&& $this->experimentUserManager->isUserInVariant( $user,
 				VariantHooks::VARIANT_IMAGE_RECOMMENDATION_ENABLED );
 	}
 
 	/**
 	 * Remove task types which the user is not supposed to see, given the link recommendation
-	 * configuration.
-	 * This is a hack that should be removed when the link A/B tests are over (T278123, T290403).
+	 * configuration and community configuration.
 	 * @param string[] $taskTypes Task types IDs.
 	 * @param UserIdentity $user
 	 * @return string[] Filtered task types IDs. Array keys are not preserved.
@@ -133,7 +131,7 @@ class NewcomerTasksUserOptionsLookup {
 		if ( !$this->areImageRecommendationsEnabled( $user ) ) {
 			$taskTypes = array_diff( $taskTypes, [ ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ] );
 		}
-		return array_values( $taskTypes );
+		return $this->filterNonExistentTaskTypes( $taskTypes );
 	}
 
 	/**
@@ -147,12 +145,7 @@ class NewcomerTasksUserOptionsLookup {
 		} elseif ( $this->areImageRecommendationsEnabled( $user ) ) {
 			return [ ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ];
 		} else {
-			$taskTypes = $this->configurationLoader->getTaskTypes();
-			return array_filter( SuggestedEdits::DEFAULT_TASK_TYPES,
-				static function ( $taskTypeId ) use ( $taskTypes ) {
-					return array_key_exists( $taskTypeId, $taskTypes );
-				}
-			);
+			return $this->filterNonExistentTaskTypes( SuggestedEdits::DEFAULT_TASK_TYPES );
 		}
 	}
 
@@ -178,6 +171,20 @@ class NewcomerTasksUserOptionsLookup {
 			return $map[$taskType] ?? $taskType;
 		}, $taskTypes );
 		return array_unique( array_filter( $taskTypes ) );
+	}
+
+	/**
+	 * Remove task types which have been disabled via community configuration.
+	 * @param string[] $taskTypesToFilter Task types IDs.
+	 * @return string[] Filtered task types IDs.
+	 */
+	private function filterNonExistentTaskTypes( array $taskTypesToFilter ) {
+		$allTaskTypes = $this->configurationLoader->getTaskTypes();
+		return array_values( array_filter( $taskTypesToFilter,
+			static function ( $taskTypeId ) use ( $allTaskTypes ) {
+				return array_key_exists( $taskTypeId, $allTaskTypes );
+			}
+		) );
 	}
 
 	/**

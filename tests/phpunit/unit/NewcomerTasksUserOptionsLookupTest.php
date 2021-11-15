@@ -31,7 +31,7 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 		$user3 = new UserIdentityValue( 3, 'User3' );
 		$userOptionsLookup = new StaticUserOptionsLookup( [
 			'User1' => [
-				SuggestedEdits::TASKTYPES_PREF => '[ "tasktypes" ]',
+				SuggestedEdits::TASKTYPES_PREF => '[ "copyedit" ]',
 				SuggestedEdits::TOPICS_PREF => '[ "topics" ]',
 				SuggestedEdits::TOPICS_ORES_PREF => '[ "ores" ]',
 			],
@@ -53,10 +53,9 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 			->with( $this->anything(), VariantHooks::VARIANT_LINK_RECOMMENDATION_ENABLED )
 			->willReturn( false );
 
-		$lookup = new NewcomerTasksUserOptionsLookup(
-			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader()
-		);
-		$this->assertSame( [ 'tasktypes' ], $lookup->getTaskTypeFilter( $user1 ) );
+		$lookup = new NewcomerTasksUserOptionsLookup( $experimentUserManager, $userOptionsLookup,
+			$config, $this->getConfigurationLoader( [ 'copyedit', 'links' ] ) );
+		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user1 ) );
 		$this->assertSame( [ 'ores' ], $lookup->getTopicFilter( $user1 ) );
 		$this->assertSame( SuggestedEdits::DEFAULT_TASK_TYPES, $lookup->getTaskTypeFilter( $user2 ) );
 		$this->assertSame( [], $lookup->getTopicFilter( $user2 ) );
@@ -221,14 +220,46 @@ class NewcomerTasksUserOptionsLookupTest extends MediaWikiUnitTestCase {
 	}
 
 	/**
+	 * @covers ::getTaskTypeFilter
+	 * @covers ::getDefaultTaskTypes
+	 */
+	public function testCommunityConfiguration() {
+		$user1 = new UserIdentityValue( 1, 'User1' );
+		$user2 = new UserIdentityValue( 2, 'User2' );
+		$userOptionsLookup = new StaticUserOptionsLookup( [
+			'User1' => [
+				SuggestedEdits::TASKTYPES_PREF => '[ "copyedit", "links" ]',
+			],
+			'User2' => [],
+		] );
+		$config = new HashConfig( [
+			'GENewcomerTasksTopicType' => PageConfigurationLoader::CONFIGURATION_TYPE_ORES,
+			'GENewcomerTasksLinkRecommendationsEnabled' => false,
+			'GELinkRecommendationsFrontendEnabled' => false,
+			'GENewcomerTasksImageRecommendationsEnabled' => false,
+		] );
+		$experimentUserManager = $this->createConfiguredMock( ExperimentUserManager::class, [
+			'isUserInVariant' => false,
+		] );
+
+		$lookup = new NewcomerTasksUserOptionsLookup(
+			$experimentUserManager, $userOptionsLookup, $config, $this->getConfigurationLoader( [ 'copyedit' ] )
+		);
+		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user1 ) );
+		$this->assertSame( [ 'copyedit' ], $lookup->getTaskTypeFilter( $user2 ) );
+	}
+
+	/**
+	 * @param string[]|null $taskTypes
 	 * @return ConfigurationLoader
 	 */
-	private function getConfigurationLoader() {
+	private function getConfigurationLoader( array $taskTypes = null ) {
+		$taskTypes = $taskTypes ?? [ 'copyedit', 'links', 'link-recommendation', 'image-recommendation' ];
 		$configurationLoader = $this->createMock( ConfigurationLoader::class );
-		$configurationLoader->method( 'getTaskTypes' )->willReturn( [
-				'copyedit' => new TaskType( 'copyedit', 'easy' ),
-				'links' => new TaskType( 'links', 'easy' )
-			]
+		$configurationLoader->method( 'getTaskTypes' )->willReturn(
+			array_combine( $taskTypes, array_map( static function ( $taskTypeId ) {
+				return new TaskType( $taskTypeId, 'easy' );
+			}, $taskTypes ) )
 		);
 		return $configurationLoader;
 	}

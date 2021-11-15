@@ -124,6 +124,9 @@ class HelpPanelHooks implements
 		}
 
 		if ( SuggestedEdits::isGuidanceEnabled( $out->getContext() ) ) {
+			// Note: wgGELinkRecommendationsFrontendEnabled reflects the configuration flag.
+			// Checking whether Add Link has been disabled in community configuration is the
+			// frontend code's responsibility.
 			$out->addJsConfigVars( [
 				'wgGENewcomerTasksGuidanceEnabled' => true,
 				'wgGEAskQuestionEnabled' => HelpPanel::getHelpDeskTitle( $wikiConfig ) !== null,

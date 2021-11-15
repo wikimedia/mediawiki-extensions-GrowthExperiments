@@ -353,32 +353,36 @@ class HomepageHooks implements
 				}
 			}
 
-			if ( $recommendationProvider && $taskType ) {
-				$recommendation = $recommendationProvider->get( $context->getTitle(), $taskType );
-				if ( $recommendation instanceof Recommendation ) {
-					$serializedRecommendation = $recommendation->toArray();
-				} else {
-					Util::logStatus( $recommendation );
-					$serializedRecommendation = [
-						'error' => Status::wrap( $recommendation )->getWikiText( false, false, 'en' ),
-					];
-				}
-				$out->addJsConfigVars( [
-					'wgGESuggestedEditData' => $serializedRecommendation,
-				] );
-				$taskSet = $this->taskSuggesterFactory->create()->suggest(
-					$context->getUser(),
-					$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $context->getUser() ),
-					$this->newcomerTasksUserOptionsLookup->getTopicFilter( $context->getUser() ),
-					1
-				);
-				$out->addJsConfigVars( [
-					'wgGESuggestedEditQualityGateConfig' =>
-						$taskSet instanceof TaskSet ? $taskSet->getQualityGateConfig() : []
-				] );
-			}
-
 			if ( $taskType ) {
+				$out->addJsConfigVars( [
+					'wgGESuggestedEditTaskType' => $taskTypeId,
+				] );
+
+				if ( $recommendationProvider ) {
+					$recommendation = $recommendationProvider->get( $context->getTitle(), $taskType );
+					if ( $recommendation instanceof Recommendation ) {
+						$serializedRecommendation = $recommendation->toArray();
+					} else {
+						Util::logStatus( $recommendation );
+						$serializedRecommendation = [
+							'error' => Status::wrap( $recommendation )->getWikiText( false, false, 'en' ),
+						];
+					}
+					$out->addJsConfigVars( [
+						'wgGESuggestedEditData' => $serializedRecommendation,
+					] );
+					$taskSet = $this->taskSuggesterFactory->create()->suggest(
+						$context->getUser(),
+						$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $context->getUser() ),
+						$this->newcomerTasksUserOptionsLookup->getTopicFilter( $context->getUser() ),
+						1
+					);
+					$out->addJsConfigVars( [
+						'wgGESuggestedEditQualityGateConfig' =>
+							$taskSet instanceof TaskSet ? $taskSet->getQualityGateConfig() : []
+					] );
+				}
+
 				$this->maybeOverridePreferredEditorWithVE( $taskType, $skin->getUser() );
 			}
 		}
@@ -1082,17 +1086,10 @@ class HomepageHooks implements
 	 *   - on error: [ '_error' => error message in wikitext format ]
 	 */
 	public static function getTaskTypesJson( ResourceLoaderContext $context ) {
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
-
-		// HACK For the duration of the link recommendation A/B test (T278123), either the 'links'
-		// or 'link-recommendation' task type should be hidden for any given user. We can't access
-		// user identity here though, so that will have to be done on the client side.
-
-		// Hack - ResourceLoaderContext is not exposed to services initialization
-		$configurationValidator = $growthServices->getNewcomerTasksConfigurationValidator();
-		$configurationValidator->setMessageLocalizer( $context );
-
-		$configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
+		// Based on user variant settings, some task types might need to be hidden for the user,
+		// but we can't access user identity here, so we return all tasks. User-specific filtering
+		// will be done on the client side in TaskTypeAbFilter.
+		$configurationLoader = self::getConfigurationLoaderForResourceLoader( $context );
 		$taskTypes = $configurationLoader->loadTaskTypes();
 		if ( $taskTypes instanceof StatusValue ) {
 			$status = Status::wrap( $taskTypes );
@@ -1116,10 +1113,7 @@ class HomepageHooks implements
 	 * @return string[]
 	 */
 	public static function getDefaultTaskTypesJson( ResourceLoaderContext $context ) {
-		// HACK For the duration of the link recommendation A/B test (T278123), the default
-		// task types should be [ 'link-recommendation' ] for users who have been opted into
-		// link recommendations. We can't access user identity here though, so that will
-		// have to be done on the client side.
+		// Like with getTaskTypesJson, we ignore user-specific filtering here.
 		return SuggestedEdits::DEFAULT_TASK_TYPES;
 	}
 
@@ -1134,13 +1128,7 @@ class HomepageHooks implements
 	 *   - on error: [ '_error' => error message in wikitext format ]
 	 */
 	public static function getTopicsJson( ResourceLoaderContext $context ) {
-		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
-
-		// Hack - ResourceLoaderContext is not exposed to services initialization
-		$configurationValidator = $growthServices->getNewcomerTasksConfigurationValidator();
-		$configurationValidator->setMessageLocalizer( $context );
-
-		$configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
+		$configurationLoader = self::getConfigurationLoaderForResourceLoader( $context );
 		$topics = $configurationLoader->loadTopics();
 		if ( $topics instanceof StatusValue ) {
 			$status = Status::wrap( $topics );
@@ -1176,6 +1164,9 @@ class HomepageHooks implements
 	public static function getSuggestedEditsConfigJson(
 		ResourceLoaderContext $context, Config $config
 	) {
+		// Note: GELinkRecommendationsEnabled / GEImageRecommendationsEnabled reflect PHP configuration.
+		// Checking whether these task types have been disabled in community configuration is the
+		// frontend code's responsibility (handled in TaskTypeAbFilter).
 		return [
 			'GERestbaseUrl' => Util::getRestbaseUrl( $config ),
 			'GENewcomerTasksRemoteArticleOrigin' => $config->get( 'GENewcomerTasksRemoteArticleOrigin' ),
@@ -1186,6 +1177,22 @@ class HomepageHooks implements
 				&& $config->get( 'GELinkRecommendationsFrontendEnabled' ),
 			'GEImageRecommendationsEnabled' => $config->get( 'GENewcomerTasksImageRecommendationsEnabled' ),
 		];
+	}
+
+	/**
+	 * Helper method for ResourceLoader callbacks.
+	 *
+	 * @param ResourceLoaderContext $context
+	 * @return ConfigurationLoader
+	 */
+	private static function getConfigurationLoaderForResourceLoader(
+		ResourceLoaderContext $context
+	): ConfigurationLoader {
+		$growthServices = GrowthExperimentsServices::wrap( MediaWikiServices::getInstance() );
+		// Hack - ResourceLoaderContext is not exposed to services initialization
+		$configurationValidator = $growthServices->getNewcomerTasksConfigurationValidator();
+		$configurationValidator->setMessageLocalizer( $context );
+		return $growthServices->getNewcomerTasksConfigurationLoader();
 	}
 
 	/**
