@@ -15,6 +15,12 @@ use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
  */
 class ApiQueryMentorStatusTest extends ApiTestCase {
 
+	public function setUp(): void {
+		parent::setUp();
+		$this->setMwGlobals( 'wgGEMentorDashboardEnabled', true );
+		$this->setMwGlobals( 'wgGEHomepageManualAssignmentMentorsList', null );
+	}
+
 	/**
 	 * @covers ::execute
 	 */
