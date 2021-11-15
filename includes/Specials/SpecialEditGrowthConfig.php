@@ -387,6 +387,11 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				'raw' => true,
 				'section' => 'newcomertasks',
 			];
+			$descriptors["newcomertasks-${taskType}Disabled"] = [
+				'type' => 'check',
+				'label-message' => 'growthexperiments-edit-config-newcomer-tasks-disabled',
+				'section' => 'newcomertasks',
+			];
 			$descriptors["newcomertasks-${taskType}Templates"] = [
 				'type' => 'titlesmultiselect',
 				'disabled' => $isMachineSuggestionTaskType,
@@ -623,6 +628,8 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		// Add default values for newcomertasks variables
 		$newcomerTasksConfig = $this->getNewcomerTasksConfig();
 		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $group ) {
+			$descriptors["newcomertasks-${taskType}Disabled"]['default']
+				= !empty( $newcomerTasksConfig[$taskType]['disabled'] );
 			$descriptors["newcomertasks-${taskType}Templates"]['default'] = implode(
 				"\n",
 				array_map( function ( $rawTitle ) {
@@ -801,6 +808,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			}, $this->normalizeTitleList( $data["${taskType}ExcludedCategories"] ?? null ) );
 
 			$normalizedData[$taskType] = [
+				'disabled' => (bool)$data["${taskType}Disabled"],
 				'group' => $taskTypeData['difficulty'],
 				'templates' => $templates,
 				'excludedTemplates' => $excludedTemplates,
