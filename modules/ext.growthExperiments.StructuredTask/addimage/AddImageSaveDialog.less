@@ -19,6 +19,7 @@
 		& > .oo-ui-iconElement {
 			// approximate @base20 which has 36% brightness in HSB
 			opacity: 0.64;
+			margin-left: 8px;
 		}
 	}
 
@@ -28,7 +29,12 @@
 		}
 		font-weight: bold;
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
+
+		&-filename {
+			padding-top: 4px;
+			overflow-wrap: anywhere;
+		}
 	}
 
 	&-imagePreview {
