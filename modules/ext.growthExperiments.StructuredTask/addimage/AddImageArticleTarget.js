@@ -1,6 +1,7 @@
 var StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEdit' ),
 	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
-	ADD_IMAGE_CAPTION_ONBOARDING_PREF = 'growthexperiments-addimage-caption-onboarding';
+	ADD_IMAGE_CAPTION_ONBOARDING_PREF = 'growthexperiments-addimage-caption-onboarding',
+	MAX_IMAGE_DISPLAY_WIDTH = 500;
 
 /**
  * @typedef mw.libs.ge.ImageRecommendationImage
@@ -141,16 +142,22 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 		data = surfaceModel.getDocument().data,
 		NS_FILE = mw.config.get( 'wgNamespaceIds' ).file,
 		imageTitle = new mw.Title( imageData.image, NS_FILE ),
-		thumb = mw.util.parseImageUrl( imageData.metadata.thumbUrl );
+		thumb = mw.util.parseImageUrl( imageData.metadata.thumbUrl ),
+		targetWidth, targetSrcWidth;
 
 	// Define the image to be inserted.
 	// This will eventually be passed as the data parameter to MWBlockImageNode.toDomElements.
 	// See also https://www.mediawiki.org/wiki/Specs/HTML/2.2.0#Images
 
-	dimensions = ve.dm.MWImageNode.static.scaleToThumbnailSize( {
+	dimensions = {
 		width: imageData.metadata.originalWidth,
 		height: imageData.metadata.originalHeight
-	} );
+	};
+	targetWidth = Math.min(
+		this.getSurface().getView().$documentNode.width(),
+		MAX_IMAGE_DISPLAY_WIDTH
+	);
+	targetSrcWidth = Math.floor( targetWidth * window.devicePixelRatio );
 	linearModel = [
 		{
 			type: 'mwGeRecommendedImage',
@@ -165,13 +172,13 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 				defaultSize: true,
 				// The generated wikitext will ignore width/height when defaultSize is set, but
 				// it's still used for the visual size of the thumbnail in the editor, so set it
-				// to something sensible.
-				width: dimensions.width,
-				height: dimensions.height,
+				// to the width of the article (with max width set to account for tablets).
+				width: targetWidth,
+				height: targetWidth * ( dimensions.height / dimensions.width ),
 				// Likewise only used in the editor UI. Work around an annoying quirk of MediaWiki
 				// where a thumbnail with the exact same size as the original is not always valid.
 				src: thumb.resizeUrl ?
-					thumb.resizeUrl( Math.min( dimensions.width,
+					thumb.resizeUrl( Math.min( targetSrcWidth,
 						imageData.metadata.originalWidth - 1 ) ) :
 					imageData.metadata.thumbUrl,
 				align: 'default',
