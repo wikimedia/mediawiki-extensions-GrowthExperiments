@@ -43,7 +43,9 @@ class SetUserMentorDatabaseJob extends Job implements GenericParameterJob {
 	public function run() {
 		$this->databaseMentorStore->setMentorForUser(
 			$this->userFactory->newFromId( $this->params['menteeId'] ),
-			$this->userFactory->newFromId( $this->params['mentorId'] ),
+			$this->params['mentorId'] ? $this->userFactory->newFromId(
+				$this->params['mentorId']
+			) : null,
 			$this->params['roleId']
 		);
 		return true;

@@ -393,6 +393,7 @@ return [
 			$services->getUserNameUtils(),
 			$services->getUserIdentityLookup(),
 			$services->getUserOptionsLookup(),
+			$services->getUserOptionsManager(),
 			$services->getContentLanguage(),
 			$wikiConfig->get( 'GEHomepageMentorsList' ) ?: null,
 			$wikiConfig->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null,
