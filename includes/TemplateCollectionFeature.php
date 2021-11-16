@@ -28,7 +28,7 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 	 * ElasticSearch doesn't allow more than 1024 clauses in a boolean query. Limit at 800
 	 * to leave some space to combine hastemplatecollection with other search terms.
 	 */
-	private const MAX_TEMPLATES_IN_COLLECTION = 800;
+	public const MAX_TEMPLATES_IN_COLLECTION = 800;
 
 	/** @var array */
 	private $templates;
