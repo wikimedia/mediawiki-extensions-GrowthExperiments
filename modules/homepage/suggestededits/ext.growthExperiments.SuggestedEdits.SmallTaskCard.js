@@ -93,7 +93,6 @@
 			// * mw-ge-small-task-card-tasktype-difficulty-medium
 			// * mw-ge-small-task-card-tasktype-difficulty-hard
 			.addClass( 'mw-ge-small-task-card-tasktype-difficulty-' + this.taskType.difficulty )
-			.text( this.taskType.messages.name )
 			// The following icons are used here:
 			// * difficulty-easy
 			// * difficulty-medium
@@ -101,6 +100,10 @@
 			.prepend( new OO.ui.IconWidget( { icon: 'difficulty-' + this.taskType.difficulty } ).$element );
 
 		$taskType.prepend( IconUtils.getIconElementForTaskType( this.taskType.iconData ) );
+		$taskType.append( $( '<span>' )
+			.addClass( 'mw-ge-small-task-card-tasktype-taskname' )
+			.text( this.taskType.messages.name )
+		);
 
 		$glue = $( '<div>' )
 			.addClass( 'mw-ge-small-task-card-glue' );

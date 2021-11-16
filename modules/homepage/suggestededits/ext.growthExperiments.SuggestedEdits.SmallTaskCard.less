@@ -115,9 +115,7 @@
 	&-tasktype {
 		display: flex;
 		align-items: center;
-		text-overflow: ellipsis;
 		overflow: hidden;
-		white-space: nowrap;
 
 		&-difficulty-easy {
 			color: @easyColor;
@@ -129,6 +127,13 @@
 
 		&-difficulty-hard {
 			color: @hardColor;
+		}
+
+		&-taskname {
+			display: inline-block;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
 		}
 
 		.oo-ui-iconWidget {
