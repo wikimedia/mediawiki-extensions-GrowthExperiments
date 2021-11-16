@@ -60,7 +60,8 @@ class ImageRecommendationMetadataService {
 		if ( $file ) {
 			return ( new FormatMetadata )->fetchExtendedMetadata( $file );
 		}
-		return StatusValue::newFatal( 'rawmessage', 'Image file not found' );
+		return StatusValue::newFatal( 'rawmessage', 'Image file not found: '
+			. $fileName );
 	}
 
 	/**
@@ -73,7 +74,8 @@ class ImageRecommendationMetadataService {
 	public function getFileMetadata( string $fileName ) {
 		$file = $this->repoGroup->findFile( $fileName );
 		if ( !$file ) {
-			return StatusValue::newFatal( 'rawmessage', 'Image file not found' );
+			return StatusValue::newFatal( 'rawmessage', 'Image file not found: '
+				. $fileName );
 		} else {
 			$thumb = $file->transform( [ 'width' => self::THUMB_WIDTH ] );
 			if ( !$thumb ) {
@@ -104,6 +106,10 @@ class ImageRecommendationMetadataService {
 	 */
 	public function getApiMetadata( string $fileName ) {
 		$file = $this->repoGroup->findFile( $fileName );
+		if ( !$file ) {
+			return StatusValue::newFatal( 'rawmessage', 'Image file not found: '
+				. $fileName );
+		}
 		$repoName = $file->getRepoName();
 		if ( !in_array( $repoName, $this->mediaInfoRepos, true ) ) {
 			return [];
