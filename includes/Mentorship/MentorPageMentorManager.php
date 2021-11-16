@@ -30,6 +30,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	/** @var int Maximum mentor intro length. */
 	private const INTRO_TEXT_LENGTH = 240;
 
+	/** @var MentorStore */
 	private $mentorStore;
 
 	/** @var MentorStatusManager */
@@ -47,6 +48,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	/** @var UserIdentityLookup */
 	private $userIdentityLookup;
 
+	/** @var UserOptionsLookup */
 	private $userOptionsLookup;
 
 	/** @var MessageLocalizer */
