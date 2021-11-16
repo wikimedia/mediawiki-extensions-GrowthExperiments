@@ -65,6 +65,7 @@ TaskTypeSelectionWidget.prototype.setSelected = function ( taskTypes ) {
 };
 
 TaskTypeSelectionWidget.prototype.buildCheckboxFilters = function () {
+	var device = OO.ui.isMobile() ? 'mobile' : 'desktop';
 	this.createFilter = this.makeCheckbox( {
 		id: 'create',
 		difficulty: 'hard',
@@ -75,7 +76,13 @@ TaskTypeSelectionWidget.prototype.buildCheckboxFilters = function () {
 		iconData: {}
 	}, false );
 	this.createFilter.$element.append( $( '<div>' )
-		.addClass( 'mw-ge-homepage-taskTypeSelectionWidget-additional-msg' )
+		.addClass( [
+			// The following classes are used here:
+			// * mw-ge-homepage-taskTypeSelectionWidget-additional-msg-desktop
+			// * mw-ge-homepage-taskTypeSelectionWidget-additional-msg-mobile
+			'mw-ge-homepage-taskTypeSelectionWidget-additional-msg',
+			'mw-ge-homepage-taskTypeSelectionWidget-additional-msg-' + device
+		] )
 		.html(
 			mw.message( 'growthexperiments-homepage-suggestededits-create-article-additional-message' )
 				.params( [ mw.user, mw.util.getUrl( this.introLinks.create ) ] )
@@ -168,7 +175,11 @@ TaskTypeSelectionWidget.prototype.makeCheckboxesForDifficulty = function (
  * @return {OO.ui.CheckboxMultioptionWidget}
  */
 TaskTypeSelectionWidget.prototype.makeCheckbox = function ( taskTypeData, selected ) {
-	var $additionalMessage, descriptionMessage, $label = $( '<span>' ).text( taskTypeData.messages.label );
+	var $additionalMessage,
+		$additionalMessageContent,
+		descriptionMessage,
+		device = OO.ui.isMobile() ? 'mobile' : 'desktop',
+		$label = $( '<span>' ).text( taskTypeData.messages.label );
 	if ( 'filterIcon' in taskTypeData.iconData ) {
 		// Messages that can be used here:
 		// * growthexperiments-homepage-suggestededits-tasktype-machine-description
@@ -183,12 +194,16 @@ TaskTypeSelectionWidget.prototype.makeCheckbox = function ( taskTypeData, select
 			// * mw-ge-homepage-taskTypeSelectionWidget-additional-msg-links
 			// * mw-ge-homepage-taskTypeSelectionWidget-additional-msg-link-recommendation
 			// * mw-ge-homepage-taskTypeSelectionWidget-additional-msg-update
-			'mw-ge-homepage-taskTypeSelectionWidget-additional-msg-' + taskTypeData.id
+			// * mw-ge-homepage-taskTypeSelectionWidget-additional-msg-desktop
+			// * mw-ge-homepage-taskTypeSelectionWidget-additional-msg-mobile
+			'mw-ge-homepage-taskTypeSelectionWidget-additional-msg-' + taskTypeData.id,
+			'mw-ge-homepage-taskTypeSelectionWidget-additional-msg-' + device
 		] } ).$element;
-		$additionalMessage.append( $( '<span>' ).append(
+		$additionalMessageContent = $( '<span>' ).append(
 			new OO.ui.IconWidget( { icon: taskTypeData.iconData.filterIcon } ).$element,
-			new OO.ui.LabelWidget( { label: descriptionMessage } ).$element
-		) );
+			descriptionMessage
+		);
+		$additionalMessage.append( $additionalMessageContent );
 		$label.append( $additionalMessage );
 	}
 	return new OO.ui.CheckboxMultioptionWidget( {
