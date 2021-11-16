@@ -1,0 +1,29 @@
+{
+	"@metadata": {
+		"authors": [
+			"Malikxan"
+		]
+	},
+	"growthexperiments-desc": "Bu kengaytma Growth jamoasi tomonidan bajarilgan tajribalarni oʻz ichiga oladi.",
+	"growthexperiments-config-validator-additional-fields": "Yangi konfiguratsiya bu yerda sozlanmaydigan konfiguratsiya kalitlarini oʻz ichiga oladi.",
+	"growthexperiments-config-validator-error": "$1 uchun tekshirish amalga oshmadi: $2",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> <code>$2</code> boʻlishi kutilgandi, ammo <code>$3</code> boʻldi",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Kontent-model nomuvofiqligi: GrowthExperiments konfiguratsiya faylida JSON kontent modeli boʻlishi kerak, $1 aniqlandi",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Yaroqsiz task type handler ID: <code>$1</code> yaroqsiz qiymat",
+	"growthexperiments-edit-config-disabled": "Jamoa konfiguratsiyasi hozirda oʻchirilgan.",
+	"growthexperiments-edit-config-title": "Growth konfiguratsiyasini tahrirla",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Soʻnggi marta [[User:$1|$1]] tomonidan yangilandi $2 ([$4 farq]).",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Soʻnggi marta nomaʼlum foydalanuvchi tomonidan yangilandi $1 ([$3 farq]).",
+	"growthexperiments-edit-config-feedback-cta": "Fikr-mulohaza berish",
+	"growthexperiments-edit-config-edit-summary": "Tahrir izohi",
+	"growthexperiments-edit-config-help-panel": "Yordam paneli sozlamalari",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "Sahifa boshi",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "Sahifa oxiri",
+	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Mentor munozara sahifalari",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Yangi kelganlar uchun yordam",
+	"growthexperiments-edit-config-help-panel-links": "Yordam paneli havolalari",
+	"growthexperiments-edit-config-mentorship-enabled-true": "Ha",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Yoʻq",
+	"growthexperiments-edit-config-newcomertasks": "Tavsiya etilgan tahrirlar",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Bilgiquti andozalari"
+}
