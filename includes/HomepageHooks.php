@@ -700,6 +700,11 @@ class HomepageHooks implements
 			// Growth features cannot be enabled, short-circuit
 			return;
 		}
+		$this->experimentUserManager->setPlatform(
+			Util::isMobile( RequestContext::getMain()->getSkin() ) ?
+				'mobile' :
+				'desktop'
+		);
 
 		// Enable the homepage for a percentage of non-autocreated users.
 		$enablePercentage = $this->config->get( 'GEHomepageNewAccountEnablePercentage' );
