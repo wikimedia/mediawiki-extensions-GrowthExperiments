@@ -388,9 +388,18 @@ RecommendedImageToolbarDialog.prototype.getFilenameElement = function ( title ) 
  */
 RecommendedImageToolbarDialog.prototype.getDescriptionElement = function ( descriptionHtml ) {
 	// TODO: Filter out complicated content in description (infoboxes, tables etc)
+	var descriptionText = $.parseHTML( descriptionHtml ).map( function ( node ) {
+		if ( node.nodeType === Node.ELEMENT_NODE ) {
+			return node.innerText;
+		} else if ( node.nodeType === Node.TEXT_NODE ) {
+			return node.textContent;
+		} else {
+			return '';
+		}
+	} ).join( '' );
 	return $( '<p>' )
 		.addClass( 'mw-ge-recommendedImageToolbarDialog-description' )
-		.html( $.parseHTML( descriptionHtml ) );
+		.text( descriptionText );
 };
 
 /**
