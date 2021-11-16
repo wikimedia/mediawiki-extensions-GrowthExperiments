@@ -466,7 +466,7 @@
 	"growthexperiments-addimage-caption-placeholder": "Schreibe eine kurze Bildunterschrift, die beschreibt, inwiefern dieses Bild für <strong>$1</strong> relevant ist.",
 	"growthexperiments-addimage-caption-info-dialog-title": "Verfasse eine Bildunterschrift, die zum Bild im Artikel passt.",
 	"growthexperiments-addimage-caption-info-dialog-message": "Die Leser von <strong>$1</strong> sehen die Bildunterschrift unter dem Bild.",
-	"growthexperiments-addimage-caption-info-dialog-guidelines-describe": "Beschreibe das Bild, damit klar wird, wie es mit <strong>$1</strong zusammenhängt.",
+	"growthexperiments-addimage-caption-info-dialog-guidelines-describe": "Beschreibe das Bild, damit klar wird, wie es mit <strong>$1</strong> zusammenhängt.",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-review": "Überprüfedie Bilddetails noch einmal auf relevante Informationen, die du aufnehmen möchtest.",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-neutral": "Bleibe neutral und vermeide Urteile wie „gut“, „hässlich“ oder „schön“.",
 	"growthexperiments-addimage-caption-info-dialog-guidelines-language": "Schreib in der Sprache dieses Artikels: $1.",

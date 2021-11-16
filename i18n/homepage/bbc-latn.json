@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"ProudBatak"
+		]
+	},
+	"growthexperiments-addimage-detailsdialog-header": "Detail poto",
+	"growthexperiments-addimage-detailsdialog-description": "Deskripsi",
+	"growthexperiments-addimage-detailsdialog-caption": "Titel:",
+	"growthexperiments-addimage-detailsdialog-license": "Isin:",
+	"growthexperiments-addimage-detailsdialog-date": "Hala",
+	"growthexperiments-addimage-detailsdialog-author": "Pambahen",
+	"growthexperiments-addimage-detailsdialog-categories": "Ragam:",
+	"growthexperiments-addimage-detailsdialog-close": "Tutup",
+	"growthexperiments-addimage-rejectiondialog-header": "Boasa dang?",
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Au ndang dapot manjaha hata na adong di detil poto",
+	"growthexperiments-addimage-onboarding-content-article-title": "Berengma barita on",
+	"growthexperiments-addimage-caption-help-button": "Urupima dohot manurati sabiji titel poto"
+}
