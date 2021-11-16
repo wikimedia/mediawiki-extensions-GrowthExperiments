@@ -3,7 +3,6 @@
 namespace GrowthExperiments\Config\Validation;
 
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
-use GrowthExperiments\TemplateCollectionFeature;
 use InvalidArgumentException;
 use LogicException;
 use Message;
@@ -13,6 +12,12 @@ use StatusValue;
  * Validation class for MediaWiki:GrowthExperimentsConfig.json
  */
 class GrowthConfigValidation implements IConfigValidator {
+	/**
+	 * Copy of TemplateCollectionFeature::MAX_TEMPLATES_IN_COLLECTION. We avoid a direct reference
+	 * to keep CirrusSearch an optional dependency.
+	 */
+	public const MAX_TEMPLATES_IN_COLLECTION = 800;
+
 	private function getConfigDescriptors(): array {
 		return [
 			'GEHelpPanelReadingModeNamespaces' => [
@@ -53,7 +58,7 @@ class GrowthConfigValidation implements IConfigValidator {
 			],
 			'GEInfoboxTemplates' => [
 				'type' => 'array',
-				'maxSize' => TemplateCollectionFeature::MAX_TEMPLATES_IN_COLLECTION,
+				'maxSize' => self::MAX_TEMPLATES_IN_COLLECTION,
 			]
 		];
 	}
