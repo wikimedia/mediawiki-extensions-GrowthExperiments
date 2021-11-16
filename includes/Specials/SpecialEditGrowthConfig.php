@@ -4,11 +4,11 @@ namespace GrowthExperiments\Specials;
 
 use FormSpecialPage;
 use GrowthExperiments\Config\GrowthExperimentsMultiConfig;
+use GrowthExperiments\Config\Validation\GrowthConfigValidation;
 use GrowthExperiments\Config\Validation\NewcomerTasksValidator;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\HomepageModules\Banner;
-use GrowthExperiments\TemplateCollectionFeature;
 use Html;
 use HTMLForm;
 use MediaWiki\Revision\RevisionLookup;
@@ -363,7 +363,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				// TODO: This should be relative => true in an ideal world, see T285750 and
 				// T285748 for blockers
 				'relative' => false,
-				'max' => TemplateCollectionFeature::MAX_TEMPLATES_IN_COLLECTION,
+				'max' => GrowthConfigValidation::MAX_TEMPLATES_IN_COLLECTION,
 				'label-message' => $this->msg(
 					'growthexperiments-edit-config-newcomer-tasks-infobox-templates'
 				),
