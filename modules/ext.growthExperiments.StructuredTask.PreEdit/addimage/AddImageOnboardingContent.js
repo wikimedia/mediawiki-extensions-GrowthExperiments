@@ -42,7 +42,10 @@ module.exports = ( function () {
 			).text() ),
 			makeParagraph( mw.message(
 				'growthexperiments-addimage-onboarding-content-intro-body-paragraph3'
-			).text(), [ 'addimage-onboarding-content-paragraph--italic' ] )
+			).text(), [
+				'addimage-onboarding-content-paragraph--italic',
+				'addimage-onboarding-content-paragraph--subtext'
+			] )
 		];
 		return $( '<div>' ).append( paragraphs );
 	}
