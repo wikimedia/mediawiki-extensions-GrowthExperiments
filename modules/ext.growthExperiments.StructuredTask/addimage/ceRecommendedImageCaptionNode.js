@@ -30,7 +30,7 @@ function CERecommendedImageCaptionNode() {
 		'mw-ge-recommendedImageCaption',
 		'mw-ge-recommendedImageCaption--with-placeholder'
 	] ).append( this.helpButton.$element );
-	this.$element.on( 'blur', this.showWarningIfNeeded.bind( this ) );
+	this.$element.on( 'blur', this.onBlur.bind( this ) );
 	this.model.on( 'update', this.onCaptionChanged.bind( this ) );
 	/**
 	 * FIXME: Bring up virtual keyboard if there's no onboarding
@@ -89,19 +89,27 @@ CERecommendedImageCaptionNode.prototype.getPlaceholderHtml = function () {
  * Set up placeholder text (make contenteditable element behave like an input field)
  */
 CERecommendedImageCaptionNode.prototype.setupPlaceholder = function () {
-	var $placeholder = $( '<p>' )
+	this.$placeholder = $( '<p>' )
 		.addClass( 'mw-ge-recommendedImageCaption-placeholder' )
 		.html( this.getPlaceholderHtml() );
 	this.$element.on( 'click', function () {
-		// Prevent the field height from changing when the placeholder node is removed
+		// Prevent the field height from changing when the placeholder node is hidden
 		this.$element.css( 'min-height', this.$element.height() );
-		$placeholder.detach();
+		this.$placeholder.addClass( 'oo-ui-element-hidden' );
 		// This programmatic focus works on iOS because it's inside a click event listener.
-		this.$element.focus();
+		this.$element.trigger( 'focus' );
 		this.$element.removeClass( 'mw-ge-recommendedImageCaption--with-placeholder' );
 		this.articleTarget.logSuggestionInteraction( 'focus', 'caption_entry' );
 	}.bind( this ) );
-	this.$element.prepend( $placeholder );
+	this.$element.prepend( this.$placeholder );
+};
+
+/**
+ * Show the placeholder text after it's been hidden
+ */
+CERecommendedImageCaptionNode.prototype.reshowPlaceholder = function () {
+	this.$placeholder.removeClass( 'oo-ui-element-hidden' );
+	this.$element.addClass( 'mw-ge-recommendedImageCaption--with-placeholder' );
 };
 
 /**
@@ -136,10 +144,23 @@ CERecommendedImageCaptionNode.prototype.getWarningLabel = function () {
 };
 
 /**
- * Show the warning if the caption is invalid
+ * Update the field state when it loses focus
+ */
+CERecommendedImageCaptionNode.prototype.onBlur = function () {
+	if ( this.isEmpty() ) {
+		this.reshowPlaceholder();
+		this.warnings = [];
+		this.hideWarningIfNeeded();
+	} else {
+		this.showWarningIfNeeded();
+	}
+};
+
+/**
+ * Show the warning if the caption is invalid and is not empty
  */
 CERecommendedImageCaptionNode.prototype.showWarningIfNeeded = function () {
-	if ( this.isValid() ) {
+	if ( this.isValid() || this.isEmpty() ) {
 		return;
 	}
 	var $warningLabel = this.getWarningLabel();
