@@ -421,7 +421,7 @@ RecommendedImageToolbarDialog.prototype.updateSuggestionContent = function () {
 	this.$imageThumbnail.css( 'background-image', 'url(' + metadata.thumbUrl + ')' );
 	this.$imageInfo.append( [
 		$( '<div>' ).append( [
-			this.getFilenameElement( imageData.image ),
+			this.getFilenameElement( imageData.displayFilename ),
 			this.getDescriptionElement( metadata.description )
 		] ),
 		this.detailsButton.$element

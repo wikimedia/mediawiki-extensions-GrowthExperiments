@@ -6,6 +6,7 @@ var StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEd
 /**
  * @typedef mw.libs.ge.ImageRecommendationImage
  * @property {string} image Image filename in unprefixed DBkey format.
+ * @property {string} displayFilename Image filename with spaces instead of underscores.
  * @property {string} source Recommendation source; one of 'wikidata', 'wikipedia', 'commons'.
  * @property {string[]} projects Lists of projects (as wiki IDs) the recommendation is from.
  *   Only used when the source is 'wikipedia'.
@@ -297,7 +298,7 @@ AddImageArticleTarget.prototype.getSummaryData = function () {
 		surfaceModel = this.getSurface().getModel(),
 		/** @type {mw.libs.ge.ImageRecommendationSummary} */
 		summaryData = {
-			filename: imageData.image,
+			filename: imageData.displayFilename,
 			accepted: this.recommendationAccepted,
 			thumbUrl: imageData.metadata.thumbUrl,
 			caption: ''
