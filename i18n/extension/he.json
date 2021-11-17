@@ -10,6 +10,7 @@
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> צפוי להיות <code>$2</code>, אבל עכשיו זה <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "חוסר־התאמה במודל התוכן: לקובץ ההגדרות של GrowthExperiments צריך להיות מודל התוכן JSON, וזוהה $1",
 	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "מזהה מטפל סוג משימה בלתי־תקין: <code>$1</code> אינו ערך תקין",
+	"growthexperiments-config-validator-array-toobig": "למשתנה $1 יש יותר מדי ערכים (מותר $2 לכל היותר)",
 	"growthexperiments-edit-config-disabled": "הגדרות קהילתיות אינה מופעלת עכשיו.",
 	"growthexperiments-edit-config-title": "עריכת הגדרות צמיחה",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: עדכון אחרון על־ידי [[User:$1|$1]] $2 ([$4 הבדל]).",

@@ -15,6 +15,7 @@
 	"growthexperiments-config-validator-datatype-mismatch": "Als <code>$1</code> wurde <code>$2</code> erwartet, es ist jedoch <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Falsches Inhaltsmodell: Die Konfigurationsdatei von GrowthExperiments muss das JSON-Inhaltsmodell besitzen, $1 entdeckt",
 	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Ungültige Aufgabentyp-Handler-ID: <code>$1</code> ist kein gültiger Wert",
+	"growthexperiments-config-validator-array-toobig": "$1 hat zu viele Artikel (maximal $2 erlaubt)",
 	"growthexperiments-edit-config-disabled": "Die Community-Konfiguration ist derzeit deaktiviert.",
 	"growthexperiments-edit-config-title": "Growth-Konfiguration bearbeiten",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Zuletzt aktualisiert von [[User:$1|$1]] $2 ([$4 Versionsunterschied]).",

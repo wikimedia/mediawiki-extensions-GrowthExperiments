@@ -383,9 +383,15 @@
 	"growthexperiments-structuredtask-editmode-selection-visual": "দৃশ্যমান সম্পাদনা",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "বাতিল",
 	"growthexperiments-structuredtask-summary-submit": "জমা দিন",
+	"growthexperiments-addimage-detailsdialog-image": "ফাইলের নাম:",
+	"growthexperiments-addimage-detailsdialog-caption": "ক্যাপশন:",
+	"growthexperiments-addimage-detailsdialog-license": "লাইসেন্স:",
+	"growthexperiments-addimage-detailsdialog-date": "তারিখ:",
+	"growthexperiments-addimage-detailsdialog-categories": "বিষয়শ্রেণী:",
 	"growthexperiments-addimage-rejectiondialog-action-done": "জমা দিন",
 	"growthexperiments-addimage-viewer-close-button": "বন্ধ করুন",
 	"growthexperiments-addimage-caption-info-dialog-confirm": "বুঝেছি",
 	"growthexperiments-structuredtask-user-error-login-cta": "প্রবেশ করুন",
-	"growthexperiments-addimage-summary-label": "সারাংশ"
+	"growthexperiments-addimage-summary-label": "সারাংশ",
+	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "বুঝেছি"
 }

@@ -1,13 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"AC Krah"
+			"AC Krah",
+			"Robertjamal12"
 		]
 	},
 	"growthexperiments-addimage-detailsdialog-description": "Nkyerɛaseɛ",
-	"growthexperiments-addimage-detailsdialog-caption": "Asɛmti",
+	"growthexperiments-addimage-detailsdialog-caption": "Nkyerɛkyerɛ mu tiawa",
 	"growthexperiments-addimage-detailsdialog-author": "Ɔtwerɛfoɔ",
 	"growthexperiments-addimage-detailsdialog-categories": "Nkyekyɛmu",
 	"growthexperiments-addimage-detailsdialog-close": "Tom",
+	"growthexperiments-addimage-rejectiondialog-header": "Dɛn nti?",
+	"growthexperiments-addimage-onboarding-content-imagedetails-body-paragraph2": "{{GENDER:|Wo}} bɛtumi abue mfoni no sɛnea wo bɛ hu yiye.",
 	"growthexperiments-addimage-onboarding-content-article-title": "Hwɛ atwerɛsɛm no"
 }
