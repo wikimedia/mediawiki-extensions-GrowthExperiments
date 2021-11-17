@@ -94,7 +94,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 
 					if ( $revalidateCache ) {
 						// Filter out cached tasks which have already been done.
-						// Filter before limiting, so they can be replace by other tasks.
+						// Filter before limiting, so they can be replaced by other tasks.
 						$newValue = $this->taskSuggester->filter( $user, $oldValue );
 					} else {
 						$newValue = $oldValue;
@@ -137,14 +137,18 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 					if ( $useCache || $resetCache ) {
 						// Schedule a job to refresh the taskset before the cache
 						// expires.
-						$this->jobQueueGroup->lazyPush(
-							new NewcomerTasksCacheRefreshJob( [
-								'userId' => $user->getId(),
-								'jobReleaseTimestamp' => (int)wfTimestamp() +
-									// Process the job the day before the cache expires.
-									( $this->cache::TTL_WEEK - $this->cache::TTL_DAY ),
-							] )
-						);
+						try {
+							$this->jobQueueGroup->lazyPush(
+								new NewcomerTasksCacheRefreshJob( [
+									'userId' => $user->getId(),
+									'jobReleaseTimestamp' => (int)wfTimestamp() +
+										// Process the job the day before the cache expires.
+										( $this->cache::TTL_WEEK - $this->cache::TTL_DAY ),
+								] )
+							);
+						} catch ( \JobQueueError $jobQueueError ) {
+							// Ignore jobqueue errors.
+						}
 					}
 				}
 				if ( !$useCache && !$resetCache ) {

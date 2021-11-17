@@ -1,0 +1,169 @@
+{
+	"links": [
+		{
+			"context_after": ", created ",
+			"context_before": "y a giant ",
+			"link_index": 0,
+			"link_target": "Supercomputer",
+			"link_text": "supercomputer",
+			"match_index": 0,
+			"score": 0.5386617183685303,
+			"wikitext_offset": 8742
+		},
+		{
+			"context_after": " music and",
+			"context_before": "oving the ",
+			"link_index": 1,
+			"link_target": "Pink Floyd",
+			"link_text": "Pink Floyd",
+			"match_index": 0,
+			"score": 0.8725306391716003,
+			"wikitext_offset": 18783
+		},
+		{
+			"context_after": ", since bo",
+			"context_before": " as ",
+			"link_index": 2,
+			"link_target": "Slartibartfast",
+			"link_text": "Slartibartfast",
+			"match_index": 0,
+			"score": 0.5499957799911499,
+			"wikitext_offset": 22474
+		},
+		{
+			"context_after": " Woman, ",
+			"context_before": " as the ",
+			"link_index": 3,
+			"link_target": "Sydney Opera House",
+			"link_text": "Sydney Opera House",
+			"match_index": 0,
+			"score": 0.6769223213195801,
+			"wikitext_offset": 23729
+		},
+		{
+			"context_after": " Woman, ",
+			"context_before": " as the ",
+			"link_index": 4,
+			"link_target": "Raffle",
+			"link_text": "Raffle",
+			"match_index": 0,
+			"score": 0.6146161556243896,
+			"wikitext_offset": 23960
+		},
+		{
+			"context_after": ", by ",
+			"context_before": "tially in ",
+			"link_index": 5,
+			"link_target": "Paperback",
+			"link_text": "paperback",
+			"match_index": 0,
+			"score": 0.8487067222595215,
+			"wikitext_offset": 27854
+		},
+		{
+			"context_after": " edition w",
+			"context_before": "elease. A ",
+			"link_index": 6,
+			"link_target": "Hardcover",
+			"link_text": "hardback",
+			"match_index": 0,
+			"score": 0.9122462868690491,
+			"wikitext_offset": 28333
+		},
+		{
+			"context_after": " re-releas",
+			"context_before": " In 2005, ",
+			"link_index": 7,
+			"link_target": "Del Rey Books",
+			"link_text": "Del Rey Books",
+			"match_index": 0,
+			"score": 0.8792762160301208,
+			"wikitext_offset": 28607
+		},
+		{
+			"context_after": " in a stag",
+			"context_before": "star as a ",
+			"link_index": 8,
+			"link_target": "Special effect",
+			"link_text": "special effect",
+			"match_index": 0,
+			"score": 0.8539136648178101,
+			"wikitext_offset": 29810
+		},
+		{
+			"context_after": " and all),",
+			"context_before": "what with ",
+			"link_index": 9,
+			"link_target": "Time travel",
+			"link_text": "time travel",
+			"match_index": 0,
+			"score": 0.6823470592498779,
+			"wikitext_offset": 34340
+		},
+		{
+			"context_after": ". Zaphod p",
+			"context_before": "en from a ",
+			"link_index": 10,
+			"link_target": "Virtual reality",
+			"link_text": "virtual reality",
+			"match_index": 0,
+			"score": 0.5138476490974426,
+			"wikitext_offset": 38262
+		},
+		{
+			"context_after": " alongside",
+			"context_before": "ed as the ",
+			"link_index": 11,
+			"link_target": "Showrunner",
+			"link_text": "showrunner",
+			"match_index": 0,
+			"score": 0.9307100772857666,
+			"wikitext_offset": 44352
+		},
+		{
+			"context_after": " in Decemb",
+			"context_before": "in at the ",
+			"link_index": 12,
+			"link_target": "Oxford Playhouse",
+			"link_text": "Oxford Playhouse",
+			"match_index": 0,
+			"score": 0.821434497833252,
+			"wikitext_offset": 51958
+		},
+		{
+			"context_after": ", Plymouth",
+			"context_before": "1981, the ",
+			"link_index": 13,
+			"link_target": "Bristol Hippodrome",
+			"link_text": "Bristol Hippodrome",
+			"match_index": 0,
+			"score": 0.7272906303405762,
+			"wikitext_offset": 51997
+		},
+		{
+			"context_after": "'s Audiowo",
+			"context_before": "dition by ",
+			"link_index": 14,
+			"link_target": "Simon & Schuster",
+			"link_text": "Simon & Schuster",
+			"match_index": 0,
+			"score": 0.9635002613067627,
+			"wikitext_offset": 58929
+		}
+	],
+	"links_count": 15,
+	"meta": {
+		"application_version": "5cfca36",
+		"dataset_checksums": {
+			"anchors": "c7d2c0df5383a7720e2157170d48c0c17381000414de50a128fc35a9a3f21d59",
+			"model": "9d3db2b94d3d455b9e3efd631f2c24c6fd37e84ae0a611b6d446f81087393ca4",
+			"pageids": "84d3ace5bffc076635c254186d7cea67fa8fbaf41ae323f3ec68dde911001f31",
+			"redirects": "a2e7dfe7ae32efd8059f436633bf45a48810a01560088de02a62bc5a067eeb2e",
+			"w2vfiltered": "293bcd2c1a2be030f095dabef5ae586967cf3bb0da51fa7161a5c2343f9ca229"
+		},
+		"format_version": 1
+	},
+	"page_title": "The Hitchhiker's Guide to the Galaxy",
+	"pageid": 31353,
+	"revid": 1039981004
+}

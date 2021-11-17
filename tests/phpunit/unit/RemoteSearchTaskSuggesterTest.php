@@ -566,7 +566,7 @@ class RemoteSearchTaskSuggesterTest extends MediaWikiUnitTestCase {
 						],
 					],
 				] ],
-				'expectedTaskSet' => new TaskSet( [], 100, 0,
+				'expectedTaskSet' => new TaskSet( [], 99, 0,
 					new TaskSetFilters( [ 'type1' ], [] ) ),
 			],
 			'topic' => [

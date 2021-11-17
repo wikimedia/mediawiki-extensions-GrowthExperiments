@@ -57,10 +57,28 @@ if ( file_exists( "$IP/extensions/GrowthExperiments/tests/selenium/fixtures/Grow
 			'service',
 			[ 'php7.2-fpm', 'restart' ]
 		);
-		// Import the test article and its suggestions
+		// Import the test articles and their suggestions
 		childProcess.spawnSync(
 			'php',
 			[ 'maintenance/importDump.php', path.resolve( __dirname + '/fixtures/SuggestedEditsContent.xml' ) ],
+			{ cwd: ip }
+		);
+		childProcess.spawnSync(
+			'php',
+			[
+				'extensions/GrowthExperiments/maintenance/insertLinkRecommendation.php',
+				'--json-file=' + path.resolve( __dirname + '/fixtures/Douglas_Adams.suggestions.json' ),
+				'--title=Douglas_Adams'
+			],
+			{ cwd: ip }
+		);
+		childProcess.spawnSync(
+			'php',
+			[
+				'extensions/GrowthExperiments/maintenance/insertLinkRecommendation.php',
+				'--json-file=' + path.resolve( __dirname + '/fixtures/The_Hitchhikers_Guide_to_the_Galaxy.suggestions.json' ),
+				'--title=The_Hitchhiker\'s_Guide_to_the_Galaxy'
+			],
 			{ cwd: ip }
 		);
 		childProcess.spawnSync(

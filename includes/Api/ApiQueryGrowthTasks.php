@@ -7,7 +7,7 @@ use ApiPageSet;
 use ApiQuery;
 use ApiQueryGeneratorBase;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
-use GrowthExperiments\NewcomerTasks\Task\Task;
+use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
@@ -27,22 +27,27 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
+	/** @var LinkRecommendationFilter */
+	private $linkRecommendationFilter;
 
 	/**
 	 * @param ApiQuery $queryModule
 	 * @param string $moduleName
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param ConfigurationLoader $configurationLoader
+	 * @param LinkRecommendationFilter $linkRecommendationFilter
 	 */
 	public function __construct(
 		ApiQuery $queryModule,
 		$moduleName,
 		TaskSuggesterFactory $taskSuggesterFactory,
-		ConfigurationLoader $configurationLoader
+		ConfigurationLoader $configurationLoader,
+		LinkRecommendationFilter $linkRecommendationFilter
 	) {
 		parent::__construct( $queryModule, $moduleName, 'gt' );
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->configurationLoader = $configurationLoader;
+		$this->linkRecommendationFilter = $linkRecommendationFilter;
 	}
 
 	/** @inheritDoc */
@@ -89,6 +94,9 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		if ( $tasks instanceof StatusValue ) {
 			$this->dieStatus( $tasks );
 		}
+		// If there are link recommendation tasks without corresponding DB entries, these will be removed
+		// from the TaskSet.
+		$tasks = $this->linkRecommendationFilter->filter( $tasks );
 
 		$result = $this->getResult();
 		$basePath = [ 'query', $this->getModuleName() ];
@@ -99,7 +107,6 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 		// access result.data.copyedit rather an iterating over everything.
 		'@phan-var TaskSet $tasks';
 		foreach ( $tasks as $i => $task ) {
-			/** @var Task $task */
 			$title = Title::newFromLinkTarget( $task->getTitle() );
 			$extraData = [
 				'tasktype' => $task->getTaskType()->getId(),
