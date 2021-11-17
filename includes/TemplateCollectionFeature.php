@@ -11,6 +11,7 @@ use CirrusSearch\Search\Filters;
 use CirrusSearch\Search\SearchContext;
 use CirrusSearch\WarningCollector;
 use Elastica\Query\AbstractQuery;
+use GrowthExperiments\Config\Validation\GrowthConfigValidation;
 use MediaWiki\Linker\LinkTarget;
 use TitleFactory;
 use TitleValue;
@@ -28,7 +29,7 @@ class TemplateCollectionFeature extends SimpleKeywordFeature implements FilterQu
 	 * ElasticSearch doesn't allow more than 1024 clauses in a boolean query. Limit at 800
 	 * to leave some space to combine hastemplatecollection with other search terms.
 	 */
-	public const MAX_TEMPLATES_IN_COLLECTION = 800;
+	public const MAX_TEMPLATES_IN_COLLECTION = GrowthConfigValidation::MAX_TEMPLATES_IN_COLLECTION;
 
 	/** @var array */
 	private $templates;
