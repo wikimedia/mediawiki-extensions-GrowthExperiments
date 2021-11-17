@@ -93,7 +93,10 @@ class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 				if ( in_array( 'starred', $selectedValues, true ) ) {
 					$targetIds = $this->getStarredMenteeIds( $context->getUser() );
 				}
-				if ( in_array( 'unstarred', $selectedValues, true ) ) {
+				if (
+					$this->config->get( 'GERecentChangesUnstarredMenteesFilterEnabled' ) &&
+					in_array( 'unstarred', $selectedValues, true )
+				) {
 					$targetIds = array_merge( $targetIds, $this->getUnstarredMenteeIds( $context->getUser() ) );
 				}
 				// Un-alias the rc_user field, aliases do not work in WHERE.
@@ -122,18 +125,21 @@ class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 				return in_array( $rc->getPerformerIdentity()->getId(), $starredMenteeIds, true );
 			},
 		] );
-		$unstarredMenteesFilter = new ChangesListStringOptionsFilter( [
-			'name' => 'unstarred',
-			'group' => $group,
-			'label' => 'growthexperiments-rcfilters-mentorship-unstarred-label',
-			'description' => 'growthexperiments-rcfilters-mentorship-unstarred-desc',
-			'priority' => -1,
-			'cssClassSuffix' => 'unstarred-mentee',
-			'isRowApplicableCallable' => function ( IContextSource $context, RecentChange $rc ) {
-				$unstarredMenteeIds = $this->getUnstarredMenteeIds( $context->getUser() );
-				return in_array( $rc->getPerformerIdentity()->getId(), $unstarredMenteeIds, true );
-			},
-		] );
+
+		if ( $this->config->get( 'GERecentChangesUnstarredMenteesFilterEnabled' ) ) {
+			$unstarredMenteesFilter = new ChangesListStringOptionsFilter( [
+				'name' => 'unstarred',
+				'group' => $group,
+				'label' => 'growthexperiments-rcfilters-mentorship-unstarred-label',
+				'description' => 'growthexperiments-rcfilters-mentorship-unstarred-desc',
+				'priority' => -1,
+				'cssClassSuffix' => 'unstarred-mentee',
+				'isRowApplicableCallable' => function ( IContextSource $context, RecentChange $rc ) {
+					$unstarredMenteeIds = $this->getUnstarredMenteeIds( $context->getUser() );
+					return in_array( $rc->getPerformerIdentity()->getId(), $unstarredMenteeIds, true );
+				},
+			] );
+		}
 	}
 
 	/**
