@@ -237,7 +237,9 @@ class LinkRecommendationUpdater {
 		}
 
 		// T291253
-		if ( $this->linkRecommendationStore->hasSubmission( $recommendation, IDBAccessObject::READ_LATEST ) ) {
+		if ( !$force && $this->linkRecommendationStore->hasSubmission( $recommendation,
+			IDBAccessObject::READ_LATEST )
+		) {
 			return $this->failure( 'submission already exists for revision ' . $revision->getId() );
 		}
 
