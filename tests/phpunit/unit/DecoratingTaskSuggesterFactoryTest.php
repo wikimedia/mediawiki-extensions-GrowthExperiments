@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Tests;
 
 use GrowthExperiments\NewcomerTasks\Task\Task;
+use GrowthExperiments\NewcomerTasks\TaskSetListener;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\DecoratingTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
@@ -41,6 +42,9 @@ class DecoratingTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 						->disableOriginalConstructor()
 						->getMock(),
 					new \WANObjectCache( [ 'cache' => new HashBagOStuff() ] ),
+					$this->getMockBuilder( TaskSetListener::class )
+						->disableOriginalConstructor()
+						->getMock()
 				],
 			],
 		] );

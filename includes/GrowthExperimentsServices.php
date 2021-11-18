@@ -117,6 +117,10 @@ class GrowthExperimentsServices {
 		return $this->coreServices->get( 'GrowthExperimentsImageRecommendationProvider' );
 	}
 
+	public function getImageRecommendationProviderUncached(): ImageRecommendationProvider {
+		return $this->coreServices->get( 'GrowthExperimentsImageRecommendationProviderUncached' );
+	}
+
 	public function getLinkRecommendationHelper(): LinkRecommendationHelper {
 		return $this->coreServices->get( 'GrowthExperimentsLinkRecommendationHelper' );
 	}
