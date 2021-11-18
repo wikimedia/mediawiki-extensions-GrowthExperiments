@@ -28,5 +28,6 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "အဝေးရောက်",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "မလုပ်တော့ပါ",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "ခေတ္တရပ်",
-	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "ရက်"
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "ရက်",
+	"growthexperiments-notification-body-mentee-claimed": "အကြောင်းပြချက်: $1"
 }

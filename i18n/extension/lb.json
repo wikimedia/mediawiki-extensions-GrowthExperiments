@@ -5,6 +5,7 @@
 		]
 	},
 	"growthexperiments-desc": "An dëser Erweiderung sinn Experimenter vum 'Growth team'.",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Lescht Aktualiséierung vum [[User:$1|$1]] $2 ([$4 Ënnerscheed]).",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "Uewen op der Säit",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "Ënnen op der Säit",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Helpdesk",
@@ -12,6 +13,7 @@
 	"growthexperiments-edit-config-mentorship-enabled-true": "Jo",
 	"growthexperiments-edit-config-mentorship-enabled-false": "Neen",
 	"growthexperiments-edit-config-newcomertasks": "Proposéiert Ännerungen",
+	"growthexperiments-edit-config-newcomer-tasks-disabled": "Desaktivéiert",
 	"growthexperiments-edit-config-newcomer-tasks-links-templates": "LInken: Schabloune fir Artikelen ze fannen déi méi Wikilinke brauchen",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Infobox-Schablounen"
 }
