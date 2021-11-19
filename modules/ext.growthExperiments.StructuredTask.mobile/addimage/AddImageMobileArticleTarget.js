@@ -1,7 +1,7 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	StructuredTaskMobileArticleTarget = require( '../StructuredTaskMobileArticleTarget.js' ),
-	AddImageArticleTarget = StructuredTask.AddImageArticleTarget,
-	ImageSuggestionInteractionLogger = StructuredTask.ImageSuggestionInteractionLogger;
+	AddImageArticleTarget = StructuredTask.addImage().AddImageArticleTarget,
+	ImageSuggestionInteractionLogger = StructuredTask.addImage().ImageSuggestionInteractionLogger;
 
 /**
  * Mobile version of AddLinkArticleTarget

@@ -1,6 +1,6 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
-	RecommendedLinkToolbarDialog = StructuredTask.RecommendedLinkToolbarDialog,
-	LinkSuggestionInteractionLogger = StructuredTask.LinkSuggestionInteractionLogger;
+	RecommendedLinkToolbarDialog = StructuredTask.addLink().RecommendedLinkToolbarDialog,
+	LinkSuggestionInteractionLogger = StructuredTask.addLink().LinkSuggestionInteractionLogger;
 
 /**
  * @class mw.libs.ge.RecommendedLinkToolbarDialogDesktop

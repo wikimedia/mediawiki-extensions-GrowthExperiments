@@ -1,5 +1,5 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
-	AddLinkSaveDialog = StructuredTask.AddLinkSaveDialog;
+	AddLinkSaveDialog = StructuredTask.addLink().AddLinkSaveDialog;
 
 /**
  * Replacement for the normal VE Save / Publish dialog that replaces the freetext

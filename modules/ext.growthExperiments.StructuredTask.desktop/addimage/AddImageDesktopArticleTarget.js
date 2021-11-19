@@ -1,7 +1,7 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	StructuredTaskDesktopArticleTarget = require( '../StructuredTaskDesktopArticleTarget.js' ),
-	AddImageArticleTarget = StructuredTask.AddImageArticleTarget,
-	ImageSuggestionInteractionLogger = StructuredTask.ImageSuggestionInteractionLogger;
+	AddImageArticleTarget = StructuredTask.addImage().AddImageArticleTarget,
+	ImageSuggestionInteractionLogger = StructuredTask.addImage().ImageSuggestionInteractionLogger;
 
 /**
  * Desktop version of AddImageArticleTarget

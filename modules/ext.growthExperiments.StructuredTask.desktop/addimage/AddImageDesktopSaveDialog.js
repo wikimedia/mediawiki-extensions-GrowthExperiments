@@ -1,5 +1,5 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
-	AddImageSaveDialog = StructuredTask.AddImageSaveDialog;
+	AddImageSaveDialog = StructuredTask.addImage().AddImageSaveDialog;
 
 /**
  * Replacement for the normal VE Save / Publish dialog that replaces the freetext

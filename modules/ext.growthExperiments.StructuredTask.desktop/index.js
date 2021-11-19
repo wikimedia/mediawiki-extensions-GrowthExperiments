@@ -1,7 +1,5 @@
 module.exports = ( function () {
 	var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
-		AddLinkTargetInitializer = StructuredTask.AddLinkTargetInitializer,
-		AddImageTargetInitializer = StructuredTask.AddImageTargetInitializer,
 		MachineSuggestionsSaveTool = require( './MachineSuggestionsSaveTool.js' ),
 		SuggestionsDesktopArticleTarget = require( './SuggestionsDesktopArticleTarget.js' );
 
@@ -13,26 +11,28 @@ module.exports = ( function () {
 	 */
 	function initializeTarget( taskTypeId ) {
 		if ( taskTypeId === 'link-recommendation' ) {
-			var addLinkTargetInitializer = new AddLinkTargetInitializer( {
-				tools: [ MachineSuggestionsSaveTool ],
-				windows: [
-					require( './addlink/AddLinkDesktopSaveDialog.js' ),
-					require( './addlink/RecommendedLinkToolbarDialogDesktop.js' )
-				],
-				taskArticleTarget: require( './addlink/AddLinkDesktopArticleTarget.js' ),
-				suggestionsArticleTarget: SuggestionsDesktopArticleTarget
-			} );
+			var AddLinkTargetInitializer = StructuredTask.addLink().AddLinkTargetInitializer,
+				addLinkTargetInitializer = new AddLinkTargetInitializer( {
+					tools: [ MachineSuggestionsSaveTool ],
+					windows: [
+						require( './addlink/AddLinkDesktopSaveDialog.js' ),
+						require( './addlink/RecommendedLinkToolbarDialogDesktop.js' )
+					],
+					taskArticleTarget: require( './addlink/AddLinkDesktopArticleTarget.js' ),
+					suggestionsArticleTarget: SuggestionsDesktopArticleTarget
+				} );
 			addLinkTargetInitializer.initialize();
 		} else if ( taskTypeId === 'image-recommendation' ) {
-			var addImageTargetInitializer = new AddImageTargetInitializer( {
-				tools: [ MachineSuggestionsSaveTool ],
-				windows: [
-					require( './addimage/AddImageDesktopSaveDialog.js' ),
-					StructuredTask.RecommendedImageToolbarDialog
-				],
-				taskArticleTarget: require( './addimage/AddImageDesktopArticleTarget.js' ),
-				suggestionsArticleTarget: SuggestionsDesktopArticleTarget
-			} );
+			var AddImageTargetInitializer = StructuredTask.addImage().AddImageTargetInitializer,
+				addImageTargetInitializer = new AddImageTargetInitializer( {
+					tools: [ MachineSuggestionsSaveTool ],
+					windows: [
+						require( './addimage/AddImageDesktopSaveDialog.js' ),
+						StructuredTask.addImage().RecommendedImageToolbarDialog
+					],
+					taskArticleTarget: require( './addimage/AddImageDesktopArticleTarget.js' ),
+					suggestionsArticleTarget: SuggestionsDesktopArticleTarget
+				} );
 			addImageTargetInitializer.initialize();
 		}
 	}

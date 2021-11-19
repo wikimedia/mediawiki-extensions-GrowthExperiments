@@ -1,7 +1,5 @@
 module.exports = ( function () {
 	var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
-		AddLinkTargetInitializer = StructuredTask.AddLinkTargetInitializer,
-		AddImageTargetInitializer = StructuredTask.AddImageTargetInitializer,
 		MachineSuggestionsPlaceholderTool = require( './MachineSuggestionsPlaceholderTool.js' ),
 		SuggestionsMobileArticleTarget = require( './SuggestionsMobileArticleTarget.js' );
 
@@ -13,27 +11,29 @@ module.exports = ( function () {
 	 */
 	function initializeTarget( taskTypeId ) {
 		if ( taskTypeId === 'link-recommendation' ) {
-			var addLinkTargetInitializer = new AddLinkTargetInitializer( {
-				tools: [ MachineSuggestionsPlaceholderTool ],
-				windows: [
-					require( './addlink/AddLinkMobileSaveDialog.js' ),
-					require( './addlink/RecommendedLinkToolbarDialogMobile.js' )
-				],
-				taskArticleTarget: require( './addlink/AddLinkMobileArticleTarget.js' ),
-				suggestionsArticleTarget: SuggestionsMobileArticleTarget
-			} );
+			var AddLinkTargetInitializer = StructuredTask.addLink().AddLinkTargetInitializer,
+				addLinkTargetInitializer = new AddLinkTargetInitializer( {
+					tools: [ MachineSuggestionsPlaceholderTool ],
+					windows: [
+						require( './addlink/AddLinkMobileSaveDialog.js' ),
+						require( './addlink/RecommendedLinkToolbarDialogMobile.js' )
+					],
+					taskArticleTarget: require( './addlink/AddLinkMobileArticleTarget.js' ),
+					suggestionsArticleTarget: SuggestionsMobileArticleTarget
+				} );
 			addLinkTargetInitializer.disableDefaultEditModeToolsForRegularVeMode();
 			addLinkTargetInitializer.initialize();
 		} else if ( taskTypeId === 'image-recommendation' ) {
-			var addImageTargetInitializer = new AddImageTargetInitializer( {
-				tools: [ MachineSuggestionsPlaceholderTool ],
-				windows: [
-					require( './addimage/AddImageMobileSaveDialog.js' ),
-					StructuredTask.RecommendedImageToolbarDialog
-				],
-				taskArticleTarget: require( './addimage/AddImageMobileArticleTarget.js' ),
-				suggestionsArticleTarget: SuggestionsMobileArticleTarget
-			} );
+			var AddImageTargetInitializer = StructuredTask.addImage().AddImageTargetInitializer,
+				addImageTargetInitializer = new AddImageTargetInitializer( {
+					tools: [ MachineSuggestionsPlaceholderTool ],
+					windows: [
+						require( './addimage/AddImageMobileSaveDialog.js' ),
+						StructuredTask.addImage().RecommendedImageToolbarDialog
+					],
+					taskArticleTarget: require( './addimage/AddImageMobileArticleTarget.js' ),
+					suggestionsArticleTarget: SuggestionsMobileArticleTarget
+				} );
 			addImageTargetInitializer.disableDefaultEditModeToolsForRegularVeMode();
 			addImageTargetInitializer.initialize();
 		}
