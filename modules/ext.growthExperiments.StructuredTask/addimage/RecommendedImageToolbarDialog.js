@@ -387,18 +387,27 @@ RecommendedImageToolbarDialog.prototype.getFilenameElement = function ( title ) 
  * @return {jQuery}
  */
 RecommendedImageToolbarDialog.prototype.getDescriptionElement = function ( descriptionHtml ) {
-	// TODO: Filter out complicated content in description (infoboxes, tables etc)
 	var descriptionText = $.parseHTML( descriptionHtml ).map( function ( node ) {
-		if ( node.nodeType === Node.ELEMENT_NODE ) {
-			return node.innerText;
-		} else if ( node.nodeType === Node.TEXT_NODE ) {
-			return node.textContent;
-		} else {
-			return '';
-		}
-	} ).join( '' );
+			if ( node.nodeType === Node.ELEMENT_NODE ) {
+				return node.innerText;
+			} else if ( node.nodeType === Node.TEXT_NODE ) {
+				return node.textContent;
+			} else {
+				return '';
+			}
+		} ).join( '' ),
+		hasDescription = descriptionText.length > 0;
+
+	if ( !hasDescription ) {
+		descriptionText = mw.message(
+			'growthexperiments-addimage-inspector-description-placeholder'
+		).text();
+	}
 	return $( '<p>' )
-		.addClass( 'mw-ge-recommendedImageToolbarDialog-description' )
+		.addClass( [
+			'mw-ge-recommendedImageToolbarDialog-description',
+			hasDescription ? '' : 'mw-ge-recommendedImageToolbarDialog-description--placeholder'
+		] )
 		.text( descriptionText );
 };
 
