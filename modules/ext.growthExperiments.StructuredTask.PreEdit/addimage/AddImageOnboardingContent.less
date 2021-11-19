@@ -1,3 +1,6 @@
+@import 'resources/lib/ooui/wikimedia-ui-base.less';
+@import '../../homepage/ext.growthExperiments.mixins';
+
 .addimage-onboarding-content {
 	&-image1 {
 		background-image: url( ../../../images/addimage/onboarding-image1-ltr.svg );
@@ -20,6 +23,11 @@
 
 		&--italic {
 			font-style: italic;
+		}
+
+		&--subtext {
+			color: @wmui-color-base30;
+			.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 14.8px, @targetLineHeight:  22px );
 		}
 	}
 }
