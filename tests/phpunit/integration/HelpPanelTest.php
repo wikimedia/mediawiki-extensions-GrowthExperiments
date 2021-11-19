@@ -6,6 +6,7 @@ use GrowthExperiments\HelpPanel;
 use GrowthExperiments\HelpPanelHooks;
 use HashConfig;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\User\UserOptionsLookup;
 use MediaWikiIntegrationTestCase;
 
 /**
@@ -59,12 +60,16 @@ class HelpPanelTest extends MediaWikiIntegrationTestCase {
 		$request->method( 'getBool' )
 			->with( 'gesuggestededit' )
 			->willReturn( $gesuggestededit );
-		$user = $this->createPartialMock( \User::class, [ 'getOption', 'getId' ] );
+		$user = $this->createPartialMock( \User::class, [ 'getId' ] );
 		$user->method( 'getId' )
 			->willReturn( $userId );
-		$user->method( 'getOption' )
-			->with( HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE )
+		$userOptionsLookupMock = $this->getMockBuilder( UserOptionsLookup::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$userOptionsLookupMock->method( 'getOption' )
+			->with( $this->anything(), HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE )
 			->willReturn( $userHelpPanelPref );
+		$this->setService( 'UserOptionsLookup', $userOptionsLookupMock );
 		$out->method( 'getUser' )
 			->willReturn( $user );
 		$out->method( 'getRequest' )

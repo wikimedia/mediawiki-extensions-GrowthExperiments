@@ -171,6 +171,7 @@
 				"GrowthExperimentsMultiConfig",
 				"DBLoadBalancer",
 				"UserOptionsManager",
+				"UserOptionsLookup",
 				"NamespaceInfo",
 				"TitleFactory",
 				"StatsdDataFactory",

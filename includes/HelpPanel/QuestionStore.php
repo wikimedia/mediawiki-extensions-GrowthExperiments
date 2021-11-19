@@ -9,13 +9,13 @@ use Language;
 use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\Revision\RevisionStore;
 use MediaWiki\Revision\SlotRecord;
+use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\User\UserOptionsManager;
 use RequestContext;
 use TextContent;
 use Title;
 use User;
 use UserOptionsUpdateJob;
-use Wikimedia\Rdbms\ILoadBalancer;
 
 class QuestionStore {
 
@@ -36,10 +36,6 @@ class QuestionStore {
 	 */
 	private $revisionStore;
 	/**
-	 * @var ILoadBalancer
-	 */
-	private $loadBalancer;
-	/**
 	 * @var Language
 	 */
 	private $language;
@@ -47,6 +43,10 @@ class QuestionStore {
 	 * @var UserOptionsManager
 	 */
 	private $userOptionsManager;
+	/**
+	 * @var UserOptionsLookup
+	 */
+	private $userOptionsLookup;
 	/**
 	 * @var bool
 	 */
@@ -56,26 +56,26 @@ class QuestionStore {
 	 * @param User $user
 	 * @param string $preference
 	 * @param RevisionStore $revisionStore
-	 * @param ILoadBalancer $loadBalancer
 	 * @param Language $language
 	 * @param UserOptionsManager $userOptionsManager
+	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param bool $wasPosted
 	 */
 	public function __construct(
 		$user,
 		$preference,
 		RevisionStore $revisionStore,
-		ILoadBalancer $loadBalancer,
 		Language $language,
 		UserOptionsManager $userOptionsManager,
+		UserOptionsLookup $userOptionsLookup,
 		$wasPosted
 	) {
 		$this->user = $user;
 		$this->preference = $preference;
 		$this->revisionStore = $revisionStore;
-		$this->loadBalancer = $loadBalancer;
 		$this->language = $language;
 		$this->userOptionsManager = $userOptionsManager;
+		$this->userOptionsLookup = $userOptionsLookup;
 		$this->wasPosted = $wasPosted;
 	}
 
@@ -94,7 +94,7 @@ class QuestionStore {
 	 * @return QuestionRecord[]
 	 */
 	public function loadQuestions() {
-		$pref = $this->user->getOption( $this->preference );
+		$pref = $this->userOptionsLookup->getOption( $this->user, $this->preference );
 		if ( !$pref ) {
 			return [];
 		}

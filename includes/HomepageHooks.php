@@ -114,6 +114,8 @@ class HomepageHooks implements
 	private $lb;
 	/** @var UserOptionsManager */
 	private $userOptionsManager;
+	/** @var UserOptionsLookup */
+	private $userOptionsLookup;
 	/** @var NamespaceInfo */
 	private $namespaceInfo;
 	/** @var TitleFactory */
@@ -150,6 +152,7 @@ class HomepageHooks implements
 	 *  GrowthExperimentsMultiConfig::ALLOW_LIST.
 	 * @param ILoadBalancer $lb
 	 * @param UserOptionsManager $userOptionsManager
+	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param NamespaceInfo $namespaceInfo
 	 * @param TitleFactory $titleFactory
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
@@ -169,6 +172,7 @@ class HomepageHooks implements
 		Config $wikiConfig,
 		ILoadBalancer $lb,
 		UserOptionsManager $userOptionsManager,
+		UserOptionsLookup $userOptionsLookup,
 		NamespaceInfo $namespaceInfo,
 		TitleFactory $titleFactory,
 		IBufferingStatsdDataFactory $statsdDataFactory,
@@ -187,6 +191,7 @@ class HomepageHooks implements
 		$this->wikiConfig = $wikiConfig;
 		$this->lb = $lb;
 		$this->userOptionsManager = $userOptionsManager;
+		$this->userOptionsLookup = $userOptionsLookup;
 		$this->namespaceInfo = $namespaceInfo;
 		$this->titleFactory = $titleFactory;
 		$this->statsdDataFactory = $statsdDataFactory;
@@ -998,7 +1003,8 @@ class HomepageHooks implements
 		global $wgMinervaEnableSiteNotice;
 		if ( self::isHomepageEnabled( $skin->getUser() ) ) {
 			$siteNoticeGenerator = new SiteNoticeGenerator(
-				$this->experimentUserManager
+				$this->experimentUserManager,
+				$this->userOptionsLookup
 			);
 			return $siteNoticeGenerator->setNotice(
 				$skin->getRequest()->getVal( 'source' ),

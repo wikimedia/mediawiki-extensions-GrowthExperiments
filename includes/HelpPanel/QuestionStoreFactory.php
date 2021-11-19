@@ -18,9 +18,9 @@ class QuestionStoreFactory {
 			$context->getUser(),
 			$storage,
 			$services->getRevisionStore(),
-			$services->getDBLoadBalancer(),
 			$services->getContentLanguage(),
 			$services->getUserOptionsManager(),
+			$services->getUserOptionsLookup(),
 			$context->getRequest()->wasPosted()
 		);
 	}

@@ -7,6 +7,7 @@ use GrowthExperiments\HomepageHooks;
 use GrowthExperiments\Util;
 use Html;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserOptionsLookup;
 use OOUI\IconWidget;
 use OutputPage;
 use UserOptionsUpdateJob;
@@ -16,11 +17,19 @@ class SiteNoticeGenerator {
 	/** @var ExperimentUserManager */
 	private $experimentUserManager;
 
+	/** @var UserOptionsLookup */
+	private $userOptionsLookup;
+
 	/**
 	 * @param ExperimentUserManager $experimentUserManager
+	 * @param UserOptionsLookup $userOptionsLookup
 	 */
-	public function __construct( ExperimentUserManager $experimentUserManager ) {
+	public function __construct(
+		ExperimentUserManager $experimentUserManager,
+		UserOptionsLookup $userOptionsLookup
+	) {
 		$this->experimentUserManager = $experimentUserManager;
+		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/**
@@ -151,7 +160,7 @@ class SiteNoticeGenerator {
 		}
 
 		$user = $skin->getUser();
-		if ( $user->getOption( HomepageHooks::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN ) ) {
+		if ( $this->userOptionsLookup->getOption( $user, HomepageHooks::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN ) ) {
 			$skin->growthExperimentsHomepageDiscoveryNoticeSeen = true;
 			return true;
 		}

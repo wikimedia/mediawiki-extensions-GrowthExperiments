@@ -99,7 +99,8 @@ class HelpPanel {
 	 * @return bool
 	 */
 	private static function shouldShowHelpPanelToUser( User $user ) {
-		return $user->getOption( HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE );
+		$userOptionsLookup = MediaWikiServices::getInstance()->getUserOptionsLookup();
+		return $userOptionsLookup->getOption( $user, HelpPanelHooks::HELP_PANEL_PREFERENCES_TOGGLE );
 	}
 
 	/**

@@ -227,7 +227,7 @@ class SuggestedEdits extends BaseModule {
 	/** @inheritDoc */
 	public function getCssClasses() {
 		return array_merge( parent::getCssClasses(),
-			$this->getContext()->getUser()->getOption( self::ACTIVATED_PREF ) ?
+			$this->userOptionsLookup->getOption( $this->getContext()->getUser(), self::ACTIVATED_PREF ) ?
 				[ 'activated' ] :
 				[ 'unactivated' ]
 		);
