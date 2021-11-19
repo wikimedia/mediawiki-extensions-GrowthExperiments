@@ -1,7 +1,7 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	StructuredTaskDesktopArticleTarget = require( '../StructuredTaskDesktopArticleTarget.js' ),
-	AddLinkArticleTarget = StructuredTask.AddLinkArticleTarget,
-	LinkSuggestionInteractionLogger = StructuredTask.LinkSuggestionInteractionLogger;
+	AddLinkArticleTarget = StructuredTask.addLink().AddLinkArticleTarget,
+	LinkSuggestionInteractionLogger = StructuredTask.addLink().LinkSuggestionInteractionLogger;
 
 /**
  * Desktop version of AddLinkArticleTarget
