@@ -97,6 +97,7 @@ AddImageArticleTarget.prototype.afterSurfaceReady = function () {
 			// eslint-disable-next-line camelcase
 			active_interface: 'machinesuggestions_mode'
 		} );
+		this.getSurface().getView().$element.on( 'paste', this.onPaste.bind( this ) );
 	} else {
 		// Ideally, this error would happen sooner so the user doesn't have to wait for VE
 		// to load. There isn't really a way to differentiate between images in the article
@@ -274,6 +275,39 @@ AddImageArticleTarget.prototype.rollback = function () {
 	} );
 	surfaceModel.setReadOnly( true );
 	this.updateSuggestionState( this.selectedImageIndex, undefined, [] );
+};
+
+/**
+ * Insert the specified caption text.
+ * This is used when the caption text needs to be programmatically updated, such as in the
+ * custom paste handler.
+ *
+ * @param captionText
+ */
+AddImageArticleTarget.prototype.insertCaption = function ( captionText ) {
+	var surfaceModel = this.getSurface().getModel(),
+		documentModel = surfaceModel.getDocument(),
+		captionNode = documentModel.getNodesByType( 'mwGeRecommendedImageCaption' )[ 0 ],
+		captionOffset = surfaceModel.getDocument().getRelativeRange(
+			new ve.Range( captionNode.getRange().start ), 1 );
+
+	surfaceModel.getLinearFragment( captionOffset ).insertContent( captionText );
+};
+
+/**
+ * Only allow plain text to be pasted in as caption.
+ * This overrides VE's default paste handler which supports rich formatting.
+ *
+ * @param {jQuery.Event} e
+ */
+AddImageArticleTarget.prototype.onPaste = function ( e ) {
+	if ( !this.hasStartedCaption ) {
+		return;
+	}
+	e.preventDefault();
+	e.stopPropagation();
+	var text = ( e.originalEvent.clipboardData || window.clipboardData ).getData( 'text' );
+	this.insertCaption( text );
 };
 
 /** @inheritDoc **/
