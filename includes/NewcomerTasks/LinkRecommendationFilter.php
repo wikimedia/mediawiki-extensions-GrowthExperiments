@@ -6,7 +6,10 @@ use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 
-class LinkRecommendationFilter {
+/**
+ * Filter out link recommendation tasks that don't have a DB entry for recommendation data.
+ */
+class LinkRecommendationFilter extends AbstractTaskSetFilter implements TaskSetFilter {
 
 	/** @var LinkRecommendationStore */
 	private $linkRecommendationStore;
@@ -18,17 +21,14 @@ class LinkRecommendationFilter {
 		$this->linkRecommendationStore = $linkRecommendationStore;
 	}
 
-	/**
-	 * Filter out link recommendation tasks that don't have a DB entry for recommendation data.
-	 *
-	 * @param TaskSet $taskSet
-	 * @return TaskSet A new TaskSet with tasks not backed by DB entries removed from the tasks field and placed into
-	 * the invalidTasks field.
-	 */
-	public function filter( TaskSet $taskSet ): TaskSet {
+	/** @inheritDoc */
+	public function filter( TaskSet $taskSet, int $maxLength = PHP_INT_MAX ): TaskSet {
 		$invalidTasks = [];
 		$validTasks = [];
 		foreach ( $taskSet as $task ) {
+			if ( count( $validTasks ) >= $maxLength ) {
+				break;
+			}
 			if ( $task->getTaskType() instanceof LinkRecommendationTaskType &&
 				!$this->linkRecommendationStore->getByLinkTarget( $task->getTitle() ) ) {
 				$invalidTasks[] = $task;
@@ -36,8 +36,6 @@ class LinkRecommendationFilter {
 				$validTasks[] = $task;
 			}
 		}
-		return new TaskSet(
-			$validTasks, $taskSet->getTotalCount(), $taskSet->getOffset(), $taskSet->getFilters(), $invalidTasks
-		);
+		return $this->copyValidAndInvalidTasksToNewTaskSet( $taskSet, $validTasks, $invalidTasks );
 	}
 }
