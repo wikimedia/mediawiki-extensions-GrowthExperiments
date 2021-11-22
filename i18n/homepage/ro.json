@@ -401,6 +401,7 @@
 	"growthexperiments-addimage-inspector-show-button": "Arată sugestie de imagine",
 	"growthexperiments-addimage-inspector-help-button": "Primiți ajutor cu editarea",
 	"growthexperiments-addimage-inspector-details-button": "Vezi detaliile imaginii",
+	"growthexperiments-addimage-inspector-description-placeholder": "Nicio descriere disponibilă",
 	"growthexperiments-addimage-detailsdialog-header": "Detaliile imaginii",
 	"growthexperiments-addimage-detailsdialog-image": "Numele fișierului:",
 	"growthexperiments-addimage-detailsdialog-description": "Descriere:",

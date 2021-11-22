@@ -381,6 +381,7 @@
 	"growthexperiments-addimage-inspector-show-button": "이미지 제안 표시",
 	"growthexperiments-addimage-inspector-help-button": "편집 도움 받기",
 	"growthexperiments-addimage-inspector-details-button": "이미지 상세 정보 보기",
+	"growthexperiments-addimage-inspector-description-placeholder": "사용할 수 있는 설명이 없습니다.",
 	"growthexperiments-addimage-detailsdialog-header": "이미지 정보",
 	"growthexperiments-addimage-detailsdialog-image": "파일 이름:",
 	"growthexperiments-addimage-detailsdialog-description": "상세:",

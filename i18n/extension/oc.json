@@ -1,8 +1,21 @@
 {
 	"@metadata": {
 		"authors": [
+			"Guilhelma",
 			"Quentí"
 		]
 	},
+	"growthexperiments-desc": "Aquesta extension conten ensages faits per la còla de Growth",
+	"growthexperiments-config-validator-additional-fields": "Aquela configuracion novèla compren d'opcions que pòdon pas èsser personalizadas aicí.",
+	"growthexperiments-config-validator-error": "La validation de $1 a mancat amb: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> es esperat coma <code>$2</code>, mas es <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Lo contengut del modèl correspond pas:lo fichièr de configuracion GrowthExperiments dèu aver lo modèl de contengut JSON , $1 es detectat",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID de gestion de tasca pas valid : <code>$1</code> es pas una valor valida",
+	"growthexperiments-config-validator-array-toobig": "$1 a tròp d'items (maximum $2 permes)",
+	"growthexperiments-edit-config-disabled": "La configuracion de la comunautat es desactivada a l'ora d'ara.",
+	"growthexperiments-edit-config-title": "Modificar la configuracion de Growth",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Darrièra mesa a jorn per [[User:$1|$1]] $2 ([$4 diff]).",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Darrièra mesa a jorn per un utilizaire desconegut $1 ([$3 diff]).",
+	"growthexperiments-edit-config-pretext": "Aquesta pagina vos permet de modificar la configuracion de las foncionalitats de la còla de [[:mw:Special:MyLanguage/Growth|Growth]] . Modificarà $1 per vos. Podètz veire aquestas modificacions dins l'istoric d'aquesta pagina.",
 	"growthexperiments-edit-config-mentorship-enabled-true": "Òc"
 }

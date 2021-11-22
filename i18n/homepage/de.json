@@ -423,6 +423,7 @@
 	"growthexperiments-addimage-inspector-show-button": "Bildvorschlag anzeigen",
 	"growthexperiments-addimage-inspector-help-button": "Hilfe bei der Bearbeitung erhalten",
 	"growthexperiments-addimage-inspector-details-button": "Bilddetails anzeigen",
+	"growthexperiments-addimage-inspector-description-placeholder": "Keine Beschreibung verfügbar",
 	"growthexperiments-addimage-detailsdialog-header": "Details zum Bild",
 	"growthexperiments-addimage-detailsdialog-image": "Dateiname:",
 	"growthexperiments-addimage-detailsdialog-description": "Beschreibung:",

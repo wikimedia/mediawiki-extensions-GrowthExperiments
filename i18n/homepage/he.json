@@ -409,6 +409,7 @@
 	"growthexperiments-addimage-inspector-show-button": "להציג את הצעת התמונה",
 	"growthexperiments-addimage-inspector-help-button": "קבלת עזרה עם עריכה",
 	"growthexperiments-addimage-inspector-details-button": "הצגת פרטי תמונה",
+	"growthexperiments-addimage-inspector-description-placeholder": "אין תיאור זמין",
 	"growthexperiments-addimage-detailsdialog-header": "פרטי התמונה",
 	"growthexperiments-addimage-detailsdialog-image": "שם הקובץ:",
 	"growthexperiments-addimage-detailsdialog-description": "תיאור:",

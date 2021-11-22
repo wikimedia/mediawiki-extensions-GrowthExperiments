@@ -428,6 +428,7 @@
 	"growthexperiments-addimage-inspector-show-button": "展示链接建议",
 	"growthexperiments-addimage-inspector-help-button": "获取编辑帮助",
 	"growthexperiments-addimage-inspector-details-button": "查看图像详情",
+	"growthexperiments-addimage-inspector-description-placeholder": "没有可用的说明",
 	"growthexperiments-addimage-detailsdialog-header": "图片详细资料",
 	"growthexperiments-addimage-detailsdialog-image": "文件名称：",
 	"growthexperiments-addimage-detailsdialog-description": "描述：",
