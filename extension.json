@@ -1863,6 +1863,10 @@
 			"description": "Enable backend for mentor dashboard (currently controls whether updateMenteeData.php runs on that wiki)",
 			"value": true
 		},
+		"GERecentChangesUnstarredMenteesFilterEnabled": {
+			"description": "Enable filtering for unstarred mentees in Special:RecentChanges. This must not be enabled on wikis with more than 10k mentees per mentor.",
+			"value": true
+		},
 		"GEMentorDashboardDiscoveryEnabled": {
 			"description": "Enable discovery links for mentor dashboard",
 			"value": true
