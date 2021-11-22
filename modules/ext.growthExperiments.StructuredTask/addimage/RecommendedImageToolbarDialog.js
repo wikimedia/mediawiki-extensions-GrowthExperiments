@@ -1,7 +1,8 @@
 var StructuredTaskToolbarDialog = require( '../StructuredTaskToolbarDialog.js' ),
 	MachineSuggestionsMode = require( '../MachineSuggestionsMode.js' ),
 	ImageSuggestionInteractionLogger = require( './ImageSuggestionInteractionLogger.js' ),
-	router = require( 'mediawiki.router' );
+	router = require( 'mediawiki.router' ),
+	COMPACT_VIEW_BREAKPOINT = 360;
 
 /**
  * @typedef {Object} mw.libs.ge.RecommendedImageMetadata
@@ -416,9 +417,14 @@ RecommendedImageToolbarDialog.prototype.getDescriptionElement = function ( descr
  */
 RecommendedImageToolbarDialog.prototype.updateSuggestionContent = function () {
 	var imageData = this.images[ this.currentIndex ],
-		metadata = imageData.metadata;
+		metadata = imageData.metadata,
+		thumb = mw.util.parseImageUrl( metadata.thumbUrl ) || {},
+		thumbWidth = window.innerWidth > COMPACT_VIEW_BREAKPOINT ? 160 : 120,
+		thumbUrl = thumb.resizeUrl ? thumb.resizeUrl(
+			Math.floor( thumbWidth * window.devicePixelRatio ) ) :
+			metadata.thumbUrl;
 	this.$reason.text( metadata.reason );
-	this.$imageThumbnail.css( 'background-image', 'url(' + metadata.thumbUrl + ')' );
+	this.$imageThumbnail.css( 'background-image', 'url(' + thumbUrl + ')' );
 	this.$imageInfo.append( [
 		$( '<div>' ).append( [
 			this.getFilenameElement( imageData.displayFilename ),
