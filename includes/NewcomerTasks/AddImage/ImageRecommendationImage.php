@@ -100,13 +100,14 @@ class ImageRecommendationImage {
 	 * @return array
 	 */
 	public function toArray(): array {
-		$data = [
-			'image' => $this->imageTitle->getDBkey(),
+		$filename = $this->imageTitle->getDBkey();
+		return [
+			'image' => $filename,
+			'displayFilename' => str_replace( '_', ' ', $filename ),
 			'source' => $this->source,
 			'projects' => $this->projects,
 			'metadata' => $this->metadata,
 		];
-		return $data;
 	}
 
 }
