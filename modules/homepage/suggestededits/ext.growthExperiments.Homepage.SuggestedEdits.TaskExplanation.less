@@ -127,6 +127,25 @@
 	}
 }
 
+// This only applies to the task explanation in the suggested edits module (not the mobile drawer).
+.suggested-edits-task-explanation-wrapper {
+	.suggested-edits-taskexplanation-additional-info {
+		@iconOuterWidth: 2.3em; // Round up OOUI button width (2.14285714em) and its border
+		margin-bottom: 8px;
+
+		// Add additional padding to make room for the icon, which has negative margin.
+		// This prevents the icon from being orphaned.
+		.suggested-edits-task-explanation-heading {
+			padding-right: @iconOuterWidth;
+		}
+
+		// Align the icon with the heading.
+		.oo-ui-iconElement {
+			margin-left: calc( -1 * @iconOuterWidth );
+		}
+	}
+}
+
 .suggested-edits-mobile-peek-content,
 .suggested-edits-panel-header {
 	background-color: fade( @suggestedEditsBackgroundColor, 50 );

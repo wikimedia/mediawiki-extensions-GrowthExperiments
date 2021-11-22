@@ -111,7 +111,8 @@ CERecommendedImageNode.prototype.setupDetailsButton = function ( $container ) {
 			} ).$element,
 			mw.message( 'growthexperiments-addimage-inspector-details-button' ).escaped()
 		] );
-	this.$detailsButton.on( 'click', function () {
+	// Clicking anywhere in the image brings up the details dialog.
+	$container.on( 'click', function () {
 		var surface = this.getRoot().getSurface().getSurface(),
 			recommendation = this.getModel().getAttribute( 'recommendation' ),
 			recommendationIndex = this.getModel().getAttribute( 'recommendationIndex' );

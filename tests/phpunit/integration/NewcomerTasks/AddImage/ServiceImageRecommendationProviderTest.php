@@ -380,6 +380,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 				'images' => [
 					[
 						'image' => 'Foo.png',
+						'displayFilename' => 'Foo.png',
 						'source' => 'wikipedia',
 						'projects' => [ 'enwiki', 'dewiki' ],
 						'metadata' => [],

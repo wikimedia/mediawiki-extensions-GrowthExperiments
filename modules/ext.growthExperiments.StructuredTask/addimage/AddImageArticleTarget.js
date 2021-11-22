@@ -1,10 +1,12 @@
 var StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEdit' ),
 	suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
-	ADD_IMAGE_CAPTION_ONBOARDING_PREF = 'growthexperiments-addimage-caption-onboarding';
+	ADD_IMAGE_CAPTION_ONBOARDING_PREF = 'growthexperiments-addimage-caption-onboarding',
+	MAX_IMAGE_DISPLAY_WIDTH = 500;
 
 /**
  * @typedef mw.libs.ge.ImageRecommendationImage
  * @property {string} image Image filename in unprefixed DBkey format.
+ * @property {string} displayFilename Image filename with spaces instead of underscores.
  * @property {string} source Recommendation source; one of 'wikidata', 'wikipedia', 'commons'.
  * @property {string[]} projects Lists of projects (as wiki IDs) the recommendation is from.
  *   Only used when the source is 'wikipedia'.
@@ -67,6 +69,12 @@ function AddImageArticleTarget() {
 	 * @property {number} selectedImageIndex Zero-based index of the selected image suggestion.
 	 */
 	this.selectedImageIndex = 0;
+
+	/**
+	 * @property {number} insertOffset Internal to insertImage/isEndOfMetadata
+	 * @internal
+	 */
+	this.insertOffset = 0;
 }
 
 AddImageArticleTarget.prototype.beforeSurfaceReady = function () {
@@ -95,6 +103,7 @@ AddImageArticleTarget.prototype.afterSurfaceReady = function () {
 			// eslint-disable-next-line camelcase
 			active_interface: 'machinesuggestions_mode'
 		} );
+		this.getSurface().getView().$element.on( 'paste', this.onPaste.bind( this ) );
 	} else {
 		// Ideally, this error would happen sooner so the user doesn't have to wait for VE
 		// to load. There isn't really a way to differentiate between images in the article
@@ -136,21 +145,27 @@ AddImageArticleTarget.prototype.isValidTask = function () {
  * @param {mw.libs.ge.ImageRecommendationImage} imageData
  */
 AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
-	var linearModel, insertOffset, dimensions,
+	var linearModel, contentOffset, dimensions,
 		surfaceModel = this.getSurface().getModel(),
 		data = surfaceModel.getDocument().data,
 		NS_FILE = mw.config.get( 'wgNamespaceIds' ).file,
 		imageTitle = new mw.Title( imageData.image, NS_FILE ),
-		thumb = mw.util.parseImageUrl( imageData.metadata.thumbUrl );
+		thumb = mw.util.parseImageUrl( imageData.metadata.thumbUrl ),
+		targetWidth, targetSrcWidth;
 
 	// Define the image to be inserted.
 	// This will eventually be passed as the data parameter to MWBlockImageNode.toDomElements.
 	// See also https://www.mediawiki.org/wiki/Specs/HTML/2.2.0#Images
 
-	dimensions = ve.dm.MWImageNode.static.scaleToThumbnailSize( {
+	dimensions = {
 		width: imageData.metadata.originalWidth,
 		height: imageData.metadata.originalHeight
-	} );
+	};
+	targetWidth = Math.min(
+		this.getSurface().getView().$documentNode.width(),
+		MAX_IMAGE_DISPLAY_WIDTH
+	);
+	targetSrcWidth = Math.floor( targetWidth * window.devicePixelRatio );
 	linearModel = [
 		{
 			type: 'mwGeRecommendedImage',
@@ -165,13 +180,13 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 				defaultSize: true,
 				// The generated wikitext will ignore width/height when defaultSize is set, but
 				// it's still used for the visual size of the thumbnail in the editor, so set it
-				// to something sensible.
-				width: dimensions.width,
-				height: dimensions.height,
+				// to the width of the article (with max width set to account for tablets).
+				width: targetWidth,
+				height: targetWidth * ( dimensions.height / dimensions.width ),
 				// Likewise only used in the editor UI. Work around an annoying quirk of MediaWiki
 				// where a thumbnail with the exact same size as the original is not always valid.
 				src: thumb.resizeUrl ?
-					thumb.resizeUrl( Math.min( dimensions.width,
+					thumb.resizeUrl( Math.min( targetSrcWidth,
 						imageData.metadata.originalWidth - 1 ) ) :
 					imageData.metadata.thumbUrl,
 				align: 'default',
@@ -196,20 +211,22 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 	];
 
 	// Find the position between the initial templates and text.
-	insertOffset = data.getRelativeOffset( 0, 1, function ( offset ) {
+	this.insertOffset = 0;
+	// 0, 0 means start from offset 0 and only move if it is invalid. 0, 1 would always move.
+	contentOffset = data.getRelativeOffset( 0, 0, function ( offset ) {
 		return this.isEndOfMetadata( data, offset );
 	}.bind( this ) );
-	if ( insertOffset === -1 ) {
+	if ( contentOffset === -1 ) {
 		// No valid position found. This shouldn't be possible.
 		mw.log.error( 'No valid offset found for image insertion' );
 		mw.errorLogger.logError( new Error( 'No valid offset found for image insertion' ),
 			'error.growthexperiments' );
-		insertOffset = 0;
+		this.insertOffset = 0;
 	}
 
 	// Actually insert the image.
 	surfaceModel.setReadOnly( false );
-	surfaceModel.getLinearFragment( new ve.Range( insertOffset ) ).insertContent( linearModel );
+	surfaceModel.getLinearFragment( new ve.Range( this.insertOffset ) ).insertContent( linearModel );
 	surfaceModel.setReadOnly( true );
 	this.hasStartedCaption = true;
 };
@@ -218,27 +235,58 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
  * Check whether a given offset in the linear model is the end of the leading metadata block
  * (in an editorial sense, not a technical sense).
  *
+ * The returned value is used by ve.dm.ElementLinearData.getRelativeOffset, but the real work is
+ * done by setting insertOffset. Basically we are doing a lookahead, setting insertOffset to a
+ * candidate insertion offset and using getRelativeOffset's current position to look for text
+ * content after that offset. The idea is to differentiate between e.g.
+ *
+ * <block template /> <paragraph> <invisible inline template /> t e x t </paragraph>
+ *                   ^                                         ^
+ *                  good                                       X
+ *
+ * and
+ *
+ * <block template /> <paragraph> <invisible inline template /> </paragraph> <block template />
+ *                   ^                                                      ^
+ *                  bad                                                     X
+ *
+ * while X is the earliest point where we can tell whether that candidate position was good or bad.
+ *
  * @param {ve.dm.ElementLinearData} data
  * @param {number} offset
  * @return {boolean}
  * @private
  */
 AddImageArticleTarget.prototype.isEndOfMetadata = function ( data, offset ) {
-	if ( !data.isContentOffset( offset ) ) {
+	// Limit to offsets where a block (such as our image) can be added.
+	// ve.dm.SurfaceFragment.prototype.insertContent can handle inserting a block to a content
+	// offset (which requires splitting the parent paragraph in two to turn it into a structural
+	// offset), but the first position that separates top-of-the-article boilerplate content
+	// from article text content is always going to be a structural offset, since the boilerplates
+	// are all blocks.
+	if ( data.isStructuralOffset( offset, true ) ) {
+		this.insertOffset = offset;
+	} else if ( !data.isContentOffset( offset ) ) {
+		// We are not interested in offsets where neither text nor arbitrary blocks can go.
+		// That would be something like a list or a table row.
 		return false;
 	}
-	// we know this exists, otherwise isContentOffset would fail
-	var right = data.getData( offset );
 
-	// Special-case newlines because we don't want to stop at newlines separating templates.
-	if ( right === '\n' ) {
-		return this.isEndOfMetadata( data, offset + 1 );
-	}
-	// plain text or annotated text
-	if ( typeof right === 'string' || Array.isArray( right ) ) {
+	var right = data.getData( offset );
+	if ( typeof right === 'string' ) {
+		// If we found text content, exit, except for whitespace, which can be between
+		// top-of-the-article templates.
+		return !right.match( /\s/ );
+	} else if ( Array.isArray( right ) ) {
+		// Annotated text. No one would annotate empty whitespace so we can skip the check.
 		return true;
+	} else if ( right.type.charAt( 0 ) === '/' ) {
+		// It's always fine to move out of something. The image is at the top level.
+		return false;
 	}
-	// right is an object. Skip it if it's a template or invisible metadata.
+
+	// right is an opening tag. Skip it if it's a template or invisible metadata.
+	// None of these can have children, which makes life a lot easier for us.
 	if ( [
 		// templates
 		'mwTransclusion', 'mwTransclusionBlock', 'mwTransclusionInline', 'mwTransclusionTableCell',
@@ -247,7 +295,9 @@ AddImageArticleTarget.prototype.isEndOfMetadata = function ( data, offset ) {
 		'mwIndex', 'mwLanguage', 'mwNewSectionEdit', 'mwNoContentConvert', 'mwNoEditSection',
 		'mwNoGallery', 'mwNoTitleConvert', 'mwDisambiguation',
 		// hidden, so probably should go before the image
-		'comment', 'mwLanguageVariantHidden'
+		'comment', 'mwLanguageVariantHidden',
+		// automatically generated to wrap content, which could be templates
+		'paragraph'
 	].indexOf( right.type ) !== -1 ) {
 		return false;
 	}
@@ -266,6 +316,39 @@ AddImageArticleTarget.prototype.rollback = function () {
 	} );
 	surfaceModel.setReadOnly( true );
 	this.updateSuggestionState( this.selectedImageIndex, undefined, [] );
+};
+
+/**
+ * Insert the specified caption text.
+ * This is used when the caption text needs to be programmatically updated, such as in the
+ * custom paste handler.
+ *
+ * @param captionText
+ */
+AddImageArticleTarget.prototype.insertCaption = function ( captionText ) {
+	var surfaceModel = this.getSurface().getModel(),
+		documentModel = surfaceModel.getDocument(),
+		captionNode = documentModel.getNodesByType( 'mwGeRecommendedImageCaption' )[ 0 ],
+		captionOffset = surfaceModel.getDocument().getRelativeRange(
+			new ve.Range( captionNode.getRange().start ), 1 );
+
+	surfaceModel.getLinearFragment( captionOffset ).insertContent( captionText );
+};
+
+/**
+ * Only allow plain text to be pasted in as caption.
+ * This overrides VE's default paste handler which supports rich formatting.
+ *
+ * @param {jQuery.Event} e
+ */
+AddImageArticleTarget.prototype.onPaste = function ( e ) {
+	if ( !this.hasStartedCaption ) {
+		return;
+	}
+	e.preventDefault();
+	e.stopPropagation();
+	var text = ( e.originalEvent.clipboardData || window.clipboardData ).getData( 'text' );
+	this.insertCaption( text );
 };
 
 /** @inheritDoc **/
@@ -290,7 +373,7 @@ AddImageArticleTarget.prototype.getSummaryData = function () {
 		surfaceModel = this.getSurface().getModel(),
 		/** @type {mw.libs.ge.ImageRecommendationSummary} */
 		summaryData = {
-			filename: imageData.image,
+			filename: imageData.displayFilename,
 			accepted: this.recommendationAccepted,
 			thumbUrl: imageData.metadata.thumbUrl,
 			caption: ''
