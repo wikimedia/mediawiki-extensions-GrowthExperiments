@@ -72,7 +72,7 @@ function AddImageArticleTarget() {
 
 	/**
 	 * @property {number} insertOffset Internal to insertImage/isEndOfMetadata
-	 * @internal
+	 * @private
 	 */
 	this.insertOffset = 0;
 }
