@@ -2,6 +2,8 @@
 
 namespace GrowthExperiments\MentorDashboard\MentorTools;
 
+use DBAccessObjectUtils;
+use IDBAccessObject;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
@@ -9,7 +11,7 @@ use MediaWiki\User\UserOptionsManager;
 use Wikimedia\Rdbms\IDatabase;
 use Wikimedia\Timestamp\ConvertibleTimestamp;
 
-class MentorStatusManager {
+class MentorStatusManager implements IDBAccessObject {
 
 	/** @var string Mentor status */
 	public const STATUS_ACTIVE = 'active';
@@ -40,32 +42,39 @@ class MentorStatusManager {
 	/** @var IDatabase */
 	private $dbr;
 
+	/** @var IDatabase */
+	private $dbw;
+
 	/**
 	 * @param UserOptionsManager $userOptionsManager
 	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param UserFactory $userFactory
 	 * @param IDatabase $dbr
+	 * @param IDatabase $dbw
 	 */
 	public function __construct(
 		UserOptionsManager $userOptionsManager,
 		UserIdentityLookup $userIdentityLookup,
 		UserFactory $userFactory,
-		IDatabase $dbr
+		IDatabase $dbr,
+		IDatabase $dbw
 	) {
 		$this->userOptionsManager = $userOptionsManager;
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->userFactory = $userFactory;
 		$this->dbr = $dbr;
+		$this->dbw = $dbw;
 	}
 
 	/**
 	 * Get mentor's current status
 	 *
 	 * @param UserIdentity $mentor
+	 * @param int $flags bitfield; consists of MentorStatusManager::READ_* constants
 	 * @return string one of MentorStatusManager::STATUS_* constants
 	 */
-	public function getMentorStatus( UserIdentity $mentor ): string {
-		if ( $this->getMentorBackTimestamp( $mentor ) === null ) {
+	public function getMentorStatus( UserIdentity $mentor, int $flags = 0 ): string {
+		if ( $this->getMentorBackTimestamp( $mentor, $flags ) === null ) {
 			return self::STATUS_ACTIVE;
 		} else {
 			return self::STATUS_AWAY;
@@ -74,12 +83,16 @@ class MentorStatusManager {
 
 	/**
 	 * @param UserIdentity $mentor
+	 * @param int $flags bitfield; consists of MentorStatusManager::READ_* constants
 	 * @return string|null Null if mentor is currently active
 	 */
-	public function getMentorBackTimestamp( UserIdentity $mentor ): ?string {
+	public function getMentorBackTimestamp( UserIdentity $mentor, int $flags = 0 ): ?string {
 		return $this->parseBackTimestamp( $this->userOptionsManager->getOption(
 			$mentor,
-			self::MENTOR_AWAY_TIMESTAMP_PREF
+			self::MENTOR_AWAY_TIMESTAMP_PREF,
+			null,
+			false,
+			$flags
 		) );
 	}
 
@@ -101,12 +114,16 @@ class MentorStatusManager {
 	/**
 	 * Get mentors marked as away
 	 *
+	 * @param int $flags bitfield; consists of MentorStatusManager::READ_* constants
 	 * @return UserIdentity[]
 	 */
-	public function getAwayMentors(): array {
+	public function getAwayMentors( int $flags = 0 ): array {
+		list( $index, $options ) = DBAccessObjectUtils::getDBOptions( $flags );
+		$db = ( $index === DB_PRIMARY ) ? $this->dbw : $this->dbr;
+
 		// This should be okay, as up_property is an index, and we won't
 		// get a lot of rows to process.
-		$awayMentorIds = $this->dbr->selectFieldValues(
+		$awayMentorIds = $db->selectFieldValues(
 			'user_properties',
 			'up_user',
 			[
@@ -116,7 +133,8 @@ class MentorStatusManager {
 					$this->dbr->timestamp()
 				)
 			],
-			__METHOD__
+			__METHOD__,
+			$options
 		);
 
 		if ( $awayMentorIds === [] ) {

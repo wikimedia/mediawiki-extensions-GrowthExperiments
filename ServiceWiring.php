@@ -401,7 +401,8 @@ return [
 			$services->getUserOptionsManager(),
 			$services->getUserIdentityLookup(),
 			$services->getUserFactory(),
-			$services->getDBLoadBalancer()->getConnection( DB_REPLICA )
+			$services->getDBLoadBalancer()->getConnection( DB_REPLICA ),
+			$services->getDBLoadBalancer()->getLazyConnectionRef( DB_PRIMARY )
 		);
 	},
 

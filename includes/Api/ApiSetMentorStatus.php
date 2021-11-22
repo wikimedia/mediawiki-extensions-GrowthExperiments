@@ -62,7 +62,7 @@ class ApiSetMentorStatus extends ApiBase {
 				break;
 		}
 
-		$rawBackTs = $this->mentorStatusManager->getMentorBackTimestamp( $mentor );
+		$rawBackTs = $this->mentorStatusManager->getMentorBackTimestamp( $mentor, MentorStatusManager::READ_LATEST );
 		$resp = [
 			'status' => 'ok',
 			'mentorstatus' => $params['gesstatus'],
