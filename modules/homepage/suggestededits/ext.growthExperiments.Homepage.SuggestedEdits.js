@@ -714,25 +714,29 @@
 	 */
 	SuggestedEditsModule.prototype.setupQualityGateClickHandling = function ( $element ) {
 		$element.on( 'click', function () {
-			var qualityGate = new QualityGate( {
-				gates: this.currentCard.data.qualityGateIds || [],
-				gateConfig: this.qualityGateConfig,
-				/* eslint-disable camelcase */
-				loggers: {
-					'image-recommendation': new ImageSuggestionInteractionLogger( {
-						is_mobile: OO.ui.isMobile(),
-						active_interface: 'qualitygate_dialog'
-					} )
-				},
-				loggerMetadataOverrides: {
-					newcomer_task_token: this.currentCard.data.token,
-					homepage_pageview_token: mw.config.get( 'wgGEHomepagePageviewToken' ),
-					page_id: this.currentCard.getPageId(),
-					page_title: this.currentCard.getDbKey()
-				}
-				/* eslint-enable camelcase */
-			} );
-			return qualityGate.checkAll( this.currentCard.data.tasktype );
+			if ( this.currentCard instanceof EditCardWidget ) {
+				var qualityGate = new QualityGate( {
+					gates: this.currentCard.data.qualityGateIds || [],
+					gateConfig: this.qualityGateConfig,
+					/* eslint-disable camelcase */
+					loggers: {
+						'image-recommendation': new ImageSuggestionInteractionLogger( {
+							is_mobile: OO.ui.isMobile(),
+							active_interface: 'qualitygate_dialog'
+						} )
+					},
+					loggerMetadataOverrides: {
+						newcomer_task_token: this.currentCard.data.token,
+						homepage_pageview_token: mw.config.get(
+							'wgGEHomepagePageviewToken'
+						),
+						page_id: this.currentCard.getPageId(),
+						page_title: this.currentCard.getDbKey()
+					}
+					/* eslint-enable camelcase */
+				} );
+				return qualityGate.checkAll( this.currentCard.data.tasktype );
+			}
 		}.bind( this ) );
 	};
 
@@ -754,6 +758,10 @@
 		// OO.ui.mixin.ButtonElement.onClick prevents the default action when the 'click'
 		// event handler is set via OOJS, use the jQuery event handling mechanism instead.
 		this.editWidget.$button.on( 'click', function () {
+			// The widget state needs to be checked since this click event is fired regardless.
+			if ( this.editWidget.isDisabled() ) {
+				return;
+			}
 			this.logEditTaskClick( 'se-edit-button-click' );
 		}.bind( this ) );
 	};
