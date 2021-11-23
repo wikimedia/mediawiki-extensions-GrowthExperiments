@@ -491,7 +491,7 @@
 	"growthexperiments-addimage-reason-wikipedia-project": "使用于$1的相同条目。",
 	"growthexperiments-addimage-reason-wikidata": "存在于此条目的维基数据项目（强烈匹配）。",
 	"growthexperiments-addimage-reason-commons": "链接到此条目的维基数据项目的图片之一。",
-	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|您}}已经完成今天所有的图片建议，调整{{GENDER:|您的}}难度等级以看到其他类型的编辑或是在明天回来以获得更多图片建议。",
+	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|您}}已经完成今天所有的图片建议。\n\n调整{{GENDER:|您的}}难度等级以看到其他类型的编辑或是在明天回来以获得更多图片建议。",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "明白了",
 	"growthexperiments-addimage-mobile-only": "图片建议仅能在移动版设备上使用。调整{{GENDER:|您的}}难度等级以看到其他类型的编辑或使用{{GENDER:|您的}}移动版设备来处理图片建议。",
 	"growthexperiments-addimage-mobile-only-dialog-button": "明白了",

@@ -14,7 +14,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "নিচে {{GENDER:|আপনার}} পরামর্শগ্রহীতাদের দেখুন। ছাঁকনি ব্যবহার করে আপনি নির্দিষ্ট পরামর্শগ্রহীতাকে দেখতে পাবেন।",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "টেবিলের জন্য জাভাস্ক্রিপ্ট প্রয়োজন। অনুগ্রহ করে জাভাস্ক্রিপ্ট সক্রিয় করে এই মডিউল ব্যবহার করুন।",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "আপনার টেবিলে কে আছে?",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "এই টেবিলে সেই সকল পরামর্শগ্রহীতাদেরকেই দেখানো হবে, যারা গত দুই সপ্তাহের মধ্যে অ্যাকাউন্ট তৈরি করেছেন কিংবা গত ছয়মাসে সম্পাদনা করেছেন। দৈনিক উপাত্ত হালনাগাদ হবে।",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "এই টেবিলে {GENDER:|আপনার}} সকল পরামর্শগ্রহীতাদেরকেই দেখানো হবে, যারা গত দুই সপ্তাহের মধ্যে অ্যাকাউন্ট তৈরি করেছেন কিংবা গত ছয়মাসে সম্পাদনা করেছেন। দৈনিক উপাত্ত হালনাগাদ হবে।",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "ব্যাখ্যা",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "পরামর্শগ্রহীতাকে চিহ্নিত করুন",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "ব্যবহারকারী নাম",
@@ -54,6 +54,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "মেন্টরের অবস্থা",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "সক্রিয়",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "নিষ্ক্রিয়",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message": "যেহেতু আপনি $1 পর্যন্ত বাইরে থাকবেন, আপনার পরামর্শগ্রহীতারা সাময়িকভাবে ভিন্ন মেন্টর পাবেন।",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "নিজের অবস্থা ‘নিষ্ক্রিয়’ হিসেবে নির্বাচিত করুন",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "বাতিল",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "বিরতি",
@@ -78,6 +79,11 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "মেন্টরশিপ প্রস্থানের পরবর্তী ধাপ হলো আপনার পরামর্শগ্রহীতাদের পুনরায় অন্য মেন্টর নিয়োগ করা। আপনি যদি নিশ্চিতভাবে প্রস্থান করতে চান, তবে নিচের বাটনে চাপ দিন।",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "হ্যাঁ, আমার পরামর্শগ্রহীতাদের নতুনভাবে যুক্ত করো",
 	"growthexperiments-quit-mentorship-success": "আপনার পরামর্শগ্রহীতারা দ্রুতই অন্য মেন্টরের কাছে সমর্পিত হবে।",
+	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|আপনার}} বর্তমানে কোনো পরামর্শগ্রহীতা নেই।",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 মেন্টরশিপ থেকে {{GENDER:$1|অবসর নিয়েছেন}}।",
-	"growthexperiments-notification-body-mentee-claimed": "কারণ: $1"
+	"echo-category-title-ge-mentorship": "মেন্টরশিপ",
+	"echo-pref-tooltip-ge-mentorship": "মেন্টরশিপ বৈশিষ্ট্যসম্পর্কিত বিজ্ঞপ্তি গ্রোথ দল রক্ষণাবেক্ষণ করেন। এই বিজ্ঞপ্তি আপনাকে জানায় যে আপনাকে আপনাকে পরামর্শগ্রহীতা হিসেবে দাবি করা হয়েছে, অথবা আপনার কোনো পরামর্শগ্রহীতাকে অন্য কেউ দাবি করেছে।",
+	"growthexperiments-notification-header-mentee-claimed": "আপনার {{GENDER:$3|পরামর্শগ্রহীতা}}, $3-কে {{GENDER:$2|দাবি করেছেন}} $1।",
+	"growthexperiments-notification-body-mentee-claimed": "কারণ: $1",
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "\"পরামর্শগ্রহীতা দাবিকরণ\" কী?"
 }
