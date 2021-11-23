@@ -15,9 +15,7 @@ use StatusValue;
  */
 class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 
-	/**
-	 * @var SearchEngineFactory
-	 */
+	/** @var SearchEngineFactory */
 	private $searchEngineFactory;
 
 	/**

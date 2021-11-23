@@ -41,13 +41,11 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 
 	/** @var TaskSuggesterFactory */
 	private $taskSuggesterFactory;
-	/**
-	 * @var NewcomerTasksUserOptionsLookup
-	 */
+
+	/** @var NewcomerTasksUserOptionsLookup */
 	private $newcomerTasksUserOptionsLookup;
-	/**
-	 * @var ConfigurationLoader
-	 */
+
+	/** @var ConfigurationLoader */
 	private $configurationLoader;
 
 	/**

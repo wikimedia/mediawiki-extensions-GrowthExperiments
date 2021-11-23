@@ -28,6 +28,7 @@ use GrowthExperiments\Mentorship\QuitMentorshipFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\AddImage\CacheBackedImageRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
@@ -50,9 +51,11 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\SuggestionsInfo;
+use GrowthExperiments\NewcomerTasks\TaskSetListener;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\DecoratingTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactory;
@@ -173,6 +176,16 @@ return [
 	},
 
 	'GrowthExperimentsImageRecommendationProvider' => static function (
+		MediaWikiServices $services
+	): ImageRecommendationProvider {
+		$growthServices = GrowthExperimentsServices::wrap( $services );
+		return new CacheBackedImageRecommendationProvider(
+			$services->getMainWANObjectCache(),
+			$growthServices->getImageRecommendationProviderUncached()
+		);
+	},
+
+	'GrowthExperimentsImageRecommendationProviderUncached' => static function (
 		MediaWikiServices $services
 	): ImageRecommendationProvider {
 		$growthServices = GrowthExperimentsServices::wrap( $services );
@@ -500,6 +513,14 @@ return [
 		);
 	},
 
+	'GrowthExperimentsLinkRecommendationFilter' => static function (
+		MediaWikiServices $services
+	): LinkRecommendationFilter {
+		return new LinkRecommendationFilter(
+			GrowthExperimentsServices::wrap( $services )->getLinkRecommendationStore()
+		);
+	},
+
 	'GrowthExperimentsQuestionPosterFactory' => static function (
 		MediaWikiServices $services
 	): QuestionPosterFactory {
@@ -592,8 +613,9 @@ return [
 					[
 						'class' => CacheDecorator::class,
 						'args' => [
-							JobQueueGroup::singleton(),
-							$services->getMainWANObjectCache()
+							$services->getJobQueueGroupFactory()->makeJobQueueGroup(),
+							$services->getMainWANObjectCache(),
+							new TaskSetListener( $services->getMainWANObjectCache() )
 						],
 					],
 					[
