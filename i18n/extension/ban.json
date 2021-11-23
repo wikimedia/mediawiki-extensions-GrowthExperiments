@@ -5,8 +5,8 @@
 		]
 	},
 	"growthexperiments-edit-config-title": "Uah konfigurasi Growth",
-	"growthexperiments-edit-config-last-edit": "[[$3]]: Sané ungkur kaanyarin olih [[User:$1|$1]] $2.",
-	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Sané ungkur kaanyarin olih anganggé tan kauningin $1.",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Sané ungkur kaanyarin olih [[User:$1|$1]] $2 ([$4 binayan])",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Sané ungkur kaanyarin olih anganggé tan kauningin $1 ([$3 binayan]).",
 	"growthexperiments-edit-config-feedback-cta": "Baang umpan walik",
 	"growthexperiments-edit-config-edit-summary": "Uah ringkesan",
 	"growthexperiments-edit-config-help-panel": "Pangaturan panel wantuan",

@@ -5,6 +5,7 @@
 			"Dj",
 			"Hanna Tardos",
 			"Llz78",
+			"Luckylukee81",
 			"Misibacsi",
 			"Samat",
 			"Tacsipacsi",
@@ -377,5 +378,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Ha szerkesztőmódot {{GENDER:$1|váltasz}}, tudsz másfajta szerkesztéseket végezni, de az el nem mentett válaszaid elvesznek.",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Váltás mentés nélkül",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Mégse",
-	"growthexperiments-structuredtask-summary-submit": "Beküldés"
+	"growthexperiments-structuredtask-summary-submit": "Beküldés",
+	"growthexperiments-addimage-daily-task-limit-exceeded": "{{GENDER:|Ön}} teljesítette a mai képjavaslatokat. Módosítsa a {{GENDER:|saját}} nehézségi szintet, ha más típusú szerkesztéseket szeretne látni, vagy térjen vissza holnap további képjavaslatokért."
 }
