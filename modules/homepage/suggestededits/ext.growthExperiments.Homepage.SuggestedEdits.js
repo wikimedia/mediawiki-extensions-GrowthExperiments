@@ -50,8 +50,12 @@
 		this.taskTypesQuery = [];
 		this.topicsQuery = [];
 		this.api = api;
+		/** @property {mw.libs.ge.TaskData[]} taskQueue Fetched task data **/
 		this.taskQueue = [];
 		this.taskQueueLoading = false;
+		/** @property {number} taskCount Total number of tasks that match the selected filters.
+		 * This can be greater than this.taskQueue.length since the task data is lazy loaded. **/
+		this.taskCount = 0;
 		this.editWidget = null;
 		this.isFirstRender = true;
 		this.isShowingPseudoCard = true;
@@ -60,6 +64,7 @@
 		this.backup = {};
 		this.backup.taskQueue = [];
 		this.backup.queuePosition = 0;
+		this.backup.taskCount = 0;
 
 		this.filters = new FiltersButtonGroupWidget( {
 			taskTypePresets: config.taskTypePresets,
@@ -133,14 +138,16 @@
 	SuggestedEditsModule.prototype.backupState = function () {
 		this.backup.taskQueue = this.taskQueue;
 		this.backup.queuePosition = this.queuePosition;
+		this.backup.taskCount = this.taskCount;
 	};
 
 	SuggestedEditsModule.prototype.restoreState = function () {
 		this.isFirstRender = true;
 		this.taskQueue = this.backup.taskQueue;
 		this.queuePosition = this.backup.queuePosition;
+		this.taskCount = this.backup.taskCount;
 		this.taskQueueLoading = false;
-		this.filters.updateMatchCount( this.taskQueue.length );
+		this.filters.updateMatchCount( this.taskCount );
 		if ( this.taskQueue.length && OO.ui.isMobile() ) {
 			this.updateMobileSummarySmallTaskCard();
 		}
@@ -227,7 +234,7 @@
 
 		if ( !this.taskTypesQuery.length ) {
 			// User has deselected all checkboxes; update the count.
-			this.filters.updateMatchCount( this.taskQueue.length );
+			this.filters.updateMatchCount( this.taskCount );
 			return $.Deferred().resolve().promise();
 		}
 		this.apiPromise = this.api.fetchTasks( this.taskTypesQuery, this.topicsQuery, {
@@ -250,7 +257,8 @@
 				} );
 				this.taskQueue.unshift( options.firstTask );
 			}
-			this.filters.updateMatchCount( data.count );
+			this.taskCount = data.count;
+			this.filters.updateMatchCount( this.taskCount );
 			// FIXME these are the current values of the filters, not the ones we are just about
 			//   to display. Unlikely to cause much discrepancy though.
 			extraData.taskTypes = this.taskTypesQuery;
