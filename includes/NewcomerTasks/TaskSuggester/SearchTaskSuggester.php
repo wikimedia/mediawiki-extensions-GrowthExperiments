@@ -113,7 +113,8 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		$filteredTasks = iterator_to_array( $filteredTaskSet );
 		$this->mapTopicData( $taskSet, $filteredTasks );
 
-		$finalTaskSet = new TaskSet( $filteredTasks, $taskSet->getTotalCount(),
+		$subtracted = $taskSet->count() - $filteredTaskSet->count();
+		$finalTaskSet = new TaskSet( $filteredTasks, $taskSet->getTotalCount() - $subtracted,
 			$taskSet->getOffset(), $taskSet->getFilters() );
 		$finalTaskSet->setDebugData( $taskSet->getDebugData() );
 		return $finalTaskSet;
