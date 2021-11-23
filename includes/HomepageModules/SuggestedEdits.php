@@ -8,9 +8,9 @@ use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\CardWrapper;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\NavigationWidgetFactory;
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\TaskExplanationWidget;
-use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
@@ -130,9 +130,6 @@ class SuggestedEdits extends BaseModule {
 	/** @var TaskSet|StatusValue */
 	private $tasks;
 
-	/** @var int */
-	private $unfilteredTasksetCount = 0;
-
 	/** @var ButtonGroupWidget */
 	private $buttonGroupWidget;
 
@@ -142,8 +139,8 @@ class SuggestedEdits extends BaseModule {
 	/** @var NavigationWidgetFactory */
 	private $navigationWidgetFactory;
 
-	/** @var ImageRecommendationSubmissionLogFactory */
-	private $imageRecommendationSubmissionLogFactory;
+	/** @var LinkRecommendationFilter */
+	private $linkRecommendationFilter;
 
 	/**
 	 * @param IContextSource $context
@@ -157,7 +154,7 @@ class SuggestedEdits extends BaseModule {
 	 * @param TitleFactory $titleFactory
 	 * @param ProtectionFilter $protectionFilter
 	 * @param UserOptionsLookup $userOptionsLookup
-	 * @param ImageRecommendationSubmissionLogFactory $imageRecommendationSubmissionLogFactory
+	 * @param LinkRecommendationFilter $linkRecommendationFilter
 	 */
 	public function __construct(
 		IContextSource $context,
@@ -171,7 +168,7 @@ class SuggestedEdits extends BaseModule {
 		TitleFactory $titleFactory,
 		ProtectionFilter $protectionFilter,
 		UserOptionsLookup $userOptionsLookup,
-		ImageRecommendationSubmissionLogFactory $imageRecommendationSubmissionLogFactory
+		LinkRecommendationFilter $linkRecommendationFilter
 	) {
 		parent::__construct( 'suggested-edits', $context, $wikiConfig, $experimentUserManager );
 		$this->editInfoService = $editInfoService;
@@ -183,11 +180,7 @@ class SuggestedEdits extends BaseModule {
 		$this->titleFactory = $titleFactory;
 		$this->protectionFilter = $protectionFilter;
 		$this->userOptionsLookup = $userOptionsLookup;
-		$this->navigationWidgetFactory = new NavigationWidgetFactory(
-			$this->getContext(),
-			$this->getTaskSet()
-		);
-		$this->imageRecommendationSubmissionLogFactory = $imageRecommendationSubmissionLogFactory;
+		$this->linkRecommendationFilter = $linkRecommendationFilter;
 	}
 
 	/** @inheritDoc */
@@ -389,10 +382,6 @@ class SuggestedEdits extends BaseModule {
 			return $this->tasks;
 		}
 		$user = $this->getContext()->getUser();
-		// FIXME There will likely be a cached task set by this point. For scenarios where there
-		//   aren't (e.g. user visits homepage, doesn't come back for 8 days, then goes to
-		//   homepage again), we should fetch tasks using a single task type and topic to
-		//   speed up the query. For now, we just skip revalidation entirely.
 		$suggesterOptions = [ 'revalidateCache' => false ];
 		if ( $this->getContext()->getRequest()->getCheck( 'resetTaskCache' ) ) {
 			$suggesterOptions = [ 'resetCache' => true ];
@@ -402,7 +391,9 @@ class SuggestedEdits extends BaseModule {
 		$tasks = $this->taskSuggester->suggest( $user, $taskTypes, $topics, null, null,
 			$suggesterOptions );
 		if ( $tasks instanceof TaskSet ) {
-			$this->unfilteredTasksetCount = $tasks->getTotalCount();
+			// If there are link recommendation tasks without corresponding DB entries, these will be removed
+			// from the TaskSet.
+			$tasks = $this->linkRecommendationFilter->filter( $tasks );
 			$tasks = $this->protectionFilter->filter( $tasks, 1 );
 		}
 		$this->tasks = $tasks;
@@ -443,7 +434,7 @@ class SuggestedEdits extends BaseModule {
 				self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ),
 				$this->getContext()->getLanguage()->getDir(),
 				$this->getTaskSet(),
-				$this->navigationWidgetFactory,
+				$this->getNavigationWidgetFactory(),
 				$isDesktop
 			) )->render() .
 			( new Tag( 'div' ) )->addClasses( [ 'suggested-edits-task-explanation' ] )
@@ -466,9 +457,9 @@ class SuggestedEdits extends BaseModule {
 		}
 		return ( new Tag( 'div' ) )->addClasses( [ 'suggested-edits-footer-navigation' ] )
 			->appendContent( [
-				$this->navigationWidgetFactory->getPreviousNextButtonHtml( 'Previous' ),
-				$this->navigationWidgetFactory->getEditButton(),
-				$this->navigationWidgetFactory->getPreviousNextButtonHtml( 'Next' )
+				$this->getNavigationWidgetFactory()->getPreviousNextButtonHtml( 'Previous' ),
+				$this->getNavigationWidgetFactory()->getEditButton(),
+				$this->getNavigationWidgetFactory()->getPreviousNextButtonHtml( 'Next' )
 			] );
 	}
 
@@ -483,7 +474,7 @@ class SuggestedEdits extends BaseModule {
 
 		if ( $showTaskPreview ) {
 			$taskPager = $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
-				->numParams( 1, $this->unfilteredTasksetCount )
+				->numParams( 1, $this->tasks->getTotalCount() )
 				->text();
 			$button = new ButtonWidget( [
 				'label' => $this->getContext()->msg(
@@ -803,7 +794,7 @@ class SuggestedEdits extends BaseModule {
 		// these will be updated on the client side as needed
 		$data = [
 			'taskTypes' => $taskTypes ?? $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-			'taskCount' => $this->unfilteredTasksetCount
+			'taskCount' => $this->tasks->getTotalCount()
 		];
 		if ( self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ) ) {
 			$data['topics'] = $topics ?? $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user );
@@ -837,7 +828,7 @@ class SuggestedEdits extends BaseModule {
 			return '';
 		}
 		return new HtmlSnippet( $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
-				->numParams( [ 1, $this->unfilteredTasksetCount ] )
+				->numParams( [ 1, $this->tasks->getTotalCount() ] )
 			->parse() );
 	}
 
@@ -861,5 +852,18 @@ class SuggestedEdits extends BaseModule {
 			$redirectParams[ 'section' ] = $taskType->getDefaultEditSection();
 		}
 		return $redirectParams;
+	}
+
+	/**
+	 * @return NavigationWidgetFactory
+	 */
+	private function getNavigationWidgetFactory(): NavigationWidgetFactory {
+		if ( !$this->navigationWidgetFactory ) {
+			$this->navigationWidgetFactory = new NavigationWidgetFactory(
+				$this->getContext(),
+				$this->getTaskSet()
+			);
+		}
+		return $this->navigationWidgetFactory;
 	}
 }
