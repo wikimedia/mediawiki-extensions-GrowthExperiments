@@ -16,6 +16,7 @@
 
 	.mw-ge-recommendedImageCaption-placeholder {
 		color: @wmui-color-base30;
+		pointer-events: none;
 	}
 
 	&--with-placeholder {
@@ -34,7 +35,7 @@
 	.mw-ge-recommendedImageCaption-help-button {
 		position: absolute;
 		right: 8px;
-		bottom: 7px;
+		bottom: 8px;
 		opacity: 0.65;
 
 		// Override OOUI ButtonWidget's size
@@ -42,6 +43,10 @@
 			min-height: 20px;
 			min-width: 20px;
 			padding: 0;
+
+			.oo-ui-iconElement-icon {
+				left: 0;
+			}
 		}
 	}
 }

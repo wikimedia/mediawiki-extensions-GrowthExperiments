@@ -69,11 +69,16 @@
 		.mw-ge-homepage-taskTypeSelectionWidget-additional-msg {
 			display: block;
 			padding-left: 6px;
-			.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 12.4px, @targetLineHeight: 17px );
+			margin-top: 4px;
+			.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
 			color: @wmui-color-base20;
 
 			.oo-ui-iconElement-icon {
-				background-size: 80%;
+				// To overwrite ooui default icon min-width/height
+				min-height: unset;
+				min-width: unset;
+				width: 16px;
+				height: 16px;
 				margin: 0 4px 0 0;
 				// @wmui-color-base20
 				opacity: 0.65;
@@ -85,8 +90,12 @@
 
 				span {
 					display: flex;
-					align-items: center;
+					align-items: flex-start;
 				}
+			}
+
+			&-desktop {
+				.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 12.4px, @targetLineHeight: 17px );
 			}
 		}
 	}

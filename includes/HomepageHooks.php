@@ -1074,7 +1074,7 @@ class HomepageHooks implements
 			'cardWrapperWidthLegacy' => '260px',
 			'cardWrapperPadding' => $isMobile ? '0' : '8px',
 			'cardWrapperBorderRadius' => $isMobile ? '0' : '2px',
-			'cardContentTextPadding' => $isMobile ? '0 16px' : '0 8px',
+			'cardContentTextPadding' => $isMobile ? '0 16px 8px 16px' : '0 8px',
 			'cardExtractHeight' => $isMobile ? '4.5em' : '3em',
 			'cardPageviewsTopPadding' => $isMobile ? '10px' : '16px',
 			'cardPageviewsIconMarginBottom' => $isMobile ? '0' : '4px',

@@ -405,6 +405,7 @@
 	"growthexperiments-addimage-inspector-show-button": "Show image suggestion",
 	"growthexperiments-addimage-inspector-help-button": "Get help with editing",
 	"growthexperiments-addimage-inspector-details-button": "View image details",
+	"growthexperiments-addimage-inspector-description-placeholder": "No description available",
 	"growthexperiments-addimage-detailsdialog-header": "Image details",
 	"growthexperiments-addimage-detailsdialog-image": "Filename:",
 	"growthexperiments-addimage-detailsdialog-description": "Description:",

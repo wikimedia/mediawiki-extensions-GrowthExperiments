@@ -297,6 +297,7 @@ class LinkRecommendationStore {
 	 * @param int[] $skippedTargetIds Page IDs of skipped link targets.
 	 * @param int|null $editRevId Revision ID of the edit adding the links (might be null since
 	 *   it's not necessary that any links have been added).
+	 * @suppress SecurityCheck-SQLInjection SQL taint check can fail for multi-row insert (T290563).
 	 */
 	public function recordSubmission(
 		UserIdentity $user,

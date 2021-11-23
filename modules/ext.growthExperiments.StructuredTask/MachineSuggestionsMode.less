@@ -78,3 +78,15 @@
 	-webkit-user-select: none;
 	user-select: none;
 }
+
+// T295831 Disable any interaction with slugs (new paragraphs can't be inserted)
+.ve-init-mw-addImageArticleTarget {
+	.ve-ce-branchNode-slug {
+		pointer-events: none;
+	}
+
+	.ve-ce-branchNode-blockSlug:hover,
+	.ve-ce-branchNode-blockSlug.ve-ce-branchNode-blockSlug-focused {
+		opacity: 0;
+	}
+}

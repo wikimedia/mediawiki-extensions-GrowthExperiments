@@ -112,7 +112,7 @@ AddImageDetailsDialog.prototype.makeField = function ( field, recommendation ) {
 	fieldLabel = mw.message( 'growthexperiments-addimage-detailsdialog-' + field ).text();
 
 	if ( field === 'image' ) {
-		fieldValue = recommendation.image.replace( /_/g, ' ' );
+		fieldValue = recommendation.displayFilename;
 	} else if ( field === 'categories' ) {
 		categories = recommendation.metadata.categories;
 		fieldValue = categories.length ?
@@ -147,6 +147,7 @@ AddImageDetailsDialog.prototype.makeField = function ( field, recommendation ) {
  * Post-process a list to add spacer classes. Takes a list of <li> elements and spacer elements
  * (as returned by makeSpacer()); any spacers between two list items will be turned into an
  * 'mw-ge-spacer' class on the preceding list item.
+ *
  * @param {(jQuery|null)[]} list
  * @return {jQuery[]}
  */

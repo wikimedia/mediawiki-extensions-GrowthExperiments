@@ -91,7 +91,7 @@ AddImageSaveDialog.prototype.getImageSummary = function ( fileName, accepted ) {
 	] );
 	return $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-imageSummary' ).append( [
 		$imageInfo,
-		new OO.ui.IconWidget( { icon: accepted ? 'check' : 'close' } ).$element
+		accepted ? new OO.ui.IconWidget( { icon: 'check' } ).$element : ''
 	] );
 };
 

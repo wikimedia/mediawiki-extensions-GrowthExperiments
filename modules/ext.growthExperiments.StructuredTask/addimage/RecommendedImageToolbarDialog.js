@@ -1,7 +1,8 @@
 var StructuredTaskToolbarDialog = require( '../StructuredTaskToolbarDialog.js' ),
 	MachineSuggestionsMode = require( '../MachineSuggestionsMode.js' ),
 	ImageSuggestionInteractionLogger = require( './ImageSuggestionInteractionLogger.js' ),
-	router = require( 'mediawiki.router' );
+	router = require( 'mediawiki.router' ),
+	COMPACT_VIEW_BREAKPOINT = 360;
 
 /**
  * @typedef {Object} mw.libs.ge.RecommendedImageMetadata
@@ -387,10 +388,28 @@ RecommendedImageToolbarDialog.prototype.getFilenameElement = function ( title ) 
  * @return {jQuery}
  */
 RecommendedImageToolbarDialog.prototype.getDescriptionElement = function ( descriptionHtml ) {
-	// TODO: Filter out complicated content in description (infoboxes, tables etc)
+	var descriptionText = $.parseHTML( descriptionHtml ).map( function ( node ) {
+			if ( node.nodeType === Node.ELEMENT_NODE ) {
+				return node.innerText;
+			} else if ( node.nodeType === Node.TEXT_NODE ) {
+				return node.textContent;
+			} else {
+				return '';
+			}
+		} ).join( '' ),
+		hasDescription = descriptionText.length > 0;
+
+	if ( !hasDescription ) {
+		descriptionText = mw.message(
+			'growthexperiments-addimage-inspector-description-placeholder'
+		).text();
+	}
 	return $( '<p>' )
-		.addClass( 'mw-ge-recommendedImageToolbarDialog-description' )
-		.html( $.parseHTML( descriptionHtml ) );
+		.addClass( [
+			'mw-ge-recommendedImageToolbarDialog-description',
+			hasDescription ? '' : 'mw-ge-recommendedImageToolbarDialog-description--placeholder'
+		] )
+		.text( descriptionText );
 };
 
 /**
@@ -398,12 +417,17 @@ RecommendedImageToolbarDialog.prototype.getDescriptionElement = function ( descr
  */
 RecommendedImageToolbarDialog.prototype.updateSuggestionContent = function () {
 	var imageData = this.images[ this.currentIndex ],
-		metadata = imageData.metadata;
+		metadata = imageData.metadata,
+		thumb = mw.util.parseImageUrl( metadata.thumbUrl ) || {},
+		thumbWidth = window.innerWidth > COMPACT_VIEW_BREAKPOINT ? 160 : 120,
+		thumbUrl = thumb.resizeUrl ? thumb.resizeUrl(
+			Math.floor( thumbWidth * window.devicePixelRatio ) ) :
+			metadata.thumbUrl;
 	this.$reason.text( metadata.reason );
-	this.$imageThumbnail.css( 'background-image', 'url(' + metadata.thumbUrl + ')' );
+	this.$imageThumbnail.css( 'background-image', 'url(' + thumbUrl + ')' );
 	this.$imageInfo.append( [
 		$( '<div>' ).append( [
-			this.getFilenameElement( imageData.image ),
+			this.getFilenameElement( imageData.displayFilename ),
 			this.getDescriptionElement( metadata.description )
 		] ),
 		this.detailsButton.$element
