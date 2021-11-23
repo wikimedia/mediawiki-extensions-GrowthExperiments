@@ -91,7 +91,8 @@
 			"class": "GrowthExperiments\\Api\\ApiQueryGrowthTasks",
 			"services": [
 				"GrowthExperimentsTaskSuggesterFactory",
-				"GrowthExperimentsNewcomerTasksConfigurationLoader"
+				"GrowthExperimentsNewcomerTasksConfigurationLoader",
+				"GrowthExperimentsLinkRecommendationFilter"
 			]
 		},
 		"growthstarredmentees": {

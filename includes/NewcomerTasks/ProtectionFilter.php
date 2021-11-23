@@ -9,7 +9,7 @@ use TitleFactory;
 /**
  * Filter out protected items from a small resultset.
  */
-class ProtectionFilter {
+class ProtectionFilter extends AbstractTaskSetFilter implements TaskSetFilter {
 
 	/** @var TitleFactory */
 	private $titleFactory;
@@ -29,15 +29,8 @@ class ProtectionFilter {
 		$this->linkBatchFactory = $linkBatchFactory;
 	}
 
-	/**
-	 * Filter out protected tasks from the TaskSet. Order is preserved.
-	 * This is not particularly efficient; the taskset should not have more than a few tasks.
-	 * @param TaskSet $taskSet
-	 * @param int $maxLength Return at most this many tasks (used to avoid wasting time on
-	 *   checking tasks we won't need).
-	 * @return TaskSet
-	 */
-	public function filter( TaskSet $taskSet, int $maxLength = PHP_INT_MAX ) {
+	/** @inheritDoc */
+	public function filter( TaskSet $taskSet, int $maxLength = PHP_INT_MAX ): TaskSet {
 		// Warm title cache for fetching the IDs.
 		$linkBatch = $this->linkBatchFactory->newLinkBatch();
 		$linkBatch->setCaller( __METHOD__ );
@@ -46,9 +39,10 @@ class ProtectionFilter {
 		}
 		$linkBatch->execute();
 
-		$tasks = [];
+		$invalidTasks = [];
+		$validTasks = [];
 		foreach ( $taskSet as $task ) {
-			if ( count( $tasks ) >= $maxLength ) {
+			if ( count( $validTasks ) >= $maxLength ) {
 				break;
 			}
 			$title = $this->titleFactory->newFromLinkTarget( $task->getTitle() );
@@ -57,18 +51,13 @@ class ProtectionFilter {
 			// worth the effort.
 			// Keep titles which do not exist. This is useful for local test setups.
 			if ( !$title->exists() || !$title->isProtected( 'edit' ) ) {
-				$tasks[] = $task;
+				$validTasks[] = $task;
+			} else {
+				$invalidTasks[] = $task;
 			}
 		}
-		$filteredTaskSet = new TaskSet(
-			$tasks,
-			$taskSet->getTotalCount(),
-			$taskSet->getOffset(),
-			$taskSet->getFilters()
-		);
-		$filteredTaskSet->setDebugData( $taskSet->getDebugData() );
-		$filteredTaskSet->setQualityGateConfig( $taskSet->getQualityGateConfig() );
-		return $filteredTaskSet;
+
+		return $this->copyValidAndInvalidTasksToNewTaskSet( $taskSet, $validTasks, $invalidTasks );
 	}
 
 }
