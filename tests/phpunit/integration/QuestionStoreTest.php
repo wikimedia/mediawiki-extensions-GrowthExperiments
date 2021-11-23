@@ -30,9 +30,9 @@ class QuestionStoreTest extends MediaWikiIntegrationTestCase {
 			$this->getTestSysop()->getUser(),
 			'foo',
 			$services->getRevisionStore(),
-			$services->getDBLoadBalancer(),
 			$services->getContentLanguage(),
 			$services->getUserOptionsManager(),
+			$services->getUserOptionsLookup(),
 			RequestContext::getMain()->getRequest()->wasPosted()
 		);
 		$this->assertInstanceOf( QuestionStore::class, $questionStore );

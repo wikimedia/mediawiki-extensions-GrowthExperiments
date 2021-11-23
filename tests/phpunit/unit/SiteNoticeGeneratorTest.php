@@ -5,6 +5,7 @@ namespace GrowthExperiments\Tests;
 use GrowthExperiments\ExperimentUserManager;
 use GrowthExperiments\Homepage\SiteNoticeGenerator;
 use GrowthExperiments\HomepageHooks;
+use MediaWiki\User\UserOptionsLookup;
 use MediaWikiUnitTestCase;
 use OOUI\BlankTheme;
 use OOUI\Theme;
@@ -34,7 +35,10 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->willReturnOnConsecutiveCalls( false, true );
 		$siteNotice = '';
 		$minervaEnableNotice = false;
-		$siteNoticeGenerator = new SiteNoticeGenerator( $this->getExperimentUserManagerMock() );
+		$siteNoticeGenerator = new SiteNoticeGenerator(
+			$this->getExperimentUserManagerMock(),
+			$this->getUserOptionsLookupMock()
+		);
 		$siteNoticeGenerator->setNotice(
 			HomepageHooks::CONFIRMEMAIL_QUERY_PARAM,
 			$siteNotice,
@@ -67,7 +71,10 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->willReturnOnConsecutiveCalls( false, true );
 		$siteNotice = '';
 		$minervaEnableNotice = false;
-		$siteNoticeGenerator = new SiteNoticeGenerator( $this->getExperimentUserManagerMock() );
+		$siteNoticeGenerator = new SiteNoticeGenerator(
+			$this->getExperimentUserManagerMock(),
+			$this->getUserOptionsLookupMock()
+		);
 		$siteNoticeGenerator->setNotice(
 			'specialwelcomesurvey',
 			$siteNotice,
@@ -101,7 +108,10 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->willReturn( false );
 		$siteNotice = '';
 		$minervaEnableNotice = false;
-		$siteNoticeGenerator = new SiteNoticeGenerator( $this->getExperimentUserManagerMock() );
+		$siteNoticeGenerator = new SiteNoticeGenerator(
+			$this->getExperimentUserManagerMock(),
+			$this->getUserOptionsLookupMock()
+		);
 		$siteNoticeGenerator->setNotice(
 			'welcomesurvey-originalcontext',
 			$siteNotice,
@@ -137,7 +147,10 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->willReturnOnConsecutiveCalls( false, true );
 		$siteNotice = '';
 		$minervaEnableNotice = false;
-		$siteNoticeGenerator = new SiteNoticeGenerator( $this->getExperimentUserManagerMock() );
+		$siteNoticeGenerator = new SiteNoticeGenerator(
+			$this->getExperimentUserManagerMock(),
+			$this->getUserOptionsLookupMock()
+		);
 		$siteNoticeGenerator->setNotice(
 			'specialwelcomesurvey',
 			$siteNotice,
@@ -169,7 +182,10 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->willReturn( false );
 		$siteNotice = '';
 		$minervaEnableNotice = false;
-		$siteNoticeGenerator = new SiteNoticeGenerator( $this->getExperimentUserManagerMock() );
+		$siteNoticeGenerator = new SiteNoticeGenerator(
+			$this->getExperimentUserManagerMock(),
+			$this->getUserOptionsLookupMock()
+		);
 		$siteNoticeGenerator->setNotice(
 			'welcomesurvey-originalcontext',
 			$siteNotice,
@@ -217,7 +233,10 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			] );
 		$siteNotice = '';
 		$minervaEnableNotice = false;
-		$siteNoticeGenerator = new SiteNoticeGenerator( $this->getExperimentUserManagerMock() );
+		$siteNoticeGenerator = new SiteNoticeGenerator(
+			$this->getExperimentUserManagerMock(),
+			$this->getUserOptionsLookupMock()
+		);
 		$siteNoticeGenerator->setNotice(
 			'',
 			$siteNotice,
@@ -264,7 +283,10 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->with( 'WelcomeSurvey' )
 			->willReturn( false );
 		$siteNotice = '';
-		$siteNoticeGenerator = new SiteNoticeGenerator( $this->getExperimentUserManagerMock() );
+		$siteNoticeGenerator = new SiteNoticeGenerator(
+			$this->getExperimentUserManagerMock(),
+			$this->getUserOptionsLookupMock()
+		);
 		$siteNoticeGenerator->setNotice(
 			'',
 			$siteNotice,
@@ -311,14 +333,16 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 
 		$userMock = $this->getMockBuilder( \User::class )
 			->disableOriginalConstructor()
-			->onlyMethods( [ 'getId', 'getName', 'getOption' ] )
+			->onlyMethods( [ 'getId', 'getName' ] )
 			->getMock();
 		// This will make user settings update job fail, but we don't care about that.
 		$userMock->method( 'getId' )
 			->willReturn( -1 );
-		$userMock->method( 'getOption' )
-			->with( HomepageHooks::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN )
-			// false branch cannot easily be tested as it would call to JobQueueGroup
+		$userOptionsLookupMock = $this->getMockBuilder( UserOptionsLookup::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$userOptionsLookupMock->method( 'getOption' )
+			->with( $this->anything(), HomepageHooks::HOMEPAGE_MOBILE_DISCOVERY_NOTICE_SEEN )
 			->willReturn( true );
 
 		$titleMock = $this->getMockBuilder( \Title::class )
@@ -347,6 +371,18 @@ class SiteNoticeGeneratorTest extends MediaWikiUnitTestCase {
 			->getMock();
 		$mock->method( 'getVariant' )
 			->willReturn( $variant );
+		return $mock;
+	}
+
+	/**
+	 * @return UserOptionsLookup|MockObject
+	 */
+	private function getUserOptionsLookupMock() {
+		$mock = $this->getMockBuilder( UserOptionsLookup::class )
+			->disableOriginalConstructor()
+			->getMock();
+		$mock->method( 'getOption' )
+			->willReturn( true );
 		return $mock;
 	}
 }
