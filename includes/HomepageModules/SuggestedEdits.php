@@ -688,7 +688,10 @@ class SuggestedEdits extends BaseModule {
 				 // * mw-ge-small-task-card-tasktype-difficulty-hard
 				. 'mw-ge-small-task-card-tasktype-difficulty-'
 				. $task->getTaskType()->getDifficulty() ],
-			$taskTypeIcon . $taskIcon . $task->getTaskType()->getName( $this->getContext() ) );
+			$taskTypeIcon . $taskIcon . Html::element( 'span',
+				[ 'class' => 'mw-ge-small-task-card-tasktype-taskname' ],
+				$task->getTaskType()->getName( $this->getContext() )
+			) );
 
 		$glue = Html::element( 'div',
 			[ 'class' => 'mw-ge-small-task-card-glue' ] );
