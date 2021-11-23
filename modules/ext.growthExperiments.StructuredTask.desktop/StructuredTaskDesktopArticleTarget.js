@@ -1,6 +1,7 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	StructuredTaskArticleTarget = StructuredTask.StructuredTaskArticleTarget,
-	MachineSuggestionsMode = StructuredTask.MachineSuggestionsMode;
+	MachineSuggestionsMode = StructuredTask.MachineSuggestionsMode,
+	Utils = require( '../utils/ext.growthExperiments.Utils.js' );
 
 /**
  * DesktopArticleTarget for structured task editing flow
@@ -64,6 +65,16 @@ StructuredTaskDesktopArticleTarget.prototype.onBeforeUnload = function () {
 	return StructuredTaskDesktopArticleTarget.super.prototype.onBeforeUnload.apply(
 		this, arguments
 	);
+};
+
+/**
+ * Remove "action" query param since this opens the default editor when reloading (leaving only
+ * veaction which always opens the VisualEditor)
+ *
+ * @override
+ */
+StructuredTaskDesktopArticleTarget.prototype.updateHistory = function () {
+	Utils.removeQueryParam( mw.Uri(), 'action' );
 };
 
 module.exports = StructuredTaskDesktopArticleTarget;

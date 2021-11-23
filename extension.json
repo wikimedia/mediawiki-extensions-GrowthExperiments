@@ -1006,7 +1006,8 @@
 				"ext.growthExperiments.StructuredTask.desktop/addlink/AddLinkDesktopSaveDialog.js",
 				"ext.growthExperiments.StructuredTask.desktop/addlink/RecommendedLinkToolbarDialogDesktop.js",
 				"ext.growthExperiments.StructuredTask.desktop/addimage/AddImageDesktopArticleTarget.js",
-				"ext.growthExperiments.StructuredTask.desktop/addimage/AddImageDesktopSaveDialog.js"
+				"ext.growthExperiments.StructuredTask.desktop/addimage/AddImageDesktopSaveDialog.js",
+				"utils/ext.growthExperiments.Utils.js"
 			],
 			"dependencies": [
 				"ext.growthExperiments.StructuredTask",

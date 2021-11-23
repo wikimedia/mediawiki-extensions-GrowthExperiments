@@ -63,6 +63,17 @@ StructuredTaskMobileArticleTarget.prototype.updateHistory = function () {
 		useReplaceState: false
 	} );
 	router.oldHash = '/editor/all';
+	this.maybeUpdateMobileEditorPreference();
+};
+
+/**
+ * Set 'VisualEditor' as the last editor if the user has "Remember my last editor" preference set.
+ * This prevents the source editor from being loaded when reloading the page.
+ */
+StructuredTaskMobileArticleTarget.prototype.maybeUpdateMobileEditorPreference = function () {
+	if ( mw.user.options.get( 'visualeditor-tabs' ) === 'remember-last' ) {
+		new mw.Api().saveOption( 'mobile-editor', 'VisualEditor' );
+	}
 };
 
 module.exports = StructuredTaskMobileArticleTarget;
