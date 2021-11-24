@@ -162,6 +162,7 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 		height: imageData.metadata.originalHeight
 	};
 	targetWidth = Math.min(
+		dimensions.width,
 		this.getSurface().getView().$documentNode.width(),
 		MAX_IMAGE_DISPLAY_WIDTH
 	);
@@ -323,7 +324,7 @@ AddImageArticleTarget.prototype.rollback = function () {
  * This is used when the caption text needs to be programmatically updated, such as in the
  * custom paste handler.
  *
- * @param captionText
+ * @param {string} captionText
  */
 AddImageArticleTarget.prototype.insertCaption = function ( captionText ) {
 	var surfaceModel = this.getSurface().getModel(),

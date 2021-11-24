@@ -23,8 +23,7 @@ function CERecommendedImageNode() {
 	 */
 	this.loadingDelay = 500;
 	/**
-	 * Offset value to use when scrolling to the caption field
-	 * @property {number}
+	 * @property {number} Offset value to use when scrolling to the caption field
 	 */
 	this.scrollOffset = 100;
 	/**
@@ -53,9 +52,7 @@ CERecommendedImageNode.static.name = 'mwGeRecommendedImage';
  */
 CERecommendedImageNode.prototype.setupLoadingOverlay = function () {
 	this.$loadingOverlay = $( '<div>' ).addClass( 'mw-ge-recommendedImage-loading-overlay' );
-	this.$element.addClass( 'mw-ge-recommendedImage' ).css( {
-		width: this.model.getAttribute( 'width' )
-	} ).append( this.$loadingOverlay );
+	this.$element.addClass( 'mw-ge-recommendedImage' ).append( this.$loadingOverlay );
 };
 
 /**
@@ -133,6 +130,11 @@ CERecommendedImageNode.prototype.setupDetailsButton = function ( $container ) {
  */
 CERecommendedImageNode.prototype.isResizable = function () {
 	return false;
+};
+
+/** @override */
+CERecommendedImageNode.prototype.updateSize = function () {
+	// Intentionally no-op since resizing is not allowed
 };
 
 module.exports = CERecommendedImageNode;
