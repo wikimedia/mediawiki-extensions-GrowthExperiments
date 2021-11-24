@@ -10,6 +10,7 @@ use GrowthExperiments\HomepageModules\SuggestedEditsComponents\NavigationWidgetF
 use GrowthExperiments\HomepageModules\SuggestedEditsComponents\TaskExplanationWidget;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
@@ -141,6 +142,10 @@ class SuggestedEdits extends BaseModule {
 
 	/** @var LinkRecommendationFilter */
 	private $linkRecommendationFilter;
+	/**
+	 * @var ImageRecommendationFilter
+	 */
+	private $imageRecommendationFilter;
 
 	/**
 	 * @param IContextSource $context
@@ -155,6 +160,7 @@ class SuggestedEdits extends BaseModule {
 	 * @param ProtectionFilter $protectionFilter
 	 * @param UserOptionsLookup $userOptionsLookup
 	 * @param LinkRecommendationFilter $linkRecommendationFilter
+	 * @param ImageRecommendationFilter $imageRecommendationFilter
 	 */
 	public function __construct(
 		IContextSource $context,
@@ -168,7 +174,8 @@ class SuggestedEdits extends BaseModule {
 		TitleFactory $titleFactory,
 		ProtectionFilter $protectionFilter,
 		UserOptionsLookup $userOptionsLookup,
-		LinkRecommendationFilter $linkRecommendationFilter
+		LinkRecommendationFilter $linkRecommendationFilter,
+		ImageRecommendationFilter $imageRecommendationFilter
 	) {
 		parent::__construct( 'suggested-edits', $context, $wikiConfig, $experimentUserManager );
 		$this->editInfoService = $editInfoService;
@@ -181,6 +188,7 @@ class SuggestedEdits extends BaseModule {
 		$this->protectionFilter = $protectionFilter;
 		$this->userOptionsLookup = $userOptionsLookup;
 		$this->linkRecommendationFilter = $linkRecommendationFilter;
+		$this->imageRecommendationFilter = $imageRecommendationFilter;
 	}
 
 	/** @inheritDoc */
@@ -396,6 +404,7 @@ class SuggestedEdits extends BaseModule {
 			// If there are link recommendation tasks without corresponding DB entries, these will be removed
 			// from the TaskSet.
 			$tasks = $this->linkRecommendationFilter->filter( $tasks );
+			$tasks = $this->imageRecommendationFilter->filter( $tasks );
 			$tasks = $this->protectionFilter->filter( $tasks, 1 );
 		}
 		$this->tasks = $tasks;

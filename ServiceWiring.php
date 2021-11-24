@@ -51,6 +51,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ErrorForwardingConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\PageConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\LinkRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\ProtectionFilter;
@@ -87,7 +88,8 @@ return [
 			$cirrusSearchFactory,
 			$geServices->getTaskSuggesterFactory(),
 			$geServices->getNewcomerTasksUserOptionsLookup(),
-			$geServices->getNewcomerTasksConfigurationLoader()
+			$geServices->getNewcomerTasksConfigurationLoader(),
+			$services->getMainWANObjectCache()
 		);
 	},
 
@@ -518,6 +520,14 @@ return [
 	): LinkRecommendationFilter {
 		return new LinkRecommendationFilter(
 			GrowthExperimentsServices::wrap( $services )->getLinkRecommendationStore()
+		);
+	},
+
+	'GrowthExperimentsImageRecommendationFilter' => static function (
+		MediaWikiServices $services
+	): ImageRecommendationFilter {
+		return new ImageRecommendationFilter(
+			$services->getMainWANObjectCache()
 		);
 	},
 

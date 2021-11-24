@@ -5,6 +5,7 @@ namespace GrowthExperiments\NewcomerTasks\AddImage;
 use CirrusSearch\CirrusSearch;
 use GrowthExperiments\NewcomerTasks\AbstractSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\ImageRecommendationFilter;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\RecommendationSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\Task\TaskSet;
@@ -16,6 +17,7 @@ use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\User\UserIdentity;
 use Message;
 use StatusValue;
+use WANObjectCache;
 
 /**
  * Record the user's decision on the recommendations for a given page.
@@ -48,22 +50,28 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
 
+	/** @var WANObjectCache */
+	private $cache;
+
 	/**
 	 * @param callable $cirrusSearchFactory A factory method returning a CirrusSearch instance.
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param ConfigurationLoader $configurationLoader
+	 * @param WANObjectCache $cache
 	 */
 	public function __construct(
 		callable $cirrusSearchFactory,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		ConfigurationLoader $configurationLoader
+		ConfigurationLoader $configurationLoader,
+		WANObjectCache $cache
 	) {
 		$this->cirrusSearchFactory = $cirrusSearchFactory;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->configurationLoader = $configurationLoader;
+		$this->cache = $cache;
 	}
 
 	/** @inheritDoc */
@@ -86,6 +94,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 			return $status;
 		}
 		[ $accepted, $reasons ] = $status->getValue();
+		$imageRecommendation = $this->configurationLoader->getTaskTypes()['image-recommendation'];
 
 		// Remove this image from being recommended in the future, unless it was rejected with
 		// one of the "not sure" options.
@@ -94,6 +103,17 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 			$cirrusSearch = ( $this->cirrusSearchFactory )();
 			$cirrusSearch->resetWeightedTags( $page,
 				ImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX );
+			// Mark the task as "invalid" in a temporary cache, until the weighted tags in the search
+			// index are updated.
+			$this->cache->set(
+				ImageRecommendationFilter::makeKey(
+					$this->cache,
+					$imageRecommendation->getId(),
+					$page->getDBkey()
+				),
+				true,
+				$this->cache::TTL_MINUTE * 10
+			);
 		}
 
 		$warnings = [];

@@ -55,7 +55,7 @@ class CacheBackedImageRecommendationProvider implements ImageRecommendationProvi
 		LinkTarget $title
 	) {
 		return $cache->getWithSetCallback(
-			$cache->makeKey( 'GrowthExperiments', 'Recommendations', $taskType->getId(), $title->getDBkey() ),
+			self::makeKey( $cache, $taskType->getId(), $title->getDBkey() ),
 			// The recommendation won't change, but other metadata might and caching for longer might be
 			// problematic if e.g. the image got vandalized.
 			$cache::TTL_MINUTE * 5,
@@ -67,5 +67,15 @@ class CacheBackedImageRecommendationProvider implements ImageRecommendationProvi
 				return $response;
 			}
 		);
+	}
+
+	/**
+	 * @param WANObjectCache $cache
+	 * @param string $taskTypeId
+	 * @param string $dbKey
+	 * @return string
+	 */
+	public static function makeKey( WANObjectCache $cache, string $taskTypeId, string $dbKey ): string {
+		return $cache->makeKey( 'GrowthExperiments', 'Recommendations', $taskTypeId, $dbKey );
 	}
 }
