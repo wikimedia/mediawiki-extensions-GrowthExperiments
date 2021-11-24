@@ -16,6 +16,7 @@ function AddLinkMobileArticleTarget() {
 	this.$element.addClass( 've-init-mw-addLinkArticleTarget' );
 	// eslint-disable-next-line camelcase
 	this.logger = new LinkSuggestionInteractionLogger( { is_mobile: true } );
+	this.connect( this, { save: 'onSaveComplete' } );
 }
 
 OO.inheritClass( AddLinkMobileArticleTarget, StructuredTaskMobileArticleTarget );

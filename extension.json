@@ -587,6 +587,7 @@
 				"homepage/suggestededits/TaskTypesAbFilter.js",
 				"homepage/suggestededits/QualityGate.js",
 				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
+				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"homepage/ext.growthExperiments.Homepage.TopicSelectionWidget.js",
 				"homepage/ext.growthExperiments.Homepage.SuggestionWidget.js",
@@ -717,7 +718,9 @@
 				"growthexperiments-addimage-daily-task-limit-exceeded",
 				"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button",
 				"growthexperiments-addimage-mobile-only",
-				"growthexperiments-addimage-mobile-only-dialog-button"
+				"growthexperiments-addimage-mobile-only-dialog-button",
+				"growthexperiments-addlink-daily-task-limit-exceeded",
+				"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button"
 			]
 		},
 		"ext.growthExperiments.Homepage.StartEditing": {
@@ -1405,8 +1408,11 @@
 				"growthexperiments-help-panel-postedit-success-message-saved",
 				"growthexperiments-help-panel-postedit-success-message-notsaved",
 				"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-image-recommendation",
+				"growthexperiments-help-panel-postedit-success-message-allavailabletasksdone-link-recommendation",
 				"growthexperiments-help-panel-postedit-subheader-image-recommendation",
 				"growthexperiments-help-panel-postedit-subheader2-image-recommendation",
+				"growthexperiments-help-panel-postedit-subheader-link-recommendation",
+				"growthexperiments-help-panel-postedit-subheader2-link-recommendation",
 				"growthexperiments-help-panel-postedit-header",
 				"growthexperiments-help-panel-postedit-subheader",
 				"growthexperiments-help-panel-postedit-subheader-notsaved",

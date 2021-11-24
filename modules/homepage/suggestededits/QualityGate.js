@@ -18,6 +18,11 @@ function QualityGate( config ) {
 			mobileOnly: function () {
 				return this.checkMobileOnlyGate( 'image-recommendation' );
 			}.bind( this )
+		},
+		'link-recommendation': {
+			dailyLimit: function () {
+				return this.checkDailyLimitForTaskType( 'link-recommendation' );
+			}.bind( this )
 		}
 	};
 	this.errorHandlers = {
@@ -27,6 +32,11 @@ function QualityGate( config ) {
 			}.bind( this ),
 			mobileOnly: function () {
 				return this.showImageRecommendationMobileOnlyDialog();
+			}.bind( this )
+		},
+		'link-recommendation': {
+			dailyLimit: function () {
+				return this.showLinkRecommendationDailyLimitAlertDialog();
 			}.bind( this )
 		}
 	};
@@ -151,6 +161,22 @@ QualityGate.prototype.showAlertDialog = function ( qualityGateId, message, actio
 		message: message,
 		actions: [ action ]
 	} );
+};
+
+/**
+ * Show an alert dialog for dailyLimit gate for link-recommendation task type.
+ */
+QualityGate.prototype.showLinkRecommendationDailyLimitAlertDialog = function () {
+	this.loggers[ 'link-recommendation' ].log( 'impression', 'dailyLimit', this.config.loggerMetadataOverrides );
+	this.showAlertDialog(
+		'dailyLimit',
+		mw.message( 'growthexperiments-addlink-daily-task-limit-exceeded' ).parse(),
+		{
+			action: 'accept',
+			label: mw.message( 'growthexperiments-addlink-daily-task-limit-exceeded-dialog-button' ).text(),
+			flags: 'primary'
+		}
+	);
 };
 
 module.exports = QualityGate;

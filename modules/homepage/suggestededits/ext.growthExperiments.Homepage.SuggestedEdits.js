@@ -17,6 +17,7 @@
 		SwipePane = require( '../../ui-components/SwipePane.js' ),
 		QualityGate = require( './QualityGate.js' ),
 		ImageSuggestionInteractionLogger = require( './../../ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js' ),
+		LinkSuggestionInteractionLogger = require( './../../ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js' ),
 		suggestedEditsModule;
 
 	/**
@@ -729,6 +730,10 @@
 					/* eslint-disable camelcase */
 					loggers: {
 						'image-recommendation': new ImageSuggestionInteractionLogger( {
+							is_mobile: OO.ui.isMobile(),
+							active_interface: 'qualitygate_dialog'
+						} ),
+						'link-recommendation': new LinkSuggestionInteractionLogger( {
 							is_mobile: OO.ui.isMobile(),
 							active_interface: 'qualitygate_dialog'
 						} )

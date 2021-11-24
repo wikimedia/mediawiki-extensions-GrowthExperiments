@@ -18,6 +18,7 @@ function AddLinkDesktopArticleTarget() {
 		// eslint-disable-next-line camelcase
 		is_mobile: false
 	} );
+	this.connect( this, { save: 'onSaveComplete' } );
 }
 
 OO.inheritClass( AddLinkDesktopArticleTarget, StructuredTaskDesktopArticleTarget );

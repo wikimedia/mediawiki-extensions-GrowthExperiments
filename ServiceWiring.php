@@ -39,6 +39,7 @@ use GrowthExperiments\NewcomerTasks\AddLink\DbBackedLinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationHelper;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationProvider;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationStore;
+use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationUpdater;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkSubmissionRecorder;
 use GrowthExperiments\NewcomerTasks\AddLink\PruningLinkRecommendationProvider;
@@ -102,7 +103,10 @@ return [
 			$growthServices->getLinkRecommendationStore(),
 			$growthServices->getLinkSubmissionRecorder(),
 			$services->getLinkBatchFactory(),
-			$services->getTitleFactory()
+			$services->getTitleFactory(),
+			$growthServices->getTaskSuggesterFactory(),
+			$growthServices->getNewcomerTasksUserOptionsLookup(),
+			$growthServices->getNewcomerTasksConfigurationLoader()
 		);
 	},
 
@@ -632,7 +636,8 @@ return [
 						'class' => QualityGateDecorator::class,
 						'args' => [
 							$growthServices->getNewcomerTasksConfigurationLoader(),
-							$growthServices->getImageRecommendationSubmissionLogFactory()
+							$growthServices->getImageRecommendationSubmissionLogFactory(),
+							$growthServices->getLinkRecommendationSubmissionLogFactory()
 						]
 					],
 				]
@@ -770,6 +775,14 @@ return [
 		MediaWikiServices $services
 	): ImageRecommendationSubmissionLogFactory {
 		return new ImageRecommendationSubmissionLogFactory(
+			$services->getUserOptionsLookup()
+		);
+	},
+
+	'GrowthExperimentsLinkRecommendationSubmissionLogFactory' => static function (
+		MediaWikiServices $services
+	): LinkRecommendationSubmissionLogFactory {
+		return new LinkRecommendationSubmissionLogFactory(
 			$services->getUserOptionsLookup()
 		);
 	},

@@ -3,7 +3,13 @@
 namespace GrowthExperiments\NewcomerTasks\AddLink;
 
 use GrowthExperiments\NewcomerTasks\AbstractSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
+use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\RecommendationSubmissionHandler;
+use GrowthExperiments\NewcomerTasks\Task\TaskSet;
+use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use IDBAccessObject;
 use MalformedTitleException;
 use MediaWiki\Cache\LinkBatchFactory;
@@ -32,6 +38,12 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 	private $linkRecommendationStore;
 	/** @var LinkBatchFactory */
 	private $linkBatchFactory;
+	/** @var TaskSuggesterFactory */
+	private $taskSuggesterFactory;
+	/** @var NewcomerTasksUserOptionsLookup */
+	private $newcomerTasksUserOptionsLookup;
+	/** @var ConfigurationLoader */
+	private $configurationLoader;
 
 	/**
 	 * @param LinkRecommendationHelper $linkRecommendationHelper
@@ -39,19 +51,28 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 	 * @param LinkSubmissionRecorder $addLinkSubmissionRecorder
 	 * @param LinkBatchFactory $linkBatchFactory
 	 * @param TitleFactory $titleFactory
+	 * @param TaskSuggesterFactory $taskSuggesterFactory
+	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
+	 * @param ConfigurationLoader $configurationLoader
 	 */
 	public function __construct(
 		LinkRecommendationHelper $linkRecommendationHelper,
 		LinkRecommendationStore $linkRecommendationStore,
 		LinkSubmissionRecorder $addLinkSubmissionRecorder,
 		LinkBatchFactory $linkBatchFactory,
-		TitleFactory $titleFactory
+		TitleFactory $titleFactory,
+		TaskSuggesterFactory $taskSuggesterFactory,
+		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
+		ConfigurationLoader $configurationLoader
 	) {
 		$this->linkRecommendationHelper = $linkRecommendationHelper;
 		$this->addLinkSubmissionRecorder = $addLinkSubmissionRecorder;
 		$this->titleFactory = $titleFactory;
 		$this->linkRecommendationStore = $linkRecommendationStore;
 		$this->linkBatchFactory = $linkBatchFactory;
+		$this->taskSuggesterFactory = $taskSuggesterFactory;
+		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
+		$this->configurationLoader = $configurationLoader;
 	}
 
 	/** @inheritDoc */
@@ -107,6 +128,24 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 				Message::listParam( $unexpectedTargets, 'comma' ) );
 		}
 
+		$warnings = [];
+		$taskSet = $this->taskSuggesterFactory->create()->suggest(
+			$user,
+			$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
+			$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
+		);
+		if ( $taskSet instanceof TaskSet ) {
+			/** @var LinkRecommendationTaskType $linkRecommendationTaskType */
+			$linkRecommendationTaskType = $this->configurationLoader->getTaskTypes()['link-recommendation'];
+			$qualityGateConfig = $taskSet->getQualityGateConfig();
+			if ( isset( $qualityGateConfig[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount'] ) &&
+				$qualityGateConfig[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount'] >=
+				// @phan-suppress-next-line PhanUndeclaredMethod
+				$linkRecommendationTaskType->getMaxTasksPerDay() - 1 ) {
+				$warnings['gelinkrecommendationdailytasksexceeded'] = true;
+			}
+		}
+
 		try {
 			$this->linkRecommendationHelper->deleteLinkRecommendation(
 				$page,
@@ -119,6 +158,10 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 			);
 			$status = $this->addLinkSubmissionRecorder->record( $user, $linkRecommendation, $acceptedTargets,
 				$rejectedTargets, $skippedTargets, $editRevId );
+			$status->merge(
+				StatusValue::newGood( [ 'warnings' => $warnings , 'logId' => $status->getValue() ] ),
+				true
+			);
 		} catch ( DBReadOnlyError $e ) {
 			$status = StatusValue::newFatal( 'readonly' );
 		}
