@@ -479,13 +479,13 @@ class SuggestedEdits extends BaseModule {
 	 * @suppress SecurityCheck-DoubleEscaped
 	 */
 	protected function getMobileSummaryBody() {
+		$tasks = $this->getTaskSet();
 		// If the task cannot be loaded, fall back to the old summary style for now.
-		$showTaskPreview = $this->getTaskSet() instanceof TaskSet &&
-			$this->getTaskSet()->count() > 0;
+		$showTaskPreview = $tasks instanceof TaskSet && $tasks->count() > 0;
 
 		if ( $showTaskPreview ) {
 			$taskPager = $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
-				->numParams( 1, $this->tasks->getTotalCount() )
+				->numParams( 1, $tasks->getTotalCount() )
 				->text();
 			$button = new ButtonWidget( [
 				'label' => $this->getContext()->msg(
@@ -800,15 +800,16 @@ class SuggestedEdits extends BaseModule {
 	protected function getActionData() {
 		$user = $this->getContext()->getUser();
 		$taskSet = $this->getTaskSet();
-		$topics = null;
+		$taskTypes = $topics = null;
 		if ( $taskSet instanceof TaskSet ) {
 			$taskTypes = $taskSet->getFilters()->getTaskTypeFilters();
 			$topics = $taskSet->getFilters()->getTopicFilters();
 		}
+
 		// these will be updated on the client side as needed
 		$data = [
 			'taskTypes' => $taskTypes ?? $this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
-			'taskCount' => $this->tasks->getTotalCount()
+			'taskCount' => ( $taskSet instanceof TaskSet ) ? $taskSet->getTotalCount() : 0,
 		];
 		if ( self::isTopicMatchingEnabled( $this->getContext(), $this->userOptionsLookup ) ) {
 			$data['topics'] = $topics ?? $this->newcomerTasksUserOptionsLookup->getTopicFilter( $user );
@@ -842,7 +843,7 @@ class SuggestedEdits extends BaseModule {
 			return '';
 		}
 		return new HtmlSnippet( $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
-				->numParams( [ 1, $this->tasks->getTotalCount() ] )
+				->numParams( [ 1, $taskSet->getTotalCount() ] )
 			->parse() );
 	}
 
