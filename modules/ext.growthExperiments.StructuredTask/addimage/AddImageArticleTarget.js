@@ -330,14 +330,15 @@ AddImageArticleTarget.prototype.insertCaption = function ( captionText ) {
 	var surfaceModel = this.getSurface().getModel(),
 		documentModel = surfaceModel.getDocument(),
 		captionNode = documentModel.getNodesByType( 'mwGeRecommendedImageCaption' )[ 0 ],
+		captionNodeRange = captionNode.getRange( false ),
 		selection = surfaceModel.getSelection().getRange(),
 		insertOffset;
 
-	if ( captionNode.getRange().containsRange( selection ) ) {
+	if ( captionNodeRange.containsRange( selection ) ) {
 		insertOffset = selection;
 	} else {
 		insertOffset = surfaceModel.getDocument().getRelativeRange(
-			new ve.Range( captionNode.getRange().start ), 1
+			new ve.Range( captionNodeRange.start ), 1, 'character', false
 		);
 	}
 	// Insert the caption without auto-selection and move the cursor to the end of the insertion
