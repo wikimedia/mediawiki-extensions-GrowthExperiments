@@ -5,8 +5,8 @@
 			"Ата"
 		]
 	},
-	"apihelp-growthstarmentee-summary": "Позначити або зняти позначку з підпорядкованого як зірочку поточного користувача (зберігається приватно і не реєструється)",
-	"apihelp-growthstarmentee-param-gesaction": "Вжити заходів (<kbd>star</kbd> або <kbd>unstar</kbd>)",
-	"apihelp-growthstarmentee-param-gesmentee": "Ментований до (не)зірки",
-	"apihelp-query+growthstarredmentees-summary": "Отримайте список підопічних, відмічених наставником, який наразі увійшов у систему"
+	"apihelp-growthstarmentee-summary": "Позначити підопічного зірочкою або зняти позначку як поточний користувач (зберігається приватно і не вноситься в журнали)",
+	"apihelp-growthstarmentee-param-gesaction": "Необхідна дія (<kbd>star</kbd> або <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Підопічний для відмітки/зняття зірочки",
+	"apihelp-query+growthstarredmentees-summary": "Отримати список підопічних, відмічених наставником, який наразі увійшов у систему"
 }

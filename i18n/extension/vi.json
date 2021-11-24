@@ -14,6 +14,7 @@
 	"growthexperiments-config-validator-error": "Việc hợp thức hóa $1 thất bại với: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> phải là <code>$2</code>, nhưng thay vào đó lại là <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Nội dung-mô hình không phù hợp: File cấu hình GrowthExperiments phải chứa mô hình nội dung JSON, phát hiện $1",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID xử lý loại nhiệm vụ không hợp lệ: <code>$1</code> không phải một giá trị hợp lệ",
 	"growthexperiments-edit-config-disabled": "Cấu hình cộng đồng hiện đang tắt.",
 	"growthexperiments-edit-config-title": "Sửa đổi cấu hình Tăng trưởng",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Được cập nhật lần cuối bởi [[User:$1|$1]] $2.",

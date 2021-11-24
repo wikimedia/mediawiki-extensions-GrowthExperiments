@@ -4,10 +4,11 @@
 			"Dyolf77",
 			"Dyolf77 (WMF)",
 			"Meno25",
-			"ديفيد"
+			"ديفيد",
+			"Michel Bakni"
 		]
 	},
-	"growthexperiments-desc": "يحتوي هذا الملحق على تجارب يقوم بها فريق النمو.",
+	"growthexperiments-desc": "يحتوي هذا الملحق على تجارب أنجزها فريق النمو.",
 	"growthexperiments-config-validator-additional-fields": "يحتوي التكوين الجديد على مفاتيح تهيئة لا يمكن تخصيصها هنا.",
 	"growthexperiments-config-validator-error": "أخفق التأكيد لـ$1 مع: «$2»",
 	"growthexperiments-config-validator-datatype-mismatch": "من المتوقّع لـ<code>$1</code> أن يكون <code>$2</code>، لكنّه <code>$3</code>",
@@ -23,7 +24,7 @@
 	"growthexperiments-edit-config-feedback-cta": "أرسلوا لنا ملاحظاتكم",
 	"growthexperiments-edit-config-error-invalid-title": "لم تُضبط صفحة الإعدادات جيّدًا.",
 	"growthexperiments-edit-config-edit-summary": "ملخص التعديل",
-	"growthexperiments-edit-config-config-changed": "تمّ تغيير الإعداد. ربّما يجب الانتظار لبضع دقائق لتفعيل التغييرات.",
+	"growthexperiments-edit-config-config-changed": "غيرت الإعدادات. ربّما يجب الانتظار لبضعة دقائق ليظهر تأثير التغييرات.",
 	"growthexperiments-edit-config-return-to-form": "يمكن [[Special:EditGrowthConfig|الرجوع]] إلى تنسيق الضبط.",
 	"growthexperiments-edit-config-help-panel": "إعدادات لوحة المساعدة",
 	"growthexperiments-edit-config-help-panel-description": "بمكن أن تتوافر لوحة المساعدة على أيّ نطاق، في وضع القراءة أو في وضع التحرير، مثلما هو مضبوط أدناه. تتضمّن اللوحة البحث عن المساعدة، والضغط على روابط المساعدة، وطرح الأسئلة إمّا على المرشدين أو على ميدان المساعدة.",

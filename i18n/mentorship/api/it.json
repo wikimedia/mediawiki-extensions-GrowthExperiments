@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"ValeJappo"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Aggiungi o rimuovi un allievo dai preferiti dell'utenza attuale (salvati privatamente e non pubblicamente registrati)",
+	"apihelp-growthstarmentee-param-gesaction": "Azione da eseguire (<kbd>star</kbd> o <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Allievo da aggiungere/rimuovere dai preferiti",
+	"apihelp-query+growthstarredmentees-summary": "Ottieni una lista degli allievi preferiti per l'utenza attuale"
+}

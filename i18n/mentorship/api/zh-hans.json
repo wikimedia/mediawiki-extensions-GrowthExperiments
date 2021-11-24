@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Xiplus"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "由目前用户将学员标记或取消标记星号（私密存储且不记录）",
+	"apihelp-growthstarmentee-param-gesaction": "要采取的行动（<kbd>加上标记</kbd>或<kbd>移除标记</kbd>）",
+	"apihelp-growthstarmentee-param-gesmentee": "（取消）标记学员",
+	"apihelp-query+growthstarredmentees-summary": "获取当前登录导师标记星号的学员名单"
+}

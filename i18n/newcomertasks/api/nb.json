@@ -9,6 +9,7 @@
 	"apihelp-query+growthtasks-param-tasktypes": "Oppgavetyper resultatene bør begrenses til. La denne være tom for å få alle forslag.",
 	"apihelp-query+growthtasks-param-topics": "Artikkelemner som skal foretrekkes i foreslåtte oppgaver.",
 	"apihelp-query+growthtasks-param-limit": "Maksimalt antall oppgaveforslag som skal returneres.",
+	"apihelp-query+growthtasks-param-excludepageids": "Side-ID-er som skal ekskluderes fra spørringa.",
 	"apihelp-query+growthtasks-param-debug": "Legg til feilsøkingsdata i resultatet.",
 	"apihelp-query+growthtasks-example-1": "Hent oppgaveforslag for korrekturlesingsoppgaver for den gjeldende brukeren.",
 	"apihelp-query+growthtasks-example-2": "Hent oppgaveforslag for den gjeldende brukeren, med utvidet informasjon om sidene."

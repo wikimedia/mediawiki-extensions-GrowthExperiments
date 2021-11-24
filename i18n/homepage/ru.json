@@ -25,7 +25,8 @@
 			"Stjn",
 			"Sunpriat",
 			"Urfiner",
-			"Wileyfoxyx"
+			"Wileyfoxyx",
+			"DDPAT"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Здравствуйте}}, {{bidi:$1}}!",
@@ -181,7 +182,7 @@
 	"growthexperiments-homepage-suggestededits-no-results": "Не найдено предлагаемых правок",
 	"growthexperiments-homepage-suggestededits-select-other-difficulty": "Выберите другой уровень сложности, чтобы найти предлагаемые правки.",
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "Выберите другие интересы или измените уровень сложности, чтобы найти предлагаемые правки.",
-	"growthexperiments-homepage-suggestededits-footer": "Другие участники отметили эти статьи как нуждающиеся в доработке. Помогите улучшить '''{{grammar:accusative|{{SITENAME}}}}''' для '''$1''' ежедневных читателей.",
+	"growthexperiments-homepage-suggestededits-footer": "Другие участники отметили эти статьи как нуждающиеся в доработке. Помогите сделать '''{{grammar:accusative|{{SITENAME}}}}''' лучше для '''$1''' людей, читающих её каждый день.",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "Другие участники отметили эти статьи как нуждающиеся в доработке. Помогите сделать '''{{grammar:accusative|{{SITENAME}}}}''' лучше.",
 	"growthexperiments-homepage-suggestededits-footer-kilosuffix": "$1 тыс.",
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 млн",
@@ -216,6 +217,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-time-expand": "20—30 минут",
 	"growthexperiments-homepage-suggestededits-tasktype-time-update": "20—30 минут",
 	"growthexperiments-homepage-suggestededits-tasktype-time-link-recommendation": "3—5 минут",
+	"growthexperiments-homepage-suggestededits-tasktype-time-image-recommendation": "3—5 минут",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "$1 правки",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "Лёгкие",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "Средние",
@@ -347,6 +349,7 @@
 	"growthexperiments-addlink-context-button-reject": "Нет",
 	"growthexperiments-addlink-context-button-help": "Помощь по редактированию",
 	"growthexperiments-addlink-context-button-next": "Следующая",
+	"growthexperiments-addlink-context-button-show-suggestion": "Показать предлагаемую ссылку",
 	"growthexperiments-addlink-rejectiondialog-title": "Почему это плохая ссылка?",
 	"growthexperiments-addlink-rejectiondialog-message": "{{GENDER:$1|Ваши}} ответы помогут улучшить будущие рекомендации.",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "Практически все знают, что это такое",
@@ -388,11 +391,19 @@
 	"grant-managementorship": "Настроить наставничество",
 	"newcomertasksinfo": "Задачи для новичков",
 	"newcomertasksinfo-no-data": "Нет доступных данных.",
+	"newcomertasksinfo-config-form-info": "Конфигурацию задач для новичков можно просмотреть и изменить на [[Special:EditGrowthConfig]].",
 	"newcomertasksinfo-table-header-task-type": "Тип задачи",
 	"newcomertasksinfo-table-header-task-type-id": "Идентификатор",
 	"newcomertasksinfo-table-header-task-count": "Количество",
 	"newcomertasksinfo-table-header-topic-type": "Идентификатор темы",
 	"growthexperiments-structuredtask-ve-machine-suggestions-mode-title": "Предложения",
 	"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button": "Подтвердить…",
-	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Предложения"
+	"growthexperiments-structuredtask-editmode-selection-label": "Переключить редактор",
+	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Предложения",
+	"growthexperiments-structuredtask-editmode-selection-visual": "Визуальное редактирование",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "Оставить предложение?",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Переключение режимов позволит {{GENDER:$1|Вам}} вносить другие виды правок. Завершите проверку, чтобы прислать {{GENDER:$1|свои}} достижения.",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Переключить без отправки",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Отмена",
+	"growthexperiments-addlink-suggestions-outdated": "Другой пользователь редактировал статью, пока {{GENDER:|вы}} ее просматривали, и {{GENDER:|ваши}} изменения не удалось сохранить."
 }

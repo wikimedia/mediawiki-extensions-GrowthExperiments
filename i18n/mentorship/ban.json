@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Joseagush"
+			"Joseagush",
+			"Chinamoonroll"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Katerangan",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Panyaringan",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Anyarin"
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Anyarin",
+	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Nggih, tugasang buin méntor tiang"
 }

@@ -8,7 +8,9 @@
 			"Thibaut120094",
 			"Trizek (WMF)",
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"DreZhsh",
+			"McDutchie"
 		]
 	},
 	"growthexperiments-desc": "Cette extension contient des expériences faites par l’équipe Croissance (''Growth'').",
@@ -16,7 +18,7 @@
 	"growthexperiments-config-validator-error": "La validation pour $1 a échoué avec : « $2 »",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> est attendu comme <code>$2</code>, mais est <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Modèle de contenu non correspondant : le fichier de configuration de GrowthExperiments  doit avoir un modèle de contenu JSON, $1 détecté.",
-	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID de gestion de type de tââche non valide : <code>$1</code> n’est pas une valeur valide",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID de gestion de type de tâche non valide : <code>$1</code> n’est pas une valeur valide",
 	"growthexperiments-edit-config-disabled": "La configuration de la communauté est actuellement désactivée.",
 	"growthexperiments-edit-config-title": "Modifier la configuration de Growth",
 	"growthexperiments-edit-config-last-edit": "[[$3]] : Dernière mise à jour par [[User:$1|$1]] $2.",
@@ -26,7 +28,7 @@
 	"growthexperiments-edit-config-feedback-headline": "Avez-vous des idées ou des questions sur ce formulaire ?",
 	"growthexperiments-edit-config-feedback-cta": "Donner un avis",
 	"growthexperiments-edit-config-error-invalid-title": "La page de configuration n’a pas bien été configurée",
-	"growthexperiments-edit-config-edit-summary": "Modifier le résumé",
+	"growthexperiments-edit-config-edit-summary": "Résumé de modification",
 	"growthexperiments-edit-config-config-changed": "La configuration a été modifiée. Vous devrez peut-être attendre quelques minutes pour que les modifications prennent effet.",
 	"growthexperiments-edit-config-return-to-form": "Vous pouvez [[Special:EditGrowthConfig|retourner]] au formulaire de modification.",
 	"growthexperiments-edit-config-help-panel": "Paramètres du panneau d’aide",

@@ -4,14 +4,24 @@
 			"Robby"
 		]
 	},
+	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Wien ass an Ärer Tabell?",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Erklärung",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Benotzernumm",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filter derbäisetzen",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Zuel vun de Spären",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Zuel vun den Ännerungen",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Datum vun der Umeldung",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filteren",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Aktualiséieren",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Zuel vun den Ännerungen",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Minimum",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Maximum",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Lescht Ännerung",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Rezent Deeg",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Rezent Méint",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Sichen",
 	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "aktiv viru(n) $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "onbekannt",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "$1 weisen",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 vu(n) $2",
 	"growthexperiments-mentor-dashboard-resources-headline": "Ressourcen"
 }

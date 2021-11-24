@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Merk eller fjern stjernemerking av et fadderbarn av den gjeldende brukeren (lagres privat og logges ikke)",
+	"apihelp-growthstarmentee-param-gesaction": "Handling som skal utføres (<kbd>star</kbd> eller <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Fadderbarn som skal (av)stjernemerkes",
+	"apihelp-query+growthstarredmentees-summary": "Hent liste over fadderbarn som er stjernemerka av den for tiden innloggede fadderen"
+}

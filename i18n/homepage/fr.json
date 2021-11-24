@@ -28,7 +28,8 @@
 			"VIGNERON",
 			"Vega",
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"Ajeje Brazorf"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|}}Bonjour, {{bidi:$1}} !",
@@ -310,7 +311,7 @@
 	"growthexperiments-homepage-claimmentee-pretext": "Cette page {{GENDER:$1|vous}} permet de changer le tuteur du tutoré en vous-même. Il est recommandé d’utiliser cette fonctionnalité pour des utilisateurs que vous connaissez, ou pour des utilisateurs que vous tutorez sur un cours.",
 	"growthexperiments-homepage-claimmentee-mentee": "Nom d’utilisateur du tutoré",
 	"growthexperiments-homepage-claimmentee-reason": "Motif pour demander ce tutoré",
-	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|}}Vous avez modifié {{GENDER:$4|le tuteur|la tutrice}} de {{PLURAL:$2|}}$1 en $5.",
+	"growthexperiments-homepage-claimmentee-success": "{{GENDER:$3|}}Vous avez modifié {{GENDER:$4|le tuteur|la tutrice}} de {{PLURAL:$2|}}$1 ; c'est à présent $5.",
 	"growthexperiments-homepage-claimmentee-alreadychanged": "Le tuteur de {{GENDER:$1|$1}} a déjà été modifié. Êtes-vous {{GENDER:$2|sûr|sûre}} de vouloir le modifier de nouveau ?",
 	"growthexperiments-claimmentee-confirm": "Oui, je veux vraiment changer le tuteur",
 	"growthexperiments-log-name": "Journal de GrowthExperiments",

@@ -4,5 +4,18 @@
 			"Chinamoonroll"
 		]
 	},
-	"growthexperiments-edit-config-mentorship-enabled-true": "Inggih"
+	"growthexperiments-edit-config-title": "Uah konfigurasi Growth",
+	"growthexperiments-edit-config-feedback-cta": "Baang umpan walik",
+	"growthexperiments-edit-config-edit-summary": "Uah ringkesan",
+	"growthexperiments-edit-config-help-panel": "Pangaturan panel wantuan",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "Duur kaca",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "Betén kaca",
+	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Pabligbagan méntor",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Méja wantuan",
+	"growthexperiments-edit-config-help-panel-links": "Tautan panel wantuan",
+	"growthexperiments-edit-config-homepage": "Beranda sang anganggé mara",
+	"growthexperiments-edit-config-homepage-intro-links-create": "Kaca tatujon antuk tautan indik cara ngaé suratan anyar",
+	"growthexperiments-edit-config-mentorship-enabled-true": "Inggih",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Nénten",
+	"growthexperiments-edit-config-newcomertasks": "Uahan kanikayang"
 }

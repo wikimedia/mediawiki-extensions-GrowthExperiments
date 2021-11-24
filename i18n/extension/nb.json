@@ -9,6 +9,7 @@
 	"growthexperiments-config-validator-error": "Validering for $1 feilet med: «$2»",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> er forventet å være <code>$2</code>, men er <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Innholdsmodellen matcher ikke: GrowthExperiments' konfigurasjonsfil må ha innholdsmodellen JSON, men $1 ble returnert",
+	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Ugyldig oppgavetype-ID: <code>$1</code> er ikke en gyldig verdi",
 	"growthexperiments-edit-config-disabled": "Konfigurasjon av nettsamfunnet er for tiden slått av.",
 	"growthexperiments-edit-config-title": "Rediger Growth-konfigurasjon",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Sist oppdatert av [[User:$1|$1]] $2.",

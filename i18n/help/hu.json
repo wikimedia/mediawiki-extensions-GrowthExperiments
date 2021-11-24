@@ -110,6 +110,8 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|Te}} fogod eldönteni, hogy egy {{SITENAME}}-szócikk szavai hivatkozzanak-e más {{SITENAME}}-szócikkekre.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "A Hold a <mark class=\"positive\">Föld</mark> körül keringő egyetlen <mark class=\"positive\">hold</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Nincs szükség különleges tudásra a szócikkről ehhez a feladathoz.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "A linkjavaslatokat egy program állítja elő, ami hibázhat.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "Néha nincs szükség a javasolt szó hivatkozássá alakítására, vagy a javasolt hivatkozás rossz helyre mutat. {{GENDER:$1|Neked}} kell megítélned, melyik javaslat helyes.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|További információk a gépi javaslatokról]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Irányelvek",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* Olyan fogalmakra hivatkozz, amikről az olvasó többet akarhat megtudni.\n* Győződj meg róla, hogy a hivatkozás a jó szócikkre mutat.\n* Ne tegyél hivatkozást gyakori szavakra, évekre és dátumokra.\n* Ha nem {{GENDER:$1|vagy}} biztos, inkább lépj tovább.",

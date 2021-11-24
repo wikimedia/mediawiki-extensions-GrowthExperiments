@@ -1,17 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
-			"Papuass"
+			"Papuass",
+			"Natalilake"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Tavi}} audzēkņi",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Šai tabulai nepieciešams JavaScript. Lūdzu, iespējo JavaScript, lai varētu izmantot šo moduli.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Apzīmējumi",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Lietotājvārds",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Atceltie labojumi",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Uzdotie jautājumi",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Pievienot filtru",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Iesniegt",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "No",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Līdz",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Labojumu skaits",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Reģistrēšanās datums",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filtri",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Atjaunināt",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Labojumu skaits",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "minimums",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Maksimums",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Pēdējais labojums",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Pēdējās dienas",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Pēdējie mēneši",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Meklēt",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "nav zināms",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 no $2",

@@ -7,6 +7,7 @@
 	"growthexperiments-help-panel-question-button-text": "繼續",
 	"growthexperiments-help-panel-back-home": "返去",
 	"growthexperiments-help-panel-close": "搞掂",
+	"growthexperiments-help-panel-home-title": "獲取編輯幫助",
 	"growthexperiments-help-panel-postedit-header": "下一步",
 	"growthexperiments-help-panel-questionreview-title": "問幫助櫃枱",
 	"growthexperiments-help-panel-questionreview-header": "當你提交你嘅問題嗰陣，你所寫嘅嘢會以你嘅用戶名「$2」喺$1<strong>公開畀所有人睇到</strong>。其他義工編輯者會喺一日內左右嘗試解答你嘅問題。",
@@ -27,8 +28,11 @@
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "確認你嘅電郵地址",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing": "如果{{GENDER:$1|你}}想收到電郵通知，請即刻加個電郵地址。",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "加電郵地址",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "關於幫助版面",
 	"growthexperiments-help-panel-questioncomplete-first-edit": "講開又講，你透過發布呢個問題，作出咗你第一次修改。恭喜！",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "停用幫助版面",
 	"growthexperiments-help-panel-questionposter-invalid-title": "冇效嘅標題。",
 	"growthexperiments-help-panel-search-label": "搵幫助",
-	"growthexperiments-help-panel-button-header-ask-help": "問幫助櫃枱"
+	"growthexperiments-help-panel-button-header-ask-help": "問幫助櫃枱",
+	"growthexperiments-help-panel-button-header-general-help": "一般編輯求助"
 }

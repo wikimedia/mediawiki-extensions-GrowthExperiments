@@ -2,11 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"DDPAT",
-			"Ата"
+			"Ата",
+			"Base"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Панель наставника",
-	"growthexperiments-mentor-dashboard-pt-link": "Панель підопічного",
+	"growthexperiments-mentor-dashboard-pt-link": "Панель наставника",
 	"growthexperiments-mentor-dashboard-disabled": "Панель наставника не увімкнена в цій вікі.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Щоб увімкнути інформаційну панель наставника, спочатку потрібно [[$1|зареєструватися як наставник]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Перш ніж можна використовувати інформаційну панель наставника, спочатку потрібно налаштувати список наставників. Адміністратор може використовувати для цього [[Special:EditGrowthConfig]].",
@@ -16,16 +17,16 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Хто у вашій таблиці?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "У таблиці наведено лише ваших підопічних, які створили свій обліковий запис протягом останніх двох тижнів або редагували протягом останніх шести місяців. Дані оновлюються щодня.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Легенда",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Закладка підопічних",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Позначити підопічних",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Ім'я користувача",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Кількість скасованих зміни",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Кількість блоків",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Задані питання підопічного",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Питання до наставника",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Лічильник редагувань",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Дата реєстрації",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Фільтри",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Оновити",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Редагувати лічильник",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Число редагувань",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Мінімум",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Максимум",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Остання зміна",
@@ -49,8 +50,13 @@
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Як узяти підопічного",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Інструменти Зростання",
 	"growthexperiments-rcfilters-mentorship-title": "Наставництво",
-	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Ваші}} наставники з зірками",
-	"growthexperiments-rcfilters-mentorship-starred-desc": "Наставники, призначені {{GENDER:|вам}}, яких {{GENDER:|ви}} зіграли на інформаційній панелі наставника",
-	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|Ваші}} наставники без зірок",
-	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Інші {{GENDER:|ваші}} підопічні"
+	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|Ваші}} підопічні з зірочкою",
+	"growthexperiments-rcfilters-mentorship-starred-desc": "{{GENDER:|Ваші}} підопічні, яких {{GENDER:|ви}} позначили зірочкою на своїй панелі наставника",
+	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|Ваші}} підопічні без зірочки",
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Інші {{GENDER:|ваші}} підопічні",
+	"growthexperiments-quit-mentorship-title": "Покинути наставництво",
+	"growthexperiments-quit-mentorship-listed-as-mentor-pretext": "Шкода, що ви йдете. Щоб почати процес виходу з наставництва, спочатку вам треба прибрати своє ім'я [[$1|зі списку наставників]]. Коли зробите це, будь ласка, поверніться на цю сторінку.",
+	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Наступний крок — перепризначення ваших підопічних. Якщо ви впевнені, що хочете покинути наставництво, будь ласка, натисніть кнопку нижче.",
+	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Так, призначити моїм підопічним іншого наставника",
+	"growthexperiments-quit-mentorship-success": "Невдовзі вашим підопічним буде призначено інших наставників."
 }

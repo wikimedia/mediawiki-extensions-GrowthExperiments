@@ -10,7 +10,8 @@
 			"Matěj Suchánek",
 			"MrJaroslavik",
 			"Patriccck",
-			"Patrik L."
+			"Patrik L.",
+			"Fraxinus.cs"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Vítejte, {{GENDER:$1|uživateli|uživatelko}} {{bidi:$1}}!",
@@ -305,7 +306,7 @@
 	"log-action-filter-growthexperiments": "Druh události rozšíření GrowthExperiments:",
 	"log-action-filter-growthexperiments-claimmentee": "Změny mentorovaných",
 	"log-action-filter-growthexperiments-setmentor": "Změny mentora",
-	"log-action-filter-growthexperiments-addlink": "Navrhování odkazů",
+	"log-action-filter-growthexperiments-addlink": "Návrhy odkazů",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Uživatelské jméno nováčka je neplatné",
 	"growthexperiments-notification-header-mentor-change": "$1 {{GENDER:$2|je}} {{GENDER:$3|váš}} nový mentor",
 	"growthexperiments-notification-body-mentor-change": "Důvod: $1",

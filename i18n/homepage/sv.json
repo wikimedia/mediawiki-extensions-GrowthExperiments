@@ -6,7 +6,8 @@
 			"Mjälten",
 			"Sabelöga",
 			"Technic2",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"JRyan"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hej}}, {{bidi:$1}}!",
@@ -198,6 +199,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-time-expand": "20 - 30 minuter",
 	"growthexperiments-homepage-suggestededits-tasktype-time-update": "20 - 30 minuter",
 	"growthexperiments-homepage-suggestededits-tasktype-time-link-recommendation": "3 - 5 minuter",
+	"growthexperiments-homepage-suggestededits-tasktype-time-image-recommendation": "3 - 5 minuter",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "$1 redigeringar",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "Lätta",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "Medel",
@@ -371,6 +373,7 @@
 	"grant-managementorship": "Hantera mentorskap",
 	"newcomertasksinfo": "Nybörjaruppgifter",
 	"newcomertasksinfo-no-data": "Ingen tillgänglig data.",
+	"newcomertasksinfo-config-form-info": "Konfiguration av nykomlingsuppgifter kan ses och ändras på [[Special:EditGrowthConfig]].",
 	"newcomertasksinfo-table-header-task-type": "Uppgiftstyp",
 	"newcomertasksinfo-table-header-task-type-id": "ID",
 	"newcomertasksinfo-table-header-task-count": "Antal",
@@ -383,5 +386,6 @@
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "Lämna förslag?",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Att byta läge låter dig göra alla andra sorters redigeringar. Granska färdigt för att spara dina framsteg.{{GENDER:$1|}}",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Byt utan att spara",
-	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Avbryt"
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Avbryt",
+	"growthexperiments-addlink-suggestions-outdated": "En annan användare ändrade denna artikeln medan {{GENDER:|you}} granskade det, och {{GENDER:|your}}ändringar kunde inte sparas."
 }
