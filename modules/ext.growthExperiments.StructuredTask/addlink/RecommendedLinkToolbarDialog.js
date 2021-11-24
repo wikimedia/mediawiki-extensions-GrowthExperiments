@@ -88,12 +88,20 @@ RecommendedLinkToolbarDialog.prototype.getSetupProcess = function ( data ) {
  * the navigation in the link inspector.
  *
  * @param {mw.libs.ge.dm.RecommendedLinkAnnotation|undefined} [annotationModel] DataModel
+ * @param {boolean} [isActive] Whether the annotation is currently selected
  */
-RecommendedLinkToolbarDialog.prototype.onAnnotationClicked = function ( annotationModel ) {
+RecommendedLinkToolbarDialog.prototype.onAnnotationClicked = function (
+	annotationModel,
+	isActive
+) {
 	if ( !annotationModel ) {
 		return;
 	}
-	this.showRecommendationAtIndex( this.getIndexForModel( annotationModel ), true );
+
+	// Only re-render if the content changes
+	if ( !isActive || this.isHidden ) {
+		this.showRecommendationAtIndex( this.getIndexForModel( annotationModel ), true );
+	}
 };
 
 /**

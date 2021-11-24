@@ -1,10 +1,12 @@
 var StructuredTask = require( 'ext.growthExperiments.StructuredTask' ),
 	RecommendedLinkToolbarDialog = StructuredTask.addLink().RecommendedLinkToolbarDialog,
-	LinkSuggestionInteractionLogger = StructuredTask.addLink().LinkSuggestionInteractionLogger;
+	LinkSuggestionInteractionLogger = StructuredTask.addLink().LinkSuggestionInteractionLogger,
+	MinimizedToolbarDialogButton = require( '../MinimizedToolbarDialogButton.js' );
 
 /**
  * @class mw.libs.ge.RecommendedLinkToolbarDialogDesktop
  * @extends mw.libs.ge.RecommendedLinkToolbarDialog
+ *
  * @constructor
  */
 function RecommendedLinkToolbarDialogDesktop() {
@@ -17,6 +19,8 @@ function RecommendedLinkToolbarDialogDesktop() {
 		active_interface: 'recommendedlinktoolbar_dialog'
 		/* eslint-enable camelcase */
 	} );
+	/** @property {mw.libs.ge.MinimizedToolbarDialogButton|null} toolbarDialogButton */
+	this.toolbarDialogButton = null;
 }
 
 OO.inheritClass( RecommendedLinkToolbarDialogDesktop, RecommendedLinkToolbarDialog );
@@ -40,6 +44,8 @@ RecommendedLinkToolbarDialogDesktop.prototype.initialize = function () {
  */
 RecommendedLinkToolbarDialogDesktop.prototype.afterSetupProcess = function () {
 	RecommendedLinkToolbarDialogDesktop.super.prototype.afterSetupProcess.call( this );
+	this.isRtl = this.surface.getDir() === 'rtl';
+	this.setupMinification();
 	var ceSurface = this.surface.getView();
 	ceSurface.$element.append( this.$element );
 	// Prevent virtual keyboard from showing up when desktop site is loaded on tablet
@@ -81,12 +87,11 @@ RecommendedLinkToolbarDialogDesktop.prototype.updatePosition = function () {
 		newPosition = {
 			top: annotationOffset.top - surfaceOffset.top + 30
 		},
-		isRtl = this.surface.getDir() === 'rtl',
-		positionName = isRtl ? 'right' : 'left',
+		positionName = this.isRtl ? 'right' : 'left',
 		isStartAnchored = true,
 		startPosition;
 
-	if ( isRtl ) {
+	if ( this.isRtl ) {
 		// Offset is the surface's right edge and the annotation's right edge.
 		startPosition = surfaceOffset.left + surfaceWidth -
 			( annotationOffset.left + annotationWidth );
@@ -105,6 +110,10 @@ RecommendedLinkToolbarDialogDesktop.prototype.updatePosition = function () {
 	this.$element.css( newPosition );
 	this.$anchor.toggleClass( 'mw-ge-recommendedLinkToolbarDialog-desktop-anchor-start', isStartAnchored );
 	this.$anchor.toggleClass( 'mw-ge-recommendedLinkToolbarDialog-desktop-anchor-end', !isStartAnchored );
+
+	// Cache the viewport dimensions to be used during minification
+	this.viewportWidth = window.innerWidth;
+	this.viewportHeight = window.innerHeight;
 };
 
 /**
@@ -172,17 +181,106 @@ RecommendedLinkToolbarDialogDesktop.prototype.showRecommendationAtIndex = functi
 		return;
 	}
 
-	if ( this.annotationView ) {
-		this.annotationView.updateActiveClass( false );
-	}
-
 	this.fadeOut();
+	var isOpeningNewSelection = this.isHidden && manualFocus && this.currentIndex !== index;
+	this.toggleDialogVisibility( true, isOpeningNewSelection );
 	// Call scrollToAnnotationView right away instead of wait for fadeOut to resolve
 	// so that fade animation can be cancelled if scrolling isn't needed
 	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( index ) ).always( function () {
 		updateContent();
 		this.fadeIn();
 	}.bind( this ) );
+};
+
+/**
+ * Set up the close button and the button for re-opening the dialog
+ */
+RecommendedLinkToolbarDialogDesktop.prototype.setupMinification = function () {
+	this.closeButton = new OO.ui.ButtonWidget( {
+		classes: [ 'mw-ge-recommendedLinkToolbarDialog-desktop-closeButton' ],
+		framed: false,
+		icon: 'close'
+	} );
+	this.closeButton.connect( this, { click: 'onCloseButtonClicked' } );
+	this.$head.append( this.closeButton.$element );
+
+	this.toolbarDialogButton = new MinimizedToolbarDialogButton( {
+		label: mw.message( 'growthexperiments-addlink-context-button-show-suggestion' ).text()
+	} );
+	this.toolbarDialogButton.on( 'click', this.onToolbarDialogButtonClicked.bind( this ) );
+	this.surface.getGlobalOverlay().$element
+		.addClass( 'mw-ge-minimizedToolbarDialogButton-container' )
+		.append( this.toolbarDialogButton.$element );
+};
+
+/**
+ * Show or hide the dialog
+ *
+ * @param {boolean} isVisible Whether the dialog should be shown
+ * @param {boolean} [disableTransition] Whether the transition animation should be disabled
+ *
+ *  When the dialog is closed, it animates into the robot button. When the robot button is clicked,
+ *  the dialog animates back into the original state. While the dialog is closed, if the user clicks
+ *  on a different suggestion, the animation no longer applies since the dialog will be opened in a
+ *  different location.
+ */
+RecommendedLinkToolbarDialogDesktop.prototype.toggleDialogVisibility = function (
+	isVisible,
+	disableTransition
+) {
+	var $dialog = this.$element,
+		transformVal = 'none';
+
+	$dialog.toggleClass(
+		'mw-ge-recommendedLinkToolbarDialog-desktop--no-transition',
+		!!disableTransition
+	);
+	if ( !isVisible ) {
+		// Minimize the dialog into the robot button
+		// This is done via a transformation that repositions the element and scales it down.
+		// Transformation is used instead of changing the element position directly so that the
+		// element can animate back to its original position when the dialog is re-opened.
+		var boundingClientRect = $dialog.get( 0 ).getBoundingClientRect(),
+			offset = 48, // account for the help panel button
+			y = this.viewportHeight - boundingClientRect.bottom + offset,
+			x;
+
+		if ( this.isRtl ) {
+			x = -1 * ( boundingClientRect.left + offset );
+		} else {
+			x = this.viewportWidth - boundingClientRect.right + offset;
+		}
+		transformVal = 'translate(' + x + 'px, ' + y + 'px)  scale(0)';
+	}
+	$dialog.css( 'transform', transformVal );
+	this.toolbarDialogButton.emit( 'dialogVisibilityChanged', isVisible );
+	this.isHidden = !isVisible;
+};
+
+/**
+ * Close the dialog
+ */
+RecommendedLinkToolbarDialogDesktop.prototype.onCloseButtonClicked = function () {
+	this.toggleDialogVisibility( false );
+	this.logger.log( 'close', this.getSuggestionLogActionData() );
+};
+
+/**
+ * Scroll to the suggestion and re-open the dialog
+ */
+RecommendedLinkToolbarDialog.prototype.onToolbarDialogButtonClicked = function () {
+	this.logger.log(
+		'reopen_dialog_click',
+		{},
+		// eslint-disable-next-line camelcase
+		{ active_interface: 'machinesuggestions_mode' }
+	);
+	this.scrollToAnnotationView( this.getAnnotationViewAtIndex( this.currentIndex ) ).then(
+		function () {
+			this.toggleDialogVisibility( true );
+			this.logger.log( 'impression', this.getSuggestionLogActionData() );
+		}.bind( this )
+	);
 };
 
 module.exports = RecommendedLinkToolbarDialogDesktop;

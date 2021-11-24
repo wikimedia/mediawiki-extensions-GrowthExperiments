@@ -52,14 +52,10 @@ CERecommendedLinkAnnotation.prototype.updateActiveClass = function ( isActive ) 
  * @inheritdoc
  */
 CERecommendedLinkAnnotation.prototype.onClick = function ( e ) {
-	// Prevent de-selection via clicking on the annotation view on desktop
-	if ( this.isActive && !OO.ui.isMobile() ) {
-		return;
-	}
 	CERecommendedLinkAnnotation.super.prototype.onClick.apply( this, arguments );
 	e.preventDefault();
 	e.stopPropagation();
-	mw.hook( 'growthExperiments.onAnnotationClicked' ).fire( this.model );
+	mw.hook( 'growthExperiments.onAnnotationClicked' ).fire( this.model, this.isActive );
 };
 
 /**
