@@ -90,6 +90,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 
 	/** @inheritDoc */
 	public function get( LinkTarget $title, TaskType $taskType ) {
+		'@phan-var ImageRecommendationTaskType $taskType';
 		Assert::parameterType( ImageRecommendationTaskType::class, $taskType, '$taskType' );
 		$title = $this->titleFactory->newFromLinkTarget( $title );
 		$titleText = $title->getPrefixedDBkey();
@@ -162,7 +163,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 
 		$startTime = microtime( true );
 		$responseData = self::processApiResponseData(
-			$title, $titleText, $data, $this->metadataProvider
+			$title, $titleText, $data, $this->metadataProvider, $taskType->getMinimumImageSize()
 		);
 
 		$this->statsdDataFactory->timing(
@@ -181,14 +182,18 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	 * @param string $titleText Title text, for logging.
 	 * @param array $data API response body
 	 * @param ImageRecommendationMetadataProvider $metadataProvider
+	 * @param array|null $minimumImageSize
 	 * @return ImageRecommendation|StatusValue
+	 * @throws \MWException
 	 */
 	public static function processApiResponseData(
 		LinkTarget $title,
 		string $titleText,
 		array $data,
-		ImageRecommendationMetadataProvider $metadataProvider
+		ImageRecommendationMetadataProvider $metadataProvider,
+		array $minimumImageSize = null
 	) {
+		$isQualityGateApplied = false;
 		$titleTextSafe = strip_tags( $titleText );
 		if ( !$data['pages'] ) {
 			return StatusValue::newFatal( 'rawmessage',
@@ -243,6 +248,10 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 					$projects,
 					$imageMetadata
 				);
+				if ( $minimumImageSize && !self::hasMinimumWidth( $imageMetadata, $minimumImageSize ) ) {
+					$isQualityGateApplied = true;
+					array_pop( $images );
+				}
 			} else {
 				$status->merge( $imageMetadata );
 			}
@@ -250,8 +259,17 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 
 		if ( !$images ) {
 			if ( $status->isGood() ) {
-				// $data['pages'][0]['suggestions'] was empty. This shouldn't happen.
-				$status->fatal( 'rawmessage', 'No recommendation found for page: ' . $titleTextSafe );
+				if ( !$data['pages'][0]['suggestions'] ) {
+					// $data['pages'][0]['suggestions'] was empty. This shouldn't happen.
+					$status->fatal( 'rawmessage', 'No recommendation found for page: ' . $titleTextSafe );
+				} elseif ( $isQualityGateApplied ) {
+					// $data['pages'][0]['suggestions'] was not empty so all recommendations were filtered by quality
+					// gate filters
+					$status->fatal(
+						'rawmessage',
+						'All recommendations were filtered for page: ' . $titleTextSafe
+					);
+				}
 			}
 			return $status;
 		}
@@ -260,4 +278,12 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		return new ImageRecommendation( $title, $images, $datasetId );
 	}
 
+	/**
+	 * @param array $imageMetadata
+	 * @param array $minimumImageSize
+	 * @return bool
+	 */
+	private static function hasMinimumWidth( array $imageMetadata, array $minimumImageSize ): bool {
+		return ( $imageMetadata['originalWidth'] ?: 0 ) >= $minimumImageSize['width'];
+	}
 }
