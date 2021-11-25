@@ -264,6 +264,8 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Culture",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regions",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Invalid suggested edits configuration: bad structure",
+	"growthexperiments-homepage-suggestededits-config-notinteger": "Invalid suggested edits configuration for task type \"$1\": \"$2\" must be an integer",
+	"growthexperiments-homepage-suggestededits-config-toosmall": "Invalid suggested edits configuration for task type \"$1\": \"$2\" must be larger than $3",
 	"growthexperiments-homepage-suggestededits-config-fieldarray": "Invalid suggested edits configuration for task type \"$1\": \"$2\" must be an array",
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "Invalid suggested edits configuration for task type \"$1\" field \"$2\": maximum $3 elements allowed",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Invalid suggested edits configuration: invalid id \"$1\" - must contain a-z, 0-9, - (minus) only",
