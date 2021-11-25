@@ -343,5 +343,7 @@
 	"growthexperiments-structuredtask-onboarding-dialog-get-started-button": "మొదలు పెట్టండి",
 	"grant-managementorship": "శిష్యరికాన్ని నిర్వహించండి",
 	"growthexperiments-structuredtask-ve-machine-suggestions-mode-title": "సలహాలు",
-	"growthexperiments-addimage-summary-label": "సారాంశం"
+	"growthexperiments-addimage-summary-label": "సారాంశం",
+	"growthexperiments-addlink-daily-task-limit-exceeded": "ఇవ్వాళ్టి లింకు సూచనలన్నిటినీ పూర్తి {{GENDER:|చేసారు}}.\n\n{{GENDER:|మీ}} క్లిష్టత స్థాయిని మార్చుకుని ఇతర రకాల దిద్దుబాట్లను చూడండి. లేదా రేపొచ్చి మరిన్ని లింకు సూచనలు చూడండి.",
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "అర్థమైంది"
 }

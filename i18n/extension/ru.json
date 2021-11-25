@@ -6,6 +6,7 @@
 			"Kareyac",
 			"Kylaix",
 			"Nastua Buldakova",
+			"Pacha Tchernof",
 			"Vlad5250",
 			"Умар"
 		]
@@ -18,8 +19,8 @@
 	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "Недействителен идентификатор обработчика типа задачи: <code>$1</code> недопустимое значение",
 	"growthexperiments-edit-config-disabled": "Конфигурация в настоящее время отключена.",
 	"growthexperiments-edit-config-title": "Изменить конфигурацию \"Роста\"",
-	"growthexperiments-edit-config-last-edit": "[[$3]]: Последнее обновление [[User:$1|$1]] $2.",
-	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Последнее обновление неизвестным участником $1.",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Последнее обновление [[User:$1|$1]] $2 ([$4 разн.]).",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Последнее обновление неизвестным участником $1 ([$3 разн.]).",
 	"growthexperiments-edit-config-pretext": "Эта страница позволяет редактировать конфигурацию для инструментов Команды [[:mw:Special:MyLanguage/Growth|\"Роста\"]]. Оно будет редактировать $1 от вашего имени. Изменения можно просмотреть в истории страницы.",
 	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|Вы}} также можете разместить баннер на главной странице новичка, чтобы включить объявления о событиях, важных для новичков. Чтобы сделать это, нужно добавить его в [[$1]] вручную. Любой добавлен там содержание будет отображаться желтым баннером в верхней части [[Special:Homepage]].",
 	"growthexperiments-edit-config-pretext-unprivileged": "Эта форма позволяет доверенным редакторам редактировать конфигурацию инструментов Команды [[:mw:Special:MyLanguage/Growth|\"Роста\"]].",

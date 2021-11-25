@@ -492,5 +492,7 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Verstanden",
 	"growthexperiments-addimage-mobile-only": "Bildvorschläge sind nur auf mobilen Geräten verfügbar. Passe den Schwierigkeitsgrad an, um andere Bearbeitungsarten zu sehen, oder verwende {{GENDER:|dein}} Mobilgerät, um Bildvorschläge zu bearbeiten.",
 	"growthexperiments-addimage-mobile-only-dialog-button": "Verstanden",
-	"growthexperiments-addimage-caption-warning-tooshort": "Bildunterschriften müssen $1 {{PLURAL:$1|Zeichen}} oder länger sein."
+	"growthexperiments-addimage-caption-warning-tooshort": "Bildunterschriften müssen $1 {{PLURAL:$1|Zeichen}} oder länger sein.",
+	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|Du}} hast alle Linkvorschläge von heute erledigt.\n\nPasse {{GENDER:|deinen}} Schwierigkeitsgrad an, um andere Arten von Bearbeitungen zu sehen oder komme morgen für weitere Linkvorschläge wieder.",
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Verstanden"
 }

@@ -478,5 +478,6 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "הבנתי",
 	"growthexperiments-addimage-mobile-only": "הצעות תמונות זמינות רק במכשירים ניידים. {{GENDER:|התאם|התאימי}} את רמת הקושי שלך כדי לראות סוגי עריכות אחרים או {{GENDER:|השתמש|השתמשי}} במכשיר הנייד שלך כדי לעבוד על הצעות תמונות.",
 	"growthexperiments-addimage-mobile-only-dialog-button": "הבנתי",
-	"growthexperiments-addimage-caption-warning-tooshort": "כיתובים צריכים להיות באורך {{PLURAL:$1|תו אחד|$1 תווים}} או יותר."
+	"growthexperiments-addimage-caption-warning-tooshort": "כיתובים צריכים להיות באורך {{PLURAL:$1|תו אחד|$1 תווים}} או יותר.",
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "הבנתי"
 }
