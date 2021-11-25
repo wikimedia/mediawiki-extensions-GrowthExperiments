@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\AddImage;
 
 use CirrusSearch\CirrusSearch;
+use DeferredUpdates;
 use GrowthExperiments\NewcomerTasks\AbstractSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
@@ -97,7 +98,8 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 		}
 
 		$warnings = [];
-		$taskSet = $this->taskSuggesterFactory->create()->suggest(
+		$taskSuggester = $this->taskSuggesterFactory->create();
+		$taskSet = $taskSuggester->suggest(
 			$user,
 			$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $user ),
 			$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
@@ -129,6 +131,21 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 		// Do not publish to recent changes, it would be pointless as this action cannot
 		// be inspected or patrolled.
 		$logEntry->publish( $logId, 'udp' );
+
+		// Reduce the likelihood that the user encounters the task they were undecided about again.
+		if ( in_array( $accepted, self::REJECTION_REASONS_UNDECIDED ) ) {
+			// Refresh the user's TaskSet cache in a deferred update, since this can be kind of slow.
+			DeferredUpdates::addCallableUpdate( static function () use ( $taskSuggester, $user, $taskSet ) {
+				$taskSuggester->suggest(
+					$user,
+					$taskSet->getFilters()->getTaskTypeFilters(),
+					$taskSet->getFilters()->getTopicFilters(),
+					null,
+					null,
+					[ 'resetCache' => true ]
+				);
+			} );
+		}
 		return StatusValue::newGood( [ 'logId' => $logId, 'warnings' => $warnings ] );
 	}
 
