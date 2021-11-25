@@ -115,7 +115,7 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 
 		$subtracted = $taskSet->count() - $filteredTaskSet->count();
 		$finalTaskSet = new TaskSet( $filteredTasks, $taskSet->getTotalCount() - $subtracted,
-			$taskSet->getOffset(), $taskSet->getFilters() );
+			$taskSet->getOffset(), $taskSet->getFilters(), $taskSet->getInvalidTasks() );
 		$finalTaskSet->setDebugData( $taskSet->getDebugData() );
 		return $finalTaskSet;
 	}
