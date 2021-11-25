@@ -6,6 +6,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
 use GrowthExperiments\NewcomerTasks\NewcomerTasksUserOptionsLookup;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
+use IBufferingStatsdDataFactory;
 use MediaWiki\Cache\LinkBatchFactory;
 use SearchEngineFactory;
 use StatusValue;
@@ -18,6 +19,9 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	/** @var SearchEngineFactory */
 	private $searchEngineFactory;
 
+	/** @var IBufferingStatsdDataFactory */
+	private $statsdDataFactory;
+
 	/**
 	 * @param TaskTypeHandlerRegistry $taskTypeHandlerRegistry
 	 * @param ConfigurationLoader $configurationLoader
@@ -25,6 +29,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param SearchEngineFactory $searchEngineFactory
 	 * @param LinkBatchFactory $linkBatchFactory
+	 * @param IBufferingStatsdDataFactory $statsdDataFactory
 	 */
 	public function __construct(
 		TaskTypeHandlerRegistry $taskTypeHandlerRegistry,
@@ -32,7 +37,8 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 		SearchStrategy $searchStrategy,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		SearchEngineFactory $searchEngineFactory,
-		LinkBatchFactory $linkBatchFactory
+		LinkBatchFactory $linkBatchFactory,
+		IBufferingStatsdDataFactory $statsdDataFactory
 	) {
 		parent::__construct(
 			$taskTypeHandlerRegistry,
@@ -42,6 +48,7 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$linkBatchFactory
 		);
 		$this->searchEngineFactory = $searchEngineFactory;
+		$this->statsdDataFactory = $statsdDataFactory;
 	}
 
 	/**
@@ -63,7 +70,8 @@ class LocalSearchTaskSuggesterFactory extends SearchTaskSuggesterFactory {
 			$this->newcomerTasksUserOptionsLookup,
 			$this->linkBatchFactory,
 			$taskTypes,
-			$topics
+			$topics,
+			$this->statsdDataFactory
 		);
 		$suggester->setLogger( $this->logger );
 		return $suggester;
