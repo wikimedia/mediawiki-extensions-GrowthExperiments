@@ -484,5 +484,7 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Rozumím",
 	"growthexperiments-addimage-mobile-only": "Navrhování obrázků je v tuto chvíli pouze dostupné na mobilních zařízení. Změňte {{GENDER:|své}} typy editací, abyste {{GENDER:|viděl|viděla|viděli}} i nějaké další úkoly, anebo použijte své mobilní zařízení, a pokračujte s prací na obrázcích.",
 	"growthexperiments-addimage-mobile-only-dialog-button": "Rozumím",
-	"growthexperiments-addimage-caption-warning-tooshort": "Popisek musí mít nejméně $1 {{PLURAL:$1|znak|znaky|znaků}}."
+	"growthexperiments-addimage-caption-warning-tooshort": "Popisek musí mít nejméně $1 {{PLURAL:$1|znak|znaky|znaků}}.",
+	"growthexperiments-addlink-daily-task-limit-exceeded": "Již jste {{GENDER:|dokončil|dokončila|dokončili}} všechny dnešní návrhy.\n\nZměňte zvolené typy editací, abyste {{GENDER:|viděl|viděla|viděli}} i další návrhy, anebo se vraťte zpět zítra, kdy se zde objeví další návrhy.",
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Rozumím"
 }

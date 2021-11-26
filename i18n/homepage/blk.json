@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Khun Kt",
+			"လွိုင်ႏအာထင်ႏထိုထဲင်း",
 			"咽頭べさ"
 		]
 	},
@@ -27,5 +28,6 @@
 	"growthexperiments-addimage-detailsdialog-close": "ပေ့ꩻထိုꩻ",
 	"growthexperiments-addimage-onboarding-content-imagedetails-title": "ထွား ဖေႏကျံႏညဏ်ႏခါꩻဒါႏပုင်ႏ",
 	"growthexperiments-addimage-onboarding-content-article-title": "ထွားရောမ်ဖြုဲင်ꩻ",
-	"growthexperiments-addimage-summary-label": "အအဲဉ်ႏချုတ်"
+	"growthexperiments-addimage-summary-label": "အအဲဉ်ႏချုတ်",
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "လꩻလဲဉ်းသြ"
 }

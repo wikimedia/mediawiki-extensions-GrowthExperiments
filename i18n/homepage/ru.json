@@ -480,5 +480,6 @@
 	"growthexperiments-addimage-summary-reject-description": "Эта подсказка изображения отклонена.",
 	"growthexperiments-addimage-summary-summary": "Функция предложений изображений: добавлено $1 {{PLURAL:$1|изображения|изображений}}.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Понятно",
-	"growthexperiments-addimage-mobile-only-dialog-button": "Понятно"
+	"growthexperiments-addimage-mobile-only-dialog-button": "Понятно",
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Понятно"
 }

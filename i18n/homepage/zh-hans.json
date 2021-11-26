@@ -495,5 +495,7 @@
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "明白了",
 	"growthexperiments-addimage-mobile-only": "图片建议仅能在移动版设备上使用。调整{{GENDER:|您的}}难度等级以看到其他类型的编辑或使用{{GENDER:|您的}}移动版设备来处理图片建议。",
 	"growthexperiments-addimage-mobile-only-dialog-button": "明白了",
-	"growthexperiments-addimage-caption-warning-tooshort": "说明应该至少要$1{{PLURAL:$1|个字}}。"
+	"growthexperiments-addimage-caption-warning-tooshort": "说明应该至少要$1{{PLURAL:$1|个字}}。",
+	"growthexperiments-addlink-daily-task-limit-exceeded": "{{GENDER:|您}}已经完成今天所有的链接建议。\n\n调整{{GENDER:|您的}}难度等级以看到其他类型的编辑或是在明天回来以获得更多链接建议。",
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "明白了"
 }
