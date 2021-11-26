@@ -105,6 +105,32 @@ class ConfigurationValidator {
 	}
 
 	/**
+	 * Verify that a field is an integer, and optionally within some bounds. The field doesn't have
+	 * to exist.
+	 * @param array $config Configuration
+	 * @param string $field Configuration field name
+	 * @param string $taskTypeId Task type ID, for better error reporting
+	 * @param int|null $min Minimum value
+	 * @return StatusValue
+	 */
+	public function validateInteger(
+		array $config, string $field, string $taskTypeId, int $min = null
+	) {
+		if ( !array_key_exists( $field, $config ) ) {
+			return StatusValue::newGood();
+		}
+		$value = $config[$field];
+		if ( !is_int( $value ) ) {
+			return StatusValue::newFatal( 'growthexperiments-homepage-suggestededits-config-notinteger',
+				$field, $taskTypeId );
+		} elseif ( $min !== null && $value < $min ) {
+			return StatusValue::newFatal( 'growthexperiments-homepage-suggestededits-config-toosmall',
+				$field, $taskTypeId, $min );
+		}
+		return StatusValue::newGood();
+	}
+
+	/**
 	 * Verify that a field exists and is a non-associative array.
 	 *
 	 * @param string $field Configuration field name

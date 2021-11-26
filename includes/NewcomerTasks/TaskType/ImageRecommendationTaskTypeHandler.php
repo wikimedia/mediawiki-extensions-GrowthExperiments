@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationValidator;
 use GrowthExperiments\NewcomerTasks\RecommendationProvider;
 use GrowthExperiments\NewcomerTasks\RecommendationSubmissionHandler;
 use InvalidArgumentException;
+use StatusValue;
 use TitleParser;
 use Wikimedia\Assert\Assert;
 
@@ -82,6 +83,24 @@ class ImageRecommendationTaskTypeHandler extends StructuredTaskTypeHandler {
 		);
 		$taskType->setHandlerId( $this->getId() );
 		return $taskType;
+	}
+
+	/** @inheritDoc */
+	public function validateTaskTypeConfiguration( string $taskTypeId, array $config ): StatusValue {
+		$status = parent::validateTaskTypeConfiguration( $taskTypeId, $config );
+		if ( !$status->isOK() ) {
+			return $status;
+		}
+		foreach ( [
+			ImageRecommendationTaskType::FIELD_MAX_TASKS_PER_DAY,
+			ImageRecommendationTaskType::FIELD_MINIMUM_CAPTION_CHARACTER_LENGTH,
+		  ] as $field ) {
+			if ( array_key_exists( $field, $config ) ) {
+				$status->merge( $this->configurationValidator->validateInteger(
+					$config, $field, $taskTypeId, 1 ) );
+			}
+		}
+		return $status;
 	}
 
 	/** @inheritDoc */
