@@ -2,9 +2,9 @@
 
 namespace GrowthExperiments\Maintenance;
 
-use GrowthExperiments\Config\Validation\NewcomerTasksValidator;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\Specials\SpecialEditGrowthConfig;
 use GrowthExperiments\Util;
 use Maintenance;
 use MediaWiki\Http\HttpRequestFactory;
@@ -32,6 +32,9 @@ class InitWikiConfig extends Maintenance {
 
 	/** @var HttpRequestFactory */
 	private $httpRequestFactory;
+
+	/** @var SpecialEditGrowthConfig|null */
+	private $specialEditGrowthConfig;
 
 	public function __construct() {
 		parent::__construct();
@@ -64,6 +67,7 @@ class InitWikiConfig extends Maintenance {
 		$this->titleFactory = $services->getTitleFactory();
 		$this->pageProps = $services->getPageProps();
 		$this->httpRequestFactory = $services->getHttpRequestFactory();
+		$this->specialEditGrowthConfig = $services->getSpecialPageFactory()->getPage( 'EditGrowthConfig' );
 	}
 
 	/**
@@ -286,7 +290,9 @@ class InitWikiConfig extends Maintenance {
 		];
 
 		$variables = [];
-		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $taskData ) {
+
+		$defaultTaskTypeData = $this->specialEditGrowthConfig->getDefaultDataForEnabledTaskTypes();
+		foreach ( $defaultTaskTypeData as $taskType => $taskData ) {
 			if (
 				!array_key_exists( $taskType, $taskTemplatesQIDs ) ||
 				!array_key_exists( $taskType, $taskLearnMoreQIDs )

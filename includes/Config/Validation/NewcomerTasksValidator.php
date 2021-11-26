@@ -9,7 +9,10 @@ use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskTypeHandler;
 use StatusValue;
 
 class NewcomerTasksValidator implements IConfigValidator {
-	/** @var string[] */
+	/**
+	 * Default task type data. Should usually be accessed via
+	 * SpecialEditGrowthConfig::getDefaultDataForEnabledTaskTypes().
+	 */
 	public const SUGGESTED_EDITS_TASK_TYPES = [
 		'copyedit' => [
 			'difficulty' => 'easy',

@@ -60,6 +60,7 @@
 	"growthexperiments-edit-config-newcomertasks": "Suggested edits",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Some types of suggested edits are surfaced through maintenance templates. Articles containing those templates are added to the feed. To see how many articles are available for each type of task, see [[Special:NewcomerTasksInfo|this page]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Disabled",
+	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "Disabled in site configuration",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Copy editing: templates to find articles that need copy editing, such as spelling, grammar, and punctuation improvements.",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Destination page for learning more about copy editing.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Expand: templates to find articles that need expansion.",
