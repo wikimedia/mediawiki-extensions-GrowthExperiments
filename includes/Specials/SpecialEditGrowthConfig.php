@@ -71,6 +71,9 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	/** @var bool */
 	private $userCanWrite;
 
+	/** @var array|null */
+	private $newcomerTasksConfig;
+
 	/**
 	 * @param TitleFactory $titleFactory
 	 * @param RevisionLookup $revisionLookup
@@ -563,11 +566,15 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	}
 
 	/**
-	 * Get (uncached) newcomer tasks config
+	 * Get newcomer tasks config. Avoid normal cache, use in-process cache only.
 	 *
 	 * @return array
 	 */
 	private function getNewcomerTasksConfig(): array {
+		if ( $this->newcomerTasksConfig !== null ) {
+			return $this->newcomerTasksConfig;
+		}
+
 		$title = $this->titleFactory->newFromText(
 			$this->getConfig()->get( 'GENewcomerTasksConfigTitle' )
 		);
@@ -584,6 +591,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			return [];
 		}
 
+		$this->newcomerTasksConfig = $res;
 		return $res;
 	}
 
@@ -790,7 +798,20 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 * @return array
 	 */
 	private function normalizeSuggestedEditsConfig( array $data ): array {
-		$normalizedData = [];
+		$suggestedEditsConfig = $this->getNewcomerTasksConfig()
+		   // If a new task type was added since the on-wiki config page has last been updated,
+		   // we want that task type to be created the next time someone saves the page.
+			+ array_map( static function ( array $taskTypeData ) {
+				return [
+					'disabled' => false,
+					'group' => $taskTypeData['difficulty'],
+					'templates' => [],
+					'excludedTemplates' => [],
+					'excludedCategories' => [],
+					'type' => $taskTypeData['handler-id'],
+				];
+			}, NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES );
+
 		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $taskTypeData ) {
 			$templates = array_map( static function ( Title $title ) {
 				return $title->getText();
@@ -809,22 +830,24 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 				return $title->getText();
 			}, $this->normalizeTitleList( $data["${taskType}ExcludedCategories"] ?? null ) );
 
-			$normalizedData[$taskType] = [
+			$suggestedEditsConfig[$taskType] = [
 				'disabled' => (bool)$data["${taskType}Disabled"],
 				'group' => $taskTypeData['difficulty'],
 				'templates' => $templates,
 				'excludedTemplates' => $excludedTemplates,
 				'excludedCategories' => $excludedCategories,
 				'type' => $taskTypeData['handler-id'],
-			];
+			] + $suggestedEditsConfig[$taskType];
 
 			// Add learnmore link if specified
 			if ( isset( $data["${taskType}Learnmore"] ) ) {
-				$normalizedData[$taskType]['learnmore'] = $data["${taskType}Learnmore"];
+				$suggestedEditsConfig[$taskType]['learnmore'] = $data["${taskType}Learnmore"];
+			} else {
+				unset( $suggestedEditsConfig[$taskType]['learnmore'] );
 			}
 		}
 
-		return $normalizedData;
+		return $suggestedEditsConfig;
 	}
 
 	/**
