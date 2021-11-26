@@ -124,14 +124,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 			ImageRecommendationMetadataProvider::class
 		);
 		$statsDataFactory = $this->createMock( IBufferingStatsdDataFactory::class );
-		$metadataProvider->method( 'getMetadata' )->willReturn( [
-			'description' => 'description',
-			'thumbUrl' => 'thumb url',
-			'fullUrl' => 'full url',
-			'descriptionUrl' => 'description url',
-			'originalWidth' => 1024,
-			'originalHeight' => 768,
-		] );
+		$metadataProvider->method( 'getMetadata' )->willReturn( $this->metadataFactory() );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$useTitle = true;
 		$provider = new ServiceImageRecommendationProvider(
@@ -179,14 +172,7 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		$metadataProvider = $this->createMock(
 			ImageRecommendationMetadataProvider::class
 		);
-		$metadataProvider->method( 'getMetadata' )->willReturn( [
-			'description' => 'description',
-			'thumbUrl' => 'thumb url',
-			'fullUrl' => 'full url',
-			'descriptionUrl' => 'description url',
-			'originalWidth' => 1024,
-			'originalHeight' => 768,
-		] );
+		$metadataProvider->method( 'getMetadata' )->willReturn( $this->metadataFactory() );
 		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
 		$useTitle = false;
 		$provider = new ServiceImageRecommendationProvider(
@@ -326,6 +312,95 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 		} else {
 			$this->assertInstanceOf( StatusValue::class, $result );
 		}
+	}
+
+	/**
+	 * @dataProvider provideProcessApiResponseDataFilter
+	 * @param array $data API response data.
+	 * @param array|null $expectedResult Expected result of ImageRecommendation::toArray, or null
+	 *   on error.
+	 * @covers ::processApiResponseData
+	 */
+	public function testProcessApiResponseDataFiltering( array $data, ?array $expectedResult ) {
+		$metadataProvider = $this->createNoOpMock(
+			ImageRecommendationMetadataProvider::class, [ 'getMetadata' ] );
+		$metadataProvider->method( 'getMetadata' )->willReturnCallback( function ( $suggestion ) {
+			if ( $suggestion['filename'] === 'NoWidthInformed.png' ) {
+				return $this->metadataFactory( false );
+			}
+			if ( $suggestion['filename'] === 'TooNarrow.png' ) {
+				return $this->metadataFactory( 99 );
+			}
+			return $this->metadataFactory( 101 );
+		} );
+		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
+		$result = ServiceImageRecommendationProvider::processApiResponseData(
+			new TitleValue( 0, 'Foo' ),
+			'Foo',
+			$data,
+			$metadataProvider,
+			$taskType->getMinimumImageSize()
+		);
+
+		$this->assertInstanceOf( ImageRecommendation::class, $result );
+		$this->assertSame( $expectedResult, $result->toArray() );
+	}
+
+	public function metadataFactory( $width = 1024 ): array {
+		return [
+			'description' => 'description',
+			'thumbUrl' => 'thumb url',
+			'fullUrl' => 'full url',
+			'descriptionUrl' => 'description url',
+			'originalWidth' => $width,
+			'originalHeight' => 768,
+		];
+	}
+
+	public function provideProcessApiResponseDataFilter() {
+		$validSource = [
+			'from' => 'wikipedia',
+			'found_on' => 'enwiki,dewiki',
+			'dataset_id' => '1.23',
+		];
+		$validSuggestions = [
+			[
+				'filename' => 'TooNarrow.png',
+				'source' => [ 'details' => $validSource ],
+			],
+			[
+				'filename' => 'WideEnough.png',
+				'source' => [ 'details' => $validSource ],
+			],
+			[
+				'filename' => 'NoWidthInformed.png',
+				'source' => [ 'details' => $validSource ],
+			]
+		];
+
+		return [
+			'valid' => [ [ 'pages' => [ [ 'suggestions' => $validSuggestions ] ] ], [
+				'titleNamespace' => 0,
+				'titleText' => 'Foo',
+				'images' => [
+					[
+						'image' => 'WideEnough.png',
+						'displayFilename' => 'WideEnough.png',
+						'source' => 'wikipedia',
+						'projects' => [ 'enwiki', 'dewiki' ],
+						'metadata' => [
+							'description' => 'description',
+							'thumbUrl' => 'thumb url',
+							'fullUrl' => 'full url',
+							'descriptionUrl' => 'description url',
+							'originalWidth' => 101,
+							'originalHeight' => 768
+						],
+					],
+				],
+				'datasetId' => '1.23',
+			] ],
+		];
 	}
 
 	public function provideProcessApiResponseData() {

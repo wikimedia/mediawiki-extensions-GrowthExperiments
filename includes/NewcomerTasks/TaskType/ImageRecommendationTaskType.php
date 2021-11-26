@@ -8,16 +8,23 @@ class ImageRecommendationTaskType extends TaskType {
 	public const FIELD_MAX_TASKS_PER_DAY = 'maxTasksPerDay';
 	/** @see ::getMinimumCaptionCharacterLength */
 	public const FIELD_MINIMUM_CAPTION_CHARACTER_LENGTH = 'minimumCaptionCharacterLength';
+	/** @see ::getMinimumImageSize */
+	public const FIELD_MINIMUM_IMAGE_SIZE = 'minimumImageSize';
 
 	public const DEFAULT_SETTINGS = [
 		self::FIELD_MAX_TASKS_PER_DAY => 25,
-		self::FIELD_MINIMUM_CAPTION_CHARACTER_LENGTH => 5
+		self::FIELD_MINIMUM_CAPTION_CHARACTER_LENGTH => 5,
+		self::FIELD_MINIMUM_IMAGE_SIZE => [
+			'width' => 100
+		]
 	];
 
 	/** @var int */
 	protected $maxTasksPerDay;
 	/** @var int */
 	protected $minimumCaptionCharacterLength;
+	/** @var array */
+	protected $minimumImageSize;
 
 	/** @var bool */
 	protected $isMachineSuggestion = true;
@@ -41,6 +48,16 @@ class ImageRecommendationTaskType extends TaskType {
 		$settings += self::DEFAULT_SETTINGS;
 		$this->maxTasksPerDay = $settings[self::FIELD_MAX_TASKS_PER_DAY];
 		$this->minimumCaptionCharacterLength = $settings[self::FIELD_MINIMUM_CAPTION_CHARACTER_LENGTH];
+		$this->minimumImageSize = $settings[self::FIELD_MINIMUM_IMAGE_SIZE];
+	}
+
+	/**
+	 * An array [ 'width' => int ] containing the minimum width and other metadata thresholds for an image to be
+	 * included as a recommendation
+	 * @return array
+	 */
+	public function getMinimumImageSize(): array {
+		return $this->minimumImageSize;
 	}
 
 	/**
