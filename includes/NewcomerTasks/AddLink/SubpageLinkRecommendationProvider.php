@@ -32,7 +32,7 @@ class SubpageLinkRecommendationProvider
 	 * @inheritDoc
 	 * @return LinkRecommendation|StatusValue
 	 */
-	public function createRecommendation( Title $title, array $data ) {
+	public function createRecommendation( Title $title, array $data, array $suggestionFilters = [] ) {
 		return new LinkRecommendation(
 			$title,
 			$title->getArticleID(),

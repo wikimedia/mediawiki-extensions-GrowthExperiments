@@ -258,6 +258,14 @@ class ImageRecommendationMetadataProvider {
 	}
 
 	/**
+	 * @param string $filename
+	 * @return array|StatusValue
+	 */
+	public function getFileMetadata( string $filename ) {
+		return $this->service->getFileMetadata( $filename );
+	}
+
+	/**
 	 * Get metadata for the specified image file name
 	 *
 	 * @param array $suggestion Suggestion data, as returned by the API.

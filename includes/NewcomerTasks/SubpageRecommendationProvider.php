@@ -49,9 +49,10 @@ abstract class SubpageRecommendationProvider implements RecommendationProvider {
 	 * Create the recommendation object from the JSON representation.
 	 * @param Title $title The page the recommendation is for.
 	 * @param array $data Recommendation data (ie. the content of the JSON subpage).
+	 * @param array $suggestionFilters
 	 * @return Recommendation|StatusValue
 	 */
-	abstract public function createRecommendation( Title $title, array $data );
+	abstract public function createRecommendation( Title $title, array $data, array $suggestionFilters = [] );
 
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
@@ -109,7 +110,7 @@ abstract class SubpageRecommendationProvider implements RecommendationProvider {
 		// Turn $title into a real Title
 		$title = $subpage->getTitle()->getBaseTitle();
 
-		return $this->createRecommendation( $title, $data );
+		return $this->createRecommendation( $title, $data, $taskType->getSuggestionFilters() );
 	}
 
 	/**

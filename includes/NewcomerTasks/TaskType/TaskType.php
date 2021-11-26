@@ -308,4 +308,13 @@ class TaskType implements JsonUnserializable {
 	public function getQualityGateIds(): array {
 		return [];
 	}
+
+	/**
+	 * Return the filters to apply to the recommendation
+	 *
+	 * @return array
+	 */
+	public function getSuggestionFilters(): array {
+		return [];
+	}
 }

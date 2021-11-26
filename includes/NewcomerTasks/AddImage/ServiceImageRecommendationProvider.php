@@ -163,7 +163,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 
 		$startTime = microtime( true );
 		$responseData = self::processApiResponseData(
-			$title, $titleText, $data, $this->metadataProvider, $taskType->getMinimumImageSize()
+			$title, $titleText, $data, $this->metadataProvider, $taskType->getSuggestionFilters()
 		);
 
 		$this->statsdDataFactory->timing(
@@ -182,7 +182,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	 * @param string $titleText Title text, for logging.
 	 * @param array $data API response body
 	 * @param ImageRecommendationMetadataProvider $metadataProvider
-	 * @param array|null $minimumImageSize
+	 * @param array $suggestionFilters
 	 * @return ImageRecommendation|StatusValue
 	 * @throws \MWException
 	 */
@@ -191,9 +191,8 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		string $titleText,
 		array $data,
 		ImageRecommendationMetadataProvider $metadataProvider,
-		array $minimumImageSize = null
+		array $suggestionFilters = []
 	) {
-		$isQualityGateApplied = false;
 		$titleTextSafe = strip_tags( $titleText );
 		if ( !$data['pages'] ) {
 			return StatusValue::newFatal( 'rawmessage',
@@ -236,24 +235,30 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 					'Invalid datasetId format for ' . $titleTextSafe );
 			}
 
-			$imageMetadata = $metadataProvider->getMetadata( [
-				'filename' => $suggestion['filename'],
-				'projects' => $projects,
-				'source' => $source,
-			] );
-			if ( is_array( $imageMetadata ) ) {
-				$images[] = new ImageRecommendationImage(
-					new TitleValue( NS_FILE, $filename ),
-					$source,
-					$projects,
-					$imageMetadata
-				);
-				if ( $minimumImageSize && !self::hasMinimumWidth( $imageMetadata, $minimumImageSize ) ) {
-					$isQualityGateApplied = true;
-					array_pop( $images );
+			$fileMetadata = $metadataProvider->getFileMetadata( $suggestion['filename'] );
+			if ( is_array( $fileMetadata ) ) {
+				$imageWidth = $fileMetadata['originalWidth'] ?: 0;
+				if ( self::hasMinimumWidth( $suggestionFilters['minimumSize']['width'], $imageWidth ) &&
+					self::isValidMediaType( $suggestionFilters['validMediaTypes'], $fileMetadata['mediaType'] )
+				) {
+					$imageMetadata = $metadataProvider->getMetadata( [
+						'filename' => $suggestion['filename'],
+						'projects' => $projects,
+						'source' => $source,
+					] );
+					if ( is_array( $imageMetadata ) ) {
+						$images[] = new ImageRecommendationImage(
+							new TitleValue( NS_FILE, $filename ),
+							$source,
+							$projects,
+							$imageMetadata
+						);
+					} else {
+						$status->merge( $imageMetadata );
+					}
 				}
 			} else {
-				$status->merge( $imageMetadata );
+				$status->merge( $fileMetadata );
 			}
 		}
 
@@ -262,7 +267,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 				if ( !$data['pages'][0]['suggestions'] ) {
 					// $data['pages'][0]['suggestions'] was empty. This shouldn't happen.
 					$status->fatal( 'rawmessage', 'No recommendation found for page: ' . $titleTextSafe );
-				} elseif ( $isQualityGateApplied ) {
+				} else {
 					// $data['pages'][0]['suggestions'] was not empty so all recommendations were filtered by quality
 					// gate filters
 					$status->fatal(
@@ -279,11 +284,20 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	}
 
 	/**
-	 * @param array $imageMetadata
-	 * @param array $minimumImageSize
+	 * @param int $minimumWidth
+	 * @param int $imageWidth
 	 * @return bool
 	 */
-	private static function hasMinimumWidth( array $imageMetadata, array $minimumImageSize ): bool {
-		return ( $imageMetadata['originalWidth'] ?: 0 ) >= $minimumImageSize['width'];
+	private static function hasMinimumWidth( int $minimumWidth, int $imageWidth ): bool {
+		return $imageWidth >= $minimumWidth;
+	}
+
+	/**
+	 * @param array $validMediaTypes
+	 * @param string $mediaType
+	 * @return bool
+	 */
+	private static function isValidMediaType( array $validMediaTypes, string $mediaType ): bool {
+		return in_array( $mediaType, $validMediaTypes );
 	}
 }

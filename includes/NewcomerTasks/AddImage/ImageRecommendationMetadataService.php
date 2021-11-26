@@ -92,6 +92,7 @@ class ImageRecommendationMetadataService {
 			'originalHeight' => $file->getHeight(),
 			'mustRender' => $file->mustRender(),
 			'isVectorized' => $file->isVectorized(),
+			'mediaType' => $file->getMediaType()
 		];
 	}
 

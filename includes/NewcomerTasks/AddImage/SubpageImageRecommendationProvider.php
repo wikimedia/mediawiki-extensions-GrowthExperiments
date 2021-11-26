@@ -54,13 +54,13 @@ class SubpageImageRecommendationProvider
 	 * @inheritDoc
 	 * @return ImageRecommendation|StatusValue
 	 */
-	public function createRecommendation( Title $title, array $data ) {
+	public function createRecommendation( Title $title, array $data, array $suggestionFilters = [] ) {
 		if ( isset( $data['pages'] ) ) {
 			// This is the format used by the Image Suggestions API. It is not really useful
 			// as a serialization format but easy to obtain for actual wiki pages so allow it
 			// as a convenience.
 			return ServiceImageRecommendationProvider::processApiResponseData( $title,
-				$title->getPrefixedText(), $data, $this->metadataProvider );
+				$title->getPrefixedText(), $data, $this->metadataProvider, $suggestionFilters );
 		} else {
 			return ImageRecommendation::fromArray( $data );
 		}

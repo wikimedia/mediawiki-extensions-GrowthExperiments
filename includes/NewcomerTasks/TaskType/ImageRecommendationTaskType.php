@@ -11,6 +11,11 @@ class ImageRecommendationTaskType extends TaskType {
 	/** @see ::getMinimumImageSize */
 	public const FIELD_MINIMUM_IMAGE_SIZE = 'minimumImageSize';
 
+	public const VALID_MEDIA_TYPES = [
+		MEDIATYPE_BITMAP,
+		MEDIATYPE_DRAWING
+	];
+
 	public const DEFAULT_SETTINGS = [
 		self::FIELD_MAX_TASKS_PER_DAY => 25,
 		self::FIELD_MINIMUM_CAPTION_CHARACTER_LENGTH => 5,
@@ -52,12 +57,17 @@ class ImageRecommendationTaskType extends TaskType {
 	}
 
 	/**
-	 * An array [ 'width' => int ] containing the minimum width and other metadata thresholds for an image to be
-	 * included as a recommendation
-	 * @return array
+	 * Return the filters to apply to the recommendation
+	 *
+	 * @return array an array with the following fields:
+	 *   - minimumSize: an array [ 'width' => int ] containing the minimum width
+	 *   - validMediaTypes: an array of valid media types [ 'BITMAP' ]
 	 */
-	public function getMinimumImageSize(): array {
-		return $this->minimumImageSize;
+	public function getSuggestionFilters(): array {
+		return [
+			'minimumSize' => $this->minimumImageSize,
+			'validMediaTypes' => self::VALID_MEDIA_TYPES
+		];
 	}
 
 	/**
