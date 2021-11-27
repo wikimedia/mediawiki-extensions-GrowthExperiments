@@ -35,7 +35,7 @@ class HelpPanelHooks implements
 	 * Register preference to toggle help panel.
 	 *
 	 * @param User $user
-	 * @param array &$preferences Preferences object
+	 * @param array &$preferences
 	 */
 	public function onGetPreferences( $user, &$preferences ) {
 		if ( HelpPanel::isHelpPanelEnabled() ) {

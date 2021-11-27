@@ -539,7 +539,7 @@ class HomepageHooks implements
 	 * Register preferences to control the homepage.
 	 *
 	 * @param User $user
-	 * @param array &$preferences Preferences object
+	 * @param array &$preferences
 	 * @throws ConfigException
 	 */
 	public function onGetPreferences( $user, &$preferences ) {

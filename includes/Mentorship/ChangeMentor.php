@@ -48,7 +48,7 @@ class ChangeMentor {
 	/**
 	 * @param UserIdentity $mentee Mentee's user object
 	 * @param UserIdentity $performer Performer's user object
-	 * @param LoggerInterface $logger Logger
+	 * @param LoggerInterface $logger
 	 * @param Mentor|null $mentor Old mentor
 	 * @param LogPager $logPager
 	 * @param MentorStore $mentorStore

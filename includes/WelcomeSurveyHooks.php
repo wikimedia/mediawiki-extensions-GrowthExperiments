@@ -47,7 +47,7 @@ class WelcomeSurveyHooks implements
 	 * Register preference to save the Welcome survey responses.
 	 *
 	 * @param User $user
-	 * @param array &$preferences Preferences object
+	 * @param array &$preferences
 	 */
 	public function onGetPreferences( $user, &$preferences ) {
 		if ( $this->isWelcomeSurveyEnabled() ) {
