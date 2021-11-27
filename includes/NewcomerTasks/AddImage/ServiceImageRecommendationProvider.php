@@ -125,9 +125,10 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		}
 
 		$request = $this->httpRequestFactory->create(
-			wfAppendQuery( $this->url . '/' . implode( '/', array_map( static function ( $arg ) {
-					return rawurlencode( $arg );
-			}, $pathArgs ) ), $queryArgs ),
+			wfAppendQuery(
+				$this->url . '/' . implode( '/', array_map( 'rawurlencode', $pathArgs ) ),
+				$queryArgs
+			),
 			[
 				'method' => 'GET',
 				'proxy' => $this->proxyUrl,

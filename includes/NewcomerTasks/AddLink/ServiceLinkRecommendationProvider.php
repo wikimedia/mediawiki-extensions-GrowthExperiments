@@ -104,9 +104,7 @@ class ServiceLinkRecommendationProvider implements LinkRecommendationProvider {
 		];
 		$request = $this->httpRequestFactory->create(
 			wfAppendQuery(
-				$this->url . '/v1/linkrecommendations/' . implode( '/', array_map( static function ( $arg ) {
-					return rawurlencode( $arg );
-				}, $pathArgs ) ),
+				$this->url . '/v1/linkrecommendations/' . implode( '/', array_map( 'rawurlencode', $pathArgs ) ),
 				$queryArgs
 			),
 			[

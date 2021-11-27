@@ -43,12 +43,7 @@ class StarredMenteesStore implements IDBAccessObject {
 
 	private function decodeMenteeIds( string $encodedIds ): array {
 		$res = explode( self::SEPARATOR, $encodedIds );
-		return array_map(
-			'intval',
-			array_filter( $res, static function ( $id ) {
-				return is_numeric( $id );
-			} )
-		);
+		return array_map( 'intval', array_filter( $res, 'is_numeric' ) );
 	}
 
 	/**
