@@ -10,5 +10,7 @@
 	"apihelp-growthsetmentorstatus-param-gesstatus": "New status",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "When setting mentor as away, this must have length of the away status (in days)",
 	"apihelp-query+growthmentorstatus-summary": "Query current user's mentor status",
-	"apihelp-growthmentordashboardupdatedata-summary": "Schedule an extraordinary update of the mentee overview module in the mentor dashboard. You can only schedule one update per two hours for performance reasons."
+	"apihelp-growthmentordashboardupdatedata-summary": "Schedule an extraordinary update of the mentee overview module in the mentor dashboard. You can only schedule one update per two hours for performance reasons.",
+	"apihelp-growthsetmentorweight-summary": "Set weight of currently logged in mentor",
+	"apihelp-growthsetmentorweight-param-geweight": "Numeric weight of the mentor: the lower value, the less newcomers are assigned"
 }

@@ -7,6 +7,7 @@ use EchoAttributeManager;
 use EchoUserLocator;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
+use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
@@ -32,6 +33,9 @@ class MentorHooks implements GetPreferencesHook, UserGetDefaultOptionsHook, Loca
 		$preferences[ MentorPageMentorManager::MENTORSHIP_ENABLED_PREF ] = [
 			'type' => 'api'
 		];
+		$preferences[ MentorWeightManager::MENTORSHIP_WEIGHT_PREF ] = [
+			'type' => 'api',
+		];
 		$preferences[ MentorStatusManager::MENTOR_AWAY_TIMESTAMP_PREF ] = [
 			'type' => 'api',
 		];
@@ -42,7 +46,8 @@ class MentorHooks implements GetPreferencesHook, UserGetDefaultOptionsHook, Loca
 	 */
 	public function onUserGetDefaultOptions( &$defaultOptions ) {
 		$defaultOptions += [
-			MentorPageMentorManager::MENTORSHIP_ENABLED_PREF => 1
+			MentorPageMentorManager::MENTORSHIP_ENABLED_PREF => 1,
+			MentorWeightManager::MENTORSHIP_WEIGHT_PREF => MentorWeightManager::MENTORSHIP_DEFAULT_WEIGHT,
 		];
 	}
 

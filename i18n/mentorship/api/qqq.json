@@ -10,5 +10,7 @@
 	"apihelp-growthsetmentorstatus-param-gesstatus": "{{doc-apihelp-param|growthsetmentorstatus|gesstatus}}",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "{{doc-apihelp-param|growthsetmentorstatus|gesbackindays}}",
 	"apihelp-query+growthmentorstatus-summary": "{{doc-apihelp-summary|query+growthmentorstatus}}",
-	"apihelp-growthmentordashboardupdatedata-summary": "{{doc-apihelp-summary|growthmentordashboardupdatedata}}"
+	"apihelp-growthmentordashboardupdatedata-summary": "{{doc-apihelp-summary|growthmentordashboardupdatedata}}",
+	"apihelp-growthsetmentorweight-summary": "{{doc-apihelp-summary|growthsetmentorweight}}",
+	"apihelp-growthsetmentorweight-param-geweight": "{{doc-apihelp-param|growthsetmentorweight|geweight}}"
 }

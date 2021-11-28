@@ -2,15 +2,45 @@
 
 namespace GrowthExperiments\Mentorship;
 
+use BagOStuff;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
+use HashBagOStuff;
 use MediaWiki\User\UserIdentity;
 use Title;
+use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
 /**
  * A service for handling mentors.
  */
-abstract class MentorManager {
+abstract class MentorManager implements ExpirationAwareness {
+
+	/** @var BagOStuff */
+	protected $cache;
+	/** @var int */
+	protected $cacheTtl;
+
+	public function __construct() {
+		$this->setCache( new HashBagOStuff(), self::TTL_INDEFINITE );
+	}
+
+	/**
+	 * Use a different cache
+	 *
+	 * Default is in-process cache only.
+	 *
+	 * @param BagOStuff $cache
+	 * @param int $ttl
+	 */
+	public function setCache( BagOStuff $cache, int $ttl ) {
+		$this->cache = $cache;
+		$this->cacheTtl = $ttl;
+	}
+
+	/**
+	 * Invalidate cache of mentorship-related information
+	 */
+	abstract public function invalidateCache(): void;
 
 	/**
 	 * Get the mentor assigned to this user, if it exists.

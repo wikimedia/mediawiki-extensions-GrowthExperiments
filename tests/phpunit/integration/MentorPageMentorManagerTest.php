@@ -4,8 +4,10 @@ namespace GrowthExperiments\Tests;
 
 use Content;
 use DerivativeContext;
+use EmptyBagOStuff;
 use Exception;
 use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
@@ -17,6 +19,7 @@ use ParserOutput;
 use PHPUnit\Framework\MockObject\MockObject;
 use RequestContext;
 use Title;
+use Wikimedia\TestingAccessWrapper;
 use WikiPage;
 
 /**
@@ -67,6 +70,26 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 			[ '' ],
 			[ null ]
 		];
+	}
+
+	/**
+	 * @covers ::getAutoAssignedMentors
+	 */
+	public function testGetAutoAssignedMentors() {
+		$firstMentor = $this->getMutableTestUser()->getUser();
+		$secondMentor = $this->getMutableTestUser()->getUser();
+
+		$this->insertPage(
+			'MentorsList',
+			'[[User:' . $firstMentor->getName() . ']]
+			[[User:' . $secondMentor->getName() . ']]'
+		);
+		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
+
+		$this->assertArrayEquals(
+			[ $firstMentor->getName(), $secondMentor->getName() ],
+			$this->getMentorManager()->getAutoAssignedMentors()
+		);
 	}
 
 	/**
@@ -271,6 +294,70 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 	}
 
 	/**
+	 * @covers ::getWeightedAutoAssignedMentors
+	 */
+	public function testGetWeightedAutoAssignedMentors() {
+		$mentorHigh = $this->getMutableTestUser()->getUser();
+		$mentorLow = $this->getMutableTestUser()->getUser();
+		$this->insertPage(
+			'MentorsList',
+			'[[User:' . $mentorHigh->getName() . ']]
+			[[User:' . $mentorLow->getName() . ']]'
+		);
+		$this->setMwGlobals( 'wgGEHomepageMentorsList', 'MentorsList' );
+		$uom = $this->getServiceContainer()->getUserOptionsManager();
+		$manager = TestingAccessWrapper::newFromObject( $this->getMentorManager() );
+
+		// first, test without setting any weights
+		$this->assertArrayEquals(
+			[
+				$mentorHigh->getName(),
+				$mentorHigh->getName(),
+				$mentorLow->getName(),
+				$mentorLow->getName(),
+			],
+			$manager->getWeightedAutoAssignedMentors()
+		);
+
+		// set high's weight to 4 and check again
+		$uom->setOption(
+			$mentorHigh,
+			MentorWeightManager::MENTORSHIP_WEIGHT_PREF,
+			4
+		);
+		$uom->saveOptions( $mentorHigh );
+		$this->assertArrayEquals(
+			[
+				$mentorHigh->getName(),
+				$mentorHigh->getName(),
+				$mentorHigh->getName(),
+				$mentorHigh->getName(),
+				$mentorLow->getName(),
+				$mentorLow->getName(),
+			],
+			$manager->getWeightedAutoAssignedMentors()
+		);
+
+		// set low's weight to 1 and check again
+		$uom->setOption(
+			$mentorLow,
+			MentorWeightManager::MENTORSHIP_WEIGHT_PREF,
+			1
+		);
+		$uom->saveOptions( $mentorLow );
+		$this->assertArrayEquals(
+			[
+				$mentorHigh->getName(),
+				$mentorHigh->getName(),
+				$mentorHigh->getName(),
+				$mentorHigh->getName(),
+				$mentorLow->getName(),
+			],
+			$manager->getWeightedAutoAssignedMentors()
+		);
+	}
+
+	/**
 	 * @param IContextSource|null $context
 	 * @param array[] $pages title as prefixed text => content
 	 * @return MentorPageMentorManager
@@ -279,9 +366,10 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$coreServices = MediaWikiServices::getInstance();
 		$growthServices = GrowthExperimentsServices::wrap( $coreServices );
 		$context = $context ?? RequestContext::getMain();
-		return new MentorPageMentorManager(
+		$manager = new MentorPageMentorManager(
 			$growthServices->getMentorStore(),
 			$growthServices->getMentorStatusManager(),
+			$growthServices->getMentorWeightManager(),
 			$coreServices->getTitleFactory(),
 			$pages ? $this->getMockWikiPageFactory( $pages )
 				: $coreServices->getWikiPageFactory(),
@@ -294,6 +382,8 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 			$growthServices->getGrowthConfig()->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null,
 			$context->getRequest()->wasPosted()
 		);
+		$manager->setCache( new EmptyBagOStuff(), 0 );
+		return $manager;
 	}
 
 	/**

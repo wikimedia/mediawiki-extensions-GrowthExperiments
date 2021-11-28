@@ -122,4 +122,8 @@ class StaticMentorManager extends MentorManager {
 		$autoAssignedMentors = array_values( $this->mentors );
 		return $autoAssignedMentors[rand( 0, count( $autoAssignedMentors ) - 1 )]->getMentorUser();
 	}
+
+	/** @inheritDoc */
+	public function invalidateCache(): void {
+	}
 }

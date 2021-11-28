@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Mentorship;
 
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
+use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use Language;
@@ -35,6 +36,9 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 	/** @var MentorStatusManager */
 	private $mentorStatusManager;
+
+	/** @var MentorWeightManager */
+	private $mentorWeightManager;
 
 	/** @var TitleFactory */
 	private $titleFactory;
@@ -69,6 +73,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	/**
 	 * @param MentorStore $mentorStore
 	 * @param MentorStatusManager $mentorStatusManager
+	 * @param MentorWeightManager $mentorWeightManager
 	 * @param TitleFactory $titleFactory
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param UserNameUtils $userNameUtils
@@ -87,6 +92,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	public function __construct(
 		MentorStore $mentorStore,
 		MentorStatusManager $mentorStatusManager,
+		MentorWeightManager $mentorWeightManager,
 		TitleFactory $titleFactory,
 		WikiPageFactory $wikiPageFactory,
 		UserNameUtils $userNameUtils,
@@ -100,6 +106,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	) {
 		$this->mentorStore = $mentorStore;
 		$this->mentorStatusManager = $mentorStatusManager;
+		$this->mentorWeightManager = $mentorWeightManager;
 		$this->titleFactory = $titleFactory;
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->userNameUtils = $userNameUtils;
@@ -309,13 +316,67 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		return $this->getMentorsForPage( $this->getManuallyAssignedMentorsPage() );
 	}
 
+	/** @inheritDoc */
+	public function invalidateCache(): void {
+		$this->cache->delete(
+			$this->makeCacheKeyWeightedAutoAssignedMentors()
+		);
+	}
+
+	/**
+	 * @return string
+	 * @throws WikiConfigException
+	 */
+	private function makeCacheKeyWeightedAutoAssignedMentors(): string {
+		return $this->cache->makeKey(
+			'GrowthExperiments',
+			__CLASS__,
+			'WeightedMentors',
+			$this->getMentorsPage()->getId()
+		);
+	}
+
+	/**
+	 * @return array
+	 * @throws WikiConfigException
+	 */
+	private function getWeightedAutoAssignedMentors(): array {
+		return $this->cache->getWithSetCallback(
+			$this->makeCacheKeyWeightedAutoAssignedMentors(),
+			$this->cacheTtl,
+			function () {
+				$mentors = $this->getAutoAssignedMentors();
+				if ( $mentors === [] ) {
+					return [];
+				}
+				return array_merge( ...array_map(
+					function ( string $mentorText ) {
+						$mentor = $this->userIdentityLookup->getUserIdentityByName(
+							$mentorText
+						);
+						if ( !$mentor ) {
+							// return empty array, mentor is not valid
+							return [];
+						}
+						return array_fill(
+							0,
+							$this->mentorWeightManager->getWeightForMentor( $mentor ),
+							$mentorText
+						);
+					},
+					$mentors
+				) );
+			}
+		);
+	}
+
 	/**
 	 * @inheritDoc
 	 */
 	public function getRandomAutoAssignedMentor(
 		UserIdentity $mentee, array $excluded = []
 	): ?UserIdentity {
-		$autoAssignedMentors = $this->getAutoAssignedMentors();
+		$autoAssignedMentors = $this->getWeightedAutoAssignedMentors();
 		if ( count( $autoAssignedMentors ) === 0 ) {
 			$this->logger->debug(
 				'Mentorship: No mentor available for user {user}',

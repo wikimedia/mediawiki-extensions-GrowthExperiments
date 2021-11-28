@@ -21,6 +21,7 @@ use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
 use GrowthExperiments\MentorDashboard\MenteeOverview\UncachedMenteeOverviewDataProvider;
 use GrowthExperiments\MentorDashboard\MentorDashboardModuleRegistry;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
+use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\ChangeMentorFactory;
 use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\MentorPageMentorManager;
@@ -386,6 +387,7 @@ return [
 		$manager = new MentorPageMentorManager(
 			$geServices->getMentorStore(),
 			$geServices->getMentorStatusManager(),
+			$geServices->getMentorWeightManager(),
 			$services->getTitleFactory(),
 			$services->getWikiPageFactory(),
 			$services->getUserNameUtils(),
@@ -396,6 +398,10 @@ return [
 			$wikiConfig->get( 'GEHomepageMentorsList' ) ?: null,
 			$wikiConfig->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null,
 			RequestContext::getMain()->getRequest()->wasPosted()
+		);
+		$manager->setCache(
+			ObjectCache::getLocalClusterInstance(),
+			MentorManager::TTL_HOUR
 		);
 		$manager->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $manager;
@@ -436,6 +442,14 @@ return [
 			CachedBagOStuff::TTL_DAY
 		);
 		return $databaseMentorStore;
+	},
+
+	'GrowthExperimentsMentorWeightManager' => static function (
+		MediaWikiServices $services
+	): MentorWeightManager {
+		return new MentorWeightManager(
+			$services->getUserOptionsManager()
+		);
 	},
 
 	'GrowthExperimentsNewcomerTasksConfigurationLoader' => static function (
