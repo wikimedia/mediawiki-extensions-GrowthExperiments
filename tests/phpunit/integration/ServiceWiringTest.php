@@ -10,10 +10,7 @@ use MediaWikiIntegrationTestCase;
  */
 class ServiceWiringTest extends MediaWikiIntegrationTestCase {
 
-	protected const DEPRECATED_SERVICES = [
-		'GrowthExperimentsTaskSuggester',
-		'GrowthExperimentsMentorStorePreference',
-	];
+	protected const DEPRECATED_SERVICES = [];
 
 	/**
 	 * @dataProvider provideService
