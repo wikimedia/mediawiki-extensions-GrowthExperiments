@@ -352,7 +352,8 @@ class Impact extends BaseModule {
 		);
 	}
 
-	private function getSubheaderText() {
+	/** @inheritDoc */
+	protected function getSubheaderText() {
 		$textMsgKey = $this->getTotalPageViews() ?
 			'growthexperiments-homepage-impact-subheader-text' :
 			'growthexperiments-homepage-impact-subheader-text-no-pageviews';

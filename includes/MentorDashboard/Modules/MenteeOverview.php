@@ -15,8 +15,8 @@ class MenteeOverview extends BaseModule {
 	/**
 	 * @inheritDoc
 	 */
-	protected function getSubheader() {
-		return $this->msg( 'growthexperiments-mentor-dashboard-mentee-overview-intro' )->escaped();
+	protected function getSubheaderText() {
+		return $this->msg( 'growthexperiments-mentor-dashboard-mentee-overview-intro' )->text();
 	}
 
 	/**

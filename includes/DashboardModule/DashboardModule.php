@@ -380,12 +380,33 @@ abstract class DashboardModule implements IDashboardModule {
 	abstract protected function getMobileSummaryBody();
 
 	/**
-	 * Override this function to provide an optional module subheader.
+	 * Provide optional subheader for the module
 	 *
 	 * @return string HTML content of the subheader
 	 */
 	protected function getSubheader() {
+		return $this->getSubheaderTextElement();
+	}
+
+	/**
+	 * Override this function to provide an optional subheader for the module
+	 *
+	 * @return string Text content of the subheader
+	 */
+	protected function getSubheaderText() {
 		return '';
+	}
+
+	/**
+	 * @return string HTML element containing the header text.
+	 */
+	protected function getSubheaderTextElement() {
+		$text = $this->getSubheaderText();
+		return $text ? Html::element(
+			'div',
+			[ 'class' => static::BASE_CSS_CLASS . '-subheader-text' ],
+			$text
+		) : '';
 	}
 
 	/**
