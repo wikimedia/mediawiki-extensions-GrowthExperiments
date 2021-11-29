@@ -308,7 +308,7 @@ class SuggestedEdits extends BaseModule {
 		$data['task-preview'] = [ 'noresults' => true ];
 
 		// Preload one task card for users who have the module activated
-		if ( $this->canRender() && self::isActivated( $this->getContext(), $this->userOptionsLookup ) ) {
+		if ( $this->canRender() ) {
 			$tasks = $this->getTaskSet();
 			if ( $tasks instanceof StatusValue ) {
 				$data['task-preview'] = [ 'error' => Status::wrap( $tasks )->getMessage()->parse() ];
