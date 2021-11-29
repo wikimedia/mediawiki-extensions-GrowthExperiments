@@ -57,11 +57,10 @@ class NewcomerTasksUserOptionsLookup {
 	public function getTaskTypeFilter( UserIdentity $user ): array {
 		$taskTypes = $this->getJsonListOption( $user, SuggestedEdits::TASKTYPES_PREF );
 		// Filter out invalid task types for the user and use defaults based on user options.
-		if ( $taskTypes !== null ) {
-			return $this->filterNonExistentTaskTypes( $this->convertTaskTypes( $taskTypes, $user ) );
-		} else {
-			return $this->convertTaskTypes( $this->getDefaultTaskTypes( $user ), $user );
+		if ( !$taskTypes ) {
+			$taskTypes = $this->getDefaultTaskTypes( $user );
 		}
+		return $this->filterNonExistentTaskTypes( $this->convertTaskTypes( $taskTypes, $user ) );
 	}
 
 	/**
@@ -140,7 +139,7 @@ class NewcomerTasksUserOptionsLookup {
 		if ( $this->areImageRecommendationsEnabled( $user ) ) {
 			return [ ImageRecommendationTaskTypeHandler::TASK_TYPE_ID ];
 		} else {
-			return $this->filterNonExistentTaskTypes( SuggestedEdits::DEFAULT_TASK_TYPES );
+			return SuggestedEdits::DEFAULT_TASK_TYPES;
 		}
 	}
 
