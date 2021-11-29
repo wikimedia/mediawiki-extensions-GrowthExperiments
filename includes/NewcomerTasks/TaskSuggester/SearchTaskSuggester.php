@@ -15,6 +15,7 @@ use GrowthExperiments\Util;
 use ISearchResultSet;
 use MediaWiki\Cache\LinkBatchFactory;
 use MediaWiki\User\UserIdentity;
+use Message;
 use MultipleIterator;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
@@ -163,14 +164,22 @@ abstract class SearchTaskSuggester implements TaskSuggester, LoggerAwareInterfac
 		$matchIterator = new MultipleIterator( MultipleIterator::MIT_NEED_ANY |
 			MultipleIterator::MIT_KEYS_ASSOC );
 
-		$taskTypes = [];
+		$taskTypes = $invalidTaskTypes = [];
 		foreach ( $taskTypeFilter as $taskTypeId ) {
 			$taskType = $this->taskTypes[$taskTypeId] ?? null;
-			if ( !$taskType ) {
-				return StatusValue::newFatal( wfMessage( 'growthexperiments-newcomertasks-invalid-tasktype',
-					$taskTypeId ) );
+			if ( $taskType instanceof TaskType ) {
+				$taskTypes[] = $taskType;
+			} else {
+				$invalidTaskTypes[] = $taskTypeId;
 			}
-			$taskTypes[] = $taskType;
+		}
+
+		if ( !$taskTypes ) {
+			return StatusValue::newFatal(
+				wfMessage( 'growthexperiments-newcomertasks-invalid-tasktype',
+					Message::listParam( $invalidTaskTypes, 'comma' )
+				)
+			);
 		}
 
 		$queries = $this->searchStrategy->getQueries(
