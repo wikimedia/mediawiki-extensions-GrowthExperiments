@@ -283,6 +283,8 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-culture": "Kultur",
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regionen",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Ungültige Konfiguration der Bearbeitungsvorschläge: Falsche Struktur",
+	"growthexperiments-homepage-suggestededits-config-notinteger": "Ungültige Konfiguration der vorgeschlagenen Bearbeitungen für Aufgabentyp „$1“: „$2“ muss eine Integer-Zahl sein",
+	"growthexperiments-homepage-suggestededits-config-toosmall": "Ungültige Konfiguration der vorgeschlagenen Bearbeitungen für Aufgabentyp „$1“: „$2“ muss größer sein als $3",
 	"growthexperiments-homepage-suggestededits-config-fieldarray": "Ungültige Konfiguration der vorgeschlagenen Bearbeitungen für Aufgabentyp „$1“: „$2“ muss ein Array sein",
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "Ungültige Konfiguration der vorgeschlagenen Bearbeitungen für Aufgabentyp „$1“ Feld „$2“: maximal $3 Elemente erlaubt",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Ungültige Konfiguration der Bearbeitungsvorschläge: Ungültige ID „$1“ - darf nur a-z, 0-9 und „-“ (Minus) enthalten",

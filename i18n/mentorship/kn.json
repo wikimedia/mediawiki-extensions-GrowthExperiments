@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"ಮಲ್ನಾಡಾಚ್ ಕೊಂಕ್ಣೊ"
+		]
+	},
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "ಬಳಕೆದಾರರ ಹೆಸರು",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "ಹಿಂದಿರುಗಿಸಲ್ಪಟ್ಟ ಸಂಪಾದನೆಗಳ ಸಂಖ್ಯೆ",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "ತಡೆಹಿಡಿಯುವಿಕೆಗಳ ಸಂಖ್ಯೆ",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "ಸಂಪಾದನೆಗಳ ಸಂಖ್ಯೆ",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "ನೊಂದಣಿ ದಿನಾಂಕ",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "ಶೋಧಕಗಳು",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "ಸಂಪಾದನೆಗಳ ಸಂಖ್ಯೆ",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "ಕನಿಷ್ಠ",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "ಗರಿಷ್ಠ",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "ಅತ್ಯಂತ ಇತ್ತೀಚಿನ ಸಂಪಾದನೆ",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "ಇತ್ತೀಚಿನ ದಿನಗಳು",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "ಇತ್ತೀಚಿನ ತಿಂಗಳುಗಳು",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "ಹುಡುಕು",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "$1 ಹಿಂದೆ ಸಕ್ರಿಯ",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "ಅಜ್ಞಾತ",
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "ವ್ಯವಸ್ಥೆಗಳು",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "ಸಕ್ರಿಯ",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "ರದ್ದುಮಾಡಿ",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "ದಿನಗಳು",
+	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-headline": "ಇತರ ಕ್ರಿಯೆಗಳು",
+	"growthexperiments-notification-body-mentee-claimed": "ಕಾರಣ: $1"
+}
