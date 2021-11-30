@@ -27,18 +27,24 @@ class SubpageImageRecommendationProvider
 	/** @var ImageRecommendationMetadataProvider */
 	private $metadataProvider;
 
+	/** @var AddImageSubmissionHandler */
+	private $imageSubmissionHandler;
+
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param RecommendationProvider $fallbackRecommendationProvider
 	 * @param ImageRecommendationMetadataProvider $metadataProvider
+	 * @param AddImageSubmissionHandler $imageSubmissionHandler
 	 */
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
 		RecommendationProvider $fallbackRecommendationProvider,
-		ImageRecommendationMetadataProvider $metadataProvider
+		ImageRecommendationMetadataProvider $metadataProvider,
+		AddImageSubmissionHandler $imageSubmissionHandler
 	) {
 		parent::__construct( $wikiPageFactory, $fallbackRecommendationProvider );
 		$this->metadataProvider = $metadataProvider;
+		$this->imageSubmissionHandler = $imageSubmissionHandler;
 	}
 
 	/** @inheritDoc */
@@ -59,8 +65,14 @@ class SubpageImageRecommendationProvider
 			// This is the format used by the Image Suggestions API. It is not really useful
 			// as a serialization format but easy to obtain for actual wiki pages so allow it
 			// as a convenience.
-			return ServiceImageRecommendationProvider::processApiResponseData( $title,
-				$title->getPrefixedText(), $data, $this->metadataProvider, $suggestionFilters );
+			return ServiceImageRecommendationProvider::processApiResponseData(
+				$title,
+				$title->getPrefixedText(),
+				$data,
+				$this->metadataProvider,
+				$this->imageSubmissionHandler,
+				$suggestionFilters
+			);
 		} else {
 			return ImageRecommendation::fromArray( $data );
 		}
@@ -77,7 +89,8 @@ class SubpageImageRecommendationProvider
 				return new static(
 					$services->getWikiPageFactory(),
 					$recommendationProvider,
-					$growthServices->getImageRecommendationMetadataProvider()
+					$growthServices->getImageRecommendationMetadataProvider(),
+					$growthServices->getAddImageSubmissionHandler()
 				);
 			}
 		);

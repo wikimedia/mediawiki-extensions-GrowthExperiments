@@ -97,6 +97,14 @@
 				"GrowthExperimentsMentorManager",
 				"JobQueueGroup"
 			]
+		},
+		"growthinvalidateimagerecommendation": {
+			"class": "GrowthExperiments\\Api\\ApiInvalidateImageRecommendation",
+			"services": [
+				"GrowthExperimentsAddImageSubmissionHandler",
+				"GrowthExperimentsTaskSuggesterFactory",
+				"GrowthExperimentsNewcomerTasksUserOptionsLookup"
+			]
 		}
 	},
 	"APIListModules": {

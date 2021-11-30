@@ -108,6 +108,7 @@ AddImageArticleTarget.prototype.afterSurfaceReady = function () {
 		// Ideally, this error would happen sooner so the user doesn't have to wait for VE
 		// to load. There isn't really a way to differentiate between images in the article
 		// and transcluded images without loading VE and loading the parsoid HTML, though.
+		this.invalidateRecommendation();
 		StructuredTaskPreEdit.showErrorDialogOnFailure();
 	}
 };
@@ -639,6 +640,17 @@ AddImageArticleTarget.prototype.getSaveOptions = function () {
 		saveOptions = this.constructor.super.prototype.getSaveOptions.call( this );
 	saveOptions.summary = editSummaryAutoComment;
 	return saveOptions;
+};
+
+/**
+ * Invalidate the current task via growthinvalidateimagerecommendation API so that users don't see
+ * the invalid task in their task queues.
+ */
+AddImageArticleTarget.prototype.invalidateRecommendation = function () {
+	new mw.Api().postWithToken( 'csrf', {
+		action: 'growthinvalidateimagerecommendation',
+		title: suggestedEditSession.getCurrentTitle().getNameText()
+	} );
 };
 
 module.exports = AddImageArticleTarget;

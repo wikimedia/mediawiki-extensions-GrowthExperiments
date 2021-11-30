@@ -22,6 +22,7 @@ use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\QuitMentorshipFactory;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
 use GrowthExperiments\Mentorship\Store\MentorStore;
+use GrowthExperiments\NewcomerTasks\AddImage\AddImageSubmissionHandler;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataProvider;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationMetadataService;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationProvider;
@@ -278,6 +279,10 @@ class GrowthExperimentsServices {
 
 	public function getLinkRecommendationSubmissionLogFactory(): LinkRecommendationSubmissionLogFactory {
 		return $this->coreServices->get( 'GrowthExperimentsLinkRecommendationSubmissionLogFactory' );
+	}
+
+	public function getAddImageSubmissionHandler(): AddImageSubmissionHandler {
+		return $this->coreServices->get( 'GrowthExperimentsAddImageSubmissionHandler' );
 	}
 
 }

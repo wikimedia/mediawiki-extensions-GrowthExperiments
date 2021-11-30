@@ -10,7 +10,9 @@ use IteratorAggregate;
 use MediaWiki\Json\JsonUnserializable;
 use MediaWiki\Json\JsonUnserializableTrait;
 use MediaWiki\Json\JsonUnserializer;
+use MediaWiki\Page\ProperPageIdentity;
 use OutOfBoundsException;
+use Title;
 use Traversable;
 use Wikimedia\Assert\Assert;
 
@@ -248,6 +250,21 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonUnserial
 		$taskSet = new self( $tasks, $json['totalCount'], $json['offset'], $filters, $invalidTasks );
 		$taskSet->setQualityGateConfig( $json['qualityGateConfig'] );
 		return $taskSet;
+	}
+
+	/**
+	 * Check whether the task set contains a task for the specified page
+	 *
+	 * @param ProperPageIdentity $page
+	 * @return bool
+	 */
+	public function containsPage( ProperPageIdentity $page ): bool {
+		foreach ( $this->tasks as $task ) {
+			if ( Title::newFromLinkTarget( $task->getTitle() )->isSamePageAs( $page ) ) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

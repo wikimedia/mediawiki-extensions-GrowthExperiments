@@ -10,6 +10,7 @@ use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\Linker\LinkTarget;
 use RequestContext;
 use StatusValue;
+use Title;
 use TitleFactory;
 use TitleValue;
 use Wikimedia\Assert\Assert;
@@ -45,6 +46,9 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	/** @var ImageRecommendationMetadataProvider */
 	private $metadataProvider;
 
+	/** @var AddImageSubmissionHandler */
+	private $imageSubmissionHandler;
+
 	/** @var int|null */
 	private $requestTimeout;
 
@@ -60,6 +64,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	 * @param string $wikiProject Wiki project (e.g. 'wikipedia')
 	 * @param string $wikiLanguage Wiki language code
 	 * @param ImageRecommendationMetadataProvider $metadataProvider Image metadata provider
+	 * @param AddImageSubmissionHandler $imageSubmissionHandler
 	 * @param int|null $requestTimeout Service request timeout in seconds.
 	 * @param bool $useTitles Use titles (the /:wiki/:lang/pages/:title API endpoint)
 	 *   instead of IDs (the /:wiki/:lang/pages endpoint)?
@@ -73,6 +78,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		string $wikiProject,
 		string $wikiLanguage,
 		ImageRecommendationMetadataProvider $metadataProvider,
+		AddImageSubmissionHandler $imageSubmissionHandler,
 		?int $requestTimeout,
 		bool $useTitles = false
 	) {
@@ -84,6 +90,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		$this->wikiProject = $wikiProject;
 		$this->wikiLanguage = $wikiLanguage;
 		$this->metadataProvider = $metadataProvider;
+		$this->imageSubmissionHandler = $imageSubmissionHandler;
 		$this->requestTimeout = $requestTimeout;
 		$this->useTitles = $useTitles;
 	}
@@ -164,7 +171,12 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 
 		$startTime = microtime( true );
 		$responseData = self::processApiResponseData(
-			$title, $titleText, $data, $this->metadataProvider, $taskType->getSuggestionFilters()
+			$title,
+			$titleText,
+			$data,
+			$this->metadataProvider,
+			$this->imageSubmissionHandler,
+			$taskType->getSuggestionFilters()
 		);
 
 		$this->statsdDataFactory->timing(
@@ -183,6 +195,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 	 * @param string $titleText Title text, for logging.
 	 * @param array $data API response body
 	 * @param ImageRecommendationMetadataProvider $metadataProvider
+	 * @param AddImageSubmissionHandler $imageSubmissionHandler
 	 * @param array $suggestionFilters
 	 * @return ImageRecommendation|StatusValue
 	 * @throws \MWException
@@ -192,6 +205,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 		string $titleText,
 		array $data,
 		ImageRecommendationMetadataProvider $metadataProvider,
+		AddImageSubmissionHandler $imageSubmissionHandler,
 		array $suggestionFilters = []
 	) {
 		$titleTextSafe = strip_tags( $titleText );
@@ -277,6 +291,9 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 					);
 				}
 			}
+			$imageSubmissionHandler->invalidateRecommendation(
+				Title::newFromLinkTarget( $title )->toPageIdentity()
+			);
 			return $status;
 		}
 		// If $status is bad but $images is not empty (fetching some but not all images failed),

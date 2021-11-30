@@ -12,5 +12,7 @@
 	"apihelp-growthsetmentor-summary": "{{doc-apihelp-summary|growthsetmentor}}",
 	"apihelp-growthsetmentor-param-mentee": "{{doc-apihelp-param|growthsetmentor|mentee}}",
 	"apihelp-growthsetmentor-param-mentor": "{{doc-apihelp-param|growthsetmentor|mentor}}",
-	"apihelp-growthsetmentor-param-reason": "{{doc-apihelp-param|growthsetmentor|reason}}"
+	"apihelp-growthsetmentor-param-reason": "{{doc-apihelp-param|growthsetmentor|reason}}",
+	"apihelp-growthinvalidateimagerecommendation-summary": "{{doc-apihelp-summary|growthinvalidateimagerecommendation}}",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "{{doc-apihelp-param|growthinvalidateimagerecommendation|title}}"
 }

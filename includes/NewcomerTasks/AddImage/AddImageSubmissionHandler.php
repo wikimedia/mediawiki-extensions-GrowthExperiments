@@ -118,21 +118,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 		// Remove this image from being recommended in the future, unless it was rejected with
 		// one of the "not sure" options.
 		if ( $accepted || array_diff( $reasons, self::REJECTION_REASONS_UNDECIDED ) ) {
-			/** @var CirrusSearch $cirrusSearch */
-			$cirrusSearch = ( $this->cirrusSearchFactory )();
-			$cirrusSearch->resetWeightedTags( $page,
-				ImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX );
-			// Mark the task as "invalid" in a temporary cache, until the weighted tags in the search
-			// index are updated.
-			$this->cache->set(
-				ImageRecommendationFilter::makeKey(
-					$this->cache,
-					$imageRecommendation->getId(),
-					$page->getDBkey()
-				),
-				true,
-				$this->cache::TTL_MINUTE * 10
-			);
+			$this->invalidateRecommendation( $page );
 		}
 
 		$warnings = [];
@@ -231,6 +217,36 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 		}
 
 		return StatusValue::newGood( [ $data['accepted'], array_values( $data['reasons'] ) ] );
+	}
+
+	/**
+	 * Invalidate the recommendation for the specified page.
+	 *
+	 * This is used when the recommendation is accepted or rejected for decided reasons and when
+	 * the recommendation is invalid (for example: no images remain after filtering,
+	 * the article already has an image).
+	 *
+	 * @param ProperPageIdentity $page
+	 *
+	 * @see ApiInvalidateImageRecommendation::execute
+	 */
+	public function invalidateRecommendation( ProperPageIdentity $page ) {
+		$imageRecommendation = $this->configurationLoader->getTaskTypes()['image-recommendation'];
+		/** @var CirrusSearch $cirrusSearch */
+		$cirrusSearch = ( $this->cirrusSearchFactory )();
+		$cirrusSearch->resetWeightedTags( $page,
+			ImageRecommendationTaskTypeHandler::WEIGHTED_TAG_PREFIX );
+		// Mark the task as "invalid" in a temporary cache, until the weighted tags in the search
+		// index are updated.
+		$this->cache->set(
+			ImageRecommendationFilter::makeKey(
+				$this->cache,
+				$imageRecommendation->getId(),
+				$page->getDBkey()
+			),
+			true,
+			$this->cache::TTL_MINUTE * 10
+		);
 	}
 
 }
