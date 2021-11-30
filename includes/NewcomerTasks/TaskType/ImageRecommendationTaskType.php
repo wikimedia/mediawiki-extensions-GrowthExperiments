@@ -2,6 +2,8 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
+use MediaWiki\Json\JsonUnserializer;
+
 class ImageRecommendationTaskType extends TaskType {
 
 	/** @see ::getMaxTasksPerDay */
@@ -101,6 +103,31 @@ class ImageRecommendationTaskType extends TaskType {
 	/** @inheritDoc */
 	public function getLearnMoreLink(): ?string {
 		return null;
+	}
+
+	/** @inheritDoc */
+	protected function toJsonArray(): array {
+		return parent::toJsonArray() + [
+			'settings' => [
+				'maxTasksPerDay' => $this->maxTasksPerDay,
+				'minimumCaptionCharacterLength' => $this->minimumCaptionCharacterLength,
+				'minimumImageSize' => $this->minimumImageSize,
+			],
+		];
+	}
+
+	/** @inheritDoc */
+	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+		$taskType = new ImageRecommendationTaskType(
+			$json['id'],
+			$json['difficulty'],
+			$json['settings'],
+			$json['extraData'],
+			self::getExcludedTemplatesTitleValues( $json ),
+			self::getExcludedCategoriesTitleValues( $json )
+		);
+		$taskType->setHandlerId( $json['handlerId'] );
+		return $taskType;
 	}
 
 }

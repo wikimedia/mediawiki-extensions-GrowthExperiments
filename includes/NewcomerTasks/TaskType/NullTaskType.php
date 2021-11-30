@@ -2,6 +2,8 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
+use MediaWiki\Json\JsonUnserializer;
+
 /**
  * A "fake" task type which only exists to reuse task type related search functionality
  * when searching for task type candidates which are not task types yet. i18n-related methods
@@ -27,6 +29,18 @@ class NullTaskType extends TaskType {
 	 */
 	public function getExtraSearchConditions(): string {
 		return $this->extraSearchConditions;
+	}
+
+	/** @inheritDoc */
+	public function toJsonArray(): array {
+		return parent::toJsonArray() + [
+			'extraSearchConditions' => $this->extraSearchConditions,
+		];
+	}
+
+	/** @inheritDoc */
+	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+		return new NullTaskType( $json['id'], $json['extraSearchConditions'] );
 	}
 
 }

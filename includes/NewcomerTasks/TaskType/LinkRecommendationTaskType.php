@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
+use MediaWiki\Json\JsonUnserializer;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
 class LinkRecommendationTaskType extends TaskType {
@@ -165,4 +166,35 @@ class LinkRecommendationTaskType extends TaskType {
 	public function getQualityGateIds(): array {
 		return [ 'dailyLimit' ];
 	}
+
+	/** @inheritDoc */
+	protected function toJsonArray(): array {
+		return parent::toJsonArray() + [
+				'settings' => [
+					'minimumTasksPerTopic' => $this->minimumTasksPerTopic,
+					'minimumLinksPerTask' => $this->minimumLinksPerTask,
+					'minimumLinkScore' => $this->minimumLinkScore,
+					'maximumLinksPerTask' => $this->maximumLinksPerTask,
+					'minimumTimeSinceLastEdit' => $this->minimumTimeSinceLastEdit,
+					'minimumWordCount' => $this->minimumWordCount,
+					'maximumWordCount' => $this->maximumWordCount,
+					'maxTasksPerDay' => $this->maxTasksPerDay,
+				],
+			];
+	}
+
+	/** @inheritDoc */
+	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+		$taskType = new LinkRecommendationTaskType(
+			$json['id'],
+			$json['difficulty'],
+			$json['settings'],
+			$json['extraData'],
+			self::getExcludedTemplatesTitleValues( $json ),
+			self::getExcludedCategoriesTitleValues( $json )
+		);
+		$taskType->setHandlerId( $json['handlerId'] );
+		return $taskType;
+	}
+
 }
