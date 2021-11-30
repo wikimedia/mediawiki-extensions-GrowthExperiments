@@ -8,6 +8,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\DecoratingTaskSuggesterFactory
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
 use HashBagOStuff;
+use MediaWiki\Json\JsonCodec;
 use MediaWikiUnitTestCase;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
@@ -36,7 +37,8 @@ class DecoratingTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 					new \WANObjectCache( [ 'cache' => new HashBagOStuff() ] ),
 					$this->getMockBuilder( TaskSetListener::class )
 						->disableOriginalConstructor()
-						->getMock()
+						->getMock(),
+					new JsonCodec(),
 				],
 			],
 		] );
