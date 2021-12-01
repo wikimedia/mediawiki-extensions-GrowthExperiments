@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pikne"
+		]
+	},
+	"growthexperiments-mentor-dashboard-title": "Mentori andmelaud",
+	"growthexperiments-mentor-dashboard-disabled": "Mentori andmelaud pole selles vikis lubatud.",
+	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Kuidas juhendatavat võtta",
+	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-claim-mentee": "Võta juhendatav",
+	"echo-category-title-ge-mentorship": "Mentorlus",
+	"echo-pref-tooltip-ge-mentorship": "Teavitused, mis on seotud mentorluse funktsioonidega, mida haldab projekti Growth meeskond. Saad teavituse, kui keegi võttis sind enda juhendatavaks või kui keegi teine võttis sinu juhendatava enda juhendatavaks.",
+	"growthexperiments-notification-header-mentee-claimed": "$1 {{GENDER:$2|võttis}} sinu {{GENDER:$3|juhendatava}} $3 enda juhendatavaks.",
+	"growthexperiments-notification-body-mentee-claimed": "Põhjus: $1",
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Mis on juhendatava võtmine?"
+}
