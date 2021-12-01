@@ -21,18 +21,18 @@ class ImageRecommendationTaskType extends TaskType {
 		]
 	];
 
+	/** @inheritDoc */
+	protected const IS_MACHINE_SUGGESTION = true;
+
+	/** @inheritDoc */
+	protected const IS_MOBILE_ONLY = true;
+
 	/** @var int */
 	protected $maxTasksPerDay;
 	/** @var int */
 	protected $minimumCaptionCharacterLength;
 	/** @var array */
 	protected $minimumImageSize;
-
-	/** @var bool */
-	protected $isMachineSuggestion = true;
-
-	/** @var bool */
-	protected $isMobileOnly = true;
 
 	/**
 	 * @inheritDoc
