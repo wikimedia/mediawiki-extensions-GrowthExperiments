@@ -7,6 +7,9 @@ use ArrayIterator;
 use BadMethodCallException;
 use Countable;
 use IteratorAggregate;
+use MediaWiki\Json\JsonUnserializable;
+use MediaWiki\Json\JsonUnserializableTrait;
+use MediaWiki\Json\JsonUnserializer;
 use OutOfBoundsException;
 use Traversable;
 use Wikimedia\Assert\Assert;
@@ -16,7 +19,9 @@ use Wikimedia\Assert\Assert;
  * Used as a convenience class for queries with limit/offset to pass along some metadata
  * about the full result set (such as offset or total result count).
  */
-class TaskSet implements IteratorAggregate, Countable, ArrayAccess {
+class TaskSet implements IteratorAggregate, Countable, ArrayAccess, JsonUnserializable {
+
+	use JsonUnserializableTrait;
 
 	/** @var Task[] */
 	private $tasks;
@@ -212,6 +217,37 @@ class TaskSet implements IteratorAggregate, Countable, ArrayAccess {
 	 */
 	public function getInvalidTasks(): array {
 		return $this->invalidTasks;
+	}
+
+	/** @inheritDoc */
+	protected function toJsonArray(): array {
+		return [
+			'tasks' => array_map( static function ( Task $task ) {
+				return $task->jsonSerialize();
+			}, $this->tasks ),
+			'invalidTasks' => array_map( static function ( Task $task ) {
+				return $task->jsonSerialize();
+			}, $this->invalidTasks ),
+			'totalCount' => $this->totalCount,
+			'offset' => $this->offset,
+			'filters' => $this->filters->jsonSerialize(),
+			'qualityGateConfig' => $this->qualityGateConfig,
+			// debug data is not worth serializing
+		];
+	}
+
+	/** @inheritDoc */
+	public static function newFromJsonArray( JsonUnserializer $unserializer, array $json ) {
+		$tasks = array_map( static function ( array $task ) use ( $unserializer ) {
+			return $unserializer->unserialize( $task, Task::class );
+		}, $json['tasks'] );
+		$invalidTasks = array_map( static function ( array $task ) use ( $unserializer ) {
+			return $unserializer->unserialize( $task, Task::class );
+		}, $json['invalidTasks'] );
+		$filters = $unserializer->unserialize( $json['filters'], TaskSetFilters::class );
+		$taskSet = new self( $tasks, $json['totalCount'], $json['offset'], $filters, $invalidTasks );
+		$taskSet->setQualityGateConfig( $json['qualityGateConfig'] );
+		return $taskSet;
 	}
 
 }
