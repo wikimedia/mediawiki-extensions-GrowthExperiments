@@ -3,6 +3,7 @@
 namespace GrowthExperiments\MentorDashboard\Modules;
 
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
+use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\MentorManager;
 use Html;
 use IContextSource;
@@ -22,22 +23,28 @@ class MentorTools extends BaseModule {
 	/** @var MentorStatusManager */
 	private $mentorStatusManager;
 
+	/** @var MentorWeightManager */
+	private $mentorWeightManager;
+
 	/**
 	 * @param string $name
 	 * @param IContextSource $ctx
 	 * @param MentorManager $mentorManager
 	 * @param MentorStatusManager $mentorStatusManager
+	 * @param MentorWeightManager $mentorWeightManager
 	 */
 	public function __construct(
 		$name,
 		IContextSource $ctx,
 		MentorManager $mentorManager,
-		MentorStatusManager $mentorStatusManager
+		MentorStatusManager $mentorStatusManager,
+		MentorWeightManager $mentorWeightManager
 	) {
 		parent::__construct( $name, $ctx );
 
 		$this->mentorManager = $mentorManager;
 		$this->mentorStatusManager = $mentorStatusManager;
+		$this->mentorWeightManager = $mentorWeightManager;
 	}
 
 	/**
@@ -91,6 +98,46 @@ class MentorTools extends BaseModule {
 						],
 						$this->maybeGetAwayMessage()
 					)
+				] )
+			),
+			Html::rawElement(
+				'div',
+				[ 'class' => self::BASE_MODULE_CSS_CLASS . '-mentor-weight' ],
+				implode( "\n", [
+					Html::element(
+						'h4',
+						[],
+						$this->msg( 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline' )
+							->text()
+					),
+					// keep in sync with ext.growthExperiments.MentorDashboard/MentorTools.js
+					new DropdownInputWidget( [
+						'id' => 'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-dropdown',
+						'infusable' => true,
+						'value' => $this->mentorWeightManager->getWeightForMentor(
+							$this->getUser()
+						),
+						'options' => [
+							[
+								'data' => MentorWeightManager::WEIGHT_LOW,
+								'label' => $this->msg(
+									'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low'
+								)->text(),
+							],
+							[
+								'data' => MentorWeightManager::WEIGHT_NORMAL,
+								'label' => $this->msg(
+									'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium'
+								)->text(),
+							],
+							[
+								'data' => MentorWeightManager::WEIGHT_HIGH,
+								'label' => $this->msg(
+									'growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high'
+								)->text(),
+							],
+						]
+					] )
 				] )
 			),
 			Html::rawElement(
