@@ -65,7 +65,7 @@ class LinkRecommendationTaskType extends TaskType {
 	public function __construct(
 		$id,
 		$difficulty,
-		array $settings,
+		array $settings = [],
 		array $extraData = [],
 		array $excludedTemplates = [],
 		array $excludedCategories = []
