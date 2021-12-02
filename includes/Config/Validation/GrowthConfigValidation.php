@@ -59,7 +59,11 @@ class GrowthConfigValidation implements IConfigValidator {
 			'GEInfoboxTemplates' => [
 				'type' => 'array',
 				'maxSize' => self::MAX_TEMPLATES_IN_COLLECTION,
-			]
+			],
+			'GEInfoboxTemplatesTest' => [
+				'type' => 'array',
+				'maxSize' => self::MAX_TEMPLATES_IN_COLLECTION,
+			],
 		];
 	}
 
