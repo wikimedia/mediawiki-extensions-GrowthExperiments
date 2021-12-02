@@ -1320,9 +1320,13 @@ class HomepageHooks implements
 		$configurationLoader = $growthServices->getNewcomerTasksConfigurationLoader();
 		$taskTypes = $configurationLoader->getTaskTypes();
 		$infoboxTemplates = $growthServices->getGrowthWikiConfig()->get( 'GEInfoboxTemplates' );
+		$infoboxTemplatesTest = $growthServices->getGrowthWikiConfig()->get( 'GEInfoboxTemplatesTest' );
 		$templateCollectionFeature = new TemplateCollectionFeature(
 			'infobox', $infoboxTemplates, $mwServices->getTitleFactory()
 		);
+		if ( $infoboxTemplatesTest ) {
+			$templateCollectionFeature->addCollection( 'infoboxtest', $infoboxTemplatesTest );
+		}
 		foreach ( $taskTypes as $taskType ) {
 			if ( $taskType instanceof TemplateBasedTaskType ) {
 				$templateCollectionFeature->addCollection( $taskType->getId(), $taskType->getTemplates() );
