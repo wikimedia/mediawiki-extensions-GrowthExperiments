@@ -1455,9 +1455,9 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.donorSignupCampaign.styles": {
+		"ext.growthExperiments.DonorSignupCampaign.styles": {
 			"styles": [
-				"signup/campaign.less"
+				"ext.growthExperiments.DonorSignupCampaign/DonorSignupCampaign.less"
 			],
 			"targets": [
 				"desktop",
