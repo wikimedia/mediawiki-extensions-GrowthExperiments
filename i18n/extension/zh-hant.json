@@ -18,6 +18,7 @@
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code>應該是<code>$2</code>，但是<code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "內容模型不匹配：GrowthExperiments 的配置檔案必須是 JSON 內容模型，但是目前配置檔案的內容模型是 $1",
 	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "無效的任務類型處理程序ID：<code>$1</code>不是有效的數值。",
+	"growthexperiments-config-validator-array-toobig": "$1的項目太多（最多 $2 個）",
 	"growthexperiments-edit-config-disabled": "社群配置目前已禁用。",
 	"growthexperiments-edit-config-title": "編輯 Growth 配置",
 	"growthexperiments-edit-config-last-edit": "[[$3]]：最近由[[User:$1|$1]]於$2更新（[$4 差異]）。",

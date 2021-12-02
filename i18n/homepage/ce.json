@@ -35,6 +35,7 @@
 	"growthexperiments-homepage-suggestededits-pager-end": "Чаккхе",
 	"growthexperiments-homepage-suggestededits-edit-card": "Нисйе",
 	"growthexperiments-homepage-suggestededits-tasktype-label-link-recommendation": "Кхечу агӀонашна тӀетоха хьажоргаш",
+	"growthexperiments-homepage-suggestededits-tasktype-label-image-recommendation": "Кховдийна долу сурт тӀетоха",
 	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Цул совнаха хаа",
 	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3—5 минот",
 	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5—10 минот",
@@ -59,6 +60,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Боца йаззам шорбе",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Кхечу агӀонашна тӀетоха хьажоргаш",
 	"growthexperiments-homepage-suggestededits-tasktype-name-link-recommendation": "Кхечу агӀонашна тӀетоха хьажоргаш",
+	"growthexperiments-homepage-suggestededits-tasktype-name-image-recommendation": "Кховдийна долу сурт тӀетоха",
 	"growthexperiments-homepage-suggestededits-topic-name-music": "Музыка",
 	"growthexperiments-homepage-suggestededits-topic-name-video-games": "Видеоловзаргаш",
 	"growthexperiments-homepage-suggestededits-topic-name-performing-arts": "Музыка, театр, хелхарш",
@@ -106,6 +108,7 @@
 	"growthexperiments-structuredtask-editmode-selection-label": "Редактор кхечутӀеерзор",
 	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "ДӀаалар",
 	"growthexperiments-structuredtask-editmode-selection-visual": "БӀаьран тадар",
+	"growthexperiments-addimage-inspector-title": "Кховдийна долу сурт тӀетоха",
 	"growthexperiments-addimage-skip-dialog-cancel": "Цаоьшу",
 	"growthexperiments-structuredtask-user-error-login-cta": "ЧугӀо"
 }
