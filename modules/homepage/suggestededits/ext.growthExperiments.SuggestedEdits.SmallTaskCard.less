@@ -22,7 +22,7 @@
 		height: 88px;
 		flex-grow: 0;
 		flex-shrink: 0;
-		// background-image is set dynmically
+		// background-image is set dynamically
 		background-repeat: no-repeat;
 		background-position: center;
 		background-size: cover;
@@ -33,7 +33,13 @@
 
 			.mw-ge-tasktype-image-recommendation & {
 				/* @embed */
-				background: url( ../../../images/addimage/placeholder-with-question-mark.svg ) no-repeat center/40px, @wmui-color-base30;
+				background: url( ../../../images/addimage/placeholder-with-question-mark-ltr.svg ) no-repeat center/40px, @wmui-color-base30;
+
+				html:lang( he ) & {
+					// Use LTR asset for Hebrew since it contains a question mark
+					/* @noflip */
+					background: url( ../../../images/addimage/placeholder-with-question-mark-ltr.svg ) no-repeat center/40px, @wmui-color-base30;
+				}
 			}
 		}
 
