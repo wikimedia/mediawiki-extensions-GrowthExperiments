@@ -471,9 +471,9 @@
 				"oojs-ui-widgets"
 			]
 		},
-		"ext.growthExperiments.welcomeSurvey.styles": {
+		"ext.growthExperiments.WelcomeSurvey.styles": {
 			"styles": [
-				"welcomesurvey/ext.growthExperiments.welcomeSurvey.less"
+				"ext.growthExperiments.WelcomeSurvey/WelcomeSurvey.less"
 			],
 			"targets": [
 				"desktop",
@@ -1141,12 +1141,12 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.welcomeSurveyLanguage": {
-			"localBasePath": "modules/welcomesurvey",
-			"remoteExtPath": "extensions/GrowthExperiments/modules/welcomesurvey",
+		"ext.growthExperiments.WelcomeSurvey": {
+			"localBasePath": "modules/ext.growthExperiments.WelcomeSurvey",
+			"remoteExtPath": "extensions/GrowthExperiments/modules/ext.growthExperiments.WelcomeSurvey",
 			"packageFiles": [
-				"ext.growthExperiments.welcomeSurveyLanguage.js",
-				"ext.growthExperiments.ULSTagMultiselectWidget.js"
+				"index.js",
+				"ULSTagMultiselectWidget.js"
 			],
 			"targets": [
 				"desktop",

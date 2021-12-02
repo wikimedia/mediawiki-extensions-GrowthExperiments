@@ -57,7 +57,7 @@ class SpecialWelcomeSurvey extends FormSpecialPage {
 	 */
 	public function execute( $par ) {
 		$this->requireLogin();
-		$this->getOutput()->addModuleStyles( 'ext.growthExperiments.welcomeSurvey.styles' );
+		$this->getOutput()->addModuleStyles( 'ext.growthExperiments.WelcomeSurvey.styles' );
 		parent::execute( $par );
 	}
 
