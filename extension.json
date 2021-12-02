@@ -1427,8 +1427,8 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.confirmEmail.createAccount.styles": {
-			"styles": "confirmemail/ext.confirmEmail.createAccount.less",
+		"ext.growthExperiments.ConfirmEmail.styles": {
+			"styles": "ext.growthExperiments.ConfirmEmail/ConfirmEmail.less",
 			"targets": [
 				"desktop",
 				"mobile"
@@ -1464,8 +1464,8 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.confirmEmail.createAccount": {
-			"scripts": "confirmemail/ext.confirmEmail.createAccount.js",
+		"ext.growthExperiments.ConfirmEmail": {
+			"scripts": "ext.growthExperiments.ConfirmEmail/index.js",
 			"messages": [
 				"growthexperiments-confirmemail-emailwarning"
 			],
