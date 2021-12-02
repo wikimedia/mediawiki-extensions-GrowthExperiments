@@ -285,10 +285,10 @@
 		var seModuleActionData = mw.config.get( 'wgGEHomepageModuleActionData-suggested-edits' ) || {},
 			homepageModulesConfig = mw.config.get( 'homepagemodules' );
 		if ( this.taskQueue.length ) {
-			this.pager.setMessage(
-				this.queuePosition + 1,
-				seModuleActionData.taskCount || homepageModulesConfig[ 'suggested-edits' ][ 'task-count' ]
-			);
+			var totalCount = this.taskCount ||
+				seModuleActionData.taskCount ||
+				homepageModulesConfig[ 'suggested-edits' ][ 'task-count' ];
+			this.pager.setMessage( this.queuePosition + 1, totalCount );
 			this.pager.toggle( true );
 		} else {
 			this.pager.toggle( this.currentCard instanceof EditCardWidget );
