@@ -363,6 +363,18 @@ AddImageArticleTarget.prototype.onPaste = function ( e ) {
 	this.insertCaption( text );
 };
 
+/**
+ * Get the caption value
+ *
+ * @return {string}
+ */
+AddImageArticleTarget.prototype.getCaptionText = function () {
+	var surfaceModel = this.getSurface().getModel(),
+		documentDataModel = surfaceModel.getDocument(),
+		captionNode = documentDataModel.getNodesByType( 'mwGeRecommendedImageCaption' )[ 0 ];
+	return surfaceModel.getLinearFragment( captionNode.getRange() ).getText() || '';
+};
+
 /** @inheritDoc **/
 AddImageArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 	options.plugins = 'ge-task-image-recommendation';
@@ -370,7 +382,8 @@ AddImageArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 	options[ 'data-ge-task-image-recommendation' ] = JSON.stringify( {
 		filename: this.getSelectedSuggestion().image,
 		accepted: this.recommendationAccepted,
-		reasons: this.recommendationRejectionReasons
+		reasons: this.recommendationRejectionReasons,
+		caption: this.recommendationAccepted ? this.getCaptionText() : ''
 	} );
 	return this.constructor.super.prototype.save.call( this, doc, options, isRetry );
 };
@@ -382,7 +395,6 @@ AddImageArticleTarget.prototype.save = function ( doc, options, isRetry ) {
  */
 AddImageArticleTarget.prototype.getSummaryData = function () {
 	var imageData = this.getSelectedSuggestion(),
-		surfaceModel = this.getSurface().getModel(),
 		/** @type {mw.libs.ge.ImageRecommendationSummary} */
 		summaryData = {
 			filename: imageData.displayFilename,
@@ -391,10 +403,7 @@ AddImageArticleTarget.prototype.getSummaryData = function () {
 			caption: ''
 		};
 	if ( this.recommendationAccepted ) {
-		var documentDataModel = surfaceModel.getDocument(),
-			captionNode = documentDataModel.getNodesByType( 'mwGeRecommendedImageCaption' )[ 0 ],
-			caption = surfaceModel.getLinearFragment( captionNode.getRange() ).getText();
-		summaryData.caption = caption;
+		summaryData.caption = this.getCaptionText();
 	}
 	return summaryData;
 };
