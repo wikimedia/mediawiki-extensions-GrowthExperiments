@@ -1,6 +1,6 @@
 $( function () {
 	'use strict';
-	var ULSTagMultiselectWidget = require( './ext.growthExperiments.ULSTagMultiselectWidget.js' ),
+	var ULSTagMultiselectWidget = require( './ULSTagMultiselectWidget.js' ),
 		shouldUseLanguageInfoOverlay = OO.ui.isMobile() &&
 			mw.mobileFrontend.require( 'mobile.startup' ).languageInfoOverlay,
 		/** @type {OO.Router} */
