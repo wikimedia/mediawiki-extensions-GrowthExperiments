@@ -42,7 +42,7 @@ class ConfirmEmailHooks {
 		$context = RequestContext::getMain();
 
 		// Load JS that displays a message informing the user that a verification email is coming
-		$context->getOutput()->addModules( 'ext.growthExperiments.confirmEmail.createAccount' );
+		$context->getOutput()->addModules( 'ext.growthExperiments.ConfirmEmail' );
 
 		// If email field exists on the form, change email label from "(optional)" to "
 		// (recommended)", but only if email is optional
@@ -71,7 +71,7 @@ class ConfirmEmailHooks {
 				( $formDescriptor['capthaWord']['cssclass'] ?? '' ) . ' mw-ge-confirmemail-captcha';
 
 			$context->getOutput()->addModuleStyles(
-				'ext.growthExperiments.confirmEmail.createAccount.styles'
+				'ext.growthExperiments.ConfirmEmail.styles'
 			);
 		}
 	}
