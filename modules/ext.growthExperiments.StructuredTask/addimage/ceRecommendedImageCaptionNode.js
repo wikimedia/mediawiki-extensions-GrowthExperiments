@@ -55,6 +55,16 @@ CERecommendedImageCaptionNode.prototype.getCaptionLength = function () {
 };
 
 /**
+ * Get the length of the caption text without the trailing whitespace
+ * This is used during validation to prevent an empty string from being saved.
+ *
+ * @return {number}
+ */
+CERecommendedImageCaptionNode.prototype.getCaptionLengthWithoutTrailingWhitespace = function () {
+	return this.articleTarget.getCaptionText().trim().length;
+};
+
+/**
  * Check whether there's any text in the caption field.
  * This is called from mw.libs.ge.ce.AddImageLinearDeleteKeyDownHandler to determine whether the
  * default delete handler should be called and when CERecommendedImageCaptionNode is updated.
@@ -208,7 +218,7 @@ CERecommendedImageCaptionNode.prototype.hideWarningIfNeeded = function () {
  */
 CERecommendedImageCaptionNode.prototype.validateCaption = function () {
 	this.warnings = [];
-	if ( this.getCaptionLength() < MIN_CAPTION_LENGTH ) {
+	if ( this.getCaptionLengthWithoutTrailingWhitespace() < MIN_CAPTION_LENGTH ) {
 		this.warnings.push( this.getLengthWarning() );
 	}
 	// Update the warning if it's already shown
