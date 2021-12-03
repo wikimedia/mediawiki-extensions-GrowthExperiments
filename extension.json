@@ -1011,7 +1011,11 @@
 				"ext.growthExperiments.StructuredTask.desktop/addlink/RecommendedLinkToolbarDialogDesktop.js",
 				"ext.growthExperiments.StructuredTask.desktop/addimage/AddImageDesktopArticleTarget.js",
 				"ext.growthExperiments.StructuredTask.desktop/addimage/AddImageDesktopSaveDialog.js",
+				"ext.growthExperiments.StructuredTask.desktop/MinimizedToolbarDialogButton.js",
 				"utils/ext.growthExperiments.Utils.js"
+			],
+			"styles": [
+				"ext.growthExperiments.StructuredTask.desktop/MinimizedToolbarDialogButton.less"
 			],
 			"dependencies": [
 				"ext.growthExperiments.StructuredTask",
@@ -1019,7 +1023,8 @@
 			],
 			"messages": [
 				"growthexperiments-structuredtask-ve-machine-suggestions-mode-title",
-				"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button"
+				"growthexperiments-structuredtask-ve-machine-suggestions-mode-submit-button",
+				"growthexperiments-addlink-context-button-show-suggestion"
 			],
 			"targets": [
 				"desktop"

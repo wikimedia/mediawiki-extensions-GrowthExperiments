@@ -244,12 +244,19 @@
 	}
 
 	&-desktop {
+		transition: transform 500ms;
+
+		&--no-transition {
+			transition: unset;
+		}
+
 		.oo-ui-window-body {
 			padding: 0 16px 12px 16px;
 		}
 
 		.mw-ge-recommendedLinkToolbarDialog-progress {
 			padding-left: 20px;
+			flex-grow: 1;
 		}
 
 		.mw-ge-recommendedLinkToolbarDialog-introLabel {
@@ -328,6 +335,10 @@
 
 		&-anchor-end {
 			right: 30px;
+		}
+
+		&-closeButton {
+			opacity: @iconOpacity;
 		}
 	}
 
