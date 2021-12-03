@@ -22,14 +22,14 @@
 	NewcomerTaskLogger.prototype.log = function ( task, position ) {
 		var data;
 
-		if ( task.token ) {
+		if ( task.isTaskLogged ) {
 			// already logged
 			return task.token;
 		}
-		task.token = mw.user.generateRandomSessionId();
 		data = this.getLogData( task, position );
 		mw.track( 'event.NewcomerTask', data );
 		this.events.push( data );
+		task.isTaskLogged = true;
 		return task.token;
 	};
 

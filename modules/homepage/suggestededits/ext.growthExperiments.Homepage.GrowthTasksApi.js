@@ -46,6 +46,8 @@
 	 * @property {string|null|undefined} extract Article summary (from the RESTBase summary
 	 *   endpoint). Null when the article does not exist. Can be undefined due to lazy-loading, or
 	 *   when the wiki does not provide article summary information.
+	 * @property {string|null|undefined} token Newcomer task token. A unique identifier for the user
+	 *   and task for analytics purposes.
 	 * @property {number|null|undefined} pageviews Approximate number of page views in the last
 	 *   60 days. Null when the article does not exist, or when no views have been processed for
 	 *   that article yet. Can be undefined due to lazy-loading, or when the wiki does not provide
@@ -190,6 +192,7 @@
 					tasktype: item.tasktype,
 					difficulty: item.difficulty,
 					topics: item.topics || null,
+					token: item.token,
 					description: item.description || null,
 					qualityGateIds: item.qualityGateIds || [],
 					qualityGateConfig: item.qualityGateConfig || {}

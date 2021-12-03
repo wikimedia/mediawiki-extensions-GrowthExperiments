@@ -616,9 +616,6 @@ body.mw-special-Homepage {
 			}
 
 			.mw-ge-small-task-card {
-				margin-left: -8px;
-				margin-right: -8px;
-
 				&-image {
 					height: 80px;
 					width: 80px;
@@ -643,8 +640,19 @@ body.mw-special-Homepage {
 				}
 			}
 
-			.suggested-edits-preview-cta-button {
-				margin-top: 12px;
+			.suggested-edits-preview-footer {
+				width: 100%;
+
+				.suggested-edits-preview-cta-button {
+					// OOUI button is created in a span
+					display: block;
+					margin: 12px auto 0 auto;
+					max-width: 28.75em;
+					// OOUI button links are created in a nested element
+					& > a {
+						width: 100%;
+					}
+				}
 			}
 		}
 
