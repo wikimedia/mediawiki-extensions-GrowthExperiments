@@ -70,7 +70,7 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 		$this->getOutput()->addModuleStyles( [
 			'oojs-ui.styles.icons-interactions',
 			'ext.growthExperiments.icons',
-			'ext.growthExperiments.donorSignupCampaign.styles',
+			'ext.growthExperiments.DonorSignupCampaign.styles',
 		] );
 
 		$msgKey = $this->isRecurringDonorCampaign() ? 'recurringcampaign' : 'signupcampaign';
