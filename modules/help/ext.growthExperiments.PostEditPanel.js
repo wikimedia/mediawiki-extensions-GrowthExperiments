@@ -50,9 +50,10 @@
 	PostEditPanel.prototype.getSuccessMessage = function () {
 		var type,
 			messageKey,
-			$label;
+			$label,
+			hasMadeEdits = this.taskState === SuggestedEditSession.static.STATES.SAVED;
 
-		if ( this.taskState === SuggestedEditSession.static.STATES.SAVED ) {
+		if ( hasMadeEdits ) {
 			type = mw.config.get( 'wgEditSubmitButtonLabelPublish' ) ? 'published' : 'saved';
 			if ( mw.config.get( 'wgStableRevisionId' ) &&
 				mw.config.get( 'wgStableRevisionId' ) !== mw.config.get( 'wgRevisionId' )
@@ -78,7 +79,7 @@
 		$label = $( '<span>' ).append( mw.message( messageKey ).parse() );
 		return new OO.ui.MessageWidget( {
 			icon: 'check',
-			type: type === 'saved' ? 'success' : 'notice',
+			type: hasMadeEdits ? 'success' : 'notice',
 			classes: [ 'mw-ge-help-panel-postedit-message' ],
 			label: $label
 		} );
