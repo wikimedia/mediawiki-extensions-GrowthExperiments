@@ -335,5 +335,6 @@
 	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Forslag",
 	"growthexperiments-addimage-rejectiondialog-reason-notrelevant": "Billedet er ikke relevant",
 	"growthexperiments-addimage-rejectiondialog-reason-offensive": "Billedet er stødende",
-	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Jeg kan ikke læse sproget"
+	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Jeg kan ikke læse sproget",
+	"growthexperiments-addlink-daily-task-limit-exceeded-dialog-button": "Modtaget"
 }

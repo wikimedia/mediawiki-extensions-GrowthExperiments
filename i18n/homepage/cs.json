@@ -276,7 +276,7 @@
 	"growthexperiments-homepage-suggestededits-topic-group-name-geography": "Regiony",
 	"growthexperiments-homepage-suggestededits-config-wrongstructure": "Neplatná konfigurace editačních tipů: špatná struktura",
 	"growthexperiments-homepage-suggestededits-config-notinteger": "Neplatná konfigurace editačních tipů pro \"$1\": \"$2\" musí být číslo",
-	"growthexperiments-homepage-suggestededits-config-toosmall": "Neplatná konfigurace editačních tipů pro \"$1\": \"$2\" musí být větší, než $3",
+	"growthexperiments-homepage-suggestededits-config-toosmall": "Neplatná konfigurace editačních tipů pro „$1“: „$2“ musí být větší než $3",
 	"growthexperiments-homepage-suggestededits-config-fieldarray": "Neplatná konfigurace editačních tipů pro \"$1\": \"$2\" musí být pole",
 	"growthexperiments-homepage-suggestededits-config-arraymaxsize": "Neplatná konfigurace editačních tipů pro \"$1\", položka \"$2\": {{PLURAL:$3|povolen maximálně jeden prvek|povoleny maximálně $3 prvky|povoleno maximálně $3 prvků}}",
 	"growthexperiments-homepage-suggestededits-config-invalidid": "Neplatná konfigurace editačních tipů: neplatný identifikátor $1 - musí obsahovat pouze znaky a-z, 0-9 nebo - (spojovník)",
