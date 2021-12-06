@@ -64,7 +64,6 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\LocalSearchTaskSuggesterFactor
 use GrowthExperiments\NewcomerTasks\TaskSuggester\QualityGateDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\RemoteSearchTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\SearchStrategy\SearchStrategy;
-use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
@@ -582,13 +581,6 @@ return [
 			$services->getUserIdentityLookup(),
 			$services->getUserOptionsManager()
 		);
-	},
-
-	// deprecated, use GrowthExperimentsTaskSuggesterFactory directly
-	'GrowthExperimentsTaskSuggester' => static function ( MediaWikiServices $services ): TaskSuggester {
-		wfDeprecated( 'GrowthExperimentsTaskSuggester service', '1.35', 'GrowthExperiments' );
-		$taskSuggesterFactory = GrowthExperimentsServices::wrap( $services )->getTaskSuggesterFactory();
-		return $taskSuggesterFactory->create();
 	},
 
 	'GrowthExperimentsTaskSuggesterFactory' => static function (
