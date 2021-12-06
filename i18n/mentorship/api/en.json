@@ -18,5 +18,7 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Mentorship module is enabled",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "Mentorship module is fully disabled. This is normally set by the software and used for A/B testing.",
 	"apihelp-growthsetmenteestatus-param-state-optout": "Mentee opted out from mentorship; mentee/mentor relationship will be deleted, mentorship module will be replaced with a possibility to opt back in",
-	"apihelp-query+growthmenteestatus-summary": "Query current user's mentee status; see documentation of action=growthsetmentorweight for detailed information about individual statuses."
+	"apihelp-query+growthmenteestatus-summary": "Query current user's mentee status; see documentation of action=growthsetmentorweight for detailed information about individual statuses.",
+	"apihelp-query+growthmentormentee-summary": "Get all mentees assigned to a given mentor",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor to query mentees for"
 }

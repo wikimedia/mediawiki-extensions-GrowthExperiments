@@ -1,0 +1,74 @@
+<?php
+
+namespace GrowthExperiments\Tests;
+
+use ApiTestCase;
+use GrowthExperiments\GrowthExperimentsServices;
+use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\User\UserIdentity;
+
+/**
+ * @group API
+ * @group Database
+ * @group medium
+ * @coversDefaultClass \GrowthExperiments\Api\ApiQueryMentorMentee
+ */
+class ApiQueryMentorMenteeTest extends ApiTestCase {
+
+	/**
+	 * @covers ::execute
+	 */
+	public function testGetMenteesByName() {
+		$mentor = $this->getMutableTestUser()->getUserIdentity();
+		$mentees = [
+			$this->getMutableTestUser()->getUserIdentity(),
+			$this->getMutableTestUser()->getUserIdentity(),
+			$this->getMutableTestUser()->getUserIdentity()
+		];
+		$store = GrowthExperimentsServices::wrap( $this->getServiceContainer() )->getMentorStore();
+		foreach ( $mentees as $mentee ) {
+			$store->setMentorForUser( $mentee, $mentor, MentorStore::ROLE_PRIMARY );
+		}
+
+		$response = $this->doApiRequest(
+			[
+				'action' => 'query',
+				'list' => 'growthmentormentee',
+				'gemmmentor' => $mentor->getName(),
+			]
+		);
+		$this->assertEquals( $mentor->getName(), $response[0]['growthmentormentee']['mentor'] );
+		$this->assertArrayEquals(
+			array_map( static function ( UserIdentity $user ) {
+				return $user->getName();
+			}, $mentees ),
+			array_map( static function ( $el ) {
+				return $el['name'];
+			}, $response[0]['growthmentormentee']['mentees'] )
+		);
+		$this->assertArrayEquals(
+			array_map( static function ( UserIdentity $user ) {
+				return $user->getId();
+			}, $mentees ),
+			array_map( static function ( $el ) {
+				return $el['id'];
+			}, $response[0]['growthmentormentee']['mentees'] )
+		);
+	}
+
+	/**
+	 * @covers ::execute
+	 */
+	public function testNoMentees() {
+		$mentor = $this->getMutableTestUser()->getUserIdentity();
+		$response = $this->doApiRequest(
+			[
+				'action' => 'query',
+				'list' => 'growthmentormentee',
+				'gemmmentor' => $mentor->getName(),
+			]
+		);
+		$this->assertEquals( $mentor->getName(), $response[0]['growthmentormentee']['mentor'] );
+		$this->assertArrayEquals( [], $response[0]['growthmentormentee']['mentees'] );
+	}
+}
