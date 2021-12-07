@@ -4,6 +4,7 @@
 			"Bluetpp",
 			"Keo010122",
 			"Martin Urbanec (WMF)",
+			"Minh Nguyen",
 			"Nguyễn Mạnh An",
 			"Tuanminh01",
 			"Vinhtantran"
@@ -15,10 +16,11 @@
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> phải là <code>$2</code>, nhưng thay vào đó lại là <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Nội dung-mô hình không phù hợp: File cấu hình GrowthExperiments phải chứa mô hình nội dung JSON, phát hiện $1",
 	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID xử lý loại nhiệm vụ không hợp lệ: <code>$1</code> không phải một giá trị hợp lệ",
+	"growthexperiments-config-validator-array-toobig": "$1 có quá nhiều mục (cho phép tối đa $2 mục)",
 	"growthexperiments-edit-config-disabled": "Cấu hình cộng đồng hiện đang tắt.",
 	"growthexperiments-edit-config-title": "Sửa đổi cấu hình Tăng trưởng",
-	"growthexperiments-edit-config-last-edit": "[[$3]]: Được cập nhật lần cuối bởi [[User:$1|$1]] $2.",
-	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Được cập nhật lần cuối bởi thành viên vô danh $1.",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Được cập nhật lần cuối bởi [[User:$1|$1]] $2 ([$4 khác]).",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Được cập nhật lần cuối bởi thành viên vô danh $1 ([$3 khác]).",
 	"growthexperiments-edit-config-pretext": "Trang này cho phép bạn sửa đổi cấu hình của các tính năng của nhóm [[:mw:Special:MyLanguage/Growth|Tăng trưởng]]. Nó sẽ sửa đổi $1 thay bạn. Bạn có thể xem các thay đổi ở lịch sử trang của trang đó.",
 	"growthexperiments-edit-config-pretext-unprivileged": "Biểu mẫu này cho phép các người dùng có đặc quyền được sửa đổi cấu hình của các tính năng nhóm [[:mw:Special:MyLanguage/Growth|Tăng trưởng]].",
 	"growthexperiments-edit-config-feedback-headline": "Bạn có ý tưởng hoặc câu hỏi về biểu mẫu này?",
@@ -64,6 +66,7 @@
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Trang chứa danh sách cố vấn chỉ có thể được phân thủ công",
 	"growthexperiments-edit-config-newcomertasks": "Sửa đổi gợi ý",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Một số loại sửa đổi gợi ý xuất hiện thông qua bản mẫu bảo trì. Các bài viết chứa các bản mẫu này được thêm vào danh sách. Để xem có bao nhiêu bài viết có sẵn cho mỗi loại nhiệm vụ, hãy ghé [[Special:NewcomerTasksInfo|trang này]].",
+	"growthexperiments-edit-config-newcomer-tasks-disabled": "Tắt",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Biên tập: các bản mẫu để tìm bài viết cần cải thiện biên tập, ví dụ như lỗi chính tả, ngữ pháp hay dấu câu.",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Trang đích cho việc tìm hiểu thêm về việc biên tập.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Mở rộng: bản mẫu để tìm bài viết cần mở rộng.",
@@ -73,5 +76,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Tham khảo: bản mẫu để tìm bài viết cần thêm nguồn tham khảo.",
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Trang đích cho việc tìm hiểu thêm về việc thêm nguồn tham khảo.",
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Cập nhật: bản mẫu để tìm bài viết cần được cập nhật với thông tin hiện thời.",
-	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Trang đích cho việc tìm hiểu thêm về việc cập nhật bài viết."
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Trang đích cho việc tìm hiểu thêm về việc cập nhật bài viết.",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Bản mẫu hộp thông tin"
 }
