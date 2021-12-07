@@ -84,7 +84,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 			return StatusValue::newGood()->error( $userErrorMessage );
 		}
 		$imageRecommendation = $this->configurationLoader->getTaskTypes()['image-recommendation'];
-		if ( $imageRecommendation instanceof ImageRecommendationTaskType ) {
+		if ( $data['accepted'] && $imageRecommendation instanceof ImageRecommendationTaskType ) {
 			$minCaptionLength = $imageRecommendation->getMinimumCaptionCharacterLength();
 			if ( strlen( trim( $data['caption'] ) ) < $minCaptionLength ) {
 				return StatusValue::newGood()->error(
