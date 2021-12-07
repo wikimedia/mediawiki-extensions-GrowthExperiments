@@ -4,14 +4,22 @@
 namespace GrowthExperiments;
 
 use Config;
+use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use GrowthExperiments\Specials\SpecialWelcomeSurvey;
+use MediaWiki\Hook\BeforeWelcomeCreationHook;
+use MediaWiki\Logger\LoggerFactory;
+use MediaWiki\Preferences\Hook\GetPreferencesHook;
+use MediaWiki\SpecialPage\Hook\SpecialPage_initListHook;
+use MediaWiki\SpecialPage\Hook\SpecialPageBeforeExecuteHook;
 use RequestContext;
+use SpecialUserLogin;
 use User;
 
 class WelcomeSurveyHooks implements
-	\MediaWiki\Hook\BeforeWelcomeCreationHook,
-	\MediaWiki\Preferences\Hook\GetPreferencesHook,
-	\MediaWiki\SpecialPage\Hook\SpecialPage_initListHook
+	BeforeWelcomeCreationHook,
+	GetPreferencesHook,
+	SpecialPage_initListHook,
+	SpecialPageBeforeExecuteHook
 {
 
 	/** @var Config */
@@ -36,10 +44,14 @@ class WelcomeSurveyHooks implements
 	 */
 	public function onSpecialPage_initList( &$list ) {
 		if ( $this->isWelcomeSurveyEnabled() ) {
-			$list[ 'WelcomeSurvey' ] = [
-				'class' => SpecialWelcomeSurvey::class,
-				'services' => [ 'GrowthExperimentsWelcomeSurveyFactory' ]
-			];
+			$list[ 'WelcomeSurvey' ] = function () {
+				return new SpecialWelcomeSurvey(
+					$this->welcomeSurveyFactory,
+					new WelcomeSurveyLogger(
+						LoggerFactory::getInstance( 'GrowthExperiments' )
+					)
+				);
+			};
 		}
 	}
 
@@ -85,4 +97,17 @@ class WelcomeSurveyHooks implements
 		return $this->config->get( 'WelcomeSurveyEnabled' );
 	}
 
+	/** @inheritDoc */
+	public function onSpecialPageBeforeExecute( $special, $subPage ) {
+		$context = RequestContext::getMain();
+		$user = $context->getUser();
+		if ( $special instanceof SpecialUserLogin && $user->isAnon() ) {
+			$request = $context->getRequest();
+			if ( $user->isAnon() && $request->getCookie( WelcomeSurveyLogger::INTERACTION_PHASE_COOKIE ) ) {
+				$welcomeSurveyLogger = new WelcomeSurveyLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
+				$welcomeSurveyLogger->initialize( $request, $user, Util::isMobile( $context->getSkin() ) );
+				$welcomeSurveyLogger->logInteraction( WelcomeSurveyLogger::WELCOME_SURVEY_LOGGED_OUT );
+			}
+		}
+	}
 }
