@@ -2,7 +2,9 @@ var StructuredTaskToolbarDialog = require( '../StructuredTaskToolbarDialog.js' )
 	MachineSuggestionsMode = require( '../MachineSuggestionsMode.js' ),
 	ImageSuggestionInteractionLogger = require( './ImageSuggestionInteractionLogger.js' ),
 	router = require( 'mediawiki.router' ),
-	COMPACT_VIEW_BREAKPOINT = 360;
+	COMPACT_VIEW_BREAKPOINT = 360,
+	// Milliseconds before attempting the next UI change, used when navigating between states
+	RENDER_DELAY = 300;
 
 /**
  * @typedef {Object} mw.libs.ge.RecommendedImageMetadata
@@ -27,6 +29,7 @@ function RecommendedImageToolbarDialog() {
 	RecommendedImageToolbarDialog.super.apply( this, arguments );
 	this.$element.addClass( [
 		'mw-ge-recommendedImageToolbarDialog',
+		'animate-below',
 		OO.ui.isMobile() ?
 			'mw-ge-recommendedImageToolbarDialog-mobile' :
 			'mw-ge-recommendedImageToolbarDialog-desktop'
@@ -140,6 +143,10 @@ RecommendedImageToolbarDialog.prototype.getSetupProcess = function ( data ) {
 		.next( function () {
 			this.surface = data.surface;
 			this.afterSetupProcess();
+			// OOUI Window's updateSize is called when the OOUI Process is done executing.
+			// A delay is returned from the step here to ensure that the content updated during
+			// afterSetupProcess are in place before the dialog height is determined.
+			return RENDER_DELAY;
 		}, this );
 };
 
@@ -160,6 +167,7 @@ RecommendedImageToolbarDialog.prototype.afterSetupProcess = function () {
 		this.addArticleTitle();
 	}
 	this.showRecommendationAtIndex( 0 );
+	this.$element.removeClass( 'animate-below' );
 	this.logger.log( 'impression', this.getSuggestionLogActionData() );
 	$( window ).on( 'resize',
 		OO.ui.debounce( this.onResize.bind( this ), 250 )
@@ -524,7 +532,7 @@ RecommendedImageToolbarDialog.prototype.setUpCaptionStep = function () {
 			// Image inspector is shown again.
 			$inspector.removeClass( 'animate-below' );
 			this.logger.log( 'impression', this.getSuggestionLogActionData() );
-		}.bind( this ), 300 );
+		}.bind( this ), RENDER_DELAY );
 		this.canShowCaption = false;
 	}.bind( this ) );
 };
