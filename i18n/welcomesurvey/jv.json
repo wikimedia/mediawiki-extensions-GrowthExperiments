@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sumbukompor"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|Sugeng rawuh}}, $1!",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Liyané",
+	"welcomesurvey-question-edited-option-yes-many-label": "Iya, ping akèh",
+	"welcomesurvey-question-edited-option-yes-few-label": "Iya, ping pisan utawa ping pindho",
+	"welcomesurvey-question-edited-option-no-dunno-label": "Ora, aku ora weruh yèn aku bisa mbesut Wikipédia",
+	"welcomesurvey-question-edited-option-dont-remember-label": "Aku ora éling",
+	"welcomesurvey-question-email-label": "Alamat layèl (manasuka)"
+}

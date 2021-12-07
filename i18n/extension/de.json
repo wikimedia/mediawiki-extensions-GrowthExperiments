@@ -1,8 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Metalhead64"
+			"Metalhead64",
+			"Ameisenigel",
+			"FF-11",
+			"Inkowik",
+			"MrFraggle",
+			"Reinhard Kraasch"
 		]
 	},
-	"growthexperiments-desc": "Diese Erweiterung enthält Experimente des Growth-Teams."
+	"growthexperiments-desc": "Diese Erweiterung enthält Experimente des Growth-Teams.",
+	"growthexperiments-config-validator-additional-fields": "Die neue Konfiguration hat Konfigurationsschlüssel, die hier nicht angepasst werden können.",
+	"growthexperiments-config-validator-error": "Validierung für $1 fehlgeschlagen mit: „$2“",
+	"growthexperiments-config-validator-datatype-mismatch": "Als <code>$1</code> wurde <code>$2</code> erwartet, es ist jedoch <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Falsches Inhaltsmodell: Die Konfigurationsdatei von GrowthExperiments muss das JSON-Inhaltsmodell besitzen, $1 entdeckt"
 }

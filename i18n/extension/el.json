@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Geraki",
+			"Giannaras99"
+		]
+	},
+	"growthexperiments-desc": "Αυτή η επέκταση περιέχει πειράματα που γίνονται από την ομάδα Ανάπτυξης",
+	"growthexperiments-config-validator-additional-fields": "Η νέα ρύθμιση έχει κλειδιά ρύθμισης που δεν μπορούν να προσαρμοστούν εδώ.",
+	"growthexperiments-config-validator-error": "Η επικύρωση για $1 απέτυχε με: «$2»",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> αναμένεται να είναι <code>$2</code>, αλλά είναι <code>$3</code>"
+}

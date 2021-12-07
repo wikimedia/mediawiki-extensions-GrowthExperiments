@@ -8,7 +8,8 @@
 			"Karit",
 			"MOphaswongse (WMF)",
 			"Patsagorn Y.",
-			"Prame Tan"
+			"Prame Tan",
+			"Thas Tayapongsak"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|สวัสดี}} {{bidi:$1}}!",
@@ -258,7 +259,7 @@
 	"growthexperiments-addlink-context-intro": "ส่วนนี้ควรเชื่อมโยงไปยัง_____?",
 	"growthexperiments-addlink-context-button-accept": "ใช่",
 	"growthexperiments-addlink-context-button-reject": "ไม่",
-	"growthexperiments-addlink-context-button-next": "ข้าม",
+	"growthexperiments-addlink-context-button-next": "ถัดไป",
 	"growthexperiments-addlink-rejectiondialog-title": "เพราะเหตุใดนี่จึงไม่ใช่ลิงก์ที่ดี? <em>(ไม่จำเป็น)</em>",
 	"growthexperiments-addlink-rejectiondialog-message": "การตอบกลับของคุณจะถูกใช้เพื่อปรับปรุงคุณภาพของการแนะนำโดยปัญญาประดิษฐ์",
 	"growthexperiments-addlink-rejectiondialog-reason-everyday": "เป็นคำที่ใช้อยู่ทั่วไปซึ่งไม่จำเป็นต้องมีการขยายความเพิ่มเติม (เช่น \"น้ำ\")",

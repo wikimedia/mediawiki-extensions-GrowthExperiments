@@ -1,8 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"MathXplore",
+			"Omotecho",
+			"カッパ鳥"
 		]
 	},
-	"growthexperiments-desc": "この拡張機能は Growth チームが完了した実験を含んでいます。"
+	"growthexperiments-desc": "この拡張機能は Growth チームが完了した実験を含んでいます。",
+	"growthexperiments-config-validator-additional-fields": "新しい設定にはここでカスタム化できない config keys が含まれています。",
+	"growthexperiments-config-validator-error": "$1 の認証に失敗しました：\"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code>の<code>$3</code>は、\n<code>$2</code>に要訂正です",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Content-model が一致しません: GrowthExperiments config ファイルは JSON コンテンツモデルが必要ですが、 $1 を検出しました"
 }

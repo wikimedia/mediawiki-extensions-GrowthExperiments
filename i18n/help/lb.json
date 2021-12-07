@@ -23,5 +23,6 @@
 	"growthexperiments-help-panel-search-label": "No Hëllef sichen",
 	"growthexperiments-help-panel-search-no-results": "Et goufe keng Resultater fonnt.",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "Proposéiert Ännerungen",
-	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|Ännerung|Ännerungen}} · $2"
+	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|Ännerung|Ännerungen}} · $2",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Richtlinnen"
 }

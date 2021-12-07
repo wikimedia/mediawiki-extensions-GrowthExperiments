@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"NMW03"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Yeni başlayanlar üçün uyğun tapşırıq tövsiyələrini alın.",
+	"apihelp-query+growthtasks-extended-description": "Yeni bir redaktorun həll etməsi üçün kifayət qədər asan olan və bəzi problemləri olan bir sıra məqalələr tövsiyə edir.",
+	"apihelp-query+growthtasks-param-tasktypes": "Nəticələri məhdudlaşdırmaq üçün tapşırıq növləri. Bütün tövsiyələri almaq üçün boş buraxın.",
+	"apihelp-query+growthtasks-param-topics": "Tapşırıq tövsiyələrində üstünlük veriləcək məqalə mövzuları.",
+	"apihelp-query+growthtasks-param-limit": "Tapşırıq tövsiyələrinin maksimum sayı",
+	"apihelp-query+growthtasks-param-debug": "Çıxışa debug məlumatlarını əlavə edin.",
+	"apihelp-query+growthtasks-example-1": "Mövcud istifadəçi üçün korreksiya tipli tapşırıq tövsiyələri alın.",
+	"apihelp-query+growthtasks-example-2": "Səhifələr haqqında geniş məlumatla cari istifadəçi üçün tapşırıq tövsiyələrini alın."
+}

@@ -2,14 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Bluetpp",
-			"Tuanminh01"
+			"Tuanminh01",
+			"Minh Nguyen",
+			"NguoiDungKhongDinhDanh"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "\n([[Special:Captcha/help|Đây là cái gì?]])",
-	"growthexperiments-confirmemail-emailhelp": "Email là cần thiết để khôi phục tài khoản của bạn nếu bạn mất mật khẩu.",
+	"growthexperiments-confirmemail-emailhelp": "Bạn cần có email để khôi phục tài khoản nếu bị mất mật khẩu.",
 	"growthexperiments-confirmemail-emailrecommended": "Địa chỉ email (được khuyến nghị)",
 	"growthexperiments-confirmemail-emailwarning": "Vui lòng chờ email từ chúng tôi để xác minh địa chỉ của bạn.",
-	"growthexperiments-confirmemail-confirm-subject": "Chào mừng bạn đến với {{SITENAME}}: Vui lòng xác nhận địa chỉ email của bạn",
+	"growthexperiments-confirmemail-confirm-subject": "Chào mừng bạn đến với {{SITENAME}}: Vui lòng xác nhận địa chỉ thư điện tử của bạn",
 	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Chào}} $2,\n\nCảm ơn bạn đã thêm email vào tài khoản {{SITENAME}}, đã đăng ký từ địa chỉ IP $1.\n\nVui lòng nhấp vào nút bên dưới để xác nhận đây là địa chỉ email bạn muốn liên kết với tài khoản của mình \"$2\":\n\n$3\n\nLưu ý: mã xác nhận này <strong>hết hạn ở mức $4</strong>.\n\nCảm ơn,\n\n{{SITENAME}}\n\n----\n\nĐể hủy xác nhận địa chỉ email (vì bạn không đăng ký tài khoản hoặc vì bất kỳ lý do nào khác), nhấp vào liên kết hủy này:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "Xác nhận thư điện tử",
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Chào}} $2,\n\nCảm ơn bạn đã thêm địa chỉ email vào tài khoản {{SITENAME}}, được đăng ký từ địa chỉ IP $1.\n\nVui lòng nhấp vào nút bên dưới để xác nhận đây là địa chỉ email bạn muốn liên kết với tài khoản của mình \"$2\":\n\n$3\n\nLưu ý: mã xác nhận này <strong>hết hạn vào $4</strong>.\n\nXin cảm ơn,\n\n{{SITENAME}}\n\n----\n\nĐể hủy xác nhận địa chỉ email (vì bạn không đăng ký tài khoản hoặc vì bất kỳ lý do nào khác), nhấp vào liên kết hủy này:\n\n$5"

@@ -1,9 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"LORDZRAWN",
+			"ZebaX2010"
 		]
 	},
-	"apihelp-helppanelquestionposter-param-body": "El texto de la pregunta provisto por el usuario.",
+	"apihelp-helppanelquestionposter-param-body": "El texto de la pregunta proporcionado por el usuario.",
+	"apihelp-helppanelquestionposter-param-source": "Método por el cual se publicó la pregunta.",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Se necesita acceder para formular una pregunta."
 }

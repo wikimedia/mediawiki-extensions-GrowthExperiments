@@ -131,5 +131,12 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Du}} bruker kilderedigeringen. Disse redigeringstipsene er mest nyttige i visuell redigering.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Bytt til visuell redigering",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Du}} bruker visuell redigering. Disse redigeringstipsene er mest nyttige i kilderedigering.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Bytt til kilderedigering"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Bytt til kilderedigering",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Å legge til lenker hjelper folk til å lære raskere.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|Du}} vil bestemme hvorvidt ord i en {{SITENAME}}-artikkel bør lenke til andre {{SITENAME}}-artikler.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "Månen er den eneste <mark class=\"positive\">naturlige satellitten</mark> som går <mark class=\"positive\">i bane</mark> rundt <mark class=\"positive\">jorda</mark>.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Ingen spesiell kunnskap om artikkelen trengs for å utføre denne oppgaven.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Retningslinjer",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* Lenk til konsepter en leser kan tenkes å ville lære mer om.\n* Sørg for at lenka går til rett artikkel.\n* Ikke lenk vanlige ord, år eller datoer.\n* Hvis {{GENDER:$1|du}} er usikker hopper du over forslaget.",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Eksempelsetning"
 }

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Luky001"
+			"Luky001",
+			"Wizzard"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "Vitajte, {{GENDER:$1|používateľ|používateľka}} {{bidi:$1}}!",
@@ -54,6 +55,7 @@
 	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Späť",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward": "Zobraziť návrhy",
 	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Hotovo",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-noactivate": "Hotovo",
 	"growthexperiments-homepage-startediting-dialog-difficulty-header": "Vyskúšajte najprv nejaké <strong>jednoduché</strong> úpravy",
 	"growthexperiments-homepage-startediting-dialog-difficulty-subheader": "Existuje mnoho spôsobov, ako zlepšovať Wikipédiu. Komunita redaktorov vybrala články, ktoré potrebujú rôzne druhy úprav.",
 	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Ľahké",
@@ -176,6 +178,7 @@
 	"growthexperiments-homepage-suggestededits-tasktype-time-references": "15 – 20 minút",
 	"growthexperiments-homepage-suggestededits-tasktype-time-expand": "20 – 30 minút",
 	"growthexperiments-homepage-suggestededits-tasktype-time-update": "20 – 30 minút",
+	"growthexperiments-homepage-suggestededits-tasktype-time-link-recommendation": "3 – 5 minút",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label": "$1 úpravy",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "Ľahké",
 	"growthexperiments-homepage-suggestededits-difficulty-filter-label-medium": "Stredne náročné",
@@ -272,5 +275,8 @@
 	"growthexperiments-notification-learn-more": "{{GENDER:$1|Zistite}} viac o {{GENDER:$2|svojom novom mentorovi|svojej novej mentorke}}",
 	"right-setmentor": "Nastaviť mentora používateľa",
 	"action-setmentor": "nastaviť mentora používateľa",
-	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Viac o tejto navrhovanej úprave"
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Viac o tejto navrhovanej úprave",
+	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Pokračovať",
+	"growthexperiments-addlink-context-button-accept": "Áno",
+	"growthexperiments-addlink-context-button-next": "Ďalej"
 }

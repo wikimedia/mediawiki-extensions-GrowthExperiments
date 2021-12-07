@@ -3,9 +3,17 @@
 		"authors": [
 			"Ailbeve",
 			"Nastua Buldakova",
-			"Vlad5250"
+			"Vlad5250",
+			"DDPAT",
+			"Kareyac",
+			"Kylaix",
+			"Pacha Tchernof",
+			"Умар"
 		]
 	},
 	"growthexperiments-desc": "Данное расширение является результатом исследований Команды «Роста».",
-	"growthexperiments-config-validator-additional-fields": "Новая конфигурация имеет ключи конфигурации, которые здесь не могут быть настроены."
+	"growthexperiments-config-validator-additional-fields": "Новая конфигурация имеет ключи конфигурации, которые здесь не могут быть настроены.",
+	"growthexperiments-config-validator-error": "Проверка $1 завершилась неудачно: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "Ожидается, что <code>$1</code> это <code>$2</code>, а это <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Несоответствие модели содержимого: файл конфигурации GrowthExperiments должен иметь модель содержимого JSON, обнаружено $1"
 }

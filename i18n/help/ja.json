@@ -5,7 +5,8 @@
 			"Bonfire12",
 			"Omotecho",
 			"Shirayuki",
-			"Tmv"
+			"Tmv",
+			"MathXplore"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "編集者ヘルプパネルを有効にする",
@@ -134,5 +135,6 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;現在、{{GENDER:|}}ソース編集モードになっています。これらの編集のヒントは、ビジュアル編集モードで役に立つものです。",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "ビジュアル編集モードに切り替える",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;現在、{{GENDER:|}}ビジュアル編集モードになっています。これらの編集のヒントは、ソース編集モードで役に立つものです。",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "ソース編集に切り替える"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "ソース編集に切り替える",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "リンクの追加は、利用者が早く習熟する助けになります。"
 }

@@ -2,8 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Vlad5250",
-			"Ата"
+			"Ата",
+			"Aced",
+			"DDPAT"
 		]
 	},
-	"growthexperiments-desc": "Розширення містить експерименти, розроблені Командою зростання."
+	"growthexperiments-desc": "Розширення містить експерименти, розроблені командою зростання.",
+	"growthexperiments-config-validator-additional-fields": "Нова конфігурація має ключі конфігурації, які не можна видозмінювати тут.",
+	"growthexperiments-config-validator-error": "Валідація для $1 не вдалася: «$2»",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> має бути <code>$2</code>, а є <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Не співпадають моделі вмісту: файл конфігурації GrowthExperiments повинен мати модель JSON, а виявлено $1"
 }

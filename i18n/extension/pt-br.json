@@ -2,8 +2,13 @@
 	"@metadata": {
 		"authors": [
 			"Albertoleoncio",
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Eduardoaddad"
 		]
 	},
-	"growthexperiments-desc": "Esta extensão contém experimentos feita pela equipe de Crescimento."
+	"growthexperiments-desc": "Esta extensão contém experimentos feita pela equipe de Crescimento.",
+	"growthexperiments-config-validator-additional-fields": "A nova configuração possui chaves de configuração que não podem ser personalizadas aqui.",
+	"growthexperiments-config-validator-error": "A validação de $1 falhou com: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> espera-se que seja <code>$2</code>, mas é <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Incompatibilidade de modelo de conteúdo: O arquivo de configuração do GrowthExperiments deve ter um modelo de conteúdo JSON, $1 detectado"
 }

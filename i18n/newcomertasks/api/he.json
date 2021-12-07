@@ -2,15 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Amire80",
-			"דגש חזק"
+			"דגש חזק",
+			"דגש"
 		]
 	},
-	"apihelp-query+growthtasks-summary": "קבלת הצעות של משימות שמתאימות למתחילים.",
+	"apihelp-query+growthtasks-summary": "קבלת המלצות של משימות שמתאימות למתחילים.",
 	"apihelp-query+growthtasks-extended-description": "הצעת ערכה של ערכים שיש בהם עניינים מסוימים שצריך לטפל, ושלעורך מתחיל יהיה קל לעשות את זה.",
 	"apihelp-query+growthtasks-param-tasktypes": "סוגי משימות שהתוצאות יהיו מוגבלות אליהם. יש להשאיר את זה ריק כדי לקבל את כל ההצעות.",
 	"apihelp-query+growthtasks-param-topics": "נושאי ערכים להעדפה בהצעת משימות.",
 	"apihelp-query+growthtasks-param-limit": "מספר מרבי של הצעות משימות להחזיר.",
 	"apihelp-query+growthtasks-param-debug": "הוספת נתוני ניפוי שגיאות לפלט.",
-	"apihelp-query+growthtasks-example-1": "קבלת הצעות משימות למשימות מסוג הגהה עבור המשתמש הנוכחי.",
-	"apihelp-query+growthtasks-example-2": "קבלת הצעות משימות עבור המשתמש הנוכחי, עם מידע מורחב על הדפים."
+	"apihelp-query+growthtasks-example-1": "קבלת המלצות משימות למשימות מסוג הגהה עבור המשתמש הנוכחי.",
+	"apihelp-query+growthtasks-example-2": "קבלת המלצות משימות עבור המשתמש הנוכחי, עם מידע מורחב על הדפים."
 }

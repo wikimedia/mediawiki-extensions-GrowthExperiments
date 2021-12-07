@@ -4,5 +4,9 @@
 			"Jon Harald Søby"
 		]
 	},
-	"growthexperiments-desc": "Denne utvidelsen inneholder eksperimenter som gjøres av Growth-teamet."
+	"growthexperiments-desc": "Denne utvidelsen inneholder eksperimenter som gjøres av Growth-teamet.",
+	"growthexperiments-config-validator-additional-fields": "Den nye konfigurasjonen har konfigurasjonsnøkler som ikke kan tilpasses her.",
+	"growthexperiments-config-validator-error": "Validering for $1 feilet med: «$2»",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> er forventet å være <code>$2</code>, men er <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Innholdsmodellen matcher ikke: GrowthExperiments' konfigurasjonsfil må ha innholdsmodellen JSON, men $1 ble returnert"
 }

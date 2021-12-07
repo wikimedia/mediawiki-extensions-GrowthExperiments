@@ -1,9 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"पर्वत सुबेदी"
+			"पर्वत सुबेदी",
+			"बिप्लब आनन्द"
 		]
 	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|यो के हो?]])",
+	"growthexperiments-confirmemail-emailhelp": "यदि तपाईँले आफ्नो खाताको पासवर्ड बिर्सिनुभयो भने आफ्नो खातालाई पुनः प्राप्त गर्न इमेल खाता चाहिन्छ।",
+	"growthexperiments-confirmemail-emailrecommended": "इमेल खाता (सिफारिस)",
+	"growthexperiments-confirmemail-emailwarning": "हामीले पठाएको इमेल जाँच गरि कृपया आफ्नो इमेल ठेगाना प्रमाणित गर्नुहोस्।",
 	"growthexperiments-confirmemail-confirm-subject": "स्वागत छ {{SITENAME}}: इमेल ठेगाना पुष्टि गर्नुहोस्।",
-	"growthexperiments-confirmemail-confirm-button": "इमेल ठेगाना पुष्टि गर्नुहोस्।"
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|नमस्ते}} $2,\n\nआइपी ठेगाना $1 द्वारा आफ्नो {{SITENAME}} खातामा इमेल ठेगाना जोड्नुभएकोमा धन्यवाद।\n\nकृपया तलको बटनमा क्लिक गरि यो इमेल ठेगानालाई नै यहाँ आफ्नो खाता \"$2\"सँग जोड्न चाहनुहुन्छ भनि पक्का गर्नुहोस्:\n\n$3\n\nटिप्पणी: यो पुष्टि कोड <strong>$4 मा निस्क्रिय हुनेछ</strong>।\n\nधन्यवाद,\n\n{{SITENAME}}\n\n----\n\nइमेल ठेगाना पुष्टि रद्द गर्नको लागि (किनकि यहाँले खाता दर्ता गर्नुभएको छैन वा कुनै अन्य कारणको लागि), यो रद्द कडीमा क्लिक गर्नुहोस्:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "इमेल ठेगाना पुष्टि गर्नुहोस्।",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|नमस्ते}} $2,\n\nआइपी ठेगाना $1 द्वारा आफ्नो {{SITENAME}} खातामा इमेल ठेगाना जोड्नुभएकोमा धन्यवाद।\n\nकृपया तलको बटनमा क्लिक गरि यो इमेल ठेगानालाई नै यहाँ आफ्नो खाता \"$2\"सँग जोड्न चाहनुहुन्छ भनि पक्का गर्नुहोस्:\n\n$3\n\nटिप्पणी: यो पुष्टि कोड <strong>$4 मा निस्क्रिय हुनेछ</strong>।\n\nधन्यवाद,\n\n{{SITENAME}}\n\n----\n\nइमेल ठेगाना पुष्टि रद्द गर्नको लागि (किनकि यहाँले खाता दर्ता गर्नुभएको छैन वा कुनै अन्य कारणको लागि), यो रद्द कडीमा क्लिक गर्नुहोस्:\n\n$5"
 }

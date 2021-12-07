@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jmarchn",
+			"Paucabot",
+			"Skurz0",
+			"Townie",
+			"Xavier Dengra"
+		]
+	},
+	"growthexperiments-desc": "Aquesta extensió conté proves en marxa per part de l'equip de Creixement.",
+	"growthexperiments-config-validator-additional-fields": "Aquesta nova configuració inclou opcions que no poden ser personalitzades aquí.",
+	"growthexperiments-config-validator-error": "La validació de $1 ha fallat amb: «$2»",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> s'espera que sigui <code>$2</code>, però és <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Contingut de model no coincident: El fitxer de configuració GrowthExperiments ha de tenir el model de contingut JSON; s'ha detectat $1"
+}

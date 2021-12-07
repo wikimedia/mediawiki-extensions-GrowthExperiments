@@ -4,7 +4,7 @@
 			"NGC 54"
 		]
 	},
-	"growthexperiments-desc": "Această extensie conține experimente realizate de Growth team.",
+	"growthexperiments-desc": "Această extensie conține experimente realizate de echipa Growth.",
 	"growthexperiments-config-validator-additional-fields": "Noua configurare are chei de configurare care nu pot fi personalizate aici.",
 	"growthexperiments-config-validator-error": "Validarea pentru $1 a eșuat cu: „$2”",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> este de așteptat să fie <code>$2</code>, dar este <code>$3</code>",

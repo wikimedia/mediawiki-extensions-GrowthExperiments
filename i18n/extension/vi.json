@@ -1,8 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tuanminh01"
+			"Tuanminh01",
+			"Bluetpp",
+			"Keo010122",
+			"Martin Urbanec (WMF)",
+			"Nguyễn Mạnh An",
+			"Vinhtantran"
 		]
 	},
-	"growthexperiments-desc": "Phần mở rộng này chứa các thử nghiệm được thực hiện bởi nhóm Tăng trưởng."
+	"growthexperiments-desc": "Phần mở rộng này chứa các thử nghiệm được thực hiện bởi nhóm Tăng trưởng.",
+	"growthexperiments-config-validator-additional-fields": "Cấu hình mới có các phím cấu hình không thể sửa đổi tại đây.",
+	"growthexperiments-config-validator-error": "Việc hợp thức hóa $1 thất bại với: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> phải là <code>$2</code>, nhưng thay vào đó lại là <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Nội dung-mô hình không phù hợp: File cấu hình GrowthExperiments phải chứa mô hình nội dung JSON, phát hiện $1"
 }

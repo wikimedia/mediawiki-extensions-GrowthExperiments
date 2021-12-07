@@ -1,8 +1,26 @@
 {
 	"@metadata": {
 		"authors": [
-			"VulpesVulpes825"
+			"VulpesVulpes825",
+			"AYZ04",
+			"Cosine02",
+			"Grace03",
+			"GuoPC",
+			"NACHOgao3",
+			"Shizhao",
+			"Stang",
+			"Sunny00217",
+			"TsuyaMarisa",
+			"Xiplus",
+			"Yining Chen",
+			"Zhang8569",
+			"羊羊32521",
+			"魔琴"
 		]
 	},
-	"growthexperiments-desc": "这个扩展包含了增长团队所做的实验。"
+	"growthexperiments-desc": "这个扩展包括了 Growth 团队的试验性功能。",
+	"growthexperiments-config-validator-additional-fields": "新配置含有无法在此处自定义的配置键。",
+	"growthexperiments-config-validator-error": "验证$1失败：“$2”",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code>应该是<code>$2</code>，但是<code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "内容模型不匹配：GrowthExperiments配置档案内容模型必须为JSON，但配置档案的内容模型为$1"
 }

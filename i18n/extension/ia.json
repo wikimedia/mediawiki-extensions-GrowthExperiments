@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"growthexperiments-desc": "Iste extension contine experimentos facite per le equipa de Growth.",
+	"growthexperiments-config-validator-additional-fields": "Le nove configuration ha claves que non pote esser personalisate hic.",
+	"growthexperiments-config-validator-error": "Le validation de $1 ha fallite con: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> deberea esser <code>$2</code>, ma es <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Modello de contento non correspondente: le file de configuration de GrowthExperiments debe haber un modello de contento JSON, ma le modello detegite es $1."
+}

@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"NMW03"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|bu nədir?]])",
+	"growthexperiments-confirmemail-emailhelp": "Şifrənizi itirsəniz, hesabınızı bərpa etmək üçün e-poçt lazımdır.",
+	"growthexperiments-confirmemail-emailrecommended": "E-poçt ünvanı (tövsiyə olunur)",
+	"growthexperiments-confirmemail-emailwarning": "Zəhmət olmasa ünvanınızı təsdiqləmək üçün bizdən gələcək məktuba baxın.",
+	"growthexperiments-confirmemail-confirm-subject": "{{SITENAME}} saytına xoş gəlmisiniz. Zəhmət olmasa e-poçt ünvanınızı yoxlayın.",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Salam}} $2, \n\n{{SITENAME}} hesabınıza e-poçtunuzu əlavə etdiyiniz üçün təşəkkürlər. Qeydiyyatdan keçilən IP ünvanı: $1\n\nBunu \"$2\" hesabınıza bağlamaq istədiyiniz e-poçt ünvanı kimi təsdiq etmək üçün aşağıdakı düyməyə klikləyin:\n\n$3\n\nQeyd: bu təsdiq kodu <strong>$4 tarixində bitir.</strong>\n\nTəşəkkürlər,\n\n{{SITENAME}}\n\n----\n\nE-poçt ünvanı təsdiqini ləğv etmək üçün (hesabı qeydiyyatdan sizin keçirmədiyiniz və ya başqa səbəbdən) bu linkə klikləyin:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "E-poçt ünvanını təsdiqlə",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Salam}} $2, \n\n{{SITENAME}} hesabınıza e-poçtunuzu əlavə etdiyiniz üçün təşəkkürlər. Qeydiyyatdan keçilən IP ünvanı: $1\n\nBunu \"$2\" hesabınıza bağlamaq istədiyiniz e-poçt ünvanı kimi təsdiq etmək üçün aşağıdakı düyməyə klikləyin:\n\n$3\n\nQeyd: bu təsdiq kodu <strong>$4 tarixində bitir.</strong>\n\nTəşəkkürlər,\n\n{{SITENAME}}\n\n----\n\nE-poçt ünvanı təsdiqini ləğv etmək üçün (hesabı qeydiyyatdan sizin keçirmədiyiniz və ya başqa səbəbdən) bu linkə klikləyin:\n\n$5"
+}

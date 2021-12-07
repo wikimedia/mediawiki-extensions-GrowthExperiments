@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ted Masters"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "Получаване на форматирани въпроси, публикувани чрез модулите на началната страница",
+	"apihelp-homepagequestionstore-param-questionformat": "Форматът, в който да бъдат превърнати въпросите, напр. HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Хранилище на въпросите",
+	"apihelp-homepagequestionstore-param-userid": "Идентификационен номер на потребителя, от когото са получени въпросите.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Не са открити въпроси",
+	"apihelp-growthsetmentor-summary": "Отреждане на ментор за потребител. Промените ще бъдат записани публично.",
+	"apihelp-growthsetmentor-param-reason": "Причина за промяната"
+}

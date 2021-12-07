@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"ಮಲ್ನಾಡಾಚ್ ಕೊಂಕ್ಣೊ"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|ಸುಸ್ವಾಗತ}}, $1!",
+	"welcomesurvey-save-confirmation-title": "ಧನ್ಯವಾದಗಳು! ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆಗಳನ್ನು ಉಳಿಸಲಾಗಿದೆ.",
+	"welcomesurvey-dropdown-option-select-label": "ದಯವಿಟ್ಟು ಆಯ್ಕೆ ಮಾಡಿ...",
+	"welcomesurvey-question-reason-option-add-image-label": "ಒಂದು ವಿಕಿಪೀಡಿಯ ಲೇಖನಕ್ಕೆ ಚಿತ್ರವನ್ನು ಸೇರಿಸಲು",
+	"welcomesurvey-question-reason-option-new-page-label": "ಒಂದು ಹೊಸ ವಿಕಿಪೀಡಿಯ ಲೇಖನವನ್ನು ರಚಿಸಲು",
+	"welcomesurvey-question-reason-option-read-label": "ವಿಕಿಪೀಡಿಯ ಓದಲು",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "ಇತರೆ",
+	"welcomesurvey-question-reason-option-other-label": "ಇತರೆ (ದಯವಿಟ್ಟು ವಿವರಿಸಿ)",
+	"welcomesurvey-question-mentor-label": "ಹೌದು, {{GENDER:$1|ನನಗೆ ಇಷ್ಟವಿದೆ}}",
+	"welcomesurvey-question-edited-label": "ನೀವು ಎಂದಾದರೂ ವಿಕಿಪೀಡಿಯ ಸಂಪಾದಿಸಿದ್ದೀರಾ?",
+	"welcomesurvey-question-edited-option-yes-many-label": "ಹೌದು, ಬಹಳ ಸಲ",
+	"welcomesurvey-question-edited-option-yes-few-label": "ಹೌದು, ಒಮ್ಮೆ ಅಥವಾ ಎರಡು ಬಾರಿ",
+	"welcomesurvey-question-edited-option-no-dunno-label": "ಇಲ್ಲ, ವಿಕಿಪೀಡಿಯ ಸಂಪಾದಿಸಬಹುದು ಎಂದು ನನಗೆ ಗೊತ್ತಿರಲಿಲ್ಲ",
+	"welcomesurvey-question-edited-option-no-other-label": "ಇಲ್ಲ, ಬೇರೆ ಕಾರಣಗಳಿಗೆ",
+	"welcomesurvey-question-edited-option-dont-remember-label": "ನನಗೆ ನೆನಪಿಲ್ಲ"
+}

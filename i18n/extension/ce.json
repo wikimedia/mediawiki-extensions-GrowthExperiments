@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Умар"
+		]
+	},
+	"growthexperiments-config-validator-error": "Таллам $1 гӀалатца чекхдели: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "Хьоьжу, <code>$1</code> хӀокхуьнга <code>$2</code>, иза ду <code>$3</code>"
+}

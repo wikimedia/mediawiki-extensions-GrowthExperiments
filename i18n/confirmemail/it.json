@@ -2,14 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
-			"ValeJappo"
+			"ValeJappo",
+			"Lorem Ipsum",
+			"Sannita"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|cos'è questo?]])",
 	"growthexperiments-confirmemail-emailhelp": "Un indirizzo email è richiesto per poter recuperare la tua utenza se perdi la password.",
 	"growthexperiments-confirmemail-emailrecommended": "Indirizzo di posta elettronica (raccomandato)",
 	"growthexperiments-confirmemail-emailwarning": "Per favore controlla se ti è arrivata un'email da parte nostra per verificare il tuo indirizzo di posta elettronica.",
-	"growthexperiments-confirmemail-confirm-subject": "Benvenuto su {{SITENAME}}: sei pregato di confermare il tuo indirizzo email",
+	"growthexperiments-confirmemail-confirm-subject": "Ti diamo il benvenuto su {{SITENAME}}: per favore, conferma il tuo indirizzo email",
 	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Ciao}} $2,\n\nGrazie per aver aggiunto un'email alla tua utenza su {{SITENAME}}, registrata dall'indirizzo IP $1.\n\nFai clic sul pulsante in basso per confermare che questo è l'indirizzo di posta elettronica che vuoi collegare alla tua utenza \"$2\":\n\n$3\n\nNota: questo codice di conferma <strong>scade il $4</strong>.\n\nGrazie,\n\n{{SITENAME}}\n\n----\n\nPer annullare la conferma dell'indirizzo email (perché non hai registrato l'utenza o per qualsiasi altro motivo), fai clic su questo link di cancellazione:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "Conferma indirizzo email",
 	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Ciao}} $2,\n\nGrazie per aver aggiunto un'email alla tua utenza su {{SITENAME}}, registrata dall'indirizzo IP $1.\n\nFai clic sul pulsante in basso per confermare che questo è l'indirizzo di posta elettronica che vuoi collegare alla tua utenza \"$2\":\n\n$3\n\nNota: questo codice di conferma scade il $4.\n\nGrazie,\n\n{{SITENAME}}\n\n----\n\nPer annullare la conferma dell'indirizzo email (perché non hai registrato l'utenza o per qualsiasi altro motivo), fai clic su questo link di cancellazione:\n\n$5"

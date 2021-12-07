@@ -43,7 +43,7 @@
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Տեսնել առաջարկվող խմբագրումները",
 	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "Ստանալ առաջարկություններ",
 	"growthexperiments-homepage-startediting-button": "Տեսնել առաջարկվող խմբագրումները",
-	"growthexperiments-homepage-startediting-dialog-header": "Առաջարկվող խմբագրումներ",
+	"growthexperiments-homepage-startediting-dialog-header": "Առաջարկվող խմբագրումների մասին",
 	"growthexperiments-homepage-startediting-dialog-progress": "$1–ը $2–ից",
 	"growthexperiments-homepage-startediting-dialog-intro-back": "Չեղարկել",
 	"growthexperiments-homepage-startediting-dialog-intro-forward": "Շարունակել",
@@ -87,9 +87,11 @@
 	"growthexperiments-tour-mentor-response-tip-personal-text": "Երբ {{GENDER:$1|Ձեր}} {{GENDER:$2|մենթորը}} պատասխանի, {{GENDER:$1|Դուք}} այստեղ ազդանշան կստանաք։",
 	"growthexperiments-tour-response-button-okay": "Հասկանալի է",
 	"tag-help_module_question": "Օգնության մոդուլի հարց",
-	"tag-help_module_question-description": "Խմբագրում, որն արվել է հիմնական էջի օգնության մոդուլի հարց հրապարակել բաժնից",
+	"tag-help_module_question-description": "Խմբագրում, որն արվել է հիմնական էջի օգնության մոդուլի \"Հարց տուր\" բաժնից",
 	"tag-mentorship_module_question": "Մենթորության մոդուլի հարց",
-	"tag-mentorship_module_question-description": "Խմբագրում, որն արվել է հիմնական էջի մենթորության մոդուլի հարց հրապարակել բաժնից",
+	"tag-mentorship_module_question-description": "Խմբագրում, որն արվել է հիմնական էջի մենթորության մոդուլի «Հարցրու քո ուսուցչին» բաժնից",
+	"tag-mentorship_panel_question": "Հարց ուսուցչին օգնության վահանակի միջոցով",
+	"tag-newcomer_task": "Խնդիր սկսնակների համար",
 	"growthexperiments-homepage-help-dialog-title": "Հարցնել օգնության էջին",
 	"growthexperiments-homepage-help-header": "Խմբագրման հետ կապված օգնություն ստանալ",
 	"growthexperiments-homepage-help-subheader": "Խմբագրման հետ կապված օգնության էջեր",
@@ -147,6 +149,7 @@
 	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1 միլիոն",
 	"growthexperiments-homepage-suggestededits-footer-gigasuffix": "$1 միլիարդ",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "նախորդ օրը արված խմբագրումներ",
+	"growthexperiments-homepage-suggestededits-mobilesummary-footer-button": "Դիտել բոլոր առաջարկները",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "Ուղղել ուղղագրությունը, քերականությունը և ոճը",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-references": "Վիքիպեդիայի հոդվածներում աղբյուրներ ավելացնել",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-update": "Թարմացնել արդեն գոյություն ունեցող հոդվածները",
@@ -246,5 +249,5 @@
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Հասկանալի է",
 	"growthexperiments-addlink-context-button-accept": "Այո",
 	"growthexperiments-addlink-context-button-reject": "Ոչ",
-	"growthexperiments-addlink-context-button-next": "Բաց թողնել"
+	"growthexperiments-addlink-context-button-next": "Հաջորդ"
 }

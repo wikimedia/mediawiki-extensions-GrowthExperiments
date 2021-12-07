@@ -1,8 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Martin Urbanec"
+			"Martin Urbanec",
+			"Ankan",
+			"Georg101",
+			"Martin Urbanec (WMF)",
+			"Matěj Suchánek"
 		]
 	},
-	"growthexperiments-desc": "Toto rozšíření obsahuje experimenty týmu Growth."
+	"growthexperiments-desc": "Toto rozšíření obsahuje experimenty týmu Growth.",
+	"growthexperiments-config-validator-additional-fields": "Nová konfigurace obsahuje klíče, které zde nemohou být nastaveny.",
+	"growthexperiments-config-validator-error": "Validace $1 selhala: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> by mělo být <code>$2</code>, ale je <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Model obsahu stránky se neshoduje: Konfigurace rozšíření GrowthExperiments musí mít model JSON, ale má $1"
 }

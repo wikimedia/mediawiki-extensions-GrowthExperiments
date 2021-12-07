@@ -1,8 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tacsipacsi"
+			"Tacsipacsi",
+			"Dj",
+			"Llz78",
+			"Tgr"
 		]
 	},
-	"growthexperiments-desc": "Ez a kiterjesztés a Növekedés (Growth) csapat kísérleteit tartalmazza."
+	"growthexperiments-desc": "Ez a kiterjesztés a Növekedés (Growth) csapat kísérleteit tartalmazza.",
+	"growthexperiments-config-validator-additional-fields": "Az új konfigurációban vannak olyan konfigurációs kulcsok, amelyek itt nem szabhatók testre.",
+	"growthexperiments-config-validator-error": "A(z) $1 ellenőrzése sikertelen volt: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> várt típusa <code>$2</code>, de a tényleges típus <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Rossz tartalomtípus: a GrowthExperiments konfigurációs fájlnak JSON típusúnak kell lennie, de az észlelt típus $1"
 }

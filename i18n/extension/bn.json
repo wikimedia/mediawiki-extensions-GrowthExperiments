@@ -3,8 +3,13 @@
 		"authors": [
 			"Al Riaz Uddin Ripon",
 			"Ankan",
-			"আফতাবুজ্জামান"
+			"আফতাবুজ্জামান",
+			"ZI Jony"
 		]
 	},
-	"growthexperiments-desc": "এই এক্সটেনশনে গ্রোথ দল দ্বারা করা পরীক্ষা/গবেষণা রয়েছে।"
+	"growthexperiments-desc": "এই এক্সটেনশনে গ্রোথ দল দ্বারা করা পরীক্ষা/গবেষণা রয়েছে।",
+	"growthexperiments-config-validator-additional-fields": "নতুন কনফিগারেশনে কিছু অপশন আছে যা এখানে কাস্টোমাইজ করা যাবে না।",
+	"growthexperiments-config-validator-error": "$1-এর বৈধতা যাচাই ব্যর্থ হয়েছে, কারণ: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "ধারণা করা হচ্ছে <code>$1</code> এর বদলে <code>$2</code> হবে, তবে হয়েছে <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "বিষয়বস্তু মডেলের বৈসাদৃশ্য: গ্রোথএক্সপেরিমেন্টস কনফিগ ফাইলে অবশ্যই JSON বিষয়বস্তু মডেল থাকতে হবে, $1 শনাক্ত করা হয়েছে"
 }

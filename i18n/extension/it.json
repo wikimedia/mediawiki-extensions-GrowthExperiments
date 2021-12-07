@@ -1,8 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"ValeJappo"
+			"ValeJappo",
+			"Beta16",
+			"Fringio",
+			"Ruthven",
+			"Sannita"
 		]
 	},
-	"growthexperiments-desc": "Quest'estensione contiene esperimenti effettuati dal Growth team"
+	"growthexperiments-desc": "Quest'estensione contiene esperimenti effettuati dal Growth team",
+	"growthexperiments-config-validator-additional-fields": "La nuova configurazione ha chiavi di configurazione che non possono essere personalizzati.",
+	"growthexperiments-config-validator-error": "Validazione di $1 fallita con: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> dovrebbe essere <code>$2</code>, ma è <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Discrepanza del modello di contenuto: il file di configurazione di GrowthExperiments deve avere un modello di contenuto JSON, rilevato $1"
 }

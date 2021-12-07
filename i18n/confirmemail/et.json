@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pikne"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|mis see on?]])",
+	"growthexperiments-confirmemail-emailhelp": "E-posti aadress on vajalik, et konto tagasi saada, kui kaotad parooli.",
+	"growthexperiments-confirmemail-emailrecommended": "E-posti aadress (soovituslik)",
+	"growthexperiments-confirmemail-emailwarning": "Saadame sulle e-kirja e-posti aadressi kinnitamiseks.",
+	"growthexperiments-confirmemail-confirm-subject": "Tere tulemast {{GRAMMAR:illative|{{SITENAME}}}}: palun kinnita e-posti aadress",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Tere}}, $2.\n\nAitäh, et lisasid e-posti aadressi {{GRAMMAR:genitive|{{SITENAME}}}} kontole, mille registreerisid IP-aadressilt $1.\n\nPalun klõpsa allolevat nuppu kinnitamaks, et see on e-posti aadress, mille soovid siduda kontoga \"$2\".\n\n$3\n\nMärkus: selle kinnituskoodi <strong>aegumistähtaeg on $4</strong>.\n\nTäname\n\n{{SITENAME}}\n\n----\n\nEt e-posti aadressi kinnitamine tühistada (kuna sa ei registreerinud kontot või muul põhjusel), klõpsa sellel tühistamislingil:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "Kinnita e-posti aadress",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Tere}}, $2.\n\nAitäh, et lisasid e-posti aadressi {{GRAMMAR:genitive|{{SITENAME}}}} kontole, mille registreerisid IP-aadressilt $1.\n\nPalun klõpsa allolevat linki kinnitamaks, et see on e-posti aadress, mille soovid siduda kontoga \"$2\".\n\n$3\n\nMärkus: selle kinnituskoodi aegumistähtaeg on $4.\n\nTäname\n\n{{SITENAME}}\n\n----\n\nEt e-posti aadressi kinnitamine tühistada (kuna sa ei registreerinud kontot või muul põhjusel), klõpsa sellel tühistamislingil:\n\n$5"
+}

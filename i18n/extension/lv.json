@@ -4,5 +4,9 @@
 			"Papuass"
 		]
 	},
-	"growthexperiments-desc": "Šis paplašinājums satur eksperimentus, ko veic Izaugsmes komanda (Growth team)."
+	"growthexperiments-desc": "Šis paplašinājums satur eksperimentus, ko veic Izaugsmes komanda (Growth team).",
+	"growthexperiments-config-validator-additional-fields": "Jaunajā konfigurācijā ir parametri, ko šeit nevar pielāgot.",
+	"growthexperiments-config-validator-error": "$1 validācija neizdevās: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "Tika gaidīts, ka <code>$1</code> būs <code>$2</code>, bet ir <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Satura modeļa neatbilstība: GrowthExperiments konfigurācijas failam jābūt JSON satura modelim, noteikts $1"
 }

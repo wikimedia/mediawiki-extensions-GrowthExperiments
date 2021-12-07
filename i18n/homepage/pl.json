@@ -11,7 +11,8 @@
 			"Tar Lócesilion",
 			"The Polish",
 			"WTM",
-			"Woytecr"
+			"Woytecr",
+			"Msz2001"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Witaj}}, {{bidi:$1}}!",
@@ -112,7 +113,7 @@
 	"tag-mentorship_module_question-description": "Edycja wykonana za pomocą modułu przewodników \"Zapytaj swojego przewodnika\" dostępnego na stronie domowej dla nowicjuszy",
 	"tag-mentorship_panel_question": "Pytanie zadane przez moduł przewodników",
 	"tag-mentorship_panel_question-description": "Edycja wykonana z funkcji panelu pomocy \"Zapytaj swojego przewodnika\"",
-	"tag-newcomer_task": "Zadanie nowicjusza(-ki)",
+	"tag-newcomer_task": "Zadanie nowicjusza",
 	"tag-newcomer_task-description": "Edycje zasugerowane przez moduł sugerowanych edycji z witryny domowej dla nowicjuszy",
 	"tag-newcomer_task_add_link": "Zasugerowano edycję: dodanie linków",
 	"tag-newcomer_task_add_link-description": "Edycje zasugerowane przez moduł sugerowanych edycji z witryny domowej dla nowicjuszy, polegające na dodaniu linków wewnętrznych",
@@ -332,7 +333,7 @@
 	"growthexperiments-addlink-context-intro": "Czy powinno to linkować do _____?",
 	"growthexperiments-addlink-context-button-accept": "Tak",
 	"growthexperiments-addlink-context-button-reject": "Nie",
-	"growthexperiments-addlink-context-button-next": "Pomiń",
+	"growthexperiments-addlink-context-button-next": "Następny",
 	"growthexperiments-addlink-rejectiondialog-title": "Dlaczego nie jest to dobry link? <em>(Opcjonalnie)</em>",
 	"growthexperiments-addlink-rejectiondialog-message": "Twoja odpowiedź może pomóc ulepszyć jakość podpowiedzi sztucznej inteligencji.",
 	"growthexperiments-addlink-rejectiondialog-reason-already-linked": "Już jest podlinkowany wcześniej w artykule",

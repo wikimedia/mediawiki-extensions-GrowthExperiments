@@ -8,7 +8,8 @@
 			"Ladsgroup",
 			"Mardetanha",
 			"Reza1615",
-			"Vahedi"
+			"Vahedi",
+			"Mohammad ebz"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "فعال‌کردن تابلوی راهنمای ویرایشگر",
@@ -17,7 +18,7 @@
 	"growthexperiments-help-panel-submit-question-button-text": "ارسال",
 	"growthexperiments-help-panel-return-home-button-text": "انجام شد",
 	"growthexperiments-help-panel-editing-help-links-widget-header": "بهترین صفحه‌های کمک در مورد ویرایش",
-	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "برترین صفحه‌های کمک دربارهٔ ویرایش",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "مشاهدهٔ مقاله‌های راهنمای بیشتر",
 	"growthexperiments-help-panel-question-widget-header": "ارسال سؤال‌های شما به میز کمک",
 	"growthexperiments-help-panel-question-placeholder": "سلام بگویید و سؤال {{GENDER:$1|خود}} را بپرسید.",
 	"growthexperiments-help-panel-back-home": "بازگشت",
@@ -30,6 +31,7 @@
 	"growthexperiments-help-panel-postedit-footer": "نمایش ویرایش‌های پیشنهادی بیشتر",
 	"growthexperiments-help-panel-postedit-footer2": "بستن و ویرایش مجدد این مقاله",
 	"growthexperiments-help-panel-questionreview-title": "پرسش از میز کمک",
+	"growthexperiments-help-panel-questionreview-title-mentor": "از مربی خود بپرسید",
 	"growthexperiments-help-panel-questionreview-header": "وقتی پرسش را ارسال می‌کنید، این سؤال <strong>به صورت عمومی</strong> و با نام کاربری خودتان، «$2» در $1 منتشر می‌شود تا دیگر ویرایشگران داوطلب بتوانند به شما ظرف یک تا چند روز آتی پاسخ دهند.",
 	"growthexperiments-help-panel-questionreview-label": "پرسش شما",
 	"growthexperiments-help-panel-questionreview-include-article-title": "شامل عنوان صفحه با سوال من",
@@ -125,14 +127,21 @@
 	"tag-help_panel_question-description": "ویرایش توسط پانل کمک سوال ارسال شد",
 	"growthexperiments-help-panel-button-preheader-suggested-edits": "ویرایش‌های پیشنهادی",
 	"growthexperiments-help-panel-button-header-ask-help": "پرسش از میز کمک",
+	"growthexperiments-help-panel-button-header-ask-help-mentor": "از مربی خود درخواست کمک کنید",
 	"growthexperiments-help-panel-button-header-general-help": "کمک برای ویرایش عمومی",
 	"growthexperiments-help-panel-button-subheader-general-help": "جستجو برای سوال و خواندن برترین مقالات",
 	"growthexperiments-help-panel-button-subheader-ask-help": "گرفتن پاسخ از دیگر داوطلبان",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "نکات شروع سریع",
+	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|ویرایش}} · $2",
 	"growthexperiments-help-panel-general-help-title": "کمک برای ویرایش عمومی",
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "درباره ویرایش‌های پیشنهادی",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|شما}} از ویرایشگر متنی استفاده می‌کنید. این توصیه‌ها بیشتر در مورد ویرایشگر دیداری مفید هستند.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "رفتن به ویرایشگر دیداری",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|شما}} از ویرایشگر دیداری استفاده می‌کنید. این توصیه‌ها بیشتر در مورد ویرایشگر متنی مفید هستند.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "تغییر حالت به ویرایشگر متنی"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "تغییر حالت به ویرایشگر متنی",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "افزودن پیوند‌ها به افراد کمک می‌کند تا سریعتر یاد بگیرند.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|شما}} تصمیم خواهید گرفت که آیا کلمات یک مقاله {{SITENAME}} باید به مقاله‌های {{SITENAME}} دیگر پیوند داده شود یا خیر.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "ماه تنها <mark class=\"positive\">قمر طبیعی</mark> است که به دور <mark class=\"positive\">زمین</mark> <mark class=\"positive\">می‌چرخد</mark>.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "رهنمودها",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "جملهٔ نمونه"
 }

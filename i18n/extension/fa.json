@@ -2,8 +2,14 @@
 	"@metadata": {
 		"authors": [
 			"Mardetanha",
-			"Reza1615"
+			"Reza1615",
+			"Jeeputer",
+			"Mohammad ebz"
 		]
 	},
-	"growthexperiments-desc": "این افزونه شامل تجربیاتی است که توسط تیم رشد انجام شده."
+	"growthexperiments-desc": "این افزونه شامل تجربیاتی است که توسط تیم رشد انجام شده.",
+	"growthexperiments-config-validator-additional-fields": "پیکربندی جدید دارای کلیدهای پیکربندی است که نمی‌توان آن‌ها را در اینجا سفارشی‌سازی کرد.",
+	"growthexperiments-config-validator-error": "اعتبارسنجی $1 ناموفق بود: $2",
+	"growthexperiments-config-validator-datatype-mismatch": "انتظار می‌رفت که <code>$1</code> برابر <code>$2</code> باشد، اما <code>$3</code> بود",
+	"growthexperiments-config-validator-contentmodel-mismatch": "عدم تطابق مدل محتوا: فایل پیکربندی GrowthExperiments باید دارای مدل محتوای جی‌سان باشد، اما $1 شناسایی شد"
 }

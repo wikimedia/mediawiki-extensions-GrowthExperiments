@@ -1,8 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kly"
+			"Kly",
+			"Jonathan5566",
+			"LNDDYL",
+			"Neetp7k9",
+			"Pseudo Classes",
+			"Sunny00217",
+			"Xiplus",
+			"羊羊32521",
+			"魔琴"
 		]
 	},
-	"growthexperiments-desc": "此擴充套件包含由 Growth 團隊完成的試驗。"
+	"growthexperiments-desc": "此擴充套件包含由 Growth 團隊完成的試驗。",
+	"growthexperiments-config-validator-additional-fields": "新配置具有無法在此處自訂的配置鍵。",
+	"growthexperiments-config-validator-error": "驗證 $1 失敗：「$2」",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code>應該是<code>$2</code>，但是<code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "內容模型不匹配：GrowthExperiments 的配置檔案必須是 JSON 內容模型，但是目前配置檔案的內容模型是 $1"
 }

@@ -1,8 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Tofeiku"
+			"Tofeiku",
+			"Anakmalaysia"
 		]
 	},
-	"welcomesurvey-question-topics-option-history": "Sejarah"
+	"welcomesurvey-question-languages-label": "{{SITENAME}} terdapat dalam hampir 300. Adakah anda membaca dan menulis dalam mana-mana bahasa yang lain?",
+	"welcomesurvey-question-languages-placeholder": "Tambah {{PLURAL:$1|satu bahasa|sehingga $1 bahasa}}...",
+	"welcomesurvey-question-languages-maximum": "Anda telah mencapai jumlah bahasa maksimum."
 }

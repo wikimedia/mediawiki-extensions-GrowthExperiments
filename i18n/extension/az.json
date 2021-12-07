@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"NMW03"
+		]
+	},
+	"growthexperiments-desc": "Bu qadcet, İnkişaf komandası tərəfindən edilən təcrübələri ehtiva edir.",
+	"growthexperiments-config-validator-additional-fields": "Yeni konfiqurasiya burada redaktə edilə bilməyən konfiqurasiya açarları ehtiva edir.",
+	"growthexperiments-config-validator-error": "$1 üçün olan təsdiqləmə uğursuz oldu: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code>, <code>$2</code> olmalıdır, amma <code>$3</code> olaraq qeyd olunub.",
+	"growthexperiments-config-validator-contentmodel-mismatch": "Məzmun modeli xətası: GrowthExperiments konfiqurasiya faylı JSON məzmun modelinə sahib olmalıdır, $1 aşkar edildi."
+}

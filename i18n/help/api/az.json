@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"NMW03"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Mövcud istifadəçi üçün kömək paneli vasitəsilə göndərilən sualları idarə edin.",
+	"apihelp-helppanelquestionposter-param-body": "İstifadəçi tərəfindən verilən sualın mətni.",
+	"apihelp-helppanelquestionposter-param-source": "Sualın paylaşılma metodu.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "\"Yardım masasında soruş\" paneli",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-homepage": "Ana səhifədəki \"Mentordan soruş\" paneli",
+	"apihelp-helppanelquestionposter-paramvalue-source-mentor-helppanel": "Yardım panelindəki \"Mentordan soruş\" ekranı",
+	"apihelp-helppanelquestionposter-paramvalue-source-helppanel": "\"Yardım masasında soruş\" paneli (köhnə ad)",
+	"apihelp-helppanelquestionposter-paramvalue-source-homepage-mentorship": "Ana səhifədəki \"Mentordan soruş\" paneli (köhnə ad)",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Seçildiyi təqdirdə suala əlavə etmək üçün müvafiq başlıq.",
+	"apierror-mustbeloggedin-helppanelquestionposter": "Sual vermək üçün daxil olmalısınız."
+}

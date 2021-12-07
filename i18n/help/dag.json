@@ -3,7 +3,9 @@
 		"authors": [
 			"Alhassan Peter",
 			"Karimbaasani",
-			"Sir Amugi"
+			"Sir Amugi",
+			"Munkaila Sulemana",
+			"Ruky Wunpini"
 		]
 	},
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "N-zaŋdi sodolisi pahiri nyɛla din yɛn soŋ ka niriba bɔhindi yɔmyɔm.",
@@ -13,5 +15,6 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "So' shɜŋa di ni buɣisi maa pala wuzaligu dinxuɣu ni ni tooi yaɣi",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Bohimma sagsigu kam]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Zalisi",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "*Tim sooya din hankali ni chɛ ka ŋun karim di ni boori ni baham pam zaŋ chaŋ di pallo.\n\n*Tihi tabli ni sooli maa nyɛla din ni ʒiya lahabali maa shee.\n*Di ti bachi yɛri,yuuma,ni dabsa kalbu sooya\n*Di{{GENDER:$1|a yɛn}}n bi dihi tabli, yaɣama.",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Shɛhira yɛltɔɣili"
 }

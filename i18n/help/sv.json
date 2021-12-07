@@ -5,7 +5,8 @@
 			"Mjälten",
 			"Sabelöga",
 			"Technic2",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"JRyan"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Aktivera redigerarens hjälppanel",
@@ -134,5 +135,12 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Du}} använder wikitextredigeraren. Dessa redigeringstips är mest till hjälp för den visuella redigeraren.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Växla till visuellt redigeringsläge",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Du}} använder den visuella redigeraren. Dessa redigeringstips är till mest hjälp i wikitextredigeraren.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Växla till wikitextläge"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Växla till wikitextläge",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Att lägga till hjälper människor att lära sig snabbare.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|You}} kommer bestämma om ord i en {{SITENAME}} artikel kommer länka till andra {{SITENAME}} artiklar.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "Månen är den enda <mark class=\"positive\">naturliga satellit</mark> <mark class=\"positive\">i omloppsbana</mark> runt <mark class=\"positive\">jorden</mark>.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Ingen särskild kunskap om artikeln krävs för den här uppgiften.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Riktlinjer",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* Länka begrepp som en läsare kanske vill lära sig mer om.\n* Se till att länken går till rätt artikel.\n* Länka inte vanliga ord, år eller datum\n* Om {{GENDER:$1|you're}} inte är säker, skippa.",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Exempelmening"
 }

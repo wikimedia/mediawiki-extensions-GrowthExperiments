@@ -6,7 +6,8 @@
 			"Samat",
 			"Tacsipacsi",
 			"Teemeah",
-			"Tgr"
+			"Tgr",
+			"Dj"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Szerkesztési segítség panel engedélyezése",
@@ -135,5 +136,12 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Te}} a forráskód-szerkesztőt használod épp, a szerkesztési tippek azonban a vizuális szerkesztőhöz nyújtanak inkább segítséget.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Váltás vizuális szerkesztésre",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Te}} a vizuális szerkesztőt használod épp, a szerkesztési tippek azonban a forráskód-szerkesztéshez nyújtanak inkább segítséget.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Váltás forráskód szerkesztésére"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Váltás forráskód szerkesztésére",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Hivatkozások hozzáadásával az emberek gyorsabban tanulhatnak.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|Te}} fogod eldönteni, hogy egy {{SITENAME}}-szócikk szavai hivatkozzanak-e más {{SITENAME}}-szócikkekre.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "A Hold a <mark class=\"positive\">Föld</mark> körül keringő egyetlen <mark class=\"positive\">hold</mark>.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Nincs szükség különleges tudásra a szócikkről ehhez a feladathoz.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Irányelvek",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* Olyan fogalmakra hivatkozz, amikről az olvasó többet akarhat megtudni.\n* Győződj meg róla, hogy a hivatkozás a jó szócikkre mutat.\n* Ne tegyél hivatkozást gyakori szavakra, évekre és dátumokra.\n* Ha nem {{GENDER:$1|vagy}} biztos, inkább lépj tovább.",
+	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Példamondat"
 }

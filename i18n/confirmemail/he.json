@@ -4,12 +4,14 @@
 			"Amire80",
 			"BaRaN6161 TURK",
 			"Erelon",
-			"דגש חזק"
+			"דגש חזק",
+			"Leononon",
+			"דגש"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|מה זה?]])",
 	"growthexperiments-confirmemail-emailhelp": "כתובת דואר אלקטרוני נדרשת אם הסיסמה שלך תאבד.",
-	"growthexperiments-confirmemail-emailrecommended": "כתובת דוא\"ל (לא חובה)",
+	"growthexperiments-confirmemail-emailrecommended": "כתובת דוא\"ל (מומלץ)",
 	"growthexperiments-confirmemail-emailwarning": "נא לחפש דואר אלקטרוני מאיתנו כדי לאשר את הכתובת שלך.",
 	"growthexperiments-confirmemail-confirm-subject": "{{GENDER:|ברוך הבא|הברוכה הבאה|ברוך בואך}} לאתר {{SITENAME}}: נא לאשר את כתובת הדוא\"ל שלך",
 	"growthexperiments-confirmemail-confirm-body-html": "שלום $2,\n\nתודה על הוספת כתובת הדוא\"ל שלך לחשבון באתר {{SITENAME}}, שנרשמה מכתובת ה־IP $1.\n\nנא ללחוץ על הקישור להלן כדי לאשר שזאת כתובת הדוא\"ל שברצונך לקשר לחשבון שלך \"$2\":\n\n$3\n\n{{GENDER:$2|שום לב|שימי לב}}: קוד האישור הזה <strong>יפוג ב־$4</strong>.\n\nתודה,\n\n{{SITENAME}}\n\n----\n\nכדי לבטל את אישור כתובת הדוא\"ל (כי לא רשמת את החשבון או מכל סיבה אחרת), {{GENDER:$2|לחץ|לחצי}} על קישור הביטול הזה:\n\n$5",
