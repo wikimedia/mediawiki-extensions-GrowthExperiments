@@ -262,6 +262,9 @@
 			"homepage",
 			"variant"
 		],
+		"SpecialPageBeforeExecute": [
+			"welcomeSurvey"
+		],
 		"UserGetDefaultOptions": [
 			"helppanel",
 			"homepage",
