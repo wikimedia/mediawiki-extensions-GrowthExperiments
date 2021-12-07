@@ -84,7 +84,6 @@ class QualityGateDecorator implements TaskSuggester {
 						$context
 					),
 					'mobileOnly' => Util::isMobile( $context->getSkin() ),
-					'minimumCaptionCharacterLength' => $imageRecommendationTaskType->getMinimumCaptionCharacterLength()
 				] );
 			}
 			$linkRecommendationTaskType =

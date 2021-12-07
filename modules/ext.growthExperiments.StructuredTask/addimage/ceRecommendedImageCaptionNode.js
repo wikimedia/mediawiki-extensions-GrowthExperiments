@@ -1,5 +1,6 @@
 var suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
-	MIN_CAPTION_LENGTH = suggestedEditSession.qualityGateConfig[ 'image-recommendation' ].minimumCaptionCharacterLength;
+	taskTypes = require( '../../homepage/suggestededits/TaskTypes.json' ),
+	MIN_CAPTION_LENGTH = taskTypes[ 'image-recommendation' ].minimumCaptionCharacterLength;
 
 /**
  * @typedef mw.libs.ge.ce.RecommendedImageCaptionWarning

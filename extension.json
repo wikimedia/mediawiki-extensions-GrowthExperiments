@@ -865,6 +865,10 @@
 				{
 					"name": "homepage/suggestededits/config.json",
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
+				},
+				{
+					"name": "homepage/suggestededits/TaskTypes.json",
+					"callback": [ "GrowthExperiments\\HomepageHooks", "getTaskTypesJson" ]
 				}
 			],
 			"styles": [
