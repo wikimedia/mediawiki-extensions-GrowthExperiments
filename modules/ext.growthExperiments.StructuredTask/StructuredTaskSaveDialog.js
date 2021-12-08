@@ -18,7 +18,7 @@ OO.initClass( StructuredTaskSaveDialog );
 
 /**
  * @inheritDoc
- * @note Classes using the mixin should call this method instead of their parent method.
+ * @description Classes using the mixin should call this method instead of their parent method.
  */
 StructuredTaskSaveDialog.prototype.initialize = function () {
 	this.constructor.super.prototype.initialize.call( this );
@@ -30,17 +30,20 @@ StructuredTaskSaveDialog.prototype.initialize = function () {
 
 /**
  * @inheritDoc
- * @note Classes using the mixin should call this method instead of their parent method.
+ * @description Classes using the mixin should call this method instead of their parent method.
  */
 StructuredTaskSaveDialog.prototype.getSetupProcess = function ( data ) {
-	return this.constructor.super.prototype.getSetupProcess.call( this, data ).first( function () {
+	return this.constructor.super.prototype.getSetupProcess.call( this,
+		this.getDialogData( data )
+	).first( function () {
 		// Hide the preview and diff views if the user did not accept anything, and so submitting
 		// will cause no change to the article.
 		if ( !ve.init.target.hasEdits() ) {
 			data.canPreview = data.canReview = false;
-			data.saveButtonLabel = mw.message( 'growthexperiments-structuredtask-summary-submit' ).text();
+			data.saveButtonLabel = mw.message(
+				'growthexperiments-structuredtask-summary-submit'
+			).text();
 		}
-
 		this.setVisualDiffPreference();
 	}, this );
 };
@@ -161,12 +164,39 @@ StructuredTaskSaveDialog.prototype.onLoginButtonClicked = function () {
 };
 
 /**
- * Automatically add the page to the user's watchlist
+ * Get the field data for watchlist checkbox and watchlist expiry fields.
+ *
+ * This dialog data is used to construct the minor edit and watchlist checkboxes. In this case,
+ * only the watchlist checkbox should be shown.
+ *
+ * @param {Object} data
+ * @return {Object}
  */
-StructuredTaskSaveDialog.prototype.addToWatchlist = function () {
-	if ( this.checkboxesByName.wpWatchthis ) {
-		this.checkboxesByName.wpWatchthis.setSelected( true );
+StructuredTaskSaveDialog.prototype.getDialogData = function ( data ) {
+	var checkboxFields = data.checkboxFields || [],
+		checkboxesByName = data.checkboxesByName || {},
+		allowList = [ checkboxesByName.wpWatchthis, checkboxesByName.wpWatchlistExpiry ];
+
+	checkboxFields = checkboxFields.filter( function ( fieldLayout ) {
+		return allowList.indexOf( fieldLayout.getField() ) !== -1;
+	} );
+	return $.extend( {}, data, {
+		checkboxFields: checkboxFields
+	} );
+};
+
+/**
+ * Get the watchlist field (including the label and the watchlist expiry (when $wgWatchlistExpiry
+ * is true).
+ *
+ * @return {jQuery|undefined}
+ */
+StructuredTaskSaveDialog.prototype.getWatchlistCheckbox = function () {
+	if ( !this.checkboxesByName.wpWatchthis ) {
+		return;
 	}
+	this.$saveCheckboxes.addClass( 'ge-structuredTask-mwSaveDialog-watchlistCheckbox' );
+	return this.$saveCheckboxes;
 };
 
 /**
