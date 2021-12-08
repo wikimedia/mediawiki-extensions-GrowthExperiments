@@ -9,11 +9,13 @@
 	"growthexperiments-config-validator-error": "$1 validācija neizdevās: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "Tika gaidīts, ka <code>$1</code> būs <code>$2</code>, bet ir <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Satura modeļa neatbilstība: GrowthExperiments konfigurācijas failam jābūt JSON satura modelim, noteikts $1",
+	"growthexperiments-config-validator-array-toobig": "$1 satur pārāk daudz vienumu (atļauti ne vairāk kā $2)",
 	"growthexperiments-edit-config-disabled": "Kopienas konfigurācija šobrīd ir atspējota.",
 	"growthexperiments-edit-config-title": "Labot Growth konfigurāciju",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Pēdējo izmaiņu veicis [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Pēdējo izmaiņu veicis nezināms dalībnieks $1.",
 	"growthexperiments-edit-config-pretext": "Šī lapa ļauj labot [[:mw:Special:MyLanguage/Growth|Izaugsmes]] komandas iespēju konfigurāciju. Tā labos $1 tavā vārdā. Tu varēsi redzēt savas izmaiņas šīs lapas vēsturē.",
+	"growthexperiments-edit-config-feedback-headline": "Vai tev ir kādas idejas vai jautājumi par šo formu?",
 	"growthexperiments-edit-config-feedback-cta": "Sniedz atsauksmes",
 	"growthexperiments-edit-config-error-invalid-title": "Konfigurācijas lapa bija nekorekti konfigurēta",
 	"growthexperiments-edit-config-edit-summary": "Izmaiņu kopsavilkums",
@@ -55,5 +57,6 @@
 	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Veidnes, ko izmantot rakstu atrašanai, kam nepieciešamas vairāk atsauces",
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Lapa, kur jaunpienācēji var uzzināt vairāk par atsauču pievienošanu",
 	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Veidnes, ko izmantot rakstu atrašanai, kam nepieciešama atjaunināšana",
-	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Lapa, kur jaunpienācēji var uzzināt vairāk par rakstu atjaunināšanu"
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Lapa, kur jaunpienācēji var uzzināt vairāk par rakstu atjaunināšanu",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Infokastu veidnes"
 }

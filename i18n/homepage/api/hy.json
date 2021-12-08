@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Kareyac",
 			"Mari Avetisyan",
 			"Աշոտ1997"
 		]
@@ -10,5 +11,7 @@
 	"apihelp-homepagequestionstore-param-storage": "Հարցերի պահպանման վայրը։",
 	"apihelp-homepagequestionstore-param-userid": "Օգտագործողի ID-ն հարցեր ստանալու համար:",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Հարցեր չեն գտնվել։",
+	"apihelp-growthsetmentor-param-mentee": "Խնամարկյալի մասնակցային անունը",
+	"apihelp-growthsetmentor-param-mentor": "Մենթորի մասնակցային անունը",
 	"apihelp-growthsetmentor-param-reason": "Փոփոխության պատճառը"
 }
