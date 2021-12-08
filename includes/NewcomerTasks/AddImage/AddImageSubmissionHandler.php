@@ -13,6 +13,7 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use ManualLogEntry;
 use MediaWiki\Page\ProperPageIdentity;
 use MediaWiki\User\UserIdentity;
@@ -51,6 +52,9 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
 
+	/** @var TrackerFactory */
+	private $trackerFactory;
+
 	/** @var WANObjectCache */
 	private $cache;
 
@@ -59,6 +63,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param ConfigurationLoader $configurationLoader
+	 * @param TrackerFactory $trackerFactory
 	 * @param WANObjectCache $cache
 	 */
 	public function __construct(
@@ -66,12 +71,14 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
 		ConfigurationLoader $configurationLoader,
+		TrackerFactory $trackerFactory,
 		WANObjectCache $cache
 	) {
 		$this->cirrusSearchFactory = $cirrusSearchFactory;
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->configurationLoader = $configurationLoader;
+		$this->trackerFactory = $trackerFactory;
 		$this->cache = $cache;
 	}
 
@@ -106,6 +113,7 @@ class AddImageSubmissionHandler extends AbstractSubmissionHandler implements Rec
 		}
 		[ $accepted, $reasons ] = $status->getValue();
 		$imageRecommendation = $this->configurationLoader->getTaskTypes()['image-recommendation'];
+		$this->trackerFactory->setTaskTypeOverride( $imageRecommendation );
 
 		// Remove this image from being recommended in the future, unless it was rejected with
 		// one of the "not sure" options.

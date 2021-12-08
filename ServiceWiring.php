@@ -89,6 +89,7 @@ return [
 			$geServices->getTaskSuggesterFactory(),
 			$geServices->getNewcomerTasksUserOptionsLookup(),
 			$geServices->getNewcomerTasksConfigurationLoader(),
+			$geServices->getNewcomerTaskTrackerFactory(),
 			$services->getMainWANObjectCache()
 		);
 	},
@@ -105,7 +106,8 @@ return [
 			$services->getTitleFactory(),
 			$growthServices->getTaskSuggesterFactory(),
 			$growthServices->getNewcomerTasksUserOptionsLookup(),
-			$growthServices->getNewcomerTasksConfigurationLoader()
+			$growthServices->getNewcomerTasksConfigurationLoader(),
+			$growthServices->getNewcomerTaskTrackerFactory()
 		);
 	},
 
