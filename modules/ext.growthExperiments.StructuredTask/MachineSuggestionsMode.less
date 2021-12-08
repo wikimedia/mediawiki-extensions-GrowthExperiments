@@ -52,6 +52,13 @@
 			flex: 5;
 			border-right: 1px solid @wmui-color-base80;
 		}
+
+		.ve-ui-toolbar-group-save {
+			&.oo-ui-widget-disabled {
+				// Prevent interaction with the save tool when the group is disabled
+				pointer-events: none;
+			}
+		}
 	}
 
 	.mw-ge-machine-suggestions-title-toolgroup {
