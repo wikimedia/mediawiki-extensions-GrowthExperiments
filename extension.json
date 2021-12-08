@@ -860,6 +860,7 @@
 				"ext.growthExperiments.StructuredTask/addimage/dmRecommendedImageCaptionNode.js",
 				"ext.growthExperiments.StructuredTask/addimage/AddImageLinearDeleteKeyDownHandler.js",
 				"ext.growthExperiments.StructuredTask/addimage/AddImageCaptionInfoDialog.js",
+				"ext.growthExperiments.StructuredTask/addimage/AddImageUtils.js",
 				"utils/ext.growthExperiments.Utils.js",
 				"ui-components/HelpPanelButton.js",
 				{
@@ -1676,8 +1677,8 @@
 			"modules/ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 			"tests/qunit/ext.growthExperiments.StructuredTask/addlink/AddLinkArticleTarget.test.js",
 			"tests/qunit/ext.growthExperiments.StructuredTask/addlink/dataprovider.json",
-			"modules/ext.growthExperiments.StructuredTask/addimage/RecommendedImageViewer.js",
-			"tests/qunit/ext.growthExperiments.StructuredTask/addimage/RecommendedImageViewer.test.js",
+			"modules/ext.growthExperiments.StructuredTask/addimage/AddImageUtils.js",
+			"tests/qunit/ext.growthExperiments.StructuredTask/addimage/AddImageUtils.test.js",
 			"modules/ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
 			{
 				"name": "modules/help/data.json",

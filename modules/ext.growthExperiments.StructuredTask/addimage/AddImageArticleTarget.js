@@ -40,8 +40,8 @@ var StructuredTaskPreEdit = require( 'ext.growthExperiments.StructuredTask.PreEd
  * @typedef mw.libs.ge.ImageRecommendationSummary
  * @property {boolean} accepted Whether the image was accepted
  * @property {string} filename Image file name
- * @property {string} thumbUrl URL of the image thumbnail
  * @property {string} caption Entered value for the image caption
+ * @property {mw.libs.ge.RecommendedImageMetadata} metadata Image metadata
  *
  */
 
@@ -150,8 +150,8 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 		data = surfaceModel.getDocument().data,
 		NS_FILE = mw.config.get( 'wgNamespaceIds' ).file,
 		imageTitle = new mw.Title( imageData.image, NS_FILE ),
-		thumb = mw.util.parseImageUrl( imageData.metadata.thumbUrl ),
-		targetWidth, targetSrcWidth;
+		AddImageUtils = require( './AddImageUtils.js' ),
+		targetWidth, imageRenderData;
 
 	// Define the image to be inserted.
 	// This will eventually be passed as the data parameter to MWBlockImageNode.toDomElements.
@@ -166,7 +166,7 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 		this.getSurface().getView().$documentNode.width(),
 		MAX_IMAGE_DISPLAY_WIDTH
 	);
-	targetSrcWidth = Math.floor( targetWidth * window.devicePixelRatio );
+	imageRenderData = AddImageUtils.getImageRenderData( imageData.metadata, window, targetWidth );
 	linearModel = [
 		{
 			type: 'mwGeRecommendedImage',
@@ -184,12 +184,7 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 				// to the width of the article (with max width set to account for tablets).
 				width: targetWidth,
 				height: targetWidth * ( dimensions.height / dimensions.width ),
-				// Likewise only used in the editor UI. Work around an annoying quirk of MediaWiki
-				// where a thumbnail with the exact same size as the original is not always valid.
-				src: thumb.resizeUrl ?
-					thumb.resizeUrl( Math.min( targetSrcWidth,
-						imageData.metadata.originalWidth - 1 ) ) :
-					imageData.metadata.thumbUrl,
+				src: imageRenderData.src,
 				align: 'default',
 				filename: imageData.image,
 				originalClasses: [ 'mw-default-size' ],
@@ -399,7 +394,7 @@ AddImageArticleTarget.prototype.getSummaryData = function () {
 		summaryData = {
 			filename: imageData.displayFilename,
 			accepted: this.recommendationAccepted,
-			thumbUrl: imageData.metadata.thumbUrl,
+			metadata: imageData.metadata,
 			caption: ''
 		};
 	if ( this.recommendationAccepted ) {

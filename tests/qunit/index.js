@@ -10,4 +10,4 @@ require( './homepage/ext.growthExperiments.Homepage.Logger.test.js' );
 require( './homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditPagerWidget.test.js' );
 require( './homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.ErrorCardWidget.test.js' );
 require( './ext.growthExperiments.StructuredTask/addlink/AddLinkArticleTarget.test.js' );
-require( './ext.growthExperiments.StructuredTask/addimage/RecommendedImageViewer.test.js' );
+require( './ext.growthExperiments.StructuredTask/addimage/AddImageUtils.test.js' );

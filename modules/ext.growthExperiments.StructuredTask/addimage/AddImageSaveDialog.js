@@ -1,5 +1,6 @@
 var ImageSuggestionInteractionLogger = require( './ImageSuggestionInteractionLogger.js' ),
-	StructuredTaskSaveDialog = require( '../StructuredTaskSaveDialog.js' );
+	StructuredTaskSaveDialog = require( '../StructuredTaskSaveDialog.js' ),
+	IMAGE_PREVIEW_ASPECT_RATIO = 328 / 180;
 
 /**
  * Mixin for code sharing between AddImageDesktopSaveDialog and AddImageMobileSaveDialog.
@@ -107,18 +108,37 @@ AddImageSaveDialog.prototype.getRejectedContent = function () {
 };
 
 /**
+ * Get the image preview element
+ *
+ * @param {mw.libs.ge.ImageRecommendationSummary} summaryData
+ * @return {jQuery}
+ */
+AddImageSaveDialog.prototype.getImagePreview = function ( summaryData ) {
+	var AddImageUtils = require( './AddImageUtils.js' ),
+		$imagePreview = $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-imagePreview' ),
+		// Ideally this would be the width of the save dialog's content, but at this point the
+		// element is not yet attached to the DOM (getReadyProcess would give us the element width
+		// but the image preview would come in after the other elements are rendered).
+		imageRenderData = AddImageUtils.getImageRenderData( summaryData.metadata, window );
+	$imagePreview.css( {
+		backgroundImage: 'url(' + imageRenderData.src + ')',
+		// Maintain the aspect ratio of the image preview container
+		paddingTop: ( 1 / IMAGE_PREVIEW_ASPECT_RATIO * 100 ) + '%'
+	} );
+	return $imagePreview;
+};
+
+/**
  * Get the content element for accepted image suggestion
  *
  * @param {mw.libs.ge.ImageRecommendationSummary} summaryData
  * @return {jQuery}
  */
 AddImageSaveDialog.prototype.getAcceptedContent = function ( summaryData ) {
-	var $imagePreview = $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-imagePreview' ),
-		$caption = $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-caption' );
-	$imagePreview.css( 'background-image', 'url(' + summaryData.thumbUrl + ')' );
+	var $caption = $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-caption' );
 	$caption.text( summaryData.caption );
 	return $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-bodyContent' ).append( [
-		$imagePreview, $caption
+		this.getImagePreview( summaryData ), $caption
 	] );
 };
 
