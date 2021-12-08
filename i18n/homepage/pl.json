@@ -11,7 +11,8 @@
 			"Tar Lócesilion",
 			"The Polish",
 			"WTM",
-			"Woytecr"
+			"Woytecr",
+			"Msz2001"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Witaj}}, {{bidi:$1}}!",
@@ -290,6 +291,7 @@
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|wziął|wzięła|wziął/wzięła}} {{GENDER:$6|$3}} pod swoje skrzydła (brak poprzednich przewodników)",
 	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|ustawił|ustawiła|ustawił/ustawiła}} {{GENDER:$5|$7}} jako {{GENDER:$5|przewodnika|przewodniczkę|przewodnika/przewodniczkę}} {{GENDER:$6|$3}} (poprzedni {{GENDER:$4|przewodnik|przewodniczka|przewodnik/przewodniczka}}: $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|ustawił|ustawiła|ustawił/ustawiła}} {{GENDER:$5|$7}} jako {{GENDER:$5|przewodnika|przewodniczkę|przewodnika/przewodniczkę}} {{GENDER:$6|$3}} (brak poprzednich przewodników)",
+	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|zobaczył|zobaczyła|zobaczył(-a)}} $4 {{PLURAL:$4|sugestię|sugestie|sugestii}} linkowania w $3: $5 {{GENDER:$2|zaakceptował|zaakceptowała|zaakceptował(-a)}}, $6 {{GENDER:$2|odrzucił|odrzuciła|odrzucił(-a)}} i $7 {{GENDER:$2|pominął|pominęła|pominął(-ęła)}}",
 	"log-action-filter-growthexperiments-claimmentee": "Zmiana podopiecznych",
 	"log-action-filter-growthexperiments-setmentor": "Zmiana wikiprzewodnika",
 	"growthexperiments-homepage-claimmentee-invalid-username": "Podana nazwa nowicjusza(-ki) jest nieprawidłowa",

@@ -15,7 +15,8 @@
 			"沈澄心",
 			"羊羊32521",
 			"Xiplus",
-			"魔琴"
+			"魔琴",
+			"GuoPC"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "启用编者帮助面板",
@@ -54,7 +55,7 @@
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>明白了吗？</strong>点击“{{int:vector-view-edit}}”开始吧！",
 	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>明白了吗？</strong>请展开您想编辑的章节，并轻触铅笔图标。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "编修是对条目的编写进行小幅修正，例如订正错字、修正语法及改善标点。编修有助于条目更加专业可信。",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "从<mark class=\"negative\">地求</mark>到达水星带来了重大的技术挑战。",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "地球是太阳系中由内及外的第三<mark class=\"negative\">棵</mark>行星。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "若要做出改善，{{GENDER:|您}}只需要作出一两处小修改。{{GENDER:|您}}不需要处理整篇条目。也不需要对其主题有很深入的了解。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-rules1": "{{GENDER:|您}}可以修正行文间的错误，比如错别字、拗口的句子和不正确的标点。",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-rules1": "火星有<mark class=\"negative\">两两</mark>个卫星。",

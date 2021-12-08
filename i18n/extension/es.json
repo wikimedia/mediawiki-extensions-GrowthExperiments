@@ -7,7 +7,9 @@
 			"LORDZRAWN",
 			"MarcoAurelio",
 			"Mnivar",
-			"ZebaX2010"
+			"ZebaX2010",
+			"Avengium",
+			"Danniel07"
 		]
 	},
 	"growthexperiments-desc": "Esta extensión contiene experimentos llevados a cabo por el \"Growth team\" de la Fundación Wikimedia.",
@@ -16,10 +18,14 @@
 	"growthexperiments-config-validator-datatype-mismatch": "Se espera que <code>$1</code> sea <code>$2</code>, pero es <code>$3</code>",
 	"growthexperiments-config-validator-contentmodel-mismatch": "Discrepancia del modelo de contenido: el archivo de configuración de GrowthExperiments debe tener un modelo de contenido JSON, se detectó $1",
 	"growthexperiments-config-validator-newcomertasks-invalid-task-type-handler-id": "ID de controlador de tipo de tarea no válido: <code>$1</code> no es un valor válido",
+	"growthexperiments-edit-config-disabled": "Configuración de la comunidad está actualmente desactivada.",
+	"growthexperiments-edit-config-title": "Editar configuración de Growth",
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Última actualización por [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Última actualización por usuario desconocido $1.",
 	"growthexperiments-edit-config-pretext": "Esta página te permite editar la configuración de las funciones del equipo [[:mw:Special:MyLanguage/Growth|Crecimiento]]. Editarás $1 con tu nombre. Puedes ver tus cambios en el historial de esa página.",
 	"growthexperiments-edit-config-pretext-unprivileged": "Este formulario permite a los usuarios con privilegios editar la configuración de [[:mw:Special:MyLanguage/Growth| Crecimiento]] características del equipo.",
+	"growthexperiments-edit-config-feedback-headline": "¿Tienes ideas o preguntas sobre este formulario?",
+	"growthexperiments-edit-config-feedback-cta": "Dejar comentarios",
 	"growthexperiments-edit-config-error-invalid-title": "La página de configuración no se configuró correctamente",
 	"growthexperiments-edit-config-edit-summary": "Resumen de edición",
 	"growthexperiments-edit-config-config-changed": "Se cambió la configuración. Es posible que debas esperar unos minutos para que los cambios tengan efecto.",

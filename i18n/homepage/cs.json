@@ -392,7 +392,7 @@
 	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Návrhy",
 	"growthexperiments-structuredtask-editmode-selection-visual": "Vizuální editace",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-title": "Opustit návrhy?",
-	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Přepnutí editačního módu {{GENDER:$1|vám}} umožní uložit i další druhy editací. Dokončete kontrolu odkazů, abyste své změny {{GENDER:$1|uložil|uložila|uložili}}.",
+	"growthexperiments-structuredtask-editmode-confirmation-dialog-message": "Přepnutí editačního módu {{GENDER:$1|vám}} umožní uložit i další druhy editací. Abyste své doteď provedené změny {{GENDER:$1|uložil|uložila|uložili}}, dokončete prosím kontrolu všech návrhů.",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-confirm": "Přepnout bez odeslání",
 	"growthexperiments-structuredtask-editmode-confirmation-dialog-action-cancel": "Zrušit",
 	"growthexperiments-addlink-suggestions-outdated": "Jiný uživatel editoval tento článek, zatímco jste {{GENDER:|posuzoval|posuzovala|posuzovali}} návrhy. {{GENDER:|Vaše}} změny proto nemohly být uloženy."
