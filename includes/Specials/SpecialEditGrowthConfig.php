@@ -832,7 +832,6 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 
 			$suggestedEditsConfig[$taskType] = [
 				'disabled' => (bool)$data["${taskType}Disabled"],
-				'group' => $taskTypeData['difficulty'],
 				'templates' => $templates,
 				'excludedTemplates' => $excludedTemplates,
 				'excludedCategories' => $excludedCategories,
