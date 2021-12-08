@@ -10,6 +10,7 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskType;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
 use IDBAccessObject;
 use MalformedTitleException;
 use MediaWiki\Cache\LinkBatchFactory;
@@ -44,6 +45,8 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 	private $newcomerTasksUserOptionsLookup;
 	/** @var ConfigurationLoader */
 	private $configurationLoader;
+	/** @var TrackerFactory */
+	private $trackerFactory;
 
 	/**
 	 * @param LinkRecommendationHelper $linkRecommendationHelper
@@ -54,6 +57,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 	 * @param TaskSuggesterFactory $taskSuggesterFactory
 	 * @param NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup
 	 * @param ConfigurationLoader $configurationLoader
+	 * @param TrackerFactory $trackerFactory
 	 */
 	public function __construct(
 		LinkRecommendationHelper $linkRecommendationHelper,
@@ -63,7 +67,8 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 		TitleFactory $titleFactory,
 		TaskSuggesterFactory $taskSuggesterFactory,
 		NewcomerTasksUserOptionsLookup $newcomerTasksUserOptionsLookup,
-		ConfigurationLoader $configurationLoader
+		ConfigurationLoader $configurationLoader,
+		TrackerFactory $trackerFactory
 	) {
 		$this->linkRecommendationHelper = $linkRecommendationHelper;
 		$this->addLinkSubmissionRecorder = $addLinkSubmissionRecorder;
@@ -73,6 +78,7 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 		$this->taskSuggesterFactory = $taskSuggesterFactory;
 		$this->newcomerTasksUserOptionsLookup = $newcomerTasksUserOptionsLookup;
 		$this->configurationLoader = $configurationLoader;
+		$this->trackerFactory = $trackerFactory;
 	}
 
 	/** @inheritDoc */
@@ -116,6 +122,9 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 			return StatusValue::newFatal( 'growthexperiments-addlink-handler-notfound' );
 		}
 		$links = $this->normalizeTargets( $linkRecommendation->getLinks() );
+		/** @var LinkRecommendationTaskType $linkRecommendationTaskType */
+		$linkRecommendationTaskType = $this->configurationLoader->getTaskTypes()['link-recommendation'];
+		$this->trackerFactory->setTaskTypeOverride( $linkRecommendationTaskType );
 
 		$acceptedTargets = $this->normalizeTargets( $data['acceptedTargets'] ?: [] );
 		$rejectedTargets = $this->normalizeTargets( $data['rejectedTargets'] ?: [] );
@@ -135,8 +144,6 @@ class AddLinkSubmissionHandler extends AbstractSubmissionHandler implements Reco
 			$this->newcomerTasksUserOptionsLookup->getTopicFilter( $user )
 		);
 		if ( $taskSet instanceof TaskSet ) {
-			/** @var LinkRecommendationTaskType $linkRecommendationTaskType */
-			$linkRecommendationTaskType = $this->configurationLoader->getTaskTypes()['link-recommendation'];
 			$qualityGateConfig = $taskSet->getQualityGateConfig();
 			if ( isset( $qualityGateConfig[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount'] ) &&
 				$qualityGateConfig[LinkRecommendationTaskTypeHandler::TASK_TYPE_ID]['dailyCount'] >=
