@@ -3,6 +3,7 @@
 namespace GrowthExperiments\NewcomerTasks\TaskType;
 
 use MediaWiki\Json\JsonUnserializer;
+use MessageLocalizer;
 
 class ImageRecommendationTaskType extends TaskType {
 
@@ -113,6 +114,15 @@ class ImageRecommendationTaskType extends TaskType {
 	/** @inheritDoc */
 	public function getLearnMoreLink(): ?string {
 		return null;
+	}
+
+	/** @inheritDoc */
+	public function getViewData( MessageLocalizer $messageLocalizer ) {
+		return parent::getViewData( $messageLocalizer ) + [
+			'maxTasksPerDay' => $this->maxTasksPerDay,
+			'minimumCaptionCharacterLength' => $this->minimumCaptionCharacterLength,
+			'minimumImageSize' => $this->minimumImageSize,
+		];
 	}
 
 	/** @inheritDoc */
