@@ -300,7 +300,11 @@ class SpecialHomepage extends SpecialPage {
 	private function renderMobileSummary() {
 		$out = $this->getContext()->getOutput();
 		$modules = $this->getModules( true );
-		$out->addBodyClasses( 'growthexperiments-homepage-mobile-summary' );
+		$isOpeningOverlay = $this->getContext()->getRequest()->getFuzzyBool( 'overlay' );
+		$out->addBodyClasses( [
+			'growthexperiments-homepage-mobile-summary',
+			$isOpeningOverlay ? 'growthexperiments-homepage-mobile-summary--opening-overlay' : ''
+		] );
 		foreach ( $modules as $moduleName => $module ) {
 			$html = $this->getModuleRenderHtmlSafe( $module, IDashboardModule::RENDER_MOBILE_SUMMARY );
 			if ( $module->supports( IDashboardModule::RENDER_MOBILE_DETAILS ) ) {

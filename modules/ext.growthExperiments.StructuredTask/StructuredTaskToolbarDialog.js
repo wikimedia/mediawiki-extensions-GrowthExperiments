@@ -153,24 +153,6 @@ StructuredTaskToolbarDialog.prototype.setupHelpButton = function ( label ) {
 };
 
 /**
- * Tear down VE and show post-edit dialog
- *
- * Called when the user has skipped all suggestions
- */
-StructuredTaskToolbarDialog.prototype.endSession = function () {
-	// FIXME: Implement a fix in VisualEditor T282546
-	( ve.init.target.tryTeardown( true, 'navigate-read' ) || $.Deferred().resolve() ).then(
-		function () {
-			var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
-				suggestedEditSession = SuggestedEditSession.getInstance();
-
-			suggestedEditSession.setTaskState( SuggestedEditSession.static.STATES.CANCELLED );
-			suggestedEditSession.showPostEditDialog( { resetSession: true } );
-		}
-	);
-};
-
-/**
  * Return focus to the dialog, so that navigation with tab, Esc etc. works.
  */
 StructuredTaskToolbarDialog.prototype.regainFocus = function () {
@@ -195,6 +177,23 @@ StructuredTaskToolbarDialog.prototype.addArticleTitle = function () {
  */
 StructuredTaskToolbarDialog.prototype.getSuggestionLogActionData = function () {
 	return {};
+};
+
+/**
+ * Navigate to suggested edits feed (Special:Homepage on desktop and suggested edits overlay on top
+ * of Special:Homepage on mobile)
+ */
+StructuredTaskToolbarDialog.prototype.goToSuggestedEdits = function () {
+	var titleHash = '', queryParams = {
+		source: 'suggestion-skip'
+	};
+	if ( OO.ui.isMobile() ) {
+		titleHash = '#/homepage/suggested-edits';
+		queryParams.overlay = 1;
+	}
+	window.location.href = mw.Title.newFromText(
+		'Special:Homepage' + titleHash
+	).getUrl( queryParams );
 };
 
 module.exports = StructuredTaskToolbarDialog;

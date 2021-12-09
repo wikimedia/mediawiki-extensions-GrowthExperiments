@@ -276,7 +276,7 @@ RecommendedImageToolbarDialog.prototype.onSkipButtonClicked = function () {
 		var actionData = this.getSuggestionLogActionData();
 		if ( data && data.action === 'confirm' ) {
 			this.logger.log( 'confirm_skip_suggestion', actionData, logMetadata );
-			this.endSession();
+			this.goToSuggestedEdits();
 		} else {
 			this.logger.log( 'close', actionData, logMetadata );
 			this.regainFocus();

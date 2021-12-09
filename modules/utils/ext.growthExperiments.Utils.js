@@ -32,17 +32,25 @@
 	 *
 	 * @param {Object} url
 	 *  Object created by mw.Uri()
-	 * @param {string} queryParam
-	 *   The query param to remove from the URL.
+	 * @param {string|string[]} queryParam
+	 *   The query param(s) to remove from the URL.
 	 * @param {boolean} [useLiteralFragment]
 	 *   Whether to keep the fragment as is (instead of encoding it)
 	 */
 	function removeQueryParam( url, queryParam, useLiteralFragment ) {
-		var newUrl, fragment = '';
-		if ( !queryParam || !url.query[ queryParam ] ) {
+		var newUrl, fragment = '', queryParams;
+		if ( Array.isArray( queryParam ) ) {
+			queryParams = queryParam;
+		} else {
+			queryParams = [ queryParam ];
+		}
+
+		if ( !queryParams.length ) {
 			return;
 		}
-		delete url.query[ queryParam ];
+		queryParams.forEach( function ( param ) {
+			delete url.query[ param ];
+		} );
 
 		if ( Object.keys( url.query ).length === 1 && url.query.title ) {
 			// After removing the param only title remains. Rewrite to a prettier URL.

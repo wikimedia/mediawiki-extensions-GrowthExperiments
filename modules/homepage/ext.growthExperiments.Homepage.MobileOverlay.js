@@ -108,7 +108,17 @@
 						moduleName,
 						this.$el
 					);
+					this.onOverlayShown();
 				}.bind( this ) );
+		},
+
+		/**
+		 * Remove loading class once the overlay is shown
+		 */
+		onOverlayShown: function () {
+			$( document.body ).removeClass(
+				'growthexperiments-homepage-mobile-summary--opening-overlay'
+			);
 		}
 
 	} );
