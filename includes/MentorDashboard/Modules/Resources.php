@@ -70,7 +70,7 @@ class Resources extends BaseModule {
 			// resources module, they should be customizable by the wiki (via interface
 			// messages).
 			$this->formatLink(
-				'mw:Special:MyLanguage/Growth/Communities/How_to_introduce_yourself_as_a_mentor',
+				'mw:Special:MyLanguage/Growth/Communities/How to configure the mentors\' list',
 				$this->msg( 'growthexperiments-mentor-dashboard-resources-link-how-to-introduce' )->text()
 			),
 			$this->formatLink(
