@@ -3,6 +3,7 @@
 namespace GrowthExperiments\Mentorship\Hooks;
 
 use Config;
+use DeferredUpdates;
 use EchoAttributeManager;
 use EchoUserLocator;
 use GrowthExperiments\GrowthExperimentsServices;
@@ -13,10 +14,11 @@ use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\Util;
 use MediaWiki\Auth\Hook\LocalUserCreatedHook;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use Psr\Log\LogLevel;
 use Throwable;
 
-class MentorHooks implements LocalUserCreatedHook {
+class MentorHooks implements LocalUserCreatedHook, PageSaveCompleteHook {
 
 	/** @var Config */
 	private $wikiConfig;
@@ -106,5 +108,24 @@ class MentorHooks implements LocalUserCreatedHook {
 				], LogLevel::INFO );
 			}
 		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function onPageSaveComplete(
+		$wikiPage, $user, $summary, $flags, $revisionRecord, $editResult
+	) {
+		DeferredUpdates::addCallableUpdate( function () use ( $wikiPage ) {
+			$title = $wikiPage->getTitle();
+			$autoMentorsListTitle = $this->mentorManager->getAutoMentorsListTitle();
+			$manualMentorsListTitle = $this->mentorManager->getManualMentorsListTitle();
+			if (
+				( $autoMentorsListTitle && $title->equals( $autoMentorsListTitle ) ) ||
+				( $manualMentorsListTitle && $title->equals( $manualMentorsListTitle ) )
+			) {
+				$this->mentorManager->invalidateCache();
+			}
+		} );
 	}
 }

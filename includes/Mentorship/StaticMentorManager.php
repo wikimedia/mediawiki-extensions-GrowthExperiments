@@ -110,6 +110,11 @@ class StaticMentorManager extends MentorManager {
 	}
 
 	/** @inheritDoc */
+	public function getManualMentorsListTitle(): ?Title {
+		return null;
+	}
+
+	/** @inheritDoc */
 	public function getMentorshipStateForUser( UserIdentity $user ): int {
 		return MentorManager::MENTORSHIP_ENABLED;
 	}

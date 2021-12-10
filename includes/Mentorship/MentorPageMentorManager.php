@@ -311,7 +311,10 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 	/** @inheritDoc */
 	public function invalidateCache(): void {
-		if ( $this->getMentorsPage() !== null ) {
+		$autoMentorsList = $this->getAutoMentorsListTitle();
+		if ( $autoMentorsList && $autoMentorsList->exists() ) {
+			// only invalidate cache if the list exists, otherwise,
+			// makeCacheKeyWeightedAutoAssignedMentors would fail.
 			$this->cache->delete(
 				$this->makeCacheKeyWeightedAutoAssignedMentors()
 			);
@@ -440,6 +443,24 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function getManualMentorsListTitle(): ?Title {
+		if ( $this->manuallyAssignedMentorsPageName === null ) {
+			return null;
+		}
+
+		$title = $this->titleFactory->newFromText( $this->manuallyAssignedMentorsPageName );
+		if ( !$title ) {
+			throw new WikiConfigException(
+				'wgGEHomepageManualAssignmentMentorsList is invalid: {page}',
+				[ 'page' => $this->manuallyAssignedMentorsPageName ]
+			);
+		}
+		return $title;
+	}
+
+	/**
 	 * Get the WikiPage object for the mentor page.
 	 * @return WikiPage|null A page that's guaranteed to exist or null when no mentors page available
 	 * @throws WikiConfigException If the mentor page cannot be fetched due to misconfiguration.
@@ -467,13 +488,13 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 * @return WikiPage|null A page that's guaranteed to exist, or null if impossible to get.
 	 */
 	public function getManuallyAssignedMentorsPage(): ?WikiPage {
-		if ( $this->manuallyAssignedMentorsPageName === null ) {
+		$title = $this->getManualMentorsListTitle();
+
+		if ( !$title ) {
+			// page was not configured -- configuration is valid, do not throw
 			return null;
 		}
-
-		$title = $this->titleFactory->newFromText( $this->manuallyAssignedMentorsPageName );
-
-		if ( !$title || !$title->exists() ) {
+		if ( !$title->exists() ) {
 			throw new WikiConfigException(
 				'wgGEHomepageManualAssignmentMentorsList is invalid: {page}',
 				[ 'page' => $this->manuallyAssignedMentorsPageName ]

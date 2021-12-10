@@ -185,12 +185,20 @@ abstract class MentorManager implements ExpirationAwareness {
 	abstract public function getManuallyAssignedMentors(): array;
 
 	/**
-	 * Link to the list of mentors, if there is any
+	 * Link to the auto-assigned list of mentors, if there is any
 	 *
 	 * @return Title|null Null only if the page is not configured
 	 * @throws WikiConfigException If the mentor page cannot be fetched due to misconfiguration.
 	 */
 	abstract public function getAutoMentorsListTitle(): ?Title;
+
+	/**
+	 * Link to the manual list of mentors, if there is any
+	 *
+	 * @return Title|null Null only if the page is not configured
+	 * @throws WikiConfigException If the mentor page cannot be fetched due to misconfiguration.
+	 */
+	abstract public function getManualMentorsListTitle(): ?Title;
 
 	/**
 	 * Checks state of mentorship for an user

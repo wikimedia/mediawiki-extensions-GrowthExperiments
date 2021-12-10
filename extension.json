@@ -324,7 +324,10 @@
 			"homepage"
 		],
 		"RecentChange_save": "homepage",
-		"PageSaveComplete": "config",
+		"PageSaveComplete": [
+			"config",
+			"mentor"
+		],
 		"SkinTemplateNavigation::Universal": "homepage",
 		"PersonalUrls": [
 			"homepage",
