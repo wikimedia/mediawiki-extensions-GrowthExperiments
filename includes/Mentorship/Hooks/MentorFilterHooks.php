@@ -1,11 +1,12 @@
 <?php
 
-namespace GrowthExperiments\Mentorship;
+namespace GrowthExperiments\Mentorship\Hooks;
 
 use ChangesListStringOptionsFilter;
 use ChangesListStringOptionsFilterGroup;
 use Config;
 use GrowthExperiments\MentorDashboard\MenteeOverview\StarredMenteesStore;
+use GrowthExperiments\Mentorship\MentorManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use HashBagOStuff;

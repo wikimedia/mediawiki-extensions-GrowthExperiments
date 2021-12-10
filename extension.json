@@ -199,19 +199,23 @@
 			"class": "GrowthExperiments\\ParserFunctionsHooks"
 		},
 		"mentor": {
-			"class": "GrowthExperiments\\Mentorship\\MentorHooks",
+			"class": "GrowthExperiments\\Mentorship\\Hooks\\MentorHooks",
 			"services": [
-				"GrowthExperimentsMultiConfig"
+				"GrowthExperimentsMultiConfig",
+				"GrowthExperimentsMentorManager"
 			]
 		},
 		"mentorfilters": {
-			"class": "GrowthExperiments\\Mentorship\\MentorFilterHooks",
+			"class": "GrowthExperiments\\Mentorship\\Hooks\\MentorFilterHooks",
 			"services": [
 				"GrowthExperimentsConfig",
 				"GrowthExperimentsMentorStore",
 				"GrowthExperimentsStarredMenteesStore",
 				"GrowthExperimentsMentorManager"
 			]
+		},
+		"mentoruseroptions": {
+			"class": "GrowthExperiments\\Mentorship\\Hooks\\MentorUserOptionsHooks"
 		},
 		"mentordashboard": {
 			"class": "GrowthExperiments\\MentorDashboard\\MentorDashboardHooks"
@@ -274,7 +278,7 @@
 			"homepage",
 			"tour",
 			"mentordashboard",
-			"mentor"
+			"mentoruseroptions"
 		],
 		"LocalUserCreated": [
 			"helppanel",
@@ -287,7 +291,7 @@
 			"helppanel",
 			"homepage",
 			"tour",
-			"mentor",
+			"mentoruseroptions",
 			"mentordashboard",
 			"variant"
 		],
@@ -339,7 +343,7 @@
 			"GrowthExperiments\\HomepageHooks::onWikimediaEventsShouldSchemaEditAttemptStepOversample"
 		],
 		"BeforeCreateEchoEvent": [
-			"GrowthExperiments\\Mentorship\\MentorHooks::onBeforeCreateEchoEvent"
+			"GrowthExperiments\\Mentorship\\Hooks\\MentorHooks::onBeforeCreateEchoEvent"
 		],
 		"FormatAutocomments": "homepage",
 		"ParserFirstCallInit": "parserfunctions",
