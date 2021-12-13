@@ -6,6 +6,8 @@ use GrowthExperiments\NewcomerTasks\Task\TaskSet;
 use GrowthExperiments\NewcomerTasks\Task\TaskSetFilters;
 use GrowthExperiments\NewcomerTasks\TaskSetListener;
 use JobQueueGroup;
+use LogicException;
+use MediaWiki\Json\JsonCodec;
 use MediaWiki\User\UserIdentity;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
@@ -20,7 +22,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 
 	use LoggerAwareTrait;
 
-	private const CACHE_VERSION = 3;
+	private const CACHE_VERSION = 4;
 
 	/** @var TaskSuggester */
 	private $taskSuggester;
@@ -34,23 +36,29 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 	/** @var TaskSetListener */
 	private $taskSetListener;
 
+	/** @var JsonCodec */
+	private $jsonCodec;
+
 	/**
 	 * @param TaskSuggester $taskSuggester
 	 * @param JobQueueGroup $jobQueueGroup
 	 * @param WANObjectCache $cache
 	 * @param TaskSetListener $taskSetListener
+	 * @param JsonCodec $jsonCodec
 	 */
 	public function __construct(
 		TaskSuggester $taskSuggester,
 		JobQueueGroup $jobQueueGroup,
 		WANObjectCache $cache,
-		TaskSetListener $taskSetListener
+		TaskSetListener $taskSetListener,
+		JsonCodec $jsonCodec
 	) {
 		$this->taskSuggester = $taskSuggester;
 		$this->cache = $cache;
 		$this->jobQueueGroup = $jobQueueGroup;
 		$this->logger = new NullLogger();
 		$this->taskSetListener = $taskSetListener;
+		$this->jsonCodec = $jsonCodec;
 	}
 
 	/** @inheritDoc */
@@ -74,10 +82,9 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 			return $this->taskSuggester->suggest( $user, $taskTypeFilter, $topicFilter, $limit, $offset, $options );
 		}
 
-		return $this->cache->getWithSetCallback(
+		$json = $this->cache->getWithSetCallback(
 			$this->cache->makeKey(
 				'GrowthExperiments-NewcomerTasks-TaskSet',
-				self::CACHE_VERSION,
 				$user->getId()
 			),
 			$this->cache::TTL_WEEK,
@@ -87,6 +94,10 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 				// This callback is always invoked each time getWithSetCallback is called,
 				// because we need to examine the contents of the cache (if any) before
 				// deciding whether to return those contents or if they need to be regenerated.
+
+				if ( $oldValue !== false ) {
+					$oldValue = $this->unserialize( $oldValue );
+				}
 
 				if ( $useCache
 					 && !$resetCache
@@ -124,7 +135,7 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 						$newValue->truncate( $limit );
 						$this->runTaskSetListener( $newValue );
 					}
-					return $newValue;
+					return $this->serialize( $newValue );
 				}
 
 				// We don't have a task set, or the taskset filters in the request don't match
@@ -172,14 +183,15 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 					'useCache' => $useCache,
 					'taskCount' => ( $result instanceof TaskSet ) ? $result->count() : null,
 				] );
-				return $result;
+				return $this->serialize( $result );
 			},
 			// minAsOf is used to reject values below the defined timestamp. By
 			// settings minAsOf = INF (PHP's constant for the infinite), we are
 			// telling WANObjectCache to always invoke the callback. See
 			// callback comment for more on why.
-			[ 'minAsOf' => INF ]
+			[ 'minAsOf' => INF, 'version' => self::CACHE_VERSION ]
 		);
+		return $this->unserialize( $json );
 	}
 
 	/** @inheritDoc */
@@ -196,6 +208,39 @@ class CacheDecorator implements TaskSuggester, LoggerAwareInterface {
 			return;
 		}
 		$this->taskSetListener->run( $taskSet );
+	}
+
+	/**
+	 * Serialize a value for caching. Serializing StatusValue is left to the default caching logic.
+	 * @param TaskSet|StatusValue $value
+	 * @return string|StatusValue
+	 */
+	private function serialize( $value ) {
+		if ( $value instanceof TaskSet ) {
+			return $this->jsonCodec->serialize( $value );
+		} elseif ( $value instanceof StatusValue ) {
+			return $value;
+		} else {
+			$type = gettype( $value );
+			if ( $type === 'object' ) {
+				$type = get_class( $value );
+			}
+			throw new LogicException( 'Unexpected type ' . $type );
+		}
+	}
+
+	/**
+	 * Unserialize a cached value. StatusValue is handled by PHP serialization so we just pass
+	 * it through here.
+	 * @param string|StatusValue $value
+	 * @return TaskSet|StatusValue
+	 */
+	private function unserialize( $value ) {
+		if ( $value instanceof StatusValue ) {
+			return $value;
+		} else {
+			return $this->jsonCodec->unserialize( $value, TaskSet::class );
+		}
 	}
 
 }

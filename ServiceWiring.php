@@ -638,7 +638,8 @@ return [
 						'args' => [
 							$services->getJobQueueGroupFactory()->makeJobQueueGroup(),
 							$services->getMainWANObjectCache(),
-							new TaskSetListener( $services->getMainWANObjectCache() )
+							new TaskSetListener( $services->getMainWANObjectCache() ),
+							$services->getJsonCodec()
 						],
 					],
 					[

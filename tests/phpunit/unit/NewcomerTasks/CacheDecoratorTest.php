@@ -12,6 +12,7 @@ use GrowthExperiments\NewcomerTasks\TaskSuggester\TaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use HashBagOStuff;
 use JobQueueGroup;
+use MediaWiki\Json\JsonCodec;
 use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use PHPUnit\Framework\MockObject\Stub\ReturnArgument;
@@ -61,7 +62,8 @@ class CacheDecoratorTest extends MediaWikiUnitTestCase {
 			if ( $expectedResult instanceof Exception && $i === count( $calls ) - 1 ) {
 				$this->expectException( get_class( $expectedResult ) );
 			}
-			$cacheDecorator = new CacheDecorator( $suggester, $mockJobQueueGroup, $cache, $mockListener );
+			$cacheDecorator = new CacheDecorator( $suggester, $mockJobQueueGroup, $cache,
+				$mockListener, new JsonCodec() );
 			$result = $cacheDecorator->suggest( $call['user'], $call['taskTypeFilter'],
 				$call['topicFilter'], $call['limit'], $call['offset'], $call['options'] );
 		}
