@@ -7,7 +7,8 @@
 			"Leduyquang753",
 			"Tuanminh01",
 			"Tuyenduong97",
-			"Vinhtantran"
+			"Vinhtantran",
+			"Minh Nguyen"
 		]
 	},
 	"welcomesurvey": "Hoan nghênh, $1!",
@@ -18,10 +19,10 @@
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Bỏ qua}} khảo sát này",
 	"welcomesurvey-close-btn": "Đóng và quay lại $1",
 	"welcomesurvey-sidebar-privacy-title": "Chúng tôi tôn trọng sự riêng tư của bạn",
-	"welcomesurvey-sidebar-privacy-text": "Để tìm hiểu thêm về cách các phản hồi này được sử dụng, {{GENDER:$2|hãy xem}} khảo sát $1.",
-	"welcomesurvey-privacy-policy-link-text": "lời tuyên bố về quyền riêng tư",
-	"welcomesurvey-sidebar-editing-title": "Bắt đầu chỉnh sửa",
-	"welcomesurvey-sidebar-editing-text": "Hầu như mọi trang đều có thể được chỉnh sửa bởi bất kỳ ai và đã có hàng trăm sửa đổi được thực hiện mỗi giờ nhằm thêm nội dung, sửa lỗi và cải thiện chất lượng bài viết. Các trang sau có thể giúp bạn nếu {{GENDER:$1|bạn}} muốn đóng góp.",
+	"welcomesurvey-sidebar-privacy-text": "Tổ chức Wikimedia sẽ sử dụng các câu trả lời {{GENDER:$2|của bạn}} để giúp bạn bắt đầu sửa đổi {{SITENAME}}. $1.",
+	"welcomesurvey-privacy-policy-link-text": "Tìm hiểu thêm về dữ liệu về biên tập viên mới",
+	"welcomesurvey-sidebar-editing-title": "Bắt đầu sửa đổi",
+	"welcomesurvey-sidebar-editing-text": "Hầu như mọi trang đều có thể được sửa đổi bởi bất kỳ ai và đã có hàng trăm sửa đổi được thực hiện mỗi giờ nhằm thêm nội dung, sửa lỗi và cải thiện chất lượng bài viết. Các trang sau có thể giúp bạn nếu {{GENDER:$1}}bạn muốn đóng góp.",
 	"welcomesurvey-sidebar-editing-link1-text": "Hướng dẫn",
 	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:Hướng dẫn",
 	"welcomesurvey-sidebar-editing-link2-text": "Bàn giúp đỡ",
@@ -37,15 +38,15 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Khác",
 	"welcomesurvey-question-reason-option-other-label": "Khác (vui lòng mô tả)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Nhập}} lý do khác...",
-	"welcomesurvey-question-mentor-info": "Chúng tôi đang xem xét bắt đầu một chương trình để các biên tập viên có kinh nghiệm hơn giúp người dùng mới trong việc chỉnh sửa Wikipedia. {{GENDER:$1|Bạn}} có muốn được liên hệ để nhận trợ giúp chỉnh sửa không?",
+	"welcomesurvey-question-mentor-info": "Chúng tôi đang xem xét bắt đầu một chương trình để các biên tập viên có kinh nghiệm hơn giúp người dùng mới trong việc sửa đổi Wikipedia. {{GENDER:$1|Bạn}} có muốn được liên hệ để nhận trợ giúp sửa đổi không?",
 	"welcomesurvey-question-mentor-label": "Vâng, {{GENDER:$1|tôi}} quan tâm",
-	"welcomesurvey-question-edited-label": "Bạn đã từng chỉnh sửa Wikipedia chưa?",
+	"welcomesurvey-question-edited-label": "Bạn đã từng sửa đổi Wikipedia chưa?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Có, nhiều lần",
 	"welcomesurvey-question-edited-option-yes-few-label": "Có, một hoặc hai lần",
-	"welcomesurvey-question-edited-option-no-dunno-label": "Không, tôi không biết là tôi có thể chỉnh sửa Wikipedia",
+	"welcomesurvey-question-edited-option-no-dunno-label": "Không, tôi không biết là tôi có thể sửa đổi Wikipedia",
 	"welcomesurvey-question-edited-option-no-other-label": "Không, vì những lý do khác",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Tôi không nhớ",
 	"welcomesurvey-question-email-label": "Địa chỉ email (tùy chọn)",
-	"welcomesurvey-question-email-placeholder": "Nhập địa chỉ email của bạn...",
-	"welcomesurvey-question-email-help": "Chúng tôi nhận thấy bạn đã không nhập một email khi tạo tài khoản này. Email <strong>rất cần thiết</strong>, vì bạn sẽ cần một email để khôi phục tài khoản nếu bạn mất mật khẩu. LƯU Ý: Địa chỉ email của bạn sẽ không được tiết lộ khi người dùng khác liên lạc với bạn."
+	"welcomesurvey-question-email-placeholder": "Nhập địa chỉ thư điện tử của bạn…",
+	"welcomesurvey-question-email-help": "Chúng tôi nhận thấy bạn đã không nhập một địa chỉ thư điện tử khi tạo tài khoản này. Địa chỉ thư điện tử <strong>rất cần thiết</strong>, vì bạn sẽ cần nhập địa chỉ thư điện tử để khôi phục tài khoản nếu bạn mất mật khẩu. LƯU Ý: Địa chỉ thư điện tử của bạn sẽ không được tiết lộ khi người dùng khác liên lạc với bạn."
 }

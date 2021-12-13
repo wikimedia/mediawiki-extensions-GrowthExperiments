@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ankan"
+		]
+	},
+	"apihelp-homepagequestionstore-param-storage": "The storage location of the questions.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "কোনো প্রশ্ন পাওয়া যায়নি।",
+	"apihelp-growthsetmentor-param-mentee": "সাহায্যপ্রার্থীর ব্যবহারকারী নাম",
+	"apihelp-growthsetmentor-param-mentor": "মেন্টরের ব্যবহারকারী নাম",
+	"apihelp-growthsetmentor-param-reason": "পরিবর্তনের কারণ"
+}

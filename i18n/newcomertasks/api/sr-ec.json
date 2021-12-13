@@ -6,7 +6,7 @@
 	},
 	"apihelp-query+growthtasks-summary": "Прибавља препоруке задатака за новајлије.",
 	"apihelp-query+growthtasks-extended-description": "Предлаже сет чланака који имају неке нерешене проблеме (довољно једноставне да се новајлије могу позабавити њима).",
-	"apihelp-query+growthtasks-param-tasktypes": "Типови задатака на које треба ограничити резултате. Оставите празно да бисте прибавили све предлоге.",
+	"apihelp-query+growthtasks-param-tasktypes": "Врсте задатака на које треба ограничити резултате. Оставите празно да бисте прибавили све предлоге.",
 	"apihelp-query+growthtasks-param-topics": "Жељене теме чланка у предлозима задатака",
 	"apihelp-query+growthtasks-param-limit": "Највећи број предлога задатака",
 	"apihelp-query+growthtasks-param-debug": "Додаје податке о отклањању грешке у испис.",

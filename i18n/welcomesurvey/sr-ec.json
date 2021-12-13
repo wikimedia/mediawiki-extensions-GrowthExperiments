@@ -2,20 +2,21 @@
 	"@metadata": {
 		"authors": [
 			"BadDog",
-			"Zoranzoki21"
+			"Zoranzoki21",
+			"Kizule"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Добро дошли}}, $1!",
 	"welcomesurvey-save-confirmation-title": "Хвала! Одговори су сачувани.",
 	"welcomesurvey-save-confirmation-text": "Користићемо одговоре како бисмо вам пружили корисне начине за почетак рада на Википедији.",
-	"welcomesurvey-subtitle": "Помозите нам да побољшамо искуство на Википедији тако што ћете одговорити на неколико опционих питања.",
+	"welcomesurvey-subtitle": "Помозите нам да побољшамо искуство на Википедији тако што ћете одговорити на неколико изборних питања.",
 	"welcomesurvey-save-btn": "Заврши",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Прескочи}} анкету",
 	"welcomesurvey-close-btn": "Затвори и врати ме на страницу $1",
 	"welcomesurvey-sidebar-privacy-title": "Ценимо вашу приватност",
 	"welcomesurvey-sidebar-privacy-text": "Задужбина Викимедија ће користити одговоре како би {{GENDER:$2|вам}} помогла да почнете уређивати пројекат. $1.",
 	"welcomesurvey-privacy-policy-link-text": "Детаљније",
-	"welcomesurvey-sidebar-editing-title": "Почните да уређујете",
+	"welcomesurvey-sidebar-editing-title": "Започните уређивање",
 	"welcomesurvey-sidebar-editing-text": "Свако може да уређује готово сваку страницу. Сваког сата уредници објаве неколико стотина измена додајући садржај, исправљајући грешке и побољшавајући читљивост. Следеће странице вам могу бити од помоћи {{GENDER:$1|ако желите}} да допринесете.",
 	"welcomesurvey-sidebar-editing-link1-text": "Упутство",
 	"welcomesurvey-sidebar-editing-link1-title": "Википедија:Упутства",

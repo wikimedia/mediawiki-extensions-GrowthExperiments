@@ -1,8 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Veeven"
+			"Veeven",
+			"Chaduvari"
 		]
 	},
-	"growthexperiments-homepage-questionstore-noquestionsfound": "ప్రశ్నలేమీ కనబడలేదు."
+	"apihelp-homepagequestionstore-summary": "హోంపేజీ మాడ్యూళ్ళ ద్వారా పంపించబడ్డ, ఆకృతీకరించబడిన ప్రశ్నలను పొందండి",
+	"apihelp-homepagequestionstore-param-questionformat": "ప్రశ్నలను ఏ ఆకృతిలో పంపించాలి, ఉదాహరణకు, HTML.",
+	"apihelp-homepagequestionstore-param-storage": "ప్రశ్నలను భద్రపరచిన స్థానం.",
+	"apihelp-homepagequestionstore-param-userid": "ఏ వాడుకరి ఐడీకి చెందిన ప్రశ్నలను పొందాలి.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "ప్రశ్నలేమీ కనబడలేదు.",
+	"apihelp-growthsetmentor-summary": "వాడుకరికి గురువును కుదర్చండి. ఈ మార్పు బహిరంగంగా చిట్టా లోకి చేరుతుంది.",
+	"apihelp-growthsetmentor-param-mentee": "శిష్యుని వాడుకరిపేరు",
+	"apihelp-growthsetmentor-param-mentor": "గురువు వాడుకరిపేరు",
+	"apihelp-growthsetmentor-param-reason": "మార్పుకు కారణం"
 }

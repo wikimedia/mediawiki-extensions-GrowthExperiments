@@ -4,11 +4,12 @@
 			"Ainali",
 			"Mjälten",
 			"Technic2",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Sabelöga"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Välkommen}}, $1!",
-	"welcomesurvey-save-confirmation-title": "Tack! Din svar har sparats.",
+	"welcomesurvey-save-confirmation-title": "Tack! Ditt svar har sparats.",
 	"welcomesurvey-save-confirmation-text": "Dina svar kommer att hjälpa oss ge dig användbara sätt att börja på Wikipedia.",
 	"welcomesurvey-subtitle": "Hjälp oss att göra din upplevelse av Wikipedia bättre genom att besvara några valfria frågor.",
 	"welcomesurvey-save-btn": "Slutför",
@@ -25,10 +26,10 @@
 	"welcomesurvey-sidebar-editing-link2-title": "Wikipedia:Hjälpcentral",
 	"welcomesurvey-question-reason-label": "Varför skapade du ditt konto idag?",
 	"welcomesurvey-dropdown-option-select-label": "Välj...",
-	"welcomesurvey-question-reason-option-edit-typo-label": "För att korrigera en felstavning eller fel i en Wikipedia-artikel",
+	"welcomesurvey-question-reason-option-edit-typo-label": "För att korrigera en felstavning eller fel i en Wikipediaartikel",
 	"welcomesurvey-question-reason-option-edit-info-add-change-label": "För att utöka eller ändra informationen i en Wikipediaartikel",
 	"welcomesurvey-question-reason-option-add-image-label": "För att lägga till en bild i en Wikipediaartikel",
-	"welcomesurvey-question-reason-option-new-page-label": "För att skapa en ny Wikipedia-artikel",
+	"welcomesurvey-question-reason-option-new-page-label": "För att skapa en ny Wikipediaartikel",
 	"welcomesurvey-question-reason-option-program-participant-label": "Jag deltar i ett program, en klass eller ett evenemang",
 	"welcomesurvey-question-reason-option-read-label": "För att läsa Wikipedia",
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Övrigt",

@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ebraminio",
+			"Ladsgroup",
+			"Reza1615"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "گرفتن ویرایش‌های پیشنهادی مناسب برای کاربران تازه‌وارد",
+	"apihelp-query+growthtasks-extended-description": "پیشنهاد مجموعه‌ای از مقالات که برخی مسائل برجسته را به اندازه کافی برای یک ویرایشگر جدید، آسان کرده‌است.",
+	"apihelp-query+growthtasks-param-tasktypes": "انواع تکلیف برای محدود کردن نتایج. برای دریافت همه پیشنهادها خالی بماند.",
+	"apihelp-query+growthtasks-param-topics": "موضوع مقاله در ترجیح به عنوان فعالیت پیشنهادی",
+	"apihelp-query+growthtasks-param-limit": "حداکثر تعداد فعالیت‌های پیشنهادی",
+	"apihelp-query+growthtasks-param-debug": "داده‌های اشکال‌زدایی بیشتری به خروجی اضافه کن.",
+	"apihelp-query+growthtasks-example-1": "توصیه‌های لازم برای وظایف ویرایش کپی، برای کاربر فعلی را دریافت کنید.",
+	"apihelp-query+growthtasks-example-2": "بدست‌آوردن توصیه‌های لازم برای کاربر فعلی، با اطلاعات گسترده در مورد صفحات."
+}

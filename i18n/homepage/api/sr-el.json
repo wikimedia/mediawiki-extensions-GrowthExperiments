@@ -9,6 +9,6 @@
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Nijedno pitanje nije pronađeno.",
 	"apihelp-growthsetmentor-summary": "Postavljanje mentora korinicima; promena će biti javno evidentirana.",
 	"apihelp-growthsetmentor-param-mentee": "Korisničko ime novajlije",
-	"apihelp-growthsetmentor-param-mentor": "korisničko ime mentora",
-	"apihelp-growthsetmentor-param-reason": "razlog promene"
+	"apihelp-growthsetmentor-param-mentor": "Korisničko ime mentora",
+	"apihelp-growthsetmentor-param-reason": "Razlog promene"
 }

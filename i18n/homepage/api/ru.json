@@ -1,9 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Alexander Yukal"
+			"Alexander Yukal",
+			"Ailbeve"
 		]
 	},
+	"apihelp-homepagequestionstore-summary": "Получить отформатированные вопросы, размещенные через модули домашней страницы.",
+	"apihelp-homepagequestionstore-param-questionformat": "Формат для передачи вопросов, например, HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Хранилище вопросов.",
+	"apihelp-homepagequestionstore-param-userid": "Идентификатор пользователя для получения вопросов.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Вопросы не найдены.",
 	"apihelp-growthsetmentor-summary": "Установить наставника пользователя. Изменения будут зафиксированы публично.",
 	"apihelp-growthsetmentor-param-mentee": "Имя пользователя подопечного",
 	"apihelp-growthsetmentor-param-mentor": "Имя наставника",

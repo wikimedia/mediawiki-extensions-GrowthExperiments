@@ -1,14 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ата"
+			"Ата",
+			"DDPAT"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Отримати рекомендації завдань, які підходять новачкам.",
 	"apihelp-query+growthtasks-extended-description": "Пропонує набір статей з деякими очевидними проблемами, які новому редактору буде достатньо легко виправити.",
-	"apihelp-query+growthtasks-param-tasktypes": "Типи завдань, якими обмежити результати. Залиште пустим, щоб отримати усі пропозиції.",
+	"apihelp-query+growthtasks-param-tasktypes": "Типи завдань, якими обмежити результати. Залиште порожнім, щоб отримати усі пропозиції.",
 	"apihelp-query+growthtasks-param-topics": "Теми статей, яким віддавати перевагу у пропозиціях завдань.",
 	"apihelp-query+growthtasks-param-limit": "Максимальна кількість пропозицій завдань у виводі.",
-	"apihelp-query+growthtasks-example-1": "Отримати рекомендації для завдань корегування для поточного користувача.",
+	"apihelp-query+growthtasks-param-debug": "Додати дані зневадження у вивід.",
+	"apihelp-query+growthtasks-example-1": "Отримати рекомендації для завдань коригування для поточного користувача.",
 	"apihelp-query+growthtasks-example-2": "Отримати рекомендації для поточного користувача з розширеною інформацією про сторінки."
 }

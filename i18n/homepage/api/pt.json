@@ -1,12 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Hamilton Abreu"
+			"Hamilton Abreu",
+			"GoEThe"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Obter perguntas formatadas, publicadas através de módulos da página principal",
 	"apihelp-homepagequestionstore-param-questionformat": "O formato no qual devolver as perguntas, por exemplo HTML.",
 	"apihelp-homepagequestionstore-param-storage": "O local de armazenamento das perguntas.",
 	"apihelp-homepagequestionstore-param-userid": "O identificador do utilizador para o qual as perguntas serão obtidas.",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Não foi encontrada nenhuma pergunta."
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Não foi encontrada nenhuma pergunta.",
+	"apihelp-growthsetmentor-summary": "Definir o mentor do utilizador. A alteração terá um registo público.",
+	"apihelp-growthsetmentor-param-mentee": "Nome de utilizador do mentorado",
+	"apihelp-growthsetmentor-param-mentor": "Nome de utilizador do mentor",
+	"apihelp-growthsetmentor-param-reason": "Motivo da mudança"
 }

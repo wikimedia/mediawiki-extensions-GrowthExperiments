@@ -6,7 +6,16 @@
 			"Sumbukompor"
 		]
 	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Rahayu}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-account-header": "Akun wis kagawé",
 	"growthexperiments-homepage-userpage-button": "Gawé kaca naraguna",
-	"growthexperiments-homepage-email-button-unconfirmed": "Pranala anyar"
+	"growthexperiments-homepage-email-button-unconfirmed": "Pranala anyar",
+	"growthexperiments-homepage-email-button-confirmed": "Pilalan",
+	"growthexperiments-homepage-startediting-header": "Wiwit mbesut",
+	"growthexperiments-homepage-startediting-dialog-intro-back": "Wurung",
+	"growthexperiments-homepage-startediting-dialog-difficulty-back": "Balik",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Rampung",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Gampang",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-medium-label": "Sedhengan",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-hard-label": "Angèl"
 }

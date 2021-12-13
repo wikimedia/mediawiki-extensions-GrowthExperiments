@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"InsaneHacker",
+			"Nico"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Håndter spørgsmål stillet via hjælpepanelet for den nuværende bruger.",
+	"apihelp-helppanelquestionposter-param-body": "Indholdet af spørgsmålet, der blev stillet af brugeren.",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Den relevante titel, hvis valgt, der skal inkluderes sammen med spørgsmålet"
+}

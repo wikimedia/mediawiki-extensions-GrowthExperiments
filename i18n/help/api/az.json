@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"NMW03"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Mövcud istifadəçi üçün kömək paneli vasitəsilə göndərilən sualları idarə edin.",
+	"apihelp-helppanelquestionposter-param-body": "İstifadəçi tərəfindən verilən sualın mətni.",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Seçildiyi təqdirdə suala əlavə etmək üçün müvafiq başlıq."
+}

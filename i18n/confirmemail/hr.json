@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ponor"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|što je ovo?]])",
+	"growthexperiments-confirmemail-emailhelp": "Adresa e-pošte bit će potrebna ako ikad zaboravite zaporku.",
+	"growthexperiments-confirmemail-emailrecommended": "Adresa e-pošte (preporučeno)",
+	"growthexperiments-confirmemail-emailwarning": "Potražite poruku od nas u svojoj e-pošti kako biste potvrdili adresu.",
+	"growthexperiments-confirmemail-confirm-subject": "{{SITENAME}} Vam želi dobrodošlicu: molimo potvrdite adresu svoje e-pošte",
+	"growthexperiments-confirmemail-confirm-body-html": "Pozdrav, $2!\n\nHvala što ste dodali adresu e-pošte svome računu otvorenom s IP-adrese $1.\n\nMolimo Vas potvrdite da adresu želite pridružiti računu {{GENDER:$2|suradnika|suradnice}} »$2« pritiskom na dugme\n\n$3\n\nNapominjemo da poveznica za potvrdu <strong>istječe u $4</strong>.\n\nZahvaljujemo,\n\n{{SITENAME}}\n\n\n----\n\nAko niste otvorili ovaj račun ili ako zbog bilo kojeg drugog razloga želite otkazati ovu potvrdu, molimo Vas slijedite sljedeću poveznicu:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "Potvrdi adresu e-pošte",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "Pozdrav, $2!\n\nHvala što ste dodali adresu e-pošte svome računu otvorenom s IP-adrese $1.\n\nMolimo Vas potvrdite da adresu želite pridružiti računu {{GENDER:$2|suradnika|suradnice}} »$2«\n$3\n\nNapominjemo da poveznica za potvrdu <strong>istječe u $4</strong>.\n\nZahvaljujemo,\n\n{{SITENAME}}\n\n\n----\n\nAko niste otvorili ovaj račun ili ako zbog bilo kojeg drugog razloga želite otkazati ovu potvrdu, molimo Vas slijedite sljedeću poveznicu:\n\n$5"
+}

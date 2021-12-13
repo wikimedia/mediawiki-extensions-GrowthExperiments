@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ailbeve",
+			"DDPAT"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Получить подходящее заданию, которое рекомендовано для новичков.",
+	"apihelp-query+growthtasks-extended-description": "Предлагать ряд статей с некоторыми нерешенными проблемами, которые достаточно легко решить новому редактору.",
+	"apihelp-query+growthtasks-param-tasktypes": "Ограничить результаты конкретными типами задач. Оставить пустым для того чтобы получить все предложения.",
+	"apihelp-query+growthtasks-param-topics": "Предпочтительные темы статей в предложениях по задачам.",
+	"apihelp-query+growthtasks-param-limit": "Максимальное количество предлагаемых задач для возврата.",
+	"apihelp-query+growthtasks-param-debug": "Добавьте отладочные данные в вывод.",
+	"apihelp-query+growthtasks-example-1": "Получите рекомендации по заданию типа базового оформления статей для текущего пользователя.",
+	"apihelp-query+growthtasks-example-2": "Получить рекомендации по заданию для текущего пользователя с расширенной информацией о страницах."
+}

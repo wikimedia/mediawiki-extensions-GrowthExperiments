@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kushared",
+			"ئارام بکر"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|ئەمە چییە؟]])",
+	"growthexperiments-confirmemail-emailhelp": "ئیمەیڵ داواکراو دەبێت بۆ گەڕاندنەوەی وشەی نهێنیت",
+	"growthexperiments-confirmemail-emailrecommended": "ناونیشانی ئیمەیل (پێشنیار کراوە)",
+	"growthexperiments-confirmemail-emailwarning": "تکایە ئەو ئیمەیڵە بدۆزەرەوە کە لەلایەن ئێمەوە بۆتۆ نێردراوە.",
+	"growthexperiments-confirmemail-confirm-subject": "بەخێربێیت بۆ {{SITENAME}}: تکایە پشتڕاستی ئیمەیلەکەت بکە",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|سڵاو}} $2،\n\nسوپاس بۆ زۆرکردنی ئیمەیلەکەت لە هەژماری {{SITENAME}} کە لەڕێی ئایپی $1 تۆمارکراوە.\n\nتکایە کرتە لەسەر ئەم دوگمەیەی خوارەوە بکە بۆ ئەوەی پشتڕاستی ئیمەیلەکەت بکرێتەوە و لەگەڵ هەژمارەکەت ڕێکبخرێت \"$2\":\n\n$3\n\n\nتێبینی: ئەم کۆدی پشتڕاستکردنەوەیە <strong>ماوەکەی بەسەردەچێت لە $4</strong>.\n\nسوپاس،\n\n{{SITENAME}}\n\n----\n\nئەگەر بەهەر هۆکارێک بتەوێت ئەو ئیمەیلە لابەریت لەو هەژمارەی کە پێی تۆمارکراوە ئەوا کرتە لەسەر بەستەری پووچەڵکردنەوە بکە لە خوارەوە:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "ناونیشانی ئیمەیل پشتڕاست بکەرەوە",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|سڵاو}} $2,\n\nسوپاس بۆ زیادکردنی ئیمەیلەکەت لە هەژماری {{SITENAME}}، لە ئایپی ئەدرێسی $1 تۆمارکراوە.\n\nتکایە کرتە لەم بەستەرەی خوارەوە بکە بۆئەوەی ناونیشانی ئیمەیلەکەت پشتڕاست بکەینەوە\"$2\"\n\n$3\n\n\nتێبینی: ئەم کۆدی دڵنیاییە بەسەردەچێت لە $4.\n\n\nسوپاس،\n\n----\n\nبۆ پووچەڵکردنەوەی ئەم دڵنیابوونەوەی ئیمەیڵە، ئەوا کرتە لەسەر بەستەری پووچەڵکردنەوە بکە:\n\n$5"
+}

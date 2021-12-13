@@ -1,9 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Saederup92"
+			"Saederup92",
+			"InsaneHacker",
+			"Steenth"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|hvad er dette?]])",
-	"growthexperiments-confirmemail-emailrecommended": "E-mail adresse (anbefalet)"
+	"growthexperiments-confirmemail-emailhelp": "En email-adresse er påkrævet for at få adgang til din konto hvis du mister dit adgangskode.",
+	"growthexperiments-confirmemail-emailrecommended": "E-mailadresse (anbefalet)",
+	"growthexperiments-confirmemail-emailwarning": "Se efter en e-mail fra os for at bekræfte din e-mailadresse.",
+	"growthexperiments-confirmemail-confirm-subject": "Velkommen til {{SITENAME}}: Bekræft venligst din e-mailadresse",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Hej}} $2,\n\nTak fordi du tilføjede en e-mailadresse til din {{SITENAME}}-konto, oprettet fra IP-adresse $1.\n\nKlik venligst på nedenstående knap for at bekræfte, at du gerne vil tilknytte denne e-mailadresse til din konto \"$2\":\n\n$3\n\nBemærk: denne bekræftelseskode <strong>udløber d. $4</strong>.\n\nTak,\n\n{{SITENAME}}\n\n----\n\nFor at annullere bekræftelsen af denne e-mailadresse (fordi du ikke oprettede kontoen eller af enhver anden grund), klik på dette annulleringslink:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "Bekræft e-mailadresse.",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Hej}} $2,\n\nTak fordi du tilføjede en e-mailadresse til din {{SITENAME}}-konto, oprettet fra IP-adresse $1.\n\nKlik venligst på nedenstående knap for at bekræfte, at du gerne vil tilknytte denne e-mailadresse til din konto \"$2\":\n\n$3\n\nBemærk: denne bekræftelseskode udløber den $4.\n\nTak,\n\n{{SITENAME}}\n\n----\n\nFor at annullere bekræftelsen af denne e-mailadresse (fordi du ikke oprettede kontoen eller af enhver anden grund), klik på dette annulleringslink:\n\n$5"
 }

@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elitre (WMF)",
+			"Stefano",
+			"ValeJappo"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Ottieni raccomandazioni di compiti adatti ai nuovi arrivati.",
+	"apihelp-query+growthtasks-extended-description": "Suggerisce una serie di voci che hanno una serie di problemi notevoli abbastanza semplici da affrontare per un nuovo contributore.",
+	"apihelp-query+growthtasks-param-tasktypes": "Tipi di compiti ai quali limitare i risultati. Lasciare vuoto per ricevere tutti i suggerimenti.",
+	"apihelp-query+growthtasks-param-topics": "Argomenti da preferire nel suggerimento di compiti.",
+	"apihelp-query+growthtasks-param-limit": "Numero massimo di suggerimenti di compiti da visualizzare.",
+	"apihelp-query+growthtasks-param-debug": "Aggiungi informazioni di debug al risultato.",
+	"apihelp-query+growthtasks-example-1": "Ottieni raccomandazioni per compiti di tipo \"revisione di testo\" per l'utente corrente.",
+	"apihelp-query+growthtasks-example-2": "Ottieni raccomandazioni di compiti per l'utente corrente, con informazioni dettagliate sulle pagine."
+}

@@ -1,15 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"Omotecho"
+			"Omotecho",
+			"MathXplore",
+			"Shirayuki",
+			"UsagiNeko"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|これはどうしたらよいですか？]])",
-	"growthexperiments-confirmemail-emailhelp": "もしパスワードを忘れてしまったとき、メールを登録してあると回復することができます。",
+	"growthexperiments-confirmemail-emailhelp": "もしパスワードを忘れてしまったとき、メールを登録してあると回復できます。",
 	"growthexperiments-confirmemail-emailrecommended": "メールアドレス (推奨)",
 	"growthexperiments-confirmemail-emailwarning": "登録されたアドレスを確定するため、こちらからお送りするメールをお待ちください。",
 	"growthexperiments-confirmemail-confirm-subject": "{{SITENAME}}へようこそ。メールアドレスの確認をお願いします。",
-	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Hi}} $2さん、\nこの度は{{SITENAME}}のアカウントにつき、IPアドレス$1からメールアドレスを登録いただきありがとうございます。\n\nアカウント「$」にこの受信アドレスを紐付けしてよろしければ、以下のボタンを押して確認をお願いします。\n\n$3\n\nご注意：この確認コードの<strong>有効期限は$4</strong>です。\n\nよろしくお願いします。\n\n{{SITENAME}}\n\n----\n\nメールアドレスの確認をキャンセルするには（アカウント登録した覚えがないなどの場合）次の取り消しボタンを押してください。\n\n$5",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|こんにちは}}、$2さん\n\nこの度は{{SITENAME}}のアカウントにつき、IPアドレス$1からメールアドレスを登録いただきありがとうございます。\n\nアカウント「$2」にこの受信アドレスを紐付けしてよろしければ、以下のボタンを押して確認をお願いします。\n\n$3\n\nご注意：この確認コードの<strong>有効期限は$4</strong>です。\n\nよろしくお願いします。\n\n{{SITENAME}}\n\n----\n\nメールアドレスの確認をキャンセルするには（アカウント登録した覚えがないなどの場合）次の取り消しボタンを押してください。\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "メールアドレスの確認",
-	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Hi}} $2さん、\nこの度は{{SITENAME}}のアカウントにつき、IPアドレス$1からメールアドレスを登録いただきありがとうございます。\n\nアカウント「$」にこの受信アドレスを紐付けしてよろしければ、以下のボタンを押して確認をお願いします。\n\n$3\n\nご注意：この確認コードの有効期限は$4です。\n\nよろしくお願いします。\n\n{{SITENAME}}\n\n----\n\nメールアドレスの確認をキャンセルするには（アカウント登録した覚えがないなどの場合）次の取り消しボタンを押してください。\n\n$5"
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|こんにちは}}、$2さん\n\nこの度は{{SITENAME}}のアカウントにつき、IPアドレス$1からメールアドレスを登録いただきありがとうございます。\n\nアカウント「$2」にこの受信アドレスを紐付けしてよろしければ、以下のリンクを開いて確認をお願いします。\n\n$3\n\nご注意：この確認コードの有効期限は$4です。\n\nよろしくお願いします。\n\n{{SITENAME}}\n\n----\n\nメールアドレスの確認をキャンセルするには（アカウント登録した覚えがないなどの場合）次の取り消しリンクを開いてください。\n\n$5"
 }

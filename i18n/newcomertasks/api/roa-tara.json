@@ -1,0 +1,15 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Pigghie raccomandaziune de combite bbuène pe le curciule.",
+	"apihelp-query+growthtasks-extended-description": "Suggerisce 'na serie de vôsce ca onne 'na serie de probbleme notevole abbastanze facile da affrondà pe 'nu condrebbutore nuève.",
+	"apihelp-query+growthtasks-param-tasktypes": "Tipe de combite a le quale limità le resultate. Lasse vacande pe avè tutte le suggereminde.",
+	"apihelp-query+growthtasks-param-topics": "Arguminde da preferì jndr'à 'u suggerimende de attivitate.",
+	"apihelp-query+growthtasks-param-limit": "Numere massime de attivitate suggerite da turnà.",
+	"apihelp-query+growthtasks-param-debug": "Aggiunge le date de debug a 'u resultate.",
+	"apihelp-query+growthtasks-example-1": "Pigghie le raccomandaziune pe attivitate de tipe \"revisione de teste\" pe l'utende de mò.",
+	"apihelp-query+growthtasks-example-2": "Pigghie le raccomandaziune pe attivitate pe l'utende de mò, cu le 'mbormaizune estese sus a le pàggene."
+}

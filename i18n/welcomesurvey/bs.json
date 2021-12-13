@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Srđan"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|Dobro došao|Dobro došla|Dobro došli}}, $1!",
+	"welcomesurvey-save-confirmation-title": "Hvala! Odgovori su sačuvani.",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Preskoči}} anketu",
+	"welcomesurvey-close-btn": "Zatvori i vrati me na stranicu $1",
+	"welcomesurvey-sidebar-privacy-title": "Cijenimo Vašu privatnost",
+	"welcomesurvey-question-reason-label": "Šta Vas je navelo da napravite račun?",
+	"welcomesurvey-dropdown-option-select-label": "Izaberite..."
+}

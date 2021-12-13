@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Malikxan"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|Xush kelibsiz}}, $1!",
+	"welcomesurvey-save-confirmation-title": "Tashakkur! Javoblaringiz saqlandi.",
+	"welcomesurvey-save-confirmation-text": "Javoblaringiz sizga Vikipediyada boshlash uchun foydali usullarni taqdim etishimizda koʻmak beradi.",
+	"welcomesurvey-subtitle": "Bir nechta ixtiyoriy savollarga javob berish orqali bizga Vikipediyada malakangizni yaxshilashga yordam bering.",
+	"welcomesurvey-save-btn": "Bitirish",
+	"welcomesurvey-skip-btn": "Bu soʻrovni {{GENDER:$1|oʻtkazib yuborish}}",
+	"welcomesurvey-close-btn": "Yopish va $1 sahifasiga qaytish",
+	"welcomesurvey-sidebar-privacy-title": "Biz sizning maxfiyligingizni qadrlaymiz",
+	"welcomesurvey-sidebar-privacy-text": "Vikimedia Jamgʻarmasi {{GENDER:$2|javoblaringizdan}} {{SITENAME}}da tahrirlashni boshlashingizda yordam berish maqsadida foydalanadi. $1.",
+	"welcomesurvey-privacy-policy-link-text": "Yangi tahrirchilar toʻgʻrisida maʼlumot bilan batafsil tanishish",
+	"welcomesurvey-sidebar-editing-title": "Tahrirlashni boshlash",
+	"welcomesurvey-sidebar-editing-link1-text": "Qoʻllanma",
+	"welcomesurvey-sidebar-editing-link1-title": "Vikipediya:Qoʻllanma",
+	"welcomesurvey-sidebar-editing-link2-text": "Yangi kelganlar uchun yordam",
+	"welcomesurvey-sidebar-editing-link2-title": "Wikipedia:Help_desk",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Boshqa",
+	"welcomesurvey-question-reason-option-other-label": "Boshqa (iltimos, tasvirlab bering)",
+	"welcomesurvey-question-reason-other-placeholder": "Boshqa sabab {{GENDER:$1|kirit}}...",
+	"welcomesurvey-question-mentor-label": "Ha, {{GENDER:$1|Men qiziqaman}}",
+	"welcomesurvey-question-edited-option-yes-many-label": "Ha, koʻp marta",
+	"welcomesurvey-question-edited-option-yes-few-label": "Yoʻq, bir yoki ikki marta",
+	"welcomesurvey-question-edited-option-dont-remember-label": "Eslab qolmayman",
+	"welcomesurvey-question-email-label": "E-pochta manzili (majburiy emas)",
+	"welcomesurvey-question-email-placeholder": "E-pochta manzilingizni kiriting..."
+}

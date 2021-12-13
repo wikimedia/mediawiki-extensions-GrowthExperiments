@@ -1,0 +1,43 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ajeje Brazorf"
+		]
+	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Ciau}}, {{bidi:$1}}!",
+	"growthexperiments-homepage-tab": "Pàggina principali",
+	"growthexperiments-homepage-email-header-noemail": "Agghiunci la {{GENDER:$1|tò}} email",
+	"growthexperiments-homepage-email-header-unconfirmed": "Cunferma la {{GENDER:$1|tò}} email",
+	"growthexperiments-homepage-email-header-confirmed": "Email agghiunciuta",
+	"growthexperiments-homepage-email-button-noemail": "Agghiunci email",
+	"growthexperiments-homepage-email-button-confirmed": "Prifirenzi",
+	"growthexperiments-homepage-startediting-dialog-progress": "$1 di $2",
+	"growthexperiments-homepage-startediting-dialog-intro-back": "Annulla",
+	"growthexperiments-homepage-startediting-dialog-difficulty-forward-mobile": "Fattu",
+	"growthexperiments-homepage-startediting-dialog-difficulty-level-easy-label": "Fàcili",
+	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Caputu",
+	"growthexperiments-homepage-impact-mobilebody-articleedits": "<strong>$1</strong> {{PLURAL:$1|canciamentu|canciamenti}} ê vuci",
+	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|canciamentu|canciamenti}}",
+	"growthexperiments-tour-response-button-okay": "Caputu",
+	"growthexperiments-homepage-mentorship-mentor-edits": "{{PLURAL:$1|canciamentu|canciamenti}}",
+	"growthexperiments-homepage-suggestededits-tasktype-learn-more": "Àutri nfurmazzioni",
+	"growthexperiments-homepage-suggestededits-tasktype-time-links": "3 - 5 minuti",
+	"growthexperiments-homepage-suggestededits-tasktype-time-copyedit": "5 - 10 minuti",
+	"growthexperiments-homepage-suggestededits-tasktype-time-references": "15 - 20 minuti",
+	"growthexperiments-homepage-suggestededits-tasktype-time-expand": "20 - 30 minuti",
+	"growthexperiments-homepage-suggestededits-tasktype-time-update": "20 - 30 minuti",
+	"growthexperiments-homepage-suggestededits-difficulty-filter-label-easy": "Fàcili",
+	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-easy": "Fàcili",
+	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Fattu",
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "Fattu",
+	"growthexperiments-homepage-suggestededits-topic-name-biography": "Biugrafìa (tutti)",
+	"growthexperiments-homepage-suggestededits-topic-name-music": "Mùsica",
+	"growthexperiments-homepage-suggestededits-topic-name-sports": "Sport",
+	"growthexperiments-homepage-suggestededits-topic-name-africa": "Àfrica",
+	"growthexperiments-homepage-suggestededits-topic-name-asia": "Asia",
+	"growthexperiments-homepage-suggestededits-topic-name-history": "Storia",
+	"growthexperiments-homepage-suggestededits-topic-name-mathematics": "Matimàtica",
+	"growthexperiments-homepage-suggestededits-topic-name-technology": "Ticnoluggìa",
+	"growthexperiments-homepage-suggestededits-topics-button-topic-count": "$1 {{PLURAL:$1|argumentu|argumenti}}",
+	"growthexperiments-notification-body-mentor-change": "Mutivu: $1"
+}

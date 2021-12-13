@@ -3,7 +3,10 @@
 		"authors": [
 			"Ameisenigel",
 			"Bxalber",
-			"Metalhead64"
+			"Metalhead64",
+			"Reinhard Kraasch",
+			"Tkarcher",
+			"Umherirrender"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Willkommen}}, $1!",
@@ -13,14 +16,14 @@
 	"welcomesurvey-save-btn": "Beenden",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Überspringe}} diese Umfrage",
 	"welcomesurvey-close-btn": "Schließen und zurück zu $1",
-	"welcomesurvey-sidebar-privacy-title": "Wir wertschätzen deine Privatsphäre",
+	"welcomesurvey-sidebar-privacy-title": "Wir respektieren deine Privatsphäre",
 	"welcomesurvey-sidebar-privacy-text": "Um mehr darüber zu erfahren, wie diese optionalen Antworten verwendet werden, {{GENDER:$2|siehe}} bitte unsere $1.",
 	"welcomesurvey-privacy-policy-link-text": "Mehr erfahren",
 	"welcomesurvey-sidebar-editing-title": "Mit dem Bearbeiten anfangen",
 	"welcomesurvey-sidebar-editing-text": "Fast jede Seite kann von jedem bearbeitet werden und jede Stunde werden Hunderte von Änderungen durchgeführt, um Inhalte hinzuzufügen, Fehler zu korrigieren oder die Lesbarkeit zu verbessern. Die folgenden Seiten können helfen, falls du an einer Mitwirkung {{GENDER:$1|interessiert bist}}.",
 	"welcomesurvey-sidebar-editing-link1-text": "Anleitung",
 	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:Tutorial",
-	"welcomesurvey-sidebar-editing-link2-text": "Help Desk",
+	"welcomesurvey-sidebar-editing-link2-text": "Fragen von Neulingen",
 	"welcomesurvey-sidebar-editing-link2-title": "Wikipedia:Help_desk",
 	"welcomesurvey-question-reason-label": "Warum hast du heute dein Benutzerkonto erstellt?",
 	"welcomesurvey-dropdown-option-select-label": "Bitte auswählen …",

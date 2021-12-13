@@ -1,8 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"Saederup92"
+			"Saederup92",
+			"InsaneHacker"
 		]
 	},
-	"growthexperiments-homepage-questionstore-noquestionsfound": "Der blev ikke fundet noget spørgsmål."
+	"apihelp-homepagequestionstore-summary": "Hent formaterede spørgsmål indsendt via forsidemoduler.",
+	"apihelp-homepagequestionstore-param-questionformat": "Formatet spørgsmålene skal returneres i, f.eks. HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Stedet spørgsmålene lagres.",
+	"apihelp-homepagequestionstore-param-userid": "Bruger-ID'et for hvilket der skal indhentes spørgsmål.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Der blev ikke fundet nogle spørgsmål.",
+	"apihelp-growthsetmentor-summary": "Vælg, hvem der skal være mentor for denne bruger. Ændringen vil blive logget offentligt.",
+	"apihelp-growthsetmentor-param-mentee": "Mentee'ens brugernavn",
+	"apihelp-growthsetmentor-param-mentor": "Mentorens brugernavn",
+	"apihelp-growthsetmentor-param-reason": "Begrundelse for ændringen."
 }

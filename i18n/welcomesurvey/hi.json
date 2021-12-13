@@ -1,0 +1,22 @@
+{
+	"@metadata": {
+		"authors": [
+			"1997kB"
+		]
+	},
+	"welcomesurvey": "{{GENDER:$1|स्वागत}} $1 जी!",
+	"welcomesurvey-save-confirmation-title": "धन्यवाद! आपकी प्रतिक्रिया सहेज दी गयी है।",
+	"welcomesurvey-save-btn": "ख़त्म करें",
+	"welcomesurvey-close-btn": "बंद करे और $1 पर वापस जाए",
+	"welcomesurvey-sidebar-editing-link1-text": "अनुशिक्षण",
+	"welcomesurvey-sidebar-editing-link1-title": "विकिपीडिया:अनुशिक्षण",
+	"welcomesurvey-sidebar-editing-link2-text": "सहायता डेस्क",
+	"welcomesurvey-sidebar-editing-link2-title": "विकिपीडिया:सहायता डेस्क",
+	"welcomesurvey-question-reason-label": "आपने आज आपने खाता क्यों बनाया है?",
+	"welcomesurvey-dropdown-option-select-label": "कृपया चुनें...",
+	"welcomesurvey-question-reason-option-edit-typo-label": "किसी विकिपीडिया लेख की ग़लती या त्रुटि हटाएँ",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "किसी विकिपीडिया लेख में जानकारी जोड़े या बदलें",
+	"welcomesurvey-question-reason-option-add-image-label": "किसी विकिपीडिया लेख में चित्र जोड़े",
+	"welcomesurvey-question-reason-option-new-page-label": "एक नया विकिपीडिया लेख बनाएं",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "अन्य"
+}

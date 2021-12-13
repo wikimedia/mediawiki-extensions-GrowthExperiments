@@ -4,7 +4,8 @@
 			"Dvorapa",
 			"Martin Urbanec",
 			"Matěj Suchánek",
-			"Patriccck"
+			"Patriccck",
+			"Patrik L."
 		]
 	},
 	"welcomesurvey": "Vítejte, {{GENDER:$1|uživateli|uživatelko}} $1!",
@@ -15,8 +16,8 @@
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Přeskočit}} tento dotazník",
 	"welcomesurvey-close-btn": "Zavřít a jít zpět na stránku $1",
 	"welcomesurvey-sidebar-privacy-title": "Chráníme vaše soukromí",
-	"welcomesurvey-sidebar-privacy-text": "Abyste se dozvěděli více o tom, jak jsou odpovědi používány, {{GENDER:$2|můžete se podívat}} na $1 dotazníku.",
-	"welcomesurvey-privacy-policy-link-text": "zásady pro ochranu osobních údajů",
+	"welcomesurvey-sidebar-privacy-text": "Nadace Wikimedia použije {{GENDER:$2|vaše}} odpovědi k tomu, aby vám usnadnila začít editovat {{GRAMMAR:4sg|{{SITENAME}}}}. $1.",
+	"welcomesurvey-privacy-policy-link-text": "Zjistěte více o datech o nových editorech",
 	"welcomesurvey-sidebar-editing-title": "Začít s editací",
 	"welcomesurvey-sidebar-editing-text": "Téměř každá stránka může být editovaná kýmkoliv a každou hodinu jsou provedeny desítky změn přidávajících obsah, opravujících chyby a vylepšujících čitelnost. Následující stránky vám mohou pomoci, pokud {{GENDER:$1|chcete}} do Wikipedie také přispívat.",
 	"welcomesurvey-sidebar-editing-link1-text": "Průvodce",
@@ -27,7 +28,7 @@
 	"welcomesurvey-dropdown-option-select-label": "Prosím, vyberte...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "Abych opravil(a) chybu v článku na Wikipedii",
 	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Abych přidal(a) nebo změnil(a) informaci na Wikipedii",
-	"welcomesurvey-question-reason-option-add-image-label": "Abych přidal obrázek k článku na Wikipedii",
+	"welcomesurvey-question-reason-option-add-image-label": "Abych přidal(a) obrázek k článku na Wikipedii",
 	"welcomesurvey-question-reason-option-new-page-label": "Abych do Wikipedie přidal(a) další článek",
 	"welcomesurvey-question-reason-option-program-participant-label": "Wikipedii edituji ve škole, na kurzu či workshopu",
 	"welcomesurvey-question-reason-option-read-label": "Abych si mohl(a) Wikipedii číst",

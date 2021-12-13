@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Balajijagadesh"
+		]
+	},
+	"welcomesurvey-save-btn": "நிறைவு செய்க",
+	"welcomesurvey-sidebar-editing-link1-text": "பயிற்சி",
+	"welcomesurvey-sidebar-editing-link2-text": "ஒத்தாசைப் பக்கம்",
+	"welcomesurvey-dropdown-option-select-label": "தயவுகூர்ந்து தேர்ந்தெடுக்கவும்",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "பிற",
+	"welcomesurvey-question-edited-option-yes-many-label": "ஆம், பல முறை",
+	"welcomesurvey-question-edited-option-dont-remember-label": "எனக்கு நினைவில்லை",
+	"welcomesurvey-question-email-label": "மின்னஞ்சல் முகவரி (விருப்பத்தேர்வு)",
+	"welcomesurvey-question-email-placeholder": "உங்கள் மின்னஞ்சல் முகவரியை உள்ளிடுக..."
+}

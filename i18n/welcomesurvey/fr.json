@@ -7,7 +7,8 @@
 			"Trizek (WMF)",
 			"Urhixidur",
 			"Verdy p",
-			"Wladek92"
+			"Wladek92",
+			"Trizek"
 		]
 	},
 	"welcomesurvey": "Bienvenue, {{GENDER:$1|}}$1 !",
@@ -23,9 +24,9 @@
 	"welcomesurvey-sidebar-editing-title": "Contribuer pour la première fois",
 	"welcomesurvey-sidebar-editing-text": "Presque toutes les pages peuvent être modifiées par chacun, et des centaines de modifications sont faites chaque heure pour ajouter du contenu, corriger des erreurs, ou améliorer la lisibilité. Les pages suivantes peuvent vous aider si vous êtes intéressé{{GENDER:$1||e}} pour contribuer.",
 	"welcomesurvey-sidebar-editing-link1-text": "Tutoriel",
-	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:Tutoriel",
+	"welcomesurvey-sidebar-editing-link1-title": "Aide:Débuter",
 	"welcomesurvey-sidebar-editing-link2-text": "Service d’aide",
-	"welcomesurvey-sidebar-editing-link2-title": "Wikipedia:Help desk",
+	"welcomesurvey-sidebar-editing-link2-title": "Wikipédia:Forum des nouveaux",
 	"welcomesurvey-question-reason-label": "Pourquoi avez-vous créé votre compte aujourd’hui ?",
 	"welcomesurvey-dropdown-option-select-label": "Veuillez choisir...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "Pour corriger une faute d’orthographe ou une erreur dans un article sur Wikipédia",
@@ -37,7 +38,7 @@
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Autre",
 	"welcomesurvey-question-reason-option-other-label": "Autre (veuillez décrire)",
 	"welcomesurvey-question-reason-other-placeholder": "Saisissez{{GENDER:$1|}} un autre motif...",
-	"welcomesurvey-question-mentor-info": "Nous envisageons de démarrer un programme pour les contributeurs plus expérimentés pour aider les utilisateurs les plus récents à modifier. Êtes-vous intéressé{{GENDER:$1|e}} pour être contacté{{GENDER:$1|e}} afin d’obtenir de l’aide lorsque vous modifiez ?",
+	"welcomesurvey-question-mentor-info": "Nous envisageons de démarrer un programme où les contributeurs plus expérimentés aideraient les utilisateurs débutants à rédiger des articles. Souhaitez-vous être contacté{{GENDER:$1||e}} afin d’être aidé à rédiger des articles ?",
 	"welcomesurvey-question-mentor-label": "Oui, je suis intéressé{{GENDER:$1||e}}",
 	"welcomesurvey-question-edited-label": "Avez-vous déjà modifié Wikipédia ?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Oui, plusieurs fois",

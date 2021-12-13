@@ -4,7 +4,8 @@
 			"Spiritia",
 			"StanProg",
 			"Ted Masters",
-			"Vlad5250"
+			"Vlad5250",
+			"Vodnokon4e"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Добре дошъл|Добре дошла}}, $1!",
@@ -15,16 +16,23 @@
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Прескачане}} на анкетата",
 	"welcomesurvey-close-btn": "Затваряне и връщане обратно към $1",
 	"welcomesurvey-sidebar-privacy-title": "Ние ценим вашата лична информация",
-	"welcomesurvey-sidebar-privacy-text": "За да разберете как ще се използват тези незадължителни отговори,  {{GENDER:$2|вижте}} анкета $1.",
-	"welcomesurvey-privacy-policy-link-text": "за личните данни",
+	"welcomesurvey-sidebar-privacy-text": "Фондация Уикимедия ще използва {{GENDER:$2|Вашите}} отговори, за да Ви помогне да започнете да редактирате {{SITENAME}}. $1.",
+	"welcomesurvey-privacy-policy-link-text": "Научете повече за данните на нови редактори",
 	"welcomesurvey-sidebar-editing-title": "Как да започнем с редактирането",
+	"welcomesurvey-sidebar-editing-text": "Почти всяка страница може да бъде редактирана от всеки и всеки час се правят стотици промени за добавяне на съдържание, коригиране на грешки и подобряване на четливостта. Следващите страници могат да Ви помогнат, ако сте {{GENDER:$1|заинтересувани}} да допринасяте.",
 	"welcomesurvey-sidebar-editing-link1-text": "Ръководство",
 	"welcomesurvey-sidebar-editing-link1-title": "Уикипедия:Наръчник",
+	"welcomesurvey-sidebar-editing-link2-text": "Бюро за помощ",
+	"welcomesurvey-sidebar-editing-link2-title": "Уикипедия:Бюро_за_помощ",
 	"welcomesurvey-question-reason-label": "Защо създадохте сметката си днес?",
 	"welcomesurvey-dropdown-option-select-label": "Моля, изберете...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "За да коригирам правописна или друга грешка в статия на Уикипедия",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "За да добавя или коригирам информация към статия на Уикипедия",
+	"welcomesurvey-question-reason-option-add-image-label": "За да добавя снимка или изображение към статия на Уикипедия",
 	"welcomesurvey-question-reason-option-new-page-label": "За да създам нова статия в Уикипедия",
+	"welcomesurvey-question-reason-option-program-participant-label": "Участвам в програма, урок или събитие",
 	"welcomesurvey-question-reason-option-read-label": "За да чета Уикипедия",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Друго",
 	"welcomesurvey-question-reason-option-other-label": "Друга (моля, пояснете)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Въведете}} друга причина...",
 	"welcomesurvey-question-mentor-info": "Обмисляме създаването на програма, чрез която по-опитни редактори ще помагат на новодошлите с редактирането. {{GENDER:$1|Заинтересовани}} ли сте да се свържем с Вас, за да получите помощ при редактирането?",
@@ -36,5 +44,6 @@
 	"welcomesurvey-question-edited-option-no-other-label": "Не, по други причини",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Не си спомням",
 	"welcomesurvey-question-email-label": "Адрес за електронна поща (незадължително)",
-	"welcomesurvey-question-email-placeholder": "Въведете Вашия адрес за електронна поща..."
+	"welcomesurvey-question-email-placeholder": "Въведете Вашия адрес за електронна поща...",
+	"welcomesurvey-question-email-help": "Забелязахме, че не сте въвели електронна поща при създаването на този акаунт. Това е <strong>силно препоръчително</strong>, тъй като е необходима електронна поща за възстановяване на акаунта, ако загубите паролата си. ЗАБЕЛЕЖКА: Вашата електронна поща не се показва, когато други потребители се свързват с вас."
 }

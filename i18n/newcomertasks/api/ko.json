@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ykhwong"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "새 사용자에게 적절한 작업 권고사항을 가져옵니다.",
+	"apihelp-query+growthtasks-param-debug": "디버그 데이터를 출력에 추가합니다."
+}

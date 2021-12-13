@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"NGC 54"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "Obțineți întrebări în format publicate prin intermediul modulelor paginii acasă",
+	"apihelp-homepagequestionstore-param-questionformat": "Formatul în care să se întoarcă întrebările, de ex. HTML",
+	"apihelp-homepagequestionstore-param-storage": "Locația de depozitare a întrebărilor.",
+	"apihelp-homepagequestionstore-param-userid": "ID-ul de utilizator pentru care să obțineți întrebări.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Nu s-a găsit vreo întrebare.",
+	"apihelp-growthsetmentor-summary": "Setați mentorul utilizatorului. Schimbarea va fi afișată într-un jurnal public.",
+	"apihelp-growthsetmentor-param-mentee": "Numele de utilizator al ucenicului",
+	"apihelp-growthsetmentor-param-mentor": "Numele de utilizator al mentorului",
+	"apihelp-growthsetmentor-param-reason": "Motivul pentru schimbare"
+}

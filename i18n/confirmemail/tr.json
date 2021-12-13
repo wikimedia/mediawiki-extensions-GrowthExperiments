@@ -1,15 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"Hedda",
+			"MuratTheTurkish",
+			"Sayginer",
+			"ToprakM"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|bu nedir?]])",
 	"growthexperiments-confirmemail-emailhelp": "Parolanızı kaybederseniz hesabınızı kurtarmak için e-posta gerekir.",
 	"growthexperiments-confirmemail-emailrecommended": "E-posta adresi (önerilen)",
 	"growthexperiments-confirmemail-emailwarning": "Adresinizi doğrulamak için lütfen bizden bir e-posta arayın.",
-	"growthexperiments-confirmemail-confirm-subject": "{{SITENAME}} adresine hoş geldiniz: Lütfen e-posta adresinizi onaylayın",
-	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Merhaba}} $2,\n\n$1 IP adresinden kayıtlı olan {{SITENAME}} hesabınıza bir e-posta eklediğiniz için teşekkür ederiz.\n\nBunu \"$2\" hesabınıza bağlamak istediğiniz e-posta adresi olarak onaylamak için lütfen aşağıdaki düğmeye tıklayın:\n\n$3\n\nNot: bu onay kodunun <strong>$4 içinde bitiyor</strong>.\n\nTeşekkürler,\n\n{{SITENAME}}\n\n----\n\nE-posta adresi onayını iptal etmek için (hesabı kaydetmediğiniz veya başka bir nedenle olmadığınız için), bu iptal bağlantısını tıklayın:\n\n$5",
+	"growthexperiments-confirmemail-confirm-subject": "{{SITENAME}} sitesine hoş geldiniz: Lütfen e-posta adresinizi onaylayın",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Merhaba}} $2,\n\n$1 IP adresi üzerinden kaydolan {{SITENAME}} hesabınıza bir e-posta eklediğiniz için teşekkür ederiz.\n\nBunu \"$2\" hesabınıza bağlamak istediğiniz e-posta adresi olarak onaylamak için lütfen aşağıdaki düğmeye tıklayın:\n\n$3\n\nNot: bu onay kodunun <strong>$4 tarihinde bitiyor</strong>.\n\nTeşekkürler,\n\n{{SITENAME}}\n\n----\n\nE-posta adresi onayını iptal etmek için (bu hesap sizin değil veya başka bir nedenle), bu iptal bağlantısına tıklayın:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "E-posta adresini onayla",
-	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Merhaba}} $2,\n\n$1 IP adresinden kayıtlı olan {{SITENAME}} hesabınıza bir e-posta eklediğiniz için teşekkür ederiz.\n\nBunu \"$2\" hesabınıza bağlamak istediğiniz e-posta adresi olarak onaylamak için lütfen aşağıdaki bağlantıya tıklayın:\n\n$3\n\nNot: Bu onay kodu $4 de sona eriyor.\n\nTeşekkürler,\n\n{{SITENAME}}\n\n----\n\nE-posta adresi onayını iptal etmek için (hesabı kaydetmediğiniz veya başka bir nedenle olmadığınız için), bu iptal bağlantısını tıklayın:\n\n$5"
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Merhaba}} $2,\n\n$1 IP adresinden kayıtlı olan {{SITENAME}} hesabınıza bir e-posta eklediğiniz için teşekkür ederiz.\n\nBunu \"$2\" hesabınıza bağlamak istediğiniz e-posta adresi olarak onaylamak için lütfen aşağıdaki bağlantıya tıklayın:\n\n$3\n\nNot: bu onay kodu $4 tarihinde bitiyor.\n\nTeşekkürler,\n\n{{SITENAME}}\n\n----\n\nE-posta adresi onayını iptal etmek için (bu hesap sizin değil veya başka bir nedenle), bu iptal bağlantısına tıklayın:\n\n$5"
 }

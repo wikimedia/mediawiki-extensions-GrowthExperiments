@@ -4,5 +4,13 @@
 			"Papuass"
 		]
 	},
+	"apihelp-homepagequestionstore-summary": "Iegūt formatētus jautājumus, kas iesniegti no sākumlapas moduļiem",
+	"apihelp-homepagequestionstore-param-questionformat": "Formāts, kādā atgriezt jautājumus, piemēram, HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Jautājumu glabāšanas vieta.",
+	"apihelp-homepagequestionstore-param-userid": "Lietotāja ID, kam iegūt jautājumus.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Jautājumi nav atrasti.",
+	"apihelp-growthsetmentor-summary": "Iestatīt dalībnieka mentoru. Izmaiņa būs redzama publiskā žurnālā.",
+	"apihelp-growthsetmentor-param-mentee": "Audzēkņa lietotājvārds",
+	"apihelp-growthsetmentor-param-mentor": "Mentora lietotājvārds",
 	"apihelp-growthsetmentor-param-reason": "Nomaiņas iemesls"
 }

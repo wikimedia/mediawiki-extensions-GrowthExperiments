@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Fitoschido"
+			"Fitoschido",
+			"LORDZRAWN",
+			"ZebaX2010"
 		]
 	},
-	"apihelp-helppanelquestionposter-param-body": "El texto de la pregunta provisto por el usuario."
+	"apihelp-helppanelquestionposter-param-body": "El texto de la pregunta proporcionado por el usuario."
 }

@@ -2,14 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Dyolf77 (WMF)",
-			"ديفيد"
+			"ديفيد",
+			"Michel Bakni"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "{{GENDER:|احصل|احصلي}} على أسئلة منسقة منشورة عبر وحدات لوحة {{GENDER:|المستخدم|المستخدمة}}",
 	"apihelp-homepagequestionstore-param-questionformat": "التنسيق لإرجاع الأسئلة، مثل HTML.",
 	"apihelp-homepagequestionstore-param-storage": "موقع تخزين الأسئلة.",
 	"apihelp-homepagequestionstore-param-userid": "معرف المستخدم للحصول على أسئلة من أجله.",
-	"growthexperiments-homepage-questionstore-noquestionsfound": "لا توجد أسئلة.",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "لم يُعثر على أسئلة.",
 	"apihelp-growthsetmentor-summary": "تعيين مرشدي المستخدمين. سيتم نشر التغييرات علنا.",
 	"apihelp-growthsetmentor-param-mentee": "اسم المستخدم للمُرشَد(ة)",
 	"apihelp-growthsetmentor-param-mentor": "اسم المستخدم للمُرشِد(ة)",

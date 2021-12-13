@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
-			"ValeJappo"
+			"ValeJappo",
+			"Elitre (WMF)",
+			"Sannita"
 		]
 	},
-	"apihelp-helppanelquestionposter-summary": "Gestisci domande inviate tramite Pannello introduttivo dall'utente attuale.",
+	"apihelp-helppanelquestionposter-summary": "Gestisci domande inviate tramite il pannello introduttivo dall'attuale utente.",
 	"apihelp-helppanelquestionposter-param-body": "Il testo della domanda posta dall'utente.",
 	"apihelp-helppanelquestionposter-param-source": "Il componente alla fonte della domanda. Valori validi sono 'helppanel', 'homepage-help', e 'homepage-mentorship'",
 	"apihelp-helppanelquestionposter-param-relevanttitle": "Il titolo pertinente, se selezionato, da includere nella domanda."

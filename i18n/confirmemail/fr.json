@@ -5,15 +5,16 @@
 			"Gomoko",
 			"Nicolas NALLET",
 			"Thibaut120094",
-			"Wladek92"
+			"Wladek92",
+			"Pols12"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|qu'est-ce que c'est ?]])",
 	"growthexperiments-confirmemail-emailhelp": "Un courriel est nécessaire pour récupérer votre compte en cas de perte de votre mot de passe.",
-	"growthexperiments-confirmemail-emailrecommended": "Adresse courriel (recommandée)",
+	"growthexperiments-confirmemail-emailrecommended": "Adresse de courriel (recommandée)",
 	"growthexperiments-confirmemail-emailwarning": "Vous devriez avoir reçu un courriel de notre part vous permettant de vérifier votre adresse.",
 	"growthexperiments-confirmemail-confirm-subject": "Bienvenue sur {{SITENAME}} : merci de confirmer votre adresse courriel",
-	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Bonjour}} $2,\n\nMerci d’avoir ajouté une adresse de messagerie à votre compte de {{SITENAME}}, inscrit depuis l’adresse IP $1.\n\nVeuillez cliquer sur le bouton ci-dessous pour confirmer que c’est l’adresse de messagerie que vous voulez lier à votre compte « $2 » :\n\n$3\n\nNote : ce code de confirmation <strong>expire à $4</strong>.\n\nMerci,\n\n{{SITENAME}}\n\n----\n\nPour annuler cette confirmation d’adresse de messagerie (parce que vous n’avez pas enregistré le compte ou pour toute autre raison), cliquez sur ce lien d’annulation :\n\n$5",
-	"growthexperiments-confirmemail-confirm-button": "Confirmer l'adresse courriel",
-	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Bonjour}} $2,\n\nMerci d’avoir ajouté une adresse de messagerie à votre compte de {{SITENAME}}, inscrit depuis l’adresse IP $1.\n\nVeuillez cliquer sur le lien ci-dessous pour confirmer que c’est l’adresse de messagerie que vous voulez lier à votre compte « $2 » :\n\n$3\n\nNote : ce code de confirmation expire à $4.\n\nMerci,\n\n{{SITENAME}}\n\n----\n\nPour annuler cette confirmation d’adresse de messagerie (parce que vous n’avez pas enregistré le compte, ou pour toute autre raison), cliquer sur ce lien d’annulation :\n\n$5"
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Bonjour}} $2,\n\nMerci d’avoir ajouté une adresse de messagerie à votre compte de {{SITENAME}}, inscrit depuis l’adresse IP $1.\n\nVeuillez cliquer sur le bouton ci-dessous pour confirmer que c’est l’adresse de messagerie que vous voulez lier à votre compte « $2 » :\n\n$3\n\nNote : ce code de confirmation <strong>expire le $4</strong>.\n\nMerci,\n\n{{SITENAME}}\n\n----\n\nPour annuler cette confirmation d’adresse de messagerie (parce que vous n’avez pas enregistré le compte ou pour toute autre raison), cliquez sur ce lien d’annulation :\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "Confirmer l’adresse courriel",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Bonjour}} $2,\n\nMerci d’avoir ajouté une adresse de messagerie à votre compte de {{SITENAME}}, inscrit depuis l’adresse IP $1.\n\nVeuillez cliquer sur le lien ci-dessous pour confirmer que c’est l’adresse de messagerie que vous voulez lier à votre compte « $2 » :\n\n$3\n\nNote : ce code de confirmation expire le $4.\n\nMerci,\n\n{{SITENAME}}\n\n----\n\nPour annuler cette confirmation d’adresse de messagerie (parce que vous n’avez pas enregistré le compte, ou pour toute autre raison), cliquer sur ce lien d’annulation :\n\n$5"
 }

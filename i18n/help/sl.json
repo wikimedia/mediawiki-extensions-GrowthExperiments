@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Eleassar"
+		]
+	},
+	"growthexperiments-help-panel-postedit-footer": "Prikaži več predlaganih urejanj",
+	"growthexperiments-help-panel-suggestededits-title": "Predlagana urejanja",
+	"growthexperiments-help-panel-questioncomplete-title": "Postavite vprašanje",
+	"tag-help_panel_question": "vprašanje s podokna za pomoč",
+	"tag-help_panel_question-description": "Urejanje, opravljeno s postavitvijo vprašanja na podoknu za pomoč",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Predlagana urejanja",
+	"growthexperiments-help-panel-button-subheader-suggested-edits": "Namigi za hiter začetek",
+	"growthexperiments-help-panel-suggested-edits-faq-link-text": "O predlaganih urejanjih",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;Uporabljate urejavalnik izvorne kode. Ti nasveti za urejanje so najbolj koristni za vizualni urejevalnik.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Preklop na vizualni urejevalnik",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;Uporabljate vizualni urejevalnik. Ti nasveti so najbolj koristni za urejevalnik izvorne kode.",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Preklop na urejevalnik izvorne kode"
+}

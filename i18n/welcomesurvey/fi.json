@@ -3,8 +3,40 @@
 		"authors": [
 			"Cxz",
 			"Pyscowicz",
-			"Silvonen"
+			"Silvonen",
+			"Kyykaarme"
 		]
 	},
-	"welcomesurvey-skip-btn": "{{GENDER:$1|Ohita}} tämä kysely"
+	"welcomesurvey": "{{GENDER:$1|Tervetuloa}}, $1!",
+	"welcomesurvey-save-confirmation-title": "Kiitos! Vastauksesi on tallennettu.",
+	"welcomesurvey-save-confirmation-text": "Vastauksesi auttavat meitä tarjoamaan sinulle hyödyllisiä tapoja Wikipedian muokkaamisen aloittamiseen.",
+	"welcomesurvey-subtitle": "Auta meitä parantamaan Wikipedia-kokemustasi vastaamalla muutamaan vapaaehtoiseen kysymykseen.",
+	"welcomesurvey-save-btn": "Valmis",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Ohita}} tämä kysely",
+	"welcomesurvey-close-btn": "Sulje ja palaa sivulle $1",
+	"welcomesurvey-sidebar-privacy-title": "Arvostamme yksityisyyttäsi",
+	"welcomesurvey-sidebar-privacy-text": "Wikimedia-säätiö käyttää {{GENDER:$2|vastauksiasi}} auttaakseen sinua aloittamaan {{SITENAME}}n muokkaamisen. $1.",
+	"welcomesurvey-privacy-policy-link-text": "Lue lisää uusien käyttäjien datasta",
+	"welcomesurvey-sidebar-editing-title": "Muokkaamisen aloittaminen",
+	"welcomesurvey-sidebar-editing-text": "Lähes kaikkia sivuja voi kuka tahansa muokata, ja joka tunti tehdään satoja muutoksia, joilla lisätään sisältöä, korjataan virheitä ja parannetaan luettavuutta. Seuraavista sivuista voi olla apua, jos {{GENDER:$1|olet kiinnostunut}} osallistumaan.",
+	"welcomesurvey-question-reason-label": "Miksi loit tänään käyttäjätunnuksesi?",
+	"welcomesurvey-dropdown-option-select-label": "Valitse...",
+	"welcomesurvey-question-reason-option-edit-typo-label": "Korjatakseni kirjoitus- tai muun virheen Wikipedia-artikkelissa",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Lisätäkseni tai muuttaakseni tietoa Wikipedia-artikkelissa",
+	"welcomesurvey-question-reason-option-add-image-label": "Lisätäkseni kuvan Wikipedia-artikkeliin",
+	"welcomesurvey-question-reason-option-new-page-label": "Luodakseni uuden Wikipedia-artikkelin",
+	"welcomesurvey-question-reason-option-program-participant-label": "Osallistun kurssille tai tapahtumaan",
+	"welcomesurvey-question-reason-option-read-label": "Lukeakseni Wikipediaa",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Muu",
+	"welcomesurvey-question-reason-option-other-label": "Muu (kuvaile)",
+	"welcomesurvey-question-mentor-label": "Kyllä, {{GENDER:$1|olen kiinnostunut}}",
+	"welcomesurvey-question-edited-label": "Oletko koskaan muokannut Wikipediaa?",
+	"welcomesurvey-question-edited-option-yes-many-label": "Kyllä, monta kertaa",
+	"welcomesurvey-question-edited-option-yes-few-label": "Kyllä, kerran tai kaksi",
+	"welcomesurvey-question-edited-option-no-dunno-label": "En, en tiennyt voivani muokata Wikipediaa",
+	"welcomesurvey-question-edited-option-no-other-label": "En, muista syistä",
+	"welcomesurvey-question-edited-option-dont-remember-label": "En muista",
+	"welcomesurvey-question-email-label": "Sähköpostiosoite (vapaaehtoinen)",
+	"welcomesurvey-question-email-placeholder": "Kirjoita sähköpostiosoitteesi...",
+	"welcomesurvey-question-email-help": "Huomasimme, että et lisännyt sähköpostiosoitetta luodessasi käyttäjätilisi. Osoitteen lisääminen on <strong>erittäin suositeltavaa</strong>, koska sitä tarvitaan, jos unohdat salasanasi. HUOM: sähköpostiosoitettasi ei paljasteta, kun muut käyttäjät ottavat sinuun yhteyttä."
 }

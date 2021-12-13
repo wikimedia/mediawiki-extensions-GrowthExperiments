@@ -1,16 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"ToprakM"
 		]
 	},
-	"apihelp-homepagequestionstore-summary": "Ana sayfa modülleri aracılığıyla gönderilen formatlanmış soruları alın",
-	"apihelp-homepagequestionstore-param-questionformat": "Soruları döndürme biçimi; HTML.",
-	"apihelp-homepagequestionstore-param-storage": "Soruların depo yeri.",
+	"apihelp-homepagequestionstore-summary": "Anasayfa modülleri aracılığıyla yayınlanan biçimlendirilmiş sorular alın",
+	"apihelp-homepagequestionstore-param-questionformat": "Soruları döndürme biçimi, ör. HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Soruların saklanacağı yer.",
 	"apihelp-homepagequestionstore-param-userid": "Sorular için kullanıcı kimliği.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Soru bulunamadı.",
-	"apihelp-growthsetmentor-summary": "Kullanıcının mentorunu ayarlayın. Değişiklik herkese açık olarak kaydedilecek.",
-	"apihelp-growthsetmentor-param-mentee": "Mentee kullanıcısının adı",
-	"apihelp-growthsetmentor-param-mentor": "Mentorun kullanıcı adı",
-	"apihelp-growthsetmentor-param-reason": "Değişimin sebebi"
+	"apihelp-growthsetmentor-summary": "Kullanıcının danışmanını ayarlayın. Değişiklik herkese açık olarak kaydedilecek.",
+	"apihelp-growthsetmentor-param-mentee": "Danışmanlık edinen kullanıcının kullanıcı adı",
+	"apihelp-growthsetmentor-param-mentor": "Danışmanın kullanıcı adı",
+	"apihelp-growthsetmentor-param-reason": "Değişikliğin gerekçesi"
 }

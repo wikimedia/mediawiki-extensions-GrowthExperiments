@@ -4,6 +4,7 @@
 			"McDutchie"
 		]
 	},
-	"apihelp-helppanelquestionposter-param-email": "Adresse de e-mail optional, si le usator non ha definite un e-mail. Le e-mail del usator essera mittite a iste adresse, e un message de confirmation essera inviate.",
-	"apihelp-helppanelquestionposter-param-resendconfirmation": "Inviar un altere message de confirmation al adresse de e-mail existente del usator."
+	"apihelp-helppanelquestionposter-summary": "Gerer questiones ponite via le pannello de adjuta pro le usator actual.",
+	"apihelp-helppanelquestionposter-param-body": "Le texto del question fornite per le usator.",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Le titulo relevante, si es seligite, pro includer con le question."
 }

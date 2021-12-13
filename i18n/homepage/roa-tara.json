@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"BaRaN6161 TURK",
-			"Joetaras"
+			"Joetaras",
+			"Casadelproverbio"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Cià}}, {{bidi:$1}}!",
@@ -182,12 +183,16 @@
 	"growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard": "Tuéste",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-title": "Scacchie le tipe de cangiaminde",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-close": "Fatte",
+	"growthexperiments-homepage-suggestededits-topic-filters-close": "Fatte",
 	"growthexperiments-homepage-suggestededits-difficulty-filters-article-count": "<strong>$1</strong> {{PLURAL:$1|vôsce}} acchiate",
 	"growthexperiments-homepage-suggestededits-tasktype-name-copyedit": "Copyedit",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Iacchie le rifereminde",
 	"growthexperiments-homepage-suggestededits-tasktype-name-update": "Aggiorne le vôsce",
 	"growthexperiments-homepage-suggestededits-tasktype-name-expand": "Spanne le vôsce curte",
 	"growthexperiments-homepage-suggestededits-tasktype-name-links": "Aggiunge le collegaminde 'mbrà le vôsce",
+	"growthexperiments-homepage-suggestededits-topic-name-music": "Museche",
+	"growthexperiments-homepage-suggestededits-topic-name-sports": "Sport",
+	"growthexperiments-homepage-suggestededits-topic-name-architecture": "Architetture",
 	"growthexperiments-homepage-suggestededits-config-missingfield": "Configurazione pe le cangiaminde suggerite non valide: cambe mangande $1 pu tipe de attivitate o argomende $2",
 	"growthexperiments-homepage-suggestededits-config-invalidgroup": "Configurazione pe le cangiaminde suggerite non valide: gruppe non valide $1 pu tipe de attivitate $2",
 	"growthexperiments-homepage-suggestededits-config-missingmessage": "Configurazione pe le cangiaminde suggerite non valide: messàgge mangande $1 pu cambe $2",

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Johnstad Di Maria",
+			"Notanotheramy",
+			"Rachmat04"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Tangani pertanyaan yang dikirim melalui panel bantuan untuk pengguna sekarang.",
+	"apihelp-helppanelquestionposter-param-body": "\nTeks pertanyaan yang diberikan oleh pengguna.",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Judul yang relevan, jika dipilih, untuk disertakan dengan pertanyaan tersebut."
+}

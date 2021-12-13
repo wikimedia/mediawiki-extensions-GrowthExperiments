@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chaduvari"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "ప్రస్తుత వాడుకరి సహాయ ప్యానెల్ ద్వారా పంపించిన ప్రశ్నలకు సమాధానమివ్వండి.",
+	"apihelp-helppanelquestionposter-param-body": "వాడుకరి ఇచ్చిన ప్రశ్న లోని పాఠ్యం.",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "ప్రశ్నతో పాటు ఉండే సంబంధిత శీర్షిక -ఎంచుకుని ఉంటే."
+}

@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Skurz0",
+			"Townie",
+			"Xavier Dengra"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Atén preguntes fetes a través del Plafó d'Ajuda per l'usuari actual.",
+	"apihelp-helppanelquestionposter-param-body": "El text de la pregunta feta per l'usuari.",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "El títol pertinent, si està seleccionat, a incloure amb la pregunta."
+}

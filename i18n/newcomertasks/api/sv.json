@@ -5,6 +5,11 @@
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Få uppgifter rekommenderade för nybörjare.",
+	"apihelp-query+growthtasks-extended-description": "Föreslår ett antal artiklar som har åtgärdsbehov enkla nog för en nybörjare att ta sig an.",
+	"apihelp-query+growthtasks-param-tasktypes": "Uppgiftstyper att begränsa resultaten till. Lämna tomt för att få alla förslag.",
 	"apihelp-query+growthtasks-param-topics": "Artikelämnen att föredra i uppgiftsförslag.",
-	"apihelp-query+growthtasks-param-limit": "Maximalt antal uppdragsförslag att returnera."
+	"apihelp-query+growthtasks-param-limit": "Maximalt antal uppdragsförslag att returnera.",
+	"apihelp-query+growthtasks-param-debug": "Lägg till avbuggningsdata till resultatet.",
+	"apihelp-query+growthtasks-example-1": "Få uppgiftsrekommendationer för korrekturläsningsuppgifter för den aktuella användaren.",
+	"apihelp-query+growthtasks-example-2": "Få uppgiftsrekommendationer för den aktuella användaren med utökad information om sidorna."
 }

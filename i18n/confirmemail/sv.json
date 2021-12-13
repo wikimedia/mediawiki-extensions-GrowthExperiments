@@ -2,12 +2,16 @@
 	"@metadata": {
 		"authors": [
 			"Ainali",
-			"WikiPhoenix"
+			"WikiPhoenix",
+			"Sabelöga"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|vad är detta?]])",
+	"growthexperiments-confirmemail-emailhelp": "E-post krävs för att återställa ditt konto om du förlorar ditt lösenord.",
 	"growthexperiments-confirmemail-emailrecommended": "E-postadress (rekommenderas)",
 	"growthexperiments-confirmemail-emailwarning": "Håll utkik efter e-post från oss för att verifiera din adress.",
 	"growthexperiments-confirmemail-confirm-subject": "Välkommen till {{SITENAME}}: Var god bekräfta din e-postadress",
-	"growthexperiments-confirmemail-confirm-button": "Bekräfta e-postadress"
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Hej}} $2,\n\nTack för att du la till en e-postadress till ditt {{SITENAME}}konto som registrerades från IP-adressen $1.\n\nVänligen klicka på knappen nedan för att bekräfta att det här är e-postadressen du vill länka till ditt konto \"$2\":\n\n$3\n\nObs: denna bekräftelsekod <strong>löper ut $4</strong>.\n\nTack,\n\n{{SITENAME}}\n\n----\n\nFör att avbryta e-postadressbekräftelsen (för att du inte har skapat ett konto eller för något annat skäl) klicka på den här återkallelselänken:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "Bekräfta e-postadress",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Hej}} $2,\n\nTack för att du la till en e-postadress till ditt {{SITENAME}}-konto som registrerades från IP-adressen $1.\n\nVänligen klicka på knappen nedan för att bekräfta att det här är e-postadressen du vill länka till ditt konto \"$2\":\n\n$3\n\nObs: denna bekräftelsekod löper ut $4.\n\nTack,\n\n{{SITENAME}}\n\n----\n\nFör att avbryta e-postadressbekräftelsen (för att du inte har skapat ett konto eller för något annat skäl) klicka på den här återkallelselänken:\n\n$5"
 }

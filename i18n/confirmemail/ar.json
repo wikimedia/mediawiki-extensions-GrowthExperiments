@@ -3,12 +3,13 @@
 		"authors": [
 			"Dyolf77",
 			"Dyolf77 (WMF)",
-			"ديفيد"
+			"ديفيد",
+			"Michel Bakni"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|ما هذا؟]])",
 	"growthexperiments-confirmemail-emailhelp": "البريد الإلكتروني مطلوب لاستعادة حسابك إذا فقدت كلمة مرورك.",
-	"growthexperiments-confirmemail-emailrecommended": "عنوان البريد الإلكتروني (موصى به)",
+	"growthexperiments-confirmemail-emailrecommended": "عنوان البريد الإلكتروني (مستحسن)",
 	"growthexperiments-confirmemail-emailwarning": "من فضلك، {{GENDER:|ابحث|ابحثي}} في بريدك الإلكتروني عن رسالة صادرة منا للتحقق من عنوانك.",
 	"growthexperiments-confirmemail-confirm-subject": "مرحبا بك في {{SITENAME}}: من فضلك {{GENDER:|أكّد|أكّدي}} عنوان بريدك الإلكتروني",
 	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|مرحبا}} $2،\n\nشكرا على إضافة بريد إلكتروني إلى حسابك في {{SITENAME}}، المسجل من عنوان الآيبي $1. \n\nيُرجَى النقر على الزر أدناه للتأكيد على أن هذا البريد الإلكتروني هو الذي {{GENDER:$2|ترغب|ترغبين}} في ربطه بحسابك \"$2\": \n\n$3\n\nملاحظة: رمز التأكيد هذا <strong> ينتهي في $4</strong>.\n\nشكرا،\n\n{{SITENAME}}\n\n----\n\nلإلغاء تأكيد عنوان البريد الإلكتروني (لأنك لم {{GENDER:$2|تسجل|تسجلي}} الحساب أو لأي سبب آخر)، {{GENDER:$2|انقر|انقري}} فوق رابط الإلغاء هذا: \n\n$5",

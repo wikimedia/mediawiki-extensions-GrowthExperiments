@@ -1,8 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250"
+			"Vlad5250",
+			"Ailbeve",
+			"DDPAT",
+			"Kareyac",
+			"Kylaix",
+			"Nastua Buldakova",
+			"Pacha Tchernof",
+			"Умар"
 		]
 	},
-	"growthexperiments-desc": "Расширение содержит опыты, сделанные командой роста."
+	"growthexperiments-desc": "Данное расширение является результатом исследований Команды «Роста»."
 }

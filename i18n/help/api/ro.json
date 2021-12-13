@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"NGC 54"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Mânuiți întrebări publicate prin intermediul panoului de ajutor pentru utilizatorul actual.",
+	"apihelp-helppanelquestionposter-param-body": "Textul întrebării oferit de utilizator.",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Titlul relevant, dacă este selectat, cară se fie inclus cu întrebarea."
+}

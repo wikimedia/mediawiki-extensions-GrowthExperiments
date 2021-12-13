@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Dedalus",
+			"Mainframe98",
+			"Mar(c)"
+		]
+	},
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|wat is dit?]])",
+	"growthexperiments-confirmemail-emailhelp": "E-mail is vereist om uw account te herstellen als u uw wachtwoord kwijtraakt.",
+	"growthexperiments-confirmemail-emailrecommended": "E-mailadres (aanbevolen)",
+	"growthexperiments-confirmemail-emailwarning": "Kijk alsjeblieft naar een e-mail van ons om je adres te bevestigen",
+	"growthexperiments-confirmemail-confirm-subject": "Welkom op {{SITENAME}}: Bevestig alsjeblieft je e-mailadres",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Hallo}} $2,\n\nBedankt voor het toevoegen van een e-mail aan uw {{SITENAME}}-account, geregistreerd vanaf IP-adres $1.\n\nKlik op de onderstaande knop om dit te bevestigen als het e-mailadres dat u aan uw account \"$2\" wilt koppelen:\n\n$3\n\nLet op: deze bevestigingscode <strong>vervalt op $4</strong>.\n\nBedankt,\n\n{{SITENAME}}\n\n----\n\nOm de bevestiging van het e-mailadres te annuleren (omdat je het account niet hebt geregistreerd of om een andere reden), klik je op deze annuleringslink:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "E-mailadres bevestigen",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Hallo}} $2,\n\nBedankt voor het toevoegen van een e-mail aan uw {{SITENAME}}-account, geregistreerd vanaf IP-adres $1.\n\nKlik op de onderstaande link om dit te bevestigen als het e-mailadres dat u aan uw account \"$2\" wilt koppelen:\n\n$3\n\nLet op: deze bevestigingscode verloopt bij $4.\n\nBedankt,\n\n{{SITENAME}}\n\n----\n\nOm de bevestiging van het e-mailadres te annuleren (omdat je het account niet hebt geregistreerd of om een andere reden), klik je op deze annuleringslink:\n\n$5"
+}

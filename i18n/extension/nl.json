@@ -1,8 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
-			"Mainframe98"
+			"Mainframe98",
+			"Bdijkstra",
+			"Dedalus",
+			"Encycloon",
+			"Klaas van Buiten",
+			"Krinkle",
+			"McDutchie"
 		]
 	},
-	"growthexperiments-desc": "Deze uitbreiding bevat experimenten uitgevoerd door het Growth team."
+	"growthexperiments-desc": "Deze extensie bevat experimenten uitgevoerd door het Growth-team."
 }

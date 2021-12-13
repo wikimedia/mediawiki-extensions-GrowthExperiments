@@ -4,7 +4,9 @@
 			"Movses",
 			"Piramidion",
 			"Vlad5250",
-			"Ата"
+			"Ата",
+			"Aced",
+			"DDPAT"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Ласкаво просимо}}, $1!",
@@ -15,16 +17,16 @@
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Пропустити}} це опитування",
 	"welcomesurvey-close-btn": "Закрити й повернутись до $1",
 	"welcomesurvey-sidebar-privacy-title": "Ми цінуємо Вашу приватність",
-	"welcomesurvey-sidebar-privacy-text": "Щоб дізнатись більше про те, як ці необов'язкові відповіді використовуються, {{GENDER:$2|перегляньте}} $1 цього опитування.",
-	"welcomesurvey-privacy-policy-link-text": "заяву про конфіденційність",
+	"welcomesurvey-sidebar-privacy-text": "Фонд Вікімедіа використає {{GENDER:$2|ваші}} відповіді, щоб допомогти вам почати редагувати {{GRAMMAR:accusative|{{SITENAME}}}}. $1.",
+	"welcomesurvey-privacy-policy-link-text": "Дізнатися більше про дані щодо нових редакторів",
 	"welcomesurvey-sidebar-editing-title": "Як почати редагувати",
-	"welcomesurvey-sidebar-editing-text": "Майже будь-яку сторінку може редагувати кожен, і кожної години здійснюються зміни з метою додавання вмісту, виправлення помилок та покращення загальної читабельності. Подані сторінки можуть Вам допомогти, якщо {{GENDER:$1|Ви зацікавлені}} в тому, щоб зробити свій внесок.",
+	"welcomesurvey-sidebar-editing-text": "Майже будь-яку сторінку може редагувати кожен, і щогодини здійснюються зміни з метою додавання вмісту, виправлення помилок та покращення загальної читабельності. Подані сторінки можуть Вам допомогти, якщо {{GENDER:$1|Ви зацікавлені}} в тому, щоб зробити свій внесок.",
 	"welcomesurvey-sidebar-editing-link1-text": "Посібник",
 	"welcomesurvey-sidebar-editing-link1-title": "Вікіпедія:Ознайомлення",
-	"welcomesurvey-sidebar-editing-link2-text": "Служба підтримки",
+	"welcomesurvey-sidebar-editing-link2-text": "Поставити запитання",
 	"welcomesurvey-sidebar-editing-link2-title": "Вікіпедія:Кнайпа (допомога)",
 	"welcomesurvey-question-reason-label": "Чому Ви створили свій обліковий запис сьогодні?",
-	"welcomesurvey-dropdown-option-select-label": "Будь ласка, виберіть...",
+	"welcomesurvey-dropdown-option-select-label": "Будь ласка, виберіть…",
 	"welcomesurvey-question-reason-option-edit-typo-label": "Щоб виправити описку або помилку в статті у Вікіпедії",
 	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Щоб додати або змінити інформацію у статті Вікіпедії",
 	"welcomesurvey-question-reason-option-add-image-label": "Щоб додати фото чи зображення до статті Вікіпедії",
@@ -43,6 +45,6 @@
 	"welcomesurvey-question-edited-option-no-other-label": "Ні, з інших причин",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Не пригадую",
 	"welcomesurvey-question-email-label": "Адреса електронної пошти (необов'язково)",
-	"welcomesurvey-question-email-placeholder": "Введіть свою електронну адресу...",
+	"welcomesurvey-question-email-placeholder": "Введіть свою електронну адресу…",
 	"welcomesurvey-question-email-help": "Ми зауважили, що Ви не ввели свою адресу електронної пошти, коли створили цей обліковий запис. <strong>Наполегливо рекомендуємо</strong> її вказати, оскільки вона потрібна для відновлення доступу до облікового запису, якщо Ви коли-небудь втратите свій пароль. ЗВЕРНІТЬ УВАГУ: Ваша електронна адреса залишається прихованою, коли інші користувачі з Вами контактують."
 }

@@ -3,9 +3,18 @@
 		"authors": [
 			"Gopalindians",
 			"Prong$31",
-			"गोपाल"
+			"गोपाल",
+			"1997kB",
+			"Abijeet Patro"
 		]
 	},
+	"growthexperiments-help-panel-question-button-text": "जारी रखें",
+	"growthexperiments-help-panel-submit-question-button-text": "पोस्ट",
+	"growthexperiments-help-panel-return-home-button-text": "पूर्ण हुआ",
+	"growthexperiments-help-panel-back-home": "पीछे",
+	"growthexperiments-help-panel-close": "पूर्ण हुआ",
+	"growthexperiments-help-panel-questionreview-title": "सहायता डेस्क पर पूछे",
+	"growthexperiments-help-panel-questionreview-label": "आपका सवाल",
 	"growthexperiments-help-panel-suggestededits-title": "सुझाए गए संपादन",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "त्वरित शुरुआत युक्तियाँ",
 	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "आपके ईमेल की पुष्टि करें",

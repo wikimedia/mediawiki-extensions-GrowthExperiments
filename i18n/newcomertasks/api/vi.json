@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bluetpp",
+			"Vinhtantran"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Nhận gợi ý nhiệm vụ phù hợp với người mới.",
+	"apihelp-query+growthtasks-extended-description": "Gợi ý một bộ bài viết có những vấn đề nổi bật đủ dễ để người mới tham gia thực hiện.",
+	"apihelp-query+growthtasks-param-tasktypes": "Loại nhiệm vụ để giới hạn kết quả. Để trống để nhận tất cả gợi ý.",
+	"apihelp-query+growthtasks-param-topics": "Chủ đề bài viết ưa thích trong gợi ý nhiệm vụ.",
+	"apihelp-query+growthtasks-param-limit": "Số gợi ý nhiệm vụ trả về tối đa.",
+	"apihelp-query+growthtasks-param-debug": "Thêm dữ liệu debug vào đầu ra.",
+	"apihelp-query+growthtasks-example-1": "Nhận gợi ý nhiệm vụ cho nhiệm vụ loại biên tập cho người dùng hiện tại.",
+	"apihelp-query+growthtasks-example-2": "Nhận gợi ý nhiệm vụ cho người dùng hiện tại, với thông tin thêm về trang."
+}

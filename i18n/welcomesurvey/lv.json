@@ -1,23 +1,37 @@
 {
 	"@metadata": {
 		"authors": [
-			"Papuass"
+			"Papuass",
+			"Biafra",
+			"Silraks"
 		]
 	},
 	"welcomesurvey": "Esi {{GENDER:$1|sveicināts|sveicināta}}, $1!",
 	"welcomesurvey-save-confirmation-title": "Paldies! Tavas atbildes ir saglabātas.",
 	"welcomesurvey-save-confirmation-text": "Tavas atbildes mums palīdzēs atrast noderīgus veidus, kā tev sākt darbu Vikipēdijā.",
+	"welcomesurvey-subtitle": "Palīdzi mums uzlabot tavu pieredzi Vikipēdijā, atbildot uz dažiem neobligātiem jautājumiem.",
 	"welcomesurvey-save-btn": "Pabeigt",
 	"welcomesurvey-skip-btn": "{{GENDER:$1|Izlaist}} šo aptauju",
 	"welcomesurvey-close-btn": "Aizvērt un doties atpakaļ uz \"$1\" lapu",
 	"welcomesurvey-sidebar-privacy-title": "Mēs cienām tavu privātumu",
+	"welcomesurvey-sidebar-privacy-text": "Wikimedia Foundation izmantos {{GENDER:$2|tavas}} atbildes, lai palīdzētu sākt Vikipēdijas labošanu. $1.",
+	"welcomesurvey-privacy-policy-link-text": "Uzzini vairāk par datiem par jaunajiem dalībniekiem",
+	"welcomesurvey-sidebar-editing-title": "Labošanas sākšana",
+	"welcomesurvey-sidebar-editing-text": "Ikviens var labot gandrīz visas lapas un katru stundu tiek veiktas simtiem izmaiņas, lai pievienotu saturu, labotu kļūdas un uzlabotu lasāmību. Šīs lapas var noderēt, ja {{GENDER:$1|tu esi ieinteresēts|tu esi ieinteresēta}} palīdzēt.",
 	"welcomesurvey-sidebar-editing-link1-text": "Apmācība",
 	"welcomesurvey-sidebar-editing-link2-text": "Palīdzības dienests",
+	"welcomesurvey-question-reason-label": "Kāpēc tu izveidoji Vikipēdijas kontu?",
 	"welcomesurvey-dropdown-option-select-label": "Lūdzu izvēlies...",
+	"welcomesurvey-question-reason-option-edit-typo-label": "Lai izlabotu kļūdu Vikipēdijas rakstā",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Lai pievienotu vai izmainītu informāciju Vikipēdijas rakstā",
+	"welcomesurvey-question-reason-option-add-image-label": "Lai pievienotu foto vai attēlu Vikipēdijas rakstam",
+	"welcomesurvey-question-reason-option-new-page-label": "Lai izveidotu jaunu Vikipēdijas rakstu",
+	"welcomesurvey-question-reason-option-program-participant-label": "Es piedalos programmā, mācību stundā vai pasākumā",
 	"welcomesurvey-question-reason-option-read-label": "Lai lasītu Vikipēdiju",
 	"welcomesurvey-question-reason-option-other-no-freetext-label": "Cits",
 	"welcomesurvey-question-reason-option-other-label": "Cits (lūdzu, apraksti)",
 	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|Ievadi}} citu iemeslu...",
+	"welcomesurvey-question-mentor-info": "Mēs apsveram uzsākt programmu pieredzējušiem redaktoriem, lai palīdzētu jauniem dalībniekiem apgūt labošanu. {{GENDER:$1|Vai tevi interesē}} citu palīdzība labošanā?",
 	"welcomesurvey-question-mentor-label": "Jā, {{GENDER:$1|mani tas interesē}}",
 	"welcomesurvey-question-edited-label": "Vai esi kādreiz labojis Vikipēdiju?",
 	"welcomesurvey-question-edited-option-yes-many-label": "Jā, daudzas reizes",
@@ -26,5 +40,6 @@
 	"welcomesurvey-question-edited-option-no-other-label": "Nē, citu iemeslu dēļ",
 	"welcomesurvey-question-edited-option-dont-remember-label": "Es neatceros",
 	"welcomesurvey-question-email-label": "E-pasta adrese (nav obligāta)",
-	"welcomesurvey-question-email-placeholder": "Ievadi savu e-pasta adresi..."
+	"welcomesurvey-question-email-placeholder": "Ievadi savu e-pasta adresi...",
+	"welcomesurvey-question-email-help": "Mēs pamanījām, ka, izveidojot šo kontu, tu nenorādīji e-pastu. Tas ir <strong>ļoti ieteicams</strong>, jo e-pasts ir nepieciešams konta atgūšanai, ja kādreiz pazaudēsi paroli. PIEZĪME: Kad citi dalībnieki ar tevi sazinās, tava e-pasta adrese netiek atklāta."
 }

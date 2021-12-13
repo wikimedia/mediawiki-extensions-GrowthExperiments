@@ -1,0 +1,8 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ted Masters"
+		]
+	},
+	"apihelp-helppanelquestionposter-param-body": "Текстът на въпроса, предоставен от потребителя."
+}

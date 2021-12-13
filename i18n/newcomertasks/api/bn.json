@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ankan"
+		]
+	},
+	"apihelp-query+growthtasks-param-debug": "আউটপুটে ডিবাগ তথ্য যুক্ত করুন।",
+	"apihelp-query+growthtasks-example-1": "বর্তমান ব্যবহারকারীর জন্য রচনা সংশোধন-জাতীয় কাজের সুপারিশ সন্ধান করুন।"
+}

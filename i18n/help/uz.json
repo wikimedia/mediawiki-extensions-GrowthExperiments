@@ -1,0 +1,31 @@
+{
+	"@metadata": {
+		"authors": [
+			"Malikxan"
+		]
+	},
+	"growthexperiments-help-panel-tog-help-panel": "Tahrirchi yordam panelini yoqish",
+	"growthexperiments-help-panel-question-button-text": "Davom etish",
+	"growthexperiments-help-panel-submit-question-button-text": "Joylashtirish",
+	"growthexperiments-help-panel-return-home-button-text": "Bajarildi",
+	"growthexperiments-help-panel-editing-help-links-widget-header": "Tahrirlash haqidagi eng ommabop yordam sahifalari",
+	"growthexperiments-help-panel-editing-help-links-widget-view-more-link": "Koʻproq yordam sahifalarini koʻrish",
+	"growthexperiments-help-panel-question-widget-header": "Jamoa yordam forumiga savolingizni joylashtirish",
+	"growthexperiments-help-panel-question-placeholder": "Salom deng va {{GENDER:$1|savolingiz}}ni soʻrang.",
+	"growthexperiments-help-panel-back-home": "Orqaga",
+	"growthexperiments-help-panel-close": "Bajarildi",
+	"growthexperiments-help-panel-postedit-header": "Keyingi qadamlar",
+	"growthexperiments-help-panel-questionreview-label": "Savolingiz",
+	"growthexperiments-help-panel-question-subject-template": "Yordam paneli savoli",
+	"growthexperiments-help-panel-suggestededits-title": "Tavsiya etilgan tahrirlar",
+	"growthexperiments-help-panel-questioncomplete-title": "Savol berish",
+	"growthexperiments-help-panel-questioncomplete-header": "Savolingiz joylandi!",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "oʻzgartirish",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-unconfirmed-confirm": "E-pochtangizni tasdiqlash",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-missing-add": "E-pochta qoʻshish",
+	"growthexperiments-help-panel-questioncomplete-more-about-this-feature-text": "Yordam paneli haqida",
+	"growthexperiments-help-panel-settings-cog-preferences-link": "Yordam panelini oʻchirib qoʻyish",
+	"growthexperiments-help-panel-questionposter-invalid-title": "Yaroqsiz nom.",
+	"growthexperiments-help-panel-community-help-desk-text": "Jamoa yordam forumi",
+	"growthexperiments-help-panel-button-preheader-suggested-edits": "Tavsiya etilgan tahrirlar"
+}

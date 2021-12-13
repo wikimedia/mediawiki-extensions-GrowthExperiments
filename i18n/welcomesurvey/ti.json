@@ -4,5 +4,6 @@
 			"Joanmp17"
 		]
 	},
+	"welcomesurvey": "{{GENDER:$1|እንቋዕ ብደሓን መጻእካ|እንቋዕ ብደሓን መጻእኪ}}፣ $1!",
 	"welcomesurvey-privacy-policy-link-text": "ናይ ስትረት መግለጺ"
 }

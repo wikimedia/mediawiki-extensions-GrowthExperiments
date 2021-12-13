@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Joseba",
-			"Theklan"
+			"Theklan",
+			"Xabier Armendaritz"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Kaixo}}, {{bidi:$1}}!",
@@ -26,10 +27,10 @@
 	"growthexperiments-homepage-email-header-unconfirmed": "{{GENDER:$1|Zure}} e-posta ziurtatu",
 	"growthexperiments-homepage-email-header-confirmed": "E-posta gehitu da",
 	"growthexperiments-homepage-email-text-noemail": "Kontua berreskuratzeko gomendagarria",
-	"growthexperiments-homepage-email-text-unconfirmed": "Ziurtatu {{GENDER:$1|zure}} e-posta bidalitako loturaren bidez, edo bidali lotura berria",
+	"growthexperiments-homepage-email-text-unconfirmed": "Begiratu {{GENDER:$1|zure}} posta elektronikoa, ea berrespen esteka jaso duzun, edo bidali beste esteka bat.",
 	"growthexperiments-homepage-email-text-confirmed": "{{GENDER:$1|Zure}} e-posta ziurtatua izan da. Zure e-posta alda dezakezu Hobespenetan.",
 	"growthexperiments-homepage-email-button-noemail": "E-posta gehitu",
-	"growthexperiments-homepage-email-button-unconfirmed": "Lotura berria eskuratu",
+	"growthexperiments-homepage-email-button-unconfirmed": "Eskuratu esteka berria",
 	"growthexperiments-homepage-email-button-confirmed": "Hobespenak",
 	"growthexperiments-homepage-email-changelink": "(aldatu)",
 	"growthexperiments-homepage-startediting-header": "Aldatzen hasi",
@@ -81,7 +82,7 @@
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-short": "Ikustaldi kopurua ez da oraindik kalkulatu. Itzul zaitez bihar!",
 	"growthexperiments-homepage-impact-empty-pageviews-tooltip-button": "Ulertu dut",
 	"growthexperiments-homepage-impact-mobilebody-articleedits": "{{PLURAL:$1|Aldaketa <strong>$1</strong>|<strong>$1</strong> aldaketa}} artikuluetan",
-	"growthexperiments-homepage-impact-mobilebody-totaledits": "{{PLURAL:$1|Aldaketa <strong>$1</strong>|<strong>$1</strong> aldaketa}}",
+	"growthexperiments-homepage-impact-mobilebody-totaledits": "{{PLURAL:$1|Aldaketa <strong>bat</strong>|<strong>$1</strong> aldaketa}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Zure azken aldaketen ikustaldiak (azken 60 egunak):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Behatu zuk aldatu dituzun artikuluen ikustaldiak",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Laguntza guneko alertak",

@@ -1,10 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Neptune, the Mystic"
+			"Neptune, the Mystic",
+			"Ponor"
 		]
 	},
-	"apihelp-growthsetmentor-summary": "Postavljanje mentorice/mentora suradniku. Izmjena će biti javno evidentirana.",
-	"apihelp-growthsetmentor-param-mentor": "Suradničko ime mentorice/mentora",
-	"apihelp-growthsetmentor-param-reason": "Razlog izmjene"
+	"growthexperiments-homepage-questionstore-noquestionsfound": "Nije pronađeno nijedno pitanje.",
+	"apihelp-growthsetmentor-summary": "Dodjeljivanje mentora. Izmjena će biti javna.",
+	"apihelp-growthsetmentor-param-mentor": "Suradničko ime mentora",
+	"apihelp-growthsetmentor-param-reason": "Razlog promjene"
 }

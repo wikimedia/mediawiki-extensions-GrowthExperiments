@@ -3,10 +3,11 @@
 		"authors": [
 			"Epok",
 			"Gomoko",
-			"Thibaut120094"
+			"Thibaut120094",
+			"Pols12"
 		]
 	},
-	"apihelp-homepagequestionstore-summary": "Obtenir les questions formatées postées via la page d’accueil des modules",
+	"apihelp-homepagequestionstore-summary": "Obtenir les questions formatées publiées via les modules de la page d’accueil",
 	"apihelp-homepagequestionstore-param-questionformat": "Le format dans lequel les questions doivent être renvoyées, par exemple HTML.",
 	"apihelp-homepagequestionstore-param-storage": "L’emplacement de stockage des questions.",
 	"apihelp-homepagequestionstore-param-userid": "L’identifiant utilisateur pour lequel les questions doivent être renvoyées.",

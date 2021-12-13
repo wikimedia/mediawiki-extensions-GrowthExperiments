@@ -1,7 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Roan Kattouw"
+			"Roan Kattouw",
+			"Jeeputer",
+			"Pikne",
+			"Umherirrender",
+			"Xiplus"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "Help link in the CAPTCHA label. Shown next to {{msg-mw|fancycaptcha-captcha}}. Replaces part of {{msg-mw|fancycaptcha-accountcreate}}.",
@@ -10,6 +14,6 @@
 	"growthexperiments-confirmemail-emailwarning": "Message displayed below the email field on the account creation form. This message animates in when the user clicks into the email field.",
 	"growthexperiments-confirmemail-confirm-subject": "Subject line for the email users receive to confirm their email address. Replaces {{msg-mw|confirmemail_subject}}.",
 	"growthexperiments-confirmemail-confirm-body-html": "Body of the email users receive to confirm their email address. This is an HTML email, and wikitext can be used in this message.\n\nParameters:\n* $1 - IP address used to create the account or set the email address\n* $2 - the name of the user (can be used for GENDER)\n* $3 - a blue button that links to [[Special:ConfirmEmail]]; the label of the button is {{msg-mw|growthexperiments-confirmemail-confirm-button}}\n* $4 - the time and date when the confirmation link in $3 expires\n* $5 - a URL to [[Special:InvalidateEmail]]",
-	"growthexperiments-confirmemail-confirm-button": "Label for the button in the email users receive to confirm their email address. This button is parameter $3 in {{msg-mw|growthexperiments-confirm-body-html}}.",
+	"growthexperiments-confirmemail-confirm-button": "Label for the button in the email users receive to confirm their email address. This button is parameter $3 in {{msg-mw|growthexperiments-confirmemail-confirm-body-html}}.",
 	"growthexperiments-confirmemail-confirm-body-plaintext": "Plain text version of the body of the email users receive to confirm their email address. This is displayed when the HTML version cannot be displayed. Wikitext cannot be used in this message.\n\nParameters:\n* $1 - IP address used to create the account or set the email address\n* $2 - the name of the user (can be used for GENDER)\n* $3 - a URL to [[Special:ConfirmEmail]]\n* $4 - the time and date when the confirmation link in $3 expires\n* $5 - a URL to [[Special:InvalidateEmail]]"
 }

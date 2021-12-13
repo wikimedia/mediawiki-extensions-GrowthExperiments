@@ -3,7 +3,8 @@
 		"authors": [
 			"GoEThe",
 			"Hamilton Abreu",
-			"Mansil alfalb"
+			"Mansil alfalb",
+			"Albertoleoncio"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|Bem-vindo|Bem-vinda|Bem-vindo(a)}}, $1!",
@@ -15,7 +16,7 @@
 	"welcomesurvey-close-btn": "Fechar e voltar para $1",
 	"welcomesurvey-sidebar-privacy-title": "Respeitamos a sua privacidade",
 	"welcomesurvey-sidebar-privacy-text": "A Fundação Wikimedia irá usar {{GENDER:$2|as suas}} respostas para ajudar a editar {{SITENAME}}. $1.",
-	"welcomesurvey-privacy-policy-link-text": "Saiba mais",
+	"welcomesurvey-privacy-policy-link-text": "Saiba mais acerca de dados sobre novos editores",
 	"welcomesurvey-sidebar-editing-title": "Começar a editar",
 	"welcomesurvey-sidebar-editing-text": "Quase todas as páginas podem ser editadas por qualquer pessoa, e a cada hora são feitas centenas de alterações para adicionar conteúdo, corrigir erros e melhorar a leitura. Se tiver interesse em colaborar, as seguintes páginas podem {{GENDER:$1|ajudá-lo|ajudá-la}}.",
 	"welcomesurvey-sidebar-editing-link1-text": "Guia prático",

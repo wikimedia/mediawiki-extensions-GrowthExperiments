@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Eduardoaddad"
 		]
 	},
-	"apihelp-query+growthtasks-summary": "Obtenha recomendações de tarefas adequadas para os recém-chegados.",
+	"apihelp-query+growthtasks-summary": "Obtenha recomendações de tarefas adequadas para os novatos.",
 	"apihelp-query+growthtasks-extended-description": "Sugere um conjunto de artigos com alguns problemas pendentes, fáceis o suficiente para serem resolvidos por um novo editor.",
 	"apihelp-query+growthtasks-param-tasktypes": "Tipos de tarefas aos quais limitar os resultados. Deixe em branco para receber todas as sugestões.",
 	"apihelp-query+growthtasks-param-topics": "Tópicos do artigo a serem preferidos nas sugestões de tarefas.",

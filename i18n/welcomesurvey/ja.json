@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Omotecho",
-			"Shirayuki"
+			"Shirayuki",
+			"Afaz"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|ようこそ}}、$1さん!",
@@ -13,13 +14,14 @@
 	"welcomesurvey-skip-btn": "このアンケートを{{GENDER:$1|中止}}",
 	"welcomesurvey-close-btn": "閉じて$1に戻る",
 	"welcomesurvey-sidebar-privacy-title": "皆さんのプライバシーを尊重します",
-	"welcomesurvey-sidebar-privacy-text": "オプションの設問の回答を何に活用するか、$1アンケートを{{GENDER:$2|ご参照ください}}。",
+	"welcomesurvey-sidebar-privacy-text": "ウィキメディア財団は{{SITENAME}}の編集を始める人が参照できるように、{{GENDER:$2|皆さんの}}回答を活用します。$1。",
 	"welcomesurvey-privacy-policy-link-text": "個人情報について",
 	"welcomesurvey-sidebar-editing-title": "編集入門",
-	"welcomesurvey-sidebar-editing-text": "ほとんどすべてのページは、だれでも編集できる決まりで、1時間単位に数百件、コンテンツの追加からミスの修正、読みやすさの改善などの編集が実行されています。もし貢献に{{GENDER:$1|皆さんも興味がある}}場合は、以下のそれぞれのページがお役に立つはずです。",
+	"welcomesurvey-sidebar-editing-text": "ほとんどすべてのページは、だれでも編集でき、コンテンツの追加からミスの修正、読みやすさの改善などの編集が、毎時間、何百件も行われています。もし{{GENDER:$1|皆さんも編集に興味がある}}場合は、以下のそれぞれのページがお役に立つはずです。",
 	"welcomesurvey-sidebar-editing-link1-text": "チュートリアル",
 	"welcomesurvey-sidebar-editing-link1-title": "Wikipedia:チュートリアル",
 	"welcomesurvey-sidebar-editing-link2-text": "ヘルプ デスク",
+	"welcomesurvey-sidebar-editing-link2-title": "Wikipedia:ヘルプページ",
 	"welcomesurvey-question-reason-label": "本日、アカウント登録をした理由は何ですか？",
 	"welcomesurvey-dropdown-option-select-label": "選択してください...",
 	"welcomesurvey-question-reason-option-edit-typo-label": "ウィキペディアの記事の誤字や間違いを修正するため",

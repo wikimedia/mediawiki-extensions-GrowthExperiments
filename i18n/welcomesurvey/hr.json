@@ -1,8 +1,48 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bugoslav"
+			"Bugoslav",
+			"BadDog",
+			"Ivi104",
+			"Ponor"
 		]
 	},
-	"welcomesurvey-privacy-policy-link-text": "Saznaj više o podatcima o novim uređivačima"
+	"welcomesurvey": "{{GENDER:$1|Dobro došli}}, $1!",
+	"welcomesurvey-save-confirmation-title": "Hvala! Odgovori su zabilježeni.",
+	"welcomesurvey-save-confirmation-text": "Vaši odgovori odlučit će koje ćemo Vam korisne naputke dati kako biste započeli doprinositi Wikipediji.",
+	"welcomesurvey-subtitle": "Pomozite nam poboljšati Vaše iskustvo na Wikipediji odgovaranjem na nekoliko neobaveznih pitanja.",
+	"welcomesurvey-save-btn": "Završi",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Preskoči}} anketu",
+	"welcomesurvey-close-btn": "Zatvori i vrati se na stranicu $1",
+	"welcomesurvey-sidebar-privacy-title": "Cijenimo Vašu privatnost",
+	"welcomesurvey-sidebar-privacy-text": "{{GENDER:$2|}}Zaklada Wikimedija iskoristit će Vaše odgovore kako bismo Vam što bolje pomogli u uređivanju. $1.",
+	"welcomesurvey-privacy-policy-link-text": "Saznajte više o podatcima o novim suradnicima",
+	"welcomesurvey-sidebar-editing-title": "Prvi koraci u uređivanju",
+	"welcomesurvey-sidebar-editing-text": "{{GENDER:$1|}}Možete uređivati gotovo sve stranice. Stotine se izmjena rade svakoga sata kako bi se proširio sadržaj, ispravile pogreške i poboljšala čitljivost. Sljedeće stranice mogu Vam pomoći ako Vas zanima kako doprinijeti.",
+	"welcomesurvey-sidebar-editing-link1-text": "Tečaj",
+	"welcomesurvey-sidebar-editing-link1-title": "Wikipedija:Uvodni_tečaj",
+	"welcomesurvey-sidebar-editing-link2-text": "Stranica za pomoć",
+	"welcomesurvey-sidebar-editing-link2-title": "Wikipedija:Pet_stupova_Wikipedije",
+	"welcomesurvey-question-reason-label": "Zašto ste otvorili suradnički račun?",
+	"welcomesurvey-dropdown-option-select-label": "Odaberite...",
+	"welcomesurvey-question-reason-option-edit-typo-label": "Radi ispravljanja zatipaka i drugih pogrešaka u Wikipedijinom članku",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Radi dodavanja ili izmjene podataka u Wikipedijinom članku",
+	"welcomesurvey-question-reason-option-add-image-label": "Radi dodavanja fotografije ili ilustracije u Wikipedijin članak",
+	"welcomesurvey-question-reason-option-new-page-label": "Radi pisanja novog članka",
+	"welcomesurvey-question-reason-option-program-participant-label": "Na Wikipediji sam u sklopu tečaja, predavanja ili događanja",
+	"welcomesurvey-question-reason-option-read-label": "Radi čitanja Wikipedije",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Ostalo",
+	"welcomesurvey-question-reason-option-other-label": "Ostalo (opišite)",
+	"welcomesurvey-question-reason-other-placeholder": "{{GENDER:$1|}}Unesite drugi razlog...",
+	"welcomesurvey-question-mentor-info": "Započet je program mentorstva u kojem iskusni suradnici pomažu novacima uređivati članke na Wikipediji. Zanima li Vas takva mogućnost?{{GENDER:$1|}}",
+	"welcomesurvey-question-mentor-label": "Da, možda ću trebati pomoć {{GENDER:$1|}}",
+	"welcomesurvey-question-edited-label": "Jeste li prije uređivali Wikipediju?",
+	"welcomesurvey-question-edited-option-yes-many-label": "Jesam, mnogo puta",
+	"welcomesurvey-question-edited-option-yes-few-label": "Jesam, jednom ili dvaput",
+	"welcomesurvey-question-edited-option-no-dunno-label": "Ne, nije mi bilo poznato da mogu uređivati Wikipediju",
+	"welcomesurvey-question-edited-option-no-other-label": "Ne, iz drugih razloga",
+	"welcomesurvey-question-edited-option-dont-remember-label": "Ne sjećam se",
+	"welcomesurvey-question-email-label": "Adresa e-pošte (neobavezno)",
+	"welcomesurvey-question-email-placeholder": "Upišite adresu svoje e-pošte...",
+	"welcomesurvey-question-email-help": "Primijetili smo da niste unijeli adresu svoje e-pošte kad ste se prijavili na Wikipediju. Ako ikad zaboravite svoju zaporku, moći ćete je ponovo postaviti jedino s pomoću e-pošte. Molimo <strong>ne zaboravite</strong> unijeti adresu. Napominjemo da ona neće biti otkrivena suradnicima koji vam se požele javiti."
 }

@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chinamoonroll"
+		]
+	},
+	"growthexperiments-help-panel-question-button-text": "Lanturang",
+	"growthexperiments-help-panel-submit-question-button-text": "Kirim",
+	"growthexperiments-help-panel-return-home-button-text": "Puput",
+	"growthexperiments-help-panel-back-home": "Walik",
+	"growthexperiments-help-panel-close": "Puput",
+	"growthexperiments-help-panel-questionreview-title": "Takén méja wantuan",
+	"growthexperiments-help-panel-questionreview-label": "Patakon ragané",
+	"growthexperiments-help-panel-questioncomplete-notifications-email": "Ragané taler lakar narima abesik rerepél nuju $1 ($2)",
+	"growthexperiments-help-panel-questioncomplete-notifications-email-change": "genti"
+}

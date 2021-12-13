@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Fnielsen",
+			"Nico"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Få anbefalede opgaver, der passer til nybegyndere.",
+	"apihelp-query+growthtasks-extended-description": "Foreslår et sæt artikler som har udestående problemer som er enkle nok at håndtere for nybegyndere.",
+	"apihelp-query+growthtasks-param-tasktypes": "Opgavetyper resultaterne bør begrænses til. Lad den være tom for at modtage alle forslag.",
+	"apihelp-query+growthtasks-param-topics": "Artikelemner som foretrækkes i foreslåede opgaver.",
+	"apihelp-query+growthtasks-param-limit": "Maksimalt antal opgaveforslag som skal returneres.",
+	"apihelp-query+growthtasks-param-debug": "Tilføj fejlsøgningsdata i resultatet.",
+	"apihelp-query+growthtasks-example-1": "Hent opgaveforslag for korrekturlæsningopgaver for den aktelle bruger.",
+	"apihelp-query+growthtasks-example-2": "Hent opgaveforslag for den aktuelle bruger, med udvidet information om siderne."
+}

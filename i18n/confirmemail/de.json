@@ -1,7 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Metalhead64"
+			"Metalhead64",
+			"Reinhard Kraasch",
+			"Tkarcher",
+			"Umherirrender"
 		]
 	},
 	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|Was ist das?]])",
@@ -9,7 +12,7 @@
 	"growthexperiments-confirmemail-emailrecommended": "E-Mail-Adresse (empfohlen)",
 	"growthexperiments-confirmemail-emailwarning": "Sieh bitte nach einer E-Mail von uns, um deine Adresse zu verifizieren.",
 	"growthexperiments-confirmemail-confirm-subject": "Willkommen bei {{SITENAME}}: Bestätige bitte deine E-Mail-Adresse",
-	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Hi}} $2,\n\nThanks for adding an email to your {{SITENAME}} account, registered from IP address $1.\n\nPlease click on the button below to confirm this as the email address you'd like to link to your account \"$2\":\n\n$3\n\nNote: this confirmation code <strong>expires at $4</strong>.\n\nThanks,\n\n{{SITENAME}}\n\n----\n\nTo cancel the email address confirmation (because you did not register the account or for any other reason), click on this cancellation link:\n\n$5",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Hi}} $2,\n\ndanke, dass du eine E-Mail-Adresse zu deinem {{SITENAME}}-Benutzerkonto hinzugefügt hat, ausgelöst durch IP-Adresse $1.\n\nBitte klicke den unteren Link an um zu bestätigen, dass du die E-Mail-Adresse mit dem Benutzerkonto „$2“ verknüpfen möchtest:\n\n$3\n\nHinweis: Dieser Bestätigungscode ist <strong>gültig bis $4</strong>\n\nDanke,\n{{SITENAME}}\n\n----\n\nUm die E-Mail-Bestätigung abzubrechen (weil du nicht dieses Benutzerkonto registriert hast oder aus anderen Gründen), klicke auf diesen Abbruch-Link:\n\n$5",
 	"growthexperiments-confirmemail-confirm-button": "E-Mail-Adresse bestätigen",
-	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Hi}} $2,\n\nThanks for adding an email to your {{SITENAME}} account, registered from IP address $1.\n\nPlease click on the link below to confirm this as the email address you'd like to link to your account \"$2\":\n\n$3\n\nNote: this confirmation code expires at $4.\n\nThanks,\n\n{{SITENAME}}\n\n----\n\nTo cancel the email address confirmation (because you did not register the account or for any other reason), click on this cancellation link:\n\n$5"
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Hi}} $2,\n\ndanke das du eine E-Mail-Adresse zu deinem {{SITENAME}}-Benutzerkonto hinzugefügt hat, ausgelöst durch IP-Adresse $1.\n\nBitte klicke den unteren Link an um zu bestätigen, das du die E-Mail-Adresse mit dem Benutzerkonto „$2“ verknüpfen möchtest:\n\n$3\n\nHinweis: Dieser Bestätigungscode ist gültig bis $4\n\nDanke,\n\n{{SITENAME}}\n\n----\n\nUm die E-Mail-Bestätigung abzubrechen (weil du nicht dieses Benutzerkonto registriert hast oder aus anderen Gründen), klicke auf diesen Abbruch-Link:\n\n$5"
 }

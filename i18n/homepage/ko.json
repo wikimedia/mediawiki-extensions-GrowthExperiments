@@ -8,7 +8,12 @@
 			"Revi",
 			"Tkwiki",
 			"Ykhwong",
-			"렌즈"
+			"렌즈",
+			"Apzp79",
+			"Ellif",
+			"Gustmd7410",
+			"Underbaaar",
+			"밝은소년"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|안녕하세요}}, {{bidi:$1}}님!",
@@ -271,8 +276,8 @@
 	"growthexperiments-log-header": "성장 실험 확장 기능과 관련된 기록의 모음입니다.",
 	"logentry-growthexperiments-claimmentee": "$1 님이 {{GENDER:$6|$3}} 님을 자신의 멘티로 {{GENDER:$2|설정했습니다}} (이전 {{GENDER:$4|멘토}}는 $5 님)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 님이 {{GENDER:$6|$3}} 님을 자신의 멘티로 {{GENDER:$2|설정했습니다}} (이전 멘토 없음)",
-	"logentry-growthexperiments-setmentor": "$1 님이 $5 님을 $3 님의 {{GENDER:$5|멘토}}로 {{GENDER:$2|설정했습니다}} (이전 {{GENDER:$4|멘토}}: $4 님)",
-	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 님이 $5 님을 $3 님의 {{GENDER:$5|멘토}}로 {{GENDER:$2|설정했습니다}} (이전 멘토 없음)",
+	"logentry-growthexperiments-setmentor": "$1 님이 {{GENDER:$5|$7}} 님을 {{GENDER:$6|$3}} 님의 멘토로 {{GENDER:$2|설정했습니다}} (이전 {{GENDER:$4|멘토}}는 $8 님)",
+	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 님이 {{GENDER:$5|$7}} 님을 {{GENDER:$6|$3}} 님의 멘토로 {{GENDER:$2|설정했습니다}} (이전 멘토 없음)",
 	"growthexperiments-homepage-claimmentee-invalid-username": "제공된 멘티의 사용자 이름이 유효하지 않습니다",
 	"growthexperiments-notification-header-mentor-change": "$1님{{GENDER:$2|은}} {{GENDER:$3|내}} 새 멘토입니다",
 	"growthexperiments-notification-body-mentor-change": "이유: $1",

@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Papuass"
+		]
+	},
+	"apihelp-helppanelquestionposter-summary": "Apstrādāt jautājumus, kas iesniegti no pašreizējā lietotāja palīdzības paneļa.",
+	"apihelp-helppanelquestionposter-param-body": "Dalībnieka iesniegtais jautājuma teksts.",
+	"apihelp-helppanelquestionposter-param-relevanttitle": "Atbilstošais nosaukums, ja izvēlēts, ko iekļaut ar jautājumu."
+}

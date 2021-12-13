@@ -6,7 +6,8 @@
 			"MemphisA5",
 			"Nuevo Paso",
 			"Revi",
-			"Ykhwong"
+			"Ykhwong",
+			"밝은소년"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "편집 도움말 패널 활성화하기",
@@ -38,7 +39,7 @@
 	"growthexperiments-help-panel-suggestededits-title": "편집 제안",
 	"growthexperiments-help-panel-suggestededits-quick-start-tips": "빠른 시작을 위한 팁",
 	"growthexperiments-help-panel-suggestededits-footer-desktop": "<strong>준비되었나요?</strong> \"{{int:vector-view-edit}}\"을 눌러 시작하세요.",
-	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>준비되었나요?</strong> 문서의 연필 버튼을 눌러 시작하세요.",
+	"growthexperiments-help-panel-suggestededits-footer-mobile": "<strong>준비되었나요?</strong> 편집하고자 하는 문단을 여신 후 연필 아이콘을 눌러 주세요.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-value": "교열은 문서의 철자, 문법 등을 검토하고 문서가 명확하게 쓰여 있는지 확인하는 절차입니다. 이러한 절차는 문서가 더 전문적이고 신뢰할 수 있게 쓰여지도록 도와줍니다.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-example-value": "박종철 고문치사 사건은 6월 <mark class=\"negative\">황쟁</mark>의 직접적인 도화선이 되었다고 평가받는다.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-copyedit-main-calm": "문서를 고치기 위해서 한 두개의 작은 편집만 해도 됩니다. 문서를 처음부터 끝까지 보지 않아도 됩니다. 주제에 대해 특별히 잘 알아야 하는 것도 아닙니다.",
@@ -79,7 +80,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-main-publish": "더 많은 출처를 추가하거나, 계속하여 \"$1\" 버튼을 클릭해서 편집을 저장하세요!",
 	"growthexperiments-help-panel-suggestededits-tips-minerva-visualeditor-references-main-publish": "더 많은 출처를 추가하거나, 계속하여 파란 화살표 버튼을 터치해서 편집을 저장하세요!",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-references-text-publish": "[[$1|각주에 관해 더 알아봅니다]]",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-value": "새로운 일이 일어나며 문서가 시대에 뒤떨어지게 됩니다. 단어를 수정하고 사실관계를 수정함으로써 {{SITENAME}}의 문서가 최신 정보를 포함할 수 있도록 할 수 있습니다.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-value": "시간이 지나고 새로운 사건이 발생함에 따라 문서의 내용은 오래된 정보가 됩니다. {{SITENAME}}의 문서가 언제나 최신 정보를 포함하도록 문구를 수정하고 사실관계를 추가할 수 있습니다.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-example-value": "탐사선이 <mark class=\"negative\">2018년에</mark> 화성에 착륙<mark class=\"negative\">할 예정이다</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-calm": "한 개의 내용만을 업데이트해도 됩니다. 문서를 통째로 작업할 필요가 없습니다.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-update-main-rules1": "문서를 업데이트할 때 다음 사항을 주목하세요:\n* 과거에 이미 일어난 일을 미래에 일어날 내용으로 서술하고 있는 내용을 찾으세요.\n* 국가의 인구수 같이 주기적으로 변화하는 숫자를 찾으세요.\n* 도시의 시장 같이 주기적으로 변화하는 상황을 찾으세요.",
@@ -131,5 +132,6 @@
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "편집 제안 정보",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;현재 원본편집기를 사용하고 계십니다. 다음 편집 팁들은 시각편집기에서 가장 잘 작동합니다.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "시각편집기로 전환",
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;시각 편집기를 사용하고 계십니다. 다음 편집 팁들은 원본 편집기에서 가장 잘 동작합니다.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "원본 편집기로 전환하기"
 }

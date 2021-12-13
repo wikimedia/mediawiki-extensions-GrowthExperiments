@@ -1,11 +1,16 @@
 {
 	"@metadata": {
 		"authors": [
-			"Ainali"
+			"Ainali",
+			"Sabelöga"
 		]
 	},
+	"apihelp-homepagequestionstore-summary": "Hämta formaterade frågor ställda via hemsidemoduler",
+	"apihelp-homepagequestionstore-param-questionformat": "Formatet att returnera frågor i, t.ex. HTML.",
+	"apihelp-homepagequestionstore-param-storage": "Lagringsplats för frågorna.",
+	"apihelp-homepagequestionstore-param-userid": "Användar-ID at hämta frågor för.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Inga frågor funna.",
-	"apihelp-growthsetmentor-summary": "Sätt användares fadder. Ädndringen loggas publikt.",
+	"apihelp-growthsetmentor-summary": "Sätt användares fadder. Ändringen loggas offentligt.",
 	"apihelp-growthsetmentor-param-mentee": "Nybörjarens användarnamn",
 	"apihelp-growthsetmentor-param-mentor": "Fadderns användarnamn",
 	"apihelp-growthsetmentor-param-reason": "Orsak till förändringen"

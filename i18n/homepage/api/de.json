@@ -2,7 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Killarnee",
-			"Metalhead64"
+			"Metalhead64",
+			"Reinhard Kraasch",
+			"Tkarcher"
 		]
 	},
 	"apihelp-homepagequestionstore-summary": "Ruft formatierte Fragen ab, die über die Startseiten-Module gepostet wurden.",
@@ -10,8 +12,8 @@
 	"apihelp-homepagequestionstore-param-storage": "Der Speicherort der Fragen.",
 	"apihelp-homepagequestionstore-param-userid": "Die Kennung des Benutzers, für den Fragen abgerufen werden sollen.",
 	"growthexperiments-homepage-questionstore-noquestionsfound": "Keine Fragen gefunden.",
-	"apihelp-growthsetmentor-summary": "Stellen Sie den Mentor des Benutzers ein. Änderungen werden öffentlich protokolliert.",
+	"apihelp-growthsetmentor-summary": "Lege die Lotsin/den Lotsen des Benutzers fest. Änderungen werden öffentlich protokolliert.",
 	"apihelp-growthsetmentor-param-mentee": "Benutzername des Mentees",
-	"apihelp-growthsetmentor-param-mentor": "Benutzername des Mentors",
+	"apihelp-growthsetmentor-param-mentor": "Benutzername des Lotsen",
 	"apihelp-growthsetmentor-param-reason": "Grund für die Änderung"
 }

@@ -1,0 +1,16 @@
+{
+	"@metadata": {
+		"authors": [
+			"Sonicarts"
+		]
+	},
+	"apihelp-homepagequestionstore-summary": "ホームページモジュールを経由して投稿されるフォーマット済みの質問を取得する",
+	"apihelp-homepagequestionstore-param-questionformat": "質問を返すフォーマット（例：HTML）",
+	"apihelp-homepagequestionstore-param-storage": "質問の保存場所。",
+	"apihelp-homepagequestionstore-param-userid": "質問を取得する利用者ID",
+	"growthexperiments-homepage-questionstore-noquestionsfound": "質問が見つかりませんでした。",
+	"apihelp-growthsetmentor-summary": "利用者の指導者を設定。変更は公に記録されます。",
+	"apihelp-growthsetmentor-param-mentee": "指導対象者の利用者名",
+	"apihelp-growthsetmentor-param-mentor": "指導者の利用者名",
+	"apihelp-growthsetmentor-param-reason": "変更事由"
+}

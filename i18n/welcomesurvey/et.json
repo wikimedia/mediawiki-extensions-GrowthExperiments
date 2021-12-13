@@ -1,0 +1,40 @@
+{
+	"@metadata": {
+		"authors": [
+			"Pikne"
+		]
+	},
+	"welcomesurvey": "Tere tulemast, $1!",
+	"welcomesurvey-save-confirmation-title": "Aitäh! Sinu vastused on salvestatud.",
+	"welcomesurvey-save-confirmation-text": "Sinu vastuste abil saame aidada sul hõlpsamini Vikipeediaga tutvust teha.",
+	"welcomesurvey-subtitle": "Aita meil teha Vikipeedia kasutamine sinu jaoks sujuvamaks, vastates mõnele valikulisele küsimusele.",
+	"welcomesurvey-save-btn": "Valmis",
+	"welcomesurvey-skip-btn": "{{GENDER:$1|Jäta}} küsitlus vahele",
+	"welcomesurvey-sidebar-privacy-title": "Hoolime sinu privaatsusest",
+	"welcomesurvey-sidebar-privacy-text": "Wikimedia Foundation kasutab {{GENDER:$2|sinu}} vastuseid selleks, et aidata sul alustada {{GRAMMAR:genitive|{{SITENAME}}}} muutmisega. $1.",
+	"welcomesurvey-privacy-policy-link-text": "Loe veel uute toimetajate andmete kohta",
+	"welcomesurvey-sidebar-editing-title": "Muutmisega algust tegemine",
+	"welcomesurvey-sidebar-editing-text": "Igaüks saab muuta peaaegu iga lehekülge. Igas tunnis tehakse sadu muudatusi, et lisada sisu ning parandada vigu ja loetavust. Järgmised leheküljed on abiks, kui {{GENDER:$1|oled}} kaastöö tegemisest huvitatud.",
+	"welcomesurvey-sidebar-editing-link1-text": "Õppekäik",
+	"welcomesurvey-sidebar-editing-link1-title": "Juhend:Õppekäik",
+	"welcomesurvey-sidebar-editing-link2-text": "Abifoorum",
+	"welcomesurvey-sidebar-editing-link2-title": "Wikipedia:Abifoorum",
+	"welcomesurvey-question-reason-label": "Miks praegu konto lõid?",
+	"welcomesurvey-dropdown-option-select-label": "Palun vali...",
+	"welcomesurvey-question-reason-option-edit-typo-label": "Selleks et parandada Vikipeedia artiklis täheviga või muu viga.",
+	"welcomesurvey-question-reason-option-edit-info-add-change-label": "Selleks et lisada Vikipeedia artiklisse teavet või selle muutmiseks.",
+	"welcomesurvey-question-reason-option-add-image-label": "Selleks et lisada Vikipeedia artiklisse foto või muu pilt.",
+	"welcomesurvey-question-reason-option-new-page-label": "Selleks et luua uus Vikipeedia artikkel.",
+	"welcomesurvey-question-reason-option-program-participant-label": "Osalen programmis, aines või üritusel.",
+	"welcomesurvey-question-reason-option-read-label": "Selleks et Vikipeediat lugeda.",
+	"welcomesurvey-question-reason-option-other-no-freetext-label": "Muu",
+	"welcomesurvey-question-edited-label": "Kas oled kunagi Vikipeediat muutnud?",
+	"welcomesurvey-question-edited-option-yes-many-label": "Jah, palju kordi.",
+	"welcomesurvey-question-edited-option-yes-few-label": "Jah, korra või paar.",
+	"welcomesurvey-question-edited-option-no-dunno-label": "Ei, ma ei teadnud, et saan Vikipeediat muuta.",
+	"welcomesurvey-question-edited-option-no-other-label": "Ei, muul põhjusel.",
+	"welcomesurvey-question-edited-option-dont-remember-label": "Ei mäleta.",
+	"welcomesurvey-question-email-label": "E-posti aadress (valikuline)",
+	"welcomesurvey-question-email-placeholder": "Sisesta e-posti aadress...",
+	"welcomesurvey-question-email-help": "Märkasime, et konto loomisel ei sisestanud sa e-posti aadressi. See on <strong>väga soovitatav</strong>, sest e-posti aadressi läheb vaja konto tagasisaamiseks, kui kaotad parooli. Sinu e-posti aadressi seejuures ei avaldata, kui teised kasutajad sinuga ühendust võtavad."
+}

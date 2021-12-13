@@ -4,5 +4,12 @@
 			"Papuass"
 		]
 	},
-	"growthexperiments-confirmemail-emailrecommended": "E-pasta adrese (ieteicama)"
+	"growthexperiments-confirmemail-captcha-help": "([[Special:Captcha/help|kas tas ir?]])",
+	"growthexperiments-confirmemail-emailhelp": "E-pasts ir nepieciešams, lai atgūtu savu kontu gadījumā, ja tiek pazaudēta parole.",
+	"growthexperiments-confirmemail-emailrecommended": "E-pasta adrese (ieteicama)",
+	"growthexperiments-confirmemail-emailwarning": "Lūdzu, atrodi e-pastu no mums, lai apstiprinātu savu e-pasta adresi.",
+	"growthexperiments-confirmemail-confirm-subject": "Laipni lūdzam Vikipēdijā: Lūdzu, apstiprini savu e-pasta adresi",
+	"growthexperiments-confirmemail-confirm-body-html": "{{GENDER:$2|Sveiks|Sveika}}, $2!\n\nPaldies, ka pievienoji e-pastu savam Vikipēdijas kontam, kas izveidots no IP adreses $1.\n\nLūdzu, noklikšķini uz pogas zemāk, lai apstiprinātu, ka šo e-pasta adresi vēlies sasaistīt ar savu kontu \"$2\":\n\n$3\n\nPiezīme: šim apstiprinājuma kodam <strong>derīguma termiņs beigsies $4</strong>.\n\nPaldies,\n\n{{SITENAME}}\n\n----\n\nLai atceltu e-pasta adeses apstiprināšanu (tāpēc, ka kontu neizveidoji tu vai cita iemesla dēļ), klikšķini uz šīs atcelšanas saites:\n\n$5",
+	"growthexperiments-confirmemail-confirm-button": "Apstiprināt e-pasta adresi",
+	"growthexperiments-confirmemail-confirm-body-plaintext": "{{GENDER:$2|Sveiks|Sveika}}, $2!\n\nPaldies, ka pievienoji e-pastu savam Vikipēdijas kontam, kas izveidots no IP adreses $1.\n\nLūdzu, noklikšķini uz saites zemāk, lai apstiprinātu, ka šo e-pasta adresi vēlies sasaistīt ar savu kontu \"$2\":\n\n$3\n\nPiezīme: šim apstiprinājuma kodam derīguma termiņs beigsies $4.\n\nPaldies,\n\n{{SITENAME}}\n\n----\n\nLai atceltu e-pasta adeses apstiprināšanu (tāpēc, ka kontu neizveidoji tu vai cita iemesla dēļ), klikšķini uz šīs atcelšanas saites:\n\n$5"
 }

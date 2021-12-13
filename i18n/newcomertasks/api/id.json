@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Naufal06",
+			"Notanotheramy",
+			"Rachmat04"
+		]
+	},
+	"apihelp-query+growthtasks-summary": "Dapatkan saranan tugas yang sesuai bagi pendatang baru.",
+	"apihelp-query+growthtasks-extended-description": "Sarankan sekelompok artikel yang mempunyai isu menarik yang cukup mudah diselesaikan oleh pengguna baru.",
+	"apihelp-query+growthtasks-param-tasktypes": "Jenis tugas untuk membatasi saran yang ditampilkan. Tinggalkan kosong untuk mendapatkan semua saran.",
+	"apihelp-query+growthtasks-param-topics": "Topik artikel untuk dipilih di saranan tugas.",
+	"apihelp-query+growthtasks-param-limit": "Jumlah maksimum saranan tugas yang perlu tampil.",
+	"apihelp-query+growthtasks-param-debug": "Tambah data awakutu pada keluaran.",
+	"apihelp-query+growthtasks-example-1": "Dapatkan saranan tugas untuk tugas berbentuk penyutingan naskah untuk pengguna sekarang.",
+	"apihelp-query+growthtasks-example-2": "Dapatkan saranan tugas untuk pengguna sekarang, dengan informasi lebih lengkap tentang halaman."
+}
