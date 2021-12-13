@@ -2,20 +2,17 @@
 
 namespace GrowthExperiments\Tests;
 
-use GrowthExperiments\NewcomerTasks\Task\Task;
 use GrowthExperiments\NewcomerTasks\TaskSetListener;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\CacheDecorator;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\DecoratingTaskSuggesterFactory;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggester;
 use GrowthExperiments\NewcomerTasks\TaskSuggester\StaticTaskSuggesterFactory;
-use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
 use HashBagOStuff;
-use MediaWiki\User\UserIdentityValue;
 use MediaWikiUnitTestCase;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
-use TitleValue;
 use Wikimedia\ObjectFactory;
+use Wikimedia\TestingAccessWrapper;
 
 /**
  * @covers \GrowthExperiments\NewcomerTasks\TaskSuggester\DecoratingTaskSuggesterFactory
@@ -23,17 +20,12 @@ use Wikimedia\ObjectFactory;
  */
 class DecoratingTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 	public function testCreate() {
-		$user = new UserIdentityValue( 1, 'User' );
-		$taskType = new TaskType( 'copyedit', TaskType::DIFFICULTY_EASY );
-		$tasks = [
-			new Task( $taskType, new TitleValue( NS_MAIN, 'Foo' ) ),
-			new Task( $taskType, new TitleValue( NS_MAIN, 'Bar' ) ),
-		];
-		$suggester = new StaticTaskSuggester( $tasks );
-		$innerFactory = new StaticTaskSuggesterFactory( $suggester );
+		$innerSuggester = new StaticTaskSuggester( [] );
+		$innerFactory = new StaticTaskSuggesterFactory( $innerSuggester );
 		$objectFactory = new ObjectFactory( $this->getEmptyContainer() );
 		$factory = new DecoratingTaskSuggesterFactory( $innerFactory, $objectFactory, [] );
-		$this->assertSame( $suggester, $factory->create() );
+		$this->assertSame( $innerSuggester, $factory->create() );
+
 		$factory = new DecoratingTaskSuggesterFactory( $innerFactory, $objectFactory, [
 			[
 				'class' => CacheDecorator::class,
@@ -48,8 +40,10 @@ class DecoratingTaskSuggesterFactoryTest extends MediaWikiUnitTestCase {
 				],
 			],
 		] );
-		$this->assertInstanceOf( CacheDecorator::class, $factory->create() );
-		$this->assertArrayEquals( $tasks, iterator_to_array( $factory->create()->suggest( $user ) ) );
+		$suggester = $factory->create();
+		$this->assertInstanceOf( CacheDecorator::class, $suggester );
+		$wrappedSuggester = TestingAccessWrapper::newFromObject( $suggester );
+		$this->assertSame( $innerSuggester, $wrappedSuggester->taskSuggester );
 	}
 
 	private function getEmptyContainer() {
