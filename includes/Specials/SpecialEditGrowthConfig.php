@@ -9,6 +9,8 @@ use GrowthExperiments\Config\Validation\NewcomerTasksValidator;
 use GrowthExperiments\Config\WikiPageConfigLoader;
 use GrowthExperiments\Config\WikiPageConfigWriterFactory;
 use GrowthExperiments\HomepageModules\Banner;
+use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
+use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use Html;
 use HTMLForm;
 use MediaWiki\Revision\RevisionLookup;
@@ -377,7 +379,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		] );
 
 		// Add fields for suggested edits config (stored in MediaWiki:NewcomerTasks.json)
-		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $taskTypeData ) {
+		foreach ( $this->getDefaultDataForEnabledTaskTypes() as $taskType => $taskTypeData ) {
 			$isMachineSuggestionTaskType = in_array(
 				$taskType,
 				NewcomerTasksValidator::SUGGESTED_EDITS_MACHINE_SUGGESTIONS_TASK_TYPES
@@ -637,7 +639,7 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		}
 		// Add default values for newcomertasks variables
 		$newcomerTasksConfig = $this->getNewcomerTasksConfig();
-		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $group ) {
+		foreach ( $this->getDefaultDataForEnabledTaskTypes() as $taskType => $group ) {
 			$descriptors["newcomertasks-${taskType}Disabled"]['default']
 				= !empty( $newcomerTasksConfig[$taskType]['disabled'] );
 			$descriptors["newcomertasks-${taskType}Templates"]['default'] = implode(
@@ -666,6 +668,21 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 			);
 			$descriptors["newcomertasks-${taskType}Learnmore"]['default'] =
 				$newcomerTasksConfig[$taskType]['learnmore'] ?? '';
+
+			// Ugly special-casing: if link-recommendations is soft-disabled, show it so
+			// configuration can be changed (in the future, once the special page supports that)
+			// but warn about it being disabled.
+			if ( $taskType === LinkRecommendationTaskTypeHandler::TASK_TYPE_ID
+				 && $this->getConfig()->get( 'GELinkRecommendationsFrontendEnabled' ) === false
+			) {
+				$descriptors["newcomertasks-${taskType}Disabled"] = [
+					'type' => 'info',
+					'default' => new IconWidget( [ 'icon' => 'cancel' ] ) . ' '
+						. $this->msg( 'growthexperiments-edit-config-newcomer-tasks-disabledinconfig' )->parse(),
+					'raw' => true,
+					'section' => 'newcomertasks',
+				];
+			}
 		}
 
 		// Add default values for intro links
@@ -810,9 +827,9 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 					'excludedCategories' => [],
 					'type' => $taskTypeData['handler-id'],
 				];
-			}, NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES );
+			}, $this->getDefaultDataForEnabledTaskTypes() );
 
-		foreach ( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES as $taskType => $taskTypeData ) {
+		foreach ( $this->getDefaultDataForEnabledTaskTypes() as $taskType => $taskTypeData ) {
 			$templates = array_map( static function ( Title $title ) {
 				return $title->getText();
 			}, $this->normalizeTitleList( $data["${taskType}Templates"] ?? null ) );
@@ -847,6 +864,25 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 		}
 
 		return $suggestedEditsConfig;
+	}
+
+	/**
+	 * Returns the contents of NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES, excluding those
+	 * which have been disabled for this wiki via PHP configuration.
+	 * @return array[]
+	 */
+	public function getDefaultDataForEnabledTaskTypes(): array {
+		$preferenceMap = [
+			LinkRecommendationTaskTypeHandler::TASK_TYPE_ID => 'GENewcomerTasksLinkRecommendationsEnabled',
+			ImageRecommendationTaskTypeHandler::TASK_TYPE_ID => 'GENewcomerTasksImageRecommendationsEnabled',
+		];
+		return array_filter( NewcomerTasksValidator::SUGGESTED_EDITS_TASK_TYPES,
+			function ( $taskType ) use ( $preferenceMap ) {
+				if ( !array_key_exists( $taskType, $preferenceMap ) ) {
+					return true;
+				}
+				return $this->getConfig()->get( $preferenceMap[$taskType] );
+			}, ARRAY_FILTER_USE_KEY );
 	}
 
 	/**
