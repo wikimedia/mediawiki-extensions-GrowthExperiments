@@ -447,7 +447,7 @@
 	"growthexperiments-addimage-skip-dialog-body": "Confirm that {{GENDER:|you'd}} like to skip this suggestion.",
 	"growthexperiments-addimage-skip-dialog-confirm": "Skip suggestion",
 	"growthexperiments-addimage-skip-dialog-cancel": "Cancel",
-	"growthexperiments-newcomertasks-invalid-tasktype": "$1 is not a valid task type",
+	"growthexperiments-newcomertasks-invalid-tasktype": "Invalid task type(s): $1",
 	"growthexperiments-addimage-caption-title": "Add a caption",
 	"growthexperiments-addimage-loading-title": "Loading image preview…",
 	"growthexperiments-addimage-caption-placeholder": "Write a short caption describing how this image is relevant to <strong>$1</strong>",
