@@ -4,5 +4,31 @@
 			"Kareyac"
 		]
 	},
-	"growthexperiments-mentor-dashboard-title": "Մենթորի վահանակ"
+	"growthexperiments-mentor-dashboard-title": "Մենթորի վահանակ",
+	"growthexperiments-mentor-dashboard-pt-link": "Մենթորի վահանակ",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Մասնակցային անուն",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Արգելափակումների քանակը",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Խմբագրումների հաշվում",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Գրանցման ամսաթիվը",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Զտիչներ",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Թարմացնել",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Խմբագրումների հաշվում",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Նվազագույն",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Առավելագույն",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Վերջին խմբագրում",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Վերջին օրերին",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Վերջին ամիսներին",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Որոնել",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "ակտիվ $1 առաջ",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "անհայտ",
+	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Ցուցադրել $1",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1-ը $2-ից",
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Կարգավորումներ",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Մենթորի կարգավիճակը",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Ակտիվ",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Տեղում չի",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Չեղարկել",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Դադար",
+	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-headline": "Այլ գործողություններ",
+	"growthexperiments-notification-body-mentee-claimed": "Պատճառ՝ $1"
 }

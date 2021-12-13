@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"GuoPC",
+			"Stang",
 			"TsuyaMarisa",
 			"Xiplus",
 			"Zhang8569"
@@ -83,7 +84,7 @@
 	"growthexperiments-quit-mentorship-success": "您的学员将很快地重新分配给其他导师。",
 	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|您}}目前没有任何学员。",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1从导师项目{{GENDER:$1|退休}}。",
-	"echo-category-title-ge-mentorship": "导师计画",
+	"echo-category-title-ge-mentorship": "导师计划",
 	"echo-pref-tooltip-ge-mentorship": "关于Growth团队维护的导师项目功能的通知，此通知让您知道您已被认领为学员或您的学员被其他人认领。",
 	"growthexperiments-notification-header-mentee-claimed": "您的{{GENDER:$3|学员}}$3已被$1{{GENDER:$2|认领}}。",
 	"growthexperiments-notification-body-mentee-claimed": "原因：$1",
