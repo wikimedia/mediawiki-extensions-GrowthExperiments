@@ -346,6 +346,7 @@
 		"RecentChange_save": "homepage",
 		"PageSaveComplete": [
 			"config",
+			"homepage",
 			"mentor"
 		],
 		"SkinTemplateNavigation::Universal": "homepage",
