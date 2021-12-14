@@ -13,12 +13,14 @@ use GrowthExperiments\HelpPanel\QuestionRecord;
 use GrowthExperiments\HelpPanel\QuestionStoreFactory;
 use Hooks;
 use IContextSource;
+use Liuggio\StatsdClient\Factory\StatsdDataFactoryInterface;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\PageUpdater;
 use MWException;
+use PrefixingStatsdDataFactoryProxy;
 use RecentChange;
 use Status;
 use Title;
@@ -118,9 +120,15 @@ abstract class QuestionPoster {
 	private $sectionHeader;
 
 	/**
+	 * @var PrefixingStatsdDataFactoryProxy
+	 */
+	private $perDbNameStatsdDataFactory;
+
+	/**
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param TitleFactory $titleFactory
 	 * @param PermissionManager $permissionManager
+	 * @param StatsdDataFactoryInterface $perDbNameStatsdDataFactory
 	 * @param IContextSource $context
 	 * @param string $body
 	 * @param string $relevantTitleRaw
@@ -130,6 +138,7 @@ abstract class QuestionPoster {
 		WikiPageFactory $wikiPageFactory,
 		TitleFactory $titleFactory,
 		PermissionManager $permissionManager,
+		StatsdDataFactoryInterface $perDbNameStatsdDataFactory,
 		IContextSource $context,
 		$body,
 		$relevantTitleRaw = ''
@@ -148,6 +157,7 @@ abstract class QuestionPoster {
 		$page = new WikiPage( $this->targetTitle );
 		$this->pageUpdater = $page->newPageUpdater( $this->getContext()->getUser() );
 		$this->body = trim( $body );
+		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
 	}
 
 	/**
@@ -270,7 +280,8 @@ abstract class QuestionPoster {
 			return $permissionStatus;
 		}
 
-		$this->getPageUpdater()->addTag( $this->getTag() );
+		$tag = $this->getTag();
+		$this->getPageUpdater()->addTag( $tag );
 		$this->getPageUpdater()->setContent( SlotRecord::MAIN, $content );
 		if ( $this->getContext()->getAuthority()->authorizeWrite( 'autopatrol', $this->targetTitle ) ) {
 			$this->getPageUpdater()->setRcPatrolStatus( RecentChange::PRC_AUTOPATROLLED );
@@ -305,6 +316,8 @@ abstract class QuestionPoster {
 			$fragment
 		);
 		$this->setResultUrl( $target->getLinkURL() );
+		$tagId = str_replace( ' ', '_', $tag );
+		$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.QuestionPoster.' . $tagId );
 
 		return Status::newGood();
 	}
@@ -314,6 +327,7 @@ abstract class QuestionPoster {
 	 */
 	private function submitStructuredDiscussions() {
 		$workflowLoaderFactory = Container::get( 'factory.loader.workflow' );
+		// TODO: Add statsd instrumentation after T297709 is done.
 		$loader = $workflowLoaderFactory->createWorkflowLoader( $this->targetTitle );
 		$blocksToCommit = $loader->handleSubmit(
 			$this->getContext(),

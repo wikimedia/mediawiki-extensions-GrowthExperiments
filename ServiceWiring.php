@@ -554,7 +554,8 @@ return [
 			$services->getTitleFactory(),
 			$growthServices->getMentorManager(),
 			$services->getPermissionManager(),
-			$growthServices->getGrowthWikiConfig()->get( 'GEHelpPanelHelpDeskPostOnTop' )
+			$growthServices->getGrowthWikiConfig()->get( 'GEHelpPanelHelpDeskPostOnTop' ),
+			$services->getPerDbNameStatsdDataFactory()
 		);
 	},
 

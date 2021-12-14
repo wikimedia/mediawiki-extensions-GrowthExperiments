@@ -38,6 +38,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getPermissionManager(),
+			$this->getServiceContainer()->getPerDbNameStatsdDataFactory(),
 			$context,
 			'foo'
 		);
@@ -55,6 +56,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getPermissionManager(),
+			$this->getServiceContainer()->getPerDbNameStatsdDataFactory(),
 			$this->buildContext(),
 			'a great question'
 		);
@@ -80,6 +82,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getPermissionManager(),
+			$this->getServiceContainer()->getPerDbNameStatsdDataFactory(),
 			$this->buildContext(),
 			'a great question'
 		);
@@ -104,6 +107,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getPermissionManager(),
+			$this->getServiceContainer()->getPerDbNameStatsdDataFactory(),
 			$this->buildContext(),
 			'blah',
 			'sample'
@@ -116,6 +120,7 @@ class HelpdeskQuestionPosterTest extends MediaWikiIntegrationTestCase {
 			$this->getServiceContainer()->getWikiPageFactory(),
 			$this->getServiceContainer()->getTitleFactory(),
 			$this->getServiceContainer()->getPermissionManager(),
+			$this->getServiceContainer()->getPerDbNameStatsdDataFactory(),
 			$this->buildContext(),
 			'blah',
 			'>123'

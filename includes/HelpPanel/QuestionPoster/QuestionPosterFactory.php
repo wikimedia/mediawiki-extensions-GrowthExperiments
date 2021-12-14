@@ -6,6 +6,7 @@ use GrowthExperiments\Mentorship\MentorManager;
 use IContextSource;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
+use PrefixingStatsdDataFactoryProxy;
 use TitleFactory;
 use UserNotLoggedIn;
 use Wikimedia\Assert\Assert;
@@ -41,6 +42,9 @@ class QuestionPosterFactory {
 	/** @var bool */
 	private $helpDeskPostOnTop;
 
+	/** @var PrefixingStatsdDataFactoryProxy */
+	private $perDbNameStatsdDataFactory;
+
 	/**
 	 * @param WikiPageFactory $wikiPageFactory
 	 * @param TitleFactory $titleFactory
@@ -48,19 +52,22 @@ class QuestionPosterFactory {
 	 * @param PermissionManager $permissionManager
 	 * @param bool $helpDeskPostOnTop Whether to post on top of the help desk
 	 *   (as opposed to the bottom). Only affects wikitext pages.
+	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
 	 */
 	public function __construct(
 		WikiPageFactory $wikiPageFactory,
 		TitleFactory $titleFactory,
 		MentorManager $mentorManager,
 		PermissionManager $permissionManager,
-		bool $helpDeskPostOnTop
+		bool $helpDeskPostOnTop,
+		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
 	) {
 		$this->wikiPageFactory = $wikiPageFactory;
 		$this->titleFactory = $titleFactory;
 		$this->mentorManager = $mentorManager;
 		$this->permissionManager = $permissionManager;
 		$this->helpDeskPostOnTop = $helpDeskPostOnTop;
+		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
 	}
 
 	/**
@@ -91,6 +98,7 @@ class QuestionPosterFactory {
 				$this->wikiPageFactory,
 				$this->titleFactory,
 				$this->permissionManager,
+				$this->perDbNameStatsdDataFactory,
 				$context,
 				$body,
 				$relevantTitle
@@ -103,6 +111,7 @@ class QuestionPosterFactory {
 				$this->titleFactory,
 				$this->mentorManager,
 				$this->permissionManager,
+				$this->perDbNameStatsdDataFactory,
 				$context,
 				$body,
 				$relevantTitle
@@ -113,6 +122,7 @@ class QuestionPosterFactory {
 				$this->titleFactory,
 				$this->mentorManager,
 				$this->permissionManager,
+				$this->perDbNameStatsdDataFactory,
 				$context,
 				$body,
 				$relevantTitle

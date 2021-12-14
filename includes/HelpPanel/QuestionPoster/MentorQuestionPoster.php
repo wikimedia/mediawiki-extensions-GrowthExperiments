@@ -8,6 +8,7 @@ use GrowthExperiments\WikiConfigException;
 use IContextSource;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\Permissions\PermissionManager;
+use PrefixingStatsdDataFactoryProxy;
 use TitleFactory;
 use User;
 use UserNotLoggedIn;
@@ -25,6 +26,7 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 	 * @param TitleFactory $titleFactory
 	 * @param MentorManager $mentorManager
 	 * @param PermissionManager $permissionManager
+	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
 	 * @param IContextSource $context
 	 * @param string $body
 	 * @param string $relevantTitleRaw
@@ -35,6 +37,7 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 		TitleFactory $titleFactory,
 		MentorManager $mentorManager,
 		PermissionManager $permissionManager,
+		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
 		IContextSource $context,
 		$body,
 		$relevantTitleRaw = ''
@@ -44,6 +47,7 @@ abstract class MentorQuestionPoster extends QuestionPoster {
 			$wikiPageFactory,
 			$titleFactory,
 			$permissionManager,
+			$perDbNameStatsdDataFactory,
 			$context,
 			$body,
 			$relevantTitleRaw

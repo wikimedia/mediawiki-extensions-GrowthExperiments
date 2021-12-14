@@ -42,6 +42,7 @@ class MentorQuestionPosterTest extends MediaWikiIntegrationTestCase {
 				$titleFactory,
 				$mentorManager,
 				$permissionManager,
+				MediaWikiServices::getInstance()->getPerDbNameStatsdDataFactory(),
 				$context,
 				'foo'
 			] )

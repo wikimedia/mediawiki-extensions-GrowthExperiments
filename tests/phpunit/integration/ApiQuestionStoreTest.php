@@ -74,6 +74,7 @@ class ApiQuestionStoreTest extends ApiTestCase {
 				$user->getName() => new Mentor( $mentor, '' ),
 			] ),
 			$services->getPermissionManager(),
+			$services->getPerDbNameStatsdDataFactory(),
 			$context,
 			'foo'
 		);
