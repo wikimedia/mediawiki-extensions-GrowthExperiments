@@ -46,10 +46,12 @@ AddImageSaveDialog.prototype.initialize = function () {
 		mw.message( 'growthexperiments-addimage-summary-copyrightwarning' ).parse()
 	);
 	this.$copyrightFooter.find( 'a' ).attr( 'target', '_blank' );
+	this.$watchlistFooter = $( '<div>' );
 
 	this.savePanel.$element.append(
 		this.$summaryContent,
-		this.$copyrightFooter
+		this.$copyrightFooter,
+		this.$watchlistFooter
 	);
 };
 
@@ -129,7 +131,10 @@ AddImageSaveDialog.prototype.getSetupProcess = function ( data ) {
 		this.updateSummaryBody();
 		// Edit summary will be localized in the content language via FormatAutocomments hook
 		this.editSummaryInput.setValue( '/* growthexperiments-addimage-summary-summary: 1 */' );
-		this.addToWatchlist();
+		this.$watchlistFooter.empty();
+		if ( this.summaryData.accepted ) {
+			this.$watchlistFooter.append( this.getWatchlistCheckbox() );
+		}
 		this.logger.log( 'impression', this.getLogMetadata() );
 	}, this );
 };

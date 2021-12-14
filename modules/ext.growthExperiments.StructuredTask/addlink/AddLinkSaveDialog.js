@@ -77,10 +77,12 @@ AddLinkSaveDialog.prototype.initialize = function () {
 		mw.message( 'growthexperiments-addlink-summary-copyrightwarning' ).parse()
 	);
 	this.$copyrightFooter.find( 'a' ).attr( 'target', '_blank' );
+	this.$watchlistFooter = $( '<div>' );
 
 	this.savePanel.$element.append(
 		this.$summaryTable,
-		this.$copyrightFooter
+		this.$copyrightFooter,
+		this.$watchlistFooter
 	);
 };
 
@@ -133,7 +135,10 @@ AddLinkSaveDialog.prototype.getSetupProcess = function ( data ) {
 			'/* growthexperiments-addlink-summary-summary:' +
 			acceptedCount + '|' + rejectedCount + '|' + skippedCount + ' */'
 		);
-		this.addToWatchlist();
+		this.$watchlistFooter.empty();
+		if ( acceptedCount ) {
+			this.$watchlistFooter.append( this.getWatchlistCheckbox() );
+		}
 		this.logger.log( 'impression', {
 			/* eslint-disable camelcase */
 			accepted_count: acceptedCount,
