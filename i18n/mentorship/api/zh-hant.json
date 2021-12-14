@@ -14,5 +14,7 @@
 	"apihelp-growthsetmentorstatus-param-gesstatus": "新狀態",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "當導師設定成離開時，必須要有以日為單位的離開狀態長度",
 	"apihelp-query+growthmentorstatus-summary": "查詢目前使用者的導師狀態",
-	"apihelp-growthmentordashboardupdatedata-summary": "安排導師控制面版中學員總覽的特別更新。由於性能原因您每兩個小時只能安排一次更新。"
+	"apihelp-growthmentordashboardupdatedata-summary": "安排導師控制面版中學員總覽的特別更新。由於性能原因您每兩個小時只能安排一次更新。",
+	"apihelp-growthsetmentorweight-summary": "設定目前登入導師的權重",
+	"apihelp-growthsetmentorweight-param-geweight": "導師的權重數值：值越低，能分配到的新手越少"
 }

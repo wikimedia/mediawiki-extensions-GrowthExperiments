@@ -458,7 +458,7 @@
 	"growthexperiments-addimage-skip-dialog-body": "{{GENDER:|أكّد|أكّدي}} رغبتك في تخطّي هذا الاقتراح.",
 	"growthexperiments-addimage-skip-dialog-confirm": "تخطّي الاقتراح",
 	"growthexperiments-addimage-skip-dialog-cancel": "تراجع",
-	"growthexperiments-newcomertasks-invalid-tasktype": "$1 ليس نوع اقتراح صالح",
+	"growthexperiments-newcomertasks-invalid-tasktype": "نوع اقتراح غير صالح: $1",
 	"growthexperiments-addimage-caption-title": "إضافة شرح",
 	"growthexperiments-addimage-loading-title": "تحميل معاينة الصورة…",
 	"growthexperiments-addimage-caption-placeholder": "{{GENDER:|اكتب|اكتبي}} شرحا صغيرا يصف ارتباط هذه الصورة بـ <strong>$1</strong>",

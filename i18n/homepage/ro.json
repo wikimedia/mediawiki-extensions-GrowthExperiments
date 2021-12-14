@@ -442,7 +442,7 @@
 	"growthexperiments-addimage-skip-dialog-body": "Confirmați că {{GENDER:|vreți}} să omiteți această sugestie.",
 	"growthexperiments-addimage-skip-dialog-confirm": "Omite sugestia",
 	"growthexperiments-addimage-skip-dialog-cancel": "Renunțare",
-	"growthexperiments-newcomertasks-invalid-tasktype": "$1 nu este un tip de sarcină valid",
+	"growthexperiments-newcomertasks-invalid-tasktype": "Tip(uri) de sarcină invalid(e): $1",
 	"growthexperiments-addimage-caption-title": "Adaugă descriere",
 	"growthexperiments-addimage-loading-title": "Se încarcă previzualizarea imaginii...",
 	"growthexperiments-addimage-caption-placeholder": "Scrieți o descriere scurtă care să descrie cum este această imagine relevantă pentru <strong>$1</strong>",

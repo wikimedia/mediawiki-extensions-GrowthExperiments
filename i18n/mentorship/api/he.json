@@ -13,5 +13,7 @@
 	"apihelp-growthsetmentorstatus-param-gesstatus": "מצב חדש",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "בעת הגדרת חונך בתור לא בסביבה, זה חייב להיות אורך המצב הזה (בימים)",
 	"apihelp-query+growthmentorstatus-summary": "שאילתת מצב החונכות של המשתמש הנוכחי",
-	"apihelp-growthmentordashboardupdatedata-summary": "לתזמן עדכון מיוחד של מודול סקירת החניכים בלוח הבקרה של החונכים. אפשר לתזמן רק עדכון אחד לשעתיים מסיבות של ביצועים."
+	"apihelp-growthmentordashboardupdatedata-summary": "לתזמן עדכון מיוחד של מודול סקירת החניכים בלוח הבקרה של החונכים. אפשר לתזמן רק עדכון אחד לשעתיים מסיבות של ביצועים.",
+	"apihelp-growthsetmentorweight-summary": "הגדרת המשקל של החונך שנמצא עכשיו בחשבון",
+	"apihelp-growthsetmentorweight-param-geweight": "משקל מספרי של החונך: ככל שהערל נמוך יותר, מוקצים פחות משתמשים חדשים"
 }

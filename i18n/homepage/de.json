@@ -464,7 +464,7 @@
 	"growthexperiments-addimage-skip-dialog-body": "Bestätige, dass {{GENDER:||du}} diesen Vorschlag überspringen möchtest.",
 	"growthexperiments-addimage-skip-dialog-confirm": "Vorschlag überspringen",
 	"growthexperiments-addimage-skip-dialog-cancel": "Abbrechen",
-	"growthexperiments-newcomertasks-invalid-tasktype": "„$1“ ist kein gültiger Aufgabentyp.",
+	"growthexperiments-newcomertasks-invalid-tasktype": "Ungültige(r) Aufgabentyp(en): $1",
 	"growthexperiments-addimage-caption-title": "Einen Bildtext hinzufügen",
 	"growthexperiments-addimage-loading-title": "Bildvorschau laden …",
 	"growthexperiments-addimage-caption-placeholder": "Schreibe eine kurze Bildunterschrift, die beschreibt, inwiefern dieses Bild für <strong>$1</strong> relevant ist.",

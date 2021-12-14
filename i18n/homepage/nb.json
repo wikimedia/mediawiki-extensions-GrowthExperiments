@@ -409,5 +409,6 @@
 	"growthexperiments-addimage-rejectiondialog-reason-foreignlanguage": "Jeg kan ikke lese språket fra bildedetaljene",
 	"growthexperiments-addimage-rejectiondialog-reason-other": "Annet",
 	"growthexperiments-addimage-viewer-close-button": "Lukk",
+	"growthexperiments-newcomertasks-invalid-tasktype": "Ugyldig(e) oppgavetype(r): $1",
 	"growthexperiments-addimage-loading-title": "Laster bildeforhåndsvisning."
 }
