@@ -4,6 +4,7 @@ namespace GrowthExperiments;
 
 use ExtensionRegistry;
 use FormatJson;
+use GrowthExperiments\EventLogging\WelcomeSurveyLogger;
 use IContextSource;
 use MediaWiki\Languages\LanguageNameUtils;
 use MediaWiki\Logger\LoggerFactory;
@@ -143,7 +144,7 @@ class WelcomeSurvey {
 			return [];
 		}
 
-		$questionNames = $groups[ $group ][ 'questions' ];
+		$questionNames = $groups[ $group ][ 'questions' ] ?? [];
 		if ( in_array( 'email', $questionNames ) &&
 			!Util::canSetEmail( $this->context->getUser(), '', false )
 		) {
@@ -368,10 +369,14 @@ class WelcomeSurvey {
 		$returnToQuery = $request->getVal( 'returntoquery' );
 
 		$welcomeSurvey = SpecialPage::getTitleFor( 'WelcomeSurvey' );
+		$welcomeSurveyToken = \Wikimedia\base_convert( \MWCryptRand::generateHex( 40 ), 16, 32, 32 );
+		$request->response()->setCookie( WelcomeSurveyLogger::WELCOME_SURVEY_TOKEN,
+			$welcomeSurveyToken, time() + 3600 );
 		$query = wfArrayToCgi( [
 			'returnto' => $returnTo,
 			'returntoquery' => $returnToQuery,
 			'group' => $group,
+			'_welcomesurveytoken' => $welcomeSurveyToken
 		] );
 		return $welcomeSurvey->getFullUrlForRedirect( $query );
 	}
