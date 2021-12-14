@@ -280,6 +280,37 @@ class ServiceImageRecommendationProviderTest extends MediaWikiIntegrationTestCas
 	}
 
 	/**
+	 * @covers ::processApiResponseData
+	 */
+	public function testAllSuggestionsFiltered() {
+		$mockMetadataProvider = $this->createNoOpMock(
+			ImageRecommendationMetadataProvider::class, [ 'getMetadata', 'getFileMetadata' ] );
+		$mockMetadataProvider->method( 'getFileMetadata' )
+			->willReturn( self::metadataFactory( 200, MEDIATYPE_AUDIO ) );
+		$mockMetadataProvider->method( 'getMetadata' )
+			->willReturn( self::metadataFactory( 200, MEDIATYPE_AUDIO ) );
+		$taskType = new ImageRecommendationTaskType( 'image-recommendation', TaskType::DIFFICULTY_EASY );
+		$result = ServiceImageRecommendationProvider::processApiResponseData(
+			new TitleValue( 0, 'Foo' ),
+			'Foo',
+			[ 'pages' => [ [ 'suggestions' => [
+				[ 'filename' => 'Bad.png', 'source' => [ 'name' => 'ima', 'details' => [
+					'from' => 'wikidata', 'found_on' => '', 'dataset_id' => 'x',
+				] ] ],
+			] ] ] ],
+			$mockMetadataProvider,
+			$taskType->getSuggestionFilters()
+		);
+
+		$this->assertInstanceOf( StatusValue::class, $result );
+		$this->assertTrue( $result->isOK() );
+		$this->assertSame(
+			'All recommendations were filtered for page: Foo',
+			$result->getErrors()[0]['params'][0]
+		);
+	}
+
+	/**
 	 * @dataProvider provideProcessApiResponseData
 	 * @param array $data API response data.
 	 * @param array|null $expectedResult Expected result of ImageRecommendation::toArray, or null
