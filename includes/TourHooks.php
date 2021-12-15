@@ -109,7 +109,7 @@ class TourHooks implements
 			],
 			'ext.guidedTour.tour.homepage_discovery' => $moduleTemplate + [
 				'packageFiles' => [
-					'homepage/ext.growthExperiments.homepage.discovery.tour.js',
+					'ext.growthExperiments.HomepageDiscovery/tour.js',
 					'utils/tourUtils.js',
 				],
 				'messages' => [
