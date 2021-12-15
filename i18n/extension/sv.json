@@ -3,7 +3,8 @@
 		"authors": [
 			"Ainali",
 			"WikiPhoenix",
-			"JRyan"
+			"JRyan",
+			"Sabelöga"
 		]
 	},
 	"growthexperiments-desc": "Detta tillägg innehåller experiment som göres av Growth-teamet.",
@@ -15,7 +16,7 @@
 	"growthexperiments-edit-config-disabled": "Konfigurering av gemenskapen är för tillfället avstängt.",
 	"growthexperiments-edit-config-title": "Redigera Growth-konfiguration",
 	"growthexperiments-edit-config-pretext": "Denna sidan tillåter dig att redigera konfigurationen av [[:mw:Special:MyLanguage/Growth|Growth]] funktioner. Den kommer att redigera $1 åt dig. Du kan se dina ändringar på sidhistoriken på den sidan.",
-	"growthexperiments-edit-config-pretext-unprivileged": "Detta formulär tillåter användare med rättigheter att redigera konfigurationen av  [[:mw:Special:MyLanguage/Growth|Growth]] funktioner.",
+	"growthexperiments-edit-config-pretext-unprivileged": "Detta formulär tillåter användare med rättigheter att redigera konfigurationen av  [[:mw:Special:MyLanguage/Growth|Growth]]-funktioner.",
 	"growthexperiments-edit-config-feedback-headline": "Har du några förslag eller frågar om formuläret?",
 	"growthexperiments-edit-config-feedback-cta": "Ge återkoppling",
 	"growthexperiments-edit-config-error-invalid-title": "Konfigurationssidan var inte konfigurerat korrekt.",
@@ -33,7 +34,7 @@
 	"growthexperiments-edit-config-help-panel-view-more": "Destinationssida för \"Visa fler hjälpartiklar\"",
 	"growthexperiments-edit-config-help-panel-searched-namespaces": "Namnområden som ska inkluderas i hjälppanelens fritext-sökning efter hjälp",
 	"growthexperiments-edit-config-help-panel-ask-mentor": "Var ska frågor från hjälppanelen riktas?",
-	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Diskussionsidorna till faddrar",
+	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Faddrarnas diskussionssidor",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Hjälp",
 	"growthexperiments-edit-config-help-panel-links": "Hjälppanellänkar",
 	"growthexperiments-edit-config-help-panel-links-description": "Hjälppanelen visar fem länkar och en \"visa mer\" länk. Dessa kan konfigureras till att vara alla länkar i wiki, men rekommendationer ingår nedan.",

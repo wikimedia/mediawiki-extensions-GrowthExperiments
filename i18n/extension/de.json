@@ -6,7 +6,8 @@
 			"Inkowik",
 			"Metalhead64",
 			"Reinhard Kraasch",
-			"MrFraggle"
+			"MrFraggle",
+			"Umherirrender"
 		]
 	},
 	"growthexperiments-desc": "Diese Erweiterung enthält Experimente des Growth-Teams.",
@@ -35,7 +36,7 @@
 	"growthexperiments-edit-config-help-panel-post-on-top": "Wo sollen neue Fragen auf der zentralen Seite für Fragen gepostet werden?",
 	"growthexperiments-edit-config-help-panel-post-on-top-true": "Seitenanfang",
 	"growthexperiments-edit-config-help-panel-post-on-top-false": "Seitenende",
-	"growthexperiments-edit-config-help-panel-view-more": "Zielseite für \"Mehr Hilfeseiten anzeigen\"",
+	"growthexperiments-edit-config-help-panel-view-more": "Zielseite für „Mehr Hilfeseiten anzeigen“",
 	"growthexperiments-edit-config-help-panel-searched-namespaces": "Namensräume, in denen die Freitext-Hilfesuche des Help-Panels aktiviert werden soll",
 	"growthexperiments-edit-config-help-panel-ask-mentor": "Wohin sollen Fragen vom Help-Panel geleitet werden?",
 	"growthexperiments-edit-config-help-panel-ask-mentor-true": "Diskussionsseiten von Lotsen",

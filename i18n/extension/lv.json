@@ -14,6 +14,7 @@
 	"growthexperiments-edit-config-last-edit": "[[$3]]: Pēdējo izmaiņu veicis [[User:$1|$1]] $2.",
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Pēdējo izmaiņu veicis nezināms dalībnieks $1.",
 	"growthexperiments-edit-config-pretext": "Šī lapa ļauj labot [[:mw:Special:MyLanguage/Growth|Izaugsmes]] komandas iespēju konfigurāciju. Tā labos $1 tavā vārdā. Tu varēsi redzēt savas izmaiņas šīs lapas vēsturē.",
+	"growthexperiments-edit-config-feedback-headline": "Vai tev ir kādas idejas vai jautājumi par šo formu?",
 	"growthexperiments-edit-config-feedback-cta": "Sniedz atsauksmes",
 	"growthexperiments-edit-config-error-invalid-title": "Konfigurācijas lapa bija nekorekti konfigurēta",
 	"growthexperiments-edit-config-edit-summary": "Izmaiņu kopsavilkums",

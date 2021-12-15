@@ -10,11 +10,13 @@
 			"Zazzzz",
 			"列维劳德",
 			"沈澄心",
-			"羊羊32521"
+			"羊羊32521",
+			"Tranve",
+			"魔琴"
 		]
 	},
 	"welcomesurvey": "{{GENDER:$1|欢迎}}，$1！",
-	"welcomesurvey-save-confirmation-title": "谢谢您的回复！您的回复已经被保存了。",
+	"welcomesurvey-save-confirmation-title": "谢谢您的回复！您的回复已保存。",
 	"welcomesurvey-save-confirmation-text": "您的回答将帮助我们给您提供入门维基百科的有效方法。",
 	"welcomesurvey-subtitle": "从解答一些并非必须解答的问题，帮助我们提高您的维基百科经验。",
 	"welcomesurvey-save-btn": "结束",

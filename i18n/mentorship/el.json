@@ -1,0 +1,32 @@
+{
+	"@metadata": {
+		"authors": [
+			"Geraki"
+		]
+	},
+	"growthexperiments-mentor-dashboard-title": "Πίνακας εργασίας καθοδηγητή",
+	"growthexperiments-mentor-dashboard-pt-link": "Πίνακας εργασίας καθοδηγητή",
+	"growthexperiments-mentor-dashboard-disabled": "Ο πίνακας εργασίας καθοδηγητή δεν είναι ενεργοποιημένος σε αυτό το wiki.",
+	"growthexperiments-mentor-dashboard-must-be-mentor": "Για να ενεργοποιήσετε τον πίνακα εργασίας καθοδηγητή, χρειάζεται πρώτα να [[$1|εγγραφείτε ως {{GENDER:|καθοδηγητής|καθοδηγήτρια}}]].",
+	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Πριν μπορέσει να χρησιμοποιηθεί ο πίνακας καθοδηγητή, πρέπει πρώτα να ρυθμιστεί ο κατάλογος καθοδηγητών. Ένας διαχειριστής μπορεί να χρησιμοποιήσει το [[Special:EditGrowthConfig]] για αυτό τον σκοπό.",
+	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Οι καθοδηγούμενοί {{GENDER:|σας}}",
+	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Δείτε τους καθοδηγούμενούς σας παρακάτω. Χρησιμοποιήστε τα φίλτρα για να αλλάξετε ποιοι καθοδηγούμενοι εμφανίζονται.",
+	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Ο πίνακας απαιτεί JavaScript. Παρακαλούμε ενεργοποιήστε την JavaScript για να μπορέσετε να χρησιμοποιήσετε αυτή την λειτουργία.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Ποιος είναι στο πίνακά σας;",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Υπόμνημα",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Επισήμανση καθοδηγούμενων",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Όνομα χρήστη",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Αριθμός αναιρεμένων επεξεργασιών",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Αριθμός φραγών",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Ερωτήσεις καθοδηγούμενου",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Αριθμός επεξεργασιών",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Ημερομηνία εγγραφής",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Φίλτρα",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Ενημέρωση",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Αριθμός επεξεργασιών",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Ελάχιστο",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Μέγιστο",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Πιο πρόσφατη επεξεργασία",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Πρόσφατες ημέρες",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Πρόσφατοι μήνες"
+}

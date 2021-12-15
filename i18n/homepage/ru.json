@@ -135,7 +135,7 @@
 	"growthexperiments-homepage-recent-questions-archived-tooltip": "Вопрос был заархивирован, скорее всего, потому, что был задан давно.",
 	"growthexperiments-homepage-mentorship-header": "{{GENDER:$1|}}{{GENDER:$2|Ваш наставник|Ваша наставница}}",
 	"growthexperiments-homepage-mentorship-mentor-edits": "$1 {{PLURAL:$1|правка|правки|правок}}",
-	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Был|Была}} в сети сегодня",
+	"growthexperiments-homepage-mentorship-mentor-active-today": "{{GENDER:$1|Активен|Активна}} сегодня",
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|Был|Была}} в сети вчера",
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Был|Была}} в сети $2 {{PLURAL:$2|день|дня|дней}} назад",
 	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|Этот опытный участник|Эта опытная участница}} знает, что {{GENDER:$2|вы}} новичок, и может помочь в редактировании.",
