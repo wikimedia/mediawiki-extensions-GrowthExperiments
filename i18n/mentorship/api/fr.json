@@ -13,5 +13,7 @@
 	"apihelp-growthsetmentorstatus-param-gesstatus": "Nouvel état",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "En déclarant un tuteur comme absent, il faut avoir la durée de son état d’absence (en jours)",
 	"apihelp-query+growthmentorstatus-summary": "Demander l’état du tuteur de l’utilisateur actuel",
-	"apihelp-growthmentordashboardupdatedata-summary": "Programmer une mise à jour extraordinaire du tableau de bord du module de supervision des tutorés. Vous pouvez programmer seulement une mise à jour toutes les deux heures, pour des raisons de performance."
+	"apihelp-growthmentordashboardupdatedata-summary": "Programmer une mise à jour extraordinaire du tableau de bord du module de supervision des tutorés. Vous pouvez programmer seulement une mise à jour toutes les deux heures, pour des raisons de performance.",
+	"apihelp-growthsetmentorweight-summary": "Définir le poids du tuteur actuellement connecté",
+	"apihelp-growthsetmentorweight-param-geweight": "Poids numérique du tuteur : la valeur la plus basse affectera moins de nouveaux venuss"
 }

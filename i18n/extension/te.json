@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Chaduvari",
+			"Tmamatha",
 			"Veeven"
 		]
 	},
@@ -60,6 +61,7 @@
 	"growthexperiments-edit-config-newcomertasks": "సూచించిన దిద్దుబాట్లు",
 	"growthexperiments-edit-config-newcomer-tasks-description": "నిర్వహణ మూసల ద్వారా కొన్ని దిద్దుబాటు సూచనలు బయట పడతాయి. అలాంటి మూసలున్న వ్యాసాలు ఈ ఫీడు లోకి చేరుతాయి. ఒక్కో పనినీ ఎన్నేసి వ్యాసాల్లో చెయ్యాల్సి ఉందో చూసేందుకు, [[Special:NewcomerTasksInfo|ఈ పేజీ చూడండి]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "అచేతనం",
+	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "[\"Well Sweep Out The Ashes (In The Morning)\",\n  \"Long White Cadillac\",\n  \"Reason To Cry\",\n  \"The Bottle Let Me Down\",\n  \"Knock Knock\",\n  \"Holocene\",\n  \"Opening #2\",\n  \"Storms\",\n  \"Rose Pregnant\",\n  \"Part 3\",\n  \"The Scientist\"\n]",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "కాపీ ఎడిటింగు గురించి మరింత తెలుసుకునేందుకు గమ్యస్థానం పేజీ.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "ఇక్కడ చూపిన మూసలు ఉన్న వ్యాసాలను, ఈ పనికి సంబంధించి వాడుకరులు చెయ్యదగ్గ పనుల్లో చూపించం.",
 	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "ఇక్కడ చూపిన వర్గాలు ఉన్న వ్యాసాలను, ఈ పనికి సంబంధించి వాడుకరులు చెయ్యదగ్గ పనుల్లో చూపించం.",

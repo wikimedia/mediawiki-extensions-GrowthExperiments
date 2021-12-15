@@ -71,6 +71,7 @@
 	"growthexperiments-edit-config-newcomertasks": "Modifications suggérées",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Certains types de modifications suggérées ont émergé via des modèles de maintenance. Les articles contenant ces modèles sont ajoutés au fil. Pour voir combien d’articles sont disponibles pour chaque type de tâche, voir [[Special:NewcomerTasksInfo|cette page]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Désactivé",
+	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "Désactivé dans la configuration du site",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Modification de copie : modèles pour trouver des articles qui nécessitent une modification de la copie, comme des améliorations d’orthographe, de grammaire ou de ponctuation.",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Page de destination pour en savoir davantage sur la modification de copie.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Étendre : modèles pour trouver des articles qui nécessitent un développement.",

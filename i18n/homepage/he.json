@@ -450,7 +450,7 @@
 	"growthexperiments-addimage-skip-dialog-body": "נא לוודא {{GENDER:|שאתה רוצה|שאת רוצה}} לדלג על ההצעה הזאת.",
 	"growthexperiments-addimage-skip-dialog-confirm": "לדלג על ההצעה",
 	"growthexperiments-addimage-skip-dialog-cancel": "ביטול",
-	"growthexperiments-newcomertasks-invalid-tasktype": "$1 הוא לא סוג משימה תקין",
+	"growthexperiments-newcomertasks-invalid-tasktype": "סוג משימה בלתי־תקין: $1",
 	"growthexperiments-addimage-caption-title": "הוספת כיתוב",
 	"growthexperiments-addimage-loading-title": "טעימת תצוגה מקדימה של תמונה...",
 	"growthexperiments-addimage-caption-placeholder": "{{GENDER||:|רשום|רשמי}} כיתוב קצר שמתאר איך התמונה הזאת רלוונטית לדף <strong>$1</strong>",

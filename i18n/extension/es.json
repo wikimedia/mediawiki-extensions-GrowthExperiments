@@ -10,6 +10,7 @@
 			"LORDZRAWN",
 			"MarcoAurelio",
 			"Mnivar",
+			"Zapipedia (WMF)",
 			"ZebaX2010"
 		]
 	},
@@ -71,6 +72,7 @@
 	"growthexperiments-edit-config-newcomertasks": "Ediciones sugeridas",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Algunos tipos de ediciones sugeridas se muestran a través de plantillas de mantenimiento. Los artículos que contienen esas plantillas se agregan al feed. Para ver cuántos artículos están disponibles para cada tipo de tarea, consulte [[Special:NewcomerTasksInfo|esta página]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Desactivado",
+	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "Desactivado en la configuración del sitio",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Corrección de texto: plantillas para encontrar artículos que necesiten edición de textos, como mejoras en la ortografía, la gramática y la puntuación.",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Pagina donde los recién llegados pueden aprender más sobre el corrector de textos.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Expandir: plantillas para buscar artículos que necesiten expansión.",

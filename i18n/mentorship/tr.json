@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Hedda",
-			"Melissadilara"
+			"Melissadilara",
+			"ToprakM"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Danışman kontrol paneli",
@@ -53,5 +54,6 @@
 	"growthexperiments-rcfilters-mentorship-starred-label": "Yıldızlanan danışanlarınız",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "Danışman kontrol panelinizde yıldızladığınız size atanan danışanlar",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "Yıldızlanmayan danışanlarınız",
-	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Size atanan diğer danışanlar"
+	"growthexperiments-rcfilters-mentorship-unstarred-desc": "Size atanan diğer danışanlar",
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 danışmanlıktan emekli oldu."
 }

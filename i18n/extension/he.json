@@ -62,6 +62,7 @@
 	"growthexperiments-edit-config-newcomertasks": "עריכות מוצעות",
 	"growthexperiments-edit-config-newcomer-tasks-description": "חלק מסוגי העריכות המוצעות מוצפות דרך תבניות תחזוקה. ערכים שמכילים את התבניות האלו נוספות להזנה. כדי לראות כמה ערכים זמינים בכל סוג משימה, ר' את [[Special:NewcomerTasksInfo|הדף הזה]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "כבוי",
+	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "כבוי בהגדרות האתר",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "הגהה: תבניות למציאת ערכים שזקוקים להגהה, כגון שיפורי איות, דקדוק, ופיסוק.",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "דף היעד ללימוד עד הגהה.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "הרחבה: תבניות למציאת ערכים שזקוקים להרחבה.",

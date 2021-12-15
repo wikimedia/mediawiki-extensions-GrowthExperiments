@@ -70,6 +70,7 @@
 	"growthexperiments-edit-config-newcomertasks": "建議的編輯",
 	"growthexperiments-edit-config-newcomer-tasks-description": "某些類型的編輯建議通過維護模板顯示出來。包含這些模板的條目將添加到訂閱源中。要檢視每種類型的任務有多少條目可用，請參閱 [[Special:NewcomerTasksInfo|這個頁面]]。",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "已停用",
+	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "由站點組態停用",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "校對編輯：用於尋找需要校對編輯的條目的模板，例如拼寫、語法和標點符號改進。",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "了解有關校對編輯更多資訊的目標頁面。",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "擴充：尋找需要擴充的條目的模板。",
