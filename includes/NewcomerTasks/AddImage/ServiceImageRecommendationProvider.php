@@ -271,7 +271,7 @@ class ServiceImageRecommendationProvider implements ImageRecommendationProvider 
 				} else {
 					// $data['pages'][0]['suggestions'] was not empty so all recommendations were filtered by quality
 					// gate filters
-					$status->fatal(
+					return StatusValue::newGood()->error(
 						'rawmessage',
 						'All recommendations were filtered for page: ' . $titleTextSafe
 					);
