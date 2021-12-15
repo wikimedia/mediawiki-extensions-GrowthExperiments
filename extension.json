@@ -391,7 +391,7 @@
 		},
 		"ext.growthExperiments.SuggestedEditSession": {
 			"packageFiles": [
-				"homepage/suggestededits/ext.growthExperiments.SuggestedEditSession.js",
+				"ext.growthExperiments.SuggestedEditSession/index.js",
 				"utils/ext.growthExperiments.Utils.js"
 			],
 			"targets": [

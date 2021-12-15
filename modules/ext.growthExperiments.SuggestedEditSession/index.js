@@ -1,5 +1,5 @@
 ( function () {
-	var Utils = require( '../../utils/ext.growthExperiments.Utils.js' );
+	var Utils = require( '../utils/ext.growthExperiments.Utils.js' );
 	var states = {
 		/** Initial task state when the user opens a task. */
 		STARTED: 'started',
@@ -152,7 +152,7 @@
 			helpPanelShouldOpen: this.helpPanelShouldOpen,
 			helpPanelCurrentTip: this.helpPanelCurrentTip,
 			helpPanelSuggestedEditsInteractionHappened:
-				this.helpPanelSuggestedEditsInteractionHappened,
+			this.helpPanelSuggestedEditsInteractionHappened,
 			onboardingNeedsToBeShown: this.onboardingNeedsToBeShown,
 			newcomerTaskToken: this.newcomerTaskToken,
 			shouldOpenArticleInEditMode: this.shouldOpenArticleInEditMode,
