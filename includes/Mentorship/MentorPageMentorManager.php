@@ -341,6 +341,10 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 * @throws WikiConfigException
 	 */
 	private function getWeightedAutoAssignedMentors(): array {
+		if ( $this->getMentorsPage() === null ) {
+			return [];
+		}
+
 		return $this->cache->getWithSetCallback(
 			$this->makeCacheKeyWeightedAutoAssignedMentors(),
 			$this->cacheTtl,
