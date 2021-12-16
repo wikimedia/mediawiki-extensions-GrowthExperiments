@@ -7,6 +7,8 @@ var ImageSuggestionInteractionLogger = require( './ImageSuggestionInteractionLog
  * This is to solve the diamond inheritance problem of ve.ui.MWSaveDialog -->
  * AddImageSaveDialog and ve.ui.MWSaveDialog --> ve.ui.MWDesktopSaveDialog.
  *
+ * This save dialog is only shown for accepted suggestion.
+ *
  * @mixin mw.libs.ge.ui.AddImageSaveDialog
  * @extends ve.ui.MWSaveDialog
  * @mixes mw.libs.ge.ui.StructuredTaskSaveDialog
@@ -71,10 +73,9 @@ AddImageSaveDialog.prototype.getSummaryHeader = function () {
  * Update the summary body based on the summary data
  */
 AddImageSaveDialog.prototype.updateSummaryBody = function () {
-	var accepted = this.summaryData.accepted;
 	this.$summaryBody.empty().append( [
-		this.getImageSummary( this.summaryData.filename, accepted ),
-		accepted ? this.getAcceptedContent( this.summaryData ) : this.getRejectedContent()
+		this.getImageSummary( this.summaryData.filename ),
+		this.getAcceptedContent( this.summaryData )
 	] );
 };
 
@@ -82,10 +83,9 @@ AddImageSaveDialog.prototype.updateSummaryBody = function () {
  * Show the image file name along with its acceptance state
  *
  * @param {string} fileName Image file name
- * @param {boolean} accepted Whether the image suggested is accepted
  * @return {jQuery}
  */
-AddImageSaveDialog.prototype.getImageSummary = function ( fileName, accepted ) {
+AddImageSaveDialog.prototype.getImageSummary = function ( fileName ) {
 	var $imageInfo = $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-imageInfo' ).append( [
 		new OO.ui.IconWidget( { icon: 'image' } ).$element,
 		$( '<span>' )
@@ -94,19 +94,8 @@ AddImageSaveDialog.prototype.getImageSummary = function ( fileName, accepted ) {
 	] );
 	return $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-imageSummary' ).append( [
 		$imageInfo,
-		accepted ? new OO.ui.IconWidget( { icon: 'check' } ).$element : ''
+		new OO.ui.IconWidget( { icon: 'check' } ).$element
 	] );
-};
-
-/**
- * Get the content element for rejected image suggestion
- *
- * @return {jQuery}
- */
-AddImageSaveDialog.prototype.getRejectedContent = function () {
-	return $( '<div>' ).addClass( 'mw-ge-addImageSaveDialog-bodyContent' ).text(
-		mw.message( 'growthexperiments-addimage-summary-reject-description' ).text()
-	);
 };
 
 /**
@@ -149,28 +138,20 @@ AddImageSaveDialog.prototype.getSetupProcess = function ( data ) {
 	return StructuredTaskSaveDialog.prototype.getSetupProcess.call( this, data ).next( function () {
 		this.summaryData = ve.init.target.getSummaryData();
 		this.updateSummaryBody();
-		// Edit summary will be localized in the content language via FormatAutocomments hook
-		this.editSummaryInput.setValue( '/* growthexperiments-addimage-summary-summary: 1 */' );
 		this.$watchlistFooter.empty();
-		if ( this.summaryData.accepted ) {
-			this.$watchlistFooter.append( this.getWatchlistCheckbox() );
-		}
+		this.$watchlistFooter.append( this.getWatchlistCheckbox() );
 		this.logger.log( 'impression', this.getLogMetadata() );
 	}, this );
 };
 
 /** @override **/
 AddImageSaveDialog.prototype.getLogMetadata = function () {
-	var summaryData = this.summaryData,
-		actionData = {
-			// eslint-disable-next-line camelcase
-			acceptance_state: summaryData.accepted ? 'accepted' : 'rejected'
-		};
-	if ( summaryData.accepted ) {
-		// eslint-disable-next-line camelcase
-		actionData.caption_length = summaryData.caption.length;
-	}
-	return actionData;
+	return {
+		/* eslint-disable camelcase */
+		acceptance_state: 'accepted',
+		caption_length: this.summaryData.caption.length
+		/* eslint-enable camelcase */
+	};
 };
 
 module.exports = AddImageSaveDialog;

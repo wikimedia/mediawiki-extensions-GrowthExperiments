@@ -611,4 +611,34 @@ AddImageArticleTarget.prototype.getDefaultThumbSize = function () {
 	return thumbLimits[ mw.user.options.get( 'thumbsize' ) ] || 300;
 };
 
+/**
+ * Save the article without showing the save dialog first.
+ * This is used when the suggestion is rejected.
+ */
+AddImageArticleTarget.prototype.saveWithoutShowingDialog = function () {
+	var promise = ve.createDeferred(),
+		$overlay = this.getSurface().getGlobalOverlay().$element;
+	$overlay.addClass( 'mw-ge-addImage--overlay-shown' );
+	promise.done( function () {
+		this.restorePlaceholderTitle();
+		$overlay.removeClass( 'mw-ge-addImage--overlay-shown' );
+	}.bind( this ) );
+	// When the save dialog is shown, the promise is from the ProcessDialog.
+	// In this case, the promise is used to control the loading state.
+	this.onSaveDialogSave( promise );
+	this.updatePlaceholderTitle(
+		mw.message( 'growthexperiments-addimage-submitting-title' ).text(),
+		true
+	);
+};
+
+/** @inheritDoc **/
+AddImageArticleTarget.prototype.getSaveOptions = function () {
+	// Edit summary will be localized in the content language via FormatAutocomments hook
+	var editSummaryAutoComment = '/* growthexperiments-addimage-summary-summary: 1 */',
+		saveOptions = this.constructor.super.prototype.getSaveOptions.call( this );
+	saveOptions.summary = editSummaryAutoComment;
+	return saveOptions;
+};
+
 module.exports = AddImageArticleTarget;

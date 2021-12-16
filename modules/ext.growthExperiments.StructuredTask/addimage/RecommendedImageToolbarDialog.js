@@ -230,6 +230,7 @@ RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 	rejectionDialogLifecycle.closed.then( function ( data ) {
 		if ( data && data.action === 'done' ) {
 			this.setState( false, data.reasons );
+			this.getArticleTarget().saveWithoutShowingDialog();
 		}
 		this.logger.log(
 			'close',
@@ -240,7 +241,6 @@ RecommendedImageToolbarDialog.prototype.onNoButtonClicked = function () {
 			// eslint-disable-next-line camelcase
 			{ active_interface: 'rejection_dialog' }
 		);
-		mw.hook( 'growthExperiments.contextItem.saveArticle' ).fire();
 	}.bind( this ) );
 };
 

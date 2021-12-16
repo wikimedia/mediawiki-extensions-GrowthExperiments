@@ -1003,6 +1003,7 @@
 				"growthexperiments-addimage-skip-dialog-cancel",
 				"growthexperiments-addimage-caption-title",
 				"growthexperiments-addimage-loading-title",
+				"growthexperiments-addimage-submitting-title",
 				"growthexperiments-addimage-caption-placeholder",
 				"growthexperiments-addimage-caption-info-dialog-title",
 				"growthexperiments-addimage-caption-info-dialog-message",
@@ -1016,7 +1017,6 @@
 				"growthexperiments-structuredtask-user-error-login-cta",
 				"growthexperiments-addimage-summary-label",
 				"growthexperiments-addimage-summary-copyrightwarning",
-				"growthexperiments-addimage-summary-reject-description",
 				"colon-separator",
 				"comma-separator",
 				"growthexperiments-addimage-caption-warning-tooshort"
