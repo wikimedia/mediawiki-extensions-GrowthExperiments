@@ -408,7 +408,7 @@
 			]
 		},
 		"ext.growthExperiments.Homepage.ConfirmEmail": {
-			"packageFiles": [ "homepage/ext.growthExperiments.Homepage.ConfirmEmail.js" ],
+			"packageFiles": [ "ext.growthExperiments.Homepage.ConfirmEmail/index.js" ],
 			"messages": [
 				"confirmemail_loggedin"
 			],
@@ -418,7 +418,7 @@
 			]
 		},
 		"ext.growthExperiments.Homepage.ConfirmEmail.styles": {
-			"styles": "homepage/ext.growthExperiments.Homepage.ConfirmEmail.less",
+			"styles": "ext.growthExperiments.Homepage.ConfirmEmail/ConfirmEmail.less",
 			"targets": [
 				"desktop",
 				"mobile"
