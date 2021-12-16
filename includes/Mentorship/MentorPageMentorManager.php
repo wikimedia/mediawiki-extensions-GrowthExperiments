@@ -12,7 +12,6 @@ use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserNameUtils;
 use MediaWiki\User\UserOptionsLookup;
-use MessageLocalizer;
 use ParserOptions;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
@@ -55,9 +54,6 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	/** @var UserOptionsLookup */
 	private $userOptionsLookup;
 
-	/** @var MessageLocalizer */
-	private $messageLocalizer;
-
 	/** @var bool */
 	private $wasPosted;
 
@@ -79,7 +75,6 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 * @param UserNameUtils $userNameUtils
 	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param UserOptionsLookup $userOptionsLookup
-	 * @param MessageLocalizer $messageLocalizer
 	 * @param Language $language
 	 * @param string|null $mentorsPageName Title of the page which contains the list of available mentors.
 	 *   See the documentation of the GEHomepageMentorsList config variable for format. May be null if no
@@ -98,7 +93,6 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		UserNameUtils $userNameUtils,
 		UserIdentityLookup $userIdentityLookup,
 		UserOptionsLookup $userOptionsLookup,
-		MessageLocalizer $messageLocalizer,
 		Language $language,
 		?string $mentorsPageName,
 		?string $manuallyAssignedMentorsPageName,
@@ -112,7 +106,6 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$this->userNameUtils = $userNameUtils;
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->userOptionsLookup = $userOptionsLookup;
-		$this->messageLocalizer = $messageLocalizer;
 		$this->language = $language;
 		$this->mentorsPageName = $mentorsPageName;
 		$this->manuallyAssignedMentorsPageName = $manuallyAssignedMentorsPageName;
@@ -508,8 +501,8 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 * @return string
 	 */
 	private function getDefaultMentorIntroText( UserIdentity $mentor, UserIdentity $mentee ) {
-		return $this->messageLocalizer
-			->msg( 'growthexperiments-homepage-mentorship-intro' )
+		return wfMessage( 'growthexperiments-homepage-mentorship-intro' )
+			->inContentLanguage()
 			->params( $mentor->getName() )
 			->params( $mentee->getName() )
 			->text();
@@ -533,7 +526,8 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			return null;
 		}
 
-		return $this->messageLocalizer->msg( 'quotation-marks' )
+		return wfMessage( 'quotation-marks' )
+			->inContentLanguage()
 			->rawParams( $this->language->truncateForVisual( $introText, self::INTRO_TEXT_LENGTH ) )
 			->text();
 	}
