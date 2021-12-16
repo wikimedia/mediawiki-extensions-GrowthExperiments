@@ -318,9 +318,11 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 	/** @inheritDoc */
 	public function invalidateCache(): void {
-		$this->cache->delete(
-			$this->makeCacheKeyWeightedAutoAssignedMentors()
-		);
+		if ( $this->getMentorsPage() !== null ) {
+			$this->cache->delete(
+				$this->makeCacheKeyWeightedAutoAssignedMentors()
+			);
+		}
 	}
 
 	/**
