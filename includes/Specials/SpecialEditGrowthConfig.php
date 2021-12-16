@@ -191,14 +191,14 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function requiresWrite() {
-		return $this->userCanWrite;
+		return false;
 	}
 
 	/**
 	 * @inheritDoc
 	 */
 	public function doesWrites() {
-		return $this->userCanWrite;
+		return true;
 	}
 
 	/**
@@ -297,6 +297,9 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 
 		if ( !$this->userCanWrite ) {
 			$form->suppressDefaultSubmit( true );
+		} elseif ( wfReadOnly() ) {
+			$form->suppressDefaultSubmit( true );
+			$form->addPostText( $this->msg( 'readonlytext', wfReadOnlyReason() ) );
 		}
 	}
 
@@ -907,6 +910,8 @@ class SpecialEditGrowthConfig extends FormSpecialPage {
 	 * @inheritDoc
 	 */
 	public function onSubmit( array $data ) {
+		$this->checkReadOnly();
+
 		// DO NOT rely on userCanWrite here, in case its value is wrong for some weird reason
 		if ( !$this->getAuthority()->isAllowed( self::REQUIRED_RIGHT_TO_WRITE ) ) {
 			throw new PermissionsError( self::REQUIRED_RIGHT_TO_WRITE );
