@@ -66,6 +66,7 @@
 	"growthexperiments-edit-config-newcomertasks": "Editační tipy",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Některé editační tipy jsou generovány za pomoci údržbových šablon. Články obsahující definované šablony jsou považované za články vhodné k doporučení nováčkům pro daný tip úkolu. Abyste zjistili, jaké články jsou dostupné pro jednotlivé úkoly, můžete použít [[Special:NewcomerTasksInfo|tuto stránku]].",
 	"growthexperiments-edit-config-newcomer-tasks-disabled": "Vypnuto",
+	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "Zakázáno serverovou konfigurací",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Korektury: šablony používané k nalezení článků, které vyžadují korektury, jako jsou opravy pravopisu či interpunkce.",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Název stránky, na které se nováčci mohou dozvědět více informací o korekturách.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Rozšiřování článků: šablony používané k nalezení článků, které je třeba rozšířit",

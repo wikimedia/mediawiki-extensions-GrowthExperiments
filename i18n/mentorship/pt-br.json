@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Eduardoaddad"
+			"Eduardoaddad",
+			"Stanglavine"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Painel de mentor",
@@ -9,7 +10,7 @@
 	"growthexperiments-mentor-dashboard-disabled": "O painel do mentor não está habilitado nessa wiki.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Para habilitar o painel de mentor, {{GENDER:|você}} primeiro precisa [[$1|inscrever-se como mentor]].",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Antes que o painel do mentor possa ser usado, a lista de mentores primeiro precisa ser configurada. Um administrador pode usar [[Special:EditGrowthConfig]] para esse propósito.",
-	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Seus}} mentores",
+	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Seus}} aprendizes",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Veja {{GENDER:|seus}} aprendizes abaixo. Use os filtros para alterar quais pupilos são mostrados.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "A tabela requer JavaScript. Ative o JavaScript para poder usar este módulo.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Quem está na sua tabela?",

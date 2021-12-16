@@ -456,7 +456,7 @@
 	"growthexperiments-addimage-skip-dialog-body": "Potvrďte, že tento návrh {{GENDER:|chcete}} přeskočit.",
 	"growthexperiments-addimage-skip-dialog-confirm": "Přeskočit návrh",
 	"growthexperiments-addimage-skip-dialog-cancel": "Zrušit",
-	"growthexperiments-newcomertasks-invalid-tasktype": "$1 není platný typ úkolu.",
+	"growthexperiments-newcomertasks-invalid-tasktype": "Neplatný typ úkolu: $1",
 	"growthexperiments-addimage-caption-title": "Přidat popisek",
 	"growthexperiments-addimage-loading-title": "Obrázek se načítá...",
 	"growthexperiments-addimage-caption-placeholder": "Napište krátký popisek, ve kterém vysvětlíte, jak se tento obrázek týká článku <strong>$1</strong>",
