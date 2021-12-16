@@ -509,7 +509,7 @@
 		},
 		"ext.growthExperiments.Homepage.Logger": {
 			"packageFiles": [
-				"homepage/ext.growthExperiments.Homepage.Logger.js",
+				"ext.growthExperiments.Homepage.Logger/index.js",
 				"utils/ext.growthExperiments.Utils.js"
 			],
 			"dependencies": [
@@ -523,7 +523,7 @@
 		},
 		"ext.growthExperiments.Homepage.Logging": {
 			"packageFiles": [
-				"homepage/ext.growthExperiments.Homepage.Logging.js"
+				"ext.growthExperiments.Homepage.Logging/index.js"
 			],
 			"dependencies": [
 				"ext.growthExperiments.Homepage.Logger",
@@ -1683,8 +1683,8 @@
 			"tests/qunit/help/ext.growthExperiments.HelpPanelProcessDialog.test.js",
 			"modules/help/ext.growthExperiments.HelpPanelProcessDialog.SwitchEditorPanel.js",
 			"tests/qunit/help/ext.growthExperiments.HelpPanelProcessDialog.SwitchEditorPanel.test.js",
-			"modules/homepage/ext.growthExperiments.Homepage.Logger.js",
-			"tests/qunit/homepage/ext.growthExperiments.Homepage.Logger.test.js",
+			"modules/ext.growthExperiments.Homepage.Logger/index.js",
+			"tests/qunit/ext.growthExperiments.Homepage.Logger/index.test.js",
 			"modules/homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditPagerWidget.js",
 			"tests/qunit/homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditPagerWidget.test.js",
 			"modules/homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.ErrorCardWidget.js",
