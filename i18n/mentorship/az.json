@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"NMW03"
+			"NMW03",
+			"Toghrul Rahimli"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Mentor idarəetmə paneli",
@@ -78,5 +79,7 @@
 	"growthexperiments-quit-mentorship-not-listed-has-mentees-pretext": "Mentorluqdan çıxmağın növbəti addımı istifadəçilərinizi başqa mentora təyin etməkdir. Çıxmaq istədiyinizə əminsinizsə, aşağıdakı düyməni basın.",
 	"growthexperiments-quit-mentorship-reassign-mentees-confirm": "Bəli, istifadəçilərimi başqa mentora təyin et",
 	"growthexperiments-quit-mentorship-success": "İstifadəçiləriniz qısa müddətdə başqa mentorlara təyin ediləcək.",
-	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 mentorluqdan {{GENDER:$1|ayrıldı}}."
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 mentorluqdan {{GENDER:$1|ayrıldı}}.",
+	"echo-category-title-ge-mentorship": "Mentorluq",
+	"echo-pref-tooltip-ge-mentorship": "Böyümə komandası tərəfindən idarə olunan mentorluq xüsusiyyətləri ilə bağlı bildirişlər. Bu bildiriş sizin hansısa mentor tərəfindən qəbul olunmanızı və ya mentorluq etdiyiniz şəxslərin başqası tərəfindən qəbul olunmasını bilmək imkanı verir."
 }
