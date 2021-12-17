@@ -1,8 +1,8 @@
 'use strict';
 
-const HomepageModuleLogger = require( '../../../modules/homepage/ext.growthExperiments.Homepage.Logger.js' );
+const HomepageModuleLogger = require( '../../../modules/ext.growthExperiments.Homepage.Logger/index.js' );
 
-QUnit.module( 'ext.growthExperiments.Homepage.Logger.js', QUnit.newMwEnvironment( {
+QUnit.module( 'ext.growthExperiments.Homepage.Logger/index.js', QUnit.newMwEnvironment( {
 	config: {
 		'wgGEHomepageModuleState-mentor': 1,
 		wgUserEditCount: 123,
@@ -26,6 +26,7 @@ QUnit.test( 'disabled/enabled', function ( assert ) {
 	events = homepageModuleLogger.getEvents();
 	assert.strictEqual( events.length, 1 );
 } );
+
 QUnit.test( 'log', function ( assert ) {
 	const homepageModuleLogger = new HomepageModuleLogger( true, 'blah' );
 	homepageModuleLogger.log( 'foo', 'desktop', 'impression', { foo: 'bar' } );
