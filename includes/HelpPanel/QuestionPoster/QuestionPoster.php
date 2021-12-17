@@ -597,9 +597,10 @@ abstract class QuestionPoster {
 	 */
 	protected function runEditFilterMergedContentHook( Content $content, $summary ) {
 		$derivativeContext = new DerivativeContext( $this->getContext() );
-		$derivativeContext->setConfig( MediaWikiServices::getInstance()->getMainConfig() );
+		$services = MediaWikiServices::getInstance();
+		$derivativeContext->setConfig( $services->getMainConfig() );
 		$derivativeContext->setTitle( $this->targetTitle );
-		$derivativeContext->setWikiPage( WikiPage::factory( $this->targetTitle ) );
+		$derivativeContext->setWikiPage( $services->getWikiPageFactory()->newFromTitle( $this->targetTitle ) );
 		$status = new Status();
 		if ( !Hooks::run( 'EditFilterMergedContent', [
 			$derivativeContext,
