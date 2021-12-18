@@ -82,5 +82,12 @@
 	"echo-pref-tooltip-ge-mentorship": "Notifications related to mentorship features maintained by the Growth team. This notification lets you know that you were claimed as a mentee, or that one of your mentees was claimed by someone else.",
 	"growthexperiments-notification-header-mentee-claimed": "Your {{GENDER:$3|mentee}}, $3, was {{GENDER:$2|claimed}} by $1.",
 	"growthexperiments-notification-body-mentee-claimed": "Reason: $1",
-	"growthexperiments-notification-secondary-link-label-mentee-claimed": "What is \"Claim mentee\"?"
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "What is \"Claim mentee\"?",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Number of mentees assigned to me",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "~Half the average",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Average (the default)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "~Twice the average",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Your}} load was changed to \"$1\".",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Changing to more or less mentees will help {{GENDER:|you}} manage the number of questions {{GENDER:|you}} may expect to answer. However, the number of questions only depends on the motivation of the mentees assigned to you.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "It’s recommended to start on the \"Average\" weighting to gauge your support capacity before changing to the other options."
 }

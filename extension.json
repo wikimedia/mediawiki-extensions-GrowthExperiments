@@ -1627,7 +1627,13 @@
 				"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown",
 				"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active",
 				"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away",
-				"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message"
+				"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away-message",
+				"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low",
+				"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium",
+				"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high",
+				"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed",
+				"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1",
+				"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2"
 			],
 			"dependencies": [
 				"mediawiki.language",
