@@ -78,7 +78,7 @@ class Resources extends BaseModule {
 				$this->msg( 'growthexperiments-mentor-dashboard-resources-link-claim-mentee' )->text()
 			),
 			$this->formatLink(
-				'mw:Growth',
+				'mw:Special:MyLanguage/Growth',
 				$this->msg( 'growthexperiments-mentor-dashboard-resources-link-tools' )->text()
 			)
 		];
