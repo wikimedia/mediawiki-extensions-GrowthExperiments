@@ -410,3 +410,19 @@ $specialPageAliases['vi'] = [
 	'MentorDashboard' => [ 'Bảng_điều_khiển_cố_vấn' ],
 	'QuitMentorship' => [ 'Ngừng_làm_cố_vấn' ],
 ];
+
+/** Simplified Chinese */
+$specialPageAliases['zh-hans'] = [
+	'WelcomeSurvey' => [ '欢迎调查' ],
+	'Homepage' => [ '首页' ],
+	'Impact' => [ '影响' ],
+	'ClaimMentee' => [ '认领学员' ],
+];
+
+/** Traditional Chinese */
+$specialPageAliases['zh-hant'] = [
+	'WelcomeSurvey' => [ '歡迎調查' ],
+	'Homepage' => [ '首頁' ],
+	'Impact' => [ '影響' ],
+	'ClaimMentee' => [ '認領學員' ],
+ ];
