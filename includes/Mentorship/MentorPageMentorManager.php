@@ -274,7 +274,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			return [];
 		}
 
-		$links = $page->getParserOutput( ParserOptions::newCanonical( 'canonical' ) )->getLinks();
+		$links = $page->getParserOutput( ParserOptions::newFromAnon() )->getLinks();
 		if ( !isset( $links[ NS_USER ] ) ) {
 			$this->logger->info( __METHOD__ . ' found zero mentors, no links at {mentorsList}', [
 				'mentorsList' => $page->getTitle()->getPrefixedText()
