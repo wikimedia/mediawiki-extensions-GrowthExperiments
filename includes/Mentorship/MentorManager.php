@@ -42,6 +42,20 @@ abstract class MentorManager implements ExpirationAwareness {
 	 */
 	abstract public function invalidateCache(): void;
 
+	/** @var int */
+	public const MENTORSHIP_DISABLED = 0;
+	/** @var int */
+	public const MENTORSHIP_ENABLED = 1;
+	/** @var int */
+	public const MENTORSHIP_OPTED_OUT = 2;
+
+	/** @var int[] */
+	protected const MENTORSHIP_STATES = [
+		self::MENTORSHIP_DISABLED,
+		self::MENTORSHIP_ENABLED,
+		self::MENTORSHIP_OPTED_OUT
+	];
+
 	/**
 	 * Get the mentor assigned to this user, if it exists.
 	 * @param UserIdentity $user
@@ -179,13 +193,12 @@ abstract class MentorManager implements ExpirationAwareness {
 	abstract public function getAutoMentorsListTitle(): ?Title;
 
 	/**
-	 * Checks if mentorship is enabled
+	 * Checks state of mentorship for an user
 	 *
-	 * @note See T287903 in Phabricator for use-case.
 	 * @param UserIdentity $user
-	 * @return bool
+	 * @return int One of MentorManager::MENTORSHIP_*
 	 */
-	abstract public function isMentorshipEnabledForUser( UserIdentity $user ): bool;
+	abstract public function getMentorshipStateForUser( UserIdentity $user ): int;
 
 	/**
 	 * Randomly selects a mentor from the available mentors.
