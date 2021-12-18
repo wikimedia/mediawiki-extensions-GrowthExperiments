@@ -183,6 +183,7 @@
 				"NamespaceInfo",
 				"TitleFactory",
 				"StatsdDataFactory",
+				"PerDbNameStatsdDataFactory",
 				"GrowthExperimentsNewcomerTasksConfigurationLoader",
 				"GrowthExperimentsNewcomerTaskTrackerFactory",
 				"GrowthExperimentsExperimentUserManager",

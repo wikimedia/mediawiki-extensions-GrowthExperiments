@@ -51,6 +51,7 @@ use MediaWiki\User\UserOptionsManager;
 use NamespaceInfo;
 use OOUI\ButtonWidget;
 use OutputPage;
+use PrefixingStatsdDataFactoryProxy;
 use RecentChange;
 use RequestContext;
 use ResourceLoaderContext;
@@ -145,6 +146,10 @@ class HomepageHooks implements
 
 	/** @var bool Are we in a context where it is safe to access the primary DB? */
 	private $canAccessPrimary;
+	/**
+	 * @var IBufferingStatsdDataFactory
+	 */
+	private $perDbNameStatsdDataFactory;
 
 	/**
 	 * @param Config $config Uses PHP globals
@@ -156,6 +161,7 @@ class HomepageHooks implements
 	 * @param NamespaceInfo $namespaceInfo
 	 * @param TitleFactory $titleFactory
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param TrackerFactory $trackerFactory
 	 * @param ExperimentUserManager $experimentUserManager
@@ -176,6 +182,7 @@ class HomepageHooks implements
 		NamespaceInfo $namespaceInfo,
 		TitleFactory $titleFactory,
 		IBufferingStatsdDataFactory $statsdDataFactory,
+		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
 		ConfigurationLoader $configurationLoader,
 		TrackerFactory $trackerFactory,
 		ExperimentUserManager $experimentUserManager,
@@ -195,6 +202,7 @@ class HomepageHooks implements
 		$this->namespaceInfo = $namespaceInfo;
 		$this->titleFactory = $titleFactory;
 		$this->statsdDataFactory = $statsdDataFactory;
+		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
 		$this->configurationLoader = $configurationLoader;
 		$this->trackerFactory = $trackerFactory;
 		$this->experimentUserManager = $experimentUserManager;
@@ -839,6 +847,7 @@ class HomepageHooks implements
 			if ( $taskType ) {
 				$taskTypeHandler = $this->taskTypeHandlerRegistry->getByTaskType( $taskType );
 				$rc->addTags( $taskTypeHandler->getChangeTags() );
+				$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.NewcomerTask.' . $taskType->getId() );
 			}
 		}
 	}
