@@ -6,12 +6,14 @@ use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
+use InvalidArgumentException;
 use Language;
 use MediaWiki\Page\WikiPageFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use MediaWiki\User\UserNameUtils;
 use MediaWiki\User\UserOptionsLookup;
+use MediaWiki\User\UserOptionsManager;
 use ParserOptions;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
@@ -54,6 +56,9 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	/** @var UserOptionsLookup */
 	private $userOptionsLookup;
 
+	/** @var UserOptionsManager */
+	private $userOptionsManager;
+
 	/** @var bool */
 	private $wasPosted;
 
@@ -75,6 +80,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 * @param UserNameUtils $userNameUtils
 	 * @param UserIdentityLookup $userIdentityLookup
 	 * @param UserOptionsLookup $userOptionsLookup
+	 * @param UserOptionsManager $userOptionsManager
 	 * @param Language $language
 	 * @param string|null $mentorsPageName Title of the page which contains the list of available mentors.
 	 *   See the documentation of the GEHomepageMentorsList config variable for format. May be null if no
@@ -93,6 +99,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		UserNameUtils $userNameUtils,
 		UserIdentityLookup $userIdentityLookup,
 		UserOptionsLookup $userOptionsLookup,
+		UserOptionsManager $userOptionsManager,
 		Language $language,
 		?string $mentorsPageName,
 		?string $manuallyAssignedMentorsPageName,
@@ -106,6 +113,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$this->userNameUtils = $userNameUtils;
 		$this->userIdentityLookup = $userIdentityLookup;
 		$this->userOptionsLookup = $userOptionsLookup;
+		$this->userOptionsManager = $userOptionsManager;
 		$this->language = $language;
 		$this->mentorsPageName = $mentorsPageName;
 		$this->manuallyAssignedMentorsPageName = $manuallyAssignedMentorsPageName;
@@ -589,5 +597,28 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		}
 
 		return $state;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function setMentorshipStateForUser( UserIdentity $user, int $state ): void {
+		if ( !in_array( $state, self::MENTORSHIP_STATES ) ) {
+			throw new InvalidArgumentException(
+				'Invalid value of $state passed to ' . __METHOD__
+			);
+		}
+
+		$this->userOptionsManager->setOption(
+			$user,
+			self::MENTORSHIP_ENABLED_PREF,
+			$state
+		);
+		$this->userOptionsManager->saveOptions( $user );
+
+		if ( $state === self::MENTORSHIP_OPTED_OUT ) {
+			// user opted out, drop mentor/mentee relationship
+			$this->mentorStore->dropMenteeRelationship( $user );
+		}
 	}
 }

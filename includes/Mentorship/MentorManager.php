@@ -6,6 +6,7 @@ use BagOStuff;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use GrowthExperiments\WikiConfigException;
 use HashBagOStuff;
+use InvalidArgumentException;
 use MediaWiki\User\UserIdentity;
 use Title;
 use Wikimedia\LightweightObjectStore\ExpirationAwareness;
@@ -207,6 +208,15 @@ abstract class MentorManager implements ExpirationAwareness {
 	 * @return int One of MentorManager::MENTORSHIP_*
 	 */
 	abstract public function getMentorshipStateForUser( UserIdentity $user ): int;
+
+	/**
+	 * Set state of mentorship for an user
+	 *
+	 * @param UserIdentity $user
+	 * @param int $state One of MentorManager::MENTORSHIP_*
+	 * @throws InvalidArgumentException In case of invalid $state
+	 */
+	abstract public function setMentorshipStateForUser( UserIdentity $user, int $state ): void;
 
 	/**
 	 * Randomly selects a mentor from the available mentors.

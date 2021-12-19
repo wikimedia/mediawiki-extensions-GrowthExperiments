@@ -18,6 +18,12 @@ abstract class MentorStore implements IDBAccessObject {
 	/** @var string */
 	public const ROLE_BACKUP = 'backup';
 
+	/** @var string[] */
+	public const ROLES = [
+		self::ROLE_PRIMARY,
+		self::ROLE_BACKUP
+	];
+
 	/** @var BagOStuff */
 	protected $cache;
 
@@ -80,7 +86,7 @@ abstract class MentorStore implements IDBAccessObject {
 	 * @return bool True when valid, false otherwise
 	 */
 	private function validateMentorRole( string $mentorRole ): bool {
-		return in_array( $mentorRole, [ self::ROLE_PRIMARY, self::ROLE_BACKUP ] );
+		return in_array( $mentorRole, self::ROLES );
 	}
 
 	/**
@@ -157,13 +163,13 @@ abstract class MentorStore implements IDBAccessObject {
 	 * only validates mentor type and calls the internal one.
 	 *
 	 * @param UserIdentity $mentee
-	 * @param UserIdentity $mentor
+	 * @param UserIdentity|null $mentor Null to drop the relationship
 	 * @param string|null $mentorRole One of MentorStore::ROLE_* constants; passing no value is
 	 * deprecated (results in ROLE_PRIMARY being used).
 	 */
 	public function setMentorForUser(
 		UserIdentity $mentee,
-		UserIdentity $mentor,
+		?UserIdentity $mentor,
 		?string $mentorRole = null
 	): void {
 		if ( $mentorRole === null ) {
@@ -182,7 +188,7 @@ abstract class MentorStore implements IDBAccessObject {
 		// Set the mentor in the in-process cache
 		$this->cache->set(
 			$this->makeCacheKey( $mentee, $mentorRole ),
-			new UserIdentityValue( $mentor->getId(), $mentor->getName() ),
+			$mentor ? new UserIdentityValue( $mentor->getId(), $mentor->getName() ) : null,
 			$this->cacheTtl,
 			BagOStuff::WRITE_CACHE_ONLY
 		);
@@ -191,12 +197,23 @@ abstract class MentorStore implements IDBAccessObject {
 	/**
 	 * Actual logic for setting a mentor
 	 * @param UserIdentity $mentee
-	 * @param UserIdentity $mentor
+	 * @param UserIdentity|null $mentor Set to null to drop the relationship
 	 * @param string $mentorRole
 	 */
 	abstract protected function setMentorForUserInternal(
 		UserIdentity $mentee,
-		UserIdentity $mentor,
+		?UserIdentity $mentor,
 		string $mentorRole
 	): void;
+
+	/**
+	 * Drop mentor/mentee relationship for a given user
+	 *
+	 * @param UserIdentity $mentee
+	 */
+	public function dropMenteeRelationship( UserIdentity $mentee ): void {
+		foreach ( self::ROLES as $role ) {
+			$this->setMentorForUser( $mentee, null, $role );
+		}
+	}
 }

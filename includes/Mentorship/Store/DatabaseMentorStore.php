@@ -129,14 +129,25 @@ class DatabaseMentorStore extends MentorStore {
 	 * Really set a mentor for a given user
 	 *
 	 * @param UserIdentity $mentee
-	 * @param UserIdentity $mentor
+	 * @param UserIdentity|null $mentor Set to null to drop the relationship
 	 * @param string $mentorRole
 	 */
 	private function setMentorForUserReal(
 		UserIdentity $mentee,
-		UserIdentity $mentor,
+		?UserIdentity $mentor,
 		string $mentorRole
 	): void {
+		if ( $mentor === null ) {
+			$this->dbw->delete(
+				'growthexperiments_mentor_mentee',
+				[
+					'gemm_mentee_id' => $mentee->getId(),
+					'gemm_mentor_role' => $mentorRole
+				],
+				__METHOD__
+			);
+			return;
+		}
 		$this->dbw->upsert(
 			'growthexperiments_mentor_mentee',
 			[
@@ -157,7 +168,7 @@ class DatabaseMentorStore extends MentorStore {
 	 */
 	protected function setMentorForUserInternal(
 		UserIdentity $mentee,
-		UserIdentity $mentor,
+		?UserIdentity $mentor,
 		string $mentorRole
 	): void {
 		if ( $this->wasPosted ) {
@@ -169,7 +180,7 @@ class DatabaseMentorStore extends MentorStore {
 		} else {
 			$this->jobQueueGroup->lazyPush( new SetUserMentorDatabaseJob( [
 				'menteeId' => $mentee->getId(),
-				'mentorId' => $mentor->getId(),
+				'mentorId' => $mentor ? $mentor->getId() : null,
 				'roleId' => $mentorRole,
 			] ) );
 		}

@@ -422,6 +422,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 			$coreServices->getUserNameUtils(),
 			$coreServices->getUserIdentityLookup(),
 			$coreServices->getUserOptionsLookup(),
+			$coreServices->getUserOptionsManager(),
 			$coreServices->getContentLanguage(),
 			$growthServices->getGrowthConfig()->get( 'GEHomepageMentorsList' ) ?: null,
 			$growthServices->getGrowthConfig()->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null,
