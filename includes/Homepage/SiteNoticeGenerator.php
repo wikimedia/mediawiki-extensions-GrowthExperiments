@@ -182,13 +182,13 @@ class SiteNoticeGenerator {
 		&$siteNotice, \Skin $skin, $contextName
 	) {
 		// No-JS banner (hidden from CSS when there's JS support). The JS version is in
-		// ext.growthExperiments.homepage.discovery.tour.js.
+		// ext.growthExperiments.HomepageDiscovery/tour.js.
 
 		$output = $skin->getOutput();
 		$output->enableOOUI();
 		$output->addModuleStyles( [
 			'oojs-ui.styles.icons-user',
-			'ext.growthExperiments.Homepage.Discovery.styles'
+			'ext.growthExperiments.HomepageDiscovery.styles'
 		] );
 
 		$username = $skin->getUser()->getName();
@@ -227,9 +227,9 @@ class SiteNoticeGenerator {
 		$output->enableOOUI();
 		$output->addModuleStyles( [
 			'oojs-ui.styles.icons-user',
-			'ext.growthExperiments.Homepage.Discovery.styles'
+			'ext.growthExperiments.HomepageDiscovery.styles'
 		] );
-		$output->addModules( 'ext.growthExperiments.Homepage.Discovery.scripts' );
+		$output->addModules( 'ext.growthExperiments.HomepageDiscovery' );
 
 		$user = $skin->getUser();
 		$location = ( $contextName === 'specialwelcomesurvey' ) ? 'homepage' : 'nonhomepage';

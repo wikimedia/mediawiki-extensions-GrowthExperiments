@@ -428,19 +428,19 @@
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.Homepage.Discovery.styles": {
+		"ext.growthExperiments.HomepageDiscovery.styles": {
 			"styles": [
-				"homepage/ext.growthExperiments.Homepage.Discovery.less",
-				"homepage/ext.growthExperiments.Homepage.Discovery.Mobile.less"
+				"ext.growthExperiments.HomepageDiscovery/HomepageDiscovery.less",
+				"ext.growthExperiments.HomepageDiscovery/HomepageDiscoveryMobile.less"
 			],
 			"targets": [
 				"desktop",
 				"mobile"
 			]
 		},
-		"ext.growthExperiments.Homepage.Discovery.scripts": {
+		"ext.growthExperiments.HomepageDiscovery": {
 			"scripts": [
-				"homepage/ext.growthExperiments.Homepage.Discovery.Mobile.js"
+				"ext.growthExperiments.HomepageDiscovery/index.js"
 			],
 			"targets": [
 				"mobile"
