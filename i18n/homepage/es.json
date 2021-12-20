@@ -335,7 +335,7 @@
 	"growthexperiments-addlink-notinstore": "No se encuentran recomendaciones de enlaces para «$1»",
 	"growthexperiments-addlink-context-text-label": "Texto",
 	"growthexperiments-addlink-context-intro": "¿Esto debería enlazar con el siguiente artículo?",
-	"growthexperiments-addlink-context-button-accept": "Si",
+	"growthexperiments-addlink-context-button-accept": "Sí",
 	"growthexperiments-addlink-context-button-reject": "No",
 	"growthexperiments-addlink-context-button-help": "Obtener ayuda para editar",
 	"growthexperiments-addlink-context-button-next": "Siguiente",

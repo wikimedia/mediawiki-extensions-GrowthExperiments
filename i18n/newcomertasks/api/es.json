@@ -2,9 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"LORDZRAWN",
-			"Reverse88"
+			"Reverse88",
+			"Zapipedia (WMF)"
 		]
 	},
 	"apihelp-query+growthtasks-param-topics": "Temas del artículo a preferir en las sugerencias de tareas.",
-	"apierror-growthexperiments-addlink-handler-notfound": "Recomendación de enlace graba no encontrada"
+	"apierror-growthexperiments-addlink-handler-notfound": "No se ha encontrado el registro de recomendación de enlaces"
 }

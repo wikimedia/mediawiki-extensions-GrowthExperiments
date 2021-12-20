@@ -84,5 +84,12 @@
 	"echo-pref-tooltip-ge-mentorship": "התראות ששייכות לאפשרויות החונכוּת שמתוחזקות על־ידי צוות הצמיחה. ההתראה הזאת מודיעה לך שנקלטת בתור חניך או שאחד מהחניכים שלך נקלט על־ידי מישהו אחר.",
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|החניך|החניכה}} שלך, $3, שויך {{GENDER:$2|למשתמש|למשתמשת}} $1.",
 	"growthexperiments-notification-body-mentee-claimed": "סיבה: $1",
-	"growthexperiments-notification-secondary-link-label-mentee-claimed": "מה זה \"לקלוט חניך\"?"
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "מה זה \"לקלוט חניך\"?",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "מספר החניכים שמשויכים אליי",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "בערך חצי מהממוצע",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "ממוצע (ברירת המחדל)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "בערך כפול מהממוצע",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "העומס שלך שוּנה ל{{GRAMMAR:תחילית|$1}}.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "שינוי ליותר או פחות חניכים יעזור לך לנהל את מספר השאלות שאפשר לצפות {{GENDER:|שתענה|שתעני}} עליהן. עם זאת, מספר השאלות תלוי רק במוטיבציה של החניכים שמשויכים אליך.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "מומלץ להתחיל במשקל \"ממוצע\" כדי לכוונן את קיבולת התמיכה שלך לפני שינוי לאפשרויות אחרות."
 }

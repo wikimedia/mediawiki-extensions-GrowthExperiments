@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Bluetpp"
+			"Bluetpp",
+			"Nghiemtrongdai VN"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Bảng điều khiển cố vấn",
@@ -18,7 +19,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Đánh dấu người được cố vấn",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Tên người dùng",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "Số sửa đổi bị lùi lại",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Số lần bị chặn",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "Số lần bị cấm",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Số câu hỏi cố vấn đã hỏi",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Số lần sửa đổi",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Ngày mở tài khoản",

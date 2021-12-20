@@ -5,8 +5,18 @@
 			"MITO"
 		]
 	},
+	"growthexperiments-edit-config-disabled": "Yhteisökokoonpano on tällä hetkellä pois käytöstä.",
+	"growthexperiments-edit-config-last-edit": "[[$3]]: Viimeksi muokannut käyttäjä [[User:$1|$1]] $2 ([$4 linkki]).",
+	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Viimeksi muokannut tuntematon käyttäjä $1 ([$3 linkki]).",
 	"growthexperiments-edit-config-feedback-headline": "Onko sinulla ideoita tai kysymyksiä tästä lomakkeesta?",
 	"growthexperiments-edit-config-feedback-cta": "Lähetä palautetta",
+	"growthexperiments-edit-config-edit-summary": "Muokkausyhteenveto",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "Sivun yläosa",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "Sivun alaosa",
 	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Neuvontapiste",
-	"growthexperiments-edit-config-newcomer-tasks-disabled": "Poistettu käytöstä"
+	"growthexperiments-edit-config-mentorship-enabled-true": "Kyllä",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Ei",
+	"growthexperiments-edit-config-newcomertasks": "Ehdotetut muokkaukset",
+	"growthexperiments-edit-config-newcomer-tasks-disabled": "Poistettu käytöstä",
+	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Tietolaatikkomallineet"
 }

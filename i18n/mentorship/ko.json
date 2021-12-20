@@ -56,5 +56,7 @@
 	"growthexperiments-quit-mentorship-no-mentees": "현재 멘티가 없습니다.",
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1님이 멘토십에서 {{GENDER:$1|물러났습니다}}.",
 	"echo-category-title-ge-mentorship": "멘토",
-	"growthexperiments-notification-body-mentee-claimed": "이유: $1"
+	"growthexperiments-notification-body-mentee-claimed": "이유: $1",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "내게 할당된 멘티의 수",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "평균 (기본값)"
 }

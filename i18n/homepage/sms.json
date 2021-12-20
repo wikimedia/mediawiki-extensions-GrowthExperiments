@@ -4,9 +4,11 @@
 			"Yupik"
 		]
 	},
+	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Tiõrv}}, {{bidi:$1}}!",
 	"growthexperiments-homepage-email-button-noemail": "Lââʹzzet e-pååʹštaddrõõzz",
 	"growthexperiments-homepage-email-button-confirmed": "Asetõõzz",
 	"growthexperiments-homepage-startediting-completed-mobilesummary-header": "Čuäʹjet eʹtǩǩuum muttsid",
+	"growthexperiments-homepage-startediting-mobilesummary-button-variant-d": "Čuäʹjet eʹtǩǩõõzzid",
 	"growthexperiments-homepage-startediting-button": "Čuäʹjet eʹtǩǩuum muttsid",
 	"growthexperiments-homepage-startediting-dialog-header": "Teâđ eʹtǩǩuum muttsin",
 	"growthexperiments-homepage-startediting-dialog-intro-title": "Eʹtǩǩuum muttâz",
@@ -14,7 +16,11 @@
 	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Čuäʹjet eʹtǩǩuum muttsid",
 	"growthexperiments-homepage-suggestededits-tasktype-name-references": "Ooʒʒ teâttkääivaid",
 	"growthexperiments-homepage-suggestededits-topics-more": "čuäʹjet lââʹzz",
+	"log-action-filter-growthexperiments-addlink": "Liŋkkeʹtǩǩõõzz",
+	"log-action-filter-growthexperiments-addimage": "Kartteʹtǩǩõõzz",
 	"growthexperiments-homepage-suggestededits-more-info": "Lââʹssteâđ eʹtǩǩuum muttsin",
+	"growthexperiments-structuredtask-ve-machine-suggestions-mode-title": "Eʹtǩǩõõzz",
+	"growthexperiments-structuredtask-editmode-selection-machine-suggestions": "Eʹtǩǩõõzz",
 	"growthexperiments-addimage-detailsdialog-license": "Liseʹnss:",
 	"growthexperiments-structuredtask-user-error-login-cta": "Ǩeeʹrjtõõđ sizz"
 }

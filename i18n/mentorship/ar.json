@@ -86,5 +86,12 @@
 	"echo-pref-tooltip-ge-mentorship": "الإشعارات المتعلقة بمزايا الإرشاد يهتمّ بها فريق النموّ. يتيح لك هذا الإشعار معرفة أنه تمت مطالبتك كمُرشَد، أو أن أحد مُرشَديك قد طالب به شخص آخر.",
 	"growthexperiments-notification-header-mentee-claimed": "{{GENDER:$3|مرشَدك|مرشَدتك}}، $3، تمّت {{GENDER:$2|مطالبته|مطالبتها}} من قبل $1.",
 	"growthexperiments-notification-body-mentee-claimed": "السبب: $1",
-	"growthexperiments-notification-secondary-link-label-mentee-claimed": "ما معنى «المُطالبة بمرشَد»؟"
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "ما معنى «المُطالبة بمرشَد»؟",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "عدد المُرشَدين المعيّنين لديَّ",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "~نصف المعدّل",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "المعدّل (افتراضي)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "~ضعف المعدّل",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "تمّ تغيير {{GENDER:|تحميلكَ|تحميلكِ}} إلى «$1».",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "سيساعد التغيير إلى عدد أكبر أو أقل من المرشدين في إدارة عدد الأسئلة التي قد {{GENDER:|تتوقع|تتوقعين}} الإجابة عليها. ومع ذلك، فإن عدد الأسئلة يعتمد فقط على دوافع المرشدين المعيّنين لك.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "يوصى بالبدء في ترجيح «المعدّل» لقياس قدرة الدعم قبل التغيير إلى الخيارات الأخرى."
 }
