@@ -1,4 +1,5 @@
-var router = require( 'mediawiki.router' );
+var router = require( 'mediawiki.router' ),
+	AddImageUtils = require( './AddImageUtils.js' );
 
 /**
  * Dialog for viewing the recommended image in full screen
@@ -36,55 +37,13 @@ RecommendedImageViewer.prototype.initialize = function () {
 };
 
 /**
- * @typedef {Object} mw.libs.ge.RecommendedImageRenderData
- *
- * @property {string} src URL for the image (resized for rendering in the current viewport)
- * @property {number} maxWidth Maximum width at which the image should be rendered
- */
-
-/**
- * Get the URL for image source and the max width based on the provided metadata and the viewport
- *
- * @param {mw.libs.ge.RecommendedImageMetadata} metadata
- * @param {Window} viewport
- * @return { mw.libs.ge.RecommendedImageRenderData} renderData
- */
-RecommendedImageViewer.prototype.getRenderData = function ( metadata, viewport ) {
-	var thumb = mw.util.parseImageUrl( metadata.thumbUrl ) || {},
-		imageSrc = metadata.fullUrl,
-		originalWidth = metadata.originalWidth,
-		maxWidth = originalWidth;
-
-	// The file is a thumbnail and can be resized.
-	if ( thumb.width && thumb.resizeUrl ) {
-		var aspectRatio = metadata.originalWidth / metadata.originalHeight,
-			targetWidth = Math.min( viewport.innerWidth, viewport.innerHeight * aspectRatio ),
-			targetSrcWidth = Math.floor( viewport.devicePixelRatio * targetWidth );
-
-		// The image should be resized if the target width is smaller than the original
-		// or if the file needs to be re-rasterized. For vectors, the thumbnail can be used since
-		// the asset dimension doesn't really matter.
-		if ( targetSrcWidth < originalWidth ||
-			( targetSrcWidth === originalWidth && metadata.mustRender ) ||
-			metadata.isVectorized ) {
-			imageSrc = thumb.resizeUrl( targetSrcWidth );
-			maxWidth = Math.floor( targetWidth );
-		}
-	}
-	return {
-		src: imageSrc,
-		maxWidth: maxWidth
-	};
-};
-
-/**
  * Show the specified image
  *
  * @param {mw.libs.ge.RecommendedImageMetadata} metadata
  */
 RecommendedImageViewer.prototype.updateImage = function ( metadata ) {
 	// TODO: image caption as alt text?
-	var renderData = this.getRenderData( metadata, window );
+	var renderData = AddImageUtils.getImageRenderData( metadata, window );
 	this.$image.attr( { src: renderData.src } );
 	this.$image.css( 'max-width', renderData.maxWidth + 'px' );
 };
