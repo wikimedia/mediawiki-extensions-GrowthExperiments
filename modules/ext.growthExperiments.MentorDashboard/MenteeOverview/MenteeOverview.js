@@ -65,7 +65,7 @@
 					label: mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-headline' ),
 					$label: $( '<h3>' ).text( mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-headline' ) ),
 					$content: $( '<div>' ).addClass( 'growthexperiments-mentor-dashboard-module-mentee-overview-info-content' ).append(
-						$( '<p>' ).text( mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-text' ) ),
+						$( '<p>' ).html( mw.message( 'growthexperiments-mentor-dashboard-mentee-overview-info-text' ).parse() ),
 						$( '<h3>' ).text( mw.msg( 'growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline' ) ),
 						$( '<div>' ).addClass( 'growthexperiments-mentor-dashboard-overview-info-legend-content' ).append(
 							this.makeLegendIcon(
