@@ -59,8 +59,9 @@ class PurgeExpiredMentorStatus extends Maintenance {
 			) {
 				$batch[] = $row->up_user;
 
-				if ( count( $batch ) > $this->getBatchSize() ) {
+				if ( count( $batch ) >= $this->getBatchSize() ) {
 					yield $batch;
+					$batch = [];
 				}
 			}
 		}
