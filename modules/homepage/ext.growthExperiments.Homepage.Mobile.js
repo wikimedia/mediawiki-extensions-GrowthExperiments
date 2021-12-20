@@ -78,7 +78,24 @@
 		}
 	}
 
+	/**
+	 * Remove query params before the mobile modules are initialized.
+	 * This is so that query params that shouldn't stick around do not persist when routing
+	 * between the homepage and the mobile overlay via mediawiki.router.
+	 */
+	function beforeMobileInit() {
+		var uri = new mw.Uri(),
+			query = uri.query || {};
+		if ( !query.overlay && !query.source ) {
+			return;
+		}
+		var Utils = require( '../utils/ext.growthExperiments.Utils.js' );
+		Utils.removeQueryParam( uri, [ 'overlay', 'source' ], true );
+	}
+
 	if ( mw.loader.getState( 'mobile.init' ) ) {
+		beforeMobileInit();
+
 		mw.loader.using( 'mobile.init' ).done( function () {
 			// eslint-disable-next-line no-jquery/no-global-selector
 			var $summaryModulesContainer = $( '.growthexperiments-homepage-container' ),

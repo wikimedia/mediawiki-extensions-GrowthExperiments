@@ -156,7 +156,7 @@ RecommendedLinkToolbarDialog.prototype.onNextButtonClicked = function ( isSwipe 
 	if ( this.isLastRecommendationSelected() ) {
 		if ( this.allRecommendationsSkipped() ) {
 			if ( this.linkRecommendationFragments.length === 1 ) {
-				this.endSession();
+				this.goToSuggestedEdits();
 			} else {
 				this.showSkippedAllDialog();
 			}
@@ -827,7 +827,7 @@ RecommendedLinkToolbarDialog.prototype.showSkippedAllDialog = function () {
 	} ).closed.then( function ( data ) {
 		if ( data && data.action === 'accept' ) {
 			this.logger.log( 'confirm_skip_all_suggestions', {}, logMetadata );
-			this.endSession();
+			this.goToSuggestedEdits();
 		} else {
 			this.logger.log( 'review_again', {}, logMetadata );
 			this.showRecommendationAtIndex( 0 );
