@@ -260,6 +260,9 @@
 			}
 			this.taskCount = data.count;
 			this.filters.updateMatchCount( this.taskCount );
+			if ( data.tasks && data.tasks.length ) {
+				this.maybeUpdateQualityGateConfig( data.tasks[ 0 ] );
+			}
 			// FIXME these are the current values of the filters, not the ones we are just about
 			//   to display. Unlikely to cause much discrepancy though.
 			extraData.taskTypes = this.taskTypesQuery;
@@ -787,6 +790,21 @@
 	SuggestedEditsModule.prototype.setEditWidgetDisabled = function ( isDisabled ) {
 		if ( this.editWidget ) {
 			this.editWidget.setDisabled( isDisabled );
+		}
+	};
+
+	/**
+	 * Update the quality config if it's included in the task data.
+	 *
+	 * The quality gate config is initially set to the value from the task preview data. When the
+	 * task preview data is not available, the tasks are still fetched on the client side (the no
+	 * suggestions found card is shown first) so the quality config should be updated accordingly.
+	 *
+	 * @param {mw.libs.ge.TaskData} taskData
+	 */
+	SuggestedEditsModule.prototype.maybeUpdateQualityGateConfig = function ( taskData ) {
+		if ( taskData.qualityGateConfig ) {
+			this.qualityGateConfig = taskData.qualityGateConfig;
 		}
 	};
 

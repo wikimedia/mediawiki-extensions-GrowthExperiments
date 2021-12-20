@@ -121,7 +121,8 @@ class ApiQueryGrowthTasks extends ApiQueryGeneratorBase {
 				'tasktype' => $task->getTaskType()->getId(),
 				'difficulty' => $task->getTaskType()->getDifficulty(),
 				'order' => $i,
-				'qualityGateIds' => $task->getTaskType()->getQualityGateIds()
+				'qualityGateIds' => $task->getTaskType()->getQualityGateIds(),
+				'qualityGateConfig' => $tasks->getQualityGateConfig()
 			];
 			if ( $task->getTopics() ) {
 				foreach ( $task->getTopicScores() as $id => $score ) {
