@@ -108,7 +108,7 @@ abstract class SubpageRecommendationProvider implements RecommendationProvider {
 		$data = $dataStatus->getValue();
 
 		// Turn $title into a real Title
-		$title = $subpage->getTitle()->getBaseTitle();
+		$title = $this->wikiPageFactory->newFromLinkTarget( $title )->getTitle();
 
 		return $this->createRecommendation( $title, $data, $taskType->getSuggestionFilters() );
 	}
