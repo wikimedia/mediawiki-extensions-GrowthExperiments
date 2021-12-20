@@ -27,7 +27,8 @@
 			"Rodney Araujo",
 			"Whovian Biologist",
 			"ZealousBlaze",
-			"ZebaX2010"
+			"ZebaX2010",
+			"Zapipedia (WMF)"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Bienvenido|Bienvenida}}, {{bidi:$1}}!",
@@ -277,6 +278,7 @@
 	"growthexperiments-log-name": "Registro de la extensión GrowthExperiments",
 	"growthexperiments-log-header": "Esto es un registro de los cambios hechos en la extensión GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|reclamó}} a {{GENDER:$6|$3}} como su aprendiz (anterior {{GENDER:$4|mentor|mentora}}: $5)",
+	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|solicita a}} $3 como {{GENDER:$6|alumno|alumna}} (no asignado previamente)",
 	"growthexperiments-homepage-claimmentee-invalid-username": "El nombre de usuario del aprendiz proporcionado es inválido",
 	"growthexperiments-notification-header-mentor-change": "$1 es {{GENDER:$3|tu}} nuevo {{GENDER:$2|mentor|mentora}}",
 	"growthexperiments-notification-body-mentor-change": "Motivo: $1",
