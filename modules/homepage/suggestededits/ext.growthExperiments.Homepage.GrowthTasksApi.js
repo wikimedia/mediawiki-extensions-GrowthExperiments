@@ -422,7 +422,7 @@
 			if ( !error ) {
 				// log a snippet from the API response. Errors are at the front so
 				// hopefully this will show what's going on.
-				message = JSON.stringify( details ).substr( 0, 1000 );
+				message = JSON.stringify( details ).slice( 0, 1000 );
 			}
 		}
 

@@ -285,7 +285,7 @@ AddLinkArticleTarget.prototype.annotateSuggestions = function ( doc, suggestions
  */
 AddLinkArticleTarget.prototype.getTreeWalker = function ( doc ) {
 	function startsWith( str, prefix ) {
-		return str && str.substr( 0, prefix.length ) === prefix;
+		return str && str.slice( 0, prefix.length ) === prefix;
 	}
 
 	return doc.createTreeWalker(

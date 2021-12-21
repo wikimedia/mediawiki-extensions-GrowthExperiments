@@ -73,7 +73,7 @@
 		).each( function ( _, button ) {
 			var trigger = 'info-icon',
 				$button = $( button ),
-				buttonType = $button.attr( 'id' ).substr( 'mw-ge-homepage-'.length ),
+				buttonType = $button.attr( 'id' ).slice( 'mw-ge-homepage-'.length ),
 				// From the mobile overlay header one cannot traverse the DOM tree upwards to find a
 				// homepage module, so for mobile overlay only we embed the module-name and
 				// mode. In all other cases we infer it from the DOM context.

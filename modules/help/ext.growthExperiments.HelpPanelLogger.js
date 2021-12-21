@@ -217,7 +217,7 @@
 				var restrictions = mw.config.get(
 					'wgRestriction' +
 					action[ 0 ].toUpperCase() +
-					action.substr( 1 ).toLowerCase()
+					action.slice( 1 ).toLowerCase()
 				);
 				if ( restrictions && restrictions.length ) {
 					return action + '=' + restrictions.join( ',' );
