@@ -123,7 +123,13 @@ StructuredTaskToolbarDialog.prototype.setUpToolbarDialogButton = function ( labe
 		invisibleLabel: true
 	} );
 	$header.on( 'click', this.toggleDisplayState.bind( this ) );
-	$header.append( this.chevronIcon.$element );
+	$header.addClass( 'mw-ge-structuredTaskToolbarDialog-headerButton' )
+		.append( this.chevronIcon.$element );
+	if ( !OO.ui.isMobile() ) {
+		$( document.body ).find( '#footer-places' ).addClass(
+			'footer-places--with-mw-ge-structuredTaskToolbarDialog'
+		);
+	}
 };
 
 /**
