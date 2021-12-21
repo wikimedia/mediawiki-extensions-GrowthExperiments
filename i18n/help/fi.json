@@ -123,6 +123,7 @@
 	"growthexperiments-help-panel-button-subheader-general-help": "Etsi vastauksia ja lue ohjesivuja",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Kysy neuvoa muilta käyttäjiltä",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Pikavihjeitä aloittamiseen",
+	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|muokkaus|muokkausta}} · $2",
 	"growthexperiments-help-panel-general-help-title": "Yleistä apua muokkaamiseen",
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Tietoa ehdotetuista muokkauksista",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Sinä}} käytät wikitekstimuokkainta. Nämä muokkausvihjeet ovat hyödyllisimpiä visuaalista muokkainta käytettäessä.",
@@ -131,6 +132,7 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Vaihda wikitekstimuokkaimeen",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Linkkien lisääminen auttaa ihmisiä löytämään lisää tietoa nopeammin.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Tähän tehtävään ei tarvita erityistä tietämystä artikkelin aiheesta.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Ohjelinjat",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "\n* Linkitä käsitteitä, joista lukija saattaa haluta lisätietoa.\n* Varmista, että linkki vie oikeaan artikkeliin.\n* Älä linkitä yleisiä sanoja, vuosia tai päivämääriä.\n* Jos {{GENDER:$1|et}} ole varma, hyppää yli.",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Esimerkkivirke"
 }

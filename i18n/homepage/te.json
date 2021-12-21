@@ -330,6 +330,7 @@
 	"growthexperiments-addlink-context-intro": "ఇది _____ కి లింకవ్వాలా?",
 	"growthexperiments-addlink-context-button-accept": "ఔను",
 	"growthexperiments-addlink-context-button-reject": "కాదు",
+	"growthexperiments-addlink-context-button-help": "దిద్దుబాటులో సాయం పొందండి",
 	"growthexperiments-addlink-context-button-next": "తదుపరి",
 	"growthexperiments-addlink-rejectiondialog-title": "ఈ లింకు మంచిది ఎందుకు కాదు? <em>(ఐచ్ఛికం)</em>",
 	"growthexperiments-addlink-rejectiondialog-message": "AI సూచనల నాణ్యతను మెరుగుపరచేందుకు మీ సమాధానాన్ని వాడవచ్చు.",

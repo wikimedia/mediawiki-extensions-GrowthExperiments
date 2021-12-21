@@ -12,7 +12,8 @@
 			"Encycloon",
 			"McDutchie",
 			"Robin van der Vliet",
-			"Romaine"
+			"Romaine",
+			"Akoopal"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Hallo}}, {{bidi:$1}}!",
@@ -111,7 +112,7 @@
 	"growthexperiments-tour-response-button-okay": "Begrepen",
 	"tag-help_module_question": "Hulppaneelvraag",
 	"tag-help_module_question-description": "Bewerking gemaakt vanuit de \"Stel een vraag\"-functie van de helpmodule op de startpagina",
-	"tag-mentorship_module_question": "Vraag over mentorschapsmodule",
+	"tag-mentorship_module_question": "Vraag via mentorschapsmodule",
 	"tag-mentorship_module_question-description": "Bewerking gemaakt via de functie \"Vraag het je mentor\" op de startpagina van de mentorschapsmodule",
 	"tag-mentorship_panel_question": "Mentorschap-paneelvraag",
 	"tag-mentorship_panel_question-description": "Bewerking gemaakt vanuit de \"Vraag het je mentor\"-functie van het hulppaneel",

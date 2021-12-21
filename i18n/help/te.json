@@ -132,7 +132,11 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "విజువల్ ఎడిటరుకు మారండి",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|మీరు}} విజువల్ ఎడిటరును వాడుతున్నారు. ఈ దిద్దుబాటు చిట్కాలు సోర్సు ఎడిటరు కైతే బాగా ఉపయోగ పడతాయి",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "సోర్సు ఎడిటరుకు మారండి",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "లింకులు చేర్చే పని వేగంగా నేర్చుకోవడానికి దోహదం చేస్తుంది.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "ఒక {{SITENAME}} వ్యాసం లోని పదాల నుండి, ఇతర {{SITENAME}} వ్యాసాలకు లింకు అవ్వాలో లేదో {{GENDER:$1|మీరు}} నిర్ణయిస్తారు.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "<mark class=\"positive\">భూమి</mark> చుట్టూ <mark class=\"positive\">తిరిగే </mark> ఏకైక <mark class=\"positive\">సహజ ఉపగ్రహం</mark> చంద్రుడు.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "ఈ పని చెయ్యడానికి ప్రత్యేకమైన పరిజ్ఞానమేమీ అక్కర్లేదు.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "మార్గదర్శకాలు",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* పాఠకుడు మరింతగా తెలుసుకోదగ్గ లింకు సంబంధ వివరాలు.\n* లింకు సరైన వ్యాసానికే అవుతోందని నిర్ధారించుకోండి.\n* సాధారణంగా వాడే పదాలకు, సంవత్సరాలకూ, తేదీలకూ లింకులివ్వకండి.\n* {{GENDER:$1|సందేహంగా}} ఉంటే, వదిలెయ్యండి.",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "ఉదాహరణ వాక్యం"
 }

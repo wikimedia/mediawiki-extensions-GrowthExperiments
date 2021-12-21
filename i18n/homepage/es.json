@@ -26,7 +26,9 @@
 			"Johny Weissmuller Jr",
 			"Juan t2905",
 			"Rho2017",
-			"Whovian Biologist"
+			"Whovian Biologist",
+			"DDPAT",
+			"Zapipedia (WMF)"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "¡{{GENDER:$1|Bienvenido|Bienvenida}}, {{bidi:$1}}!",
@@ -317,6 +319,7 @@
 	"growthexperiments-log-name": "Registro de la extensión GrowthExperiments",
 	"growthexperiments-log-header": "Esto es un registro de los cambios hechos en la extensión GrowthExperiments.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|reclamó}} a {{GENDER:$6|$3}} como su aprendiz (anterior {{GENDER:$4|mentor|mentora}}: $5)",
+	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|solicita a}} $3 como {{GENDER:$6|alumno|alumna}} (no asignado previamente)",
 	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|revisó}} $4 recomendaciones de enlaces para $3: se aceptaron $5, se rechazaron $6 y se omitieron $7",
 	"growthexperiments-homepage-claimmentee-invalid-username": "El nombre de usuario del aprendiz proporcionado es inválido",
 	"growthexperiments-notification-header-mentor-change": "$1 es {{GENDER:$3|tu}} nuevo {{GENDER:$2|mentor|mentora}}",
@@ -331,8 +334,8 @@
 	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Más acerca de esta edición sugerida",
 	"growthexperiments-homepage-suggestededits-more-info": "Más información acerca de las ediciones sugeridas",
 	"growthexperiments-homepage-welcome-notice-header": "¡Bienvenido a {{GENDER:$1|tu}} página de inicio!",
-	"growthexperiments-homepage-welcome-notice-body-variant-c": "Puedes aprender a editar, ponerte en contacto con tu mentor y ver el impacto de tu trabajo. Continúa para aprender sobre las <strong>ediciones sugeridas</strong> en tu página de inicio.",
-	"growthexperiments-homepage-welcome-notice-body-variant-d": "Puedes aprender a editar, ponerte en contacto con tu mentor y ver el impacto de tu trabajo.",
+	"growthexperiments-homepage-welcome-notice-body-variant-c": "{{GENDER:$1||}}Puedes aprender a editar, ponerte en contacto con tu mentor y ver el impacto de tu trabajo. Continúa para aprender sobre las <strong>ediciones sugeridas</strong> en tu página de inicio.",
+	"growthexperiments-homepage-welcome-notice-body-variant-d": "{{GENDER:$1||}}Puedes aprender a editar, ponerte en contacto con tu mentor y ver el impacto de tu trabajo.",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-c": "Continuar",
 	"growthexperiments-homepage-welcome-notice-button-text-variant-d": "Entendido",
 	"growthexperiments-addlink-pagenotfound": "La página «$1» no existe",
@@ -340,7 +343,7 @@
 	"growthexperiments-addlink-wrongmodel": "La revisión $1 de \"$2\" no es wikitexto",
 	"growthexperiments-addlink-notinstore": "No se encuentran recomendaciones de enlaces para «$1»",
 	"growthexperiments-addlink-context-intro": "¿Esto debería enlazar a _____?",
-	"growthexperiments-addlink-context-button-accept": "Si",
+	"growthexperiments-addlink-context-button-accept": "Sí",
 	"growthexperiments-addlink-context-button-reject": "No",
 	"growthexperiments-addlink-context-button-help": "Obtener ayuda para editar",
 	"growthexperiments-addlink-context-button-next": "Siguiente",
