@@ -15,5 +15,11 @@
 	"apihelp-query+growthmentorstatus-summary": "Demander l’état du tuteur de l’utilisateur actuel",
 	"apihelp-growthmentordashboardupdatedata-summary": "Programmer une mise à jour extraordinaire du tableau de bord du module de supervision des tutorés. Vous pouvez programmer seulement une mise à jour toutes les deux heures, pour des raisons de performance.",
 	"apihelp-growthsetmentorweight-summary": "Définir le poids du tuteur actuellement connecté",
-	"apihelp-growthsetmentorweight-param-geweight": "Poids numérique du tuteur : la valeur la plus basse affectera moins de nouveaux venuss"
+	"apihelp-growthsetmentorweight-param-geweight": "Poids numérique du tuteur : la valeur la plus basse affectera moins de nouveaux venuss",
+	"apihelp-growthsetmenteestatus-summary": "Définir l’état du tutoré (permet aux tutorés d’activer/désactiver le module de tutorat, ou d’en sortir complètement, ce qui supprime la relation tutoré/tuteur)",
+	"apihelp-growthsetmenteestatus-param-state": "Nouvel état du tutoré (attention : mettre cela à se retirer supprimera de façon permanente la relation tutoré/tuteur)",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "Le module de tutorat est activé",
+	"apihelp-growthsetmenteestatus-param-state-disabled": "Le module de tutorat est complètement désactivé. Cela est normalement définir par le logiciel et utilisé pour les tests A/B.",
+	"apihelp-growthsetmenteestatus-param-state-optout": "Le tutoré est sorti du tutorat ; la relation tutoré/tuteur sera supprimée, le module de tutorat sera remplacé par une possibilité de revenir",
+	"apihelp-query+growthmenteestatus-summary": "Requêter l’état de tutoré de l’utilisateur courant ; voir la documentation de action=growthsetmentorweight pour des informations détaillées sur les états individuels."
 }

@@ -11,5 +11,6 @@
 	"apihelp-growthsetmentorstatus-summary": "Sett den gjeldende brukerens fadderstatus til aktiv/borte",
 	"apihelp-growthsetmentorstatus-param-gesstatus": "Ny status",
 	"apihelp-growthsetmentorstatus-param-gesbackindays": "Når fadderstatus endres til borte må man ha med varigheten på bortestatusen (i dager)",
-	"apihelp-query+growthmentorstatus-summary": "Avslutt den gjeldende brukerens fadderskap"
+	"apihelp-query+growthmentorstatus-summary": "Avslutt den gjeldende brukerens fadderskap",
+	"apihelp-query+growthmenteestatus-summary": "Spør etter den gjeldende brukerens fadderbarnstatus; se dokumentasjonen for action=growthsetmentorweight for detaljert informasjon om individuelle statuser."
 }

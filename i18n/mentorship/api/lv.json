@@ -6,5 +6,6 @@
 	},
 	"apihelp-growthstarmentee-param-gesaction": "Veicamā darbība (<kbd>pievienot zvaigznīti</kbd> vai <kbd>noņemt zvaigznīti</kbd>)",
 	"apihelp-growthstarmentee-param-gesmentee": "Audzēknis, kam pievienot/noņemt zvaigznīti",
-	"apihelp-growthsetmentorstatus-param-gesstatus": "Jauns statuss"
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Jauns statuss",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "Mentoru modulis ir iespējots"
 }

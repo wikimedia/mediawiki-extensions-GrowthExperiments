@@ -296,7 +296,7 @@
 	"growthexperiments-log-header": "Ez a GrowthExperiments kiterjesztéssel kapcsolatos események naplója.",
 	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|átvette}} {{GENDER:$6|$3}} mentoráltat (előző {{GENDER:$4|mentor}}: $5)",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|elkérte}} {{GENDER:$6|$3}} mentoráltat (korábban nem volt mentora)",
-	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|megváltoztatta}} {{GENDER:$6|$3}} mentorát {{GENDER:$5|$7}}-re (eddigi {{GENDER:$4|mentor}}: $8)",
+	"logentry-growthexperiments-setmentor": "$1 {{GENDER:$2|megváltoztatta}} {{GENDER:$6|$3}} mentorát {{GENDER:$5|$7}} szerkesztőre (eddigi {{GENDER:$4|mentor}}: $8)",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1 {{GENDER:$2|megváltoztatta}} {{GENDER:$6|$3}} mentorát {{GENDER:$5|$7}}-re (eddig nem volt mentora)",
 	"logentry-growthexperiments-addlink": "$1 {{GENDER:$2|átnézett}} $4 hivatkozásjavaslatot a(z) $3 lapon: $5 elfogadva, $6 elutasítva és $7 kihagyva",
 	"log-action-filter-growthexperiments-claimmentee": "Mentoráltváltozások",

@@ -6,5 +6,11 @@
 	},
 	"apihelp-growthstarmentee-summary": "현재 사용자가 지정한 멘티를 표시하거나 표시를 해제합니다 (비공개 상태로 저장되며 기록에 남지 않습니다)",
 	"apihelp-growthsetmentorstatus-param-gesstatus": "새 상태",
-	"apihelp-query+growthmentorstatus-summary": "현재 사용자의 멘토 상태를 조회합니다"
+	"apihelp-query+growthmentorstatus-summary": "현재 사용자의 멘토 상태를 조회합니다",
+	"apihelp-growthsetmenteestatus-summary": "멘티의 상태 보기 (멘티가 멘토십 모듈을 활성화/비활성화하거나 완전히 참여를 하지 않기로 할 수 있으며 이 경우 멘티/멘토 관계는 삭제됩니다)",
+	"apihelp-growthsetmenteestatus-param-state": "멘티의 새 상태 (경고: 이것을 출력으로 설정하면 멘티/멘토 관계를 영구적으로 삭제하게 됩니다)",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "멘토십 모듈이 활성화되어 있습니다",
+	"apihelp-growthsetmenteestatus-param-state-disabled": "멘토십 모듈이 완전히 비활성화되어 있습니다. 이것은 보통 소프트웨어에 의해 설정되며 A/B 테스트를 위해 사용됩니다.",
+	"apihelp-growthsetmenteestatus-param-state-optout": "멘티가 멘토십을 참여하지 않기로 했습니다. 멘티/멘토 관계는 삭제되며 멘토십 모듈은 다시 참여할 수 있도록 변경됩니다",
+	"apihelp-query+growthmenteestatus-summary": "현재 사용자의 멘티 상태를 조회합니다. 개개인의 상태에 관한 더 자세한 정보를 보려면 action=growthsetmentorweight의 설명문서를 참고하십시오."
 }

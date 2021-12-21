@@ -1,0 +1,21 @@
+{
+	"@metadata": {
+		"authors": [
+			"Murma174"
+		]
+	},
+	"growthexperiments-mentor-dashboard-title": "Mentoorensidj",
+	"growthexperiments-mentor-dashboard-pt-link": "Mentoorensidj",
+	"growthexperiments-mentor-dashboard-disabled": "Uun detheer Wiki jaft at nian aktiif Mentoorensidj.",
+	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Din}} Mentees",
+	"growthexperiments-mentor-dashboard-mentee-overview-intro": "{{GENDER:|Din}} Mentees stun oner. Dü könst uk filtern brük.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Diar san nian Mentee dooten",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Diar san wel noch nian Mentees bi Di uunmeldet. Det list woort arken dai nei maaget.",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Nian Mentees fünjen",
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Feranre dan filter, am Mentees tu finjen.",
+	"growthexperiments-mentor-dashboard-resources-headline": "Wichtag sidjen",
+	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "List faan Mentooren",
+	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Hü Dü Di üs Mentoor föörstel könst",
+	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "Hü Dü en Mentee fu könst",
+	"growthexperiments-mentor-dashboard-resources-link-tools": "Werktjüügen"
+}

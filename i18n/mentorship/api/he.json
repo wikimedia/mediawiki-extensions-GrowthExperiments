@@ -15,5 +15,11 @@
 	"apihelp-query+growthmentorstatus-summary": "שאילתת מצב החונכות של המשתמש הנוכחי",
 	"apihelp-growthmentordashboardupdatedata-summary": "לתזמן עדכון מיוחד של מודול סקירת החניכים בלוח הבקרה של החונכים. אפשר לתזמן רק עדכון אחד לשעתיים מסיבות של ביצועים.",
 	"apihelp-growthsetmentorweight-summary": "הגדרת המשקל של החונך שנמצא עכשיו בחשבון",
-	"apihelp-growthsetmentorweight-param-geweight": "משקל מספרי של החונך: ככל שהערל נמוך יותר, מוקצים פחות משתמשים חדשים"
+	"apihelp-growthsetmentorweight-param-geweight": "משקל מספרי של החונך: ככל שהערל נמוך יותר, מוקצים פחות משתמשים חדשים",
+	"apihelp-growthsetmenteestatus-summary": "הגדרת מצב החניך (זה מאפשר לחניכים להפעיל ולכבות את מודול החונכות או לצאת ממנו לגמרי, מה שמוחק את היחס בין החניך לחונך)",
+	"apihelp-growthsetmenteestatus-param-state": "המצב החדש של החניך (אזהרה: הגדרה של זה ל־optout ימחק לצמיתות את היחס בין החניך לחונך)",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "מודול החונכות מופעל",
+	"apihelp-growthsetmenteestatus-param-state-disabled": "מודול החונכות כבוי לגמרי. זה בדרך־כלל מוגדר על־ידי התוכנה ומשמש לבדיוקת A/B.",
+	"apihelp-growthsetmenteestatus-param-state-optout": "החניך יצא מהחונכות; היחס בין החניך לחונך יימחק, מודול החונכות יוחלף באפשרות להיכנס חזרה",
+	"apihelp-query+growthmenteestatus-summary": "שאילתת על מצב החונכות של משתמש; ר' את התיעוד של action=growthsetmentorweight למידע מפורט על מצבים פרטניים."
 }

@@ -87,5 +87,12 @@
 	"echo-pref-tooltip-ge-mentorship": "Notifications relatives aux fonctionnalités de tutorat maintenues par l’équipe Growth. Cette notification vous fait savoir que vous êtes demandé comme tutoré, ou qu’un de vos tutorés a été demandé par quelqu’un d’autre.",
 	"growthexperiments-notification-header-mentee-claimed": "Votre {{GENDER:$3|tutoré|tutorée}}, $3, a été {{GENDER:$2|réclamé|réclamée}} par $1.",
 	"growthexperiments-notification-body-mentee-claimed": "Motif : $1",
-	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Qu'est-ce que « Demander un mentoré » ?"
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "Qu'est-ce que « Demander un mentoré » ?",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Nombre de tutorés qui me sont affectés",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "~Moitié de la moyenne",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Moyenne (par défaut)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "~Double de la moyenne",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Votre}} chargement a été modifié en « $1 ».",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Modifier vers plus ou moins de tutorés {{GENDER:|vous}} aidera à gérer le nombre de questions auxquelles {{GENDER:|vous}} pouvez vous attendre à répondre. Toutefois, le nombre de questions dépend seulement de la motivation des tutorés qui vous sont affectés.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Il est recommandé de démarrer avec le poids « Moyenne » pour jauger votre capacité de support, avant de changer pour un autre choix."
 }
