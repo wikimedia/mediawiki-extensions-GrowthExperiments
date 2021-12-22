@@ -641,6 +641,13 @@
 	 * Allow the user to swipe left and right to navigate through the task feed
 	 */
 	SuggestedEditsModule.prototype.setupSwipeNavigation = function () {
+		var router = require( 'mediawiki.router' ),
+			updateBodyClass = function ( isSwipeNavigationEnabled ) {
+				$( document.body ).toggleClass(
+					'growthexperiments--suggestededits-swipe-navigation-enabled',
+					isSwipeNavigationEnabled
+				);
+			};
 		this.swipeCard = new SwipePane( this.config.$element, {
 			isRtl: document.documentElement.dir === 'rtl',
 			isHorizontal: true
@@ -652,7 +659,11 @@
 			this.onPreviousCard( true );
 		}.bind( this ) );
 
-		$( document.body ).addClass( 'growthexperiments-swipe-navigation-enabled' );
+		// Disable scrolling on the body when the overlay is shown
+		updateBodyClass( true );
+		router.on( 'route', function ( e ) {
+			updateBodyClass( !!e.path.match( /suggested-edits/ ) );
+		} );
 	};
 
 	/**
