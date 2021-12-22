@@ -10,7 +10,7 @@ class HelpPanelButton extends \OOUI\ButtonWidget {
 		// HelpPanelButton default config values need to be in sync with
 		// defaults in modules/ui-components/HelpPanelButton.js
 		// HelpPanelButton id is used when "infused" on the client
-		// side (ie: modules/helppanel/ext.growthExperiments.HelpPanel.cta.js)
+		// side (ie: modules/ext.growthExperiments.HelpPanel/HelpPanelCta.js)
 		$config = array_merge( [
 			'id' => 'mw-ge-help-panel-cta-button',
 			'classes' => [ 'mw-ge-help-panel-button' ],

@@ -1,8 +1,8 @@
 ( function () {
 	'use strict';
 
-	var suggestedEditsPeek = require( '../helppanel/ext.growthExperiments.SuggestedEditsPeek.js' ),
-		quickStartTips = require( '../helppanel/ext.growthExperiments.SuggestedEdits.QuickStartTips.js' ),
+	var suggestedEditsPeek = require( '../ui-components/SuggestedEditsPeek.js' ),
+		quickStartTips = require( './QuickStartTips.js' ),
 		SwitchEditorPanel = require( './ext.growthExperiments.HelpPanelProcessDialog.SwitchEditorPanel.js' );
 
 	/**

@@ -513,7 +513,7 @@
 		},
 		"ext.growthExperiments.HelpPanelCta.styles": {
 			"styles": [
-				"helppanel/ext.growthExperiments.HelpPanelCta.less"
+				"ext.growthExperiments.HelpPanel/HelpPanelCta.less"
 			],
 			"skinStyles": {
 				"minerva": [ "homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.minerva.less" ],
@@ -623,9 +623,9 @@
 				"homepage/ext.growthExperiments.Homepage.TopicSelectionWidget.js",
 				"homepage/ext.growthExperiments.Homepage.SuggestionWidget.js",
 				"homepage/ext.growthExperiments.Homepage.SuggestionGroupWidget.js",
-				"helppanel/ext.growthExperiments.SuggestedEditsPeek.js",
 				"utils/ext.growthExperiments.Utils.js",
 				"utils/ext.growthExperiments.IconUtils.js",
+				"ui-components/SuggestedEditsPeek.js",
 				"ui-components/SwipePane.js",
 				{
 					"name": "homepage/suggestededits/TaskTypes.json",
@@ -1220,9 +1220,9 @@
 				"help/ext.growthExperiments.HelpPanelProcessDialog.js",
 				"help/ext.growthExperiments.HelpPanelProcessDialog.SuggestedEditsPanel.js",
 				"help/ext.growthExperiments.HelpPanelProcessDialog.SwitchEditorPanel.js",
-				"helppanel/ext.growthExperiments.SuggestedEditsPeek.js",
-				"helppanel/ext.growthExperiments.SuggestedEdits.QuickStartTips.js",
-				"helppanel/ext.growthExperiments.SuggestedEdits.QuickStartTipsTabPanelLayout.js",
+				"ui-components/SuggestedEditsPeek.js",
+				"help/QuickStartTips.js",
+				"help/QuickStartTipsTabPanelLayout.js",
 				{
 					"name": "help/data.json",
 					"callback": [ "GrowthExperiments\\HelpPanelHooks", "getModuleData" ]
@@ -1338,13 +1338,13 @@
 		},
 		"ext.growthExperiments.HelpPanel": {
 			"styles": [
-				"helppanel/ext.growthExperiments.HelpPanelPopup.less",
+				"ext.growthExperiments.HelpPanel/HelpPanelPopup.less",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.TaskExplanation.less",
 				"ui-components/HelpPanelButton.less"
 			],
 			"packageFiles": [
-				"helppanel/ext.growthExperiments.HelpPanel.cta.js",
-				"helppanel/ext.growthExperiments.SuggestedEditsPeek.js",
+				"ext.growthExperiments.HelpPanel/HelpPanelCta.js",
+				"ui-components/SuggestedEditsPeek.js",
 				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.Guidance.js",
 				"ext.growthExperiments.StructuredTask/StructuredTaskLogger.js",
 				"ext.growthExperiments.StructuredTask/addlink/LinkSuggestionInteractionLogger.js",
@@ -1392,7 +1392,7 @@
 			]
 		},
 		"ext.growthExperiments.HelpPanel.init": {
-			"scripts": "helppanel/ext.growthExperiments.HelpPanel.init.js",
+			"scripts": "ext.growthExperiments.HelpPanel/index.js",
 			"dependencies": [
 				"ext.growthExperiments.SuggestedEditSession"
 			],
