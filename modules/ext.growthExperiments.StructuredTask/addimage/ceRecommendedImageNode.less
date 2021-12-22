@@ -32,7 +32,7 @@
 		text-align: center;
 	}
 
-	.mw-ge-recommendedImage-details-button {
+	.mw-ge-recommendedImage-detailsButton {
 		pointer-events: auto;
 		position: absolute;
 		bottom: 0;
@@ -47,7 +47,7 @@
 		.rel-font-size-and-line-height( @parentFontSize: 16px, @targetFontSize: 13px, @targetLineHeight: 19.5px );
 	}
 
-	.mw-ge-recommendedImage-details-icon {
+	.mw-ge-recommendedImage-detailsIcon {
 		margin-right: 8px;
 		background-size: 16px;
 		// Invert icon color from black to white
@@ -66,8 +66,73 @@
 	}
 }
 
+// Desktop styles are nested for additional specificity to win over styles set via "figure[typeof~='mw:Image/Thumb'] >"
 .mw-ge-structuredTaskDesktopArticleTarget {
-	.mw-ge-recommendedImage-details-button {
-		margin: 4px; // image on desktop has 3px margin + 1px border
+	.mw-ge-recommendedImage {
+		display: flex;
+		flex-direction: column;
+		padding: 7px 8px;
+		border: 1px solid @wmui-color-base70;
+		background: @wmui-color-base100;
+
+		&:not( [ typeof~='mw:Error' ] ) > a:after {
+			content: unset;
+		}
+
+		.image {
+			.ve-ce-mwBlockImageNode-thumbimage {
+				box-sizing: border-box;
+				margin: 0;
+			}
+		}
+
+		&-detailsButton,
+		&-header,
+		.mw-ge-recommendedImageCaption {
+			.rel-font-size-and-line-height( @parentFontSize: 14px, @targetFontSize: 14px, @targetLineHeight: 20px );
+		}
+
+		&-header {
+			font-weight: bold;
+			color: @wmui-color-base10;
+			display: flex;
+			align-items: center;
+			margin-bottom: 8px;
+			justify-content: space-between;
+
+			// Override width from figure[typeof~='mw:Image/Thumb'] > *:first-child > span
+			.mw-ge-recommendedImage-deleteButton {
+				width: auto;
+			}
+		}
+	}
+
+	.mw-ge-recommendedImageCaption {
+		:before {
+			content: unset;
+		}
+		border: 2px solid @wmui-color-base70;
+		padding: 0;
+		border-radius: 2px;
+
+		// Same as mobile but needs to win over figure[typeof~='mw:Image/Thumb'] > figcaption
+		&--with-placeholder {
+			border-color: @wmui-color-accent50;
+			background-color: @wmui-color-accent90;
+		}
+
+		&--with-warning {
+			border-color: @wmui-color-red50;
+		}
+	}
+
+	.mw-ge-recommendedImageCaption-warning {
+		position: relative;
+		margin: 6px 0;
+		text-align: left;
+
+		.oo-ui-iconElement-icon {
+			left: 0;
+		}
 	}
 }

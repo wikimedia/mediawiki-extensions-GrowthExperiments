@@ -146,7 +146,8 @@ AddImageArticleTarget.prototype.isValidTask = function () {
  */
 AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 	var linearModel, contentOffset, dimensions,
-		surfaceModel = this.getSurface().getModel(),
+		surface = this.getSurface(),
+		surfaceModel = surface.getModel(),
 		data = surfaceModel.getDocument().data,
 		NS_FILE = mw.config.get( 'wgNamespaceIds' ).file,
 		imageTitle = new mw.Title( imageData.image, NS_FILE ),
@@ -161,11 +162,14 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 		width: imageData.metadata.originalWidth,
 		height: imageData.metadata.originalHeight
 	};
-	targetWidth = Math.min(
-		dimensions.width,
-		this.getSurface().getView().$documentNode.width(),
-		MAX_IMAGE_DISPLAY_WIDTH
-	);
+	// On mobile, the image is rendered full width (with max width set to account for tablets).
+	// On desktop, the default thumbnail size is used.
+	targetWidth = surface.getContext().isMobile() ?
+		Math.min(
+			dimensions.width,
+			surface.getView().$documentNode.width(),
+			MAX_IMAGE_DISPLAY_WIDTH
+		) : this.getDefaultThumbSize();
 	imageRenderData = AddImageUtils.getImageRenderData( imageData.metadata, window, targetWidth );
 	linearModel = [
 		{
@@ -180,8 +184,7 @@ AddImageArticleTarget.prototype.insertImage = function ( imageData ) {
 				type: 'thumb',
 				defaultSize: true,
 				// The generated wikitext will ignore width/height when defaultSize is set, but
-				// it's still used for the visual size of the thumbnail in the editor, so set it
-				// to the width of the article (with max width set to account for tablets).
+				// it's still used for the visual size of the thumbnail in the editor.
 				width: targetWidth,
 				height: targetWidth * ( dimensions.height / dimensions.width ),
 				src: imageRenderData.src,
@@ -592,6 +595,17 @@ AddImageArticleTarget.prototype.onSaveComplete = function ( data ) {
 			suggestedEditSession.save();
 		}
 	} );
+};
+
+/**
+ * Get the default thumbnail size in pixels
+ *
+ * @return {number}
+ */
+AddImageArticleTarget.prototype.getDefaultThumbSize = function () {
+	var veConfig = mw.config.get( 'wgVisualEditorConfig' ) || {},
+		thumbLimits = veConfig.thumbLimits || {};
+	return thumbLimits[ mw.user.options.get( 'thumbsize' ) ] || 300;
 };
 
 module.exports = AddImageArticleTarget;
