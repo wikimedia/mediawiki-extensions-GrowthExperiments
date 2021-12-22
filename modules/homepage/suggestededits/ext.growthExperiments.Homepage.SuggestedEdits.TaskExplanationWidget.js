@@ -4,7 +4,7 @@
 	var TaskTypesAbFilter = require( './TaskTypesAbFilter.js' ),
 		taskTypes = TaskTypesAbFilter.getTaskTypes(),
 		mobileFrontend = mw.mobileFrontend,
-		suggestedEditsPeek = require( '../../helppanel/ext.growthExperiments.SuggestedEditsPeek.js' ),
+		suggestedEditsPeek = require( '../../ui-components/SuggestedEditsPeek.js' ),
 		Drawer = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Drawer : undefined,
 		IconUtils = require( '../../utils/ext.growthExperiments.IconUtils.js' );
 

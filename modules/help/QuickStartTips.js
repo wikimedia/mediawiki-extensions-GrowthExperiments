@@ -1,9 +1,7 @@
 ( function () {
 	'use strict';
 
-	var QuickStartTipsTabPanelLayout = require(
-		'./ext.growthExperiments.SuggestedEdits.QuickStartTipsTabPanelLayout.js'
-	);
+	var QuickStartTipsTabPanelLayout = require( './QuickStartTipsTabPanelLayout.js' );
 
 	/**
 	 * @param {string} taskTypeID The task type ID

@@ -11,7 +11,7 @@
 		Anchor = mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Anchor : undefined,
 		configData = Help.configData,
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
-		suggestedEditsPeek = require( './ext.growthExperiments.SuggestedEditsPeek.js' ),
+		suggestedEditsPeek = require( '../ui-components/SuggestedEditsPeek.js' ),
 		guidanceEnabled = mw.config.get( 'wgGENewcomerTasksGuidanceEnabled' ),
 		askHelpEnabled = mw.config.get( 'wgGEAskQuestionEnabled' ),
 		guidanceAvailable,
