@@ -6,6 +6,7 @@
 			"Zapipedia (WMF)"
 		]
 	},
-	"apihelp-query+growthtasks-param-topics": "Temas del artículo a preferir en las sugerencias de tareas.",
+	"apihelp-query+growthtasks-summary": "Consigue recomendaciones de tareas adaptadas a recién llegados.",
+	"apihelp-query+growthtasks-param-topics": "Temas de preferencia de artículos en las sugerencias de tareas.",
 	"apierror-growthexperiments-addlink-handler-notfound": "No se ha encontrado el registro de recomendación de enlaces"
 }

@@ -1,8 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
+			"Yahya",
 			"আফতাবুজ্জামান"
 		]
 	},
-	"apihelp-growthstarmentee-param-gesaction": "গ্রহণের জন্য পদক্ষেপ ( <kbd>তারকা</kbd> বা <kbd>অ তারকা</kbd> )"
+	"apihelp-growthstarmentee-param-gesaction": "গ্রহণের জন্য পদক্ষেপ ( <kbd>তারকা</kbd> বা <kbd>অ তারকা</kbd> )",
+	"apihelp-growthsetmenteestatus-param-state-enabled": "মেন্টরশিপ মডিউল সক্রিয় আছে"
 }

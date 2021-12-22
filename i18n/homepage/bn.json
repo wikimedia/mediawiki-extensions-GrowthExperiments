@@ -456,7 +456,7 @@
 	"growthexperiments-addimage-skip-dialog-body": "নিশ্চিত করুন যে {{GENDER:|আপনি}} এই পরামর্শ এড়িয়ে যেতে চাইছেন।",
 	"growthexperiments-addimage-skip-dialog-confirm": "পরামর্শ এড়িয়ে যান",
 	"growthexperiments-addimage-skip-dialog-cancel": "বাতিল",
-	"growthexperiments-newcomertasks-invalid-tasktype": "\"$1\" কোন বৈধ কাজের ধরন নয়",
+	"growthexperiments-newcomertasks-invalid-tasktype": "অবৈধ কাজের ধরন: $1",
 	"growthexperiments-addimage-caption-title": "একটি ক্যাপশন যোগ করুন",
 	"growthexperiments-addimage-loading-title": "ছবির প্রাকদর্শন প্রদর্শিত হচ্ছে...",
 	"growthexperiments-addimage-caption-placeholder": "কীভাবে এই ছবিটি $1-এর জন্য প্রাসঙ্গিক তা ব্যাখ্যা করে সংক্ষিপ্ত ক্যাপশন লিখুন",
