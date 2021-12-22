@@ -55,6 +55,28 @@
 	}
 
 	/**
+	 * Check whether the image recommendations on desktop are enabled for the current user.
+	 *
+	 * @return {boolean}
+	 */
+	function areDesktopImageRecommendationsEnabled() {
+		var Utils = require( '../../utils/ext.growthExperiments.Utils.js' );
+		return areImageRecommendationsEnabled() && Utils.isUserEligibleForAddImageDesktop();
+	}
+
+	/**
+	 * Check whether the image recommendations on desktop are enabled for the current user.
+	 *
+	 * @param {Object|undefined} taskTypeData Image recommendation data (from TaskTypes.json)
+	 */
+	function formatImageRecommendationTaskForDesktop( taskTypeData ) {
+		if ( taskTypeData && taskTypeData.iconData ) {
+			taskTypeData.iconData.descriptionMessageKey =
+				'growthexperiments-homepage-suggestededits-tasktype-machine-description';
+		}
+	}
+
+	/**
 	 * Get all task types, removing the ones the current user should not see.
 	 *
 	 * @return {Object} The same task type data, without the task types the user shouldn't see.
@@ -75,6 +97,11 @@
 		}
 		if ( !areImageRecommendationsEnabled() ) {
 			delete taskTypes[ IMAGE_RECOMMENDATION_TASK_TYPE ];
+		}
+
+		// TODO: Remove when add image is enabled on desktop
+		if ( areDesktopImageRecommendationsEnabled() ) {
+			formatImageRecommendationTaskForDesktop( taskTypes[ IMAGE_RECOMMENDATION_TASK_TYPE ] );
 		}
 		return taskTypes;
 	}

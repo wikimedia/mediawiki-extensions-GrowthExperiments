@@ -101,6 +101,11 @@ class SuggestedEdits extends BaseModule {
 	 */
 	public const SUGGESTED_EDIT_TAG = 'newcomer task';
 
+	/**
+	 * Whether the full experience of Add an Image is available on desktop
+	 */
+	public const ADD_IMAGE_DESKTOP_PREF = 'growthexperiments-addimage-desktop';
+
 	/** @var EditInfoService */
 	private $editInfoService;
 

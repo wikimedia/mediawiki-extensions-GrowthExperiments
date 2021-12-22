@@ -91,6 +91,11 @@ QualityGate.prototype.checkDailyLimitForTaskType = function ( taskType ) {
  * @return {boolean} Whether the task passed the gate.
  */
 QualityGate.prototype.checkMobileOnlyGate = function ( taskType ) {
+	// TODO: Remove when add image is enabled on desktop
+	var Utils = require( '../../utils/ext.growthExperiments.Utils.js' );
+	if ( taskType === 'image-recommendation' && Utils.isUserEligibleForAddImageDesktop() ) {
+		return true;
+	}
 	return this.config.gateConfig[ taskType ].mobileOnly;
 };
 
