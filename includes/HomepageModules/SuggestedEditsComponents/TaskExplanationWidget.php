@@ -75,6 +75,7 @@ class TaskExplanationWidget extends Widget {
 			'framed' => false,
 			'label' => $this->taskType->getShortDescription( $this->localizer )->text(),
 			'invisibleLabel' => true,
+			'classes' => [ 'suggested-edits-task-explanation-info-button' ],
 		] );
 	}
 
