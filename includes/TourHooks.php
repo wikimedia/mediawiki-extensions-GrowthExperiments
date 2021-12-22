@@ -74,7 +74,7 @@ class TourHooks implements
 		$modules = [
 			'ext.guidedTour.tour.helppanel' => $moduleTemplate + [
 				'packageFiles' => [
-					'help/ext.growthExperiments.helppanel.tour.js',
+					'ext.growthExperiments.Help/HelpPanelTour.js',
 					'utils/tourUtils.js',
 				],
 				'messages' => [
@@ -85,7 +85,7 @@ class TourHooks implements
 			],
 			'ext.guidedTour.tour.homepage_mentor' => $moduleTemplate + [
 				'packageFiles' => [
-					'help/ext.growthExperiments.homepage.mentor.tour.js',
+					'ext.growthExperiments.Help/HomepageMentorTour.js',
 					'utils/tourUtils.js',
 				],
 				'messages' => [

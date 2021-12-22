@@ -2,17 +2,17 @@
 
 ( function () {
 	var Drawer = mw.mobileFrontend ? mw.mobileFrontend.require( 'mobile.startup' ).Drawer : null,
-		PostEditPanel = require( './ext.growthExperiments.PostEditPanel.js' ),
-		PostEditDialog = require( './ext.growthExperiments.PostEditDialog.js' ),
+		PostEditPanel = require( './PostEditPanel.js' ),
+		PostEditDialog = require( './PostEditDialog.js' ),
 		GrowthTasksApi = require( '../homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js' ),
-		HelpPanelLogger = require( './ext.growthExperiments.HelpPanelLogger.js' ),
+		HelpPanelLogger = require( '../ext.growthExperiments.Help/HelpPanelLogger.js' ),
 		NewcomerTaskLogger = require( '../homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js' ),
 		TaskTypesAbFilter = require( '../homepage/suggestededits/TaskTypesAbFilter.js' ),
 		taskTypes = TaskTypesAbFilter.getTaskTypes(),
 		defaultTaskTypes = TaskTypesAbFilter.getDefaultTaskTypes(),
 		suggestedEditsConfig = require( '../homepage/suggestededits/config.json' ),
 		aqsConfig = require( '../homepage/suggestededits/AQSConfig.json' ),
-		helpConfig = require( './data.json' ),
+		helpConfig = require( '../ext.growthExperiments.Help/data.json' ),
 		api = new GrowthTasksApi( {
 			taskTypes: taskTypes,
 			defaultTaskTypes: defaultTaskTypes,

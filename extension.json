@@ -1204,27 +1204,27 @@
 		},
 		"ext.growthExperiments.Help": {
 			"styles": [
-				"help/ext.growthExperiments.HelpPanelProcessDialog.less",
-				"help/ext.growthExperiments.HelpPanelSearchWidget.less",
-				"help/ext.growthExperiments.HelpPanelHomeButtonWidget.less"
+				"ext.growthExperiments.Help/HelpPanelProcessDialog.less",
+				"ext.growthExperiments.Help/HelpPanelSearchWidget.less",
+				"ext.growthExperiments.Help/HelpPanelHomeButtonWidget.less"
 			],
 			"packageFiles": [
-				"help/ext.growthExperiments.Help.js",
-				"help/ext.growthExperiments.HelpPanelLogger.js",
+				"ext.growthExperiments.Help/index.js",
+				"ext.growthExperiments.Help/HelpPanelLogger.js",
 				"homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js",
 				"homepage/suggestededits/TaskTypesAbFilter.js",
 				"utils/ext.growthExperiments.Utils.js",
 				"utils/ext.growthExperiments.IconUtils.js",
-				"help/ext.growthExperiments.HelpPanelSearchWidget.js",
-				"help/ext.growthExperiments.HelpPanelHomeButtonWidget.js",
-				"help/ext.growthExperiments.HelpPanelProcessDialog.js",
-				"help/ext.growthExperiments.HelpPanelProcessDialog.SuggestedEditsPanel.js",
-				"help/ext.growthExperiments.HelpPanelProcessDialog.SwitchEditorPanel.js",
+				"ext.growthExperiments.Help/HelpPanelSearchWidget.js",
+				"ext.growthExperiments.Help/HelpPanelHomeButtonWidget.js",
+				"ext.growthExperiments.Help/HelpPanelProcessDialog.js",
+				"ext.growthExperiments.Help/HelpPanelProcessDialog.SuggestedEditsPanel.js",
+				"ext.growthExperiments.Help/HelpPanelProcessDialog.SwitchEditorPanel.js",
 				"ui-components/SuggestedEditsPeek.js",
-				"help/QuickStartTips.js",
-				"help/QuickStartTipsTabPanelLayout.js",
+				"ext.growthExperiments.Help/QuickStartTips.js",
+				"ext.growthExperiments.Help/QuickStartTipsTabPanelLayout.js",
 				{
-					"name": "help/data.json",
+					"name": "ext.growthExperiments.Help/data.json",
 					"callback": [ "GrowthExperiments\\HelpPanelHooks", "getModuleData" ]
 				},
 				{
@@ -1403,14 +1403,14 @@
 		},
 		"ext.growthExperiments.PostEdit": {
 			"styles": [
-				"help/ext.growthExperiments.PostEdit.less",
+				"ext.growthExperiments.PostEdit/PostEdit.less",
 				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.less"
 			],
 			"packageFiles": [
-				"help/ext.growthExperiments.PostEdit.js",
-				"help/ext.growthExperiments.PostEditPanel.js",
-				"help/ext.growthExperiments.PostEditDialog.js",
-				"help/ext.growthExperiments.HelpPanelLogger.js",
+				"ext.growthExperiments.PostEdit/index.js",
+				"ext.growthExperiments.PostEdit/PostEditPanel.js",
+				"ext.growthExperiments.PostEdit/PostEditDialog.js",
+				"ext.growthExperiments.Help/HelpPanelLogger.js",
 				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.js",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.GrowthTasksApi.js",
 				"homepage/suggestededits/ext.growthExperiments.NewcomerTaskLogger.js",
@@ -1434,7 +1434,7 @@
 					"callback": [ "GrowthExperiments\\HomepageHooks", "getSuggestedEditsConfigJson" ]
 				},
 				{
-					"name": "help/data.json",
+					"name": "ext.growthExperiments.Help/data.json",
 					"callback": [ "GrowthExperiments\\HelpPanelHooks", "getModuleData" ]
 				}
 			],
@@ -1701,14 +1701,14 @@
 			"tests/qunit/index.js",
 			"modules/utils/ext.growthExperiments.Utils.js",
 			"tests/qunit/utils/ext.growthExperiments.Utils.test.js",
-			"modules/help/ext.growthExperiments.HelpPanelLogger.js",
-			"tests/qunit/help/ext.growthExperiments.HelpPanelLogger.test.js",
-			"modules/help/ext.growthExperiments.HelpPanelProcessDialog.js",
-			"tests/qunit/help/ext.growthExperiments.HelpPanelProcessDialog.test.js",
-			"modules/help/ext.growthExperiments.HelpPanelProcessDialog.SwitchEditorPanel.js",
-			"tests/qunit/help/ext.growthExperiments.HelpPanelProcessDialog.SwitchEditorPanel.test.js",
 			"modules/ext.growthExperiments.Homepage.Logger/index.js",
 			"tests/qunit/ext.growthExperiments.Homepage.Logger/index.test.js",
+			"modules/ext.growthExperiments.Help/HelpPanelLogger.js",
+			"tests/qunit/ext.growthExperiments.Help/HelpPanelLogger.test.js",
+			"modules/ext.growthExperiments.Help/HelpPanelProcessDialog.js",
+			"tests/qunit/ext.growthExperiments.Help/HelpPanelProcessDialog.test.js",
+			"modules/ext.growthExperiments.Help/HelpPanelProcessDialog.SwitchEditorPanel.js",
+			"tests/qunit/ext.growthExperiments.Help/HelpPanelProcessDialog.SwitchEditorPanel.test.js",
 			"modules/homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditPagerWidget.js",
 			"tests/qunit/homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEditPagerWidget.test.js",
 			"modules/homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.ErrorCardWidget.js",
@@ -1722,32 +1722,32 @@
 			"tests/qunit/ext.growthExperiments.StructuredTask/addimage/AddImageUtils.test.js",
 			"modules/ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
 			{
-				"name": "modules/help/data.json",
-				"file": "tests/qunit/help/configData.json"
+				"name": "modules/ext.growthExperiments.Help/data.json",
+				"file": "tests/qunit/ext.growthExperiments.Help/configData.json"
 			},
 			{
-				"name": "modules/help/ext.growthExperiments.HelpPanelProcessDialog.SuggestedEditsPanel.js",
-				"file": "tests/qunit/help/mocks.js"
+				"name": "modules/ext.growthExperiments.Help/HelpPanelProcessDialog.SuggestedEditsPanel.js",
+				"file": "tests/qunit/ext.growthExperiments.Help/mocks.js"
 			},
 			{
 				"name": "modules/homepage/suggestededits/TaskTypesAbFilter.js",
-				"file": "tests/qunit/help/mocks.js"
+				"file": "tests/qunit/ext.growthExperiments.Help/mocks.js"
 			},
 			{
 				"name": "homepage/suggestededits/TaskTypes.json",
-				"file": "tests/qunit/help/mocks.js"
+				"file": "tests/qunit/ext.growthExperiments.Help/mocks.js"
 			},
 			{
 				"name": "homepage/suggestededits/DefaultTaskTypes.json",
-				"file": "tests/qunit/help/mocks.js"
+				"file": "tests/qunit/ext.growthExperiments.Help/mocks.js"
 			},
 			{
-				"name": "modules/help/ext.growthExperiments.HelpPanelSearchWidget.js",
-				"file": "tests/qunit/help/mocks.js"
+				"name": "modules/ext.growthExperiments.Help/HelpPanelSearchWidget.js",
+				"file": "tests/qunit/ext.growthExperiments.Help/mocks.js"
 			},
 			{
-				"name": "modules/help/ext.growthExperiments.HelpPanelHomeButtonWidget.js",
-				"file": "tests/qunit/help/mocks.js"
+				"name": "modules/ext.growthExperiments.Help/HelpPanelHomeButtonWidget.js",
+				"file": "tests/qunit/ext.growthExperiments.Help/mocks.js"
 			}
 		],
 		"dependencies": [
