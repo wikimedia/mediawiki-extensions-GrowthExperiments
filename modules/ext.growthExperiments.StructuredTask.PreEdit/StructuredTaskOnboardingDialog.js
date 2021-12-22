@@ -1,4 +1,5 @@
 var MultiPaneDialog = require( '../ui-components/MultiPaneDialog.js' );
+var SwipePane = require( '../ui-components/SwipePane.js' );
 
 /**
  * Overlay onboarding dialog for structured tasks
@@ -46,6 +47,18 @@ StructuredTaskOnboardingDialog.static.actions = [
 		classes: [ 'structuredtask-onboarding-dialog-skip-button' ]
 	}
 ];
+
+StructuredTaskOnboardingDialog.prototype.initialize = function () {
+	StructuredTaskOnboardingDialog.super.prototype.initialize.call( this );
+
+	this.swipeCard = new SwipePane( this.$element, {
+		isRtl: document.documentElement.dir === 'rtl',
+		isHorizontal: true
+	} );
+
+	this.swipeCard.setToStartHandler( this.showNextPanel.bind( this ) );
+	this.swipeCard.setToEndHandler( this.showPrevPanel.bind( this ) );
+};
 
 /** @inheritdoc */
 StructuredTaskOnboardingDialog.prototype.getFooterElement = function () {

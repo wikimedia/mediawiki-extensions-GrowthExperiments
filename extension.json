@@ -1106,6 +1106,7 @@
 				"ext.growthExperiments.StructuredTask/addimage/ImageSuggestionInteractionLogger.js",
 				"homepage/suggestededits/TaskTypesAbFilter.js",
 				"ui-components/MultiPaneDialog.js",
+				"ui-components/SwipePane.js",
 				"utils/ext.growthExperiments.Utils.js",
 				{
 					"name": "homepage/suggestededits/config.json",
