@@ -72,4 +72,24 @@
 			width: 20px;
 		}
 	}
+
+	&-josacampaign {
+		background-image: url( ../../images/campaign/campaign-image-josa.svg );
+		background-size: 350px auto;
+		background-position: center 30px;
+
+		.mw-ge-donorsignup-title {
+			// logo is 350x105, leave 30px top/bottom padding
+			padding-top: 165px;
+		}
+
+		.skin-minerva & {
+			background-size: 180px auto;
+			background-position: center 20px;
+
+			.mw-ge-donorsignup-title {
+				padding-top: 100px;
+			}
+		}
+	}
 }
