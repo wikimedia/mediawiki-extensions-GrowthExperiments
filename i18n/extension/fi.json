@@ -5,7 +5,14 @@
 			"MITO"
 		]
 	},
+	"growthexperiments-edit-config-disabled": "Yhteisökokoonpano on tällä hetkellä pois käytöstä.",
 	"growthexperiments-edit-config-feedback-headline": "Onko sinulla ideoita tai kysymyksiä tästä lomakkeesta?",
 	"growthexperiments-edit-config-feedback-cta": "Lähetä palautetta",
-	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Neuvontapiste"
+	"growthexperiments-edit-config-edit-summary": "Muokkausyhteenveto",
+	"growthexperiments-edit-config-help-panel-post-on-top-true": "Sivun yläosa",
+	"growthexperiments-edit-config-help-panel-post-on-top-false": "Sivun alaosa",
+	"growthexperiments-edit-config-help-panel-ask-mentor-false": "Neuvontapiste",
+	"growthexperiments-edit-config-mentorship-enabled-true": "Kyllä",
+	"growthexperiments-edit-config-mentorship-enabled-false": "Ei",
+	"growthexperiments-edit-config-newcomertasks": "Ehdotetut muokkaukset"
 }

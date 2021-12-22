@@ -3,7 +3,8 @@
 		"authors": [
 			"Kyykaarme",
 			"Pyscowicz",
-			"MITO"
+			"MITO",
+			"Rönttönen"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Ota käyttöön muokkaajan apupaneeli",
@@ -104,6 +105,7 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "Linkit ovat ohjelmiston ehdottamia, ja ne voivat olla virheellisiä.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "Ehdotukset voivat olla sanoihin, jotka eivät niitä tarvitse, tai ne voivat linkittää väärään artikkeliin. Käytä {{GENDER:$1|omaa}} harkintaasi päättääksesi, ovatko ne oikein vai väärin.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Lue lisää ohjelmiston tekemistä ehdotuksista]]",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Ohjelinjat",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "\n* Linkitä käsitteitä, joista lukija saattaa haluta lisätietoa.\n* Varmista, että linkki vie oikeaan artikkeliin.\n* Älä linkitä yleisiä sanoja, vuosia tai päivämääriä.\n* Jos {{GENDER:$1|et}} ole varma, hyppää yli.",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Esimerkkivirke",
 	"growthexperiments-help-panel-questioncomplete-title": "Kysy kysymys",
@@ -134,6 +136,7 @@
 	"growthexperiments-help-panel-button-subheader-general-help": "Etsi vastauksia ja lue ohjesivuja",
 	"growthexperiments-help-panel-button-subheader-ask-help": "Kysy neuvoa muilta käyttäjiltä",
 	"growthexperiments-help-panel-button-subheader-suggested-edits": "Pikavihjeitä aloittamiseen",
+	"growthexperiments-help-panel-button-subsubheader-ask-help-mentor": "$1 {{PLURAL:$1|muokkaus|muokkausta}} · $2",
 	"growthexperiments-help-panel-general-help-title": "Yleistä apua muokkaamiseen",
 	"growthexperiments-help-panel-suggested-edits-faq-link-text": "Tietoa ehdotetuista muokkauksista",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Sinä}} käytät wikitekstimuokkainta. Nämä muokkausvihjeet ovat hyödyllisimpiä visuaalista muokkainta käytettäessä.",
