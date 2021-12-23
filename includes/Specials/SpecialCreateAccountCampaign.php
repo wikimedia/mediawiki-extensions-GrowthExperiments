@@ -73,44 +73,55 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 			'ext.growthExperiments.DonorSignupCampaign.styles',
 		] );
 
-		$msgKey = $this->isRecurringDonorCampaign() ? 'recurringcampaign' : 'signupcampaign';
-		$list = '';
-		foreach ( [ 'lightbulb', 'mentor', 'difficulty-easy-bw' ] as $i => $icon ) {
-			$index = $i + 1;
-			if ( $this->msg( "growthexperiments-$msgKey-bullet$index" )->exists() ) {
-				$list .= Html::rawElement( 'li', [],
+		$benefitsList = '';
+		if ( !$this->isRecurringDonorCampaign() ) {
+			foreach ( [ 'lightbulb', 'mentor', 'difficulty-easy-bw' ] as $i => $icon ) {
+				$index = $i + 1;
+				$benefitsList .= Html::rawElement( 'li', [],
 					new IconWidget( [ 'icon' => $icon ] )
 					. Html::element( 'span', [],
 						// The following message keys are used here:
-						// * growthexperiments-recurringcampaign-bulletlightbulb
-						// * growthexperiments-recurringcampaign-bulletmentor
-						// * growthexperiments-recurringcampaign-bulletdifficulty-easy-bw
-						// * growthexperiments-signupcampaign-bulletlightbulb
-						// * growthexperiments-signupcampaign-bulletmentor
-						// * growthexperiments-signupcampaign-bulletdifficulty-easy-bw
-						$this->msg( "growthexperiments-$msgKey-bullet$index" )->text()
+						// * growthexperiments-signupcampaign-bullet1
+						// * growthexperiments-signupcampaign-bullet2
+						// * growthexperiments-signupcampaign-bullet3
+						$this->msg( "growthexperiments-signupcampaign-bullet$index" )->text()
 					)
 				);
 			}
+			$benefitsList = Html::rawElement( 'ul', [ 'class' => 'mw-ge-donorsignup-list' ], $benefitsList );
 		}
 
+		$campaignKey = $this->getCampaignMessageKey();
 		return Html::rawElement( 'div', [ 'class' => 'mw-createacct-benefits-container' ],
-			Html::rawElement( 'div', [ 'class' => 'mw-ge-donorsignup-block' ],
-				Html::element( 'h1', [ 'class' => 'mw-ge-donorsignup-title' ],
+			Html::rawElement( 'div', [ 'class' => "mw-ge-donorsignup-block mw-ge-donorsignup-block-$campaignKey" ],
+				Html::rawElement( 'h1', [ 'class' => 'mw-ge-donorsignup-title' ],
 					// The following message keys are used here:
 					// * growthexperiments-recurringcampaign-title
 					// * growthexperiments-signupcampaign-title
-					$this->msg( "growthexperiments-$msgKey-title" )->text()
+					// * growthexperiments-josacampaign-title
+					$this->msg( "growthexperiments-$campaignKey-title" )->parse()
 				)
-				. Html::element( 'p', [ 'class' => 'mw-ge-donorsignup-body' ],
+				. Html::rawElement( 'p', [ 'class' => 'mw-ge-donorsignup-body' ],
 					// The following message keys are used here:
 					// * growthexperiments-recurringcampaign-body
 					// * growthexperiments-signupcampaign-body
-					$this->msg( "growthexperiments-$msgKey-body" )->text()
+					// * growthexperiments-josacampaign-body
+					$this->msg( "growthexperiments-$campaignKey-body" )->parse()
 				)
-				. Html::rawElement( 'ul', [ 'class' => 'mw-ge-donorsignup-list' ], $list )
+				. $benefitsList
 			)
 		);
+	}
+
+	/**
+	 * Check if the campaign field is set and if the geNewLandingHtml field is true.
+	 *
+	 * @return bool
+	 */
+	private function shouldShowNewLandingPageHtml(): bool {
+		$request = $this->getRequest();
+		return $request->getCheck( 'campaign' )
+			   && $request->getInt( HomepageHooks::REGISTRATION_GROWTHEXPERIMENTS_NEW_LANDING_HTML ) > 0;
 	}
 
 	/**
@@ -124,14 +135,19 @@ class SpecialCreateAccountCampaign extends SpecialCreateAccount {
 	}
 
 	/**
-	 * Check if the campaign field is set and if the geNewLandingHtml field is true.
+	 * Check if the campaign field contains "recurring".
 	 *
-	 * @return bool
+	 * @return string
 	 */
-	private function shouldShowNewLandingPageHtml(): bool {
-		$request = $this->getRequest();
-		return $request->getCheck( 'campaign' )
-			&& $request->getInt( HomepageHooks::REGISTRATION_GROWTHEXPERIMENTS_NEW_LANDING_HTML ) > 0;
+	private function getCampaignMessageKey(): string {
+		$campaign = $this->authForm->getField( 'campaign' )->getDefault();
+		if ( strpos( $campaign, 'recurring' ) !== false ) {
+			return 'recurringcampaign';
+		} elseif ( strpos( $campaign, 'JOSA' ) !== false ) {
+			return 'josacampaign';
+		} else {
+			return 'signupcampaign';
+		}
 	}
 
 }
