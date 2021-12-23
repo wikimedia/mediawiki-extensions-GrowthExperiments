@@ -17,7 +17,7 @@
 	 * @constructor
 	 */
 	var configData = require( './data.json' ),
-		SuggestedEditsPanel = require( './ext.growthExperiments.HelpPanelProcessDialog.SuggestedEditsPanel.js' ),
+		SuggestedEditsPanel = require( './HelpPanelProcessDialog.SuggestedEditsPanel.js' ),
 		TaskTypesAbFilter = require( '../homepage/suggestededits/TaskTypesAbFilter.js' ),
 		taskTypeData = TaskTypesAbFilter.getTaskTypes(),
 		linksConfig = configData.GEHelpPanelLinks,
@@ -41,8 +41,8 @@
 			this.isQuestionPoster = config.isQuestionPoster;
 			this.configureAskScreen( config );
 		},
-		HelpPanelSearchWidget = require( './ext.growthExperiments.HelpPanelSearchWidget.js' ),
-		HelpPanelHomeButtonWidget = require( './ext.growthExperiments.HelpPanelHomeButtonWidget.js' ),
+		HelpPanelSearchWidget = require( './HelpPanelSearchWidget.js' ),
+		HelpPanelHomeButtonWidget = require( './HelpPanelHomeButtonWidget.js' ),
 		MIN_DIALOG_HEIGHT = 368;
 
 	OO.inheritClass( HelpPanelProcessDialog, OO.ui.ProcessDialog );

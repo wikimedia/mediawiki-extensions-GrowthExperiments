@@ -18,9 +18,9 @@ const suggestedEditsPanel = {
 
 let HelpPanelProcessDialog, TaskTypesAbFilter, sandbox;
 
-QUnit.module( 'ext.growthExperiments.HelpPanelProcessDialog.js', QUnit.newMwEnvironment( {
+QUnit.module( 'ext.growthExperiments.Help/HelpPanelProcessDialog.js', QUnit.newMwEnvironment( {
 	beforeEach: function () {
-		HelpPanelProcessDialog = require( '../../../modules/help/ext.growthExperiments.HelpPanelProcessDialog.js' );
+		HelpPanelProcessDialog = require( '../../../modules/ext.growthExperiments.Help/HelpPanelProcessDialog.js' );
 		TaskTypesAbFilter = require( '../../../modules/homepage/suggestededits/TaskTypesAbFilter.js' );
 		sandbox = sinon.sandbox.create();
 		sandbox.stub( TaskTypesAbFilter, 'getTaskTypes' ).returns( {} );

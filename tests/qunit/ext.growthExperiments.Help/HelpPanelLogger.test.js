@@ -1,8 +1,8 @@
 'use strict';
 
-const HelpPanelLogger = require( '../../../modules/help/ext.growthExperiments.HelpPanelLogger.js' );
+const HelpPanelLogger = require( '../../../modules/ext.growthExperiments.Help/HelpPanelLogger.js' );
 
-QUnit.module( 'ext.growthExperiments.HelpPanelLogger.js', QUnit.newMwEnvironment( {
+QUnit.module( 'ext.growthExperiments.Help/HelpPanelLogger.js', QUnit.newMwEnvironment( {
 	config: {
 		wgCanonicalSpecialPageName: false,
 		wgUserEditCount: 42,

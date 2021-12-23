@@ -3,7 +3,7 @@
 
 	var suggestedEditsPeek = require( '../ui-components/SuggestedEditsPeek.js' ),
 		quickStartTips = require( './QuickStartTips.js' ),
-		SwitchEditorPanel = require( './ext.growthExperiments.HelpPanelProcessDialog.SwitchEditorPanel.js' );
+		SwitchEditorPanel = require( './HelpPanelProcessDialog.SwitchEditorPanel.js' );
 
 	/**
 	 * Create the suggested edit panel. The panel is initially empty; the code creating it

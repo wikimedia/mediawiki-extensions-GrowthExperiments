@@ -1,8 +1,8 @@
 'use strict';
-const pathToSwitchEditorPanel = '../../../modules/help/ext.growthExperiments.HelpPanelProcessDialog.SwitchEditorPanel.js';
+const pathToSwitchEditorPanel = '../../../modules/ext.growthExperiments.Help/HelpPanelProcessDialog.SwitchEditorPanel.js';
 let SwitchEditorPanel;
 
-QUnit.module( 'ext.growthExperiments.HelpPanelProcessDialog.SwitchEditorPanel.js', QUnit.newMwEnvironment() );
+QUnit.module( 'ext.growthExperiments.Help/HelpPanelProcessDialog.SwitchEditorPanel.js', QUnit.newMwEnvironment() );
 
 QUnit.test( 'constructor', function ( assert ) {
 	SwitchEditorPanel = require( pathToSwitchEditorPanel );
