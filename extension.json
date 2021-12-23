@@ -1051,7 +1051,8 @@
 				"utils/ext.growthExperiments.Utils.js"
 			],
 			"styles": [
-				"ext.growthExperiments.StructuredTask.desktop/MinimizedToolbarDialogButton.less"
+				"ext.growthExperiments.StructuredTask.desktop/MinimizedToolbarDialogButton.less",
+				"ext.growthExperiments.StructuredTask.desktop/addimage/AddImageDesktopSaveDialog.less"
 			],
 			"dependencies": [
 				"ext.growthExperiments.StructuredTask",

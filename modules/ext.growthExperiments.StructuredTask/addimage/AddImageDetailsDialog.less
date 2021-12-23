@@ -51,6 +51,7 @@
 		margin: 8px 0 0;
 		text-decoration: none;
 		color: @colorProgressive;
+		font-weight: bold;
 
 		&:visited {
 			color: @colorProgressive;
@@ -70,5 +71,17 @@
 		padding: 0;
 		border: 0;
 		margin: 8px 0 0;
+	}
+
+	&-desktop {
+		@desktopFontSize: 14px;
+
+		.oo-ui-messageDialog-title {
+			.rel-font-size-and-line-height( @parentFontSize: @desktopFontSize, @targetFontSize: 14px, @targetLineHeight: 20px );
+		}
+
+		.oo-ui-messageDialog-message {
+			.rel-font-size-and-line-height( @parentFontSize: @desktopFontSize, @targetFontSize: 12.4px, @targetLineHeight: 17.3px );
+		}
 	}
 }

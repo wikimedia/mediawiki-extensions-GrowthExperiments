@@ -25,7 +25,8 @@ function addImage() {
 			AddImageArticleTarget: require( './addimage/AddImageArticleTarget.js' ),
 			RecommendedImageToolbarDialog: require( './addimage/RecommendedImageToolbarDialog.js' ),
 			AddImageSaveDialog: require( './addimage/AddImageSaveDialog.js' ),
-			ImageSuggestionInteractionLogger: require( './addimage/ImageSuggestionInteractionLogger.js' )
+			ImageSuggestionInteractionLogger: require( './addimage/ImageSuggestionInteractionLogger.js' ),
+			AddImageUtils: require( './addimage/AddImageUtils.js' )
 		};
 	}
 	return addImageModules;
