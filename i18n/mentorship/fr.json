@@ -16,7 +16,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Voir {{GENDER:|vos}} tutorés ci-dessous. Utiliser les filtres pour modifier quels tutorés sont affichés.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Le tableau nécessite JavaScript. Veuillez l’activer pour pouvoir utiliser ce module.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Qui est dans votre tableau ?",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Le tableau montre seulement {{GENDER:|vos}} tutorés qui ont créé un compte dans les deux semaines passées, ou qui ont édité dans les six derniers mois. Les données sont mises à jour toutes les trois heures.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Ce tableau montre seulement {{GENDER:|vos}} tutorés dont le compte a été créé lors les deux semaines passées, ou qui ont édité dans les six derniers mois, et ont la [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|newcomer page d’accueil activée]]. Les données sont mises à jour toutes les trois heures.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Légende",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Mettre en favori les tutorés",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Nom d’utilisateur",

@@ -354,7 +354,7 @@
 	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "La luna es el único <mark class=\"positive\">satélite natural</mark> que <mark class=\"positive\">orbita</mark> alrededor de la <mark class=\"positive\">Tierra</mark>.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "No se necesitan conocimientos especiales sobre el artículo para realizar esta tarea.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Los enlaces sugeridos provienen de la inteligencia artificial (IA), que puede cometer errores.",
-	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "La IA puede sugerir enlaces a palabras que no los necesitan, o podría sugerir enlaces al artículo incorrecto. Usa {{GENDER:$1|tu}} juicio para decidir si es correcto o incorrecto.",
+	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "La IA puede sugerir enlaces sobre palabras que no los necesitan, o podría sugerir enlaces al artículo incorrecto. Usa {{GENDER:$1|tu}} sentido común para decidir si es correcto o incorrecto.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body-learn-more-link-text": "Más información sobre sugerencias de la IA",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-title": "Normas",
 	"growthexperiments-addlink-onboarding-content-linking-guidelines-body": "<li>Enlaza conceptos sobre los que un lector podría querer aprender más.</li><li>Asegúrate de que el enlace vaya al artículo correcto.</li><li>No enlaces palabras comunes, años o fechas.</li><li>Si no estás {{GENDER:$1|seguro|segura}}, omite esta sugerencia.</li>",

@@ -48,6 +48,8 @@
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Lapa, kas satur sarakstu ar manuāli piešķiramiem mentoriem",
 	"growthexperiments-edit-config-newcomertasks": "Ieteiktie labojumi",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Dažus no ieteikto labojumu veidiem iegūst no uzturēšanas veidnēm. Raksti, kas satur šīs veidnes, tiek pievienoti sarakstam. Lai redzētu, cik daudz rakstu ir pieejams katram uzdevuma veidam, apskati [[Special:NewcomerTasksInfo|šo lapu]].",
+	"growthexperiments-edit-config-newcomer-tasks-disabled": "Atslēgts",
+	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "Atspējots vietnes konfigurācijā.",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Veidnes, ko izmantot rakstu atrašanai, kam nepieciešama teksta uzlabošana",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Lapa, kur jaunpienācēji var uzzināt vairāk par teksta uzlabošanu",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Veidnes, ko izmantot rakstu atrašanai, kam nepieciešama paplašināšana",

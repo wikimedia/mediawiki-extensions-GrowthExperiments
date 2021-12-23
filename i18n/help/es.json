@@ -10,6 +10,7 @@
 			"Julian leonardo paez",
 			"LORDZRAWN",
 			"Tiberius1701",
+			"Zapipedia (WMF)",
 			"ZebaX2010"
 		]
 	},
@@ -113,11 +114,12 @@
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "La luna es el único <mark class=\"positive\">satélite natural</mark> que <mark class=\"positive\">orbita</mark> alrededor de la <mark class=\"positive\">Tierra</mark>.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "No se necesitan conocimientos especiales sobre el artículo para realizar esta tarea.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-calm": "Los enlaces sugeridos son generados por una inteligencia artificial y pueden estar incorrectos.",
-	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "La IA puede sugerir enlaces a palabras que no los necesitan, o podría sugerir enlaces al artículo incorrecto. Usa {{GENDER:$1|tu}} juicio para decidir si es correcto o incorrecto.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-calm": "La IA puede sugerir enlaces a palabras que no los necesitan, o podría sugerir enlaces al artículo incorrecto. Usa {{GENDER:$1|tu}} sentido común para decidir si es correcto o incorrecto.",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-calm": "[[$1|Más información sobre sugerencias de la IA]]",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Normas",
 	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "* Enlaza conceptos sobre los que un lector podría querer aprender más.\n* Asegúrate de que el enlace vaya al artículo correcto.\n* No enlaces palabras comunes, años o fechas.\n* Si no estás {{GENDER|$1|seguro|segura}}, omite esta sugerencia.",
 	"growthexperiments-help-panel-suggestededits-tips-link-recommendation-example-label": "Oración de ejemplo",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-image-recommendation-header-value": "Las imágenes facilitan el aprendizaje, pero muchos artículos carecen de ellas.",
 	"growthexperiments-help-panel-questioncomplete-title": "Haz una pregunta",
 	"growthexperiments-help-panel-questioncomplete-header": "¡Se ha publicado la pregunta!",
 	"growthexperiments-help-panel-questioncomplete-confirmation-text": "Su pregunta está ahora en el café de ayuda de la comunidad para que la responda otro editor voluntario.",

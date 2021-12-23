@@ -2,6 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Ankan",
+			"Hirok Raja",
+			"ZI Jony",
 			"আফতাবুজ্জামান"
 		]
 	},
@@ -14,7 +16,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "নিচে {{GENDER:|আপনার}} পরামর্শগ্রহীতাদের দেখুন। ছাঁকনি ব্যবহার করে আপনি নির্দিষ্ট পরামর্শগ্রহীতাকে দেখতে পাবেন।",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "টেবিলের জন্য জাভাস্ক্রিপ্ট প্রয়োজন। অনুগ্রহ করে জাভাস্ক্রিপ্ট সক্রিয় করে এই মডিউল ব্যবহার করুন।",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "আপনার টেবিলে কে আছে?",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "এই টেবিলে {{GENDER:|আপনার}} সকল পরামর্শগ্রহীতাদেরকে দেখানো হবে, যারা গত দুই সপ্তাহের মধ্যে অ্যাকাউন্ট তৈরি করেছেন কিংবা গত ছয়মাসে সম্পাদনা করেছেন। এখানের উপাত্ত প্রতি তিন ঘণ্টায় হালনাগাদ করা হয়।",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "এই টেবিলে {{GENDER:|আপনার}} সকল পরামর্শগ্রহীতাদেরকে দেখানো হবে, যারা গত দুই সপ্তাহের মধ্যে অ্যাকাউন্ট তৈরি করেছেন কিংবা গত ছয়মাসে সম্পাদনা করেছেন, এবং [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|নবাগত হোমপেজ]] সক্রিয় আছে। এখানের উপাত্ত প্রতি তিন ঘণ্টায় হালনাগাদ করা হয়।",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "ব্যাখ্যা",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "পরামর্শগ্রহীতাকে চিহ্নিত করুন",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "ব্যবহারকারী নাম",
@@ -85,5 +87,6 @@
 	"echo-pref-tooltip-ge-mentorship": "মেন্টরশিপ বৈশিষ্ট্যসম্পর্কিত বিজ্ঞপ্তি গ্রোথ দল রক্ষণাবেক্ষণ করেন। এই বিজ্ঞপ্তি আপনাকে জানায় যে আপনাকে আপনাকে পরামর্শগ্রহীতা হিসেবে দাবি করা হয়েছে, অথবা আপনার কোনো পরামর্শগ্রহীতাকে অন্য কেউ দাবি করেছে।",
 	"growthexperiments-notification-header-mentee-claimed": "আপনার {{GENDER:$3|পরামর্শগ্রহীতা}}, $3-কে {{GENDER:$2|দাবি করেছেন}} $1।",
 	"growthexperiments-notification-body-mentee-claimed": "কারণ: $1",
-	"growthexperiments-notification-secondary-link-label-mentee-claimed": "\"পরামর্শগ্রহীতা দাবিকরণ\" কী?"
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "\"পরামর্শগ্রহীতা দাবিকরণ\" কী?",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "আমার সঙ্গে নিযুক্ত মেন্টির সংখ্যা"
 }
