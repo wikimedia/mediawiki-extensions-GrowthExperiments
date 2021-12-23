@@ -174,7 +174,10 @@ class MentorFilterHooks implements ChangesListSpecialPageStructuredFiltersHook {
 			return $this->menteeCache->get( $key );
 		}
 
-		$mentees = $this->mentorStore->getMenteesByMentor( $user );
+		$mentees = $this->mentorStore->getMenteesByMentor(
+			$user,
+			MentorStore::ROLE_PRIMARY
+		);
 		$menteeIds = array_map( static function ( UserIdentity $user ) {
 			return $user->getId();
 		}, $mentees );
