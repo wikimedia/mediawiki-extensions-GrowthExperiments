@@ -191,7 +191,8 @@
 					difficulty: item.difficulty,
 					topics: item.topics || null,
 					description: item.description || null,
-					qualityGateIds: item.qualityGateIds || []
+					qualityGateIds: item.qualityGateIds || [],
+					qualityGateConfig: item.qualityGateConfig || {}
 				};
 				self.fixThumbnailWidth( task, config.thumbnailWidth );
 				self.setUrlOverride( task );

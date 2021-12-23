@@ -44,8 +44,14 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 
 		list( $data ) = $this->doApiRequest( $baseParams );
 		$this->assertSame( 6, $data['query']['growthtasks']['totalCount'] );
-		$this->assertSame( [ 'title' => 'Copyedit-1', 'tasktype' => 'copyedit', 'difficulty' => 'easy',
-			'order' => 0, 'qualityGateIds' => [] ], $data['query']['growthtasks']['suggestions'][0] );
+		$this->assertSame( [
+			'title' => 'Copyedit-1',
+			'tasktype' => 'copyedit',
+			'difficulty' => 'easy',
+			'order' => 0,
+			'qualityGateIds' => [],
+			'qualityGateConfig' => []
+		], $data['query']['growthtasks']['suggestions'][0] );
 		$this->assertResponseContainsTitles( [ 'Copyedit-1', 'Link-1', 'Update-1', 'Copyedit-2',
 			'Update-2', 'Copyedit-3' ], $data );
 
@@ -76,9 +82,16 @@ class ApiQueryGrowthTasksTest extends ApiTestCase {
 
 		list( $data ) = $this->doApiRequest( [ 'action' => 'query', 'generator' => 'growthtasks' ] );
 		$this->assertSame( 2, $data['growthtasks']['totalCount'] );
-		$this->assertSame( [ 'ns' => 0, 'title' => 'Task-1', 'missing' => true, 'tasktype' => 'copyedit',
-			'difficulty' => TaskType::DIFFICULTY_EASY, 'order' => 0, 'qualityGateIds' => [] ],
-			reset( $data['query']['pages'] ) );
+		$this->assertSame( [
+			'ns' => 0,
+			'title' => 'Task-1',
+			'missing' => true,
+			'tasktype' => 'copyedit',
+			'difficulty' => TaskType::DIFFICULTY_EASY,
+			'order' => 0,
+			'qualityGateIds' => [],
+			'qualityGateConfig' => []
+		], reset( $data['query']['pages'] ) );
 	}
 
 	public function testError() {
