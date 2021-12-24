@@ -145,12 +145,14 @@ abstract class MentorStore implements IDBAccessObject {
 	 *
 	 * @param UserIdentity $mentor
 	 * @param string|null $mentorRole
+	 * @param bool $includeHiddenUsers
 	 * @param int $flags
 	 * @return UserIdentity[]
 	 */
 	abstract public function getMenteesByMentor(
 		UserIdentity $mentor,
 		?string $mentorRole = null,
+		bool $includeHiddenUsers = false,
 		int $flags = 0
 	): array;
 

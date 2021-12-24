@@ -95,6 +95,7 @@ class DatabaseMentorStore extends MentorStore {
 	public function getMenteesByMentor(
 		UserIdentity $mentor,
 		?string $mentorRole = null,
+		bool $includeHiddenUsers = false,
 		int $flags = 0
 	): array {
 		list( $index, $options ) = DBAccessObjectUtils::getDBOptions( $flags );
@@ -118,10 +119,16 @@ class DatabaseMentorStore extends MentorStore {
 			return [];
 		}
 
-		return iterator_to_array( $this->userIdentityLookup
+		$builder = $this->userIdentityLookup
 			->newSelectQueryBuilder()
 			->registered()
-			->whereUserIds( $ids )
+			->whereUserIds( $ids );
+
+		if ( !$includeHiddenUsers ) {
+			$builder->hidden( false );
+		}
+
+		return iterator_to_array( $builder
 			->fetchUserIdentities() );
 	}
 
