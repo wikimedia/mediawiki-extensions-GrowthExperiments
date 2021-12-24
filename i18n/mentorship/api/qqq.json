@@ -18,5 +18,7 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "{{doc-apihelp-paramvalue|growthsetmenteestatus|state|enabled}}",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "{{doc-apihelp-paramvalue|growthsetmenteestatus|state|disabled}}",
 	"apihelp-growthsetmenteestatus-param-state-optout": "{{doc-apihelp-paramvalue|growthsetmenteestatus|state|optout}}",
-	"apihelp-query+growthmenteestatus-summary": "{{doc-apihelp-summary|query+growthmenteestatus}}"
+	"apihelp-query+growthmenteestatus-summary": "{{doc-apihelp-summary|query+growthmenteestatus}}",
+	"apihelp-query+growthmentormentee-summary": "{{doc-apihelp-summary|query+growthmentormentee}}",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "{{doc-apihelp-param|query+growthmentormentee|gemmmentor}}"
 }

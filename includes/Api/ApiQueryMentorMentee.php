@@ -1,0 +1,68 @@
+<?php
+
+namespace GrowthExperiments\Api;
+
+use ApiQuery;
+use ApiQueryBase;
+use GrowthExperiments\Mentorship\Store\MentorStore;
+use MediaWiki\ParamValidator\TypeDef\UserDef;
+use MediaWiki\User\UserIdentity;
+use Wikimedia\ParamValidator\ParamValidator;
+
+class ApiQueryMentorMentee extends ApiQueryBase {
+
+	/** @var MentorStore */
+	private $mentorStore;
+
+	/**
+	 * @param ApiQuery $queryModule
+	 * @param string $moduleName
+	 * @param MentorStore $mentorStore
+	 */
+	public function __construct(
+		ApiQuery $queryModule,
+		$moduleName,
+		MentorStore $mentorStore
+	) {
+		parent::__construct( $queryModule, $moduleName );
+
+		$this->mentorStore = $mentorStore;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function execute() {
+		$params = $this->extractRequestParams();
+
+		/** @var UserIdentity $mentor */
+		$mentor = $params['gemmmentor'];
+
+		$this->getResult()->addValue( null, $this->getModuleName(), [
+			'mentor' => $mentor->getName(),
+			'mentees' => array_map( static function ( UserIdentity $mentee ) {
+				return [
+					'name' => $mentee->getName(),
+					'id' => $mentee->getId()
+				];
+			}, $this->mentorStore->getMenteesByMentor(
+				$mentor,
+				MentorStore::ROLE_PRIMARY
+			) )
+		] );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	protected function getAllowedParams() {
+		return [
+			'gemmmentor' => [
+				ParamValidator::PARAM_TYPE => 'user',
+				ParamValidator::PARAM_REQUIRED => true,
+				UserDef::PARAM_ALLOWED_USER_TYPES => [ 'name', 'id' ],
+				UserDef::PARAM_RETURN_OBJECT => true,
+			]
+		];
+	}
+}
