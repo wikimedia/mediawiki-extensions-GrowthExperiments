@@ -19,6 +19,7 @@ use MediaWiki\Permissions\PermissionManager;
 use MediaWiki\Revision\SlotRecord;
 use MediaWiki\Storage\PageUpdater;
 use MWException;
+use RecentChange;
 use Status;
 use Title;
 use TitleFactory;
@@ -271,6 +272,9 @@ abstract class QuestionPoster {
 
 		$this->getPageUpdater()->addTag( $this->getTag() );
 		$this->getPageUpdater()->setContent( SlotRecord::MAIN, $content );
+		if ( $this->getContext()->getAuthority()->authorizeWrite( 'autopatrol', $this->targetTitle ) ) {
+			$this->getPageUpdater()->setRcPatrolStatus( RecentChange::PRC_AUTOPATROLLED );
+		}
 		$newRev = $this->getPageUpdater()->saveRevision(
 			CommentStoreComment::newUnsavedComment(
 				$this->getContext()
