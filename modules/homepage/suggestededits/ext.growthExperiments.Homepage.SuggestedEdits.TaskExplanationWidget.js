@@ -75,7 +75,8 @@
 				popup: {
 					$content: $name.add( this.getDescription() ),
 					padded: true
-				}
+				},
+				classes: [ 'suggested-edits-task-explanation-info-button' ]
 			} );
 		popupButtonWidget.$button.on( 'mouseenter', function () {
 			if ( 'ontouchstart' in document.documentElement ) {
