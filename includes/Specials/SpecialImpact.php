@@ -99,7 +99,9 @@ class SpecialImpact extends SpecialPage {
 		}
 		$out = $this->getContext()->getOutput();
 		// If we don't have a user (logged-in or from argument) then error out.
-		if ( !$impactUser || !$impactUser->getId() ) {
+		if ( !$impactUser || !$impactUser->getId() ||
+			( $impactUser->isHidden() && !$this->getAuthority()->isAllowed( 'hideuser' ) )
+		) {
 			$out->addHTML( Html::element( 'p', [ 'class' => 'error' ], $this->msg(
 				'growthexperiments-specialimpact-invalid-username'
 			)->text() ) );
