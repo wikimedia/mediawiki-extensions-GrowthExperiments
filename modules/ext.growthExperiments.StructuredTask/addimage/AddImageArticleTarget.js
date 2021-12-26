@@ -380,7 +380,10 @@ AddImageArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 		reasons: this.recommendationRejectionReasons,
 		caption: this.recommendationAccepted ? this.getCaptionText() : ''
 	} );
-	return this.constructor.super.prototype.save.call( this, doc, options, isRetry );
+	return this.constructor.super.prototype.save.call( this, doc, options, isRetry )
+		.done( function () {
+			this.madeNullEdit = !this.recommendationAccepted;
+		}.bind( this ) );
 };
 
 /**
