@@ -413,6 +413,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$context = $context ?? RequestContext::getMain();
 		$manager = new MentorPageMentorManager(
 			$coreServices->getMainWANObjectCache(),
+			$coreServices->getLocalServerObjectCache(),
 			$growthServices->getMentorStore(),
 			$growthServices->getMentorStatusManager(),
 			$growthServices->getMentorWeightManager(),

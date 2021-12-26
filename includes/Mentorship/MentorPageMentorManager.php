@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\Mentorship;
 
+use BagOStuff;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorStatusManager;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
 use GrowthExperiments\Mentorship\Store\MentorStore;
@@ -35,6 +36,9 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 	/** @var WANObjectCache */
 	protected $wanCache;
+
+	/** @var BagOStuff */
+	protected $localServerCache;
 
 	/** @var MentorStore */
 	private $mentorStore;
@@ -77,6 +81,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 	/**
 	 * @param WANObjectCache $wanCache
+	 * @param BagOStuff $localServerCache
 	 * @param MentorStore $mentorStore
 	 * @param MentorStatusManager $mentorStatusManager
 	 * @param MentorWeightManager $mentorWeightManager
@@ -97,6 +102,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 */
 	public function __construct(
 		WANObjectCache $wanCache,
+		BagOStuff $localServerCache,
 		MentorStore $mentorStore,
 		MentorStatusManager $mentorStatusManager,
 		MentorWeightManager $mentorWeightManager,
@@ -112,6 +118,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$wasPosted
 	) {
 		$this->wanCache = $wanCache;
+		$this->localServerCache = $localServerCache;
 		$this->mentorStore = $mentorStore;
 		$this->mentorStatusManager = $mentorStatusManager;
 		$this->mentorWeightManager = $mentorWeightManager;
@@ -279,7 +286,29 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	}
 
 	/**
+	 * @param Title $title
+	 * @return string
+	 */
+	private function makeCacheKeyMentorsForPage( Title $title ): string {
+		return $this->localServerCache->makeKey(
+			'GrowthExperiments',
+			__CLASS__,
+			'MentorForPage',
+			$title->getId()
+		);
+	}
+
+	/**
 	 * Helper method returning a list of mentors listed at a specified page
+	 *
+	 * This has two layers of caching: short-lived local server cache (5 minutes TTL) and
+	 * a longer-living WAN cache (24 hours). This is because the local server cache cannot be
+	 * invalidated, but is still needed because this method is executed on every page view made
+	 * by a logged-in user.
+	 *
+	 * GrowthExperiments will take at most five minutes (TTL for the local server cache) to
+	 * notice a change made in the list of mentors; lookups in those five minutes will be very
+	 * fast thanks to APCu caching.
 	 *
 	 * @param WikiPage|null $page Page to work with or null if no page is provided
 	 * @return string[]
@@ -289,6 +318,32 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			return [];
 		}
 
+		$cacheKey = $this->makeCacheKeyMentorsForPage( $page->getTitle() );
+		return $this->localServerCache->getWithSetCallback(
+			$cacheKey,
+			5 * self::TTL_MINUTE,
+			function () use ( $page, $cacheKey ) {
+				return $this->wanCache->getWithSetCallback(
+					$cacheKey,
+					self::TTL_DAY,
+					function () use ( $page ) {
+						return $this->doGetMentorsForPage( $page );
+					}
+				);
+			}
+		);
+	}
+
+	/**
+	 * Get a list of mentors listed at a specified page
+	 *
+	 * This implements no caching and is only intended for use by
+	 * MentorPageMentorManager::getMentorsForPage.
+	 *
+	 * @param WikiPage|null $page
+	 * @return array
+	 */
+	private function doGetMentorsForPage( ?WikiPage $page ): array {
 		$links = $page->getParserOutput( ParserOptions::newFromAnon() )->getLinks();
 		if ( !isset( $links[ NS_USER ] ) ) {
 			$this->logger->info( __METHOD__ . ' found zero mentors, no links at {mentorsList}', [
@@ -334,6 +389,16 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			// makeCacheKeyWeightedAutoAssignedMentors would fail.
 			$this->wanCache->delete(
 				$this->makeCacheKeyWeightedAutoAssignedMentors()
+			);
+			$this->wanCache->delete(
+				$this->makeCacheKeyMentorsForPage( $autoMentorsList )
+			);
+		}
+
+		$manualMentorsList = $this->getManualMentorsListTitle();
+		if ( $manualMentorsList && $manualMentorsList->exists() ) {
+			$this->wanCache->delete(
+				$this->makeCacheKeyMentorsForPage( $manualMentorsList )
 			);
 		}
 	}

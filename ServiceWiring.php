@@ -382,6 +382,7 @@ return [
 
 		$manager = new MentorPageMentorManager(
 			$services->getMainWANObjectCache(),
+			$services->getLocalServerObjectCache(),
 			$geServices->getMentorStore(),
 			$geServices->getMentorStatusManager(),
 			$geServices->getMentorWeightManager(),
