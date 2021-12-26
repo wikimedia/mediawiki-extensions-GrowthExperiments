@@ -334,15 +334,11 @@ return [
 		MediaWikiServices $services
 	): MenteeOverviewDataProvider {
 		$geServices = GrowthExperimentsServices::wrap( $services );
-		$dataProvider = new DatabaseMenteeOverviewDataProvider(
+		return new DatabaseMenteeOverviewDataProvider(
+			$services->getMainWANObjectCache(),
 			$geServices->getMentorStore(),
 			$geServices->getLoadBalancer()->getConnection( DB_REPLICA )
 		);
-		$dataProvider->setCache(
-			ObjectCache::getLocalClusterInstance(),
-			CachedBagOStuff::TTL_HOUR
-		);
-		return $dataProvider;
 	},
 
 	'GrowthExperimentsMenteeOverviewDataProviderUncached' => static function (
