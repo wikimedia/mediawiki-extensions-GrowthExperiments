@@ -11,7 +11,12 @@ var StructuredTaskMessageDialog = require( '../StructuredTaskMessageDialog.js' )
  */
 function AddImageDetailsDialog( config ) {
 	AddImageDetailsDialog.super.call( this, config );
-	this.$element.addClass( 'mw-ge-addImageDetailsDialog' );
+	this.$element.addClass( [
+		'mw-ge-addImageDetailsDialog',
+		OO.ui.isMobile() ?
+			'mw-ge-addImageDetailsDialog-mobile' :
+			'mw-ge-addImageDetailsDialog-desktop'
+	] );
 }
 
 OO.inheritClass( AddImageDetailsDialog, StructuredTaskMessageDialog );

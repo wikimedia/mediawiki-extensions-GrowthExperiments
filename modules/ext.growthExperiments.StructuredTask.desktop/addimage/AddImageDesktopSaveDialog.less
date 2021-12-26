@@ -1,0 +1,30 @@
+@import '../../homepage/ext.growthExperiments.mixins.less';
+
+.mw-ge-addImageSaveDialog-desktop {
+	@desktopFontSize: 14px;
+
+	.ve-ui-mwSaveDialog-savePanel {
+		padding-top: 16px;
+	}
+
+	.mw-ge-addImageSaveDialog-imagePreview {
+		margin-bottom: 0;
+		margin-right: 16px;
+		height: 160px;
+	}
+
+	.mw-ge-addImageSaveDialog-summaryLabel {
+		.rel-font-size-and-line-height( @parentFontSize: @desktopFontSize, @targetFontSize: 16px, @targetLineHeight: 22.8px );
+		padding-bottom: 6px;
+		border-bottom: unset;
+	}
+
+	.mw-ge-addImageSaveDialog-bodyContent {
+		.rel-font-size-and-line-height( @parentFontSize: @desktopFontSize, @targetFontSize: 12.4px, @targetLineHeight: 17.3px );
+		display: flex;
+	}
+
+	.mw-ge-addImageSaveDialog-copyrightWarning {
+		.rel-font-size-and-line-height( @parentFontSize: @desktopFontSize, @targetFontSize: 13px, @targetLineHeight: 19.5px );
+	}
+}
