@@ -2,11 +2,11 @@
 
 namespace GrowthExperiments\MentorDashboard\MenteeOverview;
 
-use BagOStuff;
 use FormatJson;
 use GrowthExperiments\Mentorship\Store\MentorStore;
-use HashBagOStuff;
 use MediaWiki\User\UserIdentity;
+use WANObjectCache;
+use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 use Wikimedia\Rdbms\IDatabase;
 
 /**
@@ -18,41 +18,29 @@ use Wikimedia\Rdbms\IDatabase;
  * The table is populated with data from UncachedMenteeOverviewDataProvider, see
  * that class for details about generating the data.
  */
-class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
+class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider, ExpirationAwareness {
 	/** @var MentorStore */
 	private $mentorStore;
 
 	/** @var IDatabase */
 	private $growthDbr;
 
-	/** @var BagOStuff */
-	protected $cache;
-
-	/** @var int */
-	protected $cacheTtl = 0;
+	/** @var WANObjectCache */
+	protected $wanCache;
 
 	/**
+	 * @param WANObjectCache $wanCache
 	 * @param MentorStore $mentorStore
 	 * @param IDatabase $growthDbr
 	 */
 	public function __construct(
+		WANObjectCache $wanCache,
 		MentorStore $mentorStore,
 		IDatabase $growthDbr
 	) {
+		$this->wanCache = $wanCache;
 		$this->mentorStore = $mentorStore;
 		$this->growthDbr = $growthDbr;
-
-		$this->cache = new HashBagOStuff();
-	}
-
-	/**
-	 * Use a different cache. (Default is in-process caching only.)
-	 * @param BagOStuff $cache
-	 * @param int $ttl Cache expiry (0 for unlimited).
-	 */
-	public function setCache( BagOStuff $cache, int $ttl ) {
-		$this->cache = $cache;
-		$this->cacheTtl = $ttl;
 	}
 
 	/**
@@ -60,7 +48,7 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @return string
 	 */
 	private function makeCacheKey( UserIdentity $mentor ): string {
-		return $this->cache->makeKey(
+		return $this->wanCache->makeKey(
 			'GrowthExperiments',
 			'MenteeOverviewDataProvider',
 			__CLASS__,
@@ -74,7 +62,7 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 	 * @param UserIdentity $mentor
 	 */
 	public function invalidateCacheForMentor( UserIdentity $mentor ): void {
-		$this->cache->delete( $this->makeCacheKey( $mentor ) );
+		$this->wanCache->delete( $this->makeCacheKey( $mentor ) );
 	}
 
 	/**
@@ -90,9 +78,9 @@ class DatabaseMenteeOverviewDataProvider implements MenteeOverviewDataProvider {
 			return $mentee->getId();
 		}, $mentees );
 
-		return $this->cache->getWithSetCallback(
+		return $this->wanCache->getWithSetCallback(
 			$this->makeCacheKey( $mentor ),
-			$this->cacheTtl,
+			self::TTL_DAY,
 			function () use ( $menteeIds ) {
 				$res = $this->growthDbr->select(
 					'growthexperiments_mentee_data',
