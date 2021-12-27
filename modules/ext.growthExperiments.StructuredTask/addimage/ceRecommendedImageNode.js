@@ -30,6 +30,9 @@ function CERecommendedImageNode() {
 	 * @property {mw.libs.ge.AddImageArticleTarget} articleTarget
 	 */
 	this.articleTarget = ve.init.target;
+	if ( !OO.ui.isMobile() ) {
+		this.setupHeader();
+	}
 	this.setupLoadingOverlay();
 	this.showImageLoadingState();
 	setTimeout( function () {
@@ -48,6 +51,25 @@ OO.inheritClass( CERecommendedImageNode, ve.ce.MWBlockImageNode );
 CERecommendedImageNode.static.name = 'mwGeRecommendedImage';
 
 /**
+ * Append header and delete button
+ */
+CERecommendedImageNode.prototype.setupHeader = function () {
+	var router = require( 'mediawiki.router' ),
+		deleteButton = new OO.ui.ButtonWidget( {
+			icon: 'trash',
+			framed: false,
+			classes: [ 'mw-ge-recommendedImage-deleteButton' ]
+		} ),
+		$header = $( '<div>' ).addClass( 'mw-ge-recommendedImage-header' ).text(
+			mw.message( 'growthexperiments-addimage-caption-title' ).text()
+		).append( deleteButton.$element );
+	deleteButton.on( 'click', function () {
+		router.back();
+	} );
+	this.$element.prepend( $header );
+};
+
+/**
  * Append an overlay to be shown when the image is loading
  */
 CERecommendedImageNode.prototype.setupLoadingOverlay = function () {
@@ -59,14 +81,19 @@ CERecommendedImageNode.prototype.setupLoadingOverlay = function () {
  * Show loading state with the actual image height
  */
 CERecommendedImageNode.prototype.showImageLoadingState = function () {
-	var $img = this.$element.find( 'img' ),
+	var imageWidth = this.model.getAttribute( 'width' ),
+		$img = this.$element.find( 'img' ),
 		onImageLoad = function () {
 			this.isImageReady = true;
 			if ( this.shouldShowImageAfterLoad ) {
 				this.showImage();
 			}
 		}.bind( this );
-	$img.css( { minHeight: this.model.getAttribute( 'height' ) } );
+	this.$element.css( { width: imageWidth } );
+	$img.css( {
+		width: imageWidth,
+		minHeight: this.model.getAttribute( 'height' )
+	} );
 	$img.on( 'load', onImageLoad );
 	// In case load event isn't fired or if somehow the image failed to load
 	setTimeout( onImageLoad, 5000 );
@@ -98,12 +125,12 @@ CERecommendedImageNode.prototype.showImage = function () {
  * @param {jQuery} $container Container in which to append the details button
  */
 CERecommendedImageNode.prototype.setupDetailsButton = function ( $container ) {
-	this.$detailsButton = $( '<div>' ).addClass( 'mw-ge-recommendedImage-details-button' )
+	this.$detailsButton = $( '<div>' ).addClass( 'mw-ge-recommendedImage-detailsButton' )
 		.attr( 'role', 'button' )
 		.append( [
 			new OO.ui.IconWidget( {
 				framed: false,
-				classes: [ 'mw-ge-recommendedImage-details-icon' ],
+				classes: [ 'mw-ge-recommendedImage-detailsIcon' ],
 				icon: 'infoFilled'
 			} ).$element,
 			mw.message( 'growthexperiments-addimage-inspector-details-button' ).escaped()

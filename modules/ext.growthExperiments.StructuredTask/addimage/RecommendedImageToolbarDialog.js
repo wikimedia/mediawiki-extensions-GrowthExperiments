@@ -449,6 +449,7 @@ RecommendedImageToolbarDialog.prototype.updateSuggestionContent = function () {
  */
 RecommendedImageToolbarDialog.prototype.setState = function ( accepted, reasons ) {
 	this.getArticleTarget().updateSuggestionState( this.currentIndex, accepted, reasons );
+	mw.hook( 'growthExperiments.suggestionAcceptanceChange' ).fire();
 };
 
 /**

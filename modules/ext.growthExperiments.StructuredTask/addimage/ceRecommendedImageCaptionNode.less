@@ -50,26 +50,3 @@
 		}
 	}
 }
-
-.mw-ge-structuredTaskDesktopArticleTarget {
-	@desktopParagraphPadding: 0 8px 27px 0;
-	// Additional specificity to override default styles
-	.mw-content-ltr .mw-ge-recommendedImageCaption {
-		&--with-placeholder {
-			&:before {
-				content: attr( placeholder );
-				padding: @desktopParagraphPadding;
-				display: block;
-				width: auto;
-				height: auto;
-				margin-left: 0;
-			}
-		}
-	}
-
-	.mw-ge-recommendedImageCaption {
-		.ve-ce-paragraphNode {
-			padding: @desktopParagraphPadding;
-		}
-	}
-}
