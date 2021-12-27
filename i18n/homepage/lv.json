@@ -104,7 +104,7 @@
 	"growthexperiments-homepage-mentorship-mentor-active-yesterday": "{{GENDER:$1|Aktīvs|Aktīva}} vakar",
 	"growthexperiments-homepage-mentorship-mentor-active-days-ago": "{{GENDER:$1|Aktīvs|Aktīva}} pirms $2 {{PLURAL:$2|dienām|dienas|dienām}}",
 	"growthexperiments-homepage-mentorship-intro": "{{GENDER:$1|Šis pieredzējušais dalībnieks|Šī pieredzējusī dalībniece}} zina, ka esi {{GENDER:$2|iesācējs|iesācēja}} un var palīdzēt tev apgūt labošanu.",
-	"growthexperiments-homepage-mentorship-question-button": "{{GENDER:$2|Uzdod}} {{GENDER:$1|savam mentoram|savai mentorei}} jautājumu",
+	"growthexperiments-homepage-mentorship-question-button": "{{GENDER:$2|Uzdod}} jautājumu {{GENDER:$1|savam mentoram|savai mentorei}}",
 	"growthexperiments-homepage-mentorship-mentor-conversations": "{{GENDER:$2|Apskati}} citas {{GENDER:$1|sava mentora|savas mentores}} sarunas",
 	"growthexperiments-homepage-mentorship-dialog-title": "{{GENDER:$2|Jautā}} {{GENDER:$1|savam mentoram|savai mentorei}}",
 	"growthexperiments-homepage-mentorship-questionreview-header": "Kad tu uzdod jautājumu, to ar {{GENDER:$2|tavu}} dalībnieka vārdu \"$2\" <strong>publiski ievieto</strong> $3 lapā, kur {{GENDER:$1|viņš|viņa|tie}} to var atrast un uz to atbildēt.",

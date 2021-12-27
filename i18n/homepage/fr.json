@@ -29,14 +29,15 @@
 			"Scratcheur-2020Send",
 			"Scriptance",
 			"Tektasc",
-			"VIGNERON"
+			"VIGNERON",
+			"Paraboule"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|}}Bonjour, {{bidi:$1}} !",
 	"growthexperiments-homepage-tab": "Page d’accueil",
 	"tooltip-pt-homepage": "{{GENDER:|Votre}} page d’accueil",
-	"prefs-homepage": "Page d’accueil du nouvel arrivant",
-	"growthexperiments-homepage-enable": "Afficher la page d’accueil du nouvel arrivant",
+	"prefs-homepage": "Page d'accueil des nouveaux arrivants",
+	"growthexperiments-homepage-enable": "Afficher la page d'accueil des nouveaux arrivants",
 	"growthexperiments-homepage-pt-link": "Dans les outils personnels, faire du nom d’utilisateur un lien vers la page d’accueil des nouveaux",
 	"growthexperiments-homepage-start-header": "{{GENDER:$1|}}Commencer ici",
 	"growthexperiments-homepage-account-header": "Compte créé",
@@ -120,7 +121,7 @@
 	"tag-help_module_question-description": "Modification faite (depuis la fonction Poser une question) du module d’aide de la page d’accueil",
 	"tag-mentorship_module_question": "Question du module de tutorat",
 	"tag-mentorship_module_question-description": "Modification faite depuis la fonctionnalité Poser une question du module de mentorat de la page d’accueil",
-	"tag-newcomer_task": "Tâche de nouvel arrivant",
+	"tag-newcomer_task": "Tâche du nouvel arrivant",
 	"tag-newcomer_task-description": "Modification suggérée par le module de modifications suggérées de la page d’accueil des nouveaux arrivants",
 	"growthexperiments-homepage-help-dialog-title": "Demander au Centre d’assistance",
 	"growthexperiments-homepage-help-header": "Être aidé dans la modification d’une page",

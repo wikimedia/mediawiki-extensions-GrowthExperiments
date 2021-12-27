@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Murma174"
+		]
+	},
+	"logentry-growthexperiments-claimmentee": "$1 {{GENDER:$2|hää ham}} {{GENDER:$6|$3}} üs {{GENDER:$6|Mentee}} tuwiset. (Ual {{GENDER:$4|mentoor}} wiar $5)",
+	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1 {{GENDER:$2|hää ham}} {{GENDER:$6|$3}} üs {{GENDER:$6|Mentee}} tuwiset. (Tuföören wiar diar nään mentoor.)",
+	"growthexperiments-homepage-mentors-list-missing-or-misconfigured": "At jaft noch nian Mentoorenlist ([[$1]]), of det wal ei rocht."
+}

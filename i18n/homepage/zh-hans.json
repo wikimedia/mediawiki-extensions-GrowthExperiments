@@ -31,7 +31,8 @@
 			"坑触可",
 			"羊羊32521",
 			"落花有意12138",
-			"魔琴"
+			"魔琴",
+			"Stang"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
@@ -180,6 +181,9 @@
 	"growthexperiments-homepage-suggestededits-select-other-topics-difficulty": "选择其他兴趣或难度级别以查找编辑建议。",
 	"growthexperiments-homepage-suggestededits-footer": "其他用户已注明这些条目需要动手改进。请协助让每天有'''$1位读者'''的'''{{SITENAME}}'''可以更好。",
 	"growthexperiments-homepage-suggestededits-footer-noviews": "其他用户已注明这些条目需要动手改进。请协助让'''{{SITENAME}}'''可以更好。",
+	"growthexperiments-homepage-suggestededits-footer-suffix": "$1",
+	"growthexperiments-homepage-suggestededits-footer-kilosuffix": "$1千",
+	"growthexperiments-homepage-suggestededits-footer-megasuffix": "$1百万",
 	"growthexperiments-homepage-suggestededits-mobilesummary-metricssubtitle": "最后一天的编辑",
 	"growthexperiments-homepage-suggestededits-mobilesummary-footer": "今天，像您这样的志愿者为改善 {{SITENAME}} 做出了贡献。请加入到我们的行列中来！",
 	"growthexperiments-homepage-suggestededits-tasktype-shortdescription-copyedit": "修正拼写、语法和语气",
