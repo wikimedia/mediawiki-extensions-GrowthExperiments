@@ -4,7 +4,6 @@ namespace GrowthExperiments\Tests;
 
 use Content;
 use DerivativeContext;
-use EmptyBagOStuff;
 use Exception;
 use GrowthExperiments\GrowthExperimentsServices;
 use GrowthExperiments\MentorDashboard\MentorTools\MentorWeightManager;
@@ -413,6 +412,7 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 		$growthServices = GrowthExperimentsServices::wrap( $coreServices );
 		$context = $context ?? RequestContext::getMain();
 		$manager = new MentorPageMentorManager(
+			$coreServices->getMainWANObjectCache(),
 			$growthServices->getMentorStore(),
 			$growthServices->getMentorStatusManager(),
 			$growthServices->getMentorWeightManager(),
@@ -428,7 +428,6 @@ class MentorPageMentorManagerTest extends MediaWikiIntegrationTestCase {
 			$growthServices->getGrowthConfig()->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null,
 			$context->getRequest()->wasPosted()
 		);
-		$manager->setCache( new EmptyBagOStuff(), 0 );
 		return $manager;
 	}
 

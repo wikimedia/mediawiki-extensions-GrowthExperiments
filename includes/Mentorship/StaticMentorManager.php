@@ -131,8 +131,4 @@ class StaticMentorManager extends MentorManager {
 	/** @inheritDoc */
 	public function setMentorshipStateForUser( UserIdentity $user, int $state ): void {
 	}
-
-	/** @inheritDoc */
-	public function invalidateCache(): void {
-	}
 }

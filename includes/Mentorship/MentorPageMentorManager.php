@@ -20,6 +20,7 @@ use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
 use Title;
 use TitleFactory;
+use WANObjectCache;
 use Wikimedia\Rdbms\DBReadOnlyError;
 use WikiPage;
 use WikitextContent;
@@ -31,6 +32,9 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 
 	/** @var int Maximum mentor intro length. */
 	private const INTRO_TEXT_LENGTH = 240;
+
+	/** @var WANObjectCache */
+	protected $wanCache;
 
 	/** @var MentorStore */
 	private $mentorStore;
@@ -72,6 +76,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	private $manuallyAssignedMentorsPageName;
 
 	/**
+	 * @param WANObjectCache $wanCache
 	 * @param MentorStore $mentorStore
 	 * @param MentorStatusManager $mentorStatusManager
 	 * @param MentorWeightManager $mentorWeightManager
@@ -91,6 +96,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 * @param bool $wasPosted Is this a POST request?
 	 */
 	public function __construct(
+		WANObjectCache $wanCache,
 		MentorStore $mentorStore,
 		MentorStatusManager $mentorStatusManager,
 		MentorWeightManager $mentorWeightManager,
@@ -105,6 +111,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		?string $manuallyAssignedMentorsPageName,
 		$wasPosted
 	) {
+		$this->wanCache = $wanCache;
 		$this->mentorStore = $mentorStore;
 		$this->mentorStatusManager = $mentorStatusManager;
 		$this->mentorWeightManager = $mentorWeightManager;
@@ -317,13 +324,15 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		return $this->getMentorsForPage( $this->getManuallyAssignedMentorsPage() );
 	}
 
-	/** @inheritDoc */
+	/**
+	 * Invalidate the WAN cache
+	 */
 	public function invalidateCache(): void {
 		$autoMentorsList = $this->getAutoMentorsListTitle();
 		if ( $autoMentorsList && $autoMentorsList->exists() ) {
 			// only invalidate cache if the list exists, otherwise,
 			// makeCacheKeyWeightedAutoAssignedMentors would fail.
-			$this->cache->delete(
+			$this->wanCache->delete(
 				$this->makeCacheKeyWeightedAutoAssignedMentors()
 			);
 		}
@@ -334,7 +343,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 	 * @throws WikiConfigException
 	 */
 	private function makeCacheKeyWeightedAutoAssignedMentors(): string {
-		return $this->cache->makeKey(
+		return $this->wanCache->makeKey(
 			'GrowthExperiments',
 			__CLASS__,
 			'WeightedMentors',
@@ -351,9 +360,9 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			return [];
 		}
 
-		return $this->cache->getWithSetCallback(
+		return $this->wanCache->getWithSetCallback(
 			$this->makeCacheKeyWeightedAutoAssignedMentors(),
-			$this->cacheTtl,
+			self::TTL_HOUR,
 			function () {
 				$mentors = $this->getAutoAssignedMentors();
 				if ( $mentors === [] ) {

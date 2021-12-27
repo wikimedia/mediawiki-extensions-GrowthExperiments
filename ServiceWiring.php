@@ -385,6 +385,7 @@ return [
 		$wikiConfig = $geServices->getGrowthWikiConfig();
 
 		$manager = new MentorPageMentorManager(
+			$services->getMainWANObjectCache(),
 			$geServices->getMentorStore(),
 			$geServices->getMentorStatusManager(),
 			$geServices->getMentorWeightManager(),
@@ -398,10 +399,6 @@ return [
 			$wikiConfig->get( 'GEHomepageMentorsList' ) ?: null,
 			$wikiConfig->get( 'GEHomepageManualAssignmentMentorsList' ) ?: null,
 			RequestContext::getMain()->getRequest()->wasPosted()
-		);
-		$manager->setCache(
-			ObjectCache::getLocalClusterInstance(),
-			MentorManager::TTL_HOUR
 		);
 		$manager->setLogger( LoggerFactory::getInstance( 'GrowthExperiments' ) );
 		return $manager;
