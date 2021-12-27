@@ -86,6 +86,8 @@
 	"growthexperiments-edit-config-newcomer-tasks-link-recommendation-learnmore": "Página de destino para aprender más sobre el tipo de tarea de recomendación de enlaces.",
 	"growthexperiments-edit-config-newcomer-tasks-image-recommendation-learnmore": "Página de destino para aprender más sobre el tipo de tarea de recomendación de imágenes.",
 	"growthexperiments-edit-config-newcomer-tasks-machine-suggestions-no-templates": "Este tipo de tarea está asociado con sugerencias de la máquina, y no usa plantillas para generar un conjunto de tareas.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-templates": "Los artículos que contengan plantillas definidas aquí no se mostrarán a los usuarios como tareas para este tipo de tarea.",
+	"growthexperiments-edit-config-newcomer-tasks-excluded-categories": "Los artículos que contengan categorías definidas aquí no se mostrarán a los usuarios como tareas para este tipo de tarea.",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates": "Plantillas de ficha",
 	"growthexperiments-edit-config-newcomer-tasks-infobox-templates-help": "Estas plantillas son necesarias para la función de tareas para recién llegados [[mw:Growth/Personalized_first_day/Structured_tasks/Add_an_image|sugerencias de imagen]]. Los artículos que contienen estas plantillas no se incluirán como tareas de sugerencia de imágenes."
 }

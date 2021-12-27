@@ -21,5 +21,7 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "מודול החונכות מופעל",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "מודול החונכות כבוי לגמרי. זה בדרך־כלל מוגדר על־ידי התוכנה ומשמש לבדיוקת A/B.",
 	"apihelp-growthsetmenteestatus-param-state-optout": "החניך יצא מהחונכות; היחס בין החניך לחונך יימחק, מודול החונכות יוחלף באפשרות להיכנס חזרה",
-	"apihelp-query+growthmenteestatus-summary": "שאילתת על מצב החונכות של משתמש; ר' את התיעוד של action=growthsetmentorweight למידע מפורט על מצבים פרטניים."
+	"apihelp-query+growthmenteestatus-summary": "שאילתת על מצב החונכות של משתמש; ר' את התיעוד של action=growthsetmentorweight למידע מפורט על מצבים פרטניים.",
+	"apihelp-query+growthmentormentee-summary": "קבלת כל החניכים שמשויכים לחונך נתון",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "החונך שעבורו צריך לבקש שאילתה של חניכים"
 }

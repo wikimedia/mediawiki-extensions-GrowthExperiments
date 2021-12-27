@@ -8,7 +8,8 @@
 			"Pikne",
 			"Robby",
 			"Tgr",
-			"Umherirrender"
+			"Umherirrender",
+			"Woytecr"
 		]
 	},
 	"growthexperiments-desc": "{{desc|name=GrowthExperiments|url=https://www.mediawiki.org/wiki/Extension:GrowthExperiments}}",
@@ -68,7 +69,7 @@
 	"growthexperiments-edit-config-mentorship-list-of-manually-assigned-mentors": "Description of a form field in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-newcomertasks": "Subheader in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-newcomer-tasks-description": "Description of the newcomer tasks section in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
-	"growthexperiments-edit-config-newcomer-tasks-disabled": "Description of a form field in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
+	"growthexperiments-edit-config-newcomer-tasks-disabled": "Label of option to disable newcomer task in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-newcomer-tasks-disabledinconfig": "Description of a form field in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-templates": "Description of a form field in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Description of a form field in Special:EditGrowthConfig\n\n{{doc-growthexperiments-community-configuration}}",

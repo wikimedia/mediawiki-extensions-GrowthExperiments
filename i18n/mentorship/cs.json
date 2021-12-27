@@ -14,7 +14,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Seznam {{GENDER:|vašich}} současných nováčků vidíte níže. Pomocí filtrů můžete určit, kteří konkrétní uživatelé se budou zobrazovat.",
 	"growthexperiments-mentor-dashboard-mentee-overview-no-js-fallback": "Tato tabulka vyžaduje zapnutý JavaScript. Prosím, aktivujte JavaScript, abyste tento modul {{GENDER:|mohl|mohla|mohli}} využívat.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "Kdo je v této tabulce zobrazen?",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "V této tabulce jsou zahrnuti pouze ti nováčci, kteří se zaregistrovali během posledních dvou týdnů, anebo během posledního půl roku uložili alespoň jednu editaci. Data se aktualizují každé tři hodiny.",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "V této tabulce jsou zahrnuti pouze ti nováčci, kteří se zaregistrovali během posledních dvou týdnů, anebo během posledního půl roku uložili alespoň jednu editaci. Aby se nováček v tabulce zobrazil, musí mít aktivovanou [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|Domovskou stránku nováčka]]. Data se aktualizují každé tři hodiny.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "Legenda",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "Ohvězdičkovat nováčka",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "Uživatelské jméno",
@@ -90,6 +90,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "~Polovina průměru",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Průměr (výchozí)",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "~Dvojnásobek průměru",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Vaše}} vytížení bylo změněno na \"$1\".",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Změna na více nebo méně nováčků vám pomůže lépe řídit počet otázek, které pravděpodobně budete muset odpovědět. Počet položených otázek závisí pouze na motivovanosti nováčků vám přiřazeným.",
 	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "Doporučujeme začít na nastavení \"Průměr\" předtím, než se přesunete k ostatním možnostem. Díky tomu budete moci lépe odhadnout, kolik otázek zvládnete zodpovědět."
 }

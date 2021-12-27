@@ -19,5 +19,7 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Modul mentorství je aktivní",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "Modul mentorství je plně deaktivován. Toto je obyčejně nastaveno softwarem a používáno pro A/B testování.",
 	"apihelp-growthsetmenteestatus-param-state-optout": "Nováček si mentorství vypnul; vztah mentor/mentorovaný bude smazán, modul mentorství bude nahrazen tlačítkem pro novou aktivaci mentorského modulu.",
-	"apihelp-query+growthmenteestatus-summary": "Zjistit současný stav právě přihlášeného nováčka; viz dokumentaci pro action=growthsetmentorweight, která obsahuje podrobnější informace o jednotlivých stavech."
+	"apihelp-query+growthmenteestatus-summary": "Zjistit současný stav právě přihlášeného nováčka; viz dokumentaci pro action=growthsetmentorweight, která obsahuje podrobnější informace o jednotlivých stavech.",
+	"apihelp-query+growthmentormentee-summary": "Získat seznam všech nováčků přiřazených danému mentorovi",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Uživatelské jméno mentora, pro kterého vrátit seznam nováčků"
 }

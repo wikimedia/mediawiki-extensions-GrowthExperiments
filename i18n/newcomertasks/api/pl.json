@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Czupirek",
-			"Tar Lócesilion"
+			"Tar Lócesilion",
+			"Woytecr"
 		]
 	},
 	"apihelp-query+growthtasks-summary": "Uzyskaj rekomendowane zadania, odpowiednie dla nowicjuszy.",
@@ -10,6 +11,7 @@
 	"apihelp-query+growthtasks-param-tasktypes": "Rodzaje zadań w celu ograniczenia wyników. Pozostaw puste, aby otrzymać wszystkie sugestie.",
 	"apihelp-query+growthtasks-param-topics": "Tematy artykułów, które mają być preferowane w sugerowanych zadaniach.",
 	"apihelp-query+growthtasks-param-limit": "Maksymalna liczba sugerowanych zadań do zwrócenia.",
+	"apihelp-query+growthtasks-param-excludepageids": "Identyfikatory stron do wykluczenia z zapytania.",
 	"apihelp-query+growthtasks-param-debug": "Dodaj dane debugowania do danych wyjściowych.",
 	"apihelp-query+growthtasks-example-1": "Uzyskaj rekomendowane zadania związane z korektą tekstu, odpowiednie dla użytkownika.",
 	"apihelp-query+growthtasks-example-2": "Uzyskaj rekomendowane zadania dla użytkownika z pogłębionymi informacjami o stronach."

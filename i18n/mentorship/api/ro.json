@@ -20,5 +20,7 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Modulul activității de mentor este activat",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "Modulul activității de mentor este pe deplin dezactivat. Astfel este setat normal de către software și utilizat pentru testarea A/B.",
 	"apihelp-growthsetmenteestatus-param-state-optout": "Ucenicul a renunțat la activitatea de mentor; relația ucenic/mentor va fi ștearsă, modulul activității de mentor va fi înlocuit cu o posibilitate de a se răzgândi",
-	"apihelp-query+growthmenteestatus-summary": "Solicită starea ucenicului utilizatorului curent; vezi documentația pentru action=growthsetmentorweight pentru informații detaliate despre stări individuale."
+	"apihelp-query+growthmenteestatus-summary": "Solicită starea ucenicului utilizatorului curent; vezi documentația pentru action=growthsetmentorweight pentru informații detaliate despre stări individuale.",
+	"apihelp-query+growthmentormentee-summary": "Obține toți ucenici atribuiți unui mentor dat",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentorul de la care să se solicite ucenici"
 }

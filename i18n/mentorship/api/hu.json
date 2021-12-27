@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Luckylukee81"
+		]
+	},
+	"apihelp-query+growthmentormentee-summary": "Minden mentorált hozzárendelve egy adott mentorhoz",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Mentor a mentoráltak lekérdezéséhez"
+}

@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Nieszczarda2"
+		]
+	},
+	"apihelp-query+growthmentormentee-summary": "Разьмеркаваць усіх падапечных да вызначанага мэнтара",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Мэнтар запытвае падапечных"
+}

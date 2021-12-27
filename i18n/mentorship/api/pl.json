@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Woytecr"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Zaznacza lub odznacza nowicjusza jako ulubionego (informacja przechowywana prywatnie przez obecnie zalogowanego użytkownika i nie ujawniana w rejestrze)",
+	"apihelp-growthstarmentee-param-gesaction": "Czynność do podjęcia (<kbd>star</kbd> lub <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Nowicjusz do zmiany statusu",
+	"apihelp-query+growthstarredmentees-summary": "Pobierz listę ulubionych nowicjuszy dla obecnie zalogowanego przewodnika",
+	"apihelp-growthsetmentorstatus-summary": "Ustaw status obecnie zalogowanego wikiprzewodnika na \"aktywny\" lub \"zaraz wracam\".",
+	"apihelp-growthsetmentorstatus-param-gesstatus": "Nowy status",
+	"apihelp-growthsetmentorstatus-param-gesbackindays": "Podczas ustawiania statusu wikiprzewodnika na \"zaraz wracam\" należy tu podać czas trwania tej przerwy w dniach.",
+	"apihelp-query+growthmentorstatus-summary": "Pobierz informacje o statusie dostępności wikiprzewodnika",
+	"apihelp-growthmentordashboardupdatedata-summary": "Zakolejkuj dodatkowe zaktualizowanie informacji w module przeglądu podopiecznych w panelu wikiprzewodnika. Możesz zaplanować aktualizację tylko raz na dwie godziny aby nie zwiększać obciążenia.",
+	"apihelp-growthsetmentorweight-summary": "Ustaw obciążenie obecnie zalogowanego wikiprzewodnika.",
+	"apihelp-growthsetmentorweight-param-geweight": "Liczbowe określenie obciążenia przewodnika: im mniejsza wartość, tym mniej nowicjuszy będzie przydzielanych"
+}
