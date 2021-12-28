@@ -41,6 +41,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Cambia tus filtros para encontrar aprendices.",
 	"growthexperiments-mentor-dashboard-resources-headline": "Recursos",
 	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "La lista de mentores y mentoras",
+	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Cómo presentarte como mentor",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Herramientas de Crecimiento",
 	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Ajustes",
 	"growthexperiments-mentor-dashboard-mentor-tools-info-headline": "Información de mentoría",
@@ -50,11 +51,19 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Cancelar",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Pausa",
 	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "días",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-error-unknown": "Ha ocurrido un error desconocido. Por favor, inténtalo de nuevo.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-active": "Tu estado ha cambiado a \"Activo\".",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-changed-to-away": "Tu estado ha cambiado a \"Inactivo\".",
 	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-headline": "Otras acciones",
 	"growthexperiments-rcfilters-mentorship-title": "Mentoría",
 	"growthexperiments-quit-mentorship-title": "Abandonar mentoría",
 	"growthexperiments-quit-mentorship-no-mentees": "{{GENDER:|You}} por el momento no tiene ningún mentor.",
 	"echo-category-title-ge-mentorship": "Mentoría",
 	"growthexperiments-notification-body-mentee-claimed": "Razón: $1",
-	"growthexperiments-notification-secondary-link-label-mentee-claimed": "¿Qué es \"Reclamar mentoreado\"?"
+	"growthexperiments-notification-secondary-link-label-mentee-claimed": "¿Qué es \"Reclamar mentoreado\"?",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "Número de aprendices asignados",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "~La media",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Media (por defecto)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Tu}} carga fue cambiada a \"$1\".",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line1": "Seleccionar más o menos alumnos {{GENDER:|te}} ayudará a gestionar el número de preguntas que {{GENDER:|tú}} puedes recibir. Sin embargo, el número de preguntas sólo dependerá de la motivación de tus aprendices asignados."
 }

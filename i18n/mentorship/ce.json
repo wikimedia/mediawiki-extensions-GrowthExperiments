@@ -8,5 +8,9 @@
 	"growthexperiments-mentor-dashboard-pt-link": "Хьехамхочун панель",
 	"growthexperiments-mentor-dashboard-disabled": "ХӀокху вики чохь латина йац хьехамхочун панель.",
 	"growthexperiments-mentor-dashboard-must-be-mentor": "Хьехамхочун панель лато, хьалха [[$1|хьехамхо санна дӀайазло]].",
-	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Хьехамхочун панель лелайале хьехамхойн могӀам нисбан беза. Иза кхочушдан куьйгалхочо лело мега [[Special:EditGrowthConfig]]."
+	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "Хьехамхочун панель лелайале хьехамхойн могӀам нисбан беза. Иза кхочушдан куьйгалхочо лело мега [[Special:EditGrowthConfig]].",
+	"growthexperiments-rcfilters-mentorship-title": "Ӏуналла",
+	"growthexperiments-quit-mentorship-title": "ДӀатаса Ӏуналла",
+	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 {{GENDER:$1|дӀатесна}} Ӏуналла.",
+	"echo-category-title-ge-mentorship": "Ӏуналла"
 }

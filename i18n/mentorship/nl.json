@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Mainframe98",
 			"McDutchie",
 			"Romaine"
 		]
@@ -25,6 +26,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Recente dagen",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Recente maanden",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Zoeken",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "$1 geleden actief",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "onbekend",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Toon $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 van $2",
@@ -32,5 +34,17 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "U hebt wellicht nog geen leerlingen toegewezen gekregen. De gegevens worden dagelijks bijgewerkt.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "Geen leerlingen gevonden",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Wijzig uw filters om leerlingen te vinden.",
-	"growthexperiments-quit-mentorship-title": "Mentorschap beëindigen"
+	"growthexperiments-mentor-dashboard-mentor-tools-headline": "Instellingen",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-headline": "Mentor status",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-active": "Actief",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-status-away": "Afwezig",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-headline": "Als ‘afwezig’ instellen",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-cancel": "Annuleren",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-submit": "Pauzeren",
+	"growthexperiments-mentor-dashboard-mentor-tools-away-dialog-away-for-label": "dagen",
+	"growthexperiments-quit-mentorship-title": "Mentorschap beëindigen",
+	"growthexperiments-notification-body-mentee-claimed": "Reden: $1",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "~De helft van het gemiddelde",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Gemiddeld (standaard)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "~Tweemaal het gemiddelde"
 }
