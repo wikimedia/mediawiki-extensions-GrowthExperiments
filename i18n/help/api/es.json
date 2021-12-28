@@ -3,10 +3,13 @@
 		"authors": [
 			"Fitoschido",
 			"LORDZRAWN",
-			"ZebaX2010"
+			"ZebaX2010",
+			"Zapipedia (WMF)"
 		]
 	},
+	"apihelp-helppanelquestionposter-summary": "Manejar las preguntas publicadas a través del panel de ayuda para el usuario actual.",
 	"apihelp-helppanelquestionposter-param-body": "El texto de la pregunta proporcionado por el usuario.",
 	"apihelp-helppanelquestionposter-param-source": "Método por el cual se publicó la pregunta.",
+	"apihelp-helppanelquestionposter-paramvalue-source-helpdesk": "Panel \"Pregunta al servicio de ayuda\"",
 	"apierror-mustbeloggedin-helppanelquestionposter": "Se necesita acceder para formular una pregunta."
 }

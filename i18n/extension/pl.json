@@ -3,8 +3,14 @@
 		"authors": [
 			"Nux",
 			"Rail",
-			"Railfail536"
+			"Railfail536",
+			"Kareyac",
+			"Woytecr"
 		]
 	},
-	"growthexperiments-desc": "To rozszerzenie zawiera eksperymentalne funkcje wykonane przez Zespół Growth."
+	"growthexperiments-desc": "To rozszerzenie zawiera eksperymentalne funkcje wykonane przez Zespół Growth.",
+	"growthexperiments-config-validator-additional-fields": "Nowa konfiguracja zawiera opcje, których nie można tu dostosować.",
+	"growthexperiments-config-validator-error": "Nie powiodło się sprawdzanie poprawności $1 z powodu: \"$2\"",
+	"growthexperiments-config-validator-datatype-mismatch": "oczekiwany typ danych dla <code>$1</code> to <code>$2</code>, ale podano <code>$3</code>",
+	"growthexperiments-config-validator-contentmodel-mismatch": "niewłaściwy model zawartości: strona konfiguracji GrowthExperiments musi mieć model zawartości \"JSON\", a obecnie ma $1."
 }

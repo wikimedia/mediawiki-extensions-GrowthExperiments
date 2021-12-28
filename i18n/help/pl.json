@@ -10,7 +10,8 @@
 			"Rainbow P",
 			"Tar Lócesilion",
 			"Woytecr",
-			"Wpedzich"
+			"Wpedzich",
+			"Kareyac"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Włącz panel pomocy podczas edycji",
@@ -139,5 +140,8 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;Używasz teraz edytora kodu źródłowego. Z tych porad najłatwiej korzystać, używając edytora wizualnego.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Przełącz na edytor wizualny",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;Używasz teraz edytora wizualnego. Z tych porad najłatwiej korzystać, używając edytora kodu źródłowego.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Przełącz na edytor kodu źródłowego"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Przełącz na edytor kodu źródłowego",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Dodawanie linków pomaga czytelnikom uczyć się szybciej.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-rules1": "Wytyczne",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-rules1": "\n* Linkuj koncepty, o których czytelnik mógłby chcieć dowiedzieć się więcej.\n* Upewni się że link prowadzi do właściwego artykułu.\n* Nie podlinkowuj wyrazów powszechnych i dat.\n* Jeżeli nie jesteś {{GENDER:$1|pewien|pewna}}, pomiń."
 }

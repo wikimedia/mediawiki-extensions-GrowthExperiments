@@ -102,6 +102,11 @@
 	"growthexperiments-homepage-impact-mobilebody-totaledits": "<strong>$1</strong> {{PLURAL:$1|edycja|edycji}}",
 	"growthexperiments-homepage-impact-mobilebody-pageviews": "Liczba wyświetleń dla ostatnich edycji (z 60 dni):",
 	"growthexperiments-homepage-impact-mobilesummarybody-monitor": "Monitoruj wyświetlenia artykułów, które edytujesz",
+	"growthexperiments-homepage-impact-unactivated-subheader-text": "Na razie 0 edycji",
+	"growthexperiments-homepage-impact-unactivated-subheader-subtext": "Pomóż rozbudowywać zasoby wolnej wiedzy poprzez edytowanie w dziedzinach którymi się {{GENDER:$1|interesujesz}}.",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-link": "Zobacz propozycje edycji",
+	"growthexperiments-homepage-impact-unactivated-suggested-edits-footer": "Zacznij od <strong>proponowanych edycji</strong>, a następnie zobacz jak wielu ludzi miało możliwość zobaczyć efekty {{GENDER:$1|twoich}} zmian.",
+	"growthexperiments-homepage-impact-unactivated-description": "Gdy już {{GENDER:$1|zaczniesz}} edytować, {{GENDER:$1|zobaczysz}} jak wielu ludzi obejrzało artykuły, które {{GENDER:$1|edytowałeś|edytowałaś}}.",
 	"growthexperiments-tour-helpdesk-response-tip-title": "Powiadomienia forum pomocy",
 	"growthexperiments-tour-response-tip-text": "{{GENDER:$1|Znajdziesz}} tutaj powiadomienia o odpowiedziach na twoje pytania.",
 	"growthexperiments-tour-mentor-response-tip-personal-title": "Powiadomienia przewodników",
@@ -341,5 +346,9 @@
 	"growthexperiments-addlink-rejectiondialog-reason-wrong-target-tip": "Dotknij ikonkę ołówka $1 obok linka aby zmienić jego cel",
 	"growthexperiments-addlink-rejectiondialog-reason-other": "Inne / brak odpowiedzi",
 	"growthexperiments-addlink-rejectiondialog-action-done": "Gotowe",
-	"growthexperiments-addlink-onboarding-dialog-title": "Wprowadzenie"
+	"growthexperiments-addlink-onboarding-dialog-title": "Wprowadzenie",
+	"newcomertasksinfo": "Zadania dla nowicjuszy",
+	"newcomertasksinfo-table-header-task-type-id": "ID",
+	"newcomertasksinfo-table-header-task-count": "Liczba",
+	"newcomertasksinfo-table-header-topic-type": "ID tematu"
 }

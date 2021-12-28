@@ -5,7 +5,8 @@
 			"Kenrick95",
 			"Notanotheramy",
 			"Rachmat04",
-			"Sonic Speedy"
+			"Sonic Speedy",
+			"Daud I.F. Argana"
 		]
 	},
 	"growthexperiments-help-panel-tog-help-panel": "Aktifkan panel bantuan editor",
@@ -134,5 +135,9 @@
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor": "$1&nbsp;{{GENDER:|Anda}} sedang menggunakan penyunting kode sumber. Kiat penyuntingan berikut sangat berguna dengan penyunting visual.",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-visualeditor-link-text": "Ganti ke penyunting visual",
 	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext": "$1&nbsp;{{GENDER:|Anda}} sedang menggunakan penyunting visual. Kiat penyuntingan berikut sangat berguna dengan penyunting kode sumber.",
-	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Ganti ke penyunting kode sumber"
+	"growthexperiments-help-panel-suggested-edits-switch-editor-to-wikitext-link-text": "Ganti ke penyunting kode sumber",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-header-value": "Menambahkan pranala akan membantu pembaca belajar lebih cepat.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-main-value": "{{GENDER:$1|Anda}} akan menentukan apakah kata dalam salah satu artikel {{SITENAME}} sebaiknya ditautkan ke artikel {{SITENAME}} lainnya.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-example-value": "Bulan adalah satu-satunya <mark class=\"positive\">satelit alami</mark> yang <mark class=\"positive\">mengorbit</mark> mengelilingi <mark class=\"positive\">Bumi</mark>.",
+	"growthexperiments-help-panel-suggestededits-tips-vector-visualeditor-link-recommendation-text-value": "Mengerjakan tugas ini tidak membutuhkan pengetahuan khusus mengenai artikel."
 }

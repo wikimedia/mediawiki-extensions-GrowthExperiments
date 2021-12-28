@@ -13,7 +13,8 @@
 			"Veracious",
 			"AJBot2",
 			"Chinamoonroll",
-			"Hidayatsrf"
+			"Hidayatsrf",
+			"Daud I.F. Argana"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|Halo}}, {{bidi:$1}}!",
@@ -358,7 +359,7 @@
 	"growthexperiments-addlink-onboarding-content-intro-title": "Menambahkan pranala akan membantu pembaca belajar lebih cepat.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph1": "{{GENDER:$1|Anda}} akan menentukan apakah kata dalam salah satu artikel {{SITENAME}} tertaut ke artikel {{SITENAME}} lainnya.",
 	"growthexperiments-addlink-onboarding-content-intro-body-example-label": "Kalimat contoh",
-	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "Bulan adalah satu-satunya <mark>satelit alami</mark> yang <mark>mengorbit</mark> mengelilingi <mark>Bumi</mark>.",
+	"growthexperiments-addlink-onboarding-content-intro-body-example-text": "Bulan adalah satu-satunya <mark class=\"positive\">satelit alami</mark> yang <mark class=\"positive\">mengorbit</mark> mengelilingi <mark class=\"positive\">Bumi</mark>.",
 	"growthexperiments-addlink-onboarding-content-intro-body-paragraph2": "Mengerjakan tugas ini tidak membutuhkan pengetahuan khusus mengenai artikel.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-title": "Saranan pranala berasal dari kecerdasan buatan, yang mungkin saja salah.",
 	"growthexperiments-addlink-onboarding-content-about-suggested-links-body": "Kecerdasan buatan dapat memberikan saran pada kata-kata yang tidak diperlukan atau menyarankan untuk menautkan ke artikel yang salah. Gunakan penilaian {{GENDER:$1|Anda}} untuk memutuskan apakah benar atau salah.",
