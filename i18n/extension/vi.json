@@ -6,7 +6,9 @@
 			"Martin Urbanec (WMF)",
 			"Nguyễn Mạnh An",
 			"Tuanminh01",
-			"Vinhtantran"
+			"Vinhtantran",
+			"Minh Nguyen",
+			"Nghiemtrongdai VN"
 		]
 	},
 	"growthexperiments-desc": "Phần mở rộng này chứa các thử nghiệm được thực hiện bởi nhóm Tăng trưởng.",
@@ -50,7 +52,7 @@
 	"growthexperiments-edit-config-help-panel-links-images-label": "3) Nhãn cho liên kết bảng trợ giúp thứ ba (khuyến nghị: \"Cách thêm hình ảnh\")",
 	"growthexperiments-edit-config-help-panel-links-references-title": "4) Trang đích cho liên kết bảng trợ giúp thứ tư (khuyến nghị: thêm nguồn tham khảo bằng sửa đổi trực quan)",
 	"growthexperiments-edit-config-help-panel-links-references-label": "4) Nhãn cho liên kết bảng trợ giúp thứ tư (khuyến nghị: \"Cách thêm nguồn tham khảo\")",
-	"growthexperiments-edit-config-help-panel-links-articlewizard-title": "5) Trang đích cho liên kết bảng trợ giúp thứ năm (khuyến nghị: Thuật sĩ bài viết)",
+	"growthexperiments-edit-config-help-panel-links-articlewizard-title": "5) Trang đích cho liên kết bảng trợ giúp thứ năm (khuyến nghị: trình hướng dẫn bài viết)",
 	"growthexperiments-edit-config-help-panel-links-articlewizard-label": "5) Nhãn cho liên kết bảng trợ giúp thứ năm (khuyến nghị: \"Cách tạo một bài viết\")",
 	"growthexperiments-edit-config-homepage": "Trang nhà cho người mới tham gia",
 	"growthexperiments-edit-config-homepage-intro-links-create": "Trang đích cho một liên kết về cách tạo một bài viết mới",

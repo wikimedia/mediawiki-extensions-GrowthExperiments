@@ -2,10 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Danniel07",
-			"Warming Hearth"
+			"Warming Hearth",
+			"Biancailin",
+			"Bruno44101",
+			"Fewasser Traduce",
+			"Zapipedia (WMF)"
 		]
 	},
 	"growthexperiments-mentor-dashboard-pt-link": "Tablón de mentores",
+	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|Tus}} aprendices",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Véase {{GENDER:|tus}} aprendices abajo. Usa los filtros para cambiar cuáles aprendices se muestran.",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-headline": "¿Quién está en tu tabla?",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "La tabla sólo muestra tus aprendices quienes crearon su cuenta dentro de las dos semanas pasadas o quienes han editado en los últimos seis meses. Los datos se actualizan diariamente.",
@@ -17,13 +22,27 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "Preguntas de mentores",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "Recuento de ediciones",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "Fecha de registro",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Filtros",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Actualizar",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "Recuento de ediciones",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Mínimo",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Máximo",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "Edición más reciente",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Últimos días",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Últimos meses",
+	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Búsqueda",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "activo hace $1",
+	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "desconocido",
+	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Mostrar $1",
+	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 de $2",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-headline": "Información de aprendices no disponible.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-no-mentees-text": "Puede que no tengas asignado aprendices todavía. La información se actualiza a diario.",
 	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-headline": "No se encontraron aprendices.",
-	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Cambia tus filtros para encontrar aprendices."
+	"growthexperiments-mentor-dashboard-mentee-overview-empty-screen-filters-text": "Cambia tus filtros para encontrar aprendices.",
+	"growthexperiments-mentor-dashboard-resources-headline": "Recursos",
+	"growthexperiments-mentor-dashboard-resources-link-mentors-list": "La lista de mentores y mentoras",
+	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "Cómo presentarte como mentor",
+	"growthexperiments-mentor-dashboard-resources-link-tools": "Herramientas de Crecimiento",
+	"growthexperiments-rcfilters-mentorship-title": "Mentoría",
+	"growthexperiments-quit-mentorship-title": "Abandonar mentoría"
 }

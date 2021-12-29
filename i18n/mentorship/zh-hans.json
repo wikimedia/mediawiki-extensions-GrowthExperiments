@@ -6,7 +6,8 @@
 			"TsuyaMarisa",
 			"Xiplus",
 			"Stang",
-			"范"
+			"范",
+			"Tiger"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "导师控制面板",
@@ -21,7 +22,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "图例",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "标记学员",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "用户名",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "撤销编辑次数",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "被回退次数",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "封禁次数",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "询问导师的问题",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "编辑次数",
@@ -34,9 +35,9 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "近期编辑",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "最近几天",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "最近几个月",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "仅展示出演学员",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-starred-only-starred": "仅展示加星标的学员",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "搜索",
-	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "激活$1之前",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "$1之前活跃",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "未知",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "显示$1个",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$2之$1",

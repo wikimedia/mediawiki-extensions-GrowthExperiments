@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Woytecr"
+		]
+	},
+	"apihelp-growthstarmentee-summary": "Zaznacza lub odznacza nowicjusza jako ulubionego (informacja przechowywana prywatnie przez obecnie zalogowanego użytkownika i nie ujawniana w rejestrze)",
+	"apihelp-growthstarmentee-param-gesaction": "Czynność do podjęcia (<kbd>star</kbd> lub <kbd>unstar</kbd>)",
+	"apihelp-growthstarmentee-param-gesmentee": "Nowicjusz do zmiany statusu",
+	"apihelp-query+growthstarredmentees-summary": "Pobierz listę ulubionych nowicjuszy dla obecnie zalogowanego przewodnika"
+}

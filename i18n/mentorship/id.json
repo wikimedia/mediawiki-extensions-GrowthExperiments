@@ -1,15 +1,18 @@
 {
 	"@metadata": {
 		"authors": [
-			"PutriAmalia1991"
+			"PutriAmalia1991",
+			"Daud I.F. Argana"
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "Dasbor Pencipta",
+	"growthexperiments-mentor-dashboard-pt-link": "Dasbor pembimbing",
+	"growthexperiments-mentor-dashboard-disabled": "Dasbor pembimbing tidak diaktifkan di wiki ini.",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "Peringatan {{GENDER:|Anda}}",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Tambah filter",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Kirim",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Dari",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Ke",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "Penyaring",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "Perbarui",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "Minimum",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "Maksimum",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Cari",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "tidak diketahui",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 dari $2",

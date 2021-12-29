@@ -6,7 +6,8 @@
 			"Encycloon",
 			"Klaas van Buiten",
 			"Mainframe98",
-			"Krinkle"
+			"Krinkle",
+			"McDutchie"
 		]
 	},
 	"growthexperiments-desc": "Deze extensie bevat experimenten uitgevoerd door het Growth-team.",
@@ -20,6 +21,7 @@
 	"growthexperiments-edit-config-last-edit-unknown-user": "[[$2]]: Voor het laatst bijgewerkt door onbekende gebruiker $1.",
 	"growthexperiments-edit-config-pretext": "Deze pagina maakt het mogelijk de configuratie van [[:mw:Special:MyLanguage/Growth|Growth]]-team-features te bewerken. Het zal $1 namens u bewerken. U kunt de veranderingen zien in de bewerkingsgeschiedenis van die pagina.",
 	"growthexperiments-edit-config-pretext-unprivileged": "Met dit formulier kunnen bevoorrechte gebruikers de configuratie van [[:mw:Special:MyLanguage/Growth|Growth]] teamfuncties bewerken.",
+	"growthexperiments-edit-config-feedback-cta": "Terugkoppeling geven",
 	"growthexperiments-edit-config-error-invalid-title": "Configuratie-pagina is niet correct geconfigureerd.",
 	"growthexperiments-edit-config-edit-summary": "Bewerkingssamenvatting",
 	"growthexperiments-edit-config-config-changed": "Configuratie is aangepast. Het kan enkele minuten duren tot de wijzigingen effect hebben.",

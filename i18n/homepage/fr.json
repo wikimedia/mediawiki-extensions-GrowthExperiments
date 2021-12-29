@@ -29,14 +29,15 @@
 			"Vega",
 			"Verdy p",
 			"Wladek92",
-			"Ajeje Brazorf"
+			"Ajeje Brazorf",
+			"Paraboule"
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|}}Bonjour, {{bidi:$1}} !",
 	"growthexperiments-homepage-tab": "Page d’accueil",
 	"tooltip-pt-homepage": "{{GENDER:|Votre}} page d’accueil",
-	"prefs-homepage": "Page d’accueil du nouvel arrivant",
-	"growthexperiments-homepage-enable": "Afficher la page d’accueil du nouvel arrivant",
+	"prefs-homepage": "Page d'accueil des nouveaux arrivants",
+	"growthexperiments-homepage-enable": "Afficher la page d'accueil des nouveaux arrivants",
 	"growthexperiments-homepage-pt-link": "Dans les outils personnels, faire du nom d’utilisateur un lien vers la page d’accueil des nouveaux",
 	"growthexperiments-homepage-email-header-noemail": "Ajouter {{GENDER:$1|}}votre adresse de courriel",
 	"growthexperiments-homepage-email-header-unconfirmed": "Confirmer {{GENDER:$1|}}votre adresse de courriel",

@@ -31,6 +31,9 @@
 	"growthexperiments-edit-config-help-panel-links-mos-title": "1) ГӀоьнан панель тӀера хьалхарчу хьажоргана Ӏалашонан агӀо (рекомендаци: стилийн куьйгалла)",
 	"growthexperiments-edit-config-help-panel-links-mos-label": "1) ГӀоьнан панель тӀе цхьалхачу хьажорган хӀост (рекомендаци: «Стилан куьйгалла»)",
 	"growthexperiments-edit-config-help-panel-links-editing-title": "2) ГӀоьнан панель тӀера шолгӀачу хьажоргана Ӏалашонан агӀо (рекомендаци: бӀаьра редакторан куьйгалла)",
+	"growthexperiments-edit-config-help-panel-links-editing-label": "2) ГӀоьнан панель тӀера шолгӀа хьажорган хӀост (рекомендаци: «Хийцамаш муха бо»)",
+	"growthexperiments-edit-config-help-panel-links-images-title": "3) ГӀоьнан панель тӀе кхолгӀачу хьажоргана Ӏалашонан агӀо (рекомендаци: бӀаьран редакторан гӀоьнца сурт чудилар)",
+	"growthexperiments-edit-config-help-panel-links-images-label": "3) ГӀоьнан панель тӀе кхолгӀачу хьажорган хӀост (рекомендаци: «Сурт муха чудуьллу»)",
 	"growthexperiments-edit-config-help-panel-links-references-title": "4)  ГӀоьнан панель тӀера йоьалгӀачу хьажоргана Ӏалашонан агӀо (рекомендаци: бӀаьран редакторан гӀоьнца хьажоргаш йихкар)",
 	"growthexperiments-edit-config-help-panel-links-references-label": "4) ГӀоьнан панель тӀе йоьалгӀа хьажорган хӀост (рекомендаци: «Муха тӀетуху хьажорг»)",
 	"growthexperiments-edit-config-help-panel-links-articlewizard-title": "5) ГӀоьнан панелан тӀе пхоьалгӀачу хьажорган Ӏалашонан агӀо (рекомендаци: «Йаззаман говзанча»)",
@@ -38,7 +41,7 @@
 	"growthexperiments-edit-config-homepage": "Керлачун цӀера агӀо",
 	"growthexperiments-edit-config-homepage-intro-links-create": "Керла агӀо кхолла Ӏамош йолу Ӏалашонан агӀонан тӀе хьажорг",
 	"growthexperiments-edit-config-homepage-intro-links-image": "БӀаьран редактор чохь сурт тӀетоха Ӏамош йолу Ӏалашонан агӀонан тӀе хьажорг",
-	"growthexperiments-edit-config-mentorship": "Хьехамалла",
+	"growthexperiments-edit-config-mentorship": "Ӏуналла",
 	"growthexperiments-edit-config-mentorship-description": "Викин хила таро йу Ӏуналчийн шиъ ша йолу могӀам: массо а керлачаьрна цхьаъ цӀеххьарша нисбелла Ӏуналчийн могӀам, ткъа кхин а мероприятешкахь йа классашкахь дакъалоцучеран оцу статусе баха луучу Ӏуналчийн.",
 	"growthexperiments-edit-config-mentorship-enabled": "Латина йуьй хьехамаллин функцеш?",
 	"growthexperiments-edit-config-mentorship-enabled-true": "ХӀаъ",
@@ -51,7 +54,9 @@
 	"growthexperiments-edit-config-newcomer-tasks-copyedit-learnmore": "Йоза нисдарах кхин сов хаам болу Ӏалашонан агӀо.",
 	"growthexperiments-edit-config-newcomer-tasks-expand-templates": "Схьайаста: базбина йаллийта безаш безаш болу йаззамаш лахаран кепаш.",
 	"growthexperiments-edit-config-newcomer-tasks-links-templates": "Хьажоргаш: дукху хьажоргаш оьшуш йолу йаззамаш лахаран кепаш.",
+	"growthexperiments-edit-config-newcomer-tasks-links-learnmore": "Хьажоргаш тӀетохар долу кхин сов хаамаш болу Ӏалашонан агӀо.",
 	"growthexperiments-edit-config-newcomer-tasks-references-templates": "Билгалдаккхар: дукху хьосташ оьшуш йолу йаззамаш лахаран кепаш.",
 	"growthexperiments-edit-config-newcomer-tasks-references-learnmore": "Хьосташ тӀетохарах кхин сов хаамаш болу Ӏалашонан агӀо.",
-	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Карлайаккхар: чулацам карлабаккха беза йаззамаш лахаран кепаш."
+	"growthexperiments-edit-config-newcomer-tasks-update-templates": "Карлайаккхар: чулацам карлабаккха беза йаззамаш лахаран кепаш.",
+	"growthexperiments-edit-config-newcomer-tasks-update-learnmore": "Йаззамашкара информаци карлайаккхаран кхин сов хаам болу Ӏалашонан агӀо."
 }

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"McDutchie",
-			"Romaine"
+			"Romaine",
+			"Mainframe98"
 		]
 	},
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "Hieronder staan uw leerlingen. Met de filters kunt u bepalen welke leerlingen worden weergegeven.",
@@ -25,6 +26,7 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-days": "Recente dagen",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-months": "Recente maanden",
 	"growthexperiments-mentor-dashboard-mentee-overview-search-placeholder": "Zoeken",
+	"growthexperiments-mentor-dashboard-mentee-overview-active-ago": "$1 geleden actief",
 	"growthexperiments-mentor-dashboard-mentee-overview-registered-unknown": "onbekend",
 	"growthexperiments-mentor-dashboard-mentee-overview-show-entries": "Toon $1",
 	"growthexperiments-mentor-dashboard-mentee-overview-page-counter": "$1 van $2",

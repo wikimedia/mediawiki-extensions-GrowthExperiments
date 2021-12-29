@@ -5,13 +5,14 @@
 			"Kly",
 			"Winston Sung",
 			"Xiplus",
-			"范"
+			"范",
+			"LNDDYL"
 		]
 	},
-	"growthexperiments-mentor-dashboard-title": "導師控制面版",
-	"growthexperiments-mentor-dashboard-pt-link": "導師控制面版",
-	"growthexperiments-mentor-dashboard-disabled": "導師控制面版沒有在這個 wiki 上啟用。",
-	"growthexperiments-mentor-dashboard-must-be-mentor": "要啟用導師控制面版，{{GENDER:|您}}必須先[[$1|登記成爲一名導師]]。",
+	"growthexperiments-mentor-dashboard-title": "導師儀表板",
+	"growthexperiments-mentor-dashboard-pt-link": "導師儀表板",
+	"growthexperiments-mentor-dashboard-disabled": "此 wiki 尚未啟用導師儀表板。",
+	"growthexperiments-mentor-dashboard-must-be-mentor": "若想啟用導師儀表板，{{GENDER:|您}}必須先[[$1|登記成為一名導師]]。",
 	"growthexperiments-mentor-dashboard-misconfigured-missing-list": "在使用導師儀表板前需要配置導師列表，為此管理員可以使用[[Special:EditGrowthConfig]]。",
 	"growthexperiments-mentor-dashboard-mentee-overview-headline": "{{GENDER:|您的}}學生",
 	"growthexperiments-mentor-dashboard-mentee-overview-intro": "在下方檢視{{GENDER:|您的}}學員。使用過濾器變更要顯示的學員。",
