@@ -5,8 +5,5 @@
 		]
 	},
 	"apihelp-growthsetmenteestatus-param-state": "New status of the mentee (warning: setting this to opt-out will permanently delete the mentee/mentor relationship)",
-	"apihelp-growthsetmenteestatus-param-state-enabled": "Mentorship module is enabled",
-	"apihelp-growthsetmenteestatus-param-state-disabled": "Mentorship module is fully disabled. This is normally set by the software and used for A/B testing.",
-	"apihelp-growthsetmenteestatus-param-state-optout": "Mentee opted out from the mentorship; the mentee/mentor relationship will be deleted, the mentorship module will be replaced with a possibility to opt back in",
-	"apihelp-query+growthmenteestatus-summary": "Query current user's mentee status; see documentation of action=growthsetmentorweight for detailed information about individual statuses."
+	"apihelp-growthsetmenteestatus-param-state-optout": "Mentee opted out from the mentorship; the mentee/mentor relationship will be deleted, the mentorship module will be replaced with a possibility to opt back in"
 }

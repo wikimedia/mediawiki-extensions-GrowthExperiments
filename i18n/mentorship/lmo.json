@@ -4,5 +4,10 @@
 			"Salvemm el lombard"
 		]
 	},
-	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "La tabella la fà vedé domà {{GENDER:|i to}} scolar-client che i hann dervid on cunt i di ultime do setimane o che i hann modifegad in di ultim ses mes. I dad a inn atualizad ogni ses ore."
+	"growthexperiments-mentor-dashboard-mentee-overview-info-text": "Questa tabella chì la fà vedé domà {{GENDER:|i to}} scolar-client el cunt di quai l'è stad avert in di darere do setimane o che i hann modifegad in di ultim ses mes, e gh'hann la [[:mw:Special:MyLanguage/Growth/Feature_summary#NH|pagina principal di novei pizzada]]. I dad a inn atualizad ogni ses ore.",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-low": "~Mità de la media",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-medium": "Media (per impostazzion predefinida)",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-high": "~Do volte la media",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-changed": "{{GENDER:|Il tuo}} caregh l'è stad trasformad in \"$1\".",
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-info-text-line2": "A l'è consijad de comenzà con la pesadura \"Media\" per valutà la portada de suport inanz de passà ai alter opzion."
 }
