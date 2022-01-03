@@ -163,5 +163,6 @@
 	"growthexperiments-homepage-suggestededits-topics-selectall": "Vali kõik",
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "Eemalda kõik",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "Vali mõned teemad, mille muutmisest {{GENDER:$1|oled}} huvitatud",
-	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Proovime soovitada artikleid, mis vastavad {{GENDER:$1|sinu}} huvialadele."
+	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "Proovime soovitada artikleid, mis vastavad {{GENDER:$1|sinu}} huvialadele.",
+	"growthexperiments-homepage-suggestededits-mobile-peek-more-about-this-edit": "Veel selle soovitatud muudatuse kohta"
 }

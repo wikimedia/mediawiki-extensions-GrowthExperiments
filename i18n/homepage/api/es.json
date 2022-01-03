@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"LORDZRAWN",
-			"ZebaX2010"
+			"ZebaX2010",
+			"Zapipedia (WMF)"
 		]
 	},
 	"growthexperiments-homepage-questionstore-noquestionsfound": "No se encontraron preguntas.",
 	"apihelp-growthsetmentor-param-mentee": "Nombre de usuario del aprendiz",
-	"apihelp-growthsetmentor-param-mentor": "Nombre de usuario del mentor"
+	"apihelp-growthsetmentor-param-mentor": "Nombre de usuario del mentor",
+	"apihelp-growthsetmentor-param-reason": "Razones del cambio"
 }
