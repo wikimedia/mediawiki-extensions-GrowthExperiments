@@ -31,13 +31,13 @@
 				"name": "gels_anchor_offset",
 				"comment": "The 0-based index of the first character of the link text in the wikitext, in Unicode characters. (Assumes a $wgMaxArticleSize value of up to 8 MB.)",
 				"type": "integer",
-				"options": { "length": 3, "unsigned": true, "notnull": true }
+				"options": { "unsigned": true, "notnull": true }
 			},
 			{
 				"name": "gels_anchor_length",
 				"comment": "The length of the link text in the wikitext, in UTF-8 bytes.",
 				"type": "integer",
-				"options": { "length": 2, "unsigned": true, "notnull": true }
+				"options": { "unsigned": true, "notnull": true }
 			},
 			{
 				"name": "gels_target",
