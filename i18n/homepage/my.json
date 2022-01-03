@@ -317,7 +317,6 @@
 	"growthexperiments-structuredtask-anonuser": "အသုံးပြုသူသည် လော့ဂ်အင်မဝင်ထားပါ။",
 	"growthexperiments-addimage-summary-label": "အကျဉ်းချုပ်",
 	"growthexperiments-addimage-summary-copyrightwarning": "ပြောင်းလဲချက်များကိုသိမ်းဆည်းခြင်းဖြင့် {{GENDER:|သင်သည်}}  [https://foundation.wikimedia.org/wiki/Terms_of_Use အသုံးပြုခြင်းဆိုင်ရာစည်းကမ်းချက်များ]ကို သဘောတူညီပြီး [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] နှင့် [https://www.gnu.org/licenses/fdl-1.3.html GFDL] လိုင်စင်များအောက်တွင် ထုတ်ပြန်ရန် သဘောတူညီသည်။",
-	"growthexperiments-addimage-summary-reject-description": "ဤရုပ်ပုံအကြံပြုချက်များမှာ ငြင်းပယ်ခံလိုက်ရသည်။",
 	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|အခြား|အခြားများ}}",
 	"growthexperiments-addimage-reason-wikipedia-project": "$1 ရှိ ထပ်တူညီသောဆောင်းပါးတွင် အသုံးပြုထားသည်။",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "သဘောပေါက်ပြီ",

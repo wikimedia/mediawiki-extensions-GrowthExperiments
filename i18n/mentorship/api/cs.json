@@ -15,6 +15,7 @@
 	"apihelp-growthmentordashboardupdatedata-summary": "Naplánovat mimořádnou aktualizaci modulu \"Vaši nováčci\". Z výkonnostních důvodů můžete naplánovat maximálně jednu aktualizaci každé dvě hodiny.",
 	"apihelp-growthsetmentorweight-summary": "Nastavit váhu přihlášeného mentora",
 	"apihelp-growthsetmentorweight-param-geweight": "Číselná váha mentora: čím nižší hodnota je, tím méně nováčků je mentorovi přiřazeno",
+	"apihelp-growthsetmenteestatus-summary": "Nastavit stav nováčka (dovoluje uživateli vypnout/zapnout modul mentorství, anebo se zcela z mentorského programu vyvázat, což smaže vztah mezi mentorem a mentorovaným).",
 	"apihelp-growthsetmenteestatus-param-state": "Nový stav nováčka (varování: pokud toto nastavíte na optout, vztah mentor/mentorovaný bude trvale smazán)",
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Modul mentorství je aktivní",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "Modul mentorství je plně deaktivován. Toto je obyčejně nastaveno softwarem a používáno pro A/B testování.",

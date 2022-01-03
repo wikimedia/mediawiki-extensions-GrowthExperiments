@@ -474,7 +474,6 @@
 	"growthexperiments-structuredtask-anonuser": "Uživatel již není přihlášen.",
 	"growthexperiments-addimage-summary-label": "Shrnutí",
 	"growthexperiments-addimage-summary-copyrightwarning": "Uložením těchto změn {{GENDER:|souhlasíte}} s [https://foundation.wikimedia.org/wiki/Terms_of_Use podmínkami užití] a souhlasíte se zveřejněním svých příspěvků pod licencemi [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] and [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
-	"growthexperiments-addimage-summary-reject-description": "Navržený obrázek byl odmítnut.",
 	"growthexperiments-addimage-summary-summary": "Funkce návrhy obrázků: {{PLURAL:$1|Přidán $1 obrázek|Přidány $1 obrázky|Přidáno $1 obrázků}}.",
 	"growthexperiments-addimage-reason-wikipedia": "Použito ve stejném článku {{PLURAL:$1|v jedné další jazykové verzi|ve $1 dalších jazykových verzích|v $1 jazykových verzích}}.",
 	"growthexperiments-addimage-reason-wikipedia-languages": "Použito ve stejném článku {{PLURAL:$1|v jedné další jazykové verzi|ve $1 dalších jazykových verzích|v $1 jazykových verzích}}: $2.",

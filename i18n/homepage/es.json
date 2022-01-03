@@ -467,7 +467,6 @@
 	"growthexperiments-structuredtask-anonuser": "El {{GENDER:|usuario|usuaria}} ya no está {{GENDER:|conectado|conectada}}.",
 	"growthexperiments-addimage-summary-label": "Resumen",
 	"growthexperiments-addimage-summary-copyrightwarning": "Al guardar los cambios, {{GENDER:|tú}} aceptas los [https://foundation.wikimedia.org/wiki/Terms_of_Use términos de uso] y acepta publicar su contribución bajo las licencias [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] y [https://www.gnu.org/licenses/fdl-1.3.html GFDL] .",
-	"growthexperiments-addimage-summary-reject-description": "Esta sugerencia de imagen fue rechazada.",
 	"growthexperiments-addimage-summary-summary": "Función de sugerencias de imágenes: $1 {{PLURAL:$1|imagen|imágenes}} {{PLURAL:$1|agregada|agregadas}}.",
 	"growthexperiments-addimage-reason-wikipedia": "Utilizado en el mismo artículo en $1 {{PLURAL:$1|otro idioma|otros idiomas}}.",
 	"growthexperiments-addimage-reason-wikipedia-languages": "Utilizado en el mismo artículo en $1 {{PLURAL:$1|otro idioma|otros idiomas}}: $2.",

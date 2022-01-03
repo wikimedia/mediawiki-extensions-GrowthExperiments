@@ -7,7 +7,8 @@
 			"TsuyaMarisa",
 			"Xiplus",
 			"Zhang8569",
-			"范"
+			"范",
+			50829
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "导师控制面板",
@@ -74,7 +75,7 @@
 	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-headline": "其他选项",
 	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-claim-mentee": "认领学员",
 	"growthexperiments-mentor-dashboard-mentor-tools-other-actions-claim-mentee-footer": "你可以将一个终身的指导转变为自己的。",
-	"growthexperiments-rcfilters-mentorship-title": "导师计画",
+	"growthexperiments-rcfilters-mentorship-title": "导师计划",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|您}}标记星号的学员",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "分配给{{GENDER:|您}}且{{GENDER:|you}}在{{GENDER:|您}}的导师面板上标记星号的学员",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|您}}未标记星号的学员",

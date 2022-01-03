@@ -424,7 +424,6 @@
 	"growthexperiments-structuredtask-user-error-login-cta": "로그인",
 	"growthexperiments-structuredtask-anonuser": "사용자는 더 이상 로그인되어 있지 않습니다.",
 	"growthexperiments-addimage-summary-label": "요약",
-	"growthexperiments-addimage-summary-reject-description": "이 이미지 제안은 거부되었습니다.",
 	"growthexperiments-addimage-summary-summary": "이미지 제안 기능: $1개 {{PLURAL:$1|이미지}}가 추가됨.",
 	"growthexperiments-addimage-reason-wikipedia": "$1개 {{PLURAL:$1|다른 언어}}에서 동일 문서에 사용됩니다.",
 	"growthexperiments-addimage-reason-wikipedia-languages": "$1개 {{PLURAL:$1|다른 문서}}에서 동일 문서에 사용됩니다: $2.",

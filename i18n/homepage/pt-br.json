@@ -451,6 +451,5 @@
 	"growthexperiments-structuredtask-user-error-login-cta": "Entrar",
 	"growthexperiments-structuredtask-anonuser": "O usuário não está mais entrado.",
 	"growthexperiments-addimage-summary-label": "Sumário",
-	"growthexperiments-addimage-summary-reject-description": "Esta sugestão de imagem foi rejeitada.",
 	"growthexperiments-addimage-caption-warning-tooshort": "As legendas devem ser $1 {{PLURAL:$1|caracter|caracteres}} ou mais."
 }

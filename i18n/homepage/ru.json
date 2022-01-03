@@ -477,7 +477,6 @@
 	"growthexperiments-structuredtask-anonuser": "Участник больше не в системе.",
 	"growthexperiments-addimage-summary-label": "Описание",
 	"growthexperiments-addimage-summary-copyrightwarning": "Сохраняя изменения {{GENDER:|вы}} соглашаетесь с [https://foundation.wikimedia.org/wiki/Terms_of_Use Условиями использования]  и соглашаетесь на передачу Вашего взноса под лицензиями [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] и [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
-	"growthexperiments-addimage-summary-reject-description": "Эта подсказка изображения отклонена.",
 	"growthexperiments-addimage-summary-summary": "Функция предложений изображений: добавлено $1 {{PLURAL:$1|изображения|изображений}}.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "Понятно",
 	"growthexperiments-addimage-mobile-only-dialog-button": "Понятно",

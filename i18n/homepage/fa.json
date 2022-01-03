@@ -468,7 +468,6 @@
 	"growthexperiments-structuredtask-anonuser": "کاربر از سامانه خارج شده‌است.",
 	"growthexperiments-addimage-summary-label": "خلاصه",
 	"growthexperiments-addimage-summary-copyrightwarning": "با ذخیره‌کردن تغییرات، {{GENDER:|شما}} با [https://foundation.wikimedia.org/wiki/Terms_of_Use شرایط استفاده] موافقت می‌کنید و می‌پذیرید که مشارکت‌های شما تحت [https://creativecommons.org/licenses/by-sa/3.0/ مجوز CC BY-SA 3.0] و [https://www.gnu.org/licenses/fdl-1.3.html مجوز مستندات آزاد گنو] منتشر شود.",
-	"growthexperiments-addimage-summary-reject-description": "تصویر پیشنهاد رد شد.",
 	"growthexperiments-addimage-summary-summary": "ویژگی تصویرهای پیشنهادی: $1 {{PLURAL:$1|تصویر}} افزوده شد.",
 	"growthexperiments-addimage-reason-wikipedia-project": "استفاده‌شده در مقالهٔ یکسان در $1.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "گرفتم",

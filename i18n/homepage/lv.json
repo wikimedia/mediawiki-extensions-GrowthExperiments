@@ -427,7 +427,6 @@
 	"growthexperiments-structuredtask-anonuser": "Dalībnieks vairs nav pieslēdzies.",
 	"growthexperiments-addimage-summary-label": "Kopsavilkums",
 	"growthexperiments-addimage-summary-copyrightwarning": "Saglabājot izmaiņas, {{GENDER:|tu}} piekrīti [https://foundation.wikimedia.org/wiki/Terms_of_Use Lietošanas noteikumiem] un piekrīti licencēt savu devumu saskaņa ar [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] un [https://www.gnu.org/licenses/fdl-1.3.html GFDL] licenci.",
-	"growthexperiments-addimage-summary-reject-description": "Šis attēla ieteikums tika noraidīts.",
 	"growthexperiments-addimage-reason-wikipedia-languages-others": "$1 {{PLURAL:$1|citi|cits|citi}}",
 	"growthexperiments-addimage-reason-wikipedia-project": "Izmantots tajā pašā rakstā $1 valodā.",
 	"growthexperiments-addimage-reason-wikidata": "Atrasts Wikidata ierakstā par šo rakstu (spēcīga atbilstība).",

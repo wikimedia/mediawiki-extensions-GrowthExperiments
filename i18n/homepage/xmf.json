@@ -17,7 +17,6 @@
 	"growthexperiments-addimage-caption-title": "ეჭარუაშ გეძინა",
 	"growthexperiments-addimage-summary-label": "რეზიუმე",
 	"growthexperiments-addimage-summary-copyrightwarning": "თირუეფიშ ჩუალათ, {{GENDER:|თქვა}} დოჸუნთ [https://foundation.wikimedia.org/wiki/Terms_of_Use გჷმორინაფაშ წესეფს] დო ალობას ირზენთ თქვან მიშნაღელ თიაქ გჷმიბჟინას [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] დო [https://www.gnu.org/licenses/fdl-1.3.html GFDL] ლიცენზიეფით.",
-	"growthexperiments-addimage-summary-reject-description": "სურათიშ მერზუაფა ვარებული რე.",
 	"growthexperiments-addimage-summary-summary": "სურათიშ მერზიაფაშ ფუნქცია: $1 {{PLURAL:$1|სურათიქ}} ქეგიაძინჷ.",
 	"growthexperiments-addimage-daily-task-limit-exceeded-dialog-button": "გასაგები რე"
 }

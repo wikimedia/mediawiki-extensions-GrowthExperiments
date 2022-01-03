@@ -494,7 +494,6 @@
 	"growthexperiments-structuredtask-anonuser": "L’utilisateur n’est plus connecté.",
 	"growthexperiments-addimage-summary-label": "Résumé",
 	"growthexperiments-addimage-summary-copyrightwarning": "En enregistrant les modifications, {{GENDER:|vous}} acceptez les [https://foundation.wikimedia.org/wiki/Terms_of_Use Conditions d’utilisation] et acceptez de livrer votre contribution sous les licences [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0] et [https://www.gnu.org/licenses/fdl-1.3.html GFDL].",
-	"growthexperiments-addimage-summary-reject-description": "Cette suggestion d’image a été rejetée.",
 	"growthexperiments-addimage-summary-summary": "Fonctionnalité de suggestion d’images : $1 {{PLURAL:$1|image ajoutée|images ajoutées}}.",
 	"growthexperiments-addimage-reason-wikipedia": "Utilisé dans le même article en $1 {{PLURAL:$1|autre langue|autres langues}}.",
 	"growthexperiments-addimage-reason-wikipedia-languages": "Utilisé dans le même article en $1 {{PLURAL:$1|autre langue|autres langues}} : $2.",
