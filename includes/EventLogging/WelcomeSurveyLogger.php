@@ -83,7 +83,7 @@ class WelcomeSurveyLogger {
 			$this->webRequest->getCookie( self::WELCOME_SURVEY_TOKEN ) !== $event['token'] ||
 			$action === self::WELCOME_SURVEY_LOGGED_OUT
 		) {
-			$this->logger->error( 'Suspicious {schema} event for action {action}', [
+			$this->logger->debug( 'Suspicious {schema} event for action {action}', [
 				'schema' => self::SCHEMA,
 				'action' => $action,
 				'user_id' => $event['user_id'],
