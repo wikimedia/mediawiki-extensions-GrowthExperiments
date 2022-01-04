@@ -178,7 +178,7 @@
 				// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-medium
 				// * growthexperiments-homepage-suggestededits-difficulty-indicator-label-hard
 				'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' + this.taskTypeData.difficulty
-			) );
+			).text() );
 	};
 
 	/**

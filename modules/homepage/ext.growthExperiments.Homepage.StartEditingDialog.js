@@ -687,7 +687,7 @@ StartEditingDialog.prototype.buildProgressIndicator = function ( currentPage, to
 		.text( mw.message( 'growthexperiments-homepage-startediting-dialog-progress' ).params( [
 			mw.language.convertNumber( currentPage ),
 			mw.language.convertNumber( totalPages )
-		] ) )
+		] ).text() )
 	);
 
 	return $indicator;

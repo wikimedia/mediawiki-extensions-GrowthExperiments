@@ -21,7 +21,7 @@
 					.text( mw.message(
 						'growthexperiments-homepage-suggestededits-difficulty-indicator-label-' +
 						difficulty
-					) ),
+					).text() ),
 				$( '<div>' )
 					.addClass(
 						'suggested-edits-difficulty-level suggested-edits-difficulty-level-' +
