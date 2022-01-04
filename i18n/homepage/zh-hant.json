@@ -304,7 +304,7 @@
 	"growthexperiments-log-header": "這是在 GrowthExperiments 擴充所做出操作的日誌。",
 	"logentry-growthexperiments-claimmentee": "$1{{GENDER:$2|已認領}}{{GENDER:$6|$3}}為他的學員（先前的{{GENDER:$4|導師}}為$5）",
 	"logentry-growthexperiments-claimmentee-no-previous-mentor": "$1{{GENDER:$2|已認領}}{{GENDER:$6|$3}}為他的學員（先前沒有導師）",
-	"logentry-growthexperiments-setmentor": "$1{{GENDER:$2|已設定}}{{GENDER:$5|$7}}作為{{GENDER:$6|$3}}的導師（先前的{{GENDER:$4|導師}}：$8）",
+	"logentry-growthexperiments-setmentor": "$1{{GENDER:$2|已設定}}{{GENDER:$5|$7}}作為{{GENDER:$6|$3}}的導師（先前的{{GENDER:$4|導師}}為$8）",
 	"logentry-growthexperiments-setmentor-no-previous-mentor": "$1{{GENDER:$2|已設定}}{{GENDER:$5|$7}}作為{{GENDER:$6|$3}}的導師（先前沒有導師）",
 	"log-action-filter-growthexperiments": "GrowthExperiments事件的類型：",
 	"log-action-filter-growthexperiments-claimmentee": "學員變更",

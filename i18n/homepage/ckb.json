@@ -229,6 +229,7 @@
 	"growthexperiments-homepage-suggestededits-topics-unselectall": "لابردنی ھەموو",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-header": "ھەندێ بابەت کە {{GENDER:$1|حەزت لێیە}} دەستکارییان بکەیت ھەڵبژێرە",
 	"growthexperiments-homepage-topic-filters-dialog-intro-topic-selector-subheader": "ھەوڵدەدەین ئەو وتارانەی کە لەگەڵ {{GENDER:$1|حەزەکانت}} دەگونجێن بۆت پێشنیار بکەین.",
+	"growthexperiments-homepage-claimmentee-title": "داوای قوتابی بکە",
 	"growthexperiments-homepage-claimmentee-mentee": "پەڕەی بەکارهێنەری فێرخواز",
 	"growthexperiments-claimmentee-confirm": "بەڵێ، بەڕاستی دەمەوێت مامۆستاکە بگۆڕم",
 	"growthexperiments-log-name": "لۆگی GrowthExperiments",

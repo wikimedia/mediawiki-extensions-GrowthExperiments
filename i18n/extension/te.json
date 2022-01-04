@@ -7,6 +7,7 @@
 		]
 	},
 	"growthexperiments-desc": "గ్రోత్ బృందం చేసిన ప్రయోగాలు ఈ పొడిగింతలో ఉంటాయి.",
+	"growthexperiments-config-validator-additional-fields": "ఈ కొత్త కాన్ఫిగ్‌లో ఉన్న కాన్ఫిగ్ కీలను ఇక్కడ అనుకూలించేలా చెయ్యలేం",
 	"growthexperiments-config-validator-error": "దీనితో $1 మూల్యాంకనం విఫలమైంది: \"$2\"",
 	"growthexperiments-config-validator-datatype-mismatch": "<code>$1</code> అనేది <code>$2</code> అయి ఉండాల్సింది, కానీ <code>$3</code> లాగా ఉంది",
 	"growthexperiments-config-validator-contentmodel-mismatch": "కంటెంటు రకం సరిపోలడం లేదు: GrowthExperiments కాన్ఫిగ్ ఫైలు JSON కంటెంటు మోడలు అయి ఉండాలి, $1 అని కనబడింది"
