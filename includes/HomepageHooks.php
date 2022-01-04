@@ -1372,16 +1372,21 @@ class HomepageHooks implements
 				null,
 				$revId
 			);
+			// Increment the counters for:
+			// * Unstructured tasks
+			// * Structured tasks, distinguishing between the different task types using the change tag
+			// Then in Grafana we can sum Structured.Reverted.{Change Tag} and Unstructured.Reverted to get the total
 			foreach ( $tags as $tag ) {
-				if ( $tag === TaskTypeHandler::NEWCOMER_TASK_TAG ) {
-					$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.NewcomerTask.Reverted' );
-				} elseif ( in_array(
+				if ( in_array(
 					$tag,
 					[ LinkRecommendationTaskTypeHandler::CHANGE_TAG, ImageRecommendationTaskTypeHandler::CHANGE_TAG ]
 				) ) {
-					$taskTypeId = $tag === LinkRecommendationTaskTypeHandler::CHANGE_TAG ? 'AddLink' : 'AddImage';
 					$this->perDbNameStatsdDataFactory->increment(
-						'GrowthExperiments.NewcomerTask.Reverted.' . $taskTypeId
+						'GrowthExperiments.NewcomerTask.Structured.Reverted.' . str_replace( ' ', '_', $tag )
+					);
+				} elseif ( $tag === TaskTypeHandler::NEWCOMER_TASK_TAG ) {
+					$this->perDbNameStatsdDataFactory->increment(
+						'GrowthExperiments.NewcomerTask.Unstructured.Reverted'
 					);
 				}
 			}
