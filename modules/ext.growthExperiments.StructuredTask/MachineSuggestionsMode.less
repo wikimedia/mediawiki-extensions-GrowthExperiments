@@ -98,7 +98,7 @@
 	}
 }
 
-.mw-ge-addImage--overlay-shown {
+.mw-ge-addImageMobileArticleTarget--overlay-shown {
 	@toolbarHeight: 50px;
 
 	&:before {
@@ -110,5 +110,24 @@
 		left: 0;
 		right: 0;
 		background: rgba( 255, 255, 255, 0.5 );
+	}
+}
+
+.mw-ge-addImageDesktopArticleTarget--overlay-shown {
+	opacity: 0.5;
+}
+
+.mw-ge-addImageDesktopArticleTarget-loadingOverlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 2;
+	padding-top: 35%;
+
+	.mw-ge-addImageDesktopArticleTarget-progressBar {
+		height: 0.875em;
+		margin: 0 25%;
 	}
 }
