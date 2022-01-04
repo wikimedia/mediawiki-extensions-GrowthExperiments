@@ -3,6 +3,7 @@
 
 namespace GrowthExperiments;
 
+use ChangeTags;
 use CirrusSearch\Search\CirrusIndexField;
 use CirrusSearch\SearchConfig;
 use CirrusSearch\Wikimedia\WeightedTagsHooks;
@@ -29,6 +30,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\ImageRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\StructuredTaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskType;
+use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandler;
 use GrowthExperiments\NewcomerTasks\TaskType\TaskTypeHandlerRegistry;
 use GrowthExperiments\NewcomerTasks\TaskType\TemplateBasedTaskType;
 use GrowthExperiments\NewcomerTasks\Tracker\TrackerFactory;
@@ -45,6 +47,7 @@ use MediaWiki\Minerva\Menu\Entries\HomeMenuEntry;
 use MediaWiki\Minerva\Menu\Entries\IProfileMenuEntry;
 use MediaWiki\Minerva\Menu\Group;
 use MediaWiki\Minerva\SkinOptions;
+use MediaWiki\Storage\Hook\PageSaveCompleteHook;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserOptionsLookup;
 use MediaWiki\User\UserOptionsManager;
@@ -86,7 +89,8 @@ class HomepageHooks implements
 	\MediaWiki\User\Hook\ConfirmEmailCompleteHook,
 	\MediaWiki\Hook\SiteNoticeAfterHook,
 	\MediaWiki\Content\Hook\SearchDataForIndexHook,
-	\MediaWiki\Hook\FormatAutocommentsHook
+	\MediaWiki\Hook\FormatAutocommentsHook,
+	PageSaveCompleteHook
 {
 	use GrowthConfigLoaderStaticTrait;
 
@@ -1355,4 +1359,32 @@ class HomepageHooks implements
 		$extraFeatures[] = $templateCollectionFeature;
 	}
 
+	/** @inheritDoc */
+	public function onPageSaveComplete( $wikiPage, $user, $summary, $flags, $revisionRecord, $editResult ) {
+		// Monitoring: increment counters in statsd for reverted newcomer task edits.
+		if ( $editResult->isRevert() ) {
+			$revId = $editResult->getNewestRevertedRevisionId();
+			if ( !$revId ) {
+				return;
+			}
+			$tags = ChangeTags::getTags(
+				$this->lb->getConnection( DB_REPLICA ),
+				null,
+				$revId
+			);
+			foreach ( $tags as $tag ) {
+				if ( $tag === TaskTypeHandler::NEWCOMER_TASK_TAG ) {
+					$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.NewcomerTask.Reverted' );
+				} elseif ( in_array(
+					$tag,
+					[ LinkRecommendationTaskTypeHandler::CHANGE_TAG, ImageRecommendationTaskTypeHandler::CHANGE_TAG ]
+				) ) {
+					$taskTypeId = $tag === LinkRecommendationTaskTypeHandler::CHANGE_TAG ? 'AddLink' : 'AddImage';
+					$this->perDbNameStatsdDataFactory->increment(
+						'GrowthExperiments.NewcomerTask.Reverted.' . $taskTypeId
+					);
+				}
+			}
+		}
+	}
 }
