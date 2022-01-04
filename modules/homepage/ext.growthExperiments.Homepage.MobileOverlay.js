@@ -70,7 +70,7 @@
 
 			this.options.headers = [
 				header(
-					options.heading,
+					mw.html.escape( options.heading ),
 					headerActions,
 					icons.back(),
 					'initial-header homepage-module-overlay-header'
