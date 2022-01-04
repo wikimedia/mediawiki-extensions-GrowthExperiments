@@ -491,7 +491,7 @@ class SuggestedEdits extends BaseModule {
 		if ( $showTaskPreview ) {
 			$taskPager = $this->getContext()->msg( 'growthexperiments-homepage-suggestededits-pager' )
 				->numParams( 1, $tasks->getTotalCount() )
-				->text();
+				->parse();
 			$button = new ButtonWidget( [
 				'label' => $this->getContext()->msg(
 					'growthexperiments-homepage-suggestededits-mobilesummary-footer-button' )->text(),

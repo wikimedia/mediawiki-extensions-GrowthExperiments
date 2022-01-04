@@ -91,7 +91,7 @@
 		pageViewsMessage = this.data.pageviews ? mw.message(
 			'growthexperiments-homepage-suggestededits-pageviews',
 			mw.language.convertNumber( this.data.pageviews )
-		).text() : '';
+		).escaped() : '';
 		$textContent.append(
 			$pageViews.append(
 				new OO.ui.IconWidget( { icon: 'chart' } ).toggle( this.data.extraDataLoaded ).$element,

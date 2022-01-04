@@ -34,7 +34,7 @@ OO.mixinClass( AddLinkSaveDialog, StructuredTaskSaveDialog );
  * @return {jQuery}
  */
 AddLinkSaveDialog.prototype.getSuggestionStateHeader = function () {
-	return $( '<th>' ).append(
+	return $( '<th>' ).text(
 		mw.message( 'growthexperiments-addlink-summary-column-header-linked' ).text()
 	);
 };
@@ -47,7 +47,7 @@ AddLinkSaveDialog.prototype.getSuggestionStateHeader = function () {
 AddLinkSaveDialog.prototype.getSummaryTableHeader = function () {
 	var $suggestionCol = $( '<th>' ).append(
 		new OO.ui.IconWidget( { icon: 'robot-black' } ).$element,
-		$( '<span>' ).addClass( 'aligner' ).append(
+		$( '<span>' ).addClass( 'aligner' ).text(
 			mw.message( 'growthexperiments-addlink-summary-column-header-suggestion' ).text()
 		)
 	);
@@ -64,7 +64,7 @@ AddLinkSaveDialog.prototype.initialize = function () {
 	// Table content is set on dialog open as it needs to be dynamic.
 	this.$summaryTable = $( '<table>' ).addClass( 'ge-addlink-mwSaveDialog-summaryTable' );
 	this.$summaryTable.append(
-		$( '<caption>' ).append(
+		$( '<caption>' ).text(
 			mw.message( 'growthexperiments-addlink-summary-title' ).text()
 		),
 		$( '<thead>' ).append(
