@@ -21,5 +21,7 @@
 	"apihelp-growthsetmenteestatus-param-state-enabled": "Le module de tutorat est activé",
 	"apihelp-growthsetmenteestatus-param-state-disabled": "Le module de tutorat est complètement désactivé. Cela est normalement définir par le logiciel et utilisé pour les tests A/B.",
 	"apihelp-growthsetmenteestatus-param-state-optout": "Le tutoré est sorti du tutorat ; la relation tutoré/tuteur sera supprimée, le module de tutorat sera remplacé par une possibilité de revenir",
-	"apihelp-query+growthmenteestatus-summary": "Requêter l’état de tutoré de l’utilisateur courant ; voir la documentation de action=growthsetmentorweight pour des informations détaillées sur les états individuels."
+	"apihelp-query+growthmenteestatus-summary": "Requêter l’état de tutoré de l’utilisateur courant ; voir la documentation de action=growthsetmentorweight pour des informations détaillées sur les états individuels.",
+	"apihelp-query+growthmentormentee-summary": "Obtenir tous les tutorés affectés à un tuteur donné",
+	"apihelp-query+growthmentormentee-param-gemmmentor": "Tuteur pour lequel rechercher les tutorés"
 }

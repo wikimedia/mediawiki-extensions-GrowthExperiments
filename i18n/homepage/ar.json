@@ -461,6 +461,7 @@
 	"growthexperiments-newcomertasks-invalid-tasktype": "نوع اقتراح غير صالح: $1",
 	"growthexperiments-addimage-caption-title": "إضافة شرح",
 	"growthexperiments-addimage-loading-title": "تحميل معاينة الصورة…",
+	"growthexperiments-addimage-submitting-title": "إرسال…",
 	"growthexperiments-addimage-caption-placeholder": "{{GENDER:|اكتب|اكتبي}} شرحا صغيرا يصف ارتباط هذه الصورة بـ <strong>$1</strong>",
 	"growthexperiments-addimage-caption-info-dialog-title": "كتابة شرح يتماشى مع الصورة في المقالة.",
 	"growthexperiments-addimage-caption-info-dialog-message": "قرّاء <strong>$1</strong> سيرون الشرح معروضا أسفل الصورة.",

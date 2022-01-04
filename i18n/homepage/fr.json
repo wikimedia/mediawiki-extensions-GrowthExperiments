@@ -479,6 +479,7 @@
 	"growthexperiments-newcomertasks-invalid-tasktype": "Type(s) de tâche non valide(s) : $1",
 	"growthexperiments-addimage-caption-title": "Ajouter une légende",
 	"growthexperiments-addimage-loading-title": "Chargement de l’aperçu de l’image…",
+	"growthexperiments-addimage-submitting-title": "Soumission…",
 	"growthexperiments-addimage-caption-placeholder": "Écrire une courte légende décrivant comment cette image est liée à <strong>$1</strong>",
 	"growthexperiments-addimage-caption-info-dialog-title": "Rédigez une légende pour accompagner l'image dans l'article.",
 	"growthexperiments-addimage-caption-info-dialog-message": "Les lecteurs de <strong>$1</strong> verront la légende affichée sous l'image.",

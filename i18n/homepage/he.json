@@ -453,6 +453,7 @@
 	"growthexperiments-newcomertasks-invalid-tasktype": "סוג משימה בלתי־תקין: $1",
 	"growthexperiments-addimage-caption-title": "הוספת כיתוב",
 	"growthexperiments-addimage-loading-title": "טעימת תצוגה מקדימה של תמונה...",
+	"growthexperiments-addimage-submitting-title": "נשלח...",
 	"growthexperiments-addimage-caption-placeholder": "{{GENDER||:|רשום|רשמי}} כיתוב קצר שמתאר איך התמונה הזאת רלוונטית לדף <strong>$1</strong>",
 	"growthexperiments-addimage-caption-info-dialog-title": "{{GENDER:|רשום|רשמי}} כיתוב שילך עם התמונה בערך",
 	"growthexperiments-addimage-caption-info-dialog-message": "קוראי הערך <strong>$1</strong> יראו את הכיתוב מוצג מתחת לתמונה.",
