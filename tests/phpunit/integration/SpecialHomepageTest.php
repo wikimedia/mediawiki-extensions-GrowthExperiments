@@ -43,6 +43,7 @@ class SpecialHomepageTest extends SpecialPageTestBase {
 			$growthExperimentsServices->getHomepageModuleRegistry(),
 			$growthExperimentsServices->getNewcomerTaskTrackerFactory(),
 			MediaWikiServices::getInstance()->getStatsdDataFactory(),
+			MediaWikiServices::getInstance()->getPerDbNameStatsdDataFactory(),
 			$growthExperimentsServices->getExperimentUserManager(),
 			// This would normally be wiki-powered config, but
 			// there is no need to test this

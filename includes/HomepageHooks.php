@@ -147,13 +147,11 @@ class HomepageHooks implements
 	private $linkRecommendationHelper;
 	/** @var SuggestionsInfo */
 	private $suggestionsInfo;
+	/** @var PrefixingStatsdDataFactoryProxy */
+	private $perDbNameStatsdDataFactory;
 
 	/** @var bool Are we in a context where it is safe to access the primary DB? */
 	private $canAccessPrimary;
-	/**
-	 * @var IBufferingStatsdDataFactory
-	 */
-	private $perDbNameStatsdDataFactory;
 
 	/**
 	 * @param Config $config Uses PHP globals
@@ -239,6 +237,7 @@ class HomepageHooks implements
 					$this->moduleRegistry,
 					$this->trackerFactory,
 					$this->statsdDataFactory,
+					$this->perDbNameStatsdDataFactory,
 					$this->experimentUserManager,
 					$this->wikiConfig,
 					$this->userOptionsManager

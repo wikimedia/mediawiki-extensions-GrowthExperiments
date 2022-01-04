@@ -20,6 +20,7 @@ use GrowthExperiments\Util;
 use Html;
 use IBufferingStatsdDataFactory;
 use MediaWiki\User\UserOptionsManager;
+use PrefixingStatsdDataFactoryProxy;
 use SpecialPage;
 use StatusValue;
 use Throwable;
@@ -51,10 +52,14 @@ class SpecialHomepage extends SpecialPage {
 	 */
 	private $pageviewToken;
 
+	/** @var PrefixingStatsdDataFactoryProxy */
+	private $perDbNameStatsdDataFactory;
+
 	/**
 	 * @param HomepageModuleRegistry $moduleRegistry
 	 * @param TrackerFactory $trackerFactory
 	 * @param IBufferingStatsdDataFactory $statsdDataFactory
+	 * @param PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory
 	 * @param ExperimentUserManager $experimentUserManager
 	 * @param Config $wikiConfig
 	 * @param UserOptionsManager $userOptionsManager
@@ -63,6 +68,7 @@ class SpecialHomepage extends SpecialPage {
 		HomepageModuleRegistry $moduleRegistry,
 		TrackerFactory $trackerFactory,
 		IBufferingStatsdDataFactory $statsdDataFactory,
+		PrefixingStatsdDataFactoryProxy $perDbNameStatsdDataFactory,
 		ExperimentUserManager $experimentUserManager,
 		Config $wikiConfig,
 		UserOptionsManager $userOptionsManager
@@ -75,6 +81,7 @@ class SpecialHomepage extends SpecialPage {
 		$this->experimentUserManager = $experimentUserManager;
 		$this->wikiConfig = $wikiConfig;
 		$this->userOptionsManager = $userOptionsManager;
+		$this->perDbNameStatsdDataFactory = $perDbNameStatsdDataFactory;
 	}
 
 	/**
@@ -406,6 +413,7 @@ class SpecialHomepage extends SpecialPage {
 				'gesuggestededit' => 1 ],
 			$suggestedEdits instanceof SuggestedEdits ? $suggestedEdits->getRedirectParams( $taskTypeId ) : []
 		);
+		$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.NewcomerTask.' . $taskTypeId . '.Click' );
 		$this->getOutput()->redirect(
 			$tracker->getTitleUrl( $redirectParams )
 		);
