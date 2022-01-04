@@ -99,10 +99,13 @@
 }
 
 .mw-ge-addImage--overlay-shown {
+	@toolbarHeight: 50px;
+
 	&:before {
 		content: '';
 		position: fixed;
-		top: 0;
+		// Show the toolbar (the overlay applies to the entire document not just the article content)
+		top: @toolbarHeight;
 		bottom: 0;
 		left: 0;
 		right: 0;
