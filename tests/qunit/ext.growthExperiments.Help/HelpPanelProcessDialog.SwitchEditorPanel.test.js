@@ -10,6 +10,5 @@ QUnit.test( 'constructor', function ( assert ) {
 	const switchEditorPanel = new SwitchEditorPanel( {
 		preferredEditor: 'visualeditor'
 	} );
-	assert.ok( true );
 	assert.strictEqual( switchEditorPanel.preferredEditor, 'visualeditor' );
 } );

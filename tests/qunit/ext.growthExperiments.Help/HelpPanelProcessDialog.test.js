@@ -42,7 +42,7 @@ QUnit.test( 'getDefaultPanelForSuggestedEditSession for copyedit', function ( as
 	const helpPanelProcessDialog = new HelpPanelProcessDialog( {
 		suggestedEditSession: copyEditRecommendationSuggestedEditSession
 	} );
-	assert.notOk( helpPanelProcessDialog.getDefaultPanelForSuggestedEditSession() );
+	assert.strictEqual( helpPanelProcessDialog.getDefaultPanelForSuggestedEditSession(), undefined );
 } );
 
 QUnit.test( 'updateEditMode for link-recommendation', function ( assert ) {
@@ -61,7 +61,7 @@ QUnit.test( 'updateEditMode for link-recommendation', function ( assert ) {
 	sandbox.stub( helpPanelProcessDialog, 'updateMode' );
 	const spy = sandbox.spy( helpPanelProcessDialog, 'swapPanel' );
 	helpPanelProcessDialog.updateEditMode();
-	assert.ok( spy.notCalled );
+	assert.true( spy.notCalled );
 } );
 
 QUnit.test( 'updateEditMode for copyedit, isEditing', function ( assert ) {
@@ -80,5 +80,5 @@ QUnit.test( 'updateEditMode for copyedit, isEditing', function ( assert ) {
 	sandbox.stub( helpPanelProcessDialog, 'updateMode' );
 	const spy = sandbox.stub( helpPanelProcessDialog, 'swapPanel' );
 	helpPanelProcessDialog.updateEditMode();
-	assert.ok( spy.calledWith( 'home' ) );
+	assert.true( spy.calledWith( 'home' ) );
 } );

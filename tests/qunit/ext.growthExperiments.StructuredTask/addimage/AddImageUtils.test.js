@@ -25,7 +25,7 @@ const getMetadata = ( overrides = {} ) => {
  * @return {string}
  */
 const getThumbUrl = ( size ) => {
-	return `https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/HMS_Pandora.jpg/${size}px-HMS_Pandora.jpg`;
+	return 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/HMS_Pandora.jpg/' + size + 'px-HMS_Pandora.jpg';
 };
 
 QUnit.module( 'ext.growthExperiments.StructuredTask/addimage/AddImageUtils.js', QUnit.newMwEnvironment( {
