@@ -2,42 +2,41 @@
 
 namespace GrowthExperiments\Tests;
 
-use CachedBagOStuff;
 use GrowthExperiments\Mentorship\Store\MentorStore;
 use HashBagOStuff;
 use MediaWiki\User\UserIdentity;
 use MediaWikiIntegrationTestCase;
+use WANObjectCache;
 use Wikimedia\TestingAccessWrapper;
 
 abstract class MentorStoreTestCase extends MediaWikiIntegrationTestCase {
+
+	/** @var WANObjectCache */
+	protected $wanCache;
+
+	protected function setUp(): void {
+		parent::setUp();
+
+		$this->wanCache = new WANObjectCache( [ 'cache' => new HashBagOStuff() ] );
+	}
 
 	public function testGetSet() {
 		$mentee = $this->getMutableTestUser()->getUser();
 		$mentor = $this->getMutableTestUser()->getUser();
 		$store = $this->getStore( true );
 
-		$cache = new HashBagOStuff();
-		$store->setCache( $cache, 1000 );
-		/** @var CachedBagOStuff $multiCache */
-		$multiCache = TestingAccessWrapper::newFromObject( $store )->cache;
-		/** @var HashBagOStuff $inProcessCache */
-		$inProcessCache = TestingAccessWrapper::newFromObject( $multiCache )->procCache;
-
 		$this->assertNull( $store->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY ) );
 		$store->setMentorForUser( $mentee, $mentor, MentorStore::ROLE_PRIMARY );
 
-		// read from in-process cache
+		// read from cache
 		$actualMentor = $store->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY );
 		$this->assertSameUser( $mentor, $actualMentor );
 
-		// read from external cache
-		$inProcessCache->clear();
-		$actualMentor = $store->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY );
-		$this->assertSameUser( $mentor, $actualMentor );
-
-		// read from disk
-		$inProcessCache->clear();
-		$cache->clear();
+		// delete and calculate again
+		TestingAccessWrapper::newFromObject( $store )->invalidateMentorCache(
+			$mentee,
+			MentorStore::ROLE_PRIMARY
+		);
 		$actualMentor = $store->loadMentorUser( $mentee, MentorStore::ROLE_PRIMARY );
 		$this->assertSameUser( $mentor, $actualMentor );
 	}

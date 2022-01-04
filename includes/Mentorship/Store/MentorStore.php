@@ -2,16 +2,14 @@
 
 namespace GrowthExperiments\Mentorship\Store;
 
-use BagOStuff;
-use CachedBagOStuff;
 use DBAccessObjectUtils;
-use HashBagOStuff;
 use IDBAccessObject;
 use InvalidArgumentException;
 use MediaWiki\User\UserIdentity;
-use MediaWiki\User\UserIdentityValue;
+use WANObjectCache;
+use Wikimedia\LightweightObjectStore\ExpirationAwareness;
 
-abstract class MentorStore implements IDBAccessObject {
+abstract class MentorStore implements IDBAccessObject, ExpirationAwareness {
 	/** @var string */
 	public const ROLE_PRIMARY = 'primary';
 
@@ -24,33 +22,25 @@ abstract class MentorStore implements IDBAccessObject {
 		self::ROLE_BACKUP
 	];
 
-	/** @var BagOStuff */
-	protected $cache;
+	/** @var WANObjectCache */
+	protected $wanCache;
 
-	/** @var int */
-	protected $cacheTtl = 0;
+	/** @var array Cache key =>¨value; custom in-process cache */
+	protected $inProcessCache = [];
 
 	/** @var bool */
 	protected $wasPosted;
 
 	/**
+	 * @param WANObjectCache $wanCache
 	 * @param bool $wasPosted
 	 */
 	public function __construct(
+		WANObjectCache $wanCache,
 		bool $wasPosted
 	) {
-		$this->cache = new HashBagOStuff();
+		$this->wanCache = $wanCache;
 		$this->wasPosted = $wasPosted;
-	}
-
-	/**
-	 * Use a different cache. (Default is in-process caching only.)
-	 * @param BagOStuff $cache
-	 * @param int $ttl Cache expiry (0 for unlimited).
-	 */
-	public function setCache( BagOStuff $cache, int $ttl ) {
-		$this->cache = new CachedBagOStuff( $cache );
-		$this->cacheTtl = $ttl;
 	}
 
 	/**
@@ -60,7 +50,7 @@ abstract class MentorStore implements IDBAccessObject {
 	 * @return string Cache key
 	 */
 	protected function makeCacheKey( UserIdentity $user, string $mentorRole ): string {
-		return $this->cache->makeKey(
+		return $this->wanCache->makeKey(
 			'GrowthExperiments',
 			'MentorStore', __CLASS__,
 			'Mentee', $user->getId(),
@@ -74,9 +64,11 @@ abstract class MentorStore implements IDBAccessObject {
 	 * @param string $mentorRole
 	 */
 	protected function invalidateMentorCache( UserIdentity $user, string $mentorRole ): void {
-		$this->cache->delete(
-			$this->makeCacheKey( $user, $mentorRole )
+		$key = $this->makeCacheKey( $user, $mentorRole );
+		$this->wanCache->delete(
+			$key
 		);
+		unset( $this->inProcessCache[$key] );
 	}
 
 	/**
@@ -115,13 +107,20 @@ abstract class MentorStore implements IDBAccessObject {
 			$this->invalidateMentorCache( $mentee, $mentorRole );
 		}
 
-		return $this->cache->getWithSetCallback(
-			$this->makeCacheKey( $mentee, $mentorRole ),
-			$this->cacheTtl,
+		$cacheKey = $this->makeCacheKey( $mentee, $mentorRole );
+		if ( isset( $this->inProcessCache[$cacheKey] ) ) {
+			return $this->inProcessCache[$cacheKey];
+		}
+
+		$res = $this->wanCache->getWithSetCallback(
+			$cacheKey,
+			self::TTL_DAY,
 			function () use ( $mentee, $mentorRole, $flags ) {
 				return $this->loadMentorUserUncached( $mentee, $mentorRole, $flags );
 			}
 		);
+		$this->inProcessCache[$cacheKey] = $res;
+		return $res;
 	}
 
 	/**
@@ -188,12 +187,7 @@ abstract class MentorStore implements IDBAccessObject {
 		$this->invalidateMentorCache( $mentee, $mentorRole );
 
 		// Set the mentor in the in-process cache
-		$this->cache->set(
-			$this->makeCacheKey( $mentee, $mentorRole ),
-			$mentor ? new UserIdentityValue( $mentor->getId(), $mentor->getName() ) : null,
-			$this->cacheTtl,
-			BagOStuff::WRITE_CACHE_ONLY
-		);
+		$this->inProcessCache[$this->makeCacheKey( $mentee, $mentorRole )] = $mentor;
 	}
 
 	/**

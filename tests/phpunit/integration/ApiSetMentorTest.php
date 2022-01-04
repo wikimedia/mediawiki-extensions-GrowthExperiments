@@ -5,12 +5,14 @@ namespace GrowthExperiments\Tests;
 use ApiTestCase;
 use ApiUsageException;
 use GrowthExperiments\Mentorship\Store\DatabaseMentorStore;
+use HashBagOStuff;
 use JobQueueGroup;
 use MediaWiki\User\UserFactory;
 use MediaWiki\User\UserIdentity;
 use MediaWiki\User\UserIdentityLookup;
 use PHPUnit\Framework\Constraint\Constraint;
 use User;
+use WANObjectCache;
 use Wikimedia\Rdbms\IDatabase;
 
 /**
@@ -145,6 +147,7 @@ class ApiSetMentorTest extends ApiTestCase {
 	private function getMockMentorStore( UserIdentity $mentee, UserIdentity $mentor ) {
 		$mock = $this->getMockBuilder( DatabaseMentorStore::class )
 			->setConstructorArgs( [
+				new WANObjectCache( [ 'cache' => new HashBagOStuff() ] ),
 				$this->getMockBuilder( UserFactory::class )
 					->disableOriginalConstructor()
 					->getMock(),

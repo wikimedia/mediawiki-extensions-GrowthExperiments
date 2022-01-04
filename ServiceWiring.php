@@ -422,7 +422,8 @@ return [
 		$geServices = GrowthExperimentsServices::wrap( $services );
 		$lb = $geServices->getLoadBalancer();
 
-		$databaseMentorStore = new DatabaseMentorStore(
+		return new DatabaseMentorStore(
+			$services->getMainWANObjectCache(),
 			$services->getUserFactory(),
 			$services->getUserIdentityLookup(),
 			$services->getJobQueueGroup(),
@@ -432,11 +433,6 @@ return [
 				$geServices->getGrowthConfig()->get( 'CommandLineMode' ) ||
 				RequestContext::getMain()->getRequest()->wasPosted()
 		);
-		$databaseMentorStore->setCache(
-			ObjectCache::getLocalClusterInstance(),
-			CachedBagOStuff::TTL_DAY
-		);
-		return $databaseMentorStore;
 	},
 
 	'GrowthExperimentsMentorWeightManager' => static function (
