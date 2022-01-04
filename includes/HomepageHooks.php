@@ -730,6 +730,7 @@ class HomepageHooks implements
 			$geForceVariant !== null ||
 			rand( 0, 99 ) < $enablePercentage
 		) {
+			$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.UsersOptedIntoGrowthFeatures' );
 			$this->userOptionsManager->setOption( $user, self::HOMEPAGE_PREF_ENABLE, 1 );
 			$this->userOptionsManager->setOption( $user, self::HOMEPAGE_PREF_PT_LINK, 1 );
 			// Default option is that the user has seen the tours/notices (so we don't prompt
@@ -769,6 +770,7 @@ class HomepageHooks implements
 				$variant = $this->experimentUserManager->getRandomVariant();
 			}
 			$this->experimentUserManager->setVariant( $user, $variant );
+			$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.UserVariant.' . $variant );
 
 			if ( SuggestedEdits::isEnabledForAnyone( $this->config ) ) {
 				// Populate the cache of tasks with default task/topic selections
@@ -785,6 +787,8 @@ class HomepageHooks implements
 					);
 				} );
 			}
+		} else {
+			$this->perDbNameStatsdDataFactory->increment( 'GrowthExperiments.UsersNotOptedIntoGrowthFeatures' );
 		}
 	}
 
