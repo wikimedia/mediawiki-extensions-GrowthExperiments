@@ -636,6 +636,7 @@ AddImageArticleTarget.prototype.saveWithoutShowingDialog = function () {
 		mw.message( 'growthexperiments-addimage-submitting-title' ).text(),
 		true
 	);
+	this.toggleEditModeTool( false );
 };
 
 /** @inheritDoc **/
