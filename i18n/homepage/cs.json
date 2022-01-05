@@ -459,6 +459,7 @@
 	"growthexperiments-newcomertasks-invalid-tasktype": "Neplatný typ úkolu: $1",
 	"growthexperiments-addimage-caption-title": "Přidat popisek",
 	"growthexperiments-addimage-loading-title": "Obrázek se načítá...",
+	"growthexperiments-addimage-submitting-title": "Odesílání...",
 	"growthexperiments-addimage-caption-placeholder": "Napište krátký popisek, ve kterém vysvětlíte, jak se tento obrázek týká článku <strong>$1</strong>",
 	"growthexperiments-addimage-caption-info-dialog-title": "Napište krátký popisek, který se v článku zobrazí spolu s obrázkem.",
 	"growthexperiments-addimage-caption-info-dialog-message": "Čtenáři článku <strong>$1</strong> uvidí váš popisek pod obrázkem.",

@@ -15,5 +15,7 @@
 	"apihelp-growthsetmentor-summary": "Définir le tuteur de l’utilisateur. La modification sera tracée publiquement.",
 	"apihelp-growthsetmentor-param-mentee": "Nom d’utilisateur du tutoré",
 	"apihelp-growthsetmentor-param-mentor": "Nom d’utilisateur du tuteur",
-	"apihelp-growthsetmentor-param-reason": "Motif du changement"
+	"apihelp-growthsetmentor-param-reason": "Motif du changement",
+	"apihelp-growthinvalidateimagerecommendation-summary": "Invalider la tâche de recommandation d’image",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "Titre de l’article pour lequel est la tâche de recommandation d’image"
 }

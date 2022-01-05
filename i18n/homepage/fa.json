@@ -454,6 +454,7 @@
 	"growthexperiments-newcomertasks-invalid-tasktype": "نوع وظیفهٔ $1 معتبر نیست",
 	"growthexperiments-addimage-caption-title": "افزودن یک توضیح",
 	"growthexperiments-addimage-loading-title": "بارگیری پیش‌نمایش تصویر...",
+	"growthexperiments-addimage-submitting-title": "در حال ثبت...",
 	"growthexperiments-addimage-caption-placeholder": "توضیح کوتاهی بنویسید که ارتباط این تصویر با <strong>$1</strong> را توضیح دهد",
 	"growthexperiments-addimage-caption-info-dialog-title": "توضیحی برای درج در مقاله به‌همراه تصویر بنویسید",
 	"growthexperiments-addimage-caption-info-dialog-message": "خوانندگان مقاله، توضیحی که به‌همراه تصویر نمایش می‌يابد را خواهند دید. چند رهنمود:",
