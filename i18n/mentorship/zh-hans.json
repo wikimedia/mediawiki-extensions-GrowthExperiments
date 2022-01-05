@@ -7,7 +7,8 @@
 			"Xiplus",
 			"Stang",
 			"范",
-			"Tiger"
+			"Tiger",
+			50829
 		]
 	},
 	"growthexperiments-mentor-dashboard-title": "导师控制面板",
@@ -50,7 +51,7 @@
 	"growthexperiments-mentor-dashboard-resources-link-how-to-introduce": "如何作为一个导师来介绍你自己",
 	"growthexperiments-mentor-dashboard-resources-link-claim-mentee": "如何认领一个学员",
 	"growthexperiments-mentor-dashboard-resources-link-tools": "Growth工具",
-	"growthexperiments-rcfilters-mentorship-title": "导师计画",
+	"growthexperiments-rcfilters-mentorship-title": "导师计划",
 	"growthexperiments-rcfilters-mentorship-starred-label": "{{GENDER:|您}}标记星号的学员",
 	"growthexperiments-rcfilters-mentorship-starred-desc": "分配给{{GENDER:|您}}且{{GENDER:|you}}在{{GENDER:|您}}的导师面板上标记星号的学员",
 	"growthexperiments-rcfilters-mentorship-unstarred-label": "{{GENDER:|您}}未标记星号的学员",
