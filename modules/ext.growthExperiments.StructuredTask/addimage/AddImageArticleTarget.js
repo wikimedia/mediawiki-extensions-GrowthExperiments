@@ -94,9 +94,14 @@ AddImageArticleTarget.prototype.afterSurfaceReady = function () {
 		this.targetToolbar = OO.ui.isMobile() ? this.getToolbar() : this.getActions();
 		// Save button will be shown during caption step
 		this.toggleSaveTool( false );
-		this.getSurface().executeCommand( 'recommendedImage' );
-		// On desktop, onboarding is shown after the editor loads.
-		if ( !OO.ui.isMobile() ) {
+		if ( OO.ui.isMobile() ) {
+			this.getSurface().executeCommand( 'recommendedImage' );
+		} else {
+			// On desktop, onboarding is shown after the editor loads and the inspector is shown
+			// upon closing onboarding.
+			mw.hook( 'growthExperiments.structuredTask.onboardingCompleted' ).add( function () {
+				this.getSurface().executeCommand( 'recommendedImage' );
+			}.bind( this ) );
 			mw.hook( 'growthExperiments.structuredTask.showOnboardingIfNeeded' ).fire();
 		}
 		this.logger.log( 'impression', {}, {

@@ -1,9 +1,10 @@
 @import '../lib/wikimedia-ui-base/wikimedia-ui-base.less';
 @import '../homepage/ext.growthExperiments.variables.less';
 
+@navHeight: 48px;
+
 .mw-ge-structuredTaskToolbarDialog {
 	background: @wmui-color-base100;
-	@navHeight: 48px;
 
 	&.ve-ui-toolbarDialog-position-below {
 		border-top: 1px solid @wmui-color-base70;
@@ -48,5 +49,17 @@
 			margin-left: 0.5em;
 			opacity: 0.65;
 		}
+	}
+
+	&-headerButton {
+		cursor: pointer;
+	}
+}
+
+.mw-footer {
+	// Additional specificity to override default styles
+	.footer-places--with-mw-ge-structuredTaskToolbarDialog {
+		// Prevent the footer links from being covered when the toolbar dialog is collapsed on desktop
+		padding-bottom: @navHeight;
 	}
 }

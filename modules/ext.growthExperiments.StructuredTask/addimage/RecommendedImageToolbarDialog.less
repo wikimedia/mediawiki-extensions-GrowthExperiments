@@ -43,6 +43,7 @@
 	}
 
 	.mw-ge-recommendedImageToolbarDialog-image-thumbnail {
+		cursor: pointer;
 		flex: 0 0 160px;
 		height: 120px;
 		background-color: @wmui-color-base80;
@@ -142,6 +143,26 @@
 	.mw-ge-recommendedImageToolbarDialog-buttons-skip {
 		.oo-ui-labelElement-label {
 			color: @wmui-color-base20;
+		}
+	}
+
+	&-desktop {
+		@baseFontSize: 14px;
+		width: 480px;
+		margin: auto;
+		border: 1px solid @wmui-color-base70;
+		box-shadow: inset -1px 0 0 @wmui-color-base50, inset 1px 0 0 @wmui-color-base50, inset 0 1px 0 @wmui-color-base50, inset 0 -1px 0 @wmui-color-base50;
+		filter: drop-shadow( 0 4px 4px rgba( 0, 0, 0, 0.25 ) );
+
+		.mw-ge-recommendedImageToolbarDialog-reason,
+		.mw-ge-recommendedImageToolbarDialog-description,
+		.mw-ge-recommendedImageToolbarDialog-addImageCta,
+		.mw-ge-recommendedImageToolbarDialog-details-button {
+			.rel-font-size-and-line-height( @parentFontSize: @baseFontSize, @targetFontSize: 12.4px, @targetLineHeight: 17.3px );
+		}
+
+		.mw-ge-recommendedImageToolbarDialog-filename {
+			.rel-font-size-and-line-height( @parentFontSize: @baseFontSize, @targetFontSize: 13px, @targetLineHeight: 18px );
 		}
 	}
 }
