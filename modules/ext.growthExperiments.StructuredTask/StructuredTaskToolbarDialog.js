@@ -186,20 +186,11 @@ StructuredTaskToolbarDialog.prototype.getSuggestionLogActionData = function () {
 };
 
 /**
- * Navigate to suggested edits feed (Special:Homepage on desktop and suggested edits overlay on top
- * of Special:Homepage on mobile)
+ * Navigate to suggested edits feed
  */
 StructuredTaskToolbarDialog.prototype.goToSuggestedEdits = function () {
-	var titleHash = '', queryParams = {
-		source: 'suggestion-skip'
-	};
-	if ( OO.ui.isMobile() ) {
-		titleHash = '#/homepage/suggested-edits';
-		queryParams.overlay = 1;
-	}
-	window.location.href = mw.Title.newFromText(
-		'Special:Homepage' + titleHash
-	).getUrl( queryParams );
+	var Utils = require( '../utils/ext.growthExperiments.Utils.js' );
+	window.location.href = Utils.getSuggestedEditsFeedUrl( 'suggestion-skip' );
 };
 
 module.exports = StructuredTaskToolbarDialog;

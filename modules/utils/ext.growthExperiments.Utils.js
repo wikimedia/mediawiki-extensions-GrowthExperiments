@@ -193,6 +193,26 @@
 		return updateTaskPreference( prefData );
 	}
 
+	/**
+	 * Get the URL to the suggested edits feed (Special:Homepage on desktop and suggested edits
+	 * overlay on top of Special:Homepage on mobile)
+	 *
+	 * @param {string} source How the user arrived Special:Homepage; value should correspond to
+	 *  referer_route enum in HomepageVisit schema
+	 */
+	function getSuggestedEditsFeedUrl( source ) {
+		var titleHash = '', queryParams = {
+			source: source
+		};
+		if ( OO.ui.isMobile() ) {
+			titleHash = '#/homepage/suggested-edits';
+			queryParams.overlay = 1;
+		}
+		return mw.Title.newFromText(
+			'Special:Homepage' + titleHash
+		).getUrl( queryParams );
+	}
+
 	// Expose some methods for debugging.
 	window.ge = window.ge || {};
 	ge.utils = {
@@ -209,7 +229,8 @@
 		isUserInVariant: isUserInVariant,
 		getUserVariant: getUserVariant,
 		formatTitle: formatTitle,
-		isUserEligibleForAddImageDesktop: isUserEligibleForAddImageDesktop
+		isUserEligibleForAddImageDesktop: isUserEligibleForAddImageDesktop,
+		getSuggestedEditsFeedUrl: getSuggestedEditsFeedUrl
 	};
 
 }() );
