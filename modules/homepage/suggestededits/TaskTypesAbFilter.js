@@ -65,7 +65,8 @@
 	}
 
 	/**
-	 * Check whether the image recommendations on desktop are enabled for the current user.
+	 * Update the description for image recommendation task type if the user is eligible
+	 * for the full desktop experience since the default copy says that the task is mobile-only
 	 *
 	 * @param {Object|undefined} taskTypeData Image recommendation data (from TaskTypes.json)
 	 */
