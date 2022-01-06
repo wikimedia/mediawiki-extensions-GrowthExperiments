@@ -931,7 +931,7 @@
 	}
 
 	// Try setup for desktop mode and server-side-rendered mobile mode.
-	// See also the comment in ext.growthExperiments.Homepage.Mentorship.js.
+	// See also the comment in ext.growthExperiments.Homepage.Mentorship/index.js.
 	// Export setup state so the caller can wait for it when setting up the module
 	// on the client side.
 	// eslint-disable-next-line no-jquery/no-global-selector

@@ -153,7 +153,7 @@
 	}
 
 	// Try setup for desktop mode and server-side-rendered mobile mode
-	// See also the comment in ext.growthExperiments.Homepage.Mentorship.js
+	// See also the comment in ext.growthExperiments.Homepage.Mentorship/index.js.
 	// eslint-disable-next-line no-jquery/no-global-selector
 	setupCtaButton( $( '.growthexperiments-homepage-container' ) );
 	// eslint-disable-next-line no-jquery/no-global-selector

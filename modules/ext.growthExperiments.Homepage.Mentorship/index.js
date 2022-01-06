@@ -1,5 +1,5 @@
 ( function () {
-	var attachButton = require( './ext.growthExperiments.Homepage.QuestionPoster.js' ),
+	var attachButton = require( './QuestionPoster.js' ),
 		config = {
 			buttonSelector: '#mw-ge-homepage-mentorship-cta',
 			context: 'homepage_mentorship',

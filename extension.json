@@ -568,7 +568,7 @@
 		},
 		"ext.growthExperiments.Homepage.RecentQuestions": {
 			"packageFiles": [
-				"homepage/ext.growthExperiments.Homepage.RecentQuestions.js"
+				"ext.growthExperiments.Homepage.RecentQuestions/index.js"
 			],
 			"messages": [
 				"growthexperiments-homepage-recent-questions-header"
@@ -583,7 +583,7 @@
 		},
 		"ext.growthExperiments.Homepage.Impact": {
 			"packageFiles": [
-				"homepage/ext.growthExperiments.Homepage.Impact.js"
+				"ext.growthExperiments.Homepage.Impact/index.js"
 			],
 			"messages": [
 				"growthexperiments-homepage-impact-empty-pageviews-tooltip-button"
@@ -599,8 +599,8 @@
 		},
 		"ext.growthExperiments.Homepage.Mentorship": {
 			"packageFiles": [
-				"homepage/ext.growthExperiments.Homepage.Mentorship.js",
-				"homepage/ext.growthExperiments.Homepage.QuestionPoster.js"
+				"ext.growthExperiments.Homepage.Mentorship/index.js",
+				"ext.growthExperiments.Homepage.Mentorship/QuestionPoster.js"
 			],
 			"targets": [
 				"desktop",
