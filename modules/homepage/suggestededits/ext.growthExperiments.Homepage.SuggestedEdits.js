@@ -477,12 +477,17 @@
 			);
 		}
 		if ( this.currentCard instanceof EditCardWidget ) {
+			var newcomerTaskToken = this.logCardData( queuePosition );
 			this.logger.log(
 				'suggested-edits',
 				this.mode,
 				'se-task-impression',
-				{ newcomerTaskToken: this.logCardData( queuePosition ) }
+				{ newcomerTaskToken: newcomerTaskToken }
 			);
+			// Update the newcomer task token as soon as possible, since this value is passed to the
+			// QualityGate instance setupQualityGateClickHandling (which can occur before a response
+			// is returned from getExtraDataAndUpdateQueue)
+			this.currentCard.data.token = newcomerTaskToken;
 		}
 		this.updateCardElement( OO.ui.isMobile() ).then( this.updateControls.bind( this ) );
 
