@@ -3,7 +3,8 @@
 ( function () {
 	var SmallTaskCard = require( '../homepage/suggestededits/' +
 		'ext.growthExperiments.SuggestedEdits.SmallTaskCard.js' );
-	var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' );
+	var SuggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ),
+		Utils = require( '../utils/ext.growthExperiments.Utils.js' );
 
 	/**
 	 * @class
@@ -91,14 +92,12 @@
 	 * @return {Array<jQuery>} A list of footer elements.
 	 */
 	PostEditPanel.prototype.getFooterButtons = function () {
-		var title, footer, footer2,
+		var footer, footer2,
 			isSaved = ( this.taskState === SuggestedEditSession.static.STATES.SAVED ),
 			self = this;
 
-		title = new mw.Title( 'Special:Homepage' );
 		footer = new OO.ui.ButtonWidget( {
-			href: title.getUrl( { source: 'postedit-panel' } ) +
-				( OO.ui.isMobile() ? '#/homepage/suggested-edits' : '' ),
+			href: Utils.getSuggestedEditsFeedUrl( 'postedit-panel' ),
 			label: mw.message( 'growthexperiments-help-panel-postedit-footer' ).text(),
 			framed: false,
 			classes: [ 'mw-ge-help-panel-postedit-footer' ]
