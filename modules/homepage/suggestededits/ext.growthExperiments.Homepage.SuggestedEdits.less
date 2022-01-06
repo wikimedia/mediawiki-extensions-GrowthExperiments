@@ -1,8 +1,8 @@
 @import 'mediawiki.ui/variables.less';
 @import 'mediawiki.mixins.less';
 @import '../../lib/wikimedia-ui-base/wikimedia-ui-base.less';
-@import '../ext.growthExperiments.variables.less';
-@import '../ext.growthExperiments.mixins.less';
+@import '../../ext.growthExperiments.Homepage.styles/variables.less';
+@import '../../ext.growthExperiments.Homepage.styles/mixins.less';
 
 // The following variables are defined in HomepageHooks::lessCallback, as their
 // values vary between Minerva and Vector.
@@ -243,7 +243,7 @@ body.mw-special-Homepage {
 	}
 
 	.growthexperiments-homepage-module-footer {
-		// negate the padding on .growthexperiments-homepage-module in ext.growthExperiments.Homepage.less
+		// negate the padding on .growthexperiments-homepage-module in Homepage.less
 		margin: 16px -16px -16px -16px;
 		padding: 12px 24px 12px;
 		border: 2px solid fade( @wmui-color-accent90, 50% );
@@ -672,7 +672,7 @@ body.mw-special-Homepage {
 
 		.suggested-edits-footer {
 			// This is a fake footer (last div in the body, not a real footer); style it like the footer
-			// Negate the padding on .growthexperiments-homepage-module in ext.growthExperiments.Homepage.less
+			// Negate the padding on .growthexperiments-homepage-module in Homepage.less
 			margin: 16px -16px -16px -16px;
 			padding: 12px 24px 12px;
 			background-color: @colorGray15;

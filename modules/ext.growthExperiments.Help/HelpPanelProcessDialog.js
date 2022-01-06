@@ -744,7 +744,7 @@
 			}, this )
 			// Wait 400ms before hiding the dialog, to allow the animation to complete
 			// This value should be kept in sync with @help-panel-transition-duration in
-			// ext.growthExperiments.variables.less
+			// variables.less
 			.next( 400 );
 	};
 
