@@ -14,5 +14,7 @@
 	"apihelp-growthsetmentor-summary": "تعيين مرشدي المستخدمين. سيتم نشر التغييرات علنا.",
 	"apihelp-growthsetmentor-param-mentee": "اسم المستخدم للمُرشَد(ة)",
 	"apihelp-growthsetmentor-param-mentor": "اسم المستخدم للمُرشِد(ة)",
-	"apihelp-growthsetmentor-param-reason": "سبب التغيير"
+	"apihelp-growthsetmentor-param-reason": "سبب التغيير",
+	"apihelp-growthinvalidateimagerecommendation-summary": "مهمة اقتراح صورة غير صالحة",
+	"apihelp-growthinvalidateimagerecommendation-param-title": "عنوان المقالة الخاصة بمهمة اقتراح الصورة"
 }
