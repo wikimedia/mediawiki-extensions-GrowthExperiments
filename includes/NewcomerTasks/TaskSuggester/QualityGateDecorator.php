@@ -2,6 +2,7 @@
 
 namespace GrowthExperiments\NewcomerTasks\TaskSuggester;
 
+use GrowthExperiments\HomepageModules\SuggestedEdits;
 use GrowthExperiments\NewcomerTasks\AddImage\ImageRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\AddLink\LinkRecommendationSubmissionLogFactory;
 use GrowthExperiments\NewcomerTasks\ConfigurationLoader\ConfigurationLoader;
@@ -13,6 +14,7 @@ use GrowthExperiments\NewcomerTasks\TaskType\LinkRecommendationTaskTypeHandler;
 use GrowthExperiments\Util;
 use IContextSource;
 use MediaWiki\User\UserIdentity;
+use MediaWiki\User\UserOptionsLookup;
 use RequestContext;
 
 /**
@@ -39,22 +41,28 @@ class QualityGateDecorator implements TaskSuggester {
 	/** @var int */
 	private $linkRecommendationCountForUser;
 
+	/** @var UserOptionsLookup */
+	private $userOptionsLookup;
+
 	/**
 	 * @param TaskSuggester $taskSuggester
 	 * @param ConfigurationLoader $configurationLoader
 	 * @param ImageRecommendationSubmissionLogFactory $imageRecommendationSubmissionLogFactory
 	 * @param LinkRecommendationSubmissionLogFactory $linkRecommendationSubmissionLogFactory
+	 * @param UserOptionsLookup $userOptionsLookup
 	 */
 	public function __construct(
 		TaskSuggester $taskSuggester,
 		ConfigurationLoader $configurationLoader,
 		ImageRecommendationSubmissionLogFactory $imageRecommendationSubmissionLogFactory,
-		LinkRecommendationSubmissionLogFactory $linkRecommendationSubmissionLogFactory
+		LinkRecommendationSubmissionLogFactory $linkRecommendationSubmissionLogFactory,
+		UserOptionsLookup $userOptionsLookup
 	) {
 		$this->taskSuggester = $taskSuggester;
 		$this->imageRecommendationSubmissionLogFactory = $imageRecommendationSubmissionLogFactory;
 		$this->configurationLoader = $configurationLoader;
 		$this->linkRecommendationSubmissionLogFactory = $linkRecommendationSubmissionLogFactory;
+		$this->userOptionsLookup = $userOptionsLookup;
 	}
 
 	/** @inheritDoc */
@@ -73,6 +81,10 @@ class QualityGateDecorator implements TaskSuggester {
 			$imageRecommendationTaskType =
 				$this->configurationLoader->getTaskTypes()[ImageRecommendationTaskTypeHandler::TASK_TYPE_ID] ?? null;
 			if ( $imageRecommendationTaskType instanceof ImageRecommendationTaskType ) {
+				$desktopEnabled = $this->userOptionsLookup->getBoolOption(
+					$user,
+					SuggestedEdits::ADD_IMAGE_DESKTOP_PREF
+				);
 				$tasks->setQualityGateConfigForTaskType( ImageRecommendationTaskTypeHandler::TASK_TYPE_ID, [
 					'dailyLimit' => $this->isImageRecommendationDailyTaskLimitExceeded(
 						$user,
@@ -83,7 +95,7 @@ class QualityGateDecorator implements TaskSuggester {
 						$user,
 						$context
 					),
-					'mobileOnly' => Util::isMobile( $context->getSkin() ),
+					'mobileOnly' => $desktopEnabled || Util::isMobile( $context->getSkin() )
 				] );
 			}
 			$linkRecommendationTaskType =
