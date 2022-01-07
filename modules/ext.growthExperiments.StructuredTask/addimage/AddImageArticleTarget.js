@@ -392,7 +392,15 @@ AddImageArticleTarget.prototype.save = function ( doc, options, isRetry ) {
 	return this.constructor.super.prototype.save.call( this, doc, options, isRetry )
 		.done( function () {
 			this.madeNullEdit = !this.recommendationAccepted;
+			this.onSaveDone();
 		}.bind( this ) );
+};
+
+/**
+ * Called after the save is done but before the surface is torn down
+ */
+AddImageArticleTarget.prototype.onSaveDone = function () {
+	// intentionally no-op
 };
 
 /**
@@ -618,25 +626,25 @@ AddImageArticleTarget.prototype.getDefaultThumbSize = function () {
 };
 
 /**
+ * Set up loading states and promise for saving without showing the save dialog first.
+ *
+ * @abstract
+ *
+ * @return {jQuery.Deferred}
+ */
+AddImageArticleTarget.prototype.prepareSaveWithoutShowingDialog = function () {
+	throw new Error( 'prepareSaveWithoutShowingDialog must be implemented by subclass' );
+};
+
+/**
  * Save the article without showing the save dialog first.
  * This is used when the suggestion is rejected.
  */
 AddImageArticleTarget.prototype.saveWithoutShowingDialog = function () {
-	var promise = ve.createDeferred(),
-		$overlay = this.getSurface().getGlobalOverlay().$element;
-	$overlay.addClass( 'mw-ge-addImage--overlay-shown' );
-	promise.done( function () {
-		this.restorePlaceholderTitle();
-		$overlay.removeClass( 'mw-ge-addImage--overlay-shown' );
-	}.bind( this ) );
 	// When the save dialog is shown, the promise is from the ProcessDialog.
 	// In this case, the promise is used to control the loading state.
+	var promise = this.prepareSaveWithoutShowingDialog();
 	this.onSaveDialogSave( promise );
-	this.updatePlaceholderTitle(
-		mw.message( 'growthexperiments-addimage-submitting-title' ).text(),
-		true
-	);
-	this.toggleEditModeTool( false );
 };
 
 /** @inheritDoc **/
