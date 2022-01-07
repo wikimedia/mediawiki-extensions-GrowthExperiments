@@ -371,7 +371,7 @@ class HomepageHooks implements
 
 			if ( $taskType ) {
 				$out->addJsConfigVars( [
-					'wgGESuggestedEditTaskType' => $taskTypeId,
+					'wgGESuggestedEditTaskType' => $taskType->getId(),
 				] );
 
 				if ( $recommendationProvider ) {
@@ -384,18 +384,21 @@ class HomepageHooks implements
 							'error' => Status::wrap( $recommendation )->getWikiText( false, false, 'en' ),
 						];
 					}
-					$out->addJsConfigVars( [
-						'wgGESuggestedEditData' => $serializedRecommendation,
-					] );
+
 					$taskSet = $this->taskSuggesterFactory->create()->suggest(
 						$context->getUser(),
 						$this->newcomerTasksUserOptionsLookup->getTaskTypeFilter( $context->getUser() ),
 						$this->newcomerTasksUserOptionsLookup->getTopicFilter( $context->getUser() ),
 						1
 					);
+					$qualityGateConfig = $taskSet instanceof TaskSet ? $taskSet->getQualityGateConfig() : [];
+					// If the user's gone over the dailyLimit for a task, return an error.
+					if ( $qualityGateConfig[$taskType->getId()]['dailyLimit'] ?? false ) {
+						$serializedRecommendation = [ 'error' => 'Daily limit exceeded for ' . $taskType->getId() ];
+					}
+					$out->addJsConfigVars( [ 'wgGESuggestedEditQualityGateConfig' => $qualityGateConfig ] );
 					$out->addJsConfigVars( [
-						'wgGESuggestedEditQualityGateConfig' =>
-							$taskSet instanceof TaskSet ? $taskSet->getQualityGateConfig() : []
+						'wgGESuggestedEditData' => $serializedRecommendation,
 					] );
 				}
 
