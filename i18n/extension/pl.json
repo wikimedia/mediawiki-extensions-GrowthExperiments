@@ -21,7 +21,7 @@
 	"growthexperiments-edit-config-pretext-banner": "{{GENDER:|Możesz}} też wyświetlić banner na stronie domowej nowicjusza aby wyświetlać ogłoszenia o wydarzeniach istotnych dla nowicjuszy. Jeżeli {{GENDER:|chcesz}} to zrobić, {{GENDER:|musisz}} dodać go ręcznie na [[$1]]. Każda zawartość tam dodana będzie wyświetlana w żółtej ramce na górze strony [[Special:Homepage]].",
 	"growthexperiments-edit-config-pretext-unprivileged": "Ten formularz pozwala uprawnionym użytkownikom edytować konfigurację funkcji [[:mw:Special:MyLanguage/Growth|Growth]].",
 	"growthexperiments-edit-config-feedback-headline": "Czy masz jakieś pomysły lub pytania odnośnie tego formularza?",
-	"growthexperiments-edit-config-feedback-cta": "Wypowiedz sie",
+	"growthexperiments-edit-config-feedback-cta": "Wypowiedz się",
 	"growthexperiments-edit-config-error-invalid-title": "Strona konfiguracyjna nie została poprawnie ustawiona.",
 	"growthexperiments-edit-config-edit-summary": "Opis zmian",
 	"growthexperiments-edit-config-config-changed": "Konfiguracja została zmieniona. Być może będzie trzeba odczekać kilka minut na zastosowanie zmian.",

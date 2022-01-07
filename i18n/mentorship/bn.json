@@ -20,14 +20,14 @@
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-headline": "ব্যাখ্যা",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-star": "পরামর্শগ্রহীতাকে চিহ্নিত করুন",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-userinfo": "ব্যবহারকারী নাম",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "পুনর্বহালকৃত সম্পাদনা সংখ্যা",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-reverts": "পুনর্বহালকৃত সম্পাদনার সংখ্যা",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-blocks": "বাধাপ্রাপ্ত হওয়ার সংখ্যা",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-questions": "মেন্টরকে জিজ্ঞাসা করা প্রশ্নাবলী",
-	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "সম্পাদনা সংখ্যা",
+	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-editcount": "সম্পাদনার সংখ্যা",
 	"growthexperiments-mentor-dashboard-mentee-overview-info-legend-registration": "নিবন্ধনের তারিখ",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter": "ছাঁকনি",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-submit": "হালনাগাদ",
-	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "সম্পাদনা সংখ্যা",
+	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-headline": "সম্পাদনার সংখ্যা",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-from": "সর্বনিম্ন",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-total-edits-to": "সর্বোচ্চ",
 	"growthexperiments-mentor-dashboard-mentee-overview-add-filter-active-days-ago-headline": "সর্বশেষ সম্পাদনা",
@@ -85,8 +85,8 @@
 	"growthexperiments-quit-mentorship-reassign-mentees-log-message": "$1 মেন্টরশিপ থেকে {{GENDER:$1|অবসর নিয়েছেন}}।",
 	"echo-category-title-ge-mentorship": "মেন্টরশিপ",
 	"echo-pref-tooltip-ge-mentorship": "মেন্টরশিপ বৈশিষ্ট্যসম্পর্কিত বিজ্ঞপ্তি গ্রোথ দল রক্ষণাবেক্ষণ করেন। এই বিজ্ঞপ্তি আপনাকে জানায় যে আপনাকে আপনাকে পরামর্শগ্রহীতা হিসেবে দাবি করা হয়েছে, অথবা আপনার কোনো পরামর্শগ্রহীতাকে অন্য কেউ দাবি করেছে।",
-	"growthexperiments-notification-header-mentee-claimed": "আপনার {{GENDER:$3|পরামর্শগ্রহীতা}}, $3-কে {{GENDER:$2|দাবি করেছেন}} $1।",
+	"growthexperiments-notification-header-mentee-claimed": "$1 আপনার {{GENDER:$3|পরামর্শগ্রহীতা}} $3-কে {{GENDER:$2|দাবি করেছেন}}।",
 	"growthexperiments-notification-body-mentee-claimed": "কারণ: $1",
 	"growthexperiments-notification-secondary-link-label-mentee-claimed": "\"পরামর্শগ্রহীতা দাবিকরণ\" কী?",
-	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "আমার সঙ্গে নিযুক্ত মেন্টির সংখ্যা"
+	"growthexperiments-mentor-dashboard-mentor-tools-mentor-weight-headline": "আমার সঙ্গে নিযুক্ত পরামর্শগ্রহীতার সংখ্যা"
 }
