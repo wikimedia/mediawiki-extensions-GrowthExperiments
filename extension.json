@@ -1933,9 +1933,9 @@
 			"description": "Should users be allowed to access Special:MentorDashboard?",
 			"value": true
 		},
-		"GEMentorDashboardBetaMode": {
-			"description": "Enables beta features in Special:MentorDashboard (modules that are currently in development)",
-			"value": true
+		"GEMentorDashboardDeploymentMode": {
+			"description": "One of stable/beta/alpha. Used by the mentor dashboard to display only features intended on that wiki.",
+			"value": "stable"
 		},
 		"GEMentorDashboardBackendEnabled": {
 			"description": "Enable backend for mentor dashboard (currently controls whether updateMenteeData.php runs on that wiki)",

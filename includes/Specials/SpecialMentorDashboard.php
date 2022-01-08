@@ -21,6 +21,13 @@ use UserOptionsUpdateJob;
 
 class SpecialMentorDashboard extends SpecialPage {
 
+	/** @var string[][] Mapping of module stability level => accepted deployment modes */
+	private const REQUIRED_DEPLOYMENT_MODE = [
+		'stable' => [ 'stable', 'beta', 'alpha' ],
+		'beta' => [ 'beta', 'alpha' ],
+		'alpha' => [ 'alpha' ]
+	];
+
 	/** @var string Versioned schema URL for $schema field */
 	private const SCHEMA_VERSIONED = '/analytics/mediawiki/mentor_dashboard/visit/1.0.0';
 
@@ -71,11 +78,16 @@ class SpecialMentorDashboard extends SpecialPage {
 	 * @return IDashboardModule[]
 	 */
 	private function getModules( bool $isMobile = false ): array {
+		$deploymentMode = $this->getConfig()->get( 'GEMentorDashboardDeploymentMode' );
+
 		$moduleConfig = array_filter( [
-			'mentee-overview' => true,
-			'mentor-tools' => $this->getConfig()->get( 'GEMentorDashboardBetaMode' ),
-			'resources' => true,
-		] );
+			'mentee-overview' => 'stable',
+			'mentor-tools' => 'alpha',
+			'resources' => 'stable',
+		], static function ( $el ) use ( $deploymentMode ) {
+			return in_array( $deploymentMode, self::REQUIRED_DEPLOYMENT_MODE[$el] );
+		} );
+
 		$modules = [];
 		foreach ( $moduleConfig as $moduleId => $_ ) {
 			$modules[$moduleId] = $this->mentorDashboardModuleRegistry->get(
