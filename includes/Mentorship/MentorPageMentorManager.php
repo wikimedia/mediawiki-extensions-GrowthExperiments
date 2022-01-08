@@ -157,14 +157,22 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 		$mentorUser = $this->mentorStore->loadMentorUser( $user, $role );
 
 		if (
-			$mentorUser !== null &&
 			$role === MentorStore::ROLE_BACKUP &&
-			$this->mentorStatusManager->getMentorStatus( $mentorUser ) === MentorStatusManager::STATUS_AWAY
+			$mentorUser !== null
 		) {
-			// Do not let backup mentors to be away. If they are, drop the relationship and set
-			// it again. Logic in getRandomAutoAssignedMentorForUserAndRole will prevent us from
-			// getting $mentorUser again, so no need to remember it and exclude manually.
-			$mentorUser = null;
+			// Only use the saved backup mentor if they're still eligible to be a backup mentor.
+			// Ignore the current backup mentor relationship if any of the following applies:
+			//     a) the backup mentor is away
+			//     b) the backup mentor is no longer a mentor
+			if (
+				$this->mentorStatusManager->getMentorStatus( $mentorUser ) === MentorStatusManager::STATUS_AWAY ||
+				!$this->isMentor( $mentorUser )
+			) {
+				// Drop the relationship. We do not need to remember the user and exclude later
+				// in getRandomAutoAssignedMentorForUserAndRole – that method will ensure only an
+				// eligible backup user is generated.
+				$mentorUser = null;
+			}
 		}
 
 		if ( !$mentorUser ) {
@@ -175,6 +183,7 @@ class MentorPageMentorManager extends MentorManager implements LoggerAwareInterf
 			}
 			$this->mentorStore->setMentorForUser( $user, $mentorUser, $role );
 		}
+
 		return $this->newMentorFromUserIdentity( $mentorUser, $user );
 	}
 
