@@ -221,7 +221,7 @@ class HelpPanelHooks implements
 			->getMentorManager();
 		$mentor = $mentorManager->getMentorForUserSafe( $user );
 		$effectiveMentor = $mentorManager->getEffectiveMentorForUserSafe( $user );
-		if ( !$mentor ) {
+		if ( !$mentor || !$effectiveMentor ) {
 			return [];
 		}
 		return [
