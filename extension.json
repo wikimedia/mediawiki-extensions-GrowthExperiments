@@ -1496,17 +1496,17 @@
 		"ext.growthExperiments.Homepage.styles": {
 			"class": "GrowthExperiments\\ResourceLoaderFileModuleWithLessVars",
 			"styles": [
-				"homepage/ext.growthExperiments.BaseModule.less",
-				"homepage/ext.growthExperiments.HelpModule.less",
-				"homepage/ext.growthExperiments.ImpactModule.less",
-				"homepage/ext.growthExperiments.MentorshipModule.less",
+				"ext.growthExperiments.Homepage.styles/BaseModule.less",
+				"ext.growthExperiments.Homepage.styles/HelpModule.less",
+				"ext.growthExperiments.Homepage.styles/ImpactModule.less",
+				"ext.growthExperiments.Homepage.styles/MentorshipModule.less",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.less",
 				"homepage/suggestededits/ext.growthExperiments.Homepage.SuggestedEdits.TaskExplanation.less",
 				"homepage/suggestededits/ext.growthExperiments.SuggestedEdits.SmallTaskCard.less",
-				"homepage/ext.growthExperiments.BannerModule.less",
-				"homepage/ext.growthExperiments.StartEmailModule.less",
-				"homepage/ext.growthExperiments.Homepage.less",
-				"homepage/ext.growthExperiments.Homepage.StartEditing.less"
+				"ext.growthExperiments.Homepage.styles/BannerModule.less",
+				"ext.growthExperiments.Homepage.styles/StartEmailModule.less",
+				"ext.growthExperiments.Homepage.styles/Homepage.less",
+				"ext.growthExperiments.Homepage.styles/StartEditingModule.less"
 			],
 			"lessCallback": [ "GrowthExperiments\\HomepageHooks", "lessCallback" ],
 			"targets": [
