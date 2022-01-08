@@ -14,9 +14,7 @@ const { config } = require( 'wdio-mediawiki/wdio-defaults.conf.js' ),
 exports.config = { ...config,
 	// Override, or add to, the setting from wdio-mediawiki.
 	// Learn more at https://webdriver.io/docs/configurationfile/
-	//
-	// Example:
-	// logLevel: 'info',
+	addConsoleLogs: true,
 	beforeSuite: function () {
 		const username = Util.getTestString( 'NewUser-' );
 		const password = Util.getTestString();
@@ -40,6 +38,7 @@ exports.config = { ...config,
 			).done( () => done() )
 		);
 	},
+	services: [ 'devtools' ],
 	onPrepare: function () {
 		fs.writeFileSync( path.resolve( ip + '/LocalSettings.php' ),
 			// Load the service overrides
