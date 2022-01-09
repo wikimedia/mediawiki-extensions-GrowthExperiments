@@ -17,7 +17,10 @@
 		// * growthexperiments-homepage-suggestededits-tasktype-machine-description
 		// * growthexperiments-homepage-suggestededits-tasktype-machine-mobileonly-description
 		label = 'descriptionMessageKey' in iconData ? mw.message( iconData.descriptionMessageKey ).text() : '';
-		iconWidget = new OO.ui.IconWidget( $.extend( config, { icon: iconData.icon } ) );
+		iconWidget = new OO.ui.IconWidget( $.extend( config, {
+			icon: iconData.icon,
+			classes: [ 'suggested-edits-task-explanation-icon' ]
+		} ) );
 		if ( label ) {
 			iconWidget.setLabel( label );
 			iconWidget.setInvisibleLabel( config.invisibleLabel );
