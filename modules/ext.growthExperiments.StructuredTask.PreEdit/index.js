@@ -1,7 +1,8 @@
 module.exports = ( function () {
 	'use strict';
 
-	var addLinkOnboardingPrefName = 'growthexperiments-addlink-onboarding',
+	var Utils = require( '../utils/ext.growthExperiments.Utils.js' ),
+		addLinkOnboardingPrefName = 'growthexperiments-addlink-onboarding',
 		addImageOnboardingPrefName = 'growthexperiments-addimage-onboarding',
 		suggestedEditSession = require( 'ext.growthExperiments.SuggestedEditSession' ).getInstance(),
 		taskTypes = require( '../homepage/suggestededits/TaskTypes.json' ),
@@ -97,7 +98,7 @@ module.exports = ( function () {
 		} ).done( function () {
 			// eslint-disable-next-line camelcase
 			logger.log( 'close', '', { active_interface: 'nosuggestions_dialog' } );
-			window.location.href = mw.Title.newFromText( 'Special:Homepage' ).getUrl();
+			window.location.href = Utils.getSuggestedEditsFeedUrl();
 		} );
 	}
 
