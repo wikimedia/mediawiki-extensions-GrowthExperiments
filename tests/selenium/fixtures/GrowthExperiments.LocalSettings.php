@@ -58,6 +58,8 @@ $wgUseInstantCommons = true;
 // Set up service URL for links.
 $wgGELinkRecommendationServiceUrl = 'https://api.wikimedia.org/service/linkrecommendation';
 
-// Load Parsoid
-$PARSOID_INSTALL_DIR = "$IP/vendor/wikimedia/parsoid";
-wfLoadExtension( 'Parsoid', "$PARSOID_INSTALL_DIR/extension.json" );
+// Conditionally load Parsoid
+if ( !is_dir( "$IP/services/parsoid" ) ) {
+	$PARSOID_INSTALL_DIR = "$IP/vendor/wikimedia/parsoid";
+	wfLoadExtension( 'Parsoid', "$PARSOID_INSTALL_DIR/extension.json" );
+}
