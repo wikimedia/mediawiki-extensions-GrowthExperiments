@@ -456,6 +456,7 @@
 	"growthexperiments-newcomertasks-invalid-tasktype": "無效任務類型：$1",
 	"growthexperiments-addimage-caption-title": "新增說明",
 	"growthexperiments-addimage-loading-title": "正在載入圖片預覽……",
+	"growthexperiments-addimage-submitting-title": "正在提交…",
 	"growthexperiments-addimage-caption-placeholder": "撰寫簡單的說明來解釋該圖片與<strong>$1</strong>的關係",
 	"growthexperiments-addimage-caption-info-dialog-title": "撰寫說明來配合條目中的圖片",
 	"growthexperiments-addimage-caption-info-dialog-message": "<strong>$1</strong>的讀者將會看到圖片下方的說明：",

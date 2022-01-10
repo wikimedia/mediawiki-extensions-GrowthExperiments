@@ -37,7 +37,7 @@
 		]
 	},
 	"growthexperiments-homepage-specialpage-title": "{{GENDER:$1|您好}}，{{bidi:$1}}！",
-	"growthexperiments-homepage-tab": "首页",
+	"growthexperiments-homepage-tab": "主页",
 	"tooltip-pt-homepage": "{{GENDER:|您}}的首页",
 	"prefs-homepage": "新手主页",
 	"growthexperiments-homepage-enable": "显示新手主页",
@@ -163,7 +163,7 @@
 	"growthexperiments-specialimpact-invalid-username": "用户名缺失或无效。",
 	"growthexperiments-homepage-claimmentee-no-user": "学员不存在",
 	"growthexperiments-homepage-claimmentee-already-mentor": "{{GENDER:$2|您}}已经是 {{GENDER:$1|$1}} 的导师",
-	"growthexperiments-homepage-enable-preference": "要启用新人主页，请访问 [[Special:Preferences#mw-prefsection-personal-homepage|参数设置]]中的 “新人主页 “设置。",
+	"growthexperiments-homepage-enable-preference": "要启用新人主页，请访问[[Special:Preferences#mw-prefsection-personal-homepage|参数设置]]中的“新人主页”设置。",
 	"growthexperiments-homepage-contributions-zero-title": "{{GENDER:$1|您}}还没有做出任何贡献。",
 	"growthexperiments-homepage-contributions-zero-subtitle": "访问{{GENDER:$1|您的}}主页开始编辑！",
 	"growthexperiments-homepage-contributions-zero-button": "到{{GENDER:$1|您的}}主页",
